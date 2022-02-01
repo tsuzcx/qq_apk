@@ -26,27 +26,51 @@ public class VideoPlayParam
   
   public boolean isSameVideo(Object paramObject)
   {
-    boolean bool = true;
-    if (!(paramObject instanceof VideoPlayParam)) {}
-    do
-    {
+    boolean bool1 = paramObject instanceof VideoPlayParam;
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
-      paramObject = (VideoPlayParam)paramObject;
-    } while ((paramObject.mIsLocal != this.mIsLocal) || (paramObject.mIsLoop != this.mIsLoop) || (paramObject.mIsMute != this.mIsMute));
-    if ((paramObject.mVideoPath != null) && (this.mVideoPath != null) && (paramObject.mVideoPath.equals(this.mVideoPath))) {
-      return true;
     }
-    if ((paramObject.mUrls != null) && (this.mUrls != null) && (Arrays.equals(paramObject.mUrls, this.mUrls))) {}
-    for (;;)
+    paramObject = (VideoPlayParam)paramObject;
+    bool1 = bool2;
+    if (paramObject.mIsLocal == this.mIsLocal)
     {
-      return bool;
-      bool = false;
+      bool1 = bool2;
+      if (paramObject.mIsLoop == this.mIsLoop)
+      {
+        if (paramObject.mIsMute != this.mIsMute) {
+          return false;
+        }
+        Object localObject = paramObject.mVideoPath;
+        if (localObject != null)
+        {
+          String str = this.mVideoPath;
+          if ((str != null) && (((String)localObject).equals(str))) {
+            return true;
+          }
+        }
+        paramObject = paramObject.mUrls;
+        bool1 = bool2;
+        if (paramObject != null)
+        {
+          localObject = this.mUrls;
+          bool1 = bool2;
+          if (localObject != null)
+          {
+            bool1 = bool2;
+            if (Arrays.equals(paramObject, (Object[])localObject)) {
+              bool1 = true;
+            }
+          }
+        }
+      }
     }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.api.VideoPlayParam
  * JD-Core Version:    0.7.0.1
  */

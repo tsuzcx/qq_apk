@@ -17,19 +17,19 @@ public class CustomSSLSocketFactory
     try
     {
       paramKeyStore = new CustomSSLSocketFactory.MyX509TrustManager();
-      this.a.init(null, new TrustManager[] { paramKeyStore }, null);
-      return;
     }
     catch (Exception paramKeyStore)
     {
-      for (;;)
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("Translator", 2, "[cancel] cancel task" + paramKeyStore);
-        }
-        paramKeyStore = null;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[cancel] cancel task");
+        localStringBuilder.append(paramKeyStore);
+        QLog.e("Translator", 2, localStringBuilder.toString());
       }
+      paramKeyStore = null;
     }
+    this.a.init(null, new TrustManager[] { paramKeyStore }, null);
   }
   
   public Socket createSocket()

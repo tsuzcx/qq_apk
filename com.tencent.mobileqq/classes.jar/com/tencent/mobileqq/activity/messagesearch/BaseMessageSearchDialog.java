@@ -57,7 +57,7 @@ public class BaseMessageSearchDialog
     requestWindowFeature(1);
     getWindow().setSoftInputMode(2);
     getWindow().setBackgroundDrawable(new ColorDrawable());
-    setContentView(2131559458);
+    setContentView(2131559332);
     paramContext = getWindow().getAttributes();
     paramContext.x = 0;
     paramContext.y = 0;
@@ -69,24 +69,22 @@ public class BaseMessageSearchDialog
   
   private void e()
   {
-    View localView;
-    if (((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (this.jdField_a_of_type_AndroidContentContext.getResources().getConfiguration().orientation == 1))
+    Object localObject = this.jdField_a_of_type_AndroidContentContext;
+    if (((localObject instanceof Activity)) && (((Context)localObject).getResources().getConfiguration().orientation == 1))
     {
-      Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
-      localView = findViewById(2131370772);
-      if (LiuHaiUtils.c(localActivity)) {
-        localView.post(new BaseMessageSearchDialog.1(this, localView, localActivity));
+      localObject = (Activity)this.jdField_a_of_type_AndroidContentContext;
+      View localView = findViewById(2131370406);
+      if (LiuHaiUtils.c((Activity)localObject))
+      {
+        localView.post(new BaseMessageSearchDialog.1(this, localView, (Activity)localObject));
+        return;
       }
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseMessageSearchDialog", 2, "has no Notch, setPaddingTop 0");
+      }
+      localView.setPadding(localView.getPaddingLeft(), 0, localView.getPaddingRight(), localView.getPaddingBottom());
+      ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 500L);
     }
-    else
-    {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("BaseMessageSearchDialog", 2, "has no Notch, setPaddingTop 0");
-    }
-    localView.setPadding(localView.getPaddingLeft(), 0, localView.getPaddingRight(), localView.getPaddingBottom());
-    ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 500L);
   }
   
   public int a()
@@ -98,8 +96,10 @@ public class BaseMessageSearchDialog
   
   protected void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299166));
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
+    {
+      Context localContext = this.jdField_a_of_type_AndroidContentContext;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(localContext, localContext.getResources().getDimensionPixelSize(2131299168));
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCanceledOnTouchOutside(false);
@@ -119,7 +119,8 @@ public class BaseMessageSearchDialog
   
   protected void b()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    if ((localQQProgressDialog != null) && (localQQProgressDialog.isShowing())) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
     }
   }
@@ -158,7 +159,7 @@ public class BaseMessageSearchDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.BaseMessageSearchDialog
  * JD-Core Version:    0.7.0.1
  */

@@ -51,8 +51,9 @@ public final class ProfFullUsrQryReq
     paramJceOutputStream.write(this.iAppId, 1);
     paramJceOutputStream.write(this.strSessionKey, 2);
     paramJceOutputStream.write(this.usruin, 3);
-    if (this.vFriendUin != null) {
-      paramJceOutputStream.write(this.vFriendUin, 4);
+    ArrayList localArrayList = this.vFriendUin;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 4);
     }
     paramJceOutputStream.write(this.iRetIncomPlete, 5);
     paramJceOutputStream.write(this.iReloadFlag, 6);
@@ -61,7 +62,7 @@ public final class ProfFullUsrQryReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.ProfFullUsrQryReq
  * JD-Core Version:    0.7.0.1
  */

@@ -25,14 +25,15 @@ public final class cell_msgb_rapidemotion
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.emotion != null) {
-      paramJceOutputStream.write(this.emotion, 0);
+    msgb_rapidemotion localmsgb_rapidemotion = this.emotion;
+    if (localmsgb_rapidemotion != null) {
+      paramJceOutputStream.write(localmsgb_rapidemotion, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_msgb_rapidemotion
  * JD-Core Version:    0.7.0.1
  */

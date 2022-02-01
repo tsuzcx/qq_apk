@@ -74,10 +74,13 @@ public class DatalineDeviceChooseModel
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(paramContext, null);
     String str = FileUtil.a(QFileAssistantUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime())).replace(".00", "");
-    localActionSheet.setMainTitle(str + paramContext.getResources().getString(2131698219));
-    localActionSheet.addButton(2131698218, 5);
-    localActionSheet.addButton(2131698217, 5);
-    localActionSheet.addCancelButton(2131690800);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append(paramContext.getResources().getString(2131698283));
+    localActionSheet.setMainTitle(localStringBuilder.toString());
+    localActionSheet.addButton(2131698282, 5);
+    localActionSheet.addButton(2131698281, 5);
+    localActionSheet.addCancelButton(2131690728);
     localActionSheet.setOnDismissListener(new DatalineDeviceChooseModel.1(this, paramDeviceChooseInterface));
     localActionSheet.setOnButtonClickListener(new DatalineDeviceChooseModel.2(this, paramDeviceChooseInterface, localActionSheet));
     localActionSheet.show();
@@ -85,54 +88,87 @@ public class DatalineDeviceChooseModel
   
   private boolean a(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity)
   {
-    if (!FileUtil.b(paramFileManagerEntity.getFilePath()))
+    if (!FileUtil.a(paramFileManagerEntity.getFilePath()))
     {
-      QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "checkEntity:" + paramFileManagerEntity.nSessionId + ", not LocalFile!");
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("checkEntity:");
+      paramQQAppInterface.append(paramFileManagerEntity.nSessionId);
+      paramQQAppInterface.append(", not LocalFile!");
+      QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, paramQQAppInterface.toString());
       return false;
     }
     long l = QFileAssistantUtils.a(paramQQAppInterface);
     if (paramFileManagerEntity.fileSize < l)
     {
-      QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "checkEntity:" + paramFileManagerEntity.nSessionId + ", fileSize[" + paramFileManagerEntity.fileSize + "] < limitSize[" + l + "]");
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("checkEntity:");
+      paramQQAppInterface.append(paramFileManagerEntity.nSessionId);
+      paramQQAppInterface.append(", fileSize[");
+      paramQQAppInterface.append(paramFileManagerEntity.fileSize);
+      paramQQAppInterface.append("] < limitSize[");
+      paramQQAppInterface.append(l);
+      paramQQAppInterface.append("]");
+      QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, paramQQAppInterface.toString());
       return false;
     }
-    QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "checkEntity:" + paramFileManagerEntity.nSessionId + ", is LocalFile,and size is Over:" + paramFileManagerEntity.fileSize);
+    paramQQAppInterface = new StringBuilder();
+    paramQQAppInterface.append("checkEntity:");
+    paramQQAppInterface.append(paramFileManagerEntity.nSessionId);
+    paramQQAppInterface.append(", is LocalFile,and size is Over:");
+    paramQQAppInterface.append(paramFileManagerEntity.fileSize);
+    QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, paramQQAppInterface.toString());
     return true;
   }
   
   private boolean a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0) || (paramBoolean))
+    Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
+    if ((localObject1 != null) && (((ArrayList)localObject1).size() != 0) && (!paramBoolean))
     {
-      QLog.w("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "checkForwardFileInfo forwardFileInfos is null or isNeedCheckIpadStatus : " + paramBoolean);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("checkForwardFileInfo forwardFileInfos size : ");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilArrayList.size());
+      QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, ((StringBuilder)localObject1).toString());
+      localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        Object localObject2 = (ForwardFileInfo)((Iterator)localObject1).next();
+        int i = ((ForwardFileInfo)localObject2).b();
+        long l1 = QFileAssistantUtils.a(paramQQAppInterface);
+        if ((i != 10000) && (i != 10001) && (i != 10006))
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("checkForwardFileInfo unknow type:");
+          ((StringBuilder)localObject2).append(i);
+          QLog.w("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, ((StringBuilder)localObject2).toString());
+        }
+        else
+        {
+          boolean bool = FileUtil.a(((ForwardFileInfo)localObject2).a());
+          long l2 = ((ForwardFileInfo)localObject2).d();
+          if ((bool) && (((ForwardFileInfo)localObject2).d() > l1))
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("checkForwardFileInfo size[");
+            ((StringBuilder)localObject2).append(l2);
+            ((StringBuilder)localObject2).append(" > onlyOfflineLimitSize[");
+            ((StringBuilder)localObject2).append(l1);
+            ((StringBuilder)localObject2).append("] ");
+            QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, ((StringBuilder)localObject2).toString());
+            paramBoolean = true;
+          }
+        }
+      }
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("checkForwardFileInfo return : ");
+      paramQQAppInterface.append(paramBoolean);
+      QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, paramQQAppInterface.toString());
       return paramBoolean;
     }
-    QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "checkForwardFileInfo forwardFileInfos size : " + this.jdField_a_of_type_JavaUtilArrayList.size());
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      ForwardFileInfo localForwardFileInfo = (ForwardFileInfo)localIterator.next();
-      int i = localForwardFileInfo.b();
-      long l1 = QFileAssistantUtils.a(paramQQAppInterface);
-      switch (i)
-      {
-      default: 
-        QLog.w("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "checkForwardFileInfo unknow type:" + i);
-        break;
-      case 10000: 
-      case 10001: 
-      case 10006: 
-        boolean bool = FileUtil.b(localForwardFileInfo.a());
-        long l2 = localForwardFileInfo.d();
-        if ((bool) && (localForwardFileInfo.d() > l1))
-        {
-          QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "checkForwardFileInfo size[" + l2 + " > onlyOfflineLimitSize[" + l1 + "] ");
-          paramBoolean = true;
-        }
-        break;
-      }
-    }
-    QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "checkForwardFileInfo return : " + paramBoolean);
+    paramQQAppInterface = new StringBuilder();
+    paramQQAppInterface.append("checkForwardFileInfo forwardFileInfos is null or isNeedCheckIpadStatus : ");
+    paramQQAppInterface.append(paramBoolean);
+    QLog.w("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, paramQQAppInterface.toString());
     return paramBoolean;
   }
   
@@ -145,164 +181,216 @@ public class DatalineDeviceChooseModel
   
   private void b(Context paramContext, QQAppInterface paramQQAppInterface, DatalineDeviceChooseModel.DeviceChooseInterface paramDeviceChooseInterface)
   {
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if (localObject != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      do
-      {
-        if (!localIterator.hasNext()) {
-          break;
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (a(paramQQAppInterface, (FileManagerEntity)((Iterator)localObject).next()))
+        {
+          bool1 = true;
+          break label57;
         }
-      } while (!a(paramQQAppInterface, (FileManagerEntity)localIterator.next()));
-    }
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null) && (!bool1) && (a(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity))) {
-        bool1 = true;
       }
-      for (;;)
+    }
+    boolean bool1 = false;
+    label57:
+    localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    boolean bool2 = bool1;
+    if (localObject != null)
+    {
+      bool2 = bool1;
+      if (!bool1)
       {
-        if (((IQFileConfigManager)paramQQAppInterface.getRuntimeService(IQFileConfigManager.class, "")).isWlanOnly()) {
+        bool2 = bool1;
+        if (a(paramQQAppInterface, (FileManagerEntity)localObject)) {
+          bool2 = true;
+        }
+      }
+    }
+    if (((IQFileConfigManager)paramQQAppInterface.getRuntimeService(IQFileConfigManager.class, "")).isWlanOnly()) {
+      bool2 = true;
+    }
+    bool2 = a(paramQQAppInterface, b(paramQQAppInterface, c(paramQQAppInterface, d(paramQQAppInterface, bool2))));
+    bool1 = bool2;
+    if (this.jdField_a_of_type_ComTencentMobileqqForwardForwardFileOption != null)
+    {
+      bool1 = bool2;
+      if (!bool2)
+      {
+        long l = QFileAssistantUtils.a(paramQQAppInterface);
+        bool1 = bool2;
+        if (this.jdField_a_of_type_ComTencentMobileqqForwardForwardFileOption.a() > l) {
           bool1 = true;
         }
-        boolean bool2 = a(paramQQAppInterface, b(paramQQAppInterface, c(paramQQAppInterface, d(paramQQAppInterface, bool1))));
-        bool1 = bool2;
-        if (this.jdField_a_of_type_ComTencentMobileqqForwardForwardFileOption != null)
-        {
-          bool1 = bool2;
-          if (!bool2)
-          {
-            long l = QFileAssistantUtils.a(paramQQAppInterface);
-            bool1 = bool2;
-            if (this.jdField_a_of_type_ComTencentMobileqqForwardForwardFileOption.a() > l) {
-              bool1 = true;
-            }
-          }
-        }
-        if (!bool1)
-        {
-          QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "checkFiles isNeedCheckIpadStatus is false ");
-          paramDeviceChooseInterface.a();
-          return;
-        }
-        if (!QFileAssistantUtils.b(paramQQAppInterface))
-        {
-          QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "checkFiles isNeedShowPadOpts is false ");
-          paramDeviceChooseInterface.a();
-          return;
-        }
-        a(paramContext, paramDeviceChooseInterface);
-        return;
       }
     }
+    if (!bool1)
+    {
+      QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "checkFiles isNeedCheckIpadStatus is false ");
+      paramDeviceChooseInterface.a();
+      return;
+    }
+    if (!QFileAssistantUtils.b(paramQQAppInterface))
+    {
+      QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "checkFiles isNeedShowPadOpts is false ");
+      paramDeviceChooseInterface.a();
+      return;
+    }
+    a(paramContext, paramDeviceChooseInterface);
   }
   
   private boolean b(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_JavaUtilSet == null) || (paramBoolean))
+    if ((this.jdField_a_of_type_JavaUtilSet != null) && (!paramBoolean))
     {
-      QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "checkLocalFileInfos lstLocals is null or isNeedCheckIpadStatus : " + paramBoolean);
-      return paramBoolean;
+      long l1 = QFileAssistantUtils.a(paramQQAppInterface);
+      paramQQAppInterface = this.jdField_a_of_type_JavaUtilSet.iterator();
+      FileInfo localFileInfo;
+      long l2;
+      do
+      {
+        bool = paramBoolean;
+        if (!paramQQAppInterface.hasNext()) {
+          break;
+        }
+        localFileInfo = (FileInfo)paramQQAppInterface.next();
+        l2 = localFileInfo.a();
+      } while (localFileInfo.a() <= l1);
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("checkLocalFileInfos troopFileStatusInfo size[");
+      paramQQAppInterface.append(l2);
+      paramQQAppInterface.append(" > onlyOfflineLimitSize[");
+      paramQQAppInterface.append(l1);
+      paramQQAppInterface.append("] ");
+      QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, paramQQAppInterface.toString());
+      boolean bool = true;
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("checkLocalFileInfos return : ");
+      paramQQAppInterface.append(bool);
+      QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, paramQQAppInterface.toString());
+      return bool;
     }
-    long l1 = QFileAssistantUtils.a(paramQQAppInterface);
-    paramQQAppInterface = this.jdField_a_of_type_JavaUtilSet.iterator();
-    FileInfo localFileInfo;
-    long l2;
-    do
-    {
-      bool = paramBoolean;
-      if (!paramQQAppInterface.hasNext()) {
-        break;
-      }
-      localFileInfo = (FileInfo)paramQQAppInterface.next();
-      l2 = localFileInfo.a();
-    } while (localFileInfo.a() <= l1);
-    QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "checkLocalFileInfos troopFileStatusInfo size[" + l2 + " > onlyOfflineLimitSize[" + l1 + "] ");
-    boolean bool = true;
-    QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "checkLocalFileInfos return : " + bool);
-    return bool;
+    paramQQAppInterface = new StringBuilder();
+    paramQQAppInterface.append("checkLocalFileInfos lstLocals is null or isNeedCheckIpadStatus : ");
+    paramQQAppInterface.append(paramBoolean);
+    QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, paramQQAppInterface.toString());
+    return paramBoolean;
   }
   
   private boolean c(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    if ((this.c == null) || (paramBoolean))
+    if ((this.c != null) && (!paramBoolean))
     {
-      QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "checkLocalPaths lstPaths null ro isNeedCheckIpadStatus:" + paramBoolean);
-      return paramBoolean;
-    }
-    long l1 = QFileAssistantUtils.a(paramQQAppInterface);
-    paramQQAppInterface = this.c.iterator();
-    long l2;
-    do
-    {
-      String str;
-      for (;;)
+      long l1 = QFileAssistantUtils.a(paramQQAppInterface);
+      paramQQAppInterface = this.c.iterator();
+      long l2;
+      do
       {
-        bool = paramBoolean;
-        if (!paramQQAppInterface.hasNext()) {
-          break label174;
+        String str;
+        for (;;)
+        {
+          bool = paramBoolean;
+          if (!paramQQAppInterface.hasNext()) {
+            break label171;
+          }
+          str = (String)paramQQAppInterface.next();
+          if (FileUtil.a(str)) {
+            break;
+          }
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("checkLocalPaths file NotExisited:");
+          localStringBuilder.append(str);
+          QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, localStringBuilder.toString());
         }
-        str = (String)paramQQAppInterface.next();
-        if (FileUtil.b(str)) {
-          break;
-        }
-        QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "checkLocalPaths file NotExisited:" + str);
-      }
-      l2 = FileManagerUtil.a(str);
-    } while (l2 <= l1);
-    QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "checkLocalPaths troopFileStatusInfo size[" + l2 + " > onlyOfflineLimitSize[" + l1 + "] ");
-    boolean bool = true;
-    label174:
-    QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "checkLocalPaths return:" + bool);
-    return bool;
+        l2 = FileManagerUtil.a(str);
+      } while (l2 <= l1);
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("checkLocalPaths troopFileStatusInfo size[");
+      paramQQAppInterface.append(l2);
+      paramQQAppInterface.append(" > onlyOfflineLimitSize[");
+      paramQQAppInterface.append(l1);
+      paramQQAppInterface.append("] ");
+      QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, paramQQAppInterface.toString());
+      boolean bool = true;
+      label171:
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("checkLocalPaths return:");
+      paramQQAppInterface.append(bool);
+      QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, paramQQAppInterface.toString());
+      return bool;
+    }
+    paramQQAppInterface = new StringBuilder();
+    paramQQAppInterface.append("checkLocalPaths lstPaths null ro isNeedCheckIpadStatus:");
+    paramQQAppInterface.append(paramBoolean);
+    QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, paramQQAppInterface.toString());
+    return paramBoolean;
   }
   
   private boolean d(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    if ((this.b == null) || (paramBoolean))
+    if ((this.b != null) && (!paramBoolean))
     {
-      QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "checkMsgList: lstMsg is null or isNeedCheckIpadStatus : " + paramBoolean);
-      return paramBoolean;
-    }
-    QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "checkMsgList: lstMsg size : " + this.b.size());
-    long l = QFileAssistantUtils.a(paramQQAppInterface);
-    Iterator localIterator = this.b.iterator();
-    Object localObject;
-    do
-    {
-      bool = paramBoolean;
-      if (!localIterator.hasNext()) {
-        break;
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("checkMsgList: lstMsg size : ");
+      ((StringBuilder)localObject1).append(this.b.size());
+      QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, ((StringBuilder)localObject1).toString());
+      long l = QFileAssistantUtils.a(paramQQAppInterface);
+      localObject1 = this.b.iterator();
+      boolean bool;
+      Object localObject2;
+      do
+      {
+        bool = paramBoolean;
+        if (!((Iterator)localObject1).hasNext()) {
+          break label259;
+        }
+        localObject2 = (ChatMessage)((Iterator)localObject1).next();
+        if (!(localObject2 instanceof MessageForFile)) {
+          break;
+        }
+      } while (!a(paramQQAppInterface, FileManagerUtil.a(paramQQAppInterface, (MessageForFile)localObject2)));
+      for (;;)
+      {
+        bool = true;
+        break label259;
+        if (!(localObject2 instanceof MessageForTroopFile)) {
+          break;
+        }
+        localObject2 = TroopFileUtils.a(paramQQAppInterface, (MessageForTroopFile)localObject2);
+        if (localObject2 == null)
+        {
+          QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "checkMsgList: troopFileStatusInfo null ");
+          break;
+        }
+        if (!FileUtil.a(((TroopFileStatusInfo)localObject2).a))
+        {
+          QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "checkMsgList troopFileStatusInfo not localFile ");
+          break;
+        }
+        if (((TroopFileStatusInfo)localObject2).c <= l) {
+          break;
+        }
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("checkMsgList troopFileStatusInfo size[");
+        paramQQAppInterface.append(((TroopFileStatusInfo)localObject2).c);
+        paramQQAppInterface.append(" > onlyOfflineLimitSize[");
+        paramQQAppInterface.append(l);
+        paramQQAppInterface.append("] ");
+        QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, paramQQAppInterface.toString());
       }
-      localObject = (ChatMessage)localIterator.next();
-      if (!(localObject instanceof MessageForFile)) {
-        break label169;
-      }
-    } while (!a(paramQQAppInterface, FileManagerUtil.a(paramQQAppInterface, (MessageForFile)localObject)));
-    for (boolean bool = true;; bool = true)
-    {
-      QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "checkMsgList return:" + bool);
+      label259:
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("checkMsgList return:");
+      paramQQAppInterface.append(bool);
+      QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, paramQQAppInterface.toString());
       return bool;
-      label169:
-      if (!(localObject instanceof MessageForTroopFile)) {
-        break;
-      }
-      localObject = TroopFileUtils.a(paramQQAppInterface, (MessageForTroopFile)localObject);
-      if (localObject == null)
-      {
-        QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "checkMsgList: troopFileStatusInfo null ");
-        break;
-      }
-      if (!FileUtil.b(((TroopFileStatusInfo)localObject).a))
-      {
-        QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "checkMsgList troopFileStatusInfo not localFile ");
-        break;
-      }
-      if (((TroopFileStatusInfo)localObject).c <= l) {
-        break;
-      }
-      QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "checkMsgList troopFileStatusInfo size[" + ((TroopFileStatusInfo)localObject).c + " > onlyOfflineLimitSize[" + l + "] ");
     }
+    paramQQAppInterface = new StringBuilder();
+    paramQQAppInterface.append("checkMsgList: lstMsg is null or isNeedCheckIpadStatus : ");
+    paramQQAppInterface.append(paramBoolean);
+    QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, paramQQAppInterface.toString());
+    return paramBoolean;
   }
   
   public void a()
@@ -340,7 +428,7 @@ public class DatalineDeviceChooseModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.util.DatalineDeviceChooseModel
  * JD-Core Version:    0.7.0.1
  */

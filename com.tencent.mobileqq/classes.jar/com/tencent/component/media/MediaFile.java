@@ -237,7 +237,15 @@ public class MediaFile
   
   public static boolean isAudioFileType(int paramInt)
   {
-    return ((paramInt >= 1) && (paramInt <= 10)) || ((paramInt >= 11) && (paramInt <= 13));
+    boolean bool = true;
+    if ((paramInt < 1) || (paramInt > 10))
+    {
+      if ((paramInt >= 11) && (paramInt <= 13)) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   public static boolean isDrmFileType(int paramInt)
@@ -278,7 +286,7 @@ public class MediaFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.MediaFile
  * JD-Core Version:    0.7.0.1
  */

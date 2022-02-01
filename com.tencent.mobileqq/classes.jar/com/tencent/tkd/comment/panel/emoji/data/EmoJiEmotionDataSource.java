@@ -19,18 +19,19 @@ public class EmoJiEmotionDataSource
   
   private void b()
   {
-    if (this.jdField_a_of_type_ComTencentTkdCommentPanelBridgeEmojiIQbEmoJiEmotion != null)
+    Object localObject = this.jdField_a_of_type_ComTencentTkdCommentPanelBridgeEmojiIQbEmoJiEmotion;
+    if (localObject != null)
     {
-      int[] arrayOfInt = this.jdField_a_of_type_ComTencentTkdCommentPanelBridgeEmojiIQbEmoJiEmotion.getEmoJiResourceArray();
+      localObject = ((IQbEmoJiEmotion)localObject).getEmoJiResourceArray();
       String[] arrayOfString = this.jdField_a_of_type_ComTencentTkdCommentPanelBridgeEmojiIQbEmoJiEmotion.getEmoJiShowNameArray();
-      int j = Math.min(arrayOfInt.length, arrayOfString.length);
+      int j = Math.min(localObject.length, arrayOfString.length);
       if (j > 0)
       {
         this.jdField_a_of_type_ArrayOfComTencentTkdCommentPanelModelEmotion = new Emotion[j];
         int i = 0;
         while (i < j)
         {
-          Emotion localEmotion = new Emotion(0, new EmoJiEmotion(arrayOfString[i], arrayOfInt[i]));
+          Emotion localEmotion = new Emotion(0, new EmoJiEmotion(arrayOfString[i], localObject[i]));
           this.jdField_a_of_type_ArrayOfComTencentTkdCommentPanelModelEmotion[i] = localEmotion;
           i += 1;
         }
@@ -41,8 +42,9 @@ public class EmoJiEmotionDataSource
   @Nullable
   public Drawable a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentTkdCommentPanelBridgeEmojiIQbEmoJiEmotion != null) {
-      return this.jdField_a_of_type_ComTencentTkdCommentPanelBridgeEmojiIQbEmoJiEmotion.getEmoJiDrawable(paramInt);
+    IQbEmoJiEmotion localIQbEmoJiEmotion = this.jdField_a_of_type_ComTencentTkdCommentPanelBridgeEmojiIQbEmoJiEmotion;
+    if (localIQbEmoJiEmotion != null) {
+      return localIQbEmoJiEmotion.getEmoJiDrawable(paramInt);
     }
     return null;
   }
@@ -66,7 +68,7 @@ public class EmoJiEmotionDataSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.comment.panel.emoji.data.EmoJiEmotionDataSource
  * JD-Core Version:    0.7.0.1
  */

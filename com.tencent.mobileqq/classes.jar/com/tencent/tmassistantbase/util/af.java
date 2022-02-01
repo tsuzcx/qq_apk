@@ -12,19 +12,13 @@ final class af
   {
     try
     {
+      StringBuilder localStringBuilder;
       for (;;)
       {
         String str = (String)ab.j.take();
         if (str != null) {
           ab.b(str);
         }
-      }
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
-      {
-        Log.d("TMLog", "write log file error." + localInterruptedException);
       }
     }
     catch (Throwable localThrowable1)
@@ -34,25 +28,35 @@ final class af
         if (ab.s.compareAndSet(false, true)) {
           localThrowable1.printStackTrace();
         }
-        return;
       }
-      ab.s.compareAndSet(true, false);
-      localThrowable1.printStackTrace();
-      try
+      else
       {
-        ab.k();
-        return;
+        ab.s.compareAndSet(true, false);
+        localThrowable1.printStackTrace();
+        try
+        {
+          ab.k();
+          return;
+        }
+        catch (Throwable localThrowable2)
+        {
+          localThrowable2.printStackTrace();
+        }
       }
-      catch (Throwable localThrowable2)
-      {
-        localThrowable2.printStackTrace();
-      }
+      return;
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("write log file error.");
+      localStringBuilder.append(localInterruptedException);
+      Log.d("TMLog", localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistantbase.util.af
  * JD-Core Version:    0.7.0.1
  */

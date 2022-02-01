@@ -7,11 +7,13 @@ public final class FilterFactoryParams
   
   public FilterFactoryParams(Description paramDescription, String paramString)
   {
-    if ((paramString == null) || (paramDescription == null)) {
-      throw new NullPointerException();
+    if ((paramString != null) && (paramDescription != null))
+    {
+      this.topLevelDescription = paramDescription;
+      this.args = paramString;
+      return;
     }
-    this.topLevelDescription = paramDescription;
-    this.args = paramString;
+    throw new NullPointerException();
   }
   
   public String getArgs()
@@ -26,7 +28,7 @@ public final class FilterFactoryParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.runner.FilterFactoryParams
  * JD-Core Version:    0.7.0.1
  */

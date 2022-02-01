@@ -27,13 +27,19 @@ public class Comments
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$LastDeleteInfo = null;
     this.jdField_a_of_type_Long = paramParcel.readLong();
-    if (paramParcel.readByte() != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      paramParcel.readTypedList(this.jdField_a_of_type_JavaUtilList, Comments.Comment.CREATOR);
-      return;
+    boolean bool;
+    if (paramParcel.readByte() != 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.jdField_a_of_type_Boolean = bool;
+    paramParcel.readTypedList(this.jdField_a_of_type_JavaUtilList, Comments.Comment.CREATOR);
+  }
+  
+  public boolean a(Comments.Comment paramComment)
+  {
+    return this.jdField_a_of_type_JavaUtilList.contains(paramComment);
   }
   
   public int describeContents()
@@ -59,18 +65,13 @@ public class Comments
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramParcel.writeLong(this.jdField_a_of_type_Long);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeTypedList(this.jdField_a_of_type_JavaUtilList);
-      return;
-    }
+    paramParcel.writeByte((byte)this.jdField_a_of_type_Boolean);
+    paramParcel.writeTypedList(this.jdField_a_of_type_JavaUtilList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.model.Comments
  * JD-Core Version:    0.7.0.1
  */

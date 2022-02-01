@@ -17,41 +17,42 @@ public final class ActivityLeakSolution
   
   public final void a(@Nullable Dialog paramDialog)
   {
-    if (paramDialog == null) {}
-    for (;;)
-    {
+    if (paramDialog == null) {
       return;
-      Iterator localIterator = CollectionsKt.arrayListOf(new String[] { "mDismissMessage", "mCancelMessage", "mShowMessage" }).iterator();
-      while (localIterator.hasNext())
+    }
+    Iterator localIterator = CollectionsKt.arrayListOf(new String[] { "mDismissMessage", "mCancelMessage", "mShowMessage" }).iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (String)localIterator.next();
+      try
       {
-        Object localObject = (String)localIterator.next();
-        try
+        localObject = Dialog.class.getDeclaredField((String)localObject);
+        if (localObject != null)
         {
-          localObject = Dialog.class.getDeclaredField((String)localObject);
-          if (localObject != null)
+          if (!((Field)localObject).isAccessible()) {
+            ((Field)localObject).setAccessible(true);
+          }
+          localObject = ((Field)localObject).get(paramDialog);
+          if (((localObject instanceof Message)) && (((Message)localObject).obj != null))
           {
-            if (!((Field)localObject).isAccessible()) {
-              ((Field)localObject).setAccessible(true);
-            }
-            localObject = ((Field)localObject).get(paramDialog);
-            if (((localObject instanceof Message)) && (((Message)localObject).obj != null))
-            {
-              ((Message)localObject).obj = null;
-              ((Message)localObject).what = 0;
-            }
+            ((Message)localObject).obj = null;
+            ((Message)localObject).what = 0;
           }
         }
-        catch (Exception localException)
-        {
-          Log.e("ActivityLeakSolution", "fixMessageLeak Exception: " + localException);
-        }
+      }
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("fixMessageLeak Exception: ");
+        localStringBuilder.append(localException);
+        Log.e("ActivityLeakSolution", localStringBuilder.toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.common.ActivityLeakSolution
  * JD-Core Version:    0.7.0.1
  */

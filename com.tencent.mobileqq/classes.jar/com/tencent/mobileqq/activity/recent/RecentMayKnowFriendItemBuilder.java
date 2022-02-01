@@ -16,7 +16,7 @@ import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout.OnDragModeChange
 import com.tencent.mobileqq.activity.recent.data.RecentItemMayKnowFriendData;
 import com.tencent.mobileqq.adapter.MayKnowAdapter;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.widget.HorizontalListView;
 import java.lang.ref.WeakReference;
 
@@ -36,147 +36,141 @@ public class RecentMayKnowFriendItemBuilder
   
   public View a(int paramInt, Object paramObject, RecentFaceDecoder paramRecentFaceDecoder, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, DragFrameLayout.OnDragModeChangedListener paramOnDragModeChangedListener)
   {
-    paramOnLongClickListener = null;
-    paramViewGroup = paramOnLongClickListener;
-    if (paramView != null)
-    {
-      paramViewGroup = paramOnLongClickListener;
-      if ((paramView.getTag() instanceof RecentMayKnowFriendItemBuilder.RecentMayKnowFriendItemHolder)) {
-        paramViewGroup = (RecentMayKnowFriendItemBuilder.RecentMayKnowFriendItemHolder)paramView.getTag();
-      }
+    if ((paramView != null) && ((paramView.getTag() instanceof RecentMayKnowFriendItemBuilder.RecentMayKnowFriendItemHolder))) {
+      paramViewGroup = (RecentMayKnowFriendItemBuilder.RecentMayKnowFriendItemHolder)paramView.getTag();
+    } else {
+      paramViewGroup = null;
     }
     if (paramViewGroup == null)
     {
-      paramViewGroup = (RecentItemMayKnowFriendData)paramObject;
-      paramView = new RecentMayKnowFriendItemBuilder.RecentMayKnowFriendItemHolder();
-      paramView.jdField_a_of_type_JavaLangString = paramViewGroup.curUin;
-      paramViewGroup = a(paramContext, 2131559047, paramView);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131376750));
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      paramView.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)paramViewGroup.findViewById(2131371102));
-      paramView.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth(AIOUtils.a(9.0F, paramContext.getResources()));
-      paramOnLongClickListener = new MayKnowAdapter((Activity)paramContext, paramRecentFaceDecoder.a(), paramView.jdField_a_of_type_ComTencentWidgetHorizontalListView, null, 25, 0);
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+      paramView = (RecentItemMayKnowFriendData)paramObject;
+      paramViewGroup = new RecentMayKnowFriendItemBuilder.RecentMayKnowFriendItemHolder();
+      paramViewGroup.jdField_a_of_type_JavaLangString = paramView.curUin;
+      paramView = a(paramContext, 2131558941, paramViewGroup);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376248));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
+      paramViewGroup.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)paramView.findViewById(2131370726));
+      paramViewGroup.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth(AIOUtils.b(9.0F, paramContext.getResources()));
+      paramOnLongClickListener = new MayKnowAdapter((Activity)paramContext, paramRecentFaceDecoder.a(), paramViewGroup.jdField_a_of_type_ComTencentWidgetHorizontalListView, null, 25, 0);
+      paramOnDragModeChangedListener = this.jdField_a_of_type_JavaLangRefWeakReference;
+      if (paramOnDragModeChangedListener != null)
       {
-        paramOnDragModeChangedListener = (MayKnowAdapter)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        paramOnDragModeChangedListener = (MayKnowAdapter)paramOnDragModeChangedListener.get();
         if (paramOnDragModeChangedListener != null) {
           paramOnDragModeChangedListener.d();
         }
       }
       this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramOnLongClickListener);
-      paramView.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(paramOnLongClickListener);
-      paramViewGroup.setTag(paramView);
-      paramOnLongClickListener = paramView;
-      paramView = paramViewGroup;
-      this.jdField_a_of_type_JavaLangString = ThemeUtil.curThemeId;
-      if (AppSetting.d) {
-        paramView.setContentDescription(null);
-      }
-      if ((paramOnLongClickListener == null) || (!(paramObject instanceof RecentBaseData))) {
-        break label379;
-      }
-      a(paramView, (RecentBaseData)paramObject, paramContext, paramRecentFaceDecoder.a());
+      paramViewGroup.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(paramOnLongClickListener);
+      paramView.setTag(paramViewGroup);
     }
-    for (;;)
+    else if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, ThemeUtil.curThemeId))
     {
-      a(paramContext, paramView, paramInt, paramObject, paramOnLongClickListener, paramOnClickListener);
-      paramView.setTag(-1, Integer.valueOf(paramInt));
-      paramOnLongClickListener.jdField_a_of_type_AndroidWidgetTextView.setTag(-1, Integer.valueOf(paramInt));
-      return paramView;
-      if ((!TextUtils.equals(this.jdField_a_of_type_JavaLangString, ThemeUtil.curThemeId)) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
+      paramOnLongClickListener = this.jdField_a_of_type_JavaLangRefWeakReference;
+      if (paramOnLongClickListener != null)
       {
-        paramOnLongClickListener = (MayKnowAdapter)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        paramOnLongClickListener = (MayKnowAdapter)paramOnLongClickListener.get();
         if (paramOnLongClickListener != null) {
           paramOnLongClickListener.notifyDataSetChanged();
         }
       }
-      paramOnLongClickListener = paramViewGroup;
-      break;
-      label379:
-      if (paramOnLongClickListener == null) {}
     }
+    this.jdField_a_of_type_JavaLangString = ThemeUtil.curThemeId;
+    if (AppSetting.d) {
+      paramView.setContentDescription(null);
+    }
+    if ((paramViewGroup != null) && ((paramObject instanceof RecentBaseData))) {
+      a(paramView, (RecentBaseData)paramObject, paramContext, paramRecentFaceDecoder.a());
+    }
+    a(paramContext, paramView, paramInt, paramObject, paramViewGroup, paramOnClickListener);
+    paramView.setTag(-1, Integer.valueOf(paramInt));
+    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTag(-1, Integer.valueOf(paramInt));
+    return paramView;
   }
   
   public void a()
   {
-    Object localObject;
     if (QLog.isColorLevel())
     {
-      localObject = new StringBuilder().append("destroy : ");
-      if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
-        break label84;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("destroy : ");
+      WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+      boolean bool;
+      if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+        bool = true;
+      } else {
+        bool = false;
       }
+      ((StringBuilder)localObject).append(bool);
+      QLog.i("RecentMayKnowFriendItemBuilder", 0, ((StringBuilder)localObject).toString());
     }
-    label84:
-    for (boolean bool = true;; bool = false)
+    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localObject != null)
     {
-      QLog.i("RecentMayKnowFriendItemBuilder", 0, bool);
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-      {
-        localObject = (MayKnowAdapter)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (localObject != null) {
-          ((MayKnowAdapter)localObject).d();
-        }
-        this.jdField_a_of_type_JavaLangRefWeakReference = null;
+      localObject = (MayKnowAdapter)((WeakReference)localObject).get();
+      if (localObject != null) {
+        ((MayKnowAdapter)localObject).d();
       }
-      return;
+      this.jdField_a_of_type_JavaLangRefWeakReference = null;
     }
   }
   
   public void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    if ((paramView == null) || (paramRecentBaseData == null))
+    if ((paramView != null) && (paramRecentBaseData != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("RecentMayKnowFriendItemBuilder", 0, "updateView|param invalidate");
+      Object localObject = paramView.getTag();
+      paramView = null;
+      if ((localObject instanceof RecentMayKnowFriendItemBuilder.RecentMayKnowFriendItemHolder)) {
+        paramView = (RecentMayKnowFriendItemBuilder.RecentMayKnowFriendItemHolder)localObject;
+      }
+      if (paramView == null)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramView = new StringBuilder();
+          paramView.append("updateView|holder is null, tag = ");
+          paramView.append(localObject);
+          QLog.i("RecentMayKnowFriendItemBuilder", 0, paramView.toString());
+        }
+        return;
+      }
+      if ((paramRecentBaseData instanceof RecentItemMayKnowFriendData))
+      {
+        paramRecentBaseData = (RecentItemMayKnowFriendData)paramRecentBaseData;
+        if (QLog.isColorLevel()) {
+          QLog.i("RecentMayKnowFriendItemBuilder", 0, "updateView");
+        }
+        if ((!TextUtils.isEmpty(paramRecentBaseData.curUin)) && (!paramRecentBaseData.curUin.equals(paramView.jdField_a_of_type_JavaLangString)))
+        {
+          paramContext = new MayKnowAdapter((Activity)paramContext, paramQQAppInterface, paramView.jdField_a_of_type_ComTencentWidgetHorizontalListView, null, 25, 0);
+          paramQQAppInterface = this.jdField_a_of_type_JavaLangRefWeakReference;
+          if (paramQQAppInterface != null)
+          {
+            paramQQAppInterface = (MayKnowAdapter)paramQQAppInterface.get();
+            if (paramQQAppInterface != null) {
+              paramQQAppInterface.d();
+            }
+          }
+          this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+          paramView.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(paramContext);
+          paramView.jdField_a_of_type_JavaLangString = paramRecentBaseData.curUin;
+          if (QLog.isColorLevel()) {
+            QLog.i("RecentMayKnowFriendItemBuilder", 0, "updateView1");
+          }
+        }
       }
       return;
     }
-    Object localObject = paramView.getTag();
-    if ((localObject instanceof RecentMayKnowFriendItemBuilder.RecentMayKnowFriendItemHolder)) {}
-    for (paramView = (RecentMayKnowFriendItemBuilder.RecentMayKnowFriendItemHolder)localObject;; paramView = null)
-    {
-      if (paramView == null)
-      {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("RecentMayKnowFriendItemBuilder", 0, "updateView|holder is null, tag = " + localObject);
-        return;
-      }
-      if (!(paramRecentBaseData instanceof RecentItemMayKnowFriendData)) {
-        break;
-      }
-      paramRecentBaseData = (RecentItemMayKnowFriendData)paramRecentBaseData;
-      if (QLog.isColorLevel()) {
-        QLog.i("RecentMayKnowFriendItemBuilder", 0, "updateView");
-      }
-      if ((TextUtils.isEmpty(paramRecentBaseData.curUin)) || (paramRecentBaseData.curUin.equals(paramView.jdField_a_of_type_JavaLangString))) {
-        break;
-      }
-      paramContext = new MayKnowAdapter((Activity)paramContext, paramQQAppInterface, paramView.jdField_a_of_type_ComTencentWidgetHorizontalListView, null, 25, 0);
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-      {
-        paramQQAppInterface = (MayKnowAdapter)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (paramQQAppInterface != null) {
-          paramQQAppInterface.d();
-        }
-      }
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-      paramView.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(paramContext);
-      paramView.jdField_a_of_type_JavaLangString = paramRecentBaseData.curUin;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("RecentMayKnowFriendItemBuilder", 0, "updateView1");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("RecentMayKnowFriendItemBuilder", 0, "updateView|param invalidate");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentMayKnowFriendItemBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -27,14 +27,15 @@ public final class mobile_get_rc_tab_rsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.rc_data != null) {
-      paramJceOutputStream.write(this.rc_data, 0);
+    s_rc_tab_list locals_rc_tab_list = this.rc_data;
+    if (locals_rc_tab_list != null) {
+      paramJceOutputStream.write(locals_rc_tab_list, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_USERLOGO_TIMESTAMP.mobile_get_rc_tab_rsp
  * JD-Core Version:    0.7.0.1
  */

@@ -20,13 +20,15 @@ final class VideoCropPage$onFramesClipChanged$1
     if (VideoCropPage.a(this.this$0).isPlaying()) {
       VideoCropPage.a(this.this$0).pause();
     }
-    VideoCropPage.a(this.this$0).setPlayDuration(this.$startTime, this.$endTime - this.$startTime);
+    FixedSizeVideoView localFixedSizeVideoView = VideoCropPage.a(this.this$0);
+    int i = this.$startTime;
+    localFixedSizeVideoView.setPlayDuration(i, this.$endTime - i);
     VideoCropPage.a(this.this$0).start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocrop.VideoCropPage.onFramesClipChanged.1
  * JD-Core Version:    0.7.0.1
  */

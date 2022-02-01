@@ -7,347 +7,360 @@ public class MessageRecordManagerImpl
   public void a(java.lang.String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: aconst_null
-    //   3: astore 5
-    //   5: aconst_null
-    //   6: astore 6
-    //   8: aload_1
-    //   9: ifnonnull +4 -> 13
-    //   12: return
+    //   0: aload_1
+    //   1: ifnonnull +4 -> 5
+    //   4: return
+    //   5: aload_1
+    //   6: invokestatic 20	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   9: astore 5
+    //   11: aload 5
     //   13: aload_1
-    //   14: invokestatic 20	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
-    //   17: astore 8
-    //   19: aload 8
-    //   21: aload_1
-    //   22: invokevirtual 26	com/tencent/mobileqq/persistence/EntityManagerFactory:build	(Ljava/lang/String;)Lcom/tencent/mobileqq/app/SQLiteOpenHelper;
-    //   25: invokevirtual 32	com/tencent/mobileqq/app/SQLiteOpenHelper:getWritableDatabase	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
-    //   28: astore 9
-    //   30: aload 9
-    //   32: ldc 34
-    //   34: aconst_null
-    //   35: invokevirtual 40	com/tencent/mobileqq/app/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
-    //   38: astore_3
-    //   39: aload_3
-    //   40: ifnull +165 -> 205
-    //   43: aload_3
-    //   44: invokeinterface 46 1 0
-    //   49: ifeq +156 -> 205
-    //   52: aload 9
-    //   54: aload_3
-    //   55: iconst_0
-    //   56: invokeinterface 50 2 0
-    //   61: invokestatic 56	com/tencent/mobileqq/utils/SecurityUtile:encode	(Ljava/lang/String;)Ljava/lang/String;
-    //   64: invokestatic 61	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
-    //   67: invokevirtual 65	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
-    //   70: pop
-    //   71: goto -28 -> 43
-    //   74: astore_2
-    //   75: aconst_null
-    //   76: astore_2
-    //   77: aconst_null
-    //   78: astore 4
-    //   80: aload_3
-    //   81: ifnull +9 -> 90
-    //   84: aload_3
-    //   85: invokeinterface 68 1 0
-    //   90: aload 4
-    //   92: ifnull +10 -> 102
-    //   95: aload 4
-    //   97: invokeinterface 68 1 0
-    //   102: aload_2
-    //   103: ifnull +9 -> 112
-    //   106: aload_2
-    //   107: invokeinterface 68 1 0
-    //   112: new 70	com/tencent/mobileqq/persistence/qslowtable/QSlowTableEntityManagerFactory
-    //   115: dup
-    //   116: aload_1
-    //   117: invokespecial 72	com/tencent/mobileqq/persistence/qslowtable/QSlowTableEntityManagerFactory:<init>	(Ljava/lang/String;)V
-    //   120: aload_1
-    //   121: invokevirtual 26	com/tencent/mobileqq/persistence/EntityManagerFactory:build	(Ljava/lang/String;)Lcom/tencent/mobileqq/app/SQLiteOpenHelper;
-    //   124: invokevirtual 32	com/tencent/mobileqq/app/SQLiteOpenHelper:getWritableDatabase	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
-    //   127: astore 4
-    //   129: aload 6
-    //   131: astore_1
-    //   132: aload 5
-    //   134: astore_2
-    //   135: aload 4
-    //   137: ldc 34
-    //   139: aconst_null
-    //   140: invokevirtual 40	com/tencent/mobileqq/app/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
-    //   143: astore_3
+    //   14: invokevirtual 26	com/tencent/mobileqq/persistence/EntityManagerFactory:build	(Ljava/lang/String;)Lcom/tencent/mobileqq/app/SQLiteOpenHelper;
+    //   17: invokevirtual 32	com/tencent/mobileqq/app/SQLiteOpenHelper:getWritableDatabase	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
+    //   20: astore 8
+    //   22: aconst_null
+    //   23: astore 6
+    //   25: aconst_null
+    //   26: astore 7
+    //   28: aload 8
+    //   30: ldc 34
+    //   32: aconst_null
+    //   33: invokevirtual 40	com/tencent/mobileqq/app/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   36: astore_2
+    //   37: aload_2
+    //   38: ifnull +34 -> 72
+    //   41: aload_2
+    //   42: invokeinterface 46 1 0
+    //   47: ifeq +25 -> 72
+    //   50: aload 8
+    //   52: aload_2
+    //   53: iconst_0
+    //   54: invokeinterface 50 2 0
+    //   59: invokestatic 56	com/tencent/mobileqq/utils/SecurityUtile:encode	(Ljava/lang/String;)Ljava/lang/String;
+    //   62: invokestatic 61	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
+    //   65: invokevirtual 65	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
+    //   68: pop
+    //   69: goto -28 -> 41
+    //   72: aload 8
+    //   74: ldc 67
+    //   76: aconst_null
+    //   77: invokevirtual 40	com/tencent/mobileqq/app/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   80: astore 4
+    //   82: aload 4
+    //   84: ifnull +36 -> 120
+    //   87: aload 4
+    //   89: invokeinterface 46 1 0
+    //   94: ifeq +26 -> 120
+    //   97: aload 8
+    //   99: aload 4
+    //   101: iconst_0
+    //   102: invokeinterface 50 2 0
+    //   107: invokestatic 56	com/tencent/mobileqq/utils/SecurityUtile:encode	(Ljava/lang/String;)Ljava/lang/String;
+    //   110: invokestatic 61	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
+    //   113: invokevirtual 65	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
+    //   116: pop
+    //   117: goto -30 -> 87
+    //   120: aload 8
+    //   122: ldc 69
+    //   124: aconst_null
+    //   125: invokevirtual 40	com/tencent/mobileqq/app/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   128: astore_3
+    //   129: aload_3
+    //   130: ifnull +34 -> 164
+    //   133: aload_3
+    //   134: invokeinterface 46 1 0
+    //   139: ifeq +25 -> 164
+    //   142: aload 8
     //   144: aload_3
-    //   145: ifnull +426 -> 571
-    //   148: aload_3
-    //   149: astore_1
-    //   150: aload_3
-    //   151: astore_2
-    //   152: aload_3
-    //   153: invokeinterface 46 1 0
-    //   158: ifeq +413 -> 571
-    //   161: aload_3
-    //   162: astore_1
-    //   163: aload_3
-    //   164: astore_2
-    //   165: aload 4
-    //   167: aload_3
-    //   168: iconst_0
-    //   169: invokeinterface 50 2 0
-    //   174: invokestatic 56	com/tencent/mobileqq/utils/SecurityUtile:encode	(Ljava/lang/String;)Ljava/lang/String;
-    //   177: invokestatic 61	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
-    //   180: invokevirtual 65	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
-    //   183: pop
-    //   184: goto -36 -> 148
-    //   187: astore_3
-    //   188: aload_1
-    //   189: astore_2
-    //   190: aload_3
-    //   191: invokevirtual 75	java/lang/Exception:printStackTrace	()V
-    //   194: aload_1
-    //   195: ifnull -183 -> 12
-    //   198: aload_1
-    //   199: invokeinterface 68 1 0
-    //   204: return
-    //   205: aload 9
-    //   207: ldc 77
-    //   209: aconst_null
-    //   210: invokevirtual 40	com/tencent/mobileqq/app/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
-    //   213: astore 4
-    //   215: aload 4
-    //   217: ifnull +36 -> 253
-    //   220: aload 4
-    //   222: invokeinterface 46 1 0
-    //   227: ifeq +26 -> 253
-    //   230: aload 9
-    //   232: aload 4
-    //   234: iconst_0
-    //   235: invokeinterface 50 2 0
-    //   240: invokestatic 56	com/tencent/mobileqq/utils/SecurityUtile:encode	(Ljava/lang/String;)Ljava/lang/String;
-    //   243: invokestatic 61	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
-    //   246: invokevirtual 65	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
-    //   249: pop
-    //   250: goto -30 -> 220
-    //   253: aload 9
-    //   255: ldc 79
-    //   257: aconst_null
-    //   258: invokevirtual 40	com/tencent/mobileqq/app/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
-    //   261: astore 7
-    //   263: aload 7
-    //   265: astore_2
-    //   266: aload_2
-    //   267: ifnull +34 -> 301
-    //   270: aload_2
-    //   271: invokeinterface 46 1 0
-    //   276: ifeq +25 -> 301
-    //   279: aload 9
-    //   281: aload_2
-    //   282: iconst_0
-    //   283: invokeinterface 50 2 0
-    //   288: invokestatic 56	com/tencent/mobileqq/utils/SecurityUtile:encode	(Ljava/lang/String;)Ljava/lang/String;
-    //   291: invokestatic 61	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
-    //   294: invokevirtual 65	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
-    //   297: pop
-    //   298: goto -28 -> 270
-    //   301: aload 9
-    //   303: new 81	com/tencent/mobileqq/data/RecentUser
-    //   306: dup
-    //   307: invokespecial 82	com/tencent/mobileqq/data/RecentUser:<init>	()V
-    //   310: invokevirtual 86	com/tencent/mobileqq/data/RecentUser:getTableName	()Ljava/lang/String;
-    //   313: invokestatic 61	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
-    //   316: invokevirtual 65	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
-    //   319: pop
-    //   320: aload 9
-    //   322: new 88	com/tencent/mobileqq/data/QCallRecent
-    //   325: dup
-    //   326: invokespecial 89	com/tencent/mobileqq/data/QCallRecent:<init>	()V
-    //   329: invokevirtual 90	com/tencent/mobileqq/data/QCallRecent:getTableName	()Ljava/lang/String;
-    //   332: invokestatic 61	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
-    //   335: invokevirtual 65	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
-    //   338: pop
-    //   339: aload 9
-    //   341: new 92	com/tencent/mobileqq/data/TroopAssistantData
-    //   344: dup
-    //   345: invokespecial 93	com/tencent/mobileqq/data/TroopAssistantData:<init>	()V
-    //   348: invokevirtual 94	com/tencent/mobileqq/data/TroopAssistantData:getTableName	()Ljava/lang/String;
-    //   351: invokestatic 61	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
-    //   354: invokevirtual 65	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
-    //   357: pop
-    //   358: aload 9
-    //   360: new 96	com/tencent/mobileqq/data/PubAccountAssistantData
-    //   363: dup
-    //   364: invokespecial 97	com/tencent/mobileqq/data/PubAccountAssistantData:<init>	()V
-    //   367: invokevirtual 98	com/tencent/mobileqq/data/PubAccountAssistantData:getTableName	()Ljava/lang/String;
-    //   370: invokestatic 61	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
-    //   373: invokevirtual 65	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
-    //   376: pop
-    //   377: aload 9
-    //   379: new 100	com/tencent/biz/pubaccount/troopbarassit/TroopBarData
-    //   382: dup
-    //   383: invokespecial 101	com/tencent/biz/pubaccount/troopbarassit/TroopBarData:<init>	()V
-    //   386: invokevirtual 102	com/tencent/biz/pubaccount/troopbarassit/TroopBarData:getTableName	()Ljava/lang/String;
-    //   389: invokestatic 61	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
-    //   392: invokevirtual 65	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
-    //   395: pop
-    //   396: aload 9
-    //   398: new 104	com/tencent/mobileqq/data/NeedHandleUserData
-    //   401: dup
-    //   402: invokespecial 105	com/tencent/mobileqq/data/NeedHandleUserData:<init>	()V
-    //   405: invokevirtual 106	com/tencent/mobileqq/data/NeedHandleUserData:getTableName	()Ljava/lang/String;
-    //   408: invokestatic 61	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
-    //   411: invokevirtual 65	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
-    //   414: pop
-    //   415: aload 9
-    //   417: new 108	com/tencent/mobileqq/data/ConversationInfo
-    //   420: dup
-    //   421: invokespecial 109	com/tencent/mobileqq/data/ConversationInfo:<init>	()V
-    //   424: invokevirtual 110	com/tencent/mobileqq/data/ConversationInfo:getTableName	()Ljava/lang/String;
-    //   427: invokestatic 61	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
-    //   430: invokevirtual 65	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
-    //   433: pop
-    //   434: aload 9
-    //   436: new 112	com/tencent/mobileqq/data/RecommendContact
-    //   439: dup
-    //   440: invokespecial 113	com/tencent/mobileqq/data/RecommendContact:<init>	()V
-    //   443: invokevirtual 114	com/tencent/mobileqq/data/RecommendContact:getTableName	()Ljava/lang/String;
-    //   446: invokestatic 61	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
-    //   449: invokevirtual 65	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
-    //   452: pop
-    //   453: aload 9
-    //   455: new 116	com/tencent/mobileqq/data/SubAccountInfo
-    //   458: dup
-    //   459: invokespecial 117	com/tencent/mobileqq/data/SubAccountInfo:<init>	()V
-    //   462: invokevirtual 118	com/tencent/mobileqq/data/SubAccountInfo:getTableName	()Ljava/lang/String;
-    //   465: invokestatic 61	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
-    //   468: invokevirtual 65	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
-    //   471: pop
-    //   472: aload 9
-    //   474: new 120	com/tencent/mobileqq/data/SubAccountMessage
-    //   477: dup
-    //   478: invokespecial 121	com/tencent/mobileqq/data/SubAccountMessage:<init>	()V
-    //   481: invokevirtual 122	com/tencent/mobileqq/data/SubAccountMessage:getTableName	()Ljava/lang/String;
-    //   484: invokestatic 61	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
-    //   487: invokevirtual 65	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
-    //   490: pop
-    //   491: aload 8
-    //   493: invokevirtual 123	com/tencent/mobileqq/persistence/EntityManagerFactory:close	()V
-    //   496: aload_3
-    //   497: ifnull +9 -> 506
-    //   500: aload_3
-    //   501: invokeinterface 68 1 0
-    //   506: aload 4
-    //   508: ifnull +10 -> 518
-    //   511: aload 4
-    //   513: invokeinterface 68 1 0
-    //   518: aload_2
-    //   519: ifnull -407 -> 112
-    //   522: aload_2
-    //   523: invokeinterface 68 1 0
-    //   528: goto -416 -> 112
-    //   531: astore_1
-    //   532: aconst_null
-    //   533: astore 4
-    //   535: aconst_null
-    //   536: astore_3
-    //   537: aload_3
-    //   538: ifnull +9 -> 547
-    //   541: aload_3
-    //   542: invokeinterface 68 1 0
-    //   547: aload 4
-    //   549: ifnull +10 -> 559
-    //   552: aload 4
-    //   554: invokeinterface 68 1 0
-    //   559: aload_2
-    //   560: ifnull +9 -> 569
-    //   563: aload_2
-    //   564: invokeinterface 68 1 0
-    //   569: aload_1
-    //   570: athrow
-    //   571: aload_3
-    //   572: ifnull -560 -> 12
+    //   145: iconst_0
+    //   146: invokeinterface 50 2 0
+    //   151: invokestatic 56	com/tencent/mobileqq/utils/SecurityUtile:encode	(Ljava/lang/String;)Ljava/lang/String;
+    //   154: invokestatic 61	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
+    //   157: invokevirtual 65	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
+    //   160: pop
+    //   161: goto -28 -> 133
+    //   164: aload 8
+    //   166: new 71	com/tencent/mobileqq/data/RecentUser
+    //   169: dup
+    //   170: invokespecial 72	com/tencent/mobileqq/data/RecentUser:<init>	()V
+    //   173: invokevirtual 76	com/tencent/mobileqq/data/RecentUser:getTableName	()Ljava/lang/String;
+    //   176: invokestatic 61	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
+    //   179: invokevirtual 65	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
+    //   182: pop
+    //   183: aload 8
+    //   185: new 78	com/tencent/mobileqq/data/QCallRecent
+    //   188: dup
+    //   189: invokespecial 79	com/tencent/mobileqq/data/QCallRecent:<init>	()V
+    //   192: invokevirtual 80	com/tencent/mobileqq/data/QCallRecent:getTableName	()Ljava/lang/String;
+    //   195: invokestatic 61	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
+    //   198: invokevirtual 65	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
+    //   201: pop
+    //   202: aload 8
+    //   204: new 82	com/tencent/mobileqq/data/TroopAssistantData
+    //   207: dup
+    //   208: invokespecial 83	com/tencent/mobileqq/data/TroopAssistantData:<init>	()V
+    //   211: invokevirtual 84	com/tencent/mobileqq/data/TroopAssistantData:getTableName	()Ljava/lang/String;
+    //   214: invokestatic 61	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
+    //   217: invokevirtual 65	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
+    //   220: pop
+    //   221: aload 8
+    //   223: new 86	com/tencent/mobileqq/data/PubAccountAssistantData
+    //   226: dup
+    //   227: invokespecial 87	com/tencent/mobileqq/data/PubAccountAssistantData:<init>	()V
+    //   230: invokevirtual 88	com/tencent/mobileqq/data/PubAccountAssistantData:getTableName	()Ljava/lang/String;
+    //   233: invokestatic 61	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
+    //   236: invokevirtual 65	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
+    //   239: pop
+    //   240: aload 8
+    //   242: new 90	com/tencent/biz/pubaccount/troopbarassit/TroopBarData
+    //   245: dup
+    //   246: invokespecial 91	com/tencent/biz/pubaccount/troopbarassit/TroopBarData:<init>	()V
+    //   249: invokevirtual 92	com/tencent/biz/pubaccount/troopbarassit/TroopBarData:getTableName	()Ljava/lang/String;
+    //   252: invokestatic 61	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
+    //   255: invokevirtual 65	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
+    //   258: pop
+    //   259: aload 8
+    //   261: new 94	com/tencent/mobileqq/data/NeedHandleUserData
+    //   264: dup
+    //   265: invokespecial 95	com/tencent/mobileqq/data/NeedHandleUserData:<init>	()V
+    //   268: invokevirtual 96	com/tencent/mobileqq/data/NeedHandleUserData:getTableName	()Ljava/lang/String;
+    //   271: invokestatic 61	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
+    //   274: invokevirtual 65	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
+    //   277: pop
+    //   278: aload 8
+    //   280: new 98	com/tencent/mobileqq/data/ConversationInfo
+    //   283: dup
+    //   284: invokespecial 99	com/tencent/mobileqq/data/ConversationInfo:<init>	()V
+    //   287: invokevirtual 100	com/tencent/mobileqq/data/ConversationInfo:getTableName	()Ljava/lang/String;
+    //   290: invokestatic 61	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
+    //   293: invokevirtual 65	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
+    //   296: pop
+    //   297: aload 8
+    //   299: new 102	com/tencent/mobileqq/phonecontact/data/RecommendContact
+    //   302: dup
+    //   303: invokespecial 103	com/tencent/mobileqq/phonecontact/data/RecommendContact:<init>	()V
+    //   306: invokevirtual 104	com/tencent/mobileqq/phonecontact/data/RecommendContact:getTableName	()Ljava/lang/String;
+    //   309: invokestatic 61	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
+    //   312: invokevirtual 65	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
+    //   315: pop
+    //   316: aload 8
+    //   318: new 106	com/tencent/mobileqq/data/SubAccountInfo
+    //   321: dup
+    //   322: invokespecial 107	com/tencent/mobileqq/data/SubAccountInfo:<init>	()V
+    //   325: invokevirtual 108	com/tencent/mobileqq/data/SubAccountInfo:getTableName	()Ljava/lang/String;
+    //   328: invokestatic 61	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
+    //   331: invokevirtual 65	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
+    //   334: pop
+    //   335: aload 8
+    //   337: new 110	com/tencent/mobileqq/data/SubAccountMessage
+    //   340: dup
+    //   341: invokespecial 111	com/tencent/mobileqq/data/SubAccountMessage:<init>	()V
+    //   344: invokevirtual 112	com/tencent/mobileqq/data/SubAccountMessage:getTableName	()Ljava/lang/String;
+    //   347: invokestatic 61	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
+    //   350: invokevirtual 65	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
+    //   353: pop
+    //   354: aload 5
+    //   356: invokevirtual 115	com/tencent/mobileqq/persistence/EntityManagerFactory:close	()V
+    //   359: aload_2
+    //   360: ifnull +9 -> 369
+    //   363: aload_2
+    //   364: invokeinterface 116 1 0
+    //   369: aload 4
+    //   371: ifnull +10 -> 381
+    //   374: aload 4
+    //   376: invokeinterface 116 1 0
+    //   381: aload_3
+    //   382: ifnull +102 -> 484
+    //   385: aload_3
+    //   386: astore_2
+    //   387: goto +91 -> 478
+    //   390: astore_1
+    //   391: aconst_null
+    //   392: astore_2
+    //   393: aconst_null
+    //   394: astore 4
+    //   396: aconst_null
+    //   397: astore_3
+    //   398: goto +18 -> 416
+    //   401: aconst_null
+    //   402: astore_2
+    //   403: aconst_null
+    //   404: astore 4
+    //   406: aconst_null
+    //   407: astore_3
+    //   408: aload_2
+    //   409: astore 5
+    //   411: aload_3
+    //   412: astore_2
+    //   413: goto +37 -> 450
+    //   416: aload_2
+    //   417: ifnull +9 -> 426
+    //   420: aload_2
+    //   421: invokeinterface 116 1 0
+    //   426: aload 4
+    //   428: ifnull +10 -> 438
+    //   431: aload 4
+    //   433: invokeinterface 116 1 0
+    //   438: aload_3
+    //   439: ifnull +9 -> 448
+    //   442: aload_3
+    //   443: invokeinterface 116 1 0
+    //   448: aload_1
+    //   449: athrow
+    //   450: aload 5
+    //   452: ifnull +10 -> 462
+    //   455: aload 5
+    //   457: invokeinterface 116 1 0
+    //   462: aload 4
+    //   464: ifnull +10 -> 474
+    //   467: aload 4
+    //   469: invokeinterface 116 1 0
+    //   474: aload_2
+    //   475: ifnull +9 -> 484
+    //   478: aload_2
+    //   479: invokeinterface 116 1 0
+    //   484: new 118	com/tencent/mobileqq/persistence/qslowtable/QSlowTableEntityManagerFactory
+    //   487: dup
+    //   488: aload_1
+    //   489: invokespecial 120	com/tencent/mobileqq/persistence/qslowtable/QSlowTableEntityManagerFactory:<init>	(Ljava/lang/String;)V
+    //   492: aload_1
+    //   493: invokevirtual 26	com/tencent/mobileqq/persistence/EntityManagerFactory:build	(Ljava/lang/String;)Lcom/tencent/mobileqq/app/SQLiteOpenHelper;
+    //   496: invokevirtual 32	com/tencent/mobileqq/app/SQLiteOpenHelper:getWritableDatabase	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
+    //   499: astore 4
+    //   501: aload 7
+    //   503: astore_2
+    //   504: aload 6
+    //   506: astore_1
+    //   507: aload 4
+    //   509: ldc 34
+    //   511: aconst_null
+    //   512: invokevirtual 40	com/tencent/mobileqq/app/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   515: astore_3
+    //   516: aload_3
+    //   517: ifnull +42 -> 559
+    //   520: aload_3
+    //   521: astore_2
+    //   522: aload_3
+    //   523: astore_1
+    //   524: aload_3
+    //   525: invokeinterface 46 1 0
+    //   530: ifeq +29 -> 559
+    //   533: aload_3
+    //   534: astore_2
+    //   535: aload_3
+    //   536: astore_1
+    //   537: aload 4
+    //   539: aload_3
+    //   540: iconst_0
+    //   541: invokeinterface 50 2 0
+    //   546: invokestatic 56	com/tencent/mobileqq/utils/SecurityUtile:encode	(Ljava/lang/String;)Ljava/lang/String;
+    //   549: invokestatic 61	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
+    //   552: invokevirtual 65	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
+    //   555: pop
+    //   556: goto -36 -> 520
+    //   559: aload_3
+    //   560: ifnull +29 -> 589
+    //   563: aload_3
+    //   564: astore_1
+    //   565: goto +18 -> 583
+    //   568: astore_1
+    //   569: goto +21 -> 590
+    //   572: astore_3
+    //   573: aload_1
+    //   574: astore_2
     //   575: aload_3
-    //   576: invokeinterface 68 1 0
-    //   581: return
-    //   582: astore_1
-    //   583: aload_2
-    //   584: ifnull +9 -> 593
-    //   587: aload_2
-    //   588: invokeinterface 68 1 0
-    //   593: aload_1
-    //   594: athrow
-    //   595: astore_1
-    //   596: aconst_null
-    //   597: astore 4
-    //   599: goto -62 -> 537
-    //   602: astore_1
-    //   603: goto -66 -> 537
-    //   606: astore_1
-    //   607: goto -70 -> 537
-    //   610: astore_2
-    //   611: aconst_null
-    //   612: astore_2
-    //   613: aconst_null
-    //   614: astore 4
-    //   616: aconst_null
-    //   617: astore_3
-    //   618: goto -538 -> 80
-    //   621: astore_2
-    //   622: aconst_null
-    //   623: astore_2
-    //   624: goto -544 -> 80
-    //   627: astore 7
-    //   629: goto -549 -> 80
+    //   576: invokevirtual 123	java/lang/Exception:printStackTrace	()V
+    //   579: aload_1
+    //   580: ifnull +9 -> 589
+    //   583: aload_1
+    //   584: invokeinterface 116 1 0
+    //   589: return
+    //   590: aload_2
+    //   591: ifnull +9 -> 600
+    //   594: aload_2
+    //   595: invokeinterface 116 1 0
+    //   600: goto +5 -> 605
+    //   603: aload_1
+    //   604: athrow
+    //   605: goto -2 -> 603
+    //   608: astore_2
+    //   609: goto -208 -> 401
+    //   612: astore_3
+    //   613: goto +16 -> 629
+    //   616: astore_3
+    //   617: goto +21 -> 638
+    //   620: astore 5
+    //   622: goto +30 -> 652
+    //   625: astore_1
+    //   626: goto -233 -> 393
+    //   629: goto -226 -> 403
+    //   632: astore_1
+    //   633: aconst_null
+    //   634: astore_3
+    //   635: goto -219 -> 416
+    //   638: aconst_null
+    //   639: astore_3
+    //   640: aload_2
+    //   641: astore 5
+    //   643: aload_3
+    //   644: astore_2
+    //   645: goto -195 -> 450
+    //   648: astore_1
+    //   649: goto -233 -> 416
+    //   652: aload_2
+    //   653: astore 5
+    //   655: aload_3
+    //   656: astore_2
+    //   657: goto -207 -> 450
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	632	0	this	MessageRecordManagerImpl
-    //   0	632	1	paramString	java.lang.String
-    //   1	1	2	localObject1	Object
-    //   74	1	2	localException1	java.lang.Exception
-    //   76	512	2	localObject2	Object
-    //   610	1	2	localException2	java.lang.Exception
-    //   612	1	2	localObject3	Object
-    //   621	1	2	localException3	java.lang.Exception
-    //   623	1	2	localObject4	Object
-    //   38	130	3	localCursor1	android.database.Cursor
-    //   187	314	3	localException4	java.lang.Exception
-    //   536	82	3	localObject5	Object
-    //   78	537	4	localObject6	Object
-    //   3	130	5	localObject7	Object
-    //   6	124	6	localObject8	Object
-    //   261	3	7	localCursor2	android.database.Cursor
-    //   627	1	7	localException5	java.lang.Exception
-    //   17	475	8	localQQEntityManagerFactoryProxy	com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy
-    //   28	445	9	localSQLiteDatabase	com.tencent.mobileqq.app.SQLiteDatabase
+    //   0	660	0	this	MessageRecordManagerImpl
+    //   0	660	1	paramString	java.lang.String
+    //   36	559	2	localObject1	Object
+    //   608	33	2	localException1	java.lang.Exception
+    //   644	13	2	localObject2	Object
+    //   128	436	3	localCursor	android.database.Cursor
+    //   572	4	3	localException2	java.lang.Exception
+    //   612	1	3	localException3	java.lang.Exception
+    //   616	1	3	localException4	java.lang.Exception
+    //   634	22	3	localObject3	Object
+    //   80	458	4	localObject4	Object
+    //   9	447	5	localObject5	Object
+    //   620	1	5	localException5	java.lang.Exception
+    //   641	13	5	localObject6	Object
+    //   23	482	6	localObject7	Object
+    //   26	476	7	localObject8	Object
+    //   20	316	8	localSQLiteDatabase	com.tencent.mobileqq.app.SQLiteDatabase
     // Exception table:
     //   from	to	target	type
-    //   43	71	74	java/lang/Exception
-    //   205	215	74	java/lang/Exception
-    //   135	144	187	java/lang/Exception
-    //   152	161	187	java/lang/Exception
-    //   165	184	187	java/lang/Exception
-    //   30	39	531	finally
-    //   135	144	582	finally
-    //   152	161	582	finally
-    //   165	184	582	finally
-    //   190	194	582	finally
-    //   43	71	595	finally
-    //   205	215	595	finally
-    //   220	250	602	finally
-    //   253	263	602	finally
-    //   270	298	606	finally
-    //   301	496	606	finally
-    //   30	39	610	java/lang/Exception
-    //   220	250	621	java/lang/Exception
-    //   253	263	621	java/lang/Exception
-    //   270	298	627	java/lang/Exception
-    //   301	496	627	java/lang/Exception
+    //   28	37	390	finally
+    //   507	516	568	finally
+    //   524	533	568	finally
+    //   537	556	568	finally
+    //   575	579	568	finally
+    //   507	516	572	java/lang/Exception
+    //   524	533	572	java/lang/Exception
+    //   537	556	572	java/lang/Exception
+    //   28	37	608	java/lang/Exception
+    //   41	69	612	java/lang/Exception
+    //   72	82	612	java/lang/Exception
+    //   87	117	616	java/lang/Exception
+    //   120	129	616	java/lang/Exception
+    //   133	161	620	java/lang/Exception
+    //   164	359	620	java/lang/Exception
+    //   41	69	625	finally
+    //   72	82	625	finally
+    //   87	117	632	finally
+    //   120	129	632	finally
+    //   133	161	648	finally
+    //   164	359	648	finally
   }
   
   public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.managers.MessageRecordManagerImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -13,23 +13,26 @@ class FrameComparePipeLine$2
     FrameComparePipeLine.access$200(this.this$0);
     if (this.val$task.isEndTask)
     {
-      i = FrameComparePipeLine.access$300(this.this$0);
-      LogUtil.d("SuperPlayer-.FrameComparePipeLine", "checkTaskResultList resultCode:" + i + "\n" + FrameComparePipeLine.access$400(this.this$0));
+      int i = FrameComparePipeLine.access$300(this.this$0);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkTaskResultList resultCode:");
+      localStringBuilder.append(i);
+      localStringBuilder.append("\n");
+      localStringBuilder.append(FrameComparePipeLine.access$400(this.this$0));
+      LogUtil.d("SuperPlayer-.FrameComparePipeLine", localStringBuilder.toString());
       if (FrameComparePipeLine.access$500(this.this$0) != null) {
         FrameComparePipeLine.access$500(this.this$0).onVideoFrameCheckResult(i);
       }
     }
-    while (!this.val$isAllTaskRun)
+    else if (this.val$isAllTaskRun)
     {
-      int i;
-      return;
+      LogUtil.w("SuperPlayer-.FrameComparePipeLine", "No end task, when mQueue is empty.");
     }
-    LogUtil.w("SuperPlayer-.FrameComparePipeLine", "No end task, when mQueue is empty.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.framecheck.FrameComparePipeLine.2
  * JD-Core Version:    0.7.0.1
  */

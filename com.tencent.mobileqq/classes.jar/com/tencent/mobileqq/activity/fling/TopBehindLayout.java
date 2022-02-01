@@ -31,8 +31,9 @@ public class TopBehindLayout
   
   public void setContent(View paramView)
   {
-    if (this.a != null) {
-      removeView(this.a);
+    View localView = this.a;
+    if (localView != null) {
+      removeView(localView);
     }
     this.a = paramView;
     addView(this.a);
@@ -40,7 +41,7 @@ public class TopBehindLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.fling.TopBehindLayout
  * JD-Core Version:    0.7.0.1
  */

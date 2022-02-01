@@ -19,7 +19,11 @@ class Mustache$Accumulator$1
   
   public Template.Segment[] finish()
   {
-    throw new MustacheParseException("Section missing close tag '" + this.val$tag1 + "'", this.val$tagLine);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Section missing close tag '");
+    localStringBuilder.append(this.val$tag1);
+    localStringBuilder.append("'");
+    throw new MustacheParseException(localStringBuilder.toString(), this.val$tagLine);
   }
 }
 

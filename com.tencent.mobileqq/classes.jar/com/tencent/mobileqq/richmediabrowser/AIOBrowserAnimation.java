@@ -42,40 +42,37 @@ public class AIOBrowserAnimation
         if ((this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData instanceof AIOPictureData))
         {
           localDrawable = new AIOPictureModel().a((AIOPictureData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData);
-          localObject2 = getThumbRect();
-          if ((localDrawable != null) && ((localDrawable.getIntrinsicHeight() * 3 < localDrawable.getIntrinsicWidth()) || (localDrawable.getIntrinsicWidth() * 3 < localDrawable.getIntrinsicHeight()))) {
-            this.isImgCenterCropMode = false;
-          }
-          if ((localDrawable != null) && (localObject2 != null))
-          {
-            this.jdField_a_of_type_Int = getCutValue((Rect)localObject2, localDrawable);
-            if (localDrawable.getIntrinsicHeight() == -1) {
-              break;
-            }
-            localObject2 = localDrawable;
-            if (localDrawable.getIntrinsicWidth() != -1) {
-              return localObject2;
-            }
-            break;
-          }
+        }
+        else if ((this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData instanceof AIOVideoData))
+        {
+          localDrawable = new AIOVideoModel().a((AIOVideoData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData);
+        }
+        else if ((this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData instanceof AIOFilePictureData))
+        {
+          localDrawable = new AIOFilePictureModel().a((AIOFilePictureData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData);
         }
         else
         {
-          if ((this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData instanceof AIOVideoData))
-          {
-            localDrawable = new AIOVideoModel().a((AIOVideoData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData);
-            continue;
-          }
-          if ((this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData instanceof AIOFilePictureData))
-          {
-            localDrawable = new AIOFilePictureModel().a((AIOFilePictureData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData);
-            continue;
-          }
           if (!(this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData instanceof AIOFileVideoData)) {
-            break label219;
+            break label223;
           }
           localDrawable = new AIOFileVideoModel().a((AIOFileVideoData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData);
-          continue;
+        }
+        Rect localRect = getThumbRect();
+        if ((localDrawable != null) && ((localDrawable.getIntrinsicHeight() * 3 < localDrawable.getIntrinsicWidth()) || (localDrawable.getIntrinsicWidth() * 3 < localDrawable.getIntrinsicHeight()))) {
+          this.isImgCenterCropMode = false;
+        }
+        if ((localDrawable != null) && (localRect != null))
+        {
+          this.jdField_a_of_type_Int = getCutValue(localRect, localDrawable);
+          if (localDrawable.getIntrinsicHeight() != -1)
+          {
+            int i = localDrawable.getIntrinsicWidth();
+            if (i == -1) {
+              return null;
+            }
+            return localDrawable;
+          }
         }
         return null;
       }
@@ -86,11 +83,9 @@ public class AIOBrowserAnimation
         }
         return null;
       }
-      label219:
-      Object localObject1 = null;
+      label223:
+      Object localObject = null;
     }
-    Object localObject2 = null;
-    return localObject2;
   }
   
   public BrowserAnimation getBrowserAnimation(RichMediaBaseData paramRichMediaBaseData)
@@ -122,15 +117,16 @@ public class AIOBrowserAnimation
   
   public Rect getThumbRect()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsRect != null) {
-      return this.jdField_a_of_type_AndroidGraphicsRect;
+    Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+    if (localRect != null) {
+      return localRect;
     }
     return super.getThumbRect();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.AIOBrowserAnimation
  * JD-Core Version:    0.7.0.1
  */

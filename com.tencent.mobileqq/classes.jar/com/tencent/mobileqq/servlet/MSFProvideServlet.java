@@ -17,23 +17,20 @@ public class MSFProvideServlet
   {
     AppConstants.Action localAction = (AppConstants.Action)paramIntent.getSerializableExtra("action");
     Bundle localBundle = paramIntent.getExtras();
-    switch (MSFProvideServlet.1.a[localAction.ordinal()])
-    {
-    }
-    do
-    {
+    if (MSFProvideServlet.1.a[localAction.ordinal()] != 1) {
       return;
-    } while (!paramFromServiceMsg.isSuccess());
-    localBundle.putString("info", (String)paramFromServiceMsg.getAttribute("App_NerworkTrafficDebugInfo"));
-    notifyObserver(paramIntent, 0, true, localBundle, null);
+    }
+    if (paramFromServiceMsg.isSuccess())
+    {
+      localBundle.putString("info", (String)paramFromServiceMsg.getAttribute("App_NerworkTrafficDebugInfo"));
+      notifyObserver(paramIntent, 0, true, localBundle, null);
+    }
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
     paramPacket = (AppConstants.Action)paramIntent.getSerializableExtra("action");
-    switch (MSFProvideServlet.1.a[paramPacket.ordinal()])
-    {
-    default: 
+    if (MSFProvideServlet.1.a[paramPacket.ordinal()] != 1) {
       return;
     }
     sendToMSF(paramIntent, MsfMsgUtil.getNetworkTrafficDebugInfo(null));
@@ -41,7 +38,7 @@ public class MSFProvideServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.MSFProvideServlet
  * JD-Core Version:    0.7.0.1
  */

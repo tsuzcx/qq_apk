@@ -36,40 +36,38 @@ class TroopCardXingquBuluo$3
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    View localView;
+    TroopCardXingquBuluo.ViewHolder localViewHolder;
     if (paramView == null)
     {
-      paramView = new TroopCardXingquBuluo.ViewHolder();
-      localView = LayoutInflater.from(this.a.getContext()).inflate(2131559968, paramViewGroup, false);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368810));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379247));
-      paramView.b = ((TextView)localView.findViewById(2131379201));
-      paramView.c = ((TextView)localView.findViewById(2131379157));
-      localView.setTag(paramView);
+      localViewHolder = new TroopCardXingquBuluo.ViewHolder();
+      paramView = LayoutInflater.from(this.a.getContext()).inflate(2131559839, paramViewGroup, false);
+      localViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368538));
+      localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378608));
+      localViewHolder.b = ((TextView)paramView.findViewById(2131378564));
+      localViewHolder.c = ((TextView)paramView.findViewById(2131378520));
+      paramView.setTag(localViewHolder);
     }
-    for (;;)
+    else
     {
-      Object localObject = (searchtab.Item3)this.a.a.get(paramInt);
-      int i = AIOUtils.a(30.0F, this.a.getResources());
-      URLDrawable localURLDrawable = URLDrawable.getDrawable(((searchtab.Item3)localObject).str_img_url.get(), i, i);
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localURLDrawable);
-      if ((localURLDrawable != null) && (1 != localURLDrawable.getStatus())) {
-        localURLDrawable.restartDownload();
-      }
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((searchtab.Item3)localObject).str_name.get());
-      paramView.b.setText(((searchtab.Item3)localObject).str_desc1.get());
-      paramView.c.setText(((searchtab.Item3)localObject).str_desc2.get());
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (TroopCardXingquBuluo.ViewHolder)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
+      localViewHolder = (TroopCardXingquBuluo.ViewHolder)paramView.getTag();
     }
+    searchtab.Item3 localItem3 = (searchtab.Item3)this.a.a.get(paramInt);
+    int i = AIOUtils.b(30.0F, this.a.getResources());
+    URLDrawable localURLDrawable = URLDrawable.getDrawable(localItem3.str_img_url.get(), i, i);
+    localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localURLDrawable);
+    if ((localURLDrawable != null) && (1 != localURLDrawable.getStatus())) {
+      localURLDrawable.restartDownload();
+    }
+    localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localItem3.str_name.get());
+    localViewHolder.b.setText(localItem3.str_desc1.get());
+    localViewHolder.c.setText(localItem3.str_desc2.get());
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.addContactTroopView.TroopCardXingquBuluo.3
  * JD-Core Version:    0.7.0.1
  */

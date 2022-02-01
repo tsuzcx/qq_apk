@@ -14,29 +14,24 @@ class SetPwdBannerProcessor$2
   
   public void run()
   {
-    boolean bool2 = BannerManager.a().b(20);
-    boolean bool3 = PwdSetUtil.a((QQAppInterface)SetPwdBannerProcessor.d(this.this$0).getAppRuntime());
+    boolean bool3 = BannerManager.a().b(SetPwdBannerProcessor.a);
+    boolean bool4 = PwdSetUtil.a((QQAppInterface)SetPwdBannerProcessor.d(this.this$0).getAppRuntime());
+    boolean bool2 = true;
     boolean bool1;
-    if ((bool3) && (!bool2))
-    {
+    if ((bool4) && (!bool3)) {
       bool1 = true;
-      if ((bool3) || (!bool2)) {
-        break label69;
-      }
-    }
-    label69:
-    for (bool2 = true;; bool2 = false)
-    {
-      ThreadManager.getUIHandler().post(new SetPwdBannerProcessor.2.1(this, bool1, bool2));
-      return;
+    } else {
       bool1 = false;
-      break;
     }
+    if ((bool4) || (!bool3)) {
+      bool2 = false;
+    }
+    ThreadManager.getUIHandler().post(new SetPwdBannerProcessor.2.1(this, bool1, bool2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.SetPwdBannerProcessor.2
  * JD-Core Version:    0.7.0.1
  */

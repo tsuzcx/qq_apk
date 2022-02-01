@@ -30,8 +30,9 @@ public final class UniBusiGetOneItemWithCheckReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stLogin != null) {
-      paramJceOutputStream.write(this.stLogin, 0);
+    LoginInfo localLoginInfo = this.stLogin;
+    if (localLoginInfo != null) {
+      paramJceOutputStream.write(localLoginInfo, 0);
     }
     paramJceOutputStream.write(this.appid, 1);
     paramJceOutputStream.write(this.itemid, 2);
@@ -39,7 +40,7 @@ public final class UniBusiGetOneItemWithCheckReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.UniBusiGetOneItemWithCheckReq
  * JD-Core Version:    0.7.0.1
  */

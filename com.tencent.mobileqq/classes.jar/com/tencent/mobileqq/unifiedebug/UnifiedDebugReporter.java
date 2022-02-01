@@ -22,46 +22,56 @@ public class UnifiedDebugReporter
   
   public String a(int paramInt, JSONObject paramJSONObject)
   {
-    JSONObject localJSONObject2 = new JSONObject();
+    JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject2.put("status", paramInt);
-      JSONObject localJSONObject1 = paramJSONObject;
+      localJSONObject.put("status", paramInt);
+      localObject = paramJSONObject;
       if (paramJSONObject == null) {
-        localJSONObject1 = new JSONObject();
+        localObject = new JSONObject();
       }
-      localJSONObject2.put("data", localJSONObject1);
+      localJSONObject.put("data", localObject);
     }
     catch (JSONException paramJSONObject)
     {
-      for (;;)
+      Object localObject;
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("UnifiedDebugReporter", 2, "reportStatus: exception=" + paramJSONObject.getMessage());
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("reportStatus: exception=");
+        ((StringBuilder)localObject).append(paramJSONObject.getMessage());
+        QLog.e("UnifiedDebugReporter", 2, ((StringBuilder)localObject).toString());
       }
     }
-    return localJSONObject2.toString();
+    return localJSONObject.toString();
   }
   
   public void a(long paramLong, int paramInt, JSONObject paramJSONObject)
   {
-    RemoteDebugReportMsg.RemoteLogReq localRemoteLogReq = new RemoteDebugReportMsg.RemoteLogReq();
-    localRemoteLogReq.str_seq.set(String.valueOf(paramLong));
-    localRemoteLogReq.str_data.set(a(paramInt, paramJSONObject));
+    Object localObject = new RemoteDebugReportMsg.RemoteLogReq();
+    ((RemoteDebugReportMsg.RemoteLogReq)localObject).str_seq.set(String.valueOf(paramLong));
+    ((RemoteDebugReportMsg.RemoteLogReq)localObject).str_data.set(a(paramInt, paramJSONObject));
     NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), UnifiedDebugReportServlet.class);
     localNewIntent.putExtra("extra_cmd", "ClubDebugging.report");
-    localNewIntent.putExtra("extra_data", localRemoteLogReq.toByteArray());
+    localNewIntent.putExtra("extra_data", ((RemoteDebugReportMsg.RemoteLogReq)localObject).toByteArray());
     localNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
-    if (QLog.isColorLevel()) {
-      QLog.d("UnifiedDebugReporter", 2, "reportStatus: seq=" + paramLong + ", statusCode=" + paramInt + ", data=" + paramJSONObject);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reportStatus: seq=");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(", statusCode=");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(", data=");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      QLog.d("UnifiedDebugReporter", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.unifiedebug.UnifiedDebugReporter
  * JD-Core Version:    0.7.0.1
  */

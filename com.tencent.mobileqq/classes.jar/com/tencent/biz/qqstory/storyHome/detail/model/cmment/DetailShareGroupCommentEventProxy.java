@@ -29,23 +29,24 @@ public class DetailShareGroupCommentEventProxy
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentDetailGeneralCommentEventProxy$ActionSheetEventCallback = paramActionSheetEventCallback;
-    if (!(paramCommentLikeFeedItem.getOwner() instanceof ShareGroupItem)) {
-      throw new IllegalStateException("initial comment event proxy while owner is not share group item.");
+    if ((paramCommentLikeFeedItem.getOwner() instanceof ShareGroupItem)) {
+      return;
     }
+    throw new IllegalStateException("initial comment event proxy while owner is not share group item.");
   }
   
   public boolean a()
   {
     SLog.c("Q.qqstory.detail.DetailShareGroupCommentEventProxy", "on comment button click.");
-    if (!NetworkUtil.d(this.jdField_a_of_type_AndroidContentContext))
+    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_AndroidContentContext))
     {
-      QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131703186), 0).a();
+      QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131703318), 0).a();
       return false;
     }
     ShareGroupItem localShareGroupItem = (ShareGroupItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner();
     if ((!localShareGroupItem.isPublic()) && (!localShareGroupItem.isSubscribe()))
     {
-      QQToast.a(BaseApplication.getContext(), 1, StoryApi.a(2131699768), 0).a();
+      QQToast.a(BaseApplication.getContext(), 1, StoryApi.a(2131699909), 0).a();
       return false;
     }
     return true;
@@ -53,86 +54,80 @@ public class DetailShareGroupCommentEventProxy
   
   public boolean a(CommentEntry paramCommentEntry, int paramInt1, int paramInt2)
   {
-    boolean bool;
-    if (!NetworkUtil.d(this.jdField_a_of_type_AndroidContentContext))
-    {
-      QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131703187), 0).a();
-      bool = false;
-      paramInt1 = StoryReportor.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
-      if (!this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isMe()) {
-        break label252;
-      }
+    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_AndroidContentContext)) {
+      QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131703319), 0).a();
     }
-    label252:
-    for (paramCommentEntry = "1";; paramCommentEntry = "2")
+    for (;;)
     {
-      StoryReportor.a("home_page", "clk_content", paramInt1, 0, new String[] { paramCommentEntry, StoryReportor.a(this.jdField_a_of_type_Int), "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
-      return bool;
+      bool = false;
+      break label175;
       if (QQStoryContext.a().a(paramCommentEntry.authorUnionId))
       {
         ActionSheet localActionSheet = ActionSheet.create(this.jdField_a_of_type_AndroidContentContext);
         if (paramCommentEntry.status == 2) {
           localActionSheet.addButton(DetailGeneralCommentEventProxy.d);
-        }
-        for (;;)
-        {
-          localActionSheet.addButton(DetailGeneralCommentEventProxy.a, 3);
-          localActionSheet.addCancelButton(DetailGeneralCommentEventProxy.f);
-          localActionSheet.setOnButtonClickListener(new DetailGeneralCommentEventProxy.OnActionSheetButtonClickListener(localActionSheet, paramCommentEntry, paramInt1, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentDetailGeneralCommentEventProxy$ActionSheetEventCallback));
-          localActionSheet.show();
-          bool = false;
-          break;
+        } else {
           localActionSheet.addButton(DetailGeneralCommentEventProxy.e);
         }
+        localActionSheet.addButton(DetailGeneralCommentEventProxy.a, 3);
+        localActionSheet.addCancelButton(DetailGeneralCommentEventProxy.f);
+        localActionSheet.setOnButtonClickListener(new DetailGeneralCommentEventProxy.OnActionSheetButtonClickListener(localActionSheet, paramCommentEntry, paramInt1, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentDetailGeneralCommentEventProxy$ActionSheetEventCallback));
+        localActionSheet.show();
       }
-      paramCommentEntry = (ShareGroupItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner();
-      if ((!paramCommentEntry.isPublic()) && (!paramCommentEntry.isSubscribe()))
+      else
       {
-        QQToast.a(BaseApplication.getContext(), 1, StoryApi.a(2131699768), 0).a();
-        bool = false;
-        break;
+        paramCommentEntry = (ShareGroupItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner();
+        if ((paramCommentEntry.isPublic()) || (paramCommentEntry.isSubscribe())) {
+          break;
+        }
+        QQToast.a(BaseApplication.getContext(), 1, StoryApi.a(2131699909), 0).a();
       }
-      bool = true;
-      break;
     }
+    boolean bool = true;
+    label175:
+    paramInt1 = StoryReportor.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isMe()) {
+      paramCommentEntry = "1";
+    } else {
+      paramCommentEntry = "2";
+    }
+    StoryReportor.a("home_page", "clk_content", paramInt1, 0, new String[] { paramCommentEntry, StoryReportor.a(this.jdField_a_of_type_Int), "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
+    return bool;
   }
   
   public boolean b(CommentEntry paramCommentEntry, int paramInt1, int paramInt2)
   {
     ShareGroupItem localShareGroupItem = (ShareGroupItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner();
     ActionSheet localActionSheet = ActionSheet.create(this.jdField_a_of_type_AndroidContentContext);
-    if (QQStoryContext.a().a(paramCommentEntry.authorUnionId)) {
-      if (paramCommentEntry.status == 2)
-      {
-        localActionSheet.addButton(DetailGeneralCommentEventProxy.d);
-        localActionSheet.addButton(DetailGeneralCommentEventProxy.a, 3);
-      }
-    }
-    for (;;)
+    if (QQStoryContext.a().a(paramCommentEntry.authorUnionId))
     {
-      localActionSheet.addCancelButton(DetailGeneralCommentEventProxy.f);
-      localActionSheet.setOnButtonClickListener(new DetailGeneralCommentEventProxy.OnActionSheetButtonClickListener(localActionSheet, paramCommentEntry, paramInt1, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentDetailGeneralCommentEventProxy$ActionSheetEventCallback));
-      localActionSheet.show();
-      return false;
-      localActionSheet.addButton(DetailGeneralCommentEventProxy.e);
-      break;
-      if ((localShareGroupItem.isPublic()) && (localShareGroupItem.isOwner()))
-      {
-        localActionSheet.addButton(DetailGeneralCommentEventProxy.c);
-        localActionSheet.addButton(DetailGeneralCommentEventProxy.a, 3);
+      if (paramCommentEntry.status == 2) {
+        localActionSheet.addButton(DetailGeneralCommentEventProxy.d);
+      } else {
         localActionSheet.addButton(DetailGeneralCommentEventProxy.e);
       }
-      else
-      {
-        localActionSheet.addButton(DetailGeneralCommentEventProxy.c);
-        localActionSheet.addButton(DetailGeneralCommentEventProxy.e);
-      }
+      localActionSheet.addButton(DetailGeneralCommentEventProxy.a, 3);
     }
+    else if ((localShareGroupItem.isPublic()) && (localShareGroupItem.isOwner()))
+    {
+      localActionSheet.addButton(DetailGeneralCommentEventProxy.c);
+      localActionSheet.addButton(DetailGeneralCommentEventProxy.a, 3);
+      localActionSheet.addButton(DetailGeneralCommentEventProxy.e);
+    }
+    else
+    {
+      localActionSheet.addButton(DetailGeneralCommentEventProxy.c);
+      localActionSheet.addButton(DetailGeneralCommentEventProxy.e);
+    }
+    localActionSheet.addCancelButton(DetailGeneralCommentEventProxy.f);
+    localActionSheet.setOnButtonClickListener(new DetailGeneralCommentEventProxy.OnActionSheetButtonClickListener(localActionSheet, paramCommentEntry, paramInt1, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentDetailGeneralCommentEventProxy$ActionSheetEventCallback));
+    localActionSheet.show();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailShareGroupCommentEventProxy
  * JD-Core Version:    0.7.0.1
  */

@@ -21,26 +21,40 @@ class TimJumpLoginManager$3
   
   public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(TimJumpLoginManager.a, 2, "jumpTimLogin OnException=" + paramErrMsg + ", cmd=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramWUserSigInfo = TimJumpLoginManager.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("jumpTimLogin OnException=");
+      localStringBuilder.append(paramErrMsg);
+      localStringBuilder.append(", cmd=");
+      localStringBuilder.append(paramInt);
+      QLog.d(paramWUserSigInfo, 2, localStringBuilder.toString());
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+    paramErrMsg = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    if ((paramErrMsg != null) && (paramErrMsg.isShowing())) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
     }
-    QQToast.a(TimJumpLoginManager.a(this.jdField_a_of_type_ComTencentMobileqqManagersTimJumpLoginManager).getApp(), 1, 2131719896, 0).a();
+    QQToast.a(TimJumpLoginManager.a(this.jdField_a_of_type_ComTencentMobileqqManagersTimJumpLoginManager).getApp(), 1, 2131719628, 0).a();
   }
   
   public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(TimJumpLoginManager.a, 2, "jumpTimLogin onGetA1WithA1 ret=" + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      paramArrayOfByte1 = TimJumpLoginManager.a;
+      paramArrayOfByte2 = new StringBuilder();
+      paramArrayOfByte2.append("jumpTimLogin onGetA1WithA1 ret=");
+      paramArrayOfByte2.append(paramInt2);
+      QLog.d(paramArrayOfByte1, 2, paramArrayOfByte2.toString());
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+    paramArrayOfByte1 = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.isShowing())) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
     }
     if (paramInt2 != 0)
     {
-      QQToast.a(TimJumpLoginManager.a(this.jdField_a_of_type_ComTencentMobileqqManagersTimJumpLoginManager).getApp(), 1, 2131719896, 0).a();
+      QQToast.a(TimJumpLoginManager.a(this.jdField_a_of_type_ComTencentMobileqqManagersTimJumpLoginManager).getApp(), 1, 2131719628, 0).a();
       return;
     }
     if (QLog.isColorLevel()) {
@@ -56,7 +70,7 @@ class TimJumpLoginManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.managers.TimJumpLoginManager.3
  * JD-Core Version:    0.7.0.1
  */

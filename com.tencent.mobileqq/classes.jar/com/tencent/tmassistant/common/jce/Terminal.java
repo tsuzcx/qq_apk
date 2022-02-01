@@ -59,46 +59,57 @@ public final class Terminal
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.imei != null) {
-      paramJceOutputStream.write(this.imei, 0);
+    String str = this.imei;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.macAdress != null) {
-      paramJceOutputStream.write(this.macAdress, 1);
+    str = this.macAdress;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.androidId != null) {
-      paramJceOutputStream.write(this.androidId, 2);
+    str = this.androidId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.androidIdSdCard != null) {
-      paramJceOutputStream.write(this.androidIdSdCard, 3);
+    str = this.androidIdSdCard;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.imsi != null) {
-      paramJceOutputStream.write(this.imsi, 4);
+    str = this.imsi;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.imei2 != null) {
-      paramJceOutputStream.write(this.imei2, 5);
+    str = this.imei2;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.imsi2 != null) {
-      paramJceOutputStream.write(this.imsi2, 6);
+    str = this.imsi2;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
     paramJceOutputStream.write(this.xResolution, 7);
     paramJceOutputStream.write(this.yResolution, 8);
-    if (this.brand != null) {
-      paramJceOutputStream.write(this.brand, 9);
+    str = this.brand;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
-    if (this.mode != null) {
-      paramJceOutputStream.write(this.mode, 10);
+    str = this.mode;
+    if (str != null) {
+      paramJceOutputStream.write(str, 10);
     }
-    if (this.manufacture != null) {
-      paramJceOutputStream.write(this.manufacture, 11);
+    str = this.manufacture;
+    if (str != null) {
+      paramJceOutputStream.write(str, 11);
     }
-    if (this.product != null) {
-      paramJceOutputStream.write(this.product, 12);
+    str = this.product;
+    if (str != null) {
+      paramJceOutputStream.write(str, 12);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistant.common.jce.Terminal
  * JD-Core Version:    0.7.0.1
  */

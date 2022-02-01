@@ -34,31 +34,30 @@ class d$2
     }
     catch (IOException localIOException)
     {
-      for (;;)
-      {
-        long l1;
-        long l2;
-      }
+      label41:
+      long l2;
+      long l1;
+      long l3;
+      break label41;
     }
-    l1 = paramc.a();
+    l2 = paramc.a();
+    l1 = l2;
     if (i != 206)
     {
-      l2 = d.a(this.a).getContentLength();
-      if (l2 >= 0L) {
-        l1 = l2;
-      }
-      for (;;)
-      {
-        d.b(this.a).d(l1);
-        d.a(this.a, d.b(this.a));
-        return;
+      l3 = d.a(this.a).getContentLength();
+      l1 = l2;
+      if (l3 >= 0L) {
+        l1 = l3;
       }
     }
+    d.b(this.a).d(l1);
+    paramc = this.a;
+    d.a(paramc, d.b(paramc));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.d.2
  * JD-Core Version:    0.7.0.1
  */

@@ -8,12 +8,22 @@ public class CheckInResEntity
   
   public String toString()
   {
-    return "CheckInResEntity{filePath='" + this.jdField_a_of_type_JavaLangString + '\'' + ", cover='" + this.b + '\'' + ", videoDuration=" + this.jdField_a_of_type_Long + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CheckInResEntity{filePath='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", cover='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", videoDuration=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troopcheckin.CheckInResEntity
  * JD-Core Version:    0.7.0.1
  */

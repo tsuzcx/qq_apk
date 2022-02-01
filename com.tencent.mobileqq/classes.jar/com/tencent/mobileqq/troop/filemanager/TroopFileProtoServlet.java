@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.troop.filemanager;
 
 import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.api.ITroopFileProtoReqMgr;
 import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
+import mqq.app.AppRuntime;
 import mqq.app.MSFServlet;
 import mqq.app.Packet;
 
@@ -12,7 +13,7 @@ public class TroopFileProtoServlet
 {
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    ((QQAppInterface)getAppRuntime()).getTroopFileProtoReqMgr().a(paramIntent, paramFromServiceMsg);
+    ((ITroopFileProtoReqMgr)getAppRuntime().getRuntimeService(ITroopFileProtoReqMgr.class, "")).onReceive(paramIntent, paramFromServiceMsg);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -33,7 +34,7 @@ public class TroopFileProtoServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.TroopFileProtoServlet
  * JD-Core Version:    0.7.0.1
  */

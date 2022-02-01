@@ -6,27 +6,19 @@ public final class PushType
   implements Serializable
 {
   public static final PushType PUSH_TYPE_NONE;
-  public static final PushType PUSH_TYPE_VISITOR_INCR;
+  public static final PushType PUSH_TYPE_VISITOR_INCR = new PushType(2, 1, "PUSH_TYPE_VISITOR_INCR");
   public static final PushType PUSH_TYPE_VOTE_INCR;
   public static final int _PUSH_TYPE_NONE = -1;
   public static final int _PUSH_TYPE_VISITOR_INCR = 1;
   public static final int _PUSH_TYPE_VOTE_INCR = 0;
-  private static PushType[] a;
+  private static PushType[] a = new PushType[3];
   private String __T = new String();
   private int __value;
   
   static
   {
-    if (!PushType.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      a = new PushType[3];
-      PUSH_TYPE_NONE = new PushType(0, -1, "PUSH_TYPE_NONE");
-      PUSH_TYPE_VOTE_INCR = new PushType(1, 0, "PUSH_TYPE_VOTE_INCR");
-      PUSH_TYPE_VISITOR_INCR = new PushType(2, 1, "PUSH_TYPE_VISITOR_INCR");
-      return;
-    }
+    PUSH_TYPE_NONE = new PushType(0, -1, "PUSH_TYPE_NONE");
+    PUSH_TYPE_VOTE_INCR = new PushType(1, 0, "PUSH_TYPE_VOTE_INCR");
   }
   
   private PushType(int paramInt1, int paramInt2, String paramString)
@@ -39,15 +31,16 @@ public final class PushType
   public static PushType convert(int paramInt)
   {
     int i = 0;
-    while (i < a.length)
+    for (;;)
     {
-      if (a[i].value() == paramInt) {
+      PushType[] arrayOfPushType = a;
+      if (i >= arrayOfPushType.length) {
+        break;
+      }
+      if (arrayOfPushType[i].value() == paramInt) {
         return a[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -55,15 +48,16 @@ public final class PushType
   public static PushType convert(String paramString)
   {
     int i = 0;
-    while (i < a.length)
+    for (;;)
     {
-      if (a[i].toString().equals(paramString)) {
+      PushType[] arrayOfPushType = a;
+      if (i >= arrayOfPushType.length) {
+        break;
+      }
+      if (arrayOfPushType[i].toString().equals(paramString)) {
         return a[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -80,7 +74,7 @@ public final class PushType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.PushType
  * JD-Core Version:    0.7.0.1
  */

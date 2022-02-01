@@ -18,21 +18,15 @@ class VideoControlUI$QAVButtonOnTouchListener
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     paramView = (VideoControlUI)this.a.get();
-    if (paramView != null) {
-      switch (paramMotionEvent.getAction())
-      {
-      }
+    if ((paramView != null) && (paramMotionEvent.getAction() == 1)) {
+      paramView.C(0L);
     }
-    for (;;)
-    {
-      return false;
-      paramView.D(0L);
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoControlUI.QAVButtonOnTouchListener
  * JD-Core Version:    0.7.0.1
  */

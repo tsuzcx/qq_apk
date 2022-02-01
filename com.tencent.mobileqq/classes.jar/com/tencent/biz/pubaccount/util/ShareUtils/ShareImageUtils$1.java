@@ -10,20 +10,21 @@ final class ShareImageUtils$1
 {
   public void onWXShareResp(BaseResp paramBaseResp)
   {
-    switch (paramBaseResp.errCode)
+    int i = paramBaseResp.errCode;
+    if (i != -2)
     {
-    case -1: 
-    default: 
-      QQToast.a(BaseApplicationImpl.getContext(), 2, 2131719291, 1).a();
-    case -2: 
-      return;
+      if (i != 0)
+      {
+        QQToast.a(BaseApplicationImpl.getContext(), 2, 2131719009, 1).a();
+        return;
+      }
+      QQToast.a(BaseApplicationImpl.getContext(), 2, 2131719027, 1).a();
     }
-    QQToast.a(BaseApplicationImpl.getContext(), 2, 2131719309, 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.ShareUtils.ShareImageUtils.1
  * JD-Core Version:    0.7.0.1
  */

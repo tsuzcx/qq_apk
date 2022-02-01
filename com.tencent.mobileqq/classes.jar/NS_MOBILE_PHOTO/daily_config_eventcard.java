@@ -8,7 +8,7 @@ public final class daily_config_eventcard
   extends JceStruct
 {
   static feeds_video_actalbum_config cache_vid_alb_config = new feeds_video_actalbum_config();
-  static int cache_yy_type = 0;
+  static int cache_yy_type;
   public long end_time = 0L;
   public long start_time = 0L;
   public long trigger_end_time = 0L;
@@ -45,14 +45,15 @@ public final class daily_config_eventcard
     paramJceOutputStream.write(this.trigger_start_time, 2);
     paramJceOutputStream.write(this.trigger_end_time, 3);
     paramJceOutputStream.write(this.yy_type, 4);
-    if (this.vid_alb_config != null) {
-      paramJceOutputStream.write(this.vid_alb_config, 5);
+    feeds_video_actalbum_config localfeeds_video_actalbum_config = this.vid_alb_config;
+    if (localfeeds_video_actalbum_config != null) {
+      paramJceOutputStream.write(localfeeds_video_actalbum_config, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.daily_config_eventcard
  * JD-Core Version:    0.7.0.1
  */

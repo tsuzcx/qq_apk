@@ -36,8 +36,9 @@ public final class aj
   {
     paramj.a(this.a, 0);
     paramj.a(this.b, 1);
-    if (this.c != null) {
-      paramj.a(this.c, 2);
+    byte[] arrayOfByte = this.c;
+    if (arrayOfByte != null) {
+      paramj.a(arrayOfByte, 2);
     }
   }
   
@@ -45,7 +46,7 @@ public final class aj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.bugly.proguard.aj
  * JD-Core Version:    0.7.0.1
  */

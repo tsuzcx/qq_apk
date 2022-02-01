@@ -30,15 +30,20 @@ public class FaceImageLayer
   
   public int getVersion()
   {
-    if ((this.imageFaceColor2 != null) && (this.imageFaceColor2.size() >= 12) && (this.faceColorRange != null) && (this.faceColorRange.size() >= 2)) {
-      return 2;
+    List localList = this.imageFaceColor2;
+    if ((localList != null) && (localList.size() >= 12))
+    {
+      localList = this.faceColorRange;
+      if ((localList != null) && (localList.size() >= 2)) {
+        return 2;
+      }
     }
     return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.model.FaceImageLayer
  * JD-Core Version:    0.7.0.1
  */

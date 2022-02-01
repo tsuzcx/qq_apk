@@ -142,60 +142,69 @@ class LameMp3Recorder$MHandler
   
   public void handleMessage(Message paramMessage)
   {
-    LameMp3Recorder localLameMp3Recorder;
-    if ((this.recorder != null) && (this.recorder.get() != null)) {
-      localLameMp3Recorder = (LameMp3Recorder)this.recorder.get();
-    }
-    switch (paramMessage.what)
+    Object localObject = this.recorder;
+    if ((localObject != null) && (((WeakReference)localObject).get() != null))
     {
-    default: 
-      return;
-    case -10: 
-      onMsgError(paramMessage, localLameMp3Recorder, 4);
-      return;
-    case -11: 
-      onMsgError(paramMessage, localLameMp3Recorder, 104);
-      return;
-    case 1: 
-      onMsgRecordStart(localLameMp3Recorder);
-      return;
-    case 2: 
-      onMsgRecordPause(localLameMp3Recorder);
-      return;
-    case 3: 
-      LameMp3Recorder.access$000(localLameMp3Recorder);
-      return;
-    case 5: 
-      onMsgRecordStop(localLameMp3Recorder);
-      return;
-    case 6: 
-      LameMp3Recorder.access$100(paramMessage, localLameMp3Recorder);
-      return;
-    case 4: 
-      onMsgRecordUpdate(localLameMp3Recorder);
-      return;
-    case 104: 
-      onMsgPlayUpdate(localLameMp3Recorder);
-      return;
-    case 101: 
-      onMsgPlayStart(localLameMp3Recorder);
-      return;
-    case 102: 
-      onMsgPlayPause(localLameMp3Recorder);
-      return;
-    case 103: 
-      onMsgPlayResume(localLameMp3Recorder);
-      return;
-    case 105: 
-      onMsgPlayStop(localLameMp3Recorder);
-      return;
+      localObject = (LameMp3Recorder)this.recorder.get();
+      int i = paramMessage.what;
+      if (i != -11)
+      {
+        if (i != -10)
+        {
+          switch (i)
+          {
+          default: 
+            switch (i)
+            {
+            default: 
+              return;
+            case 106: 
+              onMsgPlayFinish((LameMp3Recorder)localObject);
+              return;
+            case 105: 
+              onMsgPlayStop((LameMp3Recorder)localObject);
+              return;
+            case 104: 
+              onMsgPlayUpdate((LameMp3Recorder)localObject);
+              return;
+            case 103: 
+              onMsgPlayResume((LameMp3Recorder)localObject);
+              return;
+            case 102: 
+              onMsgPlayPause((LameMp3Recorder)localObject);
+              return;
+            }
+            onMsgPlayStart((LameMp3Recorder)localObject);
+            return;
+          case 6: 
+            LameMp3Recorder.access$100(paramMessage, (LameMp3Recorder)localObject);
+            return;
+          case 5: 
+            onMsgRecordStop((LameMp3Recorder)localObject);
+            return;
+          case 4: 
+            onMsgRecordUpdate((LameMp3Recorder)localObject);
+            return;
+          case 3: 
+            LameMp3Recorder.access$000((LameMp3Recorder)localObject);
+            return;
+          case 2: 
+            onMsgRecordPause((LameMp3Recorder)localObject);
+            return;
+          }
+          onMsgRecordStart((LameMp3Recorder)localObject);
+          return;
+        }
+        onMsgError(paramMessage, (LameMp3Recorder)localObject, 4);
+        return;
+      }
+      onMsgError(paramMessage, (LameMp3Recorder)localObject, 104);
     }
-    onMsgPlayFinish(localLameMp3Recorder);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.audiorecorder.LameMp3Recorder.MHandler
  * JD-Core Version:    0.7.0.1
  */

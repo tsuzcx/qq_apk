@@ -9,25 +9,36 @@ class QQSettingSettingActivity$11
 {
   QQSettingSettingActivity$11(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public void onGetAllowSeeLoginDays(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  protected void onGetAllowSeeLoginDays(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
     if ((paramString != null) && (paramString.equals(this.a.app.getCurrentAccountUin())))
     {
-      if (paramBoolean1) {
-        this.a.a(this.a.app.getCurrentAccountUin());
+      if (paramBoolean1)
+      {
+        paramString = this.a;
+        paramString.a(paramString.app.getCurrentAccountUin());
       }
-      return;
     }
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
+    else
+    {
+      String str = paramString;
+      if (paramString == null) {
+        str = "";
+      }
+      paramString = new StringBuilder();
+      paramString.append("onGetAllowSeeLoginDays isSuccess ");
+      paramString.append(paramBoolean1);
+      paramString.append("isAllow:");
+      paramString.append(paramBoolean2);
+      paramString.append("uin ");
+      paramString.append(str);
+      QLog.e("QQSetting2Activity", 2, paramString.toString());
     }
-    QLog.e("QQSetting2Activity", 2, "onGetAllowSeeLoginDays isSuccess " + paramBoolean1 + "isAllow:" + paramBoolean2 + "uin " + str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingSettingActivity.11
  * JD-Core Version:    0.7.0.1
  */

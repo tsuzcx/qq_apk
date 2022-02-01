@@ -69,10 +69,11 @@ public class AnonymousChatHelper
       if (((JSONObject)localObject).has("expire_time")) {
         paramMessageRecord.jdField_c_of_type_Int = ((JSONObject)localObject).getInt("expire_time");
       }
-      if (((JSONObject)localObject).has("rankColor")) {
+      if (((JSONObject)localObject).has("rankColor"))
+      {
         paramMessageRecord.jdField_c_of_type_JavaLangString = ((JSONObject)localObject).optString("rankColor");
+        return paramMessageRecord;
       }
-      return paramMessageRecord;
     }
     catch (JSONException localJSONException)
     {
@@ -91,7 +92,11 @@ public class AnonymousChatHelper
   
   public static String a(int paramInt)
   {
-    return "https://pub.idqqimg.com/pc/group/anony/portrait/img/" + paramInt + ".png";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("https://pub.idqqimg.com/pc/group/anony/portrait/img/");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(".png");
+    return localStringBuilder.toString();
   }
   
   public static String a(int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3)
@@ -110,8 +115,12 @@ public class AnonymousChatHelper
     }
     catch (JSONException paramString1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AnonymousChatHelper", 2, "getJsonStr JSONException:" + paramString1.toString());
+      if (QLog.isColorLevel())
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("getJsonStr JSONException:");
+        paramString2.append(paramString1.toString());
+        QLog.d("AnonymousChatHelper", 2, paramString2.toString());
       }
       paramString1.printStackTrace();
     }
@@ -124,17 +133,24 @@ public class AnonymousChatHelper
       return "";
     }
     if (AskAnonymousUtil.a(paramMessageRecord)) {
-      return BaseApplicationImpl.getApplication().getResources().getString(2131698583);
+      return BaseApplicationImpl.getApplication().getResources().getString(2131698649);
     }
-    return BaseApplicationImpl.getApplication().getResources().getString(2131697219);
+    return BaseApplicationImpl.getApplication().getResources().getString(2131697238);
   }
   
   public static boolean a(Context paramContext, QQAppInterface paramQQAppInterface)
   {
     paramContext = paramContext.getSharedPreferences("anonymous_chat", 0);
-    if (paramContext.getBoolean("first_enter_anonymous" + paramQQAppInterface.getCurrentAccountUin(), true))
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("first_enter_anonymous");
+    localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+    if (paramContext.getBoolean(localStringBuilder.toString(), true))
     {
-      paramContext.edit().putBoolean("first_enter_anonymous" + paramQQAppInterface.getCurrentAccountUin(), false).commit();
+      paramContext = paramContext.edit();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("first_enter_anonymous");
+      localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+      paramContext.putBoolean(localStringBuilder.toString(), false).commit();
       return true;
     }
     return false;
@@ -147,10 +163,13 @@ public class AnonymousChatHelper
   
   public static boolean b(MessageRecord paramMessageRecord)
   {
-    if (((paramMessageRecord instanceof ChatMessage)) && (((ChatMessage)paramMessageRecord).fakeSenderType == 2)) {}
-    for (int i = 1;; i = 0) {
-      return (i == 0) && (!paramMessageRecord.isMultiMsg) && (a(paramMessageRecord).jdField_a_of_type_Int == 2);
+    int i;
+    if (((paramMessageRecord instanceof ChatMessage)) && (((ChatMessage)paramMessageRecord).fakeSenderType == 2)) {
+      i = 1;
+    } else {
+      i = 0;
     }
+    return (i == 0) && (!paramMessageRecord.isMultiMsg) && (a(paramMessageRecord).jdField_a_of_type_Int == 2);
   }
   
   public static void c(MessageRecord paramMessageRecord)
@@ -165,11 +184,18 @@ public class AnonymousChatHelper
   
   public String a(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
-    while (this.jdField_a_of_type_ComTencentBizAnonymousAnonymousChatHelper$AnonymousReport == null) {
-      return null;
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      if (TextUtils.isEmpty(paramString2)) {
+        return null;
+      }
+      paramString1 = this.jdField_a_of_type_ComTencentBizAnonymousAnonymousChatHelper$AnonymousReport;
+      if (paramString1 == null) {
+        return null;
+      }
+      return paramString1.jdField_c_of_type_JavaLangString;
     }
-    return this.jdField_a_of_type_ComTencentBizAnonymousAnonymousChatHelper$AnonymousReport.jdField_c_of_type_JavaLangString;
+    return null;
   }
   
   public void a()
@@ -184,18 +210,20 @@ public class AnonymousChatHelper
   
   public void a(MessageRecord paramMessageRecord)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.jdField_a_of_type_Boolean)
+    {
       if ((paramMessageRecord.longMsgCount == paramMessageRecord.longMsgIndex + 1) || (paramMessageRecord.longMsgCount == 0)) {
         this.jdField_a_of_type_Boolean = false;
       }
-    }
-    while (!a(paramMessageRecord.frienduin)) {
       return;
     }
-    AnonymousChatHelper.AnonymousInfo localAnonymousInfo = a(paramMessageRecord.frienduin);
-    paramMessageRecord.vipBubbleID = localAnonymousInfo.jdField_a_of_type_Long;
-    paramMessageRecord.extLong |= 0x3;
-    paramMessageRecord.saveExtInfoToExtStr("anonymous", a(2, localAnonymousInfo.jdField_b_of_type_JavaLangString, localAnonymousInfo.jdField_a_of_type_JavaLangString, localAnonymousInfo.jdField_a_of_type_Int, localAnonymousInfo.jdField_b_of_type_Int, localAnonymousInfo.jdField_c_of_type_JavaLangString));
+    if (a(paramMessageRecord.frienduin))
+    {
+      AnonymousChatHelper.AnonymousInfo localAnonymousInfo = a(paramMessageRecord.frienduin);
+      paramMessageRecord.vipBubbleID = localAnonymousInfo.jdField_a_of_type_Long;
+      paramMessageRecord.extLong |= 0x3;
+      paramMessageRecord.saveExtInfoToExtStr("anonymous", a(2, localAnonymousInfo.jdField_b_of_type_JavaLangString, localAnonymousInfo.jdField_a_of_type_JavaLangString, localAnonymousInfo.jdField_a_of_type_Int, localAnonymousInfo.jdField_b_of_type_Int, localAnonymousInfo.jdField_c_of_type_JavaLangString));
+    }
   }
   
   public void a(String paramString1, long paramLong, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4)
@@ -203,48 +231,65 @@ public class AnonymousChatHelper
     if (TextUtils.isEmpty(paramString1)) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("AnonymousUpdate", 2, "nickName=" + paramString2 + ", vipBubbleId=" + paramLong + ", headId=" + paramInt1);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("nickName=");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(", vipBubbleId=");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(", headId=");
+      ((StringBuilder)localObject).append(paramInt1);
+      QLog.d("AnonymousUpdate", 2, ((StringBuilder)localObject).toString());
     }
     if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString1))
     {
-      localAnonymousInfo = (AnonymousChatHelper.AnonymousInfo)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
-      localAnonymousInfo.jdField_a_of_type_Int = paramInt1;
-      if ((paramString2 != null) && (!paramString2.equals(localAnonymousInfo.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentBizAnonymousAnonymousChatHelper$AnonymousStatusListener != null)) {
-        this.jdField_a_of_type_ComTencentBizAnonymousAnonymousChatHelper$AnonymousStatusListener.a(paramString1, paramString2);
+      localObject = (AnonymousChatHelper.AnonymousInfo)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
+      ((AnonymousChatHelper.AnonymousInfo)localObject).jdField_a_of_type_Int = paramInt1;
+      if ((paramString2 != null) && (!paramString2.equals(((AnonymousChatHelper.AnonymousInfo)localObject).jdField_a_of_type_JavaLangString)))
+      {
+        AnonymousChatHelper.AnonymousStatusListener localAnonymousStatusListener = this.jdField_a_of_type_ComTencentBizAnonymousAnonymousChatHelper$AnonymousStatusListener;
+        if (localAnonymousStatusListener != null) {
+          localAnonymousStatusListener.a(paramString1, paramString2);
+        }
       }
-      localAnonymousInfo.jdField_a_of_type_JavaLangString = paramString2;
-      localAnonymousInfo.jdField_a_of_type_Long = paramLong;
-      localAnonymousInfo.jdField_b_of_type_Int = paramInt2;
-      localAnonymousInfo.jdField_b_of_type_JavaLangString = paramString3;
-      localAnonymousInfo.jdField_c_of_type_JavaLangString = paramString4;
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, localAnonymousInfo);
+      ((AnonymousChatHelper.AnonymousInfo)localObject).jdField_a_of_type_JavaLangString = paramString2;
+      ((AnonymousChatHelper.AnonymousInfo)localObject).jdField_a_of_type_Long = paramLong;
+      ((AnonymousChatHelper.AnonymousInfo)localObject).jdField_b_of_type_Int = paramInt2;
+      ((AnonymousChatHelper.AnonymousInfo)localObject).jdField_b_of_type_JavaLangString = paramString3;
+      ((AnonymousChatHelper.AnonymousInfo)localObject).jdField_c_of_type_JavaLangString = paramString4;
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, localObject);
       return;
     }
-    AnonymousChatHelper.AnonymousInfo localAnonymousInfo = new AnonymousChatHelper.AnonymousInfo(this, false);
-    localAnonymousInfo.jdField_a_of_type_Int = paramInt1;
-    localAnonymousInfo.jdField_a_of_type_JavaLangString = paramString2;
-    localAnonymousInfo.jdField_a_of_type_Long = paramLong;
-    localAnonymousInfo.jdField_b_of_type_Int = paramInt2;
-    localAnonymousInfo.jdField_b_of_type_JavaLangString = paramString3;
-    localAnonymousInfo.jdField_c_of_type_JavaLangString = paramString4;
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, localAnonymousInfo);
+    Object localObject = new AnonymousChatHelper.AnonymousInfo(this, false);
+    ((AnonymousChatHelper.AnonymousInfo)localObject).jdField_a_of_type_Int = paramInt1;
+    ((AnonymousChatHelper.AnonymousInfo)localObject).jdField_a_of_type_JavaLangString = paramString2;
+    ((AnonymousChatHelper.AnonymousInfo)localObject).jdField_a_of_type_Long = paramLong;
+    ((AnonymousChatHelper.AnonymousInfo)localObject).jdField_b_of_type_Int = paramInt2;
+    ((AnonymousChatHelper.AnonymousInfo)localObject).jdField_b_of_type_JavaLangString = paramString3;
+    ((AnonymousChatHelper.AnonymousInfo)localObject).jdField_c_of_type_JavaLangString = paramString4;
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, localObject);
   }
   
   public void a(String paramString1, String paramString2, MessageRecord paramMessageRecord)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (paramMessageRecord == null)) {}
-    do
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      return;
+      if (paramMessageRecord == null) {
+        return;
+      }
       paramMessageRecord = ReportPlugin.a(paramMessageRecord);
-    } while (TextUtils.isEmpty(paramMessageRecord));
-    if (this.jdField_a_of_type_ComTencentBizAnonymousAnonymousChatHelper$AnonymousReport == null) {
-      this.jdField_a_of_type_ComTencentBizAnonymousAnonymousChatHelper$AnonymousReport = new AnonymousChatHelper.AnonymousReport(this);
+      if (TextUtils.isEmpty(paramMessageRecord)) {
+        return;
+      }
+      if (this.jdField_a_of_type_ComTencentBizAnonymousAnonymousChatHelper$AnonymousReport == null) {
+        this.jdField_a_of_type_ComTencentBizAnonymousAnonymousChatHelper$AnonymousReport = new AnonymousChatHelper.AnonymousReport(this);
+      }
+      AnonymousChatHelper.AnonymousReport localAnonymousReport = this.jdField_a_of_type_ComTencentBizAnonymousAnonymousChatHelper$AnonymousReport;
+      localAnonymousReport.jdField_a_of_type_JavaLangString = paramString1;
+      localAnonymousReport.jdField_b_of_type_JavaLangString = paramString2;
+      localAnonymousReport.jdField_c_of_type_JavaLangString = paramMessageRecord;
     }
-    this.jdField_a_of_type_ComTencentBizAnonymousAnonymousChatHelper$AnonymousReport.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_ComTencentBizAnonymousAnonymousChatHelper$AnonymousReport.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ComTencentBizAnonymousAnonymousChatHelper$AnonymousReport.jdField_c_of_type_JavaLangString = paramMessageRecord;
   }
   
   public void a(boolean paramBoolean, String paramString)
@@ -272,23 +317,25 @@ public class AnonymousChatHelper
   
   public void b(MessageRecord paramMessageRecord)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.jdField_a_of_type_Boolean)
+    {
       if ((paramMessageRecord.longMsgCount == paramMessageRecord.longMsgIndex + 1) || (paramMessageRecord.longMsgCount == 0)) {
         this.jdField_a_of_type_Boolean = false;
       }
-    }
-    while (!a(paramMessageRecord.frienduin)) {
       return;
     }
-    AnonymousChatHelper.AnonymousInfo localAnonymousInfo = a(paramMessageRecord.frienduin);
-    paramMessageRecord.vipBubbleID = localAnonymousInfo.jdField_a_of_type_Long;
-    paramMessageRecord.extLong |= 0x3;
-    paramMessageRecord.saveExtInfoToExtStr("anonymous", a(2, null, localAnonymousInfo.jdField_a_of_type_JavaLangString, localAnonymousInfo.jdField_a_of_type_Int, localAnonymousInfo.jdField_b_of_type_Int, localAnonymousInfo.jdField_c_of_type_JavaLangString));
+    if (a(paramMessageRecord.frienduin))
+    {
+      AnonymousChatHelper.AnonymousInfo localAnonymousInfo = a(paramMessageRecord.frienduin);
+      paramMessageRecord.vipBubbleID = localAnonymousInfo.jdField_a_of_type_Long;
+      paramMessageRecord.extLong |= 0x3;
+      paramMessageRecord.saveExtInfoToExtStr("anonymous", a(2, null, localAnonymousInfo.jdField_a_of_type_JavaLangString, localAnonymousInfo.jdField_a_of_type_Int, localAnonymousInfo.jdField_b_of_type_Int, localAnonymousInfo.jdField_c_of_type_JavaLangString));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.anonymous.AnonymousChatHelper
  * JD-Core Version:    0.7.0.1
  */

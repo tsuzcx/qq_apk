@@ -7,18 +7,17 @@ public class FileUtils$MyFileCompare
 {
   public int compare(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
   {
-    if (paramFileInfo1.isDirectory()) {
-      if (paramFileInfo2.isDirectory()) {
-        break label25;
+    if (paramFileInfo1.isDirectory())
+    {
+      if (!paramFileInfo2.isDirectory()) {
+        return -1;
       }
     }
-    label25:
-    while (paramFileInfo1.getDate() > paramFileInfo2.getDate())
-    {
+    else if (paramFileInfo2.isDirectory()) {
+      return 1;
+    }
+    if (paramFileInfo1.getDate() > paramFileInfo2.getDate()) {
       return -1;
-      if (paramFileInfo2.isDirectory()) {
-        return 1;
-      }
     }
     if (paramFileInfo1.getDate() == paramFileInfo2.getDate()) {
       return 0;
@@ -28,7 +27,7 @@ public class FileUtils$MyFileCompare
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.FileUtils.MyFileCompare
  * JD-Core Version:    0.7.0.1
  */

@@ -35,11 +35,11 @@ public abstract class SDKActionCallback$Stub
   
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    switch (paramInt1)
+    if (paramInt1 != 1)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
+      if (paramInt1 != 1598968902) {
+        return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+      }
       paramParcel2.writeString("com.tencent.assistant.sdk.remote.SDKActionCallback");
       return true;
     }

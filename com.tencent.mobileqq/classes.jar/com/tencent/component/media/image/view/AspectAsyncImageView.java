@@ -23,126 +23,122 @@ public class AspectAsyncImageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
-    float f = 0.0F;
-    int m = 0;
-    int n = 0;
     int i = View.MeasureSpec.getMode(paramInt1);
     int j = View.MeasureSpec.getMode(paramInt2);
     Drawable localDrawable = getDrawable();
-    int i6;
-    int i7;
-    int i4;
-    int i5;
+    int n;
     int i1;
     int k;
+    int m;
+    float f1;
     if (localDrawable == null)
     {
-      i = 0;
-      j = 0;
-      i6 = getPaddingLeft();
-      i7 = getPaddingRight();
-      i4 = getPaddingTop();
-      i5 = getPaddingBottom();
-      if ((m == 0) && (n == 0)) {
-        break label358;
+      n = 0;
+      i1 = 0;
+      k = 0;
+      m = 0;
+      f1 = 0.0F;
+    }
+    else
+    {
+      m = localDrawable.getIntrinsicWidth();
+      k = localDrawable.getIntrinsicHeight();
+      if (i != 1073741824) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      j = resolveSize(j + i6 + i7, paramInt1);
-      i1 = resolveSize(i + i4 + i5, paramInt2);
-      k = j;
-      if (f == 0.0F) {
-        break label425;
+      if (j != 1073741824) {
+        j = 1;
+      } else {
+        j = 0;
       }
-      k = j;
-      if (Math.abs((j - i6 - i7) / (i1 - i4 - i5) - f) <= 1.0E-007D) {
-        break label425;
-      }
-      int i3 = 0;
-      i = j;
-      int i2 = i3;
-      if (m != 0)
-      {
-        k = (int)((i1 - i4 - i5) * f) + i6 + i7;
-        if (n != 0) {
-          j = resolveSize(k, paramInt1);
-        }
-        i = j;
-        i2 = i3;
-        if (k <= j)
-        {
-          i2 = 1;
-          i = k;
-        }
-      }
-      k = i;
-      if (i2 != 0) {
-        break label425;
-      }
-      k = i;
-      if (n == 0) {
-        break label425;
-      }
-      j = (int)((i - i6 - i7) / f) + i4 + i5;
-      if (m != 0) {
-        break label419;
-      }
-      paramInt1 = resolveSize(j, paramInt2);
-      label266:
-      if (j > paramInt1) {
-        break label413;
-      }
-      paramInt2 = i;
-      paramInt1 = j;
+      f1 = m / k;
+      i1 = j;
+      n = i;
+    }
+    int i4 = getPaddingLeft();
+    int i5 = getPaddingRight();
+    int i2 = getPaddingTop();
+    int i3 = getPaddingBottom();
+    if ((n == 0) && (i1 == 0))
+    {
+      i = Math.max(m + (i4 + i5), getSuggestedMinimumWidth());
+      j = Math.max(k + (i2 + i3), getSuggestedMinimumHeight());
+      paramInt1 = resolveSize(i, paramInt1);
+      paramInt2 = resolveSize(j, paramInt2);
     }
     for (;;)
     {
-      setMeasuredDimension(paramInt2, paramInt1);
-      return;
-      k = localDrawable.getIntrinsicWidth();
-      i1 = localDrawable.getIntrinsicHeight();
-      if (i != 1073741824)
+      break;
+      i = resolveSize(m + i4 + i5, paramInt1);
+      j = resolveSize(k + i2 + i3, paramInt2);
+      if (f1 != 0.0F)
       {
-        i = 1;
-        label309:
-        if (j == 1073741824) {
-          break label352;
+        float f2 = i - i4 - i5;
+        float f3 = j - i2 - i3;
+        m = j;
+        k = i;
+        if (Math.abs(f2 / f3 - f1) > 1.0E-007D)
+        {
+          k = i;
+          if (n != 0)
+          {
+            m = (int)(f3 * f1) + i4 + i5;
+            if (i1 != 0) {
+              i = resolveSize(m, paramInt1);
+            }
+            k = i;
+            if (m <= i)
+            {
+              paramInt1 = m;
+              i = 1;
+              break label333;
+            }
+          }
+          i = 0;
+          paramInt1 = k;
+          label333:
+          m = j;
+          k = paramInt1;
+          if (i == 0)
+          {
+            m = j;
+            k = paramInt1;
+            if (i1 != 0)
+            {
+              i = (int)((paramInt1 - i4 - i5) / f1) + i2 + i3;
+              if (n == 0) {
+                j = resolveSize(i, paramInt2);
+              }
+              m = j;
+              k = paramInt1;
+              if (i <= j)
+              {
+                paramInt2 = i;
+                break label415;
+              }
+            }
+          }
         }
+        paramInt2 = m;
+        paramInt1 = k;
       }
-      label352:
-      for (j = 1;; j = 0)
+      else
       {
-        f = k / i1;
-        n = j;
-        m = i;
-        i = i1;
-        j = k;
-        break;
-        i = 0;
-        break label309;
+        label415:
+        paramInt1 = i;
+        paramInt2 = j;
       }
-      label358:
-      j = Math.max(i6 + i7 + j, getSuggestedMinimumWidth());
-      k = Math.max(i4 + i5 + i, getSuggestedMinimumHeight());
-      i = resolveSize(j, paramInt1);
-      paramInt1 = resolveSize(k, paramInt2);
-      paramInt2 = i;
-      continue;
-      label413:
-      paramInt2 = i;
-      continue;
-      label419:
-      paramInt1 = i1;
-      break label266;
-      label425:
-      paramInt1 = i1;
-      paramInt2 = k;
     }
+    setMeasuredDimension(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.image.view.AspectAsyncImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -24,7 +24,7 @@ public class Aladdin
   private static final SimpleConfigHandler DEFAULT_SIMPLE_CONFIG_HANDLER;
   public static final AladdinConfigParser DEFAULT_SIMPLE_OBJECT_PARSER = new SimpleObjectParser(sBeanTypeMap);
   private static final AladdinConfigParser DEFAULT_SIMPLE_PARSER;
-  private static String ROOT_DIR = null;
+  private static String ROOT_DIR;
   private static final String TAG = "Aladdin";
   private static String sAppFlavorId;
   private static Integer sAppId;
@@ -32,19 +32,14 @@ public class Aladdin
   private static final Map<String, Class<?>> sBeanTypeMap;
   private static final SparseArrayCompat<SimpleConfigHandler> sConfigHandlerMap;
   private static final SparseArrayCompat<AladdinConfigParser> sConfigParserMap;
-  private static AsyncTaskExecutor sExecutor = null;
+  private static AsyncTaskExecutor sExecutor;
   private static AladdinLogger sLogger;
-  private static AladdinRequestHandler sRequestHandler = null;
-  private static final Map<String, AladdinUserConfig> sUserConfigCache;
-  private static String sUserId = null;
+  private static AladdinRequestHandler sRequestHandler;
+  private static final Map<String, AladdinUserConfig> sUserConfigCache = new HashMap();
+  private static String sUserId;
   
   static
   {
-    sAppId = null;
-    sAppVersion = null;
-    sLogger = null;
-    sAppFlavorId = null;
-    sUserConfigCache = new HashMap();
     DEFAULT_EXECUTOR = new Aladdin.1();
     sConfigParserMap = new SparseArrayCompat();
     DEFAULT_SIMPLE_PARSER = new SimpleParser();
@@ -144,51 +139,48 @@ public class Aladdin
     if (!TextUtils.isEmpty(Aladdin.InitParams.access$100(paramInitParams)))
     {
       ROOT_DIR = Aladdin.InitParams.access$100(paramInitParams);
-      if (Aladdin.InitParams.access$300(paramInitParams) == null) {
-        break label149;
-      }
-      sExecutor = Aladdin.InitParams.access$300(paramInitParams);
-      label31:
-      if (Aladdin.InitParams.access$400(paramInitParams) == null) {
-        break label158;
-      }
-      sAppId = Aladdin.InitParams.access$400(paramInitParams);
-      label45:
-      if (Aladdin.InitParams.access$500(paramInitParams) == null) {
-        break label168;
-      }
-      sUserId = Aladdin.InitParams.access$500(paramInitParams);
-      label59:
-      if (Aladdin.InitParams.access$600(paramInitParams) == null) {
-        break label176;
-      }
     }
-    label149:
-    label158:
-    label168:
-    label176:
-    for (sAppFlavorId = Aladdin.InitParams.access$600(paramInitParams);; sAppFlavorId = "0")
+    else
     {
-      sRequestHandler = Aladdin.InitParams.access$700(paramInitParams);
-      sAppVersion = Aladdin.InitParams.access$800(paramInitParams);
-      sLogger = Aladdin.InitParams.access$900(paramInitParams);
-      Log.i("Aladdin", "initialize: GitHash=a0c9471");
-      DeviceInfoUtils.initDisplayParams(Aladdin.InitParams.access$200(paramInitParams));
-      return;
-      ROOT_DIR = Aladdin.InitParams.access$200(paramInitParams).getFilesDir().getAbsolutePath() + File.separator + "aladdin_configs";
-      break;
-      sExecutor = DEFAULT_EXECUTOR;
-      break label31;
-      sAppId = Integer.valueOf(0);
-      break label45;
-      sUserId = "0";
-      break label59;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(Aladdin.InitParams.access$200(paramInitParams).getFilesDir().getAbsolutePath());
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append("aladdin_configs");
+      ROOT_DIR = localStringBuilder.toString();
     }
+    if (Aladdin.InitParams.access$300(paramInitParams) != null) {
+      sExecutor = Aladdin.InitParams.access$300(paramInitParams);
+    } else {
+      sExecutor = DEFAULT_EXECUTOR;
+    }
+    if (Aladdin.InitParams.access$400(paramInitParams) != null) {
+      sAppId = Aladdin.InitParams.access$400(paramInitParams);
+    } else {
+      sAppId = Integer.valueOf(0);
+    }
+    if (Aladdin.InitParams.access$500(paramInitParams) != null) {
+      sUserId = Aladdin.InitParams.access$500(paramInitParams);
+    } else {
+      sUserId = "0";
+    }
+    if (Aladdin.InitParams.access$600(paramInitParams) != null) {
+      sAppFlavorId = Aladdin.InitParams.access$600(paramInitParams);
+    } else {
+      sAppFlavorId = "0";
+    }
+    sRequestHandler = Aladdin.InitParams.access$700(paramInitParams);
+    sAppVersion = Aladdin.InitParams.access$800(paramInitParams);
+    sLogger = Aladdin.InitParams.access$900(paramInitParams);
+    Log.i("Aladdin", "initialize: GitHash=a0c9471");
+    DeviceInfoUtils.initDisplayParams(Aladdin.InitParams.access$200(paramInitParams));
   }
   
   public static void registerBeanClass(String paramString, Class<?> paramClass)
   {
-    Log.d("Aladdin", "registerBeanClass: " + paramString);
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("registerBeanClass: ");
+    ((StringBuilder)???).append(paramString);
+    Log.d("Aladdin", ((StringBuilder)???).toString());
     synchronized (sBeanTypeMap)
     {
       sBeanTypeMap.put(paramString, paramClass);
@@ -216,9 +208,10 @@ public class Aladdin
   
   public static void requestForUpdate(int[] paramArrayOfInt)
   {
-    if (sRequestHandler != null)
+    AladdinRequestHandler localAladdinRequestHandler = sRequestHandler;
+    if (localAladdinRequestHandler != null)
     {
-      sRequestHandler.requestForUpdate(paramArrayOfInt);
+      localAladdinRequestHandler.requestForUpdate(paramArrayOfInt);
       return;
     }
     Log.e("Aladdin", "requestForUpdate: ", new IllegalStateException("sRequestHandler is null"));
@@ -226,21 +219,32 @@ public class Aladdin
   
   private static AladdinUserConfig withUserId(String paramString)
   {
-    AladdinUserConfig localAladdinUserConfig = (AladdinUserConfig)sUserConfigCache.get(paramString);
-    Object localObject = localAladdinUserConfig;
-    if (localAladdinUserConfig == null)
+    Object localObject = (AladdinUserConfig)sUserConfigCache.get(paramString);
+    if (localObject == null)
     {
       if ((ROOT_DIR == null) || (sExecutor == null) || (sRequestHandler == null))
       {
         localObject = new IllegalStateException("Aladdin.initialize() is not called!");
-        if (Log.isDebugVersion()) {
-          throw ((Throwable)localObject);
+        if (!Log.isDebugVersion())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("ROOT_DIR=");
+          localStringBuilder.append(ROOT_DIR);
+          localStringBuilder.append(", sExecutor=");
+          localStringBuilder.append(sExecutor);
+          localStringBuilder.append(", sRequestHandler=");
+          localStringBuilder.append(sRequestHandler);
+          Log.e("Aladdin", localStringBuilder.toString(), (Throwable)localObject);
+          ensureExecutorNonNull();
         }
-        Log.e("Aladdin", "ROOT_DIR=" + ROOT_DIR + ", sExecutor=" + sExecutor + ", sRequestHandler=" + sRequestHandler, (Throwable)localObject);
-        ensureExecutorNonNull();
       }
-      localObject = new AladdinUserConfig(ROOT_DIR, paramString, sExecutor);
-      sUserConfigCache.put(paramString, localObject);
+      else
+      {
+        localObject = new AladdinUserConfig(ROOT_DIR, paramString, sExecutor);
+        sUserConfigCache.put(paramString, localObject);
+        return localObject;
+      }
+      throw ((Throwable)localObject);
     }
     return localObject;
   }

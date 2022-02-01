@@ -71,70 +71,72 @@ public class BounceScrollView
     super.computeScroll();
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView$DrawFinishedListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView$DrawFinishedListener.a();
+    paramCanvas = this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView$DrawFinishedListener;
+    if (paramCanvas != null) {
+      paramCanvas.a();
     }
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView$MotionEventInterceptor;
     boolean bool2 = false;
-    boolean bool1;
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView$MotionEventInterceptor != null)
+    if (localObject != null)
     {
-      MotionEvent localMotionEvent = MotionEvent.obtain(paramMotionEvent);
-      if (localMotionEvent != null)
+      localObject = MotionEvent.obtain(paramMotionEvent);
+      if (localObject != null)
       {
-        bool1 = this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView$MotionEventInterceptor.a(this, localMotionEvent);
-        localMotionEvent.recycle();
+        bool1 = this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView$MotionEventInterceptor.a(this, (MotionEvent)localObject);
+        ((MotionEvent)localObject).recycle();
+        break label48;
       }
     }
-    for (;;)
+    boolean bool1 = false;
+    label48:
+    int i = paramMotionEvent.getAction() & 0xFF;
+    if (i == 1)
     {
-      int i = paramMotionEvent.getAction() & 0xFF;
-      if (i == 1)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView$OnScrollChangedListener != null) {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView$OnScrollChangedListener.a(paramMotionEvent.getX(), paramMotionEvent.getY());
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqWidgetScrollListener != null) {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetScrollListener.onFingerUpOrCancel(this, paramMotionEvent.getX(), paramMotionEvent.getY());
-        }
+      localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView$OnScrollChangedListener;
+      if (localObject != null) {
+        ((BounceScrollView.OnScrollChangedListener)localObject).a(paramMotionEvent.getX(), paramMotionEvent.getY());
       }
-      for (;;)
-      {
-        if (!bool1) {}
-        try
-        {
-          boolean bool3 = super.dispatchTouchEvent(paramMotionEvent);
-          bool1 = bool2;
-          if (bool3) {
-            bool1 = true;
-          }
-          return bool1;
-        }
-        catch (Exception paramMotionEvent)
-        {
-          return bool1;
-        }
-        if (i == 3)
-        {
-          if (this.jdField_a_of_type_ComTencentMobileqqWidgetScrollListener != null) {
-            this.jdField_a_of_type_ComTencentMobileqqWidgetScrollListener.onFingerUpOrCancel(this, paramMotionEvent.getX(), paramMotionEvent.getY());
-          }
-        }
-        else if ((i == 0) && (this.jdField_a_of_type_ComTencentMobileqqWidgetScrollListener != null)) {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetScrollListener.onFingerDown(this, paramMotionEvent.getX(), paramMotionEvent.getY());
-        }
+      localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetScrollListener;
+      if (localObject != null) {
+        ((ScrollListener)localObject).onFingerUpOrCancel(this, paramMotionEvent.getX(), paramMotionEvent.getY());
       }
-      bool1 = false;
     }
+    else if (i == 3)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetScrollListener;
+      if (localObject != null) {
+        ((ScrollListener)localObject).onFingerUpOrCancel(this, paramMotionEvent.getX(), paramMotionEvent.getY());
+      }
+    }
+    else if (i == 0)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetScrollListener;
+      if (localObject != null) {
+        ((ScrollListener)localObject).onFingerDown(this, paramMotionEvent.getX(), paramMotionEvent.getY());
+      }
+    }
+    if (!bool1) {}
+    try
+    {
+      boolean bool3 = super.dispatchTouchEvent(paramMotionEvent);
+      bool1 = bool2;
+      if (bool3) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    catch (Exception paramMotionEvent) {}
+    return bool1;
   }
   
-  public boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
+  protected boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
   {
     if (!this.jdField_d_of_type_Boolean) {
       return super.drawChild(paramCanvas, paramView, paramLong);
@@ -151,15 +153,17 @@ public class BounceScrollView
   public void fling(int paramInt)
   {
     super.fling(paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetScrollListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetScrollListener.fling(this, paramInt);
+    ScrollListener localScrollListener = this.jdField_a_of_type_ComTencentMobileqqWidgetScrollListener;
+    if (localScrollListener != null) {
+      localScrollListener.fling(this, paramInt);
     }
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetOnInterceptTouchEventListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetOnInterceptTouchEventListener.a(paramMotionEvent);
+    OnInterceptTouchEventListener localOnInterceptTouchEventListener = this.jdField_a_of_type_ComTencentMobileqqWidgetOnInterceptTouchEventListener;
+    if (localOnInterceptTouchEventListener != null) {
+      localOnInterceptTouchEventListener.onInterceptTouchEvent(paramMotionEvent);
     }
     try
     {
@@ -171,26 +175,33 @@ public class BounceScrollView
       boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
       return bool;
     }
-    catch (Exception paramMotionEvent) {}
+    catch (Exception paramMotionEvent)
+    {
+      label47:
+      break label47;
+    }
     return false;
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Int > 0) {
-      paramInt2 = View.MeasureSpec.makeMeasureSpec(this.jdField_a_of_type_Int, -2147483648);
+    int i = this.jdField_a_of_type_Int;
+    if (i > 0) {
+      paramInt2 = View.MeasureSpec.makeMeasureSpec(i, -2147483648);
     }
     super.onMeasure(paramInt1, paramInt2);
   }
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView$OnScrollChangedListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView$OnScrollChangedListener.a(paramInt1, paramInt2, paramInt3, paramInt4);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView$OnScrollChangedListener;
+    if (localObject != null) {
+      ((BounceScrollView.OnScrollChangedListener)localObject).a(paramInt1, paramInt2, paramInt3, paramInt4);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetScrollListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetScrollListener.onScrollChanged(this, paramInt1, paramInt2, paramInt3, paramInt4);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetScrollListener;
+    if (localObject != null) {
+      ((ScrollListener)localObject).onScrollChanged(this, paramInt1, paramInt2, paramInt3, paramInt4);
     }
     if (this.jdField_d_of_type_Boolean) {
       getChildAt(0).invalidate();
@@ -198,44 +209,35 @@ public class BounceScrollView
     invalidate();
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     a();
-    if (this.jdField_a_of_type_ComTencentWidgetOnSizeChangeListener != null) {
-      this.jdField_a_of_type_ComTencentWidgetOnSizeChangeListener.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4, false, 0);
+    OnSizeChangeListener localOnSizeChangeListener = this.jdField_a_of_type_ComTencentWidgetOnSizeChangeListener;
+    if (localOnSizeChangeListener != null) {
+      localOnSizeChangeListener.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4, false, 0);
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool = true;
-    switch (paramMotionEvent.getAction() & 0xFF)
+    if (((paramMotionEvent.getAction() & 0xFF) == 2) && (this.jdField_b_of_type_Boolean) && (this.jdField_b_of_type_Int < 0) && (this.jdField_c_of_type_Int > 0))
     {
-    }
-    int i;
-    int j;
-    int k;
-    do
-    {
-      bool = super.onTouchEvent(paramMotionEvent);
-      View localView;
-      do
+      View localView = getChildAt(0);
+      if (localView != null)
       {
-        return bool;
-        if ((!this.jdField_b_of_type_Boolean) || (this.jdField_b_of_type_Int >= 0) || (this.jdField_c_of_type_Int <= 0)) {
-          break;
+        int i = getScrollY();
+        if (i < this.jdField_b_of_type_Int) {
+          return true;
         }
-        localView = getChildAt(0);
-        if (localView == null) {
-          break;
+        int j = localView.getMeasuredHeight();
+        int k = getHeight();
+        if ((i > 0) && (k > 0) && (j > 0) && (j + this.jdField_c_of_type_Int <= i + k)) {
+          return true;
         }
-        i = getScrollY();
-      } while (i < this.jdField_b_of_type_Int);
-      j = localView.getMeasuredHeight();
-      k = getHeight();
-    } while ((i <= 0) || (k <= 0) || (j <= 0) || (j + this.jdField_c_of_type_Int > i + k));
-    return true;
+      }
+    }
+    return super.onTouchEvent(paramMotionEvent);
   }
   
   public void setDrawFinishedListener(BounceScrollView.DrawFinishedListener paramDrawFinishedListener)
@@ -280,7 +282,7 @@ public class BounceScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.BounceScrollView
  * JD-Core Version:    0.7.0.1
  */

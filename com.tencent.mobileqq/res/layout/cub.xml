@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/abz" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/gm9" android:background="@drawable/c__" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
-    <RelativeLayout android:id="@id/jo9" android:layout_width="fill_parent" android:layout_height="@dimen/b68" android:layout_marginTop="20.0dip">
-        <ImageView android:id="@id/e9t" android:padding="9.0dip" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginLeft="17.0dip" android:src="@drawable/cns" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-        <TextView android:textSize="17.0sp" android:textColor="#ffffffff" android:id="@id/jpe" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ixb" android:layout_centerHorizontal="true" android:layout_centerVertical="true" android:contentDescription="@string/ixb" />
-    </RelativeLayout>
-    <View android:id="@id/f_1" android:background="#77000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mobileqq.extendfriend.wiget.MatchingView android:id="@id/gsf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="40.0dip" android:layout_below="@id/jo9" />
-</RelativeLayout>
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/nf3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/avd" formItem:leftIcon="@drawable/qq_leba_icon_qqcircle" formItem:leftIconHeight="24.0dip" formItem:leftIconWidth="24.0dip" formItem:leftTextColor="ab6" formItem:switchChecked="true" formItem:switchText="小世界" />
+</LinearLayout>

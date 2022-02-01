@@ -4,13 +4,13 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
-import android.support.v4.app.QFragment;
 import com.tencent.mobileqq.activity.LoginUserPrivateHelper;
 import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.app.QBaseFragment;
 import mqq.app.AppRuntime;
 
 public class GuideBaseFragment
-  extends QFragment
+  extends QBaseFragment
 {
   protected LoginUserPrivateHelper a;
   protected GuideBaseFragment.GuideCallBack a;
@@ -46,22 +46,22 @@ public class GuideBaseFragment
     this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment$GuideCallBack = paramGuideCallBack;
   }
   
-  public void a(boolean paramBoolean) {}
-  
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = getActivity();
+    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = getQBaseActivity();
   }
   
   public void onDetach()
   {
     super.onDetach();
   }
+  
+  public void onMultiWindowModeChanged(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.GuideBaseFragment
  * JD-Core Version:    0.7.0.1
  */

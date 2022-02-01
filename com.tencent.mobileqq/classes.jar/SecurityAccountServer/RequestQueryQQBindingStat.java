@@ -23,14 +23,15 @@ public final class RequestQueryQQBindingStat
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.MobileUniqueNo != null) {
-      paramJceOutputStream.write(this.MobileUniqueNo, 0);
+    String str = this.MobileUniqueNo;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.RequestQueryQQBindingStat
  * JD-Core Version:    0.7.0.1
  */

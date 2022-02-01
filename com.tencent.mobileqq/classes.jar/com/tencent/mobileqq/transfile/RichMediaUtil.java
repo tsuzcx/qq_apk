@@ -29,76 +29,105 @@ public class RichMediaUtil
   
   public static String getActionDesc(int paramInt)
   {
-    String str = "" + paramInt;
-    switch (paramInt)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(paramInt);
+    localObject = ((StringBuilder)localObject).toString();
+    if (paramInt != 0)
     {
-    default: 
-      return str;
-    case 0: 
-      return "dw";
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          return localObject;
+        }
+        return "fw";
+      }
       return "up";
     }
-    return "fw";
+    return "dw";
   }
   
   public static int getFileType(int paramInt)
   {
-    switch (paramInt)
+    int i = 65537;
+    if (paramInt != 1)
     {
-    case 65537: 
-    default: 
-      return 65537;
-    case 1: 
-      return 1;
+      if (paramInt != 65537)
+      {
+        if (paramInt != 131075) {
+          return 65537;
+        }
+        return 131075;
+      }
     }
-    return 131075;
+    else {
+      i = 1;
+    }
+    return i;
   }
   
   public static String getFileTypeDesc(int paramInt)
   {
-    String str = "" + paramInt;
-    switch (paramInt)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(paramInt);
+    localObject = ((StringBuilder)localObject).toString();
+    if (paramInt != 0)
     {
-    default: 
-      return str;
-    case 65537: 
-      return "thu";
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if ((paramInt != 6) && (paramInt != 9) && (paramInt != 17) && (paramInt != 20))
+          {
+            if (paramInt != 131078)
+            {
+              switch (paramInt)
+              {
+              default: 
+                switch (paramInt)
+                {
+                default: 
+                  return localObject;
+                case 131076: 
+                  return "url";
+                }
+                return "raw";
+              case 65538: 
+                return "emo";
+              }
+              return "thu";
+            }
+            return "msg";
+          }
+          return "shortvideo";
+        }
+        return "ptt";
+      }
       return "pic";
-    case 65538: 
-      return "emo";
-    case 131075: 
-      return "raw";
-    case 2: 
-      return "ptt";
-    case 0: 
-      return "fil";
-    case 131078: 
-      return "msg";
-    case 131076: 
-      return "url";
     }
-    return "shortvideo";
+    return "fil";
   }
   
   public static String[] getImageRecvTags()
   {
-    if (imgRecvTags != null) {
-      return imgRecvTags;
+    Object localObject = imgRecvTags;
+    if (localObject != null) {
+      return localObject;
     }
-    ArrayList localArrayList = getImageTags("dw");
-    imgRecvTags = (String[])localArrayList.toArray(new String[localArrayList.size()]);
+    localObject = getImageTags("dw");
+    imgRecvTags = (String[])((ArrayList)localObject).toArray(new String[((ArrayList)localObject).size()]);
     return imgRecvTags;
   }
   
   public static String[] getImageSendTags()
   {
-    if (imgSendTags != null) {
-      return imgSendTags;
+    Object localObject = imgSendTags;
+    if (localObject != null) {
+      return localObject;
     }
-    ArrayList localArrayList = getImageTags("up");
-    imgSendTags = (String[])localArrayList.toArray(new String[localArrayList.size()]);
+    localObject = getImageTags("up");
+    imgSendTags = (String[])((ArrayList)localObject).toArray(new String[((ArrayList)localObject).size()]);
     return imgSendTags;
   }
   
@@ -129,22 +158,24 @@ public class RichMediaUtil
   
   public static String[] getImageTags()
   {
-    if (imgAllTags != null) {
-      return imgAllTags;
+    Object localObject = imgAllTags;
+    if (localObject != null) {
+      return localObject;
     }
-    ArrayList localArrayList = getImageTags("up");
-    localArrayList.addAll(getImageTags("dw"));
-    imgAllTags = (String[])localArrayList.toArray(new String[localArrayList.size()]);
+    localObject = getImageTags("up");
+    ((ArrayList)localObject).addAll(getImageTags("dw"));
+    imgAllTags = (String[])((ArrayList)localObject).toArray(new String[((ArrayList)localObject).size()]);
     return imgAllTags;
   }
   
   public static String[] getPttDownTags()
   {
-    if (pttDownTags != null) {
-      return pttDownTags;
+    Object localObject = pttDownTags;
+    if (localObject != null) {
+      return localObject;
     }
-    ArrayList localArrayList = getPttTags("dw");
-    pttDownTags = (String[])localArrayList.toArray(new String[localArrayList.size()]);
+    localObject = getPttTags("dw");
+    pttDownTags = (String[])((ArrayList)localObject).toArray(new String[((ArrayList)localObject).size()]);
     return pttDownTags;
   }
   
@@ -177,11 +208,12 @@ public class RichMediaUtil
   
   public static boolean isPicLandscape(String paramString)
   {
-    boolean bool = false;
-    int j;
-    if (FileUtils.b(paramString))
+    boolean bool2 = FileUtils.fileExistsAndNotEmpty(paramString);
+    boolean bool1 = false;
+    int i;
+    if (bool2)
     {
-      j = JpegExifReader.getRotationDegree(paramString);
+      int j = JpegExifReader.getRotationDegree(paramString);
       if (j != 90)
       {
         i = j;
@@ -189,16 +221,26 @@ public class RichMediaUtil
       }
       else
       {
-        bool = true;
+        bool1 = true;
+        i = j;
       }
     }
-    for (int i = j;; i = 0)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("RichMediaUtil", 2, "isPicLandscape .result =  " + bool + ",degree = " + i + ",path = " + paramString);
-      }
-      return bool;
+      i = 0;
     }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isPicLandscape .result =  ");
+      localStringBuilder.append(bool1);
+      localStringBuilder.append(",degree = ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(",path = ");
+      localStringBuilder.append(paramString);
+      QLog.d("RichMediaUtil", 2, localStringBuilder.toString());
+    }
+    return bool1;
   }
   
   public static void log(int paramInt1, boolean paramBoolean, int paramInt2, String paramString1, String paramString2, String paramString3)
@@ -223,13 +265,14 @@ public class RichMediaUtil
       localStringBuilder.append(Thread.currentThread().getId());
     }
     paramString1 = TransFileUtil.buildTag(paramString2, paramString3, "fw", paramString1);
-    if (paramThrowable != null) {
+    if (paramThrowable != null)
+    {
       QLog.e(paramString1, 1, localStringBuilder.toString(), paramThrowable);
-    }
-    while ((!QLog.isColorLevel()) && (!sIsActiveReport)) {
       return;
     }
-    QLog.d(paramString1, 2, localStringBuilder.toString());
+    if ((QLog.isColorLevel()) || (sIsActiveReport)) {
+      QLog.d(paramString1, 2, localStringBuilder.toString());
+    }
   }
   
   public static void logUI(int paramInt1, boolean paramBoolean, int paramInt2, String paramString1, String paramString2, String paramString3)
@@ -252,34 +295,31 @@ public class RichMediaUtil
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("id:");
     localStringBuilder.append(paramString4);
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       paramString4 = "up";
-      localStringBuilder.append(" \tstep:");
-      localStringBuilder.append(paramString5);
-      localStringBuilder.append(" \tcont:");
-      localStringBuilder.append(paramString6);
-      localStringBuilder.append(" \tver:");
-      localStringBuilder.append(TransFileUtil.getVersionCode());
-      if ("T".equals(paramString1))
-      {
-        localStringBuilder.append(" \ttid:");
-        localStringBuilder.append(Thread.currentThread().getId());
-      }
-      paramString1 = TransFileUtil.buildTag(paramString2, paramString3, paramString4, paramString1);
-      if (paramThrowable == null) {
-        break label145;
-      }
-      QLog.e(paramString1, 2, localStringBuilder.toString(), paramThrowable);
-    }
-    label145:
-    while ((!QLog.isColorLevel()) && (!sIsActiveReport))
-    {
-      return;
+    } else {
       paramString4 = "dw";
-      break;
     }
-    QLog.e(paramString1, 2, localStringBuilder.toString());
+    localStringBuilder.append(" \tstep:");
+    localStringBuilder.append(paramString5);
+    localStringBuilder.append(" \tcont:");
+    localStringBuilder.append(paramString6);
+    localStringBuilder.append(" \tver:");
+    localStringBuilder.append(TransFileUtil.getVersionCode());
+    if ("T".equals(paramString1))
+    {
+      localStringBuilder.append(" \ttid:");
+      localStringBuilder.append(Thread.currentThread().getId());
+    }
+    paramString1 = TransFileUtil.buildTag(paramString2, paramString3, paramString4, paramString1);
+    if (paramThrowable != null)
+    {
+      QLog.e(paramString1, 2, localStringBuilder.toString(), paramThrowable);
+      return;
+    }
+    if ((QLog.isColorLevel()) || (sIsActiveReport)) {
+      QLog.e(paramString1, 2, localStringBuilder.toString());
+    }
   }
   
   public static void logeLogic(int paramInt1, boolean paramBoolean, int paramInt2, String paramString1, String paramString2, String paramString3, Throwable paramThrowable)
@@ -298,44 +338,45 @@ public class RichMediaUtil
   
   public static void stopReport(String paramString1, boolean paramBoolean, String paramString2)
   {
-    for (;;)
+    synchronized (sActiveRptMap)
     {
-      synchronized (sActiveRptMap)
+      if (sActiveRptMap.containsKey(paramString1))
       {
-        if (sActiveRptMap.containsKey(paramString1))
+        if ((QLog.isColorLevel()) || (sIsActiveReport))
         {
-          if ((QLog.isColorLevel()) || (sIsActiveReport)) {
-            QLog.d("RichMediaUtil", 2, "activeReport stop : " + paramString1 + ", " + paramBoolean);
-          }
-          RichMediaUtil.ActiveRtpParam localActiveRtpParam = (RichMediaUtil.ActiveRtpParam)sActiveRptMap.remove(paramString1);
-          if (localActiveRtpParam != null)
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("activeReport stop : ");
+          ((StringBuilder)localObject).append(paramString1);
+          ((StringBuilder)localObject).append(", ");
+          ((StringBuilder)localObject).append(paramBoolean);
+          QLog.d("RichMediaUtil", 2, ((StringBuilder)localObject).toString());
+        }
+        Object localObject = (RichMediaUtil.ActiveRtpParam)sActiveRptMap.remove(paramString1);
+        if (localObject != null)
+        {
+          paramString1 = MobileQQ.sMobileQQ.peekAppRuntime();
+          if (paramString1 != null)
           {
-            Object localObject = MobileQQ.sMobileQQ.peekAppRuntime();
-            if (localObject != null)
-            {
-              paramString1 = (TicketManager)((AppRuntime)localObject).getManager(2);
-              localObject = ((AppRuntime)localObject).getAccount();
-              if (paramString1 == null) {
-                break label195;
-              }
-              paramString1 = paramString1.getSkey((String)localObject);
-              QLog.d("RichMediaUtil", 1, new Object[] { localActiveRtpParam.tags, Integer.valueOf(localActiveRtpParam.appid), Boolean.valueOf(paramBoolean), paramString2, localObject, paramString1 });
+            TicketManager localTicketManager = (TicketManager)paramString1.getManager(2);
+            String str = paramString1.getAccount();
+            paramString1 = "";
+            if (localTicketManager != null) {
+              paramString1 = localTicketManager.getSkey(str);
             }
-          }
-          if (sActiveRptMap.isEmpty()) {
-            sIsActiveReport = false;
+            QLog.d("RichMediaUtil", 1, new Object[] { ((RichMediaUtil.ActiveRtpParam)localObject).tags, Integer.valueOf(((RichMediaUtil.ActiveRtpParam)localObject).appid), Boolean.valueOf(paramBoolean), paramString2, str, paramString1 });
           }
         }
-        return;
+        if (sActiveRptMap.isEmpty()) {
+          sIsActiveReport = false;
+        }
       }
-      label195:
-      paramString1 = "";
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.RichMediaUtil
  * JD-Core Version:    0.7.0.1
  */

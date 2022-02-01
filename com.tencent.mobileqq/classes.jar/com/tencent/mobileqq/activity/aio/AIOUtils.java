@@ -9,25 +9,20 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.SparseIntArray;
 import android.util.TypedValue;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ListAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import com.tencent.biz.thridappshare.ThridAppShareHelper;
-import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.ChatFragment;
 import com.tencent.mobileqq.activity.ShortcutRouterActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.WebAccelerator;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -50,72 +45,37 @@ import java.util.List;
 import mqq.os.MqqHandler;
 
 public final class AIOUtils
+  extends BaseAIOUtils
 {
-  public static volatile int a;
-  private static SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray;
-  private static Boolean jdField_a_of_type_JavaLangBoolean;
-  private static String jdField_a_of_type_JavaLangString;
-  private static ThreadLocal<char[]> jdField_a_of_type_JavaLangThreadLocal;
+  public static volatile int a = 0;
+  private static SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
+  private static Boolean jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
+  private static String jdField_a_of_type_JavaLangString = "OPPO;R7Plusm;22|OPPO;R7007;18|OPPO;R2017;18|OPPO;N5117;18|OPPO;A33;22|OPPO;OPPO A33;22";
+  private static ThreadLocal<char[]> jdField_a_of_type_JavaLangThreadLocal = new AIOUtils.1();
   private static Field jdField_a_of_type_JavaLangReflectField;
-  public static volatile boolean a;
-  public static volatile int b;
-  private static String b;
-  public static volatile boolean b;
-  private static String c;
-  public static volatile boolean c;
-  public static volatile boolean d;
-  public static volatile boolean e;
-  public static volatile boolean f;
-  public static volatile boolean g;
-  public static volatile boolean h;
-  public static volatile boolean i;
-  public static volatile boolean j;
-  public static volatile boolean k;
-  public static volatile boolean l;
-  public static volatile boolean m;
-  public static volatile boolean n;
-  public static boolean o;
-  private static boolean p;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = false;
-    jdField_b_of_type_Boolean = false;
-    jdField_c_of_type_Boolean = false;
-    d = false;
-    e = false;
-    f = false;
-    g = false;
-    h = false;
-    i = false;
-    j = false;
-    k = false;
-    l = false;
-    m = false;
-    n = false;
-    jdField_a_of_type_Int = 0;
-    jdField_b_of_type_Int = 0;
-    o = false;
-    p = false;
-    jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
-    jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
-    jdField_a_of_type_JavaLangThreadLocal = new AIOUtils.1();
-    jdField_a_of_type_JavaLangString = "OPPO;R7Plusm;22|OPPO;R7007;18|OPPO;R2017;18|OPPO;N5117;18|OPPO;A33;22|OPPO;OPPO A33;22";
-    jdField_b_of_type_JavaLangString = "HM NOTE 1LTETD";
-    jdField_c_of_type_JavaLangString = "NX507J";
-  }
+  public static volatile boolean a = false;
+  public static volatile int b = 0;
+  private static String b = "HM NOTE 1LTETD";
+  public static volatile boolean b = false;
+  private static String c = "NX507J";
+  public static volatile boolean c = false;
+  public static volatile boolean d = false;
+  public static volatile boolean e = false;
+  public static volatile boolean f = false;
+  public static volatile boolean g = false;
+  public static volatile boolean h = false;
+  public static volatile boolean i = false;
+  public static volatile boolean j = false;
+  public static volatile boolean k = false;
+  public static volatile boolean l = false;
+  public static volatile boolean m = false;
+  public static volatile boolean n = false;
+  public static boolean o = false;
+  private static boolean p = false;
   
   public static final float a(int paramInt1, int paramInt2, Resources paramResources)
   {
     return TypedValue.applyDimension(paramInt1, paramInt2, paramResources.getDisplayMetrics());
-  }
-  
-  public static final float a(int paramInt, Resources paramResources)
-  {
-    if (paramInt == 0) {
-      return 0.0F;
-    }
-    return paramInt / paramResources.getDisplayMetrics().density;
   }
   
   public static final int a(float paramFloat, Resources paramResources)
@@ -123,15 +83,17 @@ public final class AIOUtils
     if (paramFloat == 0.0F) {
       return 0;
     }
-    return (int)(paramResources.getDisplayMetrics().density * paramFloat + 0.5F);
+    return (int)(paramFloat * Math.round(paramResources.getDisplayMetrics().density));
   }
   
   public static int a(int paramInt)
   {
-    long l1 = 0L;
     int i2 = c(paramInt);
+    long l1;
     if (QLog.isColorLevel()) {
       l1 = SystemClock.uptimeMillis();
+    } else {
+      l1 = 0L;
     }
     for (;;)
     {
@@ -141,28 +103,33 @@ public final class AIOUtils
         if (p) {
           return b(paramInt);
         }
-        Object localObject = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.aio_config.name(), "-1|1=0,2=0,3=0,4=0,5=1");
-        if (QLog.isColorLevel()) {
-          QLog.d("AIOUtils", 2, "aioConfig:" + (String)localObject);
-        }
-        localObject = ((String)localObject).split("\\|");
-        if (localObject.length > 1)
+        Object localObject1 = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.aio_config.name(), "-1|1=0,2=0,3=0,4=0,5=1");
+        Object localObject2;
+        if (QLog.isColorLevel())
         {
-          localObject = localObject[1].split(",");
-          if (localObject != null)
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("aioConfig:");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          QLog.d("AIOUtils", 2, ((StringBuilder)localObject2).toString());
+        }
+        localObject1 = ((String)localObject1).split("\\|");
+        if (localObject1.length > 1)
+        {
+          localObject1 = localObject1[1].split(",");
+          if (localObject1 != null)
           {
-            int i3 = localObject.length;
+            int i3 = localObject1.length;
             i1 = 0;
             if (i1 < i3)
             {
-              String[] arrayOfString = localObject[i1].split("=");
-              if ((arrayOfString == null) || (arrayOfString.length <= 1)) {
-                break label278;
+              localObject2 = localObject1[i1].split("=");
+              if ((localObject2 == null) || (localObject2.length <= 1)) {
+                break label313;
               }
-              int i4 = Integer.valueOf(arrayOfString[0]).intValue();
-              int i5 = Integer.valueOf(arrayOfString[1]).intValue();
+              int i4 = Integer.valueOf(localObject2[0]).intValue();
+              int i5 = Integer.valueOf(localObject2[1]).intValue();
               jdField_a_of_type_AndroidUtilSparseIntArray.put(i4, i5);
-              break label278;
+              break label313;
             }
           }
         }
@@ -171,127 +138,109 @@ public final class AIOUtils
       }
       catch (Exception localException)
       {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("AIOUtils", 2, "AIOTime getAIOMsgMenuState dpc exception", localException);
         i1 = i2;
-        continue;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("AIOUtils", 2, "AIOTime getAIOMsgMenuState dpc exception", localException);
+          i1 = i2;
+        }
       }
       if (QLog.isColorLevel())
       {
-        QLog.d("AIOUtils", 2, "AIOTime initAIOMsgMenuState|" + paramInt + "|" + i1 + "|" + (SystemClock.uptimeMillis() - l1));
-        return i1;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("AIOTime initAIOMsgMenuState|");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append("|");
+        localStringBuilder.append(i1);
+        localStringBuilder.append("|");
+        localStringBuilder.append(SystemClock.uptimeMillis() - l1);
+        QLog.d("AIOUtils", 2, localStringBuilder.toString());
       }
       return i1;
-      label278:
+      label313:
       i1 += 1;
     }
   }
   
   public static int a(long paramLong, ListAdapter paramListAdapter)
   {
-    int i2;
-    if (paramListAdapter == null)
-    {
-      i2 = -1;
-      return i2;
+    if (paramListAdapter == null) {
+      return -1;
     }
     int i1 = 0;
-    for (;;)
+    while (i1 < paramListAdapter.getCount())
     {
-      if (i1 >= paramListAdapter.getCount()) {
-        break label62;
-      }
       Object localObject = paramListAdapter.getItem(i1);
-      if ((localObject instanceof ChatMessage))
-      {
-        i2 = i1;
-        if (((ChatMessage)localObject).uniseq == paramLong) {
-          break;
-        }
+      if (((localObject instanceof ChatMessage)) && (((ChatMessage)localObject).uniseq == paramLong)) {
+        return i1;
       }
       i1 += 1;
     }
-    label62:
     return -1;
   }
   
   public static int a(Context paramContext)
   {
-    return paramContext.getResources().getDimensionPixelSize(2131299166);
+    return paramContext.getResources().getDimensionPixelSize(2131299168);
   }
   
-  public static int a(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Intent paramIntent)
+  public static int a(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, Intent paramIntent)
   {
-    if ((paramIntent.getBooleanExtra("open_chatfragment", false)) && ((paramFragmentActivity instanceof SplashActivity)))
+    int i2 = 0;
+    int i1 = i2;
+    if (paramIntent.getBooleanExtra("open_chatfragment", false))
     {
-      Fragment localFragment = paramFragmentActivity.getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
-      if ((localFragment != null) && (localFragment.isVisible()))
+      i1 = i2;
+      if ((paramBaseActivity instanceof SplashActivity))
       {
-        if (a(paramFragmentActivity, paramQQAppInterface, false, paramIntent)) {
-          return 2;
+        Fragment localFragment = paramBaseActivity.getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+        i1 = i2;
+        if (localFragment != null)
+        {
+          i1 = i2;
+          if (localFragment.isVisible())
+          {
+            if (a(paramBaseActivity, paramQQAppInterface, false, paramIntent)) {
+              return 2;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d("Q.aio.BaseChatPie", 2, "openAIO by MT");
+            }
+            paramQQAppInterface = (ChatFragment)localFragment;
+            paramIntent.putExtra("isBack2Root", true);
+            paramBaseActivity.setIntent(paramIntent);
+            paramQQAppInterface.a(3);
+            paramQQAppInterface.onPause();
+            paramQQAppInterface.onStop();
+            paramQQAppInterface.d();
+            paramQQAppInterface.onStart();
+            paramQQAppInterface.onResume();
+            i1 = 1;
+          }
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.aio.BaseChatPie", 2, "openAIO by MT");
-        }
-        paramQQAppInterface = (ChatFragment)localFragment;
-        paramIntent.putExtra("isBack2Root", true);
-        paramFragmentActivity.setIntent(paramIntent);
-        paramQQAppInterface.a(3);
-        paramQQAppInterface.onPause();
-        paramQQAppInterface.onStop();
-        paramQQAppInterface.d();
-        paramQQAppInterface.onStart();
-        paramQQAppInterface.onResume();
-        return 1;
       }
     }
-    return 0;
+    return i1;
   }
   
   public static int a(StructMsgNode paramStructMsgNode, String paramString)
   {
     paramStructMsgNode = paramStructMsgNode.a(paramString);
-    if (TextUtils.isEmpty(paramStructMsgNode)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramStructMsgNode)) {
       return 0;
-      try
-      {
-        int i1 = Integer.parseInt(paramStructMsgNode);
-        return i1;
-      }
-      catch (Exception paramStructMsgNode) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("StructMsg", 2, paramStructMsgNode.getMessage());
-    return 0;
-  }
-  
-  public static Intent a(Intent paramIntent, int[] paramArrayOfInt)
-  {
-    paramIntent.putExtra("open_chatfragment", true);
-    paramIntent.addFlags(67108864);
-    if (paramArrayOfInt != null)
+    }
+    try
     {
-      int i2 = paramArrayOfInt.length;
-      int i1 = 0;
-      if (i1 < i2)
-      {
-        switch (paramArrayOfInt[i1])
-        {
-        }
-        for (;;)
-        {
-          i1 += 1;
-          break;
-          paramIntent.putExtra("open_chatfragment_withanim", true);
-          continue;
-          paramIntent.addFlags(268435456);
-        }
+      int i1 = Integer.parseInt(paramStructMsgNode);
+      return i1;
+    }
+    catch (Exception paramStructMsgNode)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StructMsg", 2, paramStructMsgNode.getMessage());
       }
     }
-    return paramIntent;
+    return 0;
   }
   
   public static final View a(ListView paramListView, int paramInt)
@@ -304,30 +253,22 @@ public final class AIOUtils
   
   public static ChatMessage a(long paramLong, ListAdapter paramListAdapter)
   {
-    Object localObject;
-    if (paramListAdapter == null)
-    {
-      localObject = null;
-      return localObject;
+    if (paramListAdapter == null) {
+      return null;
     }
     int i1 = paramListAdapter.getCount() - 1;
-    for (;;)
+    while (i1 > 0)
     {
-      if (i1 <= 0) {
-        break label68;
-      }
-      localObject = paramListAdapter.getItem(i1);
+      Object localObject = paramListAdapter.getItem(i1);
       if ((localObject instanceof ChatMessage))
       {
-        ChatMessage localChatMessage = (ChatMessage)localObject;
-        localObject = localChatMessage;
-        if (localChatMessage.uniseq == paramLong) {
-          break;
+        localObject = (ChatMessage)localObject;
+        if (((ChatMessage)localObject).uniseq == paramLong) {
+          return localObject;
         }
       }
       i1 -= 1;
     }
-    label68:
     return null;
   }
   
@@ -346,25 +287,10 @@ public final class AIOUtils
     if (paramView == null) {
       return null;
     }
-    if ((paramView.getParent() == null) || ((paramView.getParent() instanceof ListView))) {
-      return paramView.getTag();
+    if ((paramView.getParent() != null) && (!(paramView.getParent() instanceof ListView))) {
+      return a((View)paramView.getParent());
     }
-    return a((View)paramView.getParent());
-  }
-  
-  public static Runnable a(View paramView, URLDrawable paramURLDrawable)
-  {
-    if ((paramURLDrawable.getStatus() == 0) || (paramURLDrawable.getStatus() == 4)) {}
-    for (int i1 = 1;; i1 = 0)
-    {
-      AIOUtils.4 local4 = null;
-      if (i1 != 0)
-      {
-        local4 = new AIOUtils.4(paramURLDrawable, paramView);
-        paramView.postDelayed(local4, 200L);
-      }
-      return local4;
-    }
+    return paramView.getTag();
   }
   
   public static StringBuilder a()
@@ -390,7 +316,6 @@ public final class AIOUtils
   protected static void a()
   {
     Object localObject;
-    boolean bool;
     if (WebAccelerator.jdField_a_of_type_Int == -1)
     {
       localObject = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.aio_gifplay.name());
@@ -399,118 +324,40 @@ public final class AIOUtils
         localObject = ((String)localObject).split("\\|");
         if (localObject.length > 3)
         {
-          if ((!localObject[0].equals("1")) || (!localObject[1].equals("1"))) {
-            break label118;
+          boolean bool2 = localObject[0].equals("1");
+          boolean bool1 = true;
+          if ((!bool2) || (!localObject[1].equals("1"))) {
+            bool1 = false;
           }
-          bool = true;
+          WebAccelerator.b = bool1;
+          if ("0".equals(localObject[3])) {}
         }
       }
     }
-    for (;;)
+    try
     {
-      WebAccelerator.jdField_b_of_type_Boolean = bool;
-      if (!"0".equals(localObject[3])) {}
-      try
-      {
-        i1 = Integer.parseInt(localObject[3]);
-        if (WebAccelerator.jdField_a_of_type_Boolean)
-        {
-          WebAccelerator.jdField_a_of_type_Int = i1;
-          if (WebAccelerator.jdField_a_of_type_Int == -1) {
-            WebAccelerator.jdField_a_of_type_Int = 0;
-          }
-          return;
-          label118:
-          bool = false;
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          int i1 = 0;
-          continue;
-          i1 = 0;
-        }
-      }
+      i1 = Integer.parseInt(localObject[3]);
+    }
+    catch (Exception localException)
+    {
+      int i1;
+      label106:
+      break label106;
+    }
+    i1 = 0;
+    if (!WebAccelerator.jdField_a_of_type_Boolean) {
+      i1 = 0;
+    }
+    WebAccelerator.jdField_a_of_type_Int = i1;
+    if (WebAccelerator.jdField_a_of_type_Int == -1) {
+      WebAccelerator.jdField_a_of_type_Int = 0;
     }
   }
   
-  public static void a(View paramView)
+  public static void a(Drawable paramDrawable)
   {
-    if (paramView == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.aio.XPanelContainer", 2, "showKeyboard failed, view is null ");
-      }
-    }
-    label386:
-    for (;;)
-    {
-      return;
-      InputMethodManager localInputMethodManager;
-      if (paramView.requestFocus())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.aio.XPanelContainer", 2, " requestFocus success ");
-        }
-        boolean bool = paramView.hasFocus();
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.aio.XPanelContainer", 2, " hasFocus " + bool);
-        }
-        localInputMethodManager = (InputMethodManager)paramView.getContext().getSystemService("input_method");
-        if (!localInputMethodManager.showSoftInput(paramView, 0)) {
-          break label177;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.aio.XPanelContainer", 2, " showSoftInput success ");
-        }
-      }
-      for (;;)
-      {
-        if (!QLog.isColorLevel()) {
-          break label386;
-        }
-        QLog.d("Q.aio.XPanelContainer", 2, " imm.isActive() = " + localInputMethodManager.isActive());
-        return;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e("Q.aio.XPanelContainer", 2, " requestFocus fail ");
-        break;
-        label177:
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.aio.XPanelContainer", 2, " showSoftInput fail ");
-        }
-        try
-        {
-          Object localObject2 = localInputMethodManager.getClass();
-          Object localObject1 = ((Class)localObject2).getDeclaredField("mServedView");
-          localObject2 = ((Class)localObject2).getDeclaredField("mNextServedView");
-          ((Field)localObject1).setAccessible(true);
-          ((Field)localObject2).setAccessible(true);
-          localObject1 = ((Field)localObject1).get(localInputMethodManager);
-          localObject2 = ((Field)localObject2).get(localInputMethodManager);
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.aio.XPanelContainer", 2, " showSoftInput fail mNextServedObject = " + localObject2 + " mServedObject" + localObject1 + " messageInputer = " + paramView);
-          }
-          if ((localObject1 != null) && (localObject1 != paramView) && ((localObject1 instanceof View)))
-          {
-            localInputMethodManager.hideSoftInputFromWindow(((View)localObject1).getWindowToken(), 0);
-            paramView.requestFocusFromTouch();
-            paramView.requestFocus();
-            if ((!localInputMethodManager.showSoftInput(paramView, 0)) && (QLog.isColorLevel())) {
-              QLog.d("Q.aio.XPanelContainer", 2, " try showSoftInput fail ");
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.aio.XPanelContainer", 2, " try showSoftInput end");
-            }
-          }
-        }
-        catch (Exception paramView)
-        {
-          paramView.printStackTrace();
-        }
-      }
+    if (paramDrawable != null) {
+      paramDrawable.setCallback(null);
     }
   }
   
@@ -527,40 +374,35 @@ public final class AIOUtils
     paramView.setPadding(i2, i1, i3, i4);
   }
   
-  public static void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if (paramView == null) {
-      return;
-    }
-    ((View)paramView.getParent()).post(new AIOUtils.3(paramView, paramInt1, paramInt2, paramInt3, paramInt4));
-  }
-  
   public static void a(View paramView, Drawable paramDrawable)
   {
-    if ((paramDrawable == null) || (paramView == null)) {
-      return;
+    if (paramDrawable != null)
+    {
+      if (paramView == null) {
+        return;
+      }
+      Rect localRect = new Rect();
+      paramDrawable.getPadding(localRect);
+      int i1 = paramView.getPaddingTop();
+      int i2 = localRect.top;
+      int i3 = paramView.getPaddingLeft();
+      int i4 = localRect.left;
+      int i5 = paramView.getPaddingRight();
+      int i6 = localRect.right;
+      int i7 = paramView.getPaddingBottom();
+      int i8 = localRect.bottom;
+      paramView.setBackgroundDrawable(paramDrawable);
+      paramView.setPadding(i3 + i4, i1 + i2, i5 + i6, i7 + i8);
     }
-    Rect localRect = new Rect();
-    paramDrawable.getPadding(localRect);
-    int i1 = paramView.getPaddingTop();
-    int i2 = localRect.top;
-    int i3 = paramView.getPaddingLeft();
-    int i4 = localRect.left;
-    int i5 = paramView.getPaddingRight();
-    int i6 = localRect.right;
-    int i7 = paramView.getPaddingBottom();
-    int i8 = localRect.bottom;
-    paramView.setBackgroundDrawable(paramDrawable);
-    paramView.setPadding(i3 + i4, i1 + i2, i5 + i6, i8 + i7);
   }
   
-  public static final void a(QQAppInterface paramQQAppInterface, BaseChatPie paramBaseChatPie, ChatAdapter1 paramChatAdapter1, ChatMessage paramChatMessage)
+  public static final void a(QQAppInterface paramQQAppInterface, int paramInt, List<ChatMessage> paramList, ChatMessage paramChatMessage)
   {
     
     if (WebAccelerator.jdField_a_of_type_Int <= 0) {
       return;
     }
-    a(paramQQAppInterface, a(paramBaseChatPie, paramChatAdapter1, paramChatMessage));
+    a(paramQQAppInterface, a(paramInt, paramList, paramChatMessage));
   }
   
   public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
@@ -572,23 +414,32 @@ public final class AIOUtils
   
   public static void a(String paramString, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, int paramInt3, Object paramObject, int paramInt4)
   {
-    if (paramQQAppInterface == null) {}
-    do
-    {
+    if (paramQQAppInterface == null) {
       return;
-      paramQQAppInterface = paramQQAppInterface.getHandler(ChatActivity.class);
-    } while (paramQQAppInterface == null);
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString, 2, new Object[] { "postDelayedChatPieMessage MSG: ", Integer.valueOf(paramInt1), " arg1: ", Integer.valueOf(paramInt2), "arg2: ", Integer.valueOf(paramInt3), "obj: ", String.valueOf(paramObject) });
     }
-    paramQQAppInterface.removeMessages(paramInt1);
-    paramQQAppInterface.sendMessageDelayed(paramQQAppInterface.obtainMessage(paramInt1, paramInt2, paramInt3, paramObject), paramInt4);
+    paramQQAppInterface = paramQQAppInterface.getHandler(ChatActivity.class);
+    if (paramQQAppInterface != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(paramString, 2, new Object[] { "postDelayedChatPieMessage MSG: ", Integer.valueOf(paramInt1), " arg1: ", Integer.valueOf(paramInt2), "arg2: ", Integer.valueOf(paramInt3), "obj: ", String.valueOf(paramObject) });
+      }
+      paramQQAppInterface.removeMessages(paramInt1);
+      paramQQAppInterface.sendMessageDelayed(paramQQAppInterface.obtainMessage(paramInt1, paramInt2, paramInt3, paramObject), paramInt4);
+    }
   }
   
   public static void a(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, "AIOTime " + paramString2 + "|" + paramInt1 + "|" + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("AIOTime ");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append("|");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append("|");
+      localStringBuilder.append(paramInt2);
+      QLog.d(paramString1, 2, localStringBuilder.toString());
     }
   }
   
@@ -614,108 +465,98 @@ public final class AIOUtils
   
   public static boolean a()
   {
-    if (jdField_c_of_type_JavaLangString.equalsIgnoreCase(Build.MODEL)) {}
-    while (jdField_b_of_type_JavaLangString.equalsIgnoreCase(Build.MODEL)) {
+    if (c.equalsIgnoreCase(Build.MODEL)) {
       return true;
     }
-    String str = Build.MANUFACTURER + ";" + Build.MODEL + ";" + Build.VERSION.SDK_INT;
+    if (b.equalsIgnoreCase(Build.MODEL)) {
+      return true;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(Build.MANUFACTURER);
+    ((StringBuilder)localObject).append(";");
+    ((StringBuilder)localObject).append(Build.MODEL);
+    ((StringBuilder)localObject).append(";");
+    ((StringBuilder)localObject).append(Build.VERSION.SDK_INT);
+    localObject = ((StringBuilder)localObject).toString();
     String[] arrayOfString = jdField_a_of_type_JavaLangString.split("\\|");
     int i2 = arrayOfString.length;
     int i1 = 0;
-    for (;;)
+    while (i1 < i2)
     {
-      if (i1 >= i2) {
-        break label103;
-      }
-      if (arrayOfString[i1].equalsIgnoreCase(str)) {
-        break;
+      if (arrayOfString[i1].equalsIgnoreCase((String)localObject)) {
+        return true;
       }
       i1 += 1;
     }
-    label103:
     return false;
   }
   
-  protected static boolean a(BaseChatPie paramBaseChatPie, ChatAdapter1 paramChatAdapter1, ChatMessage paramChatMessage)
+  protected static boolean a(int paramInt, List<ChatMessage> paramList, ChatMessage paramChatMessage)
   {
     boolean bool2 = false;
     boolean bool1;
-    int i2;
     if (paramChatMessage == null)
     {
-      paramChatAdapter1 = paramChatAdapter1.a();
       bool1 = bool2;
-      if (paramChatAdapter1 != null)
+      if (paramList != null)
       {
         bool1 = bool2;
-        if (paramChatAdapter1.size() > 0)
+        if (paramList.size() > 0)
         {
-          i2 = paramChatAdapter1.size();
-          if (WebAccelerator.jdField_a_of_type_Int <= 1) {
-            break label115;
+          int i3 = paramList.size();
+          if (WebAccelerator.jdField_a_of_type_Int > 1) {
+            i1 = WebAccelerator.jdField_a_of_type_Int;
+          } else {
+            i1 = 10;
           }
-          i1 = WebAccelerator.jdField_a_of_type_Int;
-          if (i2 <= i1) {
-            break label121;
+          int i2 = i3;
+          if (i3 > i1) {
+            i2 = i1;
           }
-          i2 = i1;
-          label61:
-          if (!(paramBaseChatPie instanceof PublicAccountChatPie)) {
-            break label162;
+          if (paramInt == 1008) {
+            paramInt = 1;
+          } else {
+            paramInt = 0;
+          }
+          int i1 = i2 - 1;
+          for (;;)
+          {
+            bool1 = bool2;
+            if (i1 <= -1) {
+              break label157;
+            }
+            paramChatMessage = (ChatMessage)paramList.get(i1);
+            if (paramInt != 0 ? !WebAccelerator.a(paramChatMessage) : (!paramChatMessage.isread) && (WebAccelerator.a(paramChatMessage))) {
+              break;
+            }
+            i1 -= 1;
           }
         }
       }
     }
-    label140:
-    label162:
-    for (int i1 = 1;; i1 = 0)
+    else
     {
-      i2 -= 1;
-      label76:
       bool1 = bool2;
-      if (i2 > -1)
-      {
-        paramBaseChatPie = (ChatMessage)paramChatAdapter1.get(i2);
-        if (i1 == 0) {
-          break label124;
-        }
-        if (!WebAccelerator.a(paramBaseChatPie)) {
-          break label140;
-        }
+      if (WebAccelerator.a(paramChatMessage)) {
         bool1 = true;
       }
-      label115:
-      label121:
-      label124:
-      do
-      {
-        return bool1;
-        i1 = 10;
-        break;
-        break label61;
-        if ((!paramBaseChatPie.isread) && (WebAccelerator.a(paramBaseChatPie))) {
-          return true;
-        }
-        i2 -= 1;
-        break label76;
-        bool1 = bool2;
-      } while (!WebAccelerator.a(paramChatMessage));
-      return true;
     }
+    label157:
+    return bool1;
   }
   
   private static boolean a(BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface, Intent paramIntent)
   {
     try
     {
-      String str = paramIntent.getStringExtra("uin");
+      str = paramIntent.getStringExtra("uin");
       int i1 = paramIntent.getIntExtra("uintype", -1);
       if (str == null) {
         return false;
       }
       if (i1 == -1)
       {
-        QQToast.a(paramBaseActivity, paramBaseActivity.getString(2131719345), 0).b(paramBaseActivity.getTitleBarHeight());
+        QQToast.a(paramBaseActivity, paramBaseActivity.getString(2131719063), 0).b(paramBaseActivity.getTitleBarHeight());
         return false;
       }
       if (paramIntent.hasExtra("account"))
@@ -730,18 +571,29 @@ public final class AIOUtils
           return false;
         }
       }
+    }
+    catch (RuntimeException paramBaseActivity)
+    {
+      String str;
+      label209:
+      label212:
+      break label212;
+    }
+    try
+    {
       if ((paramIntent.getBooleanExtra("shortcut", false)) && (!((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(str)))
       {
-        QQToast.a(paramBaseActivity.getApplicationContext(), paramBaseActivity.getString(2131719346), 0).b(paramBaseActivity.getTitleBarHeight());
+        QQToast.a(paramBaseActivity.getApplicationContext(), paramBaseActivity.getString(2131719064), 0).b(paramBaseActivity.getTitleBarHeight());
         return false;
       }
       return true;
     }
     catch (RuntimeException paramBaseActivity)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.aio.AIOUtils", 2, "RuntimeException isValidChat beforeEnterAIO.");
-      }
+      break label209;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.aio.AIOUtils", 2, "RuntimeException isValidChat beforeEnterAIO.");
     }
     return false;
   }
@@ -755,100 +607,95 @@ public final class AIOUtils
       paramQQAppInterface.addFlags(262144);
       RouteUtils.a(paramBaseActivity, paramQQAppInterface, "/base/login");
       paramBaseActivity.finish();
+      return true;
     }
-    do
+    if (TroopBlockUtils.a(paramBaseActivity, paramQQAppInterface, paramIntent)) {
+      return true;
+    }
+    if (paramBoolean)
     {
-      do
+      if (!a(paramBaseActivity, paramQQAppInterface, paramIntent))
       {
-        do
-        {
-          do
-          {
-            return true;
-          } while (TroopBlockUtils.a(paramBaseActivity, paramQQAppInterface, paramIntent));
-          if (paramBoolean)
-          {
-            if (a(paramBaseActivity, paramQQAppInterface, paramIntent)) {
-              break label215;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.aio.AIOUtils", 2, " isValidChat 1 false");
-            }
-            paramBaseActivity.finish();
-            return true;
-          }
-          if (!paramBaseActivity.isFinishing()) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("Q.aio.AIOUtils", 2, "onNewIntent isFinishing");
-        return true;
-        if (!ThridAppShareHelper.a().a(paramIntent, paramBaseActivity, paramQQAppInterface)) {
-          break;
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.aio.AIOUtils", 2, " isValidChat 1 false");
         }
-      } while (!QLog.isColorLevel());
-      QLog.d("Q.aio.AIOUtils", 2, "onNewIntent ThridApp to chatactivity");
-      return true;
-      Bundle localBundle = paramIntent.getExtras();
-      if ((localBundle == null) || (!localBundle.getBoolean("back_from_emojimall", false))) {
-        break;
+        paramBaseActivity.finish();
+        return true;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.aio.AIOUtils", 2, "onNewIntent KEY_EMOJIMALL_CLOSE_BACK to chatactivity");
-    return true;
-    if (!a(paramBaseActivity, paramQQAppInterface, paramIntent))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.aio.AIOUtils", 2, " isValidChat 2 false");
-      }
-      paramBaseActivity.finish();
-      return true;
     }
-    label215:
+    else
+    {
+      if (paramBaseActivity.isFinishing())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.aio.AIOUtils", 2, "onNewIntent isFinishing");
+        }
+        return true;
+      }
+      if (ThridAppShareHelper.a().a(paramIntent, paramBaseActivity, paramQQAppInterface))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.aio.AIOUtils", 2, "onNewIntent ThridApp to chatactivity");
+        }
+        return true;
+      }
+      Bundle localBundle = paramIntent.getExtras();
+      if ((localBundle != null) && (localBundle.getBoolean("back_from_emojimall", false)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.aio.AIOUtils", 2, "onNewIntent KEY_EMOJIMALL_CLOSE_BACK to chatactivity");
+        }
+        return true;
+      }
+      if (!a(paramBaseActivity, paramQQAppInterface, paramIntent))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.aio.AIOUtils", 2, " isValidChat 2 false");
+        }
+        paramBaseActivity.finish();
+        return true;
+      }
+    }
     StartupTracker.a("AIO_doOnCreate_BeforeEnterCost", null);
     return false;
-  }
-  
-  public static final int b(float paramFloat, Resources paramResources)
-  {
-    if (paramFloat == 0.0F) {
-      return 0;
-    }
-    return (int)(Math.round(paramResources.getDisplayMetrics().density) * paramFloat);
   }
   
   private static int b(int paramInt)
   {
     int i2 = c(paramInt);
+    int i1;
     try
     {
       i1 = jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt, i2);
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOUtils", 2, "AIOTime getVisibilityFromCache|" + jdField_a_of_type_AndroidUtilSparseIntArray.toString() + "|" + paramInt + "|" + i1);
-      }
-      return i1;
     }
     catch (Exception localException)
     {
-      for (;;)
+      i1 = i2;
+      if (QLog.isColorLevel())
       {
-        int i1 = i2;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("AIOUtils", 2, "AIOTime getAIOMsgMenuState dpc exception", localException);
-          i1 = i2;
-        }
+        QLog.e("AIOUtils", 2, "AIOTime getAIOMsgMenuState dpc exception", localException);
+        i1 = i2;
       }
     }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("AIOTime getVisibilityFromCache|");
+      localStringBuilder.append(jdField_a_of_type_AndroidUtilSparseIntArray.toString());
+      localStringBuilder.append("|");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("|");
+      localStringBuilder.append(i1);
+      QLog.d("AIOUtils", 2, localStringBuilder.toString());
+    }
+    return i1;
   }
   
   private static int c(int paramInt)
   {
-    switch (paramInt)
+    if ((paramInt != 1) && (paramInt != 2) && (paramInt != 3))
     {
-    case 4: 
-    case 5: 
-    default: 
+      if (paramInt != 5) {}
       return 1;
     }
     return 0;
@@ -856,7 +703,7 @@ public final class AIOUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AIOUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -16,13 +16,24 @@ class AvatarPendantJsPlugin$4
     try
     {
       paramDialogInterface.put("result", 2);
-      this.this$0.callJs(this.val$callbackId + "(" + paramDialogInterface.toString() + ");");
+      localObject = this.this$0;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.val$callbackId);
+      localStringBuilder.append("(");
+      localStringBuilder.append(paramDialogInterface.toString());
+      localStringBuilder.append(");");
+      ((AvatarPendantJsPlugin)localObject).callJs(localStringBuilder.toString());
       return;
     }
     catch (Exception paramDialogInterface)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("AvatarPendantJsPlugin", 2, "showMsgBox failed: " + paramDialogInterface.getMessage());
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("showMsgBox failed: ");
+        ((StringBuilder)localObject).append(paramDialogInterface.getMessage());
+        QLog.e("AvatarPendantJsPlugin", 2, ((StringBuilder)localObject).toString());
       }
       this.this$0.callJsOnError(this.val$callbackId, paramDialogInterface.getMessage());
     }
@@ -30,7 +41,7 @@ class AvatarPendantJsPlugin$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.AvatarPendantJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

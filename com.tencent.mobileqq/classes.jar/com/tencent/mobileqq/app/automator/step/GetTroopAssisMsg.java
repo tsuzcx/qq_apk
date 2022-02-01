@@ -11,34 +11,34 @@ public class GetTroopAssisMsg
 {
   private MessageObserver a;
   
-  public int a()
+  protected int doStep()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.getMsgHandler().a(3, true);
+    this.mAutomator.a.getMsgHandler().a(3, true);
     return 2;
   }
   
-  public void b()
+  public void onCreate()
   {
-    super.b();
-    if (this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver == null)
+    super.onCreate();
+    if (this.a == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new GetTroopAssisMsg.MyMessageObserver(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.addDefaultObservers(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
+      this.a = new GetTroopAssisMsg.MyMessageObserver(this, null);
+      this.mAutomator.a.addDefaultObservers(this.a);
     }
   }
   
-  public void c()
+  public void onDestroy()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver != null)
+    if (this.a != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = null;
+      this.mAutomator.a.removeObserver(this.a);
+      this.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetTroopAssisMsg
  * JD-Core Version:    0.7.0.1
  */

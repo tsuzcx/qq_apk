@@ -10,8 +10,8 @@ public class OskSupport
 {
   public static final String LOG_TAG = "OskSupport";
   private static boolean isInit = false;
-  private static Context sContext = null;
-  private static NativeLibLoader sLibLoader = null;
+  private static Context sContext;
+  private static NativeLibLoader sLibLoader;
   
   public static Context getContext()
   {
@@ -30,36 +30,38 @@ public class OskSupport
   
   public static void init(Context paramContext, ILogger paramILogger, NativeLibLoader paramNativeLibLoader)
   {
-    if (paramContext == null) {
-      throw new RuntimeException("need a valid applicationContext");
-    }
-    if (paramILogger == null) {
+    if (paramContext != null)
+    {
+      if (paramILogger != null)
+      {
+        if (paramNativeLibLoader == null) {
+          paramILogger.i("OskSupport", "libLoader is not set, use DefaultNativeLibLoader");
+        }
+        try
+        {
+          if (!isInit)
+          {
+            sContext = paramContext.getApplicationContext();
+            Logger.setLogger(paramILogger);
+            paramContext = paramNativeLibLoader;
+            if (paramNativeLibLoader == null) {
+              paramContext = new DefaultNativeLibLoader();
+            }
+            sLibLoader = paramContext;
+            isInit = true;
+          }
+          return;
+        }
+        finally {}
+      }
       throw new RuntimeException("need a valid logger implementation");
     }
-    if (paramNativeLibLoader == null) {
-      paramILogger.i("OskSupport", "libLoader is not set, use DefaultNativeLibLoader");
-    }
-    try
-    {
-      if (!isInit)
-      {
-        sContext = paramContext.getApplicationContext();
-        Logger.setLogger(paramILogger);
-        paramContext = paramNativeLibLoader;
-        if (paramNativeLibLoader == null) {
-          paramContext = new DefaultNativeLibLoader();
-        }
-        sLibLoader = paramContext;
-        isInit = true;
-      }
-      return;
-    }
-    finally {}
+    throw new RuntimeException("need a valid applicationContext");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.support.OskSupport
  * JD-Core Version:    0.7.0.1
  */

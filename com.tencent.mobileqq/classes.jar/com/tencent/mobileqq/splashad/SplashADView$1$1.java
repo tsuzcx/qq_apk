@@ -11,14 +11,14 @@ class SplashADView$1$1
   {
     if (SplashADView.a(this.a.a) != null)
     {
-      QLog.i("QSplash@QbossSplashUtil", 1, "mVideoPlayer is prepare");
+      QLog.i("QSplash@VasSplashUtil", 1, "mVideoPlayer is prepare");
       SplashADView.a(this.a.a).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.splashad.SplashADView.1.1
  * JD-Core Version:    0.7.0.1
  */

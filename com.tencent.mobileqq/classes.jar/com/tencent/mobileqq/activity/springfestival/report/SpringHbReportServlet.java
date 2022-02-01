@@ -13,26 +13,29 @@ public class SpringHbReportServlet
 {
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("shua2021report_SpringHbReportServlet", 2, "[onReceive] cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess() + ", retCode=" + paramFromServiceMsg.getResultCode());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[onReceive] cmd=");
+      ((StringBuilder)localObject).append(paramIntent.getStringExtra("cmd"));
+      ((StringBuilder)localObject).append(",success=");
+      ((StringBuilder)localObject).append(paramFromServiceMsg.isSuccess());
+      ((StringBuilder)localObject).append(", retCode=");
+      ((StringBuilder)localObject).append(paramFromServiceMsg.getResultCode());
+      QLog.d("shua2021report_SpringHbReportServlet", 2, ((StringBuilder)localObject).toString());
     }
-    byte[] arrayOfByte;
+    Object localObject = null;
     if (paramFromServiceMsg.isSuccess())
     {
       int i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      PkgTools.copyData(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+      localObject = new byte[i];
+      PkgTools.copyData((byte[])localObject, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
     }
-    for (;;)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("extra_result_code", paramFromServiceMsg.getResultCode());
-      localBundle.putString("cmd", paramIntent.getStringExtra("cmd"));
-      localBundle.putByteArray("data", arrayOfByte);
-      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
-      return;
-      arrayOfByte = null;
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("extra_result_code", paramFromServiceMsg.getResultCode());
+    localBundle.putString("cmd", paramIntent.getStringExtra("cmd"));
+    localBundle.putByteArray("data", (byte[])localObject);
+    notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -43,14 +46,18 @@ public class SpringHbReportServlet
     paramPacket.setSSOCommand(str);
     paramPacket.setTimeout(l);
     paramPacket.putSendData(arrayOfByte);
-    if (QLog.isColorLevel()) {
-      QLog.d("shua2021report_SpringHbReportServlet", 2, "[onSend] cmd=" + str);
+    if (QLog.isColorLevel())
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("[onSend] cmd=");
+      paramIntent.append(str);
+      QLog.d("shua2021report_SpringHbReportServlet", 2, paramIntent.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.report.SpringHbReportServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -31,7 +31,9 @@ public final class DelimitedRangesSequence$iterator$1
   
   private final void calcNext()
   {
-    if (this.nextSearchIndex < 0)
+    int j = this.nextSearchIndex;
+    int i = 0;
+    if (j < 0)
     {
       this.nextState = 0;
       this.nextItem = ((IntRange)null);
@@ -45,33 +47,33 @@ public final class DelimitedRangesSequence$iterator$1
     else
     {
       if (this.nextSearchIndex <= DelimitedRangesSequence.access$getInput$p(this.this$0).length()) {
-        break label110;
+        break label111;
       }
     }
     this.nextItem = new IntRange(this.currentStartIndex, StringsKt.getLastIndex(DelimitedRangesSequence.access$getInput$p(this.this$0)));
-    label110:
-    Pair localPair;
-    for (this.nextSearchIndex = -1;; this.nextSearchIndex = -1)
+    this.nextSearchIndex = -1;
+    break label241;
+    label111:
+    Pair localPair = (Pair)DelimitedRangesSequence.access$getGetNextMatch$p(this.this$0).invoke(DelimitedRangesSequence.access$getInput$p(this.this$0), Integer.valueOf(this.nextSearchIndex));
+    if (localPair == null)
     {
-      this.nextState = 1;
-      return;
-      localPair = (Pair)DelimitedRangesSequence.access$getGetNextMatch$p(this.this$0).invoke(DelimitedRangesSequence.access$getInput$p(this.this$0), Integer.valueOf(this.nextSearchIndex));
-      if (localPair != null) {
-        break;
-      }
       this.nextItem = new IntRange(this.currentStartIndex, StringsKt.getLastIndex(DelimitedRangesSequence.access$getInput$p(this.this$0)));
+      this.nextSearchIndex = -1;
     }
-    int j = ((Number)localPair.component1()).intValue();
-    int i = ((Number)localPair.component2()).intValue();
-    this.nextItem = RangesKt.until(this.currentStartIndex, j);
-    this.currentStartIndex = (j + i);
-    j = this.currentStartIndex;
-    if (i == 0) {}
-    for (i = 1;; i = 0)
+    else
     {
-      this.nextSearchIndex = (i + j);
-      break;
+      int k = ((Number)localPair.component1()).intValue();
+      j = ((Number)localPair.component2()).intValue();
+      this.nextItem = RangesKt.until(this.currentStartIndex, k);
+      this.currentStartIndex = (k + j);
+      k = this.currentStartIndex;
+      if (j == 0) {
+        i = 1;
+      }
+      this.nextSearchIndex = (k + i);
     }
+    label241:
+    this.nextState = 1;
   }
   
   public final int getCounter()
@@ -114,16 +116,18 @@ public final class DelimitedRangesSequence$iterator$1
     if (this.nextState == -1) {
       calcNext();
     }
-    if (this.nextState == 0) {
-      throw ((Throwable)new NoSuchElementException());
-    }
-    IntRange localIntRange = this.nextItem;
-    if (localIntRange == null) {
+    if (this.nextState != 0)
+    {
+      IntRange localIntRange = this.nextItem;
+      if (localIntRange != null)
+      {
+        this.nextItem = ((IntRange)null);
+        this.nextState = -1;
+        return localIntRange;
+      }
       throw new TypeCastException("null cannot be cast to non-null type kotlin.ranges.IntRange");
     }
-    this.nextItem = ((IntRange)null);
-    this.nextState = -1;
-    return localIntRange;
+    throw ((Throwable)new NoSuchElementException());
   }
   
   public void remove()
@@ -158,7 +162,7 @@ public final class DelimitedRangesSequence$iterator$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.text.DelimitedRangesSequence.iterator.1
  * JD-Core Version:    0.7.0.1
  */

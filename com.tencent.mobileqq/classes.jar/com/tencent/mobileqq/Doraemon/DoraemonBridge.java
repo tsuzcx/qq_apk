@@ -1,65 +1,76 @@
 package com.tencent.mobileqq.Doraemon;
 
 import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.Doraemon.impl.commonModule.UserInfoModule;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
 import com.tencent.mobileqq.Doraemon.monitor.DoraemonFrequenceController;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 
 public class DoraemonBridge
 {
-  TroopMemberApiService jdField_a_of_type_ComTencentBizTroopTroopMemberApiService;
-  AppRuntime jdField_a_of_type_MqqAppAppRuntime;
+  AppRuntime a;
   
-  public DoraemonBridge(AppRuntime paramAppRuntime, TroopMemberApiService paramTroopMemberApiService)
+  public DoraemonBridge(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService = paramTroopMemberApiService;
+    this.a = paramAppRuntime;
   }
   
-  public static void a(int paramInt, Bundle paramBundle, DoraemonBridge.Callback paramCallback)
+  public static void a(int paramInt, Bundle paramBundle, Callback paramCallback)
   {
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    localBundle.putInt("key_sub_cmd", paramInt);
-    if (paramCallback != null)
-    {
-      TroopMemberApiClient.a().a(118, localBundle, paramCallback);
-      return;
-    }
-    TroopMemberApiClient.a().a(118, localBundle);
+    ((IDoraemonClient)QRoute.api(IDoraemonClient.class)).sendToServer(paramInt, paramBundle, paramCallback);
   }
   
-  public void a(int paramInt1, Bundle paramBundle, int paramInt2)
+  public void a(int paramInt1, Bundle paramBundle, int paramInt2, Messenger paramMessenger)
   {
-    switch (paramBundle.getInt("key_sub_cmd"))
+    paramInt2 = paramBundle.getInt("key_sub_cmd");
+    if (paramInt2 != 1)
     {
-    default: 
-      return;
-    case 1: 
-      paramBundle.putBundle("key_result", UserInfoModule.a());
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(paramInt1, paramBundle);
-      return;
-    case 2: 
-      str1 = paramBundle.getString("key");
+      if (paramInt2 != 2)
+      {
+        if (paramInt2 != 3) {
+          return;
+        }
+        paramMessenger = paramBundle.getString("key");
+        paramInt1 = paramBundle.getInt("type");
+        localObject = paramBundle.getString("appid");
+        paramBundle = paramBundle.getString("api");
+        DoraemonFrequenceController.a().b(paramMessenger, paramInt1, (String)localObject, paramBundle);
+        return;
+      }
+      paramMessenger = paramBundle.getString("key");
       paramInt1 = paramBundle.getInt("type");
       paramBundle = paramBundle.getString("appid");
-      DoraemonFrequenceController.a().b(str1, paramInt1, paramBundle);
+      DoraemonFrequenceController.a().b(paramMessenger, paramInt1, paramBundle);
       return;
     }
-    String str1 = paramBundle.getString("key");
-    paramInt1 = paramBundle.getInt("type");
-    String str2 = paramBundle.getString("appid");
-    paramBundle = paramBundle.getString("api");
-    DoraemonFrequenceController.a().b(str1, paramInt1, str2, paramBundle);
+    paramBundle.putBundle("key_result", ((IDoraemonApi)QRoute.api(IDoraemonApi.class)).getUserInfo());
+    Object localObject = Message.obtain(null, paramInt1);
+    ((Message)localObject).setData(paramBundle);
+    if (paramMessenger != null) {
+      try
+      {
+        paramMessenger.send((Message)localObject);
+        return;
+      }
+      catch (RemoteException paramBundle)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramMessenger = new StringBuilder();
+          paramMessenger.append("messeage not sent:");
+          paramMessenger.append(paramBundle.getMessage());
+          QLog.e("DoraemonBridge", 2, paramMessenger.toString());
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.DoraemonBridge
  * JD-Core Version:    0.7.0.1
  */

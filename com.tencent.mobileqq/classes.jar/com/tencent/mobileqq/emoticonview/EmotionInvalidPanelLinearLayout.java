@@ -37,18 +37,19 @@ public class EmotionInvalidPanelLinearLayout
     this.context = paramContext;
     this.emotionPkg = paramEmoticonPackage;
     this.mDensity = super.getContext().getResources().getDisplayMetrics().density;
-    if (this.emotionPkg.jobType == 4) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.isSmallEmotion = bool;
-      this.rowNum = paramInt1;
-      this.columnNum = paramInt2;
-      new DisplayMetrics();
-      this.widthPixels = paramContext.getResources().getDisplayMetrics().widthPixels;
-      super.setOrientation(1);
-      init();
-      return;
+    boolean bool;
+    if (this.emotionPkg.jobType == 4) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.isSmallEmotion = bool;
+    this.rowNum = paramInt1;
+    this.columnNum = paramInt2;
+    new DisplayMetrics();
+    this.widthPixels = paramContext.getResources().getDisplayMetrics().widthPixels;
+    super.setOrientation(1);
+    init();
   }
   
   public void init()
@@ -56,117 +57,117 @@ public class EmotionInvalidPanelLinearLayout
     long l = System.currentTimeMillis();
     super.removeAllViews();
     int i = 0;
+    Object localObject1;
     while (i < this.rowNum)
     {
       LinearLayout localLinearLayout = new LinearLayout(this.context);
-      int j = (int)(72.0F * this.mDensity);
+      float f = this.mDensity;
+      int j = (int)(f * 72.0F);
       if (this.isSmallEmotion) {
-        j = (this.widthPixels - (int)(18.0F * this.mDensity) * 8) / 7;
+        j = (this.widthPixels - (int)(f * 18.0F) * 8) / 7;
       }
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, j);
       localLinearLayout.setOrientation(0);
-      label107:
-      Object localObject1;
-      Object localObject3;
-      if (this.isSmallEmotion)
-      {
-        localLayoutParams.topMargin = ((int)(18.0F * this.mDensity));
-        j = 0;
-        if (j >= this.columnNum) {
-          break label629;
-        }
-        if (!this.isSmallEmotion) {
-          break label276;
-        }
-        localObject1 = new URLImageView(this.context);
-        ((URLImageView)localObject1).setId(2131378813);
-        int k = (this.widthPixels - (int)(18.0F * this.mDensity) * 8) / 7;
-        localObject3 = new LinearLayout.LayoutParams(k, k);
-        ((LinearLayout.LayoutParams)localObject3).leftMargin = ((int)(18.0F * this.mDensity));
-        ((URLImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject3);
-        ((URLImageView)localObject1).setVisibility(8);
-        ((URLImageView)localObject1).setScaleType(ImageView.ScaleType.FIT_XY);
-        ((URLImageView)localObject1).setAdjustViewBounds(false);
-        ((URLImageView)localObject1).setFocusable(true);
-        ((URLImageView)localObject1).setFocusableInTouchMode(true);
-        localLinearLayout.addView((View)localObject1);
+      if (this.isSmallEmotion) {
+        localLayoutParams.topMargin = ((int)(this.mDensity * 18.0F));
+      } else if (i == 0) {
+        localLayoutParams.topMargin = ((int)(this.mDensity * 16.0F));
+      } else {
+        localLayoutParams.topMargin = ((int)(this.mDensity * 14.0F));
       }
-      for (;;)
+      j = 0;
+      while (j < this.columnNum)
       {
-        j += 1;
-        break label107;
-        if (i == 0)
+        RelativeLayout localRelativeLayout;
+        if (this.isSmallEmotion)
         {
-          localLayoutParams.topMargin = ((int)(16.0F * this.mDensity));
-          break;
-        }
-        localLayoutParams.topMargin = ((int)(14.0F * this.mDensity));
-        break;
-        label276:
-        localObject3 = new RelativeLayout(this.context);
-        localObject1 = new LinearLayout.LayoutParams(this.widthPixels / this.columnNum, (int)(72.0F * this.mDensity));
-        ((RelativeLayout)localObject3).setFocusable(true);
-        ((RelativeLayout)localObject3).setFocusableInTouchMode(true);
-        ((RelativeLayout)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        try
-        {
-          localObject1 = new TextView(this.context);
-          if (localObject1 != null)
-          {
-            ((TextView)localObject1).setVisibility(8);
-            ((TextView)localObject1).setId(2131374858);
-            ((TextView)localObject1).setTextSize(11.0F);
-            localLayoutParams1 = new RelativeLayout.LayoutParams(-2, -2);
-            localLayoutParams1.addRule(12);
-            localLayoutParams1.addRule(14);
-            localLayoutParams1.topMargin = ((int)(5.0F * this.mDensity));
-            ((RelativeLayout)localObject3).addView((View)localObject1, localLayoutParams1);
-          }
           localObject1 = new URLImageView(this.context);
-          ((URLImageView)localObject1).setId(2131378813);
-          RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams((int)(56.0F * this.mDensity), (int)(56.0F * this.mDensity));
-          localLayoutParams1.addRule(13, -1);
-          localLayoutParams1.addRule(2, 2131374858);
-          localLayoutParams1.addRule(14);
+          ((URLImageView)localObject1).setId(2131378202);
+          int k = (this.widthPixels - (int)(this.mDensity * 18.0F) * 8) / 7;
+          localObject2 = new LinearLayout.LayoutParams(k, k);
+          ((LinearLayout.LayoutParams)localObject2).leftMargin = ((int)(this.mDensity * 18.0F));
+          ((URLImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
           ((URLImageView)localObject1).setVisibility(8);
           ((URLImageView)localObject1).setScaleType(ImageView.ScaleType.FIT_XY);
           ((URLImageView)localObject1).setAdjustViewBounds(false);
-          ((RelativeLayout)localObject3).addView((View)localObject1, localLayoutParams1);
-          localObject1 = new ImageView(this.context);
-          ((ImageView)localObject1).setVisibility(8);
-          ((ImageView)localObject1).setId(2131374859);
-          localLayoutParams1 = new RelativeLayout.LayoutParams(-2, -2);
-          localLayoutParams1.addRule(7, 2131378813);
-          localLayoutParams1.addRule(8, 2131378813);
-          ((RelativeLayout)localObject3).addView((View)localObject1, localLayoutParams1);
-          if (AppSetting.d) {
-            ((RelativeLayout)localObject3).setFocusable(true);
-          }
-          if (AppSetting.d) {
-            ((RelativeLayout)localObject3).setFocusable(true);
-          }
-          localLinearLayout.addView((View)localObject3);
+          ((URLImageView)localObject1).setFocusable(true);
+          ((URLImageView)localObject1).setFocusableInTouchMode(true);
+          localLinearLayout.addView((View)localObject1);
+        }
+        else
+        {
+          localRelativeLayout = new RelativeLayout(this.context);
+          localObject1 = new LinearLayout.LayoutParams(this.widthPixels / this.columnNum, (int)(this.mDensity * 72.0F));
+          localRelativeLayout.setFocusable(true);
+          localRelativeLayout.setFocusableInTouchMode(true);
+          localRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+          localObject1 = null;
+        }
+        try
+        {
+          localObject2 = new TextView(this.context);
+          localObject1 = localObject2;
         }
         catch (Exception localException)
         {
-          for (;;)
-          {
-            Object localObject2 = null;
-          }
+          label352:
+          break label352;
         }
+        if (localObject1 != null)
+        {
+          ((TextView)localObject1).setVisibility(8);
+          ((TextView)localObject1).setId(2131374392);
+          ((TextView)localObject1).setTextSize(11.0F);
+          localObject2 = new RelativeLayout.LayoutParams(-2, -2);
+          ((RelativeLayout.LayoutParams)localObject2).addRule(12);
+          ((RelativeLayout.LayoutParams)localObject2).addRule(14);
+          ((RelativeLayout.LayoutParams)localObject2).topMargin = ((int)(this.mDensity * 5.0F));
+          localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+        }
+        localObject1 = new URLImageView(this.context);
+        ((URLImageView)localObject1).setId(2131378202);
+        f = this.mDensity;
+        Object localObject2 = new RelativeLayout.LayoutParams((int)(f * 56.0F), (int)(f * 56.0F));
+        ((RelativeLayout.LayoutParams)localObject2).addRule(13, -1);
+        ((RelativeLayout.LayoutParams)localObject2).addRule(2, 2131374392);
+        ((RelativeLayout.LayoutParams)localObject2).addRule(14);
+        ((URLImageView)localObject1).setVisibility(8);
+        ((URLImageView)localObject1).setScaleType(ImageView.ScaleType.FIT_XY);
+        ((URLImageView)localObject1).setAdjustViewBounds(false);
+        localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+        localObject1 = new ImageView(this.context);
+        ((ImageView)localObject1).setVisibility(8);
+        ((ImageView)localObject1).setId(2131374393);
+        localObject2 = new RelativeLayout.LayoutParams(-2, -2);
+        ((RelativeLayout.LayoutParams)localObject2).addRule(7, 2131378202);
+        ((RelativeLayout.LayoutParams)localObject2).addRule(8, 2131378202);
+        localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+        if (AppSetting.d) {
+          localRelativeLayout.setFocusable(true);
+        }
+        if (AppSetting.d) {
+          localRelativeLayout.setFocusable(true);
+        }
+        localLinearLayout.addView(localRelativeLayout);
+        j += 1;
       }
-      label629:
       super.addView(localLinearLayout, localLayoutParams);
       i += 1;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ClassicEmoticonPanelView", 2, "[Performance] EmoticonLinearLayout create duration: " + (System.currentTimeMillis() - l) + "issmallemotion = " + this.isSmallEmotion);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[Performance] EmoticonLinearLayout create duration: ");
+      ((StringBuilder)localObject1).append(System.currentTimeMillis() - l);
+      ((StringBuilder)localObject1).append("issmallemotion = ");
+      ((StringBuilder)localObject1).append(this.isSmallEmotion);
+      QLog.d("ClassicEmoticonPanelView", 2, ((StringBuilder)localObject1).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionInvalidPanelLinearLayout
  * JD-Core Version:    0.7.0.1
  */

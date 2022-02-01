@@ -17,26 +17,33 @@ class MsgTabStoryNodeConfigManager$1
   
   public void a(@NonNull MsgTabCheckActiveRequest paramMsgTabCheckActiveRequest, @Nullable MsgTabCheckActiveRequest.MsgTabCheckActiveResponse paramMsgTabCheckActiveResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if ((paramErrorMessage.isFail()) || (paramMsgTabCheckActiveResponse == null))
+    if ((!paramErrorMessage.isFail()) && (paramMsgTabCheckActiveResponse != null))
     {
-      QLog.w("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 1, "get active fail" + paramErrorMessage.getErrorMessage());
+      if (paramMsgTabCheckActiveResponse.b == 1)
+      {
+        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager.a(true);
+        this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler.b(2);
+        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager.a = 2;
+      }
+      if (QLog.isColorLevel())
+      {
+        paramMsgTabCheckActiveRequest = new StringBuilder();
+        paramMsgTabCheckActiveRequest.append("active value is ");
+        paramMsgTabCheckActiveRequest.append(paramMsgTabCheckActiveResponse.b);
+        QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, paramMsgTabCheckActiveRequest.toString());
+      }
+      this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.a(paramMsgTabCheckActiveResponse.a);
       return;
     }
-    if (paramMsgTabCheckActiveResponse.b == 1)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager.a(true);
-      this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler.b(2);
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager.a = 2;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "active value is " + paramMsgTabCheckActiveResponse.b);
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.a(paramMsgTabCheckActiveResponse.a);
+    paramMsgTabCheckActiveRequest = new StringBuilder();
+    paramMsgTabCheckActiveRequest.append("get active fail");
+    paramMsgTabCheckActiveRequest.append(paramErrorMessage.getErrorMessage());
+    QLog.w("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 1, paramMsgTabCheckActiveRequest.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryNodeConfigManager.1
  * JD-Core Version:    0.7.0.1
  */

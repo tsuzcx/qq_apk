@@ -17,22 +17,20 @@ class MiniAppUserAppInfoListManager$6
   public void run()
   {
     Object localObject = MiniAppUtils.getAppInterface();
-    if (localObject == null) {
-      QLog.e("MiniAppUserAppInfoListManager", 1, "initLocalDataRunnable, app is null.");
-    }
-    for (;;)
+    if (localObject == null)
     {
+      QLog.e("MiniAppUserAppInfoListManager", 1, "initLocalDataRunnable, app is null.");
       return;
-      localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager().query(MiniAppRedDotEntity.class, MiniAppRedDotEntity.class.getSimpleName(), false, null, null, null, null, null, null);
-      if ((localObject != null) && (((List)localObject).size() > 0))
+    }
+    localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager().query(MiniAppRedDotEntity.class, MiniAppRedDotEntity.class.getSimpleName(), false, null, null, null, null, null, null);
+    if ((localObject != null) && (((List)localObject).size() > 0))
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          MiniAppRedDotEntity localMiniAppRedDotEntity = (MiniAppRedDotEntity)((Iterator)localObject).next();
-          if ((localMiniAppRedDotEntity != null) && (!TextUtils.isEmpty(localMiniAppRedDotEntity.appId))) {
-            MiniAppUserAppInfoListManager.access$900(this.this$0).put(localMiniAppRedDotEntity.appId, Integer.valueOf(localMiniAppRedDotEntity.wnsPushRedDotNum));
-          }
+        MiniAppRedDotEntity localMiniAppRedDotEntity = (MiniAppRedDotEntity)((Iterator)localObject).next();
+        if ((localMiniAppRedDotEntity != null) && (!TextUtils.isEmpty(localMiniAppRedDotEntity.appId))) {
+          MiniAppUserAppInfoListManager.access$900(this.this$0).put(localMiniAppRedDotEntity.appId, Integer.valueOf(localMiniAppRedDotEntity.wnsPushRedDotNum));
         }
       }
     }
@@ -40,7 +38,7 @@ class MiniAppUserAppInfoListManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUserAppInfoListManager.6
  * JD-Core Version:    0.7.0.1
  */

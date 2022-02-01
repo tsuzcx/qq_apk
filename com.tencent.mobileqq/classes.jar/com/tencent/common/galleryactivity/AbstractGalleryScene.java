@@ -32,14 +32,14 @@ public abstract class AbstractGalleryScene
   extends ImageScene
   implements AnimationLister, AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener, AdapterView.OnItemSelectedListener, Gallery.OnItemRotateListener, Gallery.OnScollListener
 {
-  public Activity a;
-  public RelativeLayout a;
+  protected Activity a;
+  protected RelativeLayout a;
   protected AbstractGalleryPageView a;
   protected AbstractImageAdapter a;
   protected AbstractImageListModel a;
   protected AbstractProgressView a;
   AnimationLister a;
-  public Gallery a;
+  protected Gallery a;
   protected int b;
   protected View d;
   public boolean g = false;
@@ -53,7 +53,7 @@ public abstract class AbstractGalleryScene
   
   protected RelativeLayout a()
   {
-    return (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131561450, null);
+    return (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131561293, null);
   }
   
   protected AbstractGalleryPageView a(Context paramContext)
@@ -80,60 +80,45 @@ public abstract class AbstractGalleryScene
   
   public abstract void a();
   
-  public void a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView != null) && (this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView.a())) {
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView.b();
-    }
-    if ((this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView != null) && (this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView.b())) {
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView.c();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AbstractGalleryScene", 2, "onScrollStart:" + paramInt);
-    }
-  }
-  
-  public void a(View paramView, int paramInt1, int paramInt2) {}
-  
   public void a(ViewGroup paramViewGroup)
   {
     a();
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = a();
     if (paramViewGroup == null) {
       this.jdField_a_of_type_AndroidAppActivity.addContentView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, new ViewGroup.LayoutParams(-1, -1));
-    }
-    for (;;)
-    {
-      b((ViewGroup)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131377356));
-      this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131367677));
-      this.d = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131363419);
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryPageView = a(this.jdField_a_of_type_AndroidAppActivity);
-      if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryPageView != null) {
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryPageView.a(this.jdField_a_of_type_AndroidAppActivity, this, this.b);
-      }
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView = a();
-      if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView != null) {
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView.a(this.jdField_a_of_type_AndroidAppActivity, this);
-      }
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageAdapter = a(this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageAdapter.a(this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel);
-      if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView != null)
-      {
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageAdapter.a(this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView);
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView.a();
-      }
-      this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageAdapter);
-      this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131297168));
-      this.jdField_a_of_type_ComTencentWidgetGallery.setSelection(this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel.b());
-      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(this);
-      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(this);
-      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemLongClickListener(this);
-      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemRotateListener(this);
-      this.jdField_a_of_type_ComTencentWidgetGallery.setOnScollListener(this);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
-      return;
+    } else {
       paramViewGroup.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, new ViewGroup.LayoutParams(-1, -1));
     }
+    b((ViewGroup)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131376809));
+    this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131367431));
+    this.d = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131363349);
+    this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryPageView = a(this.jdField_a_of_type_AndroidAppActivity);
+    paramViewGroup = this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryPageView;
+    if (paramViewGroup != null) {
+      paramViewGroup.a(this.jdField_a_of_type_AndroidAppActivity, this, this.b);
+    }
+    this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView = a();
+    paramViewGroup = this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView;
+    if (paramViewGroup != null) {
+      paramViewGroup.a(this.jdField_a_of_type_AndroidAppActivity, this);
+    }
+    this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageAdapter = a(this.jdField_a_of_type_AndroidAppActivity);
+    this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageAdapter.a(this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel);
+    paramViewGroup = this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView;
+    if (paramViewGroup != null)
+    {
+      this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageAdapter.a(paramViewGroup);
+      this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView.a();
+    }
+    this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageAdapter);
+    this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131297150));
+    this.jdField_a_of_type_ComTencentWidgetGallery.setSelection(this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel.b());
+    this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(this);
+    this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(this);
+    this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemLongClickListener(this);
+    this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemRotateListener(this);
+    this.jdField_a_of_type_ComTencentWidgetGallery.setOnScollListener(this);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2)
@@ -163,16 +148,6 @@ public abstract class AbstractGalleryScene
     return true;
   }
   
-  public void b(int paramInt)
-  {
-    if ((this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView != null) && (!this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView.a())) {
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView.a();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AbstractGalleryScene", 2, "onScrollEnd:" + paramInt);
-    }
-  }
-  
   public void b(boolean paramBoolean)
   {
     if (b())
@@ -180,8 +155,9 @@ public abstract class AbstractGalleryScene
       a(paramBoolean, this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a().b());
       return;
     }
-    if (this.jdField_a_of_type_ComTencentWidgetGallery != null) {
-      this.jdField_a_of_type_ComTencentWidgetGallery.setBackgroundColor(-16777216);
+    Gallery localGallery = this.jdField_a_of_type_ComTencentWidgetGallery;
+    if (localGallery != null) {
+      localGallery.setBackgroundColor(-16777216);
     }
     this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister.f();
   }
@@ -241,18 +217,18 @@ public abstract class AbstractGalleryScene
     if (this.g)
     {
       this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a();
-      return true;
     }
-    if (c()) {
-      b(false, this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a().c());
-    }
-    for (;;)
+    else
     {
+      if (c()) {
+        b(false, this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a().c());
+      } else {
+        this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister.i();
+      }
       QQLiveImage.pauseAll(this.jdField_a_of_type_AndroidAppActivity);
       QQLiveImage.releaseAll(this.jdField_a_of_type_AndroidAppActivity);
-      break;
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister.i();
     }
+    return true;
   }
   
   public void f() {}
@@ -284,14 +260,15 @@ public abstract class AbstractGalleryScene
       if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)) {
         r();
       }
-      if (((AIOGalleryActivity)this.jdField_a_of_type_AndroidAppActivity).mSystemBarComp != null)
+      if (((AIOGalleryActivity)this.jdField_a_of_type_AndroidAppActivity).a != null)
       {
-        ((AIOGalleryActivity)this.jdField_a_of_type_AndroidAppActivity).mSystemBarComp.setStatusColor(-16777216);
-        ((AIOGalleryActivity)this.jdField_a_of_type_AndroidAppActivity).mSystemBarComp.setStatusBarColor(-16777216);
+        ((AIOGalleryActivity)this.jdField_a_of_type_AndroidAppActivity).a.setStatusColor(-16777216);
+        ((AIOGalleryActivity)this.jdField_a_of_type_AndroidAppActivity).a.setStatusBarColor(-16777216);
       }
     }
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    RelativeLayout localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    if (localRelativeLayout != null) {
+      localRelativeLayout.setVisibility(0);
     }
     if (QLog.isColorLevel()) {
       QLog.d("GalleryComponent", 2, "gallery onstart");
@@ -326,23 +303,67 @@ public abstract class AbstractGalleryScene
   
   public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramView == null) {}
-    do
-    {
+    if (paramView == null) {
       return;
-      if ((this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryPageView != null) && (a())) {
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryPageView.a(paramAdapterView, paramInt);
-      }
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel.a(paramInt);
-      if ((!d()) && (this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView != null) && (!this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView.a())) {
+    }
+    if ((this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryPageView != null) && (a())) {
+      this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryPageView.a(paramAdapterView, paramInt);
+    }
+    this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel.a(paramInt);
+    if (!d())
+    {
+      paramAdapterView = this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView;
+      if ((paramAdapterView != null) && (!paramAdapterView.a())) {
         this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView.a();
       }
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageAdapter.a(paramView, paramInt);
-    } while (!QLog.isColorLevel());
-    QLog.i("AbstractGalleryScene", 2, "AbstractGalleryScene.onItemSelected(): position=" + paramInt);
+    }
+    this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageAdapter.a(paramView, paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramAdapterView = new StringBuilder();
+      paramAdapterView.append("AbstractGalleryScene.onItemSelected(): position=");
+      paramAdapterView.append(paramInt);
+      QLog.i("AbstractGalleryScene", 2, paramAdapterView.toString());
+    }
   }
   
   public void onNothingSelected(AdapterView<?> paramAdapterView) {}
+  
+  public void onRotateFinished(View paramView, int paramInt1, int paramInt2) {}
+  
+  public void onScrollEnd(int paramInt)
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView;
+    if ((localObject != null) && (!((AbstractProgressView)localObject).a())) {
+      this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView.a();
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onScrollEnd:");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("AbstractGalleryScene", 2, ((StringBuilder)localObject).toString());
+    }
+  }
+  
+  public void onScrollStart(int paramInt)
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView;
+    if ((localObject != null) && (((AbstractProgressView)localObject).a())) {
+      this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView.b();
+    }
+    localObject = this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView;
+    if ((localObject != null) && (((AbstractProgressView)localObject).b())) {
+      this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView.c();
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onScrollStart:");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("AbstractGalleryScene", 2, ((StringBuilder)localObject).toString());
+    }
+  }
   
   public void p()
   {
@@ -367,12 +388,12 @@ public abstract class AbstractGalleryScene
   
   public void s()
   {
-    this.jdField_a_of_type_ComTencentWidgetGallery.e();
+    this.jdField_a_of_type_ComTencentWidgetGallery.reset();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.common.galleryactivity.AbstractGalleryScene
  * JD-Core Version:    0.7.0.1
  */

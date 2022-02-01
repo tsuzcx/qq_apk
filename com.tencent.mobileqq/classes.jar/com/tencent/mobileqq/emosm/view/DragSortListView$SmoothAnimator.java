@@ -18,22 +18,26 @@ class DragSortListView$SmoothAnimator
   {
     this.b = paramFloat;
     this.jdField_a_of_type_Float = paramInt;
-    paramFloat = 1.0F / (this.b * 2.0F * (1.0F - this.b));
-    this.f = paramFloat;
-    this.c = paramFloat;
-    this.d = (this.b / ((this.b - 1.0F) * 2.0F));
-    this.e = (1.0F / (1.0F - this.b));
+    paramFloat = this.b;
+    float f1 = 1.0F / (paramFloat * 2.0F * (1.0F - paramFloat));
+    this.f = f1;
+    this.c = f1;
+    this.d = (paramFloat / ((paramFloat - 1.0F) * 2.0F));
+    this.e = (1.0F / (1.0F - paramFloat));
   }
   
   public float a(float paramFloat)
   {
-    if (paramFloat < this.b) {
+    float f1 = this.b;
+    if (paramFloat < f1) {
       return this.c * paramFloat * paramFloat;
     }
-    if (paramFloat < 1.0F - this.b) {
+    if (paramFloat < 1.0F - f1) {
       return this.d + this.e * paramFloat;
     }
-    return 1.0F - this.f * (paramFloat - 1.0F) * (paramFloat - 1.0F);
+    f1 = this.f;
+    paramFloat -= 1.0F;
+    return 1.0F - f1 * paramFloat * paramFloat;
   }
   
   public void a() {}
@@ -73,7 +77,7 @@ class DragSortListView$SmoothAnimator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.view.DragSortListView.SmoothAnimator
  * JD-Core Version:    0.7.0.1
  */

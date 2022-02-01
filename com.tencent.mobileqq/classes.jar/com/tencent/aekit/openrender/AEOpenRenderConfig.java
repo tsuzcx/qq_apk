@@ -19,8 +19,10 @@ public class AEOpenRenderConfig
   
   public static void checkStrictMode(boolean paramBoolean, String paramString)
   {
-    if (!strictMode) {}
-    while (paramBoolean) {
+    if (!strictMode) {
+      return;
+    }
+    if (paramBoolean) {
       return;
     }
     throw new AEOpenRenderConfig.StrictModeCheckFailedException(paramString);

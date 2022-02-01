@@ -13,27 +13,22 @@ final class ChatAVHelper$12
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$VideoCheckFlag.a)
     {
-      if (this.jdField_a_of_type_Int != 2) {
-        break label59;
-      }
-      ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "3", "", "", "");
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener.a();
-      }
-      return;
-      label59:
-      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
+      int i = this.jdField_a_of_type_Int;
+      if (i == 2) {
+        ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "3", "", "", "");
+      } else if ((i == 3) || (i == 4)) {
         ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "3", "", "", "");
       }
+    }
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatAVHelper.12
  * JD-Core Version:    0.7.0.1
  */

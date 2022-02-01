@@ -22,11 +22,16 @@ class FileStorageHandler$1
       {
         FileCacheService localFileCacheService = (FileCacheService)paramJobContext.next();
         int j = localFileCacheService.getCapacity(this.val$externalStorage);
-        String str = localFileCacheService.getDir();
-        int i = FileStorageHandler.access$100(this.this$0, str);
+        Object localObject = localFileCacheService.getDir();
+        int i = FileStorageHandler.access$100(this.this$0, (String)localObject);
         j = FileStorageHandler.access$200(this.this$0, j, i);
-        this.this$0.cleanOldFile(i, j, str);
-        QLog.w("CacheManager", 1, "onLowStorage clear cache service:" + localFileCacheService + ": remain=" + j);
+        this.this$0.cleanOldFile(i, j, (String)localObject);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onLowStorage clear cache service:");
+        ((StringBuilder)localObject).append(localFileCacheService);
+        ((StringBuilder)localObject).append(": remain=");
+        ((StringBuilder)localObject).append(j);
+        QLog.w("CacheManager", 1, ((StringBuilder)localObject).toString());
       }
       if (FileStorageHandler.isStorageSizeLow(CacheManager.getStoreRootPath()))
       {
@@ -43,7 +48,7 @@ class FileStorageHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.cache.FileStorageHandler.1
  * JD-Core Version:    0.7.0.1
  */

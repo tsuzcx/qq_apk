@@ -14,47 +14,52 @@ class QCallDetailActivity$1
 {
   QCallDetailActivity$1(QCallDetailActivity paramQCallDetailActivity) {}
   
-  public void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QCallDetailActivity", 2, " === onUpdateCustomHead isSuccess | " + paramBoolean + ", uin | " + paramString);
-    }
     Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" === onUpdateCustomHead isSuccess | ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(", uin | ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.i("QCallDetailActivity", 2, ((StringBuilder)localObject).toString());
+    }
     if ((paramBoolean) && (QCallDetailActivity.a(this.a) == 3000) && (!Utils.a(paramString, this.a.app.getCurrentAccountUin())))
     {
       localObject = (DiscussionManager)this.a.app.getManager(QQManagerFactory.DISCUSSION_MANAGER);
-      if (localObject != null) {
-        break label110;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("QCallDetailActivity", 2, " === onUpdateCustomHead dm is null  ====");
-      }
-    }
-    label110:
-    do
-    {
-      do
+      if (localObject == null)
       {
-        return;
-        if (((DiscussionManager)localObject).a(QCallDetailActivity.a(this.a)) != null) {
-          break;
+        if (QLog.isColorLevel()) {
+          QLog.i("QCallDetailActivity", 2, " === onUpdateCustomHead dm is null  ====");
         }
-      } while (!QLog.isColorLevel());
-      QLog.i("QCallDetailActivity", 2, " === onUpdateCustomHead info is null ====");
-      return;
+        return;
+      }
+      if (((DiscussionManager)localObject).a(QCallDetailActivity.a(this.a)) == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("QCallDetailActivity", 2, " === onUpdateCustomHead info is null ====");
+        }
+        return;
+      }
       if (TextUtils.isEmpty(paramString))
       {
         QLog.i("QCallDetailActivity", 1, " === onUpdateCustomHead uin is null ====");
         return;
       }
       localObject = ((DiscussionManager)localObject).a(QCallDetailActivity.a(this.a));
-    } while ((localObject == null) || (((Map)localObject).size() <= 0) || (!((Map)localObject).containsKey(paramString)));
-    this.a.a(QCallDetailActivity.a(this.a));
+      if ((localObject != null) && (((Map)localObject).size() > 0) && (((Map)localObject).containsKey(paramString)))
+      {
+        paramString = this.a;
+        paramString.a(QCallDetailActivity.a(paramString));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.QCallDetailActivity.1
  * JD-Core Version:    0.7.0.1
  */

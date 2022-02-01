@@ -23,7 +23,7 @@ public class FileSaveDialog
   
   public FileSaveDialog(@NonNull Context paramContext)
   {
-    super(paramContext, 2131755192);
+    super(paramContext, 2131755356);
     a(paramContext);
   }
   
@@ -35,37 +35,45 @@ public class FileSaveDialog
   
   private void a(@NonNull Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559241, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559117, null);
     setContentView(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveProgressView = ((FileSaveProgressView)paramContext.findViewById(2131377446));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131364357));
+    this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveProgressView = ((FileSaveProgressView)paramContext.findViewById(2131376893));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131364259));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     a();
   }
   
   private void b()
   {
-    if (isShowing()) {
-      if (this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveDialog$IFileSaveCancelInterface != null) {
-        this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveDialog$IFileSaveCancelInterface.a();
+    if (isShowing())
+    {
+      FileSaveDialog.IFileSaveCancelInterface localIFileSaveCancelInterface = this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveDialog$IFileSaveCancelInterface;
+      if (localIFileSaveCancelInterface != null) {
+        localIFileSaveCancelInterface.a();
       }
-    }
-    try
-    {
-      super.cancel();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("FileSaveDialog", 2, "cancel dialog exception: " + localThrowable.getMessage());
+      try
+      {
+        super.cancel();
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("cancel dialog exception: ");
+          localStringBuilder.append(localThrowable.getMessage());
+          QLog.d("FileSaveDialog", 2, localStringBuilder.toString());
+        }
+      }
     }
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveProgressView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveProgressView.setProgress(paramInt);
+    FileSaveProgressView localFileSaveProgressView = this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveProgressView;
+    if (localFileSaveProgressView != null) {
+      localFileSaveProgressView.setProgress(paramInt);
     }
   }
   
@@ -76,35 +84,36 @@ public class FileSaveDialog
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    if (paramView.getId() == 2131364259) {
       b();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void show()
   {
-    if (!isShowing()) {}
-    try
-    {
-      super.show();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("FileSaveDialog", 2, "show dialog exception: " + localThrowable.getMessage());
+    if (!isShowing()) {
+      try
+      {
+        super.show();
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("show dialog exception: ");
+          localStringBuilder.append(localThrowable.getMessage());
+          QLog.d("FileSaveDialog", 2, localStringBuilder.toString());
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.save.FileSaveDialog
  * JD-Core Version:    0.7.0.1
  */

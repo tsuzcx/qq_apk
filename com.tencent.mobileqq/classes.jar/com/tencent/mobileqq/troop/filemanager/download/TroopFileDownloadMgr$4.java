@@ -10,14 +10,14 @@ class TroopFileDownloadMgr$4
 {
   TroopFileDownloadMgr$4(TroopFileDownloadMgr paramTroopFileDownloadMgr, long paramLong, TroopFileTransferManager.Item paramItem, Bundle paramBundle) {}
   
-  public void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
+  protected void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
   {
     TroopFileDownloadMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadTroopFileDownloadMgr, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_AndroidOsBundle, paramBoolean, paramInt, paramFileInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr.4
  * JD-Core Version:    0.7.0.1
  */

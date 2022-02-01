@@ -24,23 +24,20 @@ public class VIPRecommendService
         return null;
       }
       paramToServiceMsg = new UniPacket(true);
-      try
-      {
-        paramToServiceMsg.setEncodeName("utf-8");
-        paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
-        paramToServiceMsg = (CommPayInfo)paramToServiceMsg.getByClass("payInfo", new CommPayInfo());
-        return paramToServiceMsg;
-      }
-      catch (RuntimeException paramToServiceMsg)
-      {
-        paramToServiceMsg.printStackTrace();
-        return null;
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        return null;
-      }
     }
+    try
+    {
+      paramToServiceMsg.setEncodeName("utf-8");
+      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
+      paramToServiceMsg = (CommPayInfo)paramToServiceMsg.getByClass("payInfo", new CommPayInfo());
+      return paramToServiceMsg;
+    }
+    catch (RuntimeException paramToServiceMsg)
+    {
+      paramToServiceMsg.printStackTrace();
+      return null;
+    }
+    catch (Exception paramToServiceMsg) {}
     return null;
   }
   
@@ -54,7 +51,7 @@ public class VIPRecommendService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.qwallet.VIPRecommendService
  * JD-Core Version:    0.7.0.1
  */

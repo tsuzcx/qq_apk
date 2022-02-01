@@ -11,20 +11,21 @@ class QQMessagePageMiniAppEntryManager$2
   
   public void run()
   {
-    if (this.val$app == null) {}
-    AppletsHandler localAppletsHandler;
-    do
-    {
+    Object localObject = this.val$app;
+    if (localObject == null) {
       return;
-      localAppletsHandler = (AppletsHandler)this.val$app.getBusinessHandler(BusinessHandlerFactory.APPLET_PUSH_HANDLER);
-    } while (localAppletsHandler == null);
-    localAppletsHandler.a();
-    localAppletsHandler.c();
+    }
+    localObject = (AppletsHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.APPLET_PUSH_HANDLER);
+    if (localObject != null)
+    {
+      ((AppletsHandler)localObject).a();
+      ((AppletsHandler)localObject).c();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.QQMessagePageMiniAppEntryManager.2
  * JD-Core Version:    0.7.0.1
  */

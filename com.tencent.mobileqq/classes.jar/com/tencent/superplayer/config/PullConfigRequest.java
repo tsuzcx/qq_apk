@@ -19,24 +19,20 @@ public class PullConfigRequest
 {
   private static int CURRENT_HOST_URL_RETRY_MAX_COUNT = TVKVideoInfoConfig.getInstance().getCgiRetryTime();
   private static final String PROTOCOL_CHARSET = "utf-8";
-  private static String REQUEST_URL;
+  private static String REQUEST_URL = "https://cgi.kandian.qq.com/trpc.tkdqq.kd_rainbow_proxy.ConfigService/PullConfigReq";
   private static String TAG = "PullConfigRequest";
   private PullConfigRequest.PullConfigCallback mCallback;
   private int mCurrentHostUrlRetryCount = 0;
   private ITVKHttpProcessor.ITVKHttpCallback mPullConfigCb = new PullConfigRequest.1(this);
   private String mRequestRootGroupName;
   
-  static
-  {
-    REQUEST_URL = "https://cgi.kandian.qq.com/trpc.tkdqq.kd_rainbow_proxy.ConfigService/PullConfigReq";
-  }
-  
   private void callbackOnFailureOrRetry(Exception paramException)
   {
-    if (this.mCurrentHostUrlRetryCount > CURRENT_HOST_URL_RETRY_MAX_COUNT) {
+    int i = this.mCurrentHostUrlRetryCount;
+    if (i > CURRENT_HOST_URL_RETRY_MAX_COUNT) {
       return;
     }
-    this.mCurrentHostUrlRetryCount += 1;
+    this.mCurrentHostUrlRetryCount = (i + 1);
     executeRequest();
   }
   
@@ -91,36 +87,36 @@ public class PullConfigRequest
   private void handleHttpCallbackOnSuccess(ITVKHttpProcessor.HttpResponse paramHttpResponse)
   {
     TVKLogUtil.i(TAG, "pullConfigRequest onSuccess.");
-    for (;;)
+    try
     {
-      try
+      boolean bool = paramHttpResponse.mHeaders.containsKey("Content-Encoding");
+      if ((bool) && (((List)paramHttpResponse.mHeaders.get("Content-Encoding")).contains("gzip")))
       {
-        if ((paramHttpResponse.mHeaders.containsKey("Content-Encoding")) && (((List)paramHttpResponse.mHeaders.get("Content-Encoding")).contains("gzip")))
-        {
-          paramHttpResponse = TVKUtils.gzipDeCompress(paramHttpResponse.mData);
-          if (paramHttpResponse != null)
-          {
-            paramHttpResponse = new String(paramHttpResponse, "UTF-8");
-            LogUtil.i(TAG, "handleHttpCallbackOnSuccess response:" + paramHttpResponse);
-            if (this.mCallback == null) {
-              break;
-            }
-            this.mCallback.onConfigPulled(paramHttpResponse);
-          }
+        paramHttpResponse = TVKUtils.gzipDeCompress(paramHttpResponse.mData);
+        if (paramHttpResponse != null) {
+          paramHttpResponse = new String(paramHttpResponse, "UTF-8");
+        } else {
+          paramHttpResponse = "";
         }
-        else
-        {
-          paramHttpResponse = new String(paramHttpResponse.mData, "UTF-8");
-          continue;
-        }
-        paramHttpResponse = "";
       }
-      catch (Exception paramHttpResponse)
+      else
       {
-        TVKLogUtil.e(TAG, paramHttpResponse);
-        callbackOnFailureOrRetry(paramHttpResponse);
-        return;
+        paramHttpResponse = new String(paramHttpResponse.mData, "UTF-8");
       }
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleHttpCallbackOnSuccess response:");
+      localStringBuilder.append(paramHttpResponse);
+      LogUtil.i(str, localStringBuilder.toString());
+      if (this.mCallback != null) {
+        this.mCallback.onConfigPulled(paramHttpResponse);
+      }
+      return;
+    }
+    catch (Exception paramHttpResponse)
+    {
+      TVKLogUtil.e(TAG, paramHttpResponse);
+      callbackOnFailureOrRetry(paramHttpResponse);
     }
   }
   
@@ -133,7 +129,7 @@ public class PullConfigRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.config.PullConfigRequest
  * JD-Core Version:    0.7.0.1
  */

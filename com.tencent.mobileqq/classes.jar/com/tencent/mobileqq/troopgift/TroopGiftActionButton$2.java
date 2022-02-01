@@ -38,7 +38,8 @@ class TroopGiftActionButton$2
         this.this$0.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.setOneShot(true);
         localObject = new RelativeLayout.LayoutParams(-1, -1);
         ((RelativeLayout.LayoutParams)localObject).addRule(13);
-        this.this$0.addView(this.this$0.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
+        TroopGiftActionButton localTroopGiftActionButton = this.this$0;
+        localTroopGiftActionButton.addView(localTroopGiftActionButton.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
         this.this$0.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.start();
         this.this$0.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
         this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopGiftActionButton.2.1(this), 350L);
@@ -53,7 +54,7 @@ class TroopGiftActionButton$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftActionButton.2
  * JD-Core Version:    0.7.0.1
  */

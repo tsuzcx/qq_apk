@@ -34,15 +34,18 @@ class MiniDownloadConfig
   
   public long getCurrentUin()
   {
-    long l = 0L;
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
     if (!TextUtils.isEmpty(str)) {}
     try
     {
-      l = Long.parseLong(str);
+      long l = Long.parseLong(str);
       return l;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label24:
+      break label24;
+    }
     return 0L;
   }
   
@@ -134,7 +137,7 @@ class MiniDownloadConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.reuse.MiniDownloadConfig
  * JD-Core Version:    0.7.0.1
  */

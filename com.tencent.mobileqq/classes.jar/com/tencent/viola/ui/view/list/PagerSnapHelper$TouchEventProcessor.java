@@ -26,97 +26,98 @@ class PagerSnapHelper$TouchEventProcessor
   
   private void onDragging(int paramInt)
   {
-    int i = -1;
-    View localView;
     if ((paramInt == 0) || (paramInt == 2))
     {
-      localView = this.this$0.findCenterView(PagerSnapHelper.access$200(this.this$0));
-      if (localView == null) {
-        break label150;
+      Object localObject = this.this$0;
+      localObject = ((PagerSnapHelper)localObject).findCenterView(PagerSnapHelper.access$200((PagerSnapHelper)localObject));
+      paramInt = -1;
+      if (localObject != null)
+      {
+        this.lastCenterPosition = PagerSnapHelper.access$200(this.this$0).getPosition((View)localObject);
+        this.lastCenterPosition = PagerSnapHelper.access$1100(this.this$0, this.lastCenterPosition);
       }
-      this.lastCenterPosition = PagerSnapHelper.access$200(this.this$0).getPosition(localView);
-    }
-    label150:
-    for (this.lastCenterPosition = PagerSnapHelper.access$900(this.this$0, this.lastCenterPosition);; this.lastCenterPosition = -1)
-    {
-      if ((PagerSnapHelper.access$1000(this.this$0) != -1) && (PagerSnapHelper.access$200(this.this$0).findViewByPosition(PagerSnapHelper.access$1000(this.this$0)) == null))
+      else
+      {
+        this.lastCenterPosition = -1;
+      }
+      if ((PagerSnapHelper.access$1200(this.this$0) != -1) && (PagerSnapHelper.access$200(this.this$0).findViewByPosition(PagerSnapHelper.access$1200(this.this$0)) == null))
       {
         ViolaLogUtils.d("PagerSnapHelper", "onScrollStateChanged: centerPosition has been recycler");
         this.reset = true;
       }
-      StringBuilder localStringBuilder = new StringBuilder().append("onScrollStateChanged: lastCenterView=");
-      paramInt = i;
-      if (localView != null) {
-        paramInt = PagerSnapHelper.access$200(this.this$0).getPosition(localView);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onScrollStateChanged: lastCenterView=");
+      if (localObject != null) {
+        paramInt = PagerSnapHelper.access$200(this.this$0).getPosition((View)localObject);
       }
-      ViolaLogUtils.d("PagerSnapHelper", paramInt);
-      return;
+      localStringBuilder.append(paramInt);
+      ViolaLogUtils.d("PagerSnapHelper", localStringBuilder.toString());
     }
   }
   
   private void onIdle()
   {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
+    boolean bool2 = PagerSnapHelper.access$000(this.this$0);
+    boolean bool1 = true;
+    if (bool2) {
+      bool1 = true ^ this.this$0.snapToCenterPosition();
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onScrollStateChanged: isRealIdle=");
+    ((StringBuilder)localObject).append(bool1);
+    ViolaLogUtils.d("PagerSnapHelper", ((StringBuilder)localObject).toString());
+    if (bool1) {
+      PagerSnapHelper.access$102(this.this$0, false);
+    }
+    localObject = this.this$0;
+    localObject = ((PagerSnapHelper)localObject).findCenterView(PagerSnapHelper.access$200((PagerSnapHelper)localObject));
     int i;
-    if (PagerSnapHelper.access$000(this.this$0))
-    {
-      if (!this.this$0.snapToCenterPosition()) {
-        bool1 = bool2;
-      }
-    }
-    else
-    {
-      ViolaLogUtils.d("PagerSnapHelper", "onScrollStateChanged: isRealIdle=" + bool1);
-      if (bool1) {
-        PagerSnapHelper.access$102(this.this$0, false);
-      }
-      View localView = this.this$0.findCenterView(PagerSnapHelper.access$200(this.this$0));
-      if (localView == null) {
-        break label139;
-      }
-      i = PagerSnapHelper.access$200(this.this$0).getPosition(localView);
-      label97:
-      if (PagerSnapHelper.access$300(this.this$0, i, PagerSnapHelper.access$200(this.this$0))) {
-        break label144;
-      }
-      PagerSnapHelper.access$400(this.this$0, localView, this.reset);
-    }
-    for (;;)
-    {
-      this.reset = false;
-      return;
-      bool1 = false;
-      break;
-      label139:
+    if (localObject != null) {
+      i = PagerSnapHelper.access$200(this.this$0).getPosition((View)localObject);
+    } else {
       i = -1;
-      break label97;
-      label144:
-      if ((!PagerSnapHelper.access$500(this.this$0)) && (!PagerSnapHelper.access$000(this.this$0)) && (i > PagerSnapHelper.access$600(this.this$0, PagerSnapHelper.access$200(this.this$0))) && (PagerSnapHelper.access$700(this.this$0))) {
+    }
+    PagerSnapHelper localPagerSnapHelper = this.this$0;
+    if (!PagerSnapHelper.access$300(localPagerSnapHelper, i, PagerSnapHelper.access$200(localPagerSnapHelper)))
+    {
+      PagerSnapHelper.access$400(this.this$0, (View)localObject, this.reset);
+    }
+    else if ((!PagerSnapHelper.access$500(this.this$0)) && (!PagerSnapHelper.access$000(this.this$0)))
+    {
+      localObject = this.this$0;
+      if ((i > PagerSnapHelper.access$600((PagerSnapHelper)localObject, PagerSnapHelper.access$200((PagerSnapHelper)localObject))) && (PagerSnapHelper.access$700(this.this$0))) {
         PagerSnapHelper.access$800(this.this$0);
+      } else if (i < PagerSnapHelper.access$900(this.this$0)) {
+        PagerSnapHelper.access$1000(this.this$0);
       }
     }
+    this.reset = false;
   }
   
   public boolean onFling(float paramFloat1, float paramFloat2)
   {
-    if (PagerSnapHelper.access$200(this.this$0) == null) {}
-    int i;
-    do
+    if (PagerSnapHelper.access$200(this.this$0) == null) {
+      return false;
+    }
+    if (PagerSnapHelper.access$1300(this.this$0).getAdapter() == null) {
+      return false;
+    }
+    if (!PagerSnapHelper.access$500(this.this$0)) {
+      return false;
+    }
+    if (PagerSnapHelper.access$1400(this.this$0) <= 0)
     {
-      do
-      {
-        return false;
-      } while ((PagerSnapHelper.access$1100(this.this$0).getAdapter() == null) || (!PagerSnapHelper.access$500(this.this$0)));
-      if (PagerSnapHelper.access$1200(this.this$0) <= 0) {
-        PagerSnapHelper.access$1202(this.this$0, PagerSnapHelper.access$1100(this.this$0).getMinFlingVelocity());
-      }
-      i = this.lastCenterPosition;
-    } while ((Math.abs(paramFloat2) <= PagerSnapHelper.access$1200(this.this$0)) && (Math.abs(paramFloat1) <= PagerSnapHelper.access$1200(this.this$0)));
+      PagerSnapHelper localPagerSnapHelper = this.this$0;
+      PagerSnapHelper.access$1402(localPagerSnapHelper, PagerSnapHelper.access$1300(localPagerSnapHelper).getMinFlingVelocity());
+    }
+    int i = this.lastCenterPosition;
+    if ((Math.abs(paramFloat2) <= PagerSnapHelper.access$1400(this.this$0)) && (Math.abs(paramFloat1) <= PagerSnapHelper.access$1400(this.this$0))) {
+      return false;
+    }
     try
     {
       TraceCompat.beginSection("snapFromFling");
-      boolean bool = PagerSnapHelper.access$1300(this.this$0, PagerSnapHelper.access$200(this.this$0), this.moveXDistance, this.moveYDistance, paramFloat1, paramFloat2, i);
+      boolean bool = PagerSnapHelper.access$1500(this.this$0, PagerSnapHelper.access$200(this.this$0), this.moveXDistance, this.moveYDistance, paramFloat1, paramFloat2, i);
       return bool;
     }
     finally
@@ -127,7 +128,10 @@ class PagerSnapHelper$TouchEventProcessor
   
   public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    ViolaLogUtils.d("PagerSnapHelper", "onScrollStateChanged: state=" + paramInt);
+    paramRecyclerView = new StringBuilder();
+    paramRecyclerView.append("onScrollStateChanged: state=");
+    paramRecyclerView.append(paramInt);
+    ViolaLogUtils.d("PagerSnapHelper", paramRecyclerView.toString());
     int i = this.currentScrollState;
     this.currentScrollState = paramInt;
     if (paramInt == 0)
@@ -135,50 +139,58 @@ class PagerSnapHelper$TouchEventProcessor
       TraceCompat.beginSection("snap onIdle");
       onIdle();
       TraceCompat.endSection();
-    }
-    while (paramInt != 1) {
       return;
     }
-    TraceCompat.beginSection("snap onDragging");
-    onDragging(i);
-    TraceCompat.endSection();
+    if (paramInt == 1)
+    {
+      TraceCompat.beginSection("snap onDragging");
+      onDragging(i);
+      TraceCompat.endSection();
+    }
   }
   
   public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 1)
     {
-    default: 
-    case 2: 
-      do
-      {
+      if (i != 2) {
         return false;
-        this.hadMoveEvent = true;
-        if (this.firstMoveX <= 0.0F) {
-          this.firstMoveX = paramMotionEvent.getX();
-        }
-      } while (this.firstMoveY > 0.0F);
-      this.firstMoveY = paramMotionEvent.getY();
-      return false;
+      }
+      this.hadMoveEvent = true;
+      if (this.firstMoveX <= 0.0F) {
+        this.firstMoveX = paramMotionEvent.getX();
+      }
+      if (this.firstMoveY <= 0.0F)
+      {
+        this.firstMoveY = paramMotionEvent.getY();
+        return false;
+      }
     }
-    if (this.hadMoveEvent) {
-      this.moveXDistance = (this.firstMoveX - paramMotionEvent.getX());
-    }
-    for (this.moveYDistance = (this.firstMoveY - paramMotionEvent.getY());; this.moveYDistance = 0.0F)
+    else
     {
+      if (this.hadMoveEvent)
+      {
+        this.moveXDistance = (this.firstMoveX - paramMotionEvent.getX());
+        this.moveYDistance = (this.firstMoveY - paramMotionEvent.getY());
+      }
+      else
+      {
+        this.moveXDistance = 0.0F;
+        this.moveYDistance = 0.0F;
+      }
       this.firstMoveX = 0.0F;
       this.firstMoveY = 0.0F;
       this.hadMoveEvent = false;
-      return false;
-      this.moveXDistance = 0.0F;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.view.list.PagerSnapHelper.TouchEventProcessor
  * JD-Core Version:    0.7.0.1
  */

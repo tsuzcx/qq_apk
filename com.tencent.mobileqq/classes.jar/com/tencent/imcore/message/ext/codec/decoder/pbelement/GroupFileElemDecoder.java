@@ -25,7 +25,6 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.List;
-import java.util.List<Ltencent.im.msg.im_msg_body.Elem;>;
 import msf.msgcomm.msg_comm.DiscussInfo;
 import msf.msgcomm.msg_comm.Msg;
 import msf.msgcomm.msg_comm.MsgHead;
@@ -43,120 +42,115 @@ public class GroupFileElemDecoder
   private void a(List<im_msg_body.Elem> paramList, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, msg_comm.Msg paramMsg)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    MessageHandler localMessageHandler = localQQAppInterface.getMsgHandler();
-    Object localObject = null;
-    Iterator localIterator = paramList.iterator();
-    do
+    Object localObject1 = localQQAppInterface.getMsgHandler();
+    paramList = paramList.iterator();
+    Object localObject2;
+    while (paramList.hasNext())
     {
-      paramList = (List<im_msg_body.Elem>)localObject;
-      if (!localIterator.hasNext()) {
-        break;
+      localObject2 = (im_msg_body.Elem)paramList.next();
+      if (((im_msg_body.Elem)localObject2).group_file.has())
+      {
+        paramList = (im_msg_body.GroupFile)((im_msg_body.Elem)localObject2).group_file.get();
+        break label73;
       }
-      paramList = (im_msg_body.Elem)localIterator.next();
-    } while (!paramList.group_file.has());
-    paramList = (im_msg_body.GroupFile)paramList.group_file.get();
-    if (paramList == null) {}
-    for (;;)
-    {
+    }
+    paramList = null;
+    label73:
+    if (paramList == null) {
       return;
-      if (QLog.isColorLevel()) {
-        paramStringBuilder.append("elemType:GroupFile;\n");
-      }
-      long l1 = 0L;
-      paramStringBuilder = (msg_comm.MsgHead)paramMsg.msg_head.get();
-      if (paramStringBuilder.discuss_info.has()) {
-        l1 = ((msg_comm.DiscussInfo)paramStringBuilder.discuss_info.get()).discuss_uin.get();
-      }
-      long l4 = paramStringBuilder.from_uin.get();
-      long l6 = paramStringBuilder.msg_time.get();
-      long l7 = paramStringBuilder.msg_seq.get();
-      long l5 = localMessageHandler.a.getLongAccountUin();
-      if (MessageHandlerUtils.a(localMessageHandler.a, 3000, String.valueOf(l1), String.valueOf(l4), l6, l7)) {
-        continue;
-      }
+    }
+    if (QLog.isColorLevel()) {
+      paramStringBuilder.append("elemType:GroupFile;\n");
+    }
+    paramStringBuilder = (msg_comm.MsgHead)paramMsg.msg_head.get();
+    if (paramStringBuilder.discuss_info.has()) {
+      l1 = ((msg_comm.DiscussInfo)paramStringBuilder.discuss_info.get()).discuss_uin.get();
+    } else {
+      l1 = 0L;
+    }
+    long l3 = paramStringBuilder.from_uin.get();
+    long l5 = paramStringBuilder.msg_time.get();
+    long l6 = paramStringBuilder.msg_seq.get();
+    long l4 = ((MessageHandler)localObject1).a.getLongAccountUin();
+    if (MessageHandlerUtils.a(((MessageHandler)localObject1).a, 3000, String.valueOf(l1), String.valueOf(l3), l5, l6)) {
+      return;
+    }
+    try
+    {
+      paramStringBuilder = new String(paramList.bytes_filename.get().toByteArray(), "UTF-8");
+    }
+    catch (UnsupportedEncodingException paramStringBuilder)
+    {
+      paramStringBuilder.printStackTrace();
       paramStringBuilder = "";
+    }
+    if (paramMsg.msg_body.has())
+    {
+      paramMsg = (im_msg_body.MsgBody)paramMsg.msg_body.get();
+      if (paramMsg.rich_text.attr.has())
+      {
+        l2 = MessageUtils.a(((im_msg_body.Attr)paramMsg.rich_text.attr.get()).random.get());
+        break label305;
+      }
+    }
+    long l2 = 0L;
+    label305:
+    paramMsg = (MessageForFile)MessageRecordFactory.a(-2005);
+    paramMsg.msgtype = -2005;
+    if (paramList.bytes_pb_reserve.has())
+    {
+      localObject2 = new hummer_resv_21.ResvAttr();
       try
       {
-        localObject = new String(paramList.bytes_filename.get().toByteArray(), "UTF-8");
-        paramStringBuilder = (StringBuilder)localObject;
-        long l3 = 0L;
-        l2 = l3;
-        if (paramMsg.msg_body.has())
-        {
-          paramMsg = (im_msg_body.MsgBody)paramMsg.msg_body.get();
-          l2 = l3;
-          if (paramMsg.rich_text.attr.has()) {
-            l2 = MessageUtils.a(((im_msg_body.Attr)paramMsg.rich_text.attr.get()).random.get());
-          }
-        }
-        paramMsg = (MessageForFile)MessageRecordFactory.a(-2005);
-        paramMsg.msgtype = -2005;
-        k = 0;
-        m = 0;
-        j = m;
-        i = k;
-        if (paramList.bytes_pb_reserve.has()) {
-          localObject = new hummer_resv_21.ResvAttr();
-        }
+        ((hummer_resv_21.ResvAttr)localObject2).mergeFrom(paramList.bytes_pb_reserve.get().toByteArray());
       }
-      catch (UnsupportedEncodingException localInvalidProtocolBufferMicroException)
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
-        try
-        {
-          long l2;
-          int k;
-          int m;
-          ((hummer_resv_21.ResvAttr)localObject).mergeFrom(paramList.bytes_pb_reserve.get().toByteArray());
-          int j = m;
-          int i = k;
-          if (((hummer_resv_21.ResvAttr)localObject).file_image_info.has())
-          {
-            i = ((hummer_resv_21.ResvAttr)localObject).file_image_info.uint32_file_height.get();
-            j = ((hummer_resv_21.ResvAttr)localObject).file_image_info.uint32_file_width.get();
-            paramMsg.saveExtInfoToExtStr("file_pic_width", String.valueOf(j));
-            paramMsg.saveExtInfoToExtStr("file_pic_heigth", String.valueOf(i));
-          }
-          paramMsg.uniseq = localMessageHandler.a.getFileTransferHandler().a(paramMsg.uniseq, l1, l4, l7, l2, l6, paramList, j, i);
-          l1 = paramList.uint64_file_size.get();
-          if (l4 == l5)
-          {
-            bool = true;
-            paramMsg.msg = TransfileUtile.makeTransFileProtocolData(paramStringBuilder, l1, 0, bool);
-            paramMsg.doParse();
-          }
-        }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-        {
-          try
-          {
-            for (;;)
-            {
-              paramMsg.fileName = FileManagerUtil.a(new String(paramList.bytes_filename.get().toByteArray(), "UTF-8"));
-              paramList1.add(paramMsg);
-              ((AIOMessageSpreadManager)localQQAppInterface.getManager(QQManagerFactory.TEAMWORK_SPREAD_MANAGER)).a(paramMsg);
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("GroupFileElemDecoder", 2, "GroupDiscFile.msg: " + paramList.bytes_filename.get() + ";");
-              return;
-              localUnsupportedEncodingException = localUnsupportedEncodingException;
-              localUnsupportedEncodingException.printStackTrace();
-              continue;
-              localInvalidProtocolBufferMicroException = localInvalidProtocolBufferMicroException;
-              localInvalidProtocolBufferMicroException.printStackTrace();
-            }
-            boolean bool = false;
-          }
-          catch (UnsupportedEncodingException paramStringBuilder)
-          {
-            for (;;)
-            {
-              paramStringBuilder.printStackTrace();
-              QLog.e("GroupFileElemDecoder", 1, "internalDiscOfflineFile: Exception is " + paramStringBuilder.toString());
-            }
-          }
-        }
+        localInvalidProtocolBufferMicroException.printStackTrace();
       }
+      if (((hummer_resv_21.ResvAttr)localObject2).file_image_info.has())
+      {
+        i = ((hummer_resv_21.ResvAttr)localObject2).file_image_info.uint32_file_height.get();
+        j = ((hummer_resv_21.ResvAttr)localObject2).file_image_info.uint32_file_width.get();
+        paramMsg.saveExtInfoToExtStr("file_pic_width", String.valueOf(j));
+        paramMsg.saveExtInfoToExtStr("file_pic_heigth", String.valueOf(i));
+        break label439;
+      }
+    }
+    int j = 0;
+    int i = 0;
+    label439:
+    paramMsg.uniseq = ((MessageHandler)localObject1).a.getFileTransferHandler().a(paramMsg.uniseq, l1, l3, l6, l2, l5, paramList, j, i);
+    long l1 = paramList.uint64_file_size.get();
+    boolean bool;
+    if (l3 == l4) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    paramMsg.msg = TransfileUtile.makeTransFileProtocolData(paramStringBuilder, l1, 0, bool);
+    paramMsg.doParse();
+    try
+    {
+      paramMsg.fileName = FileManagerUtil.a(new String(paramList.bytes_filename.get().toByteArray(), "UTF-8"));
+    }
+    catch (UnsupportedEncodingException paramStringBuilder)
+    {
+      paramStringBuilder.printStackTrace();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("internalDiscOfflineFile: Exception is ");
+      ((StringBuilder)localObject1).append(paramStringBuilder.toString());
+      QLog.e("GroupFileElemDecoder", 1, ((StringBuilder)localObject1).toString());
+    }
+    paramList1.add(paramMsg);
+    ((AIOMessageSpreadManager)localQQAppInterface.getManager(QQManagerFactory.TEAMWORK_SPREAD_MANAGER)).a(paramMsg);
+    if (QLog.isColorLevel())
+    {
+      paramList1 = new StringBuilder();
+      paramList1.append("GroupDiscFile.msg: ");
+      paramList1.append(paramList.bytes_filename.get());
+      paramList1.append(";");
+      QLog.d("GroupFileElemDecoder", 2, paramList1.toString());
     }
   }
   
@@ -178,7 +172,7 @@ public class GroupFileElemDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.pbelement.GroupFileElemDecoder
  * JD-Core Version:    0.7.0.1
  */

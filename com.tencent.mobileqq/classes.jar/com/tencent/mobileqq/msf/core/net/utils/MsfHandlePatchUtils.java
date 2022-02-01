@@ -10,10 +10,6 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import dalvik.system.DexClassLoader;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -29,164 +25,179 @@ public class MsfHandlePatchUtils
   private static final String SP_PATCH = "hotpatch_preference";
   private static final String TAG = "MsfHandlePatchUtils";
   
-  private static void copy(InputStream paramInputStream, File paramFile)
+  /* Error */
+  private static void copy(java.io.InputStream paramInputStream, File paramFile)
   {
-    paramFile.getParentFile().mkdirs();
-    for (;;)
-    {
-      try
-      {
-        localFileOutputStream = new FileOutputStream(paramFile);
-        try
-        {
-          paramFile = new byte[4096];
-          int i = paramInputStream.read(paramFile);
-          if (i > 0)
-          {
-            localFileOutputStream.write(paramFile, 0, i);
-            continue;
-            if (paramInputStream == null) {}
-          }
-        }
-        finally {}
-      }
-      finally
-      {
-        FileOutputStream localFileOutputStream = null;
-        continue;
-      }
-      try
-      {
-        paramInputStream.close();
-        if (localFileOutputStream == null) {}
-      }
-      catch (IOException paramInputStream)
-      {
-        try
-        {
-          localFileOutputStream.close();
-          throw paramFile;
-          if (paramInputStream == null) {}
-        }
-        catch (IOException paramInputStream)
-        {
-          try
-          {
-            paramInputStream.close();
-            if (localFileOutputStream != null) {}
-            try
-            {
-              localFileOutputStream.close();
-              return;
-            }
-            catch (IOException paramInputStream)
-            {
-              return;
-            }
-            paramInputStream = paramInputStream;
-            continue;
-            paramInputStream = paramInputStream;
-          }
-          catch (IOException paramInputStream) {}
-        }
-      }
-    }
+    // Byte code:
+    //   0: aload_1
+    //   1: invokevirtual 32	java/io/File:getParentFile	()Ljava/io/File;
+    //   4: invokevirtual 36	java/io/File:mkdirs	()Z
+    //   7: pop
+    //   8: new 38	java/io/FileOutputStream
+    //   11: dup
+    //   12: aload_1
+    //   13: invokespecial 41	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   16: astore_3
+    //   17: sipush 4096
+    //   20: newarray byte
+    //   22: astore_1
+    //   23: aload_0
+    //   24: aload_1
+    //   25: invokevirtual 47	java/io/InputStream:read	([B)I
+    //   28: istore_2
+    //   29: iload_2
+    //   30: ifle +13 -> 43
+    //   33: aload_3
+    //   34: aload_1
+    //   35: iconst_0
+    //   36: iload_2
+    //   37: invokevirtual 53	java/io/OutputStream:write	([BII)V
+    //   40: goto -17 -> 23
+    //   43: aload_0
+    //   44: ifnull +7 -> 51
+    //   47: aload_0
+    //   48: invokevirtual 56	java/io/InputStream:close	()V
+    //   51: aload_3
+    //   52: invokevirtual 57	java/io/OutputStream:close	()V
+    //   55: return
+    //   56: astore_1
+    //   57: goto +6 -> 63
+    //   60: astore_1
+    //   61: aconst_null
+    //   62: astore_3
+    //   63: aload_0
+    //   64: ifnull +10 -> 74
+    //   67: aload_0
+    //   68: invokevirtual 56	java/io/InputStream:close	()V
+    //   71: goto +3 -> 74
+    //   74: aload_3
+    //   75: ifnull +7 -> 82
+    //   78: aload_3
+    //   79: invokevirtual 57	java/io/OutputStream:close	()V
+    //   82: goto +5 -> 87
+    //   85: aload_1
+    //   86: athrow
+    //   87: goto -2 -> 85
+    //   90: astore_0
+    //   91: goto -40 -> 51
+    //   94: astore_0
+    //   95: return
+    //   96: astore_0
+    //   97: goto -23 -> 74
+    //   100: astore_0
+    //   101: goto -19 -> 82
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	104	0	paramInputStream	java.io.InputStream
+    //   0	104	1	paramFile	File
+    //   28	9	2	i	int
+    //   16	63	3	localFileOutputStream	java.io.FileOutputStream
+    // Exception table:
+    //   from	to	target	type
+    //   17	23	56	finally
+    //   23	29	56	finally
+    //   33	40	56	finally
+    //   8	17	60	finally
+    //   47	51	90	java/io/IOException
+    //   51	55	94	java/io/IOException
+    //   67	71	96	java/io/IOException
+    //   78	82	100	java/io/IOException
   }
   
   private static void downloadAndVerifyPatch(JSONObject paramJSONObject)
   {
-    if (!paramJSONObject.optBoolean("enable", false)) {}
-    label388:
-    label396:
-    for (;;)
-    {
+    if (!paramJSONObject.optBoolean("enable", false)) {
       return;
-      Object localObject = paramJSONObject.optJSONArray("patchItemConfigs");
-      if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+    }
+    Object localObject2 = paramJSONObject.optJSONArray("patchItemConfigs");
+    if (localObject2 != null)
+    {
+      if (((JSONArray)localObject2).length() <= 0) {
+        return;
+      }
+      int i = 0;
+      Object localObject1;
+      String str;
+      while (i < ((JSONArray)localObject2).length())
       {
-        int i = 0;
-        String str1;
-        if (i < ((JSONArray)localObject).length())
+        localObject1 = ((JSONArray)localObject2).optJSONObject(i);
+        if (localObject1 != null)
         {
-          paramJSONObject = ((JSONArray)localObject).optJSONObject(i);
-          if (paramJSONObject == null) {}
-          do
+          str = ((JSONObject)localObject1).optString("systemVersion", "");
+          paramJSONObject = (JSONObject)localObject1;
+          if (TextUtils.isEmpty(str)) {
+            break label111;
+          }
+          if (str.contains(String.valueOf(Build.VERSION.SDK_INT)))
           {
-            i += 1;
-            break;
-            str1 = paramJSONObject.optString("systemVersion", "");
-          } while ((!TextUtils.isEmpty(str1)) && (!str1.contains(String.valueOf(Build.VERSION.SDK_INT))));
+            paramJSONObject = (JSONObject)localObject1;
+            break label111;
+          }
         }
-        for (;;)
+        i += 1;
+      }
+      paramJSONObject = null;
+      label111:
+      if (paramJSONObject != null)
+      {
+        localObject2 = paramJSONObject.optString("patchName", null);
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          return;
+        }
+        localObject1 = PatchCommonUtil.getPatchPath((String)localObject2);
+        boolean bool1 = paramJSONObject.optBoolean("relaxEnable", false);
+        boolean bool2 = paramJSONObject.optBoolean("nPatchEnable", false);
+        if ((Build.VERSION.SDK_INT >= 24) && (bool2) && (!bool1)) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        if (i != 0) {
+          paramJSONObject = paramJSONObject.optString("patch7zUrl", null);
+        } else {
+          paramJSONObject = paramJSONObject.optString("patchUrl", null);
+        }
+        if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(paramJSONObject)))
         {
-          if (paramJSONObject == null) {
-            break label396;
-          }
-          localObject = paramJSONObject.optString("patchName", null);
-          if (TextUtils.isEmpty((CharSequence)localObject)) {
-            break;
-          }
-          str1 = PatchCommonUtil.getPatchPath((String)localObject);
-          boolean bool1 = paramJSONObject.optBoolean("relaxEnable", false);
-          boolean bool2 = paramJSONObject.optBoolean("nPatchEnable", false);
-          label155:
-          label167:
-          String str2;
-          if ((Build.VERSION.SDK_INT >= 24) && (bool2) && (!bool1))
+          str = PatchCommonUtil.getPatchPath(paramJSONObject.substring(paramJSONObject.lastIndexOf(File.separator) + 1));
+          if (!TextUtils.isEmpty(str))
           {
-            i = 1;
-            if (i == 0) {
-              break label354;
-            }
-            paramJSONObject = paramJSONObject.optString("patch7zUrl", null);
-            if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(paramJSONObject))) {
-              break label363;
-            }
-            str2 = PatchCommonUtil.getPatchPath(paramJSONObject.substring(paramJSONObject.lastIndexOf(File.separator) + 1));
-            if (TextUtils.isEmpty(str2)) {
-              break;
-            }
-            bool1 = e.a(paramJSONObject, str2);
-            QLog.d("MsfHandlePatchUtils", 1, "download patch result=" + bool1);
-            if (!bool1) {
-              break;
-            }
-            if (i == 0) {
-              break label388;
-            }
-          }
-          for (bool2 = releaseZipPatch(str2, (String)localObject);; bool2 = true)
-          {
-            bool1 = bool2;
-            if (bool2) {
-              bool1 = PatchChecker.checkPatchValid("dex", (String)localObject);
-            }
-            bool2 = bool1;
-            if (bool1) {
-              bool2 = releaseZipPatch(str1, (String)localObject);
-            }
-            QLog.d("MsfHandlePatchUtils", 1, "verify patch result=" + bool2);
-            if (bool2)
+            bool1 = e.a(paramJSONObject, str);
+            paramJSONObject = new StringBuilder();
+            paramJSONObject.append("download patch result=");
+            paramJSONObject.append(bool1);
+            QLog.d("MsfHandlePatchUtils", 1, paramJSONObject.toString());
+            if (bool1)
             {
-              MsfPullConfigUtil.showToastForSafeModeTest("补丁下载并校验成功，下次启动修复闪退");
-              new DexClassLoader(str1, BaseApplication.getContext().getDir("dex", 0).getAbsolutePath(), str1, BaseApplication.getContext().getClassLoader());
-              return;
-              i = 0;
-              break label155;
-              label354:
-              paramJSONObject = paramJSONObject.optString("patchUrl", null);
-              break label167;
-              label363:
-              break;
+              if (i != 0) {
+                bool2 = releaseZipPatch(str, (String)localObject2);
+              } else {
+                bool2 = true;
+              }
+              bool1 = bool2;
+              if (bool2) {
+                bool1 = PatchChecker.checkPatchValid("dex", (String)localObject2);
+              }
+              bool2 = bool1;
+              if (bool1) {
+                bool2 = releaseZipPatch((String)localObject1, (String)localObject2);
+              }
+              paramJSONObject = new StringBuilder();
+              paramJSONObject.append("verify patch result=");
+              paramJSONObject.append(bool2);
+              QLog.d("MsfHandlePatchUtils", 1, paramJSONObject.toString());
+              if (bool2)
+              {
+                MsfPullConfigUtil.showToastForSafeModeTest("补丁下载并校验成功，下次启动修复闪退");
+                new DexClassLoader((String)localObject1, BaseApplication.getContext().getDir("dex", 0).getAbsolutePath(), (String)localObject1, BaseApplication.getContext().getClassLoader());
+                return;
+              }
+              paramJSONObject = new File((String)localObject1);
+              if (paramJSONObject.exists()) {
+                paramJSONObject.delete();
+              }
             }
-            paramJSONObject = new File(str1);
-            if (!paramJSONObject.exists()) {
-              break;
-            }
-            paramJSONObject.delete();
-            return;
           }
-          paramJSONObject = null;
         }
       }
     }
@@ -195,78 +206,76 @@ public class MsfHandlePatchUtils
   private static JSONObject getLatestPatchConfig(List paramList)
   {
     Iterator localIterator = null;
-    Object localObject2 = null;
-    Object localObject1 = localIterator;
-    int j;
-    int m;
+    JSONObject localJSONObject = null;
+    Object localObject = localIterator;
     if (paramList != null)
     {
-      localObject1 = localIterator;
+      localObject = localIterator;
       if (paramList.size() > 0)
       {
         localIterator = paramList.iterator();
-        j = 0;
-        paramList = (List)localObject2;
-        do
+        int i = 0;
+        paramList = localJSONObject;
+        for (;;)
         {
-          localObject1 = paramList;
+          localObject = paramList;
           if (!localIterator.hasNext()) {
             break;
           }
-          localObject1 = (String)localIterator.next();
-        } while (TextUtils.isEmpty((CharSequence)localObject1));
-        m = j;
-        localObject2 = paramList;
+          localObject = (String)localIterator.next();
+          if (!TextUtils.isEmpty((CharSequence)localObject))
+          {
+            try
+            {
+              JSONArray localJSONArray = new JSONArray((String)localObject);
+              int k = 0;
+              for (;;)
+              {
+                localObject = paramList;
+                j = i;
+                try
+                {
+                  if (k >= localJSONArray.length()) {
+                    break label191;
+                  }
+                  localJSONObject = localJSONArray.getJSONObject(k);
+                  localObject = paramList;
+                  j = i;
+                  if (localJSONObject != null)
+                  {
+                    int m = localJSONObject.optInt("patchVersion", 0);
+                    localObject = paramList;
+                    j = i;
+                    if (m > i)
+                    {
+                      localObject = localJSONObject;
+                      j = m;
+                    }
+                  }
+                  k += 1;
+                  paramList = (List)localObject;
+                  i = j;
+                }
+                catch (JSONException localJSONException1) {}
+              }
+              localObject = paramList;
+            }
+            catch (JSONException localJSONException2) {}
+            int j = i;
+            if (QLog.isColorLevel())
+            {
+              QLog.e("MsfHandlePatchUtils", 2, "getLatestPatchConfig JSONException", localJSONException2);
+              j = i;
+              localObject = paramList;
+            }
+            label191:
+            paramList = (List)localObject;
+            i = j;
+          }
+        }
       }
     }
-    for (;;)
-    {
-      try
-      {
-        JSONArray localJSONArray = new JSONArray((String)localObject1);
-        int k = 0;
-        localObject1 = paramList;
-        int i = j;
-        j = i;
-        paramList = (List)localObject1;
-        m = i;
-        localObject2 = localObject1;
-        if (k >= localJSONArray.length()) {
-          break;
-        }
-        m = i;
-        localObject2 = localObject1;
-        paramList = localJSONArray.getJSONObject(k);
-        if (paramList == null) {
-          break label204;
-        }
-        m = i;
-        localObject2 = localObject1;
-        j = paramList.optInt("patchVersion", 0);
-        if (j <= i) {
-          break label204;
-        }
-        i = j;
-        k += 1;
-        localObject1 = paramList;
-        continue;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        j = m;
-        paramList = (List)localObject2;
-      }
-      QLog.e("MsfHandlePatchUtils", 2, "getLatestPatchConfig JSONException", localJSONException);
-      j = m;
-      paramList = (List)localObject2;
-      break;
-      return localJSONException;
-      label204:
-      paramList = localJSONException;
-    }
+    return localObject;
   }
   
   static int getPatchConfigVersion()
@@ -283,75 +292,61 @@ public class MsfHandlePatchUtils
     {
       localObject2 = new ArrayList();
       ((List)localObject2).add(localObject1);
+      localObject1 = getLatestPatchConfig(new ArrayList((Collection)localObject2));
     }
-    for (localObject1 = getLatestPatchConfig(new ArrayList((Collection)localObject2));; localObject1 = null)
+    else
     {
-      if (paramInt != localSharedPreferences.getInt("key_config_version_patch", 0))
+      localObject1 = null;
+    }
+    if (paramInt != localSharedPreferences.getInt("key_config_version_patch", 0))
+    {
+      paramList = getLatestPatchConfig(paramList);
+      if ((paramList != null) && ((localObject1 == null) || (paramList.optInt("patchVersion", 0) > ((JSONObject)localObject1).optInt("patchVersion", 0))))
       {
-        localObject2 = getLatestPatchConfig(paramList);
-        paramList = (List)localObject1;
-        if (localObject2 != null) {
-          if (localObject1 != null)
+        localObject1 = new JSONArray();
+        ((JSONArray)localObject1).put(paramList);
+        localSharedPreferences.edit().putString("key_config_patch_dex", ((JSONArray)localObject1).toString()).commit();
+        localObject1 = paramList;
+      }
+      localSharedPreferences.edit().putInt("key_config_version_patch", paramInt).commit();
+      if (localObject1 != null) {
+        downloadAndVerifyPatch((JSONObject)localObject1);
+      }
+    }
+    else if (localObject1 != null)
+    {
+      paramList = ((JSONObject)localObject1).optString("patchName", null);
+      if (!TextUtils.isEmpty(paramList))
+      {
+        localObject2 = PatchCommonUtil.getPatchPath(paramList);
+        File localFile = new File((String)localObject2);
+        boolean bool1 = localFile.exists();
+        int j = 1;
+        int i = j;
+        if (bool1)
+        {
+          boolean bool2 = PatchChecker.checkPatchValid("dex", paramList);
+          bool1 = bool2;
+          if (bool2) {
+            bool1 = releaseZipPatch((String)localObject2, paramList);
+          }
+          if (!bool1)
           {
-            paramList = (List)localObject1;
-            if (((JSONObject)localObject2).optInt("patchVersion", 0) <= ((JSONObject)localObject1).optInt("patchVersion", 0)) {}
+            localFile.delete();
+            i = j;
           }
           else
           {
-            paramList = new JSONArray();
-            paramList.put(localObject2);
-            localSharedPreferences.edit().putString("key_config_patch_dex", paramList.toString()).commit();
-            paramList = (List)localObject2;
+            i = 0;
           }
         }
-        localSharedPreferences.edit().putInt("key_config_version_patch", paramInt).commit();
-        if (paramList != null) {
-          downloadAndVerifyPatch(paramList);
+        if (i != 0) {
+          downloadAndVerifyPatch((JSONObject)localObject1);
         }
       }
-      label324:
-      label327:
-      for (;;)
-      {
-        if (localSharedPreferences.getInt("key_config_version_patch", 0) != paramInt) {
-          localSharedPreferences.edit().putInt("key_config_version_patch", 0).commit();
-        }
-        return;
-        if (localObject1 != null)
-        {
-          paramList = ((JSONObject)localObject1).optString("patchName", null);
-          if (!TextUtils.isEmpty(paramList))
-          {
-            localObject2 = PatchCommonUtil.getPatchPath(paramList);
-            File localFile = new File((String)localObject2);
-            int i;
-            if (localFile.exists())
-            {
-              boolean bool2 = PatchChecker.checkPatchValid("dex", paramList);
-              boolean bool1 = bool2;
-              if (bool2) {
-                bool1 = releaseZipPatch((String)localObject2, paramList);
-              }
-              if (bool1) {
-                break label324;
-              }
-              localFile.delete();
-              i = 1;
-            }
-            for (;;)
-            {
-              if (i == 0) {
-                break label327;
-              }
-              downloadAndVerifyPatch((JSONObject)localObject1);
-              break;
-              i = 1;
-              continue;
-              i = 0;
-            }
-          }
-        }
-      }
+    }
+    if (localSharedPreferences.getInt("key_config_version_patch", 0) != paramInt) {
+      localSharedPreferences.edit().putInt("key_config_version_patch", 0).commit();
     }
   }
   
@@ -360,275 +355,207 @@ public class MsfHandlePatchUtils
   {
     // Byte code:
     //   0: iconst_1
-    //   1: istore 4
-    //   3: iconst_1
-    //   4: istore_3
-    //   5: new 313	com/tencent/commonsdk/zip/QZipFile
-    //   8: dup
-    //   9: aload_0
-    //   10: invokespecial 314	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/lang/String;)V
-    //   13: astore 6
-    //   15: aload 6
-    //   17: astore 5
-    //   19: new 28	java/io/File
-    //   22: dup
-    //   23: aload_0
-    //   24: invokespecial 210	java/io/File:<init>	(Ljava/lang/String;)V
-    //   27: invokevirtual 317	java/io/File:getParent	()Ljava/lang/String;
-    //   30: astore_0
-    //   31: aload 6
-    //   33: astore 5
-    //   35: aload 6
-    //   37: ldc_w 319
-    //   40: invokevirtual 323	com/tencent/commonsdk/zip/QZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
-    //   43: astore 7
-    //   45: aload 6
-    //   47: astore 5
-    //   49: aload 6
-    //   51: ldc_w 325
-    //   54: invokevirtual 323	com/tencent/commonsdk/zip/QZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
-    //   57: astore 8
-    //   59: aload 6
-    //   61: astore 5
-    //   63: aload 6
-    //   65: ldc_w 327
-    //   68: invokevirtual 323	com/tencent/commonsdk/zip/QZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
-    //   71: astore 9
-    //   73: aload 7
-    //   75: ifnull +101 -> 176
-    //   78: aload 8
-    //   80: ifnull +96 -> 176
-    //   83: aload 9
-    //   85: ifnull +91 -> 176
-    //   88: aload 6
-    //   90: astore 5
-    //   92: ldc 17
-    //   94: iconst_1
-    //   95: ldc_w 329
-    //   98: invokestatic 164	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   101: aload 6
-    //   103: astore 5
-    //   105: aload 6
-    //   107: aload 7
-    //   109: invokevirtual 333	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   112: new 28	java/io/File
-    //   115: dup
-    //   116: aload_0
-    //   117: ldc_w 319
-    //   120: invokespecial 336	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   123: invokestatic 338	com/tencent/mobileqq/msf/core/net/utils/MsfHandlePatchUtils:copy	(Ljava/io/InputStream;Ljava/io/File;)V
-    //   126: aload 6
-    //   128: astore 5
-    //   130: aload 6
-    //   132: aload 8
-    //   134: invokevirtual 333	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   137: new 28	java/io/File
-    //   140: dup
-    //   141: aload_0
-    //   142: ldc_w 325
-    //   145: invokespecial 336	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   148: invokestatic 338	com/tencent/mobileqq/msf/core/net/utils/MsfHandlePatchUtils:copy	(Ljava/io/InputStream;Ljava/io/File;)V
-    //   151: aload 6
-    //   153: astore 5
-    //   155: aload 6
-    //   157: aload 9
-    //   159: invokevirtual 333	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   162: new 28	java/io/File
-    //   165: dup
-    //   166: aload_0
-    //   167: ldc_w 327
-    //   170: invokespecial 336	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   173: invokestatic 338	com/tencent/mobileqq/msf/core/net/utils/MsfHandlePatchUtils:copy	(Ljava/io/InputStream;Ljava/io/File;)V
-    //   176: aload 6
-    //   178: astore 5
-    //   180: aload 6
-    //   182: ldc_w 340
-    //   185: invokevirtual 323	com/tencent/commonsdk/zip/QZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
-    //   188: astore 7
-    //   190: aload 7
-    //   192: ifnull +61 -> 253
-    //   195: aload 6
-    //   197: astore 5
-    //   199: ldc 17
-    //   201: iconst_1
-    //   202: ldc_w 342
-    //   205: invokestatic 164	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   208: aload 6
-    //   210: astore 5
-    //   212: new 28	java/io/File
-    //   215: dup
-    //   216: aload_0
-    //   217: ldc_w 340
-    //   220: invokespecial 336	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   223: astore 8
-    //   225: aload 6
-    //   227: astore 5
-    //   229: aload 8
-    //   231: invokevirtual 213	java/io/File:exists	()Z
-    //   234: ifne +88 -> 322
-    //   237: aload 6
-    //   239: astore 5
-    //   241: aload 6
-    //   243: aload 7
-    //   245: invokevirtual 333	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   248: aload 8
-    //   250: invokestatic 338	com/tencent/mobileqq/msf/core/net/utils/MsfHandlePatchUtils:copy	(Ljava/io/InputStream;Ljava/io/File;)V
-    //   253: aload 6
-    //   255: astore 5
-    //   257: aload 6
-    //   259: aload_1
-    //   260: invokevirtual 323	com/tencent/commonsdk/zip/QZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
-    //   263: astore 7
-    //   265: aload 7
-    //   267: ifnull +39 -> 306
-    //   270: aload 6
-    //   272: astore 5
-    //   274: ldc 17
-    //   276: iconst_1
-    //   277: ldc_w 344
-    //   280: invokestatic 164	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   283: aload 6
-    //   285: astore 5
-    //   287: aload 6
-    //   289: aload 7
-    //   291: invokevirtual 333	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   294: new 28	java/io/File
-    //   297: dup
-    //   298: aload_0
-    //   299: aload_1
-    //   300: invokespecial 336	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   303: invokestatic 338	com/tencent/mobileqq/msf/core/net/utils/MsfHandlePatchUtils:copy	(Ljava/io/InputStream;Ljava/io/File;)V
-    //   306: iload_3
+    //   1: istore_2
+    //   2: aconst_null
+    //   3: astore 5
+    //   5: aconst_null
+    //   6: astore_3
+    //   7: new 313	com/tencent/commonsdk/zip/QZipFile
+    //   10: dup
+    //   11: aload_0
+    //   12: invokespecial 314	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/lang/String;)V
+    //   15: astore 4
+    //   17: new 28	java/io/File
+    //   20: dup
+    //   21: aload_0
+    //   22: invokespecial 210	java/io/File:<init>	(Ljava/lang/String;)V
+    //   25: invokevirtual 317	java/io/File:getParent	()Ljava/lang/String;
+    //   28: astore_0
+    //   29: aload 4
+    //   31: ldc_w 319
+    //   34: invokevirtual 323	com/tencent/commonsdk/zip/QZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
+    //   37: astore_3
+    //   38: aload 4
+    //   40: ldc_w 325
+    //   43: invokevirtual 323	com/tencent/commonsdk/zip/QZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
+    //   46: astore 5
+    //   48: aload 4
+    //   50: ldc_w 327
+    //   53: invokevirtual 323	com/tencent/commonsdk/zip/QZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
+    //   56: astore 6
+    //   58: aload_3
+    //   59: ifnull +84 -> 143
+    //   62: aload 5
+    //   64: ifnull +79 -> 143
+    //   67: aload 6
+    //   69: ifnull +74 -> 143
+    //   72: ldc 17
+    //   74: iconst_1
+    //   75: ldc_w 329
+    //   78: invokestatic 166	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   81: aload 4
+    //   83: aload_3
+    //   84: invokevirtual 333	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   87: new 28	java/io/File
+    //   90: dup
+    //   91: aload_0
+    //   92: ldc_w 319
+    //   95: invokespecial 336	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   98: invokestatic 338	com/tencent/mobileqq/msf/core/net/utils/MsfHandlePatchUtils:copy	(Ljava/io/InputStream;Ljava/io/File;)V
+    //   101: aload 4
+    //   103: aload 5
+    //   105: invokevirtual 333	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   108: new 28	java/io/File
+    //   111: dup
+    //   112: aload_0
+    //   113: ldc_w 325
+    //   116: invokespecial 336	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   119: invokestatic 338	com/tencent/mobileqq/msf/core/net/utils/MsfHandlePatchUtils:copy	(Ljava/io/InputStream;Ljava/io/File;)V
+    //   122: aload 4
+    //   124: aload 6
+    //   126: invokevirtual 333	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   129: new 28	java/io/File
+    //   132: dup
+    //   133: aload_0
+    //   134: ldc_w 327
+    //   137: invokespecial 336	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   140: invokestatic 338	com/tencent/mobileqq/msf/core/net/utils/MsfHandlePatchUtils:copy	(Ljava/io/InputStream;Ljava/io/File;)V
+    //   143: aload 4
+    //   145: ldc_w 340
+    //   148: invokevirtual 323	com/tencent/commonsdk/zip/QZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
+    //   151: astore_3
+    //   152: aload_3
+    //   153: ifnull +67 -> 220
+    //   156: ldc 17
+    //   158: iconst_1
+    //   159: ldc_w 342
+    //   162: invokestatic 166	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   165: new 28	java/io/File
+    //   168: dup
+    //   169: aload_0
+    //   170: ldc_w 340
+    //   173: invokespecial 336	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   176: astore 5
+    //   178: aload 5
+    //   180: invokevirtual 213	java/io/File:exists	()Z
+    //   183: ifne +17 -> 200
+    //   186: aload 4
+    //   188: aload_3
+    //   189: invokevirtual 333	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   192: aload 5
+    //   194: invokestatic 338	com/tencent/mobileqq/msf/core/net/utils/MsfHandlePatchUtils:copy	(Ljava/io/InputStream;Ljava/io/File;)V
+    //   197: goto +23 -> 220
+    //   200: aload 4
+    //   202: aload_3
+    //   203: invokevirtual 333	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   206: new 28	java/io/File
+    //   209: dup
+    //   210: aload_0
+    //   211: ldc_w 344
+    //   214: invokespecial 336	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   217: invokestatic 338	com/tencent/mobileqq/msf/core/net/utils/MsfHandlePatchUtils:copy	(Ljava/io/InputStream;Ljava/io/File;)V
+    //   220: aload 4
+    //   222: aload_1
+    //   223: invokevirtual 323	com/tencent/commonsdk/zip/QZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
+    //   226: astore_3
+    //   227: aload_3
+    //   228: ifnull +30 -> 258
+    //   231: ldc 17
+    //   233: iconst_1
+    //   234: ldc_w 346
+    //   237: invokestatic 166	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   240: aload 4
+    //   242: aload_3
+    //   243: invokevirtual 333	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   246: new 28	java/io/File
+    //   249: dup
+    //   250: aload_0
+    //   251: aload_1
+    //   252: invokespecial 336	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   255: invokestatic 338	com/tencent/mobileqq/msf/core/net/utils/MsfHandlePatchUtils:copy	(Ljava/io/InputStream;Ljava/io/File;)V
+    //   258: aload 4
+    //   260: invokevirtual 347	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   263: iconst_1
+    //   264: ireturn
+    //   265: astore_0
+    //   266: aload_0
+    //   267: invokevirtual 350	java/io/IOException:printStackTrace	()V
+    //   270: iload_2
+    //   271: ireturn
+    //   272: astore_0
+    //   273: goto +45 -> 318
+    //   276: astore_1
+    //   277: aload 4
+    //   279: astore_0
+    //   280: goto +14 -> 294
+    //   283: astore_0
+    //   284: aload_3
+    //   285: astore 4
+    //   287: goto +31 -> 318
+    //   290: astore_1
+    //   291: aload 5
+    //   293: astore_0
+    //   294: aload_0
+    //   295: astore_3
+    //   296: ldc 17
+    //   298: iconst_1
+    //   299: ldc_w 352
+    //   302: aload_1
+    //   303: invokestatic 354	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   306: iconst_0
     //   307: istore_2
-    //   308: aload 6
-    //   310: ifnull +10 -> 320
-    //   313: aload 6
-    //   315: invokevirtual 345	com/tencent/commonsdk/zip/QZipFile:close	()V
-    //   318: iload_3
-    //   319: istore_2
-    //   320: iload_2
-    //   321: ireturn
-    //   322: aload 6
-    //   324: astore 5
-    //   326: aload 6
-    //   328: aload 7
-    //   330: invokevirtual 333	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   333: new 28	java/io/File
-    //   336: dup
-    //   337: aload_0
-    //   338: ldc_w 347
-    //   341: invokespecial 336	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   344: invokestatic 338	com/tencent/mobileqq/msf/core/net/utils/MsfHandlePatchUtils:copy	(Ljava/io/InputStream;Ljava/io/File;)V
-    //   347: goto -94 -> 253
-    //   350: astore_1
-    //   351: aload 6
-    //   353: astore_0
-    //   354: aload_0
-    //   355: astore 5
-    //   357: ldc 17
-    //   359: iconst_1
-    //   360: ldc_w 349
-    //   363: aload_1
-    //   364: invokestatic 351	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   367: iconst_0
-    //   368: istore_3
-    //   369: iconst_0
-    //   370: istore_2
-    //   371: aload_0
-    //   372: ifnull -52 -> 320
-    //   375: aload_0
-    //   376: invokevirtual 345	com/tencent/commonsdk/zip/QZipFile:close	()V
-    //   379: iconst_0
-    //   380: ireturn
-    //   381: astore_0
-    //   382: iload_3
-    //   383: istore_2
-    //   384: aload_0
-    //   385: invokevirtual 354	java/io/IOException:printStackTrace	()V
-    //   388: iload_2
-    //   389: ireturn
-    //   390: astore_0
-    //   391: aconst_null
-    //   392: astore 5
-    //   394: aload 5
-    //   396: ifnull +8 -> 404
-    //   399: aload 5
-    //   401: invokevirtual 345	com/tencent/commonsdk/zip/QZipFile:close	()V
-    //   404: aload_0
-    //   405: athrow
-    //   406: astore_1
-    //   407: aload_1
-    //   408: invokevirtual 354	java/io/IOException:printStackTrace	()V
-    //   411: goto -7 -> 404
-    //   414: astore_0
-    //   415: iload 4
-    //   417: istore_2
-    //   418: goto -34 -> 384
-    //   421: astore_0
-    //   422: goto -28 -> 394
-    //   425: astore_1
-    //   426: aconst_null
-    //   427: astore_0
-    //   428: goto -74 -> 354
+    //   308: aload_0
+    //   309: ifnull +7 -> 316
+    //   312: aload_0
+    //   313: invokevirtual 347	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   316: iconst_0
+    //   317: ireturn
+    //   318: aload 4
+    //   320: ifnull +16 -> 336
+    //   323: aload 4
+    //   325: invokevirtual 347	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   328: goto +8 -> 336
+    //   331: astore_1
+    //   332: aload_1
+    //   333: invokevirtual 350	java/io/IOException:printStackTrace	()V
+    //   336: aload_0
+    //   337: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	431	0	paramString1	String
-    //   0	431	1	paramString2	String
-    //   307	111	2	bool1	boolean
-    //   4	379	3	bool2	boolean
-    //   1	415	4	bool3	boolean
-    //   17	383	5	localObject1	Object
-    //   13	339	6	localQZipFile	com.tencent.commonsdk.zip.QZipFile
-    //   43	286	7	localZipEntry1	java.util.zip.ZipEntry
-    //   57	192	8	localObject2	Object
-    //   71	87	9	localZipEntry2	java.util.zip.ZipEntry
+    //   0	338	0	paramString1	String
+    //   0	338	1	paramString2	String
+    //   1	307	2	bool	boolean
+    //   6	290	3	localObject1	Object
+    //   15	309	4	localObject2	Object
+    //   3	289	5	localObject3	Object
+    //   56	69	6	localZipEntry	java.util.zip.ZipEntry
     // Exception table:
     //   from	to	target	type
-    //   19	31	350	java/lang/Throwable
-    //   35	45	350	java/lang/Throwable
-    //   49	59	350	java/lang/Throwable
-    //   63	73	350	java/lang/Throwable
-    //   92	101	350	java/lang/Throwable
-    //   105	126	350	java/lang/Throwable
-    //   130	151	350	java/lang/Throwable
-    //   155	176	350	java/lang/Throwable
-    //   180	190	350	java/lang/Throwable
-    //   199	208	350	java/lang/Throwable
-    //   212	225	350	java/lang/Throwable
-    //   229	237	350	java/lang/Throwable
-    //   241	253	350	java/lang/Throwable
-    //   257	265	350	java/lang/Throwable
-    //   274	283	350	java/lang/Throwable
-    //   287	306	350	java/lang/Throwable
-    //   326	347	350	java/lang/Throwable
-    //   375	379	381	java/io/IOException
-    //   5	15	390	finally
-    //   399	404	406	java/io/IOException
-    //   313	318	414	java/io/IOException
-    //   19	31	421	finally
-    //   35	45	421	finally
-    //   49	59	421	finally
-    //   63	73	421	finally
-    //   92	101	421	finally
-    //   105	126	421	finally
-    //   130	151	421	finally
-    //   155	176	421	finally
-    //   180	190	421	finally
-    //   199	208	421	finally
-    //   212	225	421	finally
-    //   229	237	421	finally
-    //   241	253	421	finally
-    //   257	265	421	finally
-    //   274	283	421	finally
-    //   287	306	421	finally
-    //   326	347	421	finally
-    //   357	367	421	finally
-    //   5	15	425	java/lang/Throwable
+    //   258	263	265	java/io/IOException
+    //   312	316	265	java/io/IOException
+    //   17	58	272	finally
+    //   72	143	272	finally
+    //   143	152	272	finally
+    //   156	197	272	finally
+    //   200	220	272	finally
+    //   220	227	272	finally
+    //   231	258	272	finally
+    //   17	58	276	java/lang/Throwable
+    //   72	143	276	java/lang/Throwable
+    //   143	152	276	java/lang/Throwable
+    //   156	197	276	java/lang/Throwable
+    //   200	220	276	java/lang/Throwable
+    //   220	227	276	java/lang/Throwable
+    //   231	258	276	java/lang/Throwable
+    //   7	17	283	finally
+    //   296	306	283	finally
+    //   7	17	290	java/lang/Throwable
+    //   323	328	331	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.utils.MsfHandlePatchUtils
  * JD-Core Version:    0.7.0.1
  */

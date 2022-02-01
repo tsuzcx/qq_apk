@@ -74,41 +74,37 @@ public class TNNGenderDetectInitializer
   
   public boolean loadRapidModelFrom(String paramString, List<String> paramList, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3)
   {
-    for (;;)
+    try
     {
-      ArrayList localArrayList1;
-      ArrayList localArrayList2;
-      try
-      {
-        LogUtils.i("TNNGenderDetectInitializer", "loadRapidNetModelImpl");
-        paramBoolean1 = isFunctionReady();
-        if (!paramBoolean1)
-        {
-          paramBoolean1 = false;
-          return paramBoolean1;
-        }
-        if (!unloadRapidNetModelImpl(true, paramInt1, paramInt3))
-        {
-          paramBoolean1 = false;
-          continue;
-        }
-        localArrayList1 = new ArrayList();
-        localArrayList2 = new ArrayList();
-        paramList = paramList.iterator();
-        if (paramList.hasNext())
-        {
-          String str2 = (String)paramList.next();
-          String str1 = RapidnetModelManager.copyIfInAssets(paramString, str2 + ".rapidmodel.wmc", FeatureManager.Features.RAPID_NET_GESTURE.getFinalResourcesDir());
-          str2 = RapidnetModelManager.copyIfInAssets(paramString, str2 + ".rapidproto.wmc", FeatureManager.Features.RAPID_NET_GESTURE.getFinalResourcesDir());
-          new File(str1);
-          new File(str2);
-          localArrayList1.add(str1);
-          localArrayList2.add(str2);
-          continue;
-        }
-        paramInt2 = -1;
+      LogUtils.i("TNNGenderDetectInitializer", "loadRapidNetModelImpl");
+      paramBoolean1 = isFunctionReady();
+      if (!paramBoolean1) {
+        return false;
       }
-      finally {}
+      paramBoolean1 = unloadRapidNetModelImpl(true, paramInt1, paramInt3);
+      if (!paramBoolean1) {
+        return false;
+      }
+      ArrayList localArrayList1 = new ArrayList();
+      ArrayList localArrayList2 = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        String str = (String)paramList.next();
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append(".rapidmodel.wmc");
+        localObject = RapidnetModelManager.copyIfInAssets(paramString, ((StringBuilder)localObject).toString(), FeatureManager.Features.RAPID_NET_GESTURE.getFinalResourcesDir());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append(".rapidproto.wmc");
+        str = RapidnetModelManager.copyIfInAssets(paramString, localStringBuilder.toString(), FeatureManager.Features.RAPID_NET_GESTURE.getFinalResourcesDir());
+        new File((String)localObject);
+        new File(str);
+        localArrayList1.add(localObject);
+        localArrayList2.add(str);
+      }
+      paramInt2 = -1;
       paramString = this.TNNGenderDetect;
       if (paramInt1 == 5) {}
       try
@@ -116,16 +112,24 @@ public class TNNGenderDetectInitializer
         paramInt2 = this.TNNGenderDetect.init((String)localArrayList2.get(0), (String)localArrayList1.get(0), "ARM");
         if (paramInt2 != 0)
         {
-          LogUtils.d("TNNGenderDetectInitializer", "RapidnetLib init failed ret =" + paramInt2);
-          paramBoolean1 = false;
-          continue;
+          paramString = new StringBuilder();
+          paramString.append("RapidnetLib init failed ret =");
+          paramString.append(paramInt2);
+          LogUtils.d("TNNGenderDetectInitializer", paramString.toString());
+          return false;
         }
+        paramString = new StringBuilder();
+        paramString.append("RapidnetLib init success. ret =");
+        paramString.append(paramInt2);
+        LogUtils.d("TNNGenderDetectInitializer", paramString.toString());
+        this.modelManager.toggleRapidModel(paramInt3, true);
+        return true;
       }
       finally {}
-      LogUtils.d("TNNGenderDetectInitializer", "RapidnetLib init success. ret =" + paramInt2);
-      this.modelManager.toggleRapidModel(paramInt3, true);
-      paramBoolean1 = true;
+      throw paramString;
     }
+    finally {}
+    for (;;) {}
   }
   
   public float[] retrieveGenderInfo(Bitmap paramBitmap, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -145,7 +149,7 @@ public class TNNGenderDetectInitializer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.initializer.TNNGenderDetectInitializer
  * JD-Core Version:    0.7.0.1
  */

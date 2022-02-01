@@ -14,13 +14,13 @@ public class ShaderUtil
   public static int createProgram(String paramString1, String paramString2)
   {
     int i = loadShader(35633, paramString1);
-    if (i == 0) {}
-    int j;
-    do
-    {
+    if (i == 0) {
       return 0;
-      j = loadShader(35632, paramString2);
-    } while (j == 0);
+    }
+    int j = loadShader(35632, paramString2);
+    if (j == 0) {
+      return 0;
+    }
     int k = GLES20.glCreateProgram();
     if (k != 0)
     {
@@ -41,18 +41,20 @@ public class ShaderUtil
   
   public static int loadShader(int paramInt, String paramString)
   {
-    paramInt = GLES20.glCreateShader(paramInt);
-    if (paramInt != 0)
+    int i = GLES20.glCreateShader(paramInt);
+    paramInt = i;
+    if (i != 0)
     {
-      GLES20.glShaderSource(paramInt, paramString);
-      GLES20.glCompileShader(paramInt);
+      GLES20.glShaderSource(i, paramString);
+      GLES20.glCompileShader(i);
       paramString = new int[1];
-      GLES20.glGetShaderiv(paramInt, 35713, paramString, 0);
+      GLES20.glGetShaderiv(i, 35713, paramString, 0);
+      paramInt = i;
       if (paramString[0] != 1)
       {
         LogUtils.a("ShaderUtil", "shader compile error");
-        GLES20.glDeleteShader(paramInt);
-        return 0;
+        GLES20.glDeleteShader(i);
+        paramInt = 0;
       }
     }
     return paramInt;
@@ -73,21 +75,18 @@ public class ShaderUtil
         paramContext.append(str);
         paramContext.append("\n");
       }
-      return paramContext.toString();
+      localBufferedReader.close();
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
     }
-    for (;;)
-    {
-      localException.close();
-    }
+    return paramContext.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.peterlmeng.animate_image.bitmaptexture.ShaderUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -20,12 +20,18 @@ class ScreenShareReportHelper$ScreenShareReportInfo
   
   public String toString()
   {
-    return "{lastFromType: " + this.jdField_a_of_type_Int + ", lastStartTime: " + this.jdField_a_of_type_Long + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{lastFromType: ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", lastStartTime: ");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.screenshare.ScreenShareReportHelper.ScreenShareReportInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -18,37 +18,45 @@ public class k$c
     try
     {
       int i = MsfSdkUtils.getThreadCounts("MsfCoreSocketReaderOld");
-      HashMap localHashMap;
+      Object localObject;
       if ((i >= 5) && (k.e()))
       {
         k.a(false);
-        QLog.d("SocketReaderOldMonitor", 1, "SocketReader多线程异常 " + i);
-        localHashMap = new HashMap();
-        localHashMap.put("count", String.valueOf(i));
-        localHashMap.put("uin", String.valueOf(MsfCore.sCore.getAccountCenter().i()));
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("SocketReader多线程异常 ");
+        ((StringBuilder)localObject).append(i);
+        QLog.d("SocketReaderOldMonitor", 1, ((StringBuilder)localObject).toString());
+        localObject = new HashMap();
+        ((Map)localObject).put("count", String.valueOf(i));
+        ((Map)localObject).put("uin", String.valueOf(MsfCore.sCore.getAccountCenter().i()));
         if ((MsfCore.sCore != null) && (MsfCore.sCore.statReporter != null)) {
-          MsfCore.sCore.statReporter.a("msf.core.SocketReaderMultiThreadException", false, 0L, 0L, localHashMap, false, false);
+          MsfCore.sCore.statReporter.a("msf.core.SocketReaderMultiThreadException", false, 0L, 0L, (Map)localObject, false, false);
         }
         a.a(new com.tencent.mobileqq.msf.sdk.b.b("SocketReaderMultiThreadCatchedException"), "SocketReaderMultiThreadCatchedException", "SocketReader5多线程异常");
       }
-      while (QLog.isColorLevel())
+      else if ((i >= 3) && (k.f()))
       {
-        QLog.d("SocketReaderOldMonitor", 1, "SocketReader current " + i);
-        return;
-        if ((i >= 3) && (k.f()))
-        {
-          k.b(false);
-          QLog.d("SocketReaderOldMonitor", 1, "SocketReader多线程异常 " + i);
-          localHashMap = new HashMap();
-          localHashMap.put("count", String.valueOf(i));
-          localHashMap.put("uin", String.valueOf(MsfCore.sCore.getAccountCenter().i()));
-          if ((MsfCore.sCore != null) && (MsfCore.sCore.statReporter != null)) {
-            MsfCore.sCore.statReporter.a("msf.core.SocketReaderMultiThreadException", false, 0L, 0L, localHashMap, false, false);
-          }
-          a.a(new com.tencent.mobileqq.msf.sdk.b.b("SocketReaderMultiThreadCatchedException"), "SocketReaderMultiThreadCatchedException", "SocketReader3多线程异常");
+        k.b(false);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("SocketReader多线程异常 ");
+        ((StringBuilder)localObject).append(i);
+        QLog.d("SocketReaderOldMonitor", 1, ((StringBuilder)localObject).toString());
+        localObject = new HashMap();
+        ((Map)localObject).put("count", String.valueOf(i));
+        ((Map)localObject).put("uin", String.valueOf(MsfCore.sCore.getAccountCenter().i()));
+        if ((MsfCore.sCore != null) && (MsfCore.sCore.statReporter != null)) {
+          MsfCore.sCore.statReporter.a("msf.core.SocketReaderMultiThreadException", false, 0L, 0L, (Map)localObject, false, false);
         }
+        a.a(new com.tencent.mobileqq.msf.sdk.b.b("SocketReaderMultiThreadCatchedException"), "SocketReaderMultiThreadCatchedException", "SocketReader3多线程异常");
       }
-      return;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("SocketReader current ");
+        ((StringBuilder)localObject).append(i);
+        QLog.d("SocketReaderOldMonitor", 1, ((StringBuilder)localObject).toString());
+        return;
+      }
     }
     catch (Exception localException)
     {
@@ -60,7 +68,7 @@ public class k$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.k.c
  * JD-Core Version:    0.7.0.1
  */

@@ -8,36 +8,40 @@ class SettingUncommUsedContactsActivity$1
 {
   SettingUncommUsedContactsActivity$1(SettingUncommUsedContactsActivity paramSettingUncommUsedContactsActivity) {}
   
-  public void onGetBothDongtaiPermissions(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  protected void onGetBothDongtaiPermissions(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
     if (paramBoolean1)
     {
-      SettingUncommUsedContactsActivity.a(this.a, this.a.a.a(), paramBoolean2);
-      SettingUncommUsedContactsActivity.a(this.a, this.a.b.a(), paramBoolean3);
+      SettingUncommUsedContactsActivity localSettingUncommUsedContactsActivity = this.a;
+      SettingUncommUsedContactsActivity.a(localSettingUncommUsedContactsActivity, localSettingUncommUsedContactsActivity.a.a(), paramBoolean2);
+      localSettingUncommUsedContactsActivity = this.a;
+      SettingUncommUsedContactsActivity.a(localSettingUncommUsedContactsActivity, localSettingUncommUsedContactsActivity.b.a(), paramBoolean3);
     }
   }
   
-  public void onSetNotAllowedSeeMyDongtai(boolean paramBoolean1, boolean paramBoolean2)
+  protected void onSetNotAllowedSeeMyDongtai(boolean paramBoolean1, boolean paramBoolean2)
   {
     if (!paramBoolean1)
     {
-      this.a.a(2131719116, 1);
-      SettingUncommUsedContactsActivity.a(this.a, this.a.a.a(), paramBoolean2);
+      this.a.a(2131718834, 1);
+      SettingUncommUsedContactsActivity localSettingUncommUsedContactsActivity = this.a;
+      SettingUncommUsedContactsActivity.a(localSettingUncommUsedContactsActivity, localSettingUncommUsedContactsActivity.a.a(), paramBoolean2);
     }
   }
   
-  public void onSetShieldHisDongtai(boolean paramBoolean1, boolean paramBoolean2)
+  protected void onSetShieldHisDongtai(boolean paramBoolean1, boolean paramBoolean2)
   {
     if (!paramBoolean1)
     {
-      this.a.a(2131719116, 1);
-      SettingUncommUsedContactsActivity.a(this.a, this.a.b.a(), paramBoolean2);
+      this.a.a(2131718834, 1);
+      SettingUncommUsedContactsActivity localSettingUncommUsedContactsActivity = this.a;
+      SettingUncommUsedContactsActivity.a(localSettingUncommUsedContactsActivity, localSettingUncommUsedContactsActivity.b.a(), paramBoolean2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SettingUncommUsedContactsActivity.1
  * JD-Core Version:    0.7.0.1
  */

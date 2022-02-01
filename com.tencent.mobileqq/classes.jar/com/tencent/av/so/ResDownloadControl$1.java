@@ -17,7 +17,6 @@ class ResDownloadControl$1
   public void onResp(NetResp paramNetResp)
   {
     HttpNetReq localHttpNetReq = (HttpNetReq)paramNetResp.mReq;
-    int i;
     if (paramNetResp.mResult == 0)
     {
       paramNetResp = new File(localHttpNetReq.mOutPath);
@@ -25,50 +24,60 @@ class ResDownloadControl$1
       {
         try
         {
-          if (!ResMgr.a(localHttpNetReq.mOutPath, this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo.resZipMd5)) {
-            break label253;
+          if (ResMgr.a(localHttpNetReq.mOutPath, this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo.resZipMd5))
+          {
+            String str = paramNetResp.getParent();
+            FileUtils.uncompressZip(localHttpNetReq.mOutPath, str, false);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(str);
+            localStringBuilder.append(File.separator);
+            localStringBuilder.append(this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo.resFileName);
+            boolean bool = ResMgr.a(localStringBuilder.toString(), this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo.resMd5);
+            if (bool) {
+              i = 1;
+            }
           }
-          String str = paramNetResp.getParent();
-          FileUtils.a(localHttpNetReq.mOutPath, str, false);
-          boolean bool = ResMgr.a(str + File.separator + this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo.resFileName, this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo.resMd5);
-          if (!bool) {
-            break label253;
-          }
-          i = 1;
         }
         catch (Exception localException)
         {
-          for (;;)
-          {
-            localException.printStackTrace();
-            i = 0;
-            continue;
-            QLog.e("AVResMgr", 1, "download end but failed. uncompressZip failed or md5 not match. " + this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo);
-            ResDownloadControl.a(-1, this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.b, this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo);
-          }
+          localException.printStackTrace();
+          i = 0;
         }
         paramNetResp.delete();
+        break label163;
       }
     }
-    for (;;)
+    int i = 0;
+    label163:
+    if (i != 0)
     {
-      if (i != 0)
-      {
-        QLog.i("AVResMgr", 1, "download successfully. " + this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo);
-        if (this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo.resId.equalsIgnoreCase("AVAINSMediaLabModel")) {
-          ResMgr.a();
-        }
-        ResDownloadControl.a(1, 100, this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo);
-        if (this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq == localHttpNetReq)
-        {
-          this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = null;
-          this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_Int = 0;
-          ResDownloadControl.a(this.jdField_a_of_type_ComTencentAvSoResDownloadControl).remove(this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo);
-        }
-        return;
+      paramNetResp = new StringBuilder();
+      paramNetResp.append("download successfully. ");
+      paramNetResp.append(this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo);
+      QLog.i("AVResMgr", 1, paramNetResp.toString());
+      if (this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo.resId.equalsIgnoreCase("AVTraeSo")) {
+        ResMgr.b();
+      } else if (this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo.resId.equalsIgnoreCase("AVAINSMediaLabModel")) {
+        ResMgr.a();
+      } else if (this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo.resId.equalsIgnoreCase("AVSDKSo")) {
+        ResMgr.c();
       }
-      label253:
-      i = 0;
+      ResDownloadControl.a(1, 100, this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo);
+    }
+    else
+    {
+      paramNetResp = new StringBuilder();
+      paramNetResp.append("download end but failed. uncompressZip failed or md5 not match. ");
+      paramNetResp.append(this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo);
+      QLog.e("AVResMgr", 1, paramNetResp.toString());
+      ResDownloadControl.a(-1, this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.b, this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo);
+    }
+    if (this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq == localHttpNetReq)
+    {
+      paramNetResp = this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo;
+      paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = null;
+      paramNetResp.jdField_a_of_type_Int = 0;
+      ResDownloadControl.a(this.jdField_a_of_type_ComTencentAvSoResDownloadControl).remove(this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo);
     }
   }
   
@@ -77,26 +86,27 @@ class ResDownloadControl$1
     int i;
     if (paramLong2 == 0L) {
       i = 0;
+    } else if (paramLong1 >= paramLong2) {
+      i = 99;
+    } else {
+      i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
     }
-    for (;;)
+    this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.b = i;
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.b = i;
-      if (QLog.isColorLevel()) {
-        QLog.d("AVResMgr", 2, "download... progress = " + i + ", " + this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo);
-      }
-      ResDownloadControl.a(2, i, this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo);
-      return;
-      if (paramLong1 >= paramLong2) {
-        i = 99;
-      } else {
-        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-      }
+      paramNetReq = new StringBuilder();
+      paramNetReq.append("download... progress = ");
+      paramNetReq.append(i);
+      paramNetReq.append(", ");
+      paramNetReq.append(this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo);
+      QLog.d("AVResMgr", 2, paramNetReq.toString());
     }
+    ResDownloadControl.a(2, i, this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.so.ResDownloadControl.1
  * JD-Core Version:    0.7.0.1
  */

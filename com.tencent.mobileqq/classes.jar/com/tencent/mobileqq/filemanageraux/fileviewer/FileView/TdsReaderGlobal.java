@@ -31,7 +31,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Executor;
 import mqq.app.AppRuntime;
-import mqq.app.TicketManagerImpl;
 import mqq.os.MqqHandler;
 
 public final class TdsReaderGlobal
@@ -80,7 +79,10 @@ public final class TdsReaderGlobal
   
   private static String a(String paramString1, String paramString2)
   {
-    return paramString1 + paramString2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(paramString2);
+    return localStringBuilder.toString();
   }
   
   private Executor a()
@@ -117,72 +119,114 @@ public final class TdsReaderGlobal
   public static void a(boolean paramBoolean)
   {
     jdField_b_of_type_Boolean = paramBoolean;
-    synchronized (jdField_a_of_type_JavaUtilMap)
+    for (;;)
     {
-      if (jdField_a_of_type_JavaUtilMap.size() > 0)
+      synchronized (jdField_a_of_type_JavaUtilMap)
       {
-        i = 1;
-        if ((paramBoolean) && (!c) && (i != 0))
+        if (jdField_a_of_type_JavaUtilMap.size() > 0)
         {
-          TdsReaderView.init(new TdsReaderGlobal(BaseApplicationImpl.getApplication()));
-          c = true;
+          i = 1;
+          if ((paramBoolean) && (!c) && (i != 0))
+          {
+            TdsReaderView.init(new TdsReaderGlobal(BaseApplicationImpl.getApplication()));
+            c = true;
+          }
+          return;
         }
-        return;
       }
       int i = 0;
     }
   }
   
+  /* Error */
   public static void a(boolean paramBoolean, Map<String, String> paramMap)
   {
-    if (paramMap == null) {
-      return;
-    }
-    if (paramBoolean) {
-      try
-      {
-        for (;;)
-        {
-          synchronized (jdField_a_of_type_JavaUtilMap)
-          {
-            jdField_a_of_type_JavaUtilMap.putAll(paramMap);
-          }
-          synchronized (jdField_a_of_type_JavaUtilMap)
-          {
-            jdField_a_of_type_JavaUtilMap.clear();
-            jdField_a_of_type_JavaUtilMap.putAll(paramMap);
-          }
-        }
-      }
-      finally {}
-    }
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: aload_1
+    //   4: ifnonnull +7 -> 11
+    //   7: ldc 2
+    //   9: monitorexit
+    //   10: return
+    //   11: iload_0
+    //   12: ifeq +28 -> 40
+    //   15: getstatic 40	com/tencent/mobileqq/filemanageraux/fileviewer/FileView/TdsReaderGlobal:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   18: astore_2
+    //   19: aload_2
+    //   20: monitorenter
+    //   21: getstatic 40	com/tencent/mobileqq/filemanageraux/fileviewer/FileView/TdsReaderGlobal:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   24: aload_1
+    //   25: invokeinterface 139 2 0
+    //   30: aload_2
+    //   31: monitorexit
+    //   32: goto +33 -> 65
+    //   35: astore_1
+    //   36: aload_2
+    //   37: monitorexit
+    //   38: aload_1
+    //   39: athrow
+    //   40: getstatic 40	com/tencent/mobileqq/filemanageraux/fileviewer/FileView/TdsReaderGlobal:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   43: astore_2
+    //   44: aload_2
+    //   45: monitorenter
+    //   46: getstatic 40	com/tencent/mobileqq/filemanageraux/fileviewer/FileView/TdsReaderGlobal:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   49: invokeinterface 142 1 0
+    //   54: getstatic 40	com/tencent/mobileqq/filemanageraux/fileviewer/FileView/TdsReaderGlobal:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   57: aload_1
+    //   58: invokeinterface 139 2 0
+    //   63: aload_2
+    //   64: monitorexit
+    //   65: ldc 2
+    //   67: monitorexit
+    //   68: return
+    //   69: astore_1
+    //   70: aload_2
+    //   71: monitorexit
+    //   72: aload_1
+    //   73: athrow
+    //   74: astore_1
+    //   75: ldc 2
+    //   77: monitorexit
+    //   78: aload_1
+    //   79: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	80	0	paramBoolean	boolean
+    //   0	80	1	paramMap	Map<String, String>
+    // Exception table:
+    //   from	to	target	type
+    //   21	32	35	finally
+    //   36	38	35	finally
+    //   46	65	69	finally
+    //   70	72	69	finally
+    //   15	21	74	finally
+    //   38	40	74	finally
+    //   40	46	74	finally
+    //   72	74	74	finally
   }
   
   private void a(Object[] paramArrayOfObject)
   {
-    if ((paramArrayOfObject == null) || (paramArrayOfObject.length < 4)) {}
-    boolean bool1;
-    IHostInterface.IPreferencesCallback localIPreferencesCallback;
-    do
+    if (paramArrayOfObject != null)
     {
-      return;
+      if (paramArrayOfObject.length < 4) {
+        return;
+      }
       String str = (String)paramArrayOfObject[0];
-      bool1 = ((Boolean)paramArrayOfObject[1]).booleanValue();
+      boolean bool1 = ((Boolean)paramArrayOfObject[1]).booleanValue();
       boolean bool2 = ((Boolean)paramArrayOfObject[2]).booleanValue();
-      localIPreferencesCallback = (IHostInterface.IPreferencesCallback)paramArrayOfObject[3];
+      IHostInterface.IPreferencesCallback localIPreferencesCallback = (IHostInterface.IPreferencesCallback)paramArrayOfObject[3];
       SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getSharedPreferences("tencentdoc_olc_pref", 4);
       paramArrayOfObject = str;
       if (bool2) {
         paramArrayOfObject = a(getUserId(), str);
       }
       bool1 = localSharedPreferences.getBoolean(paramArrayOfObject, bool1);
-    } while (localIPreferencesCallback == null);
-    localIPreferencesCallback.onResult(bool1);
-  }
-  
-  public static boolean a()
-  {
-    return (c) && (jdField_b_of_type_Boolean);
+      if (localIPreferencesCallback != null) {
+        localIPreferencesCallback.onResult(bool1);
+      }
+    }
   }
   
   private Executor b()
@@ -215,75 +259,40 @@ public final class TdsReaderGlobal
   
   private void b(Object[] paramArrayOfObject)
   {
-    int i = 0;
-    if ((paramArrayOfObject == null) || (paramArrayOfObject.length < 4)) {}
-    String str1;
-    boolean bool;
-    String str2;
-    do
-    {
-      return;
-      str1 = (String)paramArrayOfObject[0];
-      bool = ((Boolean)paramArrayOfObject[1]).booleanValue();
-      str2 = (String)paramArrayOfObject[2];
-      localObject = (IHostInterface.IHttpListener)paramArrayOfObject[3];
-      if (NetworkUtil.g(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl)) {
-        break;
-      }
-    } while (localObject == null);
-    ((IHostInterface.IHttpListener)localObject).onResponse(9004, null);
-    return;
-    paramArrayOfObject = new HttpNetReq();
-    paramArrayOfObject.mReqUrl = str1;
-    if (bool) {
-      i = 1;
-    }
-    paramArrayOfObject.mHttpMethod = i;
-    paramArrayOfObject.mPrioty = 1;
-    paramArrayOfObject.mUseByteArrayPool = true;
-    paramArrayOfObject.mExcuteTimeLimit = 5000L;
-    paramArrayOfObject.mCallback = new TdsReaderGlobal.NetEngineListener4Request(str1, (IHostInterface.IHttpListener)localObject, null);
-    Object localObject = getUserId();
-    String str3 = ((TicketManagerImpl)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getRuntime().getManager(2)).getSkey((String)localObject);
-    localObject = "uin=" + (String)localObject + ";skey=" + str3;
-    if (bool) {
-      paramArrayOfObject.mSendData = str2.getBytes();
-    }
-    paramArrayOfObject.mReqProperties = new HashMap();
-    paramArrayOfObject.mReqProperties.put("Cookie", localObject);
-    Log.i("TdsReaderView_", "sendReq url:" + str1);
-    a().sendReq(paramArrayOfObject);
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   private void c(Object[] paramArrayOfObject)
   {
-    if ((paramArrayOfObject == null) || (paramArrayOfObject.length < 4)) {}
-    String str1;
-    String str2;
-    String str3;
-    do
+    if (paramArrayOfObject != null)
     {
-      return;
-      str1 = (String)paramArrayOfObject[0];
-      str2 = (String)paramArrayOfObject[1];
-      str3 = (String)paramArrayOfObject[2];
-      paramArrayOfObject = (IHostInterface.IDownloadListener)paramArrayOfObject[3];
-      if (NetworkUtil.g(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl)) {
-        break;
+      if (paramArrayOfObject.length < 4) {
+        return;
       }
-    } while (paramArrayOfObject == null);
-    paramArrayOfObject.onDownloadFinished(str1, false, 9004);
-    return;
-    HttpNetReq localHttpNetReq = new HttpNetReq();
-    localHttpNetReq.mReqUrl = str2;
-    localHttpNetReq.mOutPath = str3;
-    localHttpNetReq.mHttpMethod = 0;
-    localHttpNetReq.mPrioty = 1;
-    localHttpNetReq.mUseByteArrayPool = true;
-    localHttpNetReq.mTimeoutParam = jdField_a_of_type_ComTencentMobileqqTransfileTimeoutParam.clone();
-    localHttpNetReq.mSupportBreakResume = true;
-    localHttpNetReq.mCallback = new TdsReaderGlobal.NetEngineListener4Download(str1, paramArrayOfObject, null);
-    a().sendReq(localHttpNetReq);
+      String str1 = (String)paramArrayOfObject[0];
+      String str2 = (String)paramArrayOfObject[1];
+      String str3 = (String)paramArrayOfObject[2];
+      paramArrayOfObject = (IHostInterface.IDownloadListener)paramArrayOfObject[3];
+      if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl))
+      {
+        if (paramArrayOfObject != null) {
+          paramArrayOfObject.onDownloadFinished(str1, false, 9004);
+        }
+      }
+      else
+      {
+        HttpNetReq localHttpNetReq = new HttpNetReq();
+        localHttpNetReq.mReqUrl = str2;
+        localHttpNetReq.mOutPath = str3;
+        localHttpNetReq.mHttpMethod = 0;
+        localHttpNetReq.mPrioty = 1;
+        localHttpNetReq.mUseByteArrayPool = true;
+        localHttpNetReq.mTimeoutParam = jdField_a_of_type_ComTencentMobileqqTransfileTimeoutParam.clone();
+        localHttpNetReq.mSupportBreakResume = true;
+        localHttpNetReq.mCallback = new TdsReaderGlobal.NetEngineListener4Download(str1, paramArrayOfObject, null);
+        a().sendReq(localHttpNetReq);
+      }
+    }
   }
   
   public void commitPreferences(String paramString, boolean paramBoolean1, boolean paramBoolean2)
@@ -313,41 +322,46 @@ public final class TdsReaderGlobal
   
   public Object createWebView(Context paramContext, IHostInterface.IWebClient paramIWebClient)
   {
-    if (paramContext == null) {}
-    for (Object localObject = this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;; localObject = paramContext)
-    {
-      ProtectedWebView localProtectedWebView = new ProtectedWebView((Context)localObject);
-      if (paramIWebClient != null)
-      {
-        localProtectedWebView.setWebChromeClient(new TdsReaderGlobal.WebChromeClientImpl(paramIWebClient, null));
-        localObject = paramContext;
-        if (paramContext == null) {
-          localObject = this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
-        }
-        localProtectedWebView.setWebViewClient(new TdsReaderGlobal.WebViewClientImpl((Context)localObject, paramIWebClient, null));
-      }
-      paramContext = localProtectedWebView.getX5WebViewExtension();
-      if (paramContext != null)
-      {
-        paramContext.setHorizontalScrollBarEnabled(false);
-        paramContext.setVerticalScrollBarEnabled(false);
-        paramContext.setScrollBarFadingEnabled(false);
-      }
-      return localProtectedWebView;
+    Object localObject;
+    if (paramContext == null) {
+      localObject = this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
+    } else {
+      localObject = paramContext;
     }
+    ProtectedWebView localProtectedWebView = new ProtectedWebView((Context)localObject);
+    if (paramIWebClient != null)
+    {
+      localProtectedWebView.setWebChromeClient(new TdsReaderGlobal.WebChromeClientImpl(paramIWebClient, null));
+      localObject = paramContext;
+      if (paramContext == null) {
+        localObject = this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
+      }
+      localProtectedWebView.setWebViewClient(new TdsReaderGlobal.WebViewClientImpl((Context)localObject, paramIWebClient, null));
+    }
+    paramContext = localProtectedWebView.getX5WebViewExtension();
+    if (paramContext != null)
+    {
+      paramContext.setHorizontalScrollBarEnabled(false);
+      paramContext.setVerticalScrollBarEnabled(false);
+      paramContext.setScrollBarFadingEnabled(false);
+    }
+    return localProtectedWebView;
   }
   
   public void downloadResource(String paramString1, String paramString2, String paramString3, IHostInterface.IDownloadListener paramIDownloadListener)
   {
-    if ((!TextUtils.isEmpty(paramString2)) && (paramString2.startsWith("http"))) {
-      b().execute(new TdsReaderGlobal.RunnableImpl(this, 4, new Object[] { paramString1, paramString2, paramString3, paramIDownloadListener }, null));
-    }
-    do
+    if ((!TextUtils.isEmpty(paramString2)) && (paramString2.startsWith("http")))
     {
+      b().execute(new TdsReaderGlobal.RunnableImpl(this, 4, new Object[] { paramString1, paramString2, paramString3, paramIDownloadListener }, null));
       return;
-      Log.e("TdsReaderView_", "not supported url:" + paramString2);
-    } while (paramIDownloadListener == null);
-    paramIDownloadListener.onDownloadFinished(paramString1, false, -1);
+    }
+    paramString3 = new StringBuilder();
+    paramString3.append("not supported url:");
+    paramString3.append(paramString2);
+    Log.e("TdsReaderView_", paramString3.toString());
+    if (paramIDownloadListener != null) {
+      paramIDownloadListener.onDownloadFinished(paramString1, false, -1);
+    }
   }
   
   public String getAppId()
@@ -376,32 +390,32 @@ public final class TdsReaderGlobal
   
   public void reportEvent(String paramString1, int paramInt, String paramString2)
   {
+    String str = paramString2;
     if (paramString2 == null) {
-      paramString2 = "";
+      str = "";
     }
-    for (;;)
-    {
-      ReportController.b(null, "dc00898", "", "", paramString1, paramString1, paramInt, 0, "", "", paramString2, "");
-      return;
-    }
+    ReportController.b(null, "dc00898", "", "", paramString1, paramString1, paramInt, 0, "", "", str, "");
   }
   
   public void sendHttpRequest(String paramString1, boolean paramBoolean, String paramString2, IHostInterface.IHttpListener paramIHttpListener)
   {
-    if ((!TextUtils.isEmpty(paramString1)) && (paramString1.startsWith("http"))) {
-      b().execute(new TdsReaderGlobal.RunnableImpl(this, 3, new Object[] { paramString1, Boolean.valueOf(paramBoolean), paramString2, paramIHttpListener }, null));
-    }
-    do
+    if ((!TextUtils.isEmpty(paramString1)) && (paramString1.startsWith("http")))
     {
+      b().execute(new TdsReaderGlobal.RunnableImpl(this, 3, new Object[] { paramString1, Boolean.valueOf(paramBoolean), paramString2, paramIHttpListener }, null));
       return;
-      Log.e("TdsReaderView_", "invalid url:" + paramString1);
-    } while (paramIHttpListener == null);
-    paramIHttpListener.onResponse(-1, null);
+    }
+    paramString2 = new StringBuilder();
+    paramString2.append("invalid url:");
+    paramString2.append(paramString1);
+    Log.e("TdsReaderView_", paramString2.toString());
+    if (paramIHttpListener != null) {
+      paramIHttpListener.onResponse(-1, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.fileviewer.FileView.TdsReaderGlobal
  * JD-Core Version:    0.7.0.1
  */

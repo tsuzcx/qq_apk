@@ -11,7 +11,12 @@ final class b$3$1$1
   
   public final void onError(int paramInt, String paramString)
   {
-    this.a.a.a(paramInt, "Failed to install dependency " + this.a.b.f + ", error: " + paramString, null);
+    c localc = this.a.a;
+    StringBuilder localStringBuilder = new StringBuilder("Failed to install dependency ");
+    localStringBuilder.append(this.a.b.f);
+    localStringBuilder.append(", error: ");
+    localStringBuilder.append(paramString);
+    localc.a(paramInt, localStringBuilder.toString(), null);
   }
   
   public final void onProgressChanged(int paramInt1, int paramInt2)
@@ -21,7 +26,7 @@ final class b$3$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.c.b.3.1.1
  * JD-Core Version:    0.7.0.1
  */

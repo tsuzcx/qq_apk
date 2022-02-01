@@ -7,6 +7,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
@@ -47,26 +48,29 @@ public class QQStoryBasicSettingsActivity
   
   int a(int paramInt)
   {
-    switch (paramInt)
+    int i = 0;
+    if (paramInt != 1)
     {
-    case 1: 
-    case 1001: 
-    default: 
-      return 0;
-    case 3: 
-      return 2;
+      if (paramInt != 2)
+      {
+        if (paramInt != 3) {
+          return 0;
+        }
+        return 2;
+      }
+      i = 1;
     }
-    return 1;
+    return i;
   }
   
   protected View a(int paramInt, String paramString)
   {
-    View localView = View.inflate(this, 2131561702, null);
-    ((TextView)localView.findViewById(2131379432)).setText(paramString);
-    ((TextView)localView.findViewById(2131369051)).setText("");
-    paramString = (ImageView)localView.findViewById(2131363027);
+    View localView = View.inflate(this, 2131561545, null);
+    ((TextView)localView.findViewById(2131378784)).setText(paramString);
+    ((TextView)localView.findViewById(2131368773)).setText("");
+    paramString = (ImageView)localView.findViewById(2131362975);
     paramString.setVisibility(4);
-    paramString.setBackgroundResource(2130839423);
+    paramString.setBackgroundResource(2130839279);
     localView.setTag(Integer.valueOf(paramInt));
     localView.setOnClickListener(this);
     return localView;
@@ -74,74 +78,88 @@ public class QQStoryBasicSettingsActivity
   
   void a()
   {
-    Object localObject = new LinearLayout(this);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
-    ((LinearLayout)localObject).setBackgroundResource(2130838979);
-    ((LinearLayout)localObject).setLayoutParams(localLayoutParams);
-    ((LinearLayout)localObject).setOrientation(1);
-    ((LinearLayout)localObject).setPadding(0, AIOUtils.a(20.0F, getResources()), 0, 0);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localObject);
-    localObject = new TextView(this);
-    ((TextView)localObject).setText(QQStoryConstant.a + HardCodeUtil.a(2131710777));
-    ((TextView)localObject).setPadding(getResources().getDimensionPixelSize(2131298532), 0, getResources().getDimensionPixelSize(2131298532), getResources().getDimensionPixelSize(2131298527));
-    ((TextView)localObject).setTextSize(14.0F);
-    ((TextView)localObject).setTextColor(getResources().getColor(2131165566));
-    this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject);
-    localObject = a(0, "移动流量和WiFi");
-    this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject);
-    this.jdField_a_of_type_ArrayOfAndroidViewView[0] = localObject;
-    ((View)localObject).setBackgroundResource(2130839591);
-    this.jdField_a_of_type_AndroidViewView = ((View)localObject);
-    localObject = a(1, "仅WiFi");
-    this.jdField_a_of_type_ArrayOfAndroidViewView[1] = localObject;
-    this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject);
-    ((View)localObject).setBackgroundResource(2130839585);
-    this.jdField_a_of_type_AndroidViewView = ((View)localObject);
-    localObject = a(2, HardCodeUtil.a(2131710775));
-    this.jdField_a_of_type_ArrayOfAndroidViewView[2] = localObject;
-    this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject);
-    ((View)localObject).setBackgroundResource(2130839582);
-    this.jdField_a_of_type_AndroidViewView = ((View)localObject);
+    Object localObject1 = new LinearLayout(this);
+    Object localObject2 = new LinearLayout.LayoutParams(-1, -1);
+    ((LinearLayout)localObject1).setBackgroundResource(2130838739);
+    ((LinearLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+    ((LinearLayout)localObject1).setOrientation(1);
+    ((LinearLayout)localObject1).setPadding(0, AIOUtils.b(20.0F, getResources()), 0, 0);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localObject1);
+    localObject1 = new TextView(this);
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(QQStoryConstant.a);
+    ((StringBuilder)localObject2).append(HardCodeUtil.a(2131710754));
+    ((TextView)localObject1).setText(((StringBuilder)localObject2).toString());
+    ((TextView)localObject1).setPadding(getResources().getDimensionPixelSize(2131298527), 0, getResources().getDimensionPixelSize(2131298527), getResources().getDimensionPixelSize(2131298522));
+    ((TextView)localObject1).setTextSize(14.0F);
+    ((TextView)localObject1).setTextColor(getResources().getColor(2131165542));
+    this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject1);
+    localObject1 = a(0, "移动流量和WiFi");
+    this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject1);
+    this.jdField_a_of_type_ArrayOfAndroidViewView[0] = localObject1;
+    ((View)localObject1).setBackgroundResource(2130839449);
+    this.jdField_a_of_type_AndroidViewView = ((View)localObject1);
+    localObject1 = a(1, "仅WiFi");
+    this.jdField_a_of_type_ArrayOfAndroidViewView[1] = localObject1;
+    this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject1);
+    ((View)localObject1).setBackgroundResource(2130839443);
+    this.jdField_a_of_type_AndroidViewView = ((View)localObject1);
+    localObject1 = a(2, HardCodeUtil.a(2131710752));
+    this.jdField_a_of_type_ArrayOfAndroidViewView[2] = localObject1;
+    this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject1);
+    ((View)localObject1).setBackgroundResource(2130839440);
+    this.jdField_a_of_type_AndroidViewView = ((View)localObject1);
     super.setContentView(this.jdField_a_of_type_AndroidViewViewGroup);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this, 2131561555);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this, 2131561396);
   }
   
   public void a(int paramInt)
   {
     int i = 0;
-    if (i < this.jdField_a_of_type_ArrayOfAndroidViewView.length)
+    for (;;)
     {
-      View localView = this.jdField_a_of_type_ArrayOfAndroidViewView[i];
-      ImageView localImageView = (ImageView)localView.findViewById(2131363027);
-      TextView localTextView = (TextView)localView.findViewById(2131379432);
+      Object localObject1 = this.jdField_a_of_type_ArrayOfAndroidViewView;
+      if (i >= localObject1.length) {
+        break;
+      }
+      localObject1 = localObject1[i];
+      Object localObject2 = (ImageView)((View)localObject1).findViewById(2131362975);
+      TextView localTextView = (TextView)((View)localObject1).findViewById(2131378784);
       if (i != paramInt)
       {
-        localImageView.setVisibility(4);
-        localView.setContentDescription(localTextView.getText() + HardCodeUtil.a(2131710773));
+        ((ImageView)localObject2).setVisibility(4);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(localTextView.getText());
+        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131710750));
+        ((View)localObject1).setContentDescription(((StringBuilder)localObject2).toString());
       }
-      for (;;)
+      else
       {
-        i += 1;
-        break;
-        localImageView.setVisibility(0);
-        localView.setContentDescription(localTextView.getText() + HardCodeUtil.a(2131710778));
+        ((ImageView)localObject2).setVisibility(0);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(localTextView.getText());
+        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131710755));
+        ((View)localObject1).setContentDescription(((StringBuilder)localObject2).toString());
       }
+      i += 1;
     }
     this.jdField_a_of_type_Int = paramInt;
   }
   
   int b(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return 1001;
-    case 2: 
-      return 3;
-    case 0: 
-      return 1;
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          return 1001;
+        }
+        return 3;
+      }
+      return 2;
     }
-    return 2;
+    return 1;
   }
   
   @Override
@@ -153,7 +171,7 @@ public class QQStoryBasicSettingsActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager = ((QQStoryManager)this.app.getManager(QQManagerFactory.QQSTORY_MANAGER));
@@ -163,20 +181,23 @@ public class QQStoryBasicSettingsActivity
     this.b = i;
     this.jdField_a_of_type_Int = i;
     a(this.jdField_a_of_type_Int);
-    super.setTitle(QQStoryConstant.a + HardCodeUtil.a(2131710782));
+    paramBundle = new StringBuilder();
+    paramBundle.append(QQStoryConstant.a);
+    paramBundle.append(HardCodeUtil.a(2131710759));
+    super.setTitle(paramBundle.toString());
     this.app.addObserver(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver);
-    if (!NetworkUtil.g(this))
+    if (!NetworkUtil.isNetworkAvailable(this))
     {
-      QQToast.a(this, 1, 2131692257, 0).b(getTitleBarHeight());
+      QQToast.a(this, 1, 2131692183, 0).b(getTitleBarHeight());
       super.startTitleProgress();
       return true;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler.d();
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler.a();
     super.startTitleProgress();
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     this.app.removeObserver(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver);
     super.doOnDestroy();
@@ -184,28 +205,33 @@ public class QQStoryBasicSettingsActivity
   
   public void onClick(View paramView)
   {
-    if (!NetworkUtil.g(this))
+    if (!NetworkUtil.isNetworkAvailable(this))
     {
-      QQToast.a(this, 1, 2131692257, 0).b(getTitleBarHeight());
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      QQToast.a(this, 1, 2131692183, 0).b(getTitleBarHeight());
     }
-    int i = ((Integer)paramView.getTag()).intValue();
-    this.b = this.jdField_a_of_type_Int;
-    switch (i)
+    else
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.b(0, 2131718505, 0);
+      int i = ((Integer)paramView.getTag()).intValue();
+      this.b = this.jdField_a_of_type_Int;
+      if (i != 0)
+      {
+        if (i != 1)
+        {
+          if (i == 2) {
+            this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler.d(3);
+          }
+        }
+        else {
+          this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler.d(2);
+        }
+      }
+      else {
+        this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler.d(1);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.b(0, 2131718170, 0);
       a(i);
-      break;
-      this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler.d(3);
-      continue;
-      this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler.d(1);
-      continue;
-      this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler.d(2);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   @Override
@@ -217,7 +243,7 @@ public class QQStoryBasicSettingsActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.settings.QQStoryBasicSettingsActivity
  * JD-Core Version:    0.7.0.1
  */

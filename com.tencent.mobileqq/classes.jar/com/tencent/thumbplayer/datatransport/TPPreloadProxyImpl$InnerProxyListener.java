@@ -12,19 +12,40 @@ class TPPreloadProxyImpl$InnerProxyListener
   
   public int d(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    TPLogUtil.d(paramString2, "[" + paramString1 + ":" + paramInt + "] " + paramString3);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(":");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("] ");
+    localStringBuilder.append(paramString3);
+    TPLogUtil.d(paramString2, localStringBuilder.toString());
     return 0;
   }
   
   public int e(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    TPLogUtil.e(paramString2, "[" + paramString1 + ":" + paramInt + "] " + paramString3);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(":");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("] ");
+    localStringBuilder.append(paramString3);
+    TPLogUtil.e(paramString2, localStringBuilder.toString());
     return 0;
   }
   
   public int i(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    TPLogUtil.i(paramString2, "[" + paramString1 + ":" + paramInt + "] " + paramString3);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(":");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("] ");
+    localStringBuilder.append(paramString3);
+    TPLogUtil.i(paramString2, localStringBuilder.toString());
     return 0;
   }
   
@@ -45,13 +66,20 @@ class TPPreloadProxyImpl$InnerProxyListener
   
   public int w(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    TPLogUtil.w(paramString2, "[" + paramString1 + ":" + paramInt + "] " + paramString3);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(":");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("] ");
+    localStringBuilder.append(paramString3);
+    TPLogUtil.w(paramString2, localStringBuilder.toString());
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.datatransport.TPPreloadProxyImpl.InnerProxyListener
  * JD-Core Version:    0.7.0.1
  */

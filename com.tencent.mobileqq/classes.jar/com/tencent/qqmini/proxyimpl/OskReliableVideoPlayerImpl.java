@@ -30,11 +30,15 @@ public class OskReliableVideoPlayerImpl
     if (!PlayerConfig.hasInit())
     {
       Context localContext = AppLoaderFactory.g().getContext();
-      if (localContext == null) {
+      if (localContext != null)
+      {
+        PlayerConfig.init(localContext);
+        PlayerConfig.g().setLogger(new EmbeddedVideoLogger());
+      }
+      else
+      {
         throw new RuntimeException("BaseApplicationImpl ctx is null");
       }
-      PlayerConfig.init(localContext);
-      PlayerConfig.g().setLogger(new EmbeddedVideoLogger());
     }
     if (!VideoManager.hasInit()) {
       VideoManager.init(AppLoaderFactory.g().getContext());
@@ -252,7 +256,7 @@ public class OskReliableVideoPlayerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.OskReliableVideoPlayerImpl
  * JD-Core Version:    0.7.0.1
  */

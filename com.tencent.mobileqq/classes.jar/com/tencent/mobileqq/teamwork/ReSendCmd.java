@@ -10,20 +10,24 @@ public class ReSendCmd
   implements Parcelable
 {
   public static final Parcelable.Creator<ReSendCmd> CREATOR = new ReSendCmd.1();
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString = "";
-  List<String> jdField_a_of_type_JavaUtilList;
+  public int a;
+  public String a;
+  List<String> a;
   int jdField_b_of_type_Int;
   String jdField_b_of_type_JavaLangString = "";
   int c;
-  int d;
+  public int d;
   int e;
   int f = 0;
   
-  public ReSendCmd() {}
+  public ReSendCmd()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+  }
   
   public ReSendCmd(Parcel paramParcel)
   {
+    this.jdField_a_of_type_JavaLangString = "";
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_b_of_type_Int = paramParcel.readInt();
     this.c = paramParcel.readInt();
@@ -46,7 +50,10 @@ public class ReSendCmd
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("urlSrcType : ").append(this.f).append(" | padUrl : ").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("urlSrcType : ");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(" | padUrl : ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
     return localStringBuilder.toString();
   }
   
@@ -65,7 +72,7 @@ public class ReSendCmd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.ReSendCmd
  * JD-Core Version:    0.7.0.1
  */

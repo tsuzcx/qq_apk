@@ -26,7 +26,13 @@ class FragmentTabHost$SavedState
   @NonNull
   public String toString()
   {
-    return "FragmentTabHost.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " curTab=" + this.curTab + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FragmentTabHost.SavedState{");
+    localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
+    localStringBuilder.append(" curTab=");
+    localStringBuilder.append(this.curTab);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -37,7 +43,7 @@ class FragmentTabHost$SavedState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.fragment.app.FragmentTabHost.SavedState
  * JD-Core Version:    0.7.0.1
  */

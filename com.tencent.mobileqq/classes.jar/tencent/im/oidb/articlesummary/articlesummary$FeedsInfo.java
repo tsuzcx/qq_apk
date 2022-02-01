@@ -32,16 +32,17 @@ public final class articlesummary$FeedsInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 90, 98, 106, 114, 122, 160, 170, 1600, 1608, 1618, 1680 }, new String[] { "feeds_type", "uint32_business_id", "bytes_business_name", "bytes_business_url", "bytes_business_name_prefix", "msg_social_feeds_info", "msg_pos_ad_info", "msg_follow_recommend_feeds_info", "msg_topic_recommend_feeds_info", "msg_ark_app_feeds_info", "enum_ugc_src", "msg_aggregated_list", "uint64_feeds_index", "uint64_feeds_time", "bytes_feeds_cookie", "uint32_hot_biulist" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, null, null, null, null, null, Integer.valueOf(0), null, Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro4, Integer.valueOf(0) }, FeedsInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 90, 98, 106, 114, 122, 160, 170, 1600, 1608, 1618, 1680 }, new String[] { "feeds_type", "uint32_business_id", "bytes_business_name", "bytes_business_url", "bytes_business_name_prefix", "msg_social_feeds_info", "msg_pos_ad_info", "msg_follow_recommend_feeds_info", "msg_topic_recommend_feeds_info", "msg_ark_app_feeds_info", "enum_ugc_src", "msg_aggregated_list", "uint64_feeds_index", "uint64_feeds_time", "bytes_feeds_cookie", "uint32_hot_biulist" }, new Object[] { localInteger, localInteger, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, null, null, null, null, null, localInteger, null, Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro4, localInteger }, FeedsInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.articlesummary.articlesummary.FeedsInfo
  * JD-Core Version:    0.7.0.1
  */

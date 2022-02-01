@@ -2,7 +2,7 @@ package com.tencent.oscarcamera.particlesystem;
 
 public class Value
 {
-  private static final String TAG = Value.class.getSimpleName();
+  private static final String TAG = "Value";
   private static final int TYPE_CONST = 0;
   private static final int TYPE_EXPRESSION = 1;
   private double mConstVal = 0.0D;
@@ -16,12 +16,13 @@ public class Value
       this.mType = 0;
       this.mConstVal = ((Number)paramObject).doubleValue();
       this.mNativeExpression = -1L;
-    }
-    while (!(paramObject instanceof String)) {
       return;
     }
-    this.mType = 1;
-    this.mNativeExpression = ParticleSystem.compile((String)paramObject);
+    if ((paramObject instanceof String))
+    {
+      this.mType = 1;
+      this.mNativeExpression = ParticleSystem.compile((String)paramObject);
+    }
   }
   
   public long expression()
@@ -31,19 +32,17 @@ public class Value
   
   public double value()
   {
-    double d = 0.0D;
-    if (this.mType == 0) {
-      d = this.mConstVal;
+    int i = this.mType;
+    if (i == 0) {
+      return this.mConstVal;
     }
-    while (this.mType != 1) {
-      return d;
-    }
+    if (i == 1) {}
     return 0.0D;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oscarcamera.particlesystem.Value
  * JD-Core Version:    0.7.0.1
  */

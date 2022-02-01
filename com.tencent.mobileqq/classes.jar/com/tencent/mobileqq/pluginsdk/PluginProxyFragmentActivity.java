@@ -24,32 +24,29 @@ public abstract class PluginProxyFragmentActivity
   
   protected void attachBaseContext(Context paramContext)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        long l = System.currentTimeMillis();
-        if (QLog.isColorLevel()) {
-          QLog.d("PluginProxyFragmentActivity", 2, "new PluginContext start");
-        }
-        String str = (String)pluginInstalledPathMap.get(getPluginID());
-        if (TextUtils.isEmpty(str))
-        {
-          str = PluginUtils.getInstalledPluginPath(paramContext, getPluginID()).getAbsolutePath();
-          pluginInstalledPathMap.put(getPluginID(), str);
-          paramContext = new PluginContext(paramContext, getThemeResId(), str, PluginStatic.getOrCreateClassLoader(paramContext, getPluginID()), paramContext.getResources(), getPluginResType());
-          if (QLog.isColorLevel()) {
-            QLog.d("PluginProxyFragmentActivity", 2, new Object[] { "new PluginContext end ,cost:", Long.valueOf(System.currentTimeMillis() - l) });
-          }
-          super.attachBaseContext(paramContext);
-          return;
-        }
+      long l = System.currentTimeMillis();
+      if (QLog.isColorLevel()) {
+        QLog.d("PluginProxyFragmentActivity", 2, "new PluginContext start");
       }
-      catch (Throwable paramContext)
+      String str2 = (String)pluginInstalledPathMap.get(getPluginID());
+      String str1 = str2;
+      if (TextUtils.isEmpty(str2))
       {
-        QLog.e("PluginProxyFragmentActivity", 1, new Object[] { "attachBaseContext", QLog.getStackTraceString(paramContext) });
-        return;
+        str1 = PluginUtils.getInstalledPluginPath(paramContext, getPluginID()).getAbsolutePath();
+        pluginInstalledPathMap.put(getPluginID(), str1);
       }
+      paramContext = new PluginContext(paramContext, getThemeResId(), str1, PluginStatic.getOrCreateClassLoader(paramContext, getPluginID()), paramContext.getResources(), getPluginResType());
+      if (QLog.isColorLevel()) {
+        QLog.d("PluginProxyFragmentActivity", 2, new Object[] { "new PluginContext end ,cost:", Long.valueOf(System.currentTimeMillis() - l) });
+      }
+      super.attachBaseContext(paramContext);
+      return;
+    }
+    catch (Throwable paramContext)
+    {
+      QLog.e("PluginProxyFragmentActivity", 1, new Object[] { "attachBaseContext", QLog.getStackTraceString(paramContext) });
     }
   }
   
@@ -97,15 +94,16 @@ public abstract class PluginProxyFragmentActivity
   
   public void startActivityForResult(Intent paramIntent, int paramInt)
   {
-    if ((this.mPluginActivity != null) && ((this.mPluginActivity instanceof BasePluginActivity)) && (((BasePluginActivity)this.mPluginActivity).isSamePackage2(paramIntent))) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        paramIntent.putExtra("pluginsdk_IsPluginActivity", true);
-      }
-      super.startActivityForResult(paramIntent, paramInt);
-      return;
+    int i;
+    if ((this.mPluginActivity != null) && ((this.mPluginActivity instanceof BasePluginActivity)) && (((BasePluginActivity)this.mPluginActivity).isSamePackage2(paramIntent))) {
+      i = 1;
+    } else {
+      i = 0;
     }
+    if (i != 0) {
+      paramIntent.putExtra("pluginsdk_IsPluginActivity", true);
+    }
+    super.startActivityForResult(paramIntent, paramInt);
   }
   
   public void startActivityFromFragment(@NonNull Fragment paramFragment, Intent paramIntent, int paramInt)
@@ -118,8 +116,10 @@ public abstract class PluginProxyFragmentActivity
     int i;
     if ((this.mPluginActivity != null) && ((this.mPluginActivity instanceof BasePluginActivity)) && (((BasePluginActivity)this.mPluginActivity).isSamePackage2(paramIntent))) {
       i = 1;
+    } else {
+      i = 0;
     }
-    while (i != 0)
+    if (i != 0)
     {
       String str = null;
       ComponentName localComponentName = paramIntent.getComponent();
@@ -131,13 +131,9 @@ public abstract class PluginProxyFragmentActivity
       {
         startPluginActivityFromFragment(paramFragment, str, paramIntent, paramInt, paramBundle);
         return;
-        i = 0;
       }
-      else
-      {
-        QLog.e("PluginProxyFragmentActivity", 1, "startActivityFromFragment activityName==null");
-        return;
-      }
+      QLog.e("PluginProxyFragmentActivity", 1, "startActivityFromFragment activityName==null");
+      return;
     }
     super.startActivityFromFragment(paramFragment, paramIntent, paramInt, paramBundle);
   }
@@ -170,7 +166,7 @@ public abstract class PluginProxyFragmentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.PluginProxyFragmentActivity
  * JD-Core Version:    0.7.0.1
  */

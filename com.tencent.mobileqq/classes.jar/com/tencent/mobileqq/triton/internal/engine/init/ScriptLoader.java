@@ -38,14 +38,16 @@ public final class ScriptLoader
   
   private final ScriptFile getScriptOrNull(@NotNull ScriptPackage paramScriptPackage, String paramString)
   {
+    Object localObject = null;
     try
     {
-      paramScriptPackage = paramScriptPackage.getScript(paramString);
-      boolean bool = paramScriptPackage.getValid();
+      paramString = paramScriptPackage.getScript(paramString);
+      boolean bool = paramString.getValid();
+      paramScriptPackage = localObject;
       if (bool) {
-        return paramScriptPackage;
+        paramScriptPackage = paramString;
       }
-      return null;
+      return paramScriptPackage;
     }
     catch (TritonException paramScriptPackage) {}
     return null;
@@ -62,12 +64,16 @@ public final class ScriptLoader
   public final Map<ScriptContextType, ScriptFile> getGameScripts(@NotNull GamePackage paramGamePackage)
   {
     Intrinsics.checkParameterIsNotNull(paramGamePackage, "gamePackage");
-    ScriptContextType localScriptContextType = ScriptContextType.MAIN;
-    ScriptFile localScriptFile = paramGamePackage.getScript("game.js");
-    if (!localScriptFile.getValid()) {
-      throw ((Throwable)new TritonException("GamePackage don't have valid game.js", ErrorCodes.SCRIPT_LOAD_FAIL, null, 4, null));
+    Object localObject1 = ScriptContextType.MAIN;
+    Object localObject2 = paramGamePackage.getScript("game.js");
+    if (((ScriptFile)localObject2).getValid())
+    {
+      localObject1 = TuplesKt.to(localObject1, localObject2);
+      localObject2 = ScriptContextType.OPEN_DATA;
+      paramGamePackage = (ScriptPackage)paramGamePackage;
+      return MapsKt.mapOf(new Pair[] { localObject1, TuplesKt.to(localObject2, getScriptOrNull(paramGamePackage, "subContext.js")), TuplesKt.to(ScriptContextType.WORKER, getScriptOrNull(paramGamePackage, "workers.js")) });
     }
-    return MapsKt.mapOf(new Pair[] { TuplesKt.to(localScriptContextType, localScriptFile), TuplesKt.to(ScriptContextType.OPEN_DATA, getScriptOrNull((ScriptPackage)paramGamePackage, "subContext.js")), TuplesKt.to(ScriptContextType.WORKER, getScriptOrNull((ScriptPackage)paramGamePackage, "workers.js")) });
+    throw ((Throwable)new TritonException("GamePackage don't have valid game.js", ErrorCodes.SCRIPT_LOAD_FAIL, null, 4, null));
   }
   
   @NotNull
@@ -79,7 +85,7 @@ public final class ScriptLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.engine.init.ScriptLoader
  * JD-Core Version:    0.7.0.1
  */

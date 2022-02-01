@@ -56,11 +56,6 @@ public class BaseTroopView
     this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a().sendEmptyMessageDelayed(paramInt, paramLong);
   }
   
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a(paramInt, paramBoolean);
-  }
-  
   protected void a(Intent paramIntent)
   {
     a(paramIntent, 0);
@@ -83,8 +78,9 @@ public class BaseTroopView
   
   public void a(BusinessObserver paramBusinessObserver)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(paramBusinessObserver);
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localQQAppInterface != null) {
+      localQQAppInterface.addObserver(paramBusinessObserver);
     }
   }
   
@@ -117,8 +113,9 @@ public class BaseTroopView
   
   public void b(BusinessObserver paramBusinessObserver)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(paramBusinessObserver);
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localQQAppInterface != null) {
+      localQQAppInterface.removeObserver(paramBusinessObserver);
     }
   }
   
@@ -142,7 +139,7 @@ public class BaseTroopView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.BaseTroopView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,32 @@
 package com.tencent.biz.pubaccount.util.api.impl;
 
-import android.app.Activity;
-import com.tencent.biz.pubaccount.util.ProfileParams;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.net.Uri;
+import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 
 class PublicAccountUtilImpl$11
-  implements BusinessObserver
+  implements Runnable
 {
-  PublicAccountUtilImpl$11(PublicAccountUtilImpl paramPublicAccountUtilImpl, Activity paramActivity, QQAppInterface paramQQAppInterface, ProfileParams paramProfileParams) {}
+  PublicAccountUtilImpl$11(PublicAccountUtilImpl paramPublicAccountUtilImpl, Uri paramUri, int paramInt, String paramString) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void run()
   {
-    if (paramBoolean) {
-      this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new PublicAccountUtilImpl.11.1(this, paramObject));
+    try
+    {
+      String str = this.jdField_a_of_type_AndroidNetUri.getQueryParameter("article_id");
+      IPublicAccountReportUtils localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append("");
+      localIPublicAccountReportUtils.publicAccountReportClickEventForMigrate(null, "dc00899", "Pb_account_lifeservice", "", "0X8006510", "0X8006510", 0, 0, str, localStringBuilder.toString(), this.jdField_a_of_type_JavaLangString, "", false);
+      return;
     }
+    catch (Exception localException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountUtilImpl.11
  * JD-Core Version:    0.7.0.1
  */

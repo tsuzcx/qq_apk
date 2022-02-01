@@ -84,14 +84,15 @@ public final class cn
     {
       this.g.removeCallbacks(this.j);
       this.g.post(this.j);
-    }
-    while ((paramInt != 2) || (this.f)) {
       return;
     }
-    this.f = true;
-    paramInt = as.a("detect_platform_update_random_interval", 0, 1440, 10);
-    paramInt = new Random().nextInt(paramInt);
-    ay.a().a(this.i, false, paramInt * 60 * 1000 + 1000);
+    if ((paramInt == 2) && (!this.f))
+    {
+      this.f = true;
+      paramInt = as.a("detect_platform_update_random_interval", 0, 1440, 10);
+      paramInt = new Random().nextInt(paramInt);
+      ay.a().a(this.i, false, paramInt * 60 * 1000 + 1000);
+    }
   }
   
   public final void a(cb paramcb)
@@ -129,7 +130,7 @@ public final class cn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.cn
  * JD-Core Version:    0.7.0.1
  */

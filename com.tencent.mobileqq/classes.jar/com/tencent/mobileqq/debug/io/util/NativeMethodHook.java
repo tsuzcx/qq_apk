@@ -19,12 +19,13 @@ public class NativeMethodHook
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      do
-      {
-        a = false;
-        com.tencent.qqperf.debug.IOMonitor.a = false;
-        com.tencent.qqperf.debug.IOMonitor.b = false;
-      } while (!QLog.isColorLevel());
+      label10:
+      break label10;
+    }
+    a = false;
+    com.tencent.qqperf.debug.IOMonitor.a = false;
+    com.tencent.qqperf.debug.IOMonitor.b = false;
+    if (QLog.isColorLevel()) {
       QLog.e("IOMonitor", 2, "loadNative io error");
     }
   }
@@ -37,29 +38,28 @@ public class NativeMethodHook
   
   public void a(int paramInt, String paramString)
   {
-    if (!a) {}
-    do
+    if (!a) {
+      return;
+    }
+    try
     {
-      for (;;)
+      doHook(paramInt, paramString, Build.VERSION.SDK_INT, new ObjectForCallback(), DropFrameMonitor.a());
+      return;
+    }
+    catch (UnsatisfiedLinkError paramString)
+    {
+      if (QLog.isColorLevel())
       {
+        QLog.e("IOMonitor", 2, paramString.toString());
         return;
-        try
-        {
-          doHook(paramInt, paramString, Build.VERSION.SDK_INT, new ObjectForCallback(), DropFrameMonitor.a());
-          return;
-        }
-        catch (Exception paramString)
-        {
-          if (QLog.isColorLevel())
-          {
-            QLog.e("IOMonitor", 2, paramString.toString());
-            return;
-          }
-        }
-        catch (UnsatisfiedLinkError paramString) {}
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("IOMonitor", 2, paramString.toString());
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("IOMonitor", 2, paramString.toString());
+      }
+    }
   }
   
   public native void doHook(int paramInt1, String paramString, int paramInt2, Object paramObject1, Object paramObject2);
@@ -72,7 +72,7 @@ public class NativeMethodHook
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.debug.io.util.NativeMethodHook
  * JD-Core Version:    0.7.0.1
  */

@@ -13,14 +13,16 @@ public final class CaptureOperateTouchLayout$setup$1
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(R.string.ae);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(R.string.Z);
     this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureVideoMeasureScaleView.setVisibility(4);
     int i = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout.a();
     CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout, this.jdField_a_of_type_AndroidWidgetImageView.getX() / CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout));
     CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout, i);
     CaptureOperateTouchLayout.OnCaptureOperateCallback localOnCaptureOperateCallback = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout.a();
-    if (localOnCaptureOperateCallback != null) {
-      localOnCaptureOperateCallback.a(i, CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout, CaptureOperateTouchLayout.b(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout)));
+    if (localOnCaptureOperateCallback != null)
+    {
+      CaptureOperateTouchLayout localCaptureOperateTouchLayout = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout;
+      localOnCaptureOperateCallback.a(i, CaptureOperateTouchLayout.a(localCaptureOperateTouchLayout, CaptureOperateTouchLayout.b(localCaptureOperateTouchLayout)));
     }
   }
   
@@ -30,13 +32,13 @@ public final class CaptureOperateTouchLayout$setup$1
     if (localOnCaptureOperateCallback != null) {
       localOnCaptureOperateCallback.a();
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(R.string.x);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(R.string.s);
     this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureVideoMeasureScaleView.setVisibility(4);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(R.string.al);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(R.string.ac);
   }
   
   public void c()
@@ -46,7 +48,7 @@ public final class CaptureOperateTouchLayout$setup$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocapture.CaptureOperateTouchLayout.setup.1
  * JD-Core Version:    0.7.0.1
  */

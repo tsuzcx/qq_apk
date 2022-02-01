@@ -28,7 +28,11 @@ public class GetVideoUploadAddrRequest
       localRspUploadStoryVideo.mergeFrom(paramArrayOfByte);
       return new GetVideoUploadAddrResponse(localRspUploadStoryVideo);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      label23:
+      break label23;
+    }
     return null;
   }
   
@@ -37,7 +41,7 @@ public class GetVideoUploadAddrRequest
     return a;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqUploadStoryVideo localReqUploadStoryVideo = new qqstory_service.ReqUploadStoryVideo();
     if (this.jdField_b_of_type_JavaLangString != null)
@@ -49,24 +53,31 @@ public class GetVideoUploadAddrRequest
         localReqUploadStoryVideo.size.set(this.jdField_b_of_type_Long);
         return localReqUploadStoryVideo.toByteArray();
       }
+      SLog.d("Q.qqstory:GetVideoUploadAddrRequest", "without sha");
+      throw new IllegalArgumentException("without sha");
     }
-    else
-    {
-      SLog.d("Q.qqstory:GetVideoUploadAddrRequest", "without md5");
-      throw new IllegalArgumentException("without md5");
-    }
-    SLog.d("Q.qqstory:GetVideoUploadAddrRequest", "without sha");
-    throw new IllegalArgumentException("without sha");
+    SLog.d("Q.qqstory:GetVideoUploadAddrRequest", "without md5");
+    throw new IllegalArgumentException("without md5");
   }
   
   public String toString()
   {
-    return "GetStoryVideoUploadAddressRequest{md5='" + this.jdField_b_of_type_JavaLangString + '\'' + ", sha='" + this.c + '\'' + ", size=" + this.jdField_b_of_type_Long + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetStoryVideoUploadAddressRequest{md5='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", sha='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", size=");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetVideoUploadAddrRequest
  * JD-Core Version:    0.7.0.1
  */

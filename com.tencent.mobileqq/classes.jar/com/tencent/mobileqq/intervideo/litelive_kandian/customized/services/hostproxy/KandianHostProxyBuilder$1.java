@@ -4,6 +4,7 @@ import android.util.SparseArray;
 import com.tencent.falco.base.libapi.hostproxy.HostProxyInterface.BizCommitScene;
 import com.tencent.falco.base.libapi.hostproxy.HostReportInterface;
 import com.tencent.falco.base.libapi.hostproxy.SdkEventInterface;
+import com.tencent.falco.base.libapi.hostproxy.SdkInfoInterface;
 import com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.hostproxy.DefaultCustomHostProxyService;
 
 class KandianHostProxyBuilder$1
@@ -30,10 +31,15 @@ class KandianHostProxyBuilder$1
   {
     return new KandianHostProxyBuilder.1.2(this);
   }
+  
+  public SdkInfoInterface getSdkInfoInterface()
+  {
+    return new KandianHostProxyBuilder.1.3(this);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.litelive_kandian.customized.services.hostproxy.KandianHostProxyBuilder.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,20 +12,20 @@ class VideoController$21
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.stopVideoRecv() != 0) {
+    if (this.this$0.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.stopVideoRecv() != 0)
+    {
       if (this.this$0.a().c.size() == 0) {
         this.this$0.a().a(this.a, "StopGVideo", false, true);
       }
     }
-    while (!QLog.isColorLevel()) {
-      return;
+    else if (QLog.isColorLevel()) {
+      QLog.e(VideoController.jdField_a_of_type_JavaLangString, 2, "StopGVideo-->Stop GVideo Failed.The Cmd Did Not Send Suc");
     }
-    QLog.e(VideoController.jdField_a_of_type_JavaLangString, 2, "StopGVideo-->Stop GVideo Failed.The Cmd Did Not Send Suc");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoController.21
  * JD-Core Version:    0.7.0.1
  */

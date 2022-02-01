@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -67,9 +68,12 @@ public abstract class VersionedParcel
     {
     case -8: 
     default: 
-      return new RuntimeException("Unknown exception code: " + paramInt + " msg " + paramString);
-    case -9: 
-      return (Exception)readParcelable();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Unknown exception code: ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" msg ");
+      localStringBuilder.append(paramString);
+      return new RuntimeException(localStringBuilder.toString());
     case -1: 
       return new SecurityException(paramString);
     case -2: 
@@ -82,8 +86,10 @@ public abstract class VersionedParcel
       return new IllegalStateException(paramString);
     case -6: 
       return new NetworkOnMainThreadException();
+    case -7: 
+      return new UnsupportedOperationException(paramString);
     }
-    return new UnsupportedOperationException(paramString);
+    return (Exception)readParcelable();
   }
   
   private Class findParcelClass(Class<? extends VersionedParcelable> paramClass)
@@ -143,7 +149,10 @@ public abstract class VersionedParcel
     if ((paramT instanceof Float)) {
       return 8;
     }
-    throw new IllegalArgumentException(paramT.getClass().getName() + " cannot be VersionedParcelled");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramT.getClass().getName());
+    localStringBuilder.append(" cannot be VersionedParcelled");
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   private Method getWriteMethod(Class paramClass)
@@ -163,77 +172,61 @@ public abstract class VersionedParcel
   private <T, S extends Collection<T>> S readCollection(S paramS)
   {
     int i = readInt();
-    S ?;
-    if (i < 0) {
-      ? = null;
-    }
-    do
-    {
-      return ?;
-      ? = paramS;
-    } while (i == 0);
-    int i1 = readInt();
     if (i < 0) {
       return null;
     }
-    int j = i;
-    int k = i;
-    int m = i;
-    int n = i;
-    switch (i1)
+    if (i != 0)
     {
-    default: 
-      return paramS;
-    case 1: 
-      for (;;)
+      int k = readInt();
+      if (i < 0) {
+        return null;
+      }
+      int j = i;
+      if (k != 1)
       {
-        ? = paramS;
-        if (j <= 0) {
-          break;
+        j = i;
+        if (k != 2)
+        {
+          j = i;
+          if (k != 3)
+          {
+            j = i;
+            if (k != 4)
+            {
+              if (k != 5) {
+                return paramS;
+              }
+              while (i > 0)
+              {
+                paramS.add(readStrongBinder());
+                i -= 1;
+              }
+            }
+            while (j > 0)
+            {
+              paramS.add(readString());
+              j -= 1;
+            }
+          }
+          while (j > 0)
+          {
+            paramS.add(readSerializable());
+            j -= 1;
+          }
         }
+        while (j > 0)
+        {
+          paramS.add(readParcelable());
+          j -= 1;
+        }
+      }
+      while (j > 0)
+      {
         paramS.add(readVersionedParcelable());
         j -= 1;
       }
-    case 4: 
-      for (;;)
-      {
-        ? = paramS;
-        if (k <= 0) {
-          break;
-        }
-        paramS.add(readString());
-        k -= 1;
-      }
-    case 2: 
-      for (;;)
-      {
-        ? = paramS;
-        if (m <= 0) {
-          break;
-        }
-        paramS.add(readParcelable());
-        m -= 1;
-      }
-    case 3: 
-      for (;;)
-      {
-        ? = paramS;
-        if (n <= 0) {
-          break;
-        }
-        paramS.add(readSerializable());
-        n -= 1;
-      }
     }
-    for (;;)
-    {
-      ? = paramS;
-      if (i <= 0) {
-        break;
-      }
-      paramS.add(readStrongBinder());
-      i -= 1;
-    }
+    return paramS;
   }
   
   private Exception readException(int paramInt, String paramString)
@@ -248,57 +241,62 @@ public abstract class VersionedParcel
   
   private <T> void writeCollection(Collection<T> paramCollection)
   {
-    if (paramCollection == null) {
-      writeInt(-1);
-    }
-    for (;;)
+    if (paramCollection == null)
     {
+      writeInt(-1);
       return;
-      int i = paramCollection.size();
+    }
+    int i = paramCollection.size();
+    writeInt(i);
+    if (i > 0)
+    {
+      i = getType(paramCollection.iterator().next());
       writeInt(i);
-      if (i > 0)
+      switch (i)
       {
-        i = getType(paramCollection.iterator().next());
-        writeInt(i);
-        switch (i)
-        {
-        case 6: 
-        default: 
-          return;
-        case 1: 
-          paramCollection = paramCollection.iterator();
-          while (paramCollection.hasNext()) {
-            writeVersionedParcelable((VersionedParcelable)paramCollection.next());
-          }
-        case 4: 
-          paramCollection = paramCollection.iterator();
-          while (paramCollection.hasNext()) {
-            writeString((String)paramCollection.next());
-          }
-        case 2: 
-          paramCollection = paramCollection.iterator();
-          while (paramCollection.hasNext()) {
-            writeParcelable((Parcelable)paramCollection.next());
-          }
-        case 3: 
-          paramCollection = paramCollection.iterator();
-          while (paramCollection.hasNext()) {
-            writeSerializable((Serializable)paramCollection.next());
-          }
-        case 5: 
-          paramCollection = paramCollection.iterator();
-          while (paramCollection.hasNext()) {
-            writeStrongBinder((IBinder)paramCollection.next());
-          }
-        case 7: 
-          paramCollection = paramCollection.iterator();
-          while (paramCollection.hasNext()) {
-            writeInt(((Integer)paramCollection.next()).intValue());
-          }
-        }
+      case 6: 
+      default: 
+        return;
+      case 8: 
         paramCollection = paramCollection.iterator();
-        while (paramCollection.hasNext()) {
-          writeFloat(((Float)paramCollection.next()).floatValue());
+      }
+      while (paramCollection.hasNext())
+      {
+        writeFloat(((Float)paramCollection.next()).floatValue());
+        continue;
+        paramCollection = paramCollection.iterator();
+        while (paramCollection.hasNext())
+        {
+          writeInt(((Integer)paramCollection.next()).intValue());
+          continue;
+          paramCollection = paramCollection.iterator();
+          while (paramCollection.hasNext())
+          {
+            writeStrongBinder((IBinder)paramCollection.next());
+            continue;
+            paramCollection = paramCollection.iterator();
+            while (paramCollection.hasNext())
+            {
+              writeString((String)paramCollection.next());
+              continue;
+              paramCollection = paramCollection.iterator();
+              while (paramCollection.hasNext())
+              {
+                writeSerializable((Serializable)paramCollection.next());
+                continue;
+                paramCollection = paramCollection.iterator();
+                while (paramCollection.hasNext())
+                {
+                  writeParcelable((Parcelable)paramCollection.next());
+                  continue;
+                  paramCollection = paramCollection.iterator();
+                  while (paramCollection.hasNext()) {
+                    writeVersionedParcelable((VersionedParcelable)paramCollection.next());
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -319,18 +317,22 @@ public abstract class VersionedParcel
     }
     String str = paramSerializable.getClass().getName();
     writeString(str);
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    Object localObject = new ByteArrayOutputStream();
     try
     {
-      ObjectOutputStream localObjectOutputStream = new ObjectOutputStream(localByteArrayOutputStream);
+      ObjectOutputStream localObjectOutputStream = new ObjectOutputStream((OutputStream)localObject);
       localObjectOutputStream.writeObject(paramSerializable);
       localObjectOutputStream.close();
-      writeByteArray(localByteArrayOutputStream.toByteArray());
+      writeByteArray(((ByteArrayOutputStream)localObject).toByteArray());
       return;
     }
     catch (IOException paramSerializable)
     {
-      throw new RuntimeException("VersionedParcelable encountered IOException writing serializable object (name = " + str + ")", paramSerializable);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("VersionedParcelable encountered IOException writing serializable object (name = ");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(")");
+      throw new RuntimeException(((StringBuilder)localObject).toString(), paramSerializable);
     }
   }
   
@@ -344,7 +346,10 @@ public abstract class VersionedParcel
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
-      throw new RuntimeException(paramVersionedParcelable.getClass().getSimpleName() + " does not have a Parcelizer", localClassNotFoundException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramVersionedParcelable.getClass().getSimpleName());
+      localStringBuilder.append(" does not have a Parcelizer");
+      throw new RuntimeException(localStringBuilder.toString(), localClassNotFoundException);
     }
   }
   
@@ -360,56 +365,72 @@ public abstract class VersionedParcel
   protected <T> T[] readArray(T[] paramArrayOfT)
   {
     int i = readInt();
-    if (i < 0) {}
-    ArrayList localArrayList;
-    int i1;
-    do
-    {
+    if (i < 0) {
       return null;
-      localArrayList = new ArrayList(i);
-      if (i == 0) {
-        break;
-      }
-      i1 = readInt();
-    } while (i < 0);
-    int j = i;
-    int k = i;
-    int m = i;
-    int n = i;
-    switch (i1)
+    }
+    ArrayList localArrayList = new ArrayList(i);
+    if (i != 0)
     {
-    default: 
-      return localArrayList.toArray(paramArrayOfT);
-    case 4: 
-      while (j > 0)
-      {
-        localArrayList.add(readString());
-        j -= 1;
+      int k = readInt();
+      if (i < 0) {
+        return null;
       }
-    case 2: 
-      while (k > 0)
+      int j = i;
+      if (k != 1)
       {
-        localArrayList.add(readParcelable());
-        k -= 1;
+        j = i;
+        if (k != 2)
+        {
+          j = i;
+          if (k != 3)
+          {
+            j = i;
+            if (k != 4)
+            {
+              if (k == 5) {
+                while (i > 0)
+                {
+                  localArrayList.add(readStrongBinder());
+                  i -= 1;
+                }
+              }
+            }
+            else {
+              while (j > 0)
+              {
+                localArrayList.add(readString());
+                j -= 1;
+              }
+            }
+          }
+          else
+          {
+            while (j > 0)
+            {
+              localArrayList.add(readSerializable());
+              j -= 1;
+            }
+          }
+        }
+        else
+        {
+          while (j > 0)
+          {
+            localArrayList.add(readParcelable());
+            j -= 1;
+          }
+        }
       }
-    case 1: 
-      while (m > 0)
+      else
       {
-        localArrayList.add(readVersionedParcelable());
-        m -= 1;
-      }
-    case 3: 
-      while (n > 0)
-      {
-        localArrayList.add(readSerializable());
-        n -= 1;
+        while (j > 0)
+        {
+          localArrayList.add(readVersionedParcelable());
+          j -= 1;
+        }
       }
     }
-    while (i > 0)
-    {
-      localArrayList.add(readStrongBinder());
-      i -= 1;
-    }
+    return localArrayList.toArray(paramArrayOfT);
   }
   
   public <T> T[] readArray(T[] paramArrayOfT, int paramInt)
@@ -438,15 +459,16 @@ public abstract class VersionedParcel
     }
     boolean[] arrayOfBoolean = new boolean[j];
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
-      if (readInt() != 0) {}
-      for (int k = 1;; k = 0)
-      {
-        arrayOfBoolean[i] = k;
-        i += 1;
-        break;
+      int k;
+      if (readInt() != 0) {
+        k = 1;
+      } else {
+        k = 0;
       }
+      arrayOfBoolean[i] = k;
+      i += 1;
     }
     return arrayOfBoolean;
   }
@@ -496,17 +518,14 @@ public abstract class VersionedParcel
     if (i < 0) {
       return null;
     }
-    char[] arrayOfChar = new char[i];
+    paramArrayOfChar = new char[i];
     paramInt = 0;
-    for (;;)
+    while (paramInt < i)
     {
-      paramArrayOfChar = arrayOfChar;
-      if (paramInt >= i) {
-        break;
-      }
-      arrayOfChar[paramInt] = ((char)readInt());
+      paramArrayOfChar[paramInt] = ((char)readInt());
       paramInt += 1;
     }
+    return paramArrayOfChar;
   }
   
   protected abstract CharSequence readCharSequence();
@@ -532,23 +551,17 @@ public abstract class VersionedParcel
   protected double[] readDoubleArray()
   {
     int j = readInt();
-    Object localObject;
-    if (j < 0)
-    {
-      localObject = null;
-      return localObject;
+    if (j < 0) {
+      return null;
     }
     double[] arrayOfDouble = new double[j];
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      localObject = arrayOfDouble;
-      if (i >= j) {
-        break;
-      }
       arrayOfDouble[i] = readDouble();
       i += 1;
     }
+    return arrayOfDouble;
   }
   
   public double[] readDoubleArray(double[] paramArrayOfDouble, int paramInt)
@@ -561,13 +574,14 @@ public abstract class VersionedParcel
   
   public Exception readException(Exception paramException, int paramInt)
   {
-    if (!readField(paramInt)) {}
-    do
-    {
+    if (!readField(paramInt)) {
       return paramException;
-      paramInt = readExceptionCode();
-    } while (paramInt == 0);
-    return readException(paramInt, readString());
+    }
+    paramInt = readExceptionCode();
+    if (paramInt != 0) {
+      paramException = readException(paramInt, readString());
+    }
+    return paramException;
   }
   
   protected abstract boolean readField(int paramInt);
@@ -585,23 +599,17 @@ public abstract class VersionedParcel
   protected float[] readFloatArray()
   {
     int j = readInt();
-    Object localObject;
-    if (j < 0)
-    {
-      localObject = null;
-      return localObject;
+    if (j < 0) {
+      return null;
     }
     float[] arrayOfFloat = new float[j];
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      localObject = arrayOfFloat;
-      if (i >= j) {
-        break;
-      }
       arrayOfFloat[i] = readFloat();
       i += 1;
     }
+    return arrayOfFloat;
   }
   
   public float[] readFloatArray(float[] paramArrayOfFloat, int paramInt)
@@ -619,9 +627,13 @@ public abstract class VersionedParcel
       paramString = (VersionedParcelable)getReadMethod(paramString).invoke(null, new Object[] { paramVersionedParcel });
       return paramString;
     }
-    catch (IllegalAccessException paramString)
+    catch (ClassNotFoundException paramString)
     {
-      throw new RuntimeException("VersionedParcel encountered IllegalAccessException", paramString);
+      throw new RuntimeException("VersionedParcel encountered ClassNotFoundException", paramString);
+    }
+    catch (NoSuchMethodException paramString)
+    {
+      throw new RuntimeException("VersionedParcel encountered NoSuchMethodException", paramString);
     }
     catch (InvocationTargetException paramString)
     {
@@ -630,13 +642,9 @@ public abstract class VersionedParcel
       }
       throw new RuntimeException("VersionedParcel encountered InvocationTargetException", paramString);
     }
-    catch (NoSuchMethodException paramString)
+    catch (IllegalAccessException paramString)
     {
-      throw new RuntimeException("VersionedParcel encountered NoSuchMethodException", paramString);
-    }
-    catch (ClassNotFoundException paramString)
-    {
-      throw new RuntimeException("VersionedParcel encountered ClassNotFoundException", paramString);
+      throw new RuntimeException("VersionedParcel encountered IllegalAccessException", paramString);
     }
   }
   
@@ -653,23 +661,17 @@ public abstract class VersionedParcel
   protected int[] readIntArray()
   {
     int j = readInt();
-    Object localObject;
-    if (j < 0)
-    {
-      localObject = null;
-      return localObject;
+    if (j < 0) {
+      return null;
     }
     int[] arrayOfInt = new int[j];
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      localObject = arrayOfInt;
-      if (i >= j) {
-        break;
-      }
       arrayOfInt[i] = readInt();
       i += 1;
     }
+    return arrayOfInt;
   }
   
   public int[] readIntArray(int[] paramArrayOfInt, int paramInt)
@@ -701,23 +703,17 @@ public abstract class VersionedParcel
   protected long[] readLongArray()
   {
     int j = readInt();
-    Object localObject;
-    if (j < 0)
-    {
-      localObject = null;
-      return localObject;
+    if (j < 0) {
+      return null;
     }
     long[] arrayOfLong = new long[j];
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      localObject = arrayOfLong;
-      if (i >= j) {
-        break;
-      }
       arrayOfLong[i] = readLong();
       i += 1;
     }
+    return arrayOfLong;
   }
   
   public long[] readLongArray(long[] paramArrayOfLong, int paramInt)
@@ -730,33 +726,28 @@ public abstract class VersionedParcel
   
   public <K, V> Map<K, V> readMap(Map<K, V> paramMap, int paramInt)
   {
-    if (!readField(paramInt)) {}
-    int i;
-    ArrayMap localArrayMap;
-    do
-    {
+    if (!readField(paramInt)) {
       return paramMap;
-      i = readInt();
-      if (i < 0) {
-        return null;
-      }
-      localArrayMap = new ArrayMap();
-      paramMap = localArrayMap;
-    } while (i == 0);
+    }
+    int i = readInt();
+    if (i < 0) {
+      return null;
+    }
+    paramMap = new ArrayMap();
+    if (i == 0) {
+      return paramMap;
+    }
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     readCollection(localArrayList1);
     readCollection(localArrayList2);
     paramInt = 0;
-    for (;;)
+    while (paramInt < i)
     {
-      paramMap = localArrayMap;
-      if (paramInt >= i) {
-        break;
-      }
-      localArrayMap.put(localArrayList1.get(paramInt), localArrayList2.get(paramInt));
+      paramMap.put(localArrayList1.get(paramInt), localArrayList2.get(paramInt));
       paramInt += 1;
     }
+    return paramMap;
   }
   
   protected abstract <T extends Parcelable> T readParcelable();
@@ -781,13 +772,21 @@ public abstract class VersionedParcel
       localObject = (Serializable)new VersionedParcel.1(this, (InputStream)localObject).readObject();
       return localObject;
     }
-    catch (IOException localIOException)
-    {
-      throw new RuntimeException("VersionedParcelable encountered IOException reading a Serializable object (name = " + str + ")", localIOException);
-    }
     catch (ClassNotFoundException localClassNotFoundException)
     {
-      throw new RuntimeException("VersionedParcelable encountered ClassNotFoundException reading a Serializable object (name = " + str + ")", localClassNotFoundException);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("VersionedParcelable encountered ClassNotFoundException reading a Serializable object (name = ");
+      localStringBuilder.append(str);
+      localStringBuilder.append(")");
+      throw new RuntimeException(localStringBuilder.toString(), localClassNotFoundException);
+    }
+    catch (IOException localIOException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("VersionedParcelable encountered IOException reading a Serializable object (name = ");
+      localStringBuilder.append(str);
+      localStringBuilder.append(")");
+      throw new RuntimeException(localStringBuilder.toString(), localIOException);
     }
   }
   
@@ -832,17 +831,14 @@ public abstract class VersionedParcel
     if (i < 0) {
       return null;
     }
-    SparseBooleanArray localSparseBooleanArray = new SparseBooleanArray(i);
+    paramSparseBooleanArray = new SparseBooleanArray(i);
     paramInt = 0;
-    for (;;)
+    while (paramInt < i)
     {
-      paramSparseBooleanArray = localSparseBooleanArray;
-      if (paramInt >= i) {
-        break;
-      }
-      localSparseBooleanArray.put(readInt(), readBoolean());
+      paramSparseBooleanArray.put(readInt(), readBoolean());
       paramInt += 1;
     }
+    return paramSparseBooleanArray;
   }
   
   protected abstract String readString();
@@ -888,57 +884,66 @@ public abstract class VersionedParcel
   
   protected <T> void writeArray(T[] paramArrayOfT)
   {
-    if (paramArrayOfT == null) {
+    if (paramArrayOfT == null)
+    {
       writeInt(-1);
+      return;
     }
-    int j;
-    do
+    int i1 = paramArrayOfT.length;
+    writeInt(i1);
+    if (i1 > 0)
     {
-      return;
-      j = paramArrayOfT.length;
-      writeInt(j);
-    } while (j <= 0);
-    int i = getType(paramArrayOfT[0]);
-    writeInt(i);
-    switch (i)
-    {
-    default: 
-      return;
-    case 1: 
-      i = 0;
-      while (i < j)
+      int k = 0;
+      int m = 0;
+      int n = 0;
+      int i = 0;
+      int j = 0;
+      int i2 = getType(paramArrayOfT[0]);
+      writeInt(i2);
+      if (i2 != 1)
+      {
+        i = n;
+        if (i2 != 2)
+        {
+          i = m;
+          if (i2 != 3)
+          {
+            i = k;
+            if (i2 != 4)
+            {
+              i = j;
+              if (i2 != 5) {
+                return;
+              }
+              while (i < i1)
+              {
+                writeStrongBinder((IBinder)paramArrayOfT[i]);
+                i += 1;
+              }
+            }
+            while (i < i1)
+            {
+              writeString((String)paramArrayOfT[i]);
+              i += 1;
+            }
+          }
+          while (i < i1)
+          {
+            writeSerializable((Serializable)paramArrayOfT[i]);
+            i += 1;
+          }
+        }
+        while (i < i1)
+        {
+          writeParcelable((Parcelable)paramArrayOfT[i]);
+          i += 1;
+        }
+      }
+      while (i < i1)
       {
         writeVersionedParcelable((VersionedParcelable)paramArrayOfT[i]);
         i += 1;
       }
-    }
-    while (i < j)
-    {
-      writeString((String)paramArrayOfT[i]);
-      i += 1;
-      continue;
-      while (i < j)
-      {
-        writeParcelable((Parcelable)paramArrayOfT[i]);
-        i += 1;
-        continue;
-        while (i < j)
-        {
-          writeSerializable((Serializable)paramArrayOfT[i]);
-          i += 1;
-          continue;
-          while (i < j)
-          {
-            writeStrongBinder((IBinder)paramArrayOfT[i]);
-            i += 1;
-            continue;
-            i = 0;
-          }
-          i = 0;
-        }
-        i = 0;
-      }
-      i = 0;
     }
   }
   
@@ -958,26 +963,7 @@ public abstract class VersionedParcel
   
   protected void writeBooleanArray(boolean[] paramArrayOfBoolean)
   {
-    if (paramArrayOfBoolean != null)
-    {
-      int k = paramArrayOfBoolean.length;
-      writeInt(k);
-      int i = 0;
-      if (i < k)
-      {
-        if (paramArrayOfBoolean[i] != 0) {}
-        for (int j = 1;; j = 0)
-        {
-          writeInt(j);
-          i += 1;
-          break;
-        }
-      }
-    }
-    else
-    {
-      writeInt(-1);
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e2expr(TypeTransformer.java:553)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:716)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void writeBooleanArray(boolean[] paramArrayOfBoolean, int paramInt)
@@ -1082,39 +1068,31 @@ public abstract class VersionedParcel
     paramInt = 0;
     if (((paramException instanceof Parcelable)) && (paramException.getClass().getClassLoader() == Parcelable.class.getClassLoader())) {
       paramInt = -9;
+    } else if ((paramException instanceof SecurityException)) {
+      paramInt = -1;
+    } else if ((paramException instanceof BadParcelableException)) {
+      paramInt = -2;
+    } else if ((paramException instanceof IllegalArgumentException)) {
+      paramInt = -3;
+    } else if ((paramException instanceof NullPointerException)) {
+      paramInt = -4;
+    } else if ((paramException instanceof IllegalStateException)) {
+      paramInt = -5;
+    } else if ((paramException instanceof NetworkOnMainThreadException)) {
+      paramInt = -6;
+    } else if ((paramException instanceof UnsupportedOperationException)) {
+      paramInt = -7;
     }
-    for (;;)
+    writeInt(paramInt);
+    if (paramInt == 0)
     {
-      writeInt(paramInt);
-      if (paramInt != 0) {
-        break label161;
+      if ((paramException instanceof RuntimeException)) {
+        throw ((RuntimeException)paramException);
       }
-      if (!(paramException instanceof RuntimeException)) {
-        break;
-      }
-      throw ((RuntimeException)paramException);
-      if ((paramException instanceof SecurityException)) {
-        paramInt = -1;
-      } else if ((paramException instanceof BadParcelableException)) {
-        paramInt = -2;
-      } else if ((paramException instanceof IllegalArgumentException)) {
-        paramInt = -3;
-      } else if ((paramException instanceof NullPointerException)) {
-        paramInt = -4;
-      } else if ((paramException instanceof IllegalStateException)) {
-        paramInt = -5;
-      } else if ((paramException instanceof NetworkOnMainThreadException)) {
-        paramInt = -6;
-      } else if ((paramException instanceof UnsupportedOperationException)) {
-        paramInt = -7;
-      }
+      throw new RuntimeException(paramException);
     }
-    throw new RuntimeException(paramException);
-    label161:
     writeString(paramException.getMessage());
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != -9) {
       return;
     }
     writeParcelable((Parcelable)paramException);
@@ -1218,15 +1196,16 @@ public abstract class VersionedParcel
   public <K, V> void writeMap(Map<K, V> paramMap, int paramInt)
   {
     setOutputField(paramInt);
-    if (paramMap == null) {
-      writeInt(-1);
-    }
-    do
+    if (paramMap == null)
     {
+      writeInt(-1);
       return;
-      paramInt = paramMap.size();
-      writeInt(paramInt);
-    } while (paramInt == 0);
+    }
+    paramInt = paramMap.size();
+    writeInt(paramInt);
+    if (paramInt == 0) {
+      return;
+    }
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     paramMap = paramMap.entrySet().iterator();
@@ -1268,16 +1247,17 @@ public abstract class VersionedParcel
   public void writeSize(Size paramSize, int paramInt)
   {
     setOutputField(paramInt);
-    if (paramSize != null) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if (paramSize != null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    writeBoolean(bool);
+    if (paramSize != null)
     {
-      writeBoolean(bool);
-      if (paramSize != null)
-      {
-        writeInt(paramSize.getWidth());
-        writeInt(paramSize.getHeight());
-      }
-      return;
+      writeInt(paramSize.getWidth());
+      writeInt(paramSize.getHeight());
     }
   }
   
@@ -1285,37 +1265,36 @@ public abstract class VersionedParcel
   public void writeSizeF(SizeF paramSizeF, int paramInt)
   {
     setOutputField(paramInt);
-    if (paramSizeF != null) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if (paramSizeF != null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    writeBoolean(bool);
+    if (paramSizeF != null)
     {
-      writeBoolean(bool);
-      if (paramSizeF != null)
-      {
-        writeFloat(paramSizeF.getWidth());
-        writeFloat(paramSizeF.getHeight());
-      }
-      return;
+      writeFloat(paramSizeF.getWidth());
+      writeFloat(paramSizeF.getHeight());
     }
   }
   
   public void writeSparseBooleanArray(SparseBooleanArray paramSparseBooleanArray, int paramInt)
   {
     setOutputField(paramInt);
-    if (paramSparseBooleanArray == null) {
-      writeInt(-1);
-    }
-    for (;;)
+    if (paramSparseBooleanArray == null)
     {
+      writeInt(-1);
       return;
-      int i = paramSparseBooleanArray.size();
-      writeInt(i);
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        writeInt(paramSparseBooleanArray.keyAt(paramInt));
-        writeBoolean(paramSparseBooleanArray.valueAt(paramInt));
-        paramInt += 1;
-      }
+    }
+    int i = paramSparseBooleanArray.size();
+    writeInt(i);
+    paramInt = 0;
+    while (paramInt < i)
+    {
+      writeInt(paramSparseBooleanArray.keyAt(paramInt));
+      writeBoolean(paramSparseBooleanArray.valueAt(paramInt));
+      paramInt += 1;
     }
   }
   
@@ -1350,9 +1329,13 @@ public abstract class VersionedParcel
       getWriteMethod(paramT.getClass()).invoke(null, new Object[] { paramT, paramVersionedParcel });
       return;
     }
-    catch (IllegalAccessException paramT)
+    catch (ClassNotFoundException paramT)
     {
-      throw new RuntimeException("VersionedParcel encountered IllegalAccessException", paramT);
+      throw new RuntimeException("VersionedParcel encountered ClassNotFoundException", paramT);
+    }
+    catch (NoSuchMethodException paramT)
+    {
+      throw new RuntimeException("VersionedParcel encountered NoSuchMethodException", paramT);
     }
     catch (InvocationTargetException paramT)
     {
@@ -1361,13 +1344,9 @@ public abstract class VersionedParcel
       }
       throw new RuntimeException("VersionedParcel encountered InvocationTargetException", paramT);
     }
-    catch (NoSuchMethodException paramT)
+    catch (IllegalAccessException paramT)
     {
-      throw new RuntimeException("VersionedParcel encountered NoSuchMethodException", paramT);
-    }
-    catch (ClassNotFoundException paramT)
-    {
-      throw new RuntimeException("VersionedParcel encountered ClassNotFoundException", paramT);
+      throw new RuntimeException("VersionedParcel encountered IllegalAccessException", paramT);
     }
   }
   
@@ -1392,7 +1371,7 @@ public abstract class VersionedParcel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.versionedparcelable.VersionedParcel
  * JD-Core Version:    0.7.0.1
  */

@@ -25,18 +25,19 @@ public final class MemoryJsPlugin
   
   private final void registerComponentCallback(RequestEvent paramRequestEvent)
   {
-    if (Build.VERSION.SDK_INT >= 14) {}
-    try
-    {
-      this.componentCallbacks = ((ComponentCallbacks2)new MemoryJsPlugin.registerComponentCallback.1(this, paramRequestEvent));
-      paramRequestEvent = this.mContext;
-      Intrinsics.checkExpressionValueIsNotNull(paramRequestEvent, "mContext");
-      paramRequestEvent.getApplicationContext().registerComponentCallbacks((ComponentCallbacks)this.componentCallbacks);
-      return;
-    }
-    catch (Exception paramRequestEvent)
-    {
-      paramRequestEvent.printStackTrace();
+    if (Build.VERSION.SDK_INT >= 14) {
+      try
+      {
+        this.componentCallbacks = ((ComponentCallbacks2)new MemoryJsPlugin.registerComponentCallback.1(this, paramRequestEvent));
+        paramRequestEvent = this.mContext;
+        Intrinsics.checkExpressionValueIsNotNull(paramRequestEvent, "mContext");
+        paramRequestEvent.getApplicationContext().registerComponentCallbacks((ComponentCallbacks)this.componentCallbacks);
+        return;
+      }
+      catch (Exception paramRequestEvent)
+      {
+        paramRequestEvent.printStackTrace();
+      }
     }
   }
   
@@ -66,7 +67,7 @@ public final class MemoryJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.MemoryJsPlugin
  * JD-Core Version:    0.7.0.1
  */

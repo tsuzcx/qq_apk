@@ -14,30 +14,33 @@ public class NetEngineFactory
   
   public IHttpEngineService getPluginHttpEngine()
   {
-    if (this.mPluginHttpEngine == null) {}
-    try
-    {
-      HttpCommunicator localHttpCommunicator = new HttpCommunicator(32);
-      localHttpCommunicator.start();
-      this.mPluginHttpEngine = new HttpEngineServiceImpl(localHttpCommunicator, true);
-      return this.mPluginHttpEngine;
+    if (this.mPluginHttpEngine == null) {
+      try
+      {
+        HttpCommunicator localHttpCommunicator = new HttpCommunicator(32);
+        localHttpCommunicator.start();
+        this.mPluginHttpEngine = new HttpEngineServiceImpl(localHttpCommunicator, true);
+      }
+      finally {}
     }
-    finally {}
+    return this.mPluginHttpEngine;
   }
   
   public void onDestroy()
   {
-    if (this.mNetEngineImpl != null) {
-      this.mNetEngineImpl.destroy();
+    Object localObject = this.mNetEngineImpl;
+    if (localObject != null) {
+      ((HttpEngineServiceImpl)localObject).destroy();
     }
-    if (this.mPluginHttpEngine != null) {
-      ((HttpEngineServiceImpl)this.mPluginHttpEngine).destroy();
+    localObject = this.mPluginHttpEngine;
+    if (localObject != null) {
+      ((HttpEngineServiceImpl)localObject).destroy();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.NetEngineFactory
  * JD-Core Version:    0.7.0.1
  */

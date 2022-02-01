@@ -2,7 +2,6 @@ package com.tencent.mobileqq.activity.aio.rebuild.menu;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.imcore.message.UinTypeUtil;
 import com.tencent.mobileqq.activity.ChatFragment;
@@ -12,7 +11,8 @@ import com.tencent.mobileqq.activity.aio.coreui.msglist.menu.BaseBubbleBuilderMe
 import com.tencent.mobileqq.activity.aio.coreui.msglist.menu.IBaseBubbleBuilderMenuAddProcessor;
 import com.tencent.mobileqq.activity.aio.coreui.msglist.menu.IBaseBubbleBuilderMenuClickProcessor;
 import com.tencent.mobileqq.activity.aio.helper.AIORevokeMsgHelper;
-import com.tencent.mobileqq.apollo.api.model.MessageForApollo;
+import com.tencent.mobileqq.apollo.model.IMessageForApollo;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -48,31 +48,48 @@ public class BaseBubbleBuilderMenuRevokeProcessor
   
   private void a(QQCustomMenu paramQQCustomMenu, MessageRecord paramMessageRecord, Context paramContext, boolean paramBoolean)
   {
-    paramContext = new QQCustomMenuItem(2131371954, paramContext.getString(2131694357));
-    paramContext.a(2130839067);
+    paramContext = new QQCustomMenuItem(2131371562, paramContext.getString(2131694322));
+    paramContext.a(2130838920);
     paramContext.a(paramBoolean);
     paramQQCustomMenu.a(paramContext);
-    String str;
     if (TroopUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
     {
       paramContext = new ReportTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_manage").c("recall_msg").d("exp_recallMsg");
-      str = paramMessageRecord.frienduin;
-      if (!TroopUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
-        break label134;
+      String str = paramMessageRecord.frienduin;
+      if (TroopUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
+        paramQQCustomMenu = "1";
+      } else {
+        paramQQCustomMenu = "2";
       }
-    }
-    label134:
-    for (paramQQCustomMenu = "1";; paramQQCustomMenu = "2")
-    {
       paramContext.a(new String[] { str, paramQQCustomMenu }).a();
-      return;
     }
   }
   
   private boolean a(MessageRecord paramMessageRecord)
   {
     int i = paramMessageRecord.istroop;
-    return (i == 0) || (i == 1) || (i == 3000) || (i == 1000) || (i == 1004);
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (i != 0)
+    {
+      bool1 = bool2;
+      if (i != 1)
+      {
+        bool1 = bool2;
+        if (i != 3000)
+        {
+          bool1 = bool2;
+          if (i != 1000)
+          {
+            if (i == 1004) {
+              return true;
+            }
+            bool1 = false;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   private boolean b(MessageRecord paramMessageRecord)
@@ -89,65 +106,67 @@ public class BaseBubbleBuilderMenuRevokeProcessor
   
   protected void a(ChatMessage paramChatMessage, Context paramContext)
   {
-    int j;
-    int i;
-    if ((paramContext instanceof FragmentActivity))
+    if ((paramContext instanceof BaseActivity))
     {
-      ChatFragment localChatFragment = ((FragmentActivity)paramContext).getChatFragment();
+      Object localObject = ((BaseActivity)paramContext).getChatFragment();
       paramContext = null;
-      if (localChatFragment != null) {
-        paramContext = localChatFragment.a();
+      if (localObject != null) {
+        paramContext = ((ChatFragment)localObject).a();
       }
       if (paramContext != null) {
         ((AIORevokeMsgHelper)paramContext.a(46)).a(paramChatMessage);
       }
-      if (!(paramChatMessage instanceof MessageForFile)) {
-        break label189;
+      int i = 0;
+      int k = 0;
+      boolean bool = paramChatMessage instanceof MessageForFile;
+      int j = 5;
+      if (bool) {}
+      for (i = 6;; i = k)
+      {
+        j = 4;
+        break;
+        if ((paramChatMessage instanceof MessageForText))
+        {
+          i = 1;
+          j = 1;
+          break;
+        }
+        if ((paramChatMessage instanceof MessageForPic))
+        {
+          i = 3;
+          j = 2;
+          break;
+        }
+        if ((paramChatMessage instanceof MessageForMarketFace))
+        {
+          i = 4;
+          break;
+        }
+        if ((paramChatMessage instanceof IMessageForApollo))
+        {
+          i = 5;
+          break;
+        }
+        if (!(paramChatMessage instanceof MessageForVideo)) {
+          break;
+        }
       }
-      j = 6;
-      i = 4;
-    }
-    for (;;)
-    {
-      if (AnonymousChatHelper.a(paramChatMessage)) {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800ADF4", "0X800ADF4", 0, 1, "" + i, "", "", "");
+      if (AnonymousChatHelper.a(paramChatMessage))
+      {
+        paramContext = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("");
+        ((StringBuilder)localObject).append(j);
+        ReportController.b(paramContext, "dc00898", "", "", "0X800ADF4", "0X800ADF4", 0, 1, ((StringBuilder)localObject).toString(), "", "", "");
       }
       if (AskAnonymousUtil.a(paramChatMessage)) {
         ReportController.b(null, "dc00899", "Grp_AIO", "", "ask_tab", "ans_recess", 0, 0, paramChatMessage.frienduin, "0", "", "");
       }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80056B1", "0X80056B1", 0, 0, "" + j, "", "", "");
-      return;
-      label189:
-      if ((paramChatMessage instanceof MessageForText))
-      {
-        j = 1;
-        i = 1;
-      }
-      else if ((paramChatMessage instanceof MessageForPic))
-      {
-        j = 3;
-        i = 2;
-      }
-      else if ((paramChatMessage instanceof MessageForMarketFace))
-      {
-        j = 4;
-        i = 5;
-      }
-      else if ((paramChatMessage instanceof MessageForApollo))
-      {
-        j = 5;
-        i = 5;
-      }
-      else if ((paramChatMessage instanceof MessageForVideo))
-      {
-        j = 0;
-        i = 4;
-      }
-      else
-      {
-        j = 0;
-        i = 5;
-      }
+      paramChatMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      paramContext = new StringBuilder();
+      paramContext.append("");
+      paramContext.append(i);
+      ReportController.b(paramChatMessage, "CliOper", "", "", "0X80056B1", "0X80056B1", 0, 0, paramContext.toString(), "", "", "");
     }
   }
   
@@ -158,7 +177,7 @@ public class BaseBubbleBuilderMenuRevokeProcessor
   
   public boolean a(int paramInt)
   {
-    return paramInt == 2131371954;
+    return paramInt == 2131371562;
   }
   
   protected boolean a(QQCustomMenu paramQQCustomMenu, Context paramContext, int paramInt, MessageRecord paramMessageRecord, Bundle paramBundle)
@@ -207,7 +226,7 @@ public class BaseBubbleBuilderMenuRevokeProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.menu.BaseBubbleBuilderMenuRevokeProcessor
  * JD-Core Version:    0.7.0.1
  */

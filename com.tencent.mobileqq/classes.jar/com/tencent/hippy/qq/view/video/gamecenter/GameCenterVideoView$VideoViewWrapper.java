@@ -77,7 +77,7 @@ class GameCenterVideoView$VideoViewWrapper
     GameCenterVideoView.access$802(this.this$0, false);
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     this.mAttachCalled = true;
@@ -90,7 +90,7 @@ class GameCenterVideoView$VideoViewWrapper
     this.this$0.sendEvent("onPlayFinish", null);
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     this.mDetachCalled = true;
@@ -108,7 +108,7 @@ class GameCenterVideoView$VideoViewWrapper
     return super.onError(paramISuperPlayer, paramInt1, paramInt2, paramInt3, paramString);
   }
   
-  public void onPlayerCreated(ISuperPlayer paramISuperPlayer)
+  protected void onPlayerCreated(ISuperPlayer paramISuperPlayer)
   {
     if ((GameCenterVideoView.access$2100(this.this$0) == 0) || (GameCenterVideoView.access$2100(this.this$0) > 1))
     {
@@ -123,8 +123,12 @@ class GameCenterVideoView$VideoViewWrapper
     if (GameCenterVideoView.access$300(this.this$0)) {
       this.this$0.sendEvent("onProgress", updateProgressMap(paramInt));
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("GameCenterVideoViewController", 2, "onProgressChanged progress:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramSeekBar = new StringBuilder();
+      paramSeekBar.append("onProgressChanged progress:");
+      paramSeekBar.append(paramInt);
+      QLog.d("GameCenterVideoViewController", 2, paramSeekBar.toString());
     }
   }
   
@@ -134,7 +138,7 @@ class GameCenterVideoView$VideoViewWrapper
     this.mOnPreparedCalled = true;
   }
   
-  public void onViewChanged(View paramView)
+  protected void onViewChanged(View paramView)
   {
     GameCenterVideoView.access$700(this.this$0, paramView);
   }
@@ -151,7 +155,7 @@ class GameCenterVideoView$VideoViewWrapper
     this.mReleaseCalled = true;
   }
   
-  public Activity scanForActivity(Context paramContext)
+  protected Activity scanForActivity(Context paramContext)
   {
     HippyQQEngine localHippyQQEngine = HippyQQEngine.getEngineInstance(this.mHippyEngineId);
     if ((localHippyQQEngine != null) && (localHippyQQEngine.getActivity() != null)) {
@@ -167,24 +171,24 @@ class GameCenterVideoView$VideoViewWrapper
     if (QLog.isColorLevel()) {
       QLog.d("GameCenterVideoViewController", 2, new Object[] { "onVideoStatusChanged, oldStatus:", Integer.valueOf(i), ", curStatus:", Integer.valueOf(paramInt) });
     }
-    if ((paramInt == 0) || (paramInt == 4) || (paramInt == 3) || (paramInt == 5) || (paramInt == 7))
+    if ((paramInt != 0) && (paramInt != 4) && (paramInt != 3) && (paramInt != 5) && (paramInt != 7))
     {
-      localHippyMap = new HippyMap();
+      if (paramInt == 2) {
+        GameCenterVideoView.access$602(this.this$0, getDuration());
+      }
+    }
+    else
+    {
+      HippyMap localHippyMap = new HippyMap();
       localHippyMap.pushInt("curPlayState", GameCenterVideoView.access$500().get(paramInt));
       localHippyMap.pushInt("oldPlayState", GameCenterVideoView.access$500().get(i));
       this.this$0.sendEvent("onPlayStateChanged", localHippyMap);
     }
-    while (paramInt != 2)
-    {
-      HippyMap localHippyMap;
-      return;
-    }
-    GameCenterVideoView.access$602(this.this$0, getDuration());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.video.gamecenter.GameCenterVideoView.VideoViewWrapper
  * JD-Core Version:    0.7.0.1
  */

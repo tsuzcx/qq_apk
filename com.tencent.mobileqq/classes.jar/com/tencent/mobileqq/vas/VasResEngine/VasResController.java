@@ -3,23 +3,18 @@ package com.tencent.mobileqq.vas.VasResEngine;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.app.QzoneMainRuntime;
-import com.tencent.common.app.ToolAppRuntime;
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.vas.api.IVasDepTemp;
+import com.tencent.mobileqq.vas.util.VasUtil;
 import com.tencent.mobileqq.vip.DownloadListener;
 import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
 import com.tencent.mobileqq.vip.DownloaderInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
 import mqq.app.AppRuntime;
-import mqq.manager.Manager;
 
 public class VasResController
 {
@@ -32,34 +27,6 @@ public class VasResController
   {
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-  }
-  
-  private Manager a(AppRuntime paramAppRuntime)
-  {
-    Object localObject2 = null;
-    Object localObject1;
-    if ((paramAppRuntime instanceof ToolAppRuntime))
-    {
-      paramAppRuntime = paramAppRuntime.getAppRuntime("modular_web");
-      localObject1 = localObject2;
-      if ((paramAppRuntime instanceof BrowserAppInterface)) {
-        localObject1 = paramAppRuntime.getManager(QQManagerFactory.DOWNLOADER_FACTORY);
-      }
-    }
-    do
-    {
-      do
-      {
-        return localObject1;
-        if ((paramAppRuntime instanceof QQAppInterface)) {
-          return paramAppRuntime.getManager(QQManagerFactory.DOWNLOADER_FACTORY);
-        }
-        localObject1 = localObject2;
-      } while (!(paramAppRuntime instanceof QzoneMainRuntime));
-      paramAppRuntime = BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("qzone_plugin.apk");
-      localObject1 = localObject2;
-    } while (paramAppRuntime == null);
-    return paramAppRuntime.getManager(QQManagerFactory.DOWNLOADER_FACTORY);
   }
   
   public int a()
@@ -84,69 +51,70 @@ public class VasResController
   
   public void a(String paramString1, String paramString2, Bundle paramBundle)
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface == null) && (localObject != null)) {}
-    try
-    {
-      localObject = a((AppRuntime)localObject);
-      if ((localObject instanceof DownloaderFactory)) {
-        this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface = ((DownloaderFactory)localObject).a(1);
-      }
-      if (TextUtils.isEmpty(paramString1)) {
-        QLog.e("VasResController", 1, "downLoad error url is empty dst =" + paramString2);
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.a(paramString1) == null))
+    AppRuntime localAppRuntime = VasUtil.a();
+    if ((this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface == null) && (localAppRuntime != null)) {
+      try
       {
-        paramString1 = new DownloadTask(paramString1, new File(paramString2));
-        this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.a(paramString1, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, paramBundle);
+        this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface = ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).getDownloader(localAppRuntime);
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Exception localException)
       {
         QLog.e("VasResController", 1, localException.getMessage());
       }
+    }
+    if (TextUtils.isEmpty(paramString1))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("downLoad error url is empty dst =");
+      ((StringBuilder)localObject).append(paramString2);
+      QLog.e("VasResController", 1, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface;
+    if ((localObject != null) && (((DownloaderInterface)localObject).getTask(paramString1) == null))
+    {
+      paramString1 = new DownloadTask(paramString1, new File(paramString2));
+      this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.startDownload(paramString1, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, paramBundle);
     }
   }
   
   public String[] a(String paramString)
   {
     Object localObject = new File(paramString);
-    if ((localObject == null) || (!((File)localObject).exists()) || (!((File)localObject).isDirectory())) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VasResController", 2, "SignatureView DynamicItem png file path error.");
+    if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
+    {
+      ArrayList localArrayList = FileUtils.getChildFiles(paramString);
+      if (localArrayList.size() <= 0) {
+        return null;
       }
-    }
-    ArrayList localArrayList;
-    do
-    {
-      return null;
-      localArrayList = FileUtils.a(paramString);
-    } while (localArrayList.size() <= 0);
-    localObject = new String[localArrayList.size()];
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    StringBuilder localStringBuilder2 = localStringBuilder1.append(paramString).append(File.separator);
-    if (((String)localArrayList.get(0)).contains(".9.png")) {}
-    for (paramString = "%d.9.png";; paramString = "%d.png")
-    {
-      localStringBuilder2.append(paramString);
-      paramString = localStringBuilder1.toString();
-      int j = localObject.length;
-      int i = 0;
-      while (i < j)
+      localObject = new String[localArrayList.size()];
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(File.separator);
+      if (((String)localArrayList.get(0)).contains(".9.png")) {
+        paramString = "%d.9.png";
+      } else {
+        paramString = "%d.png";
+      }
+      localStringBuilder.append(paramString);
+      paramString = localStringBuilder.toString();
+      int k = localObject.length;
+      int j;
+      for (int i = 0; i < k; i = j)
       {
-        localObject[i] = String.format(paramString, new Object[] { Integer.valueOf(i + 1) });
-        i += 1;
+        j = i + 1;
+        localObject[i] = String.format(paramString, new Object[] { Integer.valueOf(j) });
       }
+      return localObject;
     }
-    return localObject;
+    if (QLog.isColorLevel()) {
+      QLog.d("VasResController", 2, "SignatureView DynamicItem png file path error.");
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasResEngine.VasResController
  * JD-Core Version:    0.7.0.1
  */

@@ -12,27 +12,30 @@ class MiniAppCmdServlet$1
   
   public void onUpdateResult(int paramInt)
   {
-    if (this.val$callback == null) {
+    MiniCmdCallback localMiniCmdCallback = this.val$callback;
+    if (localMiniCmdCallback == null) {
       return;
     }
-    if ((paramInt == 0) || (paramInt == 1)) {
-      try
-      {
-        this.val$callback.onCmdResult(true, new Bundle());
-        return;
-      }
-      catch (Exception localException)
-      {
-        QMLog.e("MiniAppCmdServlet", "cmd response exception. cmd=" + this.val$cmd, localException);
-        return;
-      }
+    if ((paramInt != 0) && (paramInt != 1)) {}
+    try
+    {
+      localMiniCmdCallback.onCmdResult(false, new Bundle());
+      return;
     }
-    this.val$callback.onCmdResult(false, new Bundle());
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("cmd response exception. cmd=");
+      localStringBuilder.append(this.val$cmd);
+      QMLog.e("MiniAppCmdServlet", localStringBuilder.toString(), localException);
+    }
+    this.val$callback.onCmdResult(true, new Bundle());
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.server.MiniAppCmdServlet.1
  * JD-Core Version:    0.7.0.1
  */

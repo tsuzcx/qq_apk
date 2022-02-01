@@ -23,19 +23,19 @@ final class UIntArray$Iterator
   
   public int nextUInt()
   {
-    if (this.index < this.array.length)
+    int i = this.index;
+    int[] arrayOfInt = this.array;
+    if (i < arrayOfInt.length)
     {
-      int[] arrayOfInt = this.array;
-      int i = this.index;
       this.index = (i + 1);
       return UInt.constructor-impl(arrayOfInt[i]);
     }
-    throw ((Throwable)new NoSuchElementException(String.valueOf(this.index)));
+    throw ((Throwable)new NoSuchElementException(String.valueOf(i)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.UIntArray.Iterator
  * JD-Core Version:    0.7.0.1
  */

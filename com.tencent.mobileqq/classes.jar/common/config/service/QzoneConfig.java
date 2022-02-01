@@ -17,6 +17,7 @@ import cooperation.qzone.thread.QzoneHandlerThreadFactory;
 import cooperation.qzone.util.QZLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -45,6 +46,18 @@ public class QzoneConfig
   public static final String DEFAULTY_FOLLOW_FOLLOWERS_URL = "https://h5.qzone.qq.com/follow/feeds/{hostuin}/followfeeds?_wv=1027&_proxy=1";
   public static final float DEFAULT_ADJUST_PREDECODE_MEMORY_SIZE = 0.5F;
   private static final String DEFAULT_AE_AUTO_TEMPLATE_MEMORY_LIMIT = "4096";
+  private static final int DEFAULT_AE_FRAME_RATE = 30;
+  private static final int DEFAULT_AE_HIGH_BITRATE = 5;
+  private static final int DEFAULT_AE_HIGH_SIZE = 1920;
+  private static final int DEFAULT_AE_LOW_BITRATE = 3;
+  private static final int DEFAULT_AE_LOW_SIZE = 960;
+  private static final int DEFAULT_AE_MIDDLE_BITRATE = 4;
+  private static final int DEFAULT_AE_MIDDLE_SIZE = 1280;
+  private static final int DEFAULT_AE_PIC_HIGH_SIZE = 2560;
+  private static final int DEFAULT_AE_PIC_LOW_SIZE = 1080;
+  private static final int DEFAULT_AE_PIC_MIDDLE_SIZE = 1920;
+  private static final int DEFAULT_AE_PREVIEWMAX_RENDERSIZE_ABOVE_2G = 2048;
+  private static final int DEFAULT_AE_PREVIEWMAX_RENDERSIZE_BELOW_2G = 1024;
   public static final float DEFAULT_AIO_CM_SHOW_OFFSCREEN_HEIGHT = 118.0F;
   public static final String DEFAULT_AIO_QZONE_LOVE_GRAY_TIPS_VALUE = "{'情侣空间':'https://h5.qzone.qq.com/mood/lover?_wv=16777219&from=qqfrd&qzUseTransparentNavBar=1&_proxy=1'}";
   public static final String DEFAULT_ALBUM_FAKE_FEED_TAIL_CLICK_TIPS = "上传中，请稍候";
@@ -64,7 +77,23 @@ public class QzoneConfig
   public static final long DEFAULT_CHOOSE_VIDEO_MAX_DURATION = 600000L;
   public static final long DEFAULT_CHOOSE_VIDEO_MAX_SIZE = 1610612736L;
   public static final String DEFAULT_CLOUD_PHOTO_DYNAMIC_ALBUM_URL = "https://h5.qzone.qq.com/dynamic/album/main?refer=h5maker&no_upload=1&tid={tid}&_wv=2098179";
+  public static final int DEFAULT_CMSHOW_AVATAR_3D_SWITCH = 1;
+  public static final String DEFAULT_CMSHOW_AVATAR_TITLE = "厘米秀头像";
+  public static final int DEFAULT_CMSHOW_CE_AIO_FRIENDCARD_DEPEND_ON_PLAYER = 1;
+  public static final long DEFAULT_CMSHOW_CE_SHOW_AIO_PANEL_SLAVE_TAB = 0L;
+  public static final long DEFAULT_CMSHOW_CMSHOW_CE_EVLJS_DELAY_TIME = 100L;
   public static final String DEFAULT_CMSHOW_CM_SHOW_AEKIT_DEVICE_BLACK_LIST = "";
+  public static final int DEFAULT_CMSHOW_ENABLE_AUDIO_IN_DRAWER = 0;
+  public static final int DEFAULT_CMSHOW_EVAL_SCRIPT_DIRECTLY_ON_GL_THREAD = 1;
+  public static final int DEFAULT_CMSHOW_MAKEUP_USE_CROSSENGINE = 1;
+  public static final int DEFAULT_CMSHOW_MEME_CACHE_KEY = 0;
+  public static final int DEFAULT_CMSHOW_MEME_INIT_ENGINE_ON_UI_THREAD = 1;
+  public static final String DEFAULT_CMSHOW_NEWER_GUIDE_ENTRANCE_LINK = "https://open.cmshow.qq.com/next/registerProcess.html?_wv=16777223&_wwv=8704";
+  public static final String DEFAULT_CMSHOW_NEWER_GUIDE_ENTRANCE_NAME = "创建专属形象";
+  public static final int DEFAULT_CMSHOW_NEWER_GUIDE_ENTRANCE_SHOW = 1;
+  public static final String DEFAULT_CMSHOW_SETTING_URL = "https://h5.cmshow.qq.com/next/setting.html?_wv=2&_wwv=4&adtag=qqsetting";
+  public static final int DEFAULT_CMSHOW_TEXTURE_PENDING_RELEASE = 1;
+  public static final int DEFAULT_CMSHOW_USE_CROSSENGINE_OFFSCREEN_WORLD = 1;
   public static final float DEFAULT_CMS_PANEL_GET_COVER_FRAME_TIME = 33.333332F;
   public static final long DEFAULT_CMS_RECORD_TIMEOUT_TIME = 15000L;
   public static final String DEFAULT_CM_ACTION_URL = "https://h5.qzone.qq.com/lmshow/mall?_proxy=1";
@@ -75,6 +104,7 @@ public class QzoneConfig
   public static final String DEFAULT_CM_AIO_SVIP_NAMEPLATE_URL = "https://h5.qzone.qq.com/limishow/mall?_wv=131072&_fv=0&_wwv=128&_wvx=10&traceDetail=base64-eyJhcHBpZCI6Im91dHNpZGUiLCJwYWdlX2lkIjoiMjEifQ%3D%3D";
   public static final int DEFAULT_CM_ENABLE_SIZE_CORRECT = 1;
   public static final int DEFAULT_CM_FRAME_DRAWABLE_LOW_MEMORY_MODE = 1;
+  public static final int DEFAULT_CM_FRAME_DRAWABLE_MAX_COUNT = 20;
   public static final int DEFAULT_CM_FRAME_PLAY_OPEN = 1;
   public static final String DEFAULT_CM_RECORD_THREAD_POOL_SIZE = "4,2,1";
   public static final String DEFAULT_CM_SHOW_AIO_DEFAULT_PET_GUEST_URL = "https://cmshow.qq.com/apollo/html/pet/pet_hall.html?_wv=16777218&_cwv=9&_wwv=1&thunder_id=8&_bid=3094&pet={pet_id}&open=1&adtag=aioke";
@@ -134,6 +164,8 @@ public class QzoneConfig
   public static final int DEFAULT_IS_OPEN_QRCODE_SCAN = 1;
   public static final String DEFAULT_IS_SHOW_ENTRANCE = "0";
   public static final int DEFAULT_JUMP_TO_WEISHI = 1;
+  private static final int DEFAULT_KEY_AE_NEED_DELETE_TMP_FILE = 1;
+  private static final int DEFAULT_KEY_AE_SAVE_PIC_TO_VIDEO = 1;
   public static final int DEFAULT_KEY_AIO_CM_SHOW_HEIGHT_SWITCH = 0;
   public static final int DEFAULT_KEY_AIO_CM_SHOW_TOGGLE_BUTTON_SWITCH = 0;
   public static final int DEFAULT_KEY_CM_ADD_ANIM_TO_FAV = 1;
@@ -149,8 +181,10 @@ public class QzoneConfig
   public static final String DEFAULT_KEY_CM_SHOW_AIO_ACTION_USED_TAG = "最近使用";
   public static final int DEFAULT_KEY_CM_SHOW_AIO_PANEL_TAG = 0;
   public static final int DEFAULT_KEY_CM_SHOW_AVATAR_ENABLE = 1;
+  public static final int DEFAULT_KEY_CM_SHOW_AVATAR_VIDEO_COMPRESS = 1;
   public static final int DEFAULT_KEY_CM_SHOW_GROUP_AIO_WITH_AT = 0;
   public static final int DEFAULT_KEY_CM_SHOW_PANEL_RED_DOT = 0;
+  public static final int DEFAULT_KEY_CM_WHITEFACE_3D = 1;
   public static final float DEFAULT_KEY_DISAPPEAR_HEIGHT_SCALE = 0.3F;
   public static final float DEFAULT_KEY_DISPLAY_HEIGHT_SCALE = 0.3F;
   public static final int DEFAULT_KEY_EGL_OFFSCREEN_CONFIG_ENABLE = 1;
@@ -160,7 +194,8 @@ public class QzoneConfig
   public static final int DEFAULT_KEY_OFFICIAL_ACCOUNT_CAN_SHOW_FEEDS_LIST = 0;
   public static long DEFAULT_KEY_QQCIRCLE_KOL_REQUEST_TIME = 10800000L;
   public static final int DEFAULT_KEY_SHOW_ENTRANCE_GUIDE = 1;
-  public static final String DEFAULT_KEY_WEB_TO_DOWNLOAD_WEISHI = "https://android.myapp.com/myapp/detail.htm?apkName=com.tencent.weishi";
+  private static final long DEFAULT_KEY_USE_TEMPLATE_DIALOG = 1209600000L;
+  public static final String DEFAULT_KEY_WEB_TO_DOWNLOAD_WEISHI = "https://isee.weishi.qq.com/iseev2/1/PSg56S8_e/index.html?_wwv=4096";
   public static final int DEFAULT_LIMIT_FACE_NUMS = 5;
   public static final String DEFAULT_LOVE_ALBUM_BG_URL = "https://qzonestyle.gtimg.cn/aoi/sola/20191104215206_TMitj1NKy1.png";
   public static final int DEFAULT_MAKE_PHOTO_BLOG_FUNCTION_OPEN = 1;
@@ -202,7 +237,7 @@ public class QzoneConfig
   public static final String DEFAULT_OPENURL_DOMAIN_WHITELIST = "tucao.qq.com,mobile.qzone.qq.com";
   public static final String DEFAULT_OPENURL_FILTER = "https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb|http://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb";
   public static final int DEFAULT_OWNER_OPERATE_TIME = 3;
-  public static final String DEFAULT_P2V_FUN_BLACK_LIST = "MI 3,GT-N7108,vivo Y51A,OPPO R6007,R6007,vivo Y31A,vivo Y31,vivo Y35A,CAM-AL00,CAM-UL00,CAM-TL00,M821,SM-A7000,MI 2SC,SM-G6000,Mi Note 2,M5 Note,Mi Note 2,F8332,m5 note,SM-C5000,OPPO A33m,OPPO A33,OPPO A37m,M15,MI 5C,OPPO A31,Pixel 3a,V1813BA,LIO-AL00,TAS-AL00,VOG-AL00";
+  public static final String DEFAULT_P2V_FUN_BLACK_LIST = "MI 3,GT-N7108,vivo Y51A,OPPO R6007,R6007,vivo Y31A,vivo Y31,vivo Y35A,CAM-AL00,CAM-UL00,CAM-TL00,M821,SM-A7000,MI 2SC,SM-G6000,Mi Note 2,M5 Note,Mi Note 2,F8332,m5 note,SM-C5000,OPPO A33m,OPPO A33,OPPO A37m,M15,MI 5C,OPPO A31,Pixel 3a,V1813BA,LIO-AL00,TAS-AL00,VOG-AL00,VOG-AL10,M2004J7BC";
   public static final int DEFAULT_P2V_FUN_ENABLE = 1;
   public static final boolean DEFAULT_P2V_NEED_ORIGINAL = true;
   public static final long DEFAULT_P2V_STORAGE_LIMIT = 62914560L;
@@ -223,14 +258,16 @@ public class QzoneConfig
   public static final String DEFAULT_PUBLIC_ACCOUNT_DISCOVER_PAGE_SCHEMA = "mqqapi://miniapp/open?_atype=0&_mappid=1109786902&_mvid=&_vt=3&_sig=f945854d8893417d87b3599d8dce7bdde77f409be5548044ed67383266b1fbf4";
   public static final String DEFAULT_QCIRCLE_GROUP_AIO_REDPOINT_ICON_URL = "https://sola.gtimg.cn/aoi/sola/20201202141147_DUAnwM0iHs.png";
   public static final boolean DEFAULT_QCIRCLE_PUBLISH_ENABLE_SYNC_QZONE = true;
-  public static String DEFAULT_QFLUTTER_URL;
+  public static String DEFAULT_QFLUTTER_URL = "{\"key1\":\"https://mqq-plugin.qq.com/a696131d7cde6ad2c9aae156ec1d3b5a\",\"key2\":\"\",\"key3\":\"0.0.6\",\"key4\": {\"file_length\": 7786698},\"key5\":80}";
   public static final int DEFAULT_QMUSIC_HLS_MAX_RETRY_TIMES = 3;
   private static final String DEFAULT_QQCIRCLE_AGGREAGTE_EMPTY_JUMP_TITLE = "发布第一个作品";
   private static final String DEFAULT_QQCIRCLE_AGGREAGTE_EMPTY_TEXT = "这片沃土空空如也\n等待你来开垦";
   private static final String DEFAULT_QQCIRCLE_AUTHENTICATION_ERROR_TEXT = "暂无权限\n去众推看看其他内容吧";
   private static final String DEFAULT_QQCIRCLE_AUTHENTICATION_ERROR_TOAST_TEXT = "暂无权限，去逛逛众推吧";
+  public static final String DEFAULT_QQCIRCLE_CHAT_CLUSTER_UINS_ONLY_SHOW_BUBBLE = "3499975001";
   private static final String DEFAULT_QQCIRCLE_DETAIL_ERROR_CONTENT_DELETED_TEXT = "害！来晚一步\n这个内容已下落不明";
   public static final String DEFAULT_QQCIRCLE_EEVEE_SYSTEM_OPEN = "1";
+  private static final String DEFAULT_QQCIRCLE_GO_HOME_GUIDE_TEXT = "进入小世界广场";
   private static final String DEFAULT_QQCIRCLE_HOMEPAGE_GUEST_LIST_EMPTY_JUMP_TITLE = "探索更多小世界";
   private static final String DEFAULT_QQCIRCLE_HOMEPAGE_GUEST_LIST_EMPTY_TEXT = "这个小世界尚未启动\n你的目光早已启程";
   private static final String DEFAULT_QQCIRCLE_HOMEPAGE_GUEST_PRODUCT_EMPTY_JUMP_TITLE = "探索更多小世界";
@@ -256,6 +293,7 @@ public class QzoneConfig
   public static final String DEFAULT_QQCIRCLE_RECOMMEND_FOLLOW_H5_URL = "https://h5.qzone.qq.com/v2/wezone/recommend/invite/{uid}/{invite_id}?_wv=3&_proxy=1";
   private static final String DEFAULT_QQCIRCLE_SERVER_ERROR_TEXT = "网络开小差了\n稍后再试试吧";
   private static final String DEFAULT_QQCIRCLE_SERVER_ERROR_TOAST_TEXT = "网络开小差了，稍后再试试吧";
+  private static final String DEFAULT_QQCIRCLE_SHOW_GO_HOME_BUTTON_INTERVAL = "0";
   public static final String DEFAULT_QQCIRCLE_SPLASH_ENABLE = "1";
   public static final String DEFAULT_QQCIRCLE_SPLASH_GUIDE_LOGO_RUL = "https://qzonestyle.gtimg.cn/qzone/qzact/act/external/qzone-platform/wezone/2020-wezone-img/848-Trailer/image/trailer-local-logo.png";
   public static final String DEFAULT_QQCIRCLE_SPLASH_GUIDE_LOGO_TEXT_URL = "https://qzonestyle.gtimg.cn/qzone/qzact/act/external/qzone-platform/wezone/2020-wezone-img/848-Trailer/image/trailer-local-text-2.png";
@@ -279,10 +317,8 @@ public class QzoneConfig
   public static final int DEFAULT_RECOMMEND_ALBUM_GALLERY_SWITCH = 0;
   public static final int DEFAULT_RECOMMEND_COUNT_NUM_LIMIT = 999;
   public static final String DEFAULT_SCF_GATEWAY_DEVICE_VER = "100";
-  public static final String DEFAULT_SCF_GATEWAY_ID = "AKID1kzNj6bssaQhnsKi4b8qP3C413YfY1sbWTh9";
   public static final String DEFAULT_SCF_GATEWAY_QUERY_URL = "https://service-eu5361om-1251316161.ap-guangzhou.apigateway.myqcloud.com/release/deviceinfo/query?deviceinfo={deviceid}&videoinfo={profileid}";
   public static final String DEFAULT_SCF_GATEWAY_REPORT_URL = "https://service-eu5361om-1251316161.ap-guangzhou.apigateway.myqcloud.com/release/deviceinfo/report?deviceinfo={deviceid}&videoinfo={profileid}&status={status}";
-  public static final String DEFAULT_SCF_GATEWAY_SECRET = "1t87nyIItAkWwVjgXxSl29QcgaeFw072U7kpo1ld";
   public static final boolean DEFAULT_SCF_GATEWAY_SIGN_ENABLE = true;
   public static final int DEFAULT_SCF_GATEWAY_STATUS = 1;
   public static final int DEFAULT_SCF_GATEWAY_STATUS_ENABLED = 1;
@@ -346,6 +382,10 @@ public class QzoneConfig
   public static final String DEFAULT_UPLOAD_NETWORK_UNAVAILABLE_RETCODE = "113,101,100";
   public static final int DEFAULT_USE_QQ_EMOTICON_COMMENT = 0;
   public static final String DEFAULT_VALUE_MINIGAME_LAMEMP3_SO_INFO = "{\"url\":\"https://d3g.qq.com/sngapp/app/update/20201105204646_864/libminigame_lamemp3.so\",\"md5\":\"23e9ed55e3d3acd0b93c0f55cc11bdb7\",\"length\":165396}";
+  public static final String DEFAULT_VALUE_MINI_GAME_DROP_GUIDE_IMAGE_URL = "https://sola.gtimg.cn/aoi/sola/20210226113308_nLvM2BA8VH.png";
+  public static final String DEFAULT_VALUE_MINI_GAME_DROP_GUIDE_SCENE_AND_MODE_BLACK_LIST = "desktoprecent,main,friendmore,maintj,mainph,mainpk,mainguess,pkdesktop,mainfriend";
+  public static final String DEFAULT_VALUE_MINI_GAME_DROP_GUIDE_SCENE_AND_VIA_BLACK_LIST = "[{\"scene\":2054,\"via\":\"2054_3\"}]";
+  public static final String DEFAULT_VALUE_MINI_GAME_DROP_GUIDE_SCENE_BLACK_LIST = "1001,3001,3002,3003,3007,3009,3010,3013,3015,3022,3024,3026,3027,3028,3029,2086,2103";
   public static final String DEFAULT_VALUE_MINI_GAME_RETAIN_BACKGROUND_URL = "https://sola.gtimg.cn/aoi/sola/20201026161621_WQxgnG17wP.png";
   public static final String DEFAULT_VALUE_MINI_GAME_RETAIN_CHANGE_ALL = "https://sola.gtimg.cn/aoi/sola/20201023212055_vhmnkmRvWb.png";
   public static final String DEFAULT_VALUE_MINI_GAME_RETAIN_LEFT_BTN_BACKGROUND_URL = "https://sola.gtimg.cn/aoi/sola/20201026161621_qKiWYA1Hc2.png";
@@ -406,6 +446,7 @@ public class QzoneConfig
   public static final int LOAD_FAIL = 3;
   public static final int LOAD_SUCC = 2;
   public static final String MAIN_GIF_SETTING = "GifSetting";
+  public static final String MAIN_KEY_AEEDITOR = "aeeditor";
   public static final String MAIN_KEY_ARCHIVE_MEMORY = "archiveMemory";
   public static final String MAIN_KEY_BIZ = "BizFeeds";
   public static final String MAIN_KEY_BUBBLE_UNREAD = "K_QQ_VAS";
@@ -538,7 +579,10 @@ public class QzoneConfig
   public static final String MINI_APP_ENABLE_DB_CACHE = "mini_app_enable_db_cache";
   public static final String MINI_APP_ENABLE_EMBEDDED_LIVE = "enable_embedded_live";
   public static final String MINI_APP_ENABLE_EMBEDDED_VIDEO = "enable_embedded_video";
+  public static final String MINI_APP_ENABLE_FAKE_APPINFO_CACHE = "mini_app_enable_fake_appinfo";
   public static final String MINI_APP_ENABLE_JSERROR_TIP = "mini_app_jserror_tip_enable";
+  public static final String MINI_APP_ENABLE_SEARCH_DYNAMIC_FEATURE = "mini_app_enable_search_dynamic_feature";
+  public static final int MINI_APP_ENABLE_SEARCH_DYNAMIC_FEATURE_DEAFULT = 1;
   public static final String MINI_APP_ENABLE_WHITE_SCREEN_CHECK_AFTER_DOMREADY = "mini_app_enable_white_screen_check_after_domready";
   public static final String MINI_APP_EXTRA_PRELOAD = "mini_app_preload_extra";
   public static final int MINI_APP_EXTRA_PRELOAD_DEFAULT = 1;
@@ -609,6 +653,11 @@ public class QzoneConfig
   public static final String MINI_APP_WHITE_SCREEN_SHOT_MAX_WIDTH = "mini_app_white_screen_shot_max_width";
   public static final String MINI_APP_XPROF_API_REPORT = "xprof_api_report";
   public static final String MINI_GAME_CAPSULE_SHOW_RESTART_BTN = "mini_game_capsule_show_restart_btn";
+  public static final String MINI_GAME_DROP_GUIDE_EXPOSURE_TIMES_THRESHOLD = "dropGuideTimesLimit";
+  public static final String MINI_GAME_DROP_GUIDE_IMAGE_URL = "qqMiniappDropGuideImageUrl";
+  public static final String MINI_GAME_DROP_GUIDE_SCENE_AND_MODE_BLACK_LIST = "qqMiniappDropGuideSceneAndModeBlackList";
+  public static final String MINI_GAME_DROP_GUIDE_SCENE_AND_VIA_BLACK_LIST = "qqMiniappDropGuideSceneAndViaBlackList";
+  public static final String MINI_GAME_DROP_GUIDE_SCENE_BLACK_LIST = "qqMiniappDropGuideSceneBlackList";
   public static final String MINI_GAME_FORCE_DOWNLOAD_IN_MAINPROCESS = "mini_game_force_download_in_mainprocess";
   public static final int MINI_GAME_FORCE_DOWNLOAD_IN_MAINPROCESS_DEFAULT = 0;
   public static final String MINI_GAME_JANK_TRACE_SAMPLING_RATE = "mini_game_jank_trace_sampling_rate";
@@ -720,6 +769,10 @@ public class QzoneConfig
   public static final int RECENT_PHOTO_MAX_NUM_DEFAULT = 200;
   public static final int REPORT_ACTION_FLOW_SIZE_DEFAULT = 800;
   public static final String SCHEME_FOR_SWEET_MAIN_PAGE_JUMP = "mqzone://arouse/lovermainpage";
+  private static final String SECONDAER_KEY_AE_PICTEMPLATEFILTERBLACKLIST = "secondary_key_ae_pictemplatefilterblacklist";
+  private static final String SECONDAER_KEY_AE_PICTEMPLATEFILTERCOUNT = "secondary_key_ae_pictemplatefiltercount";
+  private static final String SECONDAER_KEY_AE_PICTEMPLATEFILTERLEVEL = "secondary_key_ae_aepictemplatefilterlevel";
+  private static final String SECONDAER_KEY_AE_PICTEMPLATEFILTERLEVELFORQCOM = "secondary_key_ae_epictemplatefilterlevelforqcom";
   public static final String SECONDART_KEY_ALBUM_RECOM_UPLOAD_BAR_COUNT_LIMIT_LEVEL = "AlbumRecomUploadLimitedLevel";
   public static final String SECONDART_KEY_PHOTOLIST_NEED_SHOW_ALL_SELECT = "PhotoListNeedShowAllSelect";
   public static final String SECONDARYUGC_EMPTY_DEFAULT_PAGE = "ugcEmptyDefaultPage";
@@ -770,10 +823,14 @@ public class QzoneConfig
   public static final String SECONDARY_ALBUM_PHOTO_MIN_SCAN_PHOTO_NUM = "albumRecommendMinScanPhotoNum";
   public static final String SECONDARY_ALBUM_PHOTO_PRELOAD_MAX_BITMAP = "secondary_gif_edit_preload_max_bitmap";
   public static final String SECONDARY_ALBUM_PHOTO_REQ_ALL_GROUP_VERSION = "PhotoRecommendReqAllGroupVersion";
+  public static final String SECONDARY_ALBUM_PHOTO_SCAN_FIRST_INTEVAL = "albumRecommendScanFirstInterval";
   public static final String SECONDARY_ALBUM_PHOTO_SCAN_MAX_SAME_TIME_PHOTO_NUM = "albumRecommendScanMaxSameTimePhotoNum";
   public static final String SECONDARY_ALBUM_PHOTO_SCAN_TIME_INTERVAL = "albumRecommendScanTimeInterval";
   public static final String SECONDARY_ALBUM_PHOTO_SHOW_END_HOUR = "secondary_album_photo_show_end_hour";
   public static final String SECONDARY_ALBUM_PHOTO_SHOW_START_HOUR = "secondary_album_photo_show_start_hour";
+  public static final String SECONDARY_ALBUM_RECOMM_EXPOSE_LIMITS = "secondary_album_recomm_rank_nums";
+  public static final String SECONDARY_ALBUM_RECOMM_MONTH_LIMITS = "secondary_album_recomm_month_limits";
+  public static final String SECONDARY_ALBUM_RECOMM_SWITCH = "secondary_album_recomm_switch";
   public static final String SECONDARY_ALBUM_REC_FEED_EMPTY_PIC_URL = "AlbumRecFeedEmptyPicUrl";
   public static final String SECONDARY_ALBUM_REC_FEED_EXPOSE_PERIOD = "AlbumRecFeedExposePeriod";
   public static final String SECONDARY_ALBUM_SHARE_DYNAMIC_MAX_PHOTO_NUM = "AlbumShareDynamicMaxPhotoNum";
@@ -850,6 +907,22 @@ public class QzoneConfig
   public static final String SECONDARY_CLICKREPORT_URL = "TraceReportURL";
   public static final String SECONDARY_CLIENT_COMPRESS = "ClientCompress";
   public static final String SECONDARY_CLOUD_PHOTO_DYNAMIC_ALBUM_URL = "cloudPhotoDynamicAlbumUrl";
+  public static final String SECONDARY_CMSHOW_AVATAR_3D_SWITCH = "CMShowAvatar3DSwitch";
+  public static final String SECONDARY_CMSHOW_AVATAR_TITLE = "CMShowAvatarTitle";
+  public static final String SECONDARY_CMSHOW_CE_AIO_FRIENDCARD_DEPEND_ON_PLAYER = "CEAIOFriendCardDependOnPlayer";
+  public static final String SECONDARY_CMSHOW_CE_EVLJS_DELAY_TIME = "CmshowCEOffscreenEvlJSDelayTime";
+  public static final String SECONDARY_CMSHOW_CE_SHOW_AIO_PANEL_SLAVE_TAB = "CEShowAioPanelSlaveTab";
+  public static final String SECONDARY_CMSHOW_ENABLE_AUDIO_IN_DRAWER = "EnableAudioInDrawer";
+  public static final String SECONDARY_CMSHOW_EVAL_SCRIPT_DIRECTLY_ON_GL_THREAD = "CMShowEvalScriptDirectlyOnGLThread";
+  public static final String SECONDARY_CMSHOW_MAKEUP_USE_CROSSENGINE = "CmshowMakeupUseCrossEngine";
+  public static final String SECONDARY_CMSHOW_MEME_CACHE_KEY = "CMShowMemeCacheKey";
+  public static final String SECONDARY_CMSHOW_MEME_INIT_ENGINE_ON_UI_THREAD = "CMShowMemeInitEngineOnUiThread";
+  public static final String SECONDARY_CMSHOW_NEWER_GUIDE_ENTRANCE_LINK = "CMShowNewerGuideEntranceLink";
+  public static final String SECONDARY_CMSHOW_NEWER_GUIDE_ENTRANCE_NAME = "CMShowNewerGuideEntranceName";
+  public static final String SECONDARY_CMSHOW_NEWER_GUIDE_ENTRANCE_SHOW = "CMShowNewerGuideEntranceShow";
+  public static final String SECONDARY_CMSHOW_TEXTURE_PENDING_RELEASE = "CMShowTexturePendingRelease";
+  public static final String SECONDARY_CMSHOW_USE_CE_FOR_SCENE = "CmshowUseCrossEngineFor";
+  public static final String SECONDARY_CMSHOW_USE_CROSSENGINE_OFFSCREEN_WORLD = "CmshowUseCrossEngineOffscreenWorld";
   public static final String SECONDARY_CMS_PANEL_GET_COVER_FRAME_TIME = "CmsPanelGetCoverFrameTime";
   public static final String SECONDARY_CMS_PLAYER_RECORD_TIMEOUT = "CmsPlayerRecordTimeout";
   public static final String SECONDARY_CM_PRAISE_TIME_OUT = "cmPraiseTimeOut";
@@ -1189,6 +1262,20 @@ public class QzoneConfig
   public static final String SECONDARY_KAPU_MODEL_CHANGE = "qzoneKapuModelChange";
   public static final String SECONDARY_KAPU_SETTINGS = "kapuSettings";
   private static final String SECONDARY_KEY_AE_AUTO_TEMPLATE_MEMORY_LIMIT = "ae_auto_template_memory_limit";
+  private static final String SECONDARY_KEY_AE_FRAME_RATE = "secondary_key_ae_frame_rate";
+  private static final String SECONDARY_KEY_AE_HIGH_BITRATE = "secondary_key_ae_high_bitrate";
+  private static final String SECONDARY_KEY_AE_HIGH_SIZE = "secondary_key_ae_high_size";
+  private static final String SECONDARY_KEY_AE_LOW_BITRATE = "secondary_key_ae_low_bitrate";
+  private static final String SECONDARY_KEY_AE_LOW_SIZE = "secondary_key_ae_low_size";
+  private static final String SECONDARY_KEY_AE_MIDDLE_BITRATE = "secondary_key_ae_middle_bitrate";
+  private static final String SECONDARY_KEY_AE_MIDDLE_SIZE = "secondary_key_ae_middle_size";
+  private static final String SECONDARY_KEY_AE_NEED_DELETE_TMP_FILE = "secondary_key_ae_need_delete_tmp_file";
+  private static final String SECONDARY_KEY_AE_PIC_HIGH_SIZE = "secondary_key_ae_pic_high_size";
+  private static final String SECONDARY_KEY_AE_PIC_LOW_SIZE = "secondary_key_ae_pic_low_size";
+  private static final String SECONDARY_KEY_AE_PIC_MIDDLE_SIZE = "secondary_key_ae_pic_middle_size";
+  private static final String SECONDARY_KEY_AE_PREVIEWMAX_RENDERSIZE_ABOVE_2G = "secondary_key_ae_previewmax_rendersize_above_2g";
+  private static final String SECONDARY_KEY_AE_PREVIEWMAX_RENDERSIZE_BELOW_2G = "secondary_key_ae_previewmax_rendersize_below_2g";
+  private static final String SECONDARY_KEY_AE_SAVE_PIC_TO_VIDEO = "secondary_key_ae_save_pic_to_video";
   public static final String SECONDARY_KEY_AIO_CM_SHOW_DISAPPEAR_HEIGHT = "AioCMShowDisappearHeight";
   public static final String SECONDARY_KEY_AIO_CM_SHOW_DISPLAY_HEIGHT = "AioCMShowDisplayHeight";
   public static final String SECONDARY_KEY_AIO_CM_SHOW_HEIGHT_SWITCH = "AioCMShowHeightSwitch";
@@ -1247,6 +1334,7 @@ public class QzoneConfig
   public static final String SECONDARY_KEY_CLEAR_DESKTOP_EXPOSURE_REPORT_DATA = "clearDesktopExposureReportData";
   public static final String SECONDARY_KEY_CLINET_ONLINE_COLD_TIME = "ClientOnlineColdTime";
   public static final String SECONDARY_KEY_CLOSE_NATIVE_INBITMAP = "closeNativeAndInBitmap";
+  public static final String SECONDARY_KEY_CMSHOW_SETTING_URL = "CMShowSettingUrl";
   public static final String SECONDARY_KEY_CM_ACTION_URL = "cmActionJumpUrl";
   public static final String SECONDARY_KEY_CM_ADD_ANIM_TO_FAV = "addAnimToFav";
   public static final String SECONDARY_KEY_CM_AIO_MINI_GAME_PET_NAMEPLATE_GUEST_URL = "CMShowAIOMiniGamePetNameplateGuestUrl";
@@ -1257,6 +1345,7 @@ public class QzoneConfig
   public static final String SECONDARY_KEY_CM_AIO_SVIP_NAMEPLATE_HOST_URL = "aioCMShowQZSVIPNameplateHostUrl";
   public static final String SECONDARY_KEY_CM_ENABLE_SIZE_CORRECT = "enableSizeCorrect";
   public static final String SECONDARY_KEY_CM_FRAME_DRAWABLE_LOW_MEMORY_MODE = "frameDrawableLowMemoryMode";
+  public static final String SECONDARY_KEY_CM_FRAME_DRAWABLE_MAX_COUNT = "frameDrawableMaxCount";
   public static final String SECONDARY_KEY_CM_FRAME_PLAY_OPEN = "framePlayOpen";
   public static final String SECONDARY_KEY_CM_KEYWORD_ASSOCIATION_ENABLE = "CMShowKeywordAssociation";
   public static final String SECONDARY_KEY_CM_MEME_TAB_ENABLE = "CMShowMemeTab";
@@ -1276,10 +1365,12 @@ public class QzoneConfig
   public static final String SECONDARY_KEY_CM_SHOW_AIO_MINI_GAME_PET_HOST_URL = "CMShowAIOMiniGamePetHostUrl";
   public static final String SECONDARY_KEY_CM_SHOW_AIO_PANEL_TAG = "CMShowAIOPanelTag";
   public static final String SECONDARY_KEY_CM_SHOW_AVATAR_ENABLE = "CMShowAvatarEnable";
+  public static final String SECONDARY_KEY_CM_SHOW_AVATAR_VIDEO_COMPRESS = "CMShowAvatarVideoCompress";
   public static final String SECONDARY_KEY_CM_SHOW_GET_FRAME_DELAY_TIME = "CMShowGetFrameDelayTime";
   public static final String SECONDARY_KEY_CM_SHOW_GROUP_AIO_WITH_AT = "CMShowGroupAIOWithAt";
   public static final String SECONDARY_KEY_CM_SHOW_MAKEUP_PANEL_URL = "CMShowMakeupPanelUrl";
   public static final String SECONDARY_KEY_CM_SHOW_PANEL_RED_DOT = "panelRedDot";
+  public static final String SECONDARY_KEY_CM_WHITEFACE_3D = "CMShowWhiteFace3D";
   public static final String SECONDARY_KEY_DESKTOP_EXPOSURE_REPORT_ON_STOP = "desktopExposureReportOnStop";
   public static final String SECONDARY_KEY_DISCOVERY_TITLE = "discoverytitle";
   public static final String SECONDARY_KEY_DRAWER_PRELOAD_MODEL_LEVEL = "drawerPreloadModelLevel";
@@ -1354,6 +1445,7 @@ public class QzoneConfig
   public static final String SECONDARY_KEY_MANUAL_LOAD_SWITCH_STATUS = "ManualLoadSwitchStatus";
   public static final String SECONDARY_KEY_MAX_NUM_IN_CONVERSATION = "MaxNumInConverstation";
   public static final String SECONDARY_KEY_MAX_P2V_VIDEO_DURING = "MaxP2VVideoDuring";
+  private static final String SECONDARY_KEY_MAX_PHOTO_NUM_IN_RECENT_PHOTO = "secondary_key_max_photo_num_in_recent_photo";
   public static final String SECONDARY_KEY_MINIGAME_LAMEMP3_SO_INFO = "minigame_lamemp3_so_info";
   public static final String SECONDARY_KEY_MINIGAME_SHARE_RATE = "MiniGameShareRate";
   public static final String SECONDARY_KEY_MINIPROGRAM_VIDEO_CONTENTTYPE = "MiniProgramVideoContentType";
@@ -1392,12 +1484,14 @@ public class QzoneConfig
   public static final String SECONDARY_KEY_MINI_GAME_PUBLIC_ACCOUNT_MSG_LIST_COUNT = "MiniGamePublicAccountMsgListCount";
   public static final String SECONDARY_KEY_MINI_GAME_PUBLIC_ACCOUNT_WEB_URL = "MiniGamePublicAccountWebUrl";
   public static final String SECONDARY_KEY_MINI_LOADING_AD_BAR_SHOW_TIME = "loading_ad_bar_show_time";
+  public static final String SECONDARY_KEY_MINI_LOADING_AD_UI_MODE = "launch_adv_ad_ui_mode";
   public static final String SECONDARY_KEY_MINI_LOADING_AD_UNSUPPORT_VIA_LIST = "launch_adv_unsupport_via_list";
   public static final String SECONDARY_KEY_MIN_MEMEORY_CLASS_IN_ART = "MinMemoryClassInArt";
   public static final String SECONDARY_KEY_MODULE_JUMP_NATIVE = "module_jump_native";
   public static final String SECONDARY_KEY_MOODLIST_ENTRANCE_GRAY = "moodListEntranceViewNewStyleGray";
   public static final String SECONDARY_KEY_MULTI_ALBUM_APPLY_FUNCTION_OPEN = "multiALbumApplyFunctionOpen";
   public static final String SECONDARY_KEY_MULTI_ALBUM_INVITE_FUNCTION_OPEN = "multiALbumInviteFunctionOpen";
+  public static final String SECONDARY_KEY_NEED_SHOW_NUANSHUOSHUO_SEARCHBAR = "second_key_need_show_nuanshuoshuo_searchbar";
   public static final String SECONDARY_KEY_NEW_EVENT_BUBLE_STAY_TIME = "NewEventBubleStayTime";
   public static final String SECONDARY_KEY_NEW_STYLE_SHUOSHUO_NEW_CARD_SWITCH = "shuoshuoNewStyleNewCardSwitch";
   public static final String SECONDARY_KEY_NO_CACHE_IMAGE_EXPIRED_TIME = "NoCacheImageExpiredTime";
@@ -1434,8 +1528,10 @@ public class QzoneConfig
   private static final String SECONDARY_KEY_QQCIRCLE_AGGREAGTE_EMPTY_TEXT = "qqcircle_aggreagte_empty_text";
   private static final String SECONDARY_KEY_QQCIRCLE_AUTHENTICATION_ERROR_TEXT = "qqcircle_authentication_error_text";
   private static final String SECONDARY_KEY_QQCIRCLE_AUTHENTICATION_ERROR_TOAST_TEXT = "qqcircle_authentication_error_toast_text";
+  public static final String SECONDARY_KEY_QQCIRCLE_CHAT_CLUSTER_UINS_ONLY_SHOW_BUBBLE = "qqcircle_chat_cluster_uins_only_show_bubble";
   private static final String SECONDARY_KEY_QQCIRCLE_DETAIL_ERROR_CONTENT_DELETED_TEXT = "qqcircle_detail_error_content_deleted_text";
   public static final String SECONDARY_KEY_QQCIRCLE_ENABLE_CONTENT_DETAIL_FLUTTER = "secondary_key_qqcircle_enable_content_detail_flutter";
+  private static final String SECONDARY_KEY_QQCIRCLE_GO_HOME_GUIDE_TEXT = "qqcircle_show_home_guide_text";
   private static final String SECONDARY_KEY_QQCIRCLE_HOMEBUTTON_STYLE = "qqcircle_homebutton_style";
   private static final String SECONDARY_KEY_QQCIRCLE_HOMEPAGE_GUEST_LIST_EMPTY_JUMP_TITLE = "qqcircle_homepage_guest_list_empty_jump_title";
   private static final String SECONDARY_KEY_QQCIRCLE_HOMEPAGE_GUEST_LIST_EMPTY_TEXT = "qqcircle_homepage_guest_list_empty_text";
@@ -1466,6 +1562,7 @@ public class QzoneConfig
   public static final String SECONDARY_KEY_QQCIRCLE_SENDER_QUEUE_MAX_RETRY_COUNT = "qqcircle_max_retry_count";
   private static final String SECONDARY_KEY_QQCIRCLE_SERVER_ERROR_TEXT = "qqcircle_server_error_text";
   private static final String SECONDARY_KEY_QQCIRCLE_SERVER_ERROR_TOAST_TEXT = "qqcircle_server_error_toast_text";
+  private static final String SECONDARY_KEY_QQCIRCLE_SHOW_GO_HOME_GUIDE_INTERVAL = "qqcircle_show_home_guide_interval_hours";
   public static final String SECONDARY_KEY_QQ_AUTH_TIME = "qqAuthTime";
   public static final String SECONDARY_KEY_QZONEPLATO_JUMP_NATIVE = "qzoneplato_jump_native";
   public static final String SECONDARY_KEY_QZONEPLATO_SHAREHOST = "PlatoShareUrlPrefix";
@@ -1482,10 +1579,8 @@ public class QzoneConfig
   public static final String SECONDARY_KEY_REAL_TIME_LOG_MAX_CONTENT_SIZE = "RealTimeLogMaxContentSize";
   public static final String SECONDARY_KEY_RECOMMEND_COUNT_NUM_LIMIT = "RecommendAlbumCountNumLimit";
   public static final String SECONDARY_KEY_SCF_GATEWAY_DEVICE_VER = "oskscfdevicever";
-  public static final String SECONDARY_KEY_SCF_GATEWAY_ID = "oskscfgatewayid";
   public static final String SECONDARY_KEY_SCF_GATEWAY_QUERY_URL = "oskscfquerygateway";
   public static final String SECONDARY_KEY_SCF_GATEWAY_REPORT_URL = "oskscfreportgateway";
-  public static final String SECONDARY_KEY_SCF_GATEWAY_SECRET = "oskscfgatewaysecret";
   public static final String SECONDARY_KEY_SCF_GATEWAY_SIGN_ENABLE = "oskscfgatewaysignenable";
   public static final String SECONDARY_KEY_SCF_GATEWAY_STATUS = "oskscfgatewaystatus";
   public static final String SECONDARY_KEY_SEARCH_MOOD_TIPS_FIRST_LINE = "search_mood_tips_first_line";
@@ -1525,6 +1620,7 @@ public class QzoneConfig
   public static final String SECONDARY_KEY_USERHOME_OPEN_MESSAGE_BOARD_DIRECTOR_RESOUCE_URL = "user_home_open_message_board_director_res_url";
   public static final String SECONDARY_KEY_USERHOME_OPEN_MESSAGE_BOARD_SETTING_URL = "user_home_open_message_board_setting_url";
   public static final String SECONDARY_KEY_USERHOME_SHOW_OPEN_MESSAGE_BOARD_DIRECTOR = "user_home_show_open_message_board_director";
+  private static final String SECONDARY_KEY_USE_TEMPLATE_DIALOG = "secondary_key_use_template_dialog";
   public static final String SECONDARY_KEY_VIDEO_ENABLE_LOCAL_HW_DETECTOR = "oskenablelocalhwdetector";
   public static final String SECONDARY_KEY_VIDEO_ENABLE_LOCAL_HW_DETECTOR_GRAY = "oskhwdetectorgray";
   public static final String SECONDARY_KEY_VIDEO_EXPOSE_REPORT_COUNT = "VideoExposeReportCount";
@@ -1931,6 +2027,7 @@ public class QzoneConfig
   public static final String SECONDARY_PHOTO_GROUP_LIST_IMAGE_CROP_SPACE_RATIO = "photoGroupListImageCropSpaceRatio";
   public static final String SECONDARY_PHOTO_GROUP_PRIORITY = "photoGroupsProrityValue";
   public static final String SECONDARY_PHOTO_GUIDE_ENABLE_PHOTO_MARKER = "PhotoGuideEventEnableMarker";
+  public static final String SECONDARY_PHOTO_GUIDE_EVENT_ALL_ENABLE = "PhotoGuideEventAllEnable";
   public static final String SECONDARY_PHOTO_GUIDE_EVENT_CHAT_CACHE_PHOTO_MIN_FILE_LENGTH = "PhotoGuideEventChatCacheMinFileLength";
   public static final String SECONDARY_PHOTO_GUIDE_EVENT_CHAT_CACHE_PHOTO_QQ_CACHE_ICON_URL = "PhotoGuideEventChatCachePhotoQQCacheIconUrl";
   public static final String SECONDARY_PHOTO_GUIDE_EVENT_CHAT_CACHE_PHOTO_QQ_CACHE_PATH = "PhotoGuideEventChatCachePhotoQQCachePath";
@@ -1947,6 +2044,7 @@ public class QzoneConfig
   public static final String SECONDARY_PHOTO_GUIDE_EVENT_NON_WIFI_MAX_PHOTOS = "PhotoGuideEventNonWifiMaxPhotos";
   public static final String SECONDARY_PHOTO_GUIDE_EVENT_NON_WIIF_MAX_DAYS = "PhotoGuideEventNonWifiMaxDays";
   public static final String SECONDARY_PHOTO_GUIDE_EVENT_START_HOUR = "PhotoGuideEventStartHour";
+  public static final String SECONDARY_PHOTO_GUIDE_EVENT_VIDEOALBUM_ENABLE = "PhotoGuideEventVideoAlbumEnable";
   public static final String SECONDARY_PHOTO_GUIDE_EVENT_WIFFI_MAX_DAYS = "PhotoGuideEventWiffMaxDay";
   public static final String SECONDARY_PHOTO_GUIDE_EVENT_WIFI_FIRST_EVENT_DAYS = "PhotoGuideEventWifiFirstEventDays";
   public static final String SECONDARY_PHOTO_GUIDE_VERSION_STRING = "PhotoGuideEventVersionString";
@@ -2125,6 +2223,8 @@ public class QzoneConfig
   public static final String SECONDARY_QQCIRCLE_GENERATE_VIDEO_OVER_TIME_KEY = "qqcircleGenerateOverTime";
   public static final String SECONDARY_QQCIRCLE_GETPLUGIN_INFO_TIME = "qqcircle_getplugininfo_time";
   public static final String SECONDARY_QQCIRCLE_GET_FOLLOWUSER_INTERNAL = "qqcircle_getfollowuser_internal";
+  public static final String SECONDARY_QQCIRCLE_HAS_REDPOINT_REPORT = "qqcircle_enable_redpoint_exposure_report";
+  public static final String SECONDARY_QQCIRCLE_IMAGE_TEMPLATE_APPLY_FILTER = "qqcircle_image_template_apply_filter";
   public static final String SECONDARY_QQCIRCLE_IS_OPEN_PAGE_INTERACTIVE_PARAM_COLLECT = "qqcircle_is_open_page_interactive_param_collect";
   public static final String SECONDARY_QQCIRCLE_JUMP_TO_PUBLISH = "qqcircleJumpToPublish";
   public static final String SECONDARY_QQCIRCLE_JUMP_TO_PUBLISH_DELAY_TIME = "secondary_qqcircle_jump_to_publish_delay_time";
@@ -2132,6 +2232,10 @@ public class QzoneConfig
   public static final String SECONDARY_QQCIRCLE_LABEL_MAX_COUNT = "qqcircle_label_max_count";
   public static final String SECONDARY_QQCIRCLE_MAX_CRASH_COUNT = "qqcricle_max_crash_count";
   public static final String SECONDARY_QQCIRCLE_MAX_PUSH_COUNT = "qqcircle_max_push_count";
+  public static final String SECONDARY_QQCIRCLE_NEW_GUIDE_ON_DYNAMIC_ENTRANCE = "qqcircle_new_guide_on_dynamic_entrance";
+  public static final String SECONDARY_QQCIRCLE_NEW_GUIDE_ON_DYNAMIC_TAB = "qqcircle_new_guide_on_dynamic_tab";
+  public static final String SECONDARY_QQCIRCLE_NEW_GUIDE_ON_MESSAGE_ENTRANCE = "qqcircle_new_guide_on_message_entrance";
+  public static final String SECONDARY_QQCIRCLE_NONE_REDPOINT_REPORT = "qqcircle_enable_none_redpoint_exposure_report";
   public static final String SECONDARY_QQCIRCLE_PERSONAL_DATA_EDIT_H5_URL = "qqcircle_personal_data_edit_h5_url";
   public static final String SECONDARY_QQCIRCLE_PUSH_NOT_ENOUGH_VALUE = "qqcircle_push_not_enough_value";
   public static final String SECONDARY_QQCIRCLE_QUALITY_REPORT_BUFFER_LENGTH = "quality_quality_report_buffer_length";
@@ -2155,6 +2259,8 @@ public class QzoneConfig
   public static final String SECONDARY_QQCIRCLE_SHOW_ENTRANCE_SWTICH_BUTTON = "qqcircle_show_entrance_switch_button";
   public static final String SECONDARY_QQCIRCLE_SHOW_ENTRANE_ON_DRAWER_TAB = "qqcircle_show_entrance_on_drawer_tab";
   public static final String SECONDARY_QQCIRCLE_SHOW_GROUP_AIO_REDPOINT = "qqcircle_show_group_aio_redpoint";
+  public static final String SECONDARY_QQCIRCLE_SHOW_HIGH_QUALITY_IMAGE_PREVIEW = "qqcircle_show_high_quality_image_preview";
+  public static final String SECONDARY_QQCIRCLE_SHOW_IMAGE_TEMPLATE_TAB = "qqcircle_show_image_template_tab";
   public static final String SECONDARY_QQCIRCLE_SHOW_INVITE_GUIDE_BUBBLE_ON_PROFILE_PAGE = "qqcircle_show_invite_guide_bubble_on_profile_page";
   public static final String SECONDARY_QQCIRCLE_SHOW_MOOD_SYNC = "qqcircle_show_mood_sync_circle";
   public static final String SECONDARY_QQCIRCLE_SHOW_PUBLISH_SAVE_GRID_SELECTED = "qqcircle_show_publish_save_grid_selected";
@@ -2176,6 +2282,8 @@ public class QzoneConfig
   public static final String SECONDARY_QQCIRCLE_USE_EEVEE_RED_POINT = "qqcircle_use_eevee_red_point";
   public static final String SECONDARY_QQCIRCLE_USE_OKHTTP_DOWNLOAD_PIC = "qqcircle_use_okhppt_download_pic";
   public static final String SECONDARY_QQCIRCLE_VERIFIED_SWITCH = "qqcircle_verified_switch";
+  public static final String SECONDARY_QQCIRCLE_VIDEO_MUSIC_URL = "aeeditor_edited_music_url";
+  public static final String SECONDARY_QQCIRCLE_VIDEO_MUSIC_USE_WNS_URL = "aeeditor_edited_use_wns_music_url";
   public static final String SECONDARY_QQREMIND_JUMP_URL = "https://h5.qianbao.qq.com/notice?_wv=1027&_wvx=10&_wwv=4";
   public static final int SECONDARY_QQREMIND_USE_H5 = 1;
   public static final String SECONDARY_QQ_REMIND_ALL_REMIND = "QQRemindAllRemind";
@@ -2811,19 +2919,14 @@ public class QzoneConfig
   public static final String TTT_REALTIME_REPORT_LIST = "TTTRealTimeReportList";
   public static final String TTT_REPORT_SETTING = "QzoneTTTReportSetting";
   public static final String USE_NEW_COMMAND = "use_new_command";
-  public static final String WEBSO_DEFAULT_COMMAND_SETTING = "{\".qzone.qq.com\":{\"command\":\"qzoneh5.h5.wnshtml\",\"msfCommand\":\"qzoneh5.h5.wnshtml\"},\"web.gamecenter.qq.com\":{\"command\":\"mqqweb.gamecenter.websoh5\",\"msfCommand\":\"mqqweb.gamecenter.websoh5\"},\"m.gamecenter.qq.com\":{\"command\":\"mqqweb.gamecenterV2.h5\",\"msfCommand\":\"mqqweb.gamecenterV2.h5\"},\"mc.vip.qq.com\":{\"command\":\"mqqweb.mcvip.websoh5\",\"msfCommand\":\"mqqweb.mcvip.websoh5\"},\"zb.vip.qq.com\":{\"command\":\"mqqweb.zb.webso\",\"msfCommand\":\"mqqweb.zb.webso\"},\"vv.video.qq.com\":{\"command\":\"qzoneh5.video.vv\",\"msfCommand\":\"qzoneh5.video.vv\"},\"qzpb.qq.com\":{\"command\":\"qzoneh5.video.vv\",\"msfCommand\":\"qzoneh5.video.vv\"},\"vv6.video.qq.com\":{\"command\":\"qzoneh5.video.vv\",\"msfCommand\":\"qzoneh5.video.vv\"},\".urlshare.cn\":{\"command\":\"qzoneh5.urlshare.webso\",\"msfCommand\":\"qzoneh5.urlshare.webso\"},\"now.qq.com\":{\"command\":\"ilive_node.node.nearby\",\"msfCommand\":\"ilive_node.node.nearby\"},\"nearby.qq.com\":{\"command\":\"ilive_node.node.nearby\",\"msfCommand\":\"ilive_node.node.nearby\"},\"h5.gdt.qq.com\":{\"command\":\"nemoh5.gdt.lp\",\"msfCommand\":\"nemoh5.gdt.lp\"},\"club.vip.qq.com\":{\"command\":\"qzoneh5.club.wnshtml\",\"msfCommand\":\"qzoneh5.club.wnshtml\"},\".q.qq.com\":{\"command\":\"qzoneh5.h5.wnshtml\",\"msfCommand\":\"qzoneh5.h5.wnshtml\"},\"ilive.qq.com\":{\"command\":\"iliveh5.ilive.wnshtml\",\"msfCommand\":\"iliveh5.ilive.wnshtml\"},\".ilive.qq.com\":{\"command\":\"iliveh5.ilive.wnshtml\",\"msfCommand\":\"iliveh5.ilive.wnshtml\"},\"qvideo.qq.com\":{\"command\":\"qvideoh5.qvideo.wnshtml\",\"msfCommand\":\"qvideoh5.qvideo.wnshtml\"},\".qvideo.qq.com\":{\"command\":\"qvideoh5.qvideo.wnshtml\",\"msfCommand\":\"qvideoh5.qvideo.wnshtml\"} }";
+  public static final String WEBSO_DEFAULT_COMMAND_SETTING = "{\".qzone.qq.com\":{\"command\":\"qzoneh5.h5.wnshtml\",\"msfCommand\":\"qzoneh5.h5.wnshtml\"},\"web.gamecenter.qq.com\":{\"command\":\"mqqweb.gamecenter.websoh5\",\"msfCommand\":\"mqqweb.gamecenter.websoh5\"},\"m.gamecenter.qq.com\":{\"command\":\"mqqweb.gamecenterV2.h5\",\"msfCommand\":\"mqqweb.gamecenterV2.h5\"},\"mc.vip.qq.com\":{\"command\":\"mqqweb.mcvip.websoh5\",\"msfCommand\":\"mqqweb.mcvip.websoh5\"},\"zb.vip.qq.com\":{\"command\":\"mqqweb.zb.webso\",\"msfCommand\":\"mqqweb.zb.webso\"},\"vv.video.qq.com\":{\"command\":\"qzoneh5.video.vv\",\"msfCommand\":\"qzoneh5.video.vv\"},\"qzpb.qq.com\":{\"command\":\"qzoneh5.video.vv\",\"msfCommand\":\"qzoneh5.video.vv\"},\"vv6.video.qq.com\":{\"command\":\"qzoneh5.video.vv\",\"msfCommand\":\"qzoneh5.video.vv\"},\".urlshare.cn\":{\"command\":\"qzoneh5.urlshare.webso\",\"msfCommand\":\"qzoneh5.urlshare.webso\"},\"now.qq.com\":{\"command\":\"ilive_node.node.nearby\",\"msfCommand\":\"ilive_node.node.nearby\"},\"nearby.qq.com\":{\"command\":\"ilive_node.node.nearby\",\"msfCommand\":\"ilive_node.node.nearby\"},\"h5.gdt.qq.com\":{\"command\":\"nemoh5.gdt.lp\",\"msfCommand\":\"nemoh5.gdt.lp\"},\"club.vip.qq.com\":{\"command\":\"qzoneh5.club.wnshtml\",\"msfCommand\":\"qzoneh5.club.wnshtml\"},\".q.qq.com\":{\"command\":\"qzoneh5.h5.wnshtml\",\"msfCommand\":\"qzoneh5.h5.wnshtml\"},\"qun.qq.com\":{\"command\":\"qzoneh5.h5.wnshtml\",\"msfCommand\":\"qzoneh5.h5.wnshtml\"},\"ilive.qq.com\":{\"command\":\"iliveh5.ilive.wnshtml\",\"msfCommand\":\"iliveh5.ilive.wnshtml\"},\".ilive.qq.com\":{\"command\":\"iliveh5.ilive.wnshtml\",\"msfCommand\":\"iliveh5.ilive.wnshtml\"},\"qvideo.qq.com\":{\"command\":\"qvideoh5.qvideo.wnshtml\",\"msfCommand\":\"qvideoh5.qvideo.wnshtml\"},\".qvideo.qq.com\":{\"command\":\"qvideoh5.qvideo.wnshtml\",\"msfCommand\":\"qvideoh5.qvideo.wnshtml\"} }";
   public static final String YINGYONGBAO_SWITCH_PREFIX = "YingyongbaoSwitchPrefix";
-  public static QzoneConfig instance = null;
+  public static QzoneConfig instance;
   private ConcurrentHashMap<String, ConcurrentHashMap<String, String>> configMap = new ConcurrentHashMap();
   private ContentObserver configUpdateObserver;
   private volatile int loadstatus = 0;
   private ArrayList<WeakReference<QzoneConfig.QzoneConfigChangeListener>> mCallback = new ArrayList();
   private QzoneConfigStringHelper mStringHelper;
-  
-  static
-  {
-    DEFAULT_QFLUTTER_URL = "{\"key1\":\"https://mqq-plugin.qq.com/a696131d7cde6ad2c9aae156ec1d3b5a\",\"key2\":\"\",\"key3\":\"0.0.6\",\"key4\": {\"file_length\": 7786698},\"key5\":80}";
-  }
   
   private QzoneConfig()
   {
@@ -2835,268 +2938,405 @@ public class QzoneConfig
     return getInstance().getConfig("qqcircle", "ae_auto_template_memory_limit", "4096");
   }
   
+  public static String getAEEditorEditedMusicUrl(String paramString)
+  {
+    return getInstance().getConfig("aeeditor", "aeeditor_edited_music_url", paramString);
+  }
+  
+  public static int getAEExportFrameRate()
+  {
+    return getInstance().getConfig("qqcircle", "secondary_key_ae_frame_rate", 30);
+  }
+  
+  public static int getAEHighBitRate()
+  {
+    return getInstance().getConfig("qqcircle", "secondary_key_ae_high_bitrate", 5);
+  }
+  
+  public static int getAEHighSize()
+  {
+    return getInstance().getConfig("qqcircle", "secondary_key_ae_high_size", 1920);
+  }
+  
+  public static int getAELowBitRate()
+  {
+    return getInstance().getConfig("qqcircle", "secondary_key_ae_low_bitrate", 3);
+  }
+  
+  public static int getAELowSize()
+  {
+    return getInstance().getConfig("qqcircle", "secondary_key_ae_low_size", 960);
+  }
+  
+  public static int getAEMiddleBitRate()
+  {
+    return getInstance().getConfig("qqcircle", "secondary_key_ae_middle_bitrate", 4);
+  }
+  
+  public static int getAEMiddleSize()
+  {
+    return getInstance().getConfig("qqcircle", "secondary_key_ae_middle_size", 1280);
+  }
+  
+  public static int getAEPicHighSize()
+  {
+    return getInstance().getConfig("qqcircle", "secondary_key_ae_pic_high_size", 2560);
+  }
+  
+  public static int getAEPicLowSize()
+  {
+    return getInstance().getConfig("qqcircle", "secondary_key_ae_pic_low_size", 1080);
+  }
+  
+  public static int getAEPicMiddleSize()
+  {
+    return getInstance().getConfig("qqcircle", "secondary_key_ae_pic_middle_size", 1920);
+  }
+  
+  public static String getAEPicTemPlateFilterBlackList()
+  {
+    return getInstance().getConfig("qqcircle", "secondary_key_ae_pictemplatefilterblacklist", "ONEPLUS A5000");
+  }
+  
+  public static int getAEPicTemPlateFilterCount()
+  {
+    return getInstance().getConfig("qqcircle", "secondary_key_ae_pictemplatefiltercount", 1);
+  }
+  
+  public static int getAEPicTemPlateFilterLevel()
+  {
+    return getInstance().getConfig("qqcircle", "secondary_key_ae_aepictemplatefilterlevel", 2);
+  }
+  
+  public static int getAEPicTemPlateFilterLevelForQcom()
+  {
+    return getInstance().getConfig("qqcircle", "secondary_key_ae_epictemplatefilterlevelforqcom", 3);
+  }
+  
   public static String getBecomeNuanFriendToastText()
   {
-    return getInstance().getConfig("QZoneSetting", "becomeNuanFriendToastText", HardCodeUtil.a(2131717732));
+    return getInstance().getConfig("QZoneSetting", "becomeNuanFriendToastText", HardCodeUtil.a(2131717391));
   }
   
   public static QzoneConfig getInstance()
   {
-    if (instance == null) {}
-    try
-    {
-      if (instance == null) {
-        instance = new QzoneConfig();
+    if (instance == null) {
+      try
+      {
+        if (instance == null) {
+          instance = new QzoneConfig();
+        }
       }
-      return instance;
+      finally {}
     }
-    finally {}
+    return instance;
   }
   
   /* Error */
   public static String getLastUpdate()
   {
     // Byte code:
-    //   0: invokestatic 7868	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   3: invokevirtual 7872	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
-    //   6: getstatic 7878	com/tencent/common/config/provider/QZoneConfigConst:c	Landroid/net/Uri;
-    //   9: aconst_null
-    //   10: aconst_null
-    //   11: aconst_null
-    //   12: aconst_null
-    //   13: invokevirtual 7884	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   16: astore_0
-    //   17: aload_0
-    //   18: ifnull +129 -> 147
-    //   21: aload_0
-    //   22: astore_1
-    //   23: aload_0
-    //   24: invokeinterface 7890 1 0
-    //   29: ifeq +118 -> 147
-    //   32: aload_0
+    //   0: ldc 144
+    //   2: astore_2
+    //   3: aconst_null
+    //   4: astore_0
+    //   5: aconst_null
+    //   6: astore_3
+    //   7: invokestatic 8150	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   10: invokevirtual 8154	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
+    //   13: getstatic 8160	com/tencent/common/config/provider/QZoneConfigConst:c	Landroid/net/Uri;
+    //   16: aconst_null
+    //   17: aconst_null
+    //   18: aconst_null
+    //   19: aconst_null
+    //   20: invokevirtual 8166	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   23: astore 4
+    //   25: aload_2
+    //   26: astore_1
+    //   27: aload 4
+    //   29: ifnull +45 -> 74
+    //   32: aload_2
     //   33: astore_1
-    //   34: aload_0
-    //   35: aload_0
-    //   36: ldc_w 7892
-    //   39: invokeinterface 7896 2 0
-    //   44: invokeinterface 7899 2 0
-    //   49: astore_2
-    //   50: aload_2
-    //   51: astore_1
-    //   52: aload_0
-    //   53: ifnull +9 -> 62
-    //   56: aload_0
-    //   57: invokeinterface 7902 1 0
-    //   62: aload_1
-    //   63: areturn
-    //   64: astore_2
-    //   65: aconst_null
-    //   66: astore_0
-    //   67: aload_0
-    //   68: astore_1
-    //   69: invokestatic 7907	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   72: ifeq +36 -> 108
-    //   75: aload_0
-    //   76: astore_1
-    //   77: ldc_w 7770
-    //   80: iconst_2
-    //   81: new 7909	java/lang/StringBuilder
-    //   84: dup
-    //   85: invokespecial 7910	java/lang/StringBuilder:<init>	()V
-    //   88: ldc_w 7912
-    //   91: invokevirtual 7916	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   94: aload_2
-    //   95: invokevirtual 7919	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   98: invokevirtual 7916	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   101: invokevirtual 7922	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   104: aload_2
-    //   105: invokestatic 7926	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   108: aload_0
-    //   109: ifnull +35 -> 144
-    //   112: aload_0
-    //   113: invokeinterface 7902 1 0
-    //   118: ldc 111
-    //   120: areturn
-    //   121: astore_0
-    //   122: aconst_null
-    //   123: astore_1
-    //   124: aload_1
-    //   125: ifnull +9 -> 134
-    //   128: aload_1
-    //   129: invokeinterface 7902 1 0
-    //   134: aload_0
-    //   135: athrow
-    //   136: astore_0
-    //   137: goto -13 -> 124
-    //   140: astore_2
-    //   141: goto -74 -> 67
-    //   144: ldc 111
-    //   146: areturn
-    //   147: ldc 111
-    //   149: astore_1
-    //   150: goto -98 -> 52
+    //   34: aload 4
+    //   36: astore_3
+    //   37: aload 4
+    //   39: astore_0
+    //   40: aload 4
+    //   42: invokeinterface 8172 1 0
+    //   47: ifeq +27 -> 74
+    //   50: aload 4
+    //   52: astore_3
+    //   53: aload 4
+    //   55: astore_0
+    //   56: aload 4
+    //   58: aload 4
+    //   60: ldc_w 8174
+    //   63: invokeinterface 8178 2 0
+    //   68: invokeinterface 8181 2 0
+    //   73: astore_1
+    //   74: aload_1
+    //   75: astore_3
+    //   76: aload 4
+    //   78: ifnull +87 -> 165
+    //   81: aload 4
+    //   83: astore_0
+    //   84: aload_0
+    //   85: invokeinterface 8184 1 0
+    //   90: aload_1
+    //   91: areturn
+    //   92: astore_0
+    //   93: goto +74 -> 167
+    //   96: astore_1
+    //   97: aload_0
+    //   98: astore_3
+    //   99: invokestatic 8189	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   102: ifeq +52 -> 154
+    //   105: aload_0
+    //   106: astore_3
+    //   107: new 8191	java/lang/StringBuilder
+    //   110: dup
+    //   111: invokespecial 8192	java/lang/StringBuilder:<init>	()V
+    //   114: astore 4
+    //   116: aload_0
+    //   117: astore_3
+    //   118: aload 4
+    //   120: ldc_w 8194
+    //   123: invokevirtual 8198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   126: pop
+    //   127: aload_0
+    //   128: astore_3
+    //   129: aload 4
+    //   131: aload_1
+    //   132: invokevirtual 8201	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   135: invokevirtual 8198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   138: pop
+    //   139: aload_0
+    //   140: astore_3
+    //   141: ldc_w 8044
+    //   144: iconst_2
+    //   145: aload 4
+    //   147: invokevirtual 8204	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   150: aload_1
+    //   151: invokestatic 8208	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   154: aload_2
+    //   155: astore_3
+    //   156: aload_0
+    //   157: ifnull +8 -> 165
+    //   160: aload_2
+    //   161: astore_1
+    //   162: goto -78 -> 84
+    //   165: aload_3
+    //   166: areturn
+    //   167: aload_3
+    //   168: ifnull +9 -> 177
+    //   171: aload_3
+    //   172: invokeinterface 8184 1 0
+    //   177: goto +5 -> 182
+    //   180: aload_0
+    //   181: athrow
+    //   182: goto -2 -> 180
     // Local variable table:
     //   start	length	slot	name	signature
-    //   16	97	0	localCursor	android.database.Cursor
-    //   121	14	0	localObject1	Object
-    //   136	1	0	localObject2	Object
-    //   22	128	1	localObject3	Object
-    //   49	2	2	str	String
-    //   64	41	2	localException1	Exception
-    //   140	1	2	localException2	Exception
+    //   4	81	0	localObject1	Object
+    //   92	89	0	localObject2	Object
+    //   26	65	1	str1	String
+    //   96	55	1	localException	Exception
+    //   161	1	1	str2	String
+    //   2	159	2	str3	String
+    //   6	166	3	localObject3	Object
+    //   23	123	4	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   0	17	64	java/lang/Exception
-    //   0	17	121	finally
-    //   23	32	136	finally
-    //   34	50	136	finally
-    //   69	75	136	finally
-    //   77	108	136	finally
-    //   23	32	140	java/lang/Exception
-    //   34	50	140	java/lang/Exception
+    //   7	25	92	finally
+    //   40	50	92	finally
+    //   56	74	92	finally
+    //   99	105	92	finally
+    //   107	116	92	finally
+    //   118	127	92	finally
+    //   129	139	92	finally
+    //   141	154	92	finally
+    //   7	25	96	java/lang/Exception
+    //   40	50	96	java/lang/Exception
+    //   56	74	96	java/lang/Exception
+  }
+  
+  public static int getLocalPhotoScanFirstInterval()
+  {
+    return getInstance().getConfig("PhotoUpload", "albumRecommendScanFirstInterval", 7776000);
+  }
+  
+  public static int getLocalPhotoScanMinInterval()
+  {
+    return getInstance().getConfig("PhotoUpload", "albumRecommendScanTimeInterval", 604800);
+  }
+  
+  public static int getMaxPhotoNumInRecentPhoto()
+  {
+    return getInstance().getConfig("qqcircle", "secondary_key_max_photo_num_in_recent_photo", 300);
   }
   
   /* Error */
   public static String getOneConfig(String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: ifnull +10 -> 11
-    //   4: aload_0
-    //   5: invokestatic 7934	android/text/TextUtils:getTrimmedLength	(Ljava/lang/CharSequence;)I
-    //   8: ifgt +5 -> 13
-    //   11: aconst_null
-    //   12: areturn
-    //   13: aload_1
-    //   14: ifnull -3 -> 11
-    //   17: aload_1
-    //   18: invokestatic 7934	android/text/TextUtils:getTrimmedLength	(Ljava/lang/CharSequence;)I
-    //   21: ifle -10 -> 11
-    //   24: invokestatic 7868	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   27: invokevirtual 7872	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
-    //   30: getstatic 7936	com/tencent/common/config/provider/QZoneConfigConst:a	Landroid/net/Uri;
-    //   33: aconst_null
-    //   34: ldc_w 7938
-    //   37: iconst_2
-    //   38: anewarray 7940	java/lang/String
-    //   41: dup
-    //   42: iconst_0
-    //   43: aload_0
-    //   44: aastore
-    //   45: dup
-    //   46: iconst_1
-    //   47: aload_1
-    //   48: aastore
-    //   49: aconst_null
-    //   50: invokevirtual 7884	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   53: astore_1
-    //   54: aload_1
-    //   55: ifnull +150 -> 205
-    //   58: aload_1
-    //   59: astore_0
-    //   60: aload_1
-    //   61: invokeinterface 7890 1 0
-    //   66: ifeq +139 -> 205
-    //   69: aload_1
-    //   70: astore_0
-    //   71: aload_1
-    //   72: aload_1
-    //   73: ldc_w 7942
-    //   76: invokeinterface 7896 2 0
-    //   81: invokeinterface 7899 2 0
-    //   86: astore_2
-    //   87: aload_2
-    //   88: astore_0
-    //   89: aload_1
-    //   90: ifnull +11 -> 101
-    //   93: aload_1
-    //   94: invokeinterface 7902 1 0
-    //   99: aload_2
+    //   0: aconst_null
+    //   1: astore 5
+    //   3: aconst_null
+    //   4: astore 4
+    //   6: aconst_null
+    //   7: astore_3
+    //   8: aload_0
+    //   9: ifnull +203 -> 212
+    //   12: aload_0
+    //   13: invokestatic 8221	android/text/TextUtils:getTrimmedLength	(Ljava/lang/CharSequence;)I
+    //   16: ifgt +5 -> 21
+    //   19: aconst_null
+    //   20: areturn
+    //   21: aload_1
+    //   22: ifnull +190 -> 212
+    //   25: aload_1
+    //   26: invokestatic 8221	android/text/TextUtils:getTrimmedLength	(Ljava/lang/CharSequence;)I
+    //   29: ifgt +5 -> 34
+    //   32: aconst_null
+    //   33: areturn
+    //   34: invokestatic 8150	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   37: invokevirtual 8154	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
+    //   40: getstatic 8223	com/tencent/common/config/provider/QZoneConfigConst:a	Landroid/net/Uri;
+    //   43: aconst_null
+    //   44: ldc_w 8225
+    //   47: iconst_2
+    //   48: anewarray 8227	java/lang/String
+    //   51: dup
+    //   52: iconst_0
+    //   53: aload_0
+    //   54: aastore
+    //   55: dup
+    //   56: iconst_1
+    //   57: aload_1
+    //   58: aastore
+    //   59: aconst_null
+    //   60: invokevirtual 8166	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   63: astore_2
+    //   64: aload_3
+    //   65: astore_0
+    //   66: aload_2
+    //   67: ifnull +43 -> 110
+    //   70: aload_3
+    //   71: astore_0
+    //   72: aload_2
+    //   73: astore_1
+    //   74: aload_2
+    //   75: invokeinterface 8172 1 0
+    //   80: ifeq +30 -> 110
+    //   83: aload_2
+    //   84: astore_1
+    //   85: aload_2
+    //   86: aload_2
+    //   87: ldc_w 8229
+    //   90: invokeinterface 8178 2 0
+    //   95: invokeinterface 8181 2 0
     //   100: astore_0
-    //   101: aload_0
-    //   102: areturn
-    //   103: astore_0
-    //   104: aload_0
-    //   105: invokevirtual 7945	java/lang/Exception:printStackTrace	()V
-    //   108: aload_2
-    //   109: astore_0
-    //   110: goto -9 -> 101
-    //   113: astore_2
-    //   114: aconst_null
-    //   115: astore_1
-    //   116: aload_1
-    //   117: astore_0
-    //   118: invokestatic 7907	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   121: ifeq +23 -> 144
-    //   124: aload_1
-    //   125: astore_0
-    //   126: ldc_w 7770
-    //   129: iconst_2
-    //   130: aload_2
-    //   131: iconst_1
-    //   132: anewarray 4	java/lang/Object
-    //   135: dup
-    //   136: iconst_0
-    //   137: ldc_w 7947
-    //   140: aastore
-    //   141: invokestatic 7950	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   144: aload_1
-    //   145: ifnull +55 -> 200
-    //   148: aload_1
-    //   149: invokeinterface 7902 1 0
-    //   154: aconst_null
-    //   155: astore_0
-    //   156: goto -55 -> 101
-    //   159: astore_0
-    //   160: aload_0
-    //   161: invokevirtual 7945	java/lang/Exception:printStackTrace	()V
-    //   164: aconst_null
-    //   165: astore_0
-    //   166: goto -65 -> 101
-    //   169: astore_1
-    //   170: aconst_null
-    //   171: astore_0
-    //   172: aload_0
-    //   173: ifnull +9 -> 182
-    //   176: aload_0
-    //   177: invokeinterface 7902 1 0
-    //   182: aload_1
-    //   183: athrow
-    //   184: astore_0
-    //   185: aload_0
-    //   186: invokevirtual 7945	java/lang/Exception:printStackTrace	()V
-    //   189: goto -7 -> 182
-    //   192: astore_1
-    //   193: goto -21 -> 172
-    //   196: astore_2
-    //   197: goto -81 -> 116
-    //   200: aconst_null
-    //   201: astore_0
-    //   202: goto -101 -> 101
-    //   205: aconst_null
-    //   206: astore_2
-    //   207: goto -120 -> 87
+    //   101: goto +9 -> 110
+    //   104: astore_3
+    //   105: aload_2
+    //   106: astore_0
+    //   107: goto +35 -> 142
+    //   110: aload_0
+    //   111: astore_1
+    //   112: aload_2
+    //   113: ifnull +76 -> 189
+    //   116: aload_0
+    //   117: astore_1
+    //   118: aload_2
+    //   119: invokeinterface 8184 1 0
+    //   124: aload_0
+    //   125: areturn
+    //   126: astore_0
+    //   127: aload_0
+    //   128: invokevirtual 8232	java/lang/Exception:printStackTrace	()V
+    //   131: aload_1
+    //   132: areturn
+    //   133: astore_0
+    //   134: aconst_null
+    //   135: astore_1
+    //   136: goto +56 -> 192
+    //   139: astore_3
+    //   140: aconst_null
+    //   141: astore_0
+    //   142: aload_0
+    //   143: astore_1
+    //   144: invokestatic 8189	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   147: ifeq +23 -> 170
+    //   150: aload_0
+    //   151: astore_1
+    //   152: ldc_w 8044
+    //   155: iconst_2
+    //   156: aload_3
+    //   157: iconst_1
+    //   158: anewarray 4	java/lang/Object
+    //   161: dup
+    //   162: iconst_0
+    //   163: ldc_w 8234
+    //   166: aastore
+    //   167: invokestatic 8237	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   170: aload 4
+    //   172: astore_1
+    //   173: aload_0
+    //   174: ifnull +15 -> 189
+    //   177: aload 5
+    //   179: astore_1
+    //   180: aload_0
+    //   181: invokeinterface 8184 1 0
+    //   186: aload 4
+    //   188: astore_1
+    //   189: aload_1
+    //   190: areturn
+    //   191: astore_0
+    //   192: aload_1
+    //   193: ifnull +17 -> 210
+    //   196: aload_1
+    //   197: invokeinterface 8184 1 0
+    //   202: goto +8 -> 210
+    //   205: astore_1
+    //   206: aload_1
+    //   207: invokevirtual 8232	java/lang/Exception:printStackTrace	()V
+    //   210: aload_0
+    //   211: athrow
+    //   212: aconst_null
+    //   213: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	210	0	paramString1	String
-    //   0	210	1	paramString2	String
-    //   86	23	2	str	String
-    //   113	18	2	localException1	Exception
-    //   196	1	2	localException2	Exception
-    //   206	1	2	localObject	Object
+    //   0	214	0	paramString1	String
+    //   0	214	1	paramString2	String
+    //   63	56	2	localCursor	android.database.Cursor
+    //   7	64	3	localObject1	Object
+    //   104	1	3	localException1	Exception
+    //   139	18	3	localException2	Exception
+    //   4	183	4	localObject2	Object
+    //   1	177	5	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   93	99	103	java/lang/Exception
-    //   24	54	113	java/lang/Exception
-    //   148	154	159	java/lang/Exception
-    //   24	54	169	finally
-    //   176	182	184	java/lang/Exception
-    //   60	69	192	finally
-    //   71	87	192	finally
-    //   118	124	192	finally
-    //   126	144	192	finally
-    //   60	69	196	java/lang/Exception
-    //   71	87	196	java/lang/Exception
+    //   74	83	104	java/lang/Exception
+    //   85	101	104	java/lang/Exception
+    //   118	124	126	java/lang/Exception
+    //   180	186	126	java/lang/Exception
+    //   34	64	133	finally
+    //   34	64	139	java/lang/Exception
+    //   74	83	191	finally
+    //   85	101	191	finally
+    //   144	150	191	finally
+    //   152	170	191	finally
+    //   196	202	205	java/lang/Exception
+  }
+  
+  public static int getPreviewMaxIntermediateRenderSizeAbove2G()
+  {
+    return getInstance().getConfig("qqcircle", "secondary_key_ae_previewmax_rendersize_above_2g", 2048);
+  }
+  
+  public static int getPreviewMaxIntermediateRenderSizeBelow2G()
+  {
+    return getInstance().getConfig("qqcircle", "secondary_key_ae_previewmax_rendersize_below_2g", 1024);
   }
   
   public static int getQCircleMaxCrashCount()
@@ -3104,10 +3344,14 @@ public class QzoneConfig
     int i = getInstance().getConfig("qqcircle", "qqcricle_max_crash_count", 2);
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QzoneConfig", 1, "SECONDARY_QQCIRCLE_DISABLE_PLUGIN:" + i);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("SECONDARY_QQCIRCLE_DISABLE_PLUGIN:");
+        localStringBuilder.append(i);
+        QLog.e("QzoneConfig", 1, localStringBuilder.toString());
+        return i;
       }
-      return i;
     }
     catch (Exception localException)
     {
@@ -3166,6 +3410,16 @@ public class QzoneConfig
     return getInstance().getConfig("qqcircle", "qqcircle_enable_folder_cache", 1) > 0;
   }
   
+  public static boolean getQQCircleEnableHasRedpointReport()
+  {
+    return getInstance().getConfig("qqcircle", "qqcircle_enable_redpoint_exposure_report", 1) == 1;
+  }
+  
+  public static boolean getQQCircleEnableNoneRedpointReport()
+  {
+    return getInstance().getConfig("qqcircle", "qqcircle_enable_none_redpoint_exposure_report", 1) == 1;
+  }
+  
   public static boolean getQQCircleEnablePlayVideoInWorksTab()
   {
     return getInstance().getConfig("qqcircle", "qqcircle_switch_play_video_in_works_tab", 1) == 1;
@@ -3183,7 +3437,12 @@ public class QzoneConfig
   
   public static boolean getQQCircleFeedMute()
   {
-    return getInstance().getConfig("qqcircle", "qqcircle_feed_mute", 0) == 1;
+    QzoneConfig localQzoneConfig = getInstance();
+    boolean bool = false;
+    if (localQzoneConfig.getConfig("qqcircle", "qqcircle_feed_mute", 0) == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean getQQCircleFlutterSearchSwitch()
@@ -3204,6 +3463,11 @@ public class QzoneConfig
   public static long getQQCircleGetFollowUserInternal(long paramLong)
   {
     return getInstance().getConfig("qqcircle", "qqcircle_getfollowuser_internal", paramLong);
+  }
+  
+  public static String getQQCircleGoHomeGuideText()
+  {
+    return getInstance().getConfig("qqcircle", "qqcircle_show_home_guide_text", "进入小世界广场");
   }
   
   public static String getQQCircleHomepageGuestListEmptyJumpTitle()
@@ -3278,7 +3542,12 @@ public class QzoneConfig
   
   public static boolean getQQCircleIsAlphaUser()
   {
-    return getInstance().getConfig("qqcircle", "qqcircle_is_alpha_user", 0) == 1;
+    QzoneConfig localQzoneConfig = getInstance();
+    boolean bool = false;
+    if (localQzoneConfig.getConfig("qqcircle", "qqcircle_is_alpha_user", 0) == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean getQQCircleIsOpenDanmaku()
@@ -3310,10 +3579,14 @@ public class QzoneConfig
     int i = getInstance().getConfig("qqcircle", "qqcircle_max_push_count", 10);
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QzoneConfig", 1, "getQQCircleMaxPushCount:" + i);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getQQCircleMaxPushCount:");
+        localStringBuilder.append(i);
+        QLog.e("QzoneConfig", 1, localStringBuilder.toString());
+        return i;
       }
-      return i;
     }
     catch (Exception localException)
     {
@@ -3352,6 +3625,11 @@ public class QzoneConfig
     return getInstance().getConfig("qqcircle", "qqcircle_nonet_error_toast_text", "无法连接小世界, 检查网络后再试试");
   }
   
+  public static ArrayList<String> getQQCircleOnlyShowBubbleUins()
+  {
+    return new ArrayList(Arrays.asList(getInstance().getConfig("qqcircle", "qqcircle_chat_cluster_uins_only_show_bubble", "3499975001").split(",")));
+  }
+  
   public static String getQQCirclePersonalDataEditH5Url()
   {
     return getInstance().getConfig("qqcircle", "qqcircle_personal_data_edit_h5_url", "https://h5.qzone.qq.com/v2/wezone/addtag?_wv=3&_wwv=1&_proxy=1&addfrom=edit");
@@ -3367,10 +3645,14 @@ public class QzoneConfig
     int i = getInstance().getConfig("qqcircle", "qqcircle_push_not_enough_value", 3);
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QzoneConfig", 1, "getQQCircleMaxPushCount:" + i);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getQQCircleMaxPushCount:");
+        localStringBuilder.append(i);
+        QLog.e("QzoneConfig", 1, localStringBuilder.toString());
+        return i;
       }
-      return i;
     }
     catch (Exception localException)
     {
@@ -3411,8 +3693,9 @@ public class QzoneConfig
   
   public static boolean getQQCircleReportOutboxSwitchOpen()
   {
+    QzoneConfig localQzoneConfig = getInstance();
     boolean bool = false;
-    if (getInstance().getConfig("qqcircle", "qqcircle_report_outbox_switch", 0) == 0) {
+    if (localQzoneConfig.getConfig("qqcircle", "qqcircle_report_outbox_switch", 0) == 0) {
       bool = true;
     }
     return bool;
@@ -3433,10 +3716,14 @@ public class QzoneConfig
     String str = getInstance().getConfig("qqcircle", "qqcircle_search_page_url", "https://h5.qzone.qq.com/v2/wezone/search?_wwv=8192&_wv=3&_proxy=1&show_right_cancel=1&move_web_view_top=1");
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QzoneConfig", 1, "getQQCircleSearchPageUrl:" + str);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getQQCircleSearchPageUrl:");
+        localStringBuilder.append(str);
+        QLog.e("QzoneConfig", 1, localStringBuilder.toString());
+        return str;
       }
-      return str;
     }
     catch (Exception localException)
     {
@@ -3465,15 +3752,54 @@ public class QzoneConfig
     return getInstance().getConfig("qqcircle", "qqcircle_show_banner_interval", 10);
   }
   
+  public static String getQQCircleShowGoHomeGuideInterval()
+  {
+    return getInstance().getConfig("qqcircle", "qqcircle_show_home_guide_interval_hours", "0");
+  }
+  
+  public static boolean getQQCircleShowGuideOnLebaEntrance()
+  {
+    QzoneConfig localQzoneConfig = getInstance();
+    boolean bool = false;
+    if (localQzoneConfig.getConfig("qqcircle", "qqcircle_new_guide_on_dynamic_entrance", 0) == 1) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public static boolean getQQCircleShowGuideOnLebaTab()
+  {
+    QzoneConfig localQzoneConfig = getInstance();
+    boolean bool = false;
+    if (localQzoneConfig.getConfig("qqcircle", "qqcircle_new_guide_on_dynamic_tab", 0) == 1) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public static boolean getQQCircleShowGuideOnMessageTab()
+  {
+    QzoneConfig localQzoneConfig = getInstance();
+    boolean bool = false;
+    if (localQzoneConfig.getConfig("qqcircle", "qqcircle_new_guide_on_message_entrance", 0) == 1) {
+      bool = true;
+    }
+    return bool;
+  }
+  
   public static int getQQCircleShowShareQzone()
   {
     int i = getInstance().getConfig("qqcircle", "qqcircle_show_share_qzone", 0);
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QzoneConfig", 1, "getQQCircleShowShareQzone:" + i);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getQQCircleShowShareQzone:");
+        localStringBuilder.append(i);
+        QLog.e("QzoneConfig", 1, localStringBuilder.toString());
+        return i;
       }
-      return i;
     }
     catch (Exception localException)
     {
@@ -3542,26 +3868,92 @@ public class QzoneConfig
     return getInstance().getConfig("qqcircle", "qqcircle_group_aio_icon_url", "https://sola.gtimg.cn/aoi/sola/20201202141147_DUAnwM0iHs.png");
   }
   
+  public static int getQzoneAlbumExposeLimits()
+  {
+    int i = getInstance().getConfig("QZoneSetting", "secondary_album_recomm_rank_nums", 10);
+    try
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getQzoneAlbumRecommRankCounts:");
+        localStringBuilder.append(i);
+        QLog.e("QzoneConfig", 1, localStringBuilder.toString());
+        return i;
+      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return i;
+  }
+  
+  public static int getQzoneAlbumRecommMonthLimits()
+  {
+    int i = getInstance().getConfig("QZoneSetting", "secondary_album_recomm_month_limits", 3);
+    try
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getQzoneAlbumRecommMonthLimits:");
+        localStringBuilder.append(i);
+        QLog.e("QzoneConfig", 1, localStringBuilder.toString());
+        return i;
+      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return i;
+  }
+  
+  public static boolean getQzoneAlbumRecommSwitch()
+  {
+    boolean bool = getInstance().getConfig("QZoneSetting", "secondary_album_recomm_switch", true);
+    try
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getQzoneAlbumRecommSwitch:");
+        localStringBuilder.append(bool);
+        QLog.e("QzoneConfig", 1, localStringBuilder.toString());
+        return bool;
+      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return bool;
+  }
+  
+  public static long getShowUseTemplateDialog()
+  {
+    return getInstance().getConfig("qqcircle", "secondary_key_use_template_dialog", 1209600000L);
+  }
+  
   public static boolean getTTTReportOpenControl()
   {
     int i = getInstance().getConfig("WNSSettting", "ttt_report_open_control", 1);
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QzoneConfig", 1, "use qcircle avatar:" + i);
-      }
-      if (i == 1) {
-        return true;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("use qcircle avatar:");
+        localStringBuilder.append(i);
+        QLog.e("QzoneConfig", 1, localStringBuilder.toString());
       }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
-    return false;
+    return i == 1;
   }
   
   private void init()
@@ -3580,85 +3972,159 @@ public class QzoneConfig
   
   public static boolean isEnableOpenDuliDetail()
   {
-    if (getInstance().getConfig("QZoneSetting", "open_duli_detail", 1) == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (QZLog.isColorLevel()) {
-        QZLog.e("QzoneConfig", 1, new Object[] { "open_duli_detial:" + bool });
-      }
-      return bool;
+    boolean bool;
+    if (getInstance().getConfig("QZoneSetting", "open_duli_detail", 1) == 1) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    if (QZLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("open_duli_detial:");
+      localStringBuilder.append(bool);
+      QZLog.e("QzoneConfig", 1, new Object[] { localStringBuilder.toString() });
+    }
+    return bool;
   }
   
   public static boolean isEnablePickGameMates()
   {
-    if (getInstance().getConfig("QZoneSetting", "isEnablePickGameMates", 1) == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (QZLog.isColorLevel()) {
-        QZLog.e("QzoneConfig", 1, new Object[] { "isEnablePickGameMates:" + bool });
-      }
-      return bool;
+    boolean bool;
+    if (getInstance().getConfig("QZoneSetting", "isEnablePickGameMates", 1) == 1) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    if (QZLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isEnablePickGameMates:");
+      localStringBuilder.append(bool);
+      QZLog.e("QzoneConfig", 1, new Object[] { localStringBuilder.toString() });
+    }
+    return bool;
+  }
+  
+  public static boolean isNeedDeleteTmpFile()
+  {
+    return getInstance().getConfig("qqcircle", "secondary_key_ae_need_delete_tmp_file", 1) == 1;
   }
   
   public static boolean isNeedSecureVerify()
   {
-    if (getInstance().getConfigSync("QZoneSetting", "isNeedSecureVerify", 1) == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (QZLog.isColorLevel()) {
-        QZLog.e("QzoneConfig", 1, new Object[] { "isNeedSecureVerify:" + bool });
-      }
-      return bool;
+    boolean bool;
+    if (getInstance().getConfigSync("QZoneSetting", "isNeedSecureVerify", 1) == 1) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    if (QZLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isNeedSecureVerify:");
+      localStringBuilder.append(bool);
+      QZLog.e("QzoneConfig", 1, new Object[] { localStringBuilder.toString() });
+    }
+    return bool;
   }
   
   public static boolean isNeedSecureVerifyAllBusiness()
   {
-    if (getInstance().getConfigSync("WebviewSetting", "isNeedSecureVerifyAllBusiness", 0) == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (QZLog.isColorLevel()) {
-        QZLog.e("QzoneConfig", 1, new Object[] { "isNeedSecureVerifyAllBusiness:" + bool });
-      }
-      return bool;
+    boolean bool;
+    if (getInstance().getConfigSync("WebviewSetting", "isNeedSecureVerifyAllBusiness", 0) == 1) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    if (QZLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isNeedSecureVerifyAllBusiness:");
+      localStringBuilder.append(bool);
+      QZLog.e("QzoneConfig", 1, new Object[] { localStringBuilder.toString() });
+    }
+    return bool;
+  }
+  
+  public static boolean isNeedShowNuanShuoSearchBar()
+  {
+    return getInstance().getConfig("QZoneSetting", "second_key_need_show_nuanshuoshuo_searchbar", false);
+  }
+  
+  public static boolean isOpenFunctionSavePicToVideo()
+  {
+    return getInstance().getConfig("qqcircle", "secondary_key_ae_save_pic_to_video", 1) == 1;
   }
   
   public static boolean isQCirclePluginDisable()
   {
-    int i = getInstance().getConfig("qqcircle", "qqcircle_disable_qcircle_plugin", 0);
+    Object localObject = getInstance();
+    boolean bool = false;
+    int i = ((QzoneConfig)localObject).getConfig("qqcircle", "qqcircle_disable_qcircle_plugin", 0);
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QzoneConfig", 1, "SECONDARY_QQCIRCLE_DISABLE_PLUGIN:" + i);
-      }
-      if (i == 1) {
-        return true;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("SECONDARY_QQCIRCLE_DISABLE_PLUGIN:");
+        ((StringBuilder)localObject).append(i);
+        QLog.e("QzoneConfig", 1, ((StringBuilder)localObject).toString());
       }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
-    return false;
+    if (i == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean isQQCircleAutoPlay()
   {
-    if (!AppNetConnInfo.isNetSupport()) {}
-    do
-    {
+    boolean bool1 = AppNetConnInfo.isNetSupport();
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
-      if (AppNetConnInfo.isWifiConn()) {
-        return true;
+    }
+    if (AppNetConnInfo.isWifiConn()) {
+      return true;
+    }
+    bool1 = bool2;
+    if (getInstance().getConfig("qqcircle", "qqcircle_should_auto_play_when_wwan", 1) == 1) {
+      if (AppNetConnInfo.getMobileInfo() != 3)
+      {
+        bool1 = bool2;
+        if (AppNetConnInfo.getMobileInfo() != 4) {}
       }
-    } while ((getInstance().getConfig("qqcircle", "qqcircle_should_auto_play_when_wwan", 1) != 1) || ((AppNetConnInfo.getMobileInfo() != 3) && (AppNetConnInfo.getMobileInfo() != 4)));
-    return true;
+      else
+      {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public static boolean isQQCircleImageTemplateApplyFilter()
+  {
+    int i = getInstance().getConfig("qqcircle", "qqcircle_image_template_apply_filter", 1);
+    try
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isQQCircleShowHighQualityImagePreview:");
+        localStringBuilder.append(i);
+        QLog.e("QzoneConfig", 1, localStringBuilder.toString());
+      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return i == 1;
   }
   
   public static boolean isQQCircleOpenPageInteractiveParamCollect()
@@ -3666,21 +4132,19 @@ public class QzoneConfig
     int i = getInstance().getConfig("qqcircle", "qqcircle_is_open_page_interactive_param_collect", 1);
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QzoneConfig", 1, "isQQCircleOpenPageInteractiveParamCollect:" + i);
-      }
-      if (i == 1) {
-        return true;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isQQCircleOpenPageInteractiveParamCollect:");
+        localStringBuilder.append(i);
+        QLog.e("QzoneConfig", 1, localStringBuilder.toString());
       }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
-    return false;
+    return i == 1;
   }
   
   public static boolean isQQCircleShowAIOFeedEntrance()
@@ -3688,65 +4152,109 @@ public class QzoneConfig
     int i = getInstance().getConfig("qqcircle", "qqcircle_show_entrance_on_aio_feed", 1);
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QzoneConfig", 1, "isQQCircleShowAIOFeedEntrance:" + i);
-      }
-      if (i == 1) {
-        return true;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isQQCircleShowAIOFeedEntrance:");
+        localStringBuilder.append(i);
+        QLog.e("QzoneConfig", 1, localStringBuilder.toString());
       }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
-    return false;
+    return i == 1;
   }
   
   public static boolean isQQCircleShowDrawTabEntrance()
   {
-    int i = getInstance().getConfig("qqcircle", "qqcircle_show_entrance_on_drawer_tab", 0);
+    Object localObject = getInstance();
+    boolean bool = false;
+    int i = ((QzoneConfig)localObject).getConfig("qqcircle", "qqcircle_show_entrance_on_drawer_tab", 0);
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QzoneConfig", 1, "isQQCircleShowDrawTabEntrance:" + i);
-      }
-      if (i == 1) {
-        return true;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("isQQCircleShowDrawTabEntrance:");
+        ((StringBuilder)localObject).append(i);
+        QLog.e("QzoneConfig", 1, ((StringBuilder)localObject).toString());
       }
     }
     catch (Exception localException)
     {
-      for (;;)
+      localException.printStackTrace();
+    }
+    if (i == 1) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public static boolean isQQCircleShowHighQualityImagePreview()
+  {
+    int i = getInstance().getConfig("qqcircle", "qqcircle_show_high_quality_image_preview", 1);
+    try
+    {
+      if (QLog.isColorLevel())
       {
-        localException.printStackTrace();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isQQCircleShowHighQualityImagePreview:");
+        localStringBuilder.append(i);
+        QLog.e("QzoneConfig", 1, localStringBuilder.toString());
       }
     }
-    return false;
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return i == 1;
+  }
+  
+  public static boolean isQQCircleShowImageTemplateTab()
+  {
+    int i = getInstance().getConfig("qqcircle", "qqcircle_show_image_template_tab", 1);
+    try
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isQQCircleShowHighQualityImagePreview:");
+        localStringBuilder.append(i);
+        QLog.e("QzoneConfig", 1, localStringBuilder.toString());
+      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return i == 1;
   }
   
   public static boolean isQQCircleShowInviteGuideBubbleOnProfilePage()
   {
-    int i = getInstance().getConfig("qqcircle", "qqcircle_show_invite_guide_bubble_on_profile_page", 0);
+    Object localObject = getInstance();
+    boolean bool = false;
+    int i = ((QzoneConfig)localObject).getConfig("qqcircle", "qqcircle_show_invite_guide_bubble_on_profile_page", 0);
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QzoneConfig", 1, "isQQCircleShowInviteGuideBubbleOnProfilePage:" + i);
-      }
-      if (i == 1) {
-        return true;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("isQQCircleShowInviteGuideBubbleOnProfilePage:");
+        ((StringBuilder)localObject).append(i);
+        QLog.e("QzoneConfig", 1, ((StringBuilder)localObject).toString());
       }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
-    return false;
+    if (i == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean isQQCircleShowLebaBySwitchButton(boolean paramBoolean)
@@ -3754,131 +4262,130 @@ public class QzoneConfig
     String str;
     if (paramBoolean) {
       str = getInstance().getConfig("qqcircle", "qqcircle_entrance_enable_on_children_mode", "0");
+    } else {
+      str = getInstance().getConfig("qqcircle", "qqcircle_entrance_enable", "0");
     }
     try
     {
-      for (;;)
-      {
-        QLog.e("QzoneConfig", 1, "isQQCircleShowLebaBySwitchButton:" + str + " isstudymode= " + paramBoolean);
-        return "1".equals(str);
-        str = getInstance().getConfig("qqcircle", "qqcircle_entrance_enable", "0");
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isQQCircleShowLebaBySwitchButton:");
+      localStringBuilder.append(str);
+      localStringBuilder.append(" isstudymode= ");
+      localStringBuilder.append(paramBoolean);
+      QLog.e("QzoneConfig", 1, localStringBuilder.toString());
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
+    return "1".equals(str);
   }
   
   public static boolean isQQCircleShowLebaEntrance(boolean paramBoolean)
   {
-    int i = getInstance().getConfig("qqcircle", "qqcircle_show_entrance_on_recommend_tab", 0);
+    Object localObject = getInstance();
+    boolean bool2 = false;
+    int i = ((QzoneConfig)localObject).getConfig("qqcircle", "qqcircle_show_entrance_on_recommend_tab", 0);
     try
     {
-      QLog.e("QzoneConfig", 1, "isQQCircleShowLebaEntrance:" + i);
-      if ((i == 1) && (!isShowQQCircleMainTabEntrance(paramBoolean))) {
-        return true;
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isQQCircleShowLebaEntrance:");
+      ((StringBuilder)localObject).append(i);
+      QLog.e("QzoneConfig", 1, ((StringBuilder)localObject).toString());
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
+      localException.printStackTrace();
+    }
+    boolean bool1 = bool2;
+    if (i == 1)
+    {
+      bool1 = bool2;
+      if (!isShowQQCircleMainTabEntrance(paramBoolean)) {
+        bool1 = true;
       }
     }
-    return false;
+    return bool1;
   }
   
   public static boolean isQQCircleShowMessageEntrance(boolean paramBoolean)
   {
-    int i = getInstance().getConfig("qqcircle", "qqcircle_show_entrance_on_message_tab", 0);
+    Object localObject = getInstance();
+    boolean bool2 = false;
+    int i = ((QzoneConfig)localObject).getConfig("qqcircle", "qqcircle_show_entrance_on_message_tab", 0);
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QzoneConfig", 1, "isQQCircleShowMessageEntrance:" + i);
-      }
-      if ((i == 1) && (!isShowQQCircleMainTabEntrance(paramBoolean))) {
-        return true;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("isQQCircleShowMessageEntrance:");
+        ((StringBuilder)localObject).append(i);
+        QLog.e("QzoneConfig", 1, ((StringBuilder)localObject).toString());
       }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
-    return false;
-  }
-  
-  public static boolean isQQCircleShowMessageEntranceTips()
-  {
-    int i = getInstance().getConfig("qqcircle", "qqcircle_show_entrance_on_message_tab_tips", 1);
-    try
+    boolean bool1 = bool2;
+    if (i == 1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QzoneConfig", 1, "isQQCircleShowMessageEntranceTips:" + i);
-      }
-      if (i == 1) {
-        return true;
+      bool1 = bool2;
+      if (!isShowQQCircleMainTabEntrance(paramBoolean)) {
+        bool1 = true;
       }
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
-    return false;
+    return bool1;
   }
   
   public static boolean isQQCircleShowMoodSyncEntrance()
   {
-    int i = getInstance().getConfig("qqcircle", "qqcircle_show_mood_sync_circle", 0);
+    Object localObject = getInstance();
+    boolean bool = false;
+    int i = ((QzoneConfig)localObject).getConfig("qqcircle", "qqcircle_show_mood_sync_circle", 0);
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QzoneConfig", 1, "isQQCircleShowMoodSyncEntrance:" + i);
-      }
-      if (i == 1) {
-        return true;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("isQQCircleShowMoodSyncEntrance:");
+        ((StringBuilder)localObject).append(i);
+        QLog.e("QzoneConfig", 1, ((StringBuilder)localObject).toString());
       }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
-    return false;
+    if (i == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean isQQCircleShowProfileCardEntrance()
   {
-    int i = getInstance().getConfig("qqcircle", "qqcircle_show_entrance_on_profile_card", 0);
+    Object localObject = getInstance();
+    boolean bool = false;
+    int i = ((QzoneConfig)localObject).getConfig("qqcircle", "qqcircle_show_entrance_on_profile_card", 0);
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QzoneConfig", 1, "isQQCircleShowProfileCardEntrance:" + i);
-      }
-      if (i == 1) {
-        return true;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("isQQCircleShowProfileCardEntrance:");
+        ((StringBuilder)localObject).append(i);
+        QLog.e("QzoneConfig", 1, ((StringBuilder)localObject).toString());
       }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
-    return false;
+    if (i == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean isQQCircleShowPublishSaveGridSelected()
@@ -3886,21 +4393,19 @@ public class QzoneConfig
     int i = getInstance().getConfig("qqcircle", "qqcircle_show_publish_save_grid_selected", 1);
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QzoneConfig", 1, "isQQCircleShowPublishSaveGridSelected:" + i);
-      }
-      if (i == 1) {
-        return true;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isQQCircleShowPublishSaveGridSelected:");
+        localStringBuilder.append(i);
+        QLog.e("QzoneConfig", 1, localStringBuilder.toString());
       }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
-    return false;
+    return i == 1;
   }
   
   public static boolean isQQCircleShowSwitchButton()
@@ -3908,41 +4413,41 @@ public class QzoneConfig
     int i = getInstance().getConfig("qqcircle", "qqcircle_show_entrance_switch_button", 1);
     try
     {
-      QLog.e("QzoneConfig", 1, "isQQCircleShowLebaEntrance switchbutton:" + i);
-      if (i == 1) {
-        return true;
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isQQCircleShowLebaEntrance switchbutton:");
+      localStringBuilder.append(i);
+      QLog.e("QzoneConfig", 1, localStringBuilder.toString());
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
-    return false;
+    return i == 1;
   }
   
   public static boolean isQQCircleShowTroopToolBarEntrance()
   {
-    int i = getInstance().getConfig("qqcircle", "qqcircle_show_entrance_on_group_toolbar", 0);
+    Object localObject = getInstance();
+    boolean bool = false;
+    int i = ((QzoneConfig)localObject).getConfig("qqcircle", "qqcircle_show_entrance_on_group_toolbar", 0);
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QzoneConfig", 1, "isQQCircleShowTroopToolBarEntrance:" + i);
-      }
-      if (i == 1) {
-        return true;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("isQQCircleShowTroopToolBarEntrance:");
+        ((StringBuilder)localObject).append(i);
+        QLog.e("QzoneConfig", 1, ((StringBuilder)localObject).toString());
       }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
-    return false;
+    if (i == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean isQQCircleShowTroopUnreadRedDot()
@@ -3950,21 +4455,44 @@ public class QzoneConfig
     int i = getInstance().getConfig("qqcircle", "qqcircle_show_group_aio_redpoint", 1);
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QzoneConfig", 1, "isQQCircleShowTroopUnreadDialog:" + i);
-      }
-      if (i == 1) {
-        return true;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isQQCircleShowTroopUnreadDialog:");
+        localStringBuilder.append(i);
+        QLog.e("QzoneConfig", 1, localStringBuilder.toString());
       }
     }
     catch (Exception localException)
     {
-      for (;;)
+      localException.printStackTrace();
+    }
+    return i == 1;
+  }
+  
+  public static boolean isQQCircleVideoMusicUseWNSUrl()
+  {
+    Object localObject = getInstance();
+    boolean bool = false;
+    int i = ((QzoneConfig)localObject).getConfig("aeeditor", "aeeditor_edited_use_wns_music_url", 0);
+    try
+    {
+      if (QLog.isColorLevel())
       {
-        localException.printStackTrace();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("isQQCircleShowHighQualityImagePreview:");
+        ((StringBuilder)localObject).append(i);
+        QLog.e("QzoneConfig", 1, ((StringBuilder)localObject).toString());
       }
     }
-    return false;
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    if (i == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean isQzoneShowTroopUnreadRedDot()
@@ -3972,63 +4500,66 @@ public class QzoneConfig
     int i = getInstance().getConfig("qqcircle", "qzone_show_group_aio_redpoint", 1);
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QzoneConfig", 1, "isQzoneShowTroopUnreadDialog:" + i);
-      }
-      if (i == 1) {
-        return true;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isQzoneShowTroopUnreadDialog:");
+        localStringBuilder.append(i);
+        QLog.e("QzoneConfig", 1, localStringBuilder.toString());
       }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
-    return false;
+    return i == 1;
   }
   
   public static boolean isQzoneTroopUnreadAllReport()
   {
-    int i = getInstance().getConfig("qqcircle", "qzone_group_aio_redpoint_report_method", 0);
+    Object localObject = getInstance();
+    boolean bool = false;
+    int i = ((QzoneConfig)localObject).getConfig("qqcircle", "qzone_group_aio_redpoint_report_method", 0);
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QzoneConfig", 1, "isQzoneTroopUnreadAllReport:" + i);
-      }
-      if (i == 1) {
-        return true;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("isQzoneTroopUnreadAllReport:");
+        ((StringBuilder)localObject).append(i);
+        QLog.e("QzoneConfig", 1, ((StringBuilder)localObject).toString());
       }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
-    return false;
+    if (i == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean isShowBottomTabSwitch()
   {
-    int i = getInstance().getConfig("qqcircle", "qqcircle_show_bottom_tab_switch", 0);
+    Object localObject = getInstance();
+    boolean bool = false;
+    int i = ((QzoneConfig)localObject).getConfig("qqcircle", "qqcircle_show_bottom_tab_switch", 0);
     try
     {
-      QLog.e("QzoneConfig", 1, "initQCircleTab isQQCircleMainTabEntrance:" + i);
-      if (i == 1) {
-        return true;
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("initQCircleTab isQQCircleMainTabEntrance:");
+      ((StringBuilder)localObject).append(i);
+      QLog.e("QzoneConfig", 1, ((StringBuilder)localObject).toString());
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
-    return false;
+    if (i == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean isShowQCircleEnter(boolean paramBoolean)
@@ -4041,246 +4572,263 @@ public class QzoneConfig
     int i;
     if (paramBoolean) {
       i = getInstance().getConfig("qqcircle", "qqcircle_show_entrance_on_main_tab_on_children_mode", 0);
+    } else {
+      i = getInstance().getConfig("qqcircle", "qqcircle_show_entrance_on_main_tab", 0);
     }
     try
     {
-      for (;;)
-      {
-        QLog.e("QzoneConfig", 1, "initQCircleTab isQQCircleMainTabEntrance:" + i);
-        if ((i != 1) || (!isShowBottomTabSwitch())) {
-          break;
-        }
-        return true;
-        i = getInstance().getConfig("qqcircle", "qqcircle_show_entrance_on_main_tab", 0);
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initQCircleTab isQQCircleMainTabEntrance:");
+      localStringBuilder.append(i);
+      QLog.e("QzoneConfig", 1, localStringBuilder.toString());
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
-    return false;
+    return (i == 1) && (isShowBottomTabSwitch());
   }
   
   /* Error */
   public static boolean loadAllConfigs(Map<String, ConcurrentHashMap<String, String>> paramMap)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: invokeinterface 8205 1 0
-    //   6: invokestatic 7868	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   9: invokevirtual 7872	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
-    //   12: getstatic 7936	com/tencent/common/config/provider/QZoneConfigConst:a	Landroid/net/Uri;
-    //   15: aconst_null
-    //   16: aconst_null
-    //   17: aconst_null
-    //   18: aconst_null
-    //   19: invokevirtual 7884	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   22: astore 4
-    //   24: aload 4
-    //   26: ifnull +314 -> 340
-    //   29: aload 4
-    //   31: astore_3
-    //   32: aload 4
-    //   34: invokeinterface 8208 1 0
-    //   39: ifeq +171 -> 210
-    //   42: aload 4
-    //   44: astore_3
-    //   45: aload 4
-    //   47: iconst_0
-    //   48: invokeinterface 7899 2 0
-    //   53: astore 7
-    //   55: aload 4
-    //   57: astore_3
-    //   58: aload 4
-    //   60: iconst_1
-    //   61: invokeinterface 7899 2 0
-    //   66: astore 8
-    //   68: aload 7
-    //   70: ifnull -41 -> 29
-    //   73: aload 8
-    //   75: ifnull -46 -> 29
-    //   78: aload 4
-    //   80: astore_3
-    //   81: aload 4
-    //   83: iconst_2
-    //   84: invokeinterface 7899 2 0
-    //   89: astore 9
-    //   91: aload 4
-    //   93: astore_3
-    //   94: aload_0
-    //   95: aload 7
-    //   97: invokeinterface 8212 2 0
-    //   102: checkcast 7827	java/util/concurrent/ConcurrentHashMap
-    //   105: astore 6
-    //   107: aload 6
-    //   109: astore 5
-    //   111: aload 6
-    //   113: ifnonnull +29 -> 142
-    //   116: aload 4
-    //   118: astore_3
-    //   119: new 7827	java/util/concurrent/ConcurrentHashMap
-    //   122: dup
-    //   123: invokespecial 7828	java/util/concurrent/ConcurrentHashMap:<init>	()V
-    //   126: astore 5
-    //   128: aload 4
-    //   130: astore_3
-    //   131: aload_0
-    //   132: aload 7
-    //   134: aload 5
-    //   136: invokeinterface 8216 3 0
-    //   141: pop
-    //   142: aload 5
-    //   144: ifnull -115 -> 29
-    //   147: aload 4
-    //   149: astore_3
-    //   150: aload 5
-    //   152: aload 8
-    //   154: aload 9
-    //   156: invokevirtual 8217	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   159: pop
-    //   160: goto -131 -> 29
-    //   163: astore_0
-    //   164: aload 4
-    //   166: astore_3
-    //   167: invokestatic 7907	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   170: ifeq +24 -> 194
-    //   173: aload 4
-    //   175: astore_3
-    //   176: ldc_w 7770
-    //   179: iconst_2
-    //   180: aload_0
-    //   181: iconst_1
-    //   182: anewarray 4	java/lang/Object
-    //   185: dup
-    //   186: iconst_0
-    //   187: ldc_w 8219
-    //   190: aastore
-    //   191: invokestatic 7950	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   194: aload 4
-    //   196: ifnull +142 -> 338
-    //   199: aload 4
-    //   201: invokeinterface 7902 1 0
-    //   206: iconst_0
-    //   207: istore_2
-    //   208: iload_2
-    //   209: ireturn
-    //   210: iconst_1
-    //   211: istore_1
-    //   212: iload_1
-    //   213: istore_2
-    //   214: aload 4
-    //   216: ifnull -8 -> 208
-    //   219: aload 4
-    //   221: invokeinterface 7902 1 0
-    //   226: iload_1
-    //   227: ireturn
-    //   228: astore_0
-    //   229: iload_1
-    //   230: istore_2
-    //   231: invokestatic 7907	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   234: ifeq -26 -> 208
-    //   237: ldc_w 7770
-    //   240: iconst_2
-    //   241: aload_0
-    //   242: iconst_1
-    //   243: anewarray 4	java/lang/Object
-    //   246: dup
-    //   247: iconst_0
-    //   248: ldc_w 8219
-    //   251: aastore
-    //   252: invokestatic 7950	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   255: iload_1
-    //   256: ireturn
-    //   257: astore_0
-    //   258: invokestatic 7907	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   261: ifeq +21 -> 282
-    //   264: ldc_w 7770
-    //   267: iconst_2
-    //   268: aload_0
-    //   269: iconst_1
-    //   270: anewarray 4	java/lang/Object
-    //   273: dup
-    //   274: iconst_0
-    //   275: ldc_w 8219
-    //   278: aastore
-    //   279: invokestatic 7950	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   282: iconst_0
-    //   283: ireturn
-    //   284: astore_0
-    //   285: aconst_null
-    //   286: astore_3
-    //   287: aload_3
-    //   288: ifnull +9 -> 297
-    //   291: aload_3
-    //   292: invokeinterface 7902 1 0
-    //   297: aload_0
-    //   298: athrow
-    //   299: astore_3
-    //   300: invokestatic 7907	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   303: ifeq -6 -> 297
-    //   306: ldc_w 7770
-    //   309: iconst_2
-    //   310: aload_3
-    //   311: iconst_1
-    //   312: anewarray 4	java/lang/Object
-    //   315: dup
-    //   316: iconst_0
-    //   317: ldc_w 8219
-    //   320: aastore
-    //   321: invokestatic 7950	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   324: goto -27 -> 297
-    //   327: astore_0
-    //   328: goto -41 -> 287
-    //   331: astore_0
-    //   332: aconst_null
-    //   333: astore 4
-    //   335: goto -171 -> 164
-    //   338: iconst_0
-    //   339: ireturn
-    //   340: iconst_0
-    //   341: istore_1
-    //   342: goto -130 -> 212
+    //   0: aconst_null
+    //   1: astore 6
+    //   3: aconst_null
+    //   4: astore 5
+    //   6: aload 5
+    //   8: astore_3
+    //   9: aload 6
+    //   11: astore 4
+    //   13: aload_0
+    //   14: invokeinterface 8535 1 0
+    //   19: aload 5
+    //   21: astore_3
+    //   22: aload 6
+    //   24: astore 4
+    //   26: invokestatic 8150	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   29: invokevirtual 8154	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
+    //   32: getstatic 8223	com/tencent/common/config/provider/QZoneConfigConst:a	Landroid/net/Uri;
+    //   35: aconst_null
+    //   36: aconst_null
+    //   37: aconst_null
+    //   38: aconst_null
+    //   39: invokevirtual 8166	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   42: astore 5
+    //   44: aload 5
+    //   46: ifnull +174 -> 220
+    //   49: aload 5
+    //   51: astore_3
+    //   52: aload 5
+    //   54: astore 4
+    //   56: aload 5
+    //   58: invokeinterface 8538 1 0
+    //   63: ifeq +152 -> 215
+    //   66: aload 5
+    //   68: astore_3
+    //   69: aload 5
+    //   71: astore 4
+    //   73: aload 5
+    //   75: iconst_0
+    //   76: invokeinterface 8181 2 0
+    //   81: astore 8
+    //   83: aload 5
+    //   85: astore_3
+    //   86: aload 5
+    //   88: astore 4
+    //   90: aload 5
+    //   92: iconst_1
+    //   93: invokeinterface 8181 2 0
+    //   98: astore 9
+    //   100: aload 8
+    //   102: ifnull -53 -> 49
+    //   105: aload 9
+    //   107: ifnull -58 -> 49
+    //   110: aload 5
+    //   112: astore_3
+    //   113: aload 5
+    //   115: astore 4
+    //   117: aload 5
+    //   119: iconst_2
+    //   120: invokeinterface 8181 2 0
+    //   125: astore 10
+    //   127: aload 5
+    //   129: astore_3
+    //   130: aload 5
+    //   132: astore 4
+    //   134: aload_0
+    //   135: aload 8
+    //   137: invokeinterface 8542 2 0
+    //   142: checkcast 8085	java/util/concurrent/ConcurrentHashMap
+    //   145: astore 7
+    //   147: aload 7
+    //   149: astore 6
+    //   151: aload 7
+    //   153: ifnonnull +37 -> 190
+    //   156: aload 5
+    //   158: astore_3
+    //   159: aload 5
+    //   161: astore 4
+    //   163: new 8085	java/util/concurrent/ConcurrentHashMap
+    //   166: dup
+    //   167: invokespecial 8086	java/util/concurrent/ConcurrentHashMap:<init>	()V
+    //   170: astore 6
+    //   172: aload 5
+    //   174: astore_3
+    //   175: aload 5
+    //   177: astore 4
+    //   179: aload_0
+    //   180: aload 8
+    //   182: aload 6
+    //   184: invokeinterface 8546 3 0
+    //   189: pop
+    //   190: aload 6
+    //   192: ifnull -143 -> 49
+    //   195: aload 5
+    //   197: astore_3
+    //   198: aload 5
+    //   200: astore 4
+    //   202: aload 6
+    //   204: aload 9
+    //   206: aload 10
+    //   208: invokevirtual 8547	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   211: pop
+    //   212: goto -163 -> 49
+    //   215: iconst_1
+    //   216: istore_1
+    //   217: goto +5 -> 222
+    //   220: iconst_0
+    //   221: istore_1
+    //   222: iload_1
+    //   223: istore_2
+    //   224: aload 5
+    //   226: ifnull +118 -> 344
+    //   229: aload 5
+    //   231: invokeinterface 8184 1 0
+    //   236: iload_1
+    //   237: ireturn
+    //   238: astore_0
+    //   239: iload_1
+    //   240: istore_2
+    //   241: invokestatic 8189	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   244: ifeq +100 -> 344
+    //   247: ldc_w 8044
+    //   250: iconst_2
+    //   251: aload_0
+    //   252: iconst_1
+    //   253: anewarray 4	java/lang/Object
+    //   256: dup
+    //   257: iconst_0
+    //   258: ldc_w 8549
+    //   261: aastore
+    //   262: invokestatic 8237	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   265: iload_1
+    //   266: ireturn
+    //   267: astore_0
+    //   268: goto +78 -> 346
+    //   271: astore_0
+    //   272: aload 4
+    //   274: astore_3
+    //   275: invokestatic 8189	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   278: ifeq +24 -> 302
+    //   281: aload 4
+    //   283: astore_3
+    //   284: ldc_w 8044
+    //   287: iconst_2
+    //   288: aload_0
+    //   289: iconst_1
+    //   290: anewarray 4	java/lang/Object
+    //   293: dup
+    //   294: iconst_0
+    //   295: ldc_w 8549
+    //   298: aastore
+    //   299: invokestatic 8237	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   302: aload 4
+    //   304: ifnull +38 -> 342
+    //   307: aload 4
+    //   309: invokeinterface 8184 1 0
+    //   314: goto +28 -> 342
+    //   317: astore_0
+    //   318: invokestatic 8189	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   321: ifeq +21 -> 342
+    //   324: ldc_w 8044
+    //   327: iconst_2
+    //   328: aload_0
+    //   329: iconst_1
+    //   330: anewarray 4	java/lang/Object
+    //   333: dup
+    //   334: iconst_0
+    //   335: ldc_w 8549
+    //   338: aastore
+    //   339: invokestatic 8237	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   342: iconst_0
+    //   343: istore_2
+    //   344: iload_2
+    //   345: ireturn
+    //   346: aload_3
+    //   347: ifnull +37 -> 384
+    //   350: aload_3
+    //   351: invokeinterface 8184 1 0
+    //   356: goto +28 -> 384
+    //   359: astore_3
+    //   360: invokestatic 8189	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   363: ifeq +21 -> 384
+    //   366: ldc_w 8044
+    //   369: iconst_2
+    //   370: aload_3
+    //   371: iconst_1
+    //   372: anewarray 4	java/lang/Object
+    //   375: dup
+    //   376: iconst_0
+    //   377: ldc_w 8549
+    //   380: aastore
+    //   381: invokestatic 8237	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   384: goto +5 -> 389
+    //   387: aload_0
+    //   388: athrow
+    //   389: goto -2 -> 387
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	345	0	paramMap	Map<String, ConcurrentHashMap<String, String>>
-    //   211	131	1	bool1	boolean
-    //   207	24	2	bool2	boolean
-    //   31	261	3	localCursor1	android.database.Cursor
-    //   299	12	3	localException	Exception
-    //   22	312	4	localCursor2	android.database.Cursor
-    //   109	42	5	localConcurrentHashMap1	ConcurrentHashMap
-    //   105	7	6	localConcurrentHashMap2	ConcurrentHashMap
-    //   53	80	7	str1	String
-    //   66	87	8	str2	String
-    //   89	66	9	str3	String
+    //   0	392	0	paramMap	Map<String, ConcurrentHashMap<String, String>>
+    //   216	50	1	bool1	boolean
+    //   223	122	2	bool2	boolean
+    //   8	343	3	localObject1	Object
+    //   359	12	3	localException	Exception
+    //   11	297	4	localObject2	Object
+    //   4	226	5	localCursor	android.database.Cursor
+    //   1	202	6	localObject3	Object
+    //   145	7	7	localConcurrentHashMap	ConcurrentHashMap
+    //   81	100	8	str1	String
+    //   98	107	9	str2	String
+    //   125	82	10	str3	String
     // Exception table:
     //   from	to	target	type
-    //   32	42	163	java/lang/Exception
-    //   45	55	163	java/lang/Exception
-    //   58	68	163	java/lang/Exception
-    //   81	91	163	java/lang/Exception
-    //   94	107	163	java/lang/Exception
-    //   119	128	163	java/lang/Exception
-    //   131	142	163	java/lang/Exception
-    //   150	160	163	java/lang/Exception
-    //   219	226	228	java/lang/Exception
-    //   199	206	257	java/lang/Exception
-    //   0	24	284	finally
-    //   291	297	299	java/lang/Exception
-    //   32	42	327	finally
-    //   45	55	327	finally
-    //   58	68	327	finally
-    //   81	91	327	finally
-    //   94	107	327	finally
-    //   119	128	327	finally
-    //   131	142	327	finally
-    //   150	160	327	finally
-    //   167	173	327	finally
-    //   176	194	327	finally
-    //   0	24	331	java/lang/Exception
+    //   229	236	238	java/lang/Exception
+    //   13	19	267	finally
+    //   26	44	267	finally
+    //   56	66	267	finally
+    //   73	83	267	finally
+    //   90	100	267	finally
+    //   117	127	267	finally
+    //   134	147	267	finally
+    //   163	172	267	finally
+    //   179	190	267	finally
+    //   202	212	267	finally
+    //   275	281	267	finally
+    //   284	302	267	finally
+    //   13	19	271	java/lang/Exception
+    //   26	44	271	java/lang/Exception
+    //   56	66	271	java/lang/Exception
+    //   73	83	271	java/lang/Exception
+    //   90	100	271	java/lang/Exception
+    //   117	127	271	java/lang/Exception
+    //   134	147	271	java/lang/Exception
+    //   163	172	271	java/lang/Exception
+    //   179	190	271	java/lang/Exception
+    //   202	212	271	java/lang/Exception
+    //   307	314	317	java/lang/Exception
+    //   350	356	359	java/lang/Exception
   }
   
   private void registBroadcast()
@@ -4299,17 +4847,19 @@ public class QzoneConfig
   
   private void registObserver()
   {
-    if ((BaseApplication.getContext() != null) && (BaseApplication.getContext().getContentResolver() != null)) {}
-    try
-    {
-      initConfigUpdateObserver();
-      BaseApplication.getContext().getContentResolver().registerContentObserver(QZoneConfigConst.c, true, this.configUpdateObserver);
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QzoneConfig", 2, "registObserver 异常", localException);
+    if ((BaseApplication.getContext() != null) && (BaseApplication.getContext().getContentResolver() != null)) {
+      try
+      {
+        initConfigUpdateObserver();
+        BaseApplication.getContext().getContentResolver().registerContentObserver(QZoneConfigConst.c, true, this.configUpdateObserver);
+        return;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("QzoneConfig", 2, "registObserver 异常", localException);
+        }
+      }
     }
   }
   
@@ -4328,43 +4878,44 @@ public class QzoneConfig
     int i = getInstance().getConfig("qqcircle", "qqcircle_use_okhppt_download_pic", 1);
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QzoneConfig", 1, "useOkHttp downloadpic:" + i);
-      }
-      if (i == 1) {
-        return true;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("useOkHttp downloadpic:");
+        localStringBuilder.append(i);
+        QLog.e("QzoneConfig", 1, localStringBuilder.toString());
       }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
-    return false;
+    return i == 1;
   }
   
   public static boolean useQCircleAssetPluginAlways()
   {
-    int i = getInstance().getConfig("qqcircle", "qqcircle_use_asset", 0);
+    Object localObject = getInstance();
+    boolean bool = false;
+    int i = ((QzoneConfig)localObject).getConfig("qqcircle", "qqcircle_use_asset", 0);
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QzoneConfig", 1, "isUseAssetPlugin always:" + i);
-      }
-      if (i == 1) {
-        return true;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("isUseAssetPlugin always:");
+        ((StringBuilder)localObject).append(i);
+        QLog.e("QzoneConfig", 1, ((StringBuilder)localObject).toString());
       }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
-    return false;
+    if (i == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean useQCircleAvatar()
@@ -4372,56 +4923,55 @@ public class QzoneConfig
     int i = getInstance().getConfig("qqcircle", "qqcircle_use_avatar", 1);
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QzoneConfig", 1, "use qcircle avatar:" + i);
-      }
-      if (i == 1) {
-        return true;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("use qcircle avatar:");
+        localStringBuilder.append(i);
+        QLog.e("QzoneConfig", 1, localStringBuilder.toString());
       }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
-    return false;
+    return i == 1;
   }
   
   public void addListener(QzoneConfig.QzoneConfigChangeListener paramQzoneConfigChangeListener)
   {
-    if (paramQzoneConfigChangeListener == null) {}
-    for (;;)
-    {
+    if (paramQzoneConfigChangeListener == null) {
       return;
-      try
+    }
+    try
+    {
+      Iterator localIterator = this.mCallback.iterator();
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = this.mCallback.iterator();
-        Object localObject;
-        do
+        Object localObject = (WeakReference)localIterator.next();
+        if (localObject != null)
         {
-          for (;;)
+          localObject = (QzoneConfig.QzoneConfigChangeListener)((WeakReference)localObject).get();
+          if (localObject == null)
           {
-            if (!localIterator.hasNext()) {
-              break label77;
-            }
-            localObject = (WeakReference)localIterator.next();
-            if (localObject != null)
-            {
-              localObject = (QzoneConfig.QzoneConfigChangeListener)((WeakReference)localObject).get();
-              if (localObject != null) {
-                break;
-              }
-              localIterator.remove();
+            localIterator.remove();
+          }
+          else
+          {
+            boolean bool = paramQzoneConfigChangeListener.equals(localObject);
+            if (bool) {
+              return;
             }
           }
-        } while (!paramQzoneConfigChangeListener.equals(localObject));
+        }
       }
-      finally {}
-      continue;
-      label77:
       this.mCallback.add(new WeakReference(paramQzoneConfigChangeListener));
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramQzoneConfigChangeListener;
     }
   }
   
@@ -4433,13 +4983,13 @@ public class QzoneConfig
   
   public void deleteConfigs(String paramString)
   {
-    if (paramString == null) {}
-    do
-    {
+    if (paramString == null) {
       return;
-      paramString = (ConcurrentHashMap)this.configMap.get(paramString);
-    } while ((paramString == null) || (paramString.size() <= 0));
-    paramString.clear();
+    }
+    paramString = (ConcurrentHashMap)this.configMap.get(paramString);
+    if ((paramString != null) && (paramString.size() > 0)) {
+      paramString.clear();
+    }
   }
   
   public float getConfig(String paramString1, String paramString2, float paramFloat)
@@ -4489,48 +5039,62 @@ public class QzoneConfig
   
   public String getConfig(String paramString1, String paramString2)
   {
-    Object localObject;
     if ((paramString1 != null) && (paramString2 != null))
     {
-      if ((this.mStringHelper != null) && (this.mStringHelper.canHandle()))
+      Object localObject1 = this.mStringHelper;
+      if ((localObject1 != null) && (((QzoneConfigStringHelper)localObject1).a()))
       {
-        paramString1 = this.mStringHelper.toLowerCase(paramString1);
-        localObject = this.mStringHelper.toLowerCase(paramString2);
-        paramString2 = paramString1;
+        paramString1 = this.mStringHelper.a(paramString1);
+        paramString2 = this.mStringHelper.a(paramString2);
       }
-      for (paramString1 = (String)localObject;; paramString1 = (String)localObject)
+      else
       {
-        ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.configMap.get(paramString2);
-        localObject = localConcurrentHashMap;
-        if (localConcurrentHashMap == null)
-        {
-          localObject = new ConcurrentHashMap();
-          this.configMap.put(paramString2, localObject);
-        }
-        if (localObject == null) {
-          break;
-        }
-        localObject = (String)((ConcurrentHashMap)localObject).get(paramString1);
-        if ((localObject == null) && (2 != this.loadstatus) && (1 != this.loadstatus))
+        paramString1 = paramString1.toLowerCase();
+        paramString2 = paramString2.toLowerCase();
+      }
+      Object localObject2 = (ConcurrentHashMap)this.configMap.get(paramString1);
+      localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        localObject1 = new ConcurrentHashMap();
+        this.configMap.put(paramString1, localObject1);
+      }
+      if (localObject1 != null)
+      {
+        localObject1 = (String)((ConcurrentHashMap)localObject1).get(paramString2);
+        if ((localObject1 == null) && (2 != this.loadstatus) && (1 != this.loadstatus))
         {
           QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread", false).post(new QzoneConfig.1(this));
-          QLog.d("QzoneConfig", 4, "key:" + paramString2 + ",secondaryKey:" + paramString1 + ",value:" + (String)localObject + " key: notready");
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("key:");
+          ((StringBuilder)localObject2).append(paramString1);
+          ((StringBuilder)localObject2).append(",secondaryKey:");
+          ((StringBuilder)localObject2).append(paramString2);
+          ((StringBuilder)localObject2).append(",value:");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          ((StringBuilder)localObject2).append(" key: notready");
+          QLog.d("QzoneConfig", 4, ((StringBuilder)localObject2).toString());
         }
         try
         {
-          if ("qqcircle".equals(paramString2)) {
-            QLog.e("QzoneConfig", 1, "key = " + paramString2 + " secondaryKey= " + paramString1 + " value= " + (String)localObject);
+          if ("qqcircle".equals(paramString1))
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("key = ");
+            ((StringBuilder)localObject2).append(paramString1);
+            ((StringBuilder)localObject2).append(" secondaryKey= ");
+            ((StringBuilder)localObject2).append(paramString2);
+            ((StringBuilder)localObject2).append(" value= ");
+            ((StringBuilder)localObject2).append((String)localObject1);
+            QLog.e("QzoneConfig", 1, ((StringBuilder)localObject2).toString());
+            return localObject1;
           }
-          return localObject;
         }
         catch (Throwable paramString1)
         {
           QLog.e("QzoneConfig", 1, paramString1, new Object[0]);
-          return localObject;
         }
-        paramString1 = paramString1.toLowerCase();
-        localObject = paramString2.toLowerCase();
-        paramString2 = paramString1;
+        return localObject1;
       }
     }
     return null;
@@ -4607,48 +5171,44 @@ public class QzoneConfig
   
   public String getConfigSync(String paramString1, String paramString2)
   {
-    Object localObject;
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
-      if ((this.mStringHelper != null) && (this.mStringHelper.canHandle()))
-      {
-        paramString1 = this.mStringHelper.toLowerCase(paramString1);
-        localObject = this.mStringHelper.toLowerCase(paramString2);
-        paramString2 = paramString1;
-        paramString1 = (String)localObject;
-        localObject = (ConcurrentHashMap)this.configMap.get(paramString2);
-        if (localObject != null) {
-          break label161;
-        }
-        localObject = new ConcurrentHashMap();
-        this.configMap.put(paramString2, localObject);
-      }
-    }
-    label161:
-    for (;;)
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      if (localObject != null)
+      Object localObject1 = this.mStringHelper;
+      if ((localObject1 != null) && (((QzoneConfigStringHelper)localObject1).a()))
       {
-        String str2 = (String)((ConcurrentHashMap)localObject).get(paramString1);
-        String str1 = str2;
-        if (TextUtils.isEmpty(str2))
-        {
-          paramString2 = getOneConfig(paramString2, paramString1);
-          str1 = paramString2;
-          if (!TextUtils.isEmpty(paramString2))
-          {
-            ((ConcurrentHashMap)localObject).put(paramString1, paramString2);
-            str1 = paramString2;
-          }
-        }
-        return str1;
-        paramString1 = paramString1.toLowerCase();
-        localObject = paramString2.toLowerCase();
-        paramString2 = paramString1;
-        paramString1 = (String)localObject;
-        break;
+        localObject1 = this.mStringHelper.a(paramString1);
+        paramString2 = this.mStringHelper.a(paramString2);
       }
-      return null;
+      else
+      {
+        localObject1 = paramString1.toLowerCase();
+        paramString2 = paramString2.toLowerCase();
+      }
+      paramString1 = (ConcurrentHashMap)this.configMap.get(localObject1);
+      Object localObject2 = paramString1;
+      if (paramString1 == null)
+      {
+        localObject2 = new ConcurrentHashMap();
+        this.configMap.put(localObject1, localObject2);
+      }
+      if (localObject2 != null)
+      {
+        String str = (String)((ConcurrentHashMap)localObject2).get(paramString2);
+        paramString1 = str;
+        if (!TextUtils.isEmpty(str)) {
+          return paramString1;
+        }
+        localObject1 = getOneConfig((String)localObject1, paramString2);
+        paramString1 = (String)localObject1;
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          return paramString1;
+        }
+        ((ConcurrentHashMap)localObject2).put(paramString2, localObject1);
+        return localObject1;
+      }
     }
+    paramString1 = null;
+    return paramString1;
   }
   
   public String getConfigSync(String paramString1, String paramString2, String paramString3)
@@ -4667,34 +5227,40 @@ public class QzoneConfig
   
   public void loadAllConfigs()
   {
-    if (Looper.getMainLooper().getThread().getId() == Thread.currentThread().getId()) {
-      throw new IllegalStateException("不要在UI线程中调用此方法");
-    }
-    if ((1 != this.loadstatus) && (2 != this.loadstatus))
+    if (Looper.getMainLooper().getThread().getId() != Thread.currentThread().getId())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneConfig", 2, "loadAllConfigs :" + this.loadstatus);
-      }
-      this.loadstatus = 1;
-      try
+      if ((1 != this.loadstatus) && (2 != this.loadstatus))
       {
-        if (loadAllConfigs(this.configMap))
+        if (QLog.isColorLevel())
         {
-          this.loadstatus = 2;
-          updateConfig();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("loadAllConfigs :");
+          localStringBuilder.append(this.loadstatus);
+          QLog.d("QzoneConfig", 2, localStringBuilder.toString());
+        }
+        this.loadstatus = 1;
+        try
+        {
+          if (loadAllConfigs(this.configMap))
+          {
+            this.loadstatus = 2;
+            updateConfig();
+            return;
+          }
+          this.loadstatus = 3;
           return;
         }
-        this.loadstatus = 3;
-        return;
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("QzoneConfig", 2, "loadAllConfigs 异常", localException);
+        catch (Exception localException)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("QzoneConfig", 2, "loadAllConfigs 异常", localException);
+          }
+          this.loadstatus = 3;
         }
-        this.loadstatus = 3;
       }
+      return;
     }
+    throw new IllegalStateException("不要在UI线程中调用此方法");
   }
   
   public void notifyConfigChange()
@@ -4711,7 +5277,7 @@ public class QzoneConfig
     catch (Throwable localThrowable)
     {
       if (!QLog.isColorLevel()) {
-        break label74;
+        break label78;
       }
       QLog.e("QzoneConfig", 1, "notifyConfigChange error", localThrowable);
     }
@@ -4719,21 +5285,16 @@ public class QzoneConfig
     if (localQzoneConfigChangeListener != null) {
       localQzoneConfigChangeListener.onConfigChange();
     }
-    label74:
-    label95:
     for (;;)
     {
-      return;
-      for (;;)
-      {
-        if (i >= j) {
-          break label95;
-        }
-        localQzoneConfigChangeListener = localThrowable[i];
-        if (localQzoneConfigChangeListener != null) {
-          break;
-        }
-        i += 1;
+      i += 1;
+      label78:
+      while (i >= j) {
+        return;
+      }
+      localQzoneConfigChangeListener = localThrowable[i];
+      if (localQzoneConfigChangeListener != null) {
+        break;
       }
     }
   }
@@ -4743,7 +5304,7 @@ public class QzoneConfig
     if (TextUtils.isEmpty(paramString2))
     {
       loadAllConfigs();
-      Object localObject;
+      Object localObject2;
       if (TextUtils.isEmpty(paramString1))
       {
         QLog.i("CMD_PRINT_WNS_CONFIG", 1, "打印全部配置");
@@ -4751,90 +5312,92 @@ public class QzoneConfig
         while (paramString1.hasNext())
         {
           paramString2 = (String)paramString1.next();
-          QLog.i("CMD_PRINT_WNS_CONFIG", 1, "mainKey = " + paramString2);
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("mainKey = ");
+          ((StringBuilder)localObject1).append(paramString2);
+          QLog.i("CMD_PRINT_WNS_CONFIG", 1, ((StringBuilder)localObject1).toString());
           paramString2 = (Map)this.configMap.get(paramString2);
-          localObject = paramString2.keySet();
-          QLog.i("CMD_PRINT_WNS_CONFIG", 1, "当前的的rawSet个数:" + ((Set)localObject).size());
-          localObject = ((Set)localObject).iterator();
-          while (((Iterator)localObject).hasNext())
+          localObject1 = paramString2.keySet();
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("当前的的rawSet个数:");
+          ((StringBuilder)localObject2).append(((Set)localObject1).size());
+          QLog.i("CMD_PRINT_WNS_CONFIG", 1, ((StringBuilder)localObject2).toString());
+          localObject1 = ((Set)localObject1).iterator();
+          while (((Iterator)localObject1).hasNext())
           {
-            String str = (String)((Iterator)localObject).next();
-            QLog.i("CMD_PRINT_WNS_CONFIG", 1, str + " = " + (String)paramString2.get(str));
+            localObject2 = (String)((Iterator)localObject1).next();
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append((String)localObject2);
+            localStringBuilder.append(" = ");
+            localStringBuilder.append((String)paramString2.get(localObject2));
+            QLog.i("CMD_PRINT_WNS_CONFIG", 1, localStringBuilder.toString());
           }
         }
       }
-      QLog.i("CMD_PRINT_WNS_CONFIG", 1, "打印对应mainkey:" + paramString1 + "的配置");
+      paramString2 = new StringBuilder();
+      paramString2.append("打印对应mainkey:");
+      paramString2.append(paramString1);
+      paramString2.append("的配置");
+      QLog.i("CMD_PRINT_WNS_CONFIG", 1, paramString2.toString());
       paramString1 = (Map)this.configMap.get(paramString1);
       paramString2 = paramString1.keySet();
-      QLog.i("CMD_PRINT_WNS_CONFIG", 1, "当前的的rawSet个数:" + paramString2.size());
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("当前的的rawSet个数:");
+      ((StringBuilder)localObject1).append(paramString2.size());
+      QLog.i("CMD_PRINT_WNS_CONFIG", 1, ((StringBuilder)localObject1).toString());
       paramString2 = paramString2.iterator();
       while (paramString2.hasNext())
       {
-        localObject = (String)paramString2.next();
-        QLog.i("CMD_PRINT_WNS_CONFIG", 1, (String)localObject + " = " + (String)paramString1.get(localObject));
+        localObject1 = (String)paramString2.next();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(" = ");
+        ((StringBuilder)localObject2).append((String)paramString1.get(localObject1));
+        QLog.i("CMD_PRINT_WNS_CONFIG", 1, ((StringBuilder)localObject2).toString());
       }
     }
-    QLog.i("CMD_PRINT_WNS_CONFIG", 1, "打印对应mainkey:" + paramString1 + ",对应secondKey:" + paramString2 + "的配置");
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("打印对应mainkey:");
+    ((StringBuilder)localObject1).append(paramString1);
+    ((StringBuilder)localObject1).append(",对应secondKey:");
+    ((StringBuilder)localObject1).append(paramString2);
+    ((StringBuilder)localObject1).append("的配置");
+    QLog.i("CMD_PRINT_WNS_CONFIG", 1, ((StringBuilder)localObject1).toString());
     paramString1 = getConfig(paramString1, paramString2);
-    QLog.i("CMD_PRINT_WNS_CONFIG", 1, paramString2 + " = " + paramString1);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(paramString2);
+    ((StringBuilder)localObject1).append(" = ");
+    ((StringBuilder)localObject1).append(paramString1);
+    QLog.i("CMD_PRINT_WNS_CONFIG", 1, ((StringBuilder)localObject1).toString());
     QLog.i("CMD_PRINT_WNS_CONFIG", 1, "结束打印WNS配置");
   }
   
-  /* Error */
   public void removeListener(QzoneConfig.QzoneConfigChangeListener paramQzoneConfigChangeListener)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: ifnonnull +6 -> 9
-    //   6: aload_0
-    //   7: monitorexit
-    //   8: return
-    //   9: aload_0
-    //   10: getfield 7825	common/config/service/QzoneConfig:mCallback	Ljava/util/ArrayList;
-    //   13: invokevirtual 8277	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   16: astore_2
-    //   17: aload_2
-    //   18: invokeinterface 8282 1 0
-    //   23: ifeq -17 -> 6
-    //   26: aload_2
-    //   27: invokeinterface 8286 1 0
-    //   32: checkcast 8288	java/lang/ref/WeakReference
-    //   35: astore_3
-    //   36: aload_3
-    //   37: ifnull -20 -> 17
-    //   40: aload_3
-    //   41: invokevirtual 8290	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   44: checkcast 8292	common/config/service/QzoneConfig$QzoneConfigChangeListener
-    //   47: astore_3
-    //   48: aload_3
-    //   49: ifnull +11 -> 60
-    //   52: aload_1
-    //   53: aload_3
-    //   54: invokevirtual 8296	java/lang/Object:equals	(Ljava/lang/Object;)Z
-    //   57: ifeq -40 -> 17
-    //   60: aload_2
-    //   61: invokeinterface 8295 1 0
-    //   66: goto -49 -> 17
-    //   69: astore_1
-    //   70: aload_0
-    //   71: monitorexit
-    //   72: aload_1
-    //   73: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	74	0	this	QzoneConfig
-    //   0	74	1	paramQzoneConfigChangeListener	QzoneConfig.QzoneConfigChangeListener
-    //   16	45	2	localIterator	Iterator
-    //   35	19	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   9	17	69	finally
-    //   17	36	69	finally
-    //   40	48	69	finally
-    //   52	60	69	finally
-    //   60	66	69	finally
+    if (paramQzoneConfigChangeListener == null) {
+      return;
+    }
+    try
+    {
+      Iterator localIterator = this.mCallback.iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (WeakReference)localIterator.next();
+        if (localObject != null)
+        {
+          localObject = (QzoneConfig.QzoneConfigChangeListener)((WeakReference)localObject).get();
+          if ((localObject == null) || (paramQzoneConfigChangeListener.equals(localObject))) {
+            localIterator.remove();
+          }
+        }
+      }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramQzoneConfigChangeListener;
+    }
   }
   
   public void updateOneConfig(String paramString1, String paramString2, String paramString3)
@@ -4844,43 +5407,49 @@ public class QzoneConfig
   
   public void updateOneConfig(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
-    if ((paramString1 == null) || (paramString2 == null) || (paramString3 == null)) {
-      return;
-    }
-    QLog.e("QzoneConfig", 1, "mainKey :" + paramString1 + "  secondKey : " + paramString2 + "  value: " + paramString3);
-    Object localObject;
-    if ((this.mStringHelper != null) && (this.mStringHelper.canHandle()))
+    if ((paramString1 != null) && (paramString2 != null))
     {
-      paramString1 = this.mStringHelper.toLowerCase(paramString1);
-      localObject = this.mStringHelper.toLowerCase(paramString2);
-      paramString2 = paramString1;
-    }
-    for (paramString1 = (String)localObject;; paramString1 = (String)localObject)
-    {
-      ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.configMap.get(paramString2);
+      if (paramString3 == null) {
+        return;
+      }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("mainKey :");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append("  secondKey : ");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append("  value: ");
+      ((StringBuilder)localObject).append(paramString3);
+      QLog.e("QzoneConfig", 1, ((StringBuilder)localObject).toString());
+      localObject = this.mStringHelper;
+      if ((localObject != null) && (((QzoneConfigStringHelper)localObject).a()))
+      {
+        paramString1 = this.mStringHelper.a(paramString1);
+        paramString2 = this.mStringHelper.a(paramString2);
+      }
+      else
+      {
+        paramString1 = paramString1.toLowerCase();
+        paramString2 = paramString2.toLowerCase();
+      }
+      ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.configMap.get(paramString1);
       localObject = localConcurrentHashMap;
       if (localConcurrentHashMap == null)
       {
         localObject = new ConcurrentHashMap();
-        this.configMap.put(paramString2, localObject);
+        this.configMap.put(paramString1, localObject);
       }
       if (localObject != null) {
-        ((ConcurrentHashMap)localObject).put(paramString1, paramString3);
+        ((ConcurrentHashMap)localObject).put(paramString2, paramString3);
       }
-      if (!paramBoolean) {
-        break;
+      if (paramBoolean) {
+        updateConfig();
       }
-      updateConfig();
-      return;
-      paramString1 = paramString1.toLowerCase();
-      localObject = paramString2.toLowerCase();
-      paramString2 = paramString1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     common.config.service.QzoneConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -18,20 +18,13 @@ final class MethodChannel$IncomingResultHandler
   public void reply(ByteBuffer paramByteBuffer)
   {
     if (paramByteBuffer == null) {}
-    for (;;)
+    try
     {
-      try
-      {
-        this.callback.notImplemented();
-        return;
-      }
-      catch (RuntimeException paramByteBuffer)
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("MethodChannel#");
-        localStringBuilder.append(MethodChannel.access$100(this.this$0));
-        Log.e(localStringBuilder.toString(), "Failed to handle method call result", paramByteBuffer);
-      }
+      this.callback.notImplemented();
+      return;
+    }
+    catch (RuntimeException paramByteBuffer)
+    {
       try
       {
         this.callback.success(MethodChannel.access$000(this.this$0).decodeEnvelope(paramByteBuffer));
@@ -42,12 +35,17 @@ final class MethodChannel$IncomingResultHandler
         this.callback.error(paramByteBuffer.code, paramByteBuffer.getMessage(), paramByteBuffer.details);
         return;
       }
+      paramByteBuffer = paramByteBuffer;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("MethodChannel#");
+      localStringBuilder.append(MethodChannel.access$100(this.this$0));
+      Log.e(localStringBuilder.toString(), "Failed to handle method call result", paramByteBuffer);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.common.MethodChannel.IncomingResultHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -4,14 +4,14 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.biz.anonymous.AnonymousChatHelper.AnonymousExtInfo;
+import com.tencent.imcore.message.DecodeC2CMsgPkgBubbleID;
 import com.tencent.imcore.message.MsgProxyUtils;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.BaseMessageHandlerUtils;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.MessageHandlerUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.SQLiteDatabase;
-import com.tencent.mobileqq.app.SVIPHandler;
 import com.tencent.mobileqq.app.proxy.BaseProxy;
 import com.tencent.mobileqq.app.proxy.BaseProxyManager;
 import com.tencent.mobileqq.app.proxy.ProxyListener;
@@ -53,6 +53,7 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.MessageRecordEntityManager;
 import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.mobileqq.qroute.annotation.KeepClassConstructor;
@@ -67,11 +68,14 @@ import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemImage;
 import com.tencent.mobileqq.troop.data.MessageInfo;
 import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.vas.svip.api.SVIPHandlerConstants;
 import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashMap<Ljava.lang.String;Ljava.lang.String;>;
+import java.util.HashMap<Ljava.lang.String;Ljava.util.ArrayList<Lcom.tencent.mobileqq.data.MessageRecord;>;>;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -106,21 +110,27 @@ public class MultiMsgProxy
   
   private long a(@NonNull HashMap<String, String> paramHashMap, MessageInfo paramMessageInfo, msg_comm.Msg paramMsg, msg_comm.MsgHead paramMsgHead, long paramLong1, long paramLong2, int paramInt, MessageHandler paramMessageHandler, ArrayList<MessageRecord> paramArrayList)
   {
-    if ((MessageUtils.c(paramInt)) || (paramInt == 208)) {
-      a(paramHashMap, paramMessageInfo, paramMsg, paramMsgHead, paramLong1, paramMessageHandler, paramArrayList);
-    }
-    do
+    if ((!MessageUtils.c(paramInt)) && (paramInt != 208))
     {
-      return paramLong2;
-      if ((paramInt == 82) || (paramInt == 43))
+      if ((paramInt != 82) && (paramInt != 43))
+      {
+        if ((paramInt == 83) || (paramInt == 42))
+        {
+          paramLong2 = paramMsgHead.discuss_info.discuss_uin.get();
+          b(paramHashMap, paramMessageInfo, paramMsg, paramMsgHead, paramLong1, paramMessageHandler, paramArrayList);
+          return paramLong2;
+        }
+      }
+      else
       {
         paramLong2 = paramMsgHead.group_info.group_code.get();
         c(paramHashMap, paramMessageInfo, paramMsg, paramMsgHead, paramLong1, paramMessageHandler, paramArrayList);
         return paramLong2;
       }
-    } while ((paramInt != 83) && (paramInt != 42));
-    paramLong2 = paramMsgHead.discuss_info.discuss_uin.get();
-    b(paramHashMap, paramMessageInfo, paramMsg, paramMsgHead, paramLong1, paramMessageHandler, paramArrayList);
+    }
+    else {
+      a(paramHashMap, paramMessageInfo, paramMsg, paramMsgHead, paramLong1, paramMessageHandler, paramArrayList);
+    }
     return paramLong2;
   }
   
@@ -135,8 +145,12 @@ public class MultiMsgProxy
         localMessageRecord = paramMessageRecord2;
         if (!(paramMessageRecord2 instanceof MessageForArkApp))
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("MultiMsg_TAG", 2, "not support multi forward msg! " + paramMessageRecord2.toString());
+          if (QLog.isColorLevel())
+          {
+            paramMessageRecord1 = new StringBuilder();
+            paramMessageRecord1.append("not support multi forward msg! ");
+            paramMessageRecord1.append(paramMessageRecord2.toString());
+            QLog.d("MultiMsg_TAG", 2, paramMessageRecord1.toString());
           }
           localMessageRecord = MessageRecordFactory.a(-1000);
           localMessageRecord.msg = paramMsgHead.multi_compatible_text.get();
@@ -149,7 +163,8 @@ public class MultiMsgProxy
   
   private MessageRecordEntityManager a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceMessageRecordEntityManager == null) || (!this.jdField_a_of_type_ComTencentMobileqqPersistenceMessageRecordEntityManager.isOpen())) {}
+    ??? = this.jdField_a_of_type_ComTencentMobileqqPersistenceMessageRecordEntityManager;
+    if ((??? == null) || (!((MessageRecordEntityManager)???).isOpen())) {}
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
       if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceMessageRecordEntityManager == null) || (!this.jdField_a_of_type_ComTencentMobileqqPersistenceMessageRecordEntityManager.isOpen())) {
@@ -165,23 +180,20 @@ public class MultiMsgProxy
     if (!((QQAppInterface)this.app).getFileManagerEngine().a().b(paramArrayList, paramMsg)) {
       MessageProtoCodec.a(paramMessageHandler, paramArrayList, paramMsg, false, false, paramMessageInfo);
     }
-    paramMessageInfo = paramString;
-    if (paramMsgHead.discuss_info.discuss_remark.has())
+    if ((paramMsgHead.discuss_info.discuss_remark.has()) && (paramHashMap != null))
     {
-      paramMessageInfo = paramString;
-      if (paramHashMap != null)
-      {
-        paramMsgHead = paramMsgHead.discuss_info.discuss_remark.get().toStringUtf8();
-        paramMessageInfo = paramMsgHead;
-        if (!TextUtils.isEmpty(paramMsgHead))
-        {
-          paramHashMap.put(String.valueOf(paramLong), paramMsgHead);
-          paramMessageInfo = paramMsgHead;
-        }
+      paramMessageInfo = paramMsgHead.discuss_info.discuss_remark.get().toStringUtf8();
+      if (!TextUtils.isEmpty(paramMessageInfo)) {
+        paramHashMap.put(String.valueOf(paramLong), paramMessageInfo);
       }
+      paramHashMap = paramMessageInfo;
+    }
+    else
+    {
+      paramHashMap = paramString;
     }
     a(paramMessageRecord, paramMsg, paramMessageHandler, paramArrayList);
-    return paramMessageInfo;
+    return paramHashMap;
   }
   
   private String a(msg_comm.Msg paramMsg, HashMap<String, String> paramHashMap, MessageRecord paramMessageRecord, msg_comm.MsgHead paramMsgHead, long paramLong, String paramString, MessageHandler paramMessageHandler, ArrayList<MessageRecord> paramArrayList, MessageInfo paramMessageInfo)
@@ -189,20 +201,17 @@ public class MultiMsgProxy
     if (!((QQAppInterface)this.app).getFileManagerEngine().a().a(paramArrayList, paramMsg)) {
       MessageProtoCodec.a(paramMessageHandler, paramArrayList, paramMsg, false, false, paramMessageInfo);
     }
-    paramMessageInfo = paramString;
-    if (paramMsgHead.group_info.group_card.has())
+    if ((paramMsgHead.group_info.group_card.has()) && (paramHashMap != null))
     {
-      paramMessageInfo = paramString;
-      if (paramHashMap != null)
-      {
-        paramMsgHead = paramMsgHead.group_info.group_card.get().toStringUtf8();
-        paramMessageInfo = paramMsgHead;
-        if (!TextUtils.isEmpty(paramMsgHead))
-        {
-          paramHashMap.put(String.valueOf(paramLong), paramMsgHead);
-          paramMessageInfo = paramMsgHead;
-        }
+      paramMsgHead = paramMsgHead.group_info.group_card.get().toStringUtf8();
+      if (!TextUtils.isEmpty(paramMsgHead)) {
+        paramHashMap.put(String.valueOf(paramLong), paramMsgHead);
       }
+      paramHashMap = paramMsgHead;
+    }
+    else
+    {
+      paramHashMap = paramString;
     }
     a(paramMessageRecord, paramMsg, paramMessageHandler, paramArrayList);
     paramMsg = (im_msg_body.MsgBody)paramMsg.msg_body.get();
@@ -217,53 +226,53 @@ public class MultiMsgProxy
           paramMsg = paramMsg.iterator();
           while (paramMsg.hasNext())
           {
-            paramHashMap = (im_msg_body.Elem)paramMsg.next();
-            if (paramHashMap.anon_group_msg.has())
+            paramMessageRecord = (im_msg_body.Elem)paramMsg.next();
+            if (paramMessageRecord.anon_group_msg.has())
             {
-              paramHashMap = (im_msg_body.AnonymousGroupMsg)paramHashMap.anon_group_msg.get();
-              int i = paramHashMap.uint32_flags.get();
-              paramMsg = paramHashMap.str_anon_id.get().toByteArray();
-              paramMessageRecord = paramHashMap.str_anon_nick.get().toByteArray();
-              int j = paramHashMap.uint32_head_portrait.get();
-              int k = paramHashMap.uint32_expire_time.get();
-              paramMsgHead = paramHashMap.str_rank_color.get().toStringUtf8();
-              if (paramMsg != null) {}
-              for (;;)
-              {
+              paramMessageRecord = (im_msg_body.AnonymousGroupMsg)paramMessageRecord.anon_group_msg.get();
+              int i = paramMessageRecord.uint32_flags.get();
+              paramMsg = paramMessageRecord.str_anon_id.get().toByteArray();
+              paramMsgHead = paramMessageRecord.str_anon_nick.get().toByteArray();
+              int j = paramMessageRecord.uint32_head_portrait.get();
+              int k = paramMessageRecord.uint32_expire_time.get();
+              paramString = paramMessageRecord.str_rank_color.get().toStringUtf8();
+              if (paramMsg != null) {
                 try
                 {
                   paramMsg = new String(paramMsg, "ISO-8859-1");
-                  paramString = paramArrayList.iterator();
-                  if (!paramString.hasNext()) {
-                    break;
-                  }
-                  paramMessageHandler = (MessageRecord)paramString.next();
-                  if (paramMessageRecord != null) {
-                    break label377;
-                  }
-                  paramHashMap = "";
-                  paramMessageHandler.saveExtInfoToExtStr("anonymous", AnonymousChatHelper.a(i, paramMsg, paramHashMap, j, k, paramMsgHead));
-                  paramMessageHandler.extLong |= 0x3;
-                  continue;
-                  paramMsg = "";
                 }
                 catch (UnsupportedEncodingException paramMsg)
                 {
                   paramMsg.printStackTrace();
                 }
-                continue;
-                label377:
-                paramHashMap = new String(paramMessageRecord);
+              } else {
+                paramMsg = "";
               }
-              if (QLog.isColorLevel()) {
-                QLog.d("anonymous_decode", 2, "anonymous_flags has = " + i);
+              paramMessageHandler = paramArrayList.iterator();
+              while (paramMessageHandler.hasNext())
+              {
+                paramArrayList = (MessageRecord)paramMessageHandler.next();
+                if (paramMsgHead == null) {
+                  paramMessageRecord = "";
+                } else {
+                  paramMessageRecord = new String(paramMsgHead);
+                }
+                paramArrayList.saveExtInfoToExtStr("anonymous", AnonymousChatHelper.a(i, paramMsg, paramMessageRecord, j, k, paramString));
+                paramArrayList.extLong |= 0x3;
+              }
+              if (QLog.isColorLevel())
+              {
+                paramMsg = new StringBuilder();
+                paramMsg.append("anonymous_flags has = ");
+                paramMsg.append(i);
+                QLog.d("anonymous_decode", 2, paramMsg.toString());
               }
             }
           }
         }
       }
     }
-    return paramMessageInfo;
+    return paramHashMap;
   }
   
   private String a(msg_comm.Msg paramMsg, HashMap<String, String> paramHashMap, MessageInfo paramMessageInfo, msg_comm.MsgHead paramMsgHead, long paramLong, int paramInt, String paramString, MessageHandler paramMessageHandler, ArrayList<MessageRecord> paramArrayList, MessageRecord paramMessageRecord)
@@ -271,25 +280,21 @@ public class MultiMsgProxy
     int i = paramMsgHead.c2c_cmd.get();
     if ((paramInt == 529) && (i == 4)) {
       ((QQAppInterface)this.app).getFileManagerEngine().a().a(paramArrayList, ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get());
+    } else if ((i == 175) || (i == 11)) {
+      MessageProtoCodec.a(paramMessageHandler, paramArrayList, paramMsg, true, false, paramMessageInfo);
     }
-    for (;;)
+    if ((paramMsgHead.from_nick.has()) && (paramHashMap != null))
     {
-      paramMessageInfo = paramString;
-      if (paramMsgHead.from_nick.has())
-      {
-        paramMessageInfo = paramString;
-        if (paramHashMap != null)
-        {
-          paramMessageInfo = paramMsgHead.from_nick.get();
-          paramHashMap.put(String.valueOf(paramLong), paramMsgHead.from_nick.get());
-        }
-      }
-      a(paramMessageRecord, paramMsg, paramMessageHandler, paramArrayList);
-      return paramMessageInfo;
-      if ((i == 175) || (i == 11)) {
-        MessageProtoCodec.a(paramMessageHandler, paramArrayList, paramMsg, true, false, paramMessageInfo);
-      }
+      paramMessageInfo = paramMsgHead.from_nick.get();
+      paramHashMap.put(String.valueOf(paramLong), paramMsgHead.from_nick.get());
+      paramHashMap = paramMessageInfo;
     }
+    else
+    {
+      paramHashMap = paramString;
+    }
+    a(paramMessageRecord, paramMsg, paramMessageHandler, paramArrayList);
+    return paramHashMap;
   }
   
   @Nullable
@@ -298,28 +303,32 @@ public class MultiMsgProxy
     im_msg_body.RichText localRichText = MessageProtoCodec.a(paramMessageForStructing);
     try
     {
-      if ((paramMessageForStructing.structingMsg != null) && ((paramMessageForStructing.structingMsg instanceof StructMsgForImageShare)))
-      {
-        paramMessageForStructing = ((StructMsgForImageShare)paramMessageForStructing.structingMsg).getFirstImageElement();
-        if (paramMessageForStructing != null)
-        {
-          paramMessageForStructing = paramMessageForStructing.a.richText;
-          localRichText.elems.add(paramMessageForStructing.elems.get(0));
-        }
+      if ((paramMessageForStructing.structingMsg == null) || (!(paramMessageForStructing.structingMsg instanceof StructMsgForImageShare))) {
+        break label77;
       }
+      paramMessageForStructing = ((StructMsgForImageShare)paramMessageForStructing.structingMsg).getFirstImageElement();
+      if (paramMessageForStructing == null) {
+        break label77;
+      }
+      paramMessageForStructing = paramMessageForStructing.a.richText;
+      localRichText.elems.add(paramMessageForStructing.elems.get(0));
+      return localRichText;
     }
     catch (Exception paramMessageForStructing)
     {
-      while (!QLog.isColorLevel()) {}
+      label62:
+      label77:
+      break label62;
+    }
+    if (QLog.isColorLevel()) {
       QLog.d("MultiMsg_TAG", 2, " packMultiMsg.structMsg.exception...");
     }
-    return localRichText;
     return localRichText;
   }
   
   private im_msg_body.RichText a(MessageRecord paramMessageRecord)
   {
-    String str = HardCodeUtil.a(2131707025);
+    String str = HardCodeUtil.a(2131707047);
     if ((paramMessageRecord instanceof MessageForTroopFile)) {
       str = ((MessageForTroopFile)paramMessageRecord).getSummaryMsg();
     }
@@ -328,161 +337,147 @@ public class MultiMsgProxy
   
   private void a(MessageForStructing paramMessageForStructing, HashMap<String, ArrayList<MessageRecord>> paramHashMap, int paramInt)
   {
-    if (paramInt > 3) {
+    if (paramInt > 3)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("MultiMsg_TAG", 2, "recursionAddMultiMsg return before of max recurTime");
       }
-    }
-    label276:
-    for (;;)
-    {
       return;
-      if ((paramMessageForStructing == null) || (paramMessageForStructing.structingMsg == null))
+    }
+    if ((paramMessageForStructing != null) && (paramMessageForStructing.structingMsg != null))
+    {
+      String str = a(paramInt, paramMessageForStructing);
+      Object localObject;
+      if (paramHashMap.containsKey(str))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MultiMsg_TAG", 2, "recursionAddMultiMsg return before of null structmsg");
+        ArrayList localArrayList = (ArrayList)paramHashMap.get(str);
+        localObject = localArrayList;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("MultiMsg_TAG", 2, String.format("recursionAddMultiMsg find list size:%d, filename:%s", new Object[] { Integer.valueOf(localArrayList.size()), str }));
+          localObject = localArrayList;
         }
       }
       else
       {
-        String str = a(paramInt, paramMessageForStructing);
-        ArrayList localArrayList;
-        if (paramHashMap.containsKey(str))
-        {
-          localArrayList = (ArrayList)paramHashMap.get(str);
-          localObject = localArrayList;
-          if (QLog.isColorLevel()) {
-            QLog.d("MultiMsg_TAG", 2, String.format("recursionAddMultiMsg find list size:%d, filename:%s", new Object[] { Integer.valueOf(localArrayList.size()), str }));
-          }
+        if (QLog.isColorLevel()) {
+          QLog.d("MultiMsg_TAG", 2, String.format("recursionAddMultiMsg error filename:%s not found, recurTimes=%d", new Object[] { str, Integer.valueOf(paramInt) }));
         }
-        for (Object localObject = localArrayList;; localObject = null)
+        localObject = null;
+      }
+      if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+      {
+        a(paramMessageForStructing, (List)localObject, null);
+        paramInt += 1;
+        paramMessageForStructing = ((ArrayList)localObject).iterator();
+        while (paramMessageForStructing.hasNext())
         {
-          if ((localObject == null) || (((ArrayList)localObject).size() <= 0)) {
-            break label276;
-          }
-          a(paramMessageForStructing, (List)localObject, null);
-          paramInt += 1;
-          paramMessageForStructing = ((ArrayList)localObject).iterator();
-          while (paramMessageForStructing.hasNext())
+          localObject = (MessageRecord)paramMessageForStructing.next();
+          if (MultiMsgUtil.a((ChatMessage)localObject))
           {
-            localObject = (MessageRecord)paramMessageForStructing.next();
-            if (MultiMsgUtil.a((ChatMessage)localObject))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("MultiMsg_TAG", 2, String.format("recursionAddMultiMsg need recur, uniseq:%d, recurTimes:%d", new Object[] { Long.valueOf(((MessageRecord)localObject).uniseq), Integer.valueOf(paramInt) }));
-              }
-              a((MessageForStructing)localObject, paramHashMap, paramInt);
+            if (QLog.isColorLevel()) {
+              QLog.d("MultiMsg_TAG", 2, String.format("recursionAddMultiMsg need recur, uniseq:%d, recurTimes:%d", new Object[] { Long.valueOf(((MessageRecord)localObject).uniseq), Integer.valueOf(paramInt) }));
             }
-          }
-          break;
-          if (QLog.isColorLevel()) {
-            QLog.d("MultiMsg_TAG", 2, String.format("recursionAddMultiMsg error filename:%s not found, recurTimes=%d", new Object[] { str, Integer.valueOf(paramInt) }));
+            a((MessageForStructing)localObject, paramHashMap, paramInt);
           }
         }
       }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiMsg_TAG", 2, "recursionAddMultiMsg return before of null structmsg");
     }
   }
   
   private void a(MessageForStructing paramMessageForStructing, HashMap<String, ArrayList<MessageRecord>> paramHashMap1, HashMap<String, ArrayList<MessageRecord>> paramHashMap2, int paramInt, ProxyListener paramProxyListener, boolean paramBoolean1, boolean paramBoolean2, ArrayList<MessageRecord> paramArrayList)
   {
-    if (paramInt > 3) {
+    if (paramInt > 3)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("MultiMsg_TAG", 2, "recursivePreAddMultiMsg return before of max recurTime");
       }
-    }
-    label389:
-    label390:
-    for (;;)
-    {
       return;
-      if ((paramMessageForStructing == null) || (paramMessageForStructing.structingMsg == null))
+    }
+    if ((paramMessageForStructing != null) && (paramMessageForStructing.structingMsg != null))
+    {
+      String str1 = a(paramInt, paramMessageForStructing);
+      Object localObject;
+      if (paramHashMap1.containsKey(str1))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MultiMsg_TAG", 2, "recursivePreAddMultiMsg return before of null structmsg");
+        localObject = (ArrayList)paramHashMap1.get(str1);
+        if (QLog.isColorLevel())
+        {
+          int i;
+          if (localObject != null) {
+            i = ((ArrayList)localObject).size();
+          } else {
+            i = 0;
+          }
+          QLog.d("MultiMsg_TAG", 2, String.format("recursivePreAddMultiMsg find list size:%d, filename:%s", new Object[] { Integer.valueOf(i), str1 }));
         }
       }
       else
       {
-        String str1 = a(paramInt, paramMessageForStructing);
-        Object localObject;
-        int i;
-        if (paramHashMap1.containsKey(str1))
-        {
-          localObject = (ArrayList)paramHashMap1.get(str1);
-          if (!QLog.isColorLevel()) {
-            break label389;
-          }
-          if (localObject != null)
-          {
-            i = ((ArrayList)localObject).size();
-            QLog.d("MultiMsg_TAG", 2, String.format("recursivePreAddMultiMsg find list size:%d, filename:%s", new Object[] { Integer.valueOf(i), str1 }));
-          }
+        if (QLog.isColorLevel()) {
+          QLog.d("MultiMsg_TAG", 2, String.format("recursivePreAddMultiMsg error filename:%s not found, recurTimes=%d", new Object[] { str1, Integer.valueOf(paramInt) }));
         }
-        for (;;)
+        localObject = null;
+      }
+      if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+      {
+        paramMessageForStructing = a(paramMessageForStructing, (ArrayList)localObject, paramProxyListener, paramBoolean1, paramBoolean2, paramArrayList);
+        if (paramMessageForStructing != null)
         {
-          label125:
-          if ((localObject == null) || (((ArrayList)localObject).size() <= 0)) {
-            break label390;
-          }
-          paramMessageForStructing = a(paramMessageForStructing, (ArrayList)localObject, paramProxyListener, paramBoolean1, paramBoolean2, paramArrayList);
-          if (paramMessageForStructing == null) {
-            break;
-          }
           localObject = paramMessageForStructing.iterator();
-          for (;;)
+          while (((Iterator)localObject).hasNext())
           {
-            if (((Iterator)localObject).hasNext())
+            MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
+            if (MultiMsgUtil.a((ChatMessage)localMessageRecord))
             {
-              MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
-              if (MultiMsgUtil.a((ChatMessage)localMessageRecord))
-              {
-                MessageForStructing localMessageForStructing = (MessageForStructing)localMessageRecord;
-                String str2 = localMessageForStructing.structingMsg.mFileName;
-                String str3 = String.valueOf(localMessageForStructing.uniseq);
-                localMessageForStructing.structingMsg.mFileName = str3;
-                a(localMessageRecord, null);
-                paramHashMap1.put(str3, (ArrayList)paramHashMap1.remove(str2));
-                continue;
-                i = 0;
-                break;
-                if (QLog.isColorLevel()) {
-                  QLog.d("MultiMsg_TAG", 2, String.format("recursivePreAddMultiMsg error filename:%s not found, recurTimes=%d", new Object[] { str1, Integer.valueOf(paramInt) }));
-                }
-                localObject = null;
-                break label125;
-              }
+              MessageForStructing localMessageForStructing = (MessageForStructing)localMessageRecord;
+              String str2 = localMessageForStructing.structingMsg.mFileName;
+              String str3 = String.valueOf(localMessageForStructing.uniseq);
+              localMessageForStructing.structingMsg.mFileName = str3;
+              a(localMessageRecord, null);
+              paramHashMap1.put(str3, (ArrayList)paramHashMap1.remove(str2));
             }
           }
           paramHashMap2.put(str1, paramMessageForStructing);
-          if ((paramMessageForStructing == null) || (paramMessageForStructing.size() <= 0)) {
-            break;
-          }
-          paramMessageForStructing = paramMessageForStructing.iterator();
-          while (paramMessageForStructing.hasNext())
+          if ((paramMessageForStructing != null) && (paramMessageForStructing.size() > 0))
           {
-            localObject = (MessageRecord)paramMessageForStructing.next();
-            if (MultiMsgUtil.a((ChatMessage)localObject)) {
-              a((MessageForStructing)localObject, paramHashMap1, paramHashMap2, paramInt + 1, paramProxyListener, paramBoolean1, paramBoolean2, paramArrayList);
+            paramMessageForStructing = paramMessageForStructing.iterator();
+            while (paramMessageForStructing.hasNext())
+            {
+              localObject = (MessageRecord)paramMessageForStructing.next();
+              if (MultiMsgUtil.a((ChatMessage)localObject)) {
+                a((MessageForStructing)localObject, paramHashMap1, paramHashMap2, 1 + paramInt, paramProxyListener, paramBoolean1, paramBoolean2, paramArrayList);
+              }
             }
           }
-          break;
         }
       }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiMsg_TAG", 2, "recursivePreAddMultiMsg return before of null structmsg");
     }
   }
   
   private void a(MessageRecord paramMessageRecord, msg_comm.Msg paramMsg, MessageHandler paramMessageHandler, ArrayList<MessageRecord> paramArrayList)
   {
-    if (((paramMessageRecord instanceof MessageForStructing)) && (((MessageForStructing)paramMessageRecord).structingMsg != null) && (((MessageForStructing)paramMessageRecord).structingMsg.mMsgServiceID == 107))
+    if ((paramMessageRecord instanceof MessageForStructing))
     {
-      if ((paramMessageRecord.istroop == 1) || (paramMessageRecord.istroop == 3000)) {
+      MessageForStructing localMessageForStructing = (MessageForStructing)paramMessageRecord;
+      if ((localMessageForStructing.structingMsg != null) && (localMessageForStructing.structingMsg.mMsgServiceID == 107))
+      {
+        if ((paramMessageRecord.istroop != 1) && (paramMessageRecord.istroop != 3000))
+        {
+          new PTTDecoder().a(paramMessageHandler, paramMsg, paramArrayList, null);
+          return;
+        }
         new GrpDisPTTDecoder().a(paramMessageHandler, paramMsg, paramArrayList, null);
       }
     }
-    else {
-      return;
-    }
-    new PTTDecoder().a(paramMessageHandler, paramMsg, paramArrayList, null);
   }
   
   private void a(MessageRecord paramMessageRecord, im_msg_body.RichText paramRichText)
@@ -516,35 +511,26 @@ public class MultiMsgProxy
   private void a(@NonNull HashMap<String, String> paramHashMap, MessageInfo paramMessageInfo, msg_comm.Msg paramMsg, msg_comm.MsgHead paramMsgHead, long paramLong, MessageHandler paramMessageHandler, ArrayList<MessageRecord> paramArrayList)
   {
     int i = paramMsgHead.c2c_cmd.get();
-    if ((i == 175) || (i == 11))
-    {
-      if (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has()) {
-        break label108;
+    if ((i == 175) || (i == 11)) {
+      if (((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has()) {
+        ((QQAppInterface)this.app).getFileManagerEngine().a().a(paramArrayList, ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get());
+      } else {
+        MessageProtoCodec.a(paramMessageHandler, paramArrayList, paramMsg, true, false, paramMessageInfo);
       }
-      ((QQAppInterface)this.app).getFileManagerEngine().a().a(paramArrayList, ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get());
     }
-    for (;;)
-    {
-      if (paramMsgHead.from_nick.has()) {
-        paramHashMap.put(String.valueOf(paramLong), paramMsgHead.from_nick.get());
-      }
-      return;
-      label108:
-      MessageProtoCodec.a(paramMessageHandler, paramArrayList, paramMsg, true, false, paramMessageInfo);
+    if (paramMsgHead.from_nick.has()) {
+      paramHashMap.put(String.valueOf(paramLong), paramMsgHead.from_nick.get());
     }
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    if (MessageForTroopFile.class.isInstance(paramChatMessage)) {}
-    do
-    {
+    if (MessageForTroopFile.class.isInstance(paramChatMessage)) {
       return true;
-      if (!MessageForFile.class.isInstance(paramChatMessage)) {
-        break;
-      }
-    } while (!FileManagerUtil.a(paramQQAppInterface, (MessageForFile)paramChatMessage).sendCloudUnsuccessful());
-    return false;
+    }
+    if (MessageForFile.class.isInstance(paramChatMessage)) {
+      return !FileManagerUtil.a(paramQQAppInterface, (MessageForFile)paramChatMessage).sendCloudUnsuccessful();
+    }
     return false;
   }
   
@@ -586,7 +572,9 @@ public class MultiMsgProxy
     if ((paramMessageRecord instanceof MessageForArkBabyqReply))
     {
       paramMessageRecord = (MessageForArkBabyqReply)paramMessageRecord;
-      return (paramMessageRecord.mArkBabyqReplyCardList != null) && (paramMessageRecord.mArkBabyqReplyCardList.size() > 0);
+      if (paramMessageRecord.mArkBabyqReplyCardList != null) {
+        return paramMessageRecord.mArkBabyqReplyCardList.size() > 0;
+      }
     }
     return false;
   }
@@ -596,255 +584,354 @@ public class MultiMsgProxy
   {
     // Byte code:
     //   0: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3: ifeq +30 -> 33
-    //   6: ldc 122
-    //   8: iconst_2
-    //   9: new 124	java/lang/StringBuilder
-    //   12: dup
-    //   13: invokespecial 125	java/lang/StringBuilder:<init>	()V
-    //   16: ldc_w 630
-    //   19: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   22: aload_0
-    //   23: arraylength
-    //   24: invokevirtual 366	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   27: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   30: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   33: new 632	java/io/ByteArrayInputStream
-    //   36: dup
-    //   37: aload_0
-    //   38: invokespecial 633	java/io/ByteArrayInputStream:<init>	([B)V
-    //   41: astore_3
-    //   42: new 635	java/io/ByteArrayOutputStream
-    //   45: dup
-    //   46: invokespecial 636	java/io/ByteArrayOutputStream:<init>	()V
-    //   49: astore 4
-    //   51: sipush 1024
-    //   54: newarray byte
-    //   56: astore_0
-    //   57: new 638	java/util/zip/GZIPOutputStream
-    //   60: dup
-    //   61: aload 4
-    //   63: invokespecial 641	java/util/zip/GZIPOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   66: astore_2
-    //   67: aload_3
-    //   68: aload_0
-    //   69: iconst_0
-    //   70: sipush 1024
-    //   73: invokevirtual 645	java/io/ByteArrayInputStream:read	([BII)I
-    //   76: istore_1
-    //   77: iload_1
-    //   78: iconst_m1
-    //   79: if_icmpeq +64 -> 143
-    //   82: aload_2
-    //   83: aload_0
-    //   84: iconst_0
-    //   85: iload_1
-    //   86: invokevirtual 649	java/util/zip/GZIPOutputStream:write	([BII)V
-    //   89: goto -22 -> 67
-    //   92: astore_2
-    //   93: aconst_null
-    //   94: astore_0
-    //   95: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   98: ifeq +32 -> 130
-    //   101: ldc 122
-    //   103: iconst_2
-    //   104: new 124	java/lang/StringBuilder
-    //   107: dup
-    //   108: invokespecial 125	java/lang/StringBuilder:<init>	()V
-    //   111: ldc_w 651
-    //   114: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   117: aload_2
-    //   118: invokevirtual 654	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   121: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   124: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   127: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   130: aload 4
-    //   132: invokevirtual 657	java/io/ByteArrayOutputStream:close	()V
-    //   135: aload_3
-    //   136: invokevirtual 658	java/io/ByteArrayInputStream:close	()V
-    //   139: aload_0
-    //   140: astore_2
-    //   141: aload_2
-    //   142: areturn
-    //   143: aload_2
-    //   144: invokevirtual 661	java/util/zip/GZIPOutputStream:flush	()V
-    //   147: aload_2
-    //   148: invokevirtual 662	java/util/zip/GZIPOutputStream:close	()V
-    //   151: aload 4
-    //   153: invokevirtual 663	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   156: astore_0
-    //   157: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   160: ifeq +30 -> 190
-    //   163: ldc 122
-    //   165: iconst_2
-    //   166: new 124	java/lang/StringBuilder
-    //   169: dup
-    //   170: invokespecial 125	java/lang/StringBuilder:<init>	()V
-    //   173: ldc_w 665
-    //   176: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   179: aload_0
-    //   180: arraylength
-    //   181: invokevirtual 366	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   184: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   187: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   190: aload 4
-    //   192: invokevirtual 657	java/io/ByteArrayOutputStream:close	()V
-    //   195: aload_3
-    //   196: invokevirtual 658	java/io/ByteArrayInputStream:close	()V
-    //   199: aload_0
-    //   200: areturn
-    //   201: astore_3
-    //   202: aload_0
-    //   203: astore_2
-    //   204: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   207: ifeq -66 -> 141
-    //   210: ldc 122
-    //   212: iconst_2
-    //   213: new 124	java/lang/StringBuilder
-    //   216: dup
-    //   217: invokespecial 125	java/lang/StringBuilder:<init>	()V
-    //   220: ldc_w 667
-    //   223: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   226: aload_3
-    //   227: invokevirtual 668	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   230: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   233: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   236: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   239: aload_0
-    //   240: areturn
-    //   241: astore_3
-    //   242: aload_0
-    //   243: astore_2
-    //   244: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   247: ifeq -106 -> 141
-    //   250: ldc 122
-    //   252: iconst_2
-    //   253: new 124	java/lang/StringBuilder
-    //   256: dup
-    //   257: invokespecial 125	java/lang/StringBuilder:<init>	()V
-    //   260: ldc_w 667
-    //   263: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   266: aload_3
-    //   267: invokevirtual 668	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   270: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   273: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   276: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   279: aload_0
-    //   280: areturn
-    //   281: astore_2
-    //   282: aconst_null
-    //   283: astore_0
-    //   284: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   287: ifeq +32 -> 319
-    //   290: ldc 122
-    //   292: iconst_2
-    //   293: new 124	java/lang/StringBuilder
-    //   296: dup
-    //   297: invokespecial 125	java/lang/StringBuilder:<init>	()V
-    //   300: ldc_w 670
-    //   303: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   306: aload_2
-    //   307: invokevirtual 671	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   310: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   313: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   316: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   319: aload 4
-    //   321: invokevirtual 657	java/io/ByteArrayOutputStream:close	()V
-    //   324: aload_3
-    //   325: invokevirtual 658	java/io/ByteArrayInputStream:close	()V
-    //   328: aload_0
-    //   329: areturn
-    //   330: astore_3
-    //   331: aload_0
-    //   332: astore_2
-    //   333: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   336: ifeq -195 -> 141
-    //   339: ldc 122
-    //   341: iconst_2
-    //   342: new 124	java/lang/StringBuilder
-    //   345: dup
-    //   346: invokespecial 125	java/lang/StringBuilder:<init>	()V
-    //   349: ldc_w 667
-    //   352: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   355: aload_3
-    //   356: invokevirtual 668	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   359: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   362: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   365: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   368: aload_0
-    //   369: areturn
-    //   370: astore_0
-    //   371: aload 4
-    //   373: invokevirtual 657	java/io/ByteArrayOutputStream:close	()V
-    //   376: aload_3
-    //   377: invokevirtual 658	java/io/ByteArrayInputStream:close	()V
-    //   380: aload_0
-    //   381: athrow
-    //   382: astore_2
-    //   383: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   386: ifeq -6 -> 380
-    //   389: ldc 122
-    //   391: iconst_2
-    //   392: new 124	java/lang/StringBuilder
-    //   395: dup
-    //   396: invokespecial 125	java/lang/StringBuilder:<init>	()V
-    //   399: ldc_w 667
-    //   402: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   405: aload_2
-    //   406: invokevirtual 668	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   409: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   412: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   415: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   418: goto -38 -> 380
-    //   421: astore_2
-    //   422: goto -138 -> 284
-    //   425: astore_2
-    //   426: goto -331 -> 95
+    //   3: ifeq +36 -> 39
+    //   6: new 122	java/lang/StringBuilder
+    //   9: dup
+    //   10: invokespecial 123	java/lang/StringBuilder:<init>	()V
+    //   13: astore_2
+    //   14: aload_2
+    //   15: ldc_w 632
+    //   18: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   21: pop
+    //   22: aload_2
+    //   23: aload_0
+    //   24: arraylength
+    //   25: invokevirtual 364	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   28: pop
+    //   29: ldc 137
+    //   31: iconst_2
+    //   32: aload_2
+    //   33: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   36: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   39: aconst_null
+    //   40: astore 4
+    //   42: aconst_null
+    //   43: astore_3
+    //   44: new 634	java/io/ByteArrayInputStream
+    //   47: dup
+    //   48: aload_0
+    //   49: invokespecial 635	java/io/ByteArrayInputStream:<init>	([B)V
+    //   52: astore 5
+    //   54: new 637	java/io/ByteArrayOutputStream
+    //   57: dup
+    //   58: invokespecial 638	java/io/ByteArrayOutputStream:<init>	()V
+    //   61: astore 6
+    //   63: aload_3
+    //   64: astore_0
+    //   65: aload 4
+    //   67: astore_2
+    //   68: sipush 1024
+    //   71: newarray byte
+    //   73: astore 7
+    //   75: aload_3
+    //   76: astore_0
+    //   77: aload 4
+    //   79: astore_2
+    //   80: new 640	java/util/zip/GZIPOutputStream
+    //   83: dup
+    //   84: aload 6
+    //   86: invokespecial 643	java/util/zip/GZIPOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   89: astore 8
+    //   91: aload_3
+    //   92: astore_0
+    //   93: aload 4
+    //   95: astore_2
+    //   96: aload 5
+    //   98: aload 7
+    //   100: iconst_0
+    //   101: sipush 1024
+    //   104: invokevirtual 647	java/io/ByteArrayInputStream:read	([BII)I
+    //   107: istore_1
+    //   108: iload_1
+    //   109: iconst_m1
+    //   110: if_icmpeq +20 -> 130
+    //   113: aload_3
+    //   114: astore_0
+    //   115: aload 4
+    //   117: astore_2
+    //   118: aload 8
+    //   120: aload 7
+    //   122: iconst_0
+    //   123: iload_1
+    //   124: invokevirtual 651	java/util/zip/GZIPOutputStream:write	([BII)V
+    //   127: goto -36 -> 91
+    //   130: aload_3
+    //   131: astore_0
+    //   132: aload 4
+    //   134: astore_2
+    //   135: aload 8
+    //   137: invokevirtual 654	java/util/zip/GZIPOutputStream:flush	()V
+    //   140: aload_3
+    //   141: astore_0
+    //   142: aload 4
+    //   144: astore_2
+    //   145: aload 8
+    //   147: invokevirtual 657	java/util/zip/GZIPOutputStream:close	()V
+    //   150: aload_3
+    //   151: astore_0
+    //   152: aload 4
+    //   154: astore_2
+    //   155: aload 6
+    //   157: invokevirtual 658	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   160: astore_3
+    //   161: aload_3
+    //   162: astore_0
+    //   163: aload_3
+    //   164: astore_2
+    //   165: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   168: ifeq +56 -> 224
+    //   171: aload_3
+    //   172: astore_0
+    //   173: aload_3
+    //   174: astore_2
+    //   175: new 122	java/lang/StringBuilder
+    //   178: dup
+    //   179: invokespecial 123	java/lang/StringBuilder:<init>	()V
+    //   182: astore 4
+    //   184: aload_3
+    //   185: astore_0
+    //   186: aload_3
+    //   187: astore_2
+    //   188: aload 4
+    //   190: ldc_w 660
+    //   193: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   196: pop
+    //   197: aload_3
+    //   198: astore_0
+    //   199: aload_3
+    //   200: astore_2
+    //   201: aload 4
+    //   203: aload_3
+    //   204: arraylength
+    //   205: invokevirtual 364	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   208: pop
+    //   209: aload_3
+    //   210: astore_0
+    //   211: aload_3
+    //   212: astore_2
+    //   213: ldc 137
+    //   215: iconst_2
+    //   216: aload 4
+    //   218: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   221: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   224: aload 6
+    //   226: invokevirtual 661	java/io/ByteArrayOutputStream:close	()V
+    //   229: aload 5
+    //   231: invokevirtual 662	java/io/ByteArrayInputStream:close	()V
+    //   234: aload_3
+    //   235: areturn
+    //   236: astore_0
+    //   237: aload_3
+    //   238: astore 4
+    //   240: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   243: ifeq +212 -> 455
+    //   246: new 122	java/lang/StringBuilder
+    //   249: dup
+    //   250: invokespecial 123	java/lang/StringBuilder:<init>	()V
+    //   253: astore_2
+    //   254: aload_0
+    //   255: astore 4
+    //   257: aload_3
+    //   258: astore_0
+    //   259: aload_2
+    //   260: ldc_w 664
+    //   263: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   266: pop
+    //   267: aload_2
+    //   268: aload 4
+    //   270: invokevirtual 667	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   273: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   276: pop
+    //   277: ldc 137
+    //   279: iconst_2
+    //   280: aload_2
+    //   281: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   284: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   287: aload_0
+    //   288: areturn
+    //   289: astore_0
+    //   290: goto +168 -> 458
+    //   293: astore_2
+    //   294: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   297: ifeq +38 -> 335
+    //   300: new 122	java/lang/StringBuilder
+    //   303: dup
+    //   304: invokespecial 123	java/lang/StringBuilder:<init>	()V
+    //   307: astore_3
+    //   308: aload_3
+    //   309: ldc_w 669
+    //   312: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   315: pop
+    //   316: aload_3
+    //   317: aload_2
+    //   318: invokevirtual 670	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   321: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   324: pop
+    //   325: ldc 137
+    //   327: iconst_2
+    //   328: aload_3
+    //   329: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   332: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   335: aload 6
+    //   337: invokevirtual 661	java/io/ByteArrayOutputStream:close	()V
+    //   340: aload 5
+    //   342: invokevirtual 662	java/io/ByteArrayInputStream:close	()V
+    //   345: aload_0
+    //   346: areturn
+    //   347: astore_3
+    //   348: aload_0
+    //   349: astore 4
+    //   351: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   354: ifeq +101 -> 455
+    //   357: new 122	java/lang/StringBuilder
+    //   360: dup
+    //   361: invokespecial 123	java/lang/StringBuilder:<init>	()V
+    //   364: astore_2
+    //   365: aload_3
+    //   366: astore 4
+    //   368: goto -109 -> 259
+    //   371: astore_0
+    //   372: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   375: ifeq +38 -> 413
+    //   378: new 122	java/lang/StringBuilder
+    //   381: dup
+    //   382: invokespecial 123	java/lang/StringBuilder:<init>	()V
+    //   385: astore_3
+    //   386: aload_3
+    //   387: ldc_w 672
+    //   390: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   393: pop
+    //   394: aload_3
+    //   395: aload_0
+    //   396: invokevirtual 673	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   399: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   402: pop
+    //   403: ldc 137
+    //   405: iconst_2
+    //   406: aload_3
+    //   407: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   410: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   413: aload 6
+    //   415: invokevirtual 661	java/io/ByteArrayOutputStream:close	()V
+    //   418: aload 5
+    //   420: invokevirtual 662	java/io/ByteArrayInputStream:close	()V
+    //   423: aload_2
+    //   424: areturn
+    //   425: astore_3
+    //   426: aload_2
+    //   427: astore 4
+    //   429: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   432: ifeq +23 -> 455
+    //   435: new 122	java/lang/StringBuilder
+    //   438: dup
+    //   439: invokespecial 123	java/lang/StringBuilder:<init>	()V
+    //   442: astore 4
+    //   444: aload_2
+    //   445: astore_0
+    //   446: aload 4
+    //   448: astore_2
+    //   449: aload_3
+    //   450: astore 4
+    //   452: goto -193 -> 259
+    //   455: aload 4
+    //   457: areturn
+    //   458: aload 6
+    //   460: invokevirtual 661	java/io/ByteArrayOutputStream:close	()V
+    //   463: aload 5
+    //   465: invokevirtual 662	java/io/ByteArrayInputStream:close	()V
+    //   468: goto +45 -> 513
+    //   471: astore_2
+    //   472: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   475: ifeq +38 -> 513
+    //   478: new 122	java/lang/StringBuilder
+    //   481: dup
+    //   482: invokespecial 123	java/lang/StringBuilder:<init>	()V
+    //   485: astore_3
+    //   486: aload_3
+    //   487: ldc_w 664
+    //   490: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   493: pop
+    //   494: aload_3
+    //   495: aload_2
+    //   496: invokevirtual 667	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   499: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   502: pop
+    //   503: ldc 137
+    //   505: iconst_2
+    //   506: aload_3
+    //   507: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   510: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   513: goto +5 -> 518
+    //   516: aload_0
+    //   517: athrow
+    //   518: goto -2 -> 516
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	429	0	paramArrayOfByte	byte[]
-    //   76	10	1	i	int
-    //   66	17	2	localGZIPOutputStream	java.util.zip.GZIPOutputStream
-    //   92	26	2	localException1	Exception
-    //   140	104	2	arrayOfByte1	byte[]
-    //   281	26	2	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   332	1	2	arrayOfByte2	byte[]
-    //   382	24	2	localIOException1	java.io.IOException
-    //   421	1	2	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   425	1	2	localException2	Exception
-    //   41	155	3	localByteArrayInputStream	java.io.ByteArrayInputStream
-    //   201	26	3	localIOException2	java.io.IOException
-    //   241	84	3	localIOException3	java.io.IOException
-    //   330	47	3	localIOException4	java.io.IOException
-    //   49	323	4	localByteArrayOutputStream	java.io.ByteArrayOutputStream
+    //   0	521	0	paramArrayOfByte	byte[]
+    //   107	17	1	i	int
+    //   13	268	2	localObject1	Object
+    //   293	25	2	localOutOfMemoryError	java.lang.OutOfMemoryError
+    //   364	85	2	localObject2	Object
+    //   471	25	2	localIOException1	java.io.IOException
+    //   43	286	3	localObject3	Object
+    //   347	19	3	localIOException2	java.io.IOException
+    //   385	22	3	localStringBuilder1	StringBuilder
+    //   425	25	3	localIOException3	java.io.IOException
+    //   485	22	3	localStringBuilder2	StringBuilder
+    //   40	416	4	localObject4	Object
+    //   52	412	5	localByteArrayInputStream	java.io.ByteArrayInputStream
+    //   61	398	6	localByteArrayOutputStream	java.io.ByteArrayOutputStream
+    //   73	48	7	arrayOfByte	byte[]
+    //   89	57	8	localGZIPOutputStream	java.util.zip.GZIPOutputStream
     // Exception table:
     //   from	to	target	type
-    //   51	67	92	java/lang/Exception
-    //   67	77	92	java/lang/Exception
-    //   82	89	92	java/lang/Exception
-    //   143	157	92	java/lang/Exception
-    //   190	199	201	java/io/IOException
-    //   130	139	241	java/io/IOException
-    //   51	67	281	java/lang/OutOfMemoryError
-    //   67	77	281	java/lang/OutOfMemoryError
-    //   82	89	281	java/lang/OutOfMemoryError
-    //   143	157	281	java/lang/OutOfMemoryError
-    //   319	328	330	java/io/IOException
-    //   51	67	370	finally
-    //   67	77	370	finally
-    //   82	89	370	finally
-    //   95	130	370	finally
-    //   143	157	370	finally
-    //   157	190	370	finally
-    //   284	319	370	finally
-    //   371	380	382	java/io/IOException
-    //   157	190	421	java/lang/OutOfMemoryError
-    //   157	190	425	java/lang/Exception
+    //   224	234	236	java/io/IOException
+    //   68	75	289	finally
+    //   80	91	289	finally
+    //   96	108	289	finally
+    //   118	127	289	finally
+    //   135	140	289	finally
+    //   145	150	289	finally
+    //   155	161	289	finally
+    //   165	171	289	finally
+    //   175	184	289	finally
+    //   188	197	289	finally
+    //   201	209	289	finally
+    //   213	224	289	finally
+    //   294	335	289	finally
+    //   372	413	289	finally
+    //   68	75	293	java/lang/OutOfMemoryError
+    //   80	91	293	java/lang/OutOfMemoryError
+    //   96	108	293	java/lang/OutOfMemoryError
+    //   118	127	293	java/lang/OutOfMemoryError
+    //   135	140	293	java/lang/OutOfMemoryError
+    //   145	150	293	java/lang/OutOfMemoryError
+    //   155	161	293	java/lang/OutOfMemoryError
+    //   165	171	293	java/lang/OutOfMemoryError
+    //   175	184	293	java/lang/OutOfMemoryError
+    //   188	197	293	java/lang/OutOfMemoryError
+    //   201	209	293	java/lang/OutOfMemoryError
+    //   213	224	293	java/lang/OutOfMemoryError
+    //   335	345	347	java/io/IOException
+    //   68	75	371	java/lang/Exception
+    //   80	91	371	java/lang/Exception
+    //   96	108	371	java/lang/Exception
+    //   118	127	371	java/lang/Exception
+    //   135	140	371	java/lang/Exception
+    //   145	150	371	java/lang/Exception
+    //   155	161	371	java/lang/Exception
+    //   165	171	371	java/lang/Exception
+    //   175	184	371	java/lang/Exception
+    //   188	197	371	java/lang/Exception
+    //   201	209	371	java/lang/Exception
+    //   213	224	371	java/lang/Exception
+    //   413	423	425	java/io/IOException
+    //   458	468	471	java/io/IOException
   }
   
   private im_msg_body.RichText b(MessageRecord paramMessageRecord)
   {
-    String str = HardCodeUtil.a(2131707027);
+    String str = HardCodeUtil.a(2131707049);
     if ((paramMessageRecord instanceof MessageForFile)) {
       str = ((MessageForFile)paramMessageRecord).getSummaryMsg();
     }
@@ -853,56 +940,46 @@ public class MultiMsgProxy
   
   private void b(MessageForStructing paramMessageForStructing, HashMap<String, ArrayList<MessageRecord>> paramHashMap, int paramInt)
   {
-    if (paramInt > 1) {
+    if (paramInt > 1)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("MultiMsg_TAG", 2, "recursiveQueryMultiMsg return before of max recurTime");
       }
-    }
-    ArrayList localArrayList;
-    do
-    {
-      do
-      {
-        return;
-        if (paramMessageForStructing != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("MultiMsg_TAG", 2, "recursiveQueryMultiMsg return before of null structmsg");
       return;
-      localArrayList = a(paramMessageForStructing.uniseq);
-    } while ((localArrayList == null) || (localArrayList.size() <= 0));
-    paramHashMap.put(a(paramInt, paramMessageForStructing), localArrayList);
-    paramInt += 1;
-    paramMessageForStructing = localArrayList.iterator();
-    label87:
-    label226:
-    for (;;)
+    }
+    if (paramMessageForStructing == null)
     {
-      MessageRecord localMessageRecord1;
-      if (paramMessageForStructing.hasNext())
-      {
-        localMessageRecord1 = (MessageRecord)paramMessageForStructing.next();
-        if (!MultiMsgUtil.a((ChatMessage)localMessageRecord1)) {
-          continue;
-        }
-        if (paramInt != 2) {
-          break label214;
-        }
-        MessageRecord localMessageRecord2 = a(localMessageRecord1, MultiMsgConstant.jdField_a_of_type_JavaLangString, false);
-        localMessageRecord2.setStatus(1000);
-        localMessageRecord2.msgData = localMessageRecord2.msg.getBytes();
-        localArrayList.set(localArrayList.indexOf(localMessageRecord1), localMessageRecord2);
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiMsg_TAG", 2, "recursiveQueryMultiMsg return before of null structmsg");
       }
-      for (;;)
+      return;
+    }
+    ArrayList localArrayList = a(paramMessageForStructing.uniseq);
+    if ((localArrayList != null) && (localArrayList.size() > 0))
+    {
+      paramHashMap.put(a(paramInt, paramMessageForStructing), localArrayList);
+      paramInt += 1;
+      paramMessageForStructing = localArrayList.iterator();
+      while (paramMessageForStructing.hasNext())
       {
-        if (!QLog.isColorLevel()) {
-          break label226;
+        MessageRecord localMessageRecord1 = (MessageRecord)paramMessageForStructing.next();
+        if (MultiMsgUtil.a((ChatMessage)localMessageRecord1))
+        {
+          if (paramInt == 2)
+          {
+            MessageRecord localMessageRecord2 = a(localMessageRecord1, MultiMsgConstant.jdField_a_of_type_JavaLangString, false);
+            localMessageRecord2.setStatus(1000);
+            localMessageRecord2.msgData = localMessageRecord2.msg.getBytes();
+            localArrayList.set(localArrayList.indexOf(localMessageRecord1), localMessageRecord2);
+          }
+          else
+          {
+            b((MessageForStructing)localMessageRecord1, paramHashMap, paramInt);
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("MultiMsg_TAG", 2, String.format("recursiveQueryMultiMsg need recur, uniseq:%d, recurTimes:%d", new Object[] { Long.valueOf(localMessageRecord1.uniseq), Integer.valueOf(paramInt) }));
+          }
         }
-        QLog.d("MultiMsg_TAG", 2, String.format("recursiveQueryMultiMsg need recur, uniseq:%d, recurTimes:%d", new Object[] { Long.valueOf(localMessageRecord1.uniseq), Integer.valueOf(paramInt) }));
-        break label87;
-        break;
-        b((MessageForStructing)localMessageRecord1, paramHashMap, paramInt);
       }
     }
   }
@@ -927,10 +1004,14 @@ public class MultiMsgProxy
     }
     if (MessageForDLFile.class.isInstance(paramChatMessage))
     {
-      int i = ((MessageForDLFile)paramChatMessage).deviceType;
-      long l = ((MessageForDLFile)paramChatMessage).associatedId;
+      paramChatMessage = (MessageForDLFile)paramChatMessage;
+      int i = paramChatMessage.deviceType;
+      long l = paramChatMessage.associatedId;
       paramQQAppInterface = paramQQAppInterface.getMessageFacade().a(i).a(l);
-      return (paramQQAppInterface != null) && (FileUtils.b(paramQQAppInterface.path));
+      if (paramQQAppInterface != null) {
+        return FileUtils.fileExistsAndNotEmpty(paramQQAppInterface.path);
+      }
+      return false;
     }
     if (MessageForPic.class.isInstance(paramChatMessage)) {
       return true;
@@ -976,289 +1057,347 @@ public class MultiMsgProxy
   {
     // Byte code:
     //   0: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3: ifeq +30 -> 33
-    //   6: ldc 122
-    //   8: iconst_2
-    //   9: new 124	java/lang/StringBuilder
-    //   12: dup
-    //   13: invokespecial 125	java/lang/StringBuilder:<init>	()V
-    //   16: ldc_w 751
-    //   19: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   22: aload_0
-    //   23: arraylength
-    //   24: invokevirtual 366	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   27: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   30: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   33: aconst_null
-    //   34: astore 5
-    //   36: aconst_null
-    //   37: astore 4
-    //   39: new 632	java/io/ByteArrayInputStream
-    //   42: dup
-    //   43: aload_0
-    //   44: invokespecial 633	java/io/ByteArrayInputStream:<init>	([B)V
-    //   47: astore 6
-    //   49: new 635	java/io/ByteArrayOutputStream
-    //   52: dup
-    //   53: invokespecial 636	java/io/ByteArrayOutputStream:<init>	()V
-    //   56: astore 7
-    //   58: aload 4
-    //   60: astore_2
-    //   61: aload 5
-    //   63: astore_3
-    //   64: sipush 1024
-    //   67: newarray byte
-    //   69: astore 8
-    //   71: aload 4
-    //   73: astore_2
-    //   74: aload 5
-    //   76: astore_3
-    //   77: new 753	java/util/zip/GZIPInputStream
-    //   80: dup
-    //   81: aload 6
-    //   83: invokespecial 756	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
-    //   86: astore 9
-    //   88: aload 4
-    //   90: astore_2
-    //   91: aload 5
-    //   93: astore_3
-    //   94: aload 9
-    //   96: aload 8
-    //   98: iconst_0
-    //   99: sipush 1024
-    //   102: invokevirtual 757	java/util/zip/GZIPInputStream:read	([BII)I
-    //   105: istore_1
-    //   106: iload_1
-    //   107: iconst_m1
-    //   108: if_icmpeq +73 -> 181
-    //   111: aload 4
-    //   113: astore_2
-    //   114: aload 5
-    //   116: astore_3
-    //   117: aload 7
-    //   119: aload 8
-    //   121: iconst_0
-    //   122: iload_1
-    //   123: invokevirtual 758	java/io/ByteArrayOutputStream:write	([BII)V
-    //   126: goto -38 -> 88
-    //   129: astore_3
-    //   130: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   133: ifeq +32 -> 165
-    //   136: ldc 122
-    //   138: iconst_2
-    //   139: new 124	java/lang/StringBuilder
-    //   142: dup
-    //   143: invokespecial 125	java/lang/StringBuilder:<init>	()V
-    //   146: ldc_w 760
-    //   149: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   152: aload_3
-    //   153: invokevirtual 654	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   156: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   159: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   162: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   165: aload 7
-    //   167: invokevirtual 657	java/io/ByteArrayOutputStream:close	()V
-    //   170: aload 6
-    //   172: invokevirtual 658	java/io/ByteArrayInputStream:close	()V
-    //   175: aload_2
-    //   176: ifnonnull +316 -> 492
-    //   179: aload_0
-    //   180: areturn
-    //   181: aload 4
-    //   183: astore_2
-    //   184: aload 5
-    //   186: astore_3
-    //   187: aload 9
-    //   189: invokevirtual 761	java/util/zip/GZIPInputStream:close	()V
-    //   192: aload 4
-    //   194: astore_2
-    //   195: aload 5
-    //   197: astore_3
-    //   198: aload 7
-    //   200: invokevirtual 663	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   203: astore 4
-    //   205: aload 4
-    //   207: astore_2
-    //   208: aload 4
-    //   210: astore_3
-    //   211: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   214: ifeq +37 -> 251
-    //   217: aload 4
-    //   219: astore_2
-    //   220: aload 4
-    //   222: astore_3
-    //   223: ldc 122
-    //   225: iconst_2
-    //   226: new 124	java/lang/StringBuilder
-    //   229: dup
-    //   230: invokespecial 125	java/lang/StringBuilder:<init>	()V
-    //   233: ldc_w 763
-    //   236: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   239: aload 4
-    //   241: arraylength
-    //   242: invokevirtual 366	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   245: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   248: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   251: aload 7
-    //   253: invokevirtual 657	java/io/ByteArrayOutputStream:close	()V
-    //   256: aload 6
-    //   258: invokevirtual 658	java/io/ByteArrayInputStream:close	()V
-    //   261: aload 4
-    //   263: astore_2
-    //   264: goto -89 -> 175
-    //   267: astore_2
-    //   268: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   271: ifeq +32 -> 303
-    //   274: ldc 122
-    //   276: iconst_2
-    //   277: new 124	java/lang/StringBuilder
-    //   280: dup
-    //   281: invokespecial 125	java/lang/StringBuilder:<init>	()V
-    //   284: ldc_w 765
-    //   287: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   290: aload_2
-    //   291: invokevirtual 668	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   294: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   297: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   300: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   303: aload 4
-    //   305: astore_2
-    //   306: goto -131 -> 175
-    //   309: astore_3
-    //   310: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   313: ifeq +32 -> 345
-    //   316: ldc 122
-    //   318: iconst_2
-    //   319: new 124	java/lang/StringBuilder
-    //   322: dup
-    //   323: invokespecial 125	java/lang/StringBuilder:<init>	()V
-    //   326: ldc_w 765
-    //   329: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   332: aload_3
-    //   333: invokevirtual 668	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   336: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   339: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   342: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   345: goto -170 -> 175
-    //   348: astore_2
-    //   349: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   352: ifeq +32 -> 384
-    //   355: ldc 122
-    //   357: iconst_2
-    //   358: new 124	java/lang/StringBuilder
-    //   361: dup
-    //   362: invokespecial 125	java/lang/StringBuilder:<init>	()V
-    //   365: ldc_w 760
-    //   368: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3: ifeq +36 -> 39
+    //   6: new 122	java/lang/StringBuilder
+    //   9: dup
+    //   10: invokespecial 123	java/lang/StringBuilder:<init>	()V
+    //   13: astore_2
+    //   14: aload_2
+    //   15: ldc_w 754
+    //   18: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   21: pop
+    //   22: aload_2
+    //   23: aload_0
+    //   24: arraylength
+    //   25: invokevirtual 364	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   28: pop
+    //   29: ldc 137
+    //   31: iconst_2
+    //   32: aload_2
+    //   33: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   36: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   39: aconst_null
+    //   40: astore 5
+    //   42: aconst_null
+    //   43: astore 4
+    //   45: new 634	java/io/ByteArrayInputStream
+    //   48: dup
+    //   49: aload_0
+    //   50: invokespecial 635	java/io/ByteArrayInputStream:<init>	([B)V
+    //   53: astore 6
+    //   55: new 637	java/io/ByteArrayOutputStream
+    //   58: dup
+    //   59: invokespecial 638	java/io/ByteArrayOutputStream:<init>	()V
+    //   62: astore 7
+    //   64: aload 4
+    //   66: astore_2
+    //   67: aload 5
+    //   69: astore_3
+    //   70: sipush 1024
+    //   73: newarray byte
+    //   75: astore 8
+    //   77: aload 4
+    //   79: astore_2
+    //   80: aload 5
+    //   82: astore_3
+    //   83: new 756	java/util/zip/GZIPInputStream
+    //   86: dup
+    //   87: aload 6
+    //   89: invokespecial 759	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
+    //   92: astore 9
+    //   94: aload 4
+    //   96: astore_2
+    //   97: aload 5
+    //   99: astore_3
+    //   100: aload 9
+    //   102: aload 8
+    //   104: iconst_0
+    //   105: sipush 1024
+    //   108: invokevirtual 760	java/util/zip/GZIPInputStream:read	([BII)I
+    //   111: istore_1
+    //   112: iload_1
+    //   113: iconst_m1
+    //   114: if_icmpeq +21 -> 135
+    //   117: aload 4
+    //   119: astore_2
+    //   120: aload 5
+    //   122: astore_3
+    //   123: aload 7
+    //   125: aload 8
+    //   127: iconst_0
+    //   128: iload_1
+    //   129: invokevirtual 761	java/io/ByteArrayOutputStream:write	([BII)V
+    //   132: goto -38 -> 94
+    //   135: aload 4
+    //   137: astore_2
+    //   138: aload 5
+    //   140: astore_3
+    //   141: aload 9
+    //   143: invokevirtual 762	java/util/zip/GZIPInputStream:close	()V
+    //   146: aload 4
+    //   148: astore_2
+    //   149: aload 5
+    //   151: astore_3
+    //   152: aload 7
+    //   154: invokevirtual 658	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   157: astore 4
+    //   159: aload 4
+    //   161: astore_2
+    //   162: aload 4
+    //   164: astore_3
+    //   165: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   168: ifeq +65 -> 233
+    //   171: aload 4
+    //   173: astore_2
+    //   174: aload 4
+    //   176: astore_3
+    //   177: new 122	java/lang/StringBuilder
+    //   180: dup
+    //   181: invokespecial 123	java/lang/StringBuilder:<init>	()V
+    //   184: astore 5
+    //   186: aload 4
+    //   188: astore_2
+    //   189: aload 4
+    //   191: astore_3
+    //   192: aload 5
+    //   194: ldc_w 764
+    //   197: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   200: pop
+    //   201: aload 4
+    //   203: astore_2
+    //   204: aload 4
+    //   206: astore_3
+    //   207: aload 5
+    //   209: aload 4
+    //   211: arraylength
+    //   212: invokevirtual 364	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   215: pop
+    //   216: aload 4
+    //   218: astore_2
+    //   219: aload 4
+    //   221: astore_3
+    //   222: ldc 137
+    //   224: iconst_2
+    //   225: aload 5
+    //   227: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   230: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   233: aload 7
+    //   235: invokevirtual 661	java/io/ByteArrayOutputStream:close	()V
+    //   238: aload 6
+    //   240: invokevirtual 662	java/io/ByteArrayInputStream:close	()V
+    //   243: aload 4
+    //   245: astore 5
+    //   247: goto +242 -> 489
+    //   250: astore 6
+    //   252: aload 4
+    //   254: astore 5
+    //   256: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   259: ifeq +230 -> 489
+    //   262: new 122	java/lang/StringBuilder
+    //   265: dup
+    //   266: invokespecial 123	java/lang/StringBuilder:<init>	()V
+    //   269: astore_3
+    //   270: aload 4
+    //   272: astore_2
+    //   273: aload 6
+    //   275: astore 4
+    //   277: aload_3
+    //   278: ldc_w 766
+    //   281: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   284: pop
+    //   285: aload_3
+    //   286: aload 4
+    //   288: invokevirtual 667	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   291: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   294: pop
+    //   295: ldc 137
+    //   297: iconst_2
+    //   298: aload_3
+    //   299: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   302: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   305: aload_2
+    //   306: astore 5
+    //   308: goto +181 -> 489
+    //   311: astore_0
+    //   312: goto +187 -> 499
+    //   315: astore_3
+    //   316: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   319: ifeq +42 -> 361
+    //   322: new 122	java/lang/StringBuilder
+    //   325: dup
+    //   326: invokespecial 123	java/lang/StringBuilder:<init>	()V
+    //   329: astore 4
+    //   331: aload 4
+    //   333: ldc_w 768
+    //   336: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   339: pop
+    //   340: aload 4
+    //   342: aload_3
+    //   343: invokevirtual 670	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   346: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   349: pop
+    //   350: ldc 137
+    //   352: iconst_2
+    //   353: aload 4
+    //   355: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   358: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   361: aload 7
+    //   363: invokevirtual 661	java/io/ByteArrayOutputStream:close	()V
+    //   366: aload 6
+    //   368: invokevirtual 662	java/io/ByteArrayInputStream:close	()V
     //   371: aload_2
-    //   372: invokevirtual 671	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   375: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   378: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   381: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   384: aload 7
-    //   386: invokevirtual 657	java/io/ByteArrayOutputStream:close	()V
-    //   389: aload 6
-    //   391: invokevirtual 658	java/io/ByteArrayInputStream:close	()V
-    //   394: aload_3
-    //   395: astore_2
-    //   396: goto -221 -> 175
+    //   372: astore 5
+    //   374: goto +115 -> 489
+    //   377: astore 4
+    //   379: aload_2
+    //   380: astore 5
+    //   382: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   385: ifeq +104 -> 489
+    //   388: new 122	java/lang/StringBuilder
+    //   391: dup
+    //   392: invokespecial 123	java/lang/StringBuilder:<init>	()V
+    //   395: astore_3
+    //   396: goto -119 -> 277
     //   399: astore_2
     //   400: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   403: ifeq +32 -> 435
-    //   406: ldc 122
-    //   408: iconst_2
-    //   409: new 124	java/lang/StringBuilder
-    //   412: dup
-    //   413: invokespecial 125	java/lang/StringBuilder:<init>	()V
-    //   416: ldc_w 765
-    //   419: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   422: aload_2
-    //   423: invokevirtual 668	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   426: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   429: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   432: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   435: aload_3
-    //   436: astore_2
-    //   437: goto -262 -> 175
-    //   440: astore_0
-    //   441: aload 7
-    //   443: invokevirtual 657	java/io/ByteArrayOutputStream:close	()V
-    //   446: aload 6
-    //   448: invokevirtual 658	java/io/ByteArrayInputStream:close	()V
-    //   451: aload_0
-    //   452: athrow
-    //   453: astore_2
-    //   454: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   457: ifeq -6 -> 451
-    //   460: ldc 122
-    //   462: iconst_2
-    //   463: new 124	java/lang/StringBuilder
-    //   466: dup
-    //   467: invokespecial 125	java/lang/StringBuilder:<init>	()V
-    //   470: ldc_w 765
-    //   473: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   476: aload_2
-    //   477: invokevirtual 668	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   480: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   483: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   486: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   489: goto -38 -> 451
-    //   492: aload_2
-    //   493: areturn
+    //   403: ifeq +42 -> 445
+    //   406: new 122	java/lang/StringBuilder
+    //   409: dup
+    //   410: invokespecial 123	java/lang/StringBuilder:<init>	()V
+    //   413: astore 4
+    //   415: aload 4
+    //   417: ldc_w 768
+    //   420: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   423: pop
+    //   424: aload 4
+    //   426: aload_2
+    //   427: invokevirtual 673	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   430: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   433: pop
+    //   434: ldc 137
+    //   436: iconst_2
+    //   437: aload 4
+    //   439: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   442: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   445: aload 7
+    //   447: invokevirtual 661	java/io/ByteArrayOutputStream:close	()V
+    //   450: aload 6
+    //   452: invokevirtual 662	java/io/ByteArrayInputStream:close	()V
+    //   455: aload_3
+    //   456: astore 5
+    //   458: goto +31 -> 489
+    //   461: astore 4
+    //   463: aload_3
+    //   464: astore 5
+    //   466: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   469: ifeq +20 -> 489
+    //   472: new 122	java/lang/StringBuilder
+    //   475: dup
+    //   476: invokespecial 123	java/lang/StringBuilder:<init>	()V
+    //   479: astore 5
+    //   481: aload_3
+    //   482: astore_2
+    //   483: aload 5
+    //   485: astore_3
+    //   486: goto -209 -> 277
+    //   489: aload 5
+    //   491: ifnonnull +5 -> 496
+    //   494: aload_0
+    //   495: areturn
+    //   496: aload 5
+    //   498: areturn
+    //   499: aload 7
+    //   501: invokevirtual 661	java/io/ByteArrayOutputStream:close	()V
+    //   504: aload 6
+    //   506: invokevirtual 662	java/io/ByteArrayInputStream:close	()V
+    //   509: goto +45 -> 554
+    //   512: astore_2
+    //   513: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   516: ifeq +38 -> 554
+    //   519: new 122	java/lang/StringBuilder
+    //   522: dup
+    //   523: invokespecial 123	java/lang/StringBuilder:<init>	()V
+    //   526: astore_3
+    //   527: aload_3
+    //   528: ldc_w 766
+    //   531: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   534: pop
+    //   535: aload_3
+    //   536: aload_2
+    //   537: invokevirtual 667	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   540: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   543: pop
+    //   544: ldc 137
+    //   546: iconst_2
+    //   547: aload_3
+    //   548: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   551: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   554: goto +5 -> 559
+    //   557: aload_0
+    //   558: athrow
+    //   559: goto -2 -> 557
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	494	0	paramArrayOfByte	byte[]
-    //   105	18	1	i	int
-    //   60	204	2	arrayOfByte1	byte[]
-    //   267	24	2	localIOException1	java.io.IOException
-    //   305	1	2	arrayOfByte2	byte[]
-    //   348	24	2	localOutOfMemoryError	java.lang.OutOfMemoryError
-    //   395	1	2	localObject1	Object
-    //   399	24	2	localIOException2	java.io.IOException
-    //   436	1	2	localObject2	Object
-    //   453	40	2	localIOException3	java.io.IOException
-    //   63	54	3	localObject3	Object
-    //   129	24	3	localException	Exception
-    //   186	37	3	localObject4	Object
-    //   309	127	3	localIOException4	java.io.IOException
-    //   37	267	4	arrayOfByte3	byte[]
-    //   34	162	5	localObject5	Object
-    //   47	400	6	localByteArrayInputStream	java.io.ByteArrayInputStream
-    //   56	386	7	localByteArrayOutputStream	java.io.ByteArrayOutputStream
-    //   69	51	8	arrayOfByte4	byte[]
-    //   86	102	9	localGZIPInputStream	java.util.zip.GZIPInputStream
+    //   0	562	0	paramArrayOfByte	byte[]
+    //   111	18	1	i	int
+    //   13	367	2	localObject1	Object
+    //   399	28	2	localException	Exception
+    //   482	1	2	localObject2	Object
+    //   512	25	2	localIOException1	java.io.IOException
+    //   69	230	3	localObject3	Object
+    //   315	28	3	localOutOfMemoryError	java.lang.OutOfMemoryError
+    //   395	153	3	localObject4	Object
+    //   43	311	4	localObject5	Object
+    //   377	1	4	localIOException2	java.io.IOException
+    //   413	25	4	localStringBuilder	StringBuilder
+    //   461	1	4	localIOException3	java.io.IOException
+    //   40	457	5	localObject6	Object
+    //   53	186	6	localByteArrayInputStream	java.io.ByteArrayInputStream
+    //   250	255	6	localIOException4	java.io.IOException
+    //   62	438	7	localByteArrayOutputStream	java.io.ByteArrayOutputStream
+    //   75	51	8	arrayOfByte	byte[]
+    //   92	50	9	localGZIPInputStream	java.util.zip.GZIPInputStream
     // Exception table:
     //   from	to	target	type
-    //   64	71	129	java/lang/Exception
-    //   77	88	129	java/lang/Exception
-    //   94	106	129	java/lang/Exception
-    //   117	126	129	java/lang/Exception
-    //   187	192	129	java/lang/Exception
-    //   198	205	129	java/lang/Exception
-    //   211	217	129	java/lang/Exception
-    //   223	251	129	java/lang/Exception
-    //   251	261	267	java/io/IOException
-    //   165	175	309	java/io/IOException
-    //   64	71	348	java/lang/OutOfMemoryError
-    //   77	88	348	java/lang/OutOfMemoryError
-    //   94	106	348	java/lang/OutOfMemoryError
-    //   117	126	348	java/lang/OutOfMemoryError
-    //   187	192	348	java/lang/OutOfMemoryError
-    //   198	205	348	java/lang/OutOfMemoryError
-    //   211	217	348	java/lang/OutOfMemoryError
-    //   223	251	348	java/lang/OutOfMemoryError
-    //   384	394	399	java/io/IOException
-    //   64	71	440	finally
-    //   77	88	440	finally
-    //   94	106	440	finally
-    //   117	126	440	finally
-    //   130	165	440	finally
-    //   187	192	440	finally
-    //   198	205	440	finally
-    //   211	217	440	finally
-    //   223	251	440	finally
-    //   349	384	440	finally
-    //   441	451	453	java/io/IOException
+    //   233	243	250	java/io/IOException
+    //   70	77	311	finally
+    //   83	94	311	finally
+    //   100	112	311	finally
+    //   123	132	311	finally
+    //   141	146	311	finally
+    //   152	159	311	finally
+    //   165	171	311	finally
+    //   177	186	311	finally
+    //   192	201	311	finally
+    //   207	216	311	finally
+    //   222	233	311	finally
+    //   316	361	311	finally
+    //   400	445	311	finally
+    //   70	77	315	java/lang/OutOfMemoryError
+    //   83	94	315	java/lang/OutOfMemoryError
+    //   100	112	315	java/lang/OutOfMemoryError
+    //   123	132	315	java/lang/OutOfMemoryError
+    //   141	146	315	java/lang/OutOfMemoryError
+    //   152	159	315	java/lang/OutOfMemoryError
+    //   165	171	315	java/lang/OutOfMemoryError
+    //   177	186	315	java/lang/OutOfMemoryError
+    //   192	201	315	java/lang/OutOfMemoryError
+    //   207	216	315	java/lang/OutOfMemoryError
+    //   222	233	315	java/lang/OutOfMemoryError
+    //   361	371	377	java/io/IOException
+    //   70	77	399	java/lang/Exception
+    //   83	94	399	java/lang/Exception
+    //   100	112	399	java/lang/Exception
+    //   123	132	399	java/lang/Exception
+    //   141	146	399	java/lang/Exception
+    //   152	159	399	java/lang/Exception
+    //   165	171	399	java/lang/Exception
+    //   177	186	399	java/lang/Exception
+    //   192	201	399	java/lang/Exception
+    //   207	216	399	java/lang/Exception
+    //   222	233	399	java/lang/Exception
+    //   445	455	461	java/io/IOException
+    //   499	509	512	java/io/IOException
   }
   
   private im_msg_body.RichText c(MessageRecord paramMessageRecord)
@@ -1281,27 +1420,38 @@ public class MultiMsgProxy
   
   protected MessageRecord a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiMsg_TAG", 2, "queryLastMsg,delNum:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("queryLastMsg,delNum:");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("MultiMsg_TAG", 2, ((StringBuilder)localObject).toString());
     }
-    ArrayList localArrayList = (ArrayList)a().rawQuery(MessageRecord.class, "select * from mr_multimessage limit 1 offset ?", new String[] { String.valueOf(paramInt - 1) });
-    if ((localArrayList == null) || (localArrayList.size() < 1)) {
-      return null;
+    Object localObject = (ArrayList)a().rawQuery(MessageRecord.class, "select * from mr_multimessage limit 1 offset ?", new String[] { String.valueOf(paramInt - 1) });
+    if ((localObject != null) && (((ArrayList)localObject).size() >= 1)) {
+      return (MessageRecord)((ArrayList)localObject).get(0);
     }
-    return (MessageRecord)localArrayList.get(0);
+    return null;
   }
   
   public MessageRecord a(long paramLong)
   {
     List localList = a().rawQuery(MessageRecord.class, "select * from mr_multimessage where uniseq=?", new String[] { String.valueOf(paramLong) });
-    if ((localList == null) || (localList.size() < 1)) {
-      return null;
+    if ((localList != null) && (localList.size() >= 1))
+    {
+      ((MessageRecord)localList.get(0)).isMultiMsg = true;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("queryOneMsgFromMultiMsg,list.get(0).uniseq:");
+        localStringBuilder.append(((MessageRecord)localList.get(0)).uniseq);
+        localStringBuilder.append(" msgseq:");
+        localStringBuilder.append(((MessageRecord)localList.get(0)).msgseq);
+        QLog.d("MultiMsg_TAG", 2, localStringBuilder.toString());
+      }
+      return (MessageRecord)localList.get(0);
     }
-    ((MessageRecord)localList.get(0)).isMultiMsg = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiMsg_TAG", 2, "queryOneMsgFromMultiMsg,list.get(0).uniseq:" + ((MessageRecord)localList.get(0)).uniseq + " msgseq:" + ((MessageRecord)localList.get(0)).msgseq);
-    }
-    return (MessageRecord)localList.get(0);
+    return null;
   }
   
   public MessageRecord a(MessageRecord paramMessageRecord, String paramString, boolean paramBoolean)
@@ -1337,32 +1487,27 @@ public class MultiMsgProxy
     if (paramInt > 0)
     {
       if ((paramMessageForStructing != null) && (paramMessageForStructing.structingMsg != null) && (!TextUtils.isEmpty(paramMessageForStructing.structingMsg.mFileName))) {
-        str = paramMessageForStructing.structingMsg.mFileName;
+        return paramMessageForStructing.structingMsg.mFileName;
       }
+      paramMessageForStructing = new StringBuilder();
+      paramMessageForStructing.append("MultiMsg");
+      paramMessageForStructing.append("_");
+      paramMessageForStructing.append(paramInt);
+      str = paramMessageForStructing.toString();
+      paramMessageForStructing = new StringBuilder();
+      paramMessageForStructing.append("resid is null! ");
+      paramMessageForStructing.append(str);
+      QLog.d("MultiMsg_TAG", 1, paramMessageForStructing.toString());
     }
-    else {
-      return str;
-    }
-    paramMessageForStructing = new StringBuilder();
-    paramMessageForStructing.append("MultiMsg");
-    paramMessageForStructing.append("_");
-    paramMessageForStructing.append(paramInt);
-    paramMessageForStructing = paramMessageForStructing.toString();
-    QLog.d("MultiMsg_TAG", 1, "resid is null! " + paramMessageForStructing);
-    return paramMessageForStructing;
+    return str;
   }
   
   public ArrayList<MessageRecord> a(long paramLong)
   {
     ArrayList localArrayList = (ArrayList)a().rawQuery(MessageRecord.class, "select * from mr_multimessage where msgseq=? order by _id asc", new String[] { String.valueOf(paramLong) });
-    Object localObject1;
-    if ((localArrayList == null) || (localArrayList.size() < 1)) {
-      localObject1 = new ArrayList();
-    }
-    do
+    if ((localArrayList != null) && (localArrayList.size() >= 1))
     {
-      return localObject1;
-      localObject1 = localArrayList.iterator();
+      Object localObject1 = localArrayList.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         Object localObject2 = (MessageRecord)((Iterator)localObject1).next();
@@ -1375,10 +1520,18 @@ public class MultiMsgProxy
           }
         }
       }
-      localObject1 = localArrayList;
-    } while (!QLog.isColorLevel());
-    QLog.d("MultiMsg_TAG", 2, "querySevalMsgFromMultiMsg,list.get(0).uniseq:" + ((MessageRecord)localArrayList.get(0)).uniseq + " msgseq:" + ((MessageRecord)localArrayList.get(0)).msgseq);
-    return localArrayList;
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("querySevalMsgFromMultiMsg,list.get(0).uniseq:");
+        ((StringBuilder)localObject1).append(((MessageRecord)localArrayList.get(0)).uniseq);
+        ((StringBuilder)localObject1).append(" msgseq:");
+        ((StringBuilder)localObject1).append(((MessageRecord)localArrayList.get(0)).msgseq);
+        QLog.d("MultiMsg_TAG", 2, ((StringBuilder)localObject1).toString());
+      }
+      return localArrayList;
+    }
+    return new ArrayList();
   }
   
   public ArrayList<MessageRecord> a(MessageRecord paramMessageRecord, ArrayList<? extends MessageRecord> paramArrayList, ProxyListener paramProxyListener, boolean paramBoolean1, boolean paramBoolean2)
@@ -1393,38 +1546,36 @@ public class MultiMsgProxy
   public ArrayList<MessageRecord> a(MessageRecord paramMessageRecord, ArrayList<? extends MessageRecord> paramArrayList, ProxyListener paramProxyListener, boolean paramBoolean1, boolean paramBoolean2, ArrayList<MessageRecord> paramArrayList1)
   {
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramArrayList.iterator();
-    while (localIterator.hasNext())
+    Iterator localIterator1 = paramArrayList.iterator();
+    while (localIterator1.hasNext())
     {
-      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-      Object localObject1;
+      MessageRecord localMessageRecord = (MessageRecord)localIterator1.next();
+      Object localObject1 = "MultiMsg_TAG";
       Object localObject2;
       if (paramBoolean2)
       {
         if (localMessageRecord.msgtype == -1037) {
           paramArrayList = ((MessageForLongMsg)localMessageRecord).rebuildLongMsg(true);
         }
-        while (paramArrayList == null)
+        for (;;)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("MultiMsg_TAG", 2, "preAddMultiMsg.mrTemp is null ,not normal...");
-          }
-          return null;
+          break;
           if (localMessageRecord.msgtype == -1036)
           {
             paramArrayList = (MessageForMixedMsg)((MessageForLongMsg)localMessageRecord).rebuildLongMsg();
           }
           else if (localMessageRecord.msgtype == -1035)
           {
-            paramArrayList = ((MessageForMixedMsg)localMessageRecord).rebuildMixedMsg();
-            localObject1 = (MessageForMixedMsg)paramArrayList;
-            if (((MessageForMixedMsg)localObject1).getReplyMessage((QQAppInterface)this.app) != null)
+            localObject3 = (MessageForMixedMsg)localMessageRecord;
+            paramArrayList = ((MessageForMixedMsg)localObject3).rebuildMixedMsg();
+            localObject2 = (MessageForMixedMsg)paramArrayList;
+            if (((MessageForMixedMsg)localObject2).getReplyMessage((QQAppInterface)this.app) != null)
             {
-              paramArrayList1.add(((MessageForMixedMsg)localObject1).getReplyMessage((QQAppInterface)this.app));
-              localObject1 = ((MessageForMixedMsg)localMessageRecord).getReplyMessage((QQAppInterface)this.app);
-              localObject2 = ((MessageForMixedMsg)paramArrayList).getReplyMessage((QQAppInterface)this.app);
-              if ((localObject1 != null) && (localObject2 != null)) {
-                QFileUtils.b((QQAppInterface)this.app, ((MessageForReplyText)localObject1).getSourceMessage(), ((MessageForReplyText)localObject2).getSourceMessage());
+              paramArrayList1.add(((MessageForMixedMsg)localObject2).getReplyMessage((QQAppInterface)this.app));
+              localObject3 = ((MessageForMixedMsg)localObject3).getReplyMessage((QQAppInterface)this.app);
+              localObject2 = ((MessageForMixedMsg)localObject2).getReplyMessage((QQAppInterface)this.app);
+              if ((localObject3 != null) && (localObject2 != null)) {
+                QFileUtils.b((QQAppInterface)this.app, ((MessageForReplyText)localObject3).getSourceMessage(), ((MessageForReplyText)localObject2).getSourceMessage());
               }
             }
           }
@@ -1435,9 +1586,10 @@ public class MultiMsgProxy
           else if (localMessageRecord.msgtype == -1049)
           {
             paramArrayList = (MessageRecord)localMessageRecord.deepCopyByReflect();
-            ((MessageForReplyText)paramArrayList).deepCopySourceMsg((MessageForReplyText)localMessageRecord);
-            ((MessageForReplyText)paramArrayList).isBarrageMsg = false;
-            ((MessageForReplyText)paramArrayList).barrageTimeLocation = 0L;
+            localObject2 = (MessageForReplyText)paramArrayList;
+            ((MessageForReplyText)localObject2).deepCopySourceMsg((MessageForReplyText)localMessageRecord);
+            ((MessageForReplyText)localObject2).isBarrageMsg = false;
+            ((MessageForReplyText)localObject2).barrageTimeLocation = 0L;
             paramArrayList.removeExtInfoToExtStr("barrage_time_location");
             paramArrayList.removeExtInfoToExtStr("barrage_source_msg_type");
           }
@@ -1445,6 +1597,13 @@ public class MultiMsgProxy
           {
             paramArrayList = (MessageRecord)localMessageRecord.deepCopyByReflect();
           }
+        }
+        if (paramArrayList == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("MultiMsg_TAG", 2, "preAddMultiMsg.mrTemp is null ,not normal...");
+          }
+          return null;
         }
         if (!TextUtils.isEmpty(paramArrayList.getExtInfoFromExtStr("troop_at_info_list"))) {
           paramArrayList.removeExtInfoToExtStr("troop_at_info_list");
@@ -1457,44 +1616,55 @@ public class MultiMsgProxy
           paramArrayList.senderuin = "80000000";
         }
         paramArrayList.extLong = localMessageRecord.extLong;
+        localObject2 = paramArrayList;
       }
-      for (;;)
+      else
       {
-        paramArrayList.createMessageUniseq();
-        paramArrayList.msgseq = paramMessageRecord.uniseq;
-        paramArrayList.isMultiMsg = true;
-        paramArrayList.setExtraFlag(32770);
-        if (paramArrayList.msgtype != -1035) {
-          break;
-        }
-        localObject1 = ((MessageForMixedMsg)paramArrayList).msgElemList.iterator();
-        while (((Iterator)localObject1).hasNext())
+        localObject2 = localMessageRecord;
+      }
+      ((MessageRecord)localObject2).createMessageUniseq();
+      ((MessageRecord)localObject2).msgseq = paramMessageRecord.uniseq;
+      ((MessageRecord)localObject2).isMultiMsg = true;
+      ((MessageRecord)localObject2).setExtraFlag(32770);
+      Object localObject3 = localObject1;
+      if (((MessageRecord)localObject2).msgtype == -1035)
+      {
+        Iterator localIterator2 = ((MessageForMixedMsg)localObject2).msgElemList.iterator();
+        paramArrayList = (ArrayList<? extends MessageRecord>)localObject1;
+        for (;;)
         {
-          localObject2 = (MessageRecord)((Iterator)localObject1).next();
-          ((MessageRecord)localObject2).msgseq = paramArrayList.msgseq;
-          ((MessageRecord)localObject2).isMultiMsg = true;
+          localObject3 = paramArrayList;
+          if (!localIterator2.hasNext()) {
+            break;
+          }
+          localObject1 = (MessageRecord)localIterator2.next();
+          ((MessageRecord)localObject1).msgseq = ((MessageRecord)localObject2).msgseq;
+          ((MessageRecord)localObject1).isMultiMsg = true;
         }
-        paramArrayList = localMessageRecord;
       }
-      QFileUtils.b((QQAppInterface)this.app, localMessageRecord, paramArrayList);
-      if (paramArrayList.msgtype == -1049)
+      QFileUtils.b((QQAppInterface)this.app, localMessageRecord, (MessageRecord)localObject2);
+      if (((MessageRecord)localObject2).msgtype == -1049)
       {
-        localObject1 = (MessageForReplyText)localMessageRecord;
-        localObject2 = (MessageForReplyText)paramArrayList;
-        QFileUtils.b((QQAppInterface)this.app, ((MessageForReplyText)localObject1).getSourceMessage(), ((MessageForReplyText)localObject2).getSourceMessage());
+        paramArrayList = (MessageForReplyText)localMessageRecord;
+        localObject1 = (MessageForReplyText)localObject2;
+        QFileUtils.b((QQAppInterface)this.app, paramArrayList.getSourceMessage(), ((MessageForReplyText)localObject1).getSourceMessage());
       }
-      if (paramArrayList.msgtype == -2022) {
-        ((MessageForShortVideo)paramArrayList).redBagType = 0;
+      if (((MessageRecord)localObject2).msgtype == -2022) {
+        ((MessageForShortVideo)localObject2).redBagType = 0;
       }
-      localArrayList.add(paramArrayList);
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiMsg_TAG", 2, "preAddMultiMsg, MessageRecord:" + localMessageRecord.toString());
+      localArrayList.add(localObject2);
+      if (QLog.isColorLevel())
+      {
+        paramArrayList = new StringBuilder();
+        paramArrayList.append("preAddMultiMsg, MessageRecord:");
+        paramArrayList.append(localMessageRecord.toString());
+        QLog.d((String)localObject3, 2, paramArrayList.toString());
       }
       if (paramBoolean1) {
-        if (paramArrayList.getStatus() == 1000) {
-          this.proxyManager.addMsgQueueDonotNotify(paramArrayList.frienduin, paramArrayList.istroop, paramArrayList.getTableName(), paramArrayList, 0, paramProxyListener);
+        if (((MessageRecord)localObject2).getStatus() == 1000) {
+          this.proxyManager.addMsgQueueDonotNotify(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop, ((MessageRecord)localObject2).getTableName(), (Entity)localObject2, 0, paramProxyListener);
         } else {
-          a(paramArrayList, null);
+          a((MessageRecord)localObject2, null);
         }
       }
     }
@@ -1503,172 +1673,239 @@ public class MultiMsgProxy
   
   public ArrayList<MessageRecord> a(msg_comm.Msg paramMsg, HashMap<String, String> paramHashMap, MessageRecord paramMessageRecord, MessageInfo paramMessageInfo)
   {
-    if ((!paramMsg.msg_body.has()) || ((!((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.has()) && (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has())))
+    if ((paramMsg.msg_body.has()) && ((((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.has()) || (((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has())))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiMsg_TAG", 2, "unpackPbToMultiMsgWithNest, no msg_body or rich_text, msg_body.has():" + paramMsg.msg_body.has());
-      }
-      return null;
-    }
-    msg_comm.MsgHead localMsgHead = (msg_comm.MsgHead)paramMsg.msg_head.get();
-    long l2 = localMsgHead.from_uin.get();
-    long l3 = localMsgHead.msg_seq.get();
-    long l4 = localMsgHead.msg_time.get();
-    long l5 = localMsgHead.msg_uid.get();
-    int j = localMsgHead.msg_type.get();
-    String str = String.valueOf(l2);
-    MessageHandler localMessageHandler = ((QQAppInterface)this.app).getMsgHandler();
-    long l6 = MessageProtoCodec.a(localMessageHandler, paramMsg, String.valueOf(l2), String.valueOf(l2));
-    ArrayList localArrayList = new ArrayList();
-    long l1;
-    if (((MessageUtils.c(j)) || (j == 208) || (j == 529)) && (localMsgHead.c2c_cmd.has()))
-    {
-      paramHashMap = a(paramMsg, paramHashMap, paramMessageInfo, localMsgHead, l2, j, str, localMessageHandler, localArrayList, paramMessageRecord);
-      l1 = l2;
-    }
-    for (;;)
-    {
-      int i = 0;
-      int k = MessageProtoCodec.a(paramMsg);
-      paramMsg = localArrayList.iterator();
-      for (;;)
+      Object localObject = (msg_comm.MsgHead)paramMsg.msg_head.get();
+      long l2 = ((msg_comm.MsgHead)localObject).from_uin.get();
+      long l3 = ((msg_comm.MsgHead)localObject).msg_seq.get();
+      long l6 = ((msg_comm.MsgHead)localObject).msg_time.get();
+      long l5 = ((msg_comm.MsgHead)localObject).msg_uid.get();
+      int i = ((msg_comm.MsgHead)localObject).msg_type.get();
+      String str = String.valueOf(l2);
+      MessageHandler localMessageHandler = ((QQAppInterface)this.app).getMsgHandler();
+      long l4 = DecodeC2CMsgPkgBubbleID.a(localMessageHandler, paramMsg, String.valueOf(l2), String.valueOf(l2));
+      ArrayList localArrayList = new ArrayList();
+      long l1;
+      if (((MessageUtils.c(i)) || (i == 208) || (i == 529)) && (((msg_comm.MsgHead)localObject).c2c_cmd.has()))
       {
-        if (!paramMsg.hasNext()) {
-          break label573;
-        }
-        paramMessageInfo = a(paramMessageRecord, localMsgHead, localArrayList, i, (MessageRecord)paramMsg.next());
-        i += 1;
-        paramMessageInfo.time = l4;
-        paramMessageInfo.shmsgseq = l3;
-        paramMessageInfo.msgUid = l5;
-        paramMessageInfo.selfuin = ((QQAppInterface)this.app).getCurrentAccountUin();
-        paramMessageInfo.senderuin = String.valueOf(l2);
-        paramMessageInfo.frienduin = String.valueOf(l1);
-        paramMessageInfo.vipBubbleDiyTextId = k;
-        paramMessageInfo.vipBubbleID = SVIPHandler.a((int)l6, k);
-        MultiMsgUtil.a(paramMessageInfo, paramHashMap, paramMessageRecord);
-        if ((j == 82) || (j == 43))
+        paramHashMap = a(paramMsg, paramHashMap, paramMessageInfo, (msg_comm.MsgHead)localObject, l2, i, str, localMessageHandler, localArrayList, paramMessageRecord);
+        l1 = l2;
+      }
+      else
+      {
+        j = i;
+        if (((j == 82) || (j == 43)) && (((msg_comm.MsgHead)localObject).group_info.has()))
         {
-          paramMessageInfo.istroop = 1;
-          continue;
-          if (((j == 82) || (j == 43)) && (localMsgHead.group_info.has()))
-          {
-            l1 = localMsgHead.group_info.group_code.get();
-            paramHashMap = a(paramMsg, paramHashMap, paramMessageRecord, localMsgHead, l2, str, localMessageHandler, localArrayList, paramMessageInfo);
-            break;
-          }
-          if (((j != 83) && (j != 42)) || (!localMsgHead.discuss_info.has())) {
-            break label581;
-          }
-          l1 = localMsgHead.discuss_info.discuss_uin.get();
-          paramHashMap = a(paramMsg, paramHashMap, paramMessageRecord, paramMessageInfo, localMsgHead, l2, str, localMessageHandler, localArrayList);
-          break;
+          l1 = ((msg_comm.MsgHead)localObject).group_info.group_code.get();
+          paramHashMap = a(paramMsg, paramHashMap, paramMessageRecord, (msg_comm.MsgHead)localObject, l2, str, localMessageHandler, localArrayList, paramMessageInfo);
         }
-        if ((j == 83) || (j == 42)) {
-          paramMessageInfo.istroop = 3000;
-        } else {
-          paramMessageInfo.istroop = 0;
+        for (;;)
+        {
+          break;
+          if (j != 83) {
+            if (j != 42) {
+              break label354;
+            }
+          }
+          if (((msg_comm.MsgHead)localObject).discuss_info.has())
+          {
+            l1 = ((msg_comm.MsgHead)localObject).discuss_info.discuss_uin.get();
+            paramHashMap = a(paramMsg, paramHashMap, paramMessageRecord, paramMessageInfo, (msg_comm.MsgHead)localObject, l2, str, localMessageHandler, localArrayList);
+          }
+          else
+          {
+            label354:
+            l1 = l2;
+            paramHashMap = str;
+          }
         }
       }
-      label573:
-      MessageHandlerUtils.a(localArrayList);
+      int j = i;
+      int k = DecodeC2CMsgPkgBubbleID.a(paramMsg);
+      paramMessageInfo = localArrayList.iterator();
+      i = 0;
+      paramMsg = (msg_comm.Msg)localObject;
+      while (paramMessageInfo.hasNext())
+      {
+        localObject = a(paramMessageRecord, paramMsg, localArrayList, i, (MessageRecord)paramMessageInfo.next());
+        ((MessageRecord)localObject).time = l6;
+        ((MessageRecord)localObject).shmsgseq = l3;
+        ((MessageRecord)localObject).msgUid = l5;
+        ((MessageRecord)localObject).selfuin = ((QQAppInterface)this.app).getCurrentAccountUin();
+        ((MessageRecord)localObject).senderuin = String.valueOf(l2);
+        ((MessageRecord)localObject).frienduin = String.valueOf(l1);
+        ((MessageRecord)localObject).vipBubbleDiyTextId = k;
+        ((MessageRecord)localObject).vipBubbleID = SVIPHandlerConstants.a((int)l4, k);
+        MultiMsgUtil.a((MessageRecord)localObject, paramHashMap, paramMessageRecord);
+        if ((j != 82) && (j != 43))
+        {
+          if ((j != 83) && (j != 42)) {
+            ((MessageRecord)localObject).istroop = 0;
+          } else {
+            ((MessageRecord)localObject).istroop = 3000;
+          }
+        }
+        else {
+          ((MessageRecord)localObject).istroop = 1;
+        }
+        i += 1;
+      }
+      BaseMessageHandlerUtils.a(localArrayList);
       return localArrayList;
-      label581:
-      l1 = l2;
-      paramHashMap = str;
     }
+    if (QLog.isColorLevel())
+    {
+      paramHashMap = new StringBuilder();
+      paramHashMap.append("unpackPbToMultiMsgWithNest, no msg_body or rich_text, msg_body.has():");
+      paramHashMap.append(paramMsg.msg_body.has());
+      QLog.d("MultiMsg_TAG", 2, paramHashMap.toString());
+    }
+    return null;
   }
   
   public ArrayList<MessageRecord> a(@NonNull byte[] paramArrayOfByte, @NonNull HashMap<String, String> paramHashMap, MessageRecord paramMessageRecord, MessageInfo paramMessageInfo)
   {
     System.currentTimeMillis();
-    Object localObject1 = b(paramArrayOfByte);
+    Object localObject2 = b(paramArrayOfByte);
     paramArrayOfByte = new ArrayList();
-    Object localObject2 = new msg_transmit.PbMultiMsgTransmit();
-    for (;;)
+    Object localObject3 = new msg_transmit.PbMultiMsgTransmit();
+    Object localObject1 = paramArrayOfByte;
+    try
     {
-      int i;
-      Object localObject4;
-      int j;
+      localObject2 = (msg_transmit.PbMultiMsgTransmit)((msg_transmit.PbMultiMsgTransmit)localObject3).mergeFrom((byte[])localObject2);
+      i = 0;
+    }
+    catch (Exception paramArrayOfByte)
+    {
       try
       {
-        localObject1 = (msg_transmit.PbMultiMsgTransmit)((msg_transmit.PbMultiMsgTransmit)localObject2).mergeFrom((byte[])localObject1);
-        i = 0;
-        if (i >= ((msg_transmit.PbMultiMsgTransmit)localObject1).msg.size()) {
-          break;
-        }
-        Object localObject3 = (msg_comm.Msg)((msg_transmit.PbMultiMsgTransmit)localObject1).msg.get(i);
-        localObject4 = (msg_comm.MsgHead)((msg_comm.Msg)localObject3).msg_head.get();
-        long l1 = ((msg_comm.MsgHead)localObject4).from_uin.get();
-        long l2 = ((msg_comm.MsgHead)localObject4).msg_seq.get();
-        long l3 = ((msg_comm.MsgHead)localObject4).msg_time.get();
-        long l4 = ((msg_comm.MsgHead)localObject4).msg_uid.get();
-        j = ((msg_comm.MsgHead)localObject4).msg_type.get();
-        MessageHandler localMessageHandler = ((QQAppInterface)this.app).getMsgHandler();
-        long l5 = MessageProtoCodec.a(localMessageHandler, (msg_comm.Msg)localObject3, String.valueOf(l1), String.valueOf(l1));
-        localObject2 = new ArrayList();
-        long l6 = a(paramHashMap, paramMessageInfo, (msg_comm.Msg)localObject3, (msg_comm.MsgHead)localObject4, l1, l1, j, localMessageHandler, (ArrayList)localObject2);
-        a(paramMessageRecord, (msg_comm.Msg)localObject3, localMessageHandler, (ArrayList)localObject2);
-        int k = MessageProtoCodec.a((msg_comm.Msg)localObject3);
-        localObject3 = ((ArrayList)localObject2).iterator();
-        if (!((Iterator)localObject3).hasNext()) {
-          break label397;
-        }
-        localObject4 = (MessageRecord)((Iterator)localObject3).next();
-        ((MessageRecord)localObject4).time = l3;
-        ((MessageRecord)localObject4).shmsgseq = l2;
-        ((MessageRecord)localObject4).msgUid = l4;
-        ((MessageRecord)localObject4).selfuin = ((QQAppInterface)this.app).getCurrentAccountUin();
-        ((MessageRecord)localObject4).senderuin = String.valueOf(l1);
-        ((MessageRecord)localObject4).frienduin = String.valueOf(l6);
-        ((MessageRecord)localObject4).vipBubbleDiyTextId = k;
-        ((MessageRecord)localObject4).vipBubbleID = SVIPHandler.a((int)l5, k);
-        if ((j == 82) || (j == 43))
+        for (;;)
         {
-          ((MessageRecord)localObject4).istroop = 1;
-          continue;
+          int i;
+          Object localObject4;
+          msg_comm.MsgHead localMsgHead;
+          long l7;
+          long l3;
+          long l4;
+          long l2;
+          MessageHandler localMessageHandler;
+          l1 = DecodeC2CMsgPkgBubbleID.a(localMessageHandler, (msg_comm.Msg)localObject4, String.valueOf(l7), String.valueOf(l7));
+          localObject3 = new ArrayList();
+          l6 = a(paramHashMap, paramMessageInfo, (msg_comm.Msg)localObject4, localMsgHead, l7, l7, j, localMessageHandler, (ArrayList)localObject3);
+          a(paramMessageRecord, (msg_comm.Msg)localObject4, localMessageHandler, (ArrayList)localObject3);
+          k = DecodeC2CMsgPkgBubbleID.a((msg_comm.Msg)localObject4);
+          localObject1 = ((ArrayList)localObject3).iterator();
+          l5 = l1;
+          l1 = l6;
+          if (((Iterator)localObject1).hasNext())
+          {
+            localObject4 = (MessageRecord)((Iterator)localObject1).next();
+            ((MessageRecord)localObject4).time = l4;
+            ((MessageRecord)localObject4).shmsgseq = l3;
+            ((MessageRecord)localObject4).msgUid = l2;
+            ((MessageRecord)localObject4).selfuin = ((QQAppInterface)this.app).getCurrentAccountUin();
+            ((MessageRecord)localObject4).senderuin = String.valueOf(l7);
+            ((MessageRecord)localObject4).frienduin = String.valueOf(l1);
+            ((MessageRecord)localObject4).vipBubbleDiyTextId = k;
+            m = (int)l5;
+            ((MessageRecord)localObject4).vipBubbleID = SVIPHandlerConstants.a(m, k);
+            if (j != 82)
+            {
+              if (j != 43) {
+                break label477;
+              }
+              break label400;
+              ((MessageRecord)localObject4).istroop = 0;
+              break label494;
+              ((MessageRecord)localObject4).istroop = 3000;
+              break label494;
+            }
+            ((MessageRecord)localObject4).istroop = 1;
+            break label494;
+          }
+          BaseMessageHandlerUtils.a((List)localObject3);
+          localObject1 = paramArrayOfByte;
+          try
+          {
+            ((ArrayList)localObject1).addAll((Collection)localObject3);
+            i += 1;
+            paramArrayOfByte = (byte[])localObject1;
+          }
+          catch (Exception paramArrayOfByte)
+          {
+            paramHashMap = paramArrayOfByte;
+            paramArrayOfByte = paramArrayOfByte;
+            break label459;
+          }
         }
-        if (j == 83) {
-          break label377;
+        paramHashMap = paramArrayOfByte;
+        a(paramMessageRecord, paramHashMap, null);
+        return paramHashMap;
+      }
+      catch (Exception paramMessageRecord)
+      {
+        for (;;)
+        {
+          int j;
+          paramHashMap = paramArrayOfByte;
+          paramArrayOfByte = paramMessageRecord;
         }
       }
-      catch (Exception paramHashMap)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MultiMsg_TAG", 2, "unpackPbToMultiMsg, error: exception occurs while parsing the pb bytes", paramHashMap);
-        }
-        return paramArrayOfByte;
+      paramArrayOfByte = paramArrayOfByte;
+      paramHashMap = (HashMap<String, String>)localObject1;
+    }
+    localObject1 = paramArrayOfByte;
+    if (i < ((msg_transmit.PbMultiMsgTransmit)localObject2).msg.size())
+    {
+      localObject1 = paramArrayOfByte;
+      localObject4 = (msg_comm.Msg)((msg_transmit.PbMultiMsgTransmit)localObject2).msg.get(i);
+      localObject1 = paramArrayOfByte;
+      localMsgHead = (msg_comm.MsgHead)((msg_comm.Msg)localObject4).msg_head.get();
+      localObject1 = paramArrayOfByte;
+      l7 = localMsgHead.from_uin.get();
+      localObject1 = paramArrayOfByte;
+      l3 = localMsgHead.msg_seq.get();
+      localObject1 = paramArrayOfByte;
+      l4 = localMsgHead.msg_time.get();
+      localObject1 = paramArrayOfByte;
+      l2 = localMsgHead.msg_uid.get();
+      localObject1 = paramArrayOfByte;
+      j = localMsgHead.msg_type.get();
+      localObject1 = paramArrayOfByte;
+      localMessageHandler = ((QQAppInterface)this.app).getMsgHandler();
+    }
+    label400:
+    label459:
+    label477:
+    label494:
+    for (;;)
+    {
+      long l1;
+      long l6;
+      int k;
+      long l5;
+      int m;
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiMsg_TAG", 2, "unpackPbToMultiMsg, error: exception occurs while parsing the pb bytes", paramArrayOfByte);
       }
-      if (j == 42)
-      {
-        label377:
-        ((MessageRecord)localObject4).istroop = 3000;
-      }
-      else
-      {
-        ((MessageRecord)localObject4).istroop = 0;
-        continue;
-        label397:
-        MessageHandlerUtils.a((List)localObject2);
-        paramArrayOfByte.addAll((Collection)localObject2);
-        i += 1;
+      return paramHashMap;
+      if (j != 83) {
+        if (j == 42) {}
       }
     }
-    a(paramMessageRecord, paramArrayOfByte, null);
-    return paramArrayOfByte;
   }
   
   public HashMap<String, ArrayList<MessageRecord>> a(MessageRecord paramMessageRecord)
   {
     HashMap localHashMap = new HashMap();
-    if ((paramMessageRecord == null) || (!MessageForStructing.class.isInstance(paramMessageRecord)))
+    if ((paramMessageRecord != null) && (MessageForStructing.class.isInstance(paramMessageRecord)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiMsg_TAG", 2, "queryMultiMsgWithNest error before of null msg or not structMsg type");
-      }
+      b((MessageForStructing)paramMessageRecord, localHashMap, 0);
       return localHashMap;
     }
-    b((MessageForStructing)paramMessageRecord, localHashMap, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiMsg_TAG", 2, "queryMultiMsgWithNest error before of null msg or not structMsg type");
+    }
     return localHashMap;
   }
   
@@ -1676,126 +1913,131 @@ public class MultiMsgProxy
   {
     HashMap localHashMap = new HashMap();
     ArrayList localArrayList = new ArrayList();
-    if ((paramMessageRecord == null) || (paramHashMap == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiMsg_TAG", 2, "preAddMultiMsgWithNest error before of null msg or map");
-      }
-    }
-    do
+    if ((paramMessageRecord != null) && (paramHashMap != null))
     {
-      do
+      if (!MultiMsgUtil.a((ChatMessage)paramMessageRecord))
       {
-        return localHashMap;
-        if (MultiMsgUtil.a((ChatMessage)paramMessageRecord)) {
-          break;
+        if (QLog.isColorLevel()) {
+          QLog.d("MultiMsg_TAG", 2, "preAddMultiMsgWithNest error before of not structMsg");
         }
-      } while (!QLog.isColorLevel());
-      QLog.d("MultiMsg_TAG", 2, "preAddMultiMsgWithNest error before of not structMsg");
-      return localHashMap;
+        return localHashMap;
+      }
       a((MessageForStructing)paramMessageRecord, paramHashMap, localHashMap, 0, paramProxyListener, paramBoolean1, paramBoolean2, localArrayList);
       if (localArrayList.size() > 0) {
         localHashMap.put("reply_msg", localArrayList);
       }
-    } while (!paramBoolean1);
-    this.proxyManager.transSaveToDatabase();
+      if (paramBoolean1)
+      {
+        this.proxyManager.transSaveToDatabase();
+        return localHashMap;
+      }
+      return localHashMap;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiMsg_TAG", 2, "preAddMultiMsgWithNest error before of null msg or map");
+    }
     return localHashMap;
   }
   
   public HashMap<String, ArrayList<MessageRecord>> a(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap, MessageRecord paramMessageRecord, MessageInfo paramMessageInfo)
   {
     long l1 = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiMsg_TAG", 2, "unpackPbToMultiMsgWithNest, start unpack, startTime:" + l1);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("unpackPbToMultiMsgWithNest, start unpack, startTime:");
+      ((StringBuilder)localObject1).append(l1);
+      QLog.d("MultiMsg_TAG", 2, ((StringBuilder)localObject1).toString());
     }
     paramArrayOfByte = b(paramArrayOfByte);
     Object localObject1 = new msg_transmit.PbMultiMsgTransmit();
-    Object localObject2;
-    int i;
-    Object localObject3;
     try
     {
-      paramArrayOfByte = (msg_transmit.PbMultiMsgTransmit)((msg_transmit.PbMultiMsgTransmit)localObject1).mergeFrom(paramArrayOfByte);
-      localObject1 = new HashMap();
-      if (paramArrayOfByte.pbItemList.has()) {
-        break label269;
+      localObject1 = (msg_transmit.PbMultiMsgTransmit)((msg_transmit.PbMultiMsgTransmit)localObject1).mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = new HashMap();
+      Object localObject2;
+      int i;
+      Object localObject3;
+      if (!((msg_transmit.PbMultiMsgTransmit)localObject1).pbItemList.has())
+      {
+        localObject2 = new ArrayList();
+        if (((msg_transmit.PbMultiMsgTransmit)localObject1).msg.has())
+        {
+          i = 0;
+          while (i < ((msg_transmit.PbMultiMsgTransmit)localObject1).msg.size())
+          {
+            localObject3 = a((msg_comm.Msg)((msg_transmit.PbMultiMsgTransmit)localObject1).msg.get(i), paramHashMap, paramMessageRecord, paramMessageInfo);
+            if ((localObject3 != null) && (((ArrayList)localObject3).size() > 0))
+            {
+              ((ArrayList)localObject2).addAll((Collection)localObject3);
+              if (QLog.isColorLevel()) {
+                QLog.d("MultiMsg_TAG", 2, String.format("unpackPbToMultiMsgWithNest for old version, msgsize:%d, msgtype:%d", new Object[] { Integer.valueOf(((ArrayList)localObject3).size()), Integer.valueOf(((MessageRecord)((ArrayList)localObject3).get(0)).msgtype) }));
+              }
+            }
+            i += 1;
+          }
+        }
+        if (((ArrayList)localObject2).size() > 0) {
+          paramArrayOfByte.put("MultiMsg", localObject2);
+        }
       }
-      localObject2 = new ArrayList();
-      if (paramArrayOfByte.msg.has())
+      else
       {
         i = 0;
-        while (i < paramArrayOfByte.msg.size())
+        for (;;)
         {
-          localObject3 = a((msg_comm.Msg)paramArrayOfByte.msg.get(i), paramHashMap, paramMessageRecord, paramMessageInfo);
-          if ((localObject3 != null) && (((ArrayList)localObject3).size() > 0))
+          int j = 0;
+          if (i >= ((msg_transmit.PbMultiMsgTransmit)localObject1).pbItemList.size()) {
+            break;
+          }
+          Object localObject4 = (msg_transmit.PbMultiMsgItem)((msg_transmit.PbMultiMsgTransmit)localObject1).pbItemList.get(i);
+          localObject2 = ((msg_transmit.PbMultiMsgItem)localObject4).fileName.get();
+          localObject3 = new msg_transmit.PbMultiMsgNew();
+          try
           {
-            ((ArrayList)localObject2).addAll((Collection)localObject3);
+            ((msg_transmit.PbMultiMsgNew)localObject3).mergeFrom(((msg_transmit.PbMultiMsgItem)localObject4).buffer.get().toByteArray());
+            localObject4 = new ArrayList();
+            while (j < ((msg_transmit.PbMultiMsgNew)localObject3).msg.size())
+            {
+              ArrayList localArrayList = a((msg_comm.Msg)((msg_transmit.PbMultiMsgNew)localObject3).msg.get(j), paramHashMap, paramMessageRecord, paramMessageInfo);
+              if ((localArrayList != null) && (localArrayList.size() > 0)) {
+                ((ArrayList)localObject4).addAll(localArrayList);
+              }
+              j += 1;
+            }
+            paramArrayOfByte.put(localObject2, localObject4);
+          }
+          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+          {
             if (QLog.isColorLevel()) {
-              QLog.d("MultiMsg_TAG", 2, String.format("unpackPbToMultiMsgWithNest for old version, msgsize:%d, msgtype:%d", new Object[] { Integer.valueOf(((ArrayList)localObject3).size()), Integer.valueOf(((MessageRecord)((ArrayList)localObject3).get(0)).msgtype) }));
+              QLog.d("MultiMsg_TAG", 2, "unpackPbToMultiMsgWithNest, error: exception occurs while parsing PbMultiMsgNew", localInvalidProtocolBufferMicroException);
             }
           }
           i += 1;
         }
       }
-      if (((ArrayList)localObject2).size() <= 0) {
-        break label256;
+      if (!a(paramMessageRecord, paramArrayOfByte, null)) {
+        return null;
       }
+      long l2 = System.currentTimeMillis();
+      if (QLog.isColorLevel())
+      {
+        paramHashMap = new StringBuilder();
+        paramHashMap.append("unpackPbToMultiMsgWithNest, end unpack,endTime:");
+        paramHashMap.append(l2);
+        paramHashMap.append(" cost:");
+        paramHashMap.append(l2 - l1);
+        QLog.d("MultiMsg_TAG", 2, paramHashMap.toString());
+      }
+      return paramArrayOfByte;
     }
     catch (Exception paramArrayOfByte)
     {
       if (QLog.isColorLevel()) {
         QLog.d("MultiMsg_TAG", 2, "unpackPbToMultiMsgWithNest, error: exception occurs while parsing PbMultiMsgTransmit", paramArrayOfByte);
       }
-      return null;
     }
-    ((HashMap)localObject1).put("MultiMsg", localObject2);
-    label256:
-    if (!a(paramMessageRecord, (HashMap)localObject1, null))
-    {
-      return null;
-      label269:
-      i = 0;
-      label272:
-      Object localObject4;
-      if (i < paramArrayOfByte.pbItemList.size())
-      {
-        localObject4 = (msg_transmit.PbMultiMsgItem)paramArrayOfByte.pbItemList.get(i);
-        localObject2 = ((msg_transmit.PbMultiMsgItem)localObject4).fileName.get();
-        localObject3 = new msg_transmit.PbMultiMsgNew();
-        try
-        {
-          ((msg_transmit.PbMultiMsgNew)localObject3).mergeFrom(((msg_transmit.PbMultiMsgItem)localObject4).buffer.get().toByteArray());
-          localObject4 = new ArrayList();
-          int j = 0;
-          while (j < ((msg_transmit.PbMultiMsgNew)localObject3).msg.size())
-          {
-            ArrayList localArrayList = a((msg_comm.Msg)((msg_transmit.PbMultiMsgNew)localObject3).msg.get(j), paramHashMap, paramMessageRecord, paramMessageInfo);
-            if ((localArrayList != null) && (localArrayList.size() > 0)) {
-              ((ArrayList)localObject4).addAll(localArrayList);
-            }
-            j += 1;
-            continue;
-            i += 1;
-          }
-        }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("MultiMsg_TAG", 2, "unpackPbToMultiMsgWithNest, error: exception occurs while parsing PbMultiMsgNew", localInvalidProtocolBufferMicroException);
-          }
-        }
-      }
-      for (;;)
-      {
-        break label272;
-        break;
-        ((HashMap)localObject1).put(localInvalidProtocolBufferMicroException, localObject4);
-      }
-    }
-    long l2 = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiMsg_TAG", 2, "unpackPbToMultiMsgWithNest, end unpack,endTime:" + l2 + " cost:" + (l2 - l1));
-    }
-    return localObject1;
+    return null;
   }
   
   public msg_comm.MsgHead a(MessageRecord paramMessageRecord, HashMap<String, String> paramHashMap, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
@@ -1808,76 +2050,31 @@ public class MultiMsgProxy
     Object localObject1 = new msg_comm.MutilTransHead();
     Object localObject2 = ((msg_comm.MutilTransHead)localObject1).status;
     int i;
-    if (paramBoolean1)
-    {
+    if (paramBoolean1) {
       i = 0;
-      ((PBUInt32Field)localObject2).set(i);
-      ((msg_comm.MutilTransHead)localObject1).msgId.set(paramInt);
-      localMsgHead.mutiltrans_head.set((MessageMicro)localObject1);
-      localObject2 = paramMessageRecord.getExtInfoFromExtStr("self_nickname");
-      String str = MsgProxyUtils.a(paramMessageRecord);
+    } else {
+      i = -1;
+    }
+    ((PBUInt32Field)localObject2).set(i);
+    ((msg_comm.MutilTransHead)localObject1).msgId.set(paramInt);
+    localMsgHead.mutiltrans_head.set((MessageMicro)localObject1);
+    localObject2 = paramMessageRecord.getExtInfoFromExtStr("self_nickname");
+    String str = MsgProxyUtils.a(paramMessageRecord);
+    localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2))
+    {
       localObject1 = localObject2;
-      if (TextUtils.isEmpty((CharSequence)localObject2))
+      if (paramHashMap != null)
       {
         localObject1 = localObject2;
-        if (paramHashMap != null)
-        {
-          localObject1 = localObject2;
-          if (paramHashMap.containsKey(str)) {
-            localObject1 = (String)paramHashMap.get(str);
-          }
+        if (paramHashMap.containsKey(str)) {
+          localObject1 = (String)paramHashMap.get(str);
         }
       }
-      MultiMsgUtil.a("step:packPb.getMsgHead.nickName = %s", new Object[] { localObject1 });
-      if ((paramMessageRecord.istroop != 0) && (paramMessageRecord.istroop != 1000) && (paramMessageRecord.istroop != 1004) && (paramMessageRecord.istroop != 1022)) {
-        break label428;
-      }
-      if (!(paramMessageRecord instanceof MessageForPtt)) {
-        break label301;
-      }
-      localMsgHead.msg_type.set(208);
-      label250:
-      if ((!(paramMessageRecord instanceof MessageForText)) && (!(paramMessageRecord instanceof MessageForStructing))) {
-        break label366;
-      }
-      localMsgHead.c2c_cmd.set(11);
-      label274:
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        localMsgHead.from_nick.set((String)localObject1);
-      }
     }
-    for (;;)
+    MultiMsgUtil.a("step:packPb.getMsgHead.nickName = %s", new Object[] { localObject1 });
+    if ((paramMessageRecord.istroop != 0) && (paramMessageRecord.istroop != 1000) && (paramMessageRecord.istroop != 1004) && (paramMessageRecord.istroop != 1022))
     {
-      return localMsgHead;
-      i = -1;
-      break;
-      label301:
-      if ((!paramBoolean2) && ((paramMessageRecord instanceof MessageForFile)))
-      {
-        localMsgHead.msg_type.set(529);
-        break label250;
-      }
-      if ((!paramBoolean2) && ((paramMessageRecord instanceof MessageForDLFile)))
-      {
-        localMsgHead.msg_type.set(529);
-        break label250;
-      }
-      localMsgHead.msg_type.set(9);
-      break label250;
-      label366:
-      if ((!paramBoolean2) && ((paramMessageRecord instanceof MessageForFile)))
-      {
-        localMsgHead.c2c_cmd.set(4);
-        break label274;
-      }
-      if ((!paramBoolean2) && ((paramMessageRecord instanceof MessageForDLFile)))
-      {
-        localMsgHead.c2c_cmd.set(4);
-        break label274;
-      }
-      localMsgHead.c2c_cmd.set(175);
-      break label274;
-      label428:
       if (paramMessageRecord.istroop == 3000)
       {
         localMsgHead.msg_type.set(83);
@@ -1887,12 +2084,10 @@ public class MultiMsgProxy
           paramHashMap.discuss_remark.set(ByteStringMicro.copyFromUtf8((String)localObject1));
         }
         localMsgHead.discuss_info.set(paramHashMap);
+        return localMsgHead;
       }
-      else
+      if (paramMessageRecord.istroop == 1)
       {
-        if (paramMessageRecord.istroop != 1) {
-          break label580;
-        }
         localMsgHead.msg_type.set(82);
         paramHashMap = new msg_comm.GroupInfo();
         paramHashMap.group_code.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
@@ -1900,191 +2095,271 @@ public class MultiMsgProxy
           paramHashMap.group_card.set(ByteStringMicro.copyFromUtf8((String)localObject1));
         }
         localMsgHead.group_info.set(paramHashMap);
+        return localMsgHead;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiMsg_TAG", 2, "MultiMsg:getMultiMsgHead, error:mr is not a C2C/dis/troop msg");
+      }
+      return null;
+    }
+    if ((paramMessageRecord instanceof MessageForPtt)) {
+      localMsgHead.msg_type.set(208);
+    } else if ((!paramBoolean2) && ((paramMessageRecord instanceof MessageForFile))) {
+      localMsgHead.msg_type.set(529);
+    } else if ((!paramBoolean2) && ((paramMessageRecord instanceof MessageForDLFile))) {
+      localMsgHead.msg_type.set(529);
+    } else {
+      localMsgHead.msg_type.set(9);
+    }
+    if ((!(paramMessageRecord instanceof MessageForText)) && (!(paramMessageRecord instanceof MessageForStructing)))
+    {
+      if ((!paramBoolean2) && ((paramMessageRecord instanceof MessageForFile))) {
+        localMsgHead.c2c_cmd.set(4);
+      } else if ((!paramBoolean2) && ((paramMessageRecord instanceof MessageForDLFile))) {
+        localMsgHead.c2c_cmd.set(4);
+      } else {
+        localMsgHead.c2c_cmd.set(175);
       }
     }
-    label580:
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiMsg_TAG", 2, "MultiMsg:getMultiMsgHead, error:mr is not a C2C/dis/troop msg");
+    else {
+      localMsgHead.c2c_cmd.set(11);
     }
-    return null;
+    if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+      localMsgHead.from_nick.set((String)localObject1);
+    }
+    return localMsgHead;
   }
   
   public im_msg_body.MsgBody a(MessageRecord paramMessageRecord, boolean paramBoolean)
   {
-    im_msg_body.MsgBody localMsgBody = null;
+    Object localObject1 = null;
+    Exception localException2 = null;
+    Object localObject3 = localObject1;
     for (;;)
     {
       try
       {
-        if ((paramMessageRecord.msgtype == -1000) || (paramMessageRecord.msgtype == -10000))
+        if (paramMessageRecord.msgtype != -1000)
         {
-          localRichText = c(paramMessageRecord);
-          if (localRichText == null) {}
+          localObject3 = localObject1;
+          if (paramMessageRecord.msgtype != -10000)
+          {
+            localObject3 = localObject1;
+            if (paramMessageRecord.msgtype == -1049)
+            {
+              localObject3 = localObject1;
+              localObject1 = MessageProtoCodec.a((MessageForReplyText)paramMessageRecord);
+              continue;
+            }
+            localObject3 = localObject1;
+            if (paramMessageRecord.msgtype == -2005)
+            {
+              if (paramBoolean)
+              {
+                localObject3 = localObject1;
+                localObject1 = b(paramMessageRecord);
+                continue;
+              }
+              localObject3 = localObject1;
+              localObject1 = ((QQAppInterface)this.app).getFileManagerEngine().a().a(1, paramMessageRecord);
+              break label677;
+            }
+            localObject3 = localObject1;
+            if (paramMessageRecord.msgtype == -2017)
+            {
+              if (paramBoolean)
+              {
+                localObject3 = localObject1;
+                localObject1 = a(paramMessageRecord);
+                continue;
+              }
+              localObject3 = localObject1;
+              localObject1 = ((QQAppInterface)this.app).getFileManagerEngine().a().a(1, paramMessageRecord);
+              break label677;
+            }
+            localObject3 = localObject1;
+            if (paramMessageRecord.msgtype == -3017)
+            {
+              if (paramBoolean)
+              {
+                localObject3 = localObject1;
+                localObject1 = b(paramMessageRecord);
+                continue;
+              }
+              localObject3 = localObject1;
+              localObject1 = ((QQAppInterface)this.app).getFileManagerEngine().a().a(1, paramMessageRecord);
+              break label677;
+            }
+            localObject3 = localObject1;
+            if (paramMessageRecord.msgtype == -2000)
+            {
+              localObject3 = localObject1;
+              localObject1 = MessageProtoCodec.a((MessageForPic)paramMessageRecord);
+              continue;
+            }
+            localObject3 = localObject1;
+            if (paramMessageRecord.msgtype == -5008)
+            {
+              localObject3 = localObject1;
+              localObject1 = MessageProtoCodec.a((MessageForArkApp)paramMessageRecord, true);
+              continue;
+            }
+            localObject3 = localObject1;
+            if (paramMessageRecord.msgtype == -5016)
+            {
+              localObject3 = localObject1;
+              localObject1 = MessageProtoCodec.c((MessageForArkBabyqReply)paramMessageRecord, true);
+              continue;
+            }
+            localObject3 = localObject1;
+            if (paramMessageRecord.msgtype == -5017)
+            {
+              localObject3 = localObject1;
+              localObject1 = MessageProtoCodec.b((MessageForArkApp)paramMessageRecord, true);
+              continue;
+            }
+            localObject3 = localObject1;
+            if (paramMessageRecord.msgtype == -5013)
+            {
+              localObject3 = localObject1;
+              localObject1 = MessageProtoCodec.c((MessageForArkFlashChat)paramMessageRecord);
+              continue;
+            }
+            localObject3 = localObject1;
+            if (paramMessageRecord.msgtype == -5014)
+            {
+              localObject3 = localObject1;
+              localObject1 = MessageProtoCodec.d((MessageForHiBoom)paramMessageRecord);
+              continue;
+            }
+            localObject3 = localObject1;
+            if (paramMessageRecord.msgtype == -2011)
+            {
+              localObject3 = localObject1;
+              localObject1 = a((MessageForStructing)paramMessageRecord);
+              continue;
+            }
+            localObject3 = localObject1;
+            if (paramMessageRecord.msgtype == -1035)
+            {
+              localObject3 = localObject1;
+              localObject1 = MessageProtoCodec.a((MessageForMixedMsg)paramMessageRecord);
+              continue;
+            }
+            localObject3 = localObject1;
+            if (paramMessageRecord.msgtype == -1051)
+            {
+              localObject3 = localObject1;
+              localObject1 = MessageProtoCodec.a((MessageForLongTextMsg)paramMessageRecord, false);
+              continue;
+            }
+            localObject3 = localObject1;
+            if (paramMessageRecord.msgtype == -2022)
+            {
+              localObject3 = localObject1;
+              localObject1 = ((MessageForRichText)paramMessageRecord).richText;
+              continue;
+            }
+            localObject3 = localObject1;
+            if (paramMessageRecord.msgtype != -2002) {
+              break label689;
+            }
+            localObject3 = localObject1;
+            localObject1 = ((MessageForRichText)paramMessageRecord).richText;
+            continue;
+          }
         }
-      }
-      catch (Exception localException1)
-      {
-        im_msg_body.RichText localRichText;
-        im_msg_body.ElemFlags2 localElemFlags2;
-        im_msg_body.Elem localElem;
-        paramMessageRecord = null;
-        QLog.e("MultiMsg_TAG", 1, localException1, new Object[0]);
-        return paramMessageRecord;
-      }
-      try
-      {
-        localElemFlags2 = new im_msg_body.ElemFlags2();
-        localElemFlags2.uint32_color_text_id.set((int)(paramMessageRecord.vipBubbleID & 0xFFFFFFFF));
-        localElem = new im_msg_body.Elem();
-        localElem.elem_flags2.set(localElemFlags2);
-        localRichText.elems.add(localElem);
-        a(paramMessageRecord, localRichText);
-        if (localMsgBody != null) {
-          break label544;
-        }
-        paramMessageRecord = new im_msg_body.MsgBody();
-      }
-      catch (Exception localException2)
-      {
-        paramMessageRecord = localMsgBody;
-        continue;
-      }
-      try
-      {
-        paramMessageRecord.rich_text.set(localRichText);
-        return paramMessageRecord;
-      }
-      catch (Exception localException3)
-      {
-        continue;
-      }
-      if (paramMessageRecord.msgtype == -1049)
-      {
-        localRichText = MessageProtoCodec.a((MessageForReplyText)paramMessageRecord);
-      }
-      else if (paramMessageRecord.msgtype == -2005)
-      {
-        if (paramBoolean)
+        localObject3 = localObject1;
+        localObject1 = c(paramMessageRecord);
+        if (localObject1 != null)
         {
-          localRichText = b(paramMessageRecord);
+          localObject3 = localException2;
+          im_msg_body.ElemFlags2 localElemFlags2 = new im_msg_body.ElemFlags2();
+          localObject3 = localException2;
+          localElemFlags2.uint32_color_text_id.set((int)(paramMessageRecord.vipBubbleID & 0xFFFFFFFF));
+          localObject3 = localException2;
+          im_msg_body.Elem localElem = new im_msg_body.Elem();
+          localObject3 = localException2;
+          localElem.elem_flags2.set(localElemFlags2);
+          localObject3 = localException2;
+          ((im_msg_body.RichText)localObject1).elems.add(localElem);
+          localObject3 = localException2;
+          a(paramMessageRecord, (im_msg_body.RichText)localObject1);
         }
-        else
+        localObject3 = localException2;
+        if (localException2 == null)
         {
-          localMsgBody = ((QQAppInterface)this.app).getFileManagerEngine().a().a(1, paramMessageRecord);
-          localRichText = null;
+          localObject3 = localException2;
+          paramMessageRecord = new im_msg_body.MsgBody();
+          try
+          {
+            paramMessageRecord.rich_text.set((MessageMicro)localObject1);
+            return paramMessageRecord;
+          }
+          catch (Exception localException1)
+          {
+            localObject3 = paramMessageRecord;
+            paramMessageRecord = localException1;
+          }
+          QLog.e("MultiMsg_TAG", 1, paramMessageRecord, new Object[0]);
         }
       }
-      else if (paramMessageRecord.msgtype == -2017)
-      {
-        if (paramBoolean)
-        {
-          localRichText = a(paramMessageRecord);
-        }
-        else
-        {
-          localMsgBody = ((QQAppInterface)this.app).getFileManagerEngine().a().a(1, paramMessageRecord);
-          localRichText = null;
-        }
-      }
-      else if (paramMessageRecord.msgtype == -3017)
-      {
-        if (paramBoolean)
-        {
-          localRichText = b(paramMessageRecord);
-        }
-        else
-        {
-          localMsgBody = ((QQAppInterface)this.app).getFileManagerEngine().a().a(1, paramMessageRecord);
-          localRichText = null;
-        }
-      }
-      else if (paramMessageRecord.msgtype == -2000)
-      {
-        localRichText = MessageProtoCodec.a((MessageForPic)paramMessageRecord);
-      }
-      else if (paramMessageRecord.msgtype == -5008)
-      {
-        localRichText = MessageProtoCodec.a((MessageForArkApp)paramMessageRecord, true);
-      }
-      else if (paramMessageRecord.msgtype == -5016)
-      {
-        localRichText = MessageProtoCodec.c((MessageForArkBabyqReply)paramMessageRecord, true);
-      }
-      else if (paramMessageRecord.msgtype == -5017)
-      {
-        localRichText = MessageProtoCodec.b((MessageForArkApp)paramMessageRecord, true);
-      }
-      else if (paramMessageRecord.msgtype == -5013)
-      {
-        localRichText = MessageProtoCodec.c((MessageForArkFlashChat)paramMessageRecord);
-      }
-      else if (paramMessageRecord.msgtype == -5014)
-      {
-        localRichText = MessageProtoCodec.d((MessageForHiBoom)paramMessageRecord);
-      }
-      else if (paramMessageRecord.msgtype == -2011)
-      {
-        localRichText = a((MessageForStructing)paramMessageRecord);
-      }
-      else if (paramMessageRecord.msgtype == -1035)
-      {
-        localRichText = MessageProtoCodec.a((MessageForMixedMsg)paramMessageRecord);
-      }
-      else if (paramMessageRecord.msgtype == -1051)
-      {
-        localRichText = MessageProtoCodec.a((MessageForLongTextMsg)paramMessageRecord, false);
-      }
-      else if (paramMessageRecord.msgtype == -2022)
-      {
-        localRichText = ((MessageForRichText)paramMessageRecord).richText;
-      }
-      else if (paramMessageRecord.msgtype == -2002)
-      {
-        localRichText = ((MessageForRichText)paramMessageRecord).richText;
-        continue;
-        label544:
-        return localMsgBody;
-      }
-      else
-      {
-        Object localObject = null;
-      }
+      catch (Exception paramMessageRecord) {}
+      return localObject3;
+      label677:
+      localObject3 = null;
+      localException2 = localException1;
+      Object localObject2 = localObject3;
+      continue;
+      label689:
+      localObject2 = null;
     }
   }
   
   public void a()
   {
     SQLiteDatabase localSQLiteDatabase = ((QQAppInterface)this.app).getWritableDatabase();
-    if (localSQLiteDatabase == null) {}
-    int i;
-    MessageRecord localMessageRecord;
-    do
+    if (localSQLiteDatabase == null) {
+      return;
+    }
+    int i = localSQLiteDatabase.getCount("mr_multimessage");
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        return;
-        i = localSQLiteDatabase.getCount("mr_multimessage");
-        if (QLog.isColorLevel()) {
-          QLog.d("MultiMsg_TAG", 2, "checkMsgCounts, count:" + i);
-        }
-      } while (i <= 1000000);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("checkMsgCounts, count:");
+      ((StringBuilder)localObject).append(i);
+      QLog.d("MultiMsg_TAG", 2, ((StringBuilder)localObject).toString());
+    }
+    String str;
+    if (i > 1000000)
+    {
       i = Math.max(i - 1000000, 200);
-      localMessageRecord = a(i);
-    } while (localMessageRecord == null);
-    String str = String.format("delete from %s where _id in (select _id from %s order by _id limit %s)", new Object[] { "mr_multimessage", "mr_multimessage", Integer.valueOf(i) });
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiMsg_TAG", 2, "checkMsgCounts, delNum:" + i + "mr.msgseq:" + localMessageRecord.msgseq);
+      localObject = a(i);
+      if (localObject == null) {
+        return;
+      }
+      str = String.format("delete from %s where _id in (select _id from %s order by _id limit %s)", new Object[] { "mr_multimessage", "mr_multimessage", Integer.valueOf(i) });
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("checkMsgCounts, delNum:");
+        localStringBuilder.append(i);
+        localStringBuilder.append("mr.msgseq:");
+        localStringBuilder.append(((MessageRecord)localObject).msgseq);
+        QLog.d("MultiMsg_TAG", 2, localStringBuilder.toString());
+      }
     }
     try
     {
       localSQLiteDatabase.execSQL(str);
-      label168:
-      a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.msgseq);
+      label191:
+      a(((MessageRecord)localObject).frienduin, ((MessageRecord)localObject).istroop, ((MessageRecord)localObject).msgseq);
       return;
     }
     catch (Exception localException)
     {
-      break label168;
+      break label191;
     }
   }
   
@@ -2104,12 +2379,13 @@ public class MultiMsgProxy
       }
       localMessageRecord1.msgseq = paramMessageRecord.uniseq;
       localMessageRecord1.isMultiMsg = true;
+      Object localObject;
       if (localMessageRecord1.msgtype == -1035)
       {
-        Iterator localIterator = ((MessageForMixedMsg)localMessageRecord1).msgElemList.iterator();
-        while (localIterator.hasNext())
+        localObject = ((MessageForMixedMsg)localMessageRecord1).msgElemList.iterator();
+        while (((Iterator)localObject).hasNext())
         {
-          MessageRecord localMessageRecord2 = (MessageRecord)localIterator.next();
+          MessageRecord localMessageRecord2 = (MessageRecord)((Iterator)localObject).next();
           localMessageRecord2.msgseq = localMessageRecord1.msgseq;
           localMessageRecord2.isMultiMsg = true;
         }
@@ -2117,7 +2393,20 @@ public class MultiMsgProxy
       if (QLog.isColorLevel())
       {
         localMessageRecord1.toString();
-        QLog.d("MultiMsg_TAG", 2, "addMultiMsgSingle, time:" + localMessageRecord1.time + " senderuin:" + localMessageRecord1.senderuin + " istroop:" + localMessageRecord1.istroop + " shmsgseq:" + localMessageRecord1.shmsgseq + " msgseq:" + localMessageRecord1.msgseq + " msgData:" + localMessageRecord1.msgData);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("addMultiMsgSingle, time:");
+        ((StringBuilder)localObject).append(localMessageRecord1.time);
+        ((StringBuilder)localObject).append(" senderuin:");
+        ((StringBuilder)localObject).append(localMessageRecord1.senderuin);
+        ((StringBuilder)localObject).append(" istroop:");
+        ((StringBuilder)localObject).append(localMessageRecord1.istroop);
+        ((StringBuilder)localObject).append(" shmsgseq:");
+        ((StringBuilder)localObject).append(localMessageRecord1.shmsgseq);
+        ((StringBuilder)localObject).append(" msgseq:");
+        ((StringBuilder)localObject).append(localMessageRecord1.msgseq);
+        ((StringBuilder)localObject).append(" msgData:");
+        ((StringBuilder)localObject).append(localMessageRecord1.msgData);
+        QLog.d("MultiMsg_TAG", 2, ((StringBuilder)localObject).toString());
       }
       this.proxyManager.addMsgQueueDonotNotify(localMessageRecord1.frienduin, localMessageRecord1.istroop, localMessageRecord1.getTableName(), localMessageRecord1, 0, paramProxyListener);
     }
@@ -2132,34 +2421,32 @@ public class MultiMsgProxy
   {
     if (paramMessageRecord.getStatus() == 1000) {
       this.proxyManager.addMsgQueueDonotNotify(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.getTableName(), paramMessageRecord, 3, null);
-    }
-    for (;;)
-    {
-      this.proxyManager.transSaveToDatabase();
-      return true;
+    } else {
       this.proxyManager.addMsgQueueDonotNotify(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.getTableName(), paramMessageRecord, 4, null);
     }
+    this.proxyManager.transSaveToDatabase();
+    return true;
   }
   
   public boolean a(MessageRecord paramMessageRecord, HashMap<String, ArrayList<MessageRecord>> paramHashMap, ProxyListener paramProxyListener)
   {
-    if ((paramMessageRecord == null) || (paramHashMap == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiMsg_TAG", 2, "addMultiMsgWithNest error before of null msg or map");
-      }
-    }
-    do
+    if ((paramMessageRecord != null) && (paramHashMap != null))
     {
-      return false;
-      if (MessageForStructing.class.isInstance(paramMessageRecord)) {
-        break;
+      if (!MessageForStructing.class.isInstance(paramMessageRecord))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MultiMsg_TAG", 2, "addMultiMsgWithNest error before of not structMsg");
+        }
+        return false;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("MultiMsg_TAG", 2, "addMultiMsgWithNest error before of not structMsg");
+      a((MessageForStructing)paramMessageRecord, paramHashMap, 0);
+      this.proxyManager.transSaveToDatabase();
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiMsg_TAG", 2, "addMultiMsgWithNest error before of null msg or map");
+    }
     return false;
-    a((MessageForStructing)paramMessageRecord, paramHashMap, 0);
-    this.proxyManager.transSaveToDatabase();
-    return true;
   }
   
   protected boolean a(MessageRecord paramMessageRecord, List<MessageRecord> paramList, ProxyListener paramProxyListener)
@@ -2171,54 +2458,55 @@ public class MultiMsgProxy
   
   public boolean a(HashMap<String, ArrayList<MessageRecord>> paramHashMap, MessageRecord paramMessageRecord)
   {
-    if ((paramHashMap != null) && (paramHashMap.size() > 0))
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramHashMap != null)
     {
-      Iterator localIterator1 = paramHashMap.keySet().iterator();
-      boolean bool = false;
-      if (localIterator1.hasNext())
+      bool1 = bool2;
+      if (paramHashMap.size() > 0)
       {
-        ArrayList localArrayList = (ArrayList)paramHashMap.get((String)localIterator1.next());
-        Iterator localIterator2 = localArrayList.iterator();
-        int i = 0;
-        label63:
-        MessageRecord localMessageRecord1;
-        if (localIterator2.hasNext())
+        Iterator localIterator1 = paramHashMap.keySet().iterator();
+        bool1 = false;
+        while (localIterator1.hasNext())
         {
-          localMessageRecord1 = (MessageRecord)localIterator2.next();
-          if ((localMessageRecord1 instanceof MessageForReplyText))
+          ArrayList localArrayList = (ArrayList)paramHashMap.get((String)localIterator1.next());
+          Iterator localIterator2 = localArrayList.iterator();
+          int i = 0;
+          for (;;)
           {
-            MessageRecord localMessageRecord2 = ((MessageForReplyText)localMessageRecord1).getSourceMessage();
-            if ((localMessageRecord2 != null) && (((localMessageRecord2 instanceof MessageForPic)) || ((localMessageRecord2 instanceof MessageForShortVideo))) && (localMessageRecord2.uniseq == paramMessageRecord.uniseq)) {
-              bool = true;
+            bool2 = localIterator2.hasNext();
+            bool1 = true;
+            if (!bool2) {
+              break;
             }
-          }
-        }
-        for (;;)
-        {
-          if (bool)
-          {
-            if ((localArrayList.get(i) instanceof MessageForReplyText))
+            MessageRecord localMessageRecord1 = (MessageRecord)localIterator2.next();
+            if ((localMessageRecord1 instanceof MessageForReplyText))
             {
-              ((MessageForReplyText)localArrayList.get(i)).setSourceMessageRecord(paramMessageRecord);
-              return bool;
-              if (localMessageRecord1.uniseq == paramMessageRecord.uniseq)
-              {
-                bool = true;
-                continue;
+              MessageRecord localMessageRecord2 = ((MessageForReplyText)localMessageRecord1).getSourceMessage();
+              if ((localMessageRecord2 != null) && (((localMessageRecord2 instanceof MessageForPic)) || ((localMessageRecord2 instanceof MessageForShortVideo))) && (localMessageRecord2.uniseq == paramMessageRecord.uniseq)) {
+                break label184;
               }
-              i += 1;
-              break label63;
             }
-            localArrayList.set(i, paramMessageRecord);
-            return bool;
+            if (localMessageRecord1.uniseq == paramMessageRecord.uniseq) {
+              break label184;
+            }
+            i += 1;
           }
-          break;
-          bool = false;
+          bool1 = false;
+          label184:
+          if (bool1)
+          {
+            if ((localArrayList.get(i) instanceof MessageForReplyText)) {
+              ((MessageForReplyText)localArrayList.get(i)).setSourceMessageRecord(paramMessageRecord);
+            } else {
+              localArrayList.set(i, paramMessageRecord);
+            }
+            return bool1;
+          }
         }
       }
-      return bool;
     }
-    return false;
+    return bool1;
   }
   
   public boolean a(List<MessageRecord> paramList, ProxyListener paramProxyListener)
@@ -2240,34 +2528,45 @@ public class MultiMsgProxy
   public byte[] a(MessageRecord paramMessageRecord)
   {
     long l1 = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiMsg_TAG", 2, "packPbFromLongTextMsg, start pack, startTime:" + l1);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("packPbFromLongTextMsg, start pack, startTime:");
+      ((StringBuilder)localObject1).append(l1);
+      QLog.d("MultiMsg_TAG", 2, ((StringBuilder)localObject1).toString());
     }
-    msg_transmit.PbMultiMsgTransmit localPbMultiMsgTransmit = new msg_transmit.PbMultiMsgTransmit();
-    Object localObject1 = ((QQAppInterface)this.app).getCurrentNickname();
-    Object localObject2 = new HashMap();
-    ((HashMap)localObject2).put(paramMessageRecord.senderuin, localObject1);
-    localObject1 = new msg_comm.Msg();
-    localObject2 = a(paramMessageRecord, (HashMap)localObject2, true, 1, false);
+    Object localObject1 = new msg_transmit.PbMultiMsgTransmit();
+    Object localObject2 = ((QQAppInterface)this.app).getCurrentNickname();
+    Object localObject3 = new HashMap();
+    ((HashMap)localObject3).put(paramMessageRecord.senderuin, localObject2);
+    localObject2 = new msg_comm.Msg();
+    localObject3 = a(paramMessageRecord, (HashMap)localObject3, true, 1, false);
     im_msg_body.MsgBody localMsgBody = a(paramMessageRecord, false);
-    if ((localObject2 != null) && (localMsgBody != null))
+    if ((localObject3 != null) && (localMsgBody != null))
     {
-      ((msg_comm.Msg)localObject1).msg_head.set((MessageMicro)localObject2);
-      ((msg_comm.Msg)localObject1).msg_body.set(localMsgBody);
-      localPbMultiMsgTransmit.msg.add((MessageMicro)localObject1);
+      ((msg_comm.Msg)localObject2).msg_head.set((MessageMicro)localObject3);
+      ((msg_comm.Msg)localObject2).msg_body.set(localMsgBody);
+      ((msg_transmit.PbMultiMsgTransmit)localObject1).msg.add((MessageMicro)localObject2);
     }
-    for (;;)
+    else if (QLog.isColorLevel())
     {
-      paramMessageRecord = a(localPbMultiMsgTransmit.toByteArray());
-      long l2 = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiMsg_TAG", 2, "packPbFromLongTextMsg, end pack, endTime:" + l2 + " cost:" + (l2 - l1));
-      }
-      return paramMessageRecord;
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiMsg_TAG", 2, "packPbFromLongTextMsg, error:msg_head or msg_body is null,uniseq:" + paramMessageRecord.uniseq);
-      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("packPbFromLongTextMsg, error:msg_head or msg_body is null,uniseq:");
+      ((StringBuilder)localObject2).append(paramMessageRecord.uniseq);
+      QLog.d("MultiMsg_TAG", 2, ((StringBuilder)localObject2).toString());
     }
+    paramMessageRecord = a(((msg_transmit.PbMultiMsgTransmit)localObject1).toByteArray());
+    long l2 = System.currentTimeMillis();
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("packPbFromLongTextMsg, end pack, endTime:");
+      ((StringBuilder)localObject1).append(l2);
+      ((StringBuilder)localObject1).append(" cost:");
+      ((StringBuilder)localObject1).append(l2 - l1);
+      QLog.d("MultiMsg_TAG", 2, ((StringBuilder)localObject1).toString());
+    }
+    return paramMessageRecord;
   }
   
   public byte[] a(ArrayList<MessageRecord> paramArrayList, HashMap<String, String> paramHashMap, boolean paramBoolean)
@@ -2276,50 +2575,50 @@ public class MultiMsgProxy
     if (QLog.isColorLevel()) {
       QLog.d("MultiMsg_TAG", 2, new Object[] { "packPbToMultiMsg, start pack, startTime:", Long.valueOf(l1) });
     }
-    MessageRecord localMessageRecord = null;
+    Object localObject = null;
     msg_transmit.PbMultiMsgTransmit localPbMultiMsgTransmit = new msg_transmit.PbMultiMsgTransmit();
     int i = new Random(System.currentTimeMillis()).nextInt();
     Iterator localIterator = paramArrayList.iterator();
-    paramArrayList = localMessageRecord;
-    int j;
+    paramArrayList = (ArrayList<MessageRecord>)localObject;
     while (localIterator.hasNext())
     {
-      localMessageRecord = (MessageRecord)localIterator.next();
-      msg_comm.Msg localMsg = new msg_comm.Msg();
-      j = i + 1;
+      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
+      localObject = new msg_comm.Msg();
       msg_comm.MsgHead localMsgHead = a(localMessageRecord, paramHashMap, paramBoolean, i, false);
       im_msg_body.MsgBody localMsgBody = a(localMessageRecord, false);
       if ((localMsgHead != null) && (localMsgBody != null))
       {
-        localMsg.msg_head.set(localMsgHead);
-        localMsg.msg_body.set(localMsgBody);
-        localPbMultiMsgTransmit.msg.add(localMsg);
-        i = j;
+        ((msg_comm.Msg)localObject).msg_head.set(localMsgHead);
+        ((msg_comm.Msg)localObject).msg_body.set(localMsgBody);
+        localPbMultiMsgTransmit.msg.add((MessageMicro)localObject);
       }
       else
       {
-        if (paramArrayList != null) {
-          break label298;
+        localObject = paramArrayList;
+        if (paramArrayList == null) {
+          localObject = new StringBuilder("packPbFromMultiMsg error:msg_head or msg_body is null, uniseq:");
         }
-        paramArrayList = new StringBuilder("packPbFromMultiMsg error:msg_head or msg_body is null, uniseq:");
+        ((StringBuilder)localObject).append(localMessageRecord.uniseq);
+        ((StringBuilder)localObject).append("|");
+        paramArrayList = (ArrayList<MessageRecord>)localObject;
       }
+      i += 1;
     }
-    label298:
-    for (;;)
+    if ((paramArrayList != null) && (QLog.isColorLevel())) {
+      QLog.d("MultiMsg_TAG", 2, paramArrayList.toString());
+    }
+    paramArrayList = a(localPbMultiMsgTransmit.toByteArray());
+    long l2 = System.currentTimeMillis();
+    if (QLog.isColorLevel())
     {
-      paramArrayList.append(localMessageRecord.uniseq).append("|");
-      i = j;
-      break;
-      if ((paramArrayList != null) && (QLog.isColorLevel())) {
-        QLog.d("MultiMsg_TAG", 2, paramArrayList.toString());
-      }
-      paramArrayList = a(localPbMultiMsgTransmit.toByteArray());
-      long l2 = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiMsg_TAG", 2, "packPbToMultiMsg, end pack,endTime:" + l2 + " cost:" + (l2 - l1));
-      }
-      return paramArrayList;
+      paramHashMap = new StringBuilder();
+      paramHashMap.append("packPbToMultiMsg, end pack,endTime:");
+      paramHashMap.append(l2);
+      paramHashMap.append(" cost:");
+      paramHashMap.append(l2 - l1);
+      QLog.d("MultiMsg_TAG", 2, paramHashMap.toString());
     }
+    return paramArrayList;
   }
   
   public byte[] a(HashMap<String, ArrayList<MessageRecord>> paramHashMap, HashMap<String, String> paramHashMap1, boolean paramBoolean)
@@ -2331,106 +2630,95 @@ public class MultiMsgProxy
     Object localObject1 = null;
     msg_transmit.PbMultiMsgTransmit localPbMultiMsgTransmit = new msg_transmit.PbMultiMsgTransmit();
     int i = new Random(System.currentTimeMillis()).nextInt();
-    Object localObject2 = paramHashMap.keySet().iterator();
+    Iterator localIterator = paramHashMap.keySet().iterator();
+    Object localObject2;
     Object localObject3;
     Object localObject4;
-    msg_transmit.PbMultiMsgNew localPbMultiMsgNew;
-    label131:
-    MessageRecord localMessageRecord;
-    int j;
-    if (((Iterator)localObject2).hasNext())
+    while (localIterator.hasNext())
     {
-      localObject3 = (String)((Iterator)localObject2).next();
-      Object localObject5 = (ArrayList)paramHashMap.get(localObject3);
-      localObject4 = new msg_transmit.PbMultiMsgItem();
-      localPbMultiMsgNew = new msg_transmit.PbMultiMsgNew();
+      localObject2 = (String)localIterator.next();
+      Object localObject5 = (ArrayList)paramHashMap.get(localObject2);
+      localObject3 = new msg_transmit.PbMultiMsgItem();
+      localObject4 = new msg_transmit.PbMultiMsgNew();
       localObject5 = ((ArrayList)localObject5).iterator();
       while (((Iterator)localObject5).hasNext())
       {
-        localMessageRecord = (MessageRecord)((Iterator)localObject5).next();
+        MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject5).next();
         msg_comm.Msg localMsg = new msg_comm.Msg();
-        j = i + 1;
         msg_comm.MsgHead localMsgHead = a(localMessageRecord, paramHashMap1, paramBoolean, i, false);
         im_msg_body.MsgBody localMsgBody = a(localMessageRecord, false);
         if ((localMsgHead != null) && (localMsgBody != null))
         {
           localMsg.msg_head.set(localMsgHead);
           localMsg.msg_body.set(localMsgBody);
-          localPbMultiMsgNew.msg.add(localMsg);
-          i = j;
+          ((msg_transmit.PbMultiMsgNew)localObject4).msg.add(localMsg);
         }
         else
         {
-          if (localObject1 != null) {
-            break label613;
+          if (localObject1 == null) {
+            localObject1 = new StringBuilder("packPbFromMultiMsgWithNest error:msg_head or msg_body is null, uniseq:");
           }
-          localObject1 = new StringBuilder("packPbFromMultiMsgWithNest error:msg_head or msg_body is null, uniseq:");
+          ((StringBuilder)localObject1).append(localMessageRecord.uniseq);
+          ((StringBuilder)localObject1).append("|");
         }
+        i += 1;
       }
+      ((msg_transmit.PbMultiMsgItem)localObject3).fileName.set((String)localObject2);
+      ((msg_transmit.PbMultiMsgItem)localObject3).buffer.set(ByteStringMicro.copyFrom(((msg_transmit.PbMultiMsgNew)localObject4).toByteArray()));
+      localPbMultiMsgTransmit.pbItemList.add((MessageMicro)localObject3);
     }
-    label610:
-    label613:
-    for (;;)
+    if ((localObject1 != null) && (QLog.isColorLevel())) {
+      QLog.d("MultiMsg_TAG", 2, ((StringBuilder)localObject1).toString());
+    }
+    paramHashMap = (ArrayList)paramHashMap.get("MultiMsg");
+    if ((paramHashMap != null) && (paramHashMap.size() > 0))
     {
-      ((StringBuilder)localObject1).append(localMessageRecord.uniseq).append("|");
-      i = j;
-      break label131;
-      ((msg_transmit.PbMultiMsgItem)localObject4).fileName.set((String)localObject3);
-      ((msg_transmit.PbMultiMsgItem)localObject4).buffer.set(ByteStringMicro.copyFrom(localPbMultiMsgNew.toByteArray()));
-      localPbMultiMsgTransmit.pbItemList.add((MessageMicro)localObject4);
-      break;
-      if ((localObject1 != null) && (QLog.isColorLevel())) {
-        QLog.d("MultiMsg_TAG", 2, ((StringBuilder)localObject1).toString());
-      }
-      paramHashMap = (ArrayList)paramHashMap.get("MultiMsg");
-      if ((paramHashMap != null) && (paramHashMap.size() > 0))
+      localObject2 = paramHashMap.iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        localObject1 = paramHashMap.iterator();
-        if (((Iterator)localObject1).hasNext())
-        {
-          paramHashMap = (MessageRecord)((Iterator)localObject1).next();
-          if (!MultiMsgUtil.a((ChatMessage)paramHashMap)) {
-            break label610;
-          }
-          paramHashMap = a(paramHashMap, MultiMsgConstant.jdField_b_of_type_JavaLangString, false);
+        localObject1 = (MessageRecord)((Iterator)localObject2).next();
+        paramHashMap = (HashMap<String, ArrayList<MessageRecord>>)localObject1;
+        if (MultiMsgUtil.a((ChatMessage)localObject1)) {
+          paramHashMap = a((MessageRecord)localObject1, MultiMsgConstant.jdField_b_of_type_JavaLangString, false);
         }
-      }
-      for (;;)
-      {
-        localObject2 = new msg_comm.Msg();
-        j = i + 1;
+        localObject1 = new msg_comm.Msg();
         localObject3 = a(paramHashMap, paramHashMap1, paramBoolean, i, true);
         localObject4 = a(paramHashMap, true);
         if ((localObject3 != null) && (localObject4 != null))
         {
-          ((msg_comm.Msg)localObject2).msg_head.set((MessageMicro)localObject3);
-          ((msg_comm.Msg)localObject2).msg_body.set((MessageMicro)localObject4);
-          localPbMultiMsgTransmit.msg.add((MessageMicro)localObject2);
-          i = j;
-          break;
+          ((msg_comm.Msg)localObject1).msg_head.set((MessageMicro)localObject3);
+          ((msg_comm.Msg)localObject1).msg_body.set((MessageMicro)localObject4);
+          localPbMultiMsgTransmit.msg.add((MessageMicro)localObject1);
         }
-        if (QLog.isColorLevel())
+        else if (QLog.isColorLevel())
         {
-          QLog.d("MultiMsg_TAG", 2, "packPbFromMultiMsg error:msg_head or msg_body is null, uniseq:" + paramHashMap.uniseq);
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("packPbFromMultiMsg error:msg_head or msg_body is null, uniseq:");
+          ((StringBuilder)localObject1).append(paramHashMap.uniseq);
+          QLog.d("MultiMsg_TAG", 2, ((StringBuilder)localObject1).toString());
           new StringBuilder();
-          i = j;
-          break;
-          paramHashMap = a(localPbMultiMsgTransmit.toByteArray());
-          long l2 = System.currentTimeMillis();
-          if (QLog.isColorLevel()) {
-            QLog.d("MultiMsg_TAG", 2, "packPbFromMultiMsgWithNest, end pack,endTime:" + l2 + " cost:" + (l2 - l1));
-          }
-          return paramHashMap;
         }
-        i = j;
-        break;
+        i += 1;
       }
     }
+    paramHashMap = a(localPbMultiMsgTransmit.toByteArray());
+    long l2 = System.currentTimeMillis();
+    if (QLog.isColorLevel())
+    {
+      paramHashMap1 = new StringBuilder();
+      paramHashMap1.append("packPbFromMultiMsgWithNest, end pack,endTime:");
+      paramHashMap1.append(l2);
+      paramHashMap1.append(" cost:");
+      paramHashMap1.append(l2 - l1);
+      QLog.d("MultiMsg_TAG", 2, paramHashMap1.toString());
+    }
+    return paramHashMap;
   }
   
   public void destroy()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceMessageRecordEntityManager != null) && (this.jdField_a_of_type_ComTencentMobileqqPersistenceMessageRecordEntityManager.isOpen())) {
+    MessageRecordEntityManager localMessageRecordEntityManager = this.jdField_a_of_type_ComTencentMobileqqPersistenceMessageRecordEntityManager;
+    if ((localMessageRecordEntityManager != null) && (localMessageRecordEntityManager.isOpen())) {
       this.jdField_a_of_type_ComTencentMobileqqPersistenceMessageRecordEntityManager.close();
     }
   }
@@ -2439,7 +2727,7 @@ public class MultiMsgProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.MultiMsgProxy
  * JD-Core Version:    0.7.0.1
  */

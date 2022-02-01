@@ -7,5 +7,5 @@
     <include android:id="@id/dp_" android:layout_width="fill_parent" android:layout_height="@dimen/ajs" layout="@layout/bxo" />
     <include android:id="@id/dpa" android:layout_width="fill_parent" android:layout_height="@dimen/ajs" layout="@layout/bxo" />
     <include android:id="@id/dpb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/ajs" layout="@layout/bxo" />
-    <com.tencent.mobileqq.widget.RightArrowTextView android:textSize="14.0dip" android:textColor="@color/skin_gray2" android:gravity="center" android:id="@id/ezq" android:background="@drawable/jj" android:padding="10.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="50.0dip" android:text="@string/fr5" android:drawablePadding="10.0dip" />
+    <com.tencent.mobileqq.search.base.widget.RightArrowTextView android:textSize="14.0dip" android:textColor="@color/skin_gray2" android:gravity="center" android:id="@id/ezq" android:background="@drawable/jj" android:padding="10.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="50.0dip" android:text="@string/fr5" android:drawablePadding="10.0dip" />
 </LinearLayout>

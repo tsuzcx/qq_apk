@@ -9,7 +9,7 @@ public final class MarkFaceInPhotoReq
 {
   static MarkFaceItemFeed cache_feed_face_info = new MarkFaceItemFeed();
   static MarkFaceItemMood cache_mood_face_info = new MarkFaceItemMood();
-  static int cache_scene = 0;
+  static int cache_scene;
   public MarkFaceItemFeed feed_face_info = null;
   public MarkFaceItemMood mood_face_info = null;
   public long owner = 0L;
@@ -37,17 +37,19 @@ public final class MarkFaceInPhotoReq
   {
     paramJceOutputStream.write(this.owner, 0);
     paramJceOutputStream.write(this.scene, 1);
-    if (this.feed_face_info != null) {
-      paramJceOutputStream.write(this.feed_face_info, 2);
+    Object localObject = this.feed_face_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.mood_face_info != null) {
-      paramJceOutputStream.write(this.mood_face_info, 3);
+    localObject = this.mood_face_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.MarkFaceInPhotoReq
  * JD-Core Version:    0.7.0.1
  */

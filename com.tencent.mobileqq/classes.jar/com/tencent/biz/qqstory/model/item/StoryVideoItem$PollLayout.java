@@ -23,7 +23,6 @@ public class StoryVideoItem$PollLayout
   
   private StoryVideoItem$PollLayout(JSONObject paramJSONObject)
   {
-    int k;
     try
     {
       this.jdField_a_of_type_JavaLangString = paramJSONObject.toString();
@@ -31,6 +30,7 @@ public class StoryVideoItem$PollLayout
       this.b = paramJSONObject.getInt("id");
       this.i = paramJSONObject.getJSONObject("a").getInt("r");
       JSONArray localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ss");
+      int j = 0;
       this.c = localJSONArray.getInt(0);
       this.d = localJSONArray.getInt(1);
       localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ls");
@@ -40,20 +40,25 @@ public class StoryVideoItem$PollLayout
       this.g = localJSONArray.getInt(0);
       this.h = localJSONArray.getInt(1);
       paramJSONObject = paramJSONObject.getJSONObject("a").getJSONArray("c");
-      k = paramJSONObject.length();
-      if (k < 1) {
-        throw new IllegalArgumentException("content length should more than 1");
+      int k = paramJSONObject.length();
+      if (k >= 1)
+      {
+        this.jdField_a_of_type_ArrayOfJavaLangString = new String[k];
+        while (j < k)
+        {
+          this.jdField_a_of_type_ArrayOfJavaLangString[j] = paramJSONObject.optString(j, "(NULL)");
+          j += 1;
+        }
       }
+      throw new IllegalArgumentException("content length should more than 1");
     }
     catch (JSONException paramJSONObject)
     {
-      throw new IllegalArgumentException(paramJSONObject);
-    }
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[k];
-    while (j < k)
-    {
-      this.jdField_a_of_type_ArrayOfJavaLangString[j] = paramJSONObject.optString(j, "(NULL)");
-      j += 1;
+      paramJSONObject = new IllegalArgumentException(paramJSONObject);
+      for (;;)
+      {
+        throw paramJSONObject;
+      }
     }
   }
   
@@ -64,12 +69,12 @@ public class StoryVideoItem$PollLayout
       paramString = a(new JSONObject(paramString));
       return paramString;
     }
-    catch (JSONException paramString)
+    catch (NullPointerException paramString)
     {
       SLog.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
       return null;
     }
-    catch (NullPointerException paramString)
+    catch (JSONException paramString)
     {
       SLog.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
     }
@@ -97,12 +102,34 @@ public class StoryVideoItem$PollLayout
   
   public String toString()
   {
-    return "PollLayout{version=" + this.jdField_a_of_type_Int + ", id=" + this.b + ", screenWidth=" + this.c + ", screenHeight=" + this.d + ", layoutWidth=" + this.e + ", layoutHeight=" + this.f + ", layoutCenterX=" + this.g + ", layoutCenterY=" + this.h + ", rotation=" + this.i + ", contents=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PollLayout{version=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", id=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", screenWidth=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", screenHeight=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", layoutWidth=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", layoutHeight=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", layoutCenterX=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", layoutCenterY=");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(", rotation=");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(", contents=");
+    localStringBuilder.append(Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString));
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.item.StoryVideoItem.PollLayout
  * JD-Core Version:    0.7.0.1
  */

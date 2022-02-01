@@ -3,8 +3,8 @@ package com.tencent.open.base.http;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import org.apache.http.HttpResponse;
@@ -23,8 +23,6 @@ class AvatarUpdateService$1
   public void run()
   {
     Object localObject1 = new DefaultHttpClient();
-    int i;
-    int j;
     try
     {
       ??? = new HttpGet(MsfSdkUtils.insertMtype("yingyongbao", this.jdField_a_of_type_JavaLangString));
@@ -35,9 +33,32 @@ class AvatarUpdateService$1
         QLog.e("AvatarUpdateService", 1, "-->updateAvatar--jsonp is empty");
         return;
       }
-      i = ((String)localObject1).indexOf('{');
-      j = ((String)localObject1).lastIndexOf('}');
-      if ((i < 0) || (i > j) || (j < 0))
+      int i = ((String)localObject1).indexOf('{');
+      int j = ((String)localObject1).lastIndexOf('}');
+      if ((i >= 0) && (i <= j) && (j >= 0))
+      {
+        localObject1 = new JSONObject(((String)localObject1).substring(i, j + 1)).getString(this.c);
+        if (TextUtils.isEmpty((CharSequence)localObject1))
+        {
+          QLog.e("AvatarUpdateService", 1, "-->updateAvatar--image url is empty");
+          return;
+        }
+        ??? = this.this$0.jdField_a_of_type_AndroidContentSharedPreferences.getString(this.c, "");
+        if ((!FileUtils.fileExists(this.d)) || (!((String)localObject1).equals(???)))
+        {
+          QLog.d("AvatarUpdateService", 1, "-->updateAvatar--avatar not exist or need update, will download new avatar");
+          synchronized (this.this$0.jdField_a_of_type_JavaUtilHashMap)
+          {
+            if (!this.this$0.jdField_a_of_type_JavaUtilHashMap.containsKey(this.c))
+            {
+              this.this$0.jdField_a_of_type_JavaUtilHashMap.put(this.c, new AvatarUpdateService.AvatarUpdateTask(this.this$0, this.jdField_a_of_type_AndroidContentContext, this.c, this.d, (String)localObject1, this.jdField_a_of_type_ComTencentOpenBaseHttpHttpImageDownloadAsyncTask$TaskCompleteCallback));
+              new HttpImageDownloadAsyncTask(this.c, (String)localObject1, null, "GET", this.this$0).execute(new Void[0]);
+            }
+            return;
+          }
+        }
+      }
+      else
       {
         QLog.e("AvatarUpdateService", 1, "-->updateAvatar--can not find json string");
         return;
@@ -46,33 +67,12 @@ class AvatarUpdateService$1
     catch (Exception localException)
     {
       QLog.e("AvatarUpdateService", 1, new Object[] { "-->updateAvatar---", localException.getMessage() });
-      return;
-    }
-    String str = new JSONObject(localException.substring(i, j + 1)).getString(this.c);
-    if (TextUtils.isEmpty(str))
-    {
-      QLog.e("AvatarUpdateService", 1, "-->updateAvatar--image url is empty");
-      return;
-    }
-    ??? = this.this$0.jdField_a_of_type_AndroidContentSharedPreferences.getString(this.c, "");
-    if ((!FileUtil.a(this.d)) || (!str.equals(???)))
-    {
-      QLog.d("AvatarUpdateService", 1, "-->updateAvatar--avatar not exist or need update, will download new avatar");
-      synchronized (this.this$0.jdField_a_of_type_JavaUtilHashMap)
-      {
-        if (!this.this$0.jdField_a_of_type_JavaUtilHashMap.containsKey(this.c))
-        {
-          this.this$0.jdField_a_of_type_JavaUtilHashMap.put(this.c, new AvatarUpdateService.AvatarUpdateTask(this.this$0, this.jdField_a_of_type_AndroidContentContext, this.c, this.d, str, this.jdField_a_of_type_ComTencentOpenBaseHttpHttpImageDownloadAsyncTask$TaskCompleteCallback));
-          new HttpImageDownloadAsyncTask(this.c, str, null, "GET", this.this$0).execute(new Void[0]);
-        }
-        return;
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.base.http.AvatarUpdateService.1
  * JD-Core Version:    0.7.0.1
  */

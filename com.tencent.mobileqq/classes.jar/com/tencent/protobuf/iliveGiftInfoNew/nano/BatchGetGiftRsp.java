@@ -20,14 +20,15 @@ public final class BatchGetGiftRsp
   
   public static BatchGetGiftRsp[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new BatchGetGiftRsp[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new BatchGetGiftRsp[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static BatchGetGiftRsp parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -48,34 +49,40 @@ public final class BatchGetGiftRsp
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    int k = this.result;
     int i = j;
-    if (this.result != 0) {
-      i = j + CodedOutputByteBufferNano.computeInt32Size(1, this.result);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeInt32Size(1, k);
     }
-    j = i;
-    if (this.giftInfo != null)
+    Object localObject = this.giftInfo;
+    k = i;
+    if (localObject != null)
     {
-      j = i;
-      if (this.giftInfo.length > 0)
+      k = i;
+      if (localObject.length > 0)
       {
         j = 0;
-        while (j < this.giftInfo.length)
+        for (;;)
         {
-          GiftInfoRsp localGiftInfoRsp = this.giftInfo[j];
-          int k = i;
-          if (localGiftInfoRsp != null) {
-            k = i + CodedOutputByteBufferNano.computeMessageSize(2, localGiftInfoRsp);
+          localObject = this.giftInfo;
+          k = i;
+          if (j >= localObject.length) {
+            break;
+          }
+          localObject = localObject[j];
+          k = i;
+          if (localObject != null) {
+            k = i + CodedOutputByteBufferNano.computeMessageSize(2, (MessageNano)localObject);
           }
           j += 1;
           i = k;
         }
-        j = i;
       }
     }
-    return j;
+    return k;
   }
   
   public BatchGetGiftRsp mergeFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -83,57 +90,71 @@ public final class BatchGetGiftRsp
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.result = paramCodedInputByteBufferNano.readInt32();
+      if (i == 0) {
         break;
       }
-      int j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 18);
-      if (this.giftInfo == null) {}
-      GiftInfoRsp[] arrayOfGiftInfoRsp;
-      for (i = 0;; i = this.giftInfo.length)
+      if (i != 8)
       {
-        arrayOfGiftInfoRsp = new GiftInfoRsp[j + i];
-        j = i;
-        if (i != 0)
+        if (i != 18)
         {
-          System.arraycopy(this.giftInfo, 0, arrayOfGiftInfoRsp, 0, i);
-          j = i;
+          if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+            return this;
+          }
         }
-        while (j < arrayOfGiftInfoRsp.length - 1)
+        else
         {
+          int j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 18);
+          GiftInfoRsp[] arrayOfGiftInfoRsp = this.giftInfo;
+          if (arrayOfGiftInfoRsp == null) {
+            i = 0;
+          } else {
+            i = arrayOfGiftInfoRsp.length;
+          }
+          arrayOfGiftInfoRsp = new GiftInfoRsp[j + i];
+          j = i;
+          if (i != 0)
+          {
+            System.arraycopy(this.giftInfo, 0, arrayOfGiftInfoRsp, 0, i);
+            j = i;
+          }
+          while (j < arrayOfGiftInfoRsp.length - 1)
+          {
+            arrayOfGiftInfoRsp[j] = new GiftInfoRsp();
+            paramCodedInputByteBufferNano.readMessage(arrayOfGiftInfoRsp[j]);
+            paramCodedInputByteBufferNano.readTag();
+            j += 1;
+          }
           arrayOfGiftInfoRsp[j] = new GiftInfoRsp();
           paramCodedInputByteBufferNano.readMessage(arrayOfGiftInfoRsp[j]);
-          paramCodedInputByteBufferNano.readTag();
-          j += 1;
+          this.giftInfo = arrayOfGiftInfoRsp;
         }
       }
-      arrayOfGiftInfoRsp[j] = new GiftInfoRsp();
-      paramCodedInputByteBufferNano.readMessage(arrayOfGiftInfoRsp[j]);
-      this.giftInfo = arrayOfGiftInfoRsp;
+      else {
+        this.result = paramCodedInputByteBufferNano.readInt32();
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.result != 0) {
-      paramCodedOutputByteBufferNano.writeInt32(1, this.result);
+    int i = this.result;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeInt32(1, i);
     }
-    if ((this.giftInfo != null) && (this.giftInfo.length > 0))
+    Object localObject = this.giftInfo;
+    if ((localObject != null) && (localObject.length > 0))
     {
-      int i = 0;
-      while (i < this.giftInfo.length)
+      i = 0;
+      for (;;)
       {
-        GiftInfoRsp localGiftInfoRsp = this.giftInfo[i];
-        if (localGiftInfoRsp != null) {
-          paramCodedOutputByteBufferNano.writeMessage(2, localGiftInfoRsp);
+        localObject = this.giftInfo;
+        if (i >= localObject.length) {
+          break;
+        }
+        localObject = localObject[i];
+        if (localObject != null) {
+          paramCodedOutputByteBufferNano.writeMessage(2, (MessageNano)localObject);
         }
         i += 1;
       }
@@ -143,7 +164,7 @@ public final class BatchGetGiftRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.iliveGiftInfoNew.nano.BatchGetGiftRsp
  * JD-Core Version:    0.7.0.1
  */

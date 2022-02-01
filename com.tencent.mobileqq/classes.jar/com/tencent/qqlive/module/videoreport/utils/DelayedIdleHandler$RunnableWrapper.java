@@ -15,8 +15,12 @@ class DelayedIdleHandler$RunnableWrapper
   
   public void run()
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("DelayedIdleHandler", "run by handler, task = " + this.mTask);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("run by handler, task = ");
+      localStringBuilder.append(this.mTask);
+      Log.d("DelayedIdleHandler", localStringBuilder.toString());
     }
     this.mTask.run(1);
     DelayedIdleHandler.access$100(this.this$0, this.mTask);
@@ -25,7 +29,7 @@ class DelayedIdleHandler$RunnableWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.utils.DelayedIdleHandler.RunnableWrapper
  * JD-Core Version:    0.7.0.1
  */

@@ -8,6 +8,7 @@ import com.tencent.mobileqq.soload.api.ISoConfigService;
 import com.tencent.mobileqq.soload.biz.OnGetSoLoadInfoListener;
 import com.tencent.mobileqq.soload.biz.entity.SoInfo;
 import com.tencent.mobileqq.soload.config.SoConfigManager;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCClient;
@@ -43,31 +44,32 @@ public class SoConfigServiceImpl
   {
     int m = paramArrayOfInt.length;
     int i = 0;
-    if (i < m)
+    while (i < m)
     {
-      Object localObject;
-      boolean bool;
-      if (paramArrayOfInt[i] == 526) {
+      if (paramArrayOfInt[i] == 526)
+      {
+        int j;
         if (QLog.isColorLevel())
         {
-          localObject = new StringBuilder().append("[notifyNetFailed] isSucc=");
-          if ((paramFromServiceMsg == null) || (!paramFromServiceMsg.isSuccess())) {
-            break label154;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("[notifyNetFailed] isSucc=");
+          boolean bool;
+          if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess())) {
+            bool = true;
+          } else {
+            bool = false;
           }
-          bool = true;
-          label55:
-          localObject = ((StringBuilder)localObject).append(bool).append(", resultCode=");
-          if (paramFromServiceMsg == null) {
-            break label160;
+          ((StringBuilder)localObject).append(bool);
+          ((StringBuilder)localObject).append(", resultCode=");
+          if (paramFromServiceMsg != null) {
+            j = paramFromServiceMsg.getResultCode();
+          } else {
+            j = -1;
           }
+          ((StringBuilder)localObject).append(j);
+          QLog.d("SoLoadWidget.SoConfigServiceImpl", 2, ((StringBuilder)localObject).toString());
         }
-      }
-      label154:
-      label160:
-      for (int j = paramFromServiceMsg.getResultCode();; j = -1)
-      {
-        QLog.d("SoLoadWidget.SoConfigServiceImpl", 2, j);
-        localObject = QConfigManager.a().a(526);
+        Object localObject = QConfigManager.a().a(526);
         if (localObject != null)
         {
           int k = -2;
@@ -81,17 +83,25 @@ public class SoConfigServiceImpl
           }
           ((IQConfigProcessor)localObject).onReqFailed(j);
         }
-        i += 1;
-        break;
-        bool = false;
-        break label55;
+      }
+      i += 1;
+    }
+  }
+  
+  public void removeSoInfo(String paramString)
+  {
+    if (!StringUtil.a(paramString))
+    {
+      Map localMap = getSoInfos();
+      if (localMap != null) {
+        localMap.remove(paramString);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soload.api.impl.SoConfigServiceImpl
  * JD-Core Version:    0.7.0.1
  */

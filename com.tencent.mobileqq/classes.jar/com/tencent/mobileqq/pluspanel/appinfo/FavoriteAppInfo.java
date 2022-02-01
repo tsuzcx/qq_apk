@@ -23,7 +23,7 @@ public class FavoriteAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130844326;
+    return 2130844232;
   }
   
   public int getAppID()
@@ -52,7 +52,7 @@ public class FavoriteAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131698468);
+    return BaseApplicationImpl.getContext().getString(2131698534);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
@@ -67,7 +67,7 @@ public class FavoriteAppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.FavoriteAppInfo
  * JD-Core Version:    0.7.0.1
  */

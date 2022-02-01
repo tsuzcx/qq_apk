@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
@@ -75,21 +76,24 @@ public class MiniActivity
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.mUIProxy != null) {
-      this.mUIProxy.onActivityResult(this, paramInt1, paramInt2, paramIntent);
+    IUIProxy localIUIProxy = this.mUIProxy;
+    if (localIUIProxy != null) {
+      localIUIProxy.onActivityResult(this, paramInt1, paramInt2, paramIntent);
     }
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
   public void onBackPressed()
   {
-    if (this.mUIProxy != null) {}
-    for (boolean bool = this.mUIProxy.onBackPressed(this);; bool = false)
-    {
-      if ((!bool) && (!moveTaskToBack(false))) {
-        finish();
-      }
-      return;
+    IUIProxy localIUIProxy = this.mUIProxy;
+    boolean bool;
+    if (localIUIProxy != null) {
+      bool = localIUIProxy.onBackPressed(this);
+    } else {
+      bool = false;
+    }
+    if ((!bool) && (!moveTaskToBack(false))) {
+      finish();
     }
   }
   
@@ -102,75 +106,80 @@ public class MiniActivity
   
   protected void onCreate(Bundle paramBundle)
   {
-    QMLog.i("MiniActivity", this + " onCreate(). " + getIntent());
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(this);
+    ((StringBuilder)localObject1).append(" onCreate(). ");
+    ((StringBuilder)localObject1).append(getIntent());
+    QMLog.i("MiniActivity", ((StringBuilder)localObject1).toString());
     super.onCreate(paramBundle);
     MiniSDK.init(getApplicationContext());
-    Intent localIntent = getIntent();
-    Object localObject;
-    if (localIntent != null)
+    localObject1 = getIntent();
+    if (localObject1 != null)
     {
-      localObject = getMiniAppInfoFromIntent(localIntent);
-      if ((localObject == null) || (!((MiniAppInfo)localObject).isEngineTypeMiniGame())) {
-        break label150;
+      localObject2 = getMiniAppInfoFromIntent((Intent)localObject1);
+      if ((localObject2 != null) && (((MiniAppInfo)localObject2).isEngineTypeMiniGame()))
+      {
+        DisplayUtil.setActivityTransparent(this);
       }
-      DisplayUtil.setActivityTransparent(this);
+      else
+      {
+        requestWindowFeature(1);
+        getWindow().addFlags(1);
+        getWindow().addFlags(67108864);
+      }
     }
-    FrameLayout localFrameLayout;
-    for (;;)
+    Object localObject3 = new RelativeLayout(this);
+    setContentView((View)localObject3);
+    Object localObject2 = new FrameLayout(this);
+    ((RelativeLayout)localObject3).addView((View)localObject2, new RelativeLayout.LayoutParams(-1, -1));
+    AppLoaderFactory.g().getMiniAppEnv().setupWithIntent((Intent)localObject1);
+    initUIProxy(getIntent());
+    localObject3 = this.mUIProxy;
+    if (localObject3 == null)
     {
-      localObject = new RelativeLayout(this);
-      setContentView((View)localObject);
-      localFrameLayout = new FrameLayout(this);
-      ((RelativeLayout)localObject).addView(localFrameLayout, new RelativeLayout.LayoutParams(-1, -1));
-      AppLoaderFactory.g().getMiniAppEnv().setupWithIntent(localIntent);
-      initUIProxy(getIntent());
-      if (this.mUIProxy != null) {
-        break;
-      }
       QMLog.e("MiniActivity", "onCreate(). Failed to start MiniActivity, UIProxy is null!");
       finish();
       return;
-      label150:
-      requestWindowFeature(1);
-      getWindow().addFlags(1);
-      getWindow().addFlags(67108864);
     }
-    this.mUIProxy.onAttachActivity(this, paramBundle, localFrameLayout);
-    QMLog.e("MiniActivity", this + " onCreate(). " + localIntent.getData());
+    ((IUIProxy)localObject3).onAttachActivity(this, paramBundle, (ViewGroup)localObject2);
+    paramBundle = new StringBuilder();
+    paramBundle.append(this);
+    paramBundle.append(" onCreate(). ");
+    paramBundle.append(((Intent)localObject1).getData());
+    QMLog.e("MiniActivity", paramBundle.toString());
   }
   
   protected void onDestroy()
   {
-    QMLog.i("MiniActivity", this + " onDestroy(). " + getIntent());
-    if (this.mUIProxy != null) {
-      this.mUIProxy.onDetachActivity(this);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this);
+    ((StringBuilder)localObject).append(" onDestroy(). ");
+    ((StringBuilder)localObject).append(getIntent());
+    QMLog.i("MiniActivity", ((StringBuilder)localObject).toString());
+    localObject = this.mUIProxy;
+    if (localObject != null) {
+      ((IUIProxy)localObject).onDetachActivity(this);
     }
     super.onDestroy();
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    boolean bool2 = false;
     if (paramInt == 4)
     {
-      boolean bool1;
-      if (this.mUIProxy != null)
-      {
-        bool1 = this.mUIProxy.onBackPressed(this);
-        if (!bool1) {
-          break label39;
-        }
-        bool1 = true;
+      paramKeyEvent = this.mUIProxy;
+      boolean bool;
+      if (paramKeyEvent != null) {
+        bool = paramKeyEvent.onBackPressed(this);
+      } else {
+        bool = false;
       }
-      label39:
-      do
-      {
-        return bool1;
-        bool1 = false;
-        break;
-        bool1 = bool2;
-      } while (moveTaskToBack(false));
-      finish();
+      if (bool) {
+        return true;
+      }
+      if (!moveTaskToBack(false)) {
+        finish();
+      }
       return false;
     }
     return super.onKeyDown(paramInt, paramKeyEvent);
@@ -179,7 +188,11 @@ public class MiniActivity
   protected void onNewIntent(Intent paramIntent)
   {
     super.onNewIntent(paramIntent);
-    QMLog.i("MiniActivity", this + " onNewIntent(). " + paramIntent);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this);
+    localStringBuilder.append(" onNewIntent(). ");
+    localStringBuilder.append(paramIntent);
+    QMLog.i("MiniActivity", localStringBuilder.toString());
     initUIProxy(paramIntent);
     if (this.mUIProxy == null)
     {
@@ -190,30 +203,42 @@ public class MiniActivity
   
   protected void onPause()
   {
-    QMLog.i("MiniActivity", this + " onPause(). " + getIntent());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this);
+    ((StringBuilder)localObject).append(" onPause(). ");
+    ((StringBuilder)localObject).append(getIntent());
+    QMLog.i("MiniActivity", ((StringBuilder)localObject).toString());
     super.onPause();
-    if (this.mUIProxy != null) {
-      this.mUIProxy.onMiniPause();
+    localObject = this.mUIProxy;
+    if (localObject != null) {
+      ((IUIProxy)localObject).onMiniPause();
     }
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (this.mUIProxy != null) {
-      this.mUIProxy.onRequestPermissionsResult(this, paramInt, paramArrayOfString, paramArrayOfInt);
+    IUIProxy localIUIProxy = this.mUIProxy;
+    if (localIUIProxy != null) {
+      localIUIProxy.onRequestPermissionsResult(this, paramInt, paramArrayOfString, paramArrayOfInt);
     }
     super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
   }
   
   protected void onResume()
   {
-    QMLog.i("MiniActivity", this + " onResume(). " + getIntent());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this);
+    ((StringBuilder)localObject).append(" onResume(). ");
+    ((StringBuilder)localObject).append(getIntent());
+    QMLog.i("MiniActivity", ((StringBuilder)localObject).toString());
     super.onResume();
-    if (this.mUIProxy != null)
+    localObject = this.mUIProxy;
+    if (localObject != null)
     {
-      if (this.mIntent != null)
+      Intent localIntent = this.mIntent;
+      if (localIntent != null)
       {
-        this.mUIProxy.onIntentUpdate(this.mIntent);
+        ((IUIProxy)localObject).onIntentUpdate(localIntent);
         this.mIntent = null;
       }
       this.mUIProxy.onMiniResume();
@@ -222,19 +247,29 @@ public class MiniActivity
   
   protected void onStart()
   {
-    QMLog.i("MiniActivity", this + " onStart(). " + getIntent());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this);
+    ((StringBuilder)localObject).append(" onStart(). ");
+    ((StringBuilder)localObject).append(getIntent());
+    QMLog.i("MiniActivity", ((StringBuilder)localObject).toString());
     super.onStart();
-    if (this.mUIProxy != null) {
-      this.mUIProxy.onMiniStart();
+    localObject = this.mUIProxy;
+    if (localObject != null) {
+      ((IUIProxy)localObject).onMiniStart();
     }
   }
   
   protected void onStop()
   {
-    QMLog.i("MiniActivity", this + " onStop(). " + getIntent());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this);
+    ((StringBuilder)localObject).append(" onStop(). ");
+    ((StringBuilder)localObject).append(getIntent());
+    QMLog.i("MiniActivity", ((StringBuilder)localObject).toString());
     super.onStop();
-    if (this.mUIProxy != null) {
-      this.mUIProxy.onMiniStop();
+    localObject = this.mUIProxy;
+    if (localObject != null) {
+      ((IUIProxy)localObject).onMiniStop();
     }
   }
   
@@ -246,7 +281,7 @@ public class MiniActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.ui.MiniActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -51,10 +51,10 @@ public class RecentMsgProxyProviderListProvider
     this.a.put(20, new ArkInfoMsg(BaseApplication.getContext(), ""));
     this.a.put(23, new TroopShopArkMsg(BaseApplication.getContext()));
     Object localObject = new TroopNotificationMsg(BaseApplication.getContext(), false);
-    this.a.put(29, localObject);
+    this.a.put(28, localObject);
     this.a.put(11, localObject);
     localObject = new TroopReceivedFlowsersMsg(BaseApplication.getContext());
-    this.a.put(27, localObject);
+    this.a.put(26, localObject);
     this.a.put(14, localObject);
   }
   
@@ -72,7 +72,7 @@ public class RecentMsgProxyProviderListProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msg.littleear.creator.RecentMsgProxyProviderListProvider
  * JD-Core Version:    0.7.0.1
  */

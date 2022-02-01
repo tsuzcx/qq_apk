@@ -27,113 +27,112 @@ public class Base64Utils
     paramString = paramString.getBytes("US-ASCII");
     int k = paramString.length;
     int i = 0;
-    if (i < k) {}
-    for (int j = i;; j = i)
+    while (i < k)
     {
-      byte[] arrayOfByte = base64DecodeChars;
-      i = j + 1;
-      int n = arrayOfByte[paramString[j]];
-      if ((i >= k) || (n != -1))
+      byte[] arrayOfByte;
+      int n;
+      for (int j = i;; j = i)
       {
-        j = i;
-        if (n == -1) {}
-        label64:
-        int m;
-        do
-        {
-          return localStringBuffer.toString().getBytes("iso8859-1");
-          do
-          {
-            j = i;
-            arrayOfByte = base64DecodeChars;
-            i = j + 1;
-            m = arrayOfByte[paramString[j]];
-          } while ((i < k) && (m == -1));
-        } while (m == -1);
-        localStringBuffer.append((char)(n << 2 | (m & 0x30) >>> 4));
-        for (j = i;; j = i)
-        {
-          i = j + 1;
-          j = paramString[j];
-          if (j == 61) {
-            return localStringBuffer.toString().getBytes("iso8859-1");
-          }
-          n = base64DecodeChars[j];
-          if ((i >= k) || (n != -1))
-          {
-            if (n == -1) {
-              break label64;
-            }
-            localStringBuffer.append((char)((m & 0xF) << 4 | (n & 0x3C) >>> 2));
-            for (j = i;; j = i)
-            {
-              i = j + 1;
-              j = paramString[j];
-              if (j == 61) {
-                return localStringBuffer.toString().getBytes("iso8859-1");
-              }
-              j = base64DecodeChars[j];
-              if ((i >= k) || (j != -1))
-              {
-                if (j == -1) {
-                  break label64;
-                }
-                localStringBuffer.append((char)(j | (n & 0x3) << 6));
-                break;
-              }
-            }
-          }
+        arrayOfByte = base64DecodeChars;
+        i = j + 1;
+        n = arrayOfByte[paramString[j]];
+        if ((i >= k) || (n != -1)) {
+          break;
         }
       }
+      j = i;
+      if (n == -1) {
+        break;
+      }
+      int m;
+      for (;;)
+      {
+        arrayOfByte = base64DecodeChars;
+        i = j + 1;
+        m = arrayOfByte[paramString[j]];
+        if ((i >= k) || (m != -1)) {
+          break;
+        }
+        j = i;
+      }
+      if (m == -1) {
+        break;
+      }
+      localStringBuffer.append((char)(n << 2 | (m & 0x30) >>> 4));
+      for (j = i;; j = i)
+      {
+        i = j + 1;
+        j = paramString[j];
+        if (j == 61) {
+          return localStringBuffer.toString().getBytes("iso8859-1");
+        }
+        n = base64DecodeChars[j];
+        if ((i >= k) || (n != -1)) {
+          break;
+        }
+      }
+      if (n == -1) {
+        break;
+      }
+      localStringBuffer.append((char)((m & 0xF) << 4 | (n & 0x3C) >>> 2));
+      for (j = i;; j = i)
+      {
+        i = j + 1;
+        j = paramString[j];
+        if (j == 61) {
+          return localStringBuffer.toString().getBytes("iso8859-1");
+        }
+        j = base64DecodeChars[j];
+        if ((i >= k) || (j != -1)) {
+          break;
+        }
+      }
+      if (j == -1) {
+        break;
+      }
+      localStringBuffer.append((char)(j | (n & 0x3) << 6));
     }
+    return localStringBuffer.toString().getBytes("iso8859-1");
   }
   
   public static String encode(byte[] paramArrayOfByte)
   {
     StringBuffer localStringBuffer = new StringBuffer();
     int j = paramArrayOfByte.length;
-    int i = 0;
-    for (;;)
+    int k;
+    for (int i = 0; i < j; i = k + 1)
     {
-      int n;
-      int k;
-      if (i < j)
+      int m = i + 1;
+      i = paramArrayOfByte[i] & 0xFF;
+      if (m == j)
       {
-        n = i + 1;
-        k = paramArrayOfByte[i] & 0xFF;
-        if (n != j) {
-          break label80;
-        }
-        localStringBuffer.append(base64EncodeChars[(k >>> 2)]);
-        localStringBuffer.append(base64EncodeChars[((k & 0x3) << 4)]);
+        localStringBuffer.append(base64EncodeChars[(i >>> 2)]);
+        localStringBuffer.append(base64EncodeChars[((i & 0x3) << 4)]);
         localStringBuffer.append("==");
+        break;
       }
-      for (;;)
+      k = m + 1;
+      m = paramArrayOfByte[m] & 0xFF;
+      if (k == j)
       {
-        return localStringBuffer.toString();
-        label80:
-        m = n + 1;
-        n = paramArrayOfByte[n] & 0xFF;
-        if (m != j) {
-          break;
-        }
-        localStringBuffer.append(base64EncodeChars[(k >>> 2)]);
-        localStringBuffer.append(base64EncodeChars[((k & 0x3) << 4 | (n & 0xF0) >>> 4)]);
-        localStringBuffer.append(base64EncodeChars[((n & 0xF) << 2)]);
+        localStringBuffer.append(base64EncodeChars[(i >>> 2)]);
+        localStringBuffer.append(base64EncodeChars[((i & 0x3) << 4 | (m & 0xF0) >>> 4)]);
+        localStringBuffer.append(base64EncodeChars[((m & 0xF) << 2)]);
         localStringBuffer.append("=");
+        break;
       }
-      i = m + 1;
-      int m = paramArrayOfByte[m] & 0xFF;
-      localStringBuffer.append(base64EncodeChars[(k >>> 2)]);
-      localStringBuffer.append(base64EncodeChars[((k & 0x3) << 4 | (n & 0xF0) >>> 4)]);
-      localStringBuffer.append(base64EncodeChars[((n & 0xF) << 2 | (m & 0xC0) >>> 6)]);
-      localStringBuffer.append(base64EncodeChars[(m & 0x3F)]);
+      int n = paramArrayOfByte[k] & 0xFF;
+      localStringBuffer.append(base64EncodeChars[(i >>> 2)]);
+      localStringBuffer.append(base64EncodeChars[((i & 0x3) << 4 | (m & 0xF0) >>> 4)]);
+      localStringBuffer.append(base64EncodeChars[((m & 0xF) << 2 | (n & 0xC0) >>> 6)]);
+      localStringBuffer.append(base64EncodeChars[(n & 0x3F)]);
     }
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.ckey.Base64Utils
  * JD-Core Version:    0.7.0.1
  */

@@ -60,47 +60,63 @@ public class OverScroller
     if (isFinished()) {
       return false;
     }
-    switch (this.mMode)
+    int i = this.mMode;
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return true;
-      long l = AnimationUtils.currentAnimationTimeMillis() - OverScroller.SplineOverScroller.access$600(this.mScrollerX);
-      int i = OverScroller.SplineOverScroller.access$500(this.mScrollerX);
-      if (l < i)
+      if (i != 1)
       {
-        float f = (float)l / i;
-        if (this.mInterpolator == null) {}
-        for (f = AnimateUtils.viscousFluid(f);; f = this.mInterpolator.getInterpolation(f))
+        if (i != 2) {
+          return true;
+        }
+        if ((!OverScroller.SplineOverScroller.access$000(this.mScrollerX)) && (!this.mScrollerX.update()) && (!this.mScrollerX.continueWhenFinishedForNoBack())) {
+          this.mScrollerX.finish();
+        }
+        if ((!OverScroller.SplineOverScroller.access$000(this.mScrollerY)) && (!this.mScrollerY.update()) && (!this.mScrollerY.continueWhenFinishedForNoBack()))
         {
-          if (!OverScroller.SplineOverScroller.access$000(this.mScrollerX)) {
-            this.mScrollerX.updateScroll(f);
-          }
-          if (OverScroller.SplineOverScroller.access$000(this.mScrollerY)) {
-            break;
-          }
-          this.mScrollerY.updateScroll(f);
-          break;
+          this.mScrollerY.finish();
+          return true;
         }
       }
-      abortAnimation();
-      continue;
-      if ((!OverScroller.SplineOverScroller.access$000(this.mScrollerX)) && (!this.mScrollerX.update()) && (!this.mScrollerX.continueWhenFinishedForNoBack())) {
-        this.mScrollerX.finish();
-      }
-      if ((!OverScroller.SplineOverScroller.access$000(this.mScrollerY)) && (!this.mScrollerY.update()) && (!this.mScrollerY.continueWhenFinishedForNoBack()))
+      else
       {
-        this.mScrollerY.finish();
-        continue;
         if ((!OverScroller.SplineOverScroller.access$000(this.mScrollerX)) && (!this.mScrollerX.update()) && (!this.mScrollerX.continueWhenFinished())) {
           this.mScrollerX.finish();
         }
-        if ((!OverScroller.SplineOverScroller.access$000(this.mScrollerY)) && (!this.mScrollerY.update()) && (!this.mScrollerY.continueWhenFinished())) {
+        if ((!OverScroller.SplineOverScroller.access$000(this.mScrollerY)) && (!this.mScrollerY.update()) && (!this.mScrollerY.continueWhenFinished()))
+        {
           this.mScrollerY.finish();
+          return true;
         }
       }
     }
+    else
+    {
+      long l = AnimationUtils.currentAnimationTimeMillis() - OverScroller.SplineOverScroller.access$600(this.mScrollerX);
+      i = OverScroller.SplineOverScroller.access$500(this.mScrollerX);
+      if (l < i)
+      {
+        float f = (float)l / i;
+        Interpolator localInterpolator = this.mInterpolator;
+        if (localInterpolator == null) {
+          f = AnimateUtils.viscousFluid(f);
+        } else {
+          f = localInterpolator.getInterpolation(f);
+        }
+        if (!OverScroller.SplineOverScroller.access$000(this.mScrollerX)) {
+          this.mScrollerX.updateScroll(f);
+        }
+        if (!OverScroller.SplineOverScroller.access$000(this.mScrollerY))
+        {
+          this.mScrollerY.updateScroll(f);
+          return true;
+        }
+      }
+      else
+      {
+        abortAnimation();
+      }
+    }
+    return true;
   }
   
   @Deprecated
@@ -126,19 +142,20 @@ public class OverScroller
     {
       float f1 = OverScroller.SplineOverScroller.access$200(this.mScrollerX);
       float f2 = OverScroller.SplineOverScroller.access$200(this.mScrollerY);
-      if ((Math.signum(paramInt3) == Math.signum(f1)) && (Math.signum(paramInt4) == Math.signum(f2)))
+      float f3 = paramInt3;
+      if (Math.signum(f3) == Math.signum(f1))
       {
-        paramInt3 = (int)(f1 + paramInt3);
-        paramInt4 = (int)(paramInt4 + f2);
+        float f4 = paramInt4;
+        if (Math.signum(f4) == Math.signum(f2))
+        {
+          paramInt3 = (int)(f3 + f1);
+          paramInt4 = (int)(f4 + f2);
+        }
       }
     }
-    for (;;)
-    {
-      this.mMode = paramInt11;
-      this.mScrollerX.fling(paramInt1, paramInt3, paramInt5, paramInt6, paramInt9);
-      this.mScrollerY.fling(paramInt2, paramInt4, paramInt7, paramInt8, paramInt10);
-      return;
-    }
+    this.mMode = paramInt11;
+    this.mScrollerX.fling(paramInt1, paramInt3, paramInt5, paramInt6, paramInt9);
+    this.mScrollerY.fling(paramInt2, paramInt4, paramInt7, paramInt8, paramInt10);
   }
   
   public void fling(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10)
@@ -263,18 +280,34 @@ public class OverScroller
   
   public boolean springBack(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
+    boolean bool1 = true;
     this.mMode = 1;
-    boolean bool1 = this.mScrollerX.springback(paramInt1, paramInt3, paramInt4);
-    boolean bool2 = this.mScrollerY.springback(paramInt2, paramInt5, paramInt6);
-    return (bool1) || (bool2);
+    boolean bool2 = this.mScrollerX.springback(paramInt1, paramInt3, paramInt4);
+    boolean bool3 = this.mScrollerY.springback(paramInt2, paramInt5, paramInt6);
+    if (!bool2)
+    {
+      if (bool3) {
+        return true;
+      }
+      bool1 = false;
+    }
+    return bool1;
   }
   
   public boolean springBack(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
+    boolean bool1 = true;
     this.mMode = 1;
-    boolean bool1 = this.mScrollerX.springback(paramInt1, paramInt3, paramInt4, paramInt7);
-    boolean bool2 = this.mScrollerY.springback(paramInt2, paramInt5, paramInt6, paramInt7);
-    return (bool1) || (bool2);
+    boolean bool2 = this.mScrollerX.springback(paramInt1, paramInt3, paramInt4, paramInt7);
+    boolean bool3 = this.mScrollerY.springback(paramInt2, paramInt5, paramInt6, paramInt7);
+    if (!bool2)
+    {
+      if (bool3) {
+        return true;
+      }
+      bool1 = false;
+    }
+    return bool1;
   }
   
   public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -296,7 +329,7 @@ public class OverScroller
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmediabrowser.view.recyclerview.OverScroller
  * JD-Core Version:    0.7.0.1
  */

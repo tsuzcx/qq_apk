@@ -15,27 +15,20 @@ class ARTransferPromotionRenderable$11
       if ((ARTransferPromotionRenderable.a(this.this$0) != null) && (!ARTransferPromotionRenderable.a(this.this$0).a.booleanValue())) {
         ARTransferPromotionRenderable.a(this.this$0).b(0, 1);
       }
-      if (((ARTransferPromotionRenderable.a(this.this$0).a() != 0) && (ARTransferPromotionRenderable.c(this.this$0))) || (ARTransferPromotionRenderable.a(this.this$0).a.booleanValue())) {
-        break label124;
+      if (((ARTransferPromotionRenderable.a(this.this$0).a() == 0) || (!ARTransferPromotionRenderable.c(this.this$0))) && (!ARTransferPromotionRenderable.a(this.this$0).a.booleanValue())) {
+        this.this$0.a();
+      } else if (!ARTransferPromotionRenderable.a(this.this$0).a.booleanValue()) {
+        ARTransferPromotionRenderable.a(this.this$0).c(1);
       }
-      this.this$0.a();
-    }
-    for (;;)
-    {
       if (ARTransferPromotionRenderable.a(this.this$0) == null) {
         ARTransferPromotionRenderable.a(this.this$0, new ARPromotionSoundPlayer());
-      }
-      return;
-      label124:
-      if (!ARTransferPromotionRenderable.a(this.this$0).a.booleanValue()) {
-        ARTransferPromotionRenderable.a(this.this$0).c(1);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.11
  * JD-Core Version:    0.7.0.1
  */

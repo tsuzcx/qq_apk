@@ -10,8 +10,9 @@ final class b$2
   
   public final void onError(int paramInt, String paramString)
   {
-    this.c.c = 0;
-    this.c.a(paramInt, paramString, null);
+    b localb = this.c;
+    localb.c = 0;
+    localb.a(paramInt, paramString, null);
   }
   
   public final void onProgressChanged(int paramInt1, int paramInt2)
@@ -21,7 +22,7 @@ final class b$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.e.d.b.2
  * JD-Core Version:    0.7.0.1
  */

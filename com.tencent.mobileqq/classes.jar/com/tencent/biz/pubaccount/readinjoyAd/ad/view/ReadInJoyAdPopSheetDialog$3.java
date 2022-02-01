@@ -13,9 +13,15 @@ class ReadInJoyAdPopSheetDialog$3
   public void run()
   {
     long l = SystemClock.currentThreadTimeMillis();
-    ReadInJoyAdPopSheetDialog.a(this.this$0, ReadInJoyAdPopSheetDialog.a(this.this$0));
-    if (QLog.isColorLevel()) {
-      QLog.d(ReadInJoyAdPopSheetDialog.a(), 2, "init webview costTime=" + (SystemClock.currentThreadTimeMillis() - l));
+    Object localObject = this.this$0;
+    ReadInJoyAdPopSheetDialog.a((ReadInJoyAdPopSheetDialog)localObject, ReadInJoyAdPopSheetDialog.a((ReadInJoyAdPopSheetDialog)localObject));
+    if (QLog.isColorLevel())
+    {
+      localObject = ReadInJoyAdPopSheetDialog.a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("init webview costTime=");
+      localStringBuilder.append(SystemClock.currentThreadTimeMillis() - l);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
     if ((!TextUtils.isEmpty(this.a)) && (ReadInJoyAdPopSheetDialog.a(this.this$0) != null))
     {
@@ -26,7 +32,7 @@ class ReadInJoyAdPopSheetDialog$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdPopSheetDialog.3
  * JD-Core Version:    0.7.0.1
  */

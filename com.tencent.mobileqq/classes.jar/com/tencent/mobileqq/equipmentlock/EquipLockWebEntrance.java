@@ -7,9 +7,8 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.model.PhoneContactManager;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
+import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URLEncoder;
 
@@ -22,24 +21,28 @@ public class EquipLockWebEntrance
   
   private static Intent a(Activity paramActivity, AppInterface paramAppInterface, int paramInt)
   {
-    if (paramActivity == null) {
+    if (paramActivity == null)
+    {
       if (QLog.isDevelopLevel()) {
         QLog.d("EquipLockWebEntrance", 4, "getEntranceIntent actCaller is null");
       }
-    }
-    do
-    {
       return null;
-      if (paramAppInterface != null) {
-        break;
+    }
+    if (paramAppInterface == null)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("EquipLockWebEntrance", 4, "getEntranceIntent app is null");
       }
-    } while (!QLog.isDevelopLevel());
-    QLog.d("EquipLockWebEntrance", 4, "getEntranceIntent app is null");
-    return null;
+      return null;
+    }
     String str = paramAppInterface.getCurrentAccountUin();
     paramAppInterface = a(a(paramInt), paramAppInterface);
-    if (QLog.isColorLevel()) {
-      QLog.d("EquipLockWebEntrance", 2, "AuthDevUgAct url=" + paramAppInterface);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("AuthDevUgAct url=");
+      localStringBuilder.append(paramAppInterface);
+      QLog.d("EquipLockWebEntrance", 2, localStringBuilder.toString());
     }
     paramActivity = new Intent(paramActivity, QQBrowserActivity.class);
     paramActivity.putExtra("portraitOnly", true);
@@ -53,99 +56,131 @@ public class EquipLockWebEntrance
   private static String a(int paramInt)
   {
     Object localObject2 = EquipmentLockImpl.a().a();
-    Object localObject1;
     if ((localObject2 != null) && (((String)localObject2).length() > 0))
     {
       localObject1 = localObject2;
-      if (!((String)localObject2).startsWith("https"))
-      {
-        if (!((String)localObject2).startsWith("http")) {
-          break label202;
+      if (!((String)localObject2).startsWith("https")) {
+        if (((String)localObject2).startsWith("http"))
+        {
+          localObject1 = localObject2;
         }
-        localObject1 = localObject2;
+        else
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("https://");
+          ((StringBuilder)localObject1).append((String)localObject2);
+          localObject1 = ((StringBuilder)localObject1).toString();
+        }
       }
     }
-    for (;;)
+    else
     {
-      localObject2 = new StringBuilder((String)localObject1);
-      if (((String)localObject1).contains("?")) {
-        ((StringBuilder)localObject2).append("&");
-      }
-      for (;;)
-      {
-        ((StringBuilder)localObject2).append("type=" + Integer.toString(paramInt));
-        ((StringBuilder)localObject2).append("&plat=1");
-        ((StringBuilder)localObject2).append("&app=1");
-        ((StringBuilder)localObject2).append("&version=8.5.5.5105");
-        ((StringBuilder)localObject2).append("&device=" + URLEncoder.encode(Build.DEVICE));
-        ((StringBuilder)localObject2).append("&system=" + Build.VERSION.RELEASE);
-        ((StringBuilder)localObject2).append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));
-        return ((StringBuilder)localObject2).toString();
-        label202:
-        localObject1 = "https://" + (String)localObject2;
-        break;
-        ((StringBuilder)localObject2).append("?");
-      }
       localObject1 = "https://accounts.qq.com/cn2/manage/mobile_h5/mobile_index";
     }
+    localObject2 = new StringBuilder((String)localObject1);
+    if (((String)localObject1).contains("?")) {
+      ((StringBuilder)localObject2).append("&");
+    } else {
+      ((StringBuilder)localObject2).append("?");
+    }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("type=");
+    ((StringBuilder)localObject1).append(Integer.toString(paramInt));
+    ((StringBuilder)localObject2).append(((StringBuilder)localObject1).toString());
+    ((StringBuilder)localObject2).append("&plat=1");
+    ((StringBuilder)localObject2).append("&app=1");
+    ((StringBuilder)localObject2).append("&version=8.7.0.5295");
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("&device=");
+    ((StringBuilder)localObject1).append(URLEncoder.encode(Build.DEVICE));
+    ((StringBuilder)localObject2).append(((StringBuilder)localObject1).toString());
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("&system=");
+    ((StringBuilder)localObject1).append(Build.VERSION.RELEASE);
+    ((StringBuilder)localObject2).append(((StringBuilder)localObject1).toString());
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("&systemInt=");
+    ((StringBuilder)localObject1).append(Integer.toString(Build.VERSION.SDK_INT));
+    ((StringBuilder)localObject2).append(((StringBuilder)localObject1).toString());
+    return ((StringBuilder)localObject2).toString();
   }
   
   private static String a(String paramString, AppInterface paramAppInterface)
   {
-    Object localObject = null;
-    String str = null;
-    if (paramString == null) {
+    if (paramString == null)
+    {
       if (QLog.isDevelopLevel()) {
         QLog.d("EquipLockWebEntrance", 4, "handlePhoneContact url is null");
       }
-    }
-    for (;;)
-    {
       return paramString;
+    }
+    Object localObject1 = null;
+    if (paramAppInterface != null)
+    {
+      paramAppInterface = (IPhoneContactService)paramAppInterface.getRuntimeService(IPhoneContactService.class, "");
       if (paramAppInterface != null)
       {
-        paramAppInterface = (PhoneContactManager)paramAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
-        if (paramAppInterface != null)
+        paramAppInterface = paramAppInterface.getSelfBindInfo();
+        if (paramAppInterface == null)
         {
-          paramAppInterface = paramAppInterface.a();
-          if (paramAppInterface == null)
-          {
-            if (!QLog.isColorLevel()) {
-              break label251;
-            }
+          if (QLog.isColorLevel()) {
             QLog.d("EquipLockWebEntrance", 2, "mgr can't find stat");
-            paramAppInterface = null;
           }
+        }
+        else
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("mgr find stat, nationCode=");
+            ((StringBuilder)localObject1).append(paramAppInterface.nationCode);
+            ((StringBuilder)localObject1).append(" no.=");
+            ((StringBuilder)localObject1).append(paramAppInterface.mobileNo);
+            QLog.d("EquipLockWebEntrance", 2, ((StringBuilder)localObject1).toString());
+          }
+          localObject1 = paramAppInterface.nationCode;
+          paramAppInterface = paramAppInterface.mobileNo;
+          break label172;
         }
       }
-      while ((str != null) && (str.length() > 0) && (paramAppInterface != null) && (paramAppInterface.length() > 0))
+      else if (QLog.isColorLevel())
       {
-        paramString = new StringBuilder(paramString);
-        paramString.append("&area=" + str);
-        paramString.append("&mob=" + paramAppInterface);
-        return paramString.toString();
-        if (QLog.isColorLevel()) {
-          QLog.d("EquipLockWebEntrance", 2, "mgr find stat, nationCode=" + paramAppInterface.nationCode + " no.=" + paramAppInterface.mobileNo);
-        }
-        str = paramAppInterface.nationCode;
-        paramAppInterface = paramAppInterface.mobileNo;
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("EquipLockWebEntrance", 2, "mgr is null");
-        }
-        for (;;)
-        {
-          str = null;
-          paramAppInterface = localObject;
-          break;
-          if (QLog.isColorLevel()) {
-            QLog.d("EquipLockWebEntrance", 2, "getEntranceIntent:app is null");
-          }
-        }
-        label251:
-        paramAppInterface = null;
+        QLog.d("EquipLockWebEntrance", 2, "mgr is null");
       }
     }
+    else if (QLog.isColorLevel())
+    {
+      QLog.d("EquipLockWebEntrance", 2, "getEntranceIntent:app is null");
+    }
+    paramAppInterface = null;
+    label172:
+    Object localObject2 = paramString;
+    if (localObject1 != null)
+    {
+      localObject2 = paramString;
+      if (((String)localObject1).length() > 0)
+      {
+        localObject2 = paramString;
+        if (paramAppInterface != null)
+        {
+          localObject2 = paramString;
+          if (paramAppInterface.length() > 0)
+          {
+            paramString = new StringBuilder(paramString);
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("&area=");
+            ((StringBuilder)localObject2).append((String)localObject1);
+            paramString.append(((StringBuilder)localObject2).toString());
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("&mob=");
+            ((StringBuilder)localObject1).append(paramAppInterface);
+            paramString.append(((StringBuilder)localObject1).toString());
+            localObject2 = paramString.toString();
+          }
+        }
+      }
+    }
+    return localObject2;
   }
   
   public static void a(Activity paramActivity, AppInterface paramAppInterface, int paramInt)
@@ -160,7 +195,7 @@ public class EquipLockWebEntrance
     paramAppInterface = a(paramActivity, paramAppInterface, paramInt);
     try
     {
-      VasWebviewUtil.openQQBrowserActivity(paramActivity, "", 16384L, paramAppInterface, false, -1);
+      VasWebviewUtil.a(paramActivity, "", 16384L, paramAppInterface, false, -1);
       return;
     }
     catch (SecurityException paramActivity) {}
@@ -168,20 +203,20 @@ public class EquipLockWebEntrance
   
   public static void a(Activity paramActivity, AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString)
   {
-    if (paramActivity == null) {
+    if (paramActivity == null)
+    {
       if (QLog.isDevelopLevel()) {
         QLog.d("EquipLockWebEntrance", 4, "enterForResult actCaller is null");
       }
-    }
-    do
-    {
       return;
-      if (paramAppInterface != null) {
-        break;
+    }
+    if (paramAppInterface == null)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("EquipLockWebEntrance", 4, "enterForResult app is null");
       }
-    } while (!QLog.isDevelopLevel());
-    QLog.d("EquipLockWebEntrance", 4, "enterForResult app is null");
-    return;
+      return;
+    }
     paramAppInterface = a(paramActivity, paramAppInterface, paramInt1);
     if (paramString != null) {
       paramAppInterface.putExtra("tag", paramString);
@@ -189,7 +224,7 @@ public class EquipLockWebEntrance
     paramAppInterface.putExtra("needResult", true);
     try
     {
-      VasWebviewUtil.openQQBrowserActivity(paramActivity, "", 16384L, paramAppInterface, true, paramInt2);
+      VasWebviewUtil.a(paramActivity, "", 16384L, paramAppInterface, true, paramInt2);
       return;
     }
     catch (SecurityException paramActivity) {}
@@ -197,7 +232,6 @@ public class EquipLockWebEntrance
   
   public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt)
   {
-    boolean bool = true;
     if (paramActivity == null)
     {
       if (QLog.isDevelopLevel()) {
@@ -205,35 +239,48 @@ public class EquipLockWebEntrance
       }
       return;
     }
-    String str = a(paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("EquipLockWebEntrance", 2, "AuthDevUgAct url=" + str);
-    }
-    Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
-    localIntent.putExtra("portraitOnly", true);
-    localIntent.putExtra("url", str);
-    localIntent.putExtra("subAccountUin", paramString2);
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("hide_more_button", true);
-    if ((paramString1 != null) && (!paramString1.equals(paramString2))) {}
-    for (;;)
+    Object localObject1 = a(paramInt);
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("EquipLockWebEntrance", 2, "globalEnter currentUin=" + paramString1 + " reqUin=" + paramString2 + " isSubaccount=" + bool);
-      }
-      localIntent.putExtra("isSubaccount", bool);
-      localIntent.putExtra("avoidLoginWeb", bool);
-      try
-      {
-        VasWebviewUtil.openQQBrowserActivity(paramActivity, "", 16384L, localIntent, false, -1);
-        return;
-      }
-      catch (SecurityException paramActivity)
-      {
-        return;
-      }
-      bool = false;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("AuthDevUgAct url=");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.d("EquipLockWebEntrance", 2, ((StringBuilder)localObject2).toString());
     }
+    Object localObject2 = new Intent(paramActivity, QQBrowserActivity.class);
+    ((Intent)localObject2).putExtra("portraitOnly", true);
+    ((Intent)localObject2).putExtra("url", (String)localObject1);
+    ((Intent)localObject2).putExtra("subAccountUin", paramString2);
+    ((Intent)localObject2).putExtra("hide_operation_bar", true);
+    ((Intent)localObject2).putExtra("hide_more_button", true);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramString1 != null)
+    {
+      bool1 = bool2;
+      if (!paramString1.equals(paramString2)) {
+        bool1 = true;
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("globalEnter currentUin=");
+      ((StringBuilder)localObject1).append(paramString1);
+      ((StringBuilder)localObject1).append(" reqUin=");
+      ((StringBuilder)localObject1).append(paramString2);
+      ((StringBuilder)localObject1).append(" isSubaccount=");
+      ((StringBuilder)localObject1).append(bool1);
+      QLog.d("EquipLockWebEntrance", 2, ((StringBuilder)localObject1).toString());
+    }
+    ((Intent)localObject2).putExtra("isSubaccount", bool1);
+    ((Intent)localObject2).putExtra("avoidLoginWeb", bool1);
+    try
+    {
+      VasWebviewUtil.a(paramActivity, "", 16384L, (Intent)localObject2, false, -1);
+      return;
+    }
+    catch (SecurityException paramActivity) {}
   }
   
   public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
@@ -245,16 +292,20 @@ public class EquipLockWebEntrance
       }
       return;
     }
-    String str = a(paramInt1);
-    if (QLog.isColorLevel()) {
-      QLog.d("EquipLockWebEntrance", 2, "AuthDevUgAct url=" + str);
+    Object localObject1 = a(paramInt1);
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("AuthDevUgAct url=");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.d("EquipLockWebEntrance", 2, ((StringBuilder)localObject2).toString());
     }
-    Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
-    localIntent.putExtra("portraitOnly", true);
-    localIntent.putExtra("url", str);
-    localIntent.putExtra("subAccountUin", paramString2);
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("hide_more_button", true);
+    Object localObject2 = new Intent(paramActivity, QQBrowserActivity.class);
+    ((Intent)localObject2).putExtra("portraitOnly", true);
+    ((Intent)localObject2).putExtra("url", (String)localObject1);
+    ((Intent)localObject2).putExtra("subAccountUin", paramString2);
+    ((Intent)localObject2).putExtra("hide_operation_bar", true);
+    ((Intent)localObject2).putExtra("hide_more_button", true);
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (paramString1 != null)
@@ -264,18 +315,26 @@ public class EquipLockWebEntrance
         bool1 = true;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("EquipLockWebEntrance", 2, "globalEnter currentUin=" + paramString1 + " reqUin=" + paramString2 + " isSubaccount=" + bool1);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("globalEnter currentUin=");
+      ((StringBuilder)localObject1).append(paramString1);
+      ((StringBuilder)localObject1).append(" reqUin=");
+      ((StringBuilder)localObject1).append(paramString2);
+      ((StringBuilder)localObject1).append(" isSubaccount=");
+      ((StringBuilder)localObject1).append(bool1);
+      QLog.d("EquipLockWebEntrance", 2, ((StringBuilder)localObject1).toString());
     }
-    localIntent.putExtra("isSubaccount", bool1);
-    localIntent.putExtra("avoidLoginWeb", bool1);
+    ((Intent)localObject2).putExtra("isSubaccount", bool1);
+    ((Intent)localObject2).putExtra("avoidLoginWeb", bool1);
     if (paramString3 != null) {
-      localIntent.putExtra("tag", paramString3);
+      ((Intent)localObject2).putExtra("tag", paramString3);
     }
-    localIntent.putExtra("needResult", true);
+    ((Intent)localObject2).putExtra("needResult", true);
     try
     {
-      VasWebviewUtil.openQQBrowserActivity(paramActivity, "", 16384L, localIntent, true, paramInt2);
+      VasWebviewUtil.a(paramActivity, "", 16384L, (Intent)localObject2, true, paramInt2);
       return;
     }
     catch (SecurityException paramActivity) {}
@@ -283,7 +342,7 @@ public class EquipLockWebEntrance
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.equipmentlock.EquipLockWebEntrance
  * JD-Core Version:    0.7.0.1
  */

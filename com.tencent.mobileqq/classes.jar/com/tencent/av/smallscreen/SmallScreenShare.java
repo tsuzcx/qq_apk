@@ -6,19 +6,14 @@ import android.content.res.Resources;
 public class SmallScreenShare
   extends SmallScreenItemBase
 {
-  protected static int a;
-  
-  static
-  {
-    jdField_a_of_type_Int = 3;
-  }
+  protected static int a = 3;
   
   public SmallScreenShare(Context paramContext)
   {
     this.jdField_a_of_type_JavaLangString = "SmallScreenShare";
-    this.i = 2131559888;
-    this.j = paramContext.getResources().getDimensionPixelSize(2131297971);
-    this.k = paramContext.getResources().getDimensionPixelSize(2131297970);
+    this.i = 2013396994;
+    this.j = paramContext.getResources().getDimensionPixelSize(2131297965);
+    this.k = paramContext.getResources().getDimensionPixelSize(2131297964);
   }
   
   public void a()
@@ -34,7 +29,7 @@ public class SmallScreenShare
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenShare
  * JD-Core Version:    0.7.0.1
  */

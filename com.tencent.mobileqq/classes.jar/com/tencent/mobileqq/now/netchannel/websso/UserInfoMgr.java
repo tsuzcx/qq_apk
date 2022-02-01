@@ -52,8 +52,10 @@ public class UserInfoMgr
   public static TicketManager a()
   {
     AppInterface localAppInterface = a();
-    if (localAppInterface == null) {}
-    while (TextUtils.isEmpty(localAppInterface.getCurrentAccountUin())) {
+    if (localAppInterface == null) {
+      return null;
+    }
+    if (TextUtils.isEmpty(localAppInterface.getCurrentAccountUin())) {
       return null;
     }
     return (TicketManager)localAppInterface.getManager(2);
@@ -68,32 +70,26 @@ public class UserInfoMgr
   {
     Object localObject = a();
     if (localObject == null) {
-      localObject = "";
+      return "";
     }
-    String str;
-    do
-    {
-      return localObject;
-      str = ((TicketManager)localObject).getSkey(a());
-      localObject = str;
-    } while (!TextUtils.isEmpty(str));
-    return "";
+    localObject = ((TicketManager)localObject).getSkey(a());
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return "";
+    }
+    return localObject;
   }
   
   public static String c()
   {
     Object localObject = a();
     if (localObject == null) {
-      localObject = "";
+      return "";
     }
-    String str;
-    do
-    {
-      return localObject;
-      str = ((TicketManager)localObject).getA2(a());
-      localObject = str;
-    } while (!TextUtils.isEmpty(str));
-    return "";
+    localObject = ((TicketManager)localObject).getA2(a());
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return "";
+    }
+    return localObject;
   }
   
   void a(long paramLong)
@@ -123,15 +119,17 @@ public class UserInfoMgr
   
   public String d()
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      return "";
+    String str2 = this.jdField_a_of_type_JavaLangString;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    return this.jdField_a_of_type_JavaLangString;
+    return str1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.netchannel.websso.UserInfoMgr
  * JD-Core Version:    0.7.0.1
  */

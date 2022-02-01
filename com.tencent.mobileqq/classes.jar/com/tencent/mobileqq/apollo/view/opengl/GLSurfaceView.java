@@ -2,10 +2,10 @@ package com.tencent.mobileqq.apollo.view.opengl;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback2;
 import android.view.SurfaceView;
+import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 public class GLSurfaceView
@@ -14,7 +14,7 @@ public class GLSurfaceView
 {
   public static final int RENDERMODE_CONTINUOUSLY = 1;
   public static final int RENDERMODE_WHEN_DIRTY = 0;
-  private static final String TAG = "GLSurfaceView";
+  private static final String TAG = "[ApolloGL][GLSurfaceView]";
   private static final GLThreadManager sGLThreadManager = new GLThreadManager();
   private int mDebugFlags;
   private boolean mDetached;
@@ -42,9 +42,10 @@ public class GLSurfaceView
   
   private void checkRenderThreadState()
   {
-    if (this.mGLThread != null) {
-      throw new IllegalStateException("setRenderer has already been called for this instance.");
+    if (this.mGLThread == null) {
+      return;
     }
+    throw new IllegalStateException("setRenderer has already been called for this instance.");
   }
   
   private void init()
@@ -88,6 +89,15 @@ public class GLSurfaceView
     return this.mEGLWindowSurfaceFactory;
   }
   
+  public long getGLThreadId()
+  {
+    GLThread localGLThread = this.mGLThread;
+    if (localGLThread != null) {
+      return localGLThread.getId();
+    }
+    return -1L;
+  }
+  
   public GLWrapper getGLWrapper()
   {
     return this.mGLWrapper;
@@ -113,33 +123,37 @@ public class GLSurfaceView
     return this.mRenderer;
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    Log.d("GLSurfaceView", "onAttachedToWindow reattach =" + this.mDetached);
-    if ((this.mDetached) && (this.mRenderer != null)) {
-      if (this.mGLThread == null) {
-        break label105;
-      }
-    }
-    label105:
-    for (int i = this.mGLThread.a();; i = 1)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onAttachedToWindow reattach =");
+    ((StringBuilder)localObject).append(this.mDetached);
+    QLog.d("[ApolloGL][GLSurfaceView]", 1, ((StringBuilder)localObject).toString());
+    if ((this.mDetached) && (this.mRenderer != null))
     {
+      localObject = this.mGLThread;
+      int i;
+      if (localObject != null) {
+        i = ((GLThread)localObject).a();
+      } else {
+        i = 1;
+      }
       this.mGLThread = new GLThread(sGLThreadManager, this.mThisWeakRef);
       if (i != 1) {
         this.mGLThread.a(i);
       }
       this.mGLThread.start();
-      this.mDetached = false;
-      return;
     }
+    this.mDetached = false;
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
-    Log.d("GLSurfaceView", "onDetachedFromWindow");
-    if (this.mGLThread != null) {
-      this.mGLThread.f();
+    QLog.d("[ApolloGL][GLSurfaceView]", 1, "onDetachedFromWindow");
+    GLThread localGLThread = this.mGLThread;
+    if (localGLThread != null) {
+      localGLThread.f();
     }
     this.mDetached = true;
     super.onDetachedFromWindow();
@@ -256,14 +270,15 @@ public class GLSurfaceView
   
   public void surfaceRedrawNeededAsync(SurfaceHolder paramSurfaceHolder, Runnable paramRunnable)
   {
-    if (this.mGLThread != null) {
-      this.mGLThread.a(paramRunnable);
+    paramSurfaceHolder = this.mGLThread;
+    if (paramSurfaceHolder != null) {
+      paramSurfaceHolder.a(paramRunnable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.opengl.GLSurfaceView
  * JD-Core Version:    0.7.0.1
  */

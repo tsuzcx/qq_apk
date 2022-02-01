@@ -30,13 +30,14 @@ public final class stShareInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     stShareBody localstShareBody = new stShareBody();
-    cache_body_map.put(Integer.valueOf(0), localstShareBody);
+    cache_body_map.put(localInteger, localstShareBody);
     cache_wx_mini_program = new stWxMiniProg();
     cache_sq_ark_info = new stSqArk();
     cache_haibao_body_map = new HashMap();
     localstShareBody = new stShareBody();
-    cache_haibao_body_map.put(Integer.valueOf(0), localstShareBody);
+    cache_haibao_body_map.put(localInteger, localstShareBody);
   }
   
   public stShareInfo() {}
@@ -79,49 +80,61 @@ public final class stShareInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.jump_url != null) {
-      paramJceOutputStream.write(this.jump_url, 0);
+    Object localObject = this.jump_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.body_map != null) {
-      paramJceOutputStream.write(this.body_map, 1);
+    localObject = this.body_map;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 1);
     }
-    if (this.wx_mini_program != null) {
-      paramJceOutputStream.write(this.wx_mini_program, 2);
+    localObject = this.wx_mini_program;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.sq_ark_info != null) {
-      paramJceOutputStream.write(this.sq_ark_info, 3);
+    localObject = this.sq_ark_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.share_icon_url != null) {
-      paramJceOutputStream.write(this.share_icon_url, 4);
+    localObject = this.share_icon_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.share_icon_title != null) {
-      paramJceOutputStream.write(this.share_icon_title, 5);
+    localObject = this.share_icon_title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.background_url != null) {
-      paramJceOutputStream.write(this.background_url, 6);
+    localObject = this.background_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
     paramJceOutputStream.write(this.activity_type, 7);
-    if (this.haibao_jump_url != null) {
-      paramJceOutputStream.write(this.haibao_jump_url, 8);
+    localObject = this.haibao_jump_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.haibao_body_map != null) {
-      paramJceOutputStream.write(this.haibao_body_map, 9);
+    localObject = this.haibao_body_map;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 9);
     }
-    if (this.background_title_color != null) {
-      paramJceOutputStream.write(this.background_title_color, 10);
+    localObject = this.background_title_color;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.haibao_desc != null) {
-      paramJceOutputStream.write(this.haibao_desc, 11);
+    localObject = this.haibao_desc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
     paramJceOutputStream.write(this.share_num, 12);
-    if (this.feed_cover_updtime != null) {
-      paramJceOutputStream.write(this.feed_cover_updtime, 13);
+    localObject = this.feed_cover_updtime;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_SOCIALIZE_META.stShareInfo
  * JD-Core Version:    0.7.0.1
  */

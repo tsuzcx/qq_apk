@@ -4,8 +4,8 @@ import android.content.Context;
 import android.view.View;
 import com.tencent.mobileqq.colornote.ColorNoteConstants;
 import com.tencent.mobileqq.colornote.ColorNoteCurd;
-import com.tencent.mobileqq.colornote.ColorNoteCurd.OnColorNoteCurdListener;
 import com.tencent.mobileqq.colornote.IServiceInfo;
+import com.tencent.mobileqq.colornote.OnColorNoteCurdListener;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.mobileqq.colornote.data.ColorNoteUtils;
 import com.tencent.mobileqq.statistics.ReportController;
@@ -21,13 +21,14 @@ public class ShareEntrance
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd = new ColorNoteCurd();
-    this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd.a(new ColorNoteCurd.OnColorNoteCurdListener());
+    this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd.a(new OnColorNoteCurdListener());
   }
   
   private ColorNote b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqColornoteIServiceInfo != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqColornoteIServiceInfo.getColorNote();
+    IServiceInfo localIServiceInfo = this.jdField_a_of_type_ComTencentMobileqqColornoteIServiceInfo;
+    if (localIServiceInfo != null) {
+      return localIServiceInfo.getColorNote();
     }
     return null;
   }
@@ -39,8 +40,9 @@ public class ShareEntrance
   
   public ColorNote a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqColornoteIServiceInfo != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqColornoteIServiceInfo.getColorNote();
+    IServiceInfo localIServiceInfo = this.jdField_a_of_type_ComTencentMobileqqColornoteIServiceInfo;
+    if (localIServiceInfo != null) {
+      return localIServiceInfo.getColorNote();
     }
     return null;
   }
@@ -62,14 +64,14 @@ public class ShareEntrance
     this.jdField_a_of_type_AndroidViewView = paramView;
   }
   
-  public void a(ColorNoteCurd.OnColorNoteCurdListener paramOnColorNoteCurdListener)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd.a(paramOnColorNoteCurdListener);
-  }
-  
   public void a(IServiceInfo paramIServiceInfo)
   {
     this.jdField_a_of_type_ComTencentMobileqqColornoteIServiceInfo = paramIServiceInfo;
+  }
+  
+  public void a(OnColorNoteCurdListener paramOnColorNoteCurdListener)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd.a(paramOnColorNoteCurdListener);
   }
   
   public void a(ColorNote paramColorNote)
@@ -89,24 +91,26 @@ public class ShareEntrance
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqColornoteIServiceInfo != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqColornoteIServiceInfo;
+    if (localObject != null)
     {
-      ColorNote localColorNote = this.jdField_a_of_type_ComTencentMobileqqColornoteIServiceInfo.getColorNote();
-      if (localColorNote != null)
+      localObject = ((IServiceInfo)localObject).getColorNote();
+      if (localObject != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd.a(localColorNote.getServiceType(), localColorNote.getSubType());
-        ReportController.b(null, "dc00898", "", "", "0X800A748", "0X800A748", ColorNoteConstants.a(this.jdField_a_of_type_ComTencentMobileqqColornoteIServiceInfo.getColorNote().mServiceType), 0, "", "", "", "");
+        this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd.a(((ColorNote)localObject).getServiceType(), ((ColorNote)localObject).getSubType());
+        ReportController.b(null, "dc00898", "", "", "0X800A748", "0X800A748", ColorNoteConstants.a(((ColorNote)localObject).mServiceType), 0, "", "", "", "");
       }
     }
   }
   
   public boolean b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqColornoteIServiceInfo != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqColornoteIServiceInfo;
+    if (localObject != null)
     {
-      ColorNote localColorNote = this.jdField_a_of_type_ComTencentMobileqqColornoteIServiceInfo.getColorNote();
-      if (localColorNote != null) {
-        return this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd.a(localColorNote.getServiceType(), localColorNote.getSubType());
+      localObject = ((IServiceInfo)localObject).getColorNote();
+      if (localObject != null) {
+        return this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd.a(((ColorNote)localObject).getServiceType(), ((ColorNote)localObject).getSubType());
       }
     }
     return false;
@@ -120,7 +124,7 @@ public class ShareEntrance
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.share.ShareEntrance
  * JD-Core Version:    0.7.0.1
  */

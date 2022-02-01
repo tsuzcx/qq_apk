@@ -40,26 +40,31 @@ public final class d
         localDownloaderTaskStatus = null;
         switch (e.a[paramDownloaderTaskStatus.ordinal()])
         {
+        case 7: 
+          paramDownloaderTaskStatus = f.h;
+          break;
+        case 6: 
+          paramDownloaderTaskStatus = f.e;
+          break;
+        case 5: 
+          paramDownloaderTaskStatus = f.f;
+          break;
+        case 4: 
+          paramDownloaderTaskStatus = f.g;
+          break;
+        case 3: 
+          paramDownloaderTaskStatus = f.d;
+          break;
+        case 2: 
+          paramDownloaderTaskStatus = f.b;
+          break;
         case 1: 
-          a(paramDownloaderTaskStatus);
-          continue;
           paramDownloaderTaskStatus = f.a;
+          a(paramDownloaderTaskStatus);
+          return;
         }
       }
       finally {}
-      continue;
-      paramDownloaderTaskStatus = f.b;
-      continue;
-      paramDownloaderTaskStatus = f.d;
-      continue;
-      paramDownloaderTaskStatus = f.g;
-      continue;
-      paramDownloaderTaskStatus = f.f;
-      continue;
-      paramDownloaderTaskStatus = f.e;
-      continue;
-      paramDownloaderTaskStatus = f.h;
-      continue;
       paramDownloaderTaskStatus = localDownloaderTaskStatus;
     }
   }
@@ -69,76 +74,29 @@ public final class d
     return this.b;
   }
   
-  /* Error */
   public final void a(DownloaderTaskListener paramDownloaderTaskListener)
   {
-    // Byte code:
-    //   0: aload_1
-    //   1: ifnonnull +4 -> 5
-    //   4: return
-    //   5: aload_0
-    //   6: getfield 36	com/tencent/hlyyb/downloader/e/d:c	Ljava/util/Vector;
-    //   9: astore_2
-    //   10: aload_2
-    //   11: monitorenter
-    //   12: aload_0
-    //   13: getfield 36	com/tencent/hlyyb/downloader/e/d:c	Ljava/util/Vector;
-    //   16: aload_1
-    //   17: invokevirtual 103	java/util/Vector:contains	(Ljava/lang/Object;)Z
-    //   20: ifne +12 -> 32
-    //   23: aload_0
-    //   24: getfield 36	com/tencent/hlyyb/downloader/e/d:c	Ljava/util/Vector;
-    //   27: aload_1
-    //   28: invokevirtual 106	java/util/Vector:add	(Ljava/lang/Object;)Z
-    //   31: pop
-    //   32: aload_2
-    //   33: monitorexit
-    //   34: aload_0
-    //   35: getfield 38	com/tencent/hlyyb/downloader/e/d:d	Ljava/util/Vector;
-    //   38: astore_2
-    //   39: aload_2
-    //   40: monitorenter
-    //   41: aload_0
-    //   42: getfield 38	com/tencent/hlyyb/downloader/e/d:d	Ljava/util/Vector;
-    //   45: aload_1
-    //   46: invokevirtual 103	java/util/Vector:contains	(Ljava/lang/Object;)Z
-    //   49: ifne +12 -> 61
-    //   52: aload_0
-    //   53: getfield 38	com/tencent/hlyyb/downloader/e/d:d	Ljava/util/Vector;
-    //   56: aload_1
-    //   57: invokevirtual 106	java/util/Vector:add	(Ljava/lang/Object;)Z
-    //   60: pop
-    //   61: aload_2
-    //   62: monitorexit
-    //   63: return
-    //   64: astore_1
-    //   65: aload_2
-    //   66: monitorexit
-    //   67: aload_1
-    //   68: athrow
-    //   69: astore_1
-    //   70: return
-    //   71: astore_1
-    //   72: aload_2
-    //   73: monitorexit
-    //   74: aload_1
-    //   75: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	76	0	this	d
-    //   0	76	1	paramDownloaderTaskListener	DownloaderTaskListener
-    // Exception table:
-    //   from	to	target	type
-    //   41	61	64	finally
-    //   61	63	64	finally
-    //   65	67	64	finally
-    //   5	12	69	java/lang/Throwable
-    //   34	41	69	java/lang/Throwable
-    //   67	69	69	java/lang/Throwable
-    //   74	76	69	java/lang/Throwable
-    //   12	32	71	finally
-    //   32	34	71	finally
-    //   72	74	71	finally
+    if (paramDownloaderTaskListener == null) {
+      return;
+    }
+    try
+    {
+      synchronized (this.c)
+      {
+        if (!this.c.contains(paramDownloaderTaskListener)) {
+          this.c.add(paramDownloaderTaskListener);
+        }
+        synchronized (this.d)
+        {
+          if (!this.d.contains(paramDownloaderTaskListener)) {
+            this.d.add(paramDownloaderTaskListener);
+          }
+          return;
+        }
+      }
+      return;
+    }
+    catch (Throwable paramDownloaderTaskListener) {}
   }
   
   public final void a(DownloaderTaskStatus paramDownloaderTaskStatus)
@@ -157,27 +115,24 @@ public final class d
   
   public final void a(f paramf)
   {
-    if (paramf != null) {
-      if ((paramf != null) && (paramf != f.h)) {
-        break label28;
-      }
-    }
-    for (;;)
+    if (paramf != null)
     {
-      if (paramf != null) {}
-      try
+      if ((paramf != null) && (paramf != f.h))
       {
-        this.g.put(paramf);
-        return;
+        g localg = new g(this, paramf);
+        a.f().post(localg);
       }
-      catch (InterruptedException paramf)
-      {
-        label28:
-        g localg;
-        paramf.printStackTrace();
+      if (paramf != null) {
+        try
+        {
+          this.g.put(paramf);
+          return;
+        }
+        catch (InterruptedException paramf)
+        {
+          paramf.printStackTrace();
+        }
       }
-      localg = new g(this, paramf);
-      a.f().post(localg);
     }
   }
   
@@ -186,86 +141,37 @@ public final class d
     synchronized (this.c)
     {
       this.c.clear();
-    }
-    synchronized (this.d)
-    {
-      this.d.clear();
-      return;
-      localObject1 = finally;
-      throw localObject1;
+      synchronized (this.d)
+      {
+        this.d.clear();
+        return;
+      }
     }
   }
   
-  /* Error */
   public final void b(DownloaderTaskListener paramDownloaderTaskListener)
   {
-    // Byte code:
-    //   0: aload_1
-    //   1: ifnonnull +4 -> 5
-    //   4: return
-    //   5: aload_0
-    //   6: getfield 36	com/tencent/hlyyb/downloader/e/d:c	Ljava/util/Vector;
-    //   9: astore_2
-    //   10: aload_2
-    //   11: monitorenter
-    //   12: aload_0
-    //   13: getfield 36	com/tencent/hlyyb/downloader/e/d:c	Ljava/util/Vector;
-    //   16: aload_1
-    //   17: invokevirtual 103	java/util/Vector:contains	(Ljava/lang/Object;)Z
-    //   20: ifeq +12 -> 32
-    //   23: aload_0
-    //   24: getfield 36	com/tencent/hlyyb/downloader/e/d:c	Ljava/util/Vector;
-    //   27: aload_1
-    //   28: invokevirtual 140	java/util/Vector:remove	(Ljava/lang/Object;)Z
-    //   31: pop
-    //   32: aload_2
-    //   33: monitorexit
-    //   34: aload_0
-    //   35: getfield 38	com/tencent/hlyyb/downloader/e/d:d	Ljava/util/Vector;
-    //   38: astore_2
-    //   39: aload_2
-    //   40: monitorenter
-    //   41: aload_0
-    //   42: getfield 38	com/tencent/hlyyb/downloader/e/d:d	Ljava/util/Vector;
-    //   45: aload_1
-    //   46: invokevirtual 103	java/util/Vector:contains	(Ljava/lang/Object;)Z
-    //   49: ifeq +12 -> 61
-    //   52: aload_0
-    //   53: getfield 38	com/tencent/hlyyb/downloader/e/d:d	Ljava/util/Vector;
-    //   56: aload_1
-    //   57: invokevirtual 140	java/util/Vector:remove	(Ljava/lang/Object;)Z
-    //   60: pop
-    //   61: aload_2
-    //   62: monitorexit
-    //   63: return
-    //   64: astore_1
-    //   65: aload_2
-    //   66: monitorexit
-    //   67: aload_1
-    //   68: athrow
-    //   69: astore_1
-    //   70: return
-    //   71: astore_1
-    //   72: aload_2
-    //   73: monitorexit
-    //   74: aload_1
-    //   75: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	76	0	this	d
-    //   0	76	1	paramDownloaderTaskListener	DownloaderTaskListener
-    // Exception table:
-    //   from	to	target	type
-    //   41	61	64	finally
-    //   61	63	64	finally
-    //   65	67	64	finally
-    //   5	12	69	java/lang/Throwable
-    //   34	41	69	java/lang/Throwable
-    //   67	69	69	java/lang/Throwable
-    //   74	76	69	java/lang/Throwable
-    //   12	32	71	finally
-    //   32	34	71	finally
-    //   72	74	71	finally
+    if (paramDownloaderTaskListener == null) {
+      return;
+    }
+    try
+    {
+      synchronized (this.c)
+      {
+        if (this.c.contains(paramDownloaderTaskListener)) {
+          this.c.remove(paramDownloaderTaskListener);
+        }
+        synchronized (this.d)
+        {
+          if (this.d.contains(paramDownloaderTaskListener)) {
+            this.d.remove(paramDownloaderTaskListener);
+          }
+          return;
+        }
+      }
+      return;
+    }
+    catch (Throwable paramDownloaderTaskListener) {}
   }
   
   public final void c()
@@ -294,7 +200,7 @@ public final class d
     //   7: aload_0
     //   8: getfield 47	com/tencent/hlyyb/downloader/e/d:g	Ljava/util/concurrent/LinkedBlockingQueue;
     //   11: invokevirtual 145	java/util/concurrent/LinkedBlockingQueue:take	()Ljava/lang/Object;
-    //   14: checkcast 78	com/tencent/hlyyb/downloader/e/f
+    //   14: checkcast 75	com/tencent/hlyyb/downloader/e/f
     //   17: astore 5
     //   19: getstatic 147	com/tencent/hlyyb/downloader/e/e:b	[I
     //   22: aload 5
@@ -302,366 +208,358 @@ public final class d
     //   27: iaload
     //   28: istore_1
     //   29: iload_1
-    //   30: tableswitch	default:+46 -> 76, 1:+58->88, 2:+63->93, 3:+164->194, 4:+260->290, 5:+345->375, 6:+437->467, 7:+529->559, 8:+639->669
-    //   77: istore_1
-    //   78: iload_1
-    //   79: ifeq -72 -> 7
-    //   82: aload_0
-    //   83: iconst_0
-    //   84: putfield 42	com/tencent/hlyyb/downloader/e/d:f	Z
-    //   87: return
-    //   88: iconst_0
-    //   89: istore_1
-    //   90: goto -12 -> 78
-    //   93: invokestatic 153	com/tencent/hlyyb/downloader/c/b:a	()Lcom/tencent/hlyyb/downloader/c/b;
-    //   96: aload_0
-    //   97: getfield 49	com/tencent/hlyyb/downloader/e/d:a	Lcom/tencent/hlyyb/downloader/e/i;
-    //   100: invokevirtual 157	com/tencent/hlyyb/downloader/c/b:onTaskStartedSubloop	(Lcom/tencent/hlyyb/downloader/DownloaderTask;)V
-    //   103: aload_0
-    //   104: getfield 36	com/tencent/hlyyb/downloader/e/d:c	Ljava/util/Vector;
-    //   107: astore 5
-    //   109: aload 5
-    //   111: monitorenter
-    //   112: aload_0
-    //   113: getfield 36	com/tencent/hlyyb/downloader/e/d:c	Ljava/util/Vector;
-    //   116: invokevirtual 161	java/util/Vector:iterator	()Ljava/util/Iterator;
-    //   119: astore 6
-    //   121: aload 6
-    //   123: invokeinterface 167 1 0
-    //   128: ifeq +58 -> 186
-    //   131: aload 6
-    //   133: invokeinterface 170 1 0
-    //   138: checkcast 172	com/tencent/hlyyb/downloader/DownloaderTaskListener
-    //   141: astore 7
-    //   143: aload 7
-    //   145: ifnull -24 -> 121
-    //   148: aload 7
+    //   30: tableswitch	default:+46 -> 76, 1:+591->621, 2:+508->538, 3:+425->455, 4:+342->372, 5:+245->275, 6:+162->192, 7:+54->84, 8:+49->79
+    //   77: iconst_m1
+    //   78: lload_3
+    //   79: iconst_1
+    //   80: istore_1
+    //   81: goto +542 -> 623
+    //   84: invokestatic 154	android/os/SystemClock:elapsedRealtime	()J
+    //   87: lstore_3
+    //   88: aload_0
+    //   89: getfield 36	com/tencent/hlyyb/downloader/e/d:c	Ljava/util/Vector;
+    //   92: astore 5
+    //   94: aload 5
+    //   96: monitorenter
+    //   97: aload_0
+    //   98: getfield 36	com/tencent/hlyyb/downloader/e/d:c	Ljava/util/Vector;
+    //   101: invokevirtual 158	java/util/Vector:iterator	()Ljava/util/Iterator;
+    //   104: astore 6
+    //   106: aload 6
+    //   108: invokeinterface 164 1 0
+    //   113: ifeq +34 -> 147
+    //   116: aload 6
+    //   118: invokeinterface 167 1 0
+    //   123: checkcast 169	com/tencent/hlyyb/downloader/DownloaderTaskListener
+    //   126: astore 7
+    //   128: aload 7
+    //   130: ifnull -24 -> 106
+    //   133: aload 7
+    //   135: aload_0
+    //   136: getfield 49	com/tencent/hlyyb/downloader/e/d:a	Lcom/tencent/hlyyb/downloader/e/i;
+    //   139: invokeinterface 173 2 0
+    //   144: goto -38 -> 106
+    //   147: aload 5
+    //   149: monitorexit
     //   150: aload_0
-    //   151: getfield 49	com/tencent/hlyyb/downloader/e/d:a	Lcom/tencent/hlyyb/downloader/e/i;
-    //   154: invokeinterface 173 2 0
-    //   159: goto -38 -> 121
-    //   162: astore 6
-    //   164: aload 5
-    //   166: monitorexit
-    //   167: aload 6
-    //   169: athrow
-    //   170: astore 5
-    //   172: iconst_0
-    //   173: istore_1
-    //   174: aload 5
-    //   176: invokevirtual 134	java/lang/InterruptedException:printStackTrace	()V
-    //   179: iload_1
-    //   180: ifeq -173 -> 7
-    //   183: goto -101 -> 82
+    //   151: invokestatic 154	android/os/SystemClock:elapsedRealtime	()J
+    //   154: lload_3
+    //   155: lsub
+    //   156: l2i
+    //   157: putfield 40	com/tencent/hlyyb/downloader/e/d:e	I
+    //   160: aload_0
+    //   161: getfield 49	com/tencent/hlyyb/downloader/e/d:a	Lcom/tencent/hlyyb/downloader/e/i;
+    //   164: invokevirtual 178	com/tencent/hlyyb/downloader/e/i:t	()V
+    //   167: invokestatic 154	android/os/SystemClock:elapsedRealtime	()J
+    //   170: pop2
+    //   171: invokestatic 183	com/tencent/hlyyb/downloader/c/b:a	()Lcom/tencent/hlyyb/downloader/c/b;
+    //   174: aload_0
+    //   175: getfield 49	com/tencent/hlyyb/downloader/e/d:a	Lcom/tencent/hlyyb/downloader/e/i;
+    //   178: invokevirtual 184	com/tencent/hlyyb/downloader/c/b:onTaskCompletedSubloop	(Lcom/tencent/hlyyb/downloader/DownloaderTask;)V
+    //   181: goto -102 -> 79
+    //   184: astore 6
     //   186: aload 5
     //   188: monitorexit
-    //   189: iconst_0
-    //   190: istore_1
-    //   191: goto -113 -> 78
-    //   194: invokestatic 153	com/tencent/hlyyb/downloader/c/b:a	()Lcom/tencent/hlyyb/downloader/c/b;
-    //   197: aload_0
-    //   198: getfield 49	com/tencent/hlyyb/downloader/e/d:a	Lcom/tencent/hlyyb/downloader/e/i;
-    //   201: invokevirtual 176	com/tencent/hlyyb/downloader/c/b:onTaskDetectedSubloop	(Lcom/tencent/hlyyb/downloader/DownloaderTask;)V
-    //   204: aload_0
-    //   205: getfield 36	com/tencent/hlyyb/downloader/e/d:c	Ljava/util/Vector;
-    //   208: astore 5
-    //   210: aload 5
-    //   212: monitorenter
-    //   213: aload_0
-    //   214: getfield 36	com/tencent/hlyyb/downloader/e/d:c	Ljava/util/Vector;
-    //   217: invokevirtual 161	java/util/Vector:iterator	()Ljava/util/Iterator;
-    //   220: astore 6
-    //   222: aload 6
-    //   224: invokeinterface 167 1 0
-    //   229: ifeq +53 -> 282
-    //   232: aload 6
-    //   234: invokeinterface 170 1 0
-    //   239: checkcast 172	com/tencent/hlyyb/downloader/DownloaderTaskListener
-    //   242: astore 7
-    //   244: aload 7
-    //   246: ifnull -24 -> 222
-    //   249: aload 7
-    //   251: aload_0
-    //   252: getfield 49	com/tencent/hlyyb/downloader/e/d:a	Lcom/tencent/hlyyb/downloader/e/i;
-    //   255: invokeinterface 177 2 0
-    //   260: goto -38 -> 222
-    //   263: astore 6
-    //   265: aload 5
-    //   267: monitorexit
-    //   268: aload 6
-    //   270: athrow
-    //   271: astore 5
-    //   273: iconst_0
-    //   274: istore_1
-    //   275: iload_1
-    //   276: ifne -194 -> 82
-    //   279: aload 5
-    //   281: athrow
-    //   282: aload 5
-    //   284: monitorexit
-    //   285: iconst_0
-    //   286: istore_1
-    //   287: goto -209 -> 78
-    //   290: invokestatic 153	com/tencent/hlyyb/downloader/c/b:a	()Lcom/tencent/hlyyb/downloader/c/b;
-    //   293: aload_0
-    //   294: getfield 49	com/tencent/hlyyb/downloader/e/d:a	Lcom/tencent/hlyyb/downloader/e/i;
-    //   297: invokevirtual 180	com/tencent/hlyyb/downloader/c/b:onTaskReceivedSubloop	(Lcom/tencent/hlyyb/downloader/DownloaderTask;)V
-    //   300: aload_0
-    //   301: getfield 36	com/tencent/hlyyb/downloader/e/d:c	Ljava/util/Vector;
-    //   304: astore 5
-    //   306: aload 5
-    //   308: monitorenter
-    //   309: aload_0
-    //   310: getfield 36	com/tencent/hlyyb/downloader/e/d:c	Ljava/util/Vector;
-    //   313: invokevirtual 161	java/util/Vector:iterator	()Ljava/util/Iterator;
-    //   316: astore 6
-    //   318: aload 6
-    //   320: invokeinterface 167 1 0
-    //   325: ifeq +42 -> 367
-    //   328: aload 6
-    //   330: invokeinterface 170 1 0
-    //   335: checkcast 172	com/tencent/hlyyb/downloader/DownloaderTaskListener
-    //   338: astore 7
-    //   340: aload 7
-    //   342: ifnull -24 -> 318
-    //   345: aload 7
-    //   347: aload_0
-    //   348: getfield 49	com/tencent/hlyyb/downloader/e/d:a	Lcom/tencent/hlyyb/downloader/e/i;
-    //   351: invokeinterface 181 2 0
-    //   356: goto -38 -> 318
-    //   359: astore 6
-    //   361: aload 5
-    //   363: monitorexit
-    //   364: aload 6
-    //   366: athrow
-    //   367: aload 5
-    //   369: monitorexit
-    //   370: iconst_0
-    //   371: istore_1
-    //   372: goto -294 -> 78
-    //   375: invokestatic 153	com/tencent/hlyyb/downloader/c/b:a	()Lcom/tencent/hlyyb/downloader/c/b;
-    //   378: aload_0
-    //   379: getfield 49	com/tencent/hlyyb/downloader/e/d:a	Lcom/tencent/hlyyb/downloader/e/i;
-    //   382: invokevirtual 184	com/tencent/hlyyb/downloader/c/b:onTaskPausedSubloop	(Lcom/tencent/hlyyb/downloader/DownloaderTask;)V
-    //   385: aload_0
-    //   386: getfield 36	com/tencent/hlyyb/downloader/e/d:c	Ljava/util/Vector;
-    //   389: astore 5
-    //   391: aload 5
-    //   393: monitorenter
-    //   394: aload_0
-    //   395: getfield 36	com/tencent/hlyyb/downloader/e/d:c	Ljava/util/Vector;
-    //   398: invokevirtual 161	java/util/Vector:iterator	()Ljava/util/Iterator;
-    //   401: astore 6
-    //   403: aload 6
-    //   405: invokeinterface 167 1 0
-    //   410: ifeq +49 -> 459
-    //   413: aload 6
-    //   415: invokeinterface 170 1 0
-    //   420: checkcast 172	com/tencent/hlyyb/downloader/DownloaderTaskListener
-    //   423: astore 7
-    //   425: aload 7
-    //   427: ifnull -24 -> 403
-    //   430: aload 7
-    //   432: aload_0
-    //   433: getfield 49	com/tencent/hlyyb/downloader/e/d:a	Lcom/tencent/hlyyb/downloader/e/i;
-    //   436: invokeinterface 185 2 0
-    //   441: goto -38 -> 403
-    //   444: astore 6
-    //   446: aload 5
-    //   448: monitorexit
-    //   449: aload 6
-    //   451: athrow
-    //   452: astore 5
-    //   454: iconst_1
-    //   455: istore_1
-    //   456: goto -282 -> 174
-    //   459: aload 5
-    //   461: monitorexit
-    //   462: iconst_1
-    //   463: istore_1
-    //   464: goto -386 -> 78
-    //   467: invokestatic 153	com/tencent/hlyyb/downloader/c/b:a	()Lcom/tencent/hlyyb/downloader/c/b;
-    //   470: aload_0
-    //   471: getfield 49	com/tencent/hlyyb/downloader/e/d:a	Lcom/tencent/hlyyb/downloader/e/i;
-    //   474: invokevirtual 188	com/tencent/hlyyb/downloader/c/b:onTaskFailedSubloop	(Lcom/tencent/hlyyb/downloader/DownloaderTask;)V
-    //   477: aload_0
-    //   478: getfield 36	com/tencent/hlyyb/downloader/e/d:c	Ljava/util/Vector;
-    //   481: astore 5
-    //   483: aload 5
-    //   485: monitorenter
-    //   486: aload_0
-    //   487: getfield 36	com/tencent/hlyyb/downloader/e/d:c	Ljava/util/Vector;
-    //   490: invokevirtual 161	java/util/Vector:iterator	()Ljava/util/Iterator;
-    //   493: astore 6
-    //   495: aload 6
-    //   497: invokeinterface 167 1 0
-    //   502: ifeq +49 -> 551
-    //   505: aload 6
-    //   507: invokeinterface 170 1 0
-    //   512: checkcast 172	com/tencent/hlyyb/downloader/DownloaderTaskListener
-    //   515: astore 7
-    //   517: aload 7
-    //   519: ifnull -24 -> 495
-    //   522: aload 7
-    //   524: aload_0
-    //   525: getfield 49	com/tencent/hlyyb/downloader/e/d:a	Lcom/tencent/hlyyb/downloader/e/i;
-    //   528: invokeinterface 189 2 0
-    //   533: goto -38 -> 495
-    //   536: astore 6
-    //   538: aload 5
-    //   540: monitorexit
-    //   541: aload 6
-    //   543: athrow
-    //   544: astore 5
-    //   546: iload_2
-    //   547: istore_1
-    //   548: goto -273 -> 275
-    //   551: aload 5
-    //   553: monitorexit
-    //   554: iconst_1
-    //   555: istore_1
-    //   556: goto -478 -> 78
-    //   559: invokestatic 195	android/os/SystemClock:elapsedRealtime	()J
-    //   562: lstore_3
-    //   563: aload_0
-    //   564: getfield 36	com/tencent/hlyyb/downloader/e/d:c	Ljava/util/Vector;
-    //   567: astore 5
-    //   569: aload 5
-    //   571: monitorenter
-    //   572: aload_0
-    //   573: getfield 36	com/tencent/hlyyb/downloader/e/d:c	Ljava/util/Vector;
-    //   576: invokevirtual 161	java/util/Vector:iterator	()Ljava/util/Iterator;
-    //   579: astore 6
-    //   581: aload 6
-    //   583: invokeinterface 167 1 0
-    //   588: ifeq +42 -> 630
-    //   591: aload 6
-    //   593: invokeinterface 170 1 0
-    //   598: checkcast 172	com/tencent/hlyyb/downloader/DownloaderTaskListener
-    //   601: astore 7
-    //   603: aload 7
-    //   605: ifnull -24 -> 581
-    //   608: aload 7
-    //   610: aload_0
-    //   611: getfield 49	com/tencent/hlyyb/downloader/e/d:a	Lcom/tencent/hlyyb/downloader/e/i;
-    //   614: invokeinterface 198 2 0
-    //   619: goto -38 -> 581
-    //   622: astore 6
-    //   624: aload 5
-    //   626: monitorexit
-    //   627: aload 6
-    //   629: athrow
-    //   630: aload 5
-    //   632: monitorexit
-    //   633: aload_0
-    //   634: invokestatic 195	android/os/SystemClock:elapsedRealtime	()J
-    //   637: lload_3
-    //   638: lsub
-    //   639: l2i
-    //   640: putfield 40	com/tencent/hlyyb/downloader/e/d:e	I
-    //   643: aload_0
-    //   644: getfield 49	com/tencent/hlyyb/downloader/e/d:a	Lcom/tencent/hlyyb/downloader/e/i;
-    //   647: invokevirtual 203	com/tencent/hlyyb/downloader/e/i:t	()V
-    //   650: invokestatic 195	android/os/SystemClock:elapsedRealtime	()J
-    //   653: pop2
-    //   654: invokestatic 153	com/tencent/hlyyb/downloader/c/b:a	()Lcom/tencent/hlyyb/downloader/c/b;
-    //   657: aload_0
-    //   658: getfield 49	com/tencent/hlyyb/downloader/e/d:a	Lcom/tencent/hlyyb/downloader/e/i;
-    //   661: invokevirtual 204	com/tencent/hlyyb/downloader/c/b:onTaskCompletedSubloop	(Lcom/tencent/hlyyb/downloader/DownloaderTask;)V
-    //   664: iconst_1
-    //   665: istore_1
-    //   666: goto -588 -> 78
-    //   669: iconst_1
-    //   670: istore_1
-    //   671: goto -593 -> 78
-    //   674: astore 5
-    //   676: goto -401 -> 275
+    //   189: aload 6
+    //   191: athrow
+    //   192: invokestatic 183	com/tencent/hlyyb/downloader/c/b:a	()Lcom/tencent/hlyyb/downloader/c/b;
+    //   195: aload_0
+    //   196: getfield 49	com/tencent/hlyyb/downloader/e/d:a	Lcom/tencent/hlyyb/downloader/e/i;
+    //   199: invokevirtual 187	com/tencent/hlyyb/downloader/c/b:onTaskFailedSubloop	(Lcom/tencent/hlyyb/downloader/DownloaderTask;)V
+    //   202: aload_0
+    //   203: getfield 36	com/tencent/hlyyb/downloader/e/d:c	Ljava/util/Vector;
+    //   206: astore 5
+    //   208: aload 5
+    //   210: monitorenter
+    //   211: aload_0
+    //   212: getfield 36	com/tencent/hlyyb/downloader/e/d:c	Ljava/util/Vector;
+    //   215: invokevirtual 158	java/util/Vector:iterator	()Ljava/util/Iterator;
+    //   218: astore 6
+    //   220: aload 6
+    //   222: invokeinterface 164 1 0
+    //   227: ifeq +34 -> 261
+    //   230: aload 6
+    //   232: invokeinterface 167 1 0
+    //   237: checkcast 169	com/tencent/hlyyb/downloader/DownloaderTaskListener
+    //   240: astore 7
+    //   242: aload 7
+    //   244: ifnull -24 -> 220
+    //   247: aload 7
+    //   249: aload_0
+    //   250: getfield 49	com/tencent/hlyyb/downloader/e/d:a	Lcom/tencent/hlyyb/downloader/e/i;
+    //   253: invokeinterface 188 2 0
+    //   258: goto -38 -> 220
+    //   261: aload 5
+    //   263: monitorexit
+    //   264: goto -185 -> 79
+    //   267: astore 6
+    //   269: aload 5
+    //   271: monitorexit
+    //   272: aload 6
+    //   274: athrow
+    //   275: invokestatic 183	com/tencent/hlyyb/downloader/c/b:a	()Lcom/tencent/hlyyb/downloader/c/b;
+    //   278: aload_0
+    //   279: getfield 49	com/tencent/hlyyb/downloader/e/d:a	Lcom/tencent/hlyyb/downloader/e/i;
+    //   282: invokevirtual 191	com/tencent/hlyyb/downloader/c/b:onTaskPausedSubloop	(Lcom/tencent/hlyyb/downloader/DownloaderTask;)V
+    //   285: aload_0
+    //   286: getfield 36	com/tencent/hlyyb/downloader/e/d:c	Ljava/util/Vector;
+    //   289: astore 5
+    //   291: aload 5
+    //   293: monitorenter
+    //   294: aload_0
+    //   295: getfield 36	com/tencent/hlyyb/downloader/e/d:c	Ljava/util/Vector;
+    //   298: invokevirtual 158	java/util/Vector:iterator	()Ljava/util/Iterator;
+    //   301: astore 6
+    //   303: aload 6
+    //   305: invokeinterface 164 1 0
+    //   310: ifeq +34 -> 344
+    //   313: aload 6
+    //   315: invokeinterface 167 1 0
+    //   320: checkcast 169	com/tencent/hlyyb/downloader/DownloaderTaskListener
+    //   323: astore 7
+    //   325: aload 7
+    //   327: ifnull -24 -> 303
+    //   330: aload 7
+    //   332: aload_0
+    //   333: getfield 49	com/tencent/hlyyb/downloader/e/d:a	Lcom/tencent/hlyyb/downloader/e/i;
+    //   336: invokeinterface 192 2 0
+    //   341: goto -38 -> 303
+    //   344: aload 5
+    //   346: monitorexit
+    //   347: goto -268 -> 79
+    //   350: astore 6
+    //   352: aload 5
+    //   354: monitorexit
+    //   355: aload 6
+    //   357: athrow
+    //   358: astore 5
+    //   360: iload_2
+    //   361: istore_1
+    //   362: goto +293 -> 655
+    //   365: astore 5
+    //   367: iconst_1
+    //   368: istore_1
+    //   369: goto +272 -> 641
+    //   372: invokestatic 183	com/tencent/hlyyb/downloader/c/b:a	()Lcom/tencent/hlyyb/downloader/c/b;
+    //   375: aload_0
+    //   376: getfield 49	com/tencent/hlyyb/downloader/e/d:a	Lcom/tencent/hlyyb/downloader/e/i;
+    //   379: invokevirtual 195	com/tencent/hlyyb/downloader/c/b:onTaskReceivedSubloop	(Lcom/tencent/hlyyb/downloader/DownloaderTask;)V
+    //   382: aload_0
+    //   383: getfield 36	com/tencent/hlyyb/downloader/e/d:c	Ljava/util/Vector;
+    //   386: astore 5
+    //   388: aload 5
+    //   390: monitorenter
+    //   391: aload_0
+    //   392: getfield 36	com/tencent/hlyyb/downloader/e/d:c	Ljava/util/Vector;
+    //   395: invokevirtual 158	java/util/Vector:iterator	()Ljava/util/Iterator;
+    //   398: astore 6
+    //   400: aload 6
+    //   402: invokeinterface 164 1 0
+    //   407: ifeq +34 -> 441
+    //   410: aload 6
+    //   412: invokeinterface 167 1 0
+    //   417: checkcast 169	com/tencent/hlyyb/downloader/DownloaderTaskListener
+    //   420: astore 7
+    //   422: aload 7
+    //   424: ifnull -24 -> 400
+    //   427: aload 7
+    //   429: aload_0
+    //   430: getfield 49	com/tencent/hlyyb/downloader/e/d:a	Lcom/tencent/hlyyb/downloader/e/i;
+    //   433: invokeinterface 196 2 0
+    //   438: goto -38 -> 400
+    //   441: aload 5
+    //   443: monitorexit
+    //   444: goto +177 -> 621
+    //   447: astore 6
+    //   449: aload 5
+    //   451: monitorexit
+    //   452: aload 6
+    //   454: athrow
+    //   455: invokestatic 183	com/tencent/hlyyb/downloader/c/b:a	()Lcom/tencent/hlyyb/downloader/c/b;
+    //   458: aload_0
+    //   459: getfield 49	com/tencent/hlyyb/downloader/e/d:a	Lcom/tencent/hlyyb/downloader/e/i;
+    //   462: invokevirtual 199	com/tencent/hlyyb/downloader/c/b:onTaskDetectedSubloop	(Lcom/tencent/hlyyb/downloader/DownloaderTask;)V
+    //   465: aload_0
+    //   466: getfield 36	com/tencent/hlyyb/downloader/e/d:c	Ljava/util/Vector;
+    //   469: astore 5
+    //   471: aload 5
+    //   473: monitorenter
+    //   474: aload_0
+    //   475: getfield 36	com/tencent/hlyyb/downloader/e/d:c	Ljava/util/Vector;
+    //   478: invokevirtual 158	java/util/Vector:iterator	()Ljava/util/Iterator;
+    //   481: astore 6
+    //   483: aload 6
+    //   485: invokeinterface 164 1 0
+    //   490: ifeq +34 -> 524
+    //   493: aload 6
+    //   495: invokeinterface 167 1 0
+    //   500: checkcast 169	com/tencent/hlyyb/downloader/DownloaderTaskListener
+    //   503: astore 7
+    //   505: aload 7
+    //   507: ifnull -24 -> 483
+    //   510: aload 7
+    //   512: aload_0
+    //   513: getfield 49	com/tencent/hlyyb/downloader/e/d:a	Lcom/tencent/hlyyb/downloader/e/i;
+    //   516: invokeinterface 200 2 0
+    //   521: goto -38 -> 483
+    //   524: aload 5
+    //   526: monitorexit
+    //   527: goto +94 -> 621
+    //   530: astore 6
+    //   532: aload 5
+    //   534: monitorexit
+    //   535: aload 6
+    //   537: athrow
+    //   538: invokestatic 183	com/tencent/hlyyb/downloader/c/b:a	()Lcom/tencent/hlyyb/downloader/c/b;
+    //   541: aload_0
+    //   542: getfield 49	com/tencent/hlyyb/downloader/e/d:a	Lcom/tencent/hlyyb/downloader/e/i;
+    //   545: invokevirtual 203	com/tencent/hlyyb/downloader/c/b:onTaskStartedSubloop	(Lcom/tencent/hlyyb/downloader/DownloaderTask;)V
+    //   548: aload_0
+    //   549: getfield 36	com/tencent/hlyyb/downloader/e/d:c	Ljava/util/Vector;
+    //   552: astore 5
+    //   554: aload 5
+    //   556: monitorenter
+    //   557: aload_0
+    //   558: getfield 36	com/tencent/hlyyb/downloader/e/d:c	Ljava/util/Vector;
+    //   561: invokevirtual 158	java/util/Vector:iterator	()Ljava/util/Iterator;
+    //   564: astore 6
+    //   566: aload 6
+    //   568: invokeinterface 164 1 0
+    //   573: ifeq +34 -> 607
+    //   576: aload 6
+    //   578: invokeinterface 167 1 0
+    //   583: checkcast 169	com/tencent/hlyyb/downloader/DownloaderTaskListener
+    //   586: astore 7
+    //   588: aload 7
+    //   590: ifnull -24 -> 566
+    //   593: aload 7
+    //   595: aload_0
+    //   596: getfield 49	com/tencent/hlyyb/downloader/e/d:a	Lcom/tencent/hlyyb/downloader/e/i;
+    //   599: invokeinterface 204 2 0
+    //   604: goto -38 -> 566
+    //   607: aload 5
+    //   609: monitorexit
+    //   610: goto +11 -> 621
+    //   613: astore 6
+    //   615: aload 5
+    //   617: monitorexit
+    //   618: aload 6
+    //   620: athrow
+    //   621: iconst_0
+    //   622: istore_1
+    //   623: iload_1
+    //   624: ifeq -617 -> 7
+    //   627: goto +32 -> 659
+    //   630: astore 5
+    //   632: iconst_0
+    //   633: istore_1
+    //   634: goto +21 -> 655
+    //   637: astore 5
+    //   639: iconst_0
+    //   640: istore_1
+    //   641: aload 5
+    //   643: invokevirtual 134	java/lang/InterruptedException:printStackTrace	()V
+    //   646: iload_1
+    //   647: ifeq -640 -> 7
+    //   650: goto +9 -> 659
+    //   653: astore 5
+    //   655: iload_1
+    //   656: ifeq +9 -> 665
+    //   659: aload_0
+    //   660: iconst_0
+    //   661: putfield 42	com/tencent/hlyyb/downloader/e/d:f	Z
+    //   664: return
+    //   665: goto +6 -> 671
+    //   668: aload 5
+    //   670: athrow
+    //   671: goto -3 -> 668
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	679	0	this	d
-    //   28	643	1	i	int
-    //   1	546	2	j	int
-    //   562	76	3	l	long
-    //   17	148	5	localObject1	Object
-    //   170	17	5	localInterruptedException1	InterruptedException
-    //   271	12	5	localObject2	Object
-    //   452	8	5	localInterruptedException2	InterruptedException
-    //   544	8	5	localObject3	Object
-    //   674	1	5	localObject4	Object
-    //   119	13	6	localIterator1	java.util.Iterator
-    //   162	6	6	localObject5	Object
-    //   220	13	6	localIterator2	java.util.Iterator
-    //   263	6	6	localObject6	Object
-    //   316	13	6	localIterator3	java.util.Iterator
-    //   359	6	6	localObject7	Object
-    //   401	13	6	localIterator4	java.util.Iterator
-    //   444	6	6	localObject8	Object
-    //   493	13	6	localIterator5	java.util.Iterator
-    //   536	6	6	localObject9	Object
-    //   579	13	6	localIterator6	java.util.Iterator
-    //   622	6	6	localObject10	Object
-    //   141	468	7	localDownloaderTaskListener	DownloaderTaskListener
+    //   0	674	0	this	d
+    //   28	628	1	i	int
+    //   1	360	2	j	int
+    //   87	68	3	l	long
+    //   17	336	5	localObject1	Object
+    //   358	1	5	localObject2	Object
+    //   365	1	5	localInterruptedException1	InterruptedException
+    //   386	230	5	localVector	Vector
+    //   630	1	5	localObject3	Object
+    //   637	5	5	localInterruptedException2	InterruptedException
+    //   653	16	5	localObject4	Object
+    //   104	13	6	localIterator1	java.util.Iterator
+    //   184	6	6	localObject5	Object
+    //   218	13	6	localIterator2	java.util.Iterator
+    //   267	6	6	localObject6	Object
+    //   301	13	6	localIterator3	java.util.Iterator
+    //   350	6	6	localObject7	Object
+    //   398	13	6	localIterator4	java.util.Iterator
+    //   447	6	6	localObject8	Object
+    //   481	13	6	localIterator5	java.util.Iterator
+    //   530	6	6	localObject9	Object
+    //   564	13	6	localIterator6	java.util.Iterator
+    //   613	6	6	localObject10	Object
+    //   126	468	7	localDownloaderTaskListener	DownloaderTaskListener
     // Exception table:
     //   from	to	target	type
-    //   112	121	162	finally
-    //   121	143	162	finally
-    //   148	159	162	finally
-    //   164	167	162	finally
-    //   186	189	162	finally
-    //   7	29	170	java/lang/InterruptedException
-    //   93	112	170	java/lang/InterruptedException
-    //   167	170	170	java/lang/InterruptedException
-    //   194	213	170	java/lang/InterruptedException
-    //   268	271	170	java/lang/InterruptedException
-    //   290	309	170	java/lang/InterruptedException
-    //   364	367	170	java/lang/InterruptedException
-    //   213	222	263	finally
-    //   222	244	263	finally
-    //   249	260	263	finally
-    //   265	268	263	finally
-    //   282	285	263	finally
-    //   7	29	271	finally
-    //   93	112	271	finally
-    //   167	170	271	finally
-    //   194	213	271	finally
-    //   268	271	271	finally
-    //   290	309	271	finally
-    //   364	367	271	finally
-    //   309	318	359	finally
-    //   318	340	359	finally
-    //   345	356	359	finally
-    //   361	364	359	finally
-    //   367	370	359	finally
-    //   394	403	444	finally
-    //   403	425	444	finally
-    //   430	441	444	finally
-    //   446	449	444	finally
-    //   459	462	444	finally
-    //   375	394	452	java/lang/InterruptedException
-    //   449	452	452	java/lang/InterruptedException
-    //   467	486	452	java/lang/InterruptedException
-    //   541	544	452	java/lang/InterruptedException
-    //   559	572	452	java/lang/InterruptedException
-    //   627	630	452	java/lang/InterruptedException
-    //   633	664	452	java/lang/InterruptedException
-    //   486	495	536	finally
-    //   495	517	536	finally
-    //   522	533	536	finally
-    //   538	541	536	finally
-    //   551	554	536	finally
-    //   375	394	544	finally
-    //   449	452	544	finally
-    //   467	486	544	finally
-    //   541	544	544	finally
-    //   559	572	544	finally
-    //   627	630	544	finally
-    //   633	664	544	finally
-    //   572	581	622	finally
-    //   581	603	622	finally
-    //   608	619	622	finally
-    //   624	627	622	finally
-    //   630	633	622	finally
-    //   174	179	674	finally
+    //   97	106	184	finally
+    //   106	128	184	finally
+    //   133	144	184	finally
+    //   147	150	184	finally
+    //   186	189	184	finally
+    //   211	220	267	finally
+    //   220	242	267	finally
+    //   247	258	267	finally
+    //   261	264	267	finally
+    //   269	272	267	finally
+    //   294	303	350	finally
+    //   303	325	350	finally
+    //   330	341	350	finally
+    //   344	347	350	finally
+    //   352	355	350	finally
+    //   84	97	358	finally
+    //   150	181	358	finally
+    //   189	192	358	finally
+    //   192	211	358	finally
+    //   272	275	358	finally
+    //   275	294	358	finally
+    //   355	358	358	finally
+    //   84	97	365	java/lang/InterruptedException
+    //   150	181	365	java/lang/InterruptedException
+    //   189	192	365	java/lang/InterruptedException
+    //   192	211	365	java/lang/InterruptedException
+    //   272	275	365	java/lang/InterruptedException
+    //   275	294	365	java/lang/InterruptedException
+    //   355	358	365	java/lang/InterruptedException
+    //   391	400	447	finally
+    //   400	422	447	finally
+    //   427	438	447	finally
+    //   441	444	447	finally
+    //   449	452	447	finally
+    //   474	483	530	finally
+    //   483	505	530	finally
+    //   510	521	530	finally
+    //   524	527	530	finally
+    //   532	535	530	finally
+    //   557	566	613	finally
+    //   566	588	613	finally
+    //   593	604	613	finally
+    //   607	610	613	finally
+    //   615	618	613	finally
+    //   7	29	630	finally
+    //   372	391	630	finally
+    //   452	455	630	finally
+    //   455	474	630	finally
+    //   535	538	630	finally
+    //   538	557	630	finally
+    //   618	621	630	finally
+    //   7	29	637	java/lang/InterruptedException
+    //   372	391	637	java/lang/InterruptedException
+    //   452	455	637	java/lang/InterruptedException
+    //   455	474	637	java/lang/InterruptedException
+    //   535	538	637	java/lang/InterruptedException
+    //   538	557	637	java/lang/InterruptedException
+    //   618	621	637	java/lang/InterruptedException
+    //   641	646	653	finally
   }
   
   public final boolean e()
@@ -676,7 +574,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hlyyb.downloader.e.d
  * JD-Core Version:    0.7.0.1
  */

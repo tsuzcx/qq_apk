@@ -16,8 +16,9 @@ public class GeoHashTree$TreeNode
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentBizQqstoryAlbumToolsGeoHashTree$TreeNodeBean = new GeoHashTree.TreeNodeBean();
-    this.jdField_a_of_type_ComTencentBizQqstoryAlbumToolsGeoHashTree$TreeNodeBean.jdField_a_of_type_Int = 0;
-    GeoHashTree.TreeNodeBean.a(this.jdField_a_of_type_ComTencentBizQqstoryAlbumToolsGeoHashTree$TreeNodeBean, 0);
+    GeoHashTree.TreeNodeBean localTreeNodeBean = this.jdField_a_of_type_ComTencentBizQqstoryAlbumToolsGeoHashTree$TreeNodeBean;
+    localTreeNodeBean.jdField_a_of_type_Int = 0;
+    GeoHashTree.TreeNodeBean.a(localTreeNodeBean, 0);
     this.jdField_a_of_type_ComTencentBizQqstoryAlbumToolsGeoHashTree$TreeNodeBean.jdField_a_of_type_JavaLangString = null;
   }
   
@@ -27,9 +28,10 @@ public class GeoHashTree$TreeNode
     this.jdField_a_of_type_Boolean = false;
     String str = paramString.substring(0, paramInt1);
     this.jdField_a_of_type_ComTencentBizQqstoryAlbumToolsGeoHashTree$TreeNodeBean = new GeoHashTree.TreeNodeBean();
-    this.jdField_a_of_type_ComTencentBizQqstoryAlbumToolsGeoHashTree$TreeNodeBean.jdField_a_of_type_JavaLangString = str;
-    this.jdField_a_of_type_ComTencentBizQqstoryAlbumToolsGeoHashTree$TreeNodeBean.jdField_a_of_type_Int = paramInt1;
-    GeoHashTree.TreeNodeBean.a(this.jdField_a_of_type_ComTencentBizQqstoryAlbumToolsGeoHashTree$TreeNodeBean, paramInt2);
+    GeoHashTree.TreeNodeBean localTreeNodeBean = this.jdField_a_of_type_ComTencentBizQqstoryAlbumToolsGeoHashTree$TreeNodeBean;
+    localTreeNodeBean.jdField_a_of_type_JavaLangString = str;
+    localTreeNodeBean.jdField_a_of_type_Int = paramInt1;
+    GeoHashTree.TreeNodeBean.a(localTreeNodeBean, paramInt2);
     if (paramInt1 < paramString.length())
     {
       paramString = new TreeNode(paramString, paramInt1 + 1, paramInt2);
@@ -39,51 +41,42 @@ public class GeoHashTree$TreeNode
   
   public int a()
   {
-    int j;
     if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
-      j = GeoHashTree.TreeNodeBean.a(this.jdField_a_of_type_ComTencentBizQqstoryAlbumToolsGeoHashTree$TreeNodeBean);
+      return GeoHashTree.TreeNodeBean.a(this.jdField_a_of_type_ComTencentBizQqstoryAlbumToolsGeoHashTree$TreeNodeBean);
     }
-    Iterator localIterator;
-    int i;
-    do
+    int i = 0;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      return j;
-      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      i = 0;
-      j = i;
-    } while (!localIterator.hasNext());
-    TreeNode localTreeNode = (TreeNode)localIterator.next();
-    if (!localTreeNode.jdField_a_of_type_Boolean) {
-      i = localTreeNode.a() + i;
+      TreeNode localTreeNode = (TreeNode)localIterator.next();
+      if (!localTreeNode.jdField_a_of_type_Boolean) {
+        i += localTreeNode.a();
+      }
     }
-    for (;;)
-    {
-      break;
-    }
+    return i;
   }
   
   public List<TreeNode> a()
   {
     ArrayList localArrayList = new ArrayList();
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
-      localArrayList.add(this);
-    }
-    for (;;)
+    if (this.jdField_a_of_type_JavaUtilList.size() == 0)
     {
+      localArrayList.add(this);
       return localArrayList;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        TreeNode localTreeNode = (TreeNode)localIterator.next();
-        if (!localTreeNode.jdField_a_of_type_Boolean) {
-          if (localTreeNode.jdField_a_of_type_JavaUtilList.size() == 0) {
-            localArrayList.add(localTreeNode);
-          } else {
-            localArrayList.addAll(localTreeNode.a());
-          }
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      TreeNode localTreeNode = (TreeNode)localIterator.next();
+      if (!localTreeNode.jdField_a_of_type_Boolean) {
+        if (localTreeNode.jdField_a_of_type_JavaUtilList.size() == 0) {
+          localArrayList.add(localTreeNode);
+        } else {
+          localArrayList.addAll(localTreeNode.a());
         }
       }
     }
+    return localArrayList;
   }
   
   public void a()
@@ -119,14 +112,17 @@ public class GeoHashTree$TreeNode
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mNodeBean: ").append(this.jdField_a_of_type_ComTencentBizQqstoryAlbumToolsGeoHashTree$TreeNodeBean).append(" ");
-    localStringBuilder.append("child count:").append(this.jdField_a_of_type_JavaUtilList.size());
+    localStringBuilder.append("mNodeBean: ");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryAlbumToolsGeoHashTree$TreeNodeBean);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("child count:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.size());
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.tools.GeoHashTree.TreeNode
  * JD-Core Version:    0.7.0.1
  */

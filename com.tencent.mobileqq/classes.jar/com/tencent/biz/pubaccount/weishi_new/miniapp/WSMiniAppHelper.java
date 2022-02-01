@@ -1,58 +1,22 @@
 package com.tencent.biz.pubaccount.weishi_new.miniapp;
 
-import NS_KING_SOCIALIZE_META.stMetaUgcImage;
-import NS_KING_SOCIALIZE_META.stMetaUgcVideoSeg;
-import UserGrowth.stFloatingLayerCardStyle;
 import UserGrowth.stSimpleMetaFeed;
 import UserGrowth.stSimpleMetaPerson;
 import android.content.Context;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.google.gson.Gson;
 import com.tencent.biz.pubaccount.weishi_new.WeishiActivityHelper;
+import com.tencent.biz.pubaccount.weishi_new.util.WSFeedParseUtils;
+import com.tencent.biz.pubaccount.weishi_new.util.WSInitializeHelper;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageOpenParams;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashMap<Ljava.lang.String;Ljava.lang.String;>;
-import org.json.JSONObject;
 
 public class WSMiniAppHelper
 {
-  private stSimpleMetaFeed a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject != null)
-    {
-      Gson localGson = new Gson();
-      stSimpleMetaFeed localstSimpleMetaFeed = new stSimpleMetaFeed();
-      localstSimpleMetaFeed.id = paramJSONObject.optString("id");
-      localstSimpleMetaFeed.ding_count = paramJSONObject.optInt("dingCount");
-      localstSimpleMetaFeed.is_ding = paramJSONObject.optInt("isDing");
-      localstSimpleMetaFeed.total_comment_num = paramJSONObject.optInt("commentNum");
-      localstSimpleMetaFeed.material_desc = paramJSONObject.optString("materialDesc");
-      localstSimpleMetaFeed.material_thumburl = paramJSONObject.optString("materialThumburl");
-      localstSimpleMetaFeed.feed_desc = paramJSONObject.optString("feedDesc");
-      localstSimpleMetaFeed.video = ((stMetaUgcVideoSeg)localGson.fromJson(paramJSONObject.optJSONObject("video").toString(), stMetaUgcVideoSeg.class));
-      localstSimpleMetaFeed.video_url = paramJSONObject.optString("videoUrl");
-      ArrayList localArrayList = new ArrayList();
-      stMetaUgcImage localstMetaUgcImage = new stMetaUgcImage();
-      localstMetaUgcImage.url = paramJSONObject.optString("coverUrl");
-      localstMetaUgcImage.height = paramJSONObject.optInt("coverHeight");
-      localstMetaUgcImage.width = paramJSONObject.optInt("coverWidth");
-      localArrayList.add(localstMetaUgcImage);
-      localstSimpleMetaFeed.images = localArrayList;
-      localstSimpleMetaFeed.poster_id = paramJSONObject.optString("posterId");
-      localstSimpleMetaFeed.poster = ((stSimpleMetaPerson)localGson.fromJson(paramJSONObject.optJSONObject("poster").toString(), stSimpleMetaPerson.class));
-      paramJSONObject = new stFloatingLayerCardStyle();
-      paramJSONObject.cardType = 3;
-      localstSimpleMetaFeed.floatingLayerCardStyle = paramJSONObject;
-      return localstSimpleMetaFeed;
-    }
-    return null;
-  }
-  
   public static WSMiniAppHelper a()
   {
     return WSMiniAppHelper.SingletonHolder.a();
@@ -63,11 +27,23 @@ public class WSMiniAppHelper
     if (TextUtils.isEmpty(paramString)) {
       return paramString;
     }
-    String str = "_ct=" + System.currentTimeMillis();
-    if (paramString.contains("?")) {}
-    for (paramString = paramString + "&" + str;; paramString = paramString + "?" + str) {
-      return paramString;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("_ct=");
+    ((StringBuilder)localObject).append(System.currentTimeMillis());
+    localObject = ((StringBuilder)localObject).toString();
+    if (paramString.contains("?"))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("&");
+      localStringBuilder.append((String)localObject);
+      return localStringBuilder.toString();
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("?");
+    localStringBuilder.append((String)localObject);
+    return localStringBuilder.toString();
   }
   
   private ArrayList<stSimpleMetaFeed> a(HashMap<String, String> paramHashMap)
@@ -83,35 +59,16 @@ public class WSMiniAppHelper
     if (TextUtils.isEmpty(paramHashMap)) {
       WeishiUtils.c(paramHashMap);
     }
-    try
-    {
-      paramHashMap = URLDecoder.decode((String)localObject, "UTF-8");
-      WSLog.b("WSMiniAppHelper", "小程序传过来的feed： " + paramHashMap);
+    paramHashMap = new StringBuilder();
+    paramHashMap.append("小程序传过来的feed： ");
+    paramHashMap.append((String)localObject);
+    WSLog.b("WSMiniAppHelper", paramHashMap.toString());
+    paramHashMap = new ArrayList();
+    localObject = WSFeedParseUtils.a((String)localObject);
+    if (localObject != null) {
+      paramHashMap.add(localObject);
     }
-    catch (UnsupportedEncodingException paramHashMap)
-    {
-      for (;;)
-      {
-        try
-        {
-          localObject = new ArrayList();
-          paramHashMap = a(new JSONObject(paramHashMap));
-          if (paramHashMap != null) {
-            ((ArrayList)localObject).add(paramHashMap);
-          }
-          return localObject;
-        }
-        catch (Exception paramHashMap)
-        {
-          paramHashMap.printStackTrace();
-          WSLog.d("WSMiniAppHelper", "parse json error: " + paramHashMap.getMessage());
-        }
-        paramHashMap = paramHashMap;
-        paramHashMap.printStackTrace();
-        paramHashMap = (HashMap<String, String>)localObject;
-      }
-    }
-    return null;
+    return paramHashMap;
   }
   
   public void a(Context paramContext, String paramString)
@@ -121,46 +78,52 @@ public class WSMiniAppHelper
   
   public boolean a(Context paramContext, HashMap<String, String> paramHashMap)
   {
-    if ((paramContext == null) || (paramHashMap == null)) {
-      return false;
-    }
-    ArrayList localArrayList = a(paramHashMap);
-    String str3 = "mini_app_personal_guest";
-    String str4 = "homepage_guest";
-    String str2 = str3;
-    String str1 = str4;
-    if (localArrayList != null)
+    boolean bool1 = false;
+    if (paramContext != null)
     {
-      str2 = str3;
-      str1 = str4;
-      if (localArrayList.size() > 0)
+      if (paramHashMap == null) {
+        return false;
+      }
+      ArrayList localArrayList = a(paramHashMap);
+      if ((localArrayList != null) && (localArrayList.size() > 0))
       {
-        stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)localArrayList.get(0);
-        str2 = str3;
-        str1 = str4;
-        if (localstSimpleMetaFeed.poster != null)
+        localObject = (stSimpleMetaFeed)localArrayList.get(0);
+        if ((((stSimpleMetaFeed)localObject).poster != null) && (TextUtils.equals(((stSimpleMetaFeed)localObject).poster.id, WeishiUtils.d())))
         {
-          str2 = str3;
-          str1 = str4;
-          if (TextUtils.equals(localstSimpleMetaFeed.poster.id, WeishiUtils.d()))
-          {
-            str2 = "mini_app_personal_main";
-            str1 = "homepage_main";
-          }
+          str1 = "mini_app_personal_main";
+          localObject = "homepage_main";
+          break label87;
         }
       }
+      String str1 = "mini_app_personal_guest";
+      Object localObject = "homepage_guest";
+      label87:
+      String str2 = (String)paramHashMap.get("scenes_from");
+      Bundle localBundle = new Bundle();
+      if ("share".equals(str2))
+      {
+        WSInitializeHelper.a().a();
+        WSInitializeHelper.a().c();
+        localBundle.putString("spid", (String)paramHashMap.get("spid"));
+        localBundle.putString("share_collection_id", (String)paramHashMap.get("collection_id"));
+        localBundle.putString("share_active_id", (String)paramHashMap.get("active_id"));
+        localBundle.putString("scenes_channel_from", (String)paramHashMap.get("share_scenes_from"));
+        localBundle.putString("web_test_id", (String)paramHashMap.get("web_test_id"));
+        str1 = "share";
+        localObject = str1;
+      }
+      paramHashMap = (String)paramHashMap.get("src_type");
+      paramContext = new WSVerticalPageOpenParams(paramContext, str1, (String)localObject).a(localArrayList);
+      boolean bool2 = TextUtils.equals(paramHashMap, "web");
+      bool1 = true;
+      WSVerticalPageFragment.a(paramContext.a(bool2 ^ true).a(localBundle));
     }
-    if (!TextUtils.equals((String)paramHashMap.get("src_type"), "web")) {}
-    for (boolean bool = true;; bool = false)
-    {
-      WSVerticalPageFragment.a(paramContext, str2, str1, localArrayList, 0, bool);
-      return true;
-    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.miniapp.WSMiniAppHelper
  * JD-Core Version:    0.7.0.1
  */

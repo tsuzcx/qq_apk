@@ -6,6 +6,7 @@ import android.util.SparseIntArray;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import androidx.collection.ArrayMap;
+import com.tencent.biz.common.offline.HtmlOffline;
 import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
 import com.tencent.mobileqq.gamecenter.media.DanmakuHost.Item;
 import com.tencent.mobileqq.gamecenter.media.DanmakuLayout;
@@ -19,6 +20,7 @@ import com.tencent.mtt.hippy.uimanager.NativeGestureDispatcher;
 import com.tencent.mtt.hippy.views.view.HippyViewGroup;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -41,6 +43,7 @@ public class GameCenterVideoView
   private int mCurrentLoop = 1;
   private long mDuration;
   private boolean mIsDoingFullscreen = false;
+  private boolean mIsLandscapeWhenFullScreen = true;
   private volatile boolean mListenProgress;
   private int mLoop = 1;
   private boolean mMuted = true;
@@ -136,34 +139,41 @@ public class GameCenterVideoView
   public void onAfterUpdateProps()
   {
     FeedsItemData localFeedsItemData = new FeedsItemData();
-    if ((this.mType == 2) || (this.mType == 1))
+    int i = this.mType;
+    if ((i != 2) && (i != 1))
     {
-      localFeedsItemData.type = this.mType;
-      localFeedsItemData.videoUrl = this.mSrc;
-    }
-    for (;;)
-    {
-      localFeedsItemData.coverImgUrl = this.mCoverUrl;
-      this.mVideoView.setData(localFeedsItemData, 1);
-      if (QLog.isColorLevel()) {
-        QLog.d("GameCenterVideoView", 2, new Object[] { "onAfterUpdateProps: ", this });
-      }
-      this.mVideoView.setVideoStatusChangerListener(new GameCenterVideoView.1(this));
-      doActionAfterSDKInit(new GameCenterVideoView.2(this));
-      return;
       localFeedsItemData.type = 2;
       localFeedsItemData.videoVid = this.mSrc;
     }
+    else
+    {
+      i = this.mType;
+      localFeedsItemData.type = i;
+      str = this.mSrc;
+      localFeedsItemData.videoUrl = str;
+      if (i != 1) {
+        HtmlOffline.a(str, MobileQQ.sMobileQQ.waitAppRuntime(null));
+      }
+    }
+    String str = this.mCoverUrl;
+    localFeedsItemData.coverImgUrl = str;
+    HtmlOffline.a(str, MobileQQ.sMobileQQ.waitAppRuntime(null));
+    this.mVideoView.setData(localFeedsItemData, 1);
+    if (QLog.isColorLevel()) {
+      QLog.d("GameCenterVideoView", 2, new Object[] { "onAfterUpdateProps: ", this });
+    }
+    this.mVideoView.setVideoStatusChangerListener(new GameCenterVideoView.1(this));
+    doActionAfterSDKInit(new GameCenterVideoView.2(this));
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (getChildAt(0) != null) {
       getChildAt(0).layout(0, 0, getWidth(), getHeight());
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     if (getChildAt(0) != null) {
@@ -205,12 +215,12 @@ public class GameCenterVideoView
         if (TextUtils.isEmpty(paramString)) {
           return;
         }
-        JSONArray localJSONArray = new JSONObject(paramString).optJSONArray("data");
+        localObject = new JSONObject(paramString).optJSONArray("data");
         DanmakuHost.Item[] arrayOfItem = new DanmakuHost.Item[paramString.length()];
         i = 0;
         if (i < paramString.length())
         {
-          JSONObject localJSONObject = localJSONArray.optJSONObject(i);
+          JSONObject localJSONObject = ((JSONArray)localObject).optJSONObject(i);
           if (localJSONObject != null) {
             arrayOfItem[i] = new DanmakuHost.Item(localJSONObject.optString("text"), localJSONObject.optDouble("onScreenTime"), localJSONObject.optDouble("screenDuration"), localJSONObject.optString("fontColor"), localJSONObject.optString("backgroundColor"));
           }
@@ -223,7 +233,10 @@ public class GameCenterVideoView
       }
       catch (Exception paramString)
       {
-        QLog.d("GameCenterVideoView", 1, "setDanmuData Err:" + paramString.toString());
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("setDanmuData Err:");
+        ((StringBuilder)localObject).append(paramString.toString());
+        QLog.d("GameCenterVideoView", 1, ((StringBuilder)localObject).toString());
         return;
       }
       i += 1;
@@ -232,9 +245,23 @@ public class GameCenterVideoView
   
   public void setGestureDispatcher(NativeGestureDispatcher paramNativeGestureDispatcher) {}
   
+  public void setIsLandscapeWhenFullScreen(boolean paramBoolean)
+  {
+    this.mIsLandscapeWhenFullScreen = paramBoolean;
+    this.mVideoView.setIsLandscapeWhenFullScreen(this.mIsLandscapeWhenFullScreen);
+  }
+  
   public void setListenProgress(boolean paramBoolean)
   {
     this.mListenProgress = paramBoolean;
+  }
+  
+  public void setLoadingIconStyle(int paramInt)
+  {
+    GameCenterVideoView.VideoViewWrapper localVideoViewWrapper = this.mVideoView;
+    if (localVideoViewWrapper != null) {
+      localVideoViewWrapper.setLoadingIconStyle(paramInt);
+    }
   }
   
   public void setLoop(int paramInt)
@@ -267,38 +294,34 @@ public class GameCenterVideoView
   
   public void setUIStyle(int paramInt)
   {
-    boolean bool2 = true;
     this.mUIStyle = paramInt;
     GameCenterVideoView.VideoViewWrapper localVideoViewWrapper = this.mVideoView;
-    if ((paramInt & 0x1) != 0)
-    {
+    boolean bool2 = false;
+    if ((paramInt & 0x1) != 0) {
       bool1 = true;
-      localVideoViewWrapper.setPlayEnabled(bool1);
-      if ((paramInt & 0x2) != 0) {
-        this.mVideoView.enableVolumeSwitch();
-      }
-      localVideoViewWrapper = this.mVideoView;
-      if ((paramInt & 0x4) == 0) {
-        break label80;
-      }
-    }
-    label80:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localVideoViewWrapper.setProgressEnabled(bool1);
-      if ((paramInt & 0x8) != 0) {
-        this.mVideoView.enableFullScreenSwitch();
-      }
-      return;
+    } else {
       bool1 = false;
-      break;
+    }
+    localVideoViewWrapper.setPlayEnabled(bool1);
+    if ((paramInt & 0x2) != 0) {
+      this.mVideoView.enableVolumeSwitch();
+    }
+    localVideoViewWrapper = this.mVideoView;
+    boolean bool1 = bool2;
+    if ((paramInt & 0x4) != 0) {
+      bool1 = true;
+    }
+    localVideoViewWrapper.setProgressEnabled(bool1);
+    if ((paramInt & 0x8) != 0) {
+      this.mVideoView.enableFullScreenSwitch();
     }
   }
   
   public void setVideoDuration(int paramInt)
   {
-    if (this.mVideoView != null) {
-      this.mVideoView.setVideoDuration(paramInt);
+    GameCenterVideoView.VideoViewWrapper localVideoViewWrapper = this.mVideoView;
+    if (localVideoViewWrapper != null) {
+      localVideoViewWrapper.setVideoDuration(paramInt);
     }
   }
   
@@ -307,22 +330,31 @@ public class GameCenterVideoView
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GameCenterVideoView{");
-    localStringBuilder.append("mSrc=").append(this.mSrc);
-    localStringBuilder.append(", mType=").append(this.mType);
-    localStringBuilder.append(", mLoop=").append(this.mLoop);
-    localStringBuilder.append(", mCurrentLoop=").append(this.mCurrentLoop);
-    localStringBuilder.append(", mCoverUrl=").append(this.mCoverUrl);
-    localStringBuilder.append(", mMuted=").append(this.mMuted);
-    localStringBuilder.append(", mAutoPlay=").append(this.mAutoPlay);
-    localStringBuilder.append(", mPreload=").append(this.mPreload);
-    localStringBuilder.append(", mUIStyle=").append(this.mUIStyle);
+    localStringBuilder.append("mSrc=");
+    localStringBuilder.append(this.mSrc);
+    localStringBuilder.append(", mType=");
+    localStringBuilder.append(this.mType);
+    localStringBuilder.append(", mLoop=");
+    localStringBuilder.append(this.mLoop);
+    localStringBuilder.append(", mCurrentLoop=");
+    localStringBuilder.append(this.mCurrentLoop);
+    localStringBuilder.append(", mCoverUrl=");
+    localStringBuilder.append(this.mCoverUrl);
+    localStringBuilder.append(", mMuted=");
+    localStringBuilder.append(this.mMuted);
+    localStringBuilder.append(", mAutoPlay=");
+    localStringBuilder.append(this.mAutoPlay);
+    localStringBuilder.append(", mPreload=");
+    localStringBuilder.append(this.mPreload);
+    localStringBuilder.append(", mUIStyle=");
+    localStringBuilder.append(this.mUIStyle);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.video.gamecenter.GameCenterVideoView
  * JD-Core Version:    0.7.0.1
  */

@@ -26,12 +26,14 @@ final class Mp4WebvttSubtitle
   
   public long getEventTime(int paramInt)
   {
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkArgument(bool);
-      return 0L;
+    boolean bool;
+    if (paramInt == 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Assertions.checkArgument(bool);
+    return 0L;
   }
   
   public int getEventTimeCount()
@@ -49,7 +51,7 @@ final class Mp4WebvttSubtitle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.text.webvtt.Mp4WebvttSubtitle
  * JD-Core Version:    0.7.0.1
  */

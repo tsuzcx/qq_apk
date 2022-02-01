@@ -18,34 +18,19 @@ import android.os.Build.VERSION;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
 import com.tencent.av.AVLog;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.SessionInfo.Anychat_Info;
-import com.tencent.av.app.SessionInfo.GuildInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.config.ConfigManager;
-import com.tencent.av.business.manager.report.VideoNodeManager;
-import com.tencent.av.config.ConfigBaseParser;
-import com.tencent.av.config.ConfigSystemImpl;
-import com.tencent.av.smallscreen.config.SmallScreenConfigParser;
-import com.tencent.av.ui.ScreenRecordHelper;
+import com.tencent.av.smallscreen.api.ISmallScreenUtilsApi;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.av.utils.PhoneStatusTools;
-import com.tencent.av.utils.SeqUtil;
 import com.tencent.avcore.util.ArrayUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.common.app.business.BaseVideoAppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.List;
-import mqq.app.MobileQQ;
 
 public class SmallScreenUtils
 {
@@ -62,225 +47,305 @@ public class SmallScreenUtils
     jdField_a_of_type_Int = -1;
     jdField_b_of_type_Int = -1;
     c = -1;
-    jdField_d_of_type_Int = 0;
+    d = 0;
   }
   
   public static int a(int paramInt)
   {
-    switch (paramInt)
-    {
-    case 9: 
-    default: 
-      return 2130772184;
-    case 1: 
-      return 2130772181;
-    case 2: 
-      return 2130772182;
-    case 3: 
-      return 2130772180;
-    case 4: 
-      return 2130772179;
-    case 5: 
-      return 2130772178;
-    case 6: 
-      return 2130772186;
-    case 7: 
-      return 2130772187;
-    case 8: 
-      return 2130772185;
-    }
-    return 2130772183;
+    return ((ISmallScreenUtilsApi)QRoute.api(ISmallScreenUtilsApi.class)).getFinishAnimId(paramInt);
   }
   
   /* Error */
   public static int a(Context paramContext, int paramInt)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: invokevirtual 100	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   4: astore 4
-    //   6: ldc 102
-    //   8: invokestatic 108	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   11: astore 5
-    //   13: new 110	java/lang/StringBuilder
-    //   16: dup
-    //   17: invokespecial 111	java/lang/StringBuilder:<init>	()V
-    //   20: ldc 113
-    //   22: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   25: aload_0
-    //   26: invokevirtual 121	android/content/Context:getPackageName	()Ljava/lang/String;
-    //   29: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   32: ldc 123
-    //   34: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   40: astore 6
-    //   42: aload 4
-    //   44: aload 5
-    //   46: iconst_1
-    //   47: anewarray 14	java/lang/String
-    //   50: dup
-    //   51: iconst_0
-    //   52: ldc 128
-    //   54: aastore
-    //   55: aload 6
-    //   57: aconst_null
-    //   58: aconst_null
-    //   59: invokevirtual 134	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   62: astore 5
-    //   64: aload 5
-    //   66: ifnull +174 -> 240
-    //   69: aload 5
-    //   71: astore 4
-    //   73: aload 5
-    //   75: invokeinterface 140 1 0
-    //   80: ifeq +160 -> 240
-    //   83: aload 5
-    //   85: astore 4
-    //   87: aload 5
-    //   89: iconst_0
-    //   90: invokeinterface 143 2 0
-    //   95: istore_3
-    //   96: iload_3
-    //   97: ifne +66 -> 163
-    //   100: iconst_0
-    //   101: istore_2
-    //   102: aload 5
-    //   104: astore 4
-    //   106: ldc 145
-    //   108: iconst_1
-    //   109: new 110	java/lang/StringBuilder
-    //   112: dup
-    //   113: invokespecial 111	java/lang/StringBuilder:<init>	()V
-    //   116: ldc 147
-    //   118: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   121: iload_3
-    //   122: invokevirtual 150	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   125: ldc 152
-    //   127: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   130: iload_2
-    //   131: invokevirtual 150	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   134: ldc 154
-    //   136: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   139: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   142: invokestatic 160	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   145: iload_2
-    //   146: istore_1
-    //   147: aload 5
-    //   149: ifnull +12 -> 161
-    //   152: aload 5
-    //   154: invokeinterface 163 1 0
-    //   159: iload_2
-    //   160: istore_1
-    //   161: iload_1
-    //   162: ireturn
-    //   163: iconst_2
-    //   164: istore_2
-    //   165: goto -63 -> 102
-    //   168: astore 6
-    //   170: aconst_null
-    //   171: astore 5
-    //   173: aload 5
-    //   175: astore 4
-    //   177: ldc 145
-    //   179: iconst_1
-    //   180: ldc 165
-    //   182: aload 6
-    //   184: invokestatic 168	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   187: aload 5
-    //   189: astore 4
-    //   191: aload_0
-    //   192: iload_1
-    //   193: invokestatic 170	com/tencent/av/smallscreen/SmallScreenUtils:b	(Landroid/content/Context;I)I
-    //   196: istore_2
-    //   197: iload_2
-    //   198: istore_1
-    //   199: aload 5
-    //   201: ifnull -40 -> 161
-    //   204: aload 5
-    //   206: invokeinterface 163 1 0
-    //   211: iload_2
-    //   212: ireturn
-    //   213: astore_0
-    //   214: aconst_null
-    //   215: astore 4
-    //   217: aload 4
-    //   219: ifnull +10 -> 229
-    //   222: aload 4
-    //   224: invokeinterface 163 1 0
-    //   229: aload_0
-    //   230: athrow
-    //   231: astore_0
-    //   232: goto -15 -> 217
-    //   235: astore 6
-    //   237: goto -64 -> 173
-    //   240: iconst_0
-    //   241: istore_2
-    //   242: goto -97 -> 145
+    //   0: aconst_null
+    //   1: astore 8
+    //   3: aconst_null
+    //   4: astore 7
+    //   6: aload 7
+    //   8: astore 6
+    //   10: aload 8
+    //   12: astore 5
+    //   14: aload_0
+    //   15: invokevirtual 101	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   18: astore 9
+    //   20: aload 7
+    //   22: astore 6
+    //   24: aload 8
+    //   26: astore 5
+    //   28: ldc 103
+    //   30: invokestatic 109	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   33: astore 10
+    //   35: iconst_0
+    //   36: istore 4
+    //   38: iconst_0
+    //   39: istore_3
+    //   40: aload 7
+    //   42: astore 6
+    //   44: aload 8
+    //   46: astore 5
+    //   48: new 111	java/lang/StringBuilder
+    //   51: dup
+    //   52: invokespecial 112	java/lang/StringBuilder:<init>	()V
+    //   55: astore 11
+    //   57: aload 7
+    //   59: astore 6
+    //   61: aload 8
+    //   63: astore 5
+    //   65: aload 11
+    //   67: ldc 114
+    //   69: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   72: pop
+    //   73: aload 7
+    //   75: astore 6
+    //   77: aload 8
+    //   79: astore 5
+    //   81: aload 11
+    //   83: aload_0
+    //   84: invokevirtual 122	android/content/Context:getPackageName	()Ljava/lang/String;
+    //   87: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   90: pop
+    //   91: aload 7
+    //   93: astore 6
+    //   95: aload 8
+    //   97: astore 5
+    //   99: aload 11
+    //   101: ldc 124
+    //   103: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   106: pop
+    //   107: aload 7
+    //   109: astore 6
+    //   111: aload 8
+    //   113: astore 5
+    //   115: aload 11
+    //   117: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   120: astore 11
+    //   122: aload 7
+    //   124: astore 6
+    //   126: aload 8
+    //   128: astore 5
+    //   130: aload 9
+    //   132: aload 10
+    //   134: iconst_1
+    //   135: anewarray 14	java/lang/String
+    //   138: dup
+    //   139: iconst_0
+    //   140: ldc 129
+    //   142: aastore
+    //   143: aload 11
+    //   145: aconst_null
+    //   146: aconst_null
+    //   147: invokevirtual 135	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   150: astore 7
+    //   152: iload 4
+    //   154: istore_2
+    //   155: aload 7
+    //   157: ifnull +167 -> 324
+    //   160: iload 4
+    //   162: istore_2
+    //   163: aload 7
+    //   165: astore 6
+    //   167: aload 7
+    //   169: astore 5
+    //   171: aload 7
+    //   173: invokeinterface 141 1 0
+    //   178: ifeq +146 -> 324
+    //   181: aload 7
+    //   183: astore 6
+    //   185: aload 7
+    //   187: astore 5
+    //   189: aload 7
+    //   191: iconst_0
+    //   192: invokeinterface 144 2 0
+    //   197: istore 4
+    //   199: iload 4
+    //   201: ifne +205 -> 406
+    //   204: iload_3
+    //   205: istore_2
+    //   206: goto +3 -> 209
+    //   209: aload 7
+    //   211: astore 6
+    //   213: aload 7
+    //   215: astore 5
+    //   217: new 111	java/lang/StringBuilder
+    //   220: dup
+    //   221: invokespecial 112	java/lang/StringBuilder:<init>	()V
+    //   224: astore 8
+    //   226: aload 7
+    //   228: astore 6
+    //   230: aload 7
+    //   232: astore 5
+    //   234: aload 8
+    //   236: ldc 146
+    //   238: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   241: pop
+    //   242: aload 7
+    //   244: astore 6
+    //   246: aload 7
+    //   248: astore 5
+    //   250: aload 8
+    //   252: iload 4
+    //   254: invokevirtual 149	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   257: pop
+    //   258: aload 7
+    //   260: astore 6
+    //   262: aload 7
+    //   264: astore 5
+    //   266: aload 8
+    //   268: ldc 151
+    //   270: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   273: pop
+    //   274: aload 7
+    //   276: astore 6
+    //   278: aload 7
+    //   280: astore 5
+    //   282: aload 8
+    //   284: iload_2
+    //   285: invokevirtual 149	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   288: pop
+    //   289: aload 7
+    //   291: astore 6
+    //   293: aload 7
+    //   295: astore 5
+    //   297: aload 8
+    //   299: ldc 153
+    //   301: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   304: pop
+    //   305: aload 7
+    //   307: astore 6
+    //   309: aload 7
+    //   311: astore 5
+    //   313: ldc 155
+    //   315: iconst_1
+    //   316: aload 8
+    //   318: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   321: invokestatic 161	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   324: iload_2
+    //   325: istore_1
+    //   326: aload 7
+    //   328: ifnull +56 -> 384
+    //   331: aload 7
+    //   333: astore 5
+    //   335: aload 5
+    //   337: invokeinterface 164 1 0
+    //   342: iload_2
+    //   343: ireturn
+    //   344: astore_0
+    //   345: goto +41 -> 386
+    //   348: astore 7
+    //   350: aload 5
+    //   352: astore 6
+    //   354: ldc 155
+    //   356: iconst_1
+    //   357: ldc 166
+    //   359: aload 7
+    //   361: invokestatic 169	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   364: aload 5
+    //   366: astore 6
+    //   368: aload_0
+    //   369: iload_1
+    //   370: invokestatic 171	com/tencent/av/smallscreen/SmallScreenUtils:b	(Landroid/content/Context;I)I
+    //   373: istore_2
+    //   374: iload_2
+    //   375: istore_1
+    //   376: aload 5
+    //   378: ifnull +6 -> 384
+    //   381: goto -46 -> 335
+    //   384: iload_1
+    //   385: ireturn
+    //   386: aload 6
+    //   388: ifnull +10 -> 398
+    //   391: aload 6
+    //   393: invokeinterface 164 1 0
+    //   398: goto +5 -> 403
+    //   401: aload_0
+    //   402: athrow
+    //   403: goto -2 -> 401
+    //   406: iconst_2
+    //   407: istore_2
+    //   408: goto -199 -> 209
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	245	0	paramContext	Context
-    //   0	245	1	paramInt	int
-    //   101	141	2	i	int
-    //   95	27	3	j	int
-    //   4	219	4	localObject1	Object
-    //   11	194	5	localObject2	Object
-    //   40	16	6	str	String
-    //   168	15	6	localThrowable1	Throwable
-    //   235	1	6	localThrowable2	Throwable
+    //   0	411	0	paramContext	Context
+    //   0	411	1	paramInt	int
+    //   154	254	2	i	int
+    //   39	166	3	j	int
+    //   36	217	4	k	int
+    //   12	365	5	localObject1	Object
+    //   8	384	6	localObject2	Object
+    //   4	328	7	localCursor	android.database.Cursor
+    //   348	12	7	localThrowable	Throwable
+    //   1	316	8	localStringBuilder	StringBuilder
+    //   18	113	9	localContentResolver	android.content.ContentResolver
+    //   33	100	10	localUri	android.net.Uri
+    //   55	89	11	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   0	64	168	java/lang/Throwable
-    //   0	64	213	finally
-    //   73	83	231	finally
-    //   87	96	231	finally
-    //   106	145	231	finally
-    //   177	187	231	finally
-    //   191	197	231	finally
-    //   73	83	235	java/lang/Throwable
-    //   87	96	235	java/lang/Throwable
-    //   106	145	235	java/lang/Throwable
+    //   14	20	344	finally
+    //   28	35	344	finally
+    //   48	57	344	finally
+    //   65	73	344	finally
+    //   81	91	344	finally
+    //   99	107	344	finally
+    //   115	122	344	finally
+    //   130	152	344	finally
+    //   171	181	344	finally
+    //   189	199	344	finally
+    //   217	226	344	finally
+    //   234	242	344	finally
+    //   250	258	344	finally
+    //   266	274	344	finally
+    //   282	289	344	finally
+    //   297	305	344	finally
+    //   313	324	344	finally
+    //   354	364	344	finally
+    //   368	374	344	finally
+    //   14	20	348	java/lang/Throwable
+    //   28	35	348	java/lang/Throwable
+    //   48	57	348	java/lang/Throwable
+    //   65	73	348	java/lang/Throwable
+    //   81	91	348	java/lang/Throwable
+    //   99	107	348	java/lang/Throwable
+    //   115	122	348	java/lang/Throwable
+    //   130	152	348	java/lang/Throwable
+    //   171	181	348	java/lang/Throwable
+    //   189	199	348	java/lang/Throwable
+    //   217	226	348	java/lang/Throwable
+    //   234	242	348	java/lang/Throwable
+    //   250	258	348	java/lang/Throwable
+    //   266	274	348	java/lang/Throwable
+    //   282	289	348	java/lang/Throwable
+    //   297	305	348	java/lang/Throwable
+    //   313	324	348	java/lang/Throwable
   }
   
   public static int a(String paramString, boolean paramBoolean)
   {
     SharedPreferences localSharedPreferences = a(paramString);
-    if (paramBoolean) {}
-    for (paramString = "pref_show_dialog_video";; paramString = "pref_show_dialog_audio")
-    {
-      int i = localSharedPreferences.getInt(paramString, 0);
-      if (QLog.isColorLevel()) {
-        QLog.e("SmallScreenUtils", 2, "getPrefShowDialog result = " + i);
-      }
-      return i;
+    if (paramBoolean) {
+      paramString = "pref_show_dialog_video";
+    } else {
+      paramString = "pref_show_dialog_audio";
     }
+    int i = localSharedPreferences.getInt(paramString, 0);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("getPrefShowDialog result = ");
+      paramString.append(i);
+      QLog.e("SmallScreenUtils", 2, paramString.toString());
+    }
+    return i;
   }
   
   static SharedPreferences a(String paramString)
   {
-    return BaseApplicationImpl.getContext().getSharedPreferences("com.tencent.av.smallscreen" + paramString, 0);
-  }
-  
-  static SmallScreenConfigParser a()
-  {
-    ConfigBaseParser localConfigBaseParser = ConfigManager.a(BaseApplicationImpl.getContext());
-    SmallScreenConfigParser localSmallScreenConfigParser;
-    if (!localConfigBaseParser.a())
-    {
-      localSmallScreenConfigParser = new SmallScreenConfigParser();
-      if (localSmallScreenConfigParser.a(localConfigBaseParser)) {}
-    }
-    while (!QLog.isColorLevel())
-    {
-      return null;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("SmallScreenUtils", 2, "getSmallScreenConfigParser --> parseConfig fail");
-      return localSmallScreenConfigParser;
-    }
-    QLog.d("SmallScreenUtils", 2, "getSmallScreenConfigParser --> Can not get PlayLoad Config");
-    return null;
-    return localSmallScreenConfigParser;
+    BaseApplication localBaseApplication = BaseApplication.getContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("com.tencent.av.smallscreen");
+    localStringBuilder.append(paramString);
+    return localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0);
   }
   
   public static void a()
@@ -288,12 +353,19 @@ public class SmallScreenUtils
     if (QLog.isColorLevel())
     {
       StackTraceElement[] arrayOfStackTraceElement = new Throwable().getStackTrace();
-      String str = "";
       int j = arrayOfStackTraceElement.length;
       int i = 0;
+      String str = "";
       while (i < j)
       {
-        str = str + "ste[" + i + "]" + arrayOfStackTraceElement[i].toString() + "\n";
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append("ste[");
+        localStringBuilder.append(i);
+        localStringBuilder.append("]");
+        localStringBuilder.append(arrayOfStackTraceElement[i].toString());
+        localStringBuilder.append("\n");
+        str = localStringBuilder.toString();
         i += 1;
       }
       QLog.d("SmallScreenUtils", 2, str);
@@ -302,152 +374,13 @@ public class SmallScreenUtils
   
   public static void a(long paramLong, int paramInt, Context paramContext)
   {
-    boolean bool2 = false;
-    Object localObject = VideoController.a();
-    boolean bool1 = bool2;
-    if (paramInt == 2)
-    {
-      bool1 = bool2;
-      if (Build.VERSION.SDK_INT >= 21)
-      {
-        bool1 = bool2;
-        if (((VideoController)localObject).a().c()) {
-          bool1 = true;
-        }
-      }
-    }
-    QLog.w("SmallScreenUtils", 1, "avideo actionOff, seq[" + paramLong + "], isNeedBlock[" + bool1 + "], actionOffFrom[" + paramInt + "]");
-    if (bool1) {}
-    do
-    {
-      return;
-      localObject = new Intent(paramContext, SmallScreenService.class);
-      try
-      {
-        paramContext.stopService((Intent)localObject);
-        return;
-      }
-      catch (Exception paramContext) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("SmallScreenUtils", 2, "actionOff e = " + paramContext);
+    ((ISmallScreenUtilsApi)QRoute.api(ISmallScreenUtilsApi.class)).actionOff(paramLong, paramInt, paramContext);
   }
   
   public static void a(long paramLong, int paramInt, Context paramContext, boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    Intent localIntent = new Intent(paramContext, SmallScreenService.class);
-    try
-    {
-      jdField_d_of_type_Int = paramInt;
-      paramContext.stopService(localIntent);
-      paramContext.startService(localIntent);
-      if (!b(BaseApplicationImpl.getContext())) {
-        VideoNodeManager.a(32);
-      }
-      if (AudioHelper.e()) {
-        QLog.w("SmallScreenUtils", 1, "avideo actionOn isFloatWindowOpAllowed, isFloatWindowOpAllowed[" + c(paramContext) + "], isCalling[" + PhoneStatusTools.e(paramContext) + "], isHome[" + a(paramContext) + "], isNeedStartDialog[" + paramBoolean1 + "], actionOnFrom[" + paramInt + "], seq[" + paramLong + "]");
-      }
-      if (a(paramContext, paramBoolean1, paramString, paramBoolean2)) {
-        ReportController.b(null, "CliOper", "", "", "0X80057D8", "0X80057D8", 0, 0, "", "", "", "");
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("SmallScreenUtils", 2, "actionOn e = " + localException);
-        }
-      }
-    }
-  }
-  
-  public static void a(Context paramContext, SessionInfo paramSessionInfo)
-  {
-    int i = paramSessionInfo.jdField_d_of_type_Int;
-    int j = paramSessionInfo.F;
-    int k = paramSessionInfo.jdField_g_of_type_Int;
-    if (QLog.isColorLevel())
-    {
-      QLog.d("SmallScreenUtils", 2, "reportActionOn SessionType = " + i);
-      QLog.d("SmallScreenUtils", 2, "reportActionOn relationType = " + j);
-      QLog.d("SmallScreenUtils", 2, "reportActionOn state = " + k);
-    }
-    if (paramSessionInfo.jdField_a_of_type_ComTencentAvAppSessionInfo$Anychat_Info.jdField_b_of_type_Int > 0) {
-      if (paramSessionInfo.jdField_a_of_type_ComTencentAvAppSessionInfo$GuildInfo.a > 0L) {
-        paramSessionInfo = "0X8005A49";
-      }
-    }
-    for (;;)
-    {
-      if ((paramSessionInfo != null) && (c(paramContext))) {
-        ReportController.b(null, "CliOper", "", "", paramSessionInfo, paramSessionInfo, 0, 0, "", "", "", "");
-      }
-      return;
-      if (paramSessionInfo.jdField_a_of_type_ComTencentAvAppSessionInfo$Anychat_Info.jdField_b_of_type_Int == 5)
-      {
-        paramSessionInfo = "0X8005A48";
-      }
-      else
-      {
-        paramSessionInfo = "0X8005A47";
-        continue;
-        switch (i)
-        {
-        }
-        for (;;)
-        {
-          paramSessionInfo = null;
-          break;
-          switch (k)
-          {
-          case 2: 
-          case 3: 
-          default: 
-            paramSessionInfo = null;
-          }
-          for (;;)
-          {
-            break;
-            paramSessionInfo = "0X8005A44";
-            continue;
-            paramSessionInfo = "0X8005A43";
-          }
-          switch (k)
-          {
-          case 2: 
-          case 3: 
-          default: 
-            paramSessionInfo = null;
-          }
-          for (;;)
-          {
-            break;
-            paramSessionInfo = "0X80057DE";
-            continue;
-            paramSessionInfo = "0X80057DD";
-          }
-          switch (j)
-          {
-          default: 
-            paramSessionInfo = null;
-          }
-          for (;;)
-          {
-            break;
-            paramSessionInfo = "0X8005A46";
-            continue;
-            paramSessionInfo = "0X8005A45";
-          }
-          switch (j)
-          {
-          }
-        }
-        paramSessionInfo = "0X80057E0";
-        continue;
-        paramSessionInfo = "0X80057DF";
-      }
-    }
+    d = paramInt;
+    ((ISmallScreenUtilsApi)QRoute.api(ISmallScreenUtilsApi.class)).actionOn(paramLong, paramInt, paramContext, paramBoolean1, paramString, paramBoolean2);
   }
   
   public static void a(Context paramContext, boolean paramBoolean)
@@ -456,89 +389,41 @@ public class SmallScreenUtils
     localIntent.setPackage(paramContext.getPackageName());
     localIntent.putExtra("isResume", paramBoolean);
     paramContext.sendBroadcast(localIntent);
-    if (QLog.isColorLevel()) {
-      QLog.d("SmallScreenUtils", 2, "sendHideSmallScreenBroadcast:" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("sendHideSmallScreenBroadcast:");
+      paramContext.append(paramBoolean);
+      QLog.d("SmallScreenUtils", 2, paramContext.toString());
     }
   }
   
   public static void a(View paramView, boolean paramBoolean1, boolean paramBoolean2)
   {
-    int i = 0;
-    boolean bool;
-    label49:
-    label64:
-    AnimationSet localAnimationSet;
-    if (paramView != null)
-    {
-      localObject = paramView.getTag(2131373750);
-      if (localObject != null) {
-        break label190;
-      }
-      bool = false;
-      if ((!paramBoolean2) || (!bool)) {
-        break label236;
-      }
-      localObject = paramView.getTag(2131373751);
-      if (localObject != null) {
-        break label203;
-      }
-      bool = false;
-      if ((paramView.getVisibility() != 0) || (!bool)) {
-        break label216;
-      }
-      bool = true;
-      if (bool != paramBoolean1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("SmallScreenUtils", 2, "startSetVisibleAnimation isVisible = " + paramBoolean1);
-        }
-        localAnimationSet = new AnimationSet(true);
-        if (!paramBoolean1) {
-          break label222;
-        }
-      }
-    }
-    label190:
-    label203:
-    label216:
-    label222:
-    for (Object localObject = new AlphaAnimation(0.0F, 1.0F);; localObject = new AlphaAnimation(1.0F, 0.0F))
-    {
-      ((AlphaAnimation)localObject).setDuration(400L);
-      localAnimationSet.addAnimation((Animation)localObject);
-      localAnimationSet.setAnimationListener(new SmallScreenUtils.1(paramView, paramBoolean1));
-      paramView.startAnimation(localAnimationSet);
-      paramView.setVisibility(0);
-      paramView.setTag(2131373751, Boolean.valueOf(paramBoolean1));
-      paramView.setTag(2131373750, Boolean.valueOf(paramBoolean2));
-      return;
-      bool = ((Boolean)localObject).booleanValue();
-      break;
-      bool = ((Boolean)localObject).booleanValue();
-      break label49;
-      bool = false;
-      break label64;
-    }
-    label236:
-    paramView.clearAnimation();
-    if (paramBoolean1) {}
-    for (;;)
-    {
-      paramView.setVisibility(i);
-      break;
-      i = 8;
-    }
+    ((ISmallScreenUtilsApi)QRoute.api(ISmallScreenUtilsApi.class)).startSetVisibleAnimation(paramView, paramBoolean1, paramBoolean2);
   }
   
   public static void a(String paramString)
   {
     StackTraceElement[] arrayOfStackTraceElement = new Throwable().getStackTrace();
     int j = arrayOfStackTraceElement.length;
-    paramString = "" + "getTrace[" + paramString + "]\n";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append("getTrace[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("]\n");
+    paramString = localStringBuilder.toString();
     int i = 1;
     while (i < j)
     {
-      paramString = paramString + "ste[" + i + "]" + arrayOfStackTraceElement[i].toString() + "\n";
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("ste[");
+      localStringBuilder.append(i);
+      localStringBuilder.append("]");
+      localStringBuilder.append(arrayOfStackTraceElement[i].toString());
+      localStringBuilder.append("\n");
+      paramString = localStringBuilder.toString();
       i += 1;
     }
     QLog.d("SmallScreenUtils", 1, paramString);
@@ -547,28 +432,36 @@ public class SmallScreenUtils
   public static void a(String paramString, int paramInt, boolean paramBoolean)
   {
     SharedPreferences.Editor localEditor = a(paramString).edit();
-    if (paramBoolean) {}
-    for (paramString = "pref_show_dialog_video";; paramString = "pref_show_dialog_audio")
+    if (paramBoolean) {
+      paramString = "pref_show_dialog_video";
+    } else {
+      paramString = "pref_show_dialog_audio";
+    }
+    localEditor.putInt(paramString, paramInt).commit();
+    if (QLog.isColorLevel())
     {
-      localEditor.putInt(paramString, paramInt).commit();
-      if (QLog.isColorLevel()) {
-        QLog.e("SmallScreenUtils", 2, "setPrefShowDialog value = " + paramInt);
-      }
-      return;
+      paramString = new StringBuilder();
+      paramString.append("setPrefShowDialog value = ");
+      paramString.append(paramInt);
+      QLog.e("SmallScreenUtils", 2, paramString.toString());
     }
   }
   
   public static boolean a()
   {
-    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-    int j = arrayOfString.length;
+    Object localObject1 = jdField_a_of_type_ArrayOfJavaLangString;
+    int j = localObject1.length;
     int i = 0;
     while (i < j)
     {
-      String str = arrayOfString[i];
-      if (Build.MODEL.equals(str))
+      Object localObject2 = localObject1[i];
+      if (Build.MODEL.equals(localObject2))
       {
-        QLog.w("SmallScreenUtils", 1, "useTypeToast, model[" + Build.MODEL + "]");
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("useTypeToast, model[");
+        ((StringBuilder)localObject1).append(Build.MODEL);
+        ((StringBuilder)localObject1).append("]");
+        QLog.w("SmallScreenUtils", 1, ((StringBuilder)localObject1).toString());
         return true;
       }
       i += 1;
@@ -576,46 +469,9 @@ public class SmallScreenUtils
     return false;
   }
   
-  public static boolean a(long paramLong, VideoAppInterface paramVideoAppInterface, int paramInt)
+  public static boolean a(long paramLong, BaseVideoAppInterface paramBaseVideoAppInterface, int paramInt)
   {
-    boolean bool2 = false;
-    SmallScreenService.g = false;
-    boolean bool1 = bool2;
-    if (paramVideoAppInterface != null)
-    {
-      bool1 = bool2;
-      if (paramVideoAppInterface.getApplication() != null)
-      {
-        bool1 = bool2;
-        if (paramVideoAppInterface.getApp() != null)
-        {
-          bool1 = bool2;
-          if (paramVideoAppInterface.a() != null)
-          {
-            bool1 = bool2;
-            if (paramVideoAppInterface.a().a() != null)
-            {
-              Object localObject = paramVideoAppInterface.a().a();
-              String str = ((SessionInfo)localObject).jdField_d_of_type_JavaLangString;
-              if ((((SessionInfo)localObject).jdField_d_of_type_Int == 3) || (((SessionInfo)localObject).jdField_d_of_type_Int == 4)) {
-                str = String.valueOf(((SessionInfo)localObject).jdField_g_of_type_Long);
-              }
-              localObject = new Intent("tencent.video.v2q.SmallScreenState");
-              ((Intent)localObject).setPackage(paramVideoAppInterface.getApplication().getPackageName());
-              ((Intent)localObject).putExtra("SmallScreenState", paramInt);
-              SeqUtil.a((Intent)localObject, paramLong);
-              ((Intent)localObject).putExtra("uin", str);
-              paramVideoAppInterface.getApp().sendBroadcast((Intent)localObject);
-              if (QLog.isDevelopLevel()) {
-                QLog.w("SmallScreenUtils", 1, "sendSmallScreenStateBroadcast, state[" + paramInt + "], seq[" + paramLong + "]");
-              }
-              bool1 = true;
-            }
-          }
-        }
-      }
-    }
-    return bool1;
+    return ((ISmallScreenUtilsApi)QRoute.api(ISmallScreenUtilsApi.class)).sendSmallScreenStateBroadcast(paramLong, paramBaseVideoAppInterface, paramInt);
   }
   
   public static boolean a(Context paramContext)
@@ -633,16 +489,20 @@ public class SmallScreenUtils
       {
         bool2 = bool4;
         paramContext = paramContext.iterator();
-        bool2 = bool1;
-        bool3 = bool1;
-        if (paramContext.hasNext())
+        do
         {
+          bool2 = bool1;
+          bool3 = bool1;
+          if (!paramContext.hasNext()) {
+            break;
+          }
           bool2 = bool1;
           String str = ((ActivityManager.RunningTaskInfo)paramContext.next()).topActivity.getClassName();
           bool2 = bool1;
           Iterator localIterator = localList.iterator();
           do
           {
+            bool3 = bool1;
             bool2 = bool1;
             if (!localIterator.hasNext()) {
               break;
@@ -650,52 +510,52 @@ public class SmallScreenUtils
             bool2 = bool1;
             bool3 = ((ResolveInfo)localIterator.next()).activityInfo.name.equals(str);
           } while (!bool3);
-          bool1 = true;
-          for (;;)
-          {
-            if (bool1) {
-              return bool1;
-            }
-            break;
-          }
-        }
+          bool3 = true;
+          bool1 = bool3;
+        } while (!bool3);
+        return bool3;
       }
     }
     catch (Exception paramContext)
     {
       AVLog.printErrorLog("SmallScreenUtils", paramContext.getMessage());
-      return bool2;
+      bool3 = bool2;
     }
     return bool3;
   }
   
   public static boolean a(Context paramContext, int paramInt, boolean paramBoolean)
   {
-    if (e()) {}
-    for (;;)
-    {
+    boolean bool2 = e();
+    boolean bool1 = false;
+    if (bool2) {
       return false;
-      if (d()) {
-        paramInt = a(paramContext, paramInt);
-      }
-      while (paramInt == 0)
+    }
+    if (d())
+    {
+      paramInt = a(paramContext, paramInt);
+    }
+    else
+    {
+      int i = b(paramContext, paramInt);
+      paramInt = i;
+      if (!paramBoolean)
       {
-        return true;
-        int i = b(paramContext, paramInt);
         paramInt = i;
-        if (!paramBoolean)
-        {
-          paramInt = i;
-          if (i != 0) {
-            if (c()) {
-              paramInt = 0;
-            } else {
-              paramInt = 2;
-            }
+        if (i != 0) {
+          if (c()) {
+            paramInt = 0;
+          } else {
+            paramInt = 2;
           }
         }
       }
     }
+    paramBoolean = bool1;
+    if (paramInt == 0) {
+      paramBoolean = true;
+    }
+    return paramBoolean;
   }
   
   public static boolean a(Context paramContext, String paramString)
@@ -707,189 +567,222 @@ public class SmallScreenUtils
   {
     int i = 5;
     boolean bool = false;
-    if (!paramBoolean1)
+    if (!paramBoolean1) {}
+    for (i = 1;; i = 100)
     {
       paramBoolean1 = true;
-      i = 1;
-    }
-    for (;;)
-    {
-      if (AudioHelper.e()) {
-        QLog.w("SmallScreenUtils", 1, "startSmallScreenDialogActivity, ret[" + paramBoolean1 + "], code[" + i + "]");
-      }
-      return paramBoolean1;
+      break;
       if (e())
       {
         i = 7;
         paramBoolean1 = bool;
+        break;
       }
-      else if (c(paramContext))
+      if (c(paramContext))
       {
         i = 2;
         paramBoolean1 = bool;
+        break;
       }
-      else if (PhoneStatusTools.e(paramContext))
+      if (PhoneStatusTools.e(paramContext))
       {
         i = 3;
         paramBoolean1 = bool;
+        break;
       }
-      else if (a(paramContext))
+      if (a(paramContext))
       {
         i = 4;
         paramBoolean1 = bool;
+        break;
       }
-      else
+      if (e(paramContext))
       {
         paramBoolean1 = bool;
-        if (!e(paramContext)) {
-          if ((!TextUtils.isEmpty(paramString)) && (a(paramString, paramBoolean2) >= 5))
-          {
-            i = 6;
-            paramBoolean1 = bool;
-          }
-          else
-          {
-            paramString = new Intent(paramContext, SmallScreenDialogActivity.class);
-            paramString.addFlags(268435456);
-            paramString.addFlags(536870912);
-            paramString.addFlags(67108864);
-            paramString.addFlags(131072);
-            paramString.putExtra("is_video", paramBoolean2);
-            paramContext.startActivity(paramString);
-            i = 100;
-            paramBoolean1 = true;
-          }
-        }
+        break;
       }
+      if ((!TextUtils.isEmpty(paramString)) && (a(paramString, paramBoolean2) >= 5))
+      {
+        i = 6;
+        paramBoolean1 = bool;
+        break;
+      }
+      paramString = new Intent(paramContext, SmallScreenDialogActivity.class);
+      paramString.addFlags(268435456);
+      paramString.addFlags(536870912);
+      paramString.addFlags(67108864);
+      paramString.addFlags(131072);
+      paramString.putExtra("is_video", paramBoolean2);
+      paramContext.startActivity(paramString);
     }
+    if (AudioHelper.b())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("startSmallScreenDialogActivity, ret[");
+      paramContext.append(paramBoolean1);
+      paramContext.append("], code[");
+      paramContext.append(i);
+      paramContext.append("]");
+      QLog.w("SmallScreenUtils", 1, paramContext.toString());
+    }
+    return paramBoolean1;
   }
   
   @TargetApi(23)
   public static int b(Context paramContext, int paramInt)
   {
-    do
+    int j = 0;
+    int m = 0;
+    int k = 0;
+    int i = m;
+    for (;;)
     {
-      for (;;)
+      try
       {
         try
         {
-          if (b())
+          boolean bool = b();
+          if (bool)
           {
-            boolean bool = Settings.canDrawOverlays(paramContext);
-            if (bool)
+            i = m;
+            if (!Settings.canDrawOverlays(paramContext)) {
+              break label391;
+            }
+            j = k;
+            i = j;
+            m = j;
+            if (QLog.isColorLevel())
             {
-              i = 0;
-              k = i;
-              m = i;
+              i = j;
+              paramContext = new StringBuilder();
+              i = j;
+              paramContext.append("checkOp_Common canDrawOve rlays, op[");
+              i = j;
+              paramContext.append(paramInt);
+              i = j;
+              paramContext.append("], result[");
+              i = j;
+              paramContext.append(j);
+              i = j;
+              paramContext.append("]");
+              i = j;
+              QLog.w("SmallScreenUtils", 1, paramContext.toString());
+              m = j;
+            }
+          }
+          else
+          {
+            i = m;
+            Object localObject = paramContext.getSystemService("appops");
+            i = m;
+            paramContext = Class.forName("android.app.AppOpsManager").getMethod("checkOp", new Class[] { Integer.TYPE, Integer.TYPE, String.class }).invoke(localObject, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramContext.getApplicationInfo().uid), paramContext.getPackageName() });
+            if (paramContext == null) {
+              break label396;
+            }
+            i = m;
+            k = ((Integer)paramContext).intValue();
+            if (3 != k) {
+              break label402;
+            }
+            i = m;
+            if (Build.VERSION.SDK_INT >= 23) {
+              break label402;
+            }
+            i = j;
+            m = j;
+            if (QLog.isColorLevel())
+            {
+              i = j;
+              paramContext = new StringBuilder();
+              i = j;
+              paramContext.append("checkOp_Common suc, op[");
+              i = j;
+              paramContext.append(paramInt);
+              i = j;
+              paramContext.append("], mode[");
+              i = j;
+              paramContext.append(k);
+              i = j;
+              paramContext.append("], result[");
+              i = j;
+              paramContext.append(j);
+              i = j;
+              paramContext.append("]");
+              i = j;
+              QLog.w("SmallScreenUtils", 1, paramContext.toString());
+              m = j;
             }
           }
         }
-        catch (InvocationTargetException paramContext)
-        {
-          Object localObject;
-          if (QLog.isColorLevel()) {
-            QLog.e("SmallScreenUtils", 2, "checkOp_Common InvocationTargetException", paramContext);
-          }
-          return 2;
-          int i = j;
-          continue;
-        }
         catch (Exception paramContext)
         {
-          int m = 0;
-          int k = m;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.e("SmallScreenUtils", 2, "checkOp_Common Exception", paramContext);
-          return m;
-        }
-        try
-        {
+          m = i;
           if (QLog.isColorLevel())
           {
+            QLog.e("SmallScreenUtils", 2, "checkOp_Common Exception", paramContext);
             m = i;
-            QLog.w("SmallScreenUtils", 1, "checkOp_Common canDrawOve rlays, op[" + paramInt + "], result[" + i + "]");
-            k = i;
           }
-          return k;
         }
-        catch (Exception paramContext)
-        {
-          continue;
-          j = 0;
-          continue;
+        return m;
+      }
+      catch (InvocationTargetException paramContext)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("SmallScreenUtils", 2, "checkOp_Common InvocationTargetException", paramContext);
         }
-        i = 2;
+        return 2;
       }
-      localObject = paramContext.getSystemService("appops");
-      paramContext = Class.forName("android.app.AppOpsManager").getMethod("checkOp", new Class[] { Integer.TYPE, Integer.TYPE, String.class }).invoke(localObject, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramContext.getApplicationInfo().uid), paramContext.getPackageName() });
-      if (paramContext == null) {
-        break label315;
-      }
-      j = ((Integer)paramContext).intValue();
-      if (3 != j) {
-        break label279;
-      }
-      i = Build.VERSION.SDK_INT;
-      if (i >= 23) {
-        break label279;
-      }
-      i = 0;
-      k = i;
-      m = i;
-    } while (!QLog.isColorLevel());
-    m = i;
-    QLog.w("SmallScreenUtils", 1, "checkOp_Common suc, op[" + paramInt + "], mode[" + j + "], result[" + i + "]");
-    return i;
+      label391:
+      j = 2;
+      continue;
+      label396:
+      k = 0;
+      continue;
+      label402:
+      j = k;
+    }
   }
   
   @TargetApi(23)
   static boolean b()
   {
-    if (jdField_a_of_type_Int == -1)
+    int i = jdField_a_of_type_Int;
+    boolean bool = false;
+    if (i == -1)
     {
       jdField_a_of_type_Int = 0;
-      if (Build.VERSION.SDK_INT < 28) {
-        break label32;
+      if (Build.VERSION.SDK_INT >= 28) {
+        jdField_a_of_type_Int = 1;
+      } else {
+        i = Build.VERSION.SDK_INT;
       }
-      jdField_a_of_type_Int = 1;
     }
-    while (jdField_a_of_type_Int == 1)
-    {
-      return true;
-      label32:
-      if (Build.VERSION.SDK_INT < 23) {}
+    if (jdField_a_of_type_Int == 1) {
+      bool = true;
     }
-    return false;
+    return bool;
   }
   
   public static boolean b(Context paramContext)
   {
-    boolean bool = VideoController.a(paramContext);
-    if (((Build.MANUFACTURER.equals("Xiaomi")) && (Build.MODEL.equals("HM NOTE 1TD"))) || (Build.MODEL.equals("MI 3C")) || (Build.MODEL.equals("HM NOTE 1S"))) {}
-    for (int i = 1; (bool) && (i == 0); i = 0) {
-      return true;
-    }
-    return false;
+    return ((ISmallScreenUtilsApi)QRoute.api(ISmallScreenUtilsApi.class)).isLock(paramContext);
   }
   
   static boolean c()
   {
-    if (jdField_b_of_type_Int == -1)
+    int i = jdField_b_of_type_Int;
+    boolean bool = false;
+    if (i == -1)
     {
       jdField_b_of_type_Int = 0;
       if ((Build.MANUFACTURER.equals("vivo")) && (!"vivo X6D".equalsIgnoreCase(Build.MODEL)) && (!"vivo X6D".equalsIgnoreCase(Build.MODEL))) {
-        break label56;
+        jdField_b_of_type_Int = 1;
       }
     }
-    while (jdField_b_of_type_Int == 1)
-    {
-      return true;
-      label56:
-      jdField_b_of_type_Int = 1;
+    if (jdField_b_of_type_Int == 1) {
+      bool = true;
     }
-    return false;
+    return bool;
   }
   
   public static boolean c(Context paramContext)
@@ -908,7 +801,15 @@ public class SmallScreenUtils
   
   public static boolean d(Context paramContext)
   {
-    return (a(paramContext, 24, true)) || (a());
+    boolean bool = true;
+    if (!a(paramContext, 24, true))
+    {
+      if (a()) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   public static boolean e()
@@ -918,72 +819,54 @@ public class SmallScreenUtils
   
   public static boolean e(Context paramContext)
   {
-    boolean bool1;
-    if (paramContext == null)
-    {
-      bool1 = false;
-      return bool1;
+    if (paramContext == null) {
+      return false;
     }
-    label121:
     do
     {
       try
       {
-        paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningTasks(1);
-        if ((paramContext == null) || (paramContext.size() <= 0)) {
-          break label121;
+        List localList = ((ActivityManager)paramContext.getSystemService("activity")).getRunningTasks(1);
+        localStringBuilder = null;
+        paramContext = localStringBuilder;
+        if (localList == null) {
+          continue;
         }
-        paramContext = ((ActivityManager.RunningTaskInfo)paramContext.get(0)).topActivity;
+        paramContext = localStringBuilder;
+        if (localList.size() <= 0) {
+          continue;
+        }
+        paramContext = ((ActivityManager.RunningTaskInfo)localList.get(0)).topActivity;
       }
       catch (Throwable paramContext)
       {
-        boolean bool2;
+        StringBuilder localStringBuilder;
+        boolean bool;
         return false;
       }
-      bool2 = ArrayUtils.contains(jdField_b_of_type_ArrayOfJavaLangString, paramContext.getClassName());
-      bool1 = bool2;
-      if (!QLog.isDevelopLevel()) {
-        break;
+      bool = ArrayUtils.contains(jdField_b_of_type_ArrayOfJavaLangString, paramContext.getClassName());
+      if (QLog.isDevelopLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("checkTopActivityHideSmallScreen, topActivity[");
+        localStringBuilder.append(paramContext.getClassName());
+        localStringBuilder.append("], check[");
+        localStringBuilder.append(bool);
+        localStringBuilder.append("]");
+        QLog.w("SmallScreenUtils", 1, localStringBuilder.toString());
       }
-      QLog.w("SmallScreenUtils", 1, "checkTopActivityHideSmallScreen, topActivity[" + paramContext.getClassName() + "], check[" + bool2 + "]");
-      return bool2;
-      paramContext = null;
+      return bool;
     } while (paramContext != null);
     return false;
   }
   
   public static boolean f()
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if (!ConfigSystemImpl.a())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("SmallScreenUtils", 2, "isSupportSmallScreen --> Small Screen Switch Is Closed");
-      }
-      bool1 = false;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SmallScreenUtils", 2, "isSupportSmallScreen result = " + bool1);
-      }
-      return bool1;
-      SmallScreenConfigParser localSmallScreenConfigParser = a();
-      bool1 = bool2;
-      if (localSmallScreenConfigParser != null)
-      {
-        bool1 = bool2;
-        if (localSmallScreenConfigParser.jdField_b_of_type_Int > 0) {
-          bool1 = false;
-        }
-      }
-    }
+    return ((ISmallScreenUtilsApi)QRoute.api(ISmallScreenUtilsApi.class)).isSupportSmallScreen();
   }
   
   public static boolean f(Context paramContext)
   {
-    boolean bool2 = false;
     String str = paramContext.getPackageName();
     for (;;)
     {
@@ -991,159 +874,117 @@ public class SmallScreenUtils
       {
         localActivityManager = (ActivityManager)paramContext.getSystemService("activity");
         List localList = localActivityManager.getRunningTasks(1);
-        localRunningAppProcessInfo = null;
-        paramContext = localRunningAppProcessInfo;
+        localObject = null;
+        paramContext = (Context)localObject;
         if (localList != null)
         {
-          paramContext = localRunningAppProcessInfo;
+          paramContext = (Context)localObject;
           if (localList.size() > 0) {
             paramContext = ((ActivityManager.RunningTaskInfo)localList.get(0)).topActivity;
           }
         }
         if ((paramContext == null) || (!paramContext.getPackageName().startsWith(str))) {
-          break label260;
+          break label268;
         }
         if (!QLog.isDevelopLevel()) {
-          break label265;
+          break label263;
         }
-        QLog.d("SmallScreenUtils", 2, "isAppOnForeground componentName = " + paramContext);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("isAppOnForeground componentName = ");
+        ((StringBuilder)localObject).append(paramContext);
+        QLog.d("SmallScreenUtils", 2, ((StringBuilder)localObject).toString());
       }
       catch (Throwable paramContext)
       {
         ActivityManager localActivityManager;
-        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo;
-        bool1 = bool2;
         if (!QLog.isDevelopLevel()) {
-          continue;
+          break label261;
         }
-        QLog.d("SmallScreenUtils", 2, "isAppOnForeground e = " + paramContext);
-        return false;
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("isAppOnForeground e = ");
+        ((StringBuilder)localObject).append(paramContext);
+        QLog.d("SmallScreenUtils", 2, ((StringBuilder)localObject).toString());
       }
-      if (bool1)
+      if (bool)
       {
         paramContext = localActivityManager.getRunningAppProcesses();
         if (paramContext != null)
         {
-          paramContext = paramContext.iterator();
-          if (paramContext.hasNext())
+          localObject = paramContext.iterator();
+          if (((Iterator)localObject).hasNext())
           {
-            localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-            if ((localRunningAppProcessInfo.importance != 100) || (!localRunningAppProcessInfo.processName.startsWith(str))) {
+            paramContext = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
+            if ((paramContext.importance != 100) || (!paramContext.processName.startsWith(str))) {
               continue;
             }
-            if (QLog.isDevelopLevel()) {
-              QLog.d("SmallScreenUtils", 2, "isAppOnForeground appProcess.processName = " + localRunningAppProcessInfo.processName);
+            if (QLog.isDevelopLevel())
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("isAppOnForeground appProcess.processName = ");
+              ((StringBuilder)localObject).append(paramContext.processName);
+              QLog.d("SmallScreenUtils", 2, ((StringBuilder)localObject).toString());
             }
-            bool1 = true;
-            return bool1;
+            return true;
           }
         }
-        bool1 = false;
-        continue;
       }
+      else
+      {
+        return bool;
+      }
+      label261:
+      return false;
+      label263:
+      boolean bool = true;
       continue;
-      label260:
-      boolean bool1 = false;
-      continue;
-      label265:
-      bool1 = true;
+      label268:
+      bool = false;
     }
   }
   
   public static boolean g()
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if (!ConfigSystemImpl.a())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("SmallScreenUtils", 2, "isSupportSmallScreenVideo --> Small Screen Switch Is Closed");
-      }
-      bool1 = false;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SmallScreenUtils", 2, "isSupportSmallScreenVideo result = " + bool1);
-      }
-      return bool1;
-      SmallScreenConfigParser localSmallScreenConfigParser = a();
-      bool1 = bool2;
-      if (localSmallScreenConfigParser != null)
-      {
-        bool1 = bool2;
-        if (localSmallScreenConfigParser.jdField_d_of_type_Int > 0) {
-          bool1 = false;
-        }
-      }
-    }
+    return ((ISmallScreenUtilsApi)QRoute.api(ISmallScreenUtilsApi.class)).isSupportSmallScreenVideo();
   }
   
   public static boolean h()
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if (!ConfigSystemImpl.a())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("SmallScreenUtils", 2, "isSupportSmallScreenAudio --> Small Screen Switch Is Closed");
-      }
-      bool1 = false;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SmallScreenUtils", 2, "isSupportSmallScreenAudio result = " + bool1);
-      }
-      return bool1;
-      SmallScreenConfigParser localSmallScreenConfigParser = a();
-      bool1 = bool2;
-      if (localSmallScreenConfigParser != null)
-      {
-        bool1 = bool2;
-        if (localSmallScreenConfigParser.e > 0) {
-          bool1 = false;
-        }
-      }
-    }
+    return ((ISmallScreenUtilsApi)QRoute.api(ISmallScreenUtilsApi.class)).isSupportSmallScreenAudio();
   }
   
   public static boolean i()
   {
+    boolean bool1 = Build.MANUFACTURER.equalsIgnoreCase("meizu");
     boolean bool3 = false;
     boolean bool2 = bool3;
-    if (Build.MANUFACTURER.equalsIgnoreCase("meizu")) {}
-    boolean bool1;
+    if (bool1) {}
     try
     {
       bool1 = ((Boolean)Class.forName("android.os.Build").getMethod("hasSmartBar", new Class[0]).invoke(null, new Object[0])).booleanValue();
-      if (Build.DEVICE.equals("mx2"))
-      {
-        bool2 = true;
-        return bool2;
-      }
     }
     catch (Exception localException)
     {
-      do
-      {
-        do
-        {
-          for (;;)
-          {
-            bool1 = false;
-          }
-          bool2 = bool3;
-        } while (Build.DEVICE.equals("mx"));
-        bool2 = bool3;
-      } while (Build.DEVICE.equals("m9"));
+      label52:
+      break label52;
     }
-    return bool1;
+    bool1 = false;
+    if (Build.DEVICE.equals("mx2")) {
+      return true;
+    }
+    bool2 = bool3;
+    if (!Build.DEVICE.equals("mx"))
+    {
+      if (Build.DEVICE.equals("m9")) {
+        return false;
+      }
+      bool2 = bool1;
+    }
+    return bool2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenUtils
  * JD-Core Version:    0.7.0.1
  */

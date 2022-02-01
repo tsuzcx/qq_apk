@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class AcsBatchSubNoticeReq
   extends JceStruct
@@ -40,21 +41,24 @@ public final class AcsBatchSubNoticeReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.head != null) {
-      paramJceOutputStream.write(this.head, 0);
+    Object localObject = this.head;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
     paramJceOutputStream.write(this.uin, 1);
-    if (this.msg_id_list != null) {
-      paramJceOutputStream.write(this.msg_id_list, 2);
+    localObject = this.msg_id_list;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
-    if (this.domain != null) {
-      paramJceOutputStream.write(this.domain, 3);
+    localObject = this.domain;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.AcsBatchSubNoticeReq
  * JD-Core Version:    0.7.0.1
  */

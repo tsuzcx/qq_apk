@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.hippy.qq.view.tkd.doublescrollview.HippyTKDDoubleScrollView;
 import com.tencent.hippy.qq.view.tkd.doublescrollview.IDoubleScroll;
-import com.tencent.mobileqq.vip.CUKingCardHelper;
+import com.tencent.mobileqq.vip.CUKingCardUtils;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.HippyRootView;
 import com.tencent.mtt.hippy.common.HippyArray;
@@ -73,18 +73,19 @@ public class HippyTKDListView
   
   public static boolean isKingCardMobileNetWork()
   {
-    return CUKingCardHelper.a() == 1;
+    return CUKingCardUtils.a() == 1;
   }
   
   private void traversalChildViewForNoPicChange(View paramView)
   {
     if ((paramView instanceof ViewGroup))
     {
-      int j = ((ViewGroup)paramView).getChildCount();
+      paramView = (ViewGroup)paramView;
+      int j = paramView.getChildCount();
       int i = 0;
       while (i < j)
       {
-        traversalChildViewForNoPicChange(((ViewGroup)paramView).getChildAt(i));
+        traversalChildViewForNoPicChange(paramView.getChildAt(i));
         i += 1;
       }
     }
@@ -94,11 +95,12 @@ public class HippyTKDListView
   {
     if ((paramView instanceof ViewGroup))
     {
-      int j = ((ViewGroup)paramView).getChildCount();
+      paramView = (ViewGroup)paramView;
+      int j = paramView.getChildCount();
       int i = 0;
       while (i < j)
       {
-        traversalChildViewForSkinChange(((ViewGroup)paramView).getChildAt(i));
+        traversalChildViewForSkinChange(paramView.getChildAt(i));
         i += 1;
       }
     }
@@ -106,31 +108,19 @@ public class HippyTKDListView
   
   public void cancelTouch()
   {
-    if (this.mQBRefreshHeader != null) {
-      this.mQBRefreshHeader.onCancelTouch();
+    IHippyTKDRefreshHeader localIHippyTKDRefreshHeader = this.mQBRefreshHeader;
+    if (localIHippyTKDRefreshHeader != null) {
+      localIHippyTKDRefreshHeader.onCancelTouch();
     }
     super.cancelTouch();
   }
   
-  public boolean changeUpOverScrollEnableOnComputeDxDy(int paramInt1, int paramInt2, boolean paramBoolean1, Scroller paramScroller, boolean paramBoolean2, boolean paramBoolean3)
+  protected boolean changeUpOverScrollEnableOnComputeDxDy(int paramInt1, int paramInt2, boolean paramBoolean1, Scroller paramScroller, boolean paramBoolean2, boolean paramBoolean3)
   {
-    boolean bool = paramBoolean3;
-    if (!paramBoolean3)
-    {
-      bool = paramBoolean3;
-      if (this.mQBRefreshHeader != null)
-      {
-        bool = paramBoolean3;
-        if (!paramBoolean2)
-        {
-          bool = paramBoolean3;
-          if (!paramBoolean1) {
-            bool = true;
-          }
-        }
-      }
+    if ((!paramBoolean3) && (this.mQBRefreshHeader != null) && (!paramBoolean2) && (!paramBoolean1)) {
+      return true;
     }
-    return bool;
+    return paramBoolean3;
   }
   
   public void checkExposureForReport(int paramInt1, int paramInt2)
@@ -147,33 +137,36 @@ public class HippyTKDListView
   
   public void checkNotifyFooterAppearWithFewChild(int paramInt) {}
   
-  public void checkRefreshHeadOnFlingRun()
+  protected void checkRefreshHeadOnFlingRun()
   {
     if ((this.mQBRefreshHeader != null) && ((this.mOffsetY <= 0) || (!this.optimizeHeaderRefresh))) {
       invalidate();
     }
   }
   
-  public boolean checkShouldStopScroll()
+  protected boolean checkShouldStopScroll()
   {
-    return (this.mQBRefreshHeader != null) && (this.mEnableRefresh) && (!this.mQBRefreshHeader.onScrolled());
+    IHippyTKDRefreshHeader localIHippyTKDRefreshHeader = this.mQBRefreshHeader;
+    return (localIHippyTKDRefreshHeader != null) && (this.mEnableRefresh) && (!localIHippyTKDRefreshHeader.onScrolled());
   }
   
   public void completeRefresh(int paramInt)
   {
-    if (this.mQBRefreshHeader != null) {
-      this.mQBRefreshHeader.completeRefresh(paramInt);
+    IHippyTKDRefreshHeader localIHippyTKDRefreshHeader = this.mQBRefreshHeader;
+    if (localIHippyTKDRefreshHeader != null) {
+      localIHippyTKDRefreshHeader.completeRefresh(paramInt);
     }
   }
   
   public void completeRefresh(int paramInt1, String paramString1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString2, boolean paramBoolean, long paramLong, int paramInt6, Promise paramPromise, int paramInt7)
   {
-    if (this.mQBRefreshHeader != null) {
-      this.mQBRefreshHeader.completeRefresh(paramInt1, paramString1, paramInt2, paramInt3, paramInt4, paramInt5, paramString2, paramBoolean, paramLong, paramPromise, paramInt7);
+    IHippyTKDRefreshHeader localIHippyTKDRefreshHeader = this.mQBRefreshHeader;
+    if (localIHippyTKDRefreshHeader != null) {
+      localIHippyTKDRefreshHeader.completeRefresh(paramInt1, paramString1, paramInt2, paramInt3, paramInt4, paramInt5, paramString2, paramBoolean, paramLong, paramPromise, paramInt7);
     }
   }
   
-  public HippyListAdapter createAdapter(RecyclerView paramRecyclerView, HippyEngineContext paramHippyEngineContext)
+  protected HippyListAdapter createAdapter(RecyclerView paramRecyclerView, HippyEngineContext paramHippyEngineContext)
   {
     return new HippyTKDListView.1(this, paramRecyclerView, paramHippyEngineContext);
   }
@@ -181,8 +174,9 @@ public class HippyTKDListView
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if (this.mQBRefreshHeader != null) {
-      this.mQBRefreshHeader.onDraw(paramCanvas);
+    IHippyTKDRefreshHeader localIHippyTKDRefreshHeader = this.mQBRefreshHeader;
+    if (localIHippyTKDRefreshHeader != null) {
+      localIHippyTKDRefreshHeader.onDraw(paramCanvas);
     }
   }
   
@@ -191,7 +185,7 @@ public class HippyTKDListView
     return true;
   }
   
-  public int getAutoScrollVelocity()
+  protected int getAutoScrollVelocity()
   {
     return ImmersiveUtils.dpToPx(3.0F);
   }
@@ -235,7 +229,7 @@ public class HippyTKDListView
     return j;
   }
   
-  public int getSpringBackMaxDistance()
+  protected int getSpringBackMaxDistance()
   {
     return ImmersiveUtils.dpToPx(40.0F);
   }
@@ -256,13 +250,14 @@ public class HippyTKDListView
   
   public void handleInTraversal(int paramInt1, int paramInt2, View paramView)
   {
-    if (paramInt1 == 1001) {
+    if (paramInt1 == 1001)
+    {
       traversalChildViewForSkinChange(paramView);
-    }
-    while (paramInt1 != 1002) {
       return;
     }
-    traversalChildViewForNoPicChange(paramView);
+    if (paramInt1 == 1002) {
+      traversalChildViewForNoPicChange(paramView);
+    }
   }
   
   public void handleNoPicModeChange()
@@ -270,7 +265,7 @@ public class HippyTKDListView
     traversal(1002);
   }
   
-  public void invalidateRefreshHeader()
+  protected void invalidateRefreshHeader()
   {
     if ((this.mQBRefreshHeader != null) && ((this.mOffsetY <= 0) || (!this.optimizeHeaderRefresh))) {
       invalidate();
@@ -279,10 +274,11 @@ public class HippyTKDListView
   
   public boolean isRefreshing()
   {
-    return (this.mQBRefreshHeader != null) && (this.mQBRefreshHeader.isRefreshing());
+    IHippyTKDRefreshHeader localIHippyTKDRefreshHeader = this.mQBRefreshHeader;
+    return (localIHippyTKDRefreshHeader != null) && (localIHippyTKDRefreshHeader.isRefreshing());
   }
   
-  public boolean isTouchStopWhenFastFling()
+  protected boolean isTouchStopWhenFastFling()
   {
     return false;
   }
@@ -302,24 +298,28 @@ public class HippyTKDListView
     setRefreshWithTargetType(-1);
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if (this.mQBRefreshHeader != null) {
-      this.mQBRefreshHeader.restoreRefresh();
+    IHippyTKDRefreshHeader localIHippyTKDRefreshHeader = this.mQBRefreshHeader;
+    if (localIHippyTKDRefreshHeader != null) {
+      localIHippyTKDRefreshHeader.restoreRefresh();
     }
-    if (this.mIsResponseToDoubleScroll) {
-      handleDoubleScrollResponseChange(this.mIsResponseToDoubleScroll);
+    boolean bool = this.mIsResponseToDoubleScroll;
+    if (bool) {
+      handleDoubleScrollResponseChange(bool);
     }
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
-    if ((this.mQBRefreshHeader == null) || (!this.mQBRefreshHeader.isRefreshHeaderShowing())) {
+    IHippyTKDRefreshHeader localIHippyTKDRefreshHeader = this.mQBRefreshHeader;
+    if ((localIHippyTKDRefreshHeader == null) || (!localIHippyTKDRefreshHeader.isRefreshHeaderShowing())) {
       stopScroll();
     }
-    if (this.mQBRefreshHeader != null) {
-      this.mQBRefreshHeader.stopRefresh();
+    localIHippyTKDRefreshHeader = this.mQBRefreshHeader;
+    if (localIHippyTKDRefreshHeader != null) {
+      localIHippyTKDRefreshHeader.stopRefresh();
     }
     if ((getAdapter() != null) && ((getAdapter() instanceof HippyTKDListViewAdapter))) {
       ((HippyTKDListViewAdapter)getAdapter()).cancelAllPreFetchTask();
@@ -332,7 +332,7 @@ public class HippyTKDListView
     super.onDraw(paramCanvas);
   }
   
-  public void onInitialListReady() {}
+  protected void onInitialListReady() {}
   
   public void onRefresh()
   {
@@ -372,50 +372,51 @@ public class HippyTKDListView
   
   public void scrollBack(int paramInt1, RecyclerViewBase.OnScrollFinishListener paramOnScrollFinishListener, int paramInt2)
   {
-    int i;
-    if ((hasNoItem()) && (this.mQBRefreshHeader != null) && (this.mQBRefreshHeader.checkRefreshState(2)))
+    if (hasNoItem())
     {
-      this.mOffsetY = 0;
-      this.mViewFlinger.postOnAnimation();
-      i = 0;
-    }
-    for (;;)
-    {
-      this.mViewFlinger.mScrollFinishListener = paramOnScrollFinishListener;
-      this.mViewFlinger.mTargetPosition = i;
-      return;
-      i = paramInt1;
-      if (paramInt2 != 0)
+      IHippyTKDRefreshHeader localIHippyTKDRefreshHeader = this.mQBRefreshHeader;
+      if ((localIHippyTKDRefreshHeader != null) && (localIHippyTKDRefreshHeader.checkRefreshState(2)))
       {
-        i = paramInt1;
-        if (this.mRecyclerViewAdapter != null)
-        {
-          int j = 0;
-          for (;;)
-          {
-            i = paramInt1;
-            if (j >= paramInt2) {
-              break;
-            }
-            paramInt1 += this.mRecyclerViewAdapter.getItemHeight(j);
-            j += 1;
-          }
-        }
+        this.mOffsetY = 0;
+        this.mViewFlinger.postOnAnimation();
+        i = 0;
+        break label106;
       }
-      smoothScrollBy(0, i, false, true);
     }
+    int i = paramInt1;
+    if (paramInt2 != 0)
+    {
+      i = paramInt1;
+      if (this.mRecyclerViewAdapter != null)
+      {
+        i = 0;
+        while (i < paramInt2)
+        {
+          paramInt1 += this.mRecyclerViewAdapter.getItemHeight(i);
+          i += 1;
+        }
+        i = paramInt1;
+      }
+    }
+    smoothScrollBy(0, i, false, true);
+    label106:
+    this.mViewFlinger.mScrollFinishListener = paramOnScrollFinishListener;
+    this.mViewFlinger.mTargetPosition = i;
   }
   
   public void scrollNestViewBy(int paramInt1, int paramInt2)
   {
     scrollBy(0, paramInt2);
     paramInt1 = getAdapter().getListTotalHeight();
-    if ((paramInt2 <= 0) || (getOffsetY() + paramInt2 < paramInt1 - getHeight()) || (!this.needNotifyFooter) || ((shouldPrebindItem()) && (this.mOffsetY + getHeight() != paramInt1))) {
-      return;
+    if ((paramInt2 > 0) && (getOffsetY() + paramInt2 >= paramInt1 - getHeight()) && (this.needNotifyFooter))
+    {
+      if ((shouldPrebindItem()) && (this.mOffsetY + getHeight() != paramInt1)) {
+        return;
+      }
+      this.needNotifyFooter = false;
+      this.checkNotifyFooterOnRelease = false;
+      getAdapter().notifyLastFooterAppeared();
     }
-    this.needNotifyFooter = false;
-    this.checkNotifyFooterOnRelease = false;
-    getAdapter().notifyLastFooterAppeared();
   }
   
   public void scrollNestViewTo(int paramInt1, int paramInt2)
@@ -431,21 +432,23 @@ public class HippyTKDListView
   
   public void scrollToShowHeader(int paramInt, RecyclerViewBase.OnScrollFinishListener paramOnScrollFinishListener)
   {
-    smoothScrollBy(0, -paramInt - this.mOffsetY, false, true);
+    paramInt = -paramInt;
+    smoothScrollBy(0, paramInt - this.mOffsetY, false, true);
     this.mViewFlinger.mScrollFinishListener = paramOnScrollFinishListener;
-    this.mViewFlinger.mTargetPosition = (-paramInt - this.mOffsetY);
+    this.mViewFlinger.mTargetPosition = (paramInt - this.mOffsetY);
   }
   
   public void scrollToShowHeaderAtOnce(int paramInt)
   {
     RecyclerViewBase.LayoutManager localLayoutManager = this.mLayout;
-    if (this.mAdapter != null) {}
-    for (int i = -this.mAdapter.getHeaderViewCount();; i = 0)
-    {
-      localLayoutManager.scrollToPositionWithOffset(i, paramInt);
-      this.mLayout.mPreventFixGap = true;
-      return;
+    int i;
+    if (this.mAdapter != null) {
+      i = -this.mAdapter.getHeaderViewCount();
+    } else {
+      i = 0;
     }
+    localLayoutManager.scrollToPositionWithOffset(i, paramInt);
+    this.mLayout.mPreventFixGap = true;
   }
   
   public void scrollToShowHeaderSmooth(int paramInt)
@@ -475,12 +478,13 @@ public class HippyTKDListView
     post(new HippyTKDListView.2(this));
   }
   
-  public void sendOnScrollEvent() {}
+  protected void sendOnScrollEvent() {}
   
   public void setCustomHippyRefreshView(View paramView)
   {
-    if (this.mQBRefreshHeader != null) {
-      this.mQBRefreshHeader.setCustomHippyRefreshView(paramView);
+    IHippyTKDRefreshHeader localIHippyTKDRefreshHeader = this.mQBRefreshHeader;
+    if (localIHippyTKDRefreshHeader != null) {
+      localIHippyTKDRefreshHeader.setCustomHippyRefreshView(paramView);
     }
   }
   
@@ -524,15 +528,13 @@ public class HippyTKDListView
     if (getAdapter() != null) {
       ((HippyTKDListViewAdapter)getAdapter()).setPreloadItemNum(getAdapter().getPreloadThresholdInItemNumber());
     }
-    if ((this.mInitialContentOffset > 0) && (this.mEnableScrollToContentOffset)) {
-      scrollToPosition(0, -this.mInitialContentOffset);
-    }
-    for (;;)
-    {
-      super.setListData();
-      return;
+    int i = this.mInitialContentOffset;
+    if ((i > 0) && (this.mEnableScrollToContentOffset)) {
+      scrollToPosition(0, -i);
+    } else {
       this.mEnableScrollToContentOffset = false;
     }
+    super.setListData();
   }
   
   protected void setLoadingStatus(int paramInt, String paramString)
@@ -559,21 +561,20 @@ public class HippyTKDListView
     if (this.mEnableRefresh != paramBoolean)
     {
       this.mEnableRefresh = paramBoolean;
-      if (paramBoolean) {
+      if (paramBoolean)
+      {
         this.mQBRefreshHeader = new HippyTKDRefreshHeader(this);
+        return;
       }
+      this.mQBRefreshHeader = null;
     }
-    else
-    {
-      return;
-    }
-    this.mQBRefreshHeader = null;
   }
   
   public void setRefreshPromptInfo(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3, int paramInt4, int paramInt5)
   {
-    if (this.mQBRefreshHeader != null) {
-      this.mQBRefreshHeader.setRefreshPromptInfo(paramString1, paramInt1, paramInt2, paramString2, paramInt3, paramInt4, paramInt5);
+    IHippyTKDRefreshHeader localIHippyTKDRefreshHeader = this.mQBRefreshHeader;
+    if (localIHippyTKDRefreshHeader != null) {
+      localIHippyTKDRefreshHeader.setRefreshPromptInfo(paramString1, paramInt1, paramInt2, paramString2, paramInt3, paramInt4, paramInt5);
     }
   }
   
@@ -607,17 +608,31 @@ public class HippyTKDListView
   
   public void setScrollbarEnabled(boolean paramBoolean) {}
   
-  public boolean shouldStopOnInterceptTouchEvent(MotionEvent paramMotionEvent, int paramInt, boolean paramBoolean)
+  protected boolean shouldStopOnInterceptTouchEvent(MotionEvent paramMotionEvent, int paramInt, boolean paramBoolean)
   {
-    return ((this.mOffsetY < 0) || (getHeight() > paramInt)) && (this.mQBRefreshHeader != null) && (this.mEnableRefresh) && (this.mQBRefreshHeader.isRefreshHeaderShowing()) && (!paramBoolean);
+    if ((this.mOffsetY < 0) || (getHeight() > paramInt))
+    {
+      paramMotionEvent = this.mQBRefreshHeader;
+      if ((paramMotionEvent != null) && (this.mEnableRefresh) && (paramMotionEvent.isRefreshHeaderShowing()) && (!paramBoolean)) {
+        return true;
+      }
+    }
+    return false;
   }
   
-  public boolean shouldStopOnTouchEvent(MotionEvent paramMotionEvent, int paramInt, boolean paramBoolean)
+  protected boolean shouldStopOnTouchEvent(MotionEvent paramMotionEvent, int paramInt, boolean paramBoolean)
   {
-    return ((this.mOffsetY < 0) || (getHeight() > paramInt)) && (this.mQBRefreshHeader != null) && (this.mEnableRefresh) && (this.mQBRefreshHeader.isRefreshHeaderShowing()) && (!paramBoolean);
+    if ((this.mOffsetY < 0) || (getHeight() > paramInt))
+    {
+      paramMotionEvent = this.mQBRefreshHeader;
+      if ((paramMotionEvent != null) && (this.mEnableRefresh) && (paramMotionEvent.isRefreshHeaderShowing()) && (!paramBoolean)) {
+        return true;
+      }
+    }
+    return false;
   }
   
-  public boolean shouldStopReleaseGlows(boolean paramBoolean1, boolean paramBoolean2)
+  protected boolean shouldStopReleaseGlows(boolean paramBoolean1, boolean paramBoolean2)
   {
     if ((this.mQBRefreshHeader != null) && (this.mEnableRefresh))
     {
@@ -650,30 +665,31 @@ public class HippyTKDListView
   
   public void startRefresh(int paramInt)
   {
-    if ((this.mEnableRefresh) && (this.mQBRefreshHeader != null) && (this.mQBRefreshHeader.checkRefreshState(0)))
+    if (this.mEnableRefresh)
     {
-      if ((getAdapter() instanceof HippyTKDListViewAdapter)) {
-        ((HippyTKDListViewAdapter)getAdapter()).setLoadingStatus(2, "");
-      }
-      scrollToTopRightAway();
-      if (paramInt == 1)
+      IHippyTKDRefreshHeader localIHippyTKDRefreshHeader = this.mQBRefreshHeader;
+      if ((localIHippyTKDRefreshHeader != null) && (localIHippyTKDRefreshHeader.checkRefreshState(0)))
       {
+        if ((getAdapter() instanceof HippyTKDListViewAdapter)) {
+          ((HippyTKDListViewAdapter)getAdapter()).setLoadingStatus(2, "");
+        }
+        scrollToTopRightAway();
+        if (paramInt == 1)
+        {
+          setRefreshWithTargetType(-1);
+          startRefresh(true);
+          return;
+        }
+        if (paramInt == 3)
+        {
+          setRefreshWithTargetType(paramInt);
+          startRefresh(true);
+          return;
+        }
         setRefreshWithTargetType(-1);
-        startRefresh(true);
+        startRefreshWithType(true);
       }
     }
-    else
-    {
-      return;
-    }
-    if (paramInt == 3)
-    {
-      setRefreshWithTargetType(paramInt);
-      startRefresh(true);
-      return;
-    }
-    setRefreshWithTargetType(-1);
-    startRefreshWithType(true);
   }
   
   public void startRefresh(boolean paramBoolean)
@@ -699,7 +715,7 @@ public class HippyTKDListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.listview.HippyTKDListView
  * JD-Core Version:    0.7.0.1
  */

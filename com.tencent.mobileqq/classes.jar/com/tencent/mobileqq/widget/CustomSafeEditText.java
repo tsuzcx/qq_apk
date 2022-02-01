@@ -24,7 +24,7 @@ public class CustomSafeEditText
     setClearButtonVisible(false);
   }
   
-  public void onFocusChanged(boolean paramBoolean, int paramInt, Rect paramRect)
+  protected void onFocusChanged(boolean paramBoolean, int paramInt, Rect paramRect)
   {
     super.onFocusChanged(paramBoolean, paramInt, paramRect);
   }
@@ -37,7 +37,7 @@ public class CustomSafeEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CustomSafeEditText
  * JD-Core Version:    0.7.0.1
  */

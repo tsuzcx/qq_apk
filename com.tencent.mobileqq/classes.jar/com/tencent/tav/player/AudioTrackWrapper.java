@@ -4,6 +4,7 @@ import android.media.AudioTrack;
 import android.media.MediaFormat;
 import android.os.Build.VERSION;
 import android.util.Log;
+import com.tencent.qqlive.module.videoreport.dtreport.audio.playback.ReportAudioTrack;
 import com.tencent.tav.decoder.logger.Logger;
 
 public class AudioTrackWrapper
@@ -39,29 +40,26 @@ public class AudioTrackWrapper
   
   private void init(int paramInt1, int paramInt2)
   {
-    if (paramInt1 <= 0) {}
-    for (;;)
-    {
+    if (paramInt1 <= 0) {
       return;
-      AudioTrackWrapper.AudioTrackConfig localAudioTrackConfig = new AudioTrackWrapper.AudioTrackConfig(paramInt1, paramInt2);
-      Log.d("AudioTrackWrapper", "init:--> " + this);
-      try
-      {
-        this.mAudioTrack = new AudioTrack(localAudioTrackConfig.streamType, localAudioTrackConfig.sampleRateInHz, localAudioTrackConfig.channelConfig, localAudioTrackConfig.audioFormat, localAudioTrackConfig.bufferSizeInBytes, localAudioTrackConfig.mode);
-        if (this.mAudioTrack == null) {
-          continue;
-        }
-        this.mAudioTrack.play();
-        return;
-      }
-      catch (IllegalArgumentException localIllegalArgumentException)
-      {
-        for (;;)
-        {
-          localIllegalArgumentException.printStackTrace();
-          this.mAudioTrack = null;
-        }
-      }
+    }
+    AudioTrackWrapper.AudioTrackConfig localAudioTrackConfig = new AudioTrackWrapper.AudioTrackConfig(paramInt1, paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("init:--> ");
+    localStringBuilder.append(this);
+    Log.d("AudioTrackWrapper", localStringBuilder.toString());
+    try
+    {
+      this.mAudioTrack = new ReportAudioTrack(localAudioTrackConfig.streamType, localAudioTrackConfig.sampleRateInHz, localAudioTrackConfig.channelConfig, localAudioTrackConfig.audioFormat, localAudioTrackConfig.bufferSizeInBytes, localAudioTrackConfig.mode);
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      localIllegalArgumentException.printStackTrace();
+      this.mAudioTrack = null;
+    }
+    AudioTrack localAudioTrack = this.mAudioTrack;
+    if (localAudioTrack != null) {
+      localAudioTrack.play();
     }
   }
   
@@ -72,32 +70,32 @@ public class AudioTrackWrapper
   
   public void flush()
   {
-    if (!allow()) {}
-    for (;;)
-    {
+    if (!allow()) {
       return;
-      try
+    }
+    try
+    {
+      if (this.mAudioTrack != null)
       {
-        if (this.mAudioTrack != null)
-        {
-          this.mAudioTrack.flush();
-          return;
-        }
+        this.mAudioTrack.flush();
+        return;
       }
-      catch (Exception localException)
-      {
-        Logger.e("AudioTrackWrapper", "flush: ", localException);
-      }
+    }
+    catch (Exception localException)
+    {
+      Logger.e("AudioTrackWrapper", "flush: ", localException);
     }
   }
   
   public void parse()
   {
-    if (!allow()) {}
-    while ((this.mAudioTrack == null) || (this.mAudioTrack.getPlayState() != 3)) {
+    if (!allow()) {
       return;
     }
-    this.mAudioTrack.pause();
+    AudioTrack localAudioTrack = this.mAudioTrack;
+    if ((localAudioTrack != null) && (localAudioTrack.getPlayState() == 3)) {
+      this.mAudioTrack.pause();
+    }
   }
   
   public void release()
@@ -107,7 +105,10 @@ public class AudioTrackWrapper
     }
     stop();
     this.mAudioTrack.release();
-    Log.d("AudioTrackWrapper", "release:--> " + this);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("release:--> ");
+    localStringBuilder.append(this);
+    Log.d("AudioTrackWrapper", localStringBuilder.toString());
   }
   
   public void setVolume(float paramFloat)
@@ -125,40 +126,40 @@ public class AudioTrackWrapper
   
   public void stop()
   {
-    if (!allow()) {}
-    while ((this.mAudioTrack.getState() != 3) && (this.mAudioTrack.getState() != 2)) {
+    if (!allow()) {
       return;
     }
-    this.mAudioTrack.stop();
+    if ((this.mAudioTrack.getState() == 3) || (this.mAudioTrack.getState() == 2)) {
+      this.mAudioTrack.stop();
+    }
   }
   
   public void writeData(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (!allow()) {}
-    for (;;)
-    {
+    if (!allow()) {
       return;
-      if (this.mAudioTrack != null) {
-        try
+    }
+    AudioTrack localAudioTrack = this.mAudioTrack;
+    if (localAudioTrack != null) {
+      try
+      {
+        localAudioTrack.write(paramArrayOfByte, paramInt1, paramInt2);
+        if (this.mAudioTrack.getPlayState() != 3)
         {
-          this.mAudioTrack.write(paramArrayOfByte, paramInt1, paramInt2);
-          if (this.mAudioTrack.getPlayState() != 3)
-          {
-            this.mAudioTrack.play();
-            return;
-          }
+          this.mAudioTrack.play();
+          return;
         }
-        catch (Exception paramArrayOfByte)
-        {
-          paramArrayOfByte.printStackTrace();
-        }
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        paramArrayOfByte.printStackTrace();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tav.player.AudioTrackWrapper
  * JD-Core Version:    0.7.0.1
  */

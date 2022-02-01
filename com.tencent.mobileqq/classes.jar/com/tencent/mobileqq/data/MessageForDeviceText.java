@@ -38,7 +38,7 @@ public class MessageForDeviceText
     this.sb = new QQText((CharSequence)localObject2, 13, 32, this.istroop);
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     String str2 = getExtInfoFromExtStr("sens_msg_original_text");
     String str1 = str2;
@@ -51,7 +51,7 @@ public class MessageForDeviceText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForDeviceText
  * JD-Core Version:    0.7.0.1
  */

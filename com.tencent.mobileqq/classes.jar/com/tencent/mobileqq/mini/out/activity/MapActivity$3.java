@@ -13,9 +13,10 @@ class MapActivity$3
   
   public void onGetPoiList(boolean paramBoolean, LBSShare.LocationResp paramLocationResp)
   {
-    this.this$0.isSearching = false;
+    MapActivity localMapActivity = this.this$0;
+    localMapActivity.isSearching = false;
     if (paramBoolean) {
-      MapActivity.access$400(this.this$0, paramLocationResp.poilist.get(), paramLocationResp.next.get());
+      MapActivity.access$400(localMapActivity, paramLocationResp.poilist.get(), paramLocationResp.next.get());
     }
   }
   
@@ -28,7 +29,7 @@ class MapActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.MapActivity.3
  * JD-Core Version:    0.7.0.1
  */

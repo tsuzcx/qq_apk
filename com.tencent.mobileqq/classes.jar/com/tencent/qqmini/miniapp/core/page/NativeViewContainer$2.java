@@ -27,23 +27,23 @@ class NativeViewContainer$2
       if (localInputMethodManager != null) {
         localInputMethodManager.showSoftInput((View)localObject, 0);
       }
-    }
-    try
-    {
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("inputId", this.val$inputId);
-      this.val$req.ok((JSONObject)localObject);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
+      try
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("inputId", this.val$inputId);
+        this.val$req.ok((JSONObject)localObject);
+        return;
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.NativeViewContainer.2
  * JD-Core Version:    0.7.0.1
  */

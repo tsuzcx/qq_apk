@@ -32,13 +32,14 @@ public final class Bdh_extinfo$ShortVideoRspExtInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 58, 64 }, new String[] { "uint32_cmd", "uint64_session_id", "int32_retcode", "bytes_errinfo", "msg_thumbinfo", "msg_videoinfo", "msg_shortvideo_sure_rsp", "uint32_retry_flag" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro, null, null, null, Integer.valueOf(0) }, ShortVideoRspExtInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 58, 64 }, new String[] { "uint32_cmd", "uint64_session_id", "int32_retcode", "bytes_errinfo", "msg_thumbinfo", "msg_videoinfo", "msg_shortvideo_sure_rsp", "uint32_retry_flag" }, new Object[] { localInteger, Long.valueOf(0L), localInteger, localByteStringMicro, null, null, null, localInteger }, ShortVideoRspExtInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.protocol.Bdh_extinfo.ShortVideoRspExtInfo
  * JD-Core Version:    0.7.0.1
  */

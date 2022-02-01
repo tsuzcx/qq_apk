@@ -2,9 +2,9 @@ package com.tencent.mobileqq.apollo.player.manager;
 
 import android.content.Context;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.api.player.action.CMSAction;
-import com.tencent.mobileqq.apollo.api.player.action.MODE;
+import com.tencent.mobileqq.apollo.player.CMSHelper;
 import com.tencent.mobileqq.apollo.player.ICMSPlayerListener;
+import com.tencent.mobileqq.apollo.player.action.CMSAction;
 import com.tencent.mobileqq.apollo.statistics.trace.TraceReportUtil;
 import kotlin.Metadata;
 import kotlin.Unit;
@@ -24,7 +24,7 @@ final class CMSBornPlayerManager$recordActionByRecorder$2
   
   public final void invoke()
   {
-    TraceReportUtil.a(this.$actionItem.a().a().toReportFeatureId(), CMSAction.a(this.$actionItem.a(), null, null, 3, null), 1);
+    TraceReportUtil.a(CMSHelper.a.a(this.$actionItem.a().a()), CMSAction.a(this.$actionItem.a(), null, null, 3, null), 1);
     CMSBornPlayer localCMSBornPlayer = this.$recorder;
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
     Intrinsics.checkExpressionValueIsNotNull(localBaseApplicationImpl, "BaseApplicationImpl.getApplication()");
@@ -33,7 +33,7 @@ final class CMSBornPlayerManager$recordActionByRecorder$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.player.manager.CMSBornPlayerManager.recordActionByRecorder.2
  * JD-Core Version:    0.7.0.1
  */

@@ -19,25 +19,23 @@ public final class a
   
   final File a(Context paramContext)
   {
-    if (paramContext == null) {}
-    for (;;)
-    {
+    if (paramContext == null) {
       return null;
-      paramContext = new File(paramContext.getDir("tbs", 0), "core_share");
-      File localFile = new File(paramContext, "MANIFEST");
-      if (localFile.exists()) {
-        try
-        {
-          int i = e.a(localFile).a;
-          int j = this.b.c;
-          if (i == j) {
-            return paramContext;
-          }
+    }
+    paramContext = new File(paramContext.getDir("tbs", 0), "core_share");
+    File localFile = new File(paramContext, "MANIFEST");
+    if (localFile.exists()) {
+      try
+      {
+        int i = e.a(localFile).a;
+        int j = this.b.c;
+        if (i == j) {
+          return paramContext;
         }
-        catch (TBSOneException paramContext)
-        {
-          paramContext.printStackTrace();
-        }
+      }
+      catch (TBSOneException paramContext)
+      {
+        paramContext.printStackTrace();
       }
     }
     return null;
@@ -55,7 +53,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.e.e.a
  * JD-Core Version:    0.7.0.1
  */

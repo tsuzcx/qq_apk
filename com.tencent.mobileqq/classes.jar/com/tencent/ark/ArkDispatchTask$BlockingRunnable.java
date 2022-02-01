@@ -86,12 +86,19 @@ public final class ArkDispatchTask$BlockingRunnable
         }
         catch (InterruptedException paramHandler)
         {
-          ArkDispatchTask.ENV.logD("ArkApp.DispatchTask", "DispatchTask.exception: " + paramHandler.getLocalizedMessage());
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("DispatchTask.exception: ");
+          localStringBuilder.append(paramHandler.getLocalizedMessage());
+          Logger.logD("ArkApp.DispatchTask", localStringBuilder.toString());
         }
       }
+      return true;
     }
     finally {}
-    return true;
+    for (;;)
+    {
+      throw paramHandler;
+    }
   }
 }
 

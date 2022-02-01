@@ -14,32 +14,35 @@ class ListenTogetherPlugin$1
   
   public void onCallback(EIPCResult paramEIPCResult)
   {
-    int i = 0;
     JSONObject localJSONObject;
     if (!TextUtils.isEmpty(ListenTogetherPlugin.a(this.a))) {
       localJSONObject = new JSONObject();
     }
-    try
+    for (;;)
     {
-      if (paramEIPCResult.data.getBoolean("result")) {}
-      for (;;)
+      try
       {
+        if (!paramEIPCResult.data.getBoolean("result")) {
+          break label78;
+        }
+        i = 0;
         localJSONObject.put("result", i);
         this.a.callJs(ListenTogetherPlugin.a(this.a), new String[] { localJSONObject.toString() });
         return;
-        i = 1;
+      }
+      catch (JSONException paramEIPCResult)
+      {
+        paramEIPCResult.printStackTrace();
       }
       return;
-    }
-    catch (JSONException paramEIPCResult)
-    {
-      paramEIPCResult.printStackTrace();
+      label78:
+      int i = 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherPlugin.1
  * JD-Core Version:    0.7.0.1
  */

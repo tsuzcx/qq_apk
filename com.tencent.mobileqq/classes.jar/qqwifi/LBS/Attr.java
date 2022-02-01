@@ -29,20 +29,23 @@ public final class Attr
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strImei != null) {
-      paramJceOutputStream.write(this.strImei, 0);
+    String str = this.strImei;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.strImsi != null) {
-      paramJceOutputStream.write(this.strImsi, 1);
+    str = this.strImsi;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strPhonenum != null) {
-      paramJceOutputStream.write(this.strPhonenum, 2);
+    str = this.strPhonenum;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qqwifi.LBS.Attr
  * JD-Core Version:    0.7.0.1
  */

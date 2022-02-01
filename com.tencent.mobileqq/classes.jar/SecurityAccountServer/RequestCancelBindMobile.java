@@ -49,14 +49,15 @@ public final class RequestCancelBindMobile
     paramJceOutputStream.write(this.isFromUni, 2);
     paramJceOutputStream.write(this.isFromChangeBind, 3);
     paramJceOutputStream.write(this.isSecNewReq, 4);
-    if (this.encrptCancelMobileInfo != null) {
-      paramJceOutputStream.write(this.encrptCancelMobileInfo, 5);
+    byte[] arrayOfByte = this.encrptCancelMobileInfo;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.RequestCancelBindMobile
  * JD-Core Version:    0.7.0.1
  */

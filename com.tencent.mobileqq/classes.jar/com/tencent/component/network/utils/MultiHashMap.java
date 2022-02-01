@@ -29,15 +29,13 @@ public class MultiHashMap<K, V>
       return remove(paramK) != null;
     }
     Collection localCollection = (Collection)get(paramK);
-    if ((localCollection != null) && (localCollection.remove(paramV))) {}
-    for (;;)
-    {
-      if ((localCollection != null) && (localCollection.isEmpty())) {
-        remove(paramK);
-      }
-      return bool;
+    if ((localCollection == null) || (!localCollection.remove(paramV))) {
       bool = false;
     }
+    if ((localCollection != null) && (localCollection.isEmpty())) {
+      remove(paramK);
+    }
+    return bool;
   }
   
   public int sizeOf(K paramK)
@@ -51,7 +49,7 @@ public class MultiHashMap<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.utils.MultiHashMap
  * JD-Core Version:    0.7.0.1
  */

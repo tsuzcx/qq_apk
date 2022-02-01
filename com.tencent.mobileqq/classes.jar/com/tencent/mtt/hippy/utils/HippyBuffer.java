@@ -38,31 +38,23 @@ public class HippyBuffer
   
   private static final Charset loadOneByteStrCharset()
   {
+    Object localObject1 = null;
     try
     {
-      localCharset1 = Charset.forName("ISO-8859-1");
-      if (localCharset1 == null) {
-        break label32;
+      Charset localCharset = Charset.forName("ISO-8859-1");
+      if (localCharset != null) {
+        localObject1 = localCharset;
       }
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        Charset localCharset1;
-        Charset localCharset2;
-        localThrowable.printStackTrace();
-        Object localObject = null;
-        continue;
-        label32:
-        localObject = null;
-      }
+      localThrowable.printStackTrace();
     }
-    localCharset2 = localCharset1;
-    if (localCharset1 == null) {
-      localCharset2 = Charset.defaultCharset();
+    Object localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = Charset.defaultCharset();
     }
-    return localCharset2;
+    return localObject2;
   }
   
   public final byte[] build(Object paramObject)
@@ -79,12 +71,9 @@ public class HippyBuffer
     }
     catch (Throwable paramObject)
     {
-      for (;;)
-      {
-        LogUtils.e("HippyBuffer", "Error Building Buffer", paramObject);
-        paramObject = null;
-      }
+      LogUtils.e("HippyBuffer", "Error Building Buffer", paramObject);
     }
+    return null;
   }
   
   public final Object parse(byte[] paramArrayOfByte)
@@ -114,7 +103,7 @@ public class HippyBuffer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.utils.HippyBuffer
  * JD-Core Version:    0.7.0.1
  */

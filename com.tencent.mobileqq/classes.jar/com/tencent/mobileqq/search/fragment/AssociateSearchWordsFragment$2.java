@@ -13,22 +13,18 @@ class AssociateSearchWordsFragment$2
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = this.a.getActivity();
+    paramView = this.a.getBaseActivity();
     if ((paramView instanceof ActiveEntitySearchActivity)) {
       ((ActiveEntitySearchActivity)paramView).c();
+    } else if ((paramView instanceof UniteSearchActivity)) {
+      ((UniteSearchActivity)paramView).b();
     }
-    for (;;)
-    {
-      return false;
-      if ((paramView instanceof UniteSearchActivity)) {
-        ((UniteSearchActivity)paramView).b();
-      }
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment.2
  * JD-Core Version:    0.7.0.1
  */

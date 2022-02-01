@@ -24,12 +24,13 @@ public class FPSSlideDetectListView
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if (this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator != null) {
-      this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator.b();
+    paramCanvas = this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator;
+    if (paramCanvas != null) {
+      paramCanvas.b();
     }
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.f)
@@ -39,11 +40,12 @@ public class FPSSlideDetectListView
     }
   }
   
-  public void reportScrollStateChange(int paramInt)
+  protected void reportScrollStateChange(int paramInt)
   {
     super.reportScrollStateChange(paramInt);
-    if (this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator != null) {
-      this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator.a(paramInt);
+    FPSCalculator localFPSCalculator = this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator;
+    if (localFPSCalculator != null) {
+      localFPSCalculator.a(paramInt);
     }
   }
   
@@ -63,7 +65,7 @@ public class FPSSlideDetectListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.fpsreport.FPSSlideDetectListView
  * JD-Core Version:    0.7.0.1
  */

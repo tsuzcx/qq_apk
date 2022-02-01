@@ -27,16 +27,18 @@ public final class AvGameNotify$NotifyPKUserFail
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Boolean localBoolean = Boolean.valueOf(false);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 58, 64, 74, 82, 88, 96 }, new String[] { "rank", "total", "has_consolation_award", "award_str", "award_url", "award_delay", "award_url_str", "delay_award", "delay_award_tip", "draw_res", "both_lose", "score" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(false), localByteStringMicro1, localByteStringMicro2, Boolean.valueOf(false), localByteStringMicro3, Boolean.valueOf(false), localByteStringMicro4, null, Boolean.valueOf(false), Integer.valueOf(0) }, NotifyPKUserFail.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 58, 64, 74, 82, 88, 96 }, new String[] { "rank", "total", "has_consolation_award", "award_str", "award_url", "award_delay", "award_url_str", "delay_award", "delay_award_tip", "draw_res", "both_lose", "score" }, new Object[] { localInteger, localInteger, localBoolean, localByteStringMicro1, localByteStringMicro2, localBoolean, localByteStringMicro3, localBoolean, localByteStringMicro4, null, localBoolean, localInteger }, NotifyPKUserFail.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     trpc.qq_vgame.nofity.AvGameNotify.NotifyPKUserFail
  * JD-Core Version:    0.7.0.1
  */

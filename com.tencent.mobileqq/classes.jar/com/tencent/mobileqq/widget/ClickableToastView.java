@@ -46,23 +46,23 @@ public class ClickableToastView
     super(paramActivity);
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_AndroidContentResResources = paramActivity.getResources();
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramActivity).inflate(2131558969, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364280));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379618));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379614));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramActivity).inflate(2131558867, null);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364194));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378964));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378961));
     this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("window"));
   }
   
   public static int a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return 2130839417;
-    case 1: 
-      return 2130848172;
+      if (paramInt != 2) {
+        return 2130839273;
+      }
+      return 2130848044;
     }
-    return 2130848173;
+    return 2130848043;
   }
   
   public static ClickableToastView a(Activity paramActivity, int paramInt, CharSequence paramCharSequence, ClickableToastView.RightActionParams paramRightActionParams)
@@ -84,10 +84,9 @@ public class ClickableToastView
   
   private int b(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    case 2: 
-    default: 
+      if (paramInt != 2) {}
       return -16777216;
     }
     return -16578533;
@@ -96,26 +95,33 @@ public class ClickableToastView
   private void c()
   {
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams();
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.gravity = 55;
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x = 0;
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = LiuHaiUtils.a(this.jdField_a_of_type_AndroidAppActivity);
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.format = 1;
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.type = 2;
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.flags = 40;
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.windowAnimations = 2131755568;
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = -1;
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = -2;
+    Object localObject = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+    ((WindowManager.LayoutParams)localObject).gravity = 55;
+    ((WindowManager.LayoutParams)localObject).x = 0;
+    ((WindowManager.LayoutParams)localObject).y = LiuHaiUtils.a(this.jdField_a_of_type_AndroidAppActivity);
+    localObject = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+    ((WindowManager.LayoutParams)localObject).format = 1;
+    ((WindowManager.LayoutParams)localObject).type = 2;
+    ((WindowManager.LayoutParams)localObject).flags = 40;
+    ((WindowManager.LayoutParams)localObject).windowAnimations = 2131755914;
+    ((WindowManager.LayoutParams)localObject).width = -1;
+    ((WindowManager.LayoutParams)localObject).height = -2;
     try
     {
-      if (("" + Build.MANUFACTURER).equalsIgnoreCase("SAMSUNG")) {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(Build.MANUFACTURER);
+      if (((StringBuilder)localObject).toString().equalsIgnoreCase("SAMSUNG"))
+      {
         this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.getClass().getField("layoutInDisplayCutoutMode").setInt(this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams, 1);
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("ClickableToastView", 2, QLog.getStackTraceString(localException));
+      if (QLog.isColorLevel()) {
+        QLog.e("ClickableToastView", 2, QLog.getStackTraceString(localException));
+      }
     }
   }
   
@@ -126,52 +132,52 @@ public class ClickableToastView
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
     this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
       this.jdField_a_of_type_AndroidWidgetImageView.setColorFilter(QQToast.b(this.jdField_a_of_type_Int), PorterDuff.Mode.MULTIPLY);
     }
-    for (;;)
+    else
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetClickableToastView$RightActionParams.jdField_a_of_type_Int == 0) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetClickableToastView$RightActionParams.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131165525);
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentMobileqqWidgetClickableToastView$RightActionParams.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetClickableToastView$RightActionParams.jdField_b_of_type_Int == 0) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetClickableToastView$RightActionParams.jdField_b_of_type_Int = 16;
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, this.jdField_a_of_type_ComTencentMobileqqWidgetClickableToastView$RightActionParams.jdField_b_of_type_Int);
-      Object localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131379611);
-      if (Build.VERSION.SDK_INT >= 21) {
-        ((View)localObject).setElevation(6.0F);
-      }
-      if (this.jdField_a_of_type_JavaLangCharSequence != null)
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetClickableToastView$RightActionParams.jdField_a_of_type_Int == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetClickableToastView$RightActionParams.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131165501);
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentMobileqqWidgetClickableToastView$RightActionParams.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetClickableToastView$RightActionParams.jdField_b_of_type_Int == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetClickableToastView$RightActionParams.jdField_b_of_type_Int = 16;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, this.jdField_a_of_type_ComTencentMobileqqWidgetClickableToastView$RightActionParams.jdField_b_of_type_Int);
+    localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131378958);
+    if (Build.VERSION.SDK_INT >= 21) {
+      ((View)localObject).setElevation(6.0F);
+    }
+    if (this.jdField_a_of_type_JavaLangCharSequence != null)
+    {
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(b(this.jdField_a_of_type_Int));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
+      localObject = this.jdField_a_of_type_JavaLangCharSequence.toString();
+      TextPaint localTextPaint = this.jdField_b_of_type_AndroidWidgetTextView.getPaint();
+      float f2 = localTextPaint.measureText((String)localObject);
+      DisplayMetrics localDisplayMetrics = this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics();
+      float f1 = localDisplayMetrics.densityDpi / 160 * 50;
+      f1 = localDisplayMetrics.widthPixels - f1;
+      if (f2 > f1)
       {
-        this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(b(this.jdField_a_of_type_Int));
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
-        localObject = this.jdField_a_of_type_JavaLangCharSequence.toString();
-        TextPaint localTextPaint = this.jdField_b_of_type_AndroidWidgetTextView.getPaint();
-        float f2 = localTextPaint.measureText((String)localObject);
-        DisplayMetrics localDisplayMetrics = this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics();
-        float f1 = localDisplayMetrics.densityDpi / 160 * 50;
-        f1 = localDisplayMetrics.widthPixels - f1;
+        f2 = this.jdField_b_of_type_AndroidWidgetTextView.getTextSize() * 5.0F / 6.0F / localDisplayMetrics.density;
+        this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(2, f2);
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        f2 = localTextPaint.measureText((String)localObject);
         if (f2 > f1)
         {
-          f2 = this.jdField_b_of_type_AndroidWidgetTextView.getTextSize() * 5.0F / 6.0F / localDisplayMetrics.density;
-          this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(2, f2);
-        }
-        if (this.jdField_a_of_type_Boolean)
-        {
-          f2 = localTextPaint.measureText((String)localObject);
-          if (f2 > f1)
-          {
-            f1 = this.jdField_b_of_type_AndroidWidgetTextView.getTextSize() * f1 / f2 / localDisplayMetrics.scaledDensity;
-            this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(2, f1);
-          }
+          f1 = this.jdField_b_of_type_AndroidWidgetTextView.getTextSize() * f1 / f2 / localDisplayMetrics.scaledDensity;
+          this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(2, f1);
         }
       }
-      return;
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
   }
   
@@ -192,15 +198,20 @@ public class ClickableToastView
   public void b()
   {
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-    if ((this.jdField_a_of_type_AndroidAppActivity != null) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) && (this.jdField_a_of_type_AndroidViewView.getParent() != null)) {}
-    try
-    {
-      this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_AndroidViewView);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("ClickableToastView", 2, "removeView error:" + localThrowable.getMessage());
+    Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
+    if ((localActivity != null) && (!localActivity.isFinishing()) && (this.jdField_a_of_type_AndroidViewView.getParent() != null)) {
+      try
+      {
+        this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_AndroidViewView);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("removeView error:");
+        localStringBuilder.append(localThrowable.getMessage());
+        QLog.e("ClickableToastView", 2, localStringBuilder.toString());
+      }
     }
   }
   
@@ -228,7 +239,7 @@ public class ClickableToastView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ClickableToastView
  * JD-Core Version:    0.7.0.1
  */

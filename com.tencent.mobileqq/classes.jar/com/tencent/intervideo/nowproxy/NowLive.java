@@ -1,9 +1,7 @@
 package com.tencent.intervideo.nowproxy;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import com.tencent.intervideo.nowproxy.CustomInterface.CustomizedPushSetting;
 import com.tencent.intervideo.nowproxy.CustomInterface.ShareMenuList;
 import com.tencent.intervideo.nowproxy.ability.ExtSdkBizAbilityImpl;
@@ -30,11 +28,9 @@ import com.tencent.intervideo.nowproxy.customized_interface.CustomizedTicket;
 import com.tencent.intervideo.nowproxy.customized_interface.CustomizedToast;
 import com.tencent.intervideo.nowproxy.customized_interface.CustomizedWebView;
 import com.tencent.intervideo.nowproxy.customized_interface.IShadow;
-import com.tencent.intervideo.nowproxy.proxyinner.util.NowSchemeUtil;
 import com.tencent.intervideo.nowproxy.qqshare.CustomizedShareForQQ;
 import com.tencent.intervideo.nowproxy.whitelist.WelfareTaskCallback;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 
 public class NowLive
 {
@@ -140,14 +136,13 @@ public class NowLive
     OnHostLoginCallback localOnHostLoginCallback = ExtSdkBizAbilityImpl.getInstance().getOnHostLoginCallback();
     if (localOnHostLoginCallback != null)
     {
-      if (paramInt2 == 0) {
+      if (paramInt2 == 0)
+      {
         localOnHostLoginCallback.onNowLoginTicketChanged(paramNowLoginInfo);
+        return;
       }
+      localOnHostLoginCallback.onGetNowLoginTicketError(2, "");
     }
-    else {
-      return;
-    }
-    localOnHostLoginCallback.onGetNowLoginTicketError(2, "");
   }
   
   public static void onJumpToApp(int paramInt1, int paramInt2)
@@ -162,20 +157,22 @@ public class NowLive
   
   public static boolean openRoom(long paramLong)
   {
-    doAction(URLEncoder.encode("action=openroom&roomid=" + paramLong + "&fromid=1&first=2&enter_record_if_finish=0"), null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("action=openroom&roomid=");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("&fromid=1&first=2&enter_record_if_finish=0");
+    doAction(URLEncoder.encode(localStringBuilder.toString()), null);
     return true;
   }
   
   public static boolean openRoom(ListNameData paramListNameData, long paramLong, String paramString1, String paramString2, int paramInt, Bundle paramBundle)
   {
+    Bundle localBundle = paramBundle;
     if (paramBundle == null) {
-      paramBundle = new Bundle();
+      localBundle = new Bundle();
     }
-    for (;;)
-    {
-      paramBundle.putAll(RoomParam.getEnterRoomParam(paramLong, paramString1, paramString2, paramInt));
-      return sEntry.openroom(paramListNameData, paramLong, paramString1, paramString2, paramInt, paramBundle);
-    }
+    localBundle.putAll(RoomParam.getEnterRoomParam(paramLong, paramString1, paramString2, paramInt));
+    return sEntry.openroom(paramListNameData, paramLong, paramString1, paramString2, paramInt, localBundle);
   }
   
   public static boolean preLogin(Bundle paramBundle)
@@ -213,92 +210,187 @@ public class NowLive
     sEntry.reportHostNowEntry();
   }
   
+  /* Error */
   public static void reportNowEntry(String paramString)
   {
-    Intent localIntent = NowSchemeUtil.parseSchemeUrl(paramString);
-    if (localIntent == null) {
-      return;
-    }
-    l1 = 0L;
-    String str1 = "";
-    localObject3 = "";
-    int j = 2;
-    localObject2 = str1;
-    paramString = (String)localObject3;
-    try
-    {
-      l2 = Long.parseLong(localIntent.getStringExtra("roomid"));
-      localObject2 = str1;
-      l1 = l2;
-      paramString = (String)localObject3;
-      str2 = localIntent.getStringExtra("listname");
-      localObject2 = str1;
-      l1 = l2;
-      paramString = (String)localObject3;
-      localObject3 = localIntent.getStringExtra("fromid");
-      localObject2 = str1;
-      l1 = l2;
-      paramString = (String)localObject3;
-      str1 = localIntent.getStringExtra("vid");
-      localObject2 = str1;
-      l1 = l2;
-      paramString = (String)localObject3;
-      str3 = localIntent.getStringExtra("first");
-      i = j;
-      if (str3 != null) {
-        i = j;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        String str2;
-        String str3;
-        label145:
-        int i = 2;
-        localObject1 = localObject2;
-      }
-    }
-    try
-    {
-      if (str3.length() > 0) {
-        i = Integer.valueOf(str3).intValue();
-      }
-      try
-      {
-        if (!TextUtils.isEmpty(str2))
-        {
-          paramString = new ArrayList();
-          paramString.add(str2);
-          new ListNameData(paramString, 0);
-        }
-        paramString = (String)localObject3;
-        l1 = l2;
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          Object localObject1;
-          l1 = l2;
-          paramString = (String)localObject3;
-        }
-      }
-      localObject3 = localIntent.getExtras();
-      localObject2 = localObject3;
-      if (localObject3 == null) {
-        localObject2 = new Bundle();
-      }
-      ((Bundle)localObject2).putAll(RoomParam.getEnterRoomParam(l1, str1, paramString, i));
-      sEntry.reportNowEntry(l1, paramString, i, (Bundle)localObject2);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      i = 2;
-      break label145;
-    }
+    // Byte code:
+    //   0: ldc 133
+    //   2: astore 8
+    //   4: aload_0
+    //   5: invokestatic 222	com/tencent/intervideo/nowproxy/proxyinner/util/NowSchemeUtil:parseSchemeUrl	(Ljava/lang/String;)Landroid/content/Intent;
+    //   8: astore 12
+    //   10: aload 12
+    //   12: ifnonnull +4 -> 16
+    //   15: return
+    //   16: lconst_0
+    //   17: lstore 4
+    //   19: iconst_2
+    //   20: istore_2
+    //   21: aload 12
+    //   23: ldc 224
+    //   25: invokevirtual 229	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   28: invokestatic 235	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   31: lstore 6
+    //   33: lload 6
+    //   35: lstore 4
+    //   37: aload 12
+    //   39: ldc 237
+    //   41: invokevirtual 229	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   44: astore 13
+    //   46: lload 6
+    //   48: lstore 4
+    //   50: aload 12
+    //   52: ldc 239
+    //   54: invokevirtual 229	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   57: astore 11
+    //   59: iload_2
+    //   60: istore_3
+    //   61: aload 12
+    //   63: ldc 241
+    //   65: invokevirtual 229	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   68: astore 10
+    //   70: aload 10
+    //   72: astore 8
+    //   74: iload_2
+    //   75: istore_3
+    //   76: aload 12
+    //   78: ldc 243
+    //   80: invokevirtual 229	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   83: astore_0
+    //   84: iload_2
+    //   85: istore_1
+    //   86: aload_0
+    //   87: ifnull +20 -> 107
+    //   90: iload_2
+    //   91: istore_1
+    //   92: aload_0
+    //   93: invokevirtual 249	java/lang/String:length	()I
+    //   96: ifle +11 -> 107
+    //   99: aload_0
+    //   100: invokestatic 255	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   103: invokevirtual 258	java/lang/Integer:intValue	()I
+    //   106: istore_1
+    //   107: aload 10
+    //   109: astore_0
+    //   110: lload 6
+    //   112: lstore 4
+    //   114: iload_1
+    //   115: istore_2
+    //   116: aload 11
+    //   118: astore 9
+    //   120: aload 10
+    //   122: astore 8
+    //   124: iload_1
+    //   125: istore_3
+    //   126: aload 13
+    //   128: invokestatic 264	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   131: ifne +69 -> 200
+    //   134: aload 10
+    //   136: astore 8
+    //   138: iload_1
+    //   139: istore_3
+    //   140: new 266	java/util/ArrayList
+    //   143: dup
+    //   144: invokespecial 267	java/util/ArrayList:<init>	()V
+    //   147: astore_0
+    //   148: aload 10
+    //   150: astore 8
+    //   152: iload_1
+    //   153: istore_3
+    //   154: aload_0
+    //   155: aload 13
+    //   157: invokevirtual 271	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   160: pop
+    //   161: aload 10
+    //   163: astore 8
+    //   165: iload_1
+    //   166: istore_3
+    //   167: new 273	com/tencent/intervideo/nowproxy/ListNameData
+    //   170: dup
+    //   171: aload_0
+    //   172: iconst_0
+    //   173: invokespecial 276	com/tencent/intervideo/nowproxy/ListNameData:<init>	(Ljava/util/ArrayList;I)V
+    //   176: pop
+    //   177: aload 10
+    //   179: astore_0
+    //   180: lload 6
+    //   182: lstore 4
+    //   184: iload_1
+    //   185: istore_2
+    //   186: aload 11
+    //   188: astore 9
+    //   190: goto +10 -> 200
+    //   193: ldc 133
+    //   195: astore 9
+    //   197: aload 8
+    //   199: astore_0
+    //   200: aload 12
+    //   202: invokevirtual 280	android/content/Intent:getExtras	()Landroid/os/Bundle;
+    //   205: astore 10
+    //   207: aload 10
+    //   209: astore 8
+    //   211: aload 10
+    //   213: ifnonnull +12 -> 225
+    //   216: new 44	android/os/Bundle
+    //   219: dup
+    //   220: invokespecial 176	android/os/Bundle:<init>	()V
+    //   223: astore 8
+    //   225: aload 8
+    //   227: lload 4
+    //   229: aload_0
+    //   230: aload 9
+    //   232: iload_2
+    //   233: invokestatic 182	com/tencent/intervideo/nowproxy/common/roomparam/RoomParam:getEnterRoomParam	(JLjava/lang/String;Ljava/lang/String;I)Landroid/os/Bundle;
+    //   236: invokevirtual 185	android/os/Bundle:putAll	(Landroid/os/Bundle;)V
+    //   239: getstatic 15	com/tencent/intervideo/nowproxy/NowLive:sEntry	Lcom/tencent/intervideo/nowproxy/NowRoomEntry;
+    //   242: lload 4
+    //   244: aload 9
+    //   246: iload_2
+    //   247: aload 8
+    //   249: invokevirtual 283	com/tencent/intervideo/nowproxy/NowRoomEntry:reportNowEntry	(JLjava/lang/String;ILandroid/os/Bundle;)V
+    //   252: return
+    //   253: astore_0
+    //   254: goto -61 -> 193
+    //   257: astore_0
+    //   258: aload 8
+    //   260: astore_0
+    //   261: lload 6
+    //   263: lstore 4
+    //   265: iload_3
+    //   266: istore_2
+    //   267: aload 11
+    //   269: astore 9
+    //   271: goto -71 -> 200
+    //   274: astore_0
+    //   275: iload_2
+    //   276: istore_1
+    //   277: goto -170 -> 107
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	280	0	paramString	String
+    //   85	192	1	i	int
+    //   20	256	2	j	int
+    //   60	206	3	k	int
+    //   17	247	4	l1	long
+    //   31	231	6	l2	long
+    //   2	257	8	localObject1	Object
+    //   118	152	9	str1	String
+    //   68	144	10	localObject2	Object
+    //   57	211	11	str2	String
+    //   8	193	12	localIntent	android.content.Intent
+    //   44	112	13	str3	String
+    // Exception table:
+    //   from	to	target	type
+    //   21	33	253	java/lang/Exception
+    //   37	46	253	java/lang/Exception
+    //   50	59	253	java/lang/Exception
+    //   61	70	257	java/lang/Exception
+    //   76	84	257	java/lang/Exception
+    //   126	134	257	java/lang/Exception
+    //   140	148	257	java/lang/Exception
+    //   154	161	257	java/lang/Exception
+    //   167	177	257	java/lang/Exception
+    //   92	107	274	java/lang/Exception
   }
   
   public static void sendServerPushMessage(Bundle paramBundle)
@@ -490,7 +582,7 @@ public class NowLive
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.intervideo.nowproxy.NowLive
  * JD-Core Version:    0.7.0.1
  */

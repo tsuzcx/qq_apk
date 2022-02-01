@@ -15,140 +15,148 @@ public class NetworkUtil
 {
   public static int a(Context paramContext)
   {
-    try
-    {
-      paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
-      if (paramContext == null) {
-        break label269;
-      }
-      paramContext = paramContext.getActiveNetworkInfo();
-      if ((paramContext == null) || (!paramContext.isConnected())) {
-        break label195;
-      }
-      i = paramContext.getType();
-      if (!QLog.isColorLevel()) {
-        break label305;
-      }
-      QLog.d("NetworkUtil", 2, new Object[] { "getNetworkType type = ", Integer.valueOf(i) });
-    }
-    catch (IllegalStateException paramContext)
-    {
-      if (!QLog.isColorLevel()) {
-        break label343;
-      }
-      QLog.d("NetworkUtil", 2, "getNetworkType IllegalStateException", paramContext);
-      break label343;
-      if (!QLog.isColorLevel()) {
-        break label343;
-      }
-      QLog.d("NetworkUtil", 2, "getNetworkType could not get ConnectivityManager");
-      break label343;
-    }
-    catch (Exception paramContext)
+    for (;;)
     {
       int i;
-      label195:
-      while (QLog.isColorLevel())
+      try
       {
-        QLog.d("NetworkUtil", 2, "getNetworkType exception", paramContext);
-        break;
+        paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+        if (paramContext != null)
+        {
+          paramContext = paramContext.getActiveNetworkInfo();
+          if ((paramContext != null) && (paramContext.isConnected()))
+          {
+            i = paramContext.getType();
+            if (!QLog.isColorLevel()) {
+              break label304;
+            }
+            QLog.d("NetworkUtil", 2, new Object[] { "getNetworkType type = ", Integer.valueOf(i) });
+            break label304;
+            i = paramContext.getSubtype();
+          }
+        }
         switch (i)
         {
-        case 0: 
         default: 
+          boolean bool = QLog.isColorLevel();
+          if (!bool) {
+            break label326;
+          }
+          QLog.d("NetworkUtil", 2, new Object[] { "getNetworkType subType = ", Integer.valueOf(i) });
+          return -1;
+          if (paramContext == null)
+          {
+            if (QLog.isColorLevel())
+            {
+              QLog.d("NetworkUtil", 2, "getNetworkType networkInfo = null");
+              return 0;
+            }
+          }
+          else if (QLog.isColorLevel())
+          {
+            QLog.d("NetworkUtil", 2, new Object[] { "getNetworkType networkInfo isConnected =", Boolean.valueOf(paramContext.isConnected()) });
+            return 0;
+            if (QLog.isColorLevel())
+            {
+              QLog.d("NetworkUtil", 2, "getNetworkType could not get ConnectivityManager");
+              return 0;
+            }
+          }
+          break;
+        }
+      }
+      catch (Exception paramContext)
+      {
+        if (QLog.isColorLevel())
+        {
+          QLog.d("NetworkUtil", 2, "getNetworkType exception", paramContext);
+          return 0;
+        }
+      }
+      catch (IllegalStateException paramContext)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("NetworkUtil", 2, "getNetworkType IllegalStateException", paramContext);
+        }
+      }
+      return 0;
+      label304:
+      if (i != 0)
+      {
+        if (i != 1) {
           return -1;
         }
         return 1;
       }
-      label269:
-      label305:
-      return -1;
-      return 2;
-      return 3;
-      return 4;
     }
-    i = paramContext.getSubtype();
-    switch (i)
-    {
-    default: 
-      if (QLog.isColorLevel())
-      {
-        QLog.d("NetworkUtil", 2, new Object[] { "getNetworkType subType = ", Integer.valueOf(i) });
-        break;
-        if (paramContext == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("NetworkUtil", 2, "getNetworkType networkInfo = null");
-          }
-        }
-        else if (QLog.isColorLevel()) {
-          QLog.d("NetworkUtil", 2, new Object[] { "getNetworkType networkInfo isConnected =", Boolean.valueOf(paramContext.isConnected()) });
-        }
-      }
-      break;
-    }
-    label343:
-    return 0;
+    return 4;
+    return 3;
+    return 2;
+    label326:
+    return -1;
   }
   
   public static String a(String paramString, int paramInt)
   {
-    if (!TextUtils.isEmpty(paramString)) {
+    if (!TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
       try
       {
-        String str = new URL(paramString).getHost();
-        Object localObject2 = InnerDns.getInstance().reqDns(str, paramInt);
-        if (!TextUtils.isEmpty((CharSequence)localObject2))
+        String str4 = new URL(paramString).getHost();
+        String str3 = InnerDns.getInstance().reqDns(str4, paramInt);
+        if (!TextUtils.isEmpty(str3))
         {
-          Object localObject1 = localObject2;
-          if (!((String)localObject2).contains(":"))
+          String str1 = str3;
+          if (!str3.contains(":"))
           {
-            localObject2 = new StringBuilder().append((String)localObject2);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(str3);
             if (!paramString.startsWith("https")) {
-              break label89;
+              break label114;
             }
+            str1 = ":443";
+            localStringBuilder.append(str1);
+            str1 = localStringBuilder.toString();
           }
-          label89:
-          for (localObject1 = ":443";; localObject1 = ":80")
-          {
-            localObject1 = (String)localObject1;
-            return paramString.replaceFirst(str, (String)localObject1);
-          }
+          str1 = paramString.replaceFirst(str4, str1);
+          return str1;
         }
-        return paramString;
       }
       catch (MalformedURLException localMalformedURLException)
       {
         QLog.e("NetworkUtil", 1, "MalformedURLException", localMalformedURLException);
       }
+      return paramString;
+      label114:
+      String str2 = ":80";
     }
   }
   
   public static boolean a(Context paramContext)
   {
     paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
-    if (paramContext == null) {}
-    for (;;)
-    {
+    if (paramContext == null) {
       return false;
-      paramContext = paramContext.getAllNetworkInfo();
-      if (paramContext != null)
+    }
+    paramContext = paramContext.getAllNetworkInfo();
+    if (paramContext != null)
+    {
+      int i = 0;
+      while (i < paramContext.length)
       {
-        int i = 0;
-        while (i < paramContext.length)
-        {
-          if (paramContext[i].getState() == NetworkInfo.State.CONNECTED) {
-            return true;
-          }
-          i += 1;
+        if (paramContext[i].getState() == NetworkInfo.State.CONNECTED) {
+          return true;
         }
+        i += 1;
       }
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.common.util.NetworkUtil
  * JD-Core Version:    0.7.0.1
  */

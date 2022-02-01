@@ -40,7 +40,7 @@ public class CircleProgressView
   
   public static int a(Context paramContext, float paramFloat)
   {
-    return (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
+    return (int)(paramFloat * paramContext.getResources().getDisplayMetrics().density + 0.5F);
   }
   
   private void a()
@@ -60,24 +60,28 @@ public class CircleProgressView
     setCircleWidth(a(getContext(), 2.0F));
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     float f1 = getWidth() / 2;
-    float f2 = f1 - this.c;
-    this.jdField_a_of_type_AndroidGraphicsRectF.left = (f1 - f2 - this.c / 2);
-    this.jdField_a_of_type_AndroidGraphicsRectF.top = (f1 - f2 - this.c / 2);
-    this.jdField_a_of_type_AndroidGraphicsRectF.right = (f1 + f2 + this.c / 2);
-    this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (f2 + f1 + this.c / 2);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.c);
+    int i = this.c;
+    float f2 = f1 - i;
+    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    float f3 = f1 - f2;
+    localRectF.left = (f3 - i / 2);
+    localRectF.top = (f3 - i / 2);
+    f2 += f1;
+    localRectF.right = (i / 2 + f2);
+    localRectF.bottom = (f2 + i / 2);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(i);
     paramCanvas.drawCircle(f1, f1, f1, this.jdField_b_of_type_AndroidGraphicsPaint);
     paramCanvas.save();
-    paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, 270.0F, 3.6F * this.d, false, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, 270.0F, this.d * 3.6F, false, this.jdField_a_of_type_AndroidGraphicsPaint);
     paramCanvas.restore();
     postInvalidateDelayed(20L);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     setMeasuredDimension(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
@@ -111,7 +115,7 @@ public class CircleProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.CircleProgressView
  * JD-Core Version:    0.7.0.1
  */

@@ -77,14 +77,14 @@ public class ConfessConfig
   
   static
   {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131702445);
-    jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131702443);
-    jdField_c_of_type_JavaLangString = HardCodeUtil.a(2131702448);
-    jdField_d_of_type_JavaLangString = HardCodeUtil.a(2131702449);
-    jdField_e_of_type_JavaLangString = HardCodeUtil.a(2131702444);
-    jdField_f_of_type_JavaLangString = HardCodeUtil.a(2131702446);
-    jdField_g_of_type_JavaLangString = HardCodeUtil.a(2131702451);
-    jdField_h_of_type_JavaLangString = HardCodeUtil.a(2131702447);
+    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131702577);
+    jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131702575);
+    jdField_c_of_type_JavaLangString = HardCodeUtil.a(2131702580);
+    jdField_d_of_type_JavaLangString = HardCodeUtil.a(2131702581);
+    jdField_e_of_type_JavaLangString = HardCodeUtil.a(2131702576);
+    jdField_f_of_type_JavaLangString = HardCodeUtil.a(2131702578);
+    jdField_g_of_type_JavaLangString = HardCodeUtil.a(2131702583);
+    jdField_h_of_type_JavaLangString = HardCodeUtil.a(2131702579);
   }
   
   public ConfessConfig(String paramString)
@@ -111,20 +111,19 @@ public class ConfessConfig
     int i2 = localCalendar1.get(1);
     i1 -= i3;
     i3 = i1;
-    if (i2 != i4)
-    {
-      i3 = i1;
-      if (i2 < i4)
+    if (i2 != i4) {
+      for (;;)
       {
+        i3 = i1;
+        if (i2 >= i4) {
+          break;
+        }
         if (((i2 % 4 == 0) && (i2 % 100 != 0)) || (i2 % 400 == 0)) {
           i1 += 366;
-        }
-        for (;;)
-        {
-          i2 += 1;
-          break;
+        } else {
           i1 += 365;
         }
+        i2 += 1;
       }
     }
     return i3;
@@ -140,38 +139,50 @@ public class ConfessConfig
   
   public static void a(AppInterface paramAppInterface, Context paramContext, String paramString1, String paramString2, int paramInt, boolean paramBoolean)
   {
-    if ((paramAppInterface == null) || (paramContext == null)) {
-      return;
-    }
-    paramAppInterface = ((ConfessManager)paramAppInterface.getManager(QQManagerFactory.CONFESS_MANAGER)).b();
-    if (paramAppInterface == null)
+    if (paramAppInterface != null)
     {
-      paramAppInterface = "https://ti.qq.com/honest-say/holmes.html?_nav_alpha=0&_wwv=4&_qStyle=1";
-      label30:
-      if (TextUtils.isEmpty(paramAppInterface)) {
-        break label195;
+      if (paramContext == null) {
+        return;
       }
-      paramAppInterface = paramAppInterface + "&fromUin=" + NearbyURLSafeUtil.a(paramString1);
-      paramAppInterface = paramAppInterface + "&toUin=" + NearbyURLSafeUtil.a(paramString2);
-      paramString1 = paramAppInterface + "&topicId=" + paramInt;
-      if (!paramBoolean) {
-        break label197;
+      paramAppInterface = ((ConfessManager)paramAppInterface.getManager(QQManagerFactory.CONFESS_MANAGER)).b();
+      if (paramAppInterface == null) {
+        paramAppInterface = "https://ti.qq.com/honest-say/holmes.html?_nav_alpha=0&_wwv=4&_qStyle=1";
+      } else {
+        paramAppInterface = paramAppInterface.s;
       }
-    }
-    label195:
-    label197:
-    for (paramAppInterface = "1";; paramAppInterface = "0")
-    {
-      paramAppInterface = paramString1 + "&isConfessor=" + paramAppInterface;
-      paramString1 = new Intent(paramContext, QQBrowserActivity.class);
-      paramString1.putExtra("hide_more_button", true);
-      paramString1.putExtra("hide_operation_bar", true);
-      paramString1.putExtra("url", paramAppInterface);
-      paramContext.startActivity(paramString1);
-      return;
-      paramAppInterface = paramAppInterface.s;
-      break label30;
-      break;
+      if (!TextUtils.isEmpty(paramAppInterface))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramAppInterface);
+        localStringBuilder.append("&fromUin=");
+        localStringBuilder.append(NearbyURLSafeUtil.a(paramString1));
+        paramAppInterface = localStringBuilder.toString();
+        paramString1 = new StringBuilder();
+        paramString1.append(paramAppInterface);
+        paramString1.append("&toUin=");
+        paramString1.append(NearbyURLSafeUtil.a(paramString2));
+        paramAppInterface = paramString1.toString();
+        paramString1 = new StringBuilder();
+        paramString1.append(paramAppInterface);
+        paramString1.append("&topicId=");
+        paramString1.append(paramInt);
+        paramString1 = paramString1.toString();
+        if (paramBoolean) {
+          paramAppInterface = "1";
+        } else {
+          paramAppInterface = "0";
+        }
+        paramString2 = new StringBuilder();
+        paramString2.append(paramString1);
+        paramString2.append("&isConfessor=");
+        paramString2.append(paramAppInterface);
+        paramAppInterface = paramString2.toString();
+        paramString1 = new Intent(paramContext, QQBrowserActivity.class);
+        paramString1.putExtra("hide_more_button", true);
+        paramString1.putExtra("hide_operation_bar", true);
+        paramString1.putExtra("url", paramAppInterface);
+        paramContext.startActivity(paramString1);
+      }
     }
   }
   
@@ -199,8 +210,6 @@ public class ConfessConfig
     this.jdField_j_of_type_Int = 24;
     this.jdField_k_of_type_Int = 5;
     this.jdField_l_of_type_Int = 0;
-    label322:
-    Locale localLocale;
     if (TextUtils.isEmpty(paramString))
     {
       this.jdField_a_of_type_Int = 0;
@@ -210,147 +219,142 @@ public class ConfessConfig
       this.jdField_e_of_type_Int = 0;
       this.jdField_f_of_type_Int = 0;
       this.jdField_a_of_type_Float = 5.0F;
-      if (TextUtils.isEmpty(this.jdField_l_of_type_JavaLangString)) {
-        this.jdField_l_of_type_JavaLangString = "https://ti.qq.com/honest-say/main.html?_bid=3104&_qStyle=1&_wv=9191&_nav_alpha=0&_nav_txtclr=FFFFFF&_nav_titleclr=FFFFFF&_nav_anim=true&_wwv=128&adtag=contact_tab";
-      }
-      if (TextUtils.isEmpty(this.jdField_k_of_type_JavaLangString)) {
-        this.jdField_k_of_type_JavaLangString = "https://ti.qq.com/honest-say/main.html?_bid=3104&_qStyle=1&_wv=9191&_nav_alpha=0&_nav_txtclr=FFFFFF&_nav_titleclr=FFFFFF&_nav_anim=true&_wwv=128&adtag=message_box";
-      }
-      if (TextUtils.isEmpty(this.jdField_i_of_type_JavaLangString)) {
-        this.jdField_i_of_type_JavaLangString = jdField_a_of_type_JavaLangString;
-      }
-      if (TextUtils.isEmpty(this.jdField_j_of_type_JavaLangString)) {
-        this.jdField_j_of_type_JavaLangString = jdField_b_of_type_JavaLangString;
-      }
-      if (TextUtils.isEmpty(this.jdField_m_of_type_JavaLangString)) {
-        this.jdField_m_of_type_JavaLangString = "https://ti.qq.com/honest-say/friends-received.html?_bid=3104&_wv=9191&_qStyle=1&adtag=message_box";
-      }
-      if (TextUtils.isEmpty(this.jdField_n_of_type_JavaLangString)) {
-        this.jdField_n_of_type_JavaLangString = "https://ti.qq.com/honest-say/confess-detail.html?_bid=3104&_wv=9191&_nav_alpha=0&_nav_txtclr=ffffff&_nav_titleclr=ffffff&_nav_anim=true&ADTAG=aio_card";
-      }
-      if (TextUtils.isEmpty(this.p)) {
-        this.p = "https://ti.qq.com/honest-say/setting.html?_wv=9191&_wwv=4&_qStyle=1&adtag=message_box";
-      }
-      if (TextUtils.isEmpty(this.r)) {
-        this.r = jdField_c_of_type_JavaLangString;
-      }
-      if (TextUtils.isEmpty(this.o)) {
-        this.o = "https://ti.qq.com/honest-say/group-received.html?_bid=3104&_wv=9191&_qStyle=1";
-      }
-      if (TextUtils.isEmpty(this.q)) {
-        this.q = "https://ti.qq.com/honest-say/rank.html?_wv=9191&_wwv=4&_qStyle=1";
-      }
-      if (TextUtils.isEmpty(this.s)) {
-        this.s = "https://ti.qq.com/honest-say/holmes.html?_nav_alpha=0&_wwv=4&_qStyle=1";
-      }
-      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (paramBoolean) {
-        break label896;
-      }
-      this.jdField_a_of_type_Long = MessageCache.a();
-      a((QQAppInterface)localObject, "rec_config_time", this.jdField_a_of_type_Long);
-      if (QLog.isDevelopLevel())
+    }
+    else
+    {
+      try
       {
-        localLocale = Locale.getDefault();
-        if (!paramBoolean) {
-          break label910;
+        JSONObject localJSONObject = new JSONObject(paramString);
+        if (localJSONObject.has("min")) {
+          this.jdField_b_of_type_Int = localJSONObject.getInt("min");
         }
+        if (localJSONObject.has("max")) {
+          this.jdField_c_of_type_Int = localJSONObject.getInt("max");
+        }
+        if (localJSONObject.has("delta")) {
+          this.jdField_d_of_type_Int = localJSONObject.getInt("delta");
+        }
+        if (localJSONObject.has("X")) {
+          this.jdField_e_of_type_Int = localJSONObject.getInt("X");
+        }
+        if (localJSONObject.has("Y")) {
+          this.jdField_f_of_type_Int = localJSONObject.getInt("Y");
+        }
+        if (localJSONObject.has("contactEntryUrl")) {
+          this.jdField_l_of_type_JavaLangString = localJSONObject.getString("contactEntryUrl");
+        }
+        if (localJSONObject.has("boxEntryUrl")) {
+          this.jdField_k_of_type_JavaLangString = localJSONObject.getString("boxEntryUrl");
+        }
+        if (localJSONObject.has("title")) {
+          this.jdField_i_of_type_JavaLangString = localJSONObject.getString("title");
+        }
+        if (localJSONObject.has("subtitle")) {
+          this.jdField_j_of_type_JavaLangString = localJSONObject.getString("subtitle");
+        }
+        if (localJSONObject.has("changeInterval")) {
+          this.jdField_a_of_type_Float = ((float)localJSONObject.getDouble("changeInterval"));
+        }
+        if (localJSONObject.has("frdRecUrl")) {
+          this.jdField_m_of_type_JavaLangString = localJSONObject.getString("frdRecUrl");
+        }
+        if (localJSONObject.has("frdRecMsgSwitch")) {
+          this.jdField_n_of_type_Int = localJSONObject.getInt("frdRecMsgSwitch");
+        }
+        if (localJSONObject.has("detailUrl")) {
+          this.jdField_n_of_type_JavaLangString = localJSONObject.getString("detailUrl");
+        }
+        if (localJSONObject.has("settingUrl")) {
+          this.p = localJSONObject.getString("settingUrl");
+        }
+        if (localJSONObject.has("entryBoxSwitch")) {
+          this.jdField_h_of_type_Int = localJSONObject.getInt("entryBoxSwitch");
+        }
+        if (localJSONObject.has("entryContactSwitch")) {
+          this.jdField_i_of_type_Int = localJSONObject.getInt("entryContactSwitch");
+        }
+        if (localJSONObject.has("redPointText")) {
+          this.r = localJSONObject.getString("redPointText");
+        }
+        if (localJSONObject.has("blockTime")) {
+          this.jdField_j_of_type_Int = localJSONObject.getInt("blockTime");
+        }
+        if (localJSONObject.has("groupCfsListUrl")) {
+          this.o = localJSONObject.getString("groupCfsListUrl");
+        }
+        if (localJSONObject.has("rankingSwitch")) {
+          this.jdField_g_of_type_Int = localJSONObject.getInt("rankingSwitch");
+        }
+        if (localJSONObject.has("rankingUrl")) {
+          this.q = localJSONObject.getString("rankingUrl");
+        }
+        if (localJSONObject.has("holmesCount")) {
+          this.jdField_k_of_type_Int = localJSONObject.optInt("holmesCount", 5);
+        }
+        if (localJSONObject.has("holmesUrl")) {
+          this.s = localJSONObject.optString("holmesUrl");
+        }
+        if (localJSONObject.has("holmesSwitch")) {
+          this.jdField_l_of_type_Int = localJSONObject.optInt("holmesSwitch", 0);
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
       }
     }
-    label896:
-    label910:
-    String str;
-    for (Object localObject = "local";; str = "server")
+    if (TextUtils.isEmpty(this.jdField_l_of_type_JavaLangString)) {
+      this.jdField_l_of_type_JavaLangString = "https://ti.qq.com/honest-say/main.html?_bid=3104&_qStyle=1&_wv=9191&_nav_alpha=0&_nav_txtclr=FFFFFF&_nav_titleclr=FFFFFF&_nav_anim=true&_wwv=128&adtag=contact_tab";
+    }
+    if (TextUtils.isEmpty(this.jdField_k_of_type_JavaLangString)) {
+      this.jdField_k_of_type_JavaLangString = "https://ti.qq.com/honest-say/main.html?_bid=3104&_qStyle=1&_wv=9191&_nav_alpha=0&_nav_txtclr=FFFFFF&_nav_titleclr=FFFFFF&_nav_anim=true&_wwv=128&adtag=message_box";
+    }
+    if (TextUtils.isEmpty(this.jdField_i_of_type_JavaLangString)) {
+      this.jdField_i_of_type_JavaLangString = jdField_a_of_type_JavaLangString;
+    }
+    if (TextUtils.isEmpty(this.jdField_j_of_type_JavaLangString)) {
+      this.jdField_j_of_type_JavaLangString = jdField_b_of_type_JavaLangString;
+    }
+    if (TextUtils.isEmpty(this.jdField_m_of_type_JavaLangString)) {
+      this.jdField_m_of_type_JavaLangString = "https://ti.qq.com/honest-say/friends-received.html?_bid=3104&_wv=9191&_qStyle=1&adtag=message_box";
+    }
+    if (TextUtils.isEmpty(this.jdField_n_of_type_JavaLangString)) {
+      this.jdField_n_of_type_JavaLangString = "https://ti.qq.com/honest-say/confess-detail.html?_bid=3104&_wv=9191&_nav_alpha=0&_nav_txtclr=ffffff&_nav_titleclr=ffffff&_nav_anim=true&ADTAG=aio_card";
+    }
+    if (TextUtils.isEmpty(this.p)) {
+      this.p = "https://ti.qq.com/honest-say/setting.html?_wv=9191&_wwv=4&_qStyle=1&adtag=message_box";
+    }
+    if (TextUtils.isEmpty(this.r)) {
+      this.r = jdField_c_of_type_JavaLangString;
+    }
+    if (TextUtils.isEmpty(this.o)) {
+      this.o = "https://ti.qq.com/honest-say/group-received.html?_bid=3104&_wv=9191&_qStyle=1";
+    }
+    if (TextUtils.isEmpty(this.q)) {
+      this.q = "https://ti.qq.com/honest-say/rank.html?_wv=9191&_wwv=4&_qStyle=1";
+    }
+    if (TextUtils.isEmpty(this.s)) {
+      this.s = "https://ti.qq.com/honest-say/holmes.html?_nav_alpha=0&_wwv=4&_qStyle=1";
+    }
+    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (!paramBoolean)
     {
-      for (;;)
-      {
-        QLog.i("ConfessConfig", 4, String.format(localLocale, "parse %s config: %s", new Object[] { localObject, paramString }));
-        return;
-        try
-        {
-          localObject = new JSONObject(paramString);
-          if (((JSONObject)localObject).has("min")) {
-            this.jdField_b_of_type_Int = ((JSONObject)localObject).getInt("min");
-          }
-          if (((JSONObject)localObject).has("max")) {
-            this.jdField_c_of_type_Int = ((JSONObject)localObject).getInt("max");
-          }
-          if (((JSONObject)localObject).has("delta")) {
-            this.jdField_d_of_type_Int = ((JSONObject)localObject).getInt("delta");
-          }
-          if (((JSONObject)localObject).has("X")) {
-            this.jdField_e_of_type_Int = ((JSONObject)localObject).getInt("X");
-          }
-          if (((JSONObject)localObject).has("Y")) {
-            this.jdField_f_of_type_Int = ((JSONObject)localObject).getInt("Y");
-          }
-          if (((JSONObject)localObject).has("contactEntryUrl")) {
-            this.jdField_l_of_type_JavaLangString = ((JSONObject)localObject).getString("contactEntryUrl");
-          }
-          if (((JSONObject)localObject).has("boxEntryUrl")) {
-            this.jdField_k_of_type_JavaLangString = ((JSONObject)localObject).getString("boxEntryUrl");
-          }
-          if (((JSONObject)localObject).has("title")) {
-            this.jdField_i_of_type_JavaLangString = ((JSONObject)localObject).getString("title");
-          }
-          if (((JSONObject)localObject).has("subtitle")) {
-            this.jdField_j_of_type_JavaLangString = ((JSONObject)localObject).getString("subtitle");
-          }
-          if (((JSONObject)localObject).has("changeInterval")) {
-            this.jdField_a_of_type_Float = ((float)((JSONObject)localObject).getDouble("changeInterval"));
-          }
-          if (((JSONObject)localObject).has("frdRecUrl")) {
-            this.jdField_m_of_type_JavaLangString = ((JSONObject)localObject).getString("frdRecUrl");
-          }
-          if (((JSONObject)localObject).has("frdRecMsgSwitch")) {
-            this.jdField_n_of_type_Int = ((JSONObject)localObject).getInt("frdRecMsgSwitch");
-          }
-          if (((JSONObject)localObject).has("detailUrl")) {
-            this.jdField_n_of_type_JavaLangString = ((JSONObject)localObject).getString("detailUrl");
-          }
-          if (((JSONObject)localObject).has("settingUrl")) {
-            this.p = ((JSONObject)localObject).getString("settingUrl");
-          }
-          if (((JSONObject)localObject).has("entryBoxSwitch")) {
-            this.jdField_h_of_type_Int = ((JSONObject)localObject).getInt("entryBoxSwitch");
-          }
-          if (((JSONObject)localObject).has("entryContactSwitch")) {
-            this.jdField_i_of_type_Int = ((JSONObject)localObject).getInt("entryContactSwitch");
-          }
-          if (((JSONObject)localObject).has("redPointText")) {
-            this.r = ((JSONObject)localObject).getString("redPointText");
-          }
-          if (((JSONObject)localObject).has("blockTime")) {
-            this.jdField_j_of_type_Int = ((JSONObject)localObject).getInt("blockTime");
-          }
-          if (((JSONObject)localObject).has("groupCfsListUrl")) {
-            this.o = ((JSONObject)localObject).getString("groupCfsListUrl");
-          }
-          if (((JSONObject)localObject).has("rankingSwitch")) {
-            this.jdField_g_of_type_Int = ((JSONObject)localObject).getInt("rankingSwitch");
-          }
-          if (((JSONObject)localObject).has("rankingUrl")) {
-            this.q = ((JSONObject)localObject).getString("rankingUrl");
-          }
-          if (((JSONObject)localObject).has("holmesCount")) {
-            this.jdField_k_of_type_Int = ((JSONObject)localObject).optInt("holmesCount", 5);
-          }
-          if (((JSONObject)localObject).has("holmesUrl")) {
-            this.s = ((JSONObject)localObject).optString("holmesUrl");
-          }
-          if (!((JSONObject)localObject).has("holmesSwitch")) {
-            break;
-          }
-          this.jdField_l_of_type_Int = ((JSONObject)localObject).optInt("holmesSwitch", 0);
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-        }
+      this.jdField_a_of_type_Long = MessageCache.a();
+      a((QQAppInterface)localObject, "rec_config_time", this.jdField_a_of_type_Long);
+    }
+    else
+    {
+      this.jdField_a_of_type_Long = a((QQAppInterface)localObject, "rec_config_time");
+    }
+    if (QLog.isDevelopLevel())
+    {
+      Locale localLocale = Locale.getDefault();
+      if (paramBoolean) {
+        localObject = "local";
+      } else {
+        localObject = "server";
       }
-      break;
-      this.jdField_a_of_type_Long = a(localException, "rec_config_time");
-      break label322;
+      QLog.i("ConfessConfig", 4, String.format(localLocale, "parse %s config: %s", new Object[] { localObject, paramString }));
     }
   }
   
@@ -364,11 +368,14 @@ public class ConfessConfig
   
   public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    if (paramQQAppInterface == null) {}
-    while (SharedPreUtils.a(paramQQAppInterface.getAccount(), "confess_config_sp").getLong(paramString, 0L) <= 0L) {
+    boolean bool = false;
+    if (paramQQAppInterface == null) {
       return false;
     }
-    return true;
+    if (SharedPreUtils.a(paramQQAppInterface.getAccount(), "confess_config_sp").getLong(paramString, 0L) > 0L) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
@@ -381,23 +388,28 @@ public class ConfessConfig
   
   private String b()
   {
-    Object localObject = "";
+    StringBuilder localStringBuilder;
+    String str2;
     try
     {
-      String str = FileUtils.b(new File(jdField_a_of_type_JavaIoFile, "confess_talk.cfg"));
-      localObject = str;
+      String str1 = FileUtils.readFileToString(new File(jdField_a_of_type_JavaIoFile, "confess_talk.cfg"));
     }
     catch (IOException localIOException)
     {
-      for (;;)
-      {
-        QLog.i("ConfessConfig", 1, "getConfigFromFile exception : " + QLog.getStackTraceString(localIOException));
-      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getConfigFromFile exception : ");
+      localStringBuilder.append(QLog.getStackTraceString(localIOException));
+      QLog.i("ConfessConfig", 1, localStringBuilder.toString());
+      str2 = "";
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("ConfessConfig", 2, "getConfigFromFile config is: " + (String)localObject);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getConfigFromFile config is: ");
+      localStringBuilder.append(str2);
+      QLog.i("ConfessConfig", 2, localStringBuilder.toString());
     }
-    return localObject;
+    return str2;
   }
   
   public static boolean b(QQAppInterface paramQQAppInterface, String paramString)
@@ -413,24 +425,44 @@ public class ConfessConfig
     if (paramQQAppInterface == null) {
       return false;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("ConfessConfig", 2, "updateHolmesTipsNeedShow key:" + paramString + " value:" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateHolmesTipsNeedShow key:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" value:");
+      localStringBuilder.append(paramBoolean);
+      QLog.i("ConfessConfig", 2, localStringBuilder.toString());
     }
-    return SharedPreUtils.a(paramQQAppInterface.getAccount(), "confess_config_sp").edit().putBoolean("holmes_tips_show_" + paramString, paramBoolean).commit();
+    paramQQAppInterface = SharedPreUtils.a(paramQQAppInterface.getAccount(), "confess_config_sp").edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("holmes_tips_show_");
+    localStringBuilder.append(paramString);
+    return paramQQAppInterface.putBoolean(localStringBuilder.toString(), paramBoolean).commit();
   }
   
   public static boolean b(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ConfessConfig", 2, "saveConfig2File config is: " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("saveConfig2File config is: ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.i("ConfessConfig", 2, ((StringBuilder)localObject).toString());
     }
-    String str2 = jdField_a_of_type_JavaIoFile.getPath() + File.separator;
-    String str1 = paramString;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(jdField_a_of_type_JavaIoFile.getPath());
+    ((StringBuilder)localObject).append(File.separator);
+    String str = ((StringBuilder)localObject).toString();
+    localObject = paramString;
     if (paramString == null) {
-      str1 = "";
+      localObject = "";
     }
-    boolean bool = FileUtils.a(str2, "confess_talk.cfg", str1);
-    QLog.i("ConfessConfig", 1, "saveConfig2File result : " + bool);
+    boolean bool = FileUtils.writeFile(str, "confess_talk.cfg", (String)localObject);
+    paramString = new StringBuilder();
+    paramString.append("saveConfig2File result : ");
+    paramString.append(bool);
+    QLog.i("ConfessConfig", 1, paramString.toString());
     return bool;
   }
   
@@ -439,7 +471,11 @@ public class ConfessConfig
     if (paramQQAppInterface == null) {
       return false;
     }
-    return SharedPreUtils.a(paramQQAppInterface.getAccount(), "confess_config_sp").getBoolean("holmes_tips_show_" + paramString, false);
+    paramQQAppInterface = SharedPreUtils.a(paramQQAppInterface.getAccount(), "confess_config_sp");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("holmes_tips_show_");
+    localStringBuilder.append(paramString);
+    return paramQQAppInterface.getBoolean(localStringBuilder.toString(), false);
   }
   
   public String a()
@@ -448,46 +484,54 @@ public class ConfessConfig
     if ((!TextUtils.isEmpty(this.u)) && (Math.abs(l1 - this.jdField_d_of_type_Long) < (this.jdField_a_of_type_Float * 60000.0F))) {
       return this.u;
     }
-    if (TextUtils.isEmpty(this.jdField_j_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(this.jdField_j_of_type_JavaLangString))
+    {
       this.u = "";
     }
-    for (;;)
+    else if (!this.jdField_j_of_type_JavaLangString.contains("N"))
     {
-      return this.u;
-      if (!this.jdField_j_of_type_JavaLangString.contains("N"))
+      this.u = this.jdField_j_of_type_JavaLangString;
+    }
+    else
+    {
+      int i1 = this.jdField_c_of_type_Int;
+      if ((i1 > 0) && (i1 > this.jdField_b_of_type_Int))
       {
-        this.u = this.jdField_j_of_type_JavaLangString;
-      }
-      else if ((this.jdField_c_of_type_Int > 0) && (this.jdField_c_of_type_Int > this.jdField_b_of_type_Int))
-      {
-        int i1 = this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_c_of_type_Int);
+        i1 = this.jdField_a_of_type_JavaUtilRandom.nextInt(i1);
         int i2 = this.jdField_c_of_type_Int;
         int i3 = this.jdField_b_of_type_Int;
-        int i4 = this.jdField_b_of_type_Int;
         this.jdField_d_of_type_Long = l1;
         NumberFormat localNumberFormat = NumberFormat.getNumberInstance();
-        this.u = this.jdField_j_of_type_JavaLangString.replace("N", localNumberFormat.format(i1 % (i2 - i3 + 1) + i4));
+        this.u = this.jdField_j_of_type_JavaLangString.replace("N", localNumberFormat.format(i1 % (i2 - i3 + 1) + i3));
       }
       else
       {
         this.u = "";
       }
     }
+    return this.u;
   }
   
   public String a(QQAppInterface paramQQAppInterface)
   {
+    String str;
     if (a(paramQQAppInterface, "redpoint_leba_show"))
     {
-      if (this.r == null) {
+      str = this.r;
+      paramQQAppInterface = str;
+      if (str == null) {
         return jdField_c_of_type_JavaLangString;
       }
-      return this.r;
     }
-    if (this.jdField_i_of_type_JavaLangString == null) {
-      return jdField_a_of_type_JavaLangString;
+    else
+    {
+      str = this.jdField_i_of_type_JavaLangString;
+      paramQQAppInterface = str;
+      if (str == null) {
+        paramQQAppInterface = jdField_a_of_type_JavaLangString;
+      }
     }
-    return this.jdField_i_of_type_JavaLangString;
+    return paramQQAppInterface;
   }
   
   public void a()
@@ -509,60 +553,56 @@ public class ConfessConfig
   
   public boolean a()
   {
-    boolean bool3 = true;
     long l1 = SystemClock.elapsedRealtime();
     if (Math.abs(l1 - this.jdField_c_of_type_Long) < 60000L) {
       return this.jdField_b_of_type_Boolean;
     }
-    boolean bool1;
-    if (this.jdField_i_of_type_Int >= 1)
-    {
+    if (this.jdField_i_of_type_Int >= 1) {
       bool1 = true;
-      boolean bool2 = bool1;
-      if (bool1)
-      {
-        bool2 = bool1;
-        if (TextUtils.isEmpty(this.jdField_l_of_type_JavaLangString)) {
+    } else {
+      bool1 = false;
+    }
+    boolean bool2 = bool1;
+    if (bool1)
+    {
+      bool2 = bool1;
+      if (TextUtils.isEmpty(this.jdField_l_of_type_JavaLangString)) {
+        bool2 = false;
+      }
+    }
+    boolean bool1 = bool2;
+    if (bool2) {
+      if (a(NetConnInfoCenter.getServerTimeMillis(), this.jdField_b_of_type_Long) != 0) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+    }
+    bool2 = bool1;
+    if (bool1)
+    {
+      bool2 = bool1;
+      if (this.jdField_m_of_type_Int >= this.jdField_e_of_type_Int) {
+        if (a(NetConnInfoCenter.getServerTimeMillis(), this.jdField_b_of_type_Long) > this.jdField_f_of_type_Int) {
+          bool2 = true;
+        } else {
           bool2 = false;
         }
       }
-      bool1 = bool2;
-      if (bool2)
-      {
-        if (a(NetConnInfoCenter.getServerTimeMillis(), this.jdField_b_of_type_Long) == 0) {
-          break label132;
-        }
-        bool1 = true;
-      }
-      label80:
-      if ((!bool1) || (this.jdField_m_of_type_Int < this.jdField_e_of_type_Int)) {
-        break label142;
-      }
-      if (a(NetConnInfoCenter.getServerTimeMillis(), this.jdField_b_of_type_Long) <= this.jdField_f_of_type_Int) {
-        break label137;
-      }
-      bool1 = bool3;
     }
-    label132:
-    label137:
-    label142:
-    for (;;)
-    {
-      this.jdField_c_of_type_Long = l1;
-      this.jdField_b_of_type_Boolean = bool1;
-      return bool1;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label80;
-      bool1 = false;
-    }
+    this.jdField_c_of_type_Long = l1;
+    this.jdField_b_of_type_Boolean = bool2;
+    return bool2;
   }
   
   public boolean a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ConfessConfig", 2, "onGetConfigFromServer config :" + paramString);
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("onGetConfigFromServer config :");
+      ((StringBuilder)???).append(paramString);
+      QLog.i("ConfessConfig", 2, ((StringBuilder)???).toString());
     }
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
@@ -584,13 +624,50 @@ public class ConfessConfig
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(140);
-    localStringBuilder.append("HonestSayConfig{").append("nSwitch: ").append(this.jdField_a_of_type_Int).append(", frdRecMsgSwitch: ").append(this.jdField_n_of_type_Int).append(", nMin: ").append(this.jdField_b_of_type_Int).append(", nMax: ").append(this.jdField_c_of_type_Int).append(", nDelta: ").append(this.jdField_d_of_type_Int).append(", nX: ").append(this.jdField_e_of_type_Int).append(", nY: ").append(this.jdField_f_of_type_Int).append(", fChangeInterval: ").append(this.jdField_a_of_type_Float).append(", title: ").append(this.jdField_i_of_type_JavaLangString).append(", subtitle: ").append(this.jdField_j_of_type_JavaLangString).append(", contactEntryUrl: ").append(this.jdField_l_of_type_JavaLangString).append(", boxEntryUrl: ").append(this.jdField_k_of_type_JavaLangString).append(", detailUrl: ").append(this.jdField_n_of_type_JavaLangString).append(", settingUrl: ").append(this.p).append(", lLastVanishTime: ").append(this.jdField_b_of_type_Long).append(", nContinuousVanishCount: ").append(this.jdField_m_of_type_Int).append(", rankingUrl: ").append(this.q).append(", rankSwitch: ").append(this.jdField_g_of_type_Int).append("}");
+    localStringBuilder.append("HonestSayConfig{");
+    localStringBuilder.append("nSwitch: ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", frdRecMsgSwitch: ");
+    localStringBuilder.append(this.jdField_n_of_type_Int);
+    localStringBuilder.append(", nMin: ");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", nMax: ");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(", nDelta: ");
+    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(", nX: ");
+    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append(", nY: ");
+    localStringBuilder.append(this.jdField_f_of_type_Int);
+    localStringBuilder.append(", fChangeInterval: ");
+    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(", title: ");
+    localStringBuilder.append(this.jdField_i_of_type_JavaLangString);
+    localStringBuilder.append(", subtitle: ");
+    localStringBuilder.append(this.jdField_j_of_type_JavaLangString);
+    localStringBuilder.append(", contactEntryUrl: ");
+    localStringBuilder.append(this.jdField_l_of_type_JavaLangString);
+    localStringBuilder.append(", boxEntryUrl: ");
+    localStringBuilder.append(this.jdField_k_of_type_JavaLangString);
+    localStringBuilder.append(", detailUrl: ");
+    localStringBuilder.append(this.jdField_n_of_type_JavaLangString);
+    localStringBuilder.append(", settingUrl: ");
+    localStringBuilder.append(this.p);
+    localStringBuilder.append(", lLastVanishTime: ");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", nContinuousVanishCount: ");
+    localStringBuilder.append(this.jdField_m_of_type_Int);
+    localStringBuilder.append(", rankingUrl: ");
+    localStringBuilder.append(this.q);
+    localStringBuilder.append(", rankSwitch: ");
+    localStringBuilder.append(this.jdField_g_of_type_Int);
+    localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessConfig
  * JD-Core Version:    0.7.0.1
  */

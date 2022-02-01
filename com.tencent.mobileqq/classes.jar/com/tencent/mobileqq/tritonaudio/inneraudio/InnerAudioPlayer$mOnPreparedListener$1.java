@@ -19,8 +19,16 @@ final class InnerAudioPlayer$mOnPreparedListener$1
     try
     {
       paramMediaPlayer = InnerAudioPlayer.access$getLogger$p(this.this$0);
-      if (paramMediaPlayer != null) {
-        LogDelegate.DefaultImpls.printLog$default(paramMediaPlayer, LogDelegate.Level.INFO, InnerAudioPlayer.access$getTAG$cp(), "onPrepared audioId=" + this.this$0.getAudioId() + " path=" + this.this$0.getAudioPath(), null, 8, null);
+      if (paramMediaPlayer != null)
+      {
+        localObject1 = LogDelegate.Level.INFO;
+        localObject2 = InnerAudioPlayer.access$getTAG$cp();
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("onPrepared audioId=");
+        ((StringBuilder)localObject3).append(this.this$0.getAudioId());
+        ((StringBuilder)localObject3).append(" path=");
+        ((StringBuilder)localObject3).append(this.this$0.getAudioPath());
+        LogDelegate.DefaultImpls.printLog$default(paramMediaPlayer, (LogDelegate.Level)localObject1, (String)localObject2, ((StringBuilder)localObject3).toString(), null, 8, null);
       }
       InnerAudioPlayer.access$setMIsPrepared$p(this.this$0, true);
       if (!URLUtil.isNetworkUrl(this.this$0.getAudioPath())) {
@@ -30,27 +38,43 @@ final class InnerAudioPlayer$mOnPreparedListener$1
       if (this.this$0.getAutoPlay())
       {
         paramMediaPlayer = InnerAudioPlayer.access$getLogger$p(this.this$0);
-        if (paramMediaPlayer != null) {
-          LogDelegate.DefaultImpls.printLog$default(paramMediaPlayer, LogDelegate.Level.INFO, InnerAudioPlayer.access$getTAG$cp(), "onPrepared:autoplay after prepared. audioId=" + this.this$0.getAudioId() + " path=" + this.this$0.getAudioPath(), null, 8, null);
+        if (paramMediaPlayer != null)
+        {
+          localObject1 = LogDelegate.Level.INFO;
+          localObject2 = InnerAudioPlayer.access$getTAG$cp();
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("onPrepared:autoplay after prepared. audioId=");
+          ((StringBuilder)localObject3).append(this.this$0.getAudioId());
+          ((StringBuilder)localObject3).append(" path=");
+          ((StringBuilder)localObject3).append(this.this$0.getAudioPath());
+          LogDelegate.DefaultImpls.printLog$default(paramMediaPlayer, (LogDelegate.Level)localObject1, (String)localObject2, ((StringBuilder)localObject3).toString(), null, 8, null);
         }
         this.this$0.play();
+        return;
       }
-      return;
     }
     catch (Throwable paramMediaPlayer)
     {
-      LogDelegate localLogDelegate;
-      do
+      Object localObject2;
+      Object localObject3;
+      Object localObject1 = InnerAudioPlayer.access$getLogger$p(this.this$0);
+      if (localObject1 != null)
       {
-        localLogDelegate = InnerAudioPlayer.access$getLogger$p(this.this$0);
-      } while (localLogDelegate == null);
-      localLogDelegate.printLog(LogDelegate.Level.ERROR, InnerAudioPlayer.access$getTAG$cp(), "onPrepared error. audioId=" + this.this$0.getAudioId() + " path=" + this.this$0.getAudioPath(), paramMediaPlayer);
+        localObject2 = LogDelegate.Level.ERROR;
+        localObject3 = InnerAudioPlayer.access$getTAG$cp();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onPrepared error. audioId=");
+        localStringBuilder.append(this.this$0.getAudioId());
+        localStringBuilder.append(" path=");
+        localStringBuilder.append(this.this$0.getAudioPath());
+        ((LogDelegate)localObject1).printLog((LogDelegate.Level)localObject2, (String)localObject3, localStringBuilder.toString(), paramMediaPlayer);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tritonaudio.inneraudio.InnerAudioPlayer.mOnPreparedListener.1
  * JD-Core Version:    0.7.0.1
  */

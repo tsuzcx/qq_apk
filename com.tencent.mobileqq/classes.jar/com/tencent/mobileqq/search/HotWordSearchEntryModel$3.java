@@ -40,18 +40,15 @@ class HotWordSearchEntryModel$3
     UniteSearchHandler localUniteSearchHandler = new UniteSearchHandler(localQQAppInterface);
     if (i == 1) {
       localUniteSearchHandler.a(localQQAppInterface, "gif_suc_first", null, null, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID);
-    }
-    for (;;)
-    {
-      localSharedPreferences.edit().putString("HotWordSearchEntryModel.psk_hot_search_last_show_id", this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID).apply();
-      return;
+    } else {
       localUniteSearchHandler.a(localQQAppInterface, "gif_suc_second", null, null, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID);
     }
+    localSharedPreferences.edit().putString("HotWordSearchEntryModel.psk_hot_search_last_show_id", this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID).apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.HotWordSearchEntryModel.3
  * JD-Core Version:    0.7.0.1
  */

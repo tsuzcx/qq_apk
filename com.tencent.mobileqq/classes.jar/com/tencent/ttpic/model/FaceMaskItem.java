@@ -9,60 +9,59 @@ public class FaceMaskItem
   public static final String FACE_MASKS_LIST = "faceMaskList";
   public String faceMaskID;
   public String faceMaskImgPath;
-  public double faceMaskSize = 1.0D;
+  public double faceMaskSize;
   public int faceMaskType = 0;
-  public double featherStrength = 0.0D;
-  public boolean isValid = false;
+  public double featherStrength;
+  public boolean isValid;
   
   public FaceMaskItem(JsonObject paramJsonObject, String paramString)
   {
+    double d1 = 1.0D;
+    this.faceMaskSize = 1.0D;
+    double d2 = 0.0D;
+    this.featherStrength = 0.0D;
+    this.isValid = false;
     if (paramJsonObject == null) {
       return;
     }
     this.faceMaskID = GsonUtils.optString(paramJsonObject, FaceMaskItem.FaceMaskItemField.MASK_ID.value);
     this.faceMaskType = GsonUtils.optInt(paramJsonObject, FaceMaskItem.FaceMaskItemField.FACE_MASK_TYPE.value);
     this.faceMaskSize = GsonUtils.optDouble(paramJsonObject, FaceMaskItem.FaceMaskItemField.FACE_MASK_SIZE.value);
-    if (Double.isNaN(this.faceMaskSize))
+    if (!Double.isNaN(this.faceMaskSize))
     {
-      this.faceMaskSize = d;
-      this.featherStrength = GsonUtils.optDouble(paramJsonObject, FaceMaskItem.FaceMaskItemField.FEATHER_STRENGTH.value);
-      if (!Double.isNaN(this.featherStrength)) {
-        break label166;
-      }
-      d = 0.0D;
-      label114:
-      this.featherStrength = d;
-      paramJsonObject = GsonUtils.optString(paramJsonObject, FaceMaskItem.FaceMaskItemField.FACE_MASK_PATH.value);
-      if (paramJsonObject != null) {
-        break label174;
-      }
-      paramJsonObject = null;
-    }
-    for (;;)
-    {
-      this.faceMaskImgPath = paramJsonObject;
-      this.isValid = true;
-      return;
-      if (this.faceMaskSize <= 0.1D) {
-        break;
-      }
-      d = this.faceMaskSize;
-      break;
-      label166:
-      d = this.featherStrength;
-      break label114;
-      label174:
-      if (paramJsonObject.trim().isEmpty()) {
-        paramJsonObject = null;
-      } else {
-        paramJsonObject = paramString + File.separator + paramJsonObject.trim() + File.separator + paramJsonObject.trim() + "_";
+      double d3 = this.faceMaskSize;
+      if (d3 > 0.1D) {
+        d1 = d3;
       }
     }
+    this.faceMaskSize = d1;
+    this.featherStrength = GsonUtils.optDouble(paramJsonObject, FaceMaskItem.FaceMaskItemField.FEATHER_STRENGTH.value);
+    if (Double.isNaN(this.featherStrength)) {
+      d1 = d2;
+    } else {
+      d1 = this.featherStrength;
+    }
+    this.featherStrength = d1;
+    String str = GsonUtils.optString(paramJsonObject, FaceMaskItem.FaceMaskItemField.FACE_MASK_PATH.value);
+    paramJsonObject = null;
+    if ((str != null) && (!str.trim().isEmpty()))
+    {
+      paramJsonObject = new StringBuilder();
+      paramJsonObject.append(paramString);
+      paramJsonObject.append(File.separator);
+      paramJsonObject.append(str.trim());
+      paramJsonObject.append(File.separator);
+      paramJsonObject.append(str.trim());
+      paramJsonObject.append("_");
+      paramJsonObject = paramJsonObject.toString();
+    }
+    this.faceMaskImgPath = paramJsonObject;
+    this.isValid = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.model.FaceMaskItem
  * JD-Core Version:    0.7.0.1
  */

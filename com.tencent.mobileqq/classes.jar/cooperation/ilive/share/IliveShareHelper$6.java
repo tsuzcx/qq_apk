@@ -12,23 +12,27 @@ class IliveShareHelper$6
   
   public void onWXShareResp(BaseResp paramBaseResp)
   {
-    if ((IliveShareHelper.access$600(this.this$0) == null) || (!IliveShareHelper.access$600(this.this$0).equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
+    if (IliveShareHelper.access$600(this.this$0) != null)
     {
-    case -2: 
-    case -1: 
-    default: 
-      QQToast.a(this.this$0.mHostActivity, 1, HardCodeUtil.a(2131714524), 0).a();
-      return;
+      if (!IliveShareHelper.access$600(this.this$0).equals(paramBaseResp.transaction)) {
+        return;
+      }
+      int i = paramBaseResp.errCode;
+      if (i != -2)
+      {
+        if (i != 0)
+        {
+          QQToast.a(this.this$0.mHostActivity, 1, HardCodeUtil.a(2131714445), 0).a();
+          return;
+        }
+        QQToast.a(this.this$0.mHostActivity, 2, HardCodeUtil.a(2131714447), 0).a();
+      }
     }
-    QQToast.a(this.this$0.mHostActivity, 2, HardCodeUtil.a(2131714526), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.share.IliveShareHelper.6
  * JD-Core Version:    0.7.0.1
  */

@@ -18,13 +18,14 @@ public final class oidb_0x8ab$ReqBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32 }, new String[] { "lbs_info", "hotnamecode", "req_flag", "version_flag" }, new Object[] { null, localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, ReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32 }, new String[] { "lbs_info", "hotnamecode", "req_flag", "version_flag" }, new Object[] { null, localByteStringMicro, localInteger, localInteger }, ReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.hotchat.oidb_0x8ab.ReqBody
  * JD-Core Version:    0.7.0.1
  */

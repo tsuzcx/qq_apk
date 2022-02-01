@@ -55,195 +55,190 @@ public final class b
   
   private ActivityManager.ProcessErrorStateInfo a(Context paramContext, long paramLong)
   {
-    paramLong = 0L;
-    if (10000L < 0L) {}
-    for (;;)
+    try
     {
-      int n;
-      try
+      x.c("to find!", new Object[0]);
+      paramContext = (ActivityManager)paramContext.getSystemService("activity");
+      int n = 0;
+      Object localObject1;
+      Object localObject2;
+      for (;;)
       {
-        x.c("to find!", new Object[0]);
-        paramContext = (ActivityManager)paramContext.getSystemService("activity");
-        paramLong /= 500L;
-        n = 0;
         x.c("waiting!", new Object[0]);
-        Object localObject = paramContext.getProcessesInErrorState();
-        if (localObject != null)
+        localObject1 = paramContext.getProcessesInErrorState();
+        if (localObject1 != null)
         {
-          localObject = ((List)localObject).iterator();
-          if (((Iterator)localObject).hasNext())
+          localObject1 = ((List)localObject1).iterator();
+          while (((Iterator)localObject1).hasNext())
           {
-            ActivityManager.ProcessErrorStateInfo localProcessErrorStateInfo = (ActivityManager.ProcessErrorStateInfo)((Iterator)localObject).next();
-            if (localProcessErrorStateInfo.condition != 2) {
-              continue;
+            localObject2 = (ActivityManager.ProcessErrorStateInfo)((Iterator)localObject1).next();
+            if (((ActivityManager.ProcessErrorStateInfo)localObject2).condition == 2)
+            {
+              x.c("found!", new Object[0]);
+              return localObject2;
             }
-            x.c("found!", new Object[0]);
-            return localProcessErrorStateInfo;
           }
         }
         z.b(500L);
-        if (n < paramLong) {
-          break label190;
+        if (n >= 20L)
+        {
+          x.c("end!", new Object[0]);
+          break;
         }
-        x.c("end!", new Object[0]);
-      }
-      catch (Exception paramContext)
-      {
-        x.b(paramContext);
-        continue;
-      }
-      catch (OutOfMemoryError paramContext)
-      {
-        this.m.pid = Process.myPid();
-        this.m.shortMsg = ("bugly sdk waitForAnrProcessStateChanged encount error:" + paramContext.getMessage());
-        return this.m;
+        n += 1;
       }
       return null;
-      label190:
-      n += 1;
-      continue;
-      paramLong = 10000L;
+    }
+    catch (OutOfMemoryError paramContext)
+    {
+      this.m.pid = Process.myPid();
+      localObject1 = this.m;
+      localObject2 = new StringBuilder("bugly sdk waitForAnrProcessStateChanged encount error:");
+      ((StringBuilder)localObject2).append(paramContext.getMessage());
+      ((ActivityManager.ProcessErrorStateInfo)localObject1).shortMsg = ((StringBuilder)localObject2).toString();
+      return this.m;
+    }
+    catch (Exception paramContext)
+    {
+      x.b(paramContext);
     }
   }
   
   private CrashDetailBean a(a parama)
   {
-    localCrashDetailBean = new CrashDetailBean();
-    try
+    CrashDetailBean localCrashDetailBean = new CrashDetailBean();
+    for (;;)
     {
-      localCrashDetailBean.C = com.tencent.bugly.crashreport.common.info.b.k();
-      localCrashDetailBean.D = com.tencent.bugly.crashreport.common.info.b.i();
-      localCrashDetailBean.E = com.tencent.bugly.crashreport.common.info.b.m();
-      localCrashDetailBean.F = this.d.n();
-      localCrashDetailBean.G = this.d.m();
-      localCrashDetailBean.H = this.d.o();
-      Object localObject = this.c;
-      if (!com.tencent.bugly.crashreport.common.info.b.t()) {
-        localCrashDetailBean.w = z.a(this.c, c.e, c.h);
-      }
-      localCrashDetailBean.b = 3;
-      localCrashDetailBean.e = this.d.g();
-      localCrashDetailBean.f = this.d.m;
-      localCrashDetailBean.g = this.d.u();
-      localCrashDetailBean.m = this.d.f();
-      localCrashDetailBean.n = "ANR_EXCEPTION";
-      localCrashDetailBean.o = parama.f;
-      localCrashDetailBean.q = parama.g;
-      localCrashDetailBean.P = new HashMap();
-      localCrashDetailBean.P.put("BUGLY_CR_01", parama.e);
-      int n = -1;
-      if (localCrashDetailBean.q != null) {
-        n = localCrashDetailBean.q.indexOf("\n");
-      }
-      if (n > 0) {}
-      for (localObject = localCrashDetailBean.q.substring(0, n);; localObject = "GET_FAIL")
+      try
       {
-        localCrashDetailBean.p = ((String)localObject);
-        localCrashDetailBean.r = parama.c;
-        if (localCrashDetailBean.q != null) {
-          localCrashDetailBean.u = z.b(localCrashDetailBean.q.getBytes());
-        }
-        localCrashDetailBean.z = parama.b;
-        localCrashDetailBean.A = parama.a;
-        localCrashDetailBean.B = "main(1)";
-        localCrashDetailBean.I = this.d.w();
-        localCrashDetailBean.h = this.d.t();
-        localCrashDetailBean.i = this.d.H();
-        localCrashDetailBean.v = parama.d;
-        localCrashDetailBean.L = this.d.q;
-        localCrashDetailBean.M = this.d.a;
-        localCrashDetailBean.N = this.d.a();
-        parama = this.c;
+        localCrashDetailBean.C = com.tencent.bugly.crashreport.common.info.b.k();
+        localCrashDetailBean.D = com.tencent.bugly.crashreport.common.info.b.i();
+        localCrashDetailBean.E = com.tencent.bugly.crashreport.common.info.b.m();
+        localCrashDetailBean.F = this.d.n();
+        localCrashDetailBean.G = this.d.m();
+        localCrashDetailBean.H = this.d.o();
+        localObject = this.c;
         if (!com.tencent.bugly.crashreport.common.info.b.t()) {
-          this.h.d(localCrashDetailBean);
+          localCrashDetailBean.w = z.a(this.c, c.e, c.h);
         }
-        localCrashDetailBean.Q = this.d.F();
-        localCrashDetailBean.R = this.d.G();
-        localCrashDetailBean.S = this.d.z();
-        localCrashDetailBean.T = this.d.E();
-        localCrashDetailBean.y = y.a();
+        localCrashDetailBean.b = 3;
+        localCrashDetailBean.e = this.d.g();
+        localCrashDetailBean.f = this.d.m;
+        localCrashDetailBean.g = this.d.u();
+        localCrashDetailBean.m = this.d.f();
+        localCrashDetailBean.n = "ANR_EXCEPTION";
+        localCrashDetailBean.o = parama.f;
+        localCrashDetailBean.q = parama.g;
+        localCrashDetailBean.P = new HashMap();
+        localCrashDetailBean.P.put("BUGLY_CR_01", parama.e);
+        int n = -1;
+        if (localCrashDetailBean.q != null) {
+          n = localCrashDetailBean.q.indexOf("\n");
+        }
+        if (n > 0)
+        {
+          localObject = localCrashDetailBean.q.substring(0, n);
+          localCrashDetailBean.p = ((String)localObject);
+          localCrashDetailBean.r = parama.c;
+          if (localCrashDetailBean.q != null) {
+            localCrashDetailBean.u = z.b(localCrashDetailBean.q.getBytes());
+          }
+          localCrashDetailBean.z = parama.b;
+          localCrashDetailBean.A = parama.a;
+          localCrashDetailBean.B = "main(1)";
+          localCrashDetailBean.I = this.d.w();
+          localCrashDetailBean.h = this.d.t();
+          localCrashDetailBean.i = this.d.H();
+          localCrashDetailBean.v = parama.d;
+          localCrashDetailBean.L = this.d.q;
+          localCrashDetailBean.M = this.d.a;
+          localCrashDetailBean.N = this.d.a();
+          parama = this.c;
+          if (!com.tencent.bugly.crashreport.common.info.b.t()) {
+            this.h.d(localCrashDetailBean);
+          }
+          localCrashDetailBean.Q = this.d.F();
+          localCrashDetailBean.R = this.d.G();
+          localCrashDetailBean.S = this.d.z();
+          localCrashDetailBean.T = this.d.E();
+          localCrashDetailBean.y = y.a();
+          return localCrashDetailBean;
+        }
+      }
+      catch (Throwable parama)
+      {
+        if (!x.a(parama)) {
+          parama.printStackTrace();
+        }
         return localCrashDetailBean;
       }
-      return localCrashDetailBean;
-    }
-    catch (Throwable parama)
-    {
-      if (!x.a(parama)) {
-        parama.printStackTrace();
-      }
+      Object localObject = "GET_FAIL";
     }
   }
   
   private boolean a(Context paramContext, String paramString, ActivityManager.ProcessErrorStateInfo paramProcessErrorStateInfo, long paramLong, Map<String, String> paramMap)
   {
-    paramContext = new File(paramContext.getFilesDir(), "bugly/bugly_trace_" + paramLong + ".txt");
+    paramContext = paramContext.getFilesDir();
+    Object localObject = new StringBuilder("bugly/bugly_trace_");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append(".txt");
+    paramContext = new File(paramContext, ((StringBuilder)localObject).toString());
     a locala = new a();
     locala.c = paramLong;
     locala.d = paramContext.getAbsolutePath();
-    label85:
-    label100:
-    String str1;
-    String str2;
-    if (paramProcessErrorStateInfo != null)
-    {
+    localObject = "";
+    if (paramProcessErrorStateInfo != null) {
       paramContext = paramProcessErrorStateInfo.processName;
-      locala.a = paramContext;
-      if (paramProcessErrorStateInfo == null) {
-        break label365;
-      }
+    } else {
+      paramContext = "";
+    }
+    locala.a = paramContext;
+    if (paramProcessErrorStateInfo != null) {
       paramContext = paramProcessErrorStateInfo.shortMsg;
-      locala.f = paramContext;
-      if (paramProcessErrorStateInfo == null) {
-        break label372;
-      }
+    } else {
+      paramContext = "";
+    }
+    locala.f = paramContext;
+    paramContext = (Context)localObject;
+    if (paramProcessErrorStateInfo != null) {
       paramContext = paramProcessErrorStateInfo.longMsg;
-      locala.e = paramContext;
-      locala.b = paramMap;
-      paramContext = Looper.getMainLooper().getThread();
-      if (paramMap != null)
+    }
+    locala.e = paramContext;
+    locala.b = paramMap;
+    paramContext = Looper.getMainLooper().getThread();
+    if (paramMap != null)
+    {
+      paramProcessErrorStateInfo = paramMap.keySet().iterator();
+      while (paramProcessErrorStateInfo.hasNext())
       {
-        paramProcessErrorStateInfo = paramMap.keySet().iterator();
-        while (paramProcessErrorStateInfo.hasNext())
-        {
-          str1 = (String)paramProcessErrorStateInfo.next();
-          if (str1.startsWith(paramContext.getName())) {
-            locala.g = ((String)paramMap.get(str1));
-          }
+        localObject = (String)paramProcessErrorStateInfo.next();
+        if (((String)localObject).startsWith(paramContext.getName())) {
+          locala.g = ((String)paramMap.get(localObject));
         }
       }
-      if (TextUtils.isEmpty(locala.g)) {
-        locala.g = "main stack is null , some error may be encountered.";
-      }
-      paramLong = locala.c;
-      paramContext = locala.d;
-      paramProcessErrorStateInfo = locala.a;
-      paramMap = locala.g;
-      str1 = locala.f;
-      str2 = locala.e;
-      if (locala.b != null) {
-        break label379;
-      }
     }
-    label365:
-    label372:
-    label379:
-    for (int n = 0;; n = locala.b.size())
+    if (TextUtils.isEmpty(locala.g)) {
+      locala.g = "main stack is null , some error may be encountered.";
+    }
+    paramLong = locala.c;
+    paramContext = locala.d;
+    paramProcessErrorStateInfo = locala.a;
+    paramMap = locala.g;
+    localObject = locala.f;
+    String str = locala.e;
+    int n;
+    if (locala.b == null) {
+      n = 0;
+    } else {
+      n = locala.b.size();
+    }
+    x.c("anr tm:%d\ntr:%s\nproc:%s\nmain stack:%s\nsMsg:%s\n lMsg:%s\n threads:%d", new Object[] { Long.valueOf(paramLong), paramContext, paramProcessErrorStateInfo, paramMap, localObject, str, Integer.valueOf(n) });
+    if (!this.f.c().i)
     {
-      x.c("anr tm:%d\ntr:%s\nproc:%s\nmain stack:%s\nsMsg:%s\n lMsg:%s\n threads:%d", new Object[] { Long.valueOf(paramLong), paramContext, paramProcessErrorStateInfo, paramMap, str1, str2, Integer.valueOf(n) });
-      if (this.f.c().i) {
-        break label394;
-      }
       x.d("ANR Report is closed! print local for helpful!", new Object[0]);
       com.tencent.bugly.crashreport.crash.b.a("ANR", z.a(), locala.a, "main", locala.g, null);
       return false;
-      paramContext = "";
-      break;
-      paramContext = "";
-      break label85;
-      paramContext = "";
-      break label100;
     }
-    label394:
     x.a("found visiable anr , start to upload!", new Object[0]);
     paramContext = a(locala);
     if (paramContext == null)
@@ -254,24 +249,22 @@ public final class b
     c.a().a(paramContext);
     if (paramContext.a >= 0L) {
       x.a("backup anr record success!", new Object[0]);
-    }
-    for (;;)
-    {
-      if ((paramString != null) && (new File(paramString).exists()))
-      {
-        this.a.set(3);
-        if (a(paramString, locala.d, locala.a)) {
-          x.a("backup trace success", new Object[0]);
-        }
-      }
-      com.tencent.bugly.crashreport.crash.b.a("ANR", z.a(), locala.a, "main", locala.g, paramContext);
-      if (!this.h.a(paramContext)) {
-        this.h.a(paramContext, 3000L, true);
-      }
-      this.h.c(paramContext);
-      return true;
+    } else {
       x.d("backup anr record fail!", new Object[0]);
     }
+    if ((paramString != null) && (new File(paramString).exists()))
+    {
+      this.a.set(3);
+      if (a(paramString, locala.d, locala.a)) {
+        x.a("backup trace success", new Object[0]);
+      }
+    }
+    com.tencent.bugly.crashreport.crash.b.a("ANR", z.a(), locala.a, "main", locala.g, paramContext);
+    if (!this.h.a(paramContext)) {
+      this.h.a(paramContext, 3000L, true);
+    }
+    this.h.c(paramContext);
+    return true;
   }
   
   /* Error */
@@ -284,348 +277,416 @@ public final class b
     //   3: invokestatic 546	com/tencent/bugly/crashreport/crash/anr/TraceFileHelper:readTargetDumpInfo	(Ljava/lang/String;Ljava/lang/String;Z)Lcom/tencent/bugly/crashreport/crash/anr/TraceFileHelper$a;
     //   6: astore_3
     //   7: aload_3
-    //   8: ifnull +22 -> 30
+    //   8: ifnull +704 -> 712
     //   11: aload_3
     //   12: getfield 550	com/tencent/bugly/crashreport/crash/anr/TraceFileHelper$a:d	Ljava/util/Map;
-    //   15: ifnull +15 -> 30
+    //   15: ifnull +697 -> 712
     //   18: aload_3
     //   19: getfield 550	com/tencent/bugly/crashreport/crash/anr/TraceFileHelper$a:d	Ljava/util/Map;
-    //   22: invokeinterface 494 1 0
-    //   27: ifgt +20 -> 47
-    //   30: ldc_w 552
-    //   33: iconst_1
-    //   34: anewarray 4	java/lang/Object
-    //   37: dup
-    //   38: iconst_0
-    //   39: aload_2
-    //   40: aastore
-    //   41: invokestatic 504	com/tencent/bugly/proguard/x:e	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   44: pop
-    //   45: iconst_0
-    //   46: ireturn
-    //   47: new 67	java/io/File
-    //   50: dup
-    //   51: aload_1
-    //   52: invokespecial 513	java/io/File:<init>	(Ljava/lang/String;)V
-    //   55: astore_2
-    //   56: aload_2
-    //   57: invokevirtual 516	java/io/File:exists	()Z
-    //   60: ifne +26 -> 86
-    //   63: aload_2
-    //   64: invokevirtual 555	java/io/File:getParentFile	()Ljava/io/File;
-    //   67: invokevirtual 516	java/io/File:exists	()Z
-    //   70: ifne +11 -> 81
-    //   73: aload_2
-    //   74: invokevirtual 555	java/io/File:getParentFile	()Ljava/io/File;
-    //   77: invokevirtual 558	java/io/File:mkdirs	()Z
-    //   80: pop
-    //   81: aload_2
-    //   82: invokevirtual 561	java/io/File:createNewFile	()Z
-    //   85: pop
-    //   86: aload_2
-    //   87: invokevirtual 516	java/io/File:exists	()Z
-    //   90: ifeq +10 -> 100
-    //   93: aload_2
-    //   94: invokevirtual 564	java/io/File:canWrite	()Z
-    //   97: ifne +85 -> 182
-    //   100: ldc_w 566
-    //   103: iconst_1
-    //   104: anewarray 4	java/lang/Object
+    //   22: invokeinterface 459 1 0
+    //   27: ifgt +6 -> 33
+    //   30: goto +682 -> 712
+    //   33: new 67	java/io/File
+    //   36: dup
+    //   37: aload_1
+    //   38: invokespecial 515	java/io/File:<init>	(Ljava/lang/String;)V
+    //   41: astore 4
+    //   43: aload 4
+    //   45: invokevirtual 518	java/io/File:exists	()Z
+    //   48: ifne +29 -> 77
+    //   51: aload 4
+    //   53: invokevirtual 553	java/io/File:getParentFile	()Ljava/io/File;
+    //   56: invokevirtual 518	java/io/File:exists	()Z
+    //   59: ifne +12 -> 71
+    //   62: aload 4
+    //   64: invokevirtual 553	java/io/File:getParentFile	()Ljava/io/File;
+    //   67: invokevirtual 556	java/io/File:mkdirs	()Z
+    //   70: pop
+    //   71: aload 4
+    //   73: invokevirtual 559	java/io/File:createNewFile	()Z
+    //   76: pop
+    //   77: aload 4
+    //   79: invokevirtual 518	java/io/File:exists	()Z
+    //   82: ifeq +540 -> 622
+    //   85: aload 4
+    //   87: invokevirtual 562	java/io/File:canWrite	()Z
+    //   90: ifne +6 -> 96
+    //   93: goto +529 -> 622
+    //   96: aconst_null
+    //   97: astore_2
+    //   98: aconst_null
+    //   99: astore_0
+    //   100: new 564	java/io/BufferedWriter
+    //   103: dup
+    //   104: new 566	java/io/FileWriter
     //   107: dup
-    //   108: iconst_0
-    //   109: aload_1
-    //   110: aastore
-    //   111: invokestatic 504	com/tencent/bugly/proguard/x:e	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   114: pop
-    //   115: iconst_0
-    //   116: ireturn
-    //   117: astore_0
-    //   118: aload_0
-    //   119: invokestatic 391	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
-    //   122: ifne +7 -> 129
-    //   125: aload_0
-    //   126: invokevirtual 567	java/lang/Exception:printStackTrace	()V
-    //   129: ldc_w 569
-    //   132: iconst_2
-    //   133: anewarray 4	java/lang/Object
-    //   136: dup
-    //   137: iconst_0
-    //   138: new 157	java/lang/StringBuilder
-    //   141: dup
-    //   142: invokespecial 570	java/lang/StringBuilder:<init>	()V
-    //   145: aload_0
-    //   146: invokevirtual 574	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   149: invokevirtual 577	java/lang/Class:getName	()Ljava/lang/String;
-    //   152: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   155: ldc_w 579
-    //   158: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   161: aload_0
-    //   162: invokevirtual 580	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   165: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   168: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   171: aastore
-    //   172: dup
-    //   173: iconst_1
-    //   174: aload_1
-    //   175: aastore
-    //   176: invokestatic 504	com/tencent/bugly/proguard/x:e	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   179: pop
-    //   180: iconst_0
-    //   181: ireturn
-    //   182: aconst_null
-    //   183: astore_0
-    //   184: new 582	java/io/BufferedWriter
-    //   187: dup
-    //   188: new 584	java/io/FileWriter
-    //   191: dup
-    //   192: aload_2
-    //   193: iconst_0
-    //   194: invokespecial 587	java/io/FileWriter:<init>	(Ljava/io/File;Z)V
-    //   197: invokespecial 590	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
-    //   200: astore_1
-    //   201: aload_3
-    //   202: getfield 550	com/tencent/bugly/crashreport/crash/anr/TraceFileHelper$a:d	Ljava/util/Map;
-    //   205: ldc_w 486
-    //   208: invokeinterface 446 2 0
-    //   213: checkcast 592	[Ljava/lang/String;
-    //   216: astore 4
-    //   218: aload 4
-    //   220: ifnull +78 -> 298
-    //   223: aload 4
-    //   225: arraylength
-    //   226: iconst_3
-    //   227: if_icmplt +71 -> 298
-    //   230: aload 4
-    //   232: iconst_0
-    //   233: aaload
-    //   234: astore_0
-    //   235: aload 4
-    //   237: iconst_1
-    //   238: aaload
-    //   239: astore_2
-    //   240: aload 4
-    //   242: iconst_2
-    //   243: aaload
-    //   244: astore 4
-    //   246: aload_1
-    //   247: new 157	java/lang/StringBuilder
-    //   250: dup
-    //   251: ldc_w 594
-    //   254: invokespecial 162	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   257: aload 4
-    //   259: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   262: ldc_w 596
-    //   265: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   268: aload_0
-    //   269: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   272: ldc_w 280
-    //   275: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   278: aload_2
-    //   279: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   282: ldc_w 598
-    //   285: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   288: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   291: invokevirtual 601	java/io/BufferedWriter:write	(Ljava/lang/String;)V
-    //   294: aload_1
-    //   295: invokevirtual 604	java/io/BufferedWriter:flush	()V
-    //   298: aload_3
-    //   299: getfield 550	com/tencent/bugly/crashreport/crash/anr/TraceFileHelper$a:d	Ljava/util/Map;
-    //   302: invokeinterface 607 1 0
-    //   307: invokeinterface 433 1 0
-    //   312: astore_0
-    //   313: aload_0
-    //   314: invokeinterface 129 1 0
-    //   319: ifeq +239 -> 558
-    //   322: aload_0
-    //   323: invokeinterface 133 1 0
-    //   328: checkcast 609	java/util/Map$Entry
-    //   331: astore_2
-    //   332: aload_2
-    //   333: invokeinterface 612 1 0
-    //   338: checkcast 282	java/lang/String
-    //   341: ldc_w 486
-    //   344: invokevirtual 616	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   347: ifne -34 -> 313
-    //   350: aload_2
-    //   351: invokeinterface 619 1 0
-    //   356: ifnull -43 -> 313
-    //   359: aload_2
-    //   360: invokeinterface 619 1 0
-    //   365: checkcast 592	[Ljava/lang/String;
-    //   368: arraylength
-    //   369: iconst_3
-    //   370: if_icmplt -57 -> 313
-    //   373: aload_2
-    //   374: invokeinterface 619 1 0
-    //   379: checkcast 592	[Ljava/lang/String;
-    //   382: iconst_0
-    //   383: aaload
-    //   384: astore_3
-    //   385: aload_2
-    //   386: invokeinterface 619 1 0
-    //   391: checkcast 592	[Ljava/lang/String;
-    //   394: iconst_1
-    //   395: aaload
-    //   396: astore 4
-    //   398: aload_2
-    //   399: invokeinterface 619 1 0
-    //   404: checkcast 592	[Ljava/lang/String;
-    //   407: iconst_2
-    //   408: aaload
-    //   409: astore 5
-    //   411: aload_1
-    //   412: new 157	java/lang/StringBuilder
-    //   415: dup
-    //   416: ldc_w 621
-    //   419: invokespecial 162	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   422: aload_2
-    //   423: invokeinterface 612 1 0
-    //   428: checkcast 282	java/lang/String
-    //   431: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   434: ldc_w 623
-    //   437: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   440: aload 5
-    //   442: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   445: ldc_w 596
-    //   448: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   451: aload_3
-    //   452: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   455: ldc_w 280
-    //   458: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   461: aload 4
-    //   463: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   466: ldc_w 598
-    //   469: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   472: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   475: invokevirtual 601	java/io/BufferedWriter:write	(Ljava/lang/String;)V
-    //   478: aload_1
-    //   479: invokevirtual 604	java/io/BufferedWriter:flush	()V
-    //   482: goto -169 -> 313
-    //   485: astore_2
-    //   486: aload_1
-    //   487: astore_0
-    //   488: aload_2
-    //   489: astore_1
-    //   490: aload_1
-    //   491: invokestatic 391	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
-    //   494: ifne +7 -> 501
-    //   497: aload_1
-    //   498: invokevirtual 624	java/io/IOException:printStackTrace	()V
-    //   501: ldc_w 626
-    //   504: iconst_1
-    //   505: anewarray 4	java/lang/Object
-    //   508: dup
-    //   509: iconst_0
-    //   510: new 157	java/lang/StringBuilder
+    //   108: aload 4
+    //   110: iconst_0
+    //   111: invokespecial 569	java/io/FileWriter:<init>	(Ljava/io/File;Z)V
+    //   114: invokespecial 572	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
+    //   117: astore_1
+    //   118: aload_3
+    //   119: getfield 550	com/tencent/bugly/crashreport/crash/anr/TraceFileHelper$a:d	Ljava/util/Map;
+    //   122: ldc_w 491
+    //   125: invokeinterface 448 2 0
+    //   130: checkcast 574	[Ljava/lang/String;
+    //   133: astore 4
+    //   135: aload 4
+    //   137: ifnull +100 -> 237
+    //   140: aload 4
+    //   142: arraylength
+    //   143: iconst_3
+    //   144: if_icmplt +93 -> 237
+    //   147: aload 4
+    //   149: iconst_0
+    //   150: aaload
+    //   151: astore_0
+    //   152: aload 4
+    //   154: iconst_1
+    //   155: aaload
+    //   156: astore_2
+    //   157: aload 4
+    //   159: iconst_2
+    //   160: aaload
+    //   161: astore 4
+    //   163: new 154	java/lang/StringBuilder
+    //   166: dup
+    //   167: ldc_w 576
+    //   170: invokespecial 159	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   173: astore 5
+    //   175: aload 5
+    //   177: aload 4
+    //   179: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   182: pop
+    //   183: aload 5
+    //   185: ldc_w 578
+    //   188: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   191: pop
+    //   192: aload 5
+    //   194: aload_0
+    //   195: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   198: pop
+    //   199: aload 5
+    //   201: ldc_w 280
+    //   204: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   207: pop
+    //   208: aload 5
+    //   210: aload_2
+    //   211: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   214: pop
+    //   215: aload 5
+    //   217: ldc_w 580
+    //   220: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   223: pop
+    //   224: aload_1
+    //   225: aload 5
+    //   227: invokevirtual 169	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   230: invokevirtual 583	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   233: aload_1
+    //   234: invokevirtual 586	java/io/BufferedWriter:flush	()V
+    //   237: aload_3
+    //   238: getfield 550	com/tencent/bugly/crashreport/crash/anr/TraceFileHelper$a:d	Ljava/util/Map;
+    //   241: invokeinterface 589 1 0
+    //   246: invokeinterface 435 1 0
+    //   251: astore_0
+    //   252: aload_0
+    //   253: invokeinterface 125 1 0
+    //   258: ifeq +194 -> 452
+    //   261: aload_0
+    //   262: invokeinterface 129 1 0
+    //   267: checkcast 591	java/util/Map$Entry
+    //   270: astore_2
+    //   271: aload_2
+    //   272: invokeinterface 594 1 0
+    //   277: checkcast 282	java/lang/String
+    //   280: ldc_w 491
+    //   283: invokevirtual 598	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   286: ifne -34 -> 252
+    //   289: aload_2
+    //   290: invokeinterface 601 1 0
+    //   295: ifnull +154 -> 449
+    //   298: aload_2
+    //   299: invokeinterface 601 1 0
+    //   304: checkcast 574	[Ljava/lang/String;
+    //   307: arraylength
+    //   308: iconst_3
+    //   309: if_icmplt +140 -> 449
+    //   312: aload_2
+    //   313: invokeinterface 601 1 0
+    //   318: checkcast 574	[Ljava/lang/String;
+    //   321: iconst_0
+    //   322: aaload
+    //   323: astore_3
+    //   324: aload_2
+    //   325: invokeinterface 601 1 0
+    //   330: checkcast 574	[Ljava/lang/String;
+    //   333: iconst_1
+    //   334: aaload
+    //   335: astore 4
+    //   337: aload_2
+    //   338: invokeinterface 601 1 0
+    //   343: checkcast 574	[Ljava/lang/String;
+    //   346: iconst_2
+    //   347: aaload
+    //   348: astore 5
+    //   350: new 154	java/lang/StringBuilder
+    //   353: dup
+    //   354: ldc_w 603
+    //   357: invokespecial 159	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   360: astore 6
+    //   362: aload 6
+    //   364: aload_2
+    //   365: invokeinterface 594 1 0
+    //   370: checkcast 282	java/lang/String
+    //   373: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   376: pop
+    //   377: aload 6
+    //   379: ldc_w 605
+    //   382: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   385: pop
+    //   386: aload 6
+    //   388: aload 5
+    //   390: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   393: pop
+    //   394: aload 6
+    //   396: ldc_w 578
+    //   399: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   402: pop
+    //   403: aload 6
+    //   405: aload_3
+    //   406: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   409: pop
+    //   410: aload 6
+    //   412: ldc_w 280
+    //   415: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   418: pop
+    //   419: aload 6
+    //   421: aload 4
+    //   423: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   426: pop
+    //   427: aload 6
+    //   429: ldc_w 580
+    //   432: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   435: pop
+    //   436: aload_1
+    //   437: aload 6
+    //   439: invokevirtual 169	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   442: invokevirtual 583	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   445: aload_1
+    //   446: invokevirtual 586	java/io/BufferedWriter:flush	()V
+    //   449: goto -197 -> 252
+    //   452: aload_1
+    //   453: invokevirtual 608	java/io/BufferedWriter:close	()V
+    //   456: iconst_1
+    //   457: ireturn
+    //   458: astore_0
+    //   459: aload_0
+    //   460: invokestatic 389	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
+    //   463: ifne +7 -> 470
+    //   466: aload_0
+    //   467: invokevirtual 609	java/io/IOException:printStackTrace	()V
+    //   470: iconst_1
+    //   471: ireturn
+    //   472: astore_0
+    //   473: goto +12 -> 485
+    //   476: astore_2
+    //   477: goto +16 -> 493
+    //   480: astore_2
+    //   481: aload_0
+    //   482: astore_1
+    //   483: aload_2
+    //   484: astore_0
+    //   485: goto +112 -> 597
+    //   488: astore_0
+    //   489: aload_2
+    //   490: astore_1
+    //   491: aload_0
+    //   492: astore_2
+    //   493: aload_1
+    //   494: astore_0
+    //   495: aload_2
+    //   496: invokestatic 389	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
+    //   499: ifne +9 -> 508
+    //   502: aload_1
+    //   503: astore_0
+    //   504: aload_2
+    //   505: invokevirtual 609	java/io/IOException:printStackTrace	()V
+    //   508: aload_1
+    //   509: astore_0
+    //   510: new 154	java/lang/StringBuilder
     //   513: dup
-    //   514: invokespecial 570	java/lang/StringBuilder:<init>	()V
-    //   517: aload_1
-    //   518: invokevirtual 574	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   521: invokevirtual 577	java/lang/Class:getName	()Ljava/lang/String;
-    //   524: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   527: ldc_w 579
-    //   530: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   533: aload_1
-    //   534: invokevirtual 627	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   537: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   540: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   543: aastore
-    //   544: invokestatic 504	com/tencent/bugly/proguard/x:e	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   547: pop
-    //   548: aload_0
-    //   549: ifnull +7 -> 556
-    //   552: aload_0
-    //   553: invokevirtual 630	java/io/BufferedWriter:close	()V
-    //   556: iconst_0
-    //   557: ireturn
-    //   558: aload_1
-    //   559: invokevirtual 630	java/io/BufferedWriter:close	()V
-    //   562: iconst_1
-    //   563: ireturn
-    //   564: astore_0
-    //   565: aload_0
-    //   566: invokestatic 391	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
-    //   569: ifne -7 -> 562
-    //   572: aload_0
-    //   573: invokevirtual 624	java/io/IOException:printStackTrace	()V
-    //   576: goto -14 -> 562
-    //   579: astore_0
-    //   580: aload_0
-    //   581: invokestatic 391	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
-    //   584: ifne -28 -> 556
-    //   587: aload_0
-    //   588: invokevirtual 624	java/io/IOException:printStackTrace	()V
-    //   591: goto -35 -> 556
-    //   594: astore_0
-    //   595: aconst_null
-    //   596: astore_1
+    //   514: invokespecial 610	java/lang/StringBuilder:<init>	()V
+    //   517: astore_3
+    //   518: aload_1
+    //   519: astore_0
+    //   520: aload_3
+    //   521: aload_2
+    //   522: invokevirtual 614	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   525: invokevirtual 617	java/lang/Class:getName	()Ljava/lang/String;
+    //   528: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   531: pop
+    //   532: aload_1
+    //   533: astore_0
+    //   534: aload_3
+    //   535: ldc_w 619
+    //   538: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   541: pop
+    //   542: aload_1
+    //   543: astore_0
+    //   544: aload_3
+    //   545: aload_2
+    //   546: invokevirtual 620	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   549: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   552: pop
+    //   553: aload_1
+    //   554: astore_0
+    //   555: ldc_w 622
+    //   558: iconst_1
+    //   559: anewarray 4	java/lang/Object
+    //   562: dup
+    //   563: iconst_0
+    //   564: aload_3
+    //   565: invokevirtual 169	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   568: aastore
+    //   569: invokestatic 504	com/tencent/bugly/proguard/x:e	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   572: pop
+    //   573: aload_1
+    //   574: ifnull +21 -> 595
+    //   577: aload_1
+    //   578: invokevirtual 608	java/io/BufferedWriter:close	()V
+    //   581: iconst_0
+    //   582: ireturn
+    //   583: astore_0
+    //   584: aload_0
+    //   585: invokestatic 389	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
+    //   588: ifne +7 -> 595
+    //   591: aload_0
+    //   592: invokevirtual 609	java/io/IOException:printStackTrace	()V
+    //   595: iconst_0
+    //   596: ireturn
     //   597: aload_1
-    //   598: ifnull +7 -> 605
+    //   598: ifnull +22 -> 620
     //   601: aload_1
-    //   602: invokevirtual 630	java/io/BufferedWriter:close	()V
-    //   605: aload_0
-    //   606: athrow
-    //   607: astore_1
-    //   608: aload_1
-    //   609: invokestatic 391	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
-    //   612: ifne -7 -> 605
-    //   615: aload_1
-    //   616: invokevirtual 624	java/io/IOException:printStackTrace	()V
-    //   619: goto -14 -> 605
-    //   622: astore_0
-    //   623: goto -26 -> 597
-    //   626: astore_2
-    //   627: aload_0
-    //   628: astore_1
-    //   629: aload_2
-    //   630: astore_0
-    //   631: goto -34 -> 597
-    //   634: astore_1
-    //   635: goto -145 -> 490
+    //   602: invokevirtual 608	java/io/BufferedWriter:close	()V
+    //   605: goto +15 -> 620
+    //   608: astore_1
+    //   609: aload_1
+    //   610: invokestatic 389	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
+    //   613: ifne +7 -> 620
+    //   616: aload_1
+    //   617: invokevirtual 609	java/io/IOException:printStackTrace	()V
+    //   620: aload_0
+    //   621: athrow
+    //   622: ldc_w 624
+    //   625: iconst_1
+    //   626: anewarray 4	java/lang/Object
+    //   629: dup
+    //   630: iconst_0
+    //   631: aload_1
+    //   632: aastore
+    //   633: invokestatic 504	com/tencent/bugly/proguard/x:e	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   636: pop
+    //   637: iconst_0
+    //   638: ireturn
+    //   639: astore_0
+    //   640: aload_0
+    //   641: invokestatic 389	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
+    //   644: ifne +7 -> 651
+    //   647: aload_0
+    //   648: invokevirtual 625	java/lang/Exception:printStackTrace	()V
+    //   651: new 154	java/lang/StringBuilder
+    //   654: dup
+    //   655: invokespecial 610	java/lang/StringBuilder:<init>	()V
+    //   658: astore_2
+    //   659: aload_2
+    //   660: aload_0
+    //   661: invokevirtual 614	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   664: invokevirtual 617	java/lang/Class:getName	()Ljava/lang/String;
+    //   667: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   670: pop
+    //   671: aload_2
+    //   672: ldc_w 619
+    //   675: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   678: pop
+    //   679: aload_2
+    //   680: aload_0
+    //   681: invokevirtual 626	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   684: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   687: pop
+    //   688: ldc_w 628
+    //   691: iconst_2
+    //   692: anewarray 4	java/lang/Object
+    //   695: dup
+    //   696: iconst_0
+    //   697: aload_2
+    //   698: invokevirtual 169	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   701: aastore
+    //   702: dup
+    //   703: iconst_1
+    //   704: aload_1
+    //   705: aastore
+    //   706: invokestatic 504	com/tencent/bugly/proguard/x:e	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   709: pop
+    //   710: iconst_0
+    //   711: ireturn
+    //   712: ldc_w 630
+    //   715: iconst_1
+    //   716: anewarray 4	java/lang/Object
+    //   719: dup
+    //   720: iconst_0
+    //   721: aload_2
+    //   722: aastore
+    //   723: invokestatic 504	com/tencent/bugly/proguard/x:e	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   726: pop
+    //   727: iconst_0
+    //   728: ireturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	638	0	paramString1	String
-    //   0	638	1	paramString2	String
-    //   0	638	2	paramString3	String
-    //   6	446	3	localObject1	Object
-    //   216	246	4	localObject2	Object
-    //   409	32	5	str	String
+    //   0	729	0	paramString1	String
+    //   0	729	1	paramString2	String
+    //   0	729	2	paramString3	String
+    //   6	559	3	localObject1	Object
+    //   41	381	4	localObject2	Object
+    //   173	216	5	localObject3	Object
+    //   360	78	6	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   56	81	117	java/lang/Exception
-    //   81	86	117	java/lang/Exception
-    //   201	218	485	java/io/IOException
-    //   223	230	485	java/io/IOException
-    //   246	298	485	java/io/IOException
-    //   298	313	485	java/io/IOException
-    //   313	482	485	java/io/IOException
-    //   558	562	564	java/io/IOException
-    //   552	556	579	java/io/IOException
-    //   184	201	594	finally
-    //   601	605	607	java/io/IOException
-    //   201	218	622	finally
-    //   223	230	622	finally
-    //   246	298	622	finally
-    //   298	313	622	finally
-    //   313	482	622	finally
-    //   490	501	626	finally
-    //   501	548	626	finally
-    //   184	201	634	java/io/IOException
+    //   452	456	458	java/io/IOException
+    //   118	135	472	finally
+    //   140	147	472	finally
+    //   163	237	472	finally
+    //   237	252	472	finally
+    //   252	449	472	finally
+    //   118	135	476	java/io/IOException
+    //   140	147	476	java/io/IOException
+    //   163	237	476	java/io/IOException
+    //   237	252	476	java/io/IOException
+    //   252	449	476	java/io/IOException
+    //   100	118	480	finally
+    //   495	502	480	finally
+    //   504	508	480	finally
+    //   510	518	480	finally
+    //   520	532	480	finally
+    //   534	542	480	finally
+    //   544	553	480	finally
+    //   555	573	480	finally
+    //   100	118	488	java/io/IOException
+    //   577	581	583	java/io/IOException
+    //   601	605	608	java/io/IOException
+    //   43	71	639	java/lang/Exception
+    //   71	77	639	java/lang/Exception
   }
   
   private void b(boolean paramBoolean)
   {
     if (paramBoolean) {}
-    for (;;)
+    try
     {
-      try
-      {
-        f();
-        return;
-      }
-      finally {}
-      g();
+      f();
+      return;
     }
+    finally {}
+    g();
   }
   
   private void c(boolean paramBoolean)
@@ -658,7 +719,7 @@ public final class b
     //   9: ldc_w 646
     //   12: iconst_0
     //   13: anewarray 4	java/lang/Object
-    //   16: invokestatic 480	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   16: invokestatic 485	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   19: pop
     //   20: aload_0
     //   21: monitorexit
@@ -687,7 +748,9 @@ public final class b
     //   67: invokespecial 667	com/tencent/bugly/crashreport/crash/anr/b$2:<init>	(Lcom/tencent/bugly/crashreport/crash/anr/b;)V
     //   70: invokevirtual 672	com/tencent/bugly/proguard/w:a	(Ljava/lang/Runnable;)Z
     //   73: pop
-    //   74: goto -54 -> 20
+    //   74: aload_0
+    //   75: monitorexit
+    //   76: return
     //   77: astore_1
     //   78: aload_0
     //   79: aconst_null
@@ -695,14 +758,16 @@ public final class b
     //   83: ldc_w 674
     //   86: iconst_0
     //   87: anewarray 4	java/lang/Object
-    //   90: invokestatic 480	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   90: invokestatic 485	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   93: pop
     //   94: aload_1
-    //   95: invokestatic 391	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
-    //   98: ifne -78 -> 20
+    //   95: invokestatic 389	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
+    //   98: ifne +7 -> 105
     //   101: aload_1
-    //   102: invokevirtual 394	java/lang/Throwable:printStackTrace	()V
-    //   105: goto -85 -> 20
+    //   102: invokevirtual 392	java/lang/Throwable:printStackTrace	()V
+    //   105: aload_0
+    //   106: monitorexit
+    //   107: return
     //   108: astore_1
     //   109: aload_0
     //   110: monitorexit
@@ -734,7 +799,7 @@ public final class b
     //   9: ldc_w 676
     //   12: iconst_0
     //   13: anewarray 4	java/lang/Object
-    //   16: invokestatic 480	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   16: invokestatic 485	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   19: pop
     //   20: aload_0
     //   21: monitorexit
@@ -748,21 +813,25 @@ public final class b
     //   35: ldc_w 681
     //   38: iconst_0
     //   39: anewarray 4	java/lang/Object
-    //   42: invokestatic 480	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   42: invokestatic 485	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   45: pop
-    //   46: goto -26 -> 20
+    //   46: aload_0
+    //   47: monitorexit
+    //   48: return
     //   49: astore_1
     //   50: ldc_w 683
     //   53: iconst_0
     //   54: anewarray 4	java/lang/Object
-    //   57: invokestatic 480	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   57: invokestatic 485	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   60: pop
     //   61: aload_1
-    //   62: invokestatic 391	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
-    //   65: ifne -45 -> 20
+    //   62: invokestatic 389	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
+    //   65: ifne +7 -> 72
     //   68: aload_1
-    //   69: invokevirtual 394	java/lang/Throwable:printStackTrace	()V
-    //   72: goto -52 -> 20
+    //   69: invokevirtual 392	java/lang/Throwable:printStackTrace	()V
+    //   72: aload_0
+    //   73: monitorexit
+    //   74: return
     //   75: astore_1
     //   76: aload_0
     //   77: monitorexit
@@ -804,14 +873,16 @@ public final class b
     //   22: astore_2
     //   23: aload_0
     //   24: monitorexit
-    //   25: aload_2
-    //   26: athrow
+    //   25: goto +5 -> 30
+    //   28: aload_2
+    //   29: athrow
+    //   30: goto -2 -> 28
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	27	0	this	b
+    //   0	33	0	this	b
     //   12	7	1	bool	boolean
     //   6	2	2	localFileObserver	FileObserver
-    //   22	4	2	localObject	Object
+    //   22	7	2	localObject	Object
     // Exception table:
     //   from	to	target	type
     //   2	7	22	finally
@@ -844,7 +915,7 @@ public final class b
     //   12: ldc_w 687
     //   15: iconst_0
     //   16: anewarray 4	java/lang/Object
-    //   19: invokestatic 101	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   19: invokestatic 99	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   22: pop
     //   23: aload_0
     //   24: monitorexit
@@ -852,234 +923,215 @@ public final class b
     //   26: aload_0
     //   27: getfield 44	com/tencent/bugly/crashreport/crash/anr/b:a	Ljava/util/concurrent/atomic/AtomicInteger;
     //   30: iconst_1
-    //   31: invokevirtual 519	java/util/concurrent/atomic/AtomicInteger:set	(I)V
+    //   31: invokevirtual 521	java/util/concurrent/atomic/AtomicInteger:set	(I)V
     //   34: aload_0
     //   35: monitorexit
     //   36: ldc_w 689
     //   39: iconst_0
     //   40: anewarray 4	java/lang/Object
-    //   43: invokestatic 101	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   43: invokestatic 99	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   46: pop
     //   47: aload_1
     //   48: iconst_0
     //   49: invokestatic 693	com/tencent/bugly/crashreport/crash/anr/TraceFileHelper:readFirstDumpInfo	(Ljava/lang/String;Z)Lcom/tencent/bugly/crashreport/crash/anr/TraceFileHelper$a;
     //   52: astore 6
     //   54: aload 6
-    //   56: ifnull +347 -> 403
+    //   56: ifnull +326 -> 382
     //   59: aload 6
     //   61: getfield 694	com/tencent/bugly/crashreport/crash/anr/TraceFileHelper$a:c	J
     //   64: lstore_2
-    //   65: lload_2
-    //   66: lstore 4
+    //   65: goto +3 -> 68
     //   68: lload_2
-    //   69: ldc2_w 45
-    //   72: lcmp
-    //   73: ifne +19 -> 92
-    //   76: ldc_w 696
-    //   79: iconst_0
-    //   80: anewarray 4	java/lang/Object
-    //   83: invokestatic 480	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   86: pop
-    //   87: invokestatic 701	java/lang/System:currentTimeMillis	()J
-    //   90: lstore 4
-    //   92: lload 4
-    //   94: aload_0
-    //   95: getfield 48	com/tencent/bugly/crashreport/crash/anr/b:b	J
-    //   98: lsub
-    //   99: invokestatic 707	java/lang/Math:abs	(J)J
-    //   102: ldc2_w 93
-    //   105: lcmp
-    //   106: ifge +37 -> 143
-    //   109: ldc_w 709
-    //   112: iconst_1
-    //   113: anewarray 4	java/lang/Object
-    //   116: dup
-    //   117: iconst_0
-    //   118: sipush 10000
-    //   121: invokestatic 467	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   124: aastore
-    //   125: invokestatic 480	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   128: pop
-    //   129: aload_0
-    //   130: getfield 44	com/tencent/bugly/crashreport/crash/anr/b:a	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   133: iconst_0
-    //   134: invokevirtual 519	java/util/concurrent/atomic/AtomicInteger:set	(I)V
-    //   137: return
-    //   138: astore_1
-    //   139: aload_0
-    //   140: monitorexit
-    //   141: aload_1
-    //   142: athrow
-    //   143: aload_0
-    //   144: lload 4
-    //   146: putfield 48	com/tencent/bugly/crashreport/crash/anr/b:b	J
-    //   149: aload_0
-    //   150: getfield 44	com/tencent/bugly/crashreport/crash/anr/b:a	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   153: iconst_1
-    //   154: invokevirtual 519	java/util/concurrent/atomic/AtomicInteger:set	(I)V
-    //   157: getstatic 711	com/tencent/bugly/crashreport/crash/c:f	I
-    //   160: iconst_0
-    //   161: invokestatic 714	com/tencent/bugly/proguard/z:a	(IZ)Ljava/util/Map;
-    //   164: astore 6
-    //   166: aload 6
-    //   168: ifnull +13 -> 181
-    //   171: aload 6
-    //   173: invokeinterface 494 1 0
-    //   178: ifgt +49 -> 227
-    //   181: ldc_w 716
-    //   184: iconst_0
-    //   185: anewarray 4	java/lang/Object
-    //   188: invokestatic 480	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   191: pop
-    //   192: aload_0
-    //   193: getfield 44	com/tencent/bugly/crashreport/crash/anr/b:a	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   196: iconst_0
-    //   197: invokevirtual 519	java/util/concurrent/atomic/AtomicInteger:set	(I)V
-    //   200: return
-    //   201: astore_1
-    //   202: aload_1
-    //   203: invokestatic 391	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
-    //   206: pop
-    //   207: ldc_w 718
-    //   210: iconst_0
-    //   211: anewarray 4	java/lang/Object
-    //   214: invokestatic 504	com/tencent/bugly/proguard/x:e	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   217: pop
+    //   69: lstore 4
+    //   71: lload_2
+    //   72: ldc2_w 45
+    //   75: lcmp
+    //   76: ifne +19 -> 95
+    //   79: ldc_w 696
+    //   82: iconst_0
+    //   83: anewarray 4	java/lang/Object
+    //   86: invokestatic 485	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   89: pop
+    //   90: invokestatic 701	java/lang/System:currentTimeMillis	()J
+    //   93: lstore 4
+    //   95: lload 4
+    //   97: aload_0
+    //   98: getfield 48	com/tencent/bugly/crashreport/crash/anr/b:b	J
+    //   101: lsub
+    //   102: invokestatic 707	java/lang/Math:abs	(J)J
+    //   105: ldc2_w 708
+    //   108: lcmp
+    //   109: ifge +32 -> 141
+    //   112: ldc_w 711
+    //   115: iconst_1
+    //   116: anewarray 4	java/lang/Object
+    //   119: dup
+    //   120: iconst_0
+    //   121: sipush 10000
+    //   124: invokestatic 472	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   127: aastore
+    //   128: invokestatic 485	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   131: pop
+    //   132: aload_0
+    //   133: getfield 44	com/tencent/bugly/crashreport/crash/anr/b:a	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   136: iconst_0
+    //   137: invokevirtual 521	java/util/concurrent/atomic/AtomicInteger:set	(I)V
+    //   140: return
+    //   141: aload_0
+    //   142: lload 4
+    //   144: putfield 48	com/tencent/bugly/crashreport/crash/anr/b:b	J
+    //   147: aload_0
+    //   148: getfield 44	com/tencent/bugly/crashreport/crash/anr/b:a	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   151: iconst_1
+    //   152: invokevirtual 521	java/util/concurrent/atomic/AtomicInteger:set	(I)V
+    //   155: getstatic 713	com/tencent/bugly/crashreport/crash/c:f	I
+    //   158: iconst_0
+    //   159: invokestatic 716	com/tencent/bugly/proguard/z:a	(IZ)Ljava/util/Map;
+    //   162: astore 6
+    //   164: aload 6
+    //   166: ifnull +121 -> 287
+    //   169: aload 6
+    //   171: invokeinterface 459 1 0
+    //   176: ifgt +6 -> 182
+    //   179: goto +108 -> 287
+    //   182: aload_0
+    //   183: aload_0
+    //   184: aload_0
+    //   185: getfield 57	com/tencent/bugly/crashreport/crash/anr/b:c	Landroid/content/Context;
+    //   188: ldc2_w 708
+    //   191: invokespecial 718	com/tencent/bugly/crashreport/crash/anr/b:a	(Landroid/content/Context;J)Landroid/app/ActivityManager$ProcessErrorStateInfo;
+    //   194: putfield 86	com/tencent/bugly/crashreport/crash/anr/b:m	Landroid/app/ActivityManager$ProcessErrorStateInfo;
+    //   197: aload_0
+    //   198: getfield 86	com/tencent/bugly/crashreport/crash/anr/b:m	Landroid/app/ActivityManager$ProcessErrorStateInfo;
+    //   201: ifnonnull +17 -> 218
+    //   204: ldc_w 720
+    //   207: iconst_0
+    //   208: anewarray 4	java/lang/Object
+    //   211: invokestatic 99	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   214: pop
+    //   215: goto -83 -> 132
     //   218: aload_0
-    //   219: getfield 44	com/tencent/bugly/crashreport/crash/anr/b:a	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   222: iconst_0
-    //   223: invokevirtual 519	java/util/concurrent/atomic/AtomicInteger:set	(I)V
-    //   226: return
-    //   227: aload_0
-    //   228: aload_0
-    //   229: aload_0
-    //   230: getfield 57	com/tencent/bugly/crashreport/crash/anr/b:c	Landroid/content/Context;
-    //   233: ldc2_w 93
-    //   236: invokespecial 720	com/tencent/bugly/crashreport/crash/anr/b:a	(Landroid/content/Context;J)Landroid/app/ActivityManager$ProcessErrorStateInfo;
-    //   239: putfield 86	com/tencent/bugly/crashreport/crash/anr/b:m	Landroid/app/ActivityManager$ProcessErrorStateInfo;
-    //   242: aload_0
-    //   243: getfield 86	com/tencent/bugly/crashreport/crash/anr/b:m	Landroid/app/ActivityManager$ProcessErrorStateInfo;
-    //   246: ifnonnull +23 -> 269
-    //   249: ldc_w 722
-    //   252: iconst_0
-    //   253: anewarray 4	java/lang/Object
-    //   256: invokestatic 101	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   259: pop
-    //   260: aload_0
-    //   261: getfield 44	com/tencent/bugly/crashreport/crash/anr/b:a	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   264: iconst_0
-    //   265: invokevirtual 519	java/util/concurrent/atomic/AtomicInteger:set	(I)V
-    //   268: return
-    //   269: aload_0
-    //   270: getfield 86	com/tencent/bugly/crashreport/crash/anr/b:m	Landroid/app/ActivityManager$ProcessErrorStateInfo;
-    //   273: getfield 155	android/app/ActivityManager$ProcessErrorStateInfo:pid	I
-    //   276: invokestatic 152	android/os/Process:myPid	()I
-    //   279: if_icmpeq +33 -> 312
-    //   282: ldc_w 724
-    //   285: iconst_1
-    //   286: anewarray 4	java/lang/Object
-    //   289: dup
+    //   219: getfield 86	com/tencent/bugly/crashreport/crash/anr/b:m	Landroid/app/ActivityManager$ProcessErrorStateInfo;
+    //   222: getfield 152	android/app/ActivityManager$ProcessErrorStateInfo:pid	I
+    //   225: invokestatic 149	android/os/Process:myPid	()I
+    //   228: if_icmpeq +27 -> 255
+    //   231: ldc_w 722
+    //   234: iconst_1
+    //   235: anewarray 4	java/lang/Object
+    //   238: dup
+    //   239: iconst_0
+    //   240: aload_0
+    //   241: getfield 86	com/tencent/bugly/crashreport/crash/anr/b:m	Landroid/app/ActivityManager$ProcessErrorStateInfo;
+    //   244: getfield 415	android/app/ActivityManager$ProcessErrorStateInfo:processName	Ljava/lang/String;
+    //   247: aastore
+    //   248: invokestatic 99	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   251: pop
+    //   252: goto -120 -> 132
+    //   255: ldc_w 724
+    //   258: iconst_0
+    //   259: anewarray 4	java/lang/Object
+    //   262: invokestatic 498	com/tencent/bugly/proguard/x:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   265: pop
+    //   266: aload_0
+    //   267: aload_0
+    //   268: getfield 57	com/tencent/bugly/crashreport/crash/anr/b:c	Landroid/content/Context;
+    //   271: aload_1
+    //   272: aload_0
+    //   273: getfield 86	com/tencent/bugly/crashreport/crash/anr/b:m	Landroid/app/ActivityManager$ProcessErrorStateInfo;
+    //   276: lload 4
+    //   278: aload 6
+    //   280: invokespecial 726	com/tencent/bugly/crashreport/crash/anr/b:a	(Landroid/content/Context;Ljava/lang/String;Landroid/app/ActivityManager$ProcessErrorStateInfo;JLjava/util/Map;)Z
+    //   283: pop
+    //   284: goto -152 -> 132
+    //   287: ldc_w 728
     //   290: iconst_0
-    //   291: aload_0
-    //   292: getfield 86	com/tencent/bugly/crashreport/crash/anr/b:m	Landroid/app/ActivityManager$ProcessErrorStateInfo;
-    //   295: getfield 413	android/app/ActivityManager$ProcessErrorStateInfo:processName	Ljava/lang/String;
-    //   298: aastore
-    //   299: invokestatic 101	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   302: pop
-    //   303: aload_0
-    //   304: getfield 44	com/tencent/bugly/crashreport/crash/anr/b:a	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   307: iconst_0
-    //   308: invokevirtual 519	java/util/concurrent/atomic/AtomicInteger:set	(I)V
-    //   311: return
-    //   312: ldc_w 726
-    //   315: iconst_0
-    //   316: anewarray 4	java/lang/Object
-    //   319: invokestatic 498	com/tencent/bugly/proguard/x:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   322: pop
-    //   323: aload_0
-    //   324: aload_0
-    //   325: getfield 57	com/tencent/bugly/crashreport/crash/anr/b:c	Landroid/content/Context;
-    //   328: aload_1
-    //   329: aload_0
-    //   330: getfield 86	com/tencent/bugly/crashreport/crash/anr/b:m	Landroid/app/ActivityManager$ProcessErrorStateInfo;
-    //   333: lload 4
-    //   335: aload 6
-    //   337: invokespecial 728	com/tencent/bugly/crashreport/crash/anr/b:a	(Landroid/content/Context;Ljava/lang/String;Landroid/app/ActivityManager$ProcessErrorStateInfo;JLjava/util/Map;)Z
-    //   340: pop
-    //   341: aload_0
-    //   342: getfield 44	com/tencent/bugly/crashreport/crash/anr/b:a	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   291: anewarray 4	java/lang/Object
+    //   294: invokestatic 485	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   297: pop
+    //   298: goto -166 -> 132
+    //   301: astore_1
+    //   302: aload_1
+    //   303: invokestatic 389	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
+    //   306: pop
+    //   307: ldc_w 730
+    //   310: iconst_0
+    //   311: anewarray 4	java/lang/Object
+    //   314: invokestatic 504	com/tencent/bugly/proguard/x:e	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   317: pop
+    //   318: goto -186 -> 132
+    //   321: astore_1
+    //   322: goto +39 -> 361
+    //   325: astore_1
+    //   326: aload_1
+    //   327: invokestatic 389	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
+    //   330: ifne +7 -> 337
+    //   333: aload_1
+    //   334: invokevirtual 392	java/lang/Throwable:printStackTrace	()V
+    //   337: ldc_w 732
+    //   340: iconst_1
+    //   341: anewarray 4	java/lang/Object
+    //   344: dup
     //   345: iconst_0
-    //   346: invokevirtual 519	java/util/concurrent/atomic/AtomicInteger:set	(I)V
-    //   349: return
-    //   350: astore_1
-    //   351: aload_1
-    //   352: invokestatic 391	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
-    //   355: ifne +7 -> 362
-    //   358: aload_1
-    //   359: invokevirtual 394	java/lang/Throwable:printStackTrace	()V
-    //   362: ldc_w 730
-    //   365: iconst_1
-    //   366: anewarray 4	java/lang/Object
-    //   369: dup
-    //   370: iconst_0
-    //   371: aload_1
-    //   372: invokevirtual 574	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   375: invokevirtual 731	java/lang/Class:toString	()Ljava/lang/String;
-    //   378: aastore
-    //   379: invokestatic 504	com/tencent/bugly/proguard/x:e	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   382: pop
-    //   383: aload_0
-    //   384: getfield 44	com/tencent/bugly/crashreport/crash/anr/b:a	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   387: iconst_0
-    //   388: invokevirtual 519	java/util/concurrent/atomic/AtomicInteger:set	(I)V
-    //   391: return
-    //   392: astore_1
-    //   393: aload_0
-    //   394: getfield 44	com/tencent/bugly/crashreport/crash/anr/b:a	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   397: iconst_0
-    //   398: invokevirtual 519	java/util/concurrent/atomic/AtomicInteger:set	(I)V
-    //   401: aload_1
-    //   402: athrow
-    //   403: ldc2_w 45
-    //   406: lstore_2
-    //   407: goto -342 -> 65
+    //   346: aload_1
+    //   347: invokevirtual 614	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   350: invokevirtual 733	java/lang/Class:toString	()Ljava/lang/String;
+    //   353: aastore
+    //   354: invokestatic 504	com/tencent/bugly/proguard/x:e	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   357: pop
+    //   358: goto -226 -> 132
+    //   361: aload_0
+    //   362: getfield 44	com/tencent/bugly/crashreport/crash/anr/b:a	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   365: iconst_0
+    //   366: invokevirtual 521	java/util/concurrent/atomic/AtomicInteger:set	(I)V
+    //   369: aload_1
+    //   370: athrow
+    //   371: astore_1
+    //   372: aload_0
+    //   373: monitorexit
+    //   374: goto +5 -> 379
+    //   377: aload_1
+    //   378: athrow
+    //   379: goto -2 -> 377
+    //   382: ldc2_w 45
+    //   385: lstore_2
+    //   386: goto -318 -> 68
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	410	0	this	b
-    //   0	410	1	paramString	String
-    //   64	343	2	l1	long
-    //   66	268	4	l2	long
-    //   52	284	6	localObject	Object
+    //   0	389	0	this	b
+    //   0	389	1	paramString	String
+    //   64	322	2	l1	long
+    //   69	208	4	l2	long
+    //   52	227	6	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   2	25	138	finally
-    //   26	36	138	finally
-    //   157	166	201	java/lang/Throwable
-    //   36	54	350	java/lang/Throwable
-    //   59	65	350	java/lang/Throwable
-    //   76	92	350	java/lang/Throwable
-    //   92	129	350	java/lang/Throwable
-    //   143	157	350	java/lang/Throwable
-    //   171	181	350	java/lang/Throwable
-    //   181	192	350	java/lang/Throwable
-    //   202	218	350	java/lang/Throwable
-    //   227	260	350	java/lang/Throwable
-    //   269	303	350	java/lang/Throwable
-    //   312	341	350	java/lang/Throwable
-    //   36	54	392	finally
-    //   59	65	392	finally
-    //   76	92	392	finally
-    //   92	129	392	finally
-    //   143	157	392	finally
-    //   157	166	392	finally
-    //   171	181	392	finally
-    //   181	192	392	finally
-    //   202	218	392	finally
-    //   227	260	392	finally
-    //   269	303	392	finally
-    //   312	341	392	finally
-    //   351	362	392	finally
-    //   362	383	392	finally
+    //   155	164	301	java/lang/Throwable
+    //   36	54	321	finally
+    //   59	65	321	finally
+    //   79	95	321	finally
+    //   95	132	321	finally
+    //   141	155	321	finally
+    //   155	164	321	finally
+    //   169	179	321	finally
+    //   182	215	321	finally
+    //   218	252	321	finally
+    //   255	284	321	finally
+    //   287	298	321	finally
+    //   302	318	321	finally
+    //   326	337	321	finally
+    //   337	358	321	finally
+    //   36	54	325	java/lang/Throwable
+    //   59	65	325	java/lang/Throwable
+    //   79	95	325	java/lang/Throwable
+    //   95	132	325	java/lang/Throwable
+    //   141	155	325	java/lang/Throwable
+    //   169	179	325	java/lang/Throwable
+    //   182	215	325	java/lang/Throwable
+    //   218	252	325	java/lang/Throwable
+    //   255	284	325	java/lang/Throwable
+    //   287	298	325	java/lang/Throwable
+    //   302	318	325	java/lang/Throwable
+    //   2	25	371	finally
+    //   26	36	371	finally
   }
   
   public final void a(boolean paramBoolean)
@@ -1089,19 +1141,16 @@ public final class b
     com.tencent.bugly.crashreport.common.strategy.a locala = com.tencent.bugly.crashreport.common.strategy.a.a();
     paramBoolean = bool;
     if (locala != null) {
-      if ((!bool) || (!locala.c().f)) {
-        break label68;
+      if ((bool) && (locala.c().f)) {
+        paramBoolean = true;
+      } else {
+        paramBoolean = false;
       }
     }
-    label68:
-    for (paramBoolean = true;; paramBoolean = false)
+    if (paramBoolean != h())
     {
-      if (paramBoolean != h())
-      {
-        x.a("anr changed to %b", new Object[] { Boolean.valueOf(paramBoolean) });
-        b(paramBoolean);
-      }
-      return;
+      x.a("anr changed to %b", new Object[] { Boolean.valueOf(paramBoolean) });
+      b(paramBoolean);
     }
   }
   
@@ -1113,51 +1162,50 @@ public final class b
   public final boolean a(aa paramaa)
   {
     HashMap localHashMap = new HashMap();
-    if (paramaa.e().equals(Looper.getMainLooper())) {}
-    for (int n = 1;; n = 0)
+    if (paramaa.e().equals(Looper.getMainLooper()))
     {
-      if (n != 0)
+      this.m = a(this.c, 10000L);
+      paramaa = this.m;
+      if (paramaa == null)
       {
-        this.m = a(this.c, 10000L);
-        if (this.m == null)
-        {
-          x.c("anr handler onThreadBlock proc state is unvisiable!", new Object[0]);
-          return false;
-        }
-        if (this.m.pid != Process.myPid())
-        {
-          x.c("onThreadBlock not mind proc!", new Object[] { this.m.processName });
-          return false;
-        }
+        x.c("anr handler onThreadBlock proc state is unvisiable!", new Object[0]);
+        return false;
       }
-      for (;;)
+      if (paramaa.pid != Process.myPid())
       {
-        try
-        {
-          paramaa = z.a(200000, false);
-          x.c("onThreadBlock found visiable anr , start to process!", new Object[0]);
-          a(this.c, "", this.m, System.currentTimeMillis(), paramaa);
-          return true;
-        }
-        catch (Throwable paramaa)
+        x.c("onThreadBlock not mind proc!", new Object[] { this.m.processName });
+        return false;
+      }
+      try
+      {
+        paramaa = z.a(200000, false);
+      }
+      catch (Throwable paramaa)
+      {
+        for (;;)
         {
           x.b(paramaa);
           localHashMap.put("main", paramaa.getMessage());
           paramaa = localHashMap;
-          continue;
         }
-        x.c("anr handler onThreadBlock only care main thread ,current thread is: %s", new Object[] { paramaa.d() });
       }
+      x.c("onThreadBlock found visiable anr , start to process!", new Object[0]);
+      a(this.c, "", this.m, System.currentTimeMillis(), paramaa);
+      return true;
     }
+    x.c("anr handler onThreadBlock only care main thread ,current thread is: %s", new Object[] { paramaa.d() });
+    return true;
   }
   
   protected final void b()
   {
-    int i1 = 0;
     long l1 = z.b();
     long l2 = c.g;
     Object localObject1 = new File(this.g);
-    if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory())) {
+    if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory())) {}
+    for (;;)
+    {
+      int n;
       try
       {
         localObject1 = ((File)localObject1).listFiles();
@@ -1166,57 +1214,62 @@ public final class b
           if (localObject1.length == 0) {
             return;
           }
-          int i3 = "bugly_trace_".length();
-          int i4 = localObject1.length;
-          int n = 0;
-          Object localObject2;
-          String str;
-          int i2;
-          for (;;)
+          int i3 = localObject1.length;
+          n = 0;
+          i1 = 0;
+          if (n < i3)
           {
-            if (n >= i4) {
-              break label204;
-            }
             localObject2 = localObject1[n];
             str = localObject2.getName();
             boolean bool = str.startsWith("bugly_trace_");
             i2 = i1;
-            if (bool) {}
-            try
-            {
-              i2 = str.indexOf(".txt");
-              if (i2 <= 0) {
-                break;
-              }
-              long l3 = Long.parseLong(str.substring(i3, i2));
-              if (l3 < l1 - l2) {
-                break;
-              }
-              i2 = i1;
+            if (!bool) {
+              break label242;
             }
-            catch (Throwable localThrowable2)
-            {
-              for (;;)
-              {
-                x.c("Trace file that has invalid format: " + str, new Object[0]);
-                i2 = i1;
-                if (localObject2.delete()) {
-                  i2 = i1 + 1;
-                }
-              }
-            }
-            n += 1;
-            i1 = i2;
           }
-          label204:
-          x.c("Number of overdue trace files that has deleted: " + i1, new Object[0]);
-          return;
         }
       }
       catch (Throwable localThrowable1)
       {
+        Object localObject2;
+        String str;
+        long l3;
+        StringBuilder localStringBuilder;
         x.a(localThrowable1);
       }
+      try
+      {
+        i2 = str.indexOf(".txt");
+        if (i2 <= 0) {
+          continue;
+        }
+        l3 = Long.parseLong(str.substring(12, i2));
+        if (l3 < l1 - l2) {
+          continue;
+        }
+        i2 = i1;
+      }
+      catch (Throwable localThrowable2)
+      {
+        continue;
+      }
+      localStringBuilder = new StringBuilder("Trace file that has invalid format: ");
+      localStringBuilder.append(str);
+      x.c(localStringBuilder.toString(), new Object[0]);
+      int i2 = i1;
+      if (localObject2.delete())
+      {
+        i2 = i1 + 1;
+        break label242;
+        localObject1 = new StringBuilder("Number of overdue trace files that has deleted: ");
+        ((StringBuilder)localObject1).append(i1);
+        x.c(((StringBuilder)localObject1).toString(), new Object[0]);
+        return;
+        return;
+      }
+      label242:
+      n += 1;
+      int i1 = i2;
     }
   }
   
@@ -1236,15 +1289,17 @@ public final class b
   
   public final boolean d()
   {
-    if ((this.k != null) && (this.k.isAlive())) {
+    ab localab = this.k;
+    if ((localab != null) && (localab.isAlive())) {
       return false;
     }
     this.k = new ab();
-    ab localab = this.k;
+    localab = this.k;
     StringBuilder localStringBuilder = new StringBuilder("Bugly-ThreadMonitor");
     int n = this.l;
     this.l = (n + 1);
-    localab.setName(n);
+    localStringBuilder.append(n);
+    localab.setName(localStringBuilder.toString());
     this.k.a();
     this.k.a(this);
     return this.k.d();
@@ -1252,20 +1307,21 @@ public final class b
   
   public final boolean e()
   {
-    boolean bool = false;
-    if (this.k != null)
+    ab localab = this.k;
+    if (localab != null)
     {
-      bool = this.k.c();
+      boolean bool = localab.c();
       this.k.b();
       this.k.b(this);
       this.k = null;
+      return bool;
     }
-    return bool;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.bugly.crashreport.crash.anr.b
  * JD-Core Version:    0.7.0.1
  */

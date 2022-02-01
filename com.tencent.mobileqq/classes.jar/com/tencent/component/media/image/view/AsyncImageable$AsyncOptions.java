@@ -97,13 +97,14 @@ public class AsyncImageable$AsyncOptions
   
   public void setFileRootPath(String paramString)
   {
-    if ((paramString != null) && (!paramString.equals(this.fileRootPath))) {
+    if ((paramString != null) && (!paramString.equals(this.fileRootPath)))
+    {
       this.fileRootPath = paramString;
-    }
-    while (paramString != null) {
       return;
     }
-    this.fileRootPath = null;
+    if (paramString == null) {
+      this.fileRootPath = null;
+    }
   }
   
   public void setImageConfig(Bitmap.Config paramConfig)
@@ -171,7 +172,7 @@ public class AsyncImageable$AsyncOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.image.view.AsyncImageable.AsyncOptions
  * JD-Core Version:    0.7.0.1
  */

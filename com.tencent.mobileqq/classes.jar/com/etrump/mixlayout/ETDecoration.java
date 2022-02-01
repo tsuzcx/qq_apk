@@ -55,36 +55,36 @@ public class ETDecoration
       localPaint.setStrokeWidth(paramFloat5);
       localPaint.setTextSize(paramFloat1);
       paramFloat2 = localPaint.measureText((String)localObject);
-      if (paramFloat3 <= paramFloat2) {
-        break label137;
+      if (paramFloat3 > paramFloat2) {
+        paramFloat2 = paramFloat3;
       }
-      paramFloat2 = paramFloat3;
     }
-    label137:
-    for (;;)
-    {
-      return (int)paramFloat2;
-    }
+    return (int)paramFloat2;
   }
   
   public static void callbackDrawImage(Object[] paramArrayOfObject, int paramInt1, Canvas paramCanvas, Matrix paramMatrix, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, boolean paramBoolean, int paramInt2)
   {
-    if (paramCanvas == null) {}
-    while ((paramArrayOfObject == null) || (paramInt1 < 0) || (paramInt1 >= paramArrayOfObject.length)) {
+    if (paramCanvas == null) {
       return;
     }
-    paramCanvas.save();
-    paramCanvas.setMatrix(paramMatrix);
-    paramArrayOfObject = paramArrayOfObject[paramInt1];
-    if (paramArrayOfObject != null)
+    if ((paramArrayOfObject != null) && (paramInt1 >= 0))
     {
-      paramMatrix = new Paint(1);
-      paramMatrix.setTextSize(paramFloat4);
-      paramMatrix.setColor(paramInt2);
-      paramMatrix.setAlpha((int)(255.0F * paramFloat5));
-      drawImage(paramCanvas, paramFloat2, paramFloat3, paramArrayOfObject, paramMatrix);
+      if (paramInt1 >= paramArrayOfObject.length) {
+        return;
+      }
+      paramCanvas.save();
+      paramCanvas.setMatrix(paramMatrix);
+      paramArrayOfObject = paramArrayOfObject[paramInt1];
+      if (paramArrayOfObject != null)
+      {
+        paramMatrix = new Paint(1);
+        paramMatrix.setTextSize(paramFloat4);
+        paramMatrix.setColor(paramInt2);
+        paramMatrix.setAlpha((int)(paramFloat5 * 255.0F));
+        drawImage(paramCanvas, paramFloat2, paramFloat3, paramArrayOfObject, paramMatrix);
+      }
+      paramCanvas.restore();
     }
-    paramCanvas.restore();
   }
   
   public static void callbackDrawText(int paramInt1, Canvas paramCanvas, Matrix paramMatrix, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, int paramInt3, float paramFloat6, float paramFloat7, float paramFloat8, boolean paramBoolean3, int paramInt4, float paramFloat9)
@@ -101,7 +101,8 @@ public class ETDecoration
     localPaint.setAntiAlias(true);
     localPaint.setDither(true);
     localPaint.setTextSize(paramFloat4);
-    localPaint.setAlpha((int)(255.0F * paramFloat5));
+    paramInt1 = (int)(255.0F * paramFloat5);
+    localPaint.setAlpha(paramInt1);
     if (!paramBoolean1) {
       localPaint.setStyle(Paint.Style.STROKE);
     }
@@ -109,9 +110,10 @@ public class ETDecoration
     paramCanvas.setMatrix(paramMatrix);
     if ((paramBoolean2) && (paramBoolean1))
     {
-      float f1 = paramFloat8;
       if (0.0F == paramFloat8) {
-        f1 = 0.1F;
+        paramFloat5 = 0.1F;
+      } else {
+        paramFloat5 = paramFloat8;
       }
       Object localObject2 = new float[9];
       paramMatrix.getValues((float[])localObject2);
@@ -120,16 +122,14 @@ public class ETDecoration
       paramMatrix = new Matrix();
       paramMatrix.setValues((float[])localObject2);
       localObject2 = new Matrix();
-      float f2 = paramFloat6;
-      paramFloat8 = paramFloat7;
       if (paramMatrix.invert((Matrix)localObject2))
       {
         paramMatrix = new float[2];
         ((Matrix)localObject2).mapPoints(paramMatrix, new float[] { paramFloat6, paramFloat7 });
-        f2 = paramMatrix[0];
-        paramFloat8 = paramMatrix[1];
+        paramFloat6 = paramMatrix[0];
+        paramFloat7 = paramMatrix[1];
       }
-      localPaint.setShadowLayer(f1, f2, paramFloat8, paramInt3);
+      localPaint.setShadowLayer(paramFloat5, paramFloat6, paramFloat7, paramInt3);
     }
     if (paramBoolean3)
     {
@@ -138,7 +138,7 @@ public class ETDecoration
       paramMatrix.setColor(paramInt4);
       paramMatrix.setStrokeWidth(paramFloat9);
       paramMatrix.setTextSize(paramFloat4);
-      paramMatrix.setAlpha((int)(255.0F * paramFloat5));
+      paramMatrix.setAlpha(paramInt1);
       paramCanvas.drawText((String)localObject1, 0.0F, paramFloat1, paramMatrix);
     }
     paramCanvas.drawText((String)localObject1, paramFloat2, paramFloat3 + paramFloat1, localPaint);
@@ -148,7 +148,7 @@ public class ETDecoration
   private static void checkDescriptorList(ETEngine paramETEngine)
   {
     Object localObject1 = new ArrayList();
-    Object localObject2 = paramETEngine.DescriptorMap.entrySet().iterator();
+    Object localObject2 = paramETEngine.mDescriptorMap.entrySet().iterator();
     while (((Iterator)localObject2).hasNext())
     {
       Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
@@ -163,7 +163,7 @@ public class ETDecoration
       if (((Long)localObject2).longValue() != 0L) {
         paramETEngine.native_decorationDeleteDescriptor(((Long)localObject2).longValue());
       }
-      paramETEngine.DescriptorMap.remove(localObject2);
+      paramETEngine.mDescriptorMap.remove(localObject2);
     }
   }
   
@@ -185,40 +185,46 @@ public class ETDecoration
   public static IETDecoration createDecoration(IETEngine paramIETEngine, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, IETSegment[] paramArrayOfIETSegment, Object[] paramArrayOfObject, boolean paramBoolean1, int paramInt5, IETFont paramIETFont, boolean paramBoolean2)
   {
     paramIETEngine = (ETEngine)paramIETEngine;
-    if ((paramIETEngine == null) || (paramString == null) || (paramIETFont == null) || (paramArrayOfIETSegment == null)) {
-      return null;
-    }
-    if ((paramInt1 <= 0) || (paramInt2 <= 0) || (paramInt4 <= 0)) {
-      return null;
-    }
-    long l = paramIETEngine.native_decorationCreateDescriptor(paramString, convertToETSegmentArray(paramArrayOfIETSegment), paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean1, paramInt5, (ETFont)paramIETFont);
-    if (l != 0L)
+    if ((paramIETEngine != null) && (paramString != null) && (paramIETFont != null))
     {
-      paramInt3 = paramIETEngine.native_decorationGetFrameNum(l);
-      if (paramInt3 == 0)
-      {
-        paramIETEngine.native_decorationDeleteDescriptor(l);
+      if (paramArrayOfIETSegment == null) {
         return null;
       }
-      paramArrayOfIETSegment = new ETDecoration();
-      paramArrayOfIETSegment.mNativeDescriptorHandle = l;
-      paramInt2 = paramIETEngine.native_decorationGetFrameDelay(l, 0);
-      paramInt1 = paramInt2;
-      if (paramInt2 < 50) {
-        paramInt1 = 50;
-      }
-      paramArrayOfIETSegment.mFrameDelay = paramInt1;
-      paramArrayOfIETSegment.mFrameNum = paramInt3;
-      paramArrayOfIETSegment.mText = paramString;
-      paramArrayOfIETSegment.mEngine = paramIETEngine;
-      paramArrayOfIETSegment.mSpans = paramArrayOfObject;
-      paramArrayOfIETSegment.mMargins = paramIETEngine.native_getMargins(l);
-      if (paramBoolean2)
+      if ((paramInt1 > 0) && (paramInt2 > 0))
       {
-        checkDescriptorList(paramIETEngine);
-        paramIETEngine.DescriptorMap.put(Long.valueOf(l), new WeakReference(paramArrayOfIETSegment));
+        if (paramInt4 <= 0) {
+          return null;
+        }
+        long l = paramIETEngine.native_decorationCreateDescriptor(paramString, convertToETSegmentArray(paramArrayOfIETSegment), paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean1, paramInt5, (ETFont)paramIETFont);
+        if (l != 0L)
+        {
+          paramInt3 = paramIETEngine.native_decorationGetFrameNum(l);
+          if (paramInt3 == 0)
+          {
+            paramIETEngine.native_decorationDeleteDescriptor(l);
+            return null;
+          }
+          paramArrayOfIETSegment = new ETDecoration();
+          paramArrayOfIETSegment.mNativeDescriptorHandle = l;
+          paramInt2 = paramIETEngine.native_decorationGetFrameDelay(l, 0);
+          paramInt1 = paramInt2;
+          if (paramInt2 < 50) {
+            paramInt1 = 50;
+          }
+          paramArrayOfIETSegment.mFrameDelay = paramInt1;
+          paramArrayOfIETSegment.mFrameNum = paramInt3;
+          paramArrayOfIETSegment.mText = paramString;
+          paramArrayOfIETSegment.mEngine = paramIETEngine;
+          paramArrayOfIETSegment.mSpans = paramArrayOfObject;
+          paramArrayOfIETSegment.mMargins = paramIETEngine.native_getMargins(l);
+          if (paramBoolean2)
+          {
+            checkDescriptorList(paramIETEngine);
+            paramIETEngine.mDescriptorMap.put(Long.valueOf(l), new WeakReference(paramArrayOfIETSegment));
+          }
+          return paramArrayOfIETSegment;
+        }
       }
-      return paramArrayOfIETSegment;
     }
     return null;
   }
@@ -226,39 +232,46 @@ public class ETDecoration
   public static IETDecoration createDecorationSpace(IETEngine paramIETEngine, String paramString, int paramInt1, int paramInt2, Point paramPoint, int paramInt3, Point[] paramArrayOfPoint, int paramInt4, IETSegment[] paramArrayOfIETSegment, Object[] paramArrayOfObject, boolean paramBoolean1, int paramInt5, boolean paramBoolean2, IETFont paramIETFont, boolean paramBoolean3)
   {
     paramIETEngine = (ETEngine)paramIETEngine;
-    if ((paramIETEngine == null) || (paramString == null) || (paramIETFont == null)) {
-      return null;
-    }
-    if ((paramInt1 <= 0) || (paramInt2 <= 0) || (paramInt4 <= 0)) {
-      return null;
-    }
-    paramIETEngine.native_isColorVariantFont((ETFont)paramIETFont);
-    long l = paramIETEngine.native_space_decorationCreateDescriptor(paramString, convertToETSegmentArray(paramArrayOfIETSegment), paramInt1, paramInt2, paramPoint, paramInt3, paramArrayOfPoint, paramInt4, paramBoolean1, paramInt5, paramBoolean2, (ETFont)paramIETFont);
-    if (l != 0L)
+    if ((paramIETEngine != null) && (paramString != null))
     {
-      paramInt3 = paramIETEngine.native_space_decorationGetFrameNum(l);
-      if (paramInt3 == 0)
-      {
-        paramIETEngine.native_space_decorationDeleteDescriptor(l);
+      if (paramIETFont == null) {
         return null;
       }
-      paramPoint = new ETDecoration();
-      paramPoint.mNativeDescriptorHandle = l;
-      paramInt2 = paramIETEngine.native_space_decorationGetFrameDelay(l, 0);
-      paramInt1 = paramInt2;
-      if (paramInt2 < 50) {
-        paramInt1 = 50;
+      if ((paramInt1 > 0) && (paramInt2 > 0))
+      {
+        if (paramInt4 <= 0) {
+          return null;
+        }
+        paramIETFont = (ETFont)paramIETFont;
+        paramIETEngine.native_isColorVariantFont(paramIETFont);
+        long l = paramIETEngine.native_space_decorationCreateDescriptor(paramString, convertToETSegmentArray(paramArrayOfIETSegment), paramInt1, paramInt2, paramPoint, paramInt3, paramArrayOfPoint, paramInt4, paramBoolean1, paramInt5, paramBoolean2, paramIETFont);
+        if (l != 0L)
+        {
+          paramInt3 = paramIETEngine.native_space_decorationGetFrameNum(l);
+          if (paramInt3 == 0)
+          {
+            paramIETEngine.native_space_decorationDeleteDescriptor(l);
+            return null;
+          }
+          paramPoint = new ETDecoration();
+          paramPoint.mNativeDescriptorHandle = l;
+          paramInt2 = paramIETEngine.native_space_decorationGetFrameDelay(l, 0);
+          paramInt1 = paramInt2;
+          if (paramInt2 < 50) {
+            paramInt1 = 50;
+          }
+          paramPoint.mFrameDelay = paramInt1;
+          paramPoint.mFrameNum = paramInt3;
+          paramPoint.mText = paramString;
+          paramPoint.mEngine = paramIETEngine;
+          paramPoint.mSpans = paramArrayOfObject;
+          paramPoint.mMargins = paramIETEngine.native_space_getMargins(l);
+          if (paramBoolean3) {
+            checkDescriptorList(paramIETEngine);
+          }
+          return paramPoint;
+        }
       }
-      paramPoint.mFrameDelay = paramInt1;
-      paramPoint.mFrameNum = paramInt3;
-      paramPoint.mText = paramString;
-      paramPoint.mEngine = paramIETEngine;
-      paramPoint.mSpans = paramArrayOfObject;
-      paramPoint.mMargins = paramIETEngine.native_space_getMargins(l);
-      if (paramBoolean3) {
-        checkDescriptorList(paramIETEngine);
-      }
-      return paramPoint;
     }
     return null;
   }
@@ -288,7 +301,7 @@ public class ETDecoration
   {
     if (0L != this.mNativeDescriptorHandle)
     {
-      this.mEngine.DescriptorMap.remove(Long.valueOf(this.mNativeDescriptorHandle));
+      this.mEngine.mDescriptorMap.remove(Long.valueOf(this.mNativeDescriptorHandle));
       this.mEngine.native_decorationDeleteDescriptor(this.mNativeDescriptorHandle);
       this.mNativeDescriptorHandle = 0L;
     }
@@ -296,18 +309,20 @@ public class ETDecoration
   
   public void deleteDescriptor(IETEngine paramIETEngine)
   {
-    if ((this.mNativeDescriptorHandle != 0L) && (paramIETEngine != null))
+    long l = this.mNativeDescriptorHandle;
+    if ((l != 0L) && (paramIETEngine != null))
     {
-      paramIETEngine.nativeDecorationDeleteDescriptor(this.mNativeDescriptorHandle);
+      paramIETEngine.nativeDecorationDeleteDescriptor(l);
       this.mNativeDescriptorHandle = 0L;
     }
   }
   
   void deleteDescriptorSpace()
   {
-    if (0L != this.mNativeDescriptorHandle)
+    long l = this.mNativeDescriptorHandle;
+    if (0L != l)
     {
-      this.mEngine.native_space_decorationDeleteDescriptor(this.mNativeDescriptorHandle);
+      this.mEngine.native_space_decorationDeleteDescriptor(l);
       this.mNativeDescriptorHandle = 0L;
     }
   }
@@ -315,55 +330,86 @@ public class ETDecoration
   public void drawBackground(Bitmap paramBitmap, IETFont paramIETFont)
   {
     int i = currentFrameIndex();
-    if ((this.mEngine != null) && (0L != this.mNativeDescriptorHandle) && (i >= 0) && (i < this.mFrameNum)) {
-      this.mEngine.native_decorationDrawBackground(this.mNativeDescriptorHandle, i, (ETFont)paramIETFont, paramBitmap);
+    ETEngine localETEngine = this.mEngine;
+    if (localETEngine != null)
+    {
+      long l = this.mNativeDescriptorHandle;
+      if ((0L != l) && (i >= 0) && (i < this.mFrameNum)) {
+        localETEngine.native_decorationDrawBackground(l, i, (ETFont)paramIETFont, paramBitmap);
+      }
     }
   }
   
   public void drawBackgroundSpace(Bitmap paramBitmap, IETFont paramIETFont, int paramInt1, int paramInt2)
   {
     int i = currentFrameIndex();
-    if ((this.mEngine != null) && (0L != this.mNativeDescriptorHandle) && (i >= 0) && (i < this.mFrameNum)) {
-      this.mEngine.native_space_decorationDrawBackground(this.mNativeDescriptorHandle, i, (ETFont)paramIETFont, paramBitmap, paramInt1, paramInt2);
+    ETEngine localETEngine = this.mEngine;
+    if (localETEngine != null)
+    {
+      long l = this.mNativeDescriptorHandle;
+      if ((0L != l) && (i >= 0) && (i < this.mFrameNum)) {
+        localETEngine.native_space_decorationDrawBackground(l, i, (ETFont)paramIETFont, paramBitmap, paramInt1, paramInt2);
+      }
     }
   }
   
   public void drawForeground(Bitmap paramBitmap, IETFont paramIETFont)
   {
     int i = currentFrameIndex();
-    if ((this.mEngine != null) && (0L != this.mNativeDescriptorHandle) && (i >= 0) && (i < this.mFrameNum)) {
-      this.mEngine.native_decorationDrawForeground(this.mNativeDescriptorHandle, i, (ETFont)paramIETFont, paramBitmap);
+    ETEngine localETEngine = this.mEngine;
+    if (localETEngine != null)
+    {
+      long l = this.mNativeDescriptorHandle;
+      if ((0L != l) && (i >= 0) && (i < this.mFrameNum)) {
+        localETEngine.native_decorationDrawForeground(l, i, (ETFont)paramIETFont, paramBitmap);
+      }
     }
   }
   
   public void drawFrameText(int paramInt1, int paramInt2, Bitmap paramBitmap, int paramInt3, int paramInt4, IETFont paramIETFont)
   {
     int i = currentFrameIndex();
-    if ((this.mEngine != null) && (0L != this.mNativeDescriptorHandle) && (i >= 0) && (i < this.mFrameNum)) {
-      this.mEngine.native_decorationDrawText(this.mNativeDescriptorHandle, i, paramInt1, paramInt2, (ETFont)paramIETFont, paramBitmap, paramInt3, paramInt4);
+    ETEngine localETEngine = this.mEngine;
+    if (localETEngine != null)
+    {
+      long l = this.mNativeDescriptorHandle;
+      if ((0L != l) && (i >= 0) && (i < this.mFrameNum)) {
+        localETEngine.native_decorationDrawText(l, i, paramInt1, paramInt2, (ETFont)paramIETFont, paramBitmap, paramInt3, paramInt4);
+      }
     }
   }
   
   void drawScene(Bitmap paramBitmap, int paramInt1, int paramInt2, IETFont paramIETFont)
   {
     int i = currentFrameIndex();
-    if ((this.mEngine != null) && (0L != this.mNativeDescriptorHandle) && (i >= 0) && (i < this.mFrameNum)) {
-      this.mEngine.native_decorationDrawScene(this.mNativeDescriptorHandle, i, (ETFont)paramIETFont, this.mSpans, paramBitmap, paramInt1, paramInt2);
+    ETEngine localETEngine = this.mEngine;
+    if (localETEngine != null)
+    {
+      long l = this.mNativeDescriptorHandle;
+      if ((0L != l) && (i >= 0) && (i < this.mFrameNum)) {
+        localETEngine.native_decorationDrawScene(l, i, (ETFont)paramIETFont, this.mSpans, paramBitmap, paramInt1, paramInt2);
+      }
     }
   }
   
   public void drawSceneSpace(Bitmap paramBitmap, int paramInt1, int paramInt2, IETFont paramIETFont)
   {
     int i = currentFrameIndex();
-    if ((this.mEngine != null) && (0L != this.mNativeDescriptorHandle) && (i >= 0) && (i < this.mFrameNum)) {
-      this.mEngine.native_space_decorationDrawScene(this.mNativeDescriptorHandle, i, (ETFont)paramIETFont, this.mSpans, paramBitmap, paramInt1, paramInt2);
+    ETEngine localETEngine = this.mEngine;
+    if (localETEngine != null)
+    {
+      long l = this.mNativeDescriptorHandle;
+      if ((0L != l) && (i >= 0) && (i < this.mFrameNum)) {
+        localETEngine.native_space_decorationDrawScene(l, i, (ETFont)paramIETFont, this.mSpans, paramBitmap, paramInt1, paramInt2);
+      }
     }
   }
   
   int getDecorationType()
   {
-    if (this.mEngine != null) {
-      return this.mEngine.native_decorationGetType(this.mNativeDescriptorHandle);
+    ETEngine localETEngine = this.mEngine;
+    if (localETEngine != null) {
+      return localETEngine.native_decorationGetType(this.mNativeDescriptorHandle);
     }
     return 0;
   }
@@ -390,10 +436,13 @@ public class ETDecoration
   
   public void gotoFrame(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.mFrameNum)) {
-      return;
+    if (paramInt >= 0)
+    {
+      if (paramInt >= this.mFrameNum) {
+        return;
+      }
+      this.mFrameIndex = paramInt;
     }
-    this.mFrameIndex = paramInt;
   }
   
   public void gotoLastFrame()
@@ -403,7 +452,8 @@ public class ETDecoration
   
   public boolean isLastFrame()
   {
-    return (this.mFrameIndex < 0) || (this.mFrameIndex >= this.mFrameNum);
+    int i = this.mFrameIndex;
+    return (i < 0) || (i >= this.mFrameNum);
   }
   
   public boolean nextFrame()
@@ -424,7 +474,7 @@ public class ETDecoration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.ETDecoration
  * JD-Core Version:    0.7.0.1
  */

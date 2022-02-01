@@ -44,76 +44,104 @@ public class SsoJavascriptInterface
   
   private void callJs(String paramString1, String paramString2)
   {
-    if ((this.customWebView == null) || (TextUtils.isEmpty(paramString1))) {
-      return;
+    if (this.customWebView != null)
+    {
+      if (TextUtils.isEmpty(paramString1)) {
+        return;
+      }
+      this.customWebView.callJs(paramString1, new String[] { paramString2 });
     }
-    this.customWebView.callJs(paramString1, new String[] { paramString2 });
   }
   
   private void sendRequest(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return;
-    }
-    String[] arrayOfString;
-    String str3;
-    String str4;
-    String str2;
-    try
-    {
-      arrayOfString = Uri.parse(paramString2).getHost().split("\\.");
-      paramString1 = new JSONObject(paramString1);
-      str3 = paramString1.getString("data");
-      str4 = paramString1.getString("cmd");
-      str2 = paramString1.getString("callback");
-      if (this.preTime == 0L) {
-        break label189;
-      }
-      if (System.currentTimeMillis() - this.preTime < this.minDuration * 1000)
-      {
-        paramString1 = new JSONObject();
-        paramString1.put("cret", 1);
-        callJs(str2, paramString1.toString());
+    if (!TextUtils.isEmpty(paramString1)) {
+      if (TextUtils.isEmpty(paramString2)) {
         return;
       }
     }
-    catch (Exception paramString1)
-    {
-      QLog.e("SsoJavascriptInterface", 2, "send request error :" + paramString1.getMessage());
-      return;
-    }
-    if (str3.getBytes().length > this.maxSize)
-    {
-      paramString1 = new JSONObject();
-      paramString1.put("cret", 2);
-      callJs(str2, paramString1.toString());
-      return;
-      label189:
-      this.preTime = System.currentTimeMillis();
-    }
-    int i = arrayOfString.length;
-    paramString1 = "";
-    i -= 1;
     for (;;)
     {
-      if (i >= 0)
+      int i;
+      try
       {
-        String str1 = paramString1 + arrayOfString[i];
-        paramString1 = str1;
-        if (i != 0) {
-          paramString1 = str1 + "_";
+        String[] arrayOfString = Uri.parse(paramString2).getHost().split("\\.");
+        paramString1 = new JSONObject(paramString1);
+        String str2 = paramString1.getString("data");
+        String str3 = paramString1.getString("cmd");
+        String str1 = paramString1.getString("callback");
+        if (this.preTime != 0L)
+        {
+          long l1 = System.currentTimeMillis();
+          long l2 = this.preTime;
+          i = this.minDuration;
+          if (l1 - l2 < i * 1000)
+          {
+            paramString1 = new JSONObject();
+            paramString1.put("cret", 1);
+            callJs(str1, paramString1.toString());
+            return;
+          }
+          if (str2.getBytes().length > this.maxSize)
+          {
+            paramString1 = new JSONObject();
+            paramString1.put("cret", 2);
+            callJs(str1, paramString1.toString());
+          }
         }
-      }
-      else
-      {
-        if (str3.contains("GetUserInfoByFields")) {
-          QLog.e("SsoJavascriptInterface", 1, ">>>>>>>>>>>>>> " + str2);
+        else
+        {
+          this.preTime = System.currentTimeMillis();
         }
-        QLog.d("SsoJavascriptInterface", 1, "cmd:" + str4 + ", cmdExt:" + paramString1 + ", data:" + str3);
-        QLog.d("SsoJavascriptInterface", 1, "cmd:" + paramString2);
-        sendRequest(str4, paramString1, str3, str2);
+        paramString1 = "";
+        i = arrayOfString.length - 1;
+        if (i >= 0)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramString1);
+          ((StringBuilder)localObject).append(arrayOfString[i]);
+          localObject = ((StringBuilder)localObject).toString();
+          paramString1 = (String)localObject;
+          if (i == 0) {
+            break label455;
+          }
+          paramString1 = new StringBuilder();
+          paramString1.append((String)localObject);
+          paramString1.append("_");
+          paramString1 = paramString1.toString();
+          break label455;
+        }
+        if (str2.contains("GetUserInfoByFields"))
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(">>>>>>>>>>>>>> ");
+          ((StringBuilder)localObject).append(str1);
+          QLog.e("SsoJavascriptInterface", 1, ((StringBuilder)localObject).toString());
+        }
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("cmd:");
+        ((StringBuilder)localObject).append(str3);
+        ((StringBuilder)localObject).append(", cmdExt:");
+        ((StringBuilder)localObject).append(paramString1);
+        ((StringBuilder)localObject).append(", data:");
+        ((StringBuilder)localObject).append(str2);
+        QLog.d("SsoJavascriptInterface", 1, ((StringBuilder)localObject).toString());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("cmd:");
+        ((StringBuilder)localObject).append(paramString2);
+        QLog.d("SsoJavascriptInterface", 1, ((StringBuilder)localObject).toString());
+        sendRequest(str3, paramString1, str2, str1);
         return;
       }
+      catch (Exception paramString1)
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("send request error :");
+        paramString2.append(paramString1.getMessage());
+        QLog.e("SsoJavascriptInterface", 2, paramString2.toString());
+      }
+      return;
+      label455:
       i -= 1;
     }
   }
@@ -121,14 +149,20 @@ public class SsoJavascriptInterface
   private void sendRequest(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     NewIntent localNewIntent = new NewIntent(this.context, ProtoServlet.class);
-    localNewIntent.putExtra("cmd", "MQUpdateSvc_" + paramString2 + ".web." + paramString1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MQUpdateSvc_");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(".web.");
+    localStringBuilder.append(paramString1);
+    localNewIntent.putExtra("cmd", localStringBuilder.toString());
     paramString2 = new WebSsoBody.WebSsoRequestBody();
     paramString2.type.set(0);
     paramString2.data.set(paramString3);
     localNewIntent.putExtra("data", paramString2.toByteArray());
     localNewIntent.setObserver(new SsoJavascriptInterface.1(this, paramString4, paramString1));
-    if (this.mAppRuntime != null) {
-      this.mAppRuntime.startServlet(localNewIntent);
+    paramString1 = this.mAppRuntime;
+    if (paramString1 != null) {
+      paramString1.startServlet(localNewIntent);
     }
   }
   
@@ -150,15 +184,18 @@ public class SsoJavascriptInterface
   @NewJavascriptInterface
   public void sendRequest(Map<String, String> paramMap)
   {
-    if ((!this.isJsCreate) || (this.isJsDestroy) || (paramMap == null)) {
-      return;
+    if ((this.isJsCreate) && (!this.isJsDestroy))
+    {
+      if (paramMap == null) {
+        return;
+      }
+      sendRequest((String)paramMap.get("p"), this.customWebView.getUrl());
     }
-    sendRequest((String)paramMap.get("p"), this.customWebView.getUrl());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.js.SsoJavascriptInterface
  * JD-Core Version:    0.7.0.1
  */

@@ -37,46 +37,49 @@ public class AIOSendMask
   
   public void draw(Canvas paramCanvas)
   {
-    float f1 = 0.0F;
     int i = getLevel();
-    if (i == 0) {}
-    Rect localRect1;
-    Rect localRect2;
-    int j;
-    int k;
-    int m;
-    do
-    {
+    if (i == 0) {
       return;
-      localRect1 = jdField_b_of_type_AndroidGraphicsRect;
-      localRect2 = getBounds();
-      j = localRect2.width();
-      k = localRect2.height();
-      k -= (10000 - i) * k / 10000;
-      m = paramCanvas.getHeight();
-      Gravity.apply(48, j, k, localRect2, localRect1);
-    } while ((j <= 0) || (k <= 0));
-    this.jdField_a_of_type_JavaLangString = (100 - i / 100 + "%");
-    paramCanvas.save();
-    float f2;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_b_of_type_AndroidGraphicsPaint.getTextBounds(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_JavaLangString.length(), this.jdField_a_of_type_AndroidGraphicsRect);
-      f2 = (paramCanvas.getWidth() - this.jdField_a_of_type_AndroidGraphicsRect.width()) / 2;
-      f1 = (this.jdField_a_of_type_AndroidGraphicsRect.height() + m) / 2;
-      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, f2, f1, this.jdField_b_of_type_AndroidGraphicsPaint);
     }
-    for (;;)
+    Object localObject1 = jdField_b_of_type_AndroidGraphicsRect;
+    Rect localRect = getBounds();
+    int j = localRect.width();
+    int k = localRect.height();
+    k -= (10000 - i) * k / 10000;
+    int m = paramCanvas.getHeight();
+    Gravity.apply(48, j, k, localRect, (Rect)localObject1);
+    if ((j > 0) && (k > 0))
     {
-      paramCanvas.clipRect(localRect1);
-      jdField_a_of_type_AndroidGraphicsRectF.set(localRect2);
-      paramCanvas.drawRoundRect(jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(100 - i / 100);
+      ((StringBuilder)localObject2).append("%");
+      this.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
+      paramCanvas.save();
+      boolean bool = this.jdField_a_of_type_Boolean;
+      float f2 = 0.0F;
+      float f1;
+      if (bool)
+      {
+        localObject2 = this.jdField_b_of_type_AndroidGraphicsPaint;
+        String str = this.jdField_a_of_type_JavaLangString;
+        ((Paint)localObject2).getTextBounds(str, 0, str.length(), this.jdField_a_of_type_AndroidGraphicsRect);
+        f2 = (paramCanvas.getWidth() - this.jdField_a_of_type_AndroidGraphicsRect.width()) / 2;
+        f1 = (m + this.jdField_a_of_type_AndroidGraphicsRect.height()) / 2;
+        paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, f2, f1, this.jdField_b_of_type_AndroidGraphicsPaint);
+      }
+      else
+      {
+        f1 = 0.0F;
+      }
+      paramCanvas.clipRect((Rect)localObject1);
+      jdField_a_of_type_AndroidGraphicsRectF.set(localRect);
+      localObject1 = jdField_a_of_type_AndroidGraphicsRectF;
+      float f3 = this.jdField_a_of_type_Float;
+      paramCanvas.drawRoundRect((RectF)localObject1, f3, f3, this.jdField_a_of_type_AndroidGraphicsPaint);
       if (this.jdField_a_of_type_Boolean) {
         paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, f2, f1, this.jdField_b_of_type_AndroidGraphicsPaint);
       }
       paramCanvas.restore();
-      return;
-      f2 = 0.0F;
     }
   }
   
@@ -91,7 +94,7 @@ public class AIOSendMask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.AIOSendMask
  * JD-Core Version:    0.7.0.1
  */

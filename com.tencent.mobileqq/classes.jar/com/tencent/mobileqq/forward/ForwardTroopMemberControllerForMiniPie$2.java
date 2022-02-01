@@ -10,25 +10,30 @@ class ForwardTroopMemberControllerForMiniPie$2
 {
   ForwardTroopMemberControllerForMiniPie$2(ForwardTroopMemberControllerForMiniPie paramForwardTroopMemberControllerForMiniPie) {}
   
-  public void onGetTroopMemberListBy0x787(String paramString, List<Pair<String, String>> paramList)
+  protected void onGetTroopMemberListBy0x787(String paramString, List<Pair<String, String>> paramList)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("onGetTroopMemberListBy0x787 uin: ").append(paramString).append(" memberList size: ");
-    if (paramList == null) {}
-    for (int i = 0;; i = paramList.size())
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onGetTroopMemberListBy0x787 uin: ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" memberList size: ");
+    int i;
+    if (paramList == null) {
+      i = 0;
+    } else {
+      i = paramList.size();
+    }
+    localStringBuilder.append(i);
+    QLog.i("ForwardTroopMemberControllerForMiniPie", 2, localStringBuilder.toString());
+    if ((ForwardTroopMemberControllerForMiniPie.a(this.a).equals(paramString)) && (ForwardTroopMemberControllerForMiniPie.a(this.a) != null))
     {
-      QLog.i("ForwardTroopMemberControllerForMiniPie", 2, i);
-      if ((ForwardTroopMemberControllerForMiniPie.a(this.a).equals(paramString)) && (ForwardTroopMemberControllerForMiniPie.a(this.a) != null))
-      {
-        ForwardTroopMemberControllerForMiniPie.a(this.a);
-        ForwardTroopMemberControllerForMiniPie.a(this.a).a(paramList);
-      }
-      return;
+      ForwardTroopMemberControllerForMiniPie.a(this.a);
+      ForwardTroopMemberControllerForMiniPie.a(this.a).a(paramList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardTroopMemberControllerForMiniPie.2
  * JD-Core Version:    0.7.0.1
  */

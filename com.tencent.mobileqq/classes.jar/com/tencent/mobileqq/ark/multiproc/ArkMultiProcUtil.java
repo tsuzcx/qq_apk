@@ -1,102 +1,24 @@
 package com.tencent.mobileqq.ark.multiproc;
 
-import android.util.DisplayMetrics;
-import com.tencent.ark.ArkEnvironmentManager;
-import com.tencent.ark.ark;
-import com.tencent.ark.ark.ApplicationCallback;
-import com.tencent.ark.open.delegate.ArkDelegateManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ark.ArkAiAppCenter;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppCenterUtil;
-import com.tencent.mobileqq.ark.ArkAppEnvConfig;
+import com.tencent.mobileqq.ark.api.IArkEnvDelegate;
+import com.tencent.mobileqq.ark.api.IArkEnvironment;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
 
 public class ArkMultiProcUtil
 {
-  protected static final ark.ApplicationCallback a = new ArkMultiProcUtil.7();
-  
   public static void a()
   {
-    String str3 = ArkAppEnvConfig.a().a();
-    String str1 = "";
-    Object localObject = str1;
-    String str2 = str3;
-    if (1 != BaseApplicationImpl.sProcessId)
-    {
-      str2 = MobileQQ.getMobileQQ().getQQProcessName();
-      localObject = str1;
-      if (str2 != null)
-      {
-        int i = str2.lastIndexOf(':');
-        localObject = str1;
-        if (i > -1) {
-          localObject = "_" + str2.substring(i + 1);
-        }
-      }
-      str2 = str3 + (String)localObject;
-    }
-    ArkDelegateManager.getInstance().init(str2, (String)localObject, "8.5.5", BaseApplicationImpl.getContext());
-    localObject = BaseApplicationImpl.getApplication().getRuntime();
-    ArkEnvironmentManager.getInstance().setCurrentUin(((AppRuntime)localObject).getAccount());
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (ArkAppEnvConfig.a() != null)
-    {
-      bool1 = bool2;
-      if (ArkAppEnvConfig.a().a() == 1) {
-        bool1 = true;
-      }
-    }
-    ArkEnvironmentManager.getInstance().setEnv(bool1);
-    ArkDelegateManager.getInstance().setSetupDelegate(new ArkMultiProcUtil.5());
-    ArkDelegateManager.getInstance().setNetDelegate(new ArkMultiProcUtil.6());
-    ArkDelegateManager.getInstance().setInputCallback(new ArkMultiProcUtil.ArkViewInputCallback(null));
-    ArkDelegateManager.getInstance().setApplicationCallback(a);
+    QLog.i("ArkApp.ArkMultiProcUtil", 1, "initArkEnv");
+    ((IArkEnvironment)QRoute.api(IArkEnvironment.class)).initMultiProcEnv((IArkEnvDelegate)QRoute.api(IArkEnvDelegate.class));
   }
   
-  public static void a(boolean paramBoolean)
-  {
-    Object localObject1 = ArkEnvironmentManager.getInstance();
-    if (!ArkAppCenter.a) {}
-    try
-    {
-      if (!ArkAppCenter.a)
-      {
-        ((ArkEnvironmentManager)localObject1).setThreadCreator(new ArkMultiProcUtil.1());
-        ((ArkEnvironmentManager)localObject1).setLogCallback(new ArkMultiProcUtil.2());
-        ((ArkEnvironmentManager)localObject1).setLibraryLoader(new ArkMultiProcUtil.3());
-        ((ArkEnvironmentManager)localObject1).setDebugFlag(false);
-        ((ArkEnvironmentManager)localObject1).setProfilingLogFlag(true);
-        ((ArkEnvironmentManager)localObject1).setDataReport(new ArkMultiProcUtil.4());
-        ArkAppCenter.a = true;
-      }
-      if ((paramBoolean) && (!ArkAppCenter.b))
-      {
-        ((ArkEnvironmentManager)localObject1).setEnableAndroid9EmojiSupport(ArkAiAppCenter.b());
-        ((ArkEnvironmentManager)localObject1).loadLibrary();
-        if (ArkAppCenter.b)
-        {
-          if (BaseApplicationImpl.getContext() != null)
-          {
-            localObject1 = ArkAppCenterUtil.a;
-            ark.arkSetScreenSize(((DisplayMetrics)localObject1).widthPixels / ((DisplayMetrics)localObject1).density, ((DisplayMetrics)localObject1).heightPixels / ((DisplayMetrics)localObject1).density);
-          }
-          ArkEnvironmentManager.getInstance().setSingleThreadMode(true);
-          ArkEnvironmentManager.getInstance().setThreadMode();
-          QLog.i("ArkApp.ArkMultiProcUtil", 1, "setupArkEnvironment, https=true, multithreads=true");
-        }
-      }
-      return;
-    }
-    finally {}
-  }
+  @Deprecated
+  public static void a(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ark.multiproc.ArkMultiProcUtil
  * JD-Core Version:    0.7.0.1
  */

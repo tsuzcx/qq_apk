@@ -1,5 +1,6 @@
 package com.tencent.tkd.topicsdk.coverselect;
 
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import kotlin.Metadata;
@@ -12,12 +13,15 @@ final class CoverSelectPage$initView$1
   
   public final void onClick(View paramView)
   {
-    CoverSelectPage.a(this.a);
+    paramView = this.a.a();
+    if (paramView != null) {
+      paramView.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.coverselect.CoverSelectPage.initView.1
  * JD-Core Version:    0.7.0.1
  */

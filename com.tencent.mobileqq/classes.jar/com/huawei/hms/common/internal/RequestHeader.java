@@ -25,7 +25,7 @@ public class RequestHeader
   @Packed
   private String pkg_name;
   @Packed
-  private int sdk_version = 50000301;
+  private int sdk_version = 50200300;
   @Packed
   private String session_id;
   @Packed
@@ -54,7 +54,10 @@ public class RequestHeader
     }
     catch (JSONException paramString)
     {
-      HMSLog.e("RequestHeader", "fromJson failed: " + paramString.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("fromJson failed: ");
+      localStringBuilder.append(paramString.getMessage());
+      HMSLog.e("RequestHeader", localStringBuilder.toString());
     }
     return false;
   }
@@ -197,29 +200,45 @@ public class RequestHeader
       localJSONObject.put("sdk_version", this.sdk_version);
       localJSONObject.put("kitSdkVersion", this.kitSdkVersion);
       localJSONObject.put("apiLevel", this.apiLevel);
-      if (!TextUtils.isEmpty(this.session_id)) {
+      boolean bool = TextUtils.isEmpty(this.session_id);
+      if (!bool) {
         localJSONObject.put("session_id", this.session_id);
       }
       localJSONObject.put("transaction_id", this.transaction_id);
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        HMSLog.e("RequestHeader", "toJson failed: " + localJSONException.getMessage());
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("toJson failed: ");
+      localStringBuilder.append(localJSONException.getMessage());
+      HMSLog.e("RequestHeader", localStringBuilder.toString());
     }
     return localJSONObject.toString();
   }
   
   public String toString()
   {
-    return "api_name:" + this.api_name + ", app_id:" + this.app_id + ", pkg_name:" + this.pkg_name + ", sdk_version:" + this.sdk_version + ", session_id:*, transaction_id:" + this.transaction_id + ", kitSdkVersion:" + this.kitSdkVersion + ", apiLevel:" + this.apiLevel;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("api_name:");
+    localStringBuilder.append(this.api_name);
+    localStringBuilder.append(", app_id:");
+    localStringBuilder.append(this.app_id);
+    localStringBuilder.append(", pkg_name:");
+    localStringBuilder.append(this.pkg_name);
+    localStringBuilder.append(", sdk_version:");
+    localStringBuilder.append(this.sdk_version);
+    localStringBuilder.append(", session_id:*, transaction_id:");
+    localStringBuilder.append(this.transaction_id);
+    localStringBuilder.append(", kitSdkVersion:");
+    localStringBuilder.append(this.kitSdkVersion);
+    localStringBuilder.append(", apiLevel:");
+    localStringBuilder.append(this.apiLevel);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.internal.RequestHeader
  * JD-Core Version:    0.7.0.1
  */

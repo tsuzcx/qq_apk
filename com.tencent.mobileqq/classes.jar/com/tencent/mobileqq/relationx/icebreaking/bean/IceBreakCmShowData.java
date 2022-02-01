@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.relationx.icebreaking.bean;
 
 import android.content.Context;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.activity.aio.stickerrecommended.IStickerRecEmoticon;
-import com.tencent.mobileqq.app.QQAppInterface;
 import java.net.URL;
 
 public class IceBreakCmShowData
@@ -43,9 +43,9 @@ public class IceBreakCmShowData
   
   public void a(long paramLong) {}
   
-  public void a(QQAppInterface paramQQAppInterface, int paramInt) {}
+  public void a(BaseQQAppInterface paramBaseQQAppInterface, int paramInt) {}
   
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo) {}
+  public void a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, BaseSessionInfo paramBaseSessionInfo) {}
   
   public boolean a()
   {
@@ -91,7 +91,7 @@ public class IceBreakCmShowData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.icebreaking.bean.IceBreakCmShowData
  * JD-Core Version:    0.7.0.1
  */

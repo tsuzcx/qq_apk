@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class InnerFrame
@@ -16,7 +16,7 @@ public class InnerFrame
 {
   private Activity jdField_a_of_type_AndroidAppActivity = null;
   private InnerFrameManager jdField_a_of_type_ComTencentCommonAppInnerFrameManager = null;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+  private BaseQQAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = null;
   
   public InnerFrame(Context paramContext)
   {
@@ -43,9 +43,9 @@ public class InnerFrame
     return this.jdField_a_of_type_ComTencentCommonAppInnerFrameManager;
   }
   
-  public QQAppInterface a()
+  public BaseQQAppInterface a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    return this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
   }
   
   public void a()
@@ -56,11 +56,6 @@ public class InnerFrame
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(Intent paramIntent)
-  {
-    a(paramIntent, 0);
-  }
   
   public void a(Intent paramIntent, int paramInt)
   {
@@ -112,12 +107,12 @@ public class InnerFrame
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  public void setAppIntf(QQAppInterface paramQQAppInterface)
+  public void setAppIntf(BaseQQAppInterface paramBaseQQAppInterface)
   {
     if (QLog.isColorLevel()) {
       QLog.d("InnerFrame", 2, "setAppIntf");
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = paramBaseQQAppInterface;
     e();
   }
   
@@ -141,7 +136,7 @@ public class InnerFrame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.common.app.InnerFrame
  * JD-Core Version:    0.7.0.1
  */

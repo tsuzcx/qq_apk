@@ -12,8 +12,8 @@ import com.tencent.qqlive.module.videoreport.inject.fragment.ReportDialogFragmen
 public class ErrDlgFragmentForSupport
   extends ReportDialogFragment
 {
-  private Dialog a = null;
-  private DialogInterface.OnCancelListener b = null;
+  private DialogInterface.OnCancelListener listener = null;
+  private Dialog log = null;
   
   public static ErrDlgFragmentForSupport newInstance(Dialog paramDialog)
   {
@@ -24,26 +24,27 @@ public class ErrDlgFragmentForSupport
   {
     Preconditions.checkNotNull(paramDialog, "Dialog cannot be null!");
     ErrDlgFragmentForSupport localErrDlgFragmentForSupport = new ErrDlgFragmentForSupport();
-    localErrDlgFragmentForSupport.a = paramDialog;
-    localErrDlgFragmentForSupport.a.setOnCancelListener(null);
-    localErrDlgFragmentForSupport.a.setOnDismissListener(null);
-    localErrDlgFragmentForSupport.b = paramOnCancelListener;
+    localErrDlgFragmentForSupport.log = paramDialog;
+    localErrDlgFragmentForSupport.log.setOnCancelListener(null);
+    localErrDlgFragmentForSupport.log.setOnDismissListener(null);
+    localErrDlgFragmentForSupport.listener = paramOnCancelListener;
     return localErrDlgFragmentForSupport;
   }
   
   public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.b != null) {
-      this.b.onCancel(paramDialogInterface);
+    DialogInterface.OnCancelListener localOnCancelListener = this.listener;
+    if (localOnCancelListener != null) {
+      localOnCancelListener.onCancel(paramDialogInterface);
     }
   }
   
   public Dialog onCreateDialog(Bundle paramBundle)
   {
-    if (this.a == null) {
+    if (this.log == null) {
       setShowsDialog(false);
     }
-    return this.a;
+    return this.log;
   }
   
   public void show(FragmentManager paramFragmentManager, String paramString)
@@ -54,7 +55,7 @@ public class ErrDlgFragmentForSupport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.ErrDlgFragmentForSupport
  * JD-Core Version:    0.7.0.1
  */

@@ -53,9 +53,14 @@ public abstract class BasicTexture
     synchronized (jdField_a_of_type_JavaUtilWeakHashMap)
     {
       Iterator localIterator = jdField_a_of_type_JavaUtilWeakHashMap.keySet().iterator();
-      if (localIterator.hasNext()) {
+      while (localIterator.hasNext()) {
         ((BasicTexture)localIterator.next()).b();
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
@@ -64,12 +69,17 @@ public abstract class BasicTexture
     synchronized (jdField_a_of_type_JavaUtilWeakHashMap)
     {
       Iterator localIterator = jdField_a_of_type_JavaUtilWeakHashMap.keySet().iterator();
-      if (localIterator.hasNext())
+      while (localIterator.hasNext())
       {
         BasicTexture localBasicTexture = (BasicTexture)localIterator.next();
         localBasicTexture.b = 0;
         localBasicTexture.a(null);
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
@@ -97,7 +107,9 @@ public abstract class BasicTexture
   
   public Rect a()
   {
-    return new Rect(this.c, this.d, this.c + this.e, this.d + this.f);
+    int k = this.c;
+    int m = this.d;
+    return new Rect(k, m, this.e + k, this.f + m);
   }
   
   TextureProgram a()
@@ -164,24 +176,21 @@ public abstract class BasicTexture
     return this.jdField_a_of_type_ArrayOfInt;
   }
   
-  public int[] a(GLCanvas paramGLCanvas)
-  {
-    return this.jdField_a_of_type_ArrayOfInt;
-  }
-  
   public ShaderParameter[] a(GLCanvas paramGLCanvas)
   {
-    int k = 0;
     TextureProgram localTextureProgram = a();
     GLES20.glUseProgram(localTextureProgram.a());
     Utils.a();
-    if ((!b()) || (paramGLCanvas.a() < 0.95F)) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool = b();
+    int k = 0;
+    if ((bool) && (paramGLCanvas.a() >= 0.95F)) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    GLES20Canvas.a(bool);
+    if (a(paramGLCanvas))
     {
-      GLES20Canvas.a(bool);
-      if (!a(paramGLCanvas)) {
-        break;
-      }
       int[] arrayOfInt = a();
       while (k < arrayOfInt.length)
       {
@@ -276,7 +285,7 @@ public abstract class BasicTexture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.texture.BasicTexture
  * JD-Core Version:    0.7.0.1
  */

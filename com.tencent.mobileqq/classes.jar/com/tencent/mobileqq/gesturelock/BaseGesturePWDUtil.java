@@ -45,27 +45,39 @@ public class BaseGesturePWDUtil
   
   static
   {
-    if ((Build.VERSION.SDK_INT >= 21) && (mProcStateField == null)) {}
-    try
-    {
-      mProcStateField = ActivityManager.RunningAppProcessInfo.class.getDeclaredField("processState");
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("Q.gesturelock.util", 2, "getDeclaredField processState", localException);
+    if ((Build.VERSION.SDK_INT >= 21) && (mProcStateField == null)) {
+      try
+      {
+        mProcStateField = ActivityManager.RunningAppProcessInfo.class.getDeclaredField("processState");
+        return;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.gesturelock.util", 2, "getDeclaredField processState", localException);
+        }
+      }
     }
   }
   
   public static void clearGestureData(Context paramContext, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.gesturelock.util", 2, "clearGestureData.uin=" + paramString);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("clearGestureData.uin=");
+      localStringBuilder.append(paramString);
+      QLog.d("Q.gesturelock.util", 2, localStringBuilder.toString());
     }
     paramContext = getSharedPreferences(paramContext).edit();
-    paramContext.putInt("gesturepassword_gesture_state" + paramString, 0);
-    paramContext.putString("gesturepassword_gesture_pwd" + paramString, "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("gesturepassword_gesture_state");
+    localStringBuilder.append(paramString);
+    paramContext.putInt(localStringBuilder.toString(), 0);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("gesturepassword_gesture_pwd");
+    localStringBuilder.append(paramString);
+    paramContext.putString(localStringBuilder.toString(), "");
     paramContext.commit();
   }
   
@@ -78,48 +90,88 @@ public class BaseGesturePWDUtil
     if (paramContext != null)
     {
       paramContext = paramContext.iterator();
-      do
+      while (paramContext.hasNext())
       {
-        if (!paramContext.hasNext()) {
-          break;
-        }
         localObject = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-      } while (((ActivityManager.RunningAppProcessInfo)localObject).pid != i);
+        if (((ActivityManager.RunningAppProcessInfo)localObject).pid == i)
+        {
+          paramContext = ((ActivityManager.RunningAppProcessInfo)localObject).processName;
+          break label79;
+        }
+      }
+      paramContext = "";
+      label79:
+      if (paramContext != null)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append(":qzone");
+        if (!paramContext.equals(((StringBuilder)localObject).toString()))
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(":picture");
+          if (!paramContext.equals(((StringBuilder)localObject).toString()))
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(str);
+            ((StringBuilder)localObject).append(":qqfav");
+            if (!paramContext.equals(((StringBuilder)localObject).toString()))
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append(str);
+              ((StringBuilder)localObject).append(":qlink");
+              if (!paramContext.equals(((StringBuilder)localObject).toString())) {
+                break label213;
+              }
+            }
+          }
+        }
+        return true;
+      }
     }
-    for (paramContext = ((ActivityManager.RunningAppProcessInfo)localObject).processName;; paramContext = "") {
-      return (paramContext != null) && ((paramContext.equals(str + ":qzone")) || (paramContext.equals(str + ":picture")) || (paramContext.equals(str + ":qqfav")) || (paramContext.equals(str + ":qlink")));
-    }
+    label213:
+    return false;
   }
   
   public static String encodeGesture(String paramString1, String paramString2)
   {
     paramString1 = MD5.toMD5(paramString1);
-    int j = "28DF17A9B837BAFD951724E325F6F86B5B6E477D".length();
-    if (!TextUtils.isEmpty(paramString2)) {}
-    for (int i = paramString2.length();; i = 0)
-    {
-      if (!TextUtils.isEmpty(paramString1))
-      {
-        paramString1 = new StringBuilder(paramString1);
-        paramString1.insert(6, "28DF17A9B837BAFD951724E325F6F86B5B6E477D".substring(0, j / 2));
-        paramString1.insert(paramString1.length() - 9, "28DF17A9B837BAFD951724E325F6F86B5B6E477D".substring(j / 2, j));
-        if (!TextUtils.isEmpty(paramString2))
-        {
-          paramString1.insert(2, paramString2.substring(0, i / 2));
-          paramString1.insert(paramString1.length() - 5, paramString2.substring(i / 2, i));
-        }
-      }
-      for (paramString1 = paramString1.toString();; paramString1 = "") {
-        return MD5.toMD5(paramString1);
-      }
+    int i;
+    if (!TextUtils.isEmpty(paramString2)) {
+      i = paramString2.length();
+    } else {
+      i = 0;
     }
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      paramString1 = new StringBuilder(paramString1);
+      paramString1.insert(6, "28DF17A9B837BAFD951724E325F6F86B5B6E477D".substring(0, 20));
+      paramString1.insert(paramString1.length() - 9, "28DF17A9B837BAFD951724E325F6F86B5B6E477D".substring(20, 40));
+      if (!TextUtils.isEmpty(paramString2))
+      {
+        int j = i / 2;
+        paramString1.insert(2, paramString2.substring(0, j));
+        paramString1.insert(paramString1.length() - 5, paramString2.substring(j, i));
+      }
+      paramString1 = paramString1.toString();
+    }
+    else
+    {
+      paramString1 = "";
+    }
+    return MD5.toMD5(paramString1);
   }
   
   public static boolean getAppForground(Context paramContext)
   {
     boolean bool = getAppSharedPreferences(paramContext).getBoolean("gesturepassword_appforground", false);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.gesturelock.util", 2, "getAppForground.uin=,isAppFroground=" + bool);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("getAppForground.uin=,isAppFroground=");
+      paramContext.append(bool);
+      QLog.d("Q.gesturelock.util", 2, paramContext.toString());
     }
     return bool;
   }
@@ -132,55 +184,93 @@ public class BaseGesturePWDUtil
   public static boolean getGestureLocking(Context paramContext)
   {
     boolean bool = getSharedPreferences(paramContext).getBoolean("gesturepassword_locking", false);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.gesturelock.util", 2, "setGestureLocking.uin=,islocking=" + bool);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("setGestureLocking.uin=,islocking=");
+      paramContext.append(bool);
+      QLog.d("Q.gesturelock.util", 2, paramContext.toString());
     }
     return bool;
   }
   
   public static String getGesturePWD(Context paramContext, String paramString)
   {
-    paramContext = getSharedPreferences(paramContext).getString("gesturepassword_gesture_pwd" + paramString, "");
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.gesturelock.util", 2, "getGesturePWD.uin=" + paramString + ",pw=" + paramContext);
+    paramContext = getSharedPreferences(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("gesturepassword_gesture_pwd");
+    localStringBuilder.append(paramString);
+    paramContext = paramContext.getString(localStringBuilder.toString(), "");
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getGesturePWD.uin=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",pw=");
+      localStringBuilder.append(paramContext);
+      QLog.d("Q.gesturelock.util", 2, localStringBuilder.toString());
     }
     return paramContext;
   }
   
   public static int getGesturePWDMode(Context paramContext, String paramString)
   {
-    int i = getSharedPreferences(paramContext).getInt("gesturepassword_gesture_mode" + paramString, 21);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.gesturelock.util", 2, "getGesturePWDMode.uin=" + paramString + ",mode=" + i);
+    paramContext = getSharedPreferences(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("gesturepassword_gesture_mode");
+    localStringBuilder.append(paramString);
+    int i = paramContext.getInt(localStringBuilder.toString(), 21);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("getGesturePWDMode.uin=");
+      paramContext.append(paramString);
+      paramContext.append(",mode=");
+      paramContext.append(i);
+      QLog.d("Q.gesturelock.util", 2, paramContext.toString());
     }
     return i;
   }
   
   public static int getGesturePWDState(Context paramContext, String paramString)
   {
-    int i = getSharedPreferences(paramContext).getInt("gesturepassword_gesture_state" + paramString, 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.gesturelock.util", 2, "getGesturePWDState.uin=" + paramString + ",state=" + i);
+    paramContext = getSharedPreferences(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("gesturepassword_gesture_state");
+    localStringBuilder.append(paramString);
+    int i = paramContext.getInt(localStringBuilder.toString(), 0);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("getGesturePWDState.uin=");
+      paramContext.append(paramString);
+      paramContext.append(",state=");
+      paramContext.append(i);
+      QLog.d("Q.gesturelock.util", 2, paramContext.toString());
     }
     return i;
   }
   
   public static boolean getGestureUnlockFailed(Context paramContext, String paramString)
   {
-    boolean bool2 = false;
     paramContext = getSharedPreferences(paramContext);
-    String str = paramContext.getString("gesturepassword_unlock_failed", "");
+    Object localObject = paramContext.getString("gesturepassword_unlock_failed", "");
+    boolean bool3 = TextUtils.isEmpty(paramString);
+    boolean bool2 = false;
     boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(paramString))
+    if (!bool3)
     {
       bool1 = bool2;
-      if (!TextUtils.isEmpty(str))
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
         bool1 = bool2;
-        if (str.equals(paramString))
+        if (((String)localObject).equals(paramString))
         {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("gesturepassword_gesture_state");
+          ((StringBuilder)localObject).append(paramString);
           bool1 = bool2;
-          if (paramContext.getInt("gesturepassword_gesture_state" + paramString, 0) == 0) {
+          if (paramContext.getInt(((StringBuilder)localObject).toString(), 0) == 0) {
             bool1 = true;
           }
         }
@@ -189,17 +279,33 @@ public class BaseGesturePWDUtil
     paramContext = paramContext.edit();
     paramContext.putString("gesturepassword_unlock_failed", "");
     paramContext.commit();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.gesturelock.util", 2, "getGestureUnlockFailed.uin=" + paramString + ",ret=" + bool1);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("getGestureUnlockFailed.uin=");
+      paramContext.append(paramString);
+      paramContext.append(",ret=");
+      paramContext.append(bool1);
+      QLog.d("Q.gesturelock.util", 2, paramContext.toString());
     }
     return bool1;
   }
   
   public static int getGestureUnlockFailedTime(Context paramContext, String paramString)
   {
-    int i = getSharedPreferences(paramContext).getInt("gesturepassword_unlock_failed_time" + paramString, 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.gesturelock.util", 2, "getGestureUnlockFailedTime.uin=" + paramString + ",failedTime=" + i);
+    paramContext = getSharedPreferences(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("gesturepassword_unlock_failed_time");
+    localStringBuilder.append(paramString);
+    int i = paramContext.getInt(localStringBuilder.toString(), 0);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("getGestureUnlockFailedTime.uin=");
+      paramContext.append(paramString);
+      paramContext.append(",failedTime=");
+      paramContext.append(i);
+      QLog.d("Q.gesturelock.util", 2, paramContext.toString());
     }
     return i;
   }
@@ -207,8 +313,12 @@ public class BaseGesturePWDUtil
   public static int getGestureUnlockFailedType(Context paramContext)
   {
     int i = getSharedPreferences(paramContext).getInt("gesturepassword_unlock_failed_type", 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.gesturelock.util", 2, "getGestureUnlockFailedType.type=" + i);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("getGestureUnlockFailedType.type=");
+      paramContext.append(i);
+      QLog.d("Q.gesturelock.util", 2, paramContext.toString());
     }
     return i;
   }
@@ -220,49 +330,54 @@ public class BaseGesturePWDUtil
   
   public static boolean getSplashLock(Context paramContext, String paramString)
   {
-    boolean bool2 = true;
-    boolean bool3 = false;
-    boolean bool1 = bool3;
-    int i;
-    if (!TextUtils.isEmpty(paramString))
+    boolean bool2 = TextUtils.isEmpty(paramString);
+    boolean bool1 = true;
+    if (!bool2)
     {
       paramContext = getSharedPreferences(paramContext);
-      i = paramContext.getInt("gesturepassword_gesture_mode" + paramString, 21);
-      if (i != 21) {
-        break label132;
-      }
-      if (paramContext.getInt("gesturepassword_gesture_state" + paramString, 0) != 2) {
-        break label161;
-      }
-      bool1 = bool2;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.gesturelock.util", 2, "getSplashLock.uin=" + paramString + ",islock=" + bool1);
-      }
-      return bool1;
-      label132:
-      bool1 = bool3;
-      if (i == 20)
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("gesturepassword_gesture_mode");
+      localStringBuilder.append(paramString);
+      int i = paramContext.getInt(localStringBuilder.toString(), 21);
+      if (i == 21)
       {
-        bool1 = bool3;
-        if (paramContext.getBoolean("gesturepassword_locking", false))
-        {
-          bool1 = true;
-          continue;
-          label161:
-          bool1 = false;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("gesturepassword_gesture_state");
+        localStringBuilder.append(paramString);
+        if (paramContext.getInt(localStringBuilder.toString(), 0) == 2) {
+          break label128;
+        }
+      }
+      else
+      {
+        if ((i == 20) && (paramContext.getBoolean("gesturepassword_locking", false))) {
+          break label128;
         }
       }
     }
+    bool1 = false;
+    label128:
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("getSplashLock.uin=");
+      paramContext.append(paramString);
+      paramContext.append(",islock=");
+      paramContext.append(bool1);
+      QLog.d("Q.gesturelock.util", 2, paramContext.toString());
+    }
+    return bool1;
   }
   
   public static String getUinForPlugin(Context paramContext)
   {
     paramContext = getSharedPreferences(paramContext).getString("gesturepassword_currentuin_forplugin", "");
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.gesturelock.util", 2, "getUinForPlugin.uin=" + paramContext);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getUinForPlugin.uin=");
+      localStringBuilder.append(paramContext);
+      QLog.d("Q.gesturelock.util", 2, localStringBuilder.toString());
     }
     return paramContext;
   }
@@ -301,53 +416,47 @@ public class BaseGesturePWDUtil
     }
     ActivityManager localActivityManager = (ActivityManager)paramContext.getApplicationContext().getSystemService("activity");
     paramContext = paramContext.getApplicationContext().getPackageName();
+    label481:
+    label483:
+    label490:
+    label493:
     for (;;)
     {
-      int i;
       try
       {
-        Object localObject = localActivityManager.getRunningTasks(1);
-        if ((localObject != null) && (((List)localObject).size() > 0))
+        localObject1 = localActivityManager.getRunningTasks(1);
+        if ((localObject1 != null) && (((List)localObject1).size() > 0))
         {
-          localObject = (ActivityManager.RunningTaskInfo)((List)localObject).get(0);
-          if ((localObject != null) && (((ActivityManager.RunningTaskInfo)localObject).baseActivity != null) && (!paramContext.equals(((ActivityManager.RunningTaskInfo)localObject).baseActivity.getPackageName())))
+          localObject1 = (ActivityManager.RunningTaskInfo)((List)localObject1).get(0);
+          if ((localObject1 != null) && (((ActivityManager.RunningTaskInfo)localObject1).baseActivity != null) && (!paramContext.equals(((ActivityManager.RunningTaskInfo)localObject1).baseActivity.getPackageName())))
           {
             QLog.d("Q.gesturelock.util", 2, "qq runningTaskI is not top");
             return false;
           }
         }
-        localObject = localActivityManager.getRunningAppProcesses();
-        if (localObject == null) {
+        localObject1 = localActivityManager.getRunningAppProcesses();
+        if (localObject1 == null) {
           return false;
         }
         int j = Process.myPid();
-        localObject = ((List)localObject).iterator();
-        if (!((Iterator)localObject).hasNext()) {
-          break label434;
+        localObject2 = ((List)localObject1).iterator();
+        if (!((Iterator)localObject2).hasNext()) {
+          break label481;
         }
-        localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
-        if ((localRunningAppProcessInfo == null) || (j == localRunningAppProcessInfo.pid) || (!localRunningAppProcessInfo.processName.startsWith(paramContext)) || (localRunningAppProcessInfo.processName.endsWith("MSF")) || (localRunningAppProcessInfo.processName.endsWith("TMAssistantDownloadSDKService"))) {
+        localObject1 = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject2).next();
+        if ((localObject1 == null) || (j == ((ActivityManager.RunningAppProcessInfo)localObject1).pid) || (!((ActivityManager.RunningAppProcessInfo)localObject1).processName.startsWith(paramContext)) || (((ActivityManager.RunningAppProcessInfo)localObject1).processName.endsWith("MSF")) || (((ActivityManager.RunningAppProcessInfo)localObject1).processName.endsWith("TMAssistantDownloadSDKService"))) {
           continue;
         }
-        paramInt = localRunningAppProcessInfo.importance;
+        paramInt = ((ActivityManager.RunningAppProcessInfo)localObject1).importance;
         if (paramInt != 100) {
-          break label441;
+          break label490;
         }
         try
         {
           if (mProcStateField != null)
           {
-            paramInt = mProcStateField.getInt(localRunningAppProcessInfo);
-            i = paramInt;
-            if (paramInt != 2) {
-              continue;
-            }
-            if (QLog.isColorLevel())
-            {
-              QLog.d("Q.gesturelock.util", 2, "isAppOnForegroundByTasks is true, realforeProcessName=" + localRunningAppProcessInfo.processName);
-              printServiceInfos(localActivityManager, paramContext);
-            }
-            return true;
+            paramInt = mProcStateField.getInt(localObject1);
+            continue;
           }
           if (QLog.isColorLevel()) {
             QLog.d("Q.gesturelock.util", 2, "isAppOnForegroundByTasks, mProcStateField is null");
@@ -357,48 +466,80 @@ public class BaseGesturePWDUtil
         catch (Exception localException)
         {
           if (!QLog.isColorLevel()) {
-            break label436;
+            break label483;
           }
         }
         QLog.e("Q.gesturelock.util", 2, "isAppOnForegroundByTasks", localException);
       }
       catch (Exception paramContext)
       {
-        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo;
+        Object localObject1;
+        Object localObject2;
+        StringBuilder localStringBuilder;
         if (!QLog.isColorLevel()) {
-          break label434;
+          break label481;
         }
         QLog.e("Q.gesturelock.util", 2, "isAppOnForegroundByTasks.uin", paramContext);
       }
-      if (QLog.isColorLevel())
+      int i = paramInt;
+      if (paramInt == 2)
       {
-        QLog.d("Q.gesturelock.util", 2, "isAppOnForegroundByTasks, procName=" + localRunningAppProcessInfo.processName + ",importance=" + localRunningAppProcessInfo.importance + ",reasonCode=" + localRunningAppProcessInfo.importanceReasonCode + ",procState=" + i + ",pid=" + localRunningAppProcessInfo.pid);
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("isAppOnForegroundByTasks is true, realforeProcessName=");
+          ((StringBuilder)localObject2).append(((ActivityManager.RunningAppProcessInfo)localObject1).processName);
+          QLog.d("Q.gesturelock.util", 2, ((StringBuilder)localObject2).toString());
+          printServiceInfos(localActivityManager, paramContext);
+          return true;
+        }
+      }
+      else
+      {
+        if (!QLog.isColorLevel()) {
+          break label493;
+        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isAppOnForegroundByTasks, procName=");
+        localStringBuilder.append(((ActivityManager.RunningAppProcessInfo)localObject1).processName);
+        localStringBuilder.append(",importance=");
+        localStringBuilder.append(((ActivityManager.RunningAppProcessInfo)localObject1).importance);
+        localStringBuilder.append(",reasonCode=");
+        localStringBuilder.append(((ActivityManager.RunningAppProcessInfo)localObject1).importanceReasonCode);
+        localStringBuilder.append(",procState=");
+        localStringBuilder.append(i);
+        localStringBuilder.append(",pid=");
+        localStringBuilder.append(((ActivityManager.RunningAppProcessInfo)localObject1).pid);
+        QLog.d("Q.gesturelock.util", 2, localStringBuilder.toString());
         continue;
-        label434:
         return false;
-        label436:
         paramInt = 0;
         continue;
-        label441:
-        i = 0;
       }
+      return true;
+      i = 0;
     }
   }
   
   private static void printServiceInfos(ActivityManager paramActivityManager, String paramString)
   {
-    Object localObject = null;
     if (paramActivityManager != null) {
-      localObject = paramActivityManager.getRunningServices(1000);
+      paramActivityManager = paramActivityManager.getRunningServices(1000);
+    } else {
+      paramActivityManager = null;
     }
-    if (localObject != null)
+    if (paramActivityManager != null)
     {
-      paramActivityManager = ((List)localObject).iterator();
+      paramActivityManager = paramActivityManager.iterator();
       while (paramActivityManager.hasNext())
       {
-        localObject = (ActivityManager.RunningServiceInfo)paramActivityManager.next();
-        if ((localObject != null) && (((ActivityManager.RunningServiceInfo)localObject).foreground == true) && (((ActivityManager.RunningServiceInfo)localObject).process.startsWith(paramString))) {
-          QLog.d("Q.gesturelock.util", 2, "foreground service=" + ((ActivityManager.RunningServiceInfo)localObject).service.getClassName());
+        ActivityManager.RunningServiceInfo localRunningServiceInfo = (ActivityManager.RunningServiceInfo)paramActivityManager.next();
+        if ((localRunningServiceInfo != null) && (localRunningServiceInfo.foreground == true) && (localRunningServiceInfo.process.startsWith(paramString)))
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("foreground service=");
+          localStringBuilder.append(localRunningServiceInfo.service.getClassName());
+          QLog.d("Q.gesturelock.util", 2, localStringBuilder.toString());
         }
       }
     }
@@ -406,8 +547,12 @@ public class BaseGesturePWDUtil
   
   public static void setGestureLocking(Context paramContext, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.gesturelock.util", 2, "setGestureLocking.uin=,islock=" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setGestureLocking.uin=,islock=");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("Q.gesturelock.util", 2, localStringBuilder.toString());
     }
     paramContext = getSharedPreferences(paramContext).edit();
     paramContext.putBoolean("gesturepassword_locking", paramBoolean);
@@ -416,28 +561,50 @@ public class BaseGesturePWDUtil
   
   public static void setGesturePWD(Context paramContext, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.gesturelock.util", 2, "setGesturePWD.uin=" + paramString1 + ",pw=" + paramString2);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setGesturePWD.uin=");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(",pw=");
+      localStringBuilder.append(paramString2);
+      QLog.d("Q.gesturelock.util", 2, localStringBuilder.toString());
     }
     paramContext = getSharedPreferences(paramContext).edit();
-    paramContext.putString("gesturepassword_gesture_pwd" + paramString1, paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("gesturepassword_gesture_pwd");
+    localStringBuilder.append(paramString1);
+    paramContext.putString(localStringBuilder.toString(), paramString2);
     paramContext.commit();
   }
   
   public static void setGesturePWDMode(Context paramContext, String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.gesturelock.util", 2, "setGesturePWDMode.uin=" + paramString + ",mode=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setGesturePWDMode.uin=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",mode=");
+      localStringBuilder.append(paramInt);
+      QLog.d("Q.gesturelock.util", 2, localStringBuilder.toString());
     }
     paramContext = getSharedPreferences(paramContext).edit();
-    paramContext.putInt("gesturepassword_gesture_mode" + paramString, paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("gesturepassword_gesture_mode");
+    localStringBuilder.append(paramString);
+    paramContext.putInt(localStringBuilder.toString(), paramInt);
     paramContext.commit();
   }
   
   public static void setGestureUnlockFailed(Context paramContext, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.gesturelock.util", 2, "setGestureUnlockFailed.uin=" + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setGestureUnlockFailed.uin=");
+      localStringBuilder.append(paramString);
+      QLog.d("Q.gesturelock.util", 2, localStringBuilder.toString());
     }
     paramContext = getSharedPreferences(paramContext).edit();
     paramContext.putString("gesturepassword_unlock_failed", paramString);
@@ -446,18 +613,31 @@ public class BaseGesturePWDUtil
   
   public static void setGestureUnlockFailedTime(Context paramContext, String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.gesturelock.util", 2, "setGestureUnlockFailedTime.uin=" + paramString + ",failedTime=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setGestureUnlockFailedTime.uin=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",failedTime=");
+      localStringBuilder.append(paramInt);
+      QLog.d("Q.gesturelock.util", 2, localStringBuilder.toString());
     }
     paramContext = getSharedPreferences(paramContext).edit();
-    paramContext.putInt("gesturepassword_unlock_failed_time" + paramString, paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("gesturepassword_unlock_failed_time");
+    localStringBuilder.append(paramString);
+    paramContext.putInt(localStringBuilder.toString(), paramInt);
     paramContext.commit();
   }
   
   public static void setGestureUnlockFailedType(Context paramContext, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.gesturelock.util", 2, "setGestureUnlockFailedType.type=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setGestureUnlockFailedType.type=");
+      localStringBuilder.append(paramInt);
+      QLog.d("Q.gesturelock.util", 2, localStringBuilder.toString());
     }
     paramContext = getSharedPreferences(paramContext).edit();
     paramContext.putInt("gesturepassword_unlock_failed_type", paramInt);
@@ -466,8 +646,12 @@ public class BaseGesturePWDUtil
   
   public static void setUinForPlugin(Context paramContext, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.gesturelock.util", 2, "setUinForPlugin.uin=" + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setUinForPlugin.uin=");
+      localStringBuilder.append(paramString);
+      QLog.d("Q.gesturelock.util", 2, localStringBuilder.toString());
     }
     if (TextUtils.isEmpty(paramString)) {
       return;
@@ -479,7 +663,7 @@ public class BaseGesturePWDUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gesturelock.BaseGesturePWDUtil
  * JD-Core Version:    0.7.0.1
  */

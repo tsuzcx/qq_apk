@@ -24,51 +24,62 @@ public class VRefresh
   
   public void addEvent(String paramString)
   {
-    int i = -1;
     switch (paramString.hashCode())
     {
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        super.addEvent(paramString);
-        return;
-        if (paramString.equals("appear"))
-        {
-          i = 0;
-          continue;
-          if (paramString.equals("disappear"))
-          {
-            i = 1;
-            continue;
-            if (paramString.equals("pulling"))
-            {
-              i = 2;
-              continue;
-              if (paramString.equals("idle"))
-              {
-                i = 3;
-                continue;
-                if (paramString.equals("refresh")) {
-                  i = 4;
-                }
-              }
-            }
-          }
-        }
-        break;
+    default: 
+      break;
+    case 1085444827: 
+      if (paramString.equals("refresh")) {
+        i = 4;
       }
+      break;
+    case 3227604: 
+      if (paramString.equals("idle")) {
+        i = 3;
+      }
+      break;
+    case -177721437: 
+      if (paramString.equals("disappear")) {
+        i = 1;
+      }
+      break;
+    case -226130051: 
+      if (paramString.equals("pulling")) {
+        i = 2;
+      }
+      break;
+    case -1411068523: 
+      if (paramString.equals("appear")) {
+        i = 0;
+      }
+      break;
     }
-    this.mAppendEvents.add(paramString);
-    return;
-    this.mAppendEvents.add(paramString);
-    return;
-    this.mAppendEvents.add(paramString);
-    return;
-    this.mAppendEvents.add(paramString);
-    return;
+    int i = -1;
+    if (i != 0)
+    {
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if (i != 4)
+            {
+              super.addEvent(paramString);
+              return;
+            }
+            this.mAppendEvents.add(paramString);
+            return;
+          }
+          this.mAppendEvents.add(paramString);
+          return;
+        }
+        this.mAppendEvents.add(paramString);
+        return;
+      }
+      this.mAppendEvents.add(paramString);
+      return;
+    }
     this.mAppendEvents.add(paramString);
   }
   
@@ -113,20 +124,14 @@ public class VRefresh
     fireEvent(paramString, paramJSONArray, paramJSONObject);
   }
   
-  public boolean resetAttr(String paramString)
+  protected boolean resetAttr(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (!super.resetAttr(paramString))
+    if ((!super.resetAttr(paramString)) && (paramString.equals("refreshStick")))
     {
-      bool1 = bool2;
-      if (paramString.equals("refreshStick"))
-      {
-        setRefreshStick(false);
-        bool1 = true;
-      }
+      setRefreshStick(false);
+      return true;
     }
-    return bool1;
+    return false;
   }
   
   @VComponentProp(name="refreshStick")
@@ -137,7 +142,7 @@ public class VRefresh
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.component.VRefresh
  * JD-Core Version:    0.7.0.1
  */

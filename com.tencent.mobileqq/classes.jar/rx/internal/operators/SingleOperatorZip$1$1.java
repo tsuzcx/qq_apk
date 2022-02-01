@@ -26,23 +26,24 @@ class SingleOperatorZip$1$1
   public void onSuccess(T paramT)
   {
     this.val$values[this.val$j] = paramT;
-    if (this.val$wip.decrementAndGet() == 0) {}
-    try
-    {
-      paramT = this.this$0.val$zipper.call(this.val$values);
-      this.val$subscriber.onSuccess(paramT);
-      return;
-    }
-    catch (Throwable paramT)
-    {
-      Exceptions.throwIfFatal(paramT);
-      onError(paramT);
+    if (this.val$wip.decrementAndGet() == 0) {
+      try
+      {
+        paramT = this.this$0.val$zipper.call(this.val$values);
+        this.val$subscriber.onSuccess(paramT);
+        return;
+      }
+      catch (Throwable paramT)
+      {
+        Exceptions.throwIfFatal(paramT);
+        onError(paramT);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.SingleOperatorZip.1.1
  * JD-Core Version:    0.7.0.1
  */

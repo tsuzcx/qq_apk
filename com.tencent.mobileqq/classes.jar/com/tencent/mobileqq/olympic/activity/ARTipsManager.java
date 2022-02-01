@@ -44,34 +44,29 @@ public class ARTipsManager
     if (QLog.isColorLevel()) {
       QLog.d("ARTipsManager", 2, "createTipsView");
     }
-    ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558736, null);
+    ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558635, null);
     if (localViewGroup != null)
     {
       ARTipsManager.ViewHolder localViewHolder = new ARTipsManager.ViewHolder(this, null);
-      localViewHolder.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localViewGroup.findViewById(2131362974));
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localViewGroup.findViewById(2131362978));
-      localViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localViewGroup.findViewById(2131362976));
-      localViewHolder.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localViewGroup.findViewById(2131362975));
-      localViewHolder.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsCircleProgress = ((ARTipsCircleProgress)localViewGroup.findViewById(2131362977));
-      localViewHolder.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)localViewGroup.findViewById(2131362962));
-      localViewHolder.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)localViewGroup.findViewById(2131362964));
-      localViewHolder.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localViewGroup.findViewById(2131362966));
-      localViewHolder.e = ((TextView)localViewGroup.findViewById(2131362965));
-      localViewHolder.jdField_d_of_type_AndroidViewViewGroup = ((ViewGroup)localViewGroup.findViewById(2131362967));
-      localViewHolder.f = ((TextView)localViewGroup.findViewById(2131362968));
-      localViewHolder.jdField_a_of_type_AndroidViewView = localViewGroup.findViewById(2131362969);
-      localViewHolder.g = ((TextView)localViewGroup.findViewById(2131362970));
-      localViewHolder.h = ((TextView)localViewGroup.findViewById(2131362972));
-      localViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localViewGroup.findViewById(2131362963));
+      localViewHolder.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localViewGroup.findViewById(2131362923));
+      localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localViewGroup.findViewById(2131362927));
+      localViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localViewGroup.findViewById(2131362925));
+      localViewHolder.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localViewGroup.findViewById(2131362924));
+      localViewHolder.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsCircleProgress = ((ARTipsCircleProgress)localViewGroup.findViewById(2131362926));
+      localViewHolder.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)localViewGroup.findViewById(2131362911));
+      localViewHolder.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)localViewGroup.findViewById(2131362913));
+      localViewHolder.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localViewGroup.findViewById(2131362915));
+      localViewHolder.e = ((TextView)localViewGroup.findViewById(2131362914));
+      localViewHolder.jdField_d_of_type_AndroidViewViewGroup = ((ViewGroup)localViewGroup.findViewById(2131362916));
+      localViewHolder.f = ((TextView)localViewGroup.findViewById(2131362917));
+      localViewHolder.jdField_a_of_type_AndroidViewView = localViewGroup.findViewById(2131362918);
+      localViewHolder.g = ((TextView)localViewGroup.findViewById(2131362919));
+      localViewHolder.h = ((TextView)localViewGroup.findViewById(2131362921));
+      localViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localViewGroup.findViewById(2131362912));
       localViewGroup.setTag(localViewHolder);
       localViewGroup.setOnTouchListener(new ARTipsManager.1(this));
     }
     return localViewGroup;
-  }
-  
-  private void a(int paramInt1, int paramInt2, String paramString1, String paramString2, ARTipsManager.BaikeClickListener paramBaikeClickListener, boolean paramBoolean)
-  {
-    a(paramInt1, paramInt2, paramString1, paramString2, paramBaikeClickListener, paramBoolean, true);
   }
   
   private void a(int paramInt1, int paramInt2, String paramString1, String paramString2, ARTipsManager.BaikeClickListener paramBaikeClickListener, boolean paramBoolean1, boolean paramBoolean2)
@@ -118,105 +113,113 @@ public class ARTipsManager
     if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
       this.jdField_a_of_type_AndroidViewViewGroup = a();
     }
-    ARTipsManager.ViewHolder localViewHolder;
-    int i;
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null)
+    Object localObject = this.jdField_a_of_type_AndroidViewViewGroup;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidViewViewGroup.setTag(2131362973, paramTipsInfo);
-      localViewHolder = (ARTipsManager.ViewHolder)this.jdField_a_of_type_AndroidViewViewGroup.getTag();
-      if (localViewHolder != null)
+      ((ViewGroup)localObject).setTag(2131362922, paramTipsInfo);
+      localObject = (ARTipsManager.ViewHolder)this.jdField_a_of_type_AndroidViewViewGroup.getTag();
+      if (localObject != null)
       {
-        i = paramTipsInfo.jdField_b_of_type_Int;
-        if ((i != 1) && (i != 2) && (i != 3)) {
-          break label353;
-        }
-        localViewHolder.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-        localViewHolder.jdField_b_of_type_AndroidViewViewGroup.setVisibility(8);
-        localViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramTipsInfo.jdField_a_of_type_JavaLangString);
-        if (!TextUtils.isEmpty(paramTipsInfo.jdField_b_of_type_JavaLangString)) {
-          break label213;
-        }
-        localViewHolder.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-        localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 16.0F);
-        switch (i)
+        int i = paramTipsInfo.jdField_b_of_type_Int;
+        if ((i != 1) && (i != 2) && (i != 3))
         {
-        }
-      }
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_AndroidViewViewGroup.getParent() == null) {
-        b();
-      }
-      if (paramTipsInfo.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(101);
-        paramTipsInfo = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(101);
-        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramTipsInfo, 5000L);
-      }
-      return;
-      label213:
-      localViewHolder.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      localViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(paramTipsInfo.jdField_b_of_type_JavaLangString);
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 20.0F);
-      break;
-      localViewHolder.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-      localViewHolder.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsCircleProgress.setVisibility(8);
-      localViewHolder.jdField_a_of_type_AndroidViewViewGroup.setEnabled(false);
-      continue;
-      localViewHolder.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-      localViewHolder.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsCircleProgress.setVisibility(8);
-      localViewHolder.jdField_c_of_type_AndroidWidgetTextView.setText(paramTipsInfo.jdField_c_of_type_JavaLangString);
-      localViewHolder.jdField_a_of_type_AndroidViewViewGroup.setEnabled(true);
-      continue;
-      localViewHolder.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-      localViewHolder.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsCircleProgress.setVisibility(0);
-      localViewHolder.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsCircleProgress.setProgress(paramTipsInfo.jdField_c_of_type_Int);
-      localViewHolder.jdField_a_of_type_AndroidViewViewGroup.setEnabled(false);
-      continue;
-      label353:
-      if ((i == 10) || (i == 11))
-      {
-        localViewHolder.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-        localViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        localViewHolder.jdField_b_of_type_AndroidViewViewGroup.setVisibility(0);
-        FrameLayout.LayoutParams localLayoutParams;
-        if (paramTipsInfo.jdField_b_of_type_Boolean)
-        {
-          localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          localViewHolder.jdField_d_of_type_AndroidWidgetTextView.setText(paramTipsInfo.d);
-          localViewHolder.e.setText(paramTipsInfo.e);
-          localViewHolder.jdField_c_of_type_AndroidViewViewGroup.setOnClickListener(new ARTipsManager.2(this, paramTipsInfo));
-          localLayoutParams = (FrameLayout.LayoutParams)localViewHolder.jdField_b_of_type_AndroidViewViewGroup.getLayoutParams();
-          switch (i)
+          if ((i != 10) && (i != 11))
           {
+            if (i == 12)
+            {
+              ((ARTipsManager.ViewHolder)localObject).jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
+              ((ARTipsManager.ViewHolder)localObject).jdField_b_of_type_AndroidViewViewGroup.setVisibility(8);
+              ((ARTipsManager.ViewHolder)localObject).jdField_a_of_type_AndroidViewView.setVisibility(0);
+              if (paramTipsInfo.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager$OcrClickListener != null)
+              {
+                ((ARTipsManager.ViewHolder)localObject).g.setOnClickListener(new ARTipsManager.4(this, paramTipsInfo));
+                ((ARTipsManager.ViewHolder)localObject).h.setOnClickListener(new ARTipsManager.5(this, paramTipsInfo));
+              }
+            }
+          }
+          else
+          {
+            ((ARTipsManager.ViewHolder)localObject).jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
+            ((ARTipsManager.ViewHolder)localObject).jdField_a_of_type_AndroidViewView.setVisibility(8);
+            ((ARTipsManager.ViewHolder)localObject).jdField_b_of_type_AndroidViewViewGroup.setVisibility(0);
+            if (paramTipsInfo.jdField_b_of_type_Boolean) {
+              ((ARTipsManager.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+            } else {
+              ((ARTipsManager.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+            }
+            ((ARTipsManager.ViewHolder)localObject).jdField_d_of_type_AndroidWidgetTextView.setText(paramTipsInfo.d);
+            ((ARTipsManager.ViewHolder)localObject).e.setText(paramTipsInfo.e);
+            ((ARTipsManager.ViewHolder)localObject).jdField_c_of_type_AndroidViewViewGroup.setOnClickListener(new ARTipsManager.2(this, paramTipsInfo));
+            FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)((ARTipsManager.ViewHolder)localObject).jdField_b_of_type_AndroidViewViewGroup.getLayoutParams();
+            if (i != 10)
+            {
+              if (i == 11)
+              {
+                ((ARTipsManager.ViewHolder)localObject).jdField_d_of_type_AndroidViewViewGroup.setVisibility(0);
+                ((ARTipsManager.ViewHolder)localObject).f.setOnClickListener(new ARTipsManager.3(this, paramTipsInfo));
+                localLayoutParams.bottomMargin = AIOUtils.b(0.0F, this.jdField_a_of_type_AndroidContentResResources);
+              }
+            }
+            else
+            {
+              ((ARTipsManager.ViewHolder)localObject).jdField_d_of_type_AndroidViewViewGroup.setVisibility(8);
+              localLayoutParams.bottomMargin = AIOUtils.b(20.0F, this.jdField_a_of_type_AndroidContentResResources);
+            }
+            ((ARTipsManager.ViewHolder)localObject).jdField_b_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
           }
         }
-        for (;;)
+        else
         {
-          localViewHolder.jdField_b_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
-          break;
-          localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-          break label406;
-          localViewHolder.jdField_d_of_type_AndroidViewViewGroup.setVisibility(8);
-          localLayoutParams.bottomMargin = AIOUtils.a(20.0F, this.jdField_a_of_type_AndroidContentResResources);
-          continue;
-          localViewHolder.jdField_d_of_type_AndroidViewViewGroup.setVisibility(0);
-          localViewHolder.f.setOnClickListener(new ARTipsManager.3(this, paramTipsInfo));
-          localLayoutParams.bottomMargin = AIOUtils.a(0.0F, this.jdField_a_of_type_AndroidContentResResources);
+          ((ARTipsManager.ViewHolder)localObject).jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+          ((ARTipsManager.ViewHolder)localObject).jdField_b_of_type_AndroidViewViewGroup.setVisibility(8);
+          ((ARTipsManager.ViewHolder)localObject).jdField_a_of_type_AndroidViewView.setVisibility(8);
+          ((ARTipsManager.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(paramTipsInfo.jdField_a_of_type_JavaLangString);
+          if (TextUtils.isEmpty(paramTipsInfo.jdField_b_of_type_JavaLangString))
+          {
+            ((ARTipsManager.ViewHolder)localObject).jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+            ((ARTipsManager.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 16.0F);
+          }
+          else
+          {
+            ((ARTipsManager.ViewHolder)localObject).jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+            ((ARTipsManager.ViewHolder)localObject).jdField_b_of_type_AndroidWidgetTextView.setText(paramTipsInfo.jdField_b_of_type_JavaLangString);
+            ((ARTipsManager.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 20.0F);
+          }
+          if (i != 1)
+          {
+            if (i != 2)
+            {
+              if (i == 3)
+              {
+                ((ARTipsManager.ViewHolder)localObject).jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+                ((ARTipsManager.ViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsCircleProgress.setVisibility(0);
+                ((ARTipsManager.ViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsCircleProgress.setProgress(paramTipsInfo.jdField_c_of_type_Int);
+                ((ARTipsManager.ViewHolder)localObject).jdField_a_of_type_AndroidViewViewGroup.setEnabled(false);
+              }
+            }
+            else
+            {
+              ((ARTipsManager.ViewHolder)localObject).jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+              ((ARTipsManager.ViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsCircleProgress.setVisibility(8);
+              ((ARTipsManager.ViewHolder)localObject).jdField_c_of_type_AndroidWidgetTextView.setText(paramTipsInfo.jdField_c_of_type_JavaLangString);
+              ((ARTipsManager.ViewHolder)localObject).jdField_a_of_type_AndroidViewViewGroup.setEnabled(true);
+            }
+          }
+          else
+          {
+            ((ARTipsManager.ViewHolder)localObject).jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+            ((ARTipsManager.ViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsCircleProgress.setVisibility(8);
+            ((ARTipsManager.ViewHolder)localObject).jdField_a_of_type_AndroidViewViewGroup.setEnabled(false);
+          }
         }
-      }
-      label406:
-      if (i == 12)
-      {
-        localViewHolder.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-        localViewHolder.jdField_b_of_type_AndroidViewViewGroup.setVisibility(8);
-        localViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        if (paramTipsInfo.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager$OcrClickListener != null)
+        if (this.jdField_a_of_type_AndroidViewViewGroup.getParent() == null) {
+          b();
+        }
+        if (paramTipsInfo.jdField_a_of_type_Boolean)
         {
-          localViewHolder.g.setOnClickListener(new ARTipsManager.4(this, paramTipsInfo));
-          localViewHolder.h.setOnClickListener(new ARTipsManager.5(this, paramTipsInfo));
+          this.jdField_a_of_type_AndroidOsHandler.removeMessages(101);
+          paramTipsInfo = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(101);
+          this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramTipsInfo, 5000L);
         }
       }
     }
@@ -236,8 +239,9 @@ public class ARTipsManager
     ((ValueAnimator)localObject).addUpdateListener(new ARTipsManager.6(this));
     ((ValueAnimator)localObject).addListener(new ARTipsManager.7(this));
     ((ValueAnimator)localObject).start();
-    if (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager$ARTipsVisibleListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager$ARTipsVisibleListener.a(true);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager$ARTipsVisibleListener;
+    if (localObject != null) {
+      ((ARTipsManager.ARTipsVisibleListener)localObject).a(true);
     }
   }
   
@@ -246,28 +250,30 @@ public class ARTipsManager
     if (QLog.isColorLevel()) {
       QLog.d("ARTipsManager", 2, "removeTipsWithAnim");
     }
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null)
+    Object localObject = this.jdField_a_of_type_AndroidViewViewGroup;
+    if (localObject != null)
     {
-      ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
       this.jdField_a_of_type_AndroidViewViewGroup = null;
       ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
       localValueAnimator.setDuration(400L);
-      localValueAnimator.addUpdateListener(new ARTipsManager.8(this, localViewGroup));
-      localValueAnimator.addListener(new ARTipsManager.9(this, localViewGroup));
+      localValueAnimator.addUpdateListener(new ARTipsManager.8(this, (View)localObject));
+      localValueAnimator.addListener(new ARTipsManager.9(this, (View)localObject));
       localValueAnimator.start();
-      if (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager$ARTipsVisibleListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager$ARTipsVisibleListener.a(false);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager$ARTipsVisibleListener;
+      if (localObject != null) {
+        ((ARTipsManager.ARTipsVisibleListener)localObject).a(false);
       }
     }
   }
   
   public int a()
   {
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null)
+    Object localObject = this.jdField_a_of_type_AndroidViewViewGroup;
+    if (localObject != null)
     {
-      ARTipsManager.TipsInfo localTipsInfo = (ARTipsManager.TipsInfo)this.jdField_a_of_type_AndroidViewViewGroup.getTag(2131362973);
-      if (localTipsInfo != null) {
-        return localTipsInfo.jdField_a_of_type_Int;
+      localObject = (ARTipsManager.TipsInfo)((ViewGroup)localObject).getTag(2131362922);
+      if (localObject != null) {
+        return ((ARTipsManager.TipsInfo)localObject).jdField_a_of_type_Int;
       }
     }
     return 0;
@@ -287,11 +293,6 @@ public class ARTipsManager
   public void a(int paramInt, String paramString)
   {
     a(paramInt, 1, paramString, null, null, null, 0, true);
-  }
-  
-  public void a(int paramInt, String paramString1, String paramString2, ARTipsManager.BaikeClickListener paramBaikeClickListener)
-  {
-    a(paramInt, 11, paramString1, paramString2, paramBaikeClickListener, false);
   }
   
   public void a(int paramInt, String paramString1, String paramString2, String paramString3, ARTipsManager.ButtonClickListener paramButtonClickListener, boolean paramBoolean)
@@ -331,12 +332,13 @@ public class ARTipsManager
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewViewGroup.getVisibility() == 0);
+    ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
+    return (localViewGroup != null) && (localViewGroup.getVisibility() == 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.activity.ARTipsManager
  * JD-Core Version:    0.7.0.1
  */

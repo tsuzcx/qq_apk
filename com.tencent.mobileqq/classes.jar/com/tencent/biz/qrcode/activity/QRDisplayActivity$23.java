@@ -11,18 +11,19 @@ class QRDisplayActivity$23
   
   public void run()
   {
-    if (QRUtils.a(this.this$0.app, this.this$0.c) == 1) {}
-    for (String str = this.a;; str = this.b)
-    {
-      str = QRUtils.a(this.this$0, str, this.this$0.b);
-      ThreadManager.getUIHandler().post(new QRDisplayActivity.23.1(this, str));
-      return;
+    if (QRUtils.a(this.this$0.app, this.this$0.c) == 1) {
+      str = this.a;
+    } else {
+      str = this.b;
     }
+    QRDisplayActivity localQRDisplayActivity = this.this$0;
+    String str = QRUtils.a(localQRDisplayActivity, str, localQRDisplayActivity.b);
+    ThreadManager.getUIHandler().post(new QRDisplayActivity.23.1(this, str));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.23
  * JD-Core Version:    0.7.0.1
  */

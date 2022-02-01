@@ -5,28 +5,23 @@ class UrlKeyGenerator$GeneratorDespiteDomain
 {
   public String generate(String paramString)
   {
-    String str = null;
     int i;
     if (UrlKeyGenerator.access$200(paramString, "http://")) {
-      i = paramString.indexOf("/", "http://".length());
+      i = paramString.indexOf("/", 7);
+    } else if (UrlKeyGenerator.access$200(paramString, "https://")) {
+      i = paramString.indexOf("/", 8);
+    } else {
+      i = paramString.indexOf("/");
     }
-    for (;;)
-    {
-      if (i != -1) {
-        str = paramString.substring(i);
-      }
-      return str;
-      if (UrlKeyGenerator.access$200(paramString, "https://")) {
-        i = paramString.indexOf("/", "https://".length());
-      } else {
-        i = paramString.indexOf("/");
-      }
+    if (i != -1) {
+      return paramString.substring(i);
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.downloader.UrlKeyGenerator.GeneratorDespiteDomain
  * JD-Core Version:    0.7.0.1
  */

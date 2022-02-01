@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.api.INearbyLikeLimitManagerUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 
 class NearbyLikeLimitManager$2
   implements DialogInterface.OnClickListener
@@ -22,12 +24,12 @@ class NearbyLikeLimitManager$2
       localIntent.putExtra("url", paramDialogInterface.b);
       this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
     }
-    NearbyLikeLimitManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "clk_up", this.jdField_a_of_type_JavaLangString);
+    ((INearbyLikeLimitManagerUtil)QRoute.api(INearbyLikeLimitManagerUtil.class)).report(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "clk_up", this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyLikeLimitManager.2
  * JD-Core Version:    0.7.0.1
  */

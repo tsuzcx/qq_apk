@@ -13,24 +13,25 @@ public class VideoChannelImpl
   
   public static VideoChannelImpl a()
   {
-    if (jdField_a_of_type_ComTencentQavChannelVideoChannelImpl == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentQavChannelVideoChannelImpl == null) {
-        jdField_a_of_type_ComTencentQavChannelVideoChannelImpl = new VideoChannelImpl();
+    if (jdField_a_of_type_ComTencentQavChannelVideoChannelImpl == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentQavChannelVideoChannelImpl == null) {
+          jdField_a_of_type_ComTencentQavChannelVideoChannelImpl = new VideoChannelImpl();
+        }
       }
-      return jdField_a_of_type_ComTencentQavChannelVideoChannelImpl;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentQavChannelVideoChannelImpl;
   }
   
   protected long a()
   {
-    long l = 0L;
-    if (this.jdField_a_of_type_MqqAppAppRuntime != null) {
-      l = this.jdField_a_of_type_MqqAppAppRuntime.getLongAccountUin();
+    AppRuntime localAppRuntime = this.jdField_a_of_type_MqqAppAppRuntime;
+    if (localAppRuntime != null) {
+      return localAppRuntime.getLongAccountUin();
     }
-    return l;
+    return 0L;
   }
   
   protected void a()
@@ -52,9 +53,11 @@ public class VideoChannelImpl
   
   public void a(AppRuntime paramAppRuntime)
   {
-    int i = 0;
+    int i;
     if ((paramAppRuntime instanceof AppInterface)) {
       i = ((AppInterface)paramAppRuntime).getAppid();
+    } else {
+      i = 0;
     }
     this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
     this.jdField_a_of_type_Int = i;
@@ -102,7 +105,7 @@ public class VideoChannelImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qav.channel.VideoChannelImpl
  * JD-Core Version:    0.7.0.1
  */

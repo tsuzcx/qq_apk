@@ -30,7 +30,13 @@ public class ViewPager$SavedState
   
   public String toString()
   {
-    return "FragmentPager.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " position=" + this.position + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FragmentPager.SavedState{");
+    localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
+    localStringBuilder.append(" position=");
+    localStringBuilder.append(this.position);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -42,7 +48,7 @@ public class ViewPager$SavedState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.supportui.views.viewpager.ViewPager.SavedState
  * JD-Core Version:    0.7.0.1
  */

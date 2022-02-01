@@ -20,42 +20,54 @@ public class CenterProcessor
   
   private void d()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
+    ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    if (localConcurrentHashMap != null)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(1), new RobotProcessor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString));
+      localConcurrentHashMap.put(Integer.valueOf(1), new RobotProcessor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString));
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(3), new GameCardProcessor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString));
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(4), new LuckyCharacterProcessor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString));
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(5), new TroopMgrAppProcessor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString));
     }
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) || (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty())) {
-      return;
+    ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    if (localConcurrentHashMap != null)
+    {
+      if (localConcurrentHashMap.isEmpty()) {
+        return;
+      }
+      ThreadManager.getFileThreadHandler().post(new CenterProcessor.1(this));
     }
-    ThreadManager.getFileThreadHandler().post(new CenterProcessor.1(this));
   }
   
   public void b()
   {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) || (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty())) {
-      return;
+    ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    if (localConcurrentHashMap != null)
+    {
+      if (localConcurrentHashMap.isEmpty()) {
+        return;
+      }
+      ThreadManager.getFileThreadHandler().post(new CenterProcessor.2(this));
     }
-    ThreadManager.getFileThreadHandler().post(new CenterProcessor.2(this));
   }
   
   public void c()
   {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) || (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty())) {
-      return;
+    ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    if (localConcurrentHashMap != null)
+    {
+      if (localConcurrentHashMap.isEmpty()) {
+        return;
+      }
+      ThreadManager.getFileThreadHandler().post(new CenterProcessor.3(this));
     }
-    ThreadManager.getFileThreadHandler().post(new CenterProcessor.3(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.redpoint.troopsettingredpoint.CenterProcessor
  * JD-Core Version:    0.7.0.1
  */

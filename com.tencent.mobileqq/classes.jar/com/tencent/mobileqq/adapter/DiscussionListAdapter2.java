@@ -76,34 +76,38 @@ public class DiscussionListAdapter2
   {
     int j = this.jdField_a_of_type_ComTencentWidgetListView.getChildCount();
     int i = 0;
-    Object localObject;
-    if (i < j)
+    while (i < j)
     {
-      localObject = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(i).getTag();
-      if ((localObject == null) || (!(localObject instanceof DiscussionListAdapter2.ViewTag))) {
-        break label173;
-      }
-      localObject = (DiscussionListAdapter2.ViewTag)localObject;
-      if ((paramString == null) && (!TextUtils.isEmpty(((DiscussionListAdapter2.ViewTag)localObject).jdField_a_of_type_JavaLangString)))
+      Object localObject = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(i).getTag();
+      Bitmap localBitmap = paramBitmap;
+      if (localObject != null)
       {
-        paramBitmap = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCache(101, ((DiscussionListAdapter2.ViewTag)localObject).jdField_a_of_type_JavaLangString);
-        if (paramBitmap != null) {
-          ((DiscussionListAdapter2.ViewTag)localObject).jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+        localBitmap = paramBitmap;
+        if ((localObject instanceof DiscussionListAdapter2.ViewTag))
+        {
+          localObject = (DiscussionListAdapter2.ViewTag)localObject;
+          if ((paramString == null) && (!TextUtils.isEmpty(((DiscussionListAdapter2.ViewTag)localObject).jdField_a_of_type_JavaLangString)))
+          {
+            localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCache(101, ((DiscussionListAdapter2.ViewTag)localObject).jdField_a_of_type_JavaLangString);
+            if (localBitmap != null) {
+              ((DiscussionListAdapter2.ViewTag)localObject).jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap));
+            } else {
+              this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(((DiscussionListAdapter2.ViewTag)localObject).jdField_a_of_type_JavaLangString, 101, true);
+            }
+          }
+          else
+          {
+            localBitmap = paramBitmap;
+            if (TextUtils.equals(paramString, ((DiscussionListAdapter2.ViewTag)localObject).jdField_a_of_type_JavaLangString))
+            {
+              ((DiscussionListAdapter2.ViewTag)localObject).jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+              return;
+            }
+          }
         }
       }
-    }
-    label173:
-    for (;;)
-    {
       i += 1;
-      break;
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(((DiscussionListAdapter2.ViewTag)localObject).jdField_a_of_type_JavaLangString, 101, true);
-      continue;
-      if (TextUtils.equals(paramString, ((DiscussionListAdapter2.ViewTag)localObject).jdField_a_of_type_JavaLangString))
-      {
-        ((DiscussionListAdapter2.ViewTag)localObject).jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
-        return;
-      }
+      paramBitmap = localBitmap;
     }
   }
   
@@ -111,33 +115,33 @@ public class DiscussionListAdapter2
   {
     this.jdField_a_of_type_JavaUtilList = ((DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a();
     Object localObject1 = new HashMap();
-    Object localObject2 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131720358);
-    String str1 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131691096);
+    Object localObject2 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131720097);
+    String str1 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131691016);
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       DiscussionInfo localDiscussionInfo = (DiscussionInfo)localIterator.next();
-      long l = 0L;
+      long l1 = 0L;
       String str2 = ContactUtils.a(this.jdField_a_of_type_AndroidContentContext, localDiscussionInfo);
       String str3 = ChnToSpell.a(str2, 1);
       if ((str2.matches((String)localObject2)) || (str2.contains(str1))) {
-        l = 65536L;
+        l1 = 65536L;
       }
-      if ((str3 == null) || (str3.length() == 0)) {
-        l |= 0xFFFF;
-      }
-      for (;;)
+      if ((str3 != null) && (str3.length() != 0))
       {
-        ((HashMap)localObject1).put(localDiscussionInfo.uin, Long.valueOf(l));
-        break;
-        if (StringUtil.b(str3.charAt(0))) {
-          l |= str3.charAt(0);
-        } else if (Character.isDigit(str3.charAt(0))) {
-          l |= 0xFFFE;
-        } else {
-          l |= 0xFFFF;
+        if (StringUtil.b(str3.charAt(0))) {}
+        for (long l2 = str3.charAt(0);; l2 = 65534L)
+        {
+          l1 |= l2;
+          break label209;
+          if (!Character.isDigit(str3.charAt(0))) {
+            break;
+          }
         }
       }
+      l1 |= 0xFFFF;
+      label209:
+      ((HashMap)localObject1).put(localDiscussionInfo.uin, Long.valueOf(l1));
     }
     Collections.sort(this.jdField_a_of_type_JavaUtilList, new DiscussionListAdapter2.1(this, (HashMap)localObject1));
     this.jdField_b_of_type_JavaUtilList.clear();
@@ -176,11 +180,6 @@ public class DiscussionListAdapter2
     this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.destory();
   }
   
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
   public int getCount()
   {
     return this.jdField_a_of_type_JavaUtilArrayList.size();
@@ -211,77 +210,72 @@ public class DiscussionListAdapter2
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     DiscussionListAdapter2.ViewTag localViewTag;
-    Object localObject;
-    if (getItemViewType(paramInt) == 1) {
+    if (getItemViewType(paramInt) == 1)
+    {
       if (paramView == null)
       {
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559174, paramViewGroup, false);
+        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559068, paramViewGroup, false);
         localViewTag = new DiscussionListAdapter2.ViewTag(null);
-        localViewTag.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368603));
-        localViewTag.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379092));
-        localViewTag.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379094));
-        localViewTag.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365886));
+        localViewTag.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368343));
+        localViewTag.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378461));
+        localViewTag.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378463));
+        localViewTag.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365724));
         localViewTag.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(null);
         localViewTag.jdField_a_of_type_AndroidWidgetImageView.setClickable(false);
         localViewTag.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
         paramView.setTag(localViewTag);
         paramView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
-        ((Button)paramView.findViewById(2131365879)).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        DiscussionInfo localDiscussionInfo = (DiscussionInfo)getItem(paramInt);
-        String str = localDiscussionInfo.uin;
-        localObject = ContactUtils.a(this.jdField_a_of_type_AndroidContentContext, localDiscussionInfo);
-        localViewTag.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-        localObject = (DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
-        localViewTag.jdField_b_of_type_AndroidWidgetTextView.setText(String.format("(%d)", new Object[] { Integer.valueOf(((DiscussionManager)localObject).a(str)) }));
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCache(101, str);
-        if (localObject != null) {
-          break label349;
-        }
-        localViewTag.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(ImageUtil.b());
-        label269:
-        if (this.jdField_a_of_type_Int == 0) {
-          this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(str, 101, false);
-        }
-        localViewTag.jdField_a_of_type_JavaLangString = str;
-        localViewTag.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = localDiscussionInfo;
-        if (!this.jdField_a_of_type_Boolean) {
-          break label376;
-        }
+        ((Button)paramView.findViewById(2131365717)).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      }
+      else
+      {
+        localViewTag = (DiscussionListAdapter2.ViewTag)paramView.getTag();
+      }
+      DiscussionInfo localDiscussionInfo = (DiscussionInfo)getItem(paramInt);
+      String str = localDiscussionInfo.uin;
+      Object localObject = ContactUtils.a(this.jdField_a_of_type_AndroidContentContext, localDiscussionInfo);
+      localViewTag.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+      localObject = (DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+      localViewTag.jdField_b_of_type_AndroidWidgetTextView.setText(String.format("(%d)", new Object[] { Integer.valueOf(((DiscussionManager)localObject).a(str)) }));
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCache(101, str);
+      if (localObject == null) {
+        localViewTag.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(ImageUtil.d());
+      } else {
+        localViewTag.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_ComTencentWidgetListView.getResources(), (Bitmap)localObject));
+      }
+      if (this.jdField_a_of_type_Int == 0) {
+        this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(str, 101, false);
+      }
+      localViewTag.jdField_a_of_type_JavaLangString = str;
+      localViewTag.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = localDiscussionInfo;
+      if (this.jdField_a_of_type_Boolean) {
         localViewTag.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+      } else {
+        localViewTag.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
       }
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      localViewTag = (DiscussionListAdapter2.ViewTag)paramView.getTag();
-      break;
-      label349:
-      localViewTag.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_ComTencentWidgetListView.getResources(), (Bitmap)localObject));
-      break label269;
-      label376:
-      localViewTag.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      continue;
       if (paramView == null)
       {
         localViewTag = new DiscussionListAdapter2.ViewTag(null);
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559173, paramViewGroup, false);
-        localViewTag.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365902));
+        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559067, paramViewGroup, false);
+        localViewTag.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365740));
         paramView.setTag(localViewTag);
       }
-      for (;;)
+      else
       {
-        localViewTag.jdField_a_of_type_JavaLangString = "";
-        if ((paramInt != 0) || (this.jdField_b_of_type_JavaUtilList.size() <= 0)) {
-          break label486;
-        }
-        localViewTag.jdField_a_of_type_AndroidWidgetTextView.setText(2131694379);
-        break;
         localViewTag = (DiscussionListAdapter2.ViewTag)paramView.getTag();
       }
-      label486:
-      localViewTag.jdField_a_of_type_AndroidWidgetTextView.setText(2131694372);
+      localViewTag.jdField_a_of_type_JavaLangString = "";
+      if ((paramInt == 0) && (this.jdField_b_of_type_JavaUtilList.size() > 0)) {
+        localViewTag.jdField_a_of_type_AndroidWidgetTextView.setText(2131694344);
+      } else {
+        localViewTag.jdField_a_of_type_AndroidWidgetTextView.setText(2131694337);
+      }
     }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
   
   public int getViewTypeCount()
@@ -319,7 +313,7 @@ public class DiscussionListAdapter2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.DiscussionListAdapter2
  * JD-Core Version:    0.7.0.1
  */

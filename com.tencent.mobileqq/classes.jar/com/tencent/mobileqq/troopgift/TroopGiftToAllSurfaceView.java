@@ -58,82 +58,87 @@ public class TroopGiftToAllSurfaceView
   
   protected void a(Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, ImageButton.OnClickListener paramOnClickListener, TroopGiftToAllSurfaceView.Options paramOptions)
   {
-    Bitmap localBitmap;
-    Canvas localCanvas;
-    Paint localPaint;
-    float f1;
-    int j;
     if ((!paramOptions.jdField_a_of_type_Boolean) && (paramBitmap1 != null))
     {
-      localBitmap = paramBitmap1.copy(Bitmap.Config.ARGB_8888, true);
-      localCanvas = new Canvas(localBitmap);
-      localPaint = new Paint();
+      Bitmap localBitmap = paramBitmap1.copy(Bitmap.Config.ARGB_8888, true);
+      Canvas localCanvas = new Canvas(localBitmap);
+      Paint localPaint = new Paint();
       localPaint.setAntiAlias(true);
       localPaint.setColor(paramOptions.g);
       localPaint.setTextSize(34.0F);
       paramBitmap1 = new Matrix();
-      f1 = 140.0F / paramBitmap2.getWidth();
+      float f1 = 140.0F / paramBitmap2.getWidth();
       paramBitmap1.postScale(f1, f1);
-      paramBitmap1.postTranslate((localBitmap.getWidth() - f1 * paramBitmap2.getWidth()) / 2.0F, 154.0F);
+      paramBitmap1.postTranslate((localBitmap.getWidth() - paramBitmap2.getWidth() * f1) / 2.0F, 154.0F);
       localCanvas.drawBitmap(paramBitmap2, paramBitmap1, localPaint);
       if ((!TextUtils.isEmpty(paramOptions.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramOptions.jdField_a_of_type_JavaLangString)))
       {
         float f2 = localPaint.measureText(paramOptions.jdField_b_of_type_JavaLangString);
-        f1 = 0.0F;
-        j = 0;
-        paramBitmap1 = paramOptions.jdField_b_of_type_JavaLangString;
+        paramBitmap2 = paramOptions.jdField_b_of_type_JavaLangString;
         int i = 0;
+        f1 = 0.0F;
+        int j = 0;
         while (i < paramOptions.jdField_a_of_type_JavaLangString.length())
         {
-          float f3 = localPaint.measureText("" + paramOptions.jdField_a_of_type_JavaLangString.charAt(i));
-          if (f1 + f3 + f2 > 475.0F) {
+          paramBitmap1 = new StringBuilder();
+          paramBitmap1.append("");
+          paramBitmap1.append(paramOptions.jdField_a_of_type_JavaLangString.charAt(i));
+          f1 += localPaint.measureText(paramBitmap1.toString());
+          if (f1 + f2 > 475.0F) {
             break;
           }
-          f1 += f3;
           j += 1;
           i += 1;
         }
-        if (j <= 0) {
-          break label577;
+        paramBitmap1 = paramBitmap2;
+        if (j > 0) {
+          if (j == paramOptions.jdField_a_of_type_JavaLangString.length())
+          {
+            paramBitmap1 = new StringBuilder();
+            paramBitmap1.append(paramOptions.jdField_a_of_type_JavaLangString);
+            paramBitmap1.append(paramBitmap2);
+            paramBitmap1 = paramBitmap1.toString();
+          }
+          else
+          {
+            paramBitmap1 = new StringBuilder();
+            paramBitmap1.append(paramOptions.jdField_a_of_type_JavaLangString.substring(0, j));
+            paramBitmap1.append("...");
+            paramBitmap1.append(paramBitmap2);
+            paramBitmap1 = paramBitmap1.toString();
+          }
         }
-        if (j != paramOptions.jdField_a_of_type_JavaLangString.length()) {
-          break label524;
-        }
-        paramBitmap1 = paramOptions.jdField_a_of_type_JavaLangString + paramBitmap1;
+        f1 = localPaint.measureText(paramBitmap1);
+        localCanvas.drawText(paramBitmap1, localBitmap.getWidth() / 2 - f1 / 2.0F, 359.20001F, localPaint);
       }
-    }
-    label524:
-    label577:
-    for (;;)
-    {
-      f1 = localPaint.measureText(paramBitmap1);
-      localCanvas.drawText(paramBitmap1, localBitmap.getWidth() / 2 - f1 / 2.0F, 359.20001F, localPaint);
       this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite = new Sprite(this, localBitmap);
       this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.c = (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView$Options.jdField_a_of_type_Int / 2);
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.d = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.e = 0.0F;
-      a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite);
-      if (paramBitmap3 != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton = new ImageButton(this, paramBitmap3, false);
-        this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView$Options.jdField_a_of_type_Int / 2, this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView$Options.jdField_b_of_type_Int * this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView$Options.f / 100);
-      }
-      try
-      {
-        this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton = new ImageButton(this, BitmapFactory.decodeResource(getResources(), 2130847544), true);
-        this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.a(paramOptions.jdField_a_of_type_Int - DisplayUtils.a(getContext(), 40.0F), DisplayUtils.a(getContext(), 120.0F));
-        this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.a(paramOnClickListener);
-        this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.e = 0.75F;
-        a(this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton);
-        return;
-        paramBitmap1 = paramOptions.jdField_a_of_type_JavaLangString.substring(0, j) + "..." + paramBitmap1;
-      }
-      catch (OutOfMemoryError paramBitmap1)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d("TroopGiftToAllSurfaceView", 2, "decode closeButton failed");
-        return;
-      }
+      paramBitmap1 = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite;
+      paramBitmap1.d = this.jdField_a_of_type_Int;
+      paramBitmap1.e = 0.0F;
+      a(paramBitmap1);
+    }
+    if (paramBitmap3 != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton = new ImageButton(this, paramBitmap3, false);
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView$Options.jdField_a_of_type_Int / 2, this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView$Options.jdField_b_of_type_Int * this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView$Options.f / 100);
+    }
+    try
+    {
+      this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton = new ImageButton(this, BitmapFactory.decodeResource(getResources(), 2130847412), true);
+      this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.a(paramOptions.jdField_a_of_type_Int - DisplayUtils.a(getContext(), 40.0F), DisplayUtils.a(getContext(), 120.0F));
+      this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.a(paramOnClickListener);
+      this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.e = 0.75F;
+      a(this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton);
+      return;
+    }
+    catch (OutOfMemoryError paramBitmap1)
+    {
+      label572:
+      break label572;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopGiftToAllSurfaceView", 2, "decode closeButton failed");
     }
   }
   
@@ -168,24 +173,29 @@ public class TroopGiftToAllSurfaceView
   
   public void a(Action.OnActionEndListener paramOnActionEndListener)
   {
-    if (this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite != null) {
-      this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(new Action[] { new OpacityAction(500, 255, 0, 1) });
+    Object localObject = this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite;
+    if (localObject != null) {
+      ((Sprite)localObject).a(new Action[] { new OpacityAction(500, 255, 0, 1) });
     }
-    OpacityAction localOpacityAction = new OpacityAction(500, 255, 0, 1);
-    localOpacityAction.a(paramOnActionEndListener);
-    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(new Action[] { localOpacityAction });
+    localObject = new OpacityAction(500, 255, 0, 1);
+    ((Action)localObject).a(paramOnActionEndListener);
+    paramOnActionEndListener = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite;
+    if (paramOnActionEndListener != null) {
+      paramOnActionEndListener.a(new Action[] { localObject });
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton != null)
+    paramOnActionEndListener = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton;
+    if (paramOnActionEndListener != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.a(null);
+      paramOnActionEndListener.a(null);
       this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.a(new Action[] { new OpacityAction(500, 255, 0, 1) });
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlLabel != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlLabel.a(new Action[] { new OpacityAction(500, 255, 0, 1) });
+    paramOnActionEndListener = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlLabel;
+    if (paramOnActionEndListener != null) {
+      paramOnActionEndListener.a(new Action[] { new OpacityAction(500, 255, 0, 1) });
     }
-    if (this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton != null) {
-      this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.a(new Action[] { new OpacityAction(500, 255, 0, 1) });
+    paramOnActionEndListener = this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton;
+    if (paramOnActionEndListener != null) {
+      paramOnActionEndListener.a(new Action[] { new OpacityAction(500, 255, 0, 1) });
     }
   }
   
@@ -193,36 +203,50 @@ public class TroopGiftToAllSurfaceView
   {
     if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite != null)
     {
-      SequenceAction localSequenceAction = new SequenceAction(new Action[] { new ScaleAction(500, 0.0F, this.jdField_a_of_type_Float * 1.1F), new ScaleAction(200, this.jdField_a_of_type_Float * 1.1F, this.jdField_a_of_type_Float * 0.95F), new ScaleAction(200, this.jdField_a_of_type_Float * 0.95F, this.jdField_a_of_type_Float * 1.05F), new ScaleAction(200, this.jdField_a_of_type_Float * 1.05F, this.jdField_a_of_type_Float * 1.0F) });
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(new Action[] { localSequenceAction });
+      localObject = new ScaleAction(500, 0.0F, this.jdField_a_of_type_Float * 1.1F);
+      float f = this.jdField_a_of_type_Float;
+      ScaleAction localScaleAction1 = new ScaleAction(200, 1.1F * f, f * 0.95F);
+      f = this.jdField_a_of_type_Float;
+      ScaleAction localScaleAction2 = new ScaleAction(200, 0.95F * f, f * 1.05F);
+      f = this.jdField_a_of_type_Float;
+      localObject = new SequenceAction(new Action[] { localObject, localScaleAction1, localScaleAction2, new ScaleAction(200, 1.05F * f, f * 1.0F) });
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(new Action[] { localObject });
     }
-    if ((this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite != null) && ((this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite instanceof FrameSprite)))
+    Object localObject = this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite;
+    if ((localObject != null) && ((localObject instanceof FrameSprite)))
     {
-      ((FrameSprite)this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite).a = new TroopGiftToAllSurfaceView.1(this, paramOnFrameEndListener);
+      ((FrameSprite)localObject).a = new TroopGiftToAllSurfaceView.1(this, paramOnFrameEndListener);
       ((FrameSprite)this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite).a(getContext(), this);
     }
-    for (;;)
+    else
     {
-      paramOnFrameEndListener = new DelayAction(500);
-      paramOnFrameEndListener.a(new TroopGiftToAllSurfaceView.2(this));
-      if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite != null) {
-        this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(new Action[] { paramOnFrameEndListener });
+      localObject = this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite;
+      if ((localObject != null) && ((localObject instanceof VideoSprite))) {
+        ((VideoSprite)localObject).a(paramOnFrameEndListener);
       }
-      return;
-      if ((this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite != null) && ((this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite instanceof VideoSprite))) {
-        ((VideoSprite)this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite).a(paramOnFrameEndListener);
-      }
+    }
+    paramOnFrameEndListener = new DelayAction(500);
+    paramOnFrameEndListener.a(new TroopGiftToAllSurfaceView.2(this));
+    localObject = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite;
+    if (localObject != null) {
+      ((Sprite)localObject).a(new Action[] { paramOnFrameEndListener });
     }
   }
   
   public void a(ImageButton.OnClickListener paramOnClickListener)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.a(paramOnClickListener);
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.e = 0.0F;
-      a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton);
-      paramOnClickListener = new SequenceAction(new Action[] { new ScaleAction(500, 0.0F, this.jdField_a_of_type_Float * 1.1F), new ScaleAction(200, this.jdField_a_of_type_Float * 1.1F, this.jdField_a_of_type_Float * 0.88F), new ScaleAction(200, this.jdField_a_of_type_Float * 0.88F, this.jdField_a_of_type_Float) });
+      ((ImageButton)localObject).a(paramOnClickListener);
+      paramOnClickListener = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton;
+      paramOnClickListener.e = 0.0F;
+      a(paramOnClickListener);
+      paramOnClickListener = new ScaleAction(500, 0.0F, this.jdField_a_of_type_Float * 1.1F);
+      float f = this.jdField_a_of_type_Float;
+      localObject = new ScaleAction(200, 1.1F * f, f * 0.88F);
+      f = this.jdField_a_of_type_Float;
+      paramOnClickListener = new SequenceAction(new Action[] { paramOnClickListener, localObject, new ScaleAction(200, 0.88F * f, f) });
       paramOnClickListener.a(new TroopGiftToAllSurfaceView.3(this));
       this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.a(new Action[] { paramOnClickListener });
     }
@@ -238,7 +262,7 @@ public class TroopGiftToAllSurfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView
  * JD-Core Version:    0.7.0.1
  */

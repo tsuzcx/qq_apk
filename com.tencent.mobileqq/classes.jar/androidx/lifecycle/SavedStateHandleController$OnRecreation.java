@@ -12,23 +12,29 @@ final class SavedStateHandleController$OnRecreation
 {
   public void onRecreated(@NonNull SavedStateRegistryOwner paramSavedStateRegistryOwner)
   {
-    if (!(paramSavedStateRegistryOwner instanceof ViewModelStoreOwner)) {
-      throw new IllegalStateException("Internal error: OnRecreation should be registered only on componentsthat implement ViewModelStoreOwner");
+    if ((paramSavedStateRegistryOwner instanceof ViewModelStoreOwner))
+    {
+      ViewModelStore localViewModelStore = ((ViewModelStoreOwner)paramSavedStateRegistryOwner).getViewModelStore();
+      SavedStateRegistry localSavedStateRegistry = paramSavedStateRegistryOwner.getSavedStateRegistry();
+      Iterator localIterator = localViewModelStore.keys().iterator();
+      while (localIterator.hasNext()) {
+        SavedStateHandleController.attachHandleIfNeeded(localViewModelStore.get((String)localIterator.next()), localSavedStateRegistry, paramSavedStateRegistryOwner.getLifecycle());
+      }
+      if (!localViewModelStore.keys().isEmpty()) {
+        localSavedStateRegistry.runOnNextRecreation(OnRecreation.class);
+      }
+      return;
     }
-    ViewModelStore localViewModelStore = ((ViewModelStoreOwner)paramSavedStateRegistryOwner).getViewModelStore();
-    SavedStateRegistry localSavedStateRegistry = paramSavedStateRegistryOwner.getSavedStateRegistry();
-    Iterator localIterator = localViewModelStore.keys().iterator();
-    while (localIterator.hasNext()) {
-      SavedStateHandleController.attachHandleIfNeeded(localViewModelStore.get((String)localIterator.next()), localSavedStateRegistry, paramSavedStateRegistryOwner.getLifecycle());
-    }
-    if (!localViewModelStore.keys().isEmpty()) {
-      localSavedStateRegistry.runOnNextRecreation(OnRecreation.class);
+    paramSavedStateRegistryOwner = new IllegalStateException("Internal error: OnRecreation should be registered only on componentsthat implement ViewModelStoreOwner");
+    for (;;)
+    {
+      throw paramSavedStateRegistryOwner;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.lifecycle.SavedStateHandleController.OnRecreation
  * JD-Core Version:    0.7.0.1
  */

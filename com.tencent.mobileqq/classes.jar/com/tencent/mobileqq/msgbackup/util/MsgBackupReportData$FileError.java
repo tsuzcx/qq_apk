@@ -11,12 +11,20 @@ public class MsgBackupReportData$FileError
   @NonNull
   public String toString()
   {
-    return "[errorCode = " + this.a + ", fileType = " + this.b + ", fileTrivial = " + this.c + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[errorCode = ");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", fileType = ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", fileTrivial = ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.util.MsgBackupReportData.FileError
  * JD-Core Version:    0.7.0.1
  */

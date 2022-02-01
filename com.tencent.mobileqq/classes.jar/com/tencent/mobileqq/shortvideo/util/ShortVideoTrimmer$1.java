@@ -9,17 +9,17 @@ final class ShortVideoTrimmer$1
   
   public VideoConverterConfig getEncodeConfig(int paramInt1, int paramInt2)
   {
-    if (this.val$config != null) {}
-    for (VideoConverterConfig localVideoConverterConfig = this.val$config;; localVideoConverterConfig = ShortVideoTrimmer.getCompressConfig(this.val$inputVideo))
-    {
-      localVideoConverterConfig.output = this.val$outputVideo;
-      return localVideoConverterConfig;
+    VideoConverterConfig localVideoConverterConfig = this.val$config;
+    if (localVideoConverterConfig == null) {
+      localVideoConverterConfig = ShortVideoTrimmer.getCompressConfig(this.val$inputVideo);
     }
+    localVideoConverterConfig.output = this.val$outputVideo;
+    return localVideoConverterConfig;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.ShortVideoTrimmer.1
  * JD-Core Version:    0.7.0.1
  */

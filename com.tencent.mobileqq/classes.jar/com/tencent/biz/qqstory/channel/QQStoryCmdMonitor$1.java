@@ -7,342 +7,386 @@ class QQStoryCmdMonitor$1
   public void run()
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 5
-    //   3: new 17	java/util/ArrayList
-    //   6: dup
-    //   7: aload_0
-    //   8: getfield 19	com/tencent/biz/qqstory/channel/QQStoryCmdMonitor$1:jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler	Lcom/tencent/biz/qqstory/channel/QQStoryCmdHandler;
-    //   11: getfield 24	com/tencent/biz/qqstory/channel/QQStoryCmdHandler:a	Ljava/util/List;
-    //   14: invokespecial 28	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
-    //   17: astore 7
-    //   19: new 30	java/io/File
-    //   22: dup
-    //   23: getstatic 36	com/tencent/biz/qqstory/app/QQStoryConstant:d	Ljava/lang/String;
-    //   26: invokespecial 39	java/io/File:<init>	(Ljava/lang/String;)V
-    //   29: astore 6
-    //   31: aload 6
-    //   33: invokevirtual 43	java/io/File:exists	()Z
-    //   36: ifne +9 -> 45
-    //   39: aload 6
-    //   41: invokevirtual 46	java/io/File:mkdirs	()Z
-    //   44: pop
-    //   45: new 30	java/io/File
-    //   48: dup
-    //   49: aload 6
-    //   51: ldc 48
-    //   53: invokespecial 51	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   56: astore 8
-    //   58: aload 8
-    //   60: invokevirtual 43	java/io/File:exists	()Z
-    //   63: ifeq +9 -> 72
-    //   66: aload 8
-    //   68: invokevirtual 54	java/io/File:delete	()Z
-    //   71: pop
-    //   72: new 56	java/io/FileWriter
-    //   75: dup
-    //   76: aload 8
-    //   78: invokespecial 59	java/io/FileWriter:<init>	(Ljava/io/File;)V
-    //   81: astore 6
-    //   83: new 61	java/lang/StringBuilder
-    //   86: dup
-    //   87: sipush 1024
-    //   90: invokespecial 64	java/lang/StringBuilder:<init>	(I)V
-    //   93: astore 5
-    //   95: new 17	java/util/ArrayList
-    //   98: dup
-    //   99: invokespecial 66	java/util/ArrayList:<init>	()V
-    //   102: astore 9
-    //   104: iconst_0
-    //   105: istore_3
-    //   106: iload_3
-    //   107: aload 7
-    //   109: invokeinterface 72 1 0
-    //   114: if_icmpge +169 -> 283
-    //   117: aload 7
-    //   119: iload_3
-    //   120: invokeinterface 76 2 0
-    //   125: checkcast 78	com/tencent/biz/qqstory/channel/QQStoryCmdHandler$CmdDumpInfo
-    //   128: astore 10
-    //   130: aload 5
-    //   132: iload_3
-    //   133: iconst_1
-    //   134: iadd
-    //   135: invokestatic 84	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   138: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   141: pop
-    //   142: aload 5
-    //   144: ldc 90
-    //   146: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   149: pop
-    //   150: aload 5
-    //   152: aload 10
-    //   154: invokevirtual 94	com/tencent/biz/qqstory/channel/QQStoryCmdHandler$CmdDumpInfo:toString	()Ljava/lang/String;
-    //   157: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   160: ldc 96
-    //   162: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   165: ldc 96
-    //   167: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   170: pop
-    //   171: aload 6
-    //   173: aload 5
-    //   175: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   178: invokevirtual 100	java/io/FileWriter:write	(Ljava/lang/String;)V
-    //   181: aload 5
-    //   183: iconst_0
-    //   184: invokevirtual 103	java/lang/StringBuilder:setLength	(I)V
-    //   187: aload 9
-    //   189: aload 10
-    //   191: invokevirtual 107	java/util/ArrayList:indexOf	(Ljava/lang/Object;)I
-    //   194: istore 4
-    //   196: iload 4
-    //   198: ifge +20 -> 218
-    //   201: aload 10
-    //   203: iconst_1
-    //   204: putfield 110	com/tencent/biz/qqstory/channel/QQStoryCmdHandler$CmdDumpInfo:jdField_a_of_type_Int	I
-    //   207: aload 9
-    //   209: aload 10
-    //   211: invokevirtual 114	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   214: pop
-    //   215: goto +397 -> 612
-    //   218: aload 9
-    //   220: iload 4
-    //   222: invokevirtual 115	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   225: checkcast 78	com/tencent/biz/qqstory/channel/QQStoryCmdHandler$CmdDumpInfo
-    //   228: astore 10
-    //   230: aload 10
-    //   232: aload 10
-    //   234: getfield 110	com/tencent/biz/qqstory/channel/QQStoryCmdHandler$CmdDumpInfo:jdField_a_of_type_Int	I
-    //   237: iconst_1
-    //   238: iadd
-    //   239: putfield 110	com/tencent/biz/qqstory/channel/QQStoryCmdHandler$CmdDumpInfo:jdField_a_of_type_Int	I
-    //   242: goto +370 -> 612
-    //   245: astore 5
-    //   247: aload 6
-    //   249: astore 5
-    //   251: getstatic 121	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   254: ldc 123
-    //   256: iconst_0
-    //   257: invokestatic 129	android/widget/Toast:makeText	(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;
-    //   260: invokevirtual 132	android/widget/Toast:show	()V
-    //   263: aload 5
-    //   265: ifnull +8 -> 273
-    //   268: aload 5
-    //   270: invokevirtual 135	java/io/FileWriter:close	()V
-    //   273: aload_0
-    //   274: getfield 137	com/tencent/biz/qqstory/channel/QQStoryCmdMonitor$1:this$0	Lcom/tencent/biz/qqstory/channel/QQStoryCmdMonitor;
-    //   277: iconst_0
-    //   278: invokestatic 142	com/tencent/biz/qqstory/channel/QQStoryCmdMonitor:a	(Lcom/tencent/biz/qqstory/channel/QQStoryCmdMonitor;Z)Z
-    //   281: pop
-    //   282: return
-    //   283: aload 9
-    //   285: invokevirtual 143	java/util/ArrayList:size	()I
-    //   288: ifle +245 -> 533
-    //   291: aload 9
-    //   293: new 145	com/tencent/biz/qqstory/channel/QQStoryCmdMonitor$CmdDumpInfoComp
-    //   296: dup
-    //   297: aload_0
-    //   298: getfield 137	com/tencent/biz/qqstory/channel/QQStoryCmdMonitor$1:this$0	Lcom/tencent/biz/qqstory/channel/QQStoryCmdMonitor;
-    //   301: aconst_null
-    //   302: invokespecial 148	com/tencent/biz/qqstory/channel/QQStoryCmdMonitor$CmdDumpInfoComp:<init>	(Lcom/tencent/biz/qqstory/channel/QQStoryCmdMonitor;Lcom/tencent/biz/qqstory/channel/QQStoryCmdMonitor$1;)V
-    //   305: invokestatic 154	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
-    //   308: aload 5
-    //   310: ldc 96
-    //   312: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   315: ldc 96
-    //   317: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   320: ldc 96
-    //   322: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   325: pop
-    //   326: aload 5
-    //   328: ldc 156
-    //   330: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   333: pop
-    //   334: aload 5
-    //   336: ldc 96
-    //   338: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   341: ldc 96
-    //   343: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   346: pop
-    //   347: aload 6
-    //   349: aload 5
-    //   351: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   354: invokevirtual 100	java/io/FileWriter:write	(Ljava/lang/String;)V
-    //   357: aload 5
-    //   359: iconst_0
-    //   360: invokevirtual 103	java/lang/StringBuilder:setLength	(I)V
-    //   363: aload 9
-    //   365: invokevirtual 160	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   368: astore 9
-    //   370: aload 9
-    //   372: invokeinterface 165 1 0
-    //   377: ifeq +156 -> 533
-    //   380: aload 9
-    //   382: invokeinterface 169 1 0
-    //   387: checkcast 78	com/tencent/biz/qqstory/channel/QQStoryCmdHandler$CmdDumpInfo
-    //   390: astore 10
-    //   392: aload 5
-    //   394: aload 10
-    //   396: getfield 171	com/tencent/biz/qqstory/channel/QQStoryCmdHandler$CmdDumpInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   399: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   402: ldc 96
-    //   404: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   407: pop
-    //   408: aload 5
-    //   410: ldc 173
-    //   412: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   415: pop
-    //   416: aload 5
-    //   418: aload 10
-    //   420: getfield 110	com/tencent/biz/qqstory/channel/QQStoryCmdHandler$CmdDumpInfo:jdField_a_of_type_Int	I
-    //   423: invokevirtual 176	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   426: pop
-    //   427: aload 5
-    //   429: ldc 178
-    //   431: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   434: pop
-    //   435: aload 10
-    //   437: getfield 110	com/tencent/biz/qqstory/channel/QQStoryCmdHandler$CmdDumpInfo:jdField_a_of_type_Int	I
-    //   440: i2d
-    //   441: aload 7
-    //   443: invokeinterface 72 1 0
-    //   448: i2d
-    //   449: ddiv
-    //   450: dstore_1
-    //   451: invokestatic 184	java/text/NumberFormat:getPercentInstance	()Ljava/text/NumberFormat;
-    //   454: astore 10
-    //   456: aload 10
-    //   458: iconst_2
-    //   459: invokevirtual 187	java/text/NumberFormat:setMinimumFractionDigits	(I)V
-    //   462: aload 5
-    //   464: aload 10
-    //   466: dload_1
-    //   467: invokevirtual 191	java/text/NumberFormat:format	(D)Ljava/lang/String;
-    //   470: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   473: pop
-    //   474: aload 5
-    //   476: ldc 96
-    //   478: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   481: pop
-    //   482: aload 5
-    //   484: ldc 96
-    //   486: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   489: pop
-    //   490: aload 6
-    //   492: aload 5
-    //   494: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   497: invokevirtual 100	java/io/FileWriter:write	(Ljava/lang/String;)V
-    //   500: aload 5
-    //   502: iconst_0
-    //   503: invokevirtual 103	java/lang/StringBuilder:setLength	(I)V
-    //   506: goto -136 -> 370
-    //   509: astore 5
-    //   511: aload 6
-    //   513: ifnull +8 -> 521
-    //   516: aload 6
-    //   518: invokevirtual 135	java/io/FileWriter:close	()V
-    //   521: aload_0
-    //   522: getfield 137	com/tencent/biz/qqstory/channel/QQStoryCmdMonitor$1:this$0	Lcom/tencent/biz/qqstory/channel/QQStoryCmdMonitor;
-    //   525: iconst_0
-    //   526: invokestatic 142	com/tencent/biz/qqstory/channel/QQStoryCmdMonitor:a	(Lcom/tencent/biz/qqstory/channel/QQStoryCmdMonitor;Z)Z
-    //   529: pop
-    //   530: aload 5
-    //   532: athrow
-    //   533: aload_0
-    //   534: getfield 137	com/tencent/biz/qqstory/channel/QQStoryCmdMonitor$1:this$0	Lcom/tencent/biz/qqstory/channel/QQStoryCmdMonitor;
-    //   537: aload_0
-    //   538: getfield 193	com/tencent/biz/qqstory/channel/QQStoryCmdMonitor$1:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   541: aload 8
-    //   543: invokevirtual 196	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   546: ldc 198
-    //   548: invokestatic 201	com/tencent/biz/qqstory/channel/QQStoryCmdMonitor:a	(Lcom/tencent/biz/qqstory/channel/QQStoryCmdMonitor;Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
-    //   551: aload 6
-    //   553: ifnull +8 -> 561
-    //   556: aload 6
-    //   558: invokevirtual 135	java/io/FileWriter:close	()V
-    //   561: aload_0
-    //   562: getfield 137	com/tencent/biz/qqstory/channel/QQStoryCmdMonitor$1:this$0	Lcom/tencent/biz/qqstory/channel/QQStoryCmdMonitor;
-    //   565: iconst_0
-    //   566: invokestatic 142	com/tencent/biz/qqstory/channel/QQStoryCmdMonitor:a	(Lcom/tencent/biz/qqstory/channel/QQStoryCmdMonitor;Z)Z
-    //   569: pop
-    //   570: return
-    //   571: astore 5
-    //   573: goto -12 -> 561
-    //   576: astore 5
-    //   578: goto -305 -> 273
-    //   581: astore 6
-    //   583: goto -62 -> 521
-    //   586: astore 5
-    //   588: aconst_null
-    //   589: astore 6
-    //   591: goto -80 -> 511
-    //   594: astore 7
-    //   596: aload 5
-    //   598: astore 6
-    //   600: aload 7
-    //   602: astore 5
-    //   604: goto -93 -> 511
-    //   607: astore 6
-    //   609: goto -358 -> 251
-    //   612: iload_3
-    //   613: iconst_1
-    //   614: iadd
-    //   615: istore_3
-    //   616: goto -510 -> 106
+    //   0: new 17	java/util/ArrayList
+    //   3: dup
+    //   4: aload_0
+    //   5: getfield 19	com/tencent/biz/qqstory/channel/QQStoryCmdMonitor$1:jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler	Lcom/tencent/biz/qqstory/channel/QQStoryCmdHandler;
+    //   8: getfield 24	com/tencent/biz/qqstory/channel/QQStoryCmdHandler:a	Ljava/util/List;
+    //   11: invokespecial 28	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
+    //   14: astore 10
+    //   16: aconst_null
+    //   17: astore 9
+    //   19: aconst_null
+    //   20: astore 8
+    //   22: aload 8
+    //   24: astore 7
+    //   26: new 30	java/io/File
+    //   29: dup
+    //   30: getstatic 36	com/tencent/biz/qqstory/app/QQStoryConstant:e	Ljava/lang/String;
+    //   33: invokespecial 39	java/io/File:<init>	(Ljava/lang/String;)V
+    //   36: astore 11
+    //   38: aload 8
+    //   40: astore 7
+    //   42: aload 11
+    //   44: invokevirtual 43	java/io/File:exists	()Z
+    //   47: ifne +13 -> 60
+    //   50: aload 8
+    //   52: astore 7
+    //   54: aload 11
+    //   56: invokevirtual 46	java/io/File:mkdirs	()Z
+    //   59: pop
+    //   60: aload 8
+    //   62: astore 7
+    //   64: new 30	java/io/File
+    //   67: dup
+    //   68: aload 11
+    //   70: ldc 48
+    //   72: invokespecial 51	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   75: astore 11
+    //   77: aload 8
+    //   79: astore 7
+    //   81: aload 11
+    //   83: invokevirtual 43	java/io/File:exists	()Z
+    //   86: ifeq +13 -> 99
+    //   89: aload 8
+    //   91: astore 7
+    //   93: aload 11
+    //   95: invokevirtual 54	java/io/File:delete	()Z
+    //   98: pop
+    //   99: aload 8
+    //   101: astore 7
+    //   103: new 56	java/io/FileWriter
+    //   106: dup
+    //   107: aload 11
+    //   109: invokespecial 59	java/io/FileWriter:<init>	(Ljava/io/File;)V
+    //   112: astore 8
+    //   114: new 61	java/lang/StringBuilder
+    //   117: dup
+    //   118: sipush 1024
+    //   121: invokespecial 64	java/lang/StringBuilder:<init>	(I)V
+    //   124: astore 7
+    //   126: new 17	java/util/ArrayList
+    //   129: dup
+    //   130: invokespecial 66	java/util/ArrayList:<init>	()V
+    //   133: astore 9
+    //   135: iconst_0
+    //   136: istore 5
+    //   138: aload 10
+    //   140: invokeinterface 72 1 0
+    //   145: istore 6
+    //   147: iload 5
+    //   149: iload 6
+    //   151: if_icmpge +143 -> 294
+    //   154: aload 10
+    //   156: iload 5
+    //   158: invokeinterface 76 2 0
+    //   163: checkcast 78	com/tencent/biz/qqstory/channel/QQStoryCmdHandler$CmdDumpInfo
+    //   166: astore 12
+    //   168: iload 5
+    //   170: iconst_1
+    //   171: iadd
+    //   172: istore 5
+    //   174: aload 7
+    //   176: iload 5
+    //   178: invokestatic 84	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   181: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   184: pop
+    //   185: aload 7
+    //   187: ldc 90
+    //   189: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   192: pop
+    //   193: aload 7
+    //   195: aload 12
+    //   197: invokevirtual 94	com/tencent/biz/qqstory/channel/QQStoryCmdHandler$CmdDumpInfo:toString	()Ljava/lang/String;
+    //   200: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   203: pop
+    //   204: aload 7
+    //   206: ldc 96
+    //   208: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   211: pop
+    //   212: aload 7
+    //   214: ldc 96
+    //   216: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   219: pop
+    //   220: aload 8
+    //   222: aload 7
+    //   224: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   227: invokevirtual 100	java/io/FileWriter:write	(Ljava/lang/String;)V
+    //   230: aload 7
+    //   232: iconst_0
+    //   233: invokevirtual 103	java/lang/StringBuilder:setLength	(I)V
+    //   236: aload 9
+    //   238: aload 12
+    //   240: invokevirtual 107	java/util/ArrayList:indexOf	(Ljava/lang/Object;)I
+    //   243: istore 6
+    //   245: iload 6
+    //   247: ifge +20 -> 267
+    //   250: aload 12
+    //   252: iconst_1
+    //   253: putfield 110	com/tencent/biz/qqstory/channel/QQStoryCmdHandler$CmdDumpInfo:jdField_a_of_type_Int	I
+    //   256: aload 9
+    //   258: aload 12
+    //   260: invokevirtual 114	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   263: pop
+    //   264: goto -126 -> 138
+    //   267: aload 9
+    //   269: iload 6
+    //   271: invokevirtual 115	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   274: checkcast 78	com/tencent/biz/qqstory/channel/QQStoryCmdHandler$CmdDumpInfo
+    //   277: astore 12
+    //   279: aload 12
+    //   281: aload 12
+    //   283: getfield 110	com/tencent/biz/qqstory/channel/QQStoryCmdHandler$CmdDumpInfo:jdField_a_of_type_Int	I
+    //   286: iconst_1
+    //   287: iadd
+    //   288: putfield 110	com/tencent/biz/qqstory/channel/QQStoryCmdHandler$CmdDumpInfo:jdField_a_of_type_Int	I
+    //   291: goto -153 -> 138
+    //   294: aload 9
+    //   296: invokevirtual 116	java/util/ArrayList:size	()I
+    //   299: ifle +251 -> 550
+    //   302: aload 9
+    //   304: new 118	com/tencent/biz/qqstory/channel/QQStoryCmdMonitor$CmdDumpInfoComp
+    //   307: dup
+    //   308: aload_0
+    //   309: getfield 120	com/tencent/biz/qqstory/channel/QQStoryCmdMonitor$1:this$0	Lcom/tencent/biz/qqstory/channel/QQStoryCmdMonitor;
+    //   312: aconst_null
+    //   313: invokespecial 123	com/tencent/biz/qqstory/channel/QQStoryCmdMonitor$CmdDumpInfoComp:<init>	(Lcom/tencent/biz/qqstory/channel/QQStoryCmdMonitor;Lcom/tencent/biz/qqstory/channel/QQStoryCmdMonitor$1;)V
+    //   316: invokestatic 129	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
+    //   319: aload 7
+    //   321: ldc 96
+    //   323: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   326: pop
+    //   327: aload 7
+    //   329: ldc 96
+    //   331: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   334: pop
+    //   335: aload 7
+    //   337: ldc 96
+    //   339: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   342: pop
+    //   343: aload 7
+    //   345: ldc 131
+    //   347: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   350: pop
+    //   351: aload 7
+    //   353: ldc 96
+    //   355: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   358: pop
+    //   359: aload 7
+    //   361: ldc 96
+    //   363: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   366: pop
+    //   367: aload 8
+    //   369: aload 7
+    //   371: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   374: invokevirtual 100	java/io/FileWriter:write	(Ljava/lang/String;)V
+    //   377: aload 7
+    //   379: iconst_0
+    //   380: invokevirtual 103	java/lang/StringBuilder:setLength	(I)V
+    //   383: aload 9
+    //   385: invokevirtual 135	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   388: astore 9
+    //   390: aload 9
+    //   392: invokeinterface 140 1 0
+    //   397: ifeq +153 -> 550
+    //   400: aload 9
+    //   402: invokeinterface 144 1 0
+    //   407: checkcast 78	com/tencent/biz/qqstory/channel/QQStoryCmdHandler$CmdDumpInfo
+    //   410: astore 12
+    //   412: aload 7
+    //   414: aload 12
+    //   416: getfield 146	com/tencent/biz/qqstory/channel/QQStoryCmdHandler$CmdDumpInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   419: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   422: pop
+    //   423: aload 7
+    //   425: ldc 96
+    //   427: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   430: pop
+    //   431: aload 7
+    //   433: ldc 148
+    //   435: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   438: pop
+    //   439: aload 7
+    //   441: aload 12
+    //   443: getfield 110	com/tencent/biz/qqstory/channel/QQStoryCmdHandler$CmdDumpInfo:jdField_a_of_type_Int	I
+    //   446: invokevirtual 151	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   449: pop
+    //   450: aload 7
+    //   452: ldc 153
+    //   454: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   457: pop
+    //   458: aload 12
+    //   460: getfield 110	com/tencent/biz/qqstory/channel/QQStoryCmdHandler$CmdDumpInfo:jdField_a_of_type_Int	I
+    //   463: i2d
+    //   464: dstore_1
+    //   465: aload 10
+    //   467: invokeinterface 72 1 0
+    //   472: istore 5
+    //   474: iload 5
+    //   476: i2d
+    //   477: dstore_3
+    //   478: dload_1
+    //   479: invokestatic 159	java/lang/Double:isNaN	(D)Z
+    //   482: pop
+    //   483: dload_3
+    //   484: invokestatic 159	java/lang/Double:isNaN	(D)Z
+    //   487: pop
+    //   488: dload_1
+    //   489: dload_3
+    //   490: ddiv
+    //   491: dstore_1
+    //   492: invokestatic 165	java/text/NumberFormat:getPercentInstance	()Ljava/text/NumberFormat;
+    //   495: astore 12
+    //   497: aload 12
+    //   499: iconst_2
+    //   500: invokevirtual 168	java/text/NumberFormat:setMinimumFractionDigits	(I)V
+    //   503: aload 7
+    //   505: aload 12
+    //   507: dload_1
+    //   508: invokevirtual 172	java/text/NumberFormat:format	(D)Ljava/lang/String;
+    //   511: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   514: pop
+    //   515: aload 7
+    //   517: ldc 96
+    //   519: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   522: pop
+    //   523: aload 7
+    //   525: ldc 96
+    //   527: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   530: pop
+    //   531: aload 8
+    //   533: aload 7
+    //   535: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   538: invokevirtual 100	java/io/FileWriter:write	(Ljava/lang/String;)V
+    //   541: aload 7
+    //   543: iconst_0
+    //   544: invokevirtual 103	java/lang/StringBuilder:setLength	(I)V
+    //   547: goto -157 -> 390
+    //   550: aload_0
+    //   551: getfield 120	com/tencent/biz/qqstory/channel/QQStoryCmdMonitor$1:this$0	Lcom/tencent/biz/qqstory/channel/QQStoryCmdMonitor;
+    //   554: aload_0
+    //   555: getfield 174	com/tencent/biz/qqstory/channel/QQStoryCmdMonitor$1:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   558: aload 11
+    //   560: invokevirtual 177	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   563: ldc 179
+    //   565: invokestatic 184	com/tencent/biz/qqstory/channel/QQStoryCmdMonitor:a	(Lcom/tencent/biz/qqstory/channel/QQStoryCmdMonitor;Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
+    //   568: aload 8
+    //   570: invokevirtual 187	java/io/FileWriter:close	()V
+    //   573: goto +50 -> 623
+    //   576: astore 7
+    //   578: goto +55 -> 633
+    //   581: goto +16 -> 597
+    //   584: astore 9
+    //   586: aload 7
+    //   588: astore 8
+    //   590: aload 9
+    //   592: astore 7
+    //   594: goto +39 -> 633
+    //   597: aload 8
+    //   599: astore 7
+    //   601: getstatic 193	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   604: ldc 195
+    //   606: iconst_0
+    //   607: invokestatic 201	android/widget/Toast:makeText	(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;
+    //   610: invokevirtual 204	android/widget/Toast:show	()V
+    //   613: aload 8
+    //   615: ifnull +8 -> 623
+    //   618: aload 8
+    //   620: invokevirtual 187	java/io/FileWriter:close	()V
+    //   623: aload_0
+    //   624: getfield 120	com/tencent/biz/qqstory/channel/QQStoryCmdMonitor$1:this$0	Lcom/tencent/biz/qqstory/channel/QQStoryCmdMonitor;
+    //   627: iconst_0
+    //   628: invokestatic 207	com/tencent/biz/qqstory/channel/QQStoryCmdMonitor:a	(Lcom/tencent/biz/qqstory/channel/QQStoryCmdMonitor;Z)Z
+    //   631: pop
+    //   632: return
+    //   633: aload 8
+    //   635: ifnull +8 -> 643
+    //   638: aload 8
+    //   640: invokevirtual 187	java/io/FileWriter:close	()V
+    //   643: aload_0
+    //   644: getfield 120	com/tencent/biz/qqstory/channel/QQStoryCmdMonitor$1:this$0	Lcom/tencent/biz/qqstory/channel/QQStoryCmdMonitor;
+    //   647: iconst_0
+    //   648: invokestatic 207	com/tencent/biz/qqstory/channel/QQStoryCmdMonitor:a	(Lcom/tencent/biz/qqstory/channel/QQStoryCmdMonitor;Z)Z
+    //   651: pop
+    //   652: goto +6 -> 658
+    //   655: aload 7
+    //   657: athrow
+    //   658: goto -3 -> 655
+    //   661: astore 7
+    //   663: aload 9
+    //   665: astore 8
+    //   667: goto -70 -> 597
+    //   670: astore 7
+    //   672: goto -91 -> 581
+    //   675: astore 7
+    //   677: goto -54 -> 623
+    //   680: astore 8
+    //   682: goto -39 -> 643
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	619	0	this	1
-    //   450	17	1	d	double
-    //   105	511	3	i	int
-    //   194	27	4	j	int
-    //   1	181	5	localStringBuilder	java.lang.StringBuilder
-    //   245	1	5	localException1	java.lang.Exception
-    //   249	252	5	localObject1	Object
-    //   509	22	5	localObject2	Object
-    //   571	1	5	localException2	java.lang.Exception
-    //   576	1	5	localException3	java.lang.Exception
-    //   586	11	5	localObject3	Object
-    //   602	1	5	localObject4	Object
-    //   29	528	6	localObject5	Object
-    //   581	1	6	localException4	java.lang.Exception
-    //   589	10	6	localObject6	Object
-    //   607	1	6	localException5	java.lang.Exception
-    //   17	425	7	localArrayList	java.util.ArrayList
-    //   594	7	7	localObject7	Object
-    //   56	486	8	localFile	java.io.File
-    //   102	279	9	localObject8	Object
-    //   128	337	10	localObject9	Object
+    //   0	685	0	this	1
+    //   464	44	1	d1	double
+    //   477	13	3	d2	double
+    //   136	339	5	i	int
+    //   145	125	6	j	int
+    //   24	518	7	localObject1	Object
+    //   576	11	7	localObject2	Object
+    //   592	64	7	localObject3	Object
+    //   661	1	7	localException1	java.lang.Exception
+    //   670	1	7	localException2	java.lang.Exception
+    //   675	1	7	localException3	java.lang.Exception
+    //   20	646	8	localObject4	Object
+    //   680	1	8	localException4	java.lang.Exception
+    //   17	384	9	localObject5	Object
+    //   584	80	9	localObject6	Object
+    //   14	452	10	localArrayList	java.util.ArrayList
+    //   36	523	11	localFile	java.io.File
+    //   166	340	12	localObject7	Object
     // Exception table:
     //   from	to	target	type
-    //   83	104	245	java/lang/Exception
-    //   106	196	245	java/lang/Exception
-    //   201	215	245	java/lang/Exception
-    //   218	242	245	java/lang/Exception
-    //   283	370	245	java/lang/Exception
-    //   370	506	245	java/lang/Exception
-    //   533	551	245	java/lang/Exception
-    //   83	104	509	finally
-    //   106	196	509	finally
-    //   201	215	509	finally
-    //   218	242	509	finally
-    //   283	370	509	finally
-    //   370	506	509	finally
-    //   533	551	509	finally
-    //   556	561	571	java/lang/Exception
-    //   268	273	576	java/lang/Exception
-    //   516	521	581	java/lang/Exception
-    //   19	45	586	finally
-    //   45	72	586	finally
-    //   72	83	586	finally
-    //   251	263	594	finally
-    //   19	45	607	java/lang/Exception
-    //   45	72	607	java/lang/Exception
-    //   72	83	607	java/lang/Exception
+    //   114	135	576	finally
+    //   138	147	576	finally
+    //   154	168	576	finally
+    //   174	245	576	finally
+    //   250	264	576	finally
+    //   267	291	576	finally
+    //   294	390	576	finally
+    //   390	474	576	finally
+    //   492	547	576	finally
+    //   550	568	576	finally
+    //   26	38	584	finally
+    //   42	50	584	finally
+    //   54	60	584	finally
+    //   64	77	584	finally
+    //   81	89	584	finally
+    //   93	99	584	finally
+    //   103	114	584	finally
+    //   601	613	584	finally
+    //   26	38	661	java/lang/Exception
+    //   42	50	661	java/lang/Exception
+    //   54	60	661	java/lang/Exception
+    //   64	77	661	java/lang/Exception
+    //   81	89	661	java/lang/Exception
+    //   93	99	661	java/lang/Exception
+    //   103	114	661	java/lang/Exception
+    //   114	135	670	java/lang/Exception
+    //   138	147	670	java/lang/Exception
+    //   154	168	670	java/lang/Exception
+    //   174	245	670	java/lang/Exception
+    //   250	264	670	java/lang/Exception
+    //   267	291	670	java/lang/Exception
+    //   294	390	670	java/lang/Exception
+    //   390	474	670	java/lang/Exception
+    //   492	547	670	java/lang/Exception
+    //   550	568	670	java/lang/Exception
+    //   568	573	675	java/lang/Exception
+    //   618	623	675	java/lang/Exception
+    //   638	643	680	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.channel.QQStoryCmdMonitor.1
  * JD-Core Version:    0.7.0.1
  */

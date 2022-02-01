@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:paddingLeft="@dimen/bc8" android:paddingRight="@dimen/bc8" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.videoplatform.view.BaseVideoView android:id="@id/kvb" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.richmediabrowser.view.GalleryUrlImageView android:id="@id/fyr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
+    <ViewStub android:id="@id/on4" android:layout="@layout/d08" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <RelativeLayout android:id="@id/ole" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/fyq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/c0z" android:layout_centerInParent="true" />
+    <RelativeLayout android:id="@id/alq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:translationX="15.0dip">
+        <TextView android:textSize="16.0dip" android:textColor="#ffffffff" android:id="@id/hvh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0KB/s" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="14.0dip" android:textColor="#80ffffff" android:id="@id/jmx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/yo3" android:layout_below="@id/hvh" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <LinearLayout android:id="@id/fys" android:background="@color/br" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="vertical" android:background="@color/k8" android:layout_width="fill_parent" android:layout_height="320.0dip">
+            <ImageView android:layout_gravity="center_horizontal" android:background="@drawable/f2q" android:layout_width="80.0dip" android:layout_height="50.0dip" />
+            <TextView android:textSize="16.0sp" android:layout_gravity="center" android:id="@id/byl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/yo5" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

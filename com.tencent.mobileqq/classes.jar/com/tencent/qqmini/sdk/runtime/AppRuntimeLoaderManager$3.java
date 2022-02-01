@@ -16,10 +16,13 @@ class AppRuntimeLoaderManager$3
       }
       if (paramInt != 0)
       {
-        QMLog.e("minisdk-start_AppRuntimeLoaderManager", "runtime load result error! remove it. retCode = " + paramInt);
+        paramString = new StringBuilder();
+        paramString.append("runtime load result error! remove it. retCode = ");
+        paramString.append(paramInt);
+        QMLog.e("minisdk-start_AppRuntimeLoaderManager", paramString.toString());
         this.this$0.removeRuntimeLoader(paramBaseRuntimeLoader);
+        return;
       }
-      return;
     }
     catch (Throwable paramString)
     {
@@ -30,7 +33,7 @@ class AppRuntimeLoaderManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.AppRuntimeLoaderManager.3
  * JD-Core Version:    0.7.0.1
  */

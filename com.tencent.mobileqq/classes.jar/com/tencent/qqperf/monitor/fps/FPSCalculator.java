@@ -29,31 +29,39 @@ public class FPSCalculator
       {
         this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
         this.jdField_a_of_type_Int = 0;
+        return;
       }
-    }
-    else {
-      return;
-    }
-    if ((this.jdField_a_of_type_Long > 0L) && (this.jdField_a_of_type_Int > 0))
-    {
-      long l = AnimationUtils.currentAnimationTimeMillis() - this.jdField_a_of_type_Long;
-      if ((l > 1000L) || ((l >= 500L) && ("actFPSRecent".equals(this.jdField_a_of_type_JavaLangString))))
+      if ((this.jdField_a_of_type_Long > 0L) && (this.jdField_a_of_type_Int > 0))
       {
-        paramInt = (int)Math.floor(this.jdField_a_of_type_Int * 1000 / ((float)l * 1.0F));
-        this.jdField_a_of_type_JavaLangStringBuffer.setLength(0);
-        this.jdField_a_of_type_JavaLangStringBuffer.append("FPSCalculator ").append(this.jdField_a_of_type_JavaLangString).append(" frameCount :").append(this.jdField_a_of_type_Int).append(",diffTime :").append(l).append(" fps:").append(paramInt);
-        this.jdField_a_of_type_JavaLangStringBuffer.append(",aioBusiness=").append(BusinessRecoderForPerf.a());
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(this.jdField_a_of_type_JavaLangStringBuffer.toString());
-        if ((paramInt > 0) && (!"".equals(this.jdField_a_of_type_JavaLangString))) {
-          PerformanceReportUtils.a(this.jdField_a_of_type_JavaLangString, paramInt, String.valueOf(BusinessRecoderForPerf.a()));
-        }
-        if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() > 100) {
-          a();
+        long l = AnimationUtils.currentAnimationTimeMillis() - this.jdField_a_of_type_Long;
+        if ((l > 1000L) || ((l >= 500L) && ("actFPSRecent".equals(this.jdField_a_of_type_JavaLangString))))
+        {
+          paramInt = (int)Math.floor(this.jdField_a_of_type_Int * 1000 / ((float)l * 1.0F));
+          this.jdField_a_of_type_JavaLangStringBuffer.setLength(0);
+          StringBuffer localStringBuffer = this.jdField_a_of_type_JavaLangStringBuffer;
+          localStringBuffer.append("FPSCalculator ");
+          localStringBuffer.append(this.jdField_a_of_type_JavaLangString);
+          localStringBuffer.append(" frameCount :");
+          localStringBuffer.append(this.jdField_a_of_type_Int);
+          localStringBuffer.append(",diffTime :");
+          localStringBuffer.append(l);
+          localStringBuffer.append(" fps:");
+          localStringBuffer.append(paramInt);
+          localStringBuffer = this.jdField_a_of_type_JavaLangStringBuffer;
+          localStringBuffer.append(",aioBusiness=");
+          localStringBuffer.append(BusinessRecoderForPerf.a());
+          this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(this.jdField_a_of_type_JavaLangStringBuffer.toString());
+          if ((paramInt > 0) && (!"".equals(this.jdField_a_of_type_JavaLangString))) {
+            PerformanceReportUtils.a(this.jdField_a_of_type_JavaLangString, paramInt, String.valueOf(BusinessRecoderForPerf.a()));
+          }
+          if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() > 100) {
+            a();
+          }
         }
       }
+      this.jdField_a_of_type_Long = -1L;
+      this.jdField_a_of_type_Int = 0;
     }
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = 0;
   }
   
   public void a(String paramString)
@@ -70,7 +78,7 @@ public class FPSCalculator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.monitor.fps.FPSCalculator
  * JD-Core Version:    0.7.0.1
  */

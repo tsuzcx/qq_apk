@@ -17,15 +17,18 @@ public class RichProto$RichProtoResp$ShortVideoForwardResp
     localStringBuilder.append(this.isExist);
     localStringBuilder.append(" fileId:");
     localStringBuilder.append(this.fileId);
-    localStringBuilder.append(" startOffset:").append(this.startOffset);
-    localStringBuilder.append(" videoAttr:").append(this.videoAttr);
-    localStringBuilder.append(" videoKandianType:").append(this.videoKandianType);
+    localStringBuilder.append(" startOffset:");
+    localStringBuilder.append(this.startOffset);
+    localStringBuilder.append(" videoAttr:");
+    localStringBuilder.append(this.videoAttr);
+    localStringBuilder.append(" videoKandianType:");
+    localStringBuilder.append(this.videoKandianType);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp.ShortVideoForwardResp
  * JD-Core Version:    0.7.0.1
  */

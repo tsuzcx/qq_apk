@@ -18,38 +18,31 @@ public class StructMsgSubImageVideo$ImageItem
   {
     Iterator localIterator = paramStructMsgNode.jdField_a_of_type_JavaUtilList.iterator();
     Object localObject1 = null;
-    Object localObject2 = null;
-    Object localObject3;
-    if (localIterator.hasNext())
+    Object localObject2 = localObject1;
+    while (localIterator.hasNext())
     {
       localObject3 = (StructMsgNode)localIterator.next();
       if ("title".equals(((StructMsgNode)localObject3).b)) {
         localObject2 = localObject3;
-      }
-    }
-    for (;;)
-    {
-      break;
-      if ("picture".equals(((StructMsgNode)localObject3).b))
-      {
+      } else if ("picture".equals(((StructMsgNode)localObject3).b)) {
         localObject1 = localObject3;
-        continue;
-        if (localObject1 == null)
-        {
-          Log.i("StructMsgSubImageVideo", "parseImageNode: null imageNode");
-          return null;
-        }
-        localObject3 = new ImageItem();
-        ((ImageItem)localObject3).schema = paramStructMsgNode.a("url");
-        if (localObject2 == null) {}
-        for (paramStructMsgNode = "";; paramStructMsgNode = localObject2.jdField_a_of_type_JavaLangString)
-        {
-          ((ImageItem)localObject3).title = paramStructMsgNode;
-          ((ImageItem)localObject3).imageUrl = localObject1.a("cover");
-          return localObject3;
-        }
       }
     }
+    if (localObject1 == null)
+    {
+      Log.i("StructMsgSubImageVideo", "parseImageNode: null imageNode");
+      return null;
+    }
+    Object localObject3 = new ImageItem();
+    ((ImageItem)localObject3).schema = paramStructMsgNode.a("url");
+    if (localObject2 == null) {
+      paramStructMsgNode = "";
+    } else {
+      paramStructMsgNode = localObject2.jdField_a_of_type_JavaLangString;
+    }
+    ((ImageItem)localObject3).title = paramStructMsgNode;
+    ((ImageItem)localObject3).imageUrl = localObject1.a("cover");
+    return localObject3;
   }
   
   public void readExternal(ObjectInput paramObjectInput)
@@ -66,60 +59,49 @@ public class StructMsgSubImageVideo$ImageItem
     paramXmlSerializerWithFilter.attribute(null, "type", "0");
     paramXmlSerializerWithFilter.attribute(null, "url", this.schema);
     paramXmlSerializerWithFilter.startTag(null, "title");
-    if (this.title == null)
-    {
-      str = "";
-      paramXmlSerializerWithFilter.text(str);
-      paramXmlSerializerWithFilter.endTag(null, "title");
-      paramXmlSerializerWithFilter.startTag(null, "picture");
-      if (this.imageUrl != null) {
-        break label124;
-      }
+    String str2 = this.title;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    label124:
-    for (String str = "";; str = this.imageUrl)
-    {
-      paramXmlSerializerWithFilter.attribute(null, "cover", str);
-      paramXmlSerializerWithFilter.endTag(null, "picture");
-      paramXmlSerializerWithFilter.endTag(null, "item");
-      return;
-      str = this.title;
-      break;
+    paramXmlSerializerWithFilter.text(str1);
+    paramXmlSerializerWithFilter.endTag(null, "title");
+    paramXmlSerializerWithFilter.startTag(null, "picture");
+    str2 = this.imageUrl;
+    str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
+    paramXmlSerializerWithFilter.attribute(null, "cover", str1);
+    paramXmlSerializerWithFilter.endTag(null, "picture");
+    paramXmlSerializerWithFilter.endTag(null, "item");
   }
   
   public void writeExternal(ObjectOutput paramObjectOutput)
   {
-    if (this.title == null)
-    {
-      str = "";
-      paramObjectOutput.writeUTF(str);
-      if (this.imageUrl != null) {
-        break label60;
-      }
-      str = "";
-      label27:
-      paramObjectOutput.writeUTF(str);
-      if (this.schema != null) {
-        break label68;
-      }
+    String str2 = this.title;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    label60:
-    label68:
-    for (String str = "";; str = this.schema)
-    {
-      paramObjectOutput.writeUTF(str);
-      return;
-      str = this.title;
-      break;
-      str = this.imageUrl;
-      break label27;
+    paramObjectOutput.writeUTF(str1);
+    str2 = this.imageUrl;
+    str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
+    paramObjectOutput.writeUTF(str1);
+    str2 = this.schema;
+    str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    paramObjectOutput.writeUTF(str1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgSubImageVideo.ImageItem
  * JD-Core Version:    0.7.0.1
  */

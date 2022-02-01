@@ -7,7 +7,7 @@ class TPSystemMediaPlayer$2
   
   public long getCurrentPosition()
   {
-    if ((TPSystemMediaPlayer.access$300(this.this$0) != TPSystemMediaPlayer.PlayerState.PAUSED) && (TPSystemMediaPlayer.access$300(this.this$0) != TPSystemMediaPlayer.PlayerState.STARTED)) {
+    if ((TPSystemMediaPlayer.access$400(this.this$0) != TPSystemMediaPlayer.PlayerState.PAUSED) && (TPSystemMediaPlayer.access$400(this.this$0) != TPSystemMediaPlayer.PlayerState.STARTED)) {
       return -1L;
     }
     return this.this$0.getCurrentPositionMs();
@@ -15,7 +15,7 @@ class TPSystemMediaPlayer$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.player.systemplayer.TPSystemMediaPlayer.2
  * JD-Core Version:    0.7.0.1
  */

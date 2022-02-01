@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.onlinestatus.config;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 public class Sensor
 {
@@ -44,12 +44,64 @@ public class Sensor
   @NonNull
   public String toString()
   {
-    return "Sensor [id=" + this.jdField_a_of_type_Int + ", type=" + this.jdField_a_of_type_JavaLangString + ", min=" + this.b + ", max=" + this.c + ", sampleCount=" + this.d + ", mainSensor=" + this.e + ", secondarySensor=" + this.f + "， internalUpdateStatus=" + this.g + ", sessionEnterAccuracy=" + this.n + "， slowModeCount=" + this.h + "， fastModeCount=" + this.i + "， internalSlowMode=" + this.j + "， internalFastMode=" + this.k + "， internalExitStep=" + this.l + "， internalExitStill=" + this.m + ", distAccuracy=" + this.o + "， distThreadHold=" + this.p + "， distStepTH=" + this.q + "， distEnable=" + this.r + "， distReqTime=" + this.s + "， distAccelerEnable=" + this.t + ", distSpeedReqTime=" + this.v + ", distSpeedThreadHold=" + this.u + ", distMovingMax=" + this.w + ", distNotMovingMin=" + this.x + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Sensor [id=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", min=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", max=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", sampleCount=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", mainSensor=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", secondarySensor=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append("， internalUpdateStatus=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", sessionEnterAccuracy=");
+    localStringBuilder.append(this.n);
+    localStringBuilder.append("， slowModeCount=");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("， fastModeCount=");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append("， internalSlowMode=");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append("， internalFastMode=");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append("， internalExitStep=");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append("， internalExitStill=");
+    localStringBuilder.append(this.m);
+    localStringBuilder.append(", distAccuracy=");
+    localStringBuilder.append(this.o);
+    localStringBuilder.append("， distThreadHold=");
+    localStringBuilder.append(this.p);
+    localStringBuilder.append("， distStepTH=");
+    localStringBuilder.append(this.q);
+    localStringBuilder.append("， distEnable=");
+    localStringBuilder.append(this.r);
+    localStringBuilder.append("， distReqTime=");
+    localStringBuilder.append(this.s);
+    localStringBuilder.append("， distAccelerEnable=");
+    localStringBuilder.append(this.t);
+    localStringBuilder.append(", distSpeedReqTime=");
+    localStringBuilder.append(this.v);
+    localStringBuilder.append(", distSpeedThreadHold=");
+    localStringBuilder.append(this.u);
+    localStringBuilder.append(", distMovingMax=");
+    localStringBuilder.append(this.w);
+    localStringBuilder.append(", distNotMovingMin=");
+    localStringBuilder.append(this.x);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.config.Sensor
  * JD-Core Version:    0.7.0.1
  */

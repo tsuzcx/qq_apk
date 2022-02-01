@@ -23,14 +23,16 @@ class NavigationJsPlugin$3
       if ((NavigationJsPlugin.access$000(this.this$0).getAttachedActivity() != null) && (!NavigationJsPlugin.access$100(this.this$0).getAttachedActivity().isFinishing())) {
         NavigationJsPlugin.access$200(this.this$0).getAttachedActivity().finish();
       }
-      return;
     }
-    this.val$req.fail();
+    else
+    {
+      this.val$req.fail();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.NavigationJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

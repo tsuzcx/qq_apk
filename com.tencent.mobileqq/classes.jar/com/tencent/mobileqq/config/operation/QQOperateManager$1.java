@@ -14,8 +14,13 @@ class QQOperateManager$1
   
   public void run()
   {
-    if (!TextUtils.isEmpty(QQOperateManager.a())) {
-      PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit().putInt(QQOperateManager.a() + "QQOperationVoIPRequestCount", this.a).commit();
+    if (!TextUtils.isEmpty(QQOperateManager.a()))
+    {
+      SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(QQOperateManager.a());
+      localStringBuilder.append("QQOperationVoIPRequestCount");
+      localEditor.putInt(localStringBuilder.toString(), this.a).commit();
     }
     if (QLog.isDevelopLevel()) {
       QLog.d("QQOperateVoIP", 4, "onDestroy.......");
@@ -24,7 +29,7 @@ class QQOperateManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.operation.QQOperateManager.1
  * JD-Core Version:    0.7.0.1
  */

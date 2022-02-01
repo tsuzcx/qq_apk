@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import java.util.List;
 
 public class NearbyProcObserver
+  implements INearbyProcObserver
 {
   protected void a() {}
   
@@ -15,73 +16,92 @@ public class NearbyProcObserver
   
   public void a(int paramInt, Object... paramVarArgs)
   {
-    switch (paramInt)
+    if (paramInt != 4118)
     {
-    default: 
-    case 4118: 
-    case 4131: 
-      do
+      if (paramInt != 4131)
       {
-        do
+        if (paramInt != 4159)
         {
-          return;
-        } while ((paramVarArgs == null) || (paramVarArgs.length != 2));
-        a((List)paramVarArgs[0], (List)paramVarArgs[1]);
-        return;
-      } while ((paramVarArgs == null) || (paramVarArgs.length != 2));
-      a(((Integer)paramVarArgs[0]).intValue(), ((Boolean)paramVarArgs[1]).booleanValue());
-      return;
-    case 4113: 
-      a(((Boolean)paramVarArgs[0]).booleanValue(), (List)paramVarArgs[1]);
-      return;
-    case 4114: 
-      b(((Boolean)paramVarArgs[0]).booleanValue(), (List)paramVarArgs[1]);
-      return;
-    case 4115: 
-      a(((Boolean)paramVarArgs[0]).booleanValue(), null);
-      return;
-    case 4116: 
-      a(((Boolean)paramVarArgs[0]).booleanValue(), null);
-      return;
-    case 4159: 
-      b();
-      return;
-    case 4161: 
-      try
-      {
-        a(((Integer)paramVarArgs[0]).intValue(), (String)paramVarArgs[1], (Bitmap)paramVarArgs[2]);
+          if (paramInt != 4164)
+          {
+            if (paramInt != 4161)
+            {
+              if (paramInt != 4162)
+              {
+                switch (paramInt)
+                {
+                default: 
+                  return;
+                case 4116: 
+                  a(((Boolean)paramVarArgs[0]).booleanValue(), null);
+                  return;
+                case 4115: 
+                  a(((Boolean)paramVarArgs[0]).booleanValue(), null);
+                  return;
+                case 4114: 
+                  b(((Boolean)paramVarArgs[0]).booleanValue(), (List)paramVarArgs[1]);
+                  return;
+                }
+                a(((Boolean)paramVarArgs[0]).booleanValue(), (List)paramVarArgs[1]);
+                return;
+              }
+              try
+              {
+                if (((Integer)paramVarArgs[0]).intValue() == 0)
+                {
+                  a(((Integer)paramVarArgs[0]).intValue(), (String)paramVarArgs[1]);
+                  return;
+                }
+                b(((Integer)paramVarArgs[0]).intValue(), (String)paramVarArgs[1]);
+                return;
+              }
+              catch (Exception paramVarArgs)
+              {
+                paramVarArgs.printStackTrace();
+                return;
+              }
+            }
+            try
+            {
+              a(((Integer)paramVarArgs[0]).intValue(), (String)paramVarArgs[1], (Bitmap)paramVarArgs[2]);
+              return;
+            }
+            catch (Exception paramVarArgs)
+            {
+              paramVarArgs.printStackTrace();
+              return;
+            }
+          }
+          try
+          {
+            a();
+            return;
+          }
+          catch (Exception paramVarArgs)
+          {
+            paramVarArgs.printStackTrace();
+            return;
+          }
+        }
+        b();
         return;
       }
-      catch (Exception paramVarArgs)
+      if (paramVarArgs != null)
       {
-        paramVarArgs.printStackTrace();
-        return;
-      }
-    case 4162: 
-      try
-      {
-        if (((Integer)paramVarArgs[0]).intValue() == 0)
-        {
-          a(((Integer)paramVarArgs[0]).intValue(), (String)paramVarArgs[1]);
+        if (paramVarArgs.length != 2) {
           return;
         }
-      }
-      catch (Exception paramVarArgs)
-      {
-        paramVarArgs.printStackTrace();
+        a(((Integer)paramVarArgs[0]).intValue(), ((Boolean)paramVarArgs[1]).booleanValue());
         return;
       }
-      b(((Integer)paramVarArgs[0]).intValue(), (String)paramVarArgs[1]);
       return;
     }
-    try
+    if (paramVarArgs != null)
     {
-      a();
-      return;
-    }
-    catch (Exception paramVarArgs)
-    {
-      paramVarArgs.printStackTrace();
+      if (paramVarArgs.length != 2) {
+        return;
+      }
+      a((List)paramVarArgs[0], (List)paramVarArgs[1]);
     }
   }
   
@@ -101,7 +121,7 @@ public class NearbyProcObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.ipc.NearbyProcObserver
  * JD-Core Version:    0.7.0.1
  */

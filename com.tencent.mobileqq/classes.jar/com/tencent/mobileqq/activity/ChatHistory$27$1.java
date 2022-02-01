@@ -3,8 +3,8 @@ package com.tencent.mobileqq.activity;
 import android.os.AsyncTask;
 import android.os.Handler;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.apollo.api.model.MessageForApollo;
-import com.tencent.mobileqq.apollo.api.script.ISpriteCommFunc;
+import com.tencent.mobileqq.apollo.model.IMessageForApollo;
+import com.tencent.mobileqq.apollo.script.api.ISpriteCommFunc;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.persistence.qslowtable.QSlowTableManager;
@@ -18,19 +18,19 @@ class ChatHistory$27$1
   
   protected Object a(MessageRecord... paramVarArgs)
   {
-    if (this.a.a.d) {
+    if (this.a.a.d)
+    {
       if (this.a.a.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager != null) {
         this.a.a.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager.a(paramVarArgs[0], true);
       }
     }
-    for (;;)
-    {
-      if ((paramVarArgs[0] instanceof MessageForApollo)) {
-        ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).stopAllTask(this.a.a.app, "chat_history_start_del_msg");
-      }
-      return null;
+    else {
       this.a.a.app.getMessageFacade().a(paramVarArgs[0], true);
     }
+    if ((paramVarArgs[0] instanceof IMessageForApollo)) {
+      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).stopAllTask(this.a.a.app, "chat_history_start_del_msg");
+    }
+    return null;
   }
   
   protected void onPostExecute(Object paramObject)
@@ -47,7 +47,7 @@ class ChatHistory$27$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.27.1
  * JD-Core Version:    0.7.0.1
  */

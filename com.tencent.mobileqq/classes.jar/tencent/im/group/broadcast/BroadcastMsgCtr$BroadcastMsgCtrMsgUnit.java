@@ -27,13 +27,14 @@ public final class BroadcastMsgCtr$BroadcastMsgCtrMsgUnit
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 48, 56, 64, 72, 80, 88 }, new String[] { "uint64_uin", "bytes_tlv", "uint32_msg_ctr_cmd", "uint32_msg_mask", "uint32_intelligent_terminal_flag", "uint32_online_bits", "uint32_mobile_flag", "uint32_new_msg_mask", "bsavemsgdb", "uint32_group_member_flag_ex2", "uint32_read_msg_seq" }, new Object[] { Long.valueOf(0L), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(false), Integer.valueOf(0), Integer.valueOf(0) }, BroadcastMsgCtrMsgUnit.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 48, 56, 64, 72, 80, 88 }, new String[] { "uint64_uin", "bytes_tlv", "uint32_msg_ctr_cmd", "uint32_msg_mask", "uint32_intelligent_terminal_flag", "uint32_online_bits", "uint32_mobile_flag", "uint32_new_msg_mask", "bsavemsgdb", "uint32_group_member_flag_ex2", "uint32_read_msg_seq" }, new Object[] { Long.valueOf(0L), localByteStringMicro, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, Boolean.valueOf(false), localInteger, localInteger }, BroadcastMsgCtrMsgUnit.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.group.broadcast.BroadcastMsgCtr.BroadcastMsgCtrMsgUnit
  * JD-Core Version:    0.7.0.1
  */

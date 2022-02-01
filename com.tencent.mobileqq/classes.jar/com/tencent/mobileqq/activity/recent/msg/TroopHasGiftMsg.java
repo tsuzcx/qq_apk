@@ -7,7 +7,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.nearby.NearbyFlowerUtil;
+import com.tencent.mobileqq.nearby.api.INearbyFlowerUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.troop.data.MessageInfo;
 import com.tencent.mobileqq.troop.data.MessageNavInfo;
@@ -21,7 +22,7 @@ public class TroopHasGiftMsg
 {
   public TroopHasGiftMsg(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131697410);
+    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131697429);
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
   }
   
@@ -30,7 +31,7 @@ public class TroopHasGiftMsg
     if (paramMessageRecord == null) {
       return null;
     }
-    boolean bool = NearbyFlowerUtil.a(paramMessageRecord);
+    boolean bool = ((INearbyFlowerUtil)QRoute.api(INearbyFlowerUtil.class)).isNearbyFlowerMsg(paramMessageRecord);
     if ((paramMessageRecord.msgtype != -2035) && (paramMessageRecord.msgtype != -2038) && (!bool)) {
       return null;
     }
@@ -40,43 +41,54 @@ public class TroopHasGiftMsg
       {
         paramObject = (TroopHasGiftMsg)paramObject;
         paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
-        return paramObject;
+        paramMessageInfo = paramObject;
       }
-      paramObject = new TroopHasGiftMsg(BaseApplication.getContext());
-      paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo = new MessageNavInfo(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
-      return paramObject;
+      else
+      {
+        paramObject = new TroopHasGiftMsg(BaseApplication.getContext());
+        paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo = new MessageNavInfo(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
+        paramMessageInfo = paramObject;
+      }
     }
-    if ((paramMessageRecord instanceof MessageForDeliverGiftTips))
+    else
     {
+      if (!(paramMessageRecord instanceof MessageForDeliverGiftTips)) {
+        break label284;
+      }
       paramMessageRecord = (MessageForDeliverGiftTips)paramMessageRecord;
-      if (!(paramObject instanceof TroopHasGiftMsg)) {
-        break label253;
+      if ((paramObject instanceof TroopHasGiftMsg))
+      {
+        paramObject = (TroopHasGiftMsg)paramObject;
+        paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
+        paramMessageInfo = paramObject;
       }
-      paramObject = (TroopHasGiftMsg)paramObject;
-      paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
-    }
-    for (paramMessageInfo = paramObject;; paramMessageInfo = paramObject)
-    {
+      else
+      {
+        paramObject = new TroopHasGiftMsg(BaseApplication.getContext());
+        paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo = new MessageNavInfo(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
+        paramMessageInfo = paramObject;
+      }
       if (!TextUtils.isEmpty(paramMessageRecord.remindBrief))
       {
         paramObject = paramMessageRecord.remindBrief.split("#");
-        if (paramObject.length > 1) {
-          paramMessageInfo.jdField_a_of_type_JavaLangString = ("[" + paramObject[1] + "]");
+        if (paramObject.length > 1)
+        {
+          paramMessageRecord = new StringBuffer("[");
+          paramMessageRecord.append(paramObject[1]);
+          paramMessageRecord.append("]");
+          paramMessageInfo.jdField_a_of_type_JavaLangString = paramMessageRecord.toString();
         }
       }
       paramObject = (AIOAnimationControlManager)paramQQAppInterface.getManager(QQManagerFactory.AIO_ANIMATION_MANAGER);
-      if (!paramObject.a(false)) {
-        break;
+      if (paramObject.a(false)) {
+        return null;
       }
-      return null;
-      ReportController.b(paramQQAppInterface, "P_CliOper", "BizTechReport", "", "Troop_gift", "MsgBizType.TYPE_TROOP_HAS_GIFT_IN_TROOP, MessageRecord cast to GiftTips error", 0, -1, paramMessageRecord.getClass().getName(), "", "", "");
-      return null;
-      label253:
-      paramObject = new TroopHasGiftMsg(BaseApplication.getContext());
-      paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo = new MessageNavInfo(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
+      paramObject.a = 1;
     }
-    paramObject.a = 1;
     return paramMessageInfo;
+    label284:
+    ReportController.b(paramQQAppInterface, "P_CliOper", "BizTechReport", "", "Troop_gift", "MsgBizType.TYPE_TROOP_HAS_GIFT_IN_TROOP, MessageRecord cast to GiftTips error", 0, -1, paramMessageRecord.getClass().getName(), "", "", "");
+    return null;
   }
   
   public void a(byte[] paramArrayOfByte)
@@ -118,20 +130,17 @@ public class TroopHasGiftMsg
       if (this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo != null) {
         localJSONObject.put("messageNavInfo", this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a());
       }
-      return localJSONObject.toString().getBytes();
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    return localJSONObject.toString().getBytes();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msg.TroopHasGiftMsg
  * JD-Core Version:    0.7.0.1
  */

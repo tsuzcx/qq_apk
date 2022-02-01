@@ -8,7 +8,7 @@ import org.json.JSONObject;
 
 public class QzoneMusicHelper
 {
-  public static final String NO_NETWORK_MSG = HardCodeUtil.a(2131712005);
+  public static final String NO_NETWORK_MSG = HardCodeUtil.a(2131711980);
   
   public static SongInfo convertAudioSongInfo(JSONObject paramJSONObject)
   {
@@ -97,7 +97,10 @@ public class QzoneMusicHelper
     }
     catch (Exception paramJSONObject)
     {
-      QLog.e("QzoneWebMusicJsPlugin", 2, "getInt " + paramJSONObject.getMessage());
+      paramString = new StringBuilder();
+      paramString.append("getInt ");
+      paramString.append(paramJSONObject.getMessage());
+      QLog.e("QzoneWebMusicJsPlugin", 2, paramString.toString());
     }
     return 0;
   }
@@ -111,7 +114,10 @@ public class QzoneMusicHelper
     }
     catch (Exception paramJSONObject)
     {
-      QLog.e("QzoneWebMusicJsPlugin", 2, "getLong " + paramJSONObject.getMessage());
+      paramString = new StringBuilder();
+      paramString.append("getLong ");
+      paramString.append(paramJSONObject.getMessage());
+      QLog.e("QzoneWebMusicJsPlugin", 2, paramString.toString());
     }
     return 0L;
   }
@@ -139,14 +145,17 @@ public class QzoneMusicHelper
     }
     catch (Exception paramJSONObject)
     {
-      QLog.e("QzoneWebMusicJsPlugin", 2, "getString " + paramJSONObject.getMessage());
+      paramString = new StringBuilder();
+      paramString.append("getString ");
+      paramString.append(paramJSONObject.getMessage());
+      QLog.e("QzoneWebMusicJsPlugin", 2, paramString.toString());
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.music.QzoneMusicHelper
  * JD-Core Version:    0.7.0.1
  */

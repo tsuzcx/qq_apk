@@ -16,20 +16,20 @@ class HomeFeedPresenter$LikeListReceiver
   public void a(@NonNull HomeFeedPresenter paramHomeFeedPresenter, @NonNull DetailLikeListLoader.GetLikeListEvent paramGetLikeListEvent)
   {
     Object localObject = paramHomeFeedPresenter.a(paramGetLikeListEvent.jdField_a_of_type_JavaLangString);
-    if ((localObject == null) || (paramGetLikeListEvent.jdField_a_of_type_Boolean))
+    if ((localObject != null) && (!paramGetLikeListEvent.jdField_a_of_type_Boolean))
     {
-      SLog.d(this.TAG, "is not my like, %s, isForDetail:%b", new Object[] { paramGetLikeListEvent.jdField_a_of_type_JavaLangString, Boolean.valueOf(paramGetLikeListEvent.jdField_a_of_type_Boolean) });
+      if (!(localObject instanceof CommentLikeHomeFeed))
+      {
+        SLog.e(this.TAG, "that is error type!");
+        return;
+      }
+      localObject = (CommentLikeHomeFeed)localObject;
+      ((CommentLikeFeedItem)((CommentLikeHomeFeed)localObject).a).mLikeCount = paramGetLikeListEvent.b;
+      ((CommentLikeHomeFeed)localObject).b(paramGetLikeListEvent.jdField_a_of_type_JavaUtilList, true);
+      HomeFeedPresenter.a(paramHomeFeedPresenter).b(paramGetLikeListEvent.jdField_a_of_type_JavaLangString);
       return;
     }
-    if (!(localObject instanceof CommentLikeHomeFeed))
-    {
-      SLog.e(this.TAG, "that is error type!");
-      return;
-    }
-    localObject = (CommentLikeHomeFeed)localObject;
-    ((CommentLikeFeedItem)((CommentLikeHomeFeed)localObject).a).mLikeCount = paramGetLikeListEvent.b;
-    ((CommentLikeHomeFeed)localObject).b(paramGetLikeListEvent.jdField_a_of_type_JavaUtilList, true);
-    HomeFeedPresenter.a(paramHomeFeedPresenter).b(paramGetLikeListEvent.jdField_a_of_type_JavaLangString);
+    SLog.d(this.TAG, "is not my like, %s, isForDetail:%b", new Object[] { paramGetLikeListEvent.jdField_a_of_type_JavaLangString, Boolean.valueOf(paramGetLikeListEvent.jdField_a_of_type_Boolean) });
   }
   
   public Class acceptEventClass()
@@ -41,7 +41,7 @@ class HomeFeedPresenter$LikeListReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter.LikeListReceiver
  * JD-Core Version:    0.7.0.1
  */

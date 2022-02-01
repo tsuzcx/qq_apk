@@ -12,13 +12,8 @@ import mqq.util.WeakReference;
 public class PLTransProcessorHandler
   extends TransProcessorHandler
 {
-  public static String a;
+  public static String a = "PLTransProcessorHandler";
   WeakReference<PLUploadManager> a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "PLTransProcessorHandler";
-  }
   
   public PLTransProcessorHandler(PLUploadManager paramPLUploadManager, Looper paramLooper)
   {
@@ -29,79 +24,104 @@ public class PLTransProcessorHandler
   public void handleMessage(Message paramMessage)
   {
     FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    if (localFileMsg.fileType != 56) {}
-    label460:
+    if (localFileMsg.fileType != 56) {
+      return;
+    }
+    PLUploadManager localPLUploadManager = (PLUploadManager)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localPLUploadManager == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(jdField_a_of_type_JavaLangString, 2, "PLUploadManager is null");
+      }
+      return;
+    }
+    Object localObject3 = localFileMsg.fileKey;
+    Object localObject2 = null;
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("personality_label handlemsg key:");
+      localStringBuilder.append((String)localObject3);
+      QLog.i((String)localObject1, 2, localStringBuilder.toString());
+    }
+    int i = 0;
     for (;;)
     {
+      localObject1 = localObject2;
+      if (i >= localPLUploadManager.jdField_a_of_type_JavaUtilVector.size()) {
+        break;
+      }
+      if (((PLUploadManager.UploadItem)localPLUploadManager.jdField_a_of_type_JavaUtilVector.get(i)).jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.getKeyForTransfer().equals(localObject3))
+      {
+        localObject1 = (PLUploadManager.UploadItem)localPLUploadManager.jdField_a_of_type_JavaUtilVector.get(i);
+        break;
+      }
+      i += 1;
+    }
+    if (localObject1 == null) {
       return;
-      PLUploadManager localPLUploadManager = (PLUploadManager)this.jdField_a_of_type_MqqUtilWeakReference.get();
-      if (localPLUploadManager == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i(jdField_a_of_type_JavaLangString, 2, "PLUploadManager is null");
-        }
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject2 = jdField_a_of_type_JavaLangString;
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("personality_label handlemsg find:");
+      ((StringBuilder)localObject3).append(((PLUploadManager.UploadItem)localObject1).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto.uniseq);
+      QLog.i((String)localObject2, 2, ((StringBuilder)localObject3).toString());
+    }
+    switch (paramMessage.what)
+    {
+    case 1004: 
+    default: 
+      break;
+    case 1005: 
+      ((PLUploadManager.UploadItem)localObject1).b = 3;
+      break;
+    case 1003: 
+      ((PLUploadManager.UploadItem)localObject1).b = 4;
+      ((PLUploadManager.UploadItem)localObject1).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto.fileId = localFileMsg.fileID;
+      ((PLUploadManager.UploadItem)localObject1).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto.url = localFileMsg.fileUrl;
+      if (((PLUploadManager.UploadItem)localObject1).c < 100) {
+        ((PLUploadManager.UploadItem)localObject1).c = 100;
       }
-      else
-      {
-        Object localObject = localFileMsg.fileKey;
-        if (QLog.isColorLevel()) {
-          QLog.i(jdField_a_of_type_JavaLangString, 2, "personality_label handlemsg key:" + (String)localObject);
-        }
-        int i = 0;
-        label93:
-        if (i < localPLUploadManager.jdField_a_of_type_JavaUtilVector.size()) {
-          if (!((PLUploadManager.UploadItem)localPLUploadManager.jdField_a_of_type_JavaUtilVector.get(i)).jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.getKeyForTransfer().equals(localObject)) {}
-        }
-        for (localObject = (PLUploadManager.UploadItem)localPLUploadManager.jdField_a_of_type_JavaUtilVector.get(i);; localObject = null)
-        {
-          if (localObject == null) {
-            break label460;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.i(jdField_a_of_type_JavaLangString, 2, "personality_label handlemsg find:" + ((PLUploadManager.UploadItem)localObject).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto.uniseq);
-          }
-          switch (paramMessage.what)
-          {
-          }
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i(jdField_a_of_type_JavaLangString, 2, "personality_label handlemsg. state:" + ((PLUploadManager.UploadItem)localObject).b + " " + ((PLUploadManager.UploadItem)localObject).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto.uniseq);
-            }
-            if ((((PLUploadManager.UploadItem)localObject).b == 4) && (QLog.isColorLevel())) {
-              QLog.i(jdField_a_of_type_JavaLangString, 2, "personality_label handlemsg url:" + ((PLUploadManager.UploadItem)localObject).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto.url);
-            }
-            if (localPLUploadManager.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPLUploadManager$UploadListener == null) {
-              break;
-            }
-            localPLUploadManager.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPLUploadManager$UploadListener.a(((PLUploadManager.UploadItem)localObject).jdField_a_of_type_Long, (PLUploadManager.UploadItem)localObject);
-            return;
-            i += 1;
-            break label93;
-            ((PLUploadManager.UploadItem)localObject).c = 0;
-            ((PLUploadManager.UploadItem)localObject).b = 1;
-            continue;
-            ((PLUploadManager.UploadItem)localObject).b = 4;
-            ((PLUploadManager.UploadItem)localObject).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto.fileId = localFileMsg.fileID;
-            ((PLUploadManager.UploadItem)localObject).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto.url = localFileMsg.fileUrl;
-            if (((PLUploadManager.UploadItem)localObject).c < 100) {
-              ((PLUploadManager.UploadItem)localObject).c = 100;
-            }
-            localPLUploadManager.jdField_a_of_type_JavaUtilVector.remove(localObject);
-            continue;
-            ((PLUploadManager.UploadItem)localObject).b = 3;
-            continue;
-            ((PLUploadManager.UploadItem)localObject).b = 2;
-            ((PLUploadManager.UploadItem)localObject).c = ((int)(localFileMsg.transferedSize * 100L / localFileMsg.fileSize));
-          }
-        }
-      }
+      localPLUploadManager.jdField_a_of_type_JavaUtilVector.remove(localObject1);
+      break;
+    case 1002: 
+      ((PLUploadManager.UploadItem)localObject1).b = 2;
+      ((PLUploadManager.UploadItem)localObject1).c = ((int)(localFileMsg.transferedSize * 100L / localFileMsg.fileSize));
+      break;
+    case 1001: 
+      ((PLUploadManager.UploadItem)localObject1).c = 0;
+      ((PLUploadManager.UploadItem)localObject1).b = 1;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramMessage = jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("personality_label handlemsg. state:");
+      ((StringBuilder)localObject2).append(((PLUploadManager.UploadItem)localObject1).b);
+      ((StringBuilder)localObject2).append(" ");
+      ((StringBuilder)localObject2).append(((PLUploadManager.UploadItem)localObject1).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto.uniseq);
+      QLog.i(paramMessage, 2, ((StringBuilder)localObject2).toString());
+    }
+    if ((((PLUploadManager.UploadItem)localObject1).b == 4) && (QLog.isColorLevel()))
+    {
+      paramMessage = jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("personality_label handlemsg url:");
+      ((StringBuilder)localObject2).append(((PLUploadManager.UploadItem)localObject1).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto.url);
+      QLog.i(paramMessage, 2, ((StringBuilder)localObject2).toString());
+    }
+    if (localPLUploadManager.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPLUploadManager$UploadListener != null) {
+      localPLUploadManager.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPLUploadManager$UploadListener.a(((PLUploadManager.UploadItem)localObject1).jdField_a_of_type_Long, (PLUploadManager.UploadItem)localObject1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PLTransProcessorHandler
  * JD-Core Version:    0.7.0.1
  */

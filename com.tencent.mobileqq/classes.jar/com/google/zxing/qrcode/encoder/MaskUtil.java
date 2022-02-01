@@ -10,65 +10,56 @@ final class MaskUtil
   private static int a(ByteMatrix paramByteMatrix, boolean paramBoolean)
   {
     int m;
-    int n;
-    label20:
-    int i1;
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       m = paramByteMatrix.a();
-      if (!paramBoolean) {
-        break label99;
-      }
-      n = paramByteMatrix.b();
-      paramByteMatrix = paramByteMatrix.a();
-      i1 = 0;
+    } else {
+      m = paramByteMatrix.b();
     }
-    int j;
-    for (int i = 0;; i = j)
+    int n;
+    if (paramBoolean) {
+      n = paramByteMatrix.b();
+    } else {
+      n = paramByteMatrix.a();
+    }
+    paramByteMatrix = paramByteMatrix.a();
+    int i1 = 0;
+    int i = 0;
+    while (i1 < m)
     {
-      if (i1 >= m) {
-        return i;
-      }
-      j = -1;
       int i2 = 0;
       int i3 = 0;
-      label45:
-      if (i2 < n)
+      int i4;
+      for (int k = -1; i2 < n; k = i4)
       {
-        if (paramBoolean)
-        {
-          k = paramByteMatrix[i1][i2];
-          label65:
-          if (k != j) {
-            break label120;
-          }
+        if (paramBoolean) {
+          j = paramByteMatrix[i1][i2];
+        } else {
+          j = paramByteMatrix[i2][i1];
         }
-        for (int k = i3 + 1;; k = i3)
+        if (j == k)
         {
-          i2 += 1;
-          i3 = k;
-          break label45;
-          m = paramByteMatrix.b();
-          break;
-          label99:
-          n = paramByteMatrix.a();
-          break label20;
-          k = paramByteMatrix[i2][i1];
-          break label65;
-          label120:
-          j = i;
+          j = i3 + 1;
+          i4 = k;
+        }
+        else
+        {
+          k = i;
           if (i3 >= 5) {
-            j = i + (i3 - 5 + 3);
+            k = i + (i3 - 5 + 3);
           }
           i3 = 1;
-          i = j;
-          j = k;
+          i4 = j;
+          i = k;
+          j = i3;
         }
+        i2 += 1;
+        i3 = j;
       }
-      j = i;
+      int j = i;
       if (i3 > 5) {
         j = i + (i3 - 5 + 3);
       }
+      i = j;
       i1 += 1;
     }
     return i;
@@ -76,66 +67,79 @@ final class MaskUtil
   
   static boolean a(int paramInt1, int paramInt2, int paramInt3)
   {
+    int i = paramInt3;
     switch (paramInt1)
     {
     default: 
-      throw new IllegalArgumentException("Invalid mask pattern: " + paramInt1);
-    case 0: 
-      paramInt1 = paramInt3 + paramInt2 & 0x1;
-    }
-    while (paramInt1 == 0)
-    {
-      return true;
-      paramInt1 = paramInt3 & 0x1;
-      continue;
-      paramInt1 = paramInt2 % 3;
-      continue;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Invalid mask pattern: ");
+      localStringBuilder.append(paramInt1);
+      throw new IllegalArgumentException(localStringBuilder.toString());
+    case 7: 
+      paramInt1 = paramInt3 * paramInt2 % 3;
+      paramInt2 = paramInt3 + paramInt2 & 0x1;
+      break;
+    case 6: 
+      paramInt1 = paramInt3 * paramInt2;
+      paramInt1 = (paramInt1 & 0x1) + paramInt1 % 3;
+      break;
+    case 5: 
+      paramInt1 = paramInt3 * paramInt2;
+      paramInt1 = (paramInt1 & 0x1) + paramInt1 % 3;
+      break;
+    case 4: 
+      paramInt1 = paramInt3 >>> 1;
+      paramInt2 /= 3;
+      paramInt1 += paramInt2;
+      paramInt1 &= 0x1;
+      break;
+    case 3: 
       paramInt1 = (paramInt3 + paramInt2) % 3;
-      continue;
-      paramInt1 = (paramInt3 >>> 1) + paramInt2 / 3 & 0x1;
-      continue;
-      paramInt1 = paramInt3 * paramInt2;
-      paramInt1 = paramInt1 % 3 + (paramInt1 & 0x1);
-      continue;
-      paramInt1 = paramInt3 * paramInt2;
-      paramInt1 = paramInt1 % 3 + (paramInt1 & 0x1) & 0x1;
-      continue;
-      paramInt1 = paramInt3 * paramInt2 % 3 + (paramInt3 + paramInt2 & 0x1) & 0x1;
+      break;
+    case 2: 
+      paramInt1 = paramInt2 % 3;
+      break;
+    case 0: 
+      i = paramInt3 + paramInt2;
     }
-    return false;
+    paramInt1 = i & 0x1;
+    return paramInt1 == 0;
   }
   
   static int b(ByteMatrix paramByteMatrix)
   {
     byte[][] arrayOfByte = paramByteMatrix.a();
-    int n = paramByteMatrix.b();
-    int i1 = paramByteMatrix.a();
-    int i = 0;
+    int i1 = paramByteMatrix.b();
+    int i2 = paramByteMatrix.a();
     int j = 0;
-    while (i < i1 - 1)
+    int i = 0;
+    while (j < i2 - 1)
     {
-      int k = 0;
-      while (k < n - 1)
+      int m = 0;
+      while (m < i1 - 1)
       {
-        int i2 = arrayOfByte[i][k];
-        int m = j;
-        if (i2 == arrayOfByte[i][(k + 1)])
+        int i3 = arrayOfByte[j][m];
+        paramByteMatrix = arrayOfByte[j];
+        int n = m + 1;
+        int k = i;
+        if (i3 == paramByteMatrix[n])
         {
-          m = j;
-          if (i2 == arrayOfByte[(i + 1)][k])
+          int i4 = j + 1;
+          k = i;
+          if (i3 == arrayOfByte[i4][m])
           {
-            m = j;
-            if (i2 == arrayOfByte[(i + 1)][(k + 1)]) {
-              m = j + 1;
+            k = i;
+            if (i3 == arrayOfByte[i4][n]) {
+              k = i + 1;
             }
           }
         }
-        k += 1;
-        j = m;
+        m = n;
+        i = k;
       }
-      i += 1;
+      j += 1;
     }
-    return j * 3;
+    return i * 3;
   }
   
   static int c(ByteMatrix paramByteMatrix)
@@ -150,8 +154,9 @@ final class MaskUtil
       int m = 0;
       while (m < n)
       {
+        int i2 = m + 6;
         int j = i;
-        if (m + 6 < n)
+        if (i2 < n)
         {
           j = i;
           if (arrayOfByte[k][m] == 1)
@@ -172,11 +177,14 @@ final class MaskUtil
                     if (arrayOfByte[k][(m + 5)] == 0)
                     {
                       j = i;
-                      if (arrayOfByte[k][(m + 6)] == 1) {
-                        if ((m + 10 >= n) || (arrayOfByte[k][(m + 7)] != 0) || (arrayOfByte[k][(m + 8)] != 0) || (arrayOfByte[k][(m + 9)] != 0) || (arrayOfByte[k][(m + 10)] != 0))
+                      if (arrayOfByte[k][i2] == 1)
+                      {
+                        j = m + 10;
+                        if ((j >= n) || (arrayOfByte[k][(m + 7)] != 0) || (arrayOfByte[k][(m + 8)] != 0) || (arrayOfByte[k][(m + 9)] != 0) || (arrayOfByte[k][j] != 0))
                         {
+                          i2 = m - 4;
                           j = i;
-                          if (m - 4 >= 0)
+                          if (i2 >= 0)
                           {
                             j = i;
                             if (arrayOfByte[k][(m - 1)] == 0)
@@ -188,7 +196,7 @@ final class MaskUtil
                                 if (arrayOfByte[k][(m - 3)] == 0)
                                 {
                                   j = i;
-                                  if (arrayOfByte[k][(m - 4)] != 0) {}
+                                  if (arrayOfByte[k][i2] != 0) {}
                                 }
                               }
                             }
@@ -206,8 +214,9 @@ final class MaskUtil
             }
           }
         }
+        i2 = k + 6;
         i = j;
-        if (k + 6 < i1)
+        if (i2 < i1)
         {
           i = j;
           if (arrayOfByte[k][m] == 1)
@@ -228,11 +237,14 @@ final class MaskUtil
                     if (arrayOfByte[(k + 5)][m] == 0)
                     {
                       i = j;
-                      if (arrayOfByte[(k + 6)][m] == 1) {
-                        if ((k + 10 >= i1) || (arrayOfByte[(k + 7)][m] != 0) || (arrayOfByte[(k + 8)][m] != 0) || (arrayOfByte[(k + 9)][m] != 0) || (arrayOfByte[(k + 10)][m] != 0))
+                      if (arrayOfByte[i2][m] == 1)
+                      {
+                        i = k + 10;
+                        if ((i >= i1) || (arrayOfByte[(k + 7)][m] != 0) || (arrayOfByte[(k + 8)][m] != 0) || (arrayOfByte[(k + 9)][m] != 0) || (arrayOfByte[i][m] != 0))
                         {
+                          i2 = k - 4;
                           i = j;
-                          if (k - 4 >= 0)
+                          if (i2 >= 0)
                           {
                             i = j;
                             if (arrayOfByte[(k - 1)][m] == 0)
@@ -244,7 +256,7 @@ final class MaskUtil
                                 if (arrayOfByte[(k - 3)][m] == 0)
                                 {
                                   i = j;
-                                  if (arrayOfByte[(k - 4)][m] != 0) {}
+                                  if (arrayOfByte[i2][m] != 0) {}
                                 }
                               }
                             }
@@ -274,26 +286,30 @@ final class MaskUtil
     byte[][] arrayOfByte = paramByteMatrix.a();
     int n = paramByteMatrix.b();
     int i1 = paramByteMatrix.a();
-    int i = 0;
     int j = 0;
-    while (i < i1)
+    int i = 0;
+    while (j < i1)
     {
-      byte[] arrayOfByte1 = arrayOfByte[i];
+      byte[] arrayOfByte1 = arrayOfByte[j];
       k = 0;
       while (k < n)
       {
-        int m = j;
+        int m = i;
         if (arrayOfByte1[k] == 1) {
-          m = j + 1;
+          m = i + 1;
         }
         k += 1;
-        j = m;
+        i = m;
       }
-      i += 1;
+      j += 1;
     }
-    i = paramByteMatrix.a();
+    j = paramByteMatrix.a();
     int k = paramByteMatrix.b();
-    return (int)(Math.abs(j / (i * k) - 0.5D) * 20.0D) * 10;
+    double d1 = i;
+    double d2 = j * k;
+    Double.isNaN(d1);
+    Double.isNaN(d2);
+    return (int)(Math.abs(d1 / d2 - 0.5D) * 20.0D) * 10;
   }
 }
 

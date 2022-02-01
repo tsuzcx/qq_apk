@@ -10,25 +10,15 @@ class AppLaunchStrategy$1
   
   public void run()
   {
-    AppLaunchStrategy localAppLaunchStrategy;
-    if ((this.val$preloadProcess != null) && (!this.val$preloadProcess.allMiniAppInfo.isEmpty()))
-    {
-      localAppLaunchStrategy = this.this$0;
-      if (TextUtils.equals(this.val$preloadProcess.preloadType, "preload_game")) {
-        break label50;
-      }
-    }
-    label50:
-    for (boolean bool = true;; bool = false)
-    {
-      localAppLaunchStrategy.preloadExtraMiniApp(bool);
-      return;
+    AppLaunchStrategy.MiniAppSubProcessorInfo localMiniAppSubProcessorInfo = this.val$preloadProcess;
+    if ((localMiniAppSubProcessorInfo != null) && (!localMiniAppSubProcessorInfo.allMiniAppInfo.isEmpty())) {
+      this.this$0.preloadExtraMiniApp(TextUtils.equals(this.val$preloadProcess.preloadType, "preload_game") ^ true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.server.launch.AppLaunchStrategy.1
  * JD-Core Version:    0.7.0.1
  */

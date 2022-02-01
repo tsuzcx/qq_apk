@@ -42,34 +42,32 @@ public final class cw
     if (paramInt != 1)
     {
       paramArrayOfByte = arrayOfByte;
-      if (paramInt != 2)
-      {
-        if (paramInt != 3) {
-          break label49;
+      if (paramInt != 2) {
+        if (paramInt == 3)
+        {
+          paramArrayOfByte = dr.a(arrayOfByte, "0PEq^X$sjtWqEqa2$dg4TG2PT^4dFEep");
         }
-        paramArrayOfByte = dr.a(arrayOfByte, "0PEq^X$sjtWqEqa2$dg4TG2PT^4dFEep");
+        else
+        {
+          if (paramInt == 4)
+          {
+            paramArrayOfByte = dr.a(arrayOfByte, "0PEq^X$sjtWqEqa2$dg4TG2PT^4dFEep");
+            if (!co.b(paramArrayOfByte))
+            {
+              paramArrayOfByte = Base64.encode(paramArrayOfByte, 2);
+              if (!co.b(paramArrayOfByte)) {
+                return paramArrayOfByte;
+              }
+            }
+            return a;
+          }
+          return a;
+        }
       }
     }
     if (co.b(paramArrayOfByte))
     {
       co.b("encrypt failed");
-      paramArrayOfByte = a;
-      label49:
-      do
-      {
-        return paramArrayOfByte;
-        if (paramInt != 4) {
-          break label87;
-        }
-        paramArrayOfByte = dr.a(arrayOfByte, "0PEq^X$sjtWqEqa2$dg4TG2PT^4dFEep");
-        if (co.b(paramArrayOfByte)) {
-          break;
-        }
-        arrayOfByte = Base64.encode(paramArrayOfByte, 2);
-        paramArrayOfByte = arrayOfByte;
-      } while (!co.b(arrayOfByte));
-      return a;
-      label87:
       return a;
     }
     arrayOfByte = new byte[paramArrayOfByte.length + 2];
@@ -80,7 +78,7 @@ public final class cw
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.cw
  * JD-Core Version:    0.7.0.1
  */

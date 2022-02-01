@@ -13,12 +13,13 @@ class LebaQzoneAndPluginPart$2
   
   public void run()
   {
-    DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getString(2131693625), this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getString(2131693623, new Object[] { this.jdField_a_of_type_JavaLangString }), this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getString(2131693624), new LebaQzoneAndPluginPart.2.1(this)).show();
+    QBaseActivity localQBaseActivity = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
+    DialogUtil.a(localQBaseActivity, localQBaseActivity.getResources().getString(2131693578), this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getString(2131693576, new Object[] { this.jdField_a_of_type_JavaLangString }), this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getString(2131693577), new LebaQzoneAndPluginPart.2.1(this)).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.mainbiz.LebaQzoneAndPluginPart.2
  * JD-Core Version:    0.7.0.1
  */

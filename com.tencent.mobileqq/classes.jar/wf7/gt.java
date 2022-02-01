@@ -9,22 +9,17 @@ public final class gt
   {
     Class localClass = paramObject.getClass();
     Class[] arrayOfClass = new Class[paramArrayOfObject.length];
-    int i = 0;
     int j = paramArrayOfObject.length;
-    if (i < j)
+    int i = 0;
+    while (i < j)
     {
       arrayOfClass[i] = paramArrayOfObject[i].getClass();
       if (arrayOfClass[i] == Integer.class) {
         arrayOfClass[i] = Integer.TYPE;
+      } else if (arrayOfClass[i] == Boolean.class) {
+        arrayOfClass[i] = Boolean.TYPE;
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (arrayOfClass[i] == Boolean.class) {
-          arrayOfClass[i] = Boolean.TYPE;
-        }
-      }
+      i += 1;
     }
     return localClass.getMethod(paramString, arrayOfClass).invoke(paramObject, paramArrayOfObject);
   }
@@ -35,25 +30,28 @@ public final class gt
     if (paramArrayOfObject == null)
     {
       paramString = null;
-      return localClass.getConstructor(paramString).newInstance(paramArrayOfObject);
     }
-    Class[] arrayOfClass = new Class[paramArrayOfObject.length];
-    int i = 0;
-    int j = paramArrayOfObject.length;
-    for (;;)
+    else
     {
-      paramString = arrayOfClass;
-      if (i >= j) {
-        break;
+      Class[] arrayOfClass = new Class[paramArrayOfObject.length];
+      int i = 0;
+      int j = paramArrayOfObject.length;
+      for (;;)
+      {
+        paramString = arrayOfClass;
+        if (i >= j) {
+          break;
+        }
+        arrayOfClass[i] = paramArrayOfObject[i].getClass();
+        i += 1;
       }
-      arrayOfClass[i] = paramArrayOfObject[i].getClass();
-      i += 1;
     }
+    return localClass.getConstructor(paramString).newInstance(paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.gt
  * JD-Core Version:    0.7.0.1
  */

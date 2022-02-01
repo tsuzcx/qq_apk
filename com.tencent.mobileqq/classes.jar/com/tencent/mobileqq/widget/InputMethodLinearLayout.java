@@ -42,20 +42,21 @@ public class InputMethodLinearLayout
   
   public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodLinearLayout$onSizeChangeListenner != null) && (paramInt1 == paramInt3) && (paramInt3 != 0) && (paramInt4 != 0)) {
-      if ((paramInt2 >= paramInt4) || (Math.abs(paramInt2 - paramInt4) <= this.d * 1 / 4)) {
-        break label90;
-      }
-    }
-    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
+    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodLinearLayout$onSizeChangeListenner != null) && (paramInt1 == paramInt3) && (paramInt3 != 0) && (paramInt4 != 0))
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodLinearLayout$onSizeChangeListenner.a(this.jdField_a_of_type_Boolean);
-      measure(this.jdField_a_of_type_Int - paramInt1 + getWidth(), this.b - paramInt2 + getHeight());
-      label90:
-      do
+      if ((paramInt2 < paramInt4) && (Math.abs(paramInt2 - paramInt4) > this.d * 1 / 4))
       {
-        return;
-      } while ((paramInt2 <= paramInt4) || (Math.abs(paramInt2 - paramInt4) <= this.d * 1 / 4));
+        this.jdField_a_of_type_Boolean = true;
+      }
+      else
+      {
+        if ((paramInt2 <= paramInt4) || (Math.abs(paramInt2 - paramInt4) <= this.d * 1 / 4)) {
+          return;
+        }
+        this.jdField_a_of_type_Boolean = false;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodLinearLayout$onSizeChangeListenner.onSizeChange(this.jdField_a_of_type_Boolean);
+      measure(this.jdField_a_of_type_Int - paramInt1 + getWidth(), this.b - paramInt2 + getHeight());
     }
   }
   
@@ -66,7 +67,7 @@ public class InputMethodLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.InputMethodLinearLayout
  * JD-Core Version:    0.7.0.1
  */

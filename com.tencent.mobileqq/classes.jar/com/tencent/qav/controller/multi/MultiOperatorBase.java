@@ -1,19 +1,17 @@
 package com.tencent.qav.controller.multi;
 
 import android.content.Context;
-import com.tencent.av.app.SessionInfo;
 import com.tencent.av.gaudio.Memberinfo;
 import com.tencent.av.gaudio.QQGAudioCtrl;
 import com.tencent.av.gaudio.QQGAudioCtrlCallback;
 import com.tencent.av.opengl.GraphicRenderMgr;
+import com.tencent.av.opengl.api.IGraphicRender;
 import com.tencent.av.video.call.ClientLogReport;
 import com.tencent.av.video.call.GAClientLogReport;
 import com.tencent.avcore.data.MavInviteData;
 import com.tencent.avcore.data.RecordParam;
 import com.tencent.avcore.jni.data.AVUserInfo;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.startup.step.AVSoUtils;
-import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qav.channel.VideoChannelInterface;
 import com.tencent.qav.channel.VideoChannelProxy;
 import com.tencent.qav.controller.QavCtrl;
@@ -36,7 +34,6 @@ public abstract class MultiOperatorBase
     this.jdField_a_of_type_Long = paramLong;
     this.jdField_a_of_type_ComTencentQavChannelVideoChannelInterface = paramVideoChannelInterface;
     this.jdField_a_of_type_ComTencentQavChannelVideoChannelProxy = new VideoChannelProxy(paramContext, paramVideoChannelInterface);
-    a();
     a(paramBoolean);
   }
   
@@ -49,8 +46,8 @@ public abstract class MultiOperatorBase
       {
         this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.uninit();
         this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl = null;
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -60,7 +57,10 @@ public abstract class MultiOperatorBase
   
   private void a(boolean paramBoolean)
   {
-    AVLog.c("MultiOperatorBase", "initGAudioCtrl enableAINS:" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("initGAudioCtrl enableAINS:");
+    localStringBuilder.append(paramBoolean);
+    AVLog.c("MultiOperatorBase", localStringBuilder.toString());
     try
     {
       if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl == null)
@@ -89,33 +89,9 @@ public abstract class MultiOperatorBase
     }
   }
   
-  private boolean a()
-  {
-    AVLog.c("MultiOperatorBase", "loadLibrary");
-    try
-    {
-      SoLoadUtil.a(this.jdField_a_of_type_AndroidContentContext, "c++_shared", 0, false);
-      SoLoadUtil.a(this.jdField_a_of_type_AndroidContentContext, "xplatform", 0, false);
-      AVSoUtils.a(this.jdField_a_of_type_AndroidContentContext, "SDKCommon", true);
-      AVSoUtils.a(this.jdField_a_of_type_AndroidContentContext, "VideoCtrl", true);
-      AVSoUtils.a(this.jdField_a_of_type_AndroidContentContext, "qav_media_engine", true);
-      return true;
-    }
-    catch (Throwable localThrowable)
-    {
-      AVLog.a("MultiOperatorBase", "loadLibrary fail.", localThrowable);
-    }
-    return false;
-  }
-  
   public long a(int paramInt1, int paramInt2, long paramLong)
   {
     return 0L;
-  }
-  
-  public SessionInfo a()
-  {
-    return null;
   }
   
   public QQGAudioCtrl a()
@@ -129,47 +105,63 @@ public abstract class MultiOperatorBase
   
   public void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
   {
-    long l = 0L;
-    QLog.w("MultiOperatorBase", 1, "setEncodeDecodePtr, sessionType[2], clean[" + paramBoolean1 + "], isRemote[" + paramBoolean2 + "], isMultiEngine[" + true + "], seq[" + paramLong + "]");
-    GraphicRenderMgr localGraphicRenderMgr = GraphicRenderMgr.getInstance();
-    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null)
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("setEncodeDecodePtr, sessionType[2], clean[");
+    ((StringBuilder)localObject1).append(paramBoolean1);
+    ((StringBuilder)localObject1).append("], isRemote[");
+    ((StringBuilder)localObject1).append(paramBoolean2);
+    ((StringBuilder)localObject1).append("], isMultiEngine[");
+    ((StringBuilder)localObject1).append(true);
+    ((StringBuilder)localObject1).append("], seq[");
+    ((StringBuilder)localObject1).append(paramLong);
+    ((StringBuilder)localObject1).append("]");
+    QLog.w("MultiOperatorBase", 1, ((StringBuilder)localObject1).toString());
+    localObject1 = GraphicRenderMgr.getInstance();
+    Object localObject2 = this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl;
+    if (localObject2 != null)
     {
-      if (!paramBoolean2) {
-        break label213;
-      }
-      if (paramBoolean1)
+      paramLong = 0L;
+      if (paramBoolean2)
       {
-        if (localGraphicRenderMgr.decoderPtrRef > 0) {
-          localGraphicRenderMgr.decoderPtrRef -= 1;
+        if (paramBoolean1)
+        {
+          if (((IGraphicRender)localObject1).getDecodePtrRef() > 0) {
+            ((IGraphicRender)localObject1).decreaseDecoderPtrRef();
+          }
+          if (((IGraphicRender)localObject1).getDecodePtrRef() == 0) {
+            this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.setProcessDecoderFrameFunctionptr(0L);
+          }
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("setEncodeDecodePtr, decoderPtrRef:=");
+          ((StringBuilder)localObject2).append(((IGraphicRender)localObject1).getDecodePtrRef());
+          QLog.w("MultiOperatorBase", 1, ((StringBuilder)localObject2).toString());
+          return;
         }
-        if (localGraphicRenderMgr.decoderPtrRef == 0) {
-          this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.setProcessDecoderFrameFunctionptr(0L);
+        ((IGraphicRender)localObject1).increaseDecodePtrRef();
+        if (((IGraphicRender)localObject1).getDecodePtrRef() >= 1)
+        {
+          paramLong = ((IGraphicRender)localObject1).getRecvDecoderFrameFunctionPtr();
+          this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.setProcessDecoderFrameFunctionptr(paramLong);
         }
-        QLog.w("MultiOperatorBase", 1, "setEncodeDecodePtr, decoderPtrRef:=" + localGraphicRenderMgr.decoderPtrRef);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("setEncodeDecodePtr, decoderPtrRef:=");
+        ((StringBuilder)localObject2).append(((IGraphicRender)localObject1).getDecodePtrRef());
+        QLog.w("MultiOperatorBase", 1, ((StringBuilder)localObject2).toString());
+        return;
       }
-    }
-    else
-    {
-      return;
-    }
-    localGraphicRenderMgr.decoderPtrRef += 1;
-    if (localGraphicRenderMgr.decoderPtrRef >= 1)
-    {
-      paramLong = localGraphicRenderMgr.getRecvDecoderFrameFunctionPtr();
-      this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.setProcessDecoderFrameFunctionptr(paramLong);
-    }
-    QLog.w("MultiOperatorBase", 1, "setEncodeDecodePtr, decoderPtrRef:=" + localGraphicRenderMgr.decoderPtrRef);
-    return;
-    label213:
-    if (paramBoolean1) {}
-    for (paramLong = l;; paramLong = this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.getEncodeFrameFunctionPtrFunPtr())
-    {
-      localGraphicRenderMgr.setProcessEncodeFrameFunctionPtr(paramLong);
-      return;
+      if (!paramBoolean1) {
+        paramLong = ((QQGAudioCtrl)localObject2).getEncodeFrameFunctionPtrFunPtr();
+      }
+      ((IGraphicRender)localObject1).setProcessEncodeFrameFunctionPtr(paramLong);
     }
   }
   
   public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  
+  public boolean a(long paramLong, int paramInt)
+  {
+    return false;
+  }
   
   public void b(long paramLong, ArrayList<AVUserInfo> paramArrayList) {}
   
@@ -243,6 +235,8 @@ public abstract class MultiOperatorBase
   
   public void onMultiVideoChatMembersInfoChange(long paramLong1, long[] paramArrayOfLong, int paramInt1, int paramInt2, long paramLong2, int paramInt3, int paramInt4) {}
   
+  public void onNotifyAIDenoiseTips(boolean paramBoolean) {}
+  
   public void onOpenMicFail() {}
   
   public void onPPTInOrOut(long paramLong1, long paramLong2, int paramInt1, int paramInt2) {}
@@ -261,7 +255,7 @@ public abstract class MultiOperatorBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qav.controller.multi.MultiOperatorBase
  * JD-Core Version:    0.7.0.1
  */

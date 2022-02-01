@@ -27,13 +27,13 @@ class TextItemBuilder$5
   public void updateDrawState(TextPaint paramTextPaint)
   {
     super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.a.getResources().getColor(2131165786));
+    paramTextPaint.setColor(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.a.getResources().getColor(2131165777));
     paramTextPaint.clearShadowLayer();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TextItemBuilder.5
  * JD-Core Version:    0.7.0.1
  */

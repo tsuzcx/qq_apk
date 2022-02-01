@@ -33,7 +33,10 @@ public class ResultPrinter
   
   protected String elapsedTimeAsString(long paramLong)
   {
-    return NumberFormat.getInstance().format(paramLong / 1000.0D);
+    NumberFormat localNumberFormat = NumberFormat.getInstance();
+    double d = paramLong;
+    Double.isNaN(d);
+    return localNumberFormat.format(d / 1000.0D);
   }
   
   public void endTest(Test paramTest) {}
@@ -68,7 +71,12 @@ public class ResultPrinter
   
   protected void printDefectHeader(TestFailure paramTestFailure, int paramInt)
   {
-    getWriter().print(paramInt + ") " + paramTestFailure.failedTest());
+    PrintStream localPrintStream = getWriter();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(") ");
+    localStringBuilder.append(paramTestFailure.failedTest());
+    localPrintStream.print(localStringBuilder.toString());
   }
   
   protected void printDefectTrace(TestFailure paramTestFailure)
@@ -81,19 +89,35 @@ public class ResultPrinter
     if (paramInt == 0) {
       return;
     }
-    if (paramInt == 1) {
-      getWriter().println("There was " + paramInt + " " + paramString + ":");
-    }
-    for (;;)
+    PrintStream localPrintStream;
+    StringBuilder localStringBuilder;
+    if (paramInt == 1)
     {
-      paramInt = 1;
-      while (paramEnumeration.hasMoreElements())
-      {
-        printDefect((TestFailure)paramEnumeration.nextElement(), paramInt);
-        paramInt += 1;
-      }
-      break;
-      getWriter().println("There were " + paramInt + " " + paramString + "s:");
+      localPrintStream = getWriter();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("There was ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(":");
+      localPrintStream.println(localStringBuilder.toString());
+    }
+    else
+    {
+      localPrintStream = getWriter();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("There were ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("s:");
+      localPrintStream.println(localStringBuilder.toString());
+    }
+    paramInt = 1;
+    while (paramEnumeration.hasMoreElements())
+    {
+      printDefect((TestFailure)paramEnumeration.nextElement(), paramInt);
+      paramInt += 1;
     }
   }
   
@@ -109,34 +133,51 @@ public class ResultPrinter
   
   protected void printFooter(TestResult paramTestResult)
   {
+    PrintStream localPrintStream;
+    StringBuilder localStringBuilder;
     if (paramTestResult.wasSuccessful())
     {
       getWriter().println();
       getWriter().print("OK");
-      PrintStream localPrintStream = getWriter();
-      StringBuilder localStringBuilder = new StringBuilder().append(" (").append(paramTestResult.runCount()).append(" test");
-      if (paramTestResult.runCount() == 1)
-      {
+      localPrintStream = getWriter();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" (");
+      localStringBuilder.append(paramTestResult.runCount());
+      localStringBuilder.append(" test");
+      if (paramTestResult.runCount() == 1) {
         paramTestResult = "";
-        localPrintStream.println(paramTestResult + ")");
+      } else {
+        paramTestResult = "s";
       }
+      localStringBuilder.append(paramTestResult);
+      localStringBuilder.append(")");
+      localPrintStream.println(localStringBuilder.toString());
     }
-    for (;;)
+    else
     {
       getWriter().println();
-      return;
-      paramTestResult = "s";
-      break;
-      getWriter().println();
       getWriter().println("FAILURES!!!");
-      getWriter().println("Tests run: " + paramTestResult.runCount() + ",  Failures: " + paramTestResult.failureCount() + ",  Errors: " + paramTestResult.errorCount());
+      localPrintStream = getWriter();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Tests run: ");
+      localStringBuilder.append(paramTestResult.runCount());
+      localStringBuilder.append(",  Failures: ");
+      localStringBuilder.append(paramTestResult.failureCount());
+      localStringBuilder.append(",  Errors: ");
+      localStringBuilder.append(paramTestResult.errorCount());
+      localPrintStream.println(localStringBuilder.toString());
     }
+    getWriter().println();
   }
   
   protected void printHeader(long paramLong)
   {
     getWriter().println();
-    getWriter().println("Time: " + elapsedTimeAsString(paramLong));
+    PrintStream localPrintStream = getWriter();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Time: ");
+    localStringBuilder.append(elapsedTimeAsString(paramLong));
+    localPrintStream.println(localStringBuilder.toString());
   }
   
   void printWaitPrompt()
@@ -159,7 +200,7 @@ public class ResultPrinter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     junit.textui.ResultPrinter
  * JD-Core Version:    0.7.0.1
  */

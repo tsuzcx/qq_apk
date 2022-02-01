@@ -42,8 +42,13 @@ public class GPUBaseFilter
   
   public static void a(int paramInt, String paramString)
   {
-    if (paramInt < 0) {
-      SLog.e("GPUBaseFilter", new RuntimeException("Unable to locate '" + paramString + "' in program"));
+    if (paramInt < 0)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Unable to locate '");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("' in program");
+      SLog.e("GPUBaseFilter", new RuntimeException(localStringBuilder.toString()));
     }
   }
   
@@ -55,7 +60,11 @@ public class GPUBaseFilter
       if (i == 0) {
         break;
       }
-      SLog.e("GPUBaseFilter", new RuntimeException(paramString + ": glError " + i));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": glError ");
+      localStringBuilder.append(i);
+      SLog.e("GPUBaseFilter", new RuntimeException(localStringBuilder.toString()));
     }
   }
   
@@ -70,8 +79,12 @@ public class GPUBaseFilter
       return;
     }
     this.c = GlUtil.createProgram(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
-    if (this.c == 0) {
-      SLog.e("GPUBaseFilter", new RuntimeException("failed creating program " + getClass().getSimpleName()));
+    if (this.c == 0)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("failed creating program ");
+      localStringBuilder.append(getClass().getSimpleName());
+      SLog.e("GPUBaseFilter", new RuntimeException(localStringBuilder.toString()));
     }
     this.jdField_a_of_type_Boolean = true;
     b();
@@ -139,7 +152,7 @@ public class GPUBaseFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.renderer.GPUBaseFilter
  * JD-Core Version:    0.7.0.1
  */

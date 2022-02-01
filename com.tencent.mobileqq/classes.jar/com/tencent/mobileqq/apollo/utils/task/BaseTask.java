@@ -74,13 +74,21 @@ public abstract class BaseTask
   public void a(int paramInt, String paramString)
   {
     this.jdField_a_of_type_Long = (SystemClock.uptimeMillis() - this.jdField_b_of_type_Long);
-    QLog.i("TaskFlow", 1, "Task end: " + getClass().getSimpleName() + " retCode=" + paramInt + " msg=" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Task end: ");
+    localStringBuilder.append(getClass().getSimpleName());
+    localStringBuilder.append(" retCode=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" msg=");
+    localStringBuilder.append(paramString);
+    QLog.i("[cmshow]TaskFlow", 1, localStringBuilder.toString());
     a(3);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_b_of_type_JavaLangString = paramString;
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloUtilsTaskBaseTask$Callback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloUtilsTaskBaseTask$Callback.a(this);
+    paramString = this.jdField_a_of_type_ComTencentMobileqqApolloUtilsTaskBaseTask$Callback;
+    if (paramString != null) {
+      paramString.a(this);
     }
   }
   
@@ -104,22 +112,28 @@ public abstract class BaseTask
   
   public void c()
   {
-    if (this.jdField_b_of_type_Int == 2) {}
-    do
-    {
+    int i = this.jdField_b_of_type_Int;
+    if (i == 2) {
       return;
-      if (this.jdField_b_of_type_Int != 3) {
-        break;
-      }
-      this.jdField_b_of_type_Boolean = true;
-    } while (this.jdField_a_of_type_ComTencentMobileqqApolloUtilsTaskBaseTask$Callback == null);
-    this.jdField_a_of_type_ComTencentMobileqqApolloUtilsTaskBaseTask$Callback.a(this);
-    return;
-    a(2);
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloUtilsTaskBaseTask$Callback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloUtilsTaskBaseTask$Callback.b(this);
     }
-    QLog.i("TaskFlow", 1, "Task begin: " + getClass().getSimpleName());
+    if (i == 3)
+    {
+      this.jdField_b_of_type_Boolean = true;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqApolloUtilsTaskBaseTask$Callback;
+      if (localObject != null) {
+        ((BaseTask.Callback)localObject).a(this);
+      }
+      return;
+    }
+    a(2);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqApolloUtilsTaskBaseTask$Callback;
+    if (localObject != null) {
+      ((BaseTask.Callback)localObject).b(this);
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Task begin: ");
+    ((StringBuilder)localObject).append(getClass().getSimpleName());
+    QLog.i("[cmshow]TaskFlow", 1, ((StringBuilder)localObject).toString());
     try
     {
       d();
@@ -128,7 +142,7 @@ public abstract class BaseTask
     }
     catch (Throwable localThrowable)
     {
-      QLog.e("TaskFlow", 1, "task exception!", localThrowable);
+      QLog.e("[cmshow]TaskFlow", 1, "task exception!", localThrowable);
       f();
     }
   }
@@ -141,11 +155,17 @@ public abstract class BaseTask
   public void e()
   {
     this.jdField_a_of_type_Long = (SystemClock.uptimeMillis() - this.jdField_b_of_type_Long);
-    QLog.i("TaskFlow", 1, "Task end: " + getClass().getSimpleName() + " succ=" + true);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Task end: ");
+    ((StringBuilder)localObject).append(getClass().getSimpleName());
+    ((StringBuilder)localObject).append(" succ=");
+    ((StringBuilder)localObject).append(true);
+    QLog.i("[cmshow]TaskFlow", 1, ((StringBuilder)localObject).toString());
     a(3);
     this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloUtilsTaskBaseTask$Callback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloUtilsTaskBaseTask$Callback.a(this);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqApolloUtilsTaskBaseTask$Callback;
+    if (localObject != null) {
+      ((BaseTask.Callback)localObject).a(this);
     }
   }
   
@@ -162,7 +182,7 @@ public abstract class BaseTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.task.BaseTask
  * JD-Core Version:    0.7.0.1
  */

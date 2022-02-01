@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile.predownload;
 
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.transfile.HttpNetReq;
 import com.tencent.mobileqq.transfile.INetEngineListener;
 import com.tencent.mobileqq.transfile.NetReq;
@@ -15,9 +15,9 @@ public class HttpEngineTask
   public HttpNetReq httpReq;
   private HttpEngineTask.IHttpEngineTask mCallback;
   
-  public HttpEngineTask(QQAppInterface paramQQAppInterface, String paramString, HttpEngineTask.IHttpEngineTask paramIHttpEngineTask, HttpNetReq paramHttpNetReq)
+  public HttpEngineTask(BaseQQAppInterface paramBaseQQAppInterface, String paramString, HttpEngineTask.IHttpEngineTask paramIHttpEngineTask, HttpNetReq paramHttpNetReq)
   {
-    super(paramQQAppInterface, paramString);
+    super(paramBaseQQAppInterface, paramString);
     this.httpReq = paramHttpNetReq;
     this.mCallback = paramIHttpEngineTask;
   }
@@ -40,8 +40,12 @@ public class HttpEngineTask
   
   protected void realStart()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreDownload.Task", 2, "start: " + this);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("start: ");
+      localStringBuilder.append(this);
+      QLog.d("PreDownload.Task", 2, localStringBuilder.toString());
     }
     ((IHttpEngineService)this.app.getRuntimeService(IHttpEngineService.class, "all")).sendReq(this.httpReq);
     this.httpReq.mCallback = this;
@@ -50,12 +54,19 @@ public class HttpEngineTask
   
   public String toString()
   {
-    return super.toString() + "[" + this.httpReq.mReqUrl + ", " + this.mCallback + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.httpReq.mReqUrl);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.mCallback);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.predownload.HttpEngineTask
  * JD-Core Version:    0.7.0.1
  */

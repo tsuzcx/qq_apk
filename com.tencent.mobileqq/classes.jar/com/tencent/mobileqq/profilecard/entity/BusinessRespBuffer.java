@@ -23,73 +23,75 @@ public class BusinessRespBuffer
   public static SparseArray<BusinessRespBuffer> parseBusinessRespBuffer(ArrayList<byte[]> paramArrayList)
   {
     SparseArray localSparseArray = new SparseArray();
-    Object localObject1;
-    int i;
-    Object localObject3;
-    int j;
     if ((paramArrayList != null) && (!paramArrayList.isEmpty()))
     {
-      localObject1 = null;
-      i = 0;
-      if (i < paramArrayList.size())
+      Object localObject1 = null;
+      int i = 0;
+      while (i < paramArrayList.size())
       {
-        localObject3 = (byte[])paramArrayList.get(i);
-        if (localObject3 == null)
-        {
+        Object localObject4 = (byte[])paramArrayList.get(i);
+        int j;
+        if (localObject4 == null) {
           j = 0;
-          label50:
-          if (j > 10) {
-            break label70;
-          }
+        } else {
+          j = localObject4.length;
         }
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break;
-      j = localObject3.length;
-      break label50;
-      label70:
-      int k = (int)PkgTools.getLongData((byte[])localObject3, 1);
-      int m = (int)PkgTools.getLongData((byte[])localObject3, 5);
-      if (k > 0) {
-        if (k + 9 < j)
+        Object localObject2;
+        Object localObject3;
+        if (j <= 10)
         {
-          byte[] arrayOfByte = new byte[k];
-          PkgTools.copyData(arrayOfByte, 0, (byte[])localObject3, 9, k);
-          if (m > 0)
-          {
-            localObject1 = new byte[m];
-            PkgTools.copyData((byte[])localObject1, 0, (byte[])localObject3, k + 9, m);
-          }
-          localObject3 = localObject1;
-          try
-          {
-            SummaryCardBusiEntry.comm localcomm = new SummaryCardBusiEntry.comm();
-            localcomm.mergeFrom(arrayOfByte);
-            localObject1 = localObject3;
-            if (localcomm.result.get() != 0) {
-              continue;
-            }
-            localSparseArray.put(localcomm.service.get(), new BusinessRespBuffer(localcomm, (byte[])localObject3));
-            localObject1 = localObject3;
-          }
-          catch (Exception localException)
-          {
-            QLog.e("BusinessRespBuffer", 1, "", localException);
-            Object localObject2 = localObject3;
-          }
-          continue;
-          return localSparseArray;
+          localObject2 = localObject1;
         }
+        else
+        {
+          int k = (int)PkgTools.getLongData((byte[])localObject4, 1);
+          int m = (int)PkgTools.getLongData((byte[])localObject4, 5);
+          localObject2 = localObject1;
+          if (k > 0)
+          {
+            int n = 9 + k;
+            if (n >= j)
+            {
+              localObject2 = localObject1;
+            }
+            else
+            {
+              localObject2 = new byte[k];
+              PkgTools.copyData((byte[])localObject2, 0, (byte[])localObject4, 9, k);
+              if (m > 0)
+              {
+                localObject1 = new byte[m];
+                PkgTools.copyData((byte[])localObject1, 0, (byte[])localObject4, n, m);
+              }
+              try
+              {
+                localObject4 = new SummaryCardBusiEntry.comm();
+                ((SummaryCardBusiEntry.comm)localObject4).mergeFrom((byte[])localObject2);
+                localObject2 = localObject1;
+                if (((SummaryCardBusiEntry.comm)localObject4).result.get() == 0)
+                {
+                  localSparseArray.put(((SummaryCardBusiEntry.comm)localObject4).service.get(), new BusinessRespBuffer((SummaryCardBusiEntry.comm)localObject4, (byte[])localObject1));
+                  localObject2 = localObject1;
+                }
+              }
+              catch (Exception localException)
+              {
+                QLog.e("BusinessRespBuffer", 1, "", localException);
+                localObject3 = localObject1;
+              }
+            }
+          }
+        }
+        i += 1;
+        localObject1 = localObject3;
       }
     }
+    return localSparseArray;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.entity.BusinessRespBuffer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,16 @@
 package com.tencent.mobileqq.msgbackup.controller;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Message;
 import android.text.TextUtils;
 import android.view.Window;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
+import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.mobileqq.activity.QPublicFragmentActivity;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msgbackup.authentication.MsgBackupAuthHandler;
 import com.tencent.mobileqq.msgbackup.authentication.MsgBackupAuthProcessor;
@@ -29,10 +25,13 @@ import com.tencent.mobileqq.msgbackup.fragment.MsgBackupCompleteFragment;
 import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCConfirmFragment;
 import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPcBaseFragment;
 import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
+import com.tencent.mobileqq.msgbackup.tempapi.IMsgBackupTempApi;
 import com.tencent.mobileqq.msgbackup.transport.MsgBackupTransportProcessor;
 import com.tencent.mobileqq.msgbackup.util.MsgBackupReportData.ServerFileDetail;
 import com.tencent.mobileqq.msgbackup.util.MsgBackupReporter;
 import com.tencent.mobileqq.msgbackup.util.MsgBackupUtil;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.HashSet;
@@ -42,13 +41,13 @@ import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime.InterceptKickListener;
 import mqq.app.AppRuntime.KickParams;
+import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 
 public class MsgBackupManager
   implements IMsgBackupRequestCallback
 {
   public static int a;
-  public static Activity a;
   private static volatile MsgBackupManager jdField_a_of_type_ComTencentMobileqqMsgbackupControllerMsgBackupManager;
   public static String a;
   public static ConcurrentHashMap<String, String> a;
@@ -61,17 +60,18 @@ public class MsgBackupManager
   public static boolean c;
   public static String d;
   public static volatile boolean d;
+  private static final String jdField_e_of_type_JavaLangString = MsgBackupAuthHandler.class.getName();
   public static boolean e;
   public static boolean f;
   public static boolean g;
   private long jdField_a_of_type_Long = 0L;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+  private BaseQQAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = (BaseQQAppInterface)MobileQQ.sMobileQQ.peekAppRuntime();
   private MsgBackupAuthProcessor jdField_a_of_type_ComTencentMobileqqMsgbackupAuthenticationMsgBackupAuthProcessor;
   protected MsgBackupObserver a;
   private IMsgBackup0x210Reject jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackup0x210Reject;
   private IMsgBackupQueryCallback jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupQueryCallback;
   public IMsgBackupUICallback a;
-  private MsgBackupController jdField_a_of_type_ComTencentMobileqqMsgbackupControllerMsgBackupController = new MsgBackupController(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+  private MsgBackupController jdField_a_of_type_ComTencentMobileqqMsgbackupControllerMsgBackupController = new MsgBackupController(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
   private MsgBackupGetQrRsp jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupGetQrRsp;
   private MsgBackupTransportProcessor jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupTransportProcessor = MsgBackupTransportProcessor.a();
   public HashSet<RecentBaseData> a;
@@ -84,12 +84,11 @@ public class MsgBackupManager
   public ConcurrentHashMap<String, MsgBackupSessionInfo> c;
   private int d;
   public ConcurrentHashMap<Long, MsgBackupReportData.ServerFileDetail> d;
-  private int jdField_e_of_type_Int;
-  private String jdField_e_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin();
+  private int jdField_e_of_type_Int = 0;
   public ConcurrentHashMap<Long, MsgBackupReportData.ServerFileDetail> e;
-  private int f;
+  private int jdField_f_of_type_Int = 3;
+  private String jdField_f_of_type_JavaLangString = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getCurrentUin();
   public ConcurrentHashMap<Long, MsgBackupSessionTask> f;
-  private int g;
   public ConcurrentHashMap<Long, MsgBackupSessionTask> g;
   
   static
@@ -100,7 +99,6 @@ public class MsgBackupManager
     jdField_a_of_type_Int = 0;
     jdField_a_of_type_ComTencentMobileqqMsgbackupControllerMsgBackupManager = null;
     jdField_b_of_type_Int = 0;
-    jdField_a_of_type_AndroidAppActivity = null;
     jdField_c_of_type_Boolean = false;
     jdField_d_of_type_Boolean = false;
     jdField_e_of_type_Boolean = false;
@@ -109,7 +107,6 @@ public class MsgBackupManager
   
   private MsgBackupManager()
   {
-    this.jdField_d_of_type_Int = 0;
     this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
     this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
@@ -120,92 +117,105 @@ public class MsgBackupManager
     this.jdField_g_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_a_of_type_ComTencentMobileqqMsgbackupAuthenticationMsgBackupObserver = new MsgBackupManager.2(this);
     this.jdField_b_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback = new MsgBackupManager.4(this);
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_g_of_type_Int = 3;
     jdField_g_of_type_Boolean = true;
   }
   
   public static MsgBackupManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqMsgbackupControllerMsgBackupManager == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqMsgbackupControllerMsgBackupManager == null) {
-        jdField_a_of_type_ComTencentMobileqqMsgbackupControllerMsgBackupManager = new MsgBackupManager();
+    if (jdField_a_of_type_ComTencentMobileqqMsgbackupControllerMsgBackupManager == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqMsgbackupControllerMsgBackupManager == null) {
+          jdField_a_of_type_ComTencentMobileqqMsgbackupControllerMsgBackupManager = new MsgBackupManager();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqMsgbackupControllerMsgBackupManager;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqMsgbackupControllerMsgBackupManager;
+  }
+  
+  public static MqqHandler a(BaseQQAppInterface paramBaseQQAppInterface)
+  {
+    return ((IMsgBackupTempApi)QRoute.api(IMsgBackupTempApi.class)).getConversationHandler(paramBaseQQAppInterface);
   }
   
   private void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.BackupAndMigrateManager", 2, "processPush0x11aFailed: " + paramInt);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("processPush0x11aFailed: ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("MsgBackup.BackupAndMigrateManager", 2, ((StringBuilder)localObject).toString());
     }
-    if (paramInt == 6) {
-      if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackup0x210Reject != null) {
-        this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackup0x210Reject.a();
+    if (paramInt == 6)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackup0x210Reject;
+      if (localObject != null) {
+        ((IMsgBackup0x210Reject)localObject).a();
       }
-    }
-    while (paramInt != 20) {
-      return;
     }
   }
   
   private void a(MsgBackupConfirmQrRsp paramMsgBackupConfirmQrRsp)
   {
-    if (paramMsgBackupConfirmQrRsp == null) {
+    if (paramMsgBackupConfirmQrRsp == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("MsgBackup.BackupAndMigrateManager", 2, "processPush0x11aSucc: data is null!");
       }
-    }
-    String str1;
-    String str2;
-    int i;
-    do
-    {
       return;
-      str1 = paramMsgBackupConfirmQrRsp.b();
-      str2 = paramMsgBackupConfirmQrRsp.a();
-      i = paramMsgBackupConfirmQrRsp.a();
-      localObject = paramMsgBackupConfirmQrRsp.a().a();
-    } while (((List)localObject).size() != 2);
-    paramMsgBackupConfirmQrRsp = paramMsgBackupConfirmQrRsp.a().a();
-    int j = ((Integer)((List)localObject).get(0)).intValue();
-    int k = ((Integer)((List)localObject).get(1)).intValue();
-    if (QLog.isColorLevel())
-    {
-      QLog.d("MsgBackup.BackupAndMigrateManager", 2, "pc端已经确认了，客户端收到了0x11a的push了--------> bizType= " + i);
-      QLog.d("MsgBackup.BackupAndMigrateManager", 2, "processPush0x11aSucc: client ip = " + paramMsgBackupConfirmQrRsp + ", udpport = " + k + ", tcpport = " + j);
     }
-    Object localObject = a();
-    ((MsgBackupTransportProcessor)localObject).d(str1);
-    a().b(str2);
-    a().a(i);
-    ((MsgBackupTransportProcessor)localObject).b(paramMsgBackupConfirmQrRsp);
-    ((MsgBackupTransportProcessor)localObject).b(j);
-    ((MsgBackupTransportProcessor)localObject).a(k);
-    if (i == 1)
+    String str1 = paramMsgBackupConfirmQrRsp.b();
+    String str2 = paramMsgBackupConfirmQrRsp.a();
+    int i = paramMsgBackupConfirmQrRsp.a();
+    Object localObject = paramMsgBackupConfirmQrRsp.a().a();
+    if (((List)localObject).size() == 2)
     {
-      ((MsgBackupTransportProcessor)localObject).g(2);
-      ((MsgBackupTransportProcessor)localObject).f(2);
-    }
-    for (;;)
-    {
-      paramMsgBackupConfirmQrRsp = new Intent();
-      if (BaseActivity.sTopActivity != null) {
-        break;
+      paramMsgBackupConfirmQrRsp = paramMsgBackupConfirmQrRsp.a().a();
+      int j = ((Integer)((List)localObject).get(0)).intValue();
+      int k = ((Integer)((List)localObject).get(1)).intValue();
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("pc端已经确认了，客户端收到了0x11a的push了--------> bizType= ");
+        ((StringBuilder)localObject).append(i);
+        QLog.d("MsgBackup.BackupAndMigrateManager", 2, ((StringBuilder)localObject).toString());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("processPush0x11aSucc: client ip = ");
+        ((StringBuilder)localObject).append(paramMsgBackupConfirmQrRsp);
+        ((StringBuilder)localObject).append(", udpport = ");
+        ((StringBuilder)localObject).append(k);
+        ((StringBuilder)localObject).append(", tcpport = ");
+        ((StringBuilder)localObject).append(j);
+        QLog.d("MsgBackup.BackupAndMigrateManager", 2, ((StringBuilder)localObject).toString());
       }
-      MsgBackupUtil.a("MsgBackup.BackupAndMigrateManager", "activity is null! please check whether is assigned!", new Object[0]);
-      return;
-      if (i == 2)
+      localObject = a();
+      ((MsgBackupTransportProcessor)localObject).d(str1);
+      a().b(str2);
+      a().a(i);
+      ((MsgBackupTransportProcessor)localObject).b(paramMsgBackupConfirmQrRsp);
+      ((MsgBackupTransportProcessor)localObject).b(j);
+      ((MsgBackupTransportProcessor)localObject).a(k);
+      if (i == 1)
+      {
+        ((MsgBackupTransportProcessor)localObject).g(2);
+        ((MsgBackupTransportProcessor)localObject).f(2);
+      }
+      else if (i == 2)
       {
         ((MsgBackupTransportProcessor)localObject).g(1);
         ((MsgBackupTransportProcessor)localObject).f(1);
       }
+      paramMsgBackupConfirmQrRsp = new Intent();
+      if (QBaseActivity.sTopActivity == null)
+      {
+        MsgBackupUtil.a("MsgBackup.BackupAndMigrateManager", "activity is null! please check whether is assigned!", new Object[0]);
+        return;
+      }
+      QPublicFragmentActivity.startForResult(QBaseActivity.sTopActivity, paramMsgBackupConfirmQrRsp, MsgBackupPCConfirmFragment.class, 1000);
     }
-    PublicFragmentActivity.a(BaseActivity.sTopActivity, paramMsgBackupConfirmQrRsp, MsgBackupPCConfirmFragment.class, 1000);
   }
   
   private boolean a()
@@ -218,10 +228,10 @@ public class MsgBackupManager
     if (QLog.isColorLevel()) {
       QLog.d("MsgBackup.BackupAndMigrateManager", 2, "msg memory show msgtab bar <=======");
     }
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
+    Object localObject = MobileQQ.sMobileQQ.peekAppRuntime();
+    if ((localObject instanceof BaseQQAppInterface))
     {
-      localObject = ((QQAppInterface)localObject).getHandler(Conversation.class);
+      localObject = a((BaseQQAppInterface)localObject);
       if (localObject != null)
       {
         ((MqqHandler)localObject).sendMessage(((MqqHandler)localObject).obtainMessage(1134067));
@@ -231,15 +241,15 @@ public class MsgBackupManager
         }
       }
     }
-    while (!QLog.isColorLevel()) {
-      return;
+    else if (QLog.isColorLevel())
+    {
+      QLog.e("MsgBackup.BackupAndMigrateManager", 2, "msg memory show msgtab bar app = null!");
     }
-    QLog.e("MsgBackup.BackupAndMigrateManager", 2, "msg memory show msgtab bar app = null!");
   }
   
   public int a()
   {
-    return this.jdField_f_of_type_Int;
+    return this.jdField_e_of_type_Int;
   }
   
   public long a()
@@ -279,65 +289,83 @@ public class MsgBackupManager
   
   public void a(int paramInt, MsgBackupRequest paramMsgBackupRequest, Object paramObject)
   {
-    if (paramMsgBackupRequest.jdField_a_of_type_Int == 0) {}
-    while (paramMsgBackupRequest.jdField_a_of_type_Int != 2) {
+    if (paramMsgBackupRequest.jdField_a_of_type_Int == 0) {
       return;
     }
+    paramInt = paramMsgBackupRequest.jdField_a_of_type_Int;
   }
   
   public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupTransportProcessor.a(this.jdField_e_of_type_JavaLangString, paramInt, paramString);
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupTransportProcessor.a(this.jdField_f_of_type_JavaLangString, paramInt, paramString);
   }
   
-  public void a(long paramLong, int paramInt1, int paramInt2, BaseActivity paramBaseActivity)
+  public void a(long paramLong, int paramInt1, int paramInt2, QBaseActivity paramQBaseActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.BackupAndMigrateManager", 2, "msg memory show msgtab bar----------> bizType = " + paramInt2 + ", finishedCount" + paramInt1 + ", sessionCount = " + jdField_b_of_type_Int);
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("msg memory show msgtab bar----------> bizType = ");
+      ((StringBuilder)localObject1).append(paramInt2);
+      ((StringBuilder)localObject1).append(", finishedCount");
+      ((StringBuilder)localObject1).append(paramInt1);
+      ((StringBuilder)localObject1).append(", sessionCount = ");
+      ((StringBuilder)localObject1).append(jdField_b_of_type_Int);
+      QLog.d("MsgBackup.BackupAndMigrateManager", 2, ((StringBuilder)localObject1).toString());
     }
-    this.jdField_e_of_type_Int = jdField_b_of_type_Int;
-    this.jdField_g_of_type_Int = paramInt2;
+    int j = jdField_b_of_type_Int;
+    this.jdField_d_of_type_Int = j;
+    this.jdField_f_of_type_Int = paramInt2;
     this.jdField_a_of_type_Long = paramLong;
-    this.jdField_f_of_type_Int = paramInt1;
+    this.jdField_e_of_type_Int = paramInt1;
     int i = paramInt1;
-    if (paramInt1 != jdField_b_of_type_Int) {
+    if (paramInt1 != j) {
       i = paramInt1 + 1;
     }
-    MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
-    Message localMessage;
-    String str1;
-    String str2;
+    MqqHandler localMqqHandler = a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
     if (localMqqHandler != null)
     {
-      localMessage = localMqqHandler.obtainMessage(1134066);
-      if (paramInt2 != 1) {
-        break label266;
+      Message localMessage = localMqqHandler.obtainMessage(1134066);
+      Object localObject2;
+      if (paramInt2 == 1)
+      {
+        localObject1 = BaseApplication.getContext().getString(2131690577);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(i);
+        ((StringBuilder)localObject2).append("/");
+        ((StringBuilder)localObject2).append(jdField_b_of_type_Int);
+        localObject2 = ((StringBuilder)localObject2).toString();
       }
-      str1 = BaseApplicationImpl.getApplication().getResources().getString(2131690649);
-      str2 = i + "/" + jdField_b_of_type_Int;
-    }
-    for (;;)
-    {
-      localMessage.obj = String.format(str1, new Object[] { str2, MsgBackupUtil.a(paramLong) + "B/s" });
+      else if (paramInt2 == 3)
+      {
+        localObject1 = BaseApplication.getContext().getResources().getString(2131690579);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(i);
+        ((StringBuilder)localObject2).append("/");
+        ((StringBuilder)localObject2).append(jdField_b_of_type_Int);
+        localObject2 = ((StringBuilder)localObject2).toString();
+      }
+      else
+      {
+        localObject1 = BaseApplication.getContext().getResources().getString(2131690579);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(i);
+        ((StringBuilder)localObject2).append("/");
+        ((StringBuilder)localObject2).append(jdField_b_of_type_Int);
+        localObject2 = ((StringBuilder)localObject2).toString();
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(MsgBackupUtil.a(paramLong));
+      localStringBuilder.append("B/s");
+      localMessage.obj = String.format((String)localObject1, new Object[] { localObject2, localStringBuilder.toString() });
       localMessage.arg1 = paramInt2;
       MsgBackupAuthProcessor.a().a(paramInt2);
       localMqqHandler.sendMessage(localMessage);
       MsgBackupTransportProcessor.a().a(null);
       MsgBackupTransportProcessor.a().a(this.jdField_b_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback);
-      a(paramBaseActivity);
-      paramBaseActivity.finish();
-      return;
-      label266:
-      if (paramInt2 == 3)
-      {
-        str1 = BaseApplicationImpl.getApplication().getResources().getString(2131690651);
-        str2 = i + "/" + jdField_b_of_type_Int;
-      }
-      else
-      {
-        str1 = BaseApplicationImpl.getApplication().getResources().getString(2131690651);
-        str2 = i + "/" + jdField_b_of_type_Int;
-      }
+      ((IMsgBackupTempApi)QRoute.api(IMsgBackupTempApi.class)).gotoConversation(paramQBaseActivity);
+      paramQBaseActivity.finish();
     }
   }
   
@@ -350,64 +378,73 @@ public class MsgBackupManager
     }
     catch (Exception paramActivity)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("MsgBackup.BackupAndMigrateManager", 2, "acquireBrightWakeLock:" + paramActivity.toString());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("acquireBrightWakeLock:");
+        localStringBuilder.append(paramActivity.toString());
+        QLog.e("MsgBackup.BackupAndMigrateManager", 2, localStringBuilder.toString());
+      }
     }
   }
   
-  public void a(BaseActivity paramBaseActivity)
+  public void a(Context paramContext, int paramInt)
   {
-    Intent localIntent = new Intent(paramBaseActivity, SplashActivity.class);
-    localIntent.putExtra("tab_index", FrameControllerUtil.jdField_a_of_type_Int);
-    localIntent.putExtra("fragment_id", 1);
-    localIntent.setFlags(67108864);
-    paramBaseActivity.startActivity(localIntent);
-  }
-  
-  public void a(BaseActivity paramBaseActivity, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.BackupAndMigrateManager", 2, "msg memory show msgtab bar----------> bizType = " + paramInt + ", hasFinishedCount = " + this.jdField_f_of_type_Int + ", sessionCount = " + jdField_b_of_type_Int);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("msg memory show msgtab bar----------> bizType = ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(", hasFinishedCount = ");
+      ((StringBuilder)localObject).append(this.jdField_e_of_type_Int);
+      ((StringBuilder)localObject).append(", sessionCount = ");
+      ((StringBuilder)localObject).append(jdField_b_of_type_Int);
+      QLog.d("MsgBackup.BackupAndMigrateManager", 2, ((StringBuilder)localObject).toString());
     }
     if (paramInt == 1)
     {
       if (QLog.isColorLevel()) {
         QLog.d("MsgBackup.BackupAndMigrateManager", 2, "gotoSpecialPage------------------");
       }
-      if (this.jdField_e_of_type_Int == this.jdField_f_of_type_Int)
+      i = this.jdField_d_of_type_Int;
+      j = this.jdField_e_of_type_Int;
+      if (i == j)
       {
-        MsgBackupCompleteFragment.g(paramBaseActivity, this.jdField_e_of_type_Int, this.jdField_f_of_type_Int);
+        MsgBackupCompleteFragment.g(paramContext, i, j);
         return;
       }
-      MsgBackupPcBaseFragment.a(paramBaseActivity, paramInt);
+      MsgBackupPcBaseFragment.a(paramContext, paramInt);
       return;
     }
     if (paramInt == 3)
     {
-      Intent localIntent = new Intent();
-      if (this.jdField_e_of_type_Int == this.jdField_f_of_type_Int)
+      localObject = new Intent();
+      if (this.jdField_d_of_type_Int == this.jdField_e_of_type_Int)
       {
         if (MsgBackupTransportProcessor.a().e() == 2)
         {
-          MsgBackupCompleteFragment.b(paramBaseActivity, this.jdField_e_of_type_Int, this.jdField_f_of_type_Int);
+          MsgBackupCompleteFragment.b(paramContext, this.jdField_d_of_type_Int, this.jdField_e_of_type_Int);
           return;
         }
-        MsgBackupCompleteFragment.e(paramBaseActivity, this.jdField_e_of_type_Int, this.jdField_f_of_type_Int);
+        MsgBackupCompleteFragment.e(paramContext, this.jdField_d_of_type_Int, this.jdField_e_of_type_Int);
         return;
       }
-      localIntent.putExtra("param_start", 5);
-      PublicFragmentActivity.a(paramBaseActivity, localIntent, MsgBackupTransportFragment.class);
+      ((Intent)localObject).putExtra("param_start", 5);
+      QPublicFragmentActivity.start(paramContext, (Intent)localObject, MsgBackupTransportFragment.class);
       return;
     }
-    if (this.jdField_e_of_type_Int == this.jdField_f_of_type_Int)
+    int i = this.jdField_d_of_type_Int;
+    int j = this.jdField_e_of_type_Int;
+    if (i == j)
     {
-      MsgBackupCompleteFragment.k(paramBaseActivity, this.jdField_e_of_type_Int, this.jdField_f_of_type_Int);
+      MsgBackupCompleteFragment.k(paramContext, i, j);
       return;
     }
-    MsgBackupPcBaseFragment.a(paramBaseActivity, paramInt);
+    MsgBackupPcBaseFragment.a(paramContext, paramInt);
   }
   
-  public void a(QQAppInterface paramQQAppInterface)
+  public void a(BaseQQAppInterface paramBaseQQAppInterface)
   {
     MsgBackupReporter.b();
     d();
@@ -445,54 +482,62 @@ public class MsgBackupManager
   
   public void a(MsgBackupRequest paramMsgBackupRequest, Object paramObject)
   {
-    if (paramMsgBackupRequest.jdField_a_of_type_Int == 0) {
+    if (paramMsgBackupRequest.jdField_a_of_type_Int == 0)
+    {
       if ((paramObject != null) && ((paramObject instanceof MsgBackupSessionInfo)))
       {
         paramMsgBackupRequest = (MsgBackupSessionInfo)paramObject;
         paramObject = new File(MsgBackupUtil.a(paramMsgBackupRequest.jdField_a_of_type_JavaLangString, MsgBackupUtil.b(paramMsgBackupRequest.jdField_a_of_type_Int), paramMsgBackupRequest.jdField_b_of_type_JavaLangString));
-        if (paramObject.exists()) {
-          break label72;
+        if (!paramObject.exists())
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("MsgBackup.BackupAndMigrateManager", 2, "onProgress, db prepared! file is not exist!");
+          }
+          return;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("MsgBackup.BackupAndMigrateManager", 2, "onProgress, db prepared! file is not exist!");
+        paramMsgBackupRequest.jdField_a_of_type_Long = paramObject.length();
+        this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(MsgBackupUtil.b(paramMsgBackupRequest.jdField_a_of_type_JavaLangString, MsgBackupUtil.b(paramMsgBackupRequest.jdField_a_of_type_Int)), paramMsgBackupRequest);
+        if (QLog.isColorLevel())
+        {
+          paramObject = new StringBuilder();
+          paramObject.append("onProgress, db prepared! result = 0, sessionInfo.uin = ");
+          paramObject.append(paramMsgBackupRequest.jdField_a_of_type_JavaLangString);
+          QLog.d("MsgBackup.BackupAndMigrateManager", 2, paramObject.toString());
         }
+        a().i(257);
       }
     }
-    label72:
-    while ((paramMsgBackupRequest.jdField_a_of_type_Int != 2) || (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback == null))
+    else if (paramMsgBackupRequest.jdField_a_of_type_Int == 2)
     {
-      return;
-      paramMsgBackupRequest.jdField_a_of_type_Long = paramObject.length();
-      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(MsgBackupUtil.b(paramMsgBackupRequest.jdField_a_of_type_JavaLangString, MsgBackupUtil.b(paramMsgBackupRequest.jdField_a_of_type_Int)), paramMsgBackupRequest);
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup.BackupAndMigrateManager", 2, "onProgress, db prepared! result = 0, sessionInfo.uin = " + paramMsgBackupRequest.jdField_a_of_type_JavaLangString);
+      paramObject = this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback;
+      if (paramObject != null) {
+        paramObject.b(paramMsgBackupRequest.jdField_c_of_type_Int + 1, paramMsgBackupRequest.jdField_b_of_type_Int);
       }
-      a().i(257);
-      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback.b(paramMsgBackupRequest.jdField_c_of_type_Int + 1, paramMsgBackupRequest.jdField_b_of_type_Int);
   }
   
   public void a(MsgBackupPushData paramMsgBackupPushData)
   {
-    if (jdField_b_of_type_Boolean) {
+    if (jdField_b_of_type_Boolean)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("MsgBackup.BackupAndMigrateManager", 2, "onProcessPush0x11b: now is phone to phone transfer, so please wait the transfer done!");
       }
-    }
-    while (paramMsgBackupPushData == null) {
       return;
     }
-    jdField_c_of_type_Boolean = true;
-    Intent localIntent = new Intent();
-    int i = paramMsgBackupPushData.a();
-    a().a(i);
-    paramMsgBackupPushData = paramMsgBackupPushData.a();
-    a().a(paramMsgBackupPushData);
-    localIntent.putExtra("0x11bpush_extra", paramMsgBackupPushData);
-    localIntent.putExtra("BIZ_TYPE", i);
-    localIntent.addFlags(268435456);
-    PublicFragmentActivity.a(BaseApplicationImpl.getApplication(), localIntent, MsgBackupPCConfirmFragment.class);
+    if (paramMsgBackupPushData != null)
+    {
+      jdField_c_of_type_Boolean = true;
+      Intent localIntent = new Intent();
+      int i = paramMsgBackupPushData.a();
+      a().a(i);
+      paramMsgBackupPushData = paramMsgBackupPushData.a();
+      a().a(paramMsgBackupPushData);
+      localIntent.putExtra("0x11bpush_extra", paramMsgBackupPushData);
+      localIntent.putExtra("BIZ_TYPE", i);
+      localIntent.addFlags(268435456);
+      QPublicFragmentActivity.start(BaseApplication.getContext(), localIntent, MsgBackupPCConfirmFragment.class);
+    }
   }
   
   public void a(Object paramObject)
@@ -500,38 +545,43 @@ public class MsgBackupManager
     if ((paramObject instanceof MsgBackupConfirmQrRsp))
     {
       paramObject = (MsgBackupConfirmQrRsp)paramObject;
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup.BackupAndMigrateManager", 2, "onProcessPush0x11a: " + paramObject);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onProcessPush0x11a: ");
+        localStringBuilder.append(paramObject);
+        QLog.d("MsgBackup.BackupAndMigrateManager", 2, localStringBuilder.toString());
       }
       a(paramObject);
-    }
-    while (!(paramObject instanceof Integer)) {
       return;
     }
-    a(((Integer)paramObject).intValue());
+    if ((paramObject instanceof Integer)) {
+      a(((Integer)paramObject).intValue());
+    }
   }
   
   public void a(String paramString)
   {
     if (paramString != null) {
-      ((MsgBackupAuthHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.MSG_BACK_UP_HANDLER)).c(paramString);
+      ((MsgBackupAuthHandler)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getBusinessHandler(jdField_e_of_type_JavaLangString)).c(paramString);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    int i = 3;
-    if (paramBoolean) {
+    int i;
+    if (paramBoolean)
+    {
       i = 1;
     }
-    for (;;)
+    else
     {
-      a().a(i);
-      this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupTransportProcessor.a(this.jdField_e_of_type_JavaLangString, paramBoolean);
-      return;
       this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupGetQrRsp = null;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqMsgbackupAuthenticationMsgBackupObserver);
+      this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqMsgbackupAuthenticationMsgBackupObserver);
+      i = 3;
     }
+    a().a(i);
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupTransportProcessor.a(this.jdField_f_of_type_JavaLangString, paramBoolean);
   }
   
   public void b()
@@ -556,16 +606,22 @@ public class MsgBackupManager
   
   public void b(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.BackupAndMigrateManager", 2, "msg memory update msgtab bar----------> content = " + paramString + "., bizType = " + paramInt);
-    }
-    MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
-    if (localMqqHandler != null)
+    if (QLog.isColorLevel())
     {
-      Message localMessage = localMqqHandler.obtainMessage(1134066);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("msg memory update msgtab bar----------> content = ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("., bizType = ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("MsgBackup.BackupAndMigrateManager", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
+    if (localObject != null)
+    {
+      Message localMessage = ((MqqHandler)localObject).obtainMessage(1134066);
       localMessage.obj = paramString;
       localMessage.arg1 = paramInt;
-      localMqqHandler.sendMessage(localMessage);
+      ((MqqHandler)localObject).sendMessage(localMessage);
     }
   }
   
@@ -578,8 +634,13 @@ public class MsgBackupManager
     }
     catch (Exception paramActivity)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("MsgBackup.BackupAndMigrateManager", 2, "acquireBrightWakeLock:" + paramActivity.toString());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("acquireBrightWakeLock:");
+        localStringBuilder.append(paramActivity.toString());
+        QLog.e("MsgBackup.BackupAndMigrateManager", 2, localStringBuilder.toString());
+      }
     }
   }
   
@@ -628,24 +689,24 @@ public class MsgBackupManager
   
   public void g()
   {
-    ((MsgBackupAuthHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.MSG_BACK_UP_HANDLER)).a();
+    ((MsgBackupAuthHandler)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getBusinessHandler(jdField_e_of_type_JavaLangString)).a();
   }
   
   public void h()
   {
     MsgBackupUtil.b("MsgBackup.BackupAndMigrateManager", "sFileMeta = %s", new Object[] { jdField_a_of_type_JavaLangString });
-    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {}
-    ((MsgBackupAuthHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.MSG_BACK_UP_HANDLER)).b(jdField_a_of_type_JavaLangString);
+    TextUtils.isEmpty(jdField_a_of_type_JavaLangString);
+    ((MsgBackupAuthHandler)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getBusinessHandler(jdField_e_of_type_JavaLangString)).b(jdField_a_of_type_JavaLangString);
   }
   
   public void i()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqMsgbackupAuthenticationMsgBackupObserver);
+    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqMsgbackupAuthenticationMsgBackupObserver);
   }
   
   public void j()
   {
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupTransportProcessor.a(this.jdField_e_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupTransportProcessor.a(this.jdField_f_of_type_JavaLangString);
   }
   
   public void k()
@@ -655,7 +716,7 @@ public class MsgBackupManager
     if (this.jdField_a_of_type_MqqAppAppRuntime$InterceptKickListener == null) {
       this.jdField_a_of_type_MqqAppAppRuntime$InterceptKickListener = new MsgBackupManager.3(this);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.setInterceptKickListener(this.jdField_a_of_type_MqqAppAppRuntime$InterceptKickListener);
+    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.setInterceptKickListener(this.jdField_a_of_type_MqqAppAppRuntime$InterceptKickListener);
   }
   
   public void l()
@@ -663,10 +724,10 @@ public class MsgBackupManager
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
     if (a())
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.kick(this.jdField_a_of_type_MqqAppAppRuntime$KickParams);
+      this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.kick(this.jdField_a_of_type_MqqAppAppRuntime$KickParams);
       this.jdField_a_of_type_MqqAppAppRuntime$KickParams = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.setInterceptKickListener(null);
+    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.setInterceptKickListener(null);
   }
   
   public void n()
@@ -678,7 +739,7 @@ public class MsgBackupManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.controller.MsgBackupManager
  * JD-Core Version:    0.7.0.1
  */

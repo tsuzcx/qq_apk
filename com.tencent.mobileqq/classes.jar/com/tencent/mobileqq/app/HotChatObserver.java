@@ -12,6 +12,31 @@ public class HotChatObserver
 {
   private void a(boolean paramBoolean, Object paramObject)
   {
+    if ((paramObject instanceof Object[]))
+    {
+      paramObject = (Object[])paramObject;
+      a((String)paramObject[0], paramBoolean, (String)paramObject[1]);
+    }
+  }
+  
+  private void a(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    List localList = (List)paramArrayOfObject[4];
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < localList.size())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localList.get(i));
+      localStringBuilder.append("");
+      localArrayList.add(localStringBuilder.toString());
+      i += 1;
+    }
+    a(paramBoolean, (String)paramArrayOfObject[0], (byte[])paramArrayOfObject[1], ((Integer)paramArrayOfObject[2]).intValue(), ((Integer)paramArrayOfObject[3]).intValue(), localArrayList);
+  }
+  
+  private void b(boolean paramBoolean, Object paramObject)
+  {
     if (paramObject == null)
     {
       a(null, null, paramBoolean, null, null, null);
@@ -26,12 +51,12 @@ public class HotChatObserver
     a("", (String)paramObject[0], paramBoolean, (String)paramObject[1], (String)paramObject[2], null);
   }
   
-  private void a(boolean paramBoolean, Object[] paramArrayOfObject)
+  private void b(boolean paramBoolean, Object[] paramArrayOfObject)
   {
     a(paramBoolean, (byte[])paramArrayOfObject[0], ((Integer)paramArrayOfObject[1]).intValue(), (String)paramArrayOfObject[2]);
   }
   
-  private void b(boolean paramBoolean, Object paramObject)
+  private void c(boolean paramBoolean, Object paramObject)
   {
     if ((paramObject instanceof Object[]))
     {
@@ -40,14 +65,14 @@ public class HotChatObserver
     }
   }
   
-  private void b(boolean paramBoolean, Object[] paramArrayOfObject)
+  private void c(boolean paramBoolean, Object[] paramArrayOfObject)
   {
     if (paramArrayOfObject != null) {
       a(paramBoolean, ((Integer)paramArrayOfObject[0]).intValue(), (List)paramArrayOfObject[1], (Long)paramArrayOfObject[2]);
     }
   }
   
-  private void c(boolean paramBoolean, Object paramObject)
+  private void d(boolean paramBoolean, Object paramObject)
   {
     if ((paramObject instanceof Object[]))
     {
@@ -56,32 +81,23 @@ public class HotChatObserver
     }
   }
   
-  private void c(boolean paramBoolean, Object[] paramArrayOfObject)
+  private void d(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    if (paramArrayOfObject == null) {}
-    boolean bool;
-    do
-    {
-      return;
-      bool = false;
-      if (paramArrayOfObject.length > 2) {
-        bool = ((Boolean)paramArrayOfObject[2]).booleanValue();
-      }
-    } while (!bool);
-    if (paramArrayOfObject.length > 3)
-    {
-      a(paramBoolean, (oidb_0x88d.GroupInfo)paramArrayOfObject[3]);
+    if (paramArrayOfObject == null) {
       return;
     }
-    a(paramBoolean, null);
-  }
-  
-  private void d(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramObject instanceof Object[]))
+    boolean bool = false;
+    if (paramArrayOfObject.length > 2) {
+      bool = ((Boolean)paramArrayOfObject[2]).booleanValue();
+    }
+    if (bool)
     {
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, (String)paramObject[0], (String)paramObject[1], (String)paramObject[2]);
+      if (paramArrayOfObject.length > 3)
+      {
+        a(paramBoolean, (oidb_0x88d.GroupInfo)paramArrayOfObject[3]);
+        return;
+      }
+      a(paramBoolean, null);
     }
   }
   
@@ -90,7 +106,7 @@ public class HotChatObserver
     if ((paramObject instanceof Object[]))
     {
       paramObject = (Object[])paramObject;
-      a(paramBoolean, (String)paramObject[0], (String)paramObject[1]);
+      a(paramBoolean, (String)paramObject[0], (String)paramObject[1], (String)paramObject[2]);
     }
   }
   
@@ -99,7 +115,7 @@ public class HotChatObserver
     if ((paramObject instanceof Object[]))
     {
       paramObject = (Object[])paramObject;
-      a((String)paramObject[0], paramBoolean, (String)paramObject[1]);
+      a(paramBoolean, (String)paramObject[0], (String)paramObject[1]);
     }
   }
   
@@ -108,11 +124,20 @@ public class HotChatObserver
     if ((paramObject instanceof Object[]))
     {
       paramObject = (Object[])paramObject;
-      b(paramBoolean, (String)paramObject[0], (String)paramObject[1]);
+      a((String)paramObject[0], paramBoolean, (String)paramObject[1]);
     }
   }
   
   private void h(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramObject instanceof Object[]))
+    {
+      paramObject = (Object[])paramObject;
+      b(paramBoolean, (String)paramObject[0], (String)paramObject[1]);
+    }
+  }
+  
+  private void i(boolean paramBoolean, Object paramObject)
   {
     if ((paramObject instanceof Object[]))
     {
@@ -165,111 +190,99 @@ public class HotChatObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
+    int i = 0;
     switch (paramInt)
     {
-    case 1042: 
     case 1043: 
     case 1044: 
     case 1045: 
     case 1048: 
     case 1049: 
     default: 
-    case 1031: 
-    case 1032: 
-    case 1033: 
-      do
-      {
-        return;
-        if (paramBoolean) {}
-        for (paramInt = 0;; paramInt = -1)
-        {
-          a(paramInt);
-          return;
-        }
-        a(paramBoolean, paramObject);
-        return;
-      } while (!(paramObject instanceof Object[]));
-      paramObject = (Object[])paramObject;
-      a((String)paramObject[0], paramBoolean, (String)paramObject[1]);
+    case 1058: 
+      i(paramBoolean, paramObject);
       return;
-    case 1034: 
-      b(paramBoolean, paramObject);
+    case 1057: 
+      h(paramBoolean, paramObject);
       return;
-    case 1035: 
-      a(paramBoolean, (Object[])paramObject);
+    case 1056: 
+      g(paramBoolean, paramObject);
       return;
-    case 1036: 
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, (String)paramObject[0], (byte[])paramObject[1], ((Integer)paramObject[2]).intValue(), (String)paramObject[3], (String)paramObject[4], (List)paramObject[5]);
+    case 1055: 
+      f(paramBoolean, paramObject);
       return;
-    case 1050: 
-      paramObject = (Object[])paramObject;
-      List localList = (List)paramObject[4];
-      ArrayList localArrayList = new ArrayList();
-      paramInt = 0;
-      while (paramInt < localList.size())
-      {
-        localArrayList.add(localList.get(paramInt) + "");
-        paramInt += 1;
-      }
-      a(paramBoolean, (String)paramObject[0], (byte[])paramObject[1], ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), localArrayList);
+    case 1054: 
+      e(paramBoolean, paramObject);
       return;
-    case 1051: 
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue());
-      return;
-    case 1037: 
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2], (String)paramObject[3]);
+    case 1053: 
+      d(paramBoolean, paramObject);
       return;
     case 1052: 
       paramObject = (Object[])paramObject;
       b(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2], (String)paramObject[3]);
       return;
-    case 1038: 
+    case 1051: 
       paramObject = (Object[])paramObject;
-      b(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
+      a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue());
       return;
-    case 1039: 
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2], (Long)paramObject[3]);
+    case 1050: 
+      a(paramBoolean, (Object[])paramObject);
       return;
-    case 1040: 
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
+    case 1047: 
+      d(paramBoolean, (Object[])paramObject);
+      return;
+    case 1046: 
+      c(paramBoolean, (Object[])paramObject);
       return;
     case 1041: 
       paramObject = (Object[])paramObject;
       a((String)paramObject[0], (HotChatManager.HotChatStateWrapper)paramObject[1]);
       return;
-    case 1046: 
+    case 1040: 
+      paramObject = (Object[])paramObject;
+      a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
+      return;
+    case 1039: 
+      paramObject = (Object[])paramObject;
+      a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2], (Long)paramObject[3]);
+      return;
+    case 1038: 
+      paramObject = (Object[])paramObject;
+      b(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
+      return;
+    case 1037: 
+      paramObject = (Object[])paramObject;
+      a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2], (String)paramObject[3]);
+      return;
+    case 1036: 
+      paramObject = (Object[])paramObject;
+      a(paramBoolean, (String)paramObject[0], (byte[])paramObject[1], ((Integer)paramObject[2]).intValue(), (String)paramObject[3], (String)paramObject[4], (List)paramObject[5]);
+      return;
+    case 1035: 
       b(paramBoolean, (Object[])paramObject);
       return;
-    case 1047: 
-      c(paramBoolean, (Object[])paramObject);
-      return;
-    case 1053: 
+    case 1034: 
       c(paramBoolean, paramObject);
       return;
-    case 1054: 
-      d(paramBoolean, paramObject);
+    case 1033: 
+      a(paramBoolean, paramObject);
       return;
-    case 1055: 
-      e(paramBoolean, paramObject);
+    case 1032: 
+      b(paramBoolean, paramObject);
       return;
-    case 1056: 
-      f(paramBoolean, paramObject);
-      return;
-    case 1057: 
-      g(paramBoolean, paramObject);
-      return;
+    case 1031: 
+      if (paramBoolean) {
+        paramInt = i;
+      } else {
+        paramInt = -1;
+      }
+      a(paramInt);
     }
-    h(paramBoolean, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.HotChatObserver
  * JD-Core Version:    0.7.0.1
  */

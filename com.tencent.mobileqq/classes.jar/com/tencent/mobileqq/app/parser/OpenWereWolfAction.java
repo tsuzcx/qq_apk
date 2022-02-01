@@ -5,145 +5,152 @@ import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
+import com.tencent.mobileqq.app.utils.RouteUtils;
+import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
 public class OpenWereWolfAction
-  extends JumpActionBase
+  extends JumpAction
 {
   public OpenWereWolfAction(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     super(paramQQAppInterface, paramContext);
   }
   
-  private boolean C()
+  public boolean a()
   {
-    int j = 0;
-    if (!NetworkUtil.g(BaseApplicationImpl.getApplication()))
+    boolean bool = false;
+    try
     {
-      QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131694460, 1).a();
+      if ("openInvitationRoom".equals(this.c)) {
+        return b();
+      }
+      if ("enterGameRoom".equals(this.c)) {
+        bool = c();
+      }
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doAction error: ");
+      localStringBuilder.append(localException.getMessage());
+      QLog.e("OpenWereWolfAction", 1, localStringBuilder.toString());
+      b_("OpenWereWolfAction");
+    }
+    return false;
+  }
+  
+  protected boolean b()
+  {
+    boolean bool = NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getApplication());
+    int j = 0;
+    if (!bool)
+    {
+      QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131694425, 1).a();
       return false;
     }
-    Object localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get("invitorId");
+    Object localObject = (String)this.a.get("invitorId");
     int i = 10;
-    for (;;)
+    try
     {
-      try
-      {
-        k = Integer.parseInt((String)this.jdField_a_of_type_JavaUtilHashMap.get("roomNum"));
-        i = k;
-      }
-      catch (Exception localException3)
-      {
-        int k;
-        long l1;
-        long l2;
-        label106:
-        continue;
-      }
-      try
-      {
-        k = Integer.parseInt((String)this.jdField_a_of_type_JavaUtilHashMap.get("zoneId"));
-        j = k;
-      }
-      catch (Exception localException2) {}
+      k = Integer.parseInt((String)this.a.get("roomNum"));
+      i = k;
+    }
+    catch (Exception localException1)
+    {
+      int k;
+      label66:
+      label84:
+      long l1;
+      break label66;
+    }
+    try
+    {
+      k = Integer.parseInt((String)this.a.get("zoneId"));
+      j = k;
+    }
+    catch (Exception localException2)
+    {
+      break label84;
     }
     l1 = -1L;
     try
     {
-      l2 = Long.parseLong((String)this.jdField_a_of_type_JavaUtilHashMap.get("gc"));
+      long l2 = Long.parseLong((String)this.a.get("gc"));
       l1 = l2;
     }
-    catch (Exception localException1)
+    catch (Exception localException3)
     {
-      break label106;
+      label110:
+      Intent localIntent;
+      break label110;
     }
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, GameRoomTransActivity.class);
+      localObject = new Intent();
       ((Intent)localObject).putExtra("roomNum", i);
       ((Intent)localObject).putExtra("action", 3);
       ((Intent)localObject).putExtra("zoneId", j);
       ((Intent)localObject).putExtra("gc", l1);
-      this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-    }
-    for (;;)
-    {
+      RouteUtils.a(BaseApplicationImpl.getContext(), (Intent)localObject, "/nearby/gameroom/trans");
       return true;
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, GameRoomTransActivity.class);
-      localIntent.putExtra("inviteId", (String)localObject);
-      localIntent.putExtra("roomNum", i);
-      localIntent.putExtra("zoneId", j);
-      localIntent.putExtra("action", 2);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
     }
+    localIntent = new Intent();
+    localIntent.putExtra("inviteId", (String)localObject);
+    localIntent.putExtra("roomNum", i);
+    localIntent.putExtra("zoneId", j);
+    localIntent.putExtra("action", 2);
+    RouteUtils.a(BaseApplicationImpl.getContext(), localIntent, "/nearby/gameroom/trans");
+    return true;
   }
   
-  private boolean D()
+  protected boolean c()
   {
-    if (!NetworkUtil.g(BaseApplicationImpl.getApplication()))
+    boolean bool = NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getApplication());
+    int j = 0;
+    if (!bool)
     {
-      QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131694460, 1).a();
+      QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131694425, 1).a();
       return false;
     }
     int i = 10;
-    for (;;)
-    {
-      try
-      {
-        j = Integer.parseInt((String)this.jdField_a_of_type_JavaUtilHashMap.get("roomNum"));
-        i = j;
-      }
-      catch (Exception localException2)
-      {
-        int j;
-        Intent localIntent;
-        continue;
-      }
-      try
-      {
-        j = Integer.parseInt((String)this.jdField_a_of_type_JavaUtilHashMap.get("zoneId"));
-        localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, GameRoomTransActivity.class);
-        localIntent.putExtra("roomNum", i);
-        localIntent.putExtra("zoneId", j);
-        localIntent.putExtra("action", 1);
-        this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-        return true;
-      }
-      catch (Exception localException1)
-      {
-        j = 0;
-      }
-    }
-  }
-  
-  public boolean a()
-  {
     try
     {
-      if (this.c.equals("openInvitationRoom")) {
-        return C();
-      }
-      if (this.c.equals("enterGameRoom"))
-      {
-        boolean bool = D();
-        return bool;
-      }
+      k = Integer.parseInt((String)this.a.get("roomNum"));
+      i = k;
     }
-    catch (Exception localException)
+    catch (Exception localException1)
     {
-      QLog.e("OpenWereWolfAction", 1, "doAction error: " + localException.getMessage());
-      a("OpenWereWolfAction");
+      int k;
+      label52:
+      label70:
+      Intent localIntent;
+      break label52;
     }
-    return false;
+    try
+    {
+      k = Integer.parseInt((String)this.a.get("zoneId"));
+      j = k;
+    }
+    catch (Exception localException2)
+    {
+      break label70;
+    }
+    localIntent = new Intent();
+    localIntent.putExtra("roomNum", i);
+    localIntent.putExtra("zoneId", j);
+    localIntent.putExtra("action", 1);
+    RouteUtils.a(BaseApplicationImpl.getContext(), localIntent, "/nearby/gameroom/trans");
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.OpenWereWolfAction
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,7 @@ public final class LogUploadMessage$LogParam
   public static final int LTE = 2;
   public static final int SDK = 1;
   public static final int WIFI = 1;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 56, 64, 72 }, new String[] { "url", "authorization", "apn", "begin_at", "end_at", "log_type", "sdkappid", "tinyid", "seq" }, new Object[] { "", "", Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(3), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0) }, LogParam.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBEnumField apn = PBField.initEnum(1);
   public final PBStringField authorization = PBField.initString("");
   public final PBUInt32Field begin_at = PBField.initUInt32(0);
@@ -27,6 +27,13 @@ public final class LogUploadMessage$LogParam
   public final PBUInt32Field seq = PBField.initUInt32(0);
   public final PBUInt64Field tinyid = PBField.initUInt64(0L);
   public final PBStringField url = PBField.initString("");
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 56, 64, 72 }, new String[] { "url", "authorization", "apn", "begin_at", "end_at", "log_type", "sdkappid", "tinyid", "seq" }, new Object[] { "", "", Integer.valueOf(1), localInteger, localInteger, Integer.valueOf(3), localLong, localLong, localInteger }, LogParam.class);
+  }
 }
 
 

@@ -14,7 +14,7 @@ public final class HttpMethod
   
   public static boolean redirectsToGet(String paramString)
   {
-    return !paramString.equals("PROPFIND");
+    return paramString.equals("PROPFIND") ^ true;
   }
   
   public static boolean redirectsWithBody(String paramString)
@@ -29,7 +29,7 @@ public final class HttpMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.internal.http.HttpMethod
  * JD-Core Version:    0.7.0.1
  */

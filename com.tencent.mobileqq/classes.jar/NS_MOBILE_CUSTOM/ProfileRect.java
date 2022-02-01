@@ -51,14 +51,15 @@ public final class ProfileRect
     paramJceOutputStream.write(this.iWp, 2);
     paramJceOutputStream.write(this.iHp, 3);
     paramJceOutputStream.write(this.eAlignType, 4);
-    if (this.vecIndexContainer != null) {
-      paramJceOutputStream.write(this.vecIndexContainer, 5);
+    ArrayList localArrayList = this.vecIndexContainer;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_CUSTOM.ProfileRect
  * JD-Core Version:    0.7.0.1
  */

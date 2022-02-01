@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#0d03081a" />
-    <size android:height="6.0dip" android:width="6.0dip" />
-</shape>
+<bitmap android:src="@drawable/g06" android:tileMode="repeat"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

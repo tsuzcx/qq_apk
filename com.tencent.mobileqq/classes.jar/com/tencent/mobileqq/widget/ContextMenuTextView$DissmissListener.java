@@ -14,18 +14,15 @@ class ContextMenuTextView$DissmissListener
   {
     if (Build.VERSION.SDK_INT < 16) {
       ContextMenuTextView.a(this.a, null);
-    }
-    for (;;)
-    {
-      this.a.a = null;
-      return;
+    } else {
       ContextMenuTextView.b(this.a, null);
     }
+    this.a.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ContextMenuTextView.DissmissListener
  * JD-Core Version:    0.7.0.1
  */

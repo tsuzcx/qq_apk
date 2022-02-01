@@ -34,12 +34,22 @@ public class LhHelper
   
   private String a()
   {
-    return MD5.toMD5("cmd=rsp&key=a4d7ea5belhtimecard&uin=" + this.jdField_a_of_type_JavaLangString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("cmd=rsp&key=a4d7ea5belhtimecard&uin=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    return MD5.toMD5(localStringBuilder.toString());
   }
   
   private String a(int paramInt)
   {
-    return MD5.toMD5("cmd=" + paramInt + "&key=" + "a4d7ea5belhtimecard" + "&uin=" + this.jdField_a_of_type_JavaLangString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("cmd=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("&key=");
+    localStringBuilder.append("a4d7ea5belhtimecard");
+    localStringBuilder.append("&uin=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    return MD5.toMD5(localStringBuilder.toString());
   }
   
   private OkHttpClient a()
@@ -49,48 +59,64 @@ public class LhHelper
   
   private JSONObject a(int paramInt)
   {
-    int i;
     try
     {
-      Object localObject = b(paramInt);
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
+      Object localObject1 = b(paramInt);
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
         return null;
       }
-      QLog.d("LhHelper", 1, "reqCgi cmd = " + paramInt);
-      localObject = new Request.Builder().url((String)localObject).build();
-      localObject = a().newCall((Request)localObject).execute();
-      i = ((Response)localObject).code();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("reqCgi cmd = ");
+      ((StringBuilder)localObject2).append(paramInt);
+      QLog.d("LhHelper", 1, ((StringBuilder)localObject2).toString());
+      localObject1 = new Request.Builder().url((String)localObject1).build();
+      localObject1 = a().newCall((Request)localObject1).execute();
+      int i = ((Response)localObject1).code();
       if (i == 200)
       {
-        localObject = new JSONObject(((Response)localObject).body().string()).optJSONObject("12042");
-        if (localObject == null) {
-          break label280;
+        localObject1 = new JSONObject(((Response)localObject1).body().string()).optJSONObject("12042");
+        if (localObject1 == null) {
+          return null;
         }
-        localObject = ((JSONObject)localObject).optJSONObject("data");
-        if (localObject == null) {
-          break label280;
+        localObject1 = ((JSONObject)localObject1).optJSONObject("data");
+        if (localObject1 == null) {
+          return null;
         }
-        localObject = ((JSONObject)localObject).optJSONObject("rsp");
-        if (localObject == null) {
-          break label280;
+        localObject1 = ((JSONObject)localObject1).optJSONObject("rsp");
+        if (localObject1 == null) {
+          return null;
         }
-        i = ((JSONObject)localObject).optInt("ret");
-        String str = ((JSONObject)localObject).optString("sign");
-        QLog.d("LhHelper", 1, "reqCgi retCode = " + i);
-        if ((i == 0) && (a().equalsIgnoreCase(str))) {
-          return localObject;
+        i = ((JSONObject)localObject1).optInt("ret");
+        localObject2 = ((JSONObject)localObject1).optString("sign");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("reqCgi retCode = ");
+        localStringBuilder.append(i);
+        QLog.d("LhHelper", 1, localStringBuilder.toString());
+        if ((i == 0) && (a().equalsIgnoreCase((String)localObject2))) {
+          return localObject1;
         }
-        QLog.e("LhHelper", 1, "reqCgi rsp sign error, cmd = " + paramInt);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("reqCgi rsp sign error, cmd = ");
+        ((StringBuilder)localObject1).append(paramInt);
+        QLog.e("LhHelper", 1, ((StringBuilder)localObject1).toString());
         return null;
       }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("reqCgi http errorCode = ");
+      ((StringBuilder)localObject1).append(i);
+      ((StringBuilder)localObject1).append(" ,cmd = ");
+      ((StringBuilder)localObject1).append(paramInt);
+      QLog.e("LhHelper", 1, ((StringBuilder)localObject1).toString());
+      return null;
     }
     catch (Throwable localThrowable)
     {
-      QLog.e("LhHelper", 1, "reqCgi exception cmd =" + paramInt + ", e = ", localThrowable);
-      return null;
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("reqCgi exception cmd =");
+      ((StringBuilder)localObject2).append(paramInt);
+      ((StringBuilder)localObject2).append(", e = ");
+      QLog.e("LhHelper", 1, ((StringBuilder)localObject2).toString(), localThrowable);
     }
-    QLog.e("LhHelper", 1, "reqCgi http errorCode = " + i + " ,cmd = " + paramInt);
-    label280:
     return null;
   }
   
@@ -115,17 +141,24 @@ public class LhHelper
   {
     try
     {
-      String str = a(paramInt);
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("cmd", paramInt);
-      localJSONObject.put("sign", str);
-      localJSONObject.put("uin", this.jdField_a_of_type_JavaLangString);
-      str = "https://proxy.vip.qq.com/cgi-bin/srfentry.fcgi?data=" + a(localJSONObject);
-      return str;
+      localObject2 = a(paramInt);
+      Object localObject1 = new JSONObject();
+      ((JSONObject)localObject1).put("cmd", paramInt);
+      ((JSONObject)localObject1).put("sign", localObject2);
+      ((JSONObject)localObject1).put("uin", this.jdField_a_of_type_JavaLangString);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("https://proxy.vip.qq.com/cgi-bin/srfentry.fcgi?data=");
+      ((StringBuilder)localObject2).append(a((JSONObject)localObject1));
+      localObject1 = ((StringBuilder)localObject2).toString();
+      return localObject1;
     }
     catch (Throwable localThrowable)
     {
-      QLog.e("LhHelper", 1, "buildReqUrl cmd = " + paramInt + "exception e = ", localThrowable);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("buildReqUrl cmd = ");
+      ((StringBuilder)localObject2).append(paramInt);
+      ((StringBuilder)localObject2).append("exception e = ");
+      QLog.e("LhHelper", 1, ((StringBuilder)localObject2).toString(), localThrowable);
     }
     return null;
   }
@@ -146,10 +179,7 @@ public class LhHelper
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        QLog.e("LhHelper", 1, "receiveReq exception e = ", localThrowable);
-      }
+      QLog.e("LhHelper", 1, "receiveReq exception e = ", localThrowable);
     }
     return false;
   }
@@ -163,11 +193,14 @@ public class LhHelper
   {
     try
     {
-      JSONObject localJSONObject = a(3);
-      if (localJSONObject != null)
+      Object localObject = a(3);
+      if (localObject != null)
       {
-        int i = localJSONObject.optInt("lhState", -1);
-        QLog.d("LhHelper", 1, "reqLhStatus lhState = " + i);
+        int i = ((JSONObject)localObject).optInt("lhState", -1);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("reqLhStatus lhState = ");
+        ((StringBuilder)localObject).append(i);
+        QLog.d("LhHelper", 1, ((StringBuilder)localObject).toString());
         if (i == 2) {
           return true;
         }
@@ -179,10 +212,7 @@ public class LhHelper
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        QLog.e("LhHelper", 1, "reqLhStatus exception e = ", localThrowable);
-      }
+      QLog.e("LhHelper", 1, "reqLhStatus exception e = ", localThrowable);
     }
     return false;
   }
@@ -199,15 +229,12 @@ public class LhHelper
         int i = localJSONObject.optInt("cardState", -1);
         if ((this.jdField_a_of_type_Int != -1) && (this.b != -1))
         {
-          if (i == 0) {
-            return 1;
+          if (i != 0) {
+            break label98;
           }
+          return 1;
         }
-        else
-        {
-          QLog.e("LhHelper", 1, "checkUserStatus buyoutData is error");
-          break label101;
-        }
+        QLog.e("LhHelper", 1, "checkUserStatus buyoutData is error");
       }
       else
       {
@@ -218,14 +245,14 @@ public class LhHelper
     {
       QLog.e("LhHelper", 1, "checkUserStatus exception e = ", localThrowable);
     }
-    return 2;
-    label101:
     return 3;
+    label98:
+    return 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.LhHelper
  * JD-Core Version:    0.7.0.1
  */

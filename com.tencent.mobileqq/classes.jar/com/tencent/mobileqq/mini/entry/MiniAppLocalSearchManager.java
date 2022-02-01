@@ -44,58 +44,60 @@ public class MiniAppLocalSearchManager
   
   private boolean updateEntity(EntityManager paramEntityManager, Entity paramEntity)
   {
-    boolean bool2 = false;
+    boolean bool2 = paramEntityManager.isOpen();
     boolean bool1 = false;
-    if (paramEntityManager.isOpen()) {
+    if (bool2)
+    {
       if (paramEntity.getStatus() == 1000)
       {
         paramEntityManager.persistOrReplace(paramEntity);
         if (paramEntity.getStatus() == 1001) {
           bool1 = true;
         }
-        paramEntityManager.close();
       }
-    }
-    do
-    {
+      else if ((paramEntity.getStatus() == 1001) || (paramEntity.getStatus() == 1002))
+      {
+        bool1 = paramEntityManager.update(paramEntity);
+      }
+      paramEntityManager.close();
       return bool1;
-      if ((paramEntity.getStatus() != 1001) && (paramEntity.getStatus() != 1002)) {
-        break;
-      }
-      bool1 = paramEntityManager.update(paramEntity);
-      break;
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.d("MiniAppLocalSearchManager", 2, "updateEntity em closed e=" + paramEntity.getTableName());
+    }
+    if (QLog.isColorLevel())
+    {
+      paramEntityManager = new StringBuilder();
+      paramEntityManager.append("updateEntity em closed e=");
+      paramEntityManager.append(paramEntity.getTableName());
+      QLog.d("MiniAppLocalSearchManager", 2, paramEntityManager.toString());
+    }
     return false;
   }
   
   public List<MiniAppLocalSearchEntity> getLocalSearchData()
   {
     Object localObject = getAppInterface();
+    List localList = null;
     if (localObject == null)
     {
       QLog.e("MiniAppLocalSearchManager", 2, "getLocalSearchData, app is null.");
       return null;
     }
     localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
+    boolean bool = false;
     MiniAppConfBean localMiniAppConfBean = MiniAppConfProcessor.a();
-    if (localMiniAppConfBean != null) {}
-    for (boolean bool = localMiniAppConfBean.b();; bool = false)
-    {
-      if (!bool)
-      {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("MiniAppLocalSearchManager", 2, "getLocalSearchData, close local search.");
-        return null;
-      }
-      if (localObject == null) {
-        break;
-      }
-      return ((EntityManager)localObject).query(MiniAppLocalSearchEntity.class, MiniAppLocalSearchEntity.class.getSimpleName(), false, null, null, null, null, null, null);
+    if (localMiniAppConfBean != null) {
+      bool = localMiniAppConfBean.b();
     }
+    if (!bool)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MiniAppLocalSearchManager", 2, "getLocalSearchData, close local search.");
+      }
+      return null;
+    }
+    if (localObject != null) {
+      localList = ((EntityManager)localObject).query(MiniAppLocalSearchEntity.class, MiniAppLocalSearchEntity.class.getSimpleName(), false, null, null, null, null, null, null);
+    }
+    return localList;
   }
   
   public void onDestroy() {}
@@ -112,7 +114,7 @@ public class MiniAppLocalSearchManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppLocalSearchManager
  * JD-Core Version:    0.7.0.1
  */

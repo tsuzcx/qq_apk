@@ -18,7 +18,11 @@ final class EnginePackageManager$2
   
   public void onDownloadFailed(int paramInt, String paramString)
   {
-    GameLog.getInstance().i("GameEnvManager[MiniEng]", "downloadLatestTritonEngine failed, from:" + this.val$tritonEngineInfo);
+    paramString = GameLog.getInstance();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("downloadLatestTritonEngine failed, from:");
+    localStringBuilder.append(this.val$tritonEngineInfo);
+    paramString.i("GameEnvManager[MiniEng]", localStringBuilder.toString());
     MiniReportManager.reportEventType(ReportConst.miniAppConfigForPreload(), 5, null, null, null, 1, "1", 0L, null);
   }
   
@@ -28,14 +32,22 @@ final class EnginePackageManager$2
   
   public void onDownloadSucceed(int paramInt, String paramString, DownloaderProxy.DownloadListener.DownloadResult paramDownloadResult)
   {
-    GameLog.getInstance().i("GameEnvManager[MiniEng]", "[安装小游戏新版本so] 下载成功, version:" + this.val$version + ", path:" + paramString + ", url:" + this.val$tritonEngineInfo.baseLibUrl);
+    paramDownloadResult = GameLog.getInstance();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[安装小游戏新版本so] 下载成功, version:");
+    localStringBuilder.append(this.val$version);
+    localStringBuilder.append(", path:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", url:");
+    localStringBuilder.append(this.val$tritonEngineInfo.baseLibUrl);
+    paramDownloadResult.i("GameEnvManager[MiniEng]", localStringBuilder.toString());
     MiniReportManager.reportEventType(ReportConst.miniAppConfigForPreload(), 5, "1");
     ThreadManager.executeOnDiskIOThreadPool(new EnginePackageManager.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.manager.EnginePackageManager.2
  * JD-Core Version:    0.7.0.1
  */

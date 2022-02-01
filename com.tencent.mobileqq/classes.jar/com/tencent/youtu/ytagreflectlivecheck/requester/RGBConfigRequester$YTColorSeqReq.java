@@ -5,8 +5,8 @@ import android.os.Build.VERSION;
 
 public class RGBConfigRequester$YTColorSeqReq
 {
-  public String android_apilevel = "" + Build.VERSION.SDK_INT;
-  public String android_version = Build.VERSION.RELEASE;
+  public String android_apilevel;
+  public String android_version;
   public String app_id;
   public String build_brand = Build.BRAND;
   public String build_device = Build.DEVICE;
@@ -23,6 +23,11 @@ public class RGBConfigRequester$YTColorSeqReq
   
   public RGBConfigRequester$YTColorSeqReq(String paramString1, String paramString2, String paramString3)
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(Build.VERSION.SDK_INT);
+    this.android_apilevel = localStringBuilder.toString();
+    this.android_version = Build.VERSION.RELEASE;
     this.app_id = paramString1;
     this.business_name = paramString2;
     this.person_id = paramString3;
@@ -31,7 +36,7 @@ public class RGBConfigRequester$YTColorSeqReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.youtu.ytagreflectlivecheck.requester.RGBConfigRequester.YTColorSeqReq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.tavcut.exporter;
 
 import android.graphics.Bitmap.CompressFormat;
+import com.tencent.tav.coremedia.CGSize;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,7 @@ public class ImageExportConfig
   private int maxExportSize = -1;
   private List<String> outputPaths = new ArrayList();
   private int quality = 100;
+  private CGSize screenSize = null;
   
   public Bitmap.CompressFormat getFormat()
   {
@@ -32,6 +34,11 @@ public class ImageExportConfig
     return this.quality;
   }
   
+  public CGSize getScreenSize()
+  {
+    return this.screenSize;
+  }
+  
   public void setFormat(Bitmap.CompressFormat paramCompressFormat)
   {
     this.format = paramCompressFormat;
@@ -51,10 +58,15 @@ public class ImageExportConfig
   {
     this.quality = paramInt;
   }
+  
+  public void setScreenSize(CGSize paramCGSize)
+  {
+    this.screenSize = paramCGSize;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.exporter.ImageExportConfig
  * JD-Core Version:    0.7.0.1
  */

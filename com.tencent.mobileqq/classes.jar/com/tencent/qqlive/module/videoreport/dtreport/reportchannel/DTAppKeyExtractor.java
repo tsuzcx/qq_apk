@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-class DTAppKeyExtractor
+public class DTAppKeyExtractor
 {
   private static final Set<String> sElementEvents = new HashSet();
   
@@ -19,54 +19,49 @@ class DTAppKeyExtractor
     sElementEvents.add("clck");
   }
   
-  static String getAppKey(String paramString, Map<String, Object> paramMap)
+  public static String getAppKey(String paramString, Map<String, Object> paramMap)
   {
-    String str = null;
     if (paramMap == null) {
-      paramMap = str;
+      return null;
     }
-    Object localObject;
-    do
+    String str = getAppKeyFromMap(paramMap);
+    if (!TextUtils.isEmpty(str)) {
+      return str;
+    }
+    paramMap = paramMap.get("udf_kv");
+    if (!(paramMap instanceof Map)) {
+      return null;
+    }
+    str = getAppKeyFromMap(paramMap);
+    if (TextUtils.isEmpty(str))
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return paramMap;
-            localObject = getAppKeyFromMap(paramMap);
-            if (!TextUtils.isEmpty((CharSequence)localObject)) {
-              return localObject;
-            }
-            localObject = paramMap.get("udf_kv");
-            paramMap = str;
-          } while (!(localObject instanceof Map));
-          str = getAppKeyFromMap(localObject);
-          paramMap = str;
-        } while (!TextUtils.isEmpty(str));
-        paramMap = str;
-      } while (!isElementEvent(paramString));
-      paramString = getAppKeyFromElementPath(((Map)localObject).get("element_params"));
-      paramMap = paramString;
-    } while (!TextUtils.isEmpty(paramString));
-    return getAppKeyFromMap(((Map)localObject).get("cur_pg"));
+      if (!isElementEvent(paramString)) {
+        return str;
+      }
+      paramString = (Map)paramMap;
+      paramMap = getAppKeyFromElementPath(paramString.get("element_params"));
+      if (!TextUtils.isEmpty(paramMap)) {
+        return paramMap;
+      }
+      return getAppKeyFromMap(paramString.get("cur_pg"));
+    }
+    return str;
   }
   
   private static String getAppKeyFromElementPath(Object paramObject)
   {
-    if (!(paramObject instanceof List)) {}
-    String str;
-    do
+    if (!(paramObject instanceof List)) {
+      return null;
+    }
+    paramObject = ((List)paramObject).iterator();
+    while (paramObject.hasNext())
     {
-      while (!paramObject.hasNext())
-      {
-        return null;
-        paramObject = ((List)paramObject).iterator();
+      String str = getAppKeyFromMap(paramObject.next());
+      if (!TextUtils.isEmpty(str)) {
+        return str;
       }
-      str = getAppKeyFromMap(paramObject.next());
-    } while (TextUtils.isEmpty(str));
-    return str;
+    }
+    return null;
   }
   
   private static String getAppKeyFromMap(@NonNull Object paramObject)
@@ -88,7 +83,7 @@ class DTAppKeyExtractor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.reportchannel.DTAppKeyExtractor
  * JD-Core Version:    0.7.0.1
  */

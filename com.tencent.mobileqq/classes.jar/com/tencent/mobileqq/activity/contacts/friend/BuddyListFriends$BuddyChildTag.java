@@ -25,7 +25,7 @@ public class BuddyListFriends$BuddyChildTag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.friend.BuddyListFriends.BuddyChildTag
  * JD-Core Version:    0.7.0.1
  */

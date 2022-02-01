@@ -11,15 +11,10 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class DeviceInfoUtils
 {
-  private static int jdField_a_of_type_Int = 0;
+  private static int jdField_a_of_type_Int;
   private static long jdField_a_of_type_Long = 0L;
-  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-  private static int b = 0;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  }
+  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private static int b;
   
   public static int a()
   {
@@ -42,28 +37,21 @@ public class DeviceInfoUtils
   {
     int j = DeviceOptSwitch.a().getInt("localLevel", 0);
     int i = j;
-    long l2;
     if (j == 0)
     {
       i = DeviceInfoUtil.b();
       long l1 = DeviceInfoUtil.c();
-      l2 = DeviceInfoUtil.a();
-      if ((i < 8) || (l1 < 2000000L) || (l2 < 5368709120L)) {
-        break label79;
-      }
-      i = 1;
-    }
-    for (;;)
-    {
-      DeviceOptSwitch.a().edit().putInt("localLevel", i).apply();
-      return i;
-      label79:
-      if ((i <= 6) || (l2 <= 3221225472L)) {
-        i = 3;
-      } else {
+      long l2 = DeviceInfoUtil.a();
+      if ((i >= 8) && (l1 >= 2000000L) && (l2 >= 5368709120L)) {
+        i = 1;
+      } else if ((i > 6) && (l2 > 3221225472L)) {
         i = 2;
+      } else {
+        i = 3;
       }
     }
+    DeviceOptSwitch.a().edit().putInt("localLevel", i).apply();
+    return i;
   }
   
   public static boolean b()
@@ -73,24 +61,24 @@ public class DeviceInfoUtils
   
   private static int c()
   {
-    int i = 0;
-    if (jdField_a_of_type_Int != 0) {
-      i = jdField_a_of_type_Int;
-    }
-    do
-    {
+    int i = jdField_a_of_type_Int;
+    if (i != 0) {
       return i;
-      if (!LowEndPerfProcessor.a().a()) {
-        break;
+    }
+    if (LowEndPerfProcessor.a().a())
+    {
+      if (jdField_a_of_type_Int != 0)
+      {
+        jdField_a_of_type_Int = 0;
+        DeviceOptSwitch.a().edit().putInt("device_perf_level", 0).apply();
       }
-    } while (jdField_a_of_type_Int == 0);
-    jdField_a_of_type_Int = 0;
-    DeviceOptSwitch.a().edit().putInt("device_perf_level", 0).apply();
-    return 0;
+      return 0;
+    }
     SharedPreferences localSharedPreferences = DeviceOptSwitch.a();
     jdField_a_of_type_Int = localSharedPreferences.getInt("device_perf_level", 0);
-    if (jdField_a_of_type_Int != 0) {
-      return jdField_a_of_type_Int;
+    i = jdField_a_of_type_Int;
+    if (i != 0) {
+      return i;
     }
     if (jdField_a_of_type_Long == 0L) {
       jdField_a_of_type_Long = localSharedPreferences.getLong("device_perf_level_timestamps", 0L);
@@ -107,7 +95,7 @@ public class DeviceInfoUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.tools.DeviceInfoUtils
  * JD-Core Version:    0.7.0.1
  */

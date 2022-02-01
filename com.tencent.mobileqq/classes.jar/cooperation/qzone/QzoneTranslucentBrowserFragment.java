@@ -9,11 +9,16 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment;
+import com.tencent.mobileqq.webview.swift.IWebViewFragmentInitor;
+import com.tencent.mobileqq.webview.swift.SwiftWebViewFragmentSupporter;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
+import com.tencent.mobileqq.webview.swift.utils.WebViewKernelCallBack;
 
 public class QzoneTranslucentBrowserFragment
   extends QQTranslucentBrowserActivity.QQTranslucentBrowserFragment
+  implements IWebViewFragmentInitor
 {
   public static final String BUNDLE_KEY_INTENT = "intent";
   public static final String CONTENT_BACKGROUND_COLOR = "CONTENT_BACKGROUND_COLOR";
@@ -22,7 +27,7 @@ public class QzoneTranslucentBrowserFragment
   
   private int dpToPx(float paramFloat)
   {
-    return (int)(getResources().getDisplayMetrics().density * paramFloat + 0.5F);
+    return (int)(paramFloat * getResources().getDisplayMetrics().density + 0.5F);
   }
   
   private void initCloseButton(RelativeLayout paramRelativeLayout)
@@ -35,8 +40,8 @@ public class QzoneTranslucentBrowserFragment
       localLayoutParams.rightMargin = dpToPx(15.0F);
       localLayoutParams.addRule(11);
       paramRelativeLayout.addView(localImageView, localLayoutParams);
-      localImageView.setImageDrawable(getResources().getDrawable(2130848979));
-      localImageView.setOnClickListener(new QzoneTranslucentBrowserFragment.1(this));
+      localImageView.setImageDrawable(getResources().getDrawable(2130848859));
+      localImageView.setOnClickListener(new QzoneTranslucentBrowserFragment.2(this));
     }
   }
   
@@ -57,32 +62,33 @@ public class QzoneTranslucentBrowserFragment
     }
   }
   
-  public int doCreateLoopStep_InitUIContent(Bundle paramBundle)
+  public WebViewKernelCallBack getWebViewKernelCallBack()
   {
-    if (this.mUIStyleHandler != null) {
-      this.mUIStyleHandler.d = true;
-    }
-    int i = super.doCreateLoopStep_InitUIContent(paramBundle);
-    if (this.intent != null)
-    {
-      int j = this.intent.getIntExtra("CONTENT_BACKGROUND_COLOR", 0);
-      this.contentView.setBackgroundColor(j);
-      this.mIsShowCloseBtn = this.intent.getBooleanExtra("show_close_btn", true);
-    }
-    return i;
+    return new QzoneTranslucentBrowserFragment.1(this, this.webViewSurface);
   }
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public WebViewFragment newInstance(int paramInt, SwiftWebViewFragmentSupporter paramSwiftWebViewFragmentSupporter, WebViewTabBarData paramWebViewTabBarData, Intent paramIntent)
   {
-    super.onPageFinished(paramWebView, paramString);
-    if (this.mIsShowCloseBtn) {
-      initCloseButton(this.contentView);
+    return newInstance(paramIntent);
+  }
+  
+  public void onInitUIContent(Bundle paramBundle, WebViewKernelCallBack paramWebViewKernelCallBack)
+  {
+    if (getUIStyleHandler() != null) {
+      getUIStyleHandler().d = true;
+    }
+    super.onInitUIContent(paramBundle, paramWebViewKernelCallBack);
+    if (this.intent != null)
+    {
+      int i = this.intent.getIntExtra("CONTENT_BACKGROUND_COLOR", 0);
+      this.contentView.setBackgroundColor(i);
+      this.mIsShowCloseBtn = this.intent.getBooleanExtra("show_close_btn", true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QzoneTranslucentBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

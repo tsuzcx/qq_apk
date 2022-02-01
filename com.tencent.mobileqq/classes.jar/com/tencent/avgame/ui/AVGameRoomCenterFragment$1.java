@@ -11,13 +11,13 @@ class AVGameRoomCenterFragment$1
   
   public void onClick(View paramView)
   {
-    this.a.b();
+    this.a.e();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.ui.AVGameRoomCenterFragment.1
  * JD-Core Version:    0.7.0.1
  */

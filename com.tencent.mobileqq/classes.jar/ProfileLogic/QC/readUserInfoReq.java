@@ -29,8 +29,9 @@ public final class readUserInfoReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.qqver != null) {
-      paramJceOutputStream.write(this.qqver, 0);
+    String str = this.qqver;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.implat, 1);
     paramJceOutputStream.write(this.index, 2);
@@ -38,7 +39,7 @@ public final class readUserInfoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ProfileLogic.QC.readUserInfoReq
  * JD-Core Version:    0.7.0.1
  */

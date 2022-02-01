@@ -3,7 +3,6 @@ package com.tencent.biz.pubaccount.weishi_new.verticalvideo.presenter;
 import UserGrowth.stSimpleMetaFeed;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.weishi_new.baseui.IWSItemView;
 import com.tencent.biz.pubaccount.weishi_new.event.WSCommentEvent;
 import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerUtils;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
@@ -33,7 +32,7 @@ public class WSVerticalForArkCardPresenter
   private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
   private String jdField_a_of_type_JavaLangString;
   private List<WSVerticalItemData> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean d;
+  private boolean f;
   
   public WSVerticalForArkCardPresenter(WSVerticalPageContract.View paramView)
   {
@@ -68,105 +67,93 @@ public class WSVerticalForArkCardPresenter
   
   private void a(int paramInt, WSVerticalPageContract.View paramView)
   {
-    if ((paramInt == 1) && (this.d))
+    if ((paramInt == 1) && (this.f))
     {
       paramView = paramView.a();
       if (paramView != null)
       {
-        this.d = false;
-        paramView.a(paramView.b().get(0));
+        this.f = false;
+        paramView.removeItem(paramView.getDataList().get(0));
       }
     }
   }
   
   private void a(WSVerticalPageContract.View paramView, String paramString)
   {
-    if ((paramView == null) || (paramView.c()) || (TextUtils.isEmpty(paramString))) {
-      return;
-    }
-    paramView = QQToast.a(BaseApplicationImpl.getContext(), paramString, 1);
-    paramView.b(4);
-    paramView.a(QQToast.a(4));
-    paramView.a();
-    WSLog.e("WSVerticalForArkCardPresenter", "[WSVerticalForArkCardPresenter.java][showToast] toastTips:" + paramString);
-  }
-  
-  private void a(WSVerticalItemData paramWSVerticalItemData)
-  {
-    Object localObject1 = a();
-    Object localObject2;
-    if ((paramWSVerticalItemData != null) && (localObject1 != null))
+    if ((paramView != null) && (!paramView.c()))
     {
-      localObject2 = ((WSVerticalPageContract.View)localObject1).a();
-      if (localObject2 != null)
-      {
-        localObject1 = ((WSVerticalPageAdapter)localObject2).a();
-        if (localObject1 != null) {
-          break label34;
-        }
+      if (TextUtils.isEmpty(paramString)) {
+        return;
       }
+      paramView = QQToast.a(BaseApplicationImpl.getContext(), paramString, 1);
+      paramView.b(4);
+      paramView.a(QQToast.a(4));
+      paramView.a();
+      paramView = new StringBuilder();
+      paramView.append("[WSVerticalForArkCardPresenter.java][showToast] toastTips:");
+      paramView.append(paramString);
+      WSLog.e("WSVerticalForArkCardPresenter", paramView.toString());
     }
-    label34:
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          WSLog.d("terry_ark", "WSVerticalForArkCardPresenter onSuccess getItemCount: " + ((WSVerticalPageAdapter)localObject2).getItemCount());
-          IWSItemView localIWSItemView = ((WSVerticalVideoHolder)localObject1).jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiIWSItemView;
-          if ((localIWSItemView instanceof AbsWSVideoItemView)) {
-            ((AbsWSVideoItemView)localIWSItemView).b(paramWSVerticalItemData);
-          }
-          localObject2 = (WSVerticalItemData)((WSVerticalPageAdapter)localObject2).a(0);
-        } while (localObject2 == null);
-        paramWSVerticalItemData = paramWSVerticalItemData.a();
-      } while (paramWSVerticalItemData == null);
-      if (paramWSVerticalItemData.floatingLayerCardStyle != null) {
-        paramWSVerticalItemData.floatingLayerCardStyle.cardType = 3;
-      }
-      ((WSVerticalItemData)localObject2).a(paramWSVerticalItemData);
-    } while (((WSVerticalVideoHolder)localObject1).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam == null);
-    ((WSVerticalVideoHolder)localObject1).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.a = WSPlayerUtils.a(paramWSVerticalItemData);
   }
   
   private boolean a(Object paramObject)
   {
+    boolean bool3 = paramObject instanceof WSArkCardDataManager.ExtParams;
     boolean bool1 = true;
     boolean bool2 = true;
-    if ((paramObject instanceof WSArkCardDataManager.ExtParams))
+    if (bool3)
     {
       paramObject = (WSArkCardDataManager.ExtParams)paramObject;
-      if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!TextUtils.equals(paramObject.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString))) {
-        break label92;
+      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (TextUtils.equals(paramObject.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString))) {
+        bool1 = bool2;
+      } else {
+        bool1 = false;
       }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[isIntentFeedVideoInvalid] isInvalid:");
+      localStringBuilder.append(bool1);
+      localStringBuilder.append(", mIntentFeedId:");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(", params.mFeedId:");
+      localStringBuilder.append(paramObject.jdField_a_of_type_JavaLangString);
+      WSLog.e("WSVerticalForArkCardPresenter", localStringBuilder.toString());
     }
-    label92:
-    for (bool1 = bool2;; bool1 = false)
-    {
-      WSLog.e("WSVerticalForArkCardPresenter", "[isIntentFeedVideoInvalid] isInvalid:" + bool1 + ", mIntentFeedId:" + this.jdField_a_of_type_JavaLangString + ", params.mFeedId:" + paramObject.jdField_a_of_type_JavaLangString);
-      return bool1;
-    }
+    return bool1;
   }
   
   private boolean a(List<WSVerticalItemData> paramList)
   {
+    boolean bool2 = false;
     paramList = (WSVerticalItemData)paramList.get(0);
-    if ((paramList != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed != null) && ((paramList.a() instanceof stSimpleMetaFeed)))
+    boolean bool1 = bool2;
+    if (paramList != null)
     {
-      paramList = paramList.a();
-      boolean bool = TextUtils.equals(paramList.video_url, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.video_url);
-      WSLog.d("WSVerticalForArkCardPresenter", "[isSameUrlForArkAndFirstFeed] isSame:" + bool + ", intentUrl:" + this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.video_url + ", firstUrl:" + paramList.video_url);
-      return bool;
+      bool1 = bool2;
+      if (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed != null)
+      {
+        bool1 = bool2;
+        if ((paramList.a() instanceof stSimpleMetaFeed))
+        {
+          paramList = paramList.a();
+          bool1 = TextUtils.equals(paramList.video_url, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.video_url);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[isSameUrlForArkAndFirstFeed] isSame:");
+          localStringBuilder.append(bool1);
+          localStringBuilder.append(", intentUrl:");
+          localStringBuilder.append(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.video_url);
+          localStringBuilder.append(", firstUrl:");
+          localStringBuilder.append(paramList.video_url);
+          WSLog.d("WSVerticalForArkCardPresenter", localStringBuilder.toString());
+        }
+      }
     }
-    return false;
+    return bool1;
   }
   
   private boolean a(boolean paramBoolean, List<WSVerticalItemData> paramList)
   {
     if ((paramBoolean) && (!a(paramList))) {
-      return c();
+      return h();
     }
     return false;
   }
@@ -176,7 +163,46 @@ public class WSVerticalForArkCardPresenter
     if (!(paramView instanceof WSVerticalPageFragment)) {
       return;
     }
-    ((WSVerticalPageFragment)paramView).g();
+    ((WSVerticalPageFragment)paramView).i();
+  }
+  
+  private void b(WSVerticalItemData paramWSVerticalItemData)
+  {
+    Object localObject1 = a();
+    if ((paramWSVerticalItemData != null) && (localObject1 != null))
+    {
+      Object localObject2 = ((WSVerticalPageContract.View)localObject1).a();
+      if (localObject2 != null)
+      {
+        localObject1 = ((WSVerticalPageAdapter)localObject2).a();
+        if (localObject1 == null) {
+          return;
+        }
+        Object localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("WSVerticalForArkCardPresenter onSuccess getItemCount: ");
+        ((StringBuilder)localObject3).append(((WSVerticalPageAdapter)localObject2).getItemCount());
+        WSLog.d("terry_ark", ((StringBuilder)localObject3).toString());
+        localObject3 = ((WSVerticalVideoHolder)localObject1).jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiIWSItemView;
+        if ((localObject3 instanceof AbsWSVideoItemView)) {
+          ((AbsWSVideoItemView)localObject3).b(paramWSVerticalItemData);
+        }
+        localObject2 = (WSVerticalItemData)((WSVerticalPageAdapter)localObject2).getItem(0);
+        if (localObject2 == null) {
+          return;
+        }
+        paramWSVerticalItemData = paramWSVerticalItemData.a();
+        if (paramWSVerticalItemData == null) {
+          return;
+        }
+        if (paramWSVerticalItemData.floatingLayerCardStyle != null) {
+          paramWSVerticalItemData.floatingLayerCardStyle.cardType = 3;
+        }
+        ((WSVerticalItemData)localObject2).a(paramWSVerticalItemData);
+        if (((WSVerticalVideoHolder)localObject1).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam != null) {
+          ((WSVerticalVideoHolder)localObject1).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.a = WSPlayerUtils.a(paramWSVerticalItemData);
+        }
+      }
+    }
   }
   
   public List<WSVerticalItemData> a(ArrayList paramArrayList)
@@ -196,28 +222,28 @@ public class WSVerticalForArkCardPresenter
   public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
     super.a(paramViewHolder, paramInt);
-    WSLog.d("WSVerticalForArkCardPresenter", "WSVerticalForMiniAppPresenter onPageSelected: " + paramInt);
-    WSVerticalPageContract.View localView = a();
-    if (localView == null) {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("WSVerticalForMiniAppPresenter onPageSelected: ");
+    ((StringBuilder)localObject).append(paramInt);
+    WSLog.d("WSVerticalForArkCardPresenter", ((StringBuilder)localObject).toString());
+    localObject = a();
+    if (localObject == null) {
       return;
     }
     if ((paramViewHolder instanceof WSVerticalVideoHolder))
     {
       paramViewHolder = (WSVerticalVideoHolder)paramViewHolder;
       com.tencent.biz.pubaccount.weishi_new.WSHomeFragment.a = 1;
-      WSCommentEvent localWSCommentEvent = new WSCommentEvent(4, new Object[] { Integer.valueOf(paramInt), paramViewHolder.jdField_a_of_type_JavaLangObject });
-      StoryDispatcher.a().dispatch(localWSCommentEvent);
-      if (paramViewHolder.jdField_a_of_type_JavaLangObject != null) {
-        localView.b(((WSVerticalItemData)paramViewHolder.jdField_a_of_type_JavaLangObject).a());
-      }
+      paramViewHolder = new WSCommentEvent(4, new Object[] { Integer.valueOf(paramInt), paramViewHolder.jdField_a_of_type_JavaLangObject });
+      StoryDispatcher.a().dispatch(paramViewHolder);
     }
-    a(paramInt, localView);
+    a(paramInt, (WSVerticalPageContract.View)localObject);
   }
   
   public void a(BaseViewHolder<WSVerticalItemData> paramBaseViewHolder, int paramInt)
   {
     super.a(paramBaseViewHolder, paramInt);
-    if ((paramInt == 1) && (this.d)) {
+    if ((paramInt == 1) && (this.f)) {
       b(a());
     }
   }
@@ -231,7 +257,7 @@ public class WSVerticalForArkCardPresenter
     if (paramBoolean2)
     {
       boolean bool = a(paramObject);
-      this.d = bool;
+      this.f = bool;
       if (bool)
       {
         super.a(paramList, paramBoolean1, true, paramObject);
@@ -244,18 +270,25 @@ public class WSVerticalForArkCardPresenter
       super.a(paramList, paramBoolean1, true, paramObject);
       return;
     }
-    if (paramBoolean2) {}
-    for (localObject = a(paramList);; localObject = null)
-    {
-      super.a(paramList, paramBoolean1, paramBoolean2, paramObject);
-      a((WSVerticalItemData)localObject);
-      return;
+    if (paramBoolean2) {
+      localObject = a(paramList);
+    } else {
+      localObject = null;
     }
+    super.a(paramList, paramBoolean1, paramBoolean2, paramObject);
+    b((WSVerticalItemData)localObject);
   }
   
   public boolean a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    WSLog.d("terry_ark", "WSVerticalForArkCardPresenter fetchFeedData isRefresh: " + paramBoolean1 + " isFirst = " + paramBoolean2 + " from = " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WSVerticalForArkCardPresenter fetchFeedData isRefresh: ");
+    localStringBuilder.append(paramBoolean1);
+    localStringBuilder.append(" isFirst = ");
+    localStringBuilder.append(paramBoolean2);
+    localStringBuilder.append(" from = ");
+    localStringBuilder.append(paramString);
+    WSLog.d("terry_ark", localStringBuilder.toString());
     paramString = a();
     if ((paramString != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed != null))
     {
@@ -281,28 +314,19 @@ public class WSVerticalForArkCardPresenter
     return b;
   }
   
-  public void e()
-  {
-    super.e();
-    WSVerticalPageContract.View localView = a();
-    if ((localView != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed != null)) {
-      localView.b(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
-    }
-  }
-  
-  protected boolean f()
+  protected boolean k()
   {
     return true;
   }
   
-  protected boolean g()
+  protected boolean l()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.presenter.WSVerticalForArkCardPresenter
  * JD-Core Version:    0.7.0.1
  */

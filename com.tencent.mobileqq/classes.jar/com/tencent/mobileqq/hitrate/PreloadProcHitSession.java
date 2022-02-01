@@ -41,13 +41,16 @@ public class PreloadProcHitSession
       return false;
     }
     Object localObject = ((ActivityManager)MobileQQ.getContext().getSystemService("activity")).getRunningAppProcesses();
-    if ((localObject == null) || (((List)localObject).size() <= 0)) {
-      return false;
-    }
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      if (paramString.equals(((ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next()).processName)) {
-        return true;
+    if (localObject != null)
+    {
+      if (((List)localObject).size() <= 0) {
+        return false;
+      }
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (paramString.equals(((ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next()).processName)) {
+          return true;
+        }
       }
     }
     return false;
@@ -55,7 +58,10 @@ public class PreloadProcHitSession
   
   protected String a()
   {
-    return this.d + this.jdField_b_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    return localStringBuilder.toString();
   }
   
   public void a()
@@ -72,13 +78,13 @@ public class PreloadProcHitSession
   
   public void b()
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-    do
-    {
+    if (!this.jdField_a_of_type_Boolean) {
       return;
-      this.jdField_b_of_type_Boolean = true;
-    } while ((this instanceof PreloadProcHitPluginSessionProc));
-    PreloadProcHitMgr.d(this.d);
+    }
+    this.jdField_b_of_type_Boolean = true;
+    if (!(this instanceof PreloadProcHitPluginSessionProc)) {
+      PreloadProcHitMgr.d(this.d);
+    }
   }
   
   void c()
@@ -98,39 +104,34 @@ public class PreloadProcHitSession
     if (!this.jdField_a_of_type_Boolean) {
       return;
     }
-    Object localObject2 = MobileQQ.getMobileQQ();
-    HashMap localHashMap1 = new HashMap();
-    for (;;)
+    Object localObject3 = MobileQQ.getMobileQQ();
+    HashMap localHashMap = new HashMap();
+    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
     {
-      String str;
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+      localHashMap.putAll(this.jdField_a_of_type_JavaUtilHashMap);
+      if (localObject3 != null)
       {
-        localHashMap1.putAll(this.jdField_a_of_type_JavaUtilHashMap);
-        if (localObject2 != null)
+        ??? = ((MobileQQ)localObject3).getApplicationContext();
+        localObject3 = ((MobileQQ)localObject3).peekAppRuntime();
+        if (localObject3 != null)
         {
-          ??? = ((MobileQQ)localObject2).getApplicationContext();
-          localObject2 = ((MobileQQ)localObject2).peekAppRuntime();
-          if (localObject2 != null)
-          {
-            localObject2 = ((AppRuntime)localObject2).getAccount();
-            str = this.c;
-            if (!this.jdField_b_of_type_Boolean) {
-              break label98;
-            }
-            StatisticCollector.getInstance((Context)???).collectPerformance((String)localObject2, str, true, 0L, 0L, localHashMap1, null);
+          localObject3 = ((AppRuntime)localObject3).getAccount();
+          String str = this.c;
+          if (this.jdField_b_of_type_Boolean) {
+            StatisticCollector.getInstance((Context)???).collectPerformance((String)localObject3, str, true, 0L, 0L, localHashMap, null);
+          } else {
+            StatisticCollector.getInstance((Context)???).collectPerformance((String)localObject3, str, false, 0L, 0L, localHashMap, null);
           }
         }
-        c();
-        return;
       }
-      label98:
-      StatisticCollector.getInstance((Context)???).collectPerformance((String)localObject2, str, false, 0L, 0L, localHashMap2, null);
+      c();
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.hitrate.PreloadProcHitSession
  * JD-Core Version:    0.7.0.1
  */

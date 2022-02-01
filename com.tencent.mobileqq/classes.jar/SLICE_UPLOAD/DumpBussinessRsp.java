@@ -33,17 +33,19 @@ public final class DumpBussinessRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.biz_rsp != null) {
-      paramJceOutputStream.write(this.biz_rsp, 0);
+    Object localObject = this.biz_rsp;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 0);
     }
-    if (this.result != null) {
-      paramJceOutputStream.write(this.result, 1);
+    localObject = this.result;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SLICE_UPLOAD.DumpBussinessRsp
  * JD-Core Version:    0.7.0.1
  */

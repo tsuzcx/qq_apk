@@ -55,26 +55,31 @@ public final class UnifyRecomStruct
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iPos, 0);
-    if (this.vctBusiData != null) {
-      paramJceOutputStream.write(this.vctBusiData, 1);
+    Object localObject = this.vctBusiData;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 1);
     }
-    if (this.stuExposInfo != null) {
-      paramJceOutputStream.write(this.stuExposInfo, 2);
+    localObject = this.stuExposInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.compassInfoList != null) {
-      paramJceOutputStream.write(this.compassInfoList, 3);
+    localObject = this.compassInfoList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
-    if (this.ugckey != null) {
-      paramJceOutputStream.write(this.ugckey, 4);
+    localObject = this.ugckey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.newReportInfoList != null) {
-      paramJceOutputStream.write(this.newReportInfoList, 5);
+    localObject = this.newReportInfoList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.UnifyRecomStruct
  * JD-Core Version:    0.7.0.1
  */

@@ -35,12 +35,12 @@ class HippyQQHttpModule$HttpListener
         Map.Entry localEntry = (Map.Entry)localIterator.next();
         if (((List)localEntry.getValue()).size() > 0)
         {
-          if (localEntry.getKey() == null) {}
-          for (paramMap = "_";; paramMap = (String)localEntry.getKey())
-          {
-            localHashMap.put(paramMap, ((List)localEntry.getValue()).get(0));
-            break;
+          if (localEntry.getKey() == null) {
+            paramMap = "_";
+          } else {
+            paramMap = (String)localEntry.getKey();
           }
+          localHashMap.put(paramMap, ((List)localEntry.getValue()).get(0));
         }
       }
     }
@@ -50,8 +50,9 @@ class HippyQQHttpModule$HttpListener
   
   public void onHttpFinish(HttpResponse paramHttpResponse)
   {
-    if (this.mResponseCallback != null) {
-      this.mResponseCallback.onResponse(paramHttpResponse, this.mRespHeaders);
+    HippyQQHttpModule.ResponseCallback localResponseCallback = this.mResponseCallback;
+    if (localResponseCallback != null) {
+      localResponseCallback.onResponse(paramHttpResponse, this.mRespHeaders);
     }
   }
   
@@ -62,7 +63,7 @@ class HippyQQHttpModule$HttpListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.module.HippyQQHttpModule.HttpListener
  * JD-Core Version:    0.7.0.1
  */

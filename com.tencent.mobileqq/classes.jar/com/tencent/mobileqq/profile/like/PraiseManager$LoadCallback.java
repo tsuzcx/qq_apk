@@ -22,50 +22,41 @@ public class PraiseManager$LoadCallback
   
   public void run()
   {
-    for (;;)
+    Object localObject2;
+    synchronized (this.this$0.jdField_a_of_type_JavaUtilList)
     {
-      WeakReference[] arrayOfWeakReference;
-      synchronized (this.this$0.jdField_a_of_type_JavaUtilList)
+      boolean bool = this.this$0.jdField_a_of_type_JavaUtilList.isEmpty();
+      int i = 0;
+      if (!bool)
       {
-        if (this.this$0.jdField_a_of_type_JavaUtilList.isEmpty()) {
-          break label186;
-        }
-        arrayOfWeakReference = (WeakReference[])Array.newInstance(((WeakReference)this.this$0.jdField_a_of_type_JavaUtilList.get(0)).getClass(), this.this$0.jdField_a_of_type_JavaUtilList.size());
+        WeakReference[] arrayOfWeakReference = (WeakReference[])Array.newInstance(((WeakReference)this.this$0.jdField_a_of_type_JavaUtilList.get(0)).getClass(), this.this$0.jdField_a_of_type_JavaUtilList.size());
         this.this$0.jdField_a_of_type_JavaUtilList.toArray(arrayOfWeakReference);
-        if (arrayOfWeakReference == null) {
-          break label185;
-        }
-      }
-      try
-      {
-        int j = arrayOfWeakReference.length;
-        int i = 0;
-        while (i < j)
-        {
-          ??? = arrayOfWeakReference[i];
-          if ((??? != null) && (???.get() != null)) {
-            ((PraiseManager.OnPraiseLoadListener)???.get()).a(this.jdField_a_of_type_Int, (PraiseInfo)this.this$0.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(Integer.valueOf(this.jdField_a_of_type_Int)), this.b, this.jdField_a_of_type_JavaLangString);
+        if (arrayOfWeakReference != null) {
+          try
+          {
+            int j = arrayOfWeakReference.length;
+            while (i < j)
+            {
+              ??? = arrayOfWeakReference[i];
+              if ((??? != null) && (???.get() != null)) {
+                ((PraiseManager.OnPraiseLoadListener)???.get()).a(this.jdField_a_of_type_Int, (PraiseInfo)this.this$0.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(Integer.valueOf(this.jdField_a_of_type_Int)), this.b, this.jdField_a_of_type_JavaLangString);
+              }
+              i += 1;
+            }
+            return;
           }
-          i += 1;
-          continue;
-          localObject1 = finally;
-          throw localObject1;
+          catch (Exception localException)
+          {
+            QLog.e("PraiseManager", 1, "LoadCallback failed", localException);
+          }
         }
       }
-      catch (Exception localException)
-      {
-        QLog.e("PraiseManager", 1, "LoadCallback failed", localException);
-      }
-      label185:
-      return;
-      label186:
-      Object localObject2 = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.like.PraiseManager.LoadCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -15,8 +15,9 @@ class VersionManager$3
   
   public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    bool2 = false;
     paramBundle = new ilive_grey_interface.GreyInterfaceRsp();
+    boolean bool2 = false;
+    boolean bool1;
     try
     {
       paramBundle.mergeFrom(paramArrayOfByte);
@@ -27,20 +28,21 @@ class VersionManager$3
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        QLog.i("VersionManager", 1, "getVersionGrayConfig, InvalidProtocolBufferMicroException=" + paramArrayOfByte.getMessage());
-        boolean bool1 = bool2;
-      }
+      paramBundle = new StringBuilder();
+      paramBundle.append("getVersionGrayConfig, InvalidProtocolBufferMicroException=");
+      paramBundle.append(paramArrayOfByte.getMessage());
+      QLog.i("VersionManager", 1, paramBundle.toString());
+      bool1 = bool2;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizVersionManager$IVersionGrayscaleCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizVersionManager$IVersionGrayscaleCallback.a(bool1);
+    paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizVersionManager$IVersionGrayscaleCallback;
+    if (paramArrayOfByte != null) {
+      paramArrayOfByte.a(bool1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.VersionManager.3
  * JD-Core Version:    0.7.0.1
  */

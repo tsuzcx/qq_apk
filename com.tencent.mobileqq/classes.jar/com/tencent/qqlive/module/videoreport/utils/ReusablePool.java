@@ -39,71 +39,97 @@ public class ReusablePool
     {
     default: 
       return null;
-    case 1: 
-      return new ListScrollNotifier();
-    case 2: 
-      return new RecyclerViewSetAdapterNotifier();
-    case 3: 
-      return new ViewClickNotifier();
-    case 4: 
-      return new ViewPagerSetAdapterNotifier();
-    case 5: 
-      return new ViewReuseNotifier();
-    case 6: 
-      return new FinalData();
-    case 7: 
-      return new RecyclerViewScrollPositionNotifier();
-    case 8: 
-      return new ReportData();
+    case 10: 
+      return new DispatchTouchEventNotifier();
     case 9: 
       return new ActivityConfigurationChangedNotifier();
+    case 8: 
+      return new ReportData();
+    case 7: 
+      return new RecyclerViewScrollPositionNotifier();
+    case 6: 
+      return new FinalData();
+    case 5: 
+      return new ViewReuseNotifier();
+    case 4: 
+      return new ViewPagerSetAdapterNotifier();
+    case 3: 
+      return new ViewClickNotifier();
+    case 2: 
+      return new RecyclerViewSetAdapterNotifier();
     }
-    return new DispatchTouchEventNotifier();
+    return new ListScrollNotifier();
   }
   
   public static Object obtain(int paramInt)
   {
     synchronized (POOL)
     {
-      List localList = (List)POOL.get(paramInt);
-      while ((localList != null) && (!localList.isEmpty()))
+      Object localObject4 = (List)POOL.get(paramInt);
+      Object localObject2;
+      while ((localObject4 != null) && (!((List)localObject4).isEmpty()))
       {
-        Object localObject3 = localList.remove(0);
-        if (localObject3 != null)
+        localObject2 = ((List)localObject4).remove(0);
+        if (localObject2 != null)
         {
-          if (VideoReportInner.getInstance().isDebugMode()) {
-            Log.d("ReusablePool", "obtain: reuse, reuseType = " + paramInt);
+          if (VideoReportInner.getInstance().isDebugMode())
+          {
+            localObject4 = new StringBuilder();
+            ((StringBuilder)localObject4).append("obtain: reuse, reuseType = ");
+            ((StringBuilder)localObject4).append(paramInt);
+            Log.d("ReusablePool", ((StringBuilder)localObject4).toString());
           }
-          return localObject3;
+          return localObject2;
         }
       }
       ??? = createObject(paramInt);
-      if (VideoReportInner.getInstance().isDebugMode()) {
-        Log.d("ReusablePool", "obtain: create, reuseType = " + paramInt + ", reusable=" + ???);
+      if (VideoReportInner.getInstance().isDebugMode())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("obtain: create, reuseType = ");
+        ((StringBuilder)localObject2).append(paramInt);
+        ((StringBuilder)localObject2).append(", reusable=");
+        ((StringBuilder)localObject2).append(???);
+        Log.d("ReusablePool", ((StringBuilder)localObject2).toString());
       }
-      if (??? == null) {
-        throw new IllegalArgumentException("Reusable reuseType illegal, reuseType = " + paramInt);
+      if (??? != null) {
+        return ???;
       }
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("Reusable reuseType illegal, reuseType = ");
+      ((StringBuilder)???).append(paramInt);
+      throw new IllegalArgumentException(((StringBuilder)???).toString());
     }
-    return ???;
+    for (;;)
+    {
+      throw localObject3;
+    }
   }
   
   public static void recycle(Object paramObject, int paramInt)
   {
     synchronized (POOL)
     {
-      List localList2 = (List)POOL.get(paramInt);
-      List localList1 = localList2;
-      if (localList2 == null)
+      Object localObject2 = (List)POOL.get(paramInt);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
-        localList1 = Collections.synchronizedList(new ArrayList());
-        POOL.put(paramInt, localList1);
+        localObject1 = Collections.synchronizedList(new ArrayList());
+        POOL.put(paramInt, localObject1);
       }
-      if (localList1.size() < 30) {
-        localList1.add(paramObject);
+      if (((List)localObject1).size() < 30) {
+        ((List)localObject1).add(paramObject);
       }
-      if (VideoReportInner.getInstance().isDebugMode()) {
-        Log.d("ReusablePool", "recycle: reuseType = " + paramInt + " list size=" + localList1.size() + "， reusable=" + paramObject);
+      if (VideoReportInner.getInstance().isDebugMode())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("recycle: reuseType = ");
+        ((StringBuilder)localObject2).append(paramInt);
+        ((StringBuilder)localObject2).append(" list size=");
+        ((StringBuilder)localObject2).append(((List)localObject1).size());
+        ((StringBuilder)localObject2).append("， reusable=");
+        ((StringBuilder)localObject2).append(paramObject);
+        Log.d("ReusablePool", ((StringBuilder)localObject2).toString());
       }
       return;
     }
@@ -111,7 +137,7 @@ public class ReusablePool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.utils.ReusablePool
  * JD-Core Version:    0.7.0.1
  */

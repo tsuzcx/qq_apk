@@ -23,12 +23,20 @@ public class AudioInfo
   
   public String toString()
   {
-    return "AudioInfo{sampleRate=" + this.sampleRate + ", channelCount=" + this.channelCount + ", pcmEncoding=" + this.pcmEncoding + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AudioInfo{sampleRate=");
+    localStringBuilder.append(this.sampleRate);
+    localStringBuilder.append(", channelCount=");
+    localStringBuilder.append(this.channelCount);
+    localStringBuilder.append(", pcmEncoding=");
+    localStringBuilder.append(this.pcmEncoding);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tav.decoder.AudioInfo
  * JD-Core Version:    0.7.0.1
  */

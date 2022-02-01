@@ -44,7 +44,31 @@ public class AppDetail
   
   public String toString()
   {
-    return "appId=" + this.appId + "\napkId=" + this.apkId + "\nappName=" + this.appName + "\niconUrl=" + this.iconUrl + "\npackageName=" + this.packageName + "\nversionCode=" + this.versionCode + "\nsignatureMd5=" + this.signatureMd5 + "\napkMd5=" + this.apkMd5 + "\nfileSize=" + this.fileSize + "\napkDownUrl=" + this.apkDownUrl + "\nchannelId=" + this.channelId + "\n";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("appId=");
+    localStringBuilder.append(this.appId);
+    localStringBuilder.append("\napkId=");
+    localStringBuilder.append(this.apkId);
+    localStringBuilder.append("\nappName=");
+    localStringBuilder.append(this.appName);
+    localStringBuilder.append("\niconUrl=");
+    localStringBuilder.append(this.iconUrl);
+    localStringBuilder.append("\npackageName=");
+    localStringBuilder.append(this.packageName);
+    localStringBuilder.append("\nversionCode=");
+    localStringBuilder.append(this.versionCode);
+    localStringBuilder.append("\nsignatureMd5=");
+    localStringBuilder.append(this.signatureMd5);
+    localStringBuilder.append("\napkMd5=");
+    localStringBuilder.append(this.apkMd5);
+    localStringBuilder.append("\nfileSize=");
+    localStringBuilder.append(this.fileSize);
+    localStringBuilder.append("\napkDownUrl=");
+    localStringBuilder.append(this.apkDownUrl);
+    localStringBuilder.append("\nchannelId=");
+    localStringBuilder.append(this.channelId);
+    localStringBuilder.append("\n");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -64,7 +88,7 @@ public class AppDetail
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistant.appinfo.data.AppDetail
  * JD-Core Version:    0.7.0.1
  */

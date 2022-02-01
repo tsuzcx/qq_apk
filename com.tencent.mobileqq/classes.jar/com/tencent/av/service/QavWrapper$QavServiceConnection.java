@@ -16,13 +16,14 @@ class QavWrapper$QavServiceConnection
       QLog.d("QavWrapper", 2, "Qav Service connected!");
     }
     this.a.jdField_a_of_type_ComTencentAvServiceIAVServiceForQQ = IAVServiceForQQ.Stub.a(paramIBinder);
-    if ((this.a.jdField_a_of_type_ComTencentAvServiceIAVServiceForQQ != null) && (this.a.jdField_a_of_type_ComTencentAvServiceQavWrapper$OnReadyListener != null)) {
+    if ((this.a.jdField_a_of_type_ComTencentAvServiceIAVServiceForQQ != null) && (this.a.jdField_a_of_type_ComTencentAvServiceQavWrapper$OnReadyListener != null))
+    {
       this.a.jdField_a_of_type_ComTencentAvServiceQavWrapper$OnReadyListener.a(this.a);
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("QavWrapper", 2, "mQavProxy == null or mOnReadyListener == null");
+    if (QLog.isColorLevel()) {
+      QLog.d("QavWrapper", 2, "mQavProxy == null or mOnReadyListener == null");
+    }
   }
   
   public void onServiceDisconnected(ComponentName paramComponentName)
@@ -35,7 +36,7 @@ class QavWrapper$QavServiceConnection
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.service.QavWrapper.QavServiceConnection
  * JD-Core Version:    0.7.0.1
  */

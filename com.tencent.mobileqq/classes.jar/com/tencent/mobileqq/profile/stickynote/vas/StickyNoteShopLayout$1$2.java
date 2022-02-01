@@ -9,13 +9,13 @@ class StickyNoteShopLayout$1$2
   
   public void run()
   {
-    this.a.a.findViewById(2131380328).setVisibility(0);
-    this.a.a.findViewById(2131368807).setVisibility(0);
+    this.a.a.findViewById(2131379649).setVisibility(0);
+    this.a.a.findViewById(2131368536).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout.1.2
  * JD-Core Version:    0.7.0.1
  */

@@ -7,6 +7,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.qmethodmonitor.monitor.ClipboardMonitor;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class CommentPresenter$OnFeedCommentElementClickListener$1
@@ -19,7 +20,9 @@ class CommentPresenter$OnFeedCommentElementClickListener$1
     ClipboardManager localClipboardManager = (ClipboardManager)CommentPresenter.c(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter$OnFeedCommentElementClickListener.a).getSystemService("clipboard");
     if (localClipboardManager != null)
     {
-      localClipboardManager.setPrimaryClip(ClipData.newPlainText("", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment.content.get()));
+      ClipData localClipData = ClipData.newPlainText("", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment.content.get());
+      ClipboardMonitor.setPrimaryClip(localClipboardManager, localClipData);
+      localClipboardManager.setPrimaryClip(localClipData);
       CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter$OnFeedCommentElementClickListener.a).dismiss();
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -27,7 +30,7 @@ class CommentPresenter$OnFeedCommentElementClickListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.CommentPresenter.OnFeedCommentElementClickListener.1
  * JD-Core Version:    0.7.0.1
  */

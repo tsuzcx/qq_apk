@@ -13,28 +13,24 @@ class ChannelProxyImpl$2
   
   public void a(boolean paramBoolean, INTERFACE.StJudgeTimingRsp paramStJudgeTimingRsp)
   {
-    JSONObject localJSONObject;
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult != null) {
-      localJSONObject = new JSONObject();
-    }
-    try
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult != null)
     {
-      localJSONObject.put("response", paramStJudgeTimingRsp);
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(paramBoolean, localJSONObject);
-      return;
-    }
-    catch (Throwable paramStJudgeTimingRsp)
-    {
-      for (;;)
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("response", paramStJudgeTimingRsp);
+      }
+      catch (Throwable paramStJudgeTimingRsp)
       {
         QLog.e("ChannelProxyImpl", 1, "tianshuRequestAdv", paramStJudgeTimingRsp);
       }
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(paramBoolean, localJSONObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ChannelProxyImpl.2
  * JD-Core Version:    0.7.0.1
  */

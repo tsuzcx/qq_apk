@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ohy" android:background="@drawable/e7_" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_centerInParent="true"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:layout_gravity="center_vertical" android:id="@id/oi0" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginRight="7.0dip" />
-    <TextView android:textSize="13.0sp" android:textColor="#fffadf38" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/ohz" android:layout_width="wrap_content" android:layout_height="24.0dip" android:singleLine="true" />
-</LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/eq9" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <android.support.v7.widget.RecyclerView android:id="@id/mq_" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <View android:background="#fff2f2f2" android:layout_width="fill_parent" android:layout_height="10.0dip" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/bp" android:gravity="center" android:id="@id/nih" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="44.0dip" android:text="@string/cancel" />
+    </LinearLayout>
+</FrameLayout>

@@ -18,12 +18,13 @@ public class GrsApi
       Logger.w("GrsApi", "IQueryUrlCallBack is must not null for process continue.");
       return;
     }
-    if ((grsClient == null) || (paramString1 == null) || (paramString2 == null))
+    GrsClient localGrsClient = grsClient;
+    if ((localGrsClient != null) && (paramString1 != null) && (paramString2 != null))
     {
-      paramIQueryUrlCallBack.onCallBackFail(-6);
+      localGrsClient.ayncGetGrsUrl(paramString1, paramString2, paramIQueryUrlCallBack);
       return;
     }
-    grsClient.ayncGetGrsUrl(paramString1, paramString2, paramIQueryUrlCallBack);
+    paramIQueryUrlCallBack.onCallBackFail(-6);
   }
   
   public static void ayncGetGrsUrls(String paramString, IQueryUrlsCallBack paramIQueryUrlsCallBack)
@@ -33,34 +34,38 @@ public class GrsApi
       Logger.w("GrsApi", "IQueryUrlsCallBack is must not null for process continue.");
       return;
     }
-    if ((grsClient == null) || (paramString == null))
+    GrsClient localGrsClient = grsClient;
+    if ((localGrsClient != null) && (paramString != null))
     {
-      paramIQueryUrlsCallBack.onCallBackFail(-6);
+      localGrsClient.ayncGetGrsUrls(paramString, paramIQueryUrlsCallBack);
       return;
     }
-    grsClient.ayncGetGrsUrls(paramString, paramIQueryUrlsCallBack);
+    paramIQueryUrlsCallBack.onCallBackFail(-6);
   }
   
   public static void clearSp()
   {
-    if (grsClient == null)
+    GrsClient localGrsClient = grsClient;
+    if (localGrsClient == null)
     {
       Logger.w("GrsApi", "GrsApi.clearSp return because grsClient is null.");
       return;
     }
-    grsClient.clearSp();
+    localGrsClient.clearSp();
   }
   
   public static boolean forceExpire()
   {
-    if (grsClient == null)
+    GrsClient localGrsClient = grsClient;
+    if (localGrsClient == null)
     {
       Logger.w("GrsApi", "GrsApi.forceExpire return false because grsClient is null.");
       return false;
     }
-    return grsClient.forceExpire();
+    return localGrsClient.forceExpire();
   }
   
+  @Deprecated
   public static CountryCodeBean getCountryCode(Context paramContext, boolean paramBoolean)
   {
     return a.a(paramContext, paramBoolean);
@@ -74,27 +79,27 @@ public class GrsApi
   
   public static String synGetGrsUrl(String paramString1, String paramString2)
   {
-    if ((grsClient == null) || (paramString1 == null) || (paramString2 == null))
-    {
-      Logger.w("GrsApi", "GrsApi.synGetGrsUrl method maybe grsSdkInit has not completed and grsClient is null.");
-      return null;
+    GrsClient localGrsClient = grsClient;
+    if ((localGrsClient != null) && (paramString1 != null) && (paramString2 != null)) {
+      return localGrsClient.synGetGrsUrl(paramString1, paramString2);
     }
-    return grsClient.synGetGrsUrl(paramString1, paramString2);
+    Logger.w("GrsApi", "GrsApi.synGetGrsUrl method maybe grsSdkInit has not completed and grsClient is null.");
+    return null;
   }
   
   public static Map<String, String> synGetGrsUrls(String paramString)
   {
-    if ((grsClient == null) || (paramString == null))
-    {
-      Logger.w("GrsApi", "GrsApi.synGetGrsUrls method maybe grsSdkInit has not completed and grsClient is null.");
-      return new HashMap();
+    GrsClient localGrsClient = grsClient;
+    if ((localGrsClient != null) && (paramString != null)) {
+      return localGrsClient.synGetGrsUrls(paramString);
     }
-    return grsClient.synGetGrsUrls(paramString);
+    Logger.w("GrsApi", "GrsApi.synGetGrsUrls method maybe grsSdkInit has not completed and grsClient is null.");
+    return new HashMap();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.framework.network.grs.GrsApi
  * JD-Core Version:    0.7.0.1
  */

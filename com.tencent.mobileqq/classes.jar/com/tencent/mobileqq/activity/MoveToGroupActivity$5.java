@@ -11,8 +11,12 @@ class MoveToGroupActivity$5
   
   public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MoveToGroupActivity", 2, "mWaitingDialogControlHandler operationFinished = " + MoveToGroupActivity.b(this.a));
+    if (QLog.isColorLevel())
+    {
+      paramMessage = new StringBuilder();
+      paramMessage.append("mWaitingDialogControlHandler operationFinished = ");
+      paramMessage.append(MoveToGroupActivity.b(this.a));
+      QLog.d("MoveToGroupActivity", 2, paramMessage.toString());
     }
     MoveToGroupActivity.c(this.a, true);
     if (MoveToGroupActivity.b(this.a))
@@ -27,7 +31,7 @@ class MoveToGroupActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.MoveToGroupActivity.5
  * JD-Core Version:    0.7.0.1
  */

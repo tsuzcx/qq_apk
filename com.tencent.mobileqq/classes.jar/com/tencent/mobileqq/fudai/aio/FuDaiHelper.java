@@ -30,7 +30,7 @@ public class FuDaiHelper
   
   public int[] interestedIn()
   {
-    return new int[] { 4, 14, 15, 16, 17 };
+    return new int[] { 4, 15, 16, 17, 18 };
   }
   
   public void onMoveToState(int paramInt)
@@ -39,17 +39,16 @@ public class FuDaiHelper
     {
     default: 
       return;
-    case 15: 
-    case 16: 
-      FudaiItemBuilder.e();
+    case 18: 
+      FudaiItemBuilder.f();
       return;
     }
-    FudaiItemBuilder.f();
+    FudaiItemBuilder.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.fudai.aio.FuDaiHelper
  * JD-Core Version:    0.7.0.1
  */

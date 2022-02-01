@@ -11,8 +11,14 @@ class ShareActionSheetV2$4
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareActionSheetV2", 2, "onDismiss() called with: dialog = [" + paramDialogInterface + "] #this = " + Integer.toHexString(System.identityHashCode(this)));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDismiss() called with: dialog = [");
+      localStringBuilder.append(paramDialogInterface);
+      localStringBuilder.append("] #this = ");
+      localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
+      QLog.d("ShareActionSheetV2", 2, localStringBuilder.toString());
     }
     ShareActionSheetV2.b(this.a);
     if (ShareActionSheetV2.a(this.a) != null) {
@@ -22,7 +28,7 @@ class ShareActionSheetV2$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.share.ShareActionSheetV2.4
  * JD-Core Version:    0.7.0.1
  */

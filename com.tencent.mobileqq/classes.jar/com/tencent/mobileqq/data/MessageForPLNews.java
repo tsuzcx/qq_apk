@@ -28,21 +28,21 @@ public class MessageForPLNews
       this.bgColor = localJSONObject.optInt("bgColor");
       this.cover = localJSONObject.optString("cover");
       this.ts = localJSONObject.optLong("ts");
-      if (QLog.isDevelopLevel()) {
-        QLog.i("MessageForPLNews", 4, "doParse:" + this.msg);
-      }
-      this.isread = true;
-      return;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("MessageForPLNews", 2, "doParse", localJSONException);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.i("MessageForPLNews", 2, "doParse", localJSONException);
       }
     }
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doParse:");
+      localStringBuilder.append(this.msg);
+      QLog.i("MessageForPLNews", 4, localStringBuilder.toString());
+    }
+    this.isread = true;
   }
   
   public boolean msgEquals(MessageForPLNews paramMessageForPLNews)
@@ -52,7 +52,7 @@ public class MessageForPLNews
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForPLNews
  * JD-Core Version:    0.7.0.1
  */

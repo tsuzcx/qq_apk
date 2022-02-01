@@ -12,7 +12,7 @@ class ChatHistory$ChatHistoryAdapter$2$1
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter$2.jdField_a_of_type_Int == 0) && ((this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter$2.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a == null) || (!this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter$2.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.a(0, this.jdField_a_of_type_JavaLangObject))))
     {
-      Toast.makeText(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter$2.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter$2.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131718869), 0).show();
+      Toast.makeText(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter$2.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter$2.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131718584), 0).show();
       return;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter$2.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a == null) {
@@ -23,7 +23,7 @@ class ChatHistory$ChatHistoryAdapter$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter.2.1
  * JD-Core Version:    0.7.0.1
  */

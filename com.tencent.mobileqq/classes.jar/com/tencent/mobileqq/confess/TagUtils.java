@@ -8,13 +8,12 @@ import java.util.Random;
 
 public class TagUtils
 {
-  public static int a;
+  public static int a = 12;
   private static Paint a;
   public static Random a;
   
   static
   {
-    jdField_a_of_type_Int = 12;
     jdField_a_of_type_JavaUtilRandom = new Random();
     jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   }
@@ -40,27 +39,23 @@ public class TagUtils
       return false;
     }
     int i = 0;
-    for (;;)
+    while (i < paramString.length())
     {
-      if (i >= paramString.length()) {
-        break label37;
-      }
       if (!a(paramString.codePointAt(i))) {
-        break;
+        return false;
       }
       i += 1;
     }
-    label37:
     return true;
   }
   
   private static boolean b(String paramString, ArrayList<Pair<String, Float>> paramArrayList)
   {
     paramString = paramString.trim();
-    int j = -1;
-    boolean bool = true;
     int i = 0;
-    if (i < paramString.length())
+    boolean bool = true;
+    int k = -1;
+    while (i < paramString.length())
     {
       String str;
       if (a(paramString.codePointAt(i)))
@@ -68,34 +63,34 @@ public class TagUtils
         str = paramString.substring(i, i + 1);
         paramArrayList.add(new Pair(str, Float.valueOf(a(str))));
       }
-      for (;;)
+      else
       {
-        i += 1;
-        break;
-        int k = j;
-        if (j == -1) {
-          k = i;
+        int j = k;
+        if (k == -1) {
+          j = i;
         }
-        if (i + 1 < paramString.length())
+        int m = i + 1;
+        if (m < paramString.length())
         {
-          j = k;
-          if (!a(paramString.codePointAt(i + 1))) {}
+          k = j;
+          if (!a(paramString.codePointAt(m))) {}
         }
         else
         {
-          str = paramString.substring(k, i + 1);
+          str = paramString.substring(j, m);
           paramArrayList.add(new Pair(str, Float.valueOf(a(str))));
-          j = -1;
+          k = -1;
         }
         bool = false;
       }
+      i += 1;
     }
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.confess.TagUtils
  * JD-Core Version:    0.7.0.1
  */

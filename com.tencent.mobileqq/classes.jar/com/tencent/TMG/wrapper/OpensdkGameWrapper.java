@@ -25,42 +25,157 @@ public class OpensdkGameWrapper
   @TargetApi(9)
   private String getPhoneInfo(Context paramContext)
   {
-    String str = "PRODUCT=" + Build.PRODUCT + ";";
-    str = str + "CPU_ABI=" + Build.CPU_ABI + ";";
-    str = str + "TAGS=" + Build.TAGS + ";";
-    str = str + "VERSION_CODES_BASE=1;";
-    str = str + "MODEL=" + Build.MODEL + ";";
-    str = str + "SDK=" + Build.VERSION.SDK_INT + ";";
-    str = str + "VERSION_RELEASE=" + Build.VERSION.RELEASE + ";";
-    str = str + "DEVICE=" + Build.DEVICE + ";";
-    str = str + "DISPLAY=" + Build.DISPLAY + ";";
-    str = str + "BRAND=" + Build.BRAND + ";";
-    str = str + "BOARD=" + Build.BOARD + ";";
-    str = str + "FINGERPRINT=" + Build.FINGERPRINT + ";";
-    str = str + "ID=" + Build.ID + ";";
-    str = str + "MANUFACTURER=" + Build.MANUFACTURER + ";";
-    str = str + "USER=" + Build.USER + ";";
-    str = str + "PROCESSORS=" + Runtime.getRuntime().availableProcessors() + ";";
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("PRODUCT=");
+    ((StringBuilder)localObject).append(Build.PRODUCT);
+    ((StringBuilder)localObject).append(";");
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("CPU_ABI=");
+    localStringBuilder.append(Build.CPU_ABI);
+    localStringBuilder.append(";");
+    localObject = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("TAGS=");
+    localStringBuilder.append(Build.TAGS);
+    localStringBuilder.append(";");
+    localObject = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("VERSION_CODES_BASE=1;");
+    localObject = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("MODEL=");
+    localStringBuilder.append(Build.MODEL);
+    localStringBuilder.append(";");
+    localObject = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("SDK=");
+    localStringBuilder.append(Build.VERSION.SDK_INT);
+    localStringBuilder.append(";");
+    localObject = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("VERSION_RELEASE=");
+    localStringBuilder.append(Build.VERSION.RELEASE);
+    localStringBuilder.append(";");
+    localObject = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("DEVICE=");
+    localStringBuilder.append(Build.DEVICE);
+    localStringBuilder.append(";");
+    localObject = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("DISPLAY=");
+    localStringBuilder.append(Build.DISPLAY);
+    localStringBuilder.append(";");
+    localObject = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("BRAND=");
+    localStringBuilder.append(Build.BRAND);
+    localStringBuilder.append(";");
+    localObject = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("BOARD=");
+    localStringBuilder.append(Build.BOARD);
+    localStringBuilder.append(";");
+    localObject = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("FINGERPRINT=");
+    localStringBuilder.append(Build.FINGERPRINT);
+    localStringBuilder.append(";");
+    localObject = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("ID=");
+    localStringBuilder.append(Build.ID);
+    localStringBuilder.append(";");
+    localObject = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("MANUFACTURER=");
+    localStringBuilder.append(Build.MANUFACTURER);
+    localStringBuilder.append(";");
+    localObject = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("USER=");
+    localStringBuilder.append(Build.USER);
+    localStringBuilder.append(";");
+    localObject = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("PROCESSORS=");
+    localStringBuilder.append(Runtime.getRuntime().availableProcessors());
+    localStringBuilder.append(";");
+    localObject = localStringBuilder.toString();
     paramContext = paramContext.getApplicationInfo();
-    str = str + "DATADIR=" + paramContext.dataDir + ";";
-    if (Build.VERSION.SDK_INT >= 9) {}
-    for (paramContext = str + "LIBDIR=" + paramContext.nativeLibraryDir + ";";; paramContext = str + "LIBDIR=" + paramContext.dataDir + "/lib;")
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("DATADIR=");
+    localStringBuilder.append(paramContext.dataDir);
+    localStringBuilder.append(";");
+    localObject = localStringBuilder.toString();
+    if (Build.VERSION.SDK_INT >= 9)
     {
-      paramContext = paramContext + "HW_AVC_ENC=0;";
-      paramContext = paramContext + "HW_AVC_DEC=0;";
-      paramContext = paramContext + "HW_HEVC_DEC=0;";
-      paramContext = paramContext + "HW_HEVC_ENC=0;";
-      Log.i("opensdkGameWrapper", "getPhoneInfo=" + paramContext);
-      return paramContext;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("LIBDIR=");
+      localStringBuilder.append(paramContext.nativeLibraryDir);
+      localStringBuilder.append(";");
+      paramContext = localStringBuilder.toString();
     }
+    else
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("LIBDIR=");
+      localStringBuilder.append(paramContext.dataDir);
+      localStringBuilder.append("/lib;");
+      paramContext = localStringBuilder.toString();
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramContext);
+    ((StringBuilder)localObject).append("HW_AVC_ENC=0;");
+    paramContext = ((StringBuilder)localObject).toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramContext);
+    ((StringBuilder)localObject).append("HW_AVC_DEC=0;");
+    paramContext = ((StringBuilder)localObject).toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramContext);
+    ((StringBuilder)localObject).append("HW_HEVC_DEC=0;");
+    paramContext = ((StringBuilder)localObject).toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramContext);
+    ((StringBuilder)localObject).append("HW_HEVC_ENC=0;");
+    paramContext = ((StringBuilder)localObject).toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getPhoneInfo=");
+    ((StringBuilder)localObject).append(paramContext);
+    Log.i("opensdkGameWrapper", ((StringBuilder)localObject).toString());
+    return paramContext;
   }
   
   private void initLog()
   {
-    String str = Environment.getExternalStorageDirectory() + "/tencent/imsdklogs/" + this.mActivity.getPackageName().replace('.', '/');
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(Environment.getExternalStorageDirectory());
+    ((StringBuilder)localObject).append("/tencent/imsdklogs/");
+    ((StringBuilder)localObject).append(this.mActivity.getPackageName().replace('.', '/'));
+    localObject = ((StringBuilder)localObject).toString();
     AVLoggerClient.setIsEnablePrintLog(true);
     AVLoggerClient.setIsEnableWriteLog(true);
-    AVLoggerClient.setLogDir(str);
+    AVLoggerClient.setLogDir((String)localObject);
     AVLoggerClient.setMaxFileSize(52428800);
     AVLoggerClient.setLogListener(null);
   }
@@ -160,7 +275,10 @@ public class OpensdkGameWrapper
   
   public int playRecordedFile(String paramString)
   {
-    Log.i("opensdkGameWrapper", "playRecordedFile|filePath=" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("playRecordedFile|filePath=");
+    localStringBuilder.append(paramString);
+    Log.i("opensdkGameWrapper", localStringBuilder.toString());
     return PttManager.createInstance(this.mActivity.getApplicationContext()).playRecordedFile(paramString, new OpensdkGameWrapper.2(this));
   }
   
@@ -193,7 +311,10 @@ public class OpensdkGameWrapper
   
   public int startRecording(String paramString)
   {
-    Log.i("opensdkGameWrapper", "StartRecording|filePath=" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("StartRecording|filePath=");
+    localStringBuilder.append(paramString);
+    Log.i("opensdkGameWrapper", localStringBuilder.toString());
     return PttManager.createInstance(this.mActivity.getApplicationContext()).startRecording(paramString, new OpensdkGameWrapper.1(this));
   }
   
@@ -212,7 +333,10 @@ public class OpensdkGameWrapper
   
   int uploadRecordedFile(String paramString)
   {
-    Log.i("opensdkGameWrapper", "uploadRecordedFile|filePath=" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("uploadRecordedFile|filePath=");
+    localStringBuilder.append(paramString);
+    Log.i("opensdkGameWrapper", localStringBuilder.toString());
     PttManager.createInstance(this.mActivity.getApplicationContext()).uploadFile(paramString, new OpensdkGameWrapper.3(this));
     return 0;
   }

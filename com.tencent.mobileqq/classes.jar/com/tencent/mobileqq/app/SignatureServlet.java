@@ -14,28 +14,27 @@ public class SignatureServlet
 {
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SignatureServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd"));
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onReceive cmd=");
+      ((StringBuilder)localObject).append(paramIntent.getStringExtra("cmd"));
+      QLog.d("SignatureServlet", 2, ((StringBuilder)localObject).toString());
     }
-    byte[] arrayOfByte;
+    Object localObject = null;
     if (paramFromServiceMsg.isSuccess())
     {
       int i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      PkgTools.copyData(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+      localObject = new byte[i];
+      PkgTools.copyData((byte[])localObject, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
     }
-    for (;;)
-    {
-      new Bundle().putByteArray("data", arrayOfByte);
-      SignatureHandler localSignatureHandler = (SignatureHandler)((QQAppInterface)super.getAppRuntime()).getBusinessHandler(BusinessHandlerFactory.SIGNATURE_HANDLER);
-      if (localSignatureHandler != null) {
-        localSignatureHandler.a(paramIntent, paramFromServiceMsg, arrayOfByte);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("SignatureServlet", 2, "onReceive exit");
-      }
-      return;
-      arrayOfByte = null;
+    new Bundle().putByteArray("data", (byte[])localObject);
+    SignatureHandler localSignatureHandler = (SignatureHandler)((QQAppInterface)super.getAppRuntime()).getBusinessHandler(BusinessHandlerFactory.SIGNATURE_HANDLER);
+    if (localSignatureHandler != null) {
+      localSignatureHandler.a(paramIntent, paramFromServiceMsg, (byte[])localObject);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("SignatureServlet", 2, "onReceive exit");
     }
   }
   
@@ -49,18 +48,22 @@ public class SignatureServlet
       paramPacket.setSSOCommand(str);
       paramPacket.setTimeout(l);
       paramIntent = new byte[arrayOfByte.length + 4];
-      PkgTools.DWord2Byte(paramIntent, 0, arrayOfByte.length + 4);
+      PkgTools.dWord2Byte(paramIntent, 0, arrayOfByte.length + 4);
       PkgTools.copyData(paramIntent, 4, arrayOfByte, arrayOfByte.length);
       paramPacket.putSendData(paramIntent);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("SignatureServlet", 2, "onSend exit cmd=" + str);
+    if (QLog.isColorLevel())
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("onSend exit cmd=");
+      paramIntent.append(str);
+      QLog.d("SignatureServlet", 2, paramIntent.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.SignatureServlet
  * JD-Core Version:    0.7.0.1
  */

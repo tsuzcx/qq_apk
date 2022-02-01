@@ -21,7 +21,10 @@ public class TroopFileColorNoteServiceInfo
   
   public TroopFileColorNoteServiceInfo(long paramLong, TroopFileStatusInfo paramTroopFileStatusInfo)
   {
-    this.jdField_a_of_type_JavaLangString = (paramLong + "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("");
+    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
     this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo = paramTroopFileStatusInfo;
   }
   
@@ -29,52 +32,60 @@ public class TroopFileColorNoteServiceInfo
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("file_color_note_peerType", 1);
-      localJSONObject.put("file_color_note_peerUin", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("file_color_note_fileName", this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.g);
-      localJSONObject.put("file_color_note_fileSize", this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.c);
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.a != null) {
-        localJSONObject.put("file_color_note_file_uuid", this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.a.toString());
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("file_color_note_peerType", 1);
+      ((JSONObject)localObject).put("file_color_note_peerUin", this.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("file_color_note_fileName", this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.g);
+      ((JSONObject)localObject).put("file_color_note_fileSize", this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.c);
+      UUID localUUID = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.a;
+      if (localUUID != null) {
+        ((JSONObject)localObject).put("file_color_note_file_uuid", this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.a.toString());
+      } else {
+        ((JSONObject)localObject).put("file_color_note_file_uuid", "");
       }
-      for (;;)
-      {
-        localJSONObject.put("file_color_note_file_url", this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.e);
-        localJSONObject.put("file_color_note_busId", this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.h);
-        return localJSONObject.toString();
-        localJSONObject.put("file_color_note_file_uuid", "");
-      }
-      return "";
+      ((JSONObject)localObject).put("file_color_note_file_url", this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.e);
+      ((JSONObject)localObject).put("file_color_note_busId", this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.h);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
     }
     catch (JSONException localJSONException)
     {
       localJSONException.printStackTrace();
     }
+    return "";
   }
   
   public ColorNote getColorNote()
   {
     ColorNote.Builder localBuilder = new ColorNote.Builder();
     localBuilder.a(17039360);
-    String str = QFileUtils.b(2, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.e);
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
+    Object localObject = QFileUtils.a(2, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.e);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getColorNote: file colorNote key [");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("]");
+      QLog.i("TroopFileColorNoteServiceInfo", 2, localStringBuilder.toString());
     }
-    localBuilder.a(str);
+    localBuilder.a((String)localObject);
     localBuilder.b(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.g);
     localBuilder.c(FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.c));
     int i = FileManagerUtil.a(FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.g));
-    localBuilder.d("resdrawable://" + i);
-    str = a();
-    if (!TextUtils.isEmpty(str)) {
-      localBuilder.a(str.getBytes());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("resdrawable://");
+    ((StringBuilder)localObject).append(i);
+    localBuilder.d(((StringBuilder)localObject).toString());
+    localObject = a();
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      localBuilder.a(((String)localObject).getBytes());
     }
     return localBuilder.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.colornote.TroopFileColorNoteServiceInfo
  * JD-Core Version:    0.7.0.1
  */

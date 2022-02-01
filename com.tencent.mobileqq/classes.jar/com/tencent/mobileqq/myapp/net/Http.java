@@ -35,7 +35,6 @@ public class Http
   
   static
   {
-    jdField_a_of_type_OrgApacheHttpImplConnTsccmThreadSafeClientConnManager = null;
     jdField_a_of_type_AndroidNetUri = Uri.parse("content://telephony/carriers/preferapn");
   }
   
@@ -45,39 +44,28 @@ public class Http
     QzoneProxy localQzoneProxy = new QzoneProxy();
     try
     {
-      String str1;
-      String str2;
-      String str3;
-      try
-      {
-        localObject1 = ((Context)localObject1).getContentResolver().query(jdField_a_of_type_AndroidNetUri, null, null, null, null);
-        ((Cursor)localObject1).moveToFirst();
-        str1 = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndex("proxy"));
-        if (str1 != null) {
-          str1.toLowerCase();
-        }
-        str2 = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndex("port"));
-        str3 = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndex("apn"));
-        if (str3 != null) {
-          str3.toLowerCase();
-        }
-        ((Cursor)localObject1).close();
-        if ((str3 != null) && (str3.startsWith("ctwap"))) {
-          if ((str1 != null) && (str1.length() > 0) && (Integer.valueOf(str2).intValue() < 0))
-          {
-            localQzoneProxy.jdField_a_of_type_JavaLangString = str1;
-            localQzoneProxy.jdField_a_of_type_Int = Integer.valueOf(str2).intValue();
-          }
-          else
-          {
-            localQzoneProxy.jdField_a_of_type_JavaLangString = "10.0.0.200";
-            localQzoneProxy.jdField_a_of_type_Int = 80;
-          }
-        }
+      localObject1 = ((Context)localObject1).getContentResolver().query(jdField_a_of_type_AndroidNetUri, null, null, null, null);
+      ((Cursor)localObject1).moveToFirst();
+      String str1 = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndex("proxy"));
+      if (str1 != null) {
+        str1.toLowerCase();
       }
-      catch (Exception localException)
+      String str2 = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndex("port"));
+      String str3 = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndex("apn"));
+      if (str3 != null) {
+        str3.toLowerCase();
+      }
+      ((Cursor)localObject1).close();
+      if ((str3 != null) && (str3.startsWith("ctwap")))
       {
-        localException.printStackTrace();
+        if ((str1 != null) && (str1.length() > 0) && (Integer.valueOf(str2).intValue() < 0))
+        {
+          localQzoneProxy.jdField_a_of_type_JavaLangString = str1;
+          localQzoneProxy.jdField_a_of_type_Int = Integer.valueOf(str2).intValue();
+          return localQzoneProxy;
+        }
+        localQzoneProxy.jdField_a_of_type_JavaLangString = "10.0.0.200";
+        localQzoneProxy.jdField_a_of_type_Int = 80;
         return localQzoneProxy;
       }
       if ((str3 != null) && (str3.startsWith("cmwap")))
@@ -86,25 +74,29 @@ public class Http
         {
           localQzoneProxy.jdField_a_of_type_JavaLangString = str1;
           localQzoneProxy.jdField_a_of_type_Int = Integer.valueOf(str2).intValue();
+          return localQzoneProxy;
         }
-        else
-        {
-          localQzoneProxy.jdField_a_of_type_JavaLangString = "10.0.0.172";
-          localQzoneProxy.jdField_a_of_type_Int = 80;
-        }
+        localQzoneProxy.jdField_a_of_type_JavaLangString = "10.0.0.172";
+        localQzoneProxy.jdField_a_of_type_Int = 80;
+        return localQzoneProxy;
       }
-      else if ((str3 != null) && (str3.startsWith("uniwap"))) {
+      if ((str3 != null) && (str3.startsWith("uniwap")))
+      {
         if ((str1 != null) && (str1.length() > 0) && (Integer.valueOf(str2).intValue() < 0))
         {
           localQzoneProxy.jdField_a_of_type_JavaLangString = str1;
           localQzoneProxy.jdField_a_of_type_Int = Integer.valueOf(str2).intValue();
+          return localQzoneProxy;
         }
-        else
-        {
-          localQzoneProxy.jdField_a_of_type_JavaLangString = "10.0.0.172";
-          localQzoneProxy.jdField_a_of_type_Int = 80;
-        }
+        localQzoneProxy.jdField_a_of_type_JavaLangString = "10.0.0.172";
+        localQzoneProxy.jdField_a_of_type_Int = 80;
       }
+      return localQzoneProxy;
+    }
+    catch (Exception localException)
+    {
+      localException = localException;
+      localException.printStackTrace();
       return localQzoneProxy;
     }
     finally {}
@@ -113,8 +105,8 @@ public class Http
   
   public static InetSocketAddress a()
   {
-    Object localObject2 = null;
     BaseApplication localBaseApplication = BaseApplication.getContext();
+    Object localObject2 = null;
     String str;
     int i;
     if (localBaseApplication == null)
@@ -122,21 +114,12 @@ public class Http
       str = Proxy.getDefaultHost();
       i = Proxy.getDefaultPort();
     }
-    for (;;)
+    else
     {
-      Object localObject1 = localObject2;
-      if (str != null)
-      {
-        localObject1 = localObject2;
-        if (str.trim().length() > 0) {
-          localObject1 = new InetSocketAddress(str, i);
-        }
-      }
-      do
-      {
+      localObject1 = localObject2;
+      if (!AppNetConnInfo.isMobileConn()) {
         return localObject1;
-        localObject1 = localObject2;
-      } while (!AppNetConnInfo.isMobileConn());
+      }
       str = Proxy.getHost(localBaseApplication);
       int j = Proxy.getPort(localBaseApplication);
       if ((str != null) && (str.trim().length() != 0))
@@ -161,6 +144,15 @@ public class Http
         }
       }
     }
+    Object localObject1 = localObject2;
+    if (str != null)
+    {
+      localObject1 = localObject2;
+      if (str.trim().length() > 0) {
+        localObject1 = new InetSocketAddress(str, i);
+      }
+    }
+    return localObject1;
   }
   
   public static HttpEntity a(String paramString1, byte[] paramArrayOfByte, String paramString2, BasicHeader[] paramArrayOfBasicHeader)
@@ -175,9 +167,20 @@ public class Http
       ((HttpPost)paramString1).setEntity(paramArrayOfByte);
       paramArrayOfByte = paramString1;
     }
+    else if (paramArrayOfByte != null)
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString1);
+      paramString2.append("?");
+      paramString2.append(new String(paramArrayOfByte));
+      paramArrayOfByte = new HttpGet(paramString2.toString());
+    }
+    else
+    {
+      paramArrayOfByte = new HttpGet(paramString1);
+    }
     int j;
-    int i;
-    while (paramArrayOfBasicHeader != null)
+    if (paramArrayOfBasicHeader != null)
     {
       j = paramArrayOfBasicHeader.length;
       i = 0;
@@ -185,11 +188,6 @@ public class Http
       {
         paramArrayOfByte.addHeader(paramArrayOfBasicHeader[i]);
         i += 1;
-      }
-      if (paramArrayOfByte != null) {
-        paramArrayOfByte = new HttpGet(paramString1 + "?" + new String(paramArrayOfByte));
-      } else {
-        paramArrayOfByte = new HttpGet(paramString1);
       }
     }
     if (jdField_a_of_type_OrgApacheHttpImplConnTsccmThreadSafeClientConnManager == null)
@@ -205,14 +203,22 @@ public class Http
       Proxy.getDefaultHost();
       Proxy.getDefaultPort();
       paramArrayOfBasicHeader = BaseApplication.getContext();
-      if (paramArrayOfBasicHeader != null) {
-        break label363;
+      if (paramArrayOfBasicHeader == null)
+      {
+        paramString1 = Proxy.getDefaultHost();
+        i = Proxy.getDefaultPort();
       }
-      paramString1 = Proxy.getDefaultHost();
-      i = Proxy.getDefaultPort();
-    }
-    for (;;)
-    {
+      else
+      {
+        paramString1 = Proxy.getHost(paramArrayOfBasicHeader);
+        i = Proxy.getPort(paramArrayOfBasicHeader);
+        if ((paramString1 != null) && (paramString1.trim().length() != 0) && (i > 0)) {
+          break label320;
+        }
+        paramString1 = Proxy.getDefaultHost();
+        i = Proxy.getDefaultPort();
+      }
+      label320:
       if ((paramString1 != null) && (paramString1.trim().length() != 0))
       {
         j = i;
@@ -226,27 +232,17 @@ public class Http
       }
       paramString1 = new HttpHost(paramString1, j);
       paramString2.getParams().setParameter("http.route.default-proxy", paramString1);
-      paramString1 = paramString2.execute(paramArrayOfByte);
-      i = paramString1.getStatusLine().getStatusCode();
-      if (i == 200) {
-        break;
-      }
-      throw new HttpResponseException(i);
-      label363:
-      paramString1 = Proxy.getHost(paramArrayOfBasicHeader);
-      j = Proxy.getPort(paramArrayOfBasicHeader);
-      if ((paramString1 != null) && (paramString1.trim().length() != 0))
-      {
-        i = j;
-        if (j > 0) {}
-      }
-      else
-      {
-        paramString1 = Proxy.getDefaultHost();
-        i = Proxy.getDefaultPort();
-      }
     }
-    return paramString1.getEntity();
+    paramString1 = paramString2.execute(paramArrayOfByte);
+    int i = paramString1.getStatusLine().getStatusCode();
+    if (i == 200) {
+      return paramString1.getEntity();
+    }
+    paramString1 = new HttpResponseException(i);
+    for (;;)
+    {
+      throw paramString1;
+    }
   }
   
   public static byte[] a(String paramString1, byte[] paramArrayOfByte, String paramString2, BasicHeader[] paramArrayOfBasicHeader)
@@ -259,7 +255,7 @@ public class Http
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.myapp.net.Http
  * JD-Core Version:    0.7.0.1
  */

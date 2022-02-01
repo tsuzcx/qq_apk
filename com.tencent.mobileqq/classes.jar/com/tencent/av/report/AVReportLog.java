@@ -6,22 +6,25 @@ public class AVReportLog
   
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (sLog != null) {
-      sLog.d(paramString1, paramString2, paramVarArgs);
+    AVReportLogInterface localAVReportLogInterface = sLog;
+    if (localAVReportLogInterface != null) {
+      localAVReportLogInterface.d(paramString1, paramString2, paramVarArgs);
     }
   }
   
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (sLog != null) {
-      sLog.e(paramString1, paramString2, paramVarArgs);
+    AVReportLogInterface localAVReportLogInterface = sLog;
+    if (localAVReportLogInterface != null) {
+      localAVReportLogInterface.e(paramString1, paramString2, paramVarArgs);
     }
   }
   
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (sLog != null) {
-      sLog.i(paramString1, paramString2, paramVarArgs);
+    AVReportLogInterface localAVReportLogInterface = sLog;
+    if (localAVReportLogInterface != null) {
+      localAVReportLogInterface.i(paramString1, paramString2, paramVarArgs);
     }
   }
   
@@ -32,21 +35,23 @@ public class AVReportLog
   
   public static void v(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (sLog != null) {
-      sLog.v(paramString1, paramString2, paramVarArgs);
+    AVReportLogInterface localAVReportLogInterface = sLog;
+    if (localAVReportLogInterface != null) {
+      localAVReportLogInterface.v(paramString1, paramString2, paramVarArgs);
     }
   }
   
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (sLog != null) {
-      sLog.w(paramString1, paramString2, paramVarArgs);
+    AVReportLogInterface localAVReportLogInterface = sLog;
+    if (localAVReportLogInterface != null) {
+      localAVReportLogInterface.w(paramString1, paramString2, paramVarArgs);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.report.AVReportLog
  * JD-Core Version:    0.7.0.1
  */

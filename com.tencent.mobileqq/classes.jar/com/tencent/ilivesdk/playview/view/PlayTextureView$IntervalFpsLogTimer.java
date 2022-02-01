@@ -12,12 +12,14 @@ public class PlayTextureView$IntervalFpsLogTimer
   
   public int getFps()
   {
-    if (this.mInterval != 0L) {}
-    for (int i = this.mFps * 1000 / (int)this.mInterval;; i = this.mFps)
-    {
-      this.mFps = 0;
-      return i;
+    int i;
+    if (this.mInterval != 0L) {
+      i = this.mFps * 1000 / (int)this.mInterval;
+    } else {
+      i = this.mFps;
     }
+    this.mFps = 0;
+    return i;
   }
   
   public boolean isTimeToWriteLog()
@@ -28,7 +30,7 @@ public class PlayTextureView$IntervalFpsLogTimer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.playview.view.PlayTextureView.IntervalFpsLogTimer
  * JD-Core Version:    0.7.0.1
  */

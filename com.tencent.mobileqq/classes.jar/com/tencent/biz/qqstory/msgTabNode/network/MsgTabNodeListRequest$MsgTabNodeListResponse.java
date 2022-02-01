@@ -24,43 +24,61 @@ public class MsgTabNodeListRequest$MsgTabNodeListResponse
   public MsgTabNodeListRequest$MsgTabNodeListResponse(qqstory_service.RspMsgTabNodeList paramRspMsgTabNodeList)
   {
     super(paramRspMsgTabNodeList.result);
+    boolean bool2 = false;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_JavaLangString = paramRspMsgTabNodeList.list_seq.get().toStringUtf8();
     this.c = paramRspMsgTabNodeList.next_cookie.get().toStringUtf8();
-    if (paramRspMsgTabNodeList.is_animate.get() > 0) {}
-    for (boolean bool1 = true;; bool1 = false)
+    boolean bool1;
+    if (paramRspMsgTabNodeList.is_animate.get() > 0) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    this.jdField_a_of_type_Boolean = bool1;
+    if (paramRspMsgTabNodeList.is_end.has())
     {
-      this.jdField_a_of_type_Boolean = bool1;
-      if (paramRspMsgTabNodeList.is_end.has())
-      {
-        bool1 = bool2;
-        if (paramRspMsgTabNodeList.is_end.get() != 1) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
-      this.b = bool1;
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramRspMsgTabNodeList.node_list.size());
-      paramRspMsgTabNodeList = paramRspMsgTabNodeList.node_list.get().iterator();
-      while (paramRspMsgTabNodeList.hasNext())
-      {
-        qqstory_service.MsgTabNodeInfo localMsgTabNodeInfo = (qqstory_service.MsgTabNodeInfo)paramRspMsgTabNodeList.next();
-        MsgTabNodeInfo localMsgTabNodeInfo1 = new MsgTabNodeInfo();
-        localMsgTabNodeInfo1.a(localMsgTabNodeInfo);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localMsgTabNodeInfo1);
-      }
+      bool1 = bool2;
+      if (paramRspMsgTabNodeList.is_end.get() != 1) {}
+    }
+    else
+    {
+      bool1 = true;
+    }
+    this.b = bool1;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramRspMsgTabNodeList.node_list.size());
+    paramRspMsgTabNodeList = paramRspMsgTabNodeList.node_list.get().iterator();
+    while (paramRspMsgTabNodeList.hasNext())
+    {
+      qqstory_service.MsgTabNodeInfo localMsgTabNodeInfo = (qqstory_service.MsgTabNodeInfo)paramRspMsgTabNodeList.next();
+      MsgTabNodeInfo localMsgTabNodeInfo1 = new MsgTabNodeInfo();
+      localMsgTabNodeInfo1.a(localMsgTabNodeInfo);
+      this.jdField_a_of_type_JavaUtilArrayList.add(localMsgTabNodeInfo1);
     }
   }
   
   public String toString()
   {
-    return "MsgTabNodeListResponse{shouldAnimate=" + this.jdField_a_of_type_Boolean + ", seq='" + this.jdField_a_of_type_JavaLangString + '\'' + ", cookie='" + this.c + '\'' + ", isEnd=" + this.b + ", nodeList=" + this.jdField_a_of_type_JavaUtilArrayList + "} " + super.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MsgTabNodeListResponse{shouldAnimate=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", seq='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", cookie='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", isEnd=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", nodeList=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuilder.append("} ");
+    localStringBuilder.append(super.toString());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.network.MsgTabNodeListRequest.MsgTabNodeListResponse
  * JD-Core Version:    0.7.0.1
  */

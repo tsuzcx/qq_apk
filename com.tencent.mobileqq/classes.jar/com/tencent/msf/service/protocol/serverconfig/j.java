@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class j
   extends JceStruct
@@ -108,34 +109,41 @@ public final class j
     paramJceOutputStream.write(this.d, 5);
     paramJceOutputStream.write(this.e, 6);
     paramJceOutputStream.write(this.f, 7);
-    if (this.g != null) {
-      paramJceOutputStream.write(this.g, 8);
+    Object localObject = this.g;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 8);
     }
-    if (this.h != null) {
-      paramJceOutputStream.write(this.h, 9);
+    localObject = this.h;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 9);
     }
-    if (this.i != null) {
-      paramJceOutputStream.write(this.i, 10);
+    localObject = this.i;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 10);
     }
-    if (this.j != null) {
-      paramJceOutputStream.write(this.j, 11);
+    localObject = this.j;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 11);
     }
-    if (this.k != null) {
-      paramJceOutputStream.write(this.k, 12);
+    localObject = this.k;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 12);
     }
-    if (this.l != null) {
-      paramJceOutputStream.write(this.l, 13);
+    localObject = this.l;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 13);
     }
     paramJceOutputStream.write(this.m, 14);
     paramJceOutputStream.write(this.n, 15);
-    if (this.o != null) {
-      paramJceOutputStream.write(this.o, 16);
+    localObject = this.o;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 16);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.msf.service.protocol.serverconfig.j
  * JD-Core Version:    0.7.0.1
  */

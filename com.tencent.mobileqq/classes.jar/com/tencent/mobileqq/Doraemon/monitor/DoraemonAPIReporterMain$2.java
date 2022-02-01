@@ -17,46 +17,58 @@ class DoraemonAPIReporterMain$2
 {
   DoraemonAPIReporterMain$2(DoraemonAPIReporterMain paramDoraemonAPIReporterMain, String paramString1, String paramString2, int paramInt) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("DoraemonOpenAPI.report", 2, "onResult key=" + this.jdField_a_of_type_JavaLangString + ", api=" + this.b + ", count=" + this.jdField_a_of_type_Int + ", code=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("onResult key=");
+      paramBundle.append(this.jdField_a_of_type_JavaLangString);
+      paramBundle.append(", api=");
+      paramBundle.append(this.b);
+      paramBundle.append(", count=");
+      paramBundle.append(this.jdField_a_of_type_Int);
+      paramBundle.append(", code=");
+      paramBundle.append(paramInt);
+      QLog.i("DoraemonOpenAPI.report", 2, paramBundle.toString());
     }
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {
+    if ((paramInt == 0) && (paramArrayOfByte != null))
+    {
+      paramBundle = new oidb_0xb6f.RspBody();
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (!paramBundle.report_freq_rsp.has())
+        {
+          if (!QLog.isColorLevel()) {
+            return;
+          }
+          QLog.i("DoraemonOpenAPI.report", 2, "rsp invalid");
+          return;
+        }
+        DoraemonAPIReporterMain.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonMonitorDoraemonAPIReporterMain, this.jdField_a_of_type_JavaLangString, paramBundle.report_freq_rsp.identity.apptype.get(), String.valueOf(paramBundle.report_freq_rsp.identity.appid.get()), paramBundle.report_freq_rsp.identity.apiName.get(), paramBundle.report_freq_rsp.remain_times.get(), 1000L * paramBundle.report_freq_rsp.expire_time.get());
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("DoraemonOpenAPI.report", 2, "parse rsp error", paramArrayOfByte);
+        }
+        return;
+      }
+    }
+    else
+    {
       if (QLog.isColorLevel()) {
         QLog.i("DoraemonOpenAPI.report", 2, "req error");
       }
+      return;
     }
-    do
-    {
-      for (;;)
-      {
-        return;
-        paramBundle = new oidb_0xb6f.RspBody();
-        try
-        {
-          paramBundle.mergeFrom(paramArrayOfByte);
-          if (paramBundle.report_freq_rsp.has()) {
-            break label146;
-          }
-          if (QLog.isColorLevel())
-          {
-            QLog.i("DoraemonOpenAPI.report", 2, "rsp invalid");
-            return;
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("DoraemonOpenAPI.report", 2, "parse rsp error", paramArrayOfByte);
-    return;
-    label146:
-    DoraemonAPIReporterMain.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonMonitorDoraemonAPIReporterMain, this.jdField_a_of_type_JavaLangString, paramBundle.report_freq_rsp.identity.apptype.get(), String.valueOf(paramBundle.report_freq_rsp.identity.appid.get()), paramBundle.report_freq_rsp.identity.apiName.get(), paramBundle.report_freq_rsp.remain_times.get(), paramBundle.report_freq_rsp.expire_time.get() * 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.monitor.DoraemonAPIReporterMain.2
  * JD-Core Version:    0.7.0.1
  */

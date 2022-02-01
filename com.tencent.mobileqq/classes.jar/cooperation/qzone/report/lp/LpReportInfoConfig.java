@@ -470,11 +470,17 @@ public class LpReportInfoConfig
   public static final int SUBATION_TYPE_P2V_SPEED = 10;
   public static final int SUBATION_TYPE_P2V_STICKER = 8;
   public static final int SUBATION_TYPE_P2V_TRANSITION = 7;
+  public static final int SUB_ACTION_ACTIVE_BIRTHDAY_FEED = 17;
+  public static final int SUB_ACTION_ACTIVE_BIRTHDAY_FEED_CLOSE = 4;
+  public static final int SUB_ACTION_ACTIVE_BIRTHDAY_FEED_DRESS = 2;
+  public static final int SUB_ACTION_ACTIVE_BIRTHDAY_FEED_EXPOSURE = 1;
+  public static final int SUB_ACTION_ACTIVE_BIRTHDAY_FEED_MORE = 3;
   public static final int SUB_ACTION_ACTIVE_FEEDS_SIMPLE_MODE_ICON = 30;
   public static final int SUB_ACTION_ACTIVE_FEEDS_SIMPLE_MODE_ICON_ALL = 31;
   public static final int SUB_ACTION_ACTIVE_FEEDS_SIMPLE_MODE_NO_RED_POINT = 23;
   public static final int SUB_ACTION_ACTIVE_FEEDS_SIMPLE_MODE_NUM_RED_POINT = 22;
   public static final int SUB_ACTION_ACTIVE_FEEDS_SIMPLE_MODE_SMALL_RED_POINT = 21;
+  public static final int SUB_ACTION_ACTIVE_FIRST_FEED = 619;
   public static final int SUB_ACTION_ADD_FRIEND_BTN_CLICK = 3;
   public static final int SUB_ACTION_AIO_SYNC_QZONE_PHOTO_LIST_ACTIVITY = 2;
   public static final int SUB_ACTION_AIO_SYNC_QZONE_PHOTO_LIST_PANEL = 1;
@@ -716,7 +722,7 @@ public class LpReportInfoConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfoConfig
  * JD-Core Version:    0.7.0.1
  */

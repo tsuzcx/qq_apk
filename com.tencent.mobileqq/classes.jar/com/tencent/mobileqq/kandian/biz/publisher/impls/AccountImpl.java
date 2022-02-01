@@ -17,10 +17,10 @@ public final class AccountImpl
     Object localObject = BaseApplicationImpl.getApplication();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getApplication()");
     localObject = ((BaseApplicationImpl)localObject).getRuntime();
-    if (localObject == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
+    if (localObject != null) {
+      return (QQAppInterface)localObject;
     }
-    return (QQAppInterface)localObject;
+    throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
   }
   
   @NotNull
@@ -33,7 +33,7 @@ public final class AccountImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.AccountImpl
  * JD-Core Version:    0.7.0.1
  */

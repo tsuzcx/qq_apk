@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class SvcReqMSFLoginNotify
   extends JceStruct
@@ -59,22 +60,25 @@ public final class SvcReqMSFLoginNotify
     paramJceOutputStream.write(this.cStatus, 1);
     paramJceOutputStream.write(this.cTablet, 2);
     paramJceOutputStream.write(this.iPlatform, 3);
-    if (this.strTitle != null) {
-      paramJceOutputStream.write(this.strTitle, 4);
+    Object localObject = this.strTitle;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.strInfo != null) {
-      paramJceOutputStream.write(this.strInfo, 5);
+    localObject = this.strInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.iProductType, 6);
     paramJceOutputStream.write(this.iClientType, 7);
-    if (this.vecInstanceList != null) {
-      paramJceOutputStream.write(this.vecInstanceList, 8);
+    localObject = this.vecInstanceList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.SvcReqMSFLoginNotify
  * JD-Core Version:    0.7.0.1
  */

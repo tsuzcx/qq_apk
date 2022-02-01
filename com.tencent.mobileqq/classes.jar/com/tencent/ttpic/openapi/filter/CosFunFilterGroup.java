@@ -20,7 +20,7 @@ import java.util.Set;
 
 public class CosFunFilterGroup
 {
-  private static final String TAG = CosFunFilterGroup.class.getSimpleName();
+  private static final String TAG = "CosFunFilterGroup";
   private Map<Integer, FaceActionCounter> actionCounterMap;
   private AIAttr aiAttr;
   private int animTotalDuration;
@@ -44,9 +44,10 @@ public class CosFunFilterGroup
   {
     this.videoMaterial = paramVideoMaterial;
     this.cosFun = paramVideoMaterial.getCosFun();
-    if (this.cosFun != null)
+    paramVideoMaterial = this.cosFun;
+    if (paramVideoMaterial != null)
     {
-      this.animTotalDuration = (this.cosFun.getTipsAnimFrames() * this.cosFun.getTipsAnimFrameDuration());
+      this.animTotalDuration = (paramVideoMaterial.getTipsAnimFrames() * this.cosFun.getTipsAnimFrameDuration());
       this.startInterval = this.cosFun.getStartInterval();
     }
     this.triggerManager = paramTriggerManager;
@@ -62,28 +63,26 @@ public class CosFunFilterGroup
   
   private CosFunGroupItem getCurrentGroupItem()
   {
+    boolean bool = false;
     this.isRestartGroup = false;
-    if (this.currentGroupItemIndex == -1)
+    int i = this.currentGroupItemIndex;
+    if (i == -1)
     {
       this.currentGroupItemIndex = 0;
       return (CosFunGroupItem)this.cosFunGroupItemList.get(this.currentGroupItemIndex);
     }
-    if (((CosFunGroupItem)this.cosFunGroupItemList.get(this.currentGroupItemIndex)).durationComplete())
+    if (((CosFunGroupItem)this.cosFunGroupItemList.get(i)).durationComplete())
     {
       this.currentGroupItemIndex = ((this.currentGroupItemIndex + 1) % this.cosFunGroupItemList.size());
-      if (this.currentGroupItemIndex != 0) {
-        break label119;
+      if (this.currentGroupItemIndex == 0) {
+        bool = true;
       }
-    }
-    label119:
-    for (boolean bool = true;; bool = false)
-    {
       this.isRestartGroup = bool;
       if (this.isRestartGroup) {
         CosFunHelper.isRestart = true;
       }
-      return (CosFunGroupItem)this.cosFunGroupItemList.get(this.currentGroupItemIndex);
     }
+    return (CosFunGroupItem)this.cosFunGroupItemList.get(this.currentGroupItemIndex);
   }
   
   private void initCosGroup()
@@ -91,9 +90,10 @@ public class CosFunFilterGroup
     if (this.randomItemIndex == -1) {
       this.randomItemIndex = new Random().nextInt(((CosFun.CosFunGroupItem)this.cosFun.getCosFunGroupItem().get(0)).getCosFunItems().size());
     }
-    if (this.cosFun != null)
+    Object localObject = this.cosFun;
+    if (localObject != null)
     {
-      Object localObject = this.cosFun.getCosFunGroupItem();
+      localObject = ((CosFun)localObject).getCosFunGroupItem();
       if (localObject != null)
       {
         localObject = ((List)localObject).iterator();
@@ -117,14 +117,15 @@ public class CosFunFilterGroup
   
   private void updateItemIndex(int paramInt)
   {
-    if (this.lastFrameFaceCount != paramInt) {}
-    for (int i = 1;; i = 0)
-    {
-      this.lastFrameFaceCount = paramInt;
-      if (i != 0) {
-        this.randomItemIndex = new Random().nextInt(getCurrentGroupItem().getCosFunItemsCount());
-      }
-      return;
+    int i;
+    if (this.lastFrameFaceCount != paramInt) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    this.lastFrameFaceCount = paramInt;
+    if (i != 0) {
+      this.randomItemIndex = new Random().nextInt(getCurrentGroupItem().getCosFunItemsCount());
     }
   }
   
@@ -172,40 +173,41 @@ public class CosFunFilterGroup
   
   public void updateParams(PTFaceAttr paramPTFaceAttr)
   {
-    boolean bool = true;
     if (this.startTime <= 0L) {
       this.startTime = paramPTFaceAttr.getTimeStamp();
     }
     updateItemIndex(paramPTFaceAttr.getFaceCount());
-    if (paramPTFaceAttr.getTimeStamp() - this.startTime < this.startInterval)
+    long l1 = paramPTFaceAttr.getTimeStamp();
+    long l2 = this.startTime;
+    long l3 = this.startInterval;
+    boolean bool = true;
+    if (l1 - l2 < l3)
     {
       if (paramPTFaceAttr.getFaceCount() < 1) {
         this.startTime = paramPTFaceAttr.getTimeStamp();
       }
-      if (paramPTFaceAttr.getFaceCount() < 1) {
-        CosFunHelper.isRestart = bool;
+      if (paramPTFaceAttr.getFaceCount() >= 1) {
+        bool = false;
       }
-    }
-    do
-    {
+      CosFunHelper.isRestart = bool;
       return;
-      bool = false;
-      break;
-      if ((paramPTFaceAttr.getFaceCount() > 0) && (!this.countDownCalled) && (this.animTotalDuration > 0) && (CosFunHelper.countDownListener != null))
-      {
-        CosFunHelper.countDownListener.onCountDownStart(this.videoMaterial);
-        this.countDownCalled = true;
-      }
-      CosFunGroupItem localCosFunGroupItem = getCurrentGroupItem();
-      localCosFunGroupItem.updateCurrentTriggerParam(this.actionCounterMap, this.triggeredExpression, this.aiAttr);
-      localCosFunGroupItem.updateParams(paramPTFaceAttr);
-    } while (!CosFunHelper.isRestart);
-    restartFlow(paramPTFaceAttr.getTimeStamp());
+    }
+    if ((paramPTFaceAttr.getFaceCount() > 0) && (!this.countDownCalled) && (this.animTotalDuration > 0) && (CosFunHelper.countDownListener != null))
+    {
+      CosFunHelper.countDownListener.onCountDownStart(this.videoMaterial);
+      this.countDownCalled = true;
+    }
+    CosFunGroupItem localCosFunGroupItem = getCurrentGroupItem();
+    localCosFunGroupItem.updateCurrentTriggerParam(this.actionCounterMap, this.triggeredExpression, this.aiAttr);
+    localCosFunGroupItem.updateParams(paramPTFaceAttr);
+    if (CosFunHelper.isRestart) {
+      restartFlow(paramPTFaceAttr.getTimeStamp());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.CosFunFilterGroup
  * JD-Core Version:    0.7.0.1
  */

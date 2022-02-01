@@ -11,7 +11,7 @@ import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.nearby.NearbyCardManager;
+import com.tencent.mobileqq.nearby.INearbyCardManager;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.widget.QQToast;
@@ -27,92 +27,109 @@ class NearbyProfileDisplayTribePanel$18
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyProfileDisplayTribePanel", 2, "type = [" + paramInt + "], isSuccess = [" + paramBoolean + "], bundle = [" + paramBundle + "]");
-    }
     Object localObject;
-    if (paramBoolean)
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("type = [");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("], isSuccess = [");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append("], bundle = [");
+      ((StringBuilder)localObject).append(paramBundle);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("NearbyProfileDisplayTribePanel", 2, ((StringBuilder)localObject).toString());
+    }
+    if (paramBoolean) {}
+    for (;;)
     {
       try
       {
-        ((NearbyCardManager)this.a.a.app.getManager(QQManagerFactory.NEARBY_CARD_MANAGER)).d.put(this.a.a.app.getCurrentAccountUin(), Integer.valueOf(1));
+        ((INearbyCardManager)this.a.a.app.getManager(QQManagerFactory.NEARBY_CARD_MANAGER)).a().put(this.a.a.app.getCurrentAccountUin(), Integer.valueOf(1));
         paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          break label545;
-        }
-        localObject = new WebSsoBody.WebSsoResponseBody();
-        ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
-        paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
-        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
-        if (QLog.isColorLevel()) {
-          QLog.i("NearbyProfileDisplayTribePanel", 2, "retCode = [" + paramInt + "]");
-        }
-        if (paramInt == 0) {
-          break label303;
-        }
-        paramBundle = paramBundle.optString("msg");
-        if (!TextUtils.isEmpty(paramBundle))
+        if (paramBundle != null)
         {
-          QQToast.a(this.a.a, 1, "" + paramBundle, 1).a();
+          localObject = new WebSsoBody.WebSsoResponseBody();
+          ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
+          paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
+          paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("retCode = [");
+            ((StringBuilder)localObject).append(paramInt);
+            ((StringBuilder)localObject).append("]");
+            QLog.i("NearbyProfileDisplayTribePanel", 2, ((StringBuilder)localObject).toString());
+          }
+          if (paramInt != 0)
+          {
+            paramBundle = paramBundle.optString("msg");
+            if (!TextUtils.isEmpty(paramBundle))
+            {
+              localObject = this.a.a;
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("");
+              localStringBuilder.append(paramBundle);
+              QQToast.a((Context)localObject, 1, localStringBuilder.toString(), 1).a();
+              return;
+            }
+            QQToast.a(this.a.a, 1, HardCodeUtil.a(2131707408), 1).a();
+            return;
+          }
+          if (paramBundle.optInt("retcode") == 0)
+          {
+            paramBundle = this.a;
+            if (NearbyProfileDisplayTribePanel.a(this.a)) {
+              break label646;
+            }
+            paramBoolean = true;
+            NearbyProfileDisplayTribePanel.a(paramBundle, paramBoolean);
+            localObject = this.a.a;
+            if (NearbyProfileDisplayTribePanel.a(this.a)) {
+              paramBundle = HardCodeUtil.a(2131707373);
+            } else {
+              paramBundle = HardCodeUtil.a(2131707331);
+            }
+            QQToast.a((Context)localObject, 2, paramBundle, 1).a();
+            NearbyProfileDisplayTribePanel.a(this.a, 1, 60);
+          }
+          if ((!NearbyProfileDisplayTribePanel.a(this.a)) && (NearbyProfileDisplayTribePanel.a(this.a).getChildAt(2).getVisibility() != 0))
+          {
+            paramBundle = (Button)NearbyProfileDisplayTribePanel.a(this.a).getChildAt(1).findViewById(2131379994);
+            paramBundle.setTextColor(this.a.a.getResources().getColor(2131167089));
+            paramBundle.setBackgroundDrawable(this.a.a.getResources().getDrawable(2130839280));
+          }
+          if (!NearbyProfileDisplayTribePanel.a(this.a)) {
+            break label645;
+          }
+          paramBundle = (Button)NearbyProfileDisplayTribePanel.a(this.a).getChildAt(1).findViewById(2131379994);
+          paramBundle.setTextColor(this.a.a.getResources().getColor(2131167091));
+          paramBundle.setBackgroundDrawable(this.a.a.getResources().getDrawable(2130839319));
           return;
         }
-        QQToast.a(this.a.a, 1, HardCodeUtil.a(2131707383), 1).a();
+        QQToast.a(this.a.a, 1, HardCodeUtil.a(2131707340), 1).a();
         return;
       }
       catch (Exception paramBundle)
       {
-        QQToast.a(this.a.a, 1, HardCodeUtil.a(2131707319), 1).a();
+        QQToast.a(this.a.a, 1, HardCodeUtil.a(2131707344), 1).a();
         if (!QLog.isColorLevel()) {
-          break label588;
+          break label645;
         }
+        QLog.e("NearbyProfileDisplayTribePanel", 2, "未知异常，请稍后重试", paramBundle);
       }
-      QLog.e("NearbyProfileDisplayTribePanel", 2, "未知异常，请稍后重试", paramBundle);
+      QQToast.a(this.a.a, 1, HardCodeUtil.a(2131707346), 1).a();
       return;
-      label303:
-      if (paramBundle.optInt("retcode") == 0)
-      {
-        paramBundle = this.a;
-        if (NearbyProfileDisplayTribePanel.a(this.a)) {
-          break label589;
-        }
-      }
-    }
-    label545:
-    label588:
-    label589:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      NearbyProfileDisplayTribePanel.a(paramBundle, paramBoolean);
-      localObject = this.a.a;
-      if (NearbyProfileDisplayTribePanel.a(this.a)) {}
-      for (paramBundle = HardCodeUtil.a(2131707348);; paramBundle = HardCodeUtil.a(2131707306))
-      {
-        QQToast.a((Context)localObject, 2, paramBundle, 1).a();
-        NearbyProfileDisplayTribePanel.a(this.a, 1, 60);
-        if ((!NearbyProfileDisplayTribePanel.a(this.a)) && (NearbyProfileDisplayTribePanel.a(this.a).getChildAt(2).getVisibility() != 0))
-        {
-          paramBundle = (Button)NearbyProfileDisplayTribePanel.a(this.a).getChildAt(1).findViewById(2131380726);
-          paramBundle.setTextColor(this.a.a.getResources().getColor(2131167066));
-          paramBundle.setBackgroundDrawable(this.a.a.getResources().getDrawable(2130839424));
-        }
-        if (!NearbyProfileDisplayTribePanel.a(this.a)) {
-          break;
-        }
-        paramBundle = (Button)NearbyProfileDisplayTribePanel.a(this.a).getChildAt(1).findViewById(2131380726);
-        paramBundle.setTextColor(this.a.a.getResources().getColor(2131167068));
-        paramBundle.setBackgroundDrawable(this.a.a.getResources().getDrawable(2130839463));
-        return;
-      }
-      QQToast.a(this.a.a, 1, HardCodeUtil.a(2131707315), 1).a();
+      label645:
       return;
-      QQToast.a(this.a.a, 1, HardCodeUtil.a(2131707321), 1).a();
-      return;
+      label646:
+      paramBoolean = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.18
  * JD-Core Version:    0.7.0.1
  */

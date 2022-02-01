@@ -46,10 +46,15 @@ public abstract class AbstractGifImage
   
   private static int scaleFromDensity(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramInt2 == 0) || (paramInt2 == paramInt3)) {
-      return paramInt1;
+    int i = paramInt1;
+    if (paramInt2 != 0)
+    {
+      if (paramInt2 == paramInt3) {
+        return paramInt1;
+      }
+      i = (paramInt1 * paramInt3 + (paramInt2 >> 1)) / paramInt2;
     }
-    return (paramInt1 * paramInt3 + (paramInt2 >> 1)) / paramInt2;
+    return i;
   }
   
   protected abstract void applyNextFrame();
@@ -69,51 +74,51 @@ public abstract class AbstractGifImage
   
   public void detachDrawable(GifDrawable paramGifDrawable)
   {
-    if (paramGifDrawable != null)
+    Vector localVector;
+    if (paramGifDrawable != null) {
+      localVector = this.mDrawableList;
+    }
+    int j;
+    for (int i = 0;; i = j + 1)
     {
-      Vector localVector = this.mDrawableList;
-      int i = 0;
-      for (;;)
+      try
       {
-        try
+        if (i < this.mDrawableList.size())
         {
-          if (i < this.mDrawableList.size())
+          WeakReference localWeakReference = (WeakReference)this.mDrawableList.get(i);
+          if ((localWeakReference != null) && (localWeakReference.get() != null))
           {
-            Object localObject = (WeakReference)this.mDrawableList.get(i);
-            if ((localObject == null) || (((WeakReference)localObject).get() == null))
-            {
-              localObject = this.mDrawableList;
-              int j = i - 1;
-              ((Vector)localObject).remove(i);
-              i = j;
+            j = i;
+            if (localWeakReference.get() != paramGifDrawable) {
+              continue;
             }
-            else if (((WeakReference)localObject).get() == paramGifDrawable)
-            {
-              this.mDrawableList.remove(i);
-            }
-          }
-          else
-          {
+            this.mDrawableList.remove(i);
             return;
           }
+          this.mDrawableList.remove(i);
+          j = i - 1;
+          continue;
         }
-        finally {}
-        i += 1;
+        return;
       }
+      finally {}
+      return;
     }
   }
   
   protected void doApplyNextFrame()
   {
     applyNextFrame();
-    if (!sPaused) {
+    if (!sPaused)
+    {
       invalidateSelf();
-    }
-    while (this.mIsInPendingAction) {
       return;
     }
-    sPendingActions.add(new WeakReference(this));
-    this.mIsInPendingAction = true;
+    if (!this.mIsInPendingAction)
+    {
+      sPendingActions.add(new WeakReference(this));
+      this.mIsInPendingAction = true;
+    }
   }
   
   protected abstract void draw(Canvas paramCanvas, Rect paramRect, Paint paramPaint, boolean paramBoolean);
@@ -155,17 +160,15 @@ public abstract class AbstractGifImage
       {
         if (i < this.mDrawableList.size())
         {
-          Object localObject1 = (WeakReference)this.mDrawableList.get(i);
-          if ((localObject1 == null) || (((WeakReference)localObject1).get() == null))
+          WeakReference localWeakReference = (WeakReference)this.mDrawableList.get(i);
+          if ((localWeakReference != null) && (localWeakReference.get() != null))
           {
-            localObject1 = this.mDrawableList;
-            int j = i - 1;
-            ((Vector)localObject1).remove(i);
-            i = j;
+            ((GifDrawable)localWeakReference.get()).invalidateSelf();
           }
           else
           {
-            ((GifDrawable)((WeakReference)localObject1).get()).invalidateSelf();
+            this.mDrawableList.remove(i);
+            i -= 1;
           }
         }
         else
@@ -173,8 +176,13 @@ public abstract class AbstractGifImage
           return;
         }
       }
-      finally {}
-      i += 1;
+      finally
+      {
+        continue;
+        throw localObject;
+        continue;
+        i += 1;
+      }
     }
   }
   
@@ -203,7 +211,7 @@ public abstract class AbstractGifImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.image.AbstractGifImage
  * JD-Core Version:    0.7.0.1
  */

@@ -59,9 +59,9 @@
             <com.qzone.component.StrokeTextView android:gravity="center" android:id="@id/m9p" android:layout_width="fill_parent" android:layout_height="70.0dip" android:layout_marginTop="130.0dip" android:layout_marginBottom="130.0dip" />
         </RelativeLayout>
     </RelativeLayout>
-    <RelativeLayout android:layout_gravity="bottom|center" android:id="@id/nyb" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ViewStub android:layout_gravity="bottom|center" android:id="@id/nxt" android:layout="@layout/cxf" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <RelativeLayout android:layout_gravity="bottom|center" android:id="@id/o1s" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ViewStub android:layout_gravity="bottom|center" android:id="@id/o19" android:layout="@layout/cyh" android:layout_width="fill_parent" android:layout_height="wrap_content" />
         <ViewStub android:layout_gravity="bottom|center" android:id="@id/hxp" android:layout="@layout/bvu" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <ViewStub android:layout_gravity="bottom|center" android:id="@id/nxs" android:layout="@layout/cxe" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:layout_gravity="bottom|center" android:id="@id/o18" android:layout="@layout/cyg" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     </RelativeLayout>
 </FrameLayout>

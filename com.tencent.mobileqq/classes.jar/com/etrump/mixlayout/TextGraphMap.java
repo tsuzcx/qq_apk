@@ -18,7 +18,9 @@ public class TextGraphMap
     if ((paramCharSequence instanceof Spanned))
     {
       Spanned localSpanned = (Spanned)paramCharSequence;
-      paramCharSequence = (CharacterStyle[])localSpanned.getSpans(0, paramCharSequence.length(), CharacterStyle.class);
+      int j = paramCharSequence.length();
+      int i = 0;
+      paramCharSequence = (CharacterStyle[])localSpanned.getSpans(0, j, CharacterStyle.class);
       if ((paramCharSequence != null) && (paramCharSequence.length > 0))
       {
         this.jdField_a_of_type_ComTencentUtilLongSparseArray = new LongSparseArray(paramCharSequence.length);
@@ -27,7 +29,7 @@ public class TextGraphMap
           Object localObject = paramCharSequence[i];
           if (((localObject instanceof EmoticonSpan)) || ((localObject instanceof SignatureActionSpan)))
           {
-            int j = localSpanned.getSpanStart(localObject);
+            j = localSpanned.getSpanStart(localObject);
             int k = localSpanned.getSpanEnd(localObject);
             this.jdField_a_of_type_ComTencentUtilLongSparseArray.a(a(j, k), localObject);
           }
@@ -44,106 +46,119 @@ public class TextGraphMap
   
   private static long a(int paramInt1, int paramInt2)
   {
-    return (paramInt1 << 32) + (0xFFFFFFFF & paramInt2);
+    return (paramInt1 << 32) + (paramInt2 & 0xFFFFFFFF);
   }
   
   private void a(String paramString, int paramInt1, int paramInt2)
   {
-    QLog.e("ETTextView", 1, paramString + ":" + paramInt1 + "," + paramInt2 + " > " + this.jdField_a_of_type_JavaLangCharSequence.length() + ":" + this.jdField_a_of_type_JavaLangCharSequence);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(":");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(" > ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangCharSequence.length());
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangCharSequence);
+    QLog.e("ETTextView", 1, localStringBuilder.toString());
   }
   
   private static int b(long paramLong)
   {
-    return (int)(0xFFFFFFFF & paramLong);
+    return (int)(paramLong & 0xFFFFFFFF);
   }
   
   public int a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaLangCharSequence == null) {}
-    do
-    {
+    Object localObject = this.jdField_a_of_type_JavaLangCharSequence;
+    if (localObject == null) {
       return paramInt;
-      if ((paramInt < 0) || (paramInt > this.jdField_a_of_type_JavaLangCharSequence.length()))
-      {
-        if (paramInt > 0) {
-          a("convertToGraphIndex", paramInt, 0);
-        }
-        return -1;
-      }
-    } while (this.jdField_a_of_type_ComTencentUtilLongSparseArray == null);
-    int k = this.jdField_a_of_type_ComTencentUtilLongSparseArray.a();
-    int j = 0;
-    int i = paramInt;
-    while (j < k)
-    {
-      long l = this.jdField_a_of_type_ComTencentUtilLongSparseArray.a(j);
-      int m = a(l);
-      int n = b(l);
-      if (m >= paramInt) {
-        return i;
-      }
-      if (n <= paramInt)
-      {
-        j += 1;
-        i -= n - m - 1;
-      }
-      else
-      {
-        return i - (paramInt - m);
-      }
     }
-    return i;
+    int j = 0;
+    if ((paramInt >= 0) && (paramInt <= ((CharSequence)localObject).length()))
+    {
+      localObject = this.jdField_a_of_type_ComTencentUtilLongSparseArray;
+      int i = paramInt;
+      if (localObject != null)
+      {
+        int k = ((LongSparseArray)localObject).a();
+        i = paramInt;
+        while (j < k)
+        {
+          long l = this.jdField_a_of_type_ComTencentUtilLongSparseArray.a(j);
+          int m = a(l);
+          int n = b(l);
+          if (m < paramInt) {
+            if (n <= paramInt)
+            {
+              i -= n - m - 1;
+              j += 1;
+            }
+            else
+            {
+              return i - (paramInt - m);
+            }
+          }
+        }
+      }
+      return i;
+    }
+    if (paramInt > 0) {
+      a("convertToGraphIndex", paramInt, 0);
+    }
+    return -1;
   }
   
   public int b(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaLangCharSequence == null) {
+    Object localObject = this.jdField_a_of_type_JavaLangCharSequence;
+    if (localObject == null) {
       return paramInt;
     }
-    if ((paramInt < 0) || (paramInt > this.jdField_a_of_type_JavaLangCharSequence.length()))
+    int j = 0;
+    if ((paramInt >= 0) && (paramInt <= ((CharSequence)localObject).length()))
     {
-      if (paramInt > 0) {
-        a("convertToTextIndex1", paramInt, 0);
-      }
-      return -1;
-    }
-    int j;
-    int i;
-    int n;
-    if (this.jdField_a_of_type_ComTencentUtilLongSparseArray != null)
-    {
-      int m = this.jdField_a_of_type_ComTencentUtilLongSparseArray.a();
-      j = 0;
-      i = paramInt;
-      k = i;
-      if (j < m)
+      localObject = this.jdField_a_of_type_ComTencentUtilLongSparseArray;
+      if (localObject != null)
       {
-        long l = this.jdField_a_of_type_ComTencentUtilLongSparseArray.a(j);
-        k = a(l);
-        n = b(l);
-        if (k < i) {
-          break label127;
+        int m = ((LongSparseArray)localObject).a();
+        int i = paramInt;
+        for (;;)
+        {
+          k = i;
+          if (j >= m) {
+            break;
+          }
+          long l = this.jdField_a_of_type_ComTencentUtilLongSparseArray.a(j);
+          k = a(l);
+          int n = b(l);
+          if (k >= i)
+          {
+            k = i;
+            break;
+          }
+          i += n - k - 1;
+          j += 1;
         }
       }
-    }
-    for (int k = i;; k = paramInt)
-    {
+      int k = paramInt;
       if (k > this.jdField_a_of_type_JavaLangCharSequence.length())
       {
         a("convertToTextIndex2", paramInt, k);
         return -1;
-        label127:
-        j += 1;
-        i = n - k - 1 + i;
-        break;
       }
       return k;
     }
+    if (paramInt > 0) {
+      a("convertToTextIndex1", paramInt, 0);
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.TextGraphMap
  * JD-Core Version:    0.7.0.1
  */

@@ -23,8 +23,13 @@ public class WebViewNativeAPICallback
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
       CustomWebView localCustomWebView = (CustomWebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localCustomWebView != null) {
-        localCustomWebView.callJs("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['" + this.jdField_a_of_type_JavaLangString + "', 4]);");
+      if (localCustomWebView != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['");
+        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append("', 4]);");
+        localCustomWebView.callJs(localStringBuilder.toString());
       }
     }
   }
@@ -34,8 +39,15 @@ public class WebViewNativeAPICallback
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
       CustomWebView localCustomWebView = (CustomWebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localCustomWebView != null) {
-        localCustomWebView.callJs("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['" + this.jdField_a_of_type_JavaLangString + "', 1, " + paramInt + "]);");
+      if (localCustomWebView != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['");
+        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append("', 1, ");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append("]);");
+        localCustomWebView.callJs(localStringBuilder.toString());
       }
     }
   }
@@ -45,8 +57,17 @@ public class WebViewNativeAPICallback
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
       CustomWebView localCustomWebView = (CustomWebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localCustomWebView != null) {
-        localCustomWebView.callJs("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['" + this.jdField_a_of_type_JavaLangString + "', 3, " + paramInt + ", '" + paramString + "']);");
+      if (localCustomWebView != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['");
+        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append("', 3, ");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(", '");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("']);");
+        localCustomWebView.callJs(localStringBuilder.toString());
       }
     }
   }
@@ -56,8 +77,15 @@ public class WebViewNativeAPICallback
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
       CustomWebView localCustomWebView = (CustomWebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localCustomWebView != null) {
-        localCustomWebView.callJs("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['" + this.jdField_a_of_type_JavaLangString + "', 2, " + paramJSONObject.toString() + "]);");
+      if (localCustomWebView != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['");
+        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append("', 2, ");
+        localStringBuilder.append(paramJSONObject.toString());
+        localStringBuilder.append("]);");
+        localCustomWebView.callJs(localStringBuilder.toString());
       }
     }
   }
@@ -67,15 +95,22 @@ public class WebViewNativeAPICallback
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
       CustomWebView localCustomWebView = (CustomWebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localCustomWebView != null) {
-        localCustomWebView.callJs("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['" + this.jdField_a_of_type_JavaLangString + "', 5, " + paramJSONObject.toString() + "]);");
+      if (localCustomWebView != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['");
+        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append("', 5, ");
+        localStringBuilder.append(paramJSONObject.toString());
+        localStringBuilder.append("]);");
+        localCustomWebView.callJs(localStringBuilder.toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.webview.WebViewNativeAPICallback
  * JD-Core Version:    0.7.0.1
  */

@@ -27,13 +27,14 @@ public class TMADownloadMonitor
   
   public static TMADownloadMonitor a()
   {
-    if (a != null) {
-      return a;
+    TMADownloadMonitor localTMADownloadMonitor = a;
+    if (localTMADownloadMonitor != null) {
+      return localTMADownloadMonitor;
     }
     try
     {
       a = new TMADownloadMonitor();
-      TMADownloadMonitor localTMADownloadMonitor = a;
+      localTMADownloadMonitor = a;
       return localTMADownloadMonitor;
     }
     finally {}
@@ -41,69 +42,72 @@ public class TMADownloadMonitor
   
   public static void a(Context paramContext, DownloadTaskInfo paramDownloadTaskInfo)
   {
-    if ((paramDownloadTaskInfo == null) || (paramContext == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("UniformDownloadEvent", 2, "downloadTaskInfo is null or context==null");
-      }
-    }
-    label401:
-    for (;;)
+    if ((paramDownloadTaskInfo != null) && (paramContext != null))
     {
-      return;
       NetworkMonitor.a().addDownloadURL(paramDownloadTaskInfo.url);
-      if (!a(paramDownloadTaskInfo.url))
+      if (a(paramDownloadTaskInfo.url)) {
+        return;
+      }
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("url", paramDownloadTaskInfo.url);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(NetworkUtil.getNetworkType(paramContext));
+      ((StringBuilder)localObject).append("");
+      localHashMap.put("NetworkType", ((StringBuilder)localObject).toString());
+      localHashMap.put("reportVia", "5");
+      if (paramDownloadTaskInfo.stackInfo.length() < 950)
       {
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("url", paramDownloadTaskInfo.url);
-        localHashMap.put("NetworkType", NetworkUtil.b(paramContext) + "");
-        localHashMap.put("reportVia", "5");
-        if (paramDownloadTaskInfo.stackInfo.length() < 950)
-        {
-          localHashMap.put("Stack", paramDownloadTaskInfo.stackInfo);
-          localHashMap.put("_filesize_from_dlg", "0");
-          localHashMap.put("_filename_from_dlg", paramDownloadTaskInfo.pkgName);
-          if (paramDownloadTaskInfo.versionCode <= 0) {
-            break label364;
-          }
-          localHashMap.put("isAPK", "1");
-          label160:
-          localHashMap.put("VersionCode", paramDownloadTaskInfo.versionCode + "");
-          paramDownloadTaskInfo = paramDownloadTaskInfo.source;
-          if (!TextUtils.isEmpty(paramDownloadTaskInfo)) {
-            break label376;
-          }
-          StatisticCollector.getInstance(paramContext).collectPerformance(null, "UniformDownloadEvent_NO_SOURCE", true, 0L, 0L, localHashMap, "");
-        }
-        for (;;)
-        {
-          if (!QLog.isColorLevel()) {
-            break label401;
-          }
-          paramContext = new StringBuilder();
-          paramDownloadTaskInfo = localHashMap.keySet().iterator();
-          while (paramDownloadTaskInfo.hasNext())
-          {
-            String str = (String)paramDownloadTaskInfo.next();
-            paramContext.append(str).append("=").append((String)localHashMap.get(str)).append("\n");
-          }
-          localHashMap.put("Stack", paramDownloadTaskInfo.stackInfo.substring(0, 950));
-          if (paramDownloadTaskInfo.stackInfo.length() < 1901)
-          {
-            localHashMap.put("Stack1", paramDownloadTaskInfo.stackInfo.substring(950));
-            break;
-          }
+        localHashMap.put("Stack", paramDownloadTaskInfo.stackInfo);
+      }
+      else
+      {
+        localHashMap.put("Stack", paramDownloadTaskInfo.stackInfo.substring(0, 950));
+        if (paramDownloadTaskInfo.stackInfo.length() < 1901) {
+          localHashMap.put("Stack1", paramDownloadTaskInfo.stackInfo.substring(950));
+        } else {
           localHashMap.put("Stack1", paramDownloadTaskInfo.stackInfo.substring(950, 1900));
-          break;
-          label364:
-          localHashMap.put("isAPK", "0");
-          break label160;
-          label376:
-          localHashMap.put("DOWNLOAD_BIG_BROTHER_SOURCE", paramDownloadTaskInfo);
-          StatisticCollector.getInstance(paramContext).collectPerformance(null, "UniformDownloadEvent", true, 0L, 0L, localHashMap, "");
         }
       }
+      localHashMap.put("_filesize_from_dlg", "0");
+      localHashMap.put("_filename_from_dlg", paramDownloadTaskInfo.pkgName);
+      if (paramDownloadTaskInfo.versionCode > 0) {
+        localHashMap.put("isAPK", "1");
+      } else {
+        localHashMap.put("isAPK", "0");
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramDownloadTaskInfo.versionCode);
+      ((StringBuilder)localObject).append("");
+      localHashMap.put("VersionCode", ((StringBuilder)localObject).toString());
+      paramDownloadTaskInfo = paramDownloadTaskInfo.source;
+      if (TextUtils.isEmpty(paramDownloadTaskInfo))
+      {
+        StatisticCollector.getInstance(paramContext).collectPerformance(null, "UniformDownloadEvent_NO_SOURCE", true, 0L, 0L, localHashMap, "");
+      }
+      else
+      {
+        localHashMap.put("DOWNLOAD_BIG_BROTHER_SOURCE", paramDownloadTaskInfo);
+        StatisticCollector.getInstance(paramContext).collectPerformance(null, "UniformDownloadEvent", true, 0L, 0L, localHashMap, "");
+      }
+      if (QLog.isColorLevel())
+      {
+        paramContext = new StringBuilder();
+        paramDownloadTaskInfo = localHashMap.keySet().iterator();
+        while (paramDownloadTaskInfo.hasNext())
+        {
+          localObject = (String)paramDownloadTaskInfo.next();
+          paramContext.append((String)localObject);
+          paramContext.append("=");
+          paramContext.append((String)localHashMap.get(localObject));
+          paramContext.append("\n");
+        }
+        QLog.d("UniformDownloadEvent", 2, paramContext.toString());
+      }
+      return;
     }
-    QLog.d("UniformDownloadEvent", 2, paramContext.toString());
+    if (QLog.isColorLevel()) {
+      QLog.d("UniformDownloadEvent", 2, "downloadTaskInfo is null or context==null");
+    }
   }
   
   private static boolean a(String paramString)
@@ -142,7 +146,7 @@ public class TMADownloadMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appstore.dl.TMADownloadMonitor
  * JD-Core Version:    0.7.0.1
  */

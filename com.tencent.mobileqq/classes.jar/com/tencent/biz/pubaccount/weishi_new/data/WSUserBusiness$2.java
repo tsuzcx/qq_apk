@@ -17,39 +17,43 @@ class WSUserBusiness$2
     {
       if (this.jdField_a_of_type_Int == 2) {
         WSUserBusiness.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataWSUserBusiness, this.jdField_a_of_type_JavaLangString, 1);
-      }
-      for (;;)
-      {
-        WSLog.b("WSUserBusiness", "[getServiceListenerWrapper] data error: " + paramWeishiTask.a);
-        return;
+      } else {
         WSUserBusiness.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataWSUserBusiness, this.jdField_a_of_type_JavaLangString, 2);
       }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[getServiceListenerWrapper] data error: ");
+      localStringBuilder.append(paramWeishiTask.a);
+      WSLog.b("WSUserBusiness", localStringBuilder.toString());
+      return;
     }
     int i = ((stFollowRsp)paramWeishiTask.a).isFollow;
-    WSLog.b("WSUserBusiness", "[getServiceListenerWrapper] isFollow : " + i);
+    paramWeishiTask = new StringBuilder();
+    paramWeishiTask.append("[getServiceListenerWrapper] isFollow : ");
+    paramWeishiTask.append(i);
+    WSLog.b("WSUserBusiness", paramWeishiTask.toString());
     if (this.jdField_a_of_type_Int == 1)
     {
       if (i == 1)
       {
-        ToastUtil.a().a(2131720709);
+        ToastUtil.a().a(2131720433);
         return;
       }
-      ToastUtil.a().a(2131720707);
+      ToastUtil.a().a(2131720431);
       WSUserBusiness.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataWSUserBusiness, this.jdField_a_of_type_JavaLangString, 2);
       return;
     }
     if (i == 0)
     {
-      ToastUtil.a().a(2131720711);
+      ToastUtil.a().a(2131720435);
       return;
     }
-    ToastUtil.a().a(2131720712);
+    ToastUtil.a().a(2131720436);
     WSUserBusiness.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataWSUserBusiness, this.jdField_a_of_type_JavaLangString, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.data.WSUserBusiness.2
  * JD-Core Version:    0.7.0.1
  */

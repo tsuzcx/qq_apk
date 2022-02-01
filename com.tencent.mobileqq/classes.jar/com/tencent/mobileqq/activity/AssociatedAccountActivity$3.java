@@ -9,19 +9,23 @@ class AssociatedAccountActivity$3
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountActivity", 2, "refreshAllData isFinishing() = " + this.this$0.isFinishing());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("refreshAllData isFinishing() = ");
+      localStringBuilder.append(this.this$0.isFinishing());
+      QLog.d("AssociatedAccountActivity", 2, localStringBuilder.toString());
     }
     if (this.this$0.isFinishing()) {
       return;
     }
-    this.this$0.a();
-    this.this$0.c();
+    this.this$0.loadAccountList();
+    this.this$0.loadItemDataList();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountActivity.3
  * JD-Core Version:    0.7.0.1
  */

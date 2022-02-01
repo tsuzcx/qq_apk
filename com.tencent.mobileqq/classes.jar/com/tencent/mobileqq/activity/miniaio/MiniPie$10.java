@@ -10,21 +10,21 @@ class MiniPie$10
 {
   MiniPie$10(MiniPie paramMiniPie) {}
   
-  public void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
+  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
   {
     if (TextUtils.equals(paramString, this.a.a.a)) {
       this.a.f();
     }
   }
   
-  public void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
+  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
   {
     this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniPie.10
  * JD-Core Version:    0.7.0.1
  */

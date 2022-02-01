@@ -10,15 +10,18 @@ class QCirclePluginUpdater$2
   
   public Boolean a()
   {
-    if ((QCirclePluginUpdater.a(this.jdField_a_of_type_ComTencentBizQcircleshadowLocalQCirclePluginUpdater) != null) && (QCirclePluginUpdater.a(this.jdField_a_of_type_ComTencentBizQcircleshadowLocalQCirclePluginUpdater).exists()) && (QCirclePluginUpdater.a(this.jdField_a_of_type_ComTencentBizQcircleshadowLocalQCirclePluginUpdater) == this.jdField_a_of_type_JavaIoFile)) {}
-    for (boolean bool = true;; bool = false) {
-      return Boolean.valueOf(bool);
+    boolean bool;
+    if ((QCirclePluginUpdater.a(this.jdField_a_of_type_ComTencentBizQcircleshadowLocalQCirclePluginUpdater) != null) && (QCirclePluginUpdater.a(this.jdField_a_of_type_ComTencentBizQcircleshadowLocalQCirclePluginUpdater).exists()) && (QCirclePluginUpdater.a(this.jdField_a_of_type_ComTencentBizQcircleshadowLocalQCirclePluginUpdater) == this.jdField_a_of_type_JavaIoFile)) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    return Boolean.valueOf(bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.QCirclePluginUpdater.2
  * JD-Core Version:    0.7.0.1
  */

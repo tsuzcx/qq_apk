@@ -14,23 +14,25 @@ final class AppClient$3
   
   public void run()
   {
-    if (MyAppApi.a().b())
+    MyAppApi.a();
+    if (MyAppApi.b())
     {
       Bundle localBundle = new Bundle();
-      String str = DownloadConstants.b;
-      if (this.jdField_a_of_type_JavaLangString == null) {}
-      for (localObject = "";; localObject = this.jdField_a_of_type_JavaLangString)
-      {
-        localBundle.putString(str, (String)localObject);
-        localBundle.putString(DownloadConstants.c, "");
-        localBundle.putString(DownloadConstants.d, "");
-        localBundle.putString(DownloadConstants.f, this.b);
-        localBundle.putInt(DownloadConstants.e, 0);
-        localBundle.putString(DownloadConstants.i, "ANDROIDQQ.SHARESOURCE");
-        localBundle.putString("big_brother_source_key", this.c);
-        ThreadManager.getSubThreadHandler().post(new AppClient.3.1(this, localBundle));
-        return;
+      String str2 = DownloadConstants.b;
+      String str1 = this.jdField_a_of_type_JavaLangString;
+      localObject = str1;
+      if (str1 == null) {
+        localObject = "";
       }
+      localBundle.putString(str2, (String)localObject);
+      localBundle.putString(DownloadConstants.c, "");
+      localBundle.putString(DownloadConstants.d, "");
+      localBundle.putString(DownloadConstants.f, this.b);
+      localBundle.putInt(DownloadConstants.e, 0);
+      localBundle.putString(DownloadConstants.i, "ANDROIDQQ.SHARESOURCE");
+      localBundle.putString("big_brother_source_key", this.c);
+      ThreadManager.getSubThreadHandler().post(new AppClient.3.1(this, localBundle));
+      return;
     }
     Object localObject = new Bundle();
     ((Bundle)localObject).putString("uin", "");
@@ -44,7 +46,7 @@ final class AppClient$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appcommon.AppClient.3
  * JD-Core Version:    0.7.0.1
  */

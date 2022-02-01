@@ -9,23 +9,23 @@ public class XSimpleListAdapter
   extends BaseAdapter
   implements XListAdapter
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
+  private View mContentView;
+  private int mCount;
   
   public XSimpleListAdapter(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.mContentView = paramView;
     if (paramView == null)
     {
-      this.jdField_a_of_type_Int = 0;
+      this.mCount = 0;
       return;
     }
-    this.jdField_a_of_type_Int = 1;
+    this.mCount = 1;
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_Int;
+    return this.mCount;
   }
   
   public Object getItem(int paramInt)
@@ -40,14 +40,14 @@ public class XSimpleListAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.mContentView;
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
     return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.XSimpleListAdapter
  * JD-Core Version:    0.7.0.1
  */

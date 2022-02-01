@@ -24,21 +24,29 @@ class ODWebCookieManager$1
   
   public void Failed(ErrMsg paramErrMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("WebComponentManager", 2, "--- get pskey failed ---  " + paramErrMsg.getMessage());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("--- get pskey failed ---  ");
+      localStringBuilder.append(paramErrMsg.getMessage());
+      QLog.e("WebComponentManager", 2, localStringBuilder.toString());
     }
   }
   
   public void Timeout(ErrMsg paramErrMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("WebComponentManager", 2, "--- get pskey timeout ---  " + paramErrMsg.getMessage());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("--- get pskey timeout ---  ");
+      localStringBuilder.append(paramErrMsg.getMessage());
+      QLog.e("WebComponentManager", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.now_od.ODWebCookieManager.1
  * JD-Core Version:    0.7.0.1
  */

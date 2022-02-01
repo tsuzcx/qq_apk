@@ -19,27 +19,20 @@ public class ArrayUtils
   
   public static int indexOf(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
-    if (paramArrayOfInt == null)
-    {
-      paramInt2 = -1;
-      return paramInt2;
+    if (paramArrayOfInt == null) {
+      return -1;
     }
     int i = paramInt2;
     if (paramInt2 < 0) {
       i = 0;
     }
-    for (;;)
+    while (i < paramArrayOfInt.length)
     {
-      if (i >= paramArrayOfInt.length) {
-        break label38;
-      }
-      paramInt2 = i;
       if (paramInt1 == paramArrayOfInt[i]) {
-        break;
+        return i;
       }
       i += 1;
     }
-    label38:
     return -1;
   }
   
@@ -50,50 +43,32 @@ public class ArrayUtils
   
   public static int indexOf(Object[] paramArrayOfObject, Object paramObject, int paramInt)
   {
-    if (paramArrayOfObject == null)
-    {
-      paramInt = -1;
-      return paramInt;
-    }
-    if (paramInt < 0) {
-      paramInt = 0;
-    }
-    for (;;)
-    {
-      int i;
-      if (paramObject == null)
-      {
-        i = paramInt;
-        for (;;)
-        {
-          if (i >= paramArrayOfObject.length) {
-            break label82;
-          }
-          paramInt = i;
-          if (paramArrayOfObject[i] == null) {
-            break;
-          }
-          i += 1;
-        }
-      }
-      if (paramArrayOfObject.getClass().getComponentType().isInstance(paramObject))
-      {
-        i = paramInt;
-        for (;;)
-        {
-          if (i >= paramArrayOfObject.length) {
-            break label82;
-          }
-          paramInt = i;
-          if (paramObject.equals(paramArrayOfObject[i])) {
-            break;
-          }
-          i += 1;
-        }
-      }
-      label82:
+    if (paramArrayOfObject == null) {
       return -1;
     }
+    int i = paramInt;
+    if (paramInt < 0) {
+      i = 0;
+    }
+    if (paramObject == null) {
+      while (i < paramArrayOfObject.length)
+      {
+        if (paramArrayOfObject[i] == null) {
+          return i;
+        }
+        i += 1;
+      }
+    }
+    if (paramArrayOfObject.getClass().getComponentType().isInstance(paramObject)) {
+      while (i < paramArrayOfObject.length)
+      {
+        if (paramObject.equals(paramArrayOfObject[i])) {
+          return i;
+        }
+        i += 1;
+      }
+    }
+    return -1;
   }
   
   public static int lastIndexOf(Object[] paramArrayOfObject, Object paramObject)
@@ -103,38 +78,35 @@ public class ArrayUtils
   
   public static int lastIndexOf(Object[] paramArrayOfObject, Object paramObject, int paramInt)
   {
-    if (paramArrayOfObject == null) {}
-    while (paramInt < 0) {
+    if (paramArrayOfObject == null) {
       return -1;
     }
+    if (paramInt < 0) {
+      return -1;
+    }
+    int i = paramInt;
     if (paramInt >= paramArrayOfObject.length) {
-      paramInt = paramArrayOfObject.length - 1;
+      i = paramArrayOfObject.length - 1;
     }
-    for (;;)
-    {
-      if (paramObject == null)
+    if (paramObject == null) {
+      while (i >= 0)
       {
-        while (paramInt >= 0)
-        {
-          if (paramArrayOfObject[paramInt] == null) {
-            return paramInt;
-          }
-          paramInt -= 1;
+        if (paramArrayOfObject[i] == null) {
+          return i;
         }
-        break;
+        i -= 1;
       }
-      if (!paramArrayOfObject.getClass().getComponentType().isInstance(paramObject)) {
-        break;
-      }
-      while (paramInt >= 0)
-      {
-        if (paramObject.equals(paramArrayOfObject[paramInt])) {
-          return paramInt;
-        }
-        paramInt -= 1;
-      }
-      break;
     }
+    if (paramArrayOfObject.getClass().getComponentType().isInstance(paramObject)) {
+      while (i >= 0)
+      {
+        if (paramObject.equals(paramArrayOfObject[i])) {
+          return i;
+        }
+        i -= 1;
+      }
+    }
+    return -1;
   }
 }
 

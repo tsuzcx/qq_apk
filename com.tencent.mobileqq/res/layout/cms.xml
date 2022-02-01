@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_gravity="center" android:id="@id/nla" android:visibility="visible" android:layout_width="@dimen/beb" android:layout_height="fill_parent">
-        <ImageView android:id="@id/nl9" android:layout_width="@dimen/beh" android:layout_height="@dimen/beg" android:layout_marginTop="@dimen/bea" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:contentDescription="@string/wwm" />
-        <ImageView android:id="@id/nlc" android:layout_width="@dimen/beh" android:layout_height="@dimen/beg" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_below="@id/nl9" android:layout_centerHorizontal="true" android:contentDescription="@string/wwm" />
-        <ImageView android:id="@id/nl_" android:layout_width="@dimen/bek" android:layout_height="@dimen/bei" android:layout_marginTop="@dimen/bej" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_below="@id/nlc" android:layout_centerHorizontal="true" android:contentDescription="@string/wwm" />
-        <Button android:id="@id/nlb" android:background="@android:color/transparent" android:layout_width="@dimen/bem" android:layout_height="@dimen/bem" android:layout_marginBottom="@dimen/bel" android:layout_alignBottom="@id/nl_" android:layout_centerHorizontal="true" />
-        <ImageView android:id="@id/nl7" android:layout_width="@dimen/be4" android:layout_height="@dimen/be4" android:layout_marginTop="@dimen/ben" android:src="@drawable/eqj" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_below="@id/nl_" android:layout_centerHorizontal="true" android:contentDescription="@string/wwm" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tencent="http://schemas.android.com/apk/res-auto">
+    <android.support.v7.widget.RecyclerView android:id="@id/m8c" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.widget.QQViewPager android:id="@id/i24" android:focusable="true" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="145.0dip" />
+        <com.tencent.widget.CirclePageIndicator android:id="@id/o32" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="12.0dip" android:layout_alignBottom="@id/i24" android:layout_centerHorizontal="true" tencent:circle_radius="2.5dip" tencent:fillColor="#ffffffff" tencent:pageColor="#ff6c7481" tencent:snap="true" />
+        <RelativeLayout android:id="@id/myn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="175.0dip">
+            <ImageView android:id="@id/mym" android:layout_width="165.0dip" android:layout_height="165.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="16.0dip" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:id="@id/myo" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginTop="8.0dip" android:text="暂未发现直播" android:layout_below="@id/mym" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
     </RelativeLayout>
-    <RelativeLayout android:layout_gravity="center" android:id="@id/nl5" android:visibility="invisible" android:layout_width="@dimen/beb" android:layout_height="fill_parent">
-        <ImageView android:id="@id/nl4" android:layout_width="@dimen/bek" android:layout_height="@dimen/bei" android:layout_marginTop="@dimen/bea" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:contentDescription="@string/wwm" />
-        <ImageView android:id="@id/nl8" android:layout_width="@dimen/be6" android:layout_height="@dimen/be5" android:layout_marginTop="@dimen/bec" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_below="@id/nl4" android:layout_centerHorizontal="true" android:contentDescription="@string/wwm" />
-        <TextView android:textSize="@dimen/be9" android:textStyle="bold" android:textColor="#ffffffff" android:gravity="center" android:id="@id/nl6" android:layout_width="@dimen/be_" android:layout_height="@dimen/be7" android:layout_marginTop="@dimen/be8" android:text="@string/wys" android:layout_below="@id/nl8" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-</FrameLayout>
+</LinearLayout>

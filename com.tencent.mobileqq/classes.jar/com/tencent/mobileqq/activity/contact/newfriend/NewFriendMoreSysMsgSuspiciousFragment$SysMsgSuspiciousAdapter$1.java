@@ -15,23 +15,37 @@ class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$1
   
   public void onAgreeSuspiciousMsg(boolean paramBoolean, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onAgreeSuspiciousMsg " + paramBoolean + " " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onAgreeSuspiciousMsg ");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramInt);
+      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, localStringBuilder.toString());
     }
     if (paramBoolean)
     {
-      QQToast.a(NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.a(this.a), HardCodeUtil.a(2131707494), 0).a();
+      QQToast.a(NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.a(this.a), HardCodeUtil.a(2131707519), 0).a();
       NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.a(this.a, paramLong);
       this.a.d();
       return;
     }
-    QQToast.a(NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.a(this.a), HardCodeUtil.a(2131707501), 0).a();
+    QQToast.a(NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.a(this.a), HardCodeUtil.a(2131707526), 0).a();
   }
   
   public void onSuspiciousDel(boolean paramBoolean, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onSuspiciousDel " + paramBoolean + " " + paramInt + " " + paramLong);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onSuspiciousDel ");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramLong);
+      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, localStringBuilder.toString());
     }
     if (paramBoolean) {
       this.a.d();
@@ -40,8 +54,16 @@ class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$1
   
   public void onSuspiciousGetList(boolean paramBoolean, int paramInt, ArrayList<SysSuspiciousMsg> paramArrayList, byte[] paramArrayOfByte, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onSuspiciousGetList " + paramBoolean + " " + paramInt + " " + paramObject);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onSuspiciousGetList ");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramObject);
+      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, localStringBuilder.toString());
     }
     if (paramBoolean)
     {
@@ -50,8 +72,10 @@ class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$1
         paramInt = ((Integer)paramObject).intValue();
         NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.a(this.a).put(paramInt, paramArrayOfByte);
       }
-      if (paramArrayList != null) {
-        NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.a(this.a, NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.a(this.a) + paramArrayList.size());
+      if (paramArrayList != null)
+      {
+        paramArrayOfByte = this.a;
+        NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.a(paramArrayOfByte, NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.a(paramArrayOfByte) + paramArrayList.size());
       }
       this.a.d();
     }
@@ -59,14 +83,20 @@ class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$1
   
   public void onSuspiciousSendReadReport(boolean paramBoolean, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onSuspiciousSendReadReport " + paramBoolean + " " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onSuspiciousSendReadReport ");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramInt);
+      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.1
  * JD-Core Version:    0.7.0.1
  */

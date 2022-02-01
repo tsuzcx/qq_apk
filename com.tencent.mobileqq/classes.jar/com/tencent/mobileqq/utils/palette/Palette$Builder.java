@@ -23,62 +23,85 @@ public final class Palette$Builder
   
   public Palette$Builder(@NonNull Bitmap paramBitmap)
   {
-    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
-      throw new IllegalArgumentException("Bitmap is not valid");
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
+    {
+      this.jdField_c_of_type_JavaUtilList.add(Palette.a);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+      this.jdField_a_of_type_JavaUtilList = null;
+      this.jdField_b_of_type_JavaUtilList.add(Target.a);
+      this.jdField_b_of_type_JavaUtilList.add(Target.b);
+      this.jdField_b_of_type_JavaUtilList.add(Target.c);
+      this.jdField_b_of_type_JavaUtilList.add(Target.d);
+      this.jdField_b_of_type_JavaUtilList.add(Target.e);
+      this.jdField_b_of_type_JavaUtilList.add(Target.f);
+      return;
     }
-    this.jdField_c_of_type_JavaUtilList.add(Palette.a);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_JavaUtilList = null;
-    this.jdField_b_of_type_JavaUtilList.add(Target.a);
-    this.jdField_b_of_type_JavaUtilList.add(Target.b);
-    this.jdField_b_of_type_JavaUtilList.add(Target.c);
-    this.jdField_b_of_type_JavaUtilList.add(Target.d);
-    this.jdField_b_of_type_JavaUtilList.add(Target.e);
-    this.jdField_b_of_type_JavaUtilList.add(Target.f);
+    throw new IllegalArgumentException("Bitmap is not valid");
   }
   
   private Bitmap a(Bitmap paramBitmap)
   {
+    int i = this.jdField_b_of_type_Int;
     double d2 = -1.0D;
-    int i;
+    int j;
     double d1;
-    if (this.jdField_b_of_type_Int > 0)
+    if (i > 0)
     {
       i = paramBitmap.getWidth() * paramBitmap.getHeight();
+      j = this.jdField_b_of_type_Int;
       d1 = d2;
-      if (i > this.jdField_b_of_type_Int) {
-        d1 = Math.sqrt(this.jdField_b_of_type_Int / i);
+      if (i > j)
+      {
+        d1 = j;
+        d2 = i;
+        Double.isNaN(d1);
+        Double.isNaN(d2);
+        d1 = Math.sqrt(d1 / d2);
       }
     }
-    while (d1 <= 0.0D)
+    else
     {
-      return paramBitmap;
       d1 = d2;
       if (this.jdField_c_of_type_Int > 0)
       {
         i = Math.max(paramBitmap.getWidth(), paramBitmap.getHeight());
+        j = this.jdField_c_of_type_Int;
         d1 = d2;
-        if (i > this.jdField_c_of_type_Int) {
-          d1 = this.jdField_c_of_type_Int / i;
+        if (i > j)
+        {
+          d1 = j;
+          d2 = i;
+          Double.isNaN(d1);
+          Double.isNaN(d2);
+          d1 /= d2;
         }
       }
     }
-    return Bitmap.createScaledBitmap(paramBitmap, (int)Math.ceil(paramBitmap.getWidth() * d1), (int)Math.ceil(d1 * paramBitmap.getHeight()), false);
+    if (d1 <= 0.0D) {
+      return paramBitmap;
+    }
+    d2 = paramBitmap.getWidth();
+    Double.isNaN(d2);
+    i = (int)Math.ceil(d2 * d1);
+    d2 = paramBitmap.getHeight();
+    Double.isNaN(d2);
+    return Bitmap.createScaledBitmap(paramBitmap, i, (int)Math.ceil(d2 * d1), false);
   }
   
   private int[] a(Bitmap paramBitmap)
   {
-    int i = 0;
     int j = paramBitmap.getWidth();
-    int k = paramBitmap.getHeight();
-    int[] arrayOfInt = new int[j * k];
-    paramBitmap.getPixels(arrayOfInt, 0, j, 0, 0, j, k);
-    if (this.jdField_a_of_type_AndroidGraphicsRect == null) {
+    int i = paramBitmap.getHeight();
+    int[] arrayOfInt = new int[j * i];
+    paramBitmap.getPixels(arrayOfInt, 0, j, 0, 0, j, i);
+    paramBitmap = this.jdField_a_of_type_AndroidGraphicsRect;
+    if (paramBitmap == null) {
       return arrayOfInt;
     }
-    k = this.jdField_a_of_type_AndroidGraphicsRect.width();
+    int k = paramBitmap.width();
     int m = this.jdField_a_of_type_AndroidGraphicsRect.height();
     paramBitmap = new int[k * m];
+    i = 0;
     while (i < m)
     {
       System.arraycopy(arrayOfInt, (this.jdField_a_of_type_AndroidGraphicsRect.top + i) * j + this.jdField_a_of_type_AndroidGraphicsRect.left, paramBitmap, i * k, k);
@@ -90,59 +113,65 @@ public final class Palette$Builder
   @NonNull
   public Palette a()
   {
-    Object localObject;
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if (localObject != null)
     {
-      Bitmap localBitmap = a(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      if (0 != 0) {
-        throw new NullPointerException();
-      }
+      Bitmap localBitmap = a((Bitmap)localObject);
       localObject = this.jdField_a_of_type_AndroidGraphicsRect;
       if ((localBitmap != this.jdField_a_of_type_AndroidGraphicsBitmap) && (localObject != null))
       {
-        double d = localBitmap.getWidth() / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-        ((Rect)localObject).left = ((int)Math.floor(((Rect)localObject).left * d));
-        ((Rect)localObject).top = ((int)Math.floor(((Rect)localObject).top * d));
-        ((Rect)localObject).right = Math.min((int)Math.ceil(((Rect)localObject).right * d), localBitmap.getWidth());
-        ((Rect)localObject).bottom = Math.min((int)Math.ceil(d * ((Rect)localObject).bottom), localBitmap.getHeight());
+        double d1 = localBitmap.getWidth();
+        double d2 = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+        Double.isNaN(d1);
+        Double.isNaN(d2);
+        d1 /= d2;
+        d2 = ((Rect)localObject).left;
+        Double.isNaN(d2);
+        ((Rect)localObject).left = ((int)Math.floor(d2 * d1));
+        d2 = ((Rect)localObject).top;
+        Double.isNaN(d2);
+        ((Rect)localObject).top = ((int)Math.floor(d2 * d1));
+        d2 = ((Rect)localObject).right;
+        Double.isNaN(d2);
+        ((Rect)localObject).right = Math.min((int)Math.ceil(d2 * d1), localBitmap.getWidth());
+        d2 = ((Rect)localObject).bottom;
+        Double.isNaN(d2);
+        ((Rect)localObject).bottom = Math.min((int)Math.ceil(d2 * d1), localBitmap.getHeight());
       }
       int[] arrayOfInt = a(localBitmap);
       int i = this.jdField_a_of_type_Int;
       if (this.jdField_c_of_type_JavaUtilList.isEmpty())
       {
         localObject = null;
-        localObject = new ColorCutQuantizer(arrayOfInt, i, (Palette.Filter[])localObject);
-        if (localBitmap != this.jdField_a_of_type_AndroidGraphicsBitmap) {
-          localBitmap.recycle();
-        }
-        localObject = ((ColorCutQuantizer)localObject).a();
-        if (0 != 0) {
-          throw new NullPointerException();
-        }
       }
+      else
+      {
+        localObject = this.jdField_c_of_type_JavaUtilList;
+        localObject = (Palette.Filter[])((List)localObject).toArray(new Palette.Filter[((List)localObject).size()]);
+      }
+      localObject = new ColorCutQuantizer(arrayOfInt, i, (Palette.Filter[])localObject);
+      if (localBitmap != this.jdField_a_of_type_AndroidGraphicsBitmap) {
+        localBitmap.recycle();
+      }
+      localObject = ((ColorCutQuantizer)localObject).a();
     }
-    for (;;)
+    else
     {
-      localObject = new Palette((List)localObject, this.jdField_b_of_type_JavaUtilList);
-      ((Palette)localObject).a();
-      if (0 != 0) {
-        throw new NullPointerException();
-      }
-      return localObject;
-      localObject = (Palette.Filter[])this.jdField_c_of_type_JavaUtilList.toArray(new Palette.Filter[this.jdField_c_of_type_JavaUtilList.size()]);
-      break;
-      if (this.jdField_a_of_type_JavaUtilList == null) {
-        break label304;
-      }
       localObject = this.jdField_a_of_type_JavaUtilList;
+      if (localObject == null) {
+        break label314;
+      }
     }
-    label304:
+    localObject = new Palette((List)localObject, this.jdField_b_of_type_JavaUtilList);
+    ((Palette)localObject).a();
+    return localObject;
+    label314:
     throw new AssertionError();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.palette.Palette.Builder
  * JD-Core Version:    0.7.0.1
  */

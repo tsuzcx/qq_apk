@@ -18,21 +18,27 @@ final class WebSocketWriter$FrameSink
   
   public void close()
   {
-    if (this.closed) {
-      throw new IOException("closed");
+    if (!this.closed)
+    {
+      WebSocketWriter localWebSocketWriter = this.this$0;
+      localWebSocketWriter.writeMessageFrame(this.formatOpcode, localWebSocketWriter.buffer.size(), this.isFirstFrame, true);
+      this.closed = true;
+      this.this$0.activeWriter = false;
+      return;
     }
-    this.this$0.writeMessageFrame(this.formatOpcode, this.this$0.buffer.size(), this.isFirstFrame, true);
-    this.closed = true;
-    this.this$0.activeWriter = false;
+    throw new IOException("closed");
   }
   
   public void flush()
   {
-    if (this.closed) {
-      throw new IOException("closed");
+    if (!this.closed)
+    {
+      WebSocketWriter localWebSocketWriter = this.this$0;
+      localWebSocketWriter.writeMessageFrame(this.formatOpcode, localWebSocketWriter.buffer.size(), this.isFirstFrame, false);
+      this.isFirstFrame = false;
+      return;
     }
-    this.this$0.writeMessageFrame(this.formatOpcode, this.this$0.buffer.size(), this.isFirstFrame, false);
-    this.isFirstFrame = false;
+    throw new IOException("closed");
   }
   
   public Timeout timeout()
@@ -42,13 +48,15 @@ final class WebSocketWriter$FrameSink
   
   public void write(Buffer paramBuffer, long paramLong)
   {
-    if (this.closed) {
-      throw new IOException("closed");
-    }
-    this.this$0.buffer.write(paramBuffer, paramLong);
-    if ((this.isFirstFrame) && (this.contentLength != -1L) && (this.this$0.buffer.size() > this.contentLength - 8192L)) {}
-    for (int i = 1;; i = 0)
+    if (!this.closed)
     {
+      this.this$0.buffer.write(paramBuffer, paramLong);
+      int i;
+      if ((this.isFirstFrame) && (this.contentLength != -1L) && (this.this$0.buffer.size() > this.contentLength - 8192L)) {
+        i = 1;
+      } else {
+        i = 0;
+      }
       paramLong = this.this$0.buffer.completeSegmentByteCount();
       if ((paramLong > 0L) && (i == 0))
       {
@@ -57,11 +65,12 @@ final class WebSocketWriter$FrameSink
       }
       return;
     }
+    throw new IOException("closed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.internal.ws.WebSocketWriter.FrameSink
  * JD-Core Version:    0.7.0.1
  */

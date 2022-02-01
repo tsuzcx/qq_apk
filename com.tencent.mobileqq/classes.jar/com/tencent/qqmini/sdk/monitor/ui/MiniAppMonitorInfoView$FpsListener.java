@@ -9,12 +9,13 @@ class MiniAppMonitorInfoView$FpsListener
   
   public void onInfo(long paramLong, double paramDouble)
   {
-    this.this$0.updateFPSText(MiniAppMonitorInfoView.access$200(this.this$0), paramDouble);
+    MiniAppMonitorInfoView localMiniAppMonitorInfoView = this.this$0;
+    localMiniAppMonitorInfoView.updateFPSText(MiniAppMonitorInfoView.access$200(localMiniAppMonitorInfoView), paramDouble);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.monitor.ui.MiniAppMonitorInfoView.FpsListener
  * JD-Core Version:    0.7.0.1
  */

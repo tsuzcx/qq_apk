@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import com.tencent.common.app.AppInterface;
 import com.tencent.commonsdk.cache.QQLruCache;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.bubble.BubbleManager;
@@ -51,7 +52,11 @@ public class PraiseManager
     if (paramAppInterface == null) {
       return 0;
     }
-    return paramAppInterface.getApplication().getSharedPreferences("VipPersonalLike", 0).getInt("ProfilePersonalLikeCurrentId_" + paramAppInterface.getCurrentAccountUin(), 0);
+    SharedPreferences localSharedPreferences = paramAppInterface.getApplication().getSharedPreferences("VipPersonalLike", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ProfilePersonalLikeCurrentId_");
+    localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
+    return localSharedPreferences.getInt(localStringBuilder.toString(), 0);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, int paramInt)
@@ -59,7 +64,11 @@ public class PraiseManager
     if (paramQQAppInterface == null) {
       return;
     }
-    paramQQAppInterface.getApplication().getSharedPreferences("VipPersonalLike", 0).edit().putInt("ProfilePersonalLikeCurrentId_" + paramQQAppInterface.getCurrentAccountUin(), paramInt).commit();
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApplication().getSharedPreferences("VipPersonalLike", 0).edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ProfilePersonalLikeCurrentId_");
+    localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+    localEditor.putInt(localStringBuilder.toString(), paramInt).commit();
   }
   
   public int a(String paramString)
@@ -88,26 +97,31 @@ public class PraiseManager
   
   public PraiseInfo a(int paramInt, boolean paramBoolean, String paramString)
   {
-    Object localObject;
     if (paramInt <= 0) {
-      localObject = null;
+      return null;
     }
-    PraiseInfo localPraiseInfo;
-    do
+    Object localObject = (PraiseInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(Integer.valueOf(paramInt));
+    if (localObject != null)
     {
-      return localObject;
-      localPraiseInfo = (PraiseInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(Integer.valueOf(paramInt));
-      if (localPraiseInfo == null) {
-        break;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("get praise info from cache, id=");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(" from:");
+        localStringBuilder.append(paramString);
+        QLog.d("PraiseManager", 2, localStringBuilder.toString());
       }
-      localObject = localPraiseInfo;
-    } while (!QLog.isColorLevel());
-    QLog.d("PraiseManager", 2, "get praise info from cache, id=" + paramInt + " from:" + paramString);
-    return localPraiseInfo;
+      return localObject;
+    }
     if (!this.jdField_a_of_type_JavaUtilVector.contains(Integer.valueOf(paramInt)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PraiseManager", 2, "start create praise info, id=" + paramInt);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("start create praise info, id=");
+        ((StringBuilder)localObject).append(paramInt);
+        QLog.d("PraiseManager", 2, ((StringBuilder)localObject).toString());
       }
       this.jdField_a_of_type_JavaUtilVector.add(Integer.valueOf(paramInt));
       ThreadManager.executeOnFileThread(new PraiseManager.1(this, paramInt, paramBoolean, paramString));
@@ -126,76 +140,109 @@ public class PraiseManager
   
   void a(int paramInt, String paramString)
   {
-    if (paramInt == 0) {}
-    String str;
-    IVasQuickUpdateService localIVasQuickUpdateService;
-    do
-    {
+    if (paramInt == 0) {
       return;
-      str = "praise.android." + paramInt + "." + "config.zip";
-      localIVasQuickUpdateService = (IVasQuickUpdateService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "");
-    } while (localIVasQuickUpdateService == null);
-    synchronized (this.b)
-    {
-      if (this.b.contains(str))
+    }
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("praise.android.");
+    ((StringBuilder)???).append(paramInt);
+    ((StringBuilder)???).append(".");
+    ((StringBuilder)???).append("config.zip");
+    String str = ((StringBuilder)???).toString();
+    IVasQuickUpdateService localIVasQuickUpdateService = (IVasQuickUpdateService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "");
+    if (localIVasQuickUpdateService != null) {
+      synchronized (this.b)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("PraiseManager", 2, str + " is downloading, remove duplicate download.");
+        if (this.b.contains(str))
+        {
+          if (QLog.isColorLevel())
+          {
+            paramString = new StringBuilder();
+            paramString.append(str);
+            paramString.append(" is downloading, remove duplicate download.");
+            QLog.d("PraiseManager", 2, paramString.toString());
+          }
+          return;
         }
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(str);
+          localStringBuilder.append(" is not download, start download.");
+          QLog.d("PraiseManager", 2, localStringBuilder.toString());
+        }
+        this.b.add(str);
+        localIVasQuickUpdateService.downloadItem(20L, str, paramString);
         return;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("PraiseManager", 2, str + " is not download, start download.");
-    }
-    this.b.add(str);
-    localIVasQuickUpdateService.downloadItem(20L, str, paramString);
   }
   
   void a(int paramInt, boolean paramBoolean, String paramString)
   {
     String str = a(paramInt).getAbsolutePath();
-    PraiseInfo localPraiseInfo = PraiseInfo.a(paramInt, str + File.separator + "config.json");
-    Boolean localBoolean = null;
+    Object localObject = AIOUtils.a();
+    ((StringBuilder)localObject).append(str);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append("config.json");
+    PraiseInfo localPraiseInfo = PraiseInfo.a(paramInt, ((StringBuilder)localObject).toString());
+    localObject = Boolean.valueOf(false);
     if (localPraiseInfo != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PraiseManager", 2, "createPraiseInfo from local, id=" + paramInt + " from:" + paramString);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("createPraiseInfo from local, id=");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(" from:");
+        localStringBuilder.append(paramString);
+        QLog.d("PraiseManager", 2, localStringBuilder.toString());
       }
-      localPraiseInfo.jdField_c_of_type_JavaLangString = (str + File.separator + "whiteBlackImg.png");
-      localPraiseInfo.d = (str + File.separator + "colorImg.png");
-      localPraiseInfo.e = (str + File.separator + "goldImg.png");
-      if (!b(localPraiseInfo)) {
-        if (paramBoolean) {
-          a(paramInt, paramString);
+      StringBuilder localStringBuilder = AIOUtils.a();
+      localStringBuilder.append(str);
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append("whiteBlackImg.png");
+      localPraiseInfo.jdField_c_of_type_JavaLangString = localStringBuilder.toString();
+      localStringBuilder = AIOUtils.a();
+      localStringBuilder.append(str);
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append("colorImg.png");
+      localPraiseInfo.d = localStringBuilder.toString();
+      localStringBuilder = AIOUtils.a();
+      localStringBuilder.append(str);
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append("goldImg.png");
+      localPraiseInfo.e = localStringBuilder.toString();
+      if (!b(localPraiseInfo))
+      {
+        if (!paramBoolean) {
+          break label310;
         }
-      }
-    }
-    for (;;)
-    {
-      if (localBoolean != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new PraiseManager.LoadCallback(this, paramInt, 0, paramString));
-        this.jdField_a_of_type_JavaUtilVector.removeElement(Integer.valueOf(paramInt));
-      }
-      return;
-      localBoolean = Boolean.valueOf(false);
-      continue;
-      if (a(localPraiseInfo))
-      {
-        this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.put(Integer.valueOf(paramInt), localPraiseInfo);
-        localBoolean = Boolean.valueOf(true);
+        a(paramInt, paramString);
       }
       else
       {
-        localBoolean = Boolean.valueOf(false);
-        continue;
-        if (paramBoolean) {
-          a(paramInt, paramString);
-        } else {
-          localBoolean = Boolean.valueOf(false);
+        if (!a(localPraiseInfo)) {
+          break label310;
         }
+        this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.put(Integer.valueOf(paramInt), localPraiseInfo);
+        localObject = Boolean.valueOf(true);
+        break label310;
       }
+    }
+    else
+    {
+      if (!paramBoolean) {
+        break label310;
+      }
+      a(paramInt, paramString);
+    }
+    localObject = null;
+    label310:
+    if (localObject != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new PraiseManager.LoadCallback(this, paramInt, 0, paramString));
+      this.jdField_a_of_type_JavaUtilVector.removeElement(Integer.valueOf(paramInt));
     }
   }
   
@@ -214,201 +261,87 @@ public class PraiseManager
       this.jdField_a_of_type_JavaUtilList.add(new WeakReference(paramOnPraiseLoadListener));
       return;
     }
+    for (;;)
+    {
+      throw paramOnPraiseLoadListener;
+    }
   }
   
-  /* Error */
   public void a(String paramString1, String arg2, String paramString3, int paramInt1, int paramInt2)
   {
-    // Byte code:
-    //   0: invokestatic 143	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3: ifeq +31 -> 34
-    //   6: ldc 145
-    //   8: iconst_2
-    //   9: ldc_w 333
-    //   12: iconst_2
-    //   13: anewarray 4	java/lang/Object
-    //   16: dup
-    //   17: iconst_0
-    //   18: aload_1
-    //   19: aastore
-    //   20: dup
-    //   21: iconst_1
-    //   22: iload 4
-    //   24: invokestatic 156	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   27: aastore
-    //   28: invokestatic 337	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   31: invokestatic 340	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   34: aload_1
-    //   35: invokestatic 125	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   38: ifne +323 -> 361
-    //   41: aload_1
-    //   42: ldc 219
-    //   44: invokevirtual 344	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   47: ifne +4 -> 51
-    //   50: return
-    //   51: aload_0
-    //   52: aload_1
-    //   53: invokevirtual 346	com/tencent/mobileqq/profile/like/PraiseManager:a	(Ljava/lang/String;)I
-    //   56: istore 5
-    //   58: aload_0
-    //   59: getfield 61	com/tencent/mobileqq/profile/like/PraiseManager:b	Ljava/util/List;
-    //   62: astore_2
-    //   63: aload_2
-    //   64: monitorenter
-    //   65: aload_0
-    //   66: getfield 61	com/tencent/mobileqq/profile/like/PraiseManager:b	Ljava/util/List;
-    //   69: aload_1
-    //   70: invokeinterface 234 2 0
-    //   75: ifeq +46 -> 121
-    //   78: invokestatic 143	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   81: ifeq +29 -> 110
-    //   84: ldc 145
-    //   86: iconst_2
-    //   87: new 79	java/lang/StringBuilder
-    //   90: dup
-    //   91: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   94: aload_1
-    //   95: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   98: ldc_w 348
-    //   101: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   104: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   107: invokestatic 173	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   110: aload_0
-    //   111: getfield 61	com/tencent/mobileqq/profile/like/PraiseManager:b	Ljava/util/List;
-    //   114: aload_1
-    //   115: invokeinterface 351 2 0
-    //   120: pop
-    //   121: aload_2
-    //   122: monitorexit
-    //   123: iload 4
-    //   125: ifne +186 -> 311
-    //   128: aload_0
-    //   129: iload 5
-    //   131: invokevirtual 248	com/tencent/mobileqq/profile/like/PraiseManager:a	(I)Ljava/io/File;
-    //   134: invokevirtual 251	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   137: astore_1
-    //   138: iload 5
-    //   140: invokestatic 256	com/tencent/mobileqq/activity/aio/AIOUtils:a	()Ljava/lang/StringBuilder;
-    //   143: aload_1
-    //   144: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   147: getstatic 260	java/io/File:separator	Ljava/lang/String;
-    //   150: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   153: ldc_w 262
-    //   156: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   159: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   162: invokestatic 265	com/tencent/mobileqq/profile/like/PraiseInfo:a	(ILjava/lang/String;)Lcom/tencent/mobileqq/profile/like/PraiseInfo;
-    //   165: astore_2
-    //   166: aload_2
-    //   167: ifnull +144 -> 311
-    //   170: invokestatic 143	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   173: ifeq +30 -> 203
-    //   176: ldc 145
-    //   178: iconst_2
-    //   179: new 79	java/lang/StringBuilder
-    //   182: dup
-    //   183: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   186: ldc_w 353
-    //   189: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   192: iload 5
-    //   194: invokevirtual 167	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   197: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   200: invokestatic 173	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   203: aload_2
-    //   204: invokestatic 256	com/tencent/mobileqq/activity/aio/AIOUtils:a	()Ljava/lang/StringBuilder;
-    //   207: aload_1
-    //   208: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   211: getstatic 260	java/io/File:separator	Ljava/lang/String;
-    //   214: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   217: ldc_w 269
-    //   220: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   223: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   226: putfield 272	com/tencent/mobileqq/profile/like/PraiseInfo:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   229: aload_2
-    //   230: invokestatic 256	com/tencent/mobileqq/activity/aio/AIOUtils:a	()Ljava/lang/StringBuilder;
-    //   233: aload_1
-    //   234: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   237: getstatic 260	java/io/File:separator	Ljava/lang/String;
-    //   240: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   243: ldc_w 274
-    //   246: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   249: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   252: putfield 276	com/tencent/mobileqq/profile/like/PraiseInfo:d	Ljava/lang/String;
-    //   255: aload_2
-    //   256: invokestatic 256	com/tencent/mobileqq/activity/aio/AIOUtils:a	()Ljava/lang/StringBuilder;
-    //   259: aload_1
-    //   260: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   263: getstatic 260	java/io/File:separator	Ljava/lang/String;
-    //   266: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   269: ldc_w 278
-    //   272: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   275: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   278: putfield 280	com/tencent/mobileqq/profile/like/PraiseInfo:e	Ljava/lang/String;
-    //   281: aload_0
-    //   282: aload_2
-    //   283: invokevirtual 283	com/tencent/mobileqq/profile/like/PraiseManager:b	(Lcom/tencent/mobileqq/profile/like/PraiseInfo;)Z
-    //   286: ifeq +25 -> 311
-    //   289: aload_0
-    //   290: aload_2
-    //   291: invokevirtual 303	com/tencent/mobileqq/profile/like/PraiseManager:a	(Lcom/tencent/mobileqq/profile/like/PraiseInfo;)Z
-    //   294: ifeq +17 -> 311
-    //   297: aload_0
-    //   298: getfield 46	com/tencent/mobileqq/profile/like/PraiseManager:jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache	Lcom/tencent/commonsdk/cache/QQLruCache;
-    //   301: iload 5
-    //   303: invokestatic 156	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   306: aload_2
-    //   307: invokevirtual 307	com/tencent/commonsdk/cache/QQLruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   310: pop
-    //   311: aload_0
-    //   312: getfield 24	com/tencent/mobileqq/profile/like/PraiseManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   315: new 287	com/tencent/mobileqq/profile/like/PraiseManager$LoadCallback
-    //   318: dup
-    //   319: aload_0
-    //   320: iload 5
-    //   322: iconst_1
-    //   323: aload_3
-    //   324: invokespecial 290	com/tencent/mobileqq/profile/like/PraiseManager$LoadCallback:<init>	(Lcom/tencent/mobileqq/profile/like/PraiseManager;IILjava/lang/String;)V
-    //   327: invokevirtual 293	com/tencent/mobileqq/app/QQAppInterface:runOnUiThread	(Ljava/lang/Runnable;)V
-    //   330: aload_0
-    //   331: getfield 51	com/tencent/mobileqq/profile/like/PraiseManager:jdField_a_of_type_JavaUtilVector	Ljava/util/Vector;
-    //   334: iload 5
-    //   336: invokestatic 156	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   339: invokevirtual 296	java/util/Vector:removeElement	(Ljava/lang/Object;)Z
-    //   342: pop
-    //   343: return
-    //   344: astore_1
-    //   345: ldc 145
-    //   347: iconst_1
-    //   348: ldc_w 355
-    //   351: aload_1
-    //   352: invokestatic 151	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   355: return
-    //   356: astore_1
-    //   357: aload_2
-    //   358: monitorexit
-    //   359: aload_1
-    //   360: athrow
-    //   361: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	362	0	this	PraiseManager
-    //   0	362	1	paramString1	String
-    //   0	362	3	paramString3	String
-    //   0	362	4	paramInt1	int
-    //   0	362	5	paramInt2	int
-    // Exception table:
-    //   from	to	target	type
-    //   0	34	344	java/lang/Exception
-    //   34	50	344	java/lang/Exception
-    //   51	65	344	java/lang/Exception
-    //   128	166	344	java/lang/Exception
-    //   170	203	344	java/lang/Exception
-    //   203	311	344	java/lang/Exception
-    //   311	343	344	java/lang/Exception
-    //   359	361	344	java/lang/Exception
-    //   65	110	356	finally
-    //   110	121	356	finally
-    //   121	123	356	finally
-    //   357	359	356	finally
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("PraiseManager", 2, String.format("onDownloadComplete, scid %s, errorcode %d", new Object[] { paramString1, Integer.valueOf(paramInt1) }));
+      }
+      if (!TextUtils.isEmpty(paramString1))
+      {
+        if (!paramString1.startsWith("praise.android.")) {
+          return;
+        }
+        paramInt2 = a(paramString1);
+        synchronized (this.b)
+        {
+          StringBuilder localStringBuilder;
+          if (this.b.contains(paramString1))
+          {
+            if (QLog.isColorLevel())
+            {
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append(paramString1);
+              localStringBuilder.append(" download completed, remove from download queue.");
+              QLog.d("PraiseManager", 2, localStringBuilder.toString());
+            }
+            this.b.remove(paramString1);
+          }
+          if (paramInt1 == 0)
+          {
+            paramString1 = a(paramInt2).getAbsolutePath();
+            ??? = AIOUtils.a();
+            ???.append(paramString1);
+            ???.append(File.separator);
+            ???.append("config.json");
+            ??? = PraiseInfo.a(paramInt2, ???.toString());
+            if (??? != null)
+            {
+              if (QLog.isColorLevel())
+              {
+                localStringBuilder = new StringBuilder();
+                localStringBuilder.append("createPraiseInfo after download complete, id=");
+                localStringBuilder.append(paramInt2);
+                QLog.d("PraiseManager", 2, localStringBuilder.toString());
+              }
+              localStringBuilder = AIOUtils.a();
+              localStringBuilder.append(paramString1);
+              localStringBuilder.append(File.separator);
+              localStringBuilder.append("whiteBlackImg.png");
+              ???.jdField_c_of_type_JavaLangString = localStringBuilder.toString();
+              localStringBuilder = AIOUtils.a();
+              localStringBuilder.append(paramString1);
+              localStringBuilder.append(File.separator);
+              localStringBuilder.append("colorImg.png");
+              ???.d = localStringBuilder.toString();
+              localStringBuilder = AIOUtils.a();
+              localStringBuilder.append(paramString1);
+              localStringBuilder.append(File.separator);
+              localStringBuilder.append("goldImg.png");
+              ???.e = localStringBuilder.toString();
+              if ((b(???)) && (a(???))) {
+                this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.put(Integer.valueOf(paramInt2), ???);
+              }
+            }
+          }
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new PraiseManager.LoadCallback(this, paramInt2, 1, paramString3));
+          this.jdField_a_of_type_JavaUtilVector.removeElement(Integer.valueOf(paramInt2));
+          return;
+        }
+      }
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      QLog.e("PraiseManager", 1, "onDownloadComplete: ", paramString1);
+    }
   }
   
   boolean a(PraiseInfo paramPraiseInfo)
@@ -417,21 +350,30 @@ public class PraiseManager
     ((BitmapFactory.Options)localObject1).inDensity = 320;
     ((BitmapFactory.Options)localObject1).inTargetDensity = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().densityDpi;
     Object localObject2 = BubbleManager.a(paramPraiseInfo.jdField_c_of_type_JavaLangString, (BitmapFactory.Options)localObject1);
-    if (localObject2 == null) {}
-    do
-    {
+    if (localObject2 == null) {
       return false;
-      paramPraiseInfo.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject2);
-      localObject2 = BubbleManager.a(paramPraiseInfo.d, (BitmapFactory.Options)localObject1);
-    } while (localObject2 == null);
+    }
+    paramPraiseInfo.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject2);
+    localObject2 = BubbleManager.a(paramPraiseInfo.d, (BitmapFactory.Options)localObject1);
+    if (localObject2 == null) {
+      return false;
+    }
     paramPraiseInfo.b = ((Bitmap)localObject2);
     paramPraiseInfo.jdField_c_of_type_AndroidGraphicsBitmap = BubbleManager.a(paramPraiseInfo.e, (BitmapFactory.Options)localObject1);
     localObject1 = a(paramPraiseInfo.jdField_a_of_type_Int).getAbsolutePath();
-    localObject2 = (String)localObject1 + File.separator + "dynamicImg.png";
+    localObject2 = AIOUtils.a();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(File.separator);
+    ((StringBuilder)localObject2).append("dynamicImg.png");
+    localObject2 = ((StringBuilder)localObject2).toString();
     if (new File((String)localObject2).exists()) {
       paramPraiseInfo.f = ((String)localObject2);
     }
-    localObject1 = (String)localObject1 + File.separator + "goldDynamicImg.png";
+    localObject2 = AIOUtils.a();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(File.separator);
+    ((StringBuilder)localObject2).append("goldDynamicImg.png");
+    localObject1 = ((StringBuilder)localObject2).toString();
     if (new File((String)localObject1).exists()) {
       paramPraiseInfo.g = ((String)localObject1);
     }
@@ -440,71 +382,97 @@ public class PraiseManager
   
   public boolean a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PraiseManager", 2, "scid isFileExists: " + paramString);
-    }
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.startsWith("praise.android."))) {}
-    do
+    if (QLog.isColorLevel())
     {
-      int i;
-      do
-      {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("scid isFileExists: ");
+      localStringBuilder.append(paramString);
+      QLog.i("PraiseManager", 2, localStringBuilder.toString());
+    }
+    boolean bool3 = TextUtils.isEmpty(paramString);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (!bool3)
+    {
+      if (!paramString.startsWith("praise.android.")) {
         return false;
-        i = a(paramString);
-      } while (i <= 0);
-      paramString = a(i);
-    } while ((!new File(paramString, "config.json").exists()) || (!new File(paramString, "whiteBlackImg.png").exists()) || (!new File(paramString, "colorImg.png").exists()));
-    return true;
+      }
+      int i = a(paramString);
+      bool1 = bool2;
+      if (i > 0)
+      {
+        paramString = a(i);
+        bool1 = bool2;
+        if (new File(paramString, "config.json").exists())
+        {
+          bool1 = bool2;
+          if (new File(paramString, "whiteBlackImg.png").exists())
+          {
+            bool1 = bool2;
+            if (new File(paramString, "colorImg.png").exists()) {
+              bool1 = true;
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public boolean a(Set<Integer> paramSet, PraiseManager.OnPraiseLoadListener paramOnPraiseLoadListener)
   {
-    if ((paramSet == null) || (paramSet.isEmpty())) {
-      return true;
-    }
-    PraiseManager.PraiseLoadListener localPraiseLoadListener = new PraiseManager.PraiseLoadListener(this);
-    localPraiseLoadListener.b = paramSet.size();
-    localPraiseLoadListener.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager$OnPraiseLoadListener = paramOnPraiseLoadListener;
-    paramOnPraiseLoadListener = paramSet.iterator();
-    while (paramOnPraiseLoadListener.hasNext())
+    boolean bool = true;
+    if (paramSet != null)
     {
-      int i = ((Integer)paramOnPraiseLoadListener.next()).intValue();
-      if (this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(Integer.valueOf(i)) == null)
-      {
-        a(localPraiseLoadListener);
-        a(i, true, "from_load_all");
+      if (paramSet.isEmpty()) {
+        return true;
       }
-      else
+      PraiseManager.PraiseLoadListener localPraiseLoadListener = new PraiseManager.PraiseLoadListener(this);
+      localPraiseLoadListener.b = paramSet.size();
+      localPraiseLoadListener.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager$OnPraiseLoadListener = paramOnPraiseLoadListener;
+      paramOnPraiseLoadListener = paramSet.iterator();
+      while (paramOnPraiseLoadListener.hasNext())
       {
-        localPraiseLoadListener.jdField_a_of_type_Int += 1;
+        int i = ((Integer)paramOnPraiseLoadListener.next()).intValue();
+        if (this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(Integer.valueOf(i)) == null)
+        {
+          a(localPraiseLoadListener);
+          a(i, true, "from_load_all");
+        }
+        else
+        {
+          localPraiseLoadListener.jdField_a_of_type_Int += 1;
+        }
       }
+      if (localPraiseLoadListener.jdField_a_of_type_Int == paramSet.size()) {
+        return true;
+      }
+      bool = false;
     }
-    return localPraiseLoadListener.jdField_a_of_type_Int == paramSet.size();
+    return bool;
   }
   
   public void b(PraiseManager.OnPraiseLoadListener paramOnPraiseLoadListener)
   {
     List localList = this.jdField_a_of_type_JavaUtilList;
     Object localObject = null;
-    for (;;)
+    try
     {
-      try
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        if (localIterator.hasNext())
-        {
-          WeakReference localWeakReference = (WeakReference)localIterator.next();
-          if ((localWeakReference != null) && (localWeakReference.get() == paramOnPraiseLoadListener)) {
-            localObject = localWeakReference;
-          }
-        }
-        else
-        {
-          this.jdField_a_of_type_JavaUtilList.remove(localObject);
-          return;
+        WeakReference localWeakReference = (WeakReference)localIterator.next();
+        if ((localWeakReference != null) && (localWeakReference.get() == paramOnPraiseLoadListener)) {
+          localObject = localWeakReference;
         }
       }
-      finally {}
+      this.jdField_a_of_type_JavaUtilList.remove(localObject);
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramOnPraiseLoadListener;
     }
   }
   
@@ -520,7 +488,7 @@ public class PraiseManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.like.PraiseManager
  * JD-Core Version:    0.7.0.1
  */

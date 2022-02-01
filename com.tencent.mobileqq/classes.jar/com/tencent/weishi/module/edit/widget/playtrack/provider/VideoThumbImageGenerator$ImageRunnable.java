@@ -28,40 +28,31 @@ class VideoThumbImageGenerator$ImageRunnable
   
   public void run()
   {
-    for (;;)
+    while (checkLoop())
     {
-      if (checkLoop()) {}
-      for (;;)
+      VideoThumbImageGenerator.ImageThumbTask localImageThumbTask;
+      try
       {
+        localImageThumbTask = (VideoThumbImageGenerator.ImageThumbTask)VideoThumbImageGenerator.access$100(this.this$0).take();
         try
         {
-          localImageThumbTask = (VideoThumbImageGenerator.ImageThumbTask)VideoThumbImageGenerator.access$100(this.this$0).take();
-          Logger.e("VideoThumbImageGenerator", "run", localInterruptedException2);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("run: startTime is ");
+          localStringBuilder.append(VideoThumbImageGenerator.ImageThumbTask.access$200(localImageThumbTask));
+          Logger.i("VideoThumbImageGenerator", localStringBuilder.toString());
         }
-        catch (InterruptedException localInterruptedException2)
-        {
-          try
-          {
-            Logger.i("VideoThumbImageGenerator", "run: startTime is " + VideoThumbImageGenerator.ImageThumbTask.access$200(localImageThumbTask));
-            if (localImageThumbTask != null) {
-              break;
-            }
-            runnableFinish();
-            return;
-          }
-          catch (InterruptedException localInterruptedException3)
-          {
-            VideoThumbImageGenerator.ImageThumbTask localImageThumbTask;
-            Bitmap localBitmap;
-            break label62;
-          }
-          localInterruptedException2 = localInterruptedException2;
-          localImageThumbTask = null;
-        }
-        label62:
-        localInterruptedException2.printStackTrace();
+        catch (InterruptedException localInterruptedException2) {}
+        Logger.e("VideoThumbImageGenerator", "run", localInterruptedException3);
       }
-      localBitmap = BitmapUtil.getBitmapWithSize(VideoThumbImageGenerator.access$300(this.this$0), (int)this.this$0.mCoverWidth, (int)this.this$0.mCoverHeight, true, true);
+      catch (InterruptedException localInterruptedException3)
+      {
+        localImageThumbTask = null;
+      }
+      localInterruptedException3.printStackTrace();
+      if (localImageThumbTask == null) {
+        break;
+      }
+      Bitmap localBitmap = BitmapUtil.getBitmapWithSize(VideoThumbImageGenerator.access$300(this.this$0), (int)this.this$0.mCoverWidth, (int)this.this$0.mCoverHeight, true, true);
       if (localBitmap != null)
       {
         if (this.this$0.mVideoThumbListener != null) {
@@ -79,6 +70,7 @@ class VideoThumbImageGenerator$ImageRunnable
         }
       }
     }
+    runnableFinish();
   }
   
   public void setPause(boolean paramBoolean)
@@ -93,7 +85,7 @@ class VideoThumbImageGenerator$ImageRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weishi.module.edit.widget.playtrack.provider.VideoThumbImageGenerator.ImageRunnable
  * JD-Core Version:    0.7.0.1
  */

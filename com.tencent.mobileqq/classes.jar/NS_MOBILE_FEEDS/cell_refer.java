@@ -49,15 +49,18 @@ public final class cell_refer
   {
     paramJceOutputStream.write(this.appname, 0);
     paramJceOutputStream.write(this.actionurl, 1);
-    if (this.downloadurl != null) {
-      paramJceOutputStream.write(this.downloadurl, 2);
+    String str = this.downloadurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.appid != null) {
-      paramJceOutputStream.write(this.appid, 3);
+    str = this.appid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.actiontype, 4);
-    if (this.icon != null) {
-      paramJceOutputStream.write(this.icon, 5);
+    str = this.icon;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
     paramJceOutputStream.write(this.icon_width, 6);
     paramJceOutputStream.write(this.icon_height, 7);
@@ -66,7 +69,7 @@ public final class cell_refer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_refer
  * JD-Core Version:    0.7.0.1
  */

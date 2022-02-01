@@ -49,8 +49,9 @@ public class CommentInputPopupWindow
   
   private void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView.setVisibility(8);
+    EmoView localEmoView = this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView;
+    if (localEmoView != null) {
+      localEmoView.setVisibility(8);
     }
     d(this.jdField_a_of_type_AndroidViewView);
     if (paramBoolean) {
@@ -62,7 +63,10 @@ public class CommentInputPopupWindow
   {
     this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView.getLayoutParams().height = this.jdField_a_of_type_Int;
     this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView.invalidate();
-    QLog.d("CommentInputPopupWindow", 1, "mEmojiPanel onGetKeyBoardHeight() :" + this.jdField_a_of_type_Int);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mEmojiPanel onGetKeyBoardHeight() :");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    QLog.d("CommentInputPopupWindow", 1, localStringBuilder.toString());
   }
   
   private void c()
@@ -76,13 +80,17 @@ public class CommentInputPopupWindow
     if (localWorkSpaceView != null) {
       a().post(new CommentInputPopupWindow.8(this, localWorkSpaceView));
     }
-    if ("workSpaceView is empty" + localWorkSpaceView != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("CommentInputPopupWindow", 1, new Object[] { Boolean.valueOf(bool) });
-      b(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText);
-      return;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("workSpaceView is empty");
+    localStringBuilder.append(localWorkSpaceView);
+    boolean bool;
+    if (localStringBuilder.toString() != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    QLog.d("CommentInputPopupWindow", 1, new Object[] { Boolean.valueOf(bool) });
+    b(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText);
   }
   
   private void c(View paramView)
@@ -102,37 +110,36 @@ public class CommentInputPopupWindow
   }
   
   @TargetApi(19)
-  public void K_()
+  public void D_()
   {
-    int i = 0;
-    super.K_();
+    super.D_();
     Object localObject = getWindow();
-    if (localObject == null) {}
-    label101:
-    for (;;)
-    {
+    if (localObject == null) {
       return;
-      localObject = ((Window)localObject).getDecorView();
+    }
+    localObject = ((Window)localObject).getDecorView();
+    if ((localObject instanceof ViewGroup))
+    {
+      localObject = (ViewGroup)localObject;
+      int i = 0;
+      localObject = ((ViewGroup)localObject).getChildAt(0);
       if ((localObject instanceof ViewGroup))
       {
-        localObject = ((ViewGroup)localObject).getChildAt(0);
-        if ((localObject instanceof ViewGroup))
+        localObject = (ViewGroup)localObject;
+        int j = ((ViewGroup)localObject).getChildCount();
+        while (i < j)
         {
-          int j = ((ViewGroup)localObject).getChildCount();
-          for (;;)
-          {
-            if (i >= j) {
-              break label101;
-            }
-            View localView = ((ViewGroup)localObject).getChildAt(i);
-            if ((localView == null) || (localView.getId() == 16908290)) {
-              break;
-            }
-            if (!(localView instanceof ViewStub)) {
-              localView.setAlpha(0.0F);
-            }
-            i += 1;
+          View localView = ((ViewGroup)localObject).getChildAt(i);
+          if (localView == null) {
+            return;
           }
+          if (localView.getId() == 16908290) {
+            return;
+          }
+          if (!(localView instanceof ViewStub)) {
+            localView.setAlpha(0.0F);
+          }
+          i += 1;
         }
       }
     }
@@ -158,34 +165,39 @@ public class CommentInputPopupWindow
   
   public void onClick(View paramView)
   {
-    QLog.d("CommentInputPopupWindow", 1, "onClick:" + paramView.getId());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onClick:");
+    ((StringBuilder)localObject).append(paramView.getId());
+    QLog.d("CommentInputPopupWindow", 1, ((StringBuilder)localObject).toString());
     switch (paramView.getId())
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      QLog.d("CommentInputPopupWindow", 1, "btn_emotion");
-      c();
-      this.jdField_b_of_type_AndroidWidgetImageButton.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
-      continue;
+    default: 
+      break;
+    case 2131378535: 
       QLog.d("CommentInputPopupWindow", 1, "text_input");
       a(true);
       this.jdField_b_of_type_AndroidWidgetImageButton.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-      continue;
-      if (this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBoxListener != null)
-      {
-        this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBoxListener.a();
-        continue;
-        QLog.d("CommentInputPopupWindow", 1, "btn_keyboard");
-        a(true);
-        this.jdField_b_of_type_AndroidWidgetImageButton.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+      break;
+    case 2131364001: 
+      localObject = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBoxListener;
+      if (localObject != null) {
+        ((CommentBoxListener)localObject).a();
       }
+      break;
+    case 2131363962: 
+      QLog.d("CommentInputPopupWindow", 1, "btn_keyboard");
+      a(true);
+      this.jdField_b_of_type_AndroidWidgetImageButton.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+      break;
+    case 2131363924: 
+      QLog.d("CommentInputPopupWindow", 1, "btn_emotion");
+      c();
+      this.jdField_b_of_type_AndroidWidgetImageButton.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onDismiss(DialogInterface paramDialogInterface)
@@ -195,14 +207,15 @@ public class CommentInputPopupWindow
     this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetImageButton.setVisibility(0);
     this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentInputPopupWindow$OnDismissListener != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentInputPopupWindow$OnDismissListener.a();
+    paramDialogInterface = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentInputPopupWindow$OnDismissListener;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.CommentInputPopupWindow
  * JD-Core Version:    0.7.0.1
  */

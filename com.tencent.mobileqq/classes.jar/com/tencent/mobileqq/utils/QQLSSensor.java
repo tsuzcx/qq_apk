@@ -36,10 +36,11 @@ public class QQLSSensor
     this.b = false;
     this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("sensor"));
     this.jdField_a_of_type_AndroidHardwareSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(8);
-    if (this.jdField_a_of_type_AndroidHardwareSensor != null)
+    Sensor localSensor = this.jdField_a_of_type_AndroidHardwareSensor;
+    if (localSensor != null)
     {
       this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidHardwareSensor.getMaximumRange();
+      this.jdField_a_of_type_Float = localSensor.getMaximumRange();
       if (this.jdField_a_of_type_Float > 10.0F) {
         this.jdField_a_of_type_Float = 10.0F;
       }
@@ -55,9 +56,10 @@ public class QQLSSensor
     if (QLog.isColorLevel()) {
       QLog.d("QQLSSensor", 2, "LSSensor shutdown=====");
     }
-    if (this.jdField_a_of_type_AndroidHardwareSensorManager != null)
+    SensorManager localSensorManager = this.jdField_a_of_type_AndroidHardwareSensorManager;
+    if (localSensorManager != null)
     {
-      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_AndroidHardwareSensorEventListener);
+      localSensorManager.unregisterListener(this.jdField_a_of_type_AndroidHardwareSensorEventListener);
       this.jdField_a_of_type_AndroidHardwareSensorManager = null;
     }
     try
@@ -71,7 +73,7 @@ public class QQLSSensor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQLSSensor
  * JD-Core Version:    0.7.0.1
  */

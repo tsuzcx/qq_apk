@@ -5,6 +5,7 @@ import com.tencent.oskplayer.PlayerConfig;
 import com.tencent.oskplayer.cache.Cache;
 import com.tencent.oskplayer.cache.CacheDataSink;
 import com.tencent.oskplayer.cache.CacheDataSource;
+import com.tencent.oskplayer.cache.CacheDataSource.EventListener;
 import com.tencent.oskplayer.proxy.DataSourceBuilder;
 import com.tencent.oskplayer.proxy.HttpRetryLogic;
 import com.tencent.oskplayer.proxy.VideoRequest;
@@ -44,57 +45,63 @@ public class DefaultDataSourceBuilder
   public DataSource build(String paramString1, String paramString2)
   {
     this.httpTransport.setLogTag(paramString2);
-    if (this.cacheDataSink != null) {
-      this.cacheDataSink.setLogTag(paramString2);
+    Object localObject = this.cacheDataSink;
+    if (localObject != null) {
+      ((CacheDataSink)localObject).setLogTag(paramString2);
     }
     this.fileDataSource.setLogTag(paramString2);
-    if (!URLUtil.isNetworkUrl(paramString1)) {}
-    boolean bool2;
-    for (int i = 1;; i = 0)
+    boolean bool1 = URLUtil.isNetworkUrl(paramString1);
+    boolean bool2 = PlayerUtils.isAssetsUri(paramString1);
+    boolean bool3 = PlayerUtils.isRawResourceUri(paramString1);
+    if (bool2)
     {
-      boolean bool1 = PlayerUtils.isAssetsUri(paramString1);
-      bool2 = PlayerUtils.isRawResourceUri(paramString1);
-      if (!bool1) {
-        break;
-      }
       paramString1 = new AssetDataSource(PlayerConfig.g().getAppContext());
       paramString1.setLogTag(paramString2);
       return paramString1;
     }
-    if (bool2)
+    if (bool3)
     {
       paramString1 = new RawResourceDataSource(PlayerConfig.g().getAppContext());
       paramString1.setLogTag(paramString2);
       return paramString1;
     }
-    if (i != 0)
+    if ((bool1 ^ true))
     {
       paramString1 = this.fileDataSource;
-      PlayerUtils.log(3, paramString2 + "DefaultDataSourceBuilder", "play local file");
-      return paramString1;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append("DefaultDataSourceBuilder");
+      PlayerUtils.log(3, ((StringBuilder)localObject).toString(), "play local file");
     }
-    if ((this.cache == null) || (!PlayerConfig.g().isEnableCache()))
+    for (;;)
     {
+      return paramString1;
+      if ((this.cache != null) && (PlayerConfig.g().isEnableCache()))
+      {
+        localObject = new DefaultDataSourceBuilder.CacheEventListener(this);
+        Cache localCache = this.cache;
+        DefaultHttpDataSource localDefaultHttpDataSource = this.httpTransport;
+        FileDataSource localFileDataSource = this.fileDataSource;
+        if (this.mVideoRequest.isCacheEnabled()) {
+          paramString1 = this.cacheDataSink;
+        } else {
+          paramString1 = null;
+        }
+        paramString1 = new CacheDataSource(localCache, localDefaultHttpDataSource, localFileDataSource, paramString1, false, true, (CacheDataSource.EventListener)localObject);
+        paramString1.setLogTag(paramString2);
+        return paramString1;
+      }
       paramString1 = this.httpTransport;
-      PlayerUtils.log(5, paramString2 + "DefaultDataSourceBuilder", "cache disabled");
-      return paramString1;
-    }
-    DefaultDataSourceBuilder.CacheEventListener localCacheEventListener = new DefaultDataSourceBuilder.CacheEventListener(this);
-    Cache localCache = this.cache;
-    DefaultHttpDataSource localDefaultHttpDataSource = this.httpTransport;
-    FileDataSource localFileDataSource = this.fileDataSource;
-    if (this.mVideoRequest.isCacheEnabled()) {}
-    for (paramString1 = this.cacheDataSink;; paramString1 = null)
-    {
-      paramString1 = new CacheDataSource(localCache, localDefaultHttpDataSource, localFileDataSource, paramString1, false, true, localCacheEventListener);
-      paramString1.setLogTag(paramString2);
-      return paramString1;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append("DefaultDataSourceBuilder");
+      PlayerUtils.log(5, ((StringBuilder)localObject).toString(), "cache disabled");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.datasource.DefaultDataSourceBuilder
  * JD-Core Version:    0.7.0.1
  */

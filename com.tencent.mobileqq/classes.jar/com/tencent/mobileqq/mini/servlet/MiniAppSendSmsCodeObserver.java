@@ -26,14 +26,21 @@ public class MiniAppSendSmsCodeObserver
     {
       localObject = paramBundle.getString("dataErrorMsg", "");
       paramInt = paramBundle.getInt("dataErrorCode");
-      QLog.e("MiniAppSendSmsCodeObserver", 1, "MiniAppSendSmsCodeObserver onReceive error, code is : " + paramInt + ", error msg is : " + (String)localObject + " cmd is : " + str);
+      paramBundle = new StringBuilder();
+      paramBundle.append("MiniAppSendSmsCodeObserver onReceive error, code is : ");
+      paramBundle.append(paramInt);
+      paramBundle.append(", error msg is : ");
+      paramBundle.append((String)localObject);
+      paramBundle.append(" cmd is : ");
+      paramBundle.append(str);
+      QLog.e("MiniAppSendSmsCodeObserver", 1, paramBundle.toString());
       onFailedResponse(str, paramInt, (String)localObject);
       return;
     }
     catch (Throwable paramBundle)
     {
+      Object localObject;
       onFailedResponse(str, -1, paramBundle.getMessage());
-      return;
     }
     paramBundle = paramBundle.getByteArray("data");
     if (paramBundle == null)
@@ -42,14 +49,19 @@ public class MiniAppSendSmsCodeObserver
       onFailedResponse(str, -1, "data is null");
       return;
     }
-    Object localObject = new oidb_sso.OIDBSSOPkg();
+    localObject = new oidb_sso.OIDBSSOPkg();
     ((oidb_sso.OIDBSSOPkg)localObject).mergeFrom(paramBundle);
     paramInt = ((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get();
     if (paramInt != 0)
     {
       paramBundle = ((oidb_sso.OIDBSSOPkg)localObject).str_error_msg.get();
       onFailedResponse(str, paramInt, paramBundle);
-      QLog.e("MiniAppSendSmsCodeObserver", 1, "sso result error, ret : " + paramInt + "  error : " + paramBundle);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("sso result error, ret : ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("  error : ");
+      ((StringBuilder)localObject).append(paramBundle);
+      QLog.e("MiniAppSendSmsCodeObserver", 1, ((StringBuilder)localObject).toString());
       return;
     }
     paramBundle = ((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.get().toByteArray();
@@ -65,6 +77,7 @@ public class MiniAppSendSmsCodeObserver
       localObject = new oidb_0x87c.RspBody();
       ((oidb_0x87c.RspBody)localObject).mergeFrom(paramBundle);
       verifySmsCodeSuccess((oidb_0x87c.RspBody)localObject);
+      return;
     }
   }
   
@@ -74,7 +87,7 @@ public class MiniAppSendSmsCodeObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppSendSmsCodeObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -52,7 +52,10 @@ public class MultiCardMaskView
     {
       this.jdField_a_of_type_AndroidGraphicsPath.reset();
       this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, getWidth(), getHeight());
-      this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, Path.Direction.CW);
+      Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+      RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+      float f = this.jdField_a_of_type_Float;
+      localPath.addRoundRect(localRectF, f, f, Path.Direction.CW);
       paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
     }
     super.draw(paramCanvas);
@@ -60,7 +63,7 @@ public class MultiCardMaskView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardMaskView
  * JD-Core Version:    0.7.0.1
  */

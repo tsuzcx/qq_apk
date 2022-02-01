@@ -21,75 +21,83 @@ public class DevLockQuickLoginDecoder
 {
   private void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, MessageHandler paramMessageHandler)
   {
-    byte[] arrayOfByte = null;
     if (QLog.isColorLevel()) {
       QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush recv msg0x210.Submsgtype0x51");
     }
-    if (paramMsgType0x210.sub_msg_type.get() != 81) {
+    if (paramMsgType0x210.sub_msg_type.get() != 81)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush submsgtype != 0x51");
       }
+      return;
     }
-    do
+    if (paramMsgType0x210.msg_content == null)
     {
-      do
-      {
-        return;
-        if (paramMsgType0x210.msg_content != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush msg_content is null");
-      return;
-      paramMsgType0x210 = paramMsgType0x210.msg_content.get().toByteArray();
-      if (paramMsgType0x210 != null) {
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush msg_content is null");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush decode ox210Stream is null");
-    return;
+      return;
+    }
+    paramMsgType0x210 = paramMsgType0x210.msg_content.get().toByteArray();
+    if (paramMsgType0x210 == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush decode ox210Stream is null");
+      }
+      return;
+    }
     new SubMsgType0x51.MsgBody();
-    for (;;)
+    try
     {
-      try
+      localObject = new SubMsgType0x51.MsgBody();
+      ((SubMsgType0x51.MsgBody)localObject).mergeFrom(paramMsgType0x210);
+      boolean bool = ((SubMsgType0x51.MsgBody)localObject).bytes_qrsig_url.has();
+      arrayOfByte = null;
+      if (!bool) {
+        break label362;
+      }
+      paramMsgType0x210 = new String(((SubMsgType0x51.MsgBody)localObject).bytes_qrsig_url.get().toByteArray(), "utf-8");
+    }
+    catch (Exception paramMsgType0x210)
+    {
+      for (;;)
       {
-        SubMsgType0x51.MsgBody localMsgBody = new SubMsgType0x51.MsgBody();
-        localMsgBody.mergeFrom(paramMsgType0x210);
-        if (!localMsgBody.bytes_qrsig_url.has()) {
-          break label335;
-        }
-        paramMsgType0x210 = new String(localMsgBody.bytes_qrsig_url.get().toByteArray(), "utf-8");
-        if (!localMsgBody.bytes_hint1.has()) {
-          break label330;
-        }
-        paramMsg = new String(localMsgBody.bytes_hint1.get().toByteArray(), "utf-8");
-        if (!localMsgBody.bytes_hint2.has()) {
-          break label324;
-        }
-        str = new String(localMsgBody.bytes_hint2.get().toByteArray(), "utf-8");
-        if (localMsgBody.bytes_login_conf.has()) {
-          arrayOfByte = localMsgBody.bytes_login_conf.get().toByteArray();
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush recv devlock quicklogin push qrcode=" + paramMsgType0x210 + " maintip=" + paramMsg + " smalltip" + str);
-        }
-        EquipmentLockImpl.a().a(paramMessageHandler.a, paramMsgType0x210, paramMsg, str, arrayOfByte);
-        return;
+        Object localObject;
+        byte[] arrayOfByte;
+        continue;
+        paramMsgType0x210 = null;
+        continue;
+        paramMsg = null;
+        continue;
+        String str = null;
       }
-      catch (Exception paramMsgType0x210) {}
-      if (!QLog.isColorLevel()) {
-        break;
+    }
+    if (((SubMsgType0x51.MsgBody)localObject).bytes_hint1.has())
+    {
+      paramMsg = new String(((SubMsgType0x51.MsgBody)localObject).bytes_hint1.get().toByteArray(), "utf-8");
+      if (!((SubMsgType0x51.MsgBody)localObject).bytes_hint2.has()) {
+        break label372;
       }
-      QLog.d("DevLock", 2, "failed to parse msg0x210.Submsgtype0x51");
+      str = new String(((SubMsgType0x51.MsgBody)localObject).bytes_hint2.get().toByteArray(), "utf-8");
+      if (((SubMsgType0x51.MsgBody)localObject).bytes_login_conf.has()) {
+        arrayOfByte = ((SubMsgType0x51.MsgBody)localObject).bytes_login_conf.get().toByteArray();
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("decodeDevlockQuickLoginPush recv devlock quicklogin push qrcode=");
+        ((StringBuilder)localObject).append(paramMsgType0x210);
+        ((StringBuilder)localObject).append(" maintip=");
+        ((StringBuilder)localObject).append(paramMsg);
+        ((StringBuilder)localObject).append(" smalltip");
+        ((StringBuilder)localObject).append(str);
+        QLog.d("DevLock", 2, ((StringBuilder)localObject).toString());
+      }
+      EquipmentLockImpl.a().a(paramMessageHandler.a, paramMsgType0x210, paramMsg, str, arrayOfByte);
       return;
-      label324:
-      String str = null;
-      continue;
-      label330:
-      paramMsg = null;
-      continue;
-      label335:
-      paramMsgType0x210 = null;
+      if (QLog.isColorLevel()) {
+        QLog.d("DevLock", 2, "failed to parse msg0x210.Submsgtype0x51");
+      }
     }
   }
   
@@ -99,12 +107,12 @@ public class DevLockQuickLoginDecoder
       QLog.d("DevLockQuickLoginDecoder", 2, "<---decodeC2CMsgPkg_MsgType0x210 : subtype 0x51");
     }
     a(paramMsgType0x210, paramMsg, paramMessageHandler);
-    MessageProtoCodec.a(paramMessageHandler, paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get());
+    MessageProtoCodec.a(paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get(), paramMessageHandler.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.msgType0x210.DevLockQuickLoginDecoder
  * JD-Core Version:    0.7.0.1
  */

@@ -39,7 +39,10 @@ public final class MiniErrorListener
   {
     Intrinsics.checkParameterIsNotNull(paramString, "message");
     Intrinsics.checkParameterIsNotNull(paramTritonException, "exception");
-    QMLog.e("MiniErrorListener", "On TritonError " + paramString, (Throwable)paramTritonException);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("On TritonError ");
+    localStringBuilder.append(paramString);
+    QMLog.e("MiniErrorListener", localStringBuilder.toString(), (Throwable)paramTritonException);
     if ((paramTritonException.getError().getSeverity().compareTo((Enum)ErrorSeverity.SEVER) >= 0) && (GameWnsUtils.getGameErrorDialogEnable()) && (!GameWnsUtils.getGameErrorDialogIsBlack()))
     {
       ThreadPools.getMainThreadExecutor().execute((Runnable)new MiniErrorListener.onError.1(this));
@@ -51,13 +54,17 @@ public final class MiniErrorListener
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "message");
     Intrinsics.checkParameterIsNotNull(paramString2, "stack");
-    MiniReportManager.reportEventType(ReportConst.miniAppConfigForPreload(), 23, paramString1 + paramString2, "1");
+    MiniAppInfo localMiniAppInfo = ReportConst.miniAppConfigForPreload();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(paramString2);
+    MiniReportManager.reportEventType(localMiniAppInfo, 23, localStringBuilder.toString(), "1");
     this.gameReportManager.onJsError();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.api.MiniErrorListener
  * JD-Core Version:    0.7.0.1
  */

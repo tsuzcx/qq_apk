@@ -39,7 +39,7 @@ public class AccessibilityNodeInfoCompat$CollectionInfoCompat
     if (Build.VERSION.SDK_INT >= 19) {
       return ((AccessibilityNodeInfo.CollectionInfo)this.mInfo).getColumnCount();
     }
-    return 0;
+    return -1;
   }
   
   public int getRowCount()
@@ -47,7 +47,7 @@ public class AccessibilityNodeInfoCompat$CollectionInfoCompat
     if (Build.VERSION.SDK_INT >= 19) {
       return ((AccessibilityNodeInfo.CollectionInfo)this.mInfo).getRowCount();
     }
-    return 0;
+    return -1;
   }
   
   public int getSelectionMode()
@@ -68,7 +68,7 @@ public class AccessibilityNodeInfoCompat$CollectionInfoCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.view.accessibility.AccessibilityNodeInfoCompat.CollectionInfoCompat
  * JD-Core Version:    0.7.0.1
  */

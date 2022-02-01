@@ -20,10 +20,11 @@ class WTogetherRealNameVideoProcessHelper$1
       paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
       paramDialogInterface.putExtra("url", "https://ti.qq.com/realname/index.html?source=watchtogether");
       this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(paramDialogInterface, 21001);
-      if (QLog.isColorLevel()) {
+      if (QLog.isColorLevel())
+      {
         QLog.i("WTogetherRealNameVideoProcessHelper", 2, "showRealNameDialog click confirm.");
+        return;
       }
-      return;
     }
     catch (Exception paramDialogInterface)
     {
@@ -33,7 +34,7 @@ class WTogetherRealNameVideoProcessHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.WTogetherRealNameVideoProcessHelper.1
  * JD-Core Version:    0.7.0.1
  */

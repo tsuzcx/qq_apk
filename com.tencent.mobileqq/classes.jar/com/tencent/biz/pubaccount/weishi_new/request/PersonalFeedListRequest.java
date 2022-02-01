@@ -19,12 +19,15 @@ public class PersonalFeedListRequest
     localstGetPersonalFeedListReq.context_feedids = paramArrayList;
     localstGetPersonalFeedListReq.scene = paramInt;
     this.a = localstGetPersonalFeedListReq;
-    WSLog.d("PersonalFeedListRequest", "stSimpleGetFeedListReq  = " + localstGetPersonalFeedListReq.toString());
+    paramString1 = new StringBuilder();
+    paramString1.append("stSimpleGetFeedListReq  = ");
+    paramString1.append(localstGetPersonalFeedListReq.toString());
+    WSLog.d("PersonalFeedListRequest", paramString1.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.request.PersonalFeedListRequest
  * JD-Core Version:    0.7.0.1
  */

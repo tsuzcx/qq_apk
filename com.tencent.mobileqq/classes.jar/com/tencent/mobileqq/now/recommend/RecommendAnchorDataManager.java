@@ -2,6 +2,7 @@ package com.tencent.mobileqq.now.recommend;
 
 import android.text.TextUtils;
 import com.tencent.beacon.event.UserAction;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.now.livehomepage.NowQQLiveHomepageProto.RcmdAnchor;
 import com.tencent.mobileqq.now.livehomepage.NowQQLiveHomepageProto.RecommendItem;
 import com.tencent.mobileqq.now.livehomepage.NowQQLiveHomepageProto.RecommendPageReq;
@@ -18,13 +19,13 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.open.business.base.MobileInfoUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.manager.LoginManager;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
+import mqq.app.AppRuntime;
 
 public class RecommendAnchorDataManager
 {
@@ -42,11 +43,6 @@ public class RecommendAnchorDataManager
   private final int d;
   private int e;
   
-  static
-  {
-    jdField_f_of_type_Int = 0;
-  }
-  
   public RecommendAnchorDataManager()
   {
     this.jdField_a_of_type_Int = 2;
@@ -58,7 +54,6 @@ public class RecommendAnchorDataManager
   
   private RecommendAnchorInfo a(NowQQLiveHomepageProto.RcmdAnchor paramRcmdAnchor)
   {
-    boolean bool2 = true;
     RecommendAnchorInfo localRecommendAnchorInfo = new RecommendAnchorInfo();
     localRecommendAnchorInfo.j = paramRcmdAnchor.string_head_img_url.get();
     localRecommendAnchorInfo.jdField_b_of_type_JavaLangString = paramRcmdAnchor.string_room_img_url.get();
@@ -69,54 +64,50 @@ public class RecommendAnchorDataManager
     localRecommendAnchorInfo.jdField_f_of_type_JavaLangString = paramRcmdAnchor.string_id.get();
     localRecommendAnchorInfo.jdField_a_of_type_Long = paramRcmdAnchor.imsdk_tiny_id.get();
     localRecommendAnchorInfo.m = paramRcmdAnchor.rtmp_url.get();
+    int i = paramRcmdAnchor.allow_play.get();
+    boolean bool2 = true;
     boolean bool1;
-    if (paramRcmdAnchor.allow_play.get() == 1) {
+    if (i == 1) {
       bool1 = true;
+    } else {
+      bool1 = false;
     }
-    for (;;)
+    localRecommendAnchorInfo.jdField_b_of_type_Boolean = bool1;
+    if (paramRcmdAnchor.video_preview.get() == 1) {
+      bool1 = bool2;
+    } else {
+      bool1 = false;
+    }
+    localRecommendAnchorInfo.jdField_c_of_type_Boolean = bool1;
+    localRecommendAnchorInfo.jdField_d_of_type_Int = paramRcmdAnchor.microphone_flag.get();
+    localRecommendAnchorInfo.jdField_g_of_type_JavaLangString = paramRcmdAnchor.icon_url.get();
+    localRecommendAnchorInfo.jdField_a_of_type_JavaUtilList = paramRcmdAnchor.rich_title.elements.get();
+    localRecommendAnchorInfo.i = paramRcmdAnchor.string_description.get();
+    localRecommendAnchorInfo.h = paramRcmdAnchor.award_pendant_url.get();
+    if (paramRcmdAnchor.extra_info.has())
     {
-      localRecommendAnchorInfo.jdField_b_of_type_Boolean = bool1;
-      if (paramRcmdAnchor.video_preview.get() == 1)
-      {
-        bool1 = bool2;
-        localRecommendAnchorInfo.jdField_c_of_type_Boolean = bool1;
-        localRecommendAnchorInfo.jdField_d_of_type_Int = paramRcmdAnchor.microphone_flag.get();
-        localRecommendAnchorInfo.jdField_g_of_type_JavaLangString = paramRcmdAnchor.icon_url.get();
-        localRecommendAnchorInfo.jdField_a_of_type_JavaUtilList = paramRcmdAnchor.rich_title.elements.get();
-        localRecommendAnchorInfo.i = paramRcmdAnchor.string_description.get();
-        localRecommendAnchorInfo.h = paramRcmdAnchor.award_pendant_url.get();
-        if (paramRcmdAnchor.extra_info.has())
-        {
-          NowQQLiveHomepageProto.UserExtraInfo localUserExtraInfo = (NowQQLiveHomepageProto.UserExtraInfo)paramRcmdAnchor.extra_info.get();
-          if ((localUserExtraInfo.medal_info_list.has()) && (localUserExtraInfo.medal_info_list.get() != null) && (localUserExtraInfo.medal_info_list.size() > 0)) {
-            localRecommendAnchorInfo.a(localUserExtraInfo.medal_info_list.get());
-          }
-        }
-        localRecommendAnchorInfo.jdField_e_of_type_Int = paramRcmdAnchor.user_tag.color.get();
-      }
-      try
-      {
-        if (!TextUtils.isEmpty(paramRcmdAnchor.user_tag.change_color.get())) {
-          localRecommendAnchorInfo.jdField_f_of_type_Int = Integer.parseInt(paramRcmdAnchor.user_tag.change_color.get(), 16);
-        }
-        localRecommendAnchorInfo.k = paramRcmdAnchor.user_tag.pic_url.get();
-        localRecommendAnchorInfo.l = paramRcmdAnchor.user_tag.wording.get();
-        localRecommendAnchorInfo.jdField_e_of_type_JavaLangString = paramRcmdAnchor.string_jump_url.get();
-        localRecommendAnchorInfo.jdField_g_of_type_Int = paramRcmdAnchor.user_tag.type.get();
-        localRecommendAnchorInfo.n = paramRcmdAnchor.advertising_sign.get();
-        return localRecommendAnchorInfo;
-        bool1 = false;
-        continue;
-        bool1 = false;
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        for (;;)
-        {
-          QLog.e(this.jdField_a_of_type_JavaLangString, 2, localNumberFormatException, new Object[0]);
-        }
+      NowQQLiveHomepageProto.UserExtraInfo localUserExtraInfo = (NowQQLiveHomepageProto.UserExtraInfo)paramRcmdAnchor.extra_info.get();
+      if ((localUserExtraInfo.medal_info_list.has()) && (localUserExtraInfo.medal_info_list.get() != null) && (localUserExtraInfo.medal_info_list.size() > 0)) {
+        localRecommendAnchorInfo.a(localUserExtraInfo.medal_info_list.get());
       }
     }
+    localRecommendAnchorInfo.jdField_e_of_type_Int = paramRcmdAnchor.user_tag.color.get();
+    try
+    {
+      if (!TextUtils.isEmpty(paramRcmdAnchor.user_tag.change_color.get())) {
+        localRecommendAnchorInfo.jdField_f_of_type_Int = Integer.parseInt(paramRcmdAnchor.user_tag.change_color.get(), 16);
+      }
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      QLog.e(this.jdField_a_of_type_JavaLangString, 2, localNumberFormatException, new Object[0]);
+    }
+    localRecommendAnchorInfo.k = paramRcmdAnchor.user_tag.pic_url.get();
+    localRecommendAnchorInfo.l = paramRcmdAnchor.user_tag.wording.get();
+    localRecommendAnchorInfo.jdField_e_of_type_JavaLangString = paramRcmdAnchor.string_jump_url.get();
+    localRecommendAnchorInfo.jdField_g_of_type_Int = paramRcmdAnchor.user_tag.type.get();
+    localRecommendAnchorInfo.n = paramRcmdAnchor.advertising_sign.get();
+    return localRecommendAnchorInfo;
   }
   
   public int a(int paramInt, byte[] paramArrayOfByte)
@@ -132,80 +123,95 @@ public class RecommendAnchorDataManager
       this.jdField_b_of_type_Int = 0;
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, "clear state");
     }
-    for (;;)
+    try
     {
-      NowQQLiveHomepageProto.RecommendPageRsp localRecommendPageRsp;
-      NowQQLiveHomepageProto.RecommendItem localRecommendItem;
-      try
+      NowQQLiveHomepageProto.RecommendPageRsp localRecommendPageRsp = new NowQQLiveHomepageProto.RecommendPageRsp();
+      localRecommendPageRsp.mergeFrom(paramArrayOfByte);
+      this.jdField_c_of_type_Int = localRecommendPageRsp.uint32_new_timestamp.get();
+      jdField_f_of_type_Int = localRecommendPageRsp.rcmd_col_mode.get();
+      paramArrayOfByte = localRecommendPageRsp.rpt_msg_rcmd.get().iterator();
+      while (paramArrayOfByte.hasNext())
       {
-        localRecommendPageRsp = new NowQQLiveHomepageProto.RecommendPageRsp();
-        localRecommendPageRsp.mergeFrom(paramArrayOfByte);
-        this.jdField_c_of_type_Int = localRecommendPageRsp.uint32_new_timestamp.get();
-        jdField_f_of_type_Int = localRecommendPageRsp.rcmd_col_mode.get();
-        paramArrayOfByte = localRecommendPageRsp.rpt_msg_rcmd.get().iterator();
-        if (paramArrayOfByte.hasNext())
+        localObject1 = (NowQQLiveHomepageProto.RecommendItem)paramArrayOfByte.next();
+        Object localObject2;
+        Object localObject3;
+        if (this.jdField_a_of_type_JavaUtilSet.contains(((NowQQLiveHomepageProto.RecommendItem)localObject1).string_key.get()))
         {
-          localRecommendItem = (NowQQLiveHomepageProto.RecommendItem)paramArrayOfByte.next();
-          if (this.jdField_a_of_type_JavaUtilSet.contains(localRecommendItem.string_key.get()))
+          localObject2 = this.jdField_a_of_type_JavaLangString;
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("去重： ");
+          ((StringBuilder)localObject3).append(((NowQQLiveHomepageProto.RecommendItem)localObject1).string_key.get());
+          QLog.d((String)localObject2, 2, ((StringBuilder)localObject3).toString());
+        }
+        else
+        {
+          this.jdField_a_of_type_JavaUtilSet.add(((NowQQLiveHomepageProto.RecommendItem)localObject1).string_key.get());
+          int i = ((NowQQLiveHomepageProto.RecommendItem)localObject1).uint32_type.get();
+          if (i != 0)
           {
-            QLog.d(this.jdField_a_of_type_JavaLangString, 2, "去重： " + localRecommendItem.string_key.get());
-            continue;
+            if (i == 5)
+            {
+              localObject3 = (NowQQLiveHomepageProto.RcmdAnchor)((NowQQLiveHomepageProto.RecommendItem)localObject1).msg_anchor.get();
+              localObject2 = ((NowQQLiveHomepageProto.RcmdAnchor)localObject3).string_id.get();
+              if ((localObject2 != null) && (((String)localObject2).equals(BaseApplicationImpl.getApplication().getRuntime().getAccount())))
+              {
+                QLog.d(this.jdField_a_of_type_JavaLangString, 2, "主页过滤自己");
+              }
+              else
+              {
+                localObject2 = a((NowQQLiveHomepageProto.RcmdAnchor)localObject3);
+                ((RecommendAnchorInfo)localObject2).jdField_a_of_type_JavaLangString = ((NowQQLiveHomepageProto.RecommendItem)localObject1).string_key.get();
+                i = this.jdField_b_of_type_Int;
+                this.jdField_b_of_type_Int = (i + 1);
+                ((RecommendAnchorInfo)localObject2).jdField_a_of_type_Int = i;
+                ((RecommendAnchorInfo)localObject2).o = ((NowQQLiveHomepageProto.RcmdAnchor)localObject3).union_channel_sign.get();
+                localObject1 = this.jdField_a_of_type_JavaLangString;
+                localObject3 = new StringBuilder();
+                ((StringBuilder)localObject3).append("NewRcmdDataMgr, parseData()  Double----anchor_union_channel_sign = ");
+                ((StringBuilder)localObject3).append(((RecommendAnchorInfo)localObject2).o);
+                QLog.d((String)localObject1, 2, ((StringBuilder)localObject3).toString());
+                this.jdField_a_of_type_JavaUtilList.add(localObject2);
+              }
+            }
           }
-          this.jdField_a_of_type_JavaUtilSet.add(localRecommendItem.string_key.get());
+          else
+          {
+            localObject2 = (NowQQLiveHomepageProto.RcmdAnchor)((NowQQLiveHomepageProto.RecommendItem)localObject1).msg_anchor.get();
+            localObject3 = ((NowQQLiveHomepageProto.RcmdAnchor)localObject2).string_id.get();
+            if ((localObject3 != null) && (((String)localObject3).equals(BaseApplicationImpl.getApplication().getRuntime().getAccount())))
+            {
+              QLog.d(this.jdField_a_of_type_JavaLangString, 2, "主页过滤自己");
+            }
+            else
+            {
+              localObject3 = a((NowQQLiveHomepageProto.RcmdAnchor)localObject2);
+              ((RecommendAnchorInfo)localObject3).jdField_a_of_type_JavaLangString = ((NowQQLiveHomepageProto.RecommendItem)localObject1).string_key.get();
+              i = this.jdField_b_of_type_Int;
+              this.jdField_b_of_type_Int = (i + 1);
+              ((RecommendAnchorInfo)localObject3).jdField_a_of_type_Int = i;
+              ((RecommendAnchorInfo)localObject3).o = ((NowQQLiveHomepageProto.RcmdAnchor)localObject2).union_channel_sign.get();
+              this.jdField_a_of_type_JavaUtilList.add(localObject3);
+            }
+          }
         }
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-        return -1;
-      }
-      NowQQLiveHomepageProto.RcmdAnchor localRcmdAnchor;
-      Object localObject;
-      int i;
-      switch (localRecommendItem.uint32_type.get())
-      {
-      case 0: 
-        localRcmdAnchor = (NowQQLiveHomepageProto.RcmdAnchor)localRecommendItem.msg_anchor.get();
-        localObject = localRcmdAnchor.string_id.get();
-        if ((localObject != null) && (((String)localObject).equals(LoginManager.getInstance().getAccount())))
-        {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "主页过滤自己");
-        }
-        else
-        {
-          localObject = a(localRcmdAnchor);
-          ((RecommendAnchorInfo)localObject).jdField_a_of_type_JavaLangString = localRecommendItem.string_key.get();
-          i = this.jdField_b_of_type_Int;
-          this.jdField_b_of_type_Int = (i + 1);
-          ((RecommendAnchorInfo)localObject).jdField_a_of_type_Int = i;
-          ((RecommendAnchorInfo)localObject).o = localRcmdAnchor.union_channel_sign.get();
-          this.jdField_a_of_type_JavaUtilList.add(localObject);
-        }
-        break;
-      case 5: 
-        localRcmdAnchor = (NowQQLiveHomepageProto.RcmdAnchor)localRecommendItem.msg_anchor.get();
-        localObject = localRcmdAnchor.string_id.get();
-        if ((localObject != null) && (((String)localObject).equals(LoginManager.getInstance().getAccount())))
-        {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "主页过滤自己");
-        }
-        else
-        {
-          localObject = a(localRcmdAnchor);
-          ((RecommendAnchorInfo)localObject).jdField_a_of_type_JavaLangString = localRecommendItem.string_key.get();
-          i = this.jdField_b_of_type_Int;
-          this.jdField_b_of_type_Int = (i + 1);
-          ((RecommendAnchorInfo)localObject).jdField_a_of_type_Int = i;
-          ((RecommendAnchorInfo)localObject).o = localRcmdAnchor.union_channel_sign.get();
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "NewRcmdDataMgr, parseData()  Double----anchor_union_channel_sign = " + ((RecommendAnchorInfo)localObject).o);
-          this.jdField_a_of_type_JavaUtilList.add(localObject);
-          continue;
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "第" + paramInt + "开始拉取:" + localRecommendPageRsp.rpt_msg_rcmd.get().size() + "个数据;" + this.jdField_a_of_type_JavaUtilList.size() + "行");
-          return -1;
-        }
-        break;
-      }
+      paramArrayOfByte = this.jdField_a_of_type_JavaLangString;
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("第");
+      ((StringBuilder)localObject1).append(paramInt);
+      ((StringBuilder)localObject1).append("开始拉取:");
+      ((StringBuilder)localObject1).append(localRecommendPageRsp.rpt_msg_rcmd.get().size());
+      ((StringBuilder)localObject1).append("个数据;");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilList.size());
+      ((StringBuilder)localObject1).append("行");
+      QLog.d(paramArrayOfByte, 2, ((StringBuilder)localObject1).toString());
+      return -1;
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return -1;
   }
   
   public List<RecommendAnchorInfo> a()
@@ -215,23 +221,23 @@ public class RecommendAnchorDataManager
   
   public void a(int paramInt, RecommendAnchorDataManager.RecommendAnchorDataCallback paramRecommendAnchorDataCallback, boolean paramBoolean)
   {
-    if (this.jdField_b_of_type_Boolean) {}
-    NowQQLiveHomepageProto.RecommendPageReq localRecommendPageReq;
-    do
-    {
+    if (this.jdField_b_of_type_Boolean) {
       return;
-      if (paramBoolean)
+    }
+    if (paramBoolean)
+    {
+      this.jdField_e_of_type_Int += 1;
+      if (this.jdField_e_of_type_Int >= 3)
       {
-        this.jdField_e_of_type_Int += 1;
-        if (this.jdField_e_of_type_Int >= 3)
-        {
-          paramRecommendAnchorDataCallback.b();
-          return;
-        }
+        paramRecommendAnchorDataCallback.b();
+        return;
       }
-      this.jdField_b_of_type_Boolean = true;
-      localRecommendPageReq = new NowQQLiveHomepageProto.RecommendPageReq();
-    } while (TextUtils.isEmpty(LoginManager.getInstance().getAccount()));
+    }
+    this.jdField_b_of_type_Boolean = true;
+    NowQQLiveHomepageProto.RecommendPageReq localRecommendPageReq = new NowQQLiveHomepageProto.RecommendPageReq();
+    if (TextUtils.isEmpty(BaseApplicationImpl.getApplication().getRuntime().getAccount())) {
+      return;
+    }
     localRecommendPageReq.uint32_last_update.set(this.jdField_c_of_type_Int);
     localRecommendPageReq.uint32_index.set(paramInt);
     NowQQLiveHomepageProto.UserMsgInfo localUserMsgInfo = new NowQQLiveHomepageProto.UserMsgInfo();
@@ -242,7 +248,7 @@ public class RecommendAnchorDataManager
     localRecommendPageReq.user_msg_info.set(localArrayList);
     localRecommendPageReq.channel.set("78711");
     localRecommendPageReq.rcmd_col_mode.set(jdField_f_of_type_Int);
-    localRecommendPageReq.device_id.set(MobileInfoUtil.c());
+    localRecommendPageReq.device_id.set(MobileInfoUtil.getImei());
     localRecommendPageReq.qimei.set(UserAction.getQIMEI());
     ChannelCenter.a().a(1718, 100, localRecommendPageReq.toByteArray(), new RecommendAnchorDataManager.1(this, paramInt, paramRecommendAnchorDataCallback));
   }
@@ -256,7 +262,7 @@ public class RecommendAnchorDataManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.recommend.RecommendAnchorDataManager
  * JD-Core Version:    0.7.0.1
  */

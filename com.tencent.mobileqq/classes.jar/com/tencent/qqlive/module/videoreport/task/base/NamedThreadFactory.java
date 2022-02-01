@@ -20,15 +20,20 @@ public class NamedThreadFactory
   public Thread newThread(@NonNull Runnable paramRunnable)
   {
     paramRunnable = this.mDefaultThreadFactory.newThread(paramRunnable);
-    if (paramRunnable != null) {
-      paramRunnable.setName(this.mBaseName + "-" + this.mCount.getAndIncrement());
+    if (paramRunnable != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.mBaseName);
+      localStringBuilder.append("-");
+      localStringBuilder.append(this.mCount.getAndIncrement());
+      paramRunnable.setName(localStringBuilder.toString());
     }
     return paramRunnable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.task.base.NamedThreadFactory
  * JD-Core Version:    0.7.0.1
  */

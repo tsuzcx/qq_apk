@@ -26,9 +26,10 @@ public class YYBInstallPackageReportRequest
     super.setLoginUserId(paramLong);
     this.needCompress = false;
     this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead = new AccessReqHead();
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.loginType = 1;
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.uin = paramLong;
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal = new Terminal();
+    Object localObject = this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead;
+    ((AccessReqHead)localObject).loginType = 1;
+    ((AccessReqHead)localObject).uin = paramLong;
+    ((AccessReqHead)localObject).terminal = new Terminal();
     this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.imei = String.valueOf(a());
     this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.macAddress = String.valueOf(c());
     this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.androidId = String.valueOf(DeviceInfoUtil.f());
@@ -36,10 +37,14 @@ public class YYBInstallPackageReportRequest
     this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.mode = String.valueOf(DeviceInfoUtil.i());
     this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.manufacture = String.valueOf(DeviceInfoUtil.h());
     this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.qimei = String.valueOf(UserAction.getQIMEI());
-    if (QLog.isColorLevel()) {
-      QLog.d("YYBInstallPackageReportRequest", 1, "YYBInstallPackageReportRequest qimei=" + this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.qimei);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("YYBInstallPackageReportRequest qimei=");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.qimei);
+      QLog.d("YYBInstallPackageReportRequest", 1, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.uniqueId = String.valueOf(MobileInfoUtil.c());
+    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.uniqueId = String.valueOf(MobileInfoUtil.getImei());
     this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.uninstallPkgList = new ArrayList();
     this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.uninstallPkgList.addAll(paramArrayList);
   }
@@ -47,20 +52,19 @@ public class YYBInstallPackageReportRequest
   public static AccessRspHead a(byte[] paramArrayOfByte, int[] paramArrayOfInt)
   {
     if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
+      return null;
     }
-    do
-    {
-      return paramArrayOfByte;
-      paramArrayOfInt = (AccessRspHead)decode(paramArrayOfByte, "NewMobileReport", paramArrayOfInt);
-      paramArrayOfByte = paramArrayOfInt;
-    } while (paramArrayOfInt != null);
-    return null;
+    paramArrayOfByte = (AccessRspHead)decode(paramArrayOfByte, "NewMobileReport", paramArrayOfInt);
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    return paramArrayOfByte;
   }
   
   public static String a()
   {
-    if ((jdField_a_of_type_JavaLangString != null) && (jdField_a_of_type_JavaLangString.length() > 0)) {
+    String str = jdField_a_of_type_JavaLangString;
+    if ((str != null) && (str.length() > 0)) {
       return jdField_a_of_type_JavaLangString;
     }
     try
@@ -77,7 +81,8 @@ public class YYBInstallPackageReportRequest
   
   public static String b()
   {
-    if ((b != null) && (b.length() > 0)) {
+    String str = b;
+    if ((str != null) && (str.length() > 0)) {
       return b;
     }
     try
@@ -94,7 +99,8 @@ public class YYBInstallPackageReportRequest
   
   public static String c()
   {
-    if ((c != null) && (c.length() > 0)) {
+    String str = c;
+    if ((str != null) && (str.length() > 0)) {
       return c;
     }
     try
@@ -126,7 +132,7 @@ public class YYBInstallPackageReportRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.yyb.YYBInstallPackageReportRequest
  * JD-Core Version:    0.7.0.1
  */

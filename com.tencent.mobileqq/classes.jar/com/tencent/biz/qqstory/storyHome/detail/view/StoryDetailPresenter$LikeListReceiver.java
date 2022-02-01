@@ -17,24 +17,24 @@ class StoryDetailPresenter$LikeListReceiver
   
   public void a(@NonNull StoryDetailPresenter paramStoryDetailPresenter, @NonNull DetailLikeListLoader.GetLikeListEvent paramGetLikeListEvent)
   {
-    if ((!paramGetLikeListEvent.jdField_a_of_type_Boolean) || (!paramGetLikeListEvent.jdField_a_of_type_JavaLangString.equals(StoryDetailPresenter.a(paramStoryDetailPresenter))) || (paramGetLikeListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (StoryDetailPresenter.a(paramStoryDetailPresenter) == null))
+    if ((paramGetLikeListEvent.jdField_a_of_type_Boolean) && (paramGetLikeListEvent.jdField_a_of_type_JavaLangString.equals(StoryDetailPresenter.a(paramStoryDetailPresenter))) && (!paramGetLikeListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) && (StoryDetailPresenter.a(paramStoryDetailPresenter) != null))
     {
-      SLog.b(this.TAG, "ignore this like list event. %s.", paramGetLikeListEvent.toString());
-      return;
-    }
-    SLog.a(this.TAG, "receive like list event. %s.", paramGetLikeListEvent.toString());
-    boolean bool2 = StoryDetailPresenter.a(paramStoryDetailPresenter);
-    if (paramGetLikeListEvent.jdField_a_of_type_Int == 0) {}
-    for (boolean bool1 = false;; bool1 = true)
-    {
+      SLog.a(this.TAG, "receive like list event. %s.", paramGetLikeListEvent.toString());
+      boolean bool2 = StoryDetailPresenter.a(paramStoryDetailPresenter);
+      boolean bool1;
+      if (paramGetLikeListEvent.jdField_a_of_type_Int == 0) {
+        bool1 = false;
+      } else {
+        bool1 = true;
+      }
       StoryDetailPresenter.a(paramStoryDetailPresenter).b(bool1, paramGetLikeListEvent.b);
       StoryDetailPresenter.a(paramStoryDetailPresenter).b(paramGetLikeListEvent.jdField_a_of_type_JavaUtilList, true, bool1);
-      if (bool2 != bool1) {
-        break;
+      if (bool2 == bool1) {
+        paramStoryDetailPresenter.a();
       }
-      paramStoryDetailPresenter.a();
       return;
     }
+    SLog.b(this.TAG, "ignore this like list event. %s.", paramGetLikeListEvent.toString());
   }
   
   public Class acceptEventClass()
@@ -46,7 +46,7 @@ class StoryDetailPresenter$LikeListReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailPresenter.LikeListReceiver
  * JD-Core Version:    0.7.0.1
  */

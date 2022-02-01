@@ -14,19 +14,22 @@ class InstallStateReceiver$1
   
   public void run()
   {
-    LogUtility.c("InstallStateReceiver", "[onReceive] ACTION_PACKAGE_REMOVED >> " + this.a);
-    if ((!TextUtils.isEmpty(this.b)) && (this.b.equals(DownloadConstants.q)))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[onReceive] ACTION_PACKAGE_REMOVED >> ");
+    ((StringBuilder)localObject).append(this.a);
+    LogUtility.c("InstallStateReceiver", ((StringBuilder)localObject).toString());
+    if ((!TextUtils.isEmpty(this.b)) && (this.b.equals(DownloadConstants.r)))
     {
       DownloadManagerV2.a().a(true);
-      MyAppApi.a().f();
+      MyAppApi.a().h();
     }
-    DownloadInfo localDownloadInfo = DownloadManagerV2.a().c(this.b);
-    DownloadManagerV2.a().d(localDownloadInfo);
+    localObject = DownloadManagerV2.a().c(this.b);
+    DownloadManagerV2.a().d((DownloadInfo)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appstore.receiver.InstallStateReceiver.1
  * JD-Core Version:    0.7.0.1
  */

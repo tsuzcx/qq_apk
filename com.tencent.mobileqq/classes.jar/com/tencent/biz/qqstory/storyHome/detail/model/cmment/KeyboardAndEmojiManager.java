@@ -45,8 +45,8 @@ public class KeyboardAndEmojiManager
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidViewView = paramView;
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager$KeyboardAndEmojiStateChangeListener = paramKeyboardAndEmojiStateChangeListener;
+    c();
     d();
-    e();
   }
   
   public static QQAppInterface a()
@@ -58,128 +58,96 @@ public class KeyboardAndEmojiManager
     return null;
   }
   
-  private void d()
+  private void c()
   {
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx = ((XEditTextEx)this.jdField_a_of_type_AndroidViewView.findViewById(2131366436));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366299));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365287);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131366264));
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx = ((XEditTextEx)this.jdField_a_of_type_AndroidViewView.findViewById(2131366317));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366187));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365162);
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131366152));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel = TroopBarPublishUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_ComTencentWidgetXEditTextEx, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback);
   }
   
-  private void e()
+  private void d()
   {
-    ((PatchedButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131367663)).setOnClickListener(this);
+    ((PatchedButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131367417)).setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new KeyboardAndEmojiManager.1(this);
     this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
   }
   
-  private void f()
+  private void e()
   {
     SLog.b("Q.qqstory.detail.KeyboardAndEmojiManager", "on keyboard up. mIsForceChange = %s.", Boolean.valueOf(this.d));
     if (this.jdField_b_of_type_Boolean)
     {
       this.c = true;
-      h();
+      g();
     }
     if (!this.jdField_a_of_type_ComTencentWidgetXEditTextEx.isFocused()) {
       this.jdField_a_of_type_ComTencentWidgetXEditTextEx.requestFocus();
     }
     this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager$KeyboardAndEmojiStateChangeListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager$KeyboardAndEmojiStateChangeListener.b(this.d);
+    KeyboardAndEmojiManager.KeyboardAndEmojiStateChangeListener localKeyboardAndEmojiStateChangeListener = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager$KeyboardAndEmojiStateChangeListener;
+    if (localKeyboardAndEmojiStateChangeListener != null) {
+      localKeyboardAndEmojiStateChangeListener.b(this.d);
     }
+    this.d = false;
+  }
+  
+  private void f()
+  {
+    SLog.b("Q.qqstory.detail.KeyboardAndEmojiManager", "on keyboard down. mIsForceChange = %s.", Boolean.valueOf(this.d));
+    this.jdField_a_of_type_Boolean = false;
+    boolean bool;
+    if (!this.c)
+    {
+      if (this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().length() == 0) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.clearFocus();
+    }
+    else
+    {
+      bool = false;
+    }
+    KeyboardAndEmojiManager.KeyboardAndEmojiStateChangeListener localKeyboardAndEmojiStateChangeListener = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager$KeyboardAndEmojiStateChangeListener;
+    if (localKeyboardAndEmojiStateChangeListener != null) {
+      localKeyboardAndEmojiStateChangeListener.c(bool);
+    }
+    this.c = false;
     this.d = false;
   }
   
   private void g()
   {
-    SLog.b("Q.qqstory.detail.KeyboardAndEmojiManager", "on keyboard down. mIsForceChange = %s.", Boolean.valueOf(this.d));
-    this.jdField_a_of_type_Boolean = false;
     boolean bool;
-    if (!this.c) {
-      if (this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().length() == 0)
-      {
-        bool = true;
-        this.jdField_a_of_type_ComTencentWidgetXEditTextEx.clearFocus();
-      }
-    }
-    for (;;)
+    if (!this.c)
     {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager$KeyboardAndEmojiStateChangeListener != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager$KeyboardAndEmojiStateChangeListener.c(bool);
-      }
-      this.c = false;
-      this.d = false;
-      return;
-      bool = false;
-      break;
-      bool = false;
-    }
-  }
-  
-  private void h()
-  {
-    boolean bool;
-    if (!this.c) {
-      if (this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().length() == 0)
-      {
+      if (this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().length() == 0) {
         bool = true;
-        this.jdField_a_of_type_ComTencentWidgetXEditTextEx.clearFocus();
+      } else {
+        bool = false;
       }
+      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.clearFocus();
     }
-    for (;;)
+    else
     {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager$KeyboardAndEmojiStateChangeListener != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager$KeyboardAndEmojiStateChangeListener.c(bool);
-      }
-      this.c = false;
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setVisibility(8);
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetImageButton.setSelected(false);
-      return;
-      bool = false;
-      break;
       bool = false;
     }
+    KeyboardAndEmojiManager.KeyboardAndEmojiStateChangeListener localKeyboardAndEmojiStateChangeListener = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager$KeyboardAndEmojiStateChangeListener;
+    if (localKeyboardAndEmojiStateChangeListener != null) {
+      localKeyboardAndEmojiStateChangeListener.c(bool);
+    }
+    this.c = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setVisibility(8);
+    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetImageButton.setSelected(false);
   }
   
   public void a()
-  {
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.d = true;
-    InputMethodManager localInputMethodManager = (InputMethodManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("input_method");
-    if (localInputMethodManager != null)
-    {
-      if (!paramBoolean) {
-        break label79;
-      }
-      if (!this.jdField_a_of_type_ComTencentWidgetXEditTextEx.isFocused()) {
-        this.jdField_a_of_type_ComTencentWidgetXEditTextEx.requestFocus();
-      }
-      localInputMethodManager.showSoftInput(this.jdField_a_of_type_ComTencentWidgetXEditTextEx, 1);
-    }
-    for (;;)
-    {
-      SLog.b("Q.qqstory.detail.KeyboardAndEmojiManager", "setKeyBoardState: %s." + paramBoolean);
-      return;
-      label79:
-      localInputMethodManager.hideSoftInputFromWindow(this.jdField_a_of_type_AndroidViewView.getWindowToken(), 0);
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Boolean) || (this.jdField_b_of_type_Boolean);
-  }
-  
-  public void b()
   {
     if (this.jdField_a_of_type_Boolean)
     {
@@ -189,8 +157,9 @@ public class KeyboardAndEmojiManager
     if (!this.jdField_a_of_type_ComTencentWidgetXEditTextEx.isFocused()) {
       this.jdField_a_of_type_ComTencentWidgetXEditTextEx.requestFocus();
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager$KeyboardAndEmojiStateChangeListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager$KeyboardAndEmojiStateChangeListener.b(this.d);
+    KeyboardAndEmojiManager.KeyboardAndEmojiStateChangeListener localKeyboardAndEmojiStateChangeListener = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager$KeyboardAndEmojiStateChangeListener;
+    if (localKeyboardAndEmojiStateChangeListener != null) {
+      localKeyboardAndEmojiStateChangeListener.b(this.d);
     }
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setVisibility(0);
@@ -198,63 +167,83 @@ public class KeyboardAndEmojiManager
     this.jdField_a_of_type_AndroidWidgetImageButton.setSelected(true);
   }
   
-  public boolean b()
+  public void a(boolean paramBoolean)
   {
-    return this.jdField_a_of_type_Boolean;
+    this.d = true;
+    Object localObject = (InputMethodManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("input_method");
+    if (localObject != null) {
+      if (paramBoolean)
+      {
+        if (!this.jdField_a_of_type_ComTencentWidgetXEditTextEx.isFocused()) {
+          this.jdField_a_of_type_ComTencentWidgetXEditTextEx.requestFocus();
+        }
+        ((InputMethodManager)localObject).showSoftInput(this.jdField_a_of_type_ComTencentWidgetXEditTextEx, 1);
+      }
+      else
+      {
+        ((InputMethodManager)localObject).hideSoftInputFromWindow(this.jdField_a_of_type_AndroidViewView.getWindowToken(), 0);
+      }
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setKeyBoardState: %s.");
+    ((StringBuilder)localObject).append(paramBoolean);
+    SLog.b("Q.qqstory.detail.KeyboardAndEmojiManager", ((StringBuilder)localObject).toString());
   }
   
-  public void c()
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Boolean) || (this.jdField_b_of_type_Boolean);
+  }
+  
+  public void b()
   {
     if (this.jdField_a_of_type_Boolean) {
       a(false);
     }
     if (this.jdField_b_of_type_Boolean) {
-      h();
+      g();
     }
-  }
-  
-  public boolean c()
-  {
-    return this.c;
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    KeyboardAndEmojiManager.KeyboardAndEmojiStateChangeListener localKeyboardAndEmojiStateChangeListener;
+    if (i != 2131366152)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 500L)
+      if (i == 2131367417)
       {
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager$KeyboardAndEmojiStateChangeListener == null) || (!this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager$KeyboardAndEmojiStateChangeListener.b()))
-        {
-          this.c = true;
-          if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.getVisibility() == 0)
-          {
-            h();
-            a(true);
-          }
-          else
-          {
-            a(false);
-            new Handler().postDelayed(new KeyboardAndEmojiManager.2(this), 200L);
-            continue;
-            if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager$KeyboardAndEmojiStateChangeListener != null) {
-              this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager$KeyboardAndEmojiStateChangeListener.d();
-            }
-          }
+        localKeyboardAndEmojiStateChangeListener = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager$KeyboardAndEmojiStateChangeListener;
+        if (localKeyboardAndEmojiStateChangeListener != null) {
+          localKeyboardAndEmojiStateChangeListener.d();
         }
       }
     }
+    else if (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 500L)
+    {
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      localKeyboardAndEmojiStateChangeListener = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager$KeyboardAndEmojiStateChangeListener;
+      if ((localKeyboardAndEmojiStateChangeListener == null) || (!localKeyboardAndEmojiStateChangeListener.b()))
+      {
+        this.c = true;
+        if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.getVisibility() == 0)
+        {
+          g();
+          a(true);
+        }
+        else
+        {
+          a(false);
+          new Handler().postDelayed(new KeyboardAndEmojiManager.2(this), 200L);
+        }
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.model.cmment.KeyboardAndEmojiManager
  * JD-Core Version:    0.7.0.1
  */

@@ -55,79 +55,6 @@ public class ListenTogetherObserver
     {
     default: 
       return;
-    case 4: 
-      a((ListenTogetherSession)((Object[])(Object[])paramObject)[0]);
-      return;
-    case 5: 
-      paramObject = (Object[])paramObject;
-      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], ((Boolean)paramObject[2]).booleanValue());
-      return;
-    case 19: 
-      paramObject = (Object[])paramObject;
-      b(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
-      return;
-    case 6: 
-      paramObject = (Object[])paramObject;
-      c(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
-      return;
-    case 7: 
-      paramObject = (Object[])paramObject;
-      d(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
-      return;
-    case 21: 
-      paramObject = (Object[])paramObject;
-      f(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
-      return;
-    case 20: 
-      paramObject = (Object[])paramObject;
-      e(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
-      return;
-    case 8: 
-      paramObject = (Object[])paramObject;
-      g(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
-      return;
-    case 9: 
-      paramObject = (Object[])paramObject;
-      a((String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue());
-      return;
-    case 10: 
-      paramObject = (Object[])paramObject;
-      a((String)paramObject[0], (String)paramObject[1], ((Boolean)paramObject[2]).booleanValue());
-      return;
-    case 11: 
-      paramObject = (Object[])paramObject;
-      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], ((Boolean)paramObject[2]).booleanValue(), ((Boolean)paramObject[3]).booleanValue());
-      return;
-    case 12: 
-      paramObject = (Object[])paramObject;
-      a((String)paramObject[0], ((Integer)paramObject[1]).intValue());
-      return;
-    case 13: 
-      a((ISong)((Object[])(Object[])paramObject)[0]);
-      return;
-    case 14: 
-      paramObject = (Object[])paramObject;
-      h(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
-      return;
-    case 15: 
-      paramObject = (Object[])paramObject;
-      a(((Boolean)paramObject[0]).booleanValue(), (ListenTogetherSession)paramObject[1]);
-      return;
-    case 16: 
-      d();
-      return;
-    case 18: 
-      paramObject = (Object[])paramObject;
-      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], (String)paramObject[2]);
-      return;
-    case 22: 
-      paramObject = (Object[])paramObject;
-      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
-      return;
-    case 23: 
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], (String)paramObject[2], ((Integer)paramObject[3]).intValue(), (String)paramObject[4]);
-      return;
     case 24: 
       paramObject = (Object[])paramObject;
       if (paramBoolean)
@@ -137,19 +64,92 @@ public class ListenTogetherObserver
       }
       a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], ((Long)paramObject[2]).longValue(), 0, ((Integer)paramObject[3]).intValue(), (String)paramObject[4]);
       return;
-    }
-    paramObject = (Object[])paramObject;
-    if (paramBoolean)
-    {
-      a(true, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (List)paramObject[2]);
+    case 23: 
+      paramObject = (Object[])paramObject;
+      a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], (String)paramObject[2], ((Integer)paramObject[3]).intValue(), (String)paramObject[4]);
+      return;
+    case 22: 
+      paramObject = (Object[])paramObject;
+      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+      return;
+    case 21: 
+      paramObject = (Object[])paramObject;
+      f(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+      return;
+    case 20: 
+      paramObject = (Object[])paramObject;
+      e(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+      return;
+    case 19: 
+      paramObject = (Object[])paramObject;
+      b(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+      return;
+    case 18: 
+      paramObject = (Object[])paramObject;
+      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], (String)paramObject[2]);
+      return;
+    case 17: 
+      paramObject = (Object[])paramObject;
+      if (paramBoolean)
+      {
+        a(true, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (List)paramObject[2]);
+        return;
+      }
+      a(true, (String)paramObject[0], 0, null);
+      return;
+    case 16: 
+      d();
+      return;
+    case 15: 
+      paramObject = (Object[])paramObject;
+      a(((Boolean)paramObject[0]).booleanValue(), (ListenTogetherSession)paramObject[1]);
+      return;
+    case 14: 
+      paramObject = (Object[])paramObject;
+      h(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+      return;
+    case 13: 
+      a((ISong)((Object[])(Object[])paramObject)[0]);
+      return;
+    case 12: 
+      paramObject = (Object[])paramObject;
+      a((String)paramObject[0], ((Integer)paramObject[1]).intValue());
+      return;
+    case 11: 
+      paramObject = (Object[])paramObject;
+      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], ((Boolean)paramObject[2]).booleanValue(), ((Boolean)paramObject[3]).booleanValue());
+      return;
+    case 10: 
+      paramObject = (Object[])paramObject;
+      a((String)paramObject[0], (String)paramObject[1], ((Boolean)paramObject[2]).booleanValue());
+      return;
+    case 9: 
+      paramObject = (Object[])paramObject;
+      a((String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue());
+      return;
+    case 8: 
+      paramObject = (Object[])paramObject;
+      g(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+      return;
+    case 7: 
+      paramObject = (Object[])paramObject;
+      d(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+      return;
+    case 6: 
+      paramObject = (Object[])paramObject;
+      c(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+      return;
+    case 5: 
+      paramObject = (Object[])paramObject;
+      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], ((Boolean)paramObject[2]).booleanValue());
       return;
     }
-    a(true, (String)paramObject[0], 0, null);
+    a((ListenTogetherSession)((Object[])(Object[])paramObject)[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherObserver
  * JD-Core Version:    0.7.0.1
  */

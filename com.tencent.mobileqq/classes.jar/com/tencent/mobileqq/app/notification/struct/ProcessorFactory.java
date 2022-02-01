@@ -41,13 +41,30 @@ public final class ProcessorFactory
   
   public static boolean a(int paramInt)
   {
-    boolean bool = jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(paramInt));
-    return (paramInt == 0) || (paramInt == 1) || (paramInt == 3000) || (bool);
+    boolean bool3 = jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(paramInt));
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (paramInt != 0)
+    {
+      bool1 = bool2;
+      if (paramInt != 1)
+      {
+        bool1 = bool2;
+        if (paramInt != 3000)
+        {
+          if (bool3) {
+            return true;
+          }
+          bool1 = false;
+        }
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.notification.struct.ProcessorFactory
  * JD-Core Version:    0.7.0.1
  */

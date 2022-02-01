@@ -19,12 +19,24 @@ public final class b$a
   
   public String toString()
   {
-    return "MiniAppStateMsg{state=" + this.a + ", apkgInfo=" + this.b + ", appId='" + this.c + '\'' + ", versionType='" + this.d + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MiniAppStateMsg{state=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", apkgInfo=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", appId='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", versionType='");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.app.b.a
  * JD-Core Version:    0.7.0.1
  */

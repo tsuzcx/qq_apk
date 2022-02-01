@@ -10,12 +10,11 @@ class QRDisplayActivity$DiscussionMemberComparator
   
   public int a(String paramString1, String paramString2)
   {
-    int i = 1;
     if ((paramString1 != null) && (paramString2 != null)) {
-      i = ChnToSpell.a(paramString1, 1).compareTo(ChnToSpell.a(paramString2, 1));
+      return ChnToSpell.a(paramString1, 1).compareTo(ChnToSpell.a(paramString2, 1));
     }
-    while (paramString1 != null) {
-      return i;
+    if (paramString1 != null) {
+      return 1;
     }
     if (paramString2 != null) {
       return -1;
@@ -25,7 +24,7 @@ class QRDisplayActivity$DiscussionMemberComparator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.DiscussionMemberComparator
  * JD-Core Version:    0.7.0.1
  */

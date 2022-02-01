@@ -2,7 +2,7 @@ package com.tencent.mobileqq.emotionintegrate;
 
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.model.QueryCallback;
+import com.tencent.mobileqq.emoticonview.QueryCallback;
 
 class AIOEmotionFragment$3
   implements QueryCallback<EmoticonPackage>
@@ -21,7 +21,7 @@ class AIOEmotionFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment.3
  * JD-Core Version:    0.7.0.1
  */

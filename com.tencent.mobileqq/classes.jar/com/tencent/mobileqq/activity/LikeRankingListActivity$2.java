@@ -15,76 +15,78 @@ class LikeRankingListActivity$2
 {
   LikeRankingListActivity$2(LikeRankingListActivity paramLikeRankingListActivity) {}
   
-  public void onReqLikeRankingListResult(boolean paramBoolean1, String paramString, List<LikeRankingInfo> paramList, int paramInt, boolean paramBoolean2)
+  protected void onReqLikeRankingListResult(boolean paramBoolean1, String paramString, List<LikeRankingInfo> paramList, int paramInt, boolean paramBoolean2)
   {
-    int i;
     if (QLog.isColorLevel())
     {
-      String str = "onReqLikeRankingListResult success:" + paramBoolean1;
-      paramString = new StringBuilder().append(", uin:").append(paramString).append(", size:");
-      if (paramList == null)
-      {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onReqLikeRankingListResult success:");
+      ((StringBuilder)localObject).append(paramBoolean1);
+      localObject = ((StringBuilder)localObject).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(", uin:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", size:");
+      int i;
+      if (paramList == null) {
         i = 0;
-        QLog.d("LikeRankingListActivity", 2, new Object[] { str, i + ", nextIndex: " + paramInt + ", isComplete:" + paramBoolean2 });
+      } else {
+        i = paramList.size();
       }
+      localStringBuilder.append(i);
+      localStringBuilder.append(", nextIndex: ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", isComplete:");
+      localStringBuilder.append(paramBoolean2);
+      QLog.d("LikeRankingListActivity", 2, new Object[] { localObject, localStringBuilder.toString() });
     }
-    else
+    if (paramBoolean1)
     {
-      if (!paramBoolean1) {
-        break label341;
-      }
-      if ((paramList == null) || ((paramList.size() <= 0) && (!paramBoolean2))) {
-        break label284;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqAppLikeRankingListManager.a(paramList, paramInt, paramBoolean2);
-      if ((!paramBoolean2) || (paramList.size() != 0)) {
-        break label258;
-      }
-      this.a.e.setVisibility(0);
-      label165:
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity$LikeRankingListAdapter.a(paramList, true);
-      if (this.a.jdField_a_of_type_Int == 0)
+      if ((paramList != null) && ((paramList.size() > 0) || (paramBoolean2)))
       {
-        if (paramList.size() <= 0) {
-          break label273;
+        this.a.jdField_a_of_type_ComTencentMobileqqAppLikeRankingListManager.a(paramList, paramInt, paramBoolean2);
+        if ((paramBoolean2) && (paramList.size() == 0)) {
+          this.a.e.setVisibility(0);
+        } else {
+          this.a.e.setVisibility(8);
         }
-        this.a.a(String.valueOf(((LikeRankingInfo)paramList.get(0)).uin));
-        LikeRankingListActivity.a(this.a, false);
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity$LikeRankingListAdapter.a(paramList, true);
+        if (this.a.jdField_a_of_type_Int == 0) {
+          if (paramList.size() > 0)
+          {
+            this.a.a(String.valueOf(((LikeRankingInfo)paramList.get(0)).uin));
+            LikeRankingListActivity.a(this.a, false);
+          }
+          else
+          {
+            this.a.a(null);
+          }
+        }
       }
-    }
-    for (;;)
-    {
+      else
+      {
+        this.a.a(null);
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity$LikeRankingListAdapter.a = false;
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity$LikeRankingListAdapter.notifyDataSetChanged();
+        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity$LikeRankingListAdapter.getCount() <= 1) {
+          this.a.e.setVisibility(0);
+        }
+      }
       paramString = this.a;
       if (paramBoolean2) {
         paramInt = -1;
       }
       paramString.jdField_a_of_type_Int = paramInt;
       return;
-      i = paramList.size();
-      break;
-      label258:
-      this.a.e.setVisibility(8);
-      break label165;
-      label273:
-      this.a.a(null);
-      continue;
-      label284:
-      this.a.a(null);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity$LikeRankingListAdapter.a = false;
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity$LikeRankingListAdapter.notifyDataSetChanged();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity$LikeRankingListAdapter.getCount() <= 1) {
-        this.a.e.setVisibility(0);
-      }
     }
-    label341:
     this.a.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity$LikeRankingListAdapter.a = false;
     this.a.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity$LikeRankingListAdapter.notifyDataSetChanged();
-    QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131706136), 0).a();
+    QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131706187), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LikeRankingListActivity.2
  * JD-Core Version:    0.7.0.1
  */

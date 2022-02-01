@@ -19,13 +19,14 @@ public final class cmd0xb74$ReqBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "rpt_bytes_rowkey", "uint32_need_like_count", "uint32_need_like_status", "uint32_need_fusion_biu_info" }, new Object[] { localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, ReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "rpt_bytes_rowkey", "uint32_need_like_count", "uint32_need_like_status", "uint32_need_fusion_biu_info" }, new Object[] { localByteStringMicro, localInteger, localInteger, localInteger }, ReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xb74.cmd0xb74.ReqBody
  * JD-Core Version:    0.7.0.1
  */

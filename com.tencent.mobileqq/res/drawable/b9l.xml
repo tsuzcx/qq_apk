@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<vector android:height="24.0dip" android:width="24.0dip" android:viewportWidth="24.0" android:viewportHeight="24.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="true">
-        <layer-list>
-            <item android:gravity="center" android:top="28.0dip">
-                <shape android:shape="rectangle">
-                    <solid android:color="@color/bp" />
-                    <corners android:radius="1.5dip" />
-                    <size android:height="4.0dip" android:width="20.0dip" />
-                </shape>
-            </item>
-        </layer-list>
-    </item>
-    <item android:drawable="@color/ajr" />
-</selector>
+    <path android:fillColor="@android:color/white" android:pathData="M20,11L7.8,11l5.6,-5.6L12,4l-8,8l8,8l1.4,-1.4L7.8,13L20,13L20,11z" />
+</vector>

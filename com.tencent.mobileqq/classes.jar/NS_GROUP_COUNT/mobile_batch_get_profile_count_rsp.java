@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,22 +49,25 @@ public final class mobile_batch_get_profile_count_rsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.profileCountItems != null) {
-      paramJceOutputStream.write(this.profileCountItems, 0);
+    Object localObject = this.profileCountItems;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
     paramJceOutputStream.write(this.iNextTimeout, 1);
     paramJceOutputStream.write(this.iNextUinsBufCount, 2);
-    if (this.iconURL != null) {
-      paramJceOutputStream.write(this.iconURL, 3);
+    localObject = this.iconURL;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.extendinfo != null) {
-      paramJceOutputStream.write(this.extendinfo, 4);
+    localObject = this.extendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_GROUP_COUNT.mobile_batch_get_profile_count_rsp
  * JD-Core Version:    0.7.0.1
  */

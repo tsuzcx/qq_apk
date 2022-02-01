@@ -17,9 +17,9 @@ public class PhotoListPanelUtils
   
   protected static boolean a(boolean paramBoolean, int paramInt, Intent paramIntent)
   {
-    boolean bool = false;
     int i = 0;
-    if (paramBoolean) {
+    if (paramBoolean)
+    {
       if (paramInt == 2)
       {
         paramIntent = BaseApplication.getContext();
@@ -33,34 +33,29 @@ public class PhotoListPanelUtils
           paramIntent.edit().putBoolean("key_presend_off_flag", true).commit();
           paramIntent.edit().putLong("key_presend_off_time", System.currentTimeMillis()).commit();
         }
-        paramBoolean = true;
+        return true;
       }
-    }
-    do
-    {
-      do
+      if (a(paramIntent))
       {
-        return paramBoolean;
-        if (a(paramIntent))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("PhotoListPanel", 2, "sendMedias,start sendPhotoAcitivy,  addPresendMgrHandlerToIntent OK");
-          }
-          return true;
+        if (QLog.isColorLevel()) {
+          QLog.d("PhotoListPanel", 2, "sendMedias,start sendPhotoAcitivy,  addPresendMgrHandlerToIntent OK");
         }
-        paramBoolean = bool;
-      } while (!QLog.isColorLevel());
-      QLog.d("PhotoListPanel", 2, "sendMedias,start sendPhotoAcitivy,  addPresendMgrHandlerToIntent failed");
+        return true;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PhotoListPanel", 2, "sendMedias,start sendPhotoAcitivy,  addPresendMgrHandlerToIntent failed");
+      }
       return false;
-      paramBoolean = bool;
-    } while (!QLog.isColorLevel());
-    QLog.d("PhotoListPanel", 2, "sendMedias,start sendPhotoAcitivy, not presend");
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoListPanel", 2, "sendMedias,start sendPhotoAcitivy, not presend");
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.PhotoListPanelUtils
  * JD-Core Version:    0.7.0.1
  */

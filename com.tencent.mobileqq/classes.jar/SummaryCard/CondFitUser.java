@@ -59,11 +59,13 @@ public final class CondFitUser
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.lUIN, 0);
-    if (this.strNick != null) {
-      paramJceOutputStream.write(this.strNick, 1);
+    Object localObject = this.strNick;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.vRichSign != null) {
-      paramJceOutputStream.write(this.vRichSign, 2);
+    localObject = this.vRichSign;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 2);
     }
     paramJceOutputStream.write(this.cSex, 3);
     paramJceOutputStream.write(this.dwAge, 4);

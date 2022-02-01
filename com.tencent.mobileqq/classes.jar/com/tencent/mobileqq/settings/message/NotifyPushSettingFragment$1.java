@@ -23,60 +23,50 @@ class NotifyPushSettingFragment$1
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
     int j = HttpUtil.getNetWorkType();
     int i = j;
     if (j == -1) {
       i = 2;
     }
-    Object localObject;
     if (i == 0)
     {
-      QQToast.a(this.a.getActivity(), 1, 2131696097, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299166));
-      localObject = this.a;
-      if (!paramBoolean) {}
-      for (;;)
+      QQToast.a(this.a.getBaseActivity(), 1, 2131696114, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299168));
+      NotifyPushSettingFragment.a(this.a, paramBoolean ^ true, false);
+    }
+    else if (NotifyPushSettingFragment.a(this.a).compareAndSet(true, true))
+    {
+      QQToast.a(this.a.getBaseActivity(), 1, 2131698376, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299168));
+      NotifyPushSettingFragment.a(this.a, paramBoolean ^ true, false);
+    }
+    else
+    {
+      NotifyPushSettingFragment.a(this.a, paramBoolean, true);
+      Object localObject;
+      if (paramBoolean)
       {
-        NotifyPushSettingFragment.a((NotifyPushSettingFragment)localObject, bool1, false);
-        EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-        return;
-        bool1 = false;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(HardCodeUtil.a(2131707652));
+        ((StringBuilder)localObject).append(NotifyPushSettingActivity.TimePickDialog.a(3600000L));
+        localObject = ((StringBuilder)localObject).toString();
+        NotifyPushSettingFragment.a(this.a).setRightText((CharSequence)localObject);
+        NotifyPushSettingFragment.a(this.a).set(true);
+        long l = NetConnInfoCenter.getServerTime();
+        ((CardHandler)NotifyPushSettingFragment.a(this.a).getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).a((int)(l + 3600L), "", "not_disturb_from_notify_push_setting_activity");
       }
-    }
-    if (NotifyPushSettingFragment.a(this.a).compareAndSet(true, true))
-    {
-      QQToast.a(this.a.getActivity(), 1, 2131698311, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299166));
-      localObject = this.a;
-      if (!paramBoolean) {}
-      for (bool1 = bool2;; bool1 = false)
+      else
       {
-        NotifyPushSettingFragment.a((NotifyPushSettingFragment)localObject, bool1, false);
-        break;
+        localObject = NotifyPushSettingFragment.a(this.a).a().getText().toString();
+        NotifyPushSettingFragment.a(this.a).set(true);
+        ((CardHandler)NotifyPushSettingFragment.a(this.a).getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).a(0, (String)localObject, "not_disturb_from_notify_push_setting_activity");
       }
-    }
-    NotifyPushSettingFragment.a(this.a, paramBoolean, true);
-    if (paramBoolean)
-    {
-      localObject = HardCodeUtil.a(2131707627) + NotifyPushSettingActivity.TimePickDialog.a(3600000L);
-      NotifyPushSettingFragment.a(this.a).setRightText((CharSequence)localObject);
-      NotifyPushSettingFragment.a(this.a).set(true);
-      long l = NetConnInfoCenter.getServerTime();
-      ((CardHandler)NotifyPushSettingFragment.a(this.a).getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).a((int)(3600L + l), "", "not_disturb_from_notify_push_setting_activity");
-    }
-    for (;;)
-    {
       ReportClickEventHelper.a(NotifyPushSettingFragment.a(this.a), "0X800B849", paramBoolean);
-      break;
-      localObject = NotifyPushSettingFragment.a(this.a).a().getText().toString();
-      NotifyPushSettingFragment.a(this.a).set(true);
-      ((CardHandler)NotifyPushSettingFragment.a(this.a).getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).a(0, (String)localObject, "not_disturb_from_notify_push_setting_activity");
     }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.NotifyPushSettingFragment.1
  * JD-Core Version:    0.7.0.1
  */

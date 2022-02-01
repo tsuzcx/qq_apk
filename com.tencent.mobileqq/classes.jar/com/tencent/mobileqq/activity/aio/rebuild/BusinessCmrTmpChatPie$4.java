@@ -1,76 +1,65 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.os.Bundle;
-import android.os.SystemClock;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.EnterpriseQQHandler;
-import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.qidian.QidianManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class BusinessCmrTmpChatPie$4
-  implements BusinessObserver
+  implements View.OnClickListener
 {
   BusinessCmrTmpChatPie$4(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BusinessChatPie", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    if (!paramBoolean) {
-      this.a.v(2131695222);
-    }
-    for (;;)
+    Object localObject1 = paramView.getTag();
+    if ((localObject1 != null) && ((localObject1 instanceof Integer)))
     {
-      ChatActivityUtils.b();
-      return;
-      try
+      Object localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+      int i = ((Integer)localObject1).intValue();
+      boolean bool = true;
+      if (i != 1)
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
+        if (i != 2)
         {
-          mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
-          localFollowResponse.mergeFrom(paramBundle);
-          paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
-          if (paramInt == 0)
-          {
-            ((FriendListHandler)this.a.a.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getFriendGroupList(true, false);
-            paramBundle = (EnterpriseQQHandler)this.a.a.getBusinessHandler(BusinessHandlerFactory.ENTERPRISEQQ_HANDLER);
-            if (paramBundle != null) {
-              paramBundle.a(SystemClock.uptimeMillis());
+          if (i == 3) {
+            if (this.a.jdField_a_of_type_ComTencentQidianQidianManager.f(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
+            {
+              localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+              localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+              String str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131690706);
+              if (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getStringExtra("param_return_addr") == null) {
+                bool = false;
+              }
+              ChatActivityUtils.a((Activity)localObject1, (SessionInfo)localObject2, str, bool);
+            }
+            else
+            {
+              this.a.at();
             }
           }
-          else if (paramInt == 58)
-          {
-            this.a.v(2131695218);
-          }
-          else if (paramInt == 65)
-          {
-            this.a.v(2131695193);
-          }
-          else if (paramInt == 20)
-          {
-            this.a.v(2131695194);
-          }
-          else
-          {
-            this.a.v(2131695222);
-          }
+        }
+        else {
+          ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, (String)localObject2, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, false);
         }
       }
-      catch (Exception paramBundle) {}
+      else {
+        ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, (String)localObject2, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, true);
+      }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie.4
  * JD-Core Version:    0.7.0.1
  */

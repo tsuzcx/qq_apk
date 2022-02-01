@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.fragment;
 
-import com.tencent.biz.pubaccount.readinjoy.viola.delegate.ViolaUiDelegate;
+import com.tencent.mobileqq.kandian.biz.viola.api.IViolaUiDelegate;
 
 class ReadinjoyAdHippyFragment$4$2
   implements Runnable
@@ -10,12 +10,12 @@ class ReadinjoyAdHippyFragment$4$2
   public void run()
   {
     ReadinjoyAdHippyFragment.a(this.a.a);
-    ReadinjoyAdHippyFragment.a(this.a.a).d();
+    ReadinjoyAdHippyFragment.a(this.a.a).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.fragment.ReadinjoyAdHippyFragment.4.2
  * JD-Core Version:    0.7.0.1
  */

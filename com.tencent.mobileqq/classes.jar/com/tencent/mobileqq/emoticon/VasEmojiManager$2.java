@@ -1,7 +1,10 @@
 package com.tencent.mobileqq.emoticon;
 
 import android.os.Bundle;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.api.EmojiManagerServiceConstant;
+import com.tencent.mobileqq.emoticon.api.IEmojiManagerService;
 import com.tencent.mobileqq.vas.VasReportUtils;
 import com.tencent.mobileqq.vip.DownloadListener;
 import com.tencent.mobileqq.vip.DownloadTask;
@@ -15,55 +18,63 @@ class VasEmojiManager$2
   public void onDone(DownloadTask paramDownloadTask)
   {
     super.onDone(paramDownloadTask);
-    EmojiManager localEmojiManager = this.a.a();
+    IEmojiManagerService localIEmojiManagerService = this.a.a();
     Bundle localBundle = paramDownloadTask.a();
-    if (paramDownloadTask.a() != 3) {}
-    for (boolean bool = true;; bool = false)
-    {
-      long l1 = System.currentTimeMillis();
-      long l2 = localBundle.getLong("vas_download_start");
-      localEmojiManager.a(localBundle, paramDownloadTask, bool, paramDownloadTask.a, paramDownloadTask.d, l1 - l2, 0);
-      return;
+    boolean bool;
+    if (paramDownloadTask.a() != 3) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    long l1 = System.currentTimeMillis();
+    long l2 = localBundle.getLong("vas_download_start");
+    localIEmojiManagerService.handleEmoticonPackageDownloaded(localBundle, paramDownloadTask, bool, paramDownloadTask.a, paramDownloadTask.d, l1 - l2, 0);
   }
   
   public void onDoneFile(DownloadTask paramDownloadTask)
   {
-    Object localObject = paramDownloadTask.a();
-    int i = ((Bundle)localObject).getInt(paramDownloadTask.c);
-    localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
-    if (QLog.isColorLevel()) {
-      QLog.d("VasEmojiManager", 2, "emotionDownloadListener | onDoneFile epId=" + ((EmoticonPackage)localObject).epId + ",task:" + paramDownloadTask);
+    Object localObject1 = paramDownloadTask.a();
+    int i = ((Bundle)localObject1).getInt(paramDownloadTask.c);
+    localObject1 = (EmoticonPackage)((Bundle)localObject1).getSerializable("emoticonPackage");
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("emotionDownloadListener | onDoneFile epId=");
+      ((StringBuilder)localObject2).append(((EmoticonPackage)localObject1).epId);
+      ((StringBuilder)localObject2).append(",task:");
+      ((StringBuilder)localObject2).append(paramDownloadTask);
+      QLog.d("VasEmojiManager", 2, ((StringBuilder)localObject2).toString());
     }
     if (paramDownloadTask.a != 0)
     {
-      QLog.e("VasEmojiManager", 1, "onDoneFile : ondone error , reportCode = " + paramDownloadTask.a);
-      if (EmojiManager.a(i)) {
-        EmojiManager.a.a((EmoticonPackage)localObject, i, -1, paramDownloadTask.a);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("onDoneFile : ondone error , reportCode = ");
+      ((StringBuilder)localObject2).append(paramDownloadTask.a);
+      QLog.e("VasEmojiManager", 1, ((StringBuilder)localObject2).toString());
+      if (EmojiManagerServiceConstant.isCover(i)) {
+        ((IEmojiManagerService)this.a.a.getRuntimeService(IEmojiManagerService.class)).getEmojiListenerManager().notifyEmoticonCoverListener((EmoticonPackage)localObject1, i, -1, paramDownloadTask.a);
       }
-      VasReportUtils.a("emotionType", "emotionActionDownload", "10", ((EmoticonPackage)localObject).epId, "", "", paramDownloadTask.a + "", "", "", "");
-    }
-    for (;;)
-    {
+      localObject1 = ((EmoticonPackage)localObject1).epId;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramDownloadTask.a);
+      ((StringBuilder)localObject2).append("");
+      VasReportUtils.a("emotionType", "emotionActionDownload", "10", (String)localObject1, "", "", ((StringBuilder)localObject2).toString(), "", "", "");
       return;
-      EmojiManager localEmojiManager = this.a.a();
-      if (EmojiManager.a(i)) {
-        EmojiManager.a.a((EmoticonPackage)localObject, i, 0, 0);
-      }
-      while ((((EmoticonPackage)localObject).jobType == 3) || (((EmoticonPackage)localObject).jobType == 5))
-      {
-        localEmojiManager.b(paramDownloadTask);
-        return;
-        if (i == 7) {
-          localEmojiManager.a(paramDownloadTask);
-        }
-      }
+    }
+    Object localObject2 = this.a.a();
+    if (EmojiManagerServiceConstant.isCover(i)) {
+      ((IEmojiManagerService)this.a.a.getRuntimeService(IEmojiManagerService.class)).getEmojiListenerManager().notifyEmoticonCoverListener((EmoticonPackage)localObject1, i, 0, 0);
+    } else if (i == 7) {
+      ((IEmojiManagerService)localObject2).handleEmotionEncryptKey(paramDownloadTask);
+    }
+    if ((((EmoticonPackage)localObject1).jobType == 3) || (((EmoticonPackage)localObject1).jobType == 5)) {
+      ((IEmojiManagerService)localObject2).handleMagicOrH5MagicDownloadOnDoneFile(paramDownloadTask);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.VasEmojiManager.2
  * JD-Core Version:    0.7.0.1
  */

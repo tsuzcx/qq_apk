@@ -15,8 +15,6 @@ public class QidCardManager$QidCardReport
   
   static
   {
-    jdField_a_of_type_Int = 0;
-    b = 0;
     jdField_a_of_type_JavaUtilMap = new HashMap();
     jdField_a_of_type_JavaUtilMap.put("svip_qidbg_pag.pag", new QidCardManager.QidCardReport.ReportData(2, 2));
     jdField_a_of_type_JavaUtilMap.put("svip_pag.pag", new QidCardManager.QidCardReport.ReportData(2, 1));
@@ -54,7 +52,7 @@ public class QidCardManager$QidCardReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qid.QidCardManager.QidCardReport
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,25 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qqexpand.bean.match.MatchInfo;
+import com.tencent.mobileqq.qqexpand.chat.IExpandMsgSendHelper;
+import com.tencent.mobileqq.qroute.QRoute;
+import mqq.os.MqqHandler;
 
 class LimitChatPie$18
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  LimitChatPie$18(LimitChatPie paramLimitChatPie) {}
+  LimitChatPie$18(LimitChatPie paramLimitChatPie, int paramInt, MatchInfo paramMatchInfo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.o = true;
-    PlusPanelUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, null);
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800ADC9", "0X800ADC9", 0, 0, "", "", "", "");
+    ((IExpandMsgSendHelper)QRoute.api(IExpandMsgSendHelper.class)).handleUnLimitMatchUserInfo(this.this$0.a, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqQqexpandBeanMatchMatchInfo);
+    ThreadManager.getUIHandler().post(new LimitChatPie.18.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.18
  * JD-Core Version:    0.7.0.1
  */

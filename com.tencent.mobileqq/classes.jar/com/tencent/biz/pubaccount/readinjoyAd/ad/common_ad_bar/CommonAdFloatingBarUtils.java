@@ -3,19 +3,20 @@ package com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate.GamesComponentAdDelegate;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate.GoodsSoftAdAppDelegate;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate.IUIDelegate;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate.UIDelegateFactory;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusInnerData;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.kandian.biz.fastweb.data.AdData;
+import com.tencent.mobileqq.kandian.repo.feeds.entity.BaseData;
 import java.util.Iterator;
 import java.util.List;
 
@@ -24,9 +25,9 @@ public class CommonAdFloatingBarUtils
   public static GradientDrawable a(Context paramContext, String paramString1, float paramFloat1, float paramFloat2, String paramString2)
   {
     GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setCornerRadius(AIOUtils.a(paramFloat1, paramContext.getResources()));
+    localGradientDrawable.setCornerRadius(AIOUtils.b(paramFloat1, paramContext.getResources()));
     if (!TextUtils.isEmpty(paramString2)) {
-      localGradientDrawable.setStroke(AIOUtils.a(paramFloat2, paramContext.getResources()), Color.parseColor(paramString2));
+      localGradientDrawable.setStroke(AIOUtils.b(paramFloat2, paramContext.getResources()), Color.parseColor(paramString2));
     }
     if (!TextUtils.isEmpty(paramString1)) {
       localGradientDrawable.setColor(Color.parseColor(paramString1));
@@ -36,92 +37,90 @@ public class CommonAdFloatingBarUtils
   
   public static void a(Activity paramActivity, CommonAdBar paramCommonAdBar, List<BaseData> paramList)
   {
-    if ((paramActivity == null) || (paramCommonAdBar == null) || (paramList == null)) {
-      return;
-    }
-    label20:
-    BaseData localBaseData;
-    for (paramList = paramList.iterator();; paramList = (ProteusInnerData)localBaseData) {
-      for (;;)
+    if ((paramActivity != null) && (paramCommonAdBar != null))
+    {
+      if (paramList == null) {
+        return;
+      }
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
       {
-        if (paramList.hasNext())
+        paramList = (BaseData)localIterator.next();
+        if (((paramList instanceof ProteusInnerData)) && (paramList.f))
         {
-          localBaseData = (BaseData)paramList.next();
-          if (((localBaseData instanceof ProteusInnerData)) && (localBaseData.d)) {
-            if (!((ProteusInnerData)localBaseData).f()) {
-              break;
-            }
+          paramList = (ProteusInnerData)paramList;
+          if (paramList.e()) {
+            break label80;
+          }
+          if (paramList.f()) {
+            break label80;
           }
         }
       }
-    }
-    for (;;)
-    {
+      paramList = null;
+      label80:
       a(paramCommonAdBar, paramList);
       paramActivity = UIDelegateFactory.a(paramActivity, paramList);
       if (paramActivity == null) {
-        break;
+        return;
       }
       paramCommonAdBar.a(paramActivity);
-      paramActivity.a(paramList);
-      if (Build.VERSION.SDK_INT < 21) {
-        break;
+      paramActivity.b(paramList);
+      if (Build.VERSION.SDK_INT >= 21) {
+        paramCommonAdBar.setElevation(9.0F);
       }
-      paramCommonAdBar.setElevation(9.0F);
-      return;
-      if (!((ProteusInnerData)localBaseData).g()) {
-        break label20;
-      }
-      paramList = (ProteusInnerData)localBaseData;
-      continue;
-      paramList = null;
     }
   }
   
   public static void a(CommonAdBar paramCommonAdBar, AdData paramAdData)
   {
-    if ((paramCommonAdBar == null) || (paramAdData == null)) {
-      return;
-    }
-    paramCommonAdBar.a();
-    ViewGroup.LayoutParams localLayoutParams = paramCommonAdBar.getLayoutParams();
-    GradientDrawable localGradientDrawable;
-    if (((paramAdData instanceof ProteusInnerData)) && (((ProteusInnerData)paramAdData).g()))
+    if (paramCommonAdBar != null)
     {
-      localLayoutParams.height = AIOUtils.a(64.0F, paramCommonAdBar.getResources());
-      localGradientDrawable = a(paramCommonAdBar.getContext(), "#ffffff", 2.0F, 0.0F, "");
-      paramAdData = localGradientDrawable;
-      if (!(localLayoutParams instanceof RelativeLayout.LayoutParams)) {
-        break label208;
-      }
-      ((RelativeLayout.LayoutParams)localLayoutParams).leftMargin = AIOUtils.a(12.0F, paramCommonAdBar.getResources());
-      ((RelativeLayout.LayoutParams)localLayoutParams).rightMargin = AIOUtils.a(12.0F, paramCommonAdBar.getResources());
-      paramAdData = localGradientDrawable;
-    }
-    for (;;)
-    {
-      paramCommonAdBar.setLayoutParams(localLayoutParams);
       if (paramAdData == null) {
-        break;
+        return;
       }
-      paramCommonAdBar.setBackgroundDrawable(paramAdData);
-      return;
-      if (((paramAdData instanceof ProteusInnerData)) && (((ProteusInnerData)paramAdData).f()))
+      Object localObject2 = null;
+      paramCommonAdBar.a();
+      ViewGroup.LayoutParams localLayoutParams = paramCommonAdBar.getLayoutParams();
+      boolean bool = paramAdData instanceof ProteusInnerData;
+      Object localObject1;
+      if ((bool) && (((ProteusInnerData)paramAdData).f()))
       {
-        localLayoutParams.height = AIOUtils.a(46.0F, paramCommonAdBar.getResources());
-        localGradientDrawable = a(paramCommonAdBar.getContext(), "#f7f7f7", 3.0F, 0.0F, "");
-        paramAdData = localGradientDrawable;
+        localLayoutParams.height = AIOUtils.b(64.0F, paramCommonAdBar.getResources());
+        paramAdData = a(paramCommonAdBar.getContext(), "#ffffff", 2.0F, 0.0F, "");
+        localObject1 = paramAdData;
         if ((localLayoutParams instanceof RelativeLayout.LayoutParams))
         {
-          ((RelativeLayout.LayoutParams)localLayoutParams).leftMargin = AIOUtils.a(7.0F, paramCommonAdBar.getResources());
-          ((RelativeLayout.LayoutParams)localLayoutParams).rightMargin = AIOUtils.a(7.0F, paramCommonAdBar.getResources());
-          paramAdData = localGradientDrawable;
+          localObject1 = (RelativeLayout.LayoutParams)localLayoutParams;
+          ((RelativeLayout.LayoutParams)localObject1).leftMargin = AIOUtils.b(12.0F, paramCommonAdBar.getResources());
+          ((RelativeLayout.LayoutParams)localObject1).rightMargin = AIOUtils.b(12.0F, paramCommonAdBar.getResources());
+          localObject1 = paramAdData;
         }
       }
       else
       {
-        label208:
-        paramAdData = null;
+        localObject1 = localObject2;
+        if (bool)
+        {
+          localObject1 = localObject2;
+          if (((ProteusInnerData)paramAdData).e())
+          {
+            localLayoutParams.height = AIOUtils.b(46.0F, paramCommonAdBar.getResources());
+            paramAdData = a(paramCommonAdBar.getContext(), "#f7f7f7", 3.0F, 0.0F, "");
+            localObject1 = paramAdData;
+            if ((localLayoutParams instanceof RelativeLayout.LayoutParams))
+            {
+              localObject1 = (RelativeLayout.LayoutParams)localLayoutParams;
+              ((RelativeLayout.LayoutParams)localObject1).leftMargin = AIOUtils.b(7.0F, paramCommonAdBar.getResources());
+              ((RelativeLayout.LayoutParams)localObject1).rightMargin = AIOUtils.b(7.0F, paramCommonAdBar.getResources());
+              localObject1 = paramAdData;
+            }
+          }
+        }
+      }
+      paramCommonAdBar.setLayoutParams(localLayoutParams);
+      if (localObject1 != null) {
+        paramCommonAdBar.setBackgroundDrawable((Drawable)localObject1);
       }
     }
   }
@@ -146,7 +145,7 @@ public class CommonAdFloatingBarUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.CommonAdFloatingBarUtils
  * JD-Core Version:    0.7.0.1
  */

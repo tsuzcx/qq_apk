@@ -11,7 +11,6 @@ import com.tencent.biz.qqstory.model.SuperManager;
 import com.tencent.biz.qqstory.notification.StoryMsgNotification;
 import com.tencent.biz.qqstory.playvideo.player.VideoViewFactory;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.FileUtils;
 import com.tencent.biz.qqstory.utils.pngquant.PngQuantUtils;
 import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -31,7 +30,6 @@ class QQStoryMainController$5
   
   protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    FileUtils.a(this.a.jdField_a_of_type_AndroidAppActivity);
     ((PreloadDownloaderManager)SuperManager.a(6)).c();
     VideoViewFactory.a(this.a.jdField_a_of_type_AndroidAppActivity).a(this.a.jdField_a_of_type_AndroidAppActivity);
     PngQuantUtils.a(QQStoryContext.a());
@@ -44,7 +42,8 @@ class QQStoryMainController$5
     ShortVideoUtils.loadShortVideoSo(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     SLog.b("QQStoryMainController", "queueIdle loadShortVideoSo end");
     SLog.b("QQStoryMainController", "queueIdle startDownloadFilterSo start");
-    this.a.b = PtvFilterSoLoad.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext());
+    paramJobContext = this.a;
+    paramJobContext.b = PtvFilterSoLoad.a(paramJobContext.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext());
     SLog.b("QQStoryMainController", "queueIdle startDownloadFilterSo end");
     SLog.b("QQStoryMainController", "queueIdle preloadFrameDrawable start");
     QQStoryLoadingView.a(this.a.jdField_a_of_type_AndroidAppActivity);
@@ -54,7 +53,7 @@ class QQStoryMainController$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.QQStoryMainController.5
  * JD-Core Version:    0.7.0.1
  */

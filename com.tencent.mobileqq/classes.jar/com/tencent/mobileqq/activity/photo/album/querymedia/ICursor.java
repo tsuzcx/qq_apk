@@ -32,37 +32,40 @@ public abstract class ICursor
   
   static
   {
-    int j = -1;
+    int j = 6;
     BASE_COLUMS = new String[] { "_id", "_data", "mime_type", "date_added", "date_modified", "_size" };
     WIDTH_HEIGHT_COLUMS = new String[] { "width", "height" };
-    if (Build.VERSION.SDK_INT >= 16)
-    {
+    if (Build.VERSION.SDK_INT >= 16) {
       i = BASE_COLUMS.length + WIDTH_HEIGHT_COLUMS.length;
-      SUB_START_INDEX = i;
-      if (Build.VERSION.SDK_INT < 16) {
-        break label120;
-      }
-    }
-    label120:
-    for (int i = 6;; i = -1)
-    {
-      INDEX_WIDTH = i;
-      i = j;
-      if (Build.VERSION.SDK_INT >= 16) {
-        i = 7;
-      }
-      INDEX_HEIGHT = i;
-      return;
+    } else {
       i = BASE_COLUMS.length;
-      break;
     }
+    SUB_START_INDEX = i;
+    int i = Build.VERSION.SDK_INT;
+    int k = -1;
+    if (i >= 16) {
+      i = j;
+    } else {
+      i = -1;
+    }
+    INDEX_WIDTH = i;
+    i = k;
+    if (Build.VERSION.SDK_INT >= 16) {
+      i = 7;
+    }
+    INDEX_HEIGHT = i;
   }
   
   ICursor(Context paramContext, String paramString)
   {
     this.mAlbumId = paramString;
-    if ((paramString != null) && (!paramString.equals("")) && (!paramString.equals("$RecentAlbumId")) && (!paramString.equals("$VideoAlbumId"))) {
-      this.mSelector = ("bucket_id='" + paramString + "'");
+    if ((paramString != null) && (!paramString.equals("")) && (!paramString.equals("$RecentAlbumId")) && (!paramString.equals("$VideoAlbumId")))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("bucket_id='");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("'");
+      this.mSelector = localStringBuilder.toString();
     }
     init();
     try
@@ -72,8 +75,12 @@ public abstract class ICursor
     }
     catch (Exception paramContext)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("MediaQuery", 2, "createCursor error:" + paramContext.getMessage());
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("createCursor error:");
+        paramString.append(paramContext.getMessage());
+        QLog.i("QQAlbum", 2, paramString.toString());
       }
       this.mCursor = null;
     }
@@ -81,7 +88,8 @@ public abstract class ICursor
   
   void close()
   {
-    if ((this.mCursor != null) && (!this.mCursor.isClosed())) {
+    Cursor localCursor = this.mCursor;
+    if ((localCursor != null) && (!localCursor.isClosed())) {
       this.mCursor.close();
     }
   }
@@ -90,7 +98,8 @@ public abstract class ICursor
   
   int getCount()
   {
-    if ((this.mCursor != null) && (!this.mCursor.isClosed())) {
+    Cursor localCursor = this.mCursor;
+    if ((localCursor != null) && (!localCursor.isClosed())) {
       return this.mCursor.getCount();
     }
     return 0;
@@ -108,7 +117,8 @@ public abstract class ICursor
   protected LocalMediaInfo makeMediaInfo()
   {
     LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    if ((this.mCursor != null) && (!this.mCursor.isClosed()))
+    Cursor localCursor = this.mCursor;
+    if ((localCursor != null) && (!localCursor.isClosed()))
     {
       localLocalMediaInfo._id = this.mCursor.getLong(0);
       localLocalMediaInfo.path = this.mCursor.getString(1);
@@ -127,7 +137,8 @@ public abstract class ICursor
   
   boolean moveToPosition(int paramInt)
   {
-    if ((this.mCursor != null) && (!this.mCursor.isClosed())) {
+    Cursor localCursor = this.mCursor;
+    if ((localCursor != null) && (!localCursor.isClosed())) {
       return this.mCursor.moveToPosition(paramInt);
     }
     return false;
@@ -135,46 +146,39 @@ public abstract class ICursor
   
   public boolean needMedia(LocalMediaInfo paramLocalMediaInfo)
   {
-    boolean bool1;
     if (paramLocalMediaInfo == null) {
-      bool1 = false;
+      return false;
     }
-    do
+    boolean bool2 = needMediaInfo(paramLocalMediaInfo);
+    boolean bool1 = bool2;
+    if (bool2)
     {
-      boolean bool2;
-      do
-      {
-        return bool1;
-        bool2 = needMediaInfo(paramLocalMediaInfo);
-        bool1 = bool2;
-      } while (!bool2);
+      ICursor.FilterListener localFilterListener = this.mListener;
       bool1 = bool2;
-    } while (this.mListener == null);
-    return this.mListener.needMediaInfo(paramLocalMediaInfo);
+      if (localFilterListener != null) {
+        bool1 = localFilterListener.needMediaInfo(paramLocalMediaInfo);
+      }
+    }
+    return bool1;
   }
   
   protected boolean needMediaInfo(LocalMediaInfo paramLocalMediaInfo)
   {
     paramLocalMediaInfo = paramLocalMediaInfo.path;
-    if ((TextUtils.isEmpty(paramLocalMediaInfo)) || (!new File(paramLocalMediaInfo).exists()))
+    if ((!TextUtils.isEmpty(paramLocalMediaInfo)) && (new File(paramLocalMediaInfo).exists())) {
+      return true;
+    }
+    if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder;
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append("file not exists:");
-        if (paramLocalMediaInfo == null) {
-          break label65;
-        }
-      }
-      for (;;)
-      {
-        QLog.i("MediaQuery", 2, paramLocalMediaInfo);
-        return false;
-        label65:
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("file not exists:");
+      if (paramLocalMediaInfo == null) {
         paramLocalMediaInfo = "null";
       }
+      localStringBuilder.append(paramLocalMediaInfo);
+      QLog.i("QQAlbum", 2, localStringBuilder.toString());
     }
-    return true;
+    return false;
   }
   
   public void setListener(ICursor.FilterListener paramFilterListener)
@@ -184,7 +188,7 @@ public abstract class ICursor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.querymedia.ICursor
  * JD-Core Version:    0.7.0.1
  */

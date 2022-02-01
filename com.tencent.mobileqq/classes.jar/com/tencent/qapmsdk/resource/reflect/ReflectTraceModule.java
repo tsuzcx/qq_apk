@@ -35,10 +35,11 @@ public class ReflectTraceModule
         }
         this.hasReflectEnd = true;
       }
-      if (this.hasReflectEnd) {
+      if (this.hasReflectEnd)
+      {
         this.end.invoke(this.getInstance.invoke(null, new Object[0]), new Object[0]);
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -64,10 +65,11 @@ public class ReflectTraceModule
         }
         this.hasReflectPop = true;
       }
-      if (this.hasReflectPop) {
+      if (this.hasReflectPop)
+      {
         this.pop.invoke(this.getInstance.invoke(null, new Object[0]), new Object[] { Boolean.valueOf(true) });
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -93,10 +95,11 @@ public class ReflectTraceModule
         }
         this.hasReflectPush = true;
       }
-      if (this.hasReflectPush) {
+      if (this.hasReflectPush)
+      {
         this.push.invoke(this.getInstance.invoke(null, new Object[0]), new Object[] { paramString1, paramString2, Long.valueOf(paramLong) });
+        return;
       }
-      return;
     }
     catch (Exception paramString1)
     {
@@ -106,7 +109,7 @@ public class ReflectTraceModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.resource.reflect.ReflectTraceModule
  * JD-Core Version:    0.7.0.1
  */

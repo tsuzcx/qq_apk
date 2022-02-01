@@ -20,21 +20,28 @@ public final class LongArray
   
   public void add(long paramLong)
   {
-    if (this.size == this.values.length) {
-      this.values = Arrays.copyOf(this.values, this.size * 2);
-    }
-    long[] arrayOfLong = this.values;
     int i = this.size;
+    long[] arrayOfLong = this.values;
+    if (i == arrayOfLong.length) {
+      this.values = Arrays.copyOf(arrayOfLong, i * 2);
+    }
+    arrayOfLong = this.values;
+    i = this.size;
     this.size = (i + 1);
     arrayOfLong[i] = paramLong;
   }
   
   public long get(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.size)) {
-      throw new IndexOutOfBoundsException("Invalid index " + paramInt + ", size is " + this.size);
+    if ((paramInt >= 0) && (paramInt < this.size)) {
+      return this.values[paramInt];
     }
-    return this.values[paramInt];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Invalid index ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", size is ");
+    localStringBuilder.append(this.size);
+    throw new IndexOutOfBoundsException(localStringBuilder.toString());
   }
   
   public int size()
@@ -49,7 +56,7 @@ public final class LongArray
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.util.LongArray
  * JD-Core Version:    0.7.0.1
  */

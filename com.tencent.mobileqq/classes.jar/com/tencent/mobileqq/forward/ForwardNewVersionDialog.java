@@ -25,14 +25,16 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.devicelib.DeviceLib;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.IEmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.api.IEmoticonMainPanelService;
+import com.tencent.mobileqq.emoticonview.api.IEmoticonMainPanelService.PanelBuilder;
 import com.tencent.mobileqq.text.QQTextBuilder;
 import com.tencent.mobileqq.utils.QQCustomDialogWtihForwardAvatar;
 import com.tencent.mobileqq.utils.SoftKeyboardHeight;
@@ -42,6 +44,7 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.util.InputMethodUtil;
 import com.tencent.widget.MaxHeightRelativelayout;
 import java.lang.ref.SoftReference;
+import mqq.app.AppRuntime;
 
 public class ForwardNewVersionDialog
   extends QQCustomDialogWtihForwardAvatar
@@ -57,7 +60,7 @@ public class ForwardNewVersionDialog
   private ImageView jdField_a_of_type_AndroidWidgetImageView = null;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   protected ScrollView a;
-  private EmoticonMainPanel jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel = null;
+  private IEmoticonMainPanel jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel = null;
   private ForwardNewVersionDialog.ForwardWriteTogetherListener jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog$ForwardWriteTogetherListener;
   SoftKeyboardHeight.OnGetSoftHeightListener jdField_a_of_type_ComTencentMobileqqUtilsSoftKeyboardHeight$OnGetSoftHeightListener = new ForwardNewVersionDialog.1(this);
   private SoftKeyboardHeight jdField_a_of_type_ComTencentMobileqqUtilsSoftKeyboardHeight;
@@ -69,7 +72,7 @@ public class ForwardNewVersionDialog
   
   public ForwardNewVersionDialog(@NonNull Context paramContext)
   {
-    super(paramContext, 2131755842);
+    super(paramContext, 2131756189);
     WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
     if (localLayoutParams != null) {
       localLayoutParams.gravity = 17;
@@ -79,9 +82,10 @@ public class ForwardNewVersionDialog
     getWindow().setSoftInputMode(19);
     this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams(-1, SoftKeyboardHeight.a(0), 2, 32, -1);
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.gravity = 81;
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.windowAnimations = 2131755188;
-    setContentView(2131559079);
+    paramContext = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+    paramContext.gravity = 81;
+    paramContext.windowAnimations = 2131755352;
+    setContentView(2131558973);
   }
   
   private int a(View paramView)
@@ -93,23 +97,21 @@ public class ForwardNewVersionDialog
   
   private void a(Context paramContext)
   {
-    Object localObject = new ForwardNewVersionDialog.6(this);
-    paramContext = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramContext instanceof QQAppInterface))
+    paramContext = new ForwardNewVersionDialog.6(this);
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    boolean bool2 = localAppRuntime instanceof QQAppInterface;
+    boolean bool1 = true;
+    if (bool2)
     {
-      int i = getContext().getResources().getDimensionPixelSize(2131299166);
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel = ((EmoticonMainPanel)View.inflate(getContext(), 2131559200, null));
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.setCallBack((EmoticonCallback)localObject);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel;
-      if (this.jdField_a_of_type_Int == 7) {}
-      for (boolean bool = true;; bool = false)
-      {
-        ((EmoticonMainPanel)localObject).onlySysAndEmoji = bool;
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.init((QQAppInterface)paramContext, 100003, getContext(), i, null, null, false);
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.hideAllTabs();
-        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = this.jdField_b_of_type_Int;
-        return;
+      int i = getContext().getResources().getDimensionPixelSize(2131299168);
+      paramContext = ((IEmoticonMainPanelService)((QQAppInterface)localAppRuntime).getRuntimeService(IEmoticonMainPanelService.class)).newBuilder(getContext(), 100003).setCallBack(paramContext);
+      if (this.jdField_a_of_type_Int != 7) {
+        bool1 = false;
       }
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel = paramContext.setOnlySysAndEmoji(bool1).setToastOffset(i).create();
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel.hideAllTabs();
+      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = this.jdField_b_of_type_Int;
+      return;
     }
     QLog.e("Forward.NewVersion.Dialog", 1, "get QQAppInterface fail");
   }
@@ -139,7 +141,11 @@ public class ForwardNewVersionDialog
     }
     this.lBtn.setText(paramString);
     this.lBtn.setVisibility(0);
-    this.lBtn.setContentDescription(paramString + getContext().getString(2131691194));
+    TextView localTextView = this.lBtn;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(getContext().getString(2131691115));
+    localTextView.setContentDescription(localStringBuilder.toString());
     this.lBtn.setOnClickListener(new ForwardNewVersionDialog.9(this, paramOnClickListener));
     return this;
   }
@@ -147,15 +153,15 @@ public class ForwardNewVersionDialog
   public void a()
   {
     Object localObject = this.jdField_a_of_type_AndroidWidgetImageView.getTag();
-    if ((localObject != null) && ((localObject instanceof Integer)) && (((Integer)localObject).intValue() == 2130840283))
+    if ((localObject != null) && ((localObject instanceof Integer)) && (((Integer)localObject).intValue() == 2130840142))
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840282);
-      this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130840282));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840141);
+      this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130840141));
       b();
       if (this.jdField_a_of_type_Boolean)
       {
         this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
+        this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel.getView());
       }
     }
   }
@@ -208,7 +214,11 @@ public class ForwardNewVersionDialog
       return this;
     }
     this.rBtn.setText(paramString);
-    this.rBtn.setContentDescription(paramString + getContext().getString(2131691194));
+    TextView localTextView = this.rBtn;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(getContext().getString(2131691115));
+    localTextView.setContentDescription(localStringBuilder.toString());
     this.rBtn.setVisibility(0);
     this.rBtn.setOnClickListener(new ForwardNewVersionDialog.10(this, paramOnClickListener));
     return this;
@@ -216,16 +226,17 @@ public class ForwardNewVersionDialog
   
   public void b(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidWidgetEditText != null)
+    EditText localEditText = this.jdField_a_of_type_AndroidWidgetEditText;
+    if (localEditText != null)
     {
-      this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(paramInt) });
+      localEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(paramInt) });
       this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new ForwardNewVersionDialog.5(this, paramInt));
     }
   }
   
   public void c(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetMaxHeightRelativelayout.setMaxHeight(AIOUtils.a(paramInt, getContext().getResources()));
+    this.jdField_a_of_type_ComTencentWidgetMaxHeightRelativelayout.setMaxHeight(AIOUtils.b(paramInt, getContext().getResources()));
   }
   
   public EditText getEditText()
@@ -248,65 +259,67 @@ public class ForwardNewVersionDialog
   public void onClick(View paramView)
   {
     Object localObject;
-    if (paramView.getId() == 2131366225) {
-      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel != null)
-      {
-        if (!this.jdField_a_of_type_Boolean) {
-          break label117;
-        }
-        b();
-        this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840282);
-        this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130840282));
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ForwardNewVersionDialog.7(this), 200L);
-        localObject = getWindow().getAttributes();
-        ((WindowManager.LayoutParams)localObject).y = 0;
-        getWindow().setAttributes((WindowManager.LayoutParams)localObject);
-      }
-    }
-    for (;;)
+    if (paramView.getId() == 2131366114)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label117:
-      localObject = this.jdField_a_of_type_AndroidWidgetImageView.getTag();
-      if ((localObject != null) && ((localObject instanceof Integer)) && (((Integer)localObject).intValue() == 2130840283))
-      {
-        InputMethodUtil.a(this.jdField_a_of_type_AndroidWidgetEditText);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840282);
-        this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130840282));
-        this.jdField_a_of_type_Boolean = false;
-      }
-      else
-      {
-        InputMethodUtil.b(this.jdField_a_of_type_AndroidWidgetEditText);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840283);
-        this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130840283));
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.setMinimumHeight(SoftKeyboardHeight.a(0));
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ForwardNewVersionDialog.8(this), 200L);
-        continue;
+      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel != null) {
         if (this.jdField_a_of_type_Boolean)
         {
           b();
-          this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
+          this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel.getView());
           this.jdField_a_of_type_Boolean = false;
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840141);
+          this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130840141));
+          this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ForwardNewVersionDialog.7(this), 200L);
           localObject = getWindow().getAttributes();
           ((WindowManager.LayoutParams)localObject).y = 0;
           getWindow().setAttributes((WindowManager.LayoutParams)localObject);
         }
-        InputMethodUtil.b(this.jdField_a_of_type_AndroidWidgetEditText);
+        else
+        {
+          localObject = this.jdField_a_of_type_AndroidWidgetImageView.getTag();
+          if ((localObject != null) && ((localObject instanceof Integer)) && (((Integer)localObject).intValue() == 2130840142))
+          {
+            InputMethodUtil.a(this.jdField_a_of_type_AndroidWidgetEditText);
+            this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840141);
+            this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130840141));
+            this.jdField_a_of_type_Boolean = false;
+          }
+          else
+          {
+            InputMethodUtil.b(this.jdField_a_of_type_AndroidWidgetEditText);
+            this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840142);
+            this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130840142));
+            this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel.getView().setMinimumHeight(SoftKeyboardHeight.a(0));
+            this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ForwardNewVersionDialog.8(this), 200L);
+          }
+        }
       }
     }
+    else
+    {
+      if (this.jdField_a_of_type_Boolean)
+      {
+        b();
+        this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel.getView());
+        this.jdField_a_of_type_Boolean = false;
+        localObject = getWindow().getAttributes();
+        ((WindowManager.LayoutParams)localObject).y = 0;
+        getWindow().setAttributes((WindowManager.LayoutParams)localObject);
+      }
+      InputMethodUtil.b(this.jdField_a_of_type_AndroidWidgetEditText);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel != null) {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.onDestory();
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.onDestory();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsSoftKeyboardHeight != null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsSoftKeyboardHeight.a();
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqUtilsSoftKeyboardHeight;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.a();
     }
   }
   
@@ -317,7 +330,7 @@ public class ForwardNewVersionDialog
     }
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
+      this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel.getView());
       this.jdField_a_of_type_Boolean = false;
       WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
       localLayoutParams.y = 0;
@@ -333,17 +346,17 @@ public class ForwardNewVersionDialog
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.jdField_a_of_type_ComTencentWidgetMaxHeightRelativelayout = ((MaxHeightRelativelayout)findViewById(2131377207));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380828));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131369141));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366225));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369153));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131365803);
+    this.jdField_a_of_type_ComTencentWidgetMaxHeightRelativelayout = ((MaxHeightRelativelayout)findViewById(2131376667));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380091));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131368874));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366114));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131368885));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131365640);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetEditText.setEditableFactory(QQTextBuilder.getCustomSizeEditableFactory(16));
     this.jdField_a_of_type_AndroidWidgetEditText.setSingleLine(false);
     this.jdField_a_of_type_AndroidWidgetEditText.setMaxLines(2);
-    b(this.jdField_a_of_type_AndroidContentResResources.getInteger(2131427338));
+    b(this.jdField_a_of_type_AndroidContentResResources.getInteger(2131427342));
     this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new ForwardNewVersionDialog.2(this));
     Object localObject = (Context)this.jdField_a_of_type_JavaLangRefSoftReference.get();
     if (localObject == null) {
@@ -355,8 +368,8 @@ public class ForwardNewVersionDialog
     this.jdField_b_of_type_Int = SoftKeyboardHeight.a(this.jdField_b_of_type_Int);
     setOnDismissListener(this);
     a((Context)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.setDispatchKeyEventListener(new ForwardNewVersionDialog.3(this));
-    localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131377552);
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel.setDispatchKeyEventListener(new ForwardNewVersionDialog.3(this));
+    localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131376994);
     if ((localObject instanceof ScrollView)) {
       this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)localObject);
     }
@@ -365,7 +378,7 @@ public class ForwardNewVersionDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardNewVersionDialog
  * JD-Core Version:    0.7.0.1
  */

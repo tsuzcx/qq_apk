@@ -14,7 +14,7 @@ public class TroopAtAllMsg
 {
   public TroopAtAllMsg(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131697229);
+    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131697248);
     this.b = this.jdField_a_of_type_JavaLangString;
   }
   
@@ -24,22 +24,28 @@ public class TroopAtAllMsg
     {
       paramObject = (TroopAtAllMsg)paramObject;
       paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
+      paramMessageInfo = paramObject;
     }
-    for (paramMessageInfo = paramObject;; paramMessageInfo = paramObject)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(MessageInfo.class.getSimpleName() + ".troop.special_msg.at_all_msg", 2, "updateMsgInfo");
-      }
-      return paramMessageInfo;
       paramObject = new TroopAtAllMsg(BaseApplication.getContext());
       paramObject.a(paramMessageRecord.senderuin);
       paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo = new MessageNavInfo(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
+      paramMessageInfo = paramObject;
     }
+    if (QLog.isColorLevel())
+    {
+      paramObject = new StringBuilder();
+      paramObject.append(MessageInfo.class.getSimpleName());
+      paramObject.append(".troop.special_msg.at_all_msg");
+      QLog.d(paramObject.toString(), 2, "updateMsgInfo");
+    }
+    return paramMessageInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msg.TroopAtAllMsg
  * JD-Core Version:    0.7.0.1
  */

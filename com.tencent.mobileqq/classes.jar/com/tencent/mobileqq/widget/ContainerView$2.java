@@ -11,30 +11,33 @@ class ContainerView$2
   
   public void onScrollStateChanged(ScrollView paramScrollView, int paramInt, boolean paramBoolean)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    }
-    do
-    {
-      do
+      if (paramInt != 1)
       {
-        return;
-      } while ((paramBoolean) && (!ContainerView.b(this.a)));
+        if (paramInt != 2) {
+          return;
+        }
+        ContainerView.b(this.a, true);
+      }
+      paramScrollView = AIOSelectableDelegateImpl.a();
+      if ((paramScrollView.c()) && (paramScrollView.a())) {
+        paramScrollView.b();
+      }
+    }
+    else if ((!paramBoolean) || (ContainerView.b(this.a)))
+    {
       paramScrollView = AIOSelectableDelegateImpl.a();
       if ((paramScrollView.c()) && (!paramScrollView.a())) {
         paramScrollView.a();
       }
       ContainerView.b(this.a, false);
-      return;
-      ContainerView.b(this.a, true);
-      paramScrollView = AIOSelectableDelegateImpl.a();
-    } while ((!paramScrollView.c()) || (!paramScrollView.a()));
-    paramScrollView.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ContainerView.2
  * JD-Core Version:    0.7.0.1
  */

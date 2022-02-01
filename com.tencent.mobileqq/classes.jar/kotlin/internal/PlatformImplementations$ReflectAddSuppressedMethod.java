@@ -21,9 +21,7 @@ final class PlatformImplementations$ReflectAddSuppressedMethod
     Intrinsics.checkExpressionValueIsNotNull(arrayOfMethod, "throwableClass.methods");
     int k = arrayOfMethod.length;
     int i = 0;
-    Method localMethod;
-    int j;
-    if (i < k)
+    while (i < k)
     {
       localMethod = arrayOfMethod[i];
       Intrinsics.checkExpressionValueIsNotNull(localMethod, "it");
@@ -34,29 +32,24 @@ final class PlatformImplementations$ReflectAddSuppressedMethod
         if (Intrinsics.areEqual((Class)ArraysKt.singleOrNull(arrayOfClass), Throwable.class))
         {
           j = 1;
-          label89:
-          if (j == 0) {
-            break label103;
-          }
+          break label94;
         }
       }
-    }
-    for (;;)
-    {
-      method = localMethod;
-      return;
-      j = 0;
-      break label89;
-      label103:
+      int j = 0;
+      label94:
+      if (j != 0) {
+        break label110;
+      }
       i += 1;
-      break;
-      localMethod = null;
     }
+    Method localMethod = null;
+    label110:
+    method = localMethod;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.internal.PlatformImplementations.ReflectAddSuppressedMethod
  * JD-Core Version:    0.7.0.1
  */

@@ -13,8 +13,9 @@ import com.tencent.av.business.handler.MessageHandler;
 import com.tencent.av.business.manager.report.VideoNodeManager;
 import com.tencent.av.business.manager.report.VideoNodeReporter;
 import com.tencent.av.chatroom.ChatRoomMng;
+import com.tencent.av.gaudio.Memberinfo;
 import com.tencent.av.report.AVReport;
-import com.tencent.av.report.VideoConnRateReport;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.av.utils.CharacterUtil;
 import com.tencent.av.utils.PstnUtils;
 import com.tencent.av.utils.QAVNotificationUtil;
@@ -37,7 +38,6 @@ import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.utils.AudioUtil;
 import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
@@ -94,42 +94,56 @@ public class VideoServlet
   
   private long a(String paramString)
   {
-    if ((paramString == null) || (paramString.length() <= 0)) {}
-    for (;;)
-    {
-      return 0L;
-      try
-      {
-        long l = CharacterUtil.a(paramString);
-        if (l >= 10000L) {
-          return l;
-        }
+    long l = 0L;
+    if (paramString != null) {
+      if (paramString.length() <= 0) {
+        return 0L;
       }
-      catch (NumberFormatException paramString) {}
     }
+    try
+    {
+      l = CharacterUtil.a(paramString);
+      if (l < 10000L) {
+        return 0L;
+      }
+      return l;
+    }
+    catch (NumberFormatException paramString) {}
     return 0L;
   }
   
   private void a(MultiVideoMsg paramMultiVideoMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoServlet", 2, "sendMultiVideoAck, seq: " + paramMultiVideoMsg.msg_seq + ", videoMsg.type:" + paramMultiVideoMsg.type + ", videoMsg.from_uin:" + paramMultiVideoMsg.from_uin + ", videoMsg.to_uin.get(0):" + paramMultiVideoMsg.to_uin.get(0) + ", +videoMsg.to_uin.size():" + paramMultiVideoMsg.to_uin.size());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("sendMultiVideoAck, seq: ");
+      ((StringBuilder)localObject).append(paramMultiVideoMsg.msg_seq);
+      ((StringBuilder)localObject).append(", videoMsg.type:");
+      ((StringBuilder)localObject).append(paramMultiVideoMsg.type);
+      ((StringBuilder)localObject).append(", videoMsg.from_uin:");
+      ((StringBuilder)localObject).append(paramMultiVideoMsg.from_uin);
+      ((StringBuilder)localObject).append(", videoMsg.to_uin.get(0):");
+      ((StringBuilder)localObject).append(paramMultiVideoMsg.to_uin.get(0));
+      ((StringBuilder)localObject).append(", +videoMsg.to_uin.size():");
+      ((StringBuilder)localObject).append(paramMultiVideoMsg.to_uin.size());
+      QLog.d("VideoServlet", 2, ((StringBuilder)localObject).toString());
     }
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication(), VideoServlet.class);
-    localNewIntent.putExtra("reqType", 9);
-    localNewIntent.putExtra("ver", paramMultiVideoMsg.ver);
-    localNewIntent.putExtra("type", paramMultiVideoMsg.type);
-    localNewIntent.putExtra("cscmd", paramMultiVideoMsg.csCmd);
-    localNewIntent.putExtra("subcmd", paramMultiVideoMsg.subCmd);
-    localNewIntent.putExtra("from_uin", paramMultiVideoMsg.from_uin);
-    localNewIntent.putExtra("to_uin", (Serializable)paramMultiVideoMsg.to_uin.get(0));
-    localNewIntent.putExtra("video_buff", paramMultiVideoMsg.video_buff);
-    localNewIntent.putExtra("msg_seq", paramMultiVideoMsg.msg_seq);
-    localNewIntent.putExtra("msg_uid", paramMultiVideoMsg.msg_uid);
-    localNewIntent.putExtra("msg_type", paramMultiVideoMsg.msg_type);
-    localNewIntent.putExtra("msg_time", paramMultiVideoMsg.msg_time);
-    localNewIntent.putExtra("erroMsg", "success");
-    service(localNewIntent);
+    Object localObject = new NewIntent(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication(), VideoServlet.class);
+    ((NewIntent)localObject).putExtra("reqType", 9);
+    ((NewIntent)localObject).putExtra("ver", paramMultiVideoMsg.ver);
+    ((NewIntent)localObject).putExtra("type", paramMultiVideoMsg.type);
+    ((NewIntent)localObject).putExtra("cscmd", paramMultiVideoMsg.csCmd);
+    ((NewIntent)localObject).putExtra("subcmd", paramMultiVideoMsg.subCmd);
+    ((NewIntent)localObject).putExtra("from_uin", paramMultiVideoMsg.from_uin);
+    ((NewIntent)localObject).putExtra("to_uin", (Serializable)paramMultiVideoMsg.to_uin.get(0));
+    ((NewIntent)localObject).putExtra("video_buff", paramMultiVideoMsg.video_buff);
+    ((NewIntent)localObject).putExtra("msg_seq", paramMultiVideoMsg.msg_seq);
+    ((NewIntent)localObject).putExtra("msg_uid", paramMultiVideoMsg.msg_uid);
+    ((NewIntent)localObject).putExtra("msg_type", paramMultiVideoMsg.msg_type);
+    ((NewIntent)localObject).putExtra("msg_time", paramMultiVideoMsg.msg_time);
+    ((NewIntent)localObject).putExtra("erroMsg", "success");
+    service((Intent)localObject);
   }
   
   private void a(byte[] paramArrayOfByte)
@@ -141,448 +155,323 @@ public class VideoServlet
       return;
     }
     paramArrayOfByte = VideoPackageUtils.a(paramArrayOfByte);
-    if ((paramArrayOfByte == null) || (!paramArrayOfByte.a()))
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.a()))
     {
-      QLog.w("VideoServlet", 1, "showNotification() return ! videoPacket == null && videoPacket is not isRequestMsg");
+      VideoNodeManager.a(34);
+      QAVNotificationUtil.a("VideoServlet", SessionMgr.a(3, String.valueOf(paramArrayOfByte.c), new int[0]), this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramArrayOfByte);
       return;
     }
-    VideoNodeManager.a(34);
-    QAVNotificationUtil.a("VideoServlet", SessionMgr.a(3, String.valueOf(paramArrayOfByte.c), new int[0]), this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramArrayOfByte);
+    QLog.w("VideoServlet", 1, "showNotification() return ! videoPacket == null && videoPacket is not isRequestMsg");
   }
   
   public static long[] a(byte[] paramArrayOfByte, String paramString1, String paramString2)
   {
     Object localObject1;
-    long l3;
+    int i;
     if (QLog.isColorLevel())
     {
-      localObject1 = new StringBuilder().append("parseVideoMsgSubServiceTypeAndRoomID,").append(paramString2).append(" parseSubType:").append(paramString1).append(", buff.len=");
-      if (paramArrayOfByte == null)
-      {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("parseVideoMsgSubServiceTypeAndRoomID,");
+      ((StringBuilder)localObject1).append(paramString2);
+      ((StringBuilder)localObject1).append(" parseSubType:");
+      ((StringBuilder)localObject1).append(paramString1);
+      ((StringBuilder)localObject1).append(", buff.len=");
+      if (paramArrayOfByte == null) {
         i = 0;
-        QLog.d("VideoServlet", 2, i);
+      } else {
+        i = paramArrayOfByte.length;
+      }
+      ((StringBuilder)localObject1).append(i);
+      QLog.d("VideoServlet", 2, ((StringBuilder)localObject1).toString());
+    }
+    Object localObject4;
+    int k;
+    long l1;
+    label476:
+    Object localObject2;
+    label818:
+    Object localObject3;
+    if ("SharpSvr.c2sack".equalsIgnoreCase(paramString1))
+    {
+      localObject1 = new hd_video.RspBody();
+      if (paramArrayOfByte != null)
+      {
+        try
+        {
+          localObject1 = (hd_video.RspBody)((hd_video.RspBody)localObject1).mergeFrom(paramArrayOfByte);
+          if (((hd_video.RspBody)localObject1).msg_video_head.has())
+          {
+            localObject1 = (hd_video.VideoHead)((hd_video.RspBody)localObject1).msg_video_head.get();
+            j = ((hd_video.VideoHead)localObject1).enum_body_type.get();
+            localObject4 = ((hd_video.VideoHead)localObject1).uint64_uin;
+            try
+            {
+              l2 = ((PBUInt64Field)localObject4).get();
+              if (((hd_video.VideoHead)localObject1).int32_sub_service_type.has()) {
+                i = ((hd_video.VideoHead)localObject1).int32_sub_service_type.get();
+              } else {
+                i = -1;
+              }
+              try
+              {
+                k = ((hd_video.VideoHead)localObject1).uint32_seq.get();
+                l1 = ((hd_video.VideoHead)localObject1).uint64_room_id.get();
+                try
+                {
+                  if (QLog.isColorLevel())
+                  {
+                    localObject1 = new StringBuilder();
+                    ((StringBuilder)localObject1).append(paramString2);
+                    ((StringBuilder)localObject1).append(" bodyType=");
+                    ((StringBuilder)localObject1).append(j);
+                    ((StringBuilder)localObject1).append(", subServiceType=");
+                    ((StringBuilder)localObject1).append(i);
+                    ((StringBuilder)localObject1).append(", uin=");
+                    ((StringBuilder)localObject1).append(l2);
+                    ((StringBuilder)localObject1).append(", seq=");
+                    ((StringBuilder)localObject1).append(k);
+                    ((StringBuilder)localObject1).append(", roomId=");
+                    ((StringBuilder)localObject1).append(l1);
+                    localObject1 = ((StringBuilder)localObject1).toString();
+                    try
+                    {
+                      QLog.d("VideoServlet", 2, (String)localObject1);
+                    }
+                    catch (Exception localException1) {}
+                  }
+                }
+                catch (Exception localException2) {}
+              }
+              catch (Exception localException3)
+              {
+                l1 = -1L;
+              }
+              try
+              {
+                if (!QLog.isColorLevel()) {
+                  break label476;
+                }
+                StringBuilder localStringBuilder1 = new StringBuilder();
+                localStringBuilder1.append(paramString2);
+                localStringBuilder1.append(" head not exist");
+                QLog.e("VideoServlet", 2, localStringBuilder1.toString());
+              }
+              catch (Exception localException5) {}
+            }
+            catch (Exception localException4) {}
+          }
+          l1 = -1L;
+        }
+        catch (Exception localException6) {}
+        i = -1;
+        if (QLog.isColorLevel())
+        {
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append(paramString2);
+          ((StringBuilder)localObject4).append(" invalid format:");
+          ((StringBuilder)localObject4).append(localException6.toString());
+          QLog.e("VideoServlet", 2, ((StringBuilder)localObject4).toString());
+        }
+      }
+      else
+      {
+        i = -1;
+        l1 = -1L;
+      }
+      localObject2 = "VideoServlet";
+    }
+    else if ("SharpSvr.s2c".equalsIgnoreCase(paramString1))
+    {
+      localObject2 = new hd_video.MsgBody();
+      if (paramArrayOfByte != null)
+      {
+        try
+        {
+          localObject2 = (hd_video.MsgBody)((hd_video.MsgBody)localObject2).mergeFrom(paramArrayOfByte);
+          if (((hd_video.MsgBody)localObject2).msg_video_head.has())
+          {
+            localObject2 = (hd_video.VideoHead)((hd_video.MsgBody)localObject2).msg_video_head.get();
+            j = ((hd_video.VideoHead)localObject2).enum_body_type.get();
+            l2 = ((hd_video.VideoHead)localObject2).uint64_uin.get();
+            if (((hd_video.VideoHead)localObject2).int32_sub_service_type.has()) {
+              i = ((hd_video.VideoHead)localObject2).int32_sub_service_type.get();
+            } else {
+              i = -1;
+            }
+            try
+            {
+              k = ((hd_video.VideoHead)localObject2).uint32_seq.get();
+              localObject2 = ((hd_video.VideoHead)localObject2).uint64_room_id;
+              try
+              {
+                l1 = ((PBUInt64Field)localObject2).get();
+                try
+                {
+                  if (QLog.isColorLevel())
+                  {
+                    localObject2 = new StringBuilder();
+                    ((StringBuilder)localObject2).append(paramString2);
+                    ((StringBuilder)localObject2).append(" bodyType=");
+                    ((StringBuilder)localObject2).append(j);
+                    ((StringBuilder)localObject2).append(", subServiceType=");
+                    ((StringBuilder)localObject2).append(i);
+                    ((StringBuilder)localObject2).append(", uin=");
+                    ((StringBuilder)localObject2).append(l2);
+                    ((StringBuilder)localObject2).append(", seq=");
+                    ((StringBuilder)localObject2).append(k);
+                    ((StringBuilder)localObject2).append(", roomId=");
+                    ((StringBuilder)localObject2).append(l1);
+                    localObject2 = ((StringBuilder)localObject2).toString();
+                    try
+                    {
+                      QLog.d("VideoServlet", 2, (String)localObject2);
+                    }
+                    catch (Exception localException7) {}
+                  }
+                }
+                catch (Exception localException8) {}
+              }
+              catch (Exception localException9)
+              {
+                break label818;
+              }
+              try
+              {
+                if (!QLog.isColorLevel()) {
+                  break label890;
+                }
+                StringBuilder localStringBuilder2 = new StringBuilder();
+                localStringBuilder2.append(paramString2);
+                localStringBuilder2.append(" head not exist");
+                QLog.e("VideoServlet", 2, localStringBuilder2.toString());
+              }
+              catch (Exception localException11) {}
+            }
+            catch (Exception localException10) {}
+          }
+          i = -1;
+        }
+        catch (Exception localException12) {}
+        l1 = -1L;
+        localObject4 = "VideoServlet";
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder3 = new StringBuilder();
+          localStringBuilder3.append(paramString2);
+          localStringBuilder3.append(" invalid format:");
+          localStringBuilder3.append(localException12.toString());
+          QLog.e("VideoServlet", 2, localStringBuilder3.toString());
+        }
+        localObject3 = localObject4;
+      }
+      else
+      {
+        label890:
+        l1 = -1L;
+        i = -1;
+        localObject3 = "VideoServlet";
       }
     }
     else
     {
-      j = -1;
-      l3 = -1L;
-      if (!"SharpSvr.c2sack".equalsIgnoreCase(paramString1)) {
-        break label484;
-      }
-      localObject1 = new hd_video.RspBody();
-      if (paramArrayOfByte == null) {
-        break label407;
-      }
-    }
-    for (;;)
-    {
-      int k;
-      try
-      {
-        localObject1 = (hd_video.RspBody)((hd_video.RspBody)localObject1).mergeFrom(paramArrayOfByte);
-        if (((hd_video.RspBody)localObject1).msg_video_head.has())
-        {
-          localObject1 = (hd_video.VideoHead)((hd_video.RspBody)localObject1).msg_video_head.get();
-          j = ((hd_video.VideoHead)localObject1).enum_body_type.get();
-          l2 = ((hd_video.VideoHead)localObject1).uint64_uin.get();
-          if (((hd_video.VideoHead)localObject1).int32_sub_service_type.has()) {
-            i = ((hd_video.VideoHead)localObject1).int32_sub_service_type.get();
-          }
-        }
-      }
-      catch (Exception localException1)
-      {
-        j = -1;
-        l2 = -1L;
-      }
-      try
-      {
-        k = ((hd_video.VideoHead)localObject1).uint32_seq.get();
-        l1 = ((hd_video.VideoHead)localObject1).uint64_room_id.get();
-      }
-      catch (Exception localException3)
-      {
-        for (;;)
-        {
-          Object localObject2;
-          l2 = -1L;
-          j = i;
-        }
-      }
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoServlet", 2, paramString2 + " bodyType=" + j + ", subServiceType=" + i + ", uin=" + l2 + ", seq=" + k + ", roomId=" + l1);
-        }
-        l2 = i;
-        if (QLog.isColorLevel())
-        {
-          paramString1 = new StringBuilder().append("parseVideoMsgSubServiceTypeAndRoomID,").append(paramString2).append(" parseSubType = ").append(paramString1).append(", buff.len = ");
-          if (paramArrayOfByte != null) {
-            break label933;
-          }
-          j = 0;
-          QLog.d("VideoServlet", 2, j + ",subServiceType = " + i + ",roomId = " + l1);
-        }
-        return new long[] { l2, l1 };
-      }
-      catch (Exception localException4)
-      {
-        l2 = l1;
-        j = i;
-        break label427;
-      }
-      i = paramArrayOfByte.length;
-      break;
-      i = -1;
-      continue;
-      if (QLog.isColorLevel()) {
-        QLog.e("VideoServlet", 2, paramString2 + " head not exist");
-      }
-      label407:
-      i = -1;
+      localObject3 = "VideoServlet";
       l1 = -1L;
-      continue;
-      label427:
-      l1 = l2;
-      i = j;
-      if (QLog.isColorLevel())
-      {
-        QLog.e("VideoServlet", 2, paramString2 + " invalid format:" + localException1.toString());
-        l1 = l2;
-        i = j;
-        continue;
-        label484:
-        i = j;
-        l1 = l3;
-        if ("SharpSvr.s2c".equalsIgnoreCase(paramString1))
-        {
-          localObject2 = new hd_video.MsgBody();
-          i = j;
-          l1 = l3;
-          if (paramArrayOfByte != null)
-          {
-            k = j;
-            l2 = l3;
-            for (;;)
-            {
-              try
-              {
-                localObject2 = (hd_video.MsgBody)((hd_video.MsgBody)localObject2).mergeFrom(paramArrayOfByte);
-                k = j;
-                l2 = l3;
-                if (!((hd_video.MsgBody)localObject2).msg_video_head.has()) {
-                  break label868;
-                }
-                k = j;
-                l2 = l3;
-                localObject2 = (hd_video.VideoHead)((hd_video.MsgBody)localObject2).msg_video_head.get();
-                k = j;
-                l2 = l3;
-                int m = ((hd_video.VideoHead)localObject2).enum_body_type.get();
-                k = j;
-                l2 = l3;
-                long l4 = ((hd_video.VideoHead)localObject2).uint64_uin.get();
-                k = j;
-                l2 = l3;
-                if (!((hd_video.VideoHead)localObject2).int32_sub_service_type.has()) {
-                  break label862;
-                }
-                k = j;
-                l2 = l3;
-                j = ((hd_video.VideoHead)localObject2).int32_sub_service_type.get();
-                k = j;
-                l2 = l3;
-                int n = ((hd_video.VideoHead)localObject2).uint32_seq.get();
-                k = j;
-                l2 = l3;
-                l3 = ((hd_video.VideoHead)localObject2).uint64_room_id.get();
-                i = j;
-                l1 = l3;
-                k = j;
-                l2 = l3;
-                if (!QLog.isColorLevel()) {
-                  break;
-                }
-                k = j;
-                l2 = l3;
-                QLog.d("VideoServlet", 2, paramString2 + " bodyType=" + m + ", subServiceType=" + j + ", uin=" + l4 + ", seq=" + n + ", roomId=" + l3);
-                i = j;
-                l1 = l3;
-              }
-              catch (Exception localException2)
-              {
-                i = k;
-                l1 = l2;
-              }
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.e("VideoServlet", 2, paramString2 + " invalid format:" + localException2.toString());
-              i = k;
-              l1 = l2;
-              break;
-              label862:
-              j = -1;
-            }
-            label868:
-            i = j;
-            l1 = l3;
-            k = j;
-            l2 = l3;
-            if (QLog.isColorLevel())
-            {
-              k = j;
-              l2 = l3;
-              QLog.e("VideoServlet", 2, paramString2 + " head not exist");
-              i = j;
-              l1 = l3;
-              continue;
-              label933:
-              j = paramArrayOfByte.length;
-            }
-          }
-        }
-      }
+      i = -1;
     }
+    long l2 = i;
+    int j = 0;
+    if (QLog.isColorLevel())
+    {
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append("parseVideoMsgSubServiceTypeAndRoomID,");
+      ((StringBuilder)localObject4).append(paramString2);
+      ((StringBuilder)localObject4).append(" parseSubType = ");
+      ((StringBuilder)localObject4).append(paramString1);
+      ((StringBuilder)localObject4).append(", buff.len = ");
+      if (paramArrayOfByte != null) {
+        j = paramArrayOfByte.length;
+      }
+      ((StringBuilder)localObject4).append(j);
+      ((StringBuilder)localObject4).append(",subServiceType = ");
+      ((StringBuilder)localObject4).append(i);
+      ((StringBuilder)localObject4).append(",roomId = ");
+      ((StringBuilder)localObject4).append(l1);
+      QLog.d((String)localObject3, 2, ((StringBuilder)localObject4).toString());
+    }
+    return new long[] { l2, l1 };
   }
   
-  /* Error */
   private void b(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    // Byte code:
-    //   0: ldc_w 348
-    //   3: aload_1
-    //   4: invokevirtual 354	android/content/Intent:getExtras	()Landroid/os/Bundle;
-    //   7: invokestatic 359	com/tencent/mobileqq/utils/AudioHelper:a	(Ljava/lang/String;Landroid/os/Bundle;)V
-    //   10: aload_2
-    //   11: invokevirtual 365	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
-    //   14: arraylength
-    //   15: iconst_4
-    //   16: isub
-    //   17: istore_3
-    //   18: iload_3
-    //   19: newarray byte
-    //   21: astore 11
-    //   23: aload 11
-    //   25: iconst_0
-    //   26: aload_2
-    //   27: invokevirtual 365	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
-    //   30: iconst_4
-    //   31: iload_3
-    //   32: invokestatic 371	com/tencent/mobileqq/utils/httputils/PkgTools:copyData	([BI[BII)V
-    //   35: new 373	com/tencent/av/ReqGroupVideo$RspGetInvitedMemberList
-    //   38: dup
-    //   39: invokespecial 374	com/tencent/av/ReqGroupVideo$RspGetInvitedMemberList:<init>	()V
-    //   42: astore 10
-    //   44: aload 10
-    //   46: aload 11
-    //   48: invokevirtual 375	com/tencent/av/ReqGroupVideo$RspGetInvitedMemberList:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   51: pop
-    //   52: aload 10
-    //   54: getfield 379	com/tencent/av/ReqGroupVideo$RspGetInvitedMemberList:result	Lcom/tencent/av/common$ErrorInfo;
-    //   57: invokevirtual 382	com/tencent/av/common$ErrorInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   60: checkcast 381	com/tencent/av/common$ErrorInfo
-    //   63: astore_2
-    //   64: aload_2
-    //   65: invokestatic 387	com/tencent/av/business/handler/MessageHandler:a	(Lcom/tencent/av/common$ErrorInfo;)I
-    //   68: istore 4
-    //   70: aload_2
-    //   71: getfield 391	com/tencent/av/common$ErrorInfo:bytes_errmsg	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   74: invokevirtual 394	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   77: ifeq +356 -> 433
-    //   80: aload_2
-    //   81: getfield 391	com/tencent/av/common$ErrorInfo:bytes_errmsg	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   84: invokevirtual 397	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   87: invokevirtual 402	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   90: astore_2
-    //   91: aload 10
-    //   93: getfield 405	com/tencent/av/ReqGroupVideo$RspGetInvitedMemberList:uint64_group	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   96: invokevirtual 293	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   99: lstore 5
-    //   101: aload 10
-    //   103: getfield 406	com/tencent/av/ReqGroupVideo$RspGetInvitedMemberList:uint64_room_id	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   106: invokevirtual 293	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   109: lstore 7
-    //   111: new 14	java/util/ArrayList
-    //   114: dup
-    //   115: invokespecial 407	java/util/ArrayList:<init>	()V
-    //   118: astore 11
-    //   120: aload 10
-    //   122: getfield 411	com/tencent/av/ReqGroupVideo$RspGetInvitedMemberList:rpt_member_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   125: invokevirtual 414	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
-    //   128: ifeq +74 -> 202
-    //   131: iconst_0
-    //   132: istore_3
-    //   133: iload_3
-    //   134: aload 10
-    //   136: getfield 411	com/tencent/av/ReqGroupVideo$RspGetInvitedMemberList:rpt_member_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   139: invokevirtual 415	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
-    //   142: if_icmpge +60 -> 202
-    //   145: aload 10
-    //   147: getfield 411	com/tencent/av/ReqGroupVideo$RspGetInvitedMemberList:rpt_member_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   150: iload_3
-    //   151: invokevirtual 418	com/tencent/mobileqq/pb/PBRepeatMessageField:get	(I)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   154: checkcast 420	com/tencent/av/ReqGroupVideo$MemberInfo
-    //   157: invokevirtual 421	com/tencent/av/ReqGroupVideo$MemberInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   160: checkcast 420	com/tencent/av/ReqGroupVideo$MemberInfo
-    //   163: astore 12
-    //   165: aload 11
-    //   167: new 423	com/tencent/av/gaudio/Memberinfo
-    //   170: dup
-    //   171: aload 12
-    //   173: getfield 426	com/tencent/av/ReqGroupVideo$MemberInfo:uint64_member_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   176: invokevirtual 293	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   179: aload 12
-    //   181: getfield 429	com/tencent/av/ReqGroupVideo$MemberInfo:uint32_invite_timestamp	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   184: invokevirtual 308	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   187: i2l
-    //   188: invokespecial 432	com/tencent/av/gaudio/Memberinfo:<init>	(JJ)V
-    //   191: invokevirtual 433	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   194: pop
-    //   195: iload_3
-    //   196: iconst_1
-    //   197: iadd
-    //   198: istore_3
-    //   199: goto -66 -> 133
-    //   202: aload_1
-    //   203: ldc_w 435
-    //   206: iconst_1
-    //   207: invokevirtual 439	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
-    //   210: istore 9
-    //   212: aload_0
-    //   213: getfield 121	com/tencent/av/VideoServlet:jdField_a_of_type_ComTencentAvAppVideoAppInterface	Lcom/tencent/av/app/VideoAppInterface;
-    //   216: instanceof 123
-    //   219: ifeq +170 -> 389
-    //   222: aload_0
-    //   223: getfield 121	com/tencent/av/VideoServlet:jdField_a_of_type_ComTencentAvAppVideoAppInterface	Lcom/tencent/av/app/VideoAppInterface;
-    //   226: astore_1
-    //   227: iload 9
-    //   229: ifne +104 -> 333
-    //   232: aload_1
-    //   233: invokevirtual 442	com/tencent/av/app/VideoAppInterface:a	()Lcom/tencent/av/VideoController;
-    //   236: lload 5
-    //   238: lload 7
-    //   240: aload 11
-    //   242: invokevirtual 447	com/tencent/av/VideoController:b	(JJLjava/util/ArrayList;)V
-    //   245: ldc 42
-    //   247: iconst_1
-    //   248: new 65	java/lang/StringBuilder
-    //   251: dup
-    //   252: invokespecial 66	java/lang/StringBuilder:<init>	()V
-    //   255: ldc_w 449
-    //   258: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   261: iload 4
-    //   263: invokevirtual 90	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   266: ldc_w 451
-    //   269: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   272: aload_2
-    //   273: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   276: ldc_w 453
-    //   279: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   282: lload 5
-    //   284: invokevirtual 81	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   287: ldc_w 455
-    //   290: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   293: lload 7
-    //   295: invokevirtual 81	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   298: ldc_w 457
-    //   301: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   304: iload 9
-    //   306: invokevirtual 460	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   309: ldc_w 462
-    //   312: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   315: aload 10
-    //   317: getfield 411	com/tencent/av/ReqGroupVideo$RspGetInvitedMemberList:rpt_member_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   320: invokevirtual 415	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
-    //   323: invokevirtual 90	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   326: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   329: invokestatic 206	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   332: return
-    //   333: aload_0
-    //   334: getfield 121	com/tencent/av/VideoServlet:jdField_a_of_type_ComTencentAvAppVideoAppInterface	Lcom/tencent/av/app/VideoAppInterface;
-    //   337: iconst_4
-    //   338: anewarray 464	java/lang/Object
-    //   341: dup
-    //   342: iconst_0
-    //   343: sipush 709
-    //   346: invokestatic 469	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   349: aastore
-    //   350: dup
-    //   351: iconst_1
-    //   352: lload 5
-    //   354: invokestatic 474	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   357: aastore
-    //   358: dup
-    //   359: iconst_2
-    //   360: lload 7
-    //   362: invokestatic 474	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   365: aastore
-    //   366: dup
-    //   367: iconst_3
-    //   368: aload 11
-    //   370: aastore
-    //   371: invokevirtual 477	com/tencent/av/app/VideoAppInterface:a	([Ljava/lang/Object;)V
-    //   374: goto -129 -> 245
-    //   377: astore_1
-    //   378: ldc 42
-    //   380: iconst_1
-    //   381: ldc_w 479
-    //   384: aload_1
-    //   385: invokestatic 482	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   388: return
-    //   389: aload_0
-    //   390: getfield 121	com/tencent/av/VideoServlet:jdField_a_of_type_ComTencentAvAppVideoAppInterface	Lcom/tencent/av/app/VideoAppInterface;
-    //   393: iconst_4
-    //   394: anewarray 464	java/lang/Object
-    //   397: dup
-    //   398: iconst_0
-    //   399: sipush 708
-    //   402: invokestatic 469	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   405: aastore
-    //   406: dup
-    //   407: iconst_1
-    //   408: lload 5
-    //   410: invokestatic 474	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   413: aastore
-    //   414: dup
-    //   415: iconst_2
-    //   416: lload 7
-    //   418: invokestatic 474	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   421: aastore
-    //   422: dup
-    //   423: iconst_3
-    //   424: aload 11
-    //   426: aastore
-    //   427: invokevirtual 477	com/tencent/av/app/VideoAppInterface:a	([Ljava/lang/Object;)V
-    //   430: goto -185 -> 245
-    //   433: ldc_w 484
-    //   436: astore_2
-    //   437: goto -346 -> 91
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	440	0	this	VideoServlet
-    //   0	440	1	paramIntent	Intent
-    //   0	440	2	paramFromServiceMsg	FromServiceMsg
-    //   17	182	3	i	int
-    //   68	194	4	j	int
-    //   99	310	5	l1	long
-    //   109	308	7	l2	long
-    //   210	95	9	bool	boolean
-    //   42	274	10	localRspGetInvitedMemberList	ReqGroupVideo.RspGetInvitedMemberList
-    //   21	404	11	localObject	Object
-    //   163	17	12	localMemberInfo	ReqGroupVideo.MemberInfo
-    // Exception table:
-    //   from	to	target	type
-    //   35	91	377	java/lang/Exception
-    //   91	131	377	java/lang/Exception
-    //   133	195	377	java/lang/Exception
-    //   202	227	377	java/lang/Exception
-    //   232	245	377	java/lang/Exception
-    //   245	332	377	java/lang/Exception
-    //   333	374	377	java/lang/Exception
-    //   389	430	377	java/lang/Exception
+    AudioHelper.a("onRspGroupVideoInviteMemberMsgMsg", paramIntent.getExtras());
+    int i = paramFromServiceMsg.getWupBuffer().length - 4;
+    Object localObject = new byte[i];
+    PkgTools.copyData((byte[])localObject, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    for (;;)
+    {
+      try
+      {
+        ReqGroupVideo.RspGetInvitedMemberList localRspGetInvitedMemberList = new ReqGroupVideo.RspGetInvitedMemberList();
+        localRspGetInvitedMemberList.mergeFrom((byte[])localObject);
+        paramFromServiceMsg = (common.ErrorInfo)localRspGetInvitedMemberList.result.get();
+        i = MessageHandler.a(paramFromServiceMsg);
+        if (paramFromServiceMsg.bytes_errmsg.has())
+        {
+          paramFromServiceMsg = paramFromServiceMsg.bytes_errmsg.get().toStringUtf8();
+          long l1 = localRspGetInvitedMemberList.uint64_group.get();
+          long l2 = localRspGetInvitedMemberList.uint64_room_id.get();
+          localObject = new ArrayList();
+          int k = i;
+          if (localRspGetInvitedMemberList.rpt_member_list.has())
+          {
+            int j = 0;
+            k = i;
+            if (j < localRspGetInvitedMemberList.rpt_member_list.size())
+            {
+              ReqGroupVideo.MemberInfo localMemberInfo = (ReqGroupVideo.MemberInfo)((ReqGroupVideo.MemberInfo)localRspGetInvitedMemberList.rpt_member_list.get(j)).get();
+              ((ArrayList)localObject).add(new Memberinfo(localMemberInfo.uint64_member_uin.get(), localMemberInfo.uint32_invite_timestamp.get()));
+              j += 1;
+              continue;
+            }
+          }
+          boolean bool = paramIntent.getBooleanExtra("requestInviteMemberMode", true);
+          if ((this.jdField_a_of_type_ComTencentAvAppVideoAppInterface instanceof VideoAppInterface))
+          {
+            paramIntent = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+            if (!bool) {
+              paramIntent.a().b(l1, l2, (ArrayList)localObject);
+            } else {
+              this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(709), Long.valueOf(l1), Long.valueOf(l2), localObject });
+            }
+          }
+          else
+          {
+            this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(708), Long.valueOf(l1), Long.valueOf(l2), localObject });
+          }
+          paramIntent = new StringBuilder();
+          paramIntent.append("onRspGroupVideoInviteMemberMsgMsg, uint32_errcode[");
+          paramIntent.append(k);
+          paramIntent.append("], bytes_errmsg[");
+          paramIntent.append(paramFromServiceMsg);
+          paramIntent.append("]groupID=");
+          paramIntent.append(l1);
+          paramIntent.append(",uint64_roomId=");
+          paramIntent.append(l2);
+          paramIntent.append(",single = ");
+          paramIntent.append(bool);
+          paramIntent.append(",inviteListSize =");
+          paramIntent.append(localRspGetInvitedMemberList.rpt_member_list.size());
+          QLog.w("VideoServlet", 1, paramIntent.toString());
+          return;
+        }
+      }
+      catch (Exception paramIntent)
+      {
+        QLog.w("VideoServlet", 1, "onRspGroupVideoInviteMemberMsgMsg, Exception", paramIntent);
+        return;
+      }
+      paramFromServiceMsg = "";
+    }
   }
   
   private void b(Packet paramPacket, Bundle paramBundle)
@@ -609,24 +498,36 @@ public class VideoServlet
   
   private void c(SharpVideoMsg paramSharpVideoMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoServlet", 2, "sendSharpVideoAck, seq: " + paramSharpVideoMsg.msg_seq + ", videoMsg.type:" + paramSharpVideoMsg.type + ", videoMsg.from_uin:" + paramSharpVideoMsg.from_uin + ", videoMsg.to_uin.get(0):" + paramSharpVideoMsg.to_uin.get(0) + ", +videoMsg.to_uin.size():" + paramSharpVideoMsg.to_uin.size());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("sendSharpVideoAck, seq: ");
+      ((StringBuilder)localObject).append(paramSharpVideoMsg.msg_seq);
+      ((StringBuilder)localObject).append(", videoMsg.type:");
+      ((StringBuilder)localObject).append(paramSharpVideoMsg.type);
+      ((StringBuilder)localObject).append(", videoMsg.from_uin:");
+      ((StringBuilder)localObject).append(paramSharpVideoMsg.from_uin);
+      ((StringBuilder)localObject).append(", videoMsg.to_uin.get(0):");
+      ((StringBuilder)localObject).append(paramSharpVideoMsg.to_uin.get(0));
+      ((StringBuilder)localObject).append(", +videoMsg.to_uin.size():");
+      ((StringBuilder)localObject).append(paramSharpVideoMsg.to_uin.size());
+      QLog.d("VideoServlet", 2, ((StringBuilder)localObject).toString());
     }
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication(), VideoServlet.class);
-    localNewIntent.setWithouLogin(true);
-    localNewIntent.putExtra("reqType", 5);
-    localNewIntent.putExtra("ver", paramSharpVideoMsg.ver);
-    localNewIntent.putExtra("type", paramSharpVideoMsg.type);
-    localNewIntent.putExtra("from_uin", paramSharpVideoMsg.from_uin);
-    localNewIntent.putExtra("to_uin", (Serializable)paramSharpVideoMsg.to_uin.get(0));
-    localNewIntent.putExtra("video_buff", paramSharpVideoMsg.video_buff);
-    localNewIntent.putExtra("msg_seq", paramSharpVideoMsg.msg_seq);
-    localNewIntent.putExtra("msg_uid", paramSharpVideoMsg.msg_uid);
-    localNewIntent.putExtra("msg_type", paramSharpVideoMsg.msg_type);
-    localNewIntent.putExtra("msg_time", paramSharpVideoMsg.msg_time);
-    localNewIntent.putExtra("terminal_type", paramSharpVideoMsg.call_type);
-    localNewIntent.putExtra("erroMsg", "success");
-    service(localNewIntent);
+    Object localObject = new NewIntent(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication(), VideoServlet.class);
+    ((NewIntent)localObject).setWithouLogin(true);
+    ((NewIntent)localObject).putExtra("reqType", 5);
+    ((NewIntent)localObject).putExtra("ver", paramSharpVideoMsg.ver);
+    ((NewIntent)localObject).putExtra("type", paramSharpVideoMsg.type);
+    ((NewIntent)localObject).putExtra("from_uin", paramSharpVideoMsg.from_uin);
+    ((NewIntent)localObject).putExtra("to_uin", (Serializable)paramSharpVideoMsg.to_uin.get(0));
+    ((NewIntent)localObject).putExtra("video_buff", paramSharpVideoMsg.video_buff);
+    ((NewIntent)localObject).putExtra("msg_seq", paramSharpVideoMsg.msg_seq);
+    ((NewIntent)localObject).putExtra("msg_uid", paramSharpVideoMsg.msg_uid);
+    ((NewIntent)localObject).putExtra("msg_type", paramSharpVideoMsg.msg_type);
+    ((NewIntent)localObject).putExtra("msg_time", paramSharpVideoMsg.msg_time);
+    ((NewIntent)localObject).putExtra("terminal_type", paramSharpVideoMsg.call_type);
+    ((NewIntent)localObject).putExtra("erroMsg", "success");
+    service((Intent)localObject);
   }
   
   private void c(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
@@ -635,23 +536,33 @@ public class VideoServlet
     int i = paramFromServiceMsg.getWupBuffer().length - 4;
     paramIntent = new byte[i];
     PkgTools.copyData(paramIntent, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-    try
+    for (;;)
     {
-      paramFromServiceMsg = new ReqGroupVideo.RspGroupVideoTerminate();
-      paramFromServiceMsg.mergeFrom(paramIntent);
-      paramIntent = (common.ErrorInfo)paramFromServiceMsg.result.get();
-      i = MessageHandler.a(paramIntent);
-      if (paramIntent.bytes_errmsg.has()) {}
-      for (paramIntent = paramIntent.bytes_errmsg.get().toStringUtf8();; paramIntent = "")
+      try
       {
-        QLog.w("VideoServlet", 1, "onRspGroupVideoTerminateMsg, errorCode[" + i + "], errorMsg[" + paramIntent + "]");
+        paramFromServiceMsg = new ReqGroupVideo.RspGroupVideoTerminate();
+        paramFromServiceMsg.mergeFrom(paramIntent);
+        paramIntent = (common.ErrorInfo)paramFromServiceMsg.result.get();
+        i = MessageHandler.a(paramIntent);
+        if (paramIntent.bytes_errmsg.has())
+        {
+          paramIntent = paramIntent.bytes_errmsg.get().toStringUtf8();
+          paramFromServiceMsg = new StringBuilder();
+          paramFromServiceMsg.append("onRspGroupVideoTerminateMsg, errorCode[");
+          paramFromServiceMsg.append(i);
+          paramFromServiceMsg.append("], errorMsg[");
+          paramFromServiceMsg.append(paramIntent);
+          paramFromServiceMsg.append("]");
+          QLog.w("VideoServlet", 1, paramFromServiceMsg.toString());
+          return;
+        }
+      }
+      catch (Exception paramIntent)
+      {
+        QLog.w("VideoServlet", 1, "onRspGroupVideoTerminateMsg, Exception", paramIntent);
         return;
       }
-      return;
-    }
-    catch (Exception paramIntent)
-    {
-      QLog.w("VideoServlet", 1, "onRspGroupVideoTerminateMsg, Exception", paramIntent);
+      paramIntent = "";
     }
   }
   
@@ -677,12 +588,11 @@ public class VideoServlet
       paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
       paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
     }
-    for (;;)
+    else
     {
-      ((VideoAppInterface)getAppRuntime()).receiveToService(paramIntent, paramFromServiceMsg);
-      return;
       paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
     }
+    ((VideoAppInterface)getAppRuntime()).receiveToService(paramIntent, paramFromServiceMsg);
   }
   
   private void d(Packet paramPacket, Bundle paramBundle)
@@ -704,48 +614,48 @@ public class VideoServlet
   
   public IVideoServant a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
+    boolean bool = TextUtils.isEmpty(paramString);
+    Object localObject2 = null;
+    if (bool) {
       return null;
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    IVideoServant localIVideoServant;
+    Object localObject1;
     do
     {
+      localObject1 = localObject2;
       if (!localIterator.hasNext()) {
         break;
       }
-      localIVideoServant = (IVideoServant)localIterator.next();
-    } while ((localIVideoServant == null) || (!localIVideoServant.a(paramString)));
-    for (paramString = localIVideoServant;; paramString = null) {
-      return paramString;
-    }
+      localObject1 = (IVideoServant)localIterator.next();
+    } while ((localObject1 == null) || (!((IVideoServant)localObject1).a(paramString)));
+    return localObject1;
   }
   
   void a(int paramInt, Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
     AudioHelper.a("onRspVideoCodecMsg", paramIntent.getExtras());
-    Object localObject2 = null;
     paramInt = paramFromServiceMsg.getWupBuffer().length - 4;
-    Object localObject1 = localObject2;
-    if (paramFromServiceMsg.isSuccess())
+    if ((paramFromServiceMsg.isSuccess()) && (paramInt > 0))
     {
-      localObject1 = localObject2;
-      if (paramInt > 0)
-      {
-        localObject1 = new byte[paramInt];
-        PkgTools.copyData((byte[])localObject1, 0, paramFromServiceMsg.getWupBuffer(), 4, paramInt);
-      }
+      localObject = new byte[paramInt];
+      PkgTools.copyData((byte[])localObject, 0, paramFromServiceMsg.getWupBuffer(), 4, paramInt);
+      paramFromServiceMsg = (FromServiceMsg)localObject;
     }
-    if (localObject1 == null)
+    else
+    {
+      paramFromServiceMsg = null;
+    }
+    if (paramFromServiceMsg == null)
     {
       AudioHelper.a("onRspVideoCodecMsg fail", paramIntent.getExtras());
       return;
     }
-    paramFromServiceMsg = new HardWareCodecSSO.ConfigRsp();
+    Object localObject = new HardWareCodecSSO.ConfigRsp();
     try
     {
-      paramFromServiceMsg.mergeFrom((byte[])localObject1);
-      ThreadManager.getSubThreadHandler().post(new VideoServlet.1(this, paramFromServiceMsg));
+      ((HardWareCodecSSO.ConfigRsp)localObject).mergeFrom(paramFromServiceMsg);
+      ThreadManager.getSubThreadHandler().post(new VideoServlet.1(this, (HardWareCodecSSO.ConfigRsp)localObject));
       return;
     }
     catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
@@ -757,255 +667,278 @@ public class VideoServlet
   
   void a(SharpVideoMsg paramSharpVideoMsg)
   {
-    boolean bool = false;
-    byte[] arrayOfByte = paramSharpVideoMsg.video_buff;
+    Object localObject = paramSharpVideoMsg.video_buff;
     long l1 = paramSharpVideoMsg.from_uin;
     long l2 = ((Long)paramSharpVideoMsg.to_uin.get(0)).longValue();
     Friends localFriends = (Friends)((VideoAppInterface)getAppRuntime()).getEntityManagerFactory(null).createEntityManager().find(Friends.class, String.valueOf(l1));
-    Object localObject;
+    String str;
+    boolean bool;
     if (localFriends != null)
     {
-      localObject = localFriends.getFriendNick();
+      str = localFriends.getFriendNick();
       bool = localFriends.isFriend();
-      Bundle localBundle = new Bundle();
-      localBundle.putString("uin", String.valueOf(l2));
-      localBundle.putString("fromUin", CharacterUtil.a(l1));
-      localBundle.putByteArray("buffer", arrayOfByte);
-      localBundle.putLong("time", paramSharpVideoMsg.msg_time);
-      localBundle.putString("name", (String)localObject);
-      localBundle.putBoolean("isFriend", bool);
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a.receiveSharpVideoMsg(localBundle);
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder().append("handleSharpVideoMessage, friendName[").append((String)localObject).append("], friendRemark[");
-        if (localFriends != null) {
-          break label248;
-        }
-      }
     }
-    label248:
-    for (paramSharpVideoMsg = "";; paramSharpVideoMsg = localFriends.remark)
+    else
     {
-      QLog.w("VideoServlet", 1, paramSharpVideoMsg + "], isFriend[" + bool + "]");
-      return;
-      localObject = CharacterUtil.a(l1);
-      break;
+      str = CharacterUtil.a(l1);
+      bool = false;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("uin", String.valueOf(l2));
+    localBundle.putString("fromUin", CharacterUtil.a(l1));
+    localBundle.putByteArray("buffer", (byte[])localObject);
+    localBundle.putLong("time", paramSharpVideoMsg.msg_time);
+    localBundle.putString("name", str);
+    localBundle.putBoolean("isFriend", bool);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a.receiveSharpVideoMsg(localBundle);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleSharpVideoMessage, friendName[");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append("], friendRemark[");
+      if (localFriends == null) {
+        paramSharpVideoMsg = "";
+      } else {
+        paramSharpVideoMsg = localFriends.remark;
+      }
+      ((StringBuilder)localObject).append(paramSharpVideoMsg);
+      ((StringBuilder)localObject).append("], isFriend[");
+      ((StringBuilder)localObject).append(bool);
+      ((StringBuilder)localObject).append("]");
+      QLog.w("VideoServlet", 1, ((StringBuilder)localObject).toString());
     }
   }
   
   void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    String str2 = paramFromServiceMsg.getServiceCmd();
-    if (MsfMsgUtil.getGatewayIpMsg(null).getServiceCmd().equalsIgnoreCase(str2))
+    Object localObject = paramFromServiceMsg.getServiceCmd();
+    if (MsfMsgUtil.getGatewayIpMsg(null).getServiceCmd().equalsIgnoreCase((String)localObject))
     {
       paramIntent = (String)paramFromServiceMsg.getAttribute(MsfMsgUtil.getGatewayIpMsg(null).getServiceCmd());
       if (paramIntent != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoServlet", 2, "parse getGatewayIpMsg Ok " + paramIntent + " cmd " + str2);
+        if (QLog.isColorLevel())
+        {
+          paramFromServiceMsg = new StringBuilder();
+          paramFromServiceMsg.append("parse getGatewayIpMsg Ok ");
+          paramFromServiceMsg.append(paramIntent);
+          paramFromServiceMsg.append(" cmd ");
+          paramFromServiceMsg.append((String)localObject);
+          QLog.d("VideoServlet", 2, paramFromServiceMsg.toString());
         }
         this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().d(paramIntent, 0);
       }
     }
-    label648:
-    label664:
-    Bundle localBundle;
-    do
+    else if (MsfMsgUtil.getSetConnStatusMsg(null, 0).getServiceCmd().equalsIgnoreCase((String)localObject))
     {
-      do
+      paramIntent = (Integer)paramFromServiceMsg.getAttribute("status");
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoServlet", 2, String.format("onReceive SetConnStatusMsg status=%s", new Object[] { paramIntent }));
+      }
+      if (paramIntent != null)
       {
-        do
-        {
-          for (;;)
+        paramFromServiceMsg = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+        if (paramFromServiceMsg != null) {
+          paramFromServiceMsg.a(paramIntent.intValue());
+        }
+      }
+    }
+    else
+    {
+      int i;
+      if ("OidbSvc.0x625".equalsIgnoreCase((String)localObject))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoServlet", 2, "CMD_OIDB_0x625 onReceive");
+        }
+        if (paramFromServiceMsg.isSuccess()) {
+          try
           {
+            i = paramFromServiceMsg.getWupBuffer().length - 4;
+            localObject = new byte[i];
+            PkgTools.copyData((byte[])localObject, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+            paramIntent = new oidb_sso.OIDBSSOPkg();
+            paramIntent.mergeFrom((byte[])localObject);
+            if (paramIntent.uint32_result.get() != 0)
+            {
+              if (!QLog.isColorLevel()) {
+                return;
+              }
+              paramFromServiceMsg = new StringBuilder();
+              paramFromServiceMsg.append("CMD_OIDB_0x625 onReceive uint32_result = ");
+              paramFromServiceMsg.append(paramIntent.uint32_result.get());
+              QLog.d("VideoServlet", 2, paramFromServiceMsg.toString());
+              return;
+            }
+            if (!paramIntent.bytes_bodybuffer.has()) {
+              return;
+            }
+            paramFromServiceMsg = new Oidb_0x625.Open2Tiny_RspBody();
+            paramFromServiceMsg.mergeFrom(paramIntent.bytes_bodybuffer.get().toByteArray());
+            paramIntent = paramFromServiceMsg.msg_tinyid_rsp_info.get();
+            if (!QLog.isColorLevel()) {
+              return;
+            }
+            paramFromServiceMsg = new StringBuilder();
+            paramFromServiceMsg.append("CMD_OIDB_0x625 onReceive list = ");
+            paramFromServiceMsg.append(paramIntent.toString());
+            QLog.d("VideoServlet", 2, paramFromServiceMsg.toString());
             return;
-            if (MsfMsgUtil.getSetConnStatusMsg(null, 0).getServiceCmd().equalsIgnoreCase(str2))
-            {
-              paramIntent = (Integer)paramFromServiceMsg.getAttribute("status");
-              if (QLog.isColorLevel()) {
-                QLog.d("VideoServlet", 2, String.format("onReceive SetConnStatusMsg status=%s", new Object[] { paramIntent }));
-              }
-              if (paramIntent != null)
-              {
-                paramFromServiceMsg = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-                if (paramFromServiceMsg != null) {
-                  paramFromServiceMsg.a(paramIntent.intValue());
-                }
-              }
-            }
-            else
-            {
-              int i;
-              if ("OidbSvc.0x625".equalsIgnoreCase(str2))
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("VideoServlet", 2, "CMD_OIDB_0x625 onReceive");
-                }
-                if (paramFromServiceMsg.isSuccess())
-                {
-                  try
-                  {
-                    i = paramFromServiceMsg.getWupBuffer().length - 4;
-                    paramIntent = new byte[i];
-                    PkgTools.copyData(paramIntent, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-                    paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
-                    paramFromServiceMsg.mergeFrom(paramIntent);
-                    if (paramFromServiceMsg.uint32_result.get() != 0)
-                    {
-                      if (!QLog.isColorLevel()) {
-                        continue;
-                      }
-                      QLog.d("VideoServlet", 2, "CMD_OIDB_0x625 onReceive uint32_result = " + paramFromServiceMsg.uint32_result.get());
-                      return;
-                    }
-                  }
-                  catch (Exception paramIntent)
-                  {
-                    if (QLog.isColorLevel()) {
-                      QLog.d("VideoServlet", 2, "CMD_OIDB_0x625 onReceive Exception!");
-                    }
-                    paramIntent.printStackTrace();
-                    return;
-                  }
-                  if (paramFromServiceMsg.bytes_bodybuffer.has())
-                  {
-                    paramIntent = new Oidb_0x625.Open2Tiny_RspBody();
-                    paramIntent.mergeFrom(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
-                    paramIntent = paramIntent.msg_tinyid_rsp_info.get();
-                    if (QLog.isColorLevel()) {
-                      QLog.d("VideoServlet", 2, "CMD_OIDB_0x625 onReceive list = " + paramIntent.toString());
-                    }
-                  }
-                }
-                else if (QLog.isColorLevel())
-                {
-                  QLog.d("VideoServlet", 2, "CMD_OIDB_0x625 onReceive not success!");
-                }
-              }
-              else
-              {
-                if (!"OidbSvc.0xa02".equalsIgnoreCase(str2)) {
-                  break label664;
-                }
-                if (QLog.isColorLevel()) {
-                  QLog.d("VideoServlet", 2, "CMD_OIDB_0x626 onReceive");
-                }
-                if (!paramFromServiceMsg.isSuccess()) {
-                  break label648;
-                }
-                try
-                {
-                  i = paramFromServiceMsg.getWupBuffer().length - 4;
-                  paramIntent = new byte[i];
-                  PkgTools.copyData(paramIntent, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-                  paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
-                  paramFromServiceMsg.mergeFrom(paramIntent);
-                  if (paramFromServiceMsg.uint32_result.get() != 0)
-                  {
-                    if (!QLog.isColorLevel()) {
-                      continue;
-                    }
-                    QLog.d("VideoServlet", 2, "CMD_OIDB_0x626 onReceive uint32_result = " + paramFromServiceMsg.uint32_result.get());
-                  }
-                }
-                catch (Exception paramIntent)
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.d("VideoServlet", 2, "CMD_OIDB_0x626 onReceive Exception!");
-                  }
-                  paramIntent.printStackTrace();
-                  return;
-                }
-              }
-            }
           }
-        } while (!paramFromServiceMsg.bytes_bodybuffer.has());
-        paramIntent = new cmd0xa02.RspBody();
-        paramIntent.mergeFrom(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
-        paramIntent = paramIntent.rpt_tinyid2useracc_info.get();
+          catch (Exception paramIntent)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("VideoServlet", 2, "CMD_OIDB_0x625 onReceive Exception!");
+            }
+            paramIntent.printStackTrace();
+            return;
+          }
+        } else if (QLog.isColorLevel()) {
+          QLog.d("VideoServlet", 2, "CMD_OIDB_0x625 onReceive not success!");
+        }
+      }
+      else if ("OidbSvc.0xa02".equalsIgnoreCase((String)localObject))
+      {
         if (QLog.isColorLevel()) {
-          QLog.d("VideoServlet", 2, "CMD_OIDB_0x626 onReceive list = " + paramIntent.toString());
+          QLog.d("VideoServlet", 2, "CMD_OIDB_0x626 onReceive");
         }
-        new ArrayList();
-        paramIntent = PstnUtils.a(paramIntent);
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a(paramIntent);
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("VideoServlet", 2, "CMD_OIDB_0x626 onReceive not success!");
-      return;
-      if ("QQRTCSvc.echo".equalsIgnoreCase(str2))
-      {
-        boolean bool = paramFromServiceMsg.isSuccess();
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoServlet", 2, "CMD_QQRTCSVC_ECHO onReceive isSuccess = " + bool);
-        }
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().o(bool);
-        return;
-      }
-      if ("QQRTCSvc.group_video_terminate_msg".equalsIgnoreCase(str2))
-      {
-        c(paramIntent, paramFromServiceMsg);
-        return;
-      }
-      if ("QQRTCSvc.group_video_invite_list".equalsIgnoreCase(str2))
-      {
-        b(paramIntent, paramFromServiceMsg);
-        return;
-      }
-      if ("CliLogSvc.UploadReq".equals(str2))
-      {
-        ClientLogReport.instance().handleServerResp(paramIntent, paramFromServiceMsg);
-        return;
-      }
-      if ("QQRTCSvc.chatroom_get_msg".equalsIgnoreCase(str2))
-      {
-        a(str2, paramIntent, paramFromServiceMsg);
-        return;
-      }
-      if ("QQRTCSvc.chatroom_send_msg".equalsIgnoreCase(str2))
-      {
-        a(str2, paramIntent, paramFromServiceMsg);
-        return;
-      }
-      if ("QQRTCSvc.query_codec_config".equalsIgnoreCase(str2))
-      {
-        a(23, paramIntent, paramFromServiceMsg);
-        return;
-      }
-      d(paramIntent, paramFromServiceMsg);
-      localBundle = paramIntent.getExtras();
-      byte[] arrayOfByte = localBundle.getByteArray("vMsg");
-      String str1 = "null";
-      paramIntent = str1;
-      if (arrayOfByte != null)
-      {
-        paramIntent = str1;
-        if (arrayOfByte.length > 2) {
-          paramIntent = String.valueOf(arrayOfByte[2]);
+        if (paramFromServiceMsg.isSuccess()) {
+          try
+          {
+            i = paramFromServiceMsg.getWupBuffer().length - 4;
+            localObject = new byte[i];
+            PkgTools.copyData((byte[])localObject, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+            paramIntent = new oidb_sso.OIDBSSOPkg();
+            paramIntent.mergeFrom((byte[])localObject);
+            if (paramIntent.uint32_result.get() != 0)
+            {
+              if (!QLog.isColorLevel()) {
+                return;
+              }
+              paramFromServiceMsg = new StringBuilder();
+              paramFromServiceMsg.append("CMD_OIDB_0x626 onReceive uint32_result = ");
+              paramFromServiceMsg.append(paramIntent.uint32_result.get());
+              QLog.d("VideoServlet", 2, paramFromServiceMsg.toString());
+              return;
+            }
+            if (!paramIntent.bytes_bodybuffer.has()) {
+              return;
+            }
+            paramFromServiceMsg = new cmd0xa02.RspBody();
+            paramFromServiceMsg.mergeFrom(paramIntent.bytes_bodybuffer.get().toByteArray());
+            paramIntent = paramFromServiceMsg.rpt_tinyid2useracc_info.get();
+            if (QLog.isColorLevel())
+            {
+              paramFromServiceMsg = new StringBuilder();
+              paramFromServiceMsg.append("CMD_OIDB_0x626 onReceive list = ");
+              paramFromServiceMsg.append(paramIntent.toString());
+              QLog.d("VideoServlet", 2, paramFromServiceMsg.toString());
+            }
+            new ArrayList();
+            paramIntent = PstnUtils.a(paramIntent);
+            this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a(paramIntent);
+            return;
+          }
+          catch (Exception paramIntent)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("VideoServlet", 2, "CMD_OIDB_0x626 onReceive Exception!");
+            }
+            paramIntent.printStackTrace();
+            return;
+          }
+        } else if (QLog.isColorLevel()) {
+          QLog.d("VideoServlet", 2, "CMD_OIDB_0x626 onReceive not success!");
         }
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("VideoServlet", 2, "handleRecieveMsg: cmd = " + str2 + ", friendUin = " + localBundle.getLong("toUin") + ", buffer[2] = " + paramIntent + ", result = " + String.valueOf(paramFromServiceMsg.isSuccess()));
+      else
+      {
+        if ("QQRTCSvc.echo".equalsIgnoreCase((String)localObject))
+        {
+          boolean bool = paramFromServiceMsg.isSuccess();
+          if (QLog.isColorLevel())
+          {
+            paramIntent = new StringBuilder();
+            paramIntent.append("CMD_QQRTCSVC_ECHO onReceive isSuccess = ");
+            paramIntent.append(bool);
+            QLog.d("VideoServlet", 2, paramIntent.toString());
+          }
+          this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().n(bool);
+          return;
+        }
+        if ("QQRTCSvc.group_video_terminate_msg".equalsIgnoreCase((String)localObject))
+        {
+          c(paramIntent, paramFromServiceMsg);
+          return;
+        }
+        if ("QQRTCSvc.group_video_invite_list".equalsIgnoreCase((String)localObject))
+        {
+          b(paramIntent, paramFromServiceMsg);
+          return;
+        }
+        if ("CliLogSvc.UploadReq".equals(localObject))
+        {
+          ClientLogReport.instance().handleServerResp(paramIntent, paramFromServiceMsg);
+          return;
+        }
+        if ("QQRTCSvc.chatroom_get_msg".equalsIgnoreCase((String)localObject))
+        {
+          a((String)localObject, paramIntent, paramFromServiceMsg);
+          return;
+        }
+        if ("QQRTCSvc.chatroom_send_msg".equalsIgnoreCase((String)localObject))
+        {
+          a((String)localObject, paramIntent, paramFromServiceMsg);
+          return;
+        }
+        if ("QQRTCSvc.query_codec_config".equalsIgnoreCase((String)localObject))
+        {
+          a(23, paramIntent, paramFromServiceMsg);
+          return;
+        }
+        d(paramIntent, paramFromServiceMsg);
+        Bundle localBundle = paramIntent.getExtras();
+        paramIntent = localBundle.getByteArray("vMsg");
+        if ((paramIntent != null) && (paramIntent.length > 2)) {
+          paramIntent = String.valueOf(paramIntent[2]);
+        } else {
+          paramIntent = "null";
+        }
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("handleRecieveMsg: cmd = ");
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append(", friendUin = ");
+          localStringBuilder.append(localBundle.getLong("toUin"));
+          localStringBuilder.append(", buffer[2] = ");
+          localStringBuilder.append(paramIntent);
+          localStringBuilder.append(", result = ");
+          localStringBuilder.append(String.valueOf(paramFromServiceMsg.isSuccess()));
+          QLog.d("VideoServlet", 2, localStringBuilder.toString());
+        }
+      }
+    }
   }
   
   void a(String paramString, Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
     AudioHelper.a("onRspChatRoom", paramIntent.getExtras());
-    ChatRoomMng localChatRoomMng = null;
     int i = paramFromServiceMsg.getWupBuffer().length - 4;
-    Object localObject = localChatRoomMng;
-    if (paramFromServiceMsg.isSuccess())
+    byte[] arrayOfByte;
+    if ((paramFromServiceMsg.isSuccess()) && (i > 0))
     {
-      localObject = localChatRoomMng;
-      if (i > 0)
-      {
-        localObject = new byte[i];
-        PkgTools.copyData((byte[])localObject, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-      }
+      arrayOfByte = new byte[i];
+      PkgTools.copyData(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
     }
-    localChatRoomMng = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+    else
+    {
+      arrayOfByte = null;
+    }
+    ChatRoomMng localChatRoomMng = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
     if (localChatRoomMng != null) {
-      localChatRoomMng.a(paramString, paramFromServiceMsg.isSuccess(), paramFromServiceMsg.getResultCode(), paramIntent, (byte[])localObject);
+      localChatRoomMng.a(paramString, paramFromServiceMsg.isSuccess(), paramFromServiceMsg.getResultCode(), paramIntent, arrayOfByte);
     }
   }
   
@@ -1057,300 +990,338 @@ public class VideoServlet
     return new String[] { "VideoCCSvc.Adaptation", "SharpSvr.c2sack", "SharpSvr.s2c", "MultiVideo.c2sack", "MultiVideo.s2c" };
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = ((VideoAppInterface)getAppRuntime());
-    VideoConnRateReport.a().jdField_a_of_type_Boolean = true;
-    VideoConnRateReport.a().jdField_b_of_type_Long = System.currentTimeMillis();
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a = System.currentTimeMillis();
   }
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (paramFromServiceMsg == null) {}
-    label733:
-    do
+    if (paramFromServiceMsg == null) {
+      return;
+    }
+    String str = paramFromServiceMsg.getServiceCmd();
+    long l1 = 0L;
+    if (paramIntent != null) {
+      l1 = SeqUtil.a(paramIntent);
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onReceive, cmd[");
+    ((StringBuilder)localObject).append(str);
+    ((StringBuilder)localObject).append("], seq[");
+    ((StringBuilder)localObject).append(l1);
+    ((StringBuilder)localObject).append("], request[");
+    boolean bool;
+    if (paramIntent != null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    ((StringBuilder)localObject).append(bool);
+    ((StringBuilder)localObject).append("], currentThread[");
+    ((StringBuilder)localObject).append(Thread.currentThread().getId());
+    ((StringBuilder)localObject).append("]");
+    QLog.w("VideoServlet", 1, ((StringBuilder)localObject).toString());
+    if ("SharpSvr.c2s".equalsIgnoreCase(str)) {
+      ReportController.b(null, "CliOper", "", "", "0X80088B1", "0X80088B1", 0, 0, "", "", "", "");
+    }
+    if (paramIntent != null)
     {
-      do
+      a(paramIntent, paramFromServiceMsg);
+      return;
+    }
+    int i;
+    if ("SharpSvr.s2c".equalsIgnoreCase(str))
+    {
+      paramIntent = (SharpVideoMsg)decodePacket(paramFromServiceMsg.getWupBuffer(), "SharpVideoMsg", new SharpVideoMsg());
+      l1 = System.currentTimeMillis();
+      localObject = a(paramIntent.video_buff, "SharpSvr.s2c", "--video--");
+      i = (int)localObject[0];
+      long l2 = localObject[1];
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("avideo onReceive[CMD_SHARPVIDEO_S2C] seq[");
+      ((StringBuilder)localObject).append(paramIntent.msg_seq);
+      ((StringBuilder)localObject).append("], msg_type[");
+      ((StringBuilder)localObject).append(paramIntent.msg_type);
+      ((StringBuilder)localObject).append("], type[");
+      ((StringBuilder)localObject).append(paramIntent.type);
+      ((StringBuilder)localObject).append("], serviceType[");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append("], roomId[");
+      ((StringBuilder)localObject).append(l2);
+      ((StringBuilder)localObject).append("]|");
+      ((StringBuilder)localObject).append(l1);
+      QLog.w("VideoServlet", 1, ((StringBuilder)localObject).toString());
+      if (i == 1013) {
+        return;
+      }
+      if (paramIntent.msg_type == 3L)
       {
-        do
+        VideoUtils.a("Video:Servlet", 5000L);
+        a(paramIntent.video_buff);
+        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a(209, String.valueOf(paramIntent.from_uin));
+        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a(200, String.valueOf(paramIntent.from_uin));
+        if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a() == 0) {
+          this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a(205, String.valueOf(paramIntent.from_uin));
+        } else {
+          this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a(204, String.valueOf(paramIntent.from_uin));
+        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramIntent.msg_seq);
+        ((StringBuilder)localObject).append("-");
+        ((StringBuilder)localObject).append(paramIntent.msg_uid);
+        localObject = ((StringBuilder)localObject).toString();
+        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(paramIntent.from_uin, (String)localObject, MessageCache.a());
+        if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b) {
+          this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b = false;
+        } else {
+          VideoNodeManager.a(l2);
+        }
+        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.c = true;
+        VideoNodeManager.a(l2, 35);
+        localObject = paramFromServiceMsg.getAttribute("__timestamp_net2msf");
+        if (localObject != null)
         {
-          for (;;)
+          l1 = ((Long)localObject).longValue();
+          this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().b(String.valueOf(paramIntent.from_uin), l1);
+        }
+      }
+      try
+      {
+        localObject = VideoPackageUtils.a(paramIntent.video_buff);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("<-- onReceive() cmd = ");
+        localStringBuilder.append(str);
+        localStringBuilder.append(" , msg_type = ");
+        localStringBuilder.append(paramIntent.msg_type);
+        localStringBuilder.append(", bodyType = ");
+        localStringBuilder.append(((VideoPackageUtils.VideoPacket)localObject).jdField_a_of_type_Int);
+        QLog.w("tagSharpSvr", 1, localStringBuilder.toString());
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      c(paramIntent);
+      if ((!AVReport.a().jdField_a_of_type_Boolean) && (AVReport.a().b != 1) && (paramFromServiceMsg.getAttributes() != null))
+      {
+        paramFromServiceMsg = paramFromServiceMsg.getAttributes().get("__timestamp_net2msf_boot");
+        if (paramFromServiceMsg != null) {
+          AVReport.a().q = ((Long)paramFromServiceMsg).longValue();
+        }
+      }
+      a(paramIntent);
+      return;
+    }
+    if ("SharpSvr.c2sack".equalsIgnoreCase(localException))
+    {
+      if ((AVReport.a().jdField_a_of_type_Boolean) && (paramFromServiceMsg.getAttributes() != null)) {
+        if (AVReport.a().jdField_a_of_type_Int == 0)
+        {
+          paramIntent = paramFromServiceMsg.getAttributes().get("__timestamp_net2msf_boot");
+          if (paramIntent != null) {
+            AVReport.a().d = ((Long)paramIntent).longValue();
+          }
+          paramIntent = paramFromServiceMsg.getAttributes().get("__timestamp_msf2net_boot_sharp_c2s");
+          if (paramIntent != null) {
+            AVReport.a().c = ((Long)paramIntent).longValue();
+          }
+        }
+        else if (AVReport.a().jdField_a_of_type_Int == 2)
+        {
+          AVReport.a().jdField_a_of_type_Int = 4;
+          paramIntent = paramFromServiceMsg.getAttributes().get("__timestamp_msf2net_boot_sharp_c2s");
+          if (paramIntent != null) {
+            AVReport.a().g = ((Long)paramIntent).longValue();
+          }
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoServlet", 2, "Receive sharp video message c2s ack,cmd=SharpSvr.c2sack");
+      }
+      paramIntent = (SharpVideoMsg)decodePacket(paramFromServiceMsg.getWupBuffer(), "SharpVideoMsg", new SharpVideoMsg());
+      paramFromServiceMsg = a(paramIntent.video_buff, "SharpSvr.c2sack", "--video--");
+      i = (int)paramFromServiceMsg[0];
+      l1 = paramFromServiceMsg[1];
+      paramFromServiceMsg = new StringBuilder();
+      paramFromServiceMsg.append("avideo onReceive[c2s ack], seq[");
+      paramFromServiceMsg.append(paramIntent.msg_seq);
+      paramFromServiceMsg.append("], msg_type[");
+      paramFromServiceMsg.append(paramIntent.msg_type);
+      paramFromServiceMsg.append("], type[");
+      paramFromServiceMsg.append(paramIntent.type);
+      paramFromServiceMsg.append("], serviceType[");
+      paramFromServiceMsg.append(i);
+      paramFromServiceMsg.append("], roomId[");
+      paramFromServiceMsg.append(l1);
+      paramFromServiceMsg.append("]");
+      QLog.w("VideoServlet", 1, paramFromServiceMsg.toString());
+      if (i == 1013) {
+        return;
+      }
+      if (paramIntent.msg_type == 2L)
+      {
+        paramFromServiceMsg = SessionMgr.a().a();
+        if (paramFromServiceMsg != null)
+        {
+          paramFromServiceMsg.c(l1);
+          if (QLog.isColorLevel())
           {
-            return;
-            String str = paramFromServiceMsg.getServiceCmd();
-            long l1 = 0L;
-            if (paramIntent != null) {
-              l1 = SeqUtil.a(paramIntent);
-            }
-            Object localObject = new StringBuilder().append("onReceive, cmd[").append(str).append("], seq[").append(l1).append("], request[");
-            if (paramIntent != null) {}
-            for (boolean bool = true;; bool = false)
-            {
-              QLog.w("VideoServlet", 1, bool + "], currentThread[" + Thread.currentThread().getId() + "]");
-              if ("SharpSvr.c2s".equalsIgnoreCase(str)) {
-                ReportController.b(null, "CliOper", "", "", "0X80088B1", "0X80088B1", 0, 0, "", "", "", "");
-              }
-              if (paramIntent == null) {
-                break;
-              }
-              a(paramIntent, paramFromServiceMsg);
+            paramFromServiceMsg = new StringBuilder();
+            paramFromServiceMsg.append("avideo onReceive set sessioninfo roomid ,id = ");
+            paramFromServiceMsg.append(l1);
+            QLog.d("VideoServlet", 2, paramFromServiceMsg.toString());
+          }
+          ((VideoNodeReporter)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(4)).a(l1);
+        }
+      }
+      try
+      {
+        paramFromServiceMsg = VideoPackageUtils.a(paramIntent.video_buff);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("<-- onReceive() cmd = ");
+        ((StringBuilder)localObject).append(localException);
+        ((StringBuilder)localObject).append(" , msg_type = ");
+        ((StringBuilder)localObject).append(paramIntent.msg_type);
+        ((StringBuilder)localObject).append(", bodyType = ");
+        ((StringBuilder)localObject).append(paramFromServiceMsg.jdField_a_of_type_Int);
+        QLog.w("tagSharpSvr", 1, ((StringBuilder)localObject).toString());
+      }
+      catch (Exception paramFromServiceMsg)
+      {
+        paramFromServiceMsg.printStackTrace();
+      }
+      b(paramIntent);
+      return;
+    }
+    if ("MultiVideo.s2c".equalsIgnoreCase(localException))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoServlet", 2, "Receive multi video message s2c ,cmd=MultiVideo.s2c");
+      }
+      paramIntent = (MultiVideoMsg)decodePacket(paramFromServiceMsg.getWupBuffer(), "MultiVideoMsg", new MultiVideoMsg());
+      a(paramIntent);
+      paramFromServiceMsg = new Bundle();
+      paramFromServiceMsg.putByteArray("buffer", paramIntent.video_buff);
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a.receiveMultiVideoMsg(paramFromServiceMsg);
+      return;
+    }
+    if ("MultiVideo.c2sack".equalsIgnoreCase(localException))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoServlet", 2, "Receive multi video message c2s ack,cmd=MultiVideo.c2sack");
+      }
+      paramIntent = (MultiVideoMsg)decodePacket(paramFromServiceMsg.getWupBuffer(), "MultiVideoMsg", new MultiVideoMsg());
+      paramFromServiceMsg = new Bundle();
+      paramFromServiceMsg.putByteArray("buffer", paramIntent.video_buff);
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a.receiveMultiVideoAck(paramFromServiceMsg);
+      return;
+    }
+    if ("OidbSvc.0x625".equalsIgnoreCase(localException))
+    {
+      if (paramFromServiceMsg.isSuccess()) {
+        try
+        {
+          paramIntent = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
+          paramFromServiceMsg = new byte[paramIntent.getInt() - 4];
+          paramIntent.get(paramFromServiceMsg);
+          paramIntent = new oidb_sso.OIDBSSOPkg();
+          paramIntent.mergeFrom(paramFromServiceMsg);
+          if (paramIntent.uint32_result.get() != 0)
+          {
+            if (!QLog.isColorLevel()) {
               return;
             }
-            int i;
-            if ("SharpSvr.s2c".equalsIgnoreCase(str))
-            {
-              paramIntent = (SharpVideoMsg)decodePacket(paramFromServiceMsg.getWupBuffer(), "SharpVideoMsg", new SharpVideoMsg());
-              l1 = System.currentTimeMillis();
-              localObject = a(paramIntent.video_buff, "SharpSvr.s2c", "--video--");
-              i = (int)localObject[0];
-              long l2 = localObject[1];
-              QLog.w("VideoServlet", 1, "avideo onReceive[CMD_SHARPVIDEO_S2C] seq[" + paramIntent.msg_seq + "], msg_type[" + paramIntent.msg_type + "], type[" + paramIntent.type + "], serviceType[" + i + "], roomId[" + l2 + "]|" + l1);
-              if (i != 1013)
-              {
-                if (paramIntent.msg_type == 3L)
-                {
-                  VideoUtils.a("Video:Servlet", 5000L);
-                  a(paramIntent.video_buff);
-                  this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a(209, String.valueOf(paramIntent.from_uin));
-                  this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a(200, String.valueOf(paramIntent.from_uin));
-                  if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a() != 0) {
-                    break label733;
-                  }
-                  this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a(205, String.valueOf(paramIntent.from_uin));
-                }
-                for (;;)
-                {
-                  if (!VideoConnRateReport.a().jdField_b_of_type_Boolean) {
-                    VideoConnRateReport.a().a(paramIntent.msg_seq);
-                  }
-                  VideoConnRateReport.a().a("eVideoRecvInviteMsg", 3L, paramIntent.msg_seq, ((Long)paramIntent.to_uin.get(0)).longValue(), paramIntent.from_uin, 0);
-                  localObject = paramIntent.msg_seq + "-" + paramIntent.msg_uid;
-                  this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(paramIntent.from_uin, (String)localObject, MessageCache.a());
-                  if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.c)
-                  {
-                    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.c = false;
-                    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.d = true;
-                    VideoNodeManager.a(l2, 35);
-                    localObject = paramFromServiceMsg.getAttribute("__timestamp_net2msf");
-                    if (localObject != null)
-                    {
-                      l1 = ((Long)localObject).longValue();
-                      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a(String.valueOf(paramIntent.from_uin), l1);
-                    }
-                  }
-                  try
-                  {
-                    localObject = VideoPackageUtils.a(paramIntent.video_buff);
-                    QLog.w("tagSharpSvr", 1, "<-- onReceive() cmd = " + str + " , msg_type = " + paramIntent.msg_type + ", bodyType = " + ((VideoPackageUtils.VideoPacket)localObject).jdField_a_of_type_Int);
-                    c(paramIntent);
-                    if ((!AVReport.a().jdField_a_of_type_Boolean) && (AVReport.a().b != 1) && (paramFromServiceMsg.getAttributes() != null))
-                    {
-                      paramFromServiceMsg = paramFromServiceMsg.getAttributes().get("__timestamp_net2msf_boot");
-                      if (paramFromServiceMsg != null) {
-                        AVReport.a().q = ((Long)paramFromServiceMsg).longValue();
-                      }
-                    }
-                    a(paramIntent);
-                    return;
-                    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a(204, String.valueOf(paramIntent.from_uin));
-                    continue;
-                    VideoNodeManager.a(l2);
-                  }
-                  catch (Exception localException)
-                  {
-                    for (;;)
-                    {
-                      localException.printStackTrace();
-                    }
-                  }
-                }
-              }
-            }
-            else
-            {
-              if ("SharpSvr.c2sack".equalsIgnoreCase(localException))
-              {
-                if ((AVReport.a().jdField_a_of_type_Boolean) && (paramFromServiceMsg.getAttributes() != null))
-                {
-                  if (AVReport.a().jdField_a_of_type_Int != 0) {
-                    break label1159;
-                  }
-                  paramIntent = paramFromServiceMsg.getAttributes().get("__timestamp_net2msf_boot");
-                  if (paramIntent != null) {
-                    AVReport.a().d = ((Long)paramIntent).longValue();
-                  }
-                  paramIntent = paramFromServiceMsg.getAttributes().get("__timestamp_msf2net_boot_sharp_c2s");
-                  if (paramIntent != null) {
-                    AVReport.a().c = ((Long)paramIntent).longValue();
-                  }
-                }
-                for (;;)
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.d("VideoServlet", 2, "Receive sharp video message c2s ack,cmd=SharpSvr.c2sack");
-                  }
-                  paramIntent = (SharpVideoMsg)decodePacket(paramFromServiceMsg.getWupBuffer(), "SharpVideoMsg", new SharpVideoMsg());
-                  paramFromServiceMsg = a(paramIntent.video_buff, "SharpSvr.c2sack", "--video--");
-                  i = (int)paramFromServiceMsg[0];
-                  l1 = paramFromServiceMsg[1];
-                  QLog.w("VideoServlet", 1, "avideo onReceive[c2s ack], seq[" + paramIntent.msg_seq + "], msg_type[" + paramIntent.msg_type + "], type[" + paramIntent.type + "], serviceType[" + i + "], roomId[" + l1 + "]");
-                  if (i == 1013) {
-                    break;
-                  }
-                  if (paramIntent.msg_type == 2L)
-                  {
-                    paramFromServiceMsg = SessionMgr.a().a();
-                    if (paramFromServiceMsg != null)
-                    {
-                      paramFromServiceMsg.d(l1);
-                      if (QLog.isColorLevel()) {
-                        QLog.d("VideoServlet", 2, "avideo onReceive set sessioninfo roomid ,id = " + l1);
-                      }
-                      ((VideoNodeReporter)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(4)).a(l1);
-                    }
-                  }
-                  try
-                  {
-                    paramFromServiceMsg = VideoPackageUtils.a(paramIntent.video_buff);
-                    QLog.w("tagSharpSvr", 1, "<-- onReceive() cmd = " + localException + " , msg_type = " + paramIntent.msg_type + ", bodyType = " + paramFromServiceMsg.jdField_a_of_type_Int);
-                    b(paramIntent);
-                    return;
-                    if (AVReport.a().jdField_a_of_type_Int == 2)
-                    {
-                      AVReport.a().jdField_a_of_type_Int = 4;
-                      paramIntent = paramFromServiceMsg.getAttributes().get("__timestamp_msf2net_boot_sharp_c2s");
-                      if (paramIntent != null) {
-                        AVReport.a().g = ((Long)paramIntent).longValue();
-                      }
-                    }
-                  }
-                  catch (Exception paramFromServiceMsg)
-                  {
-                    for (;;)
-                    {
-                      paramFromServiceMsg.printStackTrace();
-                    }
-                  }
-                }
-              }
-              if ("MultiVideo.s2c".equalsIgnoreCase(localException))
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("VideoServlet", 2, "Receive multi video message s2c ,cmd=MultiVideo.s2c");
-                }
-                paramIntent = (MultiVideoMsg)decodePacket(paramFromServiceMsg.getWupBuffer(), "MultiVideoMsg", new MultiVideoMsg());
-                a(paramIntent);
-                paramFromServiceMsg = new Bundle();
-                paramFromServiceMsg.putByteArray("buffer", paramIntent.video_buff);
-                this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a.receiveMultiVideoMsg(paramFromServiceMsg);
-                return;
-              }
-              if ("MultiVideo.c2sack".equalsIgnoreCase(localException))
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("VideoServlet", 2, "Receive multi video message c2s ack,cmd=MultiVideo.c2sack");
-                }
-                paramIntent = (MultiVideoMsg)decodePacket(paramFromServiceMsg.getWupBuffer(), "MultiVideoMsg", new MultiVideoMsg());
-                paramFromServiceMsg = new Bundle();
-                paramFromServiceMsg.putByteArray("buffer", paramIntent.video_buff);
-                this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a.receiveMultiVideoAck(paramFromServiceMsg);
-                return;
-              }
-              if ("OidbSvc.0x625".equalsIgnoreCase(localException))
-              {
-                if (paramFromServiceMsg.isSuccess())
-                {
-                  try
-                  {
-                    paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
-                    paramIntent = new byte[paramFromServiceMsg.getInt() - 4];
-                    paramFromServiceMsg.get(paramIntent);
-                    paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
-                    paramFromServiceMsg.mergeFrom(paramIntent);
-                    if (paramFromServiceMsg.uint32_result.get() != 0)
-                    {
-                      if (!QLog.isColorLevel()) {
-                        continue;
-                      }
-                      QLog.d("VideoServlet", 2, "CMD_OIDB_0x625 onReceive uint32_result = " + paramFromServiceMsg.uint32_result.get());
-                      return;
-                    }
-                  }
-                  catch (Exception paramIntent)
-                  {
-                    if (QLog.isColorLevel()) {
-                      QLog.d("VideoServlet", 2, "CMD_OIDB_0x625 onReceive Exception!");
-                    }
-                    paramIntent.printStackTrace();
-                    return;
-                  }
-                  if (paramFromServiceMsg.bytes_bodybuffer.has())
-                  {
-                    paramIntent = new Oidb_0x625.Open2Tiny_RspBody();
-                    paramIntent.mergeFrom(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
-                    paramIntent = paramIntent.msg_tinyid_rsp_info.get();
-                    if (QLog.isColorLevel()) {
-                      QLog.d("VideoServlet", 2, "CMD_OIDB_0x625 onReceive list = " + paramIntent.toString());
-                    }
-                  }
-                }
-                else if (QLog.isColorLevel())
-                {
-                  QLog.d("VideoServlet", 2, "CMD_OIDB_0x625 onReceive not success!");
-                }
-              }
-              else
-              {
-                if (!"OidbSvc.0xa02".equalsIgnoreCase(localException)) {
-                  break label1835;
-                }
-                if (QLog.isColorLevel()) {
-                  QLog.d("VideoServlet", 2, "CMD_OIDB_0x626 onReceive");
-                }
-                if (!paramFromServiceMsg.isSuccess()) {
-                  break label1819;
-                }
-                try
-                {
-                  i = paramFromServiceMsg.getWupBuffer().length - 4;
-                  paramIntent = new byte[i];
-                  PkgTools.copyData(paramIntent, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-                  paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
-                  paramFromServiceMsg.mergeFrom(paramIntent);
-                  if (paramFromServiceMsg.uint32_result.get() != 0)
-                  {
-                    if (!QLog.isColorLevel()) {
-                      continue;
-                    }
-                    QLog.d("VideoServlet", 2, "CMD_OIDB_0x626 onReceive uint32_result = " + paramFromServiceMsg.uint32_result.get());
-                  }
-                }
-                catch (Exception paramIntent)
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.d("VideoServlet", 2, "CMD_OIDB_0x626 onReceive Exception!");
-                  }
-                  paramIntent.printStackTrace();
-                  return;
-                }
-              }
-            }
+            paramFromServiceMsg = new StringBuilder();
+            paramFromServiceMsg.append("CMD_OIDB_0x625 onReceive uint32_result = ");
+            paramFromServiceMsg.append(paramIntent.uint32_result.get());
+            QLog.d("VideoServlet", 2, paramFromServiceMsg.toString());
+            return;
           }
-        } while (!paramFromServiceMsg.bytes_bodybuffer.has());
-        paramIntent = new Oidb_0x626.Tiny2Open_RspBody();
-        paramIntent.mergeFrom(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
-        paramIntent = paramIntent.msg_openid_rsp_info.get();
-      } while (!QLog.isColorLevel());
-      QLog.d("VideoServlet", 2, "CMD_OIDB_0x626 onReceive list = " + paramIntent.toString());
-      return;
-    } while (!QLog.isColorLevel());
-    label1159:
-    label1819:
-    QLog.d("VideoServlet", 2, "CMD_OIDB_0x626 onReceive not success!");
-    return;
-    label1835:
-    d(paramIntent, paramFromServiceMsg);
+          if (!paramIntent.bytes_bodybuffer.has()) {
+            return;
+          }
+          paramFromServiceMsg = new Oidb_0x625.Open2Tiny_RspBody();
+          paramFromServiceMsg.mergeFrom(paramIntent.bytes_bodybuffer.get().toByteArray());
+          paramIntent = paramFromServiceMsg.msg_tinyid_rsp_info.get();
+          if (!QLog.isColorLevel()) {
+            return;
+          }
+          paramFromServiceMsg = new StringBuilder();
+          paramFromServiceMsg.append("CMD_OIDB_0x625 onReceive list = ");
+          paramFromServiceMsg.append(paramIntent.toString());
+          QLog.d("VideoServlet", 2, paramFromServiceMsg.toString());
+          return;
+        }
+        catch (Exception paramIntent)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("VideoServlet", 2, "CMD_OIDB_0x625 onReceive Exception!");
+          }
+          paramIntent.printStackTrace();
+          return;
+        }
+      } else if (QLog.isColorLevel()) {
+        QLog.d("VideoServlet", 2, "CMD_OIDB_0x625 onReceive not success!");
+      }
+    }
+    else if ("OidbSvc.0xa02".equalsIgnoreCase(localException))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoServlet", 2, "CMD_OIDB_0x626 onReceive");
+      }
+      if (paramFromServiceMsg.isSuccess()) {
+        try
+        {
+          i = paramFromServiceMsg.getWupBuffer().length - 4;
+          byte[] arrayOfByte = new byte[i];
+          PkgTools.copyData(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+          paramIntent = new oidb_sso.OIDBSSOPkg();
+          paramIntent.mergeFrom(arrayOfByte);
+          if (paramIntent.uint32_result.get() != 0)
+          {
+            if (!QLog.isColorLevel()) {
+              return;
+            }
+            paramFromServiceMsg = new StringBuilder();
+            paramFromServiceMsg.append("CMD_OIDB_0x626 onReceive uint32_result = ");
+            paramFromServiceMsg.append(paramIntent.uint32_result.get());
+            QLog.d("VideoServlet", 2, paramFromServiceMsg.toString());
+            return;
+          }
+          if (!paramIntent.bytes_bodybuffer.has()) {
+            return;
+          }
+          paramFromServiceMsg = new Oidb_0x626.Tiny2Open_RspBody();
+          paramFromServiceMsg.mergeFrom(paramIntent.bytes_bodybuffer.get().toByteArray());
+          paramIntent = paramFromServiceMsg.msg_openid_rsp_info.get();
+          if (!QLog.isColorLevel()) {
+            return;
+          }
+          paramFromServiceMsg = new StringBuilder();
+          paramFromServiceMsg.append("CMD_OIDB_0x626 onReceive list = ");
+          paramFromServiceMsg.append(paramIntent.toString());
+          QLog.d("VideoServlet", 2, paramFromServiceMsg.toString());
+          return;
+        }
+        catch (Exception paramIntent)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("VideoServlet", 2, "CMD_OIDB_0x626 onReceive Exception!");
+          }
+          paramIntent.printStackTrace();
+          return;
+        }
+      } else if (QLog.isColorLevel()) {
+        QLog.d("VideoServlet", 2, "CMD_OIDB_0x626 onReceive not success!");
+      }
+    }
+    else
+    {
+      d(paramIntent, paramFromServiceMsg);
+    }
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -1367,8 +1338,14 @@ public class VideoServlet
       SeqUtil.a(paramIntent, l1);
     }
     int i = ((Bundle)localObject1).getInt("reqType", -1);
-    QLog.w("VideoServlet", 1, "onSend, reqType[" + i + "], seq[" + l1 + "]");
-    Object localObject3;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("onSend, reqType[");
+    ((StringBuilder)localObject2).append(i);
+    ((StringBuilder)localObject2).append("], seq[");
+    ((StringBuilder)localObject2).append(l1);
+    ((StringBuilder)localObject2).append("]");
+    QLog.w("VideoServlet", 1, ((StringBuilder)localObject2).toString());
+    StringBuilder localStringBuilder;
     switch (i)
     {
     case 11: 
@@ -1377,53 +1354,245 @@ public class VideoServlet
     case 22: 
     default: 
       localObject1 = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (QLog.isColorLevel())
+      if (!QLog.isColorLevel()) {
+        break label2275;
+      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("onSend, toMsg[");
+      ((StringBuilder)localObject2).append(localObject1);
+      ((StringBuilder)localObject2).append("], cmd[");
+      if (localObject1 != null) {
+        break label2242;
+      }
+      paramIntent = "null";
+      break;
+    case 23: 
+      a("QQRTCSvc.query_codec_config", paramPacket, (Bundle)localObject1);
+      return;
+    case 21: 
+      a(paramPacket, (Bundle)localObject1);
+      return;
+    case 20: 
+      paramPacket.setSSOCommand("QQRTCSvc.echo");
+      paramPacket.setTimeout(10000L);
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoServlet", 2, "onSend with cmd: CMD_QQRTCSVC_ECHO");
+      }
+      paramPacket.putSendData(WupUtil.a(((Bundle)localObject1).getByteArray("vMsg")));
+      return;
+    case 19: 
+      boolean bool = ((Bundle)localObject1).getBoolean("keepAlive");
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoServlet", 2, String.format("onSend keepProcessAliveMsg keepAlive=%s", new Object[] { Boolean.valueOf(bool) }));
+      }
+      paramPacket = MsfMsgUtil.keepProcessAliveMsg(null, bool);
+      paramPacket.setNeedRemindSlowNetwork(false);
+      paramPacket.setAppId(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getAppid());
+      sendToMSF(paramIntent, paramPacket);
+      return;
+    case 18: 
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoServlet", 2, "=====send sharp SharpSvr.c2s!!!! 0xc2=====");
+      }
+      paramPacket.setServantName("SharpSvr");
+      paramPacket.setFuncName("c2s");
+      paramPacket.setSSOCommand("SharpSvr.c2s");
+      paramPacket.setNoResponse();
+      paramPacket.addAttribute("remind_slown_network", Boolean.valueOf(true));
+      paramIntent = new SharpVideoMsg();
+      paramIntent.ver = 1;
+      paramIntent.type = -62;
+      paramIntent.from_uin = a(String.valueOf(((Bundle)localObject1).getLong("selfuin")));
+      localObject2 = new ArrayList();
+      ((ArrayList)localObject2).add(Long.valueOf(((Bundle)localObject1).getLong("toUin")));
+      paramIntent.to_uin = ((ArrayList)localObject2);
+      paramIntent.msg_time = 0L;
+      paramIntent.msg_type = 0L;
+      paramIntent.msg_seq = 0L;
+      paramIntent.msg_uid = 0L;
+      paramIntent.video_buff = ((Bundle)localObject1).getByteArray("vMsg");
+      paramPacket.addRequestPacket("SharpVideoMsg", paramIntent);
+      return;
+    case 15: 
+      paramIntent = new cmd0xa02.ReqBody();
+      localObject1 = (ArrayList)((Bundle)localObject1).getSerializable("tinyid_list");
+      i = 0;
+      while (i < ((ArrayList)localObject1).size())
       {
-        localObject3 = new StringBuilder().append("onSend, toMsg[").append(localObject1).append("], cmd[");
-        if (localObject1 != null) {
-          break label2323;
+        localObject2 = new cmd0xa02.TinyID();
+        ((cmd0xa02.TinyID)localObject2).uint64_tinyid.set(((Long)((ArrayList)localObject1).get(i)).longValue());
+        paramIntent.rpt_tinyid.add((MessageMicro)localObject2);
+        i += 1;
+      }
+      localObject1 = new oidb_sso.OIDBSSOPkg();
+      ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(2562);
+      ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(0);
+      ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramIntent.toByteArray()));
+      paramIntent = ((oidb_sso.OIDBSSOPkg)localObject1).toByteArray();
+      localObject1 = new byte[paramIntent.length + 4];
+      PkgTools.dWord2Byte((byte[])localObject1, 0, paramIntent.length + 4);
+      PkgTools.copyData((byte[])localObject1, 4, paramIntent, paramIntent.length);
+      paramPacket.setSSOCommand("OidbSvc.0xa02");
+      paramPacket.putSendData((byte[])localObject1);
+      if (!QLog.isColorLevel()) {
+        return;
+      }
+      QLog.d("VideoServlet", 2, "CMD_OIDB_0xA02 onSend");
+      return;
+    case 14: 
+      paramIntent = new Oidb_0x625.Open2Tiny_ReqBody();
+      localObject1 = (ArrayList)((Bundle)localObject1).getSerializable("openid_list");
+      i = 0;
+      while (i < ((ArrayList)localObject1).size())
+      {
+        localObject2 = new Oidb_0x625.OpenIDInfoReq();
+        ((Oidb_0x625.OpenIDInfoReq)localObject2).bytes_openid.set(ByteStringMicro.copyFromUtf8((String)((ArrayList)localObject1).get(i)));
+        ((Oidb_0x625.OpenIDInfoReq)localObject2).uint32_acounttype.set(101);
+        ((Oidb_0x625.OpenIDInfoReq)localObject2).uint32_appid.set(1600000144);
+        paramIntent.msg_openid_req_info.add((MessageMicro)localObject2);
+        i += 1;
+      }
+      localObject1 = new oidb_sso.OIDBSSOPkg();
+      ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(1573);
+      ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(0);
+      ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramIntent.toByteArray()));
+      paramIntent = ((oidb_sso.OIDBSSOPkg)localObject1).toByteArray();
+      localObject1 = new byte[paramIntent.length + 4];
+      PkgTools.dWord2Byte((byte[])localObject1, 0, paramIntent.length + 4);
+      PkgTools.copyData((byte[])localObject1, 4, paramIntent, paramIntent.length);
+      paramPacket.setSSOCommand("OidbSvc.0x625");
+      paramPacket.putSendData((byte[])localObject1);
+      if (!QLog.isColorLevel()) {
+        return;
+      }
+      QLog.d("VideoServlet", 2, "CMD_OIDB_0x625 onSend");
+      return;
+    case 13: 
+      paramIntent.putExtra("requestInviteMemberMode", ((Bundle)localObject1).getBoolean("selfuin"));
+      c(paramPacket, (Bundle)localObject1);
+      return;
+    case 12: 
+      d(paramPacket, (Bundle)localObject1);
+      return;
+    case 10: 
+      i = ((Bundle)localObject1).getInt("status");
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoServlet", 2, String.format("onSend SetConnStatusMsg status=%s", new Object[] { Integer.valueOf(i) }));
+      }
+      paramPacket = MsfMsgUtil.getSetConnStatusMsg(null, i);
+      paramPacket.setTimeout(30000L);
+      paramPacket.setNeedCallback(true);
+      paramPacket.setNeedRemindSlowNetwork(false);
+      paramPacket.setAppId(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getAppid());
+      sendToMSF(paramIntent, paramPacket);
+      return;
+    case 9: 
+      paramPacket.setServantName("MultiVideo");
+      paramPacket.setFuncName("MultiVideos2cack");
+      paramPacket.setSSOCommand("MultiVideo.s2cack");
+      paramIntent = new MultiVideoMsg();
+      paramIntent.ver = ((Bundle)localObject1).getByte("ver");
+      paramIntent.type = ((Bundle)localObject1).getByte("type");
+      paramIntent.csCmd = ((Bundle)localObject1).getShort("cscmd");
+      paramIntent.subCmd = ((Bundle)localObject1).getShort("subcmd");
+      paramIntent.from_uin = a(String.valueOf(((Bundle)localObject1).getLong("from_uin")));
+      localObject2 = new ArrayList();
+      ((ArrayList)localObject2).add(Long.valueOf(((Bundle)localObject1).getLong("to_uin")));
+      paramIntent.to_uin = ((ArrayList)localObject2);
+      paramIntent.msg_time = ((Bundle)localObject1).getLong("msg_time");
+      paramIntent.msg_type = ((Bundle)localObject1).getLong("msg_type");
+      paramIntent.msg_seq = ((Bundle)localObject1).getLong("msg_seq");
+      paramIntent.msg_uid = ((Bundle)localObject1).getLong("msg_uid");
+      paramIntent.video_buff = ((Bundle)localObject1).getByteArray("video_buff");
+      paramPacket.addRequestPacket("MultiVideoMsg", paramIntent);
+      return;
+    case 8: 
+      b(paramPacket, (Bundle)localObject1);
+      return;
+    case 7: 
+      paramPacket = MsfMsgUtil.getGatewayIpMsg(null);
+      paramPacket.setTimeout(30000L);
+      paramPacket.setNeedCallback(true);
+      paramPacket.setNeedRemindSlowNetwork(false);
+      paramPacket.setAppId(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getAppid());
+      sendToMSF(paramIntent, paramPacket);
+      return;
+    case 6: 
+      paramIntent = new StrupBuff();
+      paramIntent.prefix = "";
+      localObject2 = new ArrayList();
+      localObject1 = ((Bundle)localObject1).getString("vMsg");
+      if (localObject1 != null) {
+        try
+        {
+          ((ArrayList)localObject2).add(((String)localObject1).getBytes("utf-8"));
+        }
+        catch (UnsupportedEncodingException paramIntent)
+        {
+          paramIntent.printStackTrace();
+          return;
         }
       }
-      break;
-    }
-    Object localObject2;
-    label2323:
-    for (paramIntent = "null";; paramIntent = ((ToServiceMsg)localObject2).getServiceCmd())
-    {
-      QLog.d("VideoServlet", 2, paramIntent + "]");
-      if (localObject1 == null) {
-        break;
-      }
-      paramIntent = a(((ToServiceMsg)localObject1).getServiceCmd());
-      if (paramIntent != null)
-      {
-        paramPacket.setServantName(paramIntent.a());
-        paramPacket.setFuncName(paramIntent.b());
-      }
-      paramPacket.setSSOCommand(((ToServiceMsg)localObject1).getServiceCmd());
-      paramPacket.putSendData(((ToServiceMsg)localObject1).getWupBuffer());
-      paramPacket.setTimeout(((ToServiceMsg)localObject1).getTimeout());
-      paramPacket.setAttributes(((ToServiceMsg)localObject1).getAttributes());
-      if (((ToServiceMsg)localObject1).isNeedCallback()) {
-        break;
-      }
+      localObject1 = new HashMap();
+      ((HashMap)localObject1).put("custom_set", localObject2);
+      paramIntent.logstring = new HashMap((Map)localObject1);
+      paramIntent.encoding = 2;
+      paramPacket.setSSOCommand("CliLogSvc.UploadReq");
+      paramPacket.setServantName("QQService.CliLogSvc.MainServantObj");
+      paramPacket.setFuncName("UploadReq");
+      paramPacket.addRequestPacket("Data", paramIntent);
       paramPacket.setNoResponse();
       return;
-      paramPacket.setServantName("VideoSvc");
-      paramPacket.setFuncName("SendVideoMsg");
-      paramPacket.setSSOCommand("VideoCCSvc.Adaptation");
-      paramIntent = new VideoCallMsg();
-      paramIntent.ver = 1;
-      paramIntent.type = 1;
-      paramIntent.lUin = a(((Bundle)localObject1).getString("selfuin"));
-      paramIntent.lPeerUin = ((Bundle)localObject1).getLong("toUin");
-      paramIntent.uDateTime = ((int)(System.currentTimeMillis() / 1000L));
-      paramIntent.cVerifyType = 0;
-      paramIntent.uSeqId = 0;
-      paramIntent.uSessionId = 0;
-      paramIntent.vMsg = ((Bundle)localObject1).getByteArray("vMsg");
-      paramPacket.addRequestPacket("VideoCallMsg", paramIntent);
+    case 5: 
+      paramPacket = new ToServiceMsg(null, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), "SharpSvr.s2cack");
+      paramPacket.setMsfCommand(MsfCommand.sendVideoAck);
+      paramPacket.setNeedCallback(false);
+      localObject2 = new SharpVideoMsg();
+      ((SharpVideoMsg)localObject2).ver = ((Bundle)localObject1).getByte("ver");
+      ((SharpVideoMsg)localObject2).type = ((Bundle)localObject1).getByte("type");
+      ((SharpVideoMsg)localObject2).from_uin = a(String.valueOf(((Bundle)localObject1).getLong("from_uin")));
+      Object localObject3 = new ArrayList();
+      ((ArrayList)localObject3).add(Long.valueOf(((Bundle)localObject1).getLong("to_uin")));
+      ((SharpVideoMsg)localObject2).to_uin = ((ArrayList)localObject3);
+      ((SharpVideoMsg)localObject2).msg_time = ((Bundle)localObject1).getLong("msg_time");
+      ((SharpVideoMsg)localObject2).msg_type = ((Bundle)localObject1).getLong("msg_type");
+      ((SharpVideoMsg)localObject2).msg_seq = ((Bundle)localObject1).getLong("msg_seq");
+      ((SharpVideoMsg)localObject2).msg_uid = ((Bundle)localObject1).getLong("msg_uid");
+      ((SharpVideoMsg)localObject2).video_buff = ((Bundle)localObject1).getByteArray("video_buff");
+      ((SharpVideoMsg)localObject2).call_type = ((Bundle)localObject1).getShort("terminal_type");
+      ((SharpVideoMsg)localObject2).client_state = a();
+      localObject1 = new UniPacket();
+      ((UniPacket)localObject1).setServantName("SharpSvr");
+      ((UniPacket)localObject1).setFuncName("s2cack");
+      ((UniPacket)localObject1).put("SharpVideoMsg", localObject2);
+      paramPacket.putWupBuffer(((UniPacket)localObject1).encode());
+      paramPacket.addAttribute("stype", Long.valueOf(((SharpVideoMsg)localObject2).msg_type));
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("send sharp s2c ack message,cmd=s2cack seq:");
+        ((StringBuilder)localObject1).append(((SharpVideoMsg)localObject2).msg_seq);
+        ((StringBuilder)localObject1).append(" type:");
+        ((StringBuilder)localObject1).append(((SharpVideoMsg)localObject2).msg_type);
+        QLog.i("VideoServlet", 2, ((StringBuilder)localObject1).toString());
+      }
+      try
+      {
+        localObject1 = VideoPackageUtils.a(((SharpVideoMsg)localObject2).video_buff);
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("--> onSend() cmd = SharpSvr.s2cack , msg_type = ");
+        ((StringBuilder)localObject3).append(((SharpVideoMsg)localObject2).msg_type);
+        ((StringBuilder)localObject3).append(", bodyType = ");
+        ((StringBuilder)localObject3).append(((VideoPackageUtils.VideoPacket)localObject1).jdField_a_of_type_Int);
+        QLog.w("tagSharpSvr", 1, ((StringBuilder)localObject3).toString());
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      sendToMSF(paramIntent, paramPacket);
       return;
+    case 4: 
       ReportController.b(null, "CliOper", "", "", "0X80088B0", "0X80088B0", 0, 0, "", "", "", "");
       if (QLog.isColorLevel()) {
         QLog.d("VideoServlet", 2, "=====send sharp SharpSvr.c2s!!!!=====");
@@ -1436,20 +1605,25 @@ public class VideoServlet
       paramIntent = new SharpVideoMsg();
       paramIntent.ver = 1;
       paramIntent.type = 1;
-      paramIntent.from_uin = a(String.valueOf(((Bundle)localObject1).getLong("selfuin")));
-      localObject3 = new ArrayList();
-      ((ArrayList)localObject3).add(Long.valueOf(((Bundle)localObject1).getLong("toUin")));
-      paramIntent.to_uin = ((ArrayList)localObject3);
+      paramIntent.from_uin = a(String.valueOf(localException.getLong("selfuin")));
+      localObject2 = new ArrayList();
+      ((ArrayList)localObject2).add(Long.valueOf(localException.getLong("toUin")));
+      paramIntent.to_uin = ((ArrayList)localObject2);
       paramIntent.msg_time = 0L;
       paramIntent.msg_type = 0L;
       paramIntent.msg_seq = 0L;
       paramIntent.msg_uid = 0L;
-      paramIntent.video_buff = ((Bundle)localObject1).getByteArray("vMsg");
+      paramIntent.video_buff = localException.getByteArray("vMsg");
       paramPacket.addRequestPacket("SharpVideoMsg", paramIntent);
       try
       {
         paramPacket = VideoPackageUtils.a(paramIntent.video_buff);
-        QLog.w("tagSharpSvr", 1, "--> onSend() cmd = SharpSvr.c2s , msg_type = " + paramIntent.msg_type + ", bodyType = " + paramPacket.jdField_a_of_type_Int);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("--> onSend() cmd = SharpSvr.c2s , msg_type = ");
+        localStringBuilder.append(paramIntent.msg_type);
+        localStringBuilder.append(", bodyType = ");
+        localStringBuilder.append(paramPacket.jdField_a_of_type_Int);
+        QLog.w("tagSharpSvr", 1, localStringBuilder.toString());
         return;
       }
       catch (Exception paramIntent)
@@ -1457,219 +1631,49 @@ public class VideoServlet
         paramIntent.printStackTrace();
         return;
       }
-      paramPacket = new ToServiceMsg(null, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), "SharpSvr.s2cack");
-      paramPacket.setMsfCommand(MsfCommand.sendVideoAck);
-      paramPacket.setNeedCallback(false);
-      localObject3 = new SharpVideoMsg();
-      ((SharpVideoMsg)localObject3).ver = ((Bundle)localObject1).getByte("ver");
-      ((SharpVideoMsg)localObject3).type = ((Bundle)localObject1).getByte("type");
-      ((SharpVideoMsg)localObject3).from_uin = a(String.valueOf(((Bundle)localObject1).getLong("from_uin")));
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(((Bundle)localObject1).getLong("to_uin")));
-      ((SharpVideoMsg)localObject3).to_uin = localArrayList;
-      ((SharpVideoMsg)localObject3).msg_time = ((Bundle)localObject1).getLong("msg_time");
-      ((SharpVideoMsg)localObject3).msg_type = ((Bundle)localObject1).getLong("msg_type");
-      ((SharpVideoMsg)localObject3).msg_seq = ((Bundle)localObject1).getLong("msg_seq");
-      ((SharpVideoMsg)localObject3).msg_uid = ((Bundle)localObject1).getLong("msg_uid");
-      ((SharpVideoMsg)localObject3).video_buff = ((Bundle)localObject1).getByteArray("video_buff");
-      ((SharpVideoMsg)localObject3).call_type = ((Bundle)localObject1).getShort("terminal_type");
-      ((SharpVideoMsg)localObject3).client_state = a();
-      localObject1 = new UniPacket();
-      ((UniPacket)localObject1).setServantName("SharpSvr");
-      ((UniPacket)localObject1).setFuncName("s2cack");
-      ((UniPacket)localObject1).put("SharpVideoMsg", localObject3);
-      paramPacket.putWupBuffer(((UniPacket)localObject1).encode());
-      paramPacket.addAttribute("stype", Long.valueOf(((SharpVideoMsg)localObject3).msg_type));
-      if (((SharpVideoMsg)localObject3).msg_type == 3L)
+    }
+    paramPacket.setServantName("VideoSvc");
+    paramPacket.setFuncName("SendVideoMsg");
+    paramPacket.setSSOCommand("VideoCCSvc.Adaptation");
+    paramIntent = new VideoCallMsg();
+    paramIntent.ver = 1;
+    paramIntent.type = 1;
+    paramIntent.lUin = a(localStringBuilder.getString("selfuin"));
+    paramIntent.lPeerUin = localStringBuilder.getLong("toUin");
+    paramIntent.uDateTime = ((int)(System.currentTimeMillis() / 1000L));
+    paramIntent.cVerifyType = 0;
+    paramIntent.uSeqId = 0;
+    paramIntent.uSessionId = 0;
+    paramIntent.vMsg = localStringBuilder.getByteArray("vMsg");
+    paramPacket.addRequestPacket("VideoCallMsg", paramIntent);
+    return;
+    label2242:
+    paramIntent = localStringBuilder.getServiceCmd();
+    ((StringBuilder)localObject2).append(paramIntent);
+    ((StringBuilder)localObject2).append("]");
+    QLog.d("VideoServlet", 2, ((StringBuilder)localObject2).toString());
+    label2275:
+    if (localStringBuilder != null)
+    {
+      paramIntent = a(localStringBuilder.getServiceCmd());
+      if (paramIntent != null)
       {
-        VideoConnRateReport.a().a("eVideoSendACK", ((SharpVideoMsg)localObject3).msg_type, ((SharpVideoMsg)localObject3).msg_seq, ((Long)((SharpVideoMsg)localObject3).to_uin.get(0)).longValue(), ((SharpVideoMsg)localObject3).from_uin, 0);
-        VideoConnRateReport.a().b();
+        paramPacket.setServantName(paramIntent.a());
+        paramPacket.setFuncName(paramIntent.b());
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("VideoServlet", 2, "send sharp s2c ack message,cmd=s2cack seq:" + ((SharpVideoMsg)localObject3).msg_seq + " type:" + ((SharpVideoMsg)localObject3).msg_type);
-      }
-      try
-      {
-        localObject1 = VideoPackageUtils.a(((SharpVideoMsg)localObject3).video_buff);
-        QLog.w("tagSharpSvr", 1, "--> onSend() cmd = SharpSvr.s2cack , msg_type = " + ((SharpVideoMsg)localObject3).msg_type + ", bodyType = " + ((VideoPackageUtils.VideoPacket)localObject1).jdField_a_of_type_Int);
-        sendToMSF(paramIntent, paramPacket);
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
-        }
-      }
-      paramIntent = new StrupBuff();
-      paramIntent.prefix = "";
-      localObject3 = new ArrayList();
-      localObject2 = localException.getString("vMsg");
-      if (localObject2 != null) {}
-      try
-      {
-        ((ArrayList)localObject3).add(((String)localObject2).getBytes("utf-8"));
-        localObject2 = new HashMap();
-        ((HashMap)localObject2).put("custom_set", localObject3);
-        paramIntent.logstring = new HashMap((Map)localObject2);
-        paramIntent.encoding = 2;
-        paramPacket.setSSOCommand("CliLogSvc.UploadReq");
-        paramPacket.setServantName("QQService.CliLogSvc.MainServantObj");
-        paramPacket.setFuncName("UploadReq");
-        paramPacket.addRequestPacket("Data", paramIntent);
+      paramPacket.setSSOCommand(localStringBuilder.getServiceCmd());
+      paramPacket.putSendData(localStringBuilder.getWupBuffer());
+      paramPacket.setTimeout(localStringBuilder.getTimeout());
+      paramPacket.setAttributes(localStringBuilder.getAttributes());
+      if (!localStringBuilder.isNeedCallback()) {
         paramPacket.setNoResponse();
-        return;
       }
-      catch (UnsupportedEncodingException paramIntent)
-      {
-        paramIntent.printStackTrace();
-        return;
-      }
-      paramPacket = MsfMsgUtil.getGatewayIpMsg(null);
-      paramPacket.setTimeout(30000L);
-      paramPacket.setNeedCallback(true);
-      paramPacket.setNeedRemindSlowNetwork(false);
-      paramPacket.setAppId(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getAppid());
-      sendToMSF(paramIntent, paramPacket);
-      return;
-      i = ((Bundle)localObject2).getInt("status");
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoServlet", 2, String.format("onSend SetConnStatusMsg status=%s", new Object[] { Integer.valueOf(i) }));
-      }
-      paramPacket = MsfMsgUtil.getSetConnStatusMsg(null, i);
-      paramPacket.setTimeout(30000L);
-      paramPacket.setNeedCallback(true);
-      paramPacket.setNeedRemindSlowNetwork(false);
-      paramPacket.setAppId(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getAppid());
-      sendToMSF(paramIntent, paramPacket);
-      return;
-      boolean bool = ((Bundle)localObject2).getBoolean("keepAlive");
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoServlet", 2, String.format("onSend keepProcessAliveMsg keepAlive=%s", new Object[] { Boolean.valueOf(bool) }));
-      }
-      paramPacket = MsfMsgUtil.keepProcessAliveMsg(null, bool);
-      paramPacket.setNeedRemindSlowNetwork(false);
-      paramPacket.setAppId(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getAppid());
-      sendToMSF(paramIntent, paramPacket);
-      return;
-      b(paramPacket, (Bundle)localObject2);
-      return;
-      d(paramPacket, (Bundle)localObject2);
-      return;
-      paramIntent.putExtra("requestInviteMemberMode", ((Bundle)localObject2).getBoolean("selfuin"));
-      c(paramPacket, (Bundle)localObject2);
-      return;
-      paramPacket.setServantName("MultiVideo");
-      paramPacket.setFuncName("MultiVideos2cack");
-      paramPacket.setSSOCommand("MultiVideo.s2cack");
-      paramIntent = new MultiVideoMsg();
-      paramIntent.ver = ((Bundle)localObject2).getByte("ver");
-      paramIntent.type = ((Bundle)localObject2).getByte("type");
-      paramIntent.csCmd = ((Bundle)localObject2).getShort("cscmd");
-      paramIntent.subCmd = ((Bundle)localObject2).getShort("subcmd");
-      paramIntent.from_uin = a(String.valueOf(((Bundle)localObject2).getLong("from_uin")));
-      localObject3 = new ArrayList();
-      ((ArrayList)localObject3).add(Long.valueOf(((Bundle)localObject2).getLong("to_uin")));
-      paramIntent.to_uin = ((ArrayList)localObject3);
-      paramIntent.msg_time = ((Bundle)localObject2).getLong("msg_time");
-      paramIntent.msg_type = ((Bundle)localObject2).getLong("msg_type");
-      paramIntent.msg_seq = ((Bundle)localObject2).getLong("msg_seq");
-      paramIntent.msg_uid = ((Bundle)localObject2).getLong("msg_uid");
-      paramIntent.video_buff = ((Bundle)localObject2).getByteArray("video_buff");
-      paramPacket.addRequestPacket("MultiVideoMsg", paramIntent);
-      return;
-      paramIntent = new Oidb_0x625.Open2Tiny_ReqBody();
-      localObject2 = (ArrayList)((Bundle)localObject2).getSerializable("openid_list");
-      i = 0;
-      while (i < ((ArrayList)localObject2).size())
-      {
-        localObject3 = new Oidb_0x625.OpenIDInfoReq();
-        ((Oidb_0x625.OpenIDInfoReq)localObject3).bytes_openid.set(ByteStringMicro.copyFromUtf8((String)((ArrayList)localObject2).get(i)));
-        ((Oidb_0x625.OpenIDInfoReq)localObject3).uint32_acounttype.set(101);
-        ((Oidb_0x625.OpenIDInfoReq)localObject3).uint32_appid.set(1600000144);
-        paramIntent.msg_openid_req_info.add((MessageMicro)localObject3);
-        i += 1;
-      }
-      localObject2 = new oidb_sso.OIDBSSOPkg();
-      ((oidb_sso.OIDBSSOPkg)localObject2).uint32_command.set(1573);
-      ((oidb_sso.OIDBSSOPkg)localObject2).uint32_service_type.set(0);
-      ((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramIntent.toByteArray()));
-      paramIntent = ((oidb_sso.OIDBSSOPkg)localObject2).toByteArray();
-      localObject2 = new byte[paramIntent.length + 4];
-      PkgTools.DWord2Byte((byte[])localObject2, 0, paramIntent.length + 4);
-      PkgTools.copyData((byte[])localObject2, 4, paramIntent, paramIntent.length);
-      paramPacket.setSSOCommand("OidbSvc.0x625");
-      paramPacket.putSendData((byte[])localObject2);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("VideoServlet", 2, "CMD_OIDB_0x625 onSend");
-      return;
-      paramIntent = new cmd0xa02.ReqBody();
-      localObject2 = (ArrayList)((Bundle)localObject2).getSerializable("tinyid_list");
-      i = 0;
-      while (i < ((ArrayList)localObject2).size())
-      {
-        localObject3 = new cmd0xa02.TinyID();
-        ((cmd0xa02.TinyID)localObject3).uint64_tinyid.set(((Long)((ArrayList)localObject2).get(i)).longValue());
-        paramIntent.rpt_tinyid.add((MessageMicro)localObject3);
-        i += 1;
-      }
-      localObject2 = new oidb_sso.OIDBSSOPkg();
-      ((oidb_sso.OIDBSSOPkg)localObject2).uint32_command.set(2562);
-      ((oidb_sso.OIDBSSOPkg)localObject2).uint32_service_type.set(0);
-      ((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramIntent.toByteArray()));
-      paramIntent = ((oidb_sso.OIDBSSOPkg)localObject2).toByteArray();
-      localObject2 = new byte[paramIntent.length + 4];
-      PkgTools.DWord2Byte((byte[])localObject2, 0, paramIntent.length + 4);
-      PkgTools.copyData((byte[])localObject2, 4, paramIntent, paramIntent.length);
-      paramPacket.setSSOCommand("OidbSvc.0xa02");
-      paramPacket.putSendData((byte[])localObject2);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("VideoServlet", 2, "CMD_OIDB_0xA02 onSend");
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoServlet", 2, "=====send sharp SharpSvr.c2s!!!! 0xc2=====");
-      }
-      paramPacket.setServantName("SharpSvr");
-      paramPacket.setFuncName("c2s");
-      paramPacket.setSSOCommand("SharpSvr.c2s");
-      paramPacket.setNoResponse();
-      paramPacket.addAttribute("remind_slown_network", Boolean.valueOf(true));
-      paramIntent = new SharpVideoMsg();
-      paramIntent.ver = 1;
-      paramIntent.type = -62;
-      paramIntent.from_uin = a(String.valueOf(((Bundle)localObject2).getLong("selfuin")));
-      localObject3 = new ArrayList();
-      ((ArrayList)localObject3).add(Long.valueOf(((Bundle)localObject2).getLong("toUin")));
-      paramIntent.to_uin = ((ArrayList)localObject3);
-      paramIntent.msg_time = 0L;
-      paramIntent.msg_type = 0L;
-      paramIntent.msg_seq = 0L;
-      paramIntent.msg_uid = 0L;
-      paramIntent.video_buff = ((Bundle)localObject2).getByteArray("vMsg");
-      paramPacket.addRequestPacket("SharpVideoMsg", paramIntent);
-      return;
-      paramPacket.setSSOCommand("QQRTCSvc.echo");
-      paramPacket.setTimeout(10000L);
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoServlet", 2, "onSend with cmd: CMD_QQRTCSVC_ECHO");
-      }
-      paramPacket.putSendData(WupUtil.a(((Bundle)localObject2).getByteArray("vMsg")));
-      return;
-      a(paramPacket, (Bundle)localObject2);
-      return;
-      a("QQRTCSvc.query_codec_config", paramPacket, (Bundle)localObject2);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoServlet
  * JD-Core Version:    0.7.0.1
  */

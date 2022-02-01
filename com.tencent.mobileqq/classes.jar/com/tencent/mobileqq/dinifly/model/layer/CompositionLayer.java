@@ -39,69 +39,61 @@ public class CompositionLayer
   {
     super(paramLottieDrawable, paramLayer);
     paramLayer = paramLayer.getTimeRemapping();
-    LongSparseArray localLongSparseArray;
-    label103:
-    Layer localLayer;
     if (paramLayer != null)
     {
       this.timeRemapping = paramLayer.createAnimation();
       addAnimation(this.timeRemapping);
       this.timeRemapping.addUpdateListener(this);
-      localLongSparseArray = new LongSparseArray(paramLottieComposition.getLayers().size());
-      i = paramList.size() - 1;
-      paramLayer = null;
-      if (i < 0) {
-        break label275;
-      }
-      localLayer = (Layer)paramList.get(i);
-      this.layer = BaseLayer.forModel(localLayer, paramLottieDrawable, paramLottieComposition);
-      if (this.layer != null) {
-        break label157;
-      }
     }
+    else
+    {
+      this.timeRemapping = null;
+    }
+    LongSparseArray localLongSparseArray = new LongSparseArray(paramLottieComposition.getLayers().size());
+    int i = paramList.size() - 1;
+    paramLayer = null;
+    int j;
     for (;;)
     {
-      i -= 1;
-      break label103;
-      this.timeRemapping = null;
-      break;
-      label157:
-      localLongSparseArray.put(this.layer.getLayerModel().getId(), this.layer);
-      if (paramLayer != null)
-      {
-        paramLayer.setMatteLayer(this.layer);
-        paramLayer = null;
+      j = 0;
+      if (i < 0) {
+        break;
       }
-      else
+      Layer localLayer = (Layer)paramList.get(i);
+      this.layer = BaseLayer.forModel(localLayer, paramLottieDrawable, paramLottieComposition);
+      BaseLayer localBaseLayer = this.layer;
+      if (localBaseLayer != null)
       {
-        this.layer.parentComposition = this;
-        this.layerCount += this.layer.layerCount;
-        this.layers.add(0, this.layer);
-        switch (CompositionLayer.1.$SwitchMap$com$tencent$mobileqq$dinifly$model$layer$Layer$MatteType[localLayer.getMatteType().ordinal()])
+        localLongSparseArray.put(localBaseLayer.getLayerModel().getId(), this.layer);
+        if (paramLayer != null)
         {
-        default: 
-          break;
-        case 1: 
-        case 2: 
-          paramLayer = this.layer;
+          paramLayer.setMatteLayer(this.layer);
+          paramLayer = null;
+        }
+        else
+        {
+          this.layer.parentComposition = this;
+          this.layerCount += this.layer.layerCount;
+          this.layers.add(0, this.layer);
+          j = CompositionLayer.1.$SwitchMap$com$tencent$mobileqq$dinifly$model$layer$Layer$MatteType[localLayer.getMatteType().ordinal()];
+          if ((j == 1) || (j == 2)) {
+            paramLayer = this.layer;
+          }
         }
       }
+      i -= 1;
     }
-    label275:
-    int i = 0;
-    if (i < localLongSparseArray.size())
+    while (j < localLongSparseArray.size())
     {
-      paramLottieDrawable = (BaseLayer)localLongSparseArray.get(localLongSparseArray.keyAt(i));
-      if (paramLottieDrawable == null) {}
-      for (;;)
+      paramLottieDrawable = (BaseLayer)localLongSparseArray.get(localLongSparseArray.keyAt(j));
+      if (paramLottieDrawable != null)
       {
-        i += 1;
-        break;
         paramLayer = (BaseLayer)localLongSparseArray.get(paramLottieDrawable.getLayerModel().getParentId());
         if (paramLayer != null) {
           paramLottieDrawable.setParentLayer(paramLayer);
         }
       }
+      j += 1;
     }
   }
   
@@ -127,15 +119,14 @@ public class CompositionLayer
     super.addValueCallback(paramT, paramLottieValueCallback);
     if (paramT == LottieProperty.TIME_REMAP)
     {
-      if (paramLottieValueCallback == null) {
+      if (paramLottieValueCallback == null)
+      {
         this.timeRemapping = null;
+        return;
       }
+      this.timeRemapping = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
+      addAnimation(this.timeRemapping);
     }
-    else {
-      return;
-    }
-    this.timeRemapping = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
-    addAnimation(this.timeRemapping);
   }
   
   public void collectLayers(LayerInfo paramLayerInfo)
@@ -165,9 +156,11 @@ public class CompositionLayer
     int i = this.layers.size() - 1;
     while (i >= 0)
     {
-      boolean bool = true;
+      boolean bool;
       if (!this.newClipRect.isEmpty()) {
         bool = paramCanvas.clipRect(this.newClipRect);
+      } else {
+        bool = true;
       }
       if (bool) {
         ((BaseLayer)this.layers.get(i)).draw(paramCanvas, paramMatrix, paramInt);
@@ -281,12 +274,18 @@ public class CompositionLayer
   
   public String toString()
   {
-    return "CompositionLayer{refId=" + this.layerModel.getRefId() + ", layerCount=" + this.layerCount + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CompositionLayer{refId=");
+    localStringBuilder.append(this.layerModel.getRefId());
+    localStringBuilder.append(", layerCount=");
+    localStringBuilder.append(this.layerCount);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.model.layer.CompositionLayer
  * JD-Core Version:    0.7.0.1
  */

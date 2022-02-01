@@ -40,41 +40,45 @@ public class CanvasJsPlugin
     {
       JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
       Paint localPaint = new Paint(1);
-      String str = localJSONObject.optString("fontFamily");
+      Object localObject = localJSONObject.optString("fontFamily");
       if ("normal".equals(localJSONObject.optString("fontStyle"))) {
-        localPaint.setTypeface(Typeface.create(str, 0));
+        localPaint.setTypeface(Typeface.create((String)localObject, 0));
       }
-      str = localJSONObject.optString("text");
+      localObject = localJSONObject.optString("text");
       localPaint.setTextSize(localJSONObject.optInt("fontSize"));
-      float f = localPaint.measureText(str);
+      float f = localPaint.measureText((String)localObject);
       localJSONObject = new JSONObject();
       try
       {
         localJSONObject.put("width", f);
-        localJSONObject = ApiUtil.wrapCallbackOk(paramRequestEvent.event, localJSONObject);
-        if ((paramRequestEvent.jsService != null) && (localJSONObject != null)) {
-          paramRequestEvent.jsService.evaluateCallbackJs(paramRequestEvent.callbackId, JSONUtil.append(localJSONObject, "errMsg", paramRequestEvent.event + ":complete").toString());
-        }
-        return localJSONObject.toString();
       }
       catch (JSONException localJSONException)
       {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
+        localJSONException.printStackTrace();
       }
-      return "";
+      localJSONObject = ApiUtil.wrapCallbackOk(paramRequestEvent.event, localJSONObject);
+      if ((paramRequestEvent.jsService != null) && (localJSONObject != null))
+      {
+        IJsService localIJsService = paramRequestEvent.jsService;
+        int i = paramRequestEvent.callbackId;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramRequestEvent.event);
+        ((StringBuilder)localObject).append(":complete");
+        localIJsService.evaluateCallbackJs(i, JSONUtil.append(localJSONObject, "errMsg", ((StringBuilder)localObject).toString()).toString());
+      }
+      paramRequestEvent = localJSONObject.toString();
+      return paramRequestEvent;
     }
     catch (JSONException paramRequestEvent)
     {
       paramRequestEvent.printStackTrace();
     }
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.CanvasJsPlugin
  * JD-Core Version:    0.7.0.1
  */

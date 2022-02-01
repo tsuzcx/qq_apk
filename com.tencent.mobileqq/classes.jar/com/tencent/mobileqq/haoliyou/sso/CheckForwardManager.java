@@ -38,9 +38,14 @@ public class CheckForwardManager
   
   public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, DownloadListener paramDownloadListener)
   {
-    QLog.i("TeleScreen|CheckForwardManager", 1, "dl src: " + paramString1 + ", refId: " + paramString4);
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    NewIntent localNewIntent = new NewIntent(localBaseApplicationImpl.getApplicationContext(), CheckForwardServlet.class);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("dl src: ");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(", refId: ");
+    ((StringBuilder)localObject).append(paramString4);
+    QLog.i("TeleScreen|CheckForwardManager", 1, ((StringBuilder)localObject).toString());
+    localObject = BaseApplicationImpl.getApplication();
+    NewIntent localNewIntent = new NewIntent(((BaseApplicationImpl)localObject).getApplicationContext(), CheckForwardServlet.class);
     ServerApi.ReqDownloadCheckRecmd localReqDownloadCheckRecmd = new ServerApi.ReqDownloadCheckRecmd();
     localReqDownloadCheckRecmd.uin.set(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
     if (paramString2 != null) {
@@ -63,75 +68,98 @@ public class CheckForwardManager
     {
       int i = paramString1.a(paramContext, paramDownloadListener);
       localNewIntent.putExtra("req_id", i);
-      if (QLog.isColorLevel()) {
-        QLog.d("TeleScreen|CheckForwardManager", 2, "add req with id: " + i);
+      if (QLog.isColorLevel())
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("add req with id: ");
+        paramContext.append(i);
+        QLog.d("TeleScreen|CheckForwardManager", 2, paramContext.toString());
       }
     }
     localNewIntent.setObserver(TeleScreenObserver.a());
-    localBaseApplicationImpl.getRuntime().startServlet(localNewIntent);
+    ((BaseApplicationImpl)localObject).getRuntime().startServlet(localNewIntent);
   }
   
   public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, List<ResolveInfo> paramList, String paramString6, JumpListener paramJumpListener)
   {
-    QLog.i("TeleScreen|CheckForwardManager", 1, "jump src: " + paramString1 + ", pkg: " + paramString3 + ", scheme: " + paramString4 + ", action: " + paramString5 + "， refId: " + paramString6);
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    NewIntent localNewIntent = new NewIntent(localBaseApplicationImpl.getApplicationContext(), CheckForwardServlet.class);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("jump src: ");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(", pkg: ");
+    ((StringBuilder)localObject).append(paramString3);
+    ((StringBuilder)localObject).append(", scheme: ");
+    ((StringBuilder)localObject).append(paramString4);
+    ((StringBuilder)localObject).append(", action: ");
+    ((StringBuilder)localObject).append(paramString5);
+    ((StringBuilder)localObject).append("， refId: ");
+    ((StringBuilder)localObject).append(paramString6);
+    QLog.i("TeleScreen|CheckForwardManager", 1, ((StringBuilder)localObject).toString());
+    localObject = BaseApplicationImpl.getApplication();
+    NewIntent localNewIntent = new NewIntent(((BaseApplicationImpl)localObject).getApplicationContext(), CheckForwardServlet.class);
     ServerApi.ReqJumpCheckRecmd localReqJumpCheckRecmd = new ServerApi.ReqJumpCheckRecmd();
     localReqJumpCheckRecmd.uin.set(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
-    if (paramString3 != null) {
+    if (paramString3 != null)
+    {
       localReqJumpCheckRecmd.pkg_name.add(paramString3);
     }
-    for (;;)
+    else if (paramList != null)
     {
-      if (paramString4 != null) {
-        localReqJumpCheckRecmd.scheme.set(paramString4);
-      }
-      if (paramString5 != null) {
-        localReqJumpCheckRecmd.action.set(paramString5);
-      }
-      if (paramString2 != null) {
-        localReqJumpCheckRecmd.url.set(paramString2);
-      }
-      if (paramString1 != null) {
-        localReqJumpCheckRecmd.source.set(paramString1);
-      }
-      if (paramString6 != null) {
-        localReqJumpCheckRecmd.ref_source.set(paramString6);
-      }
-      localReqJumpCheckRecmd.platform.set("android");
-      localNewIntent.putExtra("CMD", "QQApkSvc.check_jump_apk");
-      localNewIntent.putExtra("RequestBytes", localReqJumpCheckRecmd.toByteArray());
-      int i = TeleScreenObserver.a().a(paramContext, paramJumpListener);
-      localNewIntent.putExtra("req_id", i);
-      if (QLog.isColorLevel()) {
-        QLog.d("TeleScreen|CheckForwardManager", 2, "add req with id: " + i);
-      }
-      localNewIntent.setObserver(TeleScreenObserver.a());
-      localBaseApplicationImpl.getRuntime().startServlet(localNewIntent);
-      if ((localReqJumpCheckRecmd.pkg_name.isEmpty()) && (TextUtils.isEmpty(localReqJumpCheckRecmd.scheme.get())) && (TextUtils.isEmpty(localReqJumpCheckRecmd.action.get())) && (TextUtils.isEmpty(localReqJumpCheckRecmd.url.get())))
+      paramString3 = paramList.iterator();
+      while (paramString3.hasNext())
       {
-        FightReporter.c();
-        QLog.e("TeleScreen|CheckForwardManager", 1, "openthirdappnullinfo" + QLog.getStackTraceString(new Throwable()));
-      }
-      return;
-      if (paramList != null)
-      {
-        paramString3 = paramList.iterator();
-        while (paramString3.hasNext())
-        {
-          paramList = (ResolveInfo)paramString3.next();
-          if (paramList.activityInfo != null) {
-            localReqJumpCheckRecmd.pkg_name.add(paramList.activityInfo.packageName);
-          } else if (paramList.serviceInfo != null) {
-            localReqJumpCheckRecmd.pkg_name.add(paramList.serviceInfo.packageName);
-          } else if ((Build.VERSION.SDK_INT >= 19) && (paramList.providerInfo != null)) {
-            localReqJumpCheckRecmd.pkg_name.add(paramList.providerInfo.packageName);
-          }
-        }
-        if ((QLog.isColorLevel()) && (localReqJumpCheckRecmd.pkg_name.has()) && (!localReqJumpCheckRecmd.pkg_name.isEmpty())) {
-          QLog.d("TeleScreen|CheckForwardManager", 2, "resolve pkg: " + (String)localReqJumpCheckRecmd.pkg_name.get(0));
+        paramList = (ResolveInfo)paramString3.next();
+        if (paramList.activityInfo != null) {
+          localReqJumpCheckRecmd.pkg_name.add(paramList.activityInfo.packageName);
+        } else if (paramList.serviceInfo != null) {
+          localReqJumpCheckRecmd.pkg_name.add(paramList.serviceInfo.packageName);
+        } else if ((Build.VERSION.SDK_INT >= 19) && (paramList.providerInfo != null)) {
+          localReqJumpCheckRecmd.pkg_name.add(paramList.providerInfo.packageName);
         }
       }
+      if ((QLog.isColorLevel()) && (localReqJumpCheckRecmd.pkg_name.has()) && (!localReqJumpCheckRecmd.pkg_name.isEmpty()))
+      {
+        paramString3 = new StringBuilder();
+        paramString3.append("resolve pkg: ");
+        paramString3.append((String)localReqJumpCheckRecmd.pkg_name.get(0));
+        QLog.d("TeleScreen|CheckForwardManager", 2, paramString3.toString());
+      }
+    }
+    if (paramString4 != null) {
+      localReqJumpCheckRecmd.scheme.set(paramString4);
+    }
+    if (paramString5 != null) {
+      localReqJumpCheckRecmd.action.set(paramString5);
+    }
+    if (paramString2 != null) {
+      localReqJumpCheckRecmd.url.set(paramString2);
+    }
+    if (paramString1 != null) {
+      localReqJumpCheckRecmd.source.set(paramString1);
+    }
+    if (paramString6 != null) {
+      localReqJumpCheckRecmd.ref_source.set(paramString6);
+    }
+    localReqJumpCheckRecmd.platform.set("android");
+    localNewIntent.putExtra("CMD", "QQApkSvc.check_jump_apk");
+    localNewIntent.putExtra("RequestBytes", localReqJumpCheckRecmd.toByteArray());
+    int i = TeleScreenObserver.a().a(paramContext, paramJumpListener);
+    localNewIntent.putExtra("req_id", i);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("add req with id: ");
+      paramContext.append(i);
+      QLog.d("TeleScreen|CheckForwardManager", 2, paramContext.toString());
+    }
+    localNewIntent.setObserver(TeleScreenObserver.a());
+    ((BaseApplicationImpl)localObject).getRuntime().startServlet(localNewIntent);
+    if ((localReqJumpCheckRecmd.pkg_name.isEmpty()) && (TextUtils.isEmpty(localReqJumpCheckRecmd.scheme.get())) && (TextUtils.isEmpty(localReqJumpCheckRecmd.action.get())) && (TextUtils.isEmpty(localReqJumpCheckRecmd.url.get())))
+    {
+      FightReporter.c();
+      paramContext = new StringBuilder();
+      paramContext.append("openthirdappnullinfo");
+      paramContext.append(QLog.getStackTraceString(new Throwable()));
+      QLog.e("TeleScreen|CheckForwardManager", 1, paramContext.toString());
     }
   }
   
@@ -163,7 +191,7 @@ public class CheckForwardManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.haoliyou.sso.CheckForwardManager
  * JD-Core Version:    0.7.0.1
  */

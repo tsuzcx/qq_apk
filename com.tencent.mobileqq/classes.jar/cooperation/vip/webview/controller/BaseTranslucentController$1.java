@@ -15,7 +15,10 @@ class BaseTranslucentController$1
     try
     {
       paramContext = paramIntent.getAction();
-      QZLog.i("BaseTranslucentControll", 4, "reveiver action = " + paramContext);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reveiver action = ");
+      localStringBuilder.append(paramContext);
+      QZLog.i("BaseTranslucentControll", 4, localStringBuilder.toString());
       this.a.a(paramIntent);
       return;
     }
@@ -27,7 +30,7 @@ class BaseTranslucentController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.webview.controller.BaseTranslucentController.1
  * JD-Core Version:    0.7.0.1
  */

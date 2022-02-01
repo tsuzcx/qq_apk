@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.profile.stickynote.publish.ui;
 
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.profile.stickynote.publish.StickyNotePublishUtils;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
@@ -23,26 +23,29 @@ class StickyNotePublishFragment$10
     }
     if (paramBoolean)
     {
-      QQToast.a(BaseApplication.context, 2, 2131699057, 0).a();
-      if (this.a.getActivity() != null)
+      QQToast.a(BaseApplication.context, 2, 2131699162, 0).a();
+      if (this.a.getBaseActivity() != null)
       {
         StickyNotePublishFragment.b(this.a, false);
-        this.a.a(this.a.getActivity().app);
-        this.a.getActivity().setResult(-1);
-        this.a.getActivity().finish();
+        paramString = this.a;
+        paramString.a(paramString.getBaseActivity().app);
+        this.a.getBaseActivity().setResult(-1);
+        this.a.getBaseActivity().finish();
       }
-      return;
     }
-    int i = 2131699055;
-    if (paramInt == StickyNotePublishUtils.b) {
-      i = 2131699056;
+    else
+    {
+      int i = 2131699160;
+      if (paramInt == StickyNotePublishUtils.b) {
+        i = 2131699161;
+      }
+      QQToast.a(BaseApplication.context, 1, i, 0).a();
     }
-    QQToast.a(BaseApplication.context, 1, i, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment.10
  * JD-Core Version:    0.7.0.1
  */

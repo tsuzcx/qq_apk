@@ -25,15 +25,16 @@ public final class oidb_0xcf4$PrefetchMutualMarkInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 58, 1602, 1610 }, new String[] { "eMutualMarkType", "uint32_level", "uint32_days", "uint32_current_days", "eMutualMarkNewType", "uint64_sub_level", "bytes_grade_resource_info", "bytes_min_ver", "bytes_max_ver" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3 }, PrefetchMutualMarkInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 58, 1602, 1610 }, new String[] { "eMutualMarkType", "uint32_level", "uint32_days", "uint32_current_days", "eMutualMarkNewType", "uint64_sub_level", "bytes_grade_resource_info", "bytes_min_ver", "bytes_max_ver" }, new Object[] { localInteger, localInteger, localInteger, localInteger, Integer.valueOf(1), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3 }, PrefetchMutualMarkInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.oidb_0xcf4.oidb_0xcf4.PrefetchMutualMarkInfo
  * JD-Core Version:    0.7.0.1
  */

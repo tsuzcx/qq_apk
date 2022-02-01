@@ -15,15 +15,13 @@ public class PagerBaseAdapterWrapper
   public PagerBaseAdapterWrapper(BaseAdapter paramBaseAdapter, int paramInt)
   {
     this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;
-    if (paramInt > 0) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = paramInt;
-      if (this.jdField_a_of_type_AndroidWidgetBaseAdapter != null) {
-        this.jdField_a_of_type_AndroidWidgetBaseAdapter.registerDataSetObserver(new PagerBaseAdapterWrapper.1(this));
-      }
-      return;
+    if (paramInt <= 0) {
       paramInt = 1;
+    }
+    this.jdField_a_of_type_Int = paramInt;
+    paramBaseAdapter = this.jdField_a_of_type_AndroidWidgetBaseAdapter;
+    if (paramBaseAdapter != null) {
+      paramBaseAdapter.registerDataSetObserver(new PagerBaseAdapterWrapper.1(this));
     }
   }
   
@@ -56,20 +54,26 @@ public class PagerBaseAdapterWrapper
   public int b()
   {
     int i = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount();
-    int j = i / this.jdField_a_of_type_Int;
-    if (i % this.jdField_a_of_type_Int != 0) {}
-    for (i = 1;; i = 0) {
-      return i + j;
+    int k = this.jdField_a_of_type_Int;
+    int j = i / k;
+    if (i % k != 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
+    return j + i;
   }
   
   public int getCount()
   {
-    int i = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount();
-    if ((this.b + 1) * this.jdField_a_of_type_Int > i) {
-      return i % this.jdField_a_of_type_Int;
+    int k = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount();
+    int m = this.b;
+    int j = this.jdField_a_of_type_Int;
+    int i = j;
+    if ((m + 1) * j > k) {
+      i = k % j;
     }
-    return this.jdField_a_of_type_Int;
+    return i;
   }
   
   public Object getItem(int paramInt)
@@ -91,7 +95,7 @@ public class PagerBaseAdapterWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.PagerBaseAdapterWrapper
  * JD-Core Version:    0.7.0.1
  */

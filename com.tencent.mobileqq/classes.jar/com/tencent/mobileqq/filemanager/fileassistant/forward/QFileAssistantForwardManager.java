@@ -31,14 +31,11 @@ public class QFileAssistantForwardManager
     if (!this.jdField_a_of_type_Boolean) {
       return;
     }
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131692688);
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      ThreadManagerV2.getUIHandlerV2().postDelayed(new QFileAssistantForwardManager.1(this, paramString), 300L);
-      return;
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131692645);
+    if (TextUtils.isEmpty(paramString)) {
       paramString = str;
     }
+    ThreadManagerV2.getUIHandlerV2().postDelayed(new QFileAssistantForwardManager.1(this, paramString), 300L);
   }
   
   public void a(FileManagerEntity paramFileManagerEntity)
@@ -53,12 +50,11 @@ public class QFileAssistantForwardManager
       long l2 = Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue();
       localFileManagerEngine.a(paramFileManagerEntity.nSessionId, paramFileManagerEntity.strFilePath, l1, l2, 0, 0);
     }
-    for (;;)
+    else
     {
-      b("");
-      return;
       localFileManagerEngine.a(paramFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_JavaLangString, 0, true);
     }
+    b("");
   }
   
   public void a(String paramString)
@@ -73,7 +69,7 @@ public class QFileAssistantForwardManager
     localBundle.putBoolean("forward _key_nojump", true);
     localBundle.putInt("uintype", 0);
     localBundle.putString("uin", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("uinname", BaseApplicationImpl.getContext().getString(2131698224));
+    localBundle.putString("uinname", BaseApplicationImpl.getContext().getString(2131698288));
     localBundle.putInt("key_forward_ability_type", ForwardAbility.ForwardAbilityType.a.intValue());
     localIntent.putExtras(localBundle);
     ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, BaseApplicationImpl.getContext(), localIntent, null);
@@ -87,7 +83,7 @@ public class QFileAssistantForwardManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.forward.QFileAssistantForwardManager
  * JD-Core Version:    0.7.0.1
  */

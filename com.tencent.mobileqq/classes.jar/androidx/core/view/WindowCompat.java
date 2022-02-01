@@ -16,21 +16,18 @@ public final class WindowCompat
   public static <T extends View> T requireViewById(@NonNull Window paramWindow, @IdRes int paramInt)
   {
     if (Build.VERSION.SDK_INT >= 28) {
-      paramWindow = paramWindow.requireViewById(paramInt);
+      return paramWindow.requireViewById(paramInt);
     }
-    View localView;
-    do
-    {
+    paramWindow = paramWindow.findViewById(paramInt);
+    if (paramWindow != null) {
       return paramWindow;
-      localView = paramWindow.findViewById(paramInt);
-      paramWindow = localView;
-    } while (localView != null);
+    }
     throw new IllegalArgumentException("ID does not reference a View inside this Window");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.view.WindowCompat
  * JD-Core Version:    0.7.0.1
  */

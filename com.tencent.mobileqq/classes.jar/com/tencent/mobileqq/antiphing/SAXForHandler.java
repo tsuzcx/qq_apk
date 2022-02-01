@@ -24,7 +24,10 @@ class SAXForHandler
   public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
   {
     paramArrayOfChar = paramArrayOfChar.toString();
-    QLog.d("SAXForHandler", 4, "characters: " + paramArrayOfChar);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("characters: ");
+    localStringBuilder.append(paramArrayOfChar);
+    QLog.d("SAXForHandler", 4, localStringBuilder.toString());
   }
   
   public void endDocument()
@@ -35,7 +38,14 @@ class SAXForHandler
   
   public void endElement(String paramString1, String paramString2, String paramString3)
   {
-    QLog.d("SAXForHandler", 4, "endElement uri:" + paramString1 + " localName:" + paramString2 + " qName:" + paramString3);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("endElement uri:");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(" localName:");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(" qName:");
+    localStringBuilder.append(paramString3);
+    QLog.d("SAXForHandler", 4, localStringBuilder.toString());
   }
   
   public void startDocument()
@@ -47,14 +57,27 @@ class SAXForHandler
   
   public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("startElement: uri:");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(" localName:");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(" qName:");
+    localStringBuilder.append(paramString3);
+    QLog.d("SAXForHandler", 4, localStringBuilder.toString());
+    boolean bool = "config".equals(paramString2);
     int j = 0;
     int i = 0;
-    QLog.d("SAXForHandler", 4, "startElement: uri:" + paramString1 + " localName:" + paramString2 + " qName:" + paramString3);
-    if ("config".equals(paramString2)) {
+    if (bool) {
       while (i < paramAttributes.getLength())
       {
         this.jdField_a_of_type_Int = Integer.valueOf(paramAttributes.getValue(i)).intValue();
-        QLog.d("SAXForHandler", 4, "startElement: localName:" + paramString2 + " value: " + this.jdField_a_of_type_Int);
+        paramString1 = new StringBuilder();
+        paramString1.append("startElement: localName:");
+        paramString1.append(paramString2);
+        paramString1.append(" value: ");
+        paramString1.append(this.jdField_a_of_type_Int);
+        QLog.d("SAXForHandler", 4, paramString1.toString());
         i += 1;
       }
     }
@@ -65,7 +88,14 @@ class SAXForHandler
       {
         paramString1 = paramAttributes.getValue(i);
         paramString3 = paramAttributes.getLocalName(i);
-        QLog.d("SAXForHandler", 4, "startElement: localName:" + paramString2 + "name: " + paramString3 + " url: " + paramString1);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("startElement: localName:");
+        localStringBuilder.append(paramString2);
+        localStringBuilder.append("name: ");
+        localStringBuilder.append(paramString3);
+        localStringBuilder.append(" url: ");
+        localStringBuilder.append(paramString1);
+        QLog.d("SAXForHandler", 4, localStringBuilder.toString());
         this.jdField_a_of_type_JavaUtilArrayList.add(paramString1);
         i += 1;
       }
@@ -74,7 +104,7 @@ class SAXForHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.antiphing.SAXForHandler
  * JD-Core Version:    0.7.0.1
  */

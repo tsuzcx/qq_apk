@@ -9,10 +9,14 @@ class CTEntryMng$8
 {
   CTEntryMng$8(CTEntryMng paramCTEntryMng) {}
   
-  public void onMayKnowEntryStateChanged(boolean paramBoolean, Bundle paramBundle)
+  protected void onMayKnowEntryStateChanged(boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CTEntryMng", 2, "onMayKnowEntryStateChanged isSuccess=" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("onMayKnowEntryStateChanged isSuccess=");
+      paramBundle.append(paramBoolean);
+      QLog.d("CTEntryMng", 2, paramBundle.toString());
     }
     if (paramBoolean)
     {
@@ -23,7 +27,7 @@ class CTEntryMng$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.topentry.CTEntryMng.8
  * JD-Core Version:    0.7.0.1
  */

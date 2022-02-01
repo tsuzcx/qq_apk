@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.armap;
 
-import com.tencent.av.redpacket.config.AVRedPacketRDHandler;
-import com.tencent.avgame.gamelogic.gameres.AvGameResHandler;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.ar.ARPromotionMgr.ARPromotionRDHandler;
 import com.tencent.mobileqq.troop.troopgame.TroopGameCardResHandler;
@@ -13,12 +11,16 @@ public class ResDownloadHandler
   
   static
   {
-    jdField_a_of_type_JavaLangString = ResDownloadManager.class.getSimpleName() + "." + ResDownloadHandler.class.getSimpleName();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(ResDownloadManager.class.getSimpleName());
+    localStringBuilder.append(".");
+    localStringBuilder.append(ResDownloadHandler.class.getSimpleName());
+    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
   }
   
   public ResDownloadHandler()
   {
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqArmapResDownloadHandler$RDHandler = new ResDownloadHandler.RDHandler[8];
+    this.jdField_a_of_type_ArrayOfComTencentMobileqqArmapResDownloadHandler$RDHandler = new ResDownloadHandler.RDHandler[7];
   }
   
   public ResDownloadHandler.RDHandler a(AppInterface paramAppInterface, int paramInt)
@@ -27,7 +29,7 @@ public class ResDownloadHandler
     if (paramInt >= 0)
     {
       i = paramInt;
-      if (paramInt <= 8) {}
+      if (paramInt <= 7) {}
     }
     else
     {
@@ -38,33 +40,35 @@ public class ResDownloadHandler
     if (localObject == null)
     {
       paramAppInterface = (AppInterface)localObject;
-      switch (i)
+      if (i != 2)
       {
-      default: 
         paramAppInterface = (AppInterface)localObject;
+        if (i != 3) {
+          if (i != 5)
+          {
+            if (i != 6) {
+              paramAppInterface = (AppInterface)localObject;
+            } else {
+              paramAppInterface = new TroopGameCardResHandler();
+            }
+          }
+          else {
+            paramAppInterface = new ARPromotionRDHandler();
+          }
+        }
       }
     }
-    for (;;)
-    {
-      localObject = paramAppInterface;
-      if (paramAppInterface == null) {
-        localObject = new ResDownloadHandler.DefaultRDHandler();
-      }
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqArmapResDownloadHandler$RDHandler[i] = localObject;
-      return localObject;
-      paramAppInterface = new AVRedPacketRDHandler();
-      continue;
-      paramAppInterface = new ARPromotionRDHandler();
-      continue;
-      paramAppInterface = new AvGameResHandler();
-      continue;
-      paramAppInterface = new TroopGameCardResHandler();
+    localObject = paramAppInterface;
+    if (paramAppInterface == null) {
+      localObject = new ResDownloadHandler.DefaultRDHandler();
     }
+    this.jdField_a_of_type_ArrayOfComTencentMobileqqArmapResDownloadHandler$RDHandler[i] = localObject;
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ResDownloadHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -17,10 +17,15 @@ public abstract class Animation
   
   public void drawAnimation()
   {
+    Animation.InnerAnimationListener localInnerAnimationListener;
     if (!this.a)
     {
-      if ((!this.c) && (this.animationListener != null)) {
-        this.animationListener.onAnimationFinish();
+      if (!this.c)
+      {
+        localInnerAnimationListener = this.animationListener;
+        if (localInnerAnimationListener != null) {
+          localInnerAnimationListener.onAnimationFinish();
+        }
       }
       return;
     }
@@ -29,8 +34,9 @@ public abstract class Animation
     {
       this.a = false;
       performAnimation(1.0F, this.d);
-      if (this.animationListener != null) {
-        this.animationListener.onAnimationFinish();
+      localInnerAnimationListener = this.animationListener;
+      if (localInnerAnimationListener != null) {
+        localInnerAnimationListener.onAnimationFinish();
       }
       this.c = true;
       return;
@@ -82,18 +88,16 @@ public abstract class Animation
   
   public boolean startAnimation()
   {
-    boolean bool = true;
     if (this.iDuration <= 0L) {
-      bool = false;
+      return false;
     }
-    do
-    {
-      return bool;
-      this.b = true;
-      this.ltimeStart = SystemClock.uptimeMillis();
-      this.a = true;
-    } while (this.animationListener == null);
-    this.animationListener.onAnimationStart();
+    this.b = true;
+    this.ltimeStart = SystemClock.uptimeMillis();
+    this.a = true;
+    Animation.InnerAnimationListener localInnerAnimationListener = this.animationListener;
+    if (localInnerAnimationListener != null) {
+      localInnerAnimationListener.onAnimationStart();
+    }
     return true;
   }
   
@@ -104,7 +108,7 @@ public abstract class Animation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.core.functions.animation.Animation
  * JD-Core Version:    0.7.0.1
  */

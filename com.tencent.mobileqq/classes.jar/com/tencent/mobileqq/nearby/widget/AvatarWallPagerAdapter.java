@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.widget;
 
-import android.support.v4.view.PagerAdapter;
 import android.view.View;
+import androidx.viewpager.widget.PagerAdapter;
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,25 +31,26 @@ public abstract class AvatarWallPagerAdapter<T>
   protected int a(int paramInt)
   {
     int i = a();
-    if (i <= 1) {}
-    do
-    {
+    if (i <= 1) {
       return 0;
-      if (paramInt == 0) {
-        return i - 3;
-      }
-    } while (paramInt == i - 1);
+    }
+    if (paramInt == 0) {
+      return i - 3;
+    }
+    if (paramInt == i - 1) {
+      return 0;
+    }
     return paramInt - 1;
-  }
-  
-  protected PagerAdapter a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter$InnerPagerAdapter;
   }
   
   public abstract View a(int paramInt, T paramT);
   
   public abstract View a(boolean paramBoolean, int paramInt);
+  
+  protected PagerAdapter a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter$InnerPagerAdapter;
+  }
   
   public void a()
   {
@@ -85,15 +86,15 @@ public abstract class AvatarWallPagerAdapter<T>
   
   public boolean a(T paramT1, T paramT2)
   {
-    if ((paramT1 == null) || (paramT2 == null)) {
-      return false;
+    if ((paramT1 != null) && (paramT2 != null)) {
+      return paramT1.equals(paramT2);
     }
-    return paramT1.equals(paramT2);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.widget.AvatarWallPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -23,12 +23,18 @@ public final class QQMiniDownloader
     Intrinsics.checkParameterIsNotNull(paramFile, "toPath");
     Intrinsics.checkParameterIsNotNull(paramListener, "listener");
     MiniappDownloadUtil.getInstance().download(paramString, paramFile.getAbsolutePath(), true, (Downloader.DownloadListener)new QQMiniDownloader.download.1(paramListener), Downloader.DownloadMode.FastMode, null);
-    GameLog.getInstance().i("[download]", "from:" + paramString + ", to:" + paramFile);
+    paramListener = GameLog.getInstance();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("from:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", to:");
+    localStringBuilder.append(paramFile);
+    paramListener.i("[download]", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.api.QQMiniDownloader
  * JD-Core Version:    0.7.0.1
  */

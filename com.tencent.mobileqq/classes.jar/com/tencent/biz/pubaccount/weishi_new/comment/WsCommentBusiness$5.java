@@ -18,7 +18,11 @@ class WsCommentBusiness$5
     if ((paramWeishiTask.jdField_a_of_type_JavaLangObject instanceof stPostCommentReplyV2Rsp))
     {
       stPostCommentReplyV2Rsp localstPostCommentReplyV2Rsp = (stPostCommentReplyV2Rsp)paramWeishiTask.jdField_a_of_type_JavaLangObject;
-      paramWeishiTask = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentBusiness.a(new Object[] { Integer.valueOf(4), Integer.valueOf(paramWeishiTask.b), paramWeishiTask.jdField_a_of_type_JavaLangString, localstPostCommentReplyV2Rsp, this.jdField_a_of_type_UserGrowthStSimpleMetaReply, this.jdField_a_of_type_UserGrowthStSimpleMetaReply.id, Integer.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentBusiness.hashCode()) });
+      WsCommentBusiness localWsCommentBusiness = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentBusiness;
+      int i = paramWeishiTask.b;
+      paramWeishiTask = paramWeishiTask.jdField_a_of_type_JavaLangString;
+      stSimpleMetaReply localstSimpleMetaReply = this.jdField_a_of_type_UserGrowthStSimpleMetaReply;
+      paramWeishiTask = localWsCommentBusiness.a(new Object[] { Integer.valueOf(4), Integer.valueOf(i), paramWeishiTask, localstPostCommentReplyV2Rsp, localstSimpleMetaReply, localstSimpleMetaReply.id, Integer.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentBusiness.hashCode()) });
       StoryDispatcher.a().dispatch(paramWeishiTask);
       return;
     }
@@ -27,7 +31,7 @@ class WsCommentBusiness$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsCommentBusiness.5
  * JD-Core Version:    0.7.0.1
  */

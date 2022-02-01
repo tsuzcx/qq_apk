@@ -16,39 +16,37 @@ class BaseChatDrawer$2
       return;
     }
     paramView = new int[2];
-    paramInt1 = 0;
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if (localView != null)
     {
-      this.jdField_a_of_type_AndroidViewView.getLocationInWindow(paramView);
+      localView.getLocationInWindow(paramView);
       paramInt1 = paramView[1] + this.jdField_a_of_type_AndroidViewView.getHeight();
     }
-    if (BaseChatDrawer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer) != null)
+    else
     {
-      paramInt2 = BaseChatDrawer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer).getRight();
-      label81:
-      if (BaseChatDrawer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer) == null) {
-        break label180;
-      }
+      paramInt1 = 0;
     }
-    label180:
-    for (paramInt3 = BaseChatDrawer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer).getHeight();; paramInt3 = 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseChatDrawer", 2, String.format("setTouchableBound, drawerWidth: %s, drawerHeight: %s, titleBarBottom: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt1) }));
-      }
-      if ((paramInt2 <= 0) || (paramInt3 <= 0) || (paramInt1 <= 0)) {
-        break;
-      }
-      BaseChatDrawer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer).setTouchableBound(0, paramInt1, paramInt2, paramInt3);
-      return;
+    if (BaseChatDrawer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer) != null) {
+      paramInt2 = BaseChatDrawer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer).getRight();
+    } else {
       paramInt2 = 0;
-      break label81;
+    }
+    if (BaseChatDrawer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer) != null) {
+      paramInt3 = BaseChatDrawer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer).getHeight();
+    } else {
+      paramInt3 = 0;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseChatDrawer", 2, String.format("setTouchableBound, drawerWidth: %s, drawerHeight: %s, titleBarBottom: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt1) }));
+    }
+    if ((paramInt2 > 0) && (paramInt3 > 0) && (paramInt1 > 0)) {
+      BaseChatDrawer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer).setTouchableBound(0, paramInt1, paramInt2, paramInt3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.drawer.BaseChatDrawer.2
  * JD-Core Version:    0.7.0.1
  */

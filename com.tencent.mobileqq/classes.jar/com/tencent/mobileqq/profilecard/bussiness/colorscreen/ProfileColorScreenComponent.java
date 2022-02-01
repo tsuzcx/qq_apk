@@ -7,29 +7,30 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.SVIPHandler;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.mobileqq.floatscr.ColorScreenManager;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.ProfileCardTemplate;
-import com.tencent.mobileqq.profilecard.base.component.AbsProfileComponent;
+import com.tencent.mobileqq.floatscr.ColorScreenConstants;
+import com.tencent.mobileqq.floatscr.IColorScreenManager;
 import com.tencent.mobileqq.profilecard.base.component.AbsProfileHeaderComponent;
+import com.tencent.mobileqq.profilecard.base.component.AbsQQProfileComponent;
 import com.tencent.mobileqq.profilecard.base.framework.IComponentCenter;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
+import com.tencent.mobileqq.profilecard.template.ProfileCardTemplate;
 import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
 import com.tencent.mobileqq.simpleui.SimpleUIUtil;
-import com.tencent.mobileqq.vas.VasExtensionManager;
 import com.tencent.mobileqq.vas.VasManager;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.vas.api.IVasSingedApi;
+import com.tencent.mobileqq.vas.svip.api.ISVIPHandler;
+import com.tencent.mobileqq.vas.util.VasUtil;
+import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
 
 public class ProfileColorScreenComponent
-  extends AbsProfileComponent<FrameLayout>
+  extends AbsQQProfileComponent<FrameLayout>
 {
   private static final String TAG = "ProfileColorScreenComponent";
   private ProfileColorScreenComponent.ColorScreenLoader mColorScreenLoader;
@@ -46,9 +47,10 @@ public class ProfileColorScreenComponent
   
   private void destroyColorScreenView()
   {
-    if (this.mColorScreenView != null)
+    DiniFlyAnimationView localDiniFlyAnimationView = this.mColorScreenView;
+    if (localDiniFlyAnimationView != null)
     {
-      this.mColorScreenView.cancelAnimation();
+      localDiniFlyAnimationView.cancelAnimation();
       ((FrameLayout)this.mViewContainer).removeView((View)this.mViewContainer);
     }
   }
@@ -70,42 +72,50 @@ public class ProfileColorScreenComponent
   
   private void loadColorScreenInner()
   {
-    if ((this.mApp == null) || (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null) || (TextUtils.isEmpty(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a))) {}
-    int i;
-    do
+    if ((this.mApp != null) && (((ProfileCardInfo)this.mData).allInOne != null))
     {
-      return;
-      if (!ColorScreenManager.a)
+      if (TextUtils.isEmpty(((ProfileCardInfo)this.mData).allInOne.uin)) {
+        return;
+      }
+      if (!ColorScreenConstants.a)
       {
-        QLog.i("ColorScreenManager", 1, "ColorScreenManager.sEnable is false, loadColorScreen fail.");
+        QLog.i("ProfileColorScreenComponent", 1, "ColorScreenManager.sEnable is false, loadColorScreen fail.");
         return;
       }
       if (SimpleUIUtil.a())
       {
-        QLog.i("ColorScreenManager", 1, "loadColorScreen, SimpleUIMode is open now");
+        QLog.i("ProfileColorScreenComponent", 1, "loadColorScreen, SimpleUIMode is open now");
         return;
       }
       this.mHaveLoadedOnce = true;
-      i = ((SVIPHandler)this.mApp.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
+      int i = ((ISVIPHandler)this.mApp.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(((ProfileCardInfo)this.mData).allInOne.uin);
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("loadColorScreen ");
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(" mLastColorScreen ");
+        ((StringBuilder)localObject).append(this.mLastColorScreen);
+        QLog.i("ProfileColorScreenComponent", 2, ((StringBuilder)localObject).toString());
+      }
+      if ((i > 0) && (i != this.mLastColorScreen))
+      {
+        this.mColorScreenView.cancelAnimation();
+        this.mLastColorScreen = i;
+        if (((ProfileCardInfo)this.mData).allInOne.uin.equals(this.mApp.getCurrentAccountUin())) {
+          localObject = "1";
+        } else {
+          localObject = "2";
+        }
+        VasWebviewUtil.a(this.mApp.getCurrentAccountUin(), "Bubble", "ShowEffect", (String)localObject, 1, 0, 0, null, Integer.toString(i), null);
+        this.mColorScreenLoader = new ProfileColorScreenComponent.ColorScreenLoader(this, i);
+        VasUtil.a(this.mApp).getColorScreen().a(i, VasManager.a(this.mColorScreenLoader));
+        return;
+      }
       if (QLog.isColorLevel()) {
-        QLog.i("ColorScreenManager", 2, "loadColorScreen " + i + " mLastColorScreen " + this.mLastColorScreen);
+        QLog.i("ProfileColorScreenComponent", 2, "loadColorScreen early return");
       }
-      if ((i > 0) && (i != this.mLastColorScreen)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("ColorScreenManager", 2, "loadColorScreen early return");
-    return;
-    this.mColorScreenView.cancelAnimation();
-    this.mLastColorScreen = i;
-    if (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a.equals(this.mApp.getCurrentAccountUin())) {}
-    for (Object localObject = "1";; localObject = "2")
-    {
-      VasWebviewUtil.reportCommercialDrainage(this.mApp.getCurrentAccountUin(), "Bubble", "ShowEffect", (String)localObject, 1, 0, 0, null, Integer.toString(i), null);
-      localObject = ((VasExtensionManager)this.mApp.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a;
-      this.mColorScreenLoader = new ProfileColorScreenComponent.ColorScreenLoader(this, i);
-      ((ColorScreenManager)localObject).a(i, VasManager.a(this.mColorScreenLoader));
-      return;
     }
   }
   
@@ -113,23 +123,25 @@ public class ProfileColorScreenComponent
   {
     if (this.mHaveLoadedOnce)
     {
+      int j = 1;
       Object localObject = (AbsProfileHeaderComponent)this.mComponentCenter.getComponent(1002);
-      if (localObject == null) {
-        break label65;
+      int i = j;
+      if (localObject != null)
+      {
+        localObject = ((AbsProfileHeaderComponent)localObject).getHeaderView();
+        i = j;
+        if ((localObject instanceof VasProfileTagView))
+        {
+          i = j;
+          if (((VasProfileTagView)localObject).isFullScreen) {
+            i = 0;
+          }
+        }
       }
-      localObject = ((AbsProfileHeaderComponent)localObject).getHeaderView();
-      if ((!(localObject instanceof VasProfileTagView)) || (!((VasProfileTagView)localObject).isFullScreen)) {
-        break label65;
-      }
-    }
-    label65:
-    for (int i = 0;; i = 1)
-    {
       this.mLastColorScreen = 0;
       if (i != 0) {
         loadColorScreenInner();
       }
-      return;
     }
   }
   
@@ -148,9 +160,9 @@ public class ProfileColorScreenComponent
     loadColorScreenInner();
   }
   
-  public void onCreate(BaseActivity paramBaseActivity, Bundle paramBundle)
+  public void onCreate(QBaseActivity paramQBaseActivity, Bundle paramBundle)
   {
-    super.onCreate(paramBaseActivity, paramBundle);
+    super.onCreate(paramQBaseActivity, paramBundle);
     initColorScreenView();
     this.mUIHandler = new Handler(Looper.getMainLooper());
     this.mValidate = true;
@@ -159,7 +171,7 @@ public class ProfileColorScreenComponent
   public boolean onDataUpdate(ProfileCardInfo paramProfileCardInfo)
   {
     boolean bool = super.onDataUpdate(paramProfileCardInfo);
-    if ((((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqDataCard != null) && ((((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId != ProfileCardTemplate.f) || (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.f == 1))) {
+    if ((((ProfileCardInfo)this.mData).card != null) && ((((ProfileCardInfo)this.mData).card.lCurrentStyleId != ProfileCardTemplate.PROFILE_CARD_STYLE_TAG) || (((ProfileCardInfo)this.mData).allInOne.colorScreen == 1))) {
       loadColorScreenInner();
     }
     return bool;
@@ -168,9 +180,10 @@ public class ProfileColorScreenComponent
   public void onDestroy()
   {
     this.mValidate = false;
-    if (this.mUIHandler != null)
+    Handler localHandler = this.mUIHandler;
+    if (localHandler != null)
     {
-      this.mUIHandler.removeCallbacksAndMessages(null);
+      localHandler.removeCallbacksAndMessages(null);
       this.mUIHandler = null;
     }
     destroyColorScreenView();
@@ -185,7 +198,7 @@ public class ProfileColorScreenComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.colorscreen.ProfileColorScreenComponent
  * JD-Core Version:    0.7.0.1
  */

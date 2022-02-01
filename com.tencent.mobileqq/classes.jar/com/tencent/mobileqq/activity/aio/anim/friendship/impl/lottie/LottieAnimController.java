@@ -36,8 +36,9 @@ public class LottieAnimController
     }
     if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
     {
-      if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+      if (localImageView != null) {
+        localImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
       }
       this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
     }
@@ -49,8 +50,13 @@ public class LottieAnimController
       QLog.d("LottieAnimController", 2, "setOnCloseClickListener");
     }
     this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    if ((this.jdField_a_of_type_AndroidViewView$OnClickListener != null) && (this.jdField_a_of_type_AndroidWidgetImageView != null)) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    paramOnClickListener = this.jdField_a_of_type_AndroidViewView$OnClickListener;
+    if (paramOnClickListener != null)
+    {
+      ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+      if (localImageView != null) {
+        localImageView.setOnClickListener(paramOnClickListener);
+      }
     }
   }
   
@@ -79,20 +85,25 @@ public class LottieAnimController
       localLayoutParams.topMargin = ScreenUtil.dip2px(30.0F);
       localLayoutParams.rightMargin = ScreenUtil.dip2px(30.0F);
       paramFriendShipLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
-      if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      paramFriendShipLayout = this.jdField_a_of_type_AndroidViewView$OnClickListener;
+      if (paramFriendShipLayout != null) {
+        this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramFriendShipLayout);
       }
     }
   }
   
   public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LottieAnimController", 2, "setCloseBtnBitmapPath: " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setCloseBtnBitmapPath: ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("LottieAnimController", 2, ((StringBuilder)localObject).toString());
     }
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inScaled = true;
-    localOptions.inDensity = 320;
+    Object localObject = new BitmapFactory.Options();
+    ((BitmapFactory.Options)localObject).inScaled = true;
+    ((BitmapFactory.Options)localObject).inDensity = 320;
     try
     {
       if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
@@ -102,20 +113,24 @@ public class LottieAnimController
         }
         this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
       }
-      this.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.a(paramString, localOptions);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.a(paramString, (BitmapFactory.Options)localObject);
       return;
     }
     catch (Exception paramString)
     {
-      QLog.e("LottieAnimController", 1, "Decode bitmap error");
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-      return;
+      break label120;
     }
     catch (OutOfMemoryError paramString)
     {
-      QLog.e("LottieAnimController", 1, "Decode bitmap OOM");
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      label106:
+      break label106;
     }
+    QLog.e("LottieAnimController", 1, "Decode bitmap OOM");
+    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    return;
+    label120:
+    QLog.e("LottieAnimController", 1, "Decode bitmap error");
+    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
   }
   
   public boolean a()
@@ -123,8 +138,9 @@ public class LottieAnimController
     if (QLog.isColorLevel()) {
       QLog.d("LottieAnimController", 2, "isAnimating");
     }
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning();
+    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    if (localValueAnimator != null) {
+      localValueAnimator.isRunning();
     }
     return false;
   }
@@ -136,8 +152,9 @@ public class LottieAnimController
     }
     if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
     {
-      if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+      ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+      if (localImageView != null) {
+        localImageView.setImageDrawable(null);
       }
       this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
     }
@@ -148,10 +165,12 @@ public class LottieAnimController
     if (QLog.isColorLevel()) {
       QLog.d("LottieAnimController", 2, "recycleBitmaps");
     }
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
     {
-      if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+      localObject = this.jdField_a_of_type_AndroidWidgetImageView;
+      if (localObject != null) {
+        ((ImageView)localObject).setImageDrawable(null);
       }
       this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
     }
@@ -179,7 +198,7 @@ public class LottieAnimController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.friendship.impl.lottie.LottieAnimController
  * JD-Core Version:    0.7.0.1
  */

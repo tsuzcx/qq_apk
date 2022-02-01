@@ -5,7 +5,7 @@ import com.tencent.qqprotect.common.QSecRptController;
 public class RptImpl
   implements IRpt, IRuntimeInterface
 {
-  private static volatile RptImpl a = null;
+  private static volatile RptImpl a;
   
   private RptImpl()
   {
@@ -14,26 +14,28 @@ public class RptImpl
   
   public static RptImpl a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new RptImpl();
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new RptImpl();
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   public void a(int paramInt1, int paramInt2, String paramString)
   {
-    if (paramInt1 == 1) {
+    if (paramInt1 == 1)
+    {
       QSecRptController.a(paramString, paramInt2);
-    }
-    while (paramInt1 != 2) {
       return;
     }
-    QSecRptController.b(paramString, paramInt2);
+    if (paramInt1 == 2) {
+      QSecRptController.b(paramString, paramInt2);
+    }
   }
   
   public String getInterfaceName()
@@ -43,7 +45,7 @@ public class RptImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.RptImpl
  * JD-Core Version:    0.7.0.1
  */

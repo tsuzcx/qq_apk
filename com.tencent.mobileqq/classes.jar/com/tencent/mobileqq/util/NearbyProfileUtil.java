@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.util;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.ProfileActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.business.NearbyCardHandler;
+import com.tencent.mobileqq.nearby.business.INearbyCardHandler;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
+import com.tencent.mobileqq.profilecard.utils.ProfileEntryUtils;
 import com.tencent.mobileqq.utils.StringUtil;
 import tencent.sso.accretion.flower_info.SFlowerInfoRsp;
 
@@ -26,12 +26,12 @@ public class NearbyProfileUtil
   static
   {
     jdField_a_of_type_ArrayOfJavaLangString = new String[] { "男", "女" };
-    jdField_a_of_type_ArrayOfInt = new int[] { 2130845820, 2130845828 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2130845693, 2130845701 };
     jdField_b_of_type_ArrayOfJavaLangString = new String[] { "保密", "单身", "恋爱中", "已婚" };
     c = new String[] { "", "水瓶座", "双鱼座", "白羊座", "金牛座", "双子座", "巨蟹座", "狮子座", "处女座", "天秤座", "天蝎座", "射手座", "摩羯座" };
     d = new String[] { "不限", "计算机/互联网/通信", "生产/工艺/制造", "医疗/护理/制药", "金融/银行/投资/保险", "商业/服务业/个体经营", "文化/广告/传媒", "娱乐/艺术/表演", "律师/法务", "教育/培训", "公务员/行政/事业单位", "模特", "空姐", "学生", "其他职业" };
     e = new String[] { "", "IT", "制造", "医疗", "金融", "商业", "文化", "艺术", "法律", "教育", "行政", "模特", "空姐", "学生", "" };
-    jdField_b_of_type_ArrayOfInt = new int[] { 2130846206, 2130845048, 2130845048, 2130845048, 2130845936, 2130845936, 2130846224, 2130846224, 2130845720, 2130845720, 2130845720, 2130846206, 2130846206, 2130845998, 2130846206 };
+    jdField_b_of_type_ArrayOfInt = new int[] { 2130846082, 2130844925, 2130844925, 2130844925, 2130845809, 2130845809, 2130846100, 2130846100, 2130845593, 2130845593, 2130845593, 2130846082, 2130846082, 2130845873, 2130846082 };
   }
   
   public static final int a(int paramInt)
@@ -46,37 +46,38 @@ public class NearbyProfileUtil
   {
     int j = 0;
     int i = j;
-    flower_info.SFlowerInfoRsp localSFlowerInfoRsp;
-    if (paramArrayOfByte != null) {
-      localSFlowerInfoRsp = new flower_info.SFlowerInfoRsp();
-    }
-    try
+    if (paramArrayOfByte != null)
     {
-      localSFlowerInfoRsp.mergeFrom(paramArrayOfByte);
+      flower_info.SFlowerInfoRsp localSFlowerInfoRsp = new flower_info.SFlowerInfoRsp();
+      try
+      {
+        localSFlowerInfoRsp.mergeFrom(paramArrayOfByte);
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
       i = j;
       if (localSFlowerInfoRsp.num.has()) {
         i = localSFlowerInfoRsp.num.get();
       }
-      return i;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
+    return i;
   }
   
   private static final long a()
   {
-    return 0L | 0x4 | 0x800 | 0x1000 | 0x8000;
+    return 38916L;
   }
   
   public static final String a(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < jdField_b_of_type_ArrayOfJavaLangString.length)) {
-      return jdField_b_of_type_ArrayOfJavaLangString[paramInt];
+    if (paramInt >= 0)
+    {
+      String[] arrayOfString = jdField_b_of_type_ArrayOfJavaLangString;
+      if (paramInt < arrayOfString.length) {
+        return arrayOfString[paramInt];
+      }
     }
     return "";
   }
@@ -89,82 +90,72 @@ public class NearbyProfileUtil
     Bundle localBundle = new Bundle();
     localBundle.putBoolean("key_is_nearby_people_card", true);
     localBundle.putShort("key_new_profile_modified_flag", (short)1);
-    if (paramBoolean) {}
-    for (int i = 0;; i = 1)
-    {
-      localBundle.putShort("key_flower_visible_switch", (short)i);
-      localBundle.putBoolean("key_nearby_people_card_force_update", true);
-      NearbyCardHandler localNearbyCardHandler = (NearbyCardHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.NEARBY_CARD_HANDLER);
-      if (localNearbyCardHandler == null) {
-        break;
-      }
-      paramQQAppInterface.execute(new NearbyProfileUtil.2(localNearbyCardHandler, localBundle));
-      return;
+    localBundle.putShort("key_flower_visible_switch", (short)(paramBoolean ^ true));
+    localBundle.putBoolean("key_nearby_people_card_force_update", true);
+    INearbyCardHandler localINearbyCardHandler = (INearbyCardHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.NEARBY_CARD_HANDLER);
+    if (localINearbyCardHandler != null) {
+      paramQQAppInterface.execute(new NearbyProfileUtil.2(localINearbyCardHandler, localBundle));
     }
   }
   
-  public static final void a(NearbyCardHandler paramNearbyCardHandler, QQAppInterface paramQQAppInterface, long paramLong1, String paramString, int paramInt1, byte[] paramArrayOfByte, long paramLong2, boolean paramBoolean1, long paramLong3, boolean paramBoolean2, long paramLong4, int paramInt2)
+  public static final void a(INearbyCardHandler paramINearbyCardHandler, QQAppInterface paramQQAppInterface, long paramLong1, String paramString, int paramInt1, byte[] paramArrayOfByte, long paramLong2, boolean paramBoolean1, long paramLong3, boolean paramBoolean2, long paramLong4, int paramInt2)
   {
     if (paramLong1 > 0L)
     {
-      if (ProfileActivity.d(paramInt1))
+      if (ProfileEntryUtils.isFromFreshNews(paramInt1))
       {
-        paramNearbyCardHandler.a(paramQQAppInterface.getCurrentAccountUin(), "0", 45, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
+        paramINearbyCardHandler.a(paramQQAppInterface.getCurrentAccountUin(), "0", 45, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
         return;
       }
-      if (ProfileActivity.b(paramInt1))
+      if (ProfileEntryUtils.isFromDating(paramInt1))
       {
-        paramNearbyCardHandler.a(paramQQAppInterface.getCurrentAccountUin(), "0", 39, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
+        paramINearbyCardHandler.a(paramQQAppInterface.getCurrentAccountUin(), "0", 39, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
         return;
       }
       if (paramInt1 == 16)
       {
-        paramNearbyCardHandler.a(paramQQAppInterface.getCurrentAccountUin(), "0", 46, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
+        paramINearbyCardHandler.a(paramQQAppInterface.getCurrentAccountUin(), "0", 46, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
         return;
       }
       if (paramInt1 == 38)
       {
-        paramNearbyCardHandler.a(paramQQAppInterface.getCurrentAccountUin(), "0", 47, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
+        paramINearbyCardHandler.a(paramQQAppInterface.getCurrentAccountUin(), "0", 47, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
         return;
       }
       if (paramInt1 == 100)
       {
-        paramNearbyCardHandler.a(paramQQAppInterface.getCurrentAccountUin(), "0", 49, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
+        paramINearbyCardHandler.a(paramQQAppInterface.getCurrentAccountUin(), "0", 49, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
         return;
       }
       if (paramInt1 == 51)
       {
-        paramNearbyCardHandler.a(paramQQAppInterface.getCurrentAccountUin(), "0", 51, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
+        paramINearbyCardHandler.a(paramQQAppInterface.getCurrentAccountUin(), "0", 51, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
         return;
       }
-      paramNearbyCardHandler.a(paramQQAppInterface.getCurrentAccountUin(), "0", 41, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
+      paramINearbyCardHandler.a(paramQQAppInterface.getCurrentAccountUin(), "0", 41, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
       return;
     }
     if (paramString.equals(paramQQAppInterface.getCurrentAccountUin()))
     {
-      paramNearbyCardHandler.a(paramQQAppInterface.getCurrentAccountUin(), paramQQAppInterface.getCurrentAccountUin(), 0, 0L, (byte)0, 0L, 0L, null, "", a(), 10004, null, 0L, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
+      paramINearbyCardHandler.a(paramQQAppInterface.getCurrentAccountUin(), paramQQAppInterface.getCurrentAccountUin(), 0, 0L, (byte)0, 0L, 0L, null, "", a(), 10004, null, 0L, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
       return;
     }
-    int i = 6;
-    if (ProfileActivity.c(paramInt1)) {
-      i = 42;
+    if (ProfileEntryUtils.isFromHotChat(paramInt1)) {
+      paramInt1 = 42;
+    } else if (ProfileEntryUtils.isFromFreshNews(paramInt1)) {
+      paramInt1 = 45;
+    } else if (ProfileEntryUtils.isFromDating(paramInt1)) {
+      paramInt1 = 39;
+    } else if (paramInt1 == 16) {
+      paramInt1 = 46;
+    } else if (paramInt1 == 38) {
+      paramInt1 = 47;
+    } else if (paramInt1 == 51) {
+      paramInt1 = 51;
+    } else {
+      paramInt1 = 6;
     }
-    for (;;)
-    {
-      paramNearbyCardHandler.a(paramQQAppInterface.getCurrentAccountUin(), paramString, i, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, 0L, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
-      return;
-      if (ProfileActivity.d(paramInt1)) {
-        i = 45;
-      } else if (ProfileActivity.b(paramInt1)) {
-        i = 39;
-      } else if (paramInt1 == 16) {
-        i = 46;
-      } else if (paramInt1 == 38) {
-        i = 47;
-      } else if (paramInt1 == 51) {
-        i = 51;
-      }
-    }
+    paramINearbyCardHandler.a(paramQQAppInterface.getCurrentAccountUin(), paramString, paramInt1, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, 0L, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
   }
   
   public static boolean a(int paramInt)
@@ -174,6 +165,7 @@ public class NearbyProfileUtil
   
   public static boolean a(QQAppInterface paramQQAppInterface)
   {
+    boolean bool = true;
     if (paramQQAppInterface == null) {
       return true;
     }
@@ -189,19 +181,14 @@ public class NearbyProfileUtil
       }
       localEntityManager.close();
     }
-    boolean bool;
-    if (paramQQAppInterface != null) {
-      if (paramQQAppInterface.switchGiftVisible == 0L) {
-        bool = true;
-      }
-    }
-    for (;;)
+    if (paramQQAppInterface != null)
     {
-      return bool;
+      if (paramQQAppInterface.switchGiftVisible == 0L) {
+        return true;
+      }
       bool = false;
-      continue;
-      bool = true;
     }
+    return bool;
   }
   
   public static final int b(int paramInt)
@@ -228,13 +215,13 @@ public class NearbyProfileUtil
     if (paramInt == 5) {
       return 2;
     }
-    if (ProfileActivity.c(paramInt)) {
+    if (ProfileEntryUtils.isFromHotChat(paramInt)) {
       return 3;
     }
     if (paramInt == 21) {
       return 4;
     }
-    if (ProfileActivity.d(paramInt)) {
+    if (ProfileEntryUtils.isFromFreshNews(paramInt)) {
       return 5;
     }
     return 99;
@@ -266,7 +253,7 @@ public class NearbyProfileUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.NearbyProfileUtil
  * JD-Core Version:    0.7.0.1
  */

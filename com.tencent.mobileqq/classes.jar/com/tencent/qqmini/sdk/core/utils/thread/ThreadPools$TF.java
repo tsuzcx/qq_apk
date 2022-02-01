@@ -25,12 +25,17 @@ final class ThreadPools$TF
   public Thread newThread(@NotNull Runnable paramRunnable)
   {
     Intrinsics.checkParameterIsNotNull(paramRunnable, "runnable");
-    return new Thread((Runnable)new ThreadPools.TF.newThread.1(this, paramRunnable), this.name + '-' + this.id.getAndIncrement());
+    paramRunnable = (Runnable)new ThreadPools.TF.newThread.1(this, paramRunnable);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.name);
+    localStringBuilder.append('-');
+    localStringBuilder.append(this.id.getAndIncrement());
+    return new Thread(paramRunnable, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.thread.ThreadPools.TF
  * JD-Core Version:    0.7.0.1
  */

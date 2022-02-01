@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.utils;
 
-import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoyBiuButton;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoyLikeButton;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.NativeButton;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdReportData;
-import com.tencent.biz.pubaccount.util.ReadinJoyActionUtil;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdActionUtilService;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdService;
+import com.tencent.mobileqq.kandian.glue.pts.api.IViewBaseUtil;
+import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class InteraActionReportUtils
@@ -19,44 +19,48 @@ public class InteraActionReportUtils
     {
     default: 
       return -1;
-    case 11: 
-      return 1;
-    case 12: 
-      return 2;
+    case 14: 
+      return 4;
     case 13: 
       return 3;
+    case 12: 
+      return 2;
     }
-    return 4;
+    return 1;
   }
   
-  public static void a(ViewBase paramViewBase, ArticleInfo paramArticleInfo, boolean paramBoolean)
+  public static void a(ViewBase paramViewBase, AbsBaseArticleInfo paramAbsBaseArticleInfo, boolean paramBoolean)
   {
-    if ((!ReadinJoyActionUtil.a(paramArticleInfo)) || (paramViewBase == null)) {}
-    do
+    if (((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).isUgcAd(paramAbsBaseArticleInfo))
     {
-      return;
-      if ((paramViewBase instanceof ReadInJoyLikeButton))
-      {
-        NativeAdUtils.a(new AdReportData().a(BaseApplication.getContext()).a(11).b(3).a((AdvertisementInfo)paramArticleInfo));
+      if (paramViewBase == null) {
         return;
       }
-      if ((paramViewBase instanceof ReadInJoyBiuButton))
+      if (((IViewBaseUtil)QRoute.api(IViewBaseUtil.class)).isReadInJoyLikeButton(paramViewBase))
       {
-        NativeAdUtils.a(new AdReportData().a(BaseApplication.getContext()).a(13).b(3).a((AdvertisementInfo)paramArticleInfo));
+        ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(BaseApplication.getContext()).a(11).b(3).a((AdvertisementInfo)paramAbsBaseArticleInfo));
         return;
       }
-    } while (!(paramViewBase instanceof NativeButton));
-    if (paramBoolean)
-    {
-      NativeAdUtils.a(new AdReportData().a(BaseApplication.getContext()).a(14).b(3).a((AdvertisementInfo)paramArticleInfo));
-      return;
+      if (((IViewBaseUtil)QRoute.api(IViewBaseUtil.class)).isReadInJoyBiuButton(paramViewBase))
+      {
+        ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(BaseApplication.getContext()).a(13).b(3).a((AdvertisementInfo)paramAbsBaseArticleInfo));
+        return;
+      }
+      if ((paramViewBase instanceof NativeButton))
+      {
+        if (paramBoolean)
+        {
+          ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(BaseApplication.getContext()).a(14).b(3).a((AdvertisementInfo)paramAbsBaseArticleInfo));
+          return;
+        }
+        ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(BaseApplication.getContext()).a(12).b(3).a((AdvertisementInfo)paramAbsBaseArticleInfo));
+      }
     }
-    NativeAdUtils.a(new AdReportData().a(BaseApplication.getContext()).a(12).b(3).a((AdvertisementInfo)paramArticleInfo));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.utils.InteraActionReportUtils
  * JD-Core Version:    0.7.0.1
  */

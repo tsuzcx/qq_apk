@@ -25,8 +25,12 @@ class VideoPlayerView$9
   
   public void notifyVideoSeek(int paramInt)
   {
-    QLog.d("VideoPlayerView", 4, "notifyVideoSeek seek " + paramInt);
-    this.a.a(paramInt * this.a.a().getDurationMs() / 100L);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("notifyVideoSeek seek ");
+    ((StringBuilder)localObject).append(paramInt);
+    QLog.d("VideoPlayerView", 4, ((StringBuilder)localObject).toString());
+    localObject = this.a;
+    ((VideoPlayerView)localObject).a(paramInt * ((VideoPlayerView)localObject).a().getDurationMs() / 100L);
   }
   
   public void notifyVideoStart()
@@ -56,7 +60,7 @@ class VideoPlayerView$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.videoplayer.VideoPlayerView.9
  * JD-Core Version:    0.7.0.1
  */

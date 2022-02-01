@@ -11,7 +11,11 @@ class SemCameraCaptureProcessor10_1$SemCaptureCallBack
   
   public void onError(int paramInt)
   {
-    Log.i(SemCameraCaptureProcessor10_1.access$100(), " SemCaptureCallBack onError!!! " + paramInt);
+    String str = SemCameraCaptureProcessor10_1.access$100();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" SemCaptureCallBack onError!!! ");
+    localStringBuilder.append(paramInt);
+    Log.i(str, localStringBuilder.toString());
     if (SemCameraCaptureProcessor10_1.access$200(this.this$0) != null) {
       SemCameraCaptureProcessor10_1.access$200(this.this$0).onError(paramInt);
     }
@@ -19,7 +23,11 @@ class SemCameraCaptureProcessor10_1$SemCaptureCallBack
   
   public void onPictureAvailable(ByteBuffer paramByteBuffer)
   {
-    Log.i(SemCameraCaptureProcessor10_1.access$100(), " SemCaptureCallBack onPictureAvailable!!! " + paramByteBuffer);
+    String str = SemCameraCaptureProcessor10_1.access$100();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" SemCaptureCallBack onPictureAvailable!!! ");
+    localStringBuilder.append(paramByteBuffer);
+    Log.i(str, localStringBuilder.toString());
     if (SemCameraCaptureProcessor10_1.access$200(this.this$0) != null) {
       SemCameraCaptureProcessor10_1.access$200(this.this$0).onPictureAvailable(paramByteBuffer);
     }

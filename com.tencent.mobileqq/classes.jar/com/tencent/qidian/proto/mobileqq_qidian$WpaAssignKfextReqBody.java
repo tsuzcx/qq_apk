@@ -24,12 +24,13 @@ public final class mobileqq_qidian$WpaAssignKfextReqBody
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 48 }, new String[] { "uint32_wpa_type", "bytes_sigT_kf", "uint64_assign_id", "uint64_customer_uin", "str_rkey", "bool_need_sigmsg" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Long.valueOf(0L), Long.valueOf(0L), "", Boolean.valueOf(false) }, WpaAssignKfextReqBody.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 48 }, new String[] { "uint32_wpa_type", "bytes_sigT_kf", "uint64_assign_id", "uint64_customer_uin", "str_rkey", "bool_need_sigmsg" }, new Object[] { Integer.valueOf(0), localByteStringMicro, localLong, localLong, "", Boolean.valueOf(false) }, WpaAssignKfextReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qidian.proto.mobileqq_qidian.WpaAssignKfextReqBody
  * JD-Core Version:    0.7.0.1
  */

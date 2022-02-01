@@ -13,7 +13,12 @@ public class QCircleGetCircleSwitchRequest
   
   public QCircleGetCircleSwitchRequest(String paramString1, String paramString2)
   {
-    this.mReq.switchKey.set(paramString1 + "." + paramString2);
+    PBStringField localPBStringField = this.mReq.switchKey;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramString2);
+    localPBStringField.set(localStringBuilder.toString());
   }
   
   public MessageMicro decode(byte[] paramArrayOfByte)
@@ -36,14 +41,14 @@ public class QCircleGetCircleSwitchRequest
     return "FeedCloudSvr.trpc.videocircle.circleswitch.CircleSwitch.GetCircleSwitch";
   }
   
-  public byte[] getRequestByteData()
+  protected byte[] getRequestByteData()
   {
     return this.mReq.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.requests.QCircleGetCircleSwitchRequest
  * JD-Core Version:    0.7.0.1
  */

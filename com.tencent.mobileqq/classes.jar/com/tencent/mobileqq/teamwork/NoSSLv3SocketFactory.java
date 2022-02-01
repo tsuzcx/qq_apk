@@ -23,13 +23,13 @@ public class NoSSLv3SocketFactory
   
   private Socket a(Socket paramSocket)
   {
+    Object localObject = paramSocket;
     if ((paramSocket instanceof SSLSocket))
     {
-      paramSocket = new NoSSLv3SocketFactory.NoSSLv3SSLSocket(this, (SSLSocket)paramSocket, null);
-      ((NoSSLv3SocketFactory.NoSSLv3SSLSocket)paramSocket).setEnabledProtocols(new String[] { "TLSv1.1", "TLSv1.2" });
-      return paramSocket;
+      localObject = new NoSSLv3SocketFactory.NoSSLv3SSLSocket(this, (SSLSocket)paramSocket, null);
+      ((NoSSLv3SocketFactory.NoSSLv3SSLSocket)localObject).setEnabledProtocols(new String[] { "TLSv1.1", "TLSv1.2" });
     }
-    return paramSocket;
+    return localObject;
   }
   
   public Socket createSocket(String paramString, int paramInt)
@@ -69,7 +69,7 @@ public class NoSSLv3SocketFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.NoSSLv3SocketFactory
  * JD-Core Version:    0.7.0.1
  */

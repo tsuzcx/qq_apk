@@ -22,34 +22,45 @@ public class BatchingListUpdateCallback
   
   public void dispatchLastEvent()
   {
-    if (this.mLastEventType == 0) {
+    int i = this.mLastEventType;
+    if (i == 0) {
       return;
     }
-    switch (this.mLastEventType)
+    if (i != 1)
     {
+      if (i != 2)
+      {
+        if (i == 3) {
+          this.mWrapped.onChanged(this.mLastEventPosition, this.mLastEventCount, this.mLastEventPayload);
+        }
+      }
+      else {
+        this.mWrapped.onRemoved(this.mLastEventPosition, this.mLastEventCount);
+      }
     }
-    for (;;)
-    {
-      this.mLastEventPayload = null;
-      this.mLastEventType = 0;
-      return;
+    else {
       this.mWrapped.onInserted(this.mLastEventPosition, this.mLastEventCount);
-      continue;
-      this.mWrapped.onRemoved(this.mLastEventPosition, this.mLastEventCount);
-      continue;
-      this.mWrapped.onChanged(this.mLastEventPosition, this.mLastEventCount, this.mLastEventPayload);
     }
+    this.mLastEventPayload = null;
+    this.mLastEventType = 0;
   }
   
   public void onChanged(int paramInt1, int paramInt2, Object paramObject)
   {
-    if ((this.mLastEventType == 3) && (paramInt1 <= this.mLastEventPosition + this.mLastEventCount) && (paramInt1 + paramInt2 >= this.mLastEventPosition) && (this.mLastEventPayload == paramObject))
+    if (this.mLastEventType == 3)
     {
       int i = this.mLastEventPosition;
       int j = this.mLastEventCount;
-      this.mLastEventPosition = Math.min(paramInt1, this.mLastEventPosition);
-      this.mLastEventCount = (Math.max(i + j, paramInt1 + paramInt2) - this.mLastEventPosition);
-      return;
+      if (paramInt1 <= i + j)
+      {
+        int k = paramInt1 + paramInt2;
+        if ((k >= i) && (this.mLastEventPayload == paramObject))
+        {
+          this.mLastEventPosition = Math.min(paramInt1, i);
+          this.mLastEventCount = (Math.max(j + i, k) - this.mLastEventPosition);
+          return;
+        }
+      }
     }
     dispatchLastEvent();
     this.mLastEventPosition = paramInt1;
@@ -60,11 +71,19 @@ public class BatchingListUpdateCallback
   
   public void onInserted(int paramInt1, int paramInt2)
   {
-    if ((this.mLastEventType == 1) && (paramInt1 >= this.mLastEventPosition) && (paramInt1 <= this.mLastEventPosition + this.mLastEventCount))
+    if (this.mLastEventType == 1)
     {
-      this.mLastEventCount += paramInt2;
-      this.mLastEventPosition = Math.min(paramInt1, this.mLastEventPosition);
-      return;
+      int i = this.mLastEventPosition;
+      if (paramInt1 >= i)
+      {
+        int j = this.mLastEventCount;
+        if (paramInt1 <= i + j)
+        {
+          this.mLastEventCount = (j + paramInt2);
+          this.mLastEventPosition = Math.min(paramInt1, i);
+          return;
+        }
+      }
     }
     dispatchLastEvent();
     this.mLastEventPosition = paramInt1;
@@ -80,11 +99,15 @@ public class BatchingListUpdateCallback
   
   public void onRemoved(int paramInt1, int paramInt2)
   {
-    if ((this.mLastEventType == 2) && (this.mLastEventPosition >= paramInt1) && (this.mLastEventPosition <= paramInt1 + paramInt2))
+    if (this.mLastEventType == 2)
     {
-      this.mLastEventCount += paramInt2;
-      this.mLastEventPosition = paramInt1;
-      return;
+      int i = this.mLastEventPosition;
+      if ((i >= paramInt1) && (i <= paramInt1 + paramInt2))
+      {
+        this.mLastEventCount += paramInt2;
+        this.mLastEventPosition = paramInt1;
+        return;
+      }
     }
     dispatchLastEvent();
     this.mLastEventPosition = paramInt1;
@@ -94,7 +117,7 @@ public class BatchingListUpdateCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.BatchingListUpdateCallback
  * JD-Core Version:    0.7.0.1
  */

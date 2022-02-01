@@ -24,15 +24,16 @@ public class WatchTogetherClientIPCModule
   
   public static WatchTogetherClientIPCModule a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherClientIPCModule == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherClientIPCModule == null) {
-        jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherClientIPCModule = new WatchTogetherClientIPCModule("WatchTogetherClientIPCModule");
+    if (jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherClientIPCModule == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherClientIPCModule == null) {
+          jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherClientIPCModule = new WatchTogetherClientIPCModule("WatchTogetherClientIPCModule");
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherClientIPCModule;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherClientIPCModule;
   }
   
   private boolean a()
@@ -44,80 +45,88 @@ public class WatchTogetherClientIPCModule
   {
     if (a())
     {
-      if ("ACTION_SHOW_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(paramString)) {
-        WatchFloatingWindowController.a().a(BaseApplicationImpl.getContext(), paramWatchTogetherFloatingData);
-      }
-      do
+      if ("ACTION_SHOW_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(paramString))
       {
+        WatchFloatingWindowController.a().a(BaseApplicationImpl.getContext(), paramWatchTogetherFloatingData);
         return;
-        if ("ACTION_QUIT_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(paramString))
-        {
-          WatchFloatingWindowController.a().a(paramWatchTogetherFloatingData.getCurUin(), paramWatchTogetherFloatingData.getCurType(), true);
-          return;
-        }
-      } while (!"ACTION_CLOSE_OR_QUIT_WATCH_FLOATING_WINDOWS".equals(paramString));
-      WatchFloatingWindowController.a().b();
-      return;
+      }
+      if ("ACTION_QUIT_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(paramString))
+      {
+        WatchFloatingWindowController.a().a(paramWatchTogetherFloatingData.getCurUin(), paramWatchTogetherFloatingData.getCurType(), true);
+        return;
+      }
+      if ("ACTION_CLOSE_OR_QUIT_WATCH_FLOATING_WINDOWS".equals(paramString)) {
+        WatchFloatingWindowController.a().b();
+      }
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new WatchTogetherClientIPCModule.1(this, paramString, paramWatchTogetherFloatingData));
+    else
+    {
+      this.jdField_a_of_type_AndroidOsHandler.post(new WatchTogetherClientIPCModule.1(this, paramString, paramWatchTogetherFloatingData));
+    }
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WatchTogetherClientIPCModule", 2, "call TogetherBusinessIPCModule action=" + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("call TogetherBusinessIPCModule action=");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("WatchTogetherClientIPCModule", 2, ((StringBuilder)localObject).toString());
     }
-    EIPCResult localEIPCResult = new EIPCResult();
-    if ("ACTION_SHOW_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(paramString)) {
+    Object localObject = new EIPCResult();
+    if ("ACTION_SHOW_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(paramString))
+    {
       if (paramBundle != null)
       {
         paramBundle = (WatchTogetherFloatingData)paramBundle.getSerializable("BUNDLE_KEY_UI_DATA");
         if (paramBundle != null)
         {
           a(paramString, paramBundle);
-          localEIPCResult.code = 0;
-        }
-      }
-    }
-    for (;;)
-    {
-      callbackResult(paramInt, localEIPCResult);
-      return localEIPCResult;
-      localEIPCResult.code = -102;
-      continue;
-      localEIPCResult.code = -102;
-      continue;
-      if ("ACTION_QUIT_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(paramString))
-      {
-        if (paramBundle != null)
-        {
-          paramBundle = (WatchTogetherFloatingData)paramBundle.getSerializable("BUNDLE_KEY_UI_DATA");
-          if (paramBundle != null)
-          {
-            a(paramString, paramBundle);
-            localEIPCResult.code = 0;
-          }
-          else
-          {
-            localEIPCResult.code = -102;
-          }
+          ((EIPCResult)localObject).code = 0;
         }
         else
         {
-          localEIPCResult.code = -102;
+          ((EIPCResult)localObject).code = -102;
         }
       }
-      else if ("ACTION_CLOSE_OR_QUIT_WATCH_FLOATING_WINDOWS".equals(paramString))
+      else
       {
-        a(paramString, new WatchTogetherFloatingData());
-        localEIPCResult.code = 0;
+        ((EIPCResult)localObject).code = -102;
       }
     }
+    else if ("ACTION_QUIT_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(paramString))
+    {
+      if (paramBundle != null)
+      {
+        paramBundle = (WatchTogetherFloatingData)paramBundle.getSerializable("BUNDLE_KEY_UI_DATA");
+        if (paramBundle != null)
+        {
+          a(paramString, paramBundle);
+          ((EIPCResult)localObject).code = 0;
+        }
+        else
+        {
+          ((EIPCResult)localObject).code = -102;
+        }
+      }
+      else
+      {
+        ((EIPCResult)localObject).code = -102;
+      }
+    }
+    else if ("ACTION_CLOSE_OR_QUIT_WATCH_FLOATING_WINDOWS".equals(paramString))
+    {
+      a(paramString, new WatchTogetherFloatingData());
+      ((EIPCResult)localObject).code = 0;
+    }
+    callbackResult(paramInt, (EIPCResult)localObject);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherClientIPCModule
  * JD-Core Version:    0.7.0.1
  */

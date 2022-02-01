@@ -90,8 +90,9 @@ public class MiniAppTextArea
   
   private void addConfirmListener()
   {
-    if (this.mNativeContainer != null) {
-      this.mNativeContainer.addConfirmListener(this);
+    NativeViewContainer localNativeViewContainer = this.mNativeContainer;
+    if (localNativeViewContainer != null) {
+      localNativeViewContainer.addConfirmListener(this);
     }
   }
   
@@ -109,39 +110,41 @@ public class MiniAppTextArea
   
   private void evaluateTextAreaHeightChange()
   {
-    if (this.mNativeContainer != null) {}
-    try
-    {
-      MiniAppTextArea.EditInfo localEditInfo = getCurEditInfo();
-      if (localEditInfo.getCurLine() != this.lastLines)
+    if (this.mNativeContainer != null) {
+      try
       {
-        this.lastLines = localEditInfo.getCurLine();
-        JSONObject localJSONObject = new JSONObject();
-        int j = localEditInfo.getHeight();
-        int i = j;
-        if (this.textAreaMinHeight != 0) {
-          i = Math.max(this.textAreaMinHeight, j);
+        MiniAppTextArea.EditInfo localEditInfo = getCurEditInfo();
+        if (localEditInfo.getCurLine() != this.lastLines)
+        {
+          this.lastLines = localEditInfo.getCurLine();
+          JSONObject localJSONObject = new JSONObject();
+          int j = localEditInfo.getHeight();
+          int i = j;
+          if (this.textAreaMinHeight != 0) {
+            i = Math.max(this.textAreaMinHeight, j);
+          }
+          j = i;
+          if (this.textAreaMaxHeight != 0) {
+            j = Math.min(this.textAreaMaxHeight, i);
+          }
+          localJSONObject.put("height", j / DisplayUtil.getDensity(getContext()));
+          localJSONObject.put("lineCount", localEditInfo.getCurLine());
+          localJSONObject.put("inputId", this.mCurInputId);
+          this.mNativeContainer.getPageWebviewContainer().evaluateSubscribeJS("onTextAreaHeightChange", localJSONObject.toString());
+          return;
         }
-        j = i;
-        if (this.textAreaMaxHeight != 0) {
-          j = Math.min(this.textAreaMaxHeight, i);
-        }
-        localJSONObject.put("height", j / DisplayUtil.getDensity(getContext()));
-        localJSONObject.put("lineCount", localEditInfo.getCurLine());
-        localJSONObject.put("inputId", this.mCurInputId);
-        this.mNativeContainer.getPageWebviewContainer().evaluateSubscribeJS("onTextAreaHeightChange", localJSONObject.toString());
       }
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
     }
   }
   
   private Activity getCurrentActivity()
   {
-    if ((this.mNativeContainer != null) && (this.mNativeContainer.getPageWebviewContainer() != null)) {
+    NativeViewContainer localNativeViewContainer = this.mNativeContainer;
+    if ((localNativeViewContainer != null) && (localNativeViewContainer.getPageWebviewContainer() != null)) {
       return this.mNativeContainer.getPageWebviewContainer().getAttachActivity();
     }
     return null;
@@ -150,15 +153,15 @@ public class MiniAppTextArea
   private int getDefaultHeight(float paramFloat)
   {
     Object localObject = new Paint();
-    ((Paint)localObject).setTextSize(DisplayUtil.getDensity(getContext()) * paramFloat);
+    ((Paint)localObject).setTextSize(paramFloat * DisplayUtil.getDensity(getContext()));
     localObject = ((Paint)localObject).getFontMetrics();
     return (int)(((Paint.FontMetrics)localObject).descent - ((Paint.FontMetrics)localObject).ascent);
   }
   
   private int getSelectionPosition()
   {
-    int i = 0;
     Layout localLayout = getLayout();
+    int i = 0;
     if (localLayout == null) {
       return 0;
     }
@@ -166,61 +169,59 @@ public class MiniAppTextArea
     if (j != -1) {
       i = localLayout.getLineForOffset(j) + 1;
     }
-    j = (int)(i * getLineHeight() + 0.5D);
-    if (this.textAreaMaxHeight != 0) {
-      i = Math.min(j, this.textAreaMaxHeight);
-    }
-    for (;;)
+    double d = getLineHeight() * i;
+    Double.isNaN(d);
+    j = (int)(d + 0.5D);
+    i = this.textAreaMaxHeight;
+    if (i != 0)
     {
-      return i + this.marginBootom + this.confirmHeight;
+      i = Math.min(j, i);
+    }
+    else
+    {
+      int k = this.textAreaHeight;
       i = j;
-      if (this.textAreaHeight != 0) {
-        i = Math.min(j, this.textAreaHeight);
+      if (k != 0) {
+        i = Math.min(j, k);
       }
     }
+    return i + this.marginBootom + this.confirmHeight;
   }
   
   private void hideCurrentInput(boolean paramBoolean)
   {
-    QMLog.d("MiniAppTextArea", "hideCurrentInput : " + isFocused());
-    PageWebviewContainer localPageWebviewContainer;
-    if (this.mNativeContainer != null) {
-      localPageWebviewContainer = this.mNativeContainer.getPageWebviewContainer();
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("hideCurrentInput : ");
+    ((StringBuilder)localObject1).append(isFocused());
+    QMLog.d("MiniAppTextArea", ((StringBuilder)localObject1).toString());
+    localObject1 = this.mNativeContainer;
+    if (localObject1 != null) {
+      localObject1 = ((NativeViewContainer)localObject1).getPageWebviewContainer();
+    } else {
+      localObject1 = null;
     }
-    Object localObject;
-    for (;;)
+    if ((localObject1 != null) && (isFocused()))
     {
-      if ((localPageWebviewContainer != null) && (isFocused()))
+      clearFocus();
+      Object localObject2 = (InputMethodManager)((PageWebviewContainer)localObject1).getContext().getSystemService("input_method");
+      if (localObject2 == null) {
+        return;
+      }
+      ((InputMethodManager)localObject2).hideSoftInputFromWindow(((PageWebviewContainer)localObject1).getWindowToken(), 0);
+      if (this.hasConfirm) {
+        hideKeyBoardConfirmView();
+      }
+      try
       {
-        clearFocus();
-        localObject = (InputMethodManager)localPageWebviewContainer.getContext().getSystemService("input_method");
-        if (localObject == null)
-        {
-          return;
-          localPageWebviewContainer = null;
-        }
-        else
-        {
-          ((InputMethodManager)localObject).hideSoftInputFromWindow(localPageWebviewContainer.getWindowToken(), 0);
-          if (this.hasConfirm) {
-            hideKeyBoardConfirmView();
-          }
+        localObject2 = new JSONObject();
+        ((JSONObject)localObject2).put("inputId", this.mCurInputId);
+        ((JSONObject)localObject2).put("value", getText().toString());
+        ((JSONObject)localObject2).put("cursor", getText().toString().length());
+        if (paramBoolean) {
+          ((PageWebviewContainer)localObject1).evaluateSubscribeJS("onKeyboardConfirm", ((JSONObject)localObject2).toString());
         }
       }
-    }
-    try
-    {
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("inputId", this.mCurInputId);
-      ((JSONObject)localObject).put("value", getText().toString());
-      ((JSONObject)localObject).put("cursor", getText().toString().length());
-      if (paramBoolean) {
-        localPageWebviewContainer.evaluateSubscribeJS("onKeyboardConfirm", ((JSONObject)localObject).toString());
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Exception localException)
       {
         QMLog.e("MiniAppTextArea", "hideCurrentInput error", localException);
       }
@@ -230,17 +231,19 @@ public class MiniAppTextArea
   
   private void hideKeyBoardConfirmView()
   {
-    if (this.mNativeContainer != null)
+    NativeViewContainer localNativeViewContainer = this.mNativeContainer;
+    if (localNativeViewContainer != null)
     {
-      this.mNativeContainer.hideKeyBoardConfirmView();
+      localNativeViewContainer.hideKeyBoardConfirmView();
       removeConfirmListener();
     }
   }
   
   private void hideSoftKeyboard(boolean paramBoolean)
   {
-    if (this.mNativeContainer != null) {
-      this.mNativeContainer.getPageWebviewContainer();
+    NativeViewContainer localNativeViewContainer = this.mNativeContainer;
+    if (localNativeViewContainer != null) {
+      localNativeViewContainer.getPageWebviewContainer();
     }
     this.isKeyboardShow = false;
     hideKeyBoardConfirmView();
@@ -254,8 +257,9 @@ public class MiniAppTextArea
   
   private void removeConfirmListener()
   {
-    if (this.mNativeContainer != null) {
-      this.mNativeContainer.removeConfirmListener(this);
+    NativeViewContainer localNativeViewContainer = this.mNativeContainer;
+    if (localNativeViewContainer != null) {
+      localNativeViewContainer.removeConfirmListener(this);
     }
   }
   
@@ -269,9 +273,10 @@ public class MiniAppTextArea
   
   private void showKeyBoardConfirmView(int paramInt)
   {
-    if (this.mNativeContainer != null)
+    NativeViewContainer localNativeViewContainer = this.mNativeContainer;
+    if (localNativeViewContainer != null)
     {
-      this.mNativeContainer.showKeyBoardConfirmView(paramInt);
+      localNativeViewContainer.showKeyBoardConfirmView(paramInt);
       addConfirmListener();
     }
   }
@@ -291,76 +296,66 @@ public class MiniAppTextArea
   {
     if (paramInt1 > 0)
     {
-      if (paramInt2 <= 0) {
-        break label14;
+      if (paramInt2 > 0)
+      {
+        this.cursorPositation = paramInt1;
+        return;
       }
-      this.cursorPositation = paramInt1;
+      if (paramInt3 > 0) {
+        this.cursorPositation = (paramInt1 + paramInt3);
+      }
     }
-    label14:
-    while (paramInt3 <= 0) {
-      return;
-    }
-    this.cursorPositation = (paramInt1 + paramInt3);
   }
   
   private void updateFontWeight(JSONObject paramJSONObject)
   {
     if (paramJSONObject.has("fontWeight"))
     {
-      if ("bold".equals(paramJSONObject.optString("fontWeight"))) {
+      if ("bold".equals(paramJSONObject.optString("fontWeight")))
+      {
         setTypeface(Typeface.defaultFromStyle(1));
+        return;
       }
+      setTypeface(Typeface.defaultFromStyle(0));
     }
-    else {
-      return;
-    }
-    setTypeface(Typeface.defaultFromStyle(0));
   }
   
   private void updateLayoutParams(JSONObject paramJSONObject, boolean paramBoolean)
   {
-    int k;
-    int j;
-    int i;
     if (needUpdateLayoutParams(paramJSONObject))
     {
-      k = (int)Math.max(DisplayUtil.getDensity(getContext()) * paramJSONObject.optInt("width") + 0.5F, 0.0F);
+      int k = (int)Math.max(DisplayUtil.getDensity(getContext()) * paramJSONObject.optInt("width") + 0.5F, 0.0F);
       this.textAreaHeight = ((int)Math.max(DisplayUtil.getDensity(getContext()) * paramJSONObject.optInt("height") + 0.5F, 0.0F));
-      j = this.textAreaHeight;
-      i = j;
-      if (this.textAreaHeight != 0) {
-        break label280;
-      }
-      i = j;
-      if (!this.autoSize) {
-        break label280;
-      }
-      if (this.textAreaMinHeight == 0)
+      int j = this.textAreaHeight;
+      int i = j;
+      if (j == 0)
       {
-        i = 16;
-        if (paramJSONObject.has("fontSize")) {
-          i = paramJSONObject.optInt("fontSize");
+        i = j;
+        if (this.autoSize)
+        {
+          if (this.textAreaMinHeight == 0)
+          {
+            i = 16;
+            if (paramJSONObject.has("fontSize")) {
+              i = paramJSONObject.optInt("fontSize");
+            }
+            this.textAreaMinHeight = getDefaultHeight(i);
+          }
+          j = this.textAreaMinHeight;
+          i = j;
+          if (paramBoolean)
+          {
+            i = j;
+            if (getLayout() != null)
+            {
+              i = j;
+              if (getLayout().getHeight() > this.textAreaMinHeight) {
+                i = getLayout().getHeight();
+              }
+            }
+          }
         }
-        this.textAreaMinHeight = getDefaultHeight(i);
       }
-      j = this.textAreaMinHeight;
-      i = j;
-      if (!paramBoolean) {
-        break label280;
-      }
-      i = j;
-      if (getLayout() == null) {
-        break label280;
-      }
-      i = j;
-      if (getLayout().getHeight() <= this.textAreaMinHeight) {
-        break label280;
-      }
-      i = getLayout().getHeight();
-    }
-    label280:
-    for (;;)
-    {
       j = (int)(DisplayUtil.getDensity(getContext()) * paramJSONObject.optInt("left") + 0.5F);
       int m = (int)(DisplayUtil.getDensity(getContext()) * paramJSONObject.optInt("top") + 0.5F);
       FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)getLayoutParams();
@@ -373,7 +368,6 @@ public class MiniAppTextArea
       paramJSONObject.leftMargin = j;
       paramJSONObject.topMargin = m;
       setLayoutParams(paramJSONObject);
-      return;
     }
   }
   
@@ -400,7 +394,8 @@ public class MiniAppTextArea
     if (paramJSONObject.has("placeholderStyle"))
     {
       this.placeholderStyle = paramJSONObject.optJSONObject("placeholderStyle");
-      if ((this.placeholderStyle != null) && (this.placeholderStyle.has("color")))
+      paramJSONObject = this.placeholderStyle;
+      if ((paramJSONObject != null) && (paramJSONObject.has("color")))
       {
         paramJSONObject = this.placeholderStyle.optString("color");
         if (!TextUtils.isEmpty(paramJSONObject)) {
@@ -433,12 +428,14 @@ public class MiniAppTextArea
     if (paramJSONObject.has("minHeight")) {
       this.textAreaMinHeight = ((int)(DisplayUtil.getDensity(getContext()) * paramJSONObject.optInt("minHeight") + 0.5F));
     }
-    if (this.textAreaMaxHeight != 0) {
-      setMaxHeight(this.textAreaMaxHeight);
+    int i = this.textAreaMaxHeight;
+    if (i != 0) {
+      setMaxHeight(i);
     }
-    if (this.textAreaMinHeight != 0)
+    i = this.textAreaMinHeight;
+    if (i != 0)
     {
-      setMinHeight(this.textAreaMinHeight);
+      setMinHeight(i);
       setMinimumHeight(this.textAreaMinHeight);
       setMinimumWidth(0);
     }
@@ -450,7 +447,7 @@ public class MiniAppTextArea
     }
     if (paramJSONObject.has("lineSpace"))
     {
-      int i = paramJSONObject.optInt("lineSpace");
+      i = paramJSONObject.optInt("lineSpace");
       setLineSpacing(DisplayUtil.dip2px(getContext(), i), 1.0F);
     }
     if (paramJSONObject.has("color")) {
@@ -463,22 +460,20 @@ public class MiniAppTextArea
     if (paramJSONObject.has("textAlign"))
     {
       paramJSONObject = paramJSONObject.optString("textAlign");
-      if (!"left".equals(paramJSONObject)) {
-        break label34;
+      if ("left".equals(paramJSONObject))
+      {
+        setGravity(3);
+        return;
       }
-      setGravity(3);
-    }
-    label34:
-    do
-    {
-      return;
       if ("center".equals(paramJSONObject))
       {
         setGravity(1);
         return;
       }
-    } while (!"right".equals(paramJSONObject));
-    setGravity(5);
+      if ("right".equals(paramJSONObject)) {
+        setGravity(5);
+      }
+    }
   }
   
   private void updateTextareaAnimator()
@@ -506,42 +501,46 @@ public class MiniAppTextArea
       paramJSONObject = paramJSONObject.optString("value");
       this.curValue = paramJSONObject;
       setText(paramJSONObject);
-      if (!TextUtils.isEmpty(paramJSONObject)) {
-        if (this.cursorPositation == -1) {
-          break label85;
+      if (!TextUtils.isEmpty(paramJSONObject))
+      {
+        int i = this.cursorPositation;
+        if (i == -1) {
+          i = paramJSONObject.length();
         }
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("updatevalue set cursor : ");
+        paramJSONObject.append(i);
+        QMLog.d("miniapp-textarea", paramJSONObject.toString());
+        setSelection(i);
       }
-    }
-    label85:
-    for (int i = this.cursorPositation;; i = paramJSONObject.length())
-    {
-      QMLog.d("miniapp-textarea", "updatevalue set cursor : " + i);
-      setSelection(i);
       this.cursorPositation = -1;
-      return;
     }
   }
   
   public void callbackLineChange()
   {
-    if (this.mNativeContainer != null) {}
-    for (PageWebviewContainer localPageWebviewContainer = this.mNativeContainer.getPageWebviewContainer();; localPageWebviewContainer = null) {
-      try
+    Object localObject = this.mNativeContainer;
+    if (localObject != null) {
+      localObject = ((NativeViewContainer)localObject).getPageWebviewContainer();
+    } else {
+      localObject = null;
+    }
+    try
+    {
+      this.lastLines = 1;
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("height", getLineHeight() / DisplayUtil.getDensity(getContext()));
+      localJSONObject.put("lineCount", 1);
+      localJSONObject.put("inputId", this.mCurInputId);
+      if (localObject != null)
       {
-        this.lastLines = 1;
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("height", getLineHeight() / DisplayUtil.getDensity(getContext()));
-        localJSONObject.put("lineCount", 1);
-        localJSONObject.put("inputId", this.mCurInputId);
-        if (localPageWebviewContainer != null) {
-          localPageWebviewContainer.evaluateSubscribeJS("onTextAreaHeightChange", localJSONObject.toString());
-        }
+        ((PageWebviewContainer)localObject).evaluateSubscribeJS("onTextAreaHeightChange", localJSONObject.toString());
         return;
       }
-      catch (Throwable localThrowable)
-      {
-        QMLog.e("MiniAppTextArea", "callbackLineChange error.", localThrowable);
-      }
+    }
+    catch (Throwable localThrowable)
+    {
+      QMLog.e("MiniAppTextArea", "callbackLineChange error.", localThrowable);
     }
   }
   
@@ -594,11 +593,12 @@ public class MiniAppTextArea
   
   public void setAttributes(JSONObject paramJSONObject, boolean paramBoolean, NativeViewRequestEvent paramNativeViewRequestEvent)
   {
-    int i = 0;
     if (paramJSONObject.has("data")) {
       this.data = paramJSONObject.optString("data");
     }
-    if (paramJSONObject.has("autoSize")) {
+    boolean bool = paramJSONObject.has("autoSize");
+    int i = 0;
+    if (bool) {
       this.autoSize = paramJSONObject.optBoolean("autoSize", false);
     }
     if (paramJSONObject.has("adjustPosition")) {
@@ -647,7 +647,7 @@ public class MiniAppTextArea
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.widget.MiniAppTextArea
  * JD-Core Version:    0.7.0.1
  */

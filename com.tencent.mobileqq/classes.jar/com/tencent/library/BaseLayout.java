@@ -9,7 +9,7 @@ import android.widget.FrameLayout;
 public abstract class BaseLayout
   extends FrameLayout
 {
-  protected View view = initView(paramContext);
+  protected View a = a(paramContext);
   
   public BaseLayout(Context paramContext)
   {
@@ -21,16 +21,16 @@ public abstract class BaseLayout
     super(paramContext, paramAttributeSet);
   }
   
-  private View initView(Context paramContext)
+  private View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(getLayoutId(), null, false);
+    return LayoutInflater.from(paramContext).inflate(a(), null, false);
   }
   
-  protected abstract int getLayoutId();
+  protected abstract int a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.library.BaseLayout
  * JD-Core Version:    0.7.0.1
  */

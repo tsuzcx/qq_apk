@@ -18,61 +18,57 @@ class AddAccountActivity$10
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null) {
-      AddAccountActivity.a(this.a, null);
-    }
-    String str;
-    SimpleAccount localSimpleAccount;
-    for (;;)
+    if (this.a.mCurrentAccount != null)
     {
+      AddAccountActivity.access$600(this.a, null);
       return;
-      if (paramCharSequence != null)
+    }
+    if (paramCharSequence == null) {
+      return;
+    }
+    String str = paramCharSequence.toString();
+    if (str != null)
+    {
+      if (str.length() == 0) {
+        return;
+      }
+      if (this.a.mSimpleAccoutList != null)
       {
-        str = paramCharSequence.toString();
-        if ((str == null) || (str.length() == 0) || (this.a.jdField_a_of_type_JavaUtilList == null)) {
-          break;
-        }
         paramInt1 = 0;
-        while (paramInt1 < this.a.jdField_a_of_type_JavaUtilList.size())
+        while (paramInt1 < this.a.mSimpleAccoutList.size())
         {
-          localSimpleAccount = (SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(paramInt1);
-          if ((localSimpleAccount != null) && (localSimpleAccount.getUin() != null)) {
-            break label110;
+          SimpleAccount localSimpleAccount = (SimpleAccount)this.a.mSimpleAccoutList.get(paramInt1);
+          if ((localSimpleAccount != null) && (localSimpleAccount.getUin() != null))
+          {
+            if (this.a.app == null) {
+              paramCharSequence = localSimpleAccount.getUin();
+            } else {
+              paramCharSequence = this.a.app.getUinDisplayNameBeforeLogin(localSimpleAccount.getUin());
+            }
+            if (str.equals(paramCharSequence))
+            {
+              if ((localSimpleAccount != null) && (localSimpleAccount.isLogined()))
+              {
+                this.a.mPwdEdit.setText("!@#ewaGbhkc$!!=");
+                this.a.mCurrentAccount = localSimpleAccount;
+              }
+              else
+              {
+                this.a.mPwdEdit.setText("");
+              }
+              this.a.mPwdEdit.setClearButtonVisible(false);
+              return;
+            }
           }
           paramInt1 += 1;
         }
       }
     }
-    label110:
-    if (this.a.app == null)
-    {
-      paramCharSequence = localSimpleAccount.getUin();
-      label126:
-      if (!str.equals(paramCharSequence)) {
-        break label198;
-      }
-      if ((localSimpleAccount == null) || (!localSimpleAccount.isLogined())) {
-        break label200;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setText("!@#ewaGbhkc$!!=");
-      this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = localSimpleAccount;
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setClearButtonVisible(false);
-      return;
-      paramCharSequence = this.a.app.getUinDisplayNameBeforeLogin(localSimpleAccount.getUin());
-      break label126;
-      label198:
-      break;
-      label200:
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setText("");
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddAccountActivity.10
  * JD-Core Version:    0.7.0.1
  */

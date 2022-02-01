@@ -30,23 +30,14 @@ final class ListModel$loadNextPage$1
     if (paramBoolean1)
     {
       ListModel.a(this.this$0, paramCOOKIE);
-      paramArrayList = this.this$0;
-      if (paramBoolean2) {
-        break label90;
-      }
+      this.this$0.a(paramBoolean2 ^ true);
     }
-    label90:
-    for (paramBoolean2 = true;; paramBoolean2 = false)
-    {
-      paramArrayList.a(paramBoolean2);
-      this.$callback.invoke(Boolean.valueOf(paramBoolean1), this.this$0.a(), Integer.valueOf(paramInt2), paramString);
-      return;
-    }
+    this.$callback.invoke(Boolean.valueOf(paramBoolean1), this.this$0.a(), Integer.valueOf(paramInt2), paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mvp.ListModel.loadNextPage.1
  * JD-Core Version:    0.7.0.1
  */

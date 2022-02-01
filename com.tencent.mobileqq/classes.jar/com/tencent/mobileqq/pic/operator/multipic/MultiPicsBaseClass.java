@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.pic.operator.multipic;
 
 import com.qq.taf.jce.HexUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.data.SigInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -29,13 +30,13 @@ public class MultiPicsBaseClass
   private volatile long jdField_a_of_type_Long;
   MultiPicsOperator.MultiPicsUploadTask jdField_a_of_type_ComTencentMobileqqPicOperatorMultipicMultiPicsOperator$MultiPicsUploadTask;
   public String a;
-  protected WeakReference<QQAppInterface> a;
+  protected WeakReference<AppInterface> a;
   ArrayList<PicResult> jdField_a_of_type_JavaUtilArrayList;
   List<PicFowardInfo> jdField_a_of_type_JavaUtilList;
   private Random jdField_a_of_type_JavaUtilRandom = new Random(System.currentTimeMillis());
   public String b;
   
-  public MultiPicsBaseClass(MultiPicsOperator.MultiPicsUploadTask paramMultiPicsUploadTask, WeakReference<QQAppInterface> paramWeakReference)
+  public MultiPicsBaseClass(MultiPicsOperator.MultiPicsUploadTask paramMultiPicsUploadTask, WeakReference<AppInterface> paramWeakReference)
   {
     this.jdField_a_of_type_ComTencentMobileqqPicOperatorMultipicMultiPicsOperator$MultiPicsUploadTask = paramMultiPicsUploadTask;
     this.jdField_a_of_type_JavaUtilArrayList = paramMultiPicsUploadTask.jdField_a_of_type_JavaUtilArrayList;
@@ -49,257 +50,354 @@ public class MultiPicsBaseClass
   {
     ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
     int i = 0;
-    for (;;)
+    try
     {
-      try
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        if (localIterator.hasNext())
-        {
-          if (((PicResult)localIterator.next()).jdField_a_of_type_Int == -2) {
-            i += 1;
-          }
-        }
-        else {
-          return i;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext()) {
+        if (((PicResult)localIterator.next()).jdField_a_of_type_Int == -2) {
+          i += 1;
         }
       }
-      finally {}
+      return i;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
   String a(im_msg_body.CustomFace paramCustomFace)
   {
-    if ((!QLog.isColorLevel()) || (paramCustomFace == null)) {
-      return "";
+    if ((QLog.isColorLevel()) && (paramCustomFace != null))
+    {
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("[CustomFace]uint32_server_ip:");
+      localStringBuilder2.append(paramCustomFace.uint32_server_ip.get());
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(",uint32_server_port:");
+      localStringBuilder2.append(paramCustomFace.uint32_server_port.get());
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(",uint32_file_id:");
+      localStringBuilder2.append(paramCustomFace.uint32_file_id.get());
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(",bytes_md5:");
+      localStringBuilder2.append(HexUtil.bytes2HexStr(paramCustomFace.bytes_md5.get().toByteArray()));
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(",str_file_path:");
+      localStringBuilder2.append(paramCustomFace.str_file_path.get());
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(",uint32_origin:");
+      localStringBuilder2.append(paramCustomFace.uint32_origin.get());
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(",uint32_width:");
+      localStringBuilder2.append(paramCustomFace.uint32_width.get());
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(",uint32_height:");
+      localStringBuilder2.append(paramCustomFace.uint32_height.get());
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(",uint32_height:");
+      localStringBuilder2.append(paramCustomFace.uint32_height.get());
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(",image_type:");
+      localStringBuilder2.append(paramCustomFace.image_type.get());
+      localStringBuilder1.append(localStringBuilder2.toString());
+      return localStringBuilder1.toString();
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[CustomFace]uint32_server_ip:" + paramCustomFace.uint32_server_ip.get());
-    localStringBuilder.append(",uint32_server_port:" + paramCustomFace.uint32_server_port.get());
-    localStringBuilder.append(",uint32_file_id:" + paramCustomFace.uint32_file_id.get());
-    localStringBuilder.append(",bytes_md5:" + HexUtil.bytes2HexStr(paramCustomFace.bytes_md5.get().toByteArray()));
-    localStringBuilder.append(",str_file_path:" + paramCustomFace.str_file_path.get());
-    localStringBuilder.append(",uint32_origin:" + paramCustomFace.uint32_origin.get());
-    localStringBuilder.append(",uint32_width:" + paramCustomFace.uint32_width.get());
-    localStringBuilder.append(",uint32_height:" + paramCustomFace.uint32_height.get());
-    localStringBuilder.append(",uint32_height:" + paramCustomFace.uint32_height.get());
-    localStringBuilder.append(",image_type:" + paramCustomFace.image_type.get());
-    return localStringBuilder.toString();
+    return "";
   }
   
   String a(im_msg_body.NotOnlineImage paramNotOnlineImage)
   {
-    if ((!QLog.isColorLevel()) || (paramNotOnlineImage == null)) {
-      return "";
+    if ((QLog.isColorLevel()) && (paramNotOnlineImage != null))
+    {
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("[NotOnlineImage]file_path:");
+      localStringBuilder2.append(paramNotOnlineImage.file_path.get().toStringUtf8());
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(",file_len:");
+      localStringBuilder2.append(paramNotOnlineImage.file_len.get());
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(",download_path:");
+      localStringBuilder2.append(paramNotOnlineImage.download_path.get().toStringUtf8());
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(",res_id:");
+      localStringBuilder2.append(paramNotOnlineImage.res_id.get().toStringUtf8());
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(",pic_md5:");
+      localStringBuilder2.append(HexUtil.bytes2HexStr(paramNotOnlineImage.pic_md5.get().toByteArray()));
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(",pic_height:");
+      localStringBuilder2.append(paramNotOnlineImage.pic_height.get());
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(",pic_width:");
+      localStringBuilder2.append(paramNotOnlineImage.pic_width.get());
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(",original:");
+      localStringBuilder2.append(paramNotOnlineImage.original.get());
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(",img_type:");
+      localStringBuilder2.append(paramNotOnlineImage.img_type.get());
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(",uint32_file_id:");
+      localStringBuilder2.append(paramNotOnlineImage.uint32_file_id.get());
+      localStringBuilder1.append(localStringBuilder2.toString());
+      return localStringBuilder1.toString();
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[NotOnlineImage]file_path:" + paramNotOnlineImage.file_path.get().toStringUtf8());
-    localStringBuilder.append(",file_len:" + paramNotOnlineImage.file_len.get());
-    localStringBuilder.append(",download_path:" + paramNotOnlineImage.download_path.get().toStringUtf8());
-    localStringBuilder.append(",res_id:" + paramNotOnlineImage.res_id.get().toStringUtf8());
-    localStringBuilder.append(",pic_md5:" + HexUtil.bytes2HexStr(paramNotOnlineImage.pic_md5.get().toByteArray()));
-    localStringBuilder.append(",pic_height:" + paramNotOnlineImage.pic_height.get());
-    localStringBuilder.append(",pic_width:" + paramNotOnlineImage.pic_width.get());
-    localStringBuilder.append(",original:" + paramNotOnlineImage.original.get());
-    localStringBuilder.append(",img_type:" + paramNotOnlineImage.img_type.get());
-    localStringBuilder.append(",uint32_file_id:" + paramNotOnlineImage.uint32_file_id.get());
-    return localStringBuilder.toString();
+    return "";
   }
   
   im_msg_body.CustomFace a(RichProto.RichProtoReq.PicUpReq paramPicUpReq, RichProto.RichProtoResp.GroupPicUpResp paramGroupPicUpResp, int paramInt)
   {
-    im_msg_body.CustomFace localCustomFace = new im_msg_body.CustomFace();
-    for (;;)
+    Object localObject1 = new im_msg_body.CustomFace();
+    try
     {
-      PicFowardInfo localPicFowardInfo;
-      try
+      localObject2 = (PicFowardInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      int i = 0;
+      if (paramGroupPicUpResp != null)
       {
-        localPicFowardInfo = (PicFowardInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-        if (paramGroupPicUpResp != null)
+        ((im_msg_body.CustomFace)localObject1).uint32_file_id.set((int)paramGroupPicUpResp.groupFileID);
+        if ((paramGroupPicUpResp.mIpList != null) && (paramGroupPicUpResp.mIpList.size() > 0))
         {
-          localCustomFace.uint32_file_id.set((int)paramGroupPicUpResp.groupFileID);
-          if ((paramGroupPicUpResp.mIpList != null) && (paramGroupPicUpResp.mIpList.size() > 0))
-          {
-            paramGroupPicUpResp = (ServerAddr)paramGroupPicUpResp.mIpList.get(0);
-            localCustomFace.uint32_server_ip.set(GroupPicUploadProcessor.ipToLong(paramGroupPicUpResp.mIp));
-            localCustomFace.uint32_server_port.set(paramGroupPicUpResp.port);
-          }
-          localCustomFace.uint32_file_type.set(Integer.valueOf(66).intValue());
-          localCustomFace.uint32_useful.set(1);
-          if (((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getSessionKey() != null) {
-            localCustomFace.bytes_signature.set(ByteStringMicro.copyFrom(((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getSessionKey()));
-          }
-          if (paramPicUpReq == null) {
-            break label439;
-          }
-          localCustomFace.bytes_md5.set(ByteStringMicro.copyFrom(paramPicUpReq.md5));
-          localCustomFace.str_file_path.set(paramPicUpReq.fileName);
-          paramGroupPicUpResp = localCustomFace.uint32_origin;
-          if (paramPicUpReq.isRaw)
-          {
-            i = 1;
-            paramGroupPicUpResp.set(i);
-            localCustomFace.uint32_width.set(paramPicUpReq.width);
-            localCustomFace.uint32_height.set(paramPicUpReq.height);
-            localCustomFace.uint32_size.set((int)paramPicUpReq.fileSize);
-            localCustomFace.biz_type.set(4);
-            localCustomFace.uint32_source.set(104);
-            localCustomFace.uint32_thumb_width.set(localPicFowardInfo.a.e);
-            localCustomFace.uint32_thumb_height.set(localPicFowardInfo.a.f);
-            localCustomFace.image_type.set(localPicFowardInfo.a.m);
-            Logger.a(this.b, this.jdField_a_of_type_JavaLangString, "uploadForwardMultiMsgPics.createCustomFace", "[" + paramInt + "] OK, " + a(localCustomFace));
-            return localCustomFace;
-          }
+          paramGroupPicUpResp = (ServerAddr)paramGroupPicUpResp.mIpList.get(0);
+          ((im_msg_body.CustomFace)localObject1).uint32_server_ip.set(GroupPicUploadProcessor.ipToLong(paramGroupPicUpResp.mIp));
+          ((im_msg_body.CustomFace)localObject1).uint32_server_port.set(paramGroupPicUpResp.port);
         }
-        else
-        {
-          localCustomFace.uint32_file_id.set(0);
-          continue;
-        }
-        int i = 0;
       }
-      catch (Exception paramPicUpReq)
+      else
       {
-        Logger.b(this.b, this.jdField_a_of_type_JavaLangString, "uploadForwardMultiMsgPics.createCustomFace", "[" + paramInt + "] failed, Exception, " + paramPicUpReq.toString());
-        return null;
+        ((im_msg_body.CustomFace)localObject1).uint32_file_id.set(0);
       }
-      continue;
-      label439:
-      localCustomFace.bytes_md5.set(ByteStringMicro.copyFrom(new byte[] { 98, 97, 100 }));
-      localCustomFace.str_file_path.set("bad");
-      localCustomFace.uint32_origin.set(0);
-      localCustomFace.uint32_width.set(localPicFowardInfo.a.j);
-      localCustomFace.uint32_height.set(localPicFowardInfo.a.k);
-      localCustomFace.uint32_size.set(0);
+      ((im_msg_body.CustomFace)localObject1).uint32_file_type.set(Integer.valueOf(66).intValue());
+      ((im_msg_body.CustomFace)localObject1).uint32_useful.set(1);
+      SigInfo.fillCustomFaceSessionKey((AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), (im_msg_body.CustomFace)localObject1);
+      if (paramPicUpReq != null)
+      {
+        ((im_msg_body.CustomFace)localObject1).bytes_md5.set(ByteStringMicro.copyFrom(paramPicUpReq.md5));
+        ((im_msg_body.CustomFace)localObject1).str_file_path.set(paramPicUpReq.fileName);
+        paramGroupPicUpResp = ((im_msg_body.CustomFace)localObject1).uint32_origin;
+        if (paramPicUpReq.isRaw) {
+          i = 1;
+        }
+        paramGroupPicUpResp.set(i);
+        ((im_msg_body.CustomFace)localObject1).uint32_width.set(paramPicUpReq.width);
+        ((im_msg_body.CustomFace)localObject1).uint32_height.set(paramPicUpReq.height);
+        ((im_msg_body.CustomFace)localObject1).uint32_size.set((int)paramPicUpReq.fileSize);
+      }
+      else
+      {
+        ((im_msg_body.CustomFace)localObject1).bytes_md5.set(ByteStringMicro.copyFrom(new byte[] { 98, 97, 100 }));
+        ((im_msg_body.CustomFace)localObject1).str_file_path.set("bad");
+        ((im_msg_body.CustomFace)localObject1).uint32_origin.set(0);
+        ((im_msg_body.CustomFace)localObject1).uint32_width.set(((PicFowardInfo)localObject2).a.j);
+        ((im_msg_body.CustomFace)localObject1).uint32_height.set(((PicFowardInfo)localObject2).a.k);
+        ((im_msg_body.CustomFace)localObject1).uint32_size.set(0);
+      }
+      ((im_msg_body.CustomFace)localObject1).biz_type.set(4);
+      ((im_msg_body.CustomFace)localObject1).uint32_source.set(104);
+      ((im_msg_body.CustomFace)localObject1).uint32_thumb_width.set(((PicFowardInfo)localObject2).a.e);
+      ((im_msg_body.CustomFace)localObject1).uint32_thumb_height.set(((PicFowardInfo)localObject2).a.f);
+      ((im_msg_body.CustomFace)localObject1).image_type.set(((PicFowardInfo)localObject2).a.m);
+      paramPicUpReq = this.b;
+      paramGroupPicUpResp = this.jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[");
+      ((StringBuilder)localObject2).append(paramInt);
+      ((StringBuilder)localObject2).append("] OK, ");
+      ((StringBuilder)localObject2).append(a((im_msg_body.CustomFace)localObject1));
+      Logger.a(paramPicUpReq, paramGroupPicUpResp, "uploadForwardMultiMsgPics.createCustomFace", ((StringBuilder)localObject2).toString());
+      return localObject1;
     }
+    catch (Exception paramPicUpReq)
+    {
+      paramGroupPicUpResp = this.b;
+      localObject1 = this.jdField_a_of_type_JavaLangString;
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[");
+      ((StringBuilder)localObject2).append(paramInt);
+      ((StringBuilder)localObject2).append("] failed, Exception, ");
+      ((StringBuilder)localObject2).append(paramPicUpReq.toString());
+      Logger.b(paramGroupPicUpResp, (String)localObject1, "uploadForwardMultiMsgPics.createCustomFace", ((StringBuilder)localObject2).toString());
+    }
+    return null;
   }
   
   im_msg_body.CustomFace a(im_msg_body.NotOnlineImage paramNotOnlineImage)
   {
-    im_msg_body.CustomFace localCustomFace = new im_msg_body.CustomFace();
+    Object localObject = new im_msg_body.CustomFace();
     try
     {
-      localCustomFace.uint32_file_id.set(paramNotOnlineImage.uint32_file_id.get());
-      localCustomFace.uint32_file_type.set(Integer.valueOf(66).intValue());
-      localCustomFace.uint32_useful.set(1);
-      if (((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getSessionKey() != null) {
-        localCustomFace.bytes_signature.set(ByteStringMicro.copyFrom(((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getSessionKey()));
-      }
-      localCustomFace.bytes_md5.set(ByteStringMicro.copyFrom(paramNotOnlineImage.pic_md5.get().toByteArray()));
+      ((im_msg_body.CustomFace)localObject).uint32_file_id.set(paramNotOnlineImage.uint32_file_id.get());
+      ((im_msg_body.CustomFace)localObject).uint32_file_type.set(Integer.valueOf(66).intValue());
+      ((im_msg_body.CustomFace)localObject).uint32_useful.set(1);
+      SigInfo.fillCustomFaceSessionKey((AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), (im_msg_body.CustomFace)localObject);
+      ((im_msg_body.CustomFace)localObject).bytes_md5.set(ByteStringMicro.copyFrom(paramNotOnlineImage.pic_md5.get().toByteArray()));
       if (paramNotOnlineImage.res_id.has()) {
-        localCustomFace.str_file_path.set(paramNotOnlineImage.res_id.get().toStringUtf8());
+        ((im_msg_body.CustomFace)localObject).str_file_path.set(paramNotOnlineImage.res_id.get().toStringUtf8());
+      } else if (paramNotOnlineImage.download_path.has()) {
+        ((im_msg_body.CustomFace)localObject).str_file_path.set(paramNotOnlineImage.download_path.get().toStringUtf8());
       }
-      for (;;)
-      {
-        localCustomFace.uint32_origin.set(paramNotOnlineImage.original.get());
-        localCustomFace.biz_type.set(4);
-        localCustomFace.uint32_source.set(104);
-        localCustomFace.uint32_width.set(paramNotOnlineImage.pic_width.get());
-        localCustomFace.uint32_height.set(paramNotOnlineImage.pic_height.get());
-        localCustomFace.uint32_size.set(paramNotOnlineImage.file_len.get());
-        localCustomFace.uint32_thumb_width.set(paramNotOnlineImage.uint32_thumb_width.get());
-        localCustomFace.uint32_thumb_height.set(paramNotOnlineImage.uint32_thumb_height.get());
-        localCustomFace.image_type.set(paramNotOnlineImage.img_type.get());
-        Logger.a(this.b, this.jdField_a_of_type_JavaLangString, "uploadForwardMultiMsgPics.convert2CustomFace", a(localCustomFace));
-        return localCustomFace;
-        if (paramNotOnlineImage.download_path.has()) {
-          localCustomFace.str_file_path.set(paramNotOnlineImage.download_path.get().toStringUtf8());
-        }
-      }
-      return null;
+      ((im_msg_body.CustomFace)localObject).uint32_origin.set(paramNotOnlineImage.original.get());
+      ((im_msg_body.CustomFace)localObject).biz_type.set(4);
+      ((im_msg_body.CustomFace)localObject).uint32_source.set(104);
+      ((im_msg_body.CustomFace)localObject).uint32_width.set(paramNotOnlineImage.pic_width.get());
+      ((im_msg_body.CustomFace)localObject).uint32_height.set(paramNotOnlineImage.pic_height.get());
+      ((im_msg_body.CustomFace)localObject).uint32_size.set(paramNotOnlineImage.file_len.get());
+      ((im_msg_body.CustomFace)localObject).uint32_thumb_width.set(paramNotOnlineImage.uint32_thumb_width.get());
+      ((im_msg_body.CustomFace)localObject).uint32_thumb_height.set(paramNotOnlineImage.uint32_thumb_height.get());
+      ((im_msg_body.CustomFace)localObject).image_type.set(paramNotOnlineImage.img_type.get());
+      Logger.a(this.b, this.jdField_a_of_type_JavaLangString, "uploadForwardMultiMsgPics.convert2CustomFace", a((im_msg_body.CustomFace)localObject));
+      return localObject;
     }
     catch (Exception paramNotOnlineImage)
     {
-      Logger.b(this.b, this.jdField_a_of_type_JavaLangString, "uploadForwardMultiMsgPics.convert2CustomFace", "Exception, " + paramNotOnlineImage.toString());
+      localObject = this.b;
+      String str = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Exception, ");
+      localStringBuilder.append(paramNotOnlineImage.toString());
+      Logger.b((String)localObject, str, "uploadForwardMultiMsgPics.convert2CustomFace", localStringBuilder.toString());
     }
+    return null;
   }
   
   im_msg_body.NotOnlineImage a(RichProto.RichProtoReq.PicUpReq paramPicUpReq, RichProto.RichProtoResp.C2CPicUpResp paramC2CPicUpResp, int paramInt)
   {
-    int i = 0;
-    im_msg_body.NotOnlineImage localNotOnlineImage = new im_msg_body.NotOnlineImage();
+    Object localObject1 = new im_msg_body.NotOnlineImage();
     for (;;)
     {
       try
       {
-        PicFowardInfo localPicFowardInfo = (PicFowardInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+        localObject2 = (PicFowardInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+        i = 1;
         if (paramPicUpReq != null)
         {
-          localNotOnlineImage.file_path.set(ByteStringMicro.copyFromUtf8(paramPicUpReq.fileName));
-          localNotOnlineImage.file_len.set((int)paramPicUpReq.fileSize);
-          localNotOnlineImage.pic_md5.set(ByteStringMicro.copyFrom(paramPicUpReq.md5));
-          localNotOnlineImage.pic_height.set(paramPicUpReq.height);
-          localNotOnlineImage.pic_width.set(paramPicUpReq.width);
-          PBUInt32Field localPBUInt32Field = localNotOnlineImage.original;
-          if (paramPicUpReq.isRaw) {
-            i = 1;
+          ((im_msg_body.NotOnlineImage)localObject1).file_path.set(ByteStringMicro.copyFromUtf8(paramPicUpReq.fileName));
+          ((im_msg_body.NotOnlineImage)localObject1).file_len.set((int)paramPicUpReq.fileSize);
+          ((im_msg_body.NotOnlineImage)localObject1).pic_md5.set(ByteStringMicro.copyFrom(paramPicUpReq.md5));
+          ((im_msg_body.NotOnlineImage)localObject1).pic_height.set(paramPicUpReq.height);
+          ((im_msg_body.NotOnlineImage)localObject1).pic_width.set(paramPicUpReq.width);
+          PBUInt32Field localPBUInt32Field = ((im_msg_body.NotOnlineImage)localObject1).original;
+          if (!paramPicUpReq.isRaw) {
+            break label498;
           }
           localPBUInt32Field.set(i);
-          if (paramC2CPicUpResp != null)
-          {
-            if (paramC2CPicUpResp.mUuid != null) {
-              localNotOnlineImage.download_path.set(ByteStringMicro.copyFromUtf8(paramC2CPicUpResp.mUuid));
-            }
-            if (paramC2CPicUpResp.mResid != null) {
-              localNotOnlineImage.res_id.set(ByteStringMicro.copyFromUtf8(paramC2CPicUpResp.mResid));
-            }
-            localNotOnlineImage.img_type.set(localPicFowardInfo.a.m);
-            localNotOnlineImage.biz_type.set(4);
-            localNotOnlineImage.uint32_thumb_width.set(localPicFowardInfo.a.e);
-            localNotOnlineImage.uint32_thumb_height.set(localPicFowardInfo.a.f);
-            Logger.a(this.b, this.jdField_a_of_type_JavaLangString, "uploadForwardMultiMsgPics.createNotOnlineImage", "[" + paramInt + "] OK, " + a(localNotOnlineImage));
-            return localNotOnlineImage;
+        }
+        else
+        {
+          ((im_msg_body.NotOnlineImage)localObject1).file_path.set(ByteStringMicro.copyFromUtf8("bad"));
+          ((im_msg_body.NotOnlineImage)localObject1).file_len.set(0);
+          ((im_msg_body.NotOnlineImage)localObject1).pic_md5.set(ByteStringMicro.copyFrom(new byte[] { 98, 97, 100 }));
+          ((im_msg_body.NotOnlineImage)localObject1).pic_height.set(((PicFowardInfo)localObject2).a.k);
+          ((im_msg_body.NotOnlineImage)localObject1).pic_width.set(((PicFowardInfo)localObject2).a.j);
+          ((im_msg_body.NotOnlineImage)localObject1).original.set(0);
+        }
+        if (paramC2CPicUpResp != null)
+        {
+          if (paramC2CPicUpResp.mUuid != null) {
+            ((im_msg_body.NotOnlineImage)localObject1).download_path.set(ByteStringMicro.copyFromUtf8(paramC2CPicUpResp.mUuid));
+          }
+          if (paramC2CPicUpResp.mResid != null) {
+            ((im_msg_body.NotOnlineImage)localObject1).res_id.set(ByteStringMicro.copyFromUtf8(paramC2CPicUpResp.mResid));
           }
         }
         else
         {
-          localNotOnlineImage.file_path.set(ByteStringMicro.copyFromUtf8("bad"));
-          localNotOnlineImage.file_len.set(0);
-          localNotOnlineImage.pic_md5.set(ByteStringMicro.copyFrom(new byte[] { 98, 97, 100 }));
-          localNotOnlineImage.pic_height.set(localPicFowardInfo.a.k);
-          localNotOnlineImage.pic_width.set(localPicFowardInfo.a.j);
-          localNotOnlineImage.original.set(0);
-          continue;
+          ((im_msg_body.NotOnlineImage)localObject1).download_path.set(ByteStringMicro.copyFromUtf8("bad"));
+          ((im_msg_body.NotOnlineImage)localObject1).res_id.set(ByteStringMicro.copyFromUtf8("bad"));
         }
-        localNotOnlineImage.download_path.set(ByteStringMicro.copyFromUtf8("bad"));
+        ((im_msg_body.NotOnlineImage)localObject1).img_type.set(((PicFowardInfo)localObject2).a.m);
+        ((im_msg_body.NotOnlineImage)localObject1).biz_type.set(4);
+        ((im_msg_body.NotOnlineImage)localObject1).uint32_thumb_width.set(((PicFowardInfo)localObject2).a.e);
+        ((im_msg_body.NotOnlineImage)localObject1).uint32_thumb_height.set(((PicFowardInfo)localObject2).a.f);
+        paramPicUpReq = this.b;
+        paramC2CPicUpResp = this.jdField_a_of_type_JavaLangString;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("[");
+        ((StringBuilder)localObject2).append(paramInt);
+        ((StringBuilder)localObject2).append("] OK, ");
+        ((StringBuilder)localObject2).append(a((im_msg_body.NotOnlineImage)localObject1));
+        Logger.a(paramPicUpReq, paramC2CPicUpResp, "uploadForwardMultiMsgPics.createNotOnlineImage", ((StringBuilder)localObject2).toString());
+        return localObject1;
       }
       catch (Exception paramPicUpReq)
       {
-        Logger.a(this.b, this.jdField_a_of_type_JavaLangString, "uploadForwardMultiMsgPics.createNotOnlineImage", "[" + paramInt + "] failed, Exception" + paramPicUpReq.toString());
+        paramC2CPicUpResp = this.b;
+        localObject1 = this.jdField_a_of_type_JavaLangString;
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("[");
+        ((StringBuilder)localObject2).append(paramInt);
+        ((StringBuilder)localObject2).append("] failed, Exception");
+        ((StringBuilder)localObject2).append(paramPicUpReq.toString());
+        Logger.a(paramC2CPicUpResp, (String)localObject1, "uploadForwardMultiMsgPics.createNotOnlineImage", ((StringBuilder)localObject2).toString());
         return null;
       }
-      localNotOnlineImage.res_id.set(ByteStringMicro.copyFromUtf8("bad"));
+      label498:
+      int i = 0;
     }
   }
   
   im_msg_body.NotOnlineImage a(im_msg_body.CustomFace paramCustomFace)
   {
-    im_msg_body.NotOnlineImage localNotOnlineImage = new im_msg_body.NotOnlineImage();
+    Object localObject1 = new im_msg_body.NotOnlineImage();
     try
     {
-      localNotOnlineImage.uint32_file_id.set(paramCustomFace.uint32_file_id.get());
-      localNotOnlineImage.download_path.set(ByteStringMicro.copyFromUtf8("BADBADBAD"));
-      Object localObject = new StringBuilder();
+      ((im_msg_body.NotOnlineImage)localObject1).uint32_file_id.set(paramCustomFace.uint32_file_id.get());
+      ((im_msg_body.NotOnlineImage)localObject1).download_path.set(ByteStringMicro.copyFromUtf8("BADBADBAD"));
+      localObject2 = new StringBuilder();
       long l = this.jdField_a_of_type_Long;
       this.jdField_a_of_type_Long = (1L + l);
-      localObject = l + "BADBADBAD" + this.jdField_a_of_type_JavaUtilRandom.nextInt();
-      localNotOnlineImage.res_id.set(ByteStringMicro.copyFromUtf8((String)localObject));
-      localNotOnlineImage.file_path.set(ByteStringMicro.copyFromUtf8(paramCustomFace.str_file_path.get()));
-      localNotOnlineImage.file_len.set(paramCustomFace.uint32_size.get());
-      localNotOnlineImage.pic_md5.set(paramCustomFace.bytes_md5.get());
-      localNotOnlineImage.pic_height.set(paramCustomFace.uint32_height.get());
-      localNotOnlineImage.pic_width.set(paramCustomFace.uint32_width.get());
-      localNotOnlineImage.original.set(paramCustomFace.uint32_origin.get());
-      localNotOnlineImage.img_type.set(paramCustomFace.image_type.get());
-      localNotOnlineImage.biz_type.set(4);
-      localNotOnlineImage.uint32_thumb_width.set(paramCustomFace.uint32_thumb_width.get());
-      localNotOnlineImage.uint32_thumb_height.set(paramCustomFace.uint32_thumb_height.get());
-      Logger.a(this.b, this.jdField_a_of_type_JavaLangString, "uploadForwardMultiMsgPics.createNotOnlineImage", "OK, " + a(localNotOnlineImage));
-      return localNotOnlineImage;
+      ((StringBuilder)localObject2).append(l);
+      ((StringBuilder)localObject2).append("BADBADBAD");
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaUtilRandom.nextInt());
+      localObject2 = ((StringBuilder)localObject2).toString();
+      ((im_msg_body.NotOnlineImage)localObject1).res_id.set(ByteStringMicro.copyFromUtf8((String)localObject2));
+      ((im_msg_body.NotOnlineImage)localObject1).file_path.set(ByteStringMicro.copyFromUtf8(paramCustomFace.str_file_path.get()));
+      ((im_msg_body.NotOnlineImage)localObject1).file_len.set(paramCustomFace.uint32_size.get());
+      ((im_msg_body.NotOnlineImage)localObject1).pic_md5.set(paramCustomFace.bytes_md5.get());
+      ((im_msg_body.NotOnlineImage)localObject1).pic_height.set(paramCustomFace.uint32_height.get());
+      ((im_msg_body.NotOnlineImage)localObject1).pic_width.set(paramCustomFace.uint32_width.get());
+      ((im_msg_body.NotOnlineImage)localObject1).original.set(paramCustomFace.uint32_origin.get());
+      ((im_msg_body.NotOnlineImage)localObject1).img_type.set(paramCustomFace.image_type.get());
+      ((im_msg_body.NotOnlineImage)localObject1).biz_type.set(4);
+      ((im_msg_body.NotOnlineImage)localObject1).uint32_thumb_width.set(paramCustomFace.uint32_thumb_width.get());
+      ((im_msg_body.NotOnlineImage)localObject1).uint32_thumb_height.set(paramCustomFace.uint32_thumb_height.get());
+      paramCustomFace = this.b;
+      localObject2 = this.jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("OK, ");
+      localStringBuilder.append(a((im_msg_body.NotOnlineImage)localObject1));
+      Logger.a(paramCustomFace, (String)localObject2, "uploadForwardMultiMsgPics.createNotOnlineImage", localStringBuilder.toString());
+      return localObject1;
     }
     catch (Exception paramCustomFace)
     {
-      Logger.a(this.b, this.jdField_a_of_type_JavaLangString, "uploadForwardMultiMsgPics.createNotOnlineImage", "Failed, Exception" + paramCustomFace.toString());
+      localObject1 = this.b;
+      Object localObject2 = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Failed, Exception");
+      localStringBuilder.append(paramCustomFace.toString());
+      Logger.a((String)localObject1, (String)localObject2, "uploadForwardMultiMsgPics.createNotOnlineImage", localStringBuilder.toString());
     }
     return null;
   }
@@ -321,7 +419,7 @@ public class MultiPicsBaseClass
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.operator.multipic.MultiPicsBaseClass
  * JD-Core Version:    0.7.0.1
  */

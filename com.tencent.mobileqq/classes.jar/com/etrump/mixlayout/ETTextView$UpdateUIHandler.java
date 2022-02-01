@@ -2,6 +2,7 @@ package com.etrump.mixlayout;
 
 import android.os.Handler;
 import android.os.Message;
+import com.etrump.mixlayout.api.ETFontUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
@@ -11,84 +12,78 @@ class ETTextView$UpdateUIHandler
   public void handleMessage(Message paramMessage)
   {
     ETTextView.DecorationHolder localDecorationHolder = (ETTextView.DecorationHolder)paramMessage.obj;
-    if (localDecorationHolder == null) {}
-    ETTextView localETTextView;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          localETTextView = (ETTextView)localDecorationHolder.jdField_a_of_type_JavaLangRefWeakReference.get();
-        } while ((localETTextView == null) || (ETTextView.access$600(localETTextView) == null));
-        switch (paramMessage.what)
-        {
-        default: 
-          return;
-        }
-      } while ((!localETTextView.isViewVisible()) || (ETTextView.mCreateDecorationHandler == null));
-      ETTextView.mCreateDecorationHandler.obtainMessage(2, ETTextView.DecorationHolder.a(localETTextView)).sendToTarget();
+    if (localDecorationHolder == null) {
       return;
-    } while (!localETTextView.isViewVisible());
-    boolean bool;
-    int i;
-    if ((ETTextView.access$400(localETTextView).a() == localDecorationHolder.jdField_a_of_type_AndroidGraphicsBitmap) && (localETTextView.mMsgId == localDecorationHolder.jdField_a_of_type_Long) && (ETTextView.access$600(localETTextView) != null) && (ETTextView.access$600(localETTextView).currentFrameIndex() == localDecorationHolder.jdField_a_of_type_Int) && (localETTextView.mFont != null) && (localETTextView.mFont.equals(localDecorationHolder.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a))) {
-      if ((ETTextView.access$700(localETTextView)) && (ETTextView.access$800(localETTextView)) && (ETTextView.enableAnimation) && (!ETTextView.access$900(localETTextView)))
-      {
-        bool = true;
-        if (!bool) {
-          break label388;
-        }
-        localETTextView.postInvalidate();
-        paramMessage = ETTextView.access$600(localETTextView);
-        if (!paramMessage.nextFrame()) {
-          break label319;
-        }
-        i = paramMessage.getFrameDelay();
-        int j = (int)(System.currentTimeMillis() - localDecorationHolder.b);
-        if (j <= 0) {
-          break label385;
-        }
-        i -= j;
-        label268:
-        paramMessage = obtainMessage(0, ETTextView.DecorationHolder.a(localETTextView));
-        if (i > 1) {
-          break label308;
-        }
-        sendMessage(paramMessage);
-        label290:
-        bool = true;
-      }
     }
-    label385:
-    label388:
-    for (;;)
+    ETTextView localETTextView = (ETTextView)localDecorationHolder.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localETTextView != null)
     {
-      ETTextView.access$702(localETTextView, bool);
-      return;
-      bool = false;
-      break;
-      label308:
-      sendMessageDelayed(paramMessage, i);
-      break label290;
-      label319:
-      localETTextView.shouldStartAnimation = false;
-      localETTextView.postInvalidateDelayed(100L);
-      if ((localETTextView.mAnimationListener != null) && (localETTextView.mFont != null)) {
-        localETTextView.mAnimationListener.a(localETTextView.mMessage, localETTextView.mFont.mFontId);
+      if (ETTextView.access$600(localETTextView) == null) {
+        return;
       }
-      bool = false;
-      continue;
-      QLog.e("ETTextView", 2, "this textView reused!");
-      return;
-      break label268;
+      int i = paramMessage.what;
+      if (i != 0)
+      {
+        if (i != 1) {
+          return;
+        }
+        if (localETTextView.isViewVisible())
+        {
+          if ((ETTextView.access$400(localETTextView).a() == localDecorationHolder.jdField_a_of_type_AndroidGraphicsBitmap) && (localETTextView.mMsgId == localDecorationHolder.jdField_a_of_type_Long) && (ETTextView.access$600(localETTextView) != null) && (ETTextView.access$600(localETTextView).currentFrameIndex() == localDecorationHolder.jdField_a_of_type_Int) && (localETTextView.mFont != null) && (localETTextView.mFont.equals(localDecorationHolder.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a)))
+          {
+            boolean bool1;
+            if ((ETTextView.access$700(localETTextView)) && (ETTextView.access$800(localETTextView)) && (ETFontUtil.enableAnimation) && (!ETTextView.access$900(localETTextView))) {
+              bool1 = true;
+            } else {
+              bool1 = false;
+            }
+            boolean bool2 = bool1;
+            if (bool1)
+            {
+              localETTextView.postInvalidate();
+              paramMessage = ETTextView.access$600(localETTextView);
+              if (paramMessage.nextFrame())
+              {
+                int j = paramMessage.getFrameDelay();
+                int k = (int)(System.currentTimeMillis() - localDecorationHolder.b);
+                i = j;
+                if (k > 0) {
+                  i = j - k;
+                }
+                paramMessage = obtainMessage(0, ETTextView.DecorationHolder.a(localETTextView));
+                if (i <= 1) {
+                  sendMessage(paramMessage);
+                } else {
+                  sendMessageDelayed(paramMessage, i);
+                }
+                bool2 = true;
+              }
+              else
+              {
+                localETTextView.shouldStartAnimation = false;
+                localETTextView.postInvalidateDelayed(100L);
+                if ((localETTextView.mAnimationListener != null) && (localETTextView.mFont != null)) {
+                  localETTextView.mAnimationListener.a(localETTextView.mMessage, localETTextView.mFont.mFontId);
+                }
+                bool2 = false;
+              }
+            }
+            ETTextView.access$702(localETTextView, bool2);
+            return;
+          }
+          QLog.e("ETTextView", 2, "this textView reused!");
+        }
+      }
+      else if ((localETTextView.isViewVisible()) && (ETTextView.mCreateDecorationHandler != null))
+      {
+        ETTextView.mCreateDecorationHandler.obtainMessage(2, ETTextView.DecorationHolder.a(localETTextView)).sendToTarget();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.ETTextView.UpdateUIHandler
  * JD-Core Version:    0.7.0.1
  */

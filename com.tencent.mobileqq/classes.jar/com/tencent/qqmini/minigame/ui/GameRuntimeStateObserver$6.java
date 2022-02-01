@@ -13,17 +13,18 @@ class GameRuntimeStateObserver$6
   
   public void onGetTraceInfo(@NotNull TraceStatistics paramTraceStatistics)
   {
-    if (GameRuntimeStateObserver.access$400(this.this$0) != null) {}
-    for (String str = GameRuntimeStateObserver.access$400(this.this$0).appId;; str = "")
-    {
-      MiniGameBeaconReport.reportJankTraceRecords(paramTraceStatistics, str, true, this.val$isFirstFrame);
-      return;
+    String str;
+    if (GameRuntimeStateObserver.access$400(this.this$0) != null) {
+      str = GameRuntimeStateObserver.access$400(this.this$0).appId;
+    } else {
+      str = "";
     }
+    MiniGameBeaconReport.reportJankTraceRecords(paramTraceStatistics, str, true, this.val$isFirstFrame);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.ui.GameRuntimeStateObserver.6
  * JD-Core Version:    0.7.0.1
  */

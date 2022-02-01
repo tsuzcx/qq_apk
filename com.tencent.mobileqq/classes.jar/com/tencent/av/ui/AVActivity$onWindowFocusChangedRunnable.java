@@ -9,15 +9,21 @@ class AVActivity$onWindowFocusChangedRunnable
   
   public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(this.this$0.b, 4, "onWindowFocusChangedRunnable, nfonWindowFocus[" + this.this$0.j + "->true]");
+    if (QLog.isDevelopLevel())
+    {
+      String str = this.this$0.b;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onWindowFocusChangedRunnable, nfonWindowFocus[");
+      localStringBuilder.append(this.this$0.j);
+      localStringBuilder.append("->true]");
+      QLog.d(str, 4, localStringBuilder.toString());
     }
     this.this$0.j = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.AVActivity.onWindowFocusChangedRunnable
  * JD-Core Version:    0.7.0.1
  */

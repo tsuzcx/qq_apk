@@ -28,34 +28,47 @@ public class GetDateCollectionListResponse
   {
     super(paramRspDateVideoCollectionList.result);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    if (paramRspDateVideoCollectionList.is_end.get() == 1) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_JavaLangString = paramRspDateVideoCollectionList.next_cookie.get().toStringUtf8();
-      this.b = paramRspDateVideoCollectionList.total_video_count.get();
-      this.jdField_a_of_type_Long = paramRspDateVideoCollectionList.seqno.get();
-      this.c = paramRspDateVideoCollectionList.is_friend.get();
-      paramRspDateVideoCollectionList = paramRspDateVideoCollectionList.collection_list.get().iterator();
-      while (paramRspDateVideoCollectionList.hasNext())
-      {
-        qqstory_struct.DateVideoCollection localDateVideoCollection = (qqstory_struct.DateVideoCollection)paramRspDateVideoCollectionList.next();
-        VideoCollectionItem localVideoCollectionItem = new VideoCollectionItem();
-        localVideoCollectionItem.convertFrom("Q.qqstory.memories:GetDateCollectionListResponse", paramString, localDateVideoCollection);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localVideoCollectionItem);
-      }
+    int i = paramRspDateVideoCollectionList.is_end.get();
+    boolean bool = true;
+    if (i != 1) {
       bool = false;
+    }
+    this.jdField_a_of_type_Boolean = bool;
+    this.jdField_a_of_type_JavaLangString = paramRspDateVideoCollectionList.next_cookie.get().toStringUtf8();
+    this.b = paramRspDateVideoCollectionList.total_video_count.get();
+    this.jdField_a_of_type_Long = paramRspDateVideoCollectionList.seqno.get();
+    this.c = paramRspDateVideoCollectionList.is_friend.get();
+    paramRspDateVideoCollectionList = paramRspDateVideoCollectionList.collection_list.get().iterator();
+    while (paramRspDateVideoCollectionList.hasNext())
+    {
+      qqstory_struct.DateVideoCollection localDateVideoCollection = (qqstory_struct.DateVideoCollection)paramRspDateVideoCollectionList.next();
+      VideoCollectionItem localVideoCollectionItem = new VideoCollectionItem();
+      localVideoCollectionItem.convertFrom("Q.qqstory.memories:GetDateCollectionListResponse", paramString, localDateVideoCollection);
+      this.jdField_a_of_type_JavaUtilArrayList.add(localVideoCollectionItem);
     }
   }
   
   public String toString()
   {
-    return "GetDateCollectionListResponse{isEnd=" + this.jdField_a_of_type_Boolean + ", nextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + ", seq=" + this.jdField_a_of_type_Long + ", mTotalVideoCount=" + this.b + ", mIsFriend=" + this.c + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetDateCollectionListResponse{isEnd=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", nextCookie='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", seq=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", mTotalVideoCount=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", mIsFriend=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.GetDateCollectionListResponse
  * JD-Core Version:    0.7.0.1
  */

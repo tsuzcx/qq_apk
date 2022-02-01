@@ -1,7 +1,8 @@
 package cooperation.qqcircle.report;
 
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.app.MobileQQ;
+import android.content.Context;
+import android.widget.Toast;
+import com.tencent.biz.richframework.delegate.impl.RFApplication;
 
 final class QCircleLpReportDc05501$2
   implements Runnable
@@ -10,12 +11,18 @@ final class QCircleLpReportDc05501$2
   
   public void run()
   {
-    QQToast.a(MobileQQ.sMobileQQ.getApplicationContext(), "QCircleLpReportDc05501report invalid pageId,actionType:" + this.val$actiontype + ",subActionType:" + this.val$subactiontype, 1).a();
+    Context localContext = RFApplication.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QCircleLpReportDc05501report invalid pageId,actionType:");
+    localStringBuilder.append(this.val$actiontype);
+    localStringBuilder.append(",subActionType:");
+    localStringBuilder.append(this.val$subactiontype);
+    Toast.makeText(localContext, localStringBuilder.toString(), 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleLpReportDc05501.2
  * JD-Core Version:    0.7.0.1
  */

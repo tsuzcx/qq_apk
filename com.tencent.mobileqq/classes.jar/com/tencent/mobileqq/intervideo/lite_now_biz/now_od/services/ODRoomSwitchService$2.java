@@ -14,13 +14,14 @@ class ODRoomSwitchService$2
   
   public void a(List<SwitchRoomInfo> paramList)
   {
-    paramList = ODRoomSwitchService.a(this.a, ODRoomSwitchService.a(this.a), paramList);
+    ODRoomSwitchService localODRoomSwitchService = this.a;
+    paramList = ODRoomSwitchService.a(localODRoomSwitchService, ODRoomSwitchService.a(localODRoomSwitchService), paramList);
     ThreadManager.getUIHandler().post(new ODRoomSwitchService.2.1(this, paramList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.now_od.services.ODRoomSwitchService.2
  * JD-Core Version:    0.7.0.1
  */

@@ -49,12 +49,12 @@ public class HalfSizeWebviewDialog
   
   public int a()
   {
-    return 2131559360;
+    return 2131559235;
   }
   
   public FrameLayout a(View paramView)
   {
-    return (FrameLayout)paramView.findViewById(2131381848);
+    return (FrameLayout)paramView.findViewById(2131381062);
   }
   
   protected void a()
@@ -69,48 +69,41 @@ public class HalfSizeWebviewDialog
     }
     paramDialog.setCanceledOnTouchOutside(true);
     Window localWindow = paramDialog.getWindow();
-    WindowManager.LayoutParams localLayoutParams;
     if (localWindow != null)
     {
-      localLayoutParams = localWindow.getAttributes();
-      if (getActivity() != null)
-      {
-        if (this.d) {
-          break label118;
+      WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
+      if (getActivity() != null) {
+        if (!this.d)
+        {
+          localWindow.setWindowAnimations(2131756038);
+          localLayoutParams.gravity = 80;
         }
-        localWindow.setWindowAnimations(2131755691);
-        localLayoutParams.gravity = 80;
+        else
+        {
+          localWindow.setWindowAnimations(2131756039);
+          localLayoutParams.gravity = 5;
+        }
       }
-      label50:
-      if (this.jdField_a_of_type_Int != 0) {
-        break label132;
+      int i = this.jdField_a_of_type_Int;
+      if (i == 0) {
+        localLayoutParams.width = -1;
+      } else {
+        localLayoutParams.width = i;
       }
-      localLayoutParams.width = -1;
-      label62:
-      if (this.jdField_b_of_type_Int != 0) {
-        break label143;
+      i = this.jdField_b_of_type_Int;
+      if (i == 0) {
+        localLayoutParams.height = (UIUtil.getScreenHeight(paramDialog.getContext()) / 2);
+      } else {
+        localLayoutParams.height = i;
       }
-    }
-    label132:
-    label143:
-    for (localLayoutParams.height = (UIUtil.getScreenHeight(paramDialog.getContext()) / 2);; localLayoutParams.height = this.jdField_b_of_type_Int)
-    {
       localWindow.setAttributes(localLayoutParams);
       localWindow.setDimAmount(this.jdField_a_of_type_Float);
-      if (this.jdField_b_of_type_Boolean) {
-        a();
-      }
-      if (this.e) {
-        break;
-      }
+    }
+    if (this.jdField_b_of_type_Boolean) {
+      a();
+    }
+    if (!this.e) {
       b();
-      return;
-      label118:
-      localWindow.setWindowAnimations(2131755692);
-      localLayoutParams.gravity = 5;
-      break label50;
-      localLayoutParams.width = this.jdField_a_of_type_Int;
-      break label62;
     }
   }
   
@@ -121,7 +114,7 @@ public class HalfSizeWebviewDialog
   
   public FrameLayout b(View paramView)
   {
-    return (FrameLayout)paramView.findViewById(2131381848);
+    return (FrameLayout)paramView.findViewById(2131381062);
   }
   
   protected void b()
@@ -131,20 +124,21 @@ public class HalfSizeWebviewDialog
   
   protected void b(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131368595));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131368335));
     ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
-    if (this.jdField_b_of_type_Boolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localViewGroup.setVisibility(i);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368594));
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368596));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368597));
-      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new HalfSizeWebviewDialog.2(this));
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new HalfSizeWebviewDialog.3(this));
-      this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131379677);
-      return;
+    int i;
+    if (this.jdField_b_of_type_Boolean) {
+      i = 0;
+    } else {
+      i = 8;
     }
+    localViewGroup.setVisibility(i);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368334));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368336));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368337));
+    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new HalfSizeWebviewDialog.2(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new HalfSizeWebviewDialog.3(this));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131379019);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -166,7 +160,7 @@ public class HalfSizeWebviewDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.dialog.HalfSizeWebviewDialog
  * JD-Core Version:    0.7.0.1
  */

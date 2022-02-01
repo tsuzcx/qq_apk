@@ -33,20 +33,16 @@ public class RoomController
     try
     {
       this.jdField_a_of_type_Long = Long.parseLong(paramString1);
-      this.b = paramString2;
-      this.jdField_a_of_type_Int = paramInt;
-      this.c = paramString3;
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherApiIQQWriteTogetherService = ((IQQWriteTogetherService)paramAppRuntime.getRuntimeService(IQQWriteTogetherService.class, ""));
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherApiIQQWriteTogetherService.addObservers(this);
-      return;
     }
     catch (NumberFormatException paramWriteTogetherWebSocketEngine)
     {
-      for (;;)
-      {
-        QLog.e("RoomController", 1, paramWriteTogetherWebSocketEngine, new Object[0]);
-      }
+      QLog.e("RoomController", 1, paramWriteTogetherWebSocketEngine, new Object[0]);
     }
+    this.b = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramString3;
+    this.jdField_a_of_type_ComTencentMobileqqWritetogetherApiIQQWriteTogetherService = ((IQQWriteTogetherService)paramAppRuntime.getRuntimeService(IQQWriteTogetherService.class, ""));
+    this.jdField_a_of_type_ComTencentMobileqqWritetogetherApiIQQWriteTogetherService.addObservers(this);
   }
   
   public void a()
@@ -66,25 +62,32 @@ public class RoomController
   
   public void a(Type paramType, boolean paramBoolean, Object paramObject)
   {
-    switch (RoomController.1.a[paramType.ordinal()])
+    int i = RoomController.1.a[paramType.ordinal()];
+    if (i != 1)
     {
-    default: 
-    case 1: 
-      do
-      {
+      if (i != 2) {
         return;
-        paramType = ((OnPostWrapper)((ClientReadyRespMsg)paramObject).body).onpost;
-        if (QLog.isColorLevel()) {
-          QLog.d("RoomController", 2, "isSuccesss: " + paramBoolean + ", ret: " + paramType.result);
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientRoomController$OnEnterRoomListener != null) {
-          this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientRoomController$OnEnterRoomListener.a(paramBoolean, paramType.result);
-        }
-      } while (paramType.result != 60010);
-      ThreadManager.getSubThreadHandler().postDelayed(this, 10000L);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientRoomController$OnEnterRoomListener.a();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientRoomController$OnEnterRoomListener.a();
+    paramType = ((OnPostWrapper)((ClientReadyRespMsg)paramObject).body).onpost;
+    if (QLog.isColorLevel())
+    {
+      paramObject = new StringBuilder();
+      paramObject.append("isSuccesss: ");
+      paramObject.append(paramBoolean);
+      paramObject.append(", ret: ");
+      paramObject.append(paramType.result);
+      QLog.d("RoomController", 2, paramObject.toString());
+    }
+    paramObject = this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientRoomController$OnEnterRoomListener;
+    if (paramObject != null) {
+      paramObject.a(paramBoolean, paramType.result);
+    }
+    if (paramType.result == 60010) {
+      ThreadManager.getSubThreadHandler().postDelayed(this, 10000L);
+    }
   }
   
   public void b()
@@ -103,7 +106,7 @@ public class RoomController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.client.RoomController
  * JD-Core Version:    0.7.0.1
  */

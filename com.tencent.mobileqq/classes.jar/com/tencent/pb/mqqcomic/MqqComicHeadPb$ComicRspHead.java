@@ -24,14 +24,15 @@ public final class MqqComicHeadPb$ComicRspHead
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 50, 56, 64 }, new String[] { "retCode", "retMsg", "debugMsg", "maxCacheSec", "etag", "cmd", "uin", "reportRate" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), "", "", Long.valueOf(0L), Integer.valueOf(0) }, ComicRspHead.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 50, 56, 64 }, new String[] { "retCode", "retMsg", "debugMsg", "maxCacheSec", "etag", "cmd", "uin", "reportRate" }, new Object[] { localInteger, localByteStringMicro1, localByteStringMicro2, localInteger, "", "", Long.valueOf(0L), localInteger }, ComicRspHead.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.mqqcomic.MqqComicHeadPb.ComicRspHead
  * JD-Core Version:    0.7.0.1
  */

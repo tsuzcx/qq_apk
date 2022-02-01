@@ -80,7 +80,19 @@ public class LocationRoom$Venue
   @NonNull
   public String toString()
   {
-    return "Venue{ name = " + this.b + " address: " + this.c + " authorUin: " + this.jdField_a_of_type_JavaLangString + " point: " + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + " marker: " + this.jdField_a_of_type_JavaLangRefSoftReference + " }";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Venue{ name = ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(" address: ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(" authorUin: ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" point: ");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
+    localStringBuilder.append(" marker: ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangRefSoftReference);
+    localStringBuilder.append(" }");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -93,7 +105,7 @@ public class LocationRoom$Venue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.data.LocationRoom.Venue
  * JD-Core Version:    0.7.0.1
  */

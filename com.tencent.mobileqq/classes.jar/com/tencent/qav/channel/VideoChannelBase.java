@@ -41,20 +41,20 @@ public abstract class VideoChannelBase
   
   private boolean a(int paramInt)
   {
-    boolean bool = true;
-    if (this.jdField_a_of_type_ComTencentQavChannelVideoChannelSupportCallback != null) {
-      bool = this.jdField_a_of_type_ComTencentQavChannelVideoChannelSupportCallback.a(paramInt);
+    VideoChannelSupportCallback localVideoChannelSupportCallback = this.jdField_a_of_type_ComTencentQavChannelVideoChannelSupportCallback;
+    if (localVideoChannelSupportCallback != null) {
+      return localVideoChannelSupportCallback.a(paramInt);
     }
-    return bool;
+    return true;
   }
   
   private boolean b(int paramInt)
   {
-    boolean bool = true;
-    if (this.jdField_a_of_type_ComTencentQavChannelVideoChannelSupportCallback != null) {
-      bool = this.jdField_a_of_type_ComTencentQavChannelVideoChannelSupportCallback.b(paramInt);
+    VideoChannelSupportCallback localVideoChannelSupportCallback = this.jdField_a_of_type_ComTencentQavChannelVideoChannelSupportCallback;
+    if (localVideoChannelSupportCallback != null) {
+      return localVideoChannelSupportCallback.b(paramInt);
     }
-    return bool;
+    return true;
   }
   
   protected abstract long a();
@@ -75,8 +75,9 @@ public abstract class VideoChannelBase
   
   public void a(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentQavChannelVideoChannelCallback != null) {
-      this.jdField_a_of_type_ComTencentQavChannelVideoChannelCallback.receiveGatewayMsg(paramString, paramInt);
+    VideoChannelCallback localVideoChannelCallback = this.jdField_a_of_type_ComTencentQavChannelVideoChannelCallback;
+    if (localVideoChannelCallback != null) {
+      localVideoChannelCallback.receiveGatewayMsg(paramString, paramInt);
     }
   }
   
@@ -229,7 +230,7 @@ public abstract class VideoChannelBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qav.channel.VideoChannelBase
  * JD-Core Version:    0.7.0.1
  */

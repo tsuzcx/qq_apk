@@ -13,7 +13,8 @@ class VInput$3
   {
     if ((paramInt == 66) && (paramKeyEvent.getAction() == 1))
     {
-      this.this$0.inputFireEvent("return", VInput.access$100(this.this$0).toString());
+      paramView = this.this$0;
+      paramView.inputFireEvent("return", VInput.access$100(paramView).toString());
       return true;
     }
     return false;
@@ -21,7 +22,7 @@ class VInput$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.component.VInput.3
  * JD-Core Version:    0.7.0.1
  */

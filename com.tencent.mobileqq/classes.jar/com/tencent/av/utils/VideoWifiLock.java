@@ -32,9 +32,10 @@ public class VideoWifiLock
     if (this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock == null) {
       this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock = ((WifiManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("wifi")).createWifiLock(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
     }
-    if (this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock != null)
+    WifiManager.WifiLock localWifiLock = this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock;
+    if (localWifiLock != null)
     {
-      if (!this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock.isHeld()) {
+      if (!localWifiLock.isHeld()) {
         this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock.acquire();
       }
       return true;
@@ -44,12 +45,13 @@ public class VideoWifiLock
   
   public boolean b()
   {
-    return (this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock != null) && (this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock.isHeld());
+    WifiManager.WifiLock localWifiLock = this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock;
+    return (localWifiLock != null) && (localWifiLock.isHeld());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.VideoWifiLock
  * JD-Core Version:    0.7.0.1
  */

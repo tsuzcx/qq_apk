@@ -18,10 +18,14 @@ public final class AccessibilityManagerCompat
   
   public static boolean addTouchExplorationStateChangeListener(AccessibilityManager paramAccessibilityManager, AccessibilityManagerCompat.TouchExplorationStateChangeListener paramTouchExplorationStateChangeListener)
   {
-    if ((Build.VERSION.SDK_INT < 19) || (paramTouchExplorationStateChangeListener == null)) {
-      return false;
+    if (Build.VERSION.SDK_INT >= 19)
+    {
+      if (paramTouchExplorationStateChangeListener == null) {
+        return false;
+      }
+      return paramAccessibilityManager.addTouchExplorationStateChangeListener(new AccessibilityManagerCompat.TouchExplorationStateChangeListenerWrapper(paramTouchExplorationStateChangeListener));
     }
-    return paramAccessibilityManager.addTouchExplorationStateChangeListener(new AccessibilityManagerCompat.TouchExplorationStateChangeListenerWrapper(paramTouchExplorationStateChangeListener));
+    return false;
   }
   
   @Deprecated
@@ -53,15 +57,19 @@ public final class AccessibilityManagerCompat
   
   public static boolean removeTouchExplorationStateChangeListener(AccessibilityManager paramAccessibilityManager, AccessibilityManagerCompat.TouchExplorationStateChangeListener paramTouchExplorationStateChangeListener)
   {
-    if ((Build.VERSION.SDK_INT < 19) || (paramTouchExplorationStateChangeListener == null)) {
-      return false;
+    if (Build.VERSION.SDK_INT >= 19)
+    {
+      if (paramTouchExplorationStateChangeListener == null) {
+        return false;
+      }
+      return paramAccessibilityManager.removeTouchExplorationStateChangeListener(new AccessibilityManagerCompat.TouchExplorationStateChangeListenerWrapper(paramTouchExplorationStateChangeListener));
     }
-    return paramAccessibilityManager.removeTouchExplorationStateChangeListener(new AccessibilityManagerCompat.TouchExplorationStateChangeListenerWrapper(paramTouchExplorationStateChangeListener));
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.view.accessibility.AccessibilityManagerCompat
  * JD-Core Version:    0.7.0.1
  */

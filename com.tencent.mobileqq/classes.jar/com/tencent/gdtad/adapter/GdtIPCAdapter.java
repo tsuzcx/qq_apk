@@ -36,66 +36,52 @@ public final class GdtIPCAdapter
   public boolean register(String paramString, AdIPCManager.Handler paramHandler)
   {
     boolean bool;
-    if (TextUtils.isEmpty(paramString)) {
+    if ((TextUtils.isEmpty(paramString)) || (paramHandler == null) || (this.a.containsKey(paramString)))
+    {
       bool = false;
     }
-    for (;;)
+    else
     {
-      GdtLog.b("GdtIPCAdapter", String.format("register action:%s result:%b", new Object[] { paramString, Boolean.valueOf(bool) }));
-      return bool;
-      if (paramHandler == null)
-      {
-        bool = false;
-      }
-      else if (this.a.containsKey(paramString))
-      {
-        bool = false;
-      }
-      else
-      {
-        this.a.put(paramString, paramHandler);
-        bool = true;
-      }
+      this.a.put(paramString, paramHandler);
+      bool = true;
     }
+    GdtLog.b("GdtIPCAdapter", String.format("register action:%s result:%b", new Object[] { paramString, Boolean.valueOf(bool) }));
+    return bool;
   }
   
   public AdIPCManager.Result send(Context paramContext, AdIPCManager.Params paramParams)
   {
     Object localObject2 = null;
     Object localObject1;
-    if (paramParams != null)
-    {
+    if (paramParams != null) {
       localObject1 = paramParams.getAction();
-      if (paramParams == null) {
-        break label107;
-      }
-    }
-    AdIPCManager.Handler localHandler;
-    label107:
-    for (String str = paramParams.getToProcessName();; str = null)
-    {
-      localHandler = getHandler((String)localObject1);
-      paramContext = AdProcessManager.INSTANCE.getCurrentProcessName(paramContext);
-      if ((Looper.myLooper() != Looper.getMainLooper()) && (!TextUtils.isEmpty(paramContext)) && (localHandler != null) && (paramParams != null) && (paramParams.isValid())) {
-        break label113;
-      }
-      GdtLog.d("GdtIPCAdapter", String.format("send error actionad:%s from:%s to:%s", new Object[] { localObject1, paramContext, str }));
-      return null;
+    } else {
       localObject1 = null;
-      break;
     }
-    label113:
-    GdtLog.b("GdtIPCAdapter", String.format("send action:%s from:%s to:%s", new Object[] { localObject1, paramContext, str }));
-    if (TextUtils.equals(paramContext, str)) {
-      return localHandler.handle(paramParams);
+    String str;
+    if (paramParams != null) {
+      str = paramParams.getToProcessName();
+    } else {
+      str = null;
     }
-    if (TextUtils.equals(AdProcessManager.INSTANCE.getMainProcessName(), str))
+    AdIPCManager.Handler localHandler = getHandler((String)localObject1);
+    paramContext = AdProcessManager.INSTANCE.getCurrentProcessName(paramContext);
+    Looper localLooper1 = Looper.myLooper();
+    Looper localLooper2 = Looper.getMainLooper();
+    boolean bool = true;
+    if ((localLooper1 != localLooper2) && (!TextUtils.isEmpty(paramContext)) && (localHandler != null) && (paramParams != null) && (paramParams.isValid()))
     {
-      localObject1 = QIPCClientHelper.getInstance().getClient().callServer("gdt_ipc_sync_module_client_to_server", (String)localObject1, paramParams.bundle);
-      paramParams = new AdIPCManager.Result();
-      if ((localObject1 != null) && (((EIPCResult)localObject1).isSuccess())) {}
-      for (boolean bool = true;; bool = false)
+      GdtLog.b("GdtIPCAdapter", String.format("send action:%s from:%s to:%s", new Object[] { localObject1, paramContext, str }));
+      if (TextUtils.equals(paramContext, str)) {
+        return localHandler.handle(paramParams);
+      }
+      if (TextUtils.equals(AdProcessManager.INSTANCE.getMainProcessName(), str))
       {
+        localObject1 = QIPCClientHelper.getInstance().getClient().callServer("gdt_ipc_sync_module_client_to_server", (String)localObject1, paramParams.bundle);
+        paramParams = new AdIPCManager.Result();
+        if ((localObject1 == null) || (!((EIPCResult)localObject1).isSuccess())) {
+          bool = false;
+        }
         paramParams.success = bool;
         paramContext = localObject2;
         if (localObject1 != null) {
@@ -104,8 +90,10 @@ public final class GdtIPCAdapter
         paramParams.bundle = paramContext;
         return paramParams;
       }
+      GdtLog.d("GdtIPCAdapter", String.format("send error action:%s from:%s to:%s", new Object[] { localObject1, paramContext, str }));
+      return null;
     }
-    GdtLog.d("GdtIPCAdapter", String.format("send error action:%s from:%s to:%s", new Object[] { localObject1, paramContext, str }));
+    GdtLog.d("GdtIPCAdapter", String.format("send error actionad:%s from:%s to:%s", new Object[] { localObject1, paramContext, str }));
     return null;
   }
   
@@ -113,46 +101,43 @@ public final class GdtIPCAdapter
   {
     String str2 = null;
     String str1;
-    AdIPCManager.Handler localHandler;
-    if (paramParams != null)
-    {
+    if (paramParams != null) {
       str1 = paramParams.getAction();
-      if (paramParams != null) {
-        str2 = paramParams.getToProcessName();
-      }
-      localHandler = getHandler(str1);
-      paramContext = AdProcessManager.INSTANCE.getCurrentProcessName(paramContext);
-      if ((!TextUtils.isEmpty(paramContext)) && (localHandler != null) && (paramParams != null) && (paramParams.isValid())) {
-        break label97;
-      }
-      GdtLog.d("GdtIPCAdapter", String.format("send error action:%s from:%s to:%s", new Object[] { str1, paramContext, str2 }));
-    }
-    label97:
-    do
-    {
-      return;
+    } else {
       str1 = null;
-      break;
-      GdtLog.b("GdtIPCAdapter", String.format("send action:%s from:%s to:%s", new Object[] { str1, paramContext, str2 }));
-      if (!TextUtils.equals(paramContext, str2)) {
-        break label169;
-      }
-      paramContext = localHandler.handle(paramParams);
-    } while ((paramWeakReference == null) || (paramWeakReference.get() == null));
-    ((AdIPCManager.Callback)paramWeakReference.get()).onCallback(paramParams, paramContext);
-    return;
-    label169:
-    if (TextUtils.equals(AdProcessManager.INSTANCE.getMainProcessName(), str2))
+    }
+    if (paramParams != null) {
+      str2 = paramParams.getToProcessName();
+    }
+    AdIPCManager.Handler localHandler = getHandler(str1);
+    paramContext = AdProcessManager.INSTANCE.getCurrentProcessName(paramContext);
+    if ((!TextUtils.isEmpty(paramContext)) && (localHandler != null) && (paramParams != null) && (paramParams.isValid()))
     {
-      QIPCClientHelper.getInstance().getClient().callServer("gdt_ipc_async_module_client_to_server", str1, paramParams.bundle, new GdtIPCAdapter.1(this, paramWeakReference, str1, paramContext, str2, paramParams));
+      GdtLog.b("GdtIPCAdapter", String.format("send action:%s from:%s to:%s", new Object[] { str1, paramContext, str2 }));
+      if (TextUtils.equals(paramContext, str2))
+      {
+        paramContext = localHandler.handle(paramParams);
+        if ((paramWeakReference != null) && (paramWeakReference.get() != null)) {
+          ((AdIPCManager.Callback)paramWeakReference.get()).onCallback(paramParams, paramContext);
+        }
+      }
+      else
+      {
+        if (TextUtils.equals(AdProcessManager.INSTANCE.getMainProcessName(), str2))
+        {
+          QIPCClientHelper.getInstance().getClient().callServer("gdt_ipc_async_module_client_to_server", str1, paramParams.bundle, new GdtIPCAdapter.1(this, paramWeakReference, str1, paramContext, str2, paramParams));
+          return;
+        }
+        QIPCClientHelper.getInstance().getClient().callServer("gdt_ipc_async_module_client_to_server", str1, paramParams.bundle, new GdtIPCAdapter.2(this, paramWeakReference, str1, paramContext, str2, paramParams));
+      }
       return;
     }
-    QIPCClientHelper.getInstance().getClient().callServer("gdt_ipc_async_module_client_to_server", str1, paramParams.bundle, new GdtIPCAdapter.2(this, paramWeakReference, str1, paramContext, str2, paramParams));
+    GdtLog.d("GdtIPCAdapter", String.format("send error action:%s from:%s to:%s", new Object[] { str1, paramContext, str2 }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.adapter.GdtIPCAdapter
  * JD-Core Version:    0.7.0.1
  */

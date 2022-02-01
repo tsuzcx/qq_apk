@@ -25,7 +25,11 @@ public class DesktopCardEntity
     this.moduleType = paramStModuleInfo.moduleType.get();
     this.title = paramStModuleInfo.title.get();
     this.data = ((INTERFACE.StModuleInfo)paramStModuleInfo.get()).toByteArray();
-    this.cardId = (this.moduleType + "_" + this.title);
+    paramStModuleInfo = new StringBuilder();
+    paramStModuleInfo.append(this.moduleType);
+    paramStModuleInfo.append("_");
+    paramStModuleInfo.append(this.title);
+    this.cardId = paramStModuleInfo.toString();
   }
   
   public INTERFACE.StModuleInfo createStModuleInfo()
@@ -40,7 +44,10 @@ public class DesktopCardEntity
       }
       catch (Exception localException)
       {
-        QLog.e("MiniAppCardEntity", 1, "createStmoduleInfo, exception: " + Log.getStackTraceString(localException));
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("createStmoduleInfo, exception: ");
+        localStringBuilder.append(Log.getStackTraceString(localException));
+        QLog.e("MiniAppCardEntity", 1, localStringBuilder.toString());
         return null;
       }
     }
@@ -49,12 +56,17 @@ public class DesktopCardEntity
   
   public String toString()
   {
-    return "moduleType: " + this.moduleType + ", title: " + this.title;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("moduleType: ");
+    localStringBuilder.append(this.moduleType);
+    localStringBuilder.append(", title: ");
+    localStringBuilder.append(this.title);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopCardEntity
  * JD-Core Version:    0.7.0.1
  */

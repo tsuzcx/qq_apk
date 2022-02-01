@@ -29,12 +29,32 @@ class ARCloudControl$7
       paramSosoLbsInfo = paramSosoLbsInfo.mLocation;
       paramInt = (int)(paramSosoLbsInfo.mLat02 * 1000000.0D);
       int i = (int)(paramSosoLbsInfo.mLon02 * 1000000.0D);
-      QLog.i("AREngine_ARCloudControl", 1, "GetLBSLocation. onLocationFinish. gps info. Lat_02 = " + paramSosoLbsInfo.mLat02 + ", Lon_02 = " + paramSosoLbsInfo.mLon02 + ", latitude = " + paramInt + ", longitude = " + i + ", altitude = " + paramSosoLbsInfo.altitude + ", accuracy = " + paramSosoLbsInfo.accuracy + ", name = " + paramSosoLbsInfo.name + ", address = " + paramSosoLbsInfo.address);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("GetLBSLocation. onLocationFinish. gps info. Lat_02 = ");
+      localStringBuilder.append(paramSosoLbsInfo.mLat02);
+      localStringBuilder.append(", Lon_02 = ");
+      localStringBuilder.append(paramSosoLbsInfo.mLon02);
+      localStringBuilder.append(", latitude = ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", longitude = ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(", altitude = ");
+      localStringBuilder.append(paramSosoLbsInfo.altitude);
+      localStringBuilder.append(", accuracy = ");
+      localStringBuilder.append(paramSosoLbsInfo.accuracy);
+      localStringBuilder.append(", name = ");
+      localStringBuilder.append(paramSosoLbsInfo.name);
+      localStringBuilder.append(", address = ");
+      localStringBuilder.append(paramSosoLbsInfo.address);
+      QLog.i("AREngine_ARCloudControl", 1, localStringBuilder.toString());
       paramSosoLbsInfo = ARCloudRecogResult.a(this.a.a.recognitions, ARCloudControl.a(this.a));
       ARCloudControl.a(this.a, paramSosoLbsInfo, paramInt, i);
       return;
     }
-    QLog.i("AREngine_ARCloudControl", 1, "GetLBSLocation. onLocationFinish. gps info failed. errCode = " + paramInt);
+    paramSosoLbsInfo = new StringBuilder();
+    paramSosoLbsInfo.append("GetLBSLocation. onLocationFinish. gps info failed. errCode = ");
+    paramSosoLbsInfo.append(paramInt);
+    QLog.i("AREngine_ARCloudControl", 1, paramSosoLbsInfo.toString());
     paramSosoLbsInfo = new ARCloudLBSLocationCheckResult();
     paramSosoLbsInfo.a = 2;
     ARCloudRecogResult.a(this.a.a.recognitions, ARCloudControl.a(this.a), paramSosoLbsInfo);
@@ -46,7 +66,7 @@ class ARCloudControl$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudControl.7
  * JD-Core Version:    0.7.0.1
  */

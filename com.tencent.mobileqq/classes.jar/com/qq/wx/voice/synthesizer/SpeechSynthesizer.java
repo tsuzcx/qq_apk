@@ -4,7 +4,7 @@ import android.content.Context;
 
 public class SpeechSynthesizer
 {
-  private static SpeechSynthesizer a = null;
+  private static SpeechSynthesizer a;
   private a b = new a();
   
   public static SpeechSynthesizer shareInstance()

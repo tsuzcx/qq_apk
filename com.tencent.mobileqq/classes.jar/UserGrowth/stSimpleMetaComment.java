@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -93,52 +94,63 @@ public final class stSimpleMetaComment
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.id != null) {
-      paramJceOutputStream.write(this.id, 0);
+    Object localObject = this.id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.wording != null) {
-      paramJceOutputStream.write(this.wording, 1);
+    localObject = this.wording;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.poster_id != null) {
-      paramJceOutputStream.write(this.poster_id, 2);
+    localObject = this.poster_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.poster != null) {
-      paramJceOutputStream.write(this.poster, 3);
+    localObject = this.poster;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.receiver_id != null) {
-      paramJceOutputStream.write(this.receiver_id, 4);
+    localObject = this.receiver_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.receiver != null) {
-      paramJceOutputStream.write(this.receiver, 5);
+    localObject = this.receiver;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
     paramJceOutputStream.write(this.createtime, 6);
     paramJceOutputStream.write(this.mask, 7);
     paramJceOutputStream.write(this.robotMode, 8);
-    if (this.beReplyCommendId != null) {
-      paramJceOutputStream.write(this.beReplyCommendId, 9);
+    localObject = this.beReplyCommendId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
     paramJceOutputStream.write(this.essOpUin, 10);
     paramJceOutputStream.write(this.dingNum, 11);
     paramJceOutputStream.write(this.isDing, 12);
-    if (this.replyList != null) {
-      paramJceOutputStream.write(this.replyList, 13);
+    localObject = this.replyList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 13);
     }
     paramJceOutputStream.write(this.replyNum, 14);
-    if (this.feedOwnerId != null) {
-      paramJceOutputStream.write(this.feedOwnerId, 15);
+    localObject = this.feedOwnerId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 15);
     }
-    if (this.reserve != null) {
-      paramJceOutputStream.write(this.reserve, 16);
+    localObject = this.reserve;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 16);
     }
-    if (this.feedId != null) {
-      paramJceOutputStream.write(this.feedId, 17);
+    localObject = this.feedId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 17);
     }
     paramJceOutputStream.write(this.replyIdNum, 18);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stSimpleMetaComment
  * JD-Core Version:    0.7.0.1
  */

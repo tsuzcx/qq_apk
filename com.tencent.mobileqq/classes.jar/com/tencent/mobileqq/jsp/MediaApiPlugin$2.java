@@ -33,13 +33,13 @@ class MediaApiPlugin$2
     catch (Exception paramArrayOfString)
     {
       QLog.e(MediaApiPlugin.jdField_a_of_type_JavaLangString, 1, paramArrayOfString, new Object[0]);
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131690797, 0).a();
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131690725, 0).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.MediaApiPlugin.2
  * JD-Core Version:    0.7.0.1
  */

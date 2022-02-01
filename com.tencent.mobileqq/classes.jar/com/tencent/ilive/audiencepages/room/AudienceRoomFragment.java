@@ -13,7 +13,6 @@ import com.tencent.ilive.pages.room.RoomBizContext;
 import com.tencent.ilive.pages.room.RoomBootBizModules;
 import com.tencent.ilivesdk.roomservice_interface.model.EnterRoomInfo;
 import com.tencent.ilivesdk.roomswitchservice_interface.VideoType;
-import com.tencent.livesdk.roomengine.RoomEngine;
 
 public abstract class AudienceRoomFragment
   extends RoomBaseFragment
@@ -66,15 +65,6 @@ public abstract class AudienceRoomFragment
     super.onCreate(paramBundle);
   }
   
-  public void onDestroyView()
-  {
-    super.onDestroyView();
-    this.audienceRoomPager = null;
-    if (this.roomEngine != null) {
-      this.roomEngine.unint();
-    }
-  }
-  
   public void setAudienceRoomPager(IAudienceRoomPager paramIAudienceRoomPager)
   {
     this.audienceRoomPager = paramIAudienceRoomPager;
@@ -87,7 +77,7 @@ public abstract class AudienceRoomFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.AudienceRoomFragment
  * JD-Core Version:    0.7.0.1
  */

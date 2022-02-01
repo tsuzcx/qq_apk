@@ -1,20 +1,27 @@
 package com.tencent.mobileqq.ar.view;
 
-import com.tencent.mobileqq.ar.ScanningSurfaceView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 
 class ARScanEntryView$29
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   ARScanEntryView$29(ARScanEntryView paramARScanEntryView) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.this$0.a.setVisibility(8);
+    Activity localActivity = (Activity)this.a.a;
+    Intent localIntent = new Intent("android.settings.LOCATION_SOURCE_SETTINGS");
+    localIntent.putExtra("big_brother_source_key", "biz_src_jc_sacan");
+    localActivity.startActivity(localIntent);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ARScanEntryView.29
  * JD-Core Version:    0.7.0.1
  */

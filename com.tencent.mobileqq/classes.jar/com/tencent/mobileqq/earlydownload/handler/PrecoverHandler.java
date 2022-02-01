@@ -4,7 +4,6 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.earlydownload.xmldata.PrecoverData;
 import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class PrecoverHandler
   extends EarlyHandler
@@ -46,22 +45,10 @@ public class PrecoverHandler
   {
     return "prd";
   }
-  
-  public boolean i()
-  {
-    File localFile = new File(c());
-    return (localFile != null) && (localFile.exists());
-  }
-  
-  public boolean j()
-  {
-    File localFile = new File(d());
-    return (localFile != null) && (localFile.exists());
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.PrecoverHandler
  * JD-Core Version:    0.7.0.1
  */

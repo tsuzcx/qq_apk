@@ -28,24 +28,26 @@ public class FWActivityAnimatorManager
   @Nullable
   public Animator enterAnim()
   {
-    if (this.onActivityFloatWindowAnimator == null) {
+    OnActivityFloatWindowAnimator localOnActivityFloatWindowAnimator = this.onActivityFloatWindowAnimator;
+    if (localOnActivityFloatWindowAnimator == null) {
       return null;
     }
-    return this.onActivityFloatWindowAnimator.enterAnim(this.targetView, this.parentView, this.sideMoveType);
+    return localOnActivityFloatWindowAnimator.enterAnim(this.targetView, this.parentView, this.sideMoveType);
   }
   
   @Nullable
   public Animator exitAnim()
   {
-    if (this.onActivityFloatWindowAnimator == null) {
+    OnActivityFloatWindowAnimator localOnActivityFloatWindowAnimator = this.onActivityFloatWindowAnimator;
+    if (localOnActivityFloatWindowAnimator == null) {
       return null;
     }
-    return this.onActivityFloatWindowAnimator.exitAnim(this.targetView, this.parentView, this.sideMoveType);
+    return localOnActivityFloatWindowAnimator.exitAnim(this.targetView, this.parentView, this.sideMoveType);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.floatwindow.animmanager.FWActivityAnimatorManager
  * JD-Core Version:    0.7.0.1
  */

@@ -61,20 +61,23 @@ public final class RespGetBlackList
   {
     paramJceOutputStream.write(this.stHeader, 0);
     paramJceOutputStream.write(this.lNextMid, 1);
-    if (this.vBlackList != null) {
-      paramJceOutputStream.write(this.vBlackList, 2);
+    ArrayList localArrayList = this.vBlackList;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
-    if (this.vBlackListUin != null) {
-      paramJceOutputStream.write(this.vBlackListUin, 3);
+    localArrayList = this.vBlackListUin;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 3);
     }
-    if (this.vMobileBlackListUin != null) {
-      paramJceOutputStream.write(this.vMobileBlackListUin, 4);
+    localArrayList = this.vMobileBlackListUin;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     AccostSvc.RespGetBlackList
  * JD-Core Version:    0.7.0.1
  */

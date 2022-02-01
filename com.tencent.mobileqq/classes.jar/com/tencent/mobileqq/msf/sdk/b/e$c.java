@@ -12,10 +12,20 @@ public class e$c
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    String str = String.valueOf(System.currentTimeMillis() + "_" + paramString1 + "_" + paramString4 + " " + paramString2 + "_" + paramString3);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(System.currentTimeMillis());
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramString4);
+    ((StringBuilder)localObject).append(" ");
+    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramString3);
+    localObject = String.valueOf(((StringBuilder)localObject).toString());
     a("uin", String.valueOf(paramString1));
     a("type", String.valueOf(paramString2));
-    a("msg", String.valueOf(str));
+    a("msg", String.valueOf(localObject));
     a("exception", String.valueOf(paramString3));
     a("processName", String.valueOf(paramString4));
     a("msf.core.DeadObjectException", true, 0L, 0L, true);
@@ -24,7 +34,7 @@ public class e$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.b.e.c
  * JD-Core Version:    0.7.0.1
  */

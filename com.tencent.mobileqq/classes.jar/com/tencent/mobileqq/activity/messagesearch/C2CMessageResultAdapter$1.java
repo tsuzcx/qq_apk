@@ -18,8 +18,8 @@ class C2CMessageResultAdapter$1
   
   public void run()
   {
-    int j = 0;
     Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+    int j = 0;
     int i;
     MessageRecord localMessageRecord;
     if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData1 != null) && (!((ChatHistorySearchData)localObject).mSearchData1.isEmpty()))
@@ -50,8 +50,12 @@ class C2CMessageResultAdapter$1
         }
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CMessageResultAdapter", 2, "localCacheMsgs size: " + this.this$0.jdField_a_of_type_JavaUtilList.size());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("localCacheMsgs size: ");
+      ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_JavaUtilList.size());
+      QLog.d("C2CMessageResultAdapter", 2, ((StringBuilder)localObject).toString());
     }
     localObject = new HashMap();
     ((HashMap)localObject).put("keyword", this.jdField_a_of_type_JavaLangString);
@@ -62,7 +66,7 @@ class C2CMessageResultAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.C2CMessageResultAdapter.1
  * JD-Core Version:    0.7.0.1
  */

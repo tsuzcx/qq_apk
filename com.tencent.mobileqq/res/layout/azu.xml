@@ -2,6 +2,6 @@
 <com.tencent.mobileqq.widget.BounceScrollView android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <androidx.recyclerview.widget.RecyclerView android:id="@id/mla" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/mlj" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     </RelativeLayout>
 </com.tencent.mobileqq.widget.BounceScrollView>

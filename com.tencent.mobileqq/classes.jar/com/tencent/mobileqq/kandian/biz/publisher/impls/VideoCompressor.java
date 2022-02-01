@@ -2,8 +2,8 @@ package com.tencent.mobileqq.kandian.biz.publisher.impls;
 
 import android.content.Context;
 import android.os.Build.VERSION;
-import com.tencent.biz.pubaccount.readinjoy.video.videoconverter.VideoCompressTask;
-import com.tencent.biz.pubaccount.readinjoy.video.videoconverter.VideoCompressTask.VideoCompressTaskListener;
+import com.tencent.mobileqq.kandian.base.video.compress.VideoCompressTask;
+import com.tencent.mobileqq.kandian.base.video.compress.VideoCompressTask.VideoCompressTaskListener;
 import com.tencent.tkd.topicsdk.framework.ThreadManagerKt;
 import com.tencent.tkd.topicsdk.interfaces.IVideoCompressor;
 import com.tencent.tkd.topicsdk.interfaces.IVideoCompressor.Callback;
@@ -52,7 +52,7 @@ public final class VideoCompressor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.VideoCompressor
  * JD-Core Version:    0.7.0.1
  */

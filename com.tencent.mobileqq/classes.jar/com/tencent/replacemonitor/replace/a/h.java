@@ -11,7 +11,12 @@ public class h
 {
   public MonitorResult a(MonitorTask paramMonitorTask, MonitorStep paramMonitorStep)
   {
-    ab.c("WashMonitor", "ModifyTimeMonitorAction>>" + paramMonitorTask.appName + "开始通过ModifyTime比较检测洗包,暂时不支持，直接放过 step = " + paramMonitorStep);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ModifyTimeMonitorAction>>");
+    localStringBuilder.append(paramMonitorTask.appName);
+    localStringBuilder.append("开始通过ModifyTime比较检测洗包,暂时不支持，直接放过 step = ");
+    localStringBuilder.append(paramMonitorStep);
+    ab.c("WashMonitor", localStringBuilder.toString());
     return new MonitorResult(paramMonitorStep, 0, "暂不执行ModifyTimeMonitorAction", a());
   }
   
@@ -22,7 +27,7 @@ public class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.replacemonitor.replace.a.h
  * JD-Core Version:    0.7.0.1
  */

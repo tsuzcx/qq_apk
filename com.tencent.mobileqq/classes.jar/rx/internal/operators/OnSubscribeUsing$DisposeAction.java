@@ -22,16 +22,17 @@ final class OnSubscribeUsing$DisposeAction<Resource>
   
   public void call()
   {
-    if (compareAndSet(false, true)) {}
-    try
-    {
-      this.dispose.call(this.resource);
-      return;
-    }
-    finally
-    {
-      this.resource = null;
-      this.dispose = null;
+    if (compareAndSet(false, true)) {
+      try
+      {
+        this.dispose.call(this.resource);
+        return;
+      }
+      finally
+      {
+        this.resource = null;
+        this.dispose = null;
+      }
     }
   }
   
@@ -47,7 +48,7 @@ final class OnSubscribeUsing$DisposeAction<Resource>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OnSubscribeUsing.DisposeAction
  * JD-Core Version:    0.7.0.1
  */

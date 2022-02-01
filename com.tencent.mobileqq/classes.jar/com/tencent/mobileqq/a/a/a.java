@@ -40,9 +40,14 @@ public class a
         ak.a().a(this);
         QLog.i("ConnQualityStat", 1, ak.a().b().toString());
       }
-      return;
     }
-    QLog.d("ConnQualityStat", 1, "WeaknetNew enable=" + a);
+    else
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("WeaknetNew enable=");
+      localStringBuilder.append(a);
+      QLog.d("ConnQualityStat", 1, localStringBuilder.toString());
+    }
   }
   
   public static a a()
@@ -59,93 +64,91 @@ public class a
   
   public void a(int paramInt, long paramLong, x paramx)
   {
-    if (a) {}
-    try
-    {
-      ak.a().a(paramInt, paramLong, paramx);
-      a.c.a().a(false);
-      return;
-    }
-    catch (Exception paramx)
-    {
-      for (;;)
+    if (a) {
+      try
+      {
+        ak.a().a(paramInt, paramLong, paramx);
+      }
+      catch (Exception paramx)
       {
         QLog.w("ConnQualityStat", 1, "onConnOpenFailed", paramx);
       }
     }
+    a.c.a().a(false);
   }
   
   public void a(long paramLong1, long paramLong2)
   {
-    if (a) {}
-    try
-    {
-      ak.a().a(paramLong1, paramLong2);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.w("ConnQualityStat", 1, "onPingRecved", localException);
+    if (a) {
+      try
+      {
+        ak.a().a(paramLong1, paramLong2);
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.w("ConnQualityStat", 1, "onPingRecved", localException);
+      }
     }
   }
   
   public void a(com.tencent.qphone.base.a parama)
   {
-    if (a) {}
-    try
-    {
-      ak.a().a(parama);
-      a.c.a().a(false);
-      return;
-    }
-    catch (Exception parama)
-    {
-      for (;;)
+    if (a) {
+      try
+      {
+        ak.a().a(parama);
+      }
+      catch (Exception parama)
       {
         QLog.w("ConnQualityStat", 1, "onConnClose", parama);
       }
     }
+    a.c.a().a(false);
   }
   
   public void a(ToServiceMsg paramToServiceMsg)
   {
-    if (a) {}
-    try
-    {
-      ak.a().a(paramToServiceMsg);
-      return;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      QLog.w("ConnQualityStat", 1, "onPingSent", paramToServiceMsg);
+    if (a) {
+      try
+      {
+        ak.a().a(paramToServiceMsg);
+        return;
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        QLog.w("ConnQualityStat", 1, "onPingSent", paramToServiceMsg);
+      }
     }
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    if (a) {}
-    try
-    {
-      ak.a().a(paramToServiceMsg, paramFromServiceMsg);
-      return;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      QLog.w("ConnQualityStat", 1, "onRecvRespPkg", paramToServiceMsg);
+    if (a) {
+      try
+      {
+        ak.a().a(paramToServiceMsg, paramFromServiceMsg);
+        return;
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        QLog.w("ConnQualityStat", 1, "onRecvRespPkg", paramToServiceMsg);
+      }
     }
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, f paramf)
   {
-    if (a) {}
-    try
-    {
-      ak.a().a(paramToServiceMsg, paramFromServiceMsg, paramf);
-      return;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      QLog.w("ConnQualityStat", 1, "onQuickSendResp", paramToServiceMsg);
+    if (a) {
+      try
+      {
+        ak.a().a(paramToServiceMsg, paramFromServiceMsg, paramf);
+        return;
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        QLog.w("ConnQualityStat", 1, "onQuickSendResp", paramToServiceMsg);
+      }
     }
   }
   
@@ -157,7 +160,16 @@ public class a
     if (QLog.isColorLevel())
     {
       boolean bool = ((Boolean)paramFromServiceMsg.getAttribute("attr_quick_send_by_xg", Boolean.valueOf(false))).booleanValue();
-      QLog.d("ConnQualityStat", 2, "onRecvSendChatMsgResp ssoReq=" + paramFromServiceMsg.getRequestSsoSeq() + " weaknet=" + b() + " cross=" + b + " xgSent=" + bool);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onRecvSendChatMsgResp ssoReq=");
+      localStringBuilder.append(paramFromServiceMsg.getRequestSsoSeq());
+      localStringBuilder.append(" weaknet=");
+      localStringBuilder.append(b());
+      localStringBuilder.append(" cross=");
+      localStringBuilder.append(b);
+      localStringBuilder.append(" xgSent=");
+      localStringBuilder.append(bool);
+      QLog.d("ConnQualityStat", 2, localStringBuilder.toString());
     }
     if (paramToServiceMsg.getAttributes().containsKey("__timestamp_msf2net_boot"))
     {
@@ -189,104 +201,102 @@ public class a
     if ((paramToServiceMsg != null) && (paramToServiceMsg.isNeedCallback()) && (!"SSO.LoginMerge".equals(paramToServiceMsg.getServiceCmd()))) {
       c += 1;
     }
-    if (a) {}
-    try
-    {
-      ak.a().a(paramToServiceMsg, paramBoolean);
-      return;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      QLog.w("ConnQualityStat", 1, "onSendReqPkg", paramToServiceMsg);
+    if (a) {
+      try
+      {
+        ak.a().a(paramToServiceMsg, paramBoolean);
+        return;
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        QLog.w("ConnQualityStat", 1, "onSendReqPkg", paramToServiceMsg);
+      }
     }
   }
   
   public void a(Socket paramSocket, int paramInt1, int paramInt2)
   {
-    if (a) {}
-    try
-    {
-      if (NetConnInfoCenter.isWifiConn()) {
-        ak.a().a(paramSocket, paramInt2);
-      }
-      for (;;)
+    if (a) {
+      try
       {
-        if (MsfService.serviceInitStart > 0L)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ConnQualityStat", 2, "onConnOpened netType: " + paramInt1 + " serviceInit: " + MsfService.serviceInitStart + " cost:" + (SystemClock.elapsedRealtime() - MsfService.serviceInitStart));
-          }
-          paramSocket = new a.d(this);
-          if (paramSocket != null)
-          {
-            paramSocket.a("netType", String.valueOf(paramInt1));
-            paramSocket.a("cost", String.valueOf(SystemClock.elapsedRealtime() - MsfService.serviceInitStart));
-            paramSocket.a(SystemClock.elapsedRealtime() - MsfService.serviceInitStart);
-          }
-          MsfService.serviceInitStart = 0L;
+        if (NetConnInfoCenter.isWifiConn()) {
+          ak.a().a(paramSocket, paramInt2);
+        } else {
+          ak.a().b(paramSocket, paramInt2);
         }
-        return;
-        ak.a().b(paramSocket, paramInt2);
       }
-    }
-    catch (Exception paramSocket)
-    {
-      for (;;)
+      catch (Exception paramSocket)
       {
         QLog.w("ConnQualityStat", 1, "onConnOpened", paramSocket);
       }
+    }
+    if (MsfService.serviceInitStart > 0L)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramSocket = new StringBuilder();
+        paramSocket.append("onConnOpened netType: ");
+        paramSocket.append(paramInt1);
+        paramSocket.append(" serviceInit: ");
+        paramSocket.append(MsfService.serviceInitStart);
+        paramSocket.append(" cost:");
+        paramSocket.append(SystemClock.elapsedRealtime() - MsfService.serviceInitStart);
+        QLog.d("ConnQualityStat", 2, paramSocket.toString());
+      }
+      paramSocket = new a.d(this);
+      paramSocket.a("netType", String.valueOf(paramInt1));
+      paramSocket.a("cost", String.valueOf(SystemClock.elapsedRealtime() - MsfService.serviceInitStart));
+      paramSocket.a(SystemClock.elapsedRealtime() - MsfService.serviceInitStart);
+      MsfService.serviceInitStart = 0L;
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (a) {}
-    try
-    {
-      ak.a().a(paramBoolean);
-      if (paramBoolean)
-      {
-        long l = SystemClock.uptimeMillis();
-        if (l - f >= 15000L) {
-          f = l;
-        }
-      }
-    }
-    catch (Exception localException)
-    {
+    if (a) {
       try
       {
-        if ((i.a().e()) && (MsfCore.sCore.quicksender != null)) {
-          MsfCore.sCore.quicksender.a(2000L);
-        }
-        for (;;)
-        {
-          MsfCore.sCore.screenOn();
-          return;
-          localException = localException;
-          QLog.w("ConnQualityStat", 1, "onScreenOn", localException);
-          break;
-          MsfCore.sCore.sender.g();
-        }
-        return;
+        ak.a().a(paramBoolean);
       }
-      catch (Throwable localThrowable) {}
+      catch (Exception localException)
+      {
+        QLog.w("ConnQualityStat", 1, "onScreenOn", localException);
+      }
     }
+    if (paramBoolean)
+    {
+      long l = SystemClock.uptimeMillis();
+      if (l - f >= 15000L) {
+        f = l;
+      }
+    }
+    try
+    {
+      if ((i.a().e()) && (MsfCore.sCore.quicksender != null)) {
+        MsfCore.sCore.quicksender.a(2000L);
+      } else {
+        MsfCore.sCore.sender.g();
+      }
+      MsfCore.sCore.screenOn();
+      return;
+    }
+    catch (Throwable localThrowable) {}
   }
   
   public void b(int paramInt) {}
   
   public void b(ToServiceMsg paramToServiceMsg)
   {
-    if (a) {}
-    try
-    {
-      ak.a().b(paramToServiceMsg);
-      return;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      QLog.w("ConnQualityStat", 1, "onSendChatMsg", paramToServiceMsg);
+    if (a) {
+      try
+      {
+        ak.a().b(paramToServiceMsg);
+        return;
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        QLog.w("ConnQualityStat", 1, "onSendChatMsg", paramToServiceMsg);
+      }
     }
   }
   
@@ -300,35 +310,37 @@ public class a
   
   public void c(ToServiceMsg paramToServiceMsg)
   {
-    if (a) {}
-    try
-    {
-      ak.a().c(paramToServiceMsg);
-      return;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      QLog.w("ConnQualityStat", 1, "onQuickSendReqBefore", paramToServiceMsg);
+    if (a) {
+      try
+      {
+        ak.a().c(paramToServiceMsg);
+        return;
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        QLog.w("ConnQualityStat", 1, "onQuickSendReqBefore", paramToServiceMsg);
+      }
     }
   }
   
   public void d()
   {
-    if (a) {}
-    try
-    {
-      ak.a().e();
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.w("ConnQualityStat", 1, "onScreenOff", localException);
+    if (a) {
+      try
+      {
+        ak.a().e();
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.w("ConnQualityStat", 1, "onScreenOff", localException);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.a.a.a
  * JD-Core Version:    0.7.0.1
  */

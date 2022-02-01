@@ -13,10 +13,11 @@ public class ConfigProtocol$C2SReqConfigProtocol
   
   public void AddTLV(ConfigProtocol.TLVBase paramTLVBase)
   {
-    if (this.attrs == null) {
+    ArrayList localArrayList = this.attrs;
+    if (localArrayList == null) {
       return;
     }
-    this.attrs.add(paramTLVBase);
+    localArrayList.add(paramTLVBase);
     this.lengthOfTLV = ((short)(this.lengthOfTLV + 4));
     this.lengthOfTLV = ((short)(this.lengthOfTLV + paramTLVBase.getLength()));
     this.numOfTLV = ((short)(this.numOfTLV + 1));

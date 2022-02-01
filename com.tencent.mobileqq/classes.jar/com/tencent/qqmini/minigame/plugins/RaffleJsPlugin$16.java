@@ -59,7 +59,10 @@ class RaffleJsPlugin$16
       return false;
     }
     Intent localIntent = new Intent();
-    localIntent.putExtra("url", RaffleJsPlugin.access$3800(this.a) + "&_wwv=13");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(RaffleJsPlugin.access$3800(this.a));
+    localStringBuilder.append("&_wwv=13");
+    localIntent.putExtra("url", localStringBuilder.toString());
     ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).startBrowserActivity(localActivity, localIntent);
     RaffleJsPlugin.access$1200(this.a, "xiaoyouxi_choujiang_open", "clk");
     return true;
@@ -67,7 +70,7 @@ class RaffleJsPlugin$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.RaffleJsPlugin.16
  * JD-Core Version:    0.7.0.1
  */

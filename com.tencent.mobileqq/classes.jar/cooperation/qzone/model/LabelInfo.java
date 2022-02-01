@@ -36,11 +36,12 @@ public class LabelInfo
     if (this == paramObject) {
       return true;
     }
-    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-      return false;
+    if ((paramObject != null) && (getClass() == paramObject.getClass()))
+    {
+      paramObject = (LabelInfo)paramObject;
+      return this.name.equals(paramObject.name);
     }
-    paramObject = (LabelInfo)paramObject;
-    return this.name.equals(paramObject.name);
+    return false;
   }
   
   public int hashCode()
@@ -51,17 +52,28 @@ public class LabelInfo
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("LabelInfo{\n");
-    localStringBuffer.append("id='").append(this.id).append('\'').append('\n');
-    localStringBuffer.append(", name='").append(this.name).append('\'').append('\n');
-    localStringBuffer.append(", rank='").append(this.rank).append('\'').append('\n');
-    localStringBuffer.append(", hasSelected=").append(this.hasSelected).append('\n');
+    localStringBuffer.append("id='");
+    localStringBuffer.append(this.id);
+    localStringBuffer.append('\'');
+    localStringBuffer.append('\n');
+    localStringBuffer.append(", name='");
+    localStringBuffer.append(this.name);
+    localStringBuffer.append('\'');
+    localStringBuffer.append('\n');
+    localStringBuffer.append(", rank='");
+    localStringBuffer.append(this.rank);
+    localStringBuffer.append('\'');
+    localStringBuffer.append('\n');
+    localStringBuffer.append(", hasSelected=");
+    localStringBuffer.append(this.hasSelected);
+    localStringBuffer.append('\n');
     localStringBuffer.append('}');
     return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.model.LabelInfo
  * JD-Core Version:    0.7.0.1
  */

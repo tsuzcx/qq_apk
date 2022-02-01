@@ -32,59 +32,64 @@ public class MsgTabStoryNodeView$HorizontalSpaceItemDecoration
   
   public MsgTabStoryNodeView$HorizontalSpaceItemDecoration(Context paramContext)
   {
-    this.jdField_a_of_type_Int = AIOUtils.a(5.0F, paramContext.getResources());
-    this.b = AIOUtils.a(16.0F, paramContext.getResources());
-    this.c = AIOUtils.a(8.5F, paramContext.getResources());
-    this.d = AIOUtils.a(3.0F, paramContext.getResources());
-    this.e = AIOUtils.a(3.0F, paramContext.getResources());
+    this.jdField_a_of_type_Int = AIOUtils.b(5.0F, paramContext.getResources());
+    this.b = AIOUtils.b(16.0F, paramContext.getResources());
+    this.c = AIOUtils.b(8.5F, paramContext.getResources());
+    this.d = AIOUtils.b(3.0F, paramContext.getResources());
+    this.e = AIOUtils.b(3.0F, paramContext.getResources());
   }
   
   public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
     int k = paramRecyclerView.getChildViewHolder(paramView).getAdapterPosition();
     paramView = paramRecyclerView.getAdapter();
-    if ((k < 0) || (k >= paramView.getItemCount())) {
-      return;
-    }
-    int m = paramView.getItemViewType(k);
-    if (paramView.getItemCount() > k + 1)
+    if (k >= 0)
     {
-      int n = paramView.getItemViewType(k + 1);
-      int i = 0;
-      if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(m))) {
-        i = 1;
-      }
-      int j = i;
-      if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(n))) {
-        j = i + 1;
-      }
-      if (j == 1)
-      {
-        paramRect.right = this.d;
+      if (k >= paramView.getItemCount()) {
         return;
       }
-      if (j == 2)
+      int m = paramView.getItemViewType(k);
+      int i = paramView.getItemCount();
+      int j = k + 1;
+      if (i > j)
       {
-        paramRect.right = this.e;
+        int n = paramView.getItemViewType(j);
+        i = 0;
+        if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(m))) {
+          i = 1;
+        }
+        j = i;
+        if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(n))) {
+          j = i + 1;
+        }
+        if (j == 1)
+        {
+          paramRect.right = this.d;
+          return;
+        }
+        if (j == 2)
+        {
+          paramRect.right = this.e;
+          return;
+        }
+      }
+      if (m == 2)
+      {
+        paramRect.right = this.b;
         return;
       }
+      if (k == paramState.getItemCount() - 1)
+      {
+        paramRect.right = this.c;
+        return;
+      }
+      paramRect.right = this.jdField_a_of_type_Int;
     }
-    if (m == 2)
-    {
-      paramRect.right = this.b;
-      return;
-    }
-    if (k == paramState.getItemCount() - 1)
-    {
-      paramRect.right = this.c;
-      return;
-    }
-    paramRect.right = this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeView.HorizontalSpaceItemDecoration
  * JD-Core Version:    0.7.0.1
  */

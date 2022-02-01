@@ -8,10 +8,10 @@ import android.os.Looper;
 import android.support.annotation.Nullable;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.app.proxy.RecentUserProxy;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msg.api.IMessageFacade;
-import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.proxy.api.IRecentUserProxyService;
@@ -80,21 +80,26 @@ public class QQReminderDataServiceImpl
   private void addToMessageFacade(String paramString1, String paramString2)
   {
     IMessageFacade localIMessageFacade = (IMessageFacade)this.mApp.getRuntimeService(IMessageFacade.class, "");
-    if (localIMessageFacade == null) {}
-    do
-    {
+    if (localIMessageFacade == null) {
       return;
-      paramString1 = localIMessageFacade.constructMessageForText(paramString1, paramString2, QQConstants.a, 9002);
-      if (QLog.isColorLevel()) {
-        QLog.d("ReminderDataManagerNew", 2, "---doNotifaction---" + paramString2 + this.mApp.getAccount());
-      }
-      paramString2 = new ArrayList();
-      paramString2.add(paramString1);
-      localIMessageFacade.addMessage(paramString2, this.mApp.getAccount());
-      localIMessageFacade.handleReceivedMessage(1, true, true);
-      ((IAppBadgeService)this.mApp.getRuntimeService(IAppBadgeService.class, "")).refreshAppBadge();
-    } while (!QLog.isColorLevel());
-    QLog.d("ReminderDataManagerNew", 2, "do report : QQnotice.list.show");
+    }
+    paramString1 = localIMessageFacade.constructMessageForText(paramString1, paramString2, QQConstants.a, 9002);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("---doNotifaction---");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(this.mApp.getAccount());
+      QLog.d("ReminderDataManagerNew", 2, localStringBuilder.toString());
+    }
+    paramString2 = new ArrayList();
+    paramString2.add(paramString1);
+    localIMessageFacade.addMessage(paramString2, this.mApp.getAccount(), this.mApp.isBackgroundStop);
+    localIMessageFacade.handleReceivedMessage(1, true, true);
+    ((IAppBadgeService)this.mApp.getRuntimeService(IAppBadgeService.class, "")).refreshAppBadge();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReminderDataManagerNew", 2, "do report : QQnotice.list.show");
+    }
   }
   
   private void addToMsgTab(String paramString1, String paramString2)
@@ -106,18 +111,31 @@ public class QQReminderDataServiceImpl
         QLog.d("ReminderDataManagerNew", 1, "addToMsgTab, not found msgId");
       }
       addToMessageFacade(paramString1, paramString2);
-    }
-    do
-    {
       return;
-      if ((localReminderEntity.getAcsMsg().type != 0) || (!this.mSharedPreferences.getBoolean(paramString2 + this.mApp.getAccount(), false))) {
-        break;
+    }
+    Object localObject;
+    StringBuilder localStringBuilder;
+    if (localReminderEntity.getAcsMsg().type == 0)
+    {
+      localObject = this.mSharedPreferences;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(this.mApp.getAccount());
+      if (((SharedPreferences)localObject).getBoolean(localStringBuilder.toString(), false))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ReminderDataManagerNew", 2, new Object[] { "msgId: ", paramString2, " have Reminded!" });
+        }
+        return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("ReminderDataManagerNew", 2, new Object[] { "msgId: ", paramString2, " have Reminded!" });
-    return;
-    if (localReminderEntity.getAcsMsg().type == 0) {
-      this.mSharedPreferences.edit().putBoolean(paramString2 + this.mApp.getAccount(), true).apply();
+    }
+    if (localReminderEntity.getAcsMsg().type == 0)
+    {
+      localObject = this.mSharedPreferences.edit();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(this.mApp.getAccount());
+      ((SharedPreferences.Editor)localObject).putBoolean(localStringBuilder.toString(), true).apply();
     }
     addToMessageFacade(paramString1, QQReminderUtil.a(localReminderEntity.getAcsMsg()));
   }
@@ -153,65 +171,62 @@ public class QQReminderDataServiceImpl
     if (QLog.isColorLevel()) {
       QLog.d("ReminderDataManagerNew", 1, new Object[] { "deleteReminderMsg msgId: ", paramString, " count: ", Integer.valueOf(j) });
     }
-    if (j > 0) {}
-    for (int i = 1;; i = 0)
-    {
-      if ((paramAcsMsg != null) && (i != 0) && (containMsg(QQReminderUtil.a(paramAcsMsg)))) {
-        updateCache(paramAcsMsg, 0);
-      }
-      if (j <= 0) {
-        break;
-      }
-      return true;
+    int i;
+    if (j > 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return false;
-  }
-  
-  private List<ReminderEntity> getReminderListById(String paramString)
-  {
-    return queryReminderEntity("mMsgId = ?", new String[] { paramString }, "mReminderTime");
+    if ((paramAcsMsg != null) && (i != 0) && (containMsg(QQReminderUtil.a(paramAcsMsg)))) {
+      updateCache(paramAcsMsg, 0);
+    }
+    return j > 0;
   }
   
   private List<ReminderEntity> getReminderListByTime(long paramLong)
   {
     long l = Calendar.getInstance().getTimeZone().getRawOffset();
-    return queryReminderEntity("mReminderTime >= ? and mReminderTime < ?", new String[] { String.valueOf((paramLong - 86400000L) / 1000L), String.valueOf((paramLong - paramLong % 86400000L - l + 86400000L) / 1000L) }, "mReminderTime");
+    return queryReminderEntity("mReminderTime >= ? and mReminderTime < ?", new String[] { String.valueOf((paramLong - 86400000L) / 1000L), String.valueOf((paramLong - (l + paramLong) % 86400000L + 86400000L) / 1000L) }, "mReminderTime");
   }
   
   private void handleAlterDeleteFileOrException(AcsMsg paramAcsMsg)
   {
-    String str;
     if ((this.mApp != null) && (paramAcsMsg != null))
     {
-      str = QQReminderUtil.a(paramAcsMsg);
+      String str = QQReminderUtil.a(paramAcsMsg);
       if (QLog.isColorLevel()) {
         QLog.d("ReminderDataManagerNew", 1, new Object[] { "handleAlterDeleteFileOrException msgId: ", str });
       }
       if (this.mNotificationAlarmManager == null) {
         this.mNotificationAlarmManager = ((IQQReminderAlarmService)this.mApp.getRuntimeService(IQQReminderAlarmService.class, ""));
       }
-      if (this.mNotificationAlarmManager == null) {
-        break label193;
+      if (this.mNotificationAlarmManager != null)
+      {
+        localObject = this.mSharedPreferences.edit();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append(this.mApp.getAccount());
+        ((SharedPreferences.Editor)localObject).remove(localStringBuilder.toString()).apply();
+        this.mNotificationAlarmManager.cancelAlarmById(str.hashCode());
       }
-      this.mSharedPreferences.edit().remove(str + this.mApp.getAccount()).apply();
-      this.mNotificationAlarmManager.cancelAlarmById(str.hashCode());
+      else
+      {
+        QQReminderUtil.a(paramAcsMsg);
+      }
+      Object localObject = (IMessageFacade)this.mApp.getRuntimeService(IMessageFacade.class, "");
+      if (localObject != null)
+      {
+        ((IMessageFacade)localObject).removeMsgByUniseq(QQConstants.a, 9002, str.hashCode());
+        paramAcsMsg = (IAppBadgeService)this.mApp.getRuntimeService(IAppBadgeService.class, "");
+        if (paramAcsMsg != null) {
+          paramAcsMsg.refreshAppBadge();
+        }
+      }
+      else
+      {
+        QQReminderUtil.b(paramAcsMsg);
+      }
     }
-    for (;;)
-    {
-      IMessageFacade localIMessageFacade = (IMessageFacade)this.mApp.getRuntimeService(IMessageFacade.class, "");
-      if (localIMessageFacade == null) {
-        break;
-      }
-      localIMessageFacade.removeMsgByUniseq(QQConstants.a, 9002, str.hashCode());
-      paramAcsMsg = (IAppBadgeService)this.mApp.getRuntimeService(IAppBadgeService.class, "");
-      if (paramAcsMsg != null) {
-        paramAcsMsg.refreshAppBadge();
-      }
-      return;
-      label193:
-      QQReminderUtil.a(paramAcsMsg);
-    }
-    QQReminderUtil.b(paramAcsMsg);
   }
   
   private void init(AppRuntime paramAppRuntime)
@@ -232,103 +247,103 @@ public class QQReminderDataServiceImpl
   
   private void processMsgList(List<AcsMsg> paramList)
   {
+    int i = 0;
     Object localObject1;
     if ((paramList != null) && (!paramList.isEmpty()))
     {
       localObject1 = (IQQReminderAlarmService)this.mApp.getRuntimeService(IQQReminderAlarmService.class, "");
       paramList = paramList.iterator();
     }
-    label139:
-    label287:
-    label300:
-    int i;
-    int j;
-    for (;;)
+    while (paramList.hasNext())
     {
-      if (paramList.hasNext())
+      Object localObject2 = (AcsMsg)paramList.next();
+      if (((AcsMsg)localObject2).notice_time > NetConnInfoCenter.getServerTime())
       {
-        Object localObject2 = (AcsMsg)paramList.next();
-        if (((AcsMsg)localObject2).notice_time > NetConnInfoCenter.getServerTime())
-        {
-          if (localObject1 != null) {
-            ((IQQReminderAlarmService)localObject1).setAlarmTimer((AcsMsg)localObject2);
-          }
+        if (localObject1 != null) {
+          ((IQQReminderAlarmService)localObject1).setAlarmTimer((AcsMsg)localObject2);
         }
-        else
+      }
+      else
+      {
+        Object localObject3 = this.mSharedPreferences;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(((AcsMsg)localObject2).msg_id);
+        localStringBuilder.append(this.mApp.getAccount());
+        boolean bool1;
+        if ((!((SharedPreferences)localObject3).getBoolean(localStringBuilder.toString(), false)) && (((AcsMsg)localObject2).type != 1)) {
+          bool1 = false;
+        } else {
+          bool1 = true;
+        }
+        if (QLog.isColorLevel())
         {
-          boolean bool1;
-          IQQActivateFriendService localIQQActivateFriendService;
-          if ((this.mSharedPreferences.getBoolean(((AcsMsg)localObject2).msg_id + this.mApp.getAccount(), false)) || (((AcsMsg)localObject2).type == 1))
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append(" has notifaction: ");
+          ((StringBuilder)localObject3).append(bool1);
+          ((StringBuilder)localObject3).append(" key: ");
+          ((StringBuilder)localObject3).append(((AcsMsg)localObject2).msg_id);
+          ((StringBuilder)localObject3).append(this.mApp.getAccount());
+          QLog.d("ReminderDataManagerNew", 2, ((StringBuilder)localObject3).toString());
+        }
+        localObject3 = (IQQActivateFriendService)this.mApp.getRuntimeService(IQQActivateFriendService.class, "");
+        boolean bool2;
+        if (localObject3 == null) {
+          bool2 = false;
+        } else {
+          bool2 = ((IQQActivateFriendService)localObject3).getSwitchValue(true);
+        }
+        if (QLog.isColorLevel())
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append(" isSettingOpen: ");
+          ((StringBuilder)localObject3).append(bool2);
+          QLog.d("ReminderDataManagerNew", 2, ((StringBuilder)localObject3).toString());
+        }
+        if ((!bool1) && (bool2))
+        {
+          doNotifaction(((AcsMsg)localObject2).title, QQReminderUtil.a((AcsMsg)localObject2));
+        }
+        else if (QLog.isColorLevel())
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("the msg ");
+          ((StringBuilder)localObject3).append(((AcsMsg)localObject2).title);
+          ((StringBuilder)localObject3).append(" has notifaction!!!");
+          QLog.d("ReminderDataManagerNew", 2, ((StringBuilder)localObject3).toString());
+          continue;
+          paramList = (IMessageFacade)this.mApp.getRuntimeService(IMessageFacade.class, "");
+          if (paramList != null)
           {
-            bool1 = true;
-            if (QLog.isColorLevel()) {
-              QLog.d("ReminderDataManagerNew", 2, " has notifaction: " + bool1 + " key: " + ((AcsMsg)localObject2).msg_id + this.mApp.getAccount());
+            localObject1 = paramList.getMsgList(QQConstants.a, 9002);
+            if (localObject1 != null) {
+              i = ((List)localObject1).size();
             }
-            localIQQActivateFriendService = (IQQActivateFriendService)this.mApp.getRuntimeService(IQQActivateFriendService.class, "");
-            if (localIQQActivateFriendService != null) {
-              break label287;
-            }
-          }
-          for (boolean bool2 = false;; bool2 = localIQQActivateFriendService.getSwitchValue(true))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReminderDataManagerNew", 2, " isSettingOpen: " + bool2);
-            }
-            if ((bool1) || (!bool2)) {
-              break label300;
-            }
-            doNotifaction(((AcsMsg)localObject2).title, QQReminderUtil.a((AcsMsg)localObject2));
-            break;
-            bool1 = false;
-            break label139;
-          }
-          if (QLog.isColorLevel())
-          {
-            QLog.d("ReminderDataManagerNew", 2, "the msg " + ((AcsMsg)localObject2).title + " has notifaction!!!");
-            continue;
-            paramList = (IMessageFacade)this.mApp.getRuntimeService(IMessageFacade.class, "");
-            if (paramList != null)
+            int j = i;
+            if (localObject1 != null)
             {
-              localObject1 = paramList.getMsgList(QQConstants.a, 9002);
-              if (localObject1 != null)
+              j = i;
+              if (!((List)localObject1).isEmpty())
               {
-                i = ((List)localObject1).size();
-                j = i;
-                if (localObject1 == null) {
-                  break label490;
-                }
-                j = i;
-                if (((List)localObject1).isEmpty()) {
-                  break label490;
-                }
                 localObject1 = ((List)localObject1).iterator();
-                label419:
-                if (!((Iterator)localObject1).hasNext()) {
-                  break label488;
+                for (;;)
+                {
+                  j = i;
+                  if (!((Iterator)localObject1).hasNext()) {
+                    break;
+                  }
+                  localObject2 = (MessageRecord)((Iterator)localObject1).next();
+                  if ((paramList.isMessageForText((MessageRecord)localObject2)) && (!containMsg(paramList.getMsgUinSeq((MessageRecord)localObject2))))
+                  {
+                    paramList.removeMsgByMessageRecord((MessageRecord)localObject2, true);
+                    i -= 1;
+                  }
                 }
-                localObject2 = (Entity)((Iterator)localObject1).next();
-                if ((!paramList.isMessageForText((Entity)localObject2)) || (containMsg(paramList.getMsgUinSeq((Entity)localObject2)))) {
-                  break label496;
-                }
-                paramList.removeMsgByMessageRecord((Entity)localObject2, true);
-                i -= 1;
               }
             }
+            updateTab(j);
           }
         }
       }
-    }
-    label488:
-    label490:
-    label496:
-    for (;;)
-    {
-      break label419;
-      i = 0;
-      break;
-      j = i;
-      updateTab(j);
-      return;
     }
   }
   
@@ -336,44 +351,65 @@ public class QQReminderDataServiceImpl
   {
     try
     {
-      str1 = QQReminderUtil.a(NetConnInfoCenter.getServerTimeMillis(), "yyyyMMdd");
-      if (QLog.isColorLevel()) {
-        QLog.i("ReminderDataManagerNew", 2, "pullTodayMsgList currenDayTimeStapStr: " + str1);
+      localObject1 = QQReminderUtil.a(NetConnInfoCenter.getServerTimeMillis(), "yyyyMMdd");
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("pullTodayMsgList currenDayTimeStapStr: ");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        QLog.i("ReminderDataManagerNew", 2, ((StringBuilder)localObject2).toString());
       }
-      str2 = this.mSharedPreferences.getString("sp_key_new_fetch_reminder_list_time", "");
-      if (QLog.isColorLevel()) {
-        QLog.i("ReminderDataManagerNew", 2, "pullTodayMsgList cacheCurrenDayTimeStapStr: " + str2);
+      localObject2 = this.mSharedPreferences.getString("sp_key_new_fetch_reminder_list_time", "");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("pullTodayMsgList cacheCurrenDayTimeStapStr: ");
+        localStringBuilder.append((String)localObject2);
+        QLog.i("ReminderDataManagerNew", 2, localStringBuilder.toString());
       }
     }
     catch (Throwable paramAfterPull)
     {
-      String str1;
-      String str2;
+      Object localObject2;
+      StringBuilder localStringBuilder;
       long l2;
-      label151:
-      QLog.e("ReminderDataManagerNew", 1, "checkTodayReminder throw an exception: " + paramAfterPull);
+      long l1;
+      label184:
+      label186:
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("checkTodayReminder throw an exception: ");
+      ((StringBuilder)localObject1).append(paramAfterPull);
+      QLog.e("ReminderDataManagerNew", 1, ((StringBuilder)localObject1).toString());
+      return;
     }
     try
     {
       l2 = Long.parseLong(this.mApp.getAccount()) % 3600L * 1000L;
       l1 = l2;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("ReminderDataManagerNew", 2, "pullTodayMsgList delay: " + l2);
-        l1 = l2;
+      if (!QLog.isColorLevel()) {
+        break label186;
       }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("pullTodayMsgList delay: ");
+      localStringBuilder.append(l2);
+      QLog.i("ReminderDataManagerNew", 2, localStringBuilder.toString());
+      l1 = l2;
     }
     catch (Exception localException)
     {
-      l1 = 0L;
-      break label151;
+      break label184;
     }
+    l1 = 0L;
     l2 = NetConnInfoCenter.getServerTimeMillis();
-    l1 += QQReminderUtil.a(NetConnInfoCenter.getServerTimeMillis());
-    if (QLog.isColorLevel()) {
-      QLog.i("ReminderDataManagerNew", 2, "pullTodayMsgList currentDelayTs: " + QQReminderUtil.a(l1, "yyyy-MM-dd HH:mm:ss"));
+    l1 = QQReminderUtil.a(NetConnInfoCenter.getServerTimeMillis()) + l1;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("pullTodayMsgList currentDelayTs: ");
+      localStringBuilder.append(QQReminderUtil.a(l1, "yyyy-MM-dd HH:mm:ss"));
+      QLog.i("ReminderDataManagerNew", 2, localStringBuilder.toString());
     }
-    if ((!paramBoolean) && ((str1.equals(str2)) || (l2 < l1)))
+    if ((!paramBoolean) && ((((String)localObject1).equals(localObject2)) || (l2 < l1)))
     {
       if (QLog.isColorLevel()) {
         QLog.i("ReminderDataManagerNew", 2, "already fetch today's data");
@@ -381,7 +417,7 @@ public class QQReminderDataServiceImpl
     }
     else
     {
-      getReminderListByday(str1, new QQReminderDataServiceImpl.10(this, str1, paramAfterPull));
+      getReminderListByday((String)localObject1, new QQReminderDataServiceImpl.10(this, (String)localObject1, paramAfterPull));
       return;
     }
   }
@@ -399,52 +435,49 @@ public class QQReminderDataServiceImpl
     if (QLog.isColorLevel()) {
       QLog.d("ReminderDataManagerNew", 1, new Object[] { "cur: ", str1, " cache: ", str2 });
     }
-    Object localObject1 = new ArrayList();
-    Object localObject2 = this.todayReminderCache.entrySet().iterator();
-    Object localObject3;
-    while (((Iterator)localObject2).hasNext())
+    Object localObject2 = new ArrayList();
+    Object localObject1 = this.todayReminderCache.entrySet().iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      localObject3 = (Map.Entry)((Iterator)localObject2).next();
+      localObject3 = (Map.Entry)((Iterator)localObject1).next();
       AcsMsg localAcsMsg = ((ReminderEntity)((Map.Entry)localObject3).getValue()).getAcsMsg();
       if (localAcsMsg.type == 0)
       {
         if (!QQReminderUtil.a(localAcsMsg.notice_time * 1000L)) {
-          ((ArrayList)localObject1).add(((Map.Entry)localObject3).getKey());
+          ((ArrayList)localObject2).add(((Map.Entry)localObject3).getKey());
         }
       }
       else if ((localAcsMsg.type == 1) && (l - localAcsMsg.notice_time > 86400L)) {
-        ((ArrayList)localObject1).add(((Map.Entry)localObject3).getKey());
+        ((ArrayList)localObject2).add(((Map.Entry)localObject3).getKey());
       }
     }
-    localObject2 = (IMessageFacade)this.mApp.getRuntimeService(IMessageFacade.class, "");
-    localObject1 = ((ArrayList)localObject1).iterator();
+    Object localObject3 = (IMessageFacade)this.mApp.getRuntimeService(IMessageFacade.class, "");
+    localObject1 = ((ArrayList)localObject2).iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      localObject3 = (String)((Iterator)localObject1).next();
-      this.todayReminderCache.remove(localObject3);
-      if (localObject2 != null) {
-        ((IMessageFacade)localObject2).removeMsgByUniseq(QQConstants.a, 9002, ((String)localObject3).hashCode());
+      localObject2 = (String)((Iterator)localObject1).next();
+      this.todayReminderCache.remove(localObject2);
+      if (localObject3 != null) {
+        ((IMessageFacade)localObject3).removeMsgByUniseq(QQConstants.a, 9002, ((String)localObject2).hashCode());
       }
     }
-    if (localObject2 != null) {}
-    for (localObject1 = ((IMessageFacade)localObject2).getMsgList(QQConstants.a, 9002);; localObject1 = null)
+    localObject1 = null;
+    if (localObject3 != null) {
+      localObject1 = ((IMessageFacade)localObject3).getMsgList(QQConstants.a, 9002);
+    }
+    if (localObject1 != null) {
+      updateTab(((List)localObject1).size());
+    }
+    if (!str1.equals(str2))
     {
-      if (localObject1 != null) {
-        updateTab(((List)localObject1).size());
-      }
-      if (!str1.equals(str2))
+      this.mSharedPreferences.edit().putString("sp_key_cache_list_time", QQReminderUtil.a(NetConnInfoCenter.getServerTimeMillis(), "yyyyMMdd")).apply();
+      this.initFlag.set(false);
+      if (Looper.myLooper() == Looper.getMainLooper())
       {
-        this.mSharedPreferences.edit().putString("sp_key_cache_list_time", QQReminderUtil.a(NetConnInfoCenter.getServerTimeMillis(), "yyyyMMdd")).apply();
-        if (Looper.myLooper() == Looper.getMainLooper()) {
-          runAtOtherThread(new QQReminderDataServiceImpl.1(this));
-        }
-      }
-      else
-      {
+        runAtOtherThread(new QQReminderDataServiceImpl.1(this));
         return;
       }
       deleteExpiredReminderMsg(NetConnInfoCenter.getServerTime() - 86400L);
-      return;
     }
   }
   
@@ -460,60 +493,35 @@ public class QQReminderDataServiceImpl
   
   private void updateCache(AcsMsg paramAcsMsg, int paramInt)
   {
-    if (((paramAcsMsg.type == 0) && (!QQReminderUtil.a(paramAcsMsg.notice_time * 1000L))) || ((paramAcsMsg.type == 1) && (paramAcsMsg.notice_time - NetConnInfoCenter.getServerTime() > 86400L))) {
+    if (((paramAcsMsg.type == 0) && (!QQReminderUtil.a(paramAcsMsg.notice_time * 1000L))) || ((paramAcsMsg.type == 1) && (paramAcsMsg.notice_time - NetConnInfoCenter.getServerTime() > 86400L)))
+    {
       if (QLog.isColorLevel()) {
         QLog.d("ReminderDataManagerNew", 1, new Object[] { "updateCache msg notice time is not today: ", Long.valueOf(paramAcsMsg.notice_time) });
       }
-    }
-    for (;;)
-    {
       return;
-      Object localObject1 = QQReminderUtil.a(paramAcsMsg);
-      if ((this.todayReminderCache == null) || (localObject1 == null))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ReminderDataManagerNew", 1, new Object[] { "updateCache fail -> msgId: ", localObject1 });
-        }
-      }
-      else
+    }
+    Object localObject1 = QQReminderUtil.a(paramAcsMsg);
+    if ((this.todayReminderCache != null) && (localObject1 != null))
+    {
+      if (paramInt != 0)
       {
         Object localObject2;
-        switch (paramInt)
+        if (paramInt != 1)
         {
-        default: 
-          return;
-        case 0: 
-          if (this.todayReminderCache.containsKey(localObject1))
+          if (paramInt != 2)
           {
-            paramAcsMsg = (IMessageFacade)this.mApp.getRuntimeService(IMessageFacade.class, "");
-            if (paramAcsMsg != null) {
-              paramAcsMsg.removeMsgByUniseq(QQConstants.a, 9002, ((String)localObject1).hashCode());
+            if (paramInt != 3) {
+              return;
             }
-            this.todayReminderCache.remove(localObject1);
-            return;
-          }
-          if (QLog.isColorLevel())
-          {
-            QLog.d("ReminderDataManagerNew", 1, new Object[] { "CACHE_DELETE: cache do not contain key: ", localObject1 });
-            return;
-          }
-          break;
-        case 1: 
-          if (this.todayReminderCache.containsKey(localObject1))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReminderDataManagerNew", 1, new Object[] { "CACHE_ADD: cache contain key: ", localObject1 });
+            localObject1 = this.todayReminderCache.entrySet().iterator();
+            while (((Iterator)localObject1).hasNext())
+            {
+              localObject2 = (Map.Entry)((Iterator)localObject1).next();
+              if (((ReminderEntity)((Map.Entry)localObject2).getValue()).mReminderTime <= paramAcsMsg.notice_time) {
+                this.todayReminderCache.remove(((Map.Entry)localObject2).getKey());
+              }
             }
           }
-          else
-          {
-            localObject2 = new ReminderEntity();
-            ((ReminderEntity)localObject2).setAcsMsg(paramAcsMsg);
-            this.todayReminderCache.put(localObject1, localObject2);
-            return;
-          }
-          break;
-        case 2: 
           if (this.todayReminderCache.containsKey(localObject1))
           {
             localObject1 = (ReminderEntity)this.todayReminderCache.get(localObject1);
@@ -524,20 +532,40 @@ public class QQReminderDataServiceImpl
           else if (QLog.isColorLevel())
           {
             QLog.d("ReminderDataManagerNew", 1, new Object[] { "CACHE_UPDATE: cache do not contain key: ", localObject1 });
-            return;
-          }
-          break;
-        case 3: 
-          localObject1 = this.todayReminderCache.entrySet().iterator();
-          while (((Iterator)localObject1).hasNext())
-          {
-            localObject2 = (Map.Entry)((Iterator)localObject1).next();
-            if (((ReminderEntity)((Map.Entry)localObject2).getValue()).mReminderTime <= paramAcsMsg.notice_time) {
-              this.todayReminderCache.remove(((Map.Entry)localObject2).getKey());
-            }
           }
         }
+        else if (this.todayReminderCache.containsKey(localObject1))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ReminderDataManagerNew", 1, new Object[] { "CACHE_ADD: cache contain key: ", localObject1 });
+          }
+        }
+        else
+        {
+          localObject2 = new ReminderEntity();
+          ((ReminderEntity)localObject2).setAcsMsg(paramAcsMsg);
+          this.todayReminderCache.put(localObject1, localObject2);
+        }
       }
+      else
+      {
+        if (this.todayReminderCache.containsKey(localObject1))
+        {
+          paramAcsMsg = (IMessageFacade)this.mApp.getRuntimeService(IMessageFacade.class, "");
+          if (paramAcsMsg != null) {
+            paramAcsMsg.removeMsgByUniseq(QQConstants.a, 9002, ((String)localObject1).hashCode());
+          }
+          this.todayReminderCache.remove(localObject1);
+          return;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ReminderDataManagerNew", 1, new Object[] { "CACHE_DELETE: cache do not contain key: ", localObject1 });
+        }
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReminderDataManagerNew", 1, new Object[] { "updateCache fail -> msgId: ", localObject1 });
     }
   }
   
@@ -548,36 +576,38 @@ public class QQReminderDataServiceImpl
       QLog.d("ReminderDataManagerNew", 1, new Object[] { "updateTab size: ", Integer.valueOf(paramInt) });
       QLog.d("ReminderDataManagerNew", 1, "stack: ", new Throwable("updateTab"));
     }
-    IMessageFacade localIMessageFacade;
-    Object localObject;
     if (paramInt <= 0)
     {
-      localIMessageFacade = (IMessageFacade)this.mApp.getRuntimeService(IMessageFacade.class, "");
+      IMessageFacade localIMessageFacade = (IMessageFacade)this.mApp.getRuntimeService(IMessageFacade.class, "");
       if (localIMessageFacade != null)
       {
-        localObject = localIMessageFacade.getMsgList(QQConstants.a, 9002);
-        if (localObject != null) {
-          break label89;
+        Object localObject = localIMessageFacade.getMsgList(QQConstants.a, 9002);
+        if (localObject == null) {
+          return;
+        }
+        if (((List)localObject).size() <= 0)
+        {
+          localObject = (IRecentUserProxyService)this.mApp.getRuntimeService(IRecentUserProxyService.class, "");
+          RecentUser localRecentUser = ((IRecentUserProxyService)localObject).getRecentUserCache().b(QQConstants.a, 9002);
+          if (localRecentUser != null)
+          {
+            ((IRecentUserProxyService)localObject).getRecentUserCache().a(localRecentUser);
+            localIMessageFacade.setChangeAndNotify(localRecentUser);
+          }
         }
       }
     }
-    label89:
-    RecentUser localRecentUser;
-    do
-    {
-      do
-      {
-        return;
-      } while (((List)localObject).size() > 0);
-      localObject = (IRecentUserProxyService)this.mApp.getRuntimeService(IRecentUserProxyService.class, "");
-      localRecentUser = ((IRecentUserProxyService)localObject).getRecentUserCache().b(QQConstants.a, 9002);
-    } while (localRecentUser == null);
-    ((IRecentUserProxyService)localObject).getRecentUserCache().a(localRecentUser);
-    localIMessageFacade.setChangeAndNotify(localRecentUser);
   }
   
   public void checkTodayReminder()
   {
+    if (!((IQQActivateFriendService)this.mApp.getRuntimeService(IQQActivateFriendService.class, "")).getSwitchValue(true))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReminderDataManagerNew", 2, "checkTodayReminder: setting is close");
+      }
+      return;
+    }
     if (this.todayReminderCache != null) {
       resetCache();
     }
@@ -587,15 +617,14 @@ public class QQReminderDataServiceImpl
       localList = getTodayReminderMsgFromCache();
       processMsgList(localList);
     }
-    for (;;)
+    else
     {
-      if (localList == null) {
-        getTodayReminderMsgFromDBAsync(new QQReminderDataServiceImpl.9(this));
-      }
-      pullTodayMsgList(false, null);
-      return;
       localList = null;
     }
+    if (localList == null) {
+      getTodayReminderMsgFromDBAsync(new QQReminderDataServiceImpl.9(this));
+    }
+    pullTodayMsgList(false, null);
   }
   
   public boolean containMsg(String paramString)
@@ -623,25 +652,30 @@ public class QQReminderDataServiceImpl
     {
       try
       {
-        IQQActivateFriendService localIQQActivateFriendService = (IQQActivateFriendService)this.mApp.getRuntimeService(IQQActivateFriendService.class, "");
-        if (localIQQActivateFriendService == null) {
+        Object localObject = (IQQActivateFriendService)this.mApp.getRuntimeService(IQQActivateFriendService.class, "");
+        if (localObject == null) {
           bool = false;
+        } else {
+          bool = ((IQQActivateFriendService)localObject).getSwitchValue(true);
         }
-        while (QLog.isColorLevel())
-        {
-          QLog.d("ReminderDataManagerNew", 2, " isSettingOpen: " + bool);
-          break;
-          bool = localIQQActivateFriendService.getSwitchValue(true);
+        if (!QLog.isColorLevel()) {
           continue;
-          addToMsgTab(paramString1, paramString2);
-          return;
         }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(" isSettingOpen: ");
+        ((StringBuilder)localObject).append(bool);
+        QLog.d("ReminderDataManagerNew", 2, ((StringBuilder)localObject).toString());
       }
       catch (Throwable paramString1)
       {
-        QLog.e("ReminderDataManagerNew", 1, "doNotifaction throw an exception: " + paramString1);
+        paramString2 = new StringBuilder();
+        paramString2.append("doNotifaction throw an exception: ");
+        paramString2.append(paramString1);
+        QLog.e("ReminderDataManagerNew", 1, paramString2.toString());
         return;
       }
+      addToMsgTab(paramString1, paramString2);
+      return;
     } while (bool);
   }
   
@@ -649,30 +683,34 @@ public class QQReminderDataServiceImpl
   {
     saveReminderMsg(paramAcsMsg);
     updateCache(paramAcsMsg, 1);
+    Object localObject;
     if ((paramAcsMsg.type == 0) && (paramAcsMsg.notice_time > NetConnInfoCenter.getServerTime()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("ReminderDataManagerNew", 2, "has not arrive noticetime, set AlarmMangaer first!");
       }
-      IQQReminderAlarmService localIQQReminderAlarmService = (IQQReminderAlarmService)this.mApp.getRuntimeService(IQQReminderAlarmService.class, "");
-      if (localIQQReminderAlarmService != null) {
-        localIQQReminderAlarmService.setAlarmTimer(paramAcsMsg);
+      localObject = (IQQReminderAlarmService)this.mApp.getRuntimeService(IQQReminderAlarmService.class, "");
+      if (localObject != null) {
+        ((IQQReminderAlarmService)localObject).setAlarmTimer(paramAcsMsg);
       }
-      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ReminderDataManagerNew", 2, "has arrive noticetime, doNotifaction!");
-    }
-    if (paramAcsMsg.type == 1)
+    else
     {
       if (QLog.isColorLevel()) {
-        QLog.d("ReminderDataManagerNew", 2, "[notify][push] multiple doNotifyByPush.");
+        QLog.d("ReminderDataManagerNew", 2, "has arrive noticetime, doNotifaction!");
       }
-      if (this.mQQNotifyListener != null) {
-        this.mQQNotifyListener.a(paramAcsMsg);
+      if (paramAcsMsg.type == 1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ReminderDataManagerNew", 2, "[notify][push] multiple doNotifyByPush.");
+        }
+        localObject = this.mQQNotifyListener;
+        if (localObject != null) {
+          ((QQNotifyListener)localObject).a(paramAcsMsg);
+        }
       }
+      doNotifaction(paramAcsMsg.title, QQReminderUtil.a(paramAcsMsg));
     }
-    doNotifaction(paramAcsMsg.title, QQReminderUtil.a(paramAcsMsg));
   }
   
   public List<String> getCacheKeyList()
@@ -687,7 +725,13 @@ public class QQReminderDataServiceImpl
   
   protected EntityManager getEntityManager()
   {
-    return this.mApp.getEntityManagerFactory(this.mApp.getAccount()).createEntityManager();
+    AppRuntime localAppRuntime = this.mApp;
+    return localAppRuntime.getEntityManagerFactory(localAppRuntime.getAccount()).createEntityManager();
+  }
+  
+  public List<IReminderEntity> getReminderListById(String paramString)
+  {
+    return queryReminderEntity("mMsgId = ?", new String[] { paramString }, "mReminderTime");
   }
   
   public void getReminderListByday(String paramString, OnGetReminderListByDayListener paramOnGetReminderListByDayListener)
@@ -695,10 +739,11 @@ public class QQReminderDataServiceImpl
     try
     {
       IQQReminderService localIQQReminderService = (IQQReminderService)this.mApp.getRuntimeService(IQQReminderService.class, "");
-      if (localIQQReminderService != null) {
+      if (localIQQReminderService != null)
+      {
         localIQQReminderService.sendReminderListByDay(paramString, new QQReminderDataServiceImpl.8(this, paramOnGetReminderListByDayListener));
+        return;
       }
-      return;
     }
     catch (Throwable paramString)
     {
@@ -708,7 +753,11 @@ public class QQReminderDataServiceImpl
   
   protected SharedPreferences getSharePref()
   {
-    return this.mApp.getApplicationContext().getSharedPreferences("pref_act_frd" + this.mApp.getAccount(), 0);
+    Context localContext = this.mApp.getApplicationContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pref_act_frd");
+    localStringBuilder.append(this.mApp.getAccount());
+    return localContext.getSharedPreferences(localStringBuilder.toString(), 0);
   }
   
   public void getTodayReminderMsgAsync(OnGetReminderFromDBFinishListener paramOnGetReminderFromDBFinishListener, boolean paramBoolean)
@@ -725,19 +774,20 @@ public class QQReminderDataServiceImpl
     if (this.todayReminderCache != null) {
       resetCache();
     }
-    if ((this.todayReminderCache == null) || (!this.initFlag.get())) {
-      return null;
+    if ((this.todayReminderCache != null) && (this.initFlag.get()))
+    {
+      Object localObject = new ArrayList(this.todayReminderCache.values());
+      ArrayList localArrayList = new ArrayList(((List)localObject).size());
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        localArrayList.add(((ReminderEntity)((Iterator)localObject).next()).getAcsMsg());
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ReminderDataManagerNew", 1, new Object[] { "getTodayReminderMsgFromCache, msg count: ", Integer.valueOf(localArrayList.size()) });
+      }
+      return localArrayList;
     }
-    Object localObject = new ArrayList(this.todayReminderCache.values());
-    ArrayList localArrayList = new ArrayList(((List)localObject).size());
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      localArrayList.add(((ReminderEntity)((Iterator)localObject).next()).getAcsMsg());
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ReminderDataManagerNew", 1, new Object[] { "getTodayReminderMsgFromCache, msg count: ", Integer.valueOf(localArrayList.size()) });
-    }
-    return localArrayList;
+    return null;
   }
   
   public void getTodayReminderMsgFromDBAsync(OnGetReminderFromDBFinishListener paramOnGetReminderFromDBFinishListener)
@@ -769,7 +819,7 @@ public class QQReminderDataServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.reminder.api.impl.QQReminderDataServiceImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -9,6 +9,7 @@ import android.text.SpannableString;
 import android.text.style.ImageSpan;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -51,6 +52,26 @@ public class PullRefreshHeader
     this.jdField_b_of_type_AndroidViewAnimationRotateAnimation.setFillAfter(true);
   }
   
+  private void a()
+  {
+    Object localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    if (localObject == null) {
+      return;
+    }
+    localObject = (RelativeLayout.LayoutParams)((RelativeLayout)localObject).getLayoutParams();
+    if (this.jdField_a_of_type_Int == 0)
+    {
+      a((RelativeLayout.LayoutParams)localObject, 10);
+      ((RelativeLayout.LayoutParams)localObject).addRule(12);
+    }
+    else
+    {
+      a((RelativeLayout.LayoutParams)localObject, 12);
+      ((RelativeLayout.LayoutParams)localObject).addRule(10);
+    }
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+  }
+  
   @TargetApi(17)
   public static void a(RelativeLayout.LayoutParams paramLayoutParams, int paramInt)
   {
@@ -62,26 +83,6 @@ public class PullRefreshHeader
     paramLayoutParams.addRule(12, 0);
   }
   
-  private void b()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
-      return;
-    }
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-    if (this.jdField_a_of_type_Int == 0)
-    {
-      a(localLayoutParams, 10);
-      localLayoutParams.addRule(12);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams);
-      return;
-      a(localLayoutParams, 12);
-      localLayoutParams.addRule(10);
-    }
-  }
-  
   private void b(int paramInt)
   {
     if (paramInt != 0) {
@@ -91,19 +92,23 @@ public class PullRefreshHeader
   
   private void d(long paramLong)
   {
-    if (this.jdField_b_of_type_AndroidWidgetTextView == null) {}
-    do
-    {
+    TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
+    if (localTextView == null) {
       return;
-      if (paramLong == 0L) {
-        break;
+    }
+    if (paramLong != 0L)
+    {
+      localTextView.setVisibility(0);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format("%s%s", new Object[] { this.jdField_a_of_type_AndroidContentContext.getString(2131719248), TimeFormatterUtils.a(paramLong, true, "yyyy-MM-dd") }));
+      int i = this.f;
+      if (i >= 0) {
+        this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(i);
       }
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format("%s%s", new Object[] { this.jdField_a_of_type_AndroidContentContext.getString(2131719530), TimeFormatterUtils.a(paramLong, true, "yyyy-MM-dd") }));
-    } while (this.f < 0);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.f);
-    return;
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+    else
+    {
+      localTextView.setVisibility(8);
+    }
   }
   
   public long a()
@@ -121,31 +126,36 @@ public class PullRefreshHeader
     this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
-    String str = "";
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    }
-    for (;;)
-    {
-      if (0 != 0)
+      if (paramInt != 1)
       {
-        paramInt = (int)this.jdField_a_of_type_AndroidWidgetTextView.getTextSize();
-        throw new NullPointerException();
+        if (paramInt != 2)
+        {
+          localObject = "";
+        }
+        else
+        {
+          getResources().getDrawable(2130849865);
+          localObject = getResources().getString(2131719247);
+        }
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-      b(this.e);
-      if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      else
+      {
+        getResources().getDrawable(2130849864);
+        localObject = getResources().getString(2131719247);
       }
-      return;
-      getResources().getDrawable(2130849968);
-      str = getResources().getString(2131719535);
-      continue;
-      getResources().getDrawable(2130849966);
-      str = getResources().getString(2131719529);
-      continue;
-      getResources().getDrawable(2130849967);
-      str = getResources().getString(2131719529);
+    }
+    else
+    {
+      getResources().getDrawable(2130849866);
+      localObject = getResources().getString(2131719253);
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+    b(this.e);
+    Object localObject = this.jdField_b_of_type_AndroidWidgetTextView;
+    if (localObject != null) {
+      ((TextView)localObject).setVisibility(8);
     }
   }
   
@@ -154,31 +164,41 @@ public class PullRefreshHeader
     this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
-    Drawable localDrawable = null;
-    switch (paramInt)
+    Drawable localDrawable;
+    if (paramInt != 0)
     {
-    }
-    for (;;)
-    {
-      Object localObject = paramString;
-      if (localDrawable != null)
+      if (paramInt != 1)
       {
-        paramInt = (int)this.jdField_a_of_type_AndroidWidgetTextView.getTextSize() + 2;
-        localDrawable.setBounds(0, 0, paramInt, paramInt);
-        localObject = new SpannableString("[O]" + " " + paramString);
-        ((SpannableString)localObject).setSpan(new ImageSpan(localDrawable, 0), 0, "[O]".length(), 17);
+        if (paramInt != 2) {
+          localDrawable = null;
+        } else {
+          localDrawable = getResources().getDrawable(2130849865);
+        }
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      b(this.e);
-      if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      else {
+        localDrawable = getResources().getDrawable(2130849864);
       }
-      return;
-      localDrawable = getResources().getDrawable(2130849968);
-      continue;
-      localDrawable = getResources().getDrawable(2130849966);
-      continue;
-      localDrawable = getResources().getDrawable(2130849967);
+    }
+    else {
+      localDrawable = getResources().getDrawable(2130849866);
+    }
+    Object localObject = paramString;
+    if (localDrawable != null)
+    {
+      paramInt = (int)this.jdField_a_of_type_AndroidWidgetTextView.getTextSize() + 2;
+      localDrawable.setBounds(0, 0, paramInt, paramInt);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[O]");
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(paramString);
+      localObject = new SpannableString(((StringBuilder)localObject).toString());
+      ((SpannableString)localObject).setSpan(new ImageSpan(localDrawable, 0), 0, 3, 17);
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+    b(this.e);
+    paramString = this.jdField_b_of_type_AndroidWidgetTextView;
+    if (paramString != null) {
+      paramString.setVisibility(8);
     }
   }
   
@@ -186,7 +206,7 @@ public class PullRefreshHeader
   {
     try
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719531);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719249);
       b(this.d);
       label17:
       d(paramLong);
@@ -201,20 +221,11 @@ public class PullRefreshHeader
     }
   }
   
-  public void ah_()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetProgressBar != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    }
-  }
-  
   public void b(long paramLong)
   {
     this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
     this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationRotateAnimation);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719534);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719252);
     b(this.c);
     d(paramLong);
   }
@@ -227,43 +238,50 @@ public class PullRefreshHeader
     if (this.jdField_a_of_type_Int == 0)
     {
       if (this.g == 0) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849964);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849862);
+      } else {
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839429);
       }
-      for (;;)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719532);
-        b(this.jdField_b_of_type_Int);
-        d(paramLong);
-        return;
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839571);
-      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719250);
     }
-    if (this.g == 0) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849965);
-    }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719533);
-      break;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839572);
+      if (this.g == 0) {
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849863);
+      } else {
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839430);
+      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719251);
+    }
+    b(this.jdField_b_of_type_Int);
+    d(paramLong);
+  }
+  
+  public void f()
+  {
+    ProgressBar localProgressBar = this.jdField_a_of_type_AndroidWidgetProgressBar;
+    if (localProgressBar != null)
+    {
+      localProgressBar.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
     }
   }
   
-  public void onAttachedToWindow() {}
+  protected void onAttachedToWindow() {}
   
-  public void onFinishInflate()
+  protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365294));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131376854));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131376851));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376853));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376859));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365169));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131376345));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131376342));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376344));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376350));
     if (this.jdField_a_of_type_Int != 0) {
-      b();
+      a();
     }
     if (this.g != 0) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839573);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839431);
     }
     c(0L);
   }
@@ -299,7 +317,7 @@ public class PullRefreshHeader
     if (this.jdField_a_of_type_Int != paramInt)
     {
       this.jdField_a_of_type_Int = paramInt;
-      b();
+      a();
     }
   }
   
@@ -314,7 +332,7 @@ public class PullRefreshHeader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PullRefreshHeader
  * JD-Core Version:    0.7.0.1
  */

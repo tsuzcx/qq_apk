@@ -3,15 +3,9 @@ package com.tencent.intervideo.nowproxy;
 public class AppidConfig
 {
   public static String APPID_KUAIBAO = "1028";
-  public static String APPID_QB;
-  public static String APPID_QB_FAST;
+  public static String APPID_QB = "1023";
+  public static String APPID_QB_FAST = "1031";
   public static String APPID_QQ = "2";
-  
-  static
-  {
-    APPID_QB = "1023";
-    APPID_QB_FAST = "1031";
-  }
   
   public static boolean isBrowserPlugin(String paramString)
   {
@@ -30,7 +24,7 @@ public class AppidConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.intervideo.nowproxy.AppidConfig
  * JD-Core Version:    0.7.0.1
  */

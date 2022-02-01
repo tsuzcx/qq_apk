@@ -22,17 +22,39 @@ public class SubscribeConstants
   
   static
   {
-    jdField_a_of_type_JavaLangString = f + "file/";
-    jdField_b_of_type_JavaLangString = f + "cache/";
-    jdField_c_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "animation/";
-    d = e + "tencent_sdk_download/";
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(f);
+    ((StringBuilder)localObject).append("file/");
+    jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(f);
+    ((StringBuilder)localObject).append("cache/");
+    jdField_b_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append("animation/");
+    jdField_c_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(e);
+    ((StringBuilder)localObject).append("tencent_sdk_download/");
+    d = ((StringBuilder)localObject).toString();
     jdField_a_of_type_JavaUtilHashMap = new HashMap();
     jdField_b_of_type_JavaUtilHashMap = new HashMap();
     jdField_c_of_type_JavaUtilHashMap = new HashMap();
     jdField_a_of_type_JavaUtilHashMap.put("follow_guide_pics", "https://down.qq.com/video_story/certified_account/animation_pics/follow_guide_pics.zip");
     jdField_a_of_type_JavaUtilHashMap.put("praise_guide_pics", "https://down.qq.com/video_story/certified_account/animation_pics/praise_guide_pics.zip");
-    jdField_b_of_type_JavaUtilHashMap.put("follow_guide_pics", jdField_c_of_type_JavaLangString + "follow_guide_pics" + File.separator);
-    jdField_b_of_type_JavaUtilHashMap.put("praise_guide_pics", jdField_c_of_type_JavaLangString + "praise_guide_pics" + File.separator);
+    localObject = jdField_b_of_type_JavaUtilHashMap;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(jdField_c_of_type_JavaLangString);
+    localStringBuilder.append("follow_guide_pics");
+    localStringBuilder.append(File.separator);
+    ((HashMap)localObject).put("follow_guide_pics", localStringBuilder.toString());
+    localObject = jdField_b_of_type_JavaUtilHashMap;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(jdField_c_of_type_JavaLangString);
+    localStringBuilder.append("praise_guide_pics");
+    localStringBuilder.append(File.separator);
+    ((HashMap)localObject).put("praise_guide_pics", localStringBuilder.toString());
     jdField_c_of_type_JavaUtilHashMap.put("follow_guide_pics", "KEY_SUBSCRIBE_FOLLOW_GUIDE_DOWNLOAD_URL");
     jdField_c_of_type_JavaUtilHashMap.put("praise_guide_pics", "KEY_SUBSCRIBE_FOLLOW_PRAISE_DOWNLOAD_URL");
     jdField_a_of_type_ArrayOfJavaLangString = new String[] { "follow_guide_pics", "praise_guide_pics" };
@@ -50,8 +72,13 @@ public class SubscribeConstants
     if (paramString2 != null)
     {
       paramString1 = str;
-      if (!StringUtil.a(paramString2)) {
-        paramString1 = str + "&id=" + URLEncoder.encode(paramString2);
+      if (!StringUtil.a(paramString2))
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append(str);
+        paramString1.append("&id=");
+        paramString1.append(URLEncoder.encode(paramString2));
+        paramString1 = paramString1.toString();
       }
     }
     return paramString1;
@@ -64,16 +91,25 @@ public class SubscribeConstants
   
   public static String c(String paramString)
   {
-    paramString = jdField_a_of_type_JavaLangString + paramString;
-    if (QLog.isColorLevel()) {
-      QLog.d("SubscribeConstants", 4, "QSUSCRIBE_DOWNLOAD_ROOT_PATH" + jdField_a_of_type_JavaLangString + "   getSDKPrivatePath realPath=" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(paramString);
+    paramString = localStringBuilder.toString();
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("QSUSCRIBE_DOWNLOAD_ROOT_PATH");
+      localStringBuilder.append(jdField_a_of_type_JavaLangString);
+      localStringBuilder.append("   getSDKPrivatePath realPath=");
+      localStringBuilder.append(paramString);
+      QLog.d("SubscribeConstants", 4, localStringBuilder.toString());
     }
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.SubscribeConstants
  * JD-Core Version:    0.7.0.1
  */

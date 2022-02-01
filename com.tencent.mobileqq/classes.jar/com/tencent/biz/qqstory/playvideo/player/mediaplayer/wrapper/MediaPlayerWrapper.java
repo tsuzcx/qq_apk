@@ -5,7 +5,7 @@ import android.content.Context;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.view.Surface;
-import com.tencent.mobileqq.statistics.CaughtExceptionReport;
+import com.tencent.qqperf.monitor.crash.catchedexception.CaughtExceptionReport;
 import java.util.Map;
 
 @TargetApi(14)
@@ -42,78 +42,78 @@ public class MediaPlayerWrapper
   public void a(IMediaPlayer.OnBufferingUpdateListener paramOnBufferingUpdateListener)
   {
     MediaPlayer localMediaPlayer = this.a;
-    if (paramOnBufferingUpdateListener == null) {}
-    for (paramOnBufferingUpdateListener = null;; paramOnBufferingUpdateListener = new MediaPlayerWrapper.3(this, paramOnBufferingUpdateListener))
-    {
-      localMediaPlayer.setOnBufferingUpdateListener(paramOnBufferingUpdateListener);
-      return;
+    if (paramOnBufferingUpdateListener == null) {
+      paramOnBufferingUpdateListener = null;
+    } else {
+      paramOnBufferingUpdateListener = new MediaPlayerWrapper.3(this, paramOnBufferingUpdateListener);
     }
+    localMediaPlayer.setOnBufferingUpdateListener(paramOnBufferingUpdateListener);
   }
   
   public void a(IMediaPlayer.OnCompletionListener paramOnCompletionListener)
   {
     MediaPlayer localMediaPlayer = this.a;
-    if (paramOnCompletionListener == null) {}
-    for (paramOnCompletionListener = null;; paramOnCompletionListener = new MediaPlayerWrapper.2(this, paramOnCompletionListener))
-    {
-      localMediaPlayer.setOnCompletionListener(paramOnCompletionListener);
-      return;
+    if (paramOnCompletionListener == null) {
+      paramOnCompletionListener = null;
+    } else {
+      paramOnCompletionListener = new MediaPlayerWrapper.2(this, paramOnCompletionListener);
     }
+    localMediaPlayer.setOnCompletionListener(paramOnCompletionListener);
   }
   
   public void a(IMediaPlayer.OnErrorListener paramOnErrorListener)
   {
     MediaPlayer localMediaPlayer = this.a;
-    if (paramOnErrorListener == null) {}
-    for (paramOnErrorListener = null;; paramOnErrorListener = new MediaPlayerWrapper.6(this, paramOnErrorListener))
-    {
-      localMediaPlayer.setOnErrorListener(paramOnErrorListener);
-      return;
+    if (paramOnErrorListener == null) {
+      paramOnErrorListener = null;
+    } else {
+      paramOnErrorListener = new MediaPlayerWrapper.6(this, paramOnErrorListener);
     }
+    localMediaPlayer.setOnErrorListener(paramOnErrorListener);
   }
   
   public void a(IMediaPlayer.OnInfoListener paramOnInfoListener)
   {
     MediaPlayer localMediaPlayer = this.a;
-    if (paramOnInfoListener == null) {}
-    for (paramOnInfoListener = null;; paramOnInfoListener = new MediaPlayerWrapper.7(this, paramOnInfoListener))
-    {
-      localMediaPlayer.setOnInfoListener(paramOnInfoListener);
-      return;
+    if (paramOnInfoListener == null) {
+      paramOnInfoListener = null;
+    } else {
+      paramOnInfoListener = new MediaPlayerWrapper.7(this, paramOnInfoListener);
     }
+    localMediaPlayer.setOnInfoListener(paramOnInfoListener);
   }
   
   public void a(IMediaPlayer.OnPreparedListener paramOnPreparedListener)
   {
     MediaPlayer localMediaPlayer = this.a;
-    if (paramOnPreparedListener == null) {}
-    for (paramOnPreparedListener = null;; paramOnPreparedListener = new MediaPlayerWrapper.1(this, paramOnPreparedListener))
-    {
-      localMediaPlayer.setOnPreparedListener(paramOnPreparedListener);
-      return;
+    if (paramOnPreparedListener == null) {
+      paramOnPreparedListener = null;
+    } else {
+      paramOnPreparedListener = new MediaPlayerWrapper.1(this, paramOnPreparedListener);
     }
+    localMediaPlayer.setOnPreparedListener(paramOnPreparedListener);
   }
   
   public void a(IMediaPlayer.OnSeekCompleteListener paramOnSeekCompleteListener)
   {
     MediaPlayer localMediaPlayer = this.a;
-    if (paramOnSeekCompleteListener == null) {}
-    for (paramOnSeekCompleteListener = null;; paramOnSeekCompleteListener = new MediaPlayerWrapper.4(this, paramOnSeekCompleteListener))
-    {
-      localMediaPlayer.setOnSeekCompleteListener(paramOnSeekCompleteListener);
-      return;
+    if (paramOnSeekCompleteListener == null) {
+      paramOnSeekCompleteListener = null;
+    } else {
+      paramOnSeekCompleteListener = new MediaPlayerWrapper.4(this, paramOnSeekCompleteListener);
     }
+    localMediaPlayer.setOnSeekCompleteListener(paramOnSeekCompleteListener);
   }
   
   public void a(IMediaPlayer.OnVideoSizeChangedListener paramOnVideoSizeChangedListener)
   {
     MediaPlayer localMediaPlayer = this.a;
-    if (paramOnVideoSizeChangedListener == null) {}
-    for (paramOnVideoSizeChangedListener = null;; paramOnVideoSizeChangedListener = new MediaPlayerWrapper.5(this, paramOnVideoSizeChangedListener))
-    {
-      localMediaPlayer.setOnVideoSizeChangedListener(paramOnVideoSizeChangedListener);
-      return;
+    if (paramOnVideoSizeChangedListener == null) {
+      paramOnVideoSizeChangedListener = null;
+    } else {
+      paramOnVideoSizeChangedListener = new MediaPlayerWrapper.5(this, paramOnVideoSizeChangedListener);
     }
+    localMediaPlayer.setOnVideoSizeChangedListener(paramOnVideoSizeChangedListener);
   }
   
   public void a(boolean paramBoolean)
@@ -201,7 +201,7 @@ public class MediaPlayerWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.MediaPlayerWrapper
  * JD-Core Version:    0.7.0.1
  */

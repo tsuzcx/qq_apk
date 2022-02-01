@@ -8,7 +8,7 @@ public abstract interface QzoneMusicConst
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.music.QzoneMusicConst
  * JD-Core Version:    0.7.0.1
  */

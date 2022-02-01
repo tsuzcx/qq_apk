@@ -5,53 +5,67 @@ import android.support.v4.util.MQLruCache;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.GlobalImageCache;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import com.tencent.richmediabrowser.model.BrowserBaseModel;
+import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
+import com.tencent.richmediabrowser.api.decorator.IDecoratorModel;
+import com.tencent.richmediabrowser.core.IBaseModelBuilder;
+import com.tencent.richmediabrowser.model.pic.PictureModel;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
 
 public class AIOPictureModel
-  extends BrowserBaseModel
+  implements IDecoratorModel
 {
+  private PictureModel a;
+  
   public int a(AIOPictureData paramAIOPictureData, String paramString)
   {
-    if ((paramString == null) || (paramAIOPictureData == null)) {}
-    do
+    int j = 0;
+    int i = j;
+    if (paramString != null)
     {
-      return 0;
+      if (paramAIOPictureData == null) {
+        return 0;
+      }
       if ((paramAIOPictureData.a != null) && (paramString.contains(paramAIOPictureData.a))) {
         return 1;
       }
       if ((paramAIOPictureData.b != null) && (paramString.contains(paramAIOPictureData.b))) {
         return 2;
       }
-    } while ((paramAIOPictureData.c == null) || (!paramString.contains(paramAIOPictureData.c)));
-    return 4;
+      i = j;
+      if (paramAIOPictureData.jdField_c_of_type_JavaLangString != null)
+      {
+        i = j;
+        if (paramString.contains(paramAIOPictureData.jdField_c_of_type_JavaLangString)) {
+          i = 4;
+        }
+      }
+    }
+    return i;
   }
   
   public Drawable a(AIOPictureData paramAIOPictureData)
   {
-    URLDrawable localURLDrawable = null;
     File localFile1 = a(paramAIOPictureData, 2);
     File localFile2 = a(paramAIOPictureData, 4);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-    localURLDrawableOptions.mFailedDrawable = URLDrawableHelper.TRANSPARENT;
+    localURLDrawableOptions.mLoadingDrawable = URLDrawableHelperConstants.a;
+    localURLDrawableOptions.mFailedDrawable = URLDrawableHelperConstants.a;
     if ((localFile1 != null) && (GlobalImageCache.a.get(a(paramAIOPictureData, 2)) != null)) {
-      localURLDrawable = URLDrawable.getDrawable(a(paramAIOPictureData, 2), localURLDrawableOptions);
+      return URLDrawable.getDrawable(a(paramAIOPictureData, 2), localURLDrawableOptions);
     }
-    do
+    if ((localFile2 != null) && (GlobalImageCache.a.get(a(paramAIOPictureData, 4)) != null)) {
+      return URLDrawable.getDrawable(a(paramAIOPictureData, 4), localURLDrawableOptions);
+    }
+    if (a(paramAIOPictureData, 1) != null)
     {
-      return localURLDrawable;
-      if ((localFile2 != null) && (GlobalImageCache.a.get(a(paramAIOPictureData, 4)) != null)) {
-        return URLDrawable.getDrawable(a(paramAIOPictureData, 4), localURLDrawableOptions);
-      }
-    } while (a(paramAIOPictureData, 1) == null);
-    paramAIOPictureData = URLDrawable.getDrawable(a(paramAIOPictureData, 1), localURLDrawableOptions);
-    paramAIOPictureData.downloadImediatly();
-    return paramAIOPictureData;
+      paramAIOPictureData = URLDrawable.getDrawable(a(paramAIOPictureData, 1), localURLDrawableOptions);
+      paramAIOPictureData.downloadImediatly();
+      return paramAIOPictureData;
+    }
+    return null;
   }
   
   public File a(AIOPictureData paramAIOPictureData, int paramInt)
@@ -59,170 +73,194 @@ public class AIOPictureModel
     if (paramAIOPictureData == null) {
       return null;
     }
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    case 3: 
-    case 5: 
-    case 6: 
-    case 7: 
-    default: 
-      paramAIOPictureData = null;
+      if (paramInt != 2)
+      {
+        if (paramInt != 4)
+        {
+          if (paramInt != 8) {
+            paramAIOPictureData = null;
+          } else {
+            paramAIOPictureData = paramAIOPictureData.jdField_d_of_type_JavaLangString;
+          }
+        }
+        else {
+          paramAIOPictureData = paramAIOPictureData.jdField_c_of_type_JavaLangString;
+        }
+      }
+      else {
+        paramAIOPictureData = paramAIOPictureData.b;
+      }
     }
-    while ((paramAIOPictureData != null) && (!paramAIOPictureData.equals("I:N")))
+    else {
+      paramAIOPictureData = paramAIOPictureData.a;
+    }
+    if ((paramAIOPictureData != null) && (!paramAIOPictureData.equals("I:N")))
     {
       paramAIOPictureData = new File(paramAIOPictureData);
-      if (!paramAIOPictureData.exists()) {
-        break;
+      if (paramAIOPictureData.exists()) {
+        return paramAIOPictureData;
       }
-      return paramAIOPictureData;
-      paramAIOPictureData = paramAIOPictureData.a;
-      continue;
-      paramAIOPictureData = paramAIOPictureData.b;
-      continue;
-      paramAIOPictureData = paramAIOPictureData.c;
-      continue;
-      paramAIOPictureData = paramAIOPictureData.jdField_d_of_type_JavaLangString;
     }
+    return null;
   }
   
   public String a(AIOPictureData paramAIOPictureData, int paramInt)
   {
-    Object localObject2 = null;
-    Object localObject1;
-    if (paramAIOPictureData == null)
-    {
-      localObject1 = "";
-      return localObject1;
+    if (paramAIOPictureData == null) {
+      return "";
     }
     String str;
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    case 3: 
-    case 5: 
-    case 6: 
-    case 7: 
-    default: 
-      str = null;
+      if (paramInt != 2)
+      {
+        if (paramInt != 4)
+        {
+          if (paramInt != 8) {
+            str = null;
+          } else {
+            str = paramAIOPictureData.jdField_d_of_type_JavaLangString;
+          }
+        }
+        else {
+          str = paramAIOPictureData.jdField_c_of_type_JavaLangString;
+        }
+      }
+      else {
+        str = paramAIOPictureData.b;
+      }
     }
-    for (;;)
-    {
-      localObject1 = localObject2;
-      if (str == null) {
-        break;
-      }
-      localObject1 = localObject2;
-      if (str.equals("I:N")) {
-        break;
-      }
-      if (paramAIOPictureData.jdField_d_of_type_Int != 3) {
-        break label152;
-      }
-      paramAIOPictureData = new File(str);
-      try
-      {
-        paramAIOPictureData = paramAIOPictureData.toURI().toURL().toString();
-        return paramAIOPictureData;
-      }
-      catch (MalformedURLException paramAIOPictureData)
-      {
-        paramAIOPictureData.printStackTrace();
-        return null;
-      }
+    else {
       str = paramAIOPictureData.a;
-      continue;
-      str = paramAIOPictureData.b;
-      continue;
-      str = paramAIOPictureData.c;
-      continue;
-      str = paramAIOPictureData.jdField_d_of_type_JavaLangString;
     }
-    label152:
-    if (!str.startsWith("/")) {
-      return "file:/" + str;
+    if ((str != null) && (!str.equals("I:N")))
+    {
+      if (paramAIOPictureData.jdField_c_of_type_Int == 3)
+      {
+        paramAIOPictureData = new File(str);
+        try
+        {
+          paramAIOPictureData = paramAIOPictureData.toURI().toURL().toString();
+          return paramAIOPictureData;
+        }
+        catch (MalformedURLException paramAIOPictureData)
+        {
+          paramAIOPictureData.printStackTrace();
+          return null;
+        }
+      }
+      if (!str.startsWith("/"))
+      {
+        paramAIOPictureData = new StringBuilder();
+        paramAIOPictureData.append("file:/");
+        paramAIOPictureData.append(str);
+        return paramAIOPictureData.toString();
+      }
+      if (str.startsWith("//"))
+      {
+        paramAIOPictureData = new StringBuilder();
+        paramAIOPictureData.append("file:");
+        paramAIOPictureData.append(str);
+        return paramAIOPictureData.toString();
+      }
+      paramAIOPictureData = new StringBuilder();
+      paramAIOPictureData.append("file:");
+      paramAIOPictureData.append(str);
+      return paramAIOPictureData.toString();
     }
-    if (str.startsWith("//")) {
-      return "file:" + str;
-    }
-    return "file:" + str;
+    return null;
   }
   
   public void a(AIOPictureData paramAIOPictureData, int paramInt, String paramString)
   {
-    if ("I:E".equals(paramString)) {
-      switch (paramInt)
-      {
-      }
-    }
-    do
+    if ("I:E".equals(paramString))
     {
-      return;
-      paramAIOPictureData.e = true;
-      return;
-      paramAIOPictureData.f = true;
-      return;
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 4) {
+            return;
+          }
+          paramAIOPictureData.f = true;
+          return;
+        }
+        paramAIOPictureData.e = true;
+        return;
+      }
       paramAIOPictureData.jdField_d_of_type_Boolean = true;
       return;
-      switch (paramInt)
+    }
+    if (paramInt != 1)
+    {
+      if (paramInt != 2)
       {
-      case 3: 
-      case 5: 
-      case 6: 
-      case 7: 
-      default: 
+        if (paramInt != 4)
+        {
+          if (paramInt != 8) {
+            return;
+          }
+          paramAIOPictureData.jdField_d_of_type_JavaLangString = paramString;
+          return;
+        }
+        paramAIOPictureData.jdField_c_of_type_JavaLangString = paramString;
         return;
-      case 1: 
-        paramAIOPictureData.a = paramString;
-        return;
-      case 2: 
-        paramAIOPictureData.b = paramString;
       }
-    } while ((paramAIOPictureData.j) || (!new File(paramAIOPictureData.a + "_hd").exists()));
-    paramAIOPictureData.a += "_hd";
-    return;
-    paramAIOPictureData.c = paramString;
-    return;
-    paramAIOPictureData.jdField_d_of_type_JavaLangString = paramString;
+      paramAIOPictureData.b = paramString;
+      if (!paramAIOPictureData.h)
+      {
+        paramString = new StringBuilder();
+        paramString.append(paramAIOPictureData.a);
+        paramString.append("_hd");
+        if (new File(paramString.toString()).exists())
+        {
+          paramString = new StringBuilder();
+          paramString.append(paramAIOPictureData.a);
+          paramString.append("_hd");
+          paramAIOPictureData.a = paramString.toString();
+        }
+      }
+    }
+    else
+    {
+      paramAIOPictureData.a = paramString;
+    }
+  }
+  
+  public void a(IBaseModelBuilder paramIBaseModelBuilder)
+  {
+    if ((paramIBaseModelBuilder instanceof PictureModel)) {
+      this.a = ((PictureModel)paramIBaseModelBuilder);
+    }
   }
   
   public boolean a(AIOPictureData paramAIOPictureData, int paramInt)
   {
-    boolean bool2 = true;
-    boolean bool1;
     if (paramAIOPictureData == null) {
-      bool1 = false;
+      return false;
     }
-    do
+    if (paramInt != 1)
     {
-      do
+      if (paramInt != 2)
       {
-        do
-        {
-          do
-          {
-            return bool1;
-            switch (paramInt)
-            {
-            case 3: 
-            default: 
-              return false;
-            case 1: 
-              bool1 = bool2;
-            }
-          } while (!paramAIOPictureData.a.equals("I:N"));
+        if (paramInt != 4) {
           return false;
-          bool1 = bool2;
-        } while (!paramAIOPictureData.b.equals("I:N"));
-        return false;
-        bool1 = bool2;
-      } while (paramAIOPictureData.jdField_d_of_type_Int == 3);
-      bool1 = bool2;
-    } while (!paramAIOPictureData.c.equals("I:N"));
-    return false;
+        }
+        if (paramAIOPictureData.jdField_c_of_type_Int == 3) {
+          return true;
+        }
+        return paramAIOPictureData.jdField_c_of_type_JavaLangString.equals("I:N") ^ true;
+      }
+      return paramAIOPictureData.b.equals("I:N") ^ true;
+    }
+    return paramAIOPictureData.a.equals("I:N") ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.model.AIOPictureModel
  * JD-Core Version:    0.7.0.1
  */

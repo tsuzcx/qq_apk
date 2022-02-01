@@ -10,17 +10,23 @@ class GdtLandingPageReport$3
   
   public void a(String paramString)
   {
-    GdtLog.d("GdtLandingPageReport", " webviewGetPerformanceResult onResponse ==" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" webviewGetPerformanceResult onResponse ==");
+    localStringBuilder.append(paramString);
+    GdtLog.d("GdtLandingPageReport", localStringBuilder.toString());
     if ((paramString != null) && (!paramString.equals("null")))
     {
       AdThreadManager.INSTANCE.post(new GdtLandingPageReport.3.1(this, paramString), 4);
-      GdtLog.d("GdtLandingPageReport", " webviewGetPerformanceResult report response ==" + paramString);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" webviewGetPerformanceResult report response ==");
+      localStringBuilder.append(paramString);
+      GdtLog.d("GdtLandingPageReport", localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.web.GdtLandingPageReport.3
  * JD-Core Version:    0.7.0.1
  */

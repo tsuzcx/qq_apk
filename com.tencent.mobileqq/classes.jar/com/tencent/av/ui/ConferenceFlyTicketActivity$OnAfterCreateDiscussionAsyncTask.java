@@ -19,73 +19,104 @@ class ConferenceFlyTicketActivity$OnAfterCreateDiscussionAsyncTask
   
   public void a(DownloadParams paramDownloadParams)
   {
+    boolean bool = paramDownloadParams.a.jdField_a_of_type_Boolean;
     String str3 = "";
-    if (paramDownloadParams.a.jdField_a_of_type_Boolean) {}
-    for (;;)
+    StringBuilder localStringBuilder;
+    if (bool)
     {
       try
       {
         String str1 = new String(paramDownloadParams.a.jdField_a_of_type_ArrayOfByte, "UTF-8");
-        if (str1 != null)
-        {
-          try
-          {
-            JSONObject localJSONObject = new JSONObject(str1);
-            i = localJSONObject.getInt("retcode");
-            if (QLog.isColorLevel()) {
-              QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "OnAfterCreateDiscussionAsyncTask.onPostDownloadComplete : retcode = " + i);
-            }
-            str1 = str3;
-            if (localJSONObject.has("result"))
-            {
-              localJSONObject = localJSONObject.getJSONObject("result");
-              str1 = str3;
-              if (localJSONObject.has("result_code")) {
-                str1 = localJSONObject.getString("result_code");
-              }
-            }
-          }
-          catch (JSONException localJSONException)
-          {
-            Object localObject;
-            if (!QLog.isColorLevel()) {
-              break label368;
-            }
-            QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "onPostDownloadComplete : result_code = " + "" + ",retcode = " + -2);
-            str2 = "";
-            i = -2;
-            continue;
-            this.a.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.c(Long.parseLong(this.a.h));
-            this.a.a(1, 0);
-            return;
-          }
-          QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "OnAfterCreateDiscussionAsyncTask, IsSucc[" + paramDownloadParams.a.jdField_a_of_type_Boolean + "], retcode[" + i + "], result_code[" + str1 + "], mDiscID[" + this.a.h + "]");
-          if ((i == 0) && (str1.equals("0")))
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.a(Long.parseLong(this.a.h), this.a.c);
-            this.a.a(this.a.h, this.a.c);
-            this.a.finish();
-            return;
-          }
-        }
       }
       catch (Exception localException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "onPostDownloadComplete :" + localException.toString());
+        if (QLog.isColorLevel())
+        {
+          localObject = this.a.jdField_a_of_type_JavaLangString;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onPostDownloadComplete :");
+          localStringBuilder.append(localException.toString());
+          QLog.i((String)localObject, 2, localStringBuilder.toString());
         }
-        localObject = null;
-        continue;
+        str2 = null;
       }
-      label368:
-      String str2 = "";
-      int i = 1;
+      if (str2 == null) {}
     }
+    try
+    {
+      localObject = new JSONObject(str2);
+      i = ((JSONObject)localObject).getInt("retcode");
+      if (QLog.isColorLevel())
+      {
+        str2 = this.a.jdField_a_of_type_JavaLangString;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("OnAfterCreateDiscussionAsyncTask.onPostDownloadComplete : retcode = ");
+        localStringBuilder.append(i);
+        QLog.d(str2, 2, localStringBuilder.toString());
+      }
+      str2 = str3;
+      if (((JSONObject)localObject).has("result"))
+      {
+        localObject = ((JSONObject)localObject).getJSONObject("result");
+        str2 = str3;
+        if (((JSONObject)localObject).has("result_code")) {
+          str2 = ((JSONObject)localObject).getString("result_code");
+        }
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      int i;
+      label221:
+      int j;
+      break label221;
+    }
+    j = -2;
+    i = j;
+    String str2 = str3;
+    if (QLog.isColorLevel())
+    {
+      str2 = this.a.jdField_a_of_type_JavaLangString;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onPostDownloadComplete : result_code = ");
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(",retcode = ");
+      ((StringBuilder)localObject).append(-2);
+      QLog.i(str2, 2, ((StringBuilder)localObject).toString());
+      i = j;
+      str2 = str3;
+      break label312;
+      i = 1;
+      str2 = str3;
+    }
+    label312:
+    str3 = this.a.jdField_a_of_type_JavaLangString;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("OnAfterCreateDiscussionAsyncTask, IsSucc[");
+    ((StringBuilder)localObject).append(paramDownloadParams.a.jdField_a_of_type_Boolean);
+    ((StringBuilder)localObject).append("], retcode[");
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append("], result_code[");
+    ((StringBuilder)localObject).append(str2);
+    ((StringBuilder)localObject).append("], mDiscID[");
+    ((StringBuilder)localObject).append(this.a.h);
+    ((StringBuilder)localObject).append("]");
+    QLog.w(str3, 1, ((StringBuilder)localObject).toString());
+    if ((i == 0) && (str2.equals("0")))
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.a(Long.parseLong(this.a.h), this.a.c);
+      paramDownloadParams = this.a;
+      paramDownloadParams.a(paramDownloadParams.h, this.a.c);
+      this.a.finish();
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.c(Long.parseLong(this.a.h));
+    this.a.a(1, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.ConferenceFlyTicketActivity.OnAfterCreateDiscussionAsyncTask
  * JD-Core Version:    0.7.0.1
  */

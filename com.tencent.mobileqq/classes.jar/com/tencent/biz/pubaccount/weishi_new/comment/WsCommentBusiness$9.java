@@ -17,7 +17,11 @@ class WsCommentBusiness$9
     if ((paramWeishiTask.jdField_a_of_type_JavaLangObject instanceof stPostCommentDingRsp))
     {
       stPostCommentDingRsp localstPostCommentDingRsp = (stPostCommentDingRsp)paramWeishiTask.jdField_a_of_type_JavaLangObject;
-      WSLog.d(WsCommentBusiness.a(), "回复点赞/取消成功,nothing is " + localstPostCommentDingRsp.nothing);
+      String str = WsCommentBusiness.a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("回复点赞/取消成功,nothing is ");
+      localStringBuilder.append(localstPostCommentDingRsp.nothing);
+      WSLog.d(str, localStringBuilder.toString());
       StoryDispatcher.a().dispatch(this.a.a(new Object[] { Integer.valueOf(7), Integer.valueOf(paramWeishiTask.b), paramWeishiTask.jdField_a_of_type_JavaLangString, localstPostCommentDingRsp }));
       return;
     }
@@ -26,7 +30,7 @@ class WsCommentBusiness$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsCommentBusiness.9
  * JD-Core Version:    0.7.0.1
  */

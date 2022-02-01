@@ -59,15 +59,21 @@ public class TransparentActivity
   
   private void a(boolean paramBoolean)
   {
-    String str = "发现“" + this.j.getSoftName() + "应用”被病毒感染，";
-    StringBuilder localStringBuilder = new StringBuilder().append(str);
-    if (paramBoolean) {}
-    for (str = "建议立即启动腾讯手机管家查杀";; str = "建议立即安装最新版腾讯手机管家查杀")
-    {
-      str = str;
-      new AlertDialog.Builder(this).setTitle("QQ安全登录扫描").setMessage(str).setPositiveButton("确定", new aq(this, paramBoolean)).setNegativeButton("取消", new ap(this)).setOnCancelListener(new ao(this)).show();
-      return;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("发现“");
+    ((StringBuilder)localObject).append(this.j.getSoftName());
+    ((StringBuilder)localObject).append("应用”被病毒感染，");
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    if (paramBoolean) {
+      localObject = "建议立即启动腾讯手机管家查杀";
+    } else {
+      localObject = "建议立即安装最新版腾讯手机管家查杀";
     }
+    localStringBuilder.append((String)localObject);
+    localObject = localStringBuilder.toString();
+    new AlertDialog.Builder(this).setTitle("QQ安全登录扫描").setMessage((CharSequence)localObject).setPositiveButton("确定", new aq(this, paramBoolean)).setNegativeButton("取消", new ap(this)).setOnCancelListener(new ao(this)).show();
   }
   
   private void b()
@@ -76,12 +82,13 @@ public class TransparentActivity
     if (this.j != null)
     {
       AppInfo localAppInfo = as.a(this.h, "com.tencent.qqpimsecure");
-      if ((localAppInfo != null) && ("00B1208638DE0FCD3E920886D658DAF6".equals(localAppInfo.getCertMd5())) && (localAppInfo.getVersionCode() >= 77))
-      {
-        a(true);
-        return;
+      boolean bool;
+      if ((localAppInfo != null) && ("00B1208638DE0FCD3E920886D658DAF6".equals(localAppInfo.getCertMd5())) && (localAppInfo.getVersionCode() >= 77)) {
+        bool = true;
+      } else {
+        bool = false;
       }
-      a(false);
+      a(bool);
       return;
     }
     finish();
@@ -146,15 +153,16 @@ public class TransparentActivity
   
   public void onDestroy()
   {
-    if (this.n != null) {
-      unbindService(this.n);
+    ServiceConnection localServiceConnection = this.n;
+    if (localServiceConnection != null) {
+      unbindService(localServiceConnection);
     }
     super.onDestroy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.securemodule.ui.TransparentActivity
  * JD-Core Version:    0.7.0.1
  */

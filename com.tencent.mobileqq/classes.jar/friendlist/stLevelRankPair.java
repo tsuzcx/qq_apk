@@ -27,14 +27,15 @@ public final class stLevelRankPair
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.dwLevel, 0);
-    if (this.strRank != null) {
-      paramJceOutputStream.write(this.strRank, 1);
+    String str = this.strRank;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     friendlist.stLevelRankPair
  * JD-Core Version:    0.7.0.1
  */

@@ -33,7 +33,8 @@ public class VoiceTextSlideViewHelper
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView.getTop(), paramInt1, paramInt2, paramInt3, 0, 200, this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView);
+    VoiceTextEditScrollerView localVoiceTextEditScrollerView = this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView;
+    localVoiceTextEditScrollerView.a(localVoiceTextEditScrollerView.getTop(), paramInt1, paramInt2, paramInt3, 0, 200, this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
   }
   
@@ -61,10 +62,10 @@ public class VoiceTextSlideViewHelper
   public void a(VoiceTextPanel paramVoiceTextPanel)
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel = paramVoiceTextPanel;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramVoiceTextPanel.findViewById(2131368336));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramVoiceTextPanel.findViewById(2131371065));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramVoiceTextPanel.findViewById(2131368087));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramVoiceTextPanel.findViewById(2131370699));
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnTouchListener(new VoiceTextSlideViewHelper.1(this));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView = ((VoiceTextEditScrollerView)paramVoiceTextPanel.findViewById(2131365294));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView = ((VoiceTextEditScrollerView)paramVoiceTextPanel.findViewById(2131365169));
   }
   
   public void a(boolean paramBoolean)
@@ -81,20 +82,20 @@ public class VoiceTextSlideViewHelper
   {
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView.setSlideEnable(true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getContext().getResources().getDrawable(2130839617));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getContext().getResources().getDrawable(2130839475));
   }
   
   public void c()
   {
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView.setSlideEnable(false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getContext().getResources().getDrawable(2130850432));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getContext().getResources().getDrawable(2130850359));
   }
   
   public void d()
   {
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getContext().getResources().getDrawable(2130850432));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getContext().getResources().getDrawable(2130850359));
   }
   
   public void e()
@@ -104,7 +105,7 @@ public class VoiceTextSlideViewHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.ui.viewhelper.VoiceTextSlideViewHelper
  * JD-Core Version:    0.7.0.1
  */

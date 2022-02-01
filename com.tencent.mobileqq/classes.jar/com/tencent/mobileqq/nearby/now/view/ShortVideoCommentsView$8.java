@@ -13,16 +13,16 @@ class ShortVideoCommentsView$8
   {
     if (paramMotionEvent.getAction() == 0)
     {
-      if (!ShortVideoCommentsView.a(this.a)) {}
-      this.a.l();
-      ShortVideoCommentsView.b(this.a);
+      ShortVideoCommentsView.access$500(this.a);
+      this.a.showComment();
+      ShortVideoCommentsView.access$600(this.a);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView.8
  * JD-Core Version:    0.7.0.1
  */

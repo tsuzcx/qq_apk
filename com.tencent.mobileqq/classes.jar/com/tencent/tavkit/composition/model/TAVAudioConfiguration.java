@@ -94,23 +94,42 @@ public class TAVAudioConfiguration
   
   public float getVolume(@NonNull CMTime paramCMTime)
   {
-    if ((this.startVolumeEdge != null) && (this.startVolumeEdge.getTimeRange() != null) && (this.startVolumeEdge.getTimeRange().containsTime(paramCMTime))) {
-      return this.volume * this.startVolumeEdge.getVolume(paramCMTime.sub(this.startVolumeEdge.getTimeRange().getStart()));
-    }
-    if ((this.endVolumeEdge != null) && (this.endVolumeEdge.getTimeRange() != null) && (this.endVolumeEdge.getTimeRange().containsTime(paramCMTime))) {
-      return this.volume * this.endVolumeEdge.getVolume(paramCMTime.sub(this.endVolumeEdge.getTimeRange().getStart()));
-    }
-    if ((this.volumeEdges != null) && (!this.volumeEdges.isEmpty()))
+    Object localObject = this.startVolumeEdge;
+    float f1;
+    float f2;
+    if ((localObject != null) && (((TAVAudioConfiguration.VolumeEdge)localObject).getTimeRange() != null) && (this.startVolumeEdge.getTimeRange().containsTime(paramCMTime)))
     {
-      Iterator localIterator = this.volumeEdges.iterator();
-      while (localIterator.hasNext())
+      f1 = this.volume;
+      localObject = this.startVolumeEdge;
+      f2 = ((TAVAudioConfiguration.VolumeEdge)localObject).getVolume(paramCMTime.sub(((TAVAudioConfiguration.VolumeEdge)localObject).getTimeRange().getStart()));
+    }
+    for (;;)
+    {
+      return f1 * f2;
+      localObject = this.endVolumeEdge;
+      if ((localObject != null) && (((TAVAudioConfiguration.VolumeEdge)localObject).getTimeRange() != null) && (this.endVolumeEdge.getTimeRange().containsTime(paramCMTime)))
       {
-        TAVAudioConfiguration.VolumeEdge localVolumeEdge = (TAVAudioConfiguration.VolumeEdge)localIterator.next();
-        if ((localVolumeEdge != null) && (localVolumeEdge.getTimeRange() != null) && (localVolumeEdge.getTimeRange().containsTime(paramCMTime)))
-        {
-          float f = this.volume;
-          return localVolumeEdge.getVolume(paramCMTime.sub(localVolumeEdge.getTimeRange().getStart())) * f;
+        f1 = this.volume;
+        localObject = this.endVolumeEdge;
+        f2 = ((TAVAudioConfiguration.VolumeEdge)localObject).getVolume(paramCMTime.sub(((TAVAudioConfiguration.VolumeEdge)localObject).getTimeRange().getStart()));
+      }
+      else
+      {
+        localObject = this.volumeEdges;
+        if ((localObject == null) || (((List)localObject).isEmpty())) {
+          break;
         }
+        localObject = this.volumeEdges.iterator();
+        TAVAudioConfiguration.VolumeEdge localVolumeEdge;
+        do
+        {
+          if (!((Iterator)localObject).hasNext()) {
+            break;
+          }
+          localVolumeEdge = (TAVAudioConfiguration.VolumeEdge)((Iterator)localObject).next();
+        } while ((localVolumeEdge == null) || (localVolumeEdge.getTimeRange() == null) || (!localVolumeEdge.getTimeRange().containsTime(paramCMTime)));
+        f1 = this.volume;
+        f2 = localVolumeEdge.getVolume(paramCMTime.sub(localVolumeEdge.getTimeRange().getStart()));
       }
     }
     return this.volume;
@@ -141,12 +160,22 @@ public class TAVAudioConfiguration
   
   public String toString()
   {
-    return "TAVAudioConfiguration{volume=" + this.volume + ", startVolumeEdge=" + this.startVolumeEdge + ", endVolumeEdge=" + this.endVolumeEdge + ", nodes=" + this.nodes + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TAVAudioConfiguration{volume=");
+    localStringBuilder.append(this.volume);
+    localStringBuilder.append(", startVolumeEdge=");
+    localStringBuilder.append(this.startVolumeEdge);
+    localStringBuilder.append(", endVolumeEdge=");
+    localStringBuilder.append(this.endVolumeEdge);
+    localStringBuilder.append(", nodes=");
+    localStringBuilder.append(this.nodes);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavkit.composition.model.TAVAudioConfiguration
  * JD-Core Version:    0.7.0.1
  */

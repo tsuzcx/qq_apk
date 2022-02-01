@@ -12,32 +12,29 @@ class VipUtils$UpdateRecentEfficientVipIconTask$Manager
   static void a(View paramView)
   {
     Iterator localIterator = a.iterator();
-    VipUtils.UpdateRecentEfficientVipIconTask localUpdateRecentEfficientVipIconTask2;
-    View localView;
-    do
+    while (localIterator.hasNext())
     {
-      if (!localIterator.hasNext()) {
-        break label80;
-      }
-      localUpdateRecentEfficientVipIconTask2 = (VipUtils.UpdateRecentEfficientVipIconTask)localIterator.next();
-      localView = VipUtils.UpdateRecentEfficientVipIconTask.a(localUpdateRecentEfficientVipIconTask2);
+      VipUtils.UpdateRecentEfficientVipIconTask localUpdateRecentEfficientVipIconTask2 = (VipUtils.UpdateRecentEfficientVipIconTask)localIterator.next();
+      View localView = VipUtils.UpdateRecentEfficientVipIconTask.a(localUpdateRecentEfficientVipIconTask2);
       localUpdateRecentEfficientVipIconTask1 = localUpdateRecentEfficientVipIconTask2;
       if (localView == paramView) {
-        break;
+        break label52;
       }
-    } while (localView != null);
-    label80:
-    for (VipUtils.UpdateRecentEfficientVipIconTask localUpdateRecentEfficientVipIconTask1 = localUpdateRecentEfficientVipIconTask2;; localUpdateRecentEfficientVipIconTask1 = null)
-    {
-      if (localUpdateRecentEfficientVipIconTask1 != null)
+      if (localView == null)
       {
-        a.remove(localUpdateRecentEfficientVipIconTask1);
-        VipUtils.UpdateRecentEfficientVipIconTask.a(localUpdateRecentEfficientVipIconTask1, false);
-        if (QLog.isColorLevel()) {
-          QLog.w("VipUtils", 1, "updateRecentEfficientVipIcon async - diable");
-        }
+        localUpdateRecentEfficientVipIconTask1 = localUpdateRecentEfficientVipIconTask2;
+        break label52;
       }
-      return;
+    }
+    VipUtils.UpdateRecentEfficientVipIconTask localUpdateRecentEfficientVipIconTask1 = null;
+    label52:
+    if (localUpdateRecentEfficientVipIconTask1 != null)
+    {
+      a.remove(localUpdateRecentEfficientVipIconTask1);
+      VipUtils.UpdateRecentEfficientVipIconTask.a(localUpdateRecentEfficientVipIconTask1, false);
+      if (QLog.isColorLevel()) {
+        QLog.w("VipUtils", 1, "updateRecentEfficientVipIcon async - diable");
+      }
     }
   }
   
@@ -53,7 +50,7 @@ class VipUtils$UpdateRecentEfficientVipIconTask$Manager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.VipUtils.UpdateRecentEfficientVipIconTask.Manager
  * JD-Core Version:    0.7.0.1
  */

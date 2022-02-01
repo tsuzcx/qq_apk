@@ -25,13 +25,15 @@ public final class ARRelationShipListPb$ReqBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 48, 56, 64, 72 }, new String[] { "uint32_req_list_type", "bytes_req_page_cookies", "uint32_req_count", "uint64_start_time", "uint64_topic_id", "rpt_uint64_peer_uin", "uint64_share_id", "uint32_send_recv_flag", "uint64_del_to_uin" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L) }, ReqBody.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 48, 56, 64, 72 }, new String[] { "uint32_req_list_type", "bytes_req_page_cookies", "uint32_req_count", "uint64_start_time", "uint64_topic_id", "rpt_uint64_peer_uin", "uint64_share_id", "uint32_send_recv_flag", "uint64_del_to_uin" }, new Object[] { localInteger, localByteStringMicro, localInteger, localLong, localLong, localLong, localLong, localInteger, localLong }, ReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipListPb.ReqBody
  * JD-Core Version:    0.7.0.1
  */

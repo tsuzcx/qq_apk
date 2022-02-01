@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class oidb_0xd1e$SubCommentLikeSetReq
   extends MessageMicro<SubCommentLikeSetReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 56, 64, 72, 82 }, new String[] { "article_id", "first_comment_id", "author_id", "sub_id", "like", "op_type", "content_src", "pin", "src", "business_info" }, new Object[] { "", "", Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "" }, SubCommentLikeSetReq.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField article_id = PBField.initString("");
   public final PBUInt64Field author_id = PBField.initUInt64(0L);
   public final PBStringField business_info = PBField.initString("");
@@ -21,10 +21,16 @@ public final class oidb_0xd1e$SubCommentLikeSetReq
   public final PBUInt32Field pin = PBField.initUInt32(0);
   public final PBUInt32Field src = PBField.initUInt32(0);
   public final PBUInt32Field sub_id = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 56, 64, 72, 82 }, new String[] { "article_id", "first_comment_id", "author_id", "sub_id", "like", "op_type", "content_src", "pin", "src", "business_info" }, new Object[] { "", "", Long.valueOf(0L), localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, "" }, SubCommentLikeSetReq.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.oidb_0xd1e.oidb_0xd1e.SubCommentLikeSetReq
  * JD-Core Version:    0.7.0.1
  */

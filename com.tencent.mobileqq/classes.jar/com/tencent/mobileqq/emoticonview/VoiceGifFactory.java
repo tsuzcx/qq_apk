@@ -22,8 +22,12 @@ public class VoiceGifFactory
     }
     catch (IOException paramFile)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("VoiceGifFactory", 2, "getVoiceGifObject exception. msg:" + paramFile.getMessage());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getVoiceGifObject exception. msg:");
+        localStringBuilder.append(paramFile.getMessage());
+        QLog.e("VoiceGifFactory", 2, localStringBuilder.toString());
       }
     }
     return null;
@@ -31,7 +35,7 @@ public class VoiceGifFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.VoiceGifFactory
  * JD-Core Version:    0.7.0.1
  */

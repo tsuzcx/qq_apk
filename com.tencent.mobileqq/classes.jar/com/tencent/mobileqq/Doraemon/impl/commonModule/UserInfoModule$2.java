@@ -25,80 +25,85 @@ class UserInfoModule$2
 {
   UserInfoModule$2(UserInfoModule paramUserInfoModule, APICallback paramAPICallback) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(UserInfoModule.jdField_a_of_type_JavaLangString, 2, "onResult appid=" + UserInfoModule.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule).jdField_a_of_type_JavaLangString + ", openid=" + this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule$LoginInfo.jdField_a_of_type_JavaLangString + ", openkey=" + this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule$LoginInfo.b + ", code=" + paramInt);
-    }
-    if ((paramInt != 0) || (paramArrayOfByte == null))
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-      DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, paramInt, "getappfriends result error, try again");
-      return;
+      paramBundle = UserInfoModule.jdField_a_of_type_JavaLangString;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onResult appid=");
+      ((StringBuilder)localObject1).append(UserInfoModule.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule).jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(", openid=");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule$LoginInfo.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(", openkey=");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule$LoginInfo.b);
+      ((StringBuilder)localObject1).append(", code=");
+      ((StringBuilder)localObject1).append(paramInt);
+      QLog.i(paramBundle, 2, ((StringBuilder)localObject1).toString());
     }
-    paramBundle = new Oidb_0xb6e.RspBody();
-    try
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = paramBundle;
-    }
-    catch (InvalidProtocolBufferMicroException paramBundle)
-    {
-      JSONArray localJSONArray;
-      for (;;)
-      {
-        paramArrayOfByte = null;
-        paramBundle.printStackTrace();
-      }
+      paramBundle = new Oidb_0xb6e.RspBody();
       try
       {
-        paramBundle.put("appfriends", localJSONArray);
-        DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, paramBundle);
-        return;
+        paramBundle.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = paramBundle;
       }
-      catch (JSONException paramArrayOfByte)
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
-        for (;;)
+        paramArrayOfByte.printStackTrace();
+        paramArrayOfByte = null;
+      }
+      if (paramArrayOfByte != null)
+      {
+        paramBundle = new JSONObject();
+        localObject1 = new JSONArray();
+        paramArrayOfByte = paramArrayOfByte.rpt_friends_info.get().iterator();
+        while (paramArrayOfByte.hasNext())
+        {
+          Object localObject2 = (Oidb_0xb6e.AppFriendsInfo)paramArrayOfByte.next();
+          String str1 = ((Oidb_0xb6e.AppFriendsInfo)localObject2).openid.get();
+          String str2 = ((Oidb_0xb6e.AppFriendsInfo)localObject2).nick.get().toStringUtf8();
+          localObject2 = ((Oidb_0xb6e.AppFriendsInfo)localObject2).figure_url_qq.get();
+          if (!TextUtils.isEmpty(str1))
+          {
+            try
+            {
+              JSONObject localJSONObject = new JSONObject();
+              localJSONObject.put("openid", str1.toUpperCase());
+              localJSONObject.put("nickName", str2);
+              localJSONObject.put("avatarUrl", localObject2);
+              ((JSONArray)localObject1).put(localJSONObject);
+            }
+            catch (JSONException localJSONException) {}
+            if (QLog.isColorLevel()) {
+              QLog.e(UserInfoModule.jdField_a_of_type_JavaLangString, 2, localJSONException.getMessage(), localJSONException);
+            }
+          }
+        }
+        try
+        {
+          paramBundle.put("appfriends", localObject1);
+        }
+        catch (JSONException paramArrayOfByte)
         {
           if (QLog.isColorLevel()) {
             QLog.e(UserInfoModule.jdField_a_of_type_JavaLangString, 2, paramArrayOfByte.getMessage(), paramArrayOfByte);
           }
         }
+        DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, paramBundle);
+        return;
       }
       DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, -1, "parse result error, try again");
+      return;
     }
-    if (paramArrayOfByte != null)
-    {
-      paramBundle = new JSONObject();
-      localJSONArray = new JSONArray();
-      paramArrayOfByte = paramArrayOfByte.rpt_friends_info.get().iterator();
-      while (paramArrayOfByte.hasNext())
-      {
-        Object localObject = (Oidb_0xb6e.AppFriendsInfo)paramArrayOfByte.next();
-        String str1 = ((Oidb_0xb6e.AppFriendsInfo)localObject).openid.get();
-        String str2 = ((Oidb_0xb6e.AppFriendsInfo)localObject).nick.get().toStringUtf8();
-        localObject = ((Oidb_0xb6e.AppFriendsInfo)localObject).figure_url_qq.get();
-        if (!TextUtils.isEmpty(str1))
-        {
-          try
-          {
-            JSONObject localJSONObject = new JSONObject();
-            localJSONObject.put("openid", str1.toUpperCase());
-            localJSONObject.put("nickName", str2);
-            localJSONObject.put("avatarUrl", localObject);
-            localJSONArray.put(localJSONObject);
-          }
-          catch (JSONException localJSONException) {}
-          if (QLog.isColorLevel()) {
-            QLog.e(UserInfoModule.jdField_a_of_type_JavaLangString, 2, localJSONException.getMessage(), localJSONException);
-          }
-        }
-      }
-    }
+    DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, paramInt, "getappfriends result error, try again");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.commonModule.UserInfoModule.2
  * JD-Core Version:    0.7.0.1
  */

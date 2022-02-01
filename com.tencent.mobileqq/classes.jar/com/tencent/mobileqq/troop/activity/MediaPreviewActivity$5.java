@@ -27,31 +27,35 @@ class MediaPreviewActivity$5
     if (!paramVarArgs.exists()) {
       paramVarArgs.mkdirs();
     }
-    String str = AppConstants.SDCARD_IMG_FORWARD_URLDRAWABLE + Utils.Crc64String(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+    paramVarArgs = new StringBuilder();
+    paramVarArgs.append(AppConstants.SDCARD_IMG_FORWARD_URLDRAWABLE);
+    paramVarArgs.append(Utils.Crc64String(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString()));
+    String str = paramVarArgs.toString();
     paramVarArgs = str;
-    if (!new File(str).exists()) {}
-    try
-    {
-      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(str);
-      localBundle.putBoolean("forward_urldrawable", true);
-      localBundle.putString("forward_urldrawable_thumb_url", this.jdField_a_of_type_JavaLangString);
-      localBundle.putString("forward_filepath", paramVarArgs);
-      localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
-      localBundle.putString("forward_extra", paramVarArgs);
-      return localBundle;
+    if (!new File(str).exists()) {
+      try
+      {
+        paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(str);
+      }
+      catch (IOException paramVarArgs)
+      {
+        QLog.e("foward", 2, "IOException", paramVarArgs);
+        return null;
+      }
     }
-    catch (IOException paramVarArgs)
-    {
-      QLog.e("foward", 2, "IOException", paramVarArgs);
-    }
-    return null;
+    localBundle.putBoolean("forward_urldrawable", true);
+    localBundle.putString("forward_urldrawable_thumb_url", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("forward_filepath", paramVarArgs);
+    localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+    localBundle.putString("forward_extra", paramVarArgs);
+    return localBundle;
   }
   
   protected void a(Bundle paramBundle)
   {
     if (paramBundle == null)
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, HardCodeUtil.a(2131706529), 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getTitleBarHeight());
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, HardCodeUtil.a(2131706555), 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getTitleBarHeight());
       return;
     }
     Intent localIntent = new Intent();
@@ -61,7 +65,7 @@ class MediaPreviewActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.MediaPreviewActivity.5
  * JD-Core Version:    0.7.0.1
  */

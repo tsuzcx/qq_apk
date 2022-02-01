@@ -42,7 +42,8 @@ public class VideoTextureRenderer
   
   static
   {
-    squareCoords = new float[] { -squareSize, squareSize, 0.0F, -squareSize, -squareSize, 0.0F, squareSize, -squareSize, 0.0F, squareSize, squareSize, 0.0F };
+    float f = squareSize;
+    squareCoords = new float[] { -f, f, 0.0F, -f, -f, 0.0F, f, -f, 0.0F, f, f, 0.0F };
   }
   
   public VideoTextureRenderer(Context paramContext, Surface paramSurface, int paramInt1, int paramInt2, Handler paramHandler)
@@ -55,33 +56,36 @@ public class VideoTextureRenderer
   private void adjustViewport()
   {
     float f1;
+    StringBuilder localStringBuilder;
     float f2;
     float f3;
     if ("contain".equals(this.objectFit))
     {
       f1 = Math.min(this.width / this.videoWidth, this.height / this.videoHeight);
-      QMLog.d("miniapp-embedded", "contain scale : " + f1);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("contain scale : ");
+      localStringBuilder.append(f1);
+      QMLog.d("miniapp-embedded", localStringBuilder.toString());
       f2 = Math.round((this.width - this.videoWidth * f1) * 0.5F);
       f3 = Math.round((this.height - this.videoHeight * f1) * 0.5F);
-      GLES20.glViewport((int)f2, (int)f3, (int)(this.videoWidth * f1), (int)(f1 * this.videoHeight));
+      GLES20.glViewport((int)f2, (int)f3, (int)(this.videoWidth * f1), (int)(this.videoHeight * f1));
     }
-    for (;;)
+    else if ("fill".equals(this.objectFit))
     {
-      this.adjustViewport = false;
-      return;
-      if ("fill".equals(this.objectFit))
-      {
-        GLES20.glViewport(0, 0, this.width, this.height);
-      }
-      else if ("cover".equals(this.objectFit))
-      {
-        f1 = Math.max(this.width / this.videoWidth, this.height / this.videoHeight);
-        QMLog.d("miniapp-embedded", "cover scale : " + f1);
-        f2 = Math.round((this.width - this.videoWidth * f1) * 0.5F);
-        f3 = Math.round((this.height - this.videoHeight * f1) * 0.5F);
-        GLES20.glViewport((int)f2, (int)f3, (int)(this.videoWidth * f1), (int)(f1 * this.videoHeight));
-      }
+      GLES20.glViewport(0, 0, this.width, this.height);
     }
+    else if ("cover".equals(this.objectFit))
+    {
+      f1 = Math.max(this.width / this.videoWidth, this.height / this.videoHeight);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("cover scale : ");
+      localStringBuilder.append(f1);
+      QMLog.d("miniapp-embedded", localStringBuilder.toString());
+      f2 = Math.round((this.width - this.videoWidth * f1) * 0.5F);
+      f3 = Math.round((this.height - this.videoHeight * f1) * 0.5F);
+      GLES20.glViewport((int)f2, (int)f3, (int)(this.videoWidth * f1), (int)(this.videoHeight * f1));
+    }
+    this.adjustViewport = false;
   }
   
   private void loadShaders()
@@ -107,9 +111,12 @@ public class VideoTextureRenderer
       if (localObject[0] != 1)
       {
         localObject = GLES20.glGetProgramInfoLog(this.shaderProgram);
-        QMLog.e("miniapp-embedded", "Error while linking program:\n" + (String)localObject);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Error while linking program:\n");
+        localStringBuilder.append((String)localObject);
+        QMLog.e("miniapp-embedded", localStringBuilder.toString());
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -133,10 +140,11 @@ public class VideoTextureRenderer
       checkGlError("Texture bind");
       this.videoTexture = new SurfaceTexture(this.textures[0]);
       this.videoTexture.setOnFrameAvailableListener(this);
-      if (this.mHandler != null) {
+      if (this.mHandler != null)
+      {
         this.mHandler.sendEmptyMessage(1002);
+        return;
       }
-      return;
     }
     catch (Throwable paramContext)
     {
@@ -174,7 +182,11 @@ public class VideoTextureRenderer
       if (i == 0) {
         break;
       }
-      QMLog.d("miniapp-embedded", paramString + ": glError " + GLUtils.getEGLErrorString(i));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": glError ");
+      localStringBuilder.append(GLUtils.getEGLErrorString(i));
+      QMLog.d("miniapp-embedded", localStringBuilder.toString());
     }
   }
   
@@ -238,7 +250,10 @@ public class VideoTextureRenderer
   
   protected void initGLComponents()
   {
-    QMLog.d("miniapp-embedded", "initGLComponents ： " + Thread.currentThread());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("initGLComponents ： ");
+    localStringBuilder.append(Thread.currentThread());
+    QMLog.d("miniapp-embedded", localStringBuilder.toString());
     setupVertexBuffer();
     setupTexture(this.ctx);
     loadShaders();
@@ -256,14 +271,26 @@ public class VideoTextureRenderer
   
   public void setSurfaceSize(int paramInt1, int paramInt2)
   {
-    QMLog.e("miniapp-embedded", "setSurfaceSize " + paramInt1 + "; " + paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setSurfaceSize ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("; ");
+    localStringBuilder.append(paramInt2);
+    QMLog.e("miniapp-embedded", localStringBuilder.toString());
     this.width = paramInt1;
     this.height = paramInt2;
   }
   
   public void setVideoSize(int paramInt1, int paramInt2, String paramString)
   {
-    QMLog.e("miniapp-embedded", "setVideoSize " + paramInt1 + "; " + paramInt2 + "; " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setVideoSize ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("; ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("; ");
+    localStringBuilder.append(paramString);
+    QMLog.e("miniapp-embedded", localStringBuilder.toString());
     this.videoWidth = paramInt1;
     this.videoHeight = paramInt2;
     this.objectFit = paramString;
@@ -272,7 +299,7 @@ public class VideoTextureRenderer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.util.TextureRender.VideoTextureRenderer
  * JD-Core Version:    0.7.0.1
  */

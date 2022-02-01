@@ -14,27 +14,21 @@ class ClockInEntryHelper$2
   
   public void handleMessage(Message paramMessage)
   {
+    int i = paramMessage.what;
     boolean bool = true;
-    ClockInEntryHelper localClockInEntryHelper;
-    if (paramMessage.what == 1)
+    if (i == 1)
     {
-      localClockInEntryHelper = this.a;
+      ClockInEntryHelper localClockInEntryHelper = this.a;
       if (paramMessage.arg1 == 0) {
-        break label28;
+        bool = false;
       }
-    }
-    for (;;)
-    {
       ClockInEntryHelper.a(localClockInEntryHelper, bool);
-      return;
-      label28:
-      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.ClockInEntryHelper.2
  * JD-Core Version:    0.7.0.1
  */

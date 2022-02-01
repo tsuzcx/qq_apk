@@ -18,23 +18,27 @@ public class TogetherStatus
   
   public boolean a(BaseQQAppInterface paramBaseQQAppInterface, RecentBaseData paramRecentBaseData)
   {
-    if (!(paramBaseQQAppInterface instanceof QQAppInterface)) {}
-    do
-    {
-      return false;
-      paramBaseQQAppInterface = (QQAppInterface)paramBaseQQAppInterface;
-    } while ((paramRecentBaseData.mStatus == 4) || ((paramRecentBaseData.getRecentUserType() != 1) && (paramRecentBaseData.getRecentUserType() != 0)));
-    String str = paramRecentBaseData.getRecentUserUin();
-    if (paramRecentBaseData.getRecentUserType() == 1) {}
-    for (int i = 1;; i = 2)
-    {
-      i = ((TogetherControlManager)paramBaseQQAppInterface.getManager(QQManagerFactory.TOGETHER_CONTROLLER_MANAGER)).a(i, str);
-      if (((paramRecentBaseData.mStatus != 0) && (paramRecentBaseData.mStatus < i)) || (i == 0)) {
-        break;
-      }
-      paramRecentBaseData.mStatus = i;
+    if (!(paramBaseQQAppInterface instanceof QQAppInterface)) {
       return false;
     }
+    paramBaseQQAppInterface = (QQAppInterface)paramBaseQQAppInterface;
+    if (paramRecentBaseData.mStatus != 4)
+    {
+      int j = paramRecentBaseData.getRecentUserType();
+      int i = 1;
+      if ((j == 1) || (paramRecentBaseData.getRecentUserType() == 0))
+      {
+        String str = paramRecentBaseData.getRecentUserUin();
+        if (paramRecentBaseData.getRecentUserType() != 1) {
+          i = 2;
+        }
+        i = ((TogetherControlManager)paramBaseQQAppInterface.getManager(QQManagerFactory.TOGETHER_CONTROLLER_MANAGER)).a(i, str);
+        if (((paramRecentBaseData.mStatus == 0) || (paramRecentBaseData.mStatus >= i)) && (i != 0)) {
+          paramRecentBaseData.mStatus = i;
+        }
+      }
+    }
+    return false;
   }
   
   public boolean a(RecentBaseData paramRecentBaseData, BaseQQAppInterface paramBaseQQAppInterface)
@@ -44,7 +48,7 @@ public class TogetherStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.statusIcon.TogetherStatus
  * JD-Core Version:    0.7.0.1
  */

@@ -25,14 +25,16 @@ public final class cmd0x383$ApplyUploadRspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Boolean localBoolean = Boolean.valueOf(false);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 48, 88, 96, 104 }, new String[] { "str_upload_ip", "str_server_dns", "str_file_path", "bytes_file_key", "bytes_check_key", "bool_file_exist", "bool_safe_check_flag", "uint32_safe_check_res", "uint32_im_fail_reason" }, new Object[] { "", "", "", localByteStringMicro1, localByteStringMicro2, Boolean.valueOf(false), Boolean.valueOf(false), Integer.valueOf(0), Integer.valueOf(0) }, ApplyUploadRspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 48, 88, 96, 104 }, new String[] { "str_upload_ip", "str_server_dns", "str_file_path", "bytes_file_key", "bytes_check_key", "bool_file_exist", "bool_safe_check_flag", "uint32_safe_check_res", "uint32_im_fail_reason" }, new Object[] { "", "", "", localByteStringMicro1, localByteStringMicro2, localBoolean, localBoolean, localInteger, localInteger }, ApplyUploadRspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.cmd0x383.cmd0x383.ApplyUploadRspBody
  * JD-Core Version:    0.7.0.1
  */

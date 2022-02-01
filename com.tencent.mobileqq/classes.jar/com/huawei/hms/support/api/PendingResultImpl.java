@@ -30,46 +30,58 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public abstract class PendingResultImpl<R extends Result, T extends IMessageEntity>
   extends InnerPendingResult<R>
 {
-  private CountDownLatch a;
-  private R b = null;
-  private WeakReference<ApiClient> c;
-  private String d = null;
-  private String e = null;
-  private boolean f = true;
+  private static final String TAG = "PendingResultImpl";
+  private WeakReference<ApiClient> api;
+  private CountDownLatch countLatch;
+  private boolean isNeedReport = true;
+  private R result = null;
+  private String transId = null;
   protected DatagramTransport transport = null;
+  private String url = null;
   
   public PendingResultImpl(ApiClient paramApiClient, String paramString, IMessageEntity paramIMessageEntity)
   {
-    a(paramApiClient, paramString, paramIMessageEntity, getResponseType(), 0);
+    init(paramApiClient, paramString, paramIMessageEntity, getResponseType(), 0);
   }
   
   public PendingResultImpl(ApiClient paramApiClient, String paramString, IMessageEntity paramIMessageEntity, int paramInt)
   {
-    a(paramApiClient, paramString, paramIMessageEntity, getResponseType(), paramInt);
+    init(paramApiClient, paramString, paramIMessageEntity, getResponseType(), paramInt);
   }
   
   public PendingResultImpl(ApiClient paramApiClient, String paramString, IMessageEntity paramIMessageEntity, Class<T> paramClass)
   {
-    a(paramApiClient, paramString, paramIMessageEntity, paramClass, 0);
+    init(paramApiClient, paramString, paramIMessageEntity, paramClass, 0);
   }
   
-  private void a(int paramInt1, int paramInt2)
+  private void biReportEvent(int paramInt1, int paramInt2)
   {
     HMSLog.i("PendingResultImpl", "biReportEvent ====== ");
-    ApiClient localApiClient = (ApiClient)this.c.get();
-    if ((localApiClient == null) || (this.d == null) || (HiAnalyticsUtil.getInstance().hasError(localApiClient.getContext()))) {
-      return;
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("package", localApiClient.getPackageName());
-    localHashMap.put("baseVersion", "5.0.0.301");
-    Object localObject;
-    if (paramInt2 == 1)
+    ApiClient localApiClient = (ApiClient)this.api.get();
+    if ((localApiClient != null) && (this.url != null))
     {
-      localHashMap.put("direction", "req");
+      if (HiAnalyticsUtil.getInstance().hasError(localApiClient.getContext())) {
+        return;
+      }
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("package", localApiClient.getPackageName());
+      localHashMap.put("baseVersion", "5.2.0.300");
+      if (paramInt2 == 1)
+      {
+        localHashMap.put("direction", "req");
+      }
+      else
+      {
+        localHashMap.put("direction", "rsp");
+        localHashMap.put("result", String.valueOf(paramInt1));
+        localObject = this.result;
+        if ((localObject != null) && (((Result)localObject).getStatus() != null)) {
+          localHashMap.put("statusCode", String.valueOf(this.result.getStatus().getStatusCode()));
+        }
+      }
       localHashMap.put("version", "0");
       String str = Util.getAppId(localApiClient.getContext());
-      localObject = str;
+      Object localObject = str;
       if (TextUtils.isEmpty(str))
       {
         SubAppInfo localSubAppInfo = localApiClient.getSubAppInfo();
@@ -79,217 +91,224 @@ public abstract class PendingResultImpl<R extends Result, T extends IMessageEnti
         }
       }
       localHashMap.put("appid", localObject);
-      if (!TextUtils.isEmpty(this.e)) {
-        break label353;
+      if (TextUtils.isEmpty(this.transId))
+      {
+        this.transId = TransactionIdCreater.getId((String)localObject, this.url);
+        localHashMap.put("transId", this.transId);
       }
-      this.e = TransactionIdCreater.getId((String)localObject, this.d);
-      localHashMap.put("transId", this.e);
-    }
-    for (;;)
-    {
-      localObject = this.d.split("\\.");
+      else
+      {
+        localHashMap.put("transId", this.transId);
+        this.transId = null;
+      }
+      localObject = this.url.split("\\.");
       if (localObject.length >= 2)
       {
         localHashMap.put("service", localObject[0]);
         localHashMap.put("apiName", localObject[1]);
       }
       localHashMap.put("callTime", String.valueOf(System.currentTimeMillis()));
+      localHashMap.put("phoneType", Util.getSystemProperties("ro.logsystem.usertype", ""));
       HiAnalyticsUtil.getInstance().onEvent(localApiClient.getContext(), "HMS_SDK_BASE_CALL_AIDL", localHashMap);
-      return;
-      localHashMap.put("direction", "rsp");
-      localHashMap.put("result", String.valueOf(paramInt1));
-      if ((this.b == null) || (this.b.getStatus() == null)) {
-        break;
-      }
-      localHashMap.put("statusCode", String.valueOf(this.b.getStatus().getStatusCode()));
-      break;
-      label353:
-      localHashMap.put("transId", this.e);
-      this.e = null;
     }
   }
   
-  private void a(int paramInt, IMessageEntity paramIMessageEntity)
+  private void init(ApiClient paramApiClient, String paramString, IMessageEntity paramIMessageEntity, Class<T> paramClass, int paramInt)
   {
-    HMSLog.i("PendingResultImpl", "setResult:" + paramInt);
-    Object localObject = null;
-    if ((paramIMessageEntity instanceof AbstractMessageEntity)) {
-      localObject = ((AbstractMessageEntity)paramIMessageEntity).getCommonStatus();
-    }
-    String str;
-    if (paramInt == 0)
-    {
-      this.b = onComplete(paramIMessageEntity);
-      if (this.f) {
-        a(paramInt, 2);
-      }
-      if (this.b != null)
-      {
-        paramIMessageEntity = this.b.getStatus();
-        if ((paramIMessageEntity != null) && (localObject != null))
-        {
-          paramInt = paramIMessageEntity.getStatusCode();
-          str = paramIMessageEntity.getStatusMessage();
-          int i = ((Status)localObject).getStatusCode();
-          localObject = ((Status)localObject).getStatusMessage();
-          if (paramInt == i) {
-            break label213;
-          }
-          HMSLog.e("PendingResultImpl", "rstStatus code (" + paramInt + ") is not equal commonStatus code (" + i + ")");
-          HMSLog.e("PendingResultImpl", "rstStatus msg (" + str + ") is not equal commonStatus msg (" + (String)localObject + ")");
-        }
-      }
-    }
-    label213:
-    while ((!TextUtils.isEmpty(str)) || (TextUtils.isEmpty((CharSequence)localObject)))
-    {
-      return;
-      this.b = onError(paramInt);
-      break;
-    }
-    HMSLog.i("PendingResultImpl", "rstStatus msg (" + str + ") is not equal commonStatus msg (" + (String)localObject + ")");
-    this.b.setStatus(new Status(paramInt, (String)localObject, paramIMessageEntity.getResolution()));
-  }
-  
-  private void a(ApiClient paramApiClient, String paramString, IMessageEntity paramIMessageEntity, Class<T> paramClass, int paramInt)
-  {
-    HMSLog.i("PendingResultImpl", "init uri:" + paramString);
-    this.d = paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("init uri:");
+    localStringBuilder.append(paramString);
+    HMSLog.i("PendingResultImpl", localStringBuilder.toString());
+    this.url = paramString;
     if (paramApiClient == null)
     {
       HMSLog.e("PendingResultImpl", "client is null");
       return;
     }
-    this.c = new WeakReference(paramApiClient);
-    this.a = new CountDownLatch(1);
+    this.api = new WeakReference(paramApiClient);
+    this.countLatch = new CountDownLatch(1);
     try
     {
       this.transport = ((DatagramTransport)Class.forName(paramApiClient.getTransportName()).getConstructor(new Class[] { String.class, IMessageEntity.class, Class.class, Integer.TYPE }).newInstance(new Object[] { paramString, paramIMessageEntity, paramClass, Integer.valueOf(paramInt) }));
       return;
     }
-    catch (InstantiationException paramApiClient)
-    {
-      HMSLog.e("PendingResultImpl", "gen transport error:" + paramApiClient.getMessage());
-      throw new IllegalStateException("Instancing transport exception, " + paramApiClient.getMessage(), paramApiClient);
+    catch (ClassNotFoundException paramApiClient) {}catch (NoSuchMethodException paramApiClient) {}catch (InvocationTargetException paramApiClient) {}catch (IllegalArgumentException paramApiClient) {}catch (IllegalAccessException paramApiClient) {}catch (InstantiationException paramApiClient) {}
+    paramString = new StringBuilder();
+    paramString.append("gen transport error:");
+    paramString.append(paramApiClient.getMessage());
+    HMSLog.e("PendingResultImpl", paramString.toString());
+    paramString = new StringBuilder();
+    paramString.append("Instancing transport exception, ");
+    paramString.append(paramApiClient.getMessage());
+    throw new IllegalStateException(paramString.toString(), paramApiClient);
+  }
+  
+  private void setResult(int paramInt, IMessageEntity paramIMessageEntity)
+  {
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("setResult:");
+    ((StringBuilder)localObject1).append(paramInt);
+    HMSLog.i("PendingResultImpl", ((StringBuilder)localObject1).toString());
+    if ((paramIMessageEntity instanceof AbstractMessageEntity)) {
+      localObject1 = ((AbstractMessageEntity)paramIMessageEntity).getCommonStatus();
+    } else {
+      localObject1 = null;
     }
-    catch (ClassNotFoundException paramApiClient)
-    {
-      break label143;
+    if (paramInt == 0) {
+      this.result = onComplete(paramIMessageEntity);
+    } else {
+      this.result = onError(paramInt);
     }
-    catch (IllegalAccessException paramApiClient)
-    {
-      break label143;
+    if (this.isNeedReport) {
+      biReportEvent(paramInt, 2);
     }
-    catch (IllegalArgumentException paramApiClient)
+    paramIMessageEntity = this.result;
+    if (paramIMessageEntity != null)
     {
-      break label143;
-    }
-    catch (NoSuchMethodException paramApiClient)
-    {
-      break label143;
-    }
-    catch (InvocationTargetException paramApiClient)
-    {
-      label143:
-      break label143;
+      Object localObject2 = paramIMessageEntity.getStatus();
+      if ((localObject2 != null) && (localObject1 != null))
+      {
+        paramInt = ((Status)localObject2).getStatusCode();
+        paramIMessageEntity = ((Status)localObject2).getStatusMessage();
+        int i = ((Status)localObject1).getStatusCode();
+        localObject1 = ((Status)localObject1).getStatusMessage();
+        if (paramInt != i)
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("rstStatus code (");
+          ((StringBuilder)localObject2).append(paramInt);
+          ((StringBuilder)localObject2).append(") is not equal commonStatus code (");
+          ((StringBuilder)localObject2).append(i);
+          ((StringBuilder)localObject2).append(")");
+          HMSLog.e("PendingResultImpl", ((StringBuilder)localObject2).toString());
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("rstStatus msg (");
+          ((StringBuilder)localObject2).append(paramIMessageEntity);
+          ((StringBuilder)localObject2).append(") is not equal commonStatus msg (");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          ((StringBuilder)localObject2).append(")");
+          HMSLog.e("PendingResultImpl", ((StringBuilder)localObject2).toString());
+          return;
+        }
+        if ((TextUtils.isEmpty(paramIMessageEntity)) && (!TextUtils.isEmpty((CharSequence)localObject1)))
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("rstStatus msg (");
+          localStringBuilder.append(paramIMessageEntity);
+          localStringBuilder.append(") is not equal commonStatus msg (");
+          localStringBuilder.append((String)localObject1);
+          localStringBuilder.append(")");
+          HMSLog.i("PendingResultImpl", localStringBuilder.toString());
+          this.result.setStatus(new Status(paramInt, (String)localObject1, ((Status)localObject2).getResolution()));
+        }
+      }
     }
   }
   
   public final R await()
   {
     HMSLog.i("PendingResultImpl", "await");
-    if (Looper.myLooper() == Looper.getMainLooper())
-    {
-      HMSLog.e("PendingResultImpl", "await in main thread");
-      throw new IllegalStateException("await must not be called on the UI thread");
+    if (Looper.myLooper() != Looper.getMainLooper()) {
+      return awaitOnAnyThread();
     }
-    return awaitOnAnyThread();
+    HMSLog.e("PendingResultImpl", "await in main thread");
+    throw new IllegalStateException("await must not be called on the UI thread");
   }
   
   public R await(long paramLong, TimeUnit paramTimeUnit)
   {
-    HMSLog.i("PendingResultImpl", "await timeout:" + paramLong + " unit:" + paramTimeUnit.toString());
-    if (Looper.myLooper() == Looper.getMainLooper())
-    {
-      HMSLog.i("PendingResultImpl", "await in main thread");
-      throw new IllegalStateException("await must not be called on the UI thread");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("await timeout:");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(" unit:");
+    localStringBuilder.append(paramTimeUnit.toString());
+    HMSLog.i("PendingResultImpl", localStringBuilder.toString());
+    if (Looper.myLooper() != Looper.getMainLooper()) {
+      return awaitOnAnyThread(paramLong, paramTimeUnit);
     }
-    return awaitOnAnyThread(paramLong, paramTimeUnit);
+    HMSLog.i("PendingResultImpl", "await in main thread");
+    throw new IllegalStateException("await must not be called on the UI thread");
   }
   
   public final R awaitOnAnyThread()
   {
     HMSLog.i("PendingResultImpl", "awaitOnAnyThread");
-    if (this.c == null)
+    Object localObject = this.api;
+    if (localObject == null)
     {
       HMSLog.e("PendingResultImpl", "api is null");
-      a(907135003, null);
-      return this.b;
+      setResult(907135003, null);
+      return this.result;
     }
-    ApiClient localApiClient = (ApiClient)this.c.get();
-    if (!checkApiClient(localApiClient))
+    localObject = (ApiClient)((WeakReference)localObject).get();
+    if (!checkApiClient((ApiClient)localObject))
     {
       HMSLog.e("PendingResultImpl", "client invalid");
-      a(907135003, null);
-      return this.b;
+      setResult(907135003, null);
+      return this.result;
     }
-    if (this.f) {
-      a(0, 1);
+    if (this.isNeedReport) {
+      biReportEvent(0, 1);
     }
-    this.transport.send(localApiClient, new PendingResultImpl.1(this));
+    this.transport.send((ApiClient)localObject, new PendingResultImpl.a(this));
     try
     {
-      this.a.await();
-      return this.b;
+      this.countLatch.await();
     }
     catch (InterruptedException localInterruptedException)
     {
-      for (;;)
-      {
-        HMSLog.e("PendingResultImpl", "await in anythread InterruptedException");
-        a(907135001, null);
-      }
+      label116:
+      break label116;
     }
+    HMSLog.e("PendingResultImpl", "await in anythread InterruptedException");
+    setResult(907135001, null);
+    return this.result;
   }
   
   public final R awaitOnAnyThread(long paramLong, TimeUnit paramTimeUnit)
   {
-    HMSLog.i("PendingResultImpl", "awaitOnAnyThread timeout:" + paramLong + " unit:" + paramTimeUnit.toString());
-    if (this.c == null)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("awaitOnAnyThread timeout:");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append(" unit:");
+    ((StringBuilder)localObject).append(paramTimeUnit.toString());
+    HMSLog.i("PendingResultImpl", ((StringBuilder)localObject).toString());
+    localObject = this.api;
+    if (localObject == null)
     {
       HMSLog.e("PendingResultImpl", "api is null");
-      a(907135003, null);
-      return this.b;
+      setResult(907135003, null);
+      return this.result;
     }
-    ApiClient localApiClient = (ApiClient)this.c.get();
-    if (!checkApiClient(localApiClient))
+    localObject = (ApiClient)((WeakReference)localObject).get();
+    if (!checkApiClient((ApiClient)localObject))
     {
       HMSLog.e("PendingResultImpl", "client invalid");
-      a(907135003, null);
-      return this.b;
+      setResult(907135003, null);
+      return this.result;
     }
     AtomicBoolean localAtomicBoolean = new AtomicBoolean();
-    if (this.f) {
-      a(0, 1);
+    if (this.isNeedReport) {
+      biReportEvent(0, 1);
     }
-    this.transport.post(localApiClient, new PendingResultImpl.2(this, localAtomicBoolean));
+    this.transport.post((ApiClient)localObject, new PendingResultImpl.b(this, localAtomicBoolean));
     try
     {
-      if (!this.a.await(paramLong, paramTimeUnit))
-      {
-        localAtomicBoolean.set(true);
-        a(907135004, null);
+      if (this.countLatch.await(paramLong, paramTimeUnit)) {
+        break label214;
       }
-      return this.b;
+      localAtomicBoolean.set(true);
+      setResult(907135004, null);
     }
     catch (InterruptedException paramTimeUnit)
     {
-      for (;;)
-      {
-        HMSLog.e("PendingResultImpl", "awaitOnAnyThread InterruptedException");
-        a(907135001, null);
-      }
+      label198:
+      break label198;
     }
+    HMSLog.e("PendingResultImpl", "awaitOnAnyThread InterruptedException");
+    setResult(907135001, null);
+    label214:
+    return this.result;
   }
   
   @Deprecated
@@ -323,28 +342,33 @@ public abstract class PendingResultImpl<R extends Result, T extends IMessageEnti
   
   protected R onError(int paramInt)
   {
-    Object localObject1 = getClass().getGenericSuperclass();
-    if (localObject1 != null) {}
-    Object localObject2;
-    for (localObject1 = ((java.lang.reflect.ParameterizedType)localObject1).getActualTypeArguments()[0];; localObject2 = null)
-    {
-      if (localObject1 != null) {}
-      for (localObject1 = GenericTypeReflector.getType((Type)localObject1);; localObject2 = null)
+    Object localObject = getClass().getGenericSuperclass();
+    if (localObject != null) {
+      localObject = ((java.lang.reflect.ParameterizedType)localObject).getActualTypeArguments()[0];
+    } else {
+      localObject = null;
+    }
+    if (localObject != null) {
+      localObject = GenericTypeReflector.getType((Type)localObject);
+    } else {
+      localObject = null;
+    }
+    if (localObject != null) {
+      try
       {
-        if (localObject1 != null) {}
-        try
-        {
-          this.b = ((Result)((Class)localObject1).newInstance());
-          this.b.setStatus(new Status(paramInt));
-          return this.b;
-        }
-        catch (Exception localException)
-        {
-          HMSLog.e("PendingResultImpl", "on Error:" + localException.getMessage());
-          return null;
-        }
+        this.result = ((Result)((Class)localObject).newInstance());
+        this.result.setStatus(new Status(paramInt));
+      }
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("on Error:");
+        localStringBuilder.append(localException.getMessage());
+        HMSLog.e("PendingResultImpl", localStringBuilder.toString());
+        return null;
       }
     }
+    return this.result;
   }
   
   public final void setResultCallback(Looper paramLooper, ResultCallback<R> paramResultCallback)
@@ -354,36 +378,32 @@ public abstract class PendingResultImpl<R extends Result, T extends IMessageEnti
     if (paramLooper == null) {
       localObject = Looper.myLooper();
     }
-    paramLooper = new PendingResultImpl.a((Looper)localObject);
-    if (this.c == null)
+    paramLooper = new PendingResultImpl.d((Looper)localObject);
+    localObject = this.api;
+    if (localObject == null)
     {
       HMSLog.e("PendingResultImpl", "api is null");
-      a(907135003, null);
+      setResult(907135003, null);
       return;
     }
-    localObject = (ApiClient)this.c.get();
+    localObject = (ApiClient)((WeakReference)localObject).get();
     if (!checkApiClient((ApiClient)localObject))
     {
       HMSLog.e("PendingResultImpl", "client is invalid");
-      a(907135003, null);
-      paramLooper.a(paramResultCallback, this.b);
+      setResult(907135003, null);
+      paramLooper.a(paramResultCallback, this.result);
       return;
     }
-    if (this.f) {
-      a(0, 1);
+    if (this.isNeedReport) {
+      biReportEvent(0, 1);
     }
-    this.transport.post((ApiClient)localObject, new PendingResultImpl.3(this, paramLooper, paramResultCallback));
+    this.transport.post((ApiClient)localObject, new PendingResultImpl.c(this, paramLooper, paramResultCallback));
   }
   
   public void setResultCallback(ResultCallback<R> paramResultCallback)
   {
-    if (!(paramResultCallback instanceof BaseAdapter.BaseRequestResultCallback)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.f = bool;
-      setResultCallback(Looper.getMainLooper(), paramResultCallback);
-      return;
-    }
+    this.isNeedReport = (paramResultCallback instanceof BaseAdapter.BaseRequestResultCallback ^ true);
+    setResultCallback(Looper.getMainLooper(), paramResultCallback);
   }
   
   @Deprecated
@@ -394,7 +414,7 @@ public abstract class PendingResultImpl<R extends Result, T extends IMessageEnti
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.support.api.PendingResultImpl
  * JD-Core Version:    0.7.0.1
  */

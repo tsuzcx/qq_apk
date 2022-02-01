@@ -50,13 +50,12 @@ class QWalletBluetoothJsPlugin$4
         paramBluetoothGatt.put("characteristic", localJSONObject);
         paramBluetoothGatt.put("code", 0);
       }
-      for (;;)
+      else
       {
-        QWalletBluetoothJsPlugin.access$200(this.this$0, "readBLECharacteristicValue", paramBluetoothGatt.toString());
-        return;
         paramBluetoothGatt.put("code", 10007);
         paramBluetoothGatt.put("errMsg", "Read failed");
       }
+      QWalletBluetoothJsPlugin.access$200(this.this$0, "readBLECharacteristicValue", paramBluetoothGatt.toString());
       return;
     }
     catch (JSONException paramBluetoothGatt) {}
@@ -67,16 +66,16 @@ class QWalletBluetoothJsPlugin$4
     try
     {
       paramBluetoothGatt = new JSONObject();
-      if (paramInt == 0) {
+      if (paramInt == 0)
+      {
         paramBluetoothGatt.put("code", 0);
       }
-      for (;;)
+      else
       {
-        QWalletBluetoothJsPlugin.access$200(this.this$0, "writeBLECharacteristicValue", paramBluetoothGatt.toString());
-        return;
         paramBluetoothGatt.put("code", 10007);
         paramBluetoothGatt.put("errMsg", "Write failed");
       }
+      QWalletBluetoothJsPlugin.access$200(this.this$0, "writeBLECharacteristicValue", paramBluetoothGatt.toString());
       return;
     }
     catch (JSONException paramBluetoothGatt) {}
@@ -84,46 +83,40 @@ class QWalletBluetoothJsPlugin$4
   
   public void onConnectionStateChange(BluetoothGatt paramBluetoothGatt, int paramInt1, int paramInt2)
   {
-    boolean bool = false;
     super.onConnectionStateChange(paramBluetoothGatt, paramInt1, paramInt2);
     String str = paramBluetoothGatt.getDevice().getAddress();
     try
     {
-      JSONObject localJSONObject;
-      if (QWalletBluetoothJsPlugin.access$1500(this.this$0).contains(str))
+      boolean bool2 = QWalletBluetoothJsPlugin.access$1500(this.this$0).contains(str);
+      boolean bool1 = false;
+      if (bool2)
       {
         QWalletBluetoothJsPlugin.access$1500(this.this$0).remove(str);
-        localJSONObject = new JSONObject();
+        JSONObject localJSONObject = new JSONObject();
         if ((paramInt1 == 0) && (paramInt2 == 2))
         {
           QWalletBluetoothJsPlugin.access$1600(this.this$0).put(str, paramBluetoothGatt);
           localJSONObject.put("code", 0);
-          QWalletBluetoothJsPlugin.access$200(this.this$0, "createBLEConnection", localJSONObject.toString());
         }
+        else
+        {
+          localJSONObject.put("code", 10003);
+          localJSONObject.put("errMsg", "connect failed");
+        }
+        QWalletBluetoothJsPlugin.access$200(this.this$0, "createBLEConnection", localJSONObject.toString());
       }
-      else
-      {
-        if (paramInt2 != 2) {
-          break label198;
-        }
+      if (paramInt2 == 2) {
         QWalletBluetoothJsPlugin.access$1700(this.this$0).add(str);
-      }
-      for (;;)
-      {
-        paramBluetoothGatt = new JSONObject();
-        paramBluetoothGatt.put("deviceId", str);
-        if (paramInt2 == 2) {
-          bool = true;
-        }
-        paramBluetoothGatt.put("connected", bool);
-        QWalletBluetoothJsPlugin.access$200(this.this$0, "onBLEConnectionStateChange", paramBluetoothGatt.toString());
-        return;
-        localJSONObject.put("code", 10003);
-        localJSONObject.put("errMsg", "connect failed");
-        break;
-        label198:
+      } else {
         QWalletBluetoothJsPlugin.access$1700(this.this$0).remove(str);
       }
+      paramBluetoothGatt = new JSONObject();
+      paramBluetoothGatt.put("deviceId", str);
+      if (paramInt2 == 2) {
+        bool1 = true;
+      }
+      paramBluetoothGatt.put("connected", bool1);
+      QWalletBluetoothJsPlugin.access$200(this.this$0, "onBLEConnectionStateChange", paramBluetoothGatt.toString());
       return;
     }
     catch (JSONException paramBluetoothGatt) {}
@@ -138,50 +131,47 @@ class QWalletBluetoothJsPlugin$4
     }
     super.onServicesDiscovered(paramBluetoothGatt, paramInt);
     Object localObject = paramBluetoothGatt.getServices();
-    for (;;)
+    try
     {
-      try
+      paramBluetoothGatt = new JSONObject();
+      paramInt = ((List)localObject).size();
+      if (paramInt == 0)
       {
-        paramBluetoothGatt = new JSONObject();
-        if (((List)localObject).size() == 0)
-        {
-          paramBluetoothGatt.put("code", 10004);
-          paramBluetoothGatt.put("errMsg", "No Service");
-          QWalletBluetoothJsPlugin.access$200(this.this$0, "getBLEDeviceServices", paramBluetoothGatt.toString());
-          return;
-        }
+        paramBluetoothGatt.put("code", 10004);
+        paramBluetoothGatt.put("errMsg", "No Service");
+      }
+      else
+      {
         JSONArray localJSONArray = new JSONArray();
         localObject = ((List)localObject).iterator();
-        if (((Iterator)localObject).hasNext())
+        for (;;)
         {
+          boolean bool2 = ((Iterator)localObject).hasNext();
+          boolean bool1 = false;
+          if (!bool2) {
+            break;
+          }
           BluetoothGattService localBluetoothGattService = (BluetoothGattService)((Iterator)localObject).next();
           JSONObject localJSONObject = new JSONObject();
           localJSONObject.put("uuid", localBluetoothGattService.getUuid().toString());
-          if (localBluetoothGattService.getType() == 0)
-          {
-            bool = true;
-            localJSONObject.put("isPrimary", bool);
-            localJSONArray.put(localJSONObject);
+          if (localBluetoothGattService.getType() == 0) {
+            bool1 = true;
           }
+          localJSONObject.put("isPrimary", bool1);
+          localJSONArray.put(localJSONObject);
         }
-        else
-        {
-          paramBluetoothGatt.put("services", localJSONArray);
-          paramBluetoothGatt.put("code", 0);
-          continue;
-        }
-        boolean bool = false;
+        paramBluetoothGatt.put("services", localJSONArray);
+        paramBluetoothGatt.put("code", 0);
       }
-      catch (JSONException paramBluetoothGatt)
-      {
-        return;
-      }
+      QWalletBluetoothJsPlugin.access$200(this.this$0, "getBLEDeviceServices", paramBluetoothGatt.toString());
+      return;
     }
+    catch (JSONException paramBluetoothGatt) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletBluetoothJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

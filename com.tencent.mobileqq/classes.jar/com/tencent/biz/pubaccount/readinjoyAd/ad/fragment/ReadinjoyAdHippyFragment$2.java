@@ -1,29 +1,28 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.fragment;
 
+import android.app.Activity;
 import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.common.RIJXTabFrameUtils;
-import com.tencent.biz.pubaccount.readinjoy.config.handlers.ChannelModeConfigHandler;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.viola.delegate.ViolaUiDelegate;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.ViolaViewListener;
+import com.tencent.mobileqq.kandian.biz.common.api.IRIJXTabFrameUtils;
+import com.tencent.mobileqq.kandian.biz.viola.api.IViolaBaseView;
+import com.tencent.mobileqq.kandian.biz.viola.api.IViolaBaseView.ViolaViewListener;
+import com.tencent.mobileqq.kandian.biz.viola.api.IViolaUiDelegate;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 
 class ReadinjoyAdHippyFragment$2
-  implements ViolaBaseView.ViolaViewListener
+  implements IViolaBaseView.ViolaViewListener
 {
   ReadinjoyAdHippyFragment$2(ReadinjoyAdHippyFragment paramReadinjoyAdHippyFragment) {}
   
   public void a()
   {
-    if (this.a.getActivity() != null) {
-      new Handler(this.a.getActivity().getMainLooper()).postDelayed(new ReadinjoyAdHippyFragment.2.1(this), 200L);
+    if (this.a.a() != null) {
+      new Handler(this.a.a().getMainLooper()).postDelayed(new ReadinjoyAdHippyFragment.2.1(this), 200L);
     }
     if (QLog.isColorLevel()) {
       QLog.d("ReadinjoyAdMiniGameFragment", 2, "initViola success!");
     }
-    if ((this.a.a != null) && (this.a.a.c()) && (this.a.c()) && (RIJXTabFrameUtils.a.a())) {
+    if ((this.a.a != null) && (this.a.a.b()) && (this.a.b()) && (((IRIJXTabFrameUtils)QRoute.api(IRIJXTabFrameUtils.class)).isNowInKanDianTab())) {
       this.a.a.a(true);
     }
   }
@@ -31,31 +30,34 @@ class ReadinjoyAdHippyFragment$2
   public void a(int paramInt)
   {
     ReadinjoyAdHippyFragment.a(this.a);
-    ReadinjoyAdHippyFragment.a(this.a).c();
-    if (QLog.isColorLevel()) {
-      QLog.e("ReadinjoyAdMiniGameFragment", 2, "initViola error,error code=" + paramInt);
+    ReadinjoyAdHippyFragment.a(this.a).b();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initViola error,error code=");
+      localStringBuilder.append(paramInt);
+      QLog.e("ReadinjoyAdMiniGameFragment", 2, localStringBuilder.toString());
     }
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean) {}
   
-  public void a(String paramString, int paramInt)
-  {
-    if ((1 == paramInt) && (ChannelModeConfigHandler.a())) {
-      ReadInJoyLogicEngineEventDispatcher.a().k();
-    }
-  }
+  public void a(String paramString, int paramInt) {}
   
   public void b(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadinjoyAdMiniGameFragment", 2, "initViola process,process code=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initViola process,process code=");
+      localStringBuilder.append(paramInt);
+      QLog.d("ReadinjoyAdMiniGameFragment", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.fragment.ReadinjoyAdHippyFragment.2
  * JD-Core Version:    0.7.0.1
  */

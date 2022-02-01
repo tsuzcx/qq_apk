@@ -2,10 +2,10 @@ package com.tencent.mobileqq.multicard;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -19,8 +19,8 @@ public class MultiCardCustomViewDelegate
   private int jdField_a_of_type_Int = -1;
   public Context a;
   public Bundle a;
-  public FragmentActivity a;
   public ViewGroup a;
+  public BaseActivity a;
   public QQAppInterface a;
   public CardContent a;
   private MultiCardCustomLayout jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout;
@@ -34,33 +34,27 @@ public class MultiCardCustomViewDelegate
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public MultiCardCustomViewDelegate(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, ViewGroup paramViewGroup)
+  public MultiCardCustomViewDelegate(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, Context paramContext, ViewGroup paramViewGroup)
   {
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = paramFragmentActivity;
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
   }
   
   private boolean a(View paramView, float paramFloat1, float paramFloat2)
   {
-    if (paramView == null) {}
-    int i;
-    int j;
-    int k;
-    int m;
-    do
-    {
+    if (paramView == null) {
       return false;
-      int[] arrayOfInt = new int[2];
-      paramView.getLocationOnScreen(arrayOfInt);
-      i = arrayOfInt[0];
-      j = arrayOfInt[1];
-      k = paramView.getMeasuredWidth();
-      m = paramView.getMeasuredHeight();
-    } while ((paramFloat2 < j) || (paramFloat2 > m + j) || (paramFloat1 < i) || (paramFloat1 > k + i));
-    return true;
+    }
+    int[] arrayOfInt = new int[2];
+    paramView.getLocationOnScreen(arrayOfInt);
+    int i = arrayOfInt[0];
+    int j = arrayOfInt[1];
+    int k = paramView.getMeasuredWidth();
+    int m = paramView.getMeasuredHeight();
+    return (paramFloat2 >= j) && (paramFloat2 <= m + j) && (paramFloat1 >= i) && (paramFloat1 <= k + i);
   }
   
   public int a()
@@ -90,8 +84,9 @@ public class MultiCardCustomViewDelegate
   
   public String a()
   {
-    if (this.jdField_a_of_type_AndroidOsBundle != null) {
-      return this.jdField_a_of_type_AndroidOsBundle.getString("troopuin");
+    Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle;
+    if (localBundle != null) {
+      return localBundle.getString("troopuin");
     }
     return null;
   }
@@ -102,14 +97,15 @@ public class MultiCardCustomViewDelegate
       QLog.d("MultiCardCustomViewDelegete", 2, "unInit");
     }
     this.jdField_a_of_type_Int = -1;
-    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout != null)
+    MultiCardCustomLayout localMultiCardCustomLayout = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout;
+    if (localMultiCardCustomLayout != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.a(false);
+      localMultiCardCustomLayout.a(false);
       this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.setDispatchTouchEventOnLongClickListener(null);
       this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout = null;
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = null;
     this.jdField_a_of_type_AndroidContentContext = null;
     this.jdField_a_of_type_ComTencentMobileqqMulticardCardContent = null;
     this.jdField_a_of_type_AndroidViewViewGroup = null;
@@ -119,8 +115,12 @@ public class MultiCardCustomViewDelegate
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiCardCustomViewDelegete", 2, "onCardModeChanged：" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCardModeChanged：");
+      localStringBuilder.append(paramInt);
+      QLog.d("MultiCardCustomViewDelegete", 2, localStringBuilder.toString());
     }
   }
   
@@ -132,8 +132,9 @@ public class MultiCardCustomViewDelegate
   public void a(View paramView)
   {
     this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout = ((MultiCardCustomLayout)paramView);
-    if ((this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.setDispatchTouchEventOnLongClickListener(new MultiCardCustomViewDelegate.1(this));
+    paramView = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout;
+    if ((paramView != null) && (paramView != null)) {
+      paramView.setDispatchTouchEventOnLongClickListener(new MultiCardCustomViewDelegate.1(this));
     }
   }
   
@@ -169,8 +170,9 @@ public class MultiCardCustomViewDelegate
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate$MultiCardCustomViewDelegateListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate$MultiCardCustomViewDelegateListener.a(this);
+    MultiCardCustomViewDelegate.MultiCardCustomViewDelegateListener localMultiCardCustomViewDelegateListener = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate$MultiCardCustomViewDelegateListener;
+    if (localMultiCardCustomViewDelegateListener != null) {
+      localMultiCardCustomViewDelegateListener.a(this);
     }
     return true;
   }
@@ -210,25 +212,26 @@ public class MultiCardCustomViewDelegate
   
   public void b(View paramView)
   {
-    if (paramView == null) {}
-    do
-    {
+    if (paramView == null) {
       return;
-      if (paramView.getParent() != null)
+    }
+    if (paramView.getParent() != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiCardCustomViewDelegete", 2, "infoview has parent. error!!");
+      }
+      if ((paramView.getParent() instanceof ViewGroup))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("MultiCardCustomViewDelegete", 2, "infoview has parent. error!!");
+          QLog.d("MultiCardCustomViewDelegete", 2, "infoview has parent. remove infoview");
         }
-        if ((paramView.getParent() instanceof ViewGroup))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("MultiCardCustomViewDelegete", 2, "infoview has parent. remove infoview");
-          }
-          ((ViewGroup)paramView.getParent()).removeView(paramView);
-        }
+        ((ViewGroup)paramView.getParent()).removeView(paramView);
       }
-    } while (this.jdField_a_of_type_AndroidViewViewGroup == null);
-    this.jdField_a_of_type_AndroidViewViewGroup.addView(paramView);
+    }
+    ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
+    if (localViewGroup != null) {
+      localViewGroup.addView(paramView);
+    }
   }
   
   public void b(boolean paramBoolean) {}
@@ -280,15 +283,16 @@ public class MultiCardCustomViewDelegate
   
   public boolean onLongClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate$MultiCardCustomViewDelegateListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate$MultiCardCustomViewDelegateListener.a(this);
+    paramView = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate$MultiCardCustomViewDelegateListener;
+    if (paramView != null) {
+      paramView.a(this);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardCustomViewDelegate
  * JD-Core Version:    0.7.0.1
  */

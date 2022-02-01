@@ -11,15 +11,19 @@ final class a
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppInterface", 2, "Kill process " + MiniAppInterface.access$000(this.a).getPackageName());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Kill process ");
+      localStringBuilder.append(MiniAppInterface.access$000(this.a).getPackageName());
+      QLog.d("MiniAppInterface", 2, localStringBuilder.toString());
     }
     Process.killProcess(Process.myPid());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.a
  * JD-Core Version:    0.7.0.1
  */

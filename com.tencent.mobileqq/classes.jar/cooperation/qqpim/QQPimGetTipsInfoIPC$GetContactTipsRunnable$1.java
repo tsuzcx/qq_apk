@@ -12,8 +12,13 @@ class QQPimGetTipsInfoIPC$GetContactTipsRunnable$1
   
   public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(QQPimDefineList.a, 2, "QQPimGetTipsInfoIPC.onCallback() " + QQPimGetTipsInfoIPC.a(this.a.this$0).hashCode());
+    if (QLog.isColorLevel())
+    {
+      String str = QQPimDefineList.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("QQPimGetTipsInfoIPC.onCallback() ");
+      localStringBuilder.append(QQPimGetTipsInfoIPC.a(this.a.this$0).hashCode());
+      QLog.i(str, 2, localStringBuilder.toString());
     }
     if ((paramEIPCResult != null) && (paramEIPCResult.data != null))
     {
@@ -29,7 +34,7 @@ class QQPimGetTipsInfoIPC$GetContactTipsRunnable$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqpim.QQPimGetTipsInfoIPC.GetContactTipsRunnable.1
  * JD-Core Version:    0.7.0.1
  */

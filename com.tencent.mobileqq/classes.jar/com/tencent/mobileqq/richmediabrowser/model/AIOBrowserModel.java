@@ -30,11 +30,14 @@ public class AIOBrowserModel
   
   public static boolean a(AIOBrowserBaseData paramAIOBrowserBaseData)
   {
-    if (paramAIOBrowserBaseData == null) {}
-    while ((paramAIOBrowserBaseData.getType() != 100) && (paramAIOBrowserBaseData.getType() != 101) && (paramAIOBrowserBaseData.getType() != 102) && (paramAIOBrowserBaseData.getType() != 103)) {
+    boolean bool = false;
+    if (paramAIOBrowserBaseData == null) {
       return false;
     }
-    return true;
+    if ((paramAIOBrowserBaseData.getType() == 100) || (paramAIOBrowserBaseData.getType() == 101) || (paramAIOBrowserBaseData.getType() == 102) || (paramAIOBrowserBaseData.getType() == 103)) {
+      bool = true;
+    }
+    return bool;
   }
   
   public int a(long paramLong)
@@ -73,47 +76,45 @@ public class AIOBrowserModel
   {
     List localList = this.browserDataList;
     int i = 0;
-    if (i < localList.size())
+    while (i < localList.size())
     {
       Object localObject = localList.get(i);
-      if (!RichMediaBrowserInfo.class.isInstance(localObject)) {}
-      label119:
-      do
+      if (RichMediaBrowserInfo.class.isInstance(localObject))
       {
-        do
+        localObject = (AIOBrowserBaseData)((RichMediaBrowserInfo)localObject).baseData;
+        if (AIOPictureData.class.isInstance(localObject))
         {
-          do
+          localObject = (AIOPictureData)localObject;
+          if ((((AIOPictureData)localObject).jdField_a_of_type_Long == paramLong) && (((AIOPictureData)localObject).jdField_a_of_type_Int == paramInt1))
           {
-            do
-            {
-              i += 1;
-              break;
-              localObject = (AIOBrowserBaseData)((RichMediaBrowserInfo)localObject).baseData;
-              if (!AIOPictureData.class.isInstance(localObject)) {
-                break label119;
-              }
-              localObject = (AIOPictureData)localObject;
-            } while ((((AIOPictureData)localObject).jdField_a_of_type_Long != paramLong) || (((AIOPictureData)localObject).jdField_a_of_type_Int != paramInt1));
             new AIOPictureModel().a((AIOPictureData)localObject, paramInt2, paramString);
             return i;
-            if (!AIOVideoData.class.isInstance(localObject)) {
-              break label165;
-            }
-            localObject = (AIOVideoData)localObject;
-          } while (((AIOVideoData)localObject).jdField_a_of_type_Long != paramLong);
-          new AIOVideoModel().a((AIOVideoData)localObject, paramInt2, paramString);
-          return i;
-          if (!AIOFilePictureData.class.isInstance(localObject)) {
-            break label211;
           }
+        }
+        else if (AIOVideoData.class.isInstance(localObject))
+        {
+          localObject = (AIOVideoData)localObject;
+          if (((AIOVideoData)localObject).jdField_a_of_type_Long == paramLong)
+          {
+            new AIOVideoModel().a((AIOVideoData)localObject, paramInt2, paramString);
+            return i;
+          }
+        }
+        else if (AIOFilePictureData.class.isInstance(localObject))
+        {
           localObject = (AIOFilePictureData)localObject;
-        } while (((AIOFilePictureData)localObject).jdField_a_of_type_Long != paramLong);
-        new AIOFilePictureModel().a((AIOFilePictureData)localObject, paramInt2, paramString);
-        return i;
-      } while ((!AIOFileVideoData.class.isInstance(localObject)) || (((AIOFileVideoData)localObject).jdField_a_of_type_Long != paramLong));
-      label165:
-      label211:
-      return i;
+          if (((AIOFilePictureData)localObject).jdField_a_of_type_Long == paramLong)
+          {
+            new AIOFilePictureModel().a((AIOFilePictureData)localObject, paramInt2, paramString);
+            return i;
+          }
+        }
+        else if ((AIOFileVideoData.class.isInstance(localObject)) && (((AIOFileVideoData)localObject).jdField_a_of_type_Long == paramLong))
+        {
+          return i;
+        }
+      }
+      i += 1;
     }
     return -1;
   }
@@ -224,28 +225,29 @@ public class AIOBrowserModel
   
   public boolean a()
   {
-    if (!this.c) {}
-    int i;
-    do
-    {
+    if (!this.c) {
       return false;
-      i = this.jdField_a_of_type_JavaUtilList.size();
-    } while (i <= 0);
-    this.jdField_a_of_type_Int += i;
-    this.jdField_b_of_type_Int = (i + this.jdField_b_of_type_Int);
-    List localList = a(this.jdField_a_of_type_JavaUtilList);
-    if (this.jdField_b_of_type_Boolean)
-    {
-      Collections.reverse(localList);
-      this.browserDataList.addAll(localList);
     }
-    for (;;)
+    int i = this.jdField_a_of_type_JavaUtilList.size();
+    if (i > 0)
     {
+      this.jdField_a_of_type_Int += i;
+      this.jdField_b_of_type_Int += i;
+      List localList = a(this.jdField_a_of_type_JavaUtilList);
+      if (this.jdField_b_of_type_Boolean)
+      {
+        Collections.reverse(localList);
+        this.browserDataList.addAll(localList);
+      }
+      else
+      {
+        this.currentIndex += localList.size();
+        this.browserDataList.addAll(0, localList);
+      }
       this.jdField_a_of_type_JavaUtilList.clear();
       return true;
-      this.currentIndex += localList.size();
-      this.browserDataList.addAll(0, localList);
     }
+    return false;
   }
   
   public boolean a(RichMediaBrowserInfo paramRichMediaBrowserInfo)
@@ -259,56 +261,58 @@ public class AIOBrowserModel
     int i = paramArrayOfAIOBrowserBaseData.length - 1;
     if (i >= 0)
     {
-      localAIOBrowserBaseData1 = paramArrayOfAIOBrowserBaseData[i];
+      localAIOBrowserBaseData = paramArrayOfAIOBrowserBaseData[i];
       if ((this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo == null) || (this.currentBrowserInfo == null))
       {
-        localObject = new RichMediaBrowserInfo();
-        ((RichMediaBrowserInfo)localObject).baseData = localAIOBrowserBaseData1;
-        this.currentBrowserInfo = ((RichMediaBrowserInfo)localObject);
-        this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo = ((RichMediaBrowserInfo)localObject);
+        localObject1 = new RichMediaBrowserInfo();
+        ((RichMediaBrowserInfo)localObject1).baseData = localAIOBrowserBaseData;
+        this.currentBrowserInfo = ((RichMediaBrowserInfo)localObject1);
+        this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo = ((RichMediaBrowserInfo)localObject1);
       }
     }
-    AIOBrowserBaseData localAIOBrowserBaseData1 = (AIOBrowserBaseData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo.baseData;
-    Object localObject = (AIOBrowserBaseData)this.currentBrowserInfo.baseData;
+    AIOBrowserBaseData localAIOBrowserBaseData = (AIOBrowserBaseData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo.baseData;
+    Object localObject1 = (AIOBrowserBaseData)this.currentBrowserInfo.baseData;
     i = 0;
-    if (i < paramArrayOfAIOBrowserBaseData.length)
+    while (i < paramArrayOfAIOBrowserBaseData.length)
     {
-      AIOBrowserBaseData localAIOBrowserBaseData2 = paramArrayOfAIOBrowserBaseData[i];
+      Object localObject2 = paramArrayOfAIOBrowserBaseData[i];
       RichMediaBrowserInfo localRichMediaBrowserInfo;
       if (this.jdField_a_of_type_Boolean)
       {
         localRichMediaBrowserInfo = new RichMediaBrowserInfo();
-        localRichMediaBrowserInfo.baseData = localAIOBrowserBaseData2;
+        localRichMediaBrowserInfo.baseData = ((RichMediaBaseData)localObject2);
         localArrayList.add(localRichMediaBrowserInfo);
       }
-      for (;;)
+      else if ((localAIOBrowserBaseData.jdField_a_of_type_Long == ((AIOBrowserBaseData)localObject2).jdField_a_of_type_Long) && (localAIOBrowserBaseData.jdField_a_of_type_Int == ((AIOBrowserBaseData)localObject2).jdField_a_of_type_Int))
       {
-        i += 1;
-        break;
-        if ((localAIOBrowserBaseData1.jdField_a_of_type_Long == localAIOBrowserBaseData2.jdField_a_of_type_Long) && (localAIOBrowserBaseData1.jdField_a_of_type_Int == localAIOBrowserBaseData2.jdField_a_of_type_Int))
-        {
-          this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo.isEnterImage = true;
-          if (this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo == this.currentBrowserInfo) {
-            this.c = true;
-          }
-          localArrayList.add(this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo);
+        localObject2 = this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo;
+        ((RichMediaBrowserInfo)localObject2).isEnterImage = true;
+        if (localObject2 == this.currentBrowserInfo) {
+          this.c = true;
         }
-        else if ((((AIOBrowserBaseData)localObject).jdField_a_of_type_Long == localAIOBrowserBaseData2.jdField_a_of_type_Long) && (((AIOBrowserBaseData)localObject).jdField_a_of_type_Int == localAIOBrowserBaseData2.jdField_a_of_type_Int))
-        {
-          localArrayList.add(this.currentBrowserInfo);
-        }
-        else
-        {
-          localRichMediaBrowserInfo = new RichMediaBrowserInfo();
-          localRichMediaBrowserInfo.baseData = localAIOBrowserBaseData2;
-          localArrayList.add(localRichMediaBrowserInfo);
-        }
+        localArrayList.add(this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo);
       }
+      else if ((((AIOBrowserBaseData)localObject1).jdField_a_of_type_Long == ((AIOBrowserBaseData)localObject2).jdField_a_of_type_Long) && (((AIOBrowserBaseData)localObject1).jdField_a_of_type_Int == ((AIOBrowserBaseData)localObject2).jdField_a_of_type_Int))
+      {
+        localArrayList.add(this.currentBrowserInfo);
+      }
+      else
+      {
+        localRichMediaBrowserInfo = new RichMediaBrowserInfo();
+        localRichMediaBrowserInfo.baseData = ((RichMediaBaseData)localObject2);
+        localArrayList.add(localRichMediaBrowserInfo);
+      }
+      i += 1;
     }
-    if (((paramInt < 0) || (paramInt < paramArrayOfAIOBrowserBaseData.length)) || (this.jdField_a_of_type_Boolean)) {
+    if (paramInt >= 0) {
+      paramInt = paramArrayOfAIOBrowserBaseData.length;
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
       this.jdField_a_of_type_JavaUtilList.addAll(0, localArrayList);
+      return false;
     }
-    while (!this.c) {
+    if (!this.c) {
       return false;
     }
     this.browserDataList = a(localArrayList);
@@ -327,25 +331,28 @@ public class AIOBrowserModel
   
   public RichMediaBrowserInfo b(long paramLong)
   {
+    Object localObject3 = null;
+    try
+    {
+      Iterator localIterator = this.browserDataList.iterator();
+      Object localObject1;
+      do
+      {
+        localObject1 = localObject3;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject1 = (RichMediaBrowserInfo)localIterator.next();
+      } while (((AIOBrowserBaseData)((RichMediaBrowserInfo)localObject1).baseData).jdField_a_of_type_Long != paramLong);
+      if (localObject1 != null) {
+        this.browserDataList.remove(localObject1);
+      }
+      return localObject1;
+    }
+    finally {}
     for (;;)
     {
-      try
-      {
-        Iterator localIterator = this.browserDataList.iterator();
-        if (localIterator.hasNext())
-        {
-          RichMediaBrowserInfo localRichMediaBrowserInfo = (RichMediaBrowserInfo)localIterator.next();
-          if (((AIOBrowserBaseData)localRichMediaBrowserInfo.baseData).jdField_a_of_type_Long != paramLong) {
-            continue;
-          }
-          if (localRichMediaBrowserInfo != null) {
-            this.browserDataList.remove(localRichMediaBrowserInfo);
-          }
-          return localRichMediaBrowserInfo;
-        }
-      }
-      finally {}
-      Object localObject2 = null;
+      throw localObject2;
     }
   }
   
@@ -353,32 +360,30 @@ public class AIOBrowserModel
   {
     if (a(paramRichMediaBrowserInfo))
     {
-      if (paramRichMediaBrowserInfo.baseData.getType() != 101) {
-        break label32;
+      if (paramRichMediaBrowserInfo.baseData.getType() == 101)
+      {
+        ((AIOVideoData)paramRichMediaBrowserInfo.baseData).jdField_f_of_type_Boolean = true;
+        return;
       }
-      ((AIOVideoData)paramRichMediaBrowserInfo.baseData).jdField_f_of_type_Boolean = true;
+      if (paramRichMediaBrowserInfo.baseData.getType() == 103) {
+        ((AIOFileVideoData)paramRichMediaBrowserInfo.baseData).h = true;
+      }
     }
-    label32:
-    while (paramRichMediaBrowserInfo.baseData.getType() != 103) {
-      return;
-    }
-    ((AIOFileVideoData)paramRichMediaBrowserInfo.baseData).h = true;
   }
   
   public void c(RichMediaBrowserInfo paramRichMediaBrowserInfo)
   {
     if (a(paramRichMediaBrowserInfo))
     {
-      if (paramRichMediaBrowserInfo.baseData.getType() != 101) {
-        break label32;
+      if (paramRichMediaBrowserInfo.baseData.getType() == 101)
+      {
+        ((AIOVideoData)paramRichMediaBrowserInfo.baseData).g = true;
+        return;
       }
-      ((AIOVideoData)paramRichMediaBrowserInfo.baseData).g = true;
+      if (paramRichMediaBrowserInfo.baseData.getType() == 103) {
+        ((AIOFileVideoData)paramRichMediaBrowserInfo.baseData).i = true;
+      }
     }
-    label32:
-    while (paramRichMediaBrowserInfo.baseData.getType() != 103) {
-      return;
-    }
-    ((AIOFileVideoData)paramRichMediaBrowserInfo.baseData).i = true;
   }
   
   public void updateItem(RichMediaBrowserInfo paramRichMediaBrowserInfo)
@@ -401,7 +406,7 @@ public class AIOBrowserModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.model.AIOBrowserModel
  * JD-Core Version:    0.7.0.1
  */

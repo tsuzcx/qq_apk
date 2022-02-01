@@ -10,9 +10,7 @@ class SubmitHomeWorkFragment$8
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 1) {
       return;
     }
     SubmitHomeWorkFragment.a(this.a);
@@ -20,7 +18,7 @@ class SubmitHomeWorkFragment$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment.8
  * JD-Core Version:    0.7.0.1
  */

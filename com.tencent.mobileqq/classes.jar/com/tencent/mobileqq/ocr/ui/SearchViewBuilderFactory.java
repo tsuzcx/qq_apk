@@ -10,22 +10,22 @@ public class SearchViewBuilderFactory
     if (localObject != null) {
       return localObject;
     }
-    switch (paramInt)
+    if (paramInt != 0)
     {
+      if (paramInt == 1) {
+        localObject = new SearchResultLineItemBuilder();
+      }
     }
-    for (;;)
-    {
-      this.a[paramInt] = localObject;
-      return localObject;
+    else {
       localObject = new SearchSougouResultItemBuilder();
-      continue;
-      localObject = new SearchResultLineItemBuilder();
     }
+    this.a[paramInt] = localObject;
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.ui.SearchViewBuilderFactory
  * JD-Core Version:    0.7.0.1
  */

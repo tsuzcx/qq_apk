@@ -32,7 +32,8 @@ public class StyleChildFaceOffMaskFilter
     super("attribute vec4 position;\nattribute vec2 inputTextureCoordinate;\nvarying vec2 textureCoordinate;\nvarying vec2 canvasCoordinate;\n\nvoid main(){\n    gl_Position = position;\n    textureCoordinate = inputTextureCoordinate;\n    canvasCoordinate = vec2(position.x * 0.5 + 0.5, position.y * 0.5 + 0.5);\n}\n", "precision highp float;\nvarying vec2 textureCoordinate;\nvarying vec2 canvasCoordinate;\nuniform sampler2D inputImageTexture;\nuniform sampler2D inputImageTexture2;\nuniform sampler2D inputImageTexture3;\nvoid main(void) {\n    vec4 dstColor = texture2D(inputImageTexture, canvasCoordinate);\n    vec4 maskColor = texture2D(inputImageTexture2, textureCoordinate);\n    vec4 oriColor = texture2D(inputImageTexture3, canvasCoordinate);\n    gl_FragColor = vec4(maskColor.a, maskColor.a, maskColor.a, 1.0);\n}\n");
     initParams();
     setCoordNum(690);
-    GlUtil.glGenTextures(this.texture.length, this.texture, 0);
+    int[] arrayOfInt = this.texture;
+    GlUtil.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
   }
   
   private void initFaceTexCoords()
@@ -74,7 +75,8 @@ public class StyleChildFaceOffMaskFilter
   public void clearGLSLSelf()
   {
     super.clearGLSLSelf();
-    GlUtil.glDeleteTextures(this.texture.length, this.texture, 0);
+    int[] arrayOfInt = this.texture;
+    GlUtil.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
   }
   
   public void initAttribParams()
@@ -103,23 +105,32 @@ public class StyleChildFaceOffMaskFilter
   
   public void updateParam(List<PointF> paramList, int paramInt)
   {
-    Object localObject = null;
     try
     {
       paramList = VideoMaterial.copyList(paramList);
-      if (paramList != null) {
-        setPositions(FaceOffUtil.initFaceNoseLastPositions(FaceOffUtil.getFullCoordsForNoseAndOutline(paramList), (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
-      }
-      addParam(new UniformParam.TextureParam("inputImageTexture3", paramInt, 33987));
-      return;
     }
     catch (Exception paramList)
     {
-      for (;;)
-      {
-        paramList = localObject;
-      }
+      label8:
+      double d1;
+      double d2;
+      int i;
+      break label8;
     }
+    paramList = null;
+    if (paramList != null)
+    {
+      paramList = FaceOffUtil.getFullCoordsForNoseAndOutline(paramList);
+      d1 = this.width;
+      d2 = this.mFaceDetScale;
+      Double.isNaN(d1);
+      i = (int)(d1 * d2);
+      d1 = this.height;
+      d2 = this.mFaceDetScale;
+      Double.isNaN(d1);
+      setPositions(FaceOffUtil.initFaceNoseLastPositions(paramList, i, (int)(d1 * d2), this.faceVertices));
+    }
+    addParam(new UniformParam.TextureParam("inputImageTexture3", paramInt, 33987));
   }
   
   public void updatePreview(Object paramObject)
@@ -135,7 +146,7 @@ public class StyleChildFaceOffMaskFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.StyleChildFaceOffMaskFilter
  * JD-Core Version:    0.7.0.1
  */

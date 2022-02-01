@@ -3,70 +3,114 @@ package androidx.core.view;
 import android.graphics.Rect;
 import android.os.Build.VERSION;
 import android.view.WindowInsets;
+import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
-import androidx.annotation.VisibleForTesting;
 import androidx.core.graphics.Insets;
 import androidx.core.util.ObjectsCompat;
-import java.util.Objects;
+import androidx.core.util.Preconditions;
 
 public class WindowInsetsCompat
 {
-  private final Object mInsets;
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+  public static final WindowInsetsCompat CONSUMED = new WindowInsetsCompat.Builder().build().consumeDisplayCutout().consumeStableInsets().consumeSystemWindowInsets();
+  private static final String TAG = "WindowInsetsCompat";
+  private final WindowInsetsCompat.Impl mImpl;
   
-  public WindowInsetsCompat(WindowInsetsCompat paramWindowInsetsCompat)
+  @RequiresApi(20)
+  private WindowInsetsCompat(@NonNull WindowInsets paramWindowInsets)
   {
+    if (Build.VERSION.SDK_INT >= 29)
+    {
+      this.mImpl = new WindowInsetsCompat.Impl29(this, paramWindowInsets);
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 28)
+    {
+      this.mImpl = new WindowInsetsCompat.Impl28(this, paramWindowInsets);
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      this.mImpl = new WindowInsetsCompat.Impl21(this, paramWindowInsets);
+      return;
+    }
     if (Build.VERSION.SDK_INT >= 20)
     {
-      if (paramWindowInsetsCompat == null) {}
-      for (paramWindowInsetsCompat = localObject;; paramWindowInsetsCompat = new WindowInsets((WindowInsets)paramWindowInsetsCompat.mInsets))
-      {
-        this.mInsets = paramWindowInsetsCompat;
-        return;
-      }
+      this.mImpl = new WindowInsetsCompat.Impl20(this, paramWindowInsets);
+      return;
     }
-    this.mInsets = null;
+    this.mImpl = new WindowInsetsCompat.Impl(this);
   }
   
-  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
-  @VisibleForTesting
-  WindowInsetsCompat(@Nullable Object paramObject)
+  public WindowInsetsCompat(@Nullable WindowInsetsCompat paramWindowInsetsCompat)
   {
-    this.mInsets = paramObject;
+    if (paramWindowInsetsCompat != null)
+    {
+      paramWindowInsetsCompat = paramWindowInsetsCompat.mImpl;
+      if ((Build.VERSION.SDK_INT >= 29) && ((paramWindowInsetsCompat instanceof WindowInsetsCompat.Impl29)))
+      {
+        this.mImpl = new WindowInsetsCompat.Impl29(this, (WindowInsetsCompat.Impl29)paramWindowInsetsCompat);
+        return;
+      }
+      if ((Build.VERSION.SDK_INT >= 28) && ((paramWindowInsetsCompat instanceof WindowInsetsCompat.Impl28)))
+      {
+        this.mImpl = new WindowInsetsCompat.Impl28(this, (WindowInsetsCompat.Impl28)paramWindowInsetsCompat);
+        return;
+      }
+      if ((Build.VERSION.SDK_INT >= 21) && ((paramWindowInsetsCompat instanceof WindowInsetsCompat.Impl21)))
+      {
+        this.mImpl = new WindowInsetsCompat.Impl21(this, (WindowInsetsCompat.Impl21)paramWindowInsetsCompat);
+        return;
+      }
+      if ((Build.VERSION.SDK_INT >= 20) && ((paramWindowInsetsCompat instanceof WindowInsetsCompat.Impl20)))
+      {
+        this.mImpl = new WindowInsetsCompat.Impl20(this, (WindowInsetsCompat.Impl20)paramWindowInsetsCompat);
+        return;
+      }
+      this.mImpl = new WindowInsetsCompat.Impl(this);
+      return;
+    }
+    this.mImpl = new WindowInsetsCompat.Impl(this);
+  }
+  
+  static Insets insetInsets(Insets paramInsets, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    int i = Math.max(0, paramInsets.left - paramInt1);
+    int j = Math.max(0, paramInsets.top - paramInt2);
+    int k = Math.max(0, paramInsets.right - paramInt3);
+    int m = Math.max(0, paramInsets.bottom - paramInt4);
+    if ((i == paramInt1) && (j == paramInt2) && (k == paramInt3) && (m == paramInt4)) {
+      return paramInsets;
+    }
+    return Insets.of(i, j, k, m);
   }
   
   @NonNull
   @RequiresApi(20)
   public static WindowInsetsCompat toWindowInsetsCompat(@NonNull WindowInsets paramWindowInsets)
   {
-    return new WindowInsetsCompat(Objects.requireNonNull(paramWindowInsets));
+    return new WindowInsetsCompat((WindowInsets)Preconditions.checkNotNull(paramWindowInsets));
   }
   
+  @NonNull
   public WindowInsetsCompat consumeDisplayCutout()
   {
-    WindowInsetsCompat localWindowInsetsCompat = this;
-    if (Build.VERSION.SDK_INT >= 28) {
-      localWindowInsetsCompat = new WindowInsetsCompat(((WindowInsets)this.mInsets).consumeDisplayCutout());
-    }
-    return localWindowInsetsCompat;
+    return this.mImpl.consumeDisplayCutout();
   }
   
+  @NonNull
   public WindowInsetsCompat consumeStableInsets()
   {
-    if (Build.VERSION.SDK_INT >= 21) {
-      return new WindowInsetsCompat(((WindowInsets)this.mInsets).consumeStableInsets());
-    }
-    return null;
+    return this.mImpl.consumeStableInsets();
   }
   
+  @NonNull
   public WindowInsetsCompat consumeSystemWindowInsets()
   {
-    if (Build.VERSION.SDK_INT >= 20) {
-      return new WindowInsetsCompat(((WindowInsets)this.mInsets).consumeSystemWindowInsets());
-    }
-    return null;
+    return this.mImpl.consumeSystemWindowInsets();
   }
   
   public boolean equals(Object paramObject)
@@ -78,201 +122,159 @@ public class WindowInsetsCompat
       return false;
     }
     paramObject = (WindowInsetsCompat)paramObject;
-    return ObjectsCompat.equals(this.mInsets, paramObject.mInsets);
+    return ObjectsCompat.equals(this.mImpl, paramObject.mImpl);
   }
   
   @Nullable
   public DisplayCutoutCompat getDisplayCutout()
   {
-    if (Build.VERSION.SDK_INT >= 28) {
-      return DisplayCutoutCompat.wrap(((WindowInsets)this.mInsets).getDisplayCutout());
-    }
-    return null;
+    return this.mImpl.getDisplayCutout();
   }
   
   @NonNull
   public Insets getMandatorySystemGestureInsets()
   {
-    if (Build.VERSION.SDK_INT >= 29) {
-      return Insets.wrap(((WindowInsets)this.mInsets).getMandatorySystemGestureInsets());
-    }
-    return getSystemWindowInsets();
+    return this.mImpl.getMandatorySystemGestureInsets();
   }
   
   public int getStableInsetBottom()
   {
-    if (Build.VERSION.SDK_INT >= 21) {
-      return ((WindowInsets)this.mInsets).getStableInsetBottom();
-    }
-    return 0;
+    return getStableInsets().bottom;
   }
   
   public int getStableInsetLeft()
   {
-    if (Build.VERSION.SDK_INT >= 21) {
-      return ((WindowInsets)this.mInsets).getStableInsetLeft();
-    }
-    return 0;
+    return getStableInsets().left;
   }
   
   public int getStableInsetRight()
   {
-    if (Build.VERSION.SDK_INT >= 21) {
-      return ((WindowInsets)this.mInsets).getStableInsetRight();
-    }
-    return 0;
+    return getStableInsets().right;
   }
   
   public int getStableInsetTop()
   {
-    if (Build.VERSION.SDK_INT >= 21) {
-      return ((WindowInsets)this.mInsets).getStableInsetTop();
-    }
-    return 0;
+    return getStableInsets().top;
   }
   
   @NonNull
   public Insets getStableInsets()
   {
-    if (Build.VERSION.SDK_INT >= 29) {
-      return Insets.wrap(((WindowInsets)this.mInsets).getStableInsets());
-    }
-    return Insets.of(getStableInsetLeft(), getStableInsetTop(), getStableInsetRight(), getStableInsetBottom());
+    return this.mImpl.getStableInsets();
   }
   
   @NonNull
   public Insets getSystemGestureInsets()
   {
-    if (Build.VERSION.SDK_INT >= 29) {
-      return Insets.wrap(((WindowInsets)this.mInsets).getSystemGestureInsets());
-    }
-    return getSystemWindowInsets();
+    return this.mImpl.getSystemGestureInsets();
   }
   
   public int getSystemWindowInsetBottom()
   {
-    if (Build.VERSION.SDK_INT >= 20) {
-      return ((WindowInsets)this.mInsets).getSystemWindowInsetBottom();
-    }
-    return 0;
+    return getSystemWindowInsets().bottom;
   }
   
   public int getSystemWindowInsetLeft()
   {
-    if (Build.VERSION.SDK_INT >= 20) {
-      return ((WindowInsets)this.mInsets).getSystemWindowInsetLeft();
-    }
-    return 0;
+    return getSystemWindowInsets().left;
   }
   
   public int getSystemWindowInsetRight()
   {
-    if (Build.VERSION.SDK_INT >= 20) {
-      return ((WindowInsets)this.mInsets).getSystemWindowInsetRight();
-    }
-    return 0;
+    return getSystemWindowInsets().right;
   }
   
   public int getSystemWindowInsetTop()
   {
-    if (Build.VERSION.SDK_INT >= 20) {
-      return ((WindowInsets)this.mInsets).getSystemWindowInsetTop();
-    }
-    return 0;
+    return getSystemWindowInsets().top;
   }
   
   @NonNull
   public Insets getSystemWindowInsets()
   {
-    if (Build.VERSION.SDK_INT >= 29) {
-      return Insets.wrap(((WindowInsets)this.mInsets).getSystemWindowInsets());
-    }
-    return Insets.of(getSystemWindowInsetLeft(), getSystemWindowInsetTop(), getSystemWindowInsetRight(), getSystemWindowInsetBottom());
+    return this.mImpl.getSystemWindowInsets();
   }
   
   @NonNull
   public Insets getTappableElementInsets()
   {
-    if (Build.VERSION.SDK_INT >= 29) {
-      return Insets.wrap(((WindowInsets)this.mInsets).getTappableElementInsets());
-    }
-    return getSystemWindowInsets();
+    return this.mImpl.getTappableElementInsets();
   }
   
   public boolean hasInsets()
   {
-    if (Build.VERSION.SDK_INT >= 20) {
-      return ((WindowInsets)this.mInsets).hasInsets();
-    }
-    return false;
+    return (hasSystemWindowInsets()) || (hasStableInsets()) || (getDisplayCutout() != null) || (!getSystemGestureInsets().equals(Insets.NONE)) || (!getMandatorySystemGestureInsets().equals(Insets.NONE)) || (!getTappableElementInsets().equals(Insets.NONE));
   }
   
   public boolean hasStableInsets()
   {
-    if (Build.VERSION.SDK_INT >= 21) {
-      return ((WindowInsets)this.mInsets).hasStableInsets();
-    }
-    return false;
+    return getStableInsets().equals(Insets.NONE) ^ true;
   }
   
   public boolean hasSystemWindowInsets()
   {
-    if (Build.VERSION.SDK_INT >= 20) {
-      return ((WindowInsets)this.mInsets).hasSystemWindowInsets();
-    }
-    return false;
+    return getSystemWindowInsets().equals(Insets.NONE) ^ true;
   }
   
   public int hashCode()
   {
-    if (this.mInsets == null) {
+    WindowInsetsCompat.Impl localImpl = this.mImpl;
+    if (localImpl == null) {
       return 0;
     }
-    return this.mInsets.hashCode();
+    return localImpl.hashCode();
+  }
+  
+  @NonNull
+  public WindowInsetsCompat inset(@IntRange(from=0L) int paramInt1, @IntRange(from=0L) int paramInt2, @IntRange(from=0L) int paramInt3, @IntRange(from=0L) int paramInt4)
+  {
+    return this.mImpl.inset(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  @NonNull
+  public WindowInsetsCompat inset(@NonNull Insets paramInsets)
+  {
+    return inset(paramInsets.left, paramInsets.top, paramInsets.right, paramInsets.bottom);
   }
   
   public boolean isConsumed()
   {
-    if (Build.VERSION.SDK_INT >= 21) {
-      return ((WindowInsets)this.mInsets).isConsumed();
-    }
-    return false;
+    return this.mImpl.isConsumed();
   }
   
   public boolean isRound()
   {
-    if (Build.VERSION.SDK_INT >= 20) {
-      return ((WindowInsets)this.mInsets).isRound();
-    }
-    return false;
+    return this.mImpl.isRound();
   }
   
+  @Deprecated
+  @NonNull
   public WindowInsetsCompat replaceSystemWindowInsets(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (Build.VERSION.SDK_INT >= 20) {
-      return new WindowInsetsCompat(((WindowInsets)this.mInsets).replaceSystemWindowInsets(paramInt1, paramInt2, paramInt3, paramInt4));
-    }
-    return null;
+    return new WindowInsetsCompat.Builder(this).setSystemWindowInsets(Insets.of(paramInt1, paramInt2, paramInt3, paramInt4)).build();
   }
   
-  public WindowInsetsCompat replaceSystemWindowInsets(Rect paramRect)
+  @Deprecated
+  @NonNull
+  public WindowInsetsCompat replaceSystemWindowInsets(@NonNull Rect paramRect)
   {
-    if (Build.VERSION.SDK_INT >= 21) {
-      return new WindowInsetsCompat(((WindowInsets)this.mInsets).replaceSystemWindowInsets(paramRect));
-    }
-    return null;
+    return new WindowInsetsCompat.Builder(this).setSystemWindowInsets(Insets.of(paramRect)).build();
   }
   
   @Nullable
   @RequiresApi(20)
   public WindowInsets toWindowInsets()
   {
-    return (WindowInsets)this.mInsets;
+    WindowInsetsCompat.Impl localImpl = this.mImpl;
+    if ((localImpl instanceof WindowInsetsCompat.Impl20)) {
+      return ((WindowInsetsCompat.Impl20)localImpl).mPlatformInsets;
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.view.WindowInsetsCompat
  * JD-Core Version:    0.7.0.1
  */

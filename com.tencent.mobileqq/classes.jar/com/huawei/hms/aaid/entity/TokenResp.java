@@ -7,13 +7,13 @@ public class TokenResp
   implements IMessageEntity
 {
   @Packed
-  private String belongId;
+  public String belongId;
   @Packed
-  private int retCode = 0;
+  public int retCode = 0;
   @Packed
-  private String token = "";
+  public String subjectId;
   @Packed
-  private String tokenSin;
+  public String token = "";
   
   public String getBelongId()
   {
@@ -25,14 +25,14 @@ public class TokenResp
     return this.retCode;
   }
   
+  public String getSubjectId()
+  {
+    return this.subjectId;
+  }
+  
   public String getToken()
   {
     return this.token;
-  }
-  
-  public String getTokenSin()
-  {
-    return this.tokenSin;
   }
   
   public void setBelongId(String paramString)
@@ -45,19 +45,19 @@ public class TokenResp
     this.retCode = paramInt;
   }
   
+  public void setSubjectId(String paramString)
+  {
+    this.subjectId = paramString;
+  }
+  
   public void setToken(String paramString)
   {
     this.token = paramString;
   }
-  
-  public void setTokenSin(String paramString)
-  {
-    this.tokenSin = paramString;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.aaid.entity.TokenResp
  * JD-Core Version:    0.7.0.1
  */

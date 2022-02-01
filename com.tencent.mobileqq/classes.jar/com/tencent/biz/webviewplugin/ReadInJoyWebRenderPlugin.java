@@ -4,16 +4,18 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import com.tencent.biz.common.offline.HtmlOffline;
 import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsIPCClient;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoyHelper;
+import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
+import com.tencent.mobileqq.kandian.biz.video.api.IVideoFeedsIPCClient;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.webview.swift.IPreCreatePluginChecker;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -24,7 +26,6 @@ import com.tencent.mobileqq.webview.swift.utils.SwiftOfflineDataUtils.OfflineDat
 import com.tencent.mobileqq.widget.WebViewProgressBarController;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
-import cooperation.readinjoy.ReadInJoyHelper;
 import java.lang.ref.WeakReference;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -37,8 +38,8 @@ public class ReadInJoyWebRenderPlugin
   implements IPreCreatePluginChecker
 {
   private long jdField_a_of_type_Long;
-  VideoFeedsIPCClient jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsIPCClient = null;
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  IVideoFeedsIPCClient jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIVideoFeedsIPCClient = null;
   private String jdField_a_of_type_JavaLangString;
   private WeakReference<WebView> jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean = false;
@@ -52,122 +53,91 @@ public class ReadInJoyWebRenderPlugin
   
   private Boolean a(String paramString)
   {
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+    boolean bool = TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString);
+    Boolean localBoolean = Boolean.valueOf(false);
+    if (bool)
     {
-      ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, true, "shouldOfflineIntercept", 0, System.currentTimeMillis() - this.jdField_a_of_type_Long);
-      return Boolean.valueOf(false);
+      ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).reportWebRenderPluginEventCost(true, "shouldOfflineIntercept", 0, System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      return localBoolean;
     }
     SwiftOfflineDataUtils.OfflineData localOfflineData = SwiftOfflineDataUtils.a(this.jdField_b_of_type_JavaLangString);
     if ((localOfflineData != null) && (!TextUtils.isEmpty(localOfflineData.jdField_b_of_type_JavaLangString)))
     {
       this.mRuntime.a().loadDataWithBaseURL(paramString, localOfflineData.jdField_b_of_type_JavaLangString, "text/html", "utf-8", paramString);
       this.jdField_a_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyWebRenderPlugin", 2, "native_render  shouldOfflineIntercept offline data with cache transUrl = " + this.jdField_b_of_type_JavaLangString);
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("native_render  shouldOfflineIntercept offline data with cache transUrl = ");
+        paramString.append(this.jdField_b_of_type_JavaLangString);
+        QLog.d("ReadInJoyWebRenderPlugin", 2, paramString.toString());
       }
-      ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, true, "shouldOfflineIntercept", 1, System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).reportWebRenderPluginEventCost(true, "shouldOfflineIntercept", 1, System.currentTimeMillis() - this.jdField_a_of_type_Long);
       return Boolean.valueOf(true);
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("ReadInJoyWebRenderPlugin", 2, "native_render  shouldOfflineIntercept offline data no cache transUrl = " + this.jdField_b_of_type_JavaLangString);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("native_render  shouldOfflineIntercept offline data no cache transUrl = ");
+      paramString.append(this.jdField_b_of_type_JavaLangString);
+      QLog.e("ReadInJoyWebRenderPlugin", 2, paramString.toString());
     }
-    return Boolean.valueOf(false);
+    return localBoolean;
   }
   
   private String a(String paramString)
   {
-    String str = "";
-    Object localObject = str;
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsIPCClient != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIVideoFeedsIPCClient != null)
     {
-      localObject = new Bundle();
-      ((Bundle)localObject).putString("bundle_params_render_url", paramString);
-      paramString = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsIPCClient.a("CMD_GET_WEB_RENDER_DATA", (Bundle)localObject);
-      localObject = str;
+      Bundle localBundle = new Bundle();
+      localBundle.putString("bundle_params_render_url", paramString);
+      paramString = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIVideoFeedsIPCClient.callServer("CMD_GET_WEB_RENDER_DATA", localBundle);
       if (paramString != null) {
-        localObject = paramString.getString("VALUE_WEB_RENDER_DATA");
+        return paramString.getString("VALUE_WEB_RENDER_DATA");
       }
     }
-    return localObject;
+    return "";
   }
   
   private void a(String paramString1, String paramString2, Map<String, Object> paramMap)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    paramMap = a(paramString1);
-    if (!TextUtils.isEmpty(paramMap))
-    {
-      this.mRuntime.a().loadDataWithBaseURL(paramString1, paramMap, "text/html", "utf-8", paramString1);
-      this.jdField_a_of_type_Boolean = true;
-      a(false);
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyWebRenderPlugin", 2, "native_render load renderHtmlData data cache on eventType : " + paramString2);
-      }
-      paramString1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label145;
-      }
-    }
-    label145:
-    for (int i = 1;; i = 0)
-    {
-      ReadInJoyUtils.a(paramString1, true, paramString2, i, System.currentTimeMillis() - this.jdField_a_of_type_Long);
-      return;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("ReadInJoyWebRenderPlugin", 2, "native_render load renderHtmlData data cache renderResult is empty on eventType:" + paramString2);
-      break;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   private void a(boolean paramBoolean)
   {
-    boolean bool = true;
-    if (this.mRuntime == null) {}
-    do
-    {
-      do
-      {
-        return;
-        localObject = this.mRuntime.a();
-      } while (!(localObject instanceof FragmentActivity));
-      localObject = a((FragmentActivity)localObject);
-    } while ((localObject == null) || (((WebViewFragment)localObject).mUIStyleHandler == null));
-    if (((WebViewFragment)localObject).mUIStyleHandler.a != null)
-    {
-      SwiftBrowserUIStyleHandler localSwiftBrowserUIStyleHandler = ((WebViewFragment)localObject).mUIStyleHandler;
-      if (!paramBoolean) {}
-      for (bool = true;; bool = false)
-      {
-        localSwiftBrowserUIStyleHandler.d = bool;
-        ((WebViewFragment)localObject).mUIStyleHandler.a.a(paramBoolean);
-        return;
-      }
-    }
-    Object localObject = ((WebViewFragment)localObject).mUIStyleHandler;
-    if (!paramBoolean) {}
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      ((SwiftBrowserUIStyleHandler)localObject).d = paramBoolean;
+    if (this.mRuntime == null) {
       return;
+    }
+    Object localObject = this.mRuntime.a();
+    if ((localObject instanceof QBaseActivity))
+    {
+      localObject = a((QBaseActivity)localObject);
+      if ((localObject != null) && (((WebViewFragment)localObject).getUIStyleHandler() != null))
+      {
+        if (((WebViewFragment)localObject).getUIStyleHandler().a != null)
+        {
+          ((WebViewFragment)localObject).getUIStyleHandler().d = (paramBoolean ^ true);
+          ((WebViewFragment)localObject).getUIStyleHandler().a.a(paramBoolean);
+          return;
+        }
+        ((WebViewFragment)localObject).getUIStyleHandler().d = (paramBoolean ^ true);
+      }
     }
   }
   
-  public WebViewFragment a(FragmentActivity paramFragmentActivity)
+  public WebViewFragment a(QBaseActivity paramQBaseActivity)
   {
-    paramFragmentActivity = paramFragmentActivity.getSupportFragmentManager();
-    if (paramFragmentActivity != null)
+    paramQBaseActivity = paramQBaseActivity.getSupportFragmentManager();
+    if (paramQBaseActivity != null)
     {
-      paramFragmentActivity = paramFragmentActivity.getFragments();
-      if ((paramFragmentActivity != null) && (paramFragmentActivity.size() > 0))
+      paramQBaseActivity = paramQBaseActivity.getFragments();
+      if ((paramQBaseActivity != null) && (paramQBaseActivity.size() > 0))
       {
-        paramFragmentActivity = paramFragmentActivity.iterator();
-        while (paramFragmentActivity.hasNext())
+        paramQBaseActivity = paramQBaseActivity.iterator();
+        while (paramQBaseActivity.hasNext())
         {
-          Fragment localFragment = (Fragment)paramFragmentActivity.next();
+          Fragment localFragment = (Fragment)paramQBaseActivity.next();
           if ((localFragment instanceof WebViewFragment)) {
             return (WebViewFragment)localFragment;
           }
@@ -179,39 +149,38 @@ public class ReadInJoyWebRenderPlugin
   
   public boolean a(String paramString)
   {
-    if (!ReadInJoyHelper.r(this.jdField_a_of_type_ComTencentCommonAppAppInterface)) {
+    if (!((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getWebRenderConfig())
+    {
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyWebRenderPlugin", 2, "native_render shouldIntercept  getWebRenderConfig false");
       }
-    }
-    for (;;)
-    {
       return false;
-      if (!TextUtils.isEmpty(paramString)) {
-        try
+    }
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    try
+    {
+      Object localObject1 = new URL(paramString);
+      String str = ((URL)localObject1).getHost();
+      localObject1 = ((URL)localObject1).getPath();
+      Object localObject2 = Uri.parse(paramString);
+      if ((localObject2 != null) && (((Uri)localObject2).isHierarchical()))
+      {
+        paramString = ((Uri)localObject2).getQueryParameter("_prenr");
+        localObject2 = ((Uri)localObject2).getQueryParameter("_pbid");
+        if (("kandian.qq.com".equalsIgnoreCase(str)) && (!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject1).endsWith(".html")))
         {
-          Object localObject1 = new URL(paramString);
-          String str = ((URL)localObject1).getHost();
-          localObject1 = ((URL)localObject1).getPath();
-          Object localObject2 = Uri.parse(paramString);
-          if ((localObject2 != null) && (((Uri)localObject2).isHierarchical()))
-          {
-            paramString = ((Uri)localObject2).getQueryParameter("_prenr");
-            localObject2 = ((Uri)localObject2).getQueryParameter("_pbid");
-            if (("kandian.qq.com".equalsIgnoreCase(str)) && (!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject1).endsWith(".html")))
-            {
-              boolean bool = "1".equals(paramString);
-              if (bool) {
-                return true;
-              }
-            }
+          boolean bool = "1".equals(paramString);
+          if (bool) {
+            return true;
           }
         }
-        catch (MalformedURLException paramString)
-        {
-          paramString.printStackTrace();
-        }
       }
+    }
+    catch (MalformedURLException paramString)
+    {
+      paramString.printStackTrace();
     }
     return false;
   }
@@ -221,29 +190,40 @@ public class ReadInJoyWebRenderPlugin
     return 32L;
   }
   
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  protected boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
-    if (!a(paramString)) {}
-    do
+    if (!a(paramString)) {
+      return false;
+    }
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        return false;
-        if (QLog.isColorLevel()) {
-          QLog.i("ReadInJoyWebRenderPlugin", 2, "native_render handleEvent type: " + paramLong + "; timeStamp: " + System.currentTimeMillis() + "; isRender: " + this.jdField_a_of_type_Boolean + "; url:" + paramString);
-        }
-        if (paramLong == 32L)
-        {
-          a(paramString, "KEY_EVENT_BEFORE_LOAD", paramMap);
-          if ((!ReadInJoyHelper.s(this.jdField_a_of_type_ComTencentCommonAppAppInterface)) && (!this.jdField_a_of_type_Boolean)) {
-            return a(paramString).booleanValue();
-          }
-          return this.jdField_a_of_type_Boolean;
-        }
-      } while ((paramLong != 8589934593L) || (!ReadInJoyHelper.s(this.jdField_a_of_type_ComTencentCommonAppAppInterface)));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("native_render handleEvent type: ");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append("; timeStamp: ");
+      localStringBuilder.append(System.currentTimeMillis());
+      localStringBuilder.append("; isRender: ");
+      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append("; url:");
+      localStringBuilder.append(paramString);
+      QLog.i("ReadInJoyWebRenderPlugin", 2, localStringBuilder.toString());
+    }
+    if (paramLong == 32L)
+    {
+      a(paramString, "KEY_EVENT_BEFORE_LOAD", paramMap);
+      if ((!((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getCanLoadStartWebRenderModeConfig()) && (!this.jdField_a_of_type_Boolean)) {
+        return a(paramString).booleanValue();
+      }
+      return this.jdField_a_of_type_Boolean;
+    }
+    if ((paramLong == 8589934593L) && (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getCanLoadStartWebRenderModeConfig()))
+    {
       a(paramString, "EVENT_LOAD_START", paramMap);
-    } while (this.jdField_a_of_type_Boolean);
-    return a(paramString).booleanValue();
+      if (!this.jdField_a_of_type_Boolean) {
+        return a(paramString).booleanValue();
+      }
+    }
+    return false;
   }
   
   public boolean isNeedPreCreatePlugin(Intent paramIntent, String paramString1, String paramString2)
@@ -251,49 +231,52 @@ public class ReadInJoyWebRenderPlugin
     return paramString1.contains("kandian.qq.com");
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
     if (this.mRuntime != null)
     {
       this.jdField_a_of_type_ComTencentCommonAppAppInterface = this.mRuntime.a();
       this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount();
-      this.jdField_b_of_type_Boolean = ReadInJoyHelper.r(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+      this.jdField_b_of_type_Boolean = ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getWebRenderConfig();
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsIPCClient == null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsIPCClient = VideoFeedsIPCClient.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIVideoFeedsIPCClient == null) {
+      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIVideoFeedsIPCClient = ((IVideoFeedsIPCClient)QRoute.api(IVideoFeedsIPCClient.class));
     }
     if ((this.mRuntime != null) && (this.jdField_b_of_type_Boolean))
     {
       Activity localActivity = this.mRuntime.a();
-      if ((localActivity instanceof FragmentActivity))
+      if ((localActivity instanceof QBaseActivity))
       {
-        Object localObject = a((FragmentActivity)localActivity);
+        Object localObject = a((QBaseActivity)localActivity);
         if (localObject != null)
         {
           localObject = ((WebViewFragment)localObject).getCurrentUrl();
           String str = Uri.parse((String)localObject).getQueryParameter("_pbid");
           if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(str)))
           {
-            this.jdField_b_of_type_JavaLangString = HtmlOffline.a((String)localObject, "_bid=" + str);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("_bid=");
+            localStringBuilder.append(str);
+            this.jdField_b_of_type_JavaLangString = HtmlOffline.a((String)localObject, localStringBuilder.toString());
             ThreadManager.post(new ReadInJoyWebRenderPlugin.1(this), 5, null, true);
           }
         }
       }
       this.jdField_a_of_type_Long = localActivity.getIntent().getLongExtra("bundle_param_click_time", System.currentTimeMillis());
-      ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, true, "REPORT_EVENT_CREATE", 0, System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).reportWebRenderPluginEventCost(true, "REPORT_EVENT_CREATE", 0, System.currentTimeMillis() - this.jdField_a_of_type_Long);
     }
   }
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsIPCClient != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsIPCClient = null;
+    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIVideoFeedsIPCClient != null) {
+      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIVideoFeedsIPCClient = null;
     }
     super.onDestroy();
   }
   
-  public void onWebViewCreated(CustomWebView paramCustomWebView)
+  protected void onWebViewCreated(CustomWebView paramCustomWebView)
   {
     super.onWebViewCreated(paramCustomWebView);
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.mRuntime.a());
@@ -301,7 +284,7 @@ public class ReadInJoyWebRenderPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.ReadInJoyWebRenderPlugin
  * JD-Core Version:    0.7.0.1
  */

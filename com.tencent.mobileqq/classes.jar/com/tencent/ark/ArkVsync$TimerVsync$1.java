@@ -12,8 +12,9 @@ class ArkVsync$TimerVsync$1
     if (this.this$0.mCallbacking) {
       return;
     }
-    this.this$0.mCallbacking = true;
-    this.this$0.run();
+    ArkVsync.TimerVsync localTimerVsync = this.this$0;
+    localTimerVsync.mCallbacking = true;
+    localTimerVsync.run();
     this.this$0.mCallbacking = false;
   }
 }

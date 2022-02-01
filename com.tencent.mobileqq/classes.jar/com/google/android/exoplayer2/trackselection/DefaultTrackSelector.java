@@ -46,14 +46,17 @@ public class DefaultTrackSelector
     {
       paramInt1 = i;
       if (paramInt2 == -1) {
-        paramInt1 = 0;
+        return 0;
       }
-      return paramInt1;
     }
-    if (paramInt2 == -1) {
-      return 1;
+    else
+    {
+      if (paramInt2 == -1) {
+        return 1;
+      }
+      paramInt1 -= paramInt2;
     }
-    return paramInt1 - paramInt2;
+    return paramInt1;
   }
   
   private static int compareInts(int paramInt1, int paramInt2)
@@ -107,81 +110,76 @@ public class DefaultTrackSelector
   
   private static int[] getAdaptiveAudioTracks(TrackGroup paramTrackGroup, int[] paramArrayOfInt, boolean paramBoolean)
   {
-    int k = 0;
     HashSet localHashSet = new HashSet();
-    int j = 0;
+    int m = 0;
     Object localObject1 = null;
     int i = 0;
+    int j = 0;
     Object localObject2;
-    if (j < paramTrackGroup.length)
+    int k;
+    while (i < paramTrackGroup.length)
     {
-      localObject2 = paramTrackGroup.getFormat(j);
-      int m = ((Format)localObject2).channelCount;
+      localObject2 = paramTrackGroup.getFormat(i);
+      k = ((Format)localObject2).channelCount;
       int n = ((Format)localObject2).sampleRate;
-      if (paramBoolean)
-      {
+      if (paramBoolean) {
         localObject2 = null;
-        label58:
-        localObject2 = new DefaultTrackSelector.AudioConfigurationTuple(m, n, (String)localObject2);
-        if (!localHashSet.add(localObject2)) {
-          break label198;
-        }
-        m = getAdaptiveAudioTrackCount(paramTrackGroup, paramArrayOfInt, (DefaultTrackSelector.AudioConfigurationTuple)localObject2);
-        if (m <= i) {
-          break label198;
-        }
-        i = m;
-        localObject1 = localObject2;
+      } else {
+        localObject2 = ((Format)localObject2).sampleMimeType;
       }
-    }
-    label198:
-    for (;;)
-    {
-      j += 1;
-      break;
-      localObject2 = ((Format)localObject2).sampleMimeType;
-      break label58;
-      if (i > 1)
+      DefaultTrackSelector.AudioConfigurationTuple localAudioConfigurationTuple = new DefaultTrackSelector.AudioConfigurationTuple(k, n, (String)localObject2);
+      k = j;
+      localObject2 = localObject1;
+      if (localHashSet.add(localAudioConfigurationTuple))
       {
-        localObject2 = new int[i];
-        j = 0;
-        i = k;
-        while (i < paramTrackGroup.length)
+        n = getAdaptiveAudioTrackCount(paramTrackGroup, paramArrayOfInt, localAudioConfigurationTuple);
+        k = j;
+        localObject2 = localObject1;
+        if (n > j)
         {
-          k = j;
-          if (isSupportedAdaptiveAudioTrack(paramTrackGroup.getFormat(i), paramArrayOfInt[i], localObject1))
-          {
-            localObject2[j] = i;
-            k = j + 1;
-          }
-          i += 1;
-          j = k;
+          k = n;
+          localObject2 = localAudioConfigurationTuple;
         }
-        return localObject2;
       }
-      return NO_TRACKS;
+      i += 1;
+      j = k;
+      localObject1 = localObject2;
     }
+    if (j > 1)
+    {
+      localObject2 = new int[j];
+      j = 0;
+      i = m;
+      while (i < paramTrackGroup.length)
+      {
+        k = j;
+        if (isSupportedAdaptiveAudioTrack(paramTrackGroup.getFormat(i), paramArrayOfInt[i], localObject1))
+        {
+          localObject2[j] = i;
+          k = j + 1;
+        }
+        i += 1;
+        j = k;
+      }
+      return localObject2;
+    }
+    return NO_TRACKS;
   }
   
   private static int getAdaptiveVideoTrackCountForMimeType(TrackGroup paramTrackGroup, int[] paramArrayOfInt, int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4, List<Integer> paramList)
   {
-    int j = 0;
     int i = 0;
-    if (j < paramList.size())
+    int k;
+    for (int j = 0; i < paramList.size(); j = k)
     {
-      int k = ((Integer)paramList.get(j)).intValue();
-      if (!isSupportedAdaptiveVideoTrack(paramTrackGroup.getFormat(k), paramString, paramArrayOfInt[k], paramInt1, paramInt2, paramInt3, paramInt4)) {
-        break label77;
+      int m = ((Integer)paramList.get(i)).intValue();
+      k = j;
+      if (isSupportedAdaptiveVideoTrack(paramTrackGroup.getFormat(m), paramString, paramArrayOfInt[m], paramInt1, paramInt2, paramInt3, paramInt4)) {
+        k = j + 1;
       }
       i += 1;
     }
-    label77:
-    for (;;)
-    {
-      j += 1;
-      break;
-      return i;
-    }
+    return j;
   }
   
   private static int[] getAdaptiveVideoTracksForGroup(TrackGroup paramTrackGroup, int[] paramArrayOfInt, boolean paramBoolean1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean2)
@@ -193,111 +191,116 @@ public class DefaultTrackSelector
     if (localList.size() < 2) {
       return NO_TRACKS;
     }
-    Object localObject = null;
+    Object localObject1;
     if (!paramBoolean1)
     {
       HashSet localHashSet = new HashSet();
+      localObject1 = null;
       paramInt5 = 0;
-      paramInt6 = 0;
-      while (paramInt6 < localList.size())
+      int i;
+      for (paramInt6 = 0; paramInt5 < localList.size(); paramInt6 = i)
       {
-        String str = paramTrackGroup.getFormat(((Integer)localList.get(paramInt6)).intValue()).sampleMimeType;
-        if (!localHashSet.add(str)) {
-          break label186;
+        String str = paramTrackGroup.getFormat(((Integer)localList.get(paramInt5)).intValue()).sampleMimeType;
+        Object localObject2 = localObject1;
+        i = paramInt6;
+        if (localHashSet.add(str))
+        {
+          int j = getAdaptiveVideoTrackCountForMimeType(paramTrackGroup, paramArrayOfInt, paramInt1, str, paramInt2, paramInt3, paramInt4, localList);
+          localObject2 = localObject1;
+          i = paramInt6;
+          if (j > paramInt6)
+          {
+            i = j;
+            localObject2 = str;
+          }
         }
-        int i = getAdaptiveVideoTrackCountForMimeType(paramTrackGroup, paramArrayOfInt, paramInt1, str, paramInt2, paramInt3, paramInt4, localList);
-        if (i <= paramInt5) {
-          break label186;
-        }
-        localObject = str;
-        paramInt5 = i;
-        paramInt6 += 1;
+        paramInt5 += 1;
+        localObject1 = localObject2;
       }
     }
-    for (;;)
+    else
     {
-      filterAdaptiveVideoTrackCountForMimeType(paramTrackGroup, paramArrayOfInt, paramInt1, localObject, paramInt2, paramInt3, paramInt4, localList);
-      if (localList.size() < 2) {
-        return NO_TRACKS;
-      }
-      return Util.toArray(localList);
-      label186:
-      break;
-      localObject = null;
+      localObject1 = null;
     }
+    filterAdaptiveVideoTrackCountForMimeType(paramTrackGroup, paramArrayOfInt, paramInt1, localObject1, paramInt2, paramInt3, paramInt4, localList);
+    if (localList.size() < 2) {
+      return NO_TRACKS;
+    }
+    return Util.toArray(localList);
   }
   
   private static Point getMaxVideoSizeInViewport(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int m = 1;
-    int k = paramInt1;
-    int j = paramInt2;
-    int i;
     if (paramBoolean)
     {
-      if (paramInt3 <= paramInt4) {
-        break label77;
+      j = 1;
+      if (paramInt3 > paramInt4) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      i = 1;
       if (paramInt1 <= paramInt2) {
-        break label83;
+        j = 0;
       }
+      if (i != j) {}
     }
-    for (;;)
+    else
     {
-      k = paramInt1;
-      j = paramInt2;
-      if (i != m)
-      {
-        j = paramInt1;
-        k = paramInt2;
-      }
-      if (paramInt3 * j < paramInt4 * k) {
-        break label89;
-      }
-      return new Point(k, Util.ceilDivide(k * paramInt4, paramInt3));
-      label77:
-      i = 0;
-      break;
-      label83:
-      m = 0;
+      i = paramInt2;
+      paramInt2 = paramInt1;
+      paramInt1 = i;
     }
-    label89:
-    return new Point(Util.ceilDivide(j * paramInt3, paramInt4), j);
+    int i = paramInt3 * paramInt1;
+    int j = paramInt4 * paramInt2;
+    if (i >= j) {
+      return new Point(paramInt2, Util.ceilDivide(j, paramInt3));
+    }
+    return new Point(Util.ceilDivide(i, paramInt4), paramInt1);
   }
   
   private static List<Integer> getViewportFilteredTrackIndices(TrackGroup paramTrackGroup, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    int j = 0;
     ArrayList localArrayList = new ArrayList(paramTrackGroup.length);
+    int j = 0;
     int i = 0;
     while (i < paramTrackGroup.length)
     {
       localArrayList.add(Integer.valueOf(i));
       i += 1;
     }
-    if ((paramInt1 == 2147483647) || (paramInt2 == 2147483647)) {
-      return localArrayList;
-    }
-    i = 2147483647;
-    if (j < paramTrackGroup.length)
+    if (paramInt1 != 2147483647)
     {
-      Format localFormat = paramTrackGroup.getFormat(j);
-      if ((localFormat.width <= 0) || (localFormat.height <= 0)) {
-        break label254;
+      if (paramInt2 == 2147483647) {
+        return localArrayList;
       }
-      Point localPoint = getMaxVideoSizeInViewport(paramBoolean, paramInt1, paramInt2, localFormat.width, localFormat.height);
-      int k = localFormat.width * localFormat.height;
-      if ((localFormat.width < (int)(localPoint.x * 0.98F)) || (localFormat.height < (int)(localPoint.y * 0.98F)) || (k >= i)) {
-        break label254;
+      int k;
+      for (i = 2147483647; j < paramTrackGroup.length; i = k)
+      {
+        Format localFormat = paramTrackGroup.getFormat(j);
+        k = i;
+        if (localFormat.width > 0)
+        {
+          k = i;
+          if (localFormat.height > 0)
+          {
+            Point localPoint = getMaxVideoSizeInViewport(paramBoolean, paramInt1, paramInt2, localFormat.width, localFormat.height);
+            int m = localFormat.width * localFormat.height;
+            k = i;
+            if (localFormat.width >= (int)(localPoint.x * 0.98F))
+            {
+              k = i;
+              if (localFormat.height >= (int)(localPoint.y * 0.98F))
+              {
+                k = i;
+                if (m < i) {
+                  k = m;
+                }
+              }
+            }
+          }
+        }
+        j += 1;
       }
-      i = k;
-    }
-    label254:
-    for (;;)
-    {
-      j += 1;
-      break;
       if (i != 2147483647)
       {
         paramInt1 = localArrayList.size() - 1;
@@ -310,8 +313,8 @@ public class DefaultTrackSelector
           paramInt1 -= 1;
         }
       }
-      return localArrayList;
     }
+    return localArrayList;
   }
   
   protected static boolean isSupported(int paramInt, boolean paramBoolean)
@@ -386,172 +389,157 @@ public class DefaultTrackSelector
   private static TrackSelection selectAdaptiveVideoTrack(RendererCapabilities paramRendererCapabilities, TrackGroupArray paramTrackGroupArray, int[][] paramArrayOfInt, DefaultTrackSelector.Parameters paramParameters, TrackSelection.Factory paramFactory)
   {
     int i;
-    boolean bool;
-    label33:
-    int j;
-    if (paramParameters.allowNonSeamlessAdaptiveness)
-    {
+    if (paramParameters.allowNonSeamlessAdaptiveness) {
       i = 24;
-      if ((!paramParameters.allowMixedMimeAdaptiveness) || ((paramRendererCapabilities.supportsMixedMimeTypeAdaptation() & i) == 0)) {
-        break label114;
-      }
-      bool = true;
-      j = 0;
+    } else {
+      i = 16;
     }
-    for (;;)
+    boolean bool;
+    if ((paramParameters.allowMixedMimeAdaptiveness) && ((paramRendererCapabilities.supportsMixedMimeTypeAdaptation() & i) != 0)) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    int j = 0;
+    while (j < paramTrackGroupArray.length)
     {
-      if (j >= paramTrackGroupArray.length) {
-        break label129;
-      }
       paramRendererCapabilities = paramTrackGroupArray.get(j);
       int[] arrayOfInt = getAdaptiveVideoTracksForGroup(paramRendererCapabilities, paramArrayOfInt[j], bool, i, paramParameters.maxVideoWidth, paramParameters.maxVideoHeight, paramParameters.maxVideoBitrate, paramParameters.viewportWidth, paramParameters.viewportHeight, paramParameters.viewportOrientationMayChange);
-      if (arrayOfInt.length > 0)
-      {
+      if (arrayOfInt.length > 0) {
         return paramFactory.createTrackSelection(paramRendererCapabilities, arrayOfInt);
-        i = 16;
-        break;
-        label114:
-        bool = false;
-        break label33;
       }
       j += 1;
     }
-    label129:
     return null;
   }
   
   private static TrackSelection selectFixedVideoTrack(TrackGroupArray paramTrackGroupArray, int[][] paramArrayOfInt, DefaultTrackSelector.Parameters paramParameters)
   {
-    Object localObject = null;
+    int i3 = 0;
+    Object localObject1 = null;
+    int i = 0;
     int j = 0;
-    int n = 0;
-    int i3 = -1;
-    int i2 = -1;
-    int i1 = 0;
-    TrackGroup localTrackGroup;
-    int[] arrayOfInt;
-    int k;
-    label63:
-    Format localFormat;
-    int i4;
-    label178:
-    int i;
-    if (n < paramTrackGroupArray.length)
+    int k = -1;
+    int i1;
+    for (int m = -1;; m = i1)
     {
-      localTrackGroup = paramTrackGroupArray.get(n);
+      Object localObject2 = paramTrackGroupArray;
+      if (i3 >= ((TrackGroupArray)localObject2).length) {
+        break;
+      }
+      TrackGroup localTrackGroup = ((TrackGroupArray)localObject2).get(i3);
       List localList = getViewportFilteredTrackIndices(localTrackGroup, paramParameters.viewportWidth, paramParameters.viewportHeight, paramParameters.viewportOrientationMayChange);
-      arrayOfInt = paramArrayOfInt[n];
-      k = 0;
-      if (k < localTrackGroup.length)
+      int[] arrayOfInt = paramArrayOfInt[i3];
+      int n = j;
+      i1 = i;
+      int i2 = 0;
+      i = m;
+      j = k;
+      m = n;
+      n = i1;
+      k = i2;
+      while (k < localTrackGroup.length)
       {
-        if (!isSupported(arrayOfInt[k], paramParameters.exceedRendererCapabilitiesIfNecessary)) {
-          break label428;
-        }
-        localFormat = localTrackGroup.getFormat(k);
-        if ((localList.contains(Integer.valueOf(k))) && ((localFormat.width == -1) || (localFormat.width <= paramParameters.maxVideoWidth)) && ((localFormat.height == -1) || (localFormat.height <= paramParameters.maxVideoHeight)) && ((localFormat.bitrate == -1) || (localFormat.bitrate <= paramParameters.maxVideoBitrate)))
+        localObject2 = localObject1;
+        int i7 = n;
+        int i6 = m;
+        int i5 = j;
+        int i4 = i;
+        if (isSupported(arrayOfInt[k], paramParameters.exceedRendererCapabilitiesIfNecessary))
         {
-          i4 = 1;
-          if ((i4 != 0) || (paramParameters.exceedVideoConstraintsIfNecessary)) {
-            break label211;
+          Format localFormat = localTrackGroup.getFormat(k);
+          if ((localList.contains(Integer.valueOf(k))) && ((localFormat.width == -1) || (localFormat.width <= paramParameters.maxVideoWidth)) && ((localFormat.height == -1) || (localFormat.height <= paramParameters.maxVideoHeight)) && ((localFormat.bitrate == -1) || (localFormat.bitrate <= paramParameters.maxVideoBitrate))) {
+            i4 = 1;
+          } else {
+            i4 = 0;
           }
-          i = j;
-        }
-      }
-    }
-    for (;;)
-    {
-      label193:
-      k += 1;
-      j = i;
-      break label63;
-      i4 = 0;
-      break label178;
-      label211:
-      label218:
-      boolean bool;
-      int m;
-      if (i4 != 0)
-      {
-        i = 2;
-        bool = isSupported(arrayOfInt[k], false);
-        m = i;
-        if (bool) {
-          m = i + 1000;
-        }
-        if (m <= i1) {
-          break label319;
-        }
-        i = 1;
-        label253:
-        if (m == i1)
-        {
-          if (!paramParameters.forceLowestBitrate) {
-            break label329;
-          }
-          if (compareFormatValues(localFormat.bitrate, i2) >= 0) {
-            break label324;
-          }
-          i = 1;
-        }
-      }
-      for (;;)
-      {
-        if (i != 0)
-        {
-          i2 = localFormat.bitrate;
-          i3 = localFormat.getPixelCount();
-          localObject = localTrackGroup;
-          i = k;
-          i1 = m;
-          break label193;
-          i = 1;
-          break label218;
-          label319:
-          i = 0;
-          break label253;
-          label324:
-          i = 0;
-          continue;
-          label329:
-          i = localFormat.getPixelCount();
-          if (i != i3) {
-            i = compareFormatValues(i, i3);
-          }
-          for (;;)
+          if ((i4 == 0) && (!paramParameters.exceedVideoConstraintsIfNecessary))
           {
-            if ((bool) && (i4 != 0))
-            {
-              if (i > 0)
-              {
-                i = 1;
-                break;
-                i = compareFormatValues(localFormat.bitrate, i2);
-                continue;
-              }
-              i = 0;
-              break;
-            }
-          }
-          if (i < 0)
-          {
-            i = 1;
+            localObject2 = localObject1;
+            i7 = n;
+            i6 = m;
+            i5 = j;
+            i4 = i;
           }
           else
           {
-            i = 0;
-            continue;
-            n += 1;
-            break;
-            if (localObject == null) {
-              return null;
+            if (i4 != 0) {
+              i2 = 2;
+            } else {
+              i2 = 1;
             }
-            return new FixedTrackSelection(localObject, j);
+            boolean bool = isSupported(arrayOfInt[k], false);
+            i1 = i2;
+            if (bool) {
+              i1 = i2 + 1000;
+            }
+            if (i1 > m) {
+              i2 = 1;
+            } else {
+              i2 = 0;
+            }
+            if (i1 == m)
+            {
+              if (paramParameters.forceLowestBitrate) {
+                if (compareFormatValues(localFormat.bitrate, i) >= 0) {}
+              }
+              for (;;)
+              {
+                i2 = 1;
+                break;
+                do
+                {
+                  do
+                  {
+                    i2 = 0;
+                    break label426;
+                    i2 = localFormat.getPixelCount();
+                    if (i2 != j) {
+                      i2 = compareFormatValues(i2, j);
+                    } else {
+                      i2 = compareFormatValues(localFormat.bitrate, i);
+                    }
+                    if ((!bool) || (i4 == 0)) {
+                      break;
+                    }
+                  } while (i2 <= 0);
+                  break;
+                } while (i2 >= 0);
+              }
+            }
+            label426:
+            localObject2 = localObject1;
+            i7 = n;
+            i6 = m;
+            i5 = j;
+            i4 = i;
+            if (i2 != 0)
+            {
+              i4 = localFormat.bitrate;
+              i5 = localFormat.getPixelCount();
+              i7 = k;
+              localObject2 = localTrackGroup;
+              i6 = i1;
+            }
           }
         }
+        k += 1;
+        localObject1 = localObject2;
+        n = i7;
+        m = i6;
+        j = i5;
+        i = i4;
       }
-      label428:
-      i = j;
+      i3 += 1;
+      k = j;
+      i1 = i;
+      i = n;
+      j = m;
     }
+    if (localObject1 == null) {
+      return null;
+    }
+    return new FixedTrackSelection(localObject1, i);
   }
   
   public DefaultTrackSelector.Parameters getParameters()
@@ -561,361 +549,248 @@ public class DefaultTrackSelector
   
   protected TrackSelection selectAudioTrack(TrackGroupArray paramTrackGroupArray, int[][] paramArrayOfInt, DefaultTrackSelector.Parameters paramParameters, TrackSelection.Factory paramFactory)
   {
-    int k = -1;
-    int m = -1;
-    Object localObject = null;
+    Object localObject1 = null;
     int i = 0;
-    int j;
-    if (i < paramTrackGroupArray.length)
+    int j = -1;
+    int k = -1;
+    while (i < paramTrackGroupArray.length)
     {
       TrackGroup localTrackGroup = paramTrackGroupArray.get(i);
       int[] arrayOfInt = paramArrayOfInt[i];
-      j = 0;
-      label38:
-      if (j < localTrackGroup.length)
+      int m = j;
+      int n = 0;
+      j = k;
+      k = n;
+      while (k < localTrackGroup.length)
       {
-        if (!isSupported(arrayOfInt[j], paramParameters.exceedRendererCapabilitiesIfNecessary)) {
-          break label212;
+        int i1 = m;
+        Object localObject2 = localObject1;
+        n = j;
+        if (isSupported(arrayOfInt[k], paramParameters.exceedRendererCapabilitiesIfNecessary))
+        {
+          DefaultTrackSelector.AudioTrackScore localAudioTrackScore = new DefaultTrackSelector.AudioTrackScore(localTrackGroup.getFormat(k), paramParameters, arrayOfInt[k]);
+          if (localObject1 != null)
+          {
+            i1 = m;
+            localObject2 = localObject1;
+            n = j;
+            if (localAudioTrackScore.compareTo((DefaultTrackSelector.AudioTrackScore)localObject1) <= 0) {}
+          }
+          else
+          {
+            i1 = i;
+            n = k;
+            localObject2 = localAudioTrackScore;
+          }
         }
-        DefaultTrackSelector.AudioTrackScore localAudioTrackScore = new DefaultTrackSelector.AudioTrackScore(localTrackGroup.getFormat(j), paramParameters, arrayOfInt[j]);
-        if ((localObject != null) && (localAudioTrackScore.compareTo((DefaultTrackSelector.AudioTrackScore)localObject) <= 0)) {
-          break label212;
-        }
-        localObject = localAudioTrackScore;
-        m = j;
-        k = i;
+        k += 1;
+        m = i1;
+        localObject1 = localObject2;
+        j = n;
       }
-    }
-    for (;;)
-    {
-      int n = j + 1;
-      j = m;
-      m = k;
-      k = j;
-      j = n;
-      break label38;
       i += 1;
-      break;
-      if (m == -1) {
-        return null;
-      }
-      paramTrackGroupArray = paramTrackGroupArray.get(m);
-      if ((!paramParameters.forceLowestBitrate) && (paramFactory != null))
-      {
-        paramArrayOfInt = getAdaptiveAudioTracks(paramTrackGroupArray, paramArrayOfInt[m], paramParameters.allowMixedMimeAdaptiveness);
-        if (paramArrayOfInt.length > 0) {
-          return paramFactory.createTrackSelection(paramTrackGroupArray, paramArrayOfInt);
-        }
-      }
-      return new FixedTrackSelection(paramTrackGroupArray, k);
-      label212:
-      n = k;
-      k = m;
-      m = n;
+      k = j;
+      j = m;
     }
+    if (j == -1) {
+      return null;
+    }
+    paramTrackGroupArray = paramTrackGroupArray.get(j);
+    if ((!paramParameters.forceLowestBitrate) && (paramFactory != null))
+    {
+      paramArrayOfInt = getAdaptiveAudioTracks(paramTrackGroupArray, paramArrayOfInt[j], paramParameters.allowMixedMimeAdaptiveness);
+      if (paramArrayOfInt.length > 0) {
+        return paramFactory.createTrackSelection(paramTrackGroupArray, paramArrayOfInt);
+      }
+    }
+    return new FixedTrackSelection(paramTrackGroupArray, k);
   }
   
   protected TrackSelection selectOtherTrack(int paramInt, TrackGroupArray paramTrackGroupArray, int[][] paramArrayOfInt, DefaultTrackSelector.Parameters paramParameters)
   {
-    Object localObject = null;
-    int i = 0;
-    int j = 0;
+    Object localObject1 = null;
     int n = 0;
-    label37:
-    int k;
-    label78:
-    int m;
-    if (n < paramTrackGroupArray.length)
+    paramInt = 0;
+    int i = 0;
+    while (n < paramTrackGroupArray.length)
     {
       TrackGroup localTrackGroup = paramTrackGroupArray.get(n);
       int[] arrayOfInt = paramArrayOfInt[n];
-      paramInt = 0;
-      if (paramInt < localTrackGroup.length)
+      int j = paramInt;
+      int k = 0;
+      paramInt = i;
+      i = k;
+      while (i < localTrackGroup.length)
       {
-        if (!isSupported(arrayOfInt[paramInt], paramParameters.exceedRendererCapabilitiesIfNecessary)) {
-          break label174;
-        }
-        if ((localTrackGroup.getFormat(paramInt).selectionFlags & 0x1) != 0)
+        Object localObject2 = localObject1;
+        int i1 = j;
+        int m = paramInt;
+        if (isSupported(arrayOfInt[i], paramParameters.exceedRendererCapabilitiesIfNecessary))
         {
-          k = 1;
-          if (k == 0) {
-            break label140;
+          k = localTrackGroup.getFormat(i).selectionFlags;
+          m = 1;
+          if ((k & 0x1) != 0) {
+            k = 1;
+          } else {
+            k = 0;
           }
-          m = 2;
-          label86:
+          if (k != 0) {
+            m = 2;
+          }
           k = m;
-          if (isSupported(arrayOfInt[paramInt], false)) {
+          if (isSupported(arrayOfInt[i], false)) {
             k = m + 1000;
           }
-          if (k <= j) {
-            break label174;
+          localObject2 = localObject1;
+          i1 = j;
+          m = paramInt;
+          if (k > paramInt)
+          {
+            i1 = i;
+            localObject2 = localTrackGroup;
+            m = k;
           }
-          i = paramInt;
-          localObject = localTrackGroup;
         }
+        i += 1;
+        localObject1 = localObject2;
+        j = i1;
+        paramInt = m;
       }
-    }
-    for (;;)
-    {
-      paramInt += 1;
-      j = k;
-      break label37;
-      k = 0;
-      break label78;
-      label140:
-      m = 1;
-      break label86;
       n += 1;
-      break;
-      if (localObject == null) {
-        return null;
-      }
-      return new FixedTrackSelection(localObject, i);
-      label174:
-      k = j;
+      i = paramInt;
+      paramInt = j;
     }
+    if (localObject1 == null) {
+      return null;
+    }
+    return new FixedTrackSelection(localObject1, paramInt);
   }
   
   protected TrackSelection selectTextTrack(TrackGroupArray paramTrackGroupArray, int[][] paramArrayOfInt, DefaultTrackSelector.Parameters paramParameters)
   {
-    Object localObject = null;
-    int k = 0;
-    int n = 0;
-    int i1 = 0;
-    int j;
-    label38:
-    Format localFormat;
-    int m;
-    int i;
-    if (n < paramTrackGroupArray.length)
-    {
-      TrackGroup localTrackGroup = paramTrackGroupArray.get(n);
-      int[] arrayOfInt = paramArrayOfInt[n];
-      j = 0;
-      if (j < localTrackGroup.length)
-      {
-        if (!isSupported(arrayOfInt[j], paramParameters.exceedRendererCapabilitiesIfNecessary)) {
-          break label321;
-        }
-        localFormat = localTrackGroup.getFormat(j);
-        m = localFormat.selectionFlags & (paramParameters.disabledTextTrackSelectionFlags ^ 0xFFFFFFFF);
-        if ((m & 0x1) != 0)
-        {
-          i = 1;
-          label96:
-          if ((m & 0x2) == 0) {
-            break label223;
-          }
-          m = 1;
-          label106:
-          boolean bool = formatHasLanguage(localFormat, paramParameters.preferredTextLanguage);
-          if ((!bool) && ((!paramParameters.selectUndeterminedTextLanguage) || (!formatHasNoLanguage(localFormat)))) {
-            break label253;
-          }
-          if (i == 0) {
-            break label229;
-          }
-          i = 8;
-          label146:
-          if (!bool) {
-            break label247;
-          }
-          m = 1;
-          label154:
-          i = m + i;
-          label161:
-          m = i;
-          if (isSupported(arrayOfInt[j], false)) {
-            m = i + 1000;
-          }
-          if (m <= i1) {
-            break label321;
-          }
-          localObject = localTrackGroup;
-          i = j;
-          i1 = m;
-        }
-      }
-    }
-    for (;;)
-    {
-      j += 1;
-      k = i;
-      break label38;
-      i = 0;
-      break label96;
-      label223:
-      m = 0;
-      break label106;
-      label229:
-      if (m == 0)
-      {
-        i = 6;
-        break label146;
-      }
-      i = 4;
-      break label146;
-      label247:
-      m = 0;
-      break label154;
-      label253:
-      if (i != 0)
-      {
-        i = 3;
-        break label161;
-      }
-      if (m != 0)
-      {
-        if (formatHasLanguage(localFormat, paramParameters.preferredAudioLanguage))
-        {
-          i = 2;
-          break label161;
-        }
-        i = 1;
-        break label161;
-        n += 1;
-        break;
-        if (localObject == null) {
-          return null;
-        }
-        return new FixedTrackSelection(localObject, k);
-      }
-      label321:
-      i = k;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   protected TrackSelection[] selectTracks(RendererCapabilities[] paramArrayOfRendererCapabilities, TrackGroupArray[] paramArrayOfTrackGroupArray, int[][][] paramArrayOfInt)
   {
-    int i1 = paramArrayOfRendererCapabilities.length;
-    TrackSelection[] arrayOfTrackSelection = new TrackSelection[i1];
+    int i2 = paramArrayOfRendererCapabilities.length;
+    TrackSelection[] arrayOfTrackSelection = new TrackSelection[i2];
     DefaultTrackSelector.Parameters localParameters = (DefaultTrackSelector.Parameters)this.paramsReference.get();
-    int k = 0;
-    int m = 0;
     int j = 0;
+    int m = 0;
     int i;
-    if (m < i1)
+    for (int k = 0;; k = n)
     {
-      if (2 != paramArrayOfRendererCapabilities[m].getTrackType()) {
-        break label422;
+      i1 = 1;
+      if (m >= i2) {
+        break;
       }
       i = j;
-      if (j == 0)
+      n = k;
+      if (2 == paramArrayOfRendererCapabilities[m].getTrackType())
       {
-        arrayOfTrackSelection[m] = selectVideoTrack(paramArrayOfRendererCapabilities[m], paramArrayOfTrackGroupArray[m], paramArrayOfInt[m], localParameters, this.adaptiveTrackSelectionFactory);
-        if (arrayOfTrackSelection[m] != null) {
-          i = 1;
+        i = j;
+        if (j == 0)
+        {
+          arrayOfTrackSelection[m] = selectVideoTrack(paramArrayOfRendererCapabilities[m], paramArrayOfTrackGroupArray[m], paramArrayOfInt[m], localParameters, this.adaptiveTrackSelectionFactory);
+          if (arrayOfTrackSelection[m] != null) {
+            i = 1;
+          } else {
+            i = 0;
+          }
+        }
+        if (paramArrayOfTrackGroupArray[m].length > 0) {
+          j = i1;
+        } else {
+          j = 0;
+        }
+        n = k | j;
+      }
+      m += 1;
+      j = i;
+    }
+    m = 0;
+    int i1 = 0;
+    for (int n = 0; m < i2; n = j)
+    {
+      int i3 = paramArrayOfRendererCapabilities[m].getTrackType();
+      if (i3 != 1)
+      {
+        i = i1;
+        j = n;
+        if (i3 != 2) {
+          if (i3 != 3)
+          {
+            arrayOfTrackSelection[m] = selectOtherTrack(paramArrayOfRendererCapabilities[m].getTrackType(), paramArrayOfTrackGroupArray[m], paramArrayOfInt[m], localParameters);
+            i = i1;
+            j = n;
+          }
+          else
+          {
+            i = i1;
+            j = n;
+            if (n == 0)
+            {
+              arrayOfTrackSelection[m] = selectTextTrack(paramArrayOfTrackGroupArray[m], paramArrayOfInt[m], localParameters);
+              if (arrayOfTrackSelection[m] != null)
+              {
+                j = 1;
+                i = i1;
+              }
+              else
+              {
+                j = 0;
+                i = i1;
+              }
+            }
+          }
         }
       }
       else
       {
-        label99:
-        if (paramArrayOfTrackGroupArray[m].length <= 0) {
-          break label142;
-        }
-        j = 1;
-        label112:
-        j |= k;
-      }
-    }
-    for (;;)
-    {
-      m += 1;
-      k = j;
-      j = i;
-      break;
-      i = 0;
-      break label99;
-      label142:
-      j = 0;
-      break label112;
-      i = 0;
-      j = 0;
-      m = 0;
-      if (m < i1)
-      {
-        switch (paramArrayOfRendererCapabilities[m].getTrackType())
+        i = i1;
+        j = n;
+        if (i1 == 0)
         {
-        default: 
-          arrayOfTrackSelection[m] = selectOtherTrack(paramArrayOfRendererCapabilities[m].getTrackType(), paramArrayOfTrackGroupArray[m], paramArrayOfInt[m], localParameters);
-        }
-        int n;
-        label305:
-        label357:
-        do
-        {
-          do
-          {
-            n = j;
-            j = i;
-            i = n;
-            for (;;)
-            {
-              n = m + 1;
-              m = j;
-              j = i;
-              i = m;
-              m = n;
-              break;
-              n = i;
-              i = j;
-              j = n;
-            }
-          } while (i != 0);
           TrackGroupArray localTrackGroupArray = paramArrayOfTrackGroupArray[m];
           int[][] arrayOfInt = paramArrayOfInt[m];
           TrackSelection.Factory localFactory;
-          if (k != 0)
-          {
+          if (k != 0) {
             localFactory = null;
-            arrayOfTrackSelection[m] = selectAudioTrack(localTrackGroupArray, arrayOfInt, localParameters, localFactory);
-            if (arrayOfTrackSelection[m] == null) {
-              break label357;
-            }
-          }
-          for (i = 1;; i = 0)
-          {
-            n = i;
-            i = j;
-            j = n;
-            break;
+          } else {
             localFactory = this.adaptiveTrackSelectionFactory;
-            break label305;
           }
-        } while (j != 0);
-        arrayOfTrackSelection[m] = selectTextTrack(paramArrayOfTrackGroupArray[m], paramArrayOfInt[m], localParameters);
-        if (arrayOfTrackSelection[m] != null) {}
-        for (j = 1;; j = 0)
-        {
-          n = i;
-          i = j;
-          j = n;
-          break;
+          arrayOfTrackSelection[m] = selectAudioTrack(localTrackGroupArray, arrayOfInt, localParameters, localFactory);
+          if (arrayOfTrackSelection[m] != null)
+          {
+            i = 1;
+            j = n;
+          }
+          else
+          {
+            i = 0;
+            j = n;
+          }
         }
       }
-      return arrayOfTrackSelection;
-      label422:
-      i = j;
-      j = k;
+      m += 1;
+      i1 = i;
     }
+    return arrayOfTrackSelection;
   }
   
   protected TrackSelection selectVideoTrack(RendererCapabilities paramRendererCapabilities, TrackGroupArray paramTrackGroupArray, int[][] paramArrayOfInt, DefaultTrackSelector.Parameters paramParameters, TrackSelection.Factory paramFactory)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (!paramParameters.forceLowestBitrate)
-    {
-      localObject1 = localObject2;
-      if (paramFactory != null) {
-        localObject1 = selectAdaptiveVideoTrack(paramRendererCapabilities, paramTrackGroupArray, paramArrayOfInt, paramParameters, paramFactory);
-      }
+    if ((!paramParameters.forceLowestBitrate) && (paramFactory != null)) {
+      paramRendererCapabilities = selectAdaptiveVideoTrack(paramRendererCapabilities, paramTrackGroupArray, paramArrayOfInt, paramParameters, paramFactory);
+    } else {
+      paramRendererCapabilities = null;
     }
-    paramRendererCapabilities = (RendererCapabilities)localObject1;
-    if (localObject1 == null) {
-      paramRendererCapabilities = selectFixedVideoTrack(paramTrackGroupArray, paramArrayOfInt, paramParameters);
+    paramFactory = paramRendererCapabilities;
+    if (paramRendererCapabilities == null) {
+      paramFactory = selectFixedVideoTrack(paramTrackGroupArray, paramArrayOfInt, paramParameters);
     }
-    return paramRendererCapabilities;
+    return paramFactory;
   }
   
   public void setParameters(DefaultTrackSelector.Parameters paramParameters)
@@ -928,7 +803,7 @@ public class DefaultTrackSelector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.trackselection.DefaultTrackSelector
  * JD-Core Version:    0.7.0.1
  */

@@ -14,9 +14,7 @@ class ReadInJoyBlurImageView$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1) {
       return;
     }
     ReadInJoyBlurImageView.a(this.a);
@@ -24,7 +22,7 @@ class ReadInJoyBlurImageView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyBlurImageView.1
  * JD-Core Version:    0.7.0.1
  */

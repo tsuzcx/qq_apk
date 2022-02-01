@@ -16,14 +16,19 @@ class MediaPlayHelper$2$1
   
   public void onInstalledFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(MediaPlayHelper.a(this.a.this$0), 2, "onInstalledFailed:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = MediaPlayHelper.a(this.a.this$0);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onInstalledFailed:");
+      localStringBuilder.append(paramInt);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_entrance", "MediaPlayHelper");
-    localHashMap.put("param_erroCode", String.valueOf(paramInt));
-    localHashMap.put("param_result", "0");
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actInstallTVK", false, 0L, 0L, localHashMap, "");
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("param_entrance", "MediaPlayHelper");
+    ((HashMap)localObject).put("param_erroCode", String.valueOf(paramInt));
+    ((HashMap)localObject).put("param_result", "0");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actInstallTVK", false, 0L, 0L, (HashMap)localObject, "");
   }
   
   public void onInstalledSuccessed()
@@ -43,7 +48,7 @@ class MediaPlayHelper$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.MediaPlayHelper.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class cell_template
   extends JceStruct
 {
-  static int cache_type = 0;
+  static int cache_type;
   public int feeds_action_type = 0;
   public String feeds_jmp_url = "";
   public String id = "";
@@ -36,14 +36,15 @@ public final class cell_template
     paramJceOutputStream.write(this.id, 0);
     paramJceOutputStream.write(this.type, 1);
     paramJceOutputStream.write(this.feeds_action_type, 2);
-    if (this.feeds_jmp_url != null) {
-      paramJceOutputStream.write(this.feeds_jmp_url, 3);
+    String str = this.feeds_jmp_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_template
  * JD-Core Version:    0.7.0.1
  */

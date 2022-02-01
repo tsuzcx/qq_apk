@@ -10,10 +10,11 @@ import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.webkit.WebSettings;
+import com.tencent.qqlive.module.videoreport.inject.webview.dtwebview.DtWebView;
 import java.lang.reflect.Method;
 
 class WebView$b
-  extends android.webkit.WebView
+  extends DtWebView
 {
   public WebView$b(WebView paramWebView, Context paramContext)
   {
@@ -90,7 +91,7 @@ class WebView$b
     super.computeScroll();
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
     try
     {
@@ -100,8 +101,8 @@ class WebView$b
         paramCanvas.save();
         paramCanvas.drawPaint(WebView.g());
         paramCanvas.restore();
+        return;
       }
-      return;
     }
     catch (Throwable paramCanvas)
     {
@@ -150,16 +151,17 @@ class WebView$b
   @TargetApi(9)
   public void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.a.mWebViewCallbackClient != null) {
+    if (this.a.mWebViewCallbackClient != null)
+    {
       this.a.mWebViewCallbackClient.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2, this);
-    }
-    while (Build.VERSION.SDK_INT < 9) {
       return;
     }
-    super.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2);
+    if (Build.VERSION.SDK_INT >= 9) {
+      super.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2);
+    }
   }
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (this.a.mWebViewCallbackClient != null)
     {
@@ -215,7 +217,7 @@ class WebView$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebView.b
  * JD-Core Version:    0.7.0.1
  */

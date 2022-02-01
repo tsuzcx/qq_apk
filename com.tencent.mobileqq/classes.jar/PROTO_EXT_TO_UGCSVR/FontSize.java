@@ -11,7 +11,7 @@ public final class FontSize
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PROTO_EXT_TO_UGCSVR.FontSize
  * JD-Core Version:    0.7.0.1
  */

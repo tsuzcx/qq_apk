@@ -5,13 +5,16 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.mobileqq.activity.QPublicTransFragmentActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.qcircle.api.IQCircleClassApi;
-import com.tencent.mobileqq.qcircle.api.constant.QCircleDTParamBuilder;
+import com.tencent.mobileqq.qcircle.api.IQCircleReportApi;
+import com.tencent.mobileqq.qcircle.api.interfaces.QCircleHookPluginIntentCallBack;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -29,6 +32,8 @@ public class HostUIHelper
   private static ViewGroup mTransTouchTransEventViewGroup;
   private static HostUIHelper sInstance;
   private final Context mHostApplicationContext;
+  private int mHostTabHeight;
+  private QCircleHookPluginIntentCallBack mQCircleHookPluginIntentCallBack;
   
   private HostUIHelper(Context paramContext)
   {
@@ -44,7 +49,8 @@ public class HostUIHelper
   
   public static boolean closeHostEnvironment()
   {
-    if ((mHostContext != null) && (mHostContext.get() != null))
+    java.lang.ref.WeakReference localWeakReference = mHostContext;
+    if ((localWeakReference != null) && (localWeakReference.get() != null))
     {
       ((Activity)mHostContext.get()).finish();
       clearHostContext();
@@ -55,7 +61,8 @@ public class HostUIHelper
   
   public static void closeTopShadowActivity()
   {
-    if ((mShadowTopContext != null) && (isContextShadowActivity((Context)mShadowTopContext.get())))
+    java.lang.ref.WeakReference localWeakReference = mShadowTopContext;
+    if ((localWeakReference != null) && (isContextShadowActivity((Context)localWeakReference.get())))
     {
       ((Activity)mShadowTopContext.get()).finish();
       mShadowTopContext = null;
@@ -64,6 +71,9 @@ public class HostUIHelper
   
   public static HostUIHelper getInstance()
   {
+    if (sInstance == null) {
+      init();
+    }
     return sInstance;
   }
   
@@ -77,15 +87,16 @@ public class HostUIHelper
   
   public static Context getShadowTopContext()
   {
-    if (mShadowTopContext != null) {
-      return (Context)mShadowTopContext.get();
+    java.lang.ref.WeakReference localWeakReference = mShadowTopContext;
+    if (localWeakReference != null) {
+      return (Context)localWeakReference.get();
     }
     return null;
   }
   
-  public static void init(Context paramContext)
+  public static void init()
   {
-    sInstance = new HostUIHelper(paramContext);
+    sInstance = new HostUIHelper(MobileQQ.sMobileQQ);
     MobileQQ.sMobileQQ.registerActivityLifecycleCallbacks(new HostUIHelper.1());
   }
   
@@ -96,16 +107,19 @@ public class HostUIHelper
   
   private static boolean isHostEnvironment(Context paramContext)
   {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
     try
     {
       if ((paramContext instanceof QPublicTransFragmentActivity))
       {
-        boolean bool = ((Activity)paramContext).getIntent().getStringExtra("public_fragment_class").equals(((IQCircleClassApi)QRoute.api(IQCircleClassApi.class)).getQCircleHostTransFragmentClass().getCanonicalName());
-        if (bool) {
-          return true;
+        boolean bool3 = ((Activity)paramContext).getIntent().getStringExtra("public_fragment_class").equals(((IQCircleClassApi)QRoute.api(IQCircleClassApi.class)).getQCircleHostTransFragmentClass().getCanonicalName());
+        bool1 = bool2;
+        if (bool3) {
+          bool1 = true;
         }
       }
-      return false;
+      return bool1;
     }
     catch (Exception paramContext)
     {
@@ -121,37 +135,42 @@ public class HostUIHelper
   
   public static void openHostEnvironment(HostUIHelper.HostEnvironmentLifeCycle paramHostEnvironmentLifeCycle, Intent paramIntent)
   {
-    if (paramHostEnvironmentLifeCycle == null) {}
-    do
-    {
+    if (paramHostEnvironmentLifeCycle == null) {
       return;
-      if (!getLifeCycleListeners().contains(paramHostEnvironmentLifeCycle)) {
-        getLifeCycleListeners().add(paramHostEnvironmentLifeCycle);
-      }
-      if ((mHostContext == null) || (mHostContext.get() == null))
+    }
+    if (!getLifeCycleListeners().contains(paramHostEnvironmentLifeCycle)) {
+      getLifeCycleListeners().add(paramHostEnvironmentLifeCycle);
+    }
+    java.lang.ref.WeakReference localWeakReference = mHostContext;
+    if ((localWeakReference != null) && (localWeakReference.get() != null))
+    {
+      paramIntent = mHostContext;
+      if ((paramIntent != null) && (paramIntent.get() != null))
       {
-        paramHostEnvironmentLifeCycle = paramIntent;
-        if (paramIntent == null) {
-          paramHostEnvironmentLifeCycle = new Intent();
-        }
-        paramHostEnvironmentLifeCycle.addFlags(268435456);
-        paramHostEnvironmentLifeCycle.setClass(MobileQQ.getContext(), QPublicTransFragmentActivity.class);
-        paramHostEnvironmentLifeCycle.putExtra("public_fragment_class", ((IQCircleClassApi)QRoute.api(IQCircleClassApi.class)).getQCircleHostTransFragmentClass().getCanonicalName());
-        paramHostEnvironmentLifeCycle.putExtra("public_fragment_window_feature", 1);
-        MobileQQ.getContext().startActivity(paramHostEnvironmentLifeCycle);
-        return;
+        paramHostEnvironmentLifeCycle.onEnvironmentCreated((Context)mHostContext.get());
+        paramHostEnvironmentLifeCycle.onEnvironmentStarted((Context)mHostContext.get());
+        paramHostEnvironmentLifeCycle.onEnvironmentResume((Context)mHostContext.get());
       }
-    } while ((mHostContext == null) || (mHostContext.get() == null));
-    paramHostEnvironmentLifeCycle.onEnvironmentCreated((Context)mHostContext.get());
-    paramHostEnvironmentLifeCycle.onEnvironmentStarted((Context)mHostContext.get());
-    paramHostEnvironmentLifeCycle.onEnvironmentResume((Context)mHostContext.get());
+    }
+    else
+    {
+      paramHostEnvironmentLifeCycle = paramIntent;
+      if (paramIntent == null) {
+        paramHostEnvironmentLifeCycle = new Intent();
+      }
+      paramHostEnvironmentLifeCycle.addFlags(268435456);
+      paramHostEnvironmentLifeCycle.setClass(MobileQQ.getContext(), QPublicTransFragmentActivity.class);
+      paramHostEnvironmentLifeCycle.putExtra("public_fragment_class", ((IQCircleClassApi)QRoute.api(IQCircleClassApi.class)).getQCircleHostTransFragmentClass().getCanonicalName());
+      paramHostEnvironmentLifeCycle.putExtra("public_fragment_window_feature", 1);
+      MobileQQ.getContext().startActivity(paramHostEnvironmentLifeCycle);
+    }
   }
   
   private static void registerDaTongReport(Activity paramActivity)
   {
     VideoReport.addToDetectionWhitelist(paramActivity);
-    VideoReport.setPageId(paramActivity, "small_world_base");
-    VideoReport.setPageParams(paramActivity, new QCircleDTParamBuilder().setPageSubclass("HostUIHelper").buildPageParams());
+    VideoReport.setPageId(paramActivity, ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).getQCircleDaTongBasePageId());
+    VideoReport.setPageParams(paramActivity, ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).buildPageParams("HostUIHelper"));
     QLog.i("HostUIHelper", 1, "reportDaTongRegister  subPage: HostUIHelper");
   }
   
@@ -180,6 +199,15 @@ public class HostUIHelper
     return this.mHostApplicationContext.getResources().getIdentifier(paramString, "string", this.mHostApplicationContext.getPackageName());
   }
   
+  public int getHostTabHeight()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getHostTabHeight:");
+    localStringBuilder.append(this.mHostTabHeight);
+    QLog.d("HostUIHelper", 1, localStringBuilder.toString());
+    return this.mHostTabHeight;
+  }
+  
   public Context getHostTopActivityContext()
   {
     if (MobileQQ.sMobileQQ.getResumeActivity() != null) {
@@ -193,11 +221,65 @@ public class HostUIHelper
     return LayoutInflater.from(this.mHostApplicationContext).inflate(getHostLayoutId(paramString), null, false);
   }
   
+  public QCircleHookPluginIntentCallBack getQCircleHookPluginIntentCallBack()
+  {
+    return this.mQCircleHookPluginIntentCallBack;
+  }
+  
+  public boolean isDenyNotAsk()
+  {
+    if (QBaseActivity.sTopActivity != null)
+    {
+      boolean bool = QBaseActivity.sTopActivity.shouldShowRequestPermissionRationale("android.permission.ACCESS_FINE_LOCATION") ^ true;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("qcircle tab isDenyNotAsk:");
+      localStringBuilder.append(bool);
+      QLog.d("HostUIHelper", 1, localStringBuilder.toString());
+      return bool;
+    }
+    return false;
+  }
+  
+  public void jumpSystemSettingPage()
+  {
+    QLog.d("HostUIHelper", 1, "qcircle tab jumpSystemSettingPage");
+    if (QBaseActivity.sTopActivity != null)
+    {
+      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
+      localIntent.setData(Uri.fromParts("package", QBaseActivity.sTopActivity.getPackageName(), null));
+      QBaseActivity.sTopActivity.startActivity(localIntent);
+    }
+  }
+  
+  public void requestPermissions(Object paramObject)
+  {
+    if (QBaseActivity.sTopActivity != null)
+    {
+      QLog.d("HostUIHelper", 1, "qcircle tab requestPermissions");
+      QBaseActivity.sTopActivity.requestPermissions(paramObject, 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+    }
+  }
+  
+  public void setHostTABHeight(int paramInt)
+  {
+    this.mHostTabHeight = paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setHostTABHeight:");
+    localStringBuilder.append(paramInt);
+    QLog.d("HostUIHelper", 1, localStringBuilder.toString());
+  }
+  
+  public void setPluginIntentHook(QCircleHookPluginIntentCallBack paramQCircleHookPluginIntentCallBack)
+  {
+    this.mQCircleHookPluginIntentCallBack = paramQCircleHookPluginIntentCallBack;
+  }
+  
   public boolean transTouchEventToTargetViewGroup(MotionEvent paramMotionEvent)
   {
-    if (mTransTouchTransEventViewGroup != null)
+    ViewGroup localViewGroup = mTransTouchTransEventViewGroup;
+    if (localViewGroup != null)
     {
-      mTransTouchTransEventViewGroup.dispatchTouchEvent(paramMotionEvent);
+      localViewGroup.dispatchTouchEvent(paramMotionEvent);
       return true;
     }
     return false;
@@ -205,7 +287,7 @@ public class HostUIHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.helper.HostUIHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -50,83 +50,79 @@ final class ExoPlayerImpl
   @SuppressLint({"HandlerLeak"})
   public ExoPlayerImpl(Renderer[] paramArrayOfRenderer, TrackSelector paramTrackSelector, LoadControl paramLoadControl, Clock paramClock)
   {
-    Log.i("ExoPlayerImpl", "Init " + Integer.toHexString(System.identityHashCode(this)) + " [" + "ExoPlayerLib/2.7.1" + "] [" + Util.DEVICE_DEBUG_INFO + "]");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Init ");
+    ((StringBuilder)localObject).append(Integer.toHexString(System.identityHashCode(this)));
+    ((StringBuilder)localObject).append(" [");
+    ((StringBuilder)localObject).append("ExoPlayerLib/2.7.1");
+    ((StringBuilder)localObject).append("] [");
+    ((StringBuilder)localObject).append(Util.DEVICE_DEBUG_INFO);
+    ((StringBuilder)localObject).append("]");
+    Log.i("ExoPlayerImpl", ((StringBuilder)localObject).toString());
     boolean bool;
-    if (paramArrayOfRenderer.length > 0)
-    {
+    if (paramArrayOfRenderer.length > 0) {
       bool = true;
-      Assertions.checkState(bool);
-      this.renderers = ((Renderer[])Assertions.checkNotNull(paramArrayOfRenderer));
-      this.trackSelector = ((TrackSelector)Assertions.checkNotNull(paramTrackSelector));
-      this.playWhenReady = false;
-      this.repeatMode = 0;
-      this.shuffleModeEnabled = false;
-      this.listeners = new CopyOnWriteArraySet();
-      this.emptyTrackSelectorResult = new TrackSelectorResult(TrackGroupArray.EMPTY, new boolean[paramArrayOfRenderer.length], new TrackSelectionArray(new TrackSelection[paramArrayOfRenderer.length]), null, new RendererConfiguration[paramArrayOfRenderer.length]);
-      this.window = new Timeline.Window();
-      this.period = new Timeline.Period();
-      this.playbackParameters = PlaybackParameters.DEFAULT;
-      if (Looper.myLooper() == null) {
-        break label293;
-      }
-    }
-    label293:
-    for (Looper localLooper = Looper.myLooper();; localLooper = Looper.getMainLooper())
-    {
-      this.eventHandler = new ExoPlayerImpl.1(this, localLooper);
-      this.playbackInfo = new PlaybackInfo(Timeline.EMPTY, 0L, this.emptyTrackSelectorResult);
-      this.internalPlayer = new ExoPlayerImplInternal(paramArrayOfRenderer, paramTrackSelector, this.emptyTrackSelectorResult, paramLoadControl, this.playWhenReady, this.repeatMode, this.shuffleModeEnabled, this.eventHandler, this, paramClock);
-      this.internalPlayerHandler = new Handler(this.internalPlayer.getPlaybackLooper());
-      return;
+    } else {
       bool = false;
-      break;
     }
+    Assertions.checkState(bool);
+    this.renderers = ((Renderer[])Assertions.checkNotNull(paramArrayOfRenderer));
+    this.trackSelector = ((TrackSelector)Assertions.checkNotNull(paramTrackSelector));
+    this.playWhenReady = false;
+    this.repeatMode = 0;
+    this.shuffleModeEnabled = false;
+    this.listeners = new CopyOnWriteArraySet();
+    this.emptyTrackSelectorResult = new TrackSelectorResult(TrackGroupArray.EMPTY, new boolean[paramArrayOfRenderer.length], new TrackSelectionArray(new TrackSelection[paramArrayOfRenderer.length]), null, new RendererConfiguration[paramArrayOfRenderer.length]);
+    this.window = new Timeline.Window();
+    this.period = new Timeline.Period();
+    this.playbackParameters = PlaybackParameters.DEFAULT;
+    if (Looper.myLooper() != null) {
+      localObject = Looper.myLooper();
+    } else {
+      localObject = Looper.getMainLooper();
+    }
+    this.eventHandler = new ExoPlayerImpl.1(this, (Looper)localObject);
+    this.playbackInfo = new PlaybackInfo(Timeline.EMPTY, 0L, this.emptyTrackSelectorResult);
+    this.internalPlayer = new ExoPlayerImplInternal(paramArrayOfRenderer, paramTrackSelector, this.emptyTrackSelectorResult, paramLoadControl, this.playWhenReady, this.repeatMode, this.shuffleModeEnabled, this.eventHandler, this, paramClock);
+    this.internalPlayerHandler = new Handler(this.internalPlayer.getPlaybackLooper());
   }
   
   private PlaybackInfo getResetPlaybackInfo(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    Timeline localTimeline;
-    label28:
-    Object localObject;
-    label35:
-    MediaSource.MediaPeriodId localMediaPeriodId;
-    long l1;
-    long l2;
     if (paramBoolean1)
     {
       this.maskingWindowIndex = 0;
       this.maskingPeriodIndex = 0;
       this.maskingWindowPositionMs = 0L;
-      if (!paramBoolean2) {
-        break label121;
-      }
-      localTimeline = Timeline.EMPTY;
-      if (!paramBoolean2) {
-        break label133;
-      }
-      localObject = null;
-      localMediaPeriodId = this.playbackInfo.periodId;
-      l1 = this.playbackInfo.startPositionUs;
-      l2 = this.playbackInfo.contentPositionUs;
-      if (!paramBoolean2) {
-        break label145;
-      }
     }
-    label133:
-    label145:
-    for (TrackSelectorResult localTrackSelectorResult = this.emptyTrackSelectorResult;; localTrackSelectorResult = this.playbackInfo.trackSelectorResult)
+    else
     {
-      return new PlaybackInfo(localTimeline, localObject, localMediaPeriodId, l1, l2, paramInt, false, localTrackSelectorResult);
       this.maskingWindowIndex = getCurrentWindowIndex();
       this.maskingPeriodIndex = getCurrentPeriodIndex();
       this.maskingWindowPositionMs = getCurrentPosition();
-      break;
-      label121:
-      localTimeline = this.playbackInfo.timeline;
-      break label28;
-      localObject = this.playbackInfo.manifest;
-      break label35;
     }
+    Timeline localTimeline;
+    if (paramBoolean2) {
+      localTimeline = Timeline.EMPTY;
+    } else {
+      localTimeline = this.playbackInfo.timeline;
+    }
+    Object localObject;
+    if (paramBoolean2) {
+      localObject = null;
+    } else {
+      localObject = this.playbackInfo.manifest;
+    }
+    MediaSource.MediaPeriodId localMediaPeriodId = this.playbackInfo.periodId;
+    long l1 = this.playbackInfo.startPositionUs;
+    long l2 = this.playbackInfo.contentPositionUs;
+    TrackSelectorResult localTrackSelectorResult;
+    if (paramBoolean2) {
+      localTrackSelectorResult = this.emptyTrackSelectorResult;
+    } else {
+      localTrackSelectorResult = this.playbackInfo.trackSelectorResult;
+    }
+    return new PlaybackInfo(localTimeline, localObject, localMediaPeriodId, l1, l2, paramInt, false, localTrackSelectorResult);
   }
   
   private void handlePlaybackInfo(PlaybackInfo paramPlaybackInfo, int paramInt1, boolean paramBoolean, int paramInt2)
@@ -134,29 +130,25 @@ final class ExoPlayerImpl
     this.pendingOperationAcks -= paramInt1;
     if (this.pendingOperationAcks == 0)
     {
-      if (paramPlaybackInfo.startPositionUs != -9223372036854775807L) {
-        break label129;
+      PlaybackInfo localPlaybackInfo = paramPlaybackInfo;
+      if (paramPlaybackInfo.startPositionUs == -9223372036854775807L) {
+        localPlaybackInfo = paramPlaybackInfo.fromNewPosition(paramPlaybackInfo.periodId, 0L, paramPlaybackInfo.contentPositionUs);
       }
-      paramPlaybackInfo = paramPlaybackInfo.fromNewPosition(paramPlaybackInfo.periodId, 0L, paramPlaybackInfo.contentPositionUs);
-    }
-    label129:
-    for (;;)
-    {
-      if (((!this.playbackInfo.timeline.isEmpty()) || (this.hasPendingPrepare)) && (paramPlaybackInfo.timeline.isEmpty()))
+      if (((!this.playbackInfo.timeline.isEmpty()) || (this.hasPendingPrepare)) && (localPlaybackInfo.timeline.isEmpty()))
       {
         this.maskingPeriodIndex = 0;
         this.maskingWindowIndex = 0;
         this.maskingWindowPositionMs = 0L;
       }
-      if (this.hasPendingPrepare) {}
-      for (paramInt1 = 0;; paramInt1 = 2)
-      {
-        boolean bool = this.hasPendingSeek;
-        this.hasPendingPrepare = false;
-        this.hasPendingSeek = false;
-        updatePlaybackInfo(paramPlaybackInfo, paramBoolean, paramInt2, paramInt1, bool);
-        return;
+      if (this.hasPendingPrepare) {
+        paramInt1 = 0;
+      } else {
+        paramInt1 = 2;
       }
+      boolean bool = this.hasPendingSeek;
+      this.hasPendingPrepare = false;
+      this.hasPendingSeek = false;
+      updatePlaybackInfo(localPlaybackInfo, paramBoolean, paramInt2, paramInt1, bool);
     }
   }
   
@@ -179,49 +171,38 @@ final class ExoPlayerImpl
   
   private void updatePlaybackInfo(PlaybackInfo paramPlaybackInfo, boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2)
   {
-    int m = 1;
+    Timeline localTimeline1 = this.playbackInfo.timeline;
+    Timeline localTimeline2 = paramPlaybackInfo.timeline;
+    int m = 0;
     int i;
-    int j;
-    label51:
-    int k;
-    if ((this.playbackInfo.timeline != paramPlaybackInfo.timeline) || (this.playbackInfo.manifest != paramPlaybackInfo.manifest))
-    {
+    if ((localTimeline1 == localTimeline2) && (this.playbackInfo.manifest == paramPlaybackInfo.manifest)) {
+      i = 0;
+    } else {
       i = 1;
-      if (this.playbackInfo.playbackState == paramPlaybackInfo.playbackState) {
-        break label153;
-      }
-      j = 1;
-      if (this.playbackInfo.isLoading == paramPlaybackInfo.isLoading) {
-        break label159;
-      }
-      k = 1;
-      label68:
-      if (this.playbackInfo.trackSelectorResult == paramPlaybackInfo.trackSelectorResult) {
-        break label165;
-      }
     }
-    for (;;)
+    int j;
+    if (this.playbackInfo.playbackState != paramPlaybackInfo.playbackState) {
+      j = 1;
+    } else {
+      j = 0;
+    }
+    int k;
+    if (this.playbackInfo.isLoading != paramPlaybackInfo.isLoading) {
+      k = 1;
+    } else {
+      k = 0;
+    }
+    if (this.playbackInfo.trackSelectorResult != paramPlaybackInfo.trackSelectorResult) {
+      m = 1;
+    }
+    this.playbackInfo = paramPlaybackInfo;
+    if ((i != 0) || (paramInt2 == 0))
     {
-      this.playbackInfo = paramPlaybackInfo;
-      if ((i == 0) && (paramInt2 != 0)) {
-        break label171;
-      }
       paramPlaybackInfo = this.listeners.iterator();
       while (paramPlaybackInfo.hasNext()) {
         ((Player.EventListener)paramPlaybackInfo.next()).onTimelineChanged(this.playbackInfo.timeline, this.playbackInfo.manifest, paramInt2);
       }
-      i = 0;
-      break;
-      label153:
-      j = 0;
-      break label51;
-      label159:
-      k = 0;
-      break label68;
-      label165:
-      m = 0;
     }
-    label171:
     if (paramBoolean1)
     {
       paramPlaybackInfo = this.listeners.iterator();
@@ -278,26 +259,23 @@ final class ExoPlayerImpl
     }
     paramVarArgs = ((List)localObject).iterator();
     i = 0;
-    if (paramVarArgs.hasNext())
+    while (paramVarArgs.hasNext())
     {
       localObject = (PlayerMessage)paramVarArgs.next();
-      int k = 1;
-      j = i;
-      for (;;)
+      j = 1;
+      while (j != 0)
       {
-        i = j;
-        if (k == 0) {
-          break;
-        }
         try
         {
           ((PlayerMessage)localObject).blockUntilDelivered();
-          k = 0;
+          j = 0;
         }
         catch (InterruptedException localInterruptedException)
         {
-          j = 1;
+          label114:
+          break label114;
         }
+        i = 1;
       }
     }
     if (i != 0) {
@@ -312,16 +290,16 @@ final class ExoPlayerImpl
   
   public int getBufferedPercentage()
   {
-    int i = 100;
     long l1 = getBufferedPosition();
     long l2 = getDuration();
-    if ((l1 == -9223372036854775807L) || (l2 == -9223372036854775807L)) {
-      i = 0;
+    if ((l1 != -9223372036854775807L) && (l2 != -9223372036854775807L))
+    {
+      if (l2 == 0L) {
+        return 100;
+      }
+      return Util.constrainValue((int)(l1 * 100L / l2), 0, 100);
     }
-    while (l2 == 0L) {
-      return i;
-    }
-    return Util.constrainValue((int)(l1 * 100L / l2), 0, 100);
+    return 0;
   }
   
   public long getBufferedPosition()
@@ -487,27 +465,23 @@ final class ExoPlayerImpl
   
   void handleEvent(Message paramMessage)
   {
+    int i = paramMessage.what;
+    boolean bool = true;
     Object localObject;
-    boolean bool;
-    switch (paramMessage.what)
+    if (i != 0)
     {
-    default: 
-      throw new IllegalStateException();
-    case 0: 
-      localObject = (PlaybackInfo)paramMessage.obj;
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 != -1)
+      if (i != 1)
       {
-        bool = true;
-        handlePlaybackInfo((PlaybackInfo)localObject, i, bool, paramMessage.arg2);
+        if (i == 2)
+        {
+          paramMessage = (ExoPlaybackException)paramMessage.obj;
+          localObject = this.listeners.iterator();
+          while (((Iterator)localObject).hasNext()) {
+            ((Player.EventListener)((Iterator)localObject).next()).onPlayerError(paramMessage);
+          }
+        }
+        throw new IllegalStateException();
       }
-      break;
-    }
-    for (;;)
-    {
-      return;
-      bool = false;
-      break;
       paramMessage = (PlaybackParameters)paramMessage.obj;
       if (!this.playbackParameters.equals(paramMessage))
       {
@@ -516,13 +490,16 @@ final class ExoPlayerImpl
         while (((Iterator)localObject).hasNext()) {
           ((Player.EventListener)((Iterator)localObject).next()).onPlaybackParametersChanged(paramMessage);
         }
-        continue;
-        paramMessage = (ExoPlaybackException)paramMessage.obj;
-        localObject = this.listeners.iterator();
-        while (((Iterator)localObject).hasNext()) {
-          ((Player.EventListener)((Iterator)localObject).next()).onPlayerError(paramMessage);
-        }
       }
+    }
+    else
+    {
+      localObject = (PlaybackInfo)paramMessage.obj;
+      i = paramMessage.arg1;
+      if (paramMessage.arg2 == -1) {
+        bool = false;
+      }
+      handlePlaybackInfo((PlaybackInfo)localObject, i, bool, paramMessage.arg2);
     }
   }
   
@@ -564,7 +541,17 @@ final class ExoPlayerImpl
   
   public void release()
   {
-    Log.i("ExoPlayerImpl", "Release " + Integer.toHexString(System.identityHashCode(this)) + " [" + "ExoPlayerLib/2.7.1" + "] [" + Util.DEVICE_DEBUG_INFO + "] [" + ExoPlayerLibraryInfo.registeredModules() + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Release ");
+    localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
+    localStringBuilder.append(" [");
+    localStringBuilder.append("ExoPlayerLib/2.7.1");
+    localStringBuilder.append("] [");
+    localStringBuilder.append(Util.DEVICE_DEBUG_INFO);
+    localStringBuilder.append("] [");
+    localStringBuilder.append(ExoPlayerLibraryInfo.registeredModules());
+    localStringBuilder.append("]");
+    Log.i("ExoPlayerImpl", localStringBuilder.toString());
     this.internalPlayer.release();
     this.eventHandler.removeCallbacksAndMessages(null);
   }
@@ -577,40 +564,50 @@ final class ExoPlayerImpl
   public void seekTo(int paramInt, long paramLong)
   {
     Object localObject = this.playbackInfo.timeline;
-    if ((paramInt < 0) || ((!((Timeline)localObject).isEmpty()) && (paramInt >= ((Timeline)localObject).getWindowCount()))) {
-      throw new IllegalSeekPositionException((Timeline)localObject, paramInt, paramLong);
-    }
-    this.hasPendingSeek = true;
-    this.pendingOperationAcks += 1;
-    if (isPlayingAd())
+    if ((paramInt >= 0) && ((((Timeline)localObject).isEmpty()) || (paramInt < ((Timeline)localObject).getWindowCount())))
     {
-      Log.w("ExoPlayerImpl", "seekTo ignored because an ad is playing");
-      this.eventHandler.obtainMessage(0, 1, -1, this.playbackInfo).sendToTarget();
-      return;
-    }
-    this.maskingWindowIndex = paramInt;
-    if (((Timeline)localObject).isEmpty())
-    {
-      if (paramLong == -9223372036854775807L) {}
-      for (l = 0L;; l = paramLong)
+      this.hasPendingSeek = true;
+      this.pendingOperationAcks += 1;
+      if (isPlayingAd())
       {
+        Log.w("ExoPlayerImpl", "seekTo ignored because an ad is playing");
+        this.eventHandler.obtainMessage(0, 1, -1, this.playbackInfo).sendToTarget();
+        return;
+      }
+      this.maskingWindowIndex = paramInt;
+      long l;
+      if (((Timeline)localObject).isEmpty())
+      {
+        if (paramLong == -9223372036854775807L) {
+          l = 0L;
+        } else {
+          l = paramLong;
+        }
         this.maskingWindowPositionMs = l;
         this.maskingPeriodIndex = 0;
-        this.internalPlayer.seekTo((Timeline)localObject, paramInt, C.msToUs(paramLong));
-        localObject = this.listeners.iterator();
-        while (((Iterator)localObject).hasNext()) {
-          ((Player.EventListener)((Iterator)localObject).next()).onPositionDiscontinuity(1);
-        }
-        break;
       }
+      else
+      {
+        if (paramLong == -9223372036854775807L) {
+          l = ((Timeline)localObject).getWindow(paramInt, this.window).getDefaultPositionUs();
+        } else {
+          l = C.msToUs(paramLong);
+        }
+        Pair localPair = ((Timeline)localObject).getPeriodPosition(this.window, this.period, paramInt, l);
+        this.maskingWindowPositionMs = C.usToMs(l);
+        this.maskingPeriodIndex = ((Integer)localPair.first).intValue();
+      }
+      this.internalPlayer.seekTo((Timeline)localObject, paramInt, C.msToUs(paramLong));
+      localObject = this.listeners.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((Player.EventListener)((Iterator)localObject).next()).onPositionDiscontinuity(1);
+      }
+      return;
     }
-    if (paramLong == -9223372036854775807L) {}
-    for (long l = ((Timeline)localObject).getWindow(paramInt, this.window).getDefaultPositionUs();; l = C.msToUs(paramLong))
+    localObject = new IllegalSeekPositionException((Timeline)localObject, paramInt, paramLong);
+    for (;;)
     {
-      Pair localPair = ((Timeline)localObject).getPeriodPosition(this.window, this.period, paramInt, l);
-      this.maskingWindowPositionMs = C.usToMs(l);
-      this.maskingPeriodIndex = ((Integer)localPair.first).intValue();
-      break;
+      throw ((Throwable)localObject);
     }
   }
   
@@ -713,7 +710,7 @@ final class ExoPlayerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.ExoPlayerImpl
  * JD-Core Version:    0.7.0.1
  */

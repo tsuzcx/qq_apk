@@ -13,15 +13,20 @@ class MsgTabNodeListLoader$13
     synchronized (this.this$0.d)
     {
       Iterator localIterator = this.this$0.d.iterator();
-      if (localIterator.hasNext()) {
+      while (localIterator.hasNext()) {
         ((MsgTabNodeListLoader.OnMsgTabNodeListLoadListener)localIterator.next()).a();
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.13
  * JD-Core Version:    0.7.0.1
  */

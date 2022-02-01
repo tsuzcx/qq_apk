@@ -23,7 +23,7 @@ public final class oidb_cmd0xcf8$ConfigInfo
   public static final int RICH_TEXT = 4;
   public static final int STATE_CHANGE = 2;
   public static final int WEBVIEW = 1;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 48, 56, 64, 74, 80 }, new String[] { "type", "title", "content", "event_id", "url", "auth_type", "state", "confirm_flag", "confirm_tips", "state_id" }, new Object[] { Integer.valueOf(1), "", "", Integer.valueOf(1), "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(1) }, ConfigInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBEnumField auth_type = PBField.initEnum(0);
   public final PBUInt32Field confirm_flag = PBField.initUInt32(0);
   public final PBStringField confirm_tips = PBField.initString("");
@@ -34,10 +34,17 @@ public final class oidb_cmd0xcf8$ConfigInfo
   public final PBStringField title = PBField.initString("");
   public final PBEnumField type = PBField.initEnum(1);
   public final PBStringField url = PBField.initString("");
+  
+  static
+  {
+    Integer localInteger1 = Integer.valueOf(0);
+    Integer localInteger2 = Integer.valueOf(1);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 48, 56, 64, 74, 80 }, new String[] { "type", "title", "content", "event_id", "url", "auth_type", "state", "confirm_flag", "confirm_tips", "state_id" }, new Object[] { localInteger2, "", "", localInteger2, "", localInteger1, localInteger1, localInteger1, "", localInteger2 }, ConfigInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.ConfigInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -27,16 +27,19 @@ public class LivePusherJsPlugin
   {
     try
     {
-      JSONObject localJSONObject1 = new JSONObject(paramRequestEvent.jsonParams);
-      int i = localJSONObject1.optInt("livePusherId");
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("containerId", i);
-      AppBrandTask.runTaskOnUiThread(new LivePusherJsPlugin.1(this, localJSONObject1, i, paramRequestEvent, localJSONObject2));
+      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
+      int i = localJSONObject.optInt("livePusherId");
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("containerId", i);
+      AppBrandTask.runTaskOnUiThread(new LivePusherJsPlugin.1(this, localJSONObject, i, paramRequestEvent, (JSONObject)localObject));
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("LivePusherJsPlugin", paramRequestEvent.event + " error.", localJSONException);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramRequestEvent.event);
+      ((StringBuilder)localObject).append(" error.");
+      QMLog.e("LivePusherJsPlugin", ((StringBuilder)localObject).toString(), localJSONException);
     }
   }
   
@@ -74,7 +77,10 @@ public class LivePusherJsPlugin
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("LivePusherJsPlugin", paramRequestEvent.event + " error.", localJSONException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramRequestEvent.event);
+      localStringBuilder.append(" error.");
+      QMLog.e("LivePusherJsPlugin", localStringBuilder.toString(), localJSONException);
     }
   }
   
@@ -89,13 +95,16 @@ public class LivePusherJsPlugin
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("LivePusherJsPlugin", paramRequestEvent.event + " error.", localJSONException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramRequestEvent.event);
+      localStringBuilder.append(" error.");
+      QMLog.e("LivePusherJsPlugin", localStringBuilder.toString(), localJSONException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.LivePusherJsPlugin
  * JD-Core Version:    0.7.0.1
  */

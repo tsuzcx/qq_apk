@@ -20,13 +20,14 @@ class WereWolvesLoadingView$1
     if (this.this$0.b > 100) {
       this.this$0.b = 100;
     }
-    this.this$0.setProgress(this.this$0.b);
+    localWereWolvesLoadingView = this.this$0;
+    localWereWolvesLoadingView.setProgress(localWereWolvesLoadingView.b);
     this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, 40L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.werewolves.WereWolvesLoadingView.1
  * JD-Core Version:    0.7.0.1
  */

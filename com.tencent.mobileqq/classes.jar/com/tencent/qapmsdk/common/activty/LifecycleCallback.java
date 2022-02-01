@@ -77,16 +77,15 @@ public final class LifecycleCallback
         if (paramActivity != null)
         {
           paramActivity = paramActivity.getSimpleName();
-          if (paramActivity == null) {}
+          if (paramActivity != null) {
+            break label95;
+          }
         }
       }
     }
-    for (;;)
-    {
-      activityName = paramActivity;
-      return;
-      paramActivity = "";
-    }
+    paramActivity = "";
+    label95:
+    activityName = paramActivity;
   }
   
   public void onActivitySaveInstanceState(@NotNull Activity paramActivity, @Nullable Bundle paramBundle)
@@ -104,9 +103,10 @@ public final class LifecycleCallback
         ((IForeBackInterface)localIterator.next()).onForeground(paramActivity);
       }
     }
-    if (bufferCount < 0)
+    int i = bufferCount;
+    if (i < 0)
     {
-      bufferCount += 1;
+      bufferCount = i + 1;
       return;
     }
     foregroundCount += 1;
@@ -119,19 +119,17 @@ public final class LifecycleCallback
     while (localIterator.hasNext()) {
       ((IForeBackInterface)localIterator.next()).onStop(paramActivity);
     }
-    if (paramActivity.isChangingConfigurations()) {
-      bufferCount -= 1;
-    }
-    for (;;)
+    if (paramActivity.isChangingConfigurations())
     {
+      bufferCount -= 1;
       return;
-      foregroundCount -= 1;
-      if (foregroundCount <= 0)
-      {
-        localIterator = callbackList.iterator();
-        while (localIterator.hasNext()) {
-          ((IForeBackInterface)localIterator.next()).onBackground(paramActivity);
-        }
+    }
+    foregroundCount -= 1;
+    if (foregroundCount <= 0)
+    {
+      localIterator = callbackList.iterator();
+      while (localIterator.hasNext()) {
+        ((IForeBackInterface)localIterator.next()).onBackground(paramActivity);
       }
     }
   }
@@ -161,7 +159,7 @@ public final class LifecycleCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.common.activty.LifecycleCallback
  * JD-Core Version:    0.7.0.1
  */

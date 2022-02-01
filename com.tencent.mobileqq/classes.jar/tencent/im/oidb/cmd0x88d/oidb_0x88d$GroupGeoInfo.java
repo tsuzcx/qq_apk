@@ -23,13 +23,15 @@ public final class oidb_0x88d$GroupGeoInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50, 56 }, new String[] { "uint64_owneruin", "uint32_settime", "uint32_cityid", "int64_longitude", "int64_latitude", "bytes_geocontent", "uint64_poi_id" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro, Long.valueOf(0L) }, GroupGeoInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50, 56 }, new String[] { "uint64_owneruin", "uint32_settime", "uint32_cityid", "int64_longitude", "int64_latitude", "bytes_geocontent", "uint64_poi_id" }, new Object[] { localLong, localInteger, localInteger, localLong, localLong, localByteStringMicro, localLong }, GroupGeoInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupGeoInfo
  * JD-Core Version:    0.7.0.1
  */

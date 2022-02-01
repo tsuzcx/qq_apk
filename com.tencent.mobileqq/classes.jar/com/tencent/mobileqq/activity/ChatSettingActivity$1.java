@@ -18,14 +18,15 @@ class ChatSettingActivity$1
         this.a.f.setChecked(paramBoolean2);
         this.a.f.setOnCheckedChangeListener(this.a);
       }
-      return;
     }
-    ChatSettingActivity.a(this.a, 2131690784, 1);
+    else {
+      ChatSettingActivity.a(this.a, 2131690712, 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingActivity.1
  * JD-Core Version:    0.7.0.1
  */

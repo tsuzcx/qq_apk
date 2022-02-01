@@ -10,8 +10,8 @@ import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.flutter.channel.model.CardCoverData;
 import com.tencent.mobileqq.profile.ProfileCardManager;
-import com.tencent.mobileqq.profile.ProfileCardTemplate;
 import com.tencent.mobileqq.profilecard.observer.ProfileCardObserver;
+import com.tencent.mobileqq.profilecard.template.ProfileTemplateApi;
 import com.tencent.mobileqq.util.ProfileCardUtil;
 import com.tencent.mobileqq.vas.VasExtensionManager;
 import com.tencent.mobileqq.vas.updatesystem.api.IVasQuickUpdateService;
@@ -49,20 +49,27 @@ class ZanRankingIpcServer$GetCoverTask
   
   private void a(Card paramCard)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((this.jdField_a_of_type_Boolean) || (localQQAppInterface == null)) {
-      return;
-    }
-    if ((paramCard.lCurrentBgId == 160L) || (paramCard.lCurrentBgId == 1600L)) {}
-    for (paramCard = ProfileCardUtil.a(localQQAppInterface.getApp(), paramCard.strDrawerCardUrl);; paramCard = ProfileCardManager.b(localQQAppInterface.getApp(), paramCard.lCurrentStyleId, paramCard.lCurrentBgId))
+    Object localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (!this.jdField_a_of_type_Boolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ZanRankingIpcServer", 2, "GetCoverTask updateCoverCard() type personal card, path" + paramCard);
+      if (localObject == null) {
+        return;
+      }
+      if ((paramCard.lCurrentBgId != 160L) && (paramCard.lCurrentBgId != 1600L)) {
+        paramCard = ProfileCardManager.b(((QQAppInterface)localObject).getApp(), paramCard.lCurrentStyleId, paramCard.lCurrentBgId);
+      } else {
+        paramCard = ProfileCardUtil.a(paramCard.strDrawerCardUrl);
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("GetCoverTask updateCoverCard() type personal card, path");
+        ((StringBuilder)localObject).append(paramCard);
+        QLog.d("ZanRankingIpcServer", 2, ((StringBuilder)localObject).toString());
       }
       this.jdField_a_of_type_ComTencentMobileqqFlutterChannelModelCardCoverData.type = Integer.valueOf(2);
       this.jdField_a_of_type_ComTencentMobileqqFlutterChannelModelCardCoverData.text = paramCard;
       a(this.jdField_a_of_type_ComTencentMobileqqFlutterChannelModelCardCoverData);
-      return;
     }
   }
   
@@ -72,37 +79,44 @@ class ZanRankingIpcServer$GetCoverTask
       QLog.i("ZanRankingIpcServer", 2, String.format("GetCoverTask onGetCard() uin=%s", new Object[] { paramCard.uin }));
     }
     Object localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((this.jdField_a_of_type_Boolean) || (localObject == null)) {
-      return;
-    }
-    if (DrawerCoverUtil.a((QQAppInterface)localObject, paramCard))
+    if (!this.jdField_a_of_type_Boolean)
     {
-      if (!DrawerCoverUtil.b((QQAppInterface)localObject, paramCard))
+      if (localObject == null) {
+        return;
+      }
+      if (DrawerCoverUtil.a((QQAppInterface)localObject, paramCard))
       {
-        if ((paramCard.lCurrentBgId == 1600L) || (paramCard.lCurrentBgId == 160L) || (ProfileCardTemplate.a(paramCard.lCurrentStyleId)))
+        if (!DrawerCoverUtil.b((QQAppInterface)localObject, paramCard))
         {
+          if ((paramCard.lCurrentBgId != 1600L) && (paramCard.lCurrentBgId != 160L) && (!ProfileTemplateApi.isDiyTemplateStyleID(paramCard.lCurrentStyleId)))
+          {
+            this.jdField_a_of_type_ComTencentMobileqqDataCard = paramCard;
+            ProfileCardManager localProfileCardManager = ((VasExtensionManager)((QQAppInterface)localObject).getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a;
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("card.");
+            localStringBuilder.append(paramCard.lCurrentBgId);
+            localProfileCardManager.a((QQAppInterface)localObject, localStringBuilder.toString());
+            return;
+          }
           DrawerCoverUtil.c((QQAppInterface)localObject, paramCard);
           a(paramCard);
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqDataCard = paramCard;
-        ((VasExtensionManager)((QQAppInterface)localObject).getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a.a((QQAppInterface)localObject, "card." + paramCard.lCurrentBgId);
+        a(paramCard);
         return;
       }
-      a(paramCard);
-      return;
-    }
-    localObject = paramCard.getCoverData(0);
-    paramCard = (String)localObject[0];
-    localObject = (Integer)localObject[1];
-    if (TextUtils.isEmpty(paramCard))
-    {
+      localObject = paramCard.getCoverData(0);
+      paramCard = (String)localObject[0];
+      localObject = (Integer)localObject[1];
+      if (TextUtils.isEmpty(paramCard))
+      {
+        a(this.jdField_a_of_type_ComTencentMobileqqFlutterChannelModelCardCoverData);
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqFlutterChannelModelCardCoverData.type = Integer.valueOf(1);
+      this.jdField_a_of_type_ComTencentMobileqqFlutterChannelModelCardCoverData.text = paramCard;
       a(this.jdField_a_of_type_ComTencentMobileqqFlutterChannelModelCardCoverData);
-      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFlutterChannelModelCardCoverData.type = Integer.valueOf(1);
-    this.jdField_a_of_type_ComTencentMobileqqFlutterChannelModelCardCoverData.text = paramCard;
-    a(this.jdField_a_of_type_ComTencentMobileqqFlutterChannelModelCardCoverData);
   }
   
   private void a(CardCoverData paramCardCoverData)
@@ -140,26 +154,30 @@ class ZanRankingIpcServer$GetCoverTask
   public void run()
   {
     Object localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((this.jdField_a_of_type_Boolean) || (localObject == null)) {}
-    String str;
-    do
+    if (!this.jdField_a_of_type_Boolean)
     {
-      return;
-      boolean bool = this.jdField_a_of_type_AndroidOsBundle.getBoolean("fromCache", true);
-      str = this.jdField_a_of_type_AndroidOsBundle.getString("uin");
-      if (!bool) {
-        break;
+      if (localObject == null) {
+        return;
       }
-      localObject = ((FriendsManager)((QQAppInterface)localObject).getManager(QQManagerFactory.FRIENDS_MANAGER)).a(str);
-    } while (localObject == null);
-    a((Card)localObject, true);
-    return;
-    LikeRankingListActivity.a((QQAppInterface)localObject, str);
+      boolean bool = this.jdField_a_of_type_AndroidOsBundle.getBoolean("fromCache", true);
+      String str = this.jdField_a_of_type_AndroidOsBundle.getString("uin");
+      if (bool)
+      {
+        localObject = ((FriendsManager)((QQAppInterface)localObject).getManager(QQManagerFactory.FRIENDS_MANAGER)).a(str);
+        if (localObject != null) {
+          a((Card)localObject, true);
+        }
+      }
+      else
+      {
+        LikeRankingListActivity.a((QQAppInterface)localObject, str);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.zanranking.ZanRankingIpcServer.GetCoverTask
  * JD-Core Version:    0.7.0.1
  */

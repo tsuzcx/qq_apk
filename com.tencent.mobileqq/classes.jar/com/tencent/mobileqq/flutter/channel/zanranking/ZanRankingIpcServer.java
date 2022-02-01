@@ -43,32 +43,23 @@ public class ZanRankingIpcServer
     ArrayList localArrayList = new ArrayList(paramArrayList.size());
     FriendsManager localFriendsManager = (FriendsManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.FRIENDS_MANAGER);
     Iterator localIterator = paramArrayList.iterator();
-    Object localObject;
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      localObject = localFriendsManager.e(str);
-      if (localObject == null)
-      {
+      Object localObject = localFriendsManager.e(str);
+      if (localObject == null) {
         localObject = "";
-        label83:
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          break label133;
-        }
+      } else {
+        localObject = ((Friends)localObject).getFriendNick();
+      }
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
         localObject = str;
       }
-    }
-    label133:
-    for (;;)
-    {
       localArrayList.add(localObject);
-      break;
-      localObject = ((Friends)localObject).getFriendNick();
-      break label83;
-      localBundle.putStringArrayList("uins", paramArrayList);
-      localBundle.putStringArrayList("nicks", localArrayList);
-      return EIPCResult.createSuccessResult(localBundle);
     }
+    localBundle.putStringArrayList("uins", paramArrayList);
+    localBundle.putStringArrayList("nicks", localArrayList);
+    return EIPCResult.createSuccessResult(localBundle);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -89,29 +80,43 @@ public class ZanRankingIpcServer
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ZanRankingIpcServer", 2, "onCall, params=" + paramBundle + ", action=" + paramString + ", callBackId=" + paramInt);
-    }
-    if (paramBundle == null) {
-      QLog.d("ZanRankingIpcServer", 1, "onCall, param is null, action=" + paramString + ", callBackId=" + paramInt);
-    }
-    do
+    if (QLog.isColorLevel())
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCall, params=");
+      localStringBuilder.append(paramBundle);
+      localStringBuilder.append(", action=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", callBackId=");
+      localStringBuilder.append(paramInt);
+      QLog.d("ZanRankingIpcServer", 2, localStringBuilder.toString());
+    }
+    if (paramBundle == null)
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("onCall, param is null, action=");
+      paramBundle.append(paramString);
+      paramBundle.append(", callBackId=");
+      paramBundle.append(paramInt);
+      QLog.d("ZanRankingIpcServer", 1, paramBundle.toString());
       return null;
-      if ("action_get_card_cover".equals(paramString))
-      {
-        paramBundle.putInt("callbackId", paramInt);
-        paramString = new ZanRankingIpcServer.GetCoverTask(this, paramBundle);
-        this.jdField_a_of_type_AndroidOsHandler.post(paramString);
-        return null;
-      }
-    } while (!"action_get_frd_nicks".equals(paramString));
-    return a(paramBundle.getStringArrayList("uins"));
+    }
+    if ("action_get_card_cover".equals(paramString))
+    {
+      paramBundle.putInt("callbackId", paramInt);
+      paramString = new ZanRankingIpcServer.GetCoverTask(this, paramBundle);
+      this.jdField_a_of_type_AndroidOsHandler.post(paramString);
+      return null;
+    }
+    if ("action_get_frd_nicks".equals(paramString)) {
+      return a(paramBundle.getStringArrayList("uins"));
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.zanranking.ZanRankingIpcServer
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ import java.util.Set;
 public abstract class BaseBusinessHandler
   extends OidbWrapper
 {
-  public static final String SEQ_KEY = BaseBusinessHandler.class.getName();
+  public static final String SEQ_KEY = "com.tencent.mobileqq.app.BaseBusinessHandler";
   protected Set<String> allowCmdSet;
   protected AppInterface appRuntime;
   protected Map<Long, BusinessObserver> bgObserverMap = new HashMap();
@@ -21,17 +21,21 @@ public abstract class BaseBusinessHandler
   
   protected void addBusinessObserver(ToServiceMsg paramToServiceMsg, BusinessObserver paramBusinessObserver, boolean paramBoolean)
   {
-    if ((paramBusinessObserver == null) || (paramBoolean)) {}
-    synchronized (this.bgObserverMap)
+    if (paramBusinessObserver != null)
     {
-      ???.put(Long.valueOf(this.seq), paramBusinessObserver);
-      paramToServiceMsg = paramToServiceMsg.extraData;
-      paramBusinessObserver = SEQ_KEY;
-      long l = this.seq;
-      this.seq = (1L + l);
-      paramToServiceMsg.putLong(paramBusinessObserver, l);
-      return;
-      ??? = this.uiObserverMap;
+      if (paramBoolean) {
+        ??? = this.bgObserverMap;
+      }
+      synchronized (this.uiObserverMap)
+      {
+        ???.put(Long.valueOf(this.seq), paramBusinessObserver);
+        paramToServiceMsg = paramToServiceMsg.extraData;
+        paramBusinessObserver = SEQ_KEY;
+        long l = this.seq;
+        this.seq = (1L + l);
+        paramToServiceMsg.putLong(paramBusinessObserver, l);
+        return;
+      }
     }
   }
   
@@ -48,18 +52,23 @@ public abstract class BaseBusinessHandler
   ToServiceMsg createToServiceMsg(String arg1, BusinessObserver paramBusinessObserver, boolean paramBoolean)
   {
     ToServiceMsg localToServiceMsg = createToServiceMsg(???);
-    if ((paramBusinessObserver == null) || (paramBoolean)) {}
-    synchronized (this.bgObserverMap)
+    if (paramBusinessObserver != null)
     {
-      ???.put(Long.valueOf(this.seq), paramBusinessObserver);
-      paramBusinessObserver = localToServiceMsg.extraData;
-      String str = SEQ_KEY;
-      long l = this.seq;
-      this.seq = (1L + l);
-      paramBusinessObserver.putLong(str, l);
-      return localToServiceMsg;
-      ??? = this.uiObserverMap;
+      if (paramBoolean) {
+        ??? = this.bgObserverMap;
+      }
+      synchronized (this.uiObserverMap)
+      {
+        ???.put(Long.valueOf(this.seq), paramBusinessObserver);
+        paramBusinessObserver = localToServiceMsg.extraData;
+        String str = SEQ_KEY;
+        long l = this.seq;
+        this.seq = (1L + l);
+        paramBusinessObserver.putLong(str, l);
+        return localToServiceMsg;
+      }
     }
+    return localToServiceMsg;
   }
   
   public final <T> T decodePacket(byte[] paramArrayOfByte, String paramString, T paramT)
@@ -71,7 +80,11 @@ public abstract class BaseBusinessHandler
       localUniPacket.decode(paramArrayOfByte);
       return localUniPacket.getByClass(paramString, paramT);
     }
-    catch (Exception paramArrayOfByte) {}
+    catch (Exception paramArrayOfByte)
+    {
+      label31:
+      break label31;
+    }
     return null;
   }
   
@@ -86,13 +99,12 @@ public abstract class BaseBusinessHandler
   
   protected abstract Set<String> getPushPBCommandList();
   
-  protected final boolean isPbReq(ToServiceMsg paramToServiceMsg)
+  public final boolean isPbReq(ToServiceMsg paramToServiceMsg)
   {
-    boolean bool = false;
     if (paramToServiceMsg != null) {
-      bool = paramToServiceMsg.extraData.getBoolean("req_pb_protocol_flag", false);
+      return paramToServiceMsg.extraData.getBoolean("req_pb_protocol_flag", false);
     }
-    return bool;
+    return false;
   }
   
   public boolean msgCmdFilter(String paramString)
@@ -100,11 +112,15 @@ public abstract class BaseBusinessHandler
     if (this.allowCmdSet == null) {
       this.allowCmdSet = getCommandList();
     }
-    if (this.allowCmdSet == null) {}
-    while (this.allowCmdSet.contains(paramString)) {
+    Set localSet = this.allowCmdSet;
+    boolean bool = false;
+    if (localSet == null) {
       return false;
     }
-    return true;
+    if (!localSet.contains(paramString)) {
+      bool = true;
+    }
+    return bool;
   }
   
   public abstract void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject);
@@ -125,7 +141,7 @@ public abstract class BaseBusinessHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.BaseBusinessHandler
  * JD-Core Version:    0.7.0.1
  */

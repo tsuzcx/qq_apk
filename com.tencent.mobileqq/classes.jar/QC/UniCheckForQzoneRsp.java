@@ -27,14 +27,15 @@ public final class UniCheckForQzoneRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret, 0);
-    if (this.errmsg != null) {
-      paramJceOutputStream.write(this.errmsg, 1);
+    String str = this.errmsg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.UniCheckForQzoneRsp
  * JD-Core Version:    0.7.0.1
  */

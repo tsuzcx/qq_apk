@@ -32,16 +32,18 @@ public abstract class Task
   public void a(Drawable paramDrawable)
   {
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryViewAsyncImageLoaderTask$TaskStateListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryViewAsyncImageLoaderTask$TaskStateListener.a(this);
+    paramDrawable = this.jdField_a_of_type_ComTencentBizQqstoryViewAsyncImageLoaderTask$TaskStateListener;
+    if (paramDrawable != null) {
+      paramDrawable.a(this);
     }
   }
   
   public void a(Drawable paramDrawable, String paramString)
   {
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryViewAsyncImageLoaderTask$TaskStateListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryViewAsyncImageLoaderTask$TaskStateListener.a(this, paramString);
+    paramDrawable = this.jdField_a_of_type_ComTencentBizQqstoryViewAsyncImageLoaderTask$TaskStateListener;
+    if (paramDrawable != null) {
+      paramDrawable.a(this, paramString);
     }
   }
   
@@ -52,13 +54,16 @@ public abstract class Task
   
   public void a(WeakHashMap<ImageView, Drawable> paramWeakHashMap, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    ImageView localImageView;
-    do
-    {
+    if (this.jdField_a_of_type_Boolean) {
       return;
-      localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while ((localImageView == null) || (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null));
+    }
+    ImageView localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localImageView == null) {
+      return;
+    }
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
+      return;
+    }
     if ((paramBoolean) && (this.jdField_a_of_type_Int == 0))
     {
       SLog.a("Q.qqstory.newImageLoader", "save to waiting queue t:%s", this.jdField_a_of_type_JavaLangObject);
@@ -66,8 +71,13 @@ public abstract class Task
       return;
     }
     localImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "postToUI o= ", localImageView.getTag(2131369989), " and change to: ", this.jdField_a_of_type_JavaLangObject.toString(), " view hash:" + localImageView.hashCode() });
-    localImageView.setTag(2131369989, this.jdField_a_of_type_JavaLangObject.toString());
+    paramWeakHashMap = localImageView.getTag(2131369674);
+    String str = this.jdField_a_of_type_JavaLangObject.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" view hash:");
+    localStringBuilder.append(localImageView.hashCode());
+    InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "postToUI o= ", paramWeakHashMap, " and change to: ", str, localStringBuilder.toString() });
+    localImageView.setTag(2131369674, this.jdField_a_of_type_JavaLangObject.toString());
   }
   
   public boolean a()
@@ -78,7 +88,7 @@ public abstract class Task
   public void b()
   {
     this.jdField_a_of_type_Boolean = true;
-    InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { HardCodeUtil.a(2131714605), this.jdField_a_of_type_JavaLangObject });
+    InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { HardCodeUtil.a(2131714525), this.jdField_a_of_type_JavaLangObject });
   }
   
   public void c()
@@ -86,12 +96,12 @@ public abstract class Task
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
     this.jdField_a_of_type_ComTencentBizQqstoryViewAsyncImageLoaderTask$TaskStateListener = null;
     this.jdField_a_of_type_ComTencentBizQqstoryViewAsyncImageLoaderImageLoader = null;
-    InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { HardCodeUtil.a(2131714606), this.jdField_a_of_type_JavaLangObject });
+    InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { HardCodeUtil.a(2131714526), this.jdField_a_of_type_JavaLangObject });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.asyncImageLoader.Task
  * JD-Core Version:    0.7.0.1
  */

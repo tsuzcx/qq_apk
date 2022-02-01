@@ -16,81 +16,94 @@ public class Apn
   
   public static String getApnInfo(Context paramContext)
   {
-    try
+    String str = "unknown";
+    for (;;)
     {
-      paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
-      if ((paramContext != null) && (paramContext.isConnectedOrConnecting())) {
-        switch (paramContext.getType())
+      try
+      {
+        NetworkInfo localNetworkInfo = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+        paramContext = str;
+        if (localNetworkInfo != null)
         {
-        case 0: 
-          paramContext = paramContext.getExtraInfo();
-          return paramContext;
+          paramContext = str;
+          if (localNetworkInfo.isConnectedOrConnecting())
+          {
+            int i = localNetworkInfo.getType();
+            if (i != 0)
+            {
+              if (i == 1) {
+                break label59;
+              }
+              return "unknown";
+            }
+            paramContext = localNetworkInfo.getExtraInfo();
+          }
         }
+        return paramContext;
       }
+      catch (Exception paramContext)
+      {
+        return "unknown";
+      }
+      label59:
+      paramContext = "wifi";
     }
-    catch (Exception paramContext)
-    {
-      return "unknown";
-    }
-    return "unknown";
-    return "wifi";
   }
   
   public static int getApnType(Context paramContext)
   {
     paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+    int i = 1;
     if ((paramContext != null) && (paramContext.isConnectedOrConnecting()))
     {
-      switch (paramContext.getType())
+      int j = paramContext.getType();
+      if (j != 0)
       {
-      default: 
-        return 0;
-      case 1: 
+        if (j != 1) {
+          break label131;
+        }
         return 3;
       }
-      switch (paramContext.getSubtype())
-      {
-      default: 
-        return 0;
-      case 1: 
-      case 2: 
-      case 4: 
-      case 7: 
-      case 11: 
-        return 1;
-      case 3: 
-      case 5: 
-      case 6: 
-      case 8: 
-      case 9: 
-      case 10: 
-      case 12: 
-      case 14: 
-      case 15: 
-        return 2;
-      }
-      return 4;
     }
-    return 0;
+    switch (paramContext.getSubtype())
+    {
+    default: 
+      break;
+    case 13: 
+      return 4;
+    case 3: 
+    case 5: 
+    case 6: 
+    case 8: 
+    case 9: 
+    case 10: 
+    case 12: 
+    case 14: 
+    case 15: 
+      return 2;
+      label131:
+      i = 0;
+    }
+    return i;
   }
   
   public static String getWifiSSID(Context paramContext)
   {
+    Object localObject = null;
     try
     {
-      paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
-      if (paramContext != null)
-      {
-        paramContext = paramContext.getBSSID();
-        return paramContext;
+      WifiInfo localWifiInfo = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
+      paramContext = localObject;
+      if (localWifiInfo != null) {
+        paramContext = localWifiInfo.getBSSID();
       }
+      return paramContext;
     }
     catch (Throwable paramContext)
     {
       paramContext.printStackTrace();
-      return "";
     }
-    return null;
+    return "";
   }
   
   public static boolean isNetworkAvailable(Context paramContext)
@@ -104,7 +117,7 @@ public class Apn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.utils.Apn
  * JD-Core Version:    0.7.0.1
  */

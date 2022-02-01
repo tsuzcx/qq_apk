@@ -38,38 +38,32 @@ public class QAPMOkHttp3Instrumentation
     try
     {
       paramURL.getHost();
-      paramURL = paramOkUrlFactory.open(paramURL);
-      if (paramURL == null)
-      {
-        paramOkUrlFactory = null;
-        return paramOkUrlFactory;
-      }
     }
     catch (Exception localException)
     {
-      do
-      {
-        do
-        {
-          for (;;)
-          {
-            Logger.INSTANCE.exception("QAPM_Impl_QAPMOkHttp3Instrumentation", "QAPMOkHttp3Instrumentation open has an error :", localException);
-          }
-          paramOkUrlFactory = paramURL;
-        } while (!b.c());
-        Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMOkHttp3Instrumentation", "okhttp3  open gather  begin !!" });
-        if ((paramURL instanceof HttpsURLConnection)) {
-          return new e((HttpsURLConnection)paramURL);
-        }
-        paramOkUrlFactory = paramURL;
-      } while (!(paramURL instanceof HttpURLConnection));
+      Logger.INSTANCE.exception("QAPM_Impl_QAPMOkHttp3Instrumentation", "QAPMOkHttp3Instrumentation open has an error :", localException);
     }
-    return new d(paramURL);
+    paramURL = paramOkUrlFactory.open(paramURL);
+    if (paramURL == null) {
+      return null;
+    }
+    if (!b.c()) {
+      return paramURL;
+    }
+    Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMOkHttp3Instrumentation", "okhttp3  open gather  begin !!" });
+    if ((paramURL instanceof HttpsURLConnection)) {
+      return new e((HttpsURLConnection)paramURL);
+    }
+    paramOkUrlFactory = paramURL;
+    if ((paramURL instanceof HttpURLConnection)) {
+      paramOkUrlFactory = new d(paramURL);
+    }
+    return paramOkUrlFactory;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.QAPMOkHttp3Instrumentation
  * JD-Core Version:    0.7.0.1
  */

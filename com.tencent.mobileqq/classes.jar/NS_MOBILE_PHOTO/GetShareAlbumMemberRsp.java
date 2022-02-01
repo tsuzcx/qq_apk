@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class GetShareAlbumMemberRsp
   extends JceStruct
@@ -42,20 +43,23 @@ public class GetShareAlbumMemberRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret, 0);
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 1);
+    Object localObject = this.msg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.album != null) {
-      paramJceOutputStream.write(this.album, 2);
+    localObject = this.album;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.member_datas != null) {
-      paramJceOutputStream.write(this.member_datas, 3);
+    localObject = this.member_datas;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.GetShareAlbumMemberRsp
  * JD-Core Version:    0.7.0.1
  */

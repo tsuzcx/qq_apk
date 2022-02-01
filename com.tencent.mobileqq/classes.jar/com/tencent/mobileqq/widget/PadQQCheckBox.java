@@ -33,12 +33,12 @@ public class PadQQCheckBox
   public PadQQCheckBox(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.aa);
-    this.jdField_a_of_type_Boolean = paramAttributeSet.getBoolean(R.styleable.E, true);
-    this.jdField_a_of_type_JavaLangCharSequence = paramAttributeSet.getString(R.styleable.F);
-    LayoutInflater.from(paramContext).inflate(2131559656, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364713));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364723));
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ay);
+    this.jdField_a_of_type_Boolean = paramAttributeSet.getBoolean(R.styleable.ap, true);
+    this.jdField_a_of_type_JavaLangCharSequence = paramAttributeSet.getString(R.styleable.aq);
+    LayoutInflater.from(paramContext).inflate(2131559534, this, true);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364600));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364610));
     setChecked(this.jdField_a_of_type_Boolean);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
     paramAttributeSet.recycle();
@@ -52,39 +52,36 @@ public class PadQQCheckBox
   
   public void onClick(View paramView)
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      setChecked(bool);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
+    setChecked(this.jdField_a_of_type_Boolean ^ true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   @TargetApi(14)
   public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
     super.onInitializeAccessibilityNodeInfo(paramAccessibilityNodeInfo);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str = HardCodeUtil.a(2131707850);; str = HardCodeUtil.a(2131707849))
-    {
-      paramAccessibilityNodeInfo.setContentDescription(this.jdField_a_of_type_JavaLangCharSequence + str);
-      return;
+    int i;
+    if (this.jdField_a_of_type_Boolean) {
+      i = 2131707873;
+    } else {
+      i = 2131707872;
     }
+    String str = HardCodeUtil.a(i);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangCharSequence);
+    localStringBuilder.append(str);
+    paramAccessibilityNodeInfo.setContentDescription(localStringBuilder.toString());
   }
   
   public void setChecked(boolean paramBoolean)
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840790);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840665);
+    } else {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840663);
     }
-    for (;;)
-    {
-      refreshDrawableState();
-      return;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840788);
-    }
+    refreshDrawableState();
   }
   
   public void setText(CharSequence paramCharSequence)
@@ -98,7 +95,7 @@ public class PadQQCheckBox
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PadQQCheckBox
  * JD-Core Version:    0.7.0.1
  */

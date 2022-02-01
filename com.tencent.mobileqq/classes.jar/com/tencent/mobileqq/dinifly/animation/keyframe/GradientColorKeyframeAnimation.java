@@ -12,13 +12,12 @@ public class GradientColorKeyframeAnimation
   public GradientColorKeyframeAnimation(List<Keyframe<GradientColor>> paramList)
   {
     super(paramList);
+    int i = 0;
     paramList = (GradientColor)((Keyframe)paramList.get(0)).startValue;
-    if (paramList == null) {}
-    for (int i = 0;; i = paramList.getSize())
-    {
-      this.gradientColor = new GradientColor(new float[i], new int[i]);
-      return;
+    if (paramList != null) {
+      i = paramList.getSize();
     }
+    this.gradientColor = new GradientColor(new float[i], new int[i]);
   }
   
   GradientColor getValue(Keyframe<GradientColor> paramKeyframe, float paramFloat)
@@ -29,7 +28,7 @@ public class GradientColorKeyframeAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.keyframe.GradientColorKeyframeAnimation
  * JD-Core Version:    0.7.0.1
  */

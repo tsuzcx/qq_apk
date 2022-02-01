@@ -79,11 +79,13 @@ public class MonitorSocketStat
     }
     catch (Throwable paramb)
     {
-      do
-      {
-        this.running = false;
-      } while (this.dataFlow == null);
-      this.dataFlow.clear();
+      label17:
+      break label17;
+    }
+    this.running = false;
+    paramb = this.dataFlow;
+    if (paramb != null) {
+      paramb.clear();
     }
   }
   
@@ -92,70 +94,74 @@ public class MonitorSocketStat
     if (this.processName == null) {
       this.processName = MsfSdkUtils.getProcessName(BaseApplication.getContext());
     }
-    for (;;)
+    try
     {
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(BaseApplication.getContext().getPackageName());
+      ((StringBuilder)localObject1).append(":MSF");
       boolean bool;
-      try
-      {
-        if ((BaseApplication.getContext().getPackageName() + ":MSF").equals(this.processName))
+      Object localObject2;
+      if (((StringBuilder)localObject1).toString().equals(this.processName)) {
+        for (;;)
         {
           bool = this.running;
-          if (bool) {
-            try
-            {
-              b localb1 = (b)this.dataFlow.take();
-              localb1.a = this.processName;
-              if (localb1 != null) {
-                MsfService.getCore().getNetFlowStore().a(localb1);
-              }
-              if ((this.dataFlow.size() > 1) || (System.currentTimeMillis() - this.lastgotStatusTime < 60000L)) {
-                continue;
-              }
-              getnetFlowStatus();
-              this.lastgotStatusTime = System.currentTimeMillis();
-            }
-            catch (Throwable localThrowable1)
-            {
-              QLog.d("MSF.D.MonitorSocket", 1, "" + localThrowable1, localThrowable1);
-              com.tencent.mobileqq.msf.sdk.b.e.a(localThrowable1);
-              this.running = false;
-            }
+          if (!bool) {
+            return;
           }
           try
           {
-            if (this.dataFlow != null) {
-              this.dataFlow.clear();
+            localObject1 = (b)this.dataFlow.take();
+            ((b)localObject1).a = this.processName;
+            if (localObject1 != null) {
+              MsfService.getCore().getNetFlowStore().a((b)localObject1);
             }
-            return;
+            if ((this.dataFlow.size() <= 1) && (System.currentTimeMillis() - this.lastgotStatusTime >= 60000L))
+            {
+              getnetFlowStatus();
+              this.lastgotStatusTime = System.currentTimeMillis();
+            }
           }
-          catch (Throwable localThrowable2)
+          catch (Throwable localThrowable1)
           {
-            QLog.d("MSF.D.MonitorSocket", 1, "clear", localThrowable2);
-            return;
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("");
+            ((StringBuilder)localObject2).append(localThrowable1);
+            QLog.d("MSF.D.MonitorSocket", 1, ((StringBuilder)localObject2).toString(), localThrowable1);
+            com.tencent.mobileqq.msf.sdk.b.e.a(localThrowable1);
+            this.running = false;
+            try
+            {
+              if (this.dataFlow == null) {
+                return;
+              }
+              this.dataFlow.clear();
+              return;
+            }
+            catch (Throwable localThrowable2)
+            {
+              QLog.d("MSF.D.MonitorSocket", 1, "clear", localThrowable2);
+              return;
+            }
           }
         }
-        bool = this.running;
       }
-      catch (Exception localException1)
+      for (;;)
       {
-        if (this.dataFlow != null) {
-          this.dataFlow.clear();
+        bool = this.running;
+        if (!bool) {
+          break;
         }
-        QLog.d("MSF.D.MonitorSocket", 1, "" + localException1, localException1);
-        return;
-      }
-      while (bool) {
         try
         {
-          b localb2 = (b)this.dataFlow.take();
-          if (localb2 != null)
+          b localb = (b)this.dataFlow.take();
+          if (localb != null)
           {
-            ToServiceMsg localToServiceMsg = MsfServiceSdk.get().getDataFlowMsg(this.processName, localb2);
-            int i = MsfServiceSdk.get().sendMsg(localToServiceMsg);
+            localObject2 = MsfServiceSdk.get().getDataFlowMsg(this.processName, localb);
+            int i = MsfServiceSdk.get().sendMsg((ToServiceMsg)localObject2);
             if (i < 0)
             {
               int j = (int)(Math.random() * 5.0D + 3.0D);
-              runOnMonitorSocketThread(new e(this, localb2, i), j * 1000);
+              runOnMonitorSocketThread(new e(this, localb, i), j * 1000);
             }
           }
           if ((this.dataFlow.size() <= 1) && (System.currentTimeMillis() - this.lastgotStatusTime >= 60000L))
@@ -164,12 +170,27 @@ public class MonitorSocketStat
             this.lastgotStatusTime = System.currentTimeMillis();
           }
         }
-        catch (Exception localException2)
+        catch (Exception localException1)
         {
-          QLog.d("MSF.D.MonitorSocket", 1, "" + localException2, localException2);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("");
+          ((StringBuilder)localObject2).append(localException1);
+          QLog.d("MSF.D.MonitorSocket", 1, ((StringBuilder)localObject2).toString(), localException1);
           this.running = false;
         }
       }
+      return;
+    }
+    catch (Exception localException2)
+    {
+      localObject2 = this.dataFlow;
+      if (localObject2 != null) {
+        ((LinkedBlockingDeque)localObject2).clear();
+      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("");
+      ((StringBuilder)localObject2).append(localException2);
+      QLog.d("MSF.D.MonitorSocket", 1, ((StringBuilder)localObject2).toString(), localException2);
     }
   }
   
@@ -180,7 +201,7 @@ public class MonitorSocketStat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.utils.MonitorSocketStat
  * JD-Core Version:    0.7.0.1
  */

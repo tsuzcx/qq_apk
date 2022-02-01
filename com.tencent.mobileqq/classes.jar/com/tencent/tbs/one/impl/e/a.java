@@ -16,8 +16,8 @@ public final class a
   
   public final void run()
   {
-    int i = 0;
     super.run();
+    int i = 0;
     com.tencent.tbs.one.impl.a.f.a("Running cleanup thread", new Object[0]);
     c.a(com.tencent.tbs.one.impl.common.f.a(this.a, Process.myPid()));
     File[] arrayOfFile = com.tencent.tbs.one.impl.common.f.a(this.a).listFiles();
@@ -34,7 +34,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.e.a
  * JD-Core Version:    0.7.0.1
  */

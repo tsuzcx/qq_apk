@@ -8,6 +8,8 @@ import com.tencent.biz.troop.file.protocol.TroopFileReqDownloadFileObserver;
 import com.tencent.mm.vfs.VFSFile;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.api.IFileIPv6StrateyController;
+import com.tencent.mobileqq.filemanager.api.ITroopFileProtoReq;
 import com.tencent.mobileqq.filemanager.core.FileIPv6StrateyController;
 import com.tencent.mobileqq.filemanager.core.FileIPv6StrateyController.DomainInfo;
 import com.tencent.mobileqq.filemanager.core.FileIPv6StrateyController.IPListInfo;
@@ -15,7 +17,6 @@ import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.FilePicURLDrawlableHelper;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.troop.filemanager.TroopFileDataCenter;
-import com.tencent.mobileqq.troop.filemanager.TroopFileProtoReqMgr.ProtoRequest;
 import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil;
 import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil.Log;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
@@ -34,7 +35,7 @@ public class TroopFileThumbnailFetchWorker
   protected int a;
   protected long a;
   TroopFileReqDownloadFileObserver a;
-  protected TroopFileProtoReqMgr.ProtoRequest a;
+  protected ITroopFileProtoReq a;
   protected TroopFileThumbnailDownloader a;
   protected TroopFileThumbnailFetchWorker.ITroopFileThumbFetchWorkerListener a;
   protected TroopFileTransferManager.Item a;
@@ -121,38 +122,55 @@ public class TroopFileThumbnailFetchWorker
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      TroopFileTransferUtil.Log.c("TroopFileDownloadWorker", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] stop. but had stoped. mStatus:" + this.jdField_b_of_type_Int);
+      i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append("] stop. but had stoped. mStatus:");
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+      TroopFileTransferUtil.Log.c("TroopFileDownloadWorker", i, ((StringBuilder)localObject).toString());
       return;
     }
     this.jdField_a_of_type_Boolean = true;
-    TroopFileTransferUtil.Log.c("TroopFileDownloadWorker", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] stop fetch. mStatus:" + this.jdField_b_of_type_Int);
+    int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append("] stop fetch. mStatus:");
+    ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+    TroopFileTransferUtil.Log.c("TroopFileDownloadWorker", i, ((StringBuilder)localObject).toString());
     if (this.jdField_b_of_type_Int == 2)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailDownloader == null) {
-        break label197;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailDownloader.c();
-      this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailDownloader = null;
-    }
-    for (;;)
-    {
-      g();
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequest != null)
+      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailDownloader;
+      if (localObject != null)
       {
-        TroopFileProtocol.a(TroopFileTransferUtil.a(), this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequest);
-        this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequest = null;
+        ((TroopFileThumbnailDownloader)localObject).c();
+        this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailDownloader = null;
       }
-      e();
-      if (!TextUtils.isEmpty(this.d)) {
-        FileUtils.e(this.d);
+      else
+      {
+        i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append("] stop downloader=null");
+        TroopFileTransferUtil.Log.b("TroopFileDownloadWorker", i, ((StringBuilder)localObject).toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.StatusUpdateTimeMs = 0L;
-      TroopFileDataCenter.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
-      b(0);
-      return;
-      label197:
-      TroopFileTransferUtil.Log.b("TroopFileDownloadWorker", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] stop downloader=null");
     }
+    g();
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiITroopFileProtoReq != null)
+    {
+      TroopFileProtocol.a(TroopFileTransferUtil.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiITroopFileProtoReq);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiITroopFileProtoReq = null;
+    }
+    e();
+    if (!TextUtils.isEmpty(this.d)) {
+      FileUtils.deleteFile(this.d);
+    }
+    localObject = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item;
+    ((TroopFileTransferManager.Item)localObject).StatusUpdateTimeMs = 0L;
+    TroopFileDataCenter.b(this.jdField_a_of_type_Long, (TroopFileTransferManager.Item)localObject);
+    b(0);
   }
   
   public void a(int paramInt)
@@ -169,144 +187,219 @@ public class TroopFileThumbnailFetchWorker
     QQAppInterface localQQAppInterface = TroopFileTransferUtil.a();
     if (localQQAppInterface == null)
     {
-      TroopFileTransferUtil.Log.a("TroopFileDownloadWorker", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] startFetch app=null");
+      paramInt1 = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      paramString = new StringBuilder();
+      paramString.append("[");
+      paramString.append(this.jdField_a_of_type_JavaLangString);
+      paramString.append("] startFetch app=null");
+      TroopFileTransferUtil.Log.a("TroopFileDownloadWorker", paramInt1, paramString.toString());
       c(TroopTechReportUtils.TroopFileReportResultCode.w);
       return;
     }
-    FileUtils.e(this.d);
-    boolean bool3 = false;
-    boolean bool2 = false;
-    Object localObject3 = null;
-    Object localObject2 = null;
-    Object localObject1 = "/ftn_handler/" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadUrl + "/?fname=" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath + "&pictype=cut&size=" + this.jdField_a_of_type_Int + "*" + this.jdField_a_of_type_Int;
+    FileUtils.deleteFile(this.d);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("/ftn_handler/");
+    ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadUrl);
+    ((StringBuilder)localObject1).append("/?fname=");
+    ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath);
+    ((StringBuilder)localObject1).append("&pictype=cut&size=");
+    ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject1).append("*");
+    ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+    localObject1 = ((StringBuilder)localObject1).toString();
     ArrayList localArrayList = new ArrayList();
-    int i;
-    boolean bool1;
+    boolean bool;
+    StringBuilder localStringBuilder;
     if (this.jdField_b_of_type_Boolean)
     {
-      i = paramInt1;
+      int i = 443;
       if (paramInt1 <= 0) {
-        i = 443;
+        paramInt1 = 443;
       }
-      localObject1 = localObject2;
-      bool1 = bool2;
-      if (TroopFileUtils.d(localQQAppInterface))
+      if ((TroopFileUtils.c(localQQAppInterface)) && (!TextUtils.isEmpty(paramString)))
       {
-        localObject1 = localObject2;
-        bool1 = bool2;
-        if (!TextUtils.isEmpty(paramString))
-        {
-          bool1 = true;
-          localObject1 = paramString;
-        }
-      }
-      if (!bool1) {
-        break label1225;
-      }
-      paramInt1 = paramInt2;
-      if (paramInt2 > 0) {}
-    }
-    label779:
-    label1171:
-    label1225:
-    for (paramInt1 = 443;; paramInt1 = i)
-    {
-      localObject2 = "/ftn_video_pic/rkey=" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadUrl + "&filetype=17&size=" + this.jdField_a_of_type_Int + "*" + this.jdField_a_of_type_Int + "&";
-      localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp + ":" + paramInt1);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS))
-      {
-        if (!FileIPv6StrateyController.a().a(localQQAppInterface, 3)) {
-          break label779;
-        }
-        QLog.i("TroopFileDownloadWorker", 1, "[" + this.jdField_a_of_type_JavaLangString + "] [IPv6-File] download troopVideo thumb. is config enable IPv6. domain[" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS + "]");
-        paramString = new FileIPv6StrateyController.DomainInfo(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS, paramInt1);
-        paramString = FileIPv6StrateyController.a().a(localQQAppInterface, paramString, 3);
-        if ((paramString != null) && (!paramString.a()))
-        {
-          if (FileIPv6StrateyController.a())
-          {
-            QLog.d("TroopFileDownloadWorker", 1, "[" + this.jdField_a_of_type_JavaLangString + "] [IPv6-File] download troopVideo thumb. debugIsDisableIPv4OnDoubleStack");
-            localArrayList.clear();
-          }
-          FileIPv6StrateyController.a(paramString.a, localArrayList, false, false);
-          QLog.i("TroopFileDownloadWorker", 1, "[" + this.jdField_a_of_type_JavaLangString + "] [IPv6-File] download troopVideo thumb. use IPv6. iplist:" + localArrayList.toString());
-        }
+        bool = true;
       }
       else
       {
-        paramString = (String)localObject1;
-        localObject1 = localObject2;
+        bool = false;
+        paramString = null;
       }
-      for (;;)
+      if (bool) {
+        if (paramInt2 <= 0) {
+          paramInt1 = i;
+        } else {
+          paramInt1 = paramInt2;
+        }
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("/ftn_video_pic/rkey=");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadUrl);
+      ((StringBuilder)localObject1).append("&filetype=17&size=");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject1).append("*");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject1).append("&");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp);
+      ((StringBuilder)localObject2).append(":");
+      ((StringBuilder)localObject2).append(paramInt1);
+      localArrayList.add(((StringBuilder)localObject2).toString());
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS)) {
+        if (FileIPv6StrateyController.a().isConfigEnableIPV6(localQQAppInterface, 3))
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("[");
+          ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject2).append("] [IPv6-File] download troopVideo thumb. is config enable IPv6. domain[");
+          ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS);
+          ((StringBuilder)localObject2).append("]");
+          QLog.i("TroopFileDownloadWorker", 1, ((StringBuilder)localObject2).toString());
+          localObject2 = new FileIPv6StrateyController.DomainInfo(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS, paramInt1);
+          localObject2 = FileIPv6StrateyController.a().getIPlistForV6Domain(localQQAppInterface, (FileIPv6StrateyController.DomainInfo)localObject2, 3);
+          if ((localObject2 != null) && (!((FileIPv6StrateyController.IPListInfo)localObject2).a()))
+          {
+            if (FileIPv6StrateyController.a())
+            {
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("[");
+              localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+              localStringBuilder.append("] [IPv6-File] download troopVideo thumb. debugIsDisableIPv4OnDoubleStack");
+              QLog.d("TroopFileDownloadWorker", 1, localStringBuilder.toString());
+              localArrayList.clear();
+            }
+            FileIPv6StrateyController.a(((FileIPv6StrateyController.IPListInfo)localObject2).a, localArrayList, false, false);
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("[");
+            ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject2).append("] [IPv6-File] download troopVideo thumb. use IPv6. iplist:");
+            ((StringBuilder)localObject2).append(localArrayList.toString());
+            QLog.i("TroopFileDownloadWorker", 1, ((StringBuilder)localObject2).toString());
+          }
+          else
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("[");
+            ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject2).append("] [IPv6-File] download troopVideo thumb. use IPv4:");
+            QLog.i("TroopFileDownloadWorker", 1, ((StringBuilder)localObject2).toString());
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS);
+            ((StringBuilder)localObject2).append(":");
+            ((StringBuilder)localObject2).append(paramInt1);
+            localArrayList.add(((StringBuilder)localObject2).toString());
+          }
+        }
+        else
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS);
+          ((StringBuilder)localObject2).append(":");
+          ((StringBuilder)localObject2).append(paramInt1);
+          localArrayList.add(((StringBuilder)localObject2).toString());
+        }
+      }
+    }
+    else
+    {
+      if ((TroopFileUtils.c(localQQAppInterface)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS)))
       {
-        long l = TroopFileTransferUtil.a();
-        TroopFileTransferUtil.Log.c("TroopFileDownloadWorker", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] startFetch. nSessionId:" + l + " firstIP=" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp + " urlParams:" + (String)localObject1 + " mTmpFilePath:" + this.d + " bUseHttps:" + bool1 + " httpsDomain:" + paramString);
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailDownloader != null)
+        paramString = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS;
+        bool = true;
+      }
+      else
+      {
+        bool = false;
+        paramString = null;
+      }
+      localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp);
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS)) {
+        if (FileIPv6StrateyController.a().isConfigEnableIPV6(localQQAppInterface, 3))
         {
-          this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailDownloader.c();
-          this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailDownloader = null;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailDownloader = TroopFileThumbnailDownloader.a(localQQAppInterface, l, this.d, 0L, localArrayList, (String)localObject1, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue, this.jdField_b_of_type_Boolean, bool1, paramString);
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailDownloader != null) {
-          break label1171;
-        }
-        c(TroopTechReportUtils.TroopFileReportResultCode.w);
-        return;
-        QLog.i("TroopFileDownloadWorker", 1, "[" + this.jdField_a_of_type_JavaLangString + "] [IPv6-File] download troopVideo thumb. use IPv4:");
-        localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS + ":" + paramInt1);
-        break;
-        localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS + ":" + paramInt1);
-        break;
-        paramString = localObject3;
-        bool1 = bool3;
-        if (TroopFileUtils.d(localQQAppInterface))
-        {
-          paramString = localObject3;
-          bool1 = bool3;
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS))
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("[");
+          ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject2).append("] [IPv6-File] download troopImage thumb. is config enable IPv6. domain[");
+          ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS);
+          ((StringBuilder)localObject2).append("]");
+          QLog.i("TroopFileDownloadWorker", 1, ((StringBuilder)localObject2).toString());
+          localObject2 = new FileIPv6StrateyController.DomainInfo(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS, 0);
+          localObject2 = FileIPv6StrateyController.a().getIPlistForV6Domain(localQQAppInterface, (FileIPv6StrateyController.DomainInfo)localObject2, 3);
+          if ((localObject2 != null) && (!((FileIPv6StrateyController.IPListInfo)localObject2).a()))
           {
-            bool1 = true;
-            paramString = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS;
+            if (FileIPv6StrateyController.a())
+            {
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("[");
+              localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+              localStringBuilder.append("] [IPv6-File] download troopImage thumb. debugIsDisableIPv4OnDoubleStack");
+              QLog.d("TroopFileDownloadWorker", 1, localStringBuilder.toString());
+              localArrayList.clear();
+            }
+            FileIPv6StrateyController.a(((FileIPv6StrateyController.IPListInfo)localObject2).a, localArrayList, true, false);
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("[");
+            ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject2).append("] [IPv6-File] download troopImage thumb. use IPv6. iplist:");
+            ((StringBuilder)localObject2).append(localArrayList.toString());
+            QLog.i("TroopFileDownloadWorker", 1, ((StringBuilder)localObject2).toString());
+          }
+          else
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("[");
+            ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject2).append("] [IPv6-File] download troopImage thumb. use IPv4");
+            QLog.i("TroopFileDownloadWorker", 1, ((StringBuilder)localObject2).toString());
+            localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS);
           }
         }
-        localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp);
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS))
+        else
         {
-          if (FileIPv6StrateyController.a().a(localQQAppInterface, 3))
-          {
-            QLog.i("TroopFileDownloadWorker", 1, "[" + this.jdField_a_of_type_JavaLangString + "] [IPv6-File] download troopImage thumb. is config enable IPv6. domain[" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS + "]");
-            localObject2 = new FileIPv6StrateyController.DomainInfo(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS, 0);
-            localObject2 = FileIPv6StrateyController.a().a(localQQAppInterface, (FileIPv6StrateyController.DomainInfo)localObject2, 3);
-            if ((localObject2 != null) && (!((FileIPv6StrateyController.IPListInfo)localObject2).a()))
-            {
-              if (FileIPv6StrateyController.a())
-              {
-                QLog.d("TroopFileDownloadWorker", 1, "[" + this.jdField_a_of_type_JavaLangString + "] [IPv6-File] download troopImage thumb. debugIsDisableIPv4OnDoubleStack");
-                localArrayList.clear();
-              }
-              FileIPv6StrateyController.a(((FileIPv6StrateyController.IPListInfo)localObject2).a, localArrayList, true, false);
-              QLog.i("TroopFileDownloadWorker", 1, "[" + this.jdField_a_of_type_JavaLangString + "] [IPv6-File] download troopImage thumb. use IPv6. iplist:" + localArrayList.toString());
-            }
-            for (;;)
-            {
-              break;
-              QLog.i("TroopFileDownloadWorker", 1, "[" + this.jdField_a_of_type_JavaLangString + "] [IPv6-File] download troopImage thumb. use IPv4");
-              localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS);
-            }
-          }
           localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS);
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailDownloader.a(this);
-      this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailDownloader.i();
-      this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailDownloader.a(false);
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.duration != 0) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailDownloader.b(true);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailDownloader.b();
-      b(2);
+    }
+    long l = TroopFileTransferUtil.a();
+    paramInt1 = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("[");
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject2).append("] startFetch. nSessionId:");
+    ((StringBuilder)localObject2).append(l);
+    ((StringBuilder)localObject2).append(" firstIP=");
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp);
+    ((StringBuilder)localObject2).append(" urlParams:");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(" mTmpFilePath:");
+    ((StringBuilder)localObject2).append(this.d);
+    ((StringBuilder)localObject2).append(" bUseHttps:");
+    ((StringBuilder)localObject2).append(bool);
+    ((StringBuilder)localObject2).append(" httpsDomain:");
+    ((StringBuilder)localObject2).append(paramString);
+    TroopFileTransferUtil.Log.c("TroopFileDownloadWorker", paramInt1, ((StringBuilder)localObject2).toString());
+    localObject2 = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailDownloader;
+    if (localObject2 != null)
+    {
+      ((TroopFileThumbnailDownloader)localObject2).c();
+      this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailDownloader = null;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailDownloader = TroopFileThumbnailDownloader.a(localQQAppInterface, l, this.d, 0L, localArrayList, (String)localObject1, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue, this.jdField_b_of_type_Boolean, bool, paramString);
+    paramString = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailDownloader;
+    if (paramString == null)
+    {
+      c(TroopTechReportUtils.TroopFileReportResultCode.w);
       return;
     }
+    paramString.a(this);
+    this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailDownloader.i();
+    this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailDownloader.a(false);
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.duration != 0) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailDownloader.b(true);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailDownloader.b();
+    b(2);
   }
   
   public void a(long paramLong1, long paramLong2) {}
@@ -322,93 +415,120 @@ public class TroopFileThumbnailFetchWorker
   protected void a(boolean paramBoolean)
   {
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequest = null;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiITroopFileProtoReq = null;
     g();
     if ((!paramBoolean) && (!FileManagerUtil.a(new VFSFile(this.d), new VFSFile(this.e))))
     {
-      TroopFileTransferUtil.Log.a("TroopFileDownloadWorker", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] renameFile fail  mFilePath:" + this.e);
-      if (FileUtils.b(this.e)) {
+      i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append("] renameFile fail  mFilePath:");
+      ((StringBuilder)localObject).append(this.e);
+      TroopFileTransferUtil.Log.a("TroopFileDownloadWorker", i, ((StringBuilder)localObject).toString());
+      if (FileUtils.fileExistsAndNotEmpty(this.e))
+      {
         c(TroopTechReportUtils.TroopFileReportResultCode.o);
+        return;
       }
     }
-    do
+    b(3);
+    f();
+    int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append("] onFetchSuc  mFilePath:");
+    ((StringBuilder)localObject).append(this.e);
+    TroopFileTransferUtil.Log.c("TroopFileDownloadWorker", i, ((StringBuilder)localObject).toString());
+    if (!paramBoolean) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.StatusUpdateTimeMs = 0L;
+    }
+    if ((this.jdField_a_of_type_Int == 640) && (!FileUtil.b(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getThumbnailFile(this.jdField_a_of_type_Long, 383)))) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.genThumb_Middle_OnGettedLargeOrOrigPic = true;
+    }
+    localObject = new BitmapFactory.Options();
+    ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
+    FilePicURLDrawlableHelper.a(this.e, (BitmapFactory.Options)localObject);
+    if ((((BitmapFactory.Options)localObject).outWidth > 0) && (((BitmapFactory.Options)localObject).outHeight > 0))
     {
-      return;
-      b(3);
-      f();
-      TroopFileTransferUtil.Log.c("TroopFileDownloadWorker", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onFetchSuc  mFilePath:" + this.e);
-      if (!paramBoolean) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.StatusUpdateTimeMs = 0L;
-      }
-      if ((this.jdField_a_of_type_Int == 640) && (!FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getThumbnailFile(this.jdField_a_of_type_Long, 383)))) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.genThumb_Middle_OnGettedLargeOrOrigPic = true;
-      }
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inJustDecodeBounds = true;
-      FilePicURLDrawlableHelper.a(this.e, localOptions);
-      if ((localOptions.outWidth > 0) && (localOptions.outHeight > 0))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.width = localOptions.outWidth;
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.height = localOptions.outHeight;
-      }
-      TroopFileDataCenter.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
-      TroopFileDataCenter.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
-    } while (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailFetchWorker$ITroopFileThumbFetchWorkerListener == null);
-    this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailFetchWorker$ITroopFileThumbFetchWorkerListener.a(a(), true, 0, this);
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.width = ((BitmapFactory.Options)localObject).outWidth;
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.height = ((BitmapFactory.Options)localObject).outHeight;
+    }
+    TroopFileDataCenter.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
+    TroopFileDataCenter.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailFetchWorker$ITroopFileThumbFetchWorkerListener;
+    if (localObject != null) {
+      ((TroopFileThumbnailFetchWorker.ITroopFileThumbFetchWorkerListener)localObject).a(a(), true, 0, this);
+    }
   }
   
   public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    while (!paramBoolean) {
+    if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    TroopFileTransferUtil.Log.a("TroopFileDownloadWorker", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onHasErr. fetch fail. errCode:" + paramInt + " transferedSize:" + paramLong);
-    int i;
-    if (paramInt == -5000) {
+    if (!paramBoolean) {
+      return;
+    }
+    int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+    paramString1 = new StringBuilder();
+    paramString1.append("[");
+    paramString1.append(this.jdField_a_of_type_JavaLangString);
+    paramString1.append("] onHasErr. fetch fail. errCode:");
+    paramString1.append(paramInt);
+    paramString1.append(" transferedSize:");
+    paramString1.append(paramLong);
+    TroopFileTransferUtil.Log.a("TroopFileDownloadWorker", i, paramString1.toString());
+    if (paramInt == -5000)
+    {
       i = TroopTechReportUtils.TroopFileReportResultCode.h;
     }
-    for (;;)
+    else if (paramInt == -5001)
     {
-      c(i);
-      return;
-      if (paramInt == -5001)
-      {
-        i = TroopTechReportUtils.TroopFileReportResultCode.g;
-      }
-      else if (paramInt == 9039)
-      {
-        i = TroopTechReportUtils.TroopFileReportResultCode.n;
-      }
-      else if (paramInt == 9004)
-      {
-        i = TroopTechReportUtils.TroopFileReportResultCode.k;
-      }
-      else if (paramInt == 9301)
-      {
-        i = TroopTechReportUtils.TroopFileReportResultCode.i;
-      }
-      else if (paramInt == -5001)
-      {
-        i = TroopTechReportUtils.TroopFileReportResultCode.q;
-      }
-      else if (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailDownloader.b())
-      {
-        i = TroopTechReportUtils.TroopFileReportResultCode.p;
-      }
-      else
-      {
-        i = paramInt;
-        if (paramInt == -5003) {
-          i = TroopTechReportUtils.TroopFileReportResultCode.y;
-        }
+      i = TroopTechReportUtils.TroopFileReportResultCode.g;
+    }
+    else if (paramInt == 9039)
+    {
+      i = TroopTechReportUtils.TroopFileReportResultCode.n;
+    }
+    else if (paramInt == 9004)
+    {
+      i = TroopTechReportUtils.TroopFileReportResultCode.k;
+    }
+    else if (paramInt == 9301)
+    {
+      i = TroopTechReportUtils.TroopFileReportResultCode.i;
+    }
+    else if (paramInt == -5001)
+    {
+      i = TroopTechReportUtils.TroopFileReportResultCode.q;
+    }
+    else if (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailDownloader.b())
+    {
+      i = TroopTechReportUtils.TroopFileReportResultCode.p;
+    }
+    else
+    {
+      i = paramInt;
+      if (paramInt == -5003) {
+        i = TroopTechReportUtils.TroopFileReportResultCode.y;
       }
     }
+    c(i);
   }
   
   public boolean a()
   {
-    TroopFileTransferUtil.Log.c("TroopFileDownloadWorker", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] start fetch thumb. filename:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName + " filePath:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath);
+    int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("] start fetch thumb. filename:");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName);
+    localStringBuilder.append(" filePath:");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath);
+    TroopFileTransferUtil.Log.c("TroopFileDownloadWorker", i, localStringBuilder.toString());
     this.jdField_a_of_type_Boolean = false;
     ThreadManager.post(new TroopFileThumbnailFetchWorker.1(this), 8, null, false);
     return true;
@@ -416,15 +536,25 @@ public class TroopFileThumbnailFetchWorker
   
   protected void b()
   {
-    QQAppInterface localQQAppInterface = TroopFileTransferUtil.a();
-    if (localQQAppInterface == null)
+    Object localObject = TroopFileTransferUtil.a();
+    if (localObject == null)
     {
-      TroopFileTransferUtil.Log.a("TroopFileDownloadWorker", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] reqFetch app=null");
+      i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append("] reqFetch app=null");
+      TroopFileTransferUtil.Log.a("TroopFileDownloadWorker", i, ((StringBuilder)localObject).toString());
       c(TroopTechReportUtils.TroopFileReportResultCode.w);
       return;
     }
-    TroopFileTransferUtil.Log.c("TroopFileDownloadWorker", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] reqFetch");
-    this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequest = TroopFileProtocol.a(localQQAppInterface, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int, false, false, this.jdField_a_of_type_ComTencentBizTroopFileProtocolTroopFileReqDownloadFileObserver);
+    int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("] reqFetch");
+    TroopFileTransferUtil.Log.c("TroopFileDownloadWorker", i, localStringBuilder.toString());
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiITroopFileProtoReq = TroopFileProtocol.a((QQAppInterface)localObject, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int, false, false, this.jdField_a_of_type_ComTencentBizTroopFileProtocolTroopFileReqDownloadFileObserver);
     b(1);
   }
   
@@ -447,30 +577,32 @@ public class TroopFileThumbnailFetchWorker
   protected void c(int paramInt)
   {
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequest = null;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiITroopFileProtoReq = null;
     g();
     if (!TextUtils.isEmpty(this.d)) {
-      FileUtils.e(this.d);
+      FileUtils.deleteFile(this.d);
     }
     b(4);
     e();
-    TroopFileTransferUtil.Log.a("TroopFileDownloadWorker", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onFetchErr  errCode:" + paramInt);
+    int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append("] onFetchErr  errCode:");
+    ((StringBuilder)localObject).append(paramInt);
+    TroopFileTransferUtil.Log.a("TroopFileDownloadWorker", i, ((StringBuilder)localObject).toString());
     this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.StatusUpdateTimeMs = 0L;
     if (paramInt == TroopTechReportUtils.TroopFileReportResultCode.y) {
       this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.thumbInvalidCode = 1;
+    } else if (paramInt == TroopTechReportUtils.TroopFileReportResultCode.p) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.thumbInvalidCode = 2;
+    } else {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.thumbInvalidCode = 0;
     }
-    for (;;)
-    {
-      TroopFileDataCenter.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailFetchWorker$ITroopFileThumbFetchWorkerListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailFetchWorker$ITroopFileThumbFetchWorkerListener.a(a(), false, paramInt, this);
-      }
-      return;
-      if (paramInt == TroopTechReportUtils.TroopFileReportResultCode.p) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.thumbInvalidCode = 2;
-      } else {
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.thumbInvalidCode = 0;
-      }
+    TroopFileDataCenter.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailFetchWorker$ITroopFileThumbFetchWorkerListener;
+    if (localObject != null) {
+      ((TroopFileThumbnailFetchWorker.ITroopFileThumbFetchWorkerListener)localObject).a(a(), false, paramInt, this);
     }
   }
   
@@ -488,25 +620,14 @@ public class TroopFileThumbnailFetchWorker
   {
     TroopFileThumbnailMgr.b(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int);
     boolean bool = TroopFileThumbnailMgr.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int, this.e);
-    TroopFileTransferManager.Item localItem;
-    if (this.jdField_a_of_type_Int == 383)
-    {
-      localItem = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item;
-      if (bool) {
-        break label58;
-      }
-    }
-    label58:
-    for (bool = true;; bool = false)
-    {
-      localItem.ThumbnailDownloading_Middle_Fail = bool;
-      return;
+    if (this.jdField_a_of_type_Int == 383) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ThumbnailDownloading_Middle_Fail = (bool ^ true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailFetchWorker
  * JD-Core Version:    0.7.0.1
  */

@@ -37,7 +37,7 @@ public class PhotoViewSelectedImageView
     return this.jdField_a_of_type_Boolean;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     if (isSelected()) {
       paramCanvas.drawRoundRect(new RectF(0.0F, 0.0F, getWidth(), getHeight()), 5.0F, 5.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
@@ -52,7 +52,7 @@ public class PhotoViewSelectedImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PhotoViewSelectedImageView
  * JD-Core Version:    0.7.0.1
  */

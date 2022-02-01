@@ -25,31 +25,25 @@ public class TestStructMsg
       paramString = localStructMsgParserHandler.a();
       return paramString;
     }
+    catch (IOException paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("TestStructMsg", 2, "getStructMsgFromXmlBuffByStream", paramString);
+      }
+    }
+    catch (SAXException paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("TestStructMsg", 2, "getStructMsgFromXmlBuffByStream", paramString);
+      }
+    }
     catch (ParserConfigurationException paramString)
     {
       if (QLog.isColorLevel()) {
         QLog.e("TestStructMsg", 2, "getStructMsgFromXmlBuffByStream", paramString);
       }
-      return null;
     }
-    catch (SAXException paramString)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TestStructMsg", 2, "getStructMsgFromXmlBuffByStream", paramString);
-        }
-      }
-    }
-    catch (IOException paramString)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TestStructMsg", 2, "getStructMsgFromXmlBuffByStream", paramString);
-        }
-      }
-    }
+    return null;
   }
   
   public static String a(String paramString)
@@ -68,18 +62,18 @@ public class TestStructMsg
         localByteArrayOutputStream.write(arrayOfByte, 0, i);
       }
       paramString = new String(localByteArrayOutputStream.toByteArray(), "utf-8");
+      return paramString;
     }
     catch (IOException paramString)
     {
       paramString.printStackTrace();
-      return "";
     }
-    return paramString;
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.TestStructMsg
  * JD-Core Version:    0.7.0.1
  */

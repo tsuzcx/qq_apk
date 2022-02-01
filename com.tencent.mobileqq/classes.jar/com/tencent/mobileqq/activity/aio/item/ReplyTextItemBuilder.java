@@ -18,7 +18,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils.TruncateAt;
 import android.text.method.LinkMovementMethod;
@@ -60,16 +59,16 @@ import com.tencent.mobileqq.activity.selectable.AIOSelectableDelegateProxy;
 import com.tencent.mobileqq.activity.selectable.SelectableComponent;
 import com.tencent.mobileqq.activity.selectable.SelectableLinearLayout;
 import com.tencent.mobileqq.adapter.ChatHistoryStructAdapter;
-import com.tencent.mobileqq.app.FlashPicHelper;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.GlobalImageCache;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.ark.api.IArkMsgReplyMgr;
 import com.tencent.mobileqq.bubble.BubbleInfo;
 import com.tencent.mobileqq.comment.DanmuUtil;
-import com.tencent.mobileqq.config.business.ArkMsgReplyConfigMgr;
 import com.tencent.mobileqq.data.ArkAppMessage;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.HasSourceMessage;
@@ -101,22 +100,25 @@ import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 import com.tencent.mobileqq.forward.ForwardBaseOption;
 import com.tencent.mobileqq.model.ChatBackgroundManager;
 import com.tencent.mobileqq.pic.PicContants;
+import com.tencent.mobileqq.pic.api.IPicFlash;
+import com.tencent.mobileqq.pic.api.IPicUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.replymsg.ForwardMsgManager;
 import com.tencent.mobileqq.replymsg.ReplyItemClickListener;
+import com.tencent.mobileqq.shortvideo.SVBusiUtil;
+import com.tencent.mobileqq.shortvideo.SVUtils;
 import com.tencent.mobileqq.shortvideo.ShortVideoBusiManager;
 import com.tencent.mobileqq.shortvideo.ShortVideoDownloadInfo;
 import com.tencent.mobileqq.shortvideo.ShortVideoReq;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.mobileqq.simpleui.SimpleUIUtil;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.teamwork.TeamWorkUtils;
+import com.tencent.mobileqq.teamwork.api.ITeamWorkUtils;
 import com.tencent.mobileqq.text.ColorNickText;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.text.QQTextBuilder;
 import com.tencent.mobileqq.text.style.EmoticonSpan;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.transfile.AbsDownloader;
 import com.tencent.mobileqq.transfile.CommonImgThumbHelper;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
@@ -134,6 +136,7 @@ import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.TimeFormatterUtils;
 import com.tencent.mobileqq.vas.ColorNickManager;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mobileqq.widget.AnimationTextView;
 import com.tencent.mobileqq.widget.BubbleImageView;
 import com.tencent.mobileqq.widget.PhotoProgressDrawable;
@@ -141,12 +144,11 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinnableBitmapDrawable;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import cooperation.peak.PeakUtils;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.os.MqqHandler;
 import org.jetbrains.annotations.Nullable;
@@ -177,52 +179,63 @@ public class ReplyTextItemBuilder
   private int a(Bitmap paramBitmap)
   {
     int i = 0;
-    int j = 0;
-    long l1 = 0L;
     if (paramBitmap != null)
     {
-      int k = paramBitmap.getWidth() / 2;
-      int m = paramBitmap.getHeight();
-      long l2 = 0L;
+      int j = paramBitmap.getWidth() / 2;
+      int k = paramBitmap.getHeight();
       long l3 = 0L;
-      i = j;
-      while (i < m)
+      long l2 = 0L;
+      long l1 = l2;
+      while (i < k)
       {
-        j = paramBitmap.getPixel(k, i);
-        l3 += Color.red(j);
-        l2 += Color.green(j);
-        l1 += Color.blue(j);
+        int m = paramBitmap.getPixel(j, i);
+        l3 += Color.red(m);
+        l2 += Color.green(m);
+        l1 += Color.blue(m);
         i += 1;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("ReplyTextItemBuilder", 2, "count r=" + l3 + " g=" + l2 + " b=" + l1 + " height=" + m);
+      if (QLog.isColorLevel())
+      {
+        paramBitmap = new StringBuilder();
+        paramBitmap.append("count r=");
+        paramBitmap.append(l3);
+        paramBitmap.append(" g=");
+        paramBitmap.append(l2);
+        paramBitmap.append(" b=");
+        paramBitmap.append(l1);
+        paramBitmap.append(" height=");
+        paramBitmap.append(k);
+        QLog.d("ReplyTextItemBuilder", 2, paramBitmap.toString());
       }
-      i = Color.rgb((int)l3 / m, (int)l2 / m, (int)l1 / m);
+      return Color.rgb((int)l3 / k, (int)l2 / k, (int)l1 / k);
     }
-    return i;
+    return 0;
   }
   
   public static long a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, long paramLong)
   {
-    if ((paramSessionInfo.jdField_a_of_type_Int == 1) || (paramSessionInfo.jdField_a_of_type_Int == 3000)) {
-      return Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString);
+    if ((paramSessionInfo.jdField_a_of_type_Int != 1) && (paramSessionInfo.jdField_a_of_type_Int != 3000))
+    {
+      if (paramLong == paramQQAppInterface.getLongAccountUin()) {
+        return Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString);
+      }
+      return paramQQAppInterface.getLongAccountUin();
     }
-    if (paramLong == paramQQAppInterface.getLongAccountUin()) {
-      return Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString);
-    }
-    return paramQQAppInterface.getLongAccountUin();
+    return Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString);
   }
   
   private static Bitmap a()
   {
-    Bitmap localBitmap1 = null;
+    Bitmap localBitmap1;
     if (GlobalImageCache.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
       localBitmap1 = (Bitmap)GlobalImageCache.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("static://GrayCommonProgress");
+    } else {
+      localBitmap1 = null;
     }
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = BitmapManager.a(BaseApplicationImpl.getContext().getResources(), 2130841062);
+      localBitmap1 = BitmapManager.a(BaseApplicationImpl.getContext().getResources(), 2130840937);
       localBitmap2 = localBitmap1;
       if (localBitmap1 != null)
       {
@@ -242,365 +255,389 @@ public class ReplyTextItemBuilder
     paramReplyTextViewHolder.e = 0;
     Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder$ViewPool.a(0);
     Object localObject1 = localObject2;
-    int j;
-    int i;
     if (localObject2 == null)
     {
       localObject1 = new SelectableLinearLayout(paramContext);
       ((LinearLayout)localObject1).setOrientation(1);
       Object localObject3 = a(paramContext);
       paramReplyTextViewHolder.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localObject3);
-      paramReplyTextViewHolder.c = ((TextView)((ViewGroup)localObject3).findViewById(2131379346));
-      paramReplyTextViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((ViewGroup)localObject3).findViewById(2131372115));
-      paramReplyTextViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((ViewGroup)localObject3).findViewById(2131367424));
-      paramReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)((ViewGroup)localObject3).findViewById(2131371908));
-      paramReplyTextViewHolder.jdField_b_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)((ViewGroup)localObject3).findViewById(2131371926));
-      ((ViewGroup)localObject3).setId(2131364662);
+      paramReplyTextViewHolder.c = ((TextView)((ViewGroup)localObject3).findViewById(2131378696));
+      paramReplyTextViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((ViewGroup)localObject3).findViewById(2131371697));
+      paramReplyTextViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((ViewGroup)localObject3).findViewById(2131367206));
+      paramReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)((ViewGroup)localObject3).findViewById(2131371529));
+      paramReplyTextViewHolder.jdField_b_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)((ViewGroup)localObject3).findViewById(2131371543));
+      ((ViewGroup)localObject3).setId(2131364549);
       com.tencent.mobileqq.text.TextUtils.fixTextViewANRForAnd10(paramReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView);
       com.tencent.mobileqq.text.TextUtils.fixTextViewANRForAnd10(paramReplyTextViewHolder.jdField_b_of_type_ComEtrumpMixlayoutETTextView);
       localObject2 = new LinearLayout.LayoutParams(-1, -1);
       ((LinearLayout)localObject1).setPadding(0, 0, 0, 0);
-      paramReplyTextViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((ViewGroup)localObject3).findViewById(2131369714));
+      paramReplyTextViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((ViewGroup)localObject3).findViewById(2131369413));
       paramReplyTextViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      paramReplyTextViewHolder.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131713366));
+      paramReplyTextViewHolder.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131713334));
       localObject3 = new ETTextView(paramContext);
       com.tencent.mobileqq.text.TextUtils.fixTextViewANRForAnd10((TextView)localObject3);
-      ((ETTextView)localObject3).setTextColor(paramContext.getResources().getColorStateList(2131167052));
-      ((ETTextView)localObject3).setLinkTextColor(paramContext.getResources().getColorStateList(2131167045));
+      ((ETTextView)localObject3).setTextColor(paramContext.getResources().getColorStateList(2131167075));
+      ((ETTextView)localObject3).setLinkTextColor(paramContext.getResources().getColorStateList(2131167068));
       ((ETTextView)localObject3).setEditableFactory(QQTextBuilder.EMOCTATION_FACORY);
       ((ETTextView)localObject3).setSpannableFactory(QQText.SPANNABLE_FACTORY);
       ((ETTextView)localObject3).setMovementMethod(LinkMovementMethod.getInstance());
-      j = BaseChatItemLayout.o;
-      i = BaseChatItemLayout.p;
+      i = BaseChatItemLayout.o;
+      j = BaseChatItemLayout.p;
       if (paramMessageForReplyText.isSend())
       {
-        j = BaseChatItemLayout.p;
-        i = BaseChatItemLayout.o;
+        i = BaseChatItemLayout.p;
+        j = BaseChatItemLayout.o;
       }
-      ((ETTextView)localObject3).setPadding(j, 0, i, BaseChatItemLayout.n);
-      ((LinearLayout.LayoutParams)localObject2).leftMargin = j;
-      ((LinearLayout.LayoutParams)localObject2).rightMargin = i;
+      ((ETTextView)localObject3).setPadding(i, 0, j, BaseChatItemLayout.n);
+      ((LinearLayout.LayoutParams)localObject2).leftMargin = i;
+      ((LinearLayout.LayoutParams)localObject2).rightMargin = j;
       ((LinearLayout.LayoutParams)localObject2).topMargin = BaseChatItemLayout.h;
       ((LinearLayout)localObject1).addView(paramReplyTextViewHolder.jdField_a_of_type_AndroidViewViewGroup, (ViewGroup.LayoutParams)localObject2);
-      ((ETTextView)localObject3).setId(2131364637);
+      ((ETTextView)localObject3).setId(2131364524);
       paramReplyTextViewHolder.d = ((TextView)localObject3);
       localObject2 = new LinearLayout.LayoutParams(-1, -1);
-      ((LinearLayout.LayoutParams)localObject2).topMargin = AIOUtils.a(8.0F, paramContext.getResources());
+      ((LinearLayout.LayoutParams)localObject2).topMargin = AIOUtils.b(8.0F, paramContext.getResources());
       ((LinearLayout)localObject1).addView(paramReplyTextViewHolder.d, (ViewGroup.LayoutParams)localObject2);
     }
-    paramReplyTextViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject1).findViewById(2131372115));
-    paramReplyTextViewHolder.c = ((TextView)((View)localObject1).findViewById(2131379346));
-    paramReplyTextViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject1).findViewById(2131367424));
-    paramReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)((View)localObject1).findViewById(2131371908));
-    paramReplyTextViewHolder.jdField_b_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)((View)localObject1).findViewById(2131371926));
-    paramReplyTextViewHolder.d = ((ETTextView)((View)localObject1).findViewById(2131364637));
-    paramReplyTextViewHolder.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)((View)localObject1).findViewById(2131364662));
-    paramReplyTextViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject1).findViewById(2131369714));
-    paramReplyTextViewHolder.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131713363));
+    paramReplyTextViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject1).findViewById(2131371697));
+    paramReplyTextViewHolder.c = ((TextView)((View)localObject1).findViewById(2131378696));
+    paramReplyTextViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject1).findViewById(2131367206));
+    paramReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)((View)localObject1).findViewById(2131371529));
+    paramReplyTextViewHolder.jdField_b_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)((View)localObject1).findViewById(2131371543));
+    paramReplyTextViewHolder.d = ((ETTextView)((View)localObject1).findViewById(2131364524));
+    paramReplyTextViewHolder.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)((View)localObject1).findViewById(2131364549));
+    paramReplyTextViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject1).findViewById(2131369413));
+    paramReplyTextViewHolder.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131713331));
     paramReplyTextViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    paramReplyTextViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838379));
-    if (paramMessageForReplyText.getSourceMsgInfo() != null) {}
-    for (paramContext = Long.toString(paramMessageForReplyText.getSourceMsgInfo().mSourceMsgSenderUin);; paramContext = "")
-    {
-      paramContext = VasShieldFont.a(paramContext);
-      paramReplyTextViewHolder.c.setTypeface(paramContext);
-      paramReplyTextViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTypeface(paramContext);
-      paramReplyTextViewHolder.jdField_b_of_type_AndroidWidgetTextView.setTypeface(paramContext);
-      paramReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTypeface(paramContext);
-      paramReplyTextViewHolder.jdField_b_of_type_ComEtrumpMixlayoutETTextView.setTypeface(paramContext);
-      if (!android.text.TextUtils.isEmpty(paramMessageForReplyText.getExtInfoFromExtStr("sens_msg_ctrl_info")))
-      {
-        paramContext = ((ETTextView)paramReplyTextViewHolder.d).getETLayout();
-        if (paramContext != null) {
-          paramContext.a = (paramMessageForReplyText.uniseq + 1L);
-        }
-      }
-      ((ETTextView)paramReplyTextViewHolder.d).setFont(0, paramMessageForReplyText.uniseq);
-      i = ((ETTextView)paramReplyTextViewHolder.d).mMaxWidth;
-      j = BaseChatItemLayout.e;
-      paramReplyTextViewHolder.d.setMaxWidth(j);
-      paramReplyTextViewHolder.d.setTextSize(0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_Int);
-      if (i != j) {
-        ((ETTextView)paramReplyTextViewHolder.d).mMsgId = 0L;
-      }
-      paramReplyTextViewHolder.d.setText(paramMessageForReplyText.sb);
-      if (AppSetting.d) {
-        paramReplyTextViewHolder.d.setContentDescription(com.tencent.mobileqq.text.TextUtils.emoticonToTextForTalkBack(paramMessageForReplyText.sb.toString()));
-      }
-      TroopUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentContext, paramReplyTextViewHolder.d, paramMessageForReplyText);
-      a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramReplyTextViewHolder.jdField_a_of_type_AndroidViewViewGroup, paramMessageForReplyText.mSourceMsgInfo, paramMessageForReplyText.frienduin, paramMessageForReplyText.istroop, paramMessageForReplyText, paramBoolean, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-      paramReplyTextViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView = ((BubbleImageView)((View)localObject1).findViewById(2131379316));
-      paramReplyTextViewHolder.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      paramReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      paramReplyTextViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      ((View)localObject1).setOnTouchListener(paramOnLongClickAndTouchListener);
-      ((View)localObject1).setOnLongClickListener(paramOnLongClickAndTouchListener);
-      paramReplyTextViewHolder.jdField_a_of_type_AndroidViewViewGroup.setOnTouchListener(paramOnLongClickAndTouchListener);
-      paramReplyTextViewHolder.jdField_a_of_type_AndroidViewViewGroup.setOnLongClickListener(paramOnLongClickAndTouchListener);
-      paramReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setOnTouchListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener);
-      paramReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setOnLongClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener);
-      paramReplyTextViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setOnTouchListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener);
-      paramReplyTextViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setOnLongClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener);
-      paramReplyTextViewHolder.d.setOnTouchListener(paramOnLongClickAndTouchListener);
-      paramReplyTextViewHolder.d.setOnLongClickListener(paramOnLongClickAndTouchListener);
-      paramReplyTextViewHolder.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      if ((paramReplyTextViewHolder.d instanceof AnimationTextView)) {
-        ((AnimationTextView)paramReplyTextViewHolder.d).onDoubleClick = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick;
-      }
-      if ((paramReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView instanceof AnimationTextView)) {
-        paramReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView.onDoubleClick = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick;
-      }
-      if (paramReplyTextViewHolder.jdField_a_of_type_ComTencentMobileqqActivitySelectableAIOSelectableDelegateProxy == null) {
-        paramReplyTextViewHolder.jdField_a_of_type_ComTencentMobileqqActivitySelectableAIOSelectableDelegateProxy = new AIOSelectableDelegateProxy();
-      }
-      if ((localObject1 instanceof SelectableComponent))
-      {
-        paramReplyTextViewHolder.jdField_a_of_type_ComTencentMobileqqActivitySelectableAIOSelectableDelegateProxy.a((SelectableComponent)localObject1);
-        paramReplyTextViewHolder.jdField_a_of_type_ComTencentMobileqqActivitySelectableAIOSelectableDelegateProxy.a(paramBaseChatItemLayout, paramBaseChatItemLayout);
-      }
-      paramReplyTextViewHolder.jdField_a_of_type_ComTencentMobileqqActivitySelectableAIOSelectableDelegateProxy.b(paramMessageForReplyText);
-      return localObject1;
+    paramReplyTextViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838208));
+    if (paramMessageForReplyText.getSourceMsgInfo() != null) {
+      paramContext = Long.toString(paramMessageForReplyText.getSourceMsgInfo().mSourceMsgSenderUin);
+    } else {
+      paramContext = "";
     }
+    paramContext = VasShieldFont.a(paramContext);
+    paramReplyTextViewHolder.c.setTypeface(paramContext);
+    paramReplyTextViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTypeface(paramContext);
+    paramReplyTextViewHolder.jdField_b_of_type_AndroidWidgetTextView.setTypeface(paramContext);
+    paramReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTypeface(paramContext);
+    paramReplyTextViewHolder.jdField_b_of_type_ComEtrumpMixlayoutETTextView.setTypeface(paramContext);
+    if (!android.text.TextUtils.isEmpty(paramMessageForReplyText.getExtInfoFromExtStr("sens_msg_ctrl_info")))
+    {
+      paramContext = ((ETTextView)paramReplyTextViewHolder.d).getETLayout();
+      if (paramContext != null) {
+        paramContext.a = (paramMessageForReplyText.uniseq + 1L);
+      }
+    }
+    ((ETTextView)paramReplyTextViewHolder.d).setFont(0, paramMessageForReplyText.uniseq);
+    int i = ((ETTextView)paramReplyTextViewHolder.d).mMaxWidth;
+    int j = BaseChatItemLayout.e;
+    paramReplyTextViewHolder.d.setMaxWidth(j);
+    paramReplyTextViewHolder.d.setTextSize(0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_Int);
+    if (i != j) {
+      ((ETTextView)paramReplyTextViewHolder.d).mMsgId = 0L;
+    }
+    paramReplyTextViewHolder.d.setText(paramMessageForReplyText.sb);
+    if (AppSetting.d) {
+      paramReplyTextViewHolder.d.setContentDescription(com.tencent.mobileqq.text.TextUtils.emoticonToTextForTalkBack(paramMessageForReplyText.sb.toString()));
+    }
+    TroopUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentContext, paramReplyTextViewHolder.d, paramMessageForReplyText);
+    a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramReplyTextViewHolder.jdField_a_of_type_AndroidViewViewGroup, paramMessageForReplyText.mSourceMsgInfo, paramMessageForReplyText.frienduin, paramMessageForReplyText.istroop, paramMessageForReplyText, paramBoolean, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    paramReplyTextViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView = ((BubbleImageView)((View)localObject1).findViewById(2131378668));
+    paramReplyTextViewHolder.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    paramReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    paramReplyTextViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    ((View)localObject1).setOnTouchListener(paramOnLongClickAndTouchListener);
+    ((View)localObject1).setOnLongClickListener(paramOnLongClickAndTouchListener);
+    paramReplyTextViewHolder.jdField_a_of_type_AndroidViewViewGroup.setOnTouchListener(paramOnLongClickAndTouchListener);
+    paramReplyTextViewHolder.jdField_a_of_type_AndroidViewViewGroup.setOnLongClickListener(paramOnLongClickAndTouchListener);
+    paramReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setOnTouchListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener);
+    paramReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setOnLongClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener);
+    paramReplyTextViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setOnTouchListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener);
+    paramReplyTextViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setOnLongClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener);
+    paramReplyTextViewHolder.d.setOnTouchListener(paramOnLongClickAndTouchListener);
+    paramReplyTextViewHolder.d.setOnLongClickListener(paramOnLongClickAndTouchListener);
+    paramReplyTextViewHolder.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    if ((paramReplyTextViewHolder.d instanceof AnimationTextView)) {
+      ((AnimationTextView)paramReplyTextViewHolder.d).onDoubleClick = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick;
+    }
+    if ((paramReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView instanceof AnimationTextView)) {
+      paramReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView.onDoubleClick = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick;
+    }
+    if (paramReplyTextViewHolder.jdField_a_of_type_ComTencentMobileqqActivitySelectableAIOSelectableDelegateProxy == null) {
+      paramReplyTextViewHolder.jdField_a_of_type_ComTencentMobileqqActivitySelectableAIOSelectableDelegateProxy = new AIOSelectableDelegateProxy();
+    }
+    if ((localObject1 instanceof SelectableComponent))
+    {
+      paramReplyTextViewHolder.jdField_a_of_type_ComTencentMobileqqActivitySelectableAIOSelectableDelegateProxy.a((SelectableComponent)localObject1);
+      paramReplyTextViewHolder.jdField_a_of_type_ComTencentMobileqqActivitySelectableAIOSelectableDelegateProxy.a(paramBaseChatItemLayout, paramBaseChatItemLayout);
+    }
+    paramReplyTextViewHolder.jdField_a_of_type_ComTencentMobileqqActivitySelectableAIOSelectableDelegateProxy.b(paramMessageForReplyText);
+    return localObject1;
   }
   
   public static final RelativeLayout a(Context paramContext)
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(paramContext).inflate(2131560820, null);
-    Object localObject = (TextView)localRelativeLayout.findViewById(2131372115);
-    ((TextView)localObject).setTextColor(paramContext.getResources().getColorStateList(2131167052));
+    RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(paramContext).inflate(2131560692, null);
+    Object localObject = (TextView)localRelativeLayout.findViewById(2131371697);
+    ((TextView)localObject).setTextColor(paramContext.getResources().getColorStateList(2131167075));
     ImmersiveUtils.setAlpha((View)localObject, 0.9F);
     ((TextView)localObject).setTextSize(1, 13.0F);
     ((TextView)localObject).setEditableFactory(QQTextBuilder.EMOCTATION_FACORY);
     ((TextView)localObject).setSpannableFactory(QQText.SPANNABLE_FACTORY);
-    localObject = (TextView)localRelativeLayout.findViewById(2131379346);
-    ((TextView)localObject).setTextColor(paramContext.getResources().getColorStateList(2131167052));
+    localObject = (TextView)localRelativeLayout.findViewById(2131378696);
+    ((TextView)localObject).setTextColor(paramContext.getResources().getColorStateList(2131167075));
     ImmersiveUtils.setAlpha((View)localObject, 0.9F);
     ((TextView)localObject).setTextSize(1, 13.0F);
     ((TextView)localObject).setEditableFactory(QQTextBuilder.EMOCTATION_FACORY);
     ((TextView)localObject).setSpannableFactory(QQText.SPANNABLE_FACTORY);
-    localObject = (TextView)localRelativeLayout.findViewById(2131367424);
-    ((TextView)localObject).setTextColor(paramContext.getResources().getColorStateList(2131167052));
+    localObject = (TextView)localRelativeLayout.findViewById(2131367206);
+    ((TextView)localObject).setTextColor(paramContext.getResources().getColorStateList(2131167075));
     ImmersiveUtils.setAlpha((View)localObject, 0.5F);
     ((TextView)localObject).setTextSize(1, 13.0F);
     ((TextView)localObject).setEditableFactory(QQTextBuilder.EMOCTATION_FACORY);
     ((TextView)localObject).setSpannableFactory(QQText.SPANNABLE_FACTORY);
-    ((ImageView)localRelativeLayout.findViewById(2131369714)).setColorFilter(null);
-    localObject = (ETTextView)localRelativeLayout.findViewById(2131371908);
-    ((ETTextView)localObject).setTextColor(paramContext.getResources().getColorStateList(2131167052));
-    ((ETTextView)localObject).setLinkTextColor(paramContext.getResources().getColorStateList(2131167045));
+    ((ImageView)localRelativeLayout.findViewById(2131369413)).setColorFilter(null);
+    localObject = (ETTextView)localRelativeLayout.findViewById(2131371529);
+    ((ETTextView)localObject).setTextColor(paramContext.getResources().getColorStateList(2131167075));
+    ((ETTextView)localObject).setLinkTextColor(paramContext.getResources().getColorStateList(2131167068));
     ImmersiveUtils.setAlpha((View)localObject, 0.9F);
     ((ETTextView)localObject).setTextSize(1, 13.0F);
     ((ETTextView)localObject).setEditableFactory(QQTextBuilder.EMOCTATION_FACORY);
     ((ETTextView)localObject).setSpannableFactory(QQText.SPANNABLE_FACTORY);
-    ((ETTextView)localObject).setLineSpacing(AIOUtils.a(2.0F, paramContext.getResources()), 1.0F);
-    localObject = (ETTextView)localRelativeLayout.findViewById(2131371926);
-    ((ETTextView)localObject).setTextColor(paramContext.getResources().getColorStateList(2131167052));
-    ((ETTextView)localObject).setLinkTextColor(paramContext.getResources().getColorStateList(2131167045));
+    ((ETTextView)localObject).setMaxLines(2);
+    ((ETTextView)localObject).setEllipsize(TextUtils.TruncateAt.END);
+    ((ETTextView)localObject).setLineSpacing(AIOUtils.b(2.0F, paramContext.getResources()), 1.0F);
+    localObject = (ETTextView)localRelativeLayout.findViewById(2131371543);
+    ((ETTextView)localObject).setTextColor(paramContext.getResources().getColorStateList(2131167075));
+    ((ETTextView)localObject).setLinkTextColor(paramContext.getResources().getColorStateList(2131167068));
     ((ETTextView)localObject).setTextSize(1, 13.0F);
     ((ETTextView)localObject).setEditableFactory(QQTextBuilder.EMOCTATION_FACORY);
     ((ETTextView)localObject).setSpannableFactory(QQText.SPANNABLE_FACTORY);
-    ((ETTextView)localObject).setLineSpacing(AIOUtils.a(2.0F, paramContext.getResources()), 1.0F);
+    ((ETTextView)localObject).setMaxLines(2);
+    ((ETTextView)localObject).setEllipsize(TextUtils.TruncateAt.END);
+    ((ETTextView)localObject).setLineSpacing(AIOUtils.b(2.0F, paramContext.getResources()), 1.0F);
     return localRelativeLayout;
   }
   
   private static URLDrawable.URLDrawableOptions a(MessageForPic paramMessageForPic, int paramInt, boolean paramBoolean)
   {
-    int i = 99;
-    int j = paramMessageForPic.thumbWidth;
+    int i = paramMessageForPic.thumbWidth;
     int k = paramMessageForPic.thumbHeight;
-    if ((j > 0) && (k > 0))
+    int j = 99;
+    if ((i > 0) && (k > 0))
     {
-      paramMessageForPic = a(j, k, 0.0F, paramBoolean);
+      paramMessageForPic = a(i, k, 0.0F, paramBoolean);
       j = paramMessageForPic.jdField_a_of_type_Int;
       i = paramMessageForPic.jdField_b_of_type_Int;
     }
-    for (;;)
+    else
     {
-      float f = paramInt / 160.0F;
-      paramInt = (int)(j * f + 0.5F);
-      i = (int)(i * f + 0.5F);
-      paramMessageForPic = URLDrawable.URLDrawableOptions.obtain();
-      paramMessageForPic.mRequestWidth = paramInt;
-      paramMessageForPic.mRequestHeight = i;
-      return paramMessageForPic;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReplyTextItemBuilder", 2, "MessageForPic without width/height of thumb, width = " + j + ", height = " + k);
+      if (QLog.isColorLevel())
+      {
+        paramMessageForPic = new StringBuilder();
+        paramMessageForPic.append("MessageForPic without width/height of thumb, width = ");
+        paramMessageForPic.append(i);
+        paramMessageForPic.append(", height = ");
+        paramMessageForPic.append(k);
+        QLog.d("ReplyTextItemBuilder", 2, paramMessageForPic.toString());
       }
-      j = 99;
+      i = 99;
     }
+    float f = paramInt / 160.0F;
+    paramInt = (int)(j * f + 0.5F);
+    i = (int)(i * f + 0.5F);
+    paramMessageForPic = URLDrawable.URLDrawableOptions.obtain();
+    paramMessageForPic.mRequestWidth = paramInt;
+    paramMessageForPic.mRequestHeight = i;
+    return paramMessageForPic;
   }
   
   public static URLDrawable a(Context paramContext, ChatThumbView paramChatThumbView, int[] paramArrayOfInt, URL paramURL, Rect paramRect, File paramFile, boolean paramBoolean)
   {
     int k = paramContext.getResources().getDisplayMetrics().densityDpi;
     float f1 = k / 160.0F;
-    int j;
-    int i;
-    float f2;
     if (paramRect != null)
     {
-      j = paramRect.width();
-      i = paramRect.height();
-      paramContext = a(j, i, f1 * 12.0F, paramBoolean);
-      j = paramContext.jdField_a_of_type_Int;
-      i = paramContext.jdField_b_of_type_Int;
-      f2 = paramContext.jdField_b_of_type_Float;
-      j = (j * k + 80) / 160;
-      i = (i * k + 80) / 160;
-      f1 = f2;
-      if (paramRect != null)
-      {
-        if (paramRect.width() >= j) {
-          break label338;
-        }
-        f1 = f2 * (paramRect.width() / j);
-      }
+      i = paramRect.width();
+      j = paramRect.height();
     }
-    for (;;)
+    else
     {
-      for (;;)
+      paramContext = new BitmapFactory.Options();
+      paramContext.inJustDecodeBounds = true;
+      try
       {
-        if (paramArrayOfInt != null)
-        {
-          paramArrayOfInt[0] = j;
-          paramArrayOfInt[1] = i;
-        }
-        paramContext = URLDrawableHelper.getDrawable(paramURL, j, i, new EmptyDrawable(j, i), URLDrawableHelper.getFailedDrawable(), true, f1);
-        paramContext.setIgnorePause(true);
-        paramContext.setFadeInImage(true);
-        if (paramChatThumbView != null) {
-          paramChatThumbView.jdField_a_of_type_Boolean = true;
-        }
+        ImageUtil.a(paramFile.getAbsolutePath(), paramContext);
+      }
+      catch (Throwable localThrowable)
+      {
         if (QLog.isColorLevel()) {
-          QLog.d("ReplyTextItemBuilder", 2, "getNoRoundThumbDrawableAbsDownloader cache:" + j + "," + i);
-        }
-        return paramContext;
-        paramContext = new BitmapFactory.Options();
-        paramContext.inJustDecodeBounds = true;
-        try
-        {
-          ImageUtil.a(paramFile.getAbsolutePath(), paramContext);
-          j = paramContext.outWidth;
-          i = paramContext.outHeight;
-          int m = URLDrawableHelper.getExifRotation(paramFile.getAbsolutePath());
-          if ((m != 90) && (m != 270)) {
-            break;
-          }
-          j = paramContext.outHeight;
-          i = paramContext.outWidth;
-        }
-        catch (Throwable localThrowable)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("ReplyTextItemBuilder", 2, "getThumbDrawable", localThrowable);
-            }
-          }
+          QLog.e("ReplyTextItemBuilder", 2, "getThumbDrawable", localThrowable);
         }
       }
-      label338:
-      f1 = f2;
-      if (paramRect.height() < i) {
-        f1 = f2 * (paramRect.height() / i);
+      i = paramContext.outWidth;
+      j = paramContext.outHeight;
+      int m = URLDrawableHelper.getExifRotation(paramFile.getAbsolutePath());
+      if ((m != 90) && (m != 270)) {
+        break label143;
+      }
+      i = paramContext.outHeight;
+      j = paramContext.outWidth;
+    }
+    label143:
+    paramContext = a(i, j, f1 * 12.0F, paramBoolean);
+    int j = paramContext.jdField_a_of_type_Int;
+    int i = paramContext.jdField_b_of_type_Int;
+    float f3 = paramContext.jdField_b_of_type_Float;
+    j = (j * k + 80) / 160;
+    i = (i * k + 80) / 160;
+    f1 = f3;
+    if (paramRect != null)
+    {
+      if (paramRect.width() < j) {
+        f1 = paramRect.width();
+      }
+      for (float f2 = j;; f2 = i)
+      {
+        f1 = f3 * (f1 / f2);
+        break;
+        f1 = f3;
+        if (paramRect.height() >= i) {
+          break;
+        }
+        f1 = paramRect.height();
       }
     }
+    if (paramArrayOfInt != null)
+    {
+      paramArrayOfInt[0] = j;
+      paramArrayOfInt[1] = i;
+    }
+    paramContext = URLDrawableHelper.getDrawable(paramURL, j, i, new EmptyDrawable(j, i), URLDrawableHelper.getFailedDrawable(), true, f1);
+    paramContext.setIgnorePause(true);
+    paramContext.setFadeInImage(true);
+    if (paramChatThumbView != null) {
+      paramChatThumbView.jdField_a_of_type_Boolean = true;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramChatThumbView = new StringBuilder();
+      paramChatThumbView.append("getNoRoundThumbDrawableAbsDownloader cache:");
+      paramChatThumbView.append(j);
+      paramChatThumbView.append(",");
+      paramChatThumbView.append(i);
+      QLog.d("ReplyTextItemBuilder", 2, paramChatThumbView.toString());
+    }
+    return paramContext;
   }
   
   public static URLDrawable a(Context paramContext, MessageForPic paramMessageForPic, ChatThumbView paramChatThumbView, int[] paramArrayOfInt, ReplyTextItemBuilder.BasicPicInfo paramBasicPicInfo)
   {
-    boolean bool1 = PeakUtils.a(paramMessageForPic.imageType);
+    boolean bool1 = ((IPicUtil)QRoute.api(IPicUtil.class)).isDynamicImg(paramMessageForPic.imageType);
     boolean bool2 = paramBasicPicInfo.jdField_a_of_type_Boolean;
     URL localURL = paramBasicPicInfo.jdField_a_of_type_JavaNetURL;
     Rect localRect = paramBasicPicInfo.jdField_a_of_type_AndroidGraphicsRect;
-    Object localObject = localURL;
-    if (localURL == null) {
+    if (localURL == null)
+    {
       paramBasicPicInfo = URLDrawableHelper.getURL(paramMessageForPic, 65537, null);
-    }
-    try
-    {
-      localObject = new URL(paramBasicPicInfo.toString());
-      paramBasicPicInfo = (ReplyTextItemBuilder.BasicPicInfo)localObject;
-    }
-    catch (MalformedURLException localMalformedURLException)
-    {
-      for (;;)
+      try
       {
-        float f;
+        localURL = new URL(paramBasicPicInfo.toString());
+        paramBasicPicInfo = localURL;
+      }
+      catch (MalformedURLException localMalformedURLException)
+      {
         if (QLog.isColorLevel()) {
           QLog.i("ReplyTextItemBuilder", 2, "group emo new URL error!");
         }
         localMalformedURLException.printStackTrace();
-        continue;
-        paramBasicPicInfo = AbsDownloader.getFile(paramBasicPicInfo);
-        if (paramBasicPicInfo == null) {
-          break;
-        }
-        paramContext = a(paramContext, paramChatThumbView, paramArrayOfInt, localMalformedURLException, localRect, paramBasicPicInfo, bool1);
       }
-      if (URLDrawableHelper.isMobileNetAndAutodownDisabled(paramContext)) {
-        break label509;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getThumbDrawable,using thumb,uniseq:");
+        ((StringBuilder)localObject).append(paramMessageForPic.uniseq);
+        ((StringBuilder)localObject).append(" url:");
+        ((StringBuilder)localObject).append(paramBasicPicInfo);
+        QLog.d("ReplyTextItemBuilder", 2, ((StringBuilder)localObject).toString());
       }
     }
-    localObject = paramBasicPicInfo;
-    if (QLog.isColorLevel())
+    else
     {
-      QLog.d("ReplyTextItemBuilder", 2, "getThumbDrawable,using thumb,uniseq:" + paramMessageForPic.uniseq + " url:" + paramBasicPicInfo);
-      localObject = paramBasicPicInfo;
+      paramBasicPicInfo = (ReplyTextItemBuilder.BasicPicInfo)localObject;
     }
-    paramBasicPicInfo = ((URL)localObject).toString();
-    int j = paramContext.getResources().getDisplayMetrics().densityDpi;
+    Object localObject = paramBasicPicInfo.toString();
+    int i = paramContext.getResources().getDisplayMetrics().densityDpi;
     if (paramChatThumbView != null) {
       paramChatThumbView.jdField_a_of_type_Boolean = false;
     }
-    f = j / 160.0F;
-    if (GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(paramBasicPicInfo) != null)
+    float f = i / 160.0F;
+    if (GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(localObject) != null)
     {
-      paramContext = URLDrawableHelper.getDrawable((URL)localObject, 0, 0, null, null, true, 12.0F * f);
+      paramChatThumbView = URLDrawableHelper.getDrawable(paramBasicPicInfo, 0, 0, null, null, true, f * 12.0F);
+      paramContext = paramChatThumbView;
       if (paramArrayOfInt != null)
       {
-        paramArrayOfInt[0] = paramContext.getIntrinsicWidth();
-        paramArrayOfInt[1] = paramContext.getIntrinsicHeight();
-        if (QLog.isColorLevel()) {
-          QLog.d("ReplyTextItemBuilder", 2, "getNoRoundThumbDrawableAbsDownloader cache:" + paramArrayOfInt[0] + "," + paramArrayOfInt[1]);
+        paramArrayOfInt[0] = paramChatThumbView.getIntrinsicWidth();
+        paramArrayOfInt[1] = paramChatThumbView.getIntrinsicHeight();
+        paramContext = paramChatThumbView;
+        if (QLog.isColorLevel())
+        {
+          paramContext = new StringBuilder();
+          paramContext.append("getNoRoundThumbDrawableAbsDownloader cache:");
+          paramContext.append(paramArrayOfInt[0]);
+          paramContext.append(",");
+          paramContext.append(paramArrayOfInt[1]);
+          QLog.d("ReplyTextItemBuilder", 2, paramContext.toString());
+          paramContext = paramChatThumbView;
         }
       }
-      paramContext.setTag(paramMessageForPic);
-      if ((paramContext.getCurrDrawable() instanceof GifDrawable)) {
-        ((GifDrawable)paramContext.getCurrDrawable()).mutate();
+    }
+    else
+    {
+      localObject = AbsDownloader.getFile((String)localObject);
+      if (localObject != null)
+      {
+        paramContext = a(paramContext, paramChatThumbView, paramArrayOfInt, paramBasicPicInfo, localRect, (File)localObject, bool1);
       }
-      return paramContext;
+      else
+      {
+        boolean bool3 = URLDrawableHelper.isMobileNetAndAutodownDisabled(paramContext);
+        paramChatThumbView = a(paramMessageForPic, i, bool1);
+        paramChatThumbView.mLoadingDrawable = URLDrawableHelper.getLoadingDrawable();
+        paramChatThumbView.mFailedDrawable = URLDrawableHelper.getFailedDrawable();
+        paramChatThumbView.mPlayGifImage = bool2;
+        paramChatThumbView.mGifRoundCorner = 12.0F;
+        paramChatThumbView.mImgType = paramMessageForPic.imageType;
+        if (paramArrayOfInt != null)
+        {
+          paramArrayOfInt[0] = paramChatThumbView.mRequestWidth;
+          paramArrayOfInt[1] = paramChatThumbView.mRequestHeight;
+        }
+        paramChatThumbView.mLoadingDrawable = paramContext.getResources().getDrawable(2130843997);
+        paramContext = URLDrawable.getDrawable(paramBasicPicInfo, paramChatThumbView);
+        if (QLog.isColorLevel())
+        {
+          paramArrayOfInt = new StringBuilder();
+          paramArrayOfInt.append("getNoRoundThumbDrawableautoDownload:");
+          paramArrayOfInt.append(paramChatThumbView.mRequestWidth);
+          paramArrayOfInt.append(",");
+          paramArrayOfInt.append(paramChatThumbView.mRequestHeight);
+          QLog.d("ReplyTextItemBuilder", 2, paramArrayOfInt.toString());
+        }
+        if ((!PicContants.jdField_a_of_type_Boolean) && (!(bool3 ^ true))) {
+          paramContext.setAutoDownload(false);
+        } else {
+          paramContext.setAutoDownload(true);
+        }
+        paramContext.setProgressDrawable(new PhotoProgressDrawable(a(), 0, false));
+      }
     }
-    int i = 1;
-    label343:
-    paramChatThumbView = a(paramMessageForPic, j, bool1);
-    paramChatThumbView.mLoadingDrawable = URLDrawableHelper.getLoadingDrawable();
-    paramChatThumbView.mFailedDrawable = URLDrawableHelper.getFailedDrawable();
-    paramChatThumbView.mPlayGifImage = bool2;
-    paramChatThumbView.mGifRoundCorner = 12.0F;
-    paramChatThumbView.mImgType = paramMessageForPic.imageType;
-    if (paramArrayOfInt != null)
-    {
-      paramArrayOfInt[0] = paramChatThumbView.mRequestWidth;
-      paramArrayOfInt[1] = paramChatThumbView.mRequestHeight;
+    paramContext.setTag(paramMessageForPic);
+    if ((paramContext.getCurrDrawable() instanceof GifDrawable)) {
+      ((GifDrawable)paramContext.getCurrDrawable()).mutate();
     }
-    paramChatThumbView.mLoadingDrawable = paramContext.getResources().getDrawable(2130844093);
-    paramContext = URLDrawable.getDrawable(localMalformedURLException, paramChatThumbView);
-    if (QLog.isColorLevel()) {
-      QLog.d("ReplyTextItemBuilder", 2, "getNoRoundThumbDrawableautoDownload:" + paramChatThumbView.mRequestWidth + "," + paramChatThumbView.mRequestHeight);
-    }
-    if ((PicContants.jdField_a_of_type_Boolean) || (i != 0)) {
-      paramContext.setAutoDownload(true);
-    }
-    for (;;)
-    {
-      paramContext.setProgressDrawable(new PhotoProgressDrawable(a(), 0, false));
-      break;
-      label509:
-      i = 0;
-      break label343;
-      paramContext.setAutoDownload(false);
-    }
+    return paramContext;
   }
   
   private static ReplyTextItemBuilder.BasicPicInfo a(int paramInt1, int paramInt2, float paramFloat, boolean paramBoolean)
@@ -608,323 +645,360 @@ public class ReplyTextItemBuilder
     int j = CommonImgThumbHelper.getImgThumbMaxDp(paramBoolean);
     int i = CommonImgThumbHelper.getImgThumbMinDp(paramBoolean);
     ReplyTextItemBuilder.BasicPicInfo localBasicPicInfo = new ReplyTextItemBuilder.BasicPicInfo();
+    float f2;
     float f1;
-    if ((paramInt1 < i) || (paramInt2 < i)) {
+    if ((paramInt1 >= i) && (paramInt2 >= i))
+    {
+      if ((paramInt1 < j) && (paramInt2 < j))
+      {
+        f2 = 0.0F;
+        f1 = paramFloat;
+        paramFloat = f2;
+      }
+      else
+      {
+        if (paramInt1 > paramInt2)
+        {
+          f1 = j;
+          f2 = paramInt1;
+        }
+        else
+        {
+          f1 = j;
+          f2 = paramInt2;
+        }
+        float f3 = f1 / f2;
+        if (paramInt1 > paramInt2)
+        {
+          f2 = i;
+          f1 = paramInt2;
+        }
+        else
+        {
+          f2 = i;
+          f1 = paramInt1;
+        }
+        f2 = Math.max(f3, f2 / f1);
+        paramInt1 = (int)(paramInt1 * f2 + 0.5F);
+        paramInt2 = (int)(paramInt2 * f2 + 0.5F);
+        f1 = paramFloat;
+        paramFloat = f2;
+      }
+    }
+    else
+    {
       if (paramInt1 < paramInt2)
       {
         f1 = i / paramInt1;
-        paramInt1 = (int)(paramInt2 * f1 + 0.5F);
-        if (paramInt1 > j)
-        {
+        paramInt2 = (int)(paramInt2 * f1 + 0.5F);
+        paramInt1 = paramInt2;
+        if (paramInt2 > j) {
           paramInt1 = j;
-          paramInt2 = paramInt1;
-          paramInt1 = i;
-          paramFloat *= f1;
         }
+        paramInt2 = paramInt1;
+        paramInt1 = i;
       }
-    }
-    for (;;)
-    {
-      localBasicPicInfo.jdField_a_of_type_Int = paramInt1;
-      localBasicPicInfo.jdField_b_of_type_Int = paramInt2;
-      localBasicPicInfo.jdField_a_of_type_Float = f1;
-      localBasicPicInfo.jdField_b_of_type_Float = paramFloat;
-      return localBasicPicInfo;
-      break;
-      f1 = i / paramInt2;
-      paramInt1 = (int)(paramInt1 * f1 + 0.5F);
-      if (paramInt1 > j) {
-        paramInt1 = j;
-      }
-      for (;;)
+      else
       {
+        f1 = i / paramInt2;
+        paramInt2 = (int)(paramInt1 * f1 + 0.5F);
+        paramInt1 = paramInt2;
+        if (paramInt2 > j) {
+          paramInt1 = j;
+        }
         paramInt2 = i;
-        break;
       }
-      if ((paramInt1 >= j) || (paramInt2 >= j)) {
-        break label162;
-      }
-      f1 = 0.0F;
+      f2 = paramFloat * f1;
+      paramFloat = f1;
+      f1 = f2;
     }
-    label162:
-    if (paramInt1 > paramInt2)
-    {
-      f1 = j / paramInt1;
-      label175:
-      if (paramInt1 <= paramInt2) {
-        break label233;
-      }
-    }
-    label233:
-    for (float f2 = i / paramInt2;; f2 = i / paramInt1)
-    {
-      f1 = Math.max(f1, f2);
-      paramInt1 = (int)(paramInt1 * f1 + 0.5F);
-      paramInt2 = (int)(paramInt2 * f1 + 0.5F);
-      break;
-      f1 = j / paramInt2;
-      break label175;
-    }
+    localBasicPicInfo.jdField_a_of_type_Int = paramInt1;
+    localBasicPicInfo.jdField_b_of_type_Int = paramInt2;
+    localBasicPicInfo.jdField_a_of_type_Float = paramFloat;
+    localBasicPicInfo.jdField_b_of_type_Float = f1;
+    return localBasicPicInfo;
   }
   
   private static ReplyTextItemBuilder.BasicPicInfo a(Context paramContext, MessageForPic paramMessageForPic, ChatThumbView paramChatThumbView, int[] paramArrayOfInt)
   {
     ReplyTextItemBuilder.BasicPicInfo localBasicPicInfo = new ReplyTextItemBuilder.BasicPicInfo();
-    Object localObject3 = null;
-    boolean bool = PeakUtils.a(paramMessageForPic.imageType);
-    URL localURL2;
-    Object localObject1;
+    boolean bool = ((IPicUtil)QRoute.api(IPicUtil.class)).isDynamicImg(paramMessageForPic.imageType);
     if ((paramMessageForPic.imageType == 3) || (paramMessageForPic.imageType == 2000))
     {
       PicItemBuilder.e();
       if (PicItemBuilder.h)
       {
-        localURL2 = URLDrawableHelper.getURL(paramMessageForPic, 1, null);
-        localObject1 = AbsDownloader.getFile(localURL2.toString());
-        if (localObject1 != null)
-        {
-          try
-          {
-            localObject4 = NativeGifImage.getImageSize((File)localObject1, false);
-            localObject3 = localObject4;
-            localObject1 = localURL2;
-          }
-          catch (Throwable localThrowable1)
-          {
-            for (;;)
-            {
-              Object localObject4;
-              label141:
-              localObject2 = null;
-            }
-          }
-          try
-          {
-            if (QLog.isColorLevel())
-            {
-              QLog.d("ReplyTextItemBuilder", 2, "getThumbDrawable,using GIF_BIG,uniseq:" + paramMessageForPic.uniseq + " url:" + localURL2);
-              localObject1 = localURL2;
-              localObject3 = localObject4;
-            }
-          }
-          catch (Throwable localThrowable2)
-          {
-            localObject3 = localMalformedURLException;
-            localURL1 = localURL2;
-            break label141;
-          }
-          localBasicPicInfo.jdField_a_of_type_Boolean = true;
-          localBasicPicInfo.jdField_a_of_type_AndroidGraphicsRect = localObject3;
-          localBasicPicInfo.jdField_a_of_type_JavaNetURL = ((URL)localObject1);
-        }
+        localObject5 = URLDrawableHelper.getURL(paramMessageForPic, 1, null);
+        localObject1 = AbsDownloader.getFile(((URL)localObject5).toString());
+        if (localObject1 == null) {}
       }
     }
-    for (;;)
+    try
     {
-      localObject4 = localObject1;
-      if (localObject1 == null) {
-        localObject1 = URLDrawableHelper.getURL(paramMessageForPic, 65537, null);
+      localObject6 = NativeGifImage.getImageSize((File)localObject1, false);
+      localObject3 = localObject5;
+      localObject1 = localObject6;
+    }
+    catch (Throwable localThrowable1)
+    {
+      Object localObject3;
+      label168:
+      label175:
+      int i;
+      float f;
+      int k;
+      int j;
+      break label168;
+    }
+    try
+    {
+      if (!QLog.isColorLevel()) {
+        break label175;
       }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getThumbDrawable,using GIF_BIG,uniseq:");
+      ((StringBuilder)localObject1).append(paramMessageForPic.uniseq);
+      ((StringBuilder)localObject1).append(" url:");
+      ((StringBuilder)localObject1).append(localObject5);
+      QLog.d("ReplyTextItemBuilder", 2, ((StringBuilder)localObject1).toString());
+      localObject3 = localObject5;
+      localObject1 = localObject6;
+    }
+    catch (Throwable localThrowable2)
+    {
+      localObject4 = localObject5;
+      Object localObject2 = localObject6;
+      break label175;
+    }
+    localObject3 = null;
+    Object localObject1 = localObject3;
+    localBasicPicInfo.jdField_a_of_type_Boolean = true;
+    localBasicPicInfo.jdField_a_of_type_AndroidGraphicsRect = ((Rect)localObject1);
+    localBasicPicInfo.jdField_a_of_type_JavaNetURL = ((URL)localObject3);
+    localObject5 = localObject1;
+    break label209;
+    localObject3 = null;
+    localObject5 = localObject3;
+    label209:
+    localObject6 = localObject3;
+    if (localObject3 == null)
+    {
+      localObject1 = URLDrawableHelper.getURL(paramMessageForPic, 65537, null);
       try
       {
-        localObject4 = new URL(((URL)localObject1).toString());
-        localObject1 = localObject4;
+        localObject3 = new URL(((URL)localObject1).toString());
+        localObject1 = localObject3;
       }
       catch (MalformedURLException localMalformedURLException)
       {
-        int k;
-        float f;
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("ReplyTextItemBuilder", 2, "group emo new URL error!");
-          }
-          localMalformedURLException.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.i("ReplyTextItemBuilder", 2, "group emo new URL error!");
         }
-        paramContext = AbsDownloader.getFile((String)localObject1);
-        if (paramContext == null) {
-          break label435;
-        }
-        a(paramArrayOfInt, localObject3, bool, k, paramContext, f);
-        return localBasicPicInfo;
-        int i = paramMessageForPic.thumbWidth;
-        int j = paramMessageForPic.thumbHeight;
-        if ((i <= 0) || (j <= 0)) {
-          break label532;
-        }
-        paramContext = a(i, j, 0.0F, bool);
-        j = paramContext.jdField_a_of_type_Int;
-        for (i = paramContext.jdField_b_of_type_Int;; i = 99)
-        {
-          f = k / 160.0F;
-          j = (int)(j * f + 0.5F);
-          i = (int)(i * f + 0.5F);
-          if (paramArrayOfInt == null) {
-            break;
-          }
-          paramArrayOfInt[0] = j;
-          paramArrayOfInt[1] = i;
-          return localBasicPicInfo;
-          if (QLog.isColorLevel()) {
-            QLog.d("ReplyTextItemBuilder", 2, "MessageForPic without width/height of thumb, width = " + i + ", height = " + j);
-          }
-          j = 99;
-        }
+        localMalformedURLException.printStackTrace();
       }
-      localObject4 = localObject1;
+      localObject6 = localObject1;
       if (QLog.isColorLevel())
       {
-        QLog.d("ReplyTextItemBuilder", 2, "getThumbDrawable,using thumb,uniseq:" + paramMessageForPic.uniseq + " url:" + localObject1);
-        localObject4 = localObject1;
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("getThumbDrawable,using thumb,uniseq:");
+        ((StringBuilder)localObject4).append(paramMessageForPic.uniseq);
+        ((StringBuilder)localObject4).append(" url:");
+        ((StringBuilder)localObject4).append(localObject1);
+        QLog.d("ReplyTextItemBuilder", 2, ((StringBuilder)localObject4).toString());
+        localObject6 = localObject1;
       }
-      localObject1 = ((URL)localObject4).toString();
-      k = paramContext.getResources().getDisplayMetrics().densityDpi;
-      if (paramChatThumbView != null) {
-        paramChatThumbView.jdField_a_of_type_Boolean = false;
-      }
-      f = k / 160.0F;
-      if (GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(localObject1) != null)
+    }
+    localObject1 = ((URL)localObject6).toString();
+    i = paramContext.getResources().getDisplayMetrics().densityDpi;
+    if (paramChatThumbView != null) {
+      paramChatThumbView.jdField_a_of_type_Boolean = false;
+    }
+    f = i / 160.0F;
+    if (GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(localObject1) != null)
+    {
+      paramContext = URLDrawableHelper.getDrawable((URL)localObject6, 0, 0, null, null, true, f * 12.0F);
+      if (paramArrayOfInt != null)
       {
-        paramContext = URLDrawableHelper.getDrawable((URL)localObject4, 0, 0, null, null, true, 12.0F * f);
-        if (paramArrayOfInt != null)
+        paramArrayOfInt[0] = paramContext.getIntrinsicWidth();
+        paramArrayOfInt[1] = paramContext.getIntrinsicHeight();
+        if (QLog.isColorLevel())
         {
-          paramArrayOfInt[0] = paramContext.getIntrinsicWidth();
-          paramArrayOfInt[1] = paramContext.getIntrinsicHeight();
-          if (QLog.isColorLevel()) {
-            QLog.d("ReplyTextItemBuilder", 2, "getNoRoundThumbDrawableAbsDownloader cache:" + paramArrayOfInt[0] + "," + paramArrayOfInt[1]);
-          }
+          paramContext = new StringBuilder();
+          paramContext.append("getNoRoundThumbDrawableAbsDownloader cache:");
+          paramContext.append(paramArrayOfInt[0]);
+          paramContext.append(",");
+          paramContext.append(paramArrayOfInt[1]);
+          QLog.d("ReplyTextItemBuilder", 2, paramContext.toString());
+          return localBasicPicInfo;
         }
+      }
+    }
+    else
+    {
+      paramContext = AbsDownloader.getFile((String)localObject1);
+      if (paramContext != null)
+      {
+        a(paramArrayOfInt, (Rect)localObject5, bool, i, paramContext, f);
         return localBasicPicInfo;
       }
-      label435:
-      Object localObject2;
-      label532:
-      URL localURL1 = null;
-      break;
-      localObject3 = null;
-      localURL1 = null;
+      i = paramMessageForPic.thumbWidth;
+      k = paramMessageForPic.thumbHeight;
+      j = 99;
+      if ((i > 0) && (k > 0))
+      {
+        paramContext = a(i, k, 0.0F, bool);
+        j = paramContext.jdField_a_of_type_Int;
+        i = paramContext.jdField_b_of_type_Int;
+      }
+      else
+      {
+        if (QLog.isColorLevel())
+        {
+          paramContext = new StringBuilder();
+          paramContext.append("MessageForPic without width/height of thumb, width = ");
+          paramContext.append(i);
+          paramContext.append(", height = ");
+          paramContext.append(k);
+          QLog.d("ReplyTextItemBuilder", 2, paramContext.toString());
+        }
+        i = 99;
+      }
+      j = (int)(j * f + 0.5F);
+      i = (int)(i * f + 0.5F);
+      if (paramArrayOfInt != null)
+      {
+        paramArrayOfInt[0] = j;
+        paramArrayOfInt[1] = i;
+      }
     }
+    return localBasicPicInfo;
   }
   
   private static ReplyTextItemBuilder.MixedMessageInfo a(MessageForMixedMsg paramMessageForMixedMsg)
   {
-    boolean bool2 = true;
-    Object localObject2 = null;
     int m = 0;
-    Object localObject3 = "";
-    int n = 0;
+    Object localObject2 = "";
     int j = 0;
     boolean bool1 = false;
-    Object localObject4;
-    int k;
-    int i;
+    Object localObject3 = null;
+    int n = 0;
     Object localObject1;
-    if (m < paramMessageForMixedMsg.msgElemList.size())
+    Object localObject4;
+    int i;
+    boolean bool2;
+    for (;;)
     {
+      localObject1 = localObject3;
+      localObject4 = localObject2;
+      i = j;
+      bool2 = bool1;
+      if (m >= paramMessageForMixedMsg.msgElemList.size()) {
+        break;
+      }
+      int k;
       if (!(paramMessageForMixedMsg.msgElemList.get(m) instanceof MessageForText))
       {
-        localObject4 = localObject3;
         k = n;
+        localObject4 = localObject2;
         i = j;
         if (!(paramMessageForMixedMsg.msgElemList.get(m) instanceof MessageForReplyText)) {}
       }
       else
       {
-        localObject4 = localObject3;
         k = n;
+        localObject4 = localObject2;
         i = j;
         if (n == 0)
         {
-          if (!(paramMessageForMixedMsg.msgElemList.get(m) instanceof MessageForText)) {
-            break label289;
+          if ((paramMessageForMixedMsg.msgElemList.get(m) instanceof MessageForText))
+          {
+            localObject4 = (MessageForText)paramMessageForMixedMsg.msgElemList.get(m);
+            if (((MessageForText)localObject4).sb != null)
+            {
+              localObject1 = ((MessageForText)localObject4).sb.toString();
+            }
+            else
+            {
+              localObject1 = localObject2;
+              if (((MessageForText)localObject4).msg != null) {
+                localObject1 = ((MessageForText)localObject4).msg;
+              }
+            }
           }
-          localObject4 = (MessageForText)paramMessageForMixedMsg.msgElemList.get(m);
-          if (((MessageForText)localObject4).sb == null) {
-            break label267;
+          else
+          {
+            localObject1 = localObject2;
+            if ((paramMessageForMixedMsg.msgElemList.get(m) instanceof MessageForReplyText))
+            {
+              localObject1 = localObject2;
+              if (((MessageForReplyText)paramMessageForMixedMsg.msgElemList.get(m)).sb != null)
+              {
+                localObject4 = (MessageForReplyText)paramMessageForMixedMsg.msgElemList.get(m);
+                if (((MessageForReplyText)localObject4).sb != null)
+                {
+                  localObject1 = ((MessageForReplyText)localObject4).sb.toString();
+                }
+                else
+                {
+                  localObject1 = localObject2;
+                  if (((MessageForReplyText)localObject4).msg != null) {
+                    localObject1 = ((MessageForReplyText)localObject4).msg;
+                  }
+                }
+              }
+            }
           }
-          localObject1 = ((MessageForText)localObject4).sb.toString();
-          localObject4 = localObject1;
           k = n;
+          localObject4 = localObject1;
           i = j;
           if (!android.text.TextUtils.isEmpty((CharSequence)localObject1))
           {
-            localObject4 = localObject1;
             k = n;
+            localObject4 = localObject1;
             i = j;
-            if (!((String)localObject1).equals("\n"))
-            {
-              if (!bool1) {
-                break label395;
+            if (!((String)localObject1).equals("\n")) {
+              if (bool1)
+              {
+                k = 1;
+                i = 2;
+                localObject4 = localObject1;
               }
-              i = 2;
-              k = 1;
+              else
+              {
+                k = 1;
+                i = 1;
+                localObject4 = localObject1;
+              }
             }
           }
         }
       }
-      for (localObject4 = localObject1;; localObject4 = localObject1)
+      localObject1 = localObject3;
+      bool2 = bool1;
+      if ((paramMessageForMixedMsg.msgElemList.get(m) instanceof MessageForPic))
       {
-        if ((!(paramMessageForMixedMsg.msgElemList.get(m) instanceof MessageForPic)) || (bool1)) {
-          break label406;
-        }
-        localObject1 = (MessageForPic)paramMessageForMixedMsg.msgElemList.get(m);
-        MessageForMixedMsg.copyBaseInfoFromMixedToPic((MessageForPic)localObject1, paramMessageForMixedMsg);
-        if (k == 0) {
-          break label441;
-        }
-        localObject3 = localObject4;
-        bool1 = bool2;
-        label252:
-        return new ReplyTextItemBuilder.MixedMessageInfo((MessageForPic)localObject1, (String)localObject3, i, bool1);
-        label267:
         localObject1 = localObject3;
-        if (((MessageForText)localObject4).msg == null) {
-          break;
-        }
-        localObject1 = ((MessageForText)localObject4).msg;
-        break;
-        label289:
-        localObject1 = localObject3;
-        if (!(paramMessageForMixedMsg.msgElemList.get(m) instanceof MessageForReplyText)) {
-          break;
-        }
-        localObject1 = localObject3;
-        if (((MessageForReplyText)paramMessageForMixedMsg.msgElemList.get(m)).sb == null) {
-          break;
-        }
-        localObject4 = (MessageForReplyText)paramMessageForMixedMsg.msgElemList.get(m);
-        if (((MessageForReplyText)localObject4).sb != null)
+        bool2 = bool1;
+        if (!bool1)
         {
-          localObject1 = ((MessageForReplyText)localObject4).sb.toString();
-          break;
+          localObject1 = (MessageForPic)paramMessageForMixedMsg.msgElemList.get(m);
+          MessageForMixedMsg.copyBaseInfoFromMixedToPic((MessageForPic)localObject1, paramMessageForMixedMsg);
+          if (k != 0)
+          {
+            bool2 = true;
+            break;
+          }
+          bool2 = true;
         }
-        localObject1 = localObject3;
-        if (((MessageForReplyText)localObject4).msg == null) {
-          break;
-        }
-        localObject1 = ((MessageForReplyText)localObject4).msg;
-        break;
-        label395:
-        k = 1;
-        i = 1;
       }
-      label406:
-      localObject1 = localObject2;
-    }
-    for (;;)
-    {
       m += 1;
-      localObject2 = localObject1;
-      localObject3 = localObject4;
       n = k;
+      localObject3 = localObject1;
+      localObject2 = localObject4;
       j = i;
-      break;
-      localObject1 = localObject2;
-      i = j;
-      break label252;
-      label441:
-      bool1 = true;
+      bool1 = bool2;
     }
+    return new ReplyTextItemBuilder.MixedMessageInfo((MessageForPic)localObject1, (String)localObject4, i, bool2);
   }
   
   public static MessageRecord a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
@@ -939,29 +1013,17 @@ public class ReplyTextItemBuilder
   private static MessageRecord a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2, StringBuilder paramStringBuilder, MessageRecord paramMessageRecord3, boolean paramBoolean)
   {
     int i = 1;
-    for (;;)
+    while (i < 10)
     {
-      MessageRecord localMessageRecord;
-      if (i < 10)
+      MessageRecord localMessageRecord = paramQQAppInterface.getMessageFacade().c(paramMessageRecord1.frienduin, paramMessageRecord1.istroop, paramMessageRecord2.shmsgseq + i);
+      if ((localMessageRecord != null) && (localMessageRecord.isLongMsg()) && ((localMessageRecord instanceof MessageForText)))
       {
-        localMessageRecord = paramQQAppInterface.getMessageFacade().c(paramMessageRecord1.frienduin, paramMessageRecord1.istroop, paramMessageRecord2.shmsgseq + i);
-        if ((localMessageRecord == null) || (!localMessageRecord.isLongMsg()) || (!(localMessageRecord instanceof MessageForText))) {
-          break label93;
-        }
         if (!android.text.TextUtils.isEmpty(localMessageRecord.msg)) {
           paramStringBuilder.append(localMessageRecord.msg);
         }
-        if ((localMessageRecord != null) && (localMessageRecord.isLongMsg())) {
-          break label197;
-        }
       }
-      label93:
-      do
+      else if (((localMessageRecord instanceof MessageForMixedMsg)) && (localMessageRecord.isLongMsg()))
       {
-        return paramMessageRecord3;
-        if ((!(localMessageRecord instanceof MessageForMixedMsg)) || (!localMessageRecord.isLongMsg())) {
-          break;
-        }
         paramQQAppInterface = (MessageForMixedMsg)localMessageRecord;
         if (paramQQAppInterface.msgElemList != null)
         {
@@ -976,16 +1038,25 @@ public class ReplyTextItemBuilder
             i += 1;
           }
         }
-      } while (paramBoolean);
-      return localMessageRecord;
-      label197:
+        if (paramBoolean) {
+          break;
+        }
+        return localMessageRecord;
+      }
+      if (localMessageRecord == null) {
+        break;
+      }
+      if (!localMessageRecord.isLongMsg()) {
+        return paramMessageRecord3;
+      }
       i += 1;
     }
+    return paramMessageRecord3;
   }
   
   public static MessageRecord a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong)
   {
-    paramQQAppInterface = paramQQAppInterface.getMessageFacade().a(paramString, paramInt);
+    paramQQAppInterface = paramQQAppInterface.getMessageFacade().b(paramString, paramInt);
     int i = paramQQAppInterface.size();
     paramInt = 0;
     while (paramInt < i)
@@ -1005,30 +1076,30 @@ public class ReplyTextItemBuilder
   
   public static MessageRecord a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong1, long paramLong2, long paramLong3)
   {
-    List localList = paramQQAppInterface.getMessageFacade().a(paramString, paramInt);
+    List localList = paramQQAppInterface.getMessageFacade().b(paramString, paramInt);
     int j = localList.size();
     int i = 0;
     while (i < j)
     {
       ChatMessage localChatMessage = (ChatMessage)localList.get(i);
-      if ((localChatMessage.time == paramLong1) && (localChatMessage.msgUid == paramLong2)) {
+      if ((localChatMessage.time == paramLong1) && (localChatMessage.msgUid == paramLong2))
+      {
         if (!localChatMessage.mIsParsed) {
           localChatMessage.parse();
         }
-      }
-      do
-      {
         return localChatMessage;
-        if (!(localChatMessage instanceof MessageForFile)) {
-          break;
-        }
+      }
+      if ((localChatMessage instanceof MessageForFile))
+      {
         MessageForFile localMessageForFile = (MessageForFile)localChatMessage;
-        if ((localMessageForFile.originalTime != paramLong1) || (localMessageForFile.originalMsgUid != paramLong2)) {
-          break;
+        if ((localMessageForFile.originalTime == paramLong1) && (localMessageForFile.originalMsgUid == paramLong2))
+        {
+          if (!localChatMessage.mIsParsed) {
+            localChatMessage.parse();
+          }
+          return localChatMessage;
         }
-      } while (localChatMessage.mIsParsed);
-      localChatMessage.parse();
-      return localChatMessage;
+      }
       i += 1;
     }
     return a(paramQQAppInterface, paramString, paramInt, paramLong3);
@@ -1036,189 +1107,202 @@ public class ReplyTextItemBuilder
   
   public static MessageRecord a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, MessageRecord paramMessageRecord, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo)
   {
-    if (((paramMessageRecord instanceof MessageForReplyText)) && (((MessageForReplyText)paramMessageRecord).getSourceMessage() != null))
+    boolean bool = paramMessageRecord instanceof MessageForReplyText;
+    if (bool)
     {
-      paramString = ((MessageForReplyText)paramMessageRecord).getSourceMessage();
-      return paramString;
+      MessageForReplyText localMessageForReplyText = (MessageForReplyText)paramMessageRecord;
+      if (localMessageForReplyText.getSourceMessage() != null) {
+        return localMessageForReplyText.getSourceMessage();
+      }
     }
-    if ((paramMessageRecord == null) || (paramMessageRecord.isMultiMsg))
+    if ((paramMessageRecord != null) && (!paramMessageRecord.isMultiMsg))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReplyTextItemBuilder", 2, "REPLY getMessage  replyTextMsg=" + paramMessageRecord);
+      if (paramInt == 0) {
+        paramQQAppInterface = a(paramQQAppInterface, paramString, paramInt, paramSourceMsgInfo.mSourceMsgTime, paramSourceMsgInfo.origUid, paramSourceMsgInfo.mSourceMsgSeq);
+      } else {
+        paramQQAppInterface = a(paramQQAppInterface, paramString, paramInt, paramSourceMsgInfo.mSourceMsgSeq);
       }
-      return null;
-    }
-    if (paramInt == 0) {}
-    for (paramQQAppInterface = a(paramQQAppInterface, paramString, paramInt, paramSourceMsgInfo.mSourceMsgTime, paramSourceMsgInfo.origUid, paramSourceMsgInfo.mSourceMsgSeq);; paramQQAppInterface = a(paramQQAppInterface, paramString, paramInt, paramSourceMsgInfo.mSourceMsgSeq))
-    {
-      paramString = paramQQAppInterface;
-      if (paramQQAppInterface == null) {
-        break;
+      if ((paramQQAppInterface != null) && (bool)) {
+        ((MessageForReplyText)paramMessageRecord).setSourceMessageRecord(paramQQAppInterface);
       }
-      paramString = paramQQAppInterface;
-      if (!(paramMessageRecord instanceof MessageForReplyText)) {
-        break;
-      }
-      ((MessageForReplyText)paramMessageRecord).setSourceMessageRecord(paramQQAppInterface);
       return paramQQAppInterface;
     }
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("REPLY getMessage  replyTextMsg=");
+      paramQQAppInterface.append(paramMessageRecord);
+      QLog.d("ReplyTextItemBuilder", 2, paramQQAppInterface.toString());
+    }
+    return null;
   }
   
   @Nullable
   private static String a(Context paramContext, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
+    boolean bool = paramMessageRecord1 instanceof MessageForReplyText;
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    long l;
-    if ((paramMessageRecord1 instanceof MessageForReplyText))
+    if (bool)
     {
+      paramMessageRecord1 = (MessageForReplyText)paramMessageRecord1;
       localObject1 = localObject2;
-      if (((MessageForReplyText)paramMessageRecord1).isBarrageMsg)
+      if (paramMessageRecord1.isBarrageMsg)
       {
-        l = ((MessageForReplyText)paramMessageRecord1).barrageTimeLocation;
-        if (!(paramMessageRecord2 instanceof MessageForShortVideo)) {
-          break label60;
+        long l = paramMessageRecord1.barrageTimeLocation;
+        if ((paramMessageRecord2 instanceof MessageForShortVideo)) {
+          return DanmuUtil.a(paramContext, (int)(l / 1000L));
         }
-        localObject1 = DanmuUtil.a(paramContext, (int)(l / 1000L));
+        localObject1 = localObject2;
+        if (FileManagerUtil.a(paramMessageRecord2))
+        {
+          paramMessageRecord1 = a(paramQQAppInterface, paramMessageRecord2);
+          if ((paramMessageRecord1 instanceof MessageForFile))
+          {
+            paramQQAppInterface = paramQQAppInterface.getFileManagerDataCenter().a(paramMessageRecord1.uniseq, paramMessageRecord1.frienduin, paramMessageRecord1.istroop);
+            localObject1 = localObject2;
+            if (paramQQAppInterface != null)
+            {
+              localObject1 = localObject2;
+              if (FileManagerUtil.a(paramQQAppInterface.fileName) == 2) {
+                return DanmuUtil.a(paramContext, (int)(l / 1000L));
+              }
+            }
+          }
+          else
+          {
+            localObject1 = localObject2;
+            if ((paramMessageRecord1 instanceof MessageForTroopFile))
+            {
+              paramQQAppInterface = TroopFileUtils.a(paramQQAppInterface, (MessageForTroopFile)paramMessageRecord1);
+              localObject1 = localObject2;
+              if (paramQQAppInterface != null)
+              {
+                localObject1 = localObject2;
+                if (FileManagerUtil.a(paramQQAppInterface.g) == 2) {
+                  localObject1 = DanmuUtil.a(paramContext, (int)(l / 1000L));
+                }
+              }
+            }
+          }
+        }
       }
     }
-    label60:
-    do
-    {
-      return localObject1;
-      localObject1 = localObject2;
-    } while (!FileManagerUtil.a(paramMessageRecord2));
-    paramMessageRecord1 = a(paramQQAppInterface, paramMessageRecord2);
-    if ((paramMessageRecord1 instanceof MessageForFile))
-    {
-      paramQQAppInterface = paramQQAppInterface.getFileManagerDataCenter().a(paramMessageRecord1.uniseq, paramMessageRecord1.frienduin, paramMessageRecord1.istroop);
-      if ((paramQQAppInterface == null) || (FileManagerUtil.a(paramQQAppInterface.fileName) != 2)) {
-        break label188;
-      }
-    }
-    label188:
-    for (paramContext = DanmuUtil.a(paramContext, (int)(l / 1000L));; paramContext = null)
-    {
-      return paramContext;
-      localObject1 = localObject2;
-      if (!(paramMessageRecord1 instanceof MessageForTroopFile)) {
-        break;
-      }
-      paramQQAppInterface = TroopFileUtils.a(paramQQAppInterface, (MessageForTroopFile)paramMessageRecord1);
-      localObject1 = localObject2;
-      if (paramQQAppInterface == null) {
-        break;
-      }
-      localObject1 = localObject2;
-      if (FileManagerUtil.a(paramQQAppInterface.g) != 2) {
-        break;
-      }
-      return DanmuUtil.a(paramContext, (int)(l / 1000L));
-    }
+    return localObject1;
   }
   
   @Nullable
   private static String a(QQAppInterface paramQQAppInterface, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, MessageRecord paramMessageRecord1, String paramString, MessageRecord paramMessageRecord2)
   {
-    String str = null;
-    if ((paramMessageRecord2 instanceof MessageForFile))
+    Object localObject1 = "";
+    boolean bool = paramMessageRecord2 instanceof MessageForFile;
+    MessageForTroopFile localMessageForTroopFile = null;
+    Object localObject2 = null;
+    if (bool)
     {
-      if (((MessageForFile)paramMessageRecord2).fileName == null) {
-        break label370;
-      }
-      paramQQAppInterface = ((MessageForFile)paramMessageRecord2).getSummaryMsg();
-      paramSourceMsgInfo.mSourceMsgText = paramQQAppInterface;
-      paramSourceMsgInfo.mSourceSummaryFlag = 1;
-    }
-    label370:
-    label375:
-    for (;;)
-    {
-      Object localObject = paramQQAppInterface;
-      if (paramQQAppInterface == null) {
-        localObject = paramSourceMsgInfo.mSourceMsgText;
-      }
-      if ((paramMessageRecord2 != null) && (paramMessageRecord2.shmsgseq == paramMessageRecord1.shmsgseq))
+      localObject1 = (MessageForFile)paramMessageRecord2;
+      paramQQAppInterface = localMessageForTroopFile;
+      if (((MessageForFile)localObject1).fileName != null)
       {
-        return paramString;
-        if ((paramMessageRecord2 instanceof MessageForTroopFile))
-        {
-          if (((MessageForTroopFile)paramMessageRecord2).fileName != null) {
-            str = ((MessageForTroopFile)paramMessageRecord2).getSummaryMsg();
-          }
-          localObject = str;
-          if (android.text.TextUtils.isEmpty(str))
-          {
-            paramQQAppInterface = TroopFileUtils.a(paramQQAppInterface, (MessageForTroopFile)paramMessageRecord2);
-            localObject = str;
-            if (paramQQAppInterface != null) {
-              localObject = paramQQAppInterface.g;
-            }
-          }
-          paramQQAppInterface = (QQAppInterface)localObject;
-          if (android.text.TextUtils.isEmpty((CharSequence)localObject))
-          {
-            localObject = paramMessageRecord2.getExtInfoFromExtStr("_m_ForwardFileName");
-            paramQQAppInterface = (QQAppInterface)localObject;
-            if (!android.text.TextUtils.isEmpty((CharSequence)localObject)) {
-              paramQQAppInterface = HardCodeUtil.a(2131706580) + (String)localObject;
-            }
-          }
-          if (android.text.TextUtils.isEmpty(paramQQAppInterface)) {
-            break label375;
-          }
-          paramSourceMsgInfo.mSourceMsgText = paramQQAppInterface;
-          paramSourceMsgInfo.mSourceSummaryFlag = 1;
-          continue;
+        paramQQAppInterface = ((MessageForFile)localObject1).getSummaryMsg();
+        paramSourceMsgInfo.mSourceMsgText = paramQQAppInterface;
+        paramSourceMsgInfo.mSourceSummaryFlag = 1;
+      }
+    }
+    else if ((paramMessageRecord2 instanceof MessageForTroopFile))
+    {
+      localMessageForTroopFile = (MessageForTroopFile)paramMessageRecord2;
+      if (localMessageForTroopFile.fileName != null) {
+        localObject2 = localMessageForTroopFile.getSummaryMsg();
+      }
+      localObject1 = localObject2;
+      if (android.text.TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        paramQQAppInterface = TroopFileUtils.a(paramQQAppInterface, localMessageForTroopFile);
+        localObject1 = localObject2;
+        if (paramQQAppInterface != null) {
+          localObject1 = paramQQAppInterface.g;
         }
-        if (paramMessageRecord2 != null) {
-          for (;;)
+      }
+      localObject2 = localObject1;
+      if (android.text.TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        localObject1 = paramMessageRecord2.getExtInfoFromExtStr("_m_ForwardFileName");
+        paramQQAppInterface = (QQAppInterface)localObject1;
+        if (!android.text.TextUtils.isEmpty((CharSequence)localObject1))
+        {
+          paramQQAppInterface = new StringBuilder();
+          paramQQAppInterface.append(HardCodeUtil.a(2131706603));
+          paramQQAppInterface.append((String)localObject1);
+          paramQQAppInterface = paramQQAppInterface.toString();
+        }
+        localObject2 = paramQQAppInterface;
+      }
+      paramQQAppInterface = (QQAppInterface)localObject2;
+      if (!android.text.TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        paramSourceMsgInfo.mSourceMsgText = ((String)localObject2);
+        paramSourceMsgInfo.mSourceSummaryFlag = 1;
+        paramQQAppInterface = (QQAppInterface)localObject2;
+      }
+    }
+    else
+    {
+      paramQQAppInterface = localMessageForTroopFile;
+      if (paramMessageRecord2 != null)
+      {
+        try
+        {
+          if (!((ChatMessage)paramMessageRecord2).mIsParsed) {
+            ((ChatMessage)paramMessageRecord2).parse();
+          }
+          if ((paramMessageRecord2 instanceof MessageForReplyText))
           {
-            try
+            if (((MessageForReplyText)paramMessageRecord2).sb == null)
             {
-              if (!((ChatMessage)paramMessageRecord2).mIsParsed) {
-                ((ChatMessage)paramMessageRecord2).parse();
-              }
-              if (!(paramMessageRecord2 instanceof MessageForReplyText)) {
-                continue;
-              }
-              if (((MessageForReplyText)paramMessageRecord2).sb != null) {
-                continue;
-              }
               QLog.e("ReplyTextItemBuilder", 2, "MessageForReplyText.sb is null");
+              paramQQAppInterface = (QQAppInterface)localObject1;
               if (paramMessageRecord2.msg == null) {
-                continue;
+                break label352;
               }
               paramQQAppInterface = paramMessageRecord2.msg;
             }
-            catch (Throwable localThrowable)
+            else
             {
-              paramQQAppInterface = "";
-              QLog.e("ReplyTextItemBuilder", 2, new Object[] { "msg.getSummaryMsg error, msg type=", paramMessageRecord2.getClass().getName(), localThrowable });
-              continue;
+              paramQQAppInterface = ((MessageForReplyText)paramMessageRecord2).getSummaryMsg();
             }
-            paramSourceMsgInfo.mSourceMsgText = paramQQAppInterface;
-            paramSourceMsgInfo.mSourceSummaryFlag = 1;
-            break;
-            paramQQAppInterface = "";
-            continue;
-            paramQQAppInterface = ((MessageForReplyText)paramMessageRecord2).getSummaryMsg();
-            continue;
+          }
+          else {
             paramQQAppInterface = ((ChatMessage)paramMessageRecord2).getSummaryMsg();
           }
         }
+        catch (Throwable paramQQAppInterface)
+        {
+          QLog.e("ReplyTextItemBuilder", 2, new Object[] { "msg.getSummaryMsg error, msg type=", paramMessageRecord2.getClass().getName(), paramQQAppInterface });
+          paramQQAppInterface = (QQAppInterface)localObject1;
+        }
+        label352:
+        paramSourceMsgInfo.mSourceMsgText = paramQQAppInterface;
+        paramSourceMsgInfo.mSourceSummaryFlag = 1;
       }
-      else
-      {
-        return localThrowable;
-      }
-      paramQQAppInterface = null;
     }
+    if (paramQQAppInterface == null) {
+      paramQQAppInterface = paramSourceMsgInfo.mSourceMsgText;
+    }
+    paramSourceMsgInfo = paramQQAppInterface;
+    if (paramMessageRecord2 != null)
+    {
+      paramSourceMsgInfo = paramQQAppInterface;
+      if (paramMessageRecord2.shmsgseq == paramMessageRecord1.shmsgseq) {
+        paramSourceMsgInfo = paramString;
+      }
+    }
+    return paramSourceMsgInfo;
   }
   
   private static void a(Context paramContext, ChatThumbView paramChatThumbView, HasSourceMessage paramHasSourceMessage, MessageForPic paramMessageForPic)
   {
-    boolean bool = PeakUtils.a(paramMessageForPic.imageType);
+    boolean bool = ((IPicUtil)QRoute.api(IPicUtil.class)).isDynamicImg(paramMessageForPic.imageType);
     if (!bool)
     {
       paramContext = PicItemBuilder.a(paramContext, paramMessageForPic, paramChatThumbView);
@@ -1229,167 +1313,154 @@ public class ReplyTextItemBuilder
         paramChatThumbView.setMaxHeight(CommonImgThumbHelper.getImgThumbMaxPx(false));
         paramChatThumbView.setImageDrawable(paramContext.mutate());
       }
-      paramChatThumbView.setTag(2131364648, paramMessageForPic);
+      paramChatThumbView.setTag(2131364535, paramMessageForPic);
       return;
     }
     int[] arrayOfInt = new int[2];
-    int[] tmp70_68 = arrayOfInt;
-    tmp70_68[0] = 0;
-    int[] tmp74_70 = tmp70_68;
-    tmp74_70[1] = 0;
-    tmp74_70;
+    int[] tmp81_79 = arrayOfInt;
+    tmp81_79[0] = 0;
+    int[] tmp85_81 = tmp81_79;
+    tmp85_81[1] = 0;
+    tmp85_81;
+    Object localObject = null;
     URL localURL = URLDrawableHelper.getURL(paramMessageForPic, 65537);
     try
     {
       localURL = new URL(localURL.toString());
-      if (localURL == null)
-      {
-        paramChatThumbView.setImageDrawable(TroopFileItemBuilder.a(2, 200, 200));
-        return;
-      }
+      localObject = localURL;
     }
     catch (MalformedURLException localMalformedURLException)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("ReplyTextItemBuilder", 2, "group emo new URL error!");
-        }
-        localMalformedURLException.printStackTrace();
-        localBasicPicInfo = null;
+      if (QLog.isColorLevel()) {
+        QLog.i("ReplyTextItemBuilder", 2, "group emo new URL error!");
       }
-      ReplyTextItemBuilder.BasicPicInfo localBasicPicInfo = a(paramContext, paramMessageForPic, paramChatThumbView, arrayOfInt);
-      paramContext = a(paramContext, paramMessageForPic, paramChatThumbView, new int[] { 0, 0 }, localBasicPicInfo);
-      paramChatThumbView.setTag(2131364648, paramMessageForPic);
-      if (arrayOfInt[0] <= 0) {
-        break label427;
-      }
+      localMalformedURLException.printStackTrace();
     }
-    int j;
-    int n;
-    label251:
-    int i1;
-    int i2;
-    label273:
-    int k;
-    label296:
-    int m;
-    if (arrayOfInt[1] > 0)
+    if (localObject == null)
+    {
+      paramChatThumbView.setImageDrawable(TroopFileItemBuilder.a(2, 200, 200));
+      return;
+    }
+    localObject = a(paramContext, paramMessageForPic, paramChatThumbView, arrayOfInt);
+    paramContext = a(paramContext, paramMessageForPic, paramChatThumbView, new int[] { 0, 0 }, (ReplyTextItemBuilder.BasicPicInfo)localObject);
+    paramChatThumbView.setTag(2131364535, paramMessageForPic);
+    if ((arrayOfInt[0] > 0) && (arrayOfInt[1] > 0))
     {
       paramMessageForPic = (RelativeLayout.LayoutParams)paramChatThumbView.getLayoutParams();
-      j = CommonImgThumbHelper.getImgThumbMaxPx(bool);
-      n = Math.min(CommonImgThumbHelper.getImgThumbMinPx(bool), 80);
-      if (arrayOfInt[0] <= j) {
-        break label440;
+      int j = CommonImgThumbHelper.getImgThumbMaxPx(bool);
+      int n = Math.min(CommonImgThumbHelper.getImgThumbMinPx(bool), 80);
+      int i;
+      if (arrayOfInt[0] > j) {
+        i = j;
+      } else {
+        i = arrayOfInt[0];
       }
-      i = j;
       if (arrayOfInt[1] <= j) {
-        break label449;
+        j = arrayOfInt[1];
       }
-      i1 = AIOUtils.a(95.0F, paramChatThumbView.getResources());
-      if (i <= j) {
-        break label458;
+      int i1 = AIOUtils.b(95.0F, paramChatThumbView.getResources());
+      int i2;
+      if (i > j) {
+        i2 = 0;
+      } else {
+        i2 = 1;
       }
-      i2 = 0;
-      if ((i2 != 0) || (i <= i1)) {
-        break label471;
-      }
-      if (i1 >= n) {
-        break label464;
-      }
-      k = n;
-      m = arrayOfInt[1] * k / arrayOfInt[0];
-    }
-    label427:
-    label440:
-    label449:
-    label458:
-    label464:
-    label471:
-    do
-    {
-      do
+      int m;
+      int k;
+      if ((i2 == 0) && (i > i1))
       {
-        paramMessageForPic.width = k;
-        paramMessageForPic.height = m;
-        if (paramHasSourceMessage != null)
+        if (i1 < n) {
+          m = n;
+        } else {
+          m = i1;
+        }
+        k = arrayOfInt[1] * m / arrayOfInt[0];
+      }
+      else
+      {
+        k = j;
+        m = i;
+        if (i2 != 0)
         {
-          if (paramHasSourceMessage.getSourceMsgInfo() != null)
+          k = j;
+          m = i;
+          if (j > i1)
           {
-            paramHasSourceMessage.getSourceMsgInfo().replyPicWidth = k;
-            paramHasSourceMessage.getSourceMsgInfo().replyPicHeight = m;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("ReplyTextItemBuilder", 2, "set size :" + arrayOfInt[0] + "," + arrayOfInt[1] + " real:" + k + "," + m);
+            if (i1 < n) {
+              k = n;
+            } else {
+              k = i1;
+            }
+            m = arrayOfInt[0] * k / arrayOfInt[1];
           }
         }
-        paramChatThumbView.setImageDrawable(paramContext.mutate());
-        a(paramContext);
-        return;
-        i = arrayOfInt[0];
-        break;
-        j = arrayOfInt[1];
-        break label251;
-        i2 = 1;
-        break label273;
-        k = i1;
-        break label296;
-        k = i;
-        m = j;
-      } while (i2 == 0);
-      k = i;
-      m = j;
-    } while (j <= i1);
-    if (i1 < n) {}
-    for (int i = n;; i = i1)
-    {
-      k = arrayOfInt[0] * i / arrayOfInt[1];
-      m = i;
-      break;
+      }
+      paramMessageForPic.width = m;
+      paramMessageForPic.height = k;
+      if (paramHasSourceMessage != null)
+      {
+        if (paramHasSourceMessage.getSourceMsgInfo() != null)
+        {
+          paramHasSourceMessage.getSourceMsgInfo().replyPicWidth = m;
+          paramHasSourceMessage.getSourceMsgInfo().replyPicHeight = k;
+        }
+        if (QLog.isColorLevel())
+        {
+          paramHasSourceMessage = new StringBuilder();
+          paramHasSourceMessage.append("set size :");
+          paramHasSourceMessage.append(arrayOfInt[0]);
+          paramHasSourceMessage.append(",");
+          paramHasSourceMessage.append(arrayOfInt[1]);
+          paramHasSourceMessage.append(" real:");
+          paramHasSourceMessage.append(m);
+          paramHasSourceMessage.append(",");
+          paramHasSourceMessage.append(k);
+          QLog.d("ReplyTextItemBuilder", 2, paramHasSourceMessage.toString());
+        }
+      }
     }
+    paramChatThumbView.setImageDrawable(paramContext.mutate());
+    a(paramContext);
   }
   
   private static void a(Context paramContext, QQAppInterface paramQQAppInterface, ViewGroup paramViewGroup, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, MessageRecord paramMessageRecord1, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord2)
   {
-    int j = 4;
-    Object localObject;
-    ImageView localImageView;
-    if ((paramMessageRecord1 instanceof MessageForReplyText))
-    {
+    if ((paramMessageRecord1 instanceof MessageForReplyText)) {
       localObject = (MessageForReplyText)paramMessageRecord1;
-      boolean bool = MessageForReplyText.needHideLocate((MessageForReplyText)localObject);
-      localObject = (TextView)paramViewGroup.findViewById(2131367424);
-      localImageView = (ImageView)paramViewGroup.findViewById(2131369714);
-      if (!a(paramSourceMsgInfo, paramSessionInfo, paramQQAppInterface)) {
-        break label121;
-      }
-      paramContext = a(paramContext, paramQQAppInterface, paramMessageRecord1, paramMessageRecord2);
-      if (paramContext == null) {
-        break label105;
-      }
-      ((TextView)localObject).setText(paramContext);
-      ((TextView)localObject).setVisibility(0);
-      label83:
-      if (!bool) {
-        break label115;
-      }
+    } else {
+      localObject = null;
     }
-    label105:
-    label115:
-    for (int i = 4;; i = 0)
+    boolean bool1 = MessageForReplyText.needHideLocate((MessageForReplyText)localObject);
+    Object localObject = (TextView)paramViewGroup.findViewById(2131367206);
+    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131369413);
+    boolean bool2 = a(paramSourceMsgInfo, paramSessionInfo, paramQQAppInterface);
+    int i = 4;
+    if (bool2)
     {
+      paramContext = a(paramContext, paramQQAppInterface, paramMessageRecord1, paramMessageRecord2);
+      if (paramContext != null)
+      {
+        ((TextView)localObject).setText(paramContext);
+        ((TextView)localObject).setVisibility(0);
+      }
+      else
+      {
+        ((TextView)localObject).setVisibility(8);
+      }
+      if (!bool1) {
+        i = 0;
+      }
       localImageView.setVisibility(i);
       return;
-      localObject = null;
-      break;
-      ((TextView)localObject).setVisibility(8);
-      break label83;
     }
-    label121:
-    paramViewGroup = paramContext.getString(2131699093);
+    paramViewGroup = paramContext.getString(2131699200);
     if (!android.text.TextUtils.isEmpty(paramSourceMsgInfo.mSourceMsgTroopName))
     {
-      paramMessageRecord1 = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramSourceMsgInfo.mSourceMsgToUin + "");
+      paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+      paramViewGroup = new StringBuilder();
+      paramViewGroup.append(paramSourceMsgInfo.mSourceMsgToUin);
+      paramViewGroup.append("");
+      paramMessageRecord1 = paramQQAppInterface.b(paramViewGroup.toString());
       paramViewGroup = paramSourceMsgInfo.mSourceMsgTroopName;
       paramQQAppInterface = paramViewGroup;
       if (paramMessageRecord1 != null)
@@ -1399,188 +1470,219 @@ public class ReplyTextItemBuilder
           paramQQAppInterface = paramMessageRecord1.getTroopDisplayName();
         }
       }
-      paramViewGroup = paramContext.getString(2131699092) + paramQQAppInterface;
+      paramViewGroup = new StringBuilder();
+      paramViewGroup.append(paramContext.getString(2131699199));
+      paramViewGroup.append(paramQQAppInterface);
+      paramViewGroup = paramViewGroup.toString();
     }
     ((TextView)localObject).setText(paramViewGroup);
     ((TextView)localObject).setVisibility(0);
-    paramContext = ((FragmentActivity)paramContext).getChatFragment();
-    if ((paramContext != null) && ((paramContext.a() instanceof MultiForwardChatPie))) {}
-    for (i = 1;; i = 0)
-    {
-      if (i != 0) {}
-      for (i = j;; i = 0)
-      {
-        localImageView.setVisibility(i);
-        return;
-      }
+    paramContext = ((BaseActivity)paramContext).getChatFragment();
+    int j;
+    if ((paramContext != null) && ((paramContext.a() instanceof MultiForwardChatPie))) {
+      j = 1;
+    } else {
+      j = 0;
     }
+    if (j == 0) {
+      i = 0;
+    }
+    localImageView.setVisibility(i);
   }
   
   private static final void a(Context paramContext, QQAppInterface paramQQAppInterface, ViewGroup paramViewGroup, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2, boolean paramBoolean1, int paramInt, String paramString, boolean paramBoolean2)
   {
-    BubbleImageView localBubbleImageView = (BubbleImageView)paramViewGroup.findViewById(2131379316);
-    int i = paramViewGroup.findViewById(2131372115).getPaddingLeft();
+    BubbleImageView localBubbleImageView = (BubbleImageView)paramViewGroup.findViewById(2131378668);
+    int i = paramViewGroup.findViewById(2131371697).getPaddingLeft();
     localBubbleImageView.setRadius(0.0F);
     localBubbleImageView.setAdjustViewBounds(true);
     localBubbleImageView.d(false);
     localBubbleImageView.setShowEdge(true);
+    TextView localTextView = (TextView)paramViewGroup.findViewById(2131372734);
     if ((paramMessageRecord2 instanceof MessageForShortVideo)) {
-      localBubbleImageView.setContentDescription(HardCodeUtil.a(2131713365));
+      localBubbleImageView.setContentDescription(HardCodeUtil.a(2131713333));
+    } else {
+      localBubbleImageView.setContentDescription(HardCodeUtil.a(2131713326));
     }
-    Object localObject;
-    for (;;)
-    {
-      localObject = paramViewGroup.findViewById(2131368802);
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((View)localObject).getLayoutParams();
-      localLayoutParams.leftMargin = i;
-      localLayoutParams.rightMargin = DisplayUtil.a(paramContext, 25.0F);
-      ((View)localObject).setLayoutParams(localLayoutParams);
-      i = Build.VERSION.SDK_INT;
-      if ((i == 19) || (i == 18)) {
-        localBubbleImageView.e = true;
-      }
-      localObject = (ETTextView)paramViewGroup.findViewById(2131371926);
-      paramViewGroup = (ETTextView)paramViewGroup.findViewById(2131371908);
-      if (localBubbleImageView.getDrawable() == null) {
-        a(localBubbleImageView, paramContext, paramSourceMsgInfo);
-      }
-      a(localBubbleImageView, paramMessageRecord1);
-      a(paramQQAppInterface, paramContext, paramViewGroup, paramMessageRecord2, paramString);
-      if (paramMessageRecord2 == null) {
-        break;
-      }
-      b(paramMessageRecord2, paramSourceMsgInfo, localBubbleImageView, paramViewGroup, (ETTextView)localObject, paramInt, paramString, paramMessageRecord1, paramContext, paramQQAppInterface, null);
-      return;
-      localBubbleImageView.setContentDescription(HardCodeUtil.a(2131713358));
+    Object localObject = paramViewGroup.findViewById(2131368531);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((View)localObject).getLayoutParams();
+    localLayoutParams.leftMargin = i;
+    localLayoutParams.rightMargin = DisplayUtil.a(paramContext, 25.0F);
+    ((View)localObject).setLayoutParams(localLayoutParams);
+    i = Build.VERSION.SDK_INT;
+    if ((i == 19) || (i == 18)) {
+      localBubbleImageView.e = true;
     }
-    if ((paramBoolean2) || (a(paramString)) || (paramSourceMsgInfo.mSourceSummaryFlag != 1))
+    localObject = (ETTextView)paramViewGroup.findViewById(2131371543);
+    paramViewGroup = (ETTextView)paramViewGroup.findViewById(2131371529);
+    if (localBubbleImageView.getDrawable() == null) {
+      a(localBubbleImageView, paramContext, paramSourceMsgInfo);
+    }
+    a(localBubbleImageView, paramMessageRecord1);
+    a(paramQQAppInterface, paramContext, paramViewGroup, paramMessageRecord2, paramString);
+    if (paramMessageRecord2 != null)
     {
-      c(paramContext, paramQQAppInterface, localBubbleImageView, paramMessageRecord1, new ReplyTextItemBuilder.10(paramViewGroup, (ETTextView)localObject, paramSourceMsgInfo, localBubbleImageView, paramInt, paramString, paramMessageRecord1, paramContext));
+      b(paramMessageRecord2, paramSourceMsgInfo, localBubbleImageView, localTextView, paramViewGroup, (ETTextView)localObject, paramInt, paramString, paramMessageRecord1, paramContext, paramQQAppInterface, null);
       return;
     }
-    localBubbleImageView.setVisibility(8);
-    b(paramViewGroup, (TextView)localObject, paramInt, paramString, null);
-    a(paramContext, paramQQAppInterface, localBubbleImageView, paramMessageRecord1, paramSourceMsgInfo, (ETTextView)localObject, paramViewGroup, paramInt, paramString);
+    if ((!paramBoolean2) && (!a(paramString)) && (paramSourceMsgInfo.mSourceSummaryFlag == 1))
+    {
+      localBubbleImageView.setVisibility(8);
+      b(paramViewGroup, (TextView)localObject, paramInt, paramString, null);
+      a(paramContext, paramQQAppInterface, localBubbleImageView, localTextView, paramMessageRecord1, paramSourceMsgInfo, (ETTextView)localObject, paramViewGroup, paramInt, paramString);
+      return;
+    }
+    c(paramContext, paramQQAppInterface, localBubbleImageView, paramMessageRecord1, new ReplyTextItemBuilder.10(paramViewGroup, (ETTextView)localObject, paramSourceMsgInfo, localBubbleImageView, localTextView, paramInt, paramString, paramMessageRecord1, paramContext));
   }
   
   public static void a(Context paramContext, QQAppInterface paramQQAppInterface, ViewGroup paramViewGroup, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, String paramString, int paramInt, MessageRecord paramMessageRecord, boolean paramBoolean, SessionInfo paramSessionInfo)
   {
-    if (((paramMessageRecord instanceof MessageForReplyText)) && (QLog.isColorLevel())) {
-      QLog.d("SendMsgBtn", 2, "ReplyItemBuilder reply:" + paramMessageRecord + " sourceMsg=" + ((MessageForReplyText)paramMessageRecord).getSourceMessage());
-    }
-    String str = TimeFormatterUtils.a(paramContext, 3, paramSourceMsgInfo.mSourceMsgTime * 1000L).toString();
-    TextView localTextView1 = (TextView)paramViewGroup.findViewById(2131372115);
-    TextView localTextView2 = (TextView)paramViewGroup.findViewById(2131379346);
-    boolean bool;
-    Object localObject2;
-    Object localObject1;
-    label142:
-    MessageRecord localMessageRecord;
-    if ((paramBoolean) || (a(paramSourceMsgInfo.mSourceMsgText)))
+    boolean bool3 = paramMessageRecord instanceof MessageForReplyText;
+    if ((bool3) && (QLog.isColorLevel()))
     {
-      bool = true;
-      localObject2 = paramSourceMsgInfo.mSourceMsgText;
-      if (android.text.TextUtils.isEmpty(paramSourceMsgInfo.mAnonymousNickName)) {
-        break label386;
-      }
-      localObject1 = paramSourceMsgInfo.mAnonymousNickName;
-      localMessageRecord = a(paramQQAppInterface, paramString, paramInt, paramMessageRecord, paramSourceMsgInfo);
-      if (paramSourceMsgInfo.mSourceSummaryFlag != 1) {
-        break label582;
-      }
-      localObject2 = paramSourceMsgInfo.mSourceMsgText;
-      if (!(localMessageRecord instanceof MessageForPic)) {
-        break label634;
-      }
-      paramString = (String)localObject2;
-      if (FlashPicHelper.a(localMessageRecord))
-      {
-        if (localObject2 == null) {
-          break label571;
-        }
-        paramInt = ((String)localObject2).indexOf('[');
-        if (paramInt < 0) {
-          break label571;
-        }
-        int i = ((String)localObject2).indexOf(']');
-        if (i <= paramInt) {
-          break label571;
-        }
-        paramString = ((String)localObject2).substring(paramInt, i + 1);
-      }
-      label237:
-      paramBoolean = true;
-      paramInt = 0;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("ReplyItemBuilder reply:");
+      ((StringBuilder)localObject1).append(paramMessageRecord);
+      ((StringBuilder)localObject1).append(" sourceMsg=");
+      ((StringBuilder)localObject1).append(((MessageForReplyText)paramMessageRecord).getSourceMessage());
+      QLog.d("SendMsgBtn", 2, ((StringBuilder)localObject1).toString());
     }
+    String str2 = TimeFormatterUtils.a(paramContext, 3, paramSourceMsgInfo.mSourceMsgTime * 1000L).toString();
+    Object localObject3 = (TextView)paramViewGroup.findViewById(2131371697);
+    Object localObject1 = (TextView)paramViewGroup.findViewById(2131378696);
+    int i = 0;
+    int j = 0;
+    boolean bool1;
+    if ((!paramBoolean) && (!a(paramSourceMsgInfo.mSourceMsgText))) {
+      bool1 = false;
+    } else {
+      bool1 = true;
+    }
+    Object localObject5 = paramSourceMsgInfo.mSourceMsgText;
+    String str1;
+    Object localObject4;
+    Object localObject2;
+    if (!android.text.TextUtils.isEmpty(paramSourceMsgInfo.mAnonymousNickName))
+    {
+      str1 = paramSourceMsgInfo.mAnonymousNickName;
+      localObject4 = " ";
+      localObject2 = localObject1;
+      localObject1 = localObject4;
+    }
+    boolean bool2;
     for (;;)
     {
-      localObject2 = localMessageRecord;
-      if ((paramMessageRecord instanceof MessageForReplyText))
-      {
-        MessageForReplyText localMessageForReplyText = (MessageForReplyText)paramMessageRecord;
-        localObject2 = localMessageRecord;
-        if (localMessageForReplyText.getSourceMessage() != null) {
-          localObject2 = localMessageForReplyText.getSourceMessage();
-        }
-      }
-      a(paramContext, paramQQAppInterface, paramViewGroup, paramSourceMsgInfo, paramMessageRecord, paramSessionInfo, (MessageRecord)localObject2);
-      if (!android.text.TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        localTextView1.setTag(2131378901, localObject1);
-        localTextView1.setTag(2131378902, Long.valueOf(paramSourceMsgInfo.mSourceMsgSenderUin));
-        localTextView1.setText((CharSequence)localObject1);
-        localTextView2.setText(" " + str);
-      }
-      a(paramContext, paramQQAppInterface, paramViewGroup, paramSourceMsgInfo, paramMessageRecord, (MessageRecord)localObject2, paramBoolean, paramInt, paramString, bool);
-      return;
-      bool = false;
+      localObject4 = localObject3;
+      bool2 = true;
+      paramBoolean = true;
       break;
-      label386:
       if (paramSourceMsgInfo.mSourceMsgSenderUin == 50000000L)
       {
-        localObject1 = a(paramQQAppInterface, paramString, paramInt, paramMessageRecord, paramSourceMsgInfo);
-        if (localObject1 != null)
+        localObject2 = a(paramQQAppInterface, paramString, paramInt, paramMessageRecord, paramSourceMsgInfo);
+        if (localObject2 != null)
         {
-          localObject1 = TroopBusinessUtil.a((MessageRecord)localObject1);
-          if (localObject1 != null) {
-            paramSourceMsgInfo.mAnonymousNickName = ((TroopBusinessUtil.TroopBusinessMessage)localObject1).c;
+          localObject2 = TroopBusinessUtil.a((MessageRecord)localObject2);
+          if (localObject2 != null) {
+            paramSourceMsgInfo.mAnonymousNickName = ((TroopBusinessUtil.TroopBusinessMessage)localObject2).c;
           }
         }
-        localObject1 = "";
-        break label142;
-      }
-      localObject1 = localTextView1.getTag(2131378902);
-      if ((localObject1 == null) || (((Long)localObject1).longValue() != paramSourceMsgInfo.mSourceMsgSenderUin))
-      {
-        ThreadManager.excute(new ReplyTextItemBuilder.9(paramQQAppInterface, paramInt, paramString, paramSourceMsgInfo, localTextView1, localTextView2, str), 64, null, true);
-        localObject1 = "";
-        break label142;
-      }
-      localTextView1.setText(new ColorNickText((String)localTextView1.getTag(2131378901), 16).a());
-      localTextView2.setText(" " + str);
-      localObject1 = "";
-      break label142;
-      label571:
-      paramString = HardCodeUtil.a(2131713360);
-      break label237;
-      label582:
-      if (((localMessageRecord instanceof MessageForPic)) && (bool) && ((paramMessageRecord instanceof HasSourceMessage)))
-      {
-        paramBoolean = true;
-        paramInt = 0;
       }
       for (;;)
       {
-        paramString = a(paramQQAppInterface, paramSourceMsgInfo, paramMessageRecord, (String)localObject2, localMessageRecord);
-        break;
-        paramInt = 1;
-        paramBoolean = false;
+        str1 = " ";
+        localObject2 = localObject1;
+        localObject1 = str1;
+        break label409;
+        localObject2 = ((TextView)localObject3).getTag(2131378291);
+        if ((localObject2 == null) || (((Long)localObject2).longValue() != paramSourceMsgInfo.mSourceMsgSenderUin)) {
+          break;
+        }
+        ((TextView)localObject3).setText(new ColorNickText((String)((TextView)localObject3).getTag(2131378290), 16).a());
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(" ");
+        ((StringBuilder)localObject2).append(str2);
+        ((TextView)localObject1).setText(((StringBuilder)localObject2).toString());
       }
-      label634:
-      paramString = (String)localObject2;
-      paramInt = 1;
-      paramBoolean = false;
+      str1 = " ";
+      localObject2 = localObject1;
+      ThreadManager.excute(new ReplyTextItemBuilder.9(paramQQAppInterface, paramInt, paramString, paramSourceMsgInfo, (TextView)localObject3, (TextView)localObject2, str2), 64, null, true);
+      localObject1 = str1;
+      label409:
+      str1 = "";
     }
+    MessageRecord localMessageRecord = a(paramQQAppInterface, paramString, paramInt, paramMessageRecord, paramSourceMsgInfo);
+    if (paramSourceMsgInfo.mSourceSummaryFlag == 1)
+    {
+      localObject3 = paramSourceMsgInfo.mSourceMsgText;
+      if ((localMessageRecord instanceof MessageForPic))
+      {
+        paramString = (String)localObject3;
+        paramBoolean = bool2;
+        paramInt = i;
+        if (((IPicFlash)QRoute.api(IPicFlash.class)).isFlashPicMsg(localMessageRecord))
+        {
+          if (localObject3 != null)
+          {
+            paramInt = ((String)localObject3).indexOf('[');
+            if (paramInt >= 0)
+            {
+              j = ((String)localObject3).indexOf(']');
+              if (j > paramInt)
+              {
+                paramString = ((String)localObject3).substring(paramInt, j + 1);
+                paramBoolean = bool2;
+                paramInt = i;
+                break label621;
+              }
+            }
+          }
+          paramString = HardCodeUtil.a(2131713328);
+          paramBoolean = bool2;
+          paramInt = i;
+        }
+      }
+      else
+      {
+        paramString = (String)localObject3;
+        paramBoolean = false;
+        paramInt = 1;
+      }
+    }
+    else
+    {
+      if (((localMessageRecord instanceof MessageForPic)) && (bool1) && ((paramMessageRecord instanceof HasSourceMessage)))
+      {
+        paramInt = j;
+      }
+      else
+      {
+        paramBoolean = false;
+        paramInt = 1;
+      }
+      paramString = a(paramQQAppInterface, paramSourceMsgInfo, paramMessageRecord, (String)localObject5, localMessageRecord);
+    }
+    label621:
+    localObject3 = localMessageRecord;
+    if (bool3)
+    {
+      localObject5 = (MessageForReplyText)paramMessageRecord;
+      localObject3 = localMessageRecord;
+      if (((MessageForReplyText)localObject5).getSourceMessage() != null) {
+        localObject3 = ((MessageForReplyText)localObject5).getSourceMessage();
+      }
+    }
+    a(paramContext, paramQQAppInterface, paramViewGroup, paramSourceMsgInfo, paramMessageRecord, paramSessionInfo, (MessageRecord)localObject3);
+    if (!android.text.TextUtils.isEmpty(str1))
+    {
+      ((TextView)localObject4).setTag(2131378290, str1);
+      ((TextView)localObject4).setTag(2131378291, Long.valueOf(paramSourceMsgInfo.mSourceMsgSenderUin));
+      ((TextView)localObject4).setText(str1);
+      paramSessionInfo = new StringBuilder();
+      paramSessionInfo.append((String)localObject1);
+      paramSessionInfo.append(str2);
+      ((TextView)localObject2).setText(paramSessionInfo.toString());
+    }
+    a(paramContext, paramQQAppInterface, paramViewGroup, paramSourceMsgInfo, paramMessageRecord, (MessageRecord)localObject3, paramBoolean, paramInt, paramString, bool1);
   }
   
   protected static void a(Context paramContext, QQAppInterface paramQQAppInterface, ChatThumbView paramChatThumbView, MessageRecord paramMessageRecord, ReplyTextItemBuilder.SourceMessagePulledCallBack paramSourceMessagePulledCallBack)
@@ -1590,51 +1692,57 @@ public class ReplyTextItemBuilder
   
   public static final void a(Context paramContext, QQAppInterface paramQQAppInterface, ChatThumbView paramChatThumbView, MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    HasSourceMessage localHasSourceMessage = null;
+    HasSourceMessage localHasSourceMessage;
     if ((paramMessageRecord1 instanceof HasSourceMessage)) {
       localHasSourceMessage = (HasSourceMessage)paramMessageRecord1;
+    } else {
+      localHasSourceMessage = null;
     }
-    if ((paramMessageRecord2 instanceof MessageForPic)) {
-      a(paramContext, paramChatThumbView, localHasSourceMessage, (MessageForPic)paramMessageRecord2);
-    }
-    do
+    if ((paramMessageRecord2 instanceof MessageForPic))
     {
+      a(paramContext, paramChatThumbView, localHasSourceMessage, (MessageForPic)paramMessageRecord2);
       return;
-      if (!FileManagerUtil.a(paramMessageRecord2)) {
-        break;
-      }
+    }
+    if (FileManagerUtil.a(paramMessageRecord2))
+    {
       paramContext = a(paramQQAppInterface, paramMessageRecord2);
       if ((paramContext instanceof MessageForTroopFile))
       {
         b(paramQQAppInterface, paramChatThumbView, paramContext);
         return;
       }
-    } while (!(paramContext instanceof MessageForFile));
-    a(paramQQAppInterface, paramChatThumbView, paramContext);
-    return;
-    if ((paramMessageRecord2 instanceof MessageForShortVideo))
-    {
-      a(paramQQAppInterface, paramChatThumbView, (MessageForReplyText)paramMessageRecord1, (MessageForShortVideo)paramMessageRecord2);
-      return;
+      if ((paramContext instanceof MessageForFile)) {
+        a(paramQQAppInterface, paramChatThumbView, paramContext);
+      }
     }
-    if ((localHasSourceMessage != null) && (localHasSourceMessage.getSourceMsgInfo() != null) && (localHasSourceMessage.getSourceMsgInfo().replyPicWidth != 0))
+    else
     {
-      paramChatThumbView.setImageDrawable(TroopFileItemBuilder.a(2, 200, 200));
-      return;
+      if ((paramMessageRecord2 instanceof MessageForShortVideo))
+      {
+        a(paramQQAppInterface, paramChatThumbView, (MessageForReplyText)paramMessageRecord1, (MessageForShortVideo)paramMessageRecord2);
+        return;
+      }
+      if ((localHasSourceMessage != null) && (localHasSourceMessage.getSourceMsgInfo() != null) && (localHasSourceMessage.getSourceMsgInfo().replyPicWidth != 0))
+      {
+        paramChatThumbView.setImageDrawable(TroopFileItemBuilder.a(2, 200, 200));
+        return;
+      }
+      paramChatThumbView.setVisibility(8);
     }
-    paramChatThumbView.setVisibility(8);
   }
   
-  protected static void a(Context paramContext, QQAppInterface paramQQAppInterface, BubbleImageView paramBubbleImageView, MessageRecord paramMessageRecord, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, ETTextView paramETTextView1, ETTextView paramETTextView2, int paramInt, String paramString)
+  protected static void a(Context paramContext, QQAppInterface paramQQAppInterface, BubbleImageView paramBubbleImageView, TextView paramTextView, MessageRecord paramMessageRecord, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, ETTextView paramETTextView1, ETTextView paramETTextView2, int paramInt, String paramString)
   {
-    paramSourceMsgInfo = new ReplyTextItemBuilder.2(paramSourceMsgInfo, paramBubbleImageView, paramETTextView2, paramETTextView1, paramInt, paramString, paramMessageRecord);
+    paramTextView = new ReplyTextItemBuilder.2(paramSourceMsgInfo, paramBubbleImageView, paramTextView, paramETTextView2, paramETTextView1, paramInt, paramString, paramMessageRecord);
     if (paramMessageRecord.istroop == 0)
     {
-      a(paramContext, paramQQAppInterface, paramBubbleImageView, paramMessageRecord, paramSourceMsgInfo);
+      a(paramContext, paramQQAppInterface, paramBubbleImageView, paramMessageRecord, paramTextView);
       return;
     }
-    b(paramContext, paramQQAppInterface, paramBubbleImageView, paramMessageRecord, paramSourceMsgInfo);
+    b(paramContext, paramQQAppInterface, paramBubbleImageView, paramMessageRecord, paramTextView);
   }
+  
+  public static void a(TextView paramTextView, int paramInt) {}
   
   private static void a(URLDrawable paramURLDrawable)
   {
@@ -1654,19 +1762,19 @@ public class ReplyTextItemBuilder
       QLog.i("ReplyTextItemBuilder<QFile>", 1, "resetReplyThumbImageView: can not get imageContent");
       return;
     }
-    Object localObject = paramChatThumbView.findViewById(2131379312);
+    Object localObject = paramChatThumbView.findViewById(2131378662);
     if (localObject != null) {
       ((View)localObject).setVisibility(8);
     }
-    localObject = paramChatThumbView.findViewById(2131365431);
+    localObject = paramChatThumbView.findViewById(2131365296);
     if (localObject != null) {
       ((View)localObject).setVisibility(8);
     }
-    localObject = paramChatThumbView.findViewById(2131365619);
+    localObject = paramChatThumbView.findViewById(2131365463);
     if (localObject != null) {
       ((View)localObject).setVisibility(8);
     }
-    localObject = (ImageView)paramChatThumbView.findViewById(2131368630);
+    localObject = (ImageView)paramChatThumbView.findViewById(2131368367);
     if (localObject != null) {
       ((ImageView)localObject).setVisibility(8);
     }
@@ -1711,103 +1819,100 @@ public class ReplyTextItemBuilder
   public static void a(ChatThumbView paramChatThumbView, boolean paramBoolean, int paramInt1, int paramInt2)
   {
     Object localObject = paramChatThumbView.getContext();
-    paramInt2 = AIOUtils.a(120.0F, ((Context)localObject).getResources());
-    int i = AIOUtils.a(80.0F, ((Context)localObject).getResources());
+    int i = AIOUtils.b(120.0F, ((Context)localObject).getResources());
+    int j = AIOUtils.b(80.0F, ((Context)localObject).getResources());
+    paramInt2 = paramInt1;
     if (paramInt1 <= 0) {
       if (paramBoolean) {
-        paramInt1 = AIOUtils.a(60.0F, ((Context)localObject).getResources());
+        paramInt2 = AIOUtils.b(60.0F, ((Context)localObject).getResources());
+      } else {
+        paramInt2 = AIOUtils.b(120.0F, ((Context)localObject).getResources());
       }
     }
-    for (;;)
+    paramInt1 = paramInt2;
+    if (paramInt2 > i) {
+      paramInt1 = i;
+    }
+    localObject = (ViewGroup)paramChatThumbView.getParent();
+    if (localObject == null)
     {
-      if (paramInt1 > paramInt2) {
-        paramInt1 = paramInt2;
-      }
-      for (;;)
+      QLog.i("ReplyTextItemBuilder<QFile>", 1, "showDefaultReplyThumb: can not get imageContent");
+      return;
+    }
+    paramChatThumbView.setVisibility(8);
+    ((ViewGroup)localObject).setVisibility(0);
+    paramChatThumbView = (AsyncImageView)((ViewGroup)localObject).findViewById(2131378662);
+    if (paramChatThumbView != null) {
+      paramChatThumbView.setVisibility(8);
+    }
+    paramChatThumbView = ((ViewGroup)localObject).findViewById(2131365463);
+    if (paramChatThumbView != null)
+    {
+      ViewGroup.LayoutParams localLayoutParams = paramChatThumbView.getLayoutParams();
+      localLayoutParams.width = paramInt1;
+      localLayoutParams.height = j;
+      paramChatThumbView.setLayoutParams(localLayoutParams);
+      paramChatThumbView.setVisibility(0);
+      paramChatThumbView.getBackground().setAlpha(26);
+    }
+    paramChatThumbView = ((ViewGroup)localObject).findViewById(2131365296);
+    if (paramChatThumbView != null) {
+      paramChatThumbView.setVisibility(8);
+    }
+    paramChatThumbView = (ImageView)((ViewGroup)localObject).findViewById(2131368367);
+    if (paramChatThumbView != null)
+    {
+      paramChatThumbView.setVisibility(0);
+      if (paramBoolean)
       {
-        localObject = (ViewGroup)paramChatThumbView.getParent();
-        if (localObject == null) {
-          QLog.i("ReplyTextItemBuilder<QFile>", 1, "showDefaultReplyThumb: can not get imageContent");
-        }
-        do
-        {
-          return;
-          paramInt1 = AIOUtils.a(120.0F, ((Context)localObject).getResources());
-          break;
-          paramChatThumbView.setVisibility(8);
-          ((ViewGroup)localObject).setVisibility(0);
-          paramChatThumbView = (AsyncImageView)((ViewGroup)localObject).findViewById(2131379312);
-          if (paramChatThumbView != null) {
-            paramChatThumbView.setVisibility(8);
-          }
-          paramChatThumbView = ((ViewGroup)localObject).findViewById(2131365619);
-          if (paramChatThumbView != null)
-          {
-            ViewGroup.LayoutParams localLayoutParams = paramChatThumbView.getLayoutParams();
-            localLayoutParams.width = paramInt1;
-            localLayoutParams.height = i;
-            paramChatThumbView.setLayoutParams(localLayoutParams);
-            paramChatThumbView.setVisibility(0);
-            paramChatThumbView.getBackground().setAlpha(26);
-          }
-          paramChatThumbView = ((ViewGroup)localObject).findViewById(2131365431);
-          if (paramChatThumbView != null) {
-            paramChatThumbView.setVisibility(8);
-          }
-          paramChatThumbView = (ImageView)((ViewGroup)localObject).findViewById(2131368630);
-        } while (paramChatThumbView == null);
-        paramChatThumbView.setVisibility(0);
-        if (paramBoolean)
-        {
-          paramChatThumbView.setImageResource(2130844501);
-          return;
-        }
-        paramChatThumbView.setImageResource(2130844500);
+        paramChatThumbView.setImageResource(2130844407);
         return;
       }
+      paramChatThumbView.setImageResource(2130844406);
     }
   }
   
   public static void a(ChatThumbView paramChatThumbView, boolean paramBoolean, int paramInt1, int paramInt2, String paramString)
   {
-    if (paramChatThumbView == null) {}
-    do
-    {
-      return;
-      paramChatThumbView.getContext();
-      ViewGroup localViewGroup = (ViewGroup)paramChatThumbView.getParent();
-      if (localViewGroup == null)
-      {
-        QLog.i("ReplyTextItemBuilder<QFile>", 1, "handleReplyThumbImageView: can not get imageContent");
-        return;
-      }
-      b(paramInt1, paramInt2, paramString, paramChatThumbView);
-      if (paramBoolean)
-      {
-        paramString = localViewGroup.findViewById(2131365431);
-        if (paramString != null)
-        {
-          paramChatThumbView = (RelativeLayout.LayoutParams)paramChatThumbView.getLayoutParams();
-          paramString.setVisibility(0);
-          ViewGroup.LayoutParams localLayoutParams = paramString.getLayoutParams();
-          localLayoutParams.width = paramChatThumbView.width;
-          localLayoutParams.height = paramChatThumbView.height;
-          paramString.setLayoutParams(paramChatThumbView);
-        }
-      }
-      paramChatThumbView = localViewGroup.findViewById(2131365619);
-      if (paramChatThumbView != null) {
-        paramChatThumbView.setVisibility(8);
-      }
-      paramChatThumbView = (ImageView)localViewGroup.findViewById(2131368630);
-    } while (paramChatThumbView == null);
-    if (paramBoolean)
-    {
-      paramChatThumbView.setImageResource(2130844501);
-      paramChatThumbView.setVisibility(0);
+    if (paramChatThumbView == null) {
       return;
     }
-    paramChatThumbView.setVisibility(8);
+    paramChatThumbView.getContext();
+    ViewGroup localViewGroup = (ViewGroup)paramChatThumbView.getParent();
+    if (localViewGroup == null)
+    {
+      QLog.i("ReplyTextItemBuilder<QFile>", 1, "handleReplyThumbImageView: can not get imageContent");
+      return;
+    }
+    b(paramInt1, paramInt2, paramString, paramChatThumbView);
+    if (paramBoolean)
+    {
+      paramString = localViewGroup.findViewById(2131365296);
+      if (paramString != null)
+      {
+        paramChatThumbView = (RelativeLayout.LayoutParams)paramChatThumbView.getLayoutParams();
+        paramString.setVisibility(0);
+        ViewGroup.LayoutParams localLayoutParams = paramString.getLayoutParams();
+        localLayoutParams.width = paramChatThumbView.width;
+        localLayoutParams.height = paramChatThumbView.height;
+        paramString.setLayoutParams(paramChatThumbView);
+      }
+    }
+    paramChatThumbView = localViewGroup.findViewById(2131365463);
+    if (paramChatThumbView != null) {
+      paramChatThumbView.setVisibility(8);
+    }
+    paramChatThumbView = (ImageView)localViewGroup.findViewById(2131368367);
+    if (paramChatThumbView != null)
+    {
+      if (paramBoolean)
+      {
+        paramChatThumbView.setImageResource(2130844407);
+        paramChatThumbView.setVisibility(0);
+        return;
+      }
+      paramChatThumbView.setVisibility(8);
+    }
   }
   
   private static void a(QQAppInterface paramQQAppInterface, Context paramContext, TextView paramTextView, MessageRecord paramMessageRecord, String paramString)
@@ -1818,486 +1923,510 @@ public class ReplyTextItemBuilder
       paramMessageRecord = a(paramQQAppInterface, paramMessageRecord);
       if ((paramMessageRecord instanceof MessageForFile))
       {
-        QLog.i("ReplyTextItemBuilder<QFile>", 1, "handleReplyTextStyle, sourceMsg uniseq[" + paramMessageRecord.uniseq + "]");
+        paramString = new StringBuilder();
+        paramString.append("handleReplyTextStyle, sourceMsg uniseq[");
+        paramString.append(paramMessageRecord.uniseq);
+        paramString.append("]");
+        QLog.i("ReplyTextItemBuilder<QFile>", 1, paramString.toString());
         paramMessageRecord = paramQQAppInterface.getFileManagerDataCenter().a(paramMessageRecord.uniseq, paramMessageRecord.frienduin, paramMessageRecord.istroop);
-        if ((paramMessageRecord == null) || (paramMessageRecord.status == 16)) {
-          break label750;
-        }
-        i = FileManagerUtil.a(FileManagerUtil.a(paramMessageRecord.fileName), 1);
-        if (Build.VERSION.SDK_INT >= 21)
+        if ((paramMessageRecord != null) && (paramMessageRecord.status != 16))
         {
-          paramQQAppInterface = paramContext.getDrawable(i);
+          i = FileManagerUtil.a(FileManagerUtil.a(paramMessageRecord.fileName), 1);
+          if (Build.VERSION.SDK_INT >= 21) {
+            paramQQAppInterface = paramContext.getDrawable(i);
+          } else {
+            paramQQAppInterface = paramContext.getResources().getDrawable(i);
+          }
           paramTextView.setText(paramMessageRecord.fileName);
+          break label228;
         }
       }
+      else if ((paramMessageRecord instanceof MessageForTroopFile))
+      {
+        paramMessageRecord = TroopFileUtils.a(paramQQAppInterface, (MessageForTroopFile)paramMessageRecord);
+        if (paramMessageRecord != null)
+        {
+          i = FileManagerUtil.a(FileManagerUtil.a(paramMessageRecord.g), 1);
+          if (Build.VERSION.SDK_INT >= 21) {
+            paramQQAppInterface = paramContext.getDrawable(i);
+          } else {
+            paramQQAppInterface = paramContext.getResources().getDrawable(i);
+          }
+          paramTextView.setText(paramMessageRecord.g);
+          break label228;
+        }
+      }
+      paramQQAppInterface = null;
     }
     for (;;)
     {
-      if (paramQQAppInterface != null)
+      label228:
+      break;
+      if ((paramMessageRecord instanceof MessageForStructing))
       {
-        i = AIOUtils.a(15.0F, paramContext.getResources());
-        int j = AIOUtils.a(4.0F, paramContext.getResources());
-        paramQQAppInterface.setBounds(0, 0, i, i);
-        paramTextView.setCompoundDrawables(paramQQAppInterface, null, null, null);
-        paramTextView.setGravity(16);
-        paramTextView.setCompoundDrawablePadding(j);
-        paramTextView.setPadding(0, 0, 0, 0);
-        paramTextView.invalidate();
-        paramTextView.setMaxLines(1);
-        paramTextView.setIncludeFontPadding(false);
-        paramTextView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
-        return;
-        paramQQAppInterface = paramContext.getResources().getDrawable(i);
-        break;
-        if (!(paramMessageRecord instanceof MessageForTroopFile)) {
-          break label750;
-        }
-        paramMessageRecord = TroopFileUtils.a(paramQQAppInterface, (MessageForTroopFile)paramMessageRecord);
-        if (paramMessageRecord == null) {
-          break label750;
-        }
-        i = FileManagerUtil.a(FileManagerUtil.a(paramMessageRecord.g), 1);
-        if (Build.VERSION.SDK_INT >= 21) {}
-        for (paramQQAppInterface = paramContext.getDrawable(i);; paramQQAppInterface = paramContext.getResources().getDrawable(i))
+        if ((ChatHistoryStructAdapter.a(paramMessageRecord)) && (!b(paramMessageRecord)))
         {
-          paramTextView.setText(paramMessageRecord.g);
-          break;
-        }
-        if ((paramMessageRecord instanceof MessageForStructing))
-        {
-          if ((!ChatHistoryStructAdapter.a(paramMessageRecord)) || (b(paramMessageRecord))) {
-            break label745;
+          if (Build.VERSION.SDK_INT >= 21) {
+            paramString = paramContext.getDrawable(2130844365);
+          } else {
+            paramString = paramContext.getResources().getDrawable(2130844365);
           }
-          label336:
-          URLDrawable.URLDrawableOptions localURLDrawableOptions;
-          if (Build.VERSION.SDK_INT >= 21)
-          {
-            paramString = paramContext.getDrawable(2130844460);
-            paramQQAppInterface = paramString;
-            if (((MessageForStructing)paramMessageRecord).structingMsg != null)
-            {
-              paramMessageRecord = ((MessageForStructing)paramMessageRecord).structingMsg.mMsgUrl;
-              paramQQAppInterface = TeamWorkUtils.f(paramMessageRecord);
-              i = AIOUtils.a(15.0F, paramContext.getResources());
-              localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-              localURLDrawableOptions.mLoadingDrawable = paramString;
-              localURLDrawableOptions.mFailedDrawable = paramString;
-              localURLDrawableOptions.mRequestWidth = i;
-              localURLDrawableOptions.mRequestHeight = i;
-              localURLDrawableOptions.mUseAutoScaleParams = false;
-              if (android.text.TextUtils.isEmpty(paramQQAppInterface)) {
-                break label458;
-              }
-              paramQQAppInterface = URLDrawable.getDrawable(paramQQAppInterface, localURLDrawableOptions);
-              paramQQAppInterface.setBounds(0, 0, i, i);
-            }
-          }
-          for (;;)
-          {
+          paramMessageRecord = (MessageForStructing)paramMessageRecord;
+          paramQQAppInterface = paramString;
+          if (paramMessageRecord.structingMsg == null) {
             break;
-            paramString = paramContext.getResources().getDrawable(2130844460);
-            break label336;
-            label458:
-            paramQQAppInterface = paramString;
-            if (!android.text.TextUtils.isEmpty(paramMessageRecord))
-            {
-              paramQQAppInterface = paramString;
-              if (paramMessageRecord.contains(TeamWorkUtils.c))
-              {
-                paramQQAppInterface = URLDrawable.getDrawable(TeamWorkUtils.d, localURLDrawableOptions);
-                paramQQAppInterface.setBounds(0, 0, i, i);
-              }
-            }
           }
-        }
-        if (!(paramMessageRecord instanceof MessageForArkApp)) {
-          break label745;
-        }
-        for (;;)
-        {
-          try
+          paramMessageRecord = paramMessageRecord.structingMsg.mMsgUrl;
+          paramQQAppInterface = ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).getTDDocFileThumbUrl(paramMessageRecord);
+          i = AIOUtils.b(15.0F, paramContext.getResources());
+          URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+          localURLDrawableOptions.mLoadingDrawable = paramString;
+          localURLDrawableOptions.mFailedDrawable = paramString;
+          localURLDrawableOptions.mRequestWidth = i;
+          localURLDrawableOptions.mRequestHeight = i;
+          localURLDrawableOptions.mUseAutoScaleParams = false;
+          if (!android.text.TextUtils.isEmpty(paramQQAppInterface))
           {
-            for (;;)
-            {
-              paramMessageRecord = ((MessageForArkApp)paramMessageRecord).ark_app_message;
-              if ((paramMessageRecord == null) || (!ArkMsgReplyConfigMgr.a().a(paramMessageRecord.appName, paramMessageRecord.appView))) {
-                break label745;
-              }
-              if (Build.VERSION.SDK_INT < 21) {
-                break label691;
-              }
-              paramQQAppInterface = paramContext.getDrawable(2130844460);
-              paramMessageRecord = ArkMsgReplyConfigMgr.a().a(new JSONObject(paramMessageRecord.toAppXml())).get("kArkMsgReplyIcon").toString();
-              i = AIOUtils.a(15.0F, paramContext.getResources());
-              paramString = URLDrawable.URLDrawableOptions.obtain();
-              paramString.mLoadingDrawable = paramQQAppInterface;
-              paramString.mFailedDrawable = paramQQAppInterface;
-              paramString.mRequestWidth = i;
-              paramString.mRequestHeight = i;
-              paramString.mUseAutoScaleParams = false;
-              if (android.text.TextUtils.isEmpty(paramMessageRecord)) {
-                break;
-              }
-              paramQQAppInterface = URLDrawable.getDrawable(paramMessageRecord, paramString);
-              try
-              {
-                paramQQAppInterface.setBounds(0, 0, i, i);
-              }
-              catch (Exception paramMessageRecord) {}
-            }
+            paramQQAppInterface = URLDrawable.getDrawable(paramQQAppInterface, localURLDrawableOptions);
+            paramQQAppInterface.setBounds(0, 0, i, i);
+            break;
           }
-          catch (Exception paramMessageRecord)
-          {
-            label691:
-            paramQQAppInterface = null;
-            continue;
+          paramQQAppInterface = paramString;
+          if (android.text.TextUtils.isEmpty(paramMessageRecord)) {
+            break;
           }
-          QLog.e("ReplyTextItemBuilder", 1, "handle MessageForArkApp error!" + paramMessageRecord.getMessage());
+          paramQQAppInterface = paramString;
+          if (!paramMessageRecord.contains("docs.qq.com/desktop/m")) {
+            break;
+          }
+          paramQQAppInterface = URLDrawable.getDrawable("https://docs.qq.com/desktop/favicon.ico", localURLDrawableOptions);
+          paramQQAppInterface.setBounds(0, 0, i, i);
           break;
-          paramQQAppInterface = paramContext.getResources().getDrawable(2130844460);
         }
       }
-      paramTextView.setCompoundDrawables(null, null, null, null);
-      paramTextView.setPadding(0, 0, 0, 0);
-      paramTextView.setCompoundDrawablePadding(0);
-      paramTextView.setMaxLines(2147483647);
-      paramTextView.setEllipsize(null);
-      return;
-      label745:
-      paramQQAppInterface = null;
-      continue;
-      label750:
+      else if ((paramMessageRecord instanceof MessageForArkApp))
+      {
+        try
+        {
+          paramMessageRecord = ((MessageForArkApp)paramMessageRecord).ark_app_message;
+          if ((paramMessageRecord == null) || (!((IArkMsgReplyMgr)QRoute.api(IArkMsgReplyMgr.class)).canReply(paramMessageRecord.appName, paramMessageRecord.appView))) {
+            break label682;
+          }
+          if (Build.VERSION.SDK_INT >= 21) {
+            paramQQAppInterface = paramContext.getDrawable(2130844365);
+          } else {
+            paramQQAppInterface = paramContext.getResources().getDrawable(2130844365);
+          }
+          paramMessageRecord = (String)((IArkMsgReplyMgr)QRoute.api(IArkMsgReplyMgr.class)).getReplyConfigFromMsg(new JSONObject(paramMessageRecord.toAppXml())).get("kArkMsgReplyIcon");
+          i = AIOUtils.b(15.0F, paramContext.getResources());
+          paramString = URLDrawable.URLDrawableOptions.obtain();
+          paramString.mLoadingDrawable = paramQQAppInterface;
+          paramString.mFailedDrawable = paramQQAppInterface;
+          paramString.mRequestWidth = i;
+          paramString.mRequestHeight = i;
+          paramString.mUseAutoScaleParams = false;
+          if (android.text.TextUtils.isEmpty(paramMessageRecord)) {
+            continue;
+          }
+          paramQQAppInterface = URLDrawable.getDrawable(paramMessageRecord, paramString);
+          try
+          {
+            paramQQAppInterface.setBounds(0, 0, i, i);
+          }
+          catch (Exception paramMessageRecord) {}
+          paramString = new StringBuilder();
+        }
+        catch (Exception paramMessageRecord)
+        {
+          paramQQAppInterface = null;
+        }
+        paramString.append("handle MessageForArkApp error!");
+        paramString.append(paramMessageRecord.getMessage());
+        QLog.e("ReplyTextItemBuilder", 1, paramString.toString());
+        continue;
+      }
+      label682:
       paramQQAppInterface = null;
     }
+    if (paramQQAppInterface != null)
+    {
+      i = AIOUtils.b(15.0F, paramContext.getResources());
+      int j = AIOUtils.b(4.0F, paramContext.getResources());
+      paramQQAppInterface.setBounds(0, 0, i, i);
+      paramTextView.setCompoundDrawables(paramQQAppInterface, null, null, null);
+      paramTextView.setGravity(16);
+      paramTextView.setCompoundDrawablePadding(j);
+      paramTextView.setPadding(0, 0, 0, 0);
+      paramTextView.invalidate();
+      paramTextView.setMaxLines(1);
+      paramTextView.setIncludeFontPadding(false);
+      paramTextView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
+      return;
+    }
+    paramTextView.setCompoundDrawables(null, null, null, null);
+    paramTextView.setPadding(0, 0, 0, 0);
+    paramTextView.setCompoundDrawablePadding(0);
+    paramTextView.setMaxLines(2);
+    paramTextView.setEllipsize(TextUtils.TruncateAt.END);
   }
   
   private static void a(QQAppInterface paramQQAppInterface, ChatThumbView paramChatThumbView, MessageForReplyText paramMessageForReplyText, MessageForShortVideo paramMessageForShortVideo)
   {
-    Object localObject = ShortVideoUtils.getShortVideoThumbPicPath(paramMessageForShortVideo.thumbMD5, "jpg");
-    if (!FileUtils.b((String)localObject)) {}
-    for (;;)
+    Object localObject = SVUtils.a(paramMessageForShortVideo.thumbMD5, "jpg");
+    if (!FileUtils.fileExistsAndNotEmpty((String)localObject)) {}
+    try
     {
-      try
-      {
-        localObject = ShortVideoBusiManager.a(2, 2);
-        ShortVideoDownloadInfo localShortVideoDownloadInfo = paramMessageForShortVideo.getDownloadInfo(((ShortVideoReq)localObject).jdField_b_of_type_Int);
-        localShortVideoDownloadInfo.i = ShortVideoUtils.getShortVideoThumbPicPath(paramMessageForShortVideo.thumbMD5, "jpg");
-        localShortVideoDownloadInfo.a(paramMessageForShortVideo.istroop, 1);
-        ((ShortVideoReq)localObject).a(localShortVideoDownloadInfo);
-        ((ShortVideoReq)localObject).a(new ReplyTextItemBuilder.11(paramMessageForShortVideo, paramMessageForReplyText, paramQQAppInterface, paramChatThumbView));
-        ShortVideoBusiManager.a((ShortVideoReq)localObject, paramQQAppInterface);
-        paramQQAppInterface = (ImageView)((ViewGroup)paramChatThumbView.getParent()).findViewById(2131368630);
-        if (paramQQAppInterface != null)
-        {
-          paramQQAppInterface.setImageResource(2130844501);
-          paramQQAppInterface.setVisibility(0);
-        }
-        return;
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ReplyTextItemBuilder", 2, "no appRuntime");
-        continue;
-      }
+      localObject = SVBusiUtil.a(2, 2);
+      ShortVideoDownloadInfo localShortVideoDownloadInfo = paramMessageForShortVideo.getDownloadInfo(((ShortVideoReq)localObject).jdField_b_of_type_Int);
+      localShortVideoDownloadInfo.i = SVUtils.a(paramMessageForShortVideo.thumbMD5, "jpg");
+      localShortVideoDownloadInfo.a(paramMessageForShortVideo.istroop, 1);
+      ((ShortVideoReq)localObject).a(localShortVideoDownloadInfo);
+      ((ShortVideoReq)localObject).a(new ReplyTextItemBuilder.11(paramMessageForShortVideo, paramMessageForReplyText, paramQQAppInterface, paramChatThumbView));
+      ShortVideoBusiManager.a((ShortVideoReq)localObject, paramQQAppInterface);
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      label95:
+      break label95;
+    }
+    if (QLog.isColorLevel())
+    {
+      QLog.d("ReplyTextItemBuilder", 2, "no appRuntime");
+      break label127;
       b(paramMessageForShortVideo.thumbWidth, paramMessageForShortVideo.thumbHeight, (String)localObject, paramChatThumbView);
+    }
+    label127:
+    paramQQAppInterface = (ImageView)((ViewGroup)paramChatThumbView.getParent()).findViewById(2131368367);
+    if (paramQQAppInterface != null)
+    {
+      paramQQAppInterface.setImageResource(2130844407);
+      paramQQAppInterface.setVisibility(0);
     }
   }
   
   private static void a(QQAppInterface paramQQAppInterface, ChatThumbView paramChatThumbView, MessageRecord paramMessageRecord)
   {
-    QLog.i("ReplyTextItemBuilder<QFile>", 1, "setThumbNailReplyImg, sourceMsg uniseq[" + paramMessageRecord.uniseq + "]");
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("setThumbNailReplyImg, sourceMsg uniseq[");
+    ((StringBuilder)localObject1).append(paramMessageRecord.uniseq);
+    ((StringBuilder)localObject1).append("]");
+    QLog.i("ReplyTextItemBuilder<QFile>", 1, ((StringBuilder)localObject1).toString());
     FileManagerEntity localFileManagerEntity = paramQQAppInterface.getFileManagerDataCenter().a(paramMessageRecord.uniseq, paramMessageRecord.frienduin, paramMessageRecord.istroop);
-    boolean bool;
     if (localFileManagerEntity != null)
     {
       int i = FileManagerUtil.a(localFileManagerEntity.fileName);
-      if (i != 2) {
-        break label89;
+      boolean bool;
+      if (i == 2) {
+        bool = true;
+      } else {
+        bool = false;
       }
-      bool = true;
-      if ((i == 2) || (i == 0)) {
-        break label95;
+      if ((i != 2) && (i != 0)) {
+        return;
       }
-    }
-    label540:
-    label552:
-    for (;;)
-    {
-      return;
-      label89:
-      bool = false;
-      break;
-      label95:
       if (localFileManagerEntity.status == 16)
       {
-        if (QLog.isDebugVersion()) {
-          QLog.i("ReplyTextItemBuilder<QFile>", 1, "setThumbNailReplyImg: handle offline file but is invalid. msgSeq[" + paramMessageRecord.msgseq + "] msgUniseq[" + paramMessageRecord.uniseq + "]");
+        if (QLog.isDebugVersion())
+        {
+          paramQQAppInterface = new StringBuilder();
+          paramQQAppInterface.append("setThumbNailReplyImg: handle offline file but is invalid. msgSeq[");
+          paramQQAppInterface.append(paramMessageRecord.msgseq);
+          paramQQAppInterface.append("] msgUniseq[");
+          paramQQAppInterface.append(paramMessageRecord.uniseq);
+          paramQQAppInterface.append("]");
+          QLog.i("ReplyTextItemBuilder<QFile>", 1, paramQQAppInterface.toString());
         }
         a(paramChatThumbView, bool, 0, 0);
         return;
       }
       Object localObject2 = localFileManagerEntity.strMiddleThumPath;
-      Object localObject1 = localObject2;
-      if (!FileUtils.b((String)localObject2)) {
+      localObject1 = localObject2;
+      if (!FileUtils.fileExistsAndNotEmpty((String)localObject2)) {
         localObject1 = localFileManagerEntity.strLargeThumPath;
       }
       localObject2 = localObject1;
-      if (!FileUtils.b((String)localObject1))
+      if (!FileUtils.fileExistsAndNotEmpty((String)localObject1))
       {
-        if (!bool) {
-          break label503;
-        }
-        if (localFileManagerEntity.peerType != 3000) {
-          break label490;
-        }
-        paramQQAppInterface = paramQQAppInterface.getFileManagerEngine().b(localFileManagerEntity);
-        localObject2 = paramQQAppInterface;
-        if (!FileUtils.b(paramQQAppInterface))
+        if (bool)
         {
-          if ((localFileManagerEntity.imgWidth <= 0) || (localFileManagerEntity.imgHeight <= 0)) {
-            break label540;
+          if (localFileManagerEntity.peerType == 3000) {
+            paramQQAppInterface = paramQQAppInterface.getFileManagerEngine().b(localFileManagerEntity);
+          } else {
+            paramQQAppInterface = paramQQAppInterface.getFileManagerEngine().a(localFileManagerEntity);
           }
-          localObject1 = FilePicURLDrawlableHelper.a(localFileManagerEntity.imgWidth, localFileManagerEntity.imgHeight, "");
-          if (QLog.isDebugVersion()) {
-            QLog.i("ReplyTextItemBuilder<QFile>", 1, "setThumbNailReplyImg: handle offline file set default. msgSeq[" + paramMessageRecord.msgseq + "] msgUniseq[" + paramMessageRecord.uniseq + "] width[" + ((FilePicURLDrawlableHelper.AIOImgInfo)localObject1).jdField_a_of_type_Int + "]");
+        }
+        else if (FilePicURLDrawlableHelper.a(localFileManagerEntity)) {
+          paramQQAppInterface = paramQQAppInterface.getFileManagerEngine().a(localFileManagerEntity, 7);
+        } else {
+          paramQQAppInterface = paramQQAppInterface.getFileManagerEngine().a(localFileManagerEntity, 5);
+        }
+        localObject2 = paramQQAppInterface;
+        if (!FileUtils.fileExistsAndNotEmpty(paramQQAppInterface)) {
+          if ((localFileManagerEntity.imgWidth > 0) && (localFileManagerEntity.imgHeight > 0))
+          {
+            localObject1 = FilePicURLDrawlableHelper.a(localFileManagerEntity.imgWidth, localFileManagerEntity.imgHeight, "");
+            if (QLog.isDebugVersion())
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("setThumbNailReplyImg: handle offline file set default. msgSeq[");
+              ((StringBuilder)localObject2).append(paramMessageRecord.msgseq);
+              ((StringBuilder)localObject2).append("] msgUniseq[");
+              ((StringBuilder)localObject2).append(paramMessageRecord.uniseq);
+              ((StringBuilder)localObject2).append("] width[");
+              ((StringBuilder)localObject2).append(((FilePicURLDrawlableHelper.AIOImgInfo)localObject1).jdField_a_of_type_Int);
+              ((StringBuilder)localObject2).append("]");
+              QLog.i("ReplyTextItemBuilder<QFile>", 1, ((StringBuilder)localObject2).toString());
+            }
+            a(paramChatThumbView, bool, ((FilePicURLDrawlableHelper.AIOImgInfo)localObject1).jdField_a_of_type_Int, ((FilePicURLDrawlableHelper.AIOImgInfo)localObject1).jdField_b_of_type_Int);
+            localObject2 = paramQQAppInterface;
           }
-          a(paramChatThumbView, bool, ((FilePicURLDrawlableHelper.AIOImgInfo)localObject1).jdField_a_of_type_Int, ((FilePicURLDrawlableHelper.AIOImgInfo)localObject1).jdField_b_of_type_Int);
+          else
+          {
+            a(paramChatThumbView, bool, 0, 0);
+            localObject2 = paramQQAppInterface;
+          }
         }
       }
-      for (localObject2 = paramQQAppInterface;; localObject2 = paramQQAppInterface)
+      if (FileUtils.fileExistsAndNotEmpty((String)localObject2))
       {
-        if (!FileUtils.b((String)localObject2)) {
-          break label552;
-        }
-        if ((localFileManagerEntity.imgWidth <= 0) || (localFileManagerEntity.imgHeight <= 0)) {
-          break label554;
-        }
-        paramQQAppInterface = FilePicURLDrawlableHelper.a(localFileManagerEntity.imgWidth, localFileManagerEntity.imgHeight, (String)localObject2);
-        if (QLog.isDebugVersion()) {
-          QLog.i("ReplyTextItemBuilder<QFile>", 1, "setThumbNailReplyImg: handle offline file set thumb. msgSeq[" + paramMessageRecord.msgseq + "] msgUniseq[" + paramMessageRecord.uniseq + "] width[" + paramQQAppInterface.jdField_a_of_type_Int + "]");
-        }
-        a(paramChatThumbView, bool, paramQQAppInterface.jdField_a_of_type_Int, paramQQAppInterface.jdField_b_of_type_Int, (String)localObject2);
-        return;
-        label490:
-        paramQQAppInterface = paramQQAppInterface.getFileManagerEngine().a(localFileManagerEntity);
-        break;
-        label503:
-        if (FilePicURLDrawlableHelper.a(localFileManagerEntity))
+        if ((localFileManagerEntity.imgWidth > 0) && (localFileManagerEntity.imgHeight > 0))
         {
-          paramQQAppInterface = paramQQAppInterface.getFileManagerEngine().a(localFileManagerEntity, 7);
-          break;
+          paramQQAppInterface = FilePicURLDrawlableHelper.a(localFileManagerEntity.imgWidth, localFileManagerEntity.imgHeight, (String)localObject2);
+          if (QLog.isDebugVersion())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("setThumbNailReplyImg: handle offline file set thumb. msgSeq[");
+            ((StringBuilder)localObject1).append(paramMessageRecord.msgseq);
+            ((StringBuilder)localObject1).append("] msgUniseq[");
+            ((StringBuilder)localObject1).append(paramMessageRecord.uniseq);
+            ((StringBuilder)localObject1).append("] width[");
+            ((StringBuilder)localObject1).append(paramQQAppInterface.jdField_a_of_type_Int);
+            ((StringBuilder)localObject1).append("]");
+            QLog.i("ReplyTextItemBuilder<QFile>", 1, ((StringBuilder)localObject1).toString());
+          }
+          a(paramChatThumbView, bool, paramQQAppInterface.jdField_a_of_type_Int, paramQQAppInterface.jdField_b_of_type_Int, (String)localObject2);
+          return;
         }
-        paramQQAppInterface = paramQQAppInterface.getFileManagerEngine().a(localFileManagerEntity, 5);
-        break;
         a(paramChatThumbView, bool, 0, 0);
       }
     }
-    label554:
-    a(paramChatThumbView, bool, 0, 0);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, String paramString)
   {
-    int i = 1;
-    int j = 8;
     if ((paramMessageRecord == null) && (!"0X800A36B".equals(paramString))) {
       return;
     }
-    if ((paramMessageRecord instanceof MessageForText)) {}
-    for (;;)
+    boolean bool = paramMessageRecord instanceof MessageForText;
+    int j = 8;
+    int i;
+    if (bool) {
+      i = 1;
+    } else if ((paramMessageRecord instanceof MessageForPic)) {
+      i = 2;
+    } else if ((paramMessageRecord instanceof MessageForMixedMsg)) {
+      i = 3;
+    } else if ((!(paramMessageRecord instanceof MessageForVideo)) && (!(paramMessageRecord instanceof MessageForShortVideo)))
     {
-      ReportController.b(paramQQAppInterface, "dc00898", "", "", paramString, paramString, i, 0, "", "", "", "");
-      return;
-      if ((paramMessageRecord instanceof MessageForPic))
-      {
-        i = 2;
-      }
-      else if ((paramMessageRecord instanceof MessageForMixedMsg))
-      {
-        i = 3;
-      }
-      else if (((paramMessageRecord instanceof MessageForVideo)) || ((paramMessageRecord instanceof MessageForShortVideo)))
-      {
-        i = 4;
-      }
-      else if (((paramMessageRecord instanceof MessageForFile)) || ((paramMessageRecord instanceof MessageForTroopFile)))
-      {
-        i = 5;
-      }
-      else
+      if ((!(paramMessageRecord instanceof MessageForFile)) && (!(paramMessageRecord instanceof MessageForTroopFile)))
       {
         if ((paramMessageRecord instanceof MessageForStructing))
         {
           paramMessageRecord = (MessageForStructing)paramMessageRecord;
           i = j;
-          if (paramMessageRecord.structingMsg != null) {
-            switch (paramMessageRecord.structingMsg.mMsgServiceID)
+          if (paramMessageRecord.structingMsg != null)
+          {
+            i = paramMessageRecord.structingMsg.mMsgServiceID;
+            if (i != 33)
             {
-            default: 
+              if (i != 95) {
+                i = j;
+              } else {
+                i = 6;
+              }
+            }
+            else {
+              i = 7;
+            }
+          }
+        }
+        for (;;)
+        {
+          break label254;
+          if ((paramMessageRecord instanceof MessageForArkApp)) {
+            try
+            {
+              paramMessageRecord = ((MessageForArkApp)paramMessageRecord).ark_app_message;
               i = j;
+              if (paramMessageRecord != null) {
+                i = ((IArkMsgReplyMgr)QRoute.api(IArkMsgReplyMgr.class)).msgReplyFromType(paramMessageRecord.appName, paramMessageRecord.appView);
+              }
+            }
+            catch (Exception paramMessageRecord)
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("reportReplyItemEvent error for MessageForArkApp:");
+              localStringBuilder.append(paramMessageRecord.getMessage());
+              QLog.e("ReplyTextItemBuilder", 1, localStringBuilder.toString());
             }
           }
-          for (;;)
-          {
-            break;
-            i = 6;
-            continue;
-            i = 7;
-          }
         }
-        if ((paramMessageRecord instanceof MessageForArkApp)) {
-          try
-          {
-            paramMessageRecord = ((MessageForArkApp)paramMessageRecord).ark_app_message;
-            i = j;
-            if (paramMessageRecord != null) {
-              i = ArkMsgReplyConfigMgr.a(paramMessageRecord.appName, paramMessageRecord.appView);
-            }
-          }
-          catch (Exception paramMessageRecord)
-          {
-            QLog.e("ReplyTextItemBuilder", 1, "reportReplyItemEvent error for MessageForArkApp:" + paramMessageRecord.getMessage());
-            i = 8;
-          }
-        } else {
-          i = 8;
-        }
+        i = 8;
+      }
+      else
+      {
+        i = 5;
       }
     }
+    else {
+      i = 4;
+    }
+    label254:
+    ReportController.b(paramQQAppInterface, "dc00898", "", "", paramString, paramString, i, 0, "", "", "", "");
   }
   
   private static void a(int[] paramArrayOfInt, Rect paramRect, boolean paramBoolean, int paramInt, File paramFile, float paramFloat)
   {
-    int j;
-    int i;
     if (paramRect != null)
     {
       j = paramRect.width();
       i = paramRect.height();
     }
-    for (;;)
+    else
     {
-      paramRect = a(j, i, 12.0F * paramFloat, paramBoolean);
-      j = paramRect.jdField_a_of_type_Int;
-      i = paramRect.jdField_b_of_type_Int;
-      j = (j * paramInt + 80) / 160;
-      paramInt = (i * paramInt + 80) / 160;
-      if (paramArrayOfInt != null)
-      {
-        paramArrayOfInt[0] = j;
-        paramArrayOfInt[1] = paramInt;
-      }
-      return;
       paramRect = new BitmapFactory.Options();
       paramRect.inJustDecodeBounds = true;
       try
       {
         ImageUtil.a(paramFile.getAbsolutePath(), paramRect);
-        j = paramRect.outWidth;
-        i = paramRect.outHeight;
-        int k = URLDrawableHelper.getExifRotation(paramFile.getAbsolutePath());
-        if ((k != 90) && (k != 270)) {
-          continue;
-        }
-        j = paramRect.outHeight;
-        i = paramRect.outWidth;
       }
       catch (Throwable localThrowable)
       {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("ReplyTextItemBuilder", 2, "getThumbDrawable", localThrowable);
-          }
+        if (QLog.isColorLevel()) {
+          QLog.e("ReplyTextItemBuilder", 2, "getThumbDrawable", localThrowable);
         }
       }
+      j = paramRect.outWidth;
+      i = paramRect.outHeight;
+      int k = URLDrawableHelper.getExifRotation(paramFile.getAbsolutePath());
+      if ((k != 90) && (k != 270)) {
+        break label119;
+      }
+      j = paramRect.outHeight;
+      i = paramRect.outWidth;
+    }
+    label119:
+    paramRect = a(j, i, paramFloat * 12.0F, paramBoolean);
+    int j = paramRect.jdField_a_of_type_Int;
+    int i = paramRect.jdField_b_of_type_Int;
+    j = (j * paramInt + 80) / 160;
+    paramInt = (i * paramInt + 80) / 160;
+    if (paramArrayOfInt != null)
+    {
+      paramArrayOfInt[0] = j;
+      paramArrayOfInt[1] = paramInt;
     }
   }
   
   private static boolean a(QQAppInterface paramQQAppInterface, MessageForTroopFile paramMessageForTroopFile)
   {
-    boolean bool2 = false;
     paramQQAppInterface = TroopFileUtils.a(paramQQAppInterface, paramMessageForTroopFile);
-    boolean bool1 = bool2;
     if (paramQQAppInterface != null)
     {
       int i = FileManagerUtil.a(paramQQAppInterface.g);
-      if (i != 2)
-      {
-        bool1 = bool2;
-        if (i != 0) {}
-      }
-      else
-      {
-        bool1 = true;
+      if ((i == 2) || (i == 0)) {
+        return true;
       }
     }
-    return bool1;
+    return false;
   }
   
   private static boolean a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
   {
-    boolean bool2 = false;
     paramQQAppInterface = paramQQAppInterface.getFileManagerDataCenter().a(paramMessageRecord.uniseq, paramMessageRecord.frienduin, paramMessageRecord.istroop);
-    boolean bool1 = bool2;
-    if (paramQQAppInterface != null)
-    {
-      if (paramQQAppInterface.status == 16) {
-        break label63;
-      }
-      int i = FileManagerUtil.a(paramQQAppInterface.fileName);
-      if (i != 2)
+    if (paramQQAppInterface != null) {
+      if (paramQQAppInterface.status != 16)
       {
-        bool1 = bool2;
-        if (i != 0) {}
+        int i = FileManagerUtil.a(paramQQAppInterface.fileName);
+        if ((i == 2) || (i == 0)) {
+          return true;
+        }
       }
-      else
+      else if (QLog.isColorLevel())
       {
-        bool1 = true;
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("renderReply: handle offline file , but invalid. msgUniseq[");
+        paramQQAppInterface.append(paramMessageRecord.uniseq);
+        paramQQAppInterface.append("] msgSeq[");
+        paramQQAppInterface.append(paramMessageRecord.msgseq);
+        paramQQAppInterface.append("]");
+        QLog.i("ReplyTextItemBuilder", 2, paramQQAppInterface.toString());
       }
     }
-    label63:
-    do
-    {
-      return bool1;
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.i("ReplyTextItemBuilder", 2, "renderReply: handle offline file , but invalid. msgUniseq[" + paramMessageRecord.uniseq + "] msgSeq[" + paramMessageRecord.msgseq + "]");
     return false;
   }
   
   public static boolean a(MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReplyTextItemBuilder", 2, "sendUin= " + paramSourceMsgInfo.mSourceMsgSenderUin + " toUin=" + paramSourceMsgInfo.mSourceMsgToUin + " session curFin=" + paramSessionInfo.jdField_a_of_type_JavaLangString + " type=" + paramSessionInfo.jdField_a_of_type_Int);
-    }
-    String str1 = paramSourceMsgInfo.mSourceMsgToUin + "";
-    String str2 = paramSourceMsgInfo.mSourceMsgSenderUin + "";
-    if (paramSourceMsgInfo.mSourceMsgToUin <= 0L) {
-      paramSourceMsgInfo.mSourceMsgToUin = a(paramQQAppInterface, paramSessionInfo, paramSourceMsgInfo.mSourceMsgSenderUin);
-    }
-    do
+    if (QLog.isColorLevel())
     {
-      do
-      {
+      localObject1 = new StringBuilder("sendUin= ");
+      ((StringBuilder)localObject1).append(paramSourceMsgInfo.mSourceMsgSenderUin);
+      ((StringBuilder)localObject1).append(" toUin=");
+      ((StringBuilder)localObject1).append(paramSourceMsgInfo.mSourceMsgToUin);
+      ((StringBuilder)localObject1).append(" session curFin=");
+      ((StringBuilder)localObject1).append(paramSessionInfo.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(" type=");
+      ((StringBuilder)localObject1).append(paramSessionInfo.jdField_a_of_type_Int);
+      QLog.d("ReplyTextItemBuilder", 2, ((StringBuilder)localObject1).toString());
+    }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(paramSourceMsgInfo.mSourceMsgToUin);
+    ((StringBuilder)localObject1).append("");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(paramSourceMsgInfo.mSourceMsgSenderUin);
+    ((StringBuilder)localObject2).append("");
+    localObject2 = ((StringBuilder)localObject2).toString();
+    if (paramSourceMsgInfo.mSourceMsgToUin <= 0L)
+    {
+      paramSourceMsgInfo.mSourceMsgToUin = a(paramQQAppInterface, paramSessionInfo, paramSourceMsgInfo.mSourceMsgSenderUin);
+      return true;
+    }
+    if (paramSessionInfo.jdField_a_of_type_Int == 3000) {
+      return ((String)localObject1).equals(paramSessionInfo.jdField_a_of_type_JavaLangString);
+    }
+    int i = paramSessionInfo.jdField_a_of_type_Int;
+    boolean bool3 = false;
+    boolean bool2 = false;
+    if (i == 1)
+    {
+      if (((String)localObject1).equals(paramSessionInfo.jdField_a_of_type_JavaLangString)) {
         return true;
-        if (paramSessionInfo.jdField_a_of_type_Int == 3000) {
-          return str1.equals(paramSessionInfo.jdField_a_of_type_JavaLangString);
-        }
-        if (paramSessionInfo.jdField_a_of_type_Int != 1) {
-          break;
-        }
-      } while (str1.equals(paramSessionInfo.jdField_a_of_type_JavaLangString));
-      paramSourceMsgInfo = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramSessionInfo.jdField_a_of_type_JavaLangString);
-      if ((paramSourceMsgInfo != null) && (str1.equals(paramSourceMsgInfo.troopcode))) {}
-      for (boolean bool = true;; bool = false) {
-        return bool;
       }
-    } while (((str2.equals(paramSessionInfo.jdField_a_of_type_JavaLangString)) && (str1.equals(paramQQAppInterface.getCurrentAccountUin()))) || ((str1.equals(paramSessionInfo.jdField_a_of_type_JavaLangString)) && (str2.equals(paramQQAppInterface.getCurrentAccountUin()))));
-    return false;
+      paramSourceMsgInfo = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramSessionInfo.jdField_a_of_type_JavaLangString);
+      bool1 = bool2;
+      if (paramSourceMsgInfo != null)
+      {
+        bool1 = bool2;
+        if (((String)localObject1).equals(paramSourceMsgInfo.troopcode)) {
+          bool1 = true;
+        }
+      }
+      return bool1;
+    }
+    if ((((String)localObject2).equals(paramSessionInfo.jdField_a_of_type_JavaLangString)) && (((String)localObject1).equals(paramQQAppInterface.getCurrentAccountUin()))) {
+      return true;
+    }
+    boolean bool1 = bool3;
+    if (((String)localObject1).equals(paramSessionInfo.jdField_a_of_type_JavaLangString))
+    {
+      bool1 = bool3;
+      if (((String)localObject2).equals(paramQQAppInterface.getCurrentAccountUin())) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   protected static boolean a(MessageRecord paramMessageRecord)
@@ -2307,87 +2436,103 @@ public class ReplyTextItemBuilder
   
   public static boolean a(String paramString)
   {
-    if (android.text.TextUtils.isEmpty(paramString)) {}
-    while (paramString.indexOf(HardCodeUtil.a(2131713362)) == -1) {
+    boolean bool2 = android.text.TextUtils.isEmpty(paramString);
+    boolean bool1 = false;
+    if (bool2) {
       return false;
     }
-    return true;
+    if (paramString.indexOf(HardCodeUtil.a(2131713330)) != -1) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   private static MessageRecord b(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2, StringBuilder paramStringBuilder)
   {
-    boolean bool2 = true;
-    Object localObject = null;
-    if ((paramMessageRecord1 == null) || (paramMessageRecord2 == null)) {}
-    MessageRecord localMessageRecord;
-    do
+    if (paramMessageRecord1 != null)
     {
-      return null;
-      if (!(paramMessageRecord2 instanceof MessageForMixedMsg)) {
-        break label164;
+      if (paramMessageRecord2 == null) {
+        return null;
       }
-      localObject = (MessageForMixedMsg)paramMessageRecord2;
-      if (((MessageForMixedMsg)localObject).msgElemList == null) {
-        break;
-      }
-      localMessageRecord = (MessageRecord)((MessageForMixedMsg)localObject).msgElemList.get(0);
-      if ((localMessageRecord instanceof MessageForPic))
+      boolean bool1 = paramMessageRecord2 instanceof MessageForMixedMsg;
+      boolean bool2 = false;
+      Object localObject;
+      if (bool1)
       {
-        int i = 1;
-        for (;;)
+        localObject = (MessageForMixedMsg)paramMessageRecord2;
+        bool1 = bool2;
+        if (((MessageForMixedMsg)localObject).msgElemList != null)
         {
-          bool1 = bool2;
-          if (i >= ((MessageForMixedMsg)localObject).msgElemList.size()) {
-            break label149;
+          MessageRecord localMessageRecord = (MessageRecord)((MessageForMixedMsg)localObject).msgElemList.get(0);
+          if ((localMessageRecord instanceof MessageForPic))
+          {
+            int i = 1;
+            while (i < ((MessageForMixedMsg)localObject).msgElemList.size())
+            {
+              localMessageRecord = (MessageRecord)((MessageForMixedMsg)localObject).msgElemList.get(i);
+              if (((localMessageRecord instanceof MessageForText)) && (!android.text.TextUtils.isEmpty(localMessageRecord.msg)))
+              {
+                paramStringBuilder.append(localMessageRecord.msg);
+                i += 1;
+              }
+              else
+              {
+                return null;
+              }
+            }
+            bool1 = true;
           }
-          localMessageRecord = (MessageRecord)((MessageForMixedMsg)localObject).msgElemList.get(i);
-          if ((!(localMessageRecord instanceof MessageForText)) || (android.text.TextUtils.isEmpty(localMessageRecord.msg))) {
-            break;
+          else
+          {
+            bool1 = bool2;
+            if ((localMessageRecord instanceof MessageForText)) {
+              return null;
+            }
           }
-          paramStringBuilder.append(localMessageRecord.msg);
-          i += 1;
         }
+        localObject = paramMessageRecord2;
       }
-    } while ((localMessageRecord instanceof MessageForText));
-    boolean bool1 = false;
-    label149:
-    localObject = paramMessageRecord2;
-    for (;;)
-    {
+      else
+      {
+        if (((paramMessageRecord2 instanceof MessageForText)) && (!android.text.TextUtils.isEmpty(paramMessageRecord2.msg))) {
+          paramStringBuilder.append(paramMessageRecord2.msg);
+        }
+        localObject = null;
+        bool1 = false;
+      }
       return a(paramQQAppInterface, paramMessageRecord1, paramMessageRecord2, paramStringBuilder, (MessageRecord)localObject, bool1);
-      label164:
-      if (((paramMessageRecord2 instanceof MessageForText)) && (!android.text.TextUtils.isEmpty(paramMessageRecord2.msg))) {
-        paramStringBuilder.append(paramMessageRecord2.msg);
-      }
-      bool1 = false;
     }
+    return null;
   }
   
   private static void b(int paramInt1, int paramInt2, String paramString, ImageView paramImageView)
   {
-    if ((paramInt1 == 0) || (paramInt2 == 0)) {
-      paramString = ShortVideoItemBuilder.a(paramString, 55, 95, AIOUtils.a(2.0F, paramImageView.getContext().getResources()));
-    }
-    while ((paramString == null) || (paramString.getCurrent() == null))
+    if ((paramInt1 != 0) && (paramInt2 != 0))
     {
-      paramImageView.setVisibility(8);
-      return;
       if (paramInt1 > paramInt2)
       {
         paramInt1 = (int)(Float.valueOf(paramInt1).floatValue() / 95);
-        paramString = ShortVideoItemBuilder.a(paramString, 95, (int)(Float.valueOf(paramInt2).floatValue() / paramInt1), AIOUtils.a(2.0F, paramImageView.getContext().getResources()));
+        paramString = ShortVideoItemBuilder.a(paramString, 95, (int)(Float.valueOf(paramInt2).floatValue() / paramInt1), AIOUtils.b(2.0F, paramImageView.getContext().getResources()));
       }
       else
       {
         paramInt2 = (int)(Float.valueOf(paramInt2).floatValue() / 95);
-        paramString = ShortVideoItemBuilder.a(paramString, (int)(Float.valueOf(paramInt1).floatValue() / paramInt2), 95, AIOUtils.a(2.0F, paramImageView.getContext().getResources()));
+        paramString = ShortVideoItemBuilder.a(paramString, (int)(Float.valueOf(paramInt1).floatValue() / paramInt2), 95, AIOUtils.b(2.0F, paramImageView.getContext().getResources()));
       }
     }
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramImageView.getLayoutParams();
-    localLayoutParams.width = paramString.getCurrent().getIntrinsicWidth();
-    localLayoutParams.height = paramString.getCurrent().getIntrinsicHeight();
-    paramImageView.setLayoutParams(localLayoutParams);
-    paramImageView.setImageDrawable(paramString);
+    else {
+      paramString = ShortVideoItemBuilder.a(paramString, 55, 95, AIOUtils.b(2.0F, paramImageView.getContext().getResources()));
+    }
+    if ((paramString != null) && (paramString.getCurrent() != null))
+    {
+      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramImageView.getLayoutParams();
+      localLayoutParams.width = paramString.getCurrent().getIntrinsicWidth();
+      localLayoutParams.height = paramString.getCurrent().getIntrinsicHeight();
+      paramImageView.setLayoutParams(localLayoutParams);
+      paramImageView.setImageDrawable(paramString);
+      return;
+    }
+    paramImageView.setVisibility(8);
   }
   
   protected static void b(Context paramContext, QQAppInterface paramQQAppInterface, ChatThumbView paramChatThumbView, MessageRecord paramMessageRecord, ReplyTextItemBuilder.SourceMessagePulledCallBack paramSourceMessagePulledCallBack)
@@ -2402,9 +2547,28 @@ public class ReplyTextItemBuilder
       str = "";
     }
     paramString = ColorNickManager.a(str, paramMessageRecord, ChatTextSizeSettingActivity.b() - 2, 7);
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          paramTextView1.setVisibility(0);
+          paramTextView1.setText(paramString);
+          if (AppSetting.d) {
+            paramTextView1.setContentDescription(com.tencent.mobileqq.text.TextUtils.emoticonToTextForTalkBack(str));
+          }
+          paramTextView2.setVisibility(8);
+          return;
+        }
+        paramTextView2.setVisibility(0);
+        paramTextView2.setText(paramString);
+        if (AppSetting.d) {
+          paramTextView2.setContentDescription(com.tencent.mobileqq.text.TextUtils.emoticonToTextForTalkBack(str));
+        }
+        paramTextView1.setVisibility(8);
+        return;
+      }
       paramTextView1.setVisibility(0);
       paramTextView1.setText(paramString);
       if (AppSetting.d) {
@@ -2412,275 +2576,267 @@ public class ReplyTextItemBuilder
       }
       paramTextView2.setVisibility(8);
       return;
-    case 0: 
-      paramTextView1.setVisibility(8);
-      paramTextView2.setVisibility(8);
-      return;
-    case 1: 
-      paramTextView1.setVisibility(0);
-      paramTextView1.setText(paramString);
-      if (AppSetting.d) {
-        paramTextView1.setContentDescription(com.tencent.mobileqq.text.TextUtils.emoticonToTextForTalkBack(str));
-      }
-      paramTextView2.setVisibility(8);
-      return;
-    }
-    paramTextView2.setVisibility(0);
-    paramTextView2.setText(paramString);
-    if (AppSetting.d) {
-      paramTextView2.setContentDescription(com.tencent.mobileqq.text.TextUtils.emoticonToTextForTalkBack(str));
     }
     paramTextView1.setVisibility(8);
+    paramTextView2.setVisibility(8);
   }
   
   private static void b(QQAppInterface paramQQAppInterface, ChatThumbView paramChatThumbView, MessageRecord paramMessageRecord)
   {
-    boolean bool = false;
-    MessageForTroopFile localMessageForTroopFile = (MessageForTroopFile)paramMessageRecord;
-    localMessageForTroopFile.doParse();
-    TroopFileStatusInfo localTroopFileStatusInfo = TroopFileUtils.a(paramQQAppInterface, localMessageForTroopFile);
+    Object localObject2 = (MessageForTroopFile)paramMessageRecord;
+    ((MessageForTroopFile)localObject2).doParse();
+    TroopFileStatusInfo localTroopFileStatusInfo = TroopFileUtils.a(paramQQAppInterface, (MessageForTroopFile)localObject2);
+    boolean bool1 = false;
     if (localTroopFileStatusInfo == null)
     {
       a(paramChatThumbView, false, 0, 0);
       return;
     }
     int k = FileManagerUtil.a(localTroopFileStatusInfo.g);
-    if ((localTroopFileStatusInfo == null) || (localTroopFileStatusInfo.jdField_b_of_type_Int == 12))
+    boolean bool2 = true;
+    if ((localTroopFileStatusInfo != null) && (localTroopFileStatusInfo.jdField_b_of_type_Int != 12))
     {
-      if (k == 2) {}
-      for (bool = true;; bool = false)
+      Object localObject1;
+      if (FileUtils.fileExistsAndNotEmpty(localTroopFileStatusInfo.d)) {
+        localObject1 = localTroopFileStatusInfo.d;
+      } else {
+        localObject1 = localTroopFileStatusInfo.c;
+      }
+      if (FileUtils.fileExistsAndNotEmpty((String)localObject1))
       {
-        a(paramChatThumbView, bool, 0, 0);
+        if (k == 2) {
+          bool1 = true;
+        }
+        paramQQAppInterface = FilePicURLDrawlableHelper.a(((MessageForTroopFile)localObject2).width, ((MessageForTroopFile)localObject2).height, (String)localObject1);
+        if (QLog.isDebugVersion())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("setThumbNailReplyImg: handle troop file set thumb. msgSeq[");
+          ((StringBuilder)localObject2).append(paramMessageRecord.msgseq);
+          ((StringBuilder)localObject2).append("] msgUniseq[");
+          ((StringBuilder)localObject2).append(paramMessageRecord.uniseq);
+          ((StringBuilder)localObject2).append("] width[");
+          ((StringBuilder)localObject2).append(paramQQAppInterface.jdField_a_of_type_Int);
+          ((StringBuilder)localObject2).append("]");
+          QLog.i("ReplyTextItemBuilder<QFile>", 1, ((StringBuilder)localObject2).toString());
+        }
+        a(paramChatThumbView, bool1, paramQQAppInterface.jdField_a_of_type_Int, paramQQAppInterface.jdField_b_of_type_Int, (String)localObject1);
         return;
       }
-    }
-    if (FileUtils.b(localTroopFileStatusInfo.d)) {}
-    for (String str = localTroopFileStatusInfo.d; FileUtils.b(str); str = localTroopFileStatusInfo.c)
-    {
+      paramQQAppInterface = TroopFileTransferManager.a(paramQQAppInterface, Long.parseLong(((MessageForTroopFile)localObject2).frienduin));
+      int j = 383;
+      int i = j;
+      if (FilePicURLDrawlableHelper.b(((MessageForTroopFile)localObject2).width, ((MessageForTroopFile)localObject2).height))
+      {
+        i = j;
+        if (!FileUtil.a(localTroopFileStatusInfo.c)) {
+          i = 640;
+        }
+      }
+      if (localTroopFileStatusInfo.jdField_b_of_type_Int != 12)
+      {
+        if (localTroopFileStatusInfo.a != null) {
+          paramQQAppInterface.a(localTroopFileStatusInfo.a, i);
+        } else {
+          paramQQAppInterface.a(localTroopFileStatusInfo.e, localTroopFileStatusInfo.g, localTroopFileStatusInfo.h, i);
+        }
+        paramChatThumbView.setTag(2131364536, new Boolean(true));
+      }
       if (k == 2) {
-        bool = true;
+        bool1 = true;
+      } else {
+        bool1 = false;
       }
-      paramQQAppInterface = FilePicURLDrawlableHelper.a(localMessageForTroopFile.width, localMessageForTroopFile.height, str);
-      if (QLog.isDebugVersion()) {
-        QLog.i("ReplyTextItemBuilder<QFile>", 1, "setThumbNailReplyImg: handle troop file set thumb. msgSeq[" + paramMessageRecord.msgseq + "] msgUniseq[" + paramMessageRecord.uniseq + "] width[" + paramQQAppInterface.jdField_a_of_type_Int + "]");
+      a(paramChatThumbView, bool1, 0, 0);
+      if ((((MessageForTroopFile)localObject2).width > 0) && (((MessageForTroopFile)localObject2).height > 0))
+      {
+        paramQQAppInterface = FilePicURLDrawlableHelper.a(((MessageForTroopFile)localObject2).width, ((MessageForTroopFile)localObject2).height, "");
+        if (QLog.isDebugVersion())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("setThumbNailReplyImg: handle troop file set default. msgSeq[");
+          ((StringBuilder)localObject1).append(paramMessageRecord.msgseq);
+          ((StringBuilder)localObject1).append("] msgUniseq[");
+          ((StringBuilder)localObject1).append(paramMessageRecord.uniseq);
+          ((StringBuilder)localObject1).append("] width[");
+          ((StringBuilder)localObject1).append(paramQQAppInterface.jdField_a_of_type_Int);
+          ((StringBuilder)localObject1).append("]");
+          QLog.i("ReplyTextItemBuilder<QFile>", 1, ((StringBuilder)localObject1).toString());
+        }
+        a(paramChatThumbView, bool1, paramQQAppInterface.jdField_a_of_type_Int, paramQQAppInterface.jdField_b_of_type_Int);
+        return;
       }
-      a(paramChatThumbView, bool, paramQQAppInterface.jdField_a_of_type_Int, paramQQAppInterface.jdField_b_of_type_Int, str);
+      a(paramChatThumbView, bool1, 0, 0);
       return;
     }
-    paramQQAppInterface = TroopFileTransferManager.a(paramQQAppInterface, Long.parseLong(localMessageForTroopFile.frienduin));
-    int j = 383;
-    int i = j;
-    if (FilePicURLDrawlableHelper.b(localMessageForTroopFile.width, localMessageForTroopFile.height))
-    {
-      i = j;
-      if (!FileUtil.b(localTroopFileStatusInfo.c)) {
-        i = 640;
-      }
+    if (k == 2) {
+      bool1 = bool2;
+    } else {
+      bool1 = false;
     }
-    if (localTroopFileStatusInfo.jdField_b_of_type_Int != 12)
+    a(paramChatThumbView, bool1, 0, 0);
+  }
+  
+  private static void b(MessageRecord paramMessageRecord1, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, BubbleImageView paramBubbleImageView, TextView paramTextView, ETTextView paramETTextView1, ETTextView paramETTextView2, int paramInt, String paramString1, MessageRecord paramMessageRecord2, Context paramContext, QQAppInterface paramQQAppInterface, String paramString2)
+  {
+    boolean bool2 = paramMessageRecord1 instanceof MessageForPic;
+    boolean bool1 = true;
+    int j = 1;
+    if (bool2)
     {
-      if (localTroopFileStatusInfo.a != null)
+      if (((IPicFlash)QRoute.api(IPicFlash.class)).isFlashPicMsg(paramMessageRecord1))
       {
-        paramQQAppInterface.a(localTroopFileStatusInfo.a, i);
-        paramChatThumbView.setTag(2131364649, new Boolean(true));
+        paramSourceMsgInfo = paramString1;
+        paramString1 = null;
+        paramInt = 0;
+        bool1 = false;
+        i = 1;
+        break label510;
       }
     }
     else {
-      if (k != 2) {
-        break label486;
+      if (!(paramMessageRecord1 instanceof MessageForShortVideo)) {
+        break label75;
       }
     }
-    label486:
-    for (bool = true;; bool = false)
+    label75:
+    do
     {
-      a(paramChatThumbView, bool, 0, 0);
-      if ((localMessageForTroopFile.width <= 0) || (localMessageForTroopFile.height <= 0)) {
-        break label492;
-      }
-      paramQQAppInterface = FilePicURLDrawlableHelper.a(localMessageForTroopFile.width, localMessageForTroopFile.height, "");
-      if (QLog.isDebugVersion()) {
-        QLog.i("ReplyTextItemBuilder<QFile>", 1, "setThumbNailReplyImg: handle troop file set default. msgSeq[" + paramMessageRecord.msgseq + "] msgUniseq[" + paramMessageRecord.uniseq + "] width[" + paramQQAppInterface.jdField_a_of_type_Int + "]");
-      }
-      a(paramChatThumbView, bool, paramQQAppInterface.jdField_a_of_type_Int, paramQQAppInterface.jdField_b_of_type_Int);
-      return;
-      paramQQAppInterface.a(localTroopFileStatusInfo.e, localTroopFileStatusInfo.g, localTroopFileStatusInfo.h, i);
-      break;
-    }
-    label492:
-    a(paramChatThumbView, bool, 0, 0);
-  }
-  
-  private static void b(MessageRecord paramMessageRecord1, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, BubbleImageView paramBubbleImageView, ETTextView paramETTextView1, ETTextView paramETTextView2, int paramInt, String paramString1, MessageRecord paramMessageRecord2, Context paramContext, QQAppInterface paramQQAppInterface, String paramString2)
-  {
-    boolean bool2 = false;
-    Object localObject2 = null;
-    int i;
-    Object localObject1;
-    boolean bool1;
-    if ((paramMessageRecord1 instanceof MessageForPic)) {
-      if (FlashPicHelper.a(paramMessageRecord1))
+      paramSourceMsgInfo = paramString1;
+      paramString1 = paramMessageRecord1;
+      paramInt = 1;
+      i = 0;
+      break label510;
+      if ((paramMessageRecord1 instanceof MessageForMixedMsg))
       {
-        i = 1;
-        localObject1 = paramString1;
-        bool1 = bool2;
-        paramString2 = localObject2;
+        Object localObject = (MessageForMixedMsg)paramMessageRecord1;
+        paramString1 = a((MessageForMixedMsg)localObject);
+        bool1 = paramString1.jdField_a_of_type_Boolean;
+        localObject = ((MessageForMixedMsg)localObject).getPicMsgList();
+        if (localObject == null) {
+          paramInt = 0;
+        } else {
+          paramInt = ((List)localObject).size();
+        }
+        i = paramString1.jdField_a_of_type_Int;
+        localObject = paramString1.jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
+        if (paramString1.jdField_a_of_type_JavaLangString == null) {
+          paramString1 = "";
+        } else {
+          paramString1 = paramString1.jdField_a_of_type_JavaLangString.trim();
+        }
+        if (!android.text.TextUtils.isEmpty(paramString2)) {
+          paramString1 = paramString2;
+        }
+        if (paramSourceMsgInfo.mSourceSummaryFlag != 1) {
+          paramString1 = paramSourceMsgInfo.mSourceMsgText;
+        }
+        paramString2 = (String)localObject;
+        paramSourceMsgInfo = paramString1;
+        paramString1 = paramString2;
+        break label510;
       }
-    }
-    for (;;)
-    {
-      if (bool1)
-      {
-        paramBubbleImageView.setVisibility(0);
-        paramBubbleImageView.setTag(2131364649, null);
-        paramSourceMsgInfo = (ViewGroup)paramBubbleImageView.getParent();
-        if (paramSourceMsgInfo != null) {
-          paramSourceMsgInfo.setVisibility(0);
-        }
-        paramBubbleImageView.setVisibility(0);
-        a(paramContext, paramQQAppInterface, paramBubbleImageView, paramMessageRecord2, paramString2);
-        label87:
-        b(paramETTextView1, paramETTextView2, i, (String)localObject1, paramMessageRecord1);
-        a(paramQQAppInterface, paramContext, paramETTextView1, paramMessageRecord1, (String)localObject1);
-        paramMessageRecord1 = AIOUtils.a(paramETTextView1);
-        if ((paramMessageRecord1 != null) && ((paramMessageRecord1 instanceof ReplyTextItemBuilder.ReplyTextViewHolder))) {
-          ((ReplyTextItemBuilder.ReplyTextViewHolder)paramMessageRecord1).jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView = paramBubbleImageView;
-        }
-        return;
-        bool1 = true;
-        i = 0;
-        paramString2 = paramMessageRecord1;
-        localObject1 = paramString1;
-        continue;
-        if ((paramMessageRecord1 instanceof MessageForShortVideo))
-        {
-          bool1 = true;
-          i = 0;
-          paramString2 = paramMessageRecord1;
-          localObject1 = paramString1;
-        }
-        else if ((paramMessageRecord1 instanceof MessageForMixedMsg))
-        {
-          localObject1 = a((MessageForMixedMsg)paramMessageRecord1);
-          bool1 = ((ReplyTextItemBuilder.MixedMessageInfo)localObject1).jdField_a_of_type_Boolean;
-          i = ((ReplyTextItemBuilder.MixedMessageInfo)localObject1).jdField_a_of_type_Int;
-          paramString1 = ((ReplyTextItemBuilder.MixedMessageInfo)localObject1).jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
-          localObject1 = ((ReplyTextItemBuilder.MixedMessageInfo)localObject1).jdField_a_of_type_JavaLangString;
-          if (android.text.TextUtils.isEmpty(paramString2)) {
-            break label617;
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      if (paramSourceMsgInfo.mSourceSummaryFlag != 1) {
-        paramString2 = paramSourceMsgInfo.mSourceMsgText;
-      }
-      localObject1 = paramString2;
-      paramString2 = paramString1;
-      break;
       if ((paramMessageRecord1 instanceof MessageForLongMsg))
       {
-        paramString2 = localObject2;
-        bool1 = bool2;
-        i = paramInt;
-        localObject1 = paramString1;
         if (paramMessageRecord1.msgtype != -1036) {
           break;
         }
-        paramSourceMsgInfo = (MessageForMixedMsg)((MessageForLongMsg)paramMessageRecord1).rebuildLongMsg();
-        if (paramSourceMsgInfo == null) {
-          break label609;
-        }
-        paramString1 = a(paramSourceMsgInfo);
-        bool1 = paramString1.jdField_a_of_type_Boolean;
-        paramInt = paramString1.jdField_a_of_type_Int;
-        paramSourceMsgInfo = paramString1.jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
-        paramString1 = paramString1.jdField_a_of_type_JavaLangString;
-      }
-      for (;;)
-      {
-        paramString2 = paramSourceMsgInfo;
-        i = paramInt;
-        localObject1 = paramString1;
-        break;
-        if ((paramMessageRecord1 instanceof MessageForLongTextMsg))
+        paramString2 = (MessageForMixedMsg)((MessageForLongMsg)paramMessageRecord1).rebuildLongMsg();
+        if (paramString2 != null)
         {
-          paramString2 = (MessageForLongTextMsg)paramMessageRecord1;
-          if (paramString2 != null) {}
-          for (CharSequence localCharSequence = paramString2.sb;; localCharSequence = null)
-          {
-            paramString2 = localObject2;
-            bool1 = bool2;
-            i = paramInt;
-            localObject1 = paramString1;
-            if (localCharSequence == null) {
-              break;
-            }
-            paramString2 = localObject2;
-            bool1 = bool2;
-            i = paramInt;
-            localObject1 = paramString1;
-            if (paramSourceMsgInfo.mSourceMsgText.equals(localCharSequence.toString())) {
-              break;
-            }
-            localObject1 = localCharSequence.toString();
-            paramString2 = localObject2;
-            bool1 = bool2;
-            i = paramInt;
-            break;
+          paramSourceMsgInfo = a(paramString2);
+          bool1 = paramSourceMsgInfo.jdField_a_of_type_Boolean;
+          paramString1 = paramString2.getPicMsgList();
+          if (paramString1 == null) {
+            paramInt = 0;
+          } else {
+            paramInt = paramString1.size();
           }
+          i = paramSourceMsgInfo.jdField_a_of_type_Int;
+          paramString1 = paramSourceMsgInfo.jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
+          paramSourceMsgInfo = paramSourceMsgInfo.jdField_a_of_type_JavaLangString;
         }
-        paramString2 = localObject2;
-        bool1 = bool2;
-        i = paramInt;
-        localObject1 = paramString1;
-        if (!FileManagerUtil.a(paramMessageRecord1)) {
-          break;
-        }
-        paramSourceMsgInfo = a(paramQQAppInterface, paramMessageRecord1);
-        if ((paramSourceMsgInfo instanceof MessageForFile))
+        else
         {
-          paramString2 = localObject2;
-          bool1 = bool2;
+          paramSourceMsgInfo = paramString1;
+          paramString1 = null;
+          bool1 = false;
+          j = 0;
           i = paramInt;
-          localObject1 = paramString1;
-          if (!a(paramQQAppInterface, paramSourceMsgInfo)) {
-            break;
-          }
-          bool1 = true;
-          i = 0;
-          paramString2 = paramMessageRecord1;
-          localObject1 = paramString1;
-          break;
+          paramInt = j;
         }
-        paramString2 = localObject2;
-        bool1 = bool2;
-        i = paramInt;
-        localObject1 = paramString1;
-        if (!(paramSourceMsgInfo instanceof MessageForTroopFile)) {
-          break;
-        }
-        paramString2 = localObject2;
-        bool1 = bool2;
-        i = paramInt;
-        localObject1 = paramString1;
-        if (!a(paramQQAppInterface, (MessageForTroopFile)paramSourceMsgInfo)) {
-          break;
-        }
-        bool1 = true;
-        i = 0;
-        paramString2 = paramMessageRecord1;
-        localObject1 = paramString1;
-        break;
-        a(paramBubbleImageView);
-        break label87;
-        label609:
-        paramSourceMsgInfo = null;
-        bool1 = false;
+        break label510;
       }
-      label617:
-      paramString2 = (String)localObject1;
+      if ((paramMessageRecord1 instanceof MessageForLongTextMsg))
+      {
+        paramString2 = (MessageForLongTextMsg)paramMessageRecord1;
+        if (paramString2 != null) {
+          paramString2 = paramString2.sb;
+        } else {
+          paramString2 = null;
+        }
+        if ((paramString2 != null) && (!paramSourceMsgInfo.mSourceMsgText.equals(paramString2.toString()))) {
+          paramSourceMsgInfo = paramString2.toString();
+        } else {
+          paramSourceMsgInfo = paramString1;
+        }
+        break label493;
+      }
+      if (!FileManagerUtil.a(paramMessageRecord1)) {
+        break;
+      }
+      paramSourceMsgInfo = a(paramQQAppInterface, paramMessageRecord1);
+      if ((paramSourceMsgInfo instanceof MessageForFile))
+      {
+        if (a(paramQQAppInterface, paramSourceMsgInfo))
+        {
+          paramSourceMsgInfo = paramMessageRecord1;
+          i = 0;
+          bool1 = true;
+          paramInt = j;
+        }
+        else
+        {
+          i = paramInt;
+          paramSourceMsgInfo = null;
+          paramInt = 0;
+          bool1 = false;
+        }
+        paramString2 = paramSourceMsgInfo;
+        paramSourceMsgInfo = paramString1;
+        paramString1 = paramString2;
+        break label510;
+      }
+    } while (((paramSourceMsgInfo instanceof MessageForTroopFile)) && (a(paramQQAppInterface, (MessageForTroopFile)paramSourceMsgInfo)));
+    paramSourceMsgInfo = paramString1;
+    label493:
+    paramString1 = null;
+    j = 0;
+    bool1 = false;
+    int i = paramInt;
+    paramInt = j;
+    label510:
+    if (bool1)
+    {
+      paramBubbleImageView.setVisibility(0);
+      paramBubbleImageView.setTag(2131364536, null);
+      paramString2 = (ViewGroup)paramBubbleImageView.getParent();
+      if (paramString2 != null) {
+        paramString2.setVisibility(0);
+      }
+      paramBubbleImageView.setVisibility(0);
+      a(paramContext, paramQQAppInterface, paramBubbleImageView, paramMessageRecord2, paramString1);
+    }
+    else
+    {
+      a(paramBubbleImageView);
+    }
+    a(paramTextView, paramInt);
+    b(paramETTextView1, paramETTextView2, i, paramSourceMsgInfo, paramMessageRecord1);
+    a(paramQQAppInterface, paramContext, paramETTextView1, paramMessageRecord1, paramSourceMsgInfo);
+    paramMessageRecord1 = AIOUtils.a(paramETTextView1);
+    if ((paramMessageRecord1 != null) && ((paramMessageRecord1 instanceof ReplyTextItemBuilder.ReplyTextViewHolder))) {
+      ((ReplyTextItemBuilder.ReplyTextViewHolder)paramMessageRecord1).jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView = paramBubbleImageView;
     }
   }
   
@@ -2689,14 +2845,15 @@ public class ReplyTextItemBuilder
     if ((paramMessageRecord instanceof MessageForStructing))
     {
       paramMessageRecord = (MessageForStructing)paramMessageRecord;
-      if (paramMessageRecord.structingMsg == null) {}
+      if (paramMessageRecord.structingMsg != null)
+      {
+        int i = paramMessageRecord.structingMsg.mMsgServiceID;
+        if ((i == 63) || (i == 104)) {
+          return true;
+        }
+      }
     }
-    switch (paramMessageRecord.structingMsg.mMsgServiceID)
-    {
-    default: 
-      return false;
-    }
-    return true;
+    return false;
   }
   
   protected static void c(Context paramContext, QQAppInterface paramQQAppInterface, ChatThumbView paramChatThumbView, MessageRecord paramMessageRecord, ReplyTextItemBuilder.SourceMessagePulledCallBack paramSourceMessagePulledCallBack)
@@ -2714,7 +2871,7 @@ public class ReplyTextItemBuilder
     return super.a(paramChatMessage);
   }
   
-  public View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
+  protected View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     Context localContext = paramBaseChatItemLayout.getContext();
     MessageForReplyText localMessageForReplyText = (MessageForReplyText)paramChatMessage;
@@ -2729,40 +2886,41 @@ public class ReplyTextItemBuilder
     int i;
     if (localMessageForReplyText.mSourceMsgInfo == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("ReplyTextItemBuilder", 2, "text.mSourceMsgInfo为null, text:" + localMessageForReplyText.toString());
+      if (QLog.isColorLevel())
+      {
+        paramViewHolder = new StringBuilder();
+        paramViewHolder.append("text.mSourceMsgInfo为null, text:");
+        paramViewHolder.append(localMessageForReplyText.toString());
+        QLog.w("ReplyTextItemBuilder", 2, paramViewHolder.toString());
       }
       localReplyTextViewHolder.e = -1;
-      paramViewHolder = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder$ViewPool.a(-1);
-      if (paramViewHolder != null) {
-        break label654;
-      }
-      paramViewHolder = new LinearLayout(localContext);
-      paramViewHolder.setOrientation(1);
-      paramView = new ETTextView(localContext);
-      paramView.setTextColor(localContext.getResources().getColorStateList(2131167052));
-      paramView.setLinkTextColor(localContext.getResources().getColorStateList(2131167045));
-      paramView.setEditableFactory(QQTextBuilder.EMOCTATION_FACORY);
-      paramView.setSpannableFactory(QQText.SPANNABLE_FACTORY);
-      paramView.setMaxWidth(BaseChatItemLayout.e);
-      paramView.setMovementMethod(LinkMovementMethod.getInstance());
-      int j = BaseChatItemLayout.o;
-      i = BaseChatItemLayout.p;
-      if (paramChatMessage.isSend())
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder$ViewPool.a(-1);
+      paramViewHolder = paramView;
+      if (paramView == null)
       {
-        j = BaseChatItemLayout.p;
+        paramViewHolder = new LinearLayout(localContext);
+        paramViewHolder.setOrientation(1);
+        paramView = new ETTextView(localContext);
+        paramView.setTextColor(localContext.getResources().getColorStateList(2131167075));
+        paramView.setLinkTextColor(localContext.getResources().getColorStateList(2131167068));
+        paramView.setEditableFactory(QQTextBuilder.EMOCTATION_FACORY);
+        paramView.setSpannableFactory(QQText.SPANNABLE_FACTORY);
+        paramView.setMaxWidth(BaseChatItemLayout.e);
+        paramView.setMovementMethod(LinkMovementMethod.getInstance());
         i = BaseChatItemLayout.o;
+        int j = BaseChatItemLayout.p;
+        if (paramChatMessage.isSend())
+        {
+          i = BaseChatItemLayout.p;
+          j = BaseChatItemLayout.o;
+        }
+        paramView.setPadding(i, BaseChatItemLayout.m, j, BaseChatItemLayout.n);
+        paramView.setId(2131364524);
+        localReplyTextViewHolder.d = paramView;
+        paramView = new LinearLayout.LayoutParams(-2, -2);
+        paramView.topMargin = AIOUtils.b(5.0F, localContext.getResources());
+        paramViewHolder.addView(localReplyTextViewHolder.d, paramView);
       }
-      paramView.setPadding(j, BaseChatItemLayout.m, i, BaseChatItemLayout.n);
-      paramView.setId(2131364637);
-      localReplyTextViewHolder.d = paramView;
-      paramView = new LinearLayout.LayoutParams(-2, -2);
-      paramView.topMargin = AIOUtils.a(5.0F, localContext.getResources());
-      paramViewHolder.addView(localReplyTextViewHolder.d, paramView);
-    }
-    label654:
-    for (;;)
-    {
       ((ETTextView)localReplyTextViewHolder.d).setFont(0, paramChatMessage.uniseq);
       localReplyTextViewHolder.d.setTypeface(VasShieldFont.a(paramChatMessage));
       localReplyTextViewHolder.d.setTextSize(0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_Int);
@@ -2778,34 +2936,50 @@ public class ReplyTextItemBuilder
         ((AnimationTextView)localReplyTextViewHolder.d).onDoubleClick = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick;
         paramView = paramViewHolder;
       }
-      if (paramView != null)
+    }
+    else
+    {
+      if (QLog.isColorLevel())
       {
-        paramView.setTag(localReplyTextViewHolder);
-        paramView.setPadding(0, 0, 0, 0);
-        if ((AppSetting.d) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0))
-        {
-          paramViewHolder = com.tencent.mobileqq.text.TextUtils.emoticonToTextForTalkBack(paramChatMessage.msg);
-          if (!paramChatMessage.isSend()) {
-            break label615;
-          }
-          paramView.setContentDescription(HardCodeUtil.a(2131713359) + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d + HardCodeUtil.a(2131713364) + paramViewHolder);
-        }
-      }
-      return paramView;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReplyTextItemBuilder", 2, "reply type is" + localMessageForReplyText.mSourceMsgInfo.mType);
+        paramViewHolder = new StringBuilder();
+        paramViewHolder.append("reply type is");
+        paramViewHolder.append(localMessageForReplyText.mSourceMsgInfo.mType);
+        QLog.d("ReplyTextItemBuilder", 2, paramViewHolder.toString());
       }
       i = localMessageForReplyText.mSourceMsgInfo.mType;
-      if (localMessageForReplyText.mSourceMsgInfo.oriMsgType == 1) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramView = a(paramBaseChatItemLayout, localContext, localReplyTextViewHolder, localMessageForReplyText, paramOnLongClickAndTouchListener, bool);
-        break;
+      boolean bool;
+      if (localMessageForReplyText.mSourceMsgInfo.oriMsgType == 1) {
+        bool = true;
+      } else {
+        bool = false;
       }
-      label615:
-      paramView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d + HardCodeUtil.a(2131713361) + paramViewHolder);
-      return paramView;
+      paramView = a(paramBaseChatItemLayout, localContext, localReplyTextViewHolder, localMessageForReplyText, paramOnLongClickAndTouchListener, bool);
     }
+    if (paramView != null)
+    {
+      paramView.setTag(localReplyTextViewHolder);
+      paramView.setPadding(0, 0, 0, 0);
+      if ((AppSetting.d) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0))
+      {
+        paramViewHolder = com.tencent.mobileqq.text.TextUtils.emoticonToTextForTalkBack(paramChatMessage.msg);
+        if (paramChatMessage.isSend())
+        {
+          paramChatMessage = new StringBuilder();
+          paramChatMessage.append(HardCodeUtil.a(2131713327));
+          paramChatMessage.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+          paramChatMessage.append(HardCodeUtil.a(2131713332));
+          paramChatMessage.append(paramViewHolder);
+          paramView.setContentDescription(paramChatMessage.toString());
+          return paramView;
+        }
+        paramChatMessage = new StringBuilder();
+        paramChatMessage.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+        paramChatMessage.append(HardCodeUtil.a(2131713329));
+        paramChatMessage.append(paramViewHolder);
+        paramView.setContentDescription(paramChatMessage.toString());
+      }
+    }
+    return paramView;
   }
   
   public BaseBubbleBuilder.TouchDelegate a(View paramView)
@@ -2820,7 +2994,7 @@ public class ReplyTextItemBuilder
     return null;
   }
   
-  public BaseBubbleBuilder.ViewHolder a()
+  protected BaseBubbleBuilder.ViewHolder a()
   {
     return new ReplyTextItemBuilder.ReplyTextViewHolder(this);
   }
@@ -2833,255 +3007,236 @@ public class ReplyTextItemBuilder
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
   {
-    switch (paramInt)
+    if (paramInt != 2131367180)
     {
-    default: 
       super.a(paramInt, paramContext, paramChatMessage);
       return;
     }
     ECommerceDataReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage, 3);
     Bundle localBundle = new Bundle();
-    localBundle.putInt("selection_mode", this.jdField_b_of_type_Int);
-    Object localObject = (MessageForReplyText)paramChatMessage;
-    if (AIOSelectableDelegateImpl.a().c())
+    localBundle.putInt("selection_mode", this.jdField_c_of_type_Int);
+    MessageForReplyText localMessageForReplyText = (MessageForReplyText)paramChatMessage;
+    boolean bool = AIOSelectableDelegateImpl.a().c();
+    paramInt = 1;
+    if (bool)
     {
       paramContext = AIOSelectableDelegateImpl.a().b();
       if (paramContext == null) {
-        if (((MessageForReplyText)localObject).sb != null)
-        {
-          paramContext = ((MessageForReplyText)localObject).sb.toString();
-          label103:
-          paramInt = 1;
+        if (localMessageForReplyText.sb != null) {
+          paramContext = localMessageForReplyText.sb.toString();
+        } else {
+          paramContext = localMessageForReplyText.msg;
         }
       }
     }
     for (;;)
     {
-      label105:
-      if (paramInt != 0)
-      {
-        localBundle.putInt("forward_type", -6);
-        localBundle.putLong("FORWARD_MSG_UNISEQ", paramChatMessage.uniseq);
-        localObject = (ForwardMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FORWARD_MSG_MANAGER);
-        MessageRecord localMessageRecord = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage.frienduin, paramChatMessage.istroop, paramChatMessage, ((MessageForReplyText)paramChatMessage).mSourceMsgInfo);
-        ((MessageForReplyText)paramChatMessage).setSourceMessageRecord(localMessageRecord);
-        ((ForwardMsgManager)localObject).a(paramChatMessage);
+      break;
+      if (paramContext.length() == AIOSelectableDelegateImpl.a().a()) {
+        break;
       }
-      for (;;)
-      {
-        localBundle.putString("forward_text", paramContext);
-        localBundle.putInt("forward_source_uin_type", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-        paramContext = new Intent();
-        paramContext.putExtras(localBundle);
-        ForwardBaseOption.a((Activity)this.jdField_a_of_type_AndroidContentContext, paramContext, 21);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004045", "0X8004045", 0, 0, "", "", "", "");
-        if (!paramChatMessage.isMultiMsg) {
-          break;
-        }
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009D66", "0X8009D66", 1, 0, "1", "", "", "");
-        return;
-        paramContext = ((MessageForReplyText)localObject).msg;
-        break label103;
-        if (paramContext.length() != AIOSelectableDelegateImpl.a().a()) {
-          break label390;
-        }
-        paramInt = 1;
-        break label105;
-        if (((MessageForReplyText)localObject).sb != null) {}
-        for (paramContext = ((MessageForReplyText)localObject).sb.toString();; paramContext = ((MessageForReplyText)localObject).msg)
-        {
-          paramInt = 1;
-          break;
-        }
-        localBundle.putInt("forward_type", -1);
-      }
-      label390:
       paramInt = 0;
+      break;
+      if (localMessageForReplyText.sb != null) {
+        paramContext = localMessageForReplyText.sb.toString();
+      } else {
+        paramContext = localMessageForReplyText.msg;
+      }
+    }
+    if (paramInt != 0)
+    {
+      localBundle.putInt("forward_type", -6);
+      localBundle.putLong("FORWARD_MSG_UNISEQ", paramChatMessage.uniseq);
+      ForwardMsgManager localForwardMsgManager = (ForwardMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FORWARD_MSG_MANAGER);
+      localMessageForReplyText.setSourceMessageRecord(a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage.frienduin, paramChatMessage.istroop, paramChatMessage, localMessageForReplyText.mSourceMsgInfo));
+      localForwardMsgManager.a(paramChatMessage);
+    }
+    else
+    {
+      localBundle.putInt("forward_type", -1);
+    }
+    localBundle.putString("forward_text", paramContext);
+    localBundle.putInt("forward_source_uin_type", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+    paramContext = new Intent();
+    paramContext.putExtras(localBundle);
+    ForwardBaseOption.a((Activity)this.jdField_a_of_type_AndroidContentContext, paramContext, 21);
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004045", "0X8004045", 0, 0, "", "", "", "");
+    if (paramChatMessage.isMultiMsg) {
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009D66", "0X8009D66", 1, 0, "1", "", "", "");
     }
   }
   
-  public void a(View paramView)
+  protected void a(View paramView)
   {
-    if (AIOUtils.a(paramView).isMultiMsg) {}
-    String str1;
-    String str2;
-    do
-    {
+    if (AIOUtils.a(paramView).isMultiMsg) {
       return;
-      paramView = (MessageForReplyText)AIOUtils.a(paramView);
-      str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131690018);
-      str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131690019);
-    } while (!paramView.isSendFromLocal());
-    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new ReplyTextItemBuilder.7(this, paramView), new ReplyTextItemBuilder.8(this)).show();
+    }
+    paramView = (MessageForReplyText)AIOUtils.a(paramView);
+    String str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131689933);
+    String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131689934);
+    if (paramView.isSendFromLocal()) {
+      DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new ReplyTextItemBuilder.7(this, paramView), new ReplyTextItemBuilder.8(this)).show();
+    }
   }
   
-  public void a(View paramView, ChatMessage paramChatMessage)
+  protected void a(View paramView, ChatMessage paramChatMessage)
   {
     paramView = (ReplyTextItemBuilder.ReplyTextViewHolder)paramView.getTag();
     MessageForReplyText localMessageForReplyText = (MessageForReplyText)paramChatMessage;
-    if (paramView.jdField_a_of_type_AndroidWidgetTextView == null) {
-      QLog.e("ReplyTextItemBuilder", 1, "updateBubblePadding error, holder.mNameETTV=null");
-    }
-    int i;
-    do
+    if (paramView.jdField_a_of_type_AndroidWidgetTextView == null)
     {
+      QLog.e("ReplyTextItemBuilder", 1, "updateBubblePadding error, holder.mNameETTV=null");
       return;
-      i = AIOUtils.a(1.0F, paramView.jdField_a_of_type_AndroidWidgetTextView.getResources());
-    } while (localMessageForReplyText.mSourceMsgInfo == null);
+    }
+    int i = AIOUtils.b(1.0F, paramView.jdField_a_of_type_AndroidWidgetTextView.getResources());
+    if (localMessageForReplyText.mSourceMsgInfo == null) {
+      return;
+    }
     int j = localMessageForReplyText.mSourceMsgInfo.mType;
-    j = BaseChatItemLayout.e - AIOUtils.a(16.0F, paramView.jdField_a_of_type_AndroidWidgetTextView.getResources());
+    j = BaseChatItemLayout.e - AIOUtils.b(16.0F, paramView.jdField_a_of_type_AndroidWidgetTextView.getResources());
     if (paramChatMessage.isSend())
     {
       paramView.d.setPadding(f, 0, e, d);
       paramChatMessage = (LinearLayout.LayoutParams)paramView.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
       paramChatMessage.leftMargin = f;
-      paramChatMessage.rightMargin = (e + i * 2);
-      paramChatMessage.topMargin = (jdField_c_of_type_Int + i * 4);
+      int k = e;
+      int m = i * 2;
+      paramChatMessage.rightMargin = (k + m);
+      paramChatMessage.topMargin = (jdField_a_of_type_Int + i * 4);
       paramChatMessage.bottomMargin = 0;
       paramView.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramChatMessage);
-      i = j - f - e - i * 2;
+      i = j - f - e - m;
     }
-    for (;;)
+    else
     {
-      float f = paramView.c.getPaint().measureText(paramView.c.getText().toString());
-      f = AIOUtils.a(37.0F, paramView.jdField_a_of_type_AndroidWidgetTextView.getResources()) + f;
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(i - (int)f);
-      paramChatMessage = (String)paramView.jdField_a_of_type_AndroidWidgetTextView.getTag(2131378901);
-      paramChatMessage = com.tencent.mobileqq.text.TextUtils.adjustEllipsizeEndText(paramView.jdField_a_of_type_AndroidWidgetTextView, paramChatMessage, i - (int)f);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(paramChatMessage);
-      paramView.jdField_b_of_type_AndroidWidgetTextView.setMaxWidth(i);
-      paramView.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setMaxWidth(i);
-      paramView.jdField_b_of_type_ComEtrumpMixlayoutETTextView.setMaxWidth(i);
-      return;
       paramView.d.setPadding(e, 0, f, d);
       paramChatMessage = (LinearLayout.LayoutParams)paramView.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
       paramChatMessage.leftMargin = (e + i * 2);
       paramChatMessage.rightMargin = e;
-      paramChatMessage.topMargin = (i * 4 + jdField_c_of_type_Int);
+      paramChatMessage.topMargin = (jdField_a_of_type_Int + i * 4);
       paramChatMessage.bottomMargin = 0;
       i = j - e - e;
       paramView.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramChatMessage);
     }
+    float f1 = paramView.c.getPaint().measureText(paramView.c.getText().toString());
+    float f2 = AIOUtils.b(37.0F, paramView.jdField_a_of_type_AndroidWidgetTextView.getResources());
+    paramChatMessage = paramView.jdField_a_of_type_AndroidWidgetTextView;
+    j = i - (int)(f1 + f2);
+    paramChatMessage.setMaxWidth(j);
+    paramChatMessage = (String)paramView.jdField_a_of_type_AndroidWidgetTextView.getTag(2131378290);
+    paramChatMessage = com.tencent.mobileqq.text.TextUtils.adjustEllipsizeEndText(paramView.jdField_a_of_type_AndroidWidgetTextView, paramChatMessage, j);
+    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(paramChatMessage);
+    paramView.jdField_b_of_type_AndroidWidgetTextView.setMaxWidth(i);
+    paramView.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setMaxWidth(i);
+    paramView.jdField_b_of_type_ComEtrumpMixlayoutETTextView.setMaxWidth(i);
   }
   
-  public void a(BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, ChatMessage paramChatMessage, BubbleInfo paramBubbleInfo)
+  protected void a(BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, ChatMessage paramChatMessage, BubbleInfo paramBubbleInfo)
   {
     ReplyTextItemBuilder.ReplyTextViewHolder localReplyTextViewHolder = (ReplyTextItemBuilder.ReplyTextViewHolder)paramViewHolder;
-    paramViewHolder = (MessageForReplyText)paramChatMessage;
-    if (paramViewHolder.mSourceMsgInfo == null) {
+    MessageForReplyText localMessageForReplyText = (MessageForReplyText)paramChatMessage;
+    if (localMessageForReplyText.mSourceMsgInfo == null) {
       return;
     }
-    Object localObject = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130838379);
-    localObject = new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), (Bitmap)localObject);
-    int i = paramViewHolder.mSourceMsgInfo.mType;
-    if ((paramBubbleInfo.jdField_a_of_type_Int == 0) || (!paramBubbleInfo.a()) || (SimpleUIUtil.a()))
+    paramViewHolder = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130838208);
+    paramViewHolder = new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramViewHolder);
+    int i = localMessageForReplyText.mSourceMsgInfo.mType;
+    if ((paramBubbleInfo.jdField_a_of_type_Int != 0) && (paramBubbleInfo.a()) && (!SimpleUIUtil.a()))
     {
-      paramView = paramView.getResources();
-      if (paramChatMessage.isSend())
+      if (paramBubbleInfo.jdField_b_of_type_Int == 0)
       {
-        paramViewHolder = paramView.getColorStateList(2131167056);
-        localReplyTextViewHolder.d.setTextColor(paramViewHolder);
-        localReplyTextViewHolder.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramViewHolder);
-        localReplyTextViewHolder.c.setTextColor(paramViewHolder);
-        localReplyTextViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramViewHolder);
-        localReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextColor(paramViewHolder);
-        localReplyTextViewHolder.jdField_b_of_type_ComEtrumpMixlayoutETTextView.setTextColor(paramViewHolder);
-        ((Drawable)localObject).setColorFilter(new PorterDuffColorFilter(paramViewHolder.getDefaultColor(), PorterDuff.Mode.SRC_ATOP));
-        localReplyTextViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-        if (!paramChatMessage.isSend()) {
-          break label295;
-        }
+        localReplyTextViewHolder.d.setTextColor(-16777216);
+        localReplyTextViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+        localReplyTextViewHolder.c.setTextColor(-16777216);
+        localReplyTextViewHolder.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+        localReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextColor(-16777216);
+        localReplyTextViewHolder.jdField_b_of_type_ComEtrumpMixlayoutETTextView.setTextColor(-16777216);
+        paramViewHolder.setColorFilter(new PorterDuffColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP));
+        localReplyTextViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramViewHolder);
       }
-      label295:
-      for (paramViewHolder = paramView.getColorStateList(2131167055);; paramViewHolder = paramView.getColorStateList(2131167054))
+      else
       {
-        localReplyTextViewHolder.d.setLinkTextColor(paramViewHolder);
-        localReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setLinkTextColor(paramViewHolder);
-        localReplyTextViewHolder.jdField_b_of_type_ComEtrumpMixlayoutETTextView.setLinkTextColor(paramViewHolder);
-        ImmersiveUtils.setAlpha(localReplyTextViewHolder.jdField_b_of_type_AndroidWidgetTextView, 0.5F);
-        ImmersiveUtils.setAlpha(localReplyTextViewHolder.jdField_a_of_type_AndroidWidgetTextView, 0.9F);
-        ImmersiveUtils.setAlpha(localReplyTextViewHolder.c, 0.9F);
-        ImmersiveUtils.setAlpha(localReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView, 0.9F);
-        ImmersiveUtils.setAlpha(localReplyTextViewHolder.jdField_b_of_type_ComEtrumpMixlayoutETTextView, 0.9F);
-        return;
-        paramViewHolder = paramView.getColorStateList(2131167052);
-        break;
+        localReplyTextViewHolder.d.setTextColor(paramBubbleInfo.jdField_b_of_type_Int);
+        localReplyTextViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramBubbleInfo.jdField_b_of_type_Int);
+        localReplyTextViewHolder.c.setTextColor(paramBubbleInfo.jdField_b_of_type_Int);
+        localReplyTextViewHolder.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramBubbleInfo.jdField_b_of_type_Int);
+        localReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextColor(paramBubbleInfo.jdField_b_of_type_Int);
+        localReplyTextViewHolder.jdField_b_of_type_ComEtrumpMixlayoutETTextView.setTextColor(paramBubbleInfo.jdField_b_of_type_Int);
+        paramViewHolder.setColorFilter(new PorterDuffColorFilter(paramBubbleInfo.jdField_b_of_type_Int, PorterDuff.Mode.SRC_ATOP));
+        localReplyTextViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramViewHolder);
       }
-    }
-    if (paramBubbleInfo.jdField_b_of_type_Int == 0)
-    {
-      localReplyTextViewHolder.d.setTextColor(-16777216);
-      localReplyTextViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-      localReplyTextViewHolder.c.setTextColor(-16777216);
-      localReplyTextViewHolder.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-      localReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextColor(-16777216);
-      localReplyTextViewHolder.jdField_b_of_type_ComEtrumpMixlayoutETTextView.setTextColor(-16777216);
-      ((Drawable)localObject).setColorFilter(new PorterDuffColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP));
-      localReplyTextViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      label408:
-      if (paramBubbleInfo.jdField_c_of_type_Int != 0) {
-        break label751;
+      if (paramBubbleInfo.jdField_c_of_type_Int == 0)
+      {
+        paramView = paramView.getResources().getColorStateList(2131167077);
+        localReplyTextViewHolder.d.setLinkTextColor(paramView);
+        localReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setLinkTextColor(paramView);
+        localReplyTextViewHolder.jdField_b_of_type_ComEtrumpMixlayoutETTextView.setLinkTextColor(paramView);
       }
-      paramViewHolder = paramView.getResources().getColorStateList(2131167054);
-      localReplyTextViewHolder.d.setLinkTextColor(paramViewHolder);
-      localReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setLinkTextColor(paramViewHolder);
-      localReplyTextViewHolder.jdField_b_of_type_ComEtrumpMixlayoutETTextView.setLinkTextColor(paramViewHolder);
-    }
-    for (;;)
-    {
+      else
+      {
+        localReplyTextViewHolder.d.setLinkTextColor(paramBubbleInfo.jdField_c_of_type_Int);
+        localReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setLinkTextColor(paramBubbleInfo.jdField_c_of_type_Int);
+        localReplyTextViewHolder.jdField_b_of_type_ComEtrumpMixlayoutETTextView.setLinkTextColor(paramBubbleInfo.jdField_c_of_type_Int);
+      }
       ImmersiveUtils.setAlpha(localReplyTextViewHolder.c, 0.9F);
       ImmersiveUtils.setAlpha(localReplyTextViewHolder.jdField_a_of_type_AndroidWidgetTextView, 0.9F);
       ImmersiveUtils.setAlpha(localReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView, 0.9F);
       ImmersiveUtils.setAlpha(localReplyTextViewHolder.jdField_b_of_type_ComEtrumpMixlayoutETTextView, 0.9F);
-      if ((!paramBubbleInfo.jdField_b_of_type_Boolean) || (((ChatBackgroundManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CHAT_BACKGROUND_MANAGER)).a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, localReplyTextViewHolder.d.getCurrentTextColor(), 10000.0D * localReplyTextViewHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.jdField_a_of_type_Double) != 1)) {
-        break;
+      if ((paramBubbleInfo.jdField_b_of_type_Boolean) && (((ChatBackgroundManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CHAT_BACKGROUND_MANAGER)).a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, localReplyTextViewHolder.d.getCurrentTextColor(), localReplyTextViewHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.jdField_a_of_type_Double * 10000.0D) == 1))
+      {
+        paramView = (ETTextView)localReplyTextViewHolder.d;
+        float f2 = paramView.getTextSize() * 3.0F / 16.0F;
+        float f1 = f2;
+        if (f2 > 25.0F) {
+          f1 = 25.0F;
+        }
+        paramView.setTextColor(-1);
+        paramView.setShadowLayer(f1, 0.0F, 0.0F, paramBubbleInfo.d);
+        paramViewHolder.setColorFilter(new PorterDuffColorFilter(-1, PorterDuff.Mode.SRC_ATOP));
+        localReplyTextViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramViewHolder);
       }
-      paramViewHolder = (ETTextView)localReplyTextViewHolder.d;
-      float f2 = paramViewHolder.getTextSize() * 3.0F / 16.0F;
-      float f1 = f2;
-      if (f2 > 25.0F) {
-        f1 = 25.0F;
-      }
-      paramViewHolder.setTextColor(-1);
-      paramViewHolder.setShadowLayer(f1, 0.0F, 0.0F, paramBubbleInfo.d);
-      ((Drawable)localObject).setColorFilter(new PorterDuffColorFilter(-1, PorterDuff.Mode.SRC_ATOP));
-      localReplyTextViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
       return;
-      localReplyTextViewHolder.d.setTextColor(paramBubbleInfo.jdField_b_of_type_Int);
-      localReplyTextViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramBubbleInfo.jdField_b_of_type_Int);
-      localReplyTextViewHolder.c.setTextColor(paramBubbleInfo.jdField_b_of_type_Int);
-      localReplyTextViewHolder.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramBubbleInfo.jdField_b_of_type_Int);
-      localReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextColor(paramBubbleInfo.jdField_b_of_type_Int);
-      localReplyTextViewHolder.jdField_b_of_type_ComEtrumpMixlayoutETTextView.setTextColor(paramBubbleInfo.jdField_b_of_type_Int);
-      ((Drawable)localObject).setColorFilter(new PorterDuffColorFilter(paramBubbleInfo.jdField_b_of_type_Int, PorterDuff.Mode.SRC_ATOP));
-      localReplyTextViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      break label408;
-      label751:
-      localReplyTextViewHolder.d.setLinkTextColor(paramBubbleInfo.jdField_c_of_type_Int);
-      localReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setLinkTextColor(paramBubbleInfo.jdField_c_of_type_Int);
-      localReplyTextViewHolder.jdField_b_of_type_ComEtrumpMixlayoutETTextView.setLinkTextColor(paramBubbleInfo.jdField_c_of_type_Int);
     }
+    paramView = paramView.getResources();
+    if (paramChatMessage.isSend()) {
+      i = 2131167079;
+    } else {
+      i = 2131167075;
+    }
+    paramBubbleInfo = paramView.getColorStateList(i);
+    localReplyTextViewHolder.d.setTextColor(paramBubbleInfo);
+    localReplyTextViewHolder.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramBubbleInfo);
+    localReplyTextViewHolder.c.setTextColor(paramBubbleInfo);
+    localReplyTextViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramBubbleInfo);
+    localReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextColor(paramBubbleInfo);
+    localReplyTextViewHolder.jdField_b_of_type_ComEtrumpMixlayoutETTextView.setTextColor(paramBubbleInfo);
+    paramViewHolder.setColorFilter(new PorterDuffColorFilter(paramBubbleInfo.getDefaultColor(), PorterDuff.Mode.SRC_ATOP));
+    localReplyTextViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramViewHolder);
+    if (paramChatMessage.isSend()) {
+      paramViewHolder = paramView.getColorStateList(2131167078);
+    } else {
+      paramViewHolder = paramView.getColorStateList(2131167077);
+    }
+    localReplyTextViewHolder.d.setLinkTextColor(paramViewHolder);
+    localReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setLinkTextColor(paramViewHolder);
+    localReplyTextViewHolder.jdField_b_of_type_ComEtrumpMixlayoutETTextView.setLinkTextColor(paramViewHolder);
+    ImmersiveUtils.setAlpha(localReplyTextViewHolder.jdField_b_of_type_AndroidWidgetTextView, 0.5F);
+    ImmersiveUtils.setAlpha(localReplyTextViewHolder.jdField_a_of_type_AndroidWidgetTextView, 0.9F);
+    ImmersiveUtils.setAlpha(localReplyTextViewHolder.c, 0.9F);
+    ImmersiveUtils.setAlpha(localReplyTextViewHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView, 0.9F);
+    ImmersiveUtils.setAlpha(localReplyTextViewHolder.jdField_b_of_type_ComEtrumpMixlayoutETTextView, 0.9F);
   }
   
-  public void a(ChatMessage paramChatMessage, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, BaseBubbleBuilder.ViewHolder paramViewHolder, int paramInt1, int paramInt2)
+  protected void a(ChatMessage paramChatMessage, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, BaseBubbleBuilder.ViewHolder paramViewHolder, int paramInt1, int paramInt2)
   {
     super.a(paramChatMessage, paramContext, paramBaseChatItemLayout, paramViewHolder, paramInt1, paramInt2);
     paramChatMessage = ImageUtil.a(paramViewHolder.a.getBackground());
-    if (paramChatMessage == null) {
+    if (paramChatMessage == null)
+    {
       paramInt1 = 0;
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReplyTextItemBuilder", 2, new Object[] { "color=", Integer.valueOf(paramInt1), " ", Integer.valueOf((paramInt1 & 0xFF0000) >> 16), " ", Integer.valueOf((paramInt1 & 0xFF00) >> 8), " ", Integer.valueOf(paramInt1 & 0xFF) });
-      }
-      if (((paramViewHolder instanceof ReplyTextItemBuilder.ReplyTextViewHolder)) && (((ReplyTextItemBuilder.ReplyTextViewHolder)paramViewHolder).jdField_a_of_type_AndroidViewViewGroup != null)) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ReplyTextItemBuilder", 2, "ReplyTextViewHolder error");
-      }
-      return;
       paramInt2 = a(paramChatMessage);
       paramInt1 = paramInt2;
       if (!paramChatMessage.isRecycled())
@@ -3090,44 +3245,64 @@ public class ReplyTextItemBuilder
         paramInt1 = paramInt2;
       }
     }
-    if (((((paramInt1 & 0xFF0000) >> 16) + ((paramInt1 & 0xFF00) >> 8) + (paramInt1 & 0xFF)) / 3 >= 170) || (((paramInt1 == 0) || (paramInt1 == -16777216) || (paramInt1 == -15366474)) && (!"2920".equals(ThemeUtil.getCurrentThemeId()))))
-    {
-      ((ReplyTextItemBuilder.ReplyTextViewHolder)paramViewHolder).jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838377));
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReplyTextItemBuilder", 2, new Object[] { "color=", Integer.valueOf(paramInt1), " ", Integer.valueOf((paramInt1 & 0xFF0000) >> 16), " ", Integer.valueOf((paramInt1 & 0xFF00) >> 8), " ", Integer.valueOf(paramInt1 & 0xFF) });
     }
-    ((ReplyTextItemBuilder.ReplyTextViewHolder)paramViewHolder).jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838378));
+    if ((paramViewHolder instanceof ReplyTextItemBuilder.ReplyTextViewHolder))
+    {
+      paramChatMessage = (ReplyTextItemBuilder.ReplyTextViewHolder)paramViewHolder;
+      if (paramChatMessage.jdField_a_of_type_AndroidViewViewGroup != null)
+      {
+        if (((((paramInt1 & 0xFF0000) >> 16) + ((paramInt1 & 0xFF00) >> 8) + (paramInt1 & 0xFF)) / 3 < 170) && (((paramInt1 != 0) && (paramInt1 != -16777216) && (paramInt1 != -15366474)) || ("2920".equals(ThemeUtil.getCurrentThemeId()))))
+        {
+          paramChatMessage.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838207));
+          return;
+        }
+        paramChatMessage.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838206));
+        return;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReplyTextItemBuilder", 2, "ReplyTextViewHolder error");
+    }
   }
   
-  public void b(BaseBubbleBuilder.ViewHolder paramViewHolder, ChatMessage paramChatMessage)
+  public boolean a(BaseBubbleBuilder.ViewHolder paramViewHolder)
   {
-    int i = 0;
-    if (!(paramViewHolder instanceof ReplyTextItemBuilder.ReplyTextViewHolder)) {}
-    ReplyTextItemBuilder.ReplyTextViewHolder localReplyTextViewHolder;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          localReplyTextViewHolder = (ReplyTextItemBuilder.ReplyTextViewHolder)paramViewHolder;
-        } while (!(paramChatMessage instanceof MessageForReplyText));
-        paramChatMessage = (MessageForReplyText)paramChatMessage;
-        paramViewHolder = null;
-        if (!android.text.TextUtils.isEmpty(paramChatMessage.sb)) {
-          paramViewHolder = paramChatMessage.sb;
-        }
-      } while ((paramViewHolder == null) || (!(paramViewHolder instanceof QQText)));
-      paramChatMessage = (QQText)paramViewHolder;
-      paramViewHolder = (EmoticonSpan[])paramChatMessage.getSpans(0, paramViewHolder.length(), EmoticonSpan.class);
-    } while ((paramViewHolder.length <= 0) || (paramChatMessage.toPurePlainText().length() != 0));
-    int j = paramViewHolder.length;
-    while (i < j)
-    {
-      paramViewHolder[i].setSize(ScreenUtil.dip2px(26.0F));
-      i += 1;
+    return paramViewHolder instanceof ReplyTextItemBuilder.ReplyTextViewHolder;
+  }
+  
+  protected void b(BaseBubbleBuilder.ViewHolder paramViewHolder, ChatMessage paramChatMessage)
+  {
+    if (!(paramViewHolder instanceof ReplyTextItemBuilder.ReplyTextViewHolder)) {
+      return;
     }
-    localReplyTextViewHolder.jdField_b_of_type_ComEtrumpMixlayoutETTextView.setText(paramChatMessage);
+    ReplyTextItemBuilder.ReplyTextViewHolder localReplyTextViewHolder = (ReplyTextItemBuilder.ReplyTextViewHolder)paramViewHolder;
+    if ((paramChatMessage instanceof MessageForReplyText))
+    {
+      paramChatMessage = (MessageForReplyText)paramChatMessage;
+      paramViewHolder = null;
+      if (!android.text.TextUtils.isEmpty(paramChatMessage.sb)) {
+        paramViewHolder = paramChatMessage.sb;
+      }
+      if ((paramViewHolder != null) && ((paramViewHolder instanceof QQText)))
+      {
+        paramChatMessage = (QQText)paramViewHolder;
+        int j = paramViewHolder.length();
+        int i = 0;
+        paramViewHolder = (EmoticonSpan[])paramChatMessage.getSpans(0, j, EmoticonSpan.class);
+        if ((paramViewHolder.length > 0) && (paramChatMessage.toPurePlainText().length() == 0))
+        {
+          j = paramViewHolder.length;
+          while (i < j)
+          {
+            paramViewHolder[i].setSize(ScreenUtil.dip2px(26.0F));
+            i += 1;
+          }
+          localReplyTextViewHolder.d.setText(paramChatMessage);
+        }
+      }
+    }
   }
   
   protected boolean b()
@@ -3137,7 +3312,7 @@ public class ReplyTextItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder
  * JD-Core Version:    0.7.0.1
  */

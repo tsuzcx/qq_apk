@@ -76,8 +76,9 @@ public class CameraFilterParam
   public Map<String, Object> getBlurMap(boolean paramBoolean)
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("tx", Float.valueOf(0.5F));
-    localHashMap.put("ty", Float.valueOf(0.5F));
+    Float localFloat = Float.valueOf(0.5F);
+    localHashMap.put("tx", localFloat);
+    localHashMap.put("ty", localFloat);
     localHashMap.put("radius", Float.valueOf(0.35F));
     localHashMap.put("circle", Boolean.valueOf(true));
     return localHashMap;
@@ -86,62 +87,75 @@ public class CameraFilterParam
   public PointF getRealFaceCenter()
   {
     PointF localPointF = new PointF(this.faceCenterX, this.faceCenterY);
-    switch (this.faceRotation)
+    int i = this.faceRotation;
+    if (i != 0)
     {
-    case 0: 
-    default: 
-      return localPointF;
-    case 90: 
+      if (i != 90)
+      {
+        if (i != 180)
+        {
+          if (i != 270) {
+            return localPointF;
+          }
+          localPointF.y = this.faceCenterX;
+          localPointF.x = (1.0F - this.faceCenterY);
+          return localPointF;
+        }
+        localPointF.y = (1.0F - this.faceCenterY);
+        localPointF.x = (1.0F - this.faceCenterX);
+        return localPointF;
+      }
       localPointF.y = (1.0F - this.faceCenterX);
       localPointF.x = this.faceCenterY;
-      return localPointF;
-    case 270: 
-      localPointF.y = this.faceCenterX;
-      localPointF.x = (1.0F - this.faceCenterY);
-      return localPointF;
     }
-    localPointF.y = (1.0F - this.faceCenterY);
-    localPointF.x = (1.0F - this.faceCenterX);
     return localPointF;
   }
   
   public Map<String, Object> getSmoothMap()
   {
     HashMap localHashMap = new HashMap();
-    switch (this.smoothLevel)
+    int i = this.smoothLevel;
+    if (i != -1)
     {
-    case 0: 
-    default: 
-      return localHashMap;
-    case -1: 
-      localHashMap.put("opttype", Float.valueOf(0.0F));
-      localHashMap.put("smoothMag", Float.valueOf(0.0F));
-      localHashMap.put("whitenmag", Float.valueOf(0.0F));
-      return localHashMap;
-    case 1: 
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if (i != 4)
+            {
+              if (i != 5) {
+                return localHashMap;
+              }
+              localHashMap.put("opttype", Float.valueOf(1.0F));
+              localHashMap.put("smoothMag", Float.valueOf(0.75F));
+              localHashMap.put("whitenmag", Float.valueOf(0.25F));
+              return localHashMap;
+            }
+            localHashMap.put("opttype", Float.valueOf(1.0F));
+            localHashMap.put("smoothMag", Float.valueOf(0.625F));
+            localHashMap.put("whitenmag", Float.valueOf(0.25F));
+            return localHashMap;
+          }
+          localHashMap.put("opttype", Float.valueOf(1.0F));
+          localHashMap.put("smoothMag", Float.valueOf(0.5F));
+          localHashMap.put("whitenmag", Float.valueOf(0.25F));
+          return localHashMap;
+        }
+        localHashMap.put("opttype", Float.valueOf(1.0F));
+        localHashMap.put("smoothMag", Float.valueOf(0.35F));
+        localHashMap.put("whitenmag", Float.valueOf(0.2F));
+        return localHashMap;
+      }
       localHashMap.put("opttype", Float.valueOf(1.0F));
       localHashMap.put("smoothMag", Float.valueOf(0.2F));
       localHashMap.put("whitenmag", Float.valueOf(0.2F));
       return localHashMap;
-    case 2: 
-      localHashMap.put("opttype", Float.valueOf(1.0F));
-      localHashMap.put("smoothMag", Float.valueOf(0.35F));
-      localHashMap.put("whitenmag", Float.valueOf(0.2F));
-      return localHashMap;
-    case 3: 
-      localHashMap.put("opttype", Float.valueOf(1.0F));
-      localHashMap.put("smoothMag", Float.valueOf(0.5F));
-      localHashMap.put("whitenmag", Float.valueOf(0.25F));
-      return localHashMap;
-    case 4: 
-      localHashMap.put("opttype", Float.valueOf(1.0F));
-      localHashMap.put("smoothMag", Float.valueOf(0.625F));
-      localHashMap.put("whitenmag", Float.valueOf(0.25F));
-      return localHashMap;
     }
-    localHashMap.put("opttype", Float.valueOf(1.0F));
-    localHashMap.put("smoothMag", Float.valueOf(0.75F));
-    localHashMap.put("whitenmag", Float.valueOf(0.25F));
+    localHashMap.put("opttype", Float.valueOf(0.0F));
+    localHashMap.put("smoothMag", Float.valueOf(0.0F));
+    localHashMap.put("whitenmag", Float.valueOf(0.0F));
     return localHashMap;
   }
   
@@ -155,7 +169,7 @@ public class CameraFilterParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.model.CameraFilterParam
  * JD-Core Version:    0.7.0.1
  */

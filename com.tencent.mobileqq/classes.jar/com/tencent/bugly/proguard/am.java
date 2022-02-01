@@ -77,61 +77,76 @@ public final class am
     paramj.a(this.b, 1);
     paramj.a(this.c, 2);
     paramj.a(this.d, 3);
-    if (this.e != null) {
-      paramj.a(this.e, 4);
+    Object localObject = this.e;
+    if (localObject != null) {
+      paramj.a((String)localObject, 4);
     }
     paramj.a(this.f, 5);
     paramj.a(this.g, 6);
     paramj.a(this.h, 7);
-    if (this.i != null) {
-      paramj.a(this.i, 8);
+    localObject = this.i;
+    if (localObject != null) {
+      paramj.a((String)localObject, 8);
     }
-    if (this.j != null) {
-      paramj.a(this.j, 9);
+    localObject = this.j;
+    if (localObject != null) {
+      paramj.a((String)localObject, 9);
     }
-    if (this.k != null) {
-      paramj.a(this.k, 10);
+    localObject = this.k;
+    if (localObject != null) {
+      paramj.a((Map)localObject, 10);
     }
-    if (this.l != null) {
-      paramj.a(this.l, 11);
+    localObject = this.l;
+    if (localObject != null) {
+      paramj.a((String)localObject, 11);
     }
     paramj.a(this.m, 12);
-    if (this.n != null) {
-      paramj.a(this.n, 13);
+    localObject = this.n;
+    if (localObject != null) {
+      paramj.a((String)localObject, 13);
     }
-    if (this.o != null) {
-      paramj.a(this.o, 14);
+    localObject = this.o;
+    if (localObject != null) {
+      paramj.a((String)localObject, 14);
     }
-    if (this.p != null) {
-      paramj.a(this.p, 15);
+    localObject = this.p;
+    if (localObject != null) {
+      paramj.a((String)localObject, 15);
     }
     paramj.a(this.q, 16);
-    if (this.r != null) {
-      paramj.a(this.r, 17);
+    localObject = this.r;
+    if (localObject != null) {
+      paramj.a((String)localObject, 17);
     }
-    if (this.s != null) {
-      paramj.a(this.s, 18);
+    localObject = this.s;
+    if (localObject != null) {
+      paramj.a((String)localObject, 18);
     }
-    if (this.t != null) {
-      paramj.a(this.t, 19);
+    localObject = this.t;
+    if (localObject != null) {
+      paramj.a((String)localObject, 19);
     }
-    if (this.u != null) {
-      paramj.a(this.u, 20);
+    localObject = this.u;
+    if (localObject != null) {
+      paramj.a((String)localObject, 20);
     }
-    if (this.v != null) {
-      paramj.a(this.v, 21);
+    localObject = this.v;
+    if (localObject != null) {
+      paramj.a((String)localObject, 21);
     }
-    if (this.w != null) {
-      paramj.a(this.w, 22);
+    localObject = this.w;
+    if (localObject != null) {
+      paramj.a((String)localObject, 22);
     }
-    if (this.x != null) {
-      paramj.a(this.x, 23);
+    localObject = this.x;
+    if (localObject != null) {
+      paramj.a((String)localObject, 23);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.bugly.proguard.am
  * JD-Core Version:    0.7.0.1
  */

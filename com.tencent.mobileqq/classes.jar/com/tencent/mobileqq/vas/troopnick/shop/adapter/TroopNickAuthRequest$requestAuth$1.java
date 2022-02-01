@@ -15,41 +15,36 @@ final class TroopNickAuthRequest$requestAuth$1
   
   public final void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    Object localObject;
     if (this.a != null)
     {
-      if (!(paramObject instanceof UniCheckRsp)) {
-        break label98;
+      boolean bool = paramObject instanceof UniCheckRsp;
+      paramBoolean = false;
+      if (bool)
+      {
+        paramObject = (UniCheckRsp)paramObject;
+        Object localObject = (Collection)paramObject.uniBusinessItemList;
+        if ((localObject != null) && (!((Collection)localObject).isEmpty())) {
+          paramInt = 0;
+        } else {
+          paramInt = 1;
+        }
+        if (paramInt == 0)
+        {
+          localObject = this.a;
+          if (((UniBusinessCheckItem)paramObject.uniBusinessItemList.get(0)).ret == 0) {
+            paramBoolean = true;
+          }
+          ((AuthRequest.AuthListener)localObject).a(paramBoolean, paramObject);
+          return;
+        }
       }
-      localObject = (Collection)((UniCheckRsp)paramObject).uniBusinessItemList;
-      if ((localObject != null) && (!((Collection)localObject).isEmpty())) {
-        break label88;
-      }
-      paramInt = 1;
-      if (paramInt != 0) {
-        break label98;
-      }
-      localObject = this.a;
-      if (((UniBusinessCheckItem)((UniCheckRsp)paramObject).uniBusinessItemList.get(0)).ret != 0) {
-        break label93;
-      }
+      this.a.a(false, null);
     }
-    label88:
-    label93:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      ((AuthRequest.AuthListener)localObject).a(paramBoolean, (UniCheckRsp)paramObject);
-      return;
-      paramInt = 0;
-      break;
-    }
-    label98:
-    this.a.a(false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopnick.shop.adapter.TroopNickAuthRequest.requestAuth.1
  * JD-Core Version:    0.7.0.1
  */

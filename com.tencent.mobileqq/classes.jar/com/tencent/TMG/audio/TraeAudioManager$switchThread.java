@@ -14,8 +14,12 @@ abstract class TraeAudioManager$switchThread
   
   TraeAudioManager$switchThread(TraeAudioManager paramTraeAudioManager)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("TRAE", 0, " ++switchThread:" + getDeviceName());
+    if (QLog.isColorLevel())
+    {
+      paramTraeAudioManager = new StringBuilder();
+      paramTraeAudioManager.append(" ++switchThread:");
+      paramTraeAudioManager.append(getDeviceName());
+      QLog.w("TRAE", 0, paramTraeAudioManager.toString());
     }
   }
   
@@ -28,39 +32,54 @@ abstract class TraeAudioManager$switchThread
   void processDeviceConnectRes(int paramInt)
   {
     this.this$0.InternalNotifyDeviceChangableUpdate();
-    AudioDeviceInterface.LogTraceEntry(getDeviceName() + " err:" + paramInt);
-    if (this._params == null) {
-      this.this$0.InternalNotifyDeviceListUpdate();
-    }
-    do
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(getDeviceName());
+    ((StringBuilder)localObject).append(" err:");
+    ((StringBuilder)localObject).append(paramInt);
+    AudioDeviceInterface.LogTraceEntry(((StringBuilder)localObject).toString());
+    if (this._params == null)
     {
+      this.this$0.InternalNotifyDeviceListUpdate();
       return;
-      this.this$0.sessionConnectedDev = this.this$0._deviceConfigManager.getConnectedDevice();
-      localObject = (Long)this._params.get("PARAM_SESSIONID");
-      if (QLog.isColorLevel()) {
-        QLog.w("TRAE", 0, " sessonID:" + localObject);
-      }
-      if ((localObject != null) && (((Long)localObject).longValue() != -9223372036854775808L)) {
-        break;
-      }
-      this.this$0.InternalNotifyDeviceListUpdate();
-    } while (!QLog.isColorLevel());
-    QLog.w("TRAE", 0, "processDeviceConnectRes sid null,don't send res");
-    return;
-    Object localObject = new Intent();
-    ((Intent)localObject).putExtra("CONNECTDEVICE_RESULT_DEVICENAME", (String)this._params.get("PARAM_DEVICE"));
-    if (this.this$0.sendResBroadcast((Intent)localObject, this._params, paramInt) == 0) {
-      this.this$0.InternalNotifyDeviceListUpdate();
     }
-    AudioDeviceInterface.LogTraceExit();
+    localObject = this.this$0;
+    ((TraeAudioManager)localObject).sessionConnectedDev = ((TraeAudioManager)localObject)._deviceConfigManager.getConnectedDevice();
+    localObject = (Long)this._params.get("PARAM_SESSIONID");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" sessonID:");
+      localStringBuilder.append(localObject);
+      QLog.w("TRAE", 0, localStringBuilder.toString());
+    }
+    if ((localObject != null) && (((Long)localObject).longValue() != -9223372036854775808L))
+    {
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("CONNECTDEVICE_RESULT_DEVICENAME", (String)this._params.get("PARAM_DEVICE"));
+      if (this.this$0.sendResBroadcast((Intent)localObject, this._params, paramInt) == 0) {
+        this.this$0.InternalNotifyDeviceListUpdate();
+      }
+      AudioDeviceInterface.LogTraceExit();
+      return;
+    }
+    this.this$0.InternalNotifyDeviceListUpdate();
+    if (QLog.isColorLevel()) {
+      QLog.w("TRAE", 0, "processDeviceConnectRes sid null,don't send res");
+    }
   }
   
   public void quit()
   {
     AudioDeviceInterface.LogTraceEntry(getDeviceName());
     this._running = false;
-    if (QLog.isColorLevel()) {
-      QLog.w("TRAE", 0, " quit:" + getDeviceName() + " _running:" + this._running);
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append(" quit:");
+      ((StringBuilder)???).append(getDeviceName());
+      ((StringBuilder)???).append(" _running:");
+      ((StringBuilder)???).append(this._running);
+      QLog.w("TRAE", 0, ((StringBuilder)???).toString());
     }
     interrupt();
     _quit();
@@ -72,15 +91,15 @@ abstract class TraeAudioManager$switchThread
     try
     {
       this._exited.wait(10000L);
-      label94:
+      label104:
       AudioDeviceInterface.LogTraceExit();
       return;
-      localObject = finally;
-      throw localObject;
+      localObject2 = finally;
+      throw localObject2;
     }
     catch (InterruptedException localInterruptedException)
     {
-      break label94;
+      break label104;
     }
   }
   

@@ -13,22 +13,17 @@ class AutoReplyEditActivity$6
   {
     if (AutoReplyEditActivity.c(this.a)) {
       AutoReplyEditActivity.a(this.a, false);
+    } else if (AutoReplyEditActivity.d(this.a)) {
+      AutoReplyEditActivity.b(this.a, false);
+    } else {
+      AutoReplyEditActivity.a(this.a, true);
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (AutoReplyEditActivity.d(this.a)) {
-        AutoReplyEditActivity.b(this.a, false);
-      } else {
-        AutoReplyEditActivity.a(this.a, true);
-      }
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity.6
  * JD-Core Version:    0.7.0.1
  */

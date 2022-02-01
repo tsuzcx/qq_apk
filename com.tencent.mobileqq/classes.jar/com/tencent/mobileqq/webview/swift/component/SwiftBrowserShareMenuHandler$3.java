@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.minicode.Utils;
+import com.tencent.mobileqq.ar.utils.QRScanUtil;
 import com.tencent.mobileqq.screendetect.ScreenShotFragment;
 import com.tencent.mobileqq.util.ScreenShotUtil;
 import com.tencent.mobileqq.util.ScreenShotUtil.ScreenLongShotCallback;
@@ -19,20 +19,27 @@ class SwiftBrowserShareMenuHandler$3
   
   public String a(Bitmap paramBitmap)
   {
-    String str = ScreenShotUtil.a() + System.currentTimeMillis() + ".jpg";
-    Utils.saveBitmapToFile(paramBitmap, str, Bitmap.CompressFormat.JPEG, 100, true);
-    return str;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(ScreenShotUtil.a());
+    ((StringBuilder)localObject).append(System.currentTimeMillis());
+    ((StringBuilder)localObject).append(".jpg");
+    localObject = ((StringBuilder)localObject).toString();
+    QRScanUtil.a(paramBitmap, (String)localObject, Bitmap.CompressFormat.JPEG, 100, true);
+    return localObject;
   }
   
   public void a(Exception paramException)
   {
-    QLog.e("SwiftBrowserShareMenuHandler", 1, "onScreenShotError , error is " + paramException.getMessage());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onScreenShotError , error is ");
+    localStringBuilder.append(paramException.getMessage());
+    QLog.e("SwiftBrowserShareMenuHandler", 1, localStringBuilder.toString());
     if (this.a.a.a() == null)
     {
       QLog.e("SwiftBrowserShareMenuHandler", 1, "screen long shot onScreenShotError, activity is null");
       return;
     }
-    QQToast.a(this.a.a.a(), 2131718834, 0).a();
+    QQToast.a(this.a.a.a(), 2131718549, 0).a();
   }
   
   public void a(String paramString, Bitmap paramBitmap)
@@ -51,7 +58,7 @@ class SwiftBrowserShareMenuHandler$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserShareMenuHandler.3
  * JD-Core Version:    0.7.0.1
  */

@@ -38,8 +38,9 @@ public final class y
   public final void a()
   {
     this.j = true;
-    if (this.i != null) {
-      this.i.b();
+    au localau = this.i;
+    if (localau != null) {
+      localau.b();
     }
   }
   
@@ -97,7 +98,11 @@ public final class y
       boolean bool = this.m.await(this.k, TimeUnit.MILLISECONDS);
       return bool;
     }
-    catch (InterruptedException localInterruptedException) {}
+    catch (InterruptedException localInterruptedException)
+    {
+      label18:
+      break label18;
+    }
     return true;
   }
   
@@ -117,25 +122,49 @@ public final class y
   
   public final String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("url:" + this.a);
-    localStringBuilder.append(",body:" + dg.b(this.b));
-    localStringBuilder.append(",isGet:" + this.d);
-    localStringBuilder.append(",timeout:" + this.f);
-    localStringBuilder.append(",tag:" + this.p);
-    localStringBuilder.append(",httpCallback:" + this.h);
-    localStringBuilder.append(",testMode:" + this.q);
-    localStringBuilder.append(",httpCallback:" + this.h);
-    localStringBuilder.append(",testMode:" + this.q);
-    localStringBuilder.append(",followRedirects:" + this.e);
-    localStringBuilder.append(",isAbort:" + this.j);
-    localStringBuilder.append(",headers:" + this.c);
-    return localStringBuilder.toString();
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = new StringBuilder("url:");
+    localStringBuilder2.append(this.a);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder(",body:");
+    localStringBuilder2.append(dg.b(this.b));
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder(",isGet:");
+    localStringBuilder2.append(this.d);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder(",timeout:");
+    localStringBuilder2.append(this.f);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder(",tag:");
+    localStringBuilder2.append(this.p);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder(",httpCallback:");
+    localStringBuilder2.append(this.h);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder(",testMode:");
+    localStringBuilder2.append(this.q);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder(",httpCallback:");
+    localStringBuilder2.append(this.h);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder(",testMode:");
+    localStringBuilder2.append(this.q);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder(",followRedirects:");
+    localStringBuilder2.append(this.e);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder(",isAbort:");
+    localStringBuilder2.append(this.j);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder(",headers:");
+    localStringBuilder2.append(this.c);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    return localStringBuilder1.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.y
  * JD-Core Version:    0.7.0.1
  */

@@ -83,19 +83,19 @@ public class VImageView
   
   public void autoReleaseImage()
   {
-    if (this.blurRadius > 0) {}
-    VImage localVImage;
-    do
+    if (this.blurRadius > 0)
     {
       this.mHandler.postDelayed(this.mRunnable, 5000L);
-      do
-      {
-        return;
-      } while ((!this.enableBitmapAutoManage) || (this.isBitmapReleased));
+      return;
+    }
+    if ((this.enableBitmapAutoManage) && (!this.isBitmapReleased))
+    {
       this.isBitmapReleased = true;
-      localVImage = getComponent();
-    } while (localVImage == null);
-    localVImage.autoReleaseImage();
+      VImage localVImage = getComponent();
+      if (localVImage != null) {
+        localVImage.autoReleaseImage();
+      }
+    }
   }
   
   public void bindComponent(VImage paramVImage)
@@ -120,8 +120,9 @@ public class VImageView
   
   public VImage getComponent()
   {
-    if (this.mWeakReference != null) {
-      return (VImage)this.mWeakReference.get();
+    WeakReference localWeakReference = this.mWeakReference;
+    if (localWeakReference != null) {
+      return (VImage)localWeakReference.get();
     }
     return null;
   }
@@ -166,21 +167,18 @@ public class VImageView
   
   public boolean isBitmapRecycled()
   {
-    Bitmap localBitmap = null;
+    Bitmap localBitmap;
     if ((getDrawable() instanceof ImageDrawable)) {
       localBitmap = ((ImageDrawable)getDrawable()).getBitmap();
+    } else if ((getDrawable() instanceof BitmapDrawable)) {
+      localBitmap = ((BitmapDrawable)getDrawable()).getBitmap();
+    } else {
+      localBitmap = null;
     }
-    while ((localBitmap != null) && (localBitmap.isRecycled()))
-    {
-      return true;
-      if ((getDrawable() instanceof BitmapDrawable)) {
-        localBitmap = ((BitmapDrawable)getDrawable()).getBitmap();
-      }
-    }
-    return false;
+    return (localBitmap != null) && (localBitmap.isRecycled());
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     if (isBitmapRecycled())
     {
@@ -190,7 +188,7 @@ public class VImageView
     super.onAttachedToWindow();
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
   }
@@ -205,7 +203,7 @@ public class VImageView
     super.onStartTemporaryDetach();
   }
   
-  public void onWindowVisibilityChanged(int paramInt)
+  protected void onWindowVisibilityChanged(int paramInt)
   {
     super.onWindowVisibilityChanged(paramInt);
     if (paramInt == 0)
@@ -252,15 +250,19 @@ public class VImageView
   public void setBottomLeftBorderRadius(@NonNull float paramFloat)
   {
     this.bottomLeftBorderRadius = paramFloat;
-    this.borderRadii[6] = this.bottomLeftBorderRadius;
-    this.borderRadii[7] = this.bottomLeftBorderRadius;
+    float[] arrayOfFloat = this.borderRadii;
+    paramFloat = this.bottomLeftBorderRadius;
+    arrayOfFloat[6] = paramFloat;
+    arrayOfFloat[7] = paramFloat;
   }
   
   public void setBottomRightBorderRadius(@NonNull float paramFloat)
   {
     this.bottomRightBorderRadius = paramFloat;
-    this.borderRadii[4] = this.bottomRightBorderRadius;
-    this.borderRadii[5] = this.bottomRightBorderRadius;
+    float[] arrayOfFloat = this.borderRadii;
+    paramFloat = this.bottomRightBorderRadius;
+    arrayOfFloat[4] = paramFloat;
+    arrayOfFloat[5] = paramFloat;
   }
   
   public void setEnableBitmapAutoManage(boolean paramBoolean)
@@ -291,49 +293,59 @@ public class VImageView
   public void setImageDrawable(@Nullable Drawable paramDrawable, boolean paramBoolean)
   {
     this.gif = paramBoolean;
-    if ((getLayoutParams() != null) && (this.borderWidth > 0.1F)) {}
-    try
+    float f1;
+    if (getLayoutParams() != null)
     {
-      float f1 = (float)(this.borderWidth / 1.5D);
-      float f2 = getComponent().getDomObject().getStyle().getPaddingLeft(getComponent().getDomObject().getViewPortWidth());
-      float f5 = getComponent().getDomObject().getStyle().getPaddingTop(getComponent().getDomObject().getViewPortWidth());
-      float f4 = getComponent().getDomObject().getStyle().getPaddingRight(getComponent().getDomObject().getViewPortWidth());
-      float f3 = getComponent().getDomObject().getStyle().getPaddingBottom(getComponent().getDomObject().getViewPortWidth());
-      int i;
-      label169:
-      int j;
-      if (!Float.isNaN(f2))
+      f1 = this.borderWidth;
+      if (f1 > 0.1F)
       {
-        f2 += f1;
-        i = Math.round(f2);
-        if (Float.isNaN(f5)) {
-          break label236;
-        }
-        f2 = f5 + f1;
-        j = Math.round(f2);
-        if (Float.isNaN(f4)) {
-          break label242;
-        }
+        double d = f1;
+        Double.isNaN(d);
+        f1 = (float)(d / 1.5D);
       }
-      label236:
-      label242:
-      for (f2 = f4 + f1;; f2 = f1)
-      {
-        int k = Math.round(f2);
-        f2 = f1;
-        if (!Float.isNaN(f3)) {
-          f2 = f1 + f3;
-        }
-        setPadding(i, j, k, Math.round(f2));
-        return;
-        f2 = f1;
-        break;
-        f2 = f1;
-        break label169;
-      }
-      return;
     }
-    catch (Exception paramDrawable) {}
+    for (;;)
+    {
+      try
+      {
+        f2 = getComponent().getDomObject().getStyle().getPaddingLeft(getComponent().getDomObject().getViewPortWidth());
+        float f5 = getComponent().getDomObject().getStyle().getPaddingTop(getComponent().getDomObject().getViewPortWidth());
+        float f4 = getComponent().getDomObject().getStyle().getPaddingRight(getComponent().getDomObject().getViewPortWidth());
+        float f3 = getComponent().getDomObject().getStyle().getPaddingBottom(getComponent().getDomObject().getViewPortWidth());
+        if (!Float.isNaN(f2))
+        {
+          f2 += f1;
+          int i = Math.round(f2);
+          if (Float.isNaN(f5)) {
+            break label263;
+          }
+          f2 = f5 + f1;
+          int j = Math.round(f2);
+          if (Float.isNaN(f4)) {
+            break label270;
+          }
+          f2 = f4 + f1;
+          int k = Math.round(f2);
+          f2 = f1;
+          if (!Float.isNaN(f3)) {
+            f2 = f1 + f3;
+          }
+          setPadding(i, j, k, Math.round(f2));
+          return;
+        }
+      }
+      catch (Exception paramDrawable)
+      {
+        return;
+      }
+      float f2 = f1;
+      continue;
+      label263:
+      f2 = f1;
+      continue;
+      label270:
+      f2 = f1;
+    }
   }
   
   public void setImageResource(int paramInt)
@@ -344,15 +356,19 @@ public class VImageView
   public void setTopLeftBorderRadius(@NonNull float paramFloat)
   {
     this.topLeftBorderRadius = paramFloat;
-    this.borderRadii[0] = this.topLeftBorderRadius;
-    this.borderRadii[1] = this.topLeftBorderRadius;
+    float[] arrayOfFloat = this.borderRadii;
+    paramFloat = this.topLeftBorderRadius;
+    arrayOfFloat[0] = paramFloat;
+    arrayOfFloat[1] = paramFloat;
   }
   
   public void setTopRightBorderRadius(@NonNull float paramFloat)
   {
     this.topRightBorderRadius = paramFloat;
-    this.borderRadii[2] = this.topRightBorderRadius;
-    this.borderRadii[3] = this.topRightBorderRadius;
+    float[] arrayOfFloat = this.borderRadii;
+    paramFloat = this.topRightBorderRadius;
+    arrayOfFloat[2] = paramFloat;
+    arrayOfFloat[3] = paramFloat;
   }
   
   public void setUrl(String paramString)
@@ -362,7 +378,7 @@ public class VImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.view.VImageView
  * JD-Core Version:    0.7.0.1
  */

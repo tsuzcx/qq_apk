@@ -16,48 +16,42 @@ public abstract class qa
   
   protected static String a(String paramString)
   {
-    String str2 = "GBK";
-    String str1 = str2;
-    int j;
-    int i;
     if (paramString != null)
     {
       paramString = paramString.split(";");
-      j = paramString.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      str1 = str2;
-      if (i < j)
+      int j = paramString.length;
+      int i = 0;
+      while (i < j)
       {
-        str1 = paramString[i];
-        if (!str1.contains("charset")) {
-          break label69;
+        Object localObject = paramString[i];
+        if (localObject.contains("charset"))
+        {
+          paramString = localObject.split("=");
+          if (paramString.length <= 1) {
+            break;
+          }
+          return paramString[1].trim();
         }
-        paramString = str1.split("=");
-        str1 = str2;
-        if (paramString.length > 1) {
-          str1 = paramString[1].trim();
-        }
+        i += 1;
       }
-      return str1;
-      label69:
-      i += 1;
     }
+    return "GBK";
   }
   
   private static String b(String paramString)
   {
-    String str = paramString;
+    Object localObject = paramString;
     if (Build.VERSION.SDK_INT >= 28)
     {
-      str = paramString;
-      if (paramString.startsWith("http://")) {
-        str = "https://" + paramString.substring(7);
+      localObject = paramString;
+      if (paramString.startsWith("http://"))
+      {
+        localObject = new StringBuilder("https://");
+        ((StringBuilder)localObject).append(paramString.substring(7));
+        localObject = ((StringBuilder)localObject).toString();
       }
     }
-    return str;
+    return localObject;
   }
   
   protected abstract NetResponse a(String paramString1, String paramString2, int paramInt1, int paramInt2, HashMap<String, String> paramHashMap, HttpCanceler paramHttpCanceler);
@@ -190,13 +184,15 @@ public abstract class qa
     }
     catch (Exception paramContext)
     {
-      Log.e("NetImpl", "initNet error:" + paramContext.toString());
+      StringBuilder localStringBuilder = new StringBuilder("initNet error:");
+      localStringBuilder.append(paramContext.toString());
+      Log.e("NetImpl", localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.qa
  * JD-Core Version:    0.7.0.1
  */

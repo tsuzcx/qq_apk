@@ -25,36 +25,59 @@ public class ARMIGObjectClassifyResult$RetrievalItem
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("result:{sclass:");
-    if (this.jdField_a_of_type_JavaLangString != null)
-    {
-      str = this.jdField_a_of_type_JavaLangString;
-      localStringBuilder = localStringBuilder.append(str).append(",").append("sItemId:");
-      if (this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$LabelSource == null) {
-        break label230;
-      }
-      str = this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$LabelSource.jdField_a_of_type_JavaLangString;
-      label56:
-      localStringBuilder = localStringBuilder.append(str).append(",").append("dProb:").append(this.jdField_a_of_type_Double).append(",").append("sTitle:").append(this.d).append(",").append("sWiki:").append(this.e).append(",").append("sJumpUrl:").append(this.f).append(",").append("sCdbRes:");
-      if (this.jdField_a_of_type_ArrayOfByte == null) {
-        break label236;
-      }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("result:{sclass:");
+    Object localObject = this.jdField_a_of_type_JavaLangString;
+    String str = "";
+    if (localObject == null) {
+      localObject = "";
     }
-    label230:
-    label236:
-    for (String str = new String(this.jdField_a_of_type_ArrayOfByte);; str = "")
-    {
-      return str + "," + "isAutoJump:" + this.jdField_a_of_type_Boolean + "," + "iNeedCheckLBS:" + this.c + "," + "imageId:" + this.g + "}";
-      str = "";
-      break;
-      str = "";
-      break label56;
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(",");
+    localStringBuilder.append("sItemId:");
+    localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$LabelSource;
+    if (localObject != null) {
+      localObject = ((ARMIGObjectClassifyResult.LabelSource)localObject).jdField_a_of_type_JavaLangString;
+    } else {
+      localObject = "";
     }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(",");
+    localStringBuilder.append("dProb:");
+    localStringBuilder.append(this.jdField_a_of_type_Double);
+    localStringBuilder.append(",");
+    localStringBuilder.append("sTitle:");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(",");
+    localStringBuilder.append("sWiki:");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(",");
+    localStringBuilder.append("sJumpUrl:");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(",");
+    localStringBuilder.append("sCdbRes:");
+    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    localObject = str;
+    if (arrayOfByte != null) {
+      localObject = new String(arrayOfByte);
+    }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(",");
+    localStringBuilder.append("isAutoJump:");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(",");
+    localStringBuilder.append("iNeedCheckLBS:");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(",");
+    localStringBuilder.append("imageId:");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARMIGObjectClassifyResult.RetrievalItem
  * JD-Core Version:    0.7.0.1
  */

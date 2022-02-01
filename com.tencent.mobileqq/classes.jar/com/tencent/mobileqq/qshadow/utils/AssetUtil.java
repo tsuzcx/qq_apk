@@ -18,102 +18,48 @@ public class AssetUtil
     if (TextUtils.isEmpty(paramString2)) {
       return;
     }
-    String str1 = paramString2;
-    if (paramString2.endsWith(SEPARATOR)) {
-      str1 = paramString2.substring(0, paramString2.length() - 1);
+    if (TextUtils.isEmpty(paramString1)) {
+      return;
     }
-    label54:
-    AssetManager localAssetManager;
-    if ((TextUtils.isEmpty(paramString1)) || (paramString1.equals(SEPARATOR)))
-    {
-      paramString2 = "";
-      localAssetManager = paramContext.getAssets();
-    }
-    for (;;)
-    {
-      String str2;
-      Object localObject;
-      try
-      {
-        paramString1 = new File(str1);
-        if ((!paramString1.exists()) && (!paramString1.mkdirs())) {
-          Log.i("FileHelper", "create file error! file: " + paramString1.getAbsolutePath());
-        }
-        String[] arrayOfString = localAssetManager.list(paramString2);
-        if ((arrayOfString == null) || (arrayOfString.length <= 0)) {
-          break label340;
-        }
-        int j = arrayOfString.length;
-        paramString1 = "";
-        int i = 0;
-        if (i >= j) {
-          break;
-        }
-        str2 = arrayOfString[i];
-        boolean bool = TextUtils.isEmpty(str2);
-        if (bool)
-        {
-          i += 1;
-          continue;
-          paramString2 = paramString1;
-          if (!paramString1.endsWith(SEPARATOR)) {
-            break label54;
-          }
-          paramString2 = paramString1.substring(0, paramString1.length() - 1);
-          break label54;
-        }
-        if (!TextUtils.isEmpty(paramString2)) {
-          paramString1 = paramString2 + SEPARATOR + str2;
-        }
-        localObject = localAssetManager.list(paramString1);
-        if ((!TextUtils.isEmpty(paramString1)) && (localObject != null) && (localObject.length > 0))
-        {
-          copyFilesFromAssets(paramContext, paramString1, str1 + SEPARATOR + str2);
-          continue;
-        }
-        localObject = localAssetManager.open(paramString1);
-      }
-      catch (IOException paramContext)
-      {
-        paramContext.printStackTrace();
-        return;
-      }
-      readInputStream(str1 + SEPARATOR + str2, (InputStream)localObject);
-    }
-    label340:
-    paramString1 = localAssetManager.open(paramString2);
-    paramContext = paramString2;
-    if (paramString2.contains(SEPARATOR)) {
-      paramContext = paramString2.substring(paramString2.lastIndexOf(SEPARATOR), paramString2.length());
-    }
-    readInputStream(str1 + SEPARATOR + paramContext, paramString1);
-  }
-  
-  public static boolean isFileExists(Context paramContext, String paramString1, String paramString2)
-  {
+    String str = paramString1.substring(paramString1.lastIndexOf(File.separator));
     paramContext = paramContext.getAssets();
     try
     {
-      paramContext = paramContext.list(paramString1);
-      if (paramContext == null) {
-        return false;
-      }
-      int j = paramContext.length;
-      int i = 0;
-      while (i < j)
+      File localFile = new File(paramString2);
+      if ((!localFile.exists()) && (!localFile.mkdirs()))
       {
-        boolean bool = paramContext[i].equals(paramString2.trim());
-        if (bool) {
-          return true;
-        }
-        i += 1;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("create file error! file: ");
+        localStringBuilder.append(localFile.getAbsolutePath());
+        Log.i("FileHelper", localStringBuilder.toString());
       }
-      return false;
+      paramContext = paramContext.open(paramString1);
+      paramString1 = new StringBuilder();
+      paramString1.append(paramString2);
+      paramString1.append(SEPARATOR);
+      paramString1.append(str);
+      readInputStream(paramString1.toString(), paramContext);
+      return;
     }
     catch (IOException paramContext)
     {
       paramContext.printStackTrace();
     }
+  }
+  
+  public static boolean isFileExists(Context paramContext, String paramString)
+  {
+    paramContext = paramContext.getAssets();
+    try
+    {
+      paramContext.open(paramString).close();
+      return true;
+    }
+    catch (IOException paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return false;
   }
   
   /* Error */
@@ -123,187 +69,186 @@ public class AssetUtil
     //   0: new 13	java/io/File
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 61	java/io/File:<init>	(Ljava/lang/String;)V
-    //   8: astore_0
-    //   9: aload_0
-    //   10: invokevirtual 126	java/io/File:delete	()Z
-    //   13: pop
-    //   14: aload_0
-    //   15: invokevirtual 65	java/io/File:exists	()Z
-    //   18: ifne +221 -> 239
-    //   21: new 128	java/io/FileOutputStream
-    //   24: dup
-    //   25: aload_0
-    //   26: invokespecial 131	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   29: astore_3
-    //   30: aload_3
-    //   31: astore_0
-    //   32: aload_1
-    //   33: invokevirtual 136	java/io/InputStream:available	()I
-    //   36: newarray byte
-    //   38: astore 4
-    //   40: aload_3
-    //   41: astore_0
-    //   42: aload_1
-    //   43: aload 4
-    //   45: invokevirtual 140	java/io/InputStream:read	([B)I
-    //   48: istore_2
-    //   49: iload_2
-    //   50: iconst_m1
-    //   51: if_icmpeq +42 -> 93
-    //   54: aload_3
-    //   55: astore_0
+    //   5: invokespecial 51	java/io/File:<init>	(Ljava/lang/String;)V
+    //   8: astore_3
+    //   9: aconst_null
+    //   10: astore_0
+    //   11: aload_3
+    //   12: invokevirtual 105	java/io/File:delete	()Z
+    //   15: pop
+    //   16: aload_3
+    //   17: invokevirtual 55	java/io/File:exists	()Z
+    //   20: ifne +70 -> 90
+    //   23: new 107	java/io/FileOutputStream
+    //   26: dup
+    //   27: aload_3
+    //   28: invokespecial 110	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   31: astore_3
+    //   32: aload_3
+    //   33: astore_0
+    //   34: aload_1
+    //   35: invokevirtual 114	java/io/InputStream:available	()I
+    //   38: newarray byte
+    //   40: astore 4
+    //   42: aload_3
+    //   43: astore_0
+    //   44: aload_1
+    //   45: aload 4
+    //   47: invokevirtual 118	java/io/InputStream:read	([B)I
+    //   50: istore_2
+    //   51: iload_2
+    //   52: iconst_m1
+    //   53: if_icmpeq +16 -> 69
     //   56: aload_3
-    //   57: aload 4
-    //   59: iconst_0
-    //   60: iload_2
-    //   61: invokevirtual 144	java/io/FileOutputStream:write	([BII)V
-    //   64: goto -24 -> 40
-    //   67: astore 4
+    //   57: astore_0
+    //   58: aload_3
+    //   59: aload 4
+    //   61: iconst_0
+    //   62: iload_2
+    //   63: invokevirtual 122	java/io/FileOutputStream:write	([BII)V
+    //   66: goto -24 -> 42
     //   69: aload_3
     //   70: astore_0
-    //   71: aload 4
-    //   73: invokevirtual 145	java/io/FileNotFoundException:printStackTrace	()V
-    //   76: aload_3
-    //   77: ifnull +7 -> 84
-    //   80: aload_3
-    //   81: invokevirtual 148	java/io/FileOutputStream:close	()V
-    //   84: aload_1
-    //   85: ifnull +7 -> 92
-    //   88: aload_1
-    //   89: invokevirtual 149	java/io/InputStream:close	()V
-    //   92: return
-    //   93: aload_3
-    //   94: astore_0
-    //   95: aload_3
-    //   96: invokevirtual 152	java/io/FileOutputStream:flush	()V
-    //   99: aload_3
-    //   100: ifnull +7 -> 107
-    //   103: aload_3
-    //   104: invokevirtual 148	java/io/FileOutputStream:close	()V
-    //   107: aload_1
-    //   108: ifnull -16 -> 92
-    //   111: aload_1
-    //   112: invokevirtual 149	java/io/InputStream:close	()V
-    //   115: return
-    //   116: astore_0
-    //   117: aload_0
-    //   118: invokevirtual 101	java/io/IOException:printStackTrace	()V
-    //   121: return
-    //   122: astore_0
-    //   123: aload_0
-    //   124: invokevirtual 101	java/io/IOException:printStackTrace	()V
-    //   127: goto -20 -> 107
-    //   130: astore_0
-    //   131: aload_0
-    //   132: invokevirtual 101	java/io/IOException:printStackTrace	()V
-    //   135: goto -51 -> 84
-    //   138: astore_0
-    //   139: aload_0
-    //   140: invokevirtual 101	java/io/IOException:printStackTrace	()V
-    //   143: return
-    //   144: astore 4
-    //   146: aconst_null
-    //   147: astore_3
-    //   148: aload_3
-    //   149: astore_0
-    //   150: aload 4
-    //   152: invokevirtual 101	java/io/IOException:printStackTrace	()V
-    //   155: aload_3
-    //   156: ifnull +7 -> 163
-    //   159: aload_3
-    //   160: invokevirtual 148	java/io/FileOutputStream:close	()V
-    //   163: aload_1
-    //   164: ifnull -72 -> 92
-    //   167: aload_1
-    //   168: invokevirtual 149	java/io/InputStream:close	()V
-    //   171: return
-    //   172: astore_0
-    //   173: aload_0
-    //   174: invokevirtual 101	java/io/IOException:printStackTrace	()V
-    //   177: return
-    //   178: astore_0
-    //   179: aload_0
-    //   180: invokevirtual 101	java/io/IOException:printStackTrace	()V
-    //   183: goto -20 -> 163
-    //   186: astore_3
-    //   187: aconst_null
-    //   188: astore_0
-    //   189: aload_0
-    //   190: ifnull +7 -> 197
-    //   193: aload_0
-    //   194: invokevirtual 148	java/io/FileOutputStream:close	()V
-    //   197: aload_1
-    //   198: ifnull +7 -> 205
-    //   201: aload_1
-    //   202: invokevirtual 149	java/io/InputStream:close	()V
-    //   205: aload_3
-    //   206: athrow
-    //   207: astore_0
-    //   208: aload_0
-    //   209: invokevirtual 101	java/io/IOException:printStackTrace	()V
-    //   212: goto -15 -> 197
-    //   215: astore_0
-    //   216: aload_0
-    //   217: invokevirtual 101	java/io/IOException:printStackTrace	()V
-    //   220: goto -15 -> 205
-    //   223: astore_3
-    //   224: goto -35 -> 189
-    //   227: astore 4
-    //   229: goto -81 -> 148
-    //   232: astore 4
-    //   234: aconst_null
-    //   235: astore_3
-    //   236: goto -167 -> 69
-    //   239: aconst_null
-    //   240: astore_3
-    //   241: goto -142 -> 99
+    //   71: aload_3
+    //   72: invokevirtual 125	java/io/FileOutputStream:flush	()V
+    //   75: aload_3
+    //   76: astore_0
+    //   77: goto +13 -> 90
+    //   80: astore 4
+    //   82: goto +43 -> 125
+    //   85: astore 4
+    //   87: goto +74 -> 161
+    //   90: aload_0
+    //   91: ifnull +15 -> 106
+    //   94: aload_0
+    //   95: invokevirtual 126	java/io/FileOutputStream:close	()V
+    //   98: goto +8 -> 106
+    //   101: astore_0
+    //   102: aload_0
+    //   103: invokevirtual 93	java/io/IOException:printStackTrace	()V
+    //   106: aload_1
+    //   107: ifnull +91 -> 198
+    //   110: aload_1
+    //   111: invokevirtual 100	java/io/InputStream:close	()V
+    //   114: return
+    //   115: astore_3
+    //   116: aconst_null
+    //   117: astore_0
+    //   118: goto +82 -> 200
+    //   121: astore 4
+    //   123: aconst_null
+    //   124: astore_3
+    //   125: aload_3
+    //   126: astore_0
+    //   127: aload 4
+    //   129: invokevirtual 93	java/io/IOException:printStackTrace	()V
+    //   132: aload_3
+    //   133: ifnull +15 -> 148
+    //   136: aload_3
+    //   137: invokevirtual 126	java/io/FileOutputStream:close	()V
+    //   140: goto +8 -> 148
+    //   143: astore_0
+    //   144: aload_0
+    //   145: invokevirtual 93	java/io/IOException:printStackTrace	()V
+    //   148: aload_1
+    //   149: ifnull +49 -> 198
+    //   152: aload_1
+    //   153: invokevirtual 100	java/io/InputStream:close	()V
+    //   156: return
+    //   157: astore 4
+    //   159: aconst_null
+    //   160: astore_3
+    //   161: aload_3
+    //   162: astore_0
+    //   163: aload 4
+    //   165: invokevirtual 127	java/io/FileNotFoundException:printStackTrace	()V
+    //   168: aload_3
+    //   169: ifnull +15 -> 184
+    //   172: aload_3
+    //   173: invokevirtual 126	java/io/FileOutputStream:close	()V
+    //   176: goto +8 -> 184
+    //   179: astore_0
+    //   180: aload_0
+    //   181: invokevirtual 93	java/io/IOException:printStackTrace	()V
+    //   184: aload_1
+    //   185: ifnull +13 -> 198
+    //   188: aload_1
+    //   189: invokevirtual 100	java/io/InputStream:close	()V
+    //   192: return
+    //   193: astore_0
+    //   194: aload_0
+    //   195: invokevirtual 93	java/io/IOException:printStackTrace	()V
+    //   198: return
+    //   199: astore_3
+    //   200: aload_0
+    //   201: ifnull +15 -> 216
+    //   204: aload_0
+    //   205: invokevirtual 126	java/io/FileOutputStream:close	()V
+    //   208: goto +8 -> 216
+    //   211: astore_0
+    //   212: aload_0
+    //   213: invokevirtual 93	java/io/IOException:printStackTrace	()V
+    //   216: aload_1
+    //   217: ifnull +15 -> 232
+    //   220: aload_1
+    //   221: invokevirtual 100	java/io/InputStream:close	()V
+    //   224: goto +8 -> 232
+    //   227: astore_0
+    //   228: aload_0
+    //   229: invokevirtual 93	java/io/IOException:printStackTrace	()V
+    //   232: goto +5 -> 237
+    //   235: aload_3
+    //   236: athrow
+    //   237: goto -2 -> 235
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	244	0	paramString	String
-    //   0	244	1	paramInputStream	InputStream
-    //   48	13	2	i	int
-    //   29	131	3	localFileOutputStream	java.io.FileOutputStream
-    //   186	20	3	localObject1	Object
-    //   223	1	3	localObject2	Object
-    //   235	6	3	localObject3	Object
-    //   38	20	4	arrayOfByte	byte[]
-    //   67	5	4	localFileNotFoundException1	java.io.FileNotFoundException
-    //   144	7	4	localIOException1	IOException
-    //   227	1	4	localIOException2	IOException
-    //   232	1	4	localFileNotFoundException2	java.io.FileNotFoundException
+    //   0	240	0	paramString	String
+    //   0	240	1	paramInputStream	InputStream
+    //   50	13	2	i	int
+    //   8	68	3	localObject1	Object
+    //   115	1	3	localObject2	Object
+    //   124	49	3	localObject3	Object
+    //   199	37	3	localObject4	Object
+    //   40	20	4	arrayOfByte	byte[]
+    //   80	1	4	localIOException1	IOException
+    //   85	1	4	localFileNotFoundException1	java.io.FileNotFoundException
+    //   121	7	4	localIOException2	IOException
+    //   157	7	4	localFileNotFoundException2	java.io.FileNotFoundException
     // Exception table:
     //   from	to	target	type
-    //   32	40	67	java/io/FileNotFoundException
-    //   42	49	67	java/io/FileNotFoundException
-    //   56	64	67	java/io/FileNotFoundException
-    //   95	99	67	java/io/FileNotFoundException
-    //   111	115	116	java/io/IOException
-    //   103	107	122	java/io/IOException
-    //   80	84	130	java/io/IOException
-    //   88	92	138	java/io/IOException
-    //   9	30	144	java/io/IOException
-    //   167	171	172	java/io/IOException
-    //   159	163	178	java/io/IOException
-    //   9	30	186	finally
-    //   193	197	207	java/io/IOException
-    //   201	205	215	java/io/IOException
-    //   32	40	223	finally
-    //   42	49	223	finally
-    //   56	64	223	finally
-    //   71	76	223	finally
-    //   95	99	223	finally
-    //   150	155	223	finally
-    //   32	40	227	java/io/IOException
-    //   42	49	227	java/io/IOException
-    //   56	64	227	java/io/IOException
-    //   95	99	227	java/io/IOException
-    //   9	30	232	java/io/FileNotFoundException
+    //   34	42	80	java/io/IOException
+    //   44	51	80	java/io/IOException
+    //   58	66	80	java/io/IOException
+    //   71	75	80	java/io/IOException
+    //   34	42	85	java/io/FileNotFoundException
+    //   44	51	85	java/io/FileNotFoundException
+    //   58	66	85	java/io/FileNotFoundException
+    //   71	75	85	java/io/FileNotFoundException
+    //   94	98	101	java/io/IOException
+    //   11	16	115	finally
+    //   16	32	115	finally
+    //   11	16	121	java/io/IOException
+    //   16	32	121	java/io/IOException
+    //   136	140	143	java/io/IOException
+    //   11	16	157	java/io/FileNotFoundException
+    //   16	32	157	java/io/FileNotFoundException
+    //   172	176	179	java/io/IOException
+    //   110	114	193	java/io/IOException
+    //   152	156	193	java/io/IOException
+    //   188	192	193	java/io/IOException
+    //   34	42	199	finally
+    //   44	51	199	finally
+    //   58	66	199	finally
+    //   71	75	199	finally
+    //   127	132	199	finally
+    //   163	168	199	finally
+    //   204	208	211	java/io/IOException
+    //   220	224	227	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qshadow.utils.AssetUtil
  * JD-Core Version:    0.7.0.1
  */

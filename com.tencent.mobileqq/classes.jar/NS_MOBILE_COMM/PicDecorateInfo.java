@@ -30,17 +30,19 @@ public final class PicDecorateInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iType, 0);
-    if (this.strReverseUrl != null) {
-      paramJceOutputStream.write(this.strReverseUrl, 1);
+    String str = this.strReverseUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strPlayZipUrl != null) {
-      paramJceOutputStream.write(this.strPlayZipUrl, 2);
+    str = this.strPlayZipUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_COMM.PicDecorateInfo
  * JD-Core Version:    0.7.0.1
  */

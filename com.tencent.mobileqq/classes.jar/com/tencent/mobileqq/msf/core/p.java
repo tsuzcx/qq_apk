@@ -12,19 +12,18 @@ public class p
   public static boolean a()
   {
     if (!a) {
-      if (Build.VERSION.SDK_INT < 23) {
-        break label44;
+      if (Build.VERSION.SDK_INT >= 23) {
+        a = TextUtils.equals(BaseApplication.getContext().getSharedPreferences("c_profile_sharepreference", 4).getString("privacypolicy_state", "0"), "1");
+      } else {
+        a = true;
       }
     }
-    label44:
-    for (a = TextUtils.equals(BaseApplication.getContext().getSharedPreferences("c_profile_sharepreference", 4).getString("privacypolicy_state", "0"), "1");; a = true) {
-      return a;
-    }
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.p
  * JD-Core Version:    0.7.0.1
  */

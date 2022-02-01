@@ -12,15 +12,16 @@ class TagAdapter$TagViewHolder$1
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter$OnItemClickListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter$OnItemClickListener.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase);
+    TagAdapter.OnItemClickListener localOnItemClickListener = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter$OnItemClickListener;
+    if (localOnItemClickListener != null) {
+      localOnItemClickListener.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.tag.TagAdapter.TagViewHolder.1
  * JD-Core Version:    0.7.0.1
  */

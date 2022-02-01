@@ -43,70 +43,72 @@ public class QflutterVibratePlugin
   
   public void onMethodCall(@NonNull MethodCall paramMethodCall, @NonNull MethodChannel.Result paramResult)
   {
+    Vibrator localVibrator = this.vibrator;
     boolean bool;
-    if ((this.vibrator != null) && (this.vibrator.hasVibrator()))
-    {
+    if ((localVibrator != null) && (localVibrator.hasVibrator())) {
       bool = true;
-      if (!paramMethodCall.method.equals("canVibrate")) {
-        break label47;
-      }
-      paramResult.success(Boolean.valueOf(bool));
-    }
-    label47:
-    while (!bool)
-    {
-      return;
+    } else {
       bool = false;
-      break;
     }
+    if (paramMethodCall.method.equals("canVibrate"))
+    {
+      paramResult.success(Boolean.valueOf(bool));
+      return;
+    }
+    if (!bool) {
+      return;
+    }
+    long l;
     if (paramMethodCall.method.equals("heavy"))
     {
-      this.vibrator.vibrate(100L);
-      paramResult.success(null);
-      return;
+      paramMethodCall = this.vibrator;
+      l = 100L;
     }
-    if (paramMethodCall.method.equals("medium"))
+    for (;;)
     {
-      this.vibrator.vibrate(40L);
+      paramMethodCall.vibrate(l);
       paramResult.success(null);
       return;
-    }
-    if (paramMethodCall.method.equals("light"))
-    {
-      this.vibrator.vibrate(10L);
-      paramResult.success(null);
-      return;
-    }
-    if (paramMethodCall.method.equals("success"))
-    {
-      this.vibrator.vibrate(50L);
-      paramResult.success(null);
-      return;
-    }
-    if (paramMethodCall.method.equals("error"))
-    {
-      this.vibrator.vibrate(500L);
-      paramResult.success(null);
-      return;
-    }
-    if (paramMethodCall.method.equals("warning"))
-    {
-      this.vibrator.vibrate(250L);
-      paramResult.success(null);
-      return;
-    }
-    if (paramMethodCall.method.equals("selection"))
-    {
-      this.vibrator.vibrate(3L);
-      paramResult.success(null);
-      return;
+      if (paramMethodCall.method.equals("medium"))
+      {
+        paramMethodCall = this.vibrator;
+        l = 40L;
+      }
+      else if (paramMethodCall.method.equals("light"))
+      {
+        paramMethodCall = this.vibrator;
+        l = 10L;
+      }
+      else if (paramMethodCall.method.equals("success"))
+      {
+        paramMethodCall = this.vibrator;
+        l = 50L;
+      }
+      else if (paramMethodCall.method.equals("error"))
+      {
+        paramMethodCall = this.vibrator;
+        l = 500L;
+      }
+      else if (paramMethodCall.method.equals("warning"))
+      {
+        paramMethodCall = this.vibrator;
+        l = 250L;
+      }
+      else
+      {
+        if (!paramMethodCall.method.equals("selection")) {
+          break;
+        }
+        paramMethodCall = this.vibrator;
+        l = 3L;
+      }
     }
     paramResult.notImplemented();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.vibrate.QflutterVibratePlugin
  * JD-Core Version:    0.7.0.1
  */

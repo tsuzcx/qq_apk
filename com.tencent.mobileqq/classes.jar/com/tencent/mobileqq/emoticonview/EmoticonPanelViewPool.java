@@ -14,8 +14,14 @@ public class EmoticonPanelViewPool
   
   public boolean addRecyleView(int paramInt, View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonPanelViewPool", 2, "[RecyleView] addRecyleView, type=" + paramInt + ", view=" + paramView);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[RecyleView] addRecyleView, type=");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(", view=");
+      ((StringBuilder)localObject).append(paramView);
+      QLog.d("EmoticonPanelViewPool", 2, ((StringBuilder)localObject).toString());
     }
     if (paramView == null) {
       return false;
@@ -29,8 +35,12 @@ public class EmoticonPanelViewPool
     }
     if (((List)localObject).size() >= 3)
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("EmoticonPanelViewPool", 2, "Capacity full for type " + paramInt);
+      if (QLog.isColorLevel())
+      {
+        paramView = new StringBuilder();
+        paramView.append("Capacity full for type ");
+        paramView.append(paramInt);
+        QLog.w("EmoticonPanelViewPool", 2, paramView.toString());
       }
       return false;
     }
@@ -71,7 +81,7 @@ public class EmoticonPanelViewPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelViewPool
  * JD-Core Version:    0.7.0.1
  */

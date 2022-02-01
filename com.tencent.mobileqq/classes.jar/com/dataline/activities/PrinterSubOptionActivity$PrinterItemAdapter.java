@@ -29,7 +29,8 @@ public class PrinterSubOptionActivity$PrinterItemAdapter
     if ((this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b != null) && (paramInt < this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b.size())) {
       return this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b.get(paramInt);
     }
-    return new PrinterSubOptionActivity.CloudPrinter(this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity, 1, 0L, this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.jdField_a_of_type_JavaLangString);
+    PrinterSubOptionActivity localPrinterSubOptionActivity = this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity;
+    return new PrinterSubOptionActivity.CloudPrinter(localPrinterSubOptionActivity, 1, 0L, localPrinterSubOptionActivity.jdField_a_of_type_JavaLangString);
   }
   
   public long getItemId(int paramInt)
@@ -48,45 +49,41 @@ public class PrinterSubOptionActivity$PrinterItemAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     String str = ((PrinterSubOptionActivity.CloudPrinter)getItem(paramInt)).jdField_a_of_type_JavaLangString;
-    Object localObject;
-    if (getItemViewType(paramInt) == 0)
+    int i = getItemViewType(paramInt);
+    TextView localTextView = null;
+    if (i == 0)
     {
-      localObject = (PrinterSubOptionActivity.CloudPrinter)getItem(paramInt);
+      Object localObject = (PrinterSubOptionActivity.CloudPrinter)getItem(paramInt);
       if (((PrinterSubOptionActivity.CloudPrinter)localObject).jdField_a_of_type_Int == 1)
       {
-        paramView = this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559698, null);
-        localObject = (TextView)paramView.findViewById(2131379105);
+        paramView = this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559574, null);
+        localTextView = (TextView)paramView.findViewById(2131378475);
+      }
+      else if (((PrinterSubOptionActivity.CloudPrinter)localObject).jdField_a_of_type_Int == 2)
+      {
+        paramView = this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559575, null);
+        localObject = paramView.findViewById(2131364361);
+        localTextView = (TextView)paramView.findViewById(2131364362);
+        ((View)localObject).setClickable(true);
+        ((View)localObject).setEnabled(true);
+        ((View)localObject).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       }
     }
-    for (;;)
+    else
     {
-      if (localObject != null)
-      {
-        ((TextView)localObject).setText(str);
-        ((TextView)localObject).setTag(Integer.valueOf(paramInt));
-      }
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      if (((PrinterSubOptionActivity.CloudPrinter)localObject).jdField_a_of_type_Int == 2)
-      {
-        paramView = this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559699, null);
-        View localView = paramView.findViewById(2131364471);
-        localObject = (TextView)paramView.findViewById(2131364472);
-        localView.setClickable(true);
-        localView.setEnabled(true);
-        localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        continue;
-        paramView = this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559143, null);
-        paramView.findViewById(2131370518).setVisibility(8);
-        localObject = (TextView)paramView.findViewById(2131370519);
-        ((TextView)localObject).setTextSize(19.0F);
-        ((TextView)localObject).setTextColor(-16777216);
-      }
-      else
-      {
-        localObject = null;
-      }
+      paramView = this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559037, null);
+      paramView.findViewById(2131370178).setVisibility(8);
+      localTextView = (TextView)paramView.findViewById(2131370179);
+      localTextView.setTextSize(19.0F);
+      localTextView.setTextColor(-16777216);
     }
+    if (localTextView != null)
+    {
+      localTextView.setText(str);
+      localTextView.setTag(Integer.valueOf(paramInt));
+    }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
   
   public int getViewTypeCount()
@@ -96,7 +93,7 @@ public class PrinterSubOptionActivity$PrinterItemAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.PrinterSubOptionActivity.PrinterItemAdapter
  * JD-Core Version:    0.7.0.1
  */

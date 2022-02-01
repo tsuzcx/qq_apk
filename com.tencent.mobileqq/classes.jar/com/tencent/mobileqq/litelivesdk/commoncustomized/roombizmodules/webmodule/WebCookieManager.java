@@ -27,7 +27,6 @@ public class WebCookieManager
 {
   private static WebCookieManager jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebCookieManager = new WebCookieManager();
   private Context jdField_a_of_type_AndroidContentContext;
-  private UserEngine jdField_a_of_type_ComTencentLivesdkAccountengineUserEngine = BizEngineMgr.getInstance().getUserEngine();
   
   public static WebCookieManager a()
   {
@@ -38,95 +37,99 @@ public class WebCookieManager
   {
     ArrayList localArrayList = new ArrayList();
     paramString = UriUtil.getSpecifiedLevelDomain(paramString, 2).toLowerCase();
-    String str1 = ";Domain=" + paramString + ";Path=/;";
-    paramString = (AppGeneralInfoService)BizEngineMgr.getInstance().getLiveEngine().getService(AppGeneralInfoService.class);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(";Domain=");
+    ((StringBuilder)localObject1).append(paramString);
+    ((StringBuilder)localObject1).append(";Path=/;");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = (AppGeneralInfoService)BizEngineMgr.getInstance().getLiveEngine().getService(AppGeneralInfoService.class);
     int i = NetworkUtil.getNetworkType(this.jdField_a_of_type_AndroidContentContext);
-    Object localObject = BusinessManager.a.a();
-    String str2 = paramString.getAppId();
-    String str3 = QUA.getQUA3();
-    int j = paramString.getClientType();
-    localArrayList.add(String.format(Locale.ENGLISH, "%s=%d%s", new Object[] { "__client_type", Integer.valueOf(j), str1 }));
-    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "sdkver", "2.0.0", str1 }));
-    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "platform", "Android", str1 }));
-    localArrayList.add(String.format(Locale.ENGLISH, "%s=%d%s", new Object[] { "installsrc", Integer.valueOf(j), str1 }));
-    localArrayList.add(String.format(Locale.ENGLISH, "%s=%d%s", new Object[] { "networktype", Integer.valueOf(i), str1 }));
-    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "program_id", "", str1 }));
-    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "guid", localObject, str1 }));
-    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "qbid", "", str1 }));
-    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "appversion", "8.5.5", str1 }));
-    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%S", new Object[] { "appid", str2, str1 }));
-    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "__client_build", str3, str1 }));
-    if (this.jdField_a_of_type_ComTencentLivesdkAccountengineUserEngine == null)
+    paramString = BusinessManager.a.a();
+    Object localObject3 = ((AppGeneralInfoService)localObject2).getAppId();
+    Object localObject4 = QUA.getQUA3();
+    int j = ((AppGeneralInfoService)localObject2).getClientType();
+    Object localObject5 = Locale.ENGLISH;
+    localObject2 = Integer.valueOf(1);
+    localArrayList.add(String.format((Locale)localObject5, "%s=%d%s", new Object[] { "__client_type", Integer.valueOf(j), localObject1 }));
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "sdkver", "2.0.0", localObject1 }));
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "platform", "Android", localObject1 }));
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%d%s", new Object[] { "installsrc", Integer.valueOf(j), localObject1 }));
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%d%s", new Object[] { "networktype", Integer.valueOf(i), localObject1 }));
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "program_id", "", localObject1 }));
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "guid", paramString, localObject1 }));
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "qbid", "", localObject1 }));
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "appversion", "8.7.0", localObject1 }));
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%S", new Object[] { "appid", localObject3, localObject1 }));
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "__client_build", localObject4, localObject1 }));
+    localObject3 = BizEngineMgr.getInstance().getUserEngine();
+    if (localObject3 == null)
     {
       QLog.e("WebComponentManager", 1, "mUserEngine null");
       return localArrayList;
     }
-    paramString = ((LoginServiceInterface)this.jdField_a_of_type_ComTencentLivesdkAccountengineUserEngine.getService(LoginServiceInterface.class)).getLoginInfo();
-    if (paramString == null)
+    localObject4 = ((LoginServiceInterface)((UserEngine)localObject3).getService(LoginServiceInterface.class)).getLoginInfo();
+    if (localObject4 == null)
     {
       QLog.e("WebComponentManager", 1, "loginInfo null");
       return localArrayList;
     }
-    long l2 = paramString.uid;
+    long l2 = ((LoginInfo)localObject4).uid;
     long l1;
-    if (paramString.tinyid != 0L)
-    {
-      l1 = paramString.tinyid;
-      localObject = HexUtil.bytesToHexString(paramString.a2);
-      localArrayList.add(String.format(Locale.ENGLISH, "%s=%d%s", new Object[] { "ilive_uin", Long.valueOf(l2), str1 }));
-      localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "ilive_tinyid", Long.valueOf(l1), str1 }));
-      localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "ilive_a2", localObject, str1 }));
-      QLog.e("WebComponentManager", 1, "ilive_uin = " + l2 + ", ilive_tinyid = " + l1);
-      if (((LoginServiceInterface)this.jdField_a_of_type_ComTencentLivesdkAccountengineUserEngine.getService(LoginServiceInterface.class)).isGuest()) {
-        break label1194;
-      }
-      if (paramString.loginType != LoginType.QQ) {
-        break label1005;
-      }
-      localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "original_id", paramString.openId, str1 }));
-      localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "original_key", paramString.access_token, str1 }));
-      localArrayList.add(String.format(Locale.ENGLISH, "%s=%d%s", new Object[] { "original_id_type", Integer.valueOf(1), str1 }));
-      localArrayList.add(String.format(Locale.ENGLISH, "%s=%d%s", new Object[] { "original_key_type", Integer.valueOf(37), str1 }));
-      localObject = Locale.ENGLISH;
-      if (this.jdField_a_of_type_ComTencentLivesdkAccountengineUserEngine.getLoginRequest() == null) {
-        break label999;
-      }
-      paramString = this.jdField_a_of_type_ComTencentLivesdkAccountengineUserEngine.getLoginRequest().appid;
-      label919:
-      localArrayList.add(String.format((Locale)localObject, "%s=%s%s", new Object[] { "original_auth_appid", paramString, str1 }));
-    }
-    label1194:
-    for (;;)
-    {
-      localArrayList.add(String.format(Locale.ENGLISH, "%s=%d%s", new Object[] { "ilive_uid_type", Integer.valueOf(1), str1 }));
-      return localArrayList;
+    if (((LoginInfo)localObject4).tinyid != 0L) {
+      l1 = ((LoginInfo)localObject4).tinyid;
+    } else {
       l1 = l2;
-      break;
-      label999:
-      paramString = "";
-      break label919;
-      label1005:
-      if (paramString.loginType == LoginType.WX)
+    }
+    localObject5 = HexUtil.bytesToHexString(((LoginInfo)localObject4).a2);
+    Locale localLocale = Locale.ENGLISH;
+    paramString = "";
+    localArrayList.add(String.format(localLocale, "%s=%d%s", new Object[] { "ilive_uin", Long.valueOf(l2), localObject1 }));
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "ilive_tinyid", Long.valueOf(l1), localObject1 }));
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "ilive_a2", localObject5, localObject1 }));
+    localObject5 = new StringBuilder();
+    ((StringBuilder)localObject5).append("ilive_uin = ");
+    ((StringBuilder)localObject5).append(l2);
+    ((StringBuilder)localObject5).append(", ilive_tinyid = ");
+    ((StringBuilder)localObject5).append(l1);
+    QLog.e("WebComponentManager", 1, ((StringBuilder)localObject5).toString());
+    if (!((LoginServiceInterface)((UserEngine)localObject3).getService(LoginServiceInterface.class)).isGuest())
+    {
+      if (((LoginInfo)localObject4).loginType == LoginType.QQ)
       {
-        localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "original_id", paramString.openId, str1 }));
-        localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "original_key", paramString.access_token, str1 }));
-        localArrayList.add(String.format(Locale.ENGLISH, "%s=%d%s", new Object[] { "original_id_type", Integer.valueOf(2), str1 }));
-        localObject = Locale.ENGLISH;
-        if (this.jdField_a_of_type_ComTencentLivesdkAccountengineUserEngine.getLoginRequest() != null) {}
-        for (paramString = this.jdField_a_of_type_ComTencentLivesdkAccountengineUserEngine.getLoginRequest().appid;; paramString = "")
-        {
-          localArrayList.add(String.format((Locale)localObject, "%s=%s%s", new Object[] { "original_auth_appid", paramString, str1 }));
-          break;
+        localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "original_id", ((LoginInfo)localObject4).openId, localObject1 }));
+        localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "original_key", ((LoginInfo)localObject4).access_token, localObject1 }));
+        localArrayList.add(String.format(Locale.ENGLISH, "%s=%d%s", new Object[] { "original_id_type", localObject2, localObject1 }));
+        localArrayList.add(String.format(Locale.ENGLISH, "%s=%d%s", new Object[] { "original_key_type", Integer.valueOf(37), localObject1 }));
+        localObject4 = Locale.ENGLISH;
+        if (((UserEngine)localObject3).getLoginRequest() != null) {
+          paramString = ((UserEngine)localObject3).getLoginRequest().appid;
         }
-        localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "uin", "", str1 }));
-        localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "skey", "", str1 }));
-        localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "original_id", paramString.openId, str1 }));
-        localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "original_key", paramString.access_token, str1 }));
-        localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "original_id_type", "", str1 }));
-        localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "original_key_type", "", str1 }));
-        localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "original_auth_appid", "", str1 }));
+        localArrayList.add(String.format((Locale)localObject4, "%s=%s%s", new Object[] { "original_auth_appid", paramString, localObject1 }));
+      }
+      else if (((LoginInfo)localObject4).loginType == LoginType.WX)
+      {
+        localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "original_id", ((LoginInfo)localObject4).openId, localObject1 }));
+        localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "original_key", ((LoginInfo)localObject4).access_token, localObject1 }));
+        localArrayList.add(String.format(Locale.ENGLISH, "%s=%d%s", new Object[] { "original_id_type", Integer.valueOf(2), localObject1 }));
+        localObject4 = Locale.ENGLISH;
+        if (((UserEngine)localObject3).getLoginRequest() != null) {
+          paramString = ((UserEngine)localObject3).getLoginRequest().appid;
+        }
+        localArrayList.add(String.format((Locale)localObject4, "%s=%s%s", new Object[] { "original_auth_appid", paramString, localObject1 }));
       }
     }
+    else
+    {
+      localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "uin", paramString, localObject1 }));
+      localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "skey", paramString, localObject1 }));
+      localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "original_id", ((LoginInfo)localObject4).openId, localObject1 }));
+      localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "original_key", ((LoginInfo)localObject4).access_token, localObject1 }));
+      localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "original_id_type", paramString, localObject1 }));
+      localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "original_key_type", paramString, localObject1 }));
+      localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "original_auth_appid", paramString, localObject1 }));
+    }
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%d%s", new Object[] { "ilive_uid_type", localObject2, localObject1 }));
+    return localArrayList;
   }
   
   public void a(Context paramContext, String paramString)
@@ -146,7 +149,7 @@ public class WebCookieManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.WebCookieManager
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class FileManager
 {
-  private static FileManager s_instance = null;
+  private static FileManager s_instance;
   private int MAX_LENGTH = 5;
   private String TAG = "FileManager";
   private ArrayList<String> fileNameList = new ArrayList();
@@ -17,27 +17,35 @@ public class FileManager
   
   private boolean createSilkTempDir()
   {
-    Object localObject = Environment.getExternalStorageDirectory().getAbsolutePath();
-    localObject = (String)localObject + "/" + this.silkFolderName;
+    Object localObject1 = Environment.getExternalStorageDirectory().getAbsolutePath();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("/");
+    ((StringBuilder)localObject2).append(this.silkFolderName);
+    localObject1 = ((StringBuilder)localObject2).toString();
     try
     {
-      localObject = new File((String)localObject);
-      if (((File)localObject).exists())
+      localObject1 = new File((String)localObject1);
+      if (((File)localObject1).exists())
       {
-        this.fullDirPath = ((File)localObject).getAbsolutePath();
+        this.fullDirPath = ((File)localObject1).getAbsolutePath();
       }
       else
       {
-        ((File)localObject).mkdir();
-        this.fullDirPath = ((File)localObject).getAbsolutePath();
+        ((File)localObject1).mkdir();
+        this.fullDirPath = ((File)localObject1).getAbsolutePath();
       }
+      return true;
     }
     catch (Exception localException)
     {
-      Log.e(this.TAG, "create temp file error : e = " + localException);
-      return false;
+      localObject2 = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("create temp file error : e = ");
+      localStringBuilder.append(localException);
+      Log.e((String)localObject2, localStringBuilder.toString());
     }
-    return true;
+    return false;
   }
   
   public static FileManager getInstance()
@@ -53,81 +61,100 @@ public class FileManager
   
   public boolean deleteAllFile()
   {
-    if (this.fullDirPath == null) {
-      Log.e(this.TAG, "Target dir is null!");
-    }
-    for (;;)
+    Object localObject = this.fullDirPath;
+    if (localObject == null)
     {
+      Log.e(this.TAG, "Target dir is null!");
       return true;
-      try
+    }
+    try
+    {
+      localObject = new File((String)localObject).listFiles();
+      if (localObject != null)
       {
-        File[] arrayOfFile = new File(this.fullDirPath).listFiles();
-        if ((arrayOfFile != null) && (arrayOfFile.length != 0))
-        {
-          Log.d(this.TAG, "begin delete " + arrayOfFile.length + " files");
-          int i = 0;
-          while (i < arrayOfFile.length)
-          {
-            arrayOfFile[i].delete();
-            i += 1;
-          }
-          Log.d(this.TAG, "end delete files");
+        if (localObject.length == 0) {
           return true;
         }
+        String str = this.TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("begin delete ");
+        localStringBuilder.append(localObject.length);
+        localStringBuilder.append(" files");
+        Log.d(str, localStringBuilder.toString());
+        int i = 0;
+        while (i < localObject.length)
+        {
+          localObject[i].delete();
+          i += 1;
+        }
+        Log.d(this.TAG, "end delete files");
       }
-      catch (Exception localException)
-      {
-        Log.e(this.TAG, "delete all file failed!");
-      }
+      return true;
     }
+    catch (Exception localException)
+    {
+      label126:
+      break label126;
+    }
+    Log.e(this.TAG, "delete all file failed!");
     return false;
   }
   
   public void deleteFile()
   {
+    int j = this.fileNameList.size();
+    int k = this.MAX_LENGTH;
     int i = 0;
-    String str;
-    if (this.fileNameList.size() > this.MAX_LENGTH) {
-      for (;;)
+    String str1;
+    String str2;
+    StringBuilder localStringBuilder;
+    if (j > k) {
+      while (i < this.fileNameList.size())
       {
-        if (i >= this.fileNameList.size()) {
-          break label159;
-        }
-        str = (String)this.fileNameList.get(i);
+        str1 = (String)this.fileNameList.get(i);
         try
         {
-          File localFile1 = new File(str);
+          File localFile1 = new File(str1);
           if (localFile1.exists()) {
             localFile1.delete();
           }
-          i += 1;
         }
         catch (Exception localException1)
         {
-          for (;;)
-          {
-            Log.e(this.TAG, "delete file failed! file name = " + str + "exception = " + localException1);
-          }
+          str2 = this.TAG;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("delete file failed! file name = ");
+          localStringBuilder.append(str1);
+          localStringBuilder.append("exception = ");
+          localStringBuilder.append(localException1);
+          Log.e(str2, localStringBuilder.toString());
         }
+        i += 1;
       }
     }
     if (this.fileNameList.size() > 0)
     {
-      str = (String)this.fileNameList.get(0);
+      str1 = (String)this.fileNameList.get(0);
       this.fileNameList.remove(0);
-    }
-    try
-    {
-      File localFile2 = new File(str);
-      if (localFile2.exists()) {
-        localFile2.delete();
+      try
+      {
+        File localFile2 = new File(str1);
+        if (localFile2.exists())
+        {
+          localFile2.delete();
+          return;
+        }
       }
-      label159:
-      return;
-    }
-    catch (Exception localException2)
-    {
-      Log.e(this.TAG, "delete file failed! file name = " + str + "exception = " + localException2);
+      catch (Exception localException2)
+      {
+        str2 = this.TAG;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("delete file failed! file name = ");
+        localStringBuilder.append(str1);
+        localStringBuilder.append("exception = ");
+        localStringBuilder.append(localException2);
+        Log.e(str2, localStringBuilder.toString());
+      }
     }
   }
   
@@ -138,9 +165,15 @@ public class FileManager
       Log.e(this.TAG, "can not create silk temp dir!");
       return null;
     }
-    String str = this.fullDirPath + "/" + this.fileNamePrx + System.currentTimeMillis() + ".silk";
-    this.fileNameList.add(str);
-    return str;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.fullDirPath);
+    ((StringBuilder)localObject).append("/");
+    ((StringBuilder)localObject).append(this.fileNamePrx);
+    ((StringBuilder)localObject).append(System.currentTimeMillis());
+    ((StringBuilder)localObject).append(".silk");
+    localObject = ((StringBuilder)localObject).toString();
+    this.fileNameList.add(localObject);
+    return localObject;
   }
 }
 

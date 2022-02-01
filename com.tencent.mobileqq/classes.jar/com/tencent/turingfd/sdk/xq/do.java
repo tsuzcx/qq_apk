@@ -6,28 +6,35 @@ public class do
 {
   public static String a(String paramString, int paramInt)
   {
-    return paramString + paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(paramInt);
+    return localStringBuilder.toString();
   }
   
-  public static StringBuilder a(String paramString)
+  public static String a(StringBuilder paramStringBuilder, String paramString1, String paramString2)
   {
-    return new StringBuilder().append(paramString);
-  }
-  
-  public static void a(StringBuilder paramStringBuilder, int paramInt, HashMap paramHashMap, Object paramObject)
-  {
-    paramHashMap.put(paramObject, paramInt);
+    paramStringBuilder.append(paramString1);
+    paramStringBuilder.append(paramString2);
+    return paramStringBuilder.toString();
   }
   
   public static void a(HashMap paramHashMap, Object paramObject1, Object paramObject2, long paramLong, int paramInt)
   {
     paramHashMap.put(paramObject1, paramObject2);
-    Betelnut.a(paramInt, System.currentTimeMillis() - paramLong);
+    Dew.b(paramInt, System.currentTimeMillis() - paramLong);
+  }
+  
+  public static StringBuilder b(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    return localStringBuilder;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.do
  * JD-Core Version:    0.7.0.1
  */

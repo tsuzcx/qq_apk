@@ -48,55 +48,40 @@ public class MiniAppCacheProxyImpl
   
   public byte[] getIdInfo(String paramString1, String paramString2)
   {
-    Object localObject2 = null;
     MiniAppEntityManager localMiniAppEntityManager = a();
-    Object localObject1 = localObject2;
     if (localMiniAppEntityManager != null)
     {
       paramString1 = localMiniAppEntityManager.queryEntity(MiniAppInfoByIdEntity.class, false, "appId=? and entryPath=? ", new String[] { paramString1, paramString2 }, null, null, null, null);
-      localObject1 = localObject2;
-      if (paramString1 != null)
+      if ((paramString1 != null) && (paramString1.size() == 1))
       {
-        localObject1 = localObject2;
-        if (paramString1.size() == 1)
-        {
-          paramString1 = (MiniAppInfoByIdEntity)paramString1.get(0);
-          localObject1 = localObject2;
-          if (paramString1 != null) {
-            localObject1 = paramString1.appInfo;
-          }
+        paramString1 = (MiniAppInfoByIdEntity)paramString1.get(0);
+        if (paramString1 != null) {
+          return paramString1.appInfo;
         }
       }
     }
-    return localObject1;
+    return null;
   }
   
   public MiniAppCacheProxy.LinkData getLinkInfo(String paramString, int paramInt)
   {
-    Object localObject2 = null;
-    MiniAppEntityManager localMiniAppEntityManager = a();
-    Object localObject1 = localObject2;
-    if (localMiniAppEntityManager != null)
+    Object localObject = a();
+    if (localObject != null)
     {
-      paramString = localMiniAppEntityManager.queryEntity(MiniAppInfoByLinkEntity.class, false, "link=? and linkType=? ", new String[] { paramString, String.valueOf(paramInt) }, null, null, null, null);
-      localObject1 = localObject2;
-      if (paramString != null)
+      paramString = ((MiniAppEntityManager)localObject).queryEntity(MiniAppInfoByLinkEntity.class, false, "link=? and linkType=? ", new String[] { paramString, String.valueOf(paramInt) }, null, null, null, null);
+      if ((paramString != null) && (paramString.size() == 1))
       {
-        localObject1 = localObject2;
-        if (paramString.size() == 1)
+        paramString = (MiniAppInfoByLinkEntity)paramString.get(0);
+        if (paramString != null)
         {
-          paramString = (MiniAppInfoByLinkEntity)paramString.get(0);
-          localObject1 = localObject2;
-          if (paramString != null)
-          {
-            localObject1 = new MiniAppCacheProxy.LinkData();
-            ((MiniAppCacheProxy.LinkData)localObject1).setAppInfo(paramString.appInfo);
-            ((MiniAppCacheProxy.LinkData)localObject1).setShareTicket(paramString.shareTicket);
-          }
+          localObject = new MiniAppCacheProxy.LinkData();
+          ((MiniAppCacheProxy.LinkData)localObject).setAppInfo(paramString.appInfo);
+          ((MiniAppCacheProxy.LinkData)localObject).setShareTicket(paramString.shareTicket);
+          return localObject;
         }
       }
     }
-    return localObject1;
+    return null;
   }
   
   public boolean saveIdInfo(String paramString1, String paramString2, byte[] paramArrayOfByte, long paramLong)
@@ -109,7 +94,10 @@ public class MiniAppCacheProxyImpl
     paramString1 = a();
     if ((paramString1 != null) && (paramString1.insertOrReplaceEntity(localMiniAppInfoByIdEntity)))
     {
-      QLog.d("MiniAppCacheProxyImpl", 1, "saveIdInfo ok." + localMiniAppInfoByIdEntity.appId);
+      paramString1 = new StringBuilder();
+      paramString1.append("saveIdInfo ok.");
+      paramString1.append(localMiniAppInfoByIdEntity.appId);
+      QLog.d("MiniAppCacheProxyImpl", 1, paramString1.toString());
       return true;
     }
     return false;
@@ -126,7 +114,12 @@ public class MiniAppCacheProxyImpl
     paramString1 = a();
     if ((paramString1 != null) && (paramString1.insertOrReplaceEntity(localMiniAppInfoByLinkEntity)))
     {
-      QLog.d("MiniAppCacheProxyImpl", 1, "saveLinkInfo ok." + localMiniAppInfoByLinkEntity.link + " linkType:" + paramInt);
+      paramString1 = new StringBuilder();
+      paramString1.append("saveLinkInfo ok.");
+      paramString1.append(localMiniAppInfoByLinkEntity.link);
+      paramString1.append(" linkType:");
+      paramString1.append(paramInt);
+      QLog.d("MiniAppCacheProxyImpl", 1, paramString1.toString());
       return true;
     }
     return false;
@@ -134,7 +127,7 @@ public class MiniAppCacheProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAppCacheProxyImpl
  * JD-Core Version:    0.7.0.1
  */

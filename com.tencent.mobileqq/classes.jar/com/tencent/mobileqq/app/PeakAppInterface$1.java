@@ -17,14 +17,19 @@ class PeakAppInterface$1
     {
       int i = paramIntent.getIntExtra("rsptype", 0);
       paramContext = paramIntent.getByteArrayExtra("rspbody");
-      QLog.d("PeakAppInterface", 2, "ACTION_AUDIO_TRANS_PUSH rsptype=" + i + "|" + paramContext.length);
+      paramIntent = new StringBuilder();
+      paramIntent.append("ACTION_AUDIO_TRANS_PUSH rsptype=");
+      paramIntent.append(i);
+      paramIntent.append("|");
+      paramIntent.append(paramContext.length);
+      QLog.d("PeakAppInterface", 2, paramIntent.toString());
       ((PeakAudioTransHandler)this.a.getBusinessHandler(PeakAppInterface.a)).a(i, paramContext);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.PeakAppInterface.1
  * JD-Core Version:    0.7.0.1
  */

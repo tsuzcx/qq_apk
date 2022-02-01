@@ -5,7 +5,8 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
+import com.tencent.mobileqq.filemanager.api.IFMDataCacheApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
@@ -17,56 +18,48 @@ class QFileSendBarManager$1
   
   public void onClick(View paramView)
   {
-    if (!this.a.jdField_a_of_type_Boolean)
+    if (this.a.jdField_a_of_type_Boolean)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    int i = 4;
-    if (QFileSendBarManager.a(this.a) == 1)
-    {
-      i = 2;
-      label33:
-      if ((QFileSendBarManager.a(this.a) == null) || (!QFileSendBarManager.a(this.a).equals(AppConstants.DATALINE_PC_UIN))) {
-        break label240;
+      int i = 4;
+      if (QFileSendBarManager.a(this.a) == 1) {
+        i = 2;
+      } else if (QFileSendBarManager.a(this.a) == 0) {
+        i = 1;
       }
-      i = 3;
-    }
-    label240:
-    for (;;)
-    {
-      long l = FMDataCache.b();
-      ReportController.b(null, "dc00898", "", "", "0X800AA92", "0X800AA92", i, 0, "" + l, "0", "", "");
+      if ((QFileSendBarManager.a(this.a) != null) && (QFileSendBarManager.a(this.a).equals(AppConstants.DATALINE_PC_UIN))) {
+        i = 3;
+      }
+      long l = ((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getSelectedCount();
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("");
+      ((StringBuilder)localObject1).append(l);
+      ReportController.b(null, "dc00898", "", "", "0X800AA92", "0X800AA92", i, 0, ((StringBuilder)localObject1).toString(), "0", "", "");
       if (QFileSendBarManager.a(this.a) == 1101)
       {
-        Object localObject = new ArrayList();
-        ((ArrayList)localObject).addAll(FMDataCache.a());
-        Intent localIntent = new Intent();
-        localIntent.putExtra("file_choose_search_result_code", "file_choose_search_result_code");
-        localIntent.putParcelableArrayListExtra("reslut_select_file_info_list", (ArrayList)localObject);
-        localObject = (Activity)this.a.jdField_a_of_type_AndroidContentContext;
-        ((Activity)localObject).setResult(-1, localIntent);
-        ((Activity)localObject).finish();
-        break;
-        if (QFileSendBarManager.a(this.a) != 0) {
-          break label33;
-        }
-        i = 1;
-        break label33;
+        Object localObject2 = new ArrayList();
+        ((ArrayList)localObject2).addAll(((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getLocalFiles());
+        localObject1 = new Intent();
+        ((Intent)localObject1).putExtra("file_choose_search_result_code", "file_choose_search_result_code");
+        ((Intent)localObject1).putParcelableArrayListExtra("reslut_select_file_info_list", (ArrayList)localObject2);
+        localObject2 = (Activity)this.a.jdField_a_of_type_AndroidContentContext;
+        ((Activity)localObject2).setResult(-1, (Intent)localObject1);
+        ((Activity)localObject2).finish();
       }
-      if (QFileSendBarManager.a(this.a) == 1)
+      else if (QFileSendBarManager.a(this.a) == 1)
       {
         QFileSendBarManager.a(this.a);
-        break;
       }
-      QFileSendBarManager.b(this.a);
-      break;
+      else
+      {
+        QFileSendBarManager.b(this.a);
+      }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.QFileSendBarManager.1
  * JD-Core Version:    0.7.0.1
  */

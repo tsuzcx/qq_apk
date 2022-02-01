@@ -21,14 +21,15 @@ class TroopNickAdapter$1
       {
         this.a.a = paramEIPCResult.fontId;
         this.a.b = paramEIPCResult.fontType;
-        this.a.a(TroopNickAdapter.a(this.a), paramEIPCResult.delay, paramEIPCResult.repeatCount);
+        TroopNickAdapter localTroopNickAdapter = this.a;
+        localTroopNickAdapter.a(TroopNickAdapter.a(localTroopNickAdapter), paramEIPCResult.delay, paramEIPCResult.repeatCount);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopnick.TroopNickAdapter.1
  * JD-Core Version:    0.7.0.1
  */

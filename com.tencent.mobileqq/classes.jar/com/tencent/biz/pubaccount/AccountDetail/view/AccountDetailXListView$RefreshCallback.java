@@ -1,4 +1,4 @@
-package com.tencent.biz.pubaccount.AccountDetail.view;
+package com.tencent.biz.pubaccount.accountdetail.view;
 
 import com.tencent.widget.ListView;
 
@@ -8,7 +8,7 @@ public abstract interface AccountDetailXListView$RefreshCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView.RefreshCallback
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailXListView.RefreshCallback
  * JD-Core Version:    0.7.0.1
  */

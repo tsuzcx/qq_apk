@@ -1,5 +1,6 @@
 package com.tencent.av.ui;
 
+import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
 import android.animation.ObjectAnimator;
@@ -23,10 +24,10 @@ import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.business.manager.EffectOperateManager;
 import com.tencent.av.tips.TipsUtil;
 import com.tencent.av.utils.AVColorStateList;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.av.utils.TintStateDrawable;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.tianshu.ui.RedTouch;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
@@ -35,75 +36,96 @@ import java.lang.reflect.Constructor;
 
 public abstract class BaseToolbar
 {
-  public final String TAG = "EffectSettingUi." + getClass().getSimpleName();
-  protected WeakReference<AVActivity> mActivity = null;
-  public VideoAppInterface mApp;
-  protected Button mEffectBtn = null;
-  RedTouch mEffectBtnRedTouch = null;
-  private boolean mIsCreated = false;
+  public final String TAG;
+  protected WeakReference<AVActivity> mActivity;
+  protected VideoAppInterface mApp;
+  protected Button mEffectBtn;
+  RedTouch mEffectBtnRedTouch;
+  private boolean mIsCreated;
   protected View toolbarView;
   
   public BaseToolbar(VideoAppInterface paramVideoAppInterface, AVActivity paramAVActivity)
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EffectSettingUi.");
+    localStringBuilder.append(getClass().getSimpleName());
+    this.TAG = localStringBuilder.toString();
+    this.mEffectBtn = null;
+    this.mActivity = null;
+    this.mEffectBtnRedTouch = null;
+    this.mIsCreated = false;
     this.mApp = paramVideoAppInterface;
     this.mActivity = new WeakReference(paramAVActivity);
   }
   
   private static Button CreateImageButton(LinearLayout paramLinearLayout, int paramInt, BaseToolbar.UIInfo paramUIInfo)
   {
-    if ((paramLinearLayout == null) || (paramUIInfo == null)) {
-      return null;
-    }
-    Button localButton = new Button(paramLinearLayout.getContext());
-    Object localObject = paramLinearLayout.getResources();
-    int i = (int)((Resources)localObject).getDimension(2131297769);
-    localButton.setId(paramInt);
-    localButton.setGravity(17);
-    localButton.setSingleLine();
-    localButton.setContentDescription(paramUIInfo.jdField_a_of_type_JavaLangString);
-    localButton.setBackgroundDrawable(null);
-    localButton.setCompoundDrawablePadding(AIOUtils.a(5.0F, (Resources)localObject));
-    localButton.setText(paramUIInfo.jdField_a_of_type_JavaLangString);
-    localButton.setTextSize(ViewUtils.e(AIOUtils.a(12.0F, (Resources)localObject)));
-    paramUIInfo = paramUIInfo.jdField_a_of_type_JavaLangString;
-    localObject = localButton.getPaint();
-    if ((localObject != null) && (!TextUtils.isEmpty(paramUIInfo)))
+    if (paramLinearLayout != null)
     {
-      paramInt = (int)(((TextPaint)localObject).measureText(paramUIInfo) + 0.5F);
-      if (QLog.isColorLevel()) {
-        QLog.i("", 2, "CreateImageButton textWidth[" + paramInt + "], btn_width[" + i + "]");
+      if (paramUIInfo == null) {
+        return null;
       }
-      if (i >= paramInt) {}
-    }
-    for (;;)
-    {
+      Button localButton = new Button(paramLinearLayout.getContext());
+      Object localObject = paramLinearLayout.getResources();
+      int i = (int)((Resources)localObject).getDimension(2131297760);
+      localButton.setId(paramInt);
+      localButton.setGravity(17);
+      localButton.setSingleLine();
+      localButton.setContentDescription(paramUIInfo.jdField_a_of_type_JavaLangString);
+      localButton.setBackgroundDrawable(null);
+      localButton.setCompoundDrawablePadding(AIOUtils.b(5.0F, (Resources)localObject));
+      localButton.setText(paramUIInfo.jdField_a_of_type_JavaLangString);
+      localButton.setTextSize(ViewUtils.e(AIOUtils.b(12.0F, (Resources)localObject)));
+      paramUIInfo = paramUIInfo.jdField_a_of_type_JavaLangString;
+      localObject = localButton.getPaint();
+      if ((localObject != null) && (!TextUtils.isEmpty(paramUIInfo)))
+      {
+        paramInt = (int)(((TextPaint)localObject).measureText(paramUIInfo) + 0.5F);
+        if (QLog.isColorLevel())
+        {
+          paramUIInfo = new StringBuilder();
+          paramUIInfo.append("CreateImageButton textWidth[");
+          paramUIInfo.append(paramInt);
+          paramUIInfo.append("], btn_width[");
+          paramUIInfo.append(i);
+          paramUIInfo.append("]");
+          QLog.i("", 2, paramUIInfo.toString());
+        }
+        if (i < paramInt) {}
+      }
+      else
+      {
+        paramInt = i;
+      }
       paramUIInfo = new LinearLayout.LayoutParams(paramInt, -2);
       paramUIInfo.weight = 1.0F;
       localButton.setLayoutParams(paramUIInfo);
       paramLinearLayout.addView(localButton);
       return localButton;
-      paramInt = i;
     }
+    return null;
   }
   
   private void changImageButtonStyle(Button paramButton, int paramInt1, int paramInt2)
   {
-    if (paramButton == null) {
+    if (paramButton == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.d(this.TAG, 2, "changButtonStyle button is null");
       }
-    }
-    while (paramInt1 == 0) {
       return;
     }
-    Object localObject = paramButton.getResources();
-    int i = (int)((Resources)localObject).getDimension(2131297765);
-    if (paramInt2 > 0) {}
-    for (localObject = TintStateDrawable.a((Resources)localObject, paramInt1, paramInt2);; localObject = ((Resources)localObject).getDrawable(paramInt1))
+    if (paramInt1 != 0)
     {
+      Object localObject = paramButton.getResources();
+      int i = (int)((Resources)localObject).getDimension(2131297756);
+      if (paramInt2 > 0) {
+        localObject = TintStateDrawable.a((Resources)localObject, paramInt1, paramInt2);
+      } else {
+        localObject = ((Resources)localObject).getDrawable(paramInt1);
+      }
       ((Drawable)localObject).setBounds(0, 0, i, i);
       paramButton.setCompoundDrawables(null, (Drawable)localObject, null, null);
-      return;
     }
   }
   
@@ -114,37 +136,41 @@ public abstract class BaseToolbar
       paramVideoAppInterface = (BaseToolbar)paramClass.getConstructor(new Class[] { VideoAppInterface.class, AVActivity.class }).newInstance(new Object[] { paramVideoAppInterface, paramAVActivity });
       return paramVideoAppInterface;
     }
-    catch (Exception localException)
+    catch (Exception paramAVActivity)
     {
-      QLog.d(paramClass.getSimpleName(), 1, "createToolbar crash", localException);
-      paramAVActivity = null;
-      paramVideoAppInterface = paramAVActivity;
-      if (localException != null)
-      {
-        paramVideoAppInterface = paramAVActivity;
-        if (localException.getClass() != null) {
-          paramVideoAppInterface = localException.getClass().getName();
-        }
+      QLog.d(paramClass.getSimpleName(), 1, "createToolbar crash", paramAVActivity);
+      paramVideoAppInterface = null;
+      if (paramAVActivity.getClass() != null) {
+        paramVideoAppInterface = paramAVActivity.getClass().getName();
       }
-      throw new IllegalArgumentException("create Toolbar fail, Illegal value[" + paramClass.getName() + "], srcException[" + paramVideoAppInterface + "]");
+      paramAVActivity = new StringBuilder();
+      paramAVActivity.append("create Toolbar fail, Illegal value[");
+      paramAVActivity.append(paramClass.getName());
+      paramAVActivity.append("], srcException[");
+      paramAVActivity.append(paramVideoAppInterface);
+      paramAVActivity.append("]");
+      throw new IllegalArgumentException(paramAVActivity.toString());
     }
   }
   
   public static void setSelectedListViewItemAndShow(HorizontalListView paramHorizontalListView, QAVPtvTemplateAdapter paramQAVPtvTemplateAdapter, int paramInt)
   {
-    if ((!paramQAVPtvTemplateAdapter.a(paramInt)) || ((paramInt >= paramHorizontalListView.getFirstVisiblePosition()) && (paramInt <= paramHorizontalListView.getLastVisiblePosition()))) {
-      return;
-    }
-    int j = 0;
-    int i = j;
-    if (paramInt > 0)
+    if (paramQAVPtvTemplateAdapter.a(paramInt))
     {
-      i = j;
-      if (paramInt > paramQAVPtvTemplateAdapter.a()) {
-        i = QAVPtvTemplateAdapter.jdField_a_of_type_Int * (paramInt - 1);
+      if ((paramInt >= paramHorizontalListView.getFirstVisiblePosition()) && (paramInt <= paramHorizontalListView.getLastVisiblePosition())) {
+        return;
       }
+      int j = 0;
+      int i = j;
+      if (paramInt > 0)
+      {
+        i = j;
+        if (paramInt > paramQAVPtvTemplateAdapter.a()) {
+          i = QAVPtvTemplateAdapter.jdField_a_of_type_Int * (paramInt - 1);
+        }
+      }
+      paramHorizontalListView.resetCurrentX(i);
     }
-    paramHorizontalListView.resetCurrentX(i);
   }
   
   private final void show(long paramLong, int paramInt, boolean paramBoolean)
@@ -163,16 +189,23 @@ public abstract class BaseToolbar
   
   public final void create(long paramLong, RelativeLayout paramRelativeLayout)
   {
-    if (getUIInfo().g == 0) {
-      throw new IllegalArgumentException("create Toolbar fail, Illegal toolbarLayout id。" + this.TAG + "_" + paramLong);
-    }
-    if (this.mIsCreated) {
+    if (getUIInfo().g != 0)
+    {
+      if (this.mIsCreated) {
+        return;
+      }
+      this.mIsCreated = true;
+      this.toolbarView = LayoutInflater.from((Context)this.mActivity.get()).inflate(getUIInfo().g, null);
+      paramRelativeLayout.addView(this.toolbarView, new ViewGroup.LayoutParams(-1, -2));
+      onCreate(paramLong, (AVActivity)this.mActivity.get());
       return;
     }
-    this.mIsCreated = true;
-    this.toolbarView = LayoutInflater.from((Context)this.mActivity.get()).inflate(getUIInfo().g, null);
-    paramRelativeLayout.addView(this.toolbarView, new ViewGroup.LayoutParams(-1, -2));
-    onCreate(paramLong, (AVActivity)this.mActivity.get());
+    paramRelativeLayout = new StringBuilder();
+    paramRelativeLayout.append("create Toolbar fail, Illegal toolbarLayout id。");
+    paramRelativeLayout.append(this.TAG);
+    paramRelativeLayout.append("_");
+    paramRelativeLayout.append(paramLong);
+    throw new IllegalArgumentException(paramRelativeLayout.toString());
   }
   
   public final void destroy(long paramLong, VideoAppInterface paramVideoAppInterface)
@@ -189,8 +222,11 @@ public abstract class BaseToolbar
   
   public AVActivity getAVActivity()
   {
-    if (this.mActivity == null) {}
-    while (this.mActivity.get() == null) {
+    WeakReference localWeakReference = this.mActivity;
+    if (localWeakReference == null) {
+      return null;
+    }
+    if (localWeakReference.get() == null) {
       return null;
     }
     return (AVActivity)this.mActivity.get();
@@ -228,25 +264,23 @@ public abstract class BaseToolbar
     if (AudioHelper.a(0) == 1)
     {
       paramLinearLayout = this.mEffectBtn;
-      if (getEffectBtnId() % 2 != 0) {
-        break label76;
+      int i;
+      if (getEffectBtnId() % 2 == 0) {
+        i = -16777216;
+      } else {
+        i = -256;
       }
-    }
-    label76:
-    for (int i = -16777216;; i = -256)
-    {
       paramLinearLayout.setBackgroundColor(i);
-      if (paramBoolean) {
-        break;
-      }
+    }
+    if (!paramBoolean) {
       this.mEffectBtn.setVisibility(8);
-      return;
     }
   }
   
   public boolean isAvailable()
   {
-    return (this.mEffectBtn != null) && (this.mEffectBtn.getVisibility() == 0) && (canShowToolbar());
+    Button localButton = this.mEffectBtn;
+    return (localButton != null) && (localButton.getVisibility() == 0) && (canShowToolbar());
   }
   
   public boolean isCreated()
@@ -274,82 +308,106 @@ public abstract class BaseToolbar
   
   final void performClick()
   {
-    if (this.mEffectBtn != null)
+    Button localButton = this.mEffectBtn;
+    if (localButton != null)
     {
-      this.mEffectBtn.setTag(2131378887, Boolean.valueOf(true));
+      localButton.setTag(2131378276, Boolean.valueOf(true));
       this.mEffectBtn.performClick();
-      this.mEffectBtn.setTag(2131378887, null);
+      this.mEffectBtn.setTag(2131378276, null);
     }
   }
   
   public void setBtnSelected(boolean paramBoolean)
   {
-    if (this.mEffectBtn != null) {
-      this.mEffectBtn.setSelected(paramBoolean);
+    Button localButton = this.mEffectBtn;
+    if (localButton != null) {
+      localButton.setSelected(paramBoolean);
     }
   }
   
   void setEffectBtnVisibility(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      if (this.mEffectBtn != null) {
-        this.mEffectBtn.setVisibility(i);
-      }
-      if (this.mEffectBtnRedTouch != null) {
-        this.mEffectBtnRedTouch.setVisibility(i);
-      }
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    } else {
+      i = 8;
+    }
+    Object localObject = this.mEffectBtn;
+    if (localObject != null) {
+      ((Button)localObject).setVisibility(i);
+    }
+    localObject = this.mEffectBtnRedTouch;
+    if (localObject != null) {
+      ((RedTouch)localObject).setVisibility(i);
     }
   }
   
   public void setSelected(boolean paramBoolean)
   {
-    if (!this.mIsCreated) {}
-    do
-    {
+    if (!this.mIsCreated) {
       return;
-      if (this.mEffectBtn != null) {
-        this.mEffectBtn.setSelected(paramBoolean);
-      }
-    } while (getUIInfo().c == 0);
-    updateBtnStatus();
+    }
+    Button localButton = this.mEffectBtn;
+    if (localButton != null) {
+      localButton.setSelected(paramBoolean);
+    }
+    if (getUIInfo().c != 0) {
+      updateBtnStatus();
+    }
   }
   
   protected void showEffectBtnAnimation(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.TAG, 2, "showEffectBtnAnimation lastEffectBtnID: " + paramInt + ", showToolbar: " + paramBoolean2 + "， bFromPerformClick = " + paramBoolean1 + ", getEffectBtnId = " + getEffectBtnId());
-    }
-    Object localObject = (EffectOperateManager)this.mApp.a(8);
-    if ((localObject == null) || (!((EffectOperateManager)localObject).a())) {
-      if (QLog.isColorLevel()) {
-        QLog.e(this.TAG, 2, "showEffectBtnAnimation is not show effect button animation!");
-      }
-    }
-    do
+    Object localObject2;
+    if (QLog.isColorLevel())
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d(this.TAG, 2, "showEffectBtnAnimation getEffectType = " + ((EffectOperateManager)localObject).a());
+      localObject1 = this.TAG;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("showEffectBtnAnimation lastEffectBtnID: ");
+      ((StringBuilder)localObject2).append(paramInt);
+      ((StringBuilder)localObject2).append(", showToolbar: ");
+      ((StringBuilder)localObject2).append(paramBoolean2);
+      ((StringBuilder)localObject2).append("， bFromPerformClick = ");
+      ((StringBuilder)localObject2).append(paramBoolean1);
+      ((StringBuilder)localObject2).append(", getEffectBtnId = ");
+      ((StringBuilder)localObject2).append(getEffectBtnId());
+      QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
+    }
+    Object localObject1 = (EffectOperateManager)this.mApp.a(8);
+    if ((localObject1 != null) && (((EffectOperateManager)localObject1).a()))
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject2 = this.TAG;
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("showEffectBtnAnimation getEffectType = ");
+        ((StringBuilder)localObject3).append(((EffectOperateManager)localObject1).a());
+        QLog.d((String)localObject2, 2, ((StringBuilder)localObject3).toString());
       }
-    } while (((EffectOperateManager)localObject).a() != getEffectBtnId());
-    localObject = new AnimatorSet();
-    ((AnimatorSet)localObject).addListener(new BaseToolbar.1(this));
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.mEffectBtn, "scaleX", new float[] { 1.0F, 1.56F, 1.0F });
-    localObjectAnimator1.setDuration(400L);
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.mEffectBtn, "scaleY", new float[] { 1.0F, 1.56F, 1.0F });
-    localObjectAnimator2.setDuration(400L);
-    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(this.mEffectBtn, "scaleX", new float[] { 1.0F, 1.18F, 1.0F });
-    localObjectAnimator3.setDuration(400L);
-    localObjectAnimator3.setStartDelay(400L);
-    ObjectAnimator localObjectAnimator4 = ObjectAnimator.ofFloat(this.mEffectBtn, "scaleY", new float[] { 1.0F, 1.18F, 1.0F });
-    localObjectAnimator4.setDuration(400L);
-    localObjectAnimator4.setStartDelay(400L);
-    ((AnimatorSet)localObject).play(localObjectAnimator1).with(localObjectAnimator2).with(localObjectAnimator3).with(localObjectAnimator4);
-    ((AnimatorSet)localObject).setStartDelay(200L);
-    ((AnimatorSet)localObject).start();
+      if (((EffectOperateManager)localObject1).a() != getEffectBtnId()) {
+        return;
+      }
+      localObject1 = new AnimatorSet();
+      ((AnimatorSet)localObject1).addListener(new BaseToolbar.1(this));
+      localObject2 = ObjectAnimator.ofFloat(this.mEffectBtn, "scaleX", new float[] { 1.0F, 1.56F, 1.0F });
+      ((ObjectAnimator)localObject2).setDuration(400L);
+      Object localObject3 = ObjectAnimator.ofFloat(this.mEffectBtn, "scaleY", new float[] { 1.0F, 1.56F, 1.0F });
+      ((ObjectAnimator)localObject3).setDuration(400L);
+      ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.mEffectBtn, "scaleX", new float[] { 1.0F, 1.18F, 1.0F });
+      localObjectAnimator1.setDuration(400L);
+      localObjectAnimator1.setStartDelay(400L);
+      ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.mEffectBtn, "scaleY", new float[] { 1.0F, 1.18F, 1.0F });
+      localObjectAnimator2.setDuration(400L);
+      localObjectAnimator2.setStartDelay(400L);
+      ((AnimatorSet)localObject1).play((Animator)localObject2).with((Animator)localObject3).with(localObjectAnimator1).with(localObjectAnimator2);
+      ((AnimatorSet)localObject1).setStartDelay(200L);
+      ((AnimatorSet)localObject1).start();
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e(this.TAG, 2, "showEffectBtnAnimation is not show effect button animation!");
+    }
   }
   
   public final boolean tryShowToolbar(long paramLong, RelativeLayout paramRelativeLayout, int paramInt, boolean paramBoolean)
@@ -360,7 +418,14 @@ public abstract class BaseToolbar
       if (!TextUtils.isEmpty(paramRelativeLayout)) {
         TipsUtil.a(this.mApp, 1010, paramRelativeLayout);
       }
-      QLog.w(this.TAG, 1, "tryShowToolbar, 失败[" + paramRelativeLayout + "], seq[" + paramLong + "]");
+      String str = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("tryShowToolbar, 失败[");
+      localStringBuilder.append(paramRelativeLayout);
+      localStringBuilder.append("], seq[");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append("]");
+      QLog.w(str, 1, localStringBuilder.toString());
       return false;
     }
     create(paramLong, paramRelativeLayout);
@@ -373,8 +438,15 @@ public abstract class BaseToolbar
   
   void updateBtnStatus()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.TAG, 2, "updateBtnStatus, EffectBtnId[" + getEffectBtnId() + "]");
+    Object localObject2;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = this.TAG;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("updateBtnStatus, EffectBtnId[");
+      ((StringBuilder)localObject2).append(getEffectBtnId());
+      ((StringBuilder)localObject2).append("]");
+      QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
     if (this.mEffectBtn == null)
     {
@@ -383,53 +455,60 @@ public abstract class BaseToolbar
       }
       return;
     }
-    if ((EffectSettingUi.a(this.mApp, true)) && (!this.mApp.a().a().l()) && (getEffectBtnId() != 1)) {}
-    for (boolean bool = false;; bool = true)
+    boolean bool;
+    if ((EffectSettingUi.a(this.mApp, true)) && (!this.mApp.a().a().j()) && (getEffectBtnId() != 1)) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    this.mEffectBtn.setEnabled(bool);
+    Object localObject1 = getUIInfo();
+    if (localObject1 == null) {
+      return;
+    }
+    int k = ((BaseToolbar.UIInfo)localObject1).f;
+    int m = ((BaseToolbar.UIInfo)localObject1).b;
+    int n = 2131165987;
+    int j;
+    if ((bool) && (isEffectBtnEnable()))
     {
-      this.mEffectBtn.setEnabled(bool);
-      Object localObject = getUIInfo();
-      if (localObject == null) {
-        break;
-      }
-      int j = ((BaseToolbar.UIInfo)localObject).f;
-      int k = ((BaseToolbar.UIInfo)localObject).b;
-      if ((bool) && (isEffectBtnEnable())) {
-        if ((((BaseToolbar.UIInfo)localObject).c == 0) || (!this.mEffectBtn.isSelected())) {
-          break label270;
-        }
-      }
-      label270:
-      for (int i = ((BaseToolbar.UIInfo)localObject).c;; i = j)
+      int i = k;
+      if (((BaseToolbar.UIInfo)localObject1).c != 0)
       {
-        k = ((BaseToolbar.UIInfo)localObject).jdField_a_of_type_Int;
-        if (this.mEffectBtnRedTouch != null)
-        {
-          this.mEffectBtnRedTouch.setHostEnable(true);
-          int m = 2131165976;
-          j = i;
-          i = m;
+        i = k;
+        if (this.mEffectBtn.isSelected()) {
+          i = ((BaseToolbar.UIInfo)localObject1).c;
         }
-        for (;;)
-        {
-          changImageButtonStyle(this.mEffectBtn, j, k);
-          localObject = AVColorStateList.a(this.mEffectBtn.getResources(), i);
-          this.mEffectBtn.setTextColor((ColorStateList)localObject);
-          return;
-          if (this.mEffectBtnRedTouch != null) {
-            this.mEffectBtnRedTouch.setHostEnable(false);
-          }
-          i = ((BaseToolbar.UIInfo)localObject).b;
-          continue;
-          j = i;
-          i = 2131165976;
-        }
+      }
+      int i1 = ((BaseToolbar.UIInfo)localObject1).jdField_a_of_type_Int;
+      localObject1 = this.mEffectBtnRedTouch;
+      k = i;
+      m = i1;
+      j = n;
+      if (localObject1 != null)
+      {
+        ((RedTouch)localObject1).setHostEnable(true);
+        k = i;
+        m = i1;
+        j = n;
       }
     }
+    else
+    {
+      localObject2 = this.mEffectBtnRedTouch;
+      if (localObject2 != null) {
+        ((RedTouch)localObject2).setHostEnable(false);
+      }
+      j = ((BaseToolbar.UIInfo)localObject1).b;
+    }
+    changImageButtonStyle(this.mEffectBtn, k, m);
+    localObject1 = AVColorStateList.a(this.mEffectBtn.getResources(), j);
+    this.mEffectBtn.setTextColor((ColorStateList)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.BaseToolbar
  * JD-Core Version:    0.7.0.1
  */

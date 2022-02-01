@@ -2,12 +2,13 @@ package com.tencent.mobileqq.config.business.tendoc;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
-import com.tencent.mobileqq.teamwork.TeamWorkUtils;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.teamwork.api.ITeamWorkUtilsTemp;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class TencentDocConfigProcessor
   extends IQConfigProcessor<TencentDocConfigBean>
@@ -29,12 +30,16 @@ public class TencentDocConfigProcessor
   
   public void a(TencentDocConfigBean paramTencentDocConfigBean)
   {
-    if (paramTencentDocConfigBean == null) {}
-    while (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+    if (paramTencentDocConfigBean == null) {
       return;
     }
-    TeamWorkUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramTencentDocConfigBean.a());
-    TeamWorkUtils.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramTencentDocConfigBean.b());
+    Object localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if ((localObject instanceof AppInterface))
+    {
+      localObject = (AppInterface)localObject;
+      ((ITeamWorkUtilsTemp)QRoute.api(ITeamWorkUtilsTemp.class)).setTencentDocsAssitantEnable((AppInterface)localObject, paramTencentDocConfigBean.a());
+      ((ITeamWorkUtilsTemp)QRoute.api(ITeamWorkUtilsTemp.class)).setPreloadToolProcess((AppInterface)localObject, paramTencentDocConfigBean.b());
+    }
   }
   
   public Class<TencentDocConfigBean> clazz()
@@ -59,7 +64,10 @@ public class TencentDocConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.d("TencentDocConfigProcessor", 1, "AIO_PLUSPENAL_TENCENTDOC_ENRTY_CONFIG failed, resultCode:" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AIO_PLUSPENAL_TENCENTDOC_ENRTY_CONFIG failed, resultCode:");
+    localStringBuilder.append(paramInt);
+    QLog.d("TencentDocConfigProcessor", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -69,7 +77,7 @@ public class TencentDocConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

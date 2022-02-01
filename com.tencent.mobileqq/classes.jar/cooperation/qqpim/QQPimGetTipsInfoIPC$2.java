@@ -16,42 +16,53 @@ class QQPimGetTipsInfoIPC$2
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(QQPimDefineList.a, 2, "QQPimGetTipsInfoIPC.onCall()" + paramString);
-    }
-    if (QQPimDefineList.g.equals(paramString)) {
-      if (QQPimGetTipsInfoIPC.a() != -1) {}
-    }
-    while ((!QQPimDefineList.h.equals(paramString)) || (System.currentTimeMillis() - QQPimGetTipsInfoIPC.a(this.a) < 500L))
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        do
-        {
-          return null;
-        } while (System.currentTimeMillis() - QQPimGetTipsInfoIPC.a(this.a) < 500L);
-        QQPimGetTipsInfoIPC.a(this.a, System.currentTimeMillis());
-        if (QQPimGetTipsInfoIPC.a() == 0)
-        {
-          QQPimGetTipsInfoIPC.a(-1);
-          ThreadManager.postImmediately(new QQPimGetTipsInfoIPC.GetContactTipsRunnable(this.a, QQPimGetTipsInfoIPC.a(this.a), QQPimGetTipsInfoIPC.b(this.a)), null, true);
-          return null;
-        }
-      } while (QQPimGetTipsInfoIPC.a() != 1);
-      QQPimGetTipsInfoIPC.a(-1);
-      ThreadManager.postImmediately(new QQPimGetTipsInfoIPC.NoticeClickTipsRunnable(this.a, null), null, true);
-      return null;
+      paramBundle = QQPimDefineList.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("QQPimGetTipsInfoIPC.onCall()");
+      localStringBuilder.append(paramString);
+      QLog.i(paramBundle, 2, localStringBuilder.toString());
     }
-    QQPimGetTipsInfoIPC.a(this.a, System.currentTimeMillis());
-    paramString = new QQPimTipsInfo();
-    paramString.a = 0;
-    QQPimGetTipsInfoIPC.a(this.a).a(paramString);
+    if (QQPimDefineList.g.equals(paramString))
+    {
+      if (QQPimGetTipsInfoIPC.a() == -1) {
+        return null;
+      }
+      if (System.currentTimeMillis() - QQPimGetTipsInfoIPC.a(this.a) < 500L) {
+        return null;
+      }
+      QQPimGetTipsInfoIPC.a(this.a, System.currentTimeMillis());
+      if (QQPimGetTipsInfoIPC.a() == 0)
+      {
+        QQPimGetTipsInfoIPC.a(-1);
+        paramString = this.a;
+        ThreadManager.postImmediately(new QQPimGetTipsInfoIPC.GetContactTipsRunnable(paramString, QQPimGetTipsInfoIPC.a(paramString), QQPimGetTipsInfoIPC.b(this.a)), null, true);
+        return null;
+      }
+      if (QQPimGetTipsInfoIPC.a() == 1)
+      {
+        QQPimGetTipsInfoIPC.a(-1);
+        ThreadManager.postImmediately(new QQPimGetTipsInfoIPC.NoticeClickTipsRunnable(this.a, null), null, true);
+        return null;
+      }
+    }
+    else if (QQPimDefineList.h.equals(paramString))
+    {
+      if (System.currentTimeMillis() - QQPimGetTipsInfoIPC.a(this.a) < 500L) {
+        return null;
+      }
+      QQPimGetTipsInfoIPC.a(this.a, System.currentTimeMillis());
+      paramString = new QQPimTipsInfo();
+      paramString.a = 0;
+      QQPimGetTipsInfoIPC.a(this.a).a(paramString);
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqpim.QQPimGetTipsInfoIPC.2
  * JD-Core Version:    0.7.0.1
  */

@@ -93,8 +93,12 @@ public class LpReportInfo_dc00321
     this.reserves = paramInt3;
     if (paramGpsInfo != null)
     {
-      this.longitude = String.valueOf(paramGpsInfo.lat * 1.0D / 1000000.0D);
-      this.latitude = String.valueOf(paramGpsInfo.lon * 1.0D / 1000000.0D);
+      double d = paramGpsInfo.lat;
+      Double.isNaN(d);
+      this.longitude = String.valueOf(d * 1.0D / 1000000.0D);
+      d = paramGpsInfo.lon;
+      Double.isNaN(d);
+      this.latitude = String.valueOf(d * 1.0D / 1000000.0D);
     }
   }
   
@@ -106,8 +110,12 @@ public class LpReportInfo_dc00321
     this.infos = paramMap;
     if (paramGpsInfo != null)
     {
-      this.longitude = String.valueOf(paramGpsInfo.lat * 1.0D / 1000000.0D);
-      this.latitude = String.valueOf(paramGpsInfo.lon * 1.0D / 1000000.0D);
+      double d = paramGpsInfo.lat;
+      Double.isNaN(d);
+      this.longitude = String.valueOf(d * 1.0D / 1000000.0D);
+      d = paramGpsInfo.lon;
+      Double.isNaN(d);
+      this.latitude = String.valueOf(d * 1.0D / 1000000.0D);
     }
   }
   
@@ -115,8 +123,12 @@ public class LpReportInfo_dc00321
   {
     if (paramGpsInfo != null)
     {
-      this.longitude = String.valueOf(paramGpsInfo.lat * 1.0D / 1000000.0D);
-      this.latitude = String.valueOf(paramGpsInfo.lon * 1.0D / 1000000.0D);
+      double d = paramGpsInfo.lat;
+      Double.isNaN(d);
+      this.longitude = String.valueOf(d * 1.0D / 1000000.0D);
+      d = paramGpsInfo.lon;
+      Double.isNaN(d);
+      this.latitude = String.valueOf(d * 1.0D / 1000000.0D);
     }
   }
   
@@ -155,18 +167,25 @@ public class LpReportInfo_dc00321
   
   public String getSimpleInfo()
   {
-    return "dc00321:" + this.actiontype + "," + this.subactiontype + "," + this.reserves;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("dc00321:");
+    localStringBuilder.append(this.actiontype);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.subactiontype);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.reserves);
+    return localStringBuilder.toString();
   }
   
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    Object localObject1;
+    Object localObject1 = this.infos;
     Object localObject2;
     String str;
-    if (this.infos != null)
+    if (localObject1 != null)
     {
-      localObject1 = this.infos.keySet().iterator();
+      localObject1 = ((Map)localObject1).keySet().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (String)((Iterator)localObject1).next();
@@ -180,64 +199,62 @@ public class LpReportInfo_dc00321
     {
       if (!TextUtils.isEmpty(this.extraInfo)) {
         localObject1 = new JSONObject(this.extraInfo);
+      } else {
+        localObject1 = new JSONObject();
       }
-      for (;;)
+      if (((JSONObject)localObject1).length() > 0)
       {
-        if (((JSONObject)localObject1).length() > 0)
+        localObject2 = ((JSONObject)localObject1).keys();
+        while (((Iterator)localObject2).hasNext())
         {
-          localObject2 = ((JSONObject)localObject1).keys();
-          while (((Iterator)localObject2).hasNext())
-          {
-            str = (String)((Iterator)localObject2).next();
-            localHashMap.put(str, ((JSONObject)localObject1).optString(str));
-          }
-        }
-        try
-        {
-          i = Integer.parseInt((String)localHashMap.get("network_type"));
-          localHashMap.put("network_type", String.valueOf(((ILpReportUtils)QRoute.api(ILpReportUtils.class)).convertNetworkTypeToFitInDc00518(i)));
-          localHashMap.put("qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
-          localHashMap.put("device", "2");
-          localHashMap.put("p_x", this.longitude);
-          localHashMap.put("p_y", this.latitude);
-          return localHashMap;
-          localJSONObject = new JSONObject();
-        }
-        catch (Exception localException2)
-        {
-          for (;;)
-          {
-            i = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getNetworkType();
-          }
+          str = (String)((Iterator)localObject2).next();
+          localHashMap.put(str, ((JSONObject)localObject1).optString(str));
         }
       }
     }
     catch (Exception localException1)
     {
-      if (!localHashMap.containsKey("actiontype")) {
-        localHashMap.put("actiontype", String.valueOf(this.actiontype));
-      }
-      if (!localHashMap.containsKey("subactiontype")) {
-        localHashMap.put("subactiontype", String.valueOf(this.subactiontype));
-      }
-      if (!localHashMap.containsKey("reserves")) {
-        localHashMap.put("reserves", String.valueOf(this.reserves));
-      }
-      if (!localHashMap.containsKey("uin")) {
-        localHashMap.put("uin", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount());
-      }
-      if (!localHashMap.containsKey("network_type")) {}
+      label173:
+      break label173;
     }
-    for (;;)
+    if (!localHashMap.containsKey("actiontype")) {
+      localHashMap.put("actiontype", String.valueOf(this.actiontype));
+    }
+    if (!localHashMap.containsKey("subactiontype")) {
+      localHashMap.put("subactiontype", String.valueOf(this.subactiontype));
+    }
+    if (!localHashMap.containsKey("reserves")) {
+      localHashMap.put("reserves", String.valueOf(this.reserves));
+    }
+    if (!localHashMap.containsKey("uin")) {
+      localHashMap.put("uin", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount());
+    }
+    if (localHashMap.containsKey("network_type")) {}
+    try
     {
-      JSONObject localJSONObject;
-      int i = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getNetworkType();
+      i = Integer.parseInt((String)localHashMap.get("network_type"));
     }
+    catch (Exception localException2)
+    {
+      int i;
+      label321:
+      break label321;
+    }
+    i = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getNetworkType();
+    break label354;
+    i = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getNetworkType();
+    label354:
+    localHashMap.put("network_type", String.valueOf(((ILpReportUtils)QRoute.api(ILpReportUtils.class)).convertNetworkTypeToFitInDc00518(i)));
+    localHashMap.put("qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
+    localHashMap.put("device", "2");
+    localHashMap.put("p_x", this.longitude);
+    localHashMap.put("p_y", this.latitude);
+    return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc00321
  * JD-Core Version:    0.7.0.1
  */

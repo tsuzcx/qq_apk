@@ -12,42 +12,41 @@ public class ParcelHelper
   {
     paramObject = paramObject.getClass();
     ArrayList localArrayList = new ArrayList(16);
-    if (paramObject != Object.class) {}
     for (;;)
     {
-      int i;
-      try
-      {
-        Field[] arrayOfField = paramObject.getDeclaredFields();
-        int j = arrayOfField.length;
-        i = 0;
-        if (i < j)
+      if (paramObject != Object.class) {
+        try
         {
-          Field localField = arrayOfField[i];
-          if ((((localField.getModifiers() & 0x10) != 0) && ((localField.getModifiers() & 0x8) != 0)) || (localField.isAnnotationPresent(ParcelAnnotation.NotParcel.class)) || (("$jacocoData".endsWith(localField.getName())) && (localField.getType() == [Z.class))) {
-            break label153;
+          Field[] arrayOfField = paramObject.getDeclaredFields();
+          int j = arrayOfField.length;
+          int i = 0;
+          while (i < j)
+          {
+            Field localField = arrayOfField[i];
+            if ((((localField.getModifiers() & 0x10) == 0) || ((localField.getModifiers() & 0x8) == 0)) && (!localField.isAnnotationPresent(ParcelAnnotation.NotParcel.class)) && ((!"$jacocoData".endsWith(localField.getName())) || (localField.getType() != [Z.class)))
+            {
+              localField.setAccessible(true);
+              localArrayList.add(localField);
+            }
+            i += 1;
           }
-          localField.setAccessible(true);
-          localArrayList.add(localField);
+        }
+        catch (Exception localException)
+        {
+          QLog.d("ParcelHelper", 2, new Object[] { "cls null error", localException.getStackTrace() });
+          paramObject = paramObject.getSuperclass();
         }
       }
-      catch (Exception localException)
-      {
-        QLog.d("ParcelHelper", 2, new Object[] { "cls null error", localException.getStackTrace() });
-        paramObject = paramObject.getSuperclass();
-      }
-      break;
-      return localArrayList;
-      label153:
-      i += 1;
     }
+    return localArrayList;
   }
   
   private static void a(Object paramObject)
   {
-    if (!paramObject.getClass().isAnnotationPresent(ParcelAnnotation.ParcelObject.class)) {
-      throw new RuntimeException("Object to Parcel must describe @ParcelObject");
+    if (paramObject.getClass().isAnnotationPresent(ParcelAnnotation.ParcelObject.class)) {
+      return;
     }
+    throw new RuntimeException("Object to Parcel must describe @ParcelObject");
   }
   
   /* Error */
@@ -71,275 +70,290 @@ public class ParcelHelper
     //   24: aastore
     //   25: invokestatic 79	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   28: aconst_null
-    //   29: astore_3
-    //   30: aconst_null
-    //   31: astore 5
-    //   33: invokestatic 112	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   36: astore 4
-    //   38: aload 4
-    //   40: astore 5
-    //   42: aload 4
-    //   44: astore_3
-    //   45: aload 4
-    //   47: aload_1
-    //   48: iconst_0
-    //   49: aload_1
-    //   50: arraylength
-    //   51: invokevirtual 116	android/os/Parcel:unmarshall	([BII)V
-    //   54: aload 4
-    //   56: astore 5
-    //   58: aload 4
-    //   60: astore_3
-    //   61: aload 4
-    //   63: iconst_0
-    //   64: invokevirtual 119	android/os/Parcel:setDataPosition	(I)V
-    //   67: aload 4
-    //   69: astore 5
-    //   71: aload 4
-    //   73: astore_3
-    //   74: aload 4
-    //   76: invokevirtual 122	android/os/Parcel:readInt	()I
-    //   79: istore_2
-    //   80: sipush 147
-    //   83: iload_2
-    //   84: if_icmpeq +62 -> 146
-    //   87: aload 4
-    //   89: astore 5
-    //   91: aload 4
-    //   93: astore_3
-    //   94: ldc 67
-    //   96: iconst_1
-    //   97: iconst_2
-    //   98: anewarray 4	java/lang/Object
-    //   101: dup
-    //   102: iconst_0
-    //   103: ldc 124
-    //   105: aastore
-    //   106: dup
-    //   107: iconst_1
-    //   108: iload_2
-    //   109: invokestatic 130	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   112: aastore
-    //   113: invokestatic 79	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   116: aload 4
-    //   118: ifnull +8 -> 126
-    //   121: aload 4
-    //   123: invokevirtual 133	android/os/Parcel:recycle	()V
-    //   126: iconst_0
-    //   127: ireturn
-    //   128: astore_0
-    //   129: invokestatic 104	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   132: ifeq -6 -> 126
-    //   135: ldc 67
-    //   137: iconst_2
-    //   138: ldc 135
-    //   140: aload_0
-    //   141: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   144: iconst_0
-    //   145: ireturn
-    //   146: aload 4
-    //   148: astore 5
-    //   150: aload 4
-    //   152: astore_3
-    //   153: aload_0
-    //   154: invokestatic 140	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper:a	(Ljava/lang/Object;)V
-    //   157: aload 4
-    //   159: astore 5
-    //   161: aload 4
-    //   163: astore_3
-    //   164: aload 4
-    //   166: invokevirtual 143	android/os/Parcel:readString	()Ljava/lang/String;
-    //   169: astore_1
-    //   170: aload 4
-    //   172: astore 5
-    //   174: aload 4
-    //   176: astore_3
-    //   177: aload_0
-    //   178: invokevirtual 17	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   181: invokevirtual 144	java/lang/Class:getName	()Ljava/lang/String;
-    //   184: aload_1
-    //   185: invokevirtual 147	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   188: ifne +74 -> 262
-    //   191: aload 4
-    //   193: astore 5
-    //   195: aload 4
-    //   197: astore_3
-    //   198: ldc 67
-    //   200: iconst_1
-    //   201: iconst_4
-    //   202: anewarray 4	java/lang/Object
-    //   205: dup
-    //   206: iconst_0
-    //   207: ldc 149
-    //   209: aastore
-    //   210: dup
-    //   211: iconst_1
-    //   212: aload_1
-    //   213: aastore
-    //   214: dup
-    //   215: iconst_2
-    //   216: ldc 151
-    //   218: aastore
-    //   219: dup
-    //   220: iconst_3
-    //   221: aload_0
-    //   222: invokevirtual 17	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   225: invokevirtual 144	java/lang/Class:getName	()Ljava/lang/String;
-    //   228: aastore
-    //   229: invokestatic 79	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   232: aload 4
-    //   234: ifnull -108 -> 126
-    //   237: aload 4
-    //   239: invokevirtual 133	android/os/Parcel:recycle	()V
-    //   242: iconst_0
-    //   243: ireturn
-    //   244: astore_0
-    //   245: invokestatic 104	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   248: ifeq -122 -> 126
-    //   251: ldc 67
-    //   253: iconst_2
-    //   254: ldc 135
+    //   29: astore 4
+    //   31: aconst_null
+    //   32: astore 5
+    //   34: aconst_null
+    //   35: astore_3
+    //   36: invokestatic 112	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   39: astore 6
+    //   41: aload 6
+    //   43: astore_3
+    //   44: aload 6
+    //   46: astore 4
+    //   48: aload 6
+    //   50: astore 5
+    //   52: aload 6
+    //   54: aload_1
+    //   55: iconst_0
+    //   56: aload_1
+    //   57: arraylength
+    //   58: invokevirtual 116	android/os/Parcel:unmarshall	([BII)V
+    //   61: aload 6
+    //   63: astore_3
+    //   64: aload 6
+    //   66: astore 4
+    //   68: aload 6
+    //   70: astore 5
+    //   72: aload 6
+    //   74: iconst_0
+    //   75: invokevirtual 119	android/os/Parcel:setDataPosition	(I)V
+    //   78: aload 6
+    //   80: astore_3
+    //   81: aload 6
+    //   83: astore 4
+    //   85: aload 6
+    //   87: astore 5
+    //   89: aload 6
+    //   91: invokevirtual 122	android/os/Parcel:readInt	()I
+    //   94: istore_2
+    //   95: sipush 147
+    //   98: iload_2
+    //   99: if_icmpeq +66 -> 165
+    //   102: aload 6
+    //   104: astore_3
+    //   105: aload 6
+    //   107: astore 4
+    //   109: aload 6
+    //   111: astore 5
+    //   113: ldc 67
+    //   115: iconst_1
+    //   116: iconst_2
+    //   117: anewarray 4	java/lang/Object
+    //   120: dup
+    //   121: iconst_0
+    //   122: ldc 124
+    //   124: aastore
+    //   125: dup
+    //   126: iconst_1
+    //   127: iload_2
+    //   128: invokestatic 130	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   131: aastore
+    //   132: invokestatic 79	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   135: aload 6
+    //   137: ifnull +26 -> 163
+    //   140: aload 6
+    //   142: invokevirtual 133	android/os/Parcel:recycle	()V
+    //   145: iconst_0
+    //   146: ireturn
+    //   147: astore_0
+    //   148: invokestatic 104	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   151: ifeq +12 -> 163
+    //   154: ldc 67
+    //   156: iconst_2
+    //   157: ldc 135
+    //   159: aload_0
+    //   160: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   163: iconst_0
+    //   164: ireturn
+    //   165: aload 6
+    //   167: astore_3
+    //   168: aload 6
+    //   170: astore 4
+    //   172: aload 6
+    //   174: astore 5
+    //   176: aload_0
+    //   177: invokestatic 140	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper:a	(Ljava/lang/Object;)V
+    //   180: aload 6
+    //   182: astore_3
+    //   183: aload 6
+    //   185: astore 4
+    //   187: aload 6
+    //   189: astore 5
+    //   191: aload 6
+    //   193: invokevirtual 143	android/os/Parcel:readString	()Ljava/lang/String;
+    //   196: astore_1
+    //   197: aload 6
+    //   199: astore_3
+    //   200: aload 6
+    //   202: astore 4
+    //   204: aload 6
+    //   206: astore 5
+    //   208: aload_0
+    //   209: invokevirtual 17	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   212: invokevirtual 144	java/lang/Class:getName	()Ljava/lang/String;
+    //   215: aload_1
+    //   216: invokevirtual 147	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   219: ifne +78 -> 297
+    //   222: aload 6
+    //   224: astore_3
+    //   225: aload 6
+    //   227: astore 4
+    //   229: aload 6
+    //   231: astore 5
+    //   233: ldc 67
+    //   235: iconst_1
+    //   236: iconst_4
+    //   237: anewarray 4	java/lang/Object
+    //   240: dup
+    //   241: iconst_0
+    //   242: ldc 149
+    //   244: aastore
+    //   245: dup
+    //   246: iconst_1
+    //   247: aload_1
+    //   248: aastore
+    //   249: dup
+    //   250: iconst_2
+    //   251: ldc 151
+    //   253: aastore
+    //   254: dup
+    //   255: iconst_3
     //   256: aload_0
-    //   257: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   260: iconst_0
-    //   261: ireturn
-    //   262: aload 4
-    //   264: astore 5
-    //   266: aload 4
-    //   268: astore_3
-    //   269: aload_0
-    //   270: invokestatic 153	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper:a	(Ljava/lang/Object;)Ljava/util/ArrayList;
-    //   273: astore_1
-    //   274: aload 4
-    //   276: astore 5
-    //   278: aload 4
-    //   280: astore_3
-    //   281: aload_0
-    //   282: invokestatic 158	com/tencent/mobileqq/activity/recent/parcelUtils/processor/ParcelProcessorFactory:a	(Ljava/lang/Object;)Lcom/tencent/mobileqq/activity/recent/parcelUtils/processor/BaseParcelProcessor;
-    //   285: aload_0
-    //   286: aload 4
-    //   288: aload_1
-    //   289: invokevirtual 163	com/tencent/mobileqq/activity/recent/parcelUtils/processor/BaseParcelProcessor:a	(Ljava/lang/Object;Landroid/os/Parcel;Ljava/util/ArrayList;)V
-    //   292: aload 4
-    //   294: ifnull +8 -> 302
-    //   297: aload 4
-    //   299: invokevirtual 133	android/os/Parcel:recycle	()V
-    //   302: iconst_1
-    //   303: ireturn
-    //   304: astore_0
-    //   305: invokestatic 104	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   308: ifeq -6 -> 302
-    //   311: ldc 67
-    //   313: iconst_2
-    //   314: ldc 135
-    //   316: aload_0
-    //   317: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   320: goto -18 -> 302
-    //   323: astore_1
-    //   324: aconst_null
-    //   325: astore_0
-    //   326: aload_1
-    //   327: athrow
-    //   328: astore_1
-    //   329: aload_0
-    //   330: astore_3
+    //   257: invokevirtual 17	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   260: invokevirtual 144	java/lang/Class:getName	()Ljava/lang/String;
+    //   263: aastore
+    //   264: invokestatic 79	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   267: aload 6
+    //   269: ifnull +26 -> 295
+    //   272: aload 6
+    //   274: invokevirtual 133	android/os/Parcel:recycle	()V
+    //   277: iconst_0
+    //   278: ireturn
+    //   279: astore_0
+    //   280: invokestatic 104	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   283: ifeq +12 -> 295
+    //   286: ldc 67
+    //   288: iconst_2
+    //   289: ldc 135
+    //   291: aload_0
+    //   292: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   295: iconst_0
+    //   296: ireturn
+    //   297: aload 6
+    //   299: astore_3
+    //   300: aload 6
+    //   302: astore 4
+    //   304: aload 6
+    //   306: astore 5
+    //   308: aload_0
+    //   309: invokestatic 153	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper:a	(Ljava/lang/Object;)Ljava/util/ArrayList;
+    //   312: astore_1
+    //   313: aload 6
+    //   315: astore_3
+    //   316: aload 6
+    //   318: astore 4
+    //   320: aload 6
+    //   322: astore 5
+    //   324: aload_0
+    //   325: invokestatic 158	com/tencent/mobileqq/activity/recent/parcelUtils/processor/ParcelProcessorFactory:a	(Ljava/lang/Object;)Lcom/tencent/mobileqq/activity/recent/parcelUtils/processor/BaseParcelProcessor;
+    //   328: aload_0
+    //   329: aload 6
     //   331: aload_1
-    //   332: astore_0
-    //   333: aload_3
-    //   334: ifnull +7 -> 341
-    //   337: aload_3
-    //   338: invokevirtual 133	android/os/Parcel:recycle	()V
-    //   341: aload_0
-    //   342: athrow
-    //   343: astore_0
-    //   344: aload 5
-    //   346: astore_3
-    //   347: ldc 67
-    //   349: iconst_1
-    //   350: ldc 165
-    //   352: aload_0
-    //   353: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   356: aload 5
-    //   358: ifnull -232 -> 126
-    //   361: aload 5
-    //   363: invokevirtual 133	android/os/Parcel:recycle	()V
-    //   366: iconst_0
-    //   367: ireturn
-    //   368: astore_0
-    //   369: invokestatic 104	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   372: ifeq -246 -> 126
-    //   375: ldc 67
-    //   377: iconst_2
-    //   378: ldc 135
-    //   380: aload_0
-    //   381: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   384: iconst_0
-    //   385: ireturn
-    //   386: astore_1
-    //   387: invokestatic 104	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   390: ifeq -49 -> 341
-    //   393: ldc 67
-    //   395: iconst_2
-    //   396: ldc 135
-    //   398: aload_1
-    //   399: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   402: goto -61 -> 341
-    //   405: astore_0
-    //   406: goto -73 -> 333
-    //   409: astore_1
-    //   410: aload 4
+    //   332: invokevirtual 163	com/tencent/mobileqq/activity/recent/parcelUtils/processor/BaseParcelProcessor:a	(Ljava/lang/Object;Landroid/os/Parcel;Ljava/util/ArrayList;)V
+    //   335: aload 6
+    //   337: ifnull +26 -> 363
+    //   340: aload 6
+    //   342: invokevirtual 133	android/os/Parcel:recycle	()V
+    //   345: iconst_1
+    //   346: ireturn
+    //   347: astore_0
+    //   348: invokestatic 104	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   351: ifeq +12 -> 363
+    //   354: ldc 67
+    //   356: iconst_2
+    //   357: ldc 135
+    //   359: aload_0
+    //   360: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   363: iconst_1
+    //   364: ireturn
+    //   365: astore_0
+    //   366: goto +52 -> 418
+    //   369: astore_0
+    //   370: aload 4
+    //   372: astore_3
+    //   373: ldc 67
+    //   375: iconst_1
+    //   376: ldc 165
+    //   378: aload_0
+    //   379: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   382: aload 4
+    //   384: ifnull +26 -> 410
+    //   387: aload 4
+    //   389: invokevirtual 133	android/os/Parcel:recycle	()V
+    //   392: iconst_0
+    //   393: ireturn
+    //   394: astore_0
+    //   395: invokestatic 104	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   398: ifeq +12 -> 410
+    //   401: ldc 67
+    //   403: iconst_2
+    //   404: ldc 135
+    //   406: aload_0
+    //   407: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   410: iconst_0
+    //   411: ireturn
     //   412: astore_0
-    //   413: goto -87 -> 326
+    //   413: aload 5
+    //   415: astore_3
+    //   416: aload_0
+    //   417: athrow
+    //   418: aload_3
+    //   419: ifnull +26 -> 445
+    //   422: aload_3
+    //   423: invokevirtual 133	android/os/Parcel:recycle	()V
+    //   426: goto +19 -> 445
+    //   429: astore_1
+    //   430: invokestatic 104	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   433: ifeq +12 -> 445
+    //   436: ldc 67
+    //   438: iconst_2
+    //   439: ldc 135
+    //   441: aload_1
+    //   442: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   445: aload_0
+    //   446: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	416	0	paramObject	Object
-    //   0	416	1	paramArrayOfByte	byte[]
-    //   79	30	2	i	int
-    //   29	318	3	localObject1	Object
-    //   36	375	4	localParcel	android.os.Parcel
-    //   31	331	5	localObject2	Object
+    //   0	447	0	paramObject	Object
+    //   0	447	1	paramArrayOfByte	byte[]
+    //   94	34	2	i	int
+    //   35	388	3	localObject1	Object
+    //   29	359	4	localObject2	Object
+    //   32	382	5	localObject3	Object
+    //   39	302	6	localParcel	android.os.Parcel
     // Exception table:
     //   from	to	target	type
-    //   121	126	128	java/lang/Throwable
-    //   237	242	244	java/lang/Throwable
-    //   297	302	304	java/lang/Throwable
-    //   33	38	323	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$FieldChangedException
-    //   326	328	328	finally
-    //   33	38	343	java/lang/Throwable
-    //   45	54	343	java/lang/Throwable
-    //   61	67	343	java/lang/Throwable
-    //   74	80	343	java/lang/Throwable
-    //   94	116	343	java/lang/Throwable
-    //   153	157	343	java/lang/Throwable
-    //   164	170	343	java/lang/Throwable
-    //   177	191	343	java/lang/Throwable
-    //   198	232	343	java/lang/Throwable
-    //   269	274	343	java/lang/Throwable
-    //   281	292	343	java/lang/Throwable
-    //   361	366	368	java/lang/Throwable
-    //   337	341	386	java/lang/Throwable
-    //   33	38	405	finally
-    //   45	54	405	finally
-    //   61	67	405	finally
-    //   74	80	405	finally
-    //   94	116	405	finally
-    //   153	157	405	finally
-    //   164	170	405	finally
-    //   177	191	405	finally
-    //   198	232	405	finally
-    //   269	274	405	finally
-    //   281	292	405	finally
-    //   347	356	405	finally
-    //   45	54	409	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$FieldChangedException
-    //   61	67	409	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$FieldChangedException
-    //   74	80	409	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$FieldChangedException
-    //   94	116	409	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$FieldChangedException
-    //   153	157	409	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$FieldChangedException
-    //   164	170	409	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$FieldChangedException
-    //   177	191	409	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$FieldChangedException
-    //   198	232	409	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$FieldChangedException
-    //   269	274	409	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$FieldChangedException
-    //   281	292	409	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$FieldChangedException
+    //   140	145	147	java/lang/Throwable
+    //   272	277	279	java/lang/Throwable
+    //   340	345	347	java/lang/Throwable
+    //   36	41	365	finally
+    //   52	61	365	finally
+    //   72	78	365	finally
+    //   89	95	365	finally
+    //   113	135	365	finally
+    //   176	180	365	finally
+    //   191	197	365	finally
+    //   208	222	365	finally
+    //   233	267	365	finally
+    //   308	313	365	finally
+    //   324	335	365	finally
+    //   373	382	365	finally
+    //   416	418	365	finally
+    //   36	41	369	java/lang/Throwable
+    //   52	61	369	java/lang/Throwable
+    //   72	78	369	java/lang/Throwable
+    //   89	95	369	java/lang/Throwable
+    //   113	135	369	java/lang/Throwable
+    //   176	180	369	java/lang/Throwable
+    //   191	197	369	java/lang/Throwable
+    //   208	222	369	java/lang/Throwable
+    //   233	267	369	java/lang/Throwable
+    //   308	313	369	java/lang/Throwable
+    //   324	335	369	java/lang/Throwable
+    //   387	392	394	java/lang/Throwable
+    //   36	41	412	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$FieldChangedException
+    //   52	61	412	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$FieldChangedException
+    //   72	78	412	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$FieldChangedException
+    //   89	95	412	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$FieldChangedException
+    //   113	135	412	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$FieldChangedException
+    //   176	180	412	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$FieldChangedException
+    //   191	197	412	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$FieldChangedException
+    //   208	222	412	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$FieldChangedException
+    //   233	267	412	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$FieldChangedException
+    //   308	313	412	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$FieldChangedException
+    //   324	335	412	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$FieldChangedException
+    //   422	426	429	java/lang/Throwable
   }
   
   /* Error */
@@ -348,183 +362,174 @@ public class ParcelHelper
     // Byte code:
     //   0: aconst_null
     //   1: astore_3
-    //   2: invokestatic 112	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   5: astore_1
-    //   6: aload_1
+    //   2: aconst_null
+    //   3: astore_1
+    //   4: invokestatic 112	android/os/Parcel:obtain	()Landroid/os/Parcel;
     //   7: astore_2
-    //   8: aload_1
-    //   9: iconst_0
-    //   10: invokevirtual 119	android/os/Parcel:setDataPosition	(I)V
-    //   13: aload_1
-    //   14: astore_2
-    //   15: aload_1
-    //   16: sipush 147
-    //   19: invokevirtual 171	android/os/Parcel:writeInt	(I)V
-    //   22: aload_1
-    //   23: astore_2
-    //   24: aload_0
-    //   25: invokestatic 140	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper:a	(Ljava/lang/Object;)V
-    //   28: aload_1
-    //   29: astore_2
-    //   30: aload_1
-    //   31: aload_0
-    //   32: invokevirtual 17	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   35: invokevirtual 144	java/lang/Class:getName	()Ljava/lang/String;
-    //   38: invokevirtual 174	android/os/Parcel:writeString	(Ljava/lang/String;)V
-    //   41: aload_1
-    //   42: astore_2
-    //   43: aload_0
-    //   44: invokestatic 153	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper:a	(Ljava/lang/Object;)Ljava/util/ArrayList;
-    //   47: astore 4
-    //   49: aload_1
-    //   50: astore_2
-    //   51: aload_0
-    //   52: invokestatic 158	com/tencent/mobileqq/activity/recent/parcelUtils/processor/ParcelProcessorFactory:a	(Ljava/lang/Object;)Lcom/tencent/mobileqq/activity/recent/parcelUtils/processor/BaseParcelProcessor;
-    //   55: aload_0
-    //   56: aload 4
-    //   58: aload_1
+    //   8: aload_2
+    //   9: astore_1
+    //   10: aload_2
+    //   11: iconst_0
+    //   12: invokevirtual 119	android/os/Parcel:setDataPosition	(I)V
+    //   15: aload_2
+    //   16: astore_1
+    //   17: aload_2
+    //   18: sipush 147
+    //   21: invokevirtual 171	android/os/Parcel:writeInt	(I)V
+    //   24: aload_2
+    //   25: astore_1
+    //   26: aload_0
+    //   27: invokestatic 140	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper:a	(Ljava/lang/Object;)V
+    //   30: aload_2
+    //   31: astore_1
+    //   32: aload_2
+    //   33: aload_0
+    //   34: invokevirtual 17	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   37: invokevirtual 144	java/lang/Class:getName	()Ljava/lang/String;
+    //   40: invokevirtual 174	android/os/Parcel:writeString	(Ljava/lang/String;)V
+    //   43: aload_2
+    //   44: astore_1
+    //   45: aload_0
+    //   46: invokestatic 153	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper:a	(Ljava/lang/Object;)Ljava/util/ArrayList;
+    //   49: astore_3
+    //   50: aload_2
+    //   51: astore_1
+    //   52: aload_0
+    //   53: invokestatic 158	com/tencent/mobileqq/activity/recent/parcelUtils/processor/ParcelProcessorFactory:a	(Ljava/lang/Object;)Lcom/tencent/mobileqq/activity/recent/parcelUtils/processor/BaseParcelProcessor;
+    //   56: aload_0
+    //   57: aload_3
+    //   58: aload_2
     //   59: invokevirtual 177	com/tencent/mobileqq/activity/recent/parcelUtils/processor/BaseParcelProcessor:a	(Ljava/lang/Object;Ljava/util/ArrayList;Landroid/os/Parcel;)Z
     //   62: pop
-    //   63: aload_1
-    //   64: astore_2
-    //   65: aload_1
+    //   63: aload_2
+    //   64: astore_1
+    //   65: aload_2
     //   66: invokevirtual 181	android/os/Parcel:marshall	()[B
-    //   69: astore 4
-    //   71: aload 4
-    //   73: astore_0
-    //   74: aload_0
-    //   75: astore_2
-    //   76: aload_1
-    //   77: ifnull +9 -> 86
-    //   80: aload_1
-    //   81: invokevirtual 133	android/os/Parcel:recycle	()V
-    //   84: aload_0
-    //   85: astore_2
-    //   86: aload_2
-    //   87: areturn
+    //   69: astore_3
+    //   70: aload_2
+    //   71: ifnull +7 -> 78
+    //   74: aload_2
+    //   75: invokevirtual 133	android/os/Parcel:recycle	()V
+    //   78: aload_3
+    //   79: areturn
+    //   80: astore_0
+    //   81: goto +79 -> 160
+    //   84: astore_3
+    //   85: goto +16 -> 101
     //   88: astore_0
-    //   89: aconst_null
+    //   89: aload_2
     //   90: astore_1
-    //   91: aload_1
-    //   92: astore_2
-    //   93: aload_0
-    //   94: athrow
-    //   95: astore_0
-    //   96: aload_2
-    //   97: ifnull +7 -> 104
-    //   100: aload_2
-    //   101: invokevirtual 133	android/os/Parcel:recycle	()V
-    //   104: aload_0
-    //   105: athrow
-    //   106: astore_2
-    //   107: aconst_null
-    //   108: astore_1
-    //   109: aload_0
-    //   110: ifnull +51 -> 161
-    //   113: aload_0
-    //   114: invokevirtual 17	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   117: astore_0
-    //   118: ldc 67
-    //   120: iconst_1
-    //   121: iconst_4
-    //   122: anewarray 4	java/lang/Object
-    //   125: dup
-    //   126: iconst_0
-    //   127: ldc 183
-    //   129: aastore
-    //   130: dup
-    //   131: iconst_1
-    //   132: aload_0
-    //   133: aastore
-    //   134: dup
-    //   135: iconst_2
-    //   136: ldc 185
-    //   138: aastore
-    //   139: dup
-    //   140: iconst_3
-    //   141: aload_2
-    //   142: aastore
-    //   143: invokestatic 79	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   146: aload_3
-    //   147: astore_2
-    //   148: aload_1
-    //   149: ifnull -63 -> 86
-    //   152: aload_1
-    //   153: invokevirtual 133	android/os/Parcel:recycle	()V
-    //   156: aconst_null
-    //   157: areturn
-    //   158: astore_0
-    //   159: aconst_null
-    //   160: areturn
-    //   161: ldc 187
-    //   163: astore_0
-    //   164: goto -46 -> 118
-    //   167: astore_1
+    //   91: goto +67 -> 158
+    //   94: astore_0
+    //   95: goto +65 -> 160
+    //   98: astore_3
+    //   99: aconst_null
+    //   100: astore_2
+    //   101: aload_0
+    //   102: ifnull +78 -> 180
+    //   105: aload_2
+    //   106: astore_1
+    //   107: aload_0
+    //   108: invokevirtual 17	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   111: astore_0
+    //   112: goto +3 -> 115
+    //   115: aload_2
+    //   116: astore_1
+    //   117: ldc 67
+    //   119: iconst_1
+    //   120: iconst_4
+    //   121: anewarray 4	java/lang/Object
+    //   124: dup
+    //   125: iconst_0
+    //   126: ldc 183
+    //   128: aastore
+    //   129: dup
+    //   130: iconst_1
+    //   131: aload_0
+    //   132: aastore
+    //   133: dup
+    //   134: iconst_2
+    //   135: ldc 185
+    //   137: aastore
+    //   138: dup
+    //   139: iconst_3
+    //   140: aload_3
+    //   141: aastore
+    //   142: invokestatic 79	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   145: aload_2
+    //   146: ifnull +7 -> 153
+    //   149: aload_2
+    //   150: invokevirtual 133	android/os/Parcel:recycle	()V
+    //   153: aconst_null
+    //   154: areturn
+    //   155: astore_0
+    //   156: aload_3
+    //   157: astore_1
+    //   158: aload_0
+    //   159: athrow
+    //   160: aload_1
+    //   161: ifnull +7 -> 168
+    //   164: aload_1
+    //   165: invokevirtual 133	android/os/Parcel:recycle	()V
     //   168: aload_0
-    //   169: areturn
-    //   170: astore_1
-    //   171: goto -67 -> 104
-    //   174: astore_0
-    //   175: aconst_null
-    //   176: astore_2
-    //   177: goto -81 -> 96
-    //   180: astore_0
-    //   181: aload_1
-    //   182: astore_2
-    //   183: goto -87 -> 96
-    //   186: astore_2
-    //   187: goto -78 -> 109
-    //   190: astore_0
-    //   191: goto -100 -> 91
+    //   169: athrow
+    //   170: astore_0
+    //   171: aload_3
+    //   172: areturn
+    //   173: astore_0
+    //   174: aconst_null
+    //   175: areturn
+    //   176: astore_1
+    //   177: goto -9 -> 168
+    //   180: ldc 187
+    //   182: astore_0
+    //   183: goto -68 -> 115
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	194	0	paramObject	Object
-    //   5	148	1	localParcel	android.os.Parcel
-    //   167	1	1	localThrowable1	java.lang.Throwable
-    //   170	12	1	localThrowable2	java.lang.Throwable
-    //   7	94	2	localObject1	Object
-    //   106	36	2	localThrowable3	java.lang.Throwable
-    //   147	36	2	localObject2	Object
-    //   186	1	2	localThrowable4	java.lang.Throwable
-    //   1	146	3	localObject3	Object
-    //   47	25	4	localObject4	Object
+    //   0	186	0	paramObject	Object
+    //   3	162	1	localObject1	Object
+    //   176	1	1	localThrowable1	java.lang.Throwable
+    //   7	143	2	localParcel	android.os.Parcel
+    //   1	78	3	localObject2	Object
+    //   84	1	3	localThrowable2	java.lang.Throwable
+    //   98	74	3	localThrowable3	java.lang.Throwable
     // Exception table:
     //   from	to	target	type
-    //   2	6	88	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$UnsupportedFieldTypeException
-    //   8	13	95	finally
-    //   15	22	95	finally
-    //   24	28	95	finally
-    //   30	41	95	finally
-    //   43	49	95	finally
-    //   51	63	95	finally
-    //   65	71	95	finally
-    //   93	95	95	finally
-    //   2	6	106	java/lang/Throwable
-    //   152	156	158	java/lang/Throwable
-    //   80	84	167	java/lang/Throwable
-    //   100	104	170	java/lang/Throwable
-    //   2	6	174	finally
-    //   113	118	180	finally
-    //   118	146	180	finally
-    //   8	13	186	java/lang/Throwable
-    //   15	22	186	java/lang/Throwable
-    //   24	28	186	java/lang/Throwable
-    //   30	41	186	java/lang/Throwable
-    //   43	49	186	java/lang/Throwable
-    //   51	63	186	java/lang/Throwable
-    //   65	71	186	java/lang/Throwable
-    //   8	13	190	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$UnsupportedFieldTypeException
-    //   15	22	190	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$UnsupportedFieldTypeException
-    //   24	28	190	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$UnsupportedFieldTypeException
-    //   30	41	190	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$UnsupportedFieldTypeException
-    //   43	49	190	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$UnsupportedFieldTypeException
-    //   51	63	190	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$UnsupportedFieldTypeException
-    //   65	71	190	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$UnsupportedFieldTypeException
+    //   10	15	80	finally
+    //   17	24	80	finally
+    //   26	30	80	finally
+    //   32	43	80	finally
+    //   45	50	80	finally
+    //   52	63	80	finally
+    //   65	70	80	finally
+    //   107	112	80	finally
+    //   117	145	80	finally
+    //   10	15	84	java/lang/Throwable
+    //   17	24	84	java/lang/Throwable
+    //   26	30	84	java/lang/Throwable
+    //   32	43	84	java/lang/Throwable
+    //   45	50	84	java/lang/Throwable
+    //   52	63	84	java/lang/Throwable
+    //   65	70	84	java/lang/Throwable
+    //   10	15	88	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$UnsupportedFieldTypeException
+    //   17	24	88	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$UnsupportedFieldTypeException
+    //   26	30	88	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$UnsupportedFieldTypeException
+    //   32	43	88	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$UnsupportedFieldTypeException
+    //   45	50	88	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$UnsupportedFieldTypeException
+    //   52	63	88	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$UnsupportedFieldTypeException
+    //   65	70	88	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$UnsupportedFieldTypeException
+    //   4	8	94	finally
+    //   158	160	94	finally
+    //   4	8	98	java/lang/Throwable
+    //   4	8	155	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper$UnsupportedFieldTypeException
+    //   74	78	170	java/lang/Throwable
+    //   149	153	173	java/lang/Throwable
+    //   164	168	176	java/lang/Throwable
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.parcelUtils.ParcelHelper
  * JD-Core Version:    0.7.0.1
  */

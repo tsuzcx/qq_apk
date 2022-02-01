@@ -34,17 +34,16 @@ public final class InspectorBridge
     try
     {
       l = nativeCreate();
-      this.nativeInstance = l;
-      this.debugMessageListener = new InspectorBridge.debugMessageListener.1(this);
-      return;
     }
     catch (UnsatisfiedLinkError paramLifeCycleOwner)
     {
-      for (;;)
-      {
-        long l = nativeCreate();
-      }
+      long l;
+      label23:
+      break label23;
     }
+    l = nativeCreate();
+    this.nativeInstance = l;
+    this.debugMessageListener = new InspectorBridge.debugMessageListener.1(this);
   }
   
   private final native long nativeCreate();
@@ -54,27 +53,32 @@ public final class InspectorBridge
   {
     try
     {
-      Object localObject = this.mProxy;
+      localObject = this.mProxy;
       if (localObject != null)
       {
         ((InspectorAgent)localObject).sendMessageToDebugger(paramString);
         localObject = Unit.INSTANCE;
+        return;
+      }
+    }
+    catch (Throwable paramString)
+    {
+      break label46;
+      Object localObject = this.mProxy;
+      if (localObject != null)
+      {
+        ((InspectorAgent)localObject).sendMessageToDebugger(paramString);
+        paramString = Unit.INSTANCE;
+        return;
+        Logger.e("InspectorBridge", "sendMessageToDebugger", paramString);
       }
       return;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      InspectorAgent localInspectorAgent = this.mProxy;
-      if (localInspectorAgent != null)
-      {
-        localInspectorAgent.sendMessageToDebugger(paramString);
-        paramString = Unit.INSTANCE;
-      }
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      Logger.e("InspectorBridge", "sendMessageToDebugger", paramString);
+      label25:
+      label46:
+      break label25;
     }
   }
   
@@ -91,7 +95,7 @@ public final class InspectorBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.script.InspectorBridge
  * JD-Core Version:    0.7.0.1
  */

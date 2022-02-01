@@ -26,12 +26,13 @@ public class DateVideoSimpleInfoPageLoader
   
   private void d()
   {
-    boolean bool = false;
     if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
       SLog.d("Q.qqstory.memories:DateVideoSimpleInfoPageLoader", "vid list has pulled to end!");
     }
     int i = Math.min(20, this.jdField_a_of_type_JavaUtilList.size());
-    List localList = this.jdField_a_of_type_JavaUtilList.subList(0, i);
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    boolean bool = false;
+    localList = localList.subList(0, i);
     GetSimpleInfoListRequest localGetSimpleInfoListRequest = new GetSimpleInfoListRequest();
     localGetSimpleInfoListRequest.jdField_a_of_type_JavaUtilList = localList;
     if (i == this.jdField_a_of_type_JavaUtilList.size()) {
@@ -44,20 +45,20 @@ public class DateVideoSimpleInfoPageLoader
   public void a(@NonNull GetSimpleInfoListRequest paramGetSimpleInfoListRequest, @Nullable GetSimpleInfoListResponse paramGetSimpleInfoListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
     DateVideoSimpleInfoPageLoader.GetSimpleInfoListEvent localGetSimpleInfoListEvent = new DateVideoSimpleInfoPageLoader.GetSimpleInfoListEvent(paramErrorMessage);
-    if ((paramGetSimpleInfoListResponse == null) || (paramErrorMessage.isFail()))
+    if ((paramGetSimpleInfoListResponse != null) && (!paramErrorMessage.isFail()))
     {
+      paramGetSimpleInfoListResponse.jdField_a_of_type_JavaUtilList = ((StoryManager)SuperManager.a(5)).a(paramGetSimpleInfoListResponse.jdField_a_of_type_JavaUtilList);
+      localGetSimpleInfoListEvent.c = false;
+      localGetSimpleInfoListEvent.jdField_a_of_type_Boolean = paramGetSimpleInfoListRequest.jdField_a_of_type_Boolean;
+      localGetSimpleInfoListEvent.b = false;
+      localGetSimpleInfoListEvent.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      localGetSimpleInfoListEvent.jdField_a_of_type_JavaUtilList = paramGetSimpleInfoListResponse.jdField_a_of_type_JavaUtilList;
+      paramGetSimpleInfoListResponse = new ArrayList(this.jdField_a_of_type_JavaUtilList);
+      paramGetSimpleInfoListResponse.removeAll(paramGetSimpleInfoListRequest.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_JavaUtilList = paramGetSimpleInfoListResponse;
       StoryDispatcher.a().dispatch(localGetSimpleInfoListEvent);
       return;
     }
-    paramGetSimpleInfoListResponse.jdField_a_of_type_JavaUtilList = ((StoryManager)SuperManager.a(5)).a(paramGetSimpleInfoListResponse.jdField_a_of_type_JavaUtilList);
-    localGetSimpleInfoListEvent.c = false;
-    localGetSimpleInfoListEvent.jdField_a_of_type_Boolean = paramGetSimpleInfoListRequest.jdField_a_of_type_Boolean;
-    localGetSimpleInfoListEvent.b = false;
-    localGetSimpleInfoListEvent.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localGetSimpleInfoListEvent.jdField_a_of_type_JavaUtilList = paramGetSimpleInfoListResponse.jdField_a_of_type_JavaUtilList;
-    paramGetSimpleInfoListResponse = new ArrayList(this.jdField_a_of_type_JavaUtilList);
-    paramGetSimpleInfoListResponse.removeAll(paramGetSimpleInfoListRequest.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_JavaUtilList = paramGetSimpleInfoListResponse;
     StoryDispatcher.a().dispatch(localGetSimpleInfoListEvent);
   }
   
@@ -75,7 +76,7 @@ public class DateVideoSimpleInfoPageLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.DateVideoSimpleInfoPageLoader
  * JD-Core Version:    0.7.0.1
  */

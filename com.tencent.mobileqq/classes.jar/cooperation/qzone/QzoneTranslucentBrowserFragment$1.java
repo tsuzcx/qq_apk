@@ -1,26 +1,41 @@
 package cooperation.qzone;
 
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.webview.swift.proxy.WebKernelCallBackProxy;
+import com.tencent.mobileqq.webview.swift.utils.WebViewKernelCallBack;
+import com.tencent.smtt.sdk.WebView;
 
 class QzoneTranslucentBrowserFragment$1
-  implements View.OnClickListener
+  extends WebKernelCallBackProxy
 {
-  QzoneTranslucentBrowserFragment$1(QzoneTranslucentBrowserFragment paramQzoneTranslucentBrowserFragment) {}
-  
-  public void onClick(View paramView)
+  QzoneTranslucentBrowserFragment$1(QzoneTranslucentBrowserFragment paramQzoneTranslucentBrowserFragment, WebViewKernelCallBack paramWebViewKernelCallBack)
   {
-    if (this.this$0.getHostActivity() != null) {
-      this.this$0.getHostActivity().finish();
+    super(paramWebViewKernelCallBack);
+  }
+  
+  public void onFinalState(Bundle paramBundle)
+  {
+    this.this$0.onFinalState(paramBundle, this.webViewKernelCallBack);
+  }
+  
+  public void onInitUIContent(Bundle paramBundle)
+  {
+    this.this$0.onInitUIContent(paramBundle, this.webViewKernelCallBack);
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    this.webViewKernelCallBack.onPageFinished(paramWebView, paramString);
+    if (QzoneTranslucentBrowserFragment.access$000(this.this$0))
+    {
+      paramWebView = this.this$0;
+      QzoneTranslucentBrowserFragment.access$100(paramWebView, paramWebView.contentView);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QzoneTranslucentBrowserFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,30 +13,41 @@ class QQServiceForAV$6
   
   public void a(boolean paramBoolean, long paramLong, String paramString, int paramInt1, int paramInt2)
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(", nickname=").append(paramString).append(", gender=").append(paramInt1).append(", age=").append(paramInt2);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQServiceForAV", 2, "QQServiceForAV.onNearbyCardDownload(), isSuccess: " + paramBoolean + ", card = " + ((StringBuilder)localObject).toString());
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(", nickname=");
+    ((StringBuilder)localObject1).append(paramString);
+    ((StringBuilder)localObject1).append(", gender=");
+    ((StringBuilder)localObject1).append(paramInt1);
+    ((StringBuilder)localObject1).append(", age=");
+    ((StringBuilder)localObject1).append(paramInt2);
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("QQServiceForAV.onNearbyCardDownload(), isSuccess: ");
+      ((StringBuilder)localObject2).append(paramBoolean);
+      ((StringBuilder)localObject2).append(", card = ");
+      ((StringBuilder)localObject2).append(((StringBuilder)localObject1).toString());
+      QLog.d("QQServiceForAV", 2, ((StringBuilder)localObject2).toString());
     }
-    Intent localIntent = new Intent();
-    localIntent.setAction("tencent.video.q2v.getNearByProfile");
-    localIntent.putExtra("uin", String.valueOf(paramLong));
-    localIntent.putExtra("nickname", paramString);
-    localIntent.putExtra("gender", paramInt1);
-    localIntent.putExtra("age", paramInt2);
-    localObject = (QQAppInterface)this.a.a();
-    paramString = (String)localObject;
-    if (localObject == null) {
+    Object localObject2 = new Intent();
+    ((Intent)localObject2).setAction("tencent.video.q2v.getNearByProfile");
+    ((Intent)localObject2).putExtra("uin", String.valueOf(paramLong));
+    ((Intent)localObject2).putExtra("nickname", paramString);
+    ((Intent)localObject2).putExtra("gender", paramInt1);
+    ((Intent)localObject2).putExtra("age", paramInt2);
+    localObject1 = (QQAppInterface)this.a.a();
+    paramString = (String)localObject1;
+    if (localObject1 == null) {
       paramString = (QQAppInterface)this.a.a();
     }
     if (paramString != null) {
-      paramString.getApp().sendBroadcast(localIntent);
+      paramString.getApp().sendBroadcast((Intent)localObject2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.service.QQServiceForAV.6
  * JD-Core Version:    0.7.0.1
  */

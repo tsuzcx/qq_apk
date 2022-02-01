@@ -28,7 +28,8 @@ class CommentPresenter$4
     if ((this.jdField_a_of_type_Boolean) && (paramInt == 0) && (!CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter)) && (!CommentPresenter.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter)))
     {
       QLog.i(CommentPresenter.a(), 1, "onLastItemVisible");
-      CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter, CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter).a(CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter)));
+      paramAbsListView = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter;
+      CommentPresenter.a(paramAbsListView, CommentPresenter.a(paramAbsListView).a(CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter)));
       if (CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter) != null)
       {
         CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter).a(CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter), true);
@@ -39,7 +40,7 @@ class CommentPresenter$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.CommentPresenter.4
  * JD-Core Version:    0.7.0.1
  */

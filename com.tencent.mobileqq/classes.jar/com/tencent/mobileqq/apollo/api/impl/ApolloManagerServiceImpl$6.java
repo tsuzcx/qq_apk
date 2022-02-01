@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.apollo.api.impl;
 
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.api.IApolloActionUsedManager;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import org.json.JSONObject;
+import common.config.service.QzoneConfig;
 
 class ApolloManagerServiceImpl$6
   implements Runnable
@@ -16,194 +15,42 @@ class ApolloManagerServiceImpl$6
   
   public void run()
   {
-    Object localObject13 = null;
-    Object localObject7 = null;
-    Object localObject9 = null;
-    if (this.this$0.mApolloResVersionInfo == null) {}
-    label459:
-    for (;;)
+    try
     {
-      return;
-      Object localObject1 = ApolloManagerServiceImpl.access$300(this.this$0);
-      if (localObject1 != null) {}
-      Object localObject6;
-      for (localObject1 = ((QQAppInterface)localObject1).getApp();; localObject6 = null) {
-        for (;;)
-        {
-          if (localObject1 == null) {
-            break label459;
-          }
-          localObject1 = new File("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo");
-          ((File)localObject1).mkdirs();
-          File localFile = new File((File)localObject1, "apollo_res_version_info.json");
-          if (localFile.exists()) {
-            localFile.delete();
-          }
-          localObject1 = localObject7;
-          try
-          {
-            for (;;)
-            {
-              JSONObject localJSONObject = this.this$0.mApolloResVersionInfo;
-              localObject1 = localObject7;
-              try
-              {
-                String str = this.this$0.mApolloResVersionInfo.toString();
-                localObject1 = localObject7;
-                boolean bool = TextUtils.isEmpty(str);
-                if (bool)
-                {
-                  if (0 == 0) {
-                    break;
-                  }
-                  try
-                  {
-                    throw new NullPointerException();
-                  }
-                  catch (IOException localIOException1) {}
-                  if (!QLog.isColorLevel()) {
-                    break;
-                  }
-                  QLog.d("ApolloManager", 2, localIOException1.getMessage());
-                  return;
-                }
-              }
-              finally
-              {
-                localObject2 = localObject7;
-              }
-            }
-          }
-          catch (FileNotFoundException localFileNotFoundException1)
-          {
-            for (;;)
-            {
-              localObject7 = null;
-              Object localObject2 = localObject7;
-              try
-              {
-                if (QLog.isColorLevel())
-                {
-                  localObject2 = localObject7;
-                  QLog.d("ApolloManager", 2, localFileNotFoundException1.getMessage());
-                }
-                if (localObject7 == null) {
-                  break;
-                }
-                try
-                {
-                  ((FileOutputStream)localObject7).flush();
-                  ((FileOutputStream)localObject7).close();
-                  return;
-                }
-                catch (IOException localIOException2) {}
-                if (!QLog.isColorLevel()) {
-                  break;
-                }
-                QLog.d("ApolloManager", 2, localIOException2.getMessage());
-                return;
-              }
-              finally
-              {
-                for (;;)
-                {
-                  Object localObject3;
-                  Object localObject10;
-                  Object localObject4;
-                  Object localObject5;
-                  Object localObject8 = localObject6;
-                  localObject6 = localObject12;
-                }
-              }
-            }
-            localObject3 = localObject7;
-            localObject7 = new FileOutputStream(localFile);
-            localObject3 = localObject7;
-          }
-          catch (OutOfMemoryError localOutOfMemoryError1)
-          {
-            localOutOfMemoryError1 = localOutOfMemoryError1;
-            localObject7 = localFileNotFoundException1;
-            localObject10 = localOutOfMemoryError1;
-            localObject4 = localObject7;
-            if (QLog.isColorLevel())
-            {
-              localObject4 = localObject7;
-              QLog.d("ApolloManager", 2, localObject10.getMessage());
-            }
-            if (localObject7 == null) {
-              break;
-            }
-            try
-            {
-              ((FileOutputStream)localObject7).flush();
-              ((FileOutputStream)localObject7).close();
-              return;
-            }
-            catch (IOException localIOException4) {}
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("ApolloManager", 2, localIOException4.getMessage());
-            return;
-          }
-          catch (Exception localException1)
-          {
-            localObject7 = localObject13;
-            localObject5 = localObject7;
-            if (QLog.isColorLevel())
-            {
-              localObject5 = localObject7;
-              QLog.d("ApolloManager", 2, localException1.getMessage());
-            }
-            if (localObject7 == null) {
-              break;
-            }
-            try
-            {
-              ((FileOutputStream)localObject7).flush();
-              ((FileOutputStream)localObject7).close();
-              return;
-            }
-            catch (IOException localIOException5) {}
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("ApolloManager", 2, localIOException5.getMessage());
-            return;
-          }
-          finally
-          {
-            for (;;)
-            {
-              localObject7 = localIOException5;
-              localObject6 = localObject11;
-              if (localObject7 != null) {}
-              try
-              {
-                ((FileOutputStream)localObject7).flush();
-                ((FileOutputStream)localObject7).close();
-                throw localObject6;
-              }
-              catch (IOException localIOException6)
-              {
-                for (;;)
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.d("ApolloManager", 2, localIOException6.getMessage());
-                  }
-                }
-              }
-            }
-          }
-        }
+      Object localObject1 = BaseApplicationImpl.getApplication();
+      int i = 0;
+      localObject1 = ((BaseApplicationImpl)localObject1).getSharedPreferences("aio_used_action_sp", 0);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("sp_key_apollo_panel_action_used_last_request_time");
+      ((StringBuilder)localObject2).append(ApolloManagerServiceImpl.access$200(this.this$0).getCurrentAccountUin());
+      long l = ((SharedPreferences)localObject1).getLong(((StringBuilder)localObject2).toString(), 0L);
+      if (QzoneConfig.getInstance().getConfig("CMShow", "CMShowAIOPanelTag", 0) != 0) {
+        i = 1;
       }
+      localObject2 = (ApolloActionUsedManagerImpl)ApolloManagerServiceImpl.access$200(this.this$0).getRuntimeService(IApolloActionUsedManager.class, "all");
+      if (((System.currentTimeMillis() - l > 43200000L) || (System.currentTimeMillis() - l < 0L) || (((ApolloActionUsedManagerImpl)localObject2).isDataExpired())) && (i != 0))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("[cmshow]ApolloManager", 2, "getApolloActionUsedListReqFromNetwork send req");
+        }
+        ((ApolloActionUsedManagerImpl)localObject2).getActionIdDataFromServer(-1);
+        localObject1 = ((SharedPreferences)localObject1).edit();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("sp_key_apollo_panel_action_used_last_request_time");
+        ((StringBuilder)localObject2).append(ApolloManagerServiceImpl.access$200(this.this$0).getCurrentAccountUin());
+        ((SharedPreferences.Editor)localObject1).putLong(((StringBuilder)localObject2).toString(), System.currentTimeMillis()).commit();
+        return;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.d("[cmshow]ApolloManager", 1, "[doAfterOpenAIO]  getBattleGameList error! exception = ", localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.api.impl.ApolloManagerServiceImpl.6
  * JD-Core Version:    0.7.0.1
  */

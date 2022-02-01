@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.teamwork.fragment;
 
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 import com.tencent.mobileqq.pb.PBUInt64Field;
@@ -22,36 +22,34 @@ class TeamWorkAuthorizeSettingFragment$2
   public void a(boolean paramBoolean, String paramString, int paramInt)
   {
     this.a.stopTitleProgress();
-    if (!paramBoolean) {
-      FMToastUtil.a(HardCodeUtil.a(2131714679));
-    }
-    while ((this.a.jdField_a_of_type_Int != paramInt) && (!paramString.equalsIgnoreCase(this.a.jdField_a_of_type_JavaLangString))) {
+    if (!paramBoolean)
+    {
+      FMToastUtil.a(HardCodeUtil.a(2131714608));
       return;
     }
-    if ((0 == 0) && (QLog.isDevelopLevel())) {
+    if ((this.a.jdField_a_of_type_Int != paramInt) && (!paramString.equalsIgnoreCase(this.a.jdField_a_of_type_JavaLangString))) {
+      return;
+    }
+    if (QLog.isDevelopLevel()) {
       QLog.i("TeamWorkAuthorizeSettingFragment", 1, "padInfo is null, maybe is newpad");
     }
     this.a.jdField_a_of_type_JavaUtilList.clear();
-    if (0 != 0) {
-      throw new NullPointerException();
-    }
-    for (;;)
-    {
-      TeamWorkAuthorizeSettingFragment.a(this.a, this.a.b);
-      TeamWorkAuthorizeSettingFragment.a(this.a);
-      TeamWorkAuthorizeSettingFragment.a(this.a, true);
-      return;
-      this.a.b = 2;
-    }
+    paramString = this.a;
+    paramString.b = 2;
+    TeamWorkAuthorizeSettingFragment.a(paramString, paramString.b);
+    TeamWorkAuthorizeSettingFragment.a(this.a);
+    TeamWorkAuthorizeSettingFragment.a(this.a, true);
   }
   
   public void a(boolean paramBoolean, String paramString, int paramInt, List<TimDocSSOMsg.UinRightInfo> paramList)
   {
     this.a.stopTitleProgress();
-    if (!paramBoolean) {
-      FMToastUtil.a(HardCodeUtil.a(2131714667));
+    if (!paramBoolean)
+    {
+      FMToastUtil.a(HardCodeUtil.a(2131714596));
+      return;
     }
-    while (!paramString.equalsIgnoreCase(this.a.jdField_a_of_type_JavaLangString)) {
+    if (!paramString.equalsIgnoreCase(this.a.jdField_a_of_type_JavaLangString)) {
       return;
     }
     this.a.jdField_a_of_type_JavaUtilList.clear();
@@ -64,8 +62,9 @@ class TeamWorkAuthorizeSettingFragment$2
       localItemData.jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo = paramList;
       this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkAuthorizeUinListAdapter.a(localItemData);
     }
-    this.a.b = paramInt;
-    TeamWorkAuthorizeSettingFragment.a(this.a, this.a.b);
+    paramString = this.a;
+    paramString.b = paramInt;
+    TeamWorkAuthorizeSettingFragment.a(paramString, paramString.b);
     TeamWorkAuthorizeSettingFragment.a(this.a);
     TeamWorkAuthorizeSettingFragment.a(this.a, true);
   }
@@ -75,26 +74,26 @@ class TeamWorkAuthorizeSettingFragment$2
     TeamWorkAuthorizeSettingFragment.a(this.a, true);
     this.a.getRightTextView().setEnabled(true);
     this.a.stopTitleProgress();
-    if (!paramBoolean) {
-      FMToastUtil.a(HardCodeUtil.a(2131714622));
-    }
-    Intent localIntent;
-    do
+    if (!paramBoolean)
     {
+      FMToastUtil.a(HardCodeUtil.a(2131714551));
       return;
-      FMToastUtil.b(HardCodeUtil.a(2131714624));
-      this.a.stopTitleProgress();
-      localIntent = new Intent();
-      localIntent.putExtra("url", paramString);
-      localIntent.putExtra("type", paramInt);
-    } while (!this.a.isAdded());
-    this.a.getActivity().setResult(1122, localIntent);
-    this.a.getActivity().finish();
+    }
+    FMToastUtil.b(HardCodeUtil.a(2131714553));
+    this.a.stopTitleProgress();
+    Intent localIntent = new Intent();
+    localIntent.putExtra("url", paramString);
+    localIntent.putExtra("type", paramInt);
+    if (this.a.isAdded())
+    {
+      this.a.getBaseActivity().setResult(1122, localIntent);
+      this.a.getBaseActivity().finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment.2
  * JD-Core Version:    0.7.0.1
  */

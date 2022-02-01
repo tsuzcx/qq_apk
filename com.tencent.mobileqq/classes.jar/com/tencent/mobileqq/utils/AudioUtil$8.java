@@ -10,9 +10,10 @@ final class AudioUtil$8
   {
     if (AudioUtil.b() == 0)
     {
-      if (this.a != null)
+      paramMediaPlayer = this.a;
+      if (paramMediaPlayer != null)
       {
-        this.a.onCompletion(AudioUtil.a);
+        paramMediaPlayer.onCompletion(AudioUtil.a);
         return;
       }
       AudioUtil.a();
@@ -24,7 +25,7 @@ final class AudioUtil$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.AudioUtil.8
  * JD-Core Version:    0.7.0.1
  */

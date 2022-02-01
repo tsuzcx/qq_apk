@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<animated-vector android:drawable="@drawable/blj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:drawable="@drawable/igf" />
-    <item android:drawable="@drawable/igj" />
-</selector>
+    <target android:name="ring_outer" android:animation="@anim/jf" />
+    <target android:name="ring_outer_path" android:animation="@anim/jg" />
+    <target android:name="dot_group" android:animation="@anim/je" />
+</animated-vector>

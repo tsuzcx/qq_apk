@@ -41,7 +41,32 @@ public final class TroopAioAgent$Message
   
   private static boolean a(int paramInt)
   {
-    return (paramInt == 1) || (paramInt == 22) || (paramInt == 17) || (paramInt == 100) || (paramInt == 11) || (paramInt == 10);
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (paramInt != 1)
+    {
+      bool1 = bool2;
+      if (paramInt != 22)
+      {
+        bool1 = bool2;
+        if (paramInt != 17)
+        {
+          bool1 = bool2;
+          if (paramInt != 100)
+          {
+            bool1 = bool2;
+            if (paramInt != 11)
+            {
+              if (paramInt == 10) {
+                return true;
+              }
+              bool1 = false;
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public long a()
@@ -51,7 +76,7 @@ public final class TroopAioAgent$Message
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioAgent.Message
  * JD-Core Version:    0.7.0.1
  */

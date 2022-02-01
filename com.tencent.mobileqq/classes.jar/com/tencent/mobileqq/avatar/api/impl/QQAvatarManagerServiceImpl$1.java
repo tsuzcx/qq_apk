@@ -11,24 +11,25 @@ class QQAvatarManagerServiceImpl$1
   
   public void run()
   {
-    if ((this.jdField_a_of_type_JavaLangObject instanceof FaceDrawableImpl.FaceObserver)) {
-      QQAvatarManagerServiceImpl.access$300(this.this$0, this.jdField_a_of_type_Int, (FaceDrawableImpl.FaceObserver)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfJavaLangObject);
-    }
-    do
+    Object localObject = this.jdField_a_of_type_JavaLangObject;
+    if ((localObject instanceof FaceDrawableImpl.FaceObserver))
     {
+      QQAvatarManagerServiceImpl.access$300(this.this$0, this.jdField_a_of_type_Int, (FaceDrawableImpl.FaceObserver)localObject, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfJavaLangObject);
       return;
-      if ((this.jdField_a_of_type_JavaLangObject instanceof FaceDrawableImpl.DisFaceObserver))
-      {
-        QQAvatarManagerServiceImpl.access$400(this.this$0, this.jdField_a_of_type_Int, (FaceDrawableImpl.DisFaceObserver)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfJavaLangObject);
-        return;
-      }
-    } while (!(this.jdField_a_of_type_JavaLangObject instanceof FaceDrawableImpl.NewTroopFaceObserver));
-    QQAvatarManagerServiceImpl.access$500(this.this$0, this.jdField_a_of_type_Int, (FaceDrawableImpl.NewTroopFaceObserver)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfJavaLangObject);
+    }
+    if ((localObject instanceof FaceDrawableImpl.DisFaceObserver))
+    {
+      QQAvatarManagerServiceImpl.access$400(this.this$0, this.jdField_a_of_type_Int, (FaceDrawableImpl.DisFaceObserver)localObject, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfJavaLangObject);
+      return;
+    }
+    if ((localObject instanceof FaceDrawableImpl.NewTroopFaceObserver)) {
+      QQAvatarManagerServiceImpl.access$500(this.this$0, this.jdField_a_of_type_Int, (FaceDrawableImpl.NewTroopFaceObserver)localObject, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfJavaLangObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.api.impl.QQAvatarManagerServiceImpl.1
  * JD-Core Version:    0.7.0.1
  */

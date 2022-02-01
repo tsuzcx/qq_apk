@@ -37,15 +37,17 @@ public class OverScrollViewForwardListener
   public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
   {
     Iterator localIterator = this.a.iterator();
-    boolean bool = false;
-    if (localIterator.hasNext())
+    for (boolean bool = false;; bool = true)
     {
+      if (!localIterator.hasNext()) {
+        break label58;
+      }
       OverScrollViewListener localOverScrollViewListener = (OverScrollViewListener)localIterator.next();
-      if ((bool) || (localOverScrollViewListener.onViewCompleteVisableAndReleased(paramInt, paramView, paramListView))) {}
-      for (bool = true;; bool = false) {
+      if ((!bool) && (!localOverScrollViewListener.onViewCompleteVisableAndReleased(paramInt, paramView, paramListView))) {
         break;
       }
     }
+    label58:
     return bool;
   }
   
@@ -59,7 +61,7 @@ public class OverScrollViewForwardListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.OverScrollViewForwardListener
  * JD-Core Version:    0.7.0.1
  */

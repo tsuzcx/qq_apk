@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.proteus;
 
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInjoyImageView;
+import com.tencent.mobileqq.kandian.biz.pts.view.ReadInjoyImageView;
 
 class AdQQMiniGameVideoProteusItem$1
   implements Runnable
@@ -19,7 +19,7 @@ class AdQQMiniGameVideoProteusItem$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.AdQQMiniGameVideoProteusItem.1
  * JD-Core Version:    0.7.0.1
  */

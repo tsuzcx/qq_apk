@@ -9,12 +9,15 @@ final class MiniAppUtils$6
 {
   public void onCmdResult(boolean paramBoolean, Bundle paramBundle)
   {
-    QLog.d("MiniAppUtils", 2, "onCmdResult() called with: succ = " + paramBoolean);
+    paramBundle = new StringBuilder();
+    paramBundle.append("onCmdResult() called with: succ = ");
+    paramBundle.append(paramBoolean);
+    QLog.d("MiniAppUtils", 2, paramBundle.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUtils.6
  * JD-Core Version:    0.7.0.1
  */

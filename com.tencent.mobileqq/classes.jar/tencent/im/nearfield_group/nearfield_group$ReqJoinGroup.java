@@ -22,13 +22,14 @@ public final class nearfield_group$ReqJoinGroup
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34 }, new String[] { "msg_head", "uint64_group_code", "uint64_owner_uin", "bytes_distance" }, new Object[] { null, Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro }, ReqJoinGroup.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34 }, new String[] { "msg_head", "uint64_group_code", "uint64_owner_uin", "bytes_distance" }, new Object[] { null, localLong, localLong, localByteStringMicro }, ReqJoinGroup.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.nearfield_group.nearfield_group.ReqJoinGroup
  * JD-Core Version:    0.7.0.1
  */

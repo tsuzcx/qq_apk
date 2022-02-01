@@ -22,26 +22,23 @@ public class AnimatedImageSpan
   
   public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
   {
-    paramCharSequence = this.a;
-    if ((paramCharSequence instanceof AnimatedImageDrawable)) {
-      paramCharSequence = ((AnimatedImageDrawable)this.a).a();
+    Drawable localDrawable = this.a;
+    paramCharSequence = localDrawable;
+    if ((localDrawable instanceof AnimatedImageDrawable)) {
+      paramCharSequence = ((AnimatedImageDrawable)localDrawable).a();
     }
-    for (;;)
-    {
-      if (paramCharSequence == null) {
-        return;
-      }
-      paramCanvas.save();
-      paramInt2 = paramInt5 - paramCharSequence.getBounds().bottom;
-      paramInt1 = paramInt2;
-      if (this.mVerticalAlignment == 1) {
-        paramInt1 = paramInt2 - paramPaint.getFontMetricsInt().descent;
-      }
-      paramCanvas.translate(paramFloat, paramInt1);
-      paramCharSequence.draw(paramCanvas);
-      paramCanvas.restore();
+    if (paramCharSequence == null) {
       return;
     }
+    paramCanvas.save();
+    paramInt2 = paramInt5 - paramCharSequence.getBounds().bottom;
+    paramInt1 = paramInt2;
+    if (this.mVerticalAlignment == 1) {
+      paramInt1 = paramInt2 - paramPaint.getFontMetricsInt().descent;
+    }
+    paramCanvas.translate(paramFloat, paramInt1);
+    paramCharSequence.draw(paramCanvas);
+    paramCanvas.restore();
   }
   
   public Drawable getDrawable()
@@ -64,7 +61,7 @@ public class AnimatedImageSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.AnimatedImageSpan
  * JD-Core Version:    0.7.0.1
  */

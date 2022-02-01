@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.troop.filemanager.data;
 
 import android.view.View;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtil.TipsClickedInterface;
 
 class TroopFileItem$4
-  implements FileManagerUtil.TipsClickedInterface
+  implements QQFileManagerUtil.TipsClickedInterface
 {
   TroopFileItem$4(TroopFileItem paramTroopFileItem) {}
   
@@ -15,7 +15,7 @@ class TroopFileItem$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.data.TroopFileItem.4
  * JD-Core Version:    0.7.0.1
  */

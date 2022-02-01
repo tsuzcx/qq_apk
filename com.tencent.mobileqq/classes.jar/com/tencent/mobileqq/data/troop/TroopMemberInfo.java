@@ -82,9 +82,8 @@ public class TroopMemberInfo
   public String troopremark;
   public String troopuin;
   
-  public boolean entityByCursor(Cursor paramCursor)
+  protected boolean entityByCursor(Cursor paramCursor)
   {
-    boolean bool2 = false;
     this.troopuin = paramCursor.getString(paramCursor.getColumnIndex("troopuin"));
     this.memberuin = paramCursor.getString(paramCursor.getColumnIndex("memberuin"));
     this.friendnick = paramCursor.getString(paramCursor.getColumnIndex("friendnick"));
@@ -115,106 +114,174 @@ public class TroopMemberInfo
     this.last_active_time = paramCursor.getLong(paramCursor.getColumnIndex("last_active_time"));
     this.active_point = paramCursor.getLong(paramCursor.getColumnIndex("active_point"));
     this.credit_level = paramCursor.getLong(paramCursor.getColumnIndex("credit_level"));
-    if (paramCursor.getInt(paramCursor.getColumnIndex("isTroopFollowed")) != 0) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      this.isTroopFollowed = bool1;
-      this.distance = paramCursor.getInt(paramCursor.getColumnIndex("distance"));
-      this.msgseq = paramCursor.getLong(paramCursor.getColumnIndex("msgseq"));
-      this.gagTimeStamp = paramCursor.getLong(paramCursor.getColumnIndex("gagTimeStamp"));
-      this.distanceToSelf = paramCursor.getDouble(paramCursor.getColumnIndex("distanceToSelf"));
-      this.distanceToSelfUpdateTimeStamp = paramCursor.getLong(paramCursor.getColumnIndex("distanceToSelfUpdateTimeStamp"));
-      bool1 = bool2;
-      if (paramCursor.getInt(paramCursor.getColumnIndex("mIsShielded")) != 0) {
-        bool1 = true;
-      }
-      this.mIsShielded = bool1;
-      this.mUniqueTitle = paramCursor.getString(paramCursor.getColumnIndex("mUniqueTitle"));
-      this.mUniqueTitleExpire = paramCursor.getInt(paramCursor.getColumnIndex("mUniqueTitleExpire"));
-      this.tribeLevel = paramCursor.getInt(paramCursor.getColumnIndex("tribeLevel"));
-      this.tribePoint = paramCursor.getInt(paramCursor.getColumnIndex("tribePoint"));
-      this.mGlamourLevel = paramCursor.getInt(paramCursor.getColumnIndex("mGlamourLevel"));
-      this.hotChatGlamourLevel = paramCursor.getInt(paramCursor.getColumnIndex("hotChatGlamourLevel"));
-      this.globalTroopLevel = paramCursor.getInt(paramCursor.getColumnIndex("globalTroopLevel"));
-      this.commonFrdCnt = paramCursor.getInt(paramCursor.getColumnIndex("commonFrdCnt"));
-      this.hwIdentity = paramCursor.getInt(paramCursor.getColumnIndex("hwIdentity"));
-      this.recommendRemark = paramCursor.getString(paramCursor.getColumnIndex("recommendRemark"));
-      this.isShowQZone = paramCursor.getInt(paramCursor.getColumnIndex("isShowQZone"));
-      this.mVipType = paramCursor.getInt(paramCursor.getColumnIndex("mVipType"));
-      this.mVipLevel = paramCursor.getInt(paramCursor.getColumnIndex("mVipLevel"));
-      this.mVipTemplateId = paramCursor.getInt(paramCursor.getColumnIndex("mVipTemplateId"));
-      this.mBigClubVipType = paramCursor.getInt(paramCursor.getColumnIndex("mBigClubVipType"));
-      this.mBigClubVipLevel = paramCursor.getInt(paramCursor.getColumnIndex("mBigClubVipLevel"));
-      this.mBigClubTemplateId = paramCursor.getInt(paramCursor.getColumnIndex("mBigClubTemplateId"));
-      this.mIsHideBigClub = paramCursor.getInt(paramCursor.getColumnIndex("mIsHideBigClub"));
-      this.honorList = paramCursor.getString(paramCursor.getColumnIndex("honorList"));
-      this.mHonorRichFlag = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("mHonorRichFlag")));
-      this.lastMsgUpdateHonorRichTime = paramCursor.getLong(paramCursor.getColumnIndex("lastMsgUpdateHonorRichTime"));
-      this.cmduinFlagEx3Grocery = paramCursor.getLong(paramCursor.getColumnIndex("cmduinFlagEx3Grocery"));
-      return true;
+    int i = paramCursor.getInt(paramCursor.getColumnIndex("isTroopFollowed"));
+    boolean bool2 = false;
+    if (i != 0) {
+      bool1 = true;
+    } else {
+      bool1 = false;
     }
+    this.isTroopFollowed = bool1;
+    this.distance = paramCursor.getInt(paramCursor.getColumnIndex("distance"));
+    this.msgseq = paramCursor.getLong(paramCursor.getColumnIndex("msgseq"));
+    this.gagTimeStamp = paramCursor.getLong(paramCursor.getColumnIndex("gagTimeStamp"));
+    this.distanceToSelf = paramCursor.getDouble(paramCursor.getColumnIndex("distanceToSelf"));
+    this.distanceToSelfUpdateTimeStamp = paramCursor.getLong(paramCursor.getColumnIndex("distanceToSelfUpdateTimeStamp"));
+    boolean bool1 = bool2;
+    if (paramCursor.getInt(paramCursor.getColumnIndex("mIsShielded")) != 0) {
+      bool1 = true;
+    }
+    this.mIsShielded = bool1;
+    this.mUniqueTitle = paramCursor.getString(paramCursor.getColumnIndex("mUniqueTitle"));
+    this.mUniqueTitleExpire = paramCursor.getInt(paramCursor.getColumnIndex("mUniqueTitleExpire"));
+    this.tribeLevel = paramCursor.getInt(paramCursor.getColumnIndex("tribeLevel"));
+    this.tribePoint = paramCursor.getInt(paramCursor.getColumnIndex("tribePoint"));
+    this.mGlamourLevel = paramCursor.getInt(paramCursor.getColumnIndex("mGlamourLevel"));
+    this.hotChatGlamourLevel = paramCursor.getInt(paramCursor.getColumnIndex("hotChatGlamourLevel"));
+    this.globalTroopLevel = paramCursor.getInt(paramCursor.getColumnIndex("globalTroopLevel"));
+    this.commonFrdCnt = paramCursor.getInt(paramCursor.getColumnIndex("commonFrdCnt"));
+    this.hwIdentity = paramCursor.getInt(paramCursor.getColumnIndex("hwIdentity"));
+    this.recommendRemark = paramCursor.getString(paramCursor.getColumnIndex("recommendRemark"));
+    this.isShowQZone = paramCursor.getInt(paramCursor.getColumnIndex("isShowQZone"));
+    this.mVipType = paramCursor.getInt(paramCursor.getColumnIndex("mVipType"));
+    this.mVipLevel = paramCursor.getInt(paramCursor.getColumnIndex("mVipLevel"));
+    this.mVipTemplateId = paramCursor.getInt(paramCursor.getColumnIndex("mVipTemplateId"));
+    this.mBigClubVipType = paramCursor.getInt(paramCursor.getColumnIndex("mBigClubVipType"));
+    this.mBigClubVipLevel = paramCursor.getInt(paramCursor.getColumnIndex("mBigClubVipLevel"));
+    this.mBigClubTemplateId = paramCursor.getInt(paramCursor.getColumnIndex("mBigClubTemplateId"));
+    this.mIsHideBigClub = paramCursor.getInt(paramCursor.getColumnIndex("mIsHideBigClub"));
+    this.honorList = paramCursor.getString(paramCursor.getColumnIndex("honorList"));
+    this.mHonorRichFlag = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("mHonorRichFlag")));
+    this.lastMsgUpdateHonorRichTime = paramCursor.getLong(paramCursor.getColumnIndex("lastMsgUpdateHonorRichTime"));
+    this.cmduinFlagEx3Grocery = paramCursor.getLong(paramCursor.getColumnIndex("cmduinFlagEx3Grocery"));
+    return true;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("TroopMemberInfo{");
-    localStringBuilder.append("datetime=").append(this.datetime);
-    localStringBuilder.append(", troopuin='").append(this.troopuin).append('\'');
-    localStringBuilder.append(", memberuin='").append(this.memberuin).append('\'');
-    localStringBuilder.append(", displayedNamePinyinFirst='").append(this.displayedNamePinyinFirst).append('\'');
-    localStringBuilder.append(", friendnick='").append(this.friendnick).append('\'');
-    localStringBuilder.append(", pyAll_friendnick='").append(this.pyAll_friendnick).append('\'');
-    localStringBuilder.append(", pyFirst_friendnick='").append(this.pyFirst_friendnick).append('\'');
-    localStringBuilder.append(", troopnick='").append(this.troopnick).append('\'');
-    localStringBuilder.append(", pyAll_troopnick='").append(this.pyAll_troopnick).append('\'');
-    localStringBuilder.append(", pyFirst_troopnick='").append(this.pyFirst_troopnick).append('\'');
-    localStringBuilder.append(", autoremark='").append(this.autoremark).append('\'');
-    localStringBuilder.append(", pyAll_autoremark='").append(this.pyAll_autoremark).append('\'');
-    localStringBuilder.append(", pyFirst_autoremark='").append(this.pyFirst_autoremark).append('\'');
-    localStringBuilder.append(", troopremark='").append(this.troopremark).append('\'');
-    localStringBuilder.append(", alias='").append(this.alias).append('\'');
-    localStringBuilder.append(", faceid=").append(this.faceid);
-    localStringBuilder.append(", age=").append(this.age);
-    localStringBuilder.append(", sex=").append(this.sex);
-    localStringBuilder.append(", status=").append(this.status);
-    localStringBuilder.append(", qqVipInfo=").append(this.qqVipInfo);
-    localStringBuilder.append(", superQqInfo=").append(this.superQqInfo);
-    localStringBuilder.append(", superVipInfo=").append(this.superVipInfo);
-    localStringBuilder.append(", level=").append(this.level);
-    localStringBuilder.append(", newRealLevel").append(this.newRealLevel);
-    localStringBuilder.append(", join_time=").append(this.join_time);
-    localStringBuilder.append(", last_active_time=").append(this.last_active_time);
-    localStringBuilder.append(", active_point=").append(this.active_point);
-    localStringBuilder.append(", credit_level=").append(this.credit_level);
-    localStringBuilder.append(", isTroopFollowed=").append(this.isTroopFollowed);
-    localStringBuilder.append(", distance=").append(this.distance);
-    localStringBuilder.append(", msgseq=").append(this.msgseq);
-    localStringBuilder.append(", gagTimeStamp=").append(this.gagTimeStamp);
-    localStringBuilder.append(", distanceToSelf=").append(this.distanceToSelf);
-    localStringBuilder.append(", distanceToSelfUpdateTimeStamp=").append(this.distanceToSelfUpdateTimeStamp);
-    localStringBuilder.append(", mIsShielded=").append(this.mIsShielded);
-    localStringBuilder.append(", mUniqueTitle='").append(this.mUniqueTitle).append('\'');
-    localStringBuilder.append(", mUniqueTitleExpire=").append(this.mUniqueTitleExpire);
-    localStringBuilder.append(", tribeLevel=").append(this.tribeLevel);
-    localStringBuilder.append(", tribePoint=").append(this.tribePoint);
-    localStringBuilder.append(", mGlamourLevel=").append(this.mGlamourLevel);
-    localStringBuilder.append(", hotChatGlamourLevel=").append(this.hotChatGlamourLevel);
-    localStringBuilder.append(", globalTroopLevel=").append(this.globalTroopLevel);
-    localStringBuilder.append(", hwIdentity=").append(this.hwIdentity);
-    localStringBuilder.append(", recommendRemark=").append(this.recommendRemark);
-    localStringBuilder.append(", isShowQzone=").append(this.isShowQZone);
-    localStringBuilder.append(", mVipType=").append(this.mVipType);
-    localStringBuilder.append(", mVipLevel=").append(this.mVipLevel);
-    localStringBuilder.append(", honorList=").append(this.honorList);
-    localStringBuilder.append(", cmduinFlagEx3Grocery=").append(this.cmduinFlagEx3Grocery);
-    localStringBuilder.append(", troopColorNickId=").append(this.troopColorNickId);
+    localStringBuilder.append("datetime=");
+    localStringBuilder.append(this.datetime);
+    localStringBuilder.append(", troopuin='");
+    localStringBuilder.append(this.troopuin);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", memberuin='");
+    localStringBuilder.append(this.memberuin);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", displayedNamePinyinFirst='");
+    localStringBuilder.append(this.displayedNamePinyinFirst);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", friendnick='");
+    localStringBuilder.append(this.friendnick);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", pyAll_friendnick='");
+    localStringBuilder.append(this.pyAll_friendnick);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", pyFirst_friendnick='");
+    localStringBuilder.append(this.pyFirst_friendnick);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", troopnick='");
+    localStringBuilder.append(this.troopnick);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", pyAll_troopnick='");
+    localStringBuilder.append(this.pyAll_troopnick);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", pyFirst_troopnick='");
+    localStringBuilder.append(this.pyFirst_troopnick);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", autoremark='");
+    localStringBuilder.append(this.autoremark);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", pyAll_autoremark='");
+    localStringBuilder.append(this.pyAll_autoremark);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", pyFirst_autoremark='");
+    localStringBuilder.append(this.pyFirst_autoremark);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", troopremark='");
+    localStringBuilder.append(this.troopremark);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", alias='");
+    localStringBuilder.append(this.alias);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", faceid=");
+    localStringBuilder.append(this.faceid);
+    localStringBuilder.append(", age=");
+    localStringBuilder.append(this.age);
+    localStringBuilder.append(", sex=");
+    localStringBuilder.append(this.sex);
+    localStringBuilder.append(", status=");
+    localStringBuilder.append(this.status);
+    localStringBuilder.append(", qqVipInfo=");
+    localStringBuilder.append(this.qqVipInfo);
+    localStringBuilder.append(", superQqInfo=");
+    localStringBuilder.append(this.superQqInfo);
+    localStringBuilder.append(", superVipInfo=");
+    localStringBuilder.append(this.superVipInfo);
+    localStringBuilder.append(", level=");
+    localStringBuilder.append(this.level);
+    localStringBuilder.append(", newRealLevel");
+    localStringBuilder.append(this.newRealLevel);
+    localStringBuilder.append(", join_time=");
+    localStringBuilder.append(this.join_time);
+    localStringBuilder.append(", last_active_time=");
+    localStringBuilder.append(this.last_active_time);
+    localStringBuilder.append(", active_point=");
+    localStringBuilder.append(this.active_point);
+    localStringBuilder.append(", credit_level=");
+    localStringBuilder.append(this.credit_level);
+    localStringBuilder.append(", isTroopFollowed=");
+    localStringBuilder.append(this.isTroopFollowed);
+    localStringBuilder.append(", distance=");
+    localStringBuilder.append(this.distance);
+    localStringBuilder.append(", msgseq=");
+    localStringBuilder.append(this.msgseq);
+    localStringBuilder.append(", gagTimeStamp=");
+    localStringBuilder.append(this.gagTimeStamp);
+    localStringBuilder.append(", distanceToSelf=");
+    localStringBuilder.append(this.distanceToSelf);
+    localStringBuilder.append(", distanceToSelfUpdateTimeStamp=");
+    localStringBuilder.append(this.distanceToSelfUpdateTimeStamp);
+    localStringBuilder.append(", mIsShielded=");
+    localStringBuilder.append(this.mIsShielded);
+    localStringBuilder.append(", mUniqueTitle='");
+    localStringBuilder.append(this.mUniqueTitle);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mUniqueTitleExpire=");
+    localStringBuilder.append(this.mUniqueTitleExpire);
+    localStringBuilder.append(", tribeLevel=");
+    localStringBuilder.append(this.tribeLevel);
+    localStringBuilder.append(", tribePoint=");
+    localStringBuilder.append(this.tribePoint);
+    localStringBuilder.append(", mGlamourLevel=");
+    localStringBuilder.append(this.mGlamourLevel);
+    localStringBuilder.append(", hotChatGlamourLevel=");
+    localStringBuilder.append(this.hotChatGlamourLevel);
+    localStringBuilder.append(", globalTroopLevel=");
+    localStringBuilder.append(this.globalTroopLevel);
+    localStringBuilder.append(", hwIdentity=");
+    localStringBuilder.append(this.hwIdentity);
+    localStringBuilder.append(", recommendRemark=");
+    localStringBuilder.append(this.recommendRemark);
+    localStringBuilder.append(", isShowQzone=");
+    localStringBuilder.append(this.isShowQZone);
+    localStringBuilder.append(", mVipType=");
+    localStringBuilder.append(this.mVipType);
+    localStringBuilder.append(", mVipLevel=");
+    localStringBuilder.append(this.mVipLevel);
+    localStringBuilder.append(", honorList=");
+    localStringBuilder.append(this.honorList);
+    localStringBuilder.append(", cmduinFlagEx3Grocery=");
+    localStringBuilder.append(this.cmduinFlagEx3Grocery);
+    localStringBuilder.append(", troopColorNickId=");
+    localStringBuilder.append(this.troopColorNickId);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.troop.TroopMemberInfo
  * JD-Core Version:    0.7.0.1
  */

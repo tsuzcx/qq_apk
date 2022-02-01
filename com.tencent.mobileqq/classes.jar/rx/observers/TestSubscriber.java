@@ -35,13 +35,15 @@ public class TestSubscriber<T>
   
   public TestSubscriber(Observer<T> paramObserver, long paramLong)
   {
-    if (paramObserver == null) {
-      throw new NullPointerException();
+    if (paramObserver != null)
+    {
+      this.testObserver = new TestObserver(paramObserver);
+      if (paramLong >= 0L) {
+        request(paramLong);
+      }
+      return;
     }
-    this.testObserver = new TestObserver(paramObserver);
-    if (paramLong >= 0L) {
-      request(paramLong);
-    }
+    throw new NullPointerException();
   }
   
   public TestSubscriber(Subscriber<T> paramSubscriber)
@@ -77,52 +79,75 @@ public class TestSubscriber<T>
   public void assertCompleted()
   {
     int i = this.testObserver.getOnCompletedEvents().size();
-    if (i == 0) {
-      throw new AssertionError("Not completed!");
+    if (i != 0)
+    {
+      if (i <= 1) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Completed multiple times: ");
+      localStringBuilder.append(i);
+      throw new AssertionError(localStringBuilder.toString());
     }
-    if (i > 1) {
-      throw new AssertionError("Completed multiple times: " + i);
-    }
+    throw new AssertionError("Not completed!");
   }
   
   public void assertError(Class<? extends Throwable> paramClass)
   {
     List localList = this.testObserver.getOnErrorEvents();
-    if (localList.size() == 0) {
-      throw new AssertionError("No errors");
-    }
-    if (localList.size() > 1)
+    if (localList.size() != 0)
     {
-      paramClass = new AssertionError("Multiple errors: " + localList.size());
+      if (localList.size() <= 1)
+      {
+        if (paramClass.isInstance(localList.get(0))) {
+          return;
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Exceptions differ; expected: ");
+        localStringBuilder.append(paramClass);
+        localStringBuilder.append(", actual: ");
+        localStringBuilder.append(localList.get(0));
+        paramClass = new AssertionError(localStringBuilder.toString());
+        paramClass.initCause((Throwable)localList.get(0));
+        throw paramClass;
+      }
+      paramClass = new StringBuilder();
+      paramClass.append("Multiple errors: ");
+      paramClass.append(localList.size());
+      paramClass = new AssertionError(paramClass.toString());
       paramClass.initCause(new CompositeException(localList));
       throw paramClass;
     }
-    if (!paramClass.isInstance(localList.get(0)))
-    {
-      paramClass = new AssertionError("Exceptions differ; expected: " + paramClass + ", actual: " + localList.get(0));
-      paramClass.initCause((Throwable)localList.get(0));
-      throw paramClass;
-    }
+    throw new AssertionError("No errors");
   }
   
   public void assertError(Throwable paramThrowable)
   {
     List localList = this.testObserver.getOnErrorEvents();
-    if (localList.size() == 0) {
-      throw new AssertionError("No errors");
-    }
-    if (localList.size() > 1)
+    if (localList.size() != 0)
     {
-      paramThrowable = new AssertionError("Multiple errors: " + localList.size());
+      if (localList.size() <= 1)
+      {
+        if (paramThrowable.equals(localList.get(0))) {
+          return;
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Exceptions differ; expected: ");
+        localStringBuilder.append(paramThrowable);
+        localStringBuilder.append(", actual: ");
+        localStringBuilder.append(localList.get(0));
+        paramThrowable = new AssertionError(localStringBuilder.toString());
+        paramThrowable.initCause((Throwable)localList.get(0));
+        throw paramThrowable;
+      }
+      paramThrowable = new StringBuilder();
+      paramThrowable.append("Multiple errors: ");
+      paramThrowable.append(localList.size());
+      paramThrowable = new AssertionError(paramThrowable.toString());
       paramThrowable.initCause(new CompositeException(localList));
       throw paramThrowable;
     }
-    if (!paramThrowable.equals(localList.get(0)))
-    {
-      paramThrowable = new AssertionError("Exceptions differ; expected: " + paramThrowable + ", actual: " + localList.get(0));
-      paramThrowable.initCause((Throwable)localList.get(0));
-      throw paramThrowable;
-    }
+    throw new AssertionError("No errors");
   }
   
   public void assertNoErrors()
@@ -130,15 +155,16 @@ public class TestSubscriber<T>
     List localList = getOnErrorEvents();
     if (localList.size() > 0)
     {
-      AssertionError localAssertionError = new AssertionError("Unexpected onError events: " + getOnErrorEvents().size());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Unexpected onError events: ");
+      ((StringBuilder)localObject).append(getOnErrorEvents().size());
+      localObject = new AssertionError(((StringBuilder)localObject).toString());
       if (localList.size() == 1) {
-        localAssertionError.initCause((Throwable)getOnErrorEvents().get(0));
+        ((AssertionError)localObject).initCause((Throwable)getOnErrorEvents().get(0));
+      } else {
+        ((AssertionError)localObject).initCause(new CompositeException(localList));
       }
-      for (;;)
-      {
-        throw localAssertionError;
-        localAssertionError.initCause(new CompositeException(localList));
-      }
+      throw ((Throwable)localObject);
     }
   }
   
@@ -146,40 +172,68 @@ public class TestSubscriber<T>
   {
     List localList = this.testObserver.getOnErrorEvents();
     int i = this.testObserver.getOnCompletedEvents().size();
-    if ((localList.size() > 0) || (i > 0))
+    if ((localList.size() <= 0) && (i <= 0)) {
+      return;
+    }
+    if (!localList.isEmpty())
     {
-      if (localList.isEmpty()) {
-        throw new AssertionError("Found " + localList.size() + " errors and " + i + " completion events instead of none");
-      }
       if (localList.size() == 1)
       {
-        localAssertionError = new AssertionError("Found " + localList.size() + " errors and " + i + " completion events instead of none");
-        localAssertionError.initCause((Throwable)localList.get(0));
-        throw localAssertionError;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Found ");
+        ((StringBuilder)localObject).append(localList.size());
+        ((StringBuilder)localObject).append(" errors and ");
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(" completion events instead of none");
+        localObject = new AssertionError(((StringBuilder)localObject).toString());
+        ((AssertionError)localObject).initCause((Throwable)localList.get(0));
+        throw ((Throwable)localObject);
       }
-      AssertionError localAssertionError = new AssertionError("Found " + localList.size() + " errors and " + i + " completion events instead of none");
-      localAssertionError.initCause(new CompositeException(localList));
-      throw localAssertionError;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Found ");
+      ((StringBuilder)localObject).append(localList.size());
+      ((StringBuilder)localObject).append(" errors and ");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(" completion events instead of none");
+      localObject = new AssertionError(((StringBuilder)localObject).toString());
+      ((AssertionError)localObject).initCause(new CompositeException(localList));
+      throw ((Throwable)localObject);
     }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Found ");
+    ((StringBuilder)localObject).append(localList.size());
+    ((StringBuilder)localObject).append(" errors and ");
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append(" completion events instead of none");
+    throw new AssertionError(((StringBuilder)localObject).toString());
   }
   
   public void assertNoValues()
   {
     int i = this.testObserver.getOnNextEvents().size();
-    if (i > 0) {
-      throw new AssertionError("No onNext events expected yet some received: " + i);
+    if (i <= 0) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("No onNext events expected yet some received: ");
+    localStringBuilder.append(i);
+    throw new AssertionError(localStringBuilder.toString());
   }
   
   public void assertNotCompleted()
   {
     int i = this.testObserver.getOnCompletedEvents().size();
-    if (i == 1) {
-      throw new AssertionError("Completed!");
+    if (i != 1)
+    {
+      if (i <= 1) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Completed multiple times: ");
+      localStringBuilder.append(i);
+      throw new AssertionError(localStringBuilder.toString());
     }
-    if (i > 1) {
-      throw new AssertionError("Completed multiple times: " + i);
-    }
+    throw new AssertionError("Completed!");
   }
   
   public void assertReceivedOnNext(List<T> paramList)
@@ -194,9 +248,10 @@ public class TestSubscriber<T>
   
   public void assertUnsubscribed()
   {
-    if (!isUnsubscribed()) {
-      throw new AssertionError("Not unsubscribed.");
+    if (isUnsubscribed()) {
+      return;
     }
+    throw new AssertionError("Not unsubscribed.");
   }
   
   public void assertValue(T paramT)
@@ -207,9 +262,15 @@ public class TestSubscriber<T>
   public void assertValueCount(int paramInt)
   {
     int i = this.testObserver.getOnNextEvents().size();
-    if (i != paramInt) {
-      throw new AssertionError("Number of onNext events differ; expected: " + paramInt + ", actual: " + i);
+    if (i == paramInt) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Number of onNext events differ; expected: ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", actual: ");
+    localStringBuilder.append(i);
+    throw new AssertionError(localStringBuilder.toString());
   }
   
   public void assertValues(T... paramVarArgs)
@@ -247,15 +308,19 @@ public class TestSubscriber<T>
   {
     try
     {
-      if (!this.latch.await(paramLong, paramTimeUnit)) {
-        unsubscribe();
+      if (this.latch.await(paramLong, paramTimeUnit)) {
+        break label21;
       }
+      unsubscribe();
       return;
     }
     catch (InterruptedException paramTimeUnit)
     {
-      unsubscribe();
+      label17:
+      label21:
+      break label17;
     }
+    unsubscribe();
   }
   
   public Thread getLastSeenThread()
@@ -319,7 +384,7 @@ public class TestSubscriber<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.observers.TestSubscriber
  * JD-Core Version:    0.7.0.1
  */

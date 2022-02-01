@@ -23,13 +23,20 @@ public class OfflineFileSaveModel
       QLog.e("OfflineFileSaveModel<QFile>", 1, "init: not find the target entity.");
       return;
     }
-    QLog.e("OfflineFileSaveModel<QFile>", 1, "init: uniseq[" + paramChatMessage.uniseq + "] session[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]");
+    paramQQAppInterface = new StringBuilder();
+    paramQQAppInterface.append("init: uniseq[");
+    paramQQAppInterface.append(paramChatMessage.uniseq);
+    paramQQAppInterface.append("] session[");
+    paramQQAppInterface.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    paramQQAppInterface.append("]");
+    QLog.e("OfflineFileSaveModel<QFile>", 1, paramQQAppInterface.toString());
   }
   
   public long a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    if (localFileManagerEntity != null) {
+      return localFileManagerEntity.fileSize;
     }
     return 0L;
   }
@@ -43,24 +50,36 @@ public class OfflineFileSaveModel
   
   public String a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath();
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    if (localFileManagerEntity != null) {
+      return localFileManagerEntity.getFilePath();
     }
     return "";
   }
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    if (localObject == null)
     {
       QLog.e("OfflineFileSaveModel<QFile>", 1, "download: file entity is null.");
       return false;
     }
-    int i = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType();
+    int i = ((FileManagerEntity)localObject).getCloudType();
     int j = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status;
-    String str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath();
-    QLog.e("OfflineFileSaveModel<QFile>", 1, "download: uniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq + "] session[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] cloudType[" + i + "] status[" + j + "]");
-    if ((!FileUtils.b(str)) && (i != 0))
+    localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("download: uniseq[");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq);
+    localStringBuilder.append("] session[");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    localStringBuilder.append("] cloudType[");
+    localStringBuilder.append(i);
+    localStringBuilder.append("] status[");
+    localStringBuilder.append(j);
+    localStringBuilder.append("]");
+    QLog.e("OfflineFileSaveModel<QFile>", 1, localStringBuilder.toString());
+    if ((!FileUtils.fileExistsAndNotEmpty((String)localObject)) && (i != 0))
     {
       if (j == 3)
       {
@@ -76,7 +95,10 @@ public class OfflineFileSaveModel
   
   public String b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.frienduin + this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.frienduin);
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq);
+    return localStringBuilder.toString();
   }
   
   public boolean b()
@@ -92,12 +114,13 @@ public class OfflineFileSaveModel
   
   public boolean c()
   {
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null)
+    if (localFileManagerEntity != null)
     {
       bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getStatus() == 2) {
+      if (localFileManagerEntity.getStatus() == 2) {
         bool1 = true;
       }
     }
@@ -106,7 +129,7 @@ public class OfflineFileSaveModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.multisave.OfflineFileSaveModel
  * JD-Core Version:    0.7.0.1
  */

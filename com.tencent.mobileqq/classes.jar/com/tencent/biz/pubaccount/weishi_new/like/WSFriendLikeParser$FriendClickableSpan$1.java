@@ -1,35 +1,39 @@
 package com.tencent.biz.pubaccount.weishi_new.like;
 
-import com.tencent.biz.pubaccount.weishi_new.jump.IJumpListener;
+import com.tencent.biz.pubaccount.weishi_new.jump.OnJumpListener;
 
 class WSFriendLikeParser$FriendClickableSpan$1
-  implements IJumpListener
+  extends OnJumpListener
 {
   WSFriendLikeParser$FriendClickableSpan$1(WSFriendLikeParser.FriendClickableSpan paramFriendClickableSpan) {}
   
   public void a()
   {
-    WSFriendLikeParser.FriendClickableSpan.a(this.a, WSFriendLikeParser.FriendClickableSpan.a(this.a), 1000003);
+    WSFriendLikeParser.FriendClickableSpan localFriendClickableSpan = this.a;
+    WSFriendLikeParser.FriendClickableSpan.a(localFriendClickableSpan, WSFriendLikeParser.FriendClickableSpan.a(localFriendClickableSpan), 1000003);
   }
   
   public void b()
   {
-    WSFriendLikeParser.FriendClickableSpan.a(this.a, WSFriendLikeParser.FriendClickableSpan.a(this.a), 1000007);
+    WSFriendLikeParser.FriendClickableSpan localFriendClickableSpan = this.a;
+    WSFriendLikeParser.FriendClickableSpan.a(localFriendClickableSpan, WSFriendLikeParser.FriendClickableSpan.a(localFriendClickableSpan), 1000007);
   }
   
   public void c()
   {
-    WSFriendLikeParser.FriendClickableSpan.a(this.a, WSFriendLikeParser.FriendClickableSpan.a(this.a), 1000004);
+    WSFriendLikeParser.FriendClickableSpan localFriendClickableSpan = this.a;
+    WSFriendLikeParser.FriendClickableSpan.a(localFriendClickableSpan, WSFriendLikeParser.FriendClickableSpan.a(localFriendClickableSpan), 1000004);
   }
   
   public void d()
   {
-    WSFriendLikeParser.FriendClickableSpan.a(this.a, WSFriendLikeParser.FriendClickableSpan.a(this.a), 1000002);
+    WSFriendLikeParser.FriendClickableSpan localFriendClickableSpan = this.a;
+    WSFriendLikeParser.FriendClickableSpan.a(localFriendClickableSpan, WSFriendLikeParser.FriendClickableSpan.a(localFriendClickableSpan), 1000002);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.like.WSFriendLikeParser.FriendClickableSpan.1
  * JD-Core Version:    0.7.0.1
  */

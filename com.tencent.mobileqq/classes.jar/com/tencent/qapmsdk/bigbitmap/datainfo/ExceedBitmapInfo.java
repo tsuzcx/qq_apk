@@ -40,15 +40,17 @@ public class ExceedBitmapInfo
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (ExceedBitmapInfo)paramObject;
-    } while ((this.viewWidth == paramObject.viewWidth) && (this.viewHeight == paramObject.viewHeight) && (this.bitmapWidth == paramObject.bitmapWidth) && (this.bitmapHeight == paramObject.bitmapHeight) && (this.showType == paramObject.showType) && (Objects.equals(this.activityName, paramObject.activityName)) && (Objects.equals(this.viewChain, paramObject.viewChain)) && (Objects.equals(this.url, paramObject.url)));
+      return (this.viewWidth == paramObject.viewWidth) && (this.viewHeight == paramObject.viewHeight) && (this.bitmapWidth == paramObject.bitmapWidth) && (this.bitmapHeight == paramObject.bitmapHeight) && (this.showType == paramObject.showType) && (Objects.equals(this.activityName, paramObject.activityName)) && (Objects.equals(this.viewChain, paramObject.viewChain)) && (Objects.equals(this.url, paramObject.url));
+    }
     return false;
   }
   
@@ -61,13 +63,34 @@ public class ExceedBitmapInfo
   public String metaSerialize()
   {
     StringBuffer localStringBuffer = new StringBuffer(256);
-    localStringBuffer.append(this.timestamp).append(",").append(this.activityName).append(",").append(this.bitmapWidth).append(",").append(this.bitmapHeight).append(",").append(this.viewWidth).append(",").append(this.viewHeight).append(",").append(this.viewChain).append(",").append(this.viewName).append(",").append(this.showType).append(",").append(this.allocatedByteSize).append(",").append(this.url).append("\r\n");
+    localStringBuffer.append(this.timestamp);
+    localStringBuffer.append(",");
+    localStringBuffer.append(this.activityName);
+    localStringBuffer.append(",");
+    localStringBuffer.append(this.bitmapWidth);
+    localStringBuffer.append(",");
+    localStringBuffer.append(this.bitmapHeight);
+    localStringBuffer.append(",");
+    localStringBuffer.append(this.viewWidth);
+    localStringBuffer.append(",");
+    localStringBuffer.append(this.viewHeight);
+    localStringBuffer.append(",");
+    localStringBuffer.append(this.viewChain);
+    localStringBuffer.append(",");
+    localStringBuffer.append(this.viewName);
+    localStringBuffer.append(",");
+    localStringBuffer.append(this.showType);
+    localStringBuffer.append(",");
+    localStringBuffer.append(this.allocatedByteSize);
+    localStringBuffer.append(",");
+    localStringBuffer.append(this.url);
+    localStringBuffer.append("\r\n");
     return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.bigbitmap.datainfo.ExceedBitmapInfo
  * JD-Core Version:    0.7.0.1
  */

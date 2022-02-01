@@ -56,20 +56,22 @@ public class StoryHomeHorizontalListView
   
   public void a()
   {
-    if (!this.d) {}
-    int i;
-    int j;
-    do
+    if (!this.d) {
+      return;
+    }
+    if (this.jdField_c_of_type_Boolean) {
+      return;
+    }
+    int i = getLastVisiblePosition();
+    int j = getAdapter().getCount();
+    SLog.a("HorizontalListView", "on item scroll last:%d, count:%d", Integer.valueOf(i), Integer.valueOf(j));
+    if (j - i < this.jdField_a_of_type_Int)
     {
-      do
-      {
-        return;
-      } while (this.jdField_c_of_type_Boolean);
-      i = getLastVisiblePosition();
-      j = getAdapter().getCount();
-      SLog.a("HorizontalListView", "on item scroll last:%d, count:%d", Integer.valueOf(i), Integer.valueOf(j));
-    } while ((j - i >= this.jdField_a_of_type_Int) || (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper$OnLoadMoreListener == null) || (!this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper$OnLoadMoreListener.a(false)));
-    this.jdField_c_of_type_Boolean = true;
+      LoadingMoreHelper.OnLoadMoreListener localOnLoadMoreListener = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper$OnLoadMoreListener;
+      if ((localOnLoadMoreListener != null) && (localOnLoadMoreListener.a(false))) {
+        this.jdField_c_of_type_Boolean = true;
+      }
+    }
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -77,10 +79,15 @@ public class StoryHomeHorizontalListView
     int i = paramMotionEvent.getAction();
     float f1 = paramMotionEvent.getX();
     float f3 = paramMotionEvent.getY();
+    StringBuilder localStringBuilder;
     if (i == 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.friendStory", 2, "StoryHomeHorizontalListView dispatchTouchEvent:ACTION_DOWN. mIsPress=" + this.jdField_a_of_type_Boolean);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("StoryHomeHorizontalListView dispatchTouchEvent:ACTION_DOWN. mIsPress=");
+        localStringBuilder.append(this.jdField_a_of_type_Boolean);
+        QLog.d("Q.qqstory.friendStory", 2, localStringBuilder.toString());
       }
       this.jdField_a_of_type_Float = f1;
       this.jdField_b_of_type_Float = f3;
@@ -91,31 +98,38 @@ public class StoryHomeHorizontalListView
     }
     if (i == 2)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.friendStory", 2, "StoryHomeHorizontalListView dispatchTouchEvent:ACTION_MOVE. mIsPress=" + this.jdField_a_of_type_Boolean);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("StoryHomeHorizontalListView dispatchTouchEvent:ACTION_MOVE. mIsPress=");
+        localStringBuilder.append(this.jdField_a_of_type_Boolean);
+        QLog.d("Q.qqstory.friendStory", 2, localStringBuilder.toString());
       }
       float f2 = this.jdField_a_of_type_Float;
       f3 -= this.jdField_b_of_type_Float;
       if ((this.jdField_a_of_type_Boolean) && (Math.abs(f3) * 5.0F > Math.abs(f1 - f2) * 4.0F) && (Math.abs(f3) > DisplayUtil.a(getContext(), 5.0F))) {
         getParent().requestDisallowInterceptTouchEvent(false);
+      } else {
+        getParent().requestDisallowInterceptTouchEvent(true);
       }
     }
-    for (;;)
+    else if ((i == 3) || (i == 1))
     {
-      return super.dispatchTouchEvent(paramMotionEvent);
-      getParent().requestDisallowInterceptTouchEvent(true);
-      continue;
-      if ((i == 3) || (i == 1))
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.friendStory", 2, "StoryHomeHorizontalListView dispatchTouchEvent:ACTION_CANCEL or UP. action=" + i + " mIsPress=" + this.jdField_a_of_type_Boolean);
-        }
-        this.jdField_a_of_type_Boolean = false;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("StoryHomeHorizontalListView dispatchTouchEvent:ACTION_CANCEL or UP. action=");
+        localStringBuilder.append(i);
+        localStringBuilder.append(" mIsPress=");
+        localStringBuilder.append(this.jdField_a_of_type_Boolean);
+        QLog.d("Q.qqstory.friendStory", 2, localStringBuilder.toString());
       }
+      this.jdField_a_of_type_Boolean = false;
     }
+    return super.dispatchTouchEvent(paramMotionEvent);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     TraceUtils.traceBegin("StoryHorizontal.onLayout");
     int i = this.mCurrentX;
@@ -128,26 +142,26 @@ public class StoryHomeHorizontalListView
     TraceUtils.traceEnd();
   }
   
-  public boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
+  protected boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
   {
+    StoryHomeHorizontalListView.OnOverScrollRightListener localOnOverScrollRightListener;
     if ((this.jdField_b_of_type_Boolean) && (paramInt3 > 0) && (paramInt3 > DisplayUtil.a(getContext(), 50.0F)))
     {
       this.jdField_b_of_type_Boolean = false;
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView$OnOverScrollRightListener != null) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView$OnOverScrollRightListener.P_();
+      localOnOverScrollRightListener = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView$OnOverScrollRightListener;
+      if ((localOnOverScrollRightListener != null) && (this.jdField_a_of_type_Boolean)) {
+        localOnOverScrollRightListener.N_();
       }
     }
-    for (;;)
+    else if ((this.jdField_b_of_type_Boolean) && (paramInt3 < 0) && (paramInt3 < -DisplayUtil.a(getContext(), 50.0F)))
     {
-      return super.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean);
-      if ((this.jdField_b_of_type_Boolean) && (paramInt3 < 0) && (paramInt3 < -DisplayUtil.a(getContext(), 50.0F)))
-      {
-        this.jdField_b_of_type_Boolean = false;
-        if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView$OnOverScrollRightListener != null) && (this.jdField_a_of_type_Boolean)) {
-          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView$OnOverScrollRightListener.Q_();
-        }
+      this.jdField_b_of_type_Boolean = false;
+      localOnOverScrollRightListener = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView$OnOverScrollRightListener;
+      if ((localOnOverScrollRightListener != null) && (this.jdField_a_of_type_Boolean)) {
+        localOnOverScrollRightListener.O_();
       }
     }
+    return super.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean);
   }
   
   public void requestLayout()
@@ -193,7 +207,7 @@ public class StoryHomeHorizontalListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView
  * JD-Core Version:    0.7.0.1
  */

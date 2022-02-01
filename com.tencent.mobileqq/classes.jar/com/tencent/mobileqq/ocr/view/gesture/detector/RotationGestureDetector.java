@@ -26,11 +26,14 @@ public class RotationGestureDetector
   
   private void a()
   {
-    if ((this.jdField_a_of_type_Boolean) || (Math.abs(this.c - this.d) < 5.0F)) {
-      return;
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      if (Math.abs(this.c - this.d) < 5.0F) {
+        return;
+      }
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_b_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureDetectorRotationGestureDetector$OnRotationGestureListener.b(this);
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureDetectorRotationGestureDetector$OnRotationGestureListener.b(this);
   }
   
   private boolean a()
@@ -40,14 +43,15 @@ public class RotationGestureDetector
   
   private void b()
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-    do
-    {
+    if (!this.jdField_a_of_type_Boolean) {
       return;
-      this.jdField_a_of_type_Boolean = false;
-    } while (!this.jdField_b_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureDetectorRotationGestureDetector$OnRotationGestureListener.a(this);
-    this.jdField_b_of_type_Boolean = false;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    if (this.jdField_b_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureDetectorRotationGestureDetector$OnRotationGestureListener.a(this);
+      this.jdField_b_of_type_Boolean = false;
+    }
   }
   
   public float a()
@@ -57,41 +61,59 @@ public class RotationGestureDetector
   
   public boolean a(MotionEvent paramMotionEvent)
   {
-    int i = 0;
-    switch (paramMotionEvent.getActionMasked())
+    int i = paramMotionEvent.getActionMasked();
+    if ((i != 0) && (i != 1))
     {
-    }
-    do
-    {
-      do
+      float f;
+      if (i != 2)
       {
-        do
+        if (i != 3)
         {
-          do
+          if (i != 5)
           {
-            return true;
+            if (i != 6) {
+              return true;
+            }
+            if (paramMotionEvent.getPointerCount() != 2) {
+              break label195;
+            }
             b();
             return true;
-          } while (paramMotionEvent.getPointerCount() != 2);
-          float f = a(paramMotionEvent);
+          }
+          if (paramMotionEvent.getPointerCount() != 2) {
+            break label195;
+          }
+          f = a(paramMotionEvent);
           this.d = f;
           this.e = f;
           this.c = f;
           return true;
-        } while ((paramMotionEvent.getPointerCount() < 2) || ((this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean)));
+        }
+      }
+      else
+      {
+        if ((paramMotionEvent.getPointerCount() < 2) || ((this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean))) {
+          break label195;
+        }
         this.d = a(paramMotionEvent);
-        this.jdField_a_of_type_Float = ((paramMotionEvent.getX(1) + paramMotionEvent.getX(0)) * 0.5F);
+        f = paramMotionEvent.getX(1);
+        i = 0;
+        this.jdField_a_of_type_Float = ((f + paramMotionEvent.getX(0)) * 0.5F);
         this.jdField_b_of_type_Float = ((paramMotionEvent.getY(1) + paramMotionEvent.getY(0)) * 0.5F);
         boolean bool = this.jdField_a_of_type_Boolean;
         a();
         if ((!bool) || (a())) {
           i = 1;
         }
-      } while (i == 0);
-      this.e = this.d;
-      return true;
-    } while (paramMotionEvent.getPointerCount() != 2);
+        if (i == 0) {
+          break label195;
+        }
+        this.e = this.d;
+        return true;
+      }
+    }
     b();
+    label195:
     return true;
   }
   
@@ -107,7 +129,7 @@ public class RotationGestureDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.gesture.detector.RotationGestureDetector
  * JD-Core Version:    0.7.0.1
  */

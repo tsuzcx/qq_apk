@@ -10,12 +10,12 @@ class GiftPackageDialog$2$1$1
   
   public void run()
   {
-    GiftPackageDialog.c(this.a.a.a).setText(HardCodeUtil.a(2131705286));
+    GiftPackageDialog.c(this.a.a.a).setText(HardCodeUtil.a(2131705360));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.GiftPackageDialog.2.1.1
  * JD-Core Version:    0.7.0.1
  */

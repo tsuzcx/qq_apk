@@ -9,12 +9,12 @@ class ProtoUtils$TroopProtocolObserver$1
   
   public void run()
   {
-    ProtoUtils.TroopProtocolObserver.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
+    ProtoUtils.TroopProtocolObserver.access$100(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.ProtoUtils.TroopProtocolObserver.1
  * JD-Core Version:    0.7.0.1
  */

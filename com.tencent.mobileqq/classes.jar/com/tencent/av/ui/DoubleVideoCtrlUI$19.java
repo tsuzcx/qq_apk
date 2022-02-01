@@ -14,24 +14,25 @@ class DoubleVideoCtrlUI$19
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
+      if (paramInt == 1)
+      {
+        ((ScreenShareManager)this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a.a(17)).b();
+        ScreenShareReportHelper.a("0X800B8A2");
+      }
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
-      return;
       this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.f(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidViewView);
       ScreenShareReportHelper.a("0X800AD8D");
-      continue;
-      ((ScreenShareManager)this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a.a(16)).b();
-      ScreenShareReportHelper.a("0X800B8A2");
     }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoCtrlUI.19
  * JD-Core Version:    0.7.0.1
  */

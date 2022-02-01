@@ -12,27 +12,28 @@ class QQCustomDialog$7
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, 1);
+    DialogInterface.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+    if (localOnClickListener != null) {
+      localOnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, 1);
     }
     try
     {
       if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) && (this.jdField_a_of_type_Boolean)) {
         this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
       }
-      label45:
+      label44:
       EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
     catch (Exception localException)
     {
-      break label45;
+      break label44;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialog.7
  * JD-Core Version:    0.7.0.1
  */

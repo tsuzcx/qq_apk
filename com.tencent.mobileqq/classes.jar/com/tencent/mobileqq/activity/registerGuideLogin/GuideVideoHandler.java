@@ -45,33 +45,27 @@ public class GuideVideoHandler
   
   public static boolean a(String[] paramArrayOfString)
   {
-    boolean bool2 = false;
     String str = Build.MODEL;
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginActivity.GuideVideoHandler", 2, "isNotSupportLoopVideo model=" + str);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isNotSupportLoopVideo model=");
+      localStringBuilder.append(str);
+      QLog.d("LoginActivity.GuideVideoHandler", 2, localStringBuilder.toString());
     }
-    boolean bool1 = bool2;
-    int j;
-    int i;
     if (str != null)
     {
-      j = paramArrayOfString.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < j)
+      int j = paramArrayOfString.length;
+      int i = 0;
+      while (i < j)
       {
         if (str.equals(paramArrayOfString[i])) {
-          bool1 = true;
+          return true;
         }
+        i += 1;
       }
-      else {
-        return bool1;
-      }
-      i += 1;
     }
+    return false;
   }
   
   private void c()
@@ -79,14 +73,16 @@ public class GuideVideoHandler
     if (QLog.isColorLevel()) {
       QLog.d("LoginActivity.GuideVideoHandler", 2, "handleError");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideVideoHandler$GuideVideoCallBack != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideVideoHandler$GuideVideoCallBack.a();
+    GuideVideoHandler.GuideVideoCallBack localGuideVideoCallBack = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideVideoHandler$GuideVideoCallBack;
+    if (localGuideVideoCallBack != null) {
+      localGuideVideoCallBack.a();
     }
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView != null) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.isPlaying()))
+    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+    if ((localObject != null) && (((TextureVideoView)localObject).isPlaying()))
     {
       this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.getCurrentPosition();
       this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
@@ -94,8 +90,12 @@ public class GuideVideoHandler
       this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.pause();
       a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_MqqOsMqqHandler, this.jdField_a_of_type_Int);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginActivity.GuideVideoHandler", 2, "#pause# , mCurrentPosition = " + this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("#pause# , mCurrentPosition = ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      QLog.d("LoginActivity.GuideVideoHandler", 2, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -104,8 +104,12 @@ public class GuideVideoHandler
   {
     if (this.jdField_d_of_type_Boolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginActivity.GuideVideoHandler", 2, "getVideoFrame isRetrieve=" + this.jdField_d_of_type_Boolean);
+      if (QLog.isColorLevel())
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("getVideoFrame isRetrieve=");
+        paramContext.append(this.jdField_d_of_type_Boolean);
+        QLog.d("LoginActivity.GuideVideoHandler", 2, paramContext.toString());
       }
       return;
     }
@@ -123,8 +127,14 @@ public class GuideVideoHandler
   
   public void a(IMediaPlayer paramIMediaPlayer)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginActivity.GuideVideoHandler", 2, "MediaPlayer onCompletion has been called.   at " + paramIMediaPlayer.b() + " mIsPause" + this.jdField_a_of_type_Boolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("MediaPlayer onCompletion has been called.   at ");
+      localStringBuilder.append(paramIMediaPlayer.b());
+      localStringBuilder.append(" mIsPause");
+      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      QLog.d("LoginActivity.GuideVideoHandler", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_Int = paramIMediaPlayer.b();
     if (!this.jdField_a_of_type_Boolean)
@@ -165,8 +175,14 @@ public class GuideVideoHandler
     if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app != null) {
       this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.setTalkbackSwitch();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginActivity.GuideVideoHandler", 2, "MediaPlayer onPrepared has been called. talkback=" + AppSetting.jdField_d_of_type_Boolean + " videoPrepareTime=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    if (QLog.isColorLevel())
+    {
+      paramIMediaPlayer = new StringBuilder();
+      paramIMediaPlayer.append("MediaPlayer onPrepared has been called. talkback=");
+      paramIMediaPlayer.append(AppSetting.jdField_d_of_type_Boolean);
+      paramIMediaPlayer.append(" videoPrepareTime=");
+      paramIMediaPlayer.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      QLog.d("LoginActivity.GuideVideoHandler", 2, paramIMediaPlayer.toString());
     }
   }
   
@@ -174,8 +190,12 @@ public class GuideVideoHandler
   {
     if (paramInt1 == 3)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginActivity.GuideVideoHandler", 2, "onInfo what===>" + paramInt1);
+      if (QLog.isColorLevel())
+      {
+        paramIMediaPlayer = new StringBuilder();
+        paramIMediaPlayer.append("onInfo what===>");
+        paramIMediaPlayer.append(paramInt1);
+        QLog.d("LoginActivity.GuideVideoHandler", 2, paramIMediaPlayer.toString());
       }
       if (a(f)) {
         this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(103);
@@ -186,8 +206,15 @@ public class GuideVideoHandler
   
   public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginActivity.GuideVideoHandler", 2, "play has been called. pause :" + this.jdField_a_of_type_Boolean + " isStartVideo:" + this.jdField_b_of_type_Boolean);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("play has been called. pause :");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(" isStartVideo:");
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+      QLog.d("LoginActivity.GuideVideoHandler", 2, ((StringBuilder)localObject).toString());
     }
     if (this.jdField_a_of_type_Boolean)
     {
@@ -198,53 +225,59 @@ public class GuideVideoHandler
         QLog.d("LoginActivity.GuideVideoHandler", 2, "resume play.");
       }
       this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(102, 100L);
-    }
-    label315:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            if ((!this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.isPlaying()) || ((this.jdField_b_of_type_Int == this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.getCurrentPosition()) && (!a(f)))) {
-              break;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("LoginActivity.GuideVideoHandler", 2, "playing. mVideoViewPosition=" + this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.getCurrentPosition() + " mPausePosition=" + this.jdField_b_of_type_Int);
-            }
-          } while ((a(f)) && (!this.jdField_c_of_type_Boolean));
-          this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(103);
-          this.jdField_c_of_type_Boolean = false;
-          return;
-          if (this.jdField_b_of_type_Boolean) {
-            break label315;
-          }
-          if (this.jdField_a_of_type_AndroidNetUri == null) {
-            break;
-          }
-          this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.setVideoURI(this.jdField_a_of_type_AndroidNetUri);
-          this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.start();
-          this.jdField_b_of_type_Boolean = true;
-          this.jdField_a_of_type_Long = System.currentTimeMillis();
-        } while (!QLog.isColorLevel());
-        QLog.d("LoginActivity.GuideVideoHandler", 2, "start to play. videoStarTime=" + this.jdField_a_of_type_Long);
-        return;
-      } while (this.jdField_a_of_type_AndroidNetUri != null);
-      c();
       return;
-    } while (!this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isResume());
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginActivity.GuideVideoHandler", 2, "not playing.");
     }
-    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(102, 100L);
+    if ((this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.isPlaying()) && ((this.jdField_b_of_type_Int != this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.getCurrentPosition()) || (a(f))))
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("playing. mVideoViewPosition=");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.getCurrentPosition());
+        ((StringBuilder)localObject).append(" mPausePosition=");
+        ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+        QLog.d("LoginActivity.GuideVideoHandler", 2, ((StringBuilder)localObject).toString());
+      }
+      if ((!a(f)) || (this.jdField_c_of_type_Boolean))
+      {
+        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(103);
+        this.jdField_c_of_type_Boolean = false;
+      }
+    }
+    else if (!this.jdField_b_of_type_Boolean)
+    {
+      localObject = this.jdField_a_of_type_AndroidNetUri;
+      if (localObject != null)
+      {
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.setVideoURI((Uri)localObject);
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.start();
+        this.jdField_b_of_type_Boolean = true;
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("start to play. videoStarTime=");
+          ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+          QLog.d("LoginActivity.GuideVideoHandler", 2, ((StringBuilder)localObject).toString());
+        }
+      }
+      else if (localObject == null)
+      {
+        c();
+      }
+    }
+    else if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isResume())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginActivity.GuideVideoHandler", 2, "not playing.");
+      }
+      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(102, 100L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.GuideVideoHandler
  * JD-Core Version:    0.7.0.1
  */

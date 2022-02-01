@@ -12,10 +12,25 @@ public class b
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    if (a.get(paramString) == null) {
-      return (a)a.get(paramString + "/");
+    Object localObject1;
+    Object localObject2;
+    if (a.get(paramString) == null)
+    {
+      localObject1 = a;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append("/");
+      localObject2 = ((StringBuilder)localObject2).toString();
+      paramString = (String)localObject1;
+      localObject1 = localObject2;
     }
-    return (a)a.get(paramString);
+    else
+    {
+      localObject2 = a;
+      localObject1 = paramString;
+      paramString = (String)localObject2;
+    }
+    return (a)paramString.get(localObject1);
   }
   
   public static void a(String paramString, a parama)
@@ -29,16 +44,17 @@ public class b
   
   public static void b(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ((a)a.get(paramString) == null) {
+    if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    a.remove(paramString);
+    if ((a)a.get(paramString) != null) {
+      a.remove(paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.socket.c.b
  * JD-Core Version:    0.7.0.1
  */

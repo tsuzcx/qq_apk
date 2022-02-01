@@ -20,6 +20,12 @@ import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSubtitleF
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoFrameOutListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoProcessOutListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoSizeChangedListener;
+import com.tencent.thumbplayer.adapter.strategy.utils.TPNativeKeyMap.MapAudioDecoderType;
+import com.tencent.thumbplayer.adapter.strategy.utils.TPNativeKeyMap.MapMsgInfo;
+import com.tencent.thumbplayer.adapter.strategy.utils.TPNativeKeyMap.MapPropertyId;
+import com.tencent.thumbplayer.adapter.strategy.utils.TPNativeKeyMap.MapSeekMode;
+import com.tencent.thumbplayer.adapter.strategy.utils.TPNativeKeyMap.MapSwitchDefMode;
+import com.tencent.thumbplayer.adapter.strategy.utils.TPNativeKeyMap.MapVideoDecoderType;
 import com.tencent.thumbplayer.adapter.strategy.utils.TPNativeKeyMapUtil;
 import com.tencent.thumbplayer.api.TPCaptureCallBack;
 import com.tencent.thumbplayer.api.TPCaptureParams;
@@ -32,25 +38,25 @@ import com.tencent.thumbplayer.api.TPOptionalParam;
 import com.tencent.thumbplayer.api.TPOptionalParam.OptionalParamBoolean;
 import com.tencent.thumbplayer.api.TPOptionalParam.OptionalParamFloat;
 import com.tencent.thumbplayer.api.TPOptionalParam.OptionalParamLong;
+import com.tencent.thumbplayer.api.TPOptionalParam.OptionalParamObject;
 import com.tencent.thumbplayer.api.TPOptionalParam.OptionalParamQueueInt;
 import com.tencent.thumbplayer.api.TPOptionalParam.OptionalParamQueueString;
 import com.tencent.thumbplayer.api.TPOptionalParam.OptionalParamString;
 import com.tencent.thumbplayer.api.TPPlayerMsg.TPAudioTrackInfo;
 import com.tencent.thumbplayer.api.TPProgramInfo;
 import com.tencent.thumbplayer.api.TPSubtitleData;
+import com.tencent.thumbplayer.api.TPSubtitleRenderModel;
 import com.tencent.thumbplayer.api.TPTrackInfo;
 import com.tencent.thumbplayer.api.composition.ITPMediaAsset;
 import com.tencent.thumbplayer.caputure.TPThumbCapture;
-import com.tencent.thumbplayer.composition.TPMediaComposition;
-import com.tencent.thumbplayer.composition.TPMediaCompositionTrack;
-import com.tencent.thumbplayer.composition.TPMediaCompositionTrackClip;
-import com.tencent.thumbplayer.composition.TPMediaDRMAsset;
 import com.tencent.thumbplayer.core.common.TPMediaTrackInfo;
 import com.tencent.thumbplayer.core.imagegenerator.TPImageGeneratorParams;
 import com.tencent.thumbplayer.core.player.ITPNativePlayerAudioFrameCallback;
 import com.tencent.thumbplayer.core.player.ITPNativePlayerMessageCallback;
 import com.tencent.thumbplayer.core.player.ITPNativePlayerMessageCallback.MediaCodecInfo;
+import com.tencent.thumbplayer.core.player.ITPNativePlayerMessageCallback.MediaDrmInfo;
 import com.tencent.thumbplayer.core.player.ITPNativePlayerMessageCallback.VideoCropInfo;
+import com.tencent.thumbplayer.core.player.ITPNativePlayerMessageCallback.VideoSeiInfo;
 import com.tencent.thumbplayer.core.player.ITPNativePlayerPostProcessFrameCallback;
 import com.tencent.thumbplayer.core.player.ITPNativePlayerSubtitleFrameCallback;
 import com.tencent.thumbplayer.core.player.ITPNativePlayerVideoFrameCallback;
@@ -111,7 +117,7 @@ public class TPThumbPlayer
   
   private void handleCommonASyncCallResult(TPThumbPlayer.OnASyncCallResultInfo paramOnASyncCallResultInfo)
   {
-    this.mPlayerListenerReps.onInfo(TPNativeKeyMapUtil.convertToTPMsgInfo(paramOnASyncCallResultInfo.callType), paramOnASyncCallResultInfo.errorType, paramOnASyncCallResultInfo.errorCode, Long.valueOf(paramOnASyncCallResultInfo.opaque));
+    this.mPlayerListenerReps.onInfo(TPNativeKeyMapUtil.toTPIntValue(TPNativeKeyMap.MapMsgInfo.class, paramOnASyncCallResultInfo.callType), paramOnASyncCallResultInfo.errorType, paramOnASyncCallResultInfo.errorCode, Long.valueOf(paramOnASyncCallResultInfo.opaque));
   }
   
   private void handleOnComplete()
@@ -121,55 +127,78 @@ public class TPThumbPlayer
   
   private void handleOnInfoLongNoConvertToListener(@TPCommonEnum.NativeErrorType int paramInt, TPThumbPlayer.OnInfoLongInfo paramOnInfoLongInfo)
   {
-    int i = TPNativeKeyMapUtil.convertToTPMsgInfo(paramInt);
+    int i = TPNativeKeyMapUtil.toTPIntValue(TPNativeKeyMap.MapMsgInfo.class, paramInt);
+    StringBuilder localStringBuilder;
     if (i < 0)
     {
-      this.mLogger.warn("msgType:" + paramInt + ", cannot convert to thumbPlayer Info");
+      paramOnInfoLongInfo = this.mLogger;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("msgType:");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", cannot convert to thumbPlayer Info");
+      paramOnInfoLongInfo.warn(localStringBuilder.toString());
       return;
     }
     long l1 = paramOnInfoLongInfo.lParam1;
     long l2 = paramOnInfoLongInfo.lParam2;
-    switch (i)
+    if (i != 203)
     {
+      if (i != 204)
+      {
+        paramOnInfoLongInfo = this.mLogger;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("unhandled thumbPlayerInfo=");
+        localStringBuilder.append(i);
+        paramOnInfoLongInfo.warn(localStringBuilder.toString());
+        break label157;
+      }
+      paramInt = TPNativeKeyMapUtil.toTPIntValue(TPNativeKeyMap.MapVideoDecoderType.class, (int)paramOnInfoLongInfo.lParam1);
     }
-    for (;;)
+    else
     {
-      this.mPlayerListenerReps.onInfo(i, l1, l2, null);
-      return;
-      l1 = TPThumbPlayerUtils.convert2TPDecoderType((int)paramOnInfoLongInfo.lParam1);
+      paramInt = TPNativeKeyMapUtil.toTPIntValue(TPNativeKeyMap.MapAudioDecoderType.class, (int)paramOnInfoLongInfo.lParam1);
     }
+    l1 = paramInt;
+    label157:
+    this.mPlayerListenerReps.onInfo(i, l1, l2, null);
   }
   
   private void handleOnInfoObjectNoConvertToListener(@TPCommonEnum.NativeMsgInfo int paramInt, TPThumbPlayer.OnInfoObjectInfo paramOnInfoObjectInfo)
   {
-    int i = TPNativeKeyMapUtil.convertToTPMsgInfo(paramInt);
+    int i = TPNativeKeyMapUtil.toTPIntValue(TPNativeKeyMap.MapMsgInfo.class, paramInt);
     if (i < 0)
     {
-      this.mLogger.warn("msgType:" + paramInt + ", cannot convert to thumbPlayer Info");
+      paramOnInfoObjectInfo = this.mLogger;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("msgType:");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(", cannot convert to thumbPlayer Info");
+      paramOnInfoObjectInfo.warn(((StringBuilder)localObject).toString());
       return;
     }
-    Object localObject2 = paramOnInfoObjectInfo.objParam;
-    Object localObject1 = localObject2;
-    switch (i)
+    Object localObject = paramOnInfoObjectInfo.objParam;
+    if (i != 500)
     {
-    default: 
-      localObject1 = localObject2;
-    }
-    for (;;)
-    {
-      this.mPlayerListenerReps.onInfo(i, 0L, 0L, localObject1);
-      return;
-      localObject1 = localObject2;
-      if (paramOnInfoObjectInfo.objParam != null)
+      if (i != 505)
       {
-        localObject1 = TPThumbPlayerUtils.convert2TPVideoCropInfo((ITPNativePlayerMessageCallback.VideoCropInfo)paramOnInfoObjectInfo.objParam);
-        continue;
-        localObject1 = localObject2;
-        if (paramOnInfoObjectInfo.objParam != null) {
-          localObject1 = TPThumbPlayerUtils.convert2TPMediaCodecInfo((ITPNativePlayerMessageCallback.MediaCodecInfo)paramOnInfoObjectInfo.objParam);
+        if (i != 502)
+        {
+          if ((i == 503) && (paramOnInfoObjectInfo.objParam != null)) {
+            localObject = TPThumbPlayerUtils.convert2TPVideoSeiInfo((ITPNativePlayerMessageCallback.VideoSeiInfo)paramOnInfoObjectInfo.objParam);
+          }
+        }
+        else if (paramOnInfoObjectInfo.objParam != null) {
+          localObject = TPThumbPlayerUtils.convert2TPMediaCodecInfo((ITPNativePlayerMessageCallback.MediaCodecInfo)paramOnInfoObjectInfo.objParam);
         }
       }
+      else if (paramOnInfoObjectInfo.objParam != null) {
+        localObject = TPThumbPlayerUtils.convert2TPMediaDrmInfo((ITPNativePlayerMessageCallback.MediaDrmInfo)paramOnInfoObjectInfo.objParam);
+      }
     }
+    else if (paramOnInfoObjectInfo.objParam != null) {
+      localObject = TPThumbPlayerUtils.convert2TPVideoCropInfo((ITPNativePlayerMessageCallback.VideoCropInfo)paramOnInfoObjectInfo.objParam);
+    }
+    this.mPlayerListenerReps.onInfo(i, 0L, 0L, localObject);
   }
   
   private void handleOnPrepared()
@@ -192,9 +221,11 @@ public class TPThumbPlayer
     if (paramTPNativePlayerProgramInfo != null)
     {
       TPProgramInfo localTPProgramInfo = new TPProgramInfo();
-      localTPProgramInfo.name = paramTPNativePlayerProgramInfo.name;
+      localTPProgramInfo.url = paramTPNativePlayerProgramInfo.url;
       localTPProgramInfo.bandwidth = paramTPNativePlayerProgramInfo.bandwidth;
       localTPProgramInfo.resolution = paramTPNativePlayerProgramInfo.resolution;
+      localTPProgramInfo.programId = paramTPNativePlayerProgramInfo.programId;
+      localTPProgramInfo.actived = paramTPNativePlayerProgramInfo.actived;
       return localTPProgramInfo;
     }
     return null;
@@ -202,124 +233,172 @@ public class TPThumbPlayer
   
   private void setPlayerInitConfigWithParamBoolean(@TPCommonEnum.TPOptionalId int paramInt, TPOptionalParam.OptionalParamBoolean paramOptionalParamBoolean)
   {
-    TPThumbPlayerUtils.OptionIdMapping localOptionIdMapping = TPNativeKeyMapUtil.convertToNativeInitConfig(paramInt);
-    if (localOptionIdMapping == null)
+    Object localObject = TPNativeKeyMapUtil.convertToNativeOptionalId(paramInt);
+    if (((TPThumbPlayerUtils.OptionIdMapping)localObject).isIllegal())
     {
-      this.mLogger.error("player optionalIdMapping boolean is invalid, not found in array, id: " + paramInt);
+      paramOptionalParamBoolean = this.mLogger;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("player optionalIdMapping boolean is invalid, not found in array, id: ");
+      ((StringBuilder)localObject).append(paramInt);
+      paramOptionalParamBoolean.error(((StringBuilder)localObject).toString());
       return;
     }
-    switch (localOptionIdMapping.getmOptionalIDType())
+    if (((TPThumbPlayerUtils.OptionIdMapping)localObject).getOptionalIDType() != 3)
     {
-    default: 
-      this.mLogger.error("optionID type:" + localOptionIdMapping.getmOptionalIDType() + " is not implement");
+      paramOptionalParamBoolean = this.mLogger;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("optionID type:");
+      localStringBuilder.append(((TPThumbPlayerUtils.OptionIdMapping)localObject).getOptionalIDType());
+      localStringBuilder.append(" is not implement");
+      paramOptionalParamBoolean.error(localStringBuilder.toString());
       return;
     }
-    this.mNativeInitConfig.setBool(localOptionIdMapping.getNativePlayerOptionalID(), paramOptionalParamBoolean.value);
+    this.mNativeInitConfig.setBool(((TPThumbPlayerUtils.OptionIdMapping)localObject).getNativePlayerOptionalID(), paramOptionalParamBoolean.value);
   }
   
   private void setPlayerInitConfigWithParamFloat(@TPCommonEnum.TPOptionalId int paramInt, TPOptionalParam.OptionalParamFloat paramOptionalParamFloat)
   {
-    TPThumbPlayerUtils.OptionIdMapping localOptionIdMapping = TPNativeKeyMapUtil.convertToNativeInitConfig(paramInt);
-    if (localOptionIdMapping == null)
+    Object localObject = TPNativeKeyMapUtil.convertToNativeOptionalId(paramInt);
+    if (((TPThumbPlayerUtils.OptionIdMapping)localObject).isIllegal())
     {
-      this.mLogger.error("player optionalIdMapping float is invalid, not found in array, id: " + paramInt);
+      paramOptionalParamFloat = this.mLogger;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("player optionalIdMapping float is invalid, not found in array, id: ");
+      ((StringBuilder)localObject).append(paramInt);
+      paramOptionalParamFloat.error(((StringBuilder)localObject).toString());
       return;
     }
-    if (7 != localOptionIdMapping.getmOptionalIDType())
+    if (7 != ((TPThumbPlayerUtils.OptionIdMapping)localObject).getOptionalIDType())
     {
-      this.mLogger.error("optionID:" + localOptionIdMapping.getNativePlayerOptionalID() + " is not float");
+      paramOptionalParamFloat = this.mLogger;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("optionID:");
+      localStringBuilder.append(((TPThumbPlayerUtils.OptionIdMapping)localObject).getNativePlayerOptionalID());
+      localStringBuilder.append(" is not float");
+      paramOptionalParamFloat.error(localStringBuilder.toString());
       return;
     }
-    this.mNativeInitConfig.setFloat(localOptionIdMapping.getNativePlayerOptionalID(), paramOptionalParamFloat.value);
+    this.mNativeInitConfig.setFloat(((TPThumbPlayerUtils.OptionIdMapping)localObject).getNativePlayerOptionalID(), paramOptionalParamFloat.value);
   }
   
   private void setPlayerInitConfigWithParamLong(@TPCommonEnum.TPOptionalId int paramInt, TPOptionalParam.OptionalParamLong paramOptionalParamLong)
   {
-    TPThumbPlayerUtils.OptionIdMapping localOptionIdMapping = TPNativeKeyMapUtil.convertToNativeInitConfig(paramInt);
-    if (localOptionIdMapping == null)
+    Object localObject1 = TPNativeKeyMapUtil.convertToNativeOptionalId(paramInt);
+    if (((TPThumbPlayerUtils.OptionIdMapping)localObject1).isIllegal())
     {
-      this.mLogger.error("player optionalIdMapping long is invalid, not found in array, id: " + paramInt);
+      paramOptionalParamLong = this.mLogger;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("player optionalIdMapping long is invalid, not found in array, id: ");
+      ((StringBuilder)localObject1).append(paramInt);
+      paramOptionalParamLong.error(((StringBuilder)localObject1).toString());
       return;
     }
-    switch (localOptionIdMapping.getmOptionalIDType())
+    paramInt = ((TPThumbPlayerUtils.OptionIdMapping)localObject1).getOptionalIDType();
+    boolean bool = true;
+    if (paramInt != 1)
     {
-    case 2: 
-    default: 
-      this.mLogger.error("optionID type:" + localOptionIdMapping.getmOptionalIDType() + " is not implement");
-      return;
-    case 1: 
-      this.mNativeInitConfig.setLong(localOptionIdMapping.getNativePlayerOptionalID(), paramOptionalParamLong.value);
-      return;
-    case 4: 
-      this.mNativeInitConfig.setInt(localOptionIdMapping.getNativePlayerOptionalID(), (int)paramOptionalParamLong.value);
+      if (paramInt != 3)
+      {
+        if (paramInt != 4)
+        {
+          paramOptionalParamLong = this.mLogger;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("optionID type:");
+          ((StringBuilder)localObject2).append(((TPThumbPlayerUtils.OptionIdMapping)localObject1).getOptionalIDType());
+          ((StringBuilder)localObject2).append(" is not implement");
+          paramOptionalParamLong.error(((StringBuilder)localObject2).toString());
+          return;
+        }
+        this.mNativeInitConfig.setInt(((TPThumbPlayerUtils.OptionIdMapping)localObject1).getNativePlayerOptionalID(), (int)paramOptionalParamLong.value);
+        return;
+      }
+      Object localObject2 = this.mNativeInitConfig;
+      paramInt = ((TPThumbPlayerUtils.OptionIdMapping)localObject1).getNativePlayerOptionalID();
+      if (paramOptionalParamLong.value <= 0L) {
+        bool = false;
+      }
+      ((TPNativePlayerInitConfig)localObject2).setBool(paramInt, bool);
       return;
     }
-    TPNativePlayerInitConfig localTPNativePlayerInitConfig = this.mNativeInitConfig;
-    paramInt = localOptionIdMapping.getNativePlayerOptionalID();
-    if (paramOptionalParamLong.value > 0L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localTPNativePlayerInitConfig.setBool(paramInt, bool);
-      return;
-    }
+    this.mNativeInitConfig.setLong(((TPThumbPlayerUtils.OptionIdMapping)localObject1).getNativePlayerOptionalID(), paramOptionalParamLong.value);
   }
   
   private void setPlayerInitConfigWithParamQueueInt(@TPCommonEnum.TPOptionalId int paramInt, TPOptionalParam.OptionalParamQueueInt paramOptionalParamQueueInt)
   {
-    TPThumbPlayerUtils.OptionIdMapping localOptionIdMapping = TPNativeKeyMapUtil.convertToNativeInitConfig(paramInt);
-    if (localOptionIdMapping == null) {
-      this.mLogger.error("player optionalIdMapping queue_int is invalid, not found in array, id: " + paramInt);
-    }
-    for (;;)
+    Object localObject = TPNativeKeyMapUtil.convertToNativeOptionalId(paramInt);
+    if (((TPThumbPlayerUtils.OptionIdMapping)localObject).isIllegal())
     {
+      paramOptionalParamQueueInt = this.mLogger;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("player optionalIdMapping queue_int is invalid, not found in array, id: ");
+      ((StringBuilder)localObject).append(paramInt);
+      paramOptionalParamQueueInt.error(((StringBuilder)localObject).toString());
       return;
-      if ((paramOptionalParamQueueInt.queueValue == null) || (paramOptionalParamQueueInt.queueValue.length == 0))
+    }
+    if ((paramOptionalParamQueueInt.queueValue != null) && (paramOptionalParamQueueInt.queueValue.length != 0))
+    {
+      if (((TPThumbPlayerUtils.OptionIdMapping)localObject).getOptionalIDType() != 5)
       {
-        this.mLogger.error("queueint params is empty in" + paramInt);
-        return;
-      }
-      switch (localOptionIdMapping.getmOptionalIDType())
-      {
-      default: 
-        this.mLogger.error("optionID type:" + localOptionIdMapping.getmOptionalIDType() + " is not implement");
+        paramOptionalParamQueueInt = this.mLogger;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("optionID type:");
+        localStringBuilder.append(((TPThumbPlayerUtils.OptionIdMapping)localObject).getOptionalIDType());
+        localStringBuilder.append(" is not implement");
+        paramOptionalParamQueueInt.error(localStringBuilder.toString());
         return;
       }
       paramInt = 0;
       while (paramInt < paramOptionalParamQueueInt.queueValue.length)
       {
-        this.mNativeInitConfig.addQueueInt(localOptionIdMapping.getNativePlayerOptionalID(), paramOptionalParamQueueInt.queueValue[paramInt]);
+        this.mNativeInitConfig.addQueueInt(((TPThumbPlayerUtils.OptionIdMapping)localObject).getNativePlayerOptionalID(), paramOptionalParamQueueInt.queueValue[paramInt]);
         paramInt += 1;
       }
+      return;
     }
+    paramOptionalParamQueueInt = this.mLogger;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("queueint params is empty in");
+    ((StringBuilder)localObject).append(paramInt);
+    paramOptionalParamQueueInt.error(((StringBuilder)localObject).toString());
   }
   
   private void setPlayerInitConfigWithParamQueueString(@TPCommonEnum.TPOptionalId int paramInt, TPOptionalParam.OptionalParamQueueString paramOptionalParamQueueString)
   {
-    TPThumbPlayerUtils.OptionIdMapping localOptionIdMapping = TPNativeKeyMapUtil.convertToNativeInitConfig(paramInt);
-    if (localOptionIdMapping == null) {
-      this.mLogger.error("player optionalIdMapping queue_string is invalid, not found in array, id: " + paramInt);
-    }
-    for (;;)
+    Object localObject = TPNativeKeyMapUtil.convertToNativeOptionalId(paramInt);
+    if (((TPThumbPlayerUtils.OptionIdMapping)localObject).isIllegal())
     {
+      paramOptionalParamQueueString = this.mLogger;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("player optionalIdMapping queue_string is invalid, not found in array, id: ");
+      ((StringBuilder)localObject).append(paramInt);
+      paramOptionalParamQueueString.error(((StringBuilder)localObject).toString());
       return;
-      if ((paramOptionalParamQueueString.queueValue == null) || (paramOptionalParamQueueString.queueValue.length == 0))
+    }
+    if ((paramOptionalParamQueueString.queueValue != null) && (paramOptionalParamQueueString.queueValue.length != 0))
+    {
+      if (((TPThumbPlayerUtils.OptionIdMapping)localObject).getOptionalIDType() != 6)
       {
-        this.mLogger.error("queue String params is empty in" + paramInt);
-        return;
-      }
-      switch (localOptionIdMapping.getmOptionalIDType())
-      {
-      default: 
-        this.mLogger.error("optionID type:" + localOptionIdMapping.getmOptionalIDType() + " is not implement");
+        paramOptionalParamQueueString = this.mLogger;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("optionID type:");
+        localStringBuilder.append(((TPThumbPlayerUtils.OptionIdMapping)localObject).getOptionalIDType());
+        localStringBuilder.append(" is not implement");
+        paramOptionalParamQueueString.error(localStringBuilder.toString());
         return;
       }
       paramInt = 0;
       while (paramInt < paramOptionalParamQueueString.queueValue.length)
       {
-        this.mNativeInitConfig.addQueueString(localOptionIdMapping.getNativePlayerOptionalID(), paramOptionalParamQueueString.queueValue[paramInt]);
+        this.mNativeInitConfig.addQueueString(((TPThumbPlayerUtils.OptionIdMapping)localObject).getNativePlayerOptionalID(), paramOptionalParamQueueString.queueValue[paramInt]);
         paramInt += 1;
       }
+      return;
     }
+    paramOptionalParamQueueString = this.mLogger;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("queue String params is empty in");
+    ((StringBuilder)localObject).append(paramInt);
+    paramOptionalParamQueueString.error(((StringBuilder)localObject).toString());
   }
   
   private void setPlayerInitConfigWithParamString(int paramInt, TPOptionalParam.OptionalParamString paramOptionalParamString)
@@ -329,68 +408,120 @@ public class TPThumbPlayer
   
   private void setPlayerOptionWithParamBoolean(@TPCommonEnum.TPOptionalId int paramInt, TPOptionalParam.OptionalParamBoolean paramOptionalParamBoolean)
   {
-    TPThumbPlayerUtils.OptionIdMapping localOptionIdMapping = TPNativeKeyMapUtil.convertToNativeOptionalId(paramInt);
-    if (localOptionIdMapping == null)
+    Object localObject1 = TPNativeKeyMapUtil.convertToNativeOptionalId(paramInt);
+    if (((TPThumbPlayerUtils.OptionIdMapping)localObject1).isIllegal())
     {
-      this.mLogger.error("player optionalIdMapping string is invalid, not found in array, id: " + paramInt);
+      paramOptionalParamBoolean = this.mLogger;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("player optionalIdMapping string is invalid, not found in array, id: ");
+      ((StringBuilder)localObject1).append(paramInt);
+      paramOptionalParamBoolean.error(((StringBuilder)localObject1).toString());
       return;
     }
-    switch (localOptionIdMapping.getmOptionalIDType())
+    if (((TPThumbPlayerUtils.OptionIdMapping)localObject1).getOptionalIDType() != 3)
     {
-    default: 
-      this.mLogger.error("optionID type:" + localOptionIdMapping.getmOptionalIDType() + " is not implement");
+      paramOptionalParamBoolean = this.mLogger;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("optionID type:");
+      ((StringBuilder)localObject2).append(((TPThumbPlayerUtils.OptionIdMapping)localObject1).getOptionalIDType());
+      ((StringBuilder)localObject2).append(" is not implement");
+      paramOptionalParamBoolean.error(((StringBuilder)localObject2).toString());
       return;
     }
-    TPNativePlayer localTPNativePlayer = this.mPlayer;
-    paramInt = localOptionIdMapping.getNativePlayerOptionalID();
-    if (paramOptionalParamBoolean.value) {}
-    for (long l = 1L;; l = 0L)
-    {
-      localTPNativePlayer.setOptionLong(paramInt, l, 0L);
-      return;
+    Object localObject2 = this.mPlayer;
+    paramInt = ((TPThumbPlayerUtils.OptionIdMapping)localObject1).getNativePlayerOptionalID();
+    long l;
+    if (paramOptionalParamBoolean.value) {
+      l = 1L;
+    } else {
+      l = 0L;
     }
+    ((TPNativePlayer)localObject2).setOptionLong(paramInt, l, 0L);
   }
   
   private void setPlayerOptionWithParamLong(@TPCommonEnum.TPOptionalId int paramInt, TPOptionalParam.OptionalParamLong paramOptionalParamLong)
   {
-    TPThumbPlayerUtils.OptionIdMapping localOptionIdMapping = TPNativeKeyMapUtil.convertToNativeOptionalId(paramInt);
-    if (localOptionIdMapping == null)
+    Object localObject = TPNativeKeyMapUtil.convertToNativeOptionalId(paramInt);
+    if (((TPThumbPlayerUtils.OptionIdMapping)localObject).isIllegal())
     {
-      this.mLogger.error("player optionalIdMapping long is invalid, not found in array, id: " + paramInt);
+      paramOptionalParamLong = this.mLogger;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("player optionalIdMapping long is invalid, not found in array, id: ");
+      ((StringBuilder)localObject).append(paramInt);
+      paramOptionalParamLong.error(((StringBuilder)localObject).toString());
       return;
     }
-    switch (localOptionIdMapping.getmOptionalIDType())
+    paramInt = ((TPThumbPlayerUtils.OptionIdMapping)localObject).getOptionalIDType();
+    if ((paramInt != 1) && (paramInt != 3) && (paramInt != 4))
     {
-    case 2: 
-    default: 
-      this.mLogger.error("optionID type:" + localOptionIdMapping.getmOptionalIDType() + " is not implement");
+      paramOptionalParamLong = this.mLogger;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("optionID type:");
+      localStringBuilder.append(((TPThumbPlayerUtils.OptionIdMapping)localObject).getOptionalIDType());
+      localStringBuilder.append(" is not implement");
+      paramOptionalParamLong.error(localStringBuilder.toString());
       return;
     }
-    this.mPlayer.setOptionLong(localOptionIdMapping.getNativePlayerOptionalID(), paramOptionalParamLong.value, paramOptionalParamLong.param1);
+    this.mPlayer.setOptionLong(((TPThumbPlayerUtils.OptionIdMapping)localObject).getNativePlayerOptionalID(), paramOptionalParamLong.value, paramOptionalParamLong.param1);
+  }
+  
+  private void setPlayerOptionWithParamObject(int paramInt, TPOptionalParam.OptionalParamObject paramOptionalParamObject)
+  {
+    Object localObject = TPNativeKeyMapUtil.convertToNativeOptionalId(paramInt);
+    if (localObject == null)
+    {
+      paramOptionalParamObject = this.mLogger;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("player optionaIdMapping object is invalid, not found in array, id: ");
+      ((StringBuilder)localObject).append(paramInt);
+      paramOptionalParamObject.error(((StringBuilder)localObject).toString());
+      return;
+    }
+    if (((TPThumbPlayerUtils.OptionIdMapping)localObject).getNativePlayerOptionalID() != 1001)
+    {
+      paramOptionalParamObject = this.mLogger;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("optionID type:");
+      localStringBuilder.append(((TPThumbPlayerUtils.OptionIdMapping)localObject).getOptionalIDType());
+      localStringBuilder.append(" is not implement");
+      paramOptionalParamObject.error(localStringBuilder.toString());
+      return;
+    }
+    paramOptionalParamObject = TPThumbPlayerUtils.convert2TPNativeSubtitleRenderParams((TPSubtitleRenderModel)paramOptionalParamObject.objectValue);
+    this.mPlayer.setOptionObject(((TPThumbPlayerUtils.OptionIdMapping)localObject).getNativePlayerOptionalID(), paramOptionalParamObject);
   }
   
   private void setPlayerOptionWithParamString(@TPCommonEnum.TPOptionalId int paramInt, TPOptionalParam.OptionalParamString paramOptionalParamString)
   {
-    TPThumbPlayerUtils.OptionIdMapping localOptionIdMapping = TPNativeKeyMapUtil.convertToNativeOptionalId(paramInt);
-    if (localOptionIdMapping == null)
+    Object localObject = TPNativeKeyMapUtil.convertToNativeOptionalId(paramInt);
+    if (((TPThumbPlayerUtils.OptionIdMapping)localObject).isIllegal())
     {
-      this.mLogger.error("player optionalIdMapping string is invalid, not found in array, id: " + paramInt);
+      paramOptionalParamString = this.mLogger;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("player optionalIdMapping string is invalid, not found in array, id: ");
+      ((StringBuilder)localObject).append(paramInt);
+      paramOptionalParamString.error(((StringBuilder)localObject).toString());
       return;
     }
-    switch (localOptionIdMapping.getmOptionalIDType())
+    if (((TPThumbPlayerUtils.OptionIdMapping)localObject).getOptionalIDType() != 2)
     {
-    default: 
-      this.mLogger.error("optionID type:" + localOptionIdMapping.getmOptionalIDType() + " is not implement");
+      paramOptionalParamString = this.mLogger;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("optionID type:");
+      localStringBuilder.append(((TPThumbPlayerUtils.OptionIdMapping)localObject).getOptionalIDType());
+      localStringBuilder.append(" is not implement");
+      paramOptionalParamString.error(localStringBuilder.toString());
       return;
     }
-    this.mPlayer.setOptionObject(localOptionIdMapping.getNativePlayerOptionalID(), paramOptionalParamString.value);
+    this.mPlayer.setOptionObject(((TPThumbPlayerUtils.OptionIdMapping)localObject).getNativePlayerOptionalID(), paramOptionalParamString.value);
   }
   
   private void throwExceptionIfPlayerReleased()
   {
-    if (this.mPlayer == null) {
-      throw new IllegalStateException("player has release");
+    if (this.mPlayer != null) {
+      return;
     }
+    throw new IllegalStateException("player has release");
   }
   
   private TPTrackInfo trackInfoConvert(TPMediaTrackInfo paramTPMediaTrackInfo)
@@ -424,26 +555,31 @@ public class TPThumbPlayer
   public void addSubtitleSource(String paramString1, String paramString2, String paramString3)
   {
     this.mLogger.info("addSubtitleSource");
-    if (this.mPlayer == null)
+    paramString2 = this.mPlayer;
+    if (paramString2 == null)
     {
       this.mLogger.warn("player has released, return");
       return;
     }
-    this.mPlayer.addSubtitleTrackSource(paramString1, paramString3);
+    paramString2.addSubtitleTrackSource(paramString1, paramString3);
   }
   
   public void captureVideo(TPCaptureParams paramTPCaptureParams, TPCaptureCallBack paramTPCaptureCallBack)
   {
-    this.mLogger.info("captureVideo, params" + paramTPCaptureParams);
+    Object localObject = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("captureVideo, params");
+    localStringBuilder.append(paramTPCaptureParams);
+    ((TPBaseLogger)localObject).info(localStringBuilder.toString());
     if (this.mImageGenerator != null)
     {
-      TPImageGeneratorParams localTPImageGeneratorParams = new TPImageGeneratorParams();
-      localTPImageGeneratorParams.width = paramTPCaptureParams.width;
-      localTPImageGeneratorParams.height = paramTPCaptureParams.height;
-      localTPImageGeneratorParams.format = paramTPCaptureParams.format;
-      localTPImageGeneratorParams.requestedTimeMsToleranceAfter = paramTPCaptureParams.requestedTimeMsToleranceAfter;
-      localTPImageGeneratorParams.requestedTimeMsToleranceBefore = paramTPCaptureParams.requestedTimeMsToleranceBefore;
-      this.mImageGenerator.generateImageAsyncAtTime(paramTPCaptureParams.requestedTimeMs, localTPImageGeneratorParams, paramTPCaptureCallBack);
+      localObject = new TPImageGeneratorParams();
+      ((TPImageGeneratorParams)localObject).width = paramTPCaptureParams.width;
+      ((TPImageGeneratorParams)localObject).height = paramTPCaptureParams.height;
+      ((TPImageGeneratorParams)localObject).format = paramTPCaptureParams.format;
+      ((TPImageGeneratorParams)localObject).requestedTimeMsToleranceAfter = paramTPCaptureParams.requestedTimeMsToleranceAfter;
+      ((TPImageGeneratorParams)localObject).requestedTimeMsToleranceBefore = paramTPCaptureParams.requestedTimeMsToleranceBefore;
+      this.mImageGenerator.generateImageAsyncAtTime(paramTPCaptureParams.requestedTimeMs, (TPImageGeneratorParams)localObject, paramTPCaptureCallBack);
       return;
     }
     paramTPCaptureCallBack.onCaptureVideoFailed(1000013);
@@ -452,79 +588,97 @@ public class TPThumbPlayer
   public void deselectTrack(int paramInt, long paramLong)
   {
     this.mLogger.info("selectTrack");
-    if (this.mPlayer == null)
+    TPNativePlayer localTPNativePlayer = this.mPlayer;
+    if (localTPNativePlayer == null)
     {
       this.mLogger.warn("player has released, return");
       return;
     }
-    this.mPlayer.deselectTrackAsync(paramInt, paramLong);
+    localTPNativePlayer.deselectTrackAsync(paramInt, paramLong);
   }
   
   public long getCurrentPositionMs()
   {
-    if (this.mPlayer == null)
+    TPNativePlayer localTPNativePlayer = this.mPlayer;
+    if (localTPNativePlayer == null)
     {
       this.mLogger.info("player has released, return 0");
       return 0L;
     }
-    return this.mPlayer.getCurrentPositionMs();
+    return localTPNativePlayer.getCurrentPositionMs();
   }
   
   public long getDurationMs()
   {
-    if (this.mPlayer == null)
+    TPNativePlayer localTPNativePlayer = this.mPlayer;
+    if (localTPNativePlayer == null)
     {
       this.mLogger.info("player has released, return 0");
       return 0L;
     }
-    return this.mPlayer.getDurationMs();
+    return localTPNativePlayer.getDurationMs();
   }
   
   public int getNativePlayerId()
   {
-    if (this.mPlayer != null) {
-      return this.mPlayer.getNativePlayerId();
+    TPNativePlayer localTPNativePlayer = this.mPlayer;
+    if (localTPNativePlayer != null) {
+      return localTPNativePlayer.getNativePlayerId();
     }
     return 0;
   }
   
   public long getPlayableDurationMs()
   {
-    if (this.mPlayer == null)
+    TPNativePlayer localTPNativePlayer = this.mPlayer;
+    if (localTPNativePlayer == null)
     {
       this.mLogger.info("player has released, return 0");
       return 0L;
     }
-    return this.mPlayer.getBufferedDurationMs() + this.mPlayer.getCurrentPositionMs();
+    return localTPNativePlayer.getBufferedDurationMs() + this.mPlayer.getCurrentPositionMs();
   }
   
   public TPProgramInfo[] getProgramInfo()
   {
     this.mLogger.info("getProgramInfo");
-    if (this.mPlayer == null) {
+    Object localObject2 = this.mPlayer;
+    Object localObject1 = null;
+    if (localObject2 == null)
+    {
       this.mLogger.info("player has released, return 0");
-    }
-    TPNativePlayerProgramInfo[] arrayOfTPNativePlayerProgramInfo;
-    do
-    {
       return null;
-      arrayOfTPNativePlayerProgramInfo = this.mPlayer.getProgramInfo();
-    } while ((arrayOfTPNativePlayerProgramInfo == null) || (arrayOfTPNativePlayerProgramInfo.length < 1));
-    TPProgramInfo[] arrayOfTPProgramInfo = new TPProgramInfo[arrayOfTPNativePlayerProgramInfo.length];
-    int i = 0;
-    while (i < arrayOfTPNativePlayerProgramInfo.length)
-    {
-      arrayOfTPProgramInfo[i] = programInfoConvert(arrayOfTPNativePlayerProgramInfo[i]);
-      i += 1;
     }
-    return arrayOfTPProgramInfo;
+    TPNativePlayerProgramInfo[] arrayOfTPNativePlayerProgramInfo = ((TPNativePlayer)localObject2).getProgramInfo();
+    if (arrayOfTPNativePlayerProgramInfo != null)
+    {
+      if (arrayOfTPNativePlayerProgramInfo.length < 1) {
+        return null;
+      }
+      localObject2 = new TPProgramInfo[arrayOfTPNativePlayerProgramInfo.length];
+      int i = 0;
+      for (;;)
+      {
+        localObject1 = localObject2;
+        if (i >= arrayOfTPNativePlayerProgramInfo.length) {
+          break;
+        }
+        localObject2[i] = programInfoConvert(arrayOfTPNativePlayerProgramInfo[i]);
+        i += 1;
+      }
+    }
+    return localObject1;
   }
   
   public long getPropertyLong(int paramInt)
   {
-    this.mLogger.info("getPropertyLong:" + paramInt);
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getPropertyLong:");
+    localStringBuilder.append(paramInt);
+    localTPBaseLogger.info(localStringBuilder.toString());
     throwExceptionIfPlayerReleased();
-    paramInt = TPNativeKeyMapUtil.convertToNativePropertyId(paramInt);
+    paramInt = TPNativeKeyMapUtil.toNativeIntValue(TPNativeKeyMap.MapPropertyId.class, paramInt);
     if (paramInt < 0)
     {
       this.mLogger.warn("paramId not found, return -1");
@@ -535,77 +689,100 @@ public class TPThumbPlayer
   
   public String getPropertyString(int paramInt)
   {
-    this.mLogger.info("getPropertyString:" + paramInt);
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getPropertyString:");
+    localStringBuilder.append(paramInt);
+    localTPBaseLogger.info(localStringBuilder.toString());
     throwExceptionIfPlayerReleased();
-    int i;
     try
     {
-      i = TPNativeKeyMapUtil.convertToNativePropertyId(paramInt);
+      int i = TPNativeKeyMapUtil.toNativeIntValue(TPNativeKeyMap.MapPropertyId.class, paramInt);
       if (i < 0)
       {
-        this.mLogger.warn("getPropertyString, convertToNativePropertyId(" + paramInt + "), return" + i);
+        localTPBaseLogger = this.mLogger;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getPropertyString, tpToNativeValue(TPNativeKeyMap.MapPropertyId.class,");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append("), return");
+        localStringBuilder.append(i);
+        localTPBaseLogger.warn(localStringBuilder.toString());
         return "";
       }
+      return this.mPlayer.getPropertyString(i);
     }
     catch (IllegalArgumentException localIllegalArgumentException)
     {
-      this.mLogger.warn("paramId not found, return");
-      return "";
+      label123:
+      break label123;
     }
-    return this.mPlayer.getPropertyString(i);
+    this.mLogger.warn("paramId not found, return");
+    return "";
   }
   
   public TPTrackInfo[] getTrackInfo()
   {
     this.mLogger.info("getTrackInfo");
-    if (this.mPlayer == null) {
+    Object localObject2 = this.mPlayer;
+    Object localObject1 = null;
+    if (localObject2 == null)
+    {
       this.mLogger.info("player has released, return 0");
-    }
-    TPMediaTrackInfo[] arrayOfTPMediaTrackInfo;
-    do
-    {
       return null;
-      arrayOfTPMediaTrackInfo = this.mPlayer.getTrackInfo();
-    } while ((arrayOfTPMediaTrackInfo == null) || (arrayOfTPMediaTrackInfo.length < 1));
-    TPTrackInfo[] arrayOfTPTrackInfo = new TPTrackInfo[arrayOfTPMediaTrackInfo.length];
-    int i = 0;
-    while (i < arrayOfTPMediaTrackInfo.length)
-    {
-      arrayOfTPTrackInfo[i] = trackInfoConvert(arrayOfTPMediaTrackInfo[i]);
-      i += 1;
     }
-    return arrayOfTPTrackInfo;
+    TPMediaTrackInfo[] arrayOfTPMediaTrackInfo = ((TPNativePlayer)localObject2).getTrackInfo();
+    if (arrayOfTPMediaTrackInfo != null)
+    {
+      if (arrayOfTPMediaTrackInfo.length < 1) {
+        return null;
+      }
+      localObject2 = new TPTrackInfo[arrayOfTPMediaTrackInfo.length];
+      int i = 0;
+      for (;;)
+      {
+        localObject1 = localObject2;
+        if (i >= arrayOfTPMediaTrackInfo.length) {
+          break;
+        }
+        localObject2[i] = trackInfoConvert(arrayOfTPMediaTrackInfo[i]);
+        i += 1;
+      }
+    }
+    return localObject1;
   }
   
   public int getVideoHeight()
   {
     this.mLogger.info("getVideoHeight");
-    if (this.mPlayer == null)
+    TPNativePlayer localTPNativePlayer = this.mPlayer;
+    if (localTPNativePlayer == null)
     {
       this.mLogger.info("player has released, return 0");
       return 0;
     }
-    return this.mPlayer.getVideoHeight();
+    return localTPNativePlayer.getVideoHeight();
   }
   
   public int getVideoWidth()
   {
     this.mLogger.info("getVideoWidth");
-    if (this.mPlayer == null)
+    TPNativePlayer localTPNativePlayer = this.mPlayer;
+    if (localTPNativePlayer == null)
     {
       this.mLogger.info("player has released, return 0");
       return 0;
     }
-    return this.mPlayer.getVideoWidth();
+    return localTPNativePlayer.getVideoWidth();
   }
   
   public void pause()
   {
     this.mLogger.info("pause");
     throwExceptionIfPlayerReleased();
-    if (this.mPlayer.pause() != 0) {
-      throw new IllegalStateException("pause failed!!");
+    if (this.mPlayer.pause() == 0) {
+      return;
     }
+    throw new IllegalStateException("pause failed!!");
   }
   
   public void prepare()
@@ -613,9 +790,10 @@ public class TPThumbPlayer
     this.mLogger.info("prepare");
     throwExceptionIfPlayerReleased();
     this.mPlayer.setInitConfig(this.mNativeInitConfig);
-    if (this.mPlayer.prepare() != 0) {
-      throw new IllegalStateException("prepare failed!!");
+    if (this.mPlayer.prepare() == 0) {
+      return;
     }
+    throw new IllegalStateException("prepare failed!!");
   }
   
   public void prepareAsync()
@@ -623,23 +801,32 @@ public class TPThumbPlayer
     this.mLogger.info("prepareAsync");
     throwExceptionIfPlayerReleased();
     this.mPlayer.setInitConfig(this.mNativeInitConfig);
-    if (this.mPlayer.prepareAsync() != 0) {
-      throw new IllegalStateException("prepareAsync failed!!");
+    if (this.mPlayer.prepareAsync() == 0) {
+      return;
     }
+    throw new IllegalStateException("prepareAsync failed!!");
   }
   
   public void release()
   {
     this.mLogger.info("release");
-    if (this.mPlayer != null)
+    Object localObject = this.mPlayer;
+    if (localObject != null)
     {
-      this.mPlayer.release();
+      ((TPNativePlayer)localObject).release();
       this.mPlayer = null;
     }
-    if (this.mImageGenerator != null)
+    localObject = this.mImageGenerator;
+    if (localObject != null)
     {
-      this.mImageGenerator.release();
+      ((ITPCapture)localObject).release();
       this.mImageGenerator = null;
+    }
+    localObject = this.mEventHandler;
+    if (localObject != null)
+    {
+      ((TPThumbPlayer.EventHandler)localObject).removeCallbacksAndMessages(null);
+      this.mEventHandler = null;
     }
   }
   
@@ -653,136 +840,222 @@ public class TPThumbPlayer
     }
     this.mLogger.info("reset before");
     this.mPlayer.reset();
+    TPThumbPlayer.EventHandler localEventHandler = this.mEventHandler;
+    if (localEventHandler != null) {
+      localEventHandler.removeCallbacksAndMessages(null);
+    }
     this.mLogger.info("reset after");
   }
   
   public void seekTo(int paramInt)
   {
-    this.mLogger.info("seekTo:" + paramInt);
+    Object localObject = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("seekTo:");
+    localStringBuilder.append(paramInt);
+    ((TPBaseLogger)localObject).info(localStringBuilder.toString());
     throwExceptionIfPlayerReleased();
-    if (this.mPlayer.seekToAsync(paramInt, 1, 0L) != 0) {
-      throw new IllegalStateException("seek to position:" + paramInt + " failed!!");
+    if (this.mPlayer.seekToAsync(paramInt, 1, 0L) == 0) {
+      return;
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("seek to position:");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(" failed!!");
+    throw new IllegalStateException(((StringBuilder)localObject).toString());
   }
   
   public void seekTo(int paramInt1, @TPCommonEnum.TPSeekMode int paramInt2)
   {
-    this.mLogger.info("seekTo:" + paramInt1 + " mode:" + paramInt2);
+    Object localObject = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("seekTo:");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(" mode:");
+    localStringBuilder.append(paramInt2);
+    ((TPBaseLogger)localObject).info(localStringBuilder.toString());
     throwExceptionIfPlayerReleased();
-    if (this.mPlayer.seekToAsync(paramInt1, TPNativeKeyMapUtil.convertToNativeSeekMode(paramInt2), 0L) != 0) {
-      throw new IllegalStateException("seek to position:" + paramInt1 + " failed!!");
+    if (this.mPlayer.seekToAsync(paramInt1, TPNativeKeyMapUtil.toNativeIntValue(TPNativeKeyMap.MapSeekMode.class, paramInt2), 0L) == 0) {
+      return;
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("seek to position:");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(" failed!!");
+    throw new IllegalStateException(((StringBuilder)localObject).toString());
   }
   
   public void selectProgram(int paramInt, long paramLong)
   {
-    this.mLogger.info("selectProgram, programIndex:" + paramInt);
-    if (this.mPlayer == null)
+    Object localObject = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("selectProgram, programIndex:");
+    localStringBuilder.append(paramInt);
+    ((TPBaseLogger)localObject).info(localStringBuilder.toString());
+    localObject = this.mPlayer;
+    if (localObject == null)
     {
       this.mLogger.warn("player has released, return");
       return;
     }
-    this.mPlayer.selectProgramAsync(paramInt, paramLong);
+    ((TPNativePlayer)localObject).selectProgramAsync(paramInt, paramLong);
   }
   
   public void selectTrack(int paramInt, long paramLong)
   {
     this.mLogger.info("selectTrack");
-    if (this.mPlayer == null)
+    TPNativePlayer localTPNativePlayer = this.mPlayer;
+    if (localTPNativePlayer == null)
     {
       this.mLogger.warn("player has released, return");
       return;
     }
-    this.mPlayer.selectTrackAsync(paramInt, paramLong);
+    localTPNativePlayer.selectTrackAsync(paramInt, paramLong);
   }
   
   public void setAudioGainRatio(float paramFloat)
   {
-    this.mLogger.info("setAudioGainRatio:" + paramFloat);
-    if (this.mPlayer == null)
+    Object localObject = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setAudioGainRatio:");
+    localStringBuilder.append(paramFloat);
+    ((TPBaseLogger)localObject).info(localStringBuilder.toString());
+    localObject = this.mPlayer;
+    if (localObject == null)
     {
       this.mLogger.warn("player has released, return");
       return;
     }
-    this.mPlayer.setAudioVolume(paramFloat);
+    ((TPNativePlayer)localObject).setAudioVolume(paramFloat);
   }
   
   public void setAudioNormalizeVolumeParams(String paramString)
   {
-    this.mLogger.info("setAudioNormalizeVolumeParams:" + paramString);
-    if (this.mPlayer == null)
+    Object localObject = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setAudioNormalizeVolumeParams:");
+    localStringBuilder.append(paramString);
+    ((TPBaseLogger)localObject).info(localStringBuilder.toString());
+    localObject = this.mPlayer;
+    if (localObject == null)
     {
       this.mLogger.warn("player has released, return");
       return;
     }
-    this.mPlayer.setAudioNormalizeVolumeParams(paramString);
+    ((TPNativePlayer)localObject).setAudioNormalizeVolumeParams(paramString);
   }
   
   public void setDataSource(ParcelFileDescriptor paramParcelFileDescriptor)
   {
-    this.mLogger.info("setDataSource: " + paramParcelFileDescriptor);
-    throwExceptionIfPlayerReleased();
-    if (this.mPlayer.setDataSource(paramParcelFileDescriptor.getFd()) != 0) {
+    if (paramParcelFileDescriptor != null)
+    {
+      int i = paramParcelFileDescriptor.detachFd();
+      paramParcelFileDescriptor.close();
+      TPBaseLogger localTPBaseLogger = this.mLogger;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setDataSource: ");
+      localStringBuilder.append(paramParcelFileDescriptor);
+      localStringBuilder.append(", fd:");
+      localStringBuilder.append(i);
+      localTPBaseLogger.info(localStringBuilder.toString());
+      throwExceptionIfPlayerReleased();
+      if (this.mPlayer.setDataSource(i) == 0)
+      {
+        this.mImageGenerator = new TPThumbCapture(i);
+        return;
+      }
       throw new IllegalStateException("setDataSource url pfd failed!!");
     }
-    this.mImageGenerator = new TPThumbCapture(paramParcelFileDescriptor.getFd());
+    throw new IllegalStateException("setDataSource url pfd is null!!");
   }
   
   public void setDataSource(ITPMediaAsset paramITPMediaAsset)
   {
-    this.mLogger.info("setDataSource: " + paramITPMediaAsset);
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setDataSource: ");
+    localStringBuilder.append(paramITPMediaAsset);
+    localTPBaseLogger.info(localStringBuilder.toString());
     throwExceptionIfPlayerReleased();
-    if (paramITPMediaAsset == null) {
-      throw new IllegalStateException("media asset is null!");
-    }
-    if ((!(paramITPMediaAsset instanceof TPMediaComposition)) && (!(paramITPMediaAsset instanceof TPMediaCompositionTrack)) && (!(paramITPMediaAsset instanceof TPMediaCompositionTrackClip)) && (!(paramITPMediaAsset instanceof TPMediaDRMAsset))) {
-      throw new IllegalStateException("media asset is illegal source!");
-    }
-    paramITPMediaAsset = paramITPMediaAsset.getUrl();
-    if (this.mPlayer.setDataSource(paramITPMediaAsset) != 0) {
+    if (paramITPMediaAsset != null)
+    {
+      paramITPMediaAsset = paramITPMediaAsset.getUrl();
+      if (this.mPlayer.setDataSource(paramITPMediaAsset) == 0)
+      {
+        this.mImageGenerator = new TPThumbCapture(paramITPMediaAsset);
+        return;
+      }
       throw new IllegalStateException("setDataSource mediaAsset failed!!");
     }
-    this.mImageGenerator = new TPThumbCapture(paramITPMediaAsset);
+    throw new IllegalStateException("media asset is null!");
   }
   
   public void setDataSource(String paramString)
   {
-    this.mLogger.info("setDataSource: " + paramString);
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setDataSource: ");
+    localStringBuilder.append(paramString);
+    localTPBaseLogger.info(localStringBuilder.toString());
     throwExceptionIfPlayerReleased();
-    if (this.mPlayer.setDataSource(paramString) != 0) {
-      throw new IllegalStateException("setDataSource url failed!!");
+    if (this.mPlayer.setDataSource(paramString) == 0)
+    {
+      this.mImageGenerator = new TPThumbCapture(paramString);
+      return;
     }
-    this.mImageGenerator = new TPThumbCapture(paramString);
+    throw new IllegalStateException("setDataSource url failed!!");
   }
   
   public void setDataSource(String paramString, Map<String, String> paramMap)
   {
-    this.mLogger.info("setDataSource: " + paramString);
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setDataSource: ");
+    localStringBuilder.append(paramString);
+    localTPBaseLogger.info(localStringBuilder.toString());
     throwExceptionIfPlayerReleased();
-    if (this.mPlayer.setDataSource(paramString, paramMap) != 0) {
-      throw new IllegalStateException("setDataSource url and header failed!!");
+    if (this.mPlayer.setDataSource(paramString, paramMap) == 0)
+    {
+      this.mImageGenerator = new TPThumbCapture(paramString);
+      return;
     }
-    this.mImageGenerator = new TPThumbCapture(paramString);
+    throw new IllegalStateException("setDataSource url and header failed!!");
   }
   
   public void setLoopback(boolean paramBoolean)
   {
-    this.mLogger.info("setLoopback:" + paramBoolean);
-    if (this.mPlayer == null)
+    Object localObject = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setLoopback:");
+    localStringBuilder.append(paramBoolean);
+    ((TPBaseLogger)localObject).info(localStringBuilder.toString());
+    localObject = this.mPlayer;
+    if (localObject == null)
     {
       this.mLogger.warn("player has released, return");
       return;
     }
-    this.mPlayer.setLoopback(paramBoolean, 0L, -1L);
+    ((TPNativePlayer)localObject).setLoopback(paramBoolean, 0L, -1L);
   }
   
   public void setLoopback(boolean paramBoolean, long paramLong1, long paramLong2)
   {
-    this.mLogger.info("setLoopback:" + paramBoolean + " loopStartPositionMs:" + paramLong1 + " loopEndPositionMs:" + paramLong2);
-    if (this.mPlayer == null) {
+    Object localObject = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setLoopback:");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(" loopStartPositionMs:");
+    localStringBuilder.append(paramLong1);
+    localStringBuilder.append(" loopEndPositionMs:");
+    localStringBuilder.append(paramLong2);
+    ((TPBaseLogger)localObject).info(localStringBuilder.toString());
+    localObject = this.mPlayer;
+    if (localObject == null)
+    {
       this.mLogger.warn("player has released, return");
+      return;
     }
-    while (this.mPlayer.setLoopback(paramBoolean, paramLong1, paramLong2) == 0) {
+    if (((TPNativePlayer)localObject).setLoopback(paramBoolean, paramLong1, paramLong2) == 0) {
       return;
     }
     throw new IllegalStateException("set loopback failed!!");
@@ -850,110 +1123,135 @@ public class TPThumbPlayer
   
   public void setOutputMute(boolean paramBoolean)
   {
-    this.mLogger.info("setOutputMute:" + paramBoolean);
-    if (this.mPlayer == null)
+    Object localObject = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setOutputMute:");
+    localStringBuilder.append(paramBoolean);
+    ((TPBaseLogger)localObject).info(localStringBuilder.toString());
+    localObject = this.mPlayer;
+    if (localObject == null)
     {
       this.mLogger.warn("player has released, return");
       return;
     }
-    this.mPlayer.setAudioMute(paramBoolean);
+    ((TPNativePlayer)localObject).setAudioMute(paramBoolean);
   }
   
   public void setPlaySpeedRatio(float paramFloat)
   {
-    this.mLogger.info("setPlaySpeedRatio:" + paramFloat);
+    Object localObject = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setPlaySpeedRatio:");
+    localStringBuilder.append(paramFloat);
+    ((TPBaseLogger)localObject).info(localStringBuilder.toString());
+    localObject = this.mPlayer;
+    if (localObject == null)
+    {
+      this.mLogger.warn("player has released, return");
+      return;
+    }
+    ((TPNativePlayer)localObject).setPlaybackRate(paramFloat);
+  }
+  
+  public void setPlayerOptionalParam(TPOptionalParam paramTPOptionalParam)
+  {
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setPlayerOptionalParam:");
+    localStringBuilder.append(paramTPOptionalParam);
+    localTPBaseLogger.info(localStringBuilder.toString());
     if (this.mPlayer == null)
     {
       this.mLogger.warn("player has released, return");
       return;
     }
-    this.mPlayer.setPlaybackRate(paramFloat);
-  }
-  
-  public void setPlayerOptionalParam(TPOptionalParam paramTPOptionalParam)
-  {
-    this.mLogger.info("setPlayerOptionalParam:" + paramTPOptionalParam);
-    if (this.mPlayer == null) {
-      this.mLogger.warn("player has released, return");
-    }
-    do
+    if (paramTPOptionalParam.getParamType() == 1)
     {
-      do
+      if (paramTPOptionalParam.getKey() < 500)
       {
-        do
-        {
-          return;
-          if (paramTPOptionalParam.getParamType() == 1)
-          {
-            if (paramTPOptionalParam.getKey() < 500)
-            {
-              setPlayerInitConfigWithParamBoolean(paramTPOptionalParam.getKey(), paramTPOptionalParam.getParamBoolean());
-              return;
-            }
-            setPlayerOptionWithParamBoolean(paramTPOptionalParam.getKey(), paramTPOptionalParam.getParamBoolean());
-            return;
-          }
-          if (paramTPOptionalParam.getParamType() == 2)
-          {
-            if (paramTPOptionalParam.getKey() < 500)
-            {
-              setPlayerInitConfigWithParamLong(paramTPOptionalParam.getKey(), paramTPOptionalParam.getParamLong());
-              return;
-            }
-            setPlayerOptionWithParamLong(paramTPOptionalParam.getKey(), paramTPOptionalParam.getParamLong());
-            return;
-          }
-          if (paramTPOptionalParam.getParamType() != 6) {
-            break;
-          }
-        } while (paramTPOptionalParam.getKey() >= 500);
-        setPlayerInitConfigWithParamFloat(paramTPOptionalParam.getKey(), paramTPOptionalParam.getParamFloat());
+        setPlayerInitConfigWithParamBoolean(paramTPOptionalParam.getKey(), paramTPOptionalParam.getParamBoolean());
         return;
-        if (paramTPOptionalParam.getParamType() == 3)
+      }
+      setPlayerOptionWithParamBoolean(paramTPOptionalParam.getKey(), paramTPOptionalParam.getParamBoolean());
+      return;
+    }
+    if (paramTPOptionalParam.getParamType() == 2)
+    {
+      if (paramTPOptionalParam.getKey() < 500)
+      {
+        setPlayerInitConfigWithParamLong(paramTPOptionalParam.getKey(), paramTPOptionalParam.getParamLong());
+        return;
+      }
+      setPlayerOptionWithParamLong(paramTPOptionalParam.getKey(), paramTPOptionalParam.getParamLong());
+      return;
+    }
+    if (paramTPOptionalParam.getParamType() == 6)
+    {
+      if (paramTPOptionalParam.getKey() < 500) {
+        setPlayerInitConfigWithParamFloat(paramTPOptionalParam.getKey(), paramTPOptionalParam.getParamFloat());
+      }
+    }
+    else
+    {
+      if (paramTPOptionalParam.getParamType() == 3)
+      {
+        if (paramTPOptionalParam.getKey() < 500)
         {
-          if (paramTPOptionalParam.getKey() < 500)
-          {
-            setPlayerInitConfigWithParamString(paramTPOptionalParam.getKey(), paramTPOptionalParam.getParamString());
-            return;
-          }
-          setPlayerOptionWithParamString(paramTPOptionalParam.getKey(), paramTPOptionalParam.getParamString());
+          setPlayerInitConfigWithParamString(paramTPOptionalParam.getKey(), paramTPOptionalParam.getParamString());
           return;
         }
-        if (paramTPOptionalParam.getParamType() != 4) {
-          break;
-        }
-      } while (paramTPOptionalParam.getKey() >= 500);
-      setPlayerInitConfigWithParamQueueInt(paramTPOptionalParam.getKey(), paramTPOptionalParam.getParamQueueInt());
-      return;
-      if (paramTPOptionalParam.getParamType() != 5) {
-        break;
+        setPlayerOptionWithParamString(paramTPOptionalParam.getKey(), paramTPOptionalParam.getParamString());
+        return;
       }
-    } while (paramTPOptionalParam.getKey() >= 500);
-    setPlayerInitConfigWithParamQueueString(paramTPOptionalParam.getKey(), paramTPOptionalParam.getParamQueueString());
+      if (paramTPOptionalParam.getParamType() == 4)
+      {
+        if (paramTPOptionalParam.getKey() < 500) {
+          setPlayerInitConfigWithParamQueueInt(paramTPOptionalParam.getKey(), paramTPOptionalParam.getParamQueueInt());
+        }
+      }
+      else if (paramTPOptionalParam.getParamType() == 5)
+      {
+        if (paramTPOptionalParam.getKey() < 500) {
+          setPlayerInitConfigWithParamQueueString(paramTPOptionalParam.getKey(), paramTPOptionalParam.getParamQueueString());
+        }
+      }
+      else
+      {
+        if (paramTPOptionalParam.getParamType() != 7) {
+          break label312;
+        }
+        if (paramTPOptionalParam.getKey() < 500) {
+          return;
+        }
+        setPlayerOptionWithParamObject(paramTPOptionalParam.getKey(), paramTPOptionalParam.getParamObject());
+      }
+    }
     return;
+    label312:
     this.mLogger.warn("optionalParam param type is unknown, return");
   }
   
   public void setSurface(Surface paramSurface)
   {
-    TPBaseLogger localTPBaseLogger = this.mLogger;
-    StringBuilder localStringBuilder = new StringBuilder().append("setSurface, surface is null ? : ");
+    Object localObject = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setSurface, surface is null ? : ");
     boolean bool;
-    if (paramSurface == null)
-    {
+    if (paramSurface == null) {
       bool = true;
-      localTPBaseLogger.info(bool);
-      if (this.mPlayer != null) {
-        break label62;
-      }
-      this.mLogger.warn("player has released, return");
-    }
-    label62:
-    while (this.mPlayer.setVideoSurface(paramSurface) == 0)
-    {
-      return;
+    } else {
       bool = false;
-      break;
+    }
+    localStringBuilder.append(bool);
+    ((TPBaseLogger)localObject).info(localStringBuilder.toString());
+    localObject = this.mPlayer;
+    if (localObject == null)
+    {
+      this.mLogger.warn("player has released, return");
+      return;
+    }
+    if (((TPNativePlayer)localObject).setVideoSurface(paramSurface) == 0) {
+      return;
     }
     throw new IllegalStateException("setSurface failed!!");
   }
@@ -961,42 +1259,45 @@ public class TPThumbPlayer
   public void setSurfaceHolder(SurfaceHolder paramSurfaceHolder)
   {
     TPBaseLogger localTPBaseLogger = this.mLogger;
-    StringBuilder localStringBuilder = new StringBuilder().append("SurfaceHolder, surfaceHolder is null ? : ");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SurfaceHolder, surfaceHolder is null ? : ");
     boolean bool;
-    if (paramSurfaceHolder == null)
-    {
+    if (paramSurfaceHolder == null) {
       bool = true;
-      localTPBaseLogger.info(bool);
-      if (this.mPlayer != null) {
-        break label62;
-      }
-      this.mLogger.warn("player has released, return");
-    }
-    for (;;)
-    {
-      return;
+    } else {
       bool = false;
-      break;
-      label62:
-      if ((paramSurfaceHolder != null) && (paramSurfaceHolder.getSurface() == null))
-      {
-        this.mLogger.error("SurfaceHolder，err.");
-        return;
-      }
-      if (paramSurfaceHolder == null) {}
-      for (paramSurfaceHolder = null; this.mPlayer.setVideoSurface(paramSurfaceHolder) != 0; paramSurfaceHolder = paramSurfaceHolder.getSurface()) {
-        throw new IllegalStateException("setSurface failed!!");
-      }
     }
+    localStringBuilder.append(bool);
+    localTPBaseLogger.info(localStringBuilder.toString());
+    if (this.mPlayer == null)
+    {
+      this.mLogger.warn("player has released, return");
+      return;
+    }
+    if ((paramSurfaceHolder != null) && (paramSurfaceHolder.getSurface() == null))
+    {
+      this.mLogger.error("SurfaceHolder，err.");
+      return;
+    }
+    if (paramSurfaceHolder == null) {
+      paramSurfaceHolder = null;
+    } else {
+      paramSurfaceHolder = paramSurfaceHolder.getSurface();
+    }
+    if (this.mPlayer.setVideoSurface(paramSurfaceHolder) == 0) {
+      return;
+    }
+    throw new IllegalStateException("setSurface failed!!");
   }
   
   public void start()
   {
     this.mLogger.info("start");
     throwExceptionIfPlayerReleased();
-    if (this.mPlayer.start() != 0) {
-      throw new IllegalStateException("start failed!!");
+    if (this.mPlayer.start() == 0) {
+      return;
     }
+    throw new IllegalStateException("start failed!!");
   }
   
   public void stop()
@@ -1006,34 +1307,84 @@ public class TPThumbPlayer
     this.mLogger.info("stop before");
     int i = this.mPlayer.stop();
     this.mLogger.info("stop after");
-    if (i != 0) {
-      throw new IllegalStateException("stop failed!!");
+    if (i == 0) {
+      return;
     }
+    throw new IllegalStateException("stop failed!!");
   }
   
   public void switchDefinition(ITPMediaAsset paramITPMediaAsset, @TPCommonEnum.TPSwitchDefMode int paramInt, long paramLong)
   {
-    this.mLogger.info("switchDefinition mediaAsset:" + paramITPMediaAsset + " opaque:" + paramLong);
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("switchDefinition mediaAsset:");
+    localStringBuilder.append(paramITPMediaAsset);
+    localStringBuilder.append(" opaque:");
+    localStringBuilder.append(paramLong);
+    localTPBaseLogger.info(localStringBuilder.toString());
     throwExceptionIfPlayerReleased();
     if (paramITPMediaAsset != null)
     {
-      paramInt = TPNativeKeyMapUtil.convertToNativeSwitchDefMode(paramInt);
-      if (this.mPlayer.switchDefinitionAsync(paramITPMediaAsset.getUrl(), paramInt, paramLong) != 0) {
-        throw new IllegalStateException("switchDefinition in invalid state");
+      paramInt = TPNativeKeyMapUtil.toNativeIntValue(TPNativeKeyMap.MapSwitchDefMode.class, paramInt);
+      if (this.mPlayer.switchDefinitionAsync(paramITPMediaAsset.getUrl(), paramInt, paramLong) == 0)
+      {
+        this.mImageGenerator = new TPThumbCapture(paramITPMediaAsset.getUrl());
+        return;
       }
-      this.mImageGenerator = new TPThumbCapture(paramITPMediaAsset.getUrl());
+      throw new IllegalStateException("switchDefinition in invalid state");
     }
   }
   
   public void switchDefinition(String paramString, @TPCommonEnum.TPSwitchDefMode int paramInt, long paramLong)
   {
-    this.mLogger.info("switchDefinition url:" + paramString + " opaque:" + paramLong);
+    Object localObject = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("switchDefinition url:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" opaque:");
+    localStringBuilder.append(paramLong);
+    ((TPBaseLogger)localObject).info(localStringBuilder.toString());
     throwExceptionIfPlayerReleased();
-    paramInt = TPNativeKeyMapUtil.convertToNativeSwitchDefMode(paramInt);
-    if (this.mPlayer.switchDefinitionAsync(paramString, paramInt, paramLong) != 0) {
-      throw new IllegalStateException("switchDefinition in invalid state");
+    paramInt = TPNativeKeyMapUtil.toNativeIntValue(TPNativeKeyMap.MapSwitchDefMode.class, paramInt);
+    if (this.mPlayer.switchDefinitionAsync(paramString, paramInt, paramLong) == 0)
+    {
+      localObject = this.mImageGenerator;
+      if (localObject != null)
+      {
+        ((ITPCapture)localObject).release();
+        this.mImageGenerator = null;
+      }
+      this.mImageGenerator = new TPThumbCapture(paramString);
+      return;
     }
-    this.mImageGenerator = new TPThumbCapture(paramString);
+    throw new IllegalStateException("switchDefinition in invalid state");
+  }
+  
+  public void switchDefinition(String paramString, Map<String, String> paramMap, @TPCommonEnum.TPSwitchDefMode int paramInt, long paramLong)
+  {
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("switchDefinition url:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("httpHeader:");
+    localStringBuilder.append(paramMap);
+    localStringBuilder.append(" opaque:");
+    localStringBuilder.append(paramLong);
+    localTPBaseLogger.info(localStringBuilder.toString());
+    throwExceptionIfPlayerReleased();
+    paramInt = TPNativeKeyMapUtil.toNativeIntValue(TPNativeKeyMap.MapSwitchDefMode.class, paramInt);
+    if (this.mPlayer.switchDefinitionAsync(paramString, paramMap, paramInt, paramLong) == 0)
+    {
+      paramMap = this.mImageGenerator;
+      if (paramMap != null)
+      {
+        paramMap.release();
+        this.mImageGenerator = null;
+      }
+      this.mImageGenerator = new TPThumbCapture(paramString);
+      return;
+    }
+    throw new IllegalStateException("switchDefinition in invalid state");
   }
   
   public void updateLoggerContext(TPLoggerContext paramTPLoggerContext)
@@ -1046,7 +1397,7 @@ public class TPThumbPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.player.thumbplayer.TPThumbPlayer
  * JD-Core Version:    0.7.0.1
  */

@@ -12,14 +12,15 @@ class ProgressVideoViewWrapper$OnPreparedListenerWrapper
     if (ProgressVideoViewWrapper.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerProgressVideoViewWrapper) != null) {
       ProgressVideoViewWrapper.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerProgressVideoViewWrapper).a(0L, paramIVideoView.b(), paramIVideoView);
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView$OnPreparedListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView$OnPreparedListener.a(paramIVideoView);
+    IVideoView.OnPreparedListener localOnPreparedListener = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView$OnPreparedListener;
+    if (localOnPreparedListener != null) {
+      localOnPreparedListener.a(paramIVideoView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.ProgressVideoViewWrapper.OnPreparedListenerWrapper
  * JD-Core Version:    0.7.0.1
  */

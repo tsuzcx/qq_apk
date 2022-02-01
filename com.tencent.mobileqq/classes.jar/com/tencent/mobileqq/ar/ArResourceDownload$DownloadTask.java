@@ -17,14 +17,14 @@ public class ArResourceDownload$DownloadTask
     this.jdField_a_of_type_ComTencentMobileqqArArResourceDownload = paramArResourceDownload;
   }
   
-  public void realCancel()
+  protected void realCancel()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ArConfig_ArResourceDownload", 2, "DownloadTask realCancel");
     }
   }
   
-  public void realStart()
+  protected void realStart()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ArConfig_ArResourceDownload", 2, "DownloadTask realStart");
@@ -34,12 +34,17 @@ public class ArResourceDownload$DownloadTask
   
   public String toString()
   {
-    return "[DownloadTask] mInfo=" + this.jdField_a_of_type_ComTencentMobileqqArArResourceDownload$DownloadInfo + ", mDownloader=" + this.jdField_a_of_type_ComTencentMobileqqArArResourceDownload;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[DownloadTask] mInfo=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArArResourceDownload$DownloadInfo);
+    localStringBuilder.append(", mDownloader=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArArResourceDownload);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArResourceDownload.DownloadTask
  * JD-Core Version:    0.7.0.1
  */

@@ -11,6 +11,7 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
+import mqq.app.AppRuntime;
 
 public class FaceModelsDownloadHandler
   extends EarlyHandler
@@ -44,10 +45,14 @@ public class FaceModelsDownloadHandler
   public void a(long paramLong1, long paramLong2)
   {
     super.a(paramLong1, paramLong2);
-    this.jdField_a_of_type_Int = ((int)(100L * paramLong1 / paramLong2));
+    this.jdField_a_of_type_Int = ((int)(paramLong1 * 100L / paramLong2));
     FaceScanDownloadManager.a(0, this.jdField_a_of_type_Int);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceModelsDownloadHandler", 2, "download progress: " + this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("download progress: ");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      QLog.d("FaceModelsDownloadHandler", 2, localStringBuilder.toString());
     }
   }
   
@@ -57,31 +62,39 @@ public class FaceModelsDownloadHandler
       FaceScanDownloadManager.a(0, false);
     }
     super.a(paramXmlData, paramBoolean, paramInt, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceModelsDownloadHandler", 2, "download finish: " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      paramXmlData = new StringBuilder();
+      paramXmlData.append("download finish: ");
+      paramXmlData.append(paramBoolean);
+      QLog.d("FaceModelsDownloadHandler", 2, paramXmlData.toString());
     }
   }
   
   public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceModelsDownloadHandler", 2, "download success: " + paramString);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("download success: ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("FaceModelsDownloadHandler", 2, ((StringBuilder)localObject).toString());
     }
     if (FaceScanModelsLoader.a(paramString) != 0)
     {
       f();
       FaceScanDownloadManager.a(0, false);
     }
-    for (;;)
+    else
     {
-      super.a(paramString);
-      return;
       FaceScanDownloadManager.a(0, true);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008358", "0X8008358", 0, 0, "", "", "model", "");
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("res_type", "model");
-      StatisticCollector.getInstance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "FaceResDownloadSuccess", true, 0L, 0L, localHashMap, "", true);
+      ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "dc00898", "", "", "0X8008358", "0X8008358", 0, 0, "", "", "model", "");
+      localObject = new HashMap();
+      ((HashMap)localObject).put("res_type", "model");
+      StatisticCollector.getInstance(this.jdField_a_of_type_MqqAppAppRuntime.getApp()).collectPerformance(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin(), "FaceResDownloadSuccess", true, 0L, 0L, (HashMap)localObject, "", true);
     }
+    super.a(paramString);
   }
   
   public void a(boolean paramBoolean)
@@ -90,8 +103,12 @@ public class FaceModelsDownloadHandler
       this.d = paramBoolean;
     }
     super.a(paramBoolean);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceModelsDownloadHandler", 2, "download restart userClick = " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("download restart userClick = ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("FaceModelsDownloadHandler", 2, localStringBuilder.toString());
     }
   }
   
@@ -113,7 +130,7 @@ public class FaceModelsDownloadHandler
     }
   }
   
-  public boolean b()
+  public boolean c()
   {
     if (this.d)
     {
@@ -125,38 +142,46 @@ public class FaceModelsDownloadHandler
     if (QLog.isColorLevel()) {
       QLog.d("FaceModelsDownloadHandler", 2, "isNetValid2Download by startup ");
     }
-    return super.b();
+    return super.c();
   }
   
   public boolean e()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceModelsDownloadHandler", 2, "downloadResource,isDownloadReqedByUser = " + this.d);
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("downloadResource,isDownloadReqedByUser = ");
+      localStringBuilder.append(this.d);
+      QLog.d("FaceModelsDownloadHandler", 2, localStringBuilder.toString());
     }
     if (!this.d)
     {
-      if (!FaceScanDownloadManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+      if (!FaceScanDownloadManager.b((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime))
       {
         if (QLog.isColorLevel()) {
           QLog.d("FaceModelsDownloadHandler", 2, "pre download config disable ");
         }
         return false;
       }
-      if (BaseActivity.sTopActivity == null) {
-        break label115;
+      boolean bool;
+      if (BaseActivity.sTopActivity != null) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label115:
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("FaceModelsDownloadHandler", 2, "downloadResource later " + bool);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("downloadResource later ");
+        localStringBuilder.append(bool);
+        QLog.d("FaceModelsDownloadHandler", 2, localStringBuilder.toString());
       }
       if (bool) {
-        break;
+        return false;
       }
-      return super.e();
     }
+    return super.e();
   }
   
   public void f()
@@ -171,7 +196,7 @@ public class FaceModelsDownloadHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.FaceModelsDownloadHandler
  * JD-Core Version:    0.7.0.1
  */

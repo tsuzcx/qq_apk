@@ -17,12 +17,26 @@ public class VoIPManager$RoomConfig
   
   public String toString()
   {
-    return "RoomConfig{signature='" + this.signature + '\'' + ", nonceStr='" + this.nonceStr + '\'' + ", timeStamp=" + this.timeStamp + ", groupId=" + this.groupId + ", muteConfig=" + this.muteConfig + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RoomConfig{signature='");
+    localStringBuilder.append(this.signature);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", nonceStr='");
+    localStringBuilder.append(this.nonceStr);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", timeStamp=");
+    localStringBuilder.append(this.timeStamp);
+    localStringBuilder.append(", groupId=");
+    localStringBuilder.append(this.groupId);
+    localStringBuilder.append(", muteConfig=");
+    localStringBuilder.append(this.muteConfig);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.manager.VoIPManager.RoomConfig
  * JD-Core Version:    0.7.0.1
  */

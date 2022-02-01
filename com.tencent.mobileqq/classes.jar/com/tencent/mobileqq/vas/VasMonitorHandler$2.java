@@ -16,43 +16,37 @@ class VasMonitorHandler$2
   
   public void run()
   {
-    boolean bool2 = true;
-    int i = 0;
     Object localObject1 = this.jdField_a_of_type_MqqAppAppRuntime;
-    boolean bool1;
-    Object localObject3;
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      bool1 = true;
-      localObject3 = VasUpdateUtil.a((AppRuntime)localObject1, "monitorAppid", bool1, null);
-      if (localObject3 == null) {}
-    }
+    boolean bool2 = this.jdField_a_of_type_Boolean;
+    boolean bool1 = true;
+    Object localObject3 = VasUpdateUtil.a((AppRuntime)localObject1, "monitorAppid", bool2 ^ true, null);
+    if (localObject3 != null) {}
     for (;;)
     {
       try
       {
         this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
         localObject1 = ((JSONObject)localObject3).optJSONArray("allAppidControl");
-        if (localObject1 == null) {
-          break label229;
-        }
-        localObject1 = ((JSONArray)localObject1).optJSONObject(0);
-        AtomicBoolean localAtomicBoolean = this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-        if ((localObject1 == null) || (!((JSONObject)localObject1).optBoolean("stopAllReport"))) {
-          break label235;
-        }
-        bool1 = bool2;
-        localAtomicBoolean.set(bool1);
-        if (this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-          return;
-        }
-        localObject3 = ((JSONObject)localObject3).optJSONArray("individualMonitorAppidList");
-        if (localObject3 != null) {
-          if (i < ((JSONArray)localObject3).length())
-          {
-            localObject1 = ((JSONArray)localObject3).optJSONObject(i);
-            if (localObject1 != null)
+        int i = 0;
+        if (localObject1 != null)
+        {
+          localObject1 = ((JSONArray)localObject1).optJSONObject(0);
+          AtomicBoolean localAtomicBoolean = this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
+          if ((localObject1 == null) || (!((JSONObject)localObject1).optBoolean("stopAllReport"))) {
+            break label239;
+          }
+          localAtomicBoolean.set(bool1);
+          if (this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+            return;
+          }
+          localObject3 = ((JSONObject)localObject3).optJSONArray("individualMonitorAppidList");
+          if (localObject3 != null) {
+            if (i < ((JSONArray)localObject3).length())
             {
+              localObject1 = ((JSONArray)localObject3).optJSONObject(i);
+              if (localObject1 == null) {
+                break label244;
+              }
               localObject1 = ((JSONObject)localObject1).optString("appid");
               if (!TextUtils.isEmpty((CharSequence)localObject1)) {
                 this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localObject1);
@@ -60,29 +54,30 @@ class VasMonitorHandler$2
               i += 1;
               continue;
             }
-            localObject1 = null;
-            continue;
           }
+          return;
         }
-        return;
       }
       catch (Exception localException)
       {
-        QLog.i("VasMonitorHandler", 2, "parseBlackList err:" + localException.getMessage());
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("parseBlackList err:");
+        ((StringBuilder)localObject3).append(localException.getMessage());
+        QLog.i("VasMonitorHandler", 2, ((StringBuilder)localObject3).toString());
       }
-      bool1 = false;
-      break;
-      label229:
       Object localObject2 = null;
       continue;
-      label235:
+      label239:
       bool1 = false;
+      continue;
+      label244:
+      localObject2 = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasMonitorHandler.2
  * JD-Core Version:    0.7.0.1
  */

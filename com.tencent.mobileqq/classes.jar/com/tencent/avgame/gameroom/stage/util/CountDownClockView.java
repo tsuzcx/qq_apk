@@ -16,7 +16,7 @@ public class CountDownClockView
   extends ImageView
   implements IBaseCountDownClockView
 {
-  private static final String jdField_a_of_type_JavaLangString = CountDownClockView.class.getName();
+  private static final String jdField_a_of_type_JavaLangString = "com.tencent.avgame.gameroom.stage.util.CountDownClockView";
   private int jdField_a_of_type_Int;
   ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
@@ -54,7 +54,7 @@ public class CountDownClockView
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-469632);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_a_of_type_AndroidGraphicsPaint.setFlags(1);
-    setBackgroundResource(2130838893);
+    setBackgroundResource(2130838653);
     this.jdField_b_of_type_AndroidGraphicsPaint.setColor(-1831);
     this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_b_of_type_AndroidGraphicsPaint.setFlags(1);
@@ -62,7 +62,7 @@ public class CountDownClockView
   
   private void a(Canvas paramCanvas)
   {
-    paramCanvas.translate(0.5F * this.jdField_a_of_type_Int, 0.5625F * this.jdField_b_of_type_Int);
+    paramCanvas.translate(this.jdField_a_of_type_Int * 0.5F, this.jdField_b_of_type_Int * 0.5625F);
     paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, this.jdField_c_of_type_Int, true, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
@@ -84,10 +84,15 @@ public class CountDownClockView
     if (paramLong2 > paramLong1) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    if (localValueAnimator != null) {
+      localValueAnimator.cancel();
     }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { (int)(360L * paramLong2 * 1.0D / paramLong1), 360 }).setDuration(paramLong1 - paramLong2);
+    double d1 = paramLong2 * 360L;
+    Double.isNaN(d1);
+    double d2 = paramLong1;
+    Double.isNaN(d2);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { (int)(d1 * 1.0D / d2), 360 }).setDuration(paramLong1 - paramLong2);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
     this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new CountDownClockView.1(this));
     ValueAnimatorUtil.a();
@@ -103,23 +108,30 @@ public class CountDownClockView
     paramCanvas.restore();
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int != paramInt1))
+    paramInt3 = this.jdField_a_of_type_Int;
+    if ((paramInt3 == 0) || (paramInt3 != paramInt1))
     {
       this.jdField_a_of_type_Int = paramInt1;
       this.jdField_b_of_type_Int = paramInt2;
       this.jdField_a_of_type_AndroidGraphicsPath.reset();
-      float f = 0.025F * this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_AndroidGraphicsPath.moveTo(-f, 0.0F);
-      this.jdField_b_of_type_AndroidGraphicsRectF.set(-f, -f, f, f);
+      float f1 = this.jdField_a_of_type_Int * 0.025F;
+      Object localObject = this.jdField_a_of_type_AndroidGraphicsPath;
+      float f2 = -f1;
+      ((Path)localObject).moveTo(f2, 0.0F);
+      this.jdField_b_of_type_AndroidGraphicsRectF.set(f2, f2, f1, f1);
       this.jdField_a_of_type_AndroidGraphicsPath.addArc(this.jdField_b_of_type_AndroidGraphicsRectF, 180.0F, -180.0F);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f, -0.1625F * this.jdField_a_of_type_Int);
-      this.jdField_c_of_type_AndroidGraphicsRectF.set(-f, -0.1875F * this.jdField_a_of_type_Int, f, -0.1375F * this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f1, this.jdField_a_of_type_Int * -0.1625F);
+      localObject = this.jdField_c_of_type_AndroidGraphicsRectF;
+      paramInt1 = this.jdField_a_of_type_Int;
+      ((RectF)localObject).set(f2, paramInt1 * -0.1875F, f1, paramInt1 * -0.1375F);
       this.jdField_a_of_type_AndroidGraphicsPath.addArc(this.jdField_c_of_type_AndroidGraphicsRectF, 0.0F, -180.0F);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(-f, 0.0F);
-      f = 0.1875F * this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(-f, -f, f, f);
+      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f2, 0.0F);
+      f1 = this.jdField_a_of_type_Int * 0.1875F;
+      localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+      f2 = -f1;
+      ((RectF)localObject).set(f2, f2, f1, f1);
     }
   }
   
@@ -130,7 +142,7 @@ public class CountDownClockView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.stage.util.CountDownClockView
  * JD-Core Version:    0.7.0.1
  */

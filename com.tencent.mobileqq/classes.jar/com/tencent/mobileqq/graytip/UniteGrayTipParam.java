@@ -1,21 +1,19 @@
 package com.tencent.mobileqq.graytip;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.imcore.message.MsgProxyUtils;
-import com.tencent.mobileqq.data.MessageForGrayTips.HighlightItem;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.imcore.message.InitMsgModule;
+import com.tencent.mobileqq.data.GrayTipsMessageConstants.HighlightItem;
 import java.util.ArrayList;
 
 public class UniteGrayTipParam
 {
+  private static UniteGrayTipParam.Callback jdField_a_of_type_ComTencentMobileqqGraytipUniteGrayTipParam$Callback = new UniteGrayTipParam.1();
   public static final int[] a;
   public int a;
   public long a;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
   public String a;
-  private ArrayList<MessageForGrayTips.HighlightItem> jdField_a_of_type_JavaUtilArrayList;
+  private ArrayList<GrayTipsMessageConstants.HighlightItem> jdField_a_of_type_JavaUtilArrayList;
   protected boolean a;
   public int b;
   public String b;
@@ -29,10 +27,13 @@ public class UniteGrayTipParam
   public boolean d = true;
   public boolean e;
   public boolean f = true;
+  public boolean g = false;
+  public boolean h = false;
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 1, 131073, 131078, 135176, 1376257, 2097153, 2097154, 2097155, 2097156, 1245186, 1245187, 65560, 2359297, 65560, 655362, 2424833, 2490369, 2555907, 1179651, 2686977, 2621441, 2359298, 3145729, 2555906, 3145729, 3211265, 135178, 135179, 655378, 655379, 655369, 655376, 3276801, 3276802, 655377, 1179653, 3342339, 3342337, 3342338, 135180, 135181, 655381, 131080, 131081, 655383, 655392, 131082, 655384, 655385, 2359299, 2359300, 3276804, 131090, 131091, 655393, 131083, 655397, 131084, 131085, 131092, 131087, 131086, 131088, 2, 656395, 459802, 459803, 3, 459817, 656396, 656397 };
+    InitMsgModule.a();
+    jdField_a_of_type_ArrayOfInt = new int[] { 1, 131073, 131078, 135176, 1376257, 2097153, 2097154, 2097155, 2097156, 1245186, 1245187, 65560, 2359297, 65560, 655362, 2424833, 2490369, 2555907, 1179651, 2686977, 2621441, 2359298, 3145729, 2555906, 3145729, 3211265, 135178, 135179, 655378, 655379, 655369, 655376, 3276801, 3276802, 655377, 1179653, 3342339, 135180, 135181, 655381, 131080, 131081, 655383, 655392, 131082, 655384, 655385, 2359299, 2359300, 3276804, 131090, 131091, 655393, 131083, 655397, 131084, 131085, 131092, 131087, 131086, 131088, 2, 656395, 459802, 459803, 3, 459817, 656396, 656398, 656397 };
   }
   
   public UniteGrayTipParam(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, long paramLong)
@@ -50,25 +51,31 @@ public class UniteGrayTipParam
     b();
   }
   
+  public static void a(UniteGrayTipParam.Callback paramCallback)
+  {
+    jdField_a_of_type_ComTencentMobileqqGraytipUniteGrayTipParam$Callback = paramCallback;
+  }
+  
   private void b()
   {
-    if (this.jdField_c_of_type_Int == -5020)
+    int i = this.jdField_c_of_type_Int;
+    if (i == -5020)
     {
       this.jdField_a_of_type_Boolean = false;
       return;
     }
-    if (this.jdField_c_of_type_Int == -5021)
+    if (i == -5021)
     {
       this.jdField_c_of_type_Boolean = false;
       return;
     }
-    if (this.jdField_c_of_type_Int == -5022)
+    if (i == -5022)
     {
       this.jdField_a_of_type_Boolean = false;
       this.jdField_b_of_type_Boolean = false;
       return;
     }
-    if (this.jdField_c_of_type_Int == -5023)
+    if (i == -5023)
     {
       this.jdField_a_of_type_Boolean = false;
       this.jdField_c_of_type_Boolean = false;
@@ -77,7 +84,7 @@ public class UniteGrayTipParam
     this.jdField_c_of_type_Int = -5040;
   }
   
-  public ArrayList<MessageForGrayTips.HighlightItem> a()
+  public ArrayList<GrayTipsMessageConstants.HighlightItem> a()
   {
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
@@ -102,160 +109,10 @@ public class UniteGrayTipParam
   
   public void a(int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    if (paramInt1 >= paramInt2)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e(UniteGrayTipUtil.jdField_a_of_type_JavaLangString, 2, new Object[] { "revoke msg UniteGrayTipParam addHightlightItem start >= end error,start=", Integer.valueOf(paramInt1), ",end=", Integer.valueOf(paramInt2) });
-      }
-      return;
-    }
-    Object localObject7 = null;
-    Object localObject5 = null;
-    Object localObject6 = null;
-    Object localObject3 = null;
-    int k = 0;
-    String str1 = null;
-    String str2 = null;
-    String str4 = "";
-    int j;
-    label79:
-    Object localObject2;
-    int i;
-    Object localObject1;
-    Object localObject4;
-    String str3;
-    label396:
-    long l;
-    if (paramBundle == null)
-    {
-      j = -1;
-      localObject2 = localObject6;
-      i = k;
-      localObject1 = localObject7;
-      localObject4 = localObject5;
-      str3 = str4;
-      switch (j)
-      {
-      default: 
-        str3 = str4;
-        localObject4 = localObject5;
-        localObject1 = localObject7;
-        i = k;
-        localObject2 = localObject6;
-      case 4: 
-      case 6: 
-      case 7: 
-      case 8: 
-      case 9: 
-      case 10: 
-      case 12: 
-      case 17: 
-      case 18: 
-      case 22: 
-      case 25: 
-      case 26: 
-      case 31: 
-      case 34: 
-      case 35: 
-      case 37: 
-      case 41: 
-      case 46: 
-      case 47: 
-      case 48: 
-      case 49: 
-      case 50: 
-      case 51: 
-      case 55: 
-      case 56: 
-      case 57: 
-      case 59: 
-      case 60: 
-      case 64: 
-        if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-        }
-        l = 0L;
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          break;
-        }
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        l = Long.parseLong((String)localObject2);
-        if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-          break label745;
-        }
-        paramBundle = "#FF4D94FF";
-        a(new MessageForGrayTips.HighlightItem(paramInt1, paramInt2, l, i, j, (String)localObject1, (String)localObject4, str1, str2, Color.parseColor(paramBundle), str3, 0));
-        return;
-      }
-      catch (NumberFormatException paramBundle) {}
-      j = paramBundle.getInt("key_action");
-      localObject3 = paramBundle.getString("textColor");
-      str1 = paramBundle.getString("image_resource");
-      str2 = paramBundle.getString("image_alt");
-      break label79;
-      localObject2 = paramBundle.getString("troop_mem_uin");
-      if (paramBundle.getBoolean("need_update_nick"))
-      {
-        i = 1;
-        localObject1 = localObject7;
-        localObject4 = localObject5;
-        str3 = str4;
-        break label396;
-      }
-      i = 0;
-      continue;
-      localObject1 = paramBundle.getString("key_action_DATA");
-      localObject4 = paramBundle.getString("key_a_action_DATA");
-      localObject2 = localObject6;
-      i = k;
-      str3 = str4;
-      break label396;
-      localObject2 = paramBundle.getString("troop_mem_uin");
-      i = k;
-      localObject1 = localObject7;
-      localObject4 = localObject5;
-      str3 = str4;
-      break label396;
-      localObject1 = paramBundle.getString("key_action_DATA");
-      localObject2 = localObject6;
-      i = k;
-      localObject4 = localObject5;
-      str3 = str4;
-      break label396;
-      localObject1 = paramBundle.getString("key_action_DATA");
-      localObject4 = paramBundle.getString("key_a_action_DATA");
-      localObject2 = paramBundle.getString("troop_mem_uin");
-      i = k;
-      str3 = str4;
-      break label396;
-      localObject1 = paramBundle.getString("key_action_DATA");
-      localObject2 = localObject6;
-      i = k;
-      localObject4 = localObject5;
-      str3 = str4;
-      break label396;
-      str3 = paramBundle.getString("remark");
-      localObject2 = localObject6;
-      i = k;
-      localObject1 = localObject7;
-      localObject4 = localObject5;
-      break label396;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e(UniteGrayTipUtil.jdField_a_of_type_JavaLangString, 2, "getHightlightMsgText ==>NumberFormatException");
-      return;
-      label745:
-      paramBundle = (Bundle)localObject3;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  public void a(MessageForGrayTips.HighlightItem paramHighlightItem)
+  public void a(GrayTipsMessageConstants.HighlightItem paramHighlightItem)
   {
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
@@ -266,28 +123,28 @@ public class UniteGrayTipParam
     }
   }
   
-  public void a(ArrayList<MessageForGrayTips.HighlightItem> paramArrayList)
+  public void a(ArrayList<GrayTipsMessageConstants.HighlightItem> paramArrayList)
   {
-    localObject = this.jdField_a_of_type_JavaLangObject;
+    Object localObject = this.jdField_a_of_type_JavaLangObject;
     if (paramArrayList != null) {}
-    for (;;)
+    try
     {
-      try
-      {
-        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-        this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-        return;
-      }
-      finally {}
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+      break label39;
       this.jdField_a_of_type_JavaUtilArrayList = null;
+      label39:
+      return;
     }
+    finally {}
   }
   
   public boolean a()
   {
-    boolean bool = MsgProxyUtils.d(this.jdField_c_of_type_Int);
+    boolean bool3 = jdField_a_of_type_ComTencentMobileqqGraytipUniteGrayTipParam$Callback.a(this.jdField_c_of_type_Int);
     int[] arrayOfInt = jdField_a_of_type_ArrayOfInt;
     int k = arrayOfInt.length;
+    boolean bool2 = false;
     int i = 0;
     int j = 0;
     while (i < k)
@@ -297,12 +154,20 @@ public class UniteGrayTipParam
       }
       i += 1;
     }
-    return (bool) && (j != 0);
+    boolean bool1 = bool2;
+    if (bool3)
+    {
+      bool1 = bool2;
+      if (j != 0) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.graytip.UniteGrayTipParam
  * JD-Core Version:    0.7.0.1
  */

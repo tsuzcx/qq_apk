@@ -26,14 +26,15 @@ public final class EnterRoomReply
   
   public static EnterRoomReply[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new EnterRoomReply[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new EnterRoomReply[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static EnterRoomReply parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -59,36 +60,42 @@ public final class EnterRoomReply
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    boolean bool = this.isBigRoom;
     int i = j;
-    if (this.isBigRoom) {
-      i = j + CodedOutputByteBufferNano.computeBoolSize(3, this.isBigRoom);
+    if (bool) {
+      i = j + CodedOutputByteBufferNano.computeBoolSize(3, bool);
     }
+    int k = this.useDispersion;
     j = i;
-    if (this.useDispersion != 0) {
-      j = i + CodedOutputByteBufferNano.computeUInt32Size(4, this.useDispersion);
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeUInt32Size(4, k);
     }
     i = j;
     if (!Arrays.equals(this.dispersionUrl, WireFormatNano.EMPTY_BYTES)) {
       i = j + CodedOutputByteBufferNano.computeBytesSize(5, this.dispersionUrl);
     }
+    Object localObject = this.roomInfo;
     j = i;
-    if (this.roomInfo != null) {
-      j = i + CodedOutputByteBufferNano.computeMessageSize(6, this.roomInfo);
+    if (localObject != null) {
+      j = i + CodedOutputByteBufferNano.computeMessageSize(6, (MessageNano)localObject);
     }
+    localObject = this.anchorInfo;
     i = j;
-    if (this.anchorInfo != null) {
-      i = j + CodedOutputByteBufferNano.computeMessageSize(7, this.anchorInfo);
+    if (localObject != null) {
+      i = j + CodedOutputByteBufferNano.computeMessageSize(7, (MessageNano)localObject);
     }
+    k = this.userRole;
     j = i;
-    if (this.userRole != 0) {
-      j = i + CodedOutputByteBufferNano.computeUInt32Size(8, this.userRole);
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeUInt32Size(8, k);
     }
+    localObject = this.sdkInfo;
     i = j;
-    if (this.sdkInfo != null) {
-      i = j + CodedOutputByteBufferNano.computeMessageSize(9, this.sdkInfo);
+    if (localObject != null) {
+      i = j + CodedOutputByteBufferNano.computeMessageSize(9, (MessageNano)localObject);
     }
     return i;
   }
@@ -98,75 +105,105 @@ public final class EnterRoomReply
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
+      if (i == 0) {
+        break;
+      }
+      if (i != 24)
       {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
+        if (i != 32)
+        {
+          if (i != 42)
+          {
+            if (i != 50)
+            {
+              if (i != 58)
+              {
+                if (i != 64)
+                {
+                  if (i != 74)
+                  {
+                    if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+                      return this;
+                    }
+                  }
+                  else
+                  {
+                    if (this.sdkInfo == null) {
+                      this.sdkInfo = new AVInfo();
+                    }
+                    paramCodedInputByteBufferNano.readMessage(this.sdkInfo);
+                  }
+                }
+                else {
+                  this.userRole = paramCodedInputByteBufferNano.readUInt32();
+                }
+              }
+              else
+              {
+                if (this.anchorInfo == null) {
+                  this.anchorInfo = new UserInfo();
+                }
+                paramCodedInputByteBufferNano.readMessage(this.anchorInfo);
+              }
+            }
+            else
+            {
+              if (this.roomInfo == null) {
+                this.roomInfo = new RoomInfo();
+              }
+              paramCodedInputByteBufferNano.readMessage(this.roomInfo);
+            }
+          }
+          else {
+            this.dispersionUrl = paramCodedInputByteBufferNano.readBytes();
+          }
         }
-      case 0: 
-        return this;
-      case 24: 
+        else {
+          this.useDispersion = paramCodedInputByteBufferNano.readUInt32();
+        }
+      }
+      else {
         this.isBigRoom = paramCodedInputByteBufferNano.readBool();
-        break;
-      case 32: 
-        this.useDispersion = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 42: 
-        this.dispersionUrl = paramCodedInputByteBufferNano.readBytes();
-        break;
-      case 50: 
-        if (this.roomInfo == null) {
-          this.roomInfo = new RoomInfo();
-        }
-        paramCodedInputByteBufferNano.readMessage(this.roomInfo);
-        break;
-      case 58: 
-        if (this.anchorInfo == null) {
-          this.anchorInfo = new UserInfo();
-        }
-        paramCodedInputByteBufferNano.readMessage(this.anchorInfo);
-        break;
-      case 64: 
-        this.userRole = paramCodedInputByteBufferNano.readUInt32();
-        break;
       }
-      if (this.sdkInfo == null) {
-        this.sdkInfo = new AVInfo();
-      }
-      paramCodedInputByteBufferNano.readMessage(this.sdkInfo);
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.isBigRoom) {
-      paramCodedOutputByteBufferNano.writeBool(3, this.isBigRoom);
+    boolean bool = this.isBigRoom;
+    if (bool) {
+      paramCodedOutputByteBufferNano.writeBool(3, bool);
     }
-    if (this.useDispersion != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(4, this.useDispersion);
+    int i = this.useDispersion;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(4, i);
     }
     if (!Arrays.equals(this.dispersionUrl, WireFormatNano.EMPTY_BYTES)) {
       paramCodedOutputByteBufferNano.writeBytes(5, this.dispersionUrl);
     }
-    if (this.roomInfo != null) {
-      paramCodedOutputByteBufferNano.writeMessage(6, this.roomInfo);
+    Object localObject = this.roomInfo;
+    if (localObject != null) {
+      paramCodedOutputByteBufferNano.writeMessage(6, (MessageNano)localObject);
     }
-    if (this.anchorInfo != null) {
-      paramCodedOutputByteBufferNano.writeMessage(7, this.anchorInfo);
+    localObject = this.anchorInfo;
+    if (localObject != null) {
+      paramCodedOutputByteBufferNano.writeMessage(7, (MessageNano)localObject);
     }
-    if (this.userRole != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(8, this.userRole);
+    i = this.userRole;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(8, i);
     }
-    if (this.sdkInfo != null) {
-      paramCodedOutputByteBufferNano.writeMessage(9, this.sdkInfo);
+    localObject = this.sdkInfo;
+    if (localObject != null) {
+      paramCodedOutputByteBufferNano.writeMessage(9, (MessageNano)localObject);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.roomAccess.roomAccess.nano.EnterRoomReply
  * JD-Core Version:    0.7.0.1
  */

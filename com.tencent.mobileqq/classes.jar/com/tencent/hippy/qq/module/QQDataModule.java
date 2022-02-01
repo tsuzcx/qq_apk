@@ -3,16 +3,22 @@ package com.tencent.hippy.qq.module;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.api.IPublicAccountObserver;
+import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
 import com.tencent.biz.webviewplugin.SSOWebviewPlugin;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.hippy.qq.api.IHippyAccessHelper;
 import com.tencent.hippy.qq.app.HippyQQEngine;
 import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.QBaseFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.jsp.WebSSOAgentServlet;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
 import com.tencent.mtt.hippy.HippyEngineContext;
@@ -50,73 +56,67 @@ public class QQDataModule
       return;
     }
     HippyQQEngine localHippyQQEngine = HippyQQEngine.getEngineInstance(this.mContext.getEngineId());
-    if (localHippyQQEngine == null) {}
-    for (int i = 0;; i = localHippyQQEngine.getModuleVersion())
-    {
-      paramPromise.resolve(Integer.valueOf(i));
-      return;
+    int i;
+    if (localHippyQQEngine == null) {
+      i = 0;
+    } else {
+      i = localHippyQQEngine.getModuleVersion();
     }
+    paramPromise.resolve(Integer.valueOf(i));
   }
   
   protected void onUniAgent(String paramString, boolean paramBoolean, Bundle paramBundle, Promise paramPromise)
   {
-    if ((paramPromise == null) || (paramBundle == null)) {
-      return;
-    }
-    if (!paramBoolean)
+    if (paramPromise != null)
     {
-      int i = paramBundle.getInt("extra_result_code");
-      if (i == 1001)
-      {
-        uniAgentCallBack(paramPromise, 201, 0, HardCodeUtil.a(2131714215));
+      if (paramBundle == null) {
         return;
       }
-      if ((i == 1002) || (i == 1013))
+      if (!paramBoolean)
       {
-        uniAgentCallBack(paramPromise, 202, 0, HardCodeUtil.a(2131714221));
-        return;
-      }
-      uniAgentCallBack(paramPromise, 255, 0, HardCodeUtil.a(2131714220));
-      return;
-    }
-    try
-    {
-      paramBundle = paramBundle.getByteArray("extra_data");
-      if (paramBundle == null)
-      {
-        uniAgentCallBack(paramPromise, 255, 0, "SSO返回数据包为空");
+        int i = paramBundle.getInt("extra_result_code");
+        if (i == 1001)
+        {
+          uniAgentCallBack(paramPromise, 201, 0, HardCodeUtil.a(2131714144));
+          return;
+        }
+        if ((i != 1002) && (i != 1013))
+        {
+          uniAgentCallBack(paramPromise, 255, 0, HardCodeUtil.a(2131714149));
+          return;
+        }
+        uniAgentCallBack(paramPromise, 202, 0, HardCodeUtil.a(2131714150));
         return;
       }
     }
-    catch (Throwable paramString)
+    for (;;)
     {
-      QLog.e("QQDataModule", 1, "onUniAgent, onReceive, Exception: " + paramString);
-      uniAgentCallBack(paramPromise, 255, 0, "parse error");
-      return;
-    }
-    Object localObject = new WebSSOAgent.UniSsoServerRsp();
-    ((WebSSOAgent.UniSsoServerRsp)localObject).mergeFrom(paramBundle);
-    long l1;
-    if ((((WebSSOAgent.UniSsoServerRsp)localObject).comm.has()) && (((WebSSOAgent.UniSsoServerRsp)localObject).comm.proctime.has()))
-    {
-      l1 = ((WebSSOAgent.UniSsoServerRsp)localObject).comm.proctime.get();
-      if (!((WebSSOAgent.UniSsoServerRsp)localObject).ret.has()) {
-        break label428;
-      }
-    }
-    label414:
-    label428:
-    for (long l2 = ((WebSSOAgent.UniSsoServerRsp)localObject).ret.get();; l2 = 0L)
-    {
-      if (((WebSSOAgent.UniSsoServerRsp)localObject).errmsg.has())
+      try
       {
+        paramBundle = paramBundle.getByteArray("extra_data");
+        if (paramBundle == null)
+        {
+          uniAgentCallBack(paramPromise, 255, 0, "SSO返回数据包为空");
+          return;
+        }
+        localObject = new WebSSOAgent.UniSsoServerRsp();
+        ((WebSSOAgent.UniSsoServerRsp)localObject).mergeFrom(paramBundle);
+        if ((!((WebSSOAgent.UniSsoServerRsp)localObject).comm.has()) || (!((WebSSOAgent.UniSsoServerRsp)localObject).comm.proctime.has())) {
+          break label445;
+        }
+        l1 = ((WebSSOAgent.UniSsoServerRsp)localObject).comm.proctime.get();
+        if (!((WebSSOAgent.UniSsoServerRsp)localObject).ret.has()) {
+          break label453;
+        }
+        l2 = ((WebSSOAgent.UniSsoServerRsp)localObject).ret.get();
+        if (!((WebSSOAgent.UniSsoServerRsp)localObject).errmsg.has()) {
+          break label459;
+        }
         paramBundle = ((WebSSOAgent.UniSsoServerRsp)localObject).errmsg.get();
         if (!((WebSSOAgent.UniSsoServerRsp)localObject).rspdata.has()) {
-          break label414;
+          break label465;
         }
-      }
-      for (localObject = ((WebSSOAgent.UniSsoServerRsp)localObject).rspdata.get();; localObject = null)
-      {
+        localObject = ((WebSSOAgent.UniSsoServerRsp)localObject).rspdata.get();
         JSONObject localJSONObject1 = SSOWebviewPlugin.a(l1);
         JSONObject localJSONObject2 = new JSONObject();
         localJSONObject2.put("businessRet", l2);
@@ -125,17 +125,96 @@ public class QQDataModule
         localJSONObject2.put("ssoRet", 0);
         localJSONObject2.put("speedPoint", localJSONObject1);
         paramBundle = localJSONObject2.toString();
-        if (QLog.isColorLevel()) {
-          QLog.d("QQDataModule", 2, "uniAgent callback svrCostTime:" + l1 + ", Json string=" + paramBundle);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("uniAgent callback svrCostTime:");
+          ((StringBuilder)localObject).append(l1);
+          ((StringBuilder)localObject).append(", Json string=");
+          ((StringBuilder)localObject).append(paramBundle);
+          QLog.d("QQDataModule", 2, ((StringBuilder)localObject).toString());
         }
         paramPromise.resolve(paramBundle);
         SSOWebviewPlugin.a(getAppInterface(), paramString, "ssoHippy", localJSONObject2, localJSONObject1);
         return;
-        paramBundle = "SSO发送成功";
-        break;
       }
-      l1 = -1L;
-      break;
+      catch (Throwable paramString)
+      {
+        paramBundle = new StringBuilder();
+        paramBundle.append("onUniAgent, onReceive, Exception: ");
+        paramBundle.append(paramString);
+        QLog.e("QQDataModule", 1, paramBundle.toString());
+        uniAgentCallBack(paramPromise, 255, 0, "parse error");
+      }
+      return;
+      label445:
+      long l1 = -1L;
+      continue;
+      label453:
+      long l2 = 0L;
+      continue;
+      label459:
+      paramBundle = "SSO发送成功";
+      continue;
+      label465:
+      Object localObject = null;
+    }
+  }
+  
+  @HippyMethod(name="publicFollow")
+  public void publicFollow(HippyMap paramHippyMap, Promise paramPromise)
+  {
+    if (paramHippyMap == null)
+    {
+      paramPromise.reject("params is null");
+      return;
+    }
+    if (getAppInterface() == null)
+    {
+      paramPromise.reject("appInterface is null");
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        int i = paramHippyMap.getInt("follow");
+        bool = true;
+        if (i != 1) {
+          break label241;
+        }
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramHippyMap.getLong("uin"));
+        ((StringBuilder)localObject).append("");
+        paramHippyMap = ((StringBuilder)localObject).toString();
+        localObject = new Bundle();
+        ((Bundle)localObject).putBoolean("isFollow", bool);
+        ((Bundle)localObject).putString("uin", paramHippyMap);
+        localObject = (IPublicAccountObserver)QRoute.api(IPublicAccountObserver.class);
+        ((IPublicAccountObserver)localObject).setOnCallback(new QQDataModule.2(this, paramPromise));
+        paramPromise = BaseApplicationImpl.getApplication().getRuntime();
+        if ((paramPromise instanceof QQAppInterface))
+        {
+          paramPromise = (QQAppInterface)paramPromise;
+          if (bool)
+          {
+            ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).followUin(paramPromise, BaseApplicationImpl.getApplication(), paramHippyMap, (IPublicAccountObserver)localObject, false, 0, true);
+            return;
+          }
+          ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).unfollowUin(paramPromise, BaseApplicationImpl.getApplication(), paramHippyMap, false, (IPublicAccountObserver)localObject, true);
+          return;
+        }
+      }
+      catch (Throwable paramHippyMap)
+      {
+        paramPromise = new StringBuilder();
+        paramPromise.append("uniAgent e:");
+        paramPromise.append(paramHippyMap);
+        QLog.d("QQDataModule", 2, paramPromise.toString());
+      }
+      return;
+      label241:
+      boolean bool = false;
     }
   }
   
@@ -144,7 +223,7 @@ public class QQDataModule
     Object localObject = new WebSSOAgent.UniSsoServerReqComm();
     ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
     ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-    ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.5.5");
+    ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.7.0");
     WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
     localUniSsoServerReq.comm.set((MessageMicro)localObject);
     localUniSsoServerReq.reqdata.set(paramString2);
@@ -154,8 +233,14 @@ public class QQDataModule
     ((NewIntent)localObject).putExtra("extra_callbackid", "0");
     ((NewIntent)localObject).putExtra("extra_timeout", paramLong);
     ((NewIntent)localObject).setObserver(paramBusinessObserver);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQDataModule", 2, "uniAgent, req, cmd=" + paramString1 + ", reqData=" + paramString2);
+    if (QLog.isColorLevel())
+    {
+      paramBusinessObserver = new StringBuilder();
+      paramBusinessObserver.append("uniAgent, req, cmd=");
+      paramBusinessObserver.append(paramString1);
+      paramBusinessObserver.append(", reqData=");
+      paramBusinessObserver.append(paramString2);
+      QLog.d("QQDataModule", 2, paramBusinessObserver.toString());
     }
     paramAppInterface.startServlet((NewIntent)localObject);
   }
@@ -163,75 +248,91 @@ public class QQDataModule
   @HippyMethod(name="uniAgent")
   public void uniAgent(HippyMap paramHippyMap, Promise paramPromise)
   {
-    if (paramHippyMap == null) {}
-    AppInterface localAppInterface;
-    do
-    {
+    if (paramHippyMap == null) {
       return;
-      localAppInterface = getAppInterface();
-    } while (localAppInterface == null);
-    String str;
-    long l;
+    }
+    AppInterface localAppInterface = getAppInterface();
+    if (localAppInterface == null) {
+      return;
+    }
     for (;;)
     {
       try
       {
-        str = paramHippyMap.getString("cmd");
+        String str = paramHippyMap.getString("cmd");
         if (paramHippyMap.containsKey("timeout"))
         {
           l = paramHippyMap.getLong("timeout");
-          if (QLog.isColorLevel()) {
-            QLog.d("QQDataModule", 2, "uniAgent, req, cmd=" + str + ",timeout = " + l);
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("uniAgent, req, cmd=");
+            localStringBuilder.append(str);
+            localStringBuilder.append(",timeout = ");
+            localStringBuilder.append(l);
+            QLog.d("QQDataModule", 2, localStringBuilder.toString());
           }
-          if (!TextUtils.isEmpty(str)) {
-            break;
+          if (TextUtils.isEmpty(str))
+          {
+            uniAgentCallBack(paramPromise, 255, 0, HardCodeUtil.a(2131714146));
+            return;
           }
-          uniAgentCallBack(paramPromise, 255, 0, HardCodeUtil.a(2131714217));
+          if (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getApplication()))
+          {
+            uniAgentCallBack(paramPromise, 103, 0, "MSF未连接");
+            return;
+          }
+          paramHippyMap = paramHippyMap.toJSONObject();
+          SSOWebviewPlugin.a(paramHippyMap);
+          paramHippyMap.put("option", SSOWebviewPlugin.a());
+          paramPromise = new QQDataModule.1(this, str, paramPromise);
+          sendUniAgentRequest(localAppInterface, str, l, paramHippyMap.toString(), paramPromise);
           return;
         }
       }
       catch (Throwable paramHippyMap)
       {
-        QLog.d("QQDataModule", 2, "uniAgent e:" + paramHippyMap);
+        paramPromise = new StringBuilder();
+        paramPromise.append("uniAgent e:");
+        paramPromise.append(paramHippyMap);
+        QLog.d("QQDataModule", 2, paramPromise.toString());
         return;
       }
-      l = -1L;
+      long l = -1L;
     }
-    if (!NetworkUtil.g(BaseApplicationImpl.getApplication()))
-    {
-      uniAgentCallBack(paramPromise, 103, 0, "MSF未连接");
-      return;
-    }
-    paramHippyMap = paramHippyMap.toJSONObject();
-    SSOWebviewPlugin.a(paramHippyMap);
-    paramHippyMap.put("option", SSOWebviewPlugin.a());
-    paramPromise = new QQDataModule.1(this, str, paramPromise);
-    sendUniAgentRequest(localAppInterface, str, l, paramHippyMap.toString(), paramPromise);
   }
   
   protected void uniAgentCallBack(Promise paramPromise, int paramInt1, int paramInt2, String paramString)
   {
-    if (paramPromise == null) {}
-    for (;;)
-    {
+    if (paramPromise == null) {
       return;
-      try
+    }
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("ssoRet", paramInt1);
+      localJSONObject.put("businessRet", paramInt2);
+      localJSONObject.put("msg", paramString);
+      paramPromise.resolve(localJSONObject.toString());
+      if (QLog.isColorLevel())
       {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("ssoRet", paramInt1);
-        localJSONObject.put("businessRet", paramInt2);
-        localJSONObject.put("msg", paramString);
-        paramPromise.resolve(localJSONObject.toString());
-        if (QLog.isColorLevel())
-        {
-          QLog.d("QQDataModule", 2, "uniAgentCallBack ssoRet:" + paramInt1 + " businessRet:" + paramInt2 + " msg:" + paramString);
-          return;
-        }
+        paramPromise = new StringBuilder();
+        paramPromise.append("uniAgentCallBack ssoRet:");
+        paramPromise.append(paramInt1);
+        paramPromise.append(" businessRet:");
+        paramPromise.append(paramInt2);
+        paramPromise.append(" msg:");
+        paramPromise.append(paramString);
+        QLog.d("QQDataModule", 2, paramPromise.toString());
+        return;
       }
-      catch (Throwable paramPromise)
-      {
-        QLog.e("QQDataModule", 1, "uniAgentCallBack e:" + paramPromise);
-      }
+    }
+    catch (Throwable paramPromise)
+    {
+      paramString = new StringBuilder();
+      paramString.append("uniAgentCallBack e:");
+      paramString.append(paramPromise);
+      QLog.e("QQDataModule", 1, paramString.toString());
     }
   }
   
@@ -241,35 +342,76 @@ public class QQDataModule
     if (paramPromise == null) {
       return;
     }
-    Object localObject2 = getAppInterface();
-    Object localObject1 = HippyQQEngine.getEngineInstance(this.mContext.getEngineId());
-    if ((localObject2 != null) && (((AppInterface)localObject2).isLogin()) && (localObject1 != null) && (((HippyQQEngine)localObject1).getModuleName() != null) && (((HippyQQEngine)localObject1).getModuleName().startsWith("QQGameCenter")))
+    Object localObject1;
+    if ((getFragment() != null) && (getFragment().getArguments() != null)) {
+      localObject1 = getFragment().getArguments().getBundle("params");
+    } else {
+      localObject1 = null;
+    }
+    Object localObject2;
+    if (localObject1 != null) {
+      localObject2 = ((Bundle)localObject1).getString("domain");
+    } else {
+      localObject2 = null;
+    }
+    Object localObject3;
+    if (!TextUtils.isEmpty((CharSequence)localObject2))
     {
-      localObject1 = ((AppInterface)localObject2).getCurrentAccountUin();
-      String str1 = ((AppInterface)localObject2).getCurrentNickname();
-      Object localObject3 = (TicketManager)((AppInterface)localObject2).getManager(2);
-      String str2 = ((TicketManager)localObject3).getSkey((String)localObject1);
-      localObject3 = ((TicketManager)localObject3).getPskey((String)localObject1, "gamecenter.qq.com");
-      localObject2 = SwiftBrowserCookieMonster.b((AppRuntime)localObject2, "gamecenter.qq.com");
+      if (((IHippyAccessHelper)QRoute.api(IHippyAccessHelper.class)).checkDomainPermission((String)localObject2)) {
+        localObject1 = localObject2;
+      } else {
+        localObject1 = null;
+      }
+    }
+    else
+    {
+      localObject3 = HippyQQEngine.getEngineInstance(this.mContext.getEngineId());
+      localObject1 = localObject2;
+      if (localObject3 != null)
+      {
+        localObject1 = localObject2;
+        if (((HippyQQEngine)localObject3).getModuleName() != null)
+        {
+          localObject1 = localObject2;
+          if (((HippyQQEngine)localObject3).getModuleName().startsWith("QQGameCenter")) {
+            localObject1 = "gamecenter.qq.com";
+          }
+        }
+      }
+    }
+    Object localObject5 = getAppInterface();
+    if ((localObject5 != null) && (((AppInterface)localObject5).isLogin()) && (!TextUtils.isEmpty((CharSequence)localObject1))) {
       try
       {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("uin", localObject1);
-        localJSONObject.put("nick", str1);
-        localJSONObject.put("skey", str2);
-        localJSONObject.put("p_skey", localObject3);
-        localJSONObject.put("pt4_token", localObject2);
-        paramPromise.resolve(localJSONObject.toString());
+        localObject2 = ((AppInterface)localObject5).getCurrentAccountUin();
+        localObject3 = ((AppInterface)localObject5).getCurrentNickname();
+        Object localObject4 = (TicketManager)((AppInterface)localObject5).getManager(2);
+        String str = ((TicketManager)localObject4).getSkey((String)localObject2);
+        localObject4 = ((TicketManager)localObject4).getPskey((String)localObject2, (String)localObject1);
+        localObject1 = SwiftBrowserCookieMonster.b((AppRuntime)localObject5, (String)localObject1);
+        localObject5 = new JSONObject();
+        ((JSONObject)localObject5).put("uin", localObject2);
+        ((JSONObject)localObject5).put("nick", localObject3);
+        ((JSONObject)localObject5).put("skey", str);
+        ((JSONObject)localObject5).put("p_skey", localObject4);
+        ((JSONObject)localObject5).put("pt4_token", localObject1);
+        paramPromise.resolve(((JSONObject)localObject5).toString());
         return;
       }
-      catch (Throwable localThrowable) {}
+      catch (Throwable localThrowable)
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("userInfo error:");
+        ((StringBuilder)localObject2).append(localThrowable);
+        QLog.e("QQDataModule", 1, ((StringBuilder)localObject2).toString());
+      }
     }
     paramPromise.resolve("{}");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQDataModule
  * JD-Core Version:    0.7.0.1
  */

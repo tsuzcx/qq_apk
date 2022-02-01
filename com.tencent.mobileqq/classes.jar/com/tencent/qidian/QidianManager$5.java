@@ -15,36 +15,48 @@ class QidianManager$5
   
   public void onLocationFinish(int paramInt, SosoLbsInfo paramSosoLbsInfo)
   {
-    double d2 = 0.0D;
-    if (QLog.isColorLevel()) {
-      QLog.d("QidianManager", 2, "onLocationFinish(): BEGIN errCode=" + paramInt);
-    }
-    String str;
-    double d1;
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null)) {
-      if (paramSosoLbsInfo.mLocation.address != null)
-      {
-        str = paramSosoLbsInfo.mLocation.address;
-        if (QLog.isColorLevel()) {
-          QLog.d("QidianManager", 2, "onLocationFinish() latitude=" + paramSosoLbsInfo.mLocation.mLat02 + ", longitude=" + paramSosoLbsInfo.mLocation.mLon02 + ", address=" + str);
-        }
-        d1 = paramSosoLbsInfo.mLocation.mLat02;
-        d2 = paramSosoLbsInfo.mLocation.mLon02;
-      }
-    }
-    for (;;)
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_ComTencentQidianQidianManager.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true, d1, d2, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, this.c, this.d, this.e);
-      return;
-      str = "";
-      break;
-      d1 = 0.0D;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onLocationFinish(): BEGIN errCode=");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("QidianManager", 2, ((StringBuilder)localObject).toString());
     }
+    double d1;
+    double d2;
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
+    {
+      if (paramSosoLbsInfo.mLocation.address != null) {
+        localObject = paramSosoLbsInfo.mLocation.address;
+      } else {
+        localObject = "";
+      }
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onLocationFinish() latitude=");
+        localStringBuilder.append(paramSosoLbsInfo.mLocation.mLat02);
+        localStringBuilder.append(", longitude=");
+        localStringBuilder.append(paramSosoLbsInfo.mLocation.mLon02);
+        localStringBuilder.append(", address=");
+        localStringBuilder.append((String)localObject);
+        QLog.d("QidianManager", 2, localStringBuilder.toString());
+      }
+      d1 = paramSosoLbsInfo.mLocation.mLat02;
+      d2 = paramSosoLbsInfo.mLocation.mLon02;
+    }
+    else
+    {
+      d1 = 0.0D;
+      d2 = d1;
+    }
+    this.jdField_a_of_type_ComTencentQidianQidianManager.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true, d1, d2, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, this.c, this.d, this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qidian.QidianManager.5
  * JD-Core Version:    0.7.0.1
  */

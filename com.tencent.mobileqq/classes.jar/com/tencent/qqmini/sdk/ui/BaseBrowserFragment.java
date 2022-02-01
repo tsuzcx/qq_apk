@@ -19,7 +19,6 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.TextView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.qqmini.sdk.R.id;
 import com.tencent.qqmini.sdk.R.layout;
 import com.tencent.qqmini.sdk.annotation.MiniKeep;
@@ -156,8 +155,9 @@ public class BaseBrowserFragment
     this.mCoreDumpData.put("errorCode", Integer.valueOf(paramInt));
     this.mCoreDumpData.put("errorMsg", paramString1);
     this.mCoreDumpData.put("requestUrl", paramString2);
-    if ((this.mBrowerEngin != null) && (paramInt >= 400)) {
-      this.mBrowerEngin.handleEvent(paramString3, 1L, this.mCoreDumpData);
+    paramString1 = this.mBrowerEngin;
+    if ((paramString1 != null) && (paramInt >= 400)) {
+      paramString1.handleEvent(paramString3, 1L, this.mCoreDumpData);
     }
   }
   
@@ -177,57 +177,47 @@ public class BaseBrowserFragment
   @Nullable
   public View onCreateView(@NonNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle)
   {
-    paramBundle = null;
     paramLayoutInflater = paramLayoutInflater.inflate(R.layout.mini_sdk_fragment_browser, paramViewGroup, false);
     if (paramLayoutInflater == null)
     {
       getActivity().finish();
-      paramLayoutInflater = paramBundle;
+      return null;
     }
-    for (;;)
+    if (DisplayUtil.isImmersiveSupported) {
+      paramLayoutInflater.setFitsSystemWindows(true);
+    }
+    paramViewGroup = getActivity().getIntent();
+    if (paramViewGroup == null)
     {
-      V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
-      return paramLayoutInflater;
-      if (DisplayUtil.isImmersiveSupported) {
-        paramLayoutInflater.setFitsSystemWindows(true);
-      }
-      paramViewGroup = getActivity().getIntent();
-      if (paramViewGroup == null)
-      {
-        getActivity().finish();
-        paramLayoutInflater = paramBundle;
-      }
-      else
-      {
-        String str = paramViewGroup.getStringExtra("url");
-        if (StringUtil.isEmpty(str))
-        {
-          getActivity().finish();
-          paramLayoutInflater = paramBundle;
-        }
-        else
-        {
-          initView(paramViewGroup, paramLayoutInflater);
-          initCookie(paramViewGroup, str);
-          this.mWebView.loadUrl(str);
-        }
-      }
+      getActivity().finish();
+      return null;
     }
+    paramBundle = paramViewGroup.getStringExtra("url");
+    if (StringUtil.isEmpty(paramBundle))
+    {
+      getActivity().finish();
+      return null;
+    }
+    initView(paramViewGroup, paramLayoutInflater);
+    initCookie(paramViewGroup, paramBundle);
+    this.mWebView.loadUrl(paramBundle);
+    return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.mBrowerEngin != null)
+    BrowserPluginEngine localBrowserPluginEngine = this.mBrowerEngin;
+    if (localBrowserPluginEngine != null)
     {
-      this.mBrowerEngin.onDestroy();
+      localBrowserPluginEngine.onDestroy();
       this.mBrowerEngin = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.BaseBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

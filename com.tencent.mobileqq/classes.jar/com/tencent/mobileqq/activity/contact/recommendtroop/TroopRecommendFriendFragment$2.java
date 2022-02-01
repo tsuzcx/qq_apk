@@ -3,8 +3,9 @@ package com.tencent.mobileqq.activity.contact.recommendtroop;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.contact.recommendtroop.base.CommonAdapter;
-import com.tencent.mobileqq.activity.contact.recommendtroop.base.ViewHolder;
+import com.tencent.mobileqq.troop.adapter.CommonAdapter;
+import com.tencent.mobileqq.troop.adapter.base.ViewHolder;
+import com.tencent.mobileqq.troop.recommend.data.RecommendMember;
 
 class TroopRecommendFriendFragment$2
   extends CommonAdapter<RecommendMember>
@@ -14,7 +15,7 @@ class TroopRecommendFriendFragment$2
     super(paramContext, paramInt);
   }
   
-  public ViewHolder a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
+  protected ViewHolder a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
   {
     return new MemberViewHolder(paramContext, LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false));
   }
@@ -26,7 +27,7 @@ class TroopRecommendFriendFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.recommendtroop.TroopRecommendFriendFragment.2
  * JD-Core Version:    0.7.0.1
  */

@@ -12,44 +12,61 @@ class UploadSession$9
   
   public void run()
   {
-    int i;
     if (UploadSession.access$1300(this.this$0) != 0L)
     {
       long l = System.currentTimeMillis() - UploadSession.access$1300(this.this$0);
-      if (l < this.val$responseTimeout)
-      {
+      int i;
+      if (l < this.val$responseTimeout) {
         i = 1;
-        int j = (int)(this.val$responseTimeout - l);
-        if (i == 0) {
-          break label69;
-        }
-        UploadSession.access$1200(this.this$0).postDelayed(this, j);
+      } else {
+        i = 0;
       }
-    }
-    label69:
-    do
-    {
-      return;
-      i = 0;
-      break;
-      SparseArray localSparseArray = UploadSession.access$1100(this.this$0);
-      UploadSession.RequestWrapper localRequestWrapper = (UploadSession.RequestWrapper)localSparseArray.get(this.val$requestSequence);
-      if ((localRequestWrapper == null) || (localRequestWrapper.runnable != this))
+      int j = (int)(this.val$responseTimeout - l);
+      if (i != 0)
       {
-        UploadLog.w("UploadSession", "execute timeout runnable has been removed. reqId=" + this.val$requestSequence + " sid=" + UploadSession.access$100(this.this$0));
+        UploadSession.access$1200(this.this$0).postDelayed(this, j);
         return;
       }
-      UploadLog.w("UploadSession", "ResponseTime! actionId=" + localRequestWrapper.request.getTaskId() + " reqId=" + this.val$requestSequence + " cmd=" + localRequestWrapper.request.getCmdId() + " sid=" + UploadSession.access$100(this.this$0) + " currState=" + UploadSession.access$200(this.this$0).toString());
-      localSparseArray.remove(this.val$requestSequence);
+    }
+    Object localObject = UploadSession.access$1100(this.this$0);
+    UploadSession.RequestWrapper localRequestWrapper = (UploadSession.RequestWrapper)((SparseArray)localObject).get(this.val$requestSequence);
+    if ((localRequestWrapper != null) && (localRequestWrapper.runnable == this))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ResponseTime! actionId=");
+      localStringBuilder.append(localRequestWrapper.request.getTaskId());
+      localStringBuilder.append(" reqId=");
+      localStringBuilder.append(this.val$requestSequence);
+      localStringBuilder.append(" cmd=");
+      localStringBuilder.append(localRequestWrapper.request.getCmdId());
+      localStringBuilder.append(" sid=");
+      localStringBuilder.append(UploadSession.access$100(this.this$0));
+      localStringBuilder.append(" currState=");
+      localStringBuilder.append(UploadSession.access$200(this.this$0).toString());
+      UploadLog.w("UploadSession", localStringBuilder.toString());
+      ((SparseArray)localObject).remove(this.val$requestSequence);
       UploadSession.access$1200(this.this$0).removeCallbacks(localRequestWrapper.runnable);
       localRequestWrapper.runnable = null;
-    } while ((UploadSession.access$200(this.this$0) != IUploadSession.SessionState.ESTABLISHED) || (this.val$request == null) || (this.val$request.getListener() == null));
-    this.val$request.getListener().onRequestTimeout(this.val$request, this.this$0);
+      if (UploadSession.access$200(this.this$0) == IUploadSession.SessionState.ESTABLISHED)
+      {
+        localObject = this.val$request;
+        if ((localObject != null) && (((IActionRequest)localObject).getListener() != null)) {
+          this.val$request.getListener().onRequestTimeout(this.val$request, this.this$0);
+        }
+      }
+      return;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("execute timeout runnable has been removed. reqId=");
+    ((StringBuilder)localObject).append(this.val$requestSequence);
+    ((StringBuilder)localObject).append(" sid=");
+    ((StringBuilder)localObject).append(UploadSession.access$100(this.this$0));
+    UploadLog.w("UploadSession", ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.network.session.UploadSession.9
  * JD-Core Version:    0.7.0.1
  */

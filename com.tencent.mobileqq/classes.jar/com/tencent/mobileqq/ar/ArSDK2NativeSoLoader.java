@@ -31,97 +31,153 @@ public class ArSDK2NativeSoLoader
   
   public static int a(String paramString1, String paramString2)
   {
-    int i = -5;
-    for (;;)
+    try
     {
-      try
-      {
-        QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. soResFilename = " + paramString1 + ", soResMd5FromConfig = " + paramString2);
-        ArNativeSoLoaderBase.a("arsdk2", a(), "arsdk2", paramString2);
-        try
-        {
-          ArConfigUtils.a(paramString1, ArNativeSoLoaderBase.a("arsdk2", a(), ArNativeSoLoaderBase.b("arsdk2", a(), "arsdk2")));
-          paramString2 = ArNativeSoLoaderBase.a("arsdk2", a(), ArNativeSoLoaderBase.b("arsdk2", a(), "arsdk2")) + File.separator + "md5_config.xml";
-          localObject = new File(paramString2);
-          if (!((File)localObject).exists()) {
-            break label654;
-          }
-          new HashMap();
-        }
-        catch (IOException paramString2)
-        {
-          Object localObject;
-          File localFile;
-          String str;
-          i = -6;
-          FileUtils.a(ArNativeSoLoaderBase.a("arsdk2", a(), ArNativeSoLoaderBase.b("arsdk2", a(), "arsdk2")), false);
-          paramString2 = new File(paramString1);
-          if (paramString2.exists()) {
-            paramString2.delete();
-          }
-          QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. unzip failed. result = " + -6 + ", soResFilename = " + paramString1);
-          continue;
-        }
-      }
-      finally {}
-      try
-      {
-        paramString2 = a(FileUtils.b((File)localObject));
-        if (paramString2.size() <= 0) {
-          break label624;
-        }
-        paramString2 = paramString2.entrySet().iterator();
-        if (!paramString2.hasNext()) {
-          break label695;
-        }
-        localObject = (Map.Entry)paramString2.next();
-        paramString1 = "";
-        if (((String)((Map.Entry)localObject).getKey()).equalsIgnoreCase("libAlphaAR"))
-        {
-          paramString1 = ArNativeSoLoaderBase.a("arsdk2", a(), ArNativeSoLoaderBase.b("arsdk2", a(), "arsdk2")) + File.separator + (String)((Map.Entry)localObject).getKey() + ".so";
-          ArNativeSoLoaderBase.a("arsdk2", a(), "libAlphaAR", (String)((Map.Entry)localObject).getValue());
-        }
-        localFile = new File(paramString1);
-        QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. soFilename = " + paramString1);
-        if (!localFile.exists()) {
-          break label583;
-        }
-        str = PortalUtils.a(paramString1);
-        localObject = (String)((Map.Entry)localObject).getValue();
-        if (((String)localObject).equalsIgnoreCase(str)) {
-          continue;
-        }
-        localFile.delete();
-        QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. check md5 failed. result = " + -3 + ", filename = " + paramString1 + ", md5FromCalc = " + str + ", md5FromConfig = " + (String)localObject);
-        i = -3;
-      }
-      catch (IOException paramString2)
-      {
-        QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. parse xml failed. result = " + -5 + ", soResFilename = " + paramString1);
-        continue;
-      }
-      catch (OutOfMemoryError paramString2)
-      {
-        QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. parse xml failed. result = " + -5 + ", soResFilename = " + paramString1);
-        continue;
-        QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. so file not exist. result = " + -2 + ", filename = " + paramString1);
-        i = -2;
-        continue;
-        i = -1;
-        QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. sSoMd5ListFromConfig.size() == 0. result = " + -1);
-        continue;
-      }
-      return i;
-      label583:
-      label624:
-      QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. so file not exist. result = " + -2 + ", configFilename = " + paramString2);
-      label654:
-      i = -2;
-      continue;
-      label695:
-      QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. result = " + 0);
-      i = 0;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("doOnDownloadSuccess. soResFilename = ");
+      ((StringBuilder)localObject1).append(paramString1);
+      ((StringBuilder)localObject1).append(", soResMd5FromConfig = ");
+      ((StringBuilder)localObject1).append(paramString2);
+      QLog.i("AREngine_ArSDK2NativeSoLoader", 2, ((StringBuilder)localObject1).toString());
+      ArNativeSoLoaderBase.a("arsdk2", a(), "arsdk2", paramString2);
     }
+    finally
+    {
+      Object localObject1;
+      label585:
+      label738:
+      for (;;)
+      {
+        label636:
+        throw paramString1;
+      }
+    }
+    try
+    {
+      ArConfigUtils.a(paramString1, ArNativeSoLoaderBase.a("arsdk2", a(), ArNativeSoLoaderBase.b("arsdk2", a(), "arsdk2")));
+      paramString2 = new StringBuilder();
+      paramString2.append(ArNativeSoLoaderBase.a("arsdk2", a(), ArNativeSoLoaderBase.b("arsdk2", a(), "arsdk2")));
+      paramString2.append(File.separator);
+      paramString2.append("md5_config.xml");
+      paramString2 = paramString2.toString();
+      localObject1 = new File(paramString2);
+      if (((File)localObject1).exists()) {
+        new HashMap();
+      }
+    }
+    catch (IOException paramString2)
+    {
+      break label738;
+    }
+    try
+    {
+      paramString2 = a(FileUtils.readFileToString((File)localObject1));
+      if (paramString2.size() > 0)
+      {
+        paramString2 = paramString2.entrySet().iterator();
+        while (paramString2.hasNext())
+        {
+          localObject1 = (Map.Entry)paramString2.next();
+          paramString1 = "";
+          if (((String)((Map.Entry)localObject1).getKey()).equalsIgnoreCase("libAlphaAR"))
+          {
+            paramString1 = new StringBuilder();
+            paramString1.append(ArNativeSoLoaderBase.a("arsdk2", a(), ArNativeSoLoaderBase.b("arsdk2", a(), "arsdk2")));
+            paramString1.append(File.separator);
+            paramString1.append((String)((Map.Entry)localObject1).getKey());
+            paramString1.append(".so");
+            paramString1 = paramString1.toString();
+            ArNativeSoLoaderBase.a("arsdk2", a(), "libAlphaAR", (String)((Map.Entry)localObject1).getValue());
+          }
+          File localFile = new File(paramString1);
+          Object localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("doOnDownloadSuccess. soFilename = ");
+          ((StringBuilder)localObject2).append(paramString1);
+          QLog.i("AREngine_ArSDK2NativeSoLoader", 2, ((StringBuilder)localObject2).toString());
+          if (localFile.exists())
+          {
+            localObject2 = PortalUtils.a(paramString1);
+            localObject1 = (String)((Map.Entry)localObject1).getValue();
+            if (!((String)localObject1).equalsIgnoreCase((String)localObject2))
+            {
+              localFile.delete();
+              paramString2 = new StringBuilder();
+              paramString2.append("doOnDownloadSuccess. check md5 failed. result = ");
+              paramString2.append(-3);
+              paramString2.append(", filename = ");
+              paramString2.append(paramString1);
+              paramString2.append(", md5FromCalc = ");
+              paramString2.append((String)localObject2);
+              paramString2.append(", md5FromConfig = ");
+              paramString2.append((String)localObject1);
+              QLog.i("AREngine_ArSDK2NativeSoLoader", 2, paramString2.toString());
+              return -3;
+            }
+          }
+          else
+          {
+            paramString2 = new StringBuilder();
+            paramString2.append("doOnDownloadSuccess. so file not exist. result = ");
+            paramString2.append(-2);
+            paramString2.append(", filename = ");
+            paramString2.append(paramString1);
+            QLog.i("AREngine_ArSDK2NativeSoLoader", 2, paramString2.toString());
+            return -2;
+          }
+        }
+        paramString1 = new StringBuilder();
+        paramString1.append("doOnDownloadSuccess. result = ");
+        paramString1.append(0);
+        QLog.i("AREngine_ArSDK2NativeSoLoader", 2, paramString1.toString());
+        return 0;
+      }
+      paramString1 = new StringBuilder();
+      paramString1.append("doOnDownloadSuccess. sSoMd5ListFromConfig.size() == 0. result = ");
+      paramString1.append(-1);
+      QLog.i("AREngine_ArSDK2NativeSoLoader", 2, paramString1.toString());
+      return -1;
+    }
+    catch (IOException paramString2)
+    {
+      break label636;
+    }
+    catch (OutOfMemoryError paramString2)
+    {
+      break label585;
+    }
+    paramString2 = new StringBuilder();
+    paramString2.append("doOnDownloadSuccess. parse xml failed. result = ");
+    paramString2.append(-5);
+    paramString2.append(", soResFilename = ");
+    paramString2.append(paramString1);
+    QLog.i("AREngine_ArSDK2NativeSoLoader", 2, paramString2.toString());
+    return -5;
+    paramString2 = new StringBuilder();
+    paramString2.append("doOnDownloadSuccess. parse xml failed. result = ");
+    paramString2.append(-5);
+    paramString2.append(", soResFilename = ");
+    paramString2.append(paramString1);
+    QLog.i("AREngine_ArSDK2NativeSoLoader", 2, paramString2.toString());
+    return -5;
+    paramString1 = new StringBuilder();
+    paramString1.append("doOnDownloadSuccess. so file not exist. result = ");
+    paramString1.append(-2);
+    paramString1.append(", configFilename = ");
+    paramString1.append(paramString2);
+    QLog.i("AREngine_ArSDK2NativeSoLoader", 2, paramString1.toString());
+    return -2;
+    FileUtils.delete(ArNativeSoLoaderBase.a("arsdk2", a(), ArNativeSoLoaderBase.b("arsdk2", a(), "arsdk2")), false);
+    paramString2 = new File(paramString1);
+    if (paramString2.exists()) {
+      paramString2.delete();
+    }
+    paramString2 = new StringBuilder();
+    paramString2.append("doOnDownloadSuccess. unzip failed. result = ");
+    paramString2.append(-6);
+    paramString2.append(", soResFilename = ");
+    paramString2.append(paramString1);
+    QLog.i("AREngine_ArSDK2NativeSoLoader", 2, paramString2.toString());
+    return -6;
   }
   
   public static String a()
@@ -132,75 +188,112 @@ public class ArSDK2NativeSoLoader
   private static HashMap<String, String> a(String paramString)
   {
     HashMap localHashMap = new HashMap();
+    int i;
+    try
+    {
+      localObject = Xml.newPullParser();
+      ((XmlPullParser)localObject).setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
+      i = ((XmlPullParser)localObject).getEventType();
+    }
+    catch (Exception localException)
+    {
+      Object localObject;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parseSoMd5FromXmlConfig failed. error = ");
+      localStringBuilder.append(localException.getMessage());
+      localStringBuilder.append(", xmlConfigContent = ");
+      localStringBuilder.append(paramString);
+      QLog.e("AREngine_ArSDK2NativeSoLoader", 2, localStringBuilder.toString());
+      return localHashMap;
+    }
+    if (((XmlPullParser)localObject).getName().equalsIgnoreCase("libAlphaAR")) {
+      localHashMap.put("libAlphaAR", ((XmlPullParser)localObject).nextText());
+    }
     for (;;)
     {
-      try
+      i = ((XmlPullParser)localObject).next();
+      StringBuilder localStringBuilder;
+      while (i == 1)
       {
-        localXmlPullParser = Xml.newPullParser();
-        localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
-        i = localXmlPullParser.getEventType();
-      }
-      catch (Exception localException)
-      {
-        XmlPullParser localXmlPullParser;
-        QLog.e("AREngine_ArSDK2NativeSoLoader", 2, "parseSoMd5FromXmlConfig failed. error = " + localException.getMessage() + ", xmlConfigContent = " + paramString);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("parseSoMd5FromXmlConfig successfully. soMd5List = ");
+        ((StringBuilder)localObject).append(localHashMap);
+        QLog.d("AREngine_ArSDK2NativeSoLoader", 2, ((StringBuilder)localObject).toString());
         return localHashMap;
       }
-      int i = localXmlPullParser.next();
-      if (localXmlPullParser.getName().equalsIgnoreCase("libAlphaAR"))
-      {
-        localHashMap.put("libAlphaAR", localXmlPullParser.nextText());
-        while (i == 1)
-        {
-          QLog.d("AREngine_ArSDK2NativeSoLoader", 2, "parseSoMd5FromXmlConfig successfully. soMd5List = " + localHashMap);
-          return localHashMap;
-        }
-        switch (i)
-        {
-        }
+      if (i == 2) {
+        break;
       }
     }
   }
   
   public static boolean a()
   {
-    return new File(ArNativeSoLoaderBase.a("arsdk2", a(), ArNativeSoLoaderBase.b("arsdk2", a(), "arsdk2")) + File.separator + "libAlphaAR" + ".so").exists();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(ArNativeSoLoaderBase.a("arsdk2", a(), ArNativeSoLoaderBase.b("arsdk2", a(), "arsdk2")));
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("libAlphaAR");
+    localStringBuilder.append(".so");
+    return new File(localStringBuilder.toString()).exists();
   }
   
   public static boolean a(String paramString)
   {
-    boolean bool1 = false;
-    for (;;)
+    boolean bool = false;
+    try
     {
-      try
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(ArNativeSoLoaderBase.a("arsdk2", a(), ArNativeSoLoaderBase.b("arsdk2", a(), "arsdk2")));
+      ((StringBuilder)localObject1).append(File.separator);
+      ((StringBuilder)localObject1).append(paramString);
+      ((StringBuilder)localObject1).append(".so");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      Object localObject2 = new File((String)localObject1);
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
       {
-        String str = ArNativeSoLoaderBase.a("arsdk2", a(), ArNativeSoLoaderBase.b("arsdk2", a(), "arsdk2")) + File.separator + paramString + ".so";
-        Object localObject = new File(str);
-        if (QLog.isColorLevel()) {
-          QLog.d("AREngine_ArSDK2NativeSoLoader", 2, "isSoFileExist soFile=" + str + ", exist=" + ((File)localObject).exists());
-        }
-        if (((File)localObject).exists())
-        {
-          paramString = ArNativeSoLoaderBase.b("arsdk2", a(), paramString);
-          localObject = PortalUtils.a(str);
-          boolean bool2 = paramString.equalsIgnoreCase((String)localObject);
-          if (bool2)
-          {
-            bool1 = true;
-            return bool1;
-          }
-          QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "isSoFileExist. check md5 failed. soFilename = " + str + ", md5FromConfig = " + paramString + ", md5FromCalc = " + (String)localObject);
-          continue;
-        }
-        QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "isSoFileExist. so not exist. soFilename = " + str);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isSoFileExist soFile=");
+        localStringBuilder.append((String)localObject1);
+        localStringBuilder.append(", exist=");
+        localStringBuilder.append(((File)localObject2).exists());
+        QLog.d("AREngine_ArSDK2NativeSoLoader", 2, localStringBuilder.toString());
       }
-      finally {}
+      if (((File)localObject2).exists())
+      {
+        paramString = ArNativeSoLoaderBase.b("arsdk2", a(), paramString);
+        localObject2 = PortalUtils.a((String)localObject1);
+        if (paramString.equalsIgnoreCase((String)localObject2))
+        {
+          bool = true;
+        }
+        else
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("isSoFileExist. check md5 failed. soFilename = ");
+          localStringBuilder.append((String)localObject1);
+          localStringBuilder.append(", md5FromConfig = ");
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(", md5FromCalc = ");
+          localStringBuilder.append((String)localObject2);
+          QLog.i("AREngine_ArSDK2NativeSoLoader", 2, localStringBuilder.toString());
+        }
+      }
+      else
+      {
+        paramString = new StringBuilder();
+        paramString.append("isSoFileExist. so not exist. soFilename = ");
+        paramString.append((String)localObject1);
+        QLog.i("AREngine_ArSDK2NativeSoLoader", 2, paramString.toString());
+      }
+      return bool;
     }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArSDK2NativeSoLoader
  * JD-Core Version:    0.7.0.1
  */

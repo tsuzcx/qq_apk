@@ -1,14 +1,14 @@
 package cooperation.qzone.contentbox;
 
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QZoneCommonServlet;
 import com.tencent.mobileqq.data.QzoneCommonIntent;
 import cooperation.qzone.contentbox.model.QZoneMsgReq;
+import mqq.app.AppRuntime;
 
 class QZoneMsgManager$1
   implements Runnable
 {
-  QZoneMsgManager$1(QZoneMsgManager paramQZoneMsgManager, QQAppInterface paramQQAppInterface) {}
+  QZoneMsgManager$1(QZoneMsgManager paramQZoneMsgManager, AppRuntime paramAppRuntime) {}
   
   public void run()
   {
@@ -22,7 +22,7 @@ class QZoneMsgManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.contentbox.QZoneMsgManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,14 +18,19 @@ class VideoCoverView$5
     }
     catch (Throwable localThrowable)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("VideoCoverView", 2, "installSDK t==" + localThrowable.toString());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("installSDK t==");
+        localStringBuilder.append(localThrowable.toString());
+        QLog.d("VideoCoverView", 2, localStringBuilder.toString());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView.5
  * JD-Core Version:    0.7.0.1
  */

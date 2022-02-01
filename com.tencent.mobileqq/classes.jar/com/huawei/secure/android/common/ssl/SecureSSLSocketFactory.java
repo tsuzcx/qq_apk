@@ -9,7 +9,6 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.security.cert.X509Certificate;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocket;
@@ -24,138 +23,154 @@ public class SecureSSLSocketFactory
 {
   @Deprecated
   public static final X509HostnameVerifier BROWSER_COMPATIBLE_HOSTNAME_VERIFIER = new BrowserCompatHostnameVerifier();
-  private static volatile SecureSSLSocketFactory I = null;
   @Deprecated
   public static final X509HostnameVerifier STRICT_HOSTNAME_VERIFIER = new StrictHostnameVerifier();
-  private static final String TAG = SecureSSLSocketFactory.class.getSimpleName();
-  private SSLContext g = null;
-  private SSLSocket t = null;
-  private Context u;
-  private String[] v;
-  private X509TrustManager w;
-  private String[] x;
-  private String[] y;
-  private String[] z;
+  private static final String i = SecureSSLSocketFactory.class.getSimpleName();
+  private static volatile SecureSSLSocketFactory j = null;
+  private SSLContext a = null;
+  private SSLSocket b = null;
+  private Context c;
+  private String[] d;
+  private X509TrustManager e;
+  private String[] f;
+  private String[] g;
+  private String[] h;
   
   private SecureSSLSocketFactory(Context paramContext)
   {
     if (paramContext == null)
     {
-      g.e(TAG, "SecureSSLSocketFactory: context is null");
+      g.b(i, "SecureSSLSocketFactory: context is null");
       return;
     }
     setContext(paramContext);
     setSslContext(SSLUtil.setSSLContext());
-    this.w = SecureX509SingleInstance.getInstance(paramContext);
-    paramContext = this.g;
-    X509TrustManager localX509TrustManager = this.w;
-    SecureRandom localSecureRandom = new SecureRandom();
-    paramContext.init(null, new X509TrustManager[] { localX509TrustManager }, localSecureRandom);
+    this.e = SecureX509SingleInstance.getInstance(paramContext);
+    this.a.init(null, new X509TrustManager[] { this.e }, null);
   }
   
   public SecureSSLSocketFactory(InputStream paramInputStream, String paramString)
   {
-    this.g = SSLUtil.setSSLContext();
+    this.a = SSLUtil.setSSLContext();
     paramInputStream = new HiCloudX509TrustManager(paramInputStream, paramString);
     setX509TrustManager(paramInputStream);
-    paramString = this.g;
-    SecureRandom localSecureRandom = new SecureRandom();
-    paramString.init(null, new X509TrustManager[] { paramInputStream }, localSecureRandom);
+    this.a.init(null, new X509TrustManager[] { paramInputStream }, null);
   }
   
   public SecureSSLSocketFactory(X509TrustManager paramX509TrustManager)
   {
-    this.g = SSLUtil.setSSLContext();
+    this.a = SSLUtil.setSSLContext();
     setX509TrustManager(paramX509TrustManager);
-    SSLContext localSSLContext = this.g;
-    SecureRandom localSecureRandom = new SecureRandom();
-    localSSLContext.init(null, new X509TrustManager[] { paramX509TrustManager }, localSecureRandom);
+    this.a.init(null, new X509TrustManager[] { paramX509TrustManager }, null);
+  }
+  
+  private void a(Socket paramSocket)
+  {
+    boolean bool = a.a(this.h);
+    int m = 1;
+    int k;
+    if (!bool)
+    {
+      g.c(i, "set protocols");
+      SSLUtil.setEnabledProtocols((SSLSocket)paramSocket, this.h);
+      k = 1;
+    }
+    else
+    {
+      k = 0;
+    }
+    if ((a.a(this.g)) && (a.a(this.f)))
+    {
+      m = 0;
+    }
+    else
+    {
+      g.c(i, "set white cipher or black cipher");
+      SSLSocket localSSLSocket = (SSLSocket)paramSocket;
+      SSLUtil.setEnabledProtocols(localSSLSocket);
+      if (!a.a(this.g)) {
+        SSLUtil.setWhiteListCipherSuites(localSSLSocket, this.g);
+      } else {
+        SSLUtil.setBlackListCipherSuites(localSSLSocket, this.f);
+      }
+    }
+    if (k == 0)
+    {
+      g.c(i, "set default protocols");
+      SSLUtil.setEnabledProtocols((SSLSocket)paramSocket);
+    }
+    if (m == 0)
+    {
+      g.c(i, "set default cipher suites");
+      SSLUtil.setEnableSafeCipherSuites((SSLSocket)paramSocket);
+    }
   }
   
   static void a(X509TrustManager paramX509TrustManager)
   {
-    g.c(TAG, "ssf update socket factory trust manager");
+    g.c(i, "ssf update socket factory trust manager");
+    long l = System.currentTimeMillis();
     try
     {
-      I = new SecureSSLSocketFactory(paramX509TrustManager);
-      return;
+      j = new SecureSSLSocketFactory(paramX509TrustManager);
     }
     catch (NoSuchAlgorithmException paramX509TrustManager)
     {
-      g.e(TAG, "NoSuchAlgorithmException");
-      return;
+      StringBuilder localStringBuilder;
+      break label37;
     }
     catch (KeyManagementException paramX509TrustManager)
     {
-      g.e(TAG, "KeyManagementException");
+      label26:
+      label37:
+      break label26;
     }
-  }
-  
-  private void b(Socket paramSocket)
-  {
-    int j = 0;
-    if (!a.a(this.z))
-    {
-      g.c(TAG, "set protocols");
-      SSLUtil.setEnabledProtocols((SSLSocket)paramSocket, this.z);
-    }
-    for (int i = 1;; i = 0)
-    {
-      if ((!a.a(this.y)) || (!a.a(this.x)))
-      {
-        g.c(TAG, "set white cipher or black cipher");
-        SSLUtil.setEnabledProtocols((SSLSocket)paramSocket);
-        if (a.a(this.y)) {
-          break label132;
-        }
-        SSLUtil.setWhiteListCipherSuites((SSLSocket)paramSocket, this.y);
-      }
-      for (;;)
-      {
-        j = 1;
-        if (i == 0)
-        {
-          g.c(TAG, "set default protocols");
-          SSLUtil.setEnabledProtocols((SSLSocket)paramSocket);
-        }
-        if (j == 0)
-        {
-          g.c(TAG, "set default cipher suites");
-          SSLUtil.setEnableSafeCipherSuites((SSLSocket)paramSocket);
-        }
-        return;
-        label132:
-        SSLUtil.setBlackListCipherSuites((SSLSocket)paramSocket, this.x);
-      }
-    }
+    g.b(i, "KeyManagementException");
+    break label45;
+    g.b(i, "NoSuchAlgorithmException");
+    label45:
+    paramX509TrustManager = i;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("update: cost : ");
+    localStringBuilder.append(System.currentTimeMillis() - l);
+    localStringBuilder.append(" ms");
+    g.a(paramX509TrustManager, localStringBuilder.toString());
   }
   
   public static SecureSSLSocketFactory getInstance(Context paramContext)
   {
-    c.setContext(paramContext);
-    if (I == null) {}
-    try
-    {
-      if (I == null) {
-        I = new SecureSSLSocketFactory(paramContext);
+    long l = System.currentTimeMillis();
+    c.a(paramContext);
+    if (j == null) {
+      try
+      {
+        if (j == null) {
+          j = new SecureSSLSocketFactory(paramContext);
+        }
       }
-      if ((I.u == null) && (paramContext != null)) {
-        I.setContext(paramContext);
-      }
-      return I;
+      finally {}
     }
-    finally {}
+    if ((j.c == null) && (paramContext != null)) {
+      j.setContext(paramContext);
+    }
+    paramContext = i;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getInstance: cost : ");
+    localStringBuilder.append(System.currentTimeMillis() - l);
+    localStringBuilder.append(" ms");
+    g.a(paramContext, localStringBuilder.toString());
+    return j;
   }
   
   public Socket createSocket(String paramString, int paramInt)
   {
-    g.c(TAG, "createSocket: host , port");
-    paramString = this.g.getSocketFactory().createSocket(paramString, paramInt);
+    g.c(i, "createSocket: host , port");
+    paramString = this.a.getSocketFactory().createSocket(paramString, paramInt);
     if ((paramString instanceof SSLSocket))
     {
-      b(paramString);
-      this.t = ((SSLSocket)paramString);
-      this.v = ((String[])this.t.getEnabledCipherSuites().clone());
+      a(paramString);
+      this.b = ((SSLSocket)paramString);
+      this.d = ((String[])this.b.getEnabledCipherSuites().clone());
     }
     return paramString;
   }
@@ -177,33 +192,34 @@ public class SecureSSLSocketFactory
   
   public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
   {
-    g.c(TAG, "createSocket");
-    paramSocket = this.g.getSocketFactory().createSocket(paramSocket, paramString, paramInt, paramBoolean);
+    g.c(i, "createSocket s host port autoClose");
+    paramSocket = this.a.getSocketFactory().createSocket(paramSocket, paramString, paramInt, paramBoolean);
     if ((paramSocket instanceof SSLSocket))
     {
-      b(paramSocket);
-      this.t = ((SSLSocket)paramSocket);
-      this.v = ((String[])this.t.getEnabledCipherSuites().clone());
+      a(paramSocket);
+      this.b = ((SSLSocket)paramSocket);
+      this.d = ((String[])this.b.getEnabledCipherSuites().clone());
     }
     return paramSocket;
   }
   
   public String[] getBlackCiphers()
   {
-    return this.x;
+    return this.f;
   }
   
   public X509Certificate[] getChain()
   {
-    if ((this.w instanceof SecureX509TrustManager)) {
-      return ((SecureX509TrustManager)this.w).getChain();
+    X509TrustManager localX509TrustManager = this.e;
+    if ((localX509TrustManager instanceof SecureX509TrustManager)) {
+      return ((SecureX509TrustManager)localX509TrustManager).getChain();
     }
     return new X509Certificate[0];
   }
   
   public Context getContext()
   {
-    return this.u;
+    return this.c;
   }
   
   public String[] getDefaultCipherSuites()
@@ -213,70 +229,71 @@ public class SecureSSLSocketFactory
   
   public String[] getProtocols()
   {
-    return this.z;
+    return this.h;
   }
   
   public SSLContext getSslContext()
   {
-    return this.g;
+    return this.a;
   }
   
   public SSLSocket getSslSocket()
   {
-    return this.t;
+    return this.b;
   }
   
   public String[] getSupportedCipherSuites()
   {
-    if (this.v != null) {
-      return this.v;
+    String[] arrayOfString = this.d;
+    if (arrayOfString != null) {
+      return arrayOfString;
     }
     return new String[0];
   }
   
   public String[] getWhiteCiphers()
   {
-    return this.y;
+    return this.g;
   }
   
   public X509TrustManager getX509TrustManager()
   {
-    return this.w;
+    return this.e;
   }
   
   public void setBlackCiphers(String[] paramArrayOfString)
   {
-    this.x = paramArrayOfString;
+    this.f = paramArrayOfString;
   }
   
   public void setContext(Context paramContext)
   {
-    this.u = paramContext.getApplicationContext();
+    this.c = paramContext.getApplicationContext();
   }
   
   public void setProtocols(String[] paramArrayOfString)
   {
-    this.z = paramArrayOfString;
+    this.h = paramArrayOfString;
   }
   
   public void setSslContext(SSLContext paramSSLContext)
   {
-    this.g = paramSSLContext;
+    this.a = paramSSLContext;
   }
   
   public void setWhiteCiphers(String[] paramArrayOfString)
   {
-    this.y = paramArrayOfString;
+    this.g = paramArrayOfString;
   }
   
   public void setX509TrustManager(X509TrustManager paramX509TrustManager)
   {
-    this.w = paramX509TrustManager;
+    this.e = paramX509TrustManager;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.secure.android.common.ssl.SecureSSLSocketFactory
  * JD-Core Version:    0.7.0.1
  */

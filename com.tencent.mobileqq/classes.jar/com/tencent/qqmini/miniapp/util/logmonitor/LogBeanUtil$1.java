@@ -10,20 +10,20 @@ final class LogBeanUtil$1
   public void handLine(String paramString)
   {
     paramString = LogBeanUtil.createBeanFromLine(paramString);
-    String str;
     if (paramString != null)
     {
-      str = paramString.msg;
-      if (this.val$keyErrFilter == null) {
-        break label42;
+      String str1 = paramString.msg;
+      String str2 = this.val$keyErrFilter;
+      if (str2 != null)
+      {
+        if (str1.contains(str2)) {
+          LogBeanUtil.access$000(paramString, str1, this.val$list);
+        }
       }
-      if (str.contains(this.val$keyErrFilter)) {
-        LogBeanUtil.access$000(paramString, str, this.val$list);
+      else {
+        LogBeanUtil.access$000(paramString, str1, this.val$list);
       }
     }
-    return;
-    label42:
-    LogBeanUtil.access$000(paramString, str, this.val$list);
   }
   
   public void onComplete()
@@ -34,7 +34,7 @@ final class LogBeanUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.util.logmonitor.LogBeanUtil.1
  * JD-Core Version:    0.7.0.1
  */

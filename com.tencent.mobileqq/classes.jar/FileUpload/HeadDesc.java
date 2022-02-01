@@ -34,15 +34,16 @@ public final class HeadDesc
   {
     paramJceOutputStream.write(this.portrait_type, 0);
     paramJceOutputStream.write(this.uc_platform_qzone_subid, 1);
-    if (this.uid != null) {
-      paramJceOutputStream.write(this.uid, 2);
+    String str = this.uid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.skip_auth, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     FileUpload.HeadDesc
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,8 @@ package com.tencent.mobileqq.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseFragment;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 
 public class PublicFragmentActivity$Launcher
@@ -59,20 +59,20 @@ public class PublicFragmentActivity$Launcher
     BaseApplicationImpl.getApplication().startActivity(localIntent);
   }
   
-  public static void a(Fragment paramFragment, Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1, int paramInt)
+  public static void a(BaseFragment paramBaseFragment, Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1, int paramInt)
   {
     Intent localIntent = paramIntent;
     if (paramIntent == null) {
       localIntent = new Intent();
     }
-    localIntent.setClass(paramFragment.getActivity(), paramClass);
+    localIntent.setClass(paramBaseFragment.getBaseActivity(), paramClass);
     localIntent.putExtra("public_fragment_class", paramClass1.getName());
-    paramFragment.startActivityForResult(localIntent, paramInt);
+    paramBaseFragment.startActivityForResult(localIntent, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher
  * JD-Core Version:    0.7.0.1
  */

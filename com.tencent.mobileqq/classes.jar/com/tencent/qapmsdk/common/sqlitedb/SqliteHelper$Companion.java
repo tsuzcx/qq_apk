@@ -19,30 +19,29 @@ public final class SqliteHelper$Companion
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "tableName");
     Intrinsics.checkParameterIsNotNull(paramString2, "createSql");
-    if (((CharSequence)paramString1).length() > 0)
-    {
+    int i = ((CharSequence)paramString1).length();
+    int j = 1;
+    if (i > 0) {
       i = 1;
-      if (i != 0) {
-        if (((CharSequence)paramString2).length() <= 0) {
-          break label72;
-        }
-      }
+    } else {
+      i = 0;
     }
-    label72:
-    for (int i = 1;; i = 0)
+    if (i != 0)
     {
+      if (((CharSequence)paramString2).length() > 0) {
+        i = j;
+      } else {
+        i = 0;
+      }
       if (i != 0) {
         ((Map)((Companion)this).getTables()).put(paramString1, paramString2);
       }
-      return;
-      i = 0;
-      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.common.sqlitedb.SqliteHelper.Companion
  * JD-Core Version:    0.7.0.1
  */

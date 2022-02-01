@@ -15,7 +15,7 @@ import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 public class SafeBlowHandler
   extends BusinessHandler
 {
-  public static final String a = SafeBlowHandler.class.getName();
+  public static final String a = "com.tencent.mobileqq.pushdialog.SafeBlowHandler";
   
   protected SafeBlowHandler(AppInterface paramAppInterface)
   {
@@ -25,8 +25,16 @@ public class SafeBlowHandler
   private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     int i = paramFromServiceMsg.getResultCode();
-    if (QLog.isColorLevel()) {
-      QLog.d("SafeBlowHandler", 2, "onReceiverOxefe called with: resultCode = " + i + ", req = " + paramToServiceMsg + ", res = " + paramFromServiceMsg);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReceiverOxefe called with: resultCode = ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(", req = ");
+      localStringBuilder.append(paramToServiceMsg);
+      localStringBuilder.append(", res = ");
+      localStringBuilder.append(paramFromServiceMsg);
+      QLog.d("SafeBlowHandler", 2, localStringBuilder.toString());
     }
     if (paramFromServiceMsg.isSuccess())
     {
@@ -38,48 +46,57 @@ public class SafeBlowHandler
       }
       catch (Exception paramFromServiceMsg)
       {
-        for (;;)
-        {
-          QLog.d("SafeBlowHandler", 1, "onReceiverOxefe throw e", paramFromServiceMsg);
-        }
+        QLog.d("SafeBlowHandler", 1, "onReceiverOxefe throw e", paramFromServiceMsg);
       }
       if (paramToServiceMsg.uint32_service_type.get() == 4) {
         notifyUI(3838, true, Integer.valueOf(4));
       }
-      return;
     }
-    notifyUI(3838, false, Integer.valueOf(-1));
+    else
+    {
+      notifyUI(3838, false, Integer.valueOf(-1));
+    }
   }
   
   public void a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SafeBlowHandler", 2, "sendClickEvtPbReq() called: friendUin = " + paramLong);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("sendClickEvtPbReq() called: friendUin = ");
+      ((StringBuilder)localObject).append(paramLong);
+      QLog.d("SafeBlowHandler", 2, ((StringBuilder)localObject).toString());
     }
-    oidb_cmd0xefe.ReqBody localReqBody = new oidb_cmd0xefe.ReqBody();
-    localReqBody.friend_uin.set(paramLong);
-    sendPbReq(makeOIDBPkg("OidbSvc.0xefe", 3838, 4, localReqBody.toByteArray()));
+    Object localObject = new oidb_cmd0xefe.ReqBody();
+    ((oidb_cmd0xefe.ReqBody)localObject).friend_uin.set(paramLong);
+    sendPbReq(makeOIDBPkg("OidbSvc.0xefe", 3838, 4, ((oidb_cmd0xefe.ReqBody)localObject).toByteArray()));
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return SafeBlowObserver.class;
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if ((paramFromServiceMsg == null) || (paramObject == null)) {
-      QLog.e("SafeBlowHandler", 1, "onReceive params: res = " + paramFromServiceMsg + ", data = " + paramObject);
-    }
-    while (!TextUtils.equals("OidbSvc.0xefe", paramFromServiceMsg.getServiceCmd())) {
+    if ((paramFromServiceMsg != null) && (paramObject != null))
+    {
+      if (TextUtils.equals("OidbSvc.0xefe", paramFromServiceMsg.getServiceCmd())) {
+        a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      }
       return;
     }
-    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    paramToServiceMsg = new StringBuilder();
+    paramToServiceMsg.append("onReceive params: res = ");
+    paramToServiceMsg.append(paramFromServiceMsg);
+    paramToServiceMsg.append(", data = ");
+    paramToServiceMsg.append(paramObject);
+    QLog.e("SafeBlowHandler", 1, paramToServiceMsg.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pushdialog.SafeBlowHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -5,6 +5,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -73,24 +74,28 @@ public final class stGetFeedCommentListV2Rsp
     paramJceOutputStream.write(this.comments, 1);
     paramJceOutputStream.write(this.is_finished, 2);
     paramJceOutputStream.write(this.total_comment_num, 3);
-    if (this.feed_id != null) {
-      paramJceOutputStream.write(this.feed_id, 4);
+    Object localObject = this.feed_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.isGetAll, 5);
-    if (this.externPlatformInfos != null) {
-      paramJceOutputStream.write(this.externPlatformInfos, 6);
+    localObject = this.externPlatformInfos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 6);
     }
-    if (this.replyListAttachInfos != null) {
-      paramJceOutputStream.write(this.replyListAttachInfos, 7);
+    localObject = this.replyListAttachInfos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 7);
     }
-    if (this.replyListInfos != null) {
-      paramJceOutputStream.write(this.replyListInfos, 8);
+    localObject = this.replyListInfos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_INTERFACE.stGetFeedCommentListV2Rsp
  * JD-Core Version:    0.7.0.1
  */

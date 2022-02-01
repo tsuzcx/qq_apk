@@ -82,26 +82,31 @@ public final class operation_delreply_req
     paramJceOutputStream.write(this.strReplyID, 6);
     paramJceOutputStream.write(this.iDelSource, 7);
     paramJceOutputStream.write(this.mapBusiParam, 8);
-    if (this.strSrcUinOpenid != null) {
-      paramJceOutputStream.write(this.strSrcUinOpenid, 9);
+    Object localObject = this.strSrcUinOpenid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.strCommentUinOpenid != null) {
-      paramJceOutputStream.write(this.strCommentUinOpenid, 10);
+    localObject = this.strCommentUinOpenid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.strReplyUinOpenid != null) {
-      paramJceOutputStream.write(this.strReplyUinOpenid, 11);
+    localObject = this.strReplyUinOpenid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
-    if (this.ciphertext != null) {
-      paramJceOutputStream.write(this.ciphertext, 12);
+    localObject = this.ciphertext;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
-    if (this.bypass_param != null) {
-      paramJceOutputStream.write(this.bypass_param, 13);
+    localObject = this.bypass_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 13);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.operation_delreply_req
  * JD-Core Version:    0.7.0.1
  */

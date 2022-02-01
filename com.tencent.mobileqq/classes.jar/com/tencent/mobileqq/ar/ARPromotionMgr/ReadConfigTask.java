@@ -2,7 +2,7 @@ package com.tencent.mobileqq.ar.ARPromotionMgr;
 
 import android.content.res.Resources;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.QQAudioHelper;
 import com.tencent.mobileqq.utils.SyncLoadTask;
 import com.tencent.mobileqq.utils.configsp.ARPromotionConfigSP;
 import com.tencent.qphone.base.util.QLog;
@@ -30,15 +30,20 @@ class ReadConfigTask
   public boolean runOnSubThread(Resources paramResources)
   {
     this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = ARPromotionConfigSP.a(this.jdField_a_of_type_JavaLangString, null);
-    QLog.w(this.TAG, 1, "ReadConfigTask,ConfigInfo[" + this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo + "]");
+    paramResources = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ReadConfigTask,ConfigInfo[");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo);
+    localStringBuilder.append("]");
+    QLog.w(paramResources, 1, localStringBuilder.toString());
     PromotionDevice.c();
-    AudioHelper.a((AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    QQAudioHelper.a((AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get());
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotionMgr.ReadConfigTask
  * JD-Core Version:    0.7.0.1
  */

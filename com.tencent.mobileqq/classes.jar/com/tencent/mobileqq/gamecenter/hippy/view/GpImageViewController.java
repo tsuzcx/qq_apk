@@ -29,34 +29,35 @@ public class GpImageViewController
     return super.createView(paramHippyRootView, paramInt, paramHippyEngineContext, paramString, paramHippyMap);
   }
   
-  public View createViewImpl(Context paramContext)
+  protected View createViewImpl(Context paramContext)
   {
     return null;
   }
   
-  public View createViewImpl(Context paramContext, HippyMap paramHippyMap)
+  protected View createViewImpl(Context paramContext, HippyMap paramHippyMap)
   {
     return new ImgHeaderView(paramContext);
   }
   
   public void dispatchFunction(ImgHeaderView paramImgHeaderView, String paramString, HippyArray paramHippyArray)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GpImageViewController", 1, "GpImageViewController dispatchFunction: " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("GpImageViewController dispatchFunction: ");
+      localStringBuilder.append(paramString);
+      QLog.d("GpImageViewController", 1, localStringBuilder.toString());
     }
     if ("init".equals(paramString))
     {
       paramImgHeaderView.a(paramHippyArray);
       paramImgHeaderView.d();
     }
-    for (;;)
+    else if ("destory".equals(paramString))
     {
-      super.dispatchFunction(paramImgHeaderView, paramString, paramHippyArray);
-      return;
-      if ("destory".equals(paramString)) {
-        paramImgHeaderView.c();
-      }
+      paramImgHeaderView.c();
     }
+    super.dispatchFunction(paramImgHeaderView, paramString, paramHippyArray);
   }
   
   public void onAfterUpdateProps(ImgHeaderView paramImgHeaderView)
@@ -79,7 +80,7 @@ public class GpImageViewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.hippy.view.GpImageViewController
  * JD-Core Version:    0.7.0.1
  */

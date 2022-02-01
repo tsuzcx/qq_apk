@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk;
 
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.SoLoadUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class ExcitingTransferNative
 {
@@ -9,35 +9,28 @@ public class ExcitingTransferNative
   {
     try
     {
-      SoLoadUtil.a(BaseApplicationImpl.getContext(), "xplatform", 0, false);
+      SoLoadUtil.a(BaseApplication.getContext(), "xplatform", 0, false);
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
     {
-      try
-      {
-        for (;;)
-        {
-          SoLoadUtil.a(BaseApplicationImpl.getContext(), "mbedtlsall", 0, false);
-          try
-          {
-            SoLoadUtil.a(BaseApplicationImpl.getContext(), "excitingtransfer", 0, false);
-            return;
-          }
-          catch (UnsatisfiedLinkError localUnsatisfiedLinkError3)
-          {
-            localUnsatisfiedLinkError3.printStackTrace();
-          }
-          localUnsatisfiedLinkError1 = localUnsatisfiedLinkError1;
-          localUnsatisfiedLinkError1.printStackTrace();
-        }
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
-      {
-        for (;;)
-        {
-          localUnsatisfiedLinkError2.printStackTrace();
-        }
-      }
+      localUnsatisfiedLinkError1.printStackTrace();
+    }
+    try
+    {
+      SoLoadUtil.a(BaseApplication.getContext(), "mbedtlsall", 0, false);
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
+    {
+      localUnsatisfiedLinkError2.printStackTrace();
+    }
+    try
+    {
+      SoLoadUtil.a(BaseApplication.getContext(), "excitingtransfer", 0, false);
+      return;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError3)
+    {
+      localUnsatisfiedLinkError3.printStackTrace();
     }
   }
   
@@ -84,7 +77,7 @@ public class ExcitingTransferNative
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferNative
  * JD-Core Version:    0.7.0.1
  */

@@ -24,22 +24,27 @@ public class ConfigInfoJni
     paramContext = Common.readFile(paramContext, Common.SHARP_CONFIG_PAYLOAD_FILE_NAME);
     if (paramContext != null)
     {
-      String str2 = new String(paramContext);
-      int i = str2.indexOf('|');
+      paramContext = new String(paramContext);
+      int i = paramContext.indexOf('|');
       if (i == -1) {
-        paramContext = "";
+        return "";
       }
-      String str3;
-      String str1;
-      do
+      String str1 = paramContext.substring(0, i);
+      String str2 = paramContext.substring(i + 1);
+      if (AVCoreLog.isColorLevel())
       {
-        return paramContext;
-        str3 = str2.substring(0, i);
-        str1 = str2.substring(i + 1);
-        paramContext = str1;
-      } while (!AVCoreLog.isColorLevel());
-      AVCoreLog.i("ConfigInfoJni", "getSharpConfigPayloadFromFile FileName=" + Common.SHARP_CONFIG_PAYLOAD_FILE_NAME + "| payloadBuf:" + str2 + "| version=" + str3 + "| payload=" + str1);
-      return str1;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getSharpConfigPayloadFromFile FileName=");
+        localStringBuilder.append(Common.SHARP_CONFIG_PAYLOAD_FILE_NAME);
+        localStringBuilder.append("| payloadBuf:");
+        localStringBuilder.append(paramContext);
+        localStringBuilder.append("| version=");
+        localStringBuilder.append(str1);
+        localStringBuilder.append("| payload=");
+        localStringBuilder.append(str2);
+        AVCoreLog.i("ConfigInfoJni", localStringBuilder.toString());
+      }
+      return str2;
     }
     if (AVCoreLog.isColorLevel()) {
       AVCoreLog.i("ConfigInfoJni", "getSharpConfigPayloadFromFile payloadBuf NULL");
@@ -49,39 +54,53 @@ public class ConfigInfoJni
   
   public static int getSharpConfigVersionFromFile(Context paramContext)
   {
-    int j = 0;
-    Object localObject = Common.readFile(paramContext, Common.SHARP_CONFIG_PAYLOAD_FILE_NAME);
-    int i = j;
-    if (localObject != null)
+    Object localObject1 = Common.readFile(paramContext, Common.SHARP_CONFIG_PAYLOAD_FILE_NAME);
+    if (localObject1 != null)
     {
-      paramContext = new String((byte[])localObject);
-      i = paramContext.indexOf('|');
-      if (i <= 0) {
-        break label146;
+      paramContext = new String((byte[])localObject1);
+      int i = paramContext.indexOf('|');
+      Object localObject2;
+      if (i > 0)
+      {
+        localObject1 = paramContext.substring(0, i);
+        localObject2 = paramContext.substring(i + 1);
+        if (AVCoreLog.isDevelopLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getSharpConfigVersionFromFile, payloadBufTmp[");
+          localStringBuilder.append(paramContext);
+          localStringBuilder.append("], version[");
+          localStringBuilder.append((String)localObject1);
+          localStringBuilder.append("], payload[");
+          localStringBuilder.append((String)localObject2);
+          localStringBuilder.append("]");
+          AVCoreLog.e("ConfigInfoJni", localStringBuilder.toString());
+        }
+        try
+        {
+          i = Integer.parseInt((String)localObject1);
+          return i;
+        }
+        catch (Exception localException)
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("getSharpConfigVersionFromFile Exception, payloadBufTmp[");
+          ((StringBuilder)localObject2).append(paramContext);
+          ((StringBuilder)localObject2).append("]");
+          AVCoreLog.e("ConfigInfoJni", ((StringBuilder)localObject2).toString(), localException);
+          return 0;
+        }
       }
-      localObject = paramContext.substring(0, i);
-      String str = paramContext.substring(i + 1);
-      if (AVCoreLog.isDevelopLevel()) {
-        AVCoreLog.e("ConfigInfoJni", "getSharpConfigVersionFromFile, payloadBufTmp[" + paramContext + "], version[" + (String)localObject + "], payload[" + str + "]");
+      if (AVCoreLog.isDevelopLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("getSharpConfigVersionFromFile fail, payloadBufTmp[");
+        ((StringBuilder)localObject2).append(paramContext);
+        ((StringBuilder)localObject2).append("]");
+        AVCoreLog.d("ConfigInfoJni", ((StringBuilder)localObject2).toString());
+        AVCoreUtil.printHexStringEx("ConfigInfoJni", localException);
       }
     }
-    label146:
-    do
-    {
-      try
-      {
-        i = Integer.parseInt((String)localObject);
-        return i;
-      }
-      catch (Exception localException)
-      {
-        AVCoreLog.e("ConfigInfoJni", "getSharpConfigVersionFromFile Exception, payloadBufTmp[" + paramContext + "]", localException);
-        return 0;
-      }
-      i = j;
-    } while (!AVCoreLog.isDevelopLevel());
-    AVCoreLog.d("ConfigInfoJni", "getSharpConfigVersionFromFile fail, payloadBufTmp[" + paramContext + "]");
-    AVCoreUtil.printHexStringEx("ConfigInfoJni", localException);
     return 0;
   }
   
@@ -106,7 +125,7 @@ public class ConfigInfoJni
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avcore.jni.config.ConfigInfoJni
  * JD-Core Version:    0.7.0.1
  */

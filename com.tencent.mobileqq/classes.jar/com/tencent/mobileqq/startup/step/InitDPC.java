@@ -18,30 +18,38 @@ public class InitDPC
       QLog.i("InitDPC", 2, "InitDPC.doStep()");
     }
     String str = WebAccelerateHelper.getInstance().getTBSDpcParam();
-    if (QLog.isColorLevel()) {
-      QLog.i("InitDPC", 2, "tbs dpc: " + str);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("tbs dpc: ");
+      localStringBuilder.append(str);
+      QLog.i("InitDPC", 2, localStringBuilder.toString());
     }
     if (str.charAt(0) != '1')
     {
       QLog.e("TBS_update", 1, "tbs update disabled from InitDPC.doStep()!");
       QbSdk.reset(BaseApplicationImpl.getContext());
     }
-    if ((!BaseApplicationImpl.getContext().getSharedPreferences("mobileQQ", 4).getBoolean("isTbsEnabled", true)) || (str.charAt(2) != '1'))
+    if ((BaseApplicationImpl.getContext().getSharedPreferences("mobileQQ", 4).getBoolean("isTbsEnabled", true)) && (str.charAt(2) == '1'))
+    {
+      if ((Build.VERSION.SDK_INT < 17) && (QbSdk.getTbsVersion(BaseApplicationImpl.getContext()) > 0))
+      {
+        WebpSoLoader.a(false);
+        return true;
+      }
+    }
+    else
     {
       QLog.e("TBS_update", 1, "tbs force system webview");
       QbSdk.forceSysWebView();
       WebpSoLoader.a(true);
     }
-    while ((Build.VERSION.SDK_INT >= 17) || (QbSdk.getTbsVersion(BaseApplicationImpl.getContext()) <= 0)) {
-      return true;
-    }
-    WebpSoLoader.a(false);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.InitDPC
  * JD-Core Version:    0.7.0.1
  */

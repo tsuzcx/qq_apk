@@ -12,12 +12,23 @@ public class WatchVideoHandler$WatchVideoEvent
   
   public String toString()
   {
-    return "WatchVideoEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin=" + this.b + ", isLiveVideo=" + this.jdField_a_of_type_Boolean + ", unReadCount=" + this.jdField_a_of_type_Int + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WatchVideoEvent{vid='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", uin=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", isLiveVideo=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", unReadCount=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.WatchVideoHandler.WatchVideoEvent
  * JD-Core Version:    0.7.0.1
  */

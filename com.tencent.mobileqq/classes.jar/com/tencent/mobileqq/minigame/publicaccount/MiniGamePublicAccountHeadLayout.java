@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import com.tencent.mobileqq.gamecenter.web.view.BaseNestHeaderLayout;
+import com.tencent.mobileqq.qqgamepub.web.view.BaseNestHeaderLayout;
 
 public class MiniGamePublicAccountHeadLayout
   extends BaseNestHeaderLayout
@@ -23,9 +23,9 @@ public class MiniGamePublicAccountHeadLayout
   
   private void initView() {}
   
-  public int getLayoutId()
+  protected int getLayoutId()
   {
-    return 2063859713;
+    return 2030305282;
   }
   
   public boolean isPined()
@@ -40,7 +40,7 @@ public class MiniGamePublicAccountHeadLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountHeadLayout
  * JD-Core Version:    0.7.0.1
  */

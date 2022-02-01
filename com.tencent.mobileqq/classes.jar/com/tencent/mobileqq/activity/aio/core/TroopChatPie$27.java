@@ -1,42 +1,46 @@
 package com.tencent.mobileqq.activity.aio.core;
 
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.GamePartyTipsBar;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.gameparty.GamePartyManager;
-import com.tencent.mobileqq.gameparty.GamePartyObserver;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.troop.data.TroopMessageManager;
+import com.tencent.mobileqq.troop.utils.TroopGagMgr;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.TroopReportor;
 
 class TroopChatPie$27
-  extends GamePartyObserver
+  implements Runnable
 {
   TroopChatPie$27(TroopChatPie paramTroopChatPie) {}
   
-  public void a()
+  public void run()
   {
-    if (((GamePartyManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.GAME_PARTY_MANAGER)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGamePartyTipsBar, new Object[0]);
+    this.this$0.ay();
+    Object localObject1 = ((TroopGagMgr)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, true);
+    Object localObject2 = this.this$0.b.obtainMessage(2);
+    ((Message)localObject2).obj = localObject1;
+    this.this$0.b.sendMessage((Message)localObject2);
+    localObject1 = ((TroopManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    int i = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTroopMask(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    localObject2 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a();
+    int j = NetworkUtil.getSystemNetwork(BaseApplicationImpl.getContext());
+    if (((i == 1) || (i == 4) || ((i == -1) && (((TroopMessageManager)localObject2).d > 0))) && (((TroopMessageManager)localObject2).jdField_a_of_type_Boolean) && (localObject1 != null) && (((TroopInfo)localObject1).wMemberNum < ((TroopMessageManager)localObject2).c) && ((j == 4) || (j == 1))) {
+      ((TroopMessageManager)localObject2).c(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, Math.min(this.this$0.j, ((TroopMessageManager)localObject2).jdField_a_of_type_Int));
     }
-  }
-  
-  public void b()
-  {
-    if (((GamePartyManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.GAME_PARTY_MANAGER)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGamePartyTipsBar.a();
-    }
-  }
-  
-  public void c()
-  {
-    if ((((GamePartyManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.GAME_PARTY_MANAGER)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a() == 14)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a();
+    if ((localObject1 != null) && (((TroopInfo)localObject1).isGameBind())) {
+      TroopReportor.a("Grp_game", "Grp_AIO", "aio_exp", 0, 0, new String[] { this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.TroopChatPie.27
  * JD-Core Version:    0.7.0.1
  */

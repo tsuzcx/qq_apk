@@ -1,24 +1,23 @@
 package com.tencent.mobileqq.transfile.predownload;
 
 import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 
 public abstract class AbsPreDownloadTask
 {
   static final String TAG = "PreDownload.Task";
-  public QQAppInterface app;
-  protected PreDownloadController ctrl;
+  protected BaseQQAppInterface app;
+  protected IPreDownloadController ctrl;
   public String key;
   protected Handler subHandler;
   public Object userData;
   
-  protected AbsPreDownloadTask(QQAppInterface paramQQAppInterface, String paramString)
+  protected AbsPreDownloadTask(BaseQQAppInterface paramBaseQQAppInterface, String paramString)
   {
     this.key = paramString;
-    this.app = paramQQAppInterface;
-    this.ctrl = ((PreDownloadController)paramQQAppInterface.getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2));
+    this.app = paramBaseQQAppInterface;
+    this.ctrl = ((IPreDownloadController)paramBaseQQAppInterface.getRuntimeService(IPreDownloadController.class));
     this.subHandler = new Handler(ThreadManager.getSubThreadLooper());
   }
   
@@ -38,12 +37,17 @@ public abstract class AbsPreDownloadTask
   
   public String toString()
   {
-    return super.toString() + "[" + this.key + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.key);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask
  * JD-Core Version:    0.7.0.1
  */

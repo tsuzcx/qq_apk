@@ -12,7 +12,7 @@ public final class VipBaseInfo
   extends JceStruct
   implements Cloneable
 {
-  static Map<Integer, VipOpenInfo> cache_mOpenInfo;
+  static Map<Integer, VipOpenInfo> cache_mOpenInfo = new HashMap();
   public int iGrayNameplateFlag = 0;
   public int iNameplateVipType = 0;
   public Map<Integer, VipOpenInfo> mOpenInfo = null;
@@ -20,15 +20,8 @@ public final class VipBaseInfo
   
   static
   {
-    if (!VipBaseInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      cache_mOpenInfo = new HashMap();
-      VipOpenInfo localVipOpenInfo = new VipOpenInfo();
-      cache_mOpenInfo.put(Integer.valueOf(0), localVipOpenInfo);
-      return;
-    }
+    VipOpenInfo localVipOpenInfo = new VipOpenInfo();
+    cache_mOpenInfo.put(Integer.valueOf(0), localVipOpenInfo);
   }
   
   public VipBaseInfo() {}
@@ -48,18 +41,17 @@ public final class VipBaseInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -82,13 +74,24 @@ public final class VipBaseInfo
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (VipBaseInfo)paramObject;
-    } while ((!JceUtil.equals(this.mOpenInfo, paramObject.mOpenInfo)) || (!JceUtil.equals(this.iNameplateVipType, paramObject.iNameplateVipType)) || (!JceUtil.equals(this.iGrayNameplateFlag, paramObject.iGrayNameplateFlag)));
-    return true;
+    }
+    paramObject = (VipBaseInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.mOpenInfo, paramObject.mOpenInfo))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.iNameplateVipType, paramObject.iNameplateVipType))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.iGrayNameplateFlag, paramObject.iGrayNameplateFlag)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -152,8 +155,9 @@ public final class VipBaseInfo
     paramJceOutputStream.write(this.mOpenInfo, 0);
     paramJceOutputStream.write(this.iNameplateVipType, 1);
     paramJceOutputStream.write(this.iGrayNameplateFlag, 2);
-    if (this.strExtendNameplateId != null) {
-      paramJceOutputStream.write(this.strExtendNameplateId, 3);
+    String str = this.strExtendNameplateId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }

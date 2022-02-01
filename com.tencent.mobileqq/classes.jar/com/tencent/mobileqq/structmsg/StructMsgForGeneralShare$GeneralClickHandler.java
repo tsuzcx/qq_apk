@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.View;
 import com.tencent.aladdin.config.Aladdin;
@@ -13,10 +12,9 @@ import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.common.offline.HtmlOffline;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.biz.pubaccount.api.IPublicAccountManager;
-import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaAccessHelper;
 import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.ChatFragment;
 import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
@@ -38,19 +36,23 @@ import com.tencent.mobileqq.confess.TroopConfessUtil;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoyFloatingWindowHelper;
+import com.tencent.mobileqq.kandian.biz.viola.api.IViolaAccessHelper;
 import com.tencent.mobileqq.microapp.sdk.MiniAppLauncher;
 import com.tencent.mobileqq.miniapp.util.MiniAppJumpUtil;
 import com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity;
-import com.tencent.mobileqq.nearby.HotChatUtil;
 import com.tencent.mobileqq.nearby.NearbyURLSafeUtil;
+import com.tencent.mobileqq.nearby.api.IHotChatUtil;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.mobileqq.qqgamepub.api.IQQGamePreDownloadService;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout12.ViewHolder;
-import com.tencent.mobileqq.teamwork.TeamWorkUtils;
+import com.tencent.mobileqq.teamwork.api.ITeamWorkUtils;
 import com.tencent.mobileqq.troop.utils.RobotUtils;
 import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.AppShareIDUtil;
@@ -62,7 +64,6 @@ import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
 import cooperation.qzone.model.BaseBusinessAlbumInfo;
-import cooperation.readinjoy.ReadInjoyFloatingWindowHelper;
 import java.net.URL;
 import java.util.List;
 import tencent.im.babyq.babyq_cookie.BabyQCookie;
@@ -87,25 +88,25 @@ public class StructMsgForGeneralShare$GeneralClickHandler
       paramQQAppInterface = (StructingMsgItemBuilder.StructingMsgViewHolder)paramQQAppInterface;
       this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramQQAppInterface.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
       this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramQQAppInterface.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-    }
-    do
-    {
       return;
-      if ((paramQQAppInterface != null) && ((paramQQAppInterface instanceof ChatHistoryStructAdapter.HistoryStructItemHolder)))
-      {
-        paramQQAppInterface = (ChatHistoryStructAdapter.HistoryStructItemHolder)paramQQAppInterface;
-        this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = ((ChatMessage)paramQQAppInterface.jdField_a_of_type_JavaLangObject);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = new SessionInfo();
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = paramQQAppInterface.jdField_a_of_type_JavaLangString;
-        return;
-      }
-    } while (!(paramQQAppInterface instanceof MessageForStructing));
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = ((MessageForStructing)paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = new SessionInfo();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop;
+    }
+    if ((paramQQAppInterface != null) && ((paramQQAppInterface instanceof ChatHistoryStructAdapter.HistoryStructItemHolder)))
+    {
+      paramQQAppInterface = (ChatHistoryStructAdapter.HistoryStructItemHolder)paramQQAppInterface;
+      this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = ((ChatMessage)paramQQAppInterface.jdField_a_of_type_JavaLangObject);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = new SessionInfo();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = paramQQAppInterface.jdField_a_of_type_JavaLangString;
+      return;
+    }
+    if ((paramQQAppInterface instanceof MessageForStructing))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = ((MessageForStructing)paramQQAppInterface);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = new SessionInfo();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop;
+    }
   }
   
   private void a(Bundle paramBundle)
@@ -115,41 +116,45 @@ public class StructMsgForGeneralShare$GeneralClickHandler
   
   private boolean c(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
-      if (QLog.isColorLevel()) {
-        QLog.d(StructMsgForGeneralShare.access$000(), 2, "the share url is" + paramString);
+    }
+    String str;
+    if (QLog.isColorLevel())
+    {
+      str = StructMsgForGeneralShare.access$000();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("the share url is");
+      localStringBuilder.append(paramString);
+      QLog.d(str, 2, localStringBuilder.toString());
+    }
+    if (paramString.contains("ciphertext")) {
+      return false;
+    }
+    this.jdField_a_of_type_JavaLangString = null;
+    this.b = null;
+    if ((paramString.startsWith("http://mobile.qzone.qq.com")) || (paramString.startsWith("https://mobile.qzone.qq.com"))) {}
+    try
+    {
+      paramString = Uri.parse(paramString);
+      str = paramString.getQueryParameter("a");
+      if ("311".equals(str)) {
+        return true;
       }
-      if (!paramString.contains("ciphertext"))
+      if ("2".equals(str)) {
+        return true;
+      }
+      if ("4".equals(str))
       {
-        this.jdField_a_of_type_JavaLangString = null;
-        this.b = null;
-        if ((paramString.startsWith("http://mobile.qzone.qq.com")) || (paramString.startsWith("https://mobile.qzone.qq.com"))) {
-          try
-          {
-            paramString = Uri.parse(paramString);
-            String str = paramString.getQueryParameter("a");
-            if ("311".equals(str)) {
-              return true;
-            }
-            if ("2".equals(str)) {
-              return true;
-            }
-            if ("4".equals(str))
-            {
-              this.jdField_a_of_type_JavaLangString = paramString.getQueryParameter("albumid");
-              this.b = paramString.getQueryParameter("res_uin");
-              return true;
-            }
-          }
-          catch (Exception paramString)
-          {
-            QLog.e(StructMsgForGeneralShare.access$000(), 1, "isNotPermissionUGC catch an exception", paramString);
-          }
-        }
+        this.jdField_a_of_type_JavaLangString = paramString.getQueryParameter("albumid");
+        this.b = paramString.getQueryParameter("res_uin");
+        return true;
       }
+      return false;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e(StructMsgForGeneralShare.access$000(), 1, "isNotPermissionUGC catch an exception", paramString);
     }
     return false;
   }
@@ -166,7 +171,6 @@ public class StructMsgForGeneralShare$GeneralClickHandler
       catch (Exception paramString)
       {
         QLog.e(StructMsgForGeneralShare.access$000(), 1, "isForwardToNativeUserHome catch an exception", paramString);
-        return false;
       }
     }
     return false;
@@ -174,517 +178,600 @@ public class StructMsgForGeneralShare$GeneralClickHandler
   
   public boolean a(View paramView, String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare == null) || (TextUtils.isEmpty(paramString))) {}
-    label44:
-    Object localObject;
-    label111:
-    label113:
-    do
+    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare != null)
     {
-      return false;
-      paramView = paramView.findViewById(2131372146);
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
+      }
+      paramView = paramView.findViewById(2131371728);
+      int i = 1;
+      Object localObject;
       if (paramView == null)
       {
-        int i;
-        if (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mStructMsgItemLists.size() > 0)
-        {
-          i = 1;
-          if (!QLog.isColorLevel()) {
-            break label111;
-          }
-          paramString = StructMsgForGeneralShare.access$000();
-          localObject = new StringBuilder().append("clickViewFlower error item:");
-          if (i == 0) {
-            break label113;
-          }
-        }
-        for (paramView = ((AbsStructMsgElement)this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mStructMsgItemLists.get(0)).h;; paramView = "")
-        {
-          QLog.i(paramString, 2, paramView);
-          return false;
+        if (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mStructMsgItemLists.size() <= 0) {
           i = 0;
-          break label44;
-          break;
         }
+        if (QLog.isColorLevel())
+        {
+          paramString = StructMsgForGeneralShare.access$000();
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("clickViewFlower error item:");
+          if (i != 0) {
+            paramView = ((AbsStructMsgElement)this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mStructMsgItemLists.get(0)).h;
+          } else {
+            paramView = "";
+          }
+          ((StringBuilder)localObject).append(paramView);
+          QLog.i(paramString, 2, ((StringBuilder)localObject).toString());
+        }
+        return false;
       }
       paramView = (StructMsgItemLayout12.ViewHolder)paramView.getTag();
-    } while (paramView == null);
-    paramView = paramView.a;
-    boolean bool2;
-    if ((paramView != null) && (paramView.size() > 0))
-    {
-      localObject = paramView.getString("groupCode");
-      boolean bool1 = paramView.getBoolean("isSend");
-      bool2 = paramView.getBoolean("isReceive");
-      if ((!bool1) && (!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equals(paramString)) && (!bool2))
+      if (paramView == null) {
+        return false;
+      }
+      paramView = paramView.a;
+      if ((paramView != null) && (paramView.size() > 0))
       {
-        paramView = (HotChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
-        if (paramView != null) {}
-        for (paramView = paramView.a(paramString);; paramView = null)
+        localObject = paramView.getString("groupCode");
+        boolean bool1 = paramView.getBoolean("isSend");
+        boolean bool2 = paramView.getBoolean("isReceive");
+        if ((!bool1) && (!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equals(paramString)) && (!bool2))
         {
+          paramView = (HotChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
           if (paramView != null) {
-            HotChatUtil.a(paramView, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, 1);
+            paramView = paramView.a(paramString);
+          } else {
+            paramView = null;
+          }
+          if (paramView != null) {
+            ((IHotChatUtil)QRoute.api(IHotChatUtil.class)).startTroopMemberChooseForFlowerActivity(paramView, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, 1);
           }
           return true;
         }
-      }
-      if (!bool1) {
-        break label286;
-      }
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break label273;
-      }
-      NearbyFlowerManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8006390");
-    }
-    for (;;)
-    {
-      return true;
-      label273:
-      NearbyFlowerManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X80060B3");
-      continue;
-      label286:
-      if (bool2) {
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          NearbyFlowerManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8006391");
-        } else {
+        if (bool1)
+        {
+          if (!TextUtils.isEmpty((CharSequence)localObject))
+          {
+            NearbyFlowerManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8006390");
+            return true;
+          }
+          NearbyFlowerManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X80060B3");
+          return true;
+        }
+        if (bool2)
+        {
+          if (!TextUtils.isEmpty((CharSequence)localObject))
+          {
+            NearbyFlowerManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8006391");
+            return true;
+          }
           NearbyFlowerManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X80060B4");
         }
       }
+      return true;
     }
+    return false;
   }
   
   public boolean a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(StructMsgForGeneralShare.access$000(), 2, "GeneralClickHandler clickWebMsg url = " + paramString);
+    Object localObject1 = paramString;
+    Object localObject3 = "";
+    if (QLog.isColorLevel())
+    {
+      str1 = StructMsgForGeneralShare.access$000();
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append("GeneralClickHandler clickWebMsg url = ");
+      ((StringBuilder)localObject4).append((String)localObject1);
+      QLog.d(str1, 2, ((StringBuilder)localObject4).toString());
     }
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
     QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    localContext = this.jdField_a_of_type_AndroidContentContext;
-    localStructMsgForGeneralShare = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare;
+    Context localContext = this.jdField_a_of_type_AndroidContentContext;
+    StructMsgForGeneralShare localStructMsgForGeneralShare = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare;
+    int i;
+    Object localObject5;
+    label151:
+    Object localObject6;
+    try
+    {
+      str1 = localStructMsgForGeneralShare.uin;
+      if (localStructMsgForGeneralShare.uinType != 1) {
+        break label3219;
+      }
+      i = 2;
+      localObject4 = Long.toString(localStructMsgForGeneralShare.mSourceAppid);
+      localObject5 = Integer.toString(localStructMsgForGeneralShare.mMsgServiceID);
+      if ((localObject1 == null) || (paramString.length() <= 150)) {
+        break label3224;
+      }
+      paramString = ((String)localObject1).substring(0, 150);
+      localObject6 = new URL((String)localObject1).getHost();
+      ReportController.b(null, "CliOper", "", str1, "0X80061B0", "0X80061B0", i, 0, (String)localObject4, (String)localObject5, paramString, (String)localObject6);
+      if (QLog.isDebugVersion()) {
+        QLog.d(StructMsgForGeneralShare.access$000(), 4, String.format("the report params:%s,%s,%s,%s", new Object[] { localObject4, localObject5, paramString, localObject6 }));
+      }
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    paramString = (String)localObject1;
+    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mMsgServiceID == 107)
+    {
+      paramString = new StringBuilder();
+      paramString.append((String)localObject1);
+      paramString.append("&msgSeq=");
+      paramString.append(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uniseq);
+      paramString.append("&resId=");
+      paramString.append(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mResid);
+      paramString.append("&uin=");
+      paramString.append(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uin);
+      paramString.append("&sessionType=");
+      paramString.append(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uinType);
+      paramString = paramString.toString();
+      if (StructMsgForGeneralShare.receiptServer == null)
+      {
+        StructMsgForGeneralShare.receiptServer = new StructMsgForGeneralShare.GeneralClickHandler.2(this, "receipt_msg");
+        QIPCServerHelper.getInstance().register(StructMsgForGeneralShare.receiptServer);
+      }
+    }
+    Object localObject4 = paramString.trim();
+    boolean bool2 = ((String)localObject4).startsWith("https://gamecenter.qq.com");
+    long l = AppShareIDUtil.a(localStructMsgForGeneralShare.mSourceAppid);
+    String str1 = localQQAppInterface.getCurrentAccountUin();
+    boolean bool1 = localContext instanceof BaseActivity;
+    if (bool1)
+    {
+      localObject1 = ((BaseActivity)localContext).getChatFragment();
+      if (localObject1 != null)
+      {
+        localObject1 = ((ChatFragment)localObject1).a();
+        if ((localObject1 instanceof PublicAccountChatPie))
+        {
+          localObject1 = (PublicAccountChatPie)localObject1;
+          ((PublicAccountChatPie)localObject1).p += 1;
+          ((PublicAccountChatPie)localObject1).n += 1;
+        }
+      }
+    }
+    if (c((String)localObject4))
+    {
+      paramString = QZoneHelper.UserInfo.getInstance();
+      paramString.qzone_uin = str1;
+      paramString.nickname = localQQAppInterface.getCurrentNickname();
+      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      {
+        QZoneHelper.forwardToSharedFeedDetail((Activity)localContext, paramString, (String)localObject4, "mqqChat", -1);
+        break label731;
+      }
+      localObject1 = new BaseBusinessAlbumInfo();
+      ((BaseBusinessAlbumInfo)localObject1).mAlbumId = this.jdField_a_of_type_JavaLangString;
+    }
     for (;;)
     {
       try
       {
-        localObject3 = localStructMsgForGeneralShare.uin;
-        if (localStructMsgForGeneralShare.uinType != 1) {
-          continue;
+        if (TextUtils.isEmpty(this.b)) {
+          break label3230;
         }
-        i = 2;
-        str1 = Long.toString(localStructMsgForGeneralShare.mSourceAppid);
-        localObject4 = Integer.toString(localStructMsgForGeneralShare.mMsgServiceID);
-        if ((paramString == null) || (paramString.length() <= 150)) {
-          continue;
-        }
-        localObject1 = paramString.substring(0, 150);
+        l = Long.parseLong(this.b);
+        ((BaseBusinessAlbumInfo)localObject1).mUin = l;
       }
-      catch (Exception localException1)
+      catch (NumberFormatException localNumberFormatException)
       {
-        String str1;
-        Object localObject1;
-        boolean bool;
-        localException1.printStackTrace();
-        continue;
-        Object localObject3 = new BaseBusinessAlbumInfo();
-        ((BaseBusinessAlbumInfo)localObject3).mAlbumId = this.jdField_a_of_type_JavaLangString;
-        try
+        if (QLog.isColorLevel())
         {
-          if (TextUtils.isEmpty(this.b)) {
-            continue;
-          }
-          l = Long.parseLong(this.b);
-          ((BaseBusinessAlbumInfo)localObject3).mUin = l;
+          localObject3 = StructMsgForGeneralShare.access$000();
+          localObject5 = new StringBuilder();
+          ((StringBuilder)localObject5).append("Parsing the albumOwnUin catch a NumberFormatException : ");
+          ((StringBuilder)localObject5).append(localNumberFormatException.getMessage());
+          QLog.d((String)localObject3, 2, ((StringBuilder)localObject5).toString());
         }
-        catch (NumberFormatException localNumberFormatException)
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d(StructMsgForGeneralShare.access$000(), 2, "Parsing the albumOwnUin catch a NumberFormatException : " + localNumberFormatException.getMessage());
-          continue;
-        }
-        ((BaseBusinessAlbumInfo)localObject3).mAlbumType = 0;
-        ((BaseBusinessAlbumInfo)localObject3).isIndividualityAlbum = true;
-        QZoneHelper.forwardToPersonalAlbumPhotoListV2((Activity)localContext, localException1, (BaseBusinessAlbumInfo)localObject3, -1, paramString);
-        continue;
-        long l = 0L;
-        continue;
-        if ((!d(paramString)) || (TextUtils.isEmpty(this.c))) {
-          continue;
-        }
+      }
+      ((BaseBusinessAlbumInfo)localObject1).mAlbumType = 0;
+      ((BaseBusinessAlbumInfo)localObject1).isIndividualityAlbum = true;
+      QZoneHelper.forwardToPersonalAlbumPhotoListV2((Activity)localContext, paramString, (BaseBusinessAlbumInfo)localObject1, -1, (String)localObject4);
+      if ((d((String)localObject4)) && (!TextUtils.isEmpty(this.c)))
+      {
         paramString = QZoneHelper.UserInfo.getInstance();
-        paramString.qzone_uin = str1;
-        paramString.nickname = localNumberFormatException.getCurrentNickname();
+        paramString.qzone_uin = localNumberFormatException;
+        paramString.nickname = localQQAppInterface.getCurrentNickname();
         QZoneHelper.forwardToUserHome((Activity)localContext, paramString, this.c, 0, 0, 0);
-        continue;
-        if (!QZoneHelper.forwardToQzoneDetailFromAIO((Activity)localContext, localException1, "biz_src_jc_aio")) {
-          continue;
+      }
+      else
+      {
+        label731:
+        if (QZoneHelper.forwardToQzoneDetailFromAIO((Activity)localContext, paramString, "biz_src_jc_aio")) {
+          return true;
         }
-        return true;
-        if (!MiniAppLauncher.isMiniAppScheme(paramString)) {
-          continue;
-        }
-        MiniAppLauncher.launchMiniAppByScheme(localContext, paramString, 1210);
-        return true;
-        if ((!TeamWorkUtils.a(paramString)) && (localStructMsgForGeneralShare.mSourceAppid != TeamWorkUtils.a)) {
-          continue;
-        }
-        Object localObject2 = new Bundle();
-        ((Bundle)localObject2).putString("url", paramString);
-        ((Bundle)localObject2).putBoolean("doc_from_aio", true);
-        ((Bundle)localObject2).putString("tdsourcetag", "s_qq_aiomsg");
-        TeamWorkDocEditBrowserActivity.a(localContext, (Bundle)localObject2, false);
-        return true;
-        if ((!(localContext instanceof BaseActivity)) || (!MiniAppJumpUtil.a((BaseActivity)localContext, (String)localObject2, localStructMsgForGeneralShare.message))) {
-          continue;
-        }
-        return true;
-        if (!StructMsgForGeneralShare.HandleMiniAppJump(localContext, (String)localObject2)) {
-          continue;
-        }
-        return true;
-        Object localObject4 = new Intent(localContext, QQBrowserDelegationActivity.class);
-        ((Intent)localObject4).putExtra("param_force_internal_browser", true);
-        if (!bool) {
-          continue;
-        }
-        paramString = HtmlOffline.a(paramString, "platformId=qq_m");
-        String str2 = paramString.trim();
-        ((Intent)localObject4).putExtra("injectrecommend", false);
-        ((Intent)localObject4).putExtra("key_isReadModeEnabled", true);
-        ((Intent)localObject4).putExtra("url", str2);
-        ((Intent)localObject4).putExtra("friendUin", localStructMsgForGeneralShare.uin);
-        ((Intent)localObject4).putExtra("isAppShare", true);
-        ((Intent)localObject4).putExtra("appShareID", l);
-        ((Intent)localObject4).putExtra("uin_type", localStructMsgForGeneralShare.uinType);
-        ((Intent)localObject4).putExtra("msg_id", Long.toString(localStructMsgForGeneralShare.msgId));
-        ((Intent)localObject4).putExtra("puin", localStructMsgForGeneralShare.uin);
-        ((Intent)localObject4).putExtra("self_uin", str1);
-        if (localStructMsgForGeneralShare.message == null) {
-          continue;
-        }
-        ((Intent)localObject4).putExtra("friend_uin", localStructMsgForGeneralShare.message.frienduin);
-        ((Intent)localObject4).putExtra("fromOneCLickCLose", true);
-        if ((localStructMsgForGeneralShare.message != null) && (localStructMsgForGeneralShare.message.istroop == 1008)) {
-          continue;
-        }
-        ((Intent)localObject4).putExtra("big_brother_source_key", "biz_src_jc_aio");
-        if ((TextUtils.isEmpty(str2)) || (!Utils.b(localStructMsgForGeneralShare.uin))) {
-          continue;
-        }
-        paramString = str2.split("&");
-        if (paramString == null) {
-          continue;
-        }
-        int i = 0;
-        if (i >= paramString.length) {
-          continue;
-        }
-        if (!paramString[i].contains("from_type")) {
-          continue;
-        }
-        localObject3 = paramString[i].split("=");
-        if ((localObject3 == null) || (localObject3.length != 2)) {
-          continue;
-        }
-        localObject3 = localObject3[1];
-        Object localObject5 = localStructMsgForGeneralShare.mMsg_I_ActionData.split(":");
-        if ((localObject5 == null) || (localObject5.length != 2)) {
-          continue;
-        }
-        localObject5 = localObject5[1];
-        if ((TextUtils.isEmpty((CharSequence)localObject3)) || (TextUtils.isEmpty((CharSequence)localObject5))) {
-          continue;
-        }
-        paramString = new Bundle();
-        paramString.putString("src_type", "internal");
-        paramString.putString("version", "1");
-        paramString.putString("callback_type", "scheme");
-        paramString.putString("callback_name", "open_card");
-        paramString.putString("uin", (String)localObject5);
-        paramString.putString("card_type", "group");
-        paramString.putString("authKey", null);
-        paramString.putString("from", "qrcode");
-        if (TextUtils.isEmpty((CharSequence)localObject3)) {
-          continue;
-        }
-        paramString.putString("from_type", (String)localObject3);
-        paramString.putString("jump_from", "QRJumpActivity");
-        paramString = JumpParser.a(localNumberFormatException, localContext, Uri.parse("mqqapi://card/show_pslcard?" + HttpUtil.encodeUrl(paramString)).toString());
-        if (paramString == null) {
-          continue;
-        }
-        paramString.a();
-        return true;
-        i += 1;
-        continue;
-        if (Aladdin.getConfig(261).getIntegerFromString("enable_floating_layer_style", 0) != 1) {
-          continue;
-        }
-        QLog.d(StructMsgForGeneralShare.access$000(), 1, "enable_floating_layer_style = 1");
-        if (!ReadInjoyFloatingWindowHelper.a(this.jdField_a_of_type_AndroidContentContext, str2)) {
-          continue;
-        }
-        return true;
-        if ((TextUtils.isEmpty(str2)) || (!((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).isKandianUrl(str2)) || (!ViolaAccessHelper.b(str2))) {
-          continue;
-        }
-        ViolaAccessHelper.a(localContext, null, ViolaAccessHelper.c(str2), null);
-        return true;
-        if ((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage == null) || (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.isSend()) || (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop != 0) || (!Utils.b(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin)) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("guide_msg_cookie")))) {
-          continue;
-        }
-        paramString = Utils.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("guide_msg_cookie"));
-        if (paramString == null) {
-          continue;
-        }
-        localObject3 = new babyq_cookie.BabyQCookie();
-        try
+        if (MiniAppLauncher.isMiniAppScheme((String)localObject4))
         {
-          ((babyq_cookie.BabyQCookie)localObject3).mergeFrom(paramString);
-          if (((babyq_cookie.BabyQCookie)localObject3).uint32_type.get() == 206) {
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b("babyq_game_tribe");
-          }
-          ((Intent)localObject4).putExtra("source_puin", localStructMsgForGeneralShare.source_puin);
-          if (localStructMsgForGeneralShare.uinType == 0)
+          MiniAppLauncher.launchMiniAppByScheme(localContext, (String)localObject4, 1210);
+          return true;
+        }
+        if ((((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).isDocsUrl((String)localObject4)) || (localStructMsgForGeneralShare.mSourceAppid == 101458937L)) {
+          break label3175;
+        }
+        if ((bool1) && (MiniAppJumpUtil.a((BaseActivity)localContext, paramString, localStructMsgForGeneralShare.message))) {
+          return true;
+        }
+        if (StructMsgForGeneralShare.HandleMiniAppJump(localContext, paramString)) {
+          return true;
+        }
+        if (((IQQGamePreDownloadService)QRoute.api(IQQGamePreDownloadService.class)).interceptJumpHippy(paramString)) {
+          return true;
+        }
+        localObject6 = new Intent(localContext, QQBrowserDelegationActivity.class);
+        ((Intent)localObject6).putExtra("param_force_internal_browser", true);
+        localObject1 = localObject4;
+        if (bool2) {
+          localObject1 = HtmlOffline.a((String)localObject4, "platformId=qq_m");
+        }
+        String str2 = ((String)localObject1).trim();
+        ((Intent)localObject6).putExtra("injectrecommend", false);
+        ((Intent)localObject6).putExtra("key_isReadModeEnabled", true);
+        ((Intent)localObject6).putExtra("url", str2);
+        ((Intent)localObject6).putExtra("friendUin", localStructMsgForGeneralShare.uin);
+        ((Intent)localObject6).putExtra("isAppShare", true);
+        ((Intent)localObject6).putExtra("appShareID", l);
+        ((Intent)localObject6).putExtra("uin_type", localStructMsgForGeneralShare.uinType);
+        ((Intent)localObject6).putExtra("msg_id", Long.toString(localStructMsgForGeneralShare.msgId));
+        ((Intent)localObject6).putExtra("puin", localStructMsgForGeneralShare.uin);
+        ((Intent)localObject6).putExtra("self_uin", localNumberFormatException);
+        if (localStructMsgForGeneralShare.message != null) {
+          ((Intent)localObject6).putExtra("friend_uin", localStructMsgForGeneralShare.message.frienduin);
+        }
+        ((Intent)localObject6).putExtra("fromOneCLickCLose", true);
+        if ((localStructMsgForGeneralShare.message == null) || (localStructMsgForGeneralShare.message.istroop != 1008)) {
+          ((Intent)localObject6).putExtra("big_brother_source_key", "biz_src_jc_aio");
+        }
+        localObject5 = paramString;
+        localObject1 = localObject3;
+        localObject4 = localNumberFormatException;
+        if (!TextUtils.isEmpty(str2))
+        {
+          localObject5 = paramString;
+          localObject1 = localObject3;
+          localObject4 = localNumberFormatException;
+          if (Utils.b(localStructMsgForGeneralShare.uin))
           {
-            ((Intent)localObject4).putExtra("articalChannelId", 2);
-            AIOOpenWebMonitor.a((Intent)localObject4, localNumberFormatException, localStructMsgForGeneralShare.message);
-            if ((((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getAccountType(localNumberFormatException, localStructMsgForGeneralShare.uin) != -1) || (str2.startsWith("http://browserApp.p.qq.com/")))
+            String[] arrayOfString = str2.split("&");
+            localObject5 = paramString;
+            localObject1 = localObject3;
+            localObject4 = localNumberFormatException;
+            if (arrayOfString != null)
             {
-              ((Intent)localObject4).putExtra("is_public_account", true);
-              paramString = new Bundle();
-              paramString.putString("uin", localStructMsgForGeneralShare.uin);
-              if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
+              i = 0;
+              for (;;)
               {
-                paramString.putInt("uin_type", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-                paramString.putString("uin_name", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+                localObject5 = paramString;
+                localObject1 = localObject3;
+                localObject4 = localNumberFormatException;
+                if (i >= arrayOfString.length) {
+                  break;
+                }
+                if (arrayOfString[i].contains("from_type"))
+                {
+                  localObject1 = arrayOfString[i].split("=");
+                  if (localObject1 != null) {
+                    if (localObject1.length == 2)
+                    {
+                      localObject1 = localObject1[1];
+                      localObject4 = localStructMsgForGeneralShare.mMsg_I_ActionData.split(":");
+                      if (localObject4 != null)
+                      {
+                        if (localObject4.length != 2) {
+                          break label1450;
+                        }
+                        localObject4 = localObject4[1];
+                        if ((TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject4))) {
+                          break label1450;
+                        }
+                        paramString = new Bundle();
+                        paramString.putString("src_type", "internal");
+                        paramString.putString("version", "1");
+                        paramString.putString("callback_type", "scheme");
+                        paramString.putString("callback_name", "open_card");
+                        paramString.putString("uin", (String)localObject4);
+                        paramString.putString("card_type", "group");
+                        paramString.putString("authKey", null);
+                        paramString.putString("from", "qrcode");
+                        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+                          paramString.putString("from_type", (String)localObject1);
+                        }
+                        paramString.putString("jump_from", "QRJumpActivity");
+                        localObject1 = new StringBuilder();
+                        ((StringBuilder)localObject1).append("mqqapi://card/show_pslcard?");
+                        ((StringBuilder)localObject1).append(HttpUtil.encodeUrl(paramString));
+                        paramString = JumpParser.a(localQQAppInterface, localContext, Uri.parse(((StringBuilder)localObject1).toString()).toString());
+                        if (paramString != null) {
+                          paramString.a();
+                        }
+                        return true;
+                      }
+                    }
+                  }
+                }
+                label1450:
+                i += 1;
               }
-              paramString.putBoolean("switch_msg_btn", ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).shouldUseWebviewSwitchFunction());
-              ((Intent)localObject4).putExtras(paramString);
             }
-            if (localStructMsgForGeneralShare.mMsgServiceID != 123) {
-              continue;
+          }
+        }
+        if (Aladdin.getConfig(261).getIntegerFromString("enable_floating_layer_style", 0) == 1)
+        {
+          QLog.d(StructMsgForGeneralShare.access$000(), 1, "enable_floating_layer_style = 1");
+          if (((IReadInJoyFloatingWindowHelper)QRoute.api(IReadInJoyFloatingWindowHelper.class)).openFloatLayer(this.jdField_a_of_type_AndroidContentContext, str2)) {
+            return true;
+          }
+        }
+        if ((!TextUtils.isEmpty(str2)) && ((((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).isKandianUrl(str2)) || (((IViolaAccessHelper)QRoute.api(IViolaAccessHelper.class)).isKanDianWebHost(str2))) && (((IViolaAccessHelper)QRoute.api(IViolaAccessHelper.class)).isViolaUrlFromWeb(str2)))
+        {
+          ((IViolaAccessHelper)QRoute.api(IViolaAccessHelper.class)).startViolaPage(localContext, null, ((IViolaAccessHelper)QRoute.api(IViolaAccessHelper.class)).getviolaurlfromweb(str2), null);
+          return true;
+        }
+        paramString = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+        Object localObject2;
+        if ((paramString != null) && (!paramString.isSend()) && (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop == 0) && (Utils.b(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("guide_msg_cookie"))))
+        {
+          paramString = Utils.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("guide_msg_cookie"));
+          if (paramString != null)
+          {
+            localObject2 = new babyq_cookie.BabyQCookie();
+            try
+            {
+              ((babyq_cookie.BabyQCookie)localObject2).mergeFrom(paramString);
+              if (((babyq_cookie.BabyQCookie)localObject2).uint32_type.get() == 206) {
+                this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b("babyq_game_tribe");
+              }
             }
-            if (localStructMsgForGeneralShare.uinType != 1) {
-              continue;
+            catch (InvalidProtocolBufferMicroException paramString)
+            {
+              if (QLog.isColorLevel())
+              {
+                localObject2 = StructMsgForGeneralShare.access$000();
+                localObject3 = new StringBuilder();
+                ((StringBuilder)localObject3).append("babbyq -> sendSpecialMessage:");
+                ((StringBuilder)localObject3).append(paramString.getStackTrace());
+                QLog.d((String)localObject2, 2, ((StringBuilder)localObject3).toString());
+              }
             }
-            bool = TroopConfessUtil.a(localNumberFormatException, localStructMsgForGeneralShare.uin, false);
-            paramString = ((Intent)localObject4).getStringExtra("url");
-            if ((bool) && (!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(localStructMsgForGeneralShare.uin)))
+          }
+        }
+        ((Intent)localObject6).putExtra("source_puin", localStructMsgForGeneralShare.source_puin);
+        if (localStructMsgForGeneralShare.uinType == 0) {
+          ((Intent)localObject6).putExtra("articalChannelId", 2);
+        }
+        for (;;)
+        {
+          break;
+          if (localStructMsgForGeneralShare.uinType == 1)
+          {
+            ((Intent)localObject6).putExtra("articalChannelId", 3);
+          }
+          else if (localStructMsgForGeneralShare.uinType == 3000)
+          {
+            ((Intent)localObject6).putExtra("articalChannelId", 4);
+          }
+          else if (localStructMsgForGeneralShare.uinType == 1008)
+          {
+            ((Intent)localObject6).putExtra("articalChannelId", 1);
+            ((Intent)localObject6).putExtra("FORCE_BLANK_SCREEN_REPORTE", true);
+            ((Intent)localObject6).putExtra("big_brother_source_key", ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getSourceId(localStructMsgForGeneralShare.source_puin));
+          }
+        }
+        AIOOpenWebMonitor.a((Intent)localObject6, localQQAppInterface, localStructMsgForGeneralShare.message);
+        if ((((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getAccountType(localQQAppInterface, localStructMsgForGeneralShare.uin) != -1) || (str2.startsWith("http://browserApp.p.qq.com/")))
+        {
+          ((Intent)localObject6).putExtra("is_public_account", true);
+          paramString = new Bundle();
+          paramString.putString("uin", localStructMsgForGeneralShare.uin);
+          localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+          if (localObject2 != null)
+          {
+            paramString.putInt("uin_type", ((SessionInfo)localObject2).jdField_a_of_type_Int);
+            paramString.putString("uin_name", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+          }
+          paramString.putBoolean("switch_msg_btn", ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).shouldUseWebviewSwitchFunction());
+          ((Intent)localObject6).putExtras(paramString);
+        }
+        if (localStructMsgForGeneralShare.mMsgServiceID == 123)
+        {
+          if (localStructMsgForGeneralShare.uinType == 1)
+          {
+            bool2 = TroopConfessUtil.a(localQQAppInterface, localStructMsgForGeneralShare.uin, false);
+            paramString = ((Intent)localObject6).getStringExtra("url");
+            if ((bool2) && (!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(localStructMsgForGeneralShare.uin)))
             {
               paramString = "https://ti.qq.com/honest-say/group.html?_bid=3104&_qStyle=1&_wv=9191&_nav_alpha=0&_nav_txtclr=FFFFFF&_nav_titleclr=FFFFFF&_nav_anim=true&_wwv=128&gc=$GCODE$&src_type=share&from=appstore_aio&adtag=qq_to_qq".replace("$GCODE$", NearbyURLSafeUtil.a(localStructMsgForGeneralShare.uin));
-              ((Intent)localObject4).removeExtra("url");
-              ((Intent)localObject4).putExtra("url", paramString);
-              if (QLog.isColorLevel()) {
-                QLog.i(StructMsgForGeneralShare.access$000(), 2, "GeneralClickHandler clickWebMsg confess groupUin:" + localStructMsgForGeneralShare.uin + ",paramUrl=" + paramString);
-              }
-              if ((localContext instanceof FragmentActivity))
+              ((Intent)localObject6).removeExtra("url");
+              ((Intent)localObject6).putExtra("url", paramString);
+              if (QLog.isColorLevel())
               {
-                localObject2 = ((FragmentActivity)localContext).getChatFragment();
-                if (localObject2 != null)
+                localObject1 = StructMsgForGeneralShare.access$000();
+                localObject2 = new StringBuilder();
+                ((StringBuilder)localObject2).append("GeneralClickHandler clickWebMsg confess groupUin:");
+                ((StringBuilder)localObject2).append(localStructMsgForGeneralShare.uin);
+                ((StringBuilder)localObject2).append(",paramUrl=");
+                ((StringBuilder)localObject2).append(paramString);
+                QLog.i((String)localObject1, 2, ((StringBuilder)localObject2).toString());
+              }
+              if (bool1)
+              {
+                localObject1 = ((BaseActivity)localContext).getChatFragment();
+                if (localObject1 != null)
                 {
-                  localObject3 = ((ChatFragment)localObject2).getActivity().getIntent();
-                  ((Intent)localObject3).putExtra("url", paramString);
-                  ((Intent)localObject3).putExtra("confess_half_screen_web", true);
-                  paramString = ((ChatFragment)localObject2).a();
+                  localObject2 = ((ChatFragment)localObject1).getBaseActivity().getIntent();
+                  ((Intent)localObject2).putExtra("url", paramString);
+                  ((Intent)localObject2).putExtra("confess_half_screen_web", true);
+                  paramString = ((ChatFragment)localObject1).a();
                   if ((paramString != null) && ((paramString instanceof TroopChatPie))) {
                     TroopConfessUtil.a((TroopChatPie)paramString);
                   }
                 }
               }
             }
-            if (bool) {
-              continue;
+            if (!bool2)
+            {
+              QQToast.a(BaseApplicationImpl.getContext(), TroopConfessUtil.jdField_a_of_type_JavaLangString, 0).a();
+              return false;
             }
-            QQToast.a(BaseApplicationImpl.getContext(), TroopConfessUtil.jdField_a_of_type_JavaLangString, 0).a();
-            return false;
+            ThreadManager.post(new StructMsgForGeneralShare.GeneralClickHandler.3(this, localQQAppInterface), 5, null, true);
+            return true;
           }
+          ThreadManager.post(new StructMsgForGeneralShare.GeneralClickHandler.4(this, localQQAppInterface), 5, null, true);
         }
-        catch (InvalidProtocolBufferMicroException paramString)
+        if (localStructMsgForGeneralShare.mMsgServiceID == 14)
         {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d(StructMsgForGeneralShare.access$000(), 2, "babbyq -> sendSpecialMessage:" + paramString.getStackTrace());
-          continue;
-          if (localStructMsgForGeneralShare.uinType == 1)
+          paramString = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+          if ((paramString != null) && (paramString.jdField_a_of_type_Int == 1))
           {
-            ((Intent)localObject4).putExtra("articalChannelId", 3);
-            continue;
+            paramString = RobotUtils.a(localStructMsgForGeneralShare, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+            if (!TextUtils.isEmpty(paramString))
+            {
+              ((Intent)localObject6).removeExtra("url");
+              ((Intent)localObject6).putExtra("url", paramString);
+              if (QLog.isColorLevel())
+              {
+                localObject2 = StructMsgForGeneralShare.access$000();
+                localObject3 = new StringBuilder();
+                ((StringBuilder)localObject3).append("robot card, use new url:");
+                ((StringBuilder)localObject3).append(localStructMsgForGeneralShare.uin);
+                ((StringBuilder)localObject3).append(",paramUrl=");
+                ((StringBuilder)localObject3).append(paramString);
+                QLog.i((String)localObject2, 2, ((StringBuilder)localObject3).toString());
+              }
+              ThreadManager.excute(new StructMsgForGeneralShare.GeneralClickHandler.5(this, paramString, localQQAppInterface), 16, null, true);
+            }
+            else if (QLog.isColorLevel())
+            {
+              paramString = StructMsgForGeneralShare.access$000();
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("robot card, use old url:");
+              ((StringBuilder)localObject2).append(localStructMsgForGeneralShare.uin);
+              ((StringBuilder)localObject2).append(",paramUrl=");
+              ((StringBuilder)localObject2).append(((Intent)localObject6).getStringExtra("url"));
+              QLog.i(paramString, 2, ((StringBuilder)localObject2).toString());
+            }
           }
-          if (localStructMsgForGeneralShare.uinType == 3000)
-          {
-            ((Intent)localObject4).putExtra("articalChannelId", 4);
-            continue;
-          }
-          if (localStructMsgForGeneralShare.uinType != 1008) {
-            continue;
-          }
-          ((Intent)localObject4).putExtra("articalChannelId", 1);
-          ((Intent)localObject4).putExtra("FORCE_BLANK_SCREEN_REPORTE", true);
-          ((Intent)localObject4).putExtra("big_brother_source_key", ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getSourceId(localStructMsgForGeneralShare.source_puin));
-          continue;
-          ThreadManager.post(new StructMsgForGeneralShare.GeneralClickHandler.3(this, localNumberFormatException), 5, null, true);
-          return true;
         }
-        ThreadManager.post(new StructMsgForGeneralShare.GeneralClickHandler.4(this, localNumberFormatException), 5, null, true);
-        if ((localStructMsgForGeneralShare.mMsgServiceID != 14) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1)) {
-          continue;
-        }
-        paramString = RobotUtils.a(localStructMsgForGeneralShare, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-        if (TextUtils.isEmpty(paramString)) {
-          continue;
-        }
-        ((Intent)localObject4).removeExtra("url");
-        ((Intent)localObject4).putExtra("url", paramString);
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i(StructMsgForGeneralShare.access$000(), 2, "robot card, use new url:" + localStructMsgForGeneralShare.uin + ",paramUrl=" + paramString);
-        ThreadManager.excute(new StructMsgForGeneralShare.GeneralClickHandler.5(this, paramString, localNumberFormatException), 16, null, true);
-        if ((localStructMsgForGeneralShare.mMsgServiceID != 83) && (localStructMsgForGeneralShare.mMsgServiceID != 108) && (localStructMsgForGeneralShare.mMsgServiceID != 114) && (localStructMsgForGeneralShare.mMsgServiceID != 116)) {
-          continue;
-        }
-        paramString = "";
-        localObject3 = Uri.parse((String)localObject2);
-        try
-        {
-          localObject3 = ((Uri)localObject3).getQueryParameter("article_id");
-          paramString = (String)localObject3;
-        }
-        catch (Exception localException2)
-        {
-          localException2.printStackTrace();
-          continue;
-          StatisticCollector.getInstance(BaseApplication.getContext()).reportToAds(localNumberFormatException, "sha_click", 1, "", "", String.valueOf(localStructMsgForGeneralShare.mSourceAppid));
-        }
-        if (TextUtils.isEmpty(localStructMsgForGeneralShare.mMsgActionData)) {
-          continue;
-        }
-        i = 1;
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8007555", "0X8007555", 0, 0, paramString, "", "" + i, "");
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).reportPAinfoToLighthouse("0X8007555", "", paramString, "", "" + i, "");
-        if (localStructMsgForGeneralShare.mSourceAppid != 1101244924L) {
-          continue;
-        }
-        ((Intent)localObject4).putExtra("BUDNLE_KEY_IS_MY_PROFILE", str2.contains("gene/index.html?uin=" + localStructMsgForGeneralShare.currentAccountUin));
-        ((Intent)localObject4).setClass(localContext, MusicGeneQQBrowserActivity.class);
-        ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).modifyIntentForSpecificBrowserIfNeeded(localStructMsgForGeneralShare.message, (Intent)localObject4, str2);
-        if ((TextUtils.isEmpty(localStructMsgForGeneralShare.mContentTitle)) || (TextUtils.isEmpty((CharSequence)localObject2)) || (((String)localObject2).startsWith("https://ti.qq.com/qqdaren/index?_wv=16777219&_wwv=128"))) {
-          continue;
-        }
-        ((Intent)localObject4).putExtra("title", localStructMsgForGeneralShare.mContentTitle);
-        WebAccelerator.a(localContext, (Intent)localObject4, str2);
-        ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, str2, "", "", "");
-        if (!bool) {
-          continue;
-        }
-        StatisticCollector.getInstance(BaseApplication.getContext()).reportActionCount(localNumberFormatException, str1, "Game_center", "Clk_game_in", 0, 1, null, String.valueOf(localStructMsgForGeneralShare.mSourceAppid), null, null, null);
-        continue;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i(StructMsgForGeneralShare.access$000(), 2, "robot card, use old url:" + localStructMsgForGeneralShare.uin + ",paramUrl=" + ((Intent)localObject4).getStringExtra("url"));
-        continue;
-        if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage == null) {
-          continue;
-        }
-        paramString = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin;
-        if (52 != localStructMsgForGeneralShare.mMsgServiceID) {
-          continue;
-        }
-        if (!paramString.equals(str1)) {
-          continue;
-        }
-        ReportController.b(localNumberFormatException, "CliOper", "", "", "0X80052BB", "0X80052BB", 0, 0, "", "", "", "");
-        continue;
-        ReportController.b(localNumberFormatException, "CliOper", "", "", "0X80052BC", "0X80052BC", 0, 0, "", "", "", "");
-        continue;
         i = 2;
-        continue;
-        continue;
-        localObject2 = paramString;
-        continue;
-      }
-      str2 = new URL(paramString).getHost();
-      ReportController.b(null, "CliOper", "", (String)localObject3, "0X80061B0", "0X80061B0", i, 0, str1, (String)localObject4, (String)localObject1, str2);
-      if (QLog.isDebugVersion()) {
-        QLog.d(StructMsgForGeneralShare.access$000(), 4, String.format("the report params:%s,%s,%s,%s", new Object[] { str1, localObject4, localObject1, str2 }));
-      }
-      localObject1 = paramString;
-      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mMsgServiceID == 107)
-      {
-        paramString = paramString + "&msgSeq=" + this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uniseq + "&resId=" + this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mResid + "&uin=" + this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uin + "&sessionType=" + this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uinType;
-        localObject1 = paramString;
-        if (StructMsgForGeneralShare.receiptServer == null)
+        if ((localStructMsgForGeneralShare.mMsgServiceID == 83) || (localStructMsgForGeneralShare.mMsgServiceID == 108) || (localStructMsgForGeneralShare.mMsgServiceID == 114) || (localStructMsgForGeneralShare.mMsgServiceID == 116))
         {
-          StructMsgForGeneralShare.receiptServer = new StructMsgForGeneralShare.GeneralClickHandler.2(this, "receipt_msg");
-          QIPCServerHelper.getInstance().register(StructMsgForGeneralShare.receiptServer);
-          localObject1 = paramString;
-        }
-      }
-      paramString = ((String)localObject1).trim();
-      bool = paramString.startsWith("https://gamecenter.qq.com");
-      l = AppShareIDUtil.a(localStructMsgForGeneralShare.mSourceAppid);
-      str1 = localQQAppInterface.getCurrentAccountUin();
-      if ((localContext instanceof FragmentActivity))
-      {
-        localObject3 = ((FragmentActivity)localContext).getChatFragment();
-        if (localObject3 != null)
-        {
-          localObject3 = ((ChatFragment)localObject3).a();
-          if ((localObject3 instanceof PublicAccountChatPie))
+          paramString = Uri.parse((String)localObject5);
+          try
           {
-            localObject4 = (PublicAccountChatPie)localObject3;
-            ((PublicAccountChatPie)localObject4).t += 1;
-            localObject3 = (PublicAccountChatPie)localObject3;
-            ((PublicAccountChatPie)localObject3).r += 1;
+            paramString = paramString.getQueryParameter("article_id");
+          }
+          catch (Exception paramString)
+          {
+            paramString.printStackTrace();
+            paramString = (String)localObject1;
+          }
+          if (!TextUtils.isEmpty(localStructMsgForGeneralShare.mMsgActionData)) {
+            i = 1;
+          }
+          localObject2 = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append((String)localObject1);
+          ((StringBuilder)localObject3).append(i);
+          ((IPublicAccountReportUtils)localObject2).publicAccountReportClickEvent(null, "", "0X8007555", "0X8007555", 0, 0, paramString, "", ((StringBuilder)localObject3).toString(), "");
+          localObject2 = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append((String)localObject1);
+          ((StringBuilder)localObject3).append(i);
+          ((IPublicAccountReportUtils)localObject2).reportPAinfoToLighthouse("0X8007555", "", paramString, "", ((StringBuilder)localObject3).toString(), "");
+        }
+        if (localStructMsgForGeneralShare.mSourceAppid == 1101244924L)
+        {
+          paramString = new StringBuilder();
+          paramString.append("gene/index.html?uin=");
+          paramString.append(localStructMsgForGeneralShare.currentAccountUin);
+          ((Intent)localObject6).putExtra("BUDNLE_KEY_IS_MY_PROFILE", str2.contains(paramString.toString()));
+          ((Intent)localObject6).setClass(localContext, MusicGeneQQBrowserActivity.class);
+        }
+        ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).modifyIntentForSpecificBrowserIfNeeded(localStructMsgForGeneralShare.message, (Intent)localObject6, str2);
+        if ((!TextUtils.isEmpty(localStructMsgForGeneralShare.mContentTitle)) && (!TextUtils.isEmpty((CharSequence)localObject5)) && (!((String)localObject5).startsWith("https://ti.qq.com/qqdaren/index?_wv=16777219&_wwv=128"))) {
+          ((Intent)localObject6).putExtra("title", localStructMsgForGeneralShare.mContentTitle);
+        }
+        WebAccelerator.a(localContext, (Intent)localObject6, str2);
+        ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, str2, "", "", "");
+        if (bool2)
+        {
+          StatisticCollector.getInstance(BaseApplication.getContext()).reportActionCount(localQQAppInterface, (String)localObject4, "Game_center", "Clk_game_in", 0, 1, null, String.valueOf(localStructMsgForGeneralShare.mSourceAppid), null, null, null);
+        }
+        else
+        {
+          StatisticCollector.getInstance(BaseApplication.getContext()).reportToAds(localQQAppInterface, "sha_click", 1, "", "", String.valueOf(localStructMsgForGeneralShare.mSourceAppid));
+          paramString = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+          if (paramString != null)
+          {
+            paramString = paramString.senderuin;
+            if (52 == localStructMsgForGeneralShare.mMsgServiceID) {
+              if (paramString.equals(localObject4)) {
+                ReportController.b(localQQAppInterface, "CliOper", "", "", "0X80052BB", "0X80052BB", 0, 0, "", "", "", "");
+              } else {
+                ReportController.b(localQQAppInterface, "CliOper", "", "", "0X80052BC", "0X80052BC", 0, 0, "", "", "", "");
+              }
+            }
           }
         }
       }
-      if (!c(paramString)) {
-        continue;
-      }
-      localObject1 = QZoneHelper.UserInfo.getInstance();
-      ((QZoneHelper.UserInfo)localObject1).qzone_uin = str1;
-      ((QZoneHelper.UserInfo)localObject1).nickname = localQQAppInterface.getCurrentNickname();
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        continue;
-      }
-      QZoneHelper.forwardToSharedFeedDetail((Activity)localContext, (QZoneHelper.UserInfo)localObject1, paramString, "mqqChat", -1);
       if ((this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message != null) && (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message.istroop == 1008)) {
         ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).addPublicAccountToRu(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uin);
       }
       return false;
+      label3175:
+      paramString = new Bundle();
+      paramString.putString("url", (String)localObject4);
+      paramString.putBoolean("doc_from_aio", true);
+      paramString.putString("tdsourcetag", "s_qq_aiomsg");
+      TeamWorkDocEditBrowserActivity.a(localContext, paramString, false);
+      return true;
+      label3219:
       i = 1;
+      break;
+      label3224:
+      paramString = (String)localObject1;
+      break label151;
+      label3230:
+      l = 0L;
     }
   }
   
   public boolean c(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(StructMsgForGeneralShare.access$000(), 2, "GeneralClickHandler clickPluginMsg actionData = " + paramString1 + ", actionDataA = " + paramString2);
-    }
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (TextUtils.isEmpty(paramString2)) {}
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      paramString1 = JumpParser.a(localQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramString1);
-      if (paramString1 == null) {
-        break;
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare != null) && (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message != null) && (Utils.b(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message.senderuin))) {
+      localObject = StructMsgForGeneralShare.access$000();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("GeneralClickHandler clickPluginMsg actionData = ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(", actionDataA = ");
+      localStringBuilder.append(paramString2);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (!TextUtils.isEmpty(paramString2)) {
+      paramString1 = paramString2;
+    }
+    paramString1 = JumpParser.a((BaseQQAppInterface)localObject, this.jdField_a_of_type_AndroidContentContext, paramString1);
+    if (paramString1 != null)
+    {
+      paramString2 = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare;
+      if ((paramString2 != null) && (paramString2.message != null) && (Utils.b(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message.senderuin))) {
         paramString1.a("msg_uniseq", this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message.senderuin);
       }
       paramString1.a();
-      if ((this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare != null) && (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message != null) && (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message.istroop == 1008)) {
+      paramString1 = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare;
+      if ((paramString1 != null) && (paramString1.message != null) && (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message.istroop == 1008)) {
         ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).addPublicAccountToRu(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uin);
       }
       return true;
-      paramString1 = paramString2;
     }
     if (QLog.isColorLevel()) {
       QLog.d(StructMsgForGeneralShare.access$000(), 2, "GeneralShareMsg _ACTION_PLUGIN_ mContentOnClickListener: JumpAction is null.");
@@ -694,7 +781,7 @@ public class StructMsgForGeneralShare$GeneralClickHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgForGeneralShare.GeneralClickHandler
  * JD-Core Version:    0.7.0.1
  */

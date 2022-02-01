@@ -36,20 +36,27 @@ public class TriangleView
   
   public static float convertDpToPixel(Context paramContext, float paramFloat)
   {
-    return paramContext.getResources().getDisplayMetrics().densityDpi / 160.0F * paramFloat;
+    return paramFloat * (paramContext.getResources().getDisplayMetrics().densityDpi / 160.0F);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.firstDraw)
     {
       int i = getWidth();
       int j = getHeight();
-      float f = i * 0.55F;
-      this.mPath.moveTo(i / 2.0F - f / 2.0F, j / 2.0F - f * 1.73205F / 6.0F);
-      this.mPath.lineTo(i / 2.0F + f / 2.0F, j / 2.0F - f * 1.73205F / 6.0F);
-      this.mPath.lineTo(i / 2.0F, j / 2.0F + f * 1.73205F / 3.0F);
+      float f1 = i;
+      float f4 = 0.55F * f1;
+      Path localPath = this.mPath;
+      f1 /= 2.0F;
+      float f2 = f4 / 2.0F;
+      float f3 = j / 2.0F;
+      f4 *= 1.73205F;
+      float f5 = f3 - f4 / 6.0F;
+      localPath.moveTo(f1 - f2, f5);
+      this.mPath.lineTo(f2 + f1, f5);
+      this.mPath.lineTo(f1, f3 + f4 / 3.0F);
       this.mPath.close();
       this.firstDraw = false;
     }
@@ -63,7 +70,7 @@ public class TriangleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.TriangleView
  * JD-Core Version:    0.7.0.1
  */

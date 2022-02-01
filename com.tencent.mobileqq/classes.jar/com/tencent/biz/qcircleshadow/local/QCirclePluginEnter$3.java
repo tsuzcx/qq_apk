@@ -9,15 +9,16 @@ final class QCirclePluginEnter$3
   
   public void run()
   {
-    if (this.val$callback == null) {
+    ILoadPluginDelegate localILoadPluginDelegate = this.val$callback;
+    if (localILoadPluginDelegate == null) {
       return;
     }
-    this.val$callback.onLoadingSuccess();
+    localILoadPluginDelegate.onLoadingSuccess();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.QCirclePluginEnter.3
  * JD-Core Version:    0.7.0.1
  */

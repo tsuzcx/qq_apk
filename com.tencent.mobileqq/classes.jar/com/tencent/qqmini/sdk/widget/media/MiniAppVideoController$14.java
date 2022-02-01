@@ -10,22 +10,22 @@ class MiniAppVideoController$14
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    if (!(paramObject instanceof String)) {}
-    do
-    {
+    if (!(paramObject instanceof String)) {
       return;
-      if (("resetPlayer".equals((String)paramObject)) && (MiniAppVideoController.access$000(this.this$0).autoPauseIfNavigate))
-      {
-        this.this$0.smallScreen();
-        this.this$0.stop();
-        return;
-      }
-    } while (!"resumePlayer".equals((String)paramObject));
+    }
+    paramObservable = (String)paramObject;
+    if (("resetPlayer".equals(paramObservable)) && (MiniAppVideoController.access$000(this.this$0).autoPauseIfNavigate))
+    {
+      this.this$0.smallScreen();
+      this.this$0.stop();
+      return;
+    }
+    "resumePlayer".equals(paramObservable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.media.MiniAppVideoController.14
  * JD-Core Version:    0.7.0.1
  */

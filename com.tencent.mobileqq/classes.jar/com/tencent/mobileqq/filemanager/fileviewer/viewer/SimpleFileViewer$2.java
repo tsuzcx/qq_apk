@@ -9,17 +9,17 @@ class SimpleFileViewer$2
   
   public void a()
   {
-    this.a.e();
+    this.a.d();
   }
   
   public void a(String paramString)
   {
-    this.a.i(paramString);
+    this.a.h(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer.2
  * JD-Core Version:    0.7.0.1
  */

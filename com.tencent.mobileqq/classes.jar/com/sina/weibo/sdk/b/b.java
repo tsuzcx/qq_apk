@@ -17,19 +17,23 @@ public final class b
   public final void a(c paramc)
   {
     ThreadPoolExecutor localThreadPoolExecutor = this.P.N;
-    if (paramc.R != c.b.aa) {}
-    switch (c.4.X[(paramc.R - 1)])
+    if (paramc.R != c.b.aa)
     {
-    default: 
-      paramc.R = c.b.ab;
-      paramc.S.ae = paramc.V;
-      paramc.S.priority = paramc.U;
-      localThreadPoolExecutor.execute(paramc.T);
-      return;
-    case 1: 
-      throw new IllegalStateException("Cannot execute task: the task is already running.");
+      int i = c.4.X[(paramc.R - 1)];
+      if (i != 1)
+      {
+        if (i == 2) {
+          throw new IllegalStateException("Cannot execute task: the task has already been executed (a task can be executed only once)");
+        }
+      }
+      else {
+        throw new IllegalStateException("Cannot execute task: the task is already running.");
+      }
     }
-    throw new IllegalStateException("Cannot execute task: the task has already been executed (a task can be executed only once)");
+    paramc.R = c.b.ab;
+    paramc.S.ae = paramc.V;
+    paramc.S.priority = paramc.U;
+    localThreadPoolExecutor.execute(paramc.T);
   }
 }
 

@@ -13,14 +13,22 @@ public class NumberUtils
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      SLog.d("NumberUtils", "Invalid num string " + paramString + ", return default number " + paramLong);
+      label10:
+      StringBuilder localStringBuilder;
+      break label10;
     }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Invalid num string ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", return default number ");
+    localStringBuilder.append(paramLong);
+    SLog.d("NumberUtils", localStringBuilder.toString());
     return paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.NumberUtils
  * JD-Core Version:    0.7.0.1
  */

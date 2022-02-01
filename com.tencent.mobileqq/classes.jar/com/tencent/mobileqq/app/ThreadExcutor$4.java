@@ -15,9 +15,13 @@ class ThreadExcutor$4
     if (!ThreadSetting.isPublicVersion)
     {
       String str = getName();
-      if ((str.equals("QQ_FILE_RW")) || (str.equals("QQ_SUB")) || (str.equals("Recent_Handler"))) {
-        throw new RuntimeException(str + " can't quit Global Thread ");
+      if ((!str.equals("QQ_FILE_RW")) && (!str.equals("QQ_SUB")) && (!str.equals("Recent_Handler"))) {
+        return;
       }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(" can't quit Global Thread ");
+      throw new RuntimeException(localStringBuilder.toString());
     }
   }
   
@@ -35,7 +39,7 @@ class ThreadExcutor$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ThreadExcutor.4
  * JD-Core Version:    0.7.0.1
  */

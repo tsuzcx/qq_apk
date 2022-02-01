@@ -29,59 +29,76 @@ public class Utils
   {
     File localFile = LightDeviceUtils.getExternalFilesDir(GlobalContext.getContext(), "olm");
     if (localFile == null) {
-      break label87;
-    }
-    boolean bool;
-    label87:
-    while (TextUtils.isEmpty(localFile.getPath()))
-    {
       return null;
-      localFile = new File(localFile.getPath() + File.separator + "musicdot");
-      if (localFile.exists()) {
-        break;
-      }
-      bool = localFile.mkdirs();
-      Logger.i("Utils", "getDir downloadDir mkdirs result:" + bool);
     }
-    paramMusicMaterialMetaDataBean = new File(localFile.getPath() + File.separator + paramMusicMaterialMetaDataBean.id);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(localFile.getPath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("musicdot");
+    localFile = new File(localStringBuilder.toString());
+    boolean bool;
+    if (!localFile.exists())
+    {
+      bool = localFile.mkdirs();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getDir downloadDir mkdirs result:");
+      localStringBuilder.append(bool);
+      Logger.i("Utils", localStringBuilder.toString());
+    }
+    else if (!localFile.isDirectory())
+    {
+      bool = localFile.delete();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getDir, downloadDir delete result:");
+      localStringBuilder.append(bool);
+      Logger.i("Utils", localStringBuilder.toString());
+      if (!localFile.mkdirs())
+      {
+        Logger.i("Utils", "getDir, downloadDir mkdir err ");
+        return null;
+      }
+    }
+    if (TextUtils.isEmpty(localFile.getPath())) {
+      return null;
+    }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(localFile.getPath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramMusicMaterialMetaDataBean.id);
+    paramMusicMaterialMetaDataBean = new File(localStringBuilder.toString());
     if (!paramMusicMaterialMetaDataBean.exists())
     {
       paramMusicMaterialMetaDataBean.mkdirs();
       Logger.i("Utils", "getDir dir mkdirs result:$r");
     }
-    do
+    else if (!paramMusicMaterialMetaDataBean.isDirectory())
     {
-      do
-      {
-        return paramMusicMaterialMetaDataBean.getPath();
-        if (localFile.isDirectory()) {
-          break;
-        }
-        bool = localFile.delete();
-        Logger.i("Utils", "getDir, downloadDir delete result:" + bool);
-        if (localFile.mkdirs()) {
-          break;
-        }
-        Logger.i("Utils", "getDir, downloadDir mkdir err ");
-        return null;
-      } while (paramMusicMaterialMetaDataBean.isDirectory());
       paramMusicMaterialMetaDataBean.delete();
       Logger.i("Utils", "getDir, dir delete result:$r");
-    } while (paramMusicMaterialMetaDataBean.mkdirs());
-    Logger.i("Utils", "getDir, dir mkdir err ");
-    return null;
+      if (!paramMusicMaterialMetaDataBean.mkdirs())
+      {
+        Logger.i("Utils", "getDir, dir mkdir err ");
+        return null;
+      }
+    }
+    return paramMusicMaterialMetaDataBean.getPath();
   }
   
   public static String getPath(MusicMaterialMetaDataBean paramMusicMaterialMetaDataBean)
   {
     String str = getDir(paramMusicMaterialMetaDataBean);
-    if (TextUtils.isEmpty(str)) {}
-    do
-    {
+    if (TextUtils.isEmpty(str)) {
       return null;
-      paramMusicMaterialMetaDataBean = paramMusicMaterialMetaDataBean.stuckPointJsonUrl;
-    } while (TextUtils.isEmpty(paramMusicMaterialMetaDataBean));
-    return str + File.separator + MD5Util.getUrlStrMd5(paramMusicMaterialMetaDataBean);
+    }
+    paramMusicMaterialMetaDataBean = paramMusicMaterialMetaDataBean.stuckPointJsonUrl;
+    if (TextUtils.isEmpty(paramMusicMaterialMetaDataBean)) {
+      return null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(MD5Util.getUrlStrMd5(paramMusicMaterialMetaDataBean));
+    return localStringBuilder.toString();
   }
   
   public static float getPlayVolume(MusicModel paramMusicModel)
@@ -98,59 +115,59 @@ public class Utils
   
   public static boolean isLayerFillAble(TAVStickerLayerInfo paramTAVStickerLayerInfo)
   {
-    label4:
-    Iterator localIterator;
-    if (paramTAVStickerLayerInfo == null) {}else
+    boolean bool2 = false;
+    if (paramTAVStickerLayerInfo == null) {
+      return false;
+    }
+    paramTAVStickerLayerInfo = paramTAVStickerLayerInfo.getUserDataList();
+    boolean bool1 = bool2;
+    if (paramTAVStickerLayerInfo != null)
     {
+      if (paramTAVStickerLayerInfo.isEmpty()) {
+        return false;
+      }
+      Iterator localIterator = paramTAVStickerLayerInfo.iterator();
       do
       {
-        return false;
-        paramTAVStickerLayerInfo = paramTAVStickerLayerInfo.getUserDataList();
-      } while ((paramTAVStickerLayerInfo == null) || (paramTAVStickerLayerInfo.isEmpty()));
-      localIterator = paramTAVStickerLayerInfo.iterator();
-    }
-    for (;;)
-    {
-      if (!localIterator.hasNext()) {
-        break label4;
-      }
-      paramTAVStickerLayerInfo = (TAVStickerLayerInfo.TAVStickerUserData)localIterator.next();
-      if (paramTAVStickerLayerInfo == null) {
-        break;
-      }
-      paramTAVStickerLayerInfo = paramTAVStickerLayerInfo.getData();
-      if (TextUtils.isEmpty(paramTAVStickerLayerInfo)) {
-        break;
-      }
-      try
-      {
-        paramTAVStickerLayerInfo = new JSONObject(paramTAVStickerLayerInfo);
-        if (paramTAVStickerLayerInfo == null) {
-          continue;
-        }
-        if (paramTAVStickerLayerInfo.optInt("videoTrack", 0) > 0)
+        Object localObject;
+        do
         {
-          bool = true;
-          return bool;
-        }
-      }
-      catch (JSONException paramTAVStickerLayerInfo)
-      {
-        for (;;)
+          do
+          {
+            bool1 = bool2;
+            if (!localIterator.hasNext()) {
+              break;
+            }
+            paramTAVStickerLayerInfo = (TAVStickerLayerInfo.TAVStickerUserData)localIterator.next();
+          } while (paramTAVStickerLayerInfo == null);
+          localObject = paramTAVStickerLayerInfo.getData();
+        } while (TextUtils.isEmpty((CharSequence)localObject));
+        paramTAVStickerLayerInfo = null;
+        try
         {
-          Logger.e("Utils", "isLayerFillAble JSONException " + paramTAVStickerLayerInfo.getMessage());
-          paramTAVStickerLayerInfo.printStackTrace();
-          paramTAVStickerLayerInfo = null;
-          continue;
-          boolean bool = false;
+          localObject = new JSONObject((String)localObject);
+          paramTAVStickerLayerInfo = (TAVStickerLayerInfo)localObject;
         }
+        catch (JSONException localJSONException)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("isLayerFillAble JSONException ");
+          localStringBuilder.append(localJSONException.getMessage());
+          Logger.e("Utils", localStringBuilder.toString());
+          localJSONException.printStackTrace();
+        }
+      } while (paramTAVStickerLayerInfo == null);
+      bool1 = bool2;
+      if (paramTAVStickerLayerInfo.optInt("videoTrack", 0) > 0) {
+        bool1 = true;
       }
     }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.utils.Utils
  * JD-Core Version:    0.7.0.1
  */

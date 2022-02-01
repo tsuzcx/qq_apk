@@ -19,18 +19,15 @@ class QzoneWebMusicJsPlugin$22
     paramDialogInterface = BaseApplication.getContext().getSharedPreferences("share", 0);
     if (Build.VERSION.SDK_INT >= 9) {
       paramDialogInterface.edit().putBoolean("qzone_bg_music_auto_play_warn_flag", false).apply();
-    }
-    for (;;)
-    {
-      QzoneWebMusicJsPlugin.access$400(this.this$0, this.val$_randomType, this.val$_autoType, this.val$_loopPlay);
-      return;
+    } else {
       paramDialogInterface.edit().putBoolean("qzone_bg_music_auto_play_warn_flag", false).commit();
     }
+    QzoneWebMusicJsPlugin.access$400(this.this$0, this.val$_randomType, this.val$_autoType, this.val$_loopPlay);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.music.QzoneWebMusicJsPlugin.22
  * JD-Core Version:    0.7.0.1
  */

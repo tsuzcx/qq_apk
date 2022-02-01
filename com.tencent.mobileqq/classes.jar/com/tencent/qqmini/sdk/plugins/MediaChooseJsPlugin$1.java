@@ -14,19 +14,21 @@ class MediaChooseJsPlugin$1
   public void run()
   {
     Activity localActivity = MediaChooseJsPlugin.access$000(this.this$0).getAttachedActivity();
-    if ((localActivity == null) || (localActivity.isFinishing())) {
-      QMLog.w("MediaJsPlugin", "showLoading(). Do nothing, activity is null or finishing");
-    }
-    while (MediaChooseJsPlugin.access$100(this.this$0) != null) {
+    if ((localActivity != null) && (!localActivity.isFinishing()))
+    {
+      if (MediaChooseJsPlugin.access$100(this.this$0) == null)
+      {
+        MediaChooseJsPlugin.access$102(this.this$0, new ToastView(localActivity, (ViewGroup)localActivity.findViewById(16908290)));
+        MediaChooseJsPlugin.access$100(this.this$0).show(1, "loading", null, this.val$title, -1, false);
+      }
       return;
     }
-    MediaChooseJsPlugin.access$102(this.this$0, new ToastView(localActivity, (ViewGroup)localActivity.findViewById(16908290)));
-    MediaChooseJsPlugin.access$100(this.this$0).show(1, "loading", null, this.val$title, -1, false);
+    QMLog.w("MediaJsPlugin", "showLoading(). Do nothing, activity is null or finishing");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.MediaChooseJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

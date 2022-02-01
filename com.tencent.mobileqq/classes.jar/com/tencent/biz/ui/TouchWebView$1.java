@@ -28,7 +28,10 @@ class TouchWebView$1
   {
     if (((this.this$0.overscroll) && (paramFloat2 < 0.0F)) || ((this.this$0.overscrolling) && (this.this$0.l != null)))
     {
-      this.this$0.l.onOverScroll((int)(paramFloat2 / 1.5D));
+      paramMotionEvent1 = this.this$0.l;
+      double d = paramFloat2;
+      Double.isNaN(d);
+      paramMotionEvent1.onOverScroll((int)(d / 1.5D));
       this.this$0.overscrolling = true;
     }
     if ((this.this$0.getParent() instanceof RefreshView))
@@ -36,12 +39,17 @@ class TouchWebView$1
       paramMotionEvent1 = (RefreshView)this.this$0.getParent();
       if ((paramMotionEvent1.getScrollY() >= 0) && (this.this$0.l != null) && (this.this$0.overscrolling))
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("CustomWebView", 2, "RefreshView scrollY: " + paramMotionEvent1.getScrollY());
+        if (QLog.isColorLevel())
+        {
+          paramMotionEvent2 = new StringBuilder();
+          paramMotionEvent2.append("RefreshView scrollY: ");
+          paramMotionEvent2.append(paramMotionEvent1.getScrollY());
+          QLog.i("CustomWebView", 2, paramMotionEvent2.toString());
         }
         this.this$0.l.onBack();
-        this.this$0.overscrolling = false;
-        this.this$0.overscroll = false;
+        paramMotionEvent1 = this.this$0;
+        paramMotionEvent1.overscrolling = false;
+        paramMotionEvent1.overscroll = false;
       }
     }
     return false;
@@ -54,7 +62,7 @@ class TouchWebView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.ui.TouchWebView.1
  * JD-Core Version:    0.7.0.1
  */

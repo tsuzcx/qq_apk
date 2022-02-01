@@ -51,7 +51,7 @@ public final class RewardedBrowsingCallbackReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.gdtad.api.motivebrowsing.RewardedBrowsingCallbackReceiver
  * JD-Core Version:    0.7.0.1
  */

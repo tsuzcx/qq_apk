@@ -18,46 +18,57 @@ class QuickLoginAuthorityActivity$7
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    Message localMessage;
+    if (i != 1000)
     {
-    }
-    do
-    {
-      do
+      if (i != 1001)
       {
-        do
-        {
-          do
-          {
-            return;
-            paramMessage = (Bitmap)paramMessage.obj;
-          } while (paramMessage == null);
-          paramMessage = AuthorityUtil.a(this.a, paramMessage, 50, 50);
-          localMessage = Message.obtain();
-          localMessage.what = 1002;
-          localMessage.obj = paramMessage;
-          this.a.b.sendMessage(localMessage);
+        if (i != 1005) {
           return;
-          paramMessage = (String)paramMessage.obj;
-        } while (TextUtils.isEmpty(paramMessage));
-        paramMessage = AuthorityActivity.a(paramMessage);
-      } while (paramMessage == null);
-      Message localMessage = Message.obtain();
-      localMessage.what = 1003;
-      localMessage.obj = paramMessage;
-      this.a.b.sendMessage(localMessage);
-      return;
-      QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "--> handler message GET_ACCOUNT_LIST");
-    } while (this.a.a.a == null);
-    this.a.a.a.c();
-    paramMessage = Message.obtain();
-    paramMessage.what = 1006;
-    this.a.b.sendMessage(paramMessage);
+        }
+        QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "--> handler message GET_ACCOUNT_LIST");
+        if (this.a.a.a != null)
+        {
+          this.a.a.a.e();
+          paramMessage = Message.obtain();
+          paramMessage.what = 1006;
+          this.a.b.sendMessage(paramMessage);
+        }
+      }
+      else
+      {
+        paramMessage = (String)paramMessage.obj;
+        if (!TextUtils.isEmpty(paramMessage))
+        {
+          paramMessage = AuthorityUtil.a(paramMessage);
+          if (paramMessage != null)
+          {
+            localMessage = Message.obtain();
+            localMessage.what = 1003;
+            localMessage.obj = paramMessage;
+            this.a.b.sendMessage(localMessage);
+          }
+        }
+      }
+    }
+    else
+    {
+      paramMessage = (Bitmap)paramMessage.obj;
+      if (paramMessage != null)
+      {
+        paramMessage = AuthorityUtil.a(this.a, paramMessage, 50, 50);
+        localMessage = Message.obtain();
+        localMessage.what = 1002;
+        localMessage.obj = paramMessage;
+        this.a.b.sendMessage(localMessage);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.QuickLoginAuthorityActivity.7
  * JD-Core Version:    0.7.0.1
  */

@@ -10,42 +10,53 @@ class CountDownProgressBar$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 0)
     {
-    }
-    do
-    {
-      return;
-      CountDownProgressBar.a(this.a, CountDownProgressBar.a(this.a) + CountDownProgressBar.a(this.a));
-      CountDownProgressBar.a(this.a).sendEmptyMessageDelayed(1, CountDownProgressBar.a(this.a));
-      return;
-      CountDownProgressBar.a(this.a, CountDownProgressBar.a(this.a) + CountDownProgressBar.a(this.a));
-      if (CountDownProgressBar.a(this.a) <= (float)CountDownProgressBar.a(this.a)) {
-        break;
+      if (i != 1) {
+        return;
       }
-      CountDownProgressBar.a(this.a, (int)(CountDownProgressBar.a(this.a) / (float)CountDownProgressBar.a(this.a) * 360.0F));
-      this.a.invalidate();
-    } while (CountDownProgressBar.a(this.a) == null);
-    CountDownProgressBar.a(this.a).a();
-    return;
-    CountDownProgressBar.a(this.a, (int)(CountDownProgressBar.a(this.a) / (float)CountDownProgressBar.a(this.a) * 360.0F));
-    if (CountDownProgressBar.b(this.a) >= (float)CountDownProgressBar.b(this.a))
-    {
-      CountDownProgressBar.b(this.a, 0.0F);
-      CountDownProgressBar.b(this.a, CountDownProgressBar.b(this.a) - 1);
+      paramMessage = this.a;
+      CountDownProgressBar.a(paramMessage, CountDownProgressBar.a(paramMessage) + CountDownProgressBar.a(this.a));
+      if (CountDownProgressBar.a(this.a) > (float)CountDownProgressBar.a(this.a))
+      {
+        paramMessage = this.a;
+        CountDownProgressBar.a(paramMessage, (int)(CountDownProgressBar.a(paramMessage) / (float)CountDownProgressBar.a(this.a) * 360.0F));
+        this.a.invalidate();
+        if (CountDownProgressBar.a(this.a) != null) {
+          CountDownProgressBar.a(this.a).a();
+        }
+      }
+      else
+      {
+        paramMessage = this.a;
+        CountDownProgressBar.a(paramMessage, (int)(CountDownProgressBar.a(paramMessage) / (float)CountDownProgressBar.a(this.a) * 360.0F));
+        if (CountDownProgressBar.b(this.a) >= (float)CountDownProgressBar.b(this.a))
+        {
+          CountDownProgressBar.b(this.a, 0.0F);
+          paramMessage = this.a;
+          CountDownProgressBar.b(paramMessage, CountDownProgressBar.b(paramMessage) - 1);
+        }
+        else
+        {
+          paramMessage = this.a;
+          CountDownProgressBar.b(paramMessage, CountDownProgressBar.b(paramMessage) + CountDownProgressBar.a(this.a));
+        }
+        this.a.invalidate();
+        CountDownProgressBar.a(this.a).sendEmptyMessageDelayed(1, CountDownProgressBar.a(this.a));
+      }
     }
-    for (;;)
+    else
     {
-      this.a.invalidate();
+      paramMessage = this.a;
+      CountDownProgressBar.a(paramMessage, CountDownProgressBar.a(paramMessage) + CountDownProgressBar.a(this.a));
       CountDownProgressBar.a(this.a).sendEmptyMessageDelayed(1, CountDownProgressBar.a(this.a));
-      return;
-      CountDownProgressBar.b(this.a, CountDownProgressBar.b(this.a) + CountDownProgressBar.a(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.CountDownProgressBar.1
  * JD-Core Version:    0.7.0.1
  */

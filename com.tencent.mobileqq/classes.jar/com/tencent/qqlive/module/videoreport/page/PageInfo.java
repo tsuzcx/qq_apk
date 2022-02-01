@@ -82,6 +82,8 @@ public class PageInfo
     int i;
     if (this == paramPageInfo) {
       i = 1;
+    } else {
+      i = 0;
     }
     while (paramPageInfo != null)
     {
@@ -89,8 +91,6 @@ public class PageInfo
         localLinkedHashSet.add(paramPageInfo);
       }
       paramPageInfo = paramPageInfo.mParentPage;
-      continue;
-      i = 0;
     }
     return localLinkedHashSet;
   }
@@ -119,14 +119,13 @@ public class PageInfo
   
   public int hashCode()
   {
-    if ((this.mPage != null) && (this.mPageView != null))
+    Object localObject = this.mPage;
+    if ((localObject != null) && (this.mPageView != null))
     {
-      Object localObject = this.mPage.get();
+      localObject = ((WeakReference)localObject).get();
       View localView = (View)this.mPageView.get();
-      if ((localObject != null) && (localView != null))
-      {
-        int i = localObject.hashCode();
-        return localView.hashCode() + i;
+      if ((localObject != null) && (localView != null)) {
+        return localObject.hashCode() + localView.hashCode();
       }
     }
     return super.hashCode();
@@ -142,46 +141,43 @@ public class PageInfo
     if (VideoReportInner.getInstance().isDebugMode())
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("\n  size = ").append(getPageLinker(this).size());
-      PageInfo localPageInfo = this;
-      if (localPageInfo != null)
+      localStringBuilder.append("\n  size = ");
+      localStringBuilder.append(getPageLinker(this).size());
+      for (PageInfo localPageInfo = this; localPageInfo != null; localPageInfo = localPageInfo.mParentPage)
       {
         Object localObject2 = localPageInfo.getPage();
+        String str2 = "_null_page_";
         String str1;
-        label58:
-        String str2;
-        if (localObject2 == null)
-        {
+        if (localObject2 == null) {
           str1 = "_null_page_";
-          if (localObject2 != null) {
-            break label158;
-          }
-          str2 = "_null_page_";
-          label66:
-          if (localObject2 != null) {
-            break label167;
-          }
-          localObject1 = null;
-          label74:
-          if (localObject1 != null) {
-            break label177;
-          }
-        }
-        label158:
-        label167:
-        label177:
-        for (Object localObject1 = "_null_params_";; localObject1 = localObject1.toString())
-        {
-          localStringBuilder.append("\n pageId = ").append(str1).append(", contentId = ").append(str2).append(", pageParams = ").append((String)localObject1).append(", page = ").append(localObject2).append(", pageView = ").append(localPageInfo.getPageView()).append("\n");
-          localPageInfo = localPageInfo.mParentPage;
-          break;
+        } else {
           str1 = DataRWProxy.getPageId(localObject2);
-          break label58;
-          str2 = DataRWProxy.getContentId(localObject2);
-          break label66;
-          localObject1 = DataRWProxy.getPageParams(localObject2);
-          break label74;
         }
+        if (localObject2 != null) {
+          str2 = DataRWProxy.getContentId(localObject2);
+        }
+        Object localObject1;
+        if (localObject2 == null) {
+          localObject1 = null;
+        } else {
+          localObject1 = DataRWProxy.getPageParams(localObject2);
+        }
+        if (localObject1 == null) {
+          localObject1 = "_null_params_";
+        } else {
+          localObject1 = localObject1.toString();
+        }
+        localStringBuilder.append("\n pageId = ");
+        localStringBuilder.append(str1);
+        localStringBuilder.append(", contentId = ");
+        localStringBuilder.append(str2);
+        localStringBuilder.append(", pageParams = ");
+        localStringBuilder.append((String)localObject1);
+        localStringBuilder.append(", page = ");
+        localStringBuilder.append(localObject2);
+        localStringBuilder.append(", pageView = ");
+        localStringBuilder.append(localPageInfo.getPageView());
+        localStringBuilder.append("\n");
       }
       return localStringBuilder.toString();
     }
@@ -190,7 +186,7 @@ public class PageInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.page.PageInfo
  * JD-Core Version:    0.7.0.1
  */

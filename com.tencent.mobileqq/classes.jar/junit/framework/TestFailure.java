@@ -36,7 +36,11 @@ public class TestFailure
   
   public String toString()
   {
-    return this.fFailedTest + ": " + this.fThrownException.getMessage();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.fFailedTest);
+    localStringBuilder.append(": ");
+    localStringBuilder.append(this.fThrownException.getMessage());
+    return localStringBuilder.toString();
   }
   
   public String trace()
@@ -49,7 +53,7 @@ public class TestFailure
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     junit.framework.TestFailure
  * JD-Core Version:    0.7.0.1
  */

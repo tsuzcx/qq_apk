@@ -20,12 +20,12 @@ public class EdgeTransparentView
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private float[] jdField_a_of_type_ArrayOfFloat = { 0.0F, 0.5F, 1.0F };
-  private int[] jdField_a_of_type_ArrayOfInt = { -1, -1, 16777215 };
+  private float[] jdField_a_of_type_ArrayOfFloat;
+  private int[] jdField_a_of_type_ArrayOfInt;
   private int b = 1;
-  private int c = this.b << 1;
-  private int d = this.b << 2;
-  private int e = this.b << 3;
+  private int c;
+  private int d;
+  private int e;
   private int f;
   private int g;
   
@@ -42,6 +42,12 @@ public class EdgeTransparentView
   public EdgeTransparentView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    paramInt = this.b;
+    this.c = (paramInt << 1);
+    this.d = (paramInt << 2);
+    this.e = (paramInt << 3);
+    this.jdField_a_of_type_ArrayOfInt = new int[] { -1, -1, 16777215 };
+    this.jdField_a_of_type_ArrayOfFloat = new float[] { 0.0F, 0.5F, 1.0F };
     a(paramContext, paramAttributeSet);
   }
   
@@ -55,26 +61,27 @@ public class EdgeTransparentView
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.v);
-    this.jdField_a_of_type_Int = paramContext.getInt(R.styleable.jdField_a_of_type_Int, 0);
-    this.jdField_a_of_type_Float = paramContext.getDimension(R.styleable.b, 40.0F);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.J);
+    this.jdField_a_of_type_Int = paramContext.getInt(R.styleable.A, 0);
+    this.jdField_a_of_type_Float = paramContext.getDimension(R.styleable.B, 40.0F);
     paramContext.recycle();
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
   }
   
-  public boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
+  protected boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
   {
     int i = paramCanvas.saveLayer(0.0F, 0.0F, getWidth(), getHeight(), null, 31);
     boolean bool = super.drawChild(paramCanvas, paramView, paramLong);
-    if ((this.jdField_a_of_type_Int == 0) || ((this.jdField_a_of_type_Int & this.b) != 0)) {
+    int j = this.jdField_a_of_type_Int;
+    if ((j == 0) || ((j & this.b) != 0)) {
       paramCanvas.drawRect(0.0F, 0.0F, this.f, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
-    int j;
-    if ((this.jdField_a_of_type_Int == 0) || ((this.jdField_a_of_type_Int & this.c) != 0))
+    j = this.jdField_a_of_type_Int;
+    if ((j == 0) || ((j & this.c) != 0))
     {
       j = paramCanvas.save();
       paramCanvas.rotate(180.0F, this.f / 2.0F, this.g / 2.0F);
@@ -82,7 +89,8 @@ public class EdgeTransparentView
       paramCanvas.restoreToCount(j);
     }
     float f1 = (this.g - this.f) / 2.0F;
-    if ((this.jdField_a_of_type_Int == 0) || ((this.jdField_a_of_type_Int & this.d) != 0))
+    j = this.jdField_a_of_type_Int;
+    if ((j == 0) || ((j & this.d) != 0))
     {
       j = paramCanvas.save();
       paramCanvas.rotate(270.0F, this.f / 2.0F, this.g / 2.0F);
@@ -90,7 +98,8 @@ public class EdgeTransparentView
       paramCanvas.drawRect(0.0F - f1, 0.0F, this.f + f1, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
       paramCanvas.restoreToCount(j);
     }
-    if ((this.jdField_a_of_type_Int == 0) || ((this.jdField_a_of_type_Int & this.e) != 0))
+    j = this.jdField_a_of_type_Int;
+    if ((j == 0) || ((j & this.e) != 0))
     {
       j = paramCanvas.save();
       paramCanvas.rotate(90.0F, this.f / 2.0F, this.g / 2.0F);
@@ -102,12 +111,12 @@ public class EdgeTransparentView
     return bool;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     a();
@@ -117,7 +126,7 @@ public class EdgeTransparentView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.EdgeTransparentView
  * JD-Core Version:    0.7.0.1
  */

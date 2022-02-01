@@ -15,16 +15,16 @@ public class AEOfflineConfig
   public static final int DEVICE_PERF_LEVERL_MIDDLE_HIGH = 4;
   public static final int DEVICE_PERF_LEVERL_VERYLOW = 1;
   private static final String TAG = "OfflineConfig";
-  protected static float sGauLowMaxSize;
-  protected static float sGauMidMaxSize;
-  protected static int sGauMidderPhoneYear;
-  protected static ScaleMode sGauScaleMode;
-  protected static float sGauSuperMaxSzie;
-  protected static int sGauSuperPhoneYear;
-  protected static int sGaussMaxSize;
-  protected static float sGaussScale;
-  protected static boolean sIsGaussResize;
-  private static boolean sIsHardDecodeEnable;
+  protected static float sGauLowMaxSize = 360.0F;
+  protected static float sGauMidMaxSize = 480.0F;
+  protected static int sGauMidderPhoneYear = 2015;
+  protected static ScaleMode sGauScaleMode = ScaleMode.USE_MAX_SIZE;
+  protected static float sGauSuperMaxSzie = 540.0F;
+  protected static int sGauSuperPhoneYear = 2017;
+  protected static int sGaussMaxSize = -1;
+  protected static float sGaussScale = -1.0F;
+  protected static boolean sIsGaussResize = true;
+  private static boolean sIsHardDecodeEnable = false;
   private static boolean sIsHardEncodeEnable = false;
   protected static int sIsPagEncodeBgStaus = 0;
   protected static int sLowDevYearPag;
@@ -32,22 +32,11 @@ public class AEOfflineConfig
   protected static boolean sNotSupportRealTimePag;
   protected static int sPagNeedScaleStatus;
   protected static float sPagScaleVaue;
-  protected static boolean sUpdateGaussSetting;
+  protected static boolean sUpdateGaussSetting = false;
   public static int useCutoutVersion = OfflineConfig.CutOutVersion.NEW.value;
   
   static
   {
-    sIsHardDecodeEnable = false;
-    sGauSuperPhoneYear = 2017;
-    sGauMidderPhoneYear = 2015;
-    sGauSuperMaxSzie = 540.0F;
-    sGauMidMaxSize = 480.0F;
-    sGauLowMaxSize = 360.0F;
-    sIsGaussResize = true;
-    sGaussMaxSize = -1;
-    sGaussScale = -1.0F;
-    sGauScaleMode = ScaleMode.USE_MAX_SIZE;
-    sUpdateGaussSetting = false;
     sLowDevYearPag = 2015;
     sPagNeedScaleStatus = 0;
     sPagScaleVaue = 0.5F;
@@ -153,18 +142,24 @@ public class AEOfflineConfig
   protected static void setHardDecodeEnable(boolean paramBoolean)
   {
     sIsHardDecodeEnable = paramBoolean;
-    LogUtils.i("OfflineConfig", "setHardDecodeEnable:" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setHardDecodeEnable:");
+    localStringBuilder.append(paramBoolean);
+    LogUtils.i("OfflineConfig", localStringBuilder.toString());
   }
   
   protected static void setHardEncodeEnable(boolean paramBoolean)
   {
     sIsHardEncodeEnable = paramBoolean;
-    LogUtils.i("OfflineConfig", "setHardEncodeEnable:" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setHardEncodeEnable:");
+    localStringBuilder.append(paramBoolean);
+    LogUtils.i("OfflineConfig", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.offlineset.AEOfflineConfig
  * JD-Core Version:    0.7.0.1
  */

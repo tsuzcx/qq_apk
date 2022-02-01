@@ -19,182 +19,205 @@ public abstract class BaseConfigFileParser
     //   1: astore 4
     //   3: aconst_null
     //   4: astore_3
-    //   5: aload 4
-    //   7: astore_2
-    //   8: new 19	java/io/File
-    //   11: dup
-    //   12: aload_1
-    //   13: invokespecial 22	java/io/File:<init>	(Ljava/lang/String;)V
-    //   16: astore_1
-    //   17: aload 4
-    //   19: astore_2
-    //   20: aload_1
-    //   21: invokevirtual 26	java/io/File:exists	()Z
-    //   24: ifeq +13 -> 37
-    //   27: aload 4
-    //   29: astore_2
-    //   30: aload_1
-    //   31: invokevirtual 29	java/io/File:isFile	()Z
-    //   34: ifne +57 -> 91
-    //   37: aload 4
-    //   39: astore_2
-    //   40: invokestatic 34	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   43: ifeq +34 -> 77
-    //   46: aload 4
-    //   48: astore_2
-    //   49: ldc 36
-    //   51: iconst_2
-    //   52: new 38	java/lang/StringBuilder
-    //   55: dup
-    //   56: invokespecial 39	java/lang/StringBuilder:<init>	()V
-    //   59: ldc 41
-    //   61: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   64: aload_1
-    //   65: invokevirtual 49	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   68: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   71: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   74: invokestatic 56	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   77: iconst_0
-    //   78: ifeq +11 -> 89
-    //   81: new 58	java/lang/NullPointerException
-    //   84: dup
-    //   85: invokespecial 59	java/lang/NullPointerException:<init>	()V
-    //   88: athrow
-    //   89: iconst_0
-    //   90: ireturn
-    //   91: aload 4
-    //   93: astore_2
-    //   94: invokestatic 34	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   97: ifeq +34 -> 131
-    //   100: aload 4
-    //   102: astore_2
-    //   103: ldc 36
-    //   105: iconst_2
-    //   106: new 38	java/lang/StringBuilder
-    //   109: dup
-    //   110: invokespecial 39	java/lang/StringBuilder:<init>	()V
-    //   113: ldc 61
-    //   115: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   118: aload_1
-    //   119: invokevirtual 49	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   122: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   125: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   128: invokestatic 64	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   131: aload 4
-    //   133: astore_2
-    //   134: new 66	java/io/FileInputStream
-    //   137: dup
-    //   138: aload_1
-    //   139: invokespecial 69	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   142: astore_1
-    //   143: invokestatic 75	org/xmlpull/v1/XmlPullParserFactory:newInstance	()Lorg/xmlpull/v1/XmlPullParserFactory;
-    //   146: invokevirtual 79	org/xmlpull/v1/XmlPullParserFactory:newPullParser	()Lorg/xmlpull/v1/XmlPullParser;
-    //   149: astore_2
-    //   150: aload_2
-    //   151: aload_1
-    //   152: ldc 81
-    //   154: invokeinterface 87 3 0
-    //   159: aload_0
-    //   160: aload_2
-    //   161: invokevirtual 90	com/tencent/mobileqq/utils/BaseConfigFileParser:a	(Lorg/xmlpull/v1/XmlPullParser;)Ljava/lang/Object;
-    //   164: astore_2
-    //   165: aload_1
-    //   166: ifnull +7 -> 173
-    //   169: aload_1
-    //   170: invokevirtual 93	java/io/FileInputStream:close	()V
-    //   173: aload_2
-    //   174: ifnull -85 -> 89
-    //   177: aload_0
-    //   178: aload_2
-    //   179: invokevirtual 96	com/tencent/mobileqq/utils/BaseConfigFileParser:a	(Ljava/lang/Object;)V
-    //   182: iconst_1
-    //   183: ireturn
-    //   184: astore_2
-    //   185: aload_3
-    //   186: astore_1
-    //   187: aload_2
-    //   188: astore_3
-    //   189: aload_1
-    //   190: astore_2
-    //   191: invokestatic 34	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   194: ifeq +14 -> 208
-    //   197: aload_1
-    //   198: astore_2
-    //   199: ldc 36
-    //   201: iconst_2
-    //   202: ldc 98
-    //   204: aload_3
-    //   205: invokestatic 101	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   208: aload_1
-    //   209: ifnull -120 -> 89
-    //   212: aload_1
-    //   213: invokevirtual 93	java/io/FileInputStream:close	()V
-    //   216: iconst_0
-    //   217: ireturn
-    //   218: astore_1
-    //   219: iconst_0
-    //   220: ireturn
-    //   221: astore_1
-    //   222: aload_2
-    //   223: ifnull +7 -> 230
-    //   226: aload_2
-    //   227: invokevirtual 93	java/io/FileInputStream:close	()V
-    //   230: aload_1
-    //   231: athrow
-    //   232: astore_1
-    //   233: iconst_0
-    //   234: ireturn
-    //   235: astore_1
-    //   236: goto -63 -> 173
-    //   239: astore_2
-    //   240: goto -10 -> 230
-    //   243: astore_3
-    //   244: aload_1
-    //   245: astore_2
-    //   246: aload_3
-    //   247: astore_1
-    //   248: goto -26 -> 222
-    //   251: astore_3
-    //   252: goto -63 -> 189
+    //   5: aload_3
+    //   6: astore_2
+    //   7: new 19	java/io/File
+    //   10: dup
+    //   11: aload_1
+    //   12: invokespecial 22	java/io/File:<init>	(Ljava/lang/String;)V
+    //   15: astore_1
+    //   16: aload_3
+    //   17: astore_2
+    //   18: aload_1
+    //   19: invokevirtual 26	java/io/File:exists	()Z
+    //   22: ifeq +129 -> 151
+    //   25: aload_3
+    //   26: astore_2
+    //   27: aload_1
+    //   28: invokevirtual 29	java/io/File:isFile	()Z
+    //   31: ifne +6 -> 37
+    //   34: goto +117 -> 151
+    //   37: aload_3
+    //   38: astore_2
+    //   39: invokestatic 34	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   42: ifeq +49 -> 91
+    //   45: aload_3
+    //   46: astore_2
+    //   47: new 36	java/lang/StringBuilder
+    //   50: dup
+    //   51: invokespecial 37	java/lang/StringBuilder:<init>	()V
+    //   54: astore 5
+    //   56: aload_3
+    //   57: astore_2
+    //   58: aload 5
+    //   60: ldc 39
+    //   62: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   65: pop
+    //   66: aload_3
+    //   67: astore_2
+    //   68: aload 5
+    //   70: aload_1
+    //   71: invokevirtual 47	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   74: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   77: pop
+    //   78: aload_3
+    //   79: astore_2
+    //   80: ldc 49
+    //   82: iconst_2
+    //   83: aload 5
+    //   85: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   88: invokestatic 56	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   91: aload_3
+    //   92: astore_2
+    //   93: new 58	java/io/FileInputStream
+    //   96: dup
+    //   97: aload_1
+    //   98: invokespecial 61	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   101: astore_1
+    //   102: invokestatic 67	org/xmlpull/v1/XmlPullParserFactory:newInstance	()Lorg/xmlpull/v1/XmlPullParserFactory;
+    //   105: invokevirtual 71	org/xmlpull/v1/XmlPullParserFactory:newPullParser	()Lorg/xmlpull/v1/XmlPullParser;
+    //   108: astore_2
+    //   109: aload_2
+    //   110: aload_1
+    //   111: ldc 73
+    //   113: invokeinterface 79 3 0
+    //   118: aload_0
+    //   119: aload_2
+    //   120: invokevirtual 82	com/tencent/mobileqq/utils/BaseConfigFileParser:a	(Lorg/xmlpull/v1/XmlPullParser;)Ljava/lang/Object;
+    //   123: astore_2
+    //   124: aload_1
+    //   125: invokevirtual 85	java/io/FileInputStream:close	()V
+    //   128: aload_2
+    //   129: ifnull +10 -> 139
+    //   132: aload_0
+    //   133: aload_2
+    //   134: invokevirtual 88	com/tencent/mobileqq/utils/BaseConfigFileParser:a	(Ljava/lang/Object;)V
+    //   137: iconst_1
+    //   138: ireturn
+    //   139: iconst_0
+    //   140: ireturn
+    //   141: astore_3
+    //   142: aload_1
+    //   143: astore_2
+    //   144: goto +100 -> 244
+    //   147: astore_3
+    //   148: goto +67 -> 215
+    //   151: aload_3
+    //   152: astore_2
+    //   153: invokestatic 34	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   156: ifeq +49 -> 205
+    //   159: aload_3
+    //   160: astore_2
+    //   161: new 36	java/lang/StringBuilder
+    //   164: dup
+    //   165: invokespecial 37	java/lang/StringBuilder:<init>	()V
+    //   168: astore 5
+    //   170: aload_3
+    //   171: astore_2
+    //   172: aload 5
+    //   174: ldc 90
+    //   176: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   179: pop
+    //   180: aload_3
+    //   181: astore_2
+    //   182: aload 5
+    //   184: aload_1
+    //   185: invokevirtual 47	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   188: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   191: pop
+    //   192: aload_3
+    //   193: astore_2
+    //   194: ldc 49
+    //   196: iconst_2
+    //   197: aload 5
+    //   199: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   202: invokestatic 93	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   205: iconst_0
+    //   206: ireturn
+    //   207: astore_3
+    //   208: goto +36 -> 244
+    //   211: astore_3
+    //   212: aload 4
+    //   214: astore_1
+    //   215: aload_1
+    //   216: astore_2
+    //   217: invokestatic 34	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   220: ifeq +14 -> 234
+    //   223: aload_1
+    //   224: astore_2
+    //   225: ldc 49
+    //   227: iconst_2
+    //   228: ldc 95
+    //   230: aload_3
+    //   231: invokestatic 98	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   234: aload_1
+    //   235: ifnull +7 -> 242
+    //   238: aload_1
+    //   239: invokevirtual 85	java/io/FileInputStream:close	()V
+    //   242: iconst_0
+    //   243: ireturn
+    //   244: aload_2
+    //   245: ifnull +7 -> 252
+    //   248: aload_2
+    //   249: invokevirtual 85	java/io/FileInputStream:close	()V
+    //   252: aload_3
+    //   253: athrow
+    //   254: astore_1
+    //   255: goto -127 -> 128
+    //   258: astore_1
+    //   259: iconst_0
+    //   260: ireturn
+    //   261: astore_1
+    //   262: goto -10 -> 252
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	255	0	this	BaseConfigFileParser
-    //   0	255	1	paramString	String
-    //   7	172	2	localObject1	Object
-    //   184	4	2	localException1	Exception
-    //   190	37	2	str1	String
-    //   239	1	2	localIOException	java.io.IOException
-    //   245	1	2	str2	String
-    //   4	201	3	localObject2	Object
-    //   243	4	3	localObject3	Object
-    //   251	1	3	localException2	Exception
-    //   1	131	4	localObject4	Object
+    //   0	265	0	this	BaseConfigFileParser
+    //   0	265	1	paramString	String
+    //   6	243	2	localObject1	Object
+    //   4	88	3	localObject2	Object
+    //   141	1	3	localObject3	Object
+    //   147	46	3	localException1	Exception
+    //   207	1	3	localObject4	Object
+    //   211	42	3	localException2	Exception
+    //   1	212	4	localObject5	Object
+    //   54	144	5	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   8	17	184	java/lang/Exception
-    //   20	27	184	java/lang/Exception
-    //   30	37	184	java/lang/Exception
-    //   40	46	184	java/lang/Exception
-    //   49	77	184	java/lang/Exception
-    //   94	100	184	java/lang/Exception
-    //   103	131	184	java/lang/Exception
-    //   134	143	184	java/lang/Exception
-    //   212	216	218	java/io/IOException
-    //   8	17	221	finally
-    //   20	27	221	finally
-    //   30	37	221	finally
-    //   40	46	221	finally
-    //   49	77	221	finally
-    //   94	100	221	finally
-    //   103	131	221	finally
-    //   134	143	221	finally
-    //   191	197	221	finally
-    //   199	208	221	finally
-    //   81	89	232	java/io/IOException
-    //   169	173	235	java/io/IOException
-    //   226	230	239	java/io/IOException
-    //   143	165	243	finally
-    //   143	165	251	java/lang/Exception
+    //   102	124	141	finally
+    //   102	124	147	java/lang/Exception
+    //   7	16	207	finally
+    //   18	25	207	finally
+    //   27	34	207	finally
+    //   39	45	207	finally
+    //   47	56	207	finally
+    //   58	66	207	finally
+    //   68	78	207	finally
+    //   80	91	207	finally
+    //   93	102	207	finally
+    //   153	159	207	finally
+    //   161	170	207	finally
+    //   172	180	207	finally
+    //   182	192	207	finally
+    //   194	205	207	finally
+    //   217	223	207	finally
+    //   225	234	207	finally
+    //   7	16	211	java/lang/Exception
+    //   18	25	211	java/lang/Exception
+    //   27	34	211	java/lang/Exception
+    //   39	45	211	java/lang/Exception
+    //   47	56	211	java/lang/Exception
+    //   58	66	211	java/lang/Exception
+    //   68	78	211	java/lang/Exception
+    //   80	91	211	java/lang/Exception
+    //   93	102	211	java/lang/Exception
+    //   153	159	211	java/lang/Exception
+    //   161	170	211	java/lang/Exception
+    //   172	180	211	java/lang/Exception
+    //   182	192	211	java/lang/Exception
+    //   194	205	211	java/lang/Exception
+    //   124	128	254	java/io/IOException
+    //   238	242	258	java/io/IOException
+    //   248	252	261	java/io/IOException
   }
   
   private void b(Context paramContext)
@@ -208,22 +231,18 @@ public abstract class BaseConfigFileParser
     try
     {
       paramContext = a(paramContext);
-      if (paramContext != null) {
-        a(paramContext);
-      }
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
+      paramContext = localObject;
+      if (QLog.isColorLevel())
       {
+        QLog.e("BaseConfigFileParser", 2, "parseXmlFromRes doParseRules exception:", localException);
         paramContext = localObject;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("BaseConfigFileParser", 2, "parseXmlFromRes doParseRules exception:", localException);
-          paramContext = localObject;
-        }
       }
+    }
+    if (paramContext != null) {
+      a(paramContext);
     }
   }
   
@@ -233,51 +252,62 @@ public abstract class BaseConfigFileParser
   
   public void a(Context paramContext)
   {
-    if (FileUtils.b(b))
+    if (FileUtils.fileExistsAndNotEmpty(b))
     {
       boolean bool = a(b);
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseConfigFileParser", 2, "parseXmlFromOutside: success = " + bool);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("parseXmlFromOutside: success = ");
+        localStringBuilder.append(bool);
+        QLog.d("BaseConfigFileParser", 2, localStringBuilder.toString());
       }
       if (!bool) {
         b(paramContext);
       }
-      return;
     }
-    b(paramContext);
+    else
+    {
+      b(paramContext);
+    }
   }
   
   protected abstract void a(BaseQQAppInterface paramBaseQQAppInterface, long paramLong);
   
   public void a(BaseQQAppInterface paramBaseQQAppInterface, long paramLong, String paramString)
   {
-    int i = 1;
+    int j = 0;
+    int i;
     try
     {
-      FileUtils.a(a, false);
-      FileUtils.a(paramString, a, false);
-      if (i != 0)
-      {
-        boolean bool = a(b);
-        if (QLog.isColorLevel()) {
-          QLog.d("BaseConfigFileParser", 2, "pareseRulesFromZip : delete and uncompressZip success, parse from outside result = " + bool);
-        }
-        if (bool)
-        {
-          a(paramBaseQQAppInterface, paramLong);
-          return;
-        }
-      }
+      FileUtils.delete(a, false);
+      FileUtils.uncompressZip(paramString, a, false);
+      i = 1;
     }
     catch (Exception paramString)
     {
-      for (;;)
+      paramString.printStackTrace();
+      i = j;
+      if (QLog.isColorLevel())
       {
-        paramString.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.e("BaseConfigFileParser", 2, "pareseRulesFromZip : delete and uncompress Exception=>", paramString);
-        }
-        i = 0;
+        QLog.e("BaseConfigFileParser", 2, "pareseRulesFromZip : delete and uncompress Exception=>", paramString);
+        i = j;
+      }
+    }
+    if (i != 0)
+    {
+      boolean bool = a(b);
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("pareseRulesFromZip : delete and uncompressZip success, parse from outside result = ");
+        paramString.append(bool);
+        QLog.d("BaseConfigFileParser", 2, paramString.toString());
+      }
+      if (bool)
+      {
+        a(paramBaseQQAppInterface, paramLong);
+        return;
       }
       b(paramBaseQQAppInterface.getApplication());
       return;
@@ -292,7 +322,7 @@ public abstract class BaseConfigFileParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.BaseConfigFileParser
  * JD-Core Version:    0.7.0.1
  */

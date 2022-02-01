@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class b
   implements Parcelable
 {
-  public static final Parcelable.Creator<b> CREATOR = new b.1();
+  public static final Parcelable.Creator<b> CREATOR = new b.a();
   public String a;
   public Bundle b = null;
   private int c = 1;
@@ -79,7 +79,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.core.aidl.b
  * JD-Core Version:    0.7.0.1
  */

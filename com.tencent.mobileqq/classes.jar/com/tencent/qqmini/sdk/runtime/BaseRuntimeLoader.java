@@ -96,117 +96,129 @@ public abstract class BaseRuntimeLoader
     //   92: getfield 84	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mRuntime	Lcom/tencent/qqmini/sdk/launcher/core/BaseRuntime;
     //   95: aload_0
     //   96: invokevirtual 90	com/tencent/qqmini/sdk/launcher/core/BaseRuntime:setRuntimeMsgObserver	(Lcom/tencent/qqmini/sdk/launcher/core/BaseRuntime$RuntimeMsgObserver;)V
-    //   99: new 92	android/os/HandlerThread
-    //   102: dup
-    //   103: ldc 94
-    //   105: iconst_5
-    //   106: invokespecial 97	android/os/HandlerThread:<init>	(Ljava/lang/String;I)V
-    //   109: astore_2
-    //   110: aload_2
-    //   111: astore_1
-    //   112: aload_2
-    //   113: invokevirtual 100	android/os/HandlerThread:start	()V
-    //   116: aload_2
-    //   117: ifnull +31 -> 148
-    //   120: aload_2
-    //   121: invokevirtual 104	android/os/HandlerThread:isAlive	()Z
-    //   124: ifeq +24 -> 148
-    //   127: aload_0
-    //   128: new 106	android/os/Handler
-    //   131: dup
-    //   132: aload_2
-    //   133: invokevirtual 110	android/os/HandlerThread:getLooper	()Landroid/os/Looper;
-    //   136: aload_0
-    //   137: invokespecial 113	android/os/Handler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
-    //   140: putfield 115	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mHandler	Landroid/os/Handler;
-    //   143: aload_0
-    //   144: invokespecial 118	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:initTask	()V
-    //   147: return
-    //   148: aload_0
-    //   149: new 106	android/os/Handler
-    //   152: dup
-    //   153: invokestatic 123	android/os/Looper:getMainLooper	()Landroid/os/Looper;
+    //   99: aconst_null
+    //   100: astore_3
+    //   101: aconst_null
+    //   102: astore_1
+    //   103: new 92	android/os/HandlerThread
+    //   106: dup
+    //   107: ldc 94
+    //   109: iconst_5
+    //   110: invokespecial 97	android/os/HandlerThread:<init>	(Ljava/lang/String;I)V
+    //   113: astore_2
+    //   114: aload_2
+    //   115: invokevirtual 100	android/os/HandlerThread:start	()V
+    //   118: aload_2
+    //   119: invokevirtual 104	android/os/HandlerThread:isAlive	()Z
+    //   122: ifeq +22 -> 144
+    //   125: aload_0
+    //   126: new 106	android/os/Handler
+    //   129: dup
+    //   130: aload_2
+    //   131: invokevirtual 110	android/os/HandlerThread:getLooper	()Landroid/os/Looper;
+    //   134: aload_0
+    //   135: invokespecial 113	android/os/Handler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
+    //   138: putfield 115	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mHandler	Landroid/os/Handler;
+    //   141: goto +101 -> 242
+    //   144: new 106	android/os/Handler
+    //   147: dup
+    //   148: invokestatic 120	android/os/Looper:getMainLooper	()Landroid/os/Looper;
+    //   151: aload_0
+    //   152: invokespecial 113	android/os/Handler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
+    //   155: astore_1
     //   156: aload_0
-    //   157: invokespecial 113	android/os/Handler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
-    //   160: putfield 115	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mHandler	Landroid/os/Handler;
-    //   163: goto -20 -> 143
+    //   157: aload_1
+    //   158: putfield 115	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mHandler	Landroid/os/Handler;
+    //   161: goto +81 -> 242
+    //   164: astore_1
+    //   165: aload_2
     //   166: astore_3
-    //   167: aconst_null
+    //   167: aload_1
     //   168: astore_2
-    //   169: aload_2
+    //   169: aload_3
     //   170: astore_1
-    //   171: ldc 15
-    //   173: ldc 125
-    //   175: aload_3
-    //   176: invokestatic 131	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   179: aload_2
-    //   180: ifnull +29 -> 209
-    //   183: aload_2
-    //   184: invokevirtual 104	android/os/HandlerThread:isAlive	()Z
-    //   187: ifeq +22 -> 209
-    //   190: aload_0
-    //   191: new 106	android/os/Handler
-    //   194: dup
-    //   195: aload_2
-    //   196: invokevirtual 110	android/os/HandlerThread:getLooper	()Landroid/os/Looper;
-    //   199: aload_0
-    //   200: invokespecial 113	android/os/Handler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
-    //   203: putfield 115	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mHandler	Landroid/os/Handler;
-    //   206: goto -63 -> 143
-    //   209: aload_0
-    //   210: new 106	android/os/Handler
-    //   213: dup
-    //   214: invokestatic 123	android/os/Looper:getMainLooper	()Landroid/os/Looper;
+    //   171: goto +76 -> 247
+    //   174: astore_3
+    //   175: goto +12 -> 187
+    //   178: astore_2
+    //   179: goto +68 -> 247
+    //   182: astore_1
+    //   183: aload_3
+    //   184: astore_2
+    //   185: aload_1
+    //   186: astore_3
+    //   187: aload_2
+    //   188: astore_1
+    //   189: ldc 15
+    //   191: ldc 122
+    //   193: aload_3
+    //   194: invokestatic 128	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   197: aload_2
+    //   198: ifnull +29 -> 227
+    //   201: aload_2
+    //   202: invokevirtual 104	android/os/HandlerThread:isAlive	()Z
+    //   205: ifeq +22 -> 227
+    //   208: aload_0
+    //   209: new 106	android/os/Handler
+    //   212: dup
+    //   213: aload_2
+    //   214: invokevirtual 110	android/os/HandlerThread:getLooper	()Landroid/os/Looper;
     //   217: aload_0
     //   218: invokespecial 113	android/os/Handler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
     //   221: putfield 115	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mHandler	Landroid/os/Handler;
-    //   224: goto -81 -> 143
-    //   227: astore_2
-    //   228: aconst_null
-    //   229: astore_1
-    //   230: aload_1
-    //   231: ifnull +28 -> 259
-    //   234: aload_1
-    //   235: invokevirtual 104	android/os/HandlerThread:isAlive	()Z
-    //   238: ifeq +21 -> 259
-    //   241: aload_0
-    //   242: new 106	android/os/Handler
-    //   245: dup
-    //   246: aload_1
-    //   247: invokevirtual 110	android/os/HandlerThread:getLooper	()Landroid/os/Looper;
-    //   250: aload_0
-    //   251: invokespecial 113	android/os/Handler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
-    //   254: putfield 115	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mHandler	Landroid/os/Handler;
-    //   257: aload_2
-    //   258: athrow
-    //   259: aload_0
-    //   260: new 106	android/os/Handler
-    //   263: dup
-    //   264: invokestatic 123	android/os/Looper:getMainLooper	()Landroid/os/Looper;
+    //   224: goto +18 -> 242
+    //   227: new 106	android/os/Handler
+    //   230: dup
+    //   231: invokestatic 120	android/os/Looper:getMainLooper	()Landroid/os/Looper;
+    //   234: aload_0
+    //   235: invokespecial 113	android/os/Handler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
+    //   238: astore_1
+    //   239: goto -83 -> 156
+    //   242: aload_0
+    //   243: invokespecial 131	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:initTask	()V
+    //   246: return
+    //   247: aload_1
+    //   248: ifnull +29 -> 277
+    //   251: aload_1
+    //   252: invokevirtual 104	android/os/HandlerThread:isAlive	()Z
+    //   255: ifeq +22 -> 277
+    //   258: aload_0
+    //   259: new 106	android/os/Handler
+    //   262: dup
+    //   263: aload_1
+    //   264: invokevirtual 110	android/os/HandlerThread:getLooper	()Landroid/os/Looper;
     //   267: aload_0
     //   268: invokespecial 113	android/os/Handler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
     //   271: putfield 115	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mHandler	Landroid/os/Handler;
-    //   274: goto -17 -> 257
-    //   277: astore_2
-    //   278: goto -48 -> 230
-    //   281: astore_3
-    //   282: goto -113 -> 169
+    //   274: goto +18 -> 292
+    //   277: aload_0
+    //   278: new 106	android/os/Handler
+    //   281: dup
+    //   282: invokestatic 120	android/os/Looper:getMainLooper	()Landroid/os/Looper;
+    //   285: aload_0
+    //   286: invokespecial 113	android/os/Handler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
+    //   289: putfield 115	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mHandler	Landroid/os/Handler;
+    //   292: goto +5 -> 297
+    //   295: aload_2
+    //   296: athrow
+    //   297: goto -2 -> 295
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	285	0	this	BaseRuntimeLoader
-    //   0	285	1	paramContext	Context
-    //   109	87	2	localHandlerThread	android.os.HandlerThread
-    //   227	31	2	localObject1	Object
-    //   277	1	2	localObject2	Object
-    //   166	10	3	localException1	java.lang.Exception
-    //   281	1	3	localException2	java.lang.Exception
+    //   0	300	0	this	BaseRuntimeLoader
+    //   0	300	1	paramContext	Context
+    //   113	56	2	localObject1	Object
+    //   178	1	2	localObject2	Object
+    //   184	112	2	localException1	java.lang.Exception
+    //   100	70	3	localObject3	Object
+    //   174	10	3	localException2	java.lang.Exception
+    //   186	8	3	localContext	Context
     // Exception table:
     //   from	to	target	type
-    //   99	110	166	java/lang/Exception
-    //   99	110	227	finally
-    //   112	116	277	finally
-    //   171	179	277	finally
-    //   112	116	281	java/lang/Exception
+    //   114	118	164	finally
+    //   114	118	174	java/lang/Exception
+    //   103	114	178	finally
+    //   189	197	178	finally
+    //   103	114	182	java/lang/Exception
   }
   
   private final void initTask()
@@ -227,76 +239,46 @@ public abstract class BaseRuntimeLoader
   
   private void registTaskName(BaseTask paramBaseTask)
   {
-    if (paramBaseTask == null) {}
-    for (;;)
-    {
+    if (paramBaseTask == null) {
       return;
-      addTask(paramBaseTask);
-      paramBaseTask = paramBaseTask.getDependTasks();
-      if ((paramBaseTask != null) && (paramBaseTask.size() > 0))
-      {
-        paramBaseTask = paramBaseTask.iterator();
-        while (paramBaseTask.hasNext()) {
-          registTaskName((BaseTask)paramBaseTask.next());
-        }
+    }
+    addTask(paramBaseTask);
+    paramBaseTask = paramBaseTask.getDependTasks();
+    if ((paramBaseTask != null) && (paramBaseTask.size() > 0))
+    {
+      paramBaseTask = paramBaseTask.iterator();
+      while (paramBaseTask.hasNext()) {
+        registTaskName((BaseTask)paramBaseTask.next());
       }
     }
   }
   
-  /* Error */
   private void restartFailTaskIfNeed()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 67	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:hasTaskFailed	Z
-    //   6: istore_1
-    //   7: iload_1
-    //   8: ifne +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: aload_0
-    //   15: iconst_0
-    //   16: putfield 67	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:hasTaskFailed	Z
-    //   19: aload_0
-    //   20: getfield 177	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mAllTasks	Ljava/util/List;
-    //   23: invokeinterface 163 1 0
-    //   28: astore_2
-    //   29: aload_2
-    //   30: invokeinterface 168 1 0
-    //   35: ifeq -24 -> 11
-    //   38: aload_2
-    //   39: invokeinterface 172 1 0
-    //   44: checkcast 149	com/tencent/qqmini/sdk/task/BaseTask
-    //   47: astore_3
-    //   48: aload_3
-    //   49: invokevirtual 179	com/tencent/qqmini/sdk/task/BaseTask:isSucceed	()Z
-    //   52: ifne -23 -> 29
-    //   55: aload_3
-    //   56: invokevirtual 182	com/tencent/qqmini/sdk/task/BaseTask:reset	()V
-    //   59: aload_0
-    //   60: aload_3
-    //   61: invokevirtual 185	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:executeTask	(Lcom/tencent/qqmini/sdk/task/BaseTask;)V
-    //   64: goto -35 -> 29
-    //   67: astore_2
-    //   68: aload_0
-    //   69: monitorexit
-    //   70: aload_2
-    //   71: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	72	0	this	BaseRuntimeLoader
-    //   6	2	1	bool	boolean
-    //   28	11	2	localIterator	Iterator
-    //   67	4	2	localObject	Object
-    //   47	14	3	localBaseTask	BaseTask
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	67	finally
-    //   14	29	67	finally
-    //   29	64	67	finally
+    try
+    {
+      boolean bool = this.hasTaskFailed;
+      if (!bool) {
+        return;
+      }
+      this.hasTaskFailed = false;
+      Iterator localIterator = this.mAllTasks.iterator();
+      while (localIterator.hasNext())
+      {
+        BaseTask localBaseTask = (BaseTask)localIterator.next();
+        if (!localBaseTask.isSucceed())
+        {
+          localBaseTask.reset();
+          executeTask(localBaseTask);
+        }
+      }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public void addRuntimeStateObserver(AppRuntimeEventCenter.RuntimeStateObserver paramRuntimeStateObserver)
@@ -306,13 +288,13 @@ public abstract class BaseRuntimeLoader
   
   public void addTask(BaseTask paramBaseTask)
   {
-    if (paramBaseTask == null) {}
-    String str;
-    do
-    {
+    if (paramBaseTask == null) {
       return;
-      str = paramBaseTask.getClass().getCanonicalName();
-    } while (this.mActivatedTasks.containsKey(str));
+    }
+    String str = paramBaseTask.getClass().getCanonicalName();
+    if (this.mActivatedTasks.containsKey(str)) {
+      return;
+    }
     this.mActivatedTasks.put(str, paramBaseTask);
   }
   
@@ -325,8 +307,9 @@ public abstract class BaseRuntimeLoader
     pause();
     this.mRuntimeLoadListener = null;
     this.mEventCenter.deleteObservers();
-    if (this.mRuntime != null) {
-      this.mRuntime.onRuntimeDestroy();
+    BaseRuntime localBaseRuntime = this.mRuntime;
+    if (localBaseRuntime != null) {
+      localBaseRuntime.onRuntimeDestroy();
     }
   }
   
@@ -347,10 +330,12 @@ public abstract class BaseRuntimeLoader
   
   public MiniAppInfo getMiniAppInfoForReport()
   {
-    if (this.mMiniAppInfo == null) {
-      return MiniProgramReportHelper.miniAppConfigForPreload();
+    MiniAppInfo localMiniAppInfo2 = this.mMiniAppInfo;
+    MiniAppInfo localMiniAppInfo1 = localMiniAppInfo2;
+    if (localMiniAppInfo2 == null) {
+      localMiniAppInfo1 = MiniProgramReportHelper.miniAppConfigForPreload();
     }
-    return this.mMiniAppInfo;
+    return localMiniAppInfo1;
   }
   
   public BaseRuntime getRuntime()
@@ -365,7 +350,10 @@ public abstract class BaseRuntimeLoader
   
   public boolean handleMessage(Message paramMessage)
   {
-    QMLog.d("BaseRuntimeLoader", "handleMessage " + paramMessage.what);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleMessage ");
+    localStringBuilder.append(paramMessage.what);
+    QMLog.d("BaseRuntimeLoader", localStringBuilder.toString());
     return false;
   }
   
@@ -395,13 +383,17 @@ public abstract class BaseRuntimeLoader
   
   public void onAttachActivity(Activity paramActivity, Bundle paramBundle, ViewGroup paramViewGroup)
   {
-    QMLog.e("BaseRuntimeLoader", " [MiniLifecycle] onAttachActivity isLoadSucceed=" + isLoadSucceed());
+    paramBundle = new StringBuilder();
+    paramBundle.append(" [MiniLifecycle] onAttachActivity isLoadSucceed=");
+    paramBundle.append(isLoadSucceed());
+    QMLog.e("BaseRuntimeLoader", paramBundle.toString());
     this.mRuntime.onRuntimeAttachActivity(paramActivity, paramViewGroup);
   }
   
   public void onDetachActivity(Activity paramActivity)
   {
-    if ((this.mMiniAppInfo != null) && (this.mMiniAppInfo.isInternalApp()))
+    MiniAppInfo localMiniAppInfo = this.mMiniAppInfo;
+    if ((localMiniAppInfo != null) && (localMiniAppInfo.isInternalApp()))
     {
       onDetachActivity(paramActivity, false);
       return;
@@ -411,7 +403,12 @@ public abstract class BaseRuntimeLoader
   
   public void onDetachActivity(Activity paramActivity, boolean paramBoolean)
   {
-    QMLog.e("BaseRuntimeLoader", " [MiniLifecycle] onDetachActivity needDestroy=" + paramBoolean + " isLoadSucceed=" + isLoadSucceed());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" [MiniLifecycle] onDetachActivity needDestroy=");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(" isLoadSucceed=");
+    localStringBuilder.append(isLoadSucceed());
+    QMLog.e("BaseRuntimeLoader", localStringBuilder.toString());
     this.mRuntime.onRuntimeDetachActivity(paramActivity);
     notifyRuntimeEvent(62, new Object[0]);
     if (paramBoolean)
@@ -426,14 +423,20 @@ public abstract class BaseRuntimeLoader
   
   public void onMiniPause()
   {
-    QMLog.e("BaseRuntimeLoader", " [MiniLifecycle] onMiniPause isLoadSucceed=" + isLoadSucceed());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" [MiniLifecycle] onMiniPause isLoadSucceed=");
+    localStringBuilder.append(isLoadSucceed());
+    QMLog.e("BaseRuntimeLoader", localStringBuilder.toString());
     this.mRuntime.onRuntimePause();
     notifyRuntimeEvent(24, new Object[0]);
   }
   
   public void onMiniResume()
   {
-    QMLog.e("BaseRuntimeLoader", " [MiniLifecycle] onMiniResume isLoadSucceed=" + isLoadSucceed());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" [MiniLifecycle] onMiniResume isLoadSucceed=");
+    localStringBuilder.append(isLoadSucceed());
+    QMLog.e("BaseRuntimeLoader", localStringBuilder.toString());
     this.mRuntime.onRuntimeResume();
     notifyRuntimeEvent(21, new Object[0]);
   }
@@ -446,7 +449,10 @@ public abstract class BaseRuntimeLoader
   
   public void onMiniStop()
   {
-    QMLog.e("BaseRuntimeLoader", " [MiniLifecycle] onMiniStop isLoadSucceed=" + isLoadSucceed());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" [MiniLifecycle] onMiniStop isLoadSucceed=");
+    localStringBuilder.append(isLoadSucceed());
+    QMLog.e("BaseRuntimeLoader", localStringBuilder.toString());
     this.mRuntime.onRuntimeStop();
     notifyRuntimeEvent(22, new Object[0]);
   }
@@ -455,15 +461,13 @@ public abstract class BaseRuntimeLoader
   {
     boolean bool = true;
     this.runtimeLoadCompleted = true;
-    if (paramInt == 0) {}
-    for (;;)
-    {
-      this.isSucceed = bool;
-      if (this.mRuntimeLoadListener != null) {
-        this.mRuntimeLoadListener.onResult(paramInt, paramString, this);
-      }
-      return;
+    if (paramInt != 0) {
       bool = false;
+    }
+    this.isSucceed = bool;
+    BaseRuntimeLoader.OnAppRuntimeLoadListener localOnAppRuntimeLoadListener = this.mRuntimeLoadListener;
+    if (localOnAppRuntimeLoadListener != null) {
+      localOnAppRuntimeLoadListener.onResult(paramInt, paramString, this);
     }
   }
   
@@ -477,7 +481,13 @@ public abstract class BaseRuntimeLoader
     if (paramBaseTask == null) {
       return;
     }
-    QMLog.d("BaseRuntimeLoader", toSimpleString() + " onTaskDone " + paramBaseTask + " isSucc=" + paramBaseTask.isSucceed());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(toSimpleString());
+    localStringBuilder.append(" onTaskDone ");
+    localStringBuilder.append(paramBaseTask);
+    localStringBuilder.append(" isSucc=");
+    localStringBuilder.append(paramBaseTask.isSucceed());
+    QMLog.d("BaseRuntimeLoader", localStringBuilder.toString());
     if (!paramBaseTask.isSucceed()) {
       markHasTaskFailed(true);
     }
@@ -502,8 +512,12 @@ public abstract class BaseRuntimeLoader
     if (paramMiniAppInfo == null) {
       return;
     }
-    if ((paramMiniAppInfo.apkgInfo == null) && (this.mMiniAppInfo != null)) {
-      paramMiniAppInfo.apkgInfo = this.mMiniAppInfo.apkgInfo;
+    if (paramMiniAppInfo.apkgInfo == null)
+    {
+      MiniAppInfo localMiniAppInfo = this.mMiniAppInfo;
+      if (localMiniAppInfo != null) {
+        paramMiniAppInfo.apkgInfo = localMiniAppInfo.apkgInfo;
+      }
     }
     this.mMiniAppInfo = paramMiniAppInfo;
     restartFailTaskIfNeed();
@@ -539,35 +553,51 @@ public abstract class BaseRuntimeLoader
   
   public void startUpdateMiniAppInfo()
   {
-    if (this.mRuntime == null) {
+    BaseRuntime localBaseRuntime = this.mRuntime;
+    if (localBaseRuntime == null) {
       return;
     }
-    this.mRuntime.onUpdateMiniAppInfo(this.mMiniAppInfo);
+    localBaseRuntime.onUpdateMiniAppInfo(this.mMiniAppInfo);
   }
   
   public String toSimpleString()
   {
-    return "RuntimeLoader(" + getClass().getSimpleName() + ")@" + hashCode();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RuntimeLoader(");
+    localStringBuilder.append(getClass().getSimpleName());
+    localStringBuilder.append(")@");
+    localStringBuilder.append(hashCode());
+    return localStringBuilder.toString();
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("{Runtime:");
-    if (this.mRuntime != null)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{Runtime:");
+    Object localObject = this.mRuntime;
+    String str = "N/A";
+    if (localObject != null)
     {
-      str = this.mRuntime.getClass().getSimpleName() + "@" + this.mRuntime.hashCode();
-      localStringBuilder = localStringBuilder.append(str).append(" AppInfo=");
-      if (this.mMiniAppInfo == null) {
-        break label110;
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.mRuntime.getClass().getSimpleName());
+      ((StringBuilder)localObject).append("@");
+      ((StringBuilder)localObject).append(this.mRuntime.hashCode());
+      localObject = ((StringBuilder)localObject).toString();
     }
-    label110:
-    for (String str = this.mMiniAppInfo.toSimpleString();; str = "N/A")
+    else
     {
-      return str + "}";
-      str = "N/A";
-      break;
+      localObject = "N/A";
     }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(" AppInfo=");
+    MiniAppInfo localMiniAppInfo = this.mMiniAppInfo;
+    localObject = str;
+    if (localMiniAppInfo != null) {
+      localObject = localMiniAppInfo.toSimpleString();
+    }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
   public void updateMiniAppInfo(MiniAppInfo paramMiniAppInfo)
@@ -598,7 +628,7 @@ public abstract class BaseRuntimeLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.BaseRuntimeLoader
  * JD-Core Version:    0.7.0.1
  */

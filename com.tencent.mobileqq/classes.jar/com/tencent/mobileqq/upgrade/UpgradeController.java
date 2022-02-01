@@ -19,6 +19,8 @@ import com.tencent.apkupdate.ApkUpdateParam;
 import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.activity.recent.bannerprocessor.InstallUpgradeBannerProcessor;
+import com.tencent.mobileqq.activity.recent.bannerprocessor.UpgradeBannerProcessor;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.ConfigHandler;
@@ -87,15 +89,19 @@ public final class UpgradeController
     if (((paramInt1 == 12) || (paramInt1 == 2)) && (a() == 4)) {
       return 0;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper == null) || (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null)) {
-      return 1;
-    }
-    String str;
-    Bundle localBundle;
-    if ((this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper != null) && (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_a_of_type_JavaLangString != null))
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper;
+    if (localObject != null)
     {
-      str = this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_a_of_type_JavaLangString;
-      localBundle = new Bundle();
+      if (((UpgradeDetailWrapper)localObject).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null) {
+        return 1;
+      }
+      localObject = this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper;
+      if ((localObject != null) && (((UpgradeDetailWrapper)localObject).jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_a_of_type_JavaLangString != null)) {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_a_of_type_JavaLangString;
+      } else {
+        localObject = "新版手Q";
+      }
+      Bundle localBundle = new Bundle();
       localBundle.putString(DownloadConstants.b, "100686848");
       localBundle.putString(DownloadConstants.j, this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strNewSoftwareURL);
       localBundle.putString(DownloadConstants.f, this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getPackageName());
@@ -104,34 +110,36 @@ public final class UpgradeController
         localBundle.putBoolean(DownloadConstants.o, true);
       }
       localBundle.putString(DownloadConstants.i, "ANDROIDQQ.QQUPDATE");
-      localBundle.putString(DownloadConstants.l, str);
-      if (paramInt2 == 0) {
-        break label319;
-      }
-      localBundle.putString(DownloadConstants.m, "_100686848");
-      localBundle.putBoolean(DownloadConstants.x, false);
-      i = paramInt2;
-      if (paramInt1 != 5)
+      localBundle.putString(DownloadConstants.l, (String)localObject);
+      int i;
+      if (paramInt2 != 0)
       {
+        localBundle.putString(DownloadConstants.m, "_100686848");
+        localBundle.putBoolean(DownloadConstants.y, false);
         i = paramInt2;
-        if (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iIncrementUpgrade != 0) {}
+        if (paramInt1 != 5)
+        {
+          i = paramInt2;
+          if (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iIncrementUpgrade == 0) {
+            i = 0;
+          }
+        }
       }
-    }
-    for (int i = 0;; i = paramInt2)
-    {
+      else
+      {
+        localBundle.putBoolean(DownloadConstants.y, true);
+        i = paramInt2;
+      }
       localBundle.putString(DownloadConstants.jdField_c_of_type_JavaLangString, "6633");
       localBundle.putInt(DownloadConstants.e, this.jdField_a_of_type_Int);
       localBundle.putBoolean(DownloadConstants.g, true);
       localBundle.putBoolean(DownloadConstants.h, true);
       localBundle.putInt(DownloadConstants.n, 1);
-      localBundle.putInt(DownloadConstants.B, this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.bGray);
+      localBundle.putInt(DownloadConstants.C, this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.bGray);
       DownloadApi.a(BaseActivity.sTopActivity, localBundle, "biz_src_jc_update", this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, i);
       return 0;
-      str = "新版手Q";
-      break;
-      label319:
-      localBundle.putBoolean(DownloadConstants.x, true);
     }
+    return 1;
   }
   
   private static PackageInfo a(Context paramContext, String paramString)
@@ -149,22 +157,26 @@ public final class UpgradeController
   
   public static String a()
   {
-    String str2 = "";
-    Object localObject = a();
-    String str1 = str2;
-    if (localObject != null)
+    Object localObject2 = a();
+    String str = "";
+    Object localObject1 = str;
+    if (localObject2 != null)
     {
-      localObject = ((UpgradeController)localObject).jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper;
-      str1 = str2;
-      if (localObject != null)
+      localObject2 = ((UpgradeController)localObject2).jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper;
+      localObject1 = str;
+      if (localObject2 != null)
       {
-        str1 = str2;
-        if (((UpgradeDetailWrapper)localObject).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo != null) {
-          str1 = "" + ((UpgradeDetailWrapper)localObject).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeSdkId;
+        localObject1 = str;
+        if (((UpgradeDetailWrapper)localObject2).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo != null)
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("");
+          ((StringBuilder)localObject1).append(((UpgradeDetailWrapper)localObject2).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeSdkId);
+          localObject1 = ((StringBuilder)localObject1).toString();
         }
       }
     }
-    return str1;
+    return localObject1;
   }
   
   public static String a(String paramString)
@@ -174,91 +186,82 @@ public final class UpgradeController
   
   public static boolean a(QQAppInterface paramQQAppInterface)
   {
-    boolean bool2 = true;
     Object localObject = a();
-    boolean bool1;
+    boolean bool2 = false;
+    boolean bool3 = false;
+    boolean bool1 = bool2;
     if (localObject != null)
     {
       localObject = ((UpgradeController)localObject).jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper;
-      if ((localObject != null) && (((UpgradeDetailWrapper)localObject).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo != null)) {
-        if ((((UpgradeDetailWrapper)localObject).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType > 0) && (((UpgradeDetailWrapper)localObject).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.bNewSwitch == 1))
+      bool1 = bool2;
+      if (localObject != null)
+      {
+        bool1 = bool2;
+        if (((UpgradeDetailWrapper)localObject).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo != null)
         {
-          bool1 = true;
-          if (!bool1) {
-            break label101;
-          }
-          if (ConfigHandler.a(paramQQAppInterface, ((UpgradeDetailWrapper)localObject).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iNewTimeStamp)) {
-            break label96;
+          bool2 = bool3;
+          if (((UpgradeDetailWrapper)localObject).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType > 0)
+          {
+            bool2 = bool3;
+            if (((UpgradeDetailWrapper)localObject).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.bNewSwitch == 1) {
+              bool2 = true;
+            }
           }
           bool1 = bool2;
+          if (bool2) {
+            bool1 = ConfigHandler.a(paramQQAppInterface, ((UpgradeDetailWrapper)localObject).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iNewTimeStamp) ^ true;
+          }
         }
       }
     }
-    for (;;)
-    {
-      bool2 = bool1;
-      if (!bool1) {
-        bool2 = ((TimUpgradeHongdianManager)paramQQAppInterface.getManager(QQManagerFactory.TIM_UPGRADE_HONGDIAN_MANAGER)).a();
-      }
-      return bool2;
-      bool1 = false;
-      break;
-      label96:
-      bool1 = false;
-      continue;
-      label101:
-      continue;
-      bool1 = false;
+    bool2 = bool1;
+    if (!bool1) {
+      bool2 = ((TimUpgradeHongdianManager)paramQQAppInterface.getManager(QQManagerFactory.TIM_UPGRADE_HONGDIAN_MANAGER)).a();
     }
+    return bool2;
   }
   
   private boolean a(Signature[] paramArrayOfSignature1, Signature[] paramArrayOfSignature2)
   {
-    if (paramArrayOfSignature1 == null) {}
-    HashSet localHashSet;
-    do
+    if (paramArrayOfSignature1 == null) {
+      return false;
+    }
+    if (paramArrayOfSignature2 == null) {
+      return false;
+    }
+    HashSet localHashSet = new HashSet();
+    int j = paramArrayOfSignature1.length;
+    int i = 0;
+    while (i < j)
     {
-      do
-      {
-        return false;
-      } while (paramArrayOfSignature2 == null);
-      localHashSet = new HashSet();
-      int j = paramArrayOfSignature1.length;
-      int i = 0;
-      while (i < j)
-      {
-        localHashSet.add(paramArrayOfSignature1[i]);
-        i += 1;
-      }
-      paramArrayOfSignature1 = new HashSet();
-      j = paramArrayOfSignature2.length;
-      i = 0;
-      while (i < j)
-      {
-        paramArrayOfSignature1.add(paramArrayOfSignature2[i]);
-        i += 1;
-      }
-    } while (!localHashSet.equals(paramArrayOfSignature1));
-    return true;
+      localHashSet.add(paramArrayOfSignature1[i]);
+      i += 1;
+    }
+    paramArrayOfSignature1 = new HashSet();
+    j = paramArrayOfSignature2.length;
+    i = 0;
+    while (i < j)
+    {
+      paramArrayOfSignature1.add(paramArrayOfSignature2[i]);
+      i += 1;
+    }
+    return localHashSet.equals(paramArrayOfSignature1);
   }
   
   public static String b()
   {
-    int j = 0;
     Object localObject = a();
-    int i = j;
     if (localObject != null)
     {
       localObject = ((UpgradeController)localObject).jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper;
-      i = j;
-      if (localObject != null)
+      if ((localObject != null) && (((UpgradeDetailWrapper)localObject).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo != null))
       {
-        i = j;
-        if (((UpgradeDetailWrapper)localObject).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo != null) {
-          i = ((UpgradeDetailWrapper)localObject).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iTipsType;
-        }
+        i = ((UpgradeDetailWrapper)localObject).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iTipsType;
+        break label37;
       }
     }
+    int i = 0;
+    label37:
     return String.valueOf(i);
   }
   
@@ -268,7 +271,11 @@ public final class UpgradeController
     {
       ConfigHandler localConfigHandler = (ConfigHandler)((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getRuntime()).getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER);
       String str = this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getPackageName();
-      this.jdField_a_of_type_JavaLangString = (str + "_" + paramInt);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramInt);
+      this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
       this.jdField_a_of_type_Int = paramInt;
       localConfigHandler.a(str, paramInt, this.jdField_a_of_type_JavaLangString);
       return;
@@ -292,48 +299,61 @@ public final class UpgradeController
       if (QLog.isColorLevel())
       {
         QLog.d("UpgradeController", 2, String.format("needShowDialog needShowInstallDialog=%s", new Object[] { Boolean.valueOf(bool2) }));
+        return bool2;
+      }
+    }
+    else
+    {
+      bool2 = paramQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper);
+      bool1 = bool2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("UpgradeController", 2, String.format("needShowDialog needShowDownloadDialog=%s", new Object[] { Boolean.valueOf(bool2) }));
         bool1 = bool2;
       }
     }
-    do
-    {
-      return bool1;
-      bool2 = paramQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper);
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.d("UpgradeController", 2, String.format("needShowDialog needShowDownloadDialog=%s", new Object[] { Boolean.valueOf(bool2) }));
-    return bool2;
+    return bool1;
   }
   
   private void c(int paramInt)
   {
-    if (this.c) {}
-    UpgradeController.OnHandleUpgradeFinishListener localOnHandleUpgradeFinishListener;
-    do
-    {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_JavaLangRefWeakReference == null);
-      localOnHandleUpgradeFinishListener = (UpgradeController.OnHandleUpgradeFinishListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localOnHandleUpgradeFinishListener == null);
-    if (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo != null) {
-      localOnHandleUpgradeFinishListener.a(paramInt, this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper, this);
+    if (this.c) {
+      return;
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localObject != null)
+    {
+      localObject = (UpgradeController.OnHandleUpgradeFinishListener)((WeakReference)localObject).get();
+      if (localObject != null)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo != null) {
+          ((UpgradeController.OnHandleUpgradeFinishListener)localObject).a(paramInt, this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper, this);
+        }
+        this.jdField_a_of_type_JavaLangRefWeakReference = null;
+      }
+    }
   }
   
   private void d(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeController", 2, "invokeStateChangedToListeners:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("invokeStateChangedToListeners:");
+      ((StringBuilder)???).append(paramInt);
+      QLog.d("UpgradeController", 2, ((StringBuilder)???).toString());
     }
     synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      if (localIterator.hasNext()) {
+      while (localIterator.hasNext()) {
         ((UpgradeController.OnStateChangedListener)localIterator.next()).a(paramInt, this);
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
@@ -346,8 +366,12 @@ public final class UpgradeController
     localDownloadInfo.j = "6633";
     localDownloadInfo.b = this.jdField_a_of_type_Int;
     localArrayList.add(localDownloadInfo);
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeController", 2, "queryDownloadInfo:" + localDownloadInfo);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("queryDownloadInfo:");
+      localStringBuilder.append(localDownloadInfo);
+      QLog.d("UpgradeController", 2, localStringBuilder.toString());
     }
     DownloadApi.a(localArrayList, this);
   }
@@ -390,13 +414,13 @@ public final class UpgradeController
   
   private void i()
   {
+    int i = 1;
     d(true);
     Object localObject = (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getRuntime();
     ReportController.b((AppRuntime)localObject, "CliOper", "", "", "0X800716C", "0X800716C", 0, 0, "", "", "", "");
-    int i = 0;
     this.jdField_a_of_type_Boolean = false;
-    if (NetworkUtil.h(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl)) {
-      i = 1;
+    if (!NetworkUtil.isWifiConnected(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl)) {
+      i = 0;
     }
     ((QQAppInterface)localObject).getPreferences().edit().putInt("APPID_SHOULD_DOWNLOAD", a().jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeSdkId);
     localObject = new HashMap();
@@ -409,8 +433,12 @@ public final class UpgradeController
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("UpgradeController", 2, "initDownloadEnv: " + this.d);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("initDownloadEnv: ");
+        localStringBuilder.append(this.d);
+        QLog.d("UpgradeController", 2, localStringBuilder.toString());
       }
       if (!this.d)
       {
@@ -427,8 +455,12 @@ public final class UpgradeController
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("UpgradeController", 2, "releaseDownloadEnv: " + this.d);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("releaseDownloadEnv: ");
+        localStringBuilder.append(this.d);
+        QLog.d("UpgradeController", 2, localStringBuilder.toString());
       }
       if (this.d)
       {
@@ -450,31 +482,51 @@ public final class UpgradeController
   
   public int a()
   {
+    Object localObject = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo;
     int j = 0;
     int i = j;
-    if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo != null)
+    if (localObject != null)
     {
+      int k = ((DownloadInfo)localObject).a();
       i = j;
-      switch (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.a())
-      {
-      default: 
-        i = j;
+      if (k != 1) {
+        if (k != 2)
+        {
+          if (k != 3)
+          {
+            if (k != 4)
+            {
+              i = j;
+              if (k != 10) {
+                if (k != 20) {
+                  i = j;
+                } else {
+                  i = 3;
+                }
+              }
+            }
+            else
+            {
+              i = 4;
+            }
+          }
+          else {
+            i = 2;
+          }
+        }
+        else {
+          i = 1;
+        }
       }
     }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("UpgradeController", 2, "getDownloadState: " + i);
-      }
-      return i;
-      i = 4;
-      continue;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getDownloadState: ");
+      ((StringBuilder)localObject).append(i);
+      QLog.d("UpgradeController", 2, ((StringBuilder)localObject).toString());
     }
+    return i;
   }
   
   public UpgradeDetailWrapper a()
@@ -485,11 +537,14 @@ public final class UpgradeController
   public void a()
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getRuntime();
-    if ((this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper == null) || (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType != 1)) {}
-    do
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper;
+    if ((localObject != null) && (((UpgradeDetailWrapper)localObject).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo != null))
     {
-      return;
-      if ((this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo != null) && (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_c_of_type_Int == 1))
+      if (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType != 1) {
+        return;
+      }
+      localObject = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo;
+      if ((localObject != null) && (((DownloadInfo)localObject).jdField_c_of_type_Int == 1))
       {
         if (QLog.isColorLevel()) {
           QLog.d("UpgradeController", 2, "MYAPP has work, do not allow download by wifi");
@@ -498,56 +553,73 @@ public final class UpgradeController
         d(false);
         return;
       }
-    } while (this.b);
-    b(ConfigHandler.a(localQQAppInterface, false));
+      if (!this.b) {
+        b(ConfigHandler.a(localQQAppInterface, false));
+      }
+    }
   }
   
   public void a(int paramInt)
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_FailCode", Integer.toString(paramInt));
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      StatisticCollector.getInstance(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl).collectPerformance("", "UpgradeWritten", bool, 0L, 0L, localHashMap, "", true);
-      return;
+    boolean bool;
+    if (paramInt == 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    StatisticCollector.getInstance(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl).collectPerformance("", "UpgradeWritten", bool, 0L, 0L, localHashMap, "", true);
   }
   
   public void a(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeController", 2, "onException:" + paramInt + ", " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onException:");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(paramString);
+      QLog.d("UpgradeController", 2, localStringBuilder.toString());
     }
     c(0);
   }
   
   public void a(Context paramContext)
   {
-    int j = 1;
-    if ((this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo == null) || (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.a() != 4)) {
-      return;
+    paramContext = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo;
+    if (paramContext != null) {
+      if (paramContext.a() != 4) {
+        return;
+      }
     }
-    for (int i = j;; i = 0)
+    for (;;)
     {
       try
       {
-        if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo != null)
+        paramContext = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo;
+        int j = 1;
+        i = j;
+        if (paramContext != null)
         {
           if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_c_of_type_Int != 1) {
-            continue;
+            break label74;
           }
           i = j;
         }
         a(5, i);
         return;
       }
-      catch (Exception paramContext) {}
-      if (!QLog.isColorLevel()) {
-        break;
+      catch (Exception paramContext)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("UpgradeController", 2, "installApk:", paramContext);
+        }
       }
-      QLog.d("UpgradeController", 2, "installApk:", paramContext);
       return;
+      label74:
+      int i = 0;
     }
   }
   
@@ -564,7 +636,7 @@ public final class UpgradeController
         ThreadManagerV2.getUIHandlerV2().post(new UpgradeController.2(this));
         return;
       }
-      BannerManager.a().b(17, 3000);
+      BannerManager.a().b(InstallUpgradeBannerProcessor.jdField_a_of_type_Int, 3000);
       return;
     }
     if (Looper.myLooper() != Looper.getMainLooper())
@@ -572,7 +644,7 @@ public final class UpgradeController
       ThreadManagerV2.getUIHandlerV2().post(new UpgradeController.3(this));
       return;
     }
-    BannerManager.a().b(15, 3000);
+    BannerManager.a().b(UpgradeBannerProcessor.jdField_a_of_type_Int, 3000);
   }
   
   public void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
@@ -601,73 +673,117 @@ public final class UpgradeController
     }
   }
   
+  public void a(String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("UpgradeController", 4, "onCheckUpdateFailed");
+    }
+    b(this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_a_of_type_Int);
+  }
+  
+  public void a(ArrayList<ApkUpdateDetail> paramArrayList)
+  {
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
+    {
+      paramArrayList = (ApkUpdateDetail)paramArrayList.get(0);
+      if (paramArrayList != null)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_a_of_type_Int == paramArrayList.versioncode) {
+          this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail = paramArrayList;
+        }
+        if (QLog.isDevelopLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onCheckUpdateSucceed:");
+          localStringBuilder.append(paramArrayList.url);
+          localStringBuilder.append(" -- ");
+          localStringBuilder.append(paramArrayList.updatemethod);
+          QLog.d("UpgradeController", 4, localStringBuilder.toString());
+        }
+      }
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail != null)
+    {
+      b(this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.versioncode);
+      return;
+    }
+    b(this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_a_of_type_Int);
+  }
+  
   public void a(List<DownloadInfo> paramList)
   {
     if ((paramList != null) && (paramList.size() > 0)) {
       this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo = ((DownloadInfo)paramList.get(0));
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeController", 2, "onResult Status:" + this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+    if (QLog.isColorLevel())
+    {
+      paramList = new StringBuilder();
+      paramList.append("onResult Status:");
+      paramList.append(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+      QLog.d("UpgradeController", 2, paramList.toString());
     }
     c(0);
   }
   
   public void a(boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper != null) && (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType == 2)) {}
-    do
+    if (paramBoolean)
     {
-      return;
-      c();
-      this.c = paramBoolean;
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(0);
-      k();
-      this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = BaseApplicationImpl.getApplication();
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo = null;
-      this.jdField_a_of_type_Boolean = true;
-    } while ((!paramBoolean) && (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper != null));
-    this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper = new UpgradeDetailWrapper(null, null);
+      UpgradeDetailWrapper localUpgradeDetailWrapper = this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper;
+      if ((localUpgradeDetailWrapper != null) && (localUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType == 2)) {
+        return;
+      }
+    }
+    c();
+    this.c = paramBoolean;
+    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(0);
+    k();
+    this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo = null;
+    this.jdField_a_of_type_Boolean = true;
+    if ((paramBoolean) || (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper == null)) {
+      this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper = new UpgradeDetailWrapper(null, null);
+    }
   }
   
   public void a(boolean paramBoolean, String paramString1, String paramString2)
   {
     for (;;)
     {
-      int i;
       try
       {
         boolean bool = this.c;
         if (bool) {
           return;
         }
-        if (!paramString1.equals(this.jdField_a_of_type_JavaLangString)) {
-          continue;
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqUpgradeAuthCodeWriter == null)
+        if (paramString1.equals(this.jdField_a_of_type_JavaLangString))
         {
-          i = 1;
-          if (!paramBoolean) {
-            break label90;
+          if (this.jdField_a_of_type_ComTencentMobileqqUpgradeAuthCodeWriter == null)
+          {
+            i = 1;
+            if (paramBoolean)
+            {
+              if (i != 0) {
+                f();
+              }
+              this.jdField_a_of_type_ComTencentMobileqqUpgradeAuthCodeWriter = new AuthCodeWriter(paramString2, this);
+              DownloadApi.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeAuthCodeWriter);
+            }
+            else if (i != 0)
+            {
+              this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo = new UpgradeInfo();
+              this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo = null;
+              c(-1);
+            }
+            this.jdField_a_of_type_JavaLangString = null;
           }
-          if (i != 0) {
-            f();
-          }
-          this.jdField_a_of_type_ComTencentMobileqqUpgradeAuthCodeWriter = new AuthCodeWriter(paramString2, this);
-          DownloadApi.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeAuthCodeWriter);
-          this.jdField_a_of_type_JavaLangString = null;
-          continue;
         }
-        i = 0;
+        else {
+          return;
+        }
       }
       finally {}
-      continue;
-      label90:
-      if (i != 0)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo = new UpgradeInfo();
-        this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo = null;
-        c(-1);
-      }
+      int i = 0;
     }
   }
   
@@ -678,32 +794,34 @@ public final class UpgradeController
   
   public boolean a(int paramInt)
   {
-    if (paramInt == this.jdField_a_of_type_Int) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if ((!bool) && (this.jdField_a_of_type_JavaLangString == null)) {
-        b(paramInt);
-      }
-      return bool;
+    boolean bool;
+    if (paramInt == this.jdField_a_of_type_Int) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    if ((!bool) && (this.jdField_a_of_type_JavaLangString == null)) {
+      b(paramInt);
+    }
+    return bool;
   }
   
   /* Error */
   public boolean a(String paramString)
   {
     // Byte code:
-    //   0: new 659	java/io/File
+    //   0: new 693	java/io/File
     //   3: dup
     //   4: aload_1
-    //   5: invokespecial 662	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 695	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore_1
     //   9: aload_1
-    //   10: invokevirtual 665	java/io/File:exists	()Z
-    //   13: ifeq +73 -> 86
-    //   16: new 667	java/io/FileInputStream
+    //   10: invokevirtual 698	java/io/File:exists	()Z
+    //   13: ifeq +134 -> 147
+    //   16: new 700	java/io/FileInputStream
     //   19: dup
     //   20: aload_1
-    //   21: invokespecial 670	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   21: invokespecial 703	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   24: astore_3
     //   25: aload_3
     //   26: astore_1
@@ -714,108 +832,104 @@ public final class UpgradeController
     //   33: astore_1
     //   34: aload_3
     //   35: aload 4
-    //   37: invokevirtual 674	java/io/FileInputStream:read	([B)I
+    //   37: invokevirtual 707	java/io/FileInputStream:read	([B)I
     //   40: pop
     //   41: aload 4
     //   43: iconst_0
     //   44: baload
     //   45: bipush 80
-    //   47: if_icmpne +14 -> 61
+    //   47: if_icmpne +23 -> 70
     //   50: aload 4
     //   52: iconst_1
     //   53: baload
     //   54: istore_2
     //   55: iload_2
     //   56: bipush 75
-    //   58: if_icmpeq +20 -> 78
-    //   61: aload_3
-    //   62: ifnull +7 -> 69
-    //   65: aload_3
-    //   66: invokevirtual 677	java/io/FileInputStream:close	()V
-    //   69: iconst_0
-    //   70: ireturn
-    //   71: astore_1
-    //   72: aload_1
-    //   73: invokevirtual 680	java/io/IOException:printStackTrace	()V
-    //   76: iconst_0
-    //   77: ireturn
-    //   78: aload_3
-    //   79: ifnull +7 -> 86
-    //   82: aload_3
-    //   83: invokevirtual 677	java/io/FileInputStream:close	()V
-    //   86: iconst_1
-    //   87: ireturn
-    //   88: astore_1
-    //   89: aload_1
-    //   90: invokevirtual 680	java/io/IOException:printStackTrace	()V
-    //   93: goto -7 -> 86
-    //   96: astore 4
-    //   98: aconst_null
-    //   99: astore_3
-    //   100: aload_3
-    //   101: astore_1
-    //   102: ldc_w 335
-    //   105: iconst_1
-    //   106: ldc 211
-    //   108: aload 4
-    //   110: invokestatic 682	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   113: aload_3
-    //   114: ifnull -28 -> 86
-    //   117: aload_3
-    //   118: invokevirtual 677	java/io/FileInputStream:close	()V
-    //   121: goto -35 -> 86
-    //   124: astore_1
-    //   125: aload_1
-    //   126: invokevirtual 680	java/io/IOException:printStackTrace	()V
-    //   129: goto -43 -> 86
-    //   132: astore_3
-    //   133: aconst_null
-    //   134: astore_1
-    //   135: aload_1
-    //   136: ifnull +7 -> 143
-    //   139: aload_1
-    //   140: invokevirtual 677	java/io/FileInputStream:close	()V
-    //   143: aload_3
-    //   144: athrow
-    //   145: astore_1
-    //   146: aload_1
-    //   147: invokevirtual 680	java/io/IOException:printStackTrace	()V
-    //   150: goto -7 -> 143
-    //   153: astore_3
-    //   154: goto -19 -> 135
-    //   157: astore 4
-    //   159: goto -59 -> 100
+    //   58: if_icmpeq +6 -> 64
+    //   61: goto +9 -> 70
+    //   64: aload_3
+    //   65: invokevirtual 710	java/io/FileInputStream:close	()V
+    //   68: iconst_1
+    //   69: ireturn
+    //   70: aload_3
+    //   71: invokevirtual 710	java/io/FileInputStream:close	()V
+    //   74: iconst_0
+    //   75: ireturn
+    //   76: astore_1
+    //   77: aload_1
+    //   78: invokevirtual 713	java/io/IOException:printStackTrace	()V
+    //   81: iconst_0
+    //   82: ireturn
+    //   83: astore 4
+    //   85: goto +13 -> 98
+    //   88: astore_3
+    //   89: aconst_null
+    //   90: astore_1
+    //   91: goto +38 -> 129
+    //   94: astore 4
+    //   96: aconst_null
+    //   97: astore_3
+    //   98: aload_3
+    //   99: astore_1
+    //   100: ldc_w 336
+    //   103: iconst_1
+    //   104: ldc 214
+    //   106: aload 4
+    //   108: invokestatic 715	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   111: aload_3
+    //   112: ifnull +35 -> 147
+    //   115: aload_3
+    //   116: invokevirtual 710	java/io/FileInputStream:close	()V
+    //   119: iconst_1
+    //   120: ireturn
+    //   121: astore_1
+    //   122: aload_1
+    //   123: invokevirtual 713	java/io/IOException:printStackTrace	()V
+    //   126: iconst_1
+    //   127: ireturn
+    //   128: astore_3
+    //   129: aload_1
+    //   130: ifnull +15 -> 145
+    //   133: aload_1
+    //   134: invokevirtual 710	java/io/FileInputStream:close	()V
+    //   137: goto +8 -> 145
+    //   140: astore_1
+    //   141: aload_1
+    //   142: invokevirtual 713	java/io/IOException:printStackTrace	()V
+    //   145: aload_3
+    //   146: athrow
+    //   147: iconst_1
+    //   148: ireturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	162	0	this	UpgradeController
-    //   0	162	1	paramString	String
+    //   0	149	0	this	UpgradeController
+    //   0	149	1	paramString	String
     //   54	5	2	i	int
-    //   24	94	3	localFileInputStream	java.io.FileInputStream
-    //   132	12	3	localObject1	Object
-    //   153	1	3	localObject2	Object
+    //   24	47	3	localFileInputStream	java.io.FileInputStream
+    //   88	1	3	localObject1	Object
+    //   97	19	3	localObject2	Object
+    //   128	18	3	localObject3	Object
     //   30	21	4	arrayOfByte	byte[]
-    //   96	13	4	localThrowable1	Throwable
-    //   157	1	4	localThrowable2	Throwable
+    //   83	1	4	localThrowable1	Throwable
+    //   94	13	4	localThrowable2	Throwable
     // Exception table:
     //   from	to	target	type
-    //   65	69	71	java/io/IOException
-    //   82	86	88	java/io/IOException
-    //   16	25	96	java/lang/Throwable
-    //   117	121	124	java/io/IOException
-    //   16	25	132	finally
-    //   139	143	145	java/io/IOException
-    //   27	32	153	finally
-    //   34	41	153	finally
-    //   102	113	153	finally
-    //   27	32	157	java/lang/Throwable
-    //   34	41	157	java/lang/Throwable
+    //   70	74	76	java/io/IOException
+    //   27	32	83	java/lang/Throwable
+    //   34	41	83	java/lang/Throwable
+    //   16	25	88	finally
+    //   16	25	94	java/lang/Throwable
+    //   64	68	121	java/io/IOException
+    //   115	119	121	java/io/IOException
+    //   27	32	128	finally
+    //   34	41	128	finally
+    //   100	111	128	finally
+    //   133	137	140	java/io/IOException
   }
   
   public boolean a(String paramString, PackageInfo paramPackageInfo)
   {
-    boolean bool2 = false;
     Object localObject = this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getPackageManager();
-    boolean bool1;
     if ((paramPackageInfo.signatures != null) && (paramPackageInfo.signatures.length > 0))
     {
       try
@@ -823,83 +937,96 @@ public final class UpgradeController
         localObject = ((PackageManager)localObject).getPackageInfo(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getPackageName(), 64);
         if (((PackageInfo)localObject).packageName.equals(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getPackageName()))
         {
-          if ((((PackageInfo)localObject).signatures == null) || (((PackageInfo)localObject).signatures.length <= 0)) {
-            break label177;
-          }
-          if (a(((PackageInfo)localObject).signatures, paramPackageInfo.signatures))
+          if ((((PackageInfo)localObject).signatures != null) && (((PackageInfo)localObject).signatures.length > 0))
           {
-            if (!QLog.isColorLevel()) {
-              break label236;
+            if (a(((PackageInfo)localObject).signatures, paramPackageInfo.signatures))
+            {
+              if (!QLog.isColorLevel()) {
+                break label226;
+              }
+              QLog.d("UpgradeConfigManager", 2, "target apk's signature is same with mobileqq");
+              break label226;
             }
-            QLog.d("UpgradeConfigManager", 2, "target apk's signature is same with mobileqq");
-            break label236;
+            if (!QLog.isColorLevel()) {
+              break label228;
+            }
+            paramPackageInfo = new StringBuilder();
+            paramPackageInfo.append("target apk's signature is wrong! path=");
+            paramPackageInfo.append(paramString);
+            QLog.d("UpgradeConfigManager", 2, paramPackageInfo.toString());
+            return false;
           }
-          bool1 = bool2;
-          if (!QLog.isColorLevel()) {
-            return bool1;
+          if (QLog.isColorLevel()) {
+            QLog.d("UpgradeConfigManager", 2, "WTF? cannot get signature from local mobileqq");
           }
-          QLog.d("UpgradeConfigManager", 2, "target apk's signature is wrong! path=" + paramString);
           return false;
         }
       }
       catch (PackageManager.NameNotFoundException paramString)
       {
         paramString.printStackTrace();
-        bool1 = bool2;
-        if (!QLog.isColorLevel()) {
-          return bool1;
+        if (QLog.isColorLevel()) {
+          QLog.d("UpgradeConfigManager", 2, "WTF? cannot find mobileqq in local app");
         }
-      }
-      QLog.d("UpgradeConfigManager", 2, "WTF? cannot find mobileqq in local app");
-      return false;
-      label177:
-      bool1 = bool2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("UpgradeConfigManager", 2, "WTF? cannot get signature from local mobileqq");
         return false;
       }
     }
     else
     {
-      bool1 = bool2;
       if (QLog.isColorLevel())
       {
-        QLog.d("UpgradeConfigManager", 2, "cannot get signature from apk:" + paramString);
-        return false;
-        label236:
-        bool1 = true;
+        paramPackageInfo = new StringBuilder();
+        paramPackageInfo.append("cannot get signature from apk:");
+        paramPackageInfo.append(paramString);
+        QLog.d("UpgradeConfigManager", 2, paramPackageInfo.toString());
       }
+      return false;
     }
-    return bool1;
+    label226:
+    return true;
+    label228:
+    return false;
   }
   
   public boolean a(UpgradeInfo paramUpgradeInfo, UpgradeController.OnHandleUpgradeFinishListener paramOnHandleUpgradeFinishListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo = paramUpgradeInfo;
-    this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo = ConfigHandler.a(paramUpgradeInfo);
-    if ((paramOnHandleUpgradeFinishListener == null) || (paramUpgradeInfo == null)) {
-      return false;
+    UpgradeDetailWrapper localUpgradeDetailWrapper = this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper;
+    localUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo = paramUpgradeInfo;
+    localUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo = ConfigHandler.a(paramUpgradeInfo);
+    if (paramOnHandleUpgradeFinishListener != null)
+    {
+      if (paramUpgradeInfo == null) {
+        return false;
+      }
+      if (paramUpgradeInfo.iUpgradeType == 0) {
+        return false;
+      }
+      if (this.c) {
+        return false;
+      }
+      if ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getRuntime() == null) {
+        return false;
+      }
+      j();
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramOnHandleUpgradeFinishListener);
+      if (QLog.isColorLevel())
+      {
+        paramOnHandleUpgradeFinishListener = new StringBuilder();
+        paramOnHandleUpgradeFinishListener.append("handleUpgradeInfo packageName = ");
+        paramOnHandleUpgradeFinishListener.append(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getPackageName());
+        paramOnHandleUpgradeFinishListener.append(", bGray = ");
+        paramOnHandleUpgradeFinishListener.append(paramUpgradeInfo.bGray);
+        paramOnHandleUpgradeFinishListener.append(", versioncode = ");
+        paramOnHandleUpgradeFinishListener.append(this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_a_of_type_Int);
+        QLog.d("UpgradeController", 2, paramOnHandleUpgradeFinishListener.toString());
+      }
+      paramUpgradeInfo = new ApkUpdateParam(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getPackageName(), paramUpgradeInfo.bGray, this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_a_of_type_Int);
+      paramOnHandleUpgradeFinishListener = new ArrayList();
+      paramOnHandleUpgradeFinishListener.add(paramUpgradeInfo);
+      UpdateManager.a().b(paramOnHandleUpgradeFinishListener);
+      return true;
     }
-    if (paramUpgradeInfo.iUpgradeType == 0) {
-      return false;
-    }
-    if (this.c) {
-      return false;
-    }
-    if ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getRuntime() == null) {
-      return false;
-    }
-    j();
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramOnHandleUpgradeFinishListener);
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeController", 2, "handleUpgradeInfo packageName = " + this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getPackageName() + ", bGray = " + paramUpgradeInfo.bGray + ", versioncode = " + this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_a_of_type_Int);
-    }
-    paramUpgradeInfo = new ApkUpdateParam(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getPackageName(), paramUpgradeInfo.bGray, this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_a_of_type_Int);
-    paramOnHandleUpgradeFinishListener = new ArrayList();
-    paramOnHandleUpgradeFinishListener.add(paramUpgradeInfo);
-    UpdateManager.a().b(paramOnHandleUpgradeFinishListener);
-    return true;
+    return false;
   }
   
   public void b()
@@ -925,80 +1052,93 @@ public final class UpgradeController
   
   public void b(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeController", 2, "startDownload:" + paramBoolean + ", " + this.b);
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getRuntime();
-    if (a() == 4) {}
-    while (this.b) {
-      return;
-    }
-    ConfigHandler.b(localQQAppInterface, paramBoolean);
-    if (paramBoolean)
+    if (QLog.isColorLevel())
     {
-      g();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startDownload:");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(", ");
+      ((StringBuilder)localObject).append(this.b);
+      QLog.d("UpgradeController", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getRuntime();
+    if (a() == 4) {
       return;
     }
-    c(false);
+    if (!this.b)
+    {
+      ConfigHandler.b((QQAppInterface)localObject, paramBoolean);
+      if (paramBoolean)
+      {
+        g();
+        return;
+      }
+      c(false);
+    }
   }
   
   public boolean b()
   {
-    String str1 = null;
-    if ((a() == 4) && (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo != null))
+    if (a() == 4)
     {
-      String str2 = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.l;
-      if (TextUtils.isEmpty(str2))
+      Object localObject = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo;
+      if (localObject != null)
       {
-        QLog.e("UpgradeConfigManager", 1, "checkJacking：  cannot get path to apk");
-        return true;
-      }
-      Object localObject = this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getPackageManager();
-      try
-      {
-        localObject = ((PackageManager)localObject).getPackageArchiveInfo(str2, 64);
-        if (localObject == null) {
-          break label252;
-        }
-        if (((PackageInfo)localObject).packageName.equals(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getPackageName()))
+        String str2 = ((DownloadInfo)localObject).l;
+        if (TextUtils.isEmpty(str2))
         {
-          String str3 = PluginStatic.encodeFile(str2);
-          QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getRuntime();
-          if (localQQAppInterface != null) {
-            str1 = localQQAppInterface.getPreferences().getString("upgrade_check_md5", "");
-          }
-          if (!str3.equals(str1))
-          {
-            QLog.d("UpgradeConfigManager", 1, "checkJacking：  failed... md5 is different. apkMd5File=" + str3 + " apkMd5Record=" + str1);
-            return true;
-          }
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        PackageInfo localPackageInfo;
-        for (;;)
-        {
-          QLog.d("UpgradeController", 1, localThrowable, new Object[0]);
-          localPackageInfo = null;
-        }
-        if (a(str2, localPackageInfo))
-        {
-          if (a(str2))
-          {
-            QLog.d("UpgradeConfigManager", 1, "checkJacking：  success!!! i think it is safe");
-            return false;
-          }
-          QLog.d("UpgradeConfigManager", 1, "checkJacking：  failed... dex injected");
+          QLog.e("UpgradeConfigManager", 1, "checkJacking：  cannot get path to apk");
           return true;
         }
-        QLog.d("UpgradeConfigManager", 1, "checkJacking：  failed... signature is wrong.");
-        return true;
+        localObject = this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getPackageManager();
+        String str1 = null;
+        StringBuilder localStringBuilder;
+        try
+        {
+          localObject = ((PackageManager)localObject).getPackageArchiveInfo(str2, 64);
+        }
+        catch (Throwable localThrowable)
+        {
+          QLog.d("UpgradeController", 1, localThrowable, new Object[0]);
+          localStringBuilder = null;
+        }
+        if (localStringBuilder != null)
+        {
+          if (localStringBuilder.packageName.equals(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getPackageName()))
+          {
+            String str3 = PluginStatic.encodeFile(str2);
+            QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getRuntime();
+            if (localQQAppInterface != null) {
+              str1 = localQQAppInterface.getPreferences().getString("upgrade_check_md5", "");
+            }
+            if (!str3.equals(str1))
+            {
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("checkJacking：  failed... md5 is different. apkMd5File=");
+              localStringBuilder.append(str3);
+              localStringBuilder.append(" apkMd5Record=");
+              localStringBuilder.append(str1);
+              QLog.d("UpgradeConfigManager", 1, localStringBuilder.toString());
+              return true;
+            }
+            if (a(str2, localStringBuilder))
+            {
+              if (a(str2))
+              {
+                QLog.d("UpgradeConfigManager", 1, "checkJacking：  success!!! i think it is safe");
+                return false;
+              }
+              QLog.d("UpgradeConfigManager", 1, "checkJacking：  failed... dex injected");
+              return true;
+            }
+            QLog.d("UpgradeConfigManager", 1, "checkJacking：  failed... signature is wrong.");
+            return true;
+          }
+          QLog.d("UpgradeConfigManager", 1, "checkJacking：  package name is wrong!");
+          return true;
+        }
       }
-      QLog.d("UpgradeConfigManager", 1, "checkJacking：  package name is wrong!");
-      return true;
     }
-    label252:
     QLog.e("UpgradeConfigManager", 1, "checkJacking：  apk has not been downloaded or cannot get download info");
     return true;
   }
@@ -1009,73 +1149,68 @@ public final class UpgradeController
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: invokestatic 333	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2: invokestatic 334	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   5: ifeq +13 -> 18
-    //   8: ldc_w 335
+    //   8: ldc_w 336
     //   11: iconst_2
-    //   12: ldc_w 790
-    //   15: invokestatic 349	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   12: ldc_w 822
+    //   15: invokestatic 350	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   18: aload_0
-    //   19: getfield 275	com/tencent/mobileqq/upgrade/UpgradeController:b	Z
+    //   19: getfield 276	com/tencent/mobileqq/upgrade/UpgradeController:b	Z
     //   22: ifeq +21 -> 43
     //   25: aload_0
     //   26: iconst_0
-    //   27: putfield 275	com/tencent/mobileqq/upgrade/UpgradeController:b	Z
+    //   27: putfield 276	com/tencent/mobileqq/upgrade/UpgradeController:b	Z
     //   30: aload_0
-    //   31: invokevirtual 792	com/tencent/mobileqq/upgrade/UpgradeController:e	()V
+    //   31: invokevirtual 824	com/tencent/mobileqq/upgrade/UpgradeController:e	()V
     //   34: aload_0
-    //   35: invokespecial 794	com/tencent/mobileqq/upgrade/UpgradeController:h	()V
-    //   38: ldc 140
-    //   40: invokestatic 796	com/tencent/open/downloadnew/DownloadApi:a	(Ljava/lang/String;)V
+    //   35: invokespecial 826	com/tencent/mobileqq/upgrade/UpgradeController:h	()V
+    //   38: ldc 142
+    //   40: invokestatic 828	com/tencent/open/downloadnew/DownloadApi:a	(Ljava/lang/String;)V
     //   43: aload_0
     //   44: monitorexit
     //   45: return
     //   46: astore_1
-    //   47: goto -13 -> 34
-    //   50: astore_1
-    //   51: aload_0
-    //   52: monitorexit
-    //   53: aload_1
-    //   54: athrow
+    //   47: aload_0
+    //   48: monitorexit
+    //   49: aload_1
+    //   50: athrow
+    //   51: astore_1
+    //   52: goto -18 -> 34
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	55	0	this	UpgradeController
-    //   46	1	1	localException	Exception
-    //   50	4	1	localObject	Object
+    //   46	4	1	localObject	Object
+    //   51	1	1	localException	Exception
     // Exception table:
     //   from	to	target	type
-    //   30	34	46	java/lang/Exception
-    //   2	18	50	finally
-    //   18	30	50	finally
-    //   30	34	50	finally
-    //   34	43	50	finally
+    //   2	18	46	finally
+    //   18	30	46	finally
+    //   30	34	46	finally
+    //   34	43	46	finally
+    //   30	34	51	java/lang/Exception
   }
   
   void c(boolean paramBoolean)
   {
-    int j = 1;
     if (!this.b)
     {
       this.b = true;
-      if ((this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail == null) || (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.updatemethod != 4)) {
-        break label55;
+      int i;
+      if ((this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail != null) && (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.updatemethod == 4)) {
+        i = 12;
+      } else {
+        i = 2;
       }
-    }
-    label55:
-    for (int i = 12;; i = 2)
-    {
-      if (paramBoolean) {
-        j = 0;
-      }
-      a(i, j);
-      return;
+      a(i, paramBoolean ^ true);
     }
   }
   
   public void d()
   {
+    boolean bool = QLog.isColorLevel();
     int j = 2;
-    if (QLog.isColorLevel()) {
+    if (bool) {
       QLog.d("UpgradeController", 2, "resumeDownload:");
     }
     if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo == null) {
@@ -1089,12 +1224,7 @@ public final class UpgradeController
         i = 12;
       }
     }
-    if (!a()) {}
-    for (j = 1;; j = 0)
-    {
-      a(i, j);
-      return;
-    }
+    a(i, a() ^ true);
   }
   
   public void d(boolean paramBoolean)
@@ -1107,39 +1237,34 @@ public final class UpgradeController
     if (QLog.isColorLevel()) {
       QLog.d("UpgradeController", 2, "pauseDownload:");
     }
-    if (!a()) {}
-    for (int i = 1;; i = 0)
-    {
-      a(3, i);
-      return;
-    }
+    a(3, a() ^ true);
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        paramMessage = this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
-        if (!this.e) {
-          continue;
-        }
-        i = 2131694652;
-        Toast.makeText(paramMessage, i, 0).show();
-        paramMessage = ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getRuntime()).getHandler(Conversation.class);
-        if ((paramMessage != null) && (a().a() == 4)) {
-          paramMessage.obtainMessage(1134019).sendToTarget();
-        }
+      paramMessage = this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
+      if (!this.e) {
+        break label75;
       }
-      catch (Throwable paramMessage)
-      {
-        int i;
-        continue;
-      }
-      return true;
-      i = 2131694651;
+      i = 2131694620;
     }
+    catch (Throwable paramMessage)
+    {
+      for (;;)
+      {
+        continue;
+        label75:
+        int i = 2131694619;
+      }
+    }
+    Toast.makeText(paramMessage, i, 0).show();
+    paramMessage = ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getRuntime()).getHandler(Conversation.class);
+    if ((paramMessage != null) && (a().a() == 4)) {
+      paramMessage.obtainMessage(1134019).sendToTarget();
+    }
+    return true;
   }
   
   public void installSucceed(String paramString1, String paramString2) {}
@@ -1166,12 +1291,18 @@ public final class UpgradeController
     this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo = paramDownloadInfo;
     this.b = false;
     h();
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeController", 2, "onDownloadError: " + paramInt1 + ", " + paramString);
+    if (QLog.isColorLevel())
+    {
+      paramDownloadInfo = new StringBuilder();
+      paramDownloadInfo.append("onDownloadError: ");
+      paramDownloadInfo.append(paramInt1);
+      paramDownloadInfo.append(", ");
+      paramDownloadInfo.append(paramString);
+      QLog.d("UpgradeController", 2, paramDownloadInfo.toString());
     }
     d(a());
     paramInt2 = paramInt1;
-    if (NetworkUtil.h(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl)) {
+    if (NetworkUtil.isWifiConnected(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl)) {
       paramInt2 = paramInt1 | 0x1;
     }
     paramDownloadInfo = new HashMap();
@@ -1182,7 +1313,7 @@ public final class UpgradeController
   
   public void onDownloadFinish(DownloadInfo paramDownloadInfo)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getRuntime();
+    Object localObject2 = (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getRuntime();
     if (!"100686848".equals(paramDownloadInfo.jdField_c_of_type_JavaLangString)) {
       return;
     }
@@ -1191,78 +1322,80 @@ public final class UpgradeController
     }
     this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo = paramDownloadInfo;
     this.b = false;
-    Object localObject2 = paramDownloadInfo.l;
-    Object localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2))
+    String str = paramDownloadInfo.l;
+    Object localObject1 = str;
+    if (TextUtils.isEmpty(str))
     {
-      localObject1 = localObject2;
+      localObject1 = str;
       if (paramDownloadInfo.jdField_c_of_type_Int == 1)
       {
         paramDownloadInfo = DownloadManager.a().a(paramDownloadInfo);
-        localObject1 = localObject2;
+        localObject1 = str;
         if (paramDownloadInfo != null) {
           localObject1 = paramDownloadInfo.mSavePath;
         }
       }
     }
-    localObject2 = a(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, (String)localObject1);
-    paramDownloadInfo = "";
+    paramDownloadInfo = a(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, (String)localObject1);
     int i;
-    if (localObject2 != null)
+    if (paramDownloadInfo != null)
     {
-      i = ((PackageInfo)localObject2).versionCode;
-      paramDownloadInfo = ((PackageInfo)localObject2).packageName;
+      i = paramDownloadInfo.versionCode;
+      paramDownloadInfo = paramDownloadInfo.packageName;
     }
-    for (;;)
+    else
     {
-      int k = ApkUtils.a(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl);
-      localObject2 = PluginStatic.encodeFile((String)localObject1);
-      QLog.i("UpgradeController", 1, "upgradeDownloadFinish md5=" + (String)localObject2);
-      if ((this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getPackageName().equals(paramDownloadInfo)) && (k > 0) && (i >= k))
-      {
-        if (localQQAppInterface == null) {
-          break;
-        }
-        d(a());
-        localQQAppInterface.getPreferences().edit().putLong("YELLOW_BAR_LAST_SHOW", 0L).putString("upgrade_check_md5", (String)localObject2).commit();
-        i();
-        h();
-        return;
-      }
-      boolean bool = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_a_of_type_Boolean;
-      if (bool)
-      {
-        DownloadApi.a("_100686848");
-        h();
-        localObject1 = new File((String)localObject1);
-        if (((File)localObject1).exists()) {
-          ((File)localObject1).delete();
-        }
-        localObject1 = new HashMap();
-        if (i >= k) {
-          break label450;
-        }
-      }
-      label450:
-      for (i = 101;; i = 9527)
-      {
-        ((HashMap)localObject1).put("param_FailCode", Integer.toString(i));
-        ((HashMap)localObject1).put("param_ErrMsg", "MD5:" + (String)localObject2 + "_PN:" + paramDownloadInfo);
-        StatisticCollector.getInstance(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl).collectPerformance("", "UpgradeErr", false, 0L, 0L, (HashMap)localObject1, "", true);
-        if (bool) {
-          break;
-        }
-        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(0);
-        return;
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_a_of_type_Boolean = false;
-        if (!a()) {}
-        for (int j = 1;; j = 0)
-        {
-          a(10, j);
-          break;
-        }
-      }
+      paramDownloadInfo = "";
       i = 0;
+    }
+    int j = ApkUtils.a(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl);
+    str = PluginStatic.encodeFile((String)localObject1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("upgradeDownloadFinish md5=");
+    localStringBuilder.append(str);
+    QLog.i("UpgradeController", 1, localStringBuilder.toString());
+    if ((this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getPackageName().equals(paramDownloadInfo)) && (j > 0) && (i >= j))
+    {
+      if (localObject2 == null) {
+        return;
+      }
+      d(a());
+      ((QQAppInterface)localObject2).getPreferences().edit().putLong("YELLOW_BAR_LAST_SHOW", 0L).putString("upgrade_check_md5", str).commit();
+      i();
+      h();
+      return;
+    }
+    boolean bool = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_a_of_type_Boolean;
+    if (bool)
+    {
+      DownloadApi.a("_100686848");
+    }
+    else
+    {
+      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_a_of_type_Boolean = false;
+      a(10, true ^ a());
+    }
+    h();
+    localObject1 = new File((String)localObject1);
+    if (((File)localObject1).exists()) {
+      ((File)localObject1).delete();
+    }
+    localObject1 = new HashMap();
+    if (i < j) {
+      i = 101;
+    } else {
+      i = 9527;
+    }
+    ((HashMap)localObject1).put("param_FailCode", Integer.toString(i));
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("MD5:");
+    ((StringBuilder)localObject2).append(str);
+    ((StringBuilder)localObject2).append("_PN:");
+    ((StringBuilder)localObject2).append(paramDownloadInfo);
+    ((HashMap)localObject1).put("param_ErrMsg", ((StringBuilder)localObject2).toString());
+    StatisticCollector.getInstance(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl).collectPerformance("", "UpgradeErr", false, 0L, 0L, (HashMap)localObject1, "", true);
+    if (!bool) {
+      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(0);
     }
   }
   
@@ -1286,22 +1419,27 @@ public final class UpgradeController
       while (paramList.hasNext())
       {
         DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
-        if ("100686848".equals(localDownloadInfo.jdField_c_of_type_JavaLangString)) {
+        if ("100686848".equals(localDownloadInfo.jdField_c_of_type_JavaLangString))
+        {
           this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo = localDownloadInfo;
+          i = 1;
+          break label54;
         }
       }
     }
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0) {
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("UpgradeController", 2, "onDownloadUpdate Status:" + this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.a());
-      }
-      d(a());
+    int i = 0;
+    label54:
+    if (i == 0) {
       return;
     }
+    if (QLog.isColorLevel())
+    {
+      paramList = new StringBuilder();
+      paramList.append("onDownloadUpdate Status:");
+      paramList.append(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.a());
+      QLog.d("UpgradeController", 2, paramList.toString());
+    }
+    d(a());
   }
   
   public void onDownloadWait(DownloadInfo paramDownloadInfo)
@@ -1316,44 +1454,13 @@ public final class UpgradeController
     d(a());
   }
   
-  public void onException(String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("UpgradeController", 4, "onCheckUpdateFailed");
-    }
-    b(this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_a_of_type_Int);
-  }
-  
-  public void onResult(ArrayList<ApkUpdateDetail> paramArrayList)
-  {
-    if ((paramArrayList != null) && (paramArrayList.size() > 0))
-    {
-      paramArrayList = (ApkUpdateDetail)paramArrayList.get(0);
-      if (paramArrayList != null)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_a_of_type_Int == paramArrayList.versioncode) {
-          this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail = paramArrayList;
-        }
-        if (QLog.isDevelopLevel()) {
-          QLog.d("UpgradeController", 4, "onCheckUpdateSucceed:" + paramArrayList.url + " -- " + paramArrayList.updatemethod);
-        }
-      }
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail != null)
-    {
-      b(this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.versioncode);
-      return;
-    }
-    b(this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_a_of_type_Int);
-  }
-  
   public void packageReplaced(String paramString1, String paramString2) {}
   
   public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.UpgradeController
  * JD-Core Version:    0.7.0.1
  */

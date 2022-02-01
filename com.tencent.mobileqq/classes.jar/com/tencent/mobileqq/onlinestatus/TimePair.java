@@ -4,7 +4,7 @@ import kotlin.Metadata;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/onlinestatus/TimePair;", "", "interval", "", "updateTimeSec", "(JJ)V", "getInterval", "()J", "setInterval", "(J)V", "getUpdateTimeSec", "setUpdateTimeSec", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/onlinestatus/TimePair;", "", "interval", "", "updateTimeSec", "(JJ)V", "getInterval", "()J", "setInterval", "(J)V", "getUpdateTimeSec", "setUpdateTimeSec", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "qqonlinestatus-impl_release"}, k=1, mv={1, 1, 16})
 public final class TimePair
 {
   private long a;
@@ -43,18 +43,18 @@ public final class TimePair
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof TimePair))
       {
         paramObject = (TimePair)paramObject;
-        if ((this.a != paramObject.a) || (this.b != paramObject.b)) {}
+        if ((this.a == paramObject.a) && (this.b == paramObject.b)) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public int hashCode()
@@ -68,12 +68,18 @@ public final class TimePair
   @NotNull
   public String toString()
   {
-    return "TimePair(interval=" + this.a + ", updateTimeSec=" + this.b + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TimePair(interval=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", updateTimeSec=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.TimePair
  * JD-Core Version:    0.7.0.1
  */

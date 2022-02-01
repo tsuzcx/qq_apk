@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v4.view.ViewPager android:id="@id/viewPager" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/hv2" />
-    <com.tencent.mobileqq.emoticonview.EmoticonPagerRadioGroup android:orientation="horizontal" android:id="@id/hv2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip" android:layout_above="@id/cf" android:layout_centerHorizontal="true" />
-    <LinearLayout android:gravity="center|right" android:orientation="horizontal" android:id="@id/cf" android:background="@drawable/idy" android:layout_width="fill_parent" android:layout_height="@dimen/bgr" android:layout_alignParentBottom="true">
-        <TextView android:id="@id/send_btn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:text="@string/ya7" android:singleLine="true" android:includeFontPadding="false" style="@style/i0" />
+<com.tencent.widget.ScrollView android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/ai7" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/oju" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="数据是否已迁移" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/ojv" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="当前是否是新版本" />
+        </LinearLayout>
+        <TextView android:background="@color/ea" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:text="下载情况如下：" />
+        <TextView android:id="@id/oiy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Progress：" />
+        <TextView android:id="@id/oiz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="Result：" />
     </LinearLayout>
-</merge>
+</com.tencent.widget.ScrollView>

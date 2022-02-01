@@ -33,12 +33,18 @@ final class ep$a
   
   public final String toString()
   {
-    return "type=" + this.f + ",url=" + this.h + ",coorType=" + this.d;
+    StringBuilder localStringBuilder = new StringBuilder("type=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(",url=");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(",coorType=");
+    localStringBuilder.append(this.d);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.ep.a
  * JD-Core Version:    0.7.0.1
  */

@@ -14,32 +14,25 @@ import com.tencent.smtt.sdk.WebView;
 public class QQTranslucentBrowserActivity
   extends QQBrowserActivity
 {
-  private Dialog a;
+  public static final int DIALOG_WATCH_FLOATING_PERMISSION_CHECK = 4;
+  public static final int DIALOG_WATCH_FLOATING_QUITE = 5;
+  public static final String FLAG_HIDE_FLOAT_BAR = "flag_hide_float_bar";
+  public static final String FLAG_SHOW_LOADING_DIALOG = "flag_show_loading_dialog";
+  public static final String KEY_DIALOG_TYPE = "key_dialog_type";
+  private Dialog loadingDialog;
   
   public QQTranslucentBrowserActivity()
   {
     this.mFragmentClass = QQTranslucentBrowserActivity.QQTranslucentBrowserFragment.class;
   }
   
-  public void a()
+  public void dismissLoadingDialog()
   {
-    if (isFinishing()) {}
-    do
+    Dialog localDialog = this.loadingDialog;
+    if ((localDialog != null) && (localDialog.isShowing()))
     {
-      return;
-      if (this.a == null) {
-        this.a = new QQTranslucentBrowserActivity.LoadingDialog(this);
-      }
-    } while (this.a == null);
-    this.a.show();
-  }
-  
-  public void b()
-  {
-    if ((this.a != null) && (this.a.isShowing()))
-    {
-      this.a.dismiss();
-      this.a = null;
+      this.loadingDialog.dismiss();
+      this.loadingDialog = null;
     }
   }
   
@@ -56,48 +49,46 @@ public class QQTranslucentBrowserActivity
   {
     boolean bool = super.doOnCreate(paramBundle);
     paramBundle = super.getIntent();
-    getWindow().setBackgroundDrawableResource(2131167305);
-    View localView = findViewById(2131363879);
+    getWindow().setBackgroundDrawableResource(2131167333);
+    View localView = findViewById(2131363807);
     if (localView != null) {
-      localView.setBackgroundResource(2131167305);
+      localView.setBackgroundResource(2131167333);
     }
-    int i;
     if (paramBundle != null)
     {
-      i = paramBundle.getIntExtra("key_dialog_type", -1);
-      if (!paramBundle.getBooleanExtra("flag_show_loading_dialog", false)) {
-        break label68;
-      }
-      a();
-    }
-    label68:
-    do
-    {
-      return bool;
-      if (i == 4)
+      int i = paramBundle.getIntExtra("key_dialog_type", -1);
+      if (paramBundle.getBooleanExtra("flag_show_loading_dialog", false))
       {
-        this.a = TogetherWatchFloatingUtil.a(this);
-        this.a.setOnDismissListener(new QQTranslucentBrowserActivity.1(this));
-        a();
+        showLoadingDialog();
         return bool;
       }
-    } while (i != 5);
-    this.a = TogetherWatchFloatingUtil.a(this, paramBundle);
-    this.a.setOnDismissListener(new QQTranslucentBrowserActivity.2(this));
-    a();
+      if (i == 4)
+      {
+        this.loadingDialog = TogetherWatchFloatingUtil.a(this);
+        this.loadingDialog.setOnDismissListener(new QQTranslucentBrowserActivity.1(this));
+        showLoadingDialog();
+        return bool;
+      }
+      if (i == 5)
+      {
+        this.loadingDialog = TogetherWatchFloatingUtil.a(this, paramBundle);
+        this.loadingDialog.setOnDismissListener(new QQTranslucentBrowserActivity.2(this));
+        showLoadingDialog();
+      }
+    }
     return bool;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
-    b();
+    dismissLoadingDialog();
   }
   
-  public void doOnStop()
+  protected void doOnStop()
   {
     super.doOnStop();
-    b();
+    dismissLoadingDialog();
   }
   
   @Override
@@ -109,13 +100,27 @@ public class QQTranslucentBrowserActivity
   
   public void onPageFinished(WebView paramWebView, String paramString)
   {
-    b();
+    dismissLoadingDialog();
     super.onPageFinished(paramWebView, paramString);
+  }
+  
+  public void showLoadingDialog()
+  {
+    if (isFinishing()) {
+      return;
+    }
+    if (this.loadingDialog == null) {
+      this.loadingDialog = new QQTranslucentBrowserActivity.LoadingDialog(this);
+    }
+    Dialog localDialog = this.loadingDialog;
+    if (localDialog != null) {
+      localDialog.show();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQTranslucentBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

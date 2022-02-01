@@ -11,21 +11,35 @@ class StateMediaPlayer$2
   
   public void onCompletion(IMediaPlayer paramIMediaPlayer)
   {
-    if (!this.this$0.setMediaPlayerState(StateMediaPlayer.StateMediaPlayerInternalState.PLAYBACK_COMPLETED))
-    {
-      if (this.this$0.mThrowException) {
-        throw new StateMediaPlayerException("setMediaPlayerState to PLAYBACK_COMPLETED in illegalState " + this.this$0.getMediaPlayerState() + this.this$0);
+    if (!this.this$0.setMediaPlayerState(StateMediaPlayer.StateMediaPlayerInternalState.PLAYBACK_COMPLETED)) {
+      if (!this.this$0.mThrowException)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("setMediaPlayerState to PLAYBACK_COMPLETED in illegalState ");
+        ((StringBuilder)localObject).append(this.this$0.getMediaPlayerState());
+        ((StringBuilder)localObject).append(this.this$0);
+        ((StringBuilder)localObject).append("\n: stack\n");
+        ((StringBuilder)localObject).append(PlayerUtils.getStackTrace());
+        PlayerUtils.log(5, "StateMediaPlayer", ((StringBuilder)localObject).toString());
       }
-      PlayerUtils.log(5, "StateMediaPlayer", "setMediaPlayerState to PLAYBACK_COMPLETED in illegalState " + this.this$0.getMediaPlayerState() + this.this$0 + "\n: stack\n" + PlayerUtils.getStackTrace());
+      else
+      {
+        paramIMediaPlayer = new StringBuilder();
+        paramIMediaPlayer.append("setMediaPlayerState to PLAYBACK_COMPLETED in illegalState ");
+        paramIMediaPlayer.append(this.this$0.getMediaPlayerState());
+        paramIMediaPlayer.append(this.this$0);
+        throw new StateMediaPlayerException(paramIMediaPlayer.toString());
+      }
     }
-    if (this.val$listener != null) {
-      this.val$listener.onCompletion(paramIMediaPlayer);
+    Object localObject = this.val$listener;
+    if (localObject != null) {
+      ((IMediaPlayer.OnCompletionListener)localObject).onCompletion(paramIMediaPlayer);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.player.StateMediaPlayer.2
  * JD-Core Version:    0.7.0.1
  */

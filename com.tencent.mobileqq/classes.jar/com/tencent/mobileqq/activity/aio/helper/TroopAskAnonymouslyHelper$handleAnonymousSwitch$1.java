@@ -8,6 +8,7 @@ import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.troop.askanonymously.AskAnonymousUtil;
 import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
 final class TroopAskAnonymouslyHelper$handleAnonymousSwitch$1
@@ -17,18 +18,24 @@ final class TroopAskAnonymouslyHelper$handleAnonymousSwitch$1
   
   public final void run()
   {
-    if ((this.this$0.a() != null) && (this.this$0.a().a != null))
+    if (this.this$0.a() != null)
     {
-      MessageRecord localMessageRecord = ReplyTextItemBuilder.a(this.this$0.a(), this.this$0.a().d(), 1, this.this$0.a().a.mSourceMsgSeq);
-      if ((localMessageRecord != null) && (AskAnonymousUtil.a(localMessageRecord))) {
-        ThreadManagerV2.getUIHandlerV2().post((Runnable)new TroopAskAnonymouslyHelper.handleAnonymousSwitch.1..special..inlined.let.lambda.3(localMessageRecord, this));
+      Object localObject = this.this$0.a().a(119);
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "mChatPie.getHelper(HelperProvider.ID_AIO_REPLY)");
+      localObject = (ReplyHelper)localObject;
+      if (((ReplyHelper)localObject).a() != null)
+      {
+        MessageRecord localMessageRecord = ReplyTextItemBuilder.a(this.this$0.a(), this.this$0.a().d(), 1, ((ReplyHelper)localObject).a().mSourceMsgSeq);
+        if ((localMessageRecord != null) && (AskAnonymousUtil.a(localMessageRecord))) {
+          ThreadManagerV2.getUIHandlerV2().post((Runnable)new TroopAskAnonymouslyHelper.handleAnonymousSwitch.1..special..inlined.let.lambda.3(localMessageRecord, (ReplyHelper)localObject, this));
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopAskAnonymouslyHelper.handleAnonymousSwitch.1
  * JD-Core Version:    0.7.0.1
  */

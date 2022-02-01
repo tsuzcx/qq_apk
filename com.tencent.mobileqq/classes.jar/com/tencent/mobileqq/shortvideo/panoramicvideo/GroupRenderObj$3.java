@@ -14,12 +14,13 @@ class GroupRenderObj$3
     }
     this.val$filter.init();
     this.this$0.renderObjLists.add(this.val$filter);
-    this.this$0.onRenderObjChanged(this.this$0.surfaceWidth, this.this$0.surfaceHeight);
+    GroupRenderObj localGroupRenderObj = this.this$0;
+    localGroupRenderObj.onRenderObjChanged(localGroupRenderObj.surfaceWidth, this.this$0.surfaceHeight);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.panoramicvideo.GroupRenderObj.3
  * JD-Core Version:    0.7.0.1
  */

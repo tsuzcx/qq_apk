@@ -24,54 +24,47 @@ public final class b
   {
     MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
     paramVarArgs = paramVarArgs[0];
-    if ((paramVarArgs.startsWith("http")) || (paramVarArgs.startsWith("https"))) {
+    if ((!paramVarArgs.startsWith("http")) && (!paramVarArgs.startsWith("https"))) {
+      localMediaMetadataRetriever.setDataSource(paramVarArgs);
+    } else {
       localMediaMetadataRetriever.setDataSource(paramVarArgs, new HashMap());
     }
-    for (;;)
-    {
-      Bitmap localBitmap = localMediaMetadataRetriever.getFrameAtTime();
-      paramVarArgs = new File(com.tencent.mobileqq.microapp.appbrand.b.b.a().a("jpg"));
-      if (paramVarArgs.exists()) {
-        paramVarArgs.delete();
-      }
-      try
-      {
-        FileOutputStream localFileOutputStream = new FileOutputStream(paramVarArgs);
-        localBitmap.compress(Bitmap.CompressFormat.JPEG, 90, localFileOutputStream);
-        localFileOutputStream.flush();
-        localFileOutputStream.close();
-        localMediaMetadataRetriever.release();
-        return paramVarArgs;
-        localMediaMetadataRetriever.setDataSource(paramVarArgs);
-      }
-      catch (FileNotFoundException localFileNotFoundException)
-      {
-        for (;;)
-        {
-          localFileNotFoundException.printStackTrace();
-        }
-      }
-      catch (IOException localIOException)
-      {
-        for (;;)
-        {
-          localIOException.printStackTrace();
-        }
-      }
+    Bitmap localBitmap = localMediaMetadataRetriever.getFrameAtTime();
+    paramVarArgs = new File(com.tencent.mobileqq.microapp.appbrand.b.b.a().a("jpg"));
+    if (paramVarArgs.exists()) {
+      paramVarArgs.delete();
     }
+    try
+    {
+      FileOutputStream localFileOutputStream = new FileOutputStream(paramVarArgs);
+      localBitmap.compress(Bitmap.CompressFormat.JPEG, 90, localFileOutputStream);
+      localFileOutputStream.flush();
+      localFileOutputStream.close();
+    }
+    catch (IOException localIOException)
+    {
+      localIOException.printStackTrace();
+    }
+    catch (FileNotFoundException localFileNotFoundException)
+    {
+      localFileNotFoundException.printStackTrace();
+    }
+    localMediaMetadataRetriever.release();
+    return paramVarArgs;
   }
   
   protected void a(File paramFile)
   {
     super.onPostExecute(paramFile);
-    if (this.a != null) {
-      this.a.a(paramFile);
+    c localc = this.a;
+    if (localc != null) {
+      localc.a(paramFile);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.media.b
  * JD-Core Version:    0.7.0.1
  */

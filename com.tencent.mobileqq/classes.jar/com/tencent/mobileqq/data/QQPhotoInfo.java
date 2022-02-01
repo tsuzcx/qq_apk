@@ -38,10 +38,10 @@ public class QQPhotoInfo
     if (this == paramObject) {
       return true;
     }
-    if ((paramObject == null) || (!(paramObject instanceof QQPhotoInfo))) {
-      return false;
+    if ((paramObject != null) && ((paramObject instanceof QQPhotoInfo))) {
+      return compare((QQPhotoInfo)paramObject);
     }
-    return compare((QQPhotoInfo)paramObject);
+    return false;
   }
   
   public int hashCode()
@@ -58,7 +58,7 @@ public class QQPhotoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.QQPhotoInfo
  * JD-Core Version:    0.7.0.1
  */

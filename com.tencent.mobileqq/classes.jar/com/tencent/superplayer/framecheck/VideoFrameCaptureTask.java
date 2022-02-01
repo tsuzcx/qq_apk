@@ -24,17 +24,21 @@ public class VideoFrameCaptureTask
   
   public Bitmap doTask()
   {
-    if (this.mTaskRunner == null) {
+    Object localObject = this.mTaskRunner;
+    if (localObject == null) {
       return null;
     }
     try
     {
-      Bitmap localBitmap = this.mTaskRunner.doCapture(32, 32);
-      return localBitmap;
+      localObject = ((IFrameCaptureTaskRunner)localObject).doCapture(32, 32);
+      return localObject;
     }
     catch (Throwable localThrowable)
     {
-      LogUtil.e("SuperPlayer-.VideoFrameCaptureTask", "doTask error," + localThrowable.getLocalizedMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doTask error,");
+      localStringBuilder.append(localThrowable.getLocalizedMessage());
+      LogUtil.e("SuperPlayer-.VideoFrameCaptureTask", localStringBuilder.toString());
     }
     return null;
   }
@@ -46,7 +50,7 @@ public class VideoFrameCaptureTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.framecheck.VideoFrameCaptureTask
  * JD-Core Version:    0.7.0.1
  */

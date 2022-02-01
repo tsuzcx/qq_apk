@@ -13,7 +13,7 @@ final class ARRecordUtils$1
   {
     try
     {
-      DialogUtil.a(ARVideoRecordUIControllerImpl.a().a(), 230, this.a, this.b, "", HardCodeUtil.a(2131700815), new ARRecordUtils.1.1(this), null).show();
+      DialogUtil.a(ARVideoRecordUIControllerImpl.a().a(), 230, this.a, this.b, "", HardCodeUtil.a(2131700959), new ARRecordUtils.1.1(this), null).show();
       return;
     }
     catch (Exception localException)
@@ -24,7 +24,7 @@ final class ARRecordUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.ARRecordUtils.1
  * JD-Core Version:    0.7.0.1
  */

@@ -23,45 +23,42 @@ class AssetWriterInput$WriterAudioRunnable
     if (AssetWriterInput.access$500(this.this$0) == null) {
       return;
     }
-    for (;;)
+    long l1 = -1L;
+    try
     {
-      try
+      if (this.isEndBuffer)
       {
-        if (!this.isEndBuffer) {
-          continue;
-        }
         AssetWriterInput.access$300(this.this$0).endWriteAudioSample();
-        l = -1L;
       }
-      catch (Throwable localThrowable)
+      else
       {
-        if (!(localThrowable instanceof ExportRuntimeException)) {
-          continue;
-        }
-        ExportErrorStatus localExportErrorStatus = ((ExportRuntimeException)localThrowable).getErrorStatus();
-        if (AssetWriterInput.access$400(this.this$0) == null) {
-          continue;
-        }
+        AssetWriterInput.access$300(this.this$0).writeAudioSample(this.sampleBuffer.getTime().getTimeUs(), this.sampleBuffer.getSampleByteBuffer());
+        long l2 = AssetWriterInput.access$300(this.this$0).getAudioPresentationTimeUs();
+        l1 = l2;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      ExportErrorStatus localExportErrorStatus;
+      if ((localThrowable instanceof ExportRuntimeException)) {
+        localExportErrorStatus = ((ExportRuntimeException)localThrowable).getErrorStatus();
+      } else {
+        localExportErrorStatus = new ExportErrorStatus(-122, localExportErrorStatus);
+      }
+      if (AssetWriterInput.access$400(this.this$0) != null)
+      {
         AssetWriterInput.access$400(this.this$0).onError(localExportErrorStatus);
         return;
-        localExportErrorStatus = new ExportErrorStatus(-122, localExportErrorStatus);
-        continue;
-        long l = -1L;
-        continue;
       }
-      if (AssetWriterInput.access$400(this.this$0) == null) {
-        break;
-      }
-      AssetWriterInput.access$400(this.this$0).onProgressChanged(this.this$0, l);
-      return;
-      AssetWriterInput.access$300(this.this$0).writeAudioSample(this.sampleBuffer.getTime().getTimeUs(), this.sampleBuffer.getSampleByteBuffer());
-      l = AssetWriterInput.access$300(this.this$0).getAudioPresentationTimeUs();
+    }
+    if (AssetWriterInput.access$400(this.this$0) != null) {
+      AssetWriterInput.access$400(this.this$0).onProgressChanged(this.this$0, l1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tav.core.AssetWriterInput.WriterAudioRunnable
  * JD-Core Version:    0.7.0.1
  */

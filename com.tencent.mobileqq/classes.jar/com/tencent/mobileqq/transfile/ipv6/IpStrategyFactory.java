@@ -53,30 +53,32 @@ public class IpStrategyFactory
   
   private static boolean isIpv6DownFirst()
   {
-    boolean bool = true;
-    if (!getRichmediaIpv6Switch()) {
+    boolean bool1 = getRichmediaIpv6Switch();
+    boolean bool2 = false;
+    if (!bool1)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("IpStrategyFactory", 2, "isIpv6DownFirst, getRichmediaIpv6Switch is false");
       }
-    }
-    do
-    {
       return false;
-      if (Ipv6Config.getFlags().mRMDownStrategy == 2) {
-        return true;
-      }
-    } while (Ipv6Config.getFlags().mRMDownStrategy != 3);
-    if (MsfServiceSdk.get().getConnectedIPFamily() == 2) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
     }
+    if (Ipv6Config.getFlags().mRMDownStrategy == 2) {
+      return true;
+    }
+    bool1 = bool2;
+    if (Ipv6Config.getFlags().mRMDownStrategy == 3)
+    {
+      bool1 = bool2;
+      if (MsfServiceSdk.get().getConnectedIPFamily() == 2) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ipv6.IpStrategyFactory
  * JD-Core Version:    0.7.0.1
  */

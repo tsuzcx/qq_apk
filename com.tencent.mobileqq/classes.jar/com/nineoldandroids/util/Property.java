@@ -35,12 +35,15 @@ public abstract class Property<T, V>
   
   public void set(T paramT, V paramV)
   {
-    throw new UnsupportedOperationException("Property " + getName() + " is read-only");
+    paramT = new StringBuilder("Property ");
+    paramT.append(getName());
+    paramT.append(" is read-only");
+    throw new UnsupportedOperationException(paramT.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nineoldandroids.util.Property
  * JD-Core Version:    0.7.0.1
  */

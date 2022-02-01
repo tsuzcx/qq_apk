@@ -10,22 +10,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import com.tencent.av.utils.UITools;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.profilecard.api.IProfileCardBusinessApi;
+import com.tencent.mobileqq.profilecard.base.config.IProfileConfig;
 import com.tencent.mobileqq.profilecard.base.framework.IComponentCenter;
-import com.tencent.mobileqq.profilecard.base.utils.ProfileCardUtils;
 import com.tencent.mobileqq.profilecard.bussiness.accountinfo.report.ProfileAccountInfoReport;
 import com.tencent.mobileqq.profilecard.bussiness.accountinfo.utils.ProfileAccountInfoUtils;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.vas.PrettyAccountUtil;
-import com.tencent.mobileqq.widget.ProfileConfigHelper;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.vas.util.PrettyAccountUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
@@ -57,131 +55,109 @@ public class ProfileAccountInfoHeaderComponent
     return localSpannableStringBuilder;
   }
   
-  private List<SpannableString> getAccountInfo(QQAppInterface paramQQAppInterface, Context paramContext, ProfileCardInfo paramProfileCardInfo)
+  private List<SpannableString> getAccountInfo(AppInterface paramAppInterface, Context paramContext, ProfileCardInfo paramProfileCardInfo)
   {
     ArrayList localArrayList = new ArrayList();
     int i = ProfileAccountInfoUtils.getGenderWithPrivacy(paramProfileCardInfo);
-    String str;
-    if (i == 0)
-    {
-      localArrayList.add(new SpannableString(paramContext.getString(2131693923)));
-      str = ProfileAccountInfoUtils.getSchoolWithPrivacy(paramProfileCardInfo);
-      if (!TextUtils.isEmpty(str))
-      {
-        if (!paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.schoolVerifiedFlag) {
-          break label335;
-        }
-        localArrayList.add(ProfileCardUtil.a(str, true, 2130845301, 2131298265, 2131298264, paramContext, paramQQAppInterface));
+    if (i == 0) {
+      localArrayList.add(new SpannableString(paramContext.getString(2131693879)));
+    } else if (i == 1) {
+      localArrayList.add(new SpannableString(paramContext.getString(2131692259)));
+    }
+    String str = ProfileAccountInfoUtils.getSchoolWithPrivacy(paramProfileCardInfo);
+    if (!TextUtils.isEmpty(str)) {
+      if (paramProfileCardInfo.card.schoolVerifiedFlag) {
+        localArrayList.add(((IProfileCardBusinessApi)QRoute.api(IProfileCardBusinessApi.class)).makeSchoolAuthenticationIcon(str, true, 2130845178, 2131298260, 2131298259, paramContext, paramAppInterface));
+      } else {
+        localArrayList.add(new SpannableString(str));
       }
     }
-    for (;;)
+    paramAppInterface = ProfileAccountInfoUtils.getCompanyWithPrivacy(paramProfileCardInfo);
+    if (!TextUtils.isEmpty(paramAppInterface)) {
+      localArrayList.add(new SpannableString(paramAppInterface));
+    }
+    paramAppInterface = ProfileAccountInfoUtils.getLocationCountryWithPrivacy(paramProfileCardInfo);
+    paramContext = ProfileAccountInfoUtils.getLocationProvinceWithPrivacy(paramProfileCardInfo);
+    str = ProfileAccountInfoUtils.getLocationCityWithPrivacy(paramProfileCardInfo);
+    StringBuilder localStringBuilder = new StringBuilder();
+    if ((!TextUtils.isEmpty(paramAppInterface)) && (!HardCodeUtil.a(2131708444).equals(paramAppInterface))) {
+      localStringBuilder.append(paramAppInterface);
+    }
+    if (!TextUtils.isEmpty(paramContext))
     {
-      paramQQAppInterface = ProfileAccountInfoUtils.getCompanyWithPrivacy(paramProfileCardInfo);
-      if (!TextUtils.isEmpty(paramQQAppInterface)) {
-        localArrayList.add(new SpannableString(paramQQAppInterface));
-      }
-      paramQQAppInterface = ProfileAccountInfoUtils.getLocationCountryWithPrivacy(paramProfileCardInfo);
-      paramContext = ProfileAccountInfoUtils.getLocationProvinceWithPrivacy(paramProfileCardInfo);
-      str = ProfileAccountInfoUtils.getLocationCityWithPrivacy(paramProfileCardInfo);
-      StringBuilder localStringBuilder = new StringBuilder();
-      if ((!TextUtils.isEmpty(paramQQAppInterface)) && (!HardCodeUtil.a(2131708438).equals(paramQQAppInterface))) {
-        localStringBuilder.append(paramQQAppInterface);
-      }
-      if (!TextUtils.isEmpty(paramContext))
-      {
-        if (localStringBuilder.length() > 0) {
-          localStringBuilder.append("-");
-        }
-        localStringBuilder.append(paramContext);
-      }
-      if (!TextUtils.isEmpty(str))
-      {
-        if (localStringBuilder.length() > 0) {
-          localStringBuilder.append("-");
-        }
-        localStringBuilder.append(str);
-      }
       if (localStringBuilder.length() > 0) {
-        localArrayList.add(new SpannableString(localStringBuilder.toString()));
+        localStringBuilder.append("-");
       }
-      paramQQAppInterface = ProfileAccountInfoUtils.getConstellationWithPrivacy(paramProfileCardInfo);
-      if (!TextUtils.isEmpty(paramQQAppInterface)) {
-        localArrayList.add(new SpannableString(paramQQAppInterface));
-      }
-      if (localArrayList.size() < 4) {
-        break label355;
-      }
-      return localArrayList.subList(0, 3);
-      if (i != 1) {
-        break;
-      }
-      localArrayList.add(new SpannableString(paramContext.getString(2131692330)));
-      break;
-      label335:
-      localArrayList.add(new SpannableString(str));
+      localStringBuilder.append(paramContext);
     }
-    label355:
-    return localArrayList;
+    if (!TextUtils.isEmpty(str))
+    {
+      if (localStringBuilder.length() > 0) {
+        localStringBuilder.append("-");
+      }
+      localStringBuilder.append(str);
+    }
+    if (localStringBuilder.length() > 0) {
+      localArrayList.add(new SpannableString(localStringBuilder.toString()));
+    }
+    paramAppInterface = ProfileAccountInfoUtils.getConstellationWithPrivacy(paramProfileCardInfo);
+    if (!TextUtils.isEmpty(paramAppInterface)) {
+      localArrayList.add(new SpannableString(paramAppInterface));
+    }
+    paramAppInterface = localArrayList;
+    if (localArrayList.size() >= 4) {
+      paramAppInterface = localArrayList.subList(0, 3);
+    }
+    return paramAppInterface;
   }
   
   private void initAccountInfo()
   {
     if (this.mViewContainer != null) {
-      this.mActivity.getLayoutInflater().inflate(2131561476, (ViewGroup)this.mViewContainer);
+      this.mActivity.getLayoutInflater().inflate(2131561320, (ViewGroup)this.mViewContainer);
     }
   }
   
   @SuppressLint({"ClickableViewAccessibility"})
   private void refreshAccountInfo(Card paramCard, boolean paramBoolean)
   {
-    boolean bool1;
-    int i;
     if (this.mViewContainer != null)
     {
       paramCard = getAccountInfo(this.mApp, this.mActivity, (ProfileCardInfo)this.mData);
-      bool1 = paramCard.isEmpty();
-      if (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a != 0) {
-        break label165;
-      }
-      i = 1;
-      if ((bool1) && (i != 0)) {
-        paramCard.add(new SpannableString(this.mActivity.getString(2131699059)));
-      }
-      if (paramCard.isEmpty()) {
-        break label170;
-      }
-      paramBoolean = true;
-      label96:
-      boolean bool2 = this.mConfigHelper.a(12);
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileAccountInfoHeaderComponent", 2, String.format("refreshAccountInfo showAccountInfo=%s baseInfoABTestEnable=%s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool2) }));
-      }
-      if ((paramBoolean) && (!bool2)) {
-        break label175;
-      }
-      ((View)this.mViewContainer).setVisibility(8);
-    }
-    label165:
-    label170:
-    label175:
-    TextView localTextView;
-    do
-    {
-      do
-      {
-        return;
+      paramBoolean = paramCard.isEmpty();
+      int i;
+      if (((ProfileCardInfo)this.mData).allInOne.pa == 0) {
+        i = 1;
+      } else {
         i = 0;
-        break;
-        paramBoolean = false;
-        break label96;
+      }
+      if ((paramBoolean) && (i != 0)) {
+        paramCard.add(new SpannableString(this.mActivity.getString(2131699164)));
+      }
+      boolean bool1 = paramCard.isEmpty() ^ true;
+      boolean bool2 = this.mConfigHelper.isSwitchEnable(12);
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileAccountInfoHeaderComponent", 2, String.format("refreshAccountInfo showAccountInfo=%s baseInfoABTestEnable=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+      }
+      if ((bool1) && (!bool2))
+      {
         ((View)this.mViewContainer).setVisibility(0);
-        localTextView = (TextView)((View)this.mViewContainer).findViewById(2131379091);
-      } while (localTextView == null);
-      localTextView.setText(combineAccountInfo(paramCard));
-      localTextView.setOnTouchListener(UITools.a);
-      localTextView.setOnClickListener(this);
-    } while (bool1);
-    ProfileCardUtil.a(localTextView, null, null);
+        TextView localTextView = (TextView)((View)this.mViewContainer).findViewById(2131378460);
+        if (localTextView != null)
+        {
+          localTextView.setText(combineAccountInfo(paramCard));
+          localTextView.setOnTouchListener(UITools.a);
+          localTextView.setOnClickListener(this);
+          if (!paramBoolean) {
+            ((IProfileCardBusinessApi)QRoute.api(IProfileCardBusinessApi.class)).dealTextViewForCopyAction(localTextView, null, null);
+          }
+        }
+      }
+      else
+      {
+        ((View)this.mViewContainer).setVisibility(8);
+      }
+    }
   }
   
   public String getComponentName()
@@ -196,51 +172,45 @@ public class ProfileAccountInfoHeaderComponent
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    if (paramView.getId() == 2131378460)
     {
-    }
-    do
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      ProfileCardUtil.a((ProfileCardInfo)this.mData, this.mApp, this.mActivity);
-    } while (!ProfileCardUtils.isDefaultProfile((ProfileCardInfo)this.mData));
-    label81:
-    QQAppInterface localQQAppInterface;
-    if (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0)
-    {
-      i = 1;
-      localQQAppInterface = this.mApp;
-      if (i == 0) {
-        break label105;
+      ((IProfileCardBusinessApi)QRoute.api(IProfileCardBusinessApi.class)).jumpProfileOpenDetails((ProfileCardInfo)this.mData, this.mApp, this.mActivity);
+      if (((IProfileCardBusinessApi)QRoute.api(IProfileCardBusinessApi.class)).isDefaultProfile((ProfileCardInfo)this.mData))
+      {
+        int i;
+        if (((ProfileCardInfo)this.mData).allInOne.pa == 0) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        AppInterface localAppInterface = this.mApp;
+        if (i != 0) {
+          i = 2;
+        } else {
+          i = 4;
+        }
+        ProfileAccountInfoReport.reportAccountInfoClick(localAppInterface, i);
       }
     }
-    label105:
-    for (int i = 2;; i = 4)
-    {
-      ProfileAccountInfoReport.reportAccountInfoClick(localQQAppInterface, i);
-      break;
-      i = 0;
-      break label81;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public void onCreate(@NonNull BaseActivity paramBaseActivity, @Nullable Bundle paramBundle)
+  public void onCreate(QBaseActivity paramQBaseActivity, Bundle paramBundle)
   {
-    super.onCreate(paramBaseActivity, paramBundle);
+    super.onCreate(paramQBaseActivity, paramBundle);
     initAccountInfo();
   }
   
   public boolean onDataUpdate(ProfileCardInfo paramProfileCardInfo)
   {
-    refreshAccountInfo(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqDataCard, ((ProfileCardInfo)this.mData).d);
+    refreshAccountInfo(((ProfileCardInfo)this.mData).card, ((ProfileCardInfo)this.mData).isNetRet);
     PrettyAccountUtil.a(this.mApp, (ProfileCardInfo)this.mData, false);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.accountinfo.ProfileAccountInfoHeaderComponent
  * JD-Core Version:    0.7.0.1
  */

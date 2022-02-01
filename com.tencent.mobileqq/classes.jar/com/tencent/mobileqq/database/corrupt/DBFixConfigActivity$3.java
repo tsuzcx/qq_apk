@@ -14,14 +14,29 @@ class DBFixConfigActivity$3
   
   public void onClick(View paramView)
   {
-    boolean bool = FileUtils.a(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixConfigActivity.getDatabasePath(this.jdField_a_of_type_JavaLangString + ".db"), new File(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixConfigActivity.getExternalCacheDir(), this.jdField_a_of_type_JavaLangString + System.currentTimeMillis() + ".db"));
-    QLog.e(DBFixConfigActivity.jdField_a_of_type_JavaLangString, 2, "copy " + bool + this.jdField_a_of_type_JavaLangString);
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixConfigActivity;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject2).append(".db");
+    localObject1 = ((DBFixConfigActivity)localObject1).getDatabasePath(((StringBuilder)localObject2).toString());
+    localObject2 = this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixConfigActivity.getExternalCacheDir();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(System.currentTimeMillis());
+    localStringBuilder.append(".db");
+    boolean bool = FileUtils.copyFile((File)localObject1, new File((File)localObject2, localStringBuilder.toString()));
+    localObject1 = DBFixConfigActivity.jdField_a_of_type_JavaLangString;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("copy ");
+    ((StringBuilder)localObject2).append(bool);
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+    QLog.e((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.database.corrupt.DBFixConfigActivity.3
  * JD-Core Version:    0.7.0.1
  */

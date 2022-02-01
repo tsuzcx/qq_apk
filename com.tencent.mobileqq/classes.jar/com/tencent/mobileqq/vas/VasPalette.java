@@ -11,33 +11,55 @@ public class VasPalette
   
   private static Bitmap a(Bitmap paramBitmap)
   {
+    int i = a;
     double d2 = -1.0D;
-    int i;
+    int j;
     double d1;
-    if (a > 0)
+    if (i > 0)
     {
       i = paramBitmap.getWidth() * paramBitmap.getHeight();
+      j = a;
       d1 = d2;
-      if (i > a) {
-        d1 = Math.sqrt(a / i);
+      if (i > j)
+      {
+        d1 = j;
+        d2 = i;
+        Double.isNaN(d1);
+        Double.isNaN(d2);
+        d1 = Math.sqrt(d1 / d2);
       }
     }
-    while (d1 <= 0.0D)
+    else
     {
-      return paramBitmap;
       d1 = d2;
       if (b > 0)
       {
         i = Math.max(paramBitmap.getWidth(), paramBitmap.getHeight());
+        j = b;
         d1 = d2;
-        if (i > b) {
-          d1 = b / i;
+        if (i > j)
+        {
+          d1 = j;
+          d2 = i;
+          Double.isNaN(d1);
+          Double.isNaN(d2);
+          d1 /= d2;
         }
       }
     }
+    if (d1 <= 0.0D) {
+      return paramBitmap;
+    }
     try
     {
-      paramBitmap = Bitmap.createScaledBitmap(paramBitmap, (int)Math.ceil(paramBitmap.getWidth() * d1), (int)Math.ceil(d1 * paramBitmap.getHeight()), false);
+      i = paramBitmap.getWidth();
+      d2 = i;
+      Double.isNaN(d2);
+      i = (int)Math.ceil(d2 * d1);
+      j = paramBitmap.getHeight();
+      d2 = j;
+      Double.isNaN(d2);
+      paramBitmap = Bitmap.createScaledBitmap(paramBitmap, i, (int)Math.ceil(d2 * d1), false);
       return paramBitmap;
     }
     catch (OutOfMemoryError paramBitmap)
@@ -58,16 +80,13 @@ public class VasPalette
         try
         {
           localOcTreeQuantizer.a(a(paramBitmap), 16);
-          paramBitmap.recycle();
-          return localOcTreeQuantizer.a();
         }
         catch (OutOfMemoryError localOutOfMemoryError)
         {
-          for (;;)
-          {
-            QLog.e("VasPalette", 1, localOutOfMemoryError.getMessage());
-          }
+          QLog.e("VasPalette", 1, localOutOfMemoryError.getMessage());
         }
+        paramBitmap.recycle();
+        return localOcTreeQuantizer.a();
       }
     }
     return null;
@@ -84,7 +103,7 @@ public class VasPalette
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasPalette
  * JD-Core Version:    0.7.0.1
  */

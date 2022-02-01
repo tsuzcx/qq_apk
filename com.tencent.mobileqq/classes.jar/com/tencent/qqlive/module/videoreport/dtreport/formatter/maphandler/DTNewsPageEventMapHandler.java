@@ -14,16 +14,16 @@ public class DTNewsPageEventMapHandler
   
   private void flatten(String paramString, Map<String, Object> paramMap1, Map<String, Object> paramMap2)
   {
-    if ((paramMap1 == null) || (paramMap2 == null)) {}
-    Object localObject4;
-    do
+    if (paramMap1 != null)
     {
-      return;
+      if (paramMap2 == null) {
+        return;
+      }
       Map localMap1 = this.mFlattenHelper.removeMapParams(paramMap2, "ref_pg");
       Object localObject1 = this.mFlattenHelper.remove(paramMap2, "pg_path");
       Object localObject2 = this.mFlattenHelper.remove(localMap1, "pg_path");
       Object localObject3 = this.mFlattenHelper.remove(paramMap2, "dt_is_interactive_flag");
-      localObject4 = this.mFlattenHelper.remove(paramMap2, "dt_pg_isreturn");
+      Object localObject4 = this.mFlattenHelper.remove(paramMap2, "dt_pg_isreturn");
       Map localMap2 = getCurPagePrivateParams(paramMap2);
       this.mFlattenHelper.putAllPageParams(paramMap2, localMap2, "pg_");
       this.mFlattenHelper.putAllPageParams(paramMap2, localMap1, "refpg_");
@@ -34,8 +34,10 @@ public class DTNewsPageEventMapHandler
         paramMap1.put("dt_is_interactive_flag", localObject3);
         return;
       }
-    } while (!"pgin".equals(paramString));
-    paramMap1.put("dt_pg_isreturn", localObject4);
+      if ("pgin".equals(paramString)) {
+        paramMap1.put("dt_pg_isreturn", localObject4);
+      }
+    }
   }
   
   private Map<String, Object> getCurPagePrivateParams(Map<String, Object> paramMap)
@@ -68,7 +70,7 @@ public class DTNewsPageEventMapHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.formatter.maphandler.DTNewsPageEventMapHandler
  * JD-Core Version:    0.7.0.1
  */

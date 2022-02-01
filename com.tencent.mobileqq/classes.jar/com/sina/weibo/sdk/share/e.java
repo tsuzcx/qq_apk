@@ -45,15 +45,13 @@ public final class e
       {
         paramVarArgs.H = b(localContext, (Uri)localObject, 0);
         paramVarArgs.F = true;
+        return paramVarArgs;
       }
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        paramVarArgs.F = false;
-        paramVarArgs.errorMessage = localThrowable.getMessage();
-      }
+      paramVarArgs.F = false;
+      paramVarArgs.errorMessage = localThrowable.getMessage();
     }
     return paramVarArgs;
   }

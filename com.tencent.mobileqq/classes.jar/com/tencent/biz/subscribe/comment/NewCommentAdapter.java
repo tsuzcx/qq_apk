@@ -96,183 +96,126 @@ public class NewCommentAdapter
   
   public boolean a(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    int i;
-    if (!TextUtils.isEmpty(paramString)) {
-      i = this.jdField_a_of_type_JavaUtilList.size() - 1;
-    }
-    for (;;)
+    boolean bool2 = TextUtils.isEmpty(paramString);
+    boolean bool1 = false;
+    if (!bool2)
     {
-      bool1 = bool2;
-      if (i >= 0)
+      int i = this.jdField_a_of_type_JavaUtilList.size() - 1;
+      while (i >= 0)
       {
-        if (!paramString.equals(((CertifiedAccountMeta.StComment)this.jdField_a_of_type_JavaUtilList.get(i)).id.get())) {
-          break label91;
+        if (paramString.equals(((CertifiedAccountMeta.StComment)this.jdField_a_of_type_JavaUtilList.get(i)).id.get()))
+        {
+          if (this.jdField_a_of_type_JavaUtilList.remove(i) != null) {
+            bool1 = true;
+          }
+          this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+          return bool1;
         }
-        if (this.jdField_a_of_type_JavaUtilList.remove(i) == null) {
-          break label86;
-        }
+        i -= 1;
       }
-      label86:
-      for (bool1 = true;; bool1 = false)
-      {
-        this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-        return bool1;
-      }
-      label91:
-      i -= 1;
     }
+    return false;
   }
   
   public boolean a(String paramString, CertifiedAccountMeta.StComment paramStComment)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    int i;
-    if (!TextUtils.isEmpty(paramString)) {
-      i = this.jdField_a_of_type_JavaUtilList.size() - 1;
-    }
-    for (;;)
+    if (!TextUtils.isEmpty(paramString))
     {
-      bool1 = bool2;
-      if (i >= 0)
+      int i = this.jdField_a_of_type_JavaUtilList.size() - 1;
+      while (i >= 0)
       {
-        if (!paramString.equals(((CertifiedAccountMeta.StComment)this.jdField_a_of_type_JavaUtilList.get(i)).id.get())) {
-          break label86;
+        if (paramString.equals(((CertifiedAccountMeta.StComment)this.jdField_a_of_type_JavaUtilList.get(i)).id.get()))
+        {
+          if (this.jdField_a_of_type_JavaUtilList.set(i, paramStComment) == null) {
+            break;
+          }
+          return true;
         }
-        if (this.jdField_a_of_type_JavaUtilList.set(i, paramStComment) == null) {
-          break label80;
-        }
+        i -= 1;
       }
-      label80:
-      for (bool1 = true;; bool1 = false) {
-        return bool1;
-      }
-      label86:
-      i -= 1;
     }
+    return false;
   }
   
   public boolean a(String paramString1, String paramString2)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    int i;
-    if (!TextUtils.isEmpty(paramString1))
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      bool1 = bool2;
-      if (!TextUtils.isEmpty(paramString2))
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        CertifiedAccountMeta.StComment localStComment;
-        do
+        CertifiedAccountMeta.StComment localStComment = (CertifiedAccountMeta.StComment)localIterator.next();
+        if (paramString1.equals(localStComment.id.get()))
         {
-          bool1 = bool2;
-          if (!localIterator.hasNext()) {
-            break;
+          int i = localStComment.vecReply.size();
+          boolean bool = true;
+          i -= 1;
+          while (i >= 0)
+          {
+            if (paramString2.equals(((CertifiedAccountMeta.StReply)localStComment.vecReply.get(i)).id.get()))
+            {
+              if (localStComment.vecReply.get().remove(i) == null) {
+                bool = false;
+              }
+              return bool;
+            }
+            i -= 1;
           }
-          localStComment = (CertifiedAccountMeta.StComment)localIterator.next();
-        } while (!paramString1.equals(localStComment.id.get()));
-        i = localStComment.vecReply.size() - 1;
-        if (i < 0) {
-          break label153;
         }
-        if (!paramString2.equals(((CertifiedAccountMeta.StReply)localStComment.vecReply.get(i)).id.get())) {
-          break label146;
-        }
-        if (localStComment.vecReply.get().remove(i) == null) {
-          break label140;
-        }
-        bool1 = true;
       }
     }
-    for (;;)
-    {
-      return bool1;
-      label140:
-      bool1 = false;
-      continue;
-      label146:
-      i -= 1;
-      break;
-      label153:
-      bool1 = false;
-    }
+    return false;
   }
   
   public boolean a(String paramString1, String paramString2, CertifiedAccountMeta.StReply paramStReply)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    int i;
-    if (!TextUtils.isEmpty(paramString1))
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramStReply.id.get())))
     {
-      bool1 = bool2;
-      if (!TextUtils.isEmpty(paramStReply.id.get()))
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        CertifiedAccountMeta.StComment localStComment;
-        do
+        CertifiedAccountMeta.StComment localStComment = (CertifiedAccountMeta.StComment)localIterator.next();
+        if (paramString1.equals(localStComment.id.get()))
         {
-          bool1 = bool2;
-          if (!localIterator.hasNext()) {
-            break;
+          int i = localStComment.vecReply.size();
+          boolean bool = true;
+          i -= 1;
+          while (i >= 0)
+          {
+            if (paramString2.equals(((CertifiedAccountMeta.StReply)localStComment.vecReply.get(i)).id.get()))
+            {
+              if (localStComment.vecReply.get().set(i, paramStReply) == null) {
+                bool = false;
+              }
+              return bool;
+            }
+            i -= 1;
           }
-          localStComment = (CertifiedAccountMeta.StComment)localIterator.next();
-        } while (!paramString1.equals(localStComment.id.get()));
-        i = localStComment.vecReply.size() - 1;
-        if (i < 0) {
-          break label166;
         }
-        if (!paramString2.equals(((CertifiedAccountMeta.StReply)localStComment.vecReply.get(i)).id.get())) {
-          break label157;
-        }
-        if (localStComment.vecReply.get().set(i, paramStReply) == null) {
-          break label151;
-        }
-        bool1 = true;
       }
     }
-    for (;;)
-    {
-      return bool1;
-      label151:
-      bool1 = false;
-      continue;
-      label157:
-      i -= 1;
-      break;
-      label166:
-      bool1 = false;
-    }
+    return false;
   }
   
   public boolean a(Collection<CertifiedAccountMeta.StComment> paramCollection)
   {
-    boolean bool = false;
     if (paramCollection != null) {
-      bool = this.jdField_a_of_type_JavaUtilList.addAll(paramCollection);
+      return this.jdField_a_of_type_JavaUtilList.addAll(paramCollection);
     }
-    return bool;
+    return false;
   }
   
   public void b(CertifiedAccountMeta.StComment paramStComment)
   {
-    Integer localInteger;
     if ((paramStComment != null) && (!TextUtils.isEmpty(paramStComment.id.get())))
     {
-      localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(paramStComment.id.get());
-      if (localInteger == null) {
-        break label75;
+      int i = 10;
+      Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(paramStComment.id.get());
+      if (localInteger != null) {
+        i = 10 + localInteger.intValue();
       }
-    }
-    label75:
-    for (int i = localInteger.intValue() + 10;; i = 10)
-    {
       this.jdField_a_of_type_JavaUtilMap.put(paramStComment.id.get(), Integer.valueOf(i));
       notifyDataSetChanged();
-      return;
     }
   }
   
@@ -294,26 +237,29 @@ public class NewCommentAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     CertifiedAccountMeta.StComment localStComment = (CertifiedAccountMeta.StComment)getItem(paramInt);
-    if ((paramView == null) || ((paramView instanceof MoreCommentPanel)))
+    Object localObject;
+    if (paramView != null)
     {
-      paramView = new CommentView(this.jdField_a_of_type_AndroidContentContext);
-      ((CommentView)paramView).setOnCommentElementClickListener(this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener);
-      paramView.setTag(paramView);
+      localObject = paramView;
+      if (!(paramView instanceof MoreCommentPanel)) {}
     }
-    for (;;)
+    else
     {
-      CommentView localCommentView = (CommentView)paramView.getTag();
-      localCommentView.setPosition(paramInt);
-      localCommentView.setDisplayNum(3);
-      Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(localStComment.id.get());
-      if (localInteger != null) {}
-      for (int i = localInteger.intValue();; i = 3)
-      {
-        localCommentView.setData(localStComment, i, this.jdField_a_of_type_JavaLangString);
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-      }
+      localObject = new CommentView(this.jdField_a_of_type_AndroidContentContext);
+      ((CommentView)localObject).setOnCommentElementClickListener(this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener);
+      ((View)localObject).setTag(localObject);
     }
+    paramView = (CommentView)((View)localObject).getTag();
+    paramView.setPosition(paramInt);
+    int i = 3;
+    paramView.setDisplayNum(3);
+    Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(localStComment.id.get());
+    if (localInteger != null) {
+      i = localInteger.intValue();
+    }
+    paramView.setData(localStComment, i, this.jdField_a_of_type_JavaLangString);
+    EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
+    return localObject;
   }
   
   public void notifyDataSetChanged()
@@ -323,7 +269,7 @@ public class NewCommentAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.NewCommentAdapter
  * JD-Core Version:    0.7.0.1
  */

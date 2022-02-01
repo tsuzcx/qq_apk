@@ -60,13 +60,12 @@ public class MusicInfo
   
   public static int a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    case 2: 
-    default: 
+      if (paramInt != 2) {}
       return 0;
     }
-    return 2130840733;
+    return 2130840608;
   }
   
   public static MusicInfo a(aio_media.Song paramSong)
@@ -76,34 +75,31 @@ public class MusicInfo
     }
     MusicInfo localMusicInfo = new MusicInfo();
     localMusicInfo.jdField_a_of_type_JavaLangString = paramSong.str_song_id.get();
-    if (paramSong.bytes_name.get() != null)
-    {
+    Object localObject1 = paramSong.bytes_name.get();
+    String str = "";
+    if (localObject1 != null) {
       localObject1 = paramSong.bytes_name.get().toStringUtf8();
-      localMusicInfo.jdField_b_of_type_JavaLangString = ((String)localObject1);
-      if (paramSong.bytes_sub_title.get() == null) {
-        break label149;
-      }
+    } else {
+      localObject1 = "";
     }
-    Object localObject2;
-    label149:
-    for (Object localObject1 = paramSong.bytes_sub_title.get().toStringUtf8();; localObject1 = "")
+    localMusicInfo.jdField_b_of_type_JavaLangString = ((String)localObject1);
+    if (paramSong.bytes_sub_title.get() != null) {
+      localObject1 = paramSong.bytes_sub_title.get().toStringUtf8();
+    } else {
+      localObject1 = "";
+    }
+    localMusicInfo.c = ((String)localObject1);
+    localObject1 = paramSong.rpt_bytes_singer.get();
+    localMusicInfo.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (localObject1 != null)
     {
-      localMusicInfo.c = ((String)localObject1);
-      localObject1 = paramSong.rpt_bytes_singer.get();
-      localMusicInfo.jdField_a_of_type_JavaUtilList = new ArrayList();
-      if (localObject1 == null) {
-        break label155;
-      }
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (ByteStringMicro)((Iterator)localObject1).next();
         localMusicInfo.jdField_a_of_type_JavaUtilList.add(((ByteStringMicro)localObject2).toStringUtf8());
       }
-      localObject1 = "";
-      break;
     }
-    label155:
     localMusicInfo.jdField_b_of_type_JavaUtilList = new ArrayList();
     if (paramSong.rpt_bytes_download_url.get() != null)
     {
@@ -118,70 +114,83 @@ public class MusicInfo
         }
       }
     }
-    if (paramSong.bytes_lyric.get() != null)
-    {
+    if (paramSong.bytes_lyric.get() != null) {
       localObject1 = paramSong.bytes_lyric.get().toStringUtf8();
-      localObject2 = localObject1;
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject2 = ((String)localObject1).replace("&apos;", "'").replace("&quot;", "\"").replace("&nbsp;", " ").replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&");
-      }
-      localMusicInfo.jdField_d_of_type_JavaLangString = ((String)localObject2);
-      if (paramSong.bytes_cover.get() == null) {
-        break label387;
-      }
-    }
-    label387:
-    for (localObject1 = paramSong.bytes_cover.get().toStringUtf8();; localObject1 = "")
-    {
-      localMusicInfo.jdField_e_of_type_JavaLangString = ((String)localObject1);
-      localMusicInfo.jdField_d_of_type_Long = paramSong.uint32_duration.get();
-      localMusicInfo.jdField_a_of_type_Int = paramSong.enum_song_source.get();
-      localMusicInfo.jdField_e_of_type_Long = paramSong.uint64_sharer_uin.get();
-      return localMusicInfo;
+    } else {
       localObject1 = "";
-      break;
     }
+    Object localObject2 = localObject1;
+    if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+      localObject2 = ((String)localObject1).replace("&apos;", "'").replace("&quot;", "\"").replace("&nbsp;", " ").replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&");
+    }
+    localMusicInfo.jdField_d_of_type_JavaLangString = ((String)localObject2);
+    localObject1 = str;
+    if (paramSong.bytes_cover.get() != null) {
+      localObject1 = paramSong.bytes_cover.get().toStringUtf8();
+    }
+    localMusicInfo.jdField_e_of_type_JavaLangString = ((String)localObject1);
+    localMusicInfo.jdField_d_of_type_Long = paramSong.uint32_duration.get();
+    localMusicInfo.jdField_a_of_type_Int = paramSong.enum_song_source.get();
+    localMusicInfo.jdField_e_of_type_Long = paramSong.uint64_sharer_uin.get();
+    return localMusicInfo;
   }
   
   public static String a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return "";
-    case 1: 
-      return "QQ音乐";
+      if (paramInt != 2) {
+        return "";
+      }
+      return HardCodeUtil.a(2131707061);
     }
-    return HardCodeUtil.a(2131707039);
+    return "QQ音乐";
   }
   
   public static String a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, long paramLong)
   {
-    if ((paramQQAppInterface == null) || (paramLong < 0L)) {
-      return "";
-    }
-    if (paramInt == 2) {}
-    for (paramQQAppInterface = ContactUtils.c(paramQQAppInterface, String.valueOf(paramLong), true);; paramQQAppInterface = ContactUtils.g(paramQQAppInterface, paramString, String.valueOf(paramLong)))
+    if (paramQQAppInterface != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AioShareMusic", 2, " getSourceStr() type = " + paramInt + " sessionUin = " + paramString + " shareUin =" + paramLong + " nickName =" + paramQQAppInterface);
+      if (paramLong < 0L) {
+        return "";
       }
-      if (!TextUtils.isEmpty(paramQQAppInterface)) {
-        break;
+      if (paramInt == 2) {
+        paramQQAppInterface = ContactUtils.a(paramQQAppInterface, String.valueOf(paramLong), true);
+      } else {
+        paramQQAppInterface = ContactUtils.b(paramQQAppInterface, paramString, String.valueOf(paramLong));
       }
-      return "";
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" getSourceStr() type = ");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(" sessionUin = ");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" shareUin =");
+        localStringBuilder.append(paramLong);
+        localStringBuilder.append(" nickName =");
+        localStringBuilder.append(paramQQAppInterface);
+        QLog.d("AioShareMusic", 2, localStringBuilder.toString());
+      }
+      if (TextUtils.isEmpty(paramQQAppInterface)) {
+        return "";
+      }
+      paramString = new StringBuilder();
+      paramString.append("来自");
+      paramString.append(paramQQAppInterface);
+      paramString.append("分享");
+      return paramString.toString();
     }
-    paramString = new StringBuilder();
-    paramString.append("来自").append(paramQQAppInterface).append("分享");
-    return paramString.toString();
+    return "";
   }
   
   public int a()
   {
-    if (this.jdField_a_of_type_Long < 0L) {
+    long l = this.jdField_a_of_type_Long;
+    if (l < 0L) {
       return 0;
     }
-    return (int)this.jdField_a_of_type_Long;
+    return (int)l;
   }
   
   public long a()
@@ -201,7 +210,8 @@ public class MusicInfo
   
   public boolean a()
   {
-    return (this.jdField_b_of_type_JavaUtilList != null) && (!this.jdField_b_of_type_JavaUtilList.isEmpty());
+    List localList = this.jdField_b_of_type_JavaUtilList;
+    return (localList != null) && (!localList.isEmpty());
   }
   
   public int b()
@@ -236,34 +246,79 @@ public class MusicInfo
   
   public boolean equals(Object paramObject)
   {
-    if (!(paramObject instanceof MusicInfo)) {
+    boolean bool1 = paramObject instanceof MusicInfo;
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
     }
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(((MusicInfo)paramObject).a())) && (c() == ((MusicInfo)paramObject).c())) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    bool1 = bool2;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      String str = this.jdField_a_of_type_JavaLangString;
+      paramObject = (MusicInfo)paramObject;
+      bool1 = bool2;
+      if (str.equals(paramObject.a()))
+      {
+        bool1 = bool2;
+        if (c() == paramObject.c()) {
+          bool1 = true;
+        }
+      }
     }
+    return bool1;
   }
   
   public String toString()
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SongInfo{id='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", name='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", subTitle='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", singers=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(", urls='");
+    Object localObject = this.jdField_b_of_type_JavaUtilList;
     int j = 0;
-    StringBuilder localStringBuilder = new StringBuilder().append("SongInfo{id='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", name='").append(this.jdField_b_of_type_JavaLangString).append('\'').append(", subTitle='").append(this.c).append('\'').append(", singers=").append(this.jdField_a_of_type_JavaUtilList).append(", urls='");
-    if (this.jdField_b_of_type_JavaUtilList == null)
-    {
+    int i;
+    if (localObject == null) {
       i = 0;
-      localStringBuilder = localStringBuilder.append(i).append('\'').append(", lyric='");
-      if (this.jdField_d_of_type_JavaLangString != null) {
-        break label240;
-      }
+    } else {
+      i = ((List)localObject).size();
     }
-    label240:
-    for (int i = j;; i = this.jdField_d_of_type_JavaLangString.length())
-    {
-      return i + '\'' + ", album='" + this.jdField_e_of_type_JavaLangString + '\'' + ", seek='" + this.jdField_a_of_type_Long + '\'' + "ms, duration='" + this.jdField_d_of_type_Long + '\'' + ", source='" + this.jdField_a_of_type_Int + '\'' + ", shareUin='" + this.jdField_e_of_type_Long + '\'' + '}';
-      i = this.jdField_b_of_type_JavaUtilList.size();
-      break;
+    localStringBuilder.append(i);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", lyric='");
+    localObject = this.jdField_d_of_type_JavaLangString;
+    if (localObject == null) {
+      i = j;
+    } else {
+      i = ((String)localObject).length();
     }
+    localStringBuilder.append(i);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", album='");
+    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", seek='");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append('\'');
+    localStringBuilder.append("ms, duration='");
+    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", source='");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", shareUin='");
+    localStringBuilder.append(this.jdField_e_of_type_Long);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -283,7 +338,7 @@ public class MusicInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.data.MusicInfo
  * JD-Core Version:    0.7.0.1
  */

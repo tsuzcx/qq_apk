@@ -17,30 +17,33 @@ class MainPageFragment$7
   
   public boolean onLongClick(View paramView)
   {
-    switch (paramView.getId())
-    {
-    }
-    do
-    {
-      return false;
-    } while ((!GameWnsUtils.enablePersistentDebugVersion()) || (MainPageFragment.access$000(this.this$0) == null));
-    paramView = BaseApplicationImpl.getApplication().getSharedPreferences("persistent_debug_version_" + MainPageFragment.getUin(), 4);
-    if (paramView.getBoolean("persistent", false))
-    {
-      paramView.edit().remove("persistent").apply();
-      QLog.e("MainPageFragment", 1, "close persistent debug version");
-      Toast.makeText(this.this$0.getActivity(), this.this$0.getResources().getString(2131694169), 1).show();
+    if (paramView.getId() != 2131371385) {
       return false;
     }
-    paramView.edit().putBoolean("persistent", true).apply();
-    QLog.e("MainPageFragment", 1, "open persistent debug version");
-    Toast.makeText(this.this$0.getActivity(), this.this$0.getResources().getString(2131694172), 1).show();
+    if ((GameWnsUtils.enablePersistentDebugVersion()) && (MainPageFragment.access$000(this.this$0) != null))
+    {
+      paramView = BaseApplicationImpl.getApplication();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("persistent_debug_version_");
+      localStringBuilder.append(MainPageFragment.getUin());
+      paramView = paramView.getSharedPreferences(localStringBuilder.toString(), 4);
+      if (paramView.getBoolean("persistent", false))
+      {
+        paramView.edit().remove("persistent").apply();
+        QLog.e("MainPageFragment", 1, "close persistent debug version");
+        Toast.makeText(this.this$0.getBaseActivity(), this.this$0.getResources().getString(2131694125), 1).show();
+        return false;
+      }
+      paramView.edit().putBoolean("persistent", true).apply();
+      QLog.e("MainPageFragment", 1, "open persistent debug version");
+      Toast.makeText(this.this$0.getBaseActivity(), this.this$0.getResources().getString(2131694128), 1).show();
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.mainpage.MainPageFragment.7
  * JD-Core Version:    0.7.0.1
  */

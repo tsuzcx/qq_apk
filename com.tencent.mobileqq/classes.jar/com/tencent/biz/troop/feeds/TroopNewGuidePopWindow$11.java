@@ -19,10 +19,11 @@ final class TroopNewGuidePopWindow$11
     {
       URL localURL = new URL(this.a);
       String str = InetAddress.getByName(localURL.getHost()).getHostAddress();
-      if (!TextUtils.isEmpty(str)) {
+      if (!TextUtils.isEmpty(str))
+      {
         BaseApplicationImpl.getContext().getSharedPreferences("qbiz_host_ip_map", 0).edit().putString(localURL.getHost(), str).commit();
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -32,7 +33,7 @@ final class TroopNewGuidePopWindow$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.feeds.TroopNewGuidePopWindow.11
  * JD-Core Version:    0.7.0.1
  */

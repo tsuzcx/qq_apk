@@ -17,17 +17,29 @@ public class LyricCharacter
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder("LyricCharacter -> ");
-    localStringBuilder.append("mStartTime:" + this.mStartTime);
-    localStringBuilder.append(", mDuration:" + this.mDuration);
-    localStringBuilder.append(", mStart:" + this.mStart);
-    localStringBuilder.append(", mEnd:" + this.mEnd);
-    return localStringBuilder.toString();
+    StringBuilder localStringBuilder1 = new StringBuilder("LyricCharacter -> ");
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("mStartTime:");
+    localStringBuilder2.append(this.mStartTime);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(", mDuration:");
+    localStringBuilder2.append(this.mDuration);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(", mStart:");
+    localStringBuilder2.append(this.mStart);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(", mEnd:");
+    localStringBuilder2.append(this.mEnd);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    return localStringBuilder1.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.music.lyric.data.LyricCharacter
  * JD-Core Version:    0.7.0.1
  */

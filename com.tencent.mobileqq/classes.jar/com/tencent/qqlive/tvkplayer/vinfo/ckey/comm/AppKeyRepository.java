@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class AppKeyRepository
 {
-  private static AppKeyRepository instance = null;
+  private static AppKeyRepository instance;
   private boolean isAdd = false;
   private String mAppKey = "";
   private String mBsGuid = "";
@@ -93,7 +93,7 @@ public class AppKeyRepository
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.ckey.comm.AppKeyRepository
  * JD-Core Version:    0.7.0.1
  */

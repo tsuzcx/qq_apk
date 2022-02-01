@@ -22,6 +22,8 @@ public abstract interface InfoConfiguration
   
   public abstract void setHostVersionName(String paramString);
   
+  public abstract void setIsHoldPlayerLog(boolean paramBoolean);
+  
   public abstract void setLiteSdk(boolean paramBoolean);
   
   public abstract void setNeedInitTPPlatform(boolean paramBoolean);
@@ -42,7 +44,7 @@ public abstract interface InfoConfiguration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.libapi.generalinfo.InfoConfiguration
  * JD-Core Version:    0.7.0.1
  */

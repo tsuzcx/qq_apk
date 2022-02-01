@@ -5,7 +5,6 @@ import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.settings.FMSettings;
 import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
 import com.tencent.mobileqq.filemanager.util.IReportVer51;
 import com.tencent.mobileqq.filemanager.widget.QfileTabBarView.ScanParams;
@@ -34,25 +33,11 @@ public class QfileLocalFileMediaTabView
   private HashMap<String, List<FileInfo>> a()
   {
     HashMap localHashMap = new HashMap();
-    String str;
-    if (this.f) {
-      str = FMSettings.a().a();
-    }
-    while ((this.jdField_a_of_type_Int & 0x1) > 0)
+    if ((this.jdField_a_of_type_Int & 0x1) > 0)
     {
       Iterator localIterator = this.jdField_d_of_type_JavaUtilList.iterator();
-      for (;;)
-      {
-        if (localIterator.hasNext())
-        {
-          FileCategoryUtil.a(true, ((QfileTabBarView.ScanParams)localIterator.next()).a(), ".mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|", ".mpg", localHashMap, null);
-          continue;
-          str = null;
-          break;
-        }
-      }
-      if (str != null) {
-        FileCategoryUtil.a(true, str, ".mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|", ".mpg", localHashMap, null);
+      while (localIterator.hasNext()) {
+        FileCategoryUtil.a(true, ((QfileTabBarView.ScanParams)localIterator.next()).a(), ".mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|", ".mpg", localHashMap, null);
       }
       FileCategoryUtil.a(localHashMap);
     }
@@ -62,25 +47,11 @@ public class QfileLocalFileMediaTabView
   private HashMap<String, List<FileInfo>> b()
   {
     HashMap localHashMap = new HashMap();
-    String str;
-    if (this.f) {
-      str = FMSettings.a().a();
-    }
-    while ((this.jdField_a_of_type_Int & 0x2) > 0)
+    if ((this.jdField_a_of_type_Int & 0x2) > 0)
     {
       Iterator localIterator = this.jdField_d_of_type_JavaUtilList.iterator();
-      for (;;)
-      {
-        if (localIterator.hasNext())
-        {
-          FileCategoryUtil.a(true, ((QfileTabBarView.ScanParams)localIterator.next()).a(), ".swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|", "", localHashMap, null);
-          continue;
-          str = null;
-          break;
-        }
-      }
-      if (str != null) {
-        FileCategoryUtil.a(true, str, ".swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|", "", localHashMap, null);
+      while (localIterator.hasNext()) {
+        FileCategoryUtil.a(true, ((QfileTabBarView.ScanParams)localIterator.next()).a(), ".swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|", "", localHashMap, null);
       }
       FileCategoryUtil.a(localHashMap);
     }
@@ -90,18 +61,13 @@ public class QfileLocalFileMediaTabView
   private void d(ArrayList<FileInfo> paramArrayList)
   {
     if (paramArrayList == null) {
-      break label4;
-    }
-    for (;;)
-    {
-      label4:
       return;
-      if ((this.f) && ((this.jdField_a_of_type_Int & 0x1) > 0))
+    }
+    if ((this.f) && ((this.jdField_a_of_type_Int & 0x1) > 0))
+    {
+      Map localMap = FileCategoryUtil.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity);
+      if (localMap != null)
       {
-        Map localMap = FileCategoryUtil.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity);
-        if (localMap == null) {
-          break;
-        }
         Iterator localIterator = localMap.keySet().iterator();
         while (localIterator.hasNext())
         {
@@ -117,18 +83,13 @@ public class QfileLocalFileMediaTabView
   private void e(ArrayList<FileInfo> paramArrayList)
   {
     if (paramArrayList == null) {
-      break label4;
-    }
-    for (;;)
-    {
-      label4:
       return;
-      if ((this.f) && ((this.jdField_a_of_type_Int & 0x2) > 0))
+    }
+    if ((this.f) && ((this.jdField_a_of_type_Int & 0x2) > 0))
+    {
+      Map localMap = FileCategoryUtil.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity);
+      if (localMap != null)
       {
-        Map localMap = FileCategoryUtil.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity);
-        if (localMap == null) {
-          break;
-        }
         Iterator localIterator = localMap.keySet().iterator();
         while (localIterator.hasNext())
         {
@@ -154,10 +115,11 @@ public class QfileLocalFileMediaTabView
   
   public void a(Set<FileInfo> paramSet)
   {
-    if ((paramSet == null) || (paramSet.size() == 0)) {}
-    for (;;)
+    if (paramSet != null)
     {
-      return;
+      if (paramSet.size() == 0) {
+        return;
+      }
       paramSet = paramSet.iterator();
       while (paramSet.hasNext()) {
         b((FileInfo)paramSet.next());
@@ -190,25 +152,19 @@ public class QfileLocalFileMediaTabView
   {
     super.j();
     setEditbarButton(false, false, true, true, true);
-    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.k())
-    {
-      if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.c()) {
-        break label50;
+    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.k()) {
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.c()) {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().R();
+      } else {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().W();
       }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().R();
     }
-    for (;;)
-    {
-      o();
-      return;
-      label50:
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().W();
-    }
+    o();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileMediaTabView
  * JD-Core Version:    0.7.0.1
  */

@@ -50,38 +50,54 @@ public class ShareManager
   
   public static Bitmap getSharePicBitmap(Activity paramActivity, String paramString)
   {
+    Object localObject1;
     try
     {
       paramString = ImageUtil.drawableToBitmap(((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getDrawable(paramActivity, paramString, 0, 0, paramActivity.getResources().getDrawable(R.drawable.mini_sdk_qzone_miniapp_more_button)));
-      Object localObject = paramString;
+      localObject1 = paramString;
       if (paramString != null)
       {
-        localObject = new ByteArrayOutputStream();
-        paramString.compress(Bitmap.CompressFormat.JPEG, 85, (OutputStream)localObject);
-        localObject = ((ByteArrayOutputStream)localObject).toByteArray();
-        QMLog.d("ShareManager", "getSharePicBitmap. ImageUtil.drawableToBitmap, out.toByteArray().length original:" + localObject.length);
+        localObject1 = new ByteArrayOutputStream();
+        paramString.compress(Bitmap.CompressFormat.JPEG, 85, (OutputStream)localObject1);
+        Object localObject2 = ((ByteArrayOutputStream)localObject1).toByteArray();
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getSharePicBitmap. ImageUtil.drawableToBitmap, out.toByteArray().length original:");
+        ((StringBuilder)localObject1).append(localObject2.length);
+        QMLog.d("ShareManager", ((StringBuilder)localObject1).toString());
         int i = 0;
-        while ((i < 10) && (localObject.length > 32768))
+        localObject1 = paramString;
+        paramString = (String)localObject2;
+        while ((i < 10) && (paramString.length > 32768))
         {
-          localObject = new Matrix();
-          ((Matrix)localObject).setScale(0.7F, 0.7F);
-          paramString = Bitmap.createBitmap(paramString, 0, 0, paramString.getWidth(), paramString.getHeight(), (Matrix)localObject, true);
-          localObject = new ByteArrayOutputStream();
-          paramString.compress(Bitmap.CompressFormat.JPEG, 85, (OutputStream)localObject);
-          localObject = ((ByteArrayOutputStream)localObject).toByteArray();
-          QMLog.d("ShareManager", "getSharePicBitmap. ImageUtil.drawableToBitmap, out.toByteArray().length compressTo:" + localObject.length);
+          paramString = new Matrix();
+          paramString.setScale(0.7F, 0.7F);
+          localObject1 = Bitmap.createBitmap((Bitmap)localObject1, 0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), paramString, true);
+          paramString = new ByteArrayOutputStream();
+          ((Bitmap)localObject1).compress(Bitmap.CompressFormat.JPEG, 85, paramString);
+          paramString = paramString.toByteArray();
           i += 1;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("getSharePicBitmap. ImageUtil.drawableToBitmap, out.toByteArray().length compressTo:");
+          ((StringBuilder)localObject2).append(paramString.length);
+          QMLog.d("ShareManager", ((StringBuilder)localObject2).toString());
         }
-        QMLog.d("ShareManager", "getSharePicBitmap. ImageUtil.drawableToBitmap, out.toByteArray().length done:" + localObject.length);
-        localObject = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getSharePicBitmap. ImageUtil.drawableToBitmap, out.toByteArray().length done:");
+        ((StringBuilder)localObject1).append(paramString.length);
+        QMLog.d("ShareManager", ((StringBuilder)localObject1).toString());
+        paramString = BitmapFactory.decodeByteArray(paramString, 0, paramString.length);
+        return paramString;
       }
-      return localObject;
     }
     catch (Exception paramString)
     {
-      QMLog.w("ShareManager", "getSharePicBitmap. get an exception when handling URLbmp:" + paramString);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getSharePicBitmap. get an exception when handling URLbmp:");
+      ((StringBuilder)localObject1).append(paramString);
+      QMLog.w("ShareManager", ((StringBuilder)localObject1).toString());
+      localObject1 = ImageUtil.drawableToBitmap(paramActivity.getResources().getDrawable(R.drawable.mini_sdk_qzone_miniapp_more_button));
     }
-    return ImageUtil.drawableToBitmap(paramActivity.getResources().getDrawable(R.drawable.mini_sdk_qzone_miniapp_more_button));
+    return localObject1;
   }
   
   private static void launchShareTransitiveFragment(InnerShareData paramInnerShareData)
@@ -102,24 +118,25 @@ public class ShareManager
   
   private void shareLocalPicMessage(InnerShareData paramInnerShareData)
   {
-    if (!paramInnerShareData.isLocalPic) {
-      QMLog.w("ShareManager", "shareLocalPicMessage. not local pic");
-    }
-    do
+    if (!paramInnerShareData.isLocalPic)
     {
+      QMLog.w("ShareManager", "shareLocalPicMessage. not local pic");
       return;
-      if (paramInnerShareData.sharePicPath == null)
+    }
+    if (paramInnerShareData.sharePicPath == null)
+    {
+      QMLog.w("ShareManager", "shareLocalPicMessage. local pic is null");
+      return;
+    }
+    if (((ShareProxy)ProxyManager.get(ShareProxy.class)).isShareTargetAvailable(paramInnerShareData.fromActivity, paramInnerShareData.shareTarget))
+    {
+      if (paramInnerShareData.shareInMiniProcess)
       {
-        QMLog.w("ShareManager", "shareLocalPicMessage. local pic is null");
+        ((ShareProxy)ProxyManager.get(ShareProxy.class)).share(paramInnerShareData.fromActivity, paramInnerShareData);
         return;
       }
-    } while (!((ShareProxy)ProxyManager.get(ShareProxy.class)).isShareTargetAvailable(paramInnerShareData.fromActivity, paramInnerShareData.shareTarget));
-    if (paramInnerShareData.shareInMiniProcess)
-    {
-      ((ShareProxy)ProxyManager.get(ShareProxy.class)).share(paramInnerShareData.fromActivity, paramInnerShareData);
-      return;
+      launchShareTransitiveFragment(paramInnerShareData);
     }
-    launchShareTransitiveFragment(paramInnerShareData);
   }
   
   private void shareNetworkPicMessage(IMiniAppContext paramIMiniAppContext, InnerShareData paramInnerShareData)
@@ -135,8 +152,16 @@ public class ShareManager
       QMLog.e("ShareManager", "Failed to create newShareInfoRequest");
       return;
     }
-    if (QMLog.isColorLevel()) {
-      QMLog.d("ShareManager", "newShareInfoRequest. title=" + paramInnerShareData.title + ",sharePicPath=" + paramInnerShareData.sharePicPath + ",entryPath=" + paramInnerShareData.entryPath);
+    if (QMLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("newShareInfoRequest. title=");
+      ((StringBuilder)localObject).append(paramInnerShareData.title);
+      ((StringBuilder)localObject).append(",sharePicPath=");
+      ((StringBuilder)localObject).append(paramInnerShareData.sharePicPath);
+      ((StringBuilder)localObject).append(",entryPath=");
+      ((StringBuilder)localObject).append(paramInnerShareData.entryPath);
+      QMLog.d("ShareManager", ((StringBuilder)localObject).toString());
     }
     MiniAppInfo localMiniAppInfo = paramInnerShareData.getMiniAppInfo();
     if (localMiniAppInfo == null)
@@ -144,12 +169,12 @@ public class ShareManager
       QMLog.e("ShareManager", "newShareInfoRequest. mini app info is null!");
       return;
     }
-    String str2 = paramInnerShareData.summary;
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = localMiniAppInfo.desc;
+    String str = paramInnerShareData.summary;
+    Object localObject = str;
+    if (TextUtils.isEmpty(str)) {
+      localObject = localMiniAppInfo.desc;
     }
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getShareInfo(MiniProgramShareUtils.newShareInfoRequest(localMiniAppInfo.appId, paramInnerShareData.summary, str1, (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()), 1, 1, localMiniAppInfo.getReportType(), paramInnerShareData.sharePicPath, null, paramInnerShareData.entryPath, localMiniAppInfo.iconUrl, null, localMiniAppInfo.verType, localMiniAppInfo.versionId, paramInnerShareData.getShareType(), paramInnerShareData.withShareTicket, paramInnerShareData.webURL, null, paramInnerShareData.templateId, paramInnerShareData.templateData, paramInnerShareData.recvOpenId), getShareInfoResult(paramInnerShareData));
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getShareInfo(MiniProgramShareUtils.newShareInfoRequest(localMiniAppInfo.appId, paramInnerShareData.summary, (String)localObject, (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()), 1, 1, localMiniAppInfo.getReportType(), paramInnerShareData.sharePicPath, null, paramInnerShareData.entryPath, localMiniAppInfo.iconUrl, null, localMiniAppInfo.verType, localMiniAppInfo.versionId, paramInnerShareData.getShareType(), paramInnerShareData.withShareTicket, paramInnerShareData.webURL, null, paramInnerShareData.templateId, paramInnerShareData.templateData, paramInnerShareData.recvOpenId), getShareInfoResult(paramInnerShareData));
   }
   
   public void shareAppMessage(InnerShareData paramInnerShareData)
@@ -169,7 +194,10 @@ public class ShareManager
       QMLog.e("ShareManager", "Failed to shareAppPictureMessage. shareData is null");
       return;
     }
-    QMLog.d("ShareManager", "shareAppPictureMessage. shareData=" + paramInnerShareData);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("shareAppPictureMessage. shareData=");
+    localStringBuilder.append(paramInnerShareData);
+    QMLog.d("ShareManager", localStringBuilder.toString());
     if (QUAUtil.isQQMainApp())
     {
       ((ShareProxy)ProxyManager.get(ShareProxy.class)).onJsShareAppPictureMessage(paramInnerShareData);
@@ -185,7 +213,7 @@ public class ShareManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.manager.ShareManager
  * JD-Core Version:    0.7.0.1
  */

@@ -19,13 +19,13 @@ public class TouchEventHandler
     paramContext = new AvatarGestureDetector(paramContext, localAvatarOnGestureListener, new Handler(Looper.getMainLooper()));
     localAvatarOnGestureListener.a(paramContext);
     paramView.setOnTouchListener(new TouchEventHandler.1(this));
-    paramView.setTag(2131362377, paramContext);
+    paramView.setTag(2131362333, paramContext);
     paramContext.a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.avatardoubletap.TouchEventHandler
  * JD-Core Version:    0.7.0.1
  */

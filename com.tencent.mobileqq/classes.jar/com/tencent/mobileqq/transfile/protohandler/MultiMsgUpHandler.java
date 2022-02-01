@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
 import com.qq.taf.jce.HexUtil;
-import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.BaseMessageHandler;
 import com.tencent.mobileqq.app.StatictisInfo;
 import com.tencent.mobileqq.multimsg.MultiMsgUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -10,13 +10,13 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.transfile.BaseTransProcessor;
 import com.tencent.mobileqq.transfile.NetworkCenter;
 import com.tencent.mobileqq.transfile.ServerAddr;
 import com.tencent.mobileqq.transfile.TransFileUtil;
 import com.tencent.mobileqq.transfile.api.IProtoReqManager;
 import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoReq;
 import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoResp;
+import com.tencent.mobileqq.transfile.report.ProcessorReport;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import java.util.ArrayList;
@@ -52,64 +52,75 @@ public class MultiMsgUpHandler
   
   private byte[] constructReqBody(List<RichProto.RichProtoReq.ReqCommon> paramList)
   {
-    int i = NetworkCenter.getInstance().getNetType();
-    this.mReqNetType = i;
-    switch (i)
-    {
-    default: 
-      i = 255;
-    }
-    Object localObject;
-    for (;;)
-    {
-      localObject = NetworkCenter.getInstance().getApnType();
-      int j = i;
-      if (localObject != null)
+    int j = NetworkCenter.getInstance().getNetType();
+    this.mReqNetType = j;
+    int i = 3;
+    if (j != 1) {
+      if (j != 2)
       {
-        j = i;
-        if (((String)localObject).contains("wap")) {
-          j = 5;
+        if (j != 3)
+        {
+          if (j != 4) {
+            i = 255;
+          } else {
+            i = 8;
+          }
+        }
+        else {
+          i = 7;
         }
       }
-      localObject = new MultiMsg.ReqBody();
-      ((MultiMsg.ReqBody)localObject).setHasFlag(true);
-      ((MultiMsg.ReqBody)localObject).uint32_subcmd.set(1);
-      ((MultiMsg.ReqBody)localObject).uint32_term_type.set(5);
-      ((MultiMsg.ReqBody)localObject).uint32_platform_type.set(9);
-      ((MultiMsg.ReqBody)localObject).uint32_net_type.set(j);
-      ((MultiMsg.ReqBody)localObject).bytes_build_ver.set(ByteStringMicro.copyFromUtf8(TransFileUtil.getVersionCode()));
-      ((MultiMsg.ReqBody)localObject).uint32_bu_type.set(0);
-      i = 0;
-      while (i < paramList.size())
-      {
-        addOne(i, (RichProto.RichProtoReq.ReqCommon)paramList.get(i), (MultiMsg.ReqBody)localObject);
-        i += 1;
+      else {
+        i = 6;
       }
-      i = 3;
-      continue;
-      i = 6;
-      continue;
-      i = 7;
-      continue;
-      i = 8;
+    }
+    Object localObject = NetworkCenter.getInstance().getApnType();
+    j = i;
+    if (localObject != null)
+    {
+      j = i;
+      if (((String)localObject).contains("wap")) {
+        j = 5;
+      }
+    }
+    localObject = new MultiMsg.ReqBody();
+    ((MultiMsg.ReqBody)localObject).setHasFlag(true);
+    ((MultiMsg.ReqBody)localObject).uint32_subcmd.set(1);
+    ((MultiMsg.ReqBody)localObject).uint32_term_type.set(5);
+    ((MultiMsg.ReqBody)localObject).uint32_platform_type.set(9);
+    ((MultiMsg.ReqBody)localObject).uint32_net_type.set(j);
+    ((MultiMsg.ReqBody)localObject).bytes_build_ver.set(ByteStringMicro.copyFromUtf8(TransFileUtil.getVersionCode()));
+    PBUInt32Field localPBUInt32Field = ((MultiMsg.ReqBody)localObject).uint32_bu_type;
+    i = 0;
+    localPBUInt32Field.set(0);
+    while (i < paramList.size())
+    {
+      addOne(i, (RichProto.RichProtoReq.ReqCommon)paramList.get(i), (MultiMsg.ReqBody)localObject);
+      i += 1;
     }
     return ((MultiMsg.ReqBody)localObject).toByteArray();
   }
   
   public static int convertMsgType(int paramInt)
   {
-    int i = 3;
-    switch (paramInt)
+    int j = 3;
+    int i = j;
+    if (paramInt != 1)
     {
-    default: 
-      i = 1;
-    case 1: 
-    case 3000: 
-      return i;
-    case 1040: 
-      return 15;
+      i = j;
+      if (paramInt != 3000)
+      {
+        if (paramInt != 1039)
+        {
+          if (paramInt != 1040) {
+            return 1;
+          }
+          return 15;
+        }
+        i = 255;
+      }
     }
-    return 255;
+    return i;
   }
   
   void initResps(RichProto.RichProtoReq paramRichProtoReq)
@@ -127,135 +138,226 @@ public class MultiMsgUpHandler
   
   public void onProtoResp(ProtoReqManagerImpl.ProtoResp paramProtoResp, ProtoReqManagerImpl.ProtoReq paramProtoReq)
   {
-    localObject1 = paramProtoResp.resp;
+    Object localObject1 = paramProtoResp.resp;
     byte[] arrayOfByte1 = paramProtoResp.resp.getWupBuffer();
     RichProto.RichProtoReq localRichProtoReq = (RichProto.RichProtoReq)paramProtoReq.busiData;
     RichProto.RichProtoResp localRichProtoResp = localRichProtoReq.resp;
     StatictisInfo localStatictisInfo = paramProtoResp.statisInfo;
+    int i;
     if (((FromServiceMsg)localObject1).getResultCode() != 1000)
     {
       i = ((FromServiceMsg)localObject1).getResultCode();
-      if ((i == 1002) || (i == 1013)) {
-        setResult(-1, 9311, MessageHandler.a((FromServiceMsg)localObject1), "", localStatictisInfo, localRichProtoResp.resps);
+      if ((i != 1002) && (i != 1013)) {
+        setResult(-1, 9044, BaseMessageHandler.a((FromServiceMsg)localObject1), "", localStatictisInfo, localRichProtoResp.resps);
+      } else {
+        setResult(-1, 9311, BaseMessageHandler.a((FromServiceMsg)localObject1), "", localStatictisInfo, localRichProtoResp.resps);
       }
     }
-    List localList;
     for (;;)
     {
-      RichProtoProc.onBusiProtoResp(localRichProtoReq, localRichProtoResp);
-      return;
-      setResult(-1, 9044, MessageHandler.a((FromServiceMsg)localObject1), "", localStatictisInfo, localRichProtoResp.resps);
-      continue;
+      label813:
+      label829:
+      StringBuilder localStringBuilder;
       try
       {
-        localList = ((MultiMsg.RspBody)new MultiMsg.RspBody().mergeFrom(arrayOfByte1)).rpt_multimsg_applyup_rsp.get();
-        if ((localList != null) && (localList.size() != 0)) {
-          break;
+        paramProtoResp = ((MultiMsg.RspBody)new MultiMsg.RspBody().mergeFrom(arrayOfByte1)).rpt_multimsg_applyup_rsp.get();
+        if ((paramProtoResp != null) && (paramProtoResp.size() != 0))
+        {
+          i = 0;
+          if (i >= paramProtoResp.size()) {
+            break label984;
+          }
+          MultiMsg.MultiMsgApplyUpRsp localMultiMsgApplyUpRsp = (MultiMsg.MultiMsgApplyUpRsp)paramProtoResp.get(i);
+          try
+          {
+            localObject5 = (RichProto.RichProtoResp.MultiMsgUpResp)localRichProtoResp.resps.get(i);
+            int j;
+            Object localObject3;
+            byte[] arrayOfByte2;
+            byte[] arrayOfByte3;
+            try
+            {
+              j = localMultiMsgApplyUpRsp.uint32_result.get();
+              if (j == 0) {
+                if (localMultiMsgApplyUpRsp.bytes_msg_resid.has())
+                {
+                  localObject3 = localMultiMsgApplyUpRsp.bytes_msg_resid.get().toByteArray();
+                  if ((localObject3 != null) && (localObject3.length > 0)) {
+                    if (localMultiMsgApplyUpRsp.bytes_msg_ukey.has())
+                    {
+                      localObject6 = localMultiMsgApplyUpRsp.bytes_msg_ukey.get().toByteArray();
+                      if ((localObject6 != null) && (localObject6.length > 0)) {
+                        if (localMultiMsgApplyUpRsp.bytes_msg_key.has())
+                        {
+                          arrayOfByte2 = localMultiMsgApplyUpRsp.bytes_msg_key.get().toByteArray();
+                          if ((arrayOfByte2 != null) && (arrayOfByte2.length > 0)) {
+                            if (localMultiMsgApplyUpRsp.bytes_msg_sig.has())
+                            {
+                              arrayOfByte3 = localMultiMsgApplyUpRsp.bytes_msg_sig.get().toByteArray();
+                              if (arrayOfByte3 == null) {
+                                break label1011;
+                              }
+                              localObject1 = paramProtoResp;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            catch (Exception localException5) {}
+          }
+          catch (Exception localException3)
+          {
+            Object localObject2;
+            localObject4 = null;
+          }
         }
-        throw new Exception("resps null");
       }
       catch (Exception paramProtoResp)
       {
-        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte1), localStatictisInfo, localRichProtoResp.resps);
+        Object localObject5;
+        Object localObject6;
+        Object localObject4;
+        paramProtoReq = ProcessorReport.getServerReason("P", -9529L);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramProtoResp.getMessage());
+        localStringBuilder.append(" hex:");
+        localStringBuilder.append(HexUtil.bytes2HexStr(arrayOfByte1));
+        setResult(-1, -9527, paramProtoReq, localStringBuilder.toString(), localStatictisInfo, localRichProtoResp.resps);
       }
-    }
-    int i = 0;
-    label233:
-    if (i < localList.size()) {
-      paramProtoResp = (MultiMsg.MultiMsgApplyUpRsp)localList.get(i);
-    }
-    try
-    {
-      localObject1 = (RichProto.RichProtoResp.MultiMsgUpResp)localRichProtoResp.resps.get(i);
-      try
-      {
-        j = paramProtoResp.uint32_result.get();
-        if (j != 0) {
-          break label781;
-        }
-        if (paramProtoResp.bytes_msg_resid.has()) {
-          break label367;
-        }
-        throw new Exception("bytes_msg_resid NOT exists");
-      }
-      catch (Exception paramProtoResp) {}
-    }
-    catch (Exception paramProtoResp)
-    {
       for (;;)
       {
-        localObject1 = null;
-        continue;
-        int j = 0;
+        try
+        {
+          if (arrayOfByte3.length <= 0) {
+            continue;
+          }
+          localObject1 = paramProtoResp;
+          ((RichProto.RichProtoResp.MultiMsgUpResp)localObject5).resId = ((byte[])localObject3);
+          localObject1 = paramProtoResp;
+          ((RichProto.RichProtoResp.MultiMsgUpResp)localObject5).ukey = ((byte[])localObject6);
+          localObject1 = paramProtoResp;
+          ((RichProto.RichProtoResp.MultiMsgUpResp)localObject5).msgKey = arrayOfByte2;
+          localObject1 = paramProtoResp;
+          ((RichProto.RichProtoResp.MultiMsgUpResp)localObject5).msgSig = arrayOfByte3;
+          localObject1 = paramProtoResp;
+          localObject3 = localMultiMsgApplyUpRsp.rpt_uint32_up_ip.get();
+          localObject1 = paramProtoResp;
+          localObject6 = localMultiMsgApplyUpRsp.rpt_uint32_up_port.get();
+          if (localObject3 != null)
+          {
+            localObject1 = paramProtoResp;
+            if (((List)localObject3).size() != 0)
+            {
+              j = 0;
+              for (;;)
+              {
+                localObject1 = paramProtoResp;
+                int k = ((List)localObject3).size();
+                if (j < k) {
+                  try
+                  {
+                    long l1 = ((Integer)((List)localObject3).get(j)).intValue();
+                    k = ((Integer)((List)localObject6).get(j)).intValue();
+                    long l2 = k;
+                    try
+                    {
+                      localObject1 = new ServerAddr();
+                      ((ServerAddr)localObject1).mIp = PkgTools.int2IPNet(l1 & 0xFFFFFFFF);
+                      ((ServerAddr)localObject1).port = ((int)l2);
+                      ((RichProto.RichProtoResp.MultiMsgUpResp)localObject5).ipList.add(j, localObject1);
+                      j += 1;
+                    }
+                    catch (Exception localException1)
+                    {
+                      localObject3 = localObject5;
+                      break label829;
+                    }
+                    localObject2 = paramProtoResp;
+                  }
+                  catch (Exception localException2)
+                  {
+                    localObject3 = localObject5;
+                  }
+                }
+              }
+            }
+          }
+        }
+        catch (Exception localException7)
+        {
+          paramProtoResp = localStringBuilder;
+          break label813;
+        }
+        try
+        {
+          ((RichProto.RichProtoResp.MultiMsgUpResp)localObject5).blockSize = ((int)localMultiMsgApplyUpRsp.uint64_block_size.get());
+          ((RichProto.RichProtoResp.MultiMsgUpResp)localObject5).transferedSize = ((int)localMultiMsgApplyUpRsp.uint64_up_offset.get());
+          paramProtoResp = (ProtoReqManagerImpl.ProtoResp)localObject2;
+          try
+          {
+            setResult(0, 0, "", "", localStatictisInfo, (RichProto.RichProtoResp.RespCommon)localObject5);
+            paramProtoResp = (ProtoReqManagerImpl.ProtoResp)localObject2;
+          }
+          catch (Exception localException4)
+          {
+            break label813;
+          }
+          throw new Exception("check iplist");
+        }
+        catch (Exception localException6)
+        {
+          paramProtoResp = localStringBuilder;
+          break label813;
+        }
       }
-    }
-    setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte1), localStatictisInfo, (RichProto.RichProtoResp.RespCommon)localObject1);
-    for (;;)
-    {
-      i += 1;
-      break label233;
-      break;
-      label367:
-      Object localObject2 = paramProtoResp.bytes_msg_resid.get().toByteArray();
-      if ((localObject2 == null) || (localObject2.length <= 0)) {
-        throw new Exception("resid_bs == null || empty");
-      }
-      if (!paramProtoResp.bytes_msg_ukey.has()) {
-        throw new Exception("bytes_msg_ukey NOT exists");
-      }
-      Object localObject3 = paramProtoResp.bytes_msg_ukey.get().toByteArray();
-      if ((localObject3 == null) || (localObject3.length <= 0)) {
-        throw new Exception("ukey_bs == null || empty");
-      }
-      if (!paramProtoResp.bytes_msg_key.has()) {
-        throw new Exception("bytes_msg_key NOT exists");
-      }
-      Object localObject4 = paramProtoResp.bytes_msg_key.get().toByteArray();
-      if ((localObject4 == null) || (localObject4.length <= 0)) {
-        throw new Exception("msgkey_bs == null || empty");
-      }
-      if (!paramProtoResp.bytes_msg_sig.has()) {
-        throw new Exception("bytes_msg_sig NOT exists");
-      }
-      byte[] arrayOfByte2 = paramProtoResp.bytes_msg_sig.get().toByteArray();
-      if ((arrayOfByte2 == null) || (arrayOfByte2.length <= 0)) {
-        throw new Exception("msgsig_bs == null || empty");
-      }
-      ((RichProto.RichProtoResp.MultiMsgUpResp)localObject1).resId = ((byte[])localObject2);
-      ((RichProto.RichProtoResp.MultiMsgUpResp)localObject1).ukey = ((byte[])localObject3);
-      ((RichProto.RichProtoResp.MultiMsgUpResp)localObject1).msgKey = ((byte[])localObject4);
-      ((RichProto.RichProtoResp.MultiMsgUpResp)localObject1).msgSig = arrayOfByte2;
-      localObject2 = paramProtoResp.rpt_uint32_up_ip.get();
-      localObject3 = paramProtoResp.rpt_uint32_up_port.get();
-      if ((localObject2 != null) && (((List)localObject2).size() != 0)) {
-        break label849;
-      }
-      throw new Exception("check iplist");
-      while (j < ((List)localObject2).size())
+      throw new Exception("msgsig_bs == null || empty");
+      throw new Exception("bytes_msg_sig NOT exists");
+      throw new Exception("msgkey_bs == null || empty");
+      throw new Exception("bytes_msg_key NOT exists");
+      throw new Exception("ukey_bs == null || empty");
+      throw new Exception("bytes_msg_ukey NOT exists");
+      throw new Exception("resid_bs == null || empty");
+      throw new Exception("bytes_msg_resid NOT exists");
+      localObject2 = paramProtoResp;
+      paramProtoResp = (ProtoReqManagerImpl.ProtoResp)localObject2;
+      if (shouldRetryByRetCodeForGroup(j))
       {
-        long l1 = ((Integer)((List)localObject2).get(j)).intValue();
-        long l2 = ((Integer)((List)localObject3).get(j)).intValue();
-        localObject4 = new ServerAddr();
-        ((ServerAddr)localObject4).mIp = PkgTools.int2IPNet(l1 & 0xFFFFFFFF);
-        ((ServerAddr)localObject4).port = ((int)l2);
-        ((RichProto.RichProtoResp.MultiMsgUpResp)localObject1).ipList.add(j, localObject4);
-        j += 1;
-      }
-      ((RichProto.RichProtoResp.MultiMsgUpResp)localObject1).blockSize = ((int)paramProtoResp.uint64_block_size.get());
-      ((RichProto.RichProtoResp.MultiMsgUpResp)localObject1).transferedSize = ((int)paramProtoResp.uint64_up_offset.get());
-      setResult(0, 0, "", "", localStatictisInfo, (RichProto.RichProtoResp.RespCommon)localObject1);
-      continue;
-      label781:
-      if (GroupPicUpHandler.shouldRetryByRetCode(j))
-      {
+        paramProtoResp = (ProtoReqManagerImpl.ProtoResp)localObject2;
         this.mReqUrlCount += 1;
+        paramProtoResp = (ProtoReqManagerImpl.ProtoResp)localObject2;
         if (this.mReqUrlCount < 2)
         {
+          paramProtoResp = (ProtoReqManagerImpl.ProtoResp)localObject2;
           localRichProtoReq.protoReqMgr.sendProtoReq(paramProtoReq);
           return;
         }
       }
-      setResult(-1, -9527, BaseTransProcessor.getUrlReason(j), "", localStatictisInfo, (RichProto.RichProtoResp.RespCommon)localObject1);
+      paramProtoResp = (ProtoReqManagerImpl.ProtoResp)localObject2;
+      setResult(-1, -9527, ProcessorReport.getUrlReason(j), "", localStatictisInfo, (RichProto.RichProtoResp.RespCommon)localObject5);
+      paramProtoResp = (ProtoReqManagerImpl.ProtoResp)localObject2;
+      break label1014;
+      localObject2 = localException5;
+      localObject4 = localObject5;
+      localObject5 = ProcessorReport.getServerReason("P", -9529L);
+      localObject6 = new StringBuilder();
+      ((StringBuilder)localObject6).append(localException3.getMessage());
+      ((StringBuilder)localObject6).append(" hex:");
+      ((StringBuilder)localObject6).append(HexUtil.bytes2HexStr(arrayOfByte1));
+      setResult(-1, -9527, (String)localObject5, ((StringBuilder)localObject6).toString(), localStatictisInfo, localObject4);
+      break label1014;
+      throw new Exception("resps null");
+      label984:
+      RichProtoProc.onBusiProtoResp(localRichProtoReq, localRichProtoResp);
+      return;
+      continue;
+      label1011:
+      continue;
+      label1014:
+      i += 1;
     }
   }
   
@@ -274,7 +376,7 @@ public class MultiMsgUpHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.protohandler.MultiMsgUpHandler
  * JD-Core Version:    0.7.0.1
  */

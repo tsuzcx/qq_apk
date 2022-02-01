@@ -12,16 +12,17 @@ final class b
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (StringUtil.a(paramIntent.getAction())) {}
-    while (a.a(this.a) == null) {
+    if (StringUtil.a(paramIntent.getAction())) {
       return;
     }
-    a.a(this.a).a(paramContext, paramIntent);
+    if (a.a(this.a) != null) {
+      a.a(this.a).a(paramContext, paramIntent);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -22,14 +22,18 @@ public class MutualMarkConfigIRType$SubLevelInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("name=").append(this.a).append("|");
-    localStringBuilder.append("iconUrl=").append(this.b).append("|");
+    localStringBuilder.append("name=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("|");
+    localStringBuilder.append("iconUrl=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("|");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.info.MutualMarkConfigIRType.SubLevelInfo
  * JD-Core Version:    0.7.0.1
  */

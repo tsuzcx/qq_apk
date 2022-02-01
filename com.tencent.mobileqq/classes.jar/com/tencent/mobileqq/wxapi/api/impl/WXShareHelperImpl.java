@@ -75,12 +75,22 @@ public class WXShareHelperImpl
   
   public void shareQcircleToWX(String paramString1, String paramString2, Bitmap paramBitmap, String paramString3, String paramString4, int paramInt)
   {
-    WXShareHelper.a().d(paramString1, paramString2, paramBitmap, paramString3, paramString4, paramInt);
+    WXShareHelper.a().c(paramString1, paramString2, paramBitmap, paramString3, paramString4, paramInt);
+  }
+  
+  public void shareTroopToWXFriend(String paramString1, String paramString2, Bitmap paramBitmap, String paramString3, String paramString4)
+  {
+    WXShareHelper.a().b(paramString1, paramString2, paramBitmap, paramString3, paramString4);
+  }
+  
+  public void shareTroopToWXFriendCircle(String paramString1, String paramString2, Bitmap paramBitmap, String paramString3, String paramString4)
+  {
+    WXShareHelper.a().a(paramString1, paramString2, paramBitmap, paramString3, paramString4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.wxapi.api.impl.WXShareHelperImpl
  * JD-Core Version:    0.7.0.1
  */

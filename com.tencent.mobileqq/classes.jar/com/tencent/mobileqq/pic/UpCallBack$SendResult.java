@@ -18,12 +18,40 @@ public class UpCallBack$SendResult
   
   public String toString()
   {
-    return "SendResult{result=" + this.jdField_a_of_type_Int + ", errCode=" + this.jdField_b_of_type_Int + ", errStr='" + this.jdField_a_of_type_JavaLangString + '\'' + ", path='" + this.jdField_b_of_type_JavaLangString + '\'' + ", size=" + this.jdField_a_of_type_Long + ", uuid='" + this.jdField_c_of_type_JavaLangString + '\'' + ", md5='" + this.jdField_d_of_type_JavaLangString + '\'' + ", groupFileID=" + this.jdField_b_of_type_Long + ", thumbFileSize=" + this.jdField_c_of_type_Long + ", videoAttr=" + this.jdField_c_of_type_Int + ", videoKandianType=" + this.jdField_d_of_type_Int + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SendResult{result=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", errCode=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", errStr='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", path='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", size=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", uuid='");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", md5='");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", groupFileID=");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", thumbFileSize=");
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(", videoAttr=");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(", videoKandianType=");
+    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.UpCallBack.SendResult
  * JD-Core Version:    0.7.0.1
  */

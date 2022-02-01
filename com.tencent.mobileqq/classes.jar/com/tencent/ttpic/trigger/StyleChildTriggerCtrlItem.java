@@ -22,37 +22,21 @@ public class StyleChildTriggerCtrlItem
   
   private boolean isGenderMatch(StickerItem paramStickerItem)
   {
-    boolean bool2 = false;
-    if ((paramStickerItem == null) || (paramStickerItem.genderType < 1)) {
-      bool1 = true;
-    }
-    PTFaceAttr localPTFaceAttr;
-    do
+    if (paramStickerItem != null)
     {
-      do
+      if (paramStickerItem.genderType < 1) {
+        return true;
+      }
+      if ((this.detectInfo != null) && (this.detectInfo.aiAttr != null) && ((this.detectInfo.aiAttr.getFaceAttr() instanceof PTFaceAttr)))
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              return bool1;
-              bool1 = bool2;
-            } while (this.detectInfo == null);
-            bool1 = bool2;
-          } while (this.detectInfo.aiAttr == null);
-          bool1 = bool2;
-        } while (!(this.detectInfo.aiAttr.getFaceAttr() instanceof PTFaceAttr));
-        localPTFaceAttr = (PTFaceAttr)this.detectInfo.aiAttr.getFaceAttr();
-        bool1 = bool2;
-      } while (localPTFaceAttr.getFaceInfoList() == null);
-      bool1 = bool2;
-    } while (localPTFaceAttr.getFaceInfoList().size() <= 0);
-    if ((paramStickerItem.genderType > 0) && (paramStickerItem.genderType == ((FaceInfo)localPTFaceAttr.getFaceInfoList().get(0)).gender)) {}
-    for (boolean bool1 = true;; bool1 = false) {
-      return bool1;
+        PTFaceAttr localPTFaceAttr = (PTFaceAttr)this.detectInfo.aiAttr.getFaceAttr();
+        if ((localPTFaceAttr.getFaceInfoList() != null) && (localPTFaceAttr.getFaceInfoList().size() > 0)) {
+          return (paramStickerItem.genderType > 0) && (paramStickerItem.genderType == ((FaceInfo)localPTFaceAttr.getFaceInfoList().get(0)).gender);
+        }
+      }
+      return false;
     }
+    return true;
   }
   
   public void addItem(FaceStyleItem paramFaceStyleItem)
@@ -61,8 +45,12 @@ public class StyleChildTriggerCtrlItem
     {
       this.stickerItemList = paramFaceStyleItem.stickerItemList;
       int i = 0;
-      while ((this.stickerItemList != null) && (i < this.stickerItemList.size()))
+      for (;;)
       {
+        paramFaceStyleItem = this.stickerItemList;
+        if ((paramFaceStyleItem == null) || (i >= paramFaceStyleItem.size())) {
+          break;
+        }
         paramFaceStyleItem = (StickerItem)this.stickerItemList.get(i);
         TriggerCtrlItem localTriggerCtrlItem = new TriggerCtrlItem(paramFaceStyleItem);
         this.triggerCtrlItemMap.put(paramFaceStyleItem.textureMaterials, localTriggerCtrlItem);
@@ -74,11 +62,15 @@ public class StyleChildTriggerCtrlItem
   public String getTriggeredCosFun()
   {
     int i = 0;
-    while ((this.stickerItemList != null) && (i < this.stickerItemList.size()))
+    for (;;)
     {
-      StickerItem localStickerItem = (StickerItem)this.stickerItemList.get(i);
-      if ((localStickerItem != null) && (localStickerItem.textureMaterials.equals(getTriggeredPhoto()))) {
-        return localStickerItem.crazyFacePath;
+      Object localObject = this.stickerItemList;
+      if ((localObject == null) || (i >= ((List)localObject).size())) {
+        break;
+      }
+      localObject = (StickerItem)this.stickerItemList.get(i);
+      if ((localObject != null) && (((StickerItem)localObject).textureMaterials.equals(getTriggeredPhoto()))) {
+        return ((StickerItem)localObject).crazyFacePath;
       }
       i += 1;
     }
@@ -101,11 +93,15 @@ public class StyleChildTriggerCtrlItem
   public StickerItem getTriggeredStickerItem()
   {
     int i = 0;
-    while ((this.stickerItemList != null) && (i < this.stickerItemList.size()))
+    for (;;)
     {
-      StickerItem localStickerItem = (StickerItem)this.stickerItemList.get(i);
-      if ((localStickerItem != null) && (localStickerItem.textureMaterials.equals(getTriggeredPhoto()))) {
-        return localStickerItem;
+      Object localObject = this.stickerItemList;
+      if ((localObject == null) || (i >= ((List)localObject).size())) {
+        break;
+      }
+      localObject = (StickerItem)this.stickerItemList.get(i);
+      if ((localObject != null) && (((StickerItem)localObject).textureMaterials.equals(getTriggeredPhoto()))) {
+        return localObject;
       }
       i += 1;
     }
@@ -114,12 +110,13 @@ public class StyleChildTriggerCtrlItem
   
   public void hitCharmRange(double paramDouble)
   {
-    if (this.stickerItemList != null)
+    Object localObject = this.stickerItemList;
+    if (localObject != null)
     {
-      Iterator localIterator = this.stickerItemList.iterator();
-      while (localIterator.hasNext())
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        StickerItem localStickerItem = (StickerItem)localIterator.next();
+        StickerItem localStickerItem = (StickerItem)((Iterator)localObject).next();
         if (localStickerItem.charmRange != null) {
           localStickerItem.charmRange.hit(paramDouble);
         }
@@ -152,7 +149,7 @@ public class StyleChildTriggerCtrlItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.trigger.StyleChildTriggerCtrlItem
  * JD-Core Version:    0.7.0.1
  */

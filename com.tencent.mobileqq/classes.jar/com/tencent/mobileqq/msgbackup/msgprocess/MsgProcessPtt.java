@@ -37,25 +37,24 @@ public class MsgProcessPtt
     ((HashMap)localObject).put("selfuin", ((MessageForPtt)this.a).selfuin);
     if (((MessageForPtt)this.a).istroop == 1) {
       ((HashMap)localObject).put("chatType", "1");
+    } else if (((MessageForPtt)this.a).istroop == 3000) {
+      ((HashMap)localObject).put("chatType", "2");
+    } else {
+      ((HashMap)localObject).put("chatType", "3");
     }
-    for (;;)
-    {
-      localMsgBackupResEntity.extraDataStr = a((Map)localObject);
-      localObject = new ArrayList();
-      ((List)localObject).add(localMsgBackupResEntity);
-      return localObject;
-      if (((MessageForPtt)this.a).istroop == 3000) {
-        ((HashMap)localObject).put("chatType", "2");
-      } else {
-        ((HashMap)localObject).put("chatType", "3");
-      }
-    }
+    localMsgBackupResEntity.extraDataStr = a((Map)localObject);
+    localObject = new ArrayList();
+    ((List)localObject).add(localMsgBackupResEntity);
+    return localObject;
   }
   
   public void a()
   {
     Object localObject = (MessageForPtt)this.a;
-    a("packMsg uinType:" + ((MessageForPtt)localObject).istroop);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("packMsg uinType:");
+    localStringBuilder.append(((MessageForPtt)localObject).istroop);
+    a(localStringBuilder.toString());
     localObject = ((MessageForPtt)this.a).getRichText();
     ((MessageForPtt)this.a).richText = ((im_msg_body.RichText)localObject);
   }
@@ -72,7 +71,7 @@ public class MsgProcessPtt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.msgprocess.MsgProcessPtt
  * JD-Core Version:    0.7.0.1
  */

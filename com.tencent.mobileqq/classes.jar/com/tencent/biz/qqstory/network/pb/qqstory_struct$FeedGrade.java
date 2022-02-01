@@ -23,13 +23,14 @@ public final class qqstory_struct$FeedGrade
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 50, 56 }, new String[] { "from_uid", "to_uid", "feed_id", "video_isend", "video_next", "video_list", "grade_result" }, new Object[] { null, null, localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0) }, FeedGrade.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 50, 56 }, new String[] { "from_uid", "to_uid", "feed_id", "video_isend", "video_next", "video_list", "grade_result" }, new Object[] { null, null, localByteStringMicro, localInteger, localInteger, null, localInteger }, FeedGrade.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedGrade
  * JD-Core Version:    0.7.0.1
  */

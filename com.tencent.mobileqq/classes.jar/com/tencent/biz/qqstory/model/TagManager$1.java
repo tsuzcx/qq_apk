@@ -23,6 +23,7 @@ class TagManager$1
   public void a(@NonNull GetFeedTagInfoListRequest paramGetFeedTagInfoListRequest, @Nullable GetFeedTagInfoListRequest.GetFeedTagInfoListResponse paramGetFeedTagInfoListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
     paramGetFeedTagInfoListRequest = paramGetFeedTagInfoListRequest.jdField_a_of_type_JavaUtilList.iterator();
+    Object localObject;
     while (paramGetFeedTagInfoListRequest.hasNext())
     {
       localObject = (String)paramGetFeedTagInfoListRequest.next();
@@ -30,28 +31,28 @@ class TagManager$1
     }
     paramGetFeedTagInfoListRequest = new TagManager.FeedTagListUpdateEvent();
     paramGetFeedTagInfoListRequest.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    if ((paramErrorMessage.isFail()) || (paramGetFeedTagInfoListResponse == null))
+    if ((!paramErrorMessage.isFail()) && (paramGetFeedTagInfoListResponse != null))
     {
-      SLog.d("Q.qqstory:TagManager", "request fail for get tag request");
+      paramErrorMessage = paramGetFeedTagInfoListRequest.jdField_a_of_type_JavaUtilMap;
+      localObject = (TagManager)SuperManager.a(27);
+      paramGetFeedTagInfoListResponse = paramGetFeedTagInfoListResponse.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramGetFeedTagInfoListResponse.hasNext())
+      {
+        GetFeedTagInfoListRequest.FeedTagInfoList localFeedTagInfoList = (GetFeedTagInfoListRequest.FeedTagInfoList)paramGetFeedTagInfoListResponse.next();
+        ((TagManager)localObject).a(localFeedTagInfoList.jdField_a_of_type_JavaLangString, localFeedTagInfoList.jdField_a_of_type_JavaUtilList);
+        paramErrorMessage.put(localFeedTagInfoList.jdField_a_of_type_JavaLangString, localFeedTagInfoList);
+        SLog.a("Q.qqstory:TagManager", "save feedId :%s , %s", localFeedTagInfoList.jdField_a_of_type_JavaLangString, localFeedTagInfoList.jdField_a_of_type_JavaUtilList);
+      }
       StoryDispatcher.a().dispatch(paramGetFeedTagInfoListRequest);
       return;
     }
-    paramErrorMessage = paramGetFeedTagInfoListRequest.jdField_a_of_type_JavaUtilMap;
-    Object localObject = (TagManager)SuperManager.a(27);
-    paramGetFeedTagInfoListResponse = paramGetFeedTagInfoListResponse.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramGetFeedTagInfoListResponse.hasNext())
-    {
-      GetFeedTagInfoListRequest.FeedTagInfoList localFeedTagInfoList = (GetFeedTagInfoListRequest.FeedTagInfoList)paramGetFeedTagInfoListResponse.next();
-      ((TagManager)localObject).a(localFeedTagInfoList.jdField_a_of_type_JavaLangString, localFeedTagInfoList.jdField_a_of_type_JavaUtilList);
-      paramErrorMessage.put(localFeedTagInfoList.jdField_a_of_type_JavaLangString, localFeedTagInfoList);
-      SLog.a("Q.qqstory:TagManager", "save feedId :%s , %s", localFeedTagInfoList.jdField_a_of_type_JavaLangString, localFeedTagInfoList.jdField_a_of_type_JavaUtilList);
-    }
+    SLog.d("Q.qqstory:TagManager", "request fail for get tag request");
     StoryDispatcher.a().dispatch(paramGetFeedTagInfoListRequest);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.TagManager.1
  * JD-Core Version:    0.7.0.1
  */

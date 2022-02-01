@@ -73,31 +73,37 @@ public final class operation_addreply_req
     paramJceOutputStream.write(this.uin, 1);
     paramJceOutputStream.write(this.ownuin, 2);
     paramJceOutputStream.write(this.commentuin, 3);
-    if (this.srcId != null) {
-      paramJceOutputStream.write(this.srcId, 4);
+    Object localObject = this.srcId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.commentid != null) {
-      paramJceOutputStream.write(this.commentid, 5);
+    localObject = this.commentid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.content != null) {
-      paramJceOutputStream.write(this.content, 6);
+    localObject = this.content;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
     paramJceOutputStream.write(this.isverified, 7);
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 8);
+    localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 8);
     }
-    if (this.mediainfo != null) {
-      paramJceOutputStream.write(this.mediainfo, 9);
+    localObject = this.mediainfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 9);
     }
     paramJceOutputStream.write(this.mediabittype, 10);
-    if (this.bypass_param != null) {
-      paramJceOutputStream.write(this.bypass_param, 11);
+    localObject = this.bypass_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 11);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.operation_addreply_req
  * JD-Core Version:    0.7.0.1
  */

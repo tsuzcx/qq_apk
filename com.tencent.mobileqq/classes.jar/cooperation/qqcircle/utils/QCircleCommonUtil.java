@@ -10,11 +10,17 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.friend.api.IFriendDataService;
+import com.tencent.mobileqq.mqq.api.IAccountRuntime;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.QQTheme;
+import com.tencent.open.business.base.MobileInfoUtil;
+import com.tencent.qcircle.cooperation.config.QCircleConfigHelper;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import cooperation.qqcircle.QCircleConfig;
+import cooperation.qzone.PlatformInfor;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -35,43 +41,66 @@ public class QCircleCommonUtil
   
   public static boolean checkOperateMaskEnabled(long paramLong, int paramInt)
   {
-    return (1 << paramInt & paramLong) != 0L;
+    return (paramLong & 1 << paramInt) != 0L;
+  }
+  
+  public static String convertDomainToIp(String paramString1, String paramString2, String paramString3)
+  {
+    return convertDomainToIp(paramString1, paramString2, paramString3, null);
   }
   
   public static String convertDomainToIp(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     try
     {
-      String str = QCircleConfig.getInstance().getConfigValue(paramString1, paramString2);
-      RFLog.d("QCircleHostUtil", RFLog.USR, String.format("convertDomainToIp ips:%s, main:%s,second:%s", new Object[] { str, paramString1, paramString2 }));
-      paramString2 = new JSONObject(str);
-      if (paramString4 != null)
+      if (!isNativeUrl(paramString3))
       {
-        paramString1 = paramString4;
-        if (paramString4.trim().length() != 0) {}
-      }
-      else
-      {
-        paramString1 = getUrlHost(paramString3);
-      }
-      if ((paramString1 != null) && (paramString2.has(paramString1)) && (paramString3.startsWith("https://")))
-      {
-        paramString2 = paramString2.getJSONArray(paramString1);
-        if ((paramString2.length() > 0) && ((paramString2.get(0) instanceof JSONObject)) && (((JSONObject)paramString2.get(0)).has("ip")) && (((JSONObject)paramString2.get(0)).has("port")))
-        {
-          paramString1 = paramString3.replace(paramString1, String.format("%s:%s", new Object[] { ((JSONObject)paramString2.get(0)).get("ip"), ((JSONObject)paramString2.get(0)).get("port") }));
-          RFLog.d("QCircleHostUtil", RFLog.USR, "convertDomainToIp newUrl:" + paramString1);
-          return paramString1;
+        if (paramString3.startsWith("http")) {
+          return paramString3;
         }
+        String str = QCircleConfigHelper.a(paramString1, paramString2);
+        QLog.d("QCircleHostUtil", 1, String.format("convertDomainToIp ips:%s, main:%s,second:%s", new Object[] { str, paramString1, paramString2 }));
+        if (str != null)
+        {
+          paramString2 = new JSONObject(str);
+          if (paramString4 != null)
+          {
+            paramString1 = paramString4;
+            if (paramString4.trim().length() != 0) {}
+          }
+          else
+          {
+            paramString1 = getUrlHost(paramString3);
+          }
+          if ((paramString1 != null) && (paramString2.has(paramString1)))
+          {
+            paramString4 = paramString2.getJSONArray(paramString1);
+            if ((paramString4.length() > 0) && ((paramString4.get(0) instanceof JSONObject)) && (((JSONObject)paramString4.get(0)).has("ip")) && (((JSONObject)paramString4.get(0)).has("port")))
+            {
+              paramString2 = ((JSONObject)paramString4.get(0)).getString("ip");
+              paramString4 = ((JSONObject)paramString4.get(0)).getString("port");
+              if ((paramString2.trim().length() > 0) && (paramString4.trim().length() > 0))
+              {
+                paramString1 = paramString3.replace(paramString1, String.format("%s:%s", new Object[] { paramString2, paramString4 }));
+                paramString2 = new StringBuilder();
+                paramString2.append("convertDomainToIp newUrl:");
+                paramString2.append(paramString1);
+                QLog.d("QCircleHostUtil", 1, paramString2.toString());
+                return paramString1;
+              }
+              QLog.w("QCircleHostUtil", 1, String.format("convertDomainToIp  IP&Port empty url:%s, ip:%s,  port:%s", new Object[] { paramString3, paramString2, paramString4 }));
+            }
+          }
+        }
+        QLog.d("QCircleHostUtil", 1, "convertDomainToIp use old url");
       }
+      return paramString3;
     }
     catch (Exception paramString1)
     {
       paramString1.printStackTrace();
-      RFLog.d("QCircleHostUtil", RFLog.USR, "convertDomainToIp use old url");
-      return paramString3;
+      QLog.d("QCircleHostUtil", 1, "convertDomainToIp use old url");
     }
-    RFLog.d("QCircleHostUtil", RFLog.USR, "convertDomainToIp use old url");
     return paramString3;
   }
   
@@ -82,47 +111,28 @@ public class QCircleCommonUtil
     }
     if (paramLong < 1000000L)
     {
-      DecimalFormat localDecimalFormat = new DecimalFormat();
-      localDecimalFormat.setMaximumFractionDigits(1);
-      localDecimalFormat.setGroupingSize(0);
-      localDecimalFormat.setRoundingMode(RoundingMode.HALF_UP);
-      return localDecimalFormat.format(paramLong / 10000.0D) + "w";
+      localObject = new DecimalFormat();
+      ((DecimalFormat)localObject).setMaximumFractionDigits(1);
+      ((DecimalFormat)localObject).setGroupingSize(0);
+      ((DecimalFormat)localObject).setRoundingMode(RoundingMode.HALF_UP);
+      StringBuilder localStringBuilder = new StringBuilder();
+      double d = paramLong;
+      Double.isNaN(d);
+      localStringBuilder.append(((DecimalFormat)localObject).format(d / 10000.0D));
+      localStringBuilder.append("w");
+      return localStringBuilder.toString();
     }
-    if (paramLong < 100000000L) {
-      return paramLong / 10000L + "w";
-    }
-    return "9999" + "w";
-  }
-  
-  public static String getAuthIconUrl(int paramInt)
-  {
-    int i;
-    if (paramInt < 1) {
-      i = 1;
-    }
-    for (;;)
+    if (paramLong < 100000000L)
     {
-      return "https://qzonestyle.gtimg.cn/qzone/qzact/act/external/qqcircle/user_auth_lv{authTalentLevel}.png".replace("{authTalentLevel}", String.valueOf(i));
-      i = paramInt;
-      if (paramInt > 8) {
-        i = 8;
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramLong / 10000L);
+      ((StringBuilder)localObject).append("w");
+      return ((StringBuilder)localObject).toString();
     }
-  }
-  
-  public static int getCircleTabFromStatus(int paramInt)
-  {
-    int i = 2;
-    if (paramInt == 0) {
-      i = 5;
-    }
-    while (paramInt == 1) {
-      return i;
-    }
-    if (paramInt == 2) {
-      return 1;
-    }
-    return -1;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("9999");
+    ((StringBuilder)localObject).append("w");
+    return ((StringBuilder)localObject).toString();
   }
   
   public static int getColorFromJSON(JSONObject paramJSONObject, String paramString)
@@ -134,14 +144,26 @@ public class QCircleCommonUtil
     }
     catch (JSONException localJSONException)
     {
-      try
-      {
-        int i = Color.parseColor(paramJSONObject.getString(paramString));
-        return i;
-      }
-      catch (Exception paramJSONObject) {}
+      int i;
+      label8:
+      label19:
+      break label8;
+    }
+    try
+    {
+      i = Color.parseColor(paramJSONObject.getString(paramString));
+      return i;
+    }
+    catch (Exception paramJSONObject)
+    {
+      break label19;
     }
     return 0;
+  }
+  
+  public static String getCurrentAccount()
+  {
+    return ((IAccountRuntime)QRoute.api(IAccountRuntime.class)).getAccount();
   }
   
   public static long getCurrentAccountLongUin()
@@ -157,7 +179,7 @@ public class QCircleCommonUtil
   public static int getDefaultThemeColor(boolean paramBoolean)
   {
     MobileQQ localMobileQQ = MobileQQ.sMobileQQ;
-    int j = MobileQQ.getContext().getResources().getColor(2131166268);
+    int j = MobileQQ.getContext().getResources().getColor(2131166279);
     int i = j;
     if (paramBoolean) {
       i = getNightModeColor(j);
@@ -165,37 +187,26 @@ public class QCircleCommonUtil
     return i;
   }
   
-  public static int getFollowStatus(boolean paramBoolean)
+  public static String getDeviceName()
   {
-    if (paramBoolean) {
-      return 1;
-    }
-    return 0;
+    return PlatformInfor.getDeviceName();
+  }
+  
+  public static String getMobileIMei()
+  {
+    return MobileInfoUtil.getImei();
+  }
+  
+  public static String getMobileResolution()
+  {
+    return MobileInfoUtil.getResolution();
   }
   
   public static int getNightModeColor(int paramInt)
   {
-    return (int)((0xFFFFFF & paramInt) * 0.6D) | 0xFF000000;
-  }
-  
-  public static int getPlusReportTypeFrom(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 1: 
-      return 1;
-    case 2: 
-      return 2;
-    case 4: 
-      return 4;
-    case 5: 
-      return 5;
-    case 3: 
-      return 3;
-    }
-    return 6;
+    double d = paramInt & 0xFFFFFF;
+    Double.isNaN(d);
+    return (int)(d * 0.6D) | 0xFF000000;
   }
   
   public static String getUrlHost(String paramString)
@@ -225,9 +236,22 @@ public class QCircleCommonUtil
     return QQTheme.a();
   }
   
+  private static boolean isNativeUrl(String paramString)
+  {
+    if (paramString.startsWith("/storage"))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isNativeUrl local url return:");
+      localStringBuilder.append(paramString);
+      QLog.d("QCircleHostUtil", 1, localStringBuilder.toString());
+      return true;
+    }
+    return false;
+  }
+  
   public static boolean isOwner(String paramString)
   {
-    return MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount().equals(paramString);
+    return getCurrentAccount().equals(paramString);
   }
   
   public static Bundle jsonToLabel(Bundle paramBundle, String paramString)
@@ -296,10 +320,7 @@ public class QCircleCommonUtil
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        RFLog.e("QCircleHostUtil", RFLog.USR, new Object[] { "labelToJson error.", localException });
-      }
+      RFLog.e("QCircleHostUtil", RFLog.USR, new Object[] { "labelToJson error.", localException });
     }
     return paramBundle.toString();
   }
@@ -310,29 +331,34 @@ public class QCircleCommonUtil
     ImmersiveUtils.setStatusTextColor(true, paramActivity.getWindow());
   }
   
+  public static void setIsUnLockSuccess(boolean paramBoolean)
+  {
+    QBaseActivity.setIsUnLockSuccess(true);
+  }
+  
   public static void setStatusBarColor(Activity paramActivity, int paramInt)
   {
-    if (paramActivity == null) {}
-    do
-    {
+    if (paramActivity == null) {
       return;
-      if (Build.VERSION.SDK_INT >= 21)
-      {
-        paramActivity = paramActivity.getWindow();
-        paramActivity.clearFlags(67108864);
-        paramActivity.getDecorView().setSystemUiVisibility(1280);
-        paramActivity.addFlags(-2147483648);
-        paramActivity.setStatusBarColor(paramInt);
-        paramActivity.setNavigationBarColor(paramInt);
-        return;
-      }
-    } while (Build.VERSION.SDK_INT < 19);
-    paramActivity.getWindow().addFlags(67108864);
+    }
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      paramActivity = paramActivity.getWindow();
+      paramActivity.clearFlags(67108864);
+      paramActivity.getDecorView().setSystemUiVisibility(1280);
+      paramActivity.addFlags(-2147483648);
+      paramActivity.setStatusBarColor(paramInt);
+      paramActivity.setNavigationBarColor(paramInt);
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 19) {
+      paramActivity.getWindow().addFlags(67108864);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.utils.QCircleCommonUtil
  * JD-Core Version:    0.7.0.1
  */

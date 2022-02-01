@@ -15,21 +15,24 @@ class FounderHiBoomLayout$1
     if (i >= this.a.i[0])
     {
       this.a.a.cancel();
-      this.a.e = 0;
-      FounderHiBoomLayout.a(this.a).a = FounderHiBoomLayout.a(this.a).d();
+      paramValueAnimator = this.a;
+      paramValueAnimator.e = 0;
+      FounderHiBoomLayout.a(paramValueAnimator).a = FounderHiBoomLayout.a(this.a).d();
       FounderHiBoomLayout.a(this.a).requestLayout();
       FounderHiBoomLayout.a(this.a).invalidate();
-    }
-    while (i <= this.a.e) {
       return;
     }
-    this.a.e = i;
-    FounderHiBoomLayout.a(this.a).invalidate();
+    if (i > this.a.e)
+    {
+      paramValueAnimator = this.a;
+      paramValueAnimator.e = i;
+      FounderHiBoomLayout.a(paramValueAnimator).invalidate();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.Vas.ColorFont.FounderHiBoomLayout.1
  * JD-Core Version:    0.7.0.1
  */

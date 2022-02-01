@@ -2,8 +2,8 @@ package com.tencent.biz.common.offline;
 
 import com.tencent.biz.webviewplugin.OfflineWebResManager;
 import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 class OfflineExpire$OfflineExpireCheckUpdate$1
   implements Runnable
@@ -12,7 +12,7 @@ class OfflineExpire$OfflineExpireCheckUpdate$1
   
   public void run()
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
     if ((localAppRuntime instanceof AppInterface)) {
       new OfflineWebResManager((AppInterface)localAppRuntime).a();
     }
@@ -20,7 +20,7 @@ class OfflineExpire$OfflineExpireCheckUpdate$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.common.offline.OfflineExpire.OfflineExpireCheckUpdate.1
  * JD-Core Version:    0.7.0.1
  */

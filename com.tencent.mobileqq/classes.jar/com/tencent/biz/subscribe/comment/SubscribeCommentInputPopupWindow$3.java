@@ -16,25 +16,23 @@ class SubscribeCommentInputPopupWindow$3
   
   public void delete()
   {
-    if (this.a.a.getSelectionStart() == 0) {}
-    for (;;)
-    {
+    if (this.a.a.getSelectionStart() == 0) {
       return;
-      try
+    }
+    try
+    {
+      Editable localEditable = this.a.a.getText();
+      int i = this.a.a.getSelectionStart();
+      int j = android.text.TextUtils.getOffsetBefore(this.a.a.getText(), i);
+      if (i != j)
       {
-        Editable localEditable = this.a.a.getText();
-        int i = this.a.a.getSelectionStart();
-        int j = android.text.TextUtils.getOffsetBefore(this.a.a.getText(), i);
-        if (i != j)
-        {
-          localEditable.delete(Math.min(i, j), Math.max(i, j));
-          return;
-        }
+        localEditable.delete(Math.min(i, j), Math.max(i, j));
+        return;
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
   
@@ -59,37 +57,33 @@ class SubscribeCommentInputPopupWindow$3
     {
       i = this.a.a.getSelectionStart();
       j = this.a.a.getSelectionEnd();
-      if ((i < 0) || (j < 0) || (j < i)) {}
+      if ((i >= 0) && (j >= 0) && (j >= i)) {
+        this.a.a.getEditableText().replace(i, j, com.tencent.mobileqq.text.TextUtils.getSysEmotcationString(((SystemEmoticonInfo)paramEmoticonInfo).code));
+      }
     }
-    SystemAndEmojiEmoticonInfo localSystemAndEmojiEmoticonInfo;
-    int k;
-    int m;
-    do
+    else if ((paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo))
     {
-      this.a.a.getEditableText().replace(i, j, com.tencent.mobileqq.text.TextUtils.getSysEmotcationString(((SystemEmoticonInfo)paramEmoticonInfo).code));
-      do
-      {
-        return;
-      } while (!(paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo));
-      localSystemAndEmojiEmoticonInfo = (SystemAndEmojiEmoticonInfo)paramEmoticonInfo;
+      SystemAndEmojiEmoticonInfo localSystemAndEmojiEmoticonInfo = (SystemAndEmojiEmoticonInfo)paramEmoticonInfo;
       i = this.a.a.getSelectionStart();
       j = this.a.a.getSelectionEnd();
-      k = localSystemAndEmojiEmoticonInfo.emotionType;
-      m = localSystemAndEmojiEmoticonInfo.code;
-      if ((i < 0) || (j < 0) || (j < i)) {
-        break;
+      int k = localSystemAndEmojiEmoticonInfo.emotionType;
+      int m = localSystemAndEmojiEmoticonInfo.code;
+      if ((i >= 0) && (j >= 0) && (j >= i))
+      {
+        if ((k == 2) && (m == -1)) {
+          return;
+        }
+        if (k == 1) {
+          paramEmoticonInfo = com.tencent.mobileqq.text.TextUtils.getSysEmotcationString(m);
+        } else {
+          paramEmoticonInfo = com.tencent.mobileqq.text.TextUtils.getEmojiString(m);
+        }
+        this.a.a.getEditableText().replace(i, j, paramEmoticonInfo);
+        this.a.a.requestFocus();
       }
-    } while ((k == 2) && (m == -1));
-    if (k == 1) {}
-    for (paramEmoticonInfo = com.tencent.mobileqq.text.TextUtils.getSysEmotcationString(m);; paramEmoticonInfo = com.tencent.mobileqq.text.TextUtils.getEmojiString(m))
-    {
-      this.a.a.getEditableText().replace(i, j, paramEmoticonInfo);
-      this.a.a.requestFocus();
-      if (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-        break;
+      if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+        localSystemAndEmojiEmoticonInfo.addToCommonUsed((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), null);
       }
-      localSystemAndEmojiEmoticonInfo.addToCommonUsed((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), null);
-      return;
     }
   }
   
@@ -97,7 +91,7 @@ class SubscribeCommentInputPopupWindow$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.SubscribeCommentInputPopupWindow.3
  * JD-Core Version:    0.7.0.1
  */

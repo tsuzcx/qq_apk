@@ -15,17 +15,15 @@ import com.tencent.superplayer.vinfo.VInfoGetter;
 import com.tencent.thumbplayer.api.proxy.ITPPreloadProxy;
 import com.tencent.thumbplayer.api.proxy.TPDownloadParamData;
 import com.tencent.thumbplayer.api.proxy.TPP2PProxyFactory;
-import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class SPlayerPreDownloaderImpl
   implements ISPlayerPreDownloader
 {
-  public static final String TAG = SPlayerPreDownloaderImpl.class.getSimpleName();
+  public static final String TAG = "SPlayerPreDownloaderImpl";
   private ISPlayerPreDownloader.Listener mCallbackListener;
   private Context mContext;
   private HandlerThread mHandlerThread;
@@ -45,119 +43,109 @@ public class SPlayerPreDownloaderImpl
   
   private boolean checkParamCorrect(SuperPlayerVideoInfo paramSuperPlayerVideoInfo)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    switch (paramSuperPlayerVideoInfo.getVideoSource())
+    int i = paramSuperPlayerVideoInfo.getVideoSource();
+    boolean bool3 = false;
+    boolean bool2 = false;
+    if (i != 1)
     {
-    case 2: 
-    default: 
-      bool1 = false;
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return bool1;
-              if ((TextUtils.isEmpty(paramSuperPlayerVideoInfo.getPlayUrl())) || (paramSuperPlayerVideoInfo.getVideoType() != 1)) {
-                break;
-              }
-              bool1 = bool2;
-            } while (paramSuperPlayerVideoInfo.getFormat() != 304);
-            return false;
-            if (TextUtils.isEmpty(paramSuperPlayerVideoInfo.getPlayUrl())) {
-              break;
-            }
-            bool1 = bool2;
-          } while (paramSuperPlayerVideoInfo.getFormat() == 302);
-          bool1 = bool2;
-        } while (paramSuperPlayerVideoInfo.getFormat() == 301);
-        bool1 = bool2;
-      } while (paramSuperPlayerVideoInfo.getFormat() == 101);
+      if (i != 3) {
+        return false;
+      }
       bool1 = bool2;
-    } while (paramSuperPlayerVideoInfo.getFormat() == 102);
-    return false;
+      if (!TextUtils.isEmpty(paramSuperPlayerVideoInfo.getPlayUrl())) {
+        if ((paramSuperPlayerVideoInfo.getFormat() != 302) && (paramSuperPlayerVideoInfo.getFormat() != 301) && (paramSuperPlayerVideoInfo.getFormat() != 101))
+        {
+          bool1 = bool2;
+          if (paramSuperPlayerVideoInfo.getFormat() != 102) {}
+        }
+        else
+        {
+          bool1 = true;
+        }
+      }
+      return bool1;
+    }
+    boolean bool1 = bool3;
+    if (!TextUtils.isEmpty(paramSuperPlayerVideoInfo.getPlayUrl()))
+    {
+      bool1 = bool3;
+      if (paramSuperPlayerVideoInfo.getVideoType() == 1)
+      {
+        bool1 = bool3;
+        if (paramSuperPlayerVideoInfo.getFormat() != 304) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   private void configDownloadParamData(TPDownloadParamData paramTPDownloadParamData, SuperPlayerVideoInfo paramSuperPlayerVideoInfo)
   {
     paramTPDownloadParamData.setUrl(paramSuperPlayerVideoInfo.getPlayUrl());
     paramTPDownloadParamData.setDownloadFileID(CommonUtil.a(paramSuperPlayerVideoInfo));
-    int i = 0;
-    switch (paramSuperPlayerVideoInfo.getFormat())
+    int i = paramSuperPlayerVideoInfo.getFormat();
+    if (i != 101)
     {
-    }
-    for (;;)
-    {
-      paramTPDownloadParamData.setDlType(i);
-      return;
-      i = 1;
-      continue;
+      if (i != 102)
+      {
+        if (i == 301) {
+          break label57;
+        }
+        if (i != 302)
+        {
+          i = 0;
+          break label59;
+        }
+      }
       i = 3;
+      break label59;
     }
+    label57:
+    i = 1;
+    label59:
+    paramTPDownloadParamData.setDlType(i);
   }
   
   private void configDownloadParamData(TPDownloadParamData paramTPDownloadParamData, SuperPlayerVideoInfo paramSuperPlayerVideoInfo, SuperPlayerDownOption paramSuperPlayerDownOption)
   {
-    if (paramTPDownloadParamData == null) {}
-    do
-    {
-      return;
-      if (paramSuperPlayerVideoInfo != null)
-      {
-        paramTPDownloadParamData.setSavePath(paramSuperPlayerVideoInfo.getLocalSavePath());
-        paramTPDownloadParamData.setUrlHostList(paramSuperPlayerVideoInfo.getUrlHostList());
-      }
-    } while (paramSuperPlayerDownOption == null);
-    if (paramSuperPlayerDownOption.enableP2P) {}
-    for (int i = 1;; i = 0)
-    {
-      paramTPDownloadParamData.setFp2p(i);
-      paramTPDownloadParamData.setPreloadSize(paramSuperPlayerDownOption.preloadSize);
-      paramSuperPlayerVideoInfo = new HashMap();
-      paramSuperPlayerVideoInfo.put("dl_param_is_enable_quic", Boolean.valueOf(paramSuperPlayerDownOption.enableUseQuic));
-      paramSuperPlayerVideoInfo.put("dl_param_enable_teg_pcdn", Boolean.valueOf(paramSuperPlayerDownOption.enablePcdn));
-      paramSuperPlayerVideoInfo.put("dl_param_is_enable_quic_plaintext", Boolean.valueOf(paramSuperPlayerDownOption.enableQuicPlaintext));
-      paramSuperPlayerVideoInfo.put("dl_param_is_enable_quic_connection_migration", Boolean.valueOf(paramSuperPlayerDownOption.enableQuicConnectionMigration));
-      paramSuperPlayerVideoInfo.put("dl_param_quic_congestion_type", Integer.valueOf(paramSuperPlayerDownOption.quicCongestionType));
-      paramTPDownloadParamData.setExtInfoMap(paramSuperPlayerVideoInfo);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   private void createPreDownloadTask(SuperPlayerVideoInfo paramSuperPlayerVideoInfo, TPDownloadParamData paramTPDownloadParamData, int paramInt)
   {
-    switch (paramSuperPlayerVideoInfo.getVideoSource())
+    int i = paramSuperPlayerVideoInfo.getVideoSource();
+    if (i != 1)
     {
-    case 2: 
-    default: 
-      return;
-    case 1: 
-      if (this.mLooper == null) {
-        if (this.mHandlerThread == null) {
-          break label97;
-        }
-      }
-      label97:
-      for (this.mLooper = this.mHandlerThread.getLooper();; this.mLooper = Looper.getMainLooper())
-      {
-        VInfoGetter localVInfoGetter = new VInfoGetter(this.mContext, this.mLooper);
-        localVInfoGetter.setListener(new SPlayerPreDownloaderImpl.3(this, paramTPDownloadParamData, paramInt));
-        localVInfoGetter.doGetVInfo(paramSuperPlayerVideoInfo);
+      if (i != 3) {
         return;
       }
+      doPreDownload(paramSuperPlayerVideoInfo, paramTPDownloadParamData, paramInt);
+      return;
     }
-    doPreDownload(paramSuperPlayerVideoInfo, paramTPDownloadParamData, paramInt);
+    if (this.mLooper == null)
+    {
+      localObject = this.mHandlerThread;
+      if (localObject != null) {
+        this.mLooper = ((HandlerThread)localObject).getLooper();
+      } else {
+        this.mLooper = Looper.getMainLooper();
+      }
+    }
+    Object localObject = new VInfoGetter(this.mContext, this.mLooper);
+    ((VInfoGetter)localObject).setListener(new SPlayerPreDownloaderImpl.3(this, paramTPDownloadParamData, paramInt));
+    ((VInfoGetter)localObject).doGetVInfo(paramSuperPlayerVideoInfo);
   }
   
   private void doPreDownload(SuperPlayerVideoInfo paramSuperPlayerVideoInfo, TPDownloadParamData paramTPDownloadParamData, int paramInt)
   {
-    LogUtil.d(TAG, "doPreDownload() taskid=" + paramInt + ", videoInfo=" + paramSuperPlayerVideoInfo);
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("doPreDownload() taskid=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", videoInfo=");
+    localStringBuilder.append(paramSuperPlayerVideoInfo);
+    LogUtil.d(str, localStringBuilder.toString());
     if (!checkParamCorrect(paramSuperPlayerVideoInfo))
     {
       LogUtil.d(TAG, "doPreDownload() checkParamCorrect(videoInfo) error, return");
@@ -166,15 +154,22 @@ public class SPlayerPreDownloaderImpl
     configDownloadParamData(paramTPDownloadParamData, paramSuperPlayerVideoInfo);
     int i = this.mTPPreloadProxy.startPreload(CommonUtil.a(paramSuperPlayerVideoInfo), paramTPDownloadParamData, new SPlayerPreDownloaderImpl.4(this, paramInt));
     this.mTaskIdMap.put(Integer.valueOf(paramInt), Integer.valueOf(i));
-    LogUtil.d(TAG, "doPreDownload() map: taskid=" + paramInt + "-> taskIdForTPProxy=" + i);
+    paramSuperPlayerVideoInfo = TAG;
+    paramTPDownloadParamData = new StringBuilder();
+    paramTPDownloadParamData.append("doPreDownload() map: taskid=");
+    paramTPDownloadParamData.append(paramInt);
+    paramTPDownloadParamData.append("-> taskIdForTPProxy=");
+    paramTPDownloadParamData.append(i);
+    LogUtil.d(paramSuperPlayerVideoInfo, paramTPDownloadParamData.toString());
   }
   
   public void destory()
   {
     LogUtil.d(TAG, "destory()");
-    if (this.mHandlerThread != null)
+    HandlerThread localHandlerThread = this.mHandlerThread;
+    if (localHandlerThread != null)
     {
-      this.mHandlerThread.quit();
+      localHandlerThread.quit();
       this.mHandlerThread = null;
     }
     this.mCallbackListener = null;
@@ -188,48 +183,84 @@ public class SPlayerPreDownloaderImpl
   public int startPreDownload(SuperPlayerVideoInfo paramSuperPlayerVideoInfo, long paramLong)
   {
     int i = this.mTaskIdIncreaser.addAndGet(1);
-    LogUtil.d(TAG, "startPreDownload() videoInfo=" + paramSuperPlayerVideoInfo.toString() + ", preloadSize=" + paramLong + ", taskId=" + i);
-    TPDownloadParamData localTPDownloadParamData = new TPDownloadParamData();
-    localTPDownloadParamData.setPreloadSize(paramLong);
-    localTPDownloadParamData.setSavePath(paramSuperPlayerVideoInfo.getLocalSavePath());
-    localTPDownloadParamData.setUrlHostList(paramSuperPlayerVideoInfo.getUrlHostList());
-    createPreDownloadTask(paramSuperPlayerVideoInfo, localTPDownloadParamData, i);
+    Object localObject = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("startPreDownload() videoInfo=");
+    localStringBuilder.append(paramSuperPlayerVideoInfo.toString());
+    localStringBuilder.append(", preloadSize=");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(", taskId=");
+    localStringBuilder.append(i);
+    LogUtil.d((String)localObject, localStringBuilder.toString());
+    localObject = new TPDownloadParamData();
+    ((TPDownloadParamData)localObject).setPreloadSize(paramLong);
+    ((TPDownloadParamData)localObject).setSavePath(paramSuperPlayerVideoInfo.getLocalSavePath());
+    ((TPDownloadParamData)localObject).setUrlHostList(paramSuperPlayerVideoInfo.getUrlHostList());
+    createPreDownloadTask(paramSuperPlayerVideoInfo, (TPDownloadParamData)localObject, i);
     return i;
   }
   
   public int startPreDownload(SuperPlayerVideoInfo paramSuperPlayerVideoInfo, long paramLong1, long paramLong2)
   {
     int i = this.mTaskIdIncreaser.addAndGet(1);
-    LogUtil.d(TAG, "startPreDownload() videoInfo=" + paramSuperPlayerVideoInfo.toString() + ", videoDurationMs=" + paramLong1 + ", preloadDurationMs=" + paramLong2 + ", taskId=" + i);
-    TPDownloadParamData localTPDownloadParamData = new TPDownloadParamData();
-    localTPDownloadParamData.setFileDuration(paramLong1);
-    localTPDownloadParamData.setPreloadDuration(paramLong2);
-    localTPDownloadParamData.setSavePath(paramSuperPlayerVideoInfo.getLocalSavePath());
-    localTPDownloadParamData.setUrlHostList(paramSuperPlayerVideoInfo.getUrlHostList());
-    createPreDownloadTask(paramSuperPlayerVideoInfo, localTPDownloadParamData, i);
+    Object localObject = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("startPreDownload() videoInfo=");
+    localStringBuilder.append(paramSuperPlayerVideoInfo.toString());
+    localStringBuilder.append(", videoDurationMs=");
+    localStringBuilder.append(paramLong1);
+    localStringBuilder.append(", preloadDurationMs=");
+    localStringBuilder.append(paramLong2);
+    localStringBuilder.append(", taskId=");
+    localStringBuilder.append(i);
+    LogUtil.d((String)localObject, localStringBuilder.toString());
+    localObject = new TPDownloadParamData();
+    ((TPDownloadParamData)localObject).setFileDuration(paramLong1);
+    ((TPDownloadParamData)localObject).setPreloadDuration(paramLong2);
+    ((TPDownloadParamData)localObject).setSavePath(paramSuperPlayerVideoInfo.getLocalSavePath());
+    ((TPDownloadParamData)localObject).setUrlHostList(paramSuperPlayerVideoInfo.getUrlHostList());
+    createPreDownloadTask(paramSuperPlayerVideoInfo, (TPDownloadParamData)localObject, i);
     return i;
   }
   
   public int startPreDownload(SuperPlayerVideoInfo paramSuperPlayerVideoInfo, long paramLong1, long paramLong2, SuperPlayerDownOption paramSuperPlayerDownOption)
   {
     int i = this.mTaskIdIncreaser.addAndGet(1);
-    LogUtil.d(TAG, "startPreDownload() videoInfo=" + paramSuperPlayerVideoInfo.toString() + ", videoDurationMs=" + paramLong1 + ", preloadDurationMs=" + paramLong2 + ", taskId=" + i);
-    TPDownloadParamData localTPDownloadParamData = new TPDownloadParamData();
-    localTPDownloadParamData.setFileDuration(paramLong1);
-    localTPDownloadParamData.setPreloadDuration(paramLong2);
-    configDownloadParamData(localTPDownloadParamData, paramSuperPlayerVideoInfo, paramSuperPlayerDownOption);
-    createPreDownloadTask(paramSuperPlayerVideoInfo, localTPDownloadParamData, i);
+    Object localObject = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("startPreDownload() videoInfo=");
+    localStringBuilder.append(paramSuperPlayerVideoInfo.toString());
+    localStringBuilder.append(", videoDurationMs=");
+    localStringBuilder.append(paramLong1);
+    localStringBuilder.append(", preloadDurationMs=");
+    localStringBuilder.append(paramLong2);
+    localStringBuilder.append(", taskId=");
+    localStringBuilder.append(i);
+    LogUtil.d((String)localObject, localStringBuilder.toString());
+    localObject = new TPDownloadParamData();
+    ((TPDownloadParamData)localObject).setFileDuration(paramLong1);
+    ((TPDownloadParamData)localObject).setPreloadDuration(paramLong2);
+    configDownloadParamData((TPDownloadParamData)localObject, paramSuperPlayerVideoInfo, paramSuperPlayerDownOption);
+    createPreDownloadTask(paramSuperPlayerVideoInfo, (TPDownloadParamData)localObject, i);
     return i;
   }
   
   public int startPreDownload(SuperPlayerVideoInfo paramSuperPlayerVideoInfo, long paramLong, SuperPlayerDownOption paramSuperPlayerDownOption)
   {
     int i = this.mTaskIdIncreaser.addAndGet(1);
-    LogUtil.d(TAG, "startPreDownload() videoInfo=" + paramSuperPlayerVideoInfo.toString() + ", preloadSize=" + paramLong + ", taskId=" + i);
-    TPDownloadParamData localTPDownloadParamData = new TPDownloadParamData();
-    localTPDownloadParamData.setPreloadSize(paramLong);
-    configDownloadParamData(localTPDownloadParamData, paramSuperPlayerVideoInfo, paramSuperPlayerDownOption);
-    createPreDownloadTask(paramSuperPlayerVideoInfo, localTPDownloadParamData, i);
+    Object localObject = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("startPreDownload() videoInfo=");
+    localStringBuilder.append(paramSuperPlayerVideoInfo.toString());
+    localStringBuilder.append(", preloadSize=");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(", taskId=");
+    localStringBuilder.append(i);
+    LogUtil.d((String)localObject, localStringBuilder.toString());
+    localObject = new TPDownloadParamData();
+    ((TPDownloadParamData)localObject).setPreloadSize(paramLong);
+    configDownloadParamData((TPDownloadParamData)localObject, paramSuperPlayerVideoInfo, paramSuperPlayerDownOption);
+    createPreDownloadTask(paramSuperPlayerVideoInfo, (TPDownloadParamData)localObject, i);
     return i;
   }
   
@@ -237,18 +268,31 @@ public class SPlayerPreDownloaderImpl
   {
     synchronized (this.mTaskIdMap)
     {
-      LogUtil.d(TAG, "stopAllPreDownload(), mTaskIdMap.size()=" + this.mTaskIdMap.size());
-      Iterator localIterator = this.mTaskIdMap.keySet().iterator();
-      if (localIterator.hasNext()) {
-        ThreadUtil.runOnThreadPool(new SPlayerPreDownloaderImpl.2(this, ((Integer)localIterator.next()).intValue()));
+      Object localObject1 = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("stopAllPreDownload(), mTaskIdMap.size()=");
+      localStringBuilder.append(this.mTaskIdMap.size());
+      LogUtil.d((String)localObject1, localStringBuilder.toString());
+      localObject1 = this.mTaskIdMap.keySet().iterator();
+      while (((Iterator)localObject1).hasNext()) {
+        ThreadUtil.runOnThreadPool(new SPlayerPreDownloaderImpl.2(this, ((Integer)((Iterator)localObject1).next()).intValue()));
       }
+      this.mTaskIdMap.clear();
+      return;
     }
-    this.mTaskIdMap.clear();
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public void stopPreDownload(int paramInt)
   {
-    LogUtil.d(TAG, "stopPreDownload() taskid=" + paramInt);
+    ??? = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("stopPreDownload() taskid=");
+    localStringBuilder.append(paramInt);
+    LogUtil.d((String)???, localStringBuilder.toString());
     synchronized (this.mTaskIdMap)
     {
       if (this.mTaskIdMap.containsKey(Integer.valueOf(paramInt)))
@@ -262,7 +306,7 @@ public class SPlayerPreDownloaderImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.datatransport.SPlayerPreDownloaderImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.hotpic.HotPicManager;
 import com.tencent.mobileqq.pluspanel.AIOPanelIconItem;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,45 +53,41 @@ public abstract class BaseChatPanelBarLoader
   
   public List<AIOPanelIconItem> a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
   {
-    if ((this.b != null) && (this.b.size() > 0)) {}
-    for (;;)
+    Object localObject = this.b;
+    if ((localObject == null) || (((List)localObject).size() <= 0))
     {
-      return this.b;
-      Context localContext = this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarChatPanelBarContext.a().a();
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarChatPanelBarContext.a().a();
       this.jdField_a_of_type_JavaUtilList = b(paramQQAppInterface, paramSessionInfo, paramBaseChatPie);
-      this.b = a(localContext, this.jdField_a_of_type_JavaUtilList);
+      this.b = a((Context)localObject, this.jdField_a_of_type_JavaUtilList);
     }
+    return this.b;
   }
   
   protected void a()
   {
     if (ShortVideoUtils.needTwoEntrance()) {
-      AIOPanelUtiles.v[2] = 2130844944;
+      AIOPanelUtiles.v[2] = 2130844820;
+    } else {
+      AIOPanelUtiles.v[2] = 2130844809;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.v);
-      return;
-      AIOPanelUtiles.v[2] = 2130844933;
-    }
+    this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.v);
   }
   
   protected void a(Context paramContext)
   {
     if (ShortVideoUtils.needTwoEntrance())
     {
-      AIOPanelUtiles.v[2] = 2130838317;
-      AIOPanelUtiles.v[5] = 2130850366;
-      AIOPanelUtiles.v[6] = 2130850367;
+      AIOPanelUtiles.v[2] = 2130838142;
+      AIOPanelUtiles.v[5] = 2130850293;
+      AIOPanelUtiles.v[6] = 2130850294;
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.v);
-      return;
-      AIOPanelUtiles.v[2] = 2130838223;
-      AIOPanelUtiles.v[5] = 2130850268;
-      AIOPanelUtiles.v[6] = 2130850269;
+      AIOPanelUtiles.v[2] = 2130838065;
+      AIOPanelUtiles.v[5] = 2130850195;
+      AIOPanelUtiles.v[6] = 2130850196;
     }
+    this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.v);
   }
   
   protected abstract void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie);
@@ -103,38 +99,38 @@ public abstract class BaseChatPanelBarLoader
   
   public List<int[]> b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {}
-    for (;;)
+    if (this.jdField_a_of_type_JavaUtilList == null)
     {
-      return this.jdField_a_of_type_JavaUtilList;
       boolean bool = this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarChatPanelBarContext.a().a();
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
       if (bool)
       {
-        if (("1103".equals(ThemeUtil.curThemeId)) || ("2920".equals(ThemeUtil.curThemeId))) {
-          b(paramQQAppInterface, paramSessionInfo, paramBaseChatPie);
-        } else {
+        if ((!"1103".equals(ThemeUtil.curThemeId)) && (!"2920".equals(ThemeUtil.curThemeId))) {
           a(paramQQAppInterface, paramSessionInfo, paramBaseChatPie);
+        } else {
+          b(paramQQAppInterface, paramSessionInfo, paramBaseChatPie);
         }
       }
       else {
         c(paramQQAppInterface, paramSessionInfo, paramBaseChatPie);
       }
     }
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
   protected void b()
   {
-    if ((ShortVideoUtils.needTwoEntrance()) || (!this.jdField_a_of_type_JavaUtilList.contains(AIOPanelUtiles.v))) {}
-    for (int i = 1;; i = 0)
+    int i;
+    if ((!ShortVideoUtils.needTwoEntrance()) && (this.jdField_a_of_type_JavaUtilList.contains(AIOPanelUtiles.v))) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    if (i != 0)
     {
-      if (i != 0)
-      {
-        AIOPanelUtiles.s[2] = 2130844933;
-        AIOPanelUtiles.s[5] = 0;
-        AIOPanelUtiles.s[6] = 0;
-      }
-      return;
+      AIOPanelUtiles.s[2] = 2130844809;
+      AIOPanelUtiles.s[5] = 0;
+      AIOPanelUtiles.s[6] = 0;
     }
   }
   
@@ -145,16 +141,21 @@ public abstract class BaseChatPanelBarLoader
   
   protected void c()
   {
-    if ((ShortVideoUtils.needTwoEntrance()) || (!this.jdField_a_of_type_JavaUtilList.contains(AIOPanelUtiles.v))) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if ((!ShortVideoUtils.needTwoEntrance()) && (this.jdField_a_of_type_JavaUtilList.contains(AIOPanelUtiles.v))) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseChatPanelBarLoader", 2, "addCameraIcon" + bool);
-      }
-      if (bool) {
-        this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.s);
-      }
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("addCameraIcon");
+      localStringBuilder.append(bool);
+      QLog.d("BaseChatPanelBarLoader", 2, localStringBuilder.toString());
+    }
+    if (bool) {
+      this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.s);
     }
   }
   
@@ -169,7 +170,7 @@ public abstract class BaseChatPanelBarLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.chatpanelbar.loader.BaseChatPanelBarLoader
  * JD-Core Version:    0.7.0.1
  */

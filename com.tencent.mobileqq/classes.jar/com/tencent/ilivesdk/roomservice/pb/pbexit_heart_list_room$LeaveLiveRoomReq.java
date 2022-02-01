@@ -20,13 +20,14 @@ public final class pbexit_heart_list_room$LeaveLiveRoomReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "sub_roomid", "roomid", "sig" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, LeaveLiveRoomReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "sub_roomid", "roomid", "sig" }, new Object[] { localInteger, localInteger, localByteStringMicro }, LeaveLiveRoomReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.roomservice.pb.pbexit_heart_list_room.LeaveLiveRoomReq
  * JD-Core Version:    0.7.0.1
  */

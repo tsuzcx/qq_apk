@@ -10,14 +10,20 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class qqshop_code$SRsp
   extends MessageMicro<SRsp>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "ret_code", "expired_time", "auth_code" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), "" }, SRsp.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField auth_code = PBField.initString("");
   public final PBUInt32Field expired_time = PBField.initUInt32(0);
   public final PBInt32Field ret_code = PBField.initInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "ret_code", "expired_time", "auth_code" }, new Object[] { localInteger, localInteger, "" }, SRsp.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.qqshop.qqshop_code.SRsp
  * JD-Core Version:    0.7.0.1
  */

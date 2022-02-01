@@ -39,14 +39,15 @@ public class MiniCrashHandler
   {
     QMLog.e("MiniCrashHandler", "uncaughtException ", paramThrowable);
     saveCrashInfo();
-    if (this.defaultHandler != null) {
-      this.defaultHandler.uncaughtException(paramThread, paramThrowable);
+    Thread.UncaughtExceptionHandler localUncaughtExceptionHandler = this.defaultHandler;
+    if (localUncaughtExceptionHandler != null) {
+      localUncaughtExceptionHandler.uncaughtException(paramThread, paramThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.MiniCrashHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -18,12 +18,16 @@ public class TPPropertyID
   public static final int LONG_VIDEO_BIT_RATE = 202;
   @TPNativeKeyMap.MapPropertyId(201)
   public static final int LONG_VIDEO_CODEC_ID = 201;
+  @TPNativeKeyMap.MapPropertyId(208)
+  public static final int LONG_VIDEO_DECODE_FRAME_COUNT = 208;
   @TPNativeKeyMap.MapPropertyId(206)
   public static final int LONG_VIDEO_FRAME_RATE = 206;
   @TPNativeKeyMap.MapPropertyId(204)
   public static final int LONG_VIDEO_LEVEL = 204;
   @TPNativeKeyMap.MapPropertyId(203)
   public static final int LONG_VIDEO_PROFILE = 203;
+  @TPNativeKeyMap.MapPropertyId(209)
+  public static final int LONG_VIDEO_RENDER_FRAME_COUNT = 209;
   @TPNativeKeyMap.MapPropertyId(205)
   public static final int LONG_VIDEO_ROTATION = 205;
   @TPNativeKeyMap.MapPropertyId(0)
@@ -31,7 +35,7 @@ public class TPPropertyID
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPPropertyID
  * JD-Core Version:    0.7.0.1
  */

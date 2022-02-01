@@ -24,20 +24,18 @@ class QQGAudioMsgHandler$4
         this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(21, 1, Long.valueOf(this.jdField_a_of_type_Long).longValue(), 0L);
       }
       VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, 13, false, Long.toString(this.jdField_a_of_type_Long), Long.toString(this.b), false, null, false, this.jdField_a_of_type_Int, new Object[0]);
-      if (this.jdField_a_of_type_Int == 2) {
+      if (this.jdField_a_of_type_Int == 2)
+      {
         new GroupVideoWrapper(this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(new QQGAudioMsgHandler.4.1(this));
+        return;
       }
+      new QavWrapper(BaseApplication.getContext()).a(new QQGAudioMsgHandler.4.2(this));
     }
-    else
-    {
-      return;
-    }
-    new QavWrapper(BaseApplication.getContext()).a(new QQGAudioMsgHandler.4.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQGAudioMsgHandler.4
  * JD-Core Version:    0.7.0.1
  */

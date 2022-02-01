@@ -1,6 +1,10 @@
 package com.tencent.open.appstore.js;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.Signature;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -9,19 +13,22 @@ import android.widget.Toast;
 import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gamecenter.appointment.GameCenterBroadcastReceiver;
-import com.tencent.gamecenter.appointment.GameCenterUtils;
+import com.tencent.gamecenter.wadl.biz.receiver.GameCenterBroadcastReceiver;
+import com.tencent.gamecenter.wadl.util.GameCenterUtil;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.emosm.DataFactory;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator;
+import com.tencent.mobileqq.emosm.api.IWebIPCOperatorApi;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.open.appcommon.js.BaseInterface;
 import com.tencent.open.appcommon.js.DownloadInterface;
 import com.tencent.open.appcommon.js.LastDownloadAction;
 import com.tencent.open.appstore.dl.DownloadManagerV2;
 import com.tencent.open.appstore.dl.DownloadProxy;
 import com.tencent.open.base.LogUtility;
+import com.tencent.open.base.MD5;
 import com.tencent.open.business.base.IJsCallBack;
 import com.tencent.open.business.base.JsCallbackManager;
 import com.tencent.open.downloadnew.DownloadConstants;
@@ -29,7 +36,9 @@ import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.open.downloadnew.MyAppApi;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.tmassistantsdk.TMAssistantCallYYB_V1;
+import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
@@ -43,46 +52,50 @@ public class DownloadInterfaceNew
 {
   private Activity jdField_a_of_type_AndroidAppActivity;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private LastDownloadAction jdField_a_of_type_ComTencentOpenAppcommonJsLastDownloadAction = null;
+  private LastDownloadAction jdField_a_of_type_ComTencentOpenAppcommonJsLastDownloadAction;
   private WebView jdField_a_of_type_ComTencentSmttSdkWebView;
   private String jdField_a_of_type_JavaLangString = "";
   
   public DownloadInterfaceNew(Activity paramActivity, WebView paramWebView)
   {
+    Object localObject = null;
+    this.jdField_a_of_type_ComTencentOpenAppcommonJsLastDownloadAction = null;
     LogUtility.b("DownloadInterfaceNew", "<DownloadInterfaceNew>");
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_ComTencentSmttSdkWebView = paramWebView;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    if ((paramActivity instanceof PublicFragmentActivityForTool)) {
+    if ((paramActivity instanceof PublicFragmentActivityForTool))
+    {
       paramWebView = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web");
     }
-    for (;;)
+    else
     {
-      DownloadManagerV2.a().a(paramWebView);
-      JsCallbackManager.a().a(this);
-      return;
       paramWebView = localObject;
       if ((paramActivity instanceof BaseActivity)) {
         paramWebView = (AppInterface)((BaseActivity)paramActivity).getAppRuntime();
       }
     }
+    DownloadManagerV2.a().a(paramWebView);
+    JsCallbackManager.a().a(this);
   }
   
   private void a(Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (!WebIPCOperator.a().a())
+    if (!((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).isServiceClientBinded())
     {
       if (paramBoolean2) {
-        Toast.makeText(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131703523), 0).show();
+        Toast.makeText(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131703654), 0).show();
       }
-      return;
     }
-    if (paramBoolean1)
+    else
     {
-      WebIPCOperator.a().b(paramBundle);
-      return;
+      if (paramBoolean1)
+      {
+        ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).sendServiceIpcReqWithoutTimeout(paramBundle);
+        return;
+      }
+      ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).sendServiceIpcReq(paramBundle);
     }
-    WebIPCOperator.a().a(paramBundle);
   }
   
   private void a(String paramString)
@@ -93,44 +106,50 @@ public class DownloadInterfaceNew
   private void a(String paramString1, String paramString2)
   {
     paramString1 = DownloadProxy.a().a();
-    LogUtility.c("DownloadInterfaceNew", "[getAllSDKDownloadInfos] infos size = " + paramString1.size());
-    JSONArray localJSONArray = new JSONArray();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[getAllSDKDownloadInfos] infos size = ");
+    ((StringBuilder)localObject).append(paramString1.size());
+    LogUtility.c("DownloadInterfaceNew", ((StringBuilder)localObject).toString());
+    localObject = new JSONArray();
     int j = paramString1.size();
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i < j)
+      JSONObject localJSONObject = new JSONObject();
+      DownloadInfo localDownloadInfo = (DownloadInfo)paramString1.get(i);
+      try
       {
-        JSONObject localJSONObject = new JSONObject();
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramString1.get(i);
-        try
-        {
-          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
-          localJSONObject.put("apkid", localDownloadInfo.k);
-          localJSONObject.put("packagename", localDownloadInfo.e);
-          localJSONObject.put("versioncode", localDownloadInfo.b);
-          localJSONObject.put("url", localDownloadInfo.d);
-          localJSONObject.put("pro", localDownloadInfo.f);
-          localJSONObject.put("state", localDownloadInfo.a());
-          localJSONObject.put("downloadType ", localDownloadInfo.jdField_c_of_type_Int);
-          localJSONObject.put("download_from", localDownloadInfo.jdField_h_of_type_Int);
-          localJSONObject.put("via", localDownloadInfo.jdField_h_of_type_JavaLangString);
-          localJSONObject.put("totalDataLength", localDownloadInfo.jdField_c_of_type_Long);
-          localJSONObject.put("writecodestate", localDownloadInfo.j);
-          localJSONArray.put(localJSONObject);
-          i += 1;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
+        localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
+        localJSONObject.put("apkid", localDownloadInfo.k);
+        localJSONObject.put("packagename", localDownloadInfo.e);
+        localJSONObject.put("versioncode", localDownloadInfo.b);
+        localJSONObject.put("url", localDownloadInfo.d);
+        localJSONObject.put("pro", localDownloadInfo.f);
+        localJSONObject.put("state", localDownloadInfo.a());
+        localJSONObject.put("downloadType ", localDownloadInfo.jdField_c_of_type_Int);
+        localJSONObject.put("download_from", localDownloadInfo.jdField_h_of_type_Int);
+        localJSONObject.put("via", localDownloadInfo.jdField_h_of_type_JavaLangString);
+        localJSONObject.put("totalDataLength", localDownloadInfo.jdField_c_of_type_Long);
+        localJSONObject.put("writecodestate", localDownloadInfo.j);
       }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
+      ((JSONArray)localObject).put(localJSONObject);
+      i += 1;
     }
-    paramString1 = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getAllSDKDownloadInfos',{\"guid\": " + paramString2 + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});}void(0);";
-    LogUtility.c("DownloadInterfaceNew", "[getAllSDKDownloadInfos]:" + paramString1);
+    paramString1 = new StringBuilder();
+    paramString1.append("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getAllSDKDownloadInfos',{\"guid\": ");
+    paramString1.append(paramString2);
+    paramString1.append(", \"r\" : 0, \"data\":");
+    paramString1.append(((JSONArray)localObject).toString());
+    paramString1.append("});}void(0);");
+    paramString1 = paramString1.toString();
+    paramString2 = new StringBuilder();
+    paramString2.append("[getAllSDKDownloadInfos]:");
+    paramString2.append(paramString1);
+    LogUtility.c("DownloadInterfaceNew", paramString2.toString());
     a(paramString1);
   }
   
@@ -164,92 +183,190 @@ public class DownloadInterfaceNew
   
   private static boolean a(int paramInt)
   {
-    boolean bool = true;
     if (paramInt == 0) {
-      bool = false;
+      return false;
     }
-    while (paramInt != 1) {
-      return bool;
-    }
+    if (paramInt == 1) {}
     return true;
   }
   
+  /* Error */
   public int batchDownloadByYYB(String paramString)
   {
-    LogUtility.b("DownloadInterfaceNew", ">batchDownloadByYYB" + paramString);
-    if (!hasRight()) {
-      return -1;
-    }
-    Object localObject6 = null;
-    Object localObject1 = "";
-    localObject5 = "";
-    Object localObject2 = localObject6;
-    localObject4 = localObject1;
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        localObject2 = localObject6;
-        localObject4 = localObject1;
-        paramString = localJSONObject.optJSONArray("appInfo");
-        localObject2 = paramString;
-        localObject4 = localObject1;
-        localObject1 = localJSONObject.optString(DownloadConstants.i);
-        localObject2 = paramString;
-        localObject4 = localObject1;
-        i = localJSONObject.optInt(DownloadConstants.k);
-        LogUtility.c("DownloadInterfaceNew", ">batchDownloadByYYB JSONException", (Throwable)localObject2);
-      }
-      catch (JSONException localJSONException3)
-      {
-        try
-        {
-          localObject2 = localJSONObject.optString("sourceType");
-          localObject4 = localObject2;
-        }
-        catch (JSONException localJSONException1)
-        {
-          for (;;)
-          {
-            int i;
-            localObject4 = paramString;
-            paramString = (String)localObject5;
-          }
-        }
-        try
-        {
-          if (TextUtils.isEmpty((CharSequence)localObject2)) {
-            localObject4 = DownloadInterface.getSourceInfoFromActivity(this.jdField_a_of_type_AndroidAppActivity);
-          }
-          localObject2 = localObject4;
-          localObject4 = paramString;
-          LogUtility.b("DownloadInterfaceNew", ">batchDownloadByYYB appInfo:" + localObject4 + "||via:" + (String)localObject1);
-          if ((localObject4 != null) && (((JSONArray)localObject4).length() != 0)) {
-            break;
-          }
-          return -1;
-        }
-        catch (JSONException localJSONException2)
-        {
-          localObject5 = localJSONException1;
-          Object localObject3 = localJSONException2;
-          String str = paramString;
-          paramString = (String)localObject5;
-          break label214;
-        }
-        localJSONException3 = localJSONException3;
-        i = 0;
-        paramString = (String)localObject5;
-        localObject1 = localObject4;
-        localObject4 = localObject2;
-        localObject2 = localJSONException3;
-      }
-      label214:
-      localObject2 = paramString;
-    }
-    MyAppApi.a().a(this.jdField_a_of_type_AndroidAppActivity, (JSONArray)localObject4, i, (String)localObject1, (String)localObject2);
-    return 0;
+    // Byte code:
+    //   0: ldc 19
+    //   2: astore 7
+    //   4: new 160	java/lang/StringBuilder
+    //   7: dup
+    //   8: invokespecial 161	java/lang/StringBuilder:<init>	()V
+    //   11: astore 4
+    //   13: aload 4
+    //   15: ldc_w 321
+    //   18: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   21: pop
+    //   22: aload 4
+    //   24: aload_1
+    //   25: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   28: pop
+    //   29: ldc 25
+    //   31: aload 4
+    //   33: invokevirtual 180	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   36: invokestatic 33	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   39: aload_0
+    //   40: invokevirtual 324	com/tencent/open/appstore/js/DownloadInterfaceNew:hasRight	()Z
+    //   43: ifne +5 -> 48
+    //   46: iconst_m1
+    //   47: ireturn
+    //   48: aconst_null
+    //   49: astore 4
+    //   51: aload 4
+    //   53: astore 5
+    //   55: new 188	org/json/JSONObject
+    //   58: dup
+    //   59: aload_1
+    //   60: invokespecial 326	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   63: astore 6
+    //   65: aload 4
+    //   67: astore 5
+    //   69: aload 6
+    //   71: ldc_w 328
+    //   74: invokevirtual 332	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   77: astore_1
+    //   78: aload_1
+    //   79: astore 5
+    //   81: aload 6
+    //   83: getstatic 337	com/tencent/open/downloadnew/DownloadConstants:i	Ljava/lang/String;
+    //   86: invokevirtual 292	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   89: astore 4
+    //   91: aload 6
+    //   93: getstatic 338	com/tencent/open/downloadnew/DownloadConstants:k	Ljava/lang/String;
+    //   96: invokevirtual 300	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   99: istore_2
+    //   100: aload 7
+    //   102: astore 5
+    //   104: aload 6
+    //   106: ldc_w 340
+    //   109: invokevirtual 292	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   112: astore 9
+    //   114: aload 9
+    //   116: astore 5
+    //   118: aload 9
+    //   120: astore 6
+    //   122: aload_1
+    //   123: astore 8
+    //   125: iload_2
+    //   126: istore_3
+    //   127: aload 4
+    //   129: astore 7
+    //   131: aload 9
+    //   133: invokestatic 346	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   136: ifeq +76 -> 212
+    //   139: aload 9
+    //   141: astore 5
+    //   143: aload_0
+    //   144: getfield 35	com/tencent/open/appstore/js/DownloadInterfaceNew:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
+    //   147: invokestatic 352	com/tencent/open/appcommon/js/DownloadInterface:getSourceInfoFromActivity	(Landroid/app/Activity;)Ljava/lang/String;
+    //   150: astore 6
+    //   152: aload_1
+    //   153: astore 8
+    //   155: iload_2
+    //   156: istore_3
+    //   157: aload 4
+    //   159: astore 7
+    //   161: goto +51 -> 212
+    //   164: astore 6
+    //   166: goto +23 -> 189
+    //   169: astore 6
+    //   171: goto +12 -> 183
+    //   174: astore 6
+    //   176: ldc 19
+    //   178: astore 4
+    //   180: aload 5
+    //   182: astore_1
+    //   183: iconst_0
+    //   184: istore_2
+    //   185: aload 7
+    //   187: astore 5
+    //   189: ldc 25
+    //   191: ldc_w 354
+    //   194: aload 6
+    //   196: invokestatic 317	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   199: aload 4
+    //   201: astore 7
+    //   203: iload_2
+    //   204: istore_3
+    //   205: aload_1
+    //   206: astore 8
+    //   208: aload 5
+    //   210: astore 6
+    //   212: new 160	java/lang/StringBuilder
+    //   215: dup
+    //   216: invokespecial 161	java/lang/StringBuilder:<init>	()V
+    //   219: astore_1
+    //   220: aload_1
+    //   221: ldc_w 356
+    //   224: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   227: pop
+    //   228: aload_1
+    //   229: aload 8
+    //   231: invokevirtual 359	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   234: pop
+    //   235: aload_1
+    //   236: ldc_w 361
+    //   239: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   242: pop
+    //   243: aload_1
+    //   244: aload 7
+    //   246: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   249: pop
+    //   250: ldc 25
+    //   252: aload_1
+    //   253: invokevirtual 180	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   256: invokestatic 33	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   259: aload 8
+    //   261: ifnull +32 -> 293
+    //   264: aload 8
+    //   266: invokevirtual 280	org/json/JSONArray:length	()I
+    //   269: ifne +5 -> 274
+    //   272: iconst_m1
+    //   273: ireturn
+    //   274: invokestatic 366	com/tencent/open/downloadnew/MyAppApi:a	()Lcom/tencent/open/downloadnew/MyAppApi;
+    //   277: aload_0
+    //   278: getfield 35	com/tencent/open/appstore/js/DownloadInterfaceNew:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
+    //   281: aload 8
+    //   283: iload_3
+    //   284: aload 7
+    //   286: aload 6
+    //   288: invokevirtual 369	com/tencent/open/downloadnew/MyAppApi:a	(Landroid/content/Context;Lorg/json/JSONArray;ILjava/lang/String;Ljava/lang/String;)V
+    //   291: iconst_0
+    //   292: ireturn
+    //   293: iconst_m1
+    //   294: ireturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	295	0	this	DownloadInterfaceNew
+    //   0	295	1	paramString	String
+    //   99	105	2	i	int
+    //   126	158	3	j	int
+    //   11	189	4	localObject1	Object
+    //   53	156	5	localObject2	Object
+    //   63	88	6	localObject3	Object
+    //   164	1	6	localJSONException1	JSONException
+    //   169	1	6	localJSONException2	JSONException
+    //   174	21	6	localJSONException3	JSONException
+    //   210	77	6	localObject4	Object
+    //   2	283	7	localObject5	Object
+    //   123	159	8	str1	String
+    //   112	28	9	str2	String
+    // Exception table:
+    //   from	to	target	type
+    //   104	114	164	org/json/JSONException
+    //   131	139	164	org/json/JSONException
+    //   143	152	164	org/json/JSONException
+    //   91	100	169	org/json/JSONException
+    //   55	65	174	org/json/JSONException
+    //   69	78	174	org/json/JSONException
+    //   81	91	174	org/json/JSONException
   }
   
   public void cancelDownload(String paramString)
@@ -284,7 +401,6 @@ public class DownloadInterfaceNew
   
   public int doDownloadAction(String paramString)
   {
-    localObject3 = null;
     LogUtility.b("DownloadInterfaceNew", "[doDownloadAction]");
     if (!hasRight()) {
       return -1;
@@ -293,30 +409,33 @@ public class DownloadInterfaceNew
     if (TMAssistantCallYYB_V1.getQQDownloadApiLevel(this.jdField_a_of_type_AndroidAppActivity) >= 6) {
       localBundle.putLong("OuterCall_JS_DoDownloadAction", System.currentTimeMillis());
     }
-    try
+    for (;;)
     {
-      JSONObject localJSONObject = new JSONObject(paramString);
-      localObject1 = localJSONObject.optString("appId");
-      if (TextUtils.isEmpty((CharSequence)localObject1))
+      try
       {
-        localObject1 = localJSONObject.optString("appid");
-        if (localJSONObject.has("delayDownload"))
+        JSONObject localJSONObject = new JSONObject(paramString);
+        Object localObject2 = localJSONObject.optString("appId");
+        Object localObject1 = localObject2;
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          localObject1 = localJSONObject.optString("appid");
+        }
+        if (!localJSONObject.has("delayDownload")) {
+          break label1489;
+        }
+        int i = localJSONObject.optInt("delayDownload", -1);
+        if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity)) {
+          localObject2 = (AppInterface)((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppRuntime();
+        }
+        if (1 == i)
         {
-          i = localJSONObject.optInt("delayDownload", -1);
-          if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity)) {
-            localObject2 = (AppInterface)((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppRuntime();
-          }
-          if (1 == i)
-          {
-            GameCenterUtils.b((String)localObject1, "DELAY_LIST");
-            GameCenterUtils.a((String)localObject1, paramString, "DELAY_APPID_DETAIL_");
-            GameCenterBroadcastReceiver.a();
-            a(DataFactory.a("gamecenter_delaydownload", "callback", 0, null), false, false);
-            return 0;
-          }
-          if (i == 0) {
-            GameCenterUtils.a((String)localObject1, "DELAY_LIST");
-          }
+          GameCenterUtil.a((String)localObject1, "DELAY_LIST");
+          GameCenterUtil.a((String)localObject1, paramString, "DELAY_APPID_DETAIL_");
+          GameCenterBroadcastReceiver.a();
+          a(DataFactory.a("gamecenter_delaydownload", "callback", 0, null), false, false);
+          return 0;
+        }
+        if (i == 0) {
+          GameCenterUtil.b((String)localObject1, "DELAY_LIST");
         }
         localBundle.putString(DownloadConstants.b, (String)localObject1);
         localBundle.putString(DownloadConstants.j, localJSONObject.optString("url"));
@@ -324,63 +443,72 @@ public class DownloadInterfaceNew
         localBundle.putInt(DownloadConstants.k, localJSONObject.optInt("actionCode"));
         localBundle.putString(DownloadConstants.i, localJSONObject.optString("via"));
         localBundle.putString(DownloadConstants.l, localJSONObject.optString("appName"));
-        localBundle.putBoolean(DownloadConstants.r, a(localJSONObject.optInt("showNetworkDialog")));
-        localBundle.putString(DownloadConstants.E, localJSONObject.optString("iconUrl"));
-        localBundle.putInt(DownloadConstants.I, localJSONObject.optInt("showNotification"));
-        localBundle.putBoolean(DownloadConstants.K, a(localJSONObject.optInt("isAutoInstallBySdk")));
-        localBundle.putString(DownloadConstants.J, localJSONObject.optString("extraData"));
-        localBundle.putString(DownloadConstants.G, localJSONObject.optString("downloadStyle"));
-        localBundle.putLong(DownloadConstants.H, localJSONObject.optLong("downloadSize"));
+        localBundle.putBoolean(DownloadConstants.s, a(localJSONObject.optInt("showNetworkDialog")));
+        localBundle.putString(DownloadConstants.F, localJSONObject.optString("iconUrl"));
+        localBundle.putInt(DownloadConstants.J, localJSONObject.optInt("showNotification"));
+        localBundle.putBoolean(DownloadConstants.L, a(localJSONObject.optInt("isAutoInstallBySdk")));
+        localBundle.putString(DownloadConstants.K, localJSONObject.optString("extraData"));
+        localBundle.putString(DownloadConstants.H, localJSONObject.optString("downloadStyle"));
+        localBundle.putLong(DownloadConstants.I, localJSONObject.optLong("downloadSize"));
         localBundle.putString(DownloadConstants.p, localJSONObject.optString("wording"));
-        paramString = localJSONObject.optString(DownloadConstants.C);
-        LogUtility.b("DownloadInterfaceNew", "[doDownloadAction] feedChannel:" + paramString);
+        localBundle.putString(DownloadConstants.q, localJSONObject.optString(DownloadConstants.q));
+        paramString = localJSONObject.optString(DownloadConstants.D);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("[doDownloadAction] feedChannel:");
+        ((StringBuilder)localObject2).append(paramString);
+        LogUtility.b("DownloadInterfaceNew", ((StringBuilder)localObject2).toString());
+        boolean bool = TextUtils.isEmpty(paramString);
+        if ((bool) || (paramString.startsWith("0;"))) {
+          break label1492;
+        }
+        paramString = paramString.split(";");
+        if ((paramString == null) || (paramString.length <= 0)) {
+          break label1492;
+        }
+        localObject2 = paramString[0];
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          break label1492;
+        }
+        paramString = (String)localObject2;
+        if (((String)localObject2).equals("0")) {
+          break label1492;
+        }
+        String str = localJSONObject.optString(DownloadConstants.M);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("[doDownloadAction] finalFeedChannel:");
+        ((StringBuilder)localObject2).append(paramString);
+        LogUtility.b("DownloadInterfaceNew", ((StringBuilder)localObject2).toString());
         if (TextUtils.isEmpty(paramString)) {
-          break label1378;
+          localBundle.putString(DownloadConstants.D, str);
+        } else {
+          localBundle.putString(DownloadConstants.D, paramString);
         }
-        String str;
-        if (paramString.startsWith("0;"))
+        paramString = localJSONObject.optString("via");
+        i = localJSONObject.optInt("actionCode");
+        if (this.jdField_a_of_type_ComTencentOpenAppcommonJsLastDownloadAction == null)
         {
-          break label1378;
-          str = localJSONObject.optString(DownloadConstants.L);
-          LogUtility.b("DownloadInterfaceNew", "[doDownloadAction] finalFeedChannel:" + paramString);
-          if (!TextUtils.isEmpty(paramString)) {
-            break label1267;
-          }
-          localBundle.putString(DownloadConstants.C, str);
-        }
-        for (;;)
-        {
-          paramString = localJSONObject.optString("via");
-          i = localJSONObject.optInt("actionCode");
-          if (this.jdField_a_of_type_ComTencentOpenAppcommonJsLastDownloadAction != null) {
-            break label1291;
-          }
           this.jdField_a_of_type_ComTencentOpenAppcommonJsLastDownloadAction = new LastDownloadAction((String)localObject1, paramString, i);
-          if (localJSONObject.optInt("actionCode") != 12) {
-            break label1370;
-          }
-          boolean bool = a(localJSONObject.optInt("updateType"));
-          localBundle.putBoolean(DownloadConstants.o, bool);
-          bool = localJSONObject.has("updateData");
-          if (!bool) {
-            break label1370;
-          }
-          for (;;)
+        }
+        else if (this.jdField_a_of_type_ComTencentOpenAppcommonJsLastDownloadAction.a((String)localObject1, paramString, i))
+        {
+          LogUtility.b("DownloadInterfaceNew", "[doDownloadAction] repeat action,return");
+          return 0;
+        }
+        if (localJSONObject.optInt("actionCode") != 12) {
+          break label1498;
+        }
+        bool = a(localJSONObject.optInt("updateType"));
+        localBundle.putBoolean(DownloadConstants.o, bool);
+        bool = localJSONObject.has("updateData");
+        if (!bool) {
+          break label1498;
+        }
+        try
+        {
+          localObject2 = localJSONObject.optString("updateData");
+          if (!TextUtils.isEmpty((CharSequence)localObject2))
           {
-            try
-            {
-              localObject2 = localJSONObject.optString("updateData");
-              if (TextUtils.isEmpty((CharSequence)localObject2)) {
-                continue;
-              }
-              paramString = new ApkUpdateDetail();
-            }
-            catch (Exception localException2)
-            {
-              label1267:
-              paramString = localObject3;
-              continue;
-            }
+            paramString = new ApkUpdateDetail();
             try
             {
               localObject2 = new JSONObject((String)localObject2);
@@ -393,97 +521,88 @@ public class DownloadInterfaceNew
               paramString.fileMd5 = ((JSONObject)localObject2).optString("fileMd5");
               paramString.sigMd5 = ((JSONObject)localObject2).optString("sigMd5");
               paramString.url = ((JSONObject)localObject2).optString("url");
-              i = localJSONObject.optInt("myAppConfig");
-              localBundle.putString(DownloadConstants.jdField_c_of_type_JavaLangString, (String)localObject1);
-              localBundle.putString(DownloadConstants.d, localJSONObject.optString("apkId"));
-              localBundle.putInt(DownloadConstants.e, localJSONObject.optInt("versionCode"));
-              localBundle.putInt(DownloadConstants.n, localJSONObject.optInt("toPageType"));
-              localBundle.putBoolean(DownloadConstants.g, a(localJSONObject.optInt("isAutoDownload")));
-              localBundle.putBoolean(DownloadConstants.jdField_h_of_type_JavaLangString, a(localJSONObject.optInt("isAutoInstall")));
-              localBundle.putBoolean(DownloadConstants.x, localJSONObject.optBoolean("bolckNotify"));
-              localBundle.putString("recommendId", localJSONObject.optString("recommendId"));
-              localBundle.putString("sourceFromServer", "" + localJSONObject.optInt("sourceFromServer"));
-              localBundle.putString(DownloadConstants.L, str);
-              localBundle.putString("pageId", "" + localJSONObject.optInt("pageId"));
-              localBundle.putString("moduleId", "" + localJSONObject.optInt("moduleId"));
-              localBundle.putString("positionId", "" + localJSONObject.optInt("positionId"));
-              localBundle.putString("apkId", localJSONObject.optString("apkId"));
-              localBundle.putString("appId", (String)localObject1);
-              localBundle.putInt("auto_start_yyb_download", localJSONObject.optInt("auto_start_yyb_download"));
-              localObject2 = DownloadInterface.parseSourceType(this.jdField_a_of_type_AndroidAppActivity, localJSONObject);
-              localObject1 = localObject2;
-              if (TextUtils.isEmpty((CharSequence)localObject2)) {
-                localObject1 = "biz_src_yyb";
-              }
-              localBundle.putString("big_brother_ref_source_key", DownloadInterface.parseCurrentPageId(this.jdField_a_of_type_AndroidAppActivity));
-              localBundle.putInt("hideInstallSuccessPage", localJSONObject.optInt("hideInstallSuccessPage"));
-              LogUtility.b("DownloadInterfaceNew", "[doDownloadAction] sourceType=" + (String)localObject1);
-              LogUtility.b("DownloadInterfaceNew", "[doDownloadAction] object " + localJSONObject.toString());
-              DownloadProxy.a().a(this.jdField_a_of_type_AndroidAppActivity, localBundle, (String)localObject1, paramString, i);
-              return 0;
             }
-            catch (Exception localException1) {}
+            catch (Exception localException1)
+            {
+              continue;
+            }
           }
-          paramString = paramString.split(";");
-          if (paramString == null)
+          else
           {
-            paramString = "";
-            break;
+            paramString = null;
           }
-          if (paramString.length <= 0)
-          {
-            paramString = "";
-            break;
-          }
-          localObject2 = paramString[0];
-          if (TextUtils.isEmpty((CharSequence)localObject2)) {
-            break label1384;
-          }
-          paramString = (String)localObject2;
-          if (!((String)localObject2).equals("0")) {
-            break;
-          }
-          break label1384;
-          localBundle.putString(DownloadConstants.C, paramString);
         }
-      }
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        Object localObject1;
-        int i;
-        Object localObject2;
-        LogUtility.c("DownloadInterfaceNew", "[doDownloadAction] JSONException", paramString);
-        return -1;
-        if (this.jdField_a_of_type_ComTencentOpenAppcommonJsLastDownloadAction.a((String)localObject1, paramString, i))
+        catch (Exception localException2)
         {
-          LogUtility.b("DownloadInterfaceNew", "[doDownloadAction] repeat action,return");
-          return 0;
-          LogUtility.c("DownloadInterfaceNew", "[doDownloadAction]  updateData e=" + ((Exception)localObject2).getMessage());
+          paramString = null;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[doDownloadAction]  updateData e=");
+          localStringBuilder.append(localException2.getMessage());
+          LogUtility.c("DownloadInterfaceNew", localStringBuilder.toString());
         }
+        i = localJSONObject.optInt("myAppConfig");
+        localBundle.putString(DownloadConstants.jdField_c_of_type_JavaLangString, (String)localObject1);
+        localBundle.putString(DownloadConstants.d, localJSONObject.optString("apkId"));
+        localBundle.putInt(DownloadConstants.e, localJSONObject.optInt("versionCode"));
+        localBundle.putInt(DownloadConstants.n, localJSONObject.optInt("toPageType"));
+        localBundle.putBoolean(DownloadConstants.g, a(localJSONObject.optInt("isAutoDownload")));
+        localBundle.putBoolean(DownloadConstants.jdField_h_of_type_JavaLangString, a(localJSONObject.optInt("isAutoInstall")));
+        localBundle.putBoolean(DownloadConstants.y, localJSONObject.optBoolean("bolckNotify"));
+        localBundle.putString("recommendId", localJSONObject.optString("recommendId"));
+        Object localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("");
+        ((StringBuilder)localObject3).append(localJSONObject.optInt("sourceFromServer"));
+        localBundle.putString("sourceFromServer", ((StringBuilder)localObject3).toString());
+        localBundle.putString(DownloadConstants.M, str);
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("");
+        ((StringBuilder)localObject3).append(localJSONObject.optInt("pageId"));
+        localBundle.putString("pageId", ((StringBuilder)localObject3).toString());
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("");
+        ((StringBuilder)localObject3).append(localJSONObject.optInt("moduleId"));
+        localBundle.putString("moduleId", ((StringBuilder)localObject3).toString());
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("");
+        ((StringBuilder)localObject3).append(localJSONObject.optInt("positionId"));
+        localBundle.putString("positionId", ((StringBuilder)localObject3).toString());
+        localBundle.putString("apkId", localJSONObject.optString("apkId"));
+        localBundle.putString("appId", (String)localObject1);
+        localBundle.putInt("auto_start_yyb_download", localJSONObject.optInt("auto_start_yyb_download"));
+        localObject3 = DownloadInterface.parseSourceType(this.jdField_a_of_type_AndroidAppActivity, localJSONObject);
+        localObject1 = localObject3;
+        if (TextUtils.isEmpty((CharSequence)localObject3)) {
+          localObject1 = "biz_src_yyb";
+        }
+        localBundle.putString("big_brother_ref_source_key", DownloadInterface.parseCurrentPageId(this.jdField_a_of_type_AndroidAppActivity));
+        localBundle.putInt("hideInstallSuccessPage", localJSONObject.optInt("hideInstallSuccessPage"));
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("[doDownloadAction] sourceType=");
+        ((StringBuilder)localObject3).append((String)localObject1);
+        LogUtility.b("DownloadInterfaceNew", ((StringBuilder)localObject3).toString());
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("[doDownloadAction] object ");
+        ((StringBuilder)localObject3).append(localJSONObject.toString());
+        LogUtility.b("DownloadInterfaceNew", ((StringBuilder)localObject3).toString());
+        DownloadProxy.a().a(this.jdField_a_of_type_AndroidAppActivity, localBundle, (String)localObject1, paramString, i);
+        return 0;
       }
-    }
-    catch (NumberFormatException paramString)
-    {
-      for (;;)
+      catch (NumberFormatException paramString)
       {
-        label1291:
         LogUtility.c("DownloadInterfaceNew", "[doDownloadAction] Exception", paramString);
-        continue;
-        paramString = null;
-        continue;
-        label1370:
-        paramString = null;
-        continue;
-        continue;
-        label1378:
-        paramString = "";
-        continue;
-        label1384:
-        paramString = "";
       }
+      catch (JSONException paramString)
+      {
+        LogUtility.c("DownloadInterfaceNew", "[doDownloadAction] JSONException", paramString);
+      }
+      return -1;
+      label1489:
+      continue;
+      label1492:
+      paramString = "";
+      continue;
+      label1498:
+      paramString = null;
     }
   }
   
@@ -509,7 +628,12 @@ public class DownloadInterfaceNew
   
   public void getQueryDownloadAction(String paramString1, String paramString2)
   {
-    LogUtility.b("DownloadInterfaceNew", "[queryDownloadAction] guid=" + paramString2 + ",paramJson=" + paramString1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[queryDownloadAction] guid=");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(",paramJson=");
+    localStringBuilder.append(paramString1);
+    LogUtility.b("DownloadInterfaceNew", localStringBuilder.toString());
     try
     {
       a(new JSONArray(paramString1), paramString2);
@@ -517,7 +641,10 @@ public class DownloadInterfaceNew
     }
     catch (JSONException paramString1)
     {
-      LogUtility.e("DownloadInterfaceNew", "[queryDownloadAction] e=" + paramString1.getMessage());
+      paramString2 = new StringBuilder();
+      paramString2.append("[queryDownloadAction] e=");
+      paramString2.append(paramString1.getMessage());
+      LogUtility.e("DownloadInterfaceNew", paramString2.toString());
     }
   }
   
@@ -526,158 +653,62 @@ public class DownloadInterfaceNew
     return this.jdField_a_of_type_ComTencentSmttSdkWebView;
   }
   
-  /* Error */
   public void innerQueryInstalledAppInfo(String paramString1, String paramString2)
   {
-    // Byte code:
-    //   0: invokestatic 400	java/lang/System:currentTimeMillis	()J
-    //   3: lstore_3
-    //   4: invokestatic 686	com/tencent/open/adapter/CommonDataAdapter:a	()Lcom/tencent/open/adapter/CommonDataAdapter;
-    //   7: invokevirtual 689	com/tencent/open/adapter/CommonDataAdapter:a	()Landroid/content/Context;
-    //   10: invokevirtual 695	android/content/Context:getPackageManager	()Landroid/content/pm/PackageManager;
-    //   13: pop
-    //   14: new 276	java/util/ArrayList
-    //   17: dup
-    //   18: invokespecial 277	java/util/ArrayList:<init>	()V
-    //   21: astore 5
-    //   23: new 179	org/json/JSONArray
-    //   26: dup
-    //   27: invokespecial 180	org/json/JSONArray:<init>	()V
-    //   30: astore_1
-    //   31: aload 5
-    //   33: invokeinterface 699 1 0
-    //   38: astore 5
-    //   40: aload 5
-    //   42: invokeinterface 704 1 0
-    //   47: ifeq +172 -> 219
-    //   50: aload 5
-    //   52: invokeinterface 708 1 0
-    //   57: checkcast 710	android/content/pm/PackageInfo
-    //   60: astore 7
-    //   62: aload 7
-    //   64: getfield 714	android/content/pm/PackageInfo:applicationInfo	Landroid/content/pm/ApplicationInfo;
-    //   67: getfield 719	android/content/pm/ApplicationInfo:flags	I
-    //   70: iconst_1
-    //   71: iand
-    //   72: ifne -32 -> 40
-    //   75: getstatic 723	java/lang/System:out	Ljava/io/PrintStream;
-    //   78: new 154	java/lang/StringBuilder
-    //   81: dup
-    //   82: invokespecial 155	java/lang/StringBuilder:<init>	()V
-    //   85: ldc_w 725
-    //   88: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   91: aload 7
-    //   93: getfield 726	android/content/pm/PackageInfo:packageName	Ljava/lang/String;
-    //   96: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   99: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   102: invokevirtual 731	java/io/PrintStream:println	(Ljava/lang/String;)V
-    //   105: new 182	org/json/JSONObject
-    //   108: dup
-    //   109: invokespecial 183	org/json/JSONObject:<init>	()V
-    //   112: astore 6
-    //   114: aload 6
-    //   116: ldc 204
-    //   118: aload 7
-    //   120: getfield 726	android/content/pm/PackageInfo:packageName	Ljava/lang/String;
-    //   123: invokevirtual 197	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   126: pop
-    //   127: aload 6
-    //   129: ldc 209
-    //   131: aload 7
-    //   133: getfield 733	android/content/pm/PackageInfo:versionCode	I
-    //   136: invokevirtual 215	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   139: pop
-    //   140: aload 6
-    //   142: ldc_w 735
-    //   145: aload 7
-    //   147: getfield 739	android/content/pm/PackageInfo:signatures	[Landroid/content/pm/Signature;
-    //   150: aload 7
-    //   152: getfield 739	android/content/pm/PackageInfo:signatures	[Landroid/content/pm/Signature;
-    //   155: arraylength
-    //   156: iconst_1
-    //   157: isub
-    //   158: aaload
-    //   159: invokevirtual 744	android/content/pm/Signature:toCharsString	()Ljava/lang/String;
-    //   162: invokestatic 748	com/tencent/open/base/MD5:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   165: invokevirtual 197	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   168: pop
-    //   169: aload_1
-    //   170: aload 6
-    //   172: invokevirtual 258	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
-    //   175: pop
-    //   176: goto -136 -> 40
-    //   179: astore_1
-    //   180: ldc 25
-    //   182: new 154	java/lang/StringBuilder
-    //   185: dup
-    //   186: invokespecial 155	java/lang/StringBuilder:<init>	()V
-    //   189: ldc_w 750
-    //   192: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   195: aload_1
-    //   196: invokevirtual 656	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   199: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   202: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   205: invokestatic 678	com/tencent/open/base/LogUtility:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   208: return
-    //   209: astore 7
-    //   211: aload 7
-    //   213: invokevirtual 261	org/json/JSONException:printStackTrace	()V
-    //   216: goto -47 -> 169
-    //   219: new 154	java/lang/StringBuilder
-    //   222: dup
-    //   223: invokespecial 155	java/lang/StringBuilder:<init>	()V
-    //   226: ldc_w 752
-    //   229: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   232: aload_2
-    //   233: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   236: ldc_w 265
-    //   239: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   242: aload_1
-    //   243: invokevirtual 266	org/json/JSONArray:toString	()Ljava/lang/String;
-    //   246: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   249: ldc_w 268
-    //   252: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   255: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   258: astore_1
-    //   259: ldc 25
-    //   261: new 154	java/lang/StringBuilder
-    //   264: dup
-    //   265: invokespecial 155	java/lang/StringBuilder:<init>	()V
-    //   268: ldc_w 754
-    //   271: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   274: invokestatic 400	java/lang/System:currentTimeMillis	()J
-    //   277: lload_3
-    //   278: lsub
-    //   279: invokevirtual 757	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   282: ldc_w 759
-    //   285: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   288: aload_1
-    //   289: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   292: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   295: invokestatic 177	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;)V
-    //   298: aload_0
-    //   299: aload_1
-    //   300: invokespecial 134	com/tencent/open/appstore/js/DownloadInterfaceNew:a	(Ljava/lang/String;)V
-    //   303: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	304	0	this	DownloadInterfaceNew
-    //   0	304	1	paramString1	String
-    //   0	304	2	paramString2	String
-    //   3	275	3	l	long
-    //   21	30	5	localObject	Object
-    //   112	59	6	localJSONObject	JSONObject
-    //   60	91	7	localPackageInfo	android.content.pm.PackageInfo
-    //   209	3	7	localJSONException	JSONException
-    // Exception table:
-    //   from	to	target	type
-    //   0	40	179	java/lang/Exception
-    //   40	114	179	java/lang/Exception
-    //   114	169	179	java/lang/Exception
-    //   169	176	179	java/lang/Exception
-    //   211	216	179	java/lang/Exception
-    //   219	303	179	java/lang/Exception
-    //   114	169	209	org/json/JSONException
+    try
+    {
+      long l = System.currentTimeMillis();
+      CommonDataAdapter.a().a().getPackageManager();
+      Object localObject1 = new ArrayList();
+      paramString1 = new JSONArray();
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        PackageInfo localPackageInfo = (PackageInfo)((Iterator)localObject1).next();
+        if ((localPackageInfo.applicationInfo.flags & 0x1) == 0)
+        {
+          Object localObject2 = System.out;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("MainActivity.getAppList, packageInfo=");
+          localStringBuilder.append(localPackageInfo.packageName);
+          ((PrintStream)localObject2).println(localStringBuilder.toString());
+          localObject2 = new JSONObject();
+          try
+          {
+            ((JSONObject)localObject2).put("packagename", localPackageInfo.packageName);
+            ((JSONObject)localObject2).put("versioncode", localPackageInfo.versionCode);
+            ((JSONObject)localObject2).put("signature", MD5.a(localPackageInfo.signatures[(localPackageInfo.signatures.length - 1)].toCharsString()));
+          }
+          catch (JSONException localJSONException)
+          {
+            localJSONException.printStackTrace();
+          }
+          paramString1.put(localObject2);
+        }
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.queryInstalledAppInfo',{\"guid\": ");
+      ((StringBuilder)localObject1).append(paramString2);
+      ((StringBuilder)localObject1).append(", \"r\" : 0, \"data\":");
+      ((StringBuilder)localObject1).append(paramString1.toString());
+      ((StringBuilder)localObject1).append("});}void(0);");
+      paramString1 = ((StringBuilder)localObject1).toString();
+      paramString2 = new StringBuilder();
+      paramString2.append("[queryInstalledAppInfo]TIMECOST:");
+      paramString2.append(System.currentTimeMillis() - l);
+      paramString2.append("ms, JSURL:");
+      paramString2.append(paramString1);
+      LogUtility.c("DownloadInterfaceNew", paramString2.toString());
+      a(paramString1);
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("[queryInstalledAppInfo] e=");
+      paramString2.append(paramString1.getMessage());
+      LogUtility.e("DownloadInterfaceNew", paramString2.toString());
+    }
   }
   
   public void installYYB()
@@ -687,26 +718,44 @@ public class DownloadInterfaceNew
   
   public void isYYBSupportBatchDownload(String paramString)
   {
-    LogUtility.b("DownloadInterfaceNew", ">isYYBSupportBatchDownload " + paramString);
-    try
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(">isYYBSupportBatchDownload ");
+    localStringBuilder.append(paramString);
+    LogUtility.b("DownloadInterfaceNew", localStringBuilder.toString());
+    for (;;)
     {
-      paramString = new JSONObject(paramString).optString("callback");
-      int i = MyAppApi.b();
-      LogUtility.b("DownloadInterfaceNew", ">isYYBSupportBatchDownload yybApiLevel=" + i);
-      paramString = new StringBuilder().append("javascript:").append(paramString).append("(");
-      if (i >= 9) {}
-      for (boolean bool = true;; bool = false)
+      try
       {
-        paramString = bool + ")";
-        LogUtility.c("DownloadInterfaceNew", ">isYYBSupportBatchDownload:" + paramString);
-        a(paramString);
+        paramString = new JSONObject(paramString).optString("callback");
+        int i = MyAppApi.c();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(">isYYBSupportBatchDownload yybApiLevel=");
+        localStringBuilder.append(i);
+        LogUtility.b("DownloadInterfaceNew", localStringBuilder.toString());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("javascript:");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("(");
+        if (i >= 9)
+        {
+          bool = true;
+          localStringBuilder.append(bool);
+          localStringBuilder.append(")");
+          paramString = localStringBuilder.toString();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(">isYYBSupportBatchDownload:");
+          localStringBuilder.append(paramString);
+          LogUtility.c("DownloadInterfaceNew", localStringBuilder.toString());
+          a(paramString);
+          return;
+        }
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
         return;
       }
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
+      boolean bool = false;
     }
   }
   
@@ -721,15 +770,12 @@ public class DownloadInterfaceNew
       Bundle localBundle = new Bundle();
       localBundle.putString("url", paramString.optString("url"));
       DownloadProxy.a(this.jdField_a_of_type_AndroidAppActivity, localBundle);
-      return 0;
     }
     catch (JSONException paramString)
     {
-      for (;;)
-      {
-        LogUtility.c("DownloadInterfaceNew", "JSONException", paramString);
-      }
+      LogUtility.c("DownloadInterfaceNew", "JSONException", paramString);
     }
+    return 0;
   }
   
   public void queryInstalledAppInfo(String paramString)
@@ -744,14 +790,29 @@ public class DownloadInterfaceNew
   
   public void queryYYBApiLevel(String paramString)
   {
-    LogUtility.b("DownloadInterfaceNew", ">queryYYBApiLevel " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(">queryYYBApiLevel ");
+    localStringBuilder.append(paramString);
+    LogUtility.b("DownloadInterfaceNew", localStringBuilder.toString());
     try
     {
       paramString = new JSONObject(paramString).optString("callback");
-      int i = MyAppApi.b();
-      LogUtility.b("DownloadInterfaceNew", ">queryYYBApiLevel yybApiLevel=" + i);
-      paramString = "javascript:" + paramString + "(" + i + ")";
-      LogUtility.c("DownloadInterfaceNew", ">queryYYBApiLevel:" + paramString);
+      int i = MyAppApi.c();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(">queryYYBApiLevel yybApiLevel=");
+      localStringBuilder.append(i);
+      LogUtility.b("DownloadInterfaceNew", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("javascript:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("(");
+      localStringBuilder.append(i);
+      localStringBuilder.append(")");
+      paramString = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(">queryYYBApiLevel:");
+      localStringBuilder.append(paramString);
+      LogUtility.c("DownloadInterfaceNew", localStringBuilder.toString());
       a(paramString);
       return;
     }
@@ -763,7 +824,10 @@ public class DownloadInterfaceNew
   
   public void registerDownloadCallBackListener(String paramString)
   {
-    LogUtility.b("DownloadInterfaceNew", "[registerDownloadCallBackListener] callbackMethod=" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[registerDownloadCallBackListener] callbackMethod=");
+    localStringBuilder.append(paramString);
+    LogUtility.b("DownloadInterfaceNew", localStringBuilder.toString());
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
@@ -778,15 +842,12 @@ public class DownloadInterfaceNew
       Bundle localBundle = new Bundle();
       localBundle.putString("url", paramString.optString("url"));
       DownloadProxy.a(localBundle);
-      return 0;
     }
     catch (JSONException paramString)
     {
-      for (;;)
-      {
-        LogUtility.c("DownloadInterfaceNew", "JSONException", paramString);
-      }
+      LogUtility.c("DownloadInterfaceNew", "JSONException", paramString);
     }
+    return 0;
   }
   
   public int setDownloaderFirstOpenPageByTmast(String paramString)
@@ -800,20 +861,17 @@ public class DownloadInterfaceNew
       Bundle localBundle = new Bundle();
       localBundle.putString("url", paramString.optString("url"));
       DownloadProxy.b(localBundle);
-      return 0;
     }
     catch (JSONException paramString)
     {
-      for (;;)
-      {
-        LogUtility.c("DownloadInterfaceNew", "JSONException", paramString);
-      }
+      LogUtility.c("DownloadInterfaceNew", "JSONException", paramString);
     }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appstore.js.DownloadInterfaceNew
  * JD-Core Version:    0.7.0.1
  */

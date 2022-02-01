@@ -41,13 +41,10 @@ public final class EngineScriptLoader
   {
     ScriptRuntime localScriptRuntime = this.engineContext.getScriptSystem().getScriptEngine(paramScriptContextType);
     paramScriptContextType = this.engineContext.getEnginePackage().getGlobalConfig();
-    if (paramScriptContextType != null) {}
-    for (;;)
-    {
-      localScriptRuntime.evaluateJs(paramScriptContextType);
-      return;
+    if (paramScriptContextType == null) {
       paramScriptContextType = DEFAULT_GLOBAL_CONFIG;
     }
+    localScriptRuntime.evaluateJs(paramScriptContextType);
   }
   
   @Nullable
@@ -74,7 +71,6 @@ public final class EngineScriptLoader
   
   public final void initJsRuntime()
   {
-    ErrorCodes localErrorCodes;
     try
     {
       long l = SystemClock.uptimeMillis();
@@ -91,28 +87,27 @@ public final class EngineScriptLoader
     }
     catch (Throwable localThrowable)
     {
-      localErrorCodes = ErrorCodes.SCRIPT_LOAD_FAIL;
-      if (!(localThrowable instanceof TritonException)) {
-        break label158;
+      Object localObject;
+      ErrorCodes localErrorCodes = ErrorCodes.SCRIPT_LOAD_FAIL;
+      if ((localThrowable instanceof TritonException))
+      {
+        localObject = (TritonException)localThrowable;
       }
-    }
-    Object localObject = (TritonException)localThrowable;
-    this.engineScriptInitException = ((TritonException)localObject);
-    return;
-    label158:
-    localObject = localThrowable.getMessage();
-    if (localObject != null) {}
-    for (;;)
-    {
-      localObject = new TritonException((String)localObject, localErrorCodes, localThrowable);
-      break;
-      localObject = "";
+      else
+      {
+        localObject = localThrowable.getMessage();
+        if (localObject == null) {
+          localObject = "";
+        }
+        localObject = new TritonException((String)localObject, localErrorCodes, localThrowable);
+      }
+      this.engineScriptInitException = ((TritonException)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.engine.EngineScriptLoader
  * JD-Core Version:    0.7.0.1
  */

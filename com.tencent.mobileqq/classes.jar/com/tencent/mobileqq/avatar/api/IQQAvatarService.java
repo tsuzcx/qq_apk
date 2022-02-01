@@ -5,7 +5,7 @@ import com.tencent.mobileqq.app.face.IFaceDecoder;
 import com.tencent.mobileqq.qroute.annotation.Service;
 import mqq.app.api.IRuntimeService;
 
-@Service(process={"all"})
+@Service(needUin=false, process={"all"})
 public abstract interface IQQAvatarService
   extends IRuntimeService
 {
@@ -13,7 +13,7 @@ public abstract interface IQQAvatarService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.api.IQQAvatarService
  * JD-Core Version:    0.7.0.1
  */

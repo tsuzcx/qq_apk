@@ -22,96 +22,115 @@ class TroopEntranceBar$3
 {
   TroopEntranceBar$3(TroopEntranceBar paramTroopEntranceBar, long paramLong) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.troop_pubaccount", 2, "TroopEntranceBar fetchBindTroopInfo onResult, errorCode=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("TroopEntranceBar fetchBindTroopInfo onResult, errorCode=");
+      paramBundle.append(paramInt);
+      QLog.d(".troop.troop_pubaccount", 2, paramBundle.toString());
     }
     if ((paramInt == 0) && (paramArrayOfByte != null)) {}
     for (;;)
     {
       try
       {
-        Object localObject = new oidb_0x487.RspBody();
-        ((oidb_0x487.RspBody)localObject).mergeFrom(paramArrayOfByte);
-        paramInt = ((oidb_0x487.RspBody)localObject).uint32_result.get();
-        if (QLog.isColorLevel())
+        Object localObject1 = new oidb_0x487.RspBody();
+        ((oidb_0x487.RspBody)localObject1).mergeFrom(paramArrayOfByte);
+        paramInt = ((oidb_0x487.RspBody)localObject1).uint32_result.get();
+        boolean bool = QLog.isColorLevel();
+        if (bool)
         {
-          if (!((oidb_0x487.RspBody)localObject).bytes_errmsg.has()) {
-            break label563;
+          if (!((oidb_0x487.RspBody)localObject1).bytes_errmsg.has()) {
+            break label624;
           }
-          paramArrayOfByte = ((oidb_0x487.RspBody)localObject).bytes_errmsg.get().toStringUtf8();
-          QLog.d(".troop.troop_pubaccount", 2, "fetchBindTroopInfo onResult, ret=" + paramInt + "," + paramArrayOfByte);
+          paramArrayOfByte = ((oidb_0x487.RspBody)localObject1).bytes_errmsg.get().toStringUtf8();
+          paramBundle = new StringBuilder();
+          paramBundle.append("fetchBindTroopInfo onResult, ret=");
+          paramBundle.append(paramInt);
+          paramBundle.append(",");
+          paramBundle.append(paramArrayOfByte);
+          QLog.d(".troop.troop_pubaccount", 2, paramBundle.toString());
         }
-        if ((paramInt == 0) && (((oidb_0x487.RspBody)localObject).uint32_groups_flag.has()))
+        if ((paramInt == 0) && (((oidb_0x487.RspBody)localObject1).uint32_groups_flag.has()))
         {
-          this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar.jdField_a_of_type_Int = ((oidb_0x487.RspBody)localObject).uint32_groups_flag.get();
+          this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar.jdField_a_of_type_Int = ((oidb_0x487.RspBody)localObject1).uint32_groups_flag.get();
           TroopEntranceBar.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar);
           this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar.notifyObservers(Integer.valueOf(0));
           return;
         }
-        if ((paramInt == 0) && (((oidb_0x487.RspBody)localObject).uint32_follow_state.has()))
+        if ((paramInt != 0) || (!((oidb_0x487.RspBody)localObject1).uint32_follow_state.has())) {
+          break label609;
+        }
+        paramBundle = (TroopBindPublicAccountMgr)this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER);
+        paramInt = ((oidb_0x487.RspBody)localObject1).uint32_follow_state.get();
+        int i = ((oidb_0x487.RspBody)localObject1).uint32_remind_flag.get();
+        if (i == 1)
         {
-          paramBundle = (TroopBindPublicAccountMgr)this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER);
-          paramInt = ((oidb_0x487.RspBody)localObject).uint32_follow_state.get();
-          int i = ((oidb_0x487.RspBody)localObject).uint32_remind_flag.get();
-          if (i == 1)
-          {
-            localObject = (QQAppInterface)this.b.get();
-            if (localObject == null) {
-              break label562;
-            }
-            String str = ((QQAppInterface)localObject).getCurrentUin();
-            paramArrayOfByte = (TicketManager)((QQAppInterface)localObject).getManager(2);
-            if (paramArrayOfByte == null) {
-              break label557;
-            }
-            paramArrayOfByte = paramArrayOfByte.getSkey(str);
-            HashMap localHashMap = new HashMap();
-            Bundle localBundle = new Bundle();
-            localBundle.putString("op", "0");
-            localBundle.putString("puin", "" + this.jdField_a_of_type_Long);
-            localBundle.putString("Cookie", "uin=" + str + ";skey=" + paramArrayOfByte);
-            localBundle.putString("Referer", "https://buluo.qq.com");
-            localHashMap.put("BUNDLE", localBundle);
-            localHashMap.put("CONTEXT", ((QQAppInterface)localObject).getApp().getApplicationContext());
-            new HttpWebCgiAsyncTask2("https://buluo.qq.com/cgi-bin/bar/extra/clean_temp_follow_state", "", new TroopEntranceBar.3.1(this, paramBundle, i), 1000, null).a(localHashMap);
-          }
-          paramBundle.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramInt, i);
-          if (paramInt == 1)
-          {
-            TroopEntranceBar.b(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar);
-            this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar.notifyObservers(Integer.valueOf(1));
+          localObject1 = (QQAppInterface)this.mApp.get();
+          if (localObject1 == null) {
             return;
           }
+          String str = ((QQAppInterface)localObject1).getCurrentUin();
+          Object localObject2 = (TicketManager)((QQAppInterface)localObject1).getManager(2);
+          paramArrayOfByte = null;
+          if (localObject2 != null) {
+            paramArrayOfByte = ((TicketManager)localObject2).getSkey(str);
+          }
+          localObject2 = new HashMap();
+          Bundle localBundle = new Bundle();
+          localBundle.putString("op", "0");
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("");
+          localStringBuilder.append(this.jdField_a_of_type_Long);
+          localBundle.putString("puin", localStringBuilder.toString());
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("uin=");
+          localStringBuilder.append(str);
+          localStringBuilder.append(";skey=");
+          localStringBuilder.append(paramArrayOfByte);
+          localBundle.putString("Cookie", localStringBuilder.toString());
+          localBundle.putString("Referer", "https://buluo.qq.com");
+          ((HashMap)localObject2).put("BUNDLE", localBundle);
+          ((HashMap)localObject2).put("CONTEXT", ((QQAppInterface)localObject1).getApp().getApplicationContext());
+          new HttpWebCgiAsyncTask2("https://buluo.qq.com/cgi-bin/bar/extra/clean_temp_follow_state", "", new TroopEntranceBar.3.1(this, paramBundle, i), 1000, null).a((HashMap)localObject2);
         }
+        paramBundle.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramInt, i);
+        if (paramInt != 1) {
+          break label609;
+        }
+        TroopEntranceBar.b(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar);
+        this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar.notifyObservers(Integer.valueOf(1));
+        return;
       }
       catch (Exception paramArrayOfByte)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d(".troop.troop_pubaccount", 2, "fetchBindTroopInfo, exception=" + paramArrayOfByte.toString());
+        if (!QLog.isColorLevel()) {
+          break label609;
         }
       }
-      for (;;)
-      {
-        TroopEntranceBar.c(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar);
-        this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar.notifyObservers();
-        return;
-        QLog.d(".troop.troop_pubaccount", 2, "fetchBindTroopInfo error. errorCode=" + paramInt);
-      }
-      label557:
-      paramArrayOfByte = null;
-      continue;
-      label562:
+      paramBundle = new StringBuilder();
+      paramBundle.append("fetchBindTroopInfo, exception=");
+      paramBundle.append(paramArrayOfByte.toString());
+      QLog.d(".troop.troop_pubaccount", 2, paramBundle.toString());
+      break label609;
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("fetchBindTroopInfo error. errorCode=");
+      paramArrayOfByte.append(paramInt);
+      QLog.d(".troop.troop_pubaccount", 2, paramArrayOfByte.toString());
+      label609:
+      TroopEntranceBar.c(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar);
+      this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar.notifyObservers();
       return;
-      label563:
+      label624:
       paramArrayOfByte = "";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopEntranceBar.3
  * JD-Core Version:    0.7.0.1
  */

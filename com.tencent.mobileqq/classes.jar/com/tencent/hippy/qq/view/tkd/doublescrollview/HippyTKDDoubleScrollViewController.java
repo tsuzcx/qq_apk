@@ -14,7 +14,7 @@ public class HippyTKDDoubleScrollViewController
 {
   public static final String CLASS_NAME = "TKDDoubleScrollView";
   
-  public View createViewImpl(Context paramContext)
+  protected View createViewImpl(Context paramContext)
   {
     return new HippyTKDDoubleScrollView(paramContext);
   }
@@ -40,7 +40,7 @@ public class HippyTKDDoubleScrollViewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.doublescrollview.HippyTKDDoubleScrollViewController
  * JD-Core Version:    0.7.0.1
  */

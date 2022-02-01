@@ -17,12 +17,12 @@ class RecommendBannerFeedItemView$2
       SimpleEventBus.getInstance().dispatchEvent(new RecommendFeedbackEvent(RecommendBannerFeedItemView.a(this.a)));
       return;
     }
-    QQToast.a(this.a.getContext(), 2131719660, 0).a();
+    QQToast.a(this.a.getContext(), 2131719379, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView.2
  * JD-Core Version:    0.7.0.1
  */

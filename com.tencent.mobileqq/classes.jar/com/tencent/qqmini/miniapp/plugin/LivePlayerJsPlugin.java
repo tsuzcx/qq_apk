@@ -34,16 +34,19 @@ public class LivePlayerJsPlugin
     QMLog.d("LivePlayerJsPlugin", "JsEvent insertLivePlayer");
     try
     {
-      JSONObject localJSONObject1 = new JSONObject(paramRequestEvent.jsonParams);
-      int i = localJSONObject1.optInt("livePlayerId");
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("containerId", i);
-      AppBrandTask.runTaskOnUiThread(new LivePlayerJsPlugin.1(this, i, localJSONObject1, paramRequestEvent, localJSONObject2));
+      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
+      int i = localJSONObject.optInt("livePlayerId");
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("containerId", i);
+      AppBrandTask.runTaskOnUiThread(new LivePlayerJsPlugin.1(this, i, localJSONObject, paramRequestEvent, (JSONObject)localObject));
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("LivePlayerJsPlugin", paramRequestEvent.event + " error.", localJSONException);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramRequestEvent.event);
+      ((StringBuilder)localObject).append(" error.");
+      QMLog.e("LivePlayerJsPlugin", ((StringBuilder)localObject).toString(), localJSONException);
     }
   }
   
@@ -82,7 +85,10 @@ public class LivePlayerJsPlugin
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("LivePlayerJsPlugin", paramRequestEvent.event + " error.", localJSONException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramRequestEvent.event);
+      localStringBuilder.append(" error.");
+      QMLog.e("LivePlayerJsPlugin", localStringBuilder.toString(), localJSONException);
     }
   }
   
@@ -97,13 +103,16 @@ public class LivePlayerJsPlugin
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("LivePlayerJsPlugin", paramRequestEvent.event + " error.", localJSONException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramRequestEvent.event);
+      localStringBuilder.append(" error.");
+      QMLog.e("LivePlayerJsPlugin", localStringBuilder.toString(), localJSONException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.LivePlayerJsPlugin
  * JD-Core Version:    0.7.0.1
  */

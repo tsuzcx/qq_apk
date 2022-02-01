@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.biz.troop.file.protocol.TroopFileReqDownloadFileObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.api.IFileIPv6StrateyController;
 import com.tencent.mobileqq.filemanager.core.FileIPv6StrateyController;
 import com.tencent.mobileqq.filemanager.core.FileIPv6StrateyController.DomainInfo;
 import com.tencent.mobileqq.filemanager.core.FileIPv6StrateyController.IPInfo;
@@ -62,67 +63,81 @@ class VideoForTroop$1
     localItem.DownloadUrl = HexUtil.bytes2HexStr(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
     localItem.Md5 = paramDownloadFileRspBody.bytes_md5.get().toByteArray();
     localItem.NameForSave = paramDownloadFileRspBody.str_save_file_name.get();
-    if ((paramInt == -133) || (paramInt == -132) || (paramInt == -134))
+    if ((paramInt != -133) && (paramInt != -132) && (paramInt != -134))
     {
-      QLog.w("VideoForTroop<QFile>", 1, "file invalidate retCode = " + paramInt);
-      paramDownloadFileRspBody = String.format(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataVideoForTroop.a.getApp().getBaseContext().getString(2131697310), new Object[] { localItem.FileName });
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoDownloadManager$FileVideoManagerCallback.a(paramInt, paramDownloadFileRspBody);
-      return;
-    }
-    if ((paramInt == -103) || (paramInt == -301))
-    {
-      QLog.w("VideoForTroop<QFile>", 1, "file invalidate retCode = " + paramInt);
-      paramDownloadFileRspBody = String.format(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataVideoForTroop.a.getApp().getBaseContext().getString(2131697311), new Object[] { localItem.FileName });
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoDownloadManager$FileVideoManagerCallback.a(paramInt, paramDownloadFileRspBody);
-      return;
-    }
-    paramBundle = localItem.DownloadIp;
-    String str = paramDownloadFileRspBody.str_download_dns.get().toStringUtf8();
-    paramDownloadFileRspBody = paramBundle;
-    if (!TextUtils.isEmpty(str))
-    {
-      paramDownloadFileRspBody = paramBundle;
-      if (FileIPv6StrateyController.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataVideoForTroop.a, 3))
+      if ((paramInt != -103) && (paramInt != -301))
       {
-        QLog.i("VideoForTroop<QFile>", 1, "[IPv6-File] troopVideo download. is config enable IPv6. domain[" + str + "]");
-        paramDownloadFileRspBody = new FileIPv6StrateyController.DomainInfo(str, 0);
-        paramDownloadFileRspBody = FileIPv6StrateyController.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataVideoForTroop.a, paramDownloadFileRspBody, 3);
-        if ((paramDownloadFileRspBody == null) || (paramDownloadFileRspBody.a())) {
-          break label645;
-        }
-        paramDownloadFileRspBody = (FileIPv6StrateyController.IPInfo)paramDownloadFileRspBody.a.get(0);
-        if ((paramDownloadFileRspBody == null) || (TextUtils.isEmpty(paramDownloadFileRspBody.a))) {
-          break label674;
-        }
-        paramDownloadFileRspBody = paramDownloadFileRspBody.a;
-        QLog.i("VideoForTroop<QFile>", 1, "[IPv6-File] troopVideo download. use IPv6. hostlist:" + paramDownloadFileRspBody);
-      }
-    }
-    for (;;)
-    {
-      paramDownloadFileRspBody = TroopFileVideoOnlinePlayManager.a(paramDownloadFileRspBody, localItem.DownloadUrl, localItem.FilePath, localItem.cookieValue, "");
-      QLog.i("VideoForTroop<QFile>", 1, "troopVideo download. downloadUrl:" + paramDownloadFileRspBody);
-      if (!TextUtils.isEmpty(paramDownloadFileRspBody))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoDownloadManager$FileVideoManagerCallback.a(paramDownloadFileRspBody, localItem.cookieValue);
-        return;
-        label645:
-        QLog.i("VideoForTroop<QFile>", 1, "[IPv6-File] troopVideo download. use IPv4");
+        paramBundle = localItem.DownloadIp;
+        Object localObject = paramDownloadFileRspBody.str_download_dns.get().toStringUtf8();
         paramDownloadFileRspBody = paramBundle;
-      }
-      else
-      {
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          paramDownloadFileRspBody = paramBundle;
+          if (FileIPv6StrateyController.a().isConfigEnableIPV6(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataVideoForTroop.a, 3))
+          {
+            paramDownloadFileRspBody = new StringBuilder();
+            paramDownloadFileRspBody.append("[IPv6-File] troopVideo download. is config enable IPv6. domain[");
+            paramDownloadFileRspBody.append((String)localObject);
+            paramDownloadFileRspBody.append("]");
+            QLog.i("VideoForTroop<QFile>", 1, paramDownloadFileRspBody.toString());
+            paramDownloadFileRspBody = new FileIPv6StrateyController.DomainInfo((String)localObject, 0);
+            paramDownloadFileRspBody = FileIPv6StrateyController.a().getIPlistForV6Domain(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataVideoForTroop.a, paramDownloadFileRspBody, 3);
+            if ((paramDownloadFileRspBody != null) && (!paramDownloadFileRspBody.a()))
+            {
+              localObject = (FileIPv6StrateyController.IPInfo)paramDownloadFileRspBody.a.get(0);
+              paramDownloadFileRspBody = paramBundle;
+              if (localObject != null)
+              {
+                paramDownloadFileRspBody = paramBundle;
+                if (!TextUtils.isEmpty(((FileIPv6StrateyController.IPInfo)localObject).a))
+                {
+                  paramDownloadFileRspBody = ((FileIPv6StrateyController.IPInfo)localObject).a;
+                  paramBundle = new StringBuilder();
+                  paramBundle.append("[IPv6-File] troopVideo download. use IPv6. hostlist:");
+                  paramBundle.append(paramDownloadFileRspBody);
+                  QLog.i("VideoForTroop<QFile>", 1, paramBundle.toString());
+                }
+              }
+            }
+            else
+            {
+              QLog.i("VideoForTroop<QFile>", 1, "[IPv6-File] troopVideo download. use IPv4");
+              paramDownloadFileRspBody = paramBundle;
+            }
+          }
+        }
+        paramDownloadFileRspBody = TroopFileVideoOnlinePlayManager.a(paramDownloadFileRspBody, localItem.DownloadUrl, localItem.FilePath, localItem.cookieValue, "");
+        paramBundle = new StringBuilder();
+        paramBundle.append("troopVideo download. downloadUrl:");
+        paramBundle.append(paramDownloadFileRspBody);
+        QLog.i("VideoForTroop<QFile>", 1, paramBundle.toString());
+        if (!TextUtils.isEmpty(paramDownloadFileRspBody))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoDownloadManager$FileVideoManagerCallback.a(paramDownloadFileRspBody, localItem.cookieValue);
+          return;
+        }
         this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoDownloadManager$FileVideoManagerCallback.a(-3, "");
         return;
-        label674:
-        paramDownloadFileRspBody = paramBundle;
       }
+      paramDownloadFileRspBody = new StringBuilder();
+      paramDownloadFileRspBody.append("file invalidate retCode = ");
+      paramDownloadFileRspBody.append(paramInt);
+      QLog.w("VideoForTroop<QFile>", 1, paramDownloadFileRspBody.toString());
+      paramDownloadFileRspBody = String.format(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataVideoForTroop.a.getApp().getBaseContext().getString(2131697330), new Object[] { localItem.FileName });
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoDownloadManager$FileVideoManagerCallback.a(paramInt, paramDownloadFileRspBody);
+      return;
     }
+    paramDownloadFileRspBody = new StringBuilder();
+    paramDownloadFileRspBody.append("file invalidate retCode = ");
+    paramDownloadFileRspBody.append(paramInt);
+    QLog.w("VideoForTroop<QFile>", 1, paramDownloadFileRspBody.toString());
+    paramDownloadFileRspBody = String.format(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataVideoForTroop.a.getApp().getBaseContext().getString(2131697329), new Object[] { localItem.FileName });
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoDownloadManager$FileVideoManagerCallback.a(paramInt, paramDownloadFileRspBody);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.data.VideoForTroop.1
  * JD-Core Version:    0.7.0.1
  */

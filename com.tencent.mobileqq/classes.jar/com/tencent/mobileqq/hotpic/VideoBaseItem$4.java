@@ -10,21 +10,23 @@ class VideoBaseItem$4
   
   public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    VideoBaseItem.a(this.a, true);
-    if (this.a.c == 3) {}
-    do
-    {
+    paramTVK_IMediaPlayer = this.a;
+    paramTVK_IMediaPlayer.jdField_a_of_type_Boolean = false;
+    VideoBaseItem.a(paramTVK_IMediaPlayer, true);
+    if (this.a.c == 3) {
       return;
-      this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
-      this.a.c = 2;
-    } while (VideoBaseItem.a(this.a) == null);
-    VideoBaseItem.a(this.a).j();
+    }
+    this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
+    paramTVK_IMediaPlayer = this.a;
+    paramTVK_IMediaPlayer.c = 2;
+    if (VideoBaseItem.a(paramTVK_IMediaPlayer) != null) {
+      VideoBaseItem.a(this.a).j();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.VideoBaseItem.4
  * JD-Core Version:    0.7.0.1
  */

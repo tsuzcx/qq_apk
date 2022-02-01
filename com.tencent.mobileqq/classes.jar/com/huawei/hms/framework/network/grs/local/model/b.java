@@ -9,14 +9,14 @@ public class b
   private Set<String> c;
   private String d;
   
-  public String a()
+  public Set<String> a()
   {
-    return this.a;
+    return this.c;
   }
   
   public void a(String paramString)
   {
-    this.a = paramString;
+    this.d = paramString;
   }
   
   public void a(Set<String> paramSet)
@@ -24,24 +24,24 @@ public class b
     this.c = paramSet;
   }
   
-  public Set<String> b()
+  public String b()
   {
-    return this.c;
+    return this.a;
   }
   
   public void b(String paramString)
   {
-    this.b = paramString;
+    this.a = paramString;
   }
   
   public void c(String paramString)
   {
-    this.d = paramString;
+    this.b = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.framework.network.grs.local.model.b
  * JD-Core Version:    0.7.0.1
  */

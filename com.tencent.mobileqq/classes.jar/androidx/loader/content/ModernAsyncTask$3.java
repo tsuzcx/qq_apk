@@ -22,29 +22,31 @@ class ModernAsyncTask$3
       this.this$0.postResultIfNotInvoked(localObject);
       return;
     }
-    catch (InterruptedException localInterruptedException)
+    catch (Throwable localThrowable)
     {
-      Log.w("AsyncTask", localInterruptedException);
+      throw new RuntimeException("An error occurred while executing doInBackground()", localThrowable);
+      this.this$0.postResultIfNotInvoked(null);
       return;
     }
     catch (ExecutionException localExecutionException)
     {
       throw new RuntimeException("An error occurred while executing doInBackground()", localExecutionException.getCause());
     }
-    catch (CancellationException localCancellationException)
+    catch (InterruptedException localInterruptedException)
     {
-      this.this$0.postResultIfNotInvoked(null);
+      Log.w("AsyncTask", localInterruptedException);
       return;
     }
-    catch (Throwable localThrowable)
+    catch (CancellationException localCancellationException)
     {
-      throw new RuntimeException("An error occurred while executing doInBackground()", localThrowable);
+      label26:
+      break label26;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.loader.content.ModernAsyncTask.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity;
 
+import android.app.Activity;
 import com.tencent.biz.troop.file.TroopFileProtocol.OnGetZipFileList;
 import com.tencent.biz.troop.file.ZipFilesListAdapter;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
@@ -17,9 +18,14 @@ class TroopFileZipPreviewActivity$2
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.stopTitleProgress();
     if (paramList != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_JavaUtilList = paramList;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_ComTencentBizTroopFileZipFilesListAdapter = new ZipFilesListAdapter(paramList, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_ComTencentBizTroopFileZipFilesListAdapter.e = (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.e + "/");
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity;
+      ((TroopFileZipPreviewActivity)localObject).jdField_a_of_type_JavaUtilList = paramList;
+      ((TroopFileZipPreviewActivity)localObject).jdField_a_of_type_ComTencentBizTroopFileZipFilesListAdapter = new ZipFilesListAdapter(paramList, (Activity)localObject);
+      paramList = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_ComTencentBizTroopFileZipFilesListAdapter;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.e);
+      ((StringBuilder)localObject).append("/");
+      paramList.e = ((StringBuilder)localObject).toString();
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_ComTencentBizTroopFileZipFilesListAdapter.jdField_b_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_b_of_type_Long;
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_ComTencentBizTroopFileZipFilesListAdapter.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin;
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_ComTencentBizTroopFileZipFilesListAdapter.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_b_of_type_JavaLangString;
@@ -33,7 +39,7 @@ class TroopFileZipPreviewActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity.2
  * JD-Core Version:    0.7.0.1
  */

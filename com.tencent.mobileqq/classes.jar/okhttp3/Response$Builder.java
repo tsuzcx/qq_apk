@@ -47,25 +47,42 @@ public class Response$Builder
   
   private void checkPriorResponse(Response paramResponse)
   {
-    if (paramResponse.body != null) {
-      throw new IllegalArgumentException("priorResponse.body != null");
+    if (paramResponse.body == null) {
+      return;
     }
+    throw new IllegalArgumentException("priorResponse.body != null");
   }
   
   private void checkSupportResponse(String paramString, Response paramResponse)
   {
-    if (paramResponse.body != null) {
-      throw new IllegalArgumentException(paramString + ".body != null");
+    if (paramResponse.body == null)
+    {
+      if (paramResponse.networkResponse == null)
+      {
+        if (paramResponse.cacheResponse == null)
+        {
+          if (paramResponse.priorResponse == null) {
+            return;
+          }
+          paramResponse = new StringBuilder();
+          paramResponse.append(paramString);
+          paramResponse.append(".priorResponse != null");
+          throw new IllegalArgumentException(paramResponse.toString());
+        }
+        paramResponse = new StringBuilder();
+        paramResponse.append(paramString);
+        paramResponse.append(".cacheResponse != null");
+        throw new IllegalArgumentException(paramResponse.toString());
+      }
+      paramResponse = new StringBuilder();
+      paramResponse.append(paramString);
+      paramResponse.append(".networkResponse != null");
+      throw new IllegalArgumentException(paramResponse.toString());
     }
-    if (paramResponse.networkResponse != null) {
-      throw new IllegalArgumentException(paramString + ".networkResponse != null");
-    }
-    if (paramResponse.cacheResponse != null) {
-      throw new IllegalArgumentException(paramString + ".cacheResponse != null");
-    }
-    if (paramResponse.priorResponse != null) {
-      throw new IllegalArgumentException(paramString + ".priorResponse != null");
-    }
+    paramResponse = new StringBuilder();
+    paramResponse.append(paramString);
+    paramResponse.append(".body != null");
+    throw new IllegalArgumentException(paramResponse.toString());
   }
   
   public Builder addHeader(String paramString1, String paramString2)
@@ -82,19 +99,25 @@ public class Response$Builder
   
   public Response build()
   {
-    if (this.request == null) {
-      throw new IllegalStateException("request == null");
-    }
-    if (this.protocol == null) {
+    if (this.request != null)
+    {
+      if (this.protocol != null)
+      {
+        if (this.code >= 0)
+        {
+          if (this.message != null) {
+            return new Response(this);
+          }
+          throw new IllegalStateException("message == null");
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("code < 0: ");
+        localStringBuilder.append(this.code);
+        throw new IllegalStateException(localStringBuilder.toString());
+      }
       throw new IllegalStateException("protocol == null");
     }
-    if (this.code < 0) {
-      throw new IllegalStateException("code < 0: " + this.code);
-    }
-    if (this.message == null) {
-      throw new IllegalStateException("message == null");
-    }
-    return new Response(this);
+    throw new IllegalStateException("request == null");
   }
   
   public Builder cacheResponse(@Nullable Response paramResponse)
@@ -186,7 +209,7 @@ public class Response$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.Response.Builder
  * JD-Core Version:    0.7.0.1
  */

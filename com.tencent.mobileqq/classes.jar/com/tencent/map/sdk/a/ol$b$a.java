@@ -31,20 +31,23 @@ public final class ol$b$a<T>
   
   private static void a(Handler paramHandler, Message paramMessage, long paramLong)
   {
-    if ((paramHandler == null) || (paramMessage == null)) {
-      return;
-    }
-    try
+    if (paramHandler != null)
     {
-      Field localField = paramMessage.getClass().getDeclaredField("flags");
-      localField.setAccessible(true);
-      localField.set(paramMessage, Integer.valueOf(0));
-      paramHandler.sendMessageDelayed(paramMessage, paramLong);
-      return;
-    }
-    catch (Throwable paramHandler)
-    {
-      or.b(paramHandler.getMessage(), paramHandler);
+      if (paramMessage == null) {
+        return;
+      }
+      try
+      {
+        Field localField = paramMessage.getClass().getDeclaredField("flags");
+        localField.setAccessible(true);
+        localField.set(paramMessage, Integer.valueOf(0));
+        paramHandler.sendMessageDelayed(paramMessage, paramLong);
+        return;
+      }
+      catch (Throwable paramHandler)
+      {
+        or.b(paramHandler.getMessage(), paramHandler);
+      }
     }
   }
   
@@ -60,21 +63,26 @@ public final class ol$b$a<T>
     Message localMessage = Message.obtain();
     localMessage.obj = this;
     os.a locala = os.a("DispatchUtil");
-    new StringBuilder("delay:").append(this.k).toString();
+    StringBuilder localStringBuilder = new StringBuilder("delay:");
+    localStringBuilder.append(this.k);
+    localStringBuilder.toString();
     locala.a();
     a(this.g, localMessage, this.k);
   }
   
   final void a(Message paramMessage, Handler paramHandler, long paramLong)
   {
-    os.a locala = os.a("DispatchUtil");
-    new StringBuilder("count:").append(ol.b.a(this.l).size()).toString();
+    Object localObject = os.a("DispatchUtil");
+    StringBuilder localStringBuilder = new StringBuilder("count:");
+    localStringBuilder.append(ol.b.a(this.l).size());
+    localStringBuilder.toString();
     "msg:".concat(String.valueOf(paramMessage));
-    locala.a();
-    if ((this.m != null) && (paramHandler != null) && (paramMessage != null))
+    ((os.a)localObject).a();
+    localObject = this.m;
+    if ((localObject != null) && (paramHandler != null) && (paramMessage != null))
     {
       this.g = paramHandler;
-      this.g.removeCallbacks(this.m);
+      this.g.removeCallbacks((Runnable)localObject);
       this.i = Message.obtain(this.g, this.m);
       this.i.copyFrom(paramMessage);
       a(this.g, this.i, paramLong);
@@ -90,16 +98,22 @@ public final class ol$b$a<T>
   final void a(T paramT)
   {
     os.a locala = os.a("DispatchUtil");
-    new StringBuilder("count:").append(ol.b.a(this.l).size()).toString();
+    StringBuilder localStringBuilder = new StringBuilder("count:");
+    localStringBuilder.append(ol.b.a(this.l).size());
+    localStringBuilder.toString();
     "result:".concat(String.valueOf(paramT));
-    new StringBuilder("userCallback:").append(this.d).toString();
+    localStringBuilder = new StringBuilder("userCallback:");
+    localStringBuilder.append(this.d);
+    localStringBuilder.toString();
     locala.a();
     this.f = paramT;
-    if (this.g != null) {
-      this.g.removeCallbacks(this.m);
+    paramT = this.g;
+    if (paramT != null) {
+      paramT.removeCallbacks(this.m);
     }
-    if (this.d != null) {
-      this.d.a(this.f);
+    paramT = this.d;
+    if (paramT != null) {
+      paramT.a(this.f);
     }
     ol.b.a(this.l).remove(this);
   }
@@ -112,7 +126,7 @@ public final class ol$b$a<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.ol.b.a
  * JD-Core Version:    0.7.0.1
  */

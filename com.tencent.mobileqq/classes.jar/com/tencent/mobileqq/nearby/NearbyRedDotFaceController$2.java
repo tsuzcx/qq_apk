@@ -11,8 +11,12 @@ class NearbyRedDotFaceController$2
   {
     synchronized (this.this$0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("NearbyRedDotFaceController", 2, "run, mCurIndex=" + this.this$0.jdField_a_of_type_Int);
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("run, mCurIndex=");
+        ((StringBuilder)localObject1).append(this.this$0.jdField_a_of_type_Int);
+        QLog.d("NearbyRedDotFaceController", 2, ((StringBuilder)localObject1).toString());
       }
       if (this.this$0.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
         return;
@@ -21,8 +25,8 @@ class NearbyRedDotFaceController$2
         this.this$0.jdField_a_of_type_Int = 0;
       }
       this.this$0.a((String)this.this$0.jdField_a_of_type_JavaUtilArrayList.get(this.this$0.jdField_a_of_type_Int));
-      NearbyRedDotFaceController localNearbyRedDotFaceController2 = this.this$0;
-      localNearbyRedDotFaceController2.jdField_a_of_type_Int += 1;
+      Object localObject1 = this.this$0;
+      ((NearbyRedDotFaceController)localObject1).jdField_a_of_type_Int += 1;
       if (this.this$0.jdField_a_of_type_JavaUtilArrayList.size() > 1) {
         this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 3000L);
       }
@@ -32,7 +36,7 @@ class NearbyRedDotFaceController$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyRedDotFaceController.2
  * JD-Core Version:    0.7.0.1
  */

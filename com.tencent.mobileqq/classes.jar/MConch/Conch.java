@@ -38,23 +38,27 @@ public final class Conch
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.cmdId, 0);
-    if (this.params != null) {
-      paramJceOutputStream.write(this.params, 1);
+    Object localObject = this.params;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 1);
     }
-    if (this.conchSeqno != 0) {
-      paramJceOutputStream.write(this.conchSeqno, 2);
+    int i = this.conchSeqno;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 2);
     }
-    if (this.time != null) {
-      paramJceOutputStream.write(this.time, 3);
+    localObject = this.time;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.tips != null) {
-      paramJceOutputStream.write(this.tips, 4);
+    localObject = this.tips;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MConch.Conch
  * JD-Core Version:    0.7.0.1
  */

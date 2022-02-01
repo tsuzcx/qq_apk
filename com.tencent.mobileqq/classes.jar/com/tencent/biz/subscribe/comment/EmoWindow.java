@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 
 public class EmoWindow
 {
-  public static String a;
+  public static String a = ".gif";
   public static HashMap<Integer, Bitmap> a;
   public static final Pattern a;
   public static final short[] a;
@@ -22,7 +22,6 @@ public class EmoWindow
   
   static
   {
-    jdField_a_of_type_JavaLangString = ".gif";
     jdField_a_of_type_JavaUtilHashMap = new HashMap();
     jdField_a_of_type_ArrayOfShort = new short[] { 13, 12, 56, 73, 88, 87, 97, 59, 33, 5, 9, 82, 51, 53, 106, 72, 92, 112, 74, 2, 6, 4, 54, 14, 11, 10, 55, 96, 36, 116, 75, 76, 50, 0, 81, 8, 109, 57, 27, 85, 1, 108, 79, 3, 103, 62, 101, 21, 105, 83, 58, 111, 46, 47, 71, 95, 118, 34, 64, 38, 32, 113, 117, 119, 124, 122, 63, 89, 45, 16, 93, 25, 121, 120, 37, 42, 39, 29, 86, 129, 91, 77, 78, 80, 84, 98, 99, 100, 102, 104, 107, 110, 114, 115, 123, 23, 26, 125, 196, 127, 128, 130, 131, 132, 133, 134, 7 };
     b = null;
@@ -31,7 +30,9 @@ public class EmoWindow
   
   public static Drawable a(int paramInt, float paramFloat, Context paramContext, Drawable.Callback paramCallback)
   {
-    int i = (int)(22.0D * paramFloat + 0.5D);
+    double d = paramFloat;
+    Double.isNaN(d);
+    int i = (int)(d * 22.0D + 0.5D);
     try
     {
       paramInt = Patterns.jdField_b_of_type_ArrayOfInt[paramInt];
@@ -70,7 +71,9 @@ public class EmoWindow
   
   public static Drawable b(int paramInt, float paramFloat, Context paramContext, Drawable.Callback paramCallback)
   {
-    int i = (int)(22.0D * paramFloat + 0.5D);
+    double d = paramFloat;
+    Double.isNaN(d);
+    int i = (int)(d * 22.0D + 0.5D);
     try
     {
       paramInt = Patterns.a[paramInt];
@@ -87,7 +90,7 @@ public class EmoWindow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.EmoWindow
  * JD-Core Version:    0.7.0.1
  */

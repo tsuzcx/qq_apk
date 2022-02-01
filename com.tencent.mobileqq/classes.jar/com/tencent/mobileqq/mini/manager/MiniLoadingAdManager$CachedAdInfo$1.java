@@ -17,13 +17,18 @@ class MiniLoadingAdManager$CachedAdInfo$1
   
   public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    QLog.d("MiniLoadingAdManager", 1, "onDownloadSucceed url：" + paramString + " filePath:" + this.this$0.filePath);
+    paramDownloadResult = new StringBuilder();
+    paramDownloadResult.append("onDownloadSucceed url：");
+    paramDownloadResult.append(paramString);
+    paramDownloadResult.append(" filePath:");
+    paramDownloadResult.append(this.this$0.filePath);
+    QLog.d("MiniLoadingAdManager", 1, paramDownloadResult.toString());
     MiniLoadingAdManager.CachedAdInfo.access$500(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.manager.MiniLoadingAdManager.CachedAdInfo.1
  * JD-Core Version:    0.7.0.1
  */

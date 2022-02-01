@@ -1,28 +1,16 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.support.v4.app.FragmentActivity;
-import androidx.annotation.NonNull;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.AIOContext;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-
 public class GameBuddyContext
-  extends AIOContext
+  extends StrangerContext
 {
-  public GameBuddyContext(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, @NonNull SessionInfo paramSessionInfo, @NonNull BaseChatPie paramBaseChatPie)
-  {
-    super(paramQQAppInterface, paramFragmentActivity, paramSessionInfo, paramBaseChatPie);
-  }
-  
-  public void c()
+  public void g()
   {
     ((GameBuddyChatPie)this.a).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.GameBuddyContext
  * JD-Core Version:    0.7.0.1
  */

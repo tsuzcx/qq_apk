@@ -21,19 +21,30 @@ public class UIUtil
   {
     if (isBackground(paramContext))
     {
-      HMSLog.i("UIUtil", "isBackground" + isBackground(paramContext));
-      paramContext = null;
+      paramActivity = new StringBuilder();
+      paramActivity.append("isBackground");
+      paramActivity.append(isBackground(paramContext));
+      HMSLog.i("UIUtil", paramActivity.toString());
+      return null;
     }
-    do
+    if (paramActivity == null)
     {
-      return paramContext;
-      if (paramActivity == null) {
-        break;
-      }
-      paramContext = paramActivity;
-    } while (!paramActivity.isFinishing());
-    HMSLog.i("UIUtil", "activity is " + paramActivity + "activity isFinishing is " + paramActivity.isFinishing());
-    return ActivityMgr.INST.getCurrentActivity();
+      paramContext = new StringBuilder();
+      paramContext.append("activity is ");
+      paramContext.append(paramActivity);
+      HMSLog.i("UIUtil", paramContext.toString());
+      return ActivityMgr.INST.getCurrentActivity();
+    }
+    paramContext = paramActivity;
+    if (paramActivity.isFinishing())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("activity isFinishing is ");
+      paramContext.append(paramActivity.isFinishing());
+      HMSLog.i("UIUtil", paramContext.toString());
+      paramContext = ActivityMgr.INST.getCurrentActivity();
+    }
+    return paramContext;
   }
   
   public static String getProcessName(Context paramContext, int paramInt)
@@ -67,61 +78,69 @@ public class UIUtil
   
   public static boolean isBackground(Context paramContext)
   {
-    boolean bool3 = false;
-    if (paramContext == null) {}
-    KeyguardManager localKeyguardManager;
-    ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo;
-    do
-    {
-      Object localObject;
-      while (!((Iterator)localObject).hasNext())
-      {
-        do
-        {
-          do
-          {
-            return true;
-            localObject = (ActivityManager)paramContext.getSystemService("activity");
-            localKeyguardManager = (KeyguardManager)paramContext.getSystemService("keyguard");
-          } while ((localObject == null) || (localKeyguardManager == null));
-          localObject = ((ActivityManager)localObject).getRunningAppProcesses();
-        } while (localObject == null);
-        paramContext = getProcessName(paramContext, Process.myPid());
-        localObject = ((List)localObject).iterator();
-      }
-      localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
-    } while (!TextUtils.equals(localRunningAppProcessInfo.processName, paramContext));
-    HMSLog.i("UIUtil", "appProcess.importance is " + localRunningAppProcessInfo.importance);
-    boolean bool1;
-    if (localRunningAppProcessInfo.importance == 100)
-    {
-      bool1 = true;
-      if (Build.VERSION.SDK_INT < 22) {
-        break label209;
-      }
+    boolean bool4 = true;
+    if (paramContext == null) {
+      return true;
     }
-    label209:
-    for (boolean bool2 = localKeyguardManager.isDeviceLocked();; bool2 = localKeyguardManager.inKeyguardRestrictedInputMode())
+    Object localObject = (ActivityManager)paramContext.getSystemService("activity");
+    KeyguardManager localKeyguardManager = (KeyguardManager)paramContext.getSystemService("keyguard");
+    boolean bool3 = bool4;
+    if (localObject != null)
     {
-      HMSLog.i("UIUtil", "isForground is " + bool1 + "***  isLockedState is " + bool2);
+      if (localKeyguardManager == null) {
+        return true;
+      }
+      localObject = ((ActivityManager)localObject).getRunningAppProcesses();
+      if (localObject == null) {
+        return true;
+      }
+      paramContext = getProcessName(paramContext, Process.myPid());
+      Iterator localIterator = ((List)localObject).iterator();
+      do
+      {
+        bool3 = bool4;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject = (ActivityManager.RunningAppProcessInfo)localIterator.next();
+      } while (!TextUtils.equals(((ActivityManager.RunningAppProcessInfo)localObject).processName, paramContext));
+      paramContext = new StringBuilder();
+      paramContext.append("appProcess.importance is ");
+      paramContext.append(((ActivityManager.RunningAppProcessInfo)localObject).importance);
+      HMSLog.i("UIUtil", paramContext.toString());
+      boolean bool1;
+      if (((ActivityManager.RunningAppProcessInfo)localObject).importance == 100) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      boolean bool2;
+      if (Build.VERSION.SDK_INT > 22) {
+        bool2 = localKeyguardManager.isDeviceLocked();
+      } else {
+        bool2 = localKeyguardManager.inKeyguardRestrictedInputMode();
+      }
+      paramContext = new StringBuilder();
+      paramContext.append("isForground is ");
+      paramContext.append(bool1);
+      paramContext.append("***  isLockedState is ");
+      paramContext.append(bool2);
+      HMSLog.i("UIUtil", paramContext.toString());
+      bool3 = bool4;
       if (bool1)
       {
-        bool1 = bool3;
-        if (!bool2) {}
+        if (bool2) {
+          return true;
+        }
+        bool3 = false;
       }
-      else
-      {
-        bool1 = true;
-      }
-      return bool1;
-      bool1 = false;
-      break;
     }
+    return bool3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.utils.UIUtil
  * JD-Core Version:    0.7.0.1
  */

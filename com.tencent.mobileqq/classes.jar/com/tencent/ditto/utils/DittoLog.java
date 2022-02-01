@@ -20,9 +20,10 @@ public class DittoLog
   
   public static void d(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (sLog != null)
+    Log localLog = sLog;
+    if (localLog != null)
     {
-      sLog.d(paramString1, paramString2, paramThrowable);
+      localLog.d(paramString1, paramString2, paramThrowable);
       return;
     }
     android.util.Log.d(paramString1, paramString2, paramThrowable);
@@ -40,9 +41,10 @@ public class DittoLog
   
   public static void e(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (sLog != null)
+    Log localLog = sLog;
+    if (localLog != null)
     {
-      sLog.e(paramString1, paramString2, paramThrowable);
+      localLog.e(paramString1, paramString2, paramThrowable);
       return;
     }
     android.util.Log.e(paramString1, paramString2, paramThrowable);
@@ -72,9 +74,10 @@ public class DittoLog
   
   public static void i(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (sLog != null)
+    Log localLog = sLog;
+    if (localLog != null)
     {
-      sLog.i(paramString1, paramString2, paramThrowable);
+      localLog.i(paramString1, paramString2, paramThrowable);
       return;
     }
     android.util.Log.i(paramString1, paramString2, paramThrowable);
@@ -82,7 +85,8 @@ public class DittoLog
   
   public static boolean isColoredLevel()
   {
-    return (sLog != null) && (sLog.isColoredLevel());
+    Log localLog = sLog;
+    return (localLog != null) && (localLog.isColoredLevel());
   }
   
   public static void setLog(Log paramLog)
@@ -102,9 +106,10 @@ public class DittoLog
   
   public static void v(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (sLog != null)
+    Log localLog = sLog;
+    if (localLog != null)
     {
-      sLog.v(paramString1, paramString2, paramThrowable);
+      localLog.v(paramString1, paramString2, paramThrowable);
       return;
     }
     android.util.Log.v(paramString1, paramString2, paramThrowable);
@@ -122,9 +127,10 @@ public class DittoLog
   
   public static void w(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (sLog != null)
+    Log localLog = sLog;
+    if (localLog != null)
     {
-      sLog.w(paramString1, paramString2, paramThrowable);
+      localLog.w(paramString1, paramString2, paramThrowable);
       return;
     }
     android.util.Log.w(paramString1, paramString2, paramThrowable);
@@ -132,7 +138,7 @@ public class DittoLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ditto.utils.DittoLog
  * JD-Core Version:    0.7.0.1
  */

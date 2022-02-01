@@ -14,22 +14,27 @@ public class QzoneCommonJsPlugin
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((!paramString2.equals("Qzone")) || (this.parentPlugin == null) || (this.parentPlugin.mRuntime == null)) {}
-    while (!"jumpQQCleanPage".equalsIgnoreCase(paramString3)) {
-      return false;
-    }
-    if (this.parentPlugin.mRuntime.a() != null)
+    if ((paramString2.equals("Qzone")) && (this.parentPlugin != null))
     {
-      QQSettingCleanActivity.a(this.parentPlugin.mRuntime.a());
-      return true;
+      if (this.parentPlugin.mRuntime == null) {
+        return false;
+      }
+      if ("jumpQQCleanPage".equalsIgnoreCase(paramString3))
+      {
+        if (this.parentPlugin.mRuntime.a() != null)
+        {
+          QQSettingCleanActivity.a(this.parentPlugin.mRuntime.a());
+          return true;
+        }
+        QLog.e("jumpCleanPage", 2, "call activity with null runtime");
+      }
     }
-    QLog.e("jumpCleanPage", 2, "call activity with null runtime");
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneCommonJsPlugin
  * JD-Core Version:    0.7.0.1
  */

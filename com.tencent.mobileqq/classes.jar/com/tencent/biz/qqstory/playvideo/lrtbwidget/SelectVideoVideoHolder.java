@@ -16,8 +16,8 @@ public class SelectVideoVideoHolder
   public SelectVideoVideoHolder(@NonNull ViewGroup paramViewGroup)
   {
     super(paramViewGroup);
-    this.a.findViewById(2131368831).setOnClickListener(this);
-    this.a.findViewById(2131379257).setOnClickListener(this);
+    this.a.findViewById(2131368559).setOnClickListener(this);
+    this.a.findViewById(2131378618).setOnClickListener(this);
   }
   
   protected View a(ViewGroup paramViewGroup)
@@ -30,9 +30,9 @@ public class SelectVideoVideoHolder
     super.a(paramInt1, paramInt2, paramStoryPlayerVideoData, paramStoryPlayerGroupHolder);
     if (LiuHaiUtils.a)
     {
-      paramStoryPlayerGroupHolder = (RelativeLayout.LayoutParams)this.a.findViewById(2131368831).getLayoutParams();
+      paramStoryPlayerGroupHolder = (RelativeLayout.LayoutParams)this.a.findViewById(2131368559).getLayoutParams();
       paramStoryPlayerGroupHolder.topMargin = (UIUtils.a(this.a.getContext(), 5.0F) + 114);
-      this.a.findViewById(2131368831).setLayoutParams(paramStoryPlayerGroupHolder);
+      this.a.findViewById(2131368559).setLayoutParams(paramStoryPlayerGroupHolder);
     }
     a().a(this, paramInt1, paramInt2, paramStoryPlayerVideoData);
   }
@@ -57,7 +57,7 @@ public class SelectVideoVideoHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.SelectVideoVideoHolder
  * JD-Core Version:    0.7.0.1
  */

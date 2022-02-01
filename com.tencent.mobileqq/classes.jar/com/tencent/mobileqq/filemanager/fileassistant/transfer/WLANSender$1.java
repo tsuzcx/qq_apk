@@ -9,12 +9,13 @@ class WLANSender$1
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentLitetransfersdkSession = this.a.a(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.this$0.jdField_a_of_type_Boolean);
+    WLANSender localWLANSender = this.this$0;
+    localWLANSender.jdField_a_of_type_ComTencentLitetransfersdkSession = this.a.a(localWLANSender.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.this$0.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.transfer.WLANSender.1
  * JD-Core Version:    0.7.0.1
  */

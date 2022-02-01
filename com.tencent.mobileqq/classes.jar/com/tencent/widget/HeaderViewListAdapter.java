@@ -26,29 +26,23 @@ public class HeaderViewListAdapter
   {
     this.mAdapter = paramListAdapter;
     this.mIsFilterable = (paramListAdapter instanceof Filterable);
-    if (paramArrayList1 == null)
-    {
+    if (paramArrayList1 == null) {
       this.mHeaderViewInfos = EMPTY_INFO_LIST;
-      if (paramArrayList2 != null) {
-        break label79;
-      }
-      this.mFooterViewInfos = EMPTY_INFO_LIST;
-      label39:
-      if ((!areAllListInfosSelectable(this.mHeaderViewInfos)) || (!areAllListInfosSelectable(this.mFooterViewInfos))) {
-        break label87;
-      }
-    }
-    label79:
-    label87:
-    for (boolean bool = true;; bool = false)
-    {
-      this.mAreAllFixedViewsSelectable = bool;
-      return;
+    } else {
       this.mHeaderViewInfos = paramArrayList1;
-      break;
-      this.mFooterViewInfos = paramArrayList2;
-      break label39;
     }
+    if (paramArrayList2 == null) {
+      this.mFooterViewInfos = EMPTY_INFO_LIST;
+    } else {
+      this.mFooterViewInfos = paramArrayList2;
+    }
+    boolean bool;
+    if ((areAllListInfosSelectable(this.mHeaderViewInfos)) && (areAllListInfosSelectable(this.mFooterViewInfos))) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.mAreAllFixedViewsSelectable = bool;
   }
   
   private boolean areAllListInfosSelectable(ArrayList<ListView.FixedViewInfo> paramArrayList)
@@ -67,15 +61,29 @@ public class HeaderViewListAdapter
   
   public boolean areAllItemsEnabled()
   {
-    return (this.mAdapter == null) || ((this.mAreAllFixedViewsSelectable) && (this.mAdapter.areAllItemsEnabled()));
+    ListAdapter localListAdapter = this.mAdapter;
+    boolean bool = true;
+    if (localListAdapter != null)
+    {
+      if ((this.mAreAllFixedViewsSelectable) && (localListAdapter.areAllItemsEnabled())) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   public int getCount()
   {
+    int i;
     if (this.mAdapter != null) {
-      return getFootersCount() + getHeadersCount() + this.mAdapter.getCount();
+      i = getFootersCount() + getHeadersCount();
     }
-    return getFootersCount() + getHeadersCount();
+    for (int j = this.mAdapter.getCount();; j = getHeadersCount())
+    {
+      return i + j;
+      i = getFootersCount();
+    }
   }
   
   public Filter getFilter()
@@ -104,9 +112,10 @@ public class HeaderViewListAdapter
     }
     int j = paramInt - i;
     paramInt = 0;
-    if (this.mAdapter != null)
+    ListAdapter localListAdapter = this.mAdapter;
+    if (localListAdapter != null)
     {
-      i = this.mAdapter.getCount();
+      i = localListAdapter.getCount();
       paramInt = i;
       if (j < i) {
         return this.mAdapter.getItem(j);
@@ -118,10 +127,11 @@ public class HeaderViewListAdapter
   public long getItemId(int paramInt)
   {
     int i = getHeadersCount();
-    if ((this.mAdapter != null) && (paramInt >= i))
+    ListAdapter localListAdapter = this.mAdapter;
+    if ((localListAdapter != null) && (paramInt >= i))
     {
       paramInt -= i;
-      if (paramInt < this.mAdapter.getCount()) {
+      if (paramInt < localListAdapter.getCount()) {
         return this.mAdapter.getItemId(paramInt);
       }
     }
@@ -131,10 +141,11 @@ public class HeaderViewListAdapter
   public int getItemViewType(int paramInt)
   {
     int i = getHeadersCount();
-    if ((this.mAdapter != null) && (paramInt >= i))
+    ListAdapter localListAdapter = this.mAdapter;
+    if ((localListAdapter != null) && (paramInt >= i))
     {
       paramInt -= i;
-      if (paramInt < this.mAdapter.getCount()) {
+      if (paramInt < localListAdapter.getCount()) {
         return this.mAdapter.getItemViewType(paramInt);
       }
     }
@@ -144,41 +155,60 @@ public class HeaderViewListAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     int k = getHeadersCount();
-    View localView;
-    if (paramInt < k) {
-      localView = ((ListView.FixedViewInfo)this.mHeaderViewInfos.get(paramInt)).view;
-    }
-    for (;;)
+    Object localObject;
+    int m;
+    int i;
+    if (paramInt < k)
     {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      int m = paramInt - k;
-      int i = 0;
-      if (this.mAdapter != null)
+      localObject = ((ListView.FixedViewInfo)this.mHeaderViewInfos.get(paramInt)).view;
+    }
+    else
+    {
+      m = paramInt - k;
+      i = 0;
+      localObject = this.mAdapter;
+      if (localObject != null)
       {
-        int j = this.mAdapter.getCount();
+        int j = ((ListAdapter)localObject).getCount();
         i = j;
         if (m < j)
         {
-          localView = this.mAdapter.getView(m, paramView, paramViewGroup);
-          continue;
+          localObject = this.mAdapter.getView(m, paramView, paramViewGroup);
+          break label109;
         }
       }
-      try
-      {
-        localView = ((ListView.FixedViewInfo)this.mFooterViewInfos.get(m - i)).view;
-      }
-      catch (Exception paramView)
-      {
-        throw new RuntimeException("adapter index out of bound. adapter count: " + i + ", footCount: " + this.mFooterViewInfos.size() + ", numHeaders:" + k + " , position: " + m + ", Adapter: " + this.mAdapter);
-      }
     }
+    try
+    {
+      localObject = ((ListView.FixedViewInfo)this.mFooterViewInfos.get(m - i)).view;
+      label109:
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localObject;
+    }
+    catch (Exception paramView)
+    {
+      label126:
+      break label126;
+    }
+    paramView = new StringBuilder();
+    paramView.append("adapter index out of bound. adapter count: ");
+    paramView.append(i);
+    paramView.append(", footCount: ");
+    paramView.append(this.mFooterViewInfos.size());
+    paramView.append(", numHeaders:");
+    paramView.append(k);
+    paramView.append(" , position: ");
+    paramView.append(m);
+    paramView.append(", Adapter: ");
+    paramView.append(this.mAdapter);
+    throw new RuntimeException(paramView.toString());
   }
   
   public int getViewTypeCount()
   {
-    if (this.mAdapter != null) {
-      return this.mAdapter.getViewTypeCount();
+    ListAdapter localListAdapter = this.mAdapter;
+    if (localListAdapter != null) {
+      return localListAdapter.getViewTypeCount();
     }
     return 1;
   }
@@ -190,15 +220,17 @@ public class HeaderViewListAdapter
   
   public boolean hasStableIds()
   {
-    if (this.mAdapter != null) {
-      return this.mAdapter.hasStableIds();
+    ListAdapter localListAdapter = this.mAdapter;
+    if (localListAdapter != null) {
+      return localListAdapter.hasStableIds();
     }
     return false;
   }
   
   public boolean isEmpty()
   {
-    return (this.mAdapter == null) || (this.mAdapter.isEmpty());
+    ListAdapter localListAdapter = this.mAdapter;
+    return (localListAdapter == null) || (localListAdapter.isEmpty());
   }
   
   public boolean isEnabled(int paramInt)
@@ -208,10 +240,12 @@ public class HeaderViewListAdapter
       return ((ListView.FixedViewInfo)this.mHeaderViewInfos.get(paramInt)).isSelectable;
     }
     int m = paramInt - k;
+    Object localObject = this.mAdapter;
+    int j;
     int i;
-    if (this.mAdapter != null)
+    if (localObject != null)
     {
-      int j = this.mAdapter.getCount();
+      j = ((ListAdapter)localObject).getCount();
       i = j;
       if (m < j) {
         return this.mAdapter.isEnabled(m);
@@ -223,24 +257,51 @@ public class HeaderViewListAdapter
     }
     try
     {
-      if (this.mFooterViewInfos.size() <= m - i)
+      j = this.mFooterViewInfos.size();
+      int n = m - i;
+      if (j <= n)
       {
-        QLog.e("HeaderViewListAdapter", 1, "adapter index out of bound. adapter count: " + i + ", footCount: " + this.mFooterViewInfos.size() + " , adjPosition: " + m + ", Adapter: " + this.mAdapter + "position=" + paramInt + "numHeaders=" + k);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("adapter index out of bound. adapter count: ");
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(", footCount: ");
+        ((StringBuilder)localObject).append(this.mFooterViewInfos.size());
+        ((StringBuilder)localObject).append(" , adjPosition: ");
+        ((StringBuilder)localObject).append(m);
+        ((StringBuilder)localObject).append(", Adapter: ");
+        ((StringBuilder)localObject).append(this.mAdapter);
+        ((StringBuilder)localObject).append("position=");
+        ((StringBuilder)localObject).append(paramInt);
+        ((StringBuilder)localObject).append("numHeaders=");
+        ((StringBuilder)localObject).append(k);
+        QLog.e("HeaderViewListAdapter", 1, ((StringBuilder)localObject).toString());
         return false;
       }
+      boolean bool = ((ListView.FixedViewInfo)this.mFooterViewInfos.get(n)).isSelectable;
+      return bool;
     }
     catch (Exception localException)
     {
-      throw new RuntimeException("adapter index out of bound. adapter count: " + i + ", footCount: " + this.mFooterViewInfos.size() + " , position: " + m + ", Adapter: " + this.mAdapter);
+      label237:
+      break label237;
     }
-    boolean bool = ((ListView.FixedViewInfo)this.mFooterViewInfos.get(m - i)).isSelectable;
-    return bool;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("adapter index out of bound. adapter count: ");
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append(", footCount: ");
+    ((StringBuilder)localObject).append(this.mFooterViewInfos.size());
+    ((StringBuilder)localObject).append(" , position: ");
+    ((StringBuilder)localObject).append(m);
+    ((StringBuilder)localObject).append(", Adapter: ");
+    ((StringBuilder)localObject).append(this.mAdapter);
+    throw new RuntimeException(((StringBuilder)localObject).toString());
   }
   
   public void registerDataSetObserver(DataSetObserver paramDataSetObserver)
   {
-    if ((this.mAdapter != null) && (paramDataSetObserver != null)) {
-      this.mAdapter.registerDataSetObserver(paramDataSetObserver);
+    ListAdapter localListAdapter = this.mAdapter;
+    if ((localListAdapter != null) && (paramDataSetObserver != null)) {
+      localListAdapter.registerDataSetObserver(paramDataSetObserver);
     }
   }
   
@@ -296,14 +357,15 @@ public class HeaderViewListAdapter
   
   public void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
   {
-    if ((this.mAdapter != null) && (paramDataSetObserver != null)) {
-      this.mAdapter.unregisterDataSetObserver(paramDataSetObserver);
+    ListAdapter localListAdapter = this.mAdapter;
+    if ((localListAdapter != null) && (paramDataSetObserver != null)) {
+      localListAdapter.unregisterDataSetObserver(paramDataSetObserver);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.HeaderViewListAdapter
  * JD-Core Version:    0.7.0.1
  */

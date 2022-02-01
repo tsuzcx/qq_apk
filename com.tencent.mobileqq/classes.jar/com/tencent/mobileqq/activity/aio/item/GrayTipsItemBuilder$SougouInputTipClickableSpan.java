@@ -34,47 +34,52 @@ class GrayTipsItemBuilder$SougouInputTipClickableSpan
   public void onClick(View paramView)
   {
     paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Object localObject = (Context)this.b.get();
-    if ((paramView == null) || (localObject == null)) {}
-    long l;
-    do
+    Object localObject1 = (Context)this.b.get();
+    if (paramView != null)
     {
-      do
-      {
-        return;
-      } while (!(localObject instanceof Activity));
-      if (!NetworkUtil.d((Context)localObject))
-      {
-        QQToast.a((Context)localObject, 2131692257, 0).b(((Context)localObject).getResources().getDimensionPixelSize(2131299166));
+      if (localObject1 == null) {
         return;
       }
-      l = System.currentTimeMillis();
-      if ((GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder) == 0L) || (l <= GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder)) || (l - GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder) > 800L)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("GrayTipsItemBuilder", 2, "click too often...ignore click envent");
-    return;
-    GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder, l);
-    if (NetworkUtil.h((Context)localObject))
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString(DownloadConstants.b, "100868074");
-      localBundle.putString(DownloadConstants.j, "https://shouji.sogou.com/proxy/linkto.php?site=20141110sogouinputapk");
-      localBundle.putString(DownloadConstants.f, "com.sohu.inputmethod.sogou");
-      localBundle.putInt(DownloadConstants.k, 2);
-      localBundle.putString(DownloadConstants.i, "ANDROIDQQ.MSG.SOUGOU");
-      localBundle.putString(DownloadConstants.l, HardCodeUtil.a(2131705348));
-      localBundle.putBoolean(DownloadConstants.x, false);
-      DownloadApi.a((Activity)localObject, localBundle, "biz_src_yyb", null, 0);
-    }
-    for (;;)
-    {
-      ReportController.b(paramView, "CliOper", "", "", "0X80047CF", "0X80047CF", 0, 0, "", "", "", "");
-      return;
-      localObject = JumpParser.a(paramView, (Context)localObject, "qapp://detail?param=" + GrayTipsItemBuilder.a("id=100868074&channelId=2800&packageName=com.sohu.inputmethod.sogou&via=MSG.SOUGOU"));
-      if (localObject != null) {
-        ((JumpAction)localObject).a();
+      if ((localObject1 instanceof Activity))
+      {
+        if (!NetworkUtil.isNetSupport((Context)localObject1))
+        {
+          QQToast.a((Context)localObject1, 2131692183, 0).b(((Context)localObject1).getResources().getDimensionPixelSize(2131299168));
+          return;
+        }
+        long l = System.currentTimeMillis();
+        if ((GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder) != 0L) && (l > GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder)) && (l - GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder) <= 800L))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("GrayTipsItemBuilder", 2, "click too often...ignore click envent");
+          }
+          return;
+        }
+        GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder, l);
+        Object localObject2;
+        if (NetworkUtil.isWifiConnected((Context)localObject1))
+        {
+          localObject2 = new Bundle();
+          ((Bundle)localObject2).putString(DownloadConstants.b, "100868074");
+          ((Bundle)localObject2).putString(DownloadConstants.j, "https://shouji.sogou.com/proxy/linkto.php?site=20141110sogouinputapk");
+          ((Bundle)localObject2).putString(DownloadConstants.f, "com.sohu.inputmethod.sogou");
+          ((Bundle)localObject2).putInt(DownloadConstants.k, 2);
+          ((Bundle)localObject2).putString(DownloadConstants.i, "ANDROIDQQ.MSG.SOUGOU");
+          ((Bundle)localObject2).putString(DownloadConstants.l, HardCodeUtil.a(2131705422));
+          ((Bundle)localObject2).putBoolean(DownloadConstants.y, false);
+          DownloadApi.a((Activity)localObject1, (Bundle)localObject2, "biz_src_yyb", null, 0);
+        }
+        else
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("qapp://detail?param=");
+          ((StringBuilder)localObject2).append(GrayTipsItemBuilder.a("id=100868074&channelId=2800&packageName=com.sohu.inputmethod.sogou&via=MSG.SOUGOU"));
+          localObject1 = JumpParser.a(paramView, (Context)localObject1, ((StringBuilder)localObject2).toString());
+          if (localObject1 != null) {
+            ((JumpAction)localObject1).a();
+          }
+        }
+        ReportController.b(paramView, "CliOper", "", "", "0X80047CF", "0X80047CF", 0, 0, "", "", "", "");
       }
     }
   }
@@ -86,7 +91,7 @@ class GrayTipsItemBuilder$SougouInputTipClickableSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder.SougouInputTipClickableSpan
  * JD-Core Version:    0.7.0.1
  */

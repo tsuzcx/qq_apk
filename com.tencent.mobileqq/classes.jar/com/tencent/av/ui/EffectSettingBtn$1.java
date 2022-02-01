@@ -15,18 +15,15 @@ class EffectSettingBtn$1
     ViewTreeObserver localViewTreeObserver = this.a.a.getViewTreeObserver();
     if (Build.VERSION.SDK_INT >= 16) {
       localViewTreeObserver.removeOnGlobalLayoutListener(this);
-    }
-    for (;;)
-    {
-      this.a.b = true;
-      return;
+    } else {
       localViewTreeObserver.removeGlobalOnLayoutListener(this);
     }
+    this.a.b = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.EffectSettingBtn.1
  * JD-Core Version:    0.7.0.1
  */

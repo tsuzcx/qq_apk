@@ -17,8 +17,9 @@ public class QQAvatarHandlerServiceImpl
     if (this.mAvatarHandler == null) {
       initAvatarHandler();
     }
-    if (this.mAvatarHandler != null) {
-      this.mAvatarHandler.d(paramString);
+    AvatarHandler localAvatarHandler = this.mAvatarHandler;
+    if (localAvatarHandler != null) {
+      localAvatarHandler.d(paramString);
     }
   }
   
@@ -27,8 +28,9 @@ public class QQAvatarHandlerServiceImpl
     if (this.mAvatarHandler == null) {
       initAvatarHandler();
     }
-    if (this.mAvatarHandler != null) {
-      this.mAvatarHandler.a(paramString, paramByte1, paramByte2, paramInt);
+    AvatarHandler localAvatarHandler = this.mAvatarHandler;
+    if (localAvatarHandler != null) {
+      localAvatarHandler.a(paramString, paramByte1, paramByte2, paramInt);
     }
   }
   
@@ -37,8 +39,9 @@ public class QQAvatarHandlerServiceImpl
     if (this.mAvatarHandler == null) {
       initAvatarHandler();
     }
-    if (this.mAvatarHandler != null) {
-      return this.mAvatarHandler.a();
+    AvatarHandler localAvatarHandler = this.mAvatarHandler;
+    if (localAvatarHandler != null) {
+      return localAvatarHandler.a();
     }
     return null;
   }
@@ -48,8 +51,9 @@ public class QQAvatarHandlerServiceImpl
     if (this.mAvatarHandler == null) {
       initAvatarHandler();
     }
-    if (this.mAvatarHandler != null) {
-      return this.mAvatarHandler.b();
+    AvatarHandler localAvatarHandler = this.mAvatarHandler;
+    if (localAvatarHandler != null) {
+      return localAvatarHandler.b();
     }
     return null;
   }
@@ -59,8 +63,9 @@ public class QQAvatarHandlerServiceImpl
     if (this.mAvatarHandler == null) {
       initAvatarHandler();
     }
-    if (this.mAvatarHandler != null) {
-      this.mAvatarHandler.a(paramString);
+    AvatarHandler localAvatarHandler = this.mAvatarHandler;
+    if (localAvatarHandler != null) {
+      localAvatarHandler.a(paramString);
     }
   }
   
@@ -69,8 +74,9 @@ public class QQAvatarHandlerServiceImpl
     if (this.mAvatarHandler == null) {
       initAvatarHandler();
     }
-    if (this.mAvatarHandler != null) {
-      this.mAvatarHandler.a(paramString, paramByte1, paramByte2);
+    AvatarHandler localAvatarHandler = this.mAvatarHandler;
+    if (localAvatarHandler != null) {
+      localAvatarHandler.a(paramString, paramByte1, paramByte2);
     }
   }
   
@@ -79,8 +85,9 @@ public class QQAvatarHandlerServiceImpl
     if (this.mAvatarHandler == null) {
       initAvatarHandler();
     }
-    if (this.mAvatarHandler != null) {
-      this.mAvatarHandler.c(paramString);
+    AvatarHandler localAvatarHandler = this.mAvatarHandler;
+    if (localAvatarHandler != null) {
+      localAvatarHandler.c(paramString);
     }
   }
   
@@ -89,8 +96,9 @@ public class QQAvatarHandlerServiceImpl
     if (this.mAvatarHandler == null) {
       initAvatarHandler();
     }
-    if (this.mAvatarHandler != null) {
-      this.mAvatarHandler.b(paramString, paramByte);
+    AvatarHandler localAvatarHandler = this.mAvatarHandler;
+    if (localAvatarHandler != null) {
+      localAvatarHandler.b(paramString, paramByte);
     }
   }
   
@@ -99,8 +107,9 @@ public class QQAvatarHandlerServiceImpl
     if (this.mAvatarHandler == null) {
       initAvatarHandler();
     }
-    if (this.mAvatarHandler != null) {
-      this.mAvatarHandler.b(paramString, paramInt, paramByte1, paramByte2);
+    AvatarHandler localAvatarHandler = this.mAvatarHandler;
+    if (localAvatarHandler != null) {
+      localAvatarHandler.b(paramString, paramInt, paramByte1, paramByte2);
     }
   }
   
@@ -109,8 +118,9 @@ public class QQAvatarHandlerServiceImpl
     if (this.mAvatarHandler == null) {
       initAvatarHandler();
     }
-    if (this.mAvatarHandler != null) {
-      this.mAvatarHandler.a(paramString, paramInt, paramByte1, paramByte2);
+    AvatarHandler localAvatarHandler = this.mAvatarHandler;
+    if (localAvatarHandler != null) {
+      localAvatarHandler.a(paramString, paramInt, paramByte1, paramByte2);
     }
   }
   
@@ -119,8 +129,9 @@ public class QQAvatarHandlerServiceImpl
     if (this.mAvatarHandler == null) {
       initAvatarHandler();
     }
-    if (this.mAvatarHandler != null) {
-      this.mAvatarHandler.b(paramString);
+    AvatarHandler localAvatarHandler = this.mAvatarHandler;
+    if (localAvatarHandler != null) {
+      localAvatarHandler.b(paramString);
     }
   }
   
@@ -129,8 +140,9 @@ public class QQAvatarHandlerServiceImpl
     if (this.mAvatarHandler == null) {
       initAvatarHandler();
     }
-    if (this.mAvatarHandler != null) {
-      this.mAvatarHandler.a(paramString, paramByte);
+    AvatarHandler localAvatarHandler = this.mAvatarHandler;
+    if (localAvatarHandler != null) {
+      localAvatarHandler.a(paramString, paramByte);
     }
   }
   
@@ -144,8 +156,9 @@ public class QQAvatarHandlerServiceImpl
     if (this.mAvatarHandler == null) {
       initAvatarHandler();
     }
-    if (this.mAvatarHandler != null) {
-      this.mAvatarHandler.b();
+    AvatarHandler localAvatarHandler = this.mAvatarHandler;
+    if (localAvatarHandler != null) {
+      localAvatarHandler.b();
     }
   }
   
@@ -162,14 +175,15 @@ public class QQAvatarHandlerServiceImpl
     if (this.mAvatarHandler == null) {
       initAvatarHandler();
     }
-    if (this.mAvatarHandler != null) {
-      this.mAvatarHandler.a(paramInt, paramString);
+    AvatarHandler localAvatarHandler = this.mAvatarHandler;
+    if (localAvatarHandler != null) {
+      localAvatarHandler.a(paramInt, paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.api.impl.QQAvatarHandlerServiceImpl
  * JD-Core Version:    0.7.0.1
  */

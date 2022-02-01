@@ -54,34 +54,36 @@ public class NumberWheelView$NumberAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Object localObject2 = null;
     Object localObject1;
     if (paramView == null)
     {
       localObject1 = new WheelTextView(this.jdField_a_of_type_AndroidContentContext);
       ((View)localObject1).setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
+      paramView = (WheelTextView)localObject1;
     }
-    for (paramView = (WheelTextView)localObject1;; paramView = (View)localObject2)
+    else
     {
-      localObject2 = paramView;
-      if (paramView == null) {
-        localObject2 = (WheelTextView)localObject1;
-      }
-      paramView = String.format("%d", new Object[] { this.jdField_a_of_type_JavaUtilList.get(paramInt) });
-      ((WheelTextView)localObject2).setTextSize(18.0F);
-      ((WheelTextView)localObject2).setTextColor(-7829368);
-      ((WheelTextView)localObject2).setGravity(5);
-      ((WheelTextView)localObject2).setVisibility(0);
-      ((WheelTextView)localObject2).setText(paramView);
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-      return localObject1;
+      localObject2 = null;
       localObject1 = paramView;
+      paramView = (View)localObject2;
     }
+    Object localObject2 = paramView;
+    if (paramView == null) {
+      localObject2 = (WheelTextView)localObject1;
+    }
+    paramView = String.format("%d", new Object[] { this.jdField_a_of_type_JavaUtilList.get(paramInt) });
+    ((WheelTextView)localObject2).setTextSize(18.0F);
+    ((WheelTextView)localObject2).setTextColor(-7829368);
+    ((WheelTextView)localObject2).setGravity(5);
+    ((WheelTextView)localObject2).setVisibility(0);
+    ((WheelTextView)localObject2).setText(paramView);
+    EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
+    return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.NumberWheelView.NumberAdapter
  * JD-Core Version:    0.7.0.1
  */

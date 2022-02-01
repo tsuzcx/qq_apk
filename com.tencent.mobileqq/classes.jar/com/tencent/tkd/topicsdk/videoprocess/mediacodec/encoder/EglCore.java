@@ -22,67 +22,80 @@ public final class EglCore
   
   public EglCore(EGLContext paramEGLContext, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidOpenglEGLDisplay != EGL14.EGL_NO_DISPLAY) {
-      throw new RuntimeException("EGL already set up");
-    }
-    EGLContext localEGLContext1 = paramEGLContext;
-    if (paramEGLContext == null)
+    if (this.jdField_a_of_type_AndroidOpenglEGLDisplay == EGL14.EGL_NO_DISPLAY)
     {
-      localEGLContext1 = EGL14.EGL_NO_CONTEXT;
-      TLog.d("EglCore", "sharedContext == null");
-    }
-    this.jdField_a_of_type_AndroidOpenglEGLDisplay = EGL14.eglGetDisplay(0);
-    if (this.jdField_a_of_type_AndroidOpenglEGLDisplay == EGL14.EGL_NO_DISPLAY) {
+      Object localObject = paramEGLContext;
+      if (paramEGLContext == null)
+      {
+        localObject = EGL14.EGL_NO_CONTEXT;
+        TLog.d("EglCore", "sharedContext == null");
+      }
+      this.jdField_a_of_type_AndroidOpenglEGLDisplay = EGL14.eglGetDisplay(0);
+      if (this.jdField_a_of_type_AndroidOpenglEGLDisplay != EGL14.EGL_NO_DISPLAY)
+      {
+        paramEGLContext = new int[2];
+        if (EGL14.eglInitialize(this.jdField_a_of_type_AndroidOpenglEGLDisplay, paramEGLContext, 0, paramEGLContext, 1))
+        {
+          if ((paramInt & 0x2) != 0)
+          {
+            paramEGLContext = a(paramInt, 3);
+            if (paramEGLContext != null)
+            {
+              EGLContext localEGLContext = EGL14.eglCreateContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, paramEGLContext, (EGLContext)localObject, new int[] { 12440, 3, 12344 }, 0);
+              if (EGL14.eglGetError() == 12288)
+              {
+                this.jdField_a_of_type_AndroidOpenglEGLConfig = paramEGLContext;
+                this.jdField_a_of_type_AndroidOpenglEGLContext = localEGLContext;
+              }
+            }
+          }
+          if (this.jdField_a_of_type_AndroidOpenglEGLContext == EGL14.EGL_NO_CONTEXT)
+          {
+            paramEGLContext = a(paramInt, 2);
+            if (paramEGLContext != null)
+            {
+              localObject = EGL14.eglCreateContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, paramEGLContext, (EGLContext)localObject, new int[] { 12440, 2, 12344 }, 0);
+              a("eglCreateContext");
+              this.jdField_a_of_type_AndroidOpenglEGLConfig = paramEGLContext;
+              this.jdField_a_of_type_AndroidOpenglEGLContext = ((EGLContext)localObject);
+            }
+            else
+            {
+              throw new RuntimeException("Unable to find a suitable EGLConfig");
+            }
+          }
+          paramEGLContext = new int[1];
+          EGL14.eglQueryContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLContext, 12440, paramEGLContext, 0);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("EGLContext created, client version ");
+          ((StringBuilder)localObject).append(paramEGLContext[0]);
+          TLog.b("EglCore", ((StringBuilder)localObject).toString());
+          return;
+        }
+        this.jdField_a_of_type_AndroidOpenglEGLDisplay = null;
+        throw new RuntimeException("unable to initialize EGL14");
+      }
       throw new RuntimeException("unable to get EGL14 display");
     }
-    paramEGLContext = new int[2];
-    if (!EGL14.eglInitialize(this.jdField_a_of_type_AndroidOpenglEGLDisplay, paramEGLContext, 0, paramEGLContext, 1))
-    {
-      this.jdField_a_of_type_AndroidOpenglEGLDisplay = null;
-      throw new RuntimeException("unable to initialize EGL14");
-    }
-    if ((paramInt & 0x2) != 0)
-    {
-      paramEGLContext = a(paramInt, 3);
-      if (paramEGLContext != null)
-      {
-        EGLContext localEGLContext2 = EGL14.eglCreateContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, paramEGLContext, localEGLContext1, new int[] { 12440, 3, 12344 }, 0);
-        if (EGL14.eglGetError() == 12288)
-        {
-          this.jdField_a_of_type_AndroidOpenglEGLConfig = paramEGLContext;
-          this.jdField_a_of_type_AndroidOpenglEGLContext = localEGLContext2;
-        }
-      }
-    }
-    if (this.jdField_a_of_type_AndroidOpenglEGLContext == EGL14.EGL_NO_CONTEXT)
-    {
-      paramEGLContext = a(paramInt, 2);
-      if (paramEGLContext == null) {
-        throw new RuntimeException("Unable to find a suitable EGLConfig");
-      }
-      localEGLContext1 = EGL14.eglCreateContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, paramEGLContext, localEGLContext1, new int[] { 12440, 2, 12344 }, 0);
-      a("eglCreateContext");
-      this.jdField_a_of_type_AndroidOpenglEGLConfig = paramEGLContext;
-      this.jdField_a_of_type_AndroidOpenglEGLContext = localEGLContext1;
-    }
-    paramEGLContext = new int[1];
-    EGL14.eglQueryContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLContext, 12440, paramEGLContext, 0);
-    TLog.b("EglCore", "EGLContext created, client version " + paramEGLContext[0]);
+    throw new RuntimeException("EGL already set up");
   }
   
   private EGLConfig a(int paramInt1, int paramInt2)
   {
-    if (paramInt2 >= 3) {}
-    EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
+    Object localObject = new EGLConfig[1];
     int[] arrayOfInt = new int[1];
     EGLDisplay localEGLDisplay = this.jdField_a_of_type_AndroidOpenglEGLDisplay;
-    paramInt1 = arrayOfEGLConfig.length;
-    if (!EGL14.eglChooseConfig(localEGLDisplay, new int[] { 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12352, 4, 12339, 1, 12344 }, 0, arrayOfEGLConfig, 0, paramInt1, arrayOfInt, 0))
+    paramInt1 = localObject.length;
+    if (!EGL14.eglChooseConfig(localEGLDisplay, new int[] { 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12352, 4, 12339, 1, 12344 }, 0, (EGLConfig[])localObject, 0, paramInt1, arrayOfInt, 0))
     {
-      TLog.c("EglCore", "unable to find RGB8888 / " + paramInt2 + " EGLConfig");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("unable to find RGB8888 / ");
+      ((StringBuilder)localObject).append(paramInt2);
+      ((StringBuilder)localObject).append(" EGLConfig");
+      TLog.c("EglCore", ((StringBuilder)localObject).toString());
       return null;
     }
-    return arrayOfEGLConfig[0];
+    return localObject[0];
   }
   
   private void b(String paramString)
@@ -90,25 +103,34 @@ public final class EglCore
     int i = EGL14.eglGetError();
     if (i != 12288)
     {
-      paramString = new RuntimeException(paramString + ": EGL error: 0x" + Integer.toHexString(i));
-      TLog.a("EglCore", paramString);
-      if (TopicSDK.b().a().a()) {
-        throw paramString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": EGL error: 0x");
+      localStringBuilder.append(Integer.toHexString(i));
+      paramString = new RuntimeException(localStringBuilder.toString());
+      TLog.b("EglCore", paramString);
+      if (!TopicSDK.b().a().a()) {
+        return;
       }
+      throw paramString;
     }
   }
   
   public EGLSurface a(Object paramObject)
   {
-    if ((!(paramObject instanceof Surface)) && (!(paramObject instanceof SurfaceTexture))) {
-      throw new RuntimeException("invalid surface: " + paramObject);
+    if ((!(paramObject instanceof Surface)) && (!(paramObject instanceof SurfaceTexture)))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("invalid surface: ");
+      localStringBuilder.append(paramObject);
+      throw new RuntimeException(localStringBuilder.toString());
     }
     paramObject = EGL14.eglCreateWindowSurface(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLConfig, paramObject, new int[] { 12344 }, 0);
     b("eglCreateWindowSurface");
-    if (paramObject == null) {
-      throw new RuntimeException("surface was null");
+    if (paramObject != null) {
+      return paramObject;
     }
-    return paramObject;
+    throw new RuntimeException("surface was null");
   }
   
   public void a()
@@ -140,12 +162,22 @@ public final class EglCore
     int i = EGL14.eglGetError();
     if (i != 12288)
     {
-      paramString = new RuntimeException(paramString + ": EGL error: 0x" + Integer.toHexString(i));
-      new StringBuilder().append("EGL14.eglGetCurrentContext() = ").append(EGL14.eglGetCurrentContext()).append(", mEGLContext = ").append(this.jdField_a_of_type_AndroidOpenglEGLContext).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": EGL error: 0x");
+      localStringBuilder.append(Integer.toHexString(i));
+      paramString = new RuntimeException(localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("EGL14.eglGetCurrentContext() = ");
+      localStringBuilder.append(EGL14.eglGetCurrentContext());
+      localStringBuilder.append(", mEGLContext = ");
+      localStringBuilder.append(this.jdField_a_of_type_AndroidOpenglEGLContext);
+      localStringBuilder.toString();
       a();
-      if (TopicSDK.b().a().a()) {
-        throw paramString;
+      if (!TopicSDK.b().a().a()) {
+        return;
       }
+      throw paramString;
     }
   }
   
@@ -159,14 +191,15 @@ public final class EglCore
     if (this.jdField_a_of_type_AndroidOpenglEGLDisplay == EGL14.EGL_NO_DISPLAY) {
       TLog.b("EglCore", "NOTE: makeCurrent w/o display");
     }
-    if (!EGL14.eglMakeCurrent(this.jdField_a_of_type_AndroidOpenglEGLDisplay, paramEGLSurface, paramEGLSurface, this.jdField_a_of_type_AndroidOpenglEGLContext)) {
-      throw new RuntimeException("eglMakeCurrent failed");
+    if (EGL14.eglMakeCurrent(this.jdField_a_of_type_AndroidOpenglEGLDisplay, paramEGLSurface, paramEGLSurface, this.jdField_a_of_type_AndroidOpenglEGLContext)) {
+      return;
     }
+    throw new RuntimeException("eglMakeCurrent failed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.mediacodec.encoder.EglCore
  * JD-Core Version:    0.7.0.1
  */

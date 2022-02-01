@@ -22,13 +22,36 @@ public class AppletInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("--AppletsAccountInfo--");
-    localStringBuilder.append(",appid:").append(this.appid).append(",appType:").append(this.appType).append(",platform:").append(this.platform).append(",appName:").append(this.appName).append(",appKey:").append(this.appKey).append(",appState:").append(this.appState).append(",iphoneUrlScheme:").append(this.iphoneUrlScheme).append(",packName:").append(this.packName).append(",icon_url:").append(this.icon_url).append(",sourceUrl:").append(this.sourceUrl).append(",smallUrl:").append(this.smallUrl).append(",middleUrl:").append(this.middleUrl);
+    localStringBuilder.append(",appid:");
+    localStringBuilder.append(this.appid);
+    localStringBuilder.append(",appType:");
+    localStringBuilder.append(this.appType);
+    localStringBuilder.append(",platform:");
+    localStringBuilder.append(this.platform);
+    localStringBuilder.append(",appName:");
+    localStringBuilder.append(this.appName);
+    localStringBuilder.append(",appKey:");
+    localStringBuilder.append(this.appKey);
+    localStringBuilder.append(",appState:");
+    localStringBuilder.append(this.appState);
+    localStringBuilder.append(",iphoneUrlScheme:");
+    localStringBuilder.append(this.iphoneUrlScheme);
+    localStringBuilder.append(",packName:");
+    localStringBuilder.append(this.packName);
+    localStringBuilder.append(",icon_url:");
+    localStringBuilder.append(this.icon_url);
+    localStringBuilder.append(",sourceUrl:");
+    localStringBuilder.append(this.sourceUrl);
+    localStringBuilder.append(",smallUrl:");
+    localStringBuilder.append(this.smallUrl);
+    localStringBuilder.append(",middleUrl:");
+    localStringBuilder.append(this.middleUrl);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.applets.data.AppletInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.app;
 
 import android.os.Vibrator;
-import android.support.v4.app.FragmentActivity;
 import com.tencent.qphone.base.util.QLog;
 
 class FrameFragment$1
@@ -14,7 +13,7 @@ class FrameFragment$1
     try
     {
       if (this.this$0.a == null) {
-        this.this$0.a = ((Vibrator)this.this$0.getActivity().getSystemService("vibrator"));
+        this.this$0.a = ((Vibrator)this.this$0.a().getSystemService("vibrator"));
       }
       this.this$0.a.vibrate(20L);
       return;
@@ -28,7 +27,7 @@ class FrameFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.FrameFragment.1
  * JD-Core Version:    0.7.0.1
  */

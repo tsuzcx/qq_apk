@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.search.activity.BaseSearchActivity;
 import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
+import com.tencent.mobileqq.search.base.activity.BaseSearchActivity;
+import com.tencent.mobileqq.search.base.fragment.BaseSearchFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class FavoriteSearchActivity
@@ -20,14 +20,14 @@ public class FavoriteSearchActivity
     paramContext.startActivity(localIntent);
   }
   
-  public BaseSearchFragment<FavoriteSearchResultModel> a()
+  protected BaseSearchFragment<FavoriteSearchResultModel> a()
   {
     return new FavoriteSearchFragment();
   }
   
-  public String a()
+  protected String a()
   {
-    return HardCodeUtil.a(2131704409);
+    return HardCodeUtil.a(2131704499);
   }
   
   @Override
@@ -39,11 +39,11 @@ public class FavoriteSearchActivity
     return bool;
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
     if ((getIntent() != null) && (UniteSearchActivity.class.getSimpleName().equals(getIntent().getStringExtra("preAct")))) {
-      overridePendingTransition(2130771994, 2130771995);
+      overridePendingTransition(2130772006, 2130772007);
     }
   }
   
@@ -56,7 +56,7 @@ public class FavoriteSearchActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqfav.globalsearch.FavoriteSearchActivity
  * JD-Core Version:    0.7.0.1
  */

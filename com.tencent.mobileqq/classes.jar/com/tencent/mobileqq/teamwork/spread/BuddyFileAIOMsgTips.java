@@ -22,15 +22,20 @@ public class BuddyFileAIOMsgTips
   
   protected void a(BaseTimAIOTipsProcessor.ListResult paramListResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("BuddyFileAIOMsgTips", 1, "getWordsList by buddyFile[" + System.currentTimeMillis() + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getWordsList by buddyFile[");
+      localStringBuilder.append(System.currentTimeMillis());
+      localStringBuilder.append("]");
+      QLog.i("BuddyFileAIOMsgTips", 1, localStringBuilder.toString());
     }
     ThreadManager.getUIHandler().post(new BuddyFileAIOMsgTips.1(this, paramListResult));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.BuddyFileAIOMsgTips
  * JD-Core Version:    0.7.0.1
  */

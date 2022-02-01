@@ -9,36 +9,42 @@ class TaskMonitorManager$1
   
   public void run()
   {
-    this.this$0.mAppLastUsage = this.this$0.mAppCurUsage;
+    TaskMonitorManager localTaskMonitorManager = this.this$0;
+    localTaskMonitorManager.mAppLastUsage = localTaskMonitorManager.mAppCurUsage;
     this.this$0.mAppCurUsage = ProcessStats.a("-1");
     long l2 = this.this$0.mAppCurUsage;
     long l3 = this.this$0.mAppLastUsage;
+    long l1;
     if (this.this$0.isCalcDeviceUsageOk)
     {
-      this.this$0.mDeviceLastUsage = this.this$0.mDeviceCurUsage;
+      localTaskMonitorManager = this.this$0;
+      localTaskMonitorManager.mDeviceLastUsage = localTaskMonitorManager.mDeviceCurUsage;
       this.this$0.mDeviceCurUsage = ProcessStats.a("-2");
+      l1 = this.this$0.mDeviceCurUsage - this.this$0.mDeviceLastUsage;
     }
-    for (long l1 = this.this$0.mDeviceCurUsage - this.this$0.mDeviceLastUsage;; l1 = 0L)
+    else
     {
-      TaskMonitorManager localTaskMonitorManager = this.this$0;
-      if ((this.this$0.mDeviceCurUsage > 0L) && (l1 > 0L)) {}
-      for (boolean bool = true;; bool = false)
-      {
-        localTaskMonitorManager.isCalcDeviceUsageOk = bool;
-        if (!this.this$0.isCalcDeviceUsageOk) {
-          break;
-        }
-        this.this$0.sTotalCpuUsage = ((int)(100L * (l2 - l3) / l1));
-        return;
-      }
-      this.this$0.sTotalCpuUsage = 0;
+      l1 = 0L;
+    }
+    localTaskMonitorManager = this.this$0;
+    boolean bool;
+    if ((localTaskMonitorManager.mDeviceCurUsage > 0L) && (l1 > 0L)) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localTaskMonitorManager.isCalcDeviceUsageOk = bool;
+    if (this.this$0.isCalcDeviceUsageOk)
+    {
+      this.this$0.sTotalCpuUsage = ((int)((l2 - l3) * 100L / l1));
       return;
     }
+    this.this$0.sTotalCpuUsage = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.monitor.service.TaskMonitorManager.1
  * JD-Core Version:    0.7.0.1
  */

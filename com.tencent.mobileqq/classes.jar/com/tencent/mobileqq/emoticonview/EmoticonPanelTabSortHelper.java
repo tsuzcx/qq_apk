@@ -1,26 +1,28 @@
 package com.tencent.mobileqq.emoticonview;
 
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.AIODepend.IPanelInteractionListener;
+import com.tencent.mobileqq.config.business.EmoticonTabSortConfBean;
 import com.tencent.mobileqq.config.business.EmoticonTabSortConfProcessor;
-import com.tencent.mobileqq.config.business.EmoticonTabSortConfProcessor.EmoticonTabSortConfBean;
+import com.tencent.mobileqq.core.util.EmoticonPanelUtils;
+import com.tencent.mobileqq.emosm.api.ICameraEmoRoamingManagerService;
+import com.tencent.mobileqq.emosm.api.IEmoticonManagerService;
 import com.tencent.mobileqq.emoticonview.ipc.QQEmoticonMainPanelApp;
-import com.tencent.mobileqq.emoticonview.ipc.proxy.CameraEmoRoamingManagerProxy;
-import com.tencent.mobileqq.emoticonview.ipc.proxy.EmoticonManagerProxy;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.CameraEmoRoamingManagerServiceProxy;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.EmoticonManagerServiceProxy;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
 public class EmoticonPanelTabSortHelper
-  extends AbstractEmoticonPanelHelper
+  extends AbstractEmoticonPanelHelper<EmoticonPanelController>
 {
   protected static final String LOG_TAG = "EmoticonPanelTabSortHelper";
   protected List<EmotionPanelInfo> mBehindDisSelectedDataList = new ArrayList();
   protected List<EmotionPanelInfo> mEmotionPanelInfos;
   protected List<EmotionPanelInfo> mFrontDisSelectedDataList = new ArrayList();
   protected boolean mHideSettingBtn = false;
+  protected IPanelInteractionListener mInteractionListener;
   protected boolean mPanelTabSortEnable = false;
   
   public EmoticonPanelTabSortHelper(EmoticonPanelController paramEmoticonPanelController)
@@ -30,178 +32,182 @@ public class EmoticonPanelTabSortHelper
   
   public void checkAndRemoveItem(List<EmotionPanelInfo> paramList)
   {
-    if (paramList == null) {}
-    while (!EmoticonStoreTabEntryUtils.checkIsMergeStoryEntry()) {
+    if (paramList == null) {
       return;
     }
     EmoticonStoreTabEntryUtils.removeSettingAndRecommendEntry(paramList);
   }
   
-  protected void fillDisSelectedDataList(EmoticonTabSortConfProcessor.EmoticonTabSortConfBean paramEmoticonTabSortConfBean)
+  protected void fillDisSelectedDataList(EmoticonTabSortConfBean paramEmoticonTabSortConfBean)
   {
     this.mBehindDisSelectedDataList.clear();
     this.mFrontDisSelectedDataList.clear();
+    int i;
+    int j;
     if ((paramEmoticonTabSortConfBean != null) && (!paramEmoticonTabSortConfBean.jdField_a_of_type_JavaUtilList.isEmpty()))
     {
-      int i = 0;
-      int j = 0;
-      if (i < paramEmoticonTabSortConfBean.jdField_a_of_type_JavaUtilList.size())
+      i = 0;
+      j = 0;
+    }
+    while (i < paramEmoticonTabSortConfBean.jdField_a_of_type_JavaUtilList.size())
+    {
+      String str = (String)paramEmoticonTabSortConfBean.jdField_a_of_type_JavaUtilList.get(i);
+      int k;
+      if ("face".equalsIgnoreCase(str))
       {
-        String str = (String)paramEmoticonTabSortConfBean.jdField_a_of_type_JavaUtilList.get(i);
-        int k;
-        if ("face".equalsIgnoreCase(str)) {
-          k = 1;
-        }
-        for (;;)
+        k = 1;
+      }
+      else if ("add".equalsIgnoreCase(str))
+      {
+        if (j != 0)
         {
-          i += 1;
-          j = k;
-          break;
-          if ("add".equalsIgnoreCase(str))
-          {
-            if (j != 0)
-            {
-              k = j;
-              if (this.mPanelController.hasBigEmotion)
-              {
-                k = j;
-                if (shouldDisplayBigEmoticon(this.mPanelController.sessionType))
-                {
-                  this.mBehindDisSelectedDataList.add(new EmotionPanelInfo(13, 0, null));
-                  k = j;
-                }
-              }
-            }
-            else
-            {
-              k = j;
-              if (this.mPanelController.hasBigEmotion)
-              {
-                k = j;
-                if (shouldDisplayBigEmoticon(this.mPanelController.sessionType))
-                {
-                  this.mFrontDisSelectedDataList.add(new EmotionPanelInfo(13, 0, null));
-                  k = j;
-                }
-              }
-            }
-          }
-          else
+          k = j;
+          if (((EmoticonPanelController)this.mPanelController).getBasePanelView().hasBigEmotion)
           {
             k = j;
-            if ("setting".equalsIgnoreCase(str))
+            if (shouldDisplayBigEmoticon(((EmoticonPanelController)this.mPanelController).getSessionType()))
             {
+              this.mBehindDisSelectedDataList.add(new EmotionPanelInfo(13, 0, null));
               k = j;
-              if (!this.mHideSettingBtn) {
-                if (j != 0)
-                {
-                  this.mBehindDisSelectedDataList.add(new EmotionPanelInfo(14, 0, null));
-                  k = j;
-                }
-                else
-                {
-                  this.mFrontDisSelectedDataList.add(new EmotionPanelInfo(14, 0, null));
-                  k = j;
-                }
-              }
+            }
+          }
+        }
+        else
+        {
+          k = j;
+          if (((EmoticonPanelController)this.mPanelController).getBasePanelView().hasBigEmotion)
+          {
+            k = j;
+            if (shouldDisplayBigEmoticon(((EmoticonPanelController)this.mPanelController).getSessionType()))
+            {
+              this.mFrontDisSelectedDataList.add(new EmotionPanelInfo(13, 0, null));
+              k = j;
             }
           }
         }
       }
-    }
-    else
-    {
+      else
+      {
+        k = j;
+        if ("setting".equalsIgnoreCase(str)) {
+          if (this.mHideSettingBtn)
+          {
+            k = j;
+          }
+          else if (j != 0)
+          {
+            this.mBehindDisSelectedDataList.add(new EmotionPanelInfo(14, 0, null));
+            k = j;
+          }
+          else
+          {
+            this.mFrontDisSelectedDataList.add(new EmotionPanelInfo(14, 0, null));
+            k = j;
+          }
+        }
+      }
+      i += 1;
+      j = k;
+      continue;
       this.mFrontDisSelectedDataList.add(new EmotionPanelInfo(13, 0, null));
       this.mFrontDisSelectedDataList.add(new EmotionPanelInfo(14, 0, null));
     }
-    if (EmoticonStoreTabEntryUtils.checkIsMergeStoryEntry())
-    {
-      EmoticonStoreTabEntryUtils.removeSettingAndRecommendEntry(this.mFrontDisSelectedDataList);
-      EmoticonStoreTabEntryUtils.removeSettingAndRecommendEntry(this.mBehindDisSelectedDataList);
-    }
+    EmoticonStoreTabEntryUtils.removeSettingAndRecommendEntry(this.mFrontDisSelectedDataList);
+    EmoticonStoreTabEntryUtils.removeSettingAndRecommendEntry(this.mBehindDisSelectedDataList);
   }
   
   public int getBehindDisSelectedTabSize()
   {
-    if ((!this.mPanelTabSortEnable) || (this.mBehindDisSelectedDataList == null)) {
-      return 0;
+    if (this.mPanelTabSortEnable)
+    {
+      List localList = this.mBehindDisSelectedDataList;
+      if (localList != null) {
+        return localList.size();
+      }
     }
-    return this.mBehindDisSelectedDataList.size();
+    return 0;
   }
   
   public int getFrontDisSelectedTabSize()
   {
-    if ((!this.mPanelTabSortEnable) || (this.mFrontDisSelectedDataList == null)) {
-      return 0;
+    if (this.mPanelTabSortEnable)
+    {
+      List localList = this.mFrontDisSelectedDataList;
+      if (localList != null) {
+        return localList.size();
+      }
     }
-    return this.mFrontDisSelectedDataList.size();
+    return 0;
   }
   
   public String getGifEntranceIconUrl()
   {
-    EmoticonTabSortConfProcessor.EmoticonTabSortConfBean localEmoticonTabSortConfBean = loadTabSortConObj();
+    EmoticonTabSortConfBean localEmoticonTabSortConfBean = loadTabSortConObj();
     if (localEmoticonTabSortConfBean != null) {
       return localEmoticonTabSortConfBean.jdField_a_of_type_JavaLangString;
     }
     return "";
   }
   
-  protected int getLastCanSelectedTabIndex()
+  public int getLastCanSelectedTabIndex()
   {
-    if ((this.mEmotionPanelInfos == null) || (this.mEmotionPanelInfos.isEmpty())) {
-      return getFrontDisSelectedTabSize();
+    List localList = this.mEmotionPanelInfos;
+    if ((localList != null) && (!localList.isEmpty())) {
+      return this.mEmotionPanelInfos.size() - getBehindDisSelectedTabSize() - 1;
     }
-    return this.mEmotionPanelInfos.size() - getBehindDisSelectedTabSize() - 1;
+    return getFrontDisSelectedTabSize();
   }
   
   public int getPkgEndSwitchSelectIndex()
   {
-    CameraEmoRoamingManagerProxy localCameraEmoRoamingManagerProxy = (CameraEmoRoamingManagerProxy)this.mPanelController.app.getManager(QQManagerFactory.CAMERA_EMOTION_MANAGER);
-    if (!localCameraEmoRoamingManagerProxy.isShowCameraEmoInApp()) {}
-    for (int j = 4;; j = 5)
+    CameraEmoRoamingManagerServiceProxy localCameraEmoRoamingManagerServiceProxy = (CameraEmoRoamingManagerServiceProxy)((EmoticonPanelController)this.mPanelController).app.getRuntimeService(ICameraEmoRoamingManagerService.class);
+    if (!localCameraEmoRoamingManagerServiceProxy.isShowCameraEmoInApp()) {
+      j = 4;
+    } else {
+      j = 5;
+    }
+    List localList = ((EmoticonManagerServiceProxy)((EmoticonPanelController)this.mPanelController).app.getRuntimeService(IEmoticonManagerService.class)).getProEmoticonPkgs(false, ((EmoticonPanelController)this.mPanelController).getBusinessType(), ((EmoticonPanelController)this.mPanelController).getKanDianBiu());
+    int i;
+    if (localList != null)
     {
-      List localList = ((EmoticonManagerProxy)this.mPanelController.app.getManager(QQManagerFactory.EMOTICON_MANAGER)).getProEmoticonPkgs(false, this.mPanelController.businessType, this.mPanelController.kanDianBiu);
-      int i;
-      if (localList != null)
-      {
-        i = j;
-        if (localList.size() != 0) {}
-      }
-      else
-      {
-        i = j - 1;
-      }
-      Object localObject = loadTabSortConObj();
+      i = j;
+      if (localList.size() != 0) {}
+    }
+    else
+    {
+      i = j - 1;
+    }
+    Object localObject = loadTabSortConObj();
+    int j = i;
+    if (localObject != null)
+    {
       j = i;
-      String str;
-      if (localObject != null)
+      if (((EmoticonTabSortConfBean)localObject).b.size() > 0)
       {
+        i = ((EmoticonTabSortConfBean)localObject).b.size();
+        localObject = ((EmoticonTabSortConfBean)localObject).b.iterator();
         j = i;
-        if (((EmoticonTabSortConfProcessor.EmoticonTabSortConfBean)localObject).b.size() > 0)
+        if (((Iterator)localObject).hasNext())
         {
-          i = ((EmoticonTabSortConfProcessor.EmoticonTabSortConfBean)localObject).b.size();
-          localObject = ((EmoticonTabSortConfProcessor.EmoticonTabSortConfBean)localObject).b.iterator();
-          j = i;
-          if (((Iterator)localObject).hasNext())
+          String str = (String)((Iterator)localObject).next();
+          if (("camera".equalsIgnoreCase(str)) && (!localCameraEmoRoamingManagerServiceProxy.isShowCameraEmoInApp())) {}
+          for (;;)
           {
-            str = (String)((Iterator)localObject).next();
-            if (("camera".equalsIgnoreCase(str)) && (!localCameraEmoRoamingManagerProxy.isShowCameraEmoInApp())) {
-              i -= 1;
+            i -= 1;
+            break;
+            if (!"recommend".equalsIgnoreCase(str)) {
+              break;
+            }
+            if (localList != null) {
+              if (localList.size() != 0) {
+                break;
+              }
             }
           }
         }
       }
-      for (;;)
-      {
-        break;
-        if (("recommend".equalsIgnoreCase(str)) && ((localList == null) || (localList.size() == 0)))
-        {
-          i -= 1;
-          continue;
-          return getFrontDisSelectedTabSize() + j;
-        }
-      }
     }
+    return getFrontDisSelectedTabSize() + j;
   }
   
   public List<EmotionPanelInfo> getSortEmotionPanelInfoList(List<EmotionPanelInfo> paramList)
@@ -231,8 +237,8 @@ public class EmoticonPanelTabSortHelper
     if (!this.mBehindDisSelectedDataList.isEmpty()) {
       localList.addAll(this.mBehindDisSelectedDataList);
     }
-    paramList = this.mPanelController.getAIOObj();
-    if ((paramList != null) && ((paramList.a().a == 0) || (paramList.a().a == 1) || (paramList.a().a == 3000)))
+    paramList = this.mInteractionListener;
+    if ((paramList != null) && ((paramList.getCurType() == 0) || (this.mInteractionListener.getCurType() == 1) || (this.mInteractionListener.getCurType() == 3000)))
     {
       checkAndRemoveItem(localList);
       checkAndRemoveItem(this.mFrontDisSelectedDataList);
@@ -255,23 +261,23 @@ public class EmoticonPanelTabSortHelper
   
   public void initBefore()
   {
+    this.mInteractionListener = ((EmoticonPanelController)this.mPanelController).getInteractionListener();
+    EmoticonTabSortConfBean localEmoticonTabSortConfBean = loadTabSortConObj();
     boolean bool2 = false;
-    EmoticonTabSortConfProcessor.EmoticonTabSortConfBean localEmoticonTabSortConfBean = loadTabSortConObj();
-    if (localEmoticonTabSortConfBean != null) {
-      if ((!localEmoticonTabSortConfBean.a()) || (!isInAIOPanel()) || (this.mPanelController.mHideAllSettingTabs)) {
-        break label50;
-      }
-    }
-    label50:
-    for (boolean bool1 = true;; bool1 = false)
+    boolean bool1;
+    if (localEmoticonTabSortConfBean != null)
     {
-      this.mPanelTabSortEnable = bool1;
-      if (this.mPanelTabSortEnable) {
-        break;
+      if ((localEmoticonTabSortConfBean.a()) && (isInAIOPanel()) && (!((EmoticonPanelController)this.mPanelController).getBasePanelView().mHideAllSettingTabs)) {
+        bool1 = true;
+      } else {
+        bool1 = false;
       }
+      this.mPanelTabSortEnable = bool1;
+    }
+    if (!this.mPanelTabSortEnable) {
       return;
     }
-    if ((!this.mPanelController.mParams.hideSettingBtn) && (this.mPanelController.businessType != 3))
+    if ((!((EmoticonPanelController)this.mPanelController).getParams().hideSettingBtn) && (((EmoticonPanelController)this.mPanelController).getBusinessType() != 3))
     {
       bool1 = bool2;
       if (!this.mHideSettingBtn) {}
@@ -281,7 +287,7 @@ public class EmoticonPanelTabSortHelper
       bool1 = true;
     }
     this.mHideSettingBtn = bool1;
-    EmoticonPanelSettingHelper localEmoticonPanelSettingHelper = (EmoticonPanelSettingHelper)this.mPanelController.getHelper(6);
+    EmoticonPanelSettingHelper localEmoticonPanelSettingHelper = (EmoticonPanelSettingHelper)((EmoticonPanelController)this.mPanelController).getHelper(6);
     localEmoticonPanelSettingHelper.setEmoSettingVisibility(8);
     localEmoticonPanelSettingHelper.setMoreSettingVisibility(8);
     localEmoticonPanelSettingHelper.setHideMoreAndSettingButton(true, true);
@@ -296,10 +302,10 @@ public class EmoticonPanelTabSortHelper
   
   protected boolean isInAIOPanel()
   {
-    return (this.mPanelController.mBaseChatPie != null) && (!this.mPanelController.mParams.kanDianBiu) && (this.mPanelController.mBaseChatPie.a != null);
+    return (this.mInteractionListener != null) && (!((EmoticonPanelController)this.mPanelController).getParams().kanDianBiu) && (this.mInteractionListener.getAIOInput() != null);
   }
   
-  protected EmoticonTabSortConfProcessor.EmoticonTabSortConfBean loadTabSortConObj()
+  protected EmoticonTabSortConfBean loadTabSortConObj()
   {
     return EmoticonTabSortConfProcessor.a();
   }
@@ -318,45 +324,42 @@ public class EmoticonPanelTabSortHelper
   
   public boolean setSelection(int paramInt)
   {
-    if ((!this.mPanelTabSortEnable) || (this.mEmotionPanelInfos == null) || (paramInt < 0) || (paramInt >= this.mEmotionPanelInfos.size())) {
-      return false;
+    if (this.mPanelTabSortEnable)
+    {
+      Object localObject = this.mEmotionPanelInfos;
+      if ((localObject != null) && (paramInt >= 0) && (paramInt < ((List)localObject).size()))
+      {
+        localObject = (EmotionPanelInfo)this.mEmotionPanelInfos.get(paramInt);
+        return ((EmoticonPanelSettingHelper)((EmoticonPanelController)this.mPanelController).getHelper(6)).performClick(((EmotionPanelInfo)localObject).type);
+      }
     }
-    EmotionPanelInfo localEmotionPanelInfo = (EmotionPanelInfo)this.mEmotionPanelInfos.get(paramInt);
-    return ((EmoticonPanelSettingHelper)this.mPanelController.getHelper(6)).performClick(localEmotionPanelInfo.type);
+    return false;
   }
   
   protected boolean shouldDisplayBigEmoticon(int paramInt)
   {
-    return EmoticonUtils.shouldDisplayBigEmoticon(paramInt);
+    return EmoticonPanelUtils.c(paramInt);
   }
   
   public void updateLastSelectedSecondTabIndex()
   {
-    if ((!this.mPanelTabSortEnable) || (this.mEmotionPanelInfos == null)) {}
-    label122:
-    for (;;)
+    if (this.mPanelTabSortEnable)
     {
-      return;
-      int i;
-      if ((EmoticonPanelController.sLastSelectedSecondTabIndex >= 0) && (EmoticonPanelController.sLastSelectedSecondTabIndex < getFrontDisSelectedTabSize()))
-      {
-        EmoticonPanelController.sLastSelectedSecondTabIndex += getFrontDisSelectedTabSize();
-        i = 0;
+      if (this.mEmotionPanelInfos == null) {
+        return;
       }
-      for (;;)
+      if ((BasePanelModel.sLastSelectedSecondTabIndex >= 0) && (BasePanelModel.sLastSelectedSecondTabIndex < getFrontDisSelectedTabSize())) {
+        BasePanelModel.sLastSelectedSecondTabIndex += getFrontDisSelectedTabSize();
+      } else if ((getBehindDisSelectedTabSize() > 0) && (getLastCanSelectedTabIndex() >= 0) && (BasePanelModel.sLastSelectedSecondTabIndex > getLastCanSelectedTabIndex())) {
+        BasePanelModel.sLastSelectedSecondTabIndex = getLastCanSelectedTabIndex();
+      }
+      int i = 0;
+      while (i < this.mEmotionPanelInfos.size())
       {
-        if (i >= this.mEmotionPanelInfos.size()) {
-          break label122;
-        }
         if (((EmotionPanelInfo)this.mEmotionPanelInfos.get(i)).type == 8)
         {
-          EmoticonPanelController.sRecommendEmoticonViewPoSition = i;
+          BasePanelView.sRecommendEmoticonViewPoSition = i;
           return;
-          if ((getBehindDisSelectedTabSize() <= 0) || (getLastCanSelectedTabIndex() < 0) || (EmoticonPanelController.sLastSelectedSecondTabIndex <= getLastCanSelectedTabIndex())) {
-            break;
-          }
-          EmoticonPanelController.sLastSelectedSecondTabIndex = getLastCanSelectedTabIndex();
-          break;
         }
         i += 1;
       }
@@ -365,27 +368,34 @@ public class EmoticonPanelTabSortHelper
   
   public int updateOriginalSelectIndex(int paramInt)
   {
-    if ((!this.mPanelTabSortEnable) || (getFrontDisSelectedTabSize() == 0) || (paramInt >= getFrontDisSelectedTabSize())) {}
-    int i;
-    int j;
-    do
+    int i = paramInt;
+    if (this.mPanelTabSortEnable)
     {
-      return paramInt;
       i = paramInt;
-      if (paramInt < 0) {
-        i = 0;
+      if (getFrontDisSelectedTabSize() != 0)
+      {
+        if (paramInt >= getFrontDisSelectedTabSize()) {
+          return paramInt;
+        }
+        i = paramInt;
+        if (paramInt < 0) {
+          i = 0;
+        }
+        paramInt = i + getFrontDisSelectedTabSize();
+        int j = getLastCanSelectedTabIndex();
+        i = paramInt;
+        if (paramInt > j) {
+          i = j;
+        }
       }
-      j = i + getFrontDisSelectedTabSize();
-      i = getLastCanSelectedTabIndex();
-      paramInt = i;
-    } while (j > i);
-    return j;
+    }
+    return i;
   }
   
   protected void updateViewPagerNoScrollItem()
   {
-    if ((this.mEmotionPanelInfos != null) && (this.mPanelController.viewPager != null)) {
-      this.mPanelController.viewPager.setNoScrollItem(getFrontDisSelectedTabSize(), getLastCanSelectedTabIndex());
+    if ((this.mEmotionPanelInfos != null) && (((EmoticonPanelController)this.mPanelController).getViewPager() != null)) {
+      ((EmoticonPanelController)this.mPanelController).getViewPager().setNoScrollItem(getFrontDisSelectedTabSize(), getLastCanSelectedTabIndex());
     }
   }
   
@@ -393,35 +403,31 @@ public class EmoticonPanelTabSortHelper
   {
     if (!this.mPanelTabSortEnable)
     {
-      this.mPanelController.viewPager.setRightScrollDisEnable(false);
-      this.mPanelController.viewPager.setLeftScrollDisEnable(false);
+      ((EmoticonPanelController)this.mPanelController).getViewPager().setRightScrollDisEnable(false);
+      ((EmoticonPanelController)this.mPanelController).getViewPager().setLeftScrollDisEnable(false);
       return;
     }
     if ((paramInt != 0) && (paramInt <= getFrontDisSelectedTabSize()))
     {
-      this.mPanelController.viewPager.setRightScrollDisEnable(true);
-      this.mPanelController.viewPager.setLeftScrollDisEnable(false);
+      ((EmoticonPanelController)this.mPanelController).getViewPager().setRightScrollDisEnable(true);
+      ((EmoticonPanelController)this.mPanelController).getViewPager().setLeftScrollDisEnable(false);
     }
-    for (;;)
+    else if (paramInt >= getLastCanSelectedTabIndex())
     {
-      updateViewPagerNoScrollItem();
-      return;
-      if (paramInt >= getLastCanSelectedTabIndex())
-      {
-        this.mPanelController.viewPager.setRightScrollDisEnable(false);
-        this.mPanelController.viewPager.setLeftScrollDisEnable(true);
-      }
-      else
-      {
-        this.mPanelController.viewPager.setRightScrollDisEnable(false);
-        this.mPanelController.viewPager.setLeftScrollDisEnable(false);
-      }
+      ((EmoticonPanelController)this.mPanelController).getViewPager().setRightScrollDisEnable(false);
+      ((EmoticonPanelController)this.mPanelController).getViewPager().setLeftScrollDisEnable(true);
     }
+    else
+    {
+      ((EmoticonPanelController)this.mPanelController).getViewPager().setRightScrollDisEnable(false);
+      ((EmoticonPanelController)this.mPanelController).getViewPager().setLeftScrollDisEnable(false);
+    }
+    updateViewPagerNoScrollItem();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelTabSortHelper
  * JD-Core Version:    0.7.0.1
  */

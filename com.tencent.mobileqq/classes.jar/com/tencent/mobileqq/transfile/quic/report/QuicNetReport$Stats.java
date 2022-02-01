@@ -16,16 +16,34 @@ public class QuicNetReport$Stats
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("Stats{mSrttUs=").append(this.mSrttUs).append(", mEstimatedBandwidth=").append(this.mEstimatedBandwidth).append(", mRttMean=").append(this.mRttMean).append(", mLostRate=").append(this.mLostRate).append(", mByteRecv=").append(this.mByteRecv).append(", mSrvMessage.length='");
-    if (this.mSrvMessage != null) {}
-    for (int i = this.mSrvMessage.length;; i = 0) {
-      return i + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Stats{mSrttUs=");
+    localStringBuilder.append(this.mSrttUs);
+    localStringBuilder.append(", mEstimatedBandwidth=");
+    localStringBuilder.append(this.mEstimatedBandwidth);
+    localStringBuilder.append(", mRttMean=");
+    localStringBuilder.append(this.mRttMean);
+    localStringBuilder.append(", mLostRate=");
+    localStringBuilder.append(this.mLostRate);
+    localStringBuilder.append(", mByteRecv=");
+    localStringBuilder.append(this.mByteRecv);
+    localStringBuilder.append(", mSrvMessage.length='");
+    byte[] arrayOfByte = this.mSrvMessage;
+    int i;
+    if (arrayOfByte != null) {
+      i = arrayOfByte.length;
+    } else {
+      i = 0;
     }
+    localStringBuilder.append(i);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.quic.report.QuicNetReport.Stats
  * JD-Core Version:    0.7.0.1
  */

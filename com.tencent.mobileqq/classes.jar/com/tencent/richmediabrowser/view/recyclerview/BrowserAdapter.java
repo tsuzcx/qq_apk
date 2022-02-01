@@ -1,6 +1,6 @@
 package com.tencent.richmediabrowser.view.recyclerview;
 
-import android.app.Activity;
+import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
@@ -22,39 +22,43 @@ public class BrowserAdapter
 {
   private static final String TAG = "BrowserAdapter";
   private boolean isFirstCome = true;
-  private Activity mActivity;
+  private Context mContext;
   public MainBrowserPresenter mainBrowserPresenter;
   int margin;
   int screenHeight;
   int screenWidth;
   
-  public BrowserAdapter(Activity paramActivity)
+  public BrowserAdapter(Context paramContext)
   {
-    this.mActivity = paramActivity;
-    this.margin = ScreenUtils.dip2px(this.mActivity, 0.0F);
-    this.screenWidth = ScreenUtils.getScreenWidth(this.mActivity);
-    this.screenHeight = ScreenUtils.getScreenHeight(this.mActivity);
+    this.mContext = paramContext;
+    this.margin = ScreenUtils.dip2px(this.mContext, 0.0F);
+    this.screenWidth = ScreenUtils.getScreenWidth(this.mContext);
+    this.screenHeight = ScreenUtils.getScreenHeight(this.mContext);
   }
   
   private void setParams(View paramView, int paramInt)
   {
     RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-    if ((paramInt == 0) || (paramInt == getItemCount() - 1)) {
-      localLayoutParams.leftMargin = 0;
-    }
-    for (localLayoutParams.rightMargin = 0;; localLayoutParams.rightMargin = this.margin)
+    if ((paramInt != 0) && (paramInt != getItemCount() - 1))
     {
-      localLayoutParams.width = this.screenWidth;
-      localLayoutParams.height = this.screenHeight;
-      paramView.setLayoutParams(localLayoutParams);
-      return;
-      localLayoutParams.leftMargin = this.margin;
+      paramInt = this.margin;
+      localLayoutParams.leftMargin = paramInt;
+      localLayoutParams.rightMargin = paramInt;
     }
+    else
+    {
+      localLayoutParams.leftMargin = 0;
+      localLayoutParams.rightMargin = 0;
+    }
+    localLayoutParams.width = this.screenWidth;
+    localLayoutParams.height = this.screenHeight;
+    paramView.setLayoutParams(localLayoutParams);
   }
   
   public RichMediaBrowserInfo getItem(int paramInt)
   {
-    if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserModel != null)) {
+    MainBrowserPresenter localMainBrowserPresenter = this.mainBrowserPresenter;
+    if ((localMainBrowserPresenter != null) && (localMainBrowserPresenter.browserModel != null)) {
       return this.mainBrowserPresenter.browserModel.getItem(paramInt);
     }
     return null;
@@ -62,7 +66,8 @@ public class BrowserAdapter
   
   public int getItemCount()
   {
-    if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserModel != null)) {
+    MainBrowserPresenter localMainBrowserPresenter = this.mainBrowserPresenter;
+    if ((localMainBrowserPresenter != null) && (localMainBrowserPresenter.browserModel != null)) {
       return this.mainBrowserPresenter.browserModel.getCount();
     }
     return 0;
@@ -79,12 +84,17 @@ public class BrowserAdapter
   
   public void onBindViewHolder(BrowserAdapter.BrowserViewHolder paramBrowserViewHolder, int paramInt)
   {
-    BrowserLogHelper.getInstance().getGalleryLog().i("BrowserAdapter", 2, "onBindViewHolder position = " + paramInt);
+    IBrowserLog localIBrowserLog = BrowserLogHelper.getInstance().getGalleryLog();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onBindViewHolder position = ");
+    localStringBuilder.append(paramInt);
+    localIBrowserLog.i("BrowserAdapter", 2, localStringBuilder.toString());
     if (paramBrowserViewHolder != null)
     {
       paramBrowserViewHolder = paramBrowserViewHolder.itemView;
-      if (paramBrowserViewHolder != null)
+      if ((paramBrowserViewHolder instanceof BrowserBaseView))
       {
+        paramBrowserViewHolder = (BrowserBaseView)paramBrowserViewHolder;
         paramBrowserViewHolder.bindView(paramInt);
         if (this.isFirstCome)
         {
@@ -98,33 +108,47 @@ public class BrowserAdapter
   
   public BrowserAdapter.BrowserViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    BrowserLogHelper.getInstance().getGalleryLog().i("BrowserAdapter", 2, "onCreateViewHolder  viewType = " + paramInt);
-    BrowserBaseView localBrowserBaseView = this.mainBrowserPresenter.buildItemView(paramInt);
-    if (localBrowserBaseView != null)
+    Object localObject = BrowserLogHelper.getInstance().getGalleryLog();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onCreateViewHolder  viewType = ");
+    localStringBuilder.append(paramInt);
+    ((IBrowserLog)localObject).i("BrowserAdapter", 2, localStringBuilder.toString());
+    localObject = this.mainBrowserPresenter.buildItemView(paramInt);
+    if ((localObject instanceof BrowserBaseView))
     {
-      localBrowserBaseView.getView(localBrowserBaseView.mBrowserItemView, paramViewGroup);
-      paramViewGroup = localBrowserBaseView;
-      if (localBrowserBaseView.mBrowserItemView != null) {
-        return new BrowserAdapter.BrowserViewHolder(this, localBrowserBaseView);
+      localObject = (BrowserBaseView)localObject;
+      ((BrowserBaseView)localObject).getView(((BrowserBaseView)localObject).mBrowserItemView, paramViewGroup);
+      paramViewGroup = (ViewGroup)localObject;
+      if (((BrowserBaseView)localObject).mBrowserItemView != null) {
+        return new BrowserAdapter.BrowserViewHolder(this, (BrowserBaseView)localObject, this.mainBrowserPresenter.getDecoratorPresenter(paramInt), this.mainBrowserPresenter.getPresenter(paramInt));
       }
     }
     else
     {
       BrowserLogHelper.getInstance().getGalleryLog().i("BrowserAdapter", 2, "onCreateViewHolder  baseView is null");
-      paramViewGroup = new BrowserBaseView(this.mActivity, new BrowserBasePresenter());
-      paramViewGroup.mBrowserItemView = new RelativeLayout(this.mActivity);
+      paramViewGroup = new BrowserBaseView(this.mContext, new BrowserBasePresenter());
+      paramViewGroup.mBrowserItemView = new RelativeLayout(this.mContext);
     }
-    return new BrowserAdapter.BrowserViewHolder(this, paramViewGroup);
+    return new BrowserAdapter.BrowserViewHolder(this, paramViewGroup, this.mainBrowserPresenter.getDecoratorPresenter(paramInt), this.mainBrowserPresenter.getPresenter(paramInt));
   }
   
   public void onViewRecycled(BrowserAdapter.BrowserViewHolder paramBrowserViewHolder)
   {
     super.onViewRecycled(paramBrowserViewHolder);
-    if ((paramBrowserViewHolder.itemView != null) && (this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserScene != null))
+    if ((paramBrowserViewHolder.itemView instanceof BrowserBaseView))
     {
-      int i = this.mainBrowserPresenter.browserScene.getPosition(paramBrowserViewHolder.itemView.mBrowserItemView);
-      BrowserLogHelper.getInstance().getGalleryLog().i("BrowserAdapter", 2, "onViewRecycled position = " + i);
-      paramBrowserViewHolder.itemView.onDestroyView(i, paramBrowserViewHolder.itemView.mBrowserItemView);
+      Object localObject = this.mainBrowserPresenter;
+      if ((localObject != null) && (((MainBrowserPresenter)localObject).browserScene != null))
+      {
+        paramBrowserViewHolder = (BrowserBaseView)paramBrowserViewHolder.itemView;
+        int i = this.mainBrowserPresenter.browserScene.getPosition(paramBrowserViewHolder.mBrowserItemView);
+        localObject = BrowserLogHelper.getInstance().getGalleryLog();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onViewRecycled position = ");
+        localStringBuilder.append(i);
+        ((IBrowserLog)localObject).i("BrowserAdapter", 2, localStringBuilder.toString());
+        paramBrowserViewHolder.onDestroyView(i, paramBrowserViewHolder.mBrowserItemView);
+      }
     }
   }
   
@@ -140,7 +164,7 @@ public class BrowserAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmediabrowser.view.recyclerview.BrowserAdapter
  * JD-Core Version:    0.7.0.1
  */

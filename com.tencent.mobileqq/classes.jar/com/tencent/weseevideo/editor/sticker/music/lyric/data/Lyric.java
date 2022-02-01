@@ -30,11 +30,13 @@ public class Lyric
   public void clear()
   {
     this.mUILineCount = 0;
-    if (this.mSentences != null) {
-      this.mSentences.clear();
+    ArrayList localArrayList = this.mSentences;
+    if (localArrayList != null) {
+      localArrayList.clear();
     }
-    if (this.mListSentenceUI != null) {
-      this.mListSentenceUI.clear();
+    localArrayList = this.mListSentenceUI;
+    if (localArrayList != null) {
+      localArrayList.clear();
     }
     this.mLastHitSentence = null;
     this.mLastHitSentenceNo = 0;
@@ -44,127 +46,133 @@ public class Lyric
   {
     this.mType = paramLyric.mType;
     this.mOffset = paramLyric.mOffset;
-    if (this.mSentences == null) {
+    Object localObject = this.mSentences;
+    if (localObject == null) {
       this.mSentences = new ArrayList();
+    } else {
+      ((ArrayList)localObject).clear();
     }
-    for (;;)
+    localObject = paramLyric.mSentences.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      Iterator localIterator = paramLyric.mSentences.iterator();
-      while (localIterator.hasNext())
-      {
-        Sentence localSentence = (Sentence)localIterator.next();
-        this.mSentences.add(localSentence.getCopy());
-      }
-      this.mSentences.clear();
+      Sentence localSentence = (Sentence)((Iterator)localObject).next();
+      this.mSentences.add(localSentence.getCopy());
     }
     this.mUILineCount = paramLyric.getUILineSize();
-    Log.d("Lyric", "copy -> mType : " + this.mType);
+    paramLyric = new StringBuilder();
+    paramLyric.append("copy -> mType : ");
+    paramLyric.append(this.mType);
+    Log.d("Lyric", paramLyric.toString());
   }
   
   public int countSentence(int paramInt1, int paramInt2)
   {
-    if (isEmpty()) {}
-    do
-    {
+    if (isEmpty()) {
       return 0;
-      paramInt1 = findLineNoByStartTime(paramInt1);
-      paramInt2 = findEndLineByStartTime(paramInt2);
-    } while ((paramInt1 < 0) || (paramInt2 < paramInt1));
-    return paramInt2 - paramInt1 + 1;
+    }
+    paramInt1 = findLineNoByStartTime(paramInt1);
+    paramInt2 = findEndLineByStartTime(paramInt2);
+    if (paramInt1 >= 0)
+    {
+      if (paramInt2 < paramInt1) {
+        return 0;
+      }
+      return paramInt2 - paramInt1 + 1;
+    }
+    return 0;
   }
   
   public String findCharacterByTime(long paramLong)
   {
-    if ((this.mSentences == null) || (this.mSentences.isEmpty()) || (paramLong < 0L)) {
-      return null;
-    }
-    int j = this.mSentences.size();
-    int i = 0;
-    while (i < j)
+    Object localObject2 = this.mSentences;
+    Object localObject1 = null;
+    if ((localObject2 != null) && (!((ArrayList)localObject2).isEmpty()))
     {
-      Sentence localSentence = (Sentence)this.mSentences.get(i);
-      String str2;
-      Object localObject;
-      if ((paramLong >= localSentence.mStartTime) && (paramLong <= localSentence.mStartTime + localSentence.mDuration))
-      {
-        str2 = localSentence.mText;
-        if (localSentence.mCharacters != null)
-        {
-          j = localSentence.mCharacters.size();
-          if (j > 0)
-          {
-            i = 0;
-            localObject = null;
-          }
-        }
+      if (paramLong < 0L) {
+        return null;
       }
-      else
+      int k = this.mSentences.size();
+      int j = 0;
+      int i = 0;
+      while (i < k)
       {
-        for (;;)
+        Sentence localSentence = (Sentence)this.mSentences.get(i);
+        if ((paramLong >= localSentence.mStartTime) && (paramLong <= localSentence.mStartTime + localSentence.mDuration))
         {
-          if (i < j)
+          localObject2 = localSentence.mText;
+          if (localSentence.mCharacters != null)
           {
-            LyricCharacter localLyricCharacter = (LyricCharacter)localSentence.mCharacters.get(i);
-            if (i < j - 1) {
-              localObject = (LyricCharacter)localSentence.mCharacters.get(i + 1);
-            }
-            if ((localLyricCharacter.mStartTime <= paramLong) && (localObject != null) && (((LyricCharacter)localObject).mStartTime > paramLong))
+            k = localSentence.mCharacters.size();
+            if (k > 0)
             {
-              if (i == j - 1) {}
-              try
+              i = j;
+              while (i < k)
               {
-                return localSentence.mText.substring(localLyricCharacter.mStart, localSentence.mText.length());
+                LyricCharacter localLyricCharacter = (LyricCharacter)localSentence.mCharacters.get(i);
+                j = k - 1;
+                if (i < j) {
+                  localObject1 = (LyricCharacter)localSentence.mCharacters.get(i + 1);
+                }
+                if ((localLyricCharacter.mStartTime <= paramLong) && (localObject1 != null) && (((LyricCharacter)localObject1).mStartTime > paramLong))
+                {
+                  if (i == j) {}
+                  try
+                  {
+                    localObject1 = localSentence.mText.substring(localLyricCharacter.mStart, localSentence.mText.length());
+                  }
+                  catch (StringIndexOutOfBoundsException localStringIndexOutOfBoundsException1)
+                  {
+                    localStringIndexOutOfBoundsException1.printStackTrace();
+                    break;
+                  }
+                  if (localSentence.mText.length() >= localLyricCharacter.mEnd) {
+                    localObject1 = localSentence.mText.substring(localLyricCharacter.mStart, localLyricCharacter.mEnd);
+                  } else {
+                    localObject1 = localSentence.mText.substring(localLyricCharacter.mStart, localSentence.mText.length());
+                  }
+                }
+                else
+                {
+                  if ((localLyricCharacter.mStartTime > paramLong) || (localLyricCharacter.mStartTime + localLyricCharacter.mDuration < paramLong)) {
+                    break label435;
+                  }
+                  if (i != j) {}
+                }
+                try
+                {
+                  String str = localSentence.mText.substring(localLyricCharacter.mStart, localSentence.mText.length());
+                  break label422;
+                  if (localSentence.mText.length() >= localLyricCharacter.mEnd) {
+                    str = localSentence.mText.substring(localLyricCharacter.mStart, localLyricCharacter.mEnd);
+                  } else {
+                    str = localSentence.mText.substring(localLyricCharacter.mStart, localSentence.mText.length());
+                  }
+                  label422:
+                  return str;
+                }
+                catch (StringIndexOutOfBoundsException localStringIndexOutOfBoundsException2)
+                {
+                  localStringIndexOutOfBoundsException2.printStackTrace();
+                }
+                label435:
+                i += 1;
               }
-              catch (StringIndexOutOfBoundsException localStringIndexOutOfBoundsException1)
-              {
-                localStringIndexOutOfBoundsException1.printStackTrace();
-                return str2;
-              }
-              if (localSentence.mText.length() >= localLyricCharacter.mEnd) {
-                return localSentence.mText.substring(localLyricCharacter.mStart, localLyricCharacter.mEnd);
-              }
-              localObject = localSentence.mText.substring(localLyricCharacter.mStart, localSentence.mText.length());
-              return localObject;
             }
-            if ((localLyricCharacter.mStartTime <= paramLong) && (localLyricCharacter.mStartTime + localLyricCharacter.mDuration >= paramLong))
-            {
-              if (i == j - 1) {}
-              try
-              {
-                return localSentence.mText.substring(localLyricCharacter.mStart, localSentence.mText.length());
-              }
-              catch (StringIndexOutOfBoundsException localStringIndexOutOfBoundsException2)
-              {
-                String str1;
-                localStringIndexOutOfBoundsException2.printStackTrace();
-                return str2;
-              }
-              if (localSentence.mText.length() >= localLyricCharacter.mEnd) {
-                return localSentence.mText.substring(localLyricCharacter.mStart, localLyricCharacter.mEnd);
-              }
-              str1 = localSentence.mText.substring(localLyricCharacter.mStart, localSentence.mText.length());
-              return str1;
-            }
-            i += 1;
-            continue;
-            i += 1;
-            break;
           }
+          return localObject2;
         }
+        i += 1;
       }
-      return str2;
     }
     return null;
   }
   
   public int findEndLineByStartTime(int paramInt)
   {
-    int i;
     if (paramInt < 0)
     {
       Log.w("Lyric", "findEndLineByStartTime -> illegal time");
-      i = 0;
-      return i;
+      return 0;
     }
     ArrayList localArrayList = this.mSentences;
     if (localArrayList == null)
@@ -174,27 +182,26 @@ public class Lyric
     }
     int k = localArrayList.size();
     int j = 0;
-    if (j < k)
+    while (j < k)
     {
       Sentence localSentence = (Sentence)localArrayList.get(j);
-      if (localSentence == null) {}
-      while (paramInt > localSentence.mStartTime)
+      if ((localSentence != null) && (paramInt <= localSentence.mStartTime))
       {
-        j += 1;
-        break;
+        paramInt = j - 1;
+        break label96;
       }
+      j += 1;
     }
-    for (paramInt = j - 1;; paramInt = 0)
-    {
-      i = paramInt;
-      if (paramInt < 0) {
-        i = 0;
-      }
-      if (j != k) {
-        break;
-      }
-      return k - 1;
+    paramInt = 0;
+    label96:
+    int i = paramInt;
+    if (paramInt < 0) {
+      i = 0;
     }
+    if (j == k) {
+      i = k - 1;
+    }
+    return i;
   }
   
   public int findLineNo(int paramInt)
@@ -204,36 +211,39 @@ public class Lyric
   
   public int findLineNoByEndTime(int paramInt)
   {
+    int k = 0;
     if (paramInt < 0)
     {
       Log.w("Lyric", "findLineNoByEndTime -> illegal time");
-      paramInt = 0;
+      return 0;
     }
+    ArrayList localArrayList = this.mSentences;
+    if (localArrayList == null)
+    {
+      Log.w("Lyric", "findLineNoByEndTime -> sentence data not found");
+      return -1;
+    }
+    int m = localArrayList.size();
+    int i = 0;
+    int j;
     for (;;)
     {
-      return paramInt;
-      ArrayList localArrayList = this.mSentences;
-      if (localArrayList == null)
+      j = k;
+      if (i >= m) {
+        break;
+      }
+      Sentence localSentence = (Sentence)localArrayList.get(i);
+      if ((localSentence != null) && (localSentence.mStartTime + localSentence.mDuration >= paramInt))
       {
-        Log.w("Lyric", "findLineNoByEndTime -> sentence data not found");
-        return -1;
+        j = i;
+        break;
       }
-      int j = localArrayList.size();
-      int i = 0;
-      if (i < j)
-      {
-        Sentence localSentence = (Sentence)localArrayList.get(i);
-        if (localSentence == null) {}
-        while (localSentence.mStartTime + localSentence.mDuration < paramInt)
-        {
-          i += 1;
-          break;
-        }
-      }
-      for (paramInt = i; i == j; paramInt = 0) {
-        return j - 1;
-      }
+      i += 1;
     }
+    if (i == m) {
+      j = m - 1;
+    }
+    return j;
   }
   
   public int findLineNoByStartTime(int paramInt)
@@ -243,105 +253,111 @@ public class Lyric
       Log.w("Lyric", "findLineNoByStartTime -> illegal time");
       return -1;
     }
-    if ((this.mSentences == null) || (this.mSentences.size() == 0))
-    {
-      Log.w("Lyric", "findLineNoByStartTime -> lyric is empty");
-      return -1;
-    }
     ArrayList localArrayList = this.mSentences;
-    int k = localArrayList.size();
-    if ((this.mLastHitSentence != null) && (this.mLastHitSentence.mStartTime < paramInt)) {
-      if (this.mLastHitSentenceNo < k - 1)
-      {
-        if (((Sentence)localArrayList.get(this.mLastHitSentenceNo + 1)).mStartTime > paramInt) {
-          return this.mLastHitSentenceNo;
-        }
-      }
-      else {
-        return this.mLastHitSentenceNo;
-      }
-    }
-    for (int i = this.mLastHitSentenceNo;; i = 0)
+    if ((localArrayList != null) && (localArrayList.size() != 0))
     {
-      int j = i;
-      if (j < k)
+      localArrayList = this.mSentences;
+      int k = localArrayList.size();
+      Sentence localSentence = this.mLastHitSentence;
+      if (localSentence != null)
       {
-        Sentence localSentence = (Sentence)localArrayList.get(j);
-        if (localSentence == null) {}
-        while (localSentence.mStartTime <= paramInt)
+        long l1 = localSentence.mStartTime;
+        long l2 = paramInt;
+        if (l1 < l2)
         {
-          j += 1;
-          break;
+          i = this.mLastHitSentenceNo;
+          if (i < k - 1)
+          {
+            if (((Sentence)localArrayList.get(i + 1)).mStartTime > l2) {
+              return this.mLastHitSentenceNo;
+            }
+            i = this.mLastHitSentenceNo;
+            break label133;
+          }
+          return i;
         }
       }
-      for (paramInt = j - 1;; paramInt = 0)
+      int i = 0;
+      label133:
+      while (i < k)
       {
-        i = paramInt;
-        if (paramInt < 0) {
-          i = 0;
-        }
-        if (j == k) {}
-        for (paramInt = k - 1;; paramInt = i)
+        localSentence = (Sentence)localArrayList.get(i);
+        if ((localSentence != null) && (localSentence.mStartTime > paramInt))
         {
-          this.mLastHitSentenceNo = paramInt;
-          this.mLastHitSentence = ((Sentence)localArrayList.get(paramInt));
-          return paramInt;
+          paramInt = i - 1;
+          break label187;
         }
+        i += 1;
       }
+      paramInt = 0;
+      label187:
+      int j = paramInt;
+      if (paramInt < 0) {
+        j = 0;
+      }
+      if (i == k) {
+        j = k - 1;
+      }
+      this.mLastHitSentenceNo = j;
+      this.mLastHitSentence = ((Sentence)localArrayList.get(j));
+      return j;
     }
+    Log.w("Lyric", "findLineNoByStartTime -> lyric is empty");
+    return -1;
   }
   
   public String findTextByTime(long paramLong)
   {
-    if ((this.mSentences == null) || (this.mSentences.isEmpty()) || (paramLong < 0L)) {
-      return null;
-    }
-    int j = this.mSentences.size();
-    int i = 0;
-    while (i < j)
+    Object localObject = this.mSentences;
+    if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
     {
-      Sentence localSentence = (Sentence)this.mSentences.get(i);
-      if ((paramLong >= localSentence.mStartTime) && (paramLong <= localSentence.mStartTime + localSentence.mDuration)) {
-        return localSentence.mText;
+      if (paramLong < 0L) {
+        return null;
       }
-      i += 1;
+      int j = this.mSentences.size();
+      int i = 0;
+      while (i < j)
+      {
+        localObject = (Sentence)this.mSentences.get(i);
+        if ((paramLong >= ((Sentence)localObject).mStartTime) && (paramLong <= ((Sentence)localObject).mStartTime + ((Sentence)localObject).mDuration)) {
+          return ((Sentence)localObject).mText;
+        }
+        i += 1;
+      }
     }
     return null;
   }
   
   public int floorLineNoByEndTime(int paramInt)
   {
-    int i;
-    if ((paramInt < 0) || (isEmpty()))
+    if ((paramInt >= 0) && (!isEmpty()))
     {
-      Log.w("Lyric", "floorLineNoByEndTime -> illegal time");
-      i = 0;
-      return i;
-    }
-    ArrayList localArrayList = this.mSentences;
-    int k = localArrayList.size();
-    int j = 0;
-    if (j < k)
-    {
-      Sentence localSentence = (Sentence)localArrayList.get(j);
-      if (localSentence == null) {}
-      while (localSentence.mStartTime + localSentence.mDuration <= paramInt)
+      ArrayList localArrayList = this.mSentences;
+      int k = localArrayList.size();
+      int j = 0;
+      while (j < k)
       {
+        Sentence localSentence = (Sentence)localArrayList.get(j);
+        if ((localSentence != null) && (localSentence.mStartTime + localSentence.mDuration > paramInt))
+        {
+          paramInt = j - 1;
+          break label91;
+        }
         j += 1;
-        break;
       }
-    }
-    for (paramInt = j - 1;; paramInt = 0)
-    {
-      i = paramInt;
+      paramInt = 0;
+      label91:
+      int i = paramInt;
       if (paramInt < 0) {
         i = 0;
       }
-      if (j != k) {
-        break;
+      if (j == k) {
+        i = k - 1;
       }
-      return k - 1;
+      return i;
     }
+    Log.w("Lyric", "floorLineNoByEndTime -> illegal time");
+    return 0;
   }
   
   public void generateUiLyricLineList(Paint paramPaint1, Paint paramPaint2, int paramInt)
@@ -359,12 +375,13 @@ public class Lyric
     Log.d("Lyric", String.format("generateUiLyricLineList -> width:%d, isSingleLine:%b, isLeftAlign:%b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) }));
     this.mListSentenceUI.clear();
     this.mUILineCount = 0;
-    if (this.mSentences != null)
+    Object localObject = this.mSentences;
+    if (localObject != null)
     {
-      Iterator localIterator = this.mSentences.iterator();
-      while (localIterator.hasNext())
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        Sentence localSentence = (Sentence)localIterator.next();
+        Sentence localSentence = (Sentence)((Iterator)localObject).next();
         localSentence.generateUILyricLineList(paramPaint1, paramPaint2, paramInt, paramBoolean1, paramBoolean2);
         this.mUILineCount += localSentence.getUiLineSize();
         this.mListSentenceUI.addAll(localSentence.mUILine);
@@ -377,18 +394,20 @@ public class Lyric
     if (isEmpty()) {
       return 0;
     }
-    Sentence localSentence = (Sentence)this.mSentences.get(this.mSentences.size() - 1);
-    long l = localSentence.mStartTime;
-    return (int)(localSentence.mDuration + l);
+    Object localObject = this.mSentences;
+    localObject = (Sentence)((ArrayList)localObject).get(((ArrayList)localObject).size() - 1);
+    return (int)(((Sentence)localObject).mStartTime + ((Sentence)localObject).mDuration);
   }
   
   public Sentence getSentence(int paramInt)
   {
-    if (isEmpty()) {}
-    while (this.mSentences.size() <= paramInt) {
+    if (isEmpty()) {
       return null;
     }
-    return (Sentence)this.mSentences.get(paramInt);
+    if (this.mSentences.size() > paramInt) {
+      return (Sentence)this.mSentences.get(paramInt);
+    }
+    return null;
   }
   
   public List<Sentence> getSentenceList()
@@ -398,11 +417,13 @@ public class Lyric
   
   public String getSentenceText(int paramInt)
   {
-    if (isEmpty()) {}
-    while (this.mSentences.size() <= paramInt) {
+    if (isEmpty()) {
       return null;
     }
-    return ((Sentence)this.mSentences.get(paramInt)).mText;
+    if (this.mSentences.size() > paramInt) {
+      return ((Sentence)this.mSentences.get(paramInt)).mText;
+    }
+    return null;
   }
   
   public int getStartTime()
@@ -421,21 +442,23 @@ public class Lyric
     int j = this.mSentences.size();
     int[] arrayOfInt = new int[j * 2];
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       Sentence localSentence = (Sentence)this.mSentences.get(i);
+      int k;
       if (localSentence != null)
       {
-        arrayOfInt[(i * 2)] = ((int)localSentence.mStartTime);
-        arrayOfInt[(i * 2 + 1)] = ((int)(localSentence.mStartTime + localSentence.mDuration));
+        k = i * 2;
+        arrayOfInt[k] = ((int)localSentence.mStartTime);
+        arrayOfInt[(k + 1)] = ((int)(localSentence.mStartTime + localSentence.mDuration));
       }
-      for (;;)
+      else
       {
-        i += 1;
-        break;
-        arrayOfInt[(i * 2)] = 0;
-        arrayOfInt[(i * 2 + 1)] = 0;
+        k = i * 2;
+        arrayOfInt[k] = 0;
+        arrayOfInt[(k + 1)] = 0;
       }
+      i += 1;
     }
     return arrayOfInt;
   }
@@ -447,13 +470,15 @@ public class Lyric
   
   public boolean isEmpty()
   {
-    return (this.mSentences == null) || (this.mSentences.size() == 0);
+    ArrayList localArrayList = this.mSentences;
+    return (localArrayList == null) || (localArrayList.size() == 0);
   }
   
   public int size()
   {
-    if (this.mSentences != null) {
-      return this.mSentences.size();
+    ArrayList localArrayList = this.mSentences;
+    if (localArrayList != null) {
+      return localArrayList.size();
     }
     return 0;
   }
@@ -483,7 +508,7 @@ public class Lyric
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.music.lyric.data.Lyric
  * JD-Core Version:    0.7.0.1
  */

@@ -15,40 +15,36 @@ class SubscribePlayerManager$2
   
   public void run()
   {
-    if (NetworkUtil.a(BaseApplicationImpl.context) != 1) {
+    if (NetworkUtil.a(BaseApplicationImpl.context) != 1)
+    {
       QLog.d("SubscribePlayerManager", 4, "not wifi autoPlay return");
-    }
-    while ((SubscribePlayerManager.a(this.this$0)) || (SubscribePlayerManager.a(this.this$0).size() <= 0)) {
       return;
     }
-    SubscribePlayerManager.a(this.this$0, true);
-    Object localObject = SubscribePlayerManager.a(this.this$0).keySet().iterator();
-    int i = 0;
-    label73:
-    if (((Iterator)localObject).hasNext())
-    {
-      Integer localInteger = (Integer)((Iterator)localObject).next();
-      if (localInteger.intValue() <= i) {
-        break label145;
-      }
-      i = localInteger.intValue();
+    if (SubscribePlayerManager.a(this.this$0)) {
+      return;
     }
-    label145:
-    for (;;)
+    if (SubscribePlayerManager.a(this.this$0).size() > 0)
     {
-      break label73;
+      SubscribePlayerManager.a(this.this$0, true);
+      int i = 0;
+      Object localObject = SubscribePlayerManager.a(this.this$0).keySet().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        Integer localInteger = (Integer)((Iterator)localObject).next();
+        if (localInteger.intValue() > i) {
+          i = localInteger.intValue();
+        }
+      }
       localObject = (AutoVideoItemBuilder.AutoVideoMsgViewHolder)SubscribePlayerManager.a(this.this$0).get(Integer.valueOf(i));
-      if (localObject == null) {
-        break;
+      if (localObject != null) {
+        SubscribePlayerManager.a(this.this$0, (AutoVideoItemBuilder.AutoVideoMsgViewHolder)localObject, ((AutoVideoItemBuilder.AutoVideoMsgViewHolder)localObject).b);
       }
-      SubscribePlayerManager.a(this.this$0, (AutoVideoItemBuilder.AutoVideoMsgViewHolder)localObject, ((AutoVideoItemBuilder.AutoVideoMsgViewHolder)localObject).b);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.videoplayer.SubscribePlayerManager.2
  * JD-Core Version:    0.7.0.1
  */

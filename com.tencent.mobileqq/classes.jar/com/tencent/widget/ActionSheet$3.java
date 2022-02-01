@@ -24,18 +24,25 @@ class ActionSheet$3
   
   public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
   {
-    QLog.i("ActionSheet", 1, "onLoadProgressed " + paramInt);
+    paramURLDrawable = new StringBuilder();
+    paramURLDrawable.append("onLoadProgressed ");
+    paramURLDrawable.append(paramInt);
+    QLog.i("ActionSheet", 1, paramURLDrawable.toString());
   }
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
     try
     {
-      QLog.i("ActionSheet", 1, "onLoadSuccessed " + paramURLDrawable);
-      if (paramURLDrawable != null) {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onLoadSuccessed ");
+      localStringBuilder.append(paramURLDrawable);
+      QLog.i("ActionSheet", 1, localStringBuilder.toString());
+      if (paramURLDrawable != null)
+      {
         ActionSheet.access$000(this.this$0).post(new ActionSheet.3.1(this, paramURLDrawable));
+        return;
       }
-      return;
     }
     catch (Exception paramURLDrawable)
     {
@@ -45,7 +52,7 @@ class ActionSheet$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.ActionSheet.3
  * JD-Core Version:    0.7.0.1
  */

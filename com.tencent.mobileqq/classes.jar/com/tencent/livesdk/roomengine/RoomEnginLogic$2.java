@@ -17,7 +17,13 @@ class RoomEnginLogic$2
     if (RoomEnginLogic.access$000(this.this$0) != null) {
       RoomEnginLogic.access$000(this.this$0).onFail(this.val$enterRoomInfo.roomId, paramInt, paramString);
     }
-    ((LogSdkServiceInterface)this.this$0.mServiceManager.getService(LogSdkServiceInterface.class)).getLog().e("RoomEnginLogic", "re-login enter room fail, errCode=" + paramInt + ", errMsg:" + paramString, new Object[0]);
+    LogInterface localLogInterface = ((LogSdkServiceInterface)this.this$0.mServiceManager.getService(LogSdkServiceInterface.class)).getLog();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("re-login enter room fail, errCode=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", errMsg:");
+    localStringBuilder.append(paramString);
+    localLogInterface.e("RoomEnginLogic", localStringBuilder.toString(), new Object[0]);
   }
   
   public void onSuccess()
@@ -30,7 +36,7 @@ class RoomEnginLogic$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.roomengine.RoomEnginLogic.2
  * JD-Core Version:    0.7.0.1
  */

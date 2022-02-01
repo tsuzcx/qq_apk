@@ -30,16 +30,16 @@ public class GuessActionStageView
   
   protected void a()
   {
-    LayoutInflater.from(getContext()).inflate(2131558767, this, true);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365404));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131379716));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379699));
-    this.jdField_a_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131380233));
-    this.jdField_b_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131380234));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379701));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378775));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131370577);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131368017);
+    LayoutInflater.from(getContext()).inflate(2131558666, this, true);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365268));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131379056));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379039));
+    this.jdField_a_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379550));
+    this.jdField_b_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379551));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379041));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378169));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131370232);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131367771);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new GuessActionStageView.1(this));
     this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(0, UiUtils.b());
     this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams().width = UiUtils.a();
@@ -52,7 +52,7 @@ public class GuessActionStageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.stage.guessaction.GuessActionStageView
  * JD-Core Version:    0.7.0.1
  */

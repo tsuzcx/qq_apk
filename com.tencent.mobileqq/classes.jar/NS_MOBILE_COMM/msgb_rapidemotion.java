@@ -56,27 +56,31 @@ public final class msgb_rapidemotion
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.emotion_id, 0);
-    if (this.rapid_emotion_url_s != null) {
-      paramJceOutputStream.write(this.rapid_emotion_url_s, 1);
+    Object localObject = this.rapid_emotion_url_s;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.rapid_emotion_url_b != null) {
-      paramJceOutputStream.write(this.rapid_emotion_url_b, 2);
+    localObject = this.rapid_emotion_url_b;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.emotion_width_s, 3);
     paramJceOutputStream.write(this.emotion_height_s, 4);
     paramJceOutputStream.write(this.emotion_width_b, 5);
     paramJceOutputStream.write(this.emotion_height_b, 6);
-    if (this.emotion_text != null) {
-      paramJceOutputStream.write(this.emotion_text, 7);
+    localObject = this.emotion_text;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.extend_info != null) {
-      paramJceOutputStream.write(this.extend_info, 8);
+    localObject = this.extend_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_COMM.msgb_rapidemotion
  * JD-Core Version:    0.7.0.1
  */

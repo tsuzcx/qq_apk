@@ -1,33 +1,32 @@
 package com.tencent.mobileqq.filemanager.util;
 
 import android.content.Context;
-import android.net.Uri;
-import android.os.Handler;
-import android.util.SparseArray;
-import com.tencent.biz.qrcode.activity.ScannerUtils;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.filemanager.fileviewer.controller.IQRMenuItemController;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.os.AsyncTask;
+import com.dataline.core.DirectForwarder;
+import com.dataline.core.DirectForwarder.CallBack;
 
 final class QFileUtils$5
-  implements Runnable
+  extends DirectForwarder.CallBack
 {
-  QFileUtils$5(Context paramContext, String paramString, IQRMenuItemController paramIQRMenuItemController) {}
+  QFileUtils$5(Context paramContext) {}
   
-  public void run()
+  protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidContentContext == null) {}
-    while (!FileUtils.b(this.jdField_a_of_type_JavaLangString)) {
+    try
+    {
+      DirectForwarder.a(this.a, paramAsyncTask, paramInt, new QFileUtils.5.1(this));
+      super.a(paramAsyncTask, paramInt);
       return;
     }
-    SparseArray localSparseArray = new SparseArray(2);
-    int i = ScannerUtils.a(Uri.parse("file://" + this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_AndroidContentContext, 3, localSparseArray);
-    ThreadManagerV2.getUIHandlerV2().post(new QFileUtils.5.1(this, i, localSparseArray));
+    catch (Exception paramAsyncTask)
+    {
+      paramAsyncTask.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.QFileUtils.5
  * JD-Core Version:    0.7.0.1
  */

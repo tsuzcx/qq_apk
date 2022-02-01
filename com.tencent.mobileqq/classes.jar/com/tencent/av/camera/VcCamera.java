@@ -8,10 +8,11 @@ import android.hardware.Camera.Parameters;
 import android.os.SystemClock;
 import com.tencent.av.AVLog;
 import com.tencent.av.opengl.GraphicRenderMgr;
+import com.tencent.av.opengl.api.IGraphicRender;
 import com.tencent.av.opengl.config.EffectFaceDeviceConfig;
 import com.tencent.avcore.config.CameraConfigHelper;
 import com.tencent.avcore.jni.render.FocusDetectCallback;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
@@ -42,13 +43,15 @@ public class VcCamera
       return;
     }
     EffectFaceDeviceConfig localEffectFaceDeviceConfig = EffectFaceDeviceConfig.a();
-    if ((localEffectFaceDeviceConfig != null) && (localEffectFaceDeviceConfig.g())) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if ((localEffectFaceDeviceConfig != null) && (localEffectFaceDeviceConfig.e())) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    AVLog.printColorLog("AndroidCamera", String.format("enableAutoFocus, isUserSelfFocusDev[%s], enable[%s]", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramBoolean) }));
+    if (bool)
     {
-      AVLog.printColorLog("AndroidCamera", String.format("enableAutoFocus, isUserSelfFocusDev[%s], enable[%s]", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramBoolean) }));
-      if (!bool) {
-        break;
-      }
       a(paramBoolean, localList);
       return;
     }
@@ -86,97 +89,65 @@ public class VcCamera
   protected void a(long paramLong, int paramInt1, int paramInt2)
   {
     super.a(paramLong, paramInt1, paramInt2);
-    if (this.jdField_a_of_type_AndroidHardwareCamera != null) {}
-    while (!QLog.isDevelopLevel()) {
+    if (this.jdField_a_of_type_AndroidHardwareCamera != null)
+    {
+      Object localObject = null;
       try
       {
         Camera.Parameters localParameters = this.jdField_a_of_type_AndroidHardwareCamera.getParameters();
-        if (localParameters != null)
-        {
-          CameraConfigHelper.getInstance(BaseApplicationImpl.getContext()).setCameraParameters(localParameters.flatten());
-          a(localParameters, true);
-          return;
-        }
+        localObject = localParameters;
       }
       catch (Exception localException)
       {
-        do
-        {
-          for (;;)
-          {
-            QLog.d("AndroidCamera", 2, "setCameraPara exception", localException);
-            Object localObject = null;
-          }
-        } while (!QLog.isDevelopLevel());
-        QLog.w("AndroidCamera", 1, "setCameraPara, parameters[null]");
+        QLog.d("AndroidCamera", 2, "setCameraPara exception", localException);
+      }
+      if (localObject != null)
+      {
+        CameraConfigHelper.getInstance(BaseApplication.getContext()).setCameraParameters(localObject.flatten());
+        a(localObject, true);
         return;
       }
+      if (QLog.isDevelopLevel()) {
+        QLog.w("AndroidCamera", 1, "setCameraPara, parameters[null]");
+      }
     }
-    QLog.w("AndroidCamera", 1, "setCameraPara, camera[false]");
+    else if (QLog.isDevelopLevel())
+    {
+      QLog.w("AndroidCamera", 1, "setCameraPara, camera[false]");
+    }
   }
   
-  /* Error */
   public boolean c(long paramLong)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: getstatic 178	com/tencent/av/camera/VcCamera:b	Z
-    //   5: istore_3
-    //   6: iload_3
-    //   7: ifeq +19 -> 26
-    //   10: aload_0
-    //   11: getfield 119	com/tencent/av/camera/VcCamera:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
-    //   14: invokevirtual 133	android/hardware/Camera:getParameters	()Landroid/hardware/Camera$Parameters;
-    //   17: astore 4
-    //   19: aload_0
-    //   20: aload 4
-    //   22: iconst_0
-    //   23: invokespecial 153	com/tencent/av/camera/VcCamera:a	(Landroid/hardware/Camera$Parameters;Z)V
-    //   26: aload_0
-    //   27: lload_1
-    //   28: invokespecial 180	com/tencent/av/camera/AndroidCamera:c	(J)Z
-    //   31: istore_3
-    //   32: aload_0
-    //   33: monitorexit
-    //   34: iload_3
-    //   35: ireturn
-    //   36: astore 4
-    //   38: invokestatic 183	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   41: ifeq +13 -> 54
-    //   44: ldc 26
-    //   46: iconst_2
-    //   47: ldc 185
-    //   49: aload 4
-    //   51: invokestatic 188	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   54: aconst_null
-    //   55: astore 4
-    //   57: goto -38 -> 19
-    //   60: astore 4
-    //   62: aload_0
-    //   63: monitorexit
-    //   64: aload 4
-    //   66: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	67	0	this	VcCamera
-    //   0	67	1	paramLong	long
-    //   5	30	3	bool	boolean
-    //   17	4	4	localParameters	Camera.Parameters
-    //   36	14	4	localException	Exception
-    //   55	1	4	localObject1	Object
-    //   60	5	4	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   10	19	36	java/lang/Exception
-    //   2	6	60	finally
-    //   10	19	60	finally
-    //   19	26	60	finally
-    //   26	32	60	finally
-    //   38	54	60	finally
+    try
+    {
+      boolean bool = b;
+      if (bool)
+      {
+        Object localObject3 = null;
+        Object localObject1;
+        try
+        {
+          localObject1 = this.jdField_a_of_type_AndroidHardwareCamera.getParameters();
+        }
+        catch (Exception localException)
+        {
+          localObject1 = localObject3;
+          if (QLog.isColorLevel())
+          {
+            QLog.e("AndroidCamera", 2, "closeCamera", localException);
+            localObject1 = localObject3;
+          }
+        }
+        a((Camera.Parameters)localObject1, false);
+      }
+      bool = super.c(paramLong);
+      return bool;
+    }
+    finally {}
   }
   
-  public int i()
+  public int h()
   {
     return a(this.i, this.jdField_a_of_type_AndroidHardwareCamera).c;
   }
@@ -185,20 +156,19 @@ public class VcCamera
   {
     if (paramBoolean)
     {
-      if (this.jdField_a_of_type_AndroidHardwareCamera == null) {
+      if (this.jdField_a_of_type_AndroidHardwareCamera == null)
+      {
         AVLog.printColorLog("AndroidCamera", "camera null, return");
+        return;
       }
+      GraphicRenderMgr.getInstance().setIsFocusing(true);
+      this.jdField_a_of_type_AndroidHardwareCamera.autoFocus(this.jdField_a_of_type_AndroidHardwareCamera$AutoFocusCallback);
     }
-    else {
-      return;
-    }
-    GraphicRenderMgr.getInstance().setIsFocusing(true);
-    this.jdField_a_of_type_AndroidHardwareCamera.autoFocus(this.jdField_a_of_type_AndroidHardwareCamera$AutoFocusCallback);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.camera.VcCamera
  * JD-Core Version:    0.7.0.1
  */

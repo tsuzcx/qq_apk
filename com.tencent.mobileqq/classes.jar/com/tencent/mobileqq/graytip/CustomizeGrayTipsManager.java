@@ -26,6 +26,7 @@ import com.tencent.mobileqq.utils.ListUtils;
 import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.locks.Lock;
@@ -42,33 +43,49 @@ public class CustomizeGrayTipsManager
   public CustomizeGrayTipsManager(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Int = ((Integer)SharedPreUtils.a("gray_tips_wording_id", Integer.valueOf(0))).intValue();
+    paramQQAppInterface = Integer.valueOf(0);
+    this.jdField_a_of_type_Int = ((Integer)SharedPreUtils.a("gray_tips_wording_id", paramQQAppInterface)).intValue();
     this.jdField_a_of_type_JavaLangString = ((String)SharedPreUtils.a("add_guide_gray_tips_time", ""));
-    this.b = ((Integer)SharedPreUtils.a("add_guide_gray_tips_times", Integer.valueOf(0))).intValue();
+    this.b = ((Integer)SharedPreUtils.a("add_guide_gray_tips_times", paramQQAppInterface)).intValue();
   }
   
   private static int a(int paramInt)
   {
-    switch (paramInt)
+    int i = 1;
+    if (paramInt != 0)
     {
-    default: 
-      return 10;
-    case 0: 
-      return 1;
+      if (paramInt != 1) {
+        return 10;
+      }
+      i = 2;
     }
-    return 2;
+    return i;
   }
   
   @NonNull
   private MessageForUniteGrayTip a(@NonNull QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, long paramLong1, long paramLong2)
   {
-    QLog.d("CustomizeGrayTipsManager", 1, "makeGuideCustomizeGrayTips, friendUin = " + paramString1 + ", senderUin = " + paramString2 + ", uinType = " + paramInt + ", time = " + paramLong1 + ", shMsgSeq = " + paramLong2);
-    String str = HardCodeUtil.a(2131691418);
-    paramString1 = new UniteGrayTipParam(paramString1, paramString2, str + HardCodeUtil.a(2131691417), paramInt, -5020, 3, paramLong1);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("makeGuideCustomizeGrayTips, friendUin = ");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(", senderUin = ");
+    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append(", uinType = ");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(", time = ");
+    ((StringBuilder)localObject).append(paramLong1);
+    ((StringBuilder)localObject).append(", shMsgSeq = ");
+    ((StringBuilder)localObject).append(paramLong2);
+    QLog.d("CustomizeGrayTipsManager", 1, ((StringBuilder)localObject).toString());
+    localObject = HardCodeUtil.a(2131691340);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(HardCodeUtil.a(2131691339));
+    paramString1 = new UniteGrayTipParam(paramString1, paramString2, localStringBuilder.toString(), paramInt, -5020, 3, paramLong1);
     paramString1.e = true;
     paramString2 = new Bundle();
     paramString2.putInt("key_action", 56);
-    paramString1.a(0, str.length(), paramString2);
+    paramString1.a(0, ((String)localObject).length(), paramString2);
     paramString2 = new MessageForUniteGrayTip();
     paramString2.initGrayTipMsg(paramQQAppInterface, paramString1);
     paramString2.shmsgseq = paramLong2;
@@ -81,9 +98,13 @@ public class CustomizeGrayTipsManager
     int i = paramList.size() - 1;
     while (i >= 0)
     {
-      MessageRecord localMessageRecord = (MessageRecord)paramList.get(i);
-      if (((localMessageRecord instanceof MessageForUniteGrayTip)) && (a((MessageForUniteGrayTip)localMessageRecord))) {
-        return (MessageForUniteGrayTip)localMessageRecord;
+      Object localObject = (MessageRecord)paramList.get(i);
+      if ((localObject instanceof MessageForUniteGrayTip))
+      {
+        localObject = (MessageForUniteGrayTip)localObject;
+        if (a((MessageForUniteGrayTip)localObject)) {
+          return localObject;
+        }
       }
       i -= 1;
     }
@@ -97,7 +118,9 @@ public class CustomizeGrayTipsManager
     int j = ((Calendar)localObject).get(2);
     int k = ((Calendar)localObject).get(5);
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(i).append(j + 1).append(k);
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append(j + 1);
+    ((StringBuilder)localObject).append(k);
     return ((StringBuilder)localObject).toString();
   }
   
@@ -114,7 +137,7 @@ public class CustomizeGrayTipsManager
     a();
     MessageForUniteGrayTip localMessageForUniteGrayTip = a(paramQQAppInterface, paramMessageForUniteGrayTip.frienduin, paramMessageForUniteGrayTip.senderuin, paramInt, paramMessageForUniteGrayTip.time, paramMessageForUniteGrayTip.shmsgseq);
     paramQQAppInterface.getMessageFacade().a(paramInt).a(paramInt, paramMessageForUniteGrayTip.frienduin, localMessageForUniteGrayTip, paramList);
-    UniteGrayTipUtil.a(paramQQAppInterface, localMessageForUniteGrayTip);
+    UniteGrayTipMsgUtil.a(paramQQAppInterface, localMessageForUniteGrayTip);
     if (QLog.isColorLevel()) {
       QLog.d("CustomizeGrayTipsManager", 2, "insert guide customize gray tips to aioList and db");
     }
@@ -122,46 +145,46 @@ public class CustomizeGrayTipsManager
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, int paramInt)
   {
-    if ((paramContext instanceof ChatHistoryActivity)) {}
-    do
-    {
+    if ((paramContext instanceof ChatHistoryActivity)) {
       return;
-      if (TextUtils.equals("1", paramString))
-      {
-        paramContext.startActivity(new Intent(paramContext, QQSettingSettingActivity.class));
-        if (SettingsConfigHelper.a(paramQQAppInterface)) {
-          PublicFragmentActivity.a(paramContext, new Intent(), AssistantSettingFragment.class);
-        }
-        for (;;)
-        {
-          paramQQAppInterface = new Intent(paramContext, QQBrowserActivity.class);
-          paramQQAppInterface.putExtra("url", "https://zb.vip.qq.com/v2/pages/withdrawMessage?_wv=2&dwop_via=" + paramString);
-          paramContext.startActivity(paramQQAppInterface);
-          c(paramInt);
-          return;
-          paramContext.startActivity(new Intent(paramContext, NotifyPushSettingActivity.class));
-        }
+    }
+    StringBuilder localStringBuilder;
+    if (TextUtils.equals("1", paramString))
+    {
+      paramContext.startActivity(new Intent(paramContext, QQSettingSettingActivity.class));
+      if (SettingsConfigHelper.a(paramQQAppInterface)) {
+        PublicFragmentActivity.a(paramContext, new Intent(), AssistantSettingFragment.class);
+      } else {
+        paramContext.startActivity(new Intent(paramContext, NotifyPushSettingActivity.class));
       }
-    } while (!TextUtils.equals("2", paramString));
-    paramQQAppInterface = new Intent(paramContext, QQBrowserActivity.class);
-    paramQQAppInterface.putExtra("url", "https://zb.vip.qq.com/v2/pages/withdrawMessage?_wv=2&dwop_via=" + paramString);
-    paramContext.startActivity(paramQQAppInterface);
-    b();
+      paramQQAppInterface = new Intent(paramContext, QQBrowserActivity.class);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("https://zb.vip.qq.com/v2/pages/withdrawMessage?_wv=2&dwop_via=");
+      localStringBuilder.append(paramString);
+      paramQQAppInterface.putExtra("url", localStringBuilder.toString());
+      paramContext.startActivity(paramQQAppInterface);
+      c(paramInt);
+      return;
+    }
+    if (TextUtils.equals("2", paramString))
+    {
+      paramQQAppInterface = new Intent(paramContext, QQBrowserActivity.class);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("https://zb.vip.qq.com/v2/pages/withdrawMessage?_wv=2&dwop_via=");
+      localStringBuilder.append(paramString);
+      paramQQAppInterface.putExtra("url", localStringBuilder.toString());
+      paramContext.startActivity(paramQQAppInterface);
+      b();
+    }
   }
   
   private boolean a()
   {
-    if (this.jdField_a_of_type_Int != 0) {}
     String str;
-    do
-    {
-      do
-      {
-        return false;
-      } while (this.b >= 3);
+    if ((this.jdField_a_of_type_Int == 0) && (this.b < 3)) {
       str = a();
-    } while (TextUtils.equals(this.jdField_a_of_type_JavaLangString, str));
-    return true;
+    }
+    return !TextUtils.equals(this.jdField_a_of_type_JavaLangString, str);
   }
   
   private boolean a(MessageForUniteGrayTip paramMessageForUniteGrayTip)
@@ -205,55 +228,89 @@ public class CustomizeGrayTipsManager
   {
     this.jdField_a_of_type_Int = paramInt;
     SharedPreUtils.a("gray_tips_wording_id", Integer.valueOf(paramInt));
-    if (QLog.isColorLevel()) {
-      QLog.d("CustomizeGrayTipsManager", 2, "setGrayTipsWordingId, id = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setGrayTipsWordingId, id = ");
+      localStringBuilder.append(paramInt);
+      QLog.d("CustomizeGrayTipsManager", 2, localStringBuilder.toString());
     }
   }
   
   public boolean a(@NonNull QQAppInterface paramQQAppInterface, int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CustomizeGrayTipsManager", 2, "insertGuideCustomizeGrayTipsIfNeed: uinType = " + paramInt + ", mGrayTipsWordingId = " + this.jdField_a_of_type_Int + ", mAddGuideGrayTipsTimes = " + this.b + ", mAddGuideGrayTipsDate = " + this.jdField_a_of_type_JavaLangString);
-    }
-    if (paramInt == 3000) {}
-    do
+    Object localObject;
+    if (QLog.isColorLevel())
     {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("insertGuideCustomizeGrayTipsIfNeed: uinType = ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(", mGrayTipsWordingId = ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(", mAddGuideGrayTipsTimes = ");
+      ((StringBuilder)localObject).append(this.b);
+      ((StringBuilder)localObject).append(", mAddGuideGrayTipsDate = ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      QLog.d("CustomizeGrayTipsManager", 2, ((StringBuilder)localObject).toString());
+    }
+    boolean bool1 = false;
+    boolean bool2 = false;
+    if (paramInt == 3000) {
       return false;
-      if (a()) {
-        break;
+    }
+    if (!a())
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("CustomizeGrayTipsManager", 2, "do not need to insert guide customize gray tips to aioList");
+        return false;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("CustomizeGrayTipsManager", 2, "do not need to insert guide customize gray tips to aioList");
-    return false;
-    List localList = paramQQAppInterface.getMessageProxy(paramInt).e(paramString, paramInt);
-    paramString = paramQQAppInterface.getMessageProxy(paramInt).a().a(paramString, paramInt);
-    paramString.lock();
+    }
+    else
+    {
+      localObject = paramQQAppInterface.getMessageProxy(paramInt).e(paramString, paramInt);
+      paramString = paramQQAppInterface.getMessageProxy(paramInt).a().a(paramString, paramInt);
+      paramString.lock();
+    }
     try
     {
-      if (ListUtils.a(localList))
+      if (ListUtils.a((Collection)localObject))
       {
-        if (QLog.isColorLevel()) {
+        bool1 = bool2;
+        if (QLog.isColorLevel())
+        {
           QLog.d("CustomizeGrayTipsManager", 2, "aioList is empty");
+          bool1 = bool2;
         }
-        return false;
       }
-      MessageForUniteGrayTip localMessageForUniteGrayTip = a(localList);
-      if (localMessageForUniteGrayTip == null)
+      else
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("CustomizeGrayTipsManager", 2, "aioList do not contains revoke gray tip");
+        MessageForUniteGrayTip localMessageForUniteGrayTip = a((List)localObject);
+        if (localMessageForUniteGrayTip == null)
+        {
+          bool1 = bool2;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("CustomizeGrayTipsManager", 2, "aioList do not contains revoke gray tip");
+            bool1 = bool2;
+          }
         }
-        return false;
-      }
-      if (a(localList))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("CustomizeGrayTipsManager", 2, "aioList contains GuideCustomizeGrayTips");
+        else if (a((List)localObject))
+        {
+          bool1 = bool2;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("CustomizeGrayTipsManager", 2, "aioList contains GuideCustomizeGrayTips");
+            bool1 = bool2;
+          }
         }
-        return false;
+        else
+        {
+          bool1 = true;
+          a(paramQQAppInterface, paramInt, (List)localObject, localMessageForUniteGrayTip);
+        }
       }
-      a(paramQQAppInterface, paramInt, localList, localMessageForUniteGrayTip);
-      return true;
+      return bool1;
     }
     finally
     {
@@ -265,7 +322,7 @@ public class CustomizeGrayTipsManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.graytip.CustomizeGrayTipsManager
  * JD-Core Version:    0.7.0.1
  */

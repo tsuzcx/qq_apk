@@ -24,26 +24,38 @@ public final class eu
   
   public eu(eu parameu)
   {
-    if (parameu.a == null) {}
-    for (Location localLocation = null;; localLocation = new Location(parameu.a))
-    {
-      this.a = localLocation;
-      this.b = parameu.b;
-      this.f = parameu.f;
-      this.c = parameu.c;
-      this.g = parameu.g;
-      return;
+    Location localLocation = parameu.a;
+    if (localLocation == null) {
+      localLocation = null;
+    } else {
+      localLocation = new Location(localLocation);
     }
+    this.a = localLocation;
+    this.b = parameu.b;
+    this.f = parameu.f;
+    this.c = parameu.c;
+    this.g = parameu.g;
   }
   
   public final String toString()
   {
-    return "TxGpsInfo [location=" + this.a + ", gpsTime=" + this.b + ", visbleSatelliteNum=" + this.f + ", usedSatelliteNum=" + this.c + ", gpsStatus=" + this.g + "]";
+    StringBuilder localStringBuilder = new StringBuilder("TxGpsInfo [location=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", gpsTime=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", visbleSatelliteNum=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", usedSatelliteNum=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", gpsStatus=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.eu
  * JD-Core Version:    0.7.0.1
  */

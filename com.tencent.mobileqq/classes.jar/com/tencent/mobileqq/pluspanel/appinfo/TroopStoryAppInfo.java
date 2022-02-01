@@ -18,7 +18,7 @@ public class TroopStoryAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130842691;
+    return 2130842590;
   }
   
   public int getAppID()
@@ -31,7 +31,7 @@ public class TroopStoryAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131697768);
+    return BaseApplicationImpl.getContext().getString(2131697774);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
@@ -45,7 +45,7 @@ public class TroopStoryAppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.TroopStoryAppInfo
  * JD-Core Version:    0.7.0.1
  */

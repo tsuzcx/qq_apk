@@ -24,7 +24,7 @@ public class s
   
   public static String IntVer2DotString(int paramInt)
   {
-    return String.format("%d.%d.%d", new Object[] { Integer.valueOf(paramInt >> 24), Integer.valueOf((0xFF0000 & paramInt) >> 16), Integer.valueOf((0xFF00 & paramInt) >> 8) });
+    return String.format("%d.%d.%d", new Object[] { Integer.valueOf(paramInt >> 24), Integer.valueOf((0xFF0000 & paramInt) >> 16), Integer.valueOf((paramInt & 0xFF00) >> 8) });
   }
   
   public static int a(Context paramContext)
@@ -34,43 +34,38 @@ public class s
     {
       paramContext = paramContext.split("\\.");
       int i;
-      if (paramContext.length == 2)
-      {
-        i = Integer.parseInt(paramContext[0]);
-        return Integer.parseInt(paramContext[1]) << 8 | i << 16 | 0x0;
+      if (paramContext.length == 2) {
+        i = Integer.parseInt(paramContext[0]) << 16 | 0x0;
       }
-      if (paramContext.length == 3)
+      for (paramContext = paramContext[1];; paramContext = paramContext[2])
       {
-        i = Integer.parseInt(paramContext[0]);
-        int j = Integer.parseInt(paramContext[1]);
-        int k = Integer.parseInt(paramContext[2]);
-        return k << 8 | i << 24 | 0x0 | j << 16;
+        return Integer.parseInt(paramContext) << 8 | i;
+        if (paramContext.length != 3) {
+          break;
+        }
+        i = Integer.parseInt(paramContext[0]) << 24 | 0x0 | Integer.parseInt(paramContext[1]) << 16;
       }
+      return 0;
     }
     catch (Exception paramContext)
     {
       paramContext.printStackTrace();
     }
-    return 0;
   }
   
   public static String b(Context paramContext)
   {
     PackageManager localPackageManager = paramContext.getPackageManager();
-    Object localObject = null;
     try
     {
       paramContext = localPackageManager.getPackageInfo(paramContext.getPackageName(), 0);
-      return paramContext.versionName;
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
-      for (;;)
-      {
-        paramContext.printStackTrace();
-        paramContext = localObject;
-      }
+      paramContext.printStackTrace();
+      paramContext = null;
     }
+    return paramContext.versionName;
   }
   
   public static String c(Context paramContext)
@@ -83,7 +78,11 @@ public class s
         return paramContext;
       }
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label16:
+      break label16;
+    }
     return null;
   }
   
@@ -103,36 +102,34 @@ public class s
       try
       {
         paramContext = MessageDigest.getInstance("MD5");
-        return c.a(paramContext.digest(localSignature.toByteArray()));
       }
       catch (NoSuchAlgorithmException paramContext)
       {
-        for (;;)
-        {
-          paramContext.printStackTrace();
-          paramContext = null;
-        }
+        paramContext.printStackTrace();
+        paramContext = null;
       }
-      return null;
+      paramContext = c.a(paramContext.digest(localSignature.toByteArray()));
+      return paramContext;
     }
     catch (Exception paramContext)
     {
       paramContext.printStackTrace();
     }
+    return null;
   }
   
   public static int e(Context paramContext)
   {
-    int i = 0;
     Object localObject = paramContext.getPackageManager();
     try
     {
       localObject = ((PackageManager)localObject).getPackageInfo(paramContext.getPackageName(), 0).packageName;
       paramContext = paramContext.getApplicationInfo();
-      if (paramContext.packageName.equals(localObject)) {
-        i = Integer.valueOf((int)new File(paramContext.publicSourceDir).length()).intValue();
+      if (paramContext.packageName.equals(localObject))
+      {
+        int i = Integer.valueOf((int)new File(paramContext.publicSourceDir).length()).intValue();
+        return i;
       }
-      return i;
     }
     catch (Exception paramContext)
     {
@@ -170,7 +167,6 @@ public class s
   
   public static String md5sum(String paramString)
   {
-    int i = 0;
     try
     {
       Object localObject = MessageDigest.getInstance("MD5");
@@ -178,6 +174,7 @@ public class s
       paramString = new StringBuilder();
       localObject = ((MessageDigest)localObject).digest();
       int j = localObject.length;
+      int i = 0;
       while (i < j)
       {
         int k = localObject[i];
@@ -196,7 +193,7 @@ public class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.secprotocol.t.s
  * JD-Core Version:    0.7.0.1
  */

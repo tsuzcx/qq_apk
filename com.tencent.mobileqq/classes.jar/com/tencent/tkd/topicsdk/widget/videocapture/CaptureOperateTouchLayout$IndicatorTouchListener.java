@@ -40,13 +40,72 @@ public final class CaptureOperateTouchLayout$IndicatorTouchListener
   {
     Intrinsics.checkParameterIsNotNull(paramView, "v");
     Intrinsics.checkParameterIsNotNull(paramMotionEvent, "event");
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
+      Object localObject;
+      if (i != 1)
+      {
+        if (i == 2)
+        {
+          float f2 = this.jdField_a_of_type_Float;
+          float f3 = paramMotionEvent.getRawX();
+          float f4 = this.c;
+          float f1 = CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout);
+          f2 = Math.min(Math.max(f2 + (f3 - f4), 0.0F), f1);
+          paramView.setX(f2);
+          f1 = f2 / f1;
+          localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout;
+          ((CaptureOperateTouchLayout)localObject).a(f1, CaptureOperateTouchLayout.a((CaptureOperateTouchLayout)localObject));
+          localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout.a();
+          if (localObject != null) {
+            ((CaptureOperateTouchLayout.OnIndicatorPressCallback)localObject).c();
+          }
+          if (!CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout))
+          {
+            f1 = Math.abs(this.e - paramView.getX());
+            f2 = 10;
+            if ((f1 > f2) || (Math.abs(this.f - paramView.getY()) > f2))
+            {
+              this.e = paramView.getX();
+              this.f = paramView.getY();
+              CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout).removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
+              CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+              CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout).postDelayed(this.jdField_b_of_type_JavaLangRunnable, 300L);
+              CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout).postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
+              this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout$IndicatorLongPressCallback.c();
+            }
+          }
+        }
+      }
+      else
+      {
+        if (CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout))
+        {
+          CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout, false);
+          i = (int)(Math.abs(paramView.getX() - this.e) / CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout) * 400);
+          localObject = ValueAnimator.ofFloat(new float[] { paramView.getScrollX(), this.e }).setDuration(i);
+          ((ValueAnimator)localObject).addUpdateListener((ValueAnimator.AnimatorUpdateListener)new CaptureOperateTouchLayout.IndicatorTouchListener.onTouch.1(this, paramView));
+          ((ValueAnimator)localObject).start();
+          this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout$IndicatorLongPressCallback.a(true);
+        }
+        else
+        {
+          this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout$IndicatorLongPressCallback.a(false);
+        }
+        paramView = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout.a();
+        if (paramView != null) {
+          paramView.b();
+        }
+        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout).abortAnimation();
+        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout, -1);
+        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout, -1);
+        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout).removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
+      }
     }
-    for (;;)
+    else
     {
-      this.g = paramMotionEvent.getRawX();
-      return true;
       this.jdField_a_of_type_Float = paramView.getX();
       this.jdField_b_of_type_Float = paramView.getY();
       this.c = paramMotionEvent.getRawX();
@@ -61,58 +120,14 @@ public final class CaptureOperateTouchLayout$IndicatorTouchListener
       }
       CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout).postDelayed(this.jdField_b_of_type_JavaLangRunnable, 300L);
       CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout).postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
-      continue;
-      if (CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout))
-      {
-        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout, false);
-        int i = (int)(Math.abs(paramView.getX() - this.e) / CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout) * 400);
-        localObject = ValueAnimator.ofFloat(new float[] { paramView.getScrollX(), this.e }).setDuration(i);
-        ((ValueAnimator)localObject).addUpdateListener((ValueAnimator.AnimatorUpdateListener)new CaptureOperateTouchLayout.IndicatorTouchListener.onTouch.1(this, paramView));
-        ((ValueAnimator)localObject).start();
-        this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout$IndicatorLongPressCallback.a(true);
-      }
-      for (;;)
-      {
-        paramView = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout.a();
-        if (paramView != null) {
-          paramView.b();
-        }
-        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout).abortAnimation();
-        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout, -1);
-        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout, -1);
-        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout).removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-        break;
-        this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout$IndicatorLongPressCallback.a(false);
-      }
-      float f2 = this.jdField_a_of_type_Float;
-      float f3 = paramMotionEvent.getRawX();
-      float f4 = this.c;
-      float f1 = CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout);
-      f2 = Math.min(Math.max(f2 + (f3 - f4), 0.0F), f1);
-      paramView.setX(f2);
-      f1 = f2 / f1;
-      this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout.a(f1, CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout));
-      Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout.a();
-      if (localObject != null) {
-        ((CaptureOperateTouchLayout.OnIndicatorPressCallback)localObject).c();
-      }
-      if ((!CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout)) && ((Math.abs(this.e - paramView.getX()) > 10) || (Math.abs(this.f - paramView.getY()) > 10)))
-      {
-        this.e = paramView.getX();
-        this.f = paramView.getY();
-        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout).removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout).postDelayed(this.jdField_b_of_type_JavaLangRunnable, 300L);
-        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout).postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
-        this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout$IndicatorLongPressCallback.c();
-      }
     }
+    this.g = paramMotionEvent.getRawX();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocapture.CaptureOperateTouchLayout.IndicatorTouchListener
  * JD-Core Version:    0.7.0.1
  */

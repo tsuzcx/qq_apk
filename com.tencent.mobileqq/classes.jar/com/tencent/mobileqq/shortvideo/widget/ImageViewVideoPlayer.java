@@ -8,8 +8,11 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import com.tencent.aelight.camera.api.ICameraCompatible;
+import com.tencent.aelight.camera.constants.CameraCompatibleConstants;
 import com.tencent.biz.qqstory.utils.FileUtils;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -20,7 +23,7 @@ import com.tencent.image.VideoDrawable.OnPlayRepeatListener;
 import com.tencent.image.VideoDrawable.OnPlayerOneFrameListener;
 import com.tencent.image.VideoDrawable.VideoDrawableParams;
 import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraCompatibleList;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Arrays;
@@ -78,38 +81,43 @@ public class ImageViewVideoPlayer
   
   private void checkAndGetVideoDrawable()
   {
-    if (this.mUrlDrawable != null) {}
-    try
+    Object localObject = this.mUrlDrawable;
+    if (localObject != null)
     {
-      Drawable localDrawable = this.mUrlDrawable.getCurrDrawable();
-      if ((localDrawable != null) && ((localDrawable instanceof VideoDrawable)))
+      StringBuilder localStringBuilder;
+      try
       {
-        this.mVideoDrawable = ((VideoDrawable)this.mUrlDrawable.getCurrDrawable());
-        boolean bool2 = this.mVideoDrawable.isAudioPlaying();
-        if ((!CameraCompatibleList.d(CameraCompatibleList.c)) && (!CameraCompatibleList.a(CameraCompatibleList.d))) {
-          break label141;
-        }
-        bool1 = true;
-        if (QLog.isColorLevel()) {
-          QLog.i("ImageViewVideoPlayer", 2, "initPlayer: audioPlaying= " + bool2 + " black=" + bool1);
-        }
-        if (bool1) {
-          this.mVideoDrawable.disableGlobalPause();
-        }
+        localObject = ((URLDrawable)localObject).getCurrDrawable();
       }
-      return;
-    }
-    catch (NullPointerException localNullPointerException)
-    {
-      for (;;)
+      catch (NullPointerException localNullPointerException)
       {
         if (QLog.isColorLevel()) {
           QLog.i("ImageViewVideoPlayer", 2, "checkAndGetVideoDrawable mUrlDrawable==null", localNullPointerException);
         }
-        Object localObject = null;
-        continue;
-        label141:
-        boolean bool1 = false;
+        localStringBuilder = null;
+      }
+      if ((localStringBuilder != null) && ((localStringBuilder instanceof VideoDrawable)))
+      {
+        this.mVideoDrawable = ((VideoDrawable)this.mUrlDrawable.getCurrDrawable());
+        boolean bool2 = this.mVideoDrawable.isAudioPlaying();
+        boolean bool1;
+        if ((!((ICameraCompatible)QRoute.api(ICameraCompatible.class)).isFoundProduct(CameraCompatibleConstants.c)) && (!((ICameraCompatible)QRoute.api(ICameraCompatible.class)).isFoundProductFeature(CameraCompatibleConstants.d))) {
+          bool1 = false;
+        } else {
+          bool1 = true;
+        }
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("initPlayer: audioPlaying= ");
+          localStringBuilder.append(bool2);
+          localStringBuilder.append(" black=");
+          localStringBuilder.append(bool1);
+          QLog.i("ImageViewVideoPlayer", 2, localStringBuilder.toString());
+        }
+        if (bool1) {
+          this.mVideoDrawable.disableGlobalPause();
+        }
       }
     }
   }
@@ -139,78 +147,112 @@ public class ImageViewVideoPlayer
   
   public boolean checkVideoSourceValidate(RMVideoStateMgr paramRMVideoStateMgr)
   {
-    return paramRMVideoStateMgr.c(11);
+    return paramRMVideoStateMgr.b(11);
   }
   
   public Bitmap getCurrentBitmap()
   {
-    if (this.mVideoDrawable != null) {
-      return this.mVideoDrawable.getCurrentBitmap();
+    VideoDrawable localVideoDrawable = this.mVideoDrawable;
+    if (localVideoDrawable != null) {
+      return localVideoDrawable.getCurrentBitmap();
     }
     return null;
   }
   
   public int getVFileAndAFile(String paramString)
   {
-    int i = -1;
     if (paramString == null) {
-      i = -4;
+      return -4;
     }
-    File localFile;
-    do
+    File localFile = new File(paramString);
+    if ((localFile.exists()) && (localFile.isDirectory()))
     {
-      do
-      {
-        return i;
-        localFile = new File(paramString);
-        if ((localFile.exists()) && (localFile.isDirectory())) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("ImageViewVideoPlayer", 2, "getVFileAndAFile(), videoDir not exist");
-      return -1;
       paramString = localFile.list();
-      if (paramString != null) {
-        break;
+      if (paramString == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ImageViewVideoPlayer", 2, "getVFileAndAFile(), files = null");
+        }
+        return -1;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("ImageViewVideoPlayer", 2, "getVFileAndAFile(), files = null");
-    return -1;
-    String str = localFile.getAbsolutePath() + File.separator;
-    if (QLog.isColorLevel()) {
-      QLog.d("ImageViewVideoPlayer", 2, "getVFileAndAFile(), sourceDirFile =" + localFile.getAbsolutePath() + ",files = " + Arrays.toString(paramString) + ", file count = " + localFile.listFiles().length);
-    }
-    int j = paramString.length;
-    i = 0;
-    while (i < j)
-    {
-      localFile = paramString[i];
-      if (QLog.isColorLevel()) {
-        QLog.d("ImageViewVideoPlayer", 2, "getVFileAndAFile(), current file = " + localFile);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(localFile.getAbsolutePath());
+      ((StringBuilder)localObject).append(File.separator);
+      localObject = ((StringBuilder)localObject).toString();
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getVFileAndAFile(), sourceDirFile =");
+        localStringBuilder.append(localFile.getAbsolutePath());
+        localStringBuilder.append(",files = ");
+        localStringBuilder.append(Arrays.toString(paramString));
+        localStringBuilder.append(", file count = ");
+        localStringBuilder.append(localFile.listFiles().length);
+        QLog.d("ImageViewVideoPlayer", 2, localStringBuilder.toString());
       }
-      if (localFile.endsWith(".af")) {
-        this.mAFile = (str + localFile);
+      int j = paramString.length;
+      int i = 0;
+      while (i < j)
+      {
+        localFile = paramString[i];
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getVFileAndAFile(), current file = ");
+          localStringBuilder.append(localFile);
+          QLog.d("ImageViewVideoPlayer", 2, localStringBuilder.toString());
+        }
+        if (localFile.endsWith(".af"))
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append(localFile);
+          this.mAFile = localStringBuilder.toString();
+        }
+        if (localFile.endsWith(".vf"))
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append(localFile);
+          if (FileUtils.a(localStringBuilder.toString()) > 0L)
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append((String)localObject);
+            localStringBuilder.append(localFile);
+            this.mVFile = localStringBuilder.toString();
+          }
+        }
+        i += 1;
       }
-      if ((localFile.endsWith(".vf")) && (FileUtils.a(str + localFile) > 0L)) {
-        this.mVFile = (str + localFile);
+      paramString = this.mVFile;
+      if ((paramString != null) && (!"".equals(paramString)))
+      {
+        paramString = this.mAFile;
+        if ((paramString != null) && (!"".equals(paramString)))
+        {
+          this.mNeedPlayAudio = false;
+          if (FileUtils.a(this.mAFile) > 0L)
+          {
+            if (QLog.isColorLevel())
+            {
+              paramString = new StringBuilder();
+              paramString.append("getVFileAndAFile(), mNeedPlayAudio = ");
+              paramString.append(this.mNeedPlayAudio);
+              QLog.d("ImageViewVideoPlayer", 2, paramString.toString());
+            }
+            this.mNeedPlayAudio = true;
+          }
+          return 0;
+        }
+        return -2;
       }
-      i += 1;
-    }
-    if ((this.mVFile == null) || ("".equals(this.mVFile))) {
       return -3;
     }
-    if ((this.mAFile == null) || ("".equals(this.mAFile))) {
-      return -2;
+    if (QLog.isColorLevel()) {
+      QLog.d("ImageViewVideoPlayer", 2, "getVFileAndAFile(), videoDir not exist");
     }
-    this.mNeedPlayAudio = false;
-    if (FileUtils.a(this.mAFile) > 0L)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ImageViewVideoPlayer", 2, "getVFileAndAFile(), mNeedPlayAudio = " + this.mNeedPlayAudio);
-      }
-      this.mNeedPlayAudio = true;
-    }
-    return 0;
+    return -1;
   }
   
   public String getmAFile()
@@ -242,39 +284,42 @@ public class ImageViewVideoPlayer
     this.mTotalFrame = (paramInt3 - 3);
     if (this.mNeedProgress)
     {
-      this.mProgressBar.a = paramInt1;
-      this.mProgressBar.b = paramInt2;
-      this.mProgressBar.c = paramInt3;
-      this.mProgressBar.setCurrentProgress(0, false);
+      paramString = this.mProgressBar;
+      paramString.a = paramInt1;
+      paramString.b = paramInt2;
+      paramString.c = paramInt3;
+      paramString.setCurrentProgress(0, false);
     }
     paramString = URLDrawable.URLDrawableOptions.obtain();
     paramString.mFailedDrawable = null;
     paramString.mLoadingDrawable = sLoading;
-    if (this.mLoadingBitmap != null) {
-      paramString.mLoadingDrawable = this.mLoadingBitmap;
+    Object localObject = this.mLoadingBitmap;
+    if (localObject != null) {
+      paramString.mLoadingDrawable = ((Drawable)localObject);
     }
-    VideoDrawable.VideoDrawableParams localVideoDrawableParams = new VideoDrawable.VideoDrawableParams();
-    localVideoDrawableParams.mVideoRoundCorner = 0;
-    localVideoDrawableParams.mRequestedFPS = -1;
-    localVideoDrawableParams.mEnableAntiAlias = true;
-    localVideoDrawableParams.mEnableFilter = true;
-    localVideoDrawableParams.mPlayAudioFrame = this.mNeedPlayAudio;
-    localVideoDrawableParams.mPlayVideoFrame = true;
-    localVideoDrawableParams.mDecodeType = 1;
-    localVideoDrawableParams.mAfPath = this.mAFile;
-    localVideoDrawableParams.mVfPath = this.mVFile;
-    localVideoDrawableParams.mTotalTime = paramInt2;
-    localVideoDrawableParams.mVideoFrames = paramInt3;
-    paramString.mExtraInfo = localVideoDrawableParams;
+    localObject = new VideoDrawable.VideoDrawableParams();
+    ((VideoDrawable.VideoDrawableParams)localObject).mVideoRoundCorner = 0;
+    ((VideoDrawable.VideoDrawableParams)localObject).mRequestedFPS = -1;
+    ((VideoDrawable.VideoDrawableParams)localObject).mEnableAntiAlias = true;
+    ((VideoDrawable.VideoDrawableParams)localObject).mEnableFilter = true;
+    ((VideoDrawable.VideoDrawableParams)localObject).mPlayAudioFrame = this.mNeedPlayAudio;
+    ((VideoDrawable.VideoDrawableParams)localObject).mPlayVideoFrame = true;
+    ((VideoDrawable.VideoDrawableParams)localObject).mDecodeType = 1;
+    ((VideoDrawable.VideoDrawableParams)localObject).mAfPath = this.mAFile;
+    ((VideoDrawable.VideoDrawableParams)localObject).mVfPath = this.mVFile;
+    ((VideoDrawable.VideoDrawableParams)localObject).mTotalTime = paramInt2;
+    ((VideoDrawable.VideoDrawableParams)localObject).mVideoFrames = paramInt3;
+    paramString.mExtraInfo = localObject;
     if ((!this.mEnableCyclePlay) || (!paramBoolean)) {
       paramString.mUseMemoryCache = false;
     }
     this.mUrlDrawable = URLDrawable.getDrawable(new File(this.mVFile), paramString);
     this.mPlayer.setURLDrawableDownListener(this);
     checkAndGetVideoDrawable();
-    if (this.mVideoDrawable != null)
+    paramString = this.mVideoDrawable;
+    if (paramString != null)
     {
-      this.mVideoDrawable.setOnPlayRepeatListener(this);
+      paramString.setOnPlayRepeatListener(this);
       this.mVideoDrawable.setOnPlayerOneFrameListener(this);
       if (!this.mEnableCyclePlay) {
         this.mVideoDrawable.resetAndPlayAudioOnce();
@@ -302,9 +347,10 @@ public class ImageViewVideoPlayer
   public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
     checkAndGetVideoDrawable();
-    if (this.mVideoDrawable != null)
+    paramView = this.mVideoDrawable;
+    if (paramView != null)
     {
-      this.mVideoDrawable.setOnPlayRepeatListener(this);
+      paramView.setOnPlayRepeatListener(this);
       this.mVideoDrawable.setOnPlayerOneFrameListener(this);
       if (!this.mRequireAudioFocus) {
         this.mVideoDrawable.disableRequireAudioFocus();
@@ -314,8 +360,12 @@ public class ImageViewVideoPlayer
   
   public void onPlayRepeat(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ImageViewVideoPlayer", 2, "onPlayRepeat: repeatTimes= " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPlayRepeat: repeatTimes= ");
+      localStringBuilder.append(paramInt);
+      QLog.i("ImageViewVideoPlayer", 2, localStringBuilder.toString());
     }
     if (!this.mEnableCyclePlay)
     {
@@ -331,28 +381,30 @@ public class ImageViewVideoPlayer
   
   public void oneFrameDrawed()
   {
-    this.mCurrentPlayedFrame += 1;
-    if (this.mCurrentPlayedFrame >= this.mTotalFrame) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (this.mNeedProgress) {
-        this.mProgressBar.setCurrentProgress(this.mCurrentPlayedFrame, bool);
-      }
-      if ((bool) && (!this.mEnableCyclePlay)) {
-        endFramePlay();
-      }
-      if (this.mFrameListener != null) {
-        this.mFrameListener.onCurrentFrame(this.mCurrentPlayedFrame);
-      }
-      return;
+    int i = this.mCurrentPlayedFrame;
+    boolean bool = true;
+    this.mCurrentPlayedFrame = (i + 1);
+    if (this.mCurrentPlayedFrame < this.mTotalFrame) {
+      bool = false;
+    }
+    if (this.mNeedProgress) {
+      this.mProgressBar.setCurrentProgress(this.mCurrentPlayedFrame, bool);
+    }
+    if ((bool) && (!this.mEnableCyclePlay)) {
+      endFramePlay();
+    }
+    ImageViewVideoPlayer.IMPFrameListener localIMPFrameListener = this.mFrameListener;
+    if (localIMPFrameListener != null) {
+      localIMPFrameListener.onCurrentFrame(this.mCurrentPlayedFrame);
     }
   }
   
   public void releasePlayer()
   {
-    if (this.mVideoDrawable != null)
+    VideoDrawable localVideoDrawable = this.mVideoDrawable;
+    if (localVideoDrawable != null)
     {
-      this.mVideoDrawable.enableGlobalPause();
+      localVideoDrawable.enableGlobalPause();
       this.mVideoDrawable.removeOnPlayRepeatListener(this);
       this.mVideoDrawable.setOnPlayRepeatListener(null);
     }
@@ -364,8 +416,9 @@ public class ImageViewVideoPlayer
   
   public void resetPlay()
   {
-    if (this.mVideoDrawable != null) {
-      this.mVideoDrawable.resetPlay();
+    VideoDrawable localVideoDrawable = this.mVideoDrawable;
+    if (localVideoDrawable != null) {
+      localVideoDrawable.resetPlay();
     }
   }
   
@@ -392,20 +445,25 @@ public class ImageViewVideoPlayer
   public void startPlayer()
   {
     super.setVisibility(0);
-    if (this.mPlayer != null) {
-      this.mPlayer.setImageDrawable(this.mUrlDrawable);
+    URLImageView localURLImageView = this.mPlayer;
+    if (localURLImageView != null) {
+      localURLImageView.setImageDrawable(this.mUrlDrawable);
     }
     this.mPlayerState = 3;
   }
   
   public void stopPlayer()
   {
-    if ((this.mUrlDrawable != null) && (this.mVideoDrawable != null)) {
-      this.mVideoDrawable.stopAudio();
+    if (this.mUrlDrawable != null)
+    {
+      localObject = this.mVideoDrawable;
+      if (localObject != null) {
+        ((VideoDrawable)localObject).stopAudio();
+      }
     }
-    Handler localHandler = super.getHandler();
-    if (localHandler != null) {
-      localHandler.postAtFrontOfQueue(new ImageViewVideoPlayer.1(this));
+    Object localObject = super.getHandler();
+    if (localObject != null) {
+      ((Handler)localObject).postAtFrontOfQueue(new ImageViewVideoPlayer.1(this));
     }
     this.mPlayerState = 4;
   }
@@ -427,25 +485,30 @@ public class ImageViewVideoPlayer
   public void updateUISize(int paramInt1, int paramInt2, float paramFloat, boolean paramBoolean, int paramInt3)
   {
     int i = (int)(paramInt1 * paramFloat);
-    if (QLog.isColorLevel()) {
-      QLog.i("ImageViewVideoPlayer", 2, "updateUISize width" + paramInt1 + "height" + i + "screenHeight=" + paramInt2);
-    }
-    if (i < paramInt2) {}
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(paramInt1, paramInt2);
-      this.mPlayer.setLayoutParams(localLayoutParams);
-      this.mNeedProgress = paramBoolean;
-      if (this.mNeedProgress)
-      {
-        localLayoutParams = new LinearLayout.LayoutParams(paramInt1, paramInt3);
-        this.mProgressBar.setLayoutParams(localLayoutParams);
-        return;
-      }
-      this.mProgressBar.setVisibility(8);
-      return;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateUISize width");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append("height");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append("screenHeight=");
+      ((StringBuilder)localObject).append(paramInt2);
+      QLog.i("ImageViewVideoPlayer", 2, ((StringBuilder)localObject).toString());
+    }
+    if (i >= paramInt2) {
       paramInt2 = i;
     }
+    Object localObject = new LinearLayout.LayoutParams(paramInt1, paramInt2);
+    this.mPlayer.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.mNeedProgress = paramBoolean;
+    if (this.mNeedProgress)
+    {
+      localObject = new LinearLayout.LayoutParams(paramInt1, paramInt3);
+      this.mProgressBar.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      return;
+    }
+    this.mProgressBar.setVisibility(8);
   }
   
   public void updateUISize(int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3)
@@ -464,7 +527,7 @@ public class ImageViewVideoPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer
  * JD-Core Version:    0.7.0.1
  */

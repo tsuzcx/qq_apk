@@ -11,7 +11,7 @@ import com.tencent.tav.decoder.logger.Logger;
 
 public class CIContext
 {
-  private final String TAG = "CIContext@" + Integer.toHexString(hashCode());
+  private final String TAG;
   private CIImageFilter copyFilter;
   private CIImageFilter filter;
   @NonNull
@@ -20,6 +20,10 @@ public class CIContext
   
   public CIContext(@NonNull RenderContext paramRenderContext)
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CIContext@");
+    localStringBuilder.append(Integer.toHexString(hashCode()));
+    this.TAG = localStringBuilder.toString();
     this.renderContext = paramRenderContext;
   }
   
@@ -87,24 +91,36 @@ public class CIContext
   
   public void release()
   {
-    Logger.d(this.TAG, "release: begin, currentThread = " + Thread.currentThread().getName());
-    if (this.filter != null) {
-      this.filter.release();
+    Object localObject = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("release: begin, currentThread = ");
+    localStringBuilder.append(Thread.currentThread().getName());
+    Logger.d((String)localObject, localStringBuilder.toString());
+    localObject = this.filter;
+    if (localObject != null) {
+      ((CIImageFilter)localObject).release();
     }
-    if (this.textureInfo != null) {
-      this.textureInfo.release();
+    localObject = this.textureInfo;
+    if (localObject != null) {
+      ((TextureInfo)localObject).release();
     }
-    if (this.copyFilter != null) {
-      this.copyFilter.release();
+    localObject = this.copyFilter;
+    if (localObject != null) {
+      ((CIImageFilter)localObject).release();
     }
-    Logger.d(this.TAG, "release: end, currentThread = " + Thread.currentThread().getName());
+    localObject = this.TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("release: end, currentThread = ");
+    localStringBuilder.append(Thread.currentThread().getName());
+    Logger.d((String)localObject, localStringBuilder.toString());
   }
   
   @NonNull
   public CMSampleBuffer renderToSampleBuffer(CIImage paramCIImage, CMTime paramCMTime, RenderContext paramRenderContext)
   {
     paramRenderContext.makeCurrent();
-    if ((this.textureInfo != null) && ((this.textureInfo.width != paramRenderContext.width()) || (this.textureInfo.height != paramRenderContext.height())))
+    TextureInfo localTextureInfo = this.textureInfo;
+    if ((localTextureInfo != null) && ((localTextureInfo.width != paramRenderContext.width()) || (this.textureInfo.height != paramRenderContext.height())))
     {
       this.textureInfo.release();
       this.textureInfo = null;
@@ -120,7 +136,7 @@ public class CIContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavkit.ciimage.CIContext
  * JD-Core Version:    0.7.0.1
  */

@@ -36,14 +36,31 @@ public class BottomDrawable
       this.d = 1920;
     }
     this.f = (this.d * this.jdField_a_of_type_Int / this.c);
-    if (this.jdField_b_of_type_Int > this.f) {
-      this.e = (this.jdField_b_of_type_Int - this.f);
+    int i = this.jdField_b_of_type_Int;
+    int j = this.f;
+    if (i > j) {
+      this.e = (i - j);
     }
     if (QLog.isColorLevel())
     {
-      QLog.i("UserGuideWeiShiActivity", 2, "displayWidth" + paramInt1 + " displayHeight " + paramInt2);
-      QLog.i("UserGuideWeiShiActivity", 2, "mWidth" + this.jdField_a_of_type_Int + " mHeight " + this.jdField_b_of_type_Int);
-      QLog.i("UserGuideWeiShiActivity", 2, "mNewBitmMapHeight" + this.f + " mTop " + this.e);
+      paramBitmap = new StringBuilder();
+      paramBitmap.append("displayWidth");
+      paramBitmap.append(paramInt1);
+      paramBitmap.append(" displayHeight ");
+      paramBitmap.append(paramInt2);
+      QLog.i("UserGuideWeiShiActivity", 2, paramBitmap.toString());
+      paramBitmap = new StringBuilder();
+      paramBitmap.append("mWidth");
+      paramBitmap.append(this.jdField_a_of_type_Int);
+      paramBitmap.append(" mHeight ");
+      paramBitmap.append(this.jdField_b_of_type_Int);
+      QLog.i("UserGuideWeiShiActivity", 2, paramBitmap.toString());
+      paramBitmap = new StringBuilder();
+      paramBitmap.append("mNewBitmMapHeight");
+      paramBitmap.append(this.f);
+      paramBitmap.append(" mTop ");
+      paramBitmap.append(this.e);
+      QLog.i("UserGuideWeiShiActivity", 2, paramBitmap.toString());
     }
   }
   
@@ -86,7 +103,7 @@ public class BottomDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.BottomDrawable
  * JD-Core Version:    0.7.0.1
  */

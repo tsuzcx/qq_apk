@@ -24,9 +24,9 @@ public class ForwardRobotOption
   
   private View a(String paramString, Drawable paramDrawable)
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131559083, null);
-    TextView localTextView = (TextView)localView.findViewById(2131380812);
-    ImageView localImageView = (ImageView)localView.findViewById(2131368996);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131558977, null);
+    TextView localTextView = (TextView)localView.findViewById(2131380075);
+    ImageView localImageView = (ImageView)localView.findViewById(2131368718);
     localTextView.setText(paramString);
     localImageView.setImageDrawable(paramDrawable);
     return localView;
@@ -34,7 +34,7 @@ public class ForwardRobotOption
   
   protected View a()
   {
-    return a(String.format("[%s]%s", new Object[] { HardCodeUtil.a(2131704805), this.i }), FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.h));
+    return a(String.format("[%s]%s", new Object[] { HardCodeUtil.a(2131704881), this.i }), FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.h));
   }
   
   protected boolean m()
@@ -44,7 +44,7 @@ public class ForwardRobotOption
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardRobotOption
  * JD-Core Version:    0.7.0.1
  */

@@ -38,92 +38,95 @@ public class VsDeviceInfo
   
   public String getAndroidId()
   {
-    Object localObject = "";
     try
     {
-      String str = Settings.Secure.getString(this.context.getContentResolver(), "android_id");
-      if (str == null) {
+      str1 = Settings.Secure.getString(this.context.getContentResolver(), "android_id");
+      if (str1 == null) {
         return "";
       }
-      localObject = str;
-      str = str.toLowerCase();
-      return str;
     }
-    catch (Throwable localThrowable) {}
-    return localObject;
+    catch (Throwable localThrowable1)
+    {
+      String str1;
+      String str2;
+      label27:
+      return "";
+    }
+    try
+    {
+      str2 = str1.toLowerCase();
+      return str2;
+    }
+    catch (Throwable localThrowable2)
+    {
+      break label27;
+    }
+    return str1;
   }
   
   public String getImei()
   {
-    int k = 1;
-    int m = 0;
-    int i;
-    Object localObject;
-    label78:
-    label102:
-    label104:
+    String str = "";
     try
     {
-      if (this.context == null) {
-        break label170;
+      localObject = this.context;
+      i = 0;
+      j = 0;
+      if (localObject != null)
+      {
+        i = this.context.checkPermission("android.permission.READ_PHONE_STATE", Process.myPid(), Process.myUid());
+        if (i == 0) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        if (i != 0) {}
       }
-      i = this.context.checkPermission("android.permission.READ_PHONE_STATE", Process.myPid(), Process.myUid());
-      if (i != 0) {
-        break label158;
-      }
-      i = 1;
-      j = i;
-      if (i != 0) {}
     }
-    catch (Throwable localThrowable1) {}
+    catch (Throwable localThrowable1)
+    {
+      Object localObject;
+      int i;
+      int j;
+      label117:
+      return "";
+    }
     try
     {
       localObject = this.context.getPackageManager().getPackageInfo(this.context.getPackageName(), 4096).requestedPermissions;
       if (localObject != null)
       {
-        int n = localObject.length;
-        j = m;
-        if (j < n)
+        int k = localObject.length;
+        while (j < k)
         {
           boolean bool = "android.permission.READ_PHONE_STATE".equals(localObject[j]);
-          if (!bool) {
-            break label163;
+          if (bool)
+          {
+            i = 1;
+            break;
           }
-          i = k;
+          j += 1;
         }
       }
     }
     catch (Throwable localThrowable2)
     {
-      j = i;
-      break label104;
-      break label102;
+      break label117;
     }
-    label158:
-    label163:
-    label170:
-    for (int j = i;; j = 0)
+    if (i != 0)
     {
-      if (j != 0)
-      {
-        localObject = ((TelephonyManager)this.context.getSystemService("phone")).getDeviceId();
-        if (localObject == null) {
-          return "";
-        }
-        localObject = ((String)localObject).toLowerCase();
-        return localObject;
+      str = ((TelephonyManager)this.context.getSystemService("phone")).getDeviceId();
+      if (str == null) {
+        return "";
       }
-      return "";
-      i = 0;
-      break;
-      j += 1;
-      break label78;
+      str = str.toLowerCase();
     }
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.ckey.comm.VsDeviceInfo
  * JD-Core Version:    0.7.0.1
  */

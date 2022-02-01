@@ -1,48 +1,77 @@
 package com.tencent.mobileqq.emosm.web;
 
 import android.os.Bundle;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.leba.ILebaHelperService;
+import com.tencent.mobileqq.leba.entity.LebaPluginInfo;
+import com.tencent.mobileqq.leba.entity.LebaViewItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 class MessengerService$IncomingHandler$10
-  extends WtloginObserver
+  implements Runnable
 {
-  MessengerService$IncomingHandler$10(MessengerService.IncomingHandler paramIncomingHandler, Bundle paramBundle1, Bundle paramBundle2, MessengerService paramMessengerService) {}
+  MessengerService$IncomingHandler$10(MessengerService.IncomingHandler paramIncomingHandler, QQAppInterface paramQQAppInterface, int paramInt, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public void onCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public void run()
   {
-    boolean bool2 = true;
-    if ((paramInt == 0) && (paramDevlockInfo != null))
+    ILebaHelperService localILebaHelperService = (ILebaHelperService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ILebaHelperService.class, "");
+    int j = 1;
+    Object localObject2;
+    if (localILebaHelperService != null)
     {
-      paramWUserSigInfo = this.jdField_a_of_type_AndroidOsBundle;
-      if (paramDevlockInfo.AllowSet != 1) {
-        break label85;
+      localObject2 = localILebaHelperService.getLebaMgrList();
+      if (localObject2 != null)
+      {
+        localObject1 = localObject2;
+        if (!((List)localObject2).isEmpty()) {}
       }
-      bool1 = true;
-      paramWUserSigInfo.putBoolean("hasSecurityPhoneNumber", bool1);
-      paramWUserSigInfo = this.jdField_a_of_type_AndroidOsBundle;
-      if (paramDevlockInfo.DevSetup != 1) {
-        break label91;
+      else
+      {
+        localILebaHelperService.reloadLebaItems(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        localObject1 = localILebaHelperService.getLebaMgrList();
       }
     }
-    label85:
-    label91:
-    for (boolean bool1 = bool2;; bool1 = false)
+    else
     {
-      paramWUserSigInfo.putBoolean("devlockIsOpen", bool1);
-      this.b.putBundle("response", this.jdField_a_of_type_AndroidOsBundle);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
-      return;
-      bool1 = false;
-      break;
+      QLog.d("IPC_LEBA_ITEM_GET", 1, "lebaHelperService == null");
+      localObject1 = null;
     }
+    if (localObject1 != null)
+    {
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (LebaViewItem)((Iterator)localObject1).next();
+        if ((localObject2 != null) && (((LebaViewItem)localObject2).jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo != null) && (((LebaViewItem)localObject2).jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId == this.jdField_a_of_type_Int))
+        {
+          i = ((LebaViewItem)localObject2).jdField_a_of_type_Byte;
+          break label155;
+        }
+      }
+    }
+    int i = -1;
+    label155:
+    Object localObject1 = new Bundle();
+    if (i == -1) {
+      ((Bundle)localObject1).putInt("ret", 1);
+    } else {
+      ((Bundle)localObject1).putInt("ret", 0);
+    }
+    if (i == 0) {
+      i = j;
+    } else {
+      i = 0;
+    }
+    ((Bundle)localObject1).putInt("type", i);
+    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject1);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.10
  * JD-Core Version:    0.7.0.1
  */

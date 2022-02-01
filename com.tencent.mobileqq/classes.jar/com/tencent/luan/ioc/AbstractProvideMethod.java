@@ -6,7 +6,11 @@ public abstract class AbstractProvideMethod<T>
 {
   private final InjectParam provideParam;
   
-  protected AbstractProvideMethod(Class<?> paramClass, InjectParam paramInjectParam, int paramInt) {}
+  protected AbstractProvideMethod(Class<?> paramClass, InjectParam paramInjectParam, int paramInt)
+  {
+    super(paramInt, localStringBuilder.toString());
+    this.provideParam = paramInjectParam;
+  }
   
   public boolean needInject()
   {
@@ -20,7 +24,7 @@ public abstract class AbstractProvideMethod<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.luan.ioc.AbstractProvideMethod
  * JD-Core Version:    0.7.0.1
  */

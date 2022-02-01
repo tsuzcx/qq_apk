@@ -24,28 +24,30 @@ class d$b
   
   public int hashCode()
   {
-    int k = 0;
+    Class[] arrayOfClass = this.a;
     int j = 0;
-    int i = k;
-    if (this.a != null)
+    if ((arrayOfClass != null) && (arrayOfClass.length > 0))
     {
-      i = k;
-      if (this.a.length > 0)
+      int i = 0;
+      for (;;)
       {
-        i = 0;
-        while (j < this.a.length)
-        {
-          i += (j + 1) * this.a[j].hashCode() * this.a[j].getName().hashCode() * 11259375;
-          j += 1;
+        arrayOfClass = this.a;
+        k = i;
+        if (j >= arrayOfClass.length) {
+          break;
         }
+        k = j + 1;
+        i += arrayOfClass[j].hashCode() * k * this.a[j].getName().hashCode() * 11259375;
+        j = k;
       }
     }
-    return i;
+    int k = 0;
+    return k;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.socket.d.d.b
  * JD-Core Version:    0.7.0.1
  */

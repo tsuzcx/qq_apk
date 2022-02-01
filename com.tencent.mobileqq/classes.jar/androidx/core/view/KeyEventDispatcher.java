@@ -21,9 +21,9 @@ import java.lang.reflect.Method;
 public class KeyEventDispatcher
 {
   private static boolean sActionBarFieldsFetched = false;
-  private static Method sActionBarOnMenuKeyMethod = null;
+  private static Method sActionBarOnMenuKeyMethod;
   private static boolean sDialogFieldsFetched = false;
-  private static Field sDialogKeyListenerField = null;
+  private static Field sDialogKeyListenerField;
   
   private static boolean actionBarOnMenuKeyEventPre28(ActionBar paramActionBar, KeyEvent paramKeyEvent)
   {
@@ -33,26 +33,21 @@ public class KeyEventDispatcher
       sActionBarOnMenuKeyMethod = paramActionBar.getClass().getMethod("onMenuKeyEvent", new Class[] { KeyEvent.class });
       label27:
       sActionBarFieldsFetched = true;
-      if (sActionBarOnMenuKeyMethod != null) {}
+      Method localMethod = sActionBarOnMenuKeyMethod;
+      if (localMethod != null) {}
       try
       {
-        boolean bool = ((Boolean)sActionBarOnMenuKeyMethod.invoke(paramActionBar, new Object[] { paramKeyEvent })).booleanValue();
+        boolean bool = ((Boolean)localMethod.invoke(paramActionBar, new Object[] { paramKeyEvent })).booleanValue();
         return bool;
       }
-      catch (InvocationTargetException paramActionBar)
-      {
-        return false;
-      }
-      catch (IllegalAccessException paramActionBar)
-      {
-        label62:
-        break label62;
-      }
+      catch (IllegalAccessException|InvocationTargetException paramActionBar) {}
+      return false;
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
       break label27;
     }
+    return false;
   }
   
   private static boolean activitySuperDispatchKeyEventPre28(Activity paramActivity, KeyEvent paramKeyEvent)
@@ -62,39 +57,45 @@ public class KeyEventDispatcher
     if (((Window)localObject).hasFeature(8))
     {
       ActionBar localActionBar = paramActivity.getActionBar();
-      if ((paramKeyEvent.getKeyCode() != 82) || (localActionBar == null) || (!actionBarOnMenuKeyEventPre28(localActionBar, paramKeyEvent))) {}
-    }
-    do
-    {
-      do
-      {
+      if ((paramKeyEvent.getKeyCode() == 82) && (localActionBar != null) && (actionBarOnMenuKeyEventPre28(localActionBar, paramKeyEvent))) {
         return true;
-      } while (((Window)localObject).superDispatchKeyEvent(paramKeyEvent));
-      localObject = ((Window)localObject).getDecorView();
-    } while (ViewCompat.dispatchUnhandledKeyEventBeforeCallback((View)localObject, paramKeyEvent));
-    if (localObject != null) {}
-    for (localObject = ((View)localObject).getKeyDispatcherState();; localObject = null) {
-      return paramKeyEvent.dispatch(paramActivity, (KeyEvent.DispatcherState)localObject, paramActivity);
+      }
     }
+    if (((Window)localObject).superDispatchKeyEvent(paramKeyEvent)) {
+      return true;
+    }
+    localObject = ((Window)localObject).getDecorView();
+    if (ViewCompat.dispatchUnhandledKeyEventBeforeCallback((View)localObject, paramKeyEvent)) {
+      return true;
+    }
+    if (localObject != null) {
+      localObject = ((View)localObject).getKeyDispatcherState();
+    } else {
+      localObject = null;
+    }
+    return paramKeyEvent.dispatch(paramActivity, (KeyEvent.DispatcherState)localObject, paramActivity);
   }
   
   private static boolean dialogSuperDispatchKeyEventPre28(Dialog paramDialog, KeyEvent paramKeyEvent)
   {
     Object localObject = getDialogKeyListenerPre28(paramDialog);
-    if ((localObject != null) && (((DialogInterface.OnKeyListener)localObject).onKey(paramDialog, paramKeyEvent.getKeyCode(), paramKeyEvent))) {}
-    do
-    {
-      do
-      {
-        return true;
-        localObject = paramDialog.getWindow();
-      } while (((Window)localObject).superDispatchKeyEvent(paramKeyEvent));
-      localObject = ((Window)localObject).getDecorView();
-    } while (ViewCompat.dispatchUnhandledKeyEventBeforeCallback((View)localObject, paramKeyEvent));
-    if (localObject != null) {}
-    for (localObject = ((View)localObject).getKeyDispatcherState();; localObject = null) {
-      return paramKeyEvent.dispatch(paramDialog, (KeyEvent.DispatcherState)localObject, paramDialog);
+    if ((localObject != null) && (((DialogInterface.OnKeyListener)localObject).onKey(paramDialog, paramKeyEvent.getKeyCode(), paramKeyEvent))) {
+      return true;
     }
+    localObject = paramDialog.getWindow();
+    if (((Window)localObject).superDispatchKeyEvent(paramKeyEvent)) {
+      return true;
+    }
+    localObject = ((Window)localObject).getDecorView();
+    if (ViewCompat.dispatchUnhandledKeyEventBeforeCallback((View)localObject, paramKeyEvent)) {
+      return true;
+    }
+    if (localObject != null) {
+      localObject = ((View)localObject).getKeyDispatcherState();
+    } else {
+      localObject = null;
+    }
+    return paramKeyEvent.dispatch(paramDialog, (KeyEvent.DispatcherState)localObject, paramDialog);
   }
   
   public static boolean dispatchBeforeHierarchy(@NonNull View paramView, @NonNull KeyEvent paramKeyEvent)
@@ -104,21 +105,23 @@ public class KeyEventDispatcher
   
   public static boolean dispatchKeyEvent(@NonNull KeyEventDispatcher.Component paramComponent, @Nullable View paramView, @Nullable Window.Callback paramCallback, @NonNull KeyEvent paramKeyEvent)
   {
-    if (paramComponent == null) {}
-    do
-    {
+    boolean bool = false;
+    if (paramComponent == null) {
       return false;
-      if (Build.VERSION.SDK_INT >= 28) {
-        return paramComponent.superDispatchKeyEvent(paramKeyEvent);
-      }
-      if ((paramCallback instanceof Activity)) {
-        return activitySuperDispatchKeyEventPre28((Activity)paramCallback, paramKeyEvent);
-      }
-      if ((paramCallback instanceof Dialog)) {
-        return dialogSuperDispatchKeyEventPre28((Dialog)paramCallback, paramKeyEvent);
-      }
-    } while (((paramView == null) || (!ViewCompat.dispatchUnhandledKeyEventBeforeCallback(paramView, paramKeyEvent))) && (!paramComponent.superDispatchKeyEvent(paramKeyEvent)));
-    return true;
+    }
+    if (Build.VERSION.SDK_INT >= 28) {
+      return paramComponent.superDispatchKeyEvent(paramKeyEvent);
+    }
+    if ((paramCallback instanceof Activity)) {
+      return activitySuperDispatchKeyEventPre28((Activity)paramCallback, paramKeyEvent);
+    }
+    if ((paramCallback instanceof Dialog)) {
+      return dialogSuperDispatchKeyEventPre28((Dialog)paramCallback, paramKeyEvent);
+    }
+    if (((paramView != null) && (ViewCompat.dispatchUnhandledKeyEventBeforeCallback(paramView, paramKeyEvent))) || (paramComponent.superDispatchKeyEvent(paramKeyEvent))) {
+      bool = true;
+    }
+    return bool;
   }
   
   private static DialogInterface.OnKeyListener getDialogKeyListenerPre28(Dialog paramDialog)
@@ -130,13 +133,17 @@ public class KeyEventDispatcher
       sDialogKeyListenerField.setAccessible(true);
       label23:
       sDialogFieldsFetched = true;
-      if (sDialogKeyListenerField != null) {
-        try
-        {
-          paramDialog = (DialogInterface.OnKeyListener)sDialogKeyListenerField.get(paramDialog);
-          return paramDialog;
-        }
-        catch (IllegalAccessException paramDialog) {}
+      Field localField = sDialogKeyListenerField;
+      if (localField != null) {}
+      try
+      {
+        paramDialog = (DialogInterface.OnKeyListener)localField.get(paramDialog);
+        return paramDialog;
+      }
+      catch (IllegalAccessException paramDialog)
+      {
+        label46:
+        break label46;
       }
       return null;
     }
@@ -148,7 +155,7 @@ public class KeyEventDispatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.view.KeyEventDispatcher
  * JD-Core Version:    0.7.0.1
  */

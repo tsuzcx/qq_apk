@@ -10,9 +10,14 @@ class FetchOpenIdManager$3
 {
   FetchOpenIdManager$3(FetchOpenIdManager paramFetchOpenIdManager) {}
   
-  public void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    QLog.i("FetchOpenIdManager", 1, "onUpdateDelFriend isSuccess: " + paramBoolean + " object: " + paramObject);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onUpdateDelFriend isSuccess: ");
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append(" object: ");
+    ((StringBuilder)localObject).append(paramObject);
+    QLog.i("FetchOpenIdManager", 1, ((StringBuilder)localObject).toString());
     if ((paramBoolean) && (paramObject != null))
     {
       long l = ((Long)paramObject).longValue();
@@ -20,8 +25,8 @@ class FetchOpenIdManager$3
       int i = paramObject.length - 1;
       while (i >= 0)
       {
-        Long localLong = (Long)paramObject[i];
-        this.a.a(localLong.longValue(), l);
+        localObject = (Long)paramObject[i];
+        this.a.a(((Long)localObject).longValue(), l);
         i -= 1;
       }
     }
@@ -29,7 +34,7 @@ class FetchOpenIdManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.singtogether.FetchOpenIdManager.3
  * JD-Core Version:    0.7.0.1
  */

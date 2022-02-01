@@ -26,8 +26,12 @@ public class IceBreakConfProcessor
   
   public void a(IceBreakConfBean paramIceBreakConfBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IceBreakConfProcessor", 2, "onUpdate newConf:" + paramIceBreakConfBean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate newConf:");
+      localStringBuilder.append(paramIceBreakConfBean);
+      QLog.d("IceBreakConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -53,8 +57,12 @@ public class IceBreakConfProcessor
   
   public void onReqFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IceBreakConfProcessor", 2, "onReqFailed failCode:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqFailed failCode:");
+      localStringBuilder.append(paramInt);
+      QLog.d("IceBreakConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -65,7 +73,7 @@ public class IceBreakConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.IceBreakConfProcessor
  * JD-Core Version:    0.7.0.1
  */

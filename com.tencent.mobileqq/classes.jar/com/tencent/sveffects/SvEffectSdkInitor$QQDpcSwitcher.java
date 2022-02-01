@@ -1,6 +1,7 @@
 package com.tencent.sveffects;
 
-import com.tencent.mobileqq.shortvideo.util.MediaCodecDPC;
+import com.tencent.aelight.camera.util.api.IMediaCodecDPC;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
 
 public class SvEffectSdkInitor$QQDpcSwitcher
@@ -8,17 +9,17 @@ public class SvEffectSdkInitor$QQDpcSwitcher
 {
   public float getBeatyRate()
   {
-    return MediaCodecDPC.a();
+    return ((IMediaCodecDPC)QRoute.api(IMediaCodecDPC.class)).getBeatyRate();
   }
   
   public boolean isBeautySwitchOpen()
   {
-    return MediaCodecDPC.b();
+    return ((IMediaCodecDPC)QRoute.api(IMediaCodecDPC.class)).isBeautySwitchOpen();
   }
   
   public boolean isDeNoiseSwitchOpen()
   {
-    return MediaCodecDPC.e();
+    return ((IMediaCodecDPC)QRoute.api(IMediaCodecDPC.class)).isDeNoiseSwitchOpen();
   }
   
   public boolean isPortraitSwitchOpen()
@@ -28,12 +29,12 @@ public class SvEffectSdkInitor$QQDpcSwitcher
   
   public boolean isSvafSwitchOpen()
   {
-    return MediaCodecDPC.c();
+    return ((IMediaCodecDPC)QRoute.api(IMediaCodecDPC.class)).isSvafSwitchOpen();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.sveffects.SvEffectSdkInitor.QQDpcSwitcher
  * JD-Core Version:    0.7.0.1
  */

@@ -11,14 +11,29 @@ import java.io.File;
 
 public class DebugInstaller
 {
-  private static final String a = AppConstants.SDCARD_ROOT + File.separator + "qflutter";
-  private static final String b = BaseApplicationImpl.getContext().getFilesDir().getAbsolutePath() + File.separator + "qflutter" + File.separator;
+  private static final String a;
+  private static final String b;
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_ROOT);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("qflutter");
+    a = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseApplicationImpl.getContext().getFilesDir().getAbsolutePath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("qflutter");
+    localStringBuilder.append(File.separator);
+    b = localStringBuilder.toString();
+  }
   
   public static void a()
   {
-    if (FileUtil.a(a))
+    if (FileUtil.b(a))
     {
-      int i = FileUtils.a(a, b, false, true, true);
+      int i = FileUtils.copyDirectory(a, b, false, true, true);
       if (i == 0)
       {
         QLog.d("QFlutter.launcher", 4, String.format("checkDebugInstall copy result: %s", new Object[] { Integer.valueOf(i) }));
@@ -60,7 +75,12 @@ public class DebugInstaller
         String str2 = localObject[i];
         File localFile = new File(str1, str2);
         FileUtil.a(localFile);
-        QLog.d("QFlutter.launcher", 4, "clearTimestamp: " + str2 + ", " + localFile.getAbsolutePath());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("clearTimestamp: ");
+        localStringBuilder.append(str2);
+        localStringBuilder.append(", ");
+        localStringBuilder.append(localFile.getAbsolutePath());
+        QLog.d("QFlutter.launcher", 4, localStringBuilder.toString());
         i += 1;
       }
     }
@@ -68,7 +88,7 @@ public class DebugInstaller
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.launch.DebugInstaller
  * JD-Core Version:    0.7.0.1
  */

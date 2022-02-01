@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
 import com.qq.taf.jce.HexUtil;
-import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.BaseMessageHandler;
 import com.tencent.mobileqq.app.StatictisInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBoolField;
@@ -11,10 +11,10 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.transfile.BaseTransProcessor;
 import com.tencent.mobileqq.transfile.ServerAddr;
 import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoReq;
 import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoResp;
+import com.tencent.mobileqq.transfile.report.ProcessorReport;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -31,23 +31,23 @@ import tencent.im.cs.cmd0x346.cmd0x346.RspBody;
 public class C2CPttUpHandler
   extends BaseHandler
 {
-  private static int s0x346Seq = 0;
+  private static int s0x346Seq;
   
   byte[] constructReqBody(List<RichProto.RichProtoReq.ReqCommon> paramList)
   {
-    int j = 0;
     cmd0x346.ReqBody localReqBody = new cmd0x346.ReqBody();
-    localReqBody.uint32_cmd.set(500);
-    Object localObject = localReqBody.uint32_seq;
-    int i = s0x346Seq;
-    s0x346Seq = i + 1;
-    ((PBUInt32Field)localObject).set(i);
+    Object localObject = localReqBody.uint32_cmd;
+    int i = 500;
+    ((PBUInt32Field)localObject).set(500);
+    localObject = localReqBody.uint32_seq;
+    int j = s0x346Seq;
+    s0x346Seq = j + 1;
+    ((PBUInt32Field)localObject).set(j);
     localReqBody.uint32_business_id.set(17);
     localReqBody.uint32_client_type.set(104);
-    RichProto.RichProtoReq.PttUpReq localPttUpReq;
     if (paramList.size() == 1)
     {
-      localPttUpReq = (RichProto.RichProtoReq.PttUpReq)paramList.get(0);
+      RichProto.RichProtoReq.PttUpReq localPttUpReq = (RichProto.RichProtoReq.PttUpReq)paramList.get(0);
       cmd0x346.ApplyUploadReq localApplyUploadReq = new cmd0x346.ApplyUploadReq();
       localApplyUploadReq.uint64_sender_uin.set(Long.parseLong(localPttUpReq.selfUin));
       try
@@ -62,39 +62,7 @@ public class C2CPttUpHandler
       }
       catch (Exception paramList)
       {
-        for (;;)
-        {
-          paramList.printStackTrace();
-          continue;
-          i = j;
-          if (localPttUpReq.forceViaOffline)
-          {
-            i = 500;
-            continue;
-            paramList.str_dst_phonenum.set(localPttUpReq.peerUin);
-            i = 102;
-            continue;
-            i = 104;
-            continue;
-            i = 104;
-            continue;
-            i = 105;
-            continue;
-            i = 101;
-            continue;
-            i = 103;
-            continue;
-            i = 100;
-            continue;
-            i = 114;
-            continue;
-            i = 130;
-            continue;
-            if (localPttUpReq.uinType == 9999) {
-              paramList.uint32_file_type.set(102);
-            }
-          }
-        }
+        paramList.printStackTrace();
       }
       localApplyUploadReq.uint32_file_type.set(2);
       localApplyUploadReq.str_file_name.set(localPttUpReq.fileName);
@@ -105,33 +73,100 @@ public class C2CPttUpHandler
       paramList.uint64_id.set(3L);
       paramList.uint32_ptt_format.set(localPttUpReq.voiceType);
       paramList.uint32_ptt_time.set(localPttUpReq.voiceLength);
-      i = getHandlerNetType();
-      paramList.uint32_net_type.set(i);
+      j = getHandlerNetType();
+      paramList.uint32_net_type.set(j);
       paramList.uint32_voice_type.set(localPttUpReq.audioPanelType);
       if (QLog.isColorLevel())
       {
-        QLog.d("RecordParams", 2, "C2CPttUp: panel[" + localPttUpReq.audioPanelType + "] type[" + localPttUpReq.voiceType + "] length[" + localPttUpReq.voiceLength + "] size[" + localPttUpReq.fileSize + "]");
-        if (QLog.isColorLevel()) {
-          QLog.d("RecordParams", 2, "C2CPttUp: net[" + i + "]");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("C2CPttUp: panel[");
+        ((StringBuilder)localObject).append(localPttUpReq.audioPanelType);
+        ((StringBuilder)localObject).append("] type[");
+        ((StringBuilder)localObject).append(localPttUpReq.voiceType);
+        ((StringBuilder)localObject).append("] length[");
+        ((StringBuilder)localObject).append(localPttUpReq.voiceLength);
+        ((StringBuilder)localObject).append("] size[");
+        ((StringBuilder)localObject).append(localPttUpReq.fileSize);
+        ((StringBuilder)localObject).append("]");
+        QLog.d("RecordParams", 2, ((StringBuilder)localObject).toString());
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("C2CPttUp: net[");
+          ((StringBuilder)localObject).append(j);
+          ((StringBuilder)localObject).append("]");
+          QLog.d("RecordParams", 2, ((StringBuilder)localObject).toString());
         }
       }
-      i = j;
-      switch (localPttUpReq.uinType)
+      j = localPttUpReq.uinType;
+      if (j != 0) {
+        if (j != 1020)
+        {
+          if (j == 9999) {
+            break label630;
+          }
+          if ((j == 10002) || (j == 10004)) {
+            break label624;
+          }
+          if (j == 10009) {
+            break label617;
+          }
+          if (j != 1000)
+          {
+            if (j == 1001) {
+              break label624;
+            }
+            if (j != 1008) {
+              if (j != 1009) {
+                if ((j == 1023) || (j == 1024)) {
+                  break label647;
+                }
+              }
+            }
+          }
+        }
+      }
+      switch (j)
       {
       default: 
-        i = j;
-      case 1005: 
-      case 1023: 
-      case 1024: 
-        paramList.uint64_type.set(i);
-        if (localPttUpReq.uinType == 1008)
-        {
-          paramList.uint32_file_type.set(3);
-          localReqBody.msg_extension_req.set(paramList);
-          return localReqBody.toByteArray();
-        }
         break;
+      case 1006: 
+        paramList.str_dst_phonenum.set(localPttUpReq.peerUin);
+        i = 102;
+        break;
+      case 1004: 
+        i = 105;
+        break label649;
+        i = 103;
+        break label649;
+        i = 101;
+        break label649;
+        i = 104;
+        break label649;
+        label617:
+        i = 130;
+        break label649;
+        label624:
+        i = 100;
+        break label649;
+        label630:
+        i = 114;
+        break label649;
+        if (localPttUpReq.forceViaOffline) {
+          break label649;
+        }
       }
+      label647:
+      i = 0;
+      label649:
+      paramList.uint64_type.set(i);
+      if (localPttUpReq.uinType == 1008) {
+        paramList.uint32_file_type.set(3);
+      } else if (localPttUpReq.uinType == 9999) {
+        paramList.uint32_file_type.set(102);
+      }
+      localReqBody.msg_extension_req.set(paramList);
+      return localReqBody.toByteArray();
     }
     throw new RuntimeException("only support one request");
   }
@@ -155,7 +190,7 @@ public class C2CPttUpHandler
     if (localObject2 == null) {
       return;
     }
-    Object localObject1 = paramProtoResp.resp.getWupBuffer();
+    byte[] arrayOfByte = paramProtoResp.resp.getWupBuffer();
     RichProto.RichProtoReq localRichProtoReq = (RichProto.RichProtoReq)paramProtoReq.busiData;
     RichProto.RichProtoResp localRichProtoResp = localRichProtoReq.resp;
     StatictisInfo localStatictisInfo = paramProtoResp.statisInfo;
@@ -163,99 +198,104 @@ public class C2CPttUpHandler
     if (((FromServiceMsg)localObject2).getResultCode() != 1000)
     {
       i = ((FromServiceMsg)localObject2).getResultCode();
-      if ((i == 1002) || (i == 1013))
+      if ((i != 1002) && (i != 1013))
       {
-        localObject1 = MessageHandler.a((FromServiceMsg)localObject2);
-        paramProtoReq = ((FromServiceMsg)localObject2).getBusinessFailMsg();
-        paramProtoResp = paramProtoReq;
-        if (paramProtoReq == null) {
+        paramProtoReq = BaseMessageHandler.a((FromServiceMsg)localObject2);
+        paramProtoResp = ((FromServiceMsg)localObject2).getBusinessFailMsg();
+        if (paramProtoResp == null) {
           paramProtoResp = "";
         }
-        setResult(-1, 9311, (String)localObject1, paramProtoResp, localStatictisInfo, localRichProtoResp.resps);
+        setResult(-1, 9044, paramProtoReq, paramProtoResp, localStatictisInfo, localRichProtoResp.resps);
+      }
+      else
+      {
+        paramProtoReq = BaseMessageHandler.a((FromServiceMsg)localObject2);
+        paramProtoResp = ((FromServiceMsg)localObject2).getBusinessFailMsg();
+        if (paramProtoResp == null) {
+          paramProtoResp = "";
+        }
+        setResult(-1, 9311, paramProtoReq, paramProtoResp, localStatictisInfo, localRichProtoResp.resps);
       }
     }
-    cmd0x346.ApplyUploadRsp localApplyUploadRsp;
-    RichProto.RichProtoResp.C2CPttUpResp localC2CPttUpResp;
-    for (;;)
+    else
     {
-      RichProtoProc.onBusiProtoResp(localRichProtoReq, localRichProtoResp);
-      return;
-      localObject1 = MessageHandler.a((FromServiceMsg)localObject2);
-      paramProtoReq = ((FromServiceMsg)localObject2).getBusinessFailMsg();
-      paramProtoResp = paramProtoReq;
-      if (paramProtoReq == null) {
-        paramProtoResp = "";
-      }
-      setResult(-1, 9044, (String)localObject1, paramProtoResp, localStatictisInfo, localRichProtoResp.resps);
-      continue;
       try
       {
         paramProtoResp = new cmd0x346.RspBody();
-        paramProtoResp.mergeFrom((byte[])localObject1);
-        localApplyUploadRsp = (cmd0x346.ApplyUploadRsp)paramProtoResp.msg_apply_upload_rsp.get();
-        localC2CPttUpResp = (RichProto.RichProtoResp.C2CPttUpResp)localRichProtoResp.resps.get(0);
-        if (localC2CPttUpResp != null)
+        paramProtoResp.mergeFrom(arrayOfByte);
+        cmd0x346.ApplyUploadRsp localApplyUploadRsp = (cmd0x346.ApplyUploadRsp)paramProtoResp.msg_apply_upload_rsp.get();
+        localObject1 = (RichProto.RichProtoResp.C2CPttUpResp)localRichProtoResp.resps.get(0);
+        if (localObject1 != null)
         {
           if (((FromServiceMsg)localObject2).getAttributes().containsKey("_attr_send_by_quickHttp")) {
-            localC2CPttUpResp.isSendByQuickHttp = ((Boolean)((FromServiceMsg)localObject2).getAttribute("_attr_send_by_quickHttp", Boolean.valueOf(false))).booleanValue();
+            ((RichProto.RichProtoResp.C2CPttUpResp)localObject1).isSendByQuickHttp = ((Boolean)((FromServiceMsg)localObject2).getAttribute("_attr_send_by_quickHttp", Boolean.valueOf(false))).booleanValue();
           }
-          if (QLog.isColorLevel()) {
-            QLog.e("http_sideway", 2, "C2CPttUpHandler.onProtoResp:isSendByQuickHttp=" + localC2CPttUpResp.isSendByQuickHttp);
+          if (QLog.isColorLevel())
+          {
+            paramProtoResp = new StringBuilder();
+            paramProtoResp.append("C2CPttUpHandler.onProtoResp:isSendByQuickHttp=");
+            paramProtoResp.append(((RichProto.RichProtoResp.C2CPttUpResp)localObject1).isSendByQuickHttp);
+            QLog.e("http_sideway", 2, paramProtoResp.toString());
           }
           i = localApplyUploadRsp.int32_ret_code.get();
-          if (i != 0) {
-            break label589;
+          if (i == 0)
+          {
+            ((RichProto.RichProtoResp.C2CPttUpResp)localObject1).uuid = localApplyUploadRsp.bytes_uuid.get().toStringUtf8();
+            if ((localApplyUploadRsp.bool_file_exist.has()) && (localApplyUploadRsp.bool_file_exist.get()))
+            {
+              ((RichProto.RichProtoResp.C2CPttUpResp)localObject1).isExist = true;
+            }
+            else
+            {
+              if (localApplyUploadRsp.uint32_pack_size.has()) {
+                ((RichProto.RichProtoResp.C2CPttUpResp)localObject1).blockSize = localApplyUploadRsp.uint32_pack_size.get();
+              }
+              localObject2 = HexUtil.bytes2HexStr(localApplyUploadRsp.bytes_upload_key.get().toByteArray());
+              ((RichProto.RichProtoResp.C2CPttUpResp)localObject1).mUkey = ((String)localObject2);
+              paramProtoReq = localApplyUploadRsp.str_upload_ip.get();
+              paramProtoResp = paramProtoReq;
+              if (paramProtoReq == null) {
+                paramProtoResp = localApplyUploadRsp.str_upload_domain.get();
+              }
+              if ((localObject2 != null) && (paramProtoResp != null))
+              {
+                paramProtoResp = localApplyUploadRsp.rpt_str_uploadip_list.get();
+                if ((paramProtoResp != null) && (paramProtoResp.size() > 0))
+                {
+                  paramProtoResp = paramProtoResp.iterator();
+                  while (paramProtoResp.hasNext())
+                  {
+                    paramProtoReq = (String)paramProtoResp.next();
+                    localObject2 = new ServerAddr();
+                    ((ServerAddr)localObject2).mIp = paramProtoReq;
+                    ((RichProto.RichProtoResp.C2CPttUpResp)localObject1).ipList.add(localObject2);
+                  }
+                }
+                setResult(0, 0, "", "", localStatictisInfo, (RichProto.RichProtoResp.RespCommon)localObject1);
+              }
+              else
+              {
+                throw new Exception("ukey or ip missing");
+              }
+            }
           }
-          localC2CPttUpResp.uuid = localApplyUploadRsp.bytes_uuid.get().toStringUtf8();
-          if ((!localApplyUploadRsp.bool_file_exist.has()) || (!localApplyUploadRsp.bool_file_exist.get())) {
-            break;
+          else
+          {
+            setResult(-1, -9527, ProcessorReport.getUrlReason(i), "", localStatictisInfo, (RichProto.RichProtoResp.RespCommon)localObject1);
           }
-          localC2CPttUpResp.isExist = true;
         }
       }
       catch (Exception paramProtoResp)
       {
-        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr((byte[])localObject1), localStatictisInfo, localRichProtoResp.resps);
+        paramProtoReq = ProcessorReport.getServerReason("P", -9529L);
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramProtoResp.getMessage());
+        ((StringBuilder)localObject1).append(" hex:");
+        ((StringBuilder)localObject1).append(HexUtil.bytes2HexStr(arrayOfByte));
+        setResult(-1, -9527, paramProtoReq, ((StringBuilder)localObject1).toString(), localStatictisInfo, localRichProtoResp.resps);
       }
     }
-    if (localApplyUploadRsp.uint32_pack_size.has()) {
-      localC2CPttUpResp.blockSize = localApplyUploadRsp.uint32_pack_size.get();
-    }
-    localObject2 = HexUtil.bytes2HexStr(localApplyUploadRsp.bytes_upload_key.get().toByteArray());
-    localC2CPttUpResp.mUkey = ((String)localObject2);
-    paramProtoReq = localApplyUploadRsp.str_upload_ip.get();
-    paramProtoResp = paramProtoReq;
-    if (paramProtoReq == null) {
-      paramProtoResp = localApplyUploadRsp.str_upload_domain.get();
-    }
-    for (;;)
-    {
-      label482:
-      throw new Exception("ukey or ip missing");
-      label589:
-      do
-      {
-        paramProtoResp = localApplyUploadRsp.rpt_str_uploadip_list.get();
-        if ((paramProtoResp != null) && (paramProtoResp.size() > 0))
-        {
-          paramProtoResp = paramProtoResp.iterator();
-          while (paramProtoResp.hasNext())
-          {
-            paramProtoReq = (String)paramProtoResp.next();
-            localObject2 = new ServerAddr();
-            ((ServerAddr)localObject2).mIp = paramProtoReq;
-            localC2CPttUpResp.ipList.add(localObject2);
-          }
-        }
-        setResult(0, 0, "", "", localStatictisInfo, localC2CPttUpResp);
-        break;
-        setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), "", localStatictisInfo, localC2CPttUpResp);
-        break;
-        if (localObject2 == null) {
-          break label482;
-        }
-      } while (paramProtoResp != null);
-    }
+    RichProtoProc.onBusiProtoResp(localRichProtoReq, localRichProtoResp);
   }
   
   public void sendRichProtoReq(RichProto.RichProtoReq paramRichProtoReq)
@@ -273,7 +313,7 @@ public class C2CPttUpHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.protohandler.C2CPttUpHandler
  * JD-Core Version:    0.7.0.1
  */

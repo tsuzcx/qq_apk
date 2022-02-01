@@ -8,18 +8,22 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 class LbsBaseActivity$1
   implements View.OnClickListener
 {
+  LbsBaseActivity$1(LbsBaseActivity paramLbsBaseActivity) {}
+  
   public void onClick(View paramView)
   {
-    if ((LbsBaseActivity.a(this.a) != null) && (LbsBaseActivity.a(this.a).isShowing())) {
-      this.a.a(LbsBaseActivity.a(this.a));
+    if ((LbsBaseActivity.access$000(this.a) != null) && (LbsBaseActivity.access$000(this.a).isShowing()))
+    {
+      LbsBaseActivity localLbsBaseActivity = this.a;
+      localLbsBaseActivity.dialogDismiss(LbsBaseActivity.access$000(localLbsBaseActivity));
     }
-    this.a.a();
+    this.a.onDisableClick();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LbsBaseActivity.1
  * JD-Core Version:    0.7.0.1
  */

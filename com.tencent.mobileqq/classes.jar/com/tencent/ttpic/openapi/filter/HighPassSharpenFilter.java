@@ -34,8 +34,9 @@ public class HighPassSharpenFilter
   
   public void setAlpha(float paramFloat)
   {
-    addParam(new UniformParam.FloatParam("alpha", paramFloat * 2.0F));
-    this.mAlpha = (paramFloat * 2.0F);
+    paramFloat *= 2.0F;
+    addParam(new UniformParam.FloatParam("alpha", paramFloat));
+    this.mAlpha = paramFloat;
   }
   
   public void setCanvasSize(int paramInt1, int paramInt2)
@@ -45,7 +46,7 @@ public class HighPassSharpenFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.HighPassSharpenFilter
  * JD-Core Version:    0.7.0.1
  */

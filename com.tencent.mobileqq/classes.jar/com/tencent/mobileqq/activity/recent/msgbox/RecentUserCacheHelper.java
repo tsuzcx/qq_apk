@@ -1,109 +1,116 @@
 package com.tencent.mobileqq.activity.recent.msgbox;
 
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.recent.msgbox.api.ITempMsgBoxManager;
+import com.tencent.mobileqq.activity.recent.msgbox.api.ITempMsgBoxService;
 import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.asyncdb.FullCache;
 import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.proxy.api.IRecentUserProxyService;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 
 public class RecentUserCacheHelper
 {
-  private void a(List<RecentUser> paramList, RecentUserProxy paramRecentUserProxy, QQAppInterface paramQQAppInterface)
+  private void a(RecentUserProxy paramRecentUserProxy, AppInterface paramAppInterface)
   {
     RecentUser localRecentUser = paramRecentUserProxy.a(AppConstants.TEMP_MSG_BOX_UIN, 10011);
-    paramQQAppInterface = ((TempMsgBoxManager)paramQQAppInterface.getManager(QQManagerFactory.TEMP_MSG_BOX)).a(paramQQAppInterface);
-    if (paramQQAppInterface.isEmpty())
+    Object localObject = ((ITempMsgBoxManager)paramAppInterface.getRuntimeService(ITempMsgBoxManager.class, "")).getMsgBoxRecentUsers();
+    if (((List)localObject).isEmpty())
     {
       QLog.e("RecentUserCacheHelper", 1, "update: msgBoxRecentUsers.isEmpty()");
       return;
     }
-    paramList = (RecentUser)paramQQAppInterface.get(0);
-    Iterator localIterator = paramQQAppInterface.iterator();
-    label66:
-    if (localIterator.hasNext())
+    paramAppInterface = (RecentUser)((List)localObject).get(0);
+    Iterator localIterator = ((List)localObject).iterator();
+    while (localIterator.hasNext())
     {
-      paramQQAppInterface = (RecentUser)localIterator.next();
-      if (Math.max(paramQQAppInterface.lastmsgtime, paramQQAppInterface.lastmsgdrafttime) <= Math.max(paramList.lastmsgtime, paramList.lastmsgdrafttime)) {
-        break label207;
+      localObject = (RecentUser)localIterator.next();
+      if (Math.max(((RecentUser)localObject).lastmsgtime, ((RecentUser)localObject).lastmsgdrafttime) > Math.max(paramAppInterface.lastmsgtime, paramAppInterface.lastmsgdrafttime)) {
+        paramAppInterface = (AppInterface)localObject;
       }
-      paramList = paramQQAppInterface;
     }
-    label207:
-    for (;;)
-    {
-      break label66;
-      localRecentUser.uin = AppConstants.TEMP_MSG_BOX_UIN;
-      localRecentUser.setType(10011);
-      localRecentUser.lastmsgtime = paramList.lastmsgtime;
-      localRecentUser.lastmsgdrafttime = paramList.lastmsgdrafttime;
-      localRecentUser.opTime = paramList.opTime;
-      QLog.i("RecentUserCacheHelper", 1, "createMsgBox: " + localRecentUser.uin);
-      if (!(paramRecentUserProxy instanceof FullCache)) {
-        break;
-      }
+    localRecentUser.uin = AppConstants.TEMP_MSG_BOX_UIN;
+    localRecentUser.setType(10011);
+    localRecentUser.lastmsgtime = paramAppInterface.lastmsgtime;
+    localRecentUser.lastmsgdrafttime = paramAppInterface.lastmsgdrafttime;
+    localRecentUser.opTime = paramAppInterface.opTime;
+    paramAppInterface = new StringBuilder();
+    paramAppInterface.append("createMsgBox: ");
+    paramAppInterface.append(localRecentUser.uin);
+    QLog.i("RecentUserCacheHelper", 1, paramAppInterface.toString());
+    if ((paramRecentUserProxy instanceof FullCache)) {
       ((FullCache)paramRecentUserProxy).addCache(localRecentUser);
-      return;
     }
   }
   
-  public void a(QQAppInterface paramQQAppInterface)
+  public void a(AppInterface paramAppInterface)
   {
-    QLog.i("RecentUserCacheHelper", 2, "initMsgBox() called with: app = [" + paramQQAppInterface + "]");
-    RecentUserProxy localRecentUserProxy = paramQQAppInterface.getRecentUserProxy();
-    a(localRecentUserProxy.a(true, false), localRecentUserProxy, paramQQAppInterface);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("initMsgBox() called with: app = [");
+    localStringBuilder.append(paramAppInterface);
+    localStringBuilder.append("]");
+    QLog.i("RecentUserCacheHelper", 2, localStringBuilder.toString());
+    a(((IRecentUserProxyService)paramAppInterface.getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache(), paramAppInterface);
   }
   
-  public void a(RecentUser paramRecentUser, boolean paramBoolean, QQAppInterface paramQQAppInterface)
+  public void a(RecentUser paramRecentUser, boolean paramBoolean, AppInterface paramAppInterface)
   {
-    TempMsgBoxManager localTempMsgBoxManager = (TempMsgBoxManager)paramQQAppInterface.getManager(QQManagerFactory.TEMP_MSG_BOX);
-    if (localTempMsgBoxManager.a(paramRecentUser.uin, paramRecentUser.getType())) {
-      FilterMsgBoxRecentUserUtil.a(paramQQAppInterface, paramBoolean);
+    ITempMsgBoxManager localITempMsgBoxManager = (ITempMsgBoxManager)paramAppInterface.getRuntimeService(ITempMsgBoxManager.class, "");
+    if (localITempMsgBoxManager.isBelongToFilterBox(paramRecentUser.uin, paramRecentUser.getType())) {
+      ((ITempMsgBoxService)QRoute.api(ITempMsgBoxService.class)).removeFilterBoxIfNecessary(paramAppInterface, paramBoolean);
     }
-    if (localTempMsgBoxManager.b(paramRecentUser.uin, paramRecentUser.getType())) {
-      TempMsgBoxManager.a(paramQQAppInterface, paramBoolean);
+    if (localITempMsgBoxManager.isBelongToMsgBox(paramRecentUser.uin, paramRecentUser.getType())) {
+      ((ITempMsgBoxService)QRoute.api(ITempMsgBoxService.class)).removeMsgBoxIfNecessary(paramAppInterface, paramBoolean);
     }
   }
   
-  public void a(RecentUser paramRecentUser, boolean paramBoolean, RecentUserProxy paramRecentUserProxy, QQAppInterface paramQQAppInterface)
+  public void a(RecentUser paramRecentUser, boolean paramBoolean, RecentUserProxy paramRecentUserProxy, AppInterface paramAppInterface)
   {
-    Object localObject1 = (TempMsgBoxManager)paramQQAppInterface.getManager(QQManagerFactory.TEMP_MSG_BOX);
-    if (((TempMsgBoxManager)localObject1).a(paramRecentUser.uin, paramRecentUser.getType()))
+    Object localObject1 = (ITempMsgBoxManager)paramAppInterface.getRuntimeService(ITempMsgBoxManager.class, "");
+    Object localObject2;
+    if (((ITempMsgBoxManager)localObject1).isBelongToFilterBox(paramRecentUser.uin, paramRecentUser.getType()))
     {
-      RecentUser localRecentUser1 = paramRecentUserProxy.a(AppConstants.FILTER_MSG_UIN, 10012);
-      QLog.i("RecentUserCacheHelper", 1, "onSaveRecentUser: ToFilterBox " + paramRecentUser);
-      Object localObject2 = FilterMsgBoxRecentUserUtil.a(paramQQAppInterface);
-      localRecentUser1.lastmsgtime = paramRecentUser.lastmsgtime;
-      if (!((List)localObject2).isEmpty())
+      localObject2 = paramRecentUserProxy.a(AppConstants.FILTER_MSG_UIN, 10012);
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("onSaveRecentUser: ToFilterBox ");
+      ((StringBuilder)localObject3).append(paramRecentUser);
+      QLog.i("RecentUserCacheHelper", 1, ((StringBuilder)localObject3).toString());
+      localObject3 = ((ITempMsgBoxService)QRoute.api(ITempMsgBoxService.class)).getFilterBoxRecentUsers(paramAppInterface);
+      ((RecentUser)localObject2).lastmsgtime = paramRecentUser.lastmsgtime;
+      if (!((List)localObject3).isEmpty())
       {
-        localObject2 = ((List)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
+        localObject3 = ((List)localObject3).iterator();
+        while (((Iterator)localObject3).hasNext())
         {
-          RecentUser localRecentUser2 = (RecentUser)((Iterator)localObject2).next();
-          if (localRecentUser2.lastmsgtime > localRecentUser1.lastmsgtime) {
-            localRecentUser1.lastmsgtime = localRecentUser2.lastmsgtime;
+          RecentUser localRecentUser = (RecentUser)((Iterator)localObject3).next();
+          if (localRecentUser.lastmsgtime > ((RecentUser)localObject2).lastmsgtime) {
+            ((RecentUser)localObject2).lastmsgtime = localRecentUser.lastmsgtime;
           }
         }
       }
-      paramRecentUserProxy.b(localRecentUser1);
+      paramRecentUserProxy.b((RecentUser)localObject2);
     }
-    if (((TempMsgBoxManager)localObject1).b(paramRecentUser.uin, paramRecentUser.getType()))
+    if (((ITempMsgBoxManager)localObject1).isBelongToMsgBox(paramRecentUser.uin, paramRecentUser.getType()))
     {
       localObject1 = paramRecentUserProxy.a(AppConstants.TEMP_MSG_BOX_UIN, 10011);
-      QLog.i("RecentUserCacheHelper", 1, "onSaveRecentUser: ToMsgBox " + paramRecentUser);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("onSaveRecentUser: ToMsgBox ");
+      ((StringBuilder)localObject2).append(paramRecentUser);
+      QLog.i("RecentUserCacheHelper", 1, ((StringBuilder)localObject2).toString());
       ((RecentUser)localObject1).lastmsgtime = paramRecentUser.lastmsgtime;
       paramRecentUserProxy.b((RecentUser)localObject1);
     }
-    FilterMsgBoxRecentUserUtil.a(paramQQAppInterface, true);
-    TempMsgBoxManager.a(paramQQAppInterface, true);
+    ((ITempMsgBoxService)QRoute.api(ITempMsgBoxService.class)).removeFilterBoxIfNecessary(paramAppInterface, true);
+    ((ITempMsgBoxService)QRoute.api(ITempMsgBoxService.class)).removeMsgBoxIfNecessary(paramAppInterface, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msgbox.RecentUserCacheHelper
  * JD-Core Version:    0.7.0.1
  */

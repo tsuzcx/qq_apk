@@ -11,12 +11,12 @@ class PermissionSettingFragment$2
   
   public void onClick(View paramView)
   {
-    SubscribePermissionSettingFragment.launch(this.this$0.getActivity(), this.this$0.appId);
+    SubscribePermissionSettingFragment.launch(this.this$0.getBaseActivity(), this.this$0.appId);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.PermissionSettingFragment.2
  * JD-Core Version:    0.7.0.1
  */

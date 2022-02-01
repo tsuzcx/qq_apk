@@ -2,21 +2,21 @@ package cooperation.qwallet.plugin.ipc;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.tianshu.api.IRedTouchManager;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.RedDisplayInfo;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.RedTypeInfo;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.TimeRspBody;
-import cooperation.qwallet.plugin.impl.QWalletHelperImpl;
+import cooperation.qwallet.plugin.IQWalletHelper;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import mqq.app.AppRuntime;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -32,146 +32,109 @@ public class WalletHomeReq
   
   private static String getContentByAppInfo(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
   {
-    JSONObject localJSONObject2 = null;
     if (paramAppInfo != null)
     {
       paramAppInfo = paramAppInfo.buffer.get();
-      if (TextUtils.isEmpty(paramAppInfo)) {}
-    }
-    for (;;)
-    {
-      String str;
-      try
-      {
-        JSONObject localJSONObject3 = new JSONObject(paramAppInfo).optJSONObject("msg");
-        if (localJSONObject3 == null) {
-          return "";
-        }
-        Iterator localIterator = localJSONObject3.keys();
-        localJSONObject1 = null;
-        paramAppInfo = localJSONObject2;
-        if (localIterator.hasNext())
+      if (!TextUtils.isEmpty(paramAppInfo)) {
+        try
         {
-          str = (String)localIterator.next();
-          if (TextUtils.isEmpty(str)) {
-            break label203;
-          }
-          localJSONObject2 = localJSONObject3.getJSONObject(str);
+          JSONObject localJSONObject2 = new JSONObject(paramAppInfo).optJSONObject("msg");
           if (localJSONObject2 == null) {
-            break label203;
+            return "";
           }
-          if (paramAppInfo == null)
+          Iterator localIterator = localJSONObject2.keys();
+          paramAppInfo = null;
+          Object localObject = null;
+          while (localIterator.hasNext())
           {
-            localJSONObject1 = localJSONObject2;
-            paramAppInfo = str;
-            continue;
-          }
-          try
-          {
-            int i = Integer.valueOf(paramAppInfo).intValue();
-            int j = Integer.valueOf(str).intValue();
-            if (j <= i) {
-              break label206;
+            String str = (String)localIterator.next();
+            if (!TextUtils.isEmpty(str))
+            {
+              JSONObject localJSONObject1 = localJSONObject2.getJSONObject(str);
+              if (localJSONObject1 != null)
+              {
+                if (localObject != null) {}
+                for (;;)
+                {
+                  try
+                  {
+                    int i = Integer.valueOf((String)localObject).intValue();
+                    int j = Integer.valueOf(str).intValue();
+                    if (j <= i) {
+                      break;
+                    }
+                  }
+                  catch (Exception localException)
+                  {
+                    localException.printStackTrace();
+                    if (str.length() > ((String)localObject).length()) {
+                      continue;
+                    }
+                  }
+                  localObject = str;
+                  paramAppInfo = localJSONObject1;
+                  break;
+                  if (str.compareTo((String)localObject) <= 0) {
+                    break;
+                  }
+                }
+              }
             }
-            localJSONObject1 = localJSONObject2;
-            paramAppInfo = str;
           }
-          catch (Exception localException)
+          if (paramAppInfo != null)
           {
-            localException.printStackTrace();
-            if (str.length() > paramAppInfo.length()) {
-              break label212;
-            }
+            paramAppInfo = paramAppInfo.optString("content");
+            return paramAppInfo;
           }
-          if (str.compareTo(paramAppInfo) <= 0) {
-            break label203;
-          }
-          break label212;
         }
-        if (localJSONObject1 != null)
+        catch (JSONException paramAppInfo)
         {
-          paramAppInfo = localJSONObject1.optString("content");
-          return paramAppInfo;
+          paramAppInfo.printStackTrace();
         }
       }
-      catch (JSONException paramAppInfo)
-      {
-        paramAppInfo.printStackTrace();
-        return "";
-      }
-      paramAppInfo = "";
-      continue;
-      label203:
-      continue;
-      label206:
-      continue;
-      return "";
-      label212:
-      JSONObject localJSONObject1 = localJSONObject2;
-      paramAppInfo = str;
     }
+    return "";
   }
   
   private static int getRedType(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
   {
+    int i = -1;
     if (paramAppInfo == null) {
       return -1;
     }
     paramAppInfo = paramAppInfo.red_display_info.red_type_info.get();
-    int i;
     if (paramAppInfo.size() > 0)
     {
-      int m = 0;
-      int j = -1;
-      i = j;
-      if (m < paramAppInfo.size())
+      int j = 0;
+      int k;
+      for (i = -1; j < paramAppInfo.size(); i = k)
       {
-        BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = (BusinessInfoCheckUpdate.RedTypeInfo)paramAppInfo.get(m);
-        i = j;
-        int k;
+        BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = (BusinessInfoCheckUpdate.RedTypeInfo)paramAppInfo.get(j);
+        k = i;
         if (localRedTypeInfo != null)
         {
-          k = localRedTypeInfo.red_type.get();
-          if ((k != 3) && (k != 4))
+          int m = localRedTypeInfo.red_type.get();
+          if ((m != 3) && (m != 4))
           {
-            i = j;
-            if (k != 0) {}
+            k = i;
+            if (m != 0) {}
           }
-          else
+          else if ((i != -1) && (m != 3))
           {
-            if (j != -1) {
-              break label107;
-            }
-            i = k;
-          }
-        }
-        for (;;)
-        {
-          m += 1;
-          j = i;
-          break;
-          label107:
-          if (k == 3)
-          {
-            i = k;
-          }
-          else
-          {
-            i = j;
-            if (k == 4)
+            k = i;
+            if (m == 4)
             {
-              i = j;
-              if (j != 3) {
-                i = k;
-              }
+              k = i;
+              if (i == 3) {}
             }
           }
+          else
+          {
+            k = m;
+          }
         }
+        j += 1;
       }
-    }
-    else
-    {
-      i = -1;
     }
     return i;
   }
@@ -182,93 +145,68 @@ public class WalletHomeReq
     this.type = paramBundle.getInt("_qwallet_ipc_WalletHomeReq_Type");
     if (this.type == 2) {
       this.redTouchPath = paramBundle.getString("_qwallet_ipc_WalletHomeReq_RedTouchPath");
-    }
-    for (;;)
-    {
-      this.isAppLoadFinished = paramBundle.getBoolean("_qwallet_ipc_WalletHomeReq_isAppLoadFinished");
-      return;
+    } else {
       this.redTouchPaths = paramBundle.getStringArrayList("_qwallet_ipc_WalletHomeReq_RedTouchPaths");
     }
+    this.isAppLoadFinished = paramBundle.getBoolean("_qwallet_ipc_WalletHomeReq_isAppLoadFinished");
   }
   
-  protected void getRedTouch(QQAppInterface paramQQAppInterface)
+  protected void getRedTouch(AppRuntime paramAppRuntime)
   {
-    RedTouchManager localRedTouchManager = (RedTouchManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH);
+    IRedTouchManager localIRedTouchManager = (IRedTouchManager)paramAppRuntime.getRuntimeService(IRedTouchManager.class, "");
     ArrayList localArrayList = new ArrayList();
-    paramQQAppInterface = localRedTouchManager.a();
-    if (paramQQAppInterface == null)
+    paramAppRuntime = localIRedTouchManager.getLocalTimeRspBody();
+    if (paramAppRuntime == null)
     {
       onGetRedTouch(null);
       return;
     }
-    Iterator localIterator1 = paramQQAppInterface.rptMsgAppInfo.get().iterator();
-    if (localIterator1.hasNext())
+    Iterator localIterator1 = paramAppRuntime.rptMsgAppInfo.get().iterator();
+    while (localIterator1.hasNext())
     {
       BusinessInfoCheckUpdate.AppInfo localAppInfo = (BusinessInfoCheckUpdate.AppInfo)localIterator1.next();
       Iterator localIterator2 = this.redTouchPaths.iterator();
-      label82:
-      int j;
-      Object localObject2;
-      Object localObject3;
-      Object localObject1;
-      List localList;
-      for (;;)
+      while (localIterator2.hasNext())
       {
-        if (localIterator2.hasNext())
+        paramAppRuntime = (String)localIterator2.next();
+        if ((localAppInfo.path.get().equals(paramAppRuntime)) && (localAppInfo.iNewFlag.get() != 0))
         {
-          paramQQAppInterface = (String)localIterator2.next();
-          if ((localAppInfo.path.get().equals(paramQQAppInterface)) && (localAppInfo.iNewFlag.get() != 0))
+          int j = getRedType(localAppInfo);
+          if ((j == 3) || (j == 5) || (j == 4))
           {
-            j = getRedType(localAppInfo);
-            localObject2 = null;
-            localObject3 = null;
-            if ((j != 3) && (j != 5))
+            paramAppRuntime = localAppInfo.red_display_info.red_type_info.get();
+            if (paramAppRuntime.size() > 0)
             {
-              localObject1 = localObject2;
-              paramQQAppInterface = localObject3;
-              if (j != 4) {
-                break;
-              }
-            }
-            else
-            {
-              localList = localAppInfo.red_display_info.red_type_info.get();
-              localObject1 = localObject2;
-              paramQQAppInterface = localObject3;
-              if (localList.size() > 0) {
-                i = 0;
+              i = 0;
+              while (i < paramAppRuntime.size())
+              {
+                localObject = (BusinessInfoCheckUpdate.RedTypeInfo)paramAppRuntime.get(i);
+                if ((localObject != null) && ((((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_type.get() == 3) || (((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_type.get() == 5) || (((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_type.get() == 4)))
+                {
+                  paramAppRuntime = ((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_desc.get();
+                  localObject = ((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_content.get();
+                  break label273;
+                }
+                i += 1;
               }
             }
           }
+          paramAppRuntime = null;
+          Object localObject = paramAppRuntime;
+          label273:
+          localArrayList.add(new QWalletRedTouchInfo(localAppInfo.path.get(), j, getContentByAppInfo(localAppInfo), paramAppRuntime, (String)localObject));
         }
       }
-      for (;;)
-      {
-        localObject1 = localObject2;
-        paramQQAppInterface = localObject3;
-        if (i < localList.size())
-        {
-          paramQQAppInterface = (BusinessInfoCheckUpdate.RedTypeInfo)localList.get(i);
-          if ((paramQQAppInterface != null) && ((paramQQAppInterface.red_type.get() == 3) || (paramQQAppInterface.red_type.get() == 5) || (paramQQAppInterface.red_type.get() == 4)))
-          {
-            localObject1 = paramQQAppInterface.red_desc.get();
-            paramQQAppInterface = paramQQAppInterface.red_content.get();
-          }
-        }
-        else
-        {
-          localArrayList.add(new QWalletRedTouchInfo(localAppInfo.path.get(), j, getContentByAppInfo(localAppInfo), (String)localObject1, paramQQAppInterface));
-          break label82;
-          break;
-        }
-        i += 1;
-      }
     }
-    int i = localRedTouchManager.a("100007.102000", 100);
-    if (i > 0) {
-      localArrayList.add(new QWalletRedTouchInfo("100007.102000", 5, null, null, i + ""));
+    int i = localIRedTouchManager.getNumRedNumByPath("100007.102000", 100);
+    if (i > 0)
+    {
+      paramAppRuntime = new StringBuilder();
+      paramAppRuntime.append(i);
+      paramAppRuntime.append("");
+      localArrayList.add(new QWalletRedTouchInfo("100007.102000", 5, null, null, paramAppRuntime.toString()));
     }
-    if ((localArrayList == null) || (localArrayList.size() == 0))
+    if (localArrayList.size() == 0)
     {
       onGetRedTouch(null);
       return;
@@ -289,28 +227,30 @@ public class WalletHomeReq
   
   public void onReceive()
   {
-    QQAppInterface localQQAppInterface = QWalletHelperImpl.getAppInterface();
-    if (localQQAppInterface == null)
+    AppRuntime localAppRuntime = ((IQWalletHelper)QRoute.api(IQWalletHelper.class)).getRuntime();
+    if (localAppRuntime == null)
     {
       onGetRedTouch(null);
       return;
     }
-    switch (this.type)
+    int i = this.type;
+    if (i != 1)
     {
-    default: 
-      onGetRedTouch(null);
-      return;
-    case 1: 
-      getRedTouch(localQQAppInterface);
+      if (i != 2)
+      {
+        onGetRedTouch(null);
+        return;
+      }
+      reportRedTouch(localAppRuntime);
       return;
     }
-    reportRedTouch(localQQAppInterface);
+    getRedTouch(localAppRuntime);
   }
   
-  protected void reportRedTouch(QQAppInterface paramQQAppInterface)
+  protected void reportRedTouch(AppRuntime paramAppRuntime)
   {
-    if (paramQQAppInterface != null) {
-      ((RedTouchManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).b(this.redTouchPath);
+    if (paramAppRuntime != null) {
+      ((IRedTouchManager)paramAppRuntime.getRuntimeService(IRedTouchManager.class, "")).onRedTouchItemClick(this.redTouchPath);
     }
   }
   
@@ -325,7 +265,7 @@ public class WalletHomeReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qwallet.plugin.ipc.WalletHomeReq
  * JD-Core Version:    0.7.0.1
  */

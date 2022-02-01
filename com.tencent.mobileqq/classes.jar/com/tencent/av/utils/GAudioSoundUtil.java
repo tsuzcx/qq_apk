@@ -2,7 +2,7 @@ package com.tencent.av.utils;
 
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -10,7 +10,7 @@ public class GAudioSoundUtil
 {
   public static String a()
   {
-    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
+    File localFile = BaseApplication.getContext().getFilesDir();
     if (localFile == null)
     {
       if (QLog.isColorLevel()) {
@@ -18,7 +18,10 @@ public class GAudioSoundUtil
       }
       return "";
     }
-    return localFile.getParent() + "/qav/sound_early/";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(localFile.getParent());
+    localStringBuilder.append("/qav/sound_early/");
+    return localStringBuilder.toString();
   }
   
   public static void a(Context paramContext)
@@ -45,7 +48,7 @@ public class GAudioSoundUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.GAudioSoundUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,70 +1,14 @@
 package com.tencent.mobileqq.ar;
 
-import android.content.SharedPreferences;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
 
 public class NeonControl
 {
-  private static NeonControl jdField_a_of_type_ComTencentMobileqqArNeonControl = null;
-  public static boolean a;
+  private static NeonControl jdField_a_of_type_ComTencentMobileqqArNeonControl;
+  public static boolean a = true;
   NeonControl.AvgConsumeReport jdField_a_of_type_ComTencentMobileqqArNeonControl$AvgConsumeReport;
-  final Object jdField_a_of_type_JavaLangObject = new Object();
+  final Object jdField_a_of_type_JavaLangObject;
   private boolean b;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = true;
-  }
-  
-  private NeonControl()
-  {
-    Object localObject1 = BaseApplication.getContext().getSharedPreferences("sp_cpu_neon_support", 4);
-    if (!((SharedPreferences)localObject1).contains("sp_cpu_neon_support")) {
-      ThreadManager.post(new NeonControl.1(this, (SharedPreferences)localObject1, false), 5, null, true);
-    }
-    boolean bool2 = ((SharedPreferences)localObject1).getBoolean("sp_cpu_neon_support", false);
-    boolean bool3 = ScanEntranceDPC.a().e;
-    int i;
-    int j;
-    if (QLog.isColorLevel())
-    {
-      if (bool3)
-      {
-        i = 1;
-        if (!bool2) {
-          break label174;
-        }
-        j = 1;
-        label97:
-        QLog.i("NeonControl", 2, String.format("dpcNeonCfgSwitch:%d isNeonSupport:%d forceOpenNeon:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(0) }));
-      }
-    }
-    else
-    {
-      localObject1 = this.jdField_a_of_type_JavaLangObject;
-      if ((!bool3) || (!bool2)) {
-        break label179;
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        this.b = bool1;
-        return;
-      }
-      finally {}
-      i = 0;
-      break;
-      label174:
-      j = 0;
-      break label97;
-      label179:
-      bool1 = false;
-    }
-  }
   
   public static NeonControl a()
   {
@@ -76,25 +20,31 @@ public class NeonControl
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArNeonControl$AvgConsumeReport == null) {}
-    NeonControl.AvgConsumeReport localAvgConsumeReport;
-    int i;
-    do
+    if (this.jdField_a_of_type_ComTencentMobileqqArNeonControl$AvgConsumeReport == null) {
+      return;
+    }
+    NeonControl.AvgConsumeReport localAvgConsumeReport1 = new NeonControl.AvgConsumeReport(this);
+    localAvgConsumeReport1.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqArNeonControl$AvgConsumeReport.jdField_a_of_type_Long;
+    localAvgConsumeReport1.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqArNeonControl$AvgConsumeReport.jdField_a_of_type_Int;
+    localAvgConsumeReport1.b = this.jdField_a_of_type_ComTencentMobileqqArNeonControl$AvgConsumeReport.b;
+    NeonControl.AvgConsumeReport localAvgConsumeReport2 = this.jdField_a_of_type_ComTencentMobileqqArNeonControl$AvgConsumeReport;
+    localAvgConsumeReport2.b = -2147483648;
+    localAvgConsumeReport2.jdField_a_of_type_Long = 0L;
+    localAvgConsumeReport2.jdField_a_of_type_Int = 0;
+    if ((localAvgConsumeReport1.jdField_a_of_type_Long > 0L) && (localAvgConsumeReport1.jdField_a_of_type_Int > 0))
     {
-      do
-      {
+      if (localAvgConsumeReport1.b == -2147483648) {
         return;
-        localAvgConsumeReport = new NeonControl.AvgConsumeReport(this);
-        localAvgConsumeReport.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqArNeonControl$AvgConsumeReport.jdField_a_of_type_Long;
-        localAvgConsumeReport.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqArNeonControl$AvgConsumeReport.jdField_a_of_type_Int;
-        localAvgConsumeReport.b = this.jdField_a_of_type_ComTencentMobileqqArNeonControl$AvgConsumeReport.b;
-        this.jdField_a_of_type_ComTencentMobileqqArNeonControl$AvgConsumeReport.b = -2147483648;
-        this.jdField_a_of_type_ComTencentMobileqqArNeonControl$AvgConsumeReport.jdField_a_of_type_Long = 0L;
-        this.jdField_a_of_type_ComTencentMobileqqArNeonControl$AvgConsumeReport.jdField_a_of_type_Int = 0;
-      } while ((localAvgConsumeReport.jdField_a_of_type_Long <= 0L) || (localAvgConsumeReport.jdField_a_of_type_Int <= 0) || (localAvgConsumeReport.b == -2147483648));
-      i = (int)(localAvgConsumeReport.jdField_a_of_type_Long / localAvgConsumeReport.jdField_a_of_type_Int);
-    } while ((i < 0) || (i >= 600000));
-    ThreadManager.post(new NeonControl.2(this, localAvgConsumeReport, i), 5, null, false);
+      }
+      int i = (int)(localAvgConsumeReport1.jdField_a_of_type_Long / localAvgConsumeReport1.jdField_a_of_type_Int);
+      if (i >= 0)
+      {
+        if (i >= 600000) {
+          return;
+        }
+        ThreadManager.post(new NeonControl.2(this, localAvgConsumeReport1, i), 5, null, false);
+      }
+    }
   }
   
   public void a(long paramLong, int paramInt)
@@ -109,9 +59,10 @@ public class NeonControl
       if ((this.jdField_a_of_type_ComTencentMobileqqArNeonControl$AvgConsumeReport.jdField_a_of_type_Long > 0L) || (this.jdField_a_of_type_ComTencentMobileqqArNeonControl$AvgConsumeReport.jdField_a_of_type_Int > 0)) {
         a();
       }
-      this.jdField_a_of_type_ComTencentMobileqqArNeonControl$AvgConsumeReport.b = paramInt;
-      this.jdField_a_of_type_ComTencentMobileqqArNeonControl$AvgConsumeReport.jdField_a_of_type_Long = 0L;
-      this.jdField_a_of_type_ComTencentMobileqqArNeonControl$AvgConsumeReport.jdField_a_of_type_Int = 0;
+      localAvgConsumeReport = this.jdField_a_of_type_ComTencentMobileqqArNeonControl$AvgConsumeReport;
+      localAvgConsumeReport.b = paramInt;
+      localAvgConsumeReport.jdField_a_of_type_Long = 0L;
+      localAvgConsumeReport.jdField_a_of_type_Int = 0;
     }
     NeonControl.AvgConsumeReport localAvgConsumeReport = this.jdField_a_of_type_ComTencentMobileqqArNeonControl$AvgConsumeReport;
     localAvgConsumeReport.jdField_a_of_type_Long += paramLong;
@@ -130,7 +81,7 @@ public class NeonControl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.NeonControl
  * JD-Core Version:    0.7.0.1
  */

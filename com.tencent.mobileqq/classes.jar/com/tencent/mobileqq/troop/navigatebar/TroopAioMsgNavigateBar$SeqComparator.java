@@ -7,19 +7,18 @@ class TroopAioMsgNavigateBar$SeqComparator
 {
   public int a(Long paramLong1, Long paramLong2)
   {
-    int i = 0;
     if (paramLong1.longValue() - paramLong2.longValue() > 0L) {
-      i = 1;
+      return 1;
     }
-    while (paramLong1.longValue() - paramLong2.longValue() >= 0L) {
-      return i;
+    if (paramLong1.longValue() - paramLong2.longValue() < 0L) {
+      return -1;
     }
-    return -1;
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.navigatebar.TroopAioMsgNavigateBar.SeqComparator
  * JD-Core Version:    0.7.0.1
  */

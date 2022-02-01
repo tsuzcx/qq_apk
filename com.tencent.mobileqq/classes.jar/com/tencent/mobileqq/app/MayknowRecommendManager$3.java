@@ -1,37 +1,29 @@
 package com.tencent.mobileqq.app;
 
-import com.tencent.mobileqq.model.PhoneContactManager.IPhoneContactListener;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 class MayknowRecommendManager$3
-  implements PhoneContactManager.IPhoneContactListener
+  extends FriendListObserver
 {
   MayknowRecommendManager$3(MayknowRecommendManager paramMayknowRecommendManager) {}
   
-  public void a(int paramInt)
+  protected void onAddFriend(String paramString)
   {
-    boolean bool1 = MayknowRecommendManager.b(this.a);
-    MayknowRecommendManager.a(this.a, false);
-    boolean bool2 = this.a.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("MayknowRecommendManager", 2, "onBindStateChanged last:" + bool1 + "  now:" + bool2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onAddFriend ");
+      localStringBuilder.append(paramString);
+      QLog.d("MayknowRecommendManager", 2, localStringBuilder.toString());
     }
-    if (bool1 != bool2) {
-      ((FriendListHandler)MayknowRecommendManager.a(this.a).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).notifyUI(92, true, null);
-    }
+    paramString = MayknowRecommendManager.a(this.a).obtainMessage(8, 0, 0, paramString);
+    MayknowRecommendManager.a(this.a).sendMessage(paramString);
   }
-  
-  public void a(long paramLong) {}
-  
-  public void a(boolean paramBoolean, int paramInt) {}
-  
-  public void b(int paramInt) {}
-  
-  public void c(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.MayknowRecommendManager.3
  * JD-Core Version:    0.7.0.1
  */

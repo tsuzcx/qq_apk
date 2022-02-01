@@ -8,23 +8,22 @@ public class ShaderHelper
 {
   public static int a(String paramString1, Context paramContext, int paramInt, String paramString2)
   {
-    int i = 0;
-    paramInt = GLES20.glCreateShader(paramInt);
-    GLES20.glShaderSource(paramInt, paramString2);
-    GLES20.glCompileShader(paramInt);
+    int i = GLES20.glCreateShader(paramInt);
+    GLES20.glShaderSource(i, paramString2);
+    GLES20.glCompileShader(i);
     paramContext = new int[1];
-    GLES20.glGetShaderiv(paramInt, 35713, paramContext, 0);
+    GLES20.glGetShaderiv(i, 35713, paramContext, 0);
+    paramInt = i;
     if (paramContext[0] == 0)
     {
-      QLog.e(paramString1, 1, "Error compiling shader: " + GLES20.glGetShaderInfoLog(paramInt));
-      GLES20.glDeleteShader(paramInt);
-      paramInt = i;
+      paramContext = new StringBuilder();
+      paramContext.append("Error compiling shader: ");
+      paramContext.append(GLES20.glGetShaderInfoLog(i));
+      QLog.e(paramString1, 1, paramContext.toString());
+      GLES20.glDeleteShader(i);
+      paramInt = 0;
     }
-    for (;;)
-    {
-      if (paramInt == 0) {}
-      return paramInt;
-    }
+    return paramInt;
   }
   
   public static void a(String paramString1, String paramString2)
@@ -35,13 +34,17 @@ public class ShaderHelper
       if (i == 0) {
         break;
       }
-      QLog.e(paramString1, 1, paramString2 + ": glError " + i);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(": glError ");
+      localStringBuilder.append(i);
+      QLog.e(paramString1, 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.utils.ShaderHelper
  * JD-Core Version:    0.7.0.1
  */

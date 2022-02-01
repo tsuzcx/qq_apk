@@ -26,33 +26,27 @@ class AIOIceBreakView$2
     if ((paramView instanceof CustomImgView))
     {
       URLImageView localURLImageView = (URLImageView)((CustomImgView)paramView).a;
-      if ((localURLImageView.getDrawable() instanceof URLDrawable))
-      {
-        if (((URLDrawable)localURLImageView.getDrawable()).getStatus() != 1) {
-          break label164;
+      if ((localURLImageView.getDrawable() instanceof URLDrawable)) {
+        if (((URLDrawable)localURLImageView.getDrawable()).getStatus() == 1) {
+          AIOIceBreakView.a(this.a, (IStickerRecEmoticon)localObject);
+        } else if (QLog.isColorLevel()) {
+          QLog.e("IceBreak.HotPic", 2, "onClick:URLDrawable status != successed");
         }
-        AIOIceBreakView.a(this.a, (IStickerRecEmoticon)localObject);
       }
     }
-    if (AIOIceBreakView.a(this.a) >= 3) {}
-    for (localObject = "2";; localObject = "1")
-    {
-      int i = IceBreakingUtil.a(AIOIceBreakView.a(this.a), AIOIceBreakView.a(this.a).a);
-      ReportController.b(AIOIceBreakView.a(this.a), "CliOper", "", "", "0X800B577", "0X800B577", i, 0, (String)localObject, "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label164:
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("IceBreak.HotPic", 2, "onClick:URLDrawable status != successed");
-      break;
+    if (AIOIceBreakView.a(this.a) >= 3) {
+      localObject = "2";
+    } else {
+      localObject = "1";
     }
+    int i = IceBreakingUtil.a(AIOIceBreakView.a(this.a), AIOIceBreakView.a(this.a).a);
+    ReportController.b(AIOIceBreakView.a(this.a), "CliOper", "", "", "0X800B577", "0X800B577", i, 0, (String)localObject, "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.icebreaking.AIOIceBreakView.2
  * JD-Core Version:    0.7.0.1
  */

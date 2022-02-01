@@ -7,10 +7,12 @@ import com.tencent.mobileqq.qroute.annotation.QAPI;
 public abstract interface IPublicAccountBrowser
   extends QRouteApi
 {
+  public static final int CALL_FROM_SUBSCRIPT_FULL_RECOMMEND = 1001;
   public static final String GAME_URL = "http://browserApp.p.qq.com/";
   public static final String H5_TYPE_READ_IN_JOY = "h5_type_read_in_joy";
   public static final String KEY_BACK_TEXT = "assignBackText";
   public static final String KEY_CALL_FROM = "call_from";
+  public static final String KEY_FINISH_ANIMATION_OUT_TO_BOTTOM = "public_account_finish_animation_out_to_bottom";
   public static final String KEY_HIDE_NAVBAR = "hide_operation_bar";
   public static final String KEY_HIDE_SHARE_BUTTON = "hideRightButton";
   public static final String KEY_IS_PUBLIC_ACCOUNT = "is_public_account";
@@ -19,6 +21,7 @@ public abstract interface IPublicAccountBrowser
   public static final String KEY_PUB_UIN = "puin";
   public static final String KEY_PUB_UIN_NAME = "puin_name";
   public static final String KEY_PUB_UIN_TYPE = "puin_type";
+  public static final String KEY_SLIDE_RIGHT_BACK_ENABLE = "KEY_SLIDE_RIGHT_BACK_ENABLE";
   public static final String KEY_SOURCE_NAME = "source_name";
   public static final String KEY_UIN = "uin";
   public static final String KEY_UIN_NAME = "uin_name";
@@ -34,7 +37,7 @@ public abstract interface IPublicAccountBrowser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.IPublicAccountBrowser
  * JD-Core Version:    0.7.0.1
  */

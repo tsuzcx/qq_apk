@@ -20,95 +20,108 @@ public final class ShareUtils
   
   public static String a(String paramString)
   {
-    return AppConstants.SDCARD_FILE_SAVE_TMP_PATH + AbsDownloader.getFileName(paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_FILE_SAVE_TMP_PATH);
+    localStringBuilder.append(AbsDownloader.getFileName(paramString));
+    return localStringBuilder.toString();
   }
   
   public static String a(String paramString, boolean paramBoolean)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    String str1 = null;
-    int i = 1;
     String[] arrayOfString = paramString.split("&");
-    int k = arrayOfString.length;
+    int m = arrayOfString.length;
+    paramString = null;
     int j = 0;
-    paramString = str1;
-    if (j < k)
+    Object localObject;
+    int k;
+    for (int i = 1; j < m; i = k)
     {
-      str1 = arrayOfString[j];
-      String str2 = str1.split("=")[0];
-      if ((str2.equals("src_type")) || (str2.equals("version")) || (str2.equals("type")) || (str2.equals("actionnamekey")) || (str2.equals("storysharefrom")) || ((paramBoolean) && (str2.equals("videoId"))) || ((paramBoolean) && (str2.equals("videoOwnerUin"))) || ((paramBoolean) && (str2.equals("unionid"))))
+      localObject = arrayOfString[j];
+      String str = localObject.split("=")[0];
+      if ((!str.equals("src_type")) && (!str.equals("version")) && (!str.equals("type")) && (!str.equals("actionnamekey")) && (!str.equals("storysharefrom")) && ((!paramBoolean) || (!str.equals("videoId"))) && ((!paramBoolean) || (!str.equals("videoOwnerUin"))) && ((!paramBoolean) || (!str.equals("unionid"))))
+      {
+        localObject = paramString;
+        k = i;
+        if (QLog.isColorLevel())
+        {
+          if (paramString == null) {
+            paramString = new StringBuilder();
+          } else {
+            paramString.append('|');
+          }
+          paramString.append(str);
+          localObject = paramString;
+          k = i;
+        }
+      }
+      else
       {
         if (i != 0) {
           i = 0;
-        }
-        for (;;)
-        {
-          localStringBuilder.append(str1);
-          j += 1;
-          break;
+        } else {
           localStringBuilder.append('&');
         }
+        localStringBuilder.append((String)localObject);
+        k = i;
+        localObject = paramString;
       }
-      str1 = paramString;
-      if (QLog.isColorLevel())
-      {
-        if (paramString != null) {
-          break label216;
-        }
-        paramString = new StringBuilder();
-      }
-      for (;;)
-      {
-        paramString.append(str2);
-        str1 = paramString;
-        paramString = str1;
-        break;
-        label216:
-        paramString.append('|');
-      }
+      j += 1;
+      paramString = (String)localObject;
     }
-    if ((paramString != null) && (QLog.isColorLevel())) {
-      QLog.d("ShareUtil", 2, "remove params:" + paramString);
+    if ((paramString != null) && (QLog.isColorLevel()))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("remove params:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("ShareUtil", 2, ((StringBuilder)localObject).toString());
     }
     return localStringBuilder.toString();
   }
   
   public static String b(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return paramString;
-      arrayOfString = paramString.split("\\?");
-    } while (arrayOfString.length != 2);
-    paramString = arrayOfString[0];
-    String[] arrayOfString = arrayOfString[1].split("&");
-    StringBuilder localStringBuilder = new StringBuilder("?");
+    }
+    Object localObject1 = paramString.split("\\?");
+    if (localObject1.length != 2) {
+      return paramString;
+    }
+    paramString = localObject1[0];
+    Object localObject2 = localObject1[1].split("&");
+    localObject1 = new StringBuilder("?");
     int i = 0;
-    if (i < arrayOfString.length)
+    while (i < localObject2.length)
     {
-      Object localObject = arrayOfString[i].split("=");
-      if (localObject.length != 2) {}
-      for (;;)
+      Object localObject3 = localObject2[i].split("=");
+      if (localObject3.length == 2)
       {
-        i += 1;
-        break;
-        localObject = localObject[0];
-        if ("s".equals(localObject)) {
-          arrayOfString[i] = ((String)localObject + "=" + "140");
+        localObject3 = localObject3[0];
+        if ("s".equals(localObject3))
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append((String)localObject3);
+          localStringBuilder.append("=");
+          localStringBuilder.append("140");
+          localObject2[i] = localStringBuilder.toString();
         }
-        localStringBuilder.append(arrayOfString[i]);
-        if (i + 1 < arrayOfString.length) {
-          localStringBuilder.append("&");
+        ((StringBuilder)localObject1).append(localObject2[i]);
+        if (i + 1 < localObject2.length) {
+          ((StringBuilder)localObject1).append("&");
         }
       }
+      i += 1;
     }
-    return paramString + localStringBuilder.toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(paramString);
+    ((StringBuilder)localObject2).append(((StringBuilder)localObject1).toString());
+    return ((StringBuilder)localObject2).toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.util.ShareUtils
  * JD-Core Version:    0.7.0.1
  */

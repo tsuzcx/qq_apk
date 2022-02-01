@@ -37,18 +37,18 @@ public final class LooperMeta
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof LooperMeta))
       {
         paramObject = (LooperMeta)paramObject;
-        if (!Intrinsics.areEqual(this.looperParams, paramObject.looperParams)) {}
+        if (Intrinsics.areEqual(this.looperParams, paramObject.looperParams)) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   @Nullable
@@ -74,12 +74,16 @@ public final class LooperMeta
   @NotNull
   public String toString()
   {
-    return "LooperMeta(looperParams=" + this.looperParams + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LooperMeta(looperParams=");
+    localStringBuilder.append(this.looperParams);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.base.meta.LooperMeta
  * JD-Core Version:    0.7.0.1
  */

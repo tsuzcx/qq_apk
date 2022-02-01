@@ -8,6 +8,7 @@ import LBS_V2_PROTOCOL.PoiInfoCell_V2;
 import LBS_V2_PROTOCOL.PoiInfo_V2;
 import LBS_V2_PROTOCOL.Wifi_V2;
 import android.os.Bundle;
+import android.text.TextUtils;
 import com.qq.taf.jce.JceStruct;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QZoneCommonServlet;
@@ -43,6 +44,7 @@ public class QzoneLbsServiceApiImpl
   public static final int MASK_MODE_POI = 2;
   private static final String TAG = "QcircleLbsService";
   private static final int TYPE_GET_BATCHPOI = 0;
+  private static final int TYPE_GET_BATCHPOI_TESTA = 2;
   private static final int TYPE_GET_BATCH_POI_FOR_QCIRCLE = 1;
   private static final int TYPE_GET_GEO = 1;
   private static final int TYPE_SEARCH_BATCH_POI_FOR_QCIRCLE = 2;
@@ -59,36 +61,39 @@ public class QzoneLbsServiceApiImpl
   
   private static LbsDataV2.GeoInfo getGeoCacheByCell(LbsDataV2.CellInfo paramCellInfo)
   {
-    if (paramCellInfo != null) {}
     return null;
   }
   
   private static LbsDataV2.GeoInfo getGeoCacheByCell(ArrayList<Cell_V2> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return null;
+    if ((paramArrayList != null) && (paramArrayList.size() != 0)) {
+      return getGeoCacheByCell(LbsDataV2.covertToCellInfo((Cell_V2)paramArrayList.get(0)));
     }
-    return getGeoCacheByCell(LbsDataV2.covertToCellInfo((Cell_V2)paramArrayList.get(0)));
+    return null;
   }
   
   private void getLbsCombinInfo(LbsDataV2.GpsInfo paramGpsInfo, LbsDataV2.GeoInfo paramGeoInfo, ArrayList<Cell_V2> paramArrayList, ArrayList<Wifi_V2> paramArrayList1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ArrayList<String> paramArrayList2)
   {
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("getLbsCombinInfo gps param=").append(paramGpsInfo).append(",wifilist=");
-      if ((paramArrayList1 == null) || (paramArrayList1.size() <= 4)) {
-        break label102;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getLbsCombinInfo gps param=");
+      localStringBuilder.append(paramGpsInfo);
+      localStringBuilder.append(",wifilist=");
+      if ((paramArrayList1 != null) && (paramArrayList1.size() > 4)) {
+        localObject = paramArrayList1.subList(0, 3);
+      } else {
+        localObject = paramArrayList1;
       }
+      localStringBuilder.append(localObject);
+      localStringBuilder.append(",celllist=");
+      localStringBuilder.append(paramArrayList);
+      localStringBuilder.append(".");
+      QLog.i("QcircleLbsService", 2, localStringBuilder.toString());
     }
-    label102:
-    for (Object localObject = paramArrayList1.subList(0, 3);; localObject = paramArrayList1)
+    Object localObject = getApp();
+    if (localObject == null)
     {
-      QLog.i("QcircleLbsService", 2, localObject + ",celllist=" + paramArrayList + ".");
-      localObject = getApp();
-      if (localObject != null) {
-        break;
-      }
       QLog.e("QcircleLbsService", 1, "getLbsCombinInfo app == null");
       return;
     }
@@ -99,28 +104,39 @@ public class QzoneLbsServiceApiImpl
     ((QQAppInterface)localObject).startServlet(paramGeoInfo);
   }
   
-  private LbsDataV2.PoiList getRecommPoiList(ArrayList<PoiInfoCell_V2> paramArrayList)
+  private LbsDataV2.PoiList getRecommPoiList(ArrayList<PoiInfoCell_V2> paramArrayList, int paramInt)
   {
-    int i = 0;
     if (paramArrayList == null) {
       return null;
     }
     LbsDataV2.PoiList localPoiList = new LbsDataV2.PoiList();
     ArrayList localArrayList = new ArrayList(paramArrayList.size());
+    int i = 0;
     if (((PoiInfoCell_V2)paramArrayList.get(0)).vPoiList != null)
     {
-      Iterator localIterator = ((PoiInfoCell_V2)paramArrayList.get(0)).vPoiList.iterator();
-      while (localIterator.hasNext()) {
-        localArrayList.add(LbsDataV2.convertToPoiInfo((PoiInfo_V2)localIterator.next()));
+      if ((paramInt == 0) && (!TextUtils.isEmpty(((PoiInfoCell_V2)paramArrayList.get(0)).stCityName)))
+      {
+        localObject = new LbsDataV2.PoiInfo();
+        ((LbsDataV2.PoiInfo)localObject).poiId = "local_city_id";
+        ((LbsDataV2.PoiInfo)localObject).poiName = ((PoiInfoCell_V2)paramArrayList.get(0)).stCityName;
+        ((LbsDataV2.PoiInfo)localObject).gpsInfo = LbsDataV2.convertToGpsInfo(((PoiInfoCell_V2)paramArrayList.get(0)).stGps);
+        localArrayList.add(localObject);
+        QLog.d("QcircleLbsService", 1, new Object[] { "getRecommPoiList... cityname:", ((PoiInfoCell_V2)paramArrayList.get(0)).stCityName });
+      }
+      Object localObject = ((PoiInfoCell_V2)paramArrayList.get(0)).vPoiList.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        localArrayList.add(LbsDataV2.convertToPoiInfo((PoiInfo_V2)((Iterator)localObject).next()));
       }
     }
-    if ((paramArrayList.size() > 1) && (((PoiInfoCell_V2)paramArrayList.get(1)).vPoiList != null)) {
-      while ((i < 5) && (i < ((PoiInfoCell_V2)paramArrayList.get(1)).vPoiList.size()))
+    if ((paramArrayList.size() > 1) && (((PoiInfoCell_V2)paramArrayList.get(1)).vPoiList != null))
+    {
+      paramInt = i;
+      while ((paramInt < 5) && (paramInt < ((PoiInfoCell_V2)paramArrayList.get(1)).vPoiList.size()))
       {
-        if (!localArrayList.contains(LbsDataV2.convertToPoiInfo((PoiInfo_V2)((PoiInfoCell_V2)paramArrayList.get(1)).vPoiList.get(i)))) {
-          localArrayList.add(1, LbsDataV2.convertToPoiInfo((PoiInfo_V2)((PoiInfoCell_V2)paramArrayList.get(1)).vPoiList.get(i)));
+        if (!localArrayList.contains(LbsDataV2.convertToPoiInfo((PoiInfo_V2)((PoiInfoCell_V2)paramArrayList.get(1)).vPoiList.get(paramInt)))) {
+          localArrayList.add(1, LbsDataV2.convertToPoiInfo((PoiInfo_V2)((PoiInfoCell_V2)paramArrayList.get(1)).vPoiList.get(paramInt)));
         }
-        i += 1;
+        paramInt += 1;
       }
     }
     localPoiList.poiInfos = localArrayList;
@@ -137,95 +153,98 @@ public class QzoneLbsServiceApiImpl
         paramJceStruct = paramJceStruct.vecPoiInfoCell;
         if (paramJceStruct != null)
         {
-          paramJceStruct = getRecommPoiList(paramJceStruct);
+          paramJceStruct = getRecommPoiList(paramJceStruct, paramInt);
           ((IQCirclePoiCallback)QRoute.api(IQCirclePoiCallback.class)).onPoiResultBack(paramJceStruct);
+          return;
         }
+        QLog.e("QcircleLbsService", 1, "onGetBatchPoi error poiInfoList == null");
       }
-      else
-      {
-        return;
-      }
-      QLog.e("QcircleLbsService", 1, "onGetBatchPoi error poiInfoList == null");
-      return;
     }
-    QLog.e("QcircleLbsService", 1, "onGetBatchPoi error jceStruct not instanceof GetBatchPoiRsp_V2");
+    else
+    {
+      QLog.e("QcircleLbsService", 1, "onGetBatchPoi error jceStruct not instanceof GetBatchPoiRsp_V2");
+    }
   }
   
   private void onGetLbsCombinFinish(int paramInt, JceStruct paramJceStruct)
   {
-    LbsDataV2.PoiList localPoiList;
     if ((paramJceStruct instanceof GetLbsCombinRsp_V2))
     {
-      GetLbsCombinRsp_V2 localGetLbsCombinRsp_V2 = (GetLbsCombinRsp_V2)paramJceStruct;
-      Object localObject = null;
-      localPoiList = new LbsDataV2.PoiList();
-      paramInt = localGetLbsCombinRsp_V2.iMood;
-      QLog.i("QcircleLbsService", 1, "onGetLbsCombinFinish mode = " + paramInt);
-      paramJceStruct = (JceStruct)localObject;
+      Object localObject2 = (GetLbsCombinRsp_V2)paramJceStruct;
+      Object localObject1 = null;
+      LbsDataV2.PoiList localPoiList = new LbsDataV2.PoiList();
+      paramInt = ((GetLbsCombinRsp_V2)localObject2).iMood;
+      paramJceStruct = new StringBuilder();
+      paramJceStruct.append("onGetLbsCombinFinish mode = ");
+      paramJceStruct.append(paramInt);
+      QLog.i("QcircleLbsService", 1, paramJceStruct.toString());
+      paramJceStruct = (JceStruct)localObject1;
       if ((paramInt & 0x1) > 0)
       {
-        paramJceStruct = (JceStruct)localObject;
-        if (localGetLbsCombinRsp_V2.stGeoInfo != null)
+        paramJceStruct = (JceStruct)localObject1;
+        if (((GetLbsCombinRsp_V2)localObject2).stGeoInfo != null)
         {
           paramJceStruct = new LbsDataV2.GetGeoInfoRsp();
-          paramJceStruct.stGps = LbsDataV2.convertToGpsInfo(localGetLbsCombinRsp_V2.stGps);
-          paramJceStruct.stGeoInfo = LbsDataV2.convertToGeoInfo(localGetLbsCombinRsp_V2.stGeoInfo);
+          paramJceStruct.stGps = LbsDataV2.convertToGpsInfo(((GetLbsCombinRsp_V2)localObject2).stGps);
+          paramJceStruct.stGeoInfo = LbsDataV2.convertToGeoInfo(((GetLbsCombinRsp_V2)localObject2).stGeoInfo);
           QLog.i("QcircleLbsService", 1, "onGetLbsCombinFinish will saveCurrentGeoInfo.");
         }
       }
-      if (((paramInt & 0x2) > 0) && (localGetLbsCombinRsp_V2.stPoiInfo != null) && (localGetLbsCombinRsp_V2.stPoiInfo.vPoiList != null))
+      if (((paramInt & 0x2) > 0) && (((GetLbsCombinRsp_V2)localObject2).stPoiInfo != null) && (((GetLbsCombinRsp_V2)localObject2).stPoiInfo.vPoiList != null))
       {
-        localObject = new ArrayList();
+        localObject1 = new ArrayList();
         paramInt = 0;
-        while (paramInt < localGetLbsCombinRsp_V2.stPoiInfo.vPoiList.size())
+        while (paramInt < ((GetLbsCombinRsp_V2)localObject2).stPoiInfo.vPoiList.size())
         {
-          ((ArrayList)localObject).add(LbsDataV2.convertToPoiInfo((PoiInfo_V2)localGetLbsCombinRsp_V2.stPoiInfo.vPoiList.get(paramInt)));
+          ((ArrayList)localObject1).add(LbsDataV2.convertToPoiInfo((PoiInfo_V2)((GetLbsCombinRsp_V2)localObject2).stPoiInfo.vPoiList.get(paramInt)));
           paramInt += 1;
         }
-        if (((ArrayList)localObject).size() > 0)
+        if (((ArrayList)localObject1).size() > 0)
         {
-          localPoiList.poiInfos.addAll((Collection)localObject);
-          localObject = (LbsDataV2.PoiInfo)((ArrayList)localObject).get(0);
-          if (paramJceStruct != null) {
-            break label361;
+          localPoiList.poiInfos.addAll((Collection)localObject1);
+          localObject2 = (LbsDataV2.PoiInfo)((ArrayList)localObject1).get(0);
+          localObject1 = paramJceStruct;
+          if (paramJceStruct == null)
+          {
+            localObject1 = new LbsDataV2.GetGeoInfoRsp();
+            ((LbsDataV2.GetGeoInfoRsp)localObject1).stGps = ((LbsDataV2.PoiInfo)localObject2).gpsInfo;
+            ((LbsDataV2.GetGeoInfoRsp)localObject1).stGeoInfo = new LbsDataV2.GeoInfo();
+            ((LbsDataV2.GetGeoInfoRsp)localObject1).stGeoInfo.iDistrictCode = ((LbsDataV2.PoiInfo)localObject2).districtCode;
+            ((LbsDataV2.GetGeoInfoRsp)localObject1).stGeoInfo.strCountry = ((LbsDataV2.PoiInfo)localObject2).country;
+            ((LbsDataV2.GetGeoInfoRsp)localObject1).stGeoInfo.strProvince = ((LbsDataV2.PoiInfo)localObject2).province;
+            ((LbsDataV2.GetGeoInfoRsp)localObject1).stGeoInfo.strCity = ((LbsDataV2.PoiInfo)localObject2).city;
+            ((LbsDataV2.GetGeoInfoRsp)localObject1).stGeoInfo.strDefaultName = ((LbsDataV2.PoiInfo)localObject2).poiDefaultName;
           }
-          paramJceStruct = new LbsDataV2.GetGeoInfoRsp();
-          paramJceStruct.stGps = ((LbsDataV2.PoiInfo)localObject).gpsInfo;
-          paramJceStruct.stGeoInfo = new LbsDataV2.GeoInfo();
-          paramJceStruct.stGeoInfo.iDistrictCode = ((LbsDataV2.PoiInfo)localObject).districtCode;
-          paramJceStruct.stGeoInfo.strCountry = ((LbsDataV2.PoiInfo)localObject).country;
-          paramJceStruct.stGeoInfo.strProvince = ((LbsDataV2.PoiInfo)localObject).province;
-          paramJceStruct.stGeoInfo.strCity = ((LbsDataV2.PoiInfo)localObject).city;
-          paramJceStruct.stGeoInfo.strDefaultName = ((LbsDataV2.PoiInfo)localObject).poiDefaultName;
+          localPoiList.geoInfo = LbsDataV2.GetGeoInfoRsp.convertTo((LbsDataV2.GetGeoInfoRsp)localObject1);
+          ((IQCirclePoiCallback)QRoute.api(IQCirclePoiCallback.class)).onPoiResultBack(localPoiList);
+          return;
         }
+        QLog.e("QcircleLbsService", 1, "poiList.size() == 0");
+        return;
       }
-    }
-    label361:
-    for (;;)
-    {
-      localPoiList.geoInfo = LbsDataV2.GetGeoInfoRsp.convertTo(paramJceStruct);
-      ((IQCirclePoiCallback)QRoute.api(IQCirclePoiCallback.class)).onPoiResultBack(localPoiList);
-      return;
-      QLog.e("QcircleLbsService", 1, "poiList.size() == 0");
-      return;
       QLog.e("QcircleLbsService", 1, "resp.stPoiInfo.vPoiList == null");
       return;
-      QLog.e("QcircleLbsService", 1, "onGetLbsCombinFinish error jceStruct not instanceof GetLbsCombinRsp_V2");
-      return;
     }
+    QLog.e("QcircleLbsService", 1, "onGetLbsCombinFinish error jceStruct not instanceof GetLbsCombinRsp_V2");
   }
   
-  public void getBatchPoiFromServer(ArrayList<GpsInfo4LocalImage> paramArrayList)
+  public void getBatchPoiFromServer(ArrayList<GpsInfo4LocalImage> paramArrayList, int paramInt1, Map<String, String> paramMap, int paramInt2, int paramInt3)
+  {
+    long l = System.currentTimeMillis();
+    ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(new QzoneLbsServiceApiImpl.1(this, "qzone_address_select", false, paramInt3, paramArrayList, l, paramInt2, paramInt1, paramMap));
+  }
+  
+  public void getBatchPoiFromServer(ArrayList<GpsInfo4LocalImage> paramArrayList, boolean paramBoolean)
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("source", "QqCircle");
-    getBatchPoiFromServer(paramArrayList, 100203, localHashMap, 1);
-  }
-  
-  public void getBatchPoiFromServer(ArrayList<GpsInfo4LocalImage> paramArrayList, int paramInt1, Map<String, String> paramMap, int paramInt2)
-  {
-    long l = System.currentTimeMillis();
-    ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(new QzoneLbsServiceApiImpl.1(this, "qzone_address_select", false, paramArrayList, l, paramInt2, paramInt1, paramMap));
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    } else {
+      i = 2;
+    }
+    getBatchPoiFromServer(paramArrayList, 100203, localHashMap, 1, i);
   }
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
@@ -235,24 +254,26 @@ public class QzoneLbsServiceApiImpl
     String str = paramBundle.getString("key_response_msg");
     if (!paramBoolean) {
       QLog.e("QcircleLbsService", 1, String.format("type :%d, success:%b, code:%d, msg:%s, bundle:%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), Integer.valueOf(i), str, paramBundle.toString() }));
+    } else if (QLog.isColorLevel()) {
+      QLog.i("QcircleLbsService", 2, String.format("type :%d, success:%b, code:%d, msg:%s, bundle:%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), Integer.valueOf(i), str, paramBundle.toString() }));
     }
-    while (getApp() == null)
+    if (getApp() == null)
     {
       QLog.e("QcircleLbsService", 1, "onReceive app == null");
       return;
-      if (QLog.isColorLevel()) {
-        QLog.i("QcircleLbsService", 2, String.format("type :%d, success:%b, code:%d, msg:%s, bundle:%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), Integer.valueOf(i), str, paramBundle.toString() }));
+    }
+    if (paramInt != 0) {
+      if (paramInt != 1)
+      {
+        if (paramInt == 2) {}
+      }
+      else
+      {
+        onGetLbsCombinFinish(paramInt, localJceStruct);
+        return;
       }
     }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      onGetBatchPoi(paramInt, localJceStruct);
-      return;
-    }
-    onGetLbsCombinFinish(paramInt, localJceStruct);
+    onGetBatchPoi(paramInt, localJceStruct);
   }
   
   public void refreshPoiList()
@@ -262,14 +283,17 @@ public class QzoneLbsServiceApiImpl
   
   public void refreshPoiList(String paramString, int paramInt1, int paramInt2, boolean paramBoolean, ArrayList<String> paramArrayList)
   {
-    QLog.i("QcircleLbsService", 1, "[QZ_LBS_MODULE]refreshPoiList forceRefresh:" + paramBoolean);
+    paramString = new StringBuilder();
+    paramString.append("[QZ_LBS_MODULE]refreshPoiList forceRefresh:");
+    paramString.append(paramBoolean);
+    QLog.i("QcircleLbsService", 1, paramString.toString());
     long l = System.currentTimeMillis();
     ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(new QzoneLbsServiceApiImpl.2(this, "qzone_address_select", false, l, paramInt1, paramInt2, paramArrayList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qzonehub.api.impl.QzoneLbsServiceApiImpl
  * JD-Core Version:    0.7.0.1
  */

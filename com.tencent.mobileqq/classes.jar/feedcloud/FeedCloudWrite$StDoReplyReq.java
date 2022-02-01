@@ -22,13 +22,14 @@ public final class FeedCloudWrite$StDoReplyReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 34, 42, 48, 58 }, new String[] { "extInfo", "replyType", "reply", "comment", "feed", "from", "busiReqData" }, new Object[] { null, Integer.valueOf(0), null, null, null, Integer.valueOf(0), localByteStringMicro }, StDoReplyReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 34, 42, 48, 58 }, new String[] { "extInfo", "replyType", "reply", "comment", "feed", "from", "busiReqData" }, new Object[] { null, localInteger, null, null, null, localInteger, localByteStringMicro }, StDoReplyReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     feedcloud.FeedCloudWrite.StDoReplyReq
  * JD-Core Version:    0.7.0.1
  */

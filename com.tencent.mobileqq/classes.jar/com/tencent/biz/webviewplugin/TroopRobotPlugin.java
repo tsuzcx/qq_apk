@@ -1,10 +1,12 @@
 package com.tencent.biz.webviewplugin;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
-import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
 import com.tencent.mobileqq.emosm.DataFactory;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator;
+import com.tencent.mobileqq.emosm.OnRemoteRespObserver;
+import com.tencent.mobileqq.emosm.api.IWebIPCOperatorApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.troop.utils.RobotUtils;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
@@ -23,10 +25,13 @@ public class TroopRobotPlugin
   
   private boolean a(String... paramVarArgs)
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length < 1)) {
-      return false;
+    if (paramVarArgs != null)
+    {
+      if (paramVarArgs.length < 1) {
+        return false;
+      }
+      paramVarArgs = paramVarArgs[0];
     }
-    paramVarArgs = paramVarArgs[0];
     try
     {
       Object localObject = new JSONObject(paramVarArgs);
@@ -39,181 +44,176 @@ public class TroopRobotPlugin
       localBundle.putString("troopuin", paramVarArgs);
       localBundle.putString("robotname", str2);
       paramVarArgs = DataFactory.a("ipc_cmd_share_robot_card", (String)localObject, this.mOnRemoteResp.key, localBundle);
-      WebIPCOperator.a().a(paramVarArgs);
+      ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).sendServiceIpcReq(paramVarArgs);
       return true;
     }
     catch (JSONException paramVarArgs) {}
+    return false;
     return false;
   }
   
   private boolean b(String... paramVarArgs)
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length < 1)) {
-      return false;
-    }
-    paramVarArgs = paramVarArgs[0];
-    for (;;)
+    if (paramVarArgs != null)
     {
-      try
-      {
-        Object localObject = new JSONObject(paramVarArgs);
-        if (localObject != null)
-        {
-          str6 = ((JSONObject)localObject).optString("oninfoUrl");
-          str5 = ((JSONObject)localObject).optString("oninfoTitle");
-          str4 = ((JSONObject)localObject).optString("offinfoUrl");
-          str3 = ((JSONObject)localObject).optString("offinfoTitle");
-          str1 = ((JSONObject)localObject).optString("gc");
-          str2 = ((JSONObject)localObject).optString("robotUin");
-          paramVarArgs = ((JSONObject)localObject).optString("robotName");
-          i = ((JSONObject)localObject).optInt("isRobotBuddy");
-          localObject = ((JSONObject)localObject).optString("callback");
-          Bundle localBundle = new Bundle();
-          localBundle.putString("onurl", str6);
-          localBundle.putString("ontitle", str5);
-          localBundle.putString("offtitle", str3);
-          localBundle.putString("offurl", str4);
-          localBundle.putString("robotuin", str2);
-          localBundle.putString("troopuin", str1);
-          localBundle.putString("robotname", paramVarArgs);
-          localBundle.putInt("isrobotbuddy", i);
-          paramVarArgs = DataFactory.a("ipc_cmd_invoke_robot_function", (String)localObject, this.mOnRemoteResp.key, localBundle);
-          WebIPCOperator.a().a(paramVarArgs);
-          return true;
-        }
-      }
-      catch (JSONException paramVarArgs)
-      {
+      if (paramVarArgs.length < 1) {
         return false;
       }
-      String str6 = "";
-      String str5 = "";
-      String str4 = "";
-      String str3 = "";
-      String str2 = "";
-      String str1 = "";
-      paramVarArgs = "";
-      int i = 1;
+      paramVarArgs = paramVarArgs[0];
     }
+    try
+    {
+      Object localObject = new JSONObject(paramVarArgs);
+      paramVarArgs = ((JSONObject)localObject).optString("oninfoUrl");
+      String str1 = ((JSONObject)localObject).optString("oninfoTitle");
+      String str2 = ((JSONObject)localObject).optString("offinfoUrl");
+      String str3 = ((JSONObject)localObject).optString("offinfoTitle");
+      String str4 = ((JSONObject)localObject).optString("gc");
+      String str5 = ((JSONObject)localObject).optString("robotUin");
+      String str6 = ((JSONObject)localObject).optString("robotName");
+      int i = ((JSONObject)localObject).optInt("isRobotBuddy");
+      localObject = ((JSONObject)localObject).optString("callback");
+      Bundle localBundle = new Bundle();
+      localBundle.putString("onurl", paramVarArgs);
+      localBundle.putString("ontitle", str1);
+      localBundle.putString("offtitle", str3);
+      localBundle.putString("offurl", str2);
+      localBundle.putString("robotuin", str5);
+      localBundle.putString("troopuin", str4);
+      localBundle.putString("robotname", str6);
+      localBundle.putInt("isrobotbuddy", i);
+      paramVarArgs = DataFactory.a("ipc_cmd_invoke_robot_function", (String)localObject, this.mOnRemoteResp.key, localBundle);
+      ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).sendServiceIpcReq(paramVarArgs);
+      return true;
+    }
+    catch (JSONException paramVarArgs) {}
+    return false;
+    return false;
   }
   
   private boolean c(String... paramVarArgs)
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length < 1)) {
-      return false;
-    }
-    paramVarArgs = paramVarArgs[0];
-    try
+    if (paramVarArgs != null)
     {
-      Object localObject = new JSONObject(paramVarArgs);
-      paramVarArgs = ((JSONObject)localObject).optString("gc");
-      String str1 = ((JSONObject)localObject).optString("robotUin");
-      String str2 = ((JSONObject)localObject).optString("robotName");
-      boolean bool = ((JSONObject)localObject).optBoolean("isAdd");
-      localObject = ((JSONObject)localObject).optString("callback");
-      Bundle localBundle = new Bundle();
-      localBundle.putString("robotuin", str1);
-      localBundle.putString("troopuin", paramVarArgs);
-      localBundle.putString("robotname", str2);
-      localBundle.putBoolean("isadd", Boolean.valueOf(bool).booleanValue());
-      paramVarArgs = DataFactory.a("ipc_cmd_robot_member_change_function", (String)localObject, this.mOnRemoteResp.key, localBundle);
-      WebIPCOperator.a().a(paramVarArgs);
-      return true;
-    }
-    catch (JSONException paramVarArgs)
-    {
-      QLog.e("TroopRobotPlugin", 2, "handleJsRequest exception notifyRobotMmeberChange" + paramVarArgs.getMessage());
+      if (paramVarArgs.length < 1) {
+        return false;
+      }
+      paramVarArgs = paramVarArgs[0];
+      try
+      {
+        Object localObject2 = new JSONObject(paramVarArgs);
+        paramVarArgs = ((JSONObject)localObject2).optString("gc");
+        localObject1 = ((JSONObject)localObject2).optString("robotUin");
+        String str = ((JSONObject)localObject2).optString("robotName");
+        boolean bool = ((JSONObject)localObject2).optBoolean("isAdd");
+        localObject2 = ((JSONObject)localObject2).optString("callback");
+        Bundle localBundle = new Bundle();
+        localBundle.putString("robotuin", (String)localObject1);
+        localBundle.putString("troopuin", paramVarArgs);
+        localBundle.putString("robotname", str);
+        localBundle.putBoolean("isadd", Boolean.valueOf(bool).booleanValue());
+        paramVarArgs = DataFactory.a("ipc_cmd_robot_member_change_function", (String)localObject2, this.mOnRemoteResp.key, localBundle);
+        ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).sendServiceIpcReq(paramVarArgs);
+        return true;
+      }
+      catch (JSONException paramVarArgs)
+      {
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("handleJsRequest exception notifyRobotMmeberChange");
+        ((StringBuilder)localObject1).append(paramVarArgs.getMessage());
+        QLog.e("TroopRobotPlugin", 2, ((StringBuilder)localObject1).toString());
+      }
     }
     return false;
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if (!"robotsummary".equals(paramString2)) {}
-    do
-    {
+    if (!"robotsummary".equals(paramString2)) {
       return false;
-      if ("sharecard".equals(paramString3)) {
-        return a(paramVarArgs);
-      }
-      if ("executecommand".equals(paramString3)) {
-        return b(paramVarArgs);
-      }
-    } while (!"memberchange".equals(paramString3));
-    return c(paramVarArgs);
+    }
+    if ("sharecard".equals(paramString3)) {
+      return a(paramVarArgs);
+    }
+    if ("executecommand".equals(paramString3)) {
+      return b(paramVarArgs);
+    }
+    if ("memberchange".equals(paramString3)) {
+      return c(paramVarArgs);
+    }
+    return false;
   }
   
   public void onResponse(Bundle paramBundle)
   {
     super.onResponse(paramBundle);
-    if (paramBundle == null) {
+    if (paramBundle == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("TroopRobotPlugin", 2, "robot plugin onResponse is null");
       }
+      return;
     }
-    Object localObject1;
-    int i;
-    Activity localActivity;
-    Object localObject2;
-    String str1;
-    String str2;
-    String str3;
-    String str4;
-    do
+    if (paramBundle.getInt("respkey") != this.mOnRemoteResp.key)
     {
-      do
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopRobotPlugin", 2, "robot plugin onResponse key not match");
+      }
+      return;
+    }
+    Object localObject1 = paramBundle.getString("cmd");
+    int i;
+    if ("ipc_cmd_share_robot_card".equals(localObject1))
+    {
+      i = paramBundle.getBundle("response").getInt("result");
+      if (QLog.isColorLevel())
       {
-        do
-        {
-          do
-          {
-            return;
-            if (paramBundle.getInt("respkey") == this.mOnRemoteResp.key) {
-              break;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.d("TroopRobotPlugin", 2, "robot plugin onResponse key not match");
-          return;
-          localObject1 = paramBundle.getString("cmd");
-          if (!"ipc_cmd_share_robot_card".equals(localObject1)) {
-            break;
-          }
-          i = paramBundle.getBundle("response").getInt("result");
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopRobotPlugin", 2, "robot plugin is robot:" + i);
-          }
-        } while (i != 1);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("robot plugin is robot:");
+        ((StringBuilder)localObject1).append(i);
+        QLog.d("TroopRobotPlugin", 2, ((StringBuilder)localObject1).toString());
+      }
+      if (i == 1)
+      {
         localObject1 = this.mRuntime.a();
         paramBundle = paramBundle.getBundle("request");
         RobotUtils.a(null, (Activity)localObject1, null, paramBundle.getString("robotuin"), paramBundle.getString("robotname"), 21);
-        return;
-      } while (!"ipc_cmd_invoke_robot_function".equals(localObject1));
-      localObject1 = paramBundle.getBundle("response").getString("result");
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopRobotPlugin", 2, "strResult:" + (String)localObject1);
       }
-      localActivity = this.mRuntime.a();
-      localObject2 = paramBundle.getBundle("request");
-      i = ((Bundle)localObject2).getInt("isrobotbuddy");
-      paramBundle = ((Bundle)localObject2).getString("onurl");
-      str1 = ((Bundle)localObject2).getString("ontitle");
-      str2 = ((Bundle)localObject2).getString("offtitle");
-      str3 = ((Bundle)localObject2).getString("offurl");
-      str4 = ((Bundle)localObject2).getString("robotuin");
-      String str5 = ((Bundle)localObject2).getString("troopuin");
-      localObject2 = ((Bundle)localObject2).getString("robotname");
+    }
+    else if ("ipc_cmd_invoke_robot_function".equals(localObject1))
+    {
+      localObject1 = paramBundle.getBundle("response").getString("result");
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("strResult:");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        QLog.d("TroopRobotPlugin", 2, ((StringBuilder)localObject2).toString());
+      }
+      Object localObject2 = this.mRuntime.a();
+      Object localObject3 = paramBundle.getBundle("request");
+      i = ((Bundle)localObject3).getInt("isrobotbuddy");
+      paramBundle = ((Bundle)localObject3).getString("onurl");
+      String str1 = ((Bundle)localObject3).getString("ontitle");
+      String str2 = ((Bundle)localObject3).getString("offtitle");
+      String str3 = ((Bundle)localObject3).getString("offurl");
+      String str4 = ((Bundle)localObject3).getString("robotuin");
+      String str5 = ((Bundle)localObject3).getString("troopuin");
+      localObject3 = ((Bundle)localObject3).getString("robotname");
       if (i == 1)
       {
-        RobotUtils.a(localActivity, str5, (String)localObject1, str4, (String)localObject2, paramBundle, str1, str3, str2, i);
+        RobotUtils.a((Context)localObject2, str5, (String)localObject1, str4, (String)localObject3, paramBundle, str1, str3, str2, i);
         return;
       }
-    } while (i != 0);
-    RobotUtils.a(localActivity, (String)localObject1, null, str4, (String)localObject2, paramBundle, str1, str3, str2, i);
+      if (i == 0) {
+        RobotUtils.a((Context)localObject2, (String)localObject1, null, str4, (String)localObject3, paramBundle, str1, str3, str2, i);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.TroopRobotPlugin
  * JD-Core Version:    0.7.0.1
  */

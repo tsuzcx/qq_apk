@@ -15,9 +15,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.GlobalImageCache;
-import com.tencent.mobileqq.drawable.ChatBackgroundDrawable;
 import com.tencent.mobileqq.util.BitmapManager;
 import com.tencent.mobileqq.util.BitmapManager.BitmapDecodeResult;
+import com.tencent.mobileqq.vas.theme.chatbg.ChatBackgroundDrawable;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.SingleLineTextView;
 import java.io.File;
@@ -40,19 +40,21 @@ public class SkinDrawable
   
   private TypedValue a()
   {
-    TypedValue localTypedValue = null;
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    for (;;)
     {
-      if (this.jdField_a_of_type_AndroidUtilTypedValue != null)
+      synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        localTypedValue = this.jdField_a_of_type_AndroidUtilTypedValue;
-        this.jdField_a_of_type_AndroidUtilTypedValue = null;
+        if (this.jdField_a_of_type_AndroidUtilTypedValue != null)
+        {
+          TypedValue localTypedValue = this.jdField_a_of_type_AndroidUtilTypedValue;
+          this.jdField_a_of_type_AndroidUtilTypedValue = null;
+          if (localTypedValue == null) {
+            return new TypedValue();
+          }
+          return localTypedValue;
+        }
       }
-      ??? = localTypedValue;
-      if (localTypedValue == null) {
-        ??? = new TypedValue();
-      }
-      return ???;
+      Object localObject2 = null;
     }
   }
   
@@ -78,15 +80,18 @@ public class SkinDrawable
   
   public static void a(View paramView, Drawable paramDrawable)
   {
-    if ((paramDrawable == null) || (paramView == null)) {
-      return;
+    if (paramDrawable != null)
+    {
+      if (paramView == null) {
+        return;
+      }
+      int i = paramView.getPaddingTop();
+      int j = paramView.getPaddingLeft();
+      int k = paramView.getPaddingRight();
+      int m = paramView.getPaddingBottom();
+      paramView.setBackgroundDrawable(paramDrawable);
+      paramView.setPadding(j, i, k, m);
     }
-    int i = paramView.getPaddingTop();
-    int j = paramView.getPaddingLeft();
-    int k = paramView.getPaddingRight();
-    int m = paramView.getPaddingBottom();
-    paramView.setBackgroundDrawable(paramDrawable);
-    paramView.setPadding(j, i, k, m);
   }
   
   private void a(String paramString, ColorStateList paramColorStateList)
@@ -106,227 +111,245 @@ public class SkinDrawable
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 107	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:m_	()Z
-    //   4: ifeq +13 -> 17
+    //   1: invokevirtual 107	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:n_	()Z
+    //   4: ifeq +398 -> 402
     //   7: aload_0
     //   8: getfield 20	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   11: invokestatic 113	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   14: ifeq +14 -> 28
-    //   17: aload_1
-    //   18: invokevirtual 119	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   21: iload_2
-    //   22: invokevirtual 125	android/content/res/Resources:getColorStateList	(I)Landroid/content/res/ColorStateList;
-    //   25: astore_1
-    //   26: aload_1
-    //   27: areturn
-    //   28: aload_0
-    //   29: new 127	java/lang/StringBuilder
-    //   32: dup
-    //   33: invokespecial 128	java/lang/StringBuilder:<init>	()V
-    //   36: aload_0
-    //   37: getfield 20	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   40: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   43: iload_2
-    //   44: invokevirtual 135	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   47: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   50: invokespecial 141	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:a	(Ljava/lang/String;)Ljava/lang/Object;
-    //   53: astore_3
-    //   54: aload_3
-    //   55: ifnull +15 -> 70
-    //   58: aload_3
-    //   59: instanceof 143
-    //   62: ifeq +8 -> 70
-    //   65: aload_3
-    //   66: checkcast 143	android/content/res/ColorStateList
-    //   69: areturn
-    //   70: aload_0
-    //   71: invokespecial 145	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:a	()Landroid/util/TypedValue;
-    //   74: astore_3
-    //   75: aload_1
-    //   76: invokevirtual 119	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   79: iload_2
-    //   80: aload_3
+    //   14: ifeq +6 -> 20
+    //   17: goto +385 -> 402
+    //   20: new 115	java/lang/StringBuilder
+    //   23: dup
+    //   24: invokespecial 116	java/lang/StringBuilder:<init>	()V
+    //   27: astore_3
+    //   28: aload_3
+    //   29: aload_0
+    //   30: getfield 20	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   33: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: pop
+    //   37: aload_3
+    //   38: iload_2
+    //   39: invokevirtual 123	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   42: pop
+    //   43: aload_0
+    //   44: aload_3
+    //   45: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   48: invokespecial 129	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:a	(Ljava/lang/String;)Ljava/lang/Object;
+    //   51: astore_3
+    //   52: aload_3
+    //   53: ifnull +15 -> 68
+    //   56: aload_3
+    //   57: instanceof 131
+    //   60: ifeq +8 -> 68
+    //   63: aload_3
+    //   64: checkcast 131	android/content/res/ColorStateList
+    //   67: areturn
+    //   68: aload_0
+    //   69: invokespecial 133	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:a	()Landroid/util/TypedValue;
+    //   72: astore 4
+    //   74: aload_1
+    //   75: invokevirtual 139	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   78: iload_2
+    //   79: aload 4
     //   81: iconst_1
-    //   82: invokevirtual 149	android/content/res/Resources:getValue	(ILandroid/util/TypedValue;Z)V
-    //   85: aload_3
-    //   86: getfield 153	android/util/TypedValue:string	Ljava/lang/CharSequence;
-    //   89: checkcast 155	java/lang/String
-    //   92: astore 4
+    //   82: invokevirtual 145	android/content/res/Resources:getValue	(ILandroid/util/TypedValue;Z)V
+    //   85: aload 4
+    //   87: getfield 149	android/util/TypedValue:string	Ljava/lang/CharSequence;
+    //   90: checkcast 151	java/lang/String
+    //   93: astore_3
     //   94: aload_0
-    //   95: aload_3
-    //   96: invokespecial 157	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:a	(Landroid/util/TypedValue;)V
-    //   99: aload 4
-    //   101: ifnull +192 -> 293
-    //   104: new 127	java/lang/StringBuilder
+    //   95: aload 4
+    //   97: invokespecial 153	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:a	(Landroid/util/TypedValue;)V
+    //   100: aload_3
+    //   101: ifnull +292 -> 393
+    //   104: new 115	java/lang/StringBuilder
     //   107: dup
-    //   108: invokespecial 128	java/lang/StringBuilder:<init>	()V
-    //   111: aload_0
-    //   112: getfield 20	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   115: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   118: ldc 159
-    //   120: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   108: invokespecial 116	java/lang/StringBuilder:<init>	()V
+    //   111: astore 4
+    //   113: aload 4
+    //   115: aload_0
+    //   116: getfield 20	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   119: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   122: pop
     //   123: aload 4
-    //   125: aload 4
-    //   127: ldc 161
-    //   129: invokevirtual 165	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
-    //   132: iconst_1
-    //   133: iadd
-    //   134: invokevirtual 169	java/lang/String:substring	(I)Ljava/lang/String;
-    //   137: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   140: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   143: astore_3
-    //   144: new 171	java/io/File
-    //   147: dup
-    //   148: aload_3
-    //   149: invokespecial 174	java/io/File:<init>	(Ljava/lang/String;)V
-    //   152: invokevirtual 177	java/io/File:exists	()Z
-    //   155: ifeq +138 -> 293
-    //   158: new 179	com/tencent/theme/AndroidXmlResourceParser
-    //   161: dup
-    //   162: invokespecial 180	com/tencent/theme/AndroidXmlResourceParser:<init>	()V
-    //   165: astore 5
-    //   167: new 182	java/io/FileInputStream
-    //   170: dup
-    //   171: new 171	java/io/File
-    //   174: dup
-    //   175: aload_3
-    //   176: invokespecial 174	java/io/File:<init>	(Ljava/lang/String;)V
-    //   179: invokespecial 185	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   182: astore 4
-    //   184: aload 4
-    //   186: astore_3
-    //   187: aload 5
-    //   189: aload 4
-    //   191: ldc 187
-    //   193: invokeinterface 193 3 0
-    //   198: aload 4
-    //   200: astore_3
-    //   201: invokestatic 199	com/tencent/theme/SkinEngine:getInstances	()Lcom/tencent/theme/SkinEngine;
-    //   204: aload_1
-    //   205: invokevirtual 119	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   208: aload 5
-    //   210: iconst_1
-    //   211: invokestatic 205	com/tencent/theme/SkinnableColorStateList:createFromXml	(Lcom/tencent/theme/SkinEngine;Landroid/content/res/Resources;Lorg/xmlpull/v1/XmlPullParser;Z)Lcom/tencent/theme/SkinnableColorStateList;
-    //   214: astore 5
-    //   216: aload 4
-    //   218: astore_3
-    //   219: aload_0
-    //   220: new 127	java/lang/StringBuilder
-    //   223: dup
-    //   224: invokespecial 128	java/lang/StringBuilder:<init>	()V
-    //   227: aload_0
-    //   228: getfield 20	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   231: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   234: iload_2
-    //   235: invokevirtual 135	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   238: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   241: aload 5
-    //   243: invokespecial 207	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:a	(Ljava/lang/String;Landroid/content/res/ColorStateList;)V
-    //   246: aload 5
-    //   248: astore_1
-    //   249: aload 4
-    //   251: ifnull -225 -> 26
-    //   254: aload 4
-    //   256: invokevirtual 212	java/io/InputStream:close	()V
-    //   259: aload 5
-    //   261: areturn
-    //   262: astore_1
-    //   263: aload_1
-    //   264: invokevirtual 215	java/io/IOException:printStackTrace	()V
-    //   267: aload 5
-    //   269: areturn
-    //   270: astore 5
-    //   272: aconst_null
-    //   273: astore 4
-    //   275: aload 4
-    //   277: astore_3
-    //   278: aload 5
-    //   280: invokevirtual 215	java/io/IOException:printStackTrace	()V
-    //   283: aload 4
-    //   285: ifnull +8 -> 293
-    //   288: aload 4
-    //   290: invokevirtual 212	java/io/InputStream:close	()V
-    //   293: aload_1
-    //   294: invokevirtual 119	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   297: iload_2
-    //   298: invokevirtual 125	android/content/res/Resources:getColorStateList	(I)Landroid/content/res/ColorStateList;
-    //   301: areturn
-    //   302: astore_3
+    //   125: ldc 155
+    //   127: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   130: pop
+    //   131: aload 4
+    //   133: aload_3
+    //   134: aload_3
+    //   135: ldc 157
+    //   137: invokevirtual 161	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
+    //   140: iconst_1
+    //   141: iadd
+    //   142: invokevirtual 165	java/lang/String:substring	(I)Ljava/lang/String;
+    //   145: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   148: pop
+    //   149: aload 4
+    //   151: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   154: astore 8
+    //   156: new 167	java/io/File
+    //   159: dup
+    //   160: aload 8
+    //   162: invokespecial 170	java/io/File:<init>	(Ljava/lang/String;)V
+    //   165: invokevirtual 173	java/io/File:exists	()Z
+    //   168: ifeq +225 -> 393
+    //   171: aconst_null
+    //   172: astore 5
+    //   174: aconst_null
+    //   175: astore 6
+    //   177: aconst_null
+    //   178: astore 4
+    //   180: aload 4
+    //   182: astore_3
+    //   183: new 175	com/tencent/theme/AndroidXmlResourceParser
+    //   186: dup
+    //   187: invokespecial 176	com/tencent/theme/AndroidXmlResourceParser:<init>	()V
+    //   190: astore 7
+    //   192: aload 4
+    //   194: astore_3
+    //   195: new 178	java/io/FileInputStream
+    //   198: dup
+    //   199: new 167	java/io/File
+    //   202: dup
+    //   203: aload 8
+    //   205: invokespecial 170	java/io/File:<init>	(Ljava/lang/String;)V
+    //   208: invokespecial 181	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   211: astore 4
+    //   213: aload 7
+    //   215: aload 4
+    //   217: ldc 183
+    //   219: invokeinterface 189 3 0
+    //   224: invokestatic 195	com/tencent/theme/SkinEngine:getInstances	()Lcom/tencent/theme/SkinEngine;
+    //   227: aload_1
+    //   228: invokevirtual 139	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   231: aload 7
+    //   233: iconst_1
+    //   234: invokestatic 201	com/tencent/theme/SkinnableColorStateList:createFromXml	(Lcom/tencent/theme/SkinEngine;Landroid/content/res/Resources;Lorg/xmlpull/v1/XmlPullParser;Z)Lcom/tencent/theme/SkinnableColorStateList;
+    //   237: astore_3
+    //   238: new 115	java/lang/StringBuilder
+    //   241: dup
+    //   242: invokespecial 116	java/lang/StringBuilder:<init>	()V
+    //   245: astore 5
+    //   247: aload 5
+    //   249: aload_0
+    //   250: getfield 20	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   253: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   256: pop
+    //   257: aload 5
+    //   259: iload_2
+    //   260: invokevirtual 123	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   263: pop
+    //   264: aload_0
+    //   265: aload 5
+    //   267: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   270: aload_3
+    //   271: invokespecial 203	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:a	(Ljava/lang/String;Landroid/content/res/ColorStateList;)V
+    //   274: aload 4
+    //   276: invokevirtual 208	java/io/InputStream:close	()V
+    //   279: aload_3
+    //   280: areturn
+    //   281: astore_1
+    //   282: aload_1
+    //   283: invokevirtual 211	java/io/IOException:printStackTrace	()V
+    //   286: aload_3
+    //   287: areturn
+    //   288: astore_1
+    //   289: goto +84 -> 373
+    //   292: astore 5
+    //   294: goto +23 -> 317
+    //   297: astore 5
+    //   299: goto +45 -> 344
+    //   302: astore_1
     //   303: aload_3
-    //   304: invokevirtual 215	java/io/IOException:printStackTrace	()V
-    //   307: goto -14 -> 293
-    //   310: astore 5
-    //   312: aconst_null
-    //   313: astore 4
-    //   315: aload 4
-    //   317: astore_3
-    //   318: aload 5
-    //   320: invokevirtual 216	org/xmlpull/v1/XmlPullParserException:printStackTrace	()V
-    //   323: aload 4
-    //   325: ifnull -32 -> 293
-    //   328: aload 4
-    //   330: invokevirtual 212	java/io/InputStream:close	()V
-    //   333: goto -40 -> 293
-    //   336: astore_3
-    //   337: aload_3
-    //   338: invokevirtual 215	java/io/IOException:printStackTrace	()V
-    //   341: goto -48 -> 293
-    //   344: astore_1
-    //   345: aconst_null
+    //   304: astore 4
+    //   306: goto +67 -> 373
+    //   309: astore_3
+    //   310: aload 5
+    //   312: astore 4
+    //   314: aload_3
+    //   315: astore 5
+    //   317: aload 4
+    //   319: astore_3
+    //   320: aload 5
+    //   322: invokevirtual 212	org/xmlpull/v1/XmlPullParserException:printStackTrace	()V
+    //   325: aload 4
+    //   327: ifnull +66 -> 393
+    //   330: aload 4
+    //   332: invokevirtual 208	java/io/InputStream:close	()V
+    //   335: goto +58 -> 393
+    //   338: astore 5
+    //   340: aload 6
+    //   342: astore 4
+    //   344: aload 4
     //   346: astore_3
-    //   347: aload_3
-    //   348: ifnull +7 -> 355
-    //   351: aload_3
-    //   352: invokevirtual 212	java/io/InputStream:close	()V
-    //   355: aload_1
-    //   356: athrow
-    //   357: astore_3
-    //   358: aload_3
-    //   359: invokevirtual 215	java/io/IOException:printStackTrace	()V
-    //   362: goto -7 -> 355
-    //   365: astore_1
-    //   366: goto -19 -> 347
-    //   369: astore 5
-    //   371: goto -56 -> 315
-    //   374: astore 5
-    //   376: goto -101 -> 275
+    //   347: aload 5
+    //   349: invokevirtual 211	java/io/IOException:printStackTrace	()V
+    //   352: aload 4
+    //   354: ifnull +39 -> 393
+    //   357: aload 4
+    //   359: invokevirtual 208	java/io/InputStream:close	()V
+    //   362: goto +31 -> 393
+    //   365: astore_3
+    //   366: aload_3
+    //   367: invokevirtual 211	java/io/IOException:printStackTrace	()V
+    //   370: goto +23 -> 393
+    //   373: aload 4
+    //   375: ifnull +16 -> 391
+    //   378: aload 4
+    //   380: invokevirtual 208	java/io/InputStream:close	()V
+    //   383: goto +8 -> 391
+    //   386: astore_3
+    //   387: aload_3
+    //   388: invokevirtual 211	java/io/IOException:printStackTrace	()V
+    //   391: aload_1
+    //   392: athrow
+    //   393: aload_1
+    //   394: invokevirtual 139	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   397: iload_2
+    //   398: invokevirtual 216	android/content/res/Resources:getColorStateList	(I)Landroid/content/res/ColorStateList;
+    //   401: areturn
+    //   402: aload_1
+    //   403: invokevirtual 139	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   406: iload_2
+    //   407: invokevirtual 216	android/content/res/Resources:getColorStateList	(I)Landroid/content/res/ColorStateList;
+    //   410: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	379	0	this	SkinDrawable
-    //   0	379	1	paramContext	Context
-    //   0	379	2	paramInt	int
-    //   53	225	3	localObject1	Object
-    //   302	2	3	localIOException1	java.io.IOException
-    //   317	1	3	localObject2	Object
-    //   336	2	3	localIOException2	java.io.IOException
-    //   346	6	3	localObject3	Object
-    //   357	2	3	localIOException3	java.io.IOException
-    //   92	237	4	localObject4	Object
-    //   165	103	5	localObject5	Object
-    //   270	9	5	localIOException4	java.io.IOException
-    //   310	9	5	localXmlPullParserException1	org.xmlpull.v1.XmlPullParserException
-    //   369	1	5	localXmlPullParserException2	org.xmlpull.v1.XmlPullParserException
-    //   374	1	5	localIOException5	java.io.IOException
+    //   0	411	0	this	SkinDrawable
+    //   0	411	1	paramContext	Context
+    //   0	411	2	paramInt	int
+    //   27	277	3	localObject1	Object
+    //   309	6	3	localXmlPullParserException1	org.xmlpull.v1.XmlPullParserException
+    //   319	28	3	localObject2	Object
+    //   365	2	3	localIOException1	java.io.IOException
+    //   386	2	3	localIOException2	java.io.IOException
+    //   72	307	4	localObject3	Object
+    //   172	94	5	localStringBuilder	StringBuilder
+    //   292	1	5	localXmlPullParserException2	org.xmlpull.v1.XmlPullParserException
+    //   297	14	5	localIOException3	java.io.IOException
+    //   315	6	5	localXmlPullParserException3	org.xmlpull.v1.XmlPullParserException
+    //   338	10	5	localIOException4	java.io.IOException
+    //   175	166	6	localObject4	Object
+    //   190	42	7	localAndroidXmlResourceParser	com.tencent.theme.AndroidXmlResourceParser
+    //   154	50	8	str	String
     // Exception table:
     //   from	to	target	type
-    //   254	259	262	java/io/IOException
-    //   158	184	270	java/io/IOException
-    //   288	293	302	java/io/IOException
-    //   158	184	310	org/xmlpull/v1/XmlPullParserException
-    //   328	333	336	java/io/IOException
-    //   158	184	344	finally
-    //   351	355	357	java/io/IOException
-    //   187	198	365	finally
-    //   201	216	365	finally
-    //   219	246	365	finally
-    //   278	283	365	finally
-    //   318	323	365	finally
-    //   187	198	369	org/xmlpull/v1/XmlPullParserException
-    //   201	216	369	org/xmlpull/v1/XmlPullParserException
-    //   219	246	369	org/xmlpull/v1/XmlPullParserException
-    //   187	198	374	java/io/IOException
-    //   201	216	374	java/io/IOException
-    //   219	246	374	java/io/IOException
+    //   274	279	281	java/io/IOException
+    //   213	274	288	finally
+    //   213	274	292	org/xmlpull/v1/XmlPullParserException
+    //   213	274	297	java/io/IOException
+    //   183	192	302	finally
+    //   195	213	302	finally
+    //   320	325	302	finally
+    //   347	352	302	finally
+    //   183	192	309	org/xmlpull/v1/XmlPullParserException
+    //   195	213	309	org/xmlpull/v1/XmlPullParserException
+    //   183	192	338	java/io/IOException
+    //   195	213	338	java/io/IOException
+    //   330	335	365	java/io/IOException
+    //   357	362	365	java/io/IOException
+    //   378	383	386	java/io/IOException
   }
   
   /* Error */
@@ -334,229 +357,253 @@ public class SkinDrawable
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 107	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:m_	()Z
-    //   4: ifeq +13 -> 17
+    //   1: invokevirtual 107	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:n_	()Z
+    //   4: ifeq +396 -> 400
     //   7: aload_0
     //   8: getfield 20	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   11: invokestatic 113	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   14: ifeq +14 -> 28
-    //   17: aload_1
-    //   18: invokevirtual 119	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   21: iload_2
-    //   22: invokevirtual 223	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
-    //   25: astore_1
-    //   26: aload_1
-    //   27: areturn
-    //   28: aload_0
-    //   29: new 127	java/lang/StringBuilder
-    //   32: dup
-    //   33: invokespecial 128	java/lang/StringBuilder:<init>	()V
-    //   36: aload_0
-    //   37: getfield 20	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   40: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   43: iload_2
-    //   44: invokevirtual 135	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   47: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   50: invokespecial 141	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:a	(Ljava/lang/String;)Ljava/lang/Object;
-    //   53: astore_3
-    //   54: aload_3
-    //   55: ifnull +15 -> 70
-    //   58: aload_3
-    //   59: instanceof 92
-    //   62: ifeq +8 -> 70
-    //   65: aload_3
-    //   66: checkcast 92	android/graphics/drawable/Drawable
-    //   69: areturn
-    //   70: aload_0
-    //   71: invokespecial 145	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:a	()Landroid/util/TypedValue;
-    //   74: astore 5
-    //   76: aload_1
-    //   77: invokevirtual 119	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   80: iload_2
-    //   81: aload 5
-    //   83: iconst_1
-    //   84: invokevirtual 149	android/content/res/Resources:getValue	(ILandroid/util/TypedValue;Z)V
-    //   87: aload 5
-    //   89: getfield 153	android/util/TypedValue:string	Ljava/lang/CharSequence;
-    //   92: checkcast 155	java/lang/String
-    //   95: astore 6
-    //   97: aload_0
-    //   98: aload 5
-    //   100: invokespecial 157	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:a	(Landroid/util/TypedValue;)V
-    //   103: aload 6
-    //   105: ifnull +197 -> 302
-    //   108: new 171	java/io/File
-    //   111: dup
-    //   112: new 127	java/lang/StringBuilder
-    //   115: dup
-    //   116: invokespecial 128	java/lang/StringBuilder:<init>	()V
-    //   119: aload_0
-    //   120: getfield 20	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   123: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   126: ldc 225
-    //   128: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14: ifeq +6 -> 20
+    //   17: goto +383 -> 400
+    //   20: new 115	java/lang/StringBuilder
+    //   23: dup
+    //   24: invokespecial 116	java/lang/StringBuilder:<init>	()V
+    //   27: astore_3
+    //   28: aload_3
+    //   29: aload_0
+    //   30: getfield 20	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   33: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: pop
+    //   37: aload_3
+    //   38: iload_2
+    //   39: invokevirtual 123	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   42: pop
+    //   43: aload_0
+    //   44: aload_3
+    //   45: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   48: invokespecial 129	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:a	(Ljava/lang/String;)Ljava/lang/Object;
+    //   51: astore_3
+    //   52: aload_3
+    //   53: ifnull +15 -> 68
+    //   56: aload_3
+    //   57: instanceof 92
+    //   60: ifeq +8 -> 68
+    //   63: aload_3
+    //   64: checkcast 92	android/graphics/drawable/Drawable
+    //   67: areturn
+    //   68: aload_0
+    //   69: invokespecial 133	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:a	()Landroid/util/TypedValue;
+    //   72: astore 5
+    //   74: aload_1
+    //   75: invokevirtual 139	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   78: iload_2
+    //   79: aload 5
+    //   81: iconst_1
+    //   82: invokevirtual 145	android/content/res/Resources:getValue	(ILandroid/util/TypedValue;Z)V
+    //   85: aload 5
+    //   87: getfield 149	android/util/TypedValue:string	Ljava/lang/CharSequence;
+    //   90: checkcast 151	java/lang/String
+    //   93: astore 6
+    //   95: aload_0
+    //   96: aload 5
+    //   98: invokespecial 153	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:a	(Landroid/util/TypedValue;)V
+    //   101: aload 6
+    //   103: ifnull +288 -> 391
+    //   106: new 115	java/lang/StringBuilder
+    //   109: dup
+    //   110: invokespecial 116	java/lang/StringBuilder:<init>	()V
+    //   113: astore_3
+    //   114: aload_3
+    //   115: aload_0
+    //   116: getfield 20	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   119: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   122: pop
+    //   123: aload_3
+    //   124: ldc 221
+    //   126: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   129: pop
+    //   130: aload_3
     //   131: aload 6
     //   133: aload 6
-    //   135: ldc 161
-    //   137: invokevirtual 165	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
+    //   135: ldc 157
+    //   137: invokevirtual 161	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
     //   140: iconst_1
     //   141: iadd
-    //   142: invokevirtual 169	java/lang/String:substring	(I)Ljava/lang/String;
-    //   145: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   148: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   151: invokespecial 174	java/io/File:<init>	(Ljava/lang/String;)V
-    //   154: astore_3
-    //   155: aload_3
-    //   156: invokevirtual 177	java/io/File:exists	()Z
-    //   159: ifeq +143 -> 302
-    //   162: new 227	android/graphics/Rect
-    //   165: dup
-    //   166: invokespecial 228	android/graphics/Rect:<init>	()V
-    //   169: astore 7
-    //   171: aload 5
-    //   173: sipush 480
-    //   176: putfield 232	android/util/TypedValue:density	I
-    //   179: new 234	java/io/BufferedInputStream
-    //   182: dup
-    //   183: new 182	java/io/FileInputStream
-    //   186: dup
-    //   187: aload_3
-    //   188: invokespecial 185	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   191: invokespecial 237	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   194: astore 4
-    //   196: aload 4
-    //   198: astore_3
-    //   199: aload_1
-    //   200: invokevirtual 119	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   203: aload 5
-    //   205: aload 4
-    //   207: aload 6
-    //   209: aconst_null
-    //   210: aload 7
-    //   212: iconst_1
-    //   213: invokestatic 243	com/tencent/theme/ResourcesFactory:createImageFromResourceStream	(Landroid/content/res/Resources;Landroid/util/TypedValue;Ljava/io/InputStream;Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Rect;Z)Lcom/tencent/theme/BaseConstantState;
-    //   216: aload_1
-    //   217: invokevirtual 119	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   220: invokevirtual 249	android/graphics/drawable/Drawable$ConstantState:newDrawable	(Landroid/content/res/Resources;)Landroid/graphics/drawable/Drawable;
-    //   223: astore 5
-    //   225: aload 4
-    //   227: astore_3
-    //   228: aload_0
-    //   229: new 127	java/lang/StringBuilder
-    //   232: dup
-    //   233: invokespecial 128	java/lang/StringBuilder:<init>	()V
-    //   236: aload_0
-    //   237: getfield 20	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   240: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   243: iload_2
-    //   244: invokevirtual 135	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   247: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   250: aload 5
-    //   252: invokespecial 251	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:a	(Ljava/lang/String;Landroid/graphics/drawable/Drawable;)V
-    //   255: aload 5
-    //   257: astore_1
-    //   258: aload 4
-    //   260: ifnull -234 -> 26
-    //   263: aload 4
-    //   265: invokevirtual 212	java/io/InputStream:close	()V
-    //   268: aload 5
-    //   270: areturn
-    //   271: astore_1
-    //   272: aload_1
-    //   273: invokevirtual 215	java/io/IOException:printStackTrace	()V
-    //   276: aload 5
-    //   278: areturn
-    //   279: astore 5
-    //   281: aconst_null
-    //   282: astore 4
-    //   284: aload 4
-    //   286: astore_3
-    //   287: aload 5
-    //   289: invokevirtual 252	java/lang/OutOfMemoryError:printStackTrace	()V
-    //   292: aload 4
-    //   294: ifnull +8 -> 302
-    //   297: aload 4
-    //   299: invokevirtual 212	java/io/InputStream:close	()V
-    //   302: aload_1
-    //   303: invokevirtual 119	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   306: iload_2
-    //   307: invokevirtual 223	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
-    //   310: areturn
-    //   311: astore_3
-    //   312: aload_3
-    //   313: invokevirtual 215	java/io/IOException:printStackTrace	()V
-    //   316: goto -14 -> 302
-    //   319: astore 5
-    //   321: aconst_null
-    //   322: astore 4
-    //   324: aload 4
-    //   326: astore_3
-    //   327: aload 5
-    //   329: invokevirtual 215	java/io/IOException:printStackTrace	()V
-    //   332: aload 4
-    //   334: ifnull -32 -> 302
-    //   337: aload 4
-    //   339: invokevirtual 212	java/io/InputStream:close	()V
-    //   342: goto -40 -> 302
+    //   142: invokevirtual 165	java/lang/String:substring	(I)Ljava/lang/String;
+    //   145: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   148: pop
+    //   149: new 167	java/io/File
+    //   152: dup
+    //   153: aload_3
+    //   154: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   157: invokespecial 170	java/io/File:<init>	(Ljava/lang/String;)V
+    //   160: astore_3
+    //   161: aload_3
+    //   162: invokevirtual 173	java/io/File:exists	()Z
+    //   165: ifeq +226 -> 391
+    //   168: new 223	android/graphics/Rect
+    //   171: dup
+    //   172: invokespecial 224	android/graphics/Rect:<init>	()V
+    //   175: astore 7
+    //   177: aload 5
+    //   179: sipush 480
+    //   182: putfield 228	android/util/TypedValue:density	I
+    //   185: new 230	java/io/BufferedInputStream
+    //   188: dup
+    //   189: new 178	java/io/FileInputStream
+    //   192: dup
+    //   193: aload_3
+    //   194: invokespecial 181	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   197: invokespecial 233	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   200: astore 4
+    //   202: aload 4
+    //   204: astore_3
+    //   205: aload_1
+    //   206: invokevirtual 139	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   209: aload 5
+    //   211: aload 4
+    //   213: aload 6
+    //   215: aconst_null
+    //   216: aload 7
+    //   218: iconst_1
+    //   219: invokestatic 239	com/tencent/theme/ResourcesFactory:createImageFromResourceStream	(Landroid/content/res/Resources;Landroid/util/TypedValue;Ljava/io/InputStream;Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Rect;Z)Lcom/tencent/theme/BaseConstantState;
+    //   222: aload_1
+    //   223: invokevirtual 139	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   226: invokevirtual 245	android/graphics/drawable/Drawable$ConstantState:newDrawable	(Landroid/content/res/Resources;)Landroid/graphics/drawable/Drawable;
+    //   229: astore 5
+    //   231: aload 4
+    //   233: astore_3
+    //   234: new 115	java/lang/StringBuilder
+    //   237: dup
+    //   238: invokespecial 116	java/lang/StringBuilder:<init>	()V
+    //   241: astore 6
+    //   243: aload 4
+    //   245: astore_3
+    //   246: aload 6
+    //   248: aload_0
+    //   249: getfield 20	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   252: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   255: pop
+    //   256: aload 4
+    //   258: astore_3
+    //   259: aload 6
+    //   261: iload_2
+    //   262: invokevirtual 123	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   265: pop
+    //   266: aload 4
+    //   268: astore_3
+    //   269: aload_0
+    //   270: aload 6
+    //   272: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   275: aload 5
+    //   277: invokespecial 247	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:a	(Ljava/lang/String;Landroid/graphics/drawable/Drawable;)V
+    //   280: aload 4
+    //   282: invokevirtual 208	java/io/InputStream:close	()V
+    //   285: aload 5
+    //   287: areturn
+    //   288: astore_1
+    //   289: aload_1
+    //   290: invokevirtual 211	java/io/IOException:printStackTrace	()V
+    //   293: aload 5
+    //   295: areturn
+    //   296: astore 5
+    //   298: goto +19 -> 317
+    //   301: astore 5
+    //   303: goto +40 -> 343
+    //   306: astore_1
+    //   307: aconst_null
+    //   308: astore_3
+    //   309: goto +64 -> 373
+    //   312: astore 5
+    //   314: aconst_null
+    //   315: astore 4
+    //   317: aload 4
+    //   319: astore_3
+    //   320: aload 5
+    //   322: invokevirtual 211	java/io/IOException:printStackTrace	()V
+    //   325: aload 4
+    //   327: ifnull +64 -> 391
+    //   330: aload 4
+    //   332: invokevirtual 208	java/io/InputStream:close	()V
+    //   335: goto +56 -> 391
+    //   338: astore 5
+    //   340: aconst_null
+    //   341: astore 4
+    //   343: aload 4
     //   345: astore_3
-    //   346: aload_3
-    //   347: invokevirtual 215	java/io/IOException:printStackTrace	()V
-    //   350: goto -48 -> 302
-    //   353: astore_1
-    //   354: aconst_null
-    //   355: astore_3
-    //   356: aload_3
-    //   357: ifnull +7 -> 364
-    //   360: aload_3
-    //   361: invokevirtual 212	java/io/InputStream:close	()V
-    //   364: aload_1
-    //   365: athrow
-    //   366: astore_3
-    //   367: aload_3
-    //   368: invokevirtual 215	java/io/IOException:printStackTrace	()V
-    //   371: goto -7 -> 364
-    //   374: astore_1
-    //   375: goto -19 -> 356
-    //   378: astore 5
-    //   380: goto -56 -> 324
-    //   383: astore 5
-    //   385: goto -101 -> 284
+    //   346: aload 5
+    //   348: invokevirtual 248	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   351: aload 4
+    //   353: ifnull +38 -> 391
+    //   356: aload 4
+    //   358: invokevirtual 208	java/io/InputStream:close	()V
+    //   361: goto +30 -> 391
+    //   364: astore_3
+    //   365: aload_3
+    //   366: invokevirtual 211	java/io/IOException:printStackTrace	()V
+    //   369: goto +22 -> 391
+    //   372: astore_1
+    //   373: aload_3
+    //   374: ifnull +15 -> 389
+    //   377: aload_3
+    //   378: invokevirtual 208	java/io/InputStream:close	()V
+    //   381: goto +8 -> 389
+    //   384: astore_3
+    //   385: aload_3
+    //   386: invokevirtual 211	java/io/IOException:printStackTrace	()V
+    //   389: aload_1
+    //   390: athrow
+    //   391: aload_1
+    //   392: invokevirtual 139	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   395: iload_2
+    //   396: invokevirtual 252	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
+    //   399: areturn
+    //   400: aload_1
+    //   401: invokevirtual 139	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   404: iload_2
+    //   405: invokevirtual 252	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
+    //   408: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	388	0	this	SkinDrawable
-    //   0	388	1	paramContext	Context
-    //   0	388	2	paramInt	int
-    //   53	234	3	localObject1	Object
-    //   311	2	3	localIOException1	java.io.IOException
-    //   326	1	3	localObject2	Object
-    //   345	2	3	localIOException2	java.io.IOException
-    //   355	6	3	localObject3	Object
-    //   366	2	3	localIOException3	java.io.IOException
-    //   194	144	4	localBufferedInputStream	java.io.BufferedInputStream
-    //   74	203	5	localObject4	Object
-    //   279	9	5	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   319	9	5	localIOException4	java.io.IOException
-    //   378	1	5	localIOException5	java.io.IOException
-    //   383	1	5	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   95	113	6	str	String
-    //   169	42	7	localRect	android.graphics.Rect
+    //   0	409	0	this	SkinDrawable
+    //   0	409	1	paramContext	Context
+    //   0	409	2	paramInt	int
+    //   27	319	3	localObject1	Object
+    //   364	14	3	localIOException1	java.io.IOException
+    //   384	2	3	localIOException2	java.io.IOException
+    //   200	157	4	localBufferedInputStream	java.io.BufferedInputStream
+    //   72	222	5	localObject2	Object
+    //   296	1	5	localIOException3	java.io.IOException
+    //   301	1	5	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   312	9	5	localIOException4	java.io.IOException
+    //   338	9	5	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   93	178	6	localObject3	Object
+    //   175	42	7	localRect	android.graphics.Rect
     // Exception table:
     //   from	to	target	type
-    //   263	268	271	java/io/IOException
-    //   179	196	279	java/lang/OutOfMemoryError
-    //   297	302	311	java/io/IOException
-    //   179	196	319	java/io/IOException
-    //   337	342	345	java/io/IOException
-    //   179	196	353	finally
-    //   360	364	366	java/io/IOException
-    //   199	225	374	finally
-    //   228	255	374	finally
-    //   287	292	374	finally
-    //   327	332	374	finally
-    //   199	225	378	java/io/IOException
-    //   228	255	378	java/io/IOException
-    //   199	225	383	java/lang/OutOfMemoryError
-    //   228	255	383	java/lang/OutOfMemoryError
+    //   280	285	288	java/io/IOException
+    //   205	231	296	java/io/IOException
+    //   234	243	296	java/io/IOException
+    //   246	256	296	java/io/IOException
+    //   259	266	296	java/io/IOException
+    //   269	280	296	java/io/IOException
+    //   205	231	301	java/lang/OutOfMemoryError
+    //   234	243	301	java/lang/OutOfMemoryError
+    //   246	256	301	java/lang/OutOfMemoryError
+    //   259	266	301	java/lang/OutOfMemoryError
+    //   269	280	301	java/lang/OutOfMemoryError
+    //   185	202	306	finally
+    //   185	202	312	java/io/IOException
+    //   185	202	338	java/lang/OutOfMemoryError
+    //   330	335	364	java/io/IOException
+    //   356	361	364	java/io/IOException
+    //   205	231	372	finally
+    //   234	243	372	finally
+    //   246	256	372	finally
+    //   259	266	372	finally
+    //   269	280	372	finally
+    //   320	325	372	finally
+    //   346	351	372	finally
+    //   377	381	384	java/io/IOException
   }
   
   /* Error */
@@ -564,242 +611,263 @@ public class SkinDrawable
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 107	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:m_	()Z
-    //   4: ifeq +13 -> 17
+    //   1: invokevirtual 107	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:n_	()Z
+    //   4: ifeq +419 -> 423
     //   7: aload_0
     //   8: getfield 20	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   11: invokestatic 113	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   14: ifeq +14 -> 28
-    //   17: aload_1
-    //   18: invokevirtual 119	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   21: iload_2
-    //   22: invokevirtual 223	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
-    //   25: astore_1
-    //   26: aload_1
-    //   27: areturn
-    //   28: aload_0
-    //   29: new 127	java/lang/StringBuilder
-    //   32: dup
-    //   33: invokespecial 128	java/lang/StringBuilder:<init>	()V
-    //   36: aload_0
-    //   37: getfield 20	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   40: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   43: iload_2
-    //   44: invokevirtual 135	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   47: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   50: invokespecial 141	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:a	(Ljava/lang/String;)Ljava/lang/Object;
-    //   53: astore 4
-    //   55: aload 4
-    //   57: ifnull +17 -> 74
-    //   60: aload 4
-    //   62: instanceof 92
-    //   65: ifeq +9 -> 74
-    //   68: aload 4
-    //   70: checkcast 92	android/graphics/drawable/Drawable
-    //   73: areturn
-    //   74: aload_0
-    //   75: invokespecial 145	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:a	()Landroid/util/TypedValue;
-    //   78: astore 5
-    //   80: aload_1
-    //   81: invokevirtual 119	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   84: iload_2
-    //   85: aload 5
-    //   87: iconst_1
-    //   88: invokevirtual 149	android/content/res/Resources:getValue	(ILandroid/util/TypedValue;Z)V
-    //   91: aload 5
-    //   93: getfield 153	android/util/TypedValue:string	Ljava/lang/CharSequence;
-    //   96: checkcast 155	java/lang/String
-    //   99: astore 6
-    //   101: aload_0
-    //   102: aload 5
-    //   104: invokespecial 157	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:a	(Landroid/util/TypedValue;)V
-    //   107: aload 6
-    //   109: ifnull +186 -> 295
-    //   112: new 171	java/io/File
-    //   115: dup
-    //   116: new 127	java/lang/StringBuilder
-    //   119: dup
-    //   120: invokespecial 128	java/lang/StringBuilder:<init>	()V
-    //   123: aload_0
-    //   124: getfield 20	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   127: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   130: ldc 161
-    //   132: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   135: aload_3
-    //   136: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   139: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   142: invokespecial 174	java/io/File:<init>	(Ljava/lang/String;)V
-    //   145: astore_3
-    //   146: aload_3
-    //   147: invokevirtual 177	java/io/File:exists	()Z
-    //   150: ifeq +145 -> 295
-    //   153: new 227	android/graphics/Rect
-    //   156: dup
-    //   157: invokespecial 228	android/graphics/Rect:<init>	()V
-    //   160: astore 7
-    //   162: new 234	java/io/BufferedInputStream
-    //   165: dup
-    //   166: new 182	java/io/FileInputStream
-    //   169: dup
-    //   170: aload_3
-    //   171: invokespecial 185	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   174: invokespecial 237	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   177: astore 4
-    //   179: aload 4
-    //   181: astore_3
-    //   182: aload 5
-    //   184: sipush 480
-    //   187: putfield 232	android/util/TypedValue:density	I
-    //   190: aload 4
-    //   192: astore_3
-    //   193: aload_1
-    //   194: invokevirtual 119	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   14: ifeq +6 -> 20
+    //   17: goto +406 -> 423
+    //   20: new 115	java/lang/StringBuilder
+    //   23: dup
+    //   24: invokespecial 116	java/lang/StringBuilder:<init>	()V
+    //   27: astore 4
+    //   29: aload 4
+    //   31: aload_0
+    //   32: getfield 20	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   35: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: pop
+    //   39: aload 4
+    //   41: iload_2
+    //   42: invokevirtual 123	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   45: pop
+    //   46: aload_0
+    //   47: aload 4
+    //   49: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   52: invokespecial 129	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:a	(Ljava/lang/String;)Ljava/lang/Object;
+    //   55: astore 4
+    //   57: aload 4
+    //   59: ifnull +17 -> 76
+    //   62: aload 4
+    //   64: instanceof 92
+    //   67: ifeq +9 -> 76
+    //   70: aload 4
+    //   72: checkcast 92	android/graphics/drawable/Drawable
+    //   75: areturn
+    //   76: aload_0
+    //   77: invokespecial 133	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:a	()Landroid/util/TypedValue;
+    //   80: astore 5
+    //   82: aload_1
+    //   83: invokevirtual 139	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   86: iload_2
+    //   87: aload 5
+    //   89: iconst_1
+    //   90: invokevirtual 145	android/content/res/Resources:getValue	(ILandroid/util/TypedValue;Z)V
+    //   93: aload 5
+    //   95: getfield 149	android/util/TypedValue:string	Ljava/lang/CharSequence;
+    //   98: checkcast 151	java/lang/String
+    //   101: astore 6
+    //   103: aload_0
+    //   104: aload 5
+    //   106: invokespecial 153	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:a	(Landroid/util/TypedValue;)V
+    //   109: aload 6
+    //   111: ifnull +303 -> 414
+    //   114: new 115	java/lang/StringBuilder
+    //   117: dup
+    //   118: invokespecial 116	java/lang/StringBuilder:<init>	()V
+    //   121: astore 4
+    //   123: aload 4
+    //   125: aload_0
+    //   126: getfield 20	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   129: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   132: pop
+    //   133: aload 4
+    //   135: ldc 157
+    //   137: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   140: pop
+    //   141: aload 4
+    //   143: aload_3
+    //   144: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   147: pop
+    //   148: new 167	java/io/File
+    //   151: dup
+    //   152: aload 4
+    //   154: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   157: invokespecial 170	java/io/File:<init>	(Ljava/lang/String;)V
+    //   160: astore_3
+    //   161: aload_3
+    //   162: invokevirtual 173	java/io/File:exists	()Z
+    //   165: ifeq +249 -> 414
+    //   168: new 223	android/graphics/Rect
+    //   171: dup
+    //   172: invokespecial 224	android/graphics/Rect:<init>	()V
+    //   175: astore 7
+    //   177: new 230	java/io/BufferedInputStream
+    //   180: dup
+    //   181: new 178	java/io/FileInputStream
+    //   184: dup
+    //   185: aload_3
+    //   186: invokespecial 181	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   189: invokespecial 233	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   192: astore 4
+    //   194: aload 4
+    //   196: astore_3
     //   197: aload 5
-    //   199: aload 4
-    //   201: aload 6
-    //   203: aconst_null
-    //   204: aload 7
-    //   206: iconst_1
-    //   207: invokestatic 243	com/tencent/theme/ResourcesFactory:createImageFromResourceStream	(Landroid/content/res/Resources;Landroid/util/TypedValue;Ljava/io/InputStream;Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Rect;Z)Lcom/tencent/theme/BaseConstantState;
-    //   210: astore 5
+    //   199: sipush 480
+    //   202: putfield 228	android/util/TypedValue:density	I
+    //   205: aload 4
+    //   207: astore_3
+    //   208: aload_1
+    //   209: invokevirtual 139	android/content/Context:getResources	()Landroid/content/res/Resources;
     //   212: aload 5
-    //   214: ifnull +71 -> 285
-    //   217: aload 4
-    //   219: astore_3
-    //   220: aload 5
-    //   222: aload_1
-    //   223: invokevirtual 119	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   226: invokevirtual 249	android/graphics/drawable/Drawable$ConstantState:newDrawable	(Landroid/content/res/Resources;)Landroid/graphics/drawable/Drawable;
-    //   229: astore 5
-    //   231: aload 4
-    //   233: astore_3
-    //   234: aload_0
-    //   235: new 127	java/lang/StringBuilder
-    //   238: dup
-    //   239: invokespecial 128	java/lang/StringBuilder:<init>	()V
-    //   242: aload_0
-    //   243: getfield 20	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   246: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   249: iload_2
-    //   250: invokevirtual 135	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   253: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   256: aload 5
-    //   258: invokespecial 251	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:a	(Ljava/lang/String;Landroid/graphics/drawable/Drawable;)V
-    //   261: aload 5
-    //   263: astore_1
-    //   264: aload 4
-    //   266: ifnull -240 -> 26
-    //   269: aload 4
-    //   271: invokevirtual 212	java/io/InputStream:close	()V
-    //   274: aload 5
-    //   276: areturn
-    //   277: astore_1
-    //   278: aload_1
-    //   279: invokevirtual 215	java/io/IOException:printStackTrace	()V
-    //   282: aload 5
-    //   284: areturn
-    //   285: aload 4
-    //   287: ifnull +8 -> 295
-    //   290: aload 4
-    //   292: invokevirtual 212	java/io/InputStream:close	()V
-    //   295: aload_1
-    //   296: invokevirtual 119	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   299: iload_2
-    //   300: invokevirtual 223	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
-    //   303: areturn
-    //   304: astore_3
-    //   305: aload_3
-    //   306: invokevirtual 215	java/io/IOException:printStackTrace	()V
-    //   309: goto -14 -> 295
-    //   312: astore 5
-    //   314: aconst_null
-    //   315: astore 4
-    //   317: aload 4
-    //   319: astore_3
-    //   320: aload 5
-    //   322: invokevirtual 252	java/lang/OutOfMemoryError:printStackTrace	()V
-    //   325: aload 4
-    //   327: ifnull -32 -> 295
-    //   330: aload 4
-    //   332: invokevirtual 212	java/io/InputStream:close	()V
-    //   335: goto -40 -> 295
-    //   338: astore_3
-    //   339: aload_3
-    //   340: invokevirtual 215	java/io/IOException:printStackTrace	()V
-    //   343: goto -48 -> 295
-    //   346: astore 5
-    //   348: aconst_null
-    //   349: astore 4
-    //   351: aload 4
-    //   353: astore_3
-    //   354: aload 5
-    //   356: invokevirtual 215	java/io/IOException:printStackTrace	()V
-    //   359: aload 4
-    //   361: ifnull -66 -> 295
-    //   364: aload 4
-    //   366: invokevirtual 212	java/io/InputStream:close	()V
-    //   369: goto -74 -> 295
-    //   372: astore_3
-    //   373: aload_3
-    //   374: invokevirtual 215	java/io/IOException:printStackTrace	()V
-    //   377: goto -82 -> 295
-    //   380: astore_1
-    //   381: aconst_null
-    //   382: astore_3
-    //   383: aload_3
-    //   384: ifnull +7 -> 391
-    //   387: aload_3
-    //   388: invokevirtual 212	java/io/InputStream:close	()V
-    //   391: aload_1
-    //   392: athrow
-    //   393: astore_3
-    //   394: aload_3
-    //   395: invokevirtual 215	java/io/IOException:printStackTrace	()V
-    //   398: goto -7 -> 391
-    //   401: astore_1
-    //   402: goto -19 -> 383
-    //   405: astore 5
-    //   407: goto -56 -> 351
-    //   410: astore 5
-    //   412: goto -95 -> 317
+    //   214: aload 4
+    //   216: aload 6
+    //   218: aconst_null
+    //   219: aload 7
+    //   221: iconst_1
+    //   222: invokestatic 239	com/tencent/theme/ResourcesFactory:createImageFromResourceStream	(Landroid/content/res/Resources;Landroid/util/TypedValue;Ljava/io/InputStream;Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Rect;Z)Lcom/tencent/theme/BaseConstantState;
+    //   225: astore 5
+    //   227: aload 5
+    //   229: ifnull +82 -> 311
+    //   232: aload 4
+    //   234: astore_3
+    //   235: aload 5
+    //   237: aload_1
+    //   238: invokevirtual 139	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   241: invokevirtual 245	android/graphics/drawable/Drawable$ConstantState:newDrawable	(Landroid/content/res/Resources;)Landroid/graphics/drawable/Drawable;
+    //   244: astore 5
+    //   246: aload 4
+    //   248: astore_3
+    //   249: new 115	java/lang/StringBuilder
+    //   252: dup
+    //   253: invokespecial 116	java/lang/StringBuilder:<init>	()V
+    //   256: astore 6
+    //   258: aload 4
+    //   260: astore_3
+    //   261: aload 6
+    //   263: aload_0
+    //   264: getfield 20	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   267: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   270: pop
+    //   271: aload 4
+    //   273: astore_3
+    //   274: aload 6
+    //   276: iload_2
+    //   277: invokevirtual 123	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   280: pop
+    //   281: aload 4
+    //   283: astore_3
+    //   284: aload_0
+    //   285: aload 6
+    //   287: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   290: aload 5
+    //   292: invokespecial 247	com/tencent/mobileqq/theme/ListenTogetherTheme/SkinDrawable:a	(Ljava/lang/String;Landroid/graphics/drawable/Drawable;)V
+    //   295: aload 4
+    //   297: invokevirtual 208	java/io/InputStream:close	()V
+    //   300: aload 5
+    //   302: areturn
+    //   303: astore_1
+    //   304: aload_1
+    //   305: invokevirtual 211	java/io/IOException:printStackTrace	()V
+    //   308: aload 5
+    //   310: areturn
+    //   311: aload 4
+    //   313: invokevirtual 208	java/io/InputStream:close	()V
+    //   316: goto +98 -> 414
+    //   319: astore 5
+    //   321: goto +19 -> 340
+    //   324: astore 5
+    //   326: goto +40 -> 366
+    //   329: astore_1
+    //   330: aconst_null
+    //   331: astore_3
+    //   332: goto +64 -> 396
+    //   335: astore 5
+    //   337: aconst_null
+    //   338: astore 4
+    //   340: aload 4
+    //   342: astore_3
+    //   343: aload 5
+    //   345: invokevirtual 211	java/io/IOException:printStackTrace	()V
+    //   348: aload 4
+    //   350: ifnull +64 -> 414
+    //   353: aload 4
+    //   355: invokevirtual 208	java/io/InputStream:close	()V
+    //   358: goto +56 -> 414
+    //   361: astore 5
+    //   363: aconst_null
+    //   364: astore 4
+    //   366: aload 4
+    //   368: astore_3
+    //   369: aload 5
+    //   371: invokevirtual 248	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   374: aload 4
+    //   376: ifnull +38 -> 414
+    //   379: aload 4
+    //   381: invokevirtual 208	java/io/InputStream:close	()V
+    //   384: goto +30 -> 414
+    //   387: astore_3
+    //   388: aload_3
+    //   389: invokevirtual 211	java/io/IOException:printStackTrace	()V
+    //   392: goto +22 -> 414
+    //   395: astore_1
+    //   396: aload_3
+    //   397: ifnull +15 -> 412
+    //   400: aload_3
+    //   401: invokevirtual 208	java/io/InputStream:close	()V
+    //   404: goto +8 -> 412
+    //   407: astore_3
+    //   408: aload_3
+    //   409: invokevirtual 211	java/io/IOException:printStackTrace	()V
+    //   412: aload_1
+    //   413: athrow
+    //   414: aload_1
+    //   415: invokevirtual 139	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   418: iload_2
+    //   419: invokevirtual 252	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
+    //   422: areturn
+    //   423: aload_1
+    //   424: invokevirtual 139	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   427: iload_2
+    //   428: invokevirtual 252	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
+    //   431: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	415	0	this	SkinDrawable
-    //   0	415	1	paramContext	Context
-    //   0	415	2	paramInt	int
-    //   0	415	3	paramString	String
-    //   53	312	4	localObject1	Object
-    //   78	205	5	localObject2	Object
-    //   312	9	5	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   346	9	5	localIOException1	java.io.IOException
-    //   405	1	5	localIOException2	java.io.IOException
-    //   410	1	5	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   99	103	6	str	String
-    //   160	45	7	localRect	android.graphics.Rect
+    //   0	432	0	this	SkinDrawable
+    //   0	432	1	paramContext	Context
+    //   0	432	2	paramInt	int
+    //   0	432	3	paramString	String
+    //   27	353	4	localObject1	Object
+    //   80	229	5	localObject2	Object
+    //   319	1	5	localIOException1	java.io.IOException
+    //   324	1	5	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   335	9	5	localIOException2	java.io.IOException
+    //   361	9	5	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   101	185	6	localObject3	Object
+    //   175	45	7	localRect	android.graphics.Rect
     // Exception table:
     //   from	to	target	type
-    //   269	274	277	java/io/IOException
-    //   290	295	304	java/io/IOException
-    //   162	179	312	java/lang/OutOfMemoryError
-    //   330	335	338	java/io/IOException
-    //   162	179	346	java/io/IOException
-    //   364	369	372	java/io/IOException
-    //   162	179	380	finally
-    //   387	391	393	java/io/IOException
-    //   182	190	401	finally
-    //   193	212	401	finally
-    //   220	231	401	finally
-    //   234	261	401	finally
-    //   320	325	401	finally
-    //   354	359	401	finally
-    //   182	190	405	java/io/IOException
-    //   193	212	405	java/io/IOException
-    //   220	231	405	java/io/IOException
-    //   234	261	405	java/io/IOException
-    //   182	190	410	java/lang/OutOfMemoryError
-    //   193	212	410	java/lang/OutOfMemoryError
-    //   220	231	410	java/lang/OutOfMemoryError
-    //   234	261	410	java/lang/OutOfMemoryError
+    //   295	300	303	java/io/IOException
+    //   197	205	319	java/io/IOException
+    //   208	227	319	java/io/IOException
+    //   235	246	319	java/io/IOException
+    //   249	258	319	java/io/IOException
+    //   261	271	319	java/io/IOException
+    //   274	281	319	java/io/IOException
+    //   284	295	319	java/io/IOException
+    //   197	205	324	java/lang/OutOfMemoryError
+    //   208	227	324	java/lang/OutOfMemoryError
+    //   235	246	324	java/lang/OutOfMemoryError
+    //   249	258	324	java/lang/OutOfMemoryError
+    //   261	271	324	java/lang/OutOfMemoryError
+    //   274	281	324	java/lang/OutOfMemoryError
+    //   284	295	324	java/lang/OutOfMemoryError
+    //   177	194	329	finally
+    //   177	194	335	java/io/IOException
+    //   177	194	361	java/lang/OutOfMemoryError
+    //   311	316	387	java/io/IOException
+    //   353	358	387	java/io/IOException
+    //   379	384	387	java/io/IOException
+    //   197	205	395	finally
+    //   208	227	395	finally
+    //   235	246	395	finally
+    //   249	258	395	finally
+    //   261	271	395	finally
+    //   274	281	395	finally
+    //   284	295	395	finally
+    //   343	348	395	finally
+    //   369	374	395	finally
+    //   400	404	407	java/io/IOException
   }
   
   public StateListDrawable a(Context paramContext, int paramInt1, int paramInt2)
@@ -815,19 +883,24 @@ public class SkinDrawable
   
   protected String a(String paramString)
   {
-    return this.jdField_a_of_type_JavaLangString + "/anim/" + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("/anim/");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   protected void a(View paramView, int paramInt1, int paramInt2)
   {
     View localView = paramView.findViewById(paramInt1);
-    if ((localView instanceof TextView)) {
+    if ((localView instanceof TextView))
+    {
       ((TextView)localView).setTextColor(a(paramView.getContext(), paramInt2));
-    }
-    while (!(localView instanceof SingleLineTextView)) {
       return;
     }
-    ((SingleLineTextView)localView).setTextColor(a(paramView.getContext(), paramInt2));
+    if ((localView instanceof SingleLineTextView)) {
+      ((SingleLineTextView)localView).setTextColor(a(paramView.getContext(), paramInt2));
+    }
   }
   
   protected void a(View paramView, int paramInt1, int paramInt2, int paramInt3)
@@ -877,35 +950,50 @@ public class SkinDrawable
   
   protected Drawable b(Context paramContext, int paramInt)
   {
-    if ((!m_()) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      return paramContext.getResources().getDrawable(paramInt);
-    }
-    Object localObject1 = a(this.jdField_a_of_type_JavaLangString + paramInt);
-    if ((localObject1 != null) && ((localObject1 instanceof Drawable))) {
-      return (Drawable)localObject1;
-    }
-    localObject1 = a();
-    paramContext.getResources().getValue(paramInt, (TypedValue)localObject1, true);
-    Object localObject2 = (String)((TypedValue)localObject1).string;
-    a((TypedValue)localObject1);
-    if (localObject2 != null)
+    if ((n_()) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
     {
-      localObject1 = this.jdField_a_of_type_JavaLangString + "/drawable-xxhdpi/" + ((String)localObject2).substring(((String)localObject2).lastIndexOf("/") + 1);
-      if (new File((String)localObject1).exists())
-      {
-        localObject2 = new BitmapFactory.Options();
-        ((BitmapFactory.Options)localObject2).inDensity = 480;
-        ((BitmapFactory.Options)localObject2).inTargetDensity = paramContext.getResources().getDisplayMetrics().densityDpi;
-        BitmapManager.BitmapDecodeResult localBitmapDecodeResult = new BitmapManager.BitmapDecodeResult();
-        BitmapManager.a((String)localObject1, (BitmapFactory.Options)localObject2, localBitmapDecodeResult);
-        if (localBitmapDecodeResult.jdField_a_of_type_Int == 0)
-        {
-          paramContext = new ChatBackgroundDrawable(paramContext.getResources(), localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap);
-          a(this.jdField_a_of_type_JavaLangString + paramInt, paramContext);
-          return paramContext;
-        }
-        QLog.e("SkinDrawable", 1, (String)localObject1 + " decodeFail: " + localBitmapDecodeResult.jdField_a_of_type_Int);
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(paramInt);
+      localObject1 = a(((StringBuilder)localObject1).toString());
+      if ((localObject1 != null) && ((localObject1 instanceof Drawable))) {
+        return (Drawable)localObject1;
       }
+      Object localObject2 = a();
+      paramContext.getResources().getValue(paramInt, (TypedValue)localObject2, true);
+      localObject1 = (String)((TypedValue)localObject2).string;
+      a((TypedValue)localObject2);
+      if (localObject1 != null)
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append("/drawable-xxhdpi/");
+        ((StringBuilder)localObject2).append(((String)localObject1).substring(((String)localObject1).lastIndexOf("/") + 1));
+        localObject1 = ((StringBuilder)localObject2).toString();
+        if (new File((String)localObject1).exists())
+        {
+          Object localObject3 = new BitmapFactory.Options();
+          ((BitmapFactory.Options)localObject3).inDensity = 480;
+          ((BitmapFactory.Options)localObject3).inTargetDensity = paramContext.getResources().getDisplayMetrics().densityDpi;
+          localObject2 = new BitmapManager.BitmapDecodeResult();
+          BitmapManager.a((String)localObject1, (BitmapFactory.Options)localObject3, (BitmapManager.BitmapDecodeResult)localObject2);
+          if (((BitmapManager.BitmapDecodeResult)localObject2).jdField_a_of_type_Int == 0)
+          {
+            paramContext = new ChatBackgroundDrawable(paramContext.getResources(), ((BitmapManager.BitmapDecodeResult)localObject2).jdField_a_of_type_AndroidGraphicsBitmap);
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject1).append(paramInt);
+            a(((StringBuilder)localObject1).toString(), paramContext);
+            return paramContext;
+          }
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append((String)localObject1);
+          ((StringBuilder)localObject3).append(" decodeFail: ");
+          ((StringBuilder)localObject3).append(((BitmapManager.BitmapDecodeResult)localObject2).jdField_a_of_type_Int);
+          QLog.e("SkinDrawable", 1, ((StringBuilder)localObject3).toString());
+        }
+      }
+      return paramContext.getResources().getDrawable(paramInt);
     }
     return paramContext.getResources().getDrawable(paramInt);
   }
@@ -934,14 +1022,14 @@ public class SkinDrawable
     }
   }
   
-  public boolean m_()
+  public boolean n_()
   {
     return (this.jdField_a_of_type_Boolean) && (this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.theme.ListenTogetherTheme.SkinDrawable
  * JD-Core Version:    0.7.0.1
  */

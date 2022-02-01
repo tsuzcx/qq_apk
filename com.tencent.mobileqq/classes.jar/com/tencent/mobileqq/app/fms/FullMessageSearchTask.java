@@ -64,112 +64,145 @@ public class FullMessageSearchTask
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageProxy(paramRecentUser.getType()).a(paramString);
         paramString = (FullMessageSearchResult.SearchResultItem)paramString.b;
         long l2 = SystemClock.uptimeMillis();
-        if ((this.c == 2) || (this.c == 3)) {
+        if ((this.c != 2) && (this.c != 3))
+        {
+          SearchCostStatistics localSearchCostStatistics = this.jdField_a_of_type_ComTencentMobileqqAppFmsSearchCostStatistics;
+          localSearchCostStatistics.b += 1;
+          localSearchCostStatistics = this.jdField_a_of_type_ComTencentMobileqqAppFmsSearchCostStatistics;
+          localSearchCostStatistics.jdField_a_of_type_Long += l2 - l1;
+          if ((paramString != null) && (((paramString.secondPageList != null) && (paramString.secondPageList.size() > 0)) || ((paramString.secondPageMessageUniseq != null) && (paramString.secondPageMessageUniseq.size() > 0))))
+          {
+            paramString.user = paramRecentUser;
+            paramString.lastMessage = paramMessage;
+            paramList.add(paramList.size(), paramString);
+          }
+        }
+        else
+        {
           return new Pair(Boolean.valueOf(true), Integer.valueOf(2));
         }
-        SearchCostStatistics localSearchCostStatistics = this.jdField_a_of_type_ComTencentMobileqqAppFmsSearchCostStatistics;
-        localSearchCostStatistics.b += 1;
-        localSearchCostStatistics = this.jdField_a_of_type_ComTencentMobileqqAppFmsSearchCostStatistics;
-        localSearchCostStatistics.jdField_a_of_type_Long = (l2 - l1 + localSearchCostStatistics.jdField_a_of_type_Long);
-        if ((paramString != null) && (((paramString.secondPageList != null) && (paramString.secondPageList.size() > 0)) || ((paramString.secondPageMessageUniseq != null) && (paramString.secondPageMessageUniseq.size() > 0))))
-        {
-          paramString.user = paramRecentUser;
-          paramString.lastMessage = paramMessage;
-          paramList.add(paramList.size(), paramString);
-        }
       }
-      if ((this.b == 0) && (SystemClock.uptimeMillis() - paramLong > SearchStrategy.c))
+      int i = this.b;
+      if ((i == 0) && (SystemClock.uptimeMillis() - paramLong > SearchStrategy.c))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.FullMessageSearchTask", 2, "queryHistroyByUser timeout! " + SearchStrategy.c);
+        if (QLog.isColorLevel())
+        {
+          paramString = new StringBuilder();
+          paramString.append("queryHistroyByUser timeout! ");
+          paramString.append(SearchStrategy.c);
+          QLog.d("Q.msg.FullMessageSearchTask", 2, paramString.toString());
         }
-        paramString = new Pair(Boolean.valueOf(true), Integer.valueOf(3));
-        return paramString;
+        return new Pair(Boolean.valueOf(true), Integer.valueOf(3));
       }
+      if (SystemClock.uptimeMillis() - paramLong > SearchStrategy.b)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramString = new StringBuilder();
+          paramString.append("queryHistroyByUser timeout! ");
+          paramString.append(SearchStrategy.b);
+          QLog.d("Q.msg.FullMessageSearchTask", 2, paramString.toString());
+        }
+        return new Pair(Boolean.valueOf(true), Integer.valueOf(3));
+      }
+      paramString = new Pair(Boolean.valueOf(false), Integer.valueOf(0));
+      return paramString;
     }
     catch (OutOfMemoryError paramString)
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.msg.FullMessageSearchTask", 2, "queryHistroyByUser oom!");
-      }
-      return new Pair(Boolean.valueOf(true), Integer.valueOf(3));
+      label376:
+      break label376;
     }
-    if (SystemClock.uptimeMillis() - paramLong > SearchStrategy.b)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.FullMessageSearchTask", 2, "queryHistroyByUser timeout! " + SearchStrategy.b);
-      }
-      return new Pair(Boolean.valueOf(true), Integer.valueOf(3));
+    if (QLog.isColorLevel()) {
+      QLog.w("Q.msg.FullMessageSearchTask", 2, "queryHistroyByUser oom!");
     }
-    paramString = new Pair(Boolean.valueOf(false), Integer.valueOf(0));
-    return paramString;
+    return new Pair(Boolean.valueOf(true), Integer.valueOf(3));
   }
   
   private FullMessageSearchResult a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.FullMessageSearchTask", 2, "startTask " + this);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("startTask ");
+      ((StringBuilder)localObject1).append(this);
+      QLog.d("Q.msg.FullMessageSearchTask", 2, ((StringBuilder)localObject1).toString());
     }
     a(paramInt);
-    if ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString.trim().length() == 0))
+    Object localObject1 = this.jdField_a_of_type_JavaLangString;
+    if ((localObject1 != null) && (((String)localObject1).trim().length() != 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.FullMessageSearchTask", 2, "queryAllHistroyByKey key is null!");
+      long l = SystemClock.uptimeMillis();
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().a(false);
+      if (localObject1 == null)
+      {
+        QLog.e("Q.msg.FullMessageSearchTask", 1, "userList is null!");
+        return null;
       }
-      return null;
-    }
-    long l = SystemClock.uptimeMillis();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().a(false);
-    if (localObject == null)
-    {
-      QLog.e("Q.msg.FullMessageSearchTask", 1, "userList is null!");
-      return null;
-    }
-    Iterator localIterator = ((List)localObject).iterator();
-    while (localIterator.hasNext())
-    {
-      RecentUser localRecentUser = (RecentUser)localIterator.next();
-      if ((localRecentUser.getType() != 0) && (localRecentUser.getType() != 1) && (localRecentUser.getType() != 3000)) {
-        localIterator.remove();
+      Object localObject2 = ((List)localObject1).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        RecentUser localRecentUser = (RecentUser)((Iterator)localObject2).next();
+        if ((localRecentUser.getType() != 0) && (localRecentUser.getType() != 1) && (localRecentUser.getType() != 3000)) {
+          ((Iterator)localObject2).remove();
+        }
       }
-    }
-    Collections.sort((List)localObject, new FullMessageSearchTask.1(this));
-    this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject);
-    localObject = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    if (localObject != null)
-    {
-      localObject = ((FriendsManager)localObject).b();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.FullMessageSearchTask", 2, "friends size = " + ((List)localObject).size());
+      Collections.sort((List)localObject1, new FullMessageSearchTask.1(this));
+      this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject1);
+      localObject1 = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      if (localObject1 != null) {
+        localObject1 = ((FriendsManager)localObject1).b();
+      } else {
+        localObject1 = new ArrayList();
       }
-      this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject);
-      localObject = ((DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.FullMessageSearchTask", 2, "discussions size = " + ((List)localObject).size());
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("friends size = ");
+        ((StringBuilder)localObject2).append(((List)localObject1).size());
+        QLog.d("Q.msg.FullMessageSearchTask", 2, ((StringBuilder)localObject2).toString());
       }
-      this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject);
-      localObject = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-      if (localObject == null) {
-        break label443;
+      this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject1);
+      localObject1 = ((DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a();
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("discussions size = ");
+        ((StringBuilder)localObject2).append(((List)localObject1).size());
+        QLog.d("Q.msg.FullMessageSearchTask", 2, ((StringBuilder)localObject2).toString());
       }
-    }
-    label443:
-    for (localObject = ((TroopManager)localObject).b();; localObject = new ArrayList())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.FullMessageSearchTask", 2, "troops size = " + ((List)localObject).size());
+      this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject1);
+      localObject1 = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+      if (localObject1 != null) {
+        localObject1 = ((TroopManager)localObject1).b();
+      } else {
+        localObject1 = new ArrayList();
       }
-      this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject);
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("troops size = ");
+        ((StringBuilder)localObject2).append(((List)localObject1).size());
+        QLog.d("Q.msg.FullMessageSearchTask", 2, ((StringBuilder)localObject2).toString());
+      }
+      this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject1);
       return a(l);
-      localObject = new ArrayList();
-      break;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.FullMessageSearchTask", 2, "queryAllHistroyByKey key is null!");
+    }
+    return null;
   }
   
   private FullMessageSearchResult a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.FullMessageSearchTask", 2, "queryAllHistroyByKey ,task=" + this);
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("queryAllHistroyByKey ,task=");
+      ((StringBuilder)localObject1).append(this);
+      QLog.d("Q.msg.FullMessageSearchTask", 2, ((StringBuilder)localObject1).toString());
     }
     if (this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult == null) {
       this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult = new FullMessageSearchResult();
@@ -177,188 +210,145 @@ public class FullMessageSearchTask
     if (this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult.jdField_a_of_type_JavaUtilList == null) {
       this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult.jdField_a_of_type_JavaUtilList = new ArrayList();
     }
-    Object localObject3;
-    Object localObject2;
-    label129:
-    label331:
-    long l;
-    StatisticCollector localStatisticCollector;
-    if (this.jdField_a_of_type_Int < this.jdField_a_of_type_JavaUtilList.size())
+    while (this.jdField_a_of_type_Int < this.jdField_a_of_type_JavaUtilList.size())
     {
-      localObject3 = this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int);
-      localObject2 = new RecentUser();
-      if ((localObject3 instanceof RecentUser))
+      Object localObject2 = this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int);
+      localObject1 = new RecentUser();
+      if ((localObject2 instanceof RecentUser))
       {
-        localObject1 = (RecentUser)localObject3;
-        localObject2 = UinTypeUtil.a(((RecentUser)localObject1).uin, ((RecentUser)localObject1).getType());
-        if (!this.jdField_a_of_type_JavaUtilSet.contains(localObject2)) {
-          break label331;
-        }
+        localObject1 = (RecentUser)localObject2;
       }
-      do
+      else if ((localObject2 instanceof Friends))
       {
-        this.jdField_a_of_type_Int += 1;
-        break;
-        if ((localObject3 instanceof Friends))
-        {
-          localObject1 = (Friends)localObject3;
-          ((RecentUser)localObject2).uin = ((Friends)localObject1).uin;
-          ((RecentUser)localObject2).setType(0);
-          ((RecentUser)localObject2).displayName = ((Friends)localObject1).getFriendNickWithAlias();
-          localObject1 = localObject2;
-          break label129;
-        }
-        if ((localObject3 instanceof DiscussionInfo))
-        {
-          localObject1 = (DiscussionInfo)localObject3;
-          ((RecentUser)localObject2).uin = ((DiscussionInfo)localObject1).uin;
-          ((RecentUser)localObject2).setType(3000);
-          ((RecentUser)localObject2).displayName = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getApplication(), ((DiscussionInfo)localObject1).uin);
-          localObject1 = localObject2;
-          break label129;
-        }
-        localObject1 = localObject2;
-        if (!(localObject3 instanceof TroopInfo)) {
-          break label129;
-        }
-        localObject1 = (TroopInfo)localObject3;
-        ((RecentUser)localObject2).uin = ((TroopInfo)localObject1).troopuin;
-        ((RecentUser)localObject2).setType(1);
-        ((RecentUser)localObject2).displayName = ((TroopInfo)localObject1).troopname;
-        localObject1 = localObject2;
-        break label129;
+        localObject2 = (Friends)localObject2;
+        ((RecentUser)localObject1).uin = ((Friends)localObject2).uin;
+        ((RecentUser)localObject1).setType(0);
+        ((RecentUser)localObject1).displayName = ((Friends)localObject2).getFriendNickWithAlias();
+      }
+      else if ((localObject2 instanceof DiscussionInfo))
+      {
+        localObject2 = (DiscussionInfo)localObject2;
+        ((RecentUser)localObject1).uin = ((DiscussionInfo)localObject2).uin;
+        ((RecentUser)localObject1).setType(3000);
+        ((RecentUser)localObject1).displayName = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getApplication(), ((DiscussionInfo)localObject2).uin);
+      }
+      else if ((localObject2 instanceof TroopInfo))
+      {
+        localObject2 = (TroopInfo)localObject2;
+        ((RecentUser)localObject1).uin = ((TroopInfo)localObject2).troopuin;
+        ((RecentUser)localObject1).setType(1);
+        ((RecentUser)localObject1).displayName = ((TroopInfo)localObject2).troopname;
+      }
+      localObject2 = UinTypeUtil.a(((RecentUser)localObject1).uin, ((RecentUser)localObject1).getType());
+      if (!this.jdField_a_of_type_JavaUtilSet.contains(localObject2))
+      {
         this.jdField_a_of_type_JavaUtilSet.add(localObject2);
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().c(((RecentUser)localObject1).uin, ((RecentUser)localObject1).getType());
-        if (localObject2 != null) {
-          break label813;
+        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(((RecentUser)localObject1).uin, ((RecentUser)localObject1).getType());
+        long l;
+        if (localObject2 == null) {
+          l = 0L;
+        } else {
+          l = ((Message)localObject2).time;
         }
-        l = 0L;
         ((RecentUser)localObject1).lastmsgtime = l;
         int i = this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult.jdField_a_of_type_JavaUtilList.size();
         localObject2 = a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult.jdField_a_of_type_JavaUtilList, (RecentUser)localObject1, paramLong, (Message)localObject2);
         if (this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult.jdField_a_of_type_JavaUtilList.size() != i) {
           this.jdField_a_of_type_ComTencentMobileqqAppFmsSearchListener.a(this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult);
         }
-      } while (!((Boolean)((Pair)localObject2).first).booleanValue());
-      if (((Integer)((Pair)localObject2).second).intValue() == 3)
-      {
-        a();
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.FullMessageSearchTask", 2, "finish search scs=" + this.jdField_a_of_type_ComTencentMobileqqAppFmsSearchCostStatistics.toString() + ",searchType=" + this.b + ",searchStatus=" + this.c + ",searchFinFlag=" + ((Pair)localObject2).second);
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqAppFmsSearchCostStatistics.jdField_a_of_type_Int > 0)
+        if (((Boolean)((Pair)localObject2).first).booleanValue())
         {
-          localObject3 = new HashMap();
-          ((HashMap)localObject3).put("queryMessageSize", Integer.toString(this.jdField_a_of_type_ComTencentMobileqqAppFmsSearchCostStatistics.jdField_a_of_type_Int));
-          ((HashMap)localObject3).put("queryConversationSize", Integer.toString(this.jdField_a_of_type_ComTencentMobileqqAppFmsSearchCostStatistics.b));
-          ((HashMap)localObject3).put("resultSize", Integer.toString(this.jdField_a_of_type_ComTencentMobileqqAppFmsSearchCostStatistics.c));
-          ((HashMap)localObject3).put("keyLength", Integer.toString(this.jdField_a_of_type_JavaLangString.length()));
-          localStatisticCollector = StatisticCollector.getInstance(BaseApplication.getContext());
-          if (this.b != 1) {
-            break label823;
+          if (((Integer)((Pair)localObject2).second).intValue() == 3)
+          {
+            a();
+            if (QLog.isColorLevel())
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("finish search scs=");
+              ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqAppFmsSearchCostStatistics.toString());
+              ((StringBuilder)localObject1).append(",searchType=");
+              ((StringBuilder)localObject1).append(this.b);
+              ((StringBuilder)localObject1).append(",searchStatus=");
+              ((StringBuilder)localObject1).append(this.c);
+              ((StringBuilder)localObject1).append(",searchFinFlag=");
+              ((StringBuilder)localObject1).append(((Pair)localObject2).second);
+              QLog.d("Q.msg.FullMessageSearchTask", 2, ((StringBuilder)localObject1).toString());
+            }
+            if (this.jdField_a_of_type_ComTencentMobileqqAppFmsSearchCostStatistics.jdField_a_of_type_Int > 0)
+            {
+              HashMap localHashMap = new HashMap();
+              localHashMap.put("queryMessageSize", Integer.toString(this.jdField_a_of_type_ComTencentMobileqqAppFmsSearchCostStatistics.jdField_a_of_type_Int));
+              localHashMap.put("queryConversationSize", Integer.toString(this.jdField_a_of_type_ComTencentMobileqqAppFmsSearchCostStatistics.b));
+              localHashMap.put("resultSize", Integer.toString(this.jdField_a_of_type_ComTencentMobileqqAppFmsSearchCostStatistics.c));
+              localHashMap.put("keyLength", Integer.toString(this.jdField_a_of_type_JavaLangString.length()));
+              StatisticCollector localStatisticCollector = StatisticCollector.getInstance(BaseApplication.getContext());
+              if (this.b == 1) {
+                localObject1 = "SearchMessageStatistic";
+              } else {
+                localObject1 = "RecentSearchStatistic";
+              }
+              localStatisticCollector.collectPerformance(null, (String)localObject1, false, this.jdField_a_of_type_ComTencentMobileqqAppFmsSearchCostStatistics.jdField_a_of_type_Long, 0L, localHashMap, null);
+            }
           }
+          this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult.jdField_a_of_type_Int = ((Integer)((Pair)localObject2).second).intValue();
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("pause ");
+          ((StringBuilder)localObject1).append(this);
+          QLog.d("Q.msg.FullMessageSearchTask", 2, ((StringBuilder)localObject1).toString());
+          break;
         }
       }
+      this.jdField_a_of_type_Int += 1;
     }
-    label813:
-    label823:
-    for (Object localObject1 = "SearchMessageStatistic";; localObject1 = "RecentSearchStatistic")
+    if (QLog.isColorLevel())
     {
-      localStatisticCollector.collectPerformance(null, (String)localObject1, false, this.jdField_a_of_type_ComTencentMobileqqAppFmsSearchCostStatistics.jdField_a_of_type_Long, 0L, (HashMap)localObject3, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult.jdField_a_of_type_Int = ((Integer)((Pair)localObject2).second).intValue();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.FullMessageSearchTask", 2, "pause " + this);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.FullMessageSearchTask", 2, "queryAllHistroyByKey search result=" + this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult.toString());
-      }
-      if ((this.c != 2) && (this.c != 3))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult.jdField_a_of_type_Int = 1;
-        b(1);
-      }
-      return this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult;
-      l = ((Message)localObject2).time;
-      break;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("queryAllHistroyByKey search result=");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult.toString());
+      QLog.d("Q.msg.FullMessageSearchTask", 2, ((StringBuilder)localObject1).toString());
     }
+    if ((this.c != 2) && (this.c != 3))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult.jdField_a_of_type_Int = 1;
+      b(1);
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult;
   }
   
-  /* Error */
   public FullMessageSearchResult a()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: invokestatic 147	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   5: ifeq +29 -> 34
-    //   8: ldc 149
-    //   10: iconst_2
-    //   11: new 151	java/lang/StringBuilder
-    //   14: dup
-    //   15: invokespecial 152	java/lang/StringBuilder:<init>	()V
-    //   18: ldc_w 440
-    //   21: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   24: aload_0
-    //   25: invokevirtual 183	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   28: invokevirtual 165	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   31: invokestatic 169	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   34: aload_0
-    //   35: getfield 39	com/tencent/mobileqq/app/fms/FullMessageSearchTask:c	I
-    //   38: ifne +12 -> 50
-    //   41: aload_0
-    //   42: invokevirtual 442	com/tencent/mobileqq/app/fms/FullMessageSearchTask:c	()Lcom/tencent/mobileqq/app/fms/FullMessageSearchResult;
-    //   45: astore_1
-    //   46: aload_0
-    //   47: monitorexit
-    //   48: aload_1
-    //   49: areturn
-    //   50: aload_0
-    //   51: getfield 39	com/tencent/mobileqq/app/fms/FullMessageSearchTask:c	I
-    //   54: iconst_2
-    //   55: if_icmpeq +11 -> 66
-    //   58: aload_0
-    //   59: getfield 39	com/tencent/mobileqq/app/fms/FullMessageSearchTask:c	I
-    //   62: iconst_1
-    //   63: if_icmpne +24 -> 87
-    //   66: aload_0
-    //   67: iconst_1
-    //   68: putfield 39	com/tencent/mobileqq/app/fms/FullMessageSearchTask:c	I
-    //   71: aload_0
-    //   72: iconst_1
-    //   73: putfield 37	com/tencent/mobileqq/app/fms/FullMessageSearchTask:b	I
-    //   76: aload_0
-    //   77: invokestatic 67	android/os/SystemClock:uptimeMillis	()J
-    //   80: invokespecial 282	com/tencent/mobileqq/app/fms/FullMessageSearchTask:a	(J)Lcom/tencent/mobileqq/app/fms/FullMessageSearchResult;
-    //   83: astore_1
-    //   84: goto -38 -> 46
-    //   87: aload_0
-    //   88: getfield 39	com/tencent/mobileqq/app/fms/FullMessageSearchTask:c	I
-    //   91: iconst_3
-    //   92: if_icmpne +11 -> 103
-    //   95: aload_0
-    //   96: getfield 286	com/tencent/mobileqq/app/fms/FullMessageSearchTask:jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult	Lcom/tencent/mobileqq/app/fms/FullMessageSearchResult;
-    //   99: astore_1
-    //   100: goto -54 -> 46
-    //   103: aconst_null
-    //   104: astore_1
-    //   105: goto -59 -> 46
-    //   108: astore_1
-    //   109: aload_0
-    //   110: monitorexit
-    //   111: aload_1
-    //   112: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	113	0	this	FullMessageSearchTask
-    //   45	60	1	localFullMessageSearchResult	FullMessageSearchResult
-    //   108	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	34	108	finally
-    //   34	46	108	finally
-    //   50	66	108	finally
-    //   66	84	108	finally
-    //   87	100	108	finally
+    try
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("resume ");
+        ((StringBuilder)localObject1).append(this);
+        QLog.d("Q.msg.FullMessageSearchTask", 2, ((StringBuilder)localObject1).toString());
+      }
+      if (this.c == 0)
+      {
+        localObject1 = c();
+        return localObject1;
+      }
+      if ((this.c != 2) && (this.c != 1))
+      {
+        if (this.c == 3)
+        {
+          localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult;
+          return localObject1;
+        }
+        return null;
+      }
+      this.c = 1;
+      this.b = 1;
+      Object localObject1 = a(SystemClock.uptimeMillis());
+      return localObject1;
+    }
+    finally {}
   }
   
   public void a()
@@ -391,70 +381,31 @@ public class FullMessageSearchTask
     }
   }
   
-  /* Error */
   public FullMessageSearchResult b()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: invokestatic 147	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   5: ifeq +29 -> 34
-    //   8: ldc 149
-    //   10: iconst_2
-    //   11: new 151	java/lang/StringBuilder
-    //   14: dup
-    //   15: invokespecial 152	java/lang/StringBuilder:<init>	()V
-    //   18: ldc_w 448
-    //   21: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   24: aload_0
-    //   25: invokevirtual 183	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   28: invokevirtual 165	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   31: invokestatic 169	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   34: aload_0
-    //   35: getfield 39	com/tencent/mobileqq/app/fms/FullMessageSearchTask:c	I
-    //   38: iconst_2
-    //   39: if_icmpeq +11 -> 50
-    //   42: aload_0
-    //   43: getfield 39	com/tencent/mobileqq/app/fms/FullMessageSearchTask:c	I
-    //   46: iconst_1
-    //   47: if_icmpne +12 -> 59
-    //   50: aload_0
-    //   51: invokevirtual 450	com/tencent/mobileqq/app/fms/FullMessageSearchTask:a	()Lcom/tencent/mobileqq/app/fms/FullMessageSearchResult;
-    //   54: astore_1
-    //   55: aload_0
-    //   56: monitorexit
-    //   57: aload_1
-    //   58: areturn
-    //   59: aload_0
-    //   60: getfield 39	com/tencent/mobileqq/app/fms/FullMessageSearchTask:c	I
-    //   63: iconst_3
-    //   64: if_icmpne +11 -> 75
-    //   67: aload_0
-    //   68: getfield 286	com/tencent/mobileqq/app/fms/FullMessageSearchTask:jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult	Lcom/tencent/mobileqq/app/fms/FullMessageSearchResult;
-    //   71: astore_1
-    //   72: goto -17 -> 55
-    //   75: aload_0
-    //   76: iconst_0
-    //   77: invokespecial 452	com/tencent/mobileqq/app/fms/FullMessageSearchTask:a	(I)Lcom/tencent/mobileqq/app/fms/FullMessageSearchResult;
-    //   80: astore_1
-    //   81: goto -26 -> 55
-    //   84: astore_1
-    //   85: aload_0
-    //   86: monitorexit
-    //   87: aload_1
-    //   88: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	89	0	this	FullMessageSearchTask
-    //   54	27	1	localFullMessageSearchResult	FullMessageSearchResult
-    //   84	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	34	84	finally
-    //   34	50	84	finally
-    //   50	55	84	finally
-    //   59	72	84	finally
-    //   75	81	84	finally
+    try
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("startRecentSearch ");
+        ((StringBuilder)localObject1).append(this);
+        QLog.d("Q.msg.FullMessageSearchTask", 2, ((StringBuilder)localObject1).toString());
+      }
+      if ((this.c != 2) && (this.c != 1))
+      {
+        if (this.c == 3)
+        {
+          localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult;
+          return localObject1;
+        }
+        localObject1 = a(0);
+        return localObject1;
+      }
+      Object localObject1 = a();
+      return localObject1;
+    }
+    finally {}
   }
   
   public void b(int paramInt)
@@ -469,8 +420,19 @@ public class FullMessageSearchTask
         if (this.c == 1) {
           this.c = 3;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.FullMessageSearchTask", 2, "finish search scs=" + this.jdField_a_of_type_ComTencentMobileqqAppFmsSearchCostStatistics.toString() + ",searchType=" + this.b + ",searchStatus=" + this.c + ",searchFinFlag=" + paramInt);
+        Object localObject1;
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("finish search scs=");
+          ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqAppFmsSearchCostStatistics.toString());
+          ((StringBuilder)localObject1).append(",searchType=");
+          ((StringBuilder)localObject1).append(this.b);
+          ((StringBuilder)localObject1).append(",searchStatus=");
+          ((StringBuilder)localObject1).append(this.c);
+          ((StringBuilder)localObject1).append(",searchFinFlag=");
+          ((StringBuilder)localObject1).append(paramInt);
+          QLog.d("Q.msg.FullMessageSearchTask", 2, ((StringBuilder)localObject1).toString());
         }
         if ((this.jdField_a_of_type_ComTencentMobileqqAppFmsSearchCostStatistics.jdField_a_of_type_Int > 0) && (this.c == 3) && (paramInt == 1))
         {
@@ -482,8 +444,8 @@ public class FullMessageSearchTask
           StatisticCollector localStatisticCollector = StatisticCollector.getInstance(BaseApplication.getContext());
           if (this.b == 1)
           {
-            String str1 = "SearchMessageStatistic";
-            localStatisticCollector.collectPerformance(null, str1, true, this.jdField_a_of_type_ComTencentMobileqqAppFmsSearchCostStatistics.jdField_a_of_type_Long, 0L, localHashMap, null);
+            localObject1 = "SearchMessageStatistic";
+            localStatisticCollector.collectPerformance(null, (String)localObject1, true, this.jdField_a_of_type_ComTencentMobileqqAppFmsSearchCostStatistics.jdField_a_of_type_Long, 0L, localHashMap, null);
           }
         }
         else
@@ -491,80 +453,39 @@ public class FullMessageSearchTask
           return;
         }
       }
-      String str2 = "RecentSearchStatistic";
+      String str = "RecentSearchStatistic";
     }
   }
   
-  /* Error */
   public FullMessageSearchResult c()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: invokestatic 147	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   5: ifeq +29 -> 34
-    //   8: ldc 149
-    //   10: iconst_2
-    //   11: new 151	java/lang/StringBuilder
-    //   14: dup
-    //   15: invokespecial 152	java/lang/StringBuilder:<init>	()V
-    //   18: ldc_w 454
-    //   21: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   24: aload_0
-    //   25: invokevirtual 183	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   28: invokevirtual 165	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   31: invokestatic 169	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   34: aload_0
-    //   35: getfield 39	com/tencent/mobileqq/app/fms/FullMessageSearchTask:c	I
-    //   38: ifne +13 -> 51
-    //   41: aload_0
-    //   42: iconst_1
-    //   43: invokespecial 452	com/tencent/mobileqq/app/fms/FullMessageSearchTask:a	(I)Lcom/tencent/mobileqq/app/fms/FullMessageSearchResult;
-    //   46: astore_1
-    //   47: aload_0
-    //   48: monitorexit
-    //   49: aload_1
-    //   50: areturn
-    //   51: aload_0
-    //   52: getfield 39	com/tencent/mobileqq/app/fms/FullMessageSearchTask:c	I
-    //   55: iconst_2
-    //   56: if_icmpeq +11 -> 67
-    //   59: aload_0
-    //   60: getfield 39	com/tencent/mobileqq/app/fms/FullMessageSearchTask:c	I
-    //   63: iconst_1
-    //   64: if_icmpne +11 -> 75
-    //   67: aload_0
-    //   68: invokevirtual 450	com/tencent/mobileqq/app/fms/FullMessageSearchTask:a	()Lcom/tencent/mobileqq/app/fms/FullMessageSearchResult;
-    //   71: astore_1
-    //   72: goto -25 -> 47
-    //   75: aload_0
-    //   76: getfield 39	com/tencent/mobileqq/app/fms/FullMessageSearchTask:c	I
-    //   79: iconst_3
-    //   80: if_icmpne +11 -> 91
-    //   83: aload_0
-    //   84: getfield 286	com/tencent/mobileqq/app/fms/FullMessageSearchTask:jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult	Lcom/tencent/mobileqq/app/fms/FullMessageSearchResult;
-    //   87: astore_1
-    //   88: goto -41 -> 47
-    //   91: aconst_null
-    //   92: astore_1
-    //   93: goto -46 -> 47
-    //   96: astore_1
-    //   97: aload_0
-    //   98: monitorexit
-    //   99: aload_1
-    //   100: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	101	0	this	FullMessageSearchTask
-    //   46	47	1	localFullMessageSearchResult	FullMessageSearchResult
-    //   96	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	34	96	finally
-    //   34	47	96	finally
-    //   51	67	96	finally
-    //   67	72	96	finally
-    //   75	88	96	finally
+    try
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("startAllSearch ");
+        ((StringBuilder)localObject1).append(this);
+        QLog.d("Q.msg.FullMessageSearchTask", 2, ((StringBuilder)localObject1).toString());
+      }
+      if (this.c == 0)
+      {
+        localObject1 = a(1);
+        return localObject1;
+      }
+      if ((this.c != 2) && (this.c != 1))
+      {
+        if (this.c == 3)
+        {
+          localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult;
+          return localObject1;
+        }
+        return null;
+      }
+      Object localObject1 = a();
+      return localObject1;
+    }
+    finally {}
   }
   
   public String toString()
@@ -585,7 +506,7 @@ public class FullMessageSearchTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.fms.FullMessageSearchTask
  * JD-Core Version:    0.7.0.1
  */

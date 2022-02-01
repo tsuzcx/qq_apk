@@ -27,72 +27,64 @@ public class ShareResultDialog
   
   public ShareResultDialog(Context paramContext)
   {
-    super(paramContext, 2131755842);
-    super.setContentView(2131559225);
+    super(paramContext, 2131756189);
+    super.setContentView(2131559105);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     a();
   }
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131379443);
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131379438);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365796));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365802));
-    this.c = ((TextView)super.findViewById(2131379441));
-    ((ImageView)super.findViewById(2131379442)).setColorFilter(-7745469, PorterDuff.Mode.MULTIPLY);
-    this.d = ((TextView)super.findViewById(2131379436));
-    ((ImageView)super.findViewById(2131379437)).setColorFilter(-909794, PorterDuff.Mode.MULTIPLY);
-    this.e = ((TextView)super.findViewById(2131378625));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131378795);
+    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131378790);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365633));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365639));
+    this.c = ((TextView)super.findViewById(2131378793));
+    ((ImageView)super.findViewById(2131378794)).setColorFilter(-7745469, PorterDuff.Mode.MULTIPLY);
+    this.d = ((TextView)super.findViewById(2131378788));
+    ((ImageView)super.findViewById(2131378789)).setColorFilter(-909794, PorterDuff.Mode.MULTIPLY);
+    this.e = ((TextView)super.findViewById(2131378018));
   }
   
   private void b(boolean paramBoolean)
   {
-    int j = 8;
-    QLog.i("ShareToQZone", 2, "width:" + this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams().width);
-    Object localObject;
-    if (paramBoolean)
-    {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("width:");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams().width);
+    QLog.i("ShareToQZone", 2, ((StringBuilder)localObject).toString());
+    int j = 0;
+    if (paramBoolean) {
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      localObject = this.jdField_b_of_type_AndroidViewView;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label126;
-      }
-      i = 8;
-      label65:
-      ((View)localObject).setVisibility(i);
-      localObject = this.jdField_a_of_type_AndroidViewView;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label131;
-      }
-      i = 0;
-      label86:
-      ((View)localObject).setVisibility(i);
-      localObject = this.e;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label137;
-      }
-    }
-    label131:
-    label137:
-    for (int i = j;; i = 0)
-    {
-      ((TextView)localObject).setVisibility(i);
-      return;
+    } else {
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      break;
-      label126:
-      i = 0;
-      break label65;
-      i = 8;
-      break label86;
     }
+    localObject = this.jdField_b_of_type_AndroidViewView;
+    if (this.jdField_a_of_type_Boolean) {
+      i = 8;
+    } else {
+      i = 0;
+    }
+    ((View)localObject).setVisibility(i);
+    localObject = this.jdField_a_of_type_AndroidViewView;
+    if (this.jdField_a_of_type_Boolean) {
+      i = 0;
+    } else {
+      i = 8;
+    }
+    ((View)localObject).setVisibility(i);
+    localObject = this.e;
+    int i = j;
+    if (this.jdField_a_of_type_Boolean) {
+      i = 8;
+    }
+    ((TextView)localObject).setVisibility(i);
   }
   
   public void a(int paramInt)
   {
-    if (this.d != null) {
-      this.d.setText(paramInt);
+    TextView localTextView = this.d;
+    if (localTextView != null) {
+      localTextView.setText(paramInt);
     }
   }
   
@@ -114,16 +106,16 @@ public class ShareResultDialog
   
   public void b(int paramInt)
   {
-    if (this.e != null)
+    TextView localTextView = this.e;
+    if (localTextView != null)
     {
-      if (paramInt != 0) {
-        this.e.setText(paramInt);
+      if (paramInt != 0)
+      {
+        localTextView.setText(paramInt);
+        return;
       }
+      localTextView.setText("");
     }
-    else {
-      return;
-    }
-    this.e.setText("");
   }
   
   public void b(String paramString, DialogInterface.OnClickListener paramOnClickListener)
@@ -140,8 +132,9 @@ public class ShareResultDialog
   
   public void c(int paramInt)
   {
-    if (this.c != null) {
-      this.c.setText(paramInt);
+    TextView localTextView = this.c;
+    if (localTextView != null) {
+      localTextView.setText(paramInt);
     }
   }
   
@@ -159,25 +152,22 @@ public class ShareResultDialog
   {
     QLog.i("ShareResultDialog", 2, "onBackPressed");
     super.onBackPressed();
-    ShareResultDialog.IShareResultCallback localIShareResultCallback;
-    if (this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog$IShareResultCallback != null)
+    ShareResultDialog.IShareResultCallback localIShareResultCallback = this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog$IShareResultCallback;
+    if (localIShareResultCallback != null)
     {
-      localIShareResultCallback = this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog$IShareResultCallback;
-      if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0) {
-        break label44;
+      boolean bool;
+      if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() != 0) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label44:
-    for (boolean bool = true;; bool = false)
-    {
       localIShareResultCallback.a(bool);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.widgets.ShareResultDialog
  * JD-Core Version:    0.7.0.1
  */

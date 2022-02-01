@@ -13,17 +13,19 @@ public abstract class BaseVidListPlayingListSync
   
   protected abstract IVidToVideoInfoPuller a();
   
-  public void a(int paramInt)
+  protected void a(int paramInt)
   {
     if (this.jdField_a_of_type_ComTencentBizQqstoryModelIVidToVideoInfoPuller == null)
     {
       this.jdField_a_of_type_ComTencentBizQqstoryModelIVidToVideoInfoPuller = a();
-      if (this.jdField_a_of_type_ComTencentBizQqstoryModelIVidToVideoInfoPuller != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryModelIVidToVideoInfoPuller.a(this.jdField_a_of_type_Boolean);
+      localIVidToVideoInfoPuller = this.jdField_a_of_type_ComTencentBizQqstoryModelIVidToVideoInfoPuller;
+      if (localIVidToVideoInfoPuller != null) {
+        localIVidToVideoInfoPuller.a(this.jdField_a_of_type_Boolean);
       }
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelIVidToVideoInfoPuller != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryModelIVidToVideoInfoPuller.a();
+    IVidToVideoInfoPuller localIVidToVideoInfoPuller = this.jdField_a_of_type_ComTencentBizQqstoryModelIVidToVideoInfoPuller;
+    if (localIVidToVideoInfoPuller != null) {
+      localIVidToVideoInfoPuller.a();
     }
   }
   
@@ -34,7 +36,7 @@ public abstract class BaseVidListPlayingListSync
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.model.BaseVidListPlayingListSync
  * JD-Core Version:    0.7.0.1
  */

@@ -39,49 +39,58 @@ public class FriendShipViewManager
   
   public boolean a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendShipViewManager", 2, "play anim " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("play anim ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("FriendShipViewManager", 2, ((StringBuilder)localObject).toString());
     }
     if (paramInt == 0) {
       return false;
     }
-    IDirector localIDirector = (IDirector)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Int));
-    if (localIDirector != null)
+    Object localObject = (IDirector)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Int));
+    if (localObject != null)
     {
-      localIDirector.b();
-      localIDirector.e();
+      ((IDirector)localObject).b();
+      ((IDirector)localObject).e();
       this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(this.jdField_a_of_type_Int), null);
       this.jdField_a_of_type_Int = 0;
     }
-    localIDirector = (IDirector)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    IDirector localIDirector = (IDirector)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    localObject = localIDirector;
     if (localIDirector == null)
     {
-      localIDirector = BaseDirector.a(paramInt, this.jdField_a_of_type_AndroidAppActivity);
-      if (localIDirector == null) {
+      localObject = BaseDirector.a(paramInt, this.jdField_a_of_type_AndroidAppActivity);
+      if (localObject == null) {
         return false;
       }
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localIDirector);
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localObject);
     }
-    for (;;)
-    {
-      if ((localIDirector instanceof LottieAnimDirector)) {
-        ((LottieAnimDirector)localIDirector).a(this.jdField_a_of_type_JavaLangString, this.b);
-      }
-      localIDirector.a(new FriendShipViewManager.1(this, localIDirector));
-      return true;
+    if ((localObject instanceof LottieAnimDirector)) {
+      ((LottieAnimDirector)localObject).a(this.jdField_a_of_type_JavaLangString, this.b);
     }
+    ((IDirector)localObject).a(new FriendShipViewManager.1(this, (IDirector)localObject));
+    return true;
   }
   
   public boolean a(int paramInt, String paramString1, String paramString2)
   {
-    QLog.i("FriendShipViewManager", 1, "play , url = " + paramString1 + " md5:" + paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("play , url = ");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(" md5:");
+    localStringBuilder.append(paramString2);
+    QLog.i("FriendShipViewManager", 1, localStringBuilder.toString());
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.b = paramString2;
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.trim();
+    paramString1 = this.jdField_a_of_type_JavaLangString;
+    if (paramString1 != null) {
+      this.jdField_a_of_type_JavaLangString = paramString1.trim();
     }
-    if (this.b != null) {
-      this.b = this.b.trim();
+    paramString1 = this.b;
+    if (paramString1 != null) {
+      this.b = paramString1.trim();
     }
     a(3);
     return true;
@@ -119,7 +128,7 @@ public class FriendShipViewManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.friendship.impl.base.FriendShipViewManager
  * JD-Core Version:    0.7.0.1
  */

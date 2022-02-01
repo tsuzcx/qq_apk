@@ -42,7 +42,6 @@ public class PendantData
   
   public void parseJson(JSONObject paramJSONObject)
   {
-    boolean bool = true;
     if (paramJSONObject == null) {
       return;
     }
@@ -54,47 +53,82 @@ public class PendantData
     this.type = paramJSONObject.optInt("Type", this.type);
     this.closeType = paramJSONObject.optInt("CloseType", this.closeType);
     this.clickType = paramJSONObject.optInt("ClickType", this.clickType);
-    if (paramJSONObject.optInt("ShowPendantSwitch", 0) == 1) {}
-    for (;;)
-    {
-      this.showPendantSwitch = bool;
-      return;
-      bool = false;
+    boolean bool = false;
+    if (paramJSONObject.optInt("ShowPendantSwitch", 0) == 1) {
+      bool = true;
     }
+    this.showPendantSwitch = bool;
   }
   
   public String toSimpleString()
   {
-    return "PendantData{, configTimeInfo=" + this.configTimeInfo + ", taskTimeInfo=" + this.taskTimeInfo + ", type='" + this.type + '\'' + ", closeType='" + this.closeType + '\'' + ", clickType='" + this.clickType + '\'' + ", showPendantSwitch=" + this.showPendantSwitch + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PendantData{, configTimeInfo=");
+    localStringBuilder.append(this.configTimeInfo);
+    localStringBuilder.append(", taskTimeInfo=");
+    localStringBuilder.append(this.taskTimeInfo);
+    localStringBuilder.append(", type='");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", closeType='");
+    localStringBuilder.append(this.closeType);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", clickType='");
+    localStringBuilder.append(this.clickType);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", showPendantSwitch=");
+    localStringBuilder.append(this.showPendantSwitch);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public String toString()
   {
-    return "PendantData{, configTimeInfo=" + this.configTimeInfo + ", taskTimeInfo=" + this.taskTimeInfo + ", type='" + this.type + '\'' + ", closeType='" + this.closeType + '\'' + ", clickType='" + this.clickType + '\'' + ", showPendantSwitch=" + this.showPendantSwitch + ", pendantImgUrl='" + this.pendantImgUrl + '\'' + ", jumpUrl='" + this.jumpUrl + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PendantData{, configTimeInfo=");
+    localStringBuilder.append(this.configTimeInfo);
+    localStringBuilder.append(", taskTimeInfo=");
+    localStringBuilder.append(this.taskTimeInfo);
+    localStringBuilder.append(", type='");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", closeType='");
+    localStringBuilder.append(this.closeType);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", clickType='");
+    localStringBuilder.append(this.clickType);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", showPendantSwitch=");
+    localStringBuilder.append(this.showPendantSwitch);
+    localStringBuilder.append(", pendantImgUrl='");
+    localStringBuilder.append(this.pendantImgUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", jumpUrl='");
+    localStringBuilder.append(this.jumpUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void validateCloseType(boolean paramBoolean)
   {
-    if (!paramBoolean) {
+    if (!paramBoolean)
+    {
       if (this.closeType > 1) {
         this.closeType = 1;
       }
     }
-    for (;;)
-    {
-      if (this.closeType < 0) {
-        this.closeType = 0;
-      }
-      return;
-      if (this.closeType > 3) {
-        this.closeType = 3;
-      }
+    else if (this.closeType > 3) {
+      this.closeType = 3;
+    }
+    if (this.closeType < 0) {
+      this.closeType = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.model.PendantData
  * JD-Core Version:    0.7.0.1
  */

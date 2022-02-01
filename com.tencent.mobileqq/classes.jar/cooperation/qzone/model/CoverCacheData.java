@@ -30,86 +30,72 @@ public class CoverCacheData
   
   public static CoverCacheData createFromResponse(long paramLong, feeds_cover paramfeeds_cover)
   {
-    Object localObject;
     if (paramfeeds_cover == null) {
-      localObject = null;
+      return null;
     }
-    CoverCacheData localCoverCacheData;
-    do
+    CoverCacheData localCoverCacheData = new CoverCacheData();
+    localCoverCacheData.uin = paramLong;
+    localCoverCacheData.coverId = paramfeeds_cover.id;
+    localCoverCacheData.type = paramfeeds_cover.type;
+    localCoverCacheData.isJigsawOpen = paramfeeds_cover.photoWallCombinePic;
+    if (paramfeeds_cover.MulRelsotionUrl != null) {
+      localCoverCacheData.urls.putAll(paramfeeds_cover.MulRelsotionUrl);
+    }
+    if (paramfeeds_cover.packageInfo != null)
     {
-      return localObject;
-      localCoverCacheData = new CoverCacheData();
-      localCoverCacheData.uin = paramLong;
-      localCoverCacheData.coverId = paramfeeds_cover.id;
-      localCoverCacheData.type = paramfeeds_cover.type;
-      localCoverCacheData.isJigsawOpen = paramfeeds_cover.photoWallCombinePic;
-      if (paramfeeds_cover.MulRelsotionUrl != null) {
-        localCoverCacheData.urls.putAll(paramfeeds_cover.MulRelsotionUrl);
-      }
-      if (paramfeeds_cover.packageInfo != null)
-      {
-        localCoverCacheData.packageInfo = new CoverCacheData.PackageInfo();
-        localCoverCacheData.packageInfo.prePic = paramfeeds_cover.packageInfo.prePic;
-        localCoverCacheData.packageInfo.PackageUrl = paramfeeds_cover.packageInfo.PackageUrl;
-        localCoverCacheData.packageInfo.md5 = paramfeeds_cover.packageInfo.md5;
-        localCoverCacheData.packageInfo.weather = paramfeeds_cover.packageInfo.weather;
-        localCoverCacheData.packageInfo.daytime = paramfeeds_cover.packageInfo.daytime;
-        localCoverCacheData.packageInfo.coverStyle = paramfeeds_cover.packageInfo.coverStyle;
-      }
-      if (paramfeeds_cover.gameCoverInfo != null)
-      {
-        localCoverCacheData.gameCoverInfo = new CoverCacheData.GameCoverInfo();
-        localCoverCacheData.gameCoverInfo.xCoordLU = paramfeeds_cover.gameCoverInfo.xCoordLU;
-        localCoverCacheData.gameCoverInfo.yCoordLU = paramfeeds_cover.gameCoverInfo.yCoordLU;
-        localCoverCacheData.gameCoverInfo.xCoordRD = paramfeeds_cover.gameCoverInfo.xCoordRD;
-        localCoverCacheData.gameCoverInfo.yCoordRD = paramfeeds_cover.gameCoverInfo.yCoordRD;
-        localCoverCacheData.gameCoverInfo.jmpUrl = paramfeeds_cover.gameCoverInfo.jmpUrl;
-        localCoverCacheData.gameCoverInfo.schema = paramfeeds_cover.gameCoverInfo.schema;
-        localCoverCacheData.gameCoverInfo.jmpType = paramfeeds_cover.gameCoverInfo.jmpType;
-      }
-      if ((paramfeeds_cover.vecUrls != null) && (paramfeeds_cover.vecUrls.size() > 0)) {
-        localCoverCacheData.photoWall.addAll(paramfeeds_cover.vecUrls);
-      }
-      localObject = localCoverCacheData;
-    } while (paramfeeds_cover.mapExtInfo == null);
-    localCoverCacheData.mapExtInfo.putAll(paramfeeds_cover.mapExtInfo);
+      localCoverCacheData.packageInfo = new CoverCacheData.PackageInfo();
+      localCoverCacheData.packageInfo.prePic = paramfeeds_cover.packageInfo.prePic;
+      localCoverCacheData.packageInfo.PackageUrl = paramfeeds_cover.packageInfo.PackageUrl;
+      localCoverCacheData.packageInfo.md5 = paramfeeds_cover.packageInfo.md5;
+      localCoverCacheData.packageInfo.weather = paramfeeds_cover.packageInfo.weather;
+      localCoverCacheData.packageInfo.daytime = paramfeeds_cover.packageInfo.daytime;
+      localCoverCacheData.packageInfo.coverStyle = paramfeeds_cover.packageInfo.coverStyle;
+    }
+    if (paramfeeds_cover.gameCoverInfo != null)
+    {
+      localCoverCacheData.gameCoverInfo = new CoverCacheData.GameCoverInfo();
+      localCoverCacheData.gameCoverInfo.xCoordLU = paramfeeds_cover.gameCoverInfo.xCoordLU;
+      localCoverCacheData.gameCoverInfo.yCoordLU = paramfeeds_cover.gameCoverInfo.yCoordLU;
+      localCoverCacheData.gameCoverInfo.xCoordRD = paramfeeds_cover.gameCoverInfo.xCoordRD;
+      localCoverCacheData.gameCoverInfo.yCoordRD = paramfeeds_cover.gameCoverInfo.yCoordRD;
+      localCoverCacheData.gameCoverInfo.jmpUrl = paramfeeds_cover.gameCoverInfo.jmpUrl;
+      localCoverCacheData.gameCoverInfo.schema = paramfeeds_cover.gameCoverInfo.schema;
+      localCoverCacheData.gameCoverInfo.jmpType = paramfeeds_cover.gameCoverInfo.jmpType;
+    }
+    if ((paramfeeds_cover.vecUrls != null) && (paramfeeds_cover.vecUrls.size() > 0)) {
+      localCoverCacheData.photoWall.addAll(paramfeeds_cover.vecUrls);
+    }
+    if (paramfeeds_cover.mapExtInfo != null) {
+      localCoverCacheData.mapExtInfo.putAll(paramfeeds_cover.mapExtInfo);
+    }
     return localCoverCacheData;
   }
   
   public static CoverCacheData createFromResponse(long paramLong, mobile_sub_get_cover_rsp parammobile_sub_get_cover_rsp)
   {
-    Object localObject;
     if (parammobile_sub_get_cover_rsp == null) {
-      localObject = null;
+      return null;
     }
-    CoverCacheData localCoverCacheData;
-    do
+    CoverCacheData localCoverCacheData = new CoverCacheData();
+    localCoverCacheData.uin = paramLong;
+    localCoverCacheData.type = parammobile_sub_get_cover_rsp.type;
+    localCoverCacheData.isJigsawOpen = parammobile_sub_get_cover_rsp.photoWallCombinePic;
+    if (parammobile_sub_get_cover_rsp.MulRelsotionUrl != null) {
+      localCoverCacheData.urls.putAll(parammobile_sub_get_cover_rsp.MulRelsotionUrl);
+    }
+    if (parammobile_sub_get_cover_rsp.packageInfo != null)
     {
-      do
-      {
-        return localObject;
-        localCoverCacheData = new CoverCacheData();
-        localCoverCacheData.uin = paramLong;
-        localCoverCacheData.type = parammobile_sub_get_cover_rsp.type;
-        localCoverCacheData.isJigsawOpen = parammobile_sub_get_cover_rsp.photoWallCombinePic;
-        if (parammobile_sub_get_cover_rsp.MulRelsotionUrl != null) {
-          localCoverCacheData.urls.putAll(parammobile_sub_get_cover_rsp.MulRelsotionUrl);
-        }
-        if (parammobile_sub_get_cover_rsp.packageInfo != null)
-        {
-          localCoverCacheData.packageInfo = new CoverCacheData.PackageInfo();
-          localCoverCacheData.packageInfo.prePic = parammobile_sub_get_cover_rsp.packageInfo.prePic;
-          localCoverCacheData.packageInfo.PackageUrl = parammobile_sub_get_cover_rsp.packageInfo.PackageUrl;
-          localCoverCacheData.packageInfo.md5 = parammobile_sub_get_cover_rsp.packageInfo.md5;
-          localCoverCacheData.packageInfo.weather = parammobile_sub_get_cover_rsp.packageInfo.weather;
-          localCoverCacheData.packageInfo.daytime = parammobile_sub_get_cover_rsp.packageInfo.daytime;
-          localCoverCacheData.packageInfo.coverStyle = parammobile_sub_get_cover_rsp.packageInfo.coverStyle;
-        }
-        localObject = localCoverCacheData;
-      } while (parammobile_sub_get_cover_rsp.vecUrls == null);
-      localObject = localCoverCacheData;
-    } while (parammobile_sub_get_cover_rsp.vecUrls.size() <= 0);
-    localCoverCacheData.photoWall.addAll(parammobile_sub_get_cover_rsp.vecUrls);
+      localCoverCacheData.packageInfo = new CoverCacheData.PackageInfo();
+      localCoverCacheData.packageInfo.prePic = parammobile_sub_get_cover_rsp.packageInfo.prePic;
+      localCoverCacheData.packageInfo.PackageUrl = parammobile_sub_get_cover_rsp.packageInfo.PackageUrl;
+      localCoverCacheData.packageInfo.md5 = parammobile_sub_get_cover_rsp.packageInfo.md5;
+      localCoverCacheData.packageInfo.weather = parammobile_sub_get_cover_rsp.packageInfo.weather;
+      localCoverCacheData.packageInfo.daytime = parammobile_sub_get_cover_rsp.packageInfo.daytime;
+      localCoverCacheData.packageInfo.coverStyle = parammobile_sub_get_cover_rsp.packageInfo.coverStyle;
+    }
+    if ((parammobile_sub_get_cover_rsp.vecUrls != null) && (parammobile_sub_get_cover_rsp.vecUrls.size() > 0)) {
+      localCoverCacheData.photoWall.addAll(parammobile_sub_get_cover_rsp.vecUrls);
+    }
     return localCoverCacheData;
   }
   
@@ -141,7 +127,7 @@ public class CoverCacheData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.model.CoverCacheData
  * JD-Core Version:    0.7.0.1
  */

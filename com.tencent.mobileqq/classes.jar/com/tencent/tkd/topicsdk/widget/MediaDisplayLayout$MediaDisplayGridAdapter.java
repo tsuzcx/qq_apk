@@ -43,39 +43,47 @@ public final class MediaDisplayLayout$MediaDisplayGridAdapter
   {
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.a.getContext()).inflate(R.layout.t, paramViewGroup, false);
+      paramView = LayoutInflater.from(this.a.getContext()).inflate(R.layout.s, paramViewGroup, false);
       Intrinsics.checkExpressionValueIsNotNull(paramView, "LayoutInflater.from(cont…ay_layout, parent, false)");
       paramViewGroup = this.a;
-      if (paramView == null) {
+      if (paramView != null)
+      {
+        ViewGroup localViewGroup = (ViewGroup)paramView;
+        paramViewGroup = new MediaDisplayLayout.DisplayViewHolder(paramViewGroup, localViewGroup);
+        localViewGroup.setTag(paramViewGroup);
+      }
+      else
+      {
         throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup");
       }
-      paramViewGroup = new MediaDisplayLayout.DisplayViewHolder(paramViewGroup, (ViewGroup)paramView);
-      ((ViewGroup)paramView).setTag(paramViewGroup);
     }
-    for (;;)
+    else
     {
-      paramViewGroup.a(a(paramInt));
-      paramViewGroup.a().setOnClickListener((View.OnClickListener)new MediaDisplayLayout.MediaDisplayGridAdapter.getView.2(this, paramInt));
-      paramViewGroup.a().setOnClickListener((View.OnClickListener)new MediaDisplayLayout.MediaDisplayGridAdapter.getView.3(this, paramInt));
-      if (!this.a.a()) {
-        break;
-      }
-      paramViewGroup.b().setOnClickListener((View.OnClickListener)new MediaDisplayLayout.MediaDisplayGridAdapter.getView.4(this, paramInt));
-      return paramView;
       paramViewGroup = paramView.getTag();
       if (paramViewGroup == null) {
-        throw new TypeCastException("null cannot be cast to non-null type com.tencent.tkd.topicsdk.widget.MediaDisplayLayout.DisplayViewHolder");
+        break label193;
       }
       paramViewGroup = (MediaDisplayLayout.DisplayViewHolder)paramViewGroup;
+    }
+    paramViewGroup.a(a(paramInt));
+    paramViewGroup.a().setOnClickListener((View.OnClickListener)new MediaDisplayLayout.MediaDisplayGridAdapter.getView.1(this, paramInt));
+    paramViewGroup.a().setOnClickListener((View.OnClickListener)new MediaDisplayLayout.MediaDisplayGridAdapter.getView.2(this, paramInt));
+    if (this.a.a())
+    {
+      paramViewGroup.b().setVisibility(0);
+      paramViewGroup.b().setOnClickListener((View.OnClickListener)new MediaDisplayLayout.MediaDisplayGridAdapter.getView.3(this, paramInt));
+      return paramView;
     }
     paramViewGroup.b().setVisibility(8);
     paramViewGroup.b().setOnClickListener(null);
     return paramView;
+    label193:
+    throw new TypeCastException("null cannot be cast to non-null type com.tencent.tkd.topicsdk.widget.MediaDisplayLayout.DisplayViewHolder");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.MediaDisplayLayout.MediaDisplayGridAdapter
  * JD-Core Version:    0.7.0.1
  */

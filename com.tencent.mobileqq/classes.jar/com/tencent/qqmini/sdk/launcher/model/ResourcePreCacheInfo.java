@@ -24,7 +24,10 @@ public class ResourcePreCacheInfo
   
   public String toString()
   {
-    return "getDataUrl:" + this.getDataUrl;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getDataUrl:");
+    localStringBuilder.append(this.getDataUrl);
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -34,7 +37,7 @@ public class ResourcePreCacheInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.ResourcePreCacheInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -34,75 +34,66 @@ public class NewUpgradeConfig
   
   public void parseConfig4Dialog(String paramString)
   {
-    if ((paramString == null) || (paramString.equals(""))) {
-      return;
-    }
-    XmlPullParser localXmlPullParser = Xml.newPullParser();
-    jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.prepareDialog();
-    for (;;)
+    if (paramString != null)
     {
+      if (paramString.equals("")) {
+        return;
+      }
+      Object localObject = Xml.newPullParser();
+      jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.prepareDialog();
       try
       {
-        localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
-        int i = localXmlPullParser.getEventType();
-        if (i == 1) {
-          break;
-        }
-        if (i == 2)
-        {
-          paramString = localXmlPullParser.getName();
-          if (paramString.equalsIgnoreCase("configId")) {
-            jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_a_of_type_Int = Integer.valueOf(localXmlPullParser.nextText()).intValue();
+        ((XmlPullParser)localObject).setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
+        for (int i = ((XmlPullParser)localObject).getEventType(); i != 1; i = ((XmlPullParser)localObject).next()) {
+          if (i == 2)
+          {
+            paramString = ((XmlPullParser)localObject).getName();
+            if (paramString.equalsIgnoreCase("configId")) {
+              jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_a_of_type_Int = Integer.valueOf(((XmlPullParser)localObject).nextText()).intValue();
+            } else if (paramString.equalsIgnoreCase("taskName")) {
+              jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_a_of_type_JavaLangString = ((XmlPullParser)localObject).nextText();
+            } else if (paramString.equalsIgnoreCase("taskTime")) {
+              jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_a_of_type_Long = OlympicUtil.a(((XmlPullParser)localObject).nextText());
+            } else if (paramString.equalsIgnoreCase("showTime")) {
+              jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_b_of_type_Long = OlympicUtil.a(((XmlPullParser)localObject).nextText());
+            } else if (paramString.equalsIgnoreCase("title")) {
+              jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_b_of_type_JavaLangString = ((XmlPullParser)localObject).nextText();
+            } else if (paramString.equalsIgnoreCase("content")) {
+              jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.c = ((XmlPullParser)localObject).nextText();
+            } else if (paramString.equalsIgnoreCase("desc")) {
+              jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.d = ((XmlPullParser)localObject).nextText();
+            } else if (paramString.equalsIgnoreCase("installFail")) {
+              jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.e = ((XmlPullParser)localObject).nextText();
+            } else if (paramString.equalsIgnoreCase("info")) {
+              jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.f = ((XmlPullParser)localObject).nextText();
+            } else if (paramString.equalsIgnoreCase("yellowBar")) {
+              jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_b_of_type_Int = Integer.valueOf(((XmlPullParser)localObject).nextText()).intValue();
+            } else if (paramString.equalsIgnoreCase("barContent")) {
+              jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.g = ((XmlPullParser)localObject).nextText();
+            } else if (paramString.equalsIgnoreCase("barContent2")) {
+              jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.h = ((XmlPullParser)localObject).nextText();
+            } else if (paramString.equalsIgnoreCase("lBtnText")) {
+              jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.i = ((XmlPullParser)localObject).getText();
+            } else if (paramString.equalsIgnoreCase("rBtnText")) {
+              jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.j = ((XmlPullParser)localObject).getText();
+            }
           }
         }
-        else
-        {
-          i = localXmlPullParser.next();
-          continue;
-        }
-        if (paramString.equalsIgnoreCase("taskName"))
-        {
-          jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_a_of_type_JavaLangString = localXmlPullParser.nextText();
-          continue;
-        }
-        if (!paramString.equalsIgnoreCase("taskTime")) {
-          break label212;
-        }
+        StringBuilder localStringBuilder;
+        return;
       }
       catch (Exception paramString)
       {
         jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog = null;
-        if (QLog.isDevelopLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 4, "updateDialogParseFail : " + paramString.getMessage());
+        if (QLog.isDevelopLevel())
+        {
+          localObject = jdField_a_of_type_JavaLangString;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("updateDialogParseFail : ");
+          localStringBuilder.append(paramString.getMessage());
+          QLog.d((String)localObject, 4, localStringBuilder.toString());
         }
         paramString.printStackTrace();
-        return;
-      }
-      jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_a_of_type_Long = OlympicUtil.a(localXmlPullParser.nextText());
-      continue;
-      label212:
-      if (paramString.equalsIgnoreCase("showTime")) {
-        jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_b_of_type_Long = OlympicUtil.a(localXmlPullParser.nextText());
-      } else if (paramString.equalsIgnoreCase("title")) {
-        jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_b_of_type_JavaLangString = localXmlPullParser.nextText();
-      } else if (paramString.equalsIgnoreCase("content")) {
-        jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.c = localXmlPullParser.nextText();
-      } else if (paramString.equalsIgnoreCase("desc")) {
-        jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.d = localXmlPullParser.nextText();
-      } else if (paramString.equalsIgnoreCase("installFail")) {
-        jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.e = localXmlPullParser.nextText();
-      } else if (paramString.equalsIgnoreCase("info")) {
-        jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.f = localXmlPullParser.nextText();
-      } else if (paramString.equalsIgnoreCase("yellowBar")) {
-        jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_b_of_type_Int = Integer.valueOf(localXmlPullParser.nextText()).intValue();
-      } else if (paramString.equalsIgnoreCase("barContent")) {
-        jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.g = localXmlPullParser.nextText();
-      } else if (paramString.equalsIgnoreCase("barContent2")) {
-        jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.h = localXmlPullParser.nextText();
-      } else if (paramString.equalsIgnoreCase("lBtnText")) {
-        jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.i = localXmlPullParser.getText();
-      } else if (paramString.equalsIgnoreCase("rBtnText")) {
-        jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.j = localXmlPullParser.getText();
       }
     }
   }
@@ -114,7 +105,7 @@ public class NewUpgradeConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.NewUpgradeConfig
  * JD-Core Version:    0.7.0.1
  */

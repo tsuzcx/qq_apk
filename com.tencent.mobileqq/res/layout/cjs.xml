@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center" android:background="@drawable/bxo" android:layout_width="43.0dip" android:layout_height="70.0dip"
+<RelativeLayout android:gravity="bottom" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/dwf" android:layout_width="18.0dip" android:layout_height="8.0dip" android:src="@drawable/gnl" />
-    <TextView android:textSize="10.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/k9z" android:background="@drawable/bw4" android:padding="1.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="16.0dip" android:text="99+" />
+    <FrameLayout android:id="@id/jt9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+        <View android:id="@id/ocy" android:background="@drawable/d0d" android:layout_width="fill_parent" android:layout_height="10.0dip" />
+        <RelativeLayout android:orientation="horizontal" android:id="@id/n77" android:background="@drawable/d0d" android:layout_width="fill_parent" android:layout_height="40.0dip">
+            <ImageView android:id="@id/n76" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gq1" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <TextView android:id="@id/n79" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+            <ImageView android:id="@id/n78" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:src="@drawable/gpz" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </FrameLayout>
+    <FrameLayout android:id="@id/l1q" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/jt9" />
 </RelativeLayout>

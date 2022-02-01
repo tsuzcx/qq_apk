@@ -17,11 +17,12 @@ public class QQStoryShareGroupProfileActivity$StoryVideoPublishStatusReceiver
   public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull StoryVideoUploadManager.StoryVideoPublishStatusEvent paramStoryVideoPublishStatusEvent)
   {
     paramStoryVideoPublishStatusEvent = paramStoryVideoPublishStatusEvent.a;
-    if (paramStoryVideoPublishStatusEvent == null) {}
-    while (StoryListUtils.a(paramStoryVideoPublishStatusEvent.mUploadStatus) != 3) {
+    if (paramStoryVideoPublishStatusEvent == null) {
       return;
     }
-    paramQQStoryShareGroupProfileActivity.b = true;
+    if (StoryListUtils.a(paramStoryVideoPublishStatusEvent.mUploadStatus) == 3) {
+      paramQQStoryShareGroupProfileActivity.b = true;
+    }
   }
   
   public Class acceptEventClass()
@@ -31,7 +32,7 @@ public class QQStoryShareGroupProfileActivity$StoryVideoPublishStatusReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity.StoryVideoPublishStatusReceiver
  * JD-Core Version:    0.7.0.1
  */

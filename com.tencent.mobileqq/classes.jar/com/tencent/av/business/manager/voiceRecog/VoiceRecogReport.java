@@ -12,8 +12,13 @@ public class VoiceRecogReport
   
   static void a(String paramString)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("VoiceRecogReport", 1, "report, key[" + paramString + "]");
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("report, key[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("]");
+      QLog.w("VoiceRecogReport", 1, localStringBuilder.toString());
     }
     ReportController.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", null, null);
   }
@@ -25,7 +30,7 @@ public class VoiceRecogReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.voiceRecog.VoiceRecogReport
  * JD-Core Version:    0.7.0.1
  */

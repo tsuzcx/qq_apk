@@ -1,25 +1,20 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.business.sougou.WordMatchManager.MatcherCallback;
-import com.tencent.mobileqq.business.sougou.WordMatchManager.WordMatcher;
+import com.tencent.mobileqq.bubble.BubbleDiyFetcher;
 
 class TextPreviewActivity$5
-  implements WordMatchManager.MatcherCallback
+  implements Runnable
 {
-  TextPreviewActivity$5(TextPreviewActivity paramTextPreviewActivity) {}
+  TextPreviewActivity$5(TextPreviewActivity paramTextPreviewActivity, BubbleDiyFetcher paramBubbleDiyFetcher, String paramString) {}
   
-  public void a(WordMatchManager.WordMatcher paramWordMatcher)
+  public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$WordMatcher = paramWordMatcher;
-    if (this.a.i != 0) {
-      paramWordMatcher.a(this.a.i);
-    }
-    this.a.i = paramWordMatcher.a(1, this.a.e, 3, this.a.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$MatchCallback);
+    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.a(this.this$0.app, this.jdField_a_of_type_JavaLangString, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TextPreviewActivity.5
  * JD-Core Version:    0.7.0.1
  */

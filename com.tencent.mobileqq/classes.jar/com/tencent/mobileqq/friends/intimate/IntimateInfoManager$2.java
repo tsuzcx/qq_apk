@@ -5,7 +5,7 @@ import com.tencent.mobileqq.transfile.NetReq;
 import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.mobileqq.transfile.predownload.HttpEngineTask;
 import com.tencent.mobileqq.transfile.predownload.HttpEngineTask.IHttpEngineTask;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import com.tencent.mobileqq.transfile.predownload.IPreDownloadController;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -27,39 +27,42 @@ class IntimateInfoManager$2
     if (QLog.isColorLevel()) {
       QLog.d("IntimateInfoManager", 2, String.format("onResp url=%s result=%s", new Object[] { localObject, Integer.valueOf(paramNetResp.mResult) }));
     }
-    switch (paramNetResp.mResult)
+    int i = paramNetResp.mResult;
+    if (i != 0)
     {
-    }
-    do
-    {
-      boolean bool1;
-      boolean bool2;
-      do
-      {
+      if (i != 1) {
         return;
-        if (IntimateInfoManager.a(this.a) != null) {
-          IntimateInfoManager.a(this.a).preDownloadSuccess((String)localObject, paramNetResp.mTotalFileLen);
-        }
-        paramNetResp = (HttpNetReq)paramNetResp.mReq;
-        if (!IntimateInfoManager.a(this.a, paramNetResp.mOutPath, IntimateInfoManager.a(this.a))) {
-          break;
-        }
+      }
+      if (IntimateInfoManager.a(this.a) != null) {
+        IntimateInfoManager.a(this.a).preDownloadSuccess((String)localObject, -1L);
+      }
+    }
+    else
+    {
+      if (IntimateInfoManager.a(this.a) != null) {
+        IntimateInfoManager.a(this.a).preDownloadSuccess((String)localObject, paramNetResp.mTotalFileLen);
+      }
+      paramNetResp = (HttpNetReq)paramNetResp.mReq;
+      if (IntimateInfoManager.a(this.a, paramNetResp.mOutPath, IntimateInfoManager.a(this.a)))
+      {
         localObject = new File(IntimateInfoManager.a());
         if (!((File)localObject).exists()) {
           ((File)localObject).mkdirs();
         }
-        bool1 = IntimateInfoManager.b(this.a, paramNetResp.mOutPath, IntimateInfoManager.a());
-        bool2 = IntimateInfoManager.a(this.a);
-      } while (!QLog.isColorLevel());
-      QLog.d("IntimateInfoManager", 2, String.format("onResp ResultOk unzip result=%s unzipped=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.e("IntimateInfoManager", 2, "onResp ResultOk file check invalid.");
+        boolean bool1 = IntimateInfoManager.b(this.a, paramNetResp.mOutPath, IntimateInfoManager.a());
+        boolean bool2 = IntimateInfoManager.a(this.a);
+        if (QLog.isColorLevel()) {
+          QLog.d("IntimateInfoManager", 2, String.format("onResp ResultOk unzip result=%s unzipped=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+        }
       }
-      IntimateInfoManager.a(this.a, paramNetResp.mOutPath);
-      return;
-    } while (IntimateInfoManager.a(this.a) == null);
-    IntimateInfoManager.a(this.a).preDownloadSuccess((String)localObject, -1L);
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("IntimateInfoManager", 2, "onResp ResultOk file check invalid.");
+        }
+        IntimateInfoManager.a(this.a, paramNetResp.mOutPath);
+      }
+    }
   }
   
   public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
@@ -71,7 +74,7 @@ class IntimateInfoManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.friends.intimate.IntimateInfoManager.2
  * JD-Core Version:    0.7.0.1
  */

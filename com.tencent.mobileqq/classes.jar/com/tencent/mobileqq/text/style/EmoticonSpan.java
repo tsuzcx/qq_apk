@@ -36,52 +36,49 @@ public class EmoticonSpan
   
   protected Drawable doGetDrwable()
   {
-    Drawable localDrawable2;
-    Drawable localDrawable1;
+    Drawable localDrawable;
     if (this.emojiType == 0)
     {
-      localDrawable2 = ((ISysEmoApi)QRoute.api(ISysEmoApi.class)).getEmojiDrawable(this.index);
-      localDrawable1 = localDrawable2;
-      if (localDrawable2 != null)
+      localDrawable = ((ISysEmoApi)QRoute.api(ISysEmoApi.class)).getEmojiDrawable(this.index);
+      if (localDrawable != null)
       {
-        localDrawable2.setBounds(0, 0, this.size, this.size);
-        localDrawable1 = localDrawable2;
+        i = this.size;
+        localDrawable.setBounds(0, 0, i, i);
       }
+      return localDrawable;
     }
-    do
+    int i = this.index;
+    if ((0x80000000 & i) == 0)
     {
-      int i;
-      do
+      localDrawable = ((ISysEmoApi)QRoute.api(ISysEmoApi.class)).getSysFaceDrawable(this.index, false);
+      if (localDrawable != null)
       {
-        do
+        i = this.size;
+        localDrawable.setBounds(0, 0, i, i);
+      }
+      return localDrawable;
+    }
+    i = 0x7FFFFFFF & i;
+    if (((ISysEmoApi)QRoute.api(ISysEmoApi.class)).isSysFaceValid(i))
+    {
+      if (((ISysEmoApi)QRoute.api(ISysEmoApi.class)).isSysFaceStatic(i))
+      {
+        localDrawable = ((ISysEmoApi)QRoute.api(ISysEmoApi.class)).getSysFaceDrawable(i, false);
+        if (localDrawable != null)
         {
-          return localDrawable1;
-          if ((0x80000000 & this.index) != 0) {
-            break;
-          }
-          localDrawable2 = ((ISysEmoApi)QRoute.api(ISysEmoApi.class)).getSysFaceDrawable(this.index, false);
-          localDrawable1 = localDrawable2;
-        } while (localDrawable2 == null);
-        localDrawable2.setBounds(0, 0, this.size, this.size);
-        return localDrawable2;
-        i = this.index & 0x7FFFFFFF;
-        if (!((ISysEmoApi)QRoute.api(ISysEmoApi.class)).isSysFaceValid(i)) {
-          break label218;
+          i = this.size;
+          localDrawable.setBounds(0, 0, i, i);
         }
-        if (!((ISysEmoApi)QRoute.api(ISysEmoApi.class)).isSysFaceStatic(i)) {
-          break;
-        }
-        localDrawable2 = ((ISysEmoApi)QRoute.api(ISysEmoApi.class)).getSysFaceDrawable(i, false);
-        localDrawable1 = localDrawable2;
-      } while (localDrawable2 == null);
-      localDrawable2.setBounds(0, 0, this.size, this.size);
-      return localDrawable2;
-      localDrawable2 = ((ISysEmoApi)QRoute.api(ISysEmoApi.class)).getSysFaceDrawable(i, true);
-      localDrawable1 = localDrawable2;
-    } while (localDrawable2 == null);
-    localDrawable2.setBounds(0, 0, this.size, this.size);
-    return localDrawable2;
-    label218:
+        return localDrawable;
+      }
+      localDrawable = ((ISysEmoApi)QRoute.api(ISysEmoApi.class)).getSysFaceDrawable(i, true);
+      if (localDrawable != null)
+      {
+        i = this.size;
+        localDrawable.setBounds(0, 0, i, i);
+      }
+      return localDrawable;
+    }
     return new ColorDrawable();
   }
   
@@ -118,14 +115,20 @@ public class EmoticonSpan
   public Drawable getDrawable()
   {
     Object localObject1 = this.mDrawableRef;
-    if (localObject1 != null) {}
-    for (localObject1 = (Drawable)((WeakReference)localObject1).get();; localObject1 = null)
+    if (localObject1 != null) {
+      localObject2 = (Drawable)((WeakReference)localObject1).get();
+    } else {
+      localObject2 = null;
+    }
+    localObject1 = localObject2;
+    if ((localObject2 instanceof URLDrawable))
     {
-      Object localObject2;
-      if ((localObject1 instanceof URLDrawable))
+      URLDrawable localURLDrawable = (URLDrawable)localObject2;
+      localObject1 = localObject2;
+      if (this.mIsAPNG)
       {
-        localObject2 = (URLDrawable)localObject1;
-        if ((this.mIsAPNG) && (!((URLDrawable)localObject2).mUseApngImage))
+        localObject1 = localObject2;
+        if (!localURLDrawable.mUseApngImage)
         {
           if (QLog.isColorLevel()) {
             QLog.d("QQText", 2, "getDrawable: change to apng");
@@ -133,22 +136,19 @@ public class EmoticonSpan
           localObject1 = null;
         }
       }
-      for (;;)
-      {
-        localObject2 = localObject1;
-        if (localObject1 == null)
-        {
-          localObject2 = doGetDrwable();
-          this.mDrawableRef = new WeakReference(localObject2);
-        }
-        return localObject2;
-      }
     }
+    Object localObject2 = localObject1;
+    if (localObject1 == null)
+    {
+      localObject2 = doGetDrwable();
+      this.mDrawableRef = new WeakReference(localObject2);
+    }
+    return localObject2;
   }
   
   public int getIndex()
   {
-    return 0x7FFFFFFF & this.index;
+    return this.index & 0x7FFFFFFF;
   }
   
   public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
@@ -174,7 +174,7 @@ public class EmoticonSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.text.style.EmoticonSpan
  * JD-Core Version:    0.7.0.1
  */

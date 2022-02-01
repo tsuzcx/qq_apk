@@ -13,50 +13,124 @@ import com.tencent.qphone.base.util.QLog;
 
 public class NetworkUtil
 {
-  public static int a()
+  public static final String APN_UNKNOWN = "unknown";
+  public static final String APN_WIFI = "wifi";
+  
+  public static String getApn(Context paramContext)
   {
-    if (!AppNetConnInfo.isNetSupport()) {}
-    do
-    {
-      return 0;
-      if (AppNetConnInfo.isWifiConn()) {
-        return 1;
+    if (AppNetConnInfo.isWifiConn()) {
+      return "wifi";
+    }
+    String str = AppNetConnInfo.getCurrentAPN();
+    paramContext = str;
+    if (TextUtils.isEmpty(str)) {
+      paramContext = "unknown";
+    }
+    return paramContext;
+  }
+  
+  public static int getConnRetryTimes(int paramInt)
+  {
+    if (paramInt != 1) {
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if ((paramInt != 4) && (paramInt != 5)) {
+            return 2;
+          }
+        }
+        else {
+          return 3;
+        }
       }
-    } while (!AppNetConnInfo.isMobileConn());
-    switch (AppNetConnInfo.getMobileInfo())
-    {
-    case -1: 
-    default: 
-      return -1;
-    case 0: 
-    case 1: 
-      return 2;
-    case 2: 
-      return 3;
-    case 3: 
-      return 4;
+      else {
+        return 2;
+      }
     }
     return 4;
   }
   
-  public static int a(int paramInt)
+  public static String getCurrentWifiSSID(Context paramContext)
   {
-    switch (paramInt)
+    try
     {
-    case 2: 
-    default: 
-      return 2;
-    case 1: 
-    case 4: 
-    case 5: 
-      return 4;
+      paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
+      if (paramContext != null)
+      {
+        if (paramContext.getSSID() == null) {
+          return null;
+        }
+        paramContext = paramContext.getSSID().replaceAll("\"", "");
+        boolean bool = paramContext.equals("<unknown ssid>");
+        if (bool) {
+          return null;
+        }
+        return paramContext;
+      }
+      return null;
     }
-    return 3;
+    catch (Throwable paramContext)
+    {
+      QLog.e("NetworkUtil", 1, "fail to get active network info", paramContext);
+    }
+    return null;
   }
   
-  public static int a(Context paramContext)
+  public static int getNetWorkType()
   {
-    int j = a();
+    boolean bool = AppNetConnInfo.isNetSupport();
+    int j = 0;
+    if (!bool) {
+      return 0;
+    }
+    if (AppNetConnInfo.isWifiConn()) {
+      return 1;
+    }
+    int i = j;
+    if (AppNetConnInfo.isMobileConn())
+    {
+      int k = AppNetConnInfo.getMobileInfo();
+      i = j;
+      if (k != -1)
+      {
+        j = 2;
+        i = j;
+        if (k != 0)
+        {
+          i = j;
+          if (k != 1)
+          {
+            if (k != 2)
+            {
+              if ((k != 3) && (k != 4)) {
+                return -1;
+              }
+              return 4;
+            }
+            return 3;
+          }
+        }
+      }
+    }
+    return i;
+  }
+  
+  public static int getNetworkType(Context paramContext)
+  {
+    if (AppNetConnInfo.isNetSupport())
+    {
+      paramContext = AppNetConnInfo.getRecentNetworkInfo();
+      if (paramContext != null) {
+        return paramContext.getType();
+      }
+    }
+    return -1;
+  }
+  
+  public static int getSystemNetwork(Context paramContext)
+  {
+    int j = getNetWorkType();
     int i = j;
     if (j == -1) {
       i = 2;
@@ -64,122 +138,89 @@ public class NetworkUtil
     return i;
   }
   
-  public static String a(int paramInt)
+  public static String intAddr2Ip(int paramInt)
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(paramInt & 0xFF).append(".").append(paramInt >> 8 & 0xFF).append(".").append(paramInt >> 16 & 0xFF).append(".").append(paramInt >> 24 & 0xFF);
+    localStringBuffer.append(paramInt & 0xFF);
+    localStringBuffer.append(".");
+    localStringBuffer.append(paramInt >> 8 & 0xFF);
+    localStringBuffer.append(".");
+    localStringBuffer.append(paramInt >> 16 & 0xFF);
+    localStringBuffer.append(".");
+    localStringBuffer.append(paramInt >> 24 & 0xFF);
     return localStringBuffer.toString();
   }
   
-  public static String a(Context paramContext)
+  public static boolean is3Gor4G(Context paramContext)
   {
-    if (AppNetConnInfo.isWifiConn()) {
-      paramContext = "wifi";
-    }
-    String str;
-    do
-    {
-      return paramContext;
-      str = AppNetConnInfo.getCurrentAPN();
-      paramContext = str;
-    } while (!TextUtils.isEmpty(str));
-    return "unknown";
+    int i = getNetWorkType();
+    return (i == 4) || (i == 3);
   }
   
-  public static boolean a()
+  public static boolean is4G(Context paramContext)
   {
-    return AppNetConnInfo.isNetSupport();
+    return getNetWorkType() == 4;
   }
   
-  public static boolean a(Context paramContext)
+  public static boolean is5G(Context paramContext)
   {
-    return AppNetConnInfo.isWifiConn();
+    return getNetWorkType() == 4;
   }
   
-  public static boolean a(NetworkInfo paramNetworkInfo)
+  public static boolean isAirplaneModeOn(Context paramContext)
   {
-    return HwNetworkUtil.isMobileNetworkInfo(paramNetworkInfo);
+    return HwNetworkUtil.isAirplaneModeOn(paramContext);
   }
   
-  public static int b(Context paramContext)
+  @TargetApi(13)
+  public static boolean isBluetoothSharedNetwork(Context paramContext)
   {
-    int j = -1;
-    int i = j;
-    if (AppNetConnInfo.isNetSupport())
-    {
-      paramContext = AppNetConnInfo.getRecentNetworkInfo();
-      i = j;
-      if (paramContext != null) {
-        i = paramContext.getType();
-      }
-    }
-    return i;
+    return (Build.VERSION.SDK_INT >= 13) && (getNetworkType(paramContext) == 7);
   }
   
-  public static String b(Context paramContext)
-  {
-    try
-    {
-      paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
-      if ((paramContext != null) && (paramContext.getSSID() != null))
-      {
-        paramContext = paramContext.getSSID().replaceAll("\"", "");
-        boolean bool = paramContext.equals("<unknown ssid>");
-        if (!bool) {
-          return paramContext;
-        }
-        return null;
-      }
-    }
-    catch (Throwable paramContext)
-    {
-      QLog.e("NetworkUtil", 1, "fail to get active network info", paramContext);
-      return null;
-    }
-    paramContext = null;
-    return paramContext;
-  }
-  
-  public static boolean b(Context paramContext)
+  public static boolean isMobileNetWork(Context paramContext)
   {
     return AppNetConnInfo.isMobileConn();
   }
   
-  public static boolean c(Context paramContext)
+  public static boolean isMobileNetworkInfo(NetworkInfo paramNetworkInfo)
   {
-    int i = a();
-    return (i == 4) || (i == 3);
+    return HwNetworkUtil.isMobileNetworkInfo(paramNetworkInfo);
   }
   
-  public static boolean d(Context paramContext)
+  public static boolean isNetSupport(Context paramContext)
   {
     return AppNetConnInfo.isNetSupport();
   }
   
-  public static boolean e(Context paramContext)
+  public static boolean isNetSupportHw(Context paramContext)
   {
     return HwNetworkUtil.isNetSupport(paramContext);
   }
   
-  @TargetApi(13)
-  public static boolean f(Context paramContext)
-  {
-    return (Build.VERSION.SDK_INT >= 13) && (b(paramContext) == 7);
-  }
-  
-  public static boolean g(Context paramContext)
+  public static boolean isNetworkAvailable()
   {
     return AppNetConnInfo.isNetSupport();
   }
   
-  public static boolean h(Context paramContext)
+  public static boolean isNetworkAvailable(Context paramContext)
+  {
+    return AppNetConnInfo.isNetSupport();
+  }
+  
+  public static boolean isWifiConnected(Context paramContext)
+  {
+    return AppNetConnInfo.isWifiConn();
+  }
+  
+  public static boolean isWifiEnabled(Context paramContext)
   {
     return AppNetConnInfo.isWifiConn();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.NetworkUtil
  * JD-Core Version:    0.7.0.1
  */

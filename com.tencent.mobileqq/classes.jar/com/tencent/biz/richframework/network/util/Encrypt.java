@@ -18,28 +18,32 @@ public class Encrypt
   
   public static byte[] compress(byte[] paramArrayOfByte)
   {
+    Object localObject1 = null;
     Object localObject2 = null;
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return null;
-    }
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    Object localObject1 = localObject2;
-    try
+    if (paramArrayOfByte != null)
     {
-      GZIPOutputStream localGZIPOutputStream = new GZIPOutputStream(localByteArrayOutputStream);
+      if (paramArrayOfByte.length == 0) {
+        return null;
+      }
+      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
       localObject1 = localObject2;
-      localGZIPOutputStream.write(paramArrayOfByte);
-      localObject1 = localObject2;
-      localGZIPOutputStream.close();
-      localObject1 = localObject2;
-      paramArrayOfByte = localByteArrayOutputStream.toByteArray();
-      localObject1 = paramArrayOfByte;
-      localByteArrayOutputStream.close();
-      return paramArrayOfByte;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
+      try
+      {
+        GZIPOutputStream localGZIPOutputStream = new GZIPOutputStream(localByteArrayOutputStream);
+        localObject1 = localObject2;
+        localGZIPOutputStream.write(paramArrayOfByte);
+        localObject1 = localObject2;
+        localGZIPOutputStream.close();
+        localObject1 = localObject2;
+        paramArrayOfByte = localByteArrayOutputStream.toByteArray();
+        localObject1 = paramArrayOfByte;
+        localByteArrayOutputStream.close();
+        return paramArrayOfByte;
+      }
+      catch (IOException paramArrayOfByte)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
     }
     return localObject1;
   }
@@ -76,30 +80,28 @@ public class Encrypt
   
   public static String md5(String paramString)
   {
+    Object localObject;
     try
     {
       MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
-      if (localMessageDigest != null)
-      {
-        localMessageDigest.reset();
-        localMessageDigest.update(paramString.getBytes());
-        return StringUtils.byte2HexString(localMessageDigest.digest());
-      }
     }
     catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
     {
-      for (;;)
-      {
-        localNoSuchAlgorithmException.printStackTrace();
-        Object localObject = null;
-      }
+      localNoSuchAlgorithmException.printStackTrace();
+      localObject = null;
+    }
+    if (localObject != null)
+    {
+      localObject.reset();
+      localObject.update(paramString.getBytes());
+      return StringUtils.byte2HexString(localObject.digest());
     }
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.richframework.network.util.Encrypt
  * JD-Core Version:    0.7.0.1
  */

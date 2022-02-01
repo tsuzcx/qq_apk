@@ -28,16 +28,17 @@ public final class oidb_0x6b6$SendFlowerReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 66, 74, 82, 90, 96 }, new String[] { "int32_count", "uint64_to_uin", "uint32_play_rule", "uint32_custom_flag", "uint32_product_id", "uint32_gift_id", "uint32_gift_num", "bytes_gift_text", "bytes_send_user_name", "bytes_recv_user_name", "bytes_ticketid", "int32_discount_amount" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, Integer.valueOf(0) }, SendFlowerReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 66, 74, 82, 90, 96 }, new String[] { "int32_count", "uint64_to_uin", "uint32_play_rule", "uint32_custom_flag", "uint32_product_id", "uint32_gift_id", "uint32_gift_num", "bytes_gift_text", "bytes_send_user_name", "bytes_recv_user_name", "bytes_ticketid", "int32_discount_amount" }, new Object[] { localInteger, Long.valueOf(0L), localInteger, localInteger, localInteger, localInteger, localInteger, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localInteger }, SendFlowerReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x6b6.oidb_0x6b6.SendFlowerReq
  * JD-Core Version:    0.7.0.1
  */

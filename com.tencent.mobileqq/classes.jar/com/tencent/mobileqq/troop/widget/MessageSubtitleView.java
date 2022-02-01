@@ -10,6 +10,7 @@ import android.content.res.Resources;
 import android.os.Handler;
 import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
+import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.RelativeLayout;
@@ -23,7 +24,7 @@ import java.util.Queue;
 public class MessageSubtitleView
   extends RelativeLayout
 {
-  protected static int b;
+  protected static int b = 1;
   protected static int c = 2;
   protected static int d = 3;
   int jdField_a_of_type_Int = 0;
@@ -32,11 +33,6 @@ public class MessageSubtitleView
   protected ArrayList<TextView> a;
   protected Queue<CharSequence> a;
   private final Runnable b;
-  
-  static
-  {
-    jdField_b_of_type_Int = 1;
-  }
   
   public MessageSubtitleView(Context paramContext)
   {
@@ -72,40 +68,31 @@ public class MessageSubtitleView
   
   private void a(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 < 0) || (paramInt1 >= this.jdField_a_of_type_JavaUtilArrayList.size())) {}
-    label135:
-    for (;;)
+    if (paramInt1 >= 0)
     {
-      return;
-      Object localObject = (TextView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1);
-      boolean bool;
-      if (paramInt1 == 0)
-      {
-        bool = true;
-        if (paramInt2 != jdField_b_of_type_Int) {
-          break label95;
-        }
-        localObject = a((TextView)localObject);
+      if (paramInt1 >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+        return;
       }
-      for (;;)
+      TextView localTextView = (TextView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1);
+      boolean bool;
+      if (paramInt1 == 0) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      Object localObject = null;
+      if (paramInt2 == jdField_b_of_type_Int) {
+        localObject = a(localTextView);
+      } else if (paramInt2 == c) {
+        localObject = b(localTextView);
+      } else if (paramInt2 == d) {
+        localObject = a(localTextView);
+      }
+      if (localObject != null)
       {
-        if (localObject == null) {
-          break label135;
-        }
         ((Animator)localObject).setInterpolator(new AccelerateInterpolator(0.2F));
         ((Animator)localObject).addListener(new MessageSubtitleView.TextAnimationListener(this, bool, paramInt2));
         ((Animator)localObject).start();
-        return;
-        bool = false;
-        break;
-        label95:
-        if (paramInt2 == c) {
-          localObject = b((TextView)localObject);
-        } else if (paramInt2 == d) {
-          localObject = a((TextView)localObject);
-        } else {
-          localObject = null;
-        }
       }
     }
   }
@@ -123,24 +110,25 @@ public class MessageSubtitleView
     {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
       d();
-    }
-    do
-    {
       return;
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() == 3)
-      {
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-        d();
-      }
-      a();
-    } while (this.jdField_a_of_type_JavaUtilArrayList.size() != 1);
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_b_of_type_JavaLangRunnable, 8000L);
+    }
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 3)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
+      d();
+    }
+    a();
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 1)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_b_of_type_JavaLangRunnable, 8000L);
+    }
   }
   
   private void d()
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() != 0))
+    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    if ((localArrayList != null) && (localArrayList.size() != 0))
     {
       int i = 0;
       while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
@@ -158,7 +146,7 @@ public class MessageSubtitleView
       Object localObject = getContext();
       CharSequence localCharSequence = (CharSequence)this.jdField_a_of_type_JavaUtilQueue.poll();
       TextView localTextView = new TextView((Context)localObject);
-      localTextView.setShadowLayer(3.0F, 3.0F, 3.0F, 2131165553);
+      localTextView.setShadowLayer(3.0F, 3.0F, 3.0F, 2131165529);
       localTextView.setEllipsize(TextUtils.TruncateAt.END);
       localTextView.setSingleLine(true);
       localTextView.setTextSize(18.0F);
@@ -166,71 +154,66 @@ public class MessageSubtitleView
       localTextView.setTag(Long.valueOf(System.currentTimeMillis()));
       localTextView.setTranslationY(0.0F);
       localTextView.setText(localCharSequence);
-      localObject = new RelativeLayout.LayoutParams(((Context)localObject).getResources().getDimensionPixelSize(2131299088), ((Context)localObject).getResources().getDimensionPixelSize(2131299086));
+      localObject = new RelativeLayout.LayoutParams(((Context)localObject).getResources().getDimensionPixelSize(2131299093), ((Context)localObject).getResources().getDimensionPixelSize(2131299091));
       ((RelativeLayout.LayoutParams)localObject).topMargin = (this.jdField_a_of_type_JavaUtilArrayList.size() * this.jdField_a_of_type_Int);
       addView(localTextView, (ViewGroup.LayoutParams)localObject);
       this.jdField_a_of_type_JavaUtilArrayList.add(localTextView);
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() == 4) {
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() == 4)
+      {
         a(this.jdField_a_of_type_JavaUtilArrayList.size() - 1, jdField_b_of_type_Int);
+        return;
       }
+      a(this.jdField_a_of_type_JavaUtilArrayList.size() - 1, d);
     }
-    else
-    {
-      return;
-    }
-    a(this.jdField_a_of_type_JavaUtilArrayList.size() - 1, d);
   }
   
   void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler(paramContext.getMainLooper());
-    this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131299086);
+    this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131299091);
   }
   
   public void b()
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
-      return;
-    }
-    int i = 0;
-    label20:
-    float f;
-    int j;
-    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    if (localObject != null)
     {
-      TextView localTextView = (TextView)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      f = localTextView.getY();
-      if (f >= 0.0F) {
-        break label83;
+      if (((ArrayList)localObject).size() == 0) {
+        return;
       }
-      removeView(localTextView);
-      this.jdField_a_of_type_JavaUtilArrayList.remove(localTextView);
-      j = i - 1;
-    }
-    for (;;)
-    {
-      i = j + 1;
-      break label20;
-      break;
-      label83:
-      j = i;
-      if (f == 0.0F)
+      int j;
+      for (int i = 0; i < this.jdField_a_of_type_JavaUtilArrayList.size(); i = j + 1)
       {
-        long l2 = 8200L - (System.currentTimeMillis() - ((Long)((TextView)this.jdField_a_of_type_JavaUtilArrayList.get(0)).getTag()).longValue());
-        long l1 = l2;
-        if (l2 <= 0L) {
-          l1 = 1000L;
+        localObject = (TextView)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        float f = ((TextView)localObject).getY();
+        if (f < 0.0F)
+        {
+          removeView((View)localObject);
+          this.jdField_a_of_type_JavaUtilArrayList.remove(localObject);
+          j = i - 1;
         }
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_b_of_type_JavaLangRunnable, l1);
-        j = i;
+        else
+        {
+          j = i;
+          if (f == 0.0F)
+          {
+            long l2 = 8200L - (System.currentTimeMillis() - ((Long)((TextView)this.jdField_a_of_type_JavaUtilArrayList.get(0)).getTag()).longValue());
+            long l1 = l2;
+            if (l2 <= 0L) {
+              l1 = 1000L;
+            }
+            this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
+            this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_b_of_type_JavaLangRunnable, l1);
+            j = i;
+          }
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.MessageSubtitleView
  * JD-Core Version:    0.7.0.1
  */

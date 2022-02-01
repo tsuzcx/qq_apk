@@ -56,8 +56,9 @@ public class DragView
   
   private void onContentMove(float paramFloat)
   {
-    if (this.mGestureChangeListener != null) {
-      this.mGestureChangeListener.onContentMove(paramFloat);
+    DragView.OnGestureChangeListener localOnGestureChangeListener = this.mGestureChangeListener;
+    if (localOnGestureChangeListener != null) {
+      localOnGestureChangeListener.onContentMove(paramFloat);
     }
   }
   
@@ -109,14 +110,18 @@ public class DragView
     if (paramAnimator == this.quitAnim)
     {
       this.mFinishAnimation = true;
-      if (this.mGestureChangeListener != null) {
-        this.mGestureChangeListener.onGestureFinish();
+      paramAnimator = this.mGestureChangeListener;
+      if (paramAnimator != null) {
+        paramAnimator.onGestureFinish();
       }
     }
-    while ((paramAnimator != this.releaseAnim) || (this.mGestureChangeListener == null)) {
-      return;
+    else if (paramAnimator == this.releaseAnim)
+    {
+      paramAnimator = this.mGestureChangeListener;
+      if (paramAnimator != null) {
+        paramAnimator.onResetPosition();
+      }
     }
-    this.mGestureChangeListener.onResetPosition();
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -132,28 +137,35 @@ public class DragView
     Float localFloat1 = localFloat2;
     if (this.quitAnim.getChildAnimations().contains(paramValueAnimator))
     {
-      if (this.originRect != null) {
-        break label128;
+      paramValueAnimator = this.originRect;
+      float f;
+      int i;
+      if (paramValueAnimator == null)
+      {
+        f = getHeight();
+        i = this.curView.getHeight();
       }
-      f = getHeight() / this.curView.getHeight();
-      paramValueAnimator = Float.valueOf(f / localFloat2.floatValue());
-      if (paramValueAnimator.floatValue() <= 1.0F) {
-        break label157;
+      else
+      {
+        f = paramValueAnimator.bottom - this.originRect.top;
+        i = this.curView.getHeight();
       }
-    }
-    label128:
-    label157:
-    for (float f = 1.0F;; f = paramValueAnimator.floatValue())
-    {
+      paramValueAnimator = Float.valueOf(f / i / localFloat2.floatValue());
+      if (paramValueAnimator.floatValue() > 1.0F) {
+        f = 1.0F;
+      } else {
+        f = paramValueAnimator.floatValue();
+      }
       localFloat1 = Float.valueOf(1.0F - Float.valueOf(f).floatValue());
-      if (QLog.isColorLevel()) {
-        QLog.d("DragView", 2, "onAnimationUpdate : " + localFloat1);
-      }
-      onContentMove(localFloat1.floatValue() - this.alphaOffset);
-      return;
-      f = (this.originRect.bottom - this.originRect.top) / this.curView.getHeight();
-      break;
     }
+    if (QLog.isColorLevel())
+    {
+      paramValueAnimator = new StringBuilder();
+      paramValueAnimator.append("onAnimationUpdate : ");
+      paramValueAnimator.append(localFloat1);
+      QLog.d("DragView", 2, paramValueAnimator.toString());
+    }
+    onContentMove(localFloat1.floatValue() - this.alphaOffset);
   }
   
   public boolean onDown(MotionEvent paramMotionEvent)
@@ -172,16 +184,16 @@ public class DragView
       return false;
     }
     paramMotionEvent1 = this.quitAnim.getChildAnimations();
-    int k;
     if ((this.originRect != null) && (this.curView != null) && (paramMotionEvent1 != null) && (paramMotionEvent1.size() == 4))
     {
-      k = this.curView.getWidth();
+      int k = this.curView.getWidth();
       int m = this.curView.getHeight();
+      paramMotionEvent2 = this.mDragChangeListener;
       int j = m;
       int i = k;
-      if (this.mDragChangeListener != null)
+      if (paramMotionEvent2 != null)
       {
-        paramMotionEvent2 = this.mDragChangeListener.onModifyCurViewSize();
+        paramMotionEvent2 = paramMotionEvent2.onModifyCurViewSize();
         j = m;
         i = k;
         if (paramMotionEvent2 != null)
@@ -191,28 +203,44 @@ public class DragView
         }
       }
       paramMotionEvent2 = new Rect(this.originRect);
-      if (this.ratioModify) {
+      if (this.ratioModify)
+      {
         paramFloat1 = i / j;
-      }
-      try
-      {
-        paramFloat2 = this.originRect.width() / this.originRect.height();
-        if (QLog.isColorLevel()) {
-          QLog.d("DragView", 2, "sonRatio : " + paramFloat2 + "  parentRatio : " + paramFloat1 + " getWidth() : " + getWidth() + " getHeight() : " + getHeight() + " oriHeight :" + this.originRect.height() + " oriWidth : " + this.originRect.width());
-        }
-        if (paramFloat2 >= paramFloat1) {
-          break label506;
-        }
-        k = (int)(paramFloat1 * this.originRect.height() - this.originRect.width()) / 2;
-        paramMotionEvent2.left -= k;
-        paramMotionEvent2.right = (k + paramMotionEvent2.right);
-      }
-      catch (Exception localException)
-      {
-        for (;;)
+        try
         {
-          float f1;
-          float f2;
+          paramFloat2 = this.originRect.width() / this.originRect.height();
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("sonRatio : ");
+            localStringBuilder.append(paramFloat2);
+            localStringBuilder.append("  parentRatio : ");
+            localStringBuilder.append(paramFloat1);
+            localStringBuilder.append(" getWidth() : ");
+            localStringBuilder.append(getWidth());
+            localStringBuilder.append(" getHeight() : ");
+            localStringBuilder.append(getHeight());
+            localStringBuilder.append(" oriHeight :");
+            localStringBuilder.append(this.originRect.height());
+            localStringBuilder.append(" oriWidth : ");
+            localStringBuilder.append(this.originRect.width());
+            QLog.d("DragView", 2, localStringBuilder.toString());
+          }
+          if (paramFloat2 < paramFloat1)
+          {
+            k = (int)(this.originRect.height() * paramFloat1 - this.originRect.width()) / 2;
+            paramMotionEvent2.left -= k;
+            paramMotionEvent2.right += k;
+          }
+          else if (paramFloat2 > paramFloat1)
+          {
+            k = (int)(this.originRect.width() / paramFloat1 - this.originRect.height()) / 2;
+            paramMotionEvent2.top -= k;
+            paramMotionEvent2.bottom += k;
+          }
+        }
+        catch (Exception localException)
+        {
           if (QLog.isColorLevel()) {
             QLog.d("DragView", 2, ThrowablesUtils.a(localException));
           }
@@ -220,31 +248,25 @@ public class DragView
       }
       paramFloat1 = (paramMotionEvent2.left + paramMotionEvent2.right) / 2 - getWidth() / 2;
       paramFloat2 = (paramMotionEvent2.top + paramMotionEvent2.bottom) / 2 - getHeight() / 2;
-      f1 = (paramMotionEvent2.right - paramMotionEvent2.left) / i;
-      f2 = (paramMotionEvent2.bottom - paramMotionEvent2.top) / j;
+      float f1 = (paramMotionEvent2.right - paramMotionEvent2.left) / i;
+      float f2 = (paramMotionEvent2.bottom - paramMotionEvent2.top) / j;
       ((ObjectAnimator)paramMotionEvent1.get(0)).setFloatValues(new float[] { paramFloat1 });
       ((ObjectAnimator)paramMotionEvent1.get(1)).setFloatValues(new float[] { paramFloat2 });
       ((ObjectAnimator)paramMotionEvent1.get(2)).setFloatValues(new float[] { f1 });
       ((ObjectAnimator)paramMotionEvent1.get(3)).setFloatValues(new float[] { f2 });
-      this.curView.setPivotX(this.curView.getWidth() / 2);
-      this.curView.setPivotY(this.curView.getHeight() / 2);
+      paramMotionEvent1 = this.curView;
+      paramMotionEvent1.setPivotX(paramMotionEvent1.getWidth() / 2);
+      paramMotionEvent1 = this.curView;
+      paramMotionEvent1.setPivotY(paramMotionEvent1.getHeight() / 2);
     }
-    for (;;)
+    else
     {
-      this.quitAnim.setupStartValues();
-      this.quitAnim.start();
-      return true;
-      label506:
-      if (paramFloat2 <= paramFloat1) {
-        break;
-      }
-      k = (int)(this.originRect.width() / paramFloat1 - this.originRect.height()) / 2;
-      paramMotionEvent2.top -= k;
-      paramMotionEvent2.bottom = (k + paramMotionEvent2.bottom);
-      break;
       this.curView.setPivotX(getWidth() / 2);
       this.curView.setPivotY(getHeight() / 2);
     }
+    this.quitAnim.setupStartValues();
+    this.quitAnim.start();
+    return true;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -252,9 +274,7 @@ public class DragView
     if (!this.enableDrag) {
       return false;
     }
-    switch (paramMotionEvent.getAction())
-    {
-    default: 
+    if (paramMotionEvent.getAction() != 0) {
       return true;
     }
     this.mGestureDetector.onTouchEvent(paramMotionEvent);
@@ -265,78 +285,76 @@ public class DragView
   
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    float f = 0.0F;
     if (this.curView == null) {
       return false;
     }
     this.mScrollDisX -= paramFloat1;
     this.mScrollDisY -= paramFloat2;
-    if (this.mScrollDisY < 0.0F)
-    {
-      paramFloat1 = f;
-      f = 1.0F - paramFloat1 / getHeight();
-      this.curView.setPivotX(this.downX - this.curView.getLeft());
-      this.curView.setPivotY(this.downY - this.curView.getTop());
-      if (f <= this.scaleThreshold) {
-        break label178;
-      }
+    paramFloat2 = this.mScrollDisY;
+    paramFloat1 = paramFloat2;
+    if (paramFloat2 < 0.0F) {
+      paramFloat1 = 0.0F;
     }
-    label178:
-    for (paramFloat2 = f;; paramFloat2 = this.scaleThreshold)
-    {
-      this.scale = paramFloat2;
-      this.curView.setScaleX(this.scale);
-      this.curView.setScaleY(this.scale);
-      this.curView.setTranslationX(this.mScrollDisX);
-      this.curView.setTranslationY(paramFloat1);
-      onContentMove(f - this.alphaOffset);
-      return false;
-      paramFloat1 = this.mScrollDisY;
-      break;
+    float f1 = 1.0F - paramFloat1 / getHeight();
+    paramMotionEvent1 = this.curView;
+    paramMotionEvent1.setPivotX(this.downX - paramMotionEvent1.getLeft());
+    paramMotionEvent1 = this.curView;
+    paramMotionEvent1.setPivotY(this.downY - paramMotionEvent1.getTop());
+    float f2 = this.scaleThreshold;
+    paramFloat2 = f2;
+    if (f1 > f2) {
+      paramFloat2 = f1;
     }
+    this.scale = paramFloat2;
+    this.curView.setScaleX(this.scale);
+    this.curView.setScaleY(this.scale);
+    this.curView.setTranslationX(this.mScrollDisX);
+    this.curView.setTranslationY(paramFloat1);
+    onContentMove(f1 - this.alphaOffset);
+    return false;
   }
   
   public void onShowPress(MotionEvent paramMotionEvent) {}
   
   public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    if (this.mGestureChangeListener != null) {
-      this.mGestureChangeListener.onClickDragView();
+    paramMotionEvent = this.mGestureChangeListener;
+    if (paramMotionEvent != null) {
+      paramMotionEvent.onClickDragView();
     }
     return true;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
+    boolean bool = this.isInAnimation;
     int i = 0;
-    if (this.isInAnimation) {
+    if (bool) {
       return false;
     }
     int j = paramMotionEvent.getAction();
-    if (j == 0) {
+    if (j == 0)
+    {
       this.firstDown = true;
     }
-    for (;;)
+    else if (j == 1)
     {
-      if (paramMotionEvent.getAction() == 1) {
-        i = 1;
-      }
-      if ((!this.mGestureDetector.onTouchEvent(paramMotionEvent)) && (i != 0)) {
-        onUP(paramMotionEvent);
-      }
-      return true;
-      if (j == 1)
-      {
-        this.firstDown = false;
-      }
-      else if ((j == 2) && (!this.firstDown))
-      {
-        MotionEvent localMotionEvent = MotionEvent.obtain(paramMotionEvent);
-        localMotionEvent.setAction(0);
-        this.mGestureDetector.onTouchEvent(localMotionEvent);
-        this.firstDown = true;
-      }
+      this.firstDown = false;
     }
+    else if ((j == 2) && (!this.firstDown))
+    {
+      MotionEvent localMotionEvent = MotionEvent.obtain(paramMotionEvent);
+      localMotionEvent.setAction(0);
+      this.mGestureDetector.onTouchEvent(localMotionEvent);
+      this.firstDown = true;
+    }
+    if (paramMotionEvent.getAction() == 1) {
+      i = 1;
+    }
+    if ((!this.mGestureDetector.onTouchEvent(paramMotionEvent)) && (i != 0)) {
+      onUP(paramMotionEvent);
+    }
+    return true;
   }
   
   public void setDragChangeListener(DragView.OnDragChangeListener paramOnDragChangeListener)
@@ -366,7 +384,7 @@ public class DragView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.DragView
  * JD-Core Version:    0.7.0.1
  */

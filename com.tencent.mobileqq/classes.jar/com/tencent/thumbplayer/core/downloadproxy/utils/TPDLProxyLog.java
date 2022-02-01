@@ -10,32 +10,59 @@ public class TPDLProxyLog
   
   public static void d(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    if (mLogListener != null)
+    Object localObject = mLogListener;
+    if (localObject != null)
     {
-      mLogListener.d(paramString1, paramInt, paramString2, paramString3);
+      ((ITPDLProxyLogListener)localObject).d(paramString1, paramInt, paramString2, paramString3);
       return;
     }
-    Log.d("[" + paramString2 + "][" + paramString1 + ":" + paramInt + "]", paramString3);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[");
+    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append("][");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(":");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("]");
+    Log.d(((StringBuilder)localObject).toString(), paramString3);
   }
   
   public static void e(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    if (mLogListener != null)
+    Object localObject = mLogListener;
+    if (localObject != null)
     {
-      mLogListener.e(paramString1, paramInt, paramString2, paramString3);
+      ((ITPDLProxyLogListener)localObject).e(paramString1, paramInt, paramString2, paramString3);
       return;
     }
-    Log.e("[" + paramString2 + "][" + paramString1 + ":" + paramInt + "]", paramString3);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[");
+    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append("][");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(":");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("]");
+    Log.e(((StringBuilder)localObject).toString(), paramString3);
   }
   
   public static void i(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    if (mLogListener != null)
+    Object localObject = mLogListener;
+    if (localObject != null)
     {
-      mLogListener.i(paramString1, paramInt, paramString2, paramString3);
+      ((ITPDLProxyLogListener)localObject).i(paramString1, paramInt, paramString2, paramString3);
       return;
     }
-    Log.i("[" + paramString2 + "][" + paramString1 + ":" + paramInt + "]", paramString3);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[");
+    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append("][");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(":");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("]");
+    Log.i(((StringBuilder)localObject).toString(), paramString3);
   }
   
   public static void setLogListener(int paramInt, ITPDLProxyLogListener paramITPDLProxyLogListener)
@@ -46,17 +73,26 @@ public class TPDLProxyLog
   
   public static void w(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    if (mLogListener != null)
+    Object localObject = mLogListener;
+    if (localObject != null)
     {
-      mLogListener.w(paramString1, paramInt, paramString2, paramString3);
+      ((ITPDLProxyLogListener)localObject).w(paramString1, paramInt, paramString2, paramString3);
       return;
     }
-    Log.w("[" + paramString2 + "][" + paramString1 + ":" + paramInt + "]", paramString3);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[");
+    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append("][");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(":");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("]");
+    Log.w(((StringBuilder)localObject).toString(), paramString3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.utils.TPDLProxyLog
  * JD-Core Version:    0.7.0.1
  */

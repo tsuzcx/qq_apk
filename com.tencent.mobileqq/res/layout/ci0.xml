@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/mio" android:padding="8.0dip" android:focusable="true" android:clickable="true" android:layout_width="156.0dip" android:layout_height="156.0dip" android:minHeight="156.0dip"
+<RelativeLayout android:id="@id/e6w" android:background="@drawable/jm" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="56.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:gravity="center" android:id="@id/mh_" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:gravity="center" android:layout_gravity="center" android:id="@id/mha" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <TextView android:textSize="20.0dip" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/mhb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="24.0dip" />
-</FrameLayout>
+    <com.tencent.mobileqq.widget.RoundRelativeLayout android:id="@id/ifh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:id="@id/ibc" android:background="@drawable/jm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.mobileqq.widget.RoundRelativeLayout>
+    <com.tencent.widget.ThemeImageView android:id="@id/letsIcon" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="20.0dip" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <RelativeLayout android:id="@id/ibo" android:layout_width="28.0dip" android:layout_height="15.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <ImageView android:id="@id/yx" android:duplicateParentState="true" android:layout_width="7.0dip" android:layout_height="11.5dip" android:src="@drawable/common_arrow_right_selector" android:layout_alignParentLeft="true" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <TextView android:textSize="@dimen/j1" android:textColor="@color/skin_black_theme_version2" android:gravity="center_vertical" android:id="@id/nyz" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:singleLine="true" android:layout_toRightOf="@id/letsIcon" android:layout_centerVertical="true" />
+    <TextView android:id="@id/nz1" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/rs" android:layout_marginBottom="@dimen/rq" android:layout_toRightOf="@id/nyz" android:layout_centerVertical="true" style="@style/hb" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2_theme_version2" android:gravity="center_vertical" android:id="@id/nz4" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="58.0dip" android:singleLine="true" android:layout_toLeftOf="@id/ibo" android:layout_centerVertical="true" />
+    <TextView android:id="@id/nz0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:layout_marginBottom="@dimen/rq" android:layout_toLeftOf="@id/ibo" android:layout_centerVertical="true" style="@style/hb" />
+    <RelativeLayout android:paddingRight="7.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:layout_toLeftOf="@id/ibo" android:layout_toRightOf="@id/nyz" android:layout_centerInParent="true">
+        <RelativeLayout android:id="@id/nyt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <ImageSwitcher android:id="@id/nyx" android:visibility="gone" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginRight="36.0dip" android:layout_alignParentRight="true" android:layout_centerInParent="true" />
+            <ImageSwitcher android:id="@id/nyw" android:visibility="gone" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginRight="8.0dip" android:layout_alignParentRight="true" android:layout_centerInParent="true" />
+            <ImageView android:id="@id/nyy" android:visibility="gone" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginRight="7.0dip" android:src="@drawable/g0q" android:layout_alignParentRight="true" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <TextView android:textSize="14.0dip" android:textColor="@color/qzone_skin_feed_second_content_text_color" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/nz3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="120.0dip" android:maxLines="1" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TextView android:id="@id/nz2" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/rm" android:layout_above="@id/nyv" android:layout_alignParentRight="true" style="@style/cg" />
+        <View android:id="@id/nyv" android:layout_width="1.0px" android:layout_height="1.0px" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</RelativeLayout>

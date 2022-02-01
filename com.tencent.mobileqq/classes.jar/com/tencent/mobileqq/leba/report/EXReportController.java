@@ -46,41 +46,62 @@ public class EXReportController
   {
     if (paramEXBaseReportItem == null)
     {
-      ExceptionTracker.trackException("EXReportController", "[EXReport runtime] Tag(" + paramString + ") report item is null");
-      if (QLog.isColorLevel()) {}
-    }
-    do
-    {
-      return;
-      QLog.d("EXReportController", 2, "[EXReport runtime] tag = " + paramString + "  report item is null");
-      return;
-      if ((!TextUtils.isEmpty(paramEXBaseReportItem.i)) && (!TextUtils.isEmpty(paramEXBaseReportItem.k)) && (!TextUtils.isEmpty(paramEXBaseReportItem.j))) {
-        break;
+      paramAppRuntime = new StringBuilder();
+      paramAppRuntime.append("[EXReport runtime] Tag(");
+      paramAppRuntime.append(paramString);
+      paramAppRuntime.append(") report item is null");
+      ExceptionTracker.trackException("EXReportController", paramAppRuntime.toString());
+      if (!QLog.isColorLevel()) {
+        return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("EXReportController", 2, "[EXReport runtime] tag = " + paramString + " item.sopType must not empty");
-    return;
-    paramEXBaseReportItem.b = NetConnInfoCenter.getServerTime();
-    if (!QLog.isColorLevel()) {}
-    while (paramAppRuntime == null)
-    {
-      paramAppRuntime = a(paramEXBaseReportItem, 1);
-      Intent localIntent = new Intent();
-      localIntent.setClassName(BaseApplication.getContext(), "com.tencent.mobileqq.statistics.ReportReceiver");
-      localIntent.putExtra("reporting_tag", paramString);
-      localIntent.putExtra("reporting_detail", paramAppRuntime);
-      localIntent.putExtra("reporting_count", paramEXBaseReportItem.c);
-      localIntent.putExtra("is_runtime", 1);
-      BaseApplication.getContext().sendBroadcast(localIntent);
+      paramAppRuntime = new StringBuilder();
+      paramAppRuntime.append("[EXReport runtime] tag = ");
+      paramAppRuntime.append(paramString);
+      paramAppRuntime.append("  report item is null");
+      QLog.d("EXReportController", 2, paramAppRuntime.toString());
       return;
-      QLog.d("EXReportController", 2, "[EXReport runtime] tag = " + paramString + ", content = " + paramEXBaseReportItem.toString());
     }
-    a(paramString, paramAppRuntime, a(paramEXBaseReportItem, 1));
+    if ((!TextUtils.isEmpty(paramEXBaseReportItem.i)) && (!TextUtils.isEmpty(paramEXBaseReportItem.k)) && (!TextUtils.isEmpty(paramEXBaseReportItem.j)))
+    {
+      paramEXBaseReportItem.b = NetConnInfoCenter.getServerTime();
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[EXReport runtime] tag = ");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(", content = ");
+        ((StringBuilder)localObject).append(paramEXBaseReportItem.toString());
+        QLog.d("EXReportController", 2, ((StringBuilder)localObject).toString());
+      }
+      if (paramAppRuntime == null)
+      {
+        paramAppRuntime = a(paramEXBaseReportItem, 1);
+        localObject = new Intent();
+        ((Intent)localObject).setClassName(BaseApplication.getContext(), "com.tencent.mobileqq.statistics.ReportReceiver");
+        ((Intent)localObject).putExtra("reporting_tag", paramString);
+        ((Intent)localObject).putExtra("reporting_detail", paramAppRuntime);
+        ((Intent)localObject).putExtra("reporting_count", paramEXBaseReportItem.c);
+        ((Intent)localObject).putExtra("is_runtime", 1);
+        BaseApplication.getContext().sendBroadcast((Intent)localObject);
+        return;
+      }
+      a(paramString, paramAppRuntime, a(paramEXBaseReportItem, 1));
+      return;
+    }
+    if (!QLog.isColorLevel()) {
+      return;
+    }
+    paramAppRuntime = new StringBuilder();
+    paramAppRuntime.append("[EXReport runtime] tag = ");
+    paramAppRuntime.append(paramString);
+    paramAppRuntime.append(" item.sopType must not empty");
+    QLog.d("EXReportController", 2, paramAppRuntime.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.report.EXReportController
  * JD-Core Version:    0.7.0.1
  */

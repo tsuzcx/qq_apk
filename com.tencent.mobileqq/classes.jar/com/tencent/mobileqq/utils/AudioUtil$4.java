@@ -17,19 +17,20 @@ final class AudioUtil$4
     {
       if (this.jdField_a_of_type_AndroidMediaMediaPlayer$OnCompletionListener != null)
       {
-        if ((this.jdField_a_of_type_AndroidOsHandler == null) || (this.jdField_a_of_type_AndroidOsHandler.getLooper() == Looper.myLooper()))
+        paramMediaPlayer = this.jdField_a_of_type_AndroidOsHandler;
+        if ((paramMediaPlayer != null) && (paramMediaPlayer.getLooper() != Looper.myLooper()))
         {
           if (QLog.isColorLevel()) {
-            QLog.d("AudioUtil", 2, "MediaPlayerStart, onCompletion, onCompletion branch 1");
+            QLog.d("AudioUtil", 2, "MediaPlayerStart, onCompletion, onCompletion branch 2");
           }
-          this.jdField_a_of_type_AndroidMediaMediaPlayer$OnCompletionListener.onCompletion(AudioUtil.a);
+          AudioUtil.a();
+          this.jdField_a_of_type_AndroidOsHandler.post(new AudioUtil.4.1(this));
           return;
         }
         if (QLog.isColorLevel()) {
-          QLog.d("AudioUtil", 2, "MediaPlayerStart, onCompletion, onCompletion branch 2");
+          QLog.d("AudioUtil", 2, "MediaPlayerStart, onCompletion, onCompletion branch 1");
         }
-        AudioUtil.a();
-        this.jdField_a_of_type_AndroidOsHandler.post(new AudioUtil.4.1(this));
+        this.jdField_a_of_type_AndroidMediaMediaPlayer$OnCompletionListener.onCompletion(AudioUtil.a);
         return;
       }
       AudioUtil.a();
@@ -41,7 +42,7 @@ final class AudioUtil$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.AudioUtil.4
  * JD-Core Version:    0.7.0.1
  */

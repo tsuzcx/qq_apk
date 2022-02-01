@@ -50,10 +50,12 @@ public abstract class RecyclerView$ViewHolder
   
   public RecyclerView$ViewHolder(@NonNull View paramView)
   {
-    if (paramView == null) {
-      throw new IllegalArgumentException("itemView may not be null");
+    if (paramView != null)
+    {
+      this.itemView = paramView;
+      return;
     }
-    this.itemView = paramView;
+    throw new IllegalArgumentException("itemView may not be null");
   }
   
   private void createPayloadsIfNeeded()
@@ -67,19 +69,21 @@ public abstract class RecyclerView$ViewHolder
   
   void addChangePayload(Object paramObject)
   {
-    if (paramObject == null) {
+    if (paramObject == null)
+    {
       addFlags(1024);
-    }
-    while ((this.mFlags & 0x400) != 0) {
       return;
     }
-    createPayloadsIfNeeded();
-    this.mPayloads.add(paramObject);
+    if ((0x400 & this.mFlags) == 0)
+    {
+      createPayloadsIfNeeded();
+      this.mPayloads.add(paramObject);
+    }
   }
   
   void addFlags(int paramInt)
   {
-    this.mFlags |= paramInt;
+    this.mFlags = (paramInt | this.mFlags);
   }
   
   void clearOldPosition()
@@ -90,8 +94,9 @@ public abstract class RecyclerView$ViewHolder
   
   void clearPayload()
   {
-    if (this.mPayloads != null) {
-      this.mPayloads.clear();
+    List localList = this.mPayloads;
+    if (localList != null) {
+      localList.clear();
     }
     this.mFlags &= 0xFFFFFBFF;
   }
@@ -120,10 +125,11 @@ public abstract class RecyclerView$ViewHolder
   
   public final int getAdapterPosition()
   {
-    if (this.mOwnerRecyclerView == null) {
+    RecyclerView localRecyclerView = this.mOwnerRecyclerView;
+    if (localRecyclerView == null) {
       return -1;
     }
-    return this.mOwnerRecyclerView.getAdapterPositionFor(this);
+    return localRecyclerView.getAdapterPositionFor(this);
   }
   
   public final long getItemId()
@@ -138,10 +144,12 @@ public abstract class RecyclerView$ViewHolder
   
   public final int getLayoutPosition()
   {
-    if (this.mPreLayoutPosition == -1) {
-      return this.mPosition;
+    int j = this.mPreLayoutPosition;
+    int i = j;
+    if (j == -1) {
+      i = this.mPosition;
     }
-    return this.mPreLayoutPosition;
+    return i;
   }
   
   public final int getOldPosition()
@@ -152,27 +160,30 @@ public abstract class RecyclerView$ViewHolder
   @Deprecated
   public final int getPosition()
   {
-    if (this.mPreLayoutPosition == -1) {
-      return this.mPosition;
+    int j = this.mPreLayoutPosition;
+    int i = j;
+    if (j == -1) {
+      i = this.mPosition;
     }
-    return this.mPreLayoutPosition;
+    return i;
   }
   
   List<Object> getUnmodifiedPayloads()
   {
     if ((this.mFlags & 0x400) == 0)
     {
-      if ((this.mPayloads == null) || (this.mPayloads.size() == 0)) {
-        return FULLUPDATE_PAYLOADS;
+      List localList = this.mPayloads;
+      if ((localList != null) && (localList.size() != 0)) {
+        return this.mUnmodifiedPayloads;
       }
-      return this.mUnmodifiedPayloads;
+      return FULLUPDATE_PAYLOADS;
     }
     return FULLUPDATE_PAYLOADS;
   }
   
   boolean hasAnyOfTheFlags(int paramInt)
   {
-    return (this.mFlags & paramInt) != 0;
+    return (paramInt & this.mFlags) != 0;
   }
   
   boolean isAdapterPositionUnknown()
@@ -244,12 +255,13 @@ public abstract class RecyclerView$ViewHolder
   
   void onEnteredHiddenState(RecyclerView paramRecyclerView)
   {
-    if (this.mPendingAccessibilityState != -1) {}
-    for (this.mWasImportantForAccessibilityBeforeHidden = this.mPendingAccessibilityState;; this.mWasImportantForAccessibilityBeforeHidden = ViewCompat.getImportantForAccessibility(this.itemView))
-    {
-      paramRecyclerView.setChildImportantForAccessibilityInternal(this, 4);
-      return;
+    int i = this.mPendingAccessibilityState;
+    if (i != -1) {
+      this.mWasImportantForAccessibilityBeforeHidden = i;
+    } else {
+      this.mWasImportantForAccessibilityBeforeHidden = ViewCompat.getImportantForAccessibility(this.itemView);
     }
+    paramRecyclerView.setChildImportantForAccessibilityInternal(this, 4);
   }
   
   void onLeftHiddenState(RecyclerView paramRecyclerView)
@@ -283,35 +295,35 @@ public abstract class RecyclerView$ViewHolder
   
   void setFlags(int paramInt1, int paramInt2)
   {
-    this.mFlags = (this.mFlags & (paramInt2 ^ 0xFFFFFFFF) | paramInt1 & paramInt2);
+    this.mFlags = (paramInt1 & paramInt2 | this.mFlags & (paramInt2 ^ 0xFFFFFFFF));
   }
   
   public final void setIsRecyclable(boolean paramBoolean)
   {
-    int i;
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       i = this.mIsRecyclableCount - 1;
-      this.mIsRecyclableCount = i;
-      if (this.mIsRecyclableCount >= 0) {
-        break label64;
-      }
-      this.mIsRecyclableCount = 0;
-      Log.e("View", "isRecyclable decremented below 0: unmatched pair of setIsRecyable() calls for " + this);
-    }
-    label64:
-    do
-    {
-      return;
+    } else {
       i = this.mIsRecyclableCount + 1;
-      break;
-      if ((!paramBoolean) && (this.mIsRecyclableCount == 1))
-      {
-        this.mFlags |= 0x10;
-        return;
-      }
-    } while ((!paramBoolean) || (this.mIsRecyclableCount != 0));
-    this.mFlags &= 0xFFFFFFEF;
+    }
+    this.mIsRecyclableCount = i;
+    int i = this.mIsRecyclableCount;
+    if (i < 0)
+    {
+      this.mIsRecyclableCount = 0;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isRecyclable decremented below 0: unmatched pair of setIsRecyable() calls for ");
+      localStringBuilder.append(this);
+      Log.e("View", localStringBuilder.toString());
+      return;
+    }
+    if ((!paramBoolean) && (i == 1))
+    {
+      this.mFlags |= 0x10;
+      return;
+    }
+    if ((paramBoolean) && (this.mIsRecyclableCount == 0)) {
+      this.mFlags &= 0xFFFFFFEF;
+    }
   }
   
   void setScrapContainer(RecyclerView.Recycler paramRecycler, boolean paramBoolean)
@@ -337,56 +349,69 @@ public abstract class RecyclerView$ViewHolder
   
   public String toString()
   {
-    StringBuilder localStringBuilder1;
-    StringBuilder localStringBuilder2;
-    if (getClass().isAnonymousClass())
-    {
-      str = "ViewHolder";
-      localStringBuilder1 = new StringBuilder(str + "{" + Integer.toHexString(hashCode()) + " position=" + this.mPosition + " id=" + this.mItemId + ", oldPos=" + this.mOldPosition + ", pLpos:" + this.mPreLayoutPosition);
-      if (isScrap())
-      {
-        localStringBuilder2 = localStringBuilder1.append(" scrap ");
-        if (!this.mInChangeScrap) {
-          break label324;
-        }
-      }
+    Object localObject;
+    if (getClass().isAnonymousClass()) {
+      localObject = "ViewHolder";
+    } else {
+      localObject = getClass().getSimpleName();
     }
-    label324:
-    for (String str = "[changeScrap]";; str = "[attachedScrap]")
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("{");
+    localStringBuilder.append(Integer.toHexString(hashCode()));
+    localStringBuilder.append(" position=");
+    localStringBuilder.append(this.mPosition);
+    localStringBuilder.append(" id=");
+    localStringBuilder.append(this.mItemId);
+    localStringBuilder.append(", oldPos=");
+    localStringBuilder.append(this.mOldPosition);
+    localStringBuilder.append(", pLpos:");
+    localStringBuilder.append(this.mPreLayoutPosition);
+    localStringBuilder = new StringBuilder(localStringBuilder.toString());
+    if (isScrap())
     {
-      localStringBuilder2.append(str);
-      if (isInvalid()) {
-        localStringBuilder1.append(" invalid");
+      localStringBuilder.append(" scrap ");
+      if (this.mInChangeScrap) {
+        localObject = "[changeScrap]";
+      } else {
+        localObject = "[attachedScrap]";
       }
-      if (!isBound()) {
-        localStringBuilder1.append(" unbound");
-      }
-      if (needsUpdate()) {
-        localStringBuilder1.append(" update");
-      }
-      if (isRemoved()) {
-        localStringBuilder1.append(" removed");
-      }
-      if (shouldIgnore()) {
-        localStringBuilder1.append(" ignored");
-      }
-      if (isTmpDetached()) {
-        localStringBuilder1.append(" tmpDetached");
-      }
-      if (!isRecyclable()) {
-        localStringBuilder1.append(" not recyclable(" + this.mIsRecyclableCount + ")");
-      }
-      if (isAdapterPositionUnknown()) {
-        localStringBuilder1.append(" undefined adapter position");
-      }
-      if (this.itemView.getParent() == null) {
-        localStringBuilder1.append(" no parent");
-      }
-      localStringBuilder1.append("}");
-      return localStringBuilder1.toString();
-      str = getClass().getSimpleName();
-      break;
+      localStringBuilder.append((String)localObject);
     }
+    if (isInvalid()) {
+      localStringBuilder.append(" invalid");
+    }
+    if (!isBound()) {
+      localStringBuilder.append(" unbound");
+    }
+    if (needsUpdate()) {
+      localStringBuilder.append(" update");
+    }
+    if (isRemoved()) {
+      localStringBuilder.append(" removed");
+    }
+    if (shouldIgnore()) {
+      localStringBuilder.append(" ignored");
+    }
+    if (isTmpDetached()) {
+      localStringBuilder.append(" tmpDetached");
+    }
+    if (!isRecyclable())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" not recyclable(");
+      ((StringBuilder)localObject).append(this.mIsRecyclableCount);
+      ((StringBuilder)localObject).append(")");
+      localStringBuilder.append(((StringBuilder)localObject).toString());
+    }
+    if (isAdapterPositionUnknown()) {
+      localStringBuilder.append(" undefined adapter position");
+    }
+    if (this.itemView.getParent() == null) {
+      localStringBuilder.append(" no parent");
+    }
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
   void unScrap()
@@ -401,7 +426,7 @@ public abstract class RecyclerView$ViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.RecyclerView.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

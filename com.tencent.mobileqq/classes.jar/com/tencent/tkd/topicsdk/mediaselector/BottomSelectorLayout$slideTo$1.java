@@ -17,16 +17,19 @@ final class BottomSelectorLayout$slideTo$1
     BottomSelectorLayout localBottomSelectorLayout = this.a;
     Intrinsics.checkExpressionValueIsNotNull(paramValueAnimator, "it");
     paramValueAnimator = paramValueAnimator.getAnimatedValue();
-    if (paramValueAnimator == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Float");
+    if (paramValueAnimator != null)
+    {
+      localBottomSelectorLayout.setTranslationY(((Float)paramValueAnimator).floatValue());
+      paramValueAnimator = this.a;
+      BottomSelectorLayout.a(paramValueAnimator, paramValueAnimator.getTranslationY());
+      return;
     }
-    localBottomSelectorLayout.setTranslationY(((Float)paramValueAnimator).floatValue());
-    BottomSelectorLayout.a(this.a, this.a.getTranslationY());
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.Float");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.BottomSelectorLayout.slideTo.1
  * JD-Core Version:    0.7.0.1
  */

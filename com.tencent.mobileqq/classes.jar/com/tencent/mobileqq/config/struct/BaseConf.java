@@ -44,27 +44,24 @@ public abstract class BaseConf
   
   public void a(String paramString)
   {
-    if ((paramString == null) || (paramString.trim().equals(""))) {}
-    label85:
-    for (;;)
+    if (paramString != null)
     {
-      return;
+      if (paramString.trim().equals("")) {
+        return;
+      }
       int i = 0;
-      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
         PicAndAdConf.PicStruct localPicStruct = (PicAndAdConf.PicStruct)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if ((localPicStruct.d == null) || (!localPicStruct.d.contains(paramString))) {}
-      }
-      for (;;)
-      {
-        if (i == -1) {
-          break label85;
+        if ((localPicStruct.d != null) && (localPicStruct.d.contains(paramString))) {
+          break label72;
         }
-        this.jdField_a_of_type_JavaUtilArrayList.remove(i);
-        return;
         i += 1;
-        break;
-        i = -1;
+      }
+      i = -1;
+      label72:
+      if (i != -1) {
+        this.jdField_a_of_type_JavaUtilArrayList.remove(i);
       }
     }
   }
@@ -76,7 +73,8 @@ public abstract class BaseConf
   
   public final boolean a()
   {
-    return (this.c > 0L) && (this.c <= System.currentTimeMillis());
+    long l = this.c;
+    return (l > 0L) && (l <= System.currentTimeMillis());
   }
   
   public void b()
@@ -91,7 +89,7 @@ public abstract class BaseConf
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.struct.BaseConf
  * JD-Core Version:    0.7.0.1
  */

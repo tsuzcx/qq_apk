@@ -10,12 +10,15 @@ class ArConfigService$ArConfigManagerStub$2
   public void run()
   {
     ArConfigService.a(this.jdField_a_of_type_ComTencentMobileqqArArConfigService, this.jdField_a_of_type_Int);
-    QLog.d("ArConfig_ArConfigService", 1, "downloadArSo first progress " + this.jdField_a_of_type_Int);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("downloadArSo first progress ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    QLog.d("ArConfig_ArConfigService", 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArConfigService.ArConfigManagerStub.2
  * JD-Core Version:    0.7.0.1
  */

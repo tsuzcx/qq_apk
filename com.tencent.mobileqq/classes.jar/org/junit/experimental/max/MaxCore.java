@@ -34,15 +34,20 @@ public class MaxCore
     if (paramDescription.toString().startsWith("malformed JUnit 3 test class: ")) {
       return new JUnit38ClassRunner(new TestSuite(getMalformedTestClass(paramDescription)));
     }
-    Class localClass = paramDescription.getTestClass();
-    if (localClass == null) {
-      throw new RuntimeException("Can't build a runner from description [" + paramDescription + "]");
+    Object localObject = paramDescription.getTestClass();
+    if (localObject != null)
+    {
+      paramDescription = paramDescription.getMethodName();
+      if (paramDescription == null) {
+        return Request.aClass((Class)localObject).getRunner();
+      }
+      return Request.method((Class)localObject, paramDescription).getRunner();
     }
-    paramDescription = paramDescription.getMethodName();
-    if (paramDescription == null) {
-      return Request.aClass(localClass).getRunner();
-    }
-    return Request.method(localClass, paramDescription).getRunner();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Can't build a runner from description [");
+    ((StringBuilder)localObject).append(paramDescription);
+    ((StringBuilder)localObject).append("]");
+    throw new RuntimeException(((StringBuilder)localObject).toString());
   }
   
   private Request constructLeafRequest(List<Description> paramList)
@@ -64,20 +69,22 @@ public class MaxCore
   
   private void findLeaves(Description paramDescription1, Description paramDescription2, List<Description> paramList)
   {
-    if (paramDescription2.getChildren().isEmpty()) {
-      if (paramDescription2.toString().equals("warning(junit.framework.TestSuite$1)")) {
-        paramList.add(Description.createSuiteDescription("malformed JUnit 3 test class: " + paramDescription1, new Annotation[0]));
-      }
-    }
-    for (;;)
+    if (paramDescription2.getChildren().isEmpty())
     {
-      return;
+      if (paramDescription2.toString().equals("warning(junit.framework.TestSuite$1)"))
+      {
+        paramDescription2 = new StringBuilder();
+        paramDescription2.append("malformed JUnit 3 test class: ");
+        paramDescription2.append(paramDescription1);
+        paramList.add(Description.createSuiteDescription(paramDescription2.toString(), new Annotation[0]));
+        return;
+      }
       paramList.add(paramDescription2);
       return;
-      paramDescription1 = paramDescription2.getChildren().iterator();
-      while (paramDescription1.hasNext()) {
-        findLeaves(paramDescription2, (Description)paramDescription1.next(), paramList);
-      }
+    }
+    paramDescription1 = paramDescription2.getChildren().iterator();
+    while (paramDescription1.hasNext()) {
+      findLeaves(paramDescription2, (Description)paramDescription1.next(), paramList);
     }
   }
   
@@ -94,7 +101,11 @@ public class MaxCore
       paramDescription = Class.forName(paramDescription.toString().replace("malformed JUnit 3 test class: ", ""));
       return paramDescription;
     }
-    catch (ClassNotFoundException paramDescription) {}
+    catch (ClassNotFoundException paramDescription)
+    {
+      label17:
+      break label17;
+    }
     return null;
   }
   
@@ -136,7 +147,7 @@ public class MaxCore
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.experimental.max.MaxCore
  * JD-Core Version:    0.7.0.1
  */

@@ -22,16 +22,31 @@ public final class StudyRoomUtils
   {
     try
     {
-      String str1 = Environment.getExternalStorageDirectory().getAbsolutePath();
-      return str1 + "/odapp/odsdk.test";
+      str = Environment.getExternalStorageDirectory().getAbsolutePath();
     }
     catch (RuntimeException localRuntimeException)
     {
-      for (;;)
-      {
-        String str2 = "/sdcard";
-      }
+      String str;
+      label10:
+      StringBuilder localStringBuilder;
+      break label10;
     }
+    str = "/sdcard";
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("/odapp/odsdk.test");
+    return localStringBuilder.toString();
+  }
+  
+  public static String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    if ("master".equals(paramString)) {
+      return "https://downv6.qq.com/innovate/qq/plugin/master/studyroom-qshadow-master.zip";
+    }
+    return String.format("https://downv6.qq.com/innovate/qq/plugin/debug/studyroom-qshadow-debug-%s.zip", new Object[] { paramString });
   }
   
   private static String a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
@@ -94,7 +109,10 @@ public final class StudyRoomUtils
   
   public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, int paramInt, Intent paramIntent, String paramString)
   {
-    QLog.d(paramString, 2, "handleShareToFriend: resultCode=" + paramInt);
+    paramQQAppInterface = new StringBuilder();
+    paramQQAppInterface.append("handleShareToFriend: resultCode=");
+    paramQQAppInterface.append(paramInt);
+    QLog.d(paramString, 2, paramQQAppInterface.toString());
     paramActivity.setResult(paramInt);
   }
   
@@ -113,53 +131,56 @@ public final class StudyRoomUtils
       paramBoolean = localFile.createNewFile();
       return paramBoolean;
     }
-    catch (SecurityException localSecurityException)
+    catch (IOException|SecurityException localIOException)
     {
-      return false;
-      if (localSecurityException.exists()) {
-        return localSecurityException.delete();
-      }
-      return true;
+      label37:
+      break label37;
     }
-    catch (IOException localIOException)
-    {
-      label38:
-      break label38;
+    return false;
+    if (localFile.exists()) {
+      return localFile.delete();
     }
+    return true;
   }
   
   public static void b(Activity paramActivity, Bundle paramBundle, int paramInt)
   {
-    if ((paramBundle == null) || (paramBundle.isEmpty()))
+    if ((paramBundle != null) && (!paramBundle.isEmpty()))
     {
-      QLog.e("StudyRoomUtils", 1, "shareToFriendForArk: error, data bundle is null");
-      return;
-    }
-    if (!paramBundle.containsKey("roomId")) {
-      QLog.e("StudyRoomUtils", 1, "shareToFriendForArk: error, roomId is null");
-    }
-    paramBundle.getString("roomId");
-    String str7 = paramBundle.getString("members", "");
-    String str2 = paramBundle.getString("version", "1.0.0.16");
-    Object localObject = paramBundle.getString("summary");
-    String str3 = paramBundle.getString("targetUrl");
-    String str4 = paramBundle.getString("tag", paramActivity.getString(2131719557));
-    String str5 = paramBundle.getString("title", paramActivity.getString(2131719558));
-    String str6 = paramBundle.getString("imageUrl");
-    String str1 = paramBundle.getString("prompt");
-    paramBundle = str1;
-    if (TextUtils.isEmpty(str1))
-    {
-      paramBundle = paramActivity.getString(2131719555);
-      if (!TextUtils.isEmpty(str7)) {
-        break label372;
+      if (!paramBundle.containsKey("roomId")) {
+        QLog.e("StudyRoomUtils", 1, "shareToFriendForArk: error, roomId is null");
       }
-    }
-    label372:
-    for (paramBundle = paramActivity.getString(2131719556) + (String)localObject;; paramBundle = String.format(paramBundle, new Object[] { str7 }))
-    {
+      paramBundle.getString("roomId");
+      String str7 = paramBundle.getString("members", "");
+      String str2 = paramBundle.getString("version", "1.0.0.16");
+      Object localObject = paramBundle.getString("summary");
+      String str3 = paramBundle.getString("targetUrl");
+      String str4 = paramBundle.getString("tag", paramActivity.getString(2131719276));
+      String str5 = paramBundle.getString("title", paramActivity.getString(2131719277));
+      String str6 = paramBundle.getString("imageUrl");
+      String str1 = paramBundle.getString("prompt");
+      paramBundle = str1;
+      if (TextUtils.isEmpty(str1))
+      {
+        paramBundle = paramActivity.getString(2131719274);
+        if (TextUtils.isEmpty(str7))
+        {
+          paramBundle = new StringBuilder();
+          paramBundle.append(paramActivity.getString(2131719275));
+          paramBundle.append((String)localObject);
+          paramBundle = paramBundle.toString();
+        }
+        else
+        {
+          paramBundle = String.format(paramBundle, new Object[] { str7 });
+        }
+      }
       str1 = a(str5, str4, str3, (String)localObject, str6);
-      QLog.i("StudyRoomUtils", 1, "shareToFriendForArk: meta[" + str1 + "]");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("shareToFriendForArk: meta[");
+      ((StringBuilder)localObject).append(str1);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("StudyRoomUtils", 1, ((StringBuilder)localObject).toString());
       localObject = new Intent();
       ((Intent)localObject).setClass(paramActivity, ForwardRecentActivity.class);
       ((Intent)localObject).putExtra("forward_type", 27);
@@ -177,11 +198,12 @@ public final class StudyRoomUtils
       paramActivity.startActivityForResult((Intent)localObject, paramInt);
       return;
     }
+    QLog.e("StudyRoomUtils", 1, "shareToFriendForArk: error, data bundle is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.utils.StudyRoomUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -6,20 +6,21 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import com.tencent.imcore.message.BaseMsgProxy;
-import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.activity.RiskHintDlgFragment;
+import com.tencent.mobileqq.activity.QPublicFragmentActivity.Launcher;
+import com.tencent.mobileqq.activity.QPublicTransFragmentActivity;
 import com.tencent.mobileqq.activity.aio.AIOAssist;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.graytip.UniteEntity;
 import com.tencent.mobileqq.graytip.UniteEntity.Note;
 import com.tencent.mobileqq.graytip.UniteGrayTipUtil;
+import com.tencent.mobileqq.loginregister.ILoginRegisterApi;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
@@ -29,7 +30,7 @@ import tencent.im.s2c.msgtype0x210.submsgtype0x122.submsgtype0x122.MsgBody;
 
 public class PushDialogHandler
 {
-  private static volatile PushDialogHandler jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogHandler = null;
+  private static volatile PushDialogHandler jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogHandler;
   private Handler jdField_a_of_type_AndroidOsHandler = null;
   private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = null;
   
@@ -43,279 +44,276 @@ public class PushDialogHandler
   
   public static PushDialogHandler a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogHandler == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogHandler == null) {
-        jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogHandler = new PushDialogHandler();
+    if (jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogHandler == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogHandler == null) {
+          jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogHandler = new PushDialogHandler();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogHandler;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogHandler;
   }
   
   private void a(long paramLong1, long paramLong2, submsgtype0x122.MsgBody paramMsgBody)
   {
-    paramMsgBody = paramMsgBody.bytes_content.get().toByteArray();
-    if (paramMsgBody != null) {}
-    Object localObject9;
-    String str;
-    Object localObject2;
-    Object localObject1;
-    Object localObject8;
-    Object localObject5;
-    Object localObject7;
-    Object localObject4;
-    try
+    Object localObject1 = paramMsgBody.bytes_content.get().toByteArray();
+    if (localObject1 != null)
     {
-      paramMsgBody = new String(paramMsgBody, "utf-8");
-      if (QLog.isColorLevel()) {
-        QLog.d("PushDialogHandler", 2, new Object[] { "configContent : ", paramMsgBody });
-      }
-      paramMsgBody = UniteGrayTipUtil.a(paramMsgBody);
-    }
-    catch (UnsupportedEncodingException paramMsgBody)
-    {
-      do
+      paramMsgBody = null;
+      try
       {
-        for (;;)
-        {
-          QLog.e("PushDialogHandler", 1, "e:", paramMsgBody);
-          paramMsgBody = null;
+        localObject1 = new String((byte[])localObject1, "utf-8");
+        if (QLog.isColorLevel()) {
+          QLog.d("PushDialogHandler", 2, new Object[] { "configContent : ", localObject1 });
         }
-        str = "";
-        paramMsgBody = "";
-        localObject2 = "";
-        localObject1 = "";
-        localObject8 = "";
-        localObject5 = "";
-        localObject7 = "";
-        localObject4 = "";
-        localObject6 = "";
-        localObject3 = "";
-        localObject9 = ((UniteEntity.Note)localObject9).a();
-      } while (localObject9 == null);
-      localIterator = ((List)localObject9).iterator();
-    }
-    if (paramMsgBody != null)
-    {
-      localObject9 = paramMsgBody.a();
-      if (((UniteEntity.Note)localObject9).a() != 6) {
-        QLog.e("PushDialogHandler", 1, new Object[] { "error note type:", Integer.valueOf(((UniteEntity.Note)localObject9).a()) });
+        localObject1 = UniteGrayTipUtil.a((String)localObject1);
+        paramMsgBody = (submsgtype0x122.MsgBody)localObject1;
       }
-    }
-    else
-    {
-      return;
-    }
-    Object localObject6;
-    Object localObject3;
-    UniteEntity.Note localNote;
-    Object localObject15;
-    Object localObject10;
-    Object localObject12;
-    Object localObject11;
-    for (;;)
-    {
-      Iterator localIterator;
-      if (localIterator.hasNext())
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {
-        localNote = (UniteEntity.Note)localIterator.next();
-        localObject9 = localNote.a();
-        localObject15 = localNote.a();
-        if (localNote.a() == 7)
+        QLog.e("PushDialogHandler", 1, "e:", localUnsupportedEncodingException);
+      }
+      if (paramMsgBody != null)
+      {
+        paramMsgBody = paramMsgBody.a();
+        if (paramMsgBody.a() != 6)
         {
-          str = (String)((HashMap)localObject9).get(Integer.valueOf(2));
-          localObject9 = localObject6;
-          localObject10 = localObject7;
-          localObject12 = localObject8;
-          localObject7 = localObject2;
-          localObject11 = localObject3;
-          localObject2 = localObject4;
-          localObject4 = localObject5;
-          localObject8 = paramMsgBody;
-          localObject6 = localObject1;
-          localObject5 = localObject12;
-          localObject3 = localObject10;
-          localObject1 = localObject9;
-          paramMsgBody = (submsgtype0x122.MsgBody)localObject11;
-          localObject9 = localObject8;
-          localObject10 = localObject6;
-          localObject11 = localObject7;
-          localObject8 = localObject4;
-          localObject12 = localObject5;
-          localObject7 = localObject3;
-          localObject3 = paramMsgBody;
-          localObject6 = localObject1;
-          localObject4 = localObject2;
-          localObject5 = localObject8;
-          localObject8 = localObject12;
-          localObject1 = localObject10;
-          localObject2 = localObject11;
-          paramMsgBody = (submsgtype0x122.MsgBody)localObject9;
+          QLog.e("PushDialogHandler", 1, new Object[] { "error note type:", Integer.valueOf(paramMsgBody.a()) });
+          return;
         }
-        else if (localNote.a() == 8)
+        paramMsgBody = paramMsgBody.a();
+        if (paramMsgBody != null)
         {
-          localObject9 = (String)((HashMap)localObject9).get(Integer.valueOf(1));
-          localObject9 = localObject1;
-          localObject10 = localObject2;
-          localObject11 = paramMsgBody;
-          if (localObject15 != null)
+          Iterator localIterator = paramMsgBody.iterator();
+          Object localObject16 = "";
+          Object localObject7 = "";
+          Object localObject8 = localObject7;
+          Object localObject9 = localObject8;
+          Object localObject3 = localObject9;
+          paramMsgBody = localObject3;
+          Object localObject6 = paramMsgBody;
+          Object localObject2 = localObject6;
+          Object localObject4 = localObject2;
+          Object localObject19;
+          for (Object localObject5 = localObject4; localIterator.hasNext(); localObject5 = localObject19)
           {
-            localObject9 = localObject1;
-            localObject10 = localObject2;
-            localObject11 = paramMsgBody;
-            if (((List)localObject15).size() != 0) {
-              localObject12 = ((List)localObject15).iterator();
-            }
-          }
-        }
-      }
-    }
-    label794:
-    label1072:
-    label1073:
-    for (;;)
-    {
-      label435:
-      localObject9 = localObject1;
-      localObject10 = localObject2;
-      localObject11 = paramMsgBody;
-      if (((Iterator)localObject12).hasNext())
-      {
-        localObject10 = (UniteEntity.Note)((Iterator)localObject12).next();
-        localObject9 = ((UniteEntity.Note)localObject10).a();
-        if (((UniteEntity.Note)localObject10).a() == 2)
-        {
-          if (localObject9 == null) {
-            continue;
-          }
-          localObject9 = (String)((HashMap)localObject9).get(Integer.valueOf(2));
-          if (TextUtils.isEmpty((CharSequence)localObject9)) {
-            break label1072;
-          }
-          paramMsgBody = (submsgtype0x122.MsgBody)localObject9;
-        }
-      }
-      for (;;)
-      {
-        break label435;
-        if ((((UniteEntity.Note)localObject10).a() != 3) || (localObject9 == null)) {
-          break label1073;
-        }
-        localObject2 = (String)((HashMap)localObject9).get(Integer.valueOf(2));
-        localObject1 = (String)((HashMap)localObject9).get(Integer.valueOf(4));
-        break label435;
-        localObject12 = localObject7;
-        localObject7 = localObject10;
-        localObject1 = localObject6;
-        localObject6 = localObject9;
-        paramMsgBody = (submsgtype0x122.MsgBody)localObject3;
-        localObject2 = localObject4;
-        localObject3 = localObject12;
-        localObject4 = localObject5;
-        localObject5 = localObject8;
-        localObject8 = localObject11;
-        break;
-        Object localObject14 = localObject3;
-        Object localObject13 = localObject6;
-        localObject12 = localObject4;
-        localObject11 = localObject7;
-        localObject10 = localObject5;
-        localObject9 = localObject8;
-        if (localNote.a() == 9)
-        {
-          localObject14 = localObject3;
-          localObject13 = localObject6;
-          localObject12 = localObject4;
-          localObject11 = localObject7;
-          localObject10 = localObject5;
-          localObject9 = localObject8;
-          if (localObject15 != null)
-          {
-            localObject15 = ((List)localObject15).iterator();
-            int i = 0;
-            localObject14 = localObject3;
-            localObject13 = localObject6;
-            localObject12 = localObject4;
-            localObject11 = localObject7;
-            localObject10 = localObject5;
-            localObject9 = localObject8;
-            if (((Iterator)localObject15).hasNext())
+            UniteEntity.Note localNote = (UniteEntity.Note)localIterator.next();
+            localObject10 = localNote.a();
+            Object localObject21 = localNote.a();
+            Object localObject20;
+            Object localObject18;
+            Object localObject17;
+            Object localObject15;
+            Object localObject14;
+            Object localObject13;
+            Object localObject12;
+            Object localObject11;
+            if (localNote.a() == 7)
             {
-              localObject9 = (UniteEntity.Note)((Iterator)localObject15).next();
-              if (((UniteEntity.Note)localObject9).a() == 10)
+              localObject20 = (String)((HashMap)localObject10).get(Integer.valueOf(2));
+              localObject19 = localObject5;
+              localObject18 = localObject4;
+              localObject17 = localObject2;
+              localObject15 = localObject6;
+              localObject14 = paramMsgBody;
+              localObject13 = localObject3;
+              localObject12 = localObject9;
+              localObject11 = localObject8;
+              localObject10 = localObject7;
+            }
+            for (;;)
+            {
+              break;
+              if (localNote.a() == 8)
               {
-                localObject9 = ((UniteEntity.Note)localObject9).a();
-                localObject11 = (String)((HashMap)localObject9).get(Integer.valueOf(2));
-                localObject14 = (String)((HashMap)localObject9).get(Integer.valueOf(4));
-                if (i == 0)
+                localObject10 = (String)((HashMap)localObject10).get(Integer.valueOf(1));
+                localObject20 = localObject16;
+                localObject10 = localObject7;
+                localObject11 = localObject8;
+                localObject12 = localObject9;
+                localObject13 = localObject3;
+                localObject14 = paramMsgBody;
+                localObject15 = localObject6;
+                localObject17 = localObject2;
+                localObject18 = localObject4;
+                localObject19 = localObject5;
+                if (localObject21 != null)
                 {
-                  localObject10 = localObject14;
-                  localObject13 = localObject11;
-                  localObject12 = localObject5;
-                  localObject9 = localObject6;
-                  i += 1;
-                  localObject8 = localObject13;
-                  localObject5 = localObject12;
-                  localObject4 = localObject10;
-                  localObject6 = localObject9;
+                  localObject20 = localObject16;
+                  localObject10 = localObject7;
+                  localObject11 = localObject8;
+                  localObject12 = localObject9;
+                  localObject13 = localObject3;
+                  localObject14 = paramMsgBody;
+                  localObject15 = localObject6;
+                  localObject17 = localObject2;
+                  localObject18 = localObject4;
+                  localObject19 = localObject5;
+                  if (((List)localObject21).size() != 0)
+                  {
+                    localObject21 = ((List)localObject21).iterator();
+                    for (;;)
+                    {
+                      localObject20 = localObject16;
+                      localObject10 = localObject7;
+                      localObject11 = localObject8;
+                      localObject12 = localObject9;
+                      localObject13 = localObject3;
+                      localObject14 = paramMsgBody;
+                      localObject15 = localObject6;
+                      localObject17 = localObject2;
+                      localObject18 = localObject4;
+                      localObject19 = localObject5;
+                      if (!((Iterator)localObject21).hasNext()) {
+                        break;
+                      }
+                      localObject11 = (UniteEntity.Note)((Iterator)localObject21).next();
+                      localObject10 = ((UniteEntity.Note)localObject11).a();
+                      if (((UniteEntity.Note)localObject11).a() == 2)
+                      {
+                        if (localObject10 != null)
+                        {
+                          localObject10 = (String)((HashMap)localObject10).get(Integer.valueOf(2));
+                          if (!TextUtils.isEmpty((CharSequence)localObject10)) {
+                            localObject7 = localObject10;
+                          }
+                        }
+                      }
+                      else if ((((UniteEntity.Note)localObject11).a() == 3) && (localObject10 != null))
+                      {
+                        localObject8 = (String)((HashMap)localObject10).get(Integer.valueOf(2));
+                        localObject9 = (String)((HashMap)localObject10).get(Integer.valueOf(4));
+                      }
+                    }
+                  }
                 }
               }
-              for (;;)
+              else
               {
-                break;
-                if (i == 1)
+                localObject20 = localObject16;
+                localObject10 = localObject7;
+                localObject11 = localObject8;
+                localObject12 = localObject9;
+                localObject13 = localObject3;
+                localObject14 = paramMsgBody;
+                localObject15 = localObject6;
+                localObject17 = localObject2;
+                localObject18 = localObject4;
+                localObject19 = localObject5;
+                if (localNote.a() == 9)
                 {
-                  localObject9 = localObject14;
-                  localObject10 = localObject4;
-                  localObject12 = localObject11;
-                  localObject13 = localObject8;
-                  break label794;
+                  localObject20 = localObject16;
+                  localObject10 = localObject7;
+                  localObject11 = localObject8;
+                  localObject12 = localObject9;
+                  localObject13 = localObject3;
+                  localObject14 = paramMsgBody;
+                  localObject15 = localObject6;
+                  localObject17 = localObject2;
+                  localObject18 = localObject4;
+                  localObject19 = localObject5;
+                  if (localObject21 != null)
+                  {
+                    localObject21 = ((List)localObject21).iterator();
+                    int i = 0;
+                    for (;;)
+                    {
+                      localObject20 = localObject16;
+                      localObject10 = localObject7;
+                      localObject11 = localObject8;
+                      localObject12 = localObject9;
+                      localObject13 = localObject3;
+                      localObject14 = paramMsgBody;
+                      localObject15 = localObject6;
+                      localObject17 = localObject2;
+                      localObject18 = localObject4;
+                      localObject19 = localObject5;
+                      if (!((Iterator)localObject21).hasNext()) {
+                        break;
+                      }
+                      localObject10 = (UniteEntity.Note)((Iterator)localObject21).next();
+                      if (((UniteEntity.Note)localObject10).a() == 10)
+                      {
+                        localObject11 = ((UniteEntity.Note)localObject10).a();
+                        localObject10 = (String)((HashMap)localObject11).get(Integer.valueOf(2));
+                        localObject15 = (String)((HashMap)localObject11).get(Integer.valueOf(4));
+                        if (i == 0)
+                        {
+                          localObject2 = localObject15;
+                          localObject3 = localObject10;
+                        }
+                        for (;;)
+                        {
+                          localObject12 = localObject3;
+                          localObject13 = paramMsgBody;
+                          localObject14 = localObject6;
+                          localObject6 = localObject2;
+                          localObject11 = localObject4;
+                          break label897;
+                          if (i != 1) {
+                            break;
+                          }
+                          localObject4 = localObject15;
+                          paramMsgBody = (submsgtype0x122.MsgBody)localObject10;
+                        }
+                        localObject12 = localObject3;
+                        localObject13 = paramMsgBody;
+                        localObject14 = localObject6;
+                        localObject6 = localObject2;
+                        localObject11 = localObject4;
+                        if (i == 2)
+                        {
+                          localObject5 = localObject15;
+                          localObject11 = localObject4;
+                          localObject6 = localObject2;
+                          localObject14 = localObject10;
+                          localObject13 = paramMsgBody;
+                          localObject12 = localObject3;
+                        }
+                        label897:
+                        i += 1;
+                        localObject3 = localObject12;
+                        paramMsgBody = (submsgtype0x122.MsgBody)localObject13;
+                        localObject2 = localObject6;
+                        localObject4 = localObject11;
+                      }
+                      else
+                      {
+                        localObject14 = localObject6;
+                      }
+                      localObject6 = localObject14;
+                    }
+                  }
                 }
-                localObject9 = localObject6;
-                localObject10 = localObject4;
-                localObject12 = localObject5;
-                localObject13 = localObject8;
-                if (i != 2) {
-                  break label794;
-                }
-                localObject3 = localObject14;
-                localObject7 = localObject11;
-                localObject9 = localObject6;
-                localObject10 = localObject4;
-                localObject12 = localObject5;
-                localObject13 = localObject8;
-                break label794;
-                localObject9 = new Intent();
-                ((Intent)localObject9).putExtra("public_fragment_window_feature", 1);
-                ((Intent)localObject9).putExtra("BusiType", paramLong2);
-                ((Intent)localObject9).putExtra("Title", str);
-                ((Intent)localObject9).putExtra("Message", paramMsgBody);
-                ((Intent)localObject9).putExtra("contentUrlText", (String)localObject2);
-                ((Intent)localObject9).putExtra("contentUrlValue", (String)localObject1);
-                ((Intent)localObject9).putExtra("btnText1", (String)localObject8);
-                ((Intent)localObject9).putExtra("btnText2", (String)localObject5);
-                ((Intent)localObject9).putExtra("btnText3", (String)localObject7);
-                ((Intent)localObject9).putExtra("btnAction1", (String)localObject4);
-                ((Intent)localObject9).putExtra("btnAction2", (String)localObject6);
-                ((Intent)localObject9).putExtra("btnAction3", (String)localObject3);
-                PublicFragmentActivity.Launcher.a((Intent)localObject9, PublicTransFragmentActivity.class, RiskHintDlgFragment.class);
-                return;
               }
             }
+            localObject16 = localObject20;
+            localObject7 = localObject10;
+            localObject8 = localObject11;
+            localObject9 = localObject12;
+            localObject3 = localObject13;
+            paramMsgBody = (submsgtype0x122.MsgBody)localObject14;
+            localObject6 = localObject15;
+            localObject2 = localObject17;
+            localObject4 = localObject18;
           }
+          Object localObject10 = new Intent();
+          ((Intent)localObject10).putExtra("public_fragment_window_feature", 1);
+          ((Intent)localObject10).putExtra("BusiType", paramLong2);
+          ((Intent)localObject10).putExtra("Title", (String)localObject16);
+          ((Intent)localObject10).putExtra("Message", (String)localObject7);
+          ((Intent)localObject10).putExtra("contentUrlText", (String)localObject8);
+          ((Intent)localObject10).putExtra("contentUrlValue", (String)localObject9);
+          ((Intent)localObject10).putExtra("btnText1", localObject3);
+          ((Intent)localObject10).putExtra("btnText2", paramMsgBody);
+          ((Intent)localObject10).putExtra("btnText3", (String)localObject6);
+          ((Intent)localObject10).putExtra("btnAction1", localObject2);
+          ((Intent)localObject10).putExtra("btnAction2", localObject4);
+          ((Intent)localObject10).putExtra("btnAction3", localObject5);
+          QPublicFragmentActivity.Launcher.a((Intent)localObject10, QPublicTransFragmentActivity.class, ((ILoginRegisterApi)QRoute.api(ILoginRegisterApi.class)).getHintDlgFragment());
         }
-        localObject3 = localObject11;
-        localObject4 = localObject10;
-        localObject5 = localObject9;
-        localObject6 = localObject1;
-        localObject7 = localObject2;
-        localObject8 = paramMsgBody;
-        paramMsgBody = (submsgtype0x122.MsgBody)localObject14;
-        localObject1 = localObject13;
-        localObject2 = localObject12;
-        break;
       }
     }
   }
@@ -325,62 +323,48 @@ public class PushDialogHandler
     if (paramMsgBody.uint64_busi_type.has()) {
       paramMsgBody.uint64_busi_type.get();
     }
-    long l2;
-    byte[] arrayOfByte;
-    if (paramMsgBody.uint64_busi_id.has())
-    {
+    boolean bool = paramMsgBody.uint64_busi_id.has();
+    long l2 = 0L;
+    if (bool) {
       l1 = paramMsgBody.uint64_busi_id.get();
-      if (paramMsgBody.uint32_ctrl_flag.has()) {
-        l2 = paramMsgBody.uint32_ctrl_flag.get();
-      }
-      if (paramMsgBody.uint32_c2c_type.has()) {
-        l2 = paramMsgBody.uint32_c2c_type.get();
-      }
-      if (paramMsgBody.uint32_service_type.has()) {
-        l2 = paramMsgBody.uint32_service_type.get();
-      }
-      if (!paramMsgBody.bytes_content.has()) {
-        break label186;
-      }
-      arrayOfByte = paramMsgBody.bytes_content.get().toByteArray();
-      label119:
-      if (!paramMsgBody.uint64_templ_id.has()) {
-        break label192;
-      }
-      l2 = paramMsgBody.uint64_templ_id.get();
-      if ((arrayOfByte == null) || (arrayOfByte.length <= 0)) {
-        break label208;
-      }
+    } else {
+      l1 = 0L;
     }
-    for (;;)
-    {
+    if (paramMsgBody.uint32_ctrl_flag.has()) {
+      paramMsgBody.uint32_ctrl_flag.get();
+    }
+    if (paramMsgBody.uint32_c2c_type.has()) {
+      paramMsgBody.uint32_c2c_type.get();
+    }
+    if (paramMsgBody.uint32_service_type.has()) {
+      paramMsgBody.uint32_service_type.get();
+    }
+    byte[] arrayOfByte;
+    if (paramMsgBody.bytes_content.has()) {
+      arrayOfByte = paramMsgBody.bytes_content.get().toByteArray();
+    } else {
+      arrayOfByte = null;
+    }
+    if (paramMsgBody.uint64_templ_id.has()) {
+      l2 = paramMsgBody.uint64_templ_id.get();
+    }
+    if ((arrayOfByte != null) && (arrayOfByte.length > 0)) {
       try
       {
         new String(arrayOfByte, "utf-8");
-        if (l1 != 1001L) {
-          break label225;
-        }
-        a(l1, l2, paramMsgBody);
-        return;
-        l1 = 0L;
-        break;
-        label186:
-        arrayOfByte = null;
-        break label119;
-        label192:
-        l2 = 0L;
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {
         localUnsupportedEncodingException.printStackTrace();
-        continue;
       }
-      label208:
-      if (QLog.isColorLevel()) {
-        QLog.e("PushDialogHandler", 2, "handleC2COnlinePushMsgGrayTipResp fail content is null");
-      }
+    } else if (QLog.isColorLevel()) {
+      QLog.e("PushDialogHandler", 2, "handleC2COnlinePushMsgGrayTipResp fail content is null");
     }
-    label225:
+    if (l1 == 1001L)
+    {
+      a(l1, l2, paramMsgBody);
+      return;
+    }
     long l1 = paramMsgInfo.getURealMsgTime();
     paramMsgBody = new PushDialogTemplate(paramMsgBody, paramMsgInfo.lFromUin, l1 * 1000L);
     if (a(paramQQAppInterface, paramMsgInfo))
@@ -413,7 +397,7 @@ public class PushDialogHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pushdialog.PushDialogHandler
  * JD-Core Version:    0.7.0.1
  */

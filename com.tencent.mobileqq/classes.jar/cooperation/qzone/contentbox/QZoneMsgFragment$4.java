@@ -13,7 +13,7 @@ class QZoneMsgFragment$4
   public void run()
   {
     QQMessageFacade localQQMessageFacade = this.this$0.app.getMessageFacade();
-    Message localMessage = localQQMessageFacade.a("2290230341", 1008);
+    Message localMessage = localQQMessageFacade.getLastMessage("2290230341", 1008);
     if (localMessage != null)
     {
       localMessage.saveExtInfoToExtStr("qzone_msg_box_promot", this.val$prompt);
@@ -25,7 +25,7 @@ class QZoneMsgFragment$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.contentbox.QZoneMsgFragment.4
  * JD-Core Version:    0.7.0.1
  */

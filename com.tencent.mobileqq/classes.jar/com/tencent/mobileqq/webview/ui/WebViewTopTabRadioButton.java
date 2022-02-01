@@ -25,48 +25,49 @@ public class WebViewTopTabRadioButton
   
   Bitmap a(Context paramContext)
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {}
-    try
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130850830);
-      return this.jdField_a_of_type_AndroidGraphicsBitmap;
-    }
-    catch (OutOfMemoryError paramContext)
-    {
-      for (;;)
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if ((localBitmap == null) || (localBitmap.isRecycled())) {
+      try
+      {
+        this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130850766);
+      }
+      catch (OutOfMemoryError paramContext)
       {
         paramContext.printStackTrace();
       }
     }
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_b_of_type_AndroidGraphicsBitmap = a(super.getContext());
-      if ((this.jdField_b_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_b_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      Bitmap localBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
+      if ((localBitmap != null) && (!localBitmap.isRecycled())) {
         paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, null);
       }
     }
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_b_of_type_AndroidGraphicsBitmap = a(super.getContext());
-    if ((this.jdField_b_of_type_AndroidGraphicsBitmap == null) || (this.jdField_b_of_type_AndroidGraphicsBitmap.isRecycled())) {}
-    for (paramInt2 = DisplayUtil.a(super.getContext(), 9.0F);; paramInt2 = this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth())
-    {
-      this.jdField_a_of_type_Int = (paramInt1 - paramInt2 - DisplayUtil.a(super.getContext(), 3.0F));
-      return;
+    Bitmap localBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
+    if ((localBitmap != null) && (!localBitmap.isRecycled())) {
+      paramInt2 = this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth();
+    } else {
+      paramInt2 = DisplayUtil.a(super.getContext(), 9.0F);
     }
+    this.jdField_a_of_type_Int = (paramInt1 - paramInt2 - DisplayUtil.a(super.getContext(), 3.0F));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.ui.WebViewTopTabRadioButton
  * JD-Core Version:    0.7.0.1
  */

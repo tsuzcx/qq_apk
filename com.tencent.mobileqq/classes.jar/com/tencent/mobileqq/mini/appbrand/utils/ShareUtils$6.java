@@ -29,91 +29,119 @@ final class ShareUtils$6
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QLog.d("ShareUtils", 1, "startShareToWeChat. isSuc:" + paramBoolean);
-    String str;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("startShareToWeChat. isSuc:");
+    ((StringBuilder)localObject1).append(paramBoolean);
+    QLog.d("ShareUtils", 1, ((StringBuilder)localObject1).toString());
+    boolean bool = false;
     if ((paramBoolean) && (paramJSONObject != null))
     {
-      str = paramJSONObject.optString("jump_url");
+      String str = paramJSONObject.optString("jump_url");
       if (paramJSONObject.optBoolean("needShareCallBack", false)) {
         QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_share_suc", null, null);
       }
+      Object localObject2;
       try
       {
         paramJSONObject = URLDrawable.URLDrawableOptions.obtain();
         if (this.val$activity != null) {
-          paramJSONObject.mFailedDrawable = this.val$activity.getResources().getDrawable(2130848781);
+          paramJSONObject.mFailedDrawable = this.val$activity.getResources().getDrawable(2130848661);
         }
-        Bitmap localBitmap = ImageUtil.drawableToBitmap(URLDrawable.getDrawable(this.val$sharePicUrl, paramJSONObject).getCurrDrawable());
-        paramJSONObject = localBitmap;
-        if (localBitmap != null)
+        localObject1 = ImageUtil.drawableToBitmap(URLDrawable.getDrawable(this.val$sharePicUrl, paramJSONObject).getCurrDrawable());
+        paramJSONObject = (JSONObject)localObject1;
+        if (localObject1 != null)
         {
           paramJSONObject = new ByteArrayOutputStream();
-          localBitmap.compress(Bitmap.CompressFormat.JPEG, 85, paramJSONObject);
+          ((Bitmap)localObject1).compress(Bitmap.CompressFormat.JPEG, 85, paramJSONObject);
           paramJSONObject = paramJSONObject.toByteArray();
-          QLog.d("ShareUtils", 1, "startShareToWeChat. ImageUtil.drawableToBitmap, out.toByteArray().length original:" + paramJSONObject.length);
-          int i = 0;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("startShareToWeChat. ImageUtil.drawableToBitmap, out.toByteArray().length original:");
+          ((StringBuilder)localObject2).append(paramJSONObject.length);
+          QLog.d("ShareUtils", 1, ((StringBuilder)localObject2).toString());
+          i = 0;
           while ((i < 10) && (paramJSONObject.length > 32768))
           {
             paramJSONObject = new Matrix();
             paramJSONObject.setScale(0.7F, 0.7F);
-            localBitmap = Bitmap.createBitmap(localBitmap, 0, 0, localBitmap.getWidth(), localBitmap.getHeight(), paramJSONObject, true);
+            localObject1 = Bitmap.createBitmap((Bitmap)localObject1, 0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), paramJSONObject, true);
             paramJSONObject = new ByteArrayOutputStream();
-            localBitmap.compress(Bitmap.CompressFormat.JPEG, 85, paramJSONObject);
+            ((Bitmap)localObject1).compress(Bitmap.CompressFormat.JPEG, 85, paramJSONObject);
             paramJSONObject = paramJSONObject.toByteArray();
-            QLog.d("ShareUtils", 1, "startShareToWeChat. ImageUtil.drawableToBitmap, out.toByteArray().length compressTo:" + paramJSONObject.length);
             i += 1;
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("startShareToWeChat. ImageUtil.drawableToBitmap, out.toByteArray().length compressTo:");
+            ((StringBuilder)localObject2).append(paramJSONObject.length);
+            QLog.d("ShareUtils", 1, ((StringBuilder)localObject2).toString());
           }
-          QLog.d("ShareUtils", 1, "startShareToWeChat. ImageUtil.drawableToBitmap, out.toByteArray().length done:" + paramJSONObject.length);
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("startShareToWeChat. ImageUtil.drawableToBitmap, out.toByteArray().length done:");
+          ((StringBuilder)localObject1).append(paramJSONObject.length);
+          QLog.d("ShareUtils", 1, ((StringBuilder)localObject1).toString());
           paramJSONObject = BitmapFactory.decodeByteArray(paramJSONObject, 0, paramJSONObject.length);
         }
       }
       catch (Exception paramJSONObject)
       {
-        for (;;)
-        {
-          QLog.e("ShareUtils", 1, "startShareToWeChat. get an exception when handling URLbmp:" + paramJSONObject);
-          paramJSONObject = ImageUtil.drawableToBitmap(this.val$activity.getResources().getDrawable(2130848781));
-          continue;
-          if (this.val$shareType == 4) {
-            WXShareHelper.a().c(String.valueOf(System.currentTimeMillis()), "QQ小程序 · " + this.val$apkgInfo.apkgName + ": " + this.val$finalDescription, paramJSONObject, "", str);
-          }
-        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("startShareToWeChat. get an exception when handling URLbmp:");
+        ((StringBuilder)localObject1).append(paramJSONObject);
+        QLog.e("ShareUtils", 1, ((StringBuilder)localObject1).toString());
+        paramJSONObject = ImageUtil.drawableToBitmap(this.val$activity.getResources().getDrawable(2130848661));
       }
-      if (this.val$shareType == 3)
+      int i = this.val$shareType;
+      if (i == 3)
       {
-        WXShareHelper.a().d(String.valueOf(System.currentTimeMillis()), this.val$finalDescription, paramJSONObject, "QQ小程序 · " + this.val$apkgInfo.apkgName, str);
-        paramJSONObject = new Bundle();
-        paramJSONObject.putParcelable("MiniAppInfoForQQ", this.val$apkgInfo.appConfig.config);
-        paramJSONObject.putParcelable("MiniAppLaunchParamForQQ", this.val$apkgInfo.appConfig.launchParam);
-        QIPCClientHelper.getInstance().getClient().callServer("MiniAppTransferModule", "mini_record_wx_share_miniapp_for_qq", paramJSONObject);
-        return;
+        localObject1 = WXShareHelper.a();
+        l = System.currentTimeMillis();
+        localObject2 = this.val$finalDescription;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("QQ小程序 · ");
+        localStringBuilder.append(this.val$apkgInfo.apkgName);
+        ((WXShareHelper)localObject1).d(String.valueOf(l), (String)localObject2, paramJSONObject, localStringBuilder.toString(), str);
       }
+      else if (i == 4)
+      {
+        localObject1 = WXShareHelper.a();
+        l = System.currentTimeMillis();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("QQ小程序 · ");
+        ((StringBuilder)localObject2).append(this.val$apkgInfo.apkgName);
+        ((StringBuilder)localObject2).append(": ");
+        ((StringBuilder)localObject2).append(this.val$finalDescription);
+        ((WXShareHelper)localObject1).c(String.valueOf(l), ((StringBuilder)localObject2).toString(), paramJSONObject, "", str);
+      }
+      paramJSONObject = new Bundle();
+      paramJSONObject.putParcelable("MiniAppInfoForQQ", this.val$apkgInfo.appConfig.config);
+      paramJSONObject.putParcelable("MiniAppLaunchParamForQQ", this.val$apkgInfo.appConfig.launchParam);
+      QIPCClientHelper.getInstance().getClient().callServer("MiniAppTransferModule", "mini_record_wx_share_miniapp_for_qq", paramJSONObject);
+      return;
     }
     long l = -1L;
     if (paramJSONObject != null)
     {
       paramBoolean = paramJSONObject.optBoolean("needShareCallBack", false);
       l = paramJSONObject.optLong("retCode");
+      paramJSONObject = paramJSONObject.optString("errMsg");
     }
-    for (paramJSONObject = paramJSONObject.optString("errMsg");; paramJSONObject = null)
+    else
     {
-      if (!paramBoolean) {
-        QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_share_suc", null, null);
-      }
-      if (this.val$activity == null)
-      {
-        QLog.e("ShareUtils", 1, "startShareToWe activity is null?!!");
-        return;
-      }
-      ThreadManagerV2.getUIHandlerV2().post(new ShareUtils.6.1(this, l, paramJSONObject));
-      return;
-      paramBoolean = false;
+      paramJSONObject = null;
+      paramBoolean = bool;
     }
+    if (!paramBoolean) {
+      QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_share_suc", null, null);
+    }
+    if (this.val$activity == null)
+    {
+      QLog.e("ShareUtils", 1, "startShareToWe activity is null?!!");
+      return;
+    }
+    ThreadManagerV2.getUIHandlerV2().post(new ShareUtils.6.1(this, l, paramJSONObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.utils.ShareUtils.6
  * JD-Core Version:    0.7.0.1
  */

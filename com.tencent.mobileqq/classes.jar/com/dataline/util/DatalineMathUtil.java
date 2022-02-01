@@ -29,60 +29,64 @@ public class DatalineMathUtil
   
   public static String a(long paramLong)
   {
-    if (paramLong > 4294967295L) {
-      throw new IllegalArgumentException("invalid ip");
-    }
-    long l = paramLong;
-    if (paramLong < 0L)
+    if (paramLong <= 4294967295L)
     {
-      paramLong += 4294967296L;
-      l = paramLong;
-      if (paramLong < 0L) {
-        throw new IllegalArgumentException("invalid ip");
+      long l = paramLong;
+      if (paramLong < 0L)
+      {
+        l = paramLong + 4294967296L;
+        if (l < 0L) {
+          throw new IllegalArgumentException("invalid ip");
+        }
       }
+      localObject = new StringBuilder();
+      int i = 0;
+      while (i <= 3)
+      {
+        int j = i * 8;
+        ((StringBuilder)localObject).append((255 << j & l) >> j);
+        if (i < 3) {
+          ((StringBuilder)localObject).append(".");
+        }
+        i += 1;
+      }
+      return ((StringBuilder)localObject).toString();
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i <= 3)
+    Object localObject = new IllegalArgumentException("invalid ip");
+    for (;;)
     {
-      int j = i * 8;
-      localStringBuilder.append((255 << j & l) >> j);
-      if (i < 3) {
-        localStringBuilder.append(".");
-      }
-      i += 1;
+      throw ((Throwable)localObject);
     }
-    return localStringBuilder.toString();
   }
   
   /* Error */
   public static byte[] a(String paramString)
   {
     // Byte code:
-    //   0: ldc2_w 91
-    //   3: lstore_3
-    //   4: aconst_null
+    //   0: ldc 88
+    //   2: invokestatic 94	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
     //   5: astore 9
-    //   7: ldc 94
-    //   9: invokestatic 100	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
-    //   12: astore 10
-    //   14: new 102	java/io/FileInputStream
-    //   17: dup
-    //   18: aload_0
-    //   19: invokespecial 103	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   22: astore 8
-    //   24: aload 8
-    //   26: astore 7
-    //   28: new 105	com/tencent/mm/vfs/VFSFile
-    //   31: dup
-    //   32: aload_0
-    //   33: invokespecial 106	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
-    //   36: invokevirtual 109	com/tencent/mm/vfs/VFSFile:length	()J
-    //   39: lstore 5
-    //   41: lload 5
-    //   43: ldc2_w 91
-    //   46: lcmp
-    //   47: ifle +260 -> 307
+    //   7: new 96	java/io/FileInputStream
+    //   10: dup
+    //   11: aload_0
+    //   12: invokespecial 97	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   15: astore 8
+    //   17: aload 8
+    //   19: astore 7
+    //   21: new 99	com/tencent/mm/vfs/VFSFile
+    //   24: dup
+    //   25: aload_0
+    //   26: invokespecial 100	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
+    //   29: invokevirtual 103	com/tencent/mm/vfs/VFSFile:length	()J
+    //   32: lstore 5
+    //   34: lload 5
+    //   36: lstore_3
+    //   37: lload 5
+    //   39: ldc2_w 104
+    //   42: lcmp
+    //   43: ifle +7 -> 50
+    //   46: ldc2_w 104
+    //   49: lstore_3
     //   50: aload 8
     //   52: astore 7
     //   54: sipush 1024
@@ -91,16 +95,16 @@ public class DatalineMathUtil
     //   60: lload_3
     //   61: lconst_0
     //   62: lcmp
-    //   63: ifle +78 -> 141
+    //   63: ifle +51 -> 114
     //   66: aload 8
     //   68: astore 7
     //   70: aload 8
     //   72: aload_0
-    //   73: invokevirtual 115	java/io/InputStream:read	([B)I
+    //   73: invokevirtual 111	java/io/InputStream:read	([B)I
     //   76: istore_2
     //   77: iload_2
     //   78: iconst_m1
-    //   79: if_icmpeq +62 -> 141
+    //   79: if_icmpeq +35 -> 114
     //   82: iload_2
     //   83: istore_1
     //   84: iload_2
@@ -118,177 +122,153 @@ public class DatalineMathUtil
     //   98: lstore_3
     //   99: aload 8
     //   101: astore 7
-    //   103: aload 10
+    //   103: aload 9
     //   105: aload_0
     //   106: iconst_0
     //   107: iload_1
-    //   108: invokevirtual 119	java/security/MessageDigest:update	([BII)V
+    //   108: invokevirtual 115	java/security/MessageDigest:update	([BII)V
     //   111: goto -51 -> 60
-    //   114: astore_0
-    //   115: aload 8
-    //   117: astore 7
-    //   119: aload_0
-    //   120: invokevirtual 120	java/security/NoSuchAlgorithmException:printStackTrace	()V
-    //   123: aload 9
-    //   125: astore_0
-    //   126: aload 8
-    //   128: ifnull +11 -> 139
-    //   131: aload 8
-    //   133: invokevirtual 123	java/io/InputStream:close	()V
-    //   136: aload 9
-    //   138: astore_0
-    //   139: aload_0
-    //   140: areturn
-    //   141: aload 8
-    //   143: astore 7
-    //   145: aload 8
-    //   147: invokevirtual 123	java/io/InputStream:close	()V
-    //   150: aload 8
-    //   152: astore 7
-    //   154: aload 10
-    //   156: invokevirtual 127	java/security/MessageDigest:digest	()[B
-    //   159: astore_0
-    //   160: aload_0
-    //   161: astore 7
-    //   163: aload 7
-    //   165: astore_0
-    //   166: aload 8
-    //   168: ifnull -29 -> 139
-    //   171: aload 8
-    //   173: invokevirtual 123	java/io/InputStream:close	()V
-    //   176: aload 7
-    //   178: areturn
-    //   179: astore_0
-    //   180: aload_0
-    //   181: invokevirtual 128	java/io/IOException:printStackTrace	()V
-    //   184: aload 7
-    //   186: areturn
-    //   187: astore_0
-    //   188: aload_0
-    //   189: invokevirtual 128	java/io/IOException:printStackTrace	()V
-    //   192: aconst_null
-    //   193: areturn
-    //   194: astore_0
-    //   195: aconst_null
-    //   196: astore 8
-    //   198: aload 8
-    //   200: astore 7
-    //   202: aload_0
-    //   203: invokevirtual 129	java/io/FileNotFoundException:printStackTrace	()V
-    //   206: aload 9
-    //   208: astore_0
+    //   114: aload 8
+    //   116: astore 7
+    //   118: aload 8
+    //   120: invokevirtual 118	java/io/InputStream:close	()V
+    //   123: aload 8
+    //   125: astore 7
+    //   127: aload 9
+    //   129: invokevirtual 122	java/security/MessageDigest:digest	()[B
+    //   132: astore_0
+    //   133: aload 8
+    //   135: invokevirtual 118	java/io/InputStream:close	()V
+    //   138: aload_0
+    //   139: areturn
+    //   140: astore 7
+    //   142: aload 7
+    //   144: invokevirtual 123	java/io/IOException:printStackTrace	()V
+    //   147: aload_0
+    //   148: areturn
+    //   149: astore_0
+    //   150: goto +22 -> 172
+    //   153: astore_0
+    //   154: goto +42 -> 196
+    //   157: astore_0
+    //   158: goto +62 -> 220
+    //   161: astore_0
+    //   162: aconst_null
+    //   163: astore 7
+    //   165: goto +83 -> 248
+    //   168: astore_0
+    //   169: aconst_null
+    //   170: astore 8
+    //   172: aload 8
+    //   174: astore 7
+    //   176: aload_0
+    //   177: invokevirtual 123	java/io/IOException:printStackTrace	()V
+    //   180: aload 8
+    //   182: ifnull +63 -> 245
+    //   185: aload 8
+    //   187: invokevirtual 118	java/io/InputStream:close	()V
+    //   190: aconst_null
+    //   191: areturn
+    //   192: astore_0
+    //   193: aconst_null
+    //   194: astore 8
+    //   196: aload 8
+    //   198: astore 7
+    //   200: aload_0
+    //   201: invokevirtual 124	java/io/FileNotFoundException:printStackTrace	()V
+    //   204: aload 8
+    //   206: ifnull +39 -> 245
     //   209: aload 8
-    //   211: ifnull -72 -> 139
-    //   214: aload 8
-    //   216: invokevirtual 123	java/io/InputStream:close	()V
-    //   219: aconst_null
-    //   220: areturn
-    //   221: astore_0
-    //   222: aload_0
-    //   223: invokevirtual 128	java/io/IOException:printStackTrace	()V
-    //   226: aconst_null
-    //   227: areturn
-    //   228: astore_0
-    //   229: aconst_null
-    //   230: astore 8
-    //   232: aload 8
-    //   234: astore 7
-    //   236: aload_0
-    //   237: invokevirtual 128	java/io/IOException:printStackTrace	()V
-    //   240: aload 9
-    //   242: astore_0
-    //   243: aload 8
-    //   245: ifnull -106 -> 139
-    //   248: aload 8
-    //   250: invokevirtual 123	java/io/InputStream:close	()V
-    //   253: aconst_null
-    //   254: areturn
-    //   255: astore_0
-    //   256: aload_0
-    //   257: invokevirtual 128	java/io/IOException:printStackTrace	()V
-    //   260: aconst_null
-    //   261: areturn
-    //   262: astore_0
-    //   263: aconst_null
-    //   264: astore 7
-    //   266: aload 7
-    //   268: ifnull +8 -> 276
-    //   271: aload 7
-    //   273: invokevirtual 123	java/io/InputStream:close	()V
-    //   276: aload_0
-    //   277: athrow
-    //   278: astore 7
-    //   280: aload 7
-    //   282: invokevirtual 128	java/io/IOException:printStackTrace	()V
-    //   285: goto -9 -> 276
-    //   288: astore_0
-    //   289: goto -23 -> 266
-    //   292: astore_0
-    //   293: goto -61 -> 232
-    //   296: astore_0
-    //   297: goto -99 -> 198
-    //   300: astore_0
-    //   301: aconst_null
-    //   302: astore 8
-    //   304: goto -189 -> 115
-    //   307: lload 5
-    //   309: lstore_3
-    //   310: goto -260 -> 50
+    //   211: invokevirtual 118	java/io/InputStream:close	()V
+    //   214: aconst_null
+    //   215: areturn
+    //   216: astore_0
+    //   217: aconst_null
+    //   218: astore 8
+    //   220: aload 8
+    //   222: astore 7
+    //   224: aload_0
+    //   225: invokevirtual 125	java/security/NoSuchAlgorithmException:printStackTrace	()V
+    //   228: aload 8
+    //   230: ifnull +15 -> 245
+    //   233: aload 8
+    //   235: invokevirtual 118	java/io/InputStream:close	()V
+    //   238: aconst_null
+    //   239: areturn
+    //   240: astore_0
+    //   241: aload_0
+    //   242: invokevirtual 123	java/io/IOException:printStackTrace	()V
+    //   245: aconst_null
+    //   246: areturn
+    //   247: astore_0
+    //   248: aload 7
+    //   250: ifnull +18 -> 268
+    //   253: aload 7
+    //   255: invokevirtual 118	java/io/InputStream:close	()V
+    //   258: goto +10 -> 268
+    //   261: astore 7
+    //   263: aload 7
+    //   265: invokevirtual 123	java/io/IOException:printStackTrace	()V
+    //   268: goto +5 -> 273
+    //   271: aload_0
+    //   272: athrow
+    //   273: goto -2 -> 271
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	313	0	paramString	String
+    //   0	276	0	paramString	String
     //   83	25	1	i	int
     //   76	9	2	j	int
-    //   3	307	3	l1	long
-    //   39	269	5	l2	long
-    //   26	246	7	localObject1	Object
-    //   278	3	7	localIOException	java.io.IOException
-    //   22	281	8	localFileInputStream	java.io.FileInputStream
-    //   5	236	9	localObject2	Object
-    //   12	143	10	localMessageDigest	java.security.MessageDigest
+    //   36	63	3	l1	long
+    //   32	6	5	l2	long
+    //   19	107	7	localFileInputStream1	java.io.FileInputStream
+    //   140	3	7	localIOException1	java.io.IOException
+    //   163	91	7	localFileInputStream2	java.io.FileInputStream
+    //   261	3	7	localIOException2	java.io.IOException
+    //   15	219	8	localFileInputStream3	java.io.FileInputStream
+    //   5	123	9	localMessageDigest	java.security.MessageDigest
     // Exception table:
     //   from	to	target	type
-    //   28	41	114	java/security/NoSuchAlgorithmException
-    //   54	60	114	java/security/NoSuchAlgorithmException
-    //   70	77	114	java/security/NoSuchAlgorithmException
-    //   103	111	114	java/security/NoSuchAlgorithmException
-    //   145	150	114	java/security/NoSuchAlgorithmException
-    //   154	160	114	java/security/NoSuchAlgorithmException
-    //   171	176	179	java/io/IOException
-    //   131	136	187	java/io/IOException
-    //   7	24	194	java/io/FileNotFoundException
-    //   214	219	221	java/io/IOException
-    //   7	24	228	java/io/IOException
-    //   248	253	255	java/io/IOException
-    //   7	24	262	finally
-    //   271	276	278	java/io/IOException
-    //   28	41	288	finally
-    //   54	60	288	finally
-    //   70	77	288	finally
-    //   103	111	288	finally
-    //   119	123	288	finally
-    //   145	150	288	finally
-    //   154	160	288	finally
-    //   202	206	288	finally
-    //   236	240	288	finally
-    //   28	41	292	java/io/IOException
-    //   54	60	292	java/io/IOException
-    //   70	77	292	java/io/IOException
-    //   103	111	292	java/io/IOException
-    //   145	150	292	java/io/IOException
-    //   154	160	292	java/io/IOException
-    //   28	41	296	java/io/FileNotFoundException
-    //   54	60	296	java/io/FileNotFoundException
-    //   70	77	296	java/io/FileNotFoundException
-    //   103	111	296	java/io/FileNotFoundException
-    //   145	150	296	java/io/FileNotFoundException
-    //   154	160	296	java/io/FileNotFoundException
-    //   7	24	300	java/security/NoSuchAlgorithmException
+    //   133	138	140	java/io/IOException
+    //   21	34	149	java/io/IOException
+    //   54	60	149	java/io/IOException
+    //   70	77	149	java/io/IOException
+    //   103	111	149	java/io/IOException
+    //   118	123	149	java/io/IOException
+    //   127	133	149	java/io/IOException
+    //   21	34	153	java/io/FileNotFoundException
+    //   54	60	153	java/io/FileNotFoundException
+    //   70	77	153	java/io/FileNotFoundException
+    //   103	111	153	java/io/FileNotFoundException
+    //   118	123	153	java/io/FileNotFoundException
+    //   127	133	153	java/io/FileNotFoundException
+    //   21	34	157	java/security/NoSuchAlgorithmException
+    //   54	60	157	java/security/NoSuchAlgorithmException
+    //   70	77	157	java/security/NoSuchAlgorithmException
+    //   103	111	157	java/security/NoSuchAlgorithmException
+    //   118	123	157	java/security/NoSuchAlgorithmException
+    //   127	133	157	java/security/NoSuchAlgorithmException
+    //   0	17	161	finally
+    //   0	17	168	java/io/IOException
+    //   0	17	192	java/io/FileNotFoundException
+    //   0	17	216	java/security/NoSuchAlgorithmException
+    //   185	190	240	java/io/IOException
+    //   209	214	240	java/io/IOException
+    //   233	238	240	java/io/IOException
+    //   21	34	247	finally
+    //   54	60	247	finally
+    //   70	77	247	finally
+    //   103	111	247	finally
+    //   118	123	247	finally
+    //   127	133	247	finally
+    //   176	180	247	finally
+    //   200	204	247	finally
+    //   224	228	247	finally
+    //   253	258	261	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.util.DatalineMathUtil
  * JD-Core Version:    0.7.0.1
  */

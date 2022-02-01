@@ -20,11 +20,13 @@ class ChildLockCircle$1
   
   public void onFinish()
   {
-    ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle, ChildLockCircle.b(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle));
+    Object localObject = this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle;
+    ChildLockCircle.a((ChildLockCircle)localObject, ChildLockCircle.b((ChildLockCircle)localObject));
     ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle, 0);
     this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle.postInvalidate();
     ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle);
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+    localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
     {
       this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
       this.jdField_a_of_type_AndroidGraphicsBitmap = null;
@@ -43,22 +45,28 @@ class ChildLockCircle$1
   {
     if (this.jdField_a_of_type_AndroidContentContext != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle.a(this.jdField_a_of_type_AndroidContentResResources, this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+      this.jdField_a_of_type_AndroidGraphicsBitmap = ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle, this.jdField_a_of_type_AndroidContentResResources, this.jdField_a_of_type_Int);
+      Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      if (localObject != null)
       {
-        ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle, this.jdField_a_of_type_AndroidGraphicsBitmap);
+        ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle, (Bitmap)localObject);
         this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle.postInvalidate();
       }
       this.jdField_a_of_type_Int += 1;
-      if (QLog.isColorLevel()) {
-        QLog.d("ChildLockCircle", 2, "LockAnimation, i[" + this.jdField_a_of_type_Int + "]");
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("LockAnimation, i[");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append("]");
+        QLog.d("ChildLockCircle", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.widget.ChildLockCircle.1
  * JD-Core Version:    0.7.0.1
  */

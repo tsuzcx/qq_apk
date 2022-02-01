@@ -92,41 +92,50 @@ public final class DateCard
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vFaces != null) {
-      paramJceOutputStream.write(this.vFaces, 0);
+    Object localObject = this.vFaces;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 0);
     }
     paramJceOutputStream.write(this.bConstellation, 1);
     paramJceOutputStream.write(this.uProfession, 2);
-    if (this.strCompany != null) {
-      paramJceOutputStream.write(this.strCompany, 3);
+    localObject = this.strCompany;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.strSchool != null) {
-      paramJceOutputStream.write(this.strSchool, 4);
+    localObject = this.strSchool;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.uHomeCountry, 5);
     paramJceOutputStream.write(this.uHomeProvince, 6);
     paramJceOutputStream.write(this.uHomeCity, 7);
-    if (this.vDateInfo != null) {
-      paramJceOutputStream.write(this.vDateInfo, 8);
+    localObject = this.vDateInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 8);
     }
-    if (this.strDistance != null) {
-      paramJceOutputStream.write(this.strDistance, 9);
+    localObject = this.strDistance;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.strElapse != null) {
-      paramJceOutputStream.write(this.strElapse, 10);
+    localObject = this.strElapse;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
     paramJceOutputStream.write(this.bMarriage, 11);
     paramJceOutputStream.write(this.uHomeZone, 12);
     paramJceOutputStream.write(this.lTinyId, 13);
     paramJceOutputStream.write(this.uSchoolId, 14);
-    if (this.vGroupList != null) {
-      paramJceOutputStream.write(this.vGroupList, 15);
+    localObject = this.vGroupList;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 15);
     }
-    if (this.vNearbyInfo != null) {
-      paramJceOutputStream.write(this.vNearbyInfo, 16);
+    localObject = this.vNearbyInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 16);
     }
-    if (this.vActivityList != null) {
-      paramJceOutputStream.write(this.vActivityList, 17);
+    localObject = this.vActivityList;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 17);
     }
   }
 }

@@ -32,36 +32,41 @@ class TroopMemRecommendRclAdapter$ActiveViewHolder
   {
     super(paramView);
     this.jdField_a_of_type_JavaUtilList = ((List)paramTroopMemRecommendRclAdapter.a.get(Integer.valueOf(paramInt)));
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (;;)
-    {
+    Object localObject1 = this.jdField_a_of_type_JavaUtilList;
+    if (localObject1 == null) {
       return;
-      this.b = new ArrayList(this.jdField_a_of_type_JavaUtilList.size());
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380675));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131377312));
-      paramView = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramView.hasNext())
+    }
+    this.b = new ArrayList(((List)localObject1).size());
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379949));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131376766));
+    paramView = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramView.hasNext())
+    {
+      localObject1 = (RecommendPerson)paramView.next();
+      if (QLog.isColorLevel())
       {
-        Object localObject = (RecommendPerson)paramView.next();
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopMemberRecommend.Adapter", 2, "ActiveViewHolder, person.uin =" + ((RecommendPerson)localObject).uin + " size() = " + this.jdField_a_of_type_JavaUtilList.size());
-        }
-        localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext()).inflate(2131563160, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-        RelativeLayout localRelativeLayout = (RelativeLayout)((View)localObject).findViewById(2131377313);
-        ImageView localImageView = (ImageView)((View)localObject).findViewById(2131369849);
-        TextView localTextView1 = (TextView)((View)localObject).findViewById(2131380676);
-        TextView localTextView2 = (TextView)((View)localObject).findViewById(2131380677);
-        Button localButton = (Button)((View)localObject).findViewById(2131364179);
-        a(AIOUtils.a(85.0F, TroopMemRecommendRclAdapter.a(paramTroopMemRecommendRclAdapter).getResources()), this.jdField_a_of_type_JavaUtilList.size(), localRelativeLayout);
-        TroopMemRecommendRclAdapter.ActiveViewHolder.ActiveSubItemView localActiveSubItemView = new TroopMemRecommendRclAdapter.ActiveViewHolder.ActiveSubItemView(this);
-        localActiveSubItemView.jdField_a_of_type_AndroidWidgetRelativeLayout = localRelativeLayout;
-        localActiveSubItemView.jdField_a_of_type_AndroidWidgetImageView = localImageView;
-        localActiveSubItemView.jdField_a_of_type_AndroidWidgetTextView = localTextView1;
-        localActiveSubItemView.b = localTextView2;
-        localActiveSubItemView.jdField_a_of_type_AndroidWidgetButton = localButton;
-        this.b.add(localActiveSubItemView);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("ActiveViewHolder, person.uin =");
+        ((StringBuilder)localObject2).append(((RecommendPerson)localObject1).uin);
+        ((StringBuilder)localObject2).append(" size() = ");
+        ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaUtilList.size());
+        QLog.d("TroopMemberRecommend.Adapter", 2, ((StringBuilder)localObject2).toString());
       }
+      localObject1 = LayoutInflater.from(this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext()).inflate(2131562983, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+      Object localObject2 = (RelativeLayout)((View)localObject1).findViewById(2131376767);
+      ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131369535);
+      TextView localTextView1 = (TextView)((View)localObject1).findViewById(2131379950);
+      TextView localTextView2 = (TextView)((View)localObject1).findViewById(2131379951);
+      Button localButton = (Button)((View)localObject1).findViewById(2131364098);
+      a(AIOUtils.b(85.0F, TroopMemRecommendRclAdapter.a(paramTroopMemRecommendRclAdapter).getResources()), this.jdField_a_of_type_JavaUtilList.size(), (RelativeLayout)localObject2);
+      TroopMemRecommendRclAdapter.ActiveViewHolder.ActiveSubItemView localActiveSubItemView = new TroopMemRecommendRclAdapter.ActiveViewHolder.ActiveSubItemView(this);
+      localActiveSubItemView.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localObject2);
+      localActiveSubItemView.jdField_a_of_type_AndroidWidgetImageView = localImageView;
+      localActiveSubItemView.jdField_a_of_type_AndroidWidgetTextView = localTextView1;
+      localActiveSubItemView.b = localTextView2;
+      localActiveSubItemView.jdField_a_of_type_AndroidWidgetButton = localButton;
+      this.b.add(localActiveSubItemView);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
     }
   }
   
@@ -75,35 +80,38 @@ class TroopMemRecommendRclAdapter$ActiveViewHolder
       localLayoutParams.leftMargin = paramInt2;
       localLayoutParams.rightMargin = paramInt2;
       paramRelativeLayout.setLayoutParams(localLayoutParams);
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopMemberRecommend.Adapter", 2, "onCreateViewHolder, rlWidth =" + paramInt1 + " screenWidth =" + i + " margin = " + paramInt2);
+      if (QLog.isColorLevel())
+      {
+        paramRelativeLayout = new StringBuilder();
+        paramRelativeLayout.append("onCreateViewHolder, rlWidth =");
+        paramRelativeLayout.append(paramInt1);
+        paramRelativeLayout.append(" screenWidth =");
+        paramRelativeLayout.append(i);
+        paramRelativeLayout.append(" margin = ");
+        paramRelativeLayout.append(paramInt2);
+        QLog.d("TroopMemberRecommend.Adapter", 2, paramRelativeLayout.toString());
       }
     }
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i != 2131364098)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (TroopMemRecommendRclAdapter.a(this.jdField_a_of_type_ComTencentMobileqqMulticardTroopMemRecommendRclAdapter) != null)
-      {
-        TroopMemRecommendRclAdapter.a(this.jdField_a_of_type_ComTencentMobileqqMulticardTroopMemRecommendRclAdapter).a((RecyclerView.ViewHolder)paramView.getTag(2131377313), (RecommendPerson)paramView.getTag(2131364179));
-        continue;
-        if (TroopMemRecommendRclAdapter.a(this.jdField_a_of_type_ComTencentMobileqqMulticardTroopMemRecommendRclAdapter) != null) {
-          TroopMemRecommendRclAdapter.a(this.jdField_a_of_type_ComTencentMobileqqMulticardTroopMemRecommendRclAdapter).b((RecyclerView.ViewHolder)paramView.getTag(2131377313), (RecommendPerson)paramView.getTag(2131364179));
-        }
+      if ((i == 2131376767) && (TroopMemRecommendRclAdapter.a(this.jdField_a_of_type_ComTencentMobileqqMulticardTroopMemRecommendRclAdapter) != null)) {
+        TroopMemRecommendRclAdapter.a(this.jdField_a_of_type_ComTencentMobileqqMulticardTroopMemRecommendRclAdapter).a((RecyclerView.ViewHolder)paramView.getTag(2131376767), (RecommendPerson)paramView.getTag(2131364098));
       }
     }
+    else if (TroopMemRecommendRclAdapter.a(this.jdField_a_of_type_ComTencentMobileqqMulticardTroopMemRecommendRclAdapter) != null) {
+      TroopMemRecommendRclAdapter.a(this.jdField_a_of_type_ComTencentMobileqqMulticardTroopMemRecommendRclAdapter).b((RecyclerView.ViewHolder)paramView.getTag(2131376767), (RecommendPerson)paramView.getTag(2131364098));
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.TroopMemRecommendRclAdapter.ActiveViewHolder
  * JD-Core Version:    0.7.0.1
  */

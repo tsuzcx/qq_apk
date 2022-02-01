@@ -19,30 +19,28 @@ class DirectForwardActivity$2
     {
       paramContext = paramIntent.getStringArrayList("procNameList");
       paramIntent = paramIntent.getString("verify");
-      if ((paramContext != null) && (paramContext.size() != 0) && (this.a.a != null) && (CommonUtil.a(paramIntent, paramContext))) {
-        break label53;
-      }
-    }
-    for (;;)
-    {
-      return;
-      label53:
-      int i = 0;
-      while (i < paramContext.size())
+      if ((paramContext != null) && (paramContext.size() != 0) && (this.a.a != null))
       {
-        if (this.a.a.equals(paramContext.get(i)))
-        {
-          this.a.finish();
+        if (!CommonUtil.a(paramIntent, paramContext)) {
           return;
         }
-        i += 1;
+        int i = 0;
+        while (i < paramContext.size())
+        {
+          if (this.a.a.equals(paramContext.get(i)))
+          {
+            this.a.finish();
+            return;
+          }
+          i += 1;
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DirectForwardActivity.2
  * JD-Core Version:    0.7.0.1
  */

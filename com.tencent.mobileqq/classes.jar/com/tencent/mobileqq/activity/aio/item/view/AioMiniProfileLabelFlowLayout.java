@@ -27,7 +27,7 @@ public class AioMiniProfileLabelFlowLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void a()
+  protected void a()
   {
     int j = getChildCount();
     int i = 0;
@@ -49,189 +49,146 @@ public class AioMiniProfileLabelFlowLayout
     }
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int k = getWidth();
-    paramInt2 = 0;
-    paramInt1 = 0;
-    int m = getChildCount();
-    paramInt4 = 0;
-    paramInt3 = 1;
+    int i1 = getWidth();
+    int i2 = getChildCount();
+    int j = 0;
+    paramInt4 = 1;
     int i = 0;
-    View localView;
-    int j;
-    int i1;
-    int n;
-    label117:
-    ViewGroup.MarginLayoutParams localMarginLayoutParams;
-    for (;;)
+    paramInt3 = 0;
+    int k = 0;
+    while (j < i2)
     {
-      if (i < m)
+      View localView = getChildAt(j);
+      if (localView.getVisibility() == 8)
       {
-        localView = getChildAt(i);
-        if (localView.getVisibility() == 8)
-        {
-          j = paramInt4;
-          paramInt4 = paramInt2;
-          paramInt2 = paramInt1;
-          paramInt1 = j;
-          j = i + 1;
-          i = paramInt1;
-          paramInt1 = paramInt2;
-          paramInt2 = paramInt4;
-          paramInt4 = i;
-          i = j;
-        }
-        else
-        {
-          i1 = localView.getMeasuredWidth();
-          n = localView.getMeasuredHeight();
-          if (paramInt3 == 1)
-          {
-            j = k - ViewUtils.a(90.0F);
-            localMarginLayoutParams = (ViewGroup.MarginLayoutParams)localView.getLayoutParams();
-            if (localMarginLayoutParams.leftMargin + paramInt2 + i1 + localMarginLayoutParams.rightMargin <= j) {
-              break label275;
-            }
-            j = paramInt3 + 1;
-            paramInt2 = paramInt1 + paramInt4;
-            paramInt3 = 0;
-            paramInt1 = j;
-          }
-        }
+        paramInt1 = paramInt4;
+        paramInt2 = paramInt3;
       }
-    }
-    for (;;)
-    {
-      int i2 = localMarginLayoutParams.topMargin;
-      int i3 = localMarginLayoutParams.bottomMargin;
-      paramInt4 = localMarginLayoutParams.leftMargin + paramInt3;
-      j = localMarginLayoutParams.topMargin + paramInt2;
-      localView.layout(paramInt4, j, paramInt4 + i1, n + j);
-      j = localMarginLayoutParams.leftMargin;
-      int i4 = localMarginLayoutParams.rightMargin;
+      else
+      {
+        int i4 = localView.getMeasuredWidth();
+        int i3 = localView.getMeasuredHeight();
+        int n;
+        if (paramInt4 == 1) {
+          n = i1 - ViewUtils.a(90.0F);
+        } else {
+          n = i1;
+        }
+        ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)localView.getLayoutParams();
+        paramInt1 = paramInt4;
+        int m = i;
+        paramInt2 = paramInt3;
+        if (localMarginLayoutParams.leftMargin + i + i4 + localMarginLayoutParams.rightMargin > n)
+        {
+          paramInt2 = paramInt3 + k;
+          paramInt1 = paramInt4 + 1;
+          m = 0;
+        }
+        paramInt3 = localMarginLayoutParams.topMargin;
+        paramInt4 = localMarginLayoutParams.bottomMargin;
+        i = localMarginLayoutParams.leftMargin + m;
+        k = localMarginLayoutParams.topMargin + paramInt2;
+        localView.layout(i, k, i + i4, i3 + k);
+        i = m + (localMarginLayoutParams.leftMargin + i4 + localMarginLayoutParams.rightMargin);
+        k = paramInt3 + i3 + paramInt4;
+      }
+      j += 1;
       paramInt4 = paramInt1;
-      j = i4 + (j + i1) + paramInt3;
-      paramInt1 = i2 + n + i3;
-      paramInt3 = paramInt4;
-      paramInt4 = j;
-      break;
-      j = k;
-      break label117;
-      return;
-      label275:
-      paramInt4 = paramInt1;
-      j = paramInt2;
-      paramInt1 = paramInt3;
-      paramInt2 = paramInt4;
-      paramInt3 = j;
+      paramInt3 = paramInt2;
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    int i6 = View.MeasureSpec.getSize(paramInt1);
-    int i8 = View.MeasureSpec.getSize(paramInt2);
-    int i10 = View.MeasureSpec.getMode(paramInt1);
-    int i9 = View.MeasureSpec.getMode(paramInt2);
+    int i = View.MeasureSpec.getSize(paramInt1);
+    int m = View.MeasureSpec.getSize(paramInt2);
+    int i9 = View.MeasureSpec.getMode(paramInt1);
+    int i8 = View.MeasureSpec.getMode(paramInt2);
+    int i10 = getChildCount();
+    int i3 = 0;
+    int n = 1;
+    int i1 = 0;
+    int i2 = 0;
     int j = 0;
-    int i = 0;
-    int m = 0;
-    int n = 0;
-    int i11 = getChildCount();
-    int k = 1;
-    int i7 = 0;
-    int i1;
-    int i2;
-    int i3;
-    for (;;)
+    int k = 0;
+    while (i3 < i10)
     {
-      if (i7 < i11)
+      Object localObject = getChildAt(i3);
+      if (((View)localObject).getVisibility() != 8)
       {
-        Object localObject = getChildAt(i7);
-        if (((View)localObject).getVisibility() == 8)
+        measureChild((View)localObject, paramInt1, paramInt2);
+        int i5 = ((View)localObject).getMeasuredWidth();
+        int i4 = ((View)localObject).getMeasuredHeight();
+        localObject = (ViewGroup.MarginLayoutParams)((View)localObject).getLayoutParams();
+        int i6 = i5 + ((ViewGroup.MarginLayoutParams)localObject).leftMargin + ((ViewGroup.MarginLayoutParams)localObject).rightMargin;
+        i5 = i4 + ((ViewGroup.MarginLayoutParams)localObject).topMargin + ((ViewGroup.MarginLayoutParams)localObject).bottomMargin;
+        if (n == 1) {
+          i4 = i - ViewUtils.a(90.0F);
+        } else {
+          i4 = i;
+        }
+        int i7 = i1 + i6;
+        if (i7 > i4)
         {
-          i1 = n;
-          n = m;
-          m = i1;
-          i7 += 1;
-          i1 = n;
-          n = m;
-          m = i1;
+          n += 1;
+          if (n > 2)
+          {
+            paramInt2 = Math.max(i1, i6);
+            paramInt1 = j + i2;
+            break label344;
+          }
+          i2 = Math.max(i1, i6);
+          i1 = j + i5;
+          k = i6;
+          j = i5;
         }
         else
         {
-          measureChild((View)localObject, paramInt1, paramInt2);
-          i2 = ((View)localObject).getMeasuredWidth();
-          i1 = ((View)localObject).getMeasuredHeight();
-          localObject = (ViewGroup.MarginLayoutParams)((View)localObject).getLayoutParams();
-          i3 = ((ViewGroup.MarginLayoutParams)localObject).leftMargin;
-          i3 = ((ViewGroup.MarginLayoutParams)localObject).rightMargin + (i2 + i3);
-          i2 = ((ViewGroup.MarginLayoutParams)localObject).topMargin + i1 + ((ViewGroup.MarginLayoutParams)localObject).bottomMargin;
-          if (k == 1)
-          {
-            i1 = i6 - ViewUtils.a(90.0F);
-            label195:
-            if (m + i3 <= i1) {
-              break label337;
-            }
-            i1 = k + 1;
-            if (i1 <= 2) {
-              break label264;
-            }
-            paramInt2 = Math.max(m, i3);
-            paramInt1 = i + n;
-          }
+          i4 = Math.max(i2, i5);
+          i2 = k;
+          i1 = j;
+          j = i4;
+          k = i7;
+        }
+        if (i3 == i10 - 1)
+        {
+          i2 = Math.max(k, i2);
+          i4 = i1 + j;
+          i1 = k;
+          k = i2;
+          i2 = j;
+          j = i4;
+        }
+        else
+        {
+          i4 = k;
+          i5 = j;
+          k = i2;
+          j = i1;
+          i2 = i5;
+          i1 = i4;
         }
       }
+      i3 += 1;
     }
-    for (;;)
-    {
-      if (i10 == 1073741824) {
-        paramInt2 = i6;
-      }
-      if (i9 == 1073741824) {
-        paramInt1 = i8;
-      }
-      setMeasuredDimension(paramInt2, paramInt1);
-      return;
-      i1 = i6;
-      break label195;
-      label264:
-      int i5 = Math.max(m, i3);
-      int i4 = i + i2;
-      for (;;)
-      {
-        k = i1;
-        m = i2;
-        n = i3;
-        i = i4;
-        j = i5;
-        if (i7 != i11 - 1) {
-          break;
-        }
-        j = Math.max(i3, i5);
-        i = i4 + i2;
-        k = i1;
-        m = i2;
-        n = i3;
-        break;
-        label337:
-        i2 = Math.max(n, i2);
-        i3 = m + i3;
-        i1 = k;
-        i4 = i;
-        i5 = j;
-      }
-      paramInt1 = i;
-      paramInt2 = j;
+    paramInt1 = j;
+    paramInt2 = k;
+    label344:
+    if (i9 == 1073741824) {
+      paramInt2 = i;
     }
+    if (i8 == 1073741824) {
+      paramInt1 = m;
+    }
+    setMeasuredDimension(paramInt2, paramInt1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.view.AioMiniProfileLabelFlowLayout
  * JD-Core Version:    0.7.0.1
  */

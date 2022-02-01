@@ -28,7 +28,7 @@ public final class UShort
   @InlineOnly
   private static final int compareTo-7apg3OU(short paramShort, byte paramByte)
   {
-    return Intrinsics.compare(0xFFFF & paramShort, paramByte & 0xFF);
+    return Intrinsics.compare(paramShort & 0xFFFF, paramByte & 0xFF);
   }
   
   @InlineOnly
@@ -40,7 +40,7 @@ public final class UShort
   @InlineOnly
   private static final int compareTo-WZ4Q5Ns(short paramShort, int paramInt)
   {
-    return UnsignedKt.uintCompare(UInt.constructor-impl(0xFFFF & paramShort), paramInt);
+    return UnsignedKt.uintCompare(UInt.constructor-impl(paramShort & 0xFFFF), paramInt);
   }
   
   @InlineOnly
@@ -52,7 +52,7 @@ public final class UShort
   @InlineOnly
   private static int compareTo-xj2QHRw(short paramShort1, short paramShort2)
   {
-    return Intrinsics.compare(paramShort1 & 0xFFFF, 0xFFFF & paramShort2);
+    return Intrinsics.compare(paramShort1 & 0xFFFF, paramShort2 & 0xFFFF);
   }
   
   @PublishedApi
@@ -70,7 +70,7 @@ public final class UShort
   @InlineOnly
   private static final int div-7apg3OU(short paramShort, byte paramByte)
   {
-    return UnsignedKt.uintDivide-J1ME1BU(UInt.constructor-impl(0xFFFF & paramShort), UInt.constructor-impl(paramByte & 0xFF));
+    return UnsignedKt.uintDivide-J1ME1BU(UInt.constructor-impl(paramShort & 0xFFFF), UInt.constructor-impl(paramByte & 0xFF));
   }
   
   @InlineOnly
@@ -82,13 +82,13 @@ public final class UShort
   @InlineOnly
   private static final int div-WZ4Q5Ns(short paramShort, int paramInt)
   {
-    return UnsignedKt.uintDivide-J1ME1BU(UInt.constructor-impl(0xFFFF & paramShort), paramInt);
+    return UnsignedKt.uintDivide-J1ME1BU(UInt.constructor-impl(paramShort & 0xFFFF), paramInt);
   }
   
   @InlineOnly
   private static final int div-xj2QHRw(short paramShort1, short paramShort2)
   {
-    return UnsignedKt.uintDivide-J1ME1BU(UInt.constructor-impl(paramShort1 & 0xFFFF), UInt.constructor-impl(0xFFFF & paramShort2));
+    return UnsignedKt.uintDivide-J1ME1BU(UInt.constructor-impl(paramShort1 & 0xFFFF), UInt.constructor-impl(paramShort2 & 0xFFFF));
   }
   
   public static boolean equals-impl(short paramShort, @Nullable Object paramObject)
@@ -121,7 +121,7 @@ public final class UShort
   @InlineOnly
   private static final int minus-7apg3OU(short paramShort, byte paramByte)
   {
-    return UInt.constructor-impl(UInt.constructor-impl(0xFFFF & paramShort) - UInt.constructor-impl(paramByte & 0xFF));
+    return UInt.constructor-impl(UInt.constructor-impl(paramShort & 0xFFFF) - UInt.constructor-impl(paramByte & 0xFF));
   }
   
   @InlineOnly
@@ -133,13 +133,13 @@ public final class UShort
   @InlineOnly
   private static final int minus-WZ4Q5Ns(short paramShort, int paramInt)
   {
-    return UInt.constructor-impl(UInt.constructor-impl(0xFFFF & paramShort) - paramInt);
+    return UInt.constructor-impl(UInt.constructor-impl(paramShort & 0xFFFF) - paramInt);
   }
   
   @InlineOnly
   private static final int minus-xj2QHRw(short paramShort1, short paramShort2)
   {
-    return UInt.constructor-impl(UInt.constructor-impl(paramShort1 & 0xFFFF) - UInt.constructor-impl(0xFFFF & paramShort2));
+    return UInt.constructor-impl(UInt.constructor-impl(paramShort1 & 0xFFFF) - UInt.constructor-impl(paramShort2 & 0xFFFF));
   }
   
   @InlineOnly
@@ -151,7 +151,7 @@ public final class UShort
   @InlineOnly
   private static final int plus-7apg3OU(short paramShort, byte paramByte)
   {
-    return UInt.constructor-impl(UInt.constructor-impl(0xFFFF & paramShort) + UInt.constructor-impl(paramByte & 0xFF));
+    return UInt.constructor-impl(UInt.constructor-impl(paramShort & 0xFFFF) + UInt.constructor-impl(paramByte & 0xFF));
   }
   
   @InlineOnly
@@ -163,25 +163,25 @@ public final class UShort
   @InlineOnly
   private static final int plus-WZ4Q5Ns(short paramShort, int paramInt)
   {
-    return UInt.constructor-impl(UInt.constructor-impl(0xFFFF & paramShort) + paramInt);
+    return UInt.constructor-impl(UInt.constructor-impl(paramShort & 0xFFFF) + paramInt);
   }
   
   @InlineOnly
   private static final int plus-xj2QHRw(short paramShort1, short paramShort2)
   {
-    return UInt.constructor-impl(UInt.constructor-impl(paramShort1 & 0xFFFF) + UInt.constructor-impl(0xFFFF & paramShort2));
+    return UInt.constructor-impl(UInt.constructor-impl(paramShort1 & 0xFFFF) + UInt.constructor-impl(paramShort2 & 0xFFFF));
   }
   
   @InlineOnly
   private static final UIntRange rangeTo-xj2QHRw(short paramShort1, short paramShort2)
   {
-    return new UIntRange(UInt.constructor-impl(paramShort1 & 0xFFFF), UInt.constructor-impl(0xFFFF & paramShort2), null);
+    return new UIntRange(UInt.constructor-impl(paramShort1 & 0xFFFF), UInt.constructor-impl(paramShort2 & 0xFFFF), null);
   }
   
   @InlineOnly
   private static final int rem-7apg3OU(short paramShort, byte paramByte)
   {
-    return UnsignedKt.uintRemainder-J1ME1BU(UInt.constructor-impl(0xFFFF & paramShort), UInt.constructor-impl(paramByte & 0xFF));
+    return UnsignedKt.uintRemainder-J1ME1BU(UInt.constructor-impl(paramShort & 0xFFFF), UInt.constructor-impl(paramByte & 0xFF));
   }
   
   @InlineOnly
@@ -193,19 +193,19 @@ public final class UShort
   @InlineOnly
   private static final int rem-WZ4Q5Ns(short paramShort, int paramInt)
   {
-    return UnsignedKt.uintRemainder-J1ME1BU(UInt.constructor-impl(0xFFFF & paramShort), paramInt);
+    return UnsignedKt.uintRemainder-J1ME1BU(UInt.constructor-impl(paramShort & 0xFFFF), paramInt);
   }
   
   @InlineOnly
   private static final int rem-xj2QHRw(short paramShort1, short paramShort2)
   {
-    return UnsignedKt.uintRemainder-J1ME1BU(UInt.constructor-impl(paramShort1 & 0xFFFF), UInt.constructor-impl(0xFFFF & paramShort2));
+    return UnsignedKt.uintRemainder-J1ME1BU(UInt.constructor-impl(paramShort1 & 0xFFFF), UInt.constructor-impl(paramShort2 & 0xFFFF));
   }
   
   @InlineOnly
   private static final int times-7apg3OU(short paramShort, byte paramByte)
   {
-    return UInt.constructor-impl(UInt.constructor-impl(0xFFFF & paramShort) * UInt.constructor-impl(paramByte & 0xFF));
+    return UInt.constructor-impl(UInt.constructor-impl(paramShort & 0xFFFF) * UInt.constructor-impl(paramByte & 0xFF));
   }
   
   @InlineOnly
@@ -217,13 +217,13 @@ public final class UShort
   @InlineOnly
   private static final int times-WZ4Q5Ns(short paramShort, int paramInt)
   {
-    return UInt.constructor-impl(UInt.constructor-impl(0xFFFF & paramShort) * paramInt);
+    return UInt.constructor-impl(UInt.constructor-impl(paramShort & 0xFFFF) * paramInt);
   }
   
   @InlineOnly
   private static final int times-xj2QHRw(short paramShort1, short paramShort2)
   {
-    return UInt.constructor-impl(UInt.constructor-impl(paramShort1 & 0xFFFF) * UInt.constructor-impl(0xFFFF & paramShort2));
+    return UInt.constructor-impl(UInt.constructor-impl(paramShort1 & 0xFFFF) * UInt.constructor-impl(paramShort2 & 0xFFFF));
   }
   
   @InlineOnly
@@ -235,19 +235,19 @@ public final class UShort
   @InlineOnly
   private static final double toDouble-impl(short paramShort)
   {
-    return 0xFFFF & paramShort;
+    return paramShort & 0xFFFF;
   }
   
   @InlineOnly
   private static final float toFloat-impl(short paramShort)
   {
-    return 0xFFFF & paramShort;
+    return paramShort & 0xFFFF;
   }
   
   @InlineOnly
   private static final int toInt-impl(short paramShort)
   {
-    return 0xFFFF & paramShort;
+    return paramShort & 0xFFFF;
   }
   
   @InlineOnly
@@ -265,7 +265,7 @@ public final class UShort
   @NotNull
   public static String toString-impl(short paramShort)
   {
-    return String.valueOf(0xFFFF & paramShort);
+    return String.valueOf(paramShort & 0xFFFF);
   }
   
   @InlineOnly
@@ -277,7 +277,7 @@ public final class UShort
   @InlineOnly
   private static final int toUInt-impl(short paramShort)
   {
-    return UInt.constructor-impl(0xFFFF & paramShort);
+    return UInt.constructor-impl(paramShort & 0xFFFF);
   }
   
   @InlineOnly
@@ -316,7 +316,7 @@ public final class UShort
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.UShort
  * JD-Core Version:    0.7.0.1
  */

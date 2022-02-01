@@ -8,7 +8,7 @@ import org.light.device.LightDeviceUtils;
 public class RenderLevelHelper
 {
   public static final int MAX_FPS = 18;
-  private static RenderLevelHelper.DOWNGRADE_LEVEL mDowngradeLevel = null;
+  private static RenderLevelHelper.DOWNGRADE_LEVEL mDowngradeLevel;
   
   public static RenderLevelHelper.DOWNGRADE_LEVEL getDowngradeLevel()
   {
@@ -20,20 +20,14 @@ public class RenderLevelHelper
     RenderLevelHelper.DOWNGRADE_LEVEL localDOWNGRADE_LEVEL1;
     if (DeviceUtils.hasDeviceNormal(AEModule.getContext())) {
       localDOWNGRADE_LEVEL1 = RenderLevelHelper.DOWNGRADE_LEVEL.HIGH;
+    } else if (DeviceUtils.hasDeviceLow(AEModule.getContext())) {
+      localDOWNGRADE_LEVEL1 = RenderLevelHelper.DOWNGRADE_LEVEL.MEDIUM;
+    } else {
+      localDOWNGRADE_LEVEL1 = RenderLevelHelper.DOWNGRADE_LEVEL.LOW;
     }
-    RenderLevelHelper.DOWNGRADE_LEVEL localDOWNGRADE_LEVEL2;
-    for (;;)
-    {
-      localDOWNGRADE_LEVEL2 = getScreenLevel();
-      if (localDOWNGRADE_LEVEL1.value <= localDOWNGRADE_LEVEL2.value) {
-        break;
-      }
+    RenderLevelHelper.DOWNGRADE_LEVEL localDOWNGRADE_LEVEL2 = getScreenLevel();
+    if (localDOWNGRADE_LEVEL1.value > localDOWNGRADE_LEVEL2.value) {
       return localDOWNGRADE_LEVEL1;
-      if (DeviceUtils.hasDeviceLow(AEModule.getContext())) {
-        localDOWNGRADE_LEVEL1 = RenderLevelHelper.DOWNGRADE_LEVEL.MEDIUM;
-      } else {
-        localDOWNGRADE_LEVEL1 = RenderLevelHelper.DOWNGRADE_LEVEL.LOW;
-      }
     }
     return localDOWNGRADE_LEVEL2;
   }
@@ -41,8 +35,9 @@ public class RenderLevelHelper
   @NonNull
   public static RenderLevelHelper.DOWNGRADE_LEVEL getRenderLevel()
   {
-    if (mDowngradeLevel != null) {
-      return mDowngradeLevel;
+    RenderLevelHelper.DOWNGRADE_LEVEL localDOWNGRADE_LEVEL = mDowngradeLevel;
+    if (localDOWNGRADE_LEVEL != null) {
+      return localDOWNGRADE_LEVEL;
     }
     initRenderLevel(RenderLevelHelper.RenderLevelType.PUDDING);
     return mDowngradeLevel;
@@ -62,43 +57,28 @@ public class RenderLevelHelper
   
   public static void initRenderLevel(RenderLevelHelper.RenderLevelType paramRenderLevelType)
   {
-    RenderLevelHelper.DOWNGRADE_LEVEL localDOWNGRADE_LEVEL;
-    if (paramRenderLevelType == RenderLevelHelper.RenderLevelType.PUDDING) {
-      if (DeviceUtils.hasDeviceNormal(AEModule.getContext()))
-      {
+    if (paramRenderLevelType == RenderLevelHelper.RenderLevelType.PUDDING)
+    {
+      if (DeviceUtils.hasDeviceNormal(AEModule.getContext())) {
         paramRenderLevelType = RenderLevelHelper.DOWNGRADE_LEVEL.HIGH;
-        localDOWNGRADE_LEVEL = getScreenLevel();
-        if (paramRenderLevelType.value <= localDOWNGRADE_LEVEL.value) {
-          break label102;
-        }
+      } else if (DeviceUtils.hasDeviceLow(AEModule.getContext())) {
+        paramRenderLevelType = RenderLevelHelper.DOWNGRADE_LEVEL.MEDIUM;
+      } else {
+        paramRenderLevelType = RenderLevelHelper.DOWNGRADE_LEVEL.LOW;
       }
     }
-    for (;;)
-    {
-      setDowngradeLevel(paramRenderLevelType);
-      return;
-      if (DeviceUtils.hasDeviceLow(AEModule.getContext()))
-      {
-        paramRenderLevelType = RenderLevelHelper.DOWNGRADE_LEVEL.MEDIUM;
-        break;
-      }
+    else if (DeviceUtils.hasDeviceVHigh(AEModule.getContext())) {
+      paramRenderLevelType = RenderLevelHelper.DOWNGRADE_LEVEL.HIGH;
+    } else if (DeviceUtils.hasDeviceLow(AEModule.getContext())) {
+      paramRenderLevelType = RenderLevelHelper.DOWNGRADE_LEVEL.MEDIUM;
+    } else {
       paramRenderLevelType = RenderLevelHelper.DOWNGRADE_LEVEL.LOW;
-      break;
-      if (DeviceUtils.hasDeviceVHigh(AEModule.getContext()))
-      {
-        paramRenderLevelType = RenderLevelHelper.DOWNGRADE_LEVEL.HIGH;
-        break;
-      }
-      if (DeviceUtils.hasDeviceLow(AEModule.getContext()))
-      {
-        paramRenderLevelType = RenderLevelHelper.DOWNGRADE_LEVEL.MEDIUM;
-        break;
-      }
-      paramRenderLevelType = RenderLevelHelper.DOWNGRADE_LEVEL.LOW;
-      break;
-      label102:
+    }
+    RenderLevelHelper.DOWNGRADE_LEVEL localDOWNGRADE_LEVEL = getScreenLevel();
+    if (paramRenderLevelType.value <= localDOWNGRADE_LEVEL.value) {
       paramRenderLevelType = localDOWNGRADE_LEVEL;
     }
+    setDowngradeLevel(paramRenderLevelType);
   }
   
   public static void setDowngradeLevel(RenderLevelHelper.DOWNGRADE_LEVEL paramDOWNGRADE_LEVEL)
@@ -108,7 +88,7 @@ public class RenderLevelHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.RenderLevelHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -22,23 +22,27 @@ public final class fu
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.id != 0) {
-      paramJceOutputStream.write(this.id, 0);
+    int i = this.id;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 0);
     }
-    if (this.ssid != null) {
-      paramJceOutputStream.write(this.ssid, 1);
+    String str = this.ssid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.security != 0) {
-      paramJceOutputStream.write(this.security, 2);
+    i = this.security;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 2);
     }
-    if (this.networkId != 0) {
-      paramJceOutputStream.write(this.networkId, 3);
+    i = this.networkId;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.fu
  * JD-Core Version:    0.7.0.1
  */

@@ -76,17 +76,19 @@ public final class HttpUploadReq
     paramJceOutputStream.write(this.uLength, 4);
     paramJceOutputStream.write(this.vFileData, 5);
     paramJceOutputStream.write(this.ifUpQQAvatar, 6);
-    if (this.AvatarInfo != null) {
-      paramJceOutputStream.write(this.AvatarInfo, 7);
+    Object localObject = this.AvatarInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 7);
     }
-    if (this.strFileName != null) {
-      paramJceOutputStream.write(this.strFileName, 8);
+    localObject = this.strFileName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQFS.HttpUploadReq
  * JD-Core Version:    0.7.0.1
  */

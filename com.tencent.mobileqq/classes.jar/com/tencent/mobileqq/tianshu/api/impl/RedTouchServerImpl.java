@@ -15,8 +15,9 @@ public class RedTouchServerImpl
   
   public void forceSendReq(int paramInt)
   {
-    if (this.mRedPointHandler != null) {
-      this.mRedPointHandler.a(paramInt);
+    RedpointHandler localRedpointHandler = this.mRedPointHandler;
+    if (localRedpointHandler != null) {
+      localRedpointHandler.a(paramInt);
     }
   }
   
@@ -32,15 +33,17 @@ public class RedTouchServerImpl
   
   public void notifyRedTouchUpdate(AppRuntime paramAppRuntime)
   {
-    if (this.mRedPointHandler != null) {
-      this.mRedPointHandler.a(paramAppRuntime);
+    RedpointHandler localRedpointHandler = this.mRedPointHandler;
+    if (localRedpointHandler != null) {
+      localRedpointHandler.a(paramAppRuntime);
     }
   }
   
   public void notifyUI(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (this.mRedPointHandler != null) {
-      this.mRedPointHandler.notifyUI(paramInt, paramBoolean, paramObject);
+    RedpointHandler localRedpointHandler = this.mRedPointHandler;
+    if (localRedpointHandler != null) {
+      localRedpointHandler.notifyUI(paramInt, paramBoolean, paramObject);
     }
   }
   
@@ -53,21 +56,23 @@ public class RedTouchServerImpl
   
   public void onDestroy()
   {
-    if (this.mRedPointHandler != null) {
-      this.mRedPointHandler.onDestroy();
+    RedpointHandler localRedpointHandler = this.mRedPointHandler;
+    if (localRedpointHandler != null) {
+      localRedpointHandler.onDestroy();
     }
   }
   
   public void sendRedpointReq(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    if (this.mRedPointHandler != null) {
-      this.mRedPointHandler.a(paramBoolean1, paramBoolean2, paramInt);
+    RedpointHandler localRedpointHandler = this.mRedPointHandler;
+    if (localRedpointHandler != null) {
+      localRedpointHandler.a(paramBoolean1, paramBoolean2, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tianshu.api.impl.RedTouchServerImpl
  * JD-Core Version:    0.7.0.1
  */

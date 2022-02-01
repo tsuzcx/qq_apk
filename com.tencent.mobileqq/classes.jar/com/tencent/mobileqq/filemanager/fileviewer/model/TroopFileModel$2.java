@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
 import com.tencent.biz.troop.file.protocol.TroopFileGetOneFileInfoObserver;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -15,23 +16,32 @@ class TroopFileModel$2
 {
   TroopFileModel$2(TroopFileModel paramTroopFileModel) {}
   
-  public void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
+  protected void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
   {
     if (paramFileInfo != null)
     {
-      String str = ContactUtils.g(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().TroopUin), paramFileInfo.uint64_uploader_uin.get() + "");
+      Object localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      long l = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().TroopUin;
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramFileInfo.uint64_uploader_uin.get());
+      ((StringBuilder)localObject2).append("");
+      localObject1 = ContactUtils.b((AppInterface)localObject1, String.valueOf(l), ((StringBuilder)localObject2).toString());
       paramFileInfo = new Date(paramFileInfo.uint32_upload_time.get() * 1000L);
-      SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
-      paramFileInfo = " 于" + localSimpleDateFormat.format(paramFileInfo) + "上传";
+      localObject2 = new SimpleDateFormat("yyyy.MM.dd");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" 于");
+      localStringBuilder.append(((SimpleDateFormat)localObject2).format(paramFileInfo));
+      localStringBuilder.append("上传");
+      paramFileInfo = localStringBuilder.toString();
       if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener.b(str, paramFileInfo);
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener.b((String)localObject1, paramFileInfo);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel.2
  * JD-Core Version:    0.7.0.1
  */

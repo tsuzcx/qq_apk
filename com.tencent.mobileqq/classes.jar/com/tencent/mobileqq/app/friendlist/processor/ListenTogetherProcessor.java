@@ -31,48 +31,39 @@ public class ListenTogetherProcessor
     }
     paramExtRspData = (QQAppInterface)this.mApp;
     paramList = paramList.iterator();
-    label34:
-    Object localObject;
-    ExtensionInfo localExtensionInfo;
-    if (paramList.hasNext())
+    while (paramList.hasNext())
     {
-      localObject = (Pair)paramList.next();
-      localExtensionInfo = (ExtensionInfo)((Pair)localObject).first;
+      Object localObject = (Pair)paramList.next();
+      ExtensionInfo localExtensionInfo = (ExtensionInfo)((Pair)localObject).first;
       localObject = (FriendInfo)((Pair)localObject).second;
-      if (((FriendInfo)localObject).groupId < 0) {
-        break label113;
+      if (((FriendInfo)localObject).groupId >= 0) {
+        paramBoolean = true;
+      } else {
+        paramBoolean = false;
       }
-    }
-    label113:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
       ExtSnsFrdDataHandleHelper.a(paramExtRspData, paramBoolean, localExtensionInfo, String.valueOf(((FriendInfo)localObject).friendUin), parseExtSnsFrdData(((FriendInfo)localObject).vecExtSnsFrdData));
-      break label34;
-      break;
     }
   }
   
   public void onUpdateExtensionInfo(ExtensionInfo paramExtensionInfo, FriendInfo paramFriendInfo, ExtRspData paramExtRspData)
   {
-    boolean bool = true;
-    if (!(this.mApp instanceof QQAppInterface))
+    boolean bool2 = this.mApp instanceof QQAppInterface;
+    boolean bool1 = true;
+    if (!bool2)
     {
       QLog.e("IMCore.friend.ListenTogetherProcessor", 1, "onUpdateExtensionInfo| app is not QQAppInterface");
       return;
     }
     paramExtRspData = (QQAppInterface)this.mApp;
-    if (paramFriendInfo.groupId >= 0) {}
-    for (;;)
-    {
-      ExtSnsFrdDataHandleHelper.a(paramExtRspData, bool, paramExtensionInfo, String.valueOf(paramFriendInfo.friendUin), parseExtSnsFrdData(paramFriendInfo.vecExtSnsFrdData));
-      return;
-      bool = false;
+    if (paramFriendInfo.groupId < 0) {
+      bool1 = false;
     }
+    ExtSnsFrdDataHandleHelper.a(paramExtRspData, bool1, paramExtensionInfo, String.valueOf(paramFriendInfo.friendUin), parseExtSnsFrdData(paramFriendInfo.vecExtSnsFrdData));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.friendlist.processor.ListenTogetherProcessor
  * JD-Core Version:    0.7.0.1
  */

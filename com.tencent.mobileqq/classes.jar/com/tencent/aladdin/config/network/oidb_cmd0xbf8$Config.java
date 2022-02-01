@@ -9,11 +9,17 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class oidb_cmd0xbf8$Config
   extends MessageMicro<Config>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "id", "version", "wipe_flag", "content" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "" }, Config.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField content = PBField.initString("");
   public final PBUInt32Field id = PBField.initUInt32(0);
   public final PBUInt32Field version = PBField.initUInt32(0);
   public final PBUInt32Field wipe_flag = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "id", "version", "wipe_flag", "content" }, new Object[] { localInteger, localInteger, localInteger, "" }, Config.class);
+  }
 }
 
 

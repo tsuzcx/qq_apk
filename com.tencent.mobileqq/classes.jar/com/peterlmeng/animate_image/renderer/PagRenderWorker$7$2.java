@@ -23,6 +23,11 @@ class PagRenderWorker$7$2
     paramAnimator.loopedCount += 1;
   }
   
+  public void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
+  {
+    onAnimationEnd(paramAnimator);
+  }
+  
   public void onAnimationRepeat(Animator paramAnimator)
   {
     LogUtils.c("PagRenderWorker", "onAnimationRepeat");
@@ -37,10 +42,15 @@ class PagRenderWorker$7$2
     PagRenderWorker.access$302(this.this$1.this$0, true);
     this.this$1.this$0.loopedCount = 0;
   }
+  
+  public void onAnimationStart(Animator paramAnimator, boolean paramBoolean)
+  {
+    onAnimationStart(paramAnimator);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.peterlmeng.animate_image.renderer.PagRenderWorker.7.2
  * JD-Core Version:    0.7.0.1
  */

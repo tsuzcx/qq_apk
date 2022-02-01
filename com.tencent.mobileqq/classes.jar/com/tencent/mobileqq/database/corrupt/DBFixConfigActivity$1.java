@@ -15,23 +15,22 @@ class DBFixConfigActivity$1
   
   public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    if (paramInt == 2131366078) {
+    if (paramInt == 2131365995) {
       DBFixConfigActivity.a = 1;
+    } else if (paramInt == 2131365438) {
+      DBFixConfigActivity.a = 2;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(DBFixManager.b, 0).edit().putInt(this.jdField_a_of_type_JavaLangString + DBFixManager.c, DBFixConfigActivity.a).commit();
-      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
-      return;
-      if (paramInt == 2131365595) {
-        DBFixConfigActivity.a = 2;
-      }
-    }
+    SharedPreferences.Editor localEditor = this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(DBFixManager.b, 0).edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(DBFixManager.c);
+    localEditor.putInt(localStringBuilder.toString(), DBFixConfigActivity.a).commit();
+    EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.database.corrupt.DBFixConfigActivity.1
  * JD-Core Version:    0.7.0.1
  */

@@ -65,17 +65,21 @@ public class AgeSelectionActivity
   private void a(int paramInt1, int paramInt2, int paramInt3)
   {
     this.h = (this.e - paramInt1);
-    Calendar localCalendar1 = Calendar.getInstance();
-    localCalendar1.set(1, paramInt2, paramInt3);
-    Calendar localCalendar2 = Calendar.getInstance();
-    localCalendar2.set(1, this.f, this.g);
-    if (localCalendar1.after(localCalendar2)) {
+    Object localObject1 = Calendar.getInstance();
+    ((Calendar)localObject1).set(1, paramInt2, paramInt3);
+    Object localObject2 = Calendar.getInstance();
+    ((Calendar)localObject2).set(1, this.f, this.g);
+    if (((Calendar)localObject1).after(localObject2)) {
       this.h -= 1;
     }
     if (this.h < 0) {
       this.h = 0;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.h + HardCodeUtil.a(2131700099));
+    localObject1 = this.jdField_a_of_type_AndroidWidgetTextView;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(this.h);
+    ((StringBuilder)localObject2).append(HardCodeUtil.a(2131700240));
+    ((TextView)localObject1).setText(((StringBuilder)localObject2).toString());
     this.jdField_a_of_type_JavaLangString = Utils.a(paramInt2, paramInt3);
     this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
   }
@@ -93,7 +97,7 @@ public class AgeSelectionActivity
       this.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.createMenuSheet(this);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.setCloseAutoRead(true);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.setActionContentView(this.jdField_a_of_type_ComTencentMobileqqActivityBirthdayPickHelper.a(), null);
-      Object localObject = (DispatchActionMoveScrollView)this.jdField_a_of_type_ComTencentWidgetActionSheet.findViewById(2131361983);
+      Object localObject = (DispatchActionMoveScrollView)this.jdField_a_of_type_ComTencentWidgetActionSheet.findViewById(2131361999);
       ((DispatchActionMoveScrollView)localObject).a = true;
       ((DispatchActionMoveScrollView)localObject).setBackgroundResource(17170445);
       if (Build.VERSION.SDK_INT >= 11)
@@ -123,19 +127,19 @@ public class AgeSelectionActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561056);
+    super.setContentView(2131560920);
     this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("param_launch_from");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362333));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365222));
-    findViewById(2131362337).setOnClickListener(this);
-    findViewById(2131365225).setOnClickListener(this);
-    setTitle(HardCodeUtil.a(2131700096));
-    setLeftViewName(2131690601);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362294));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365099));
+    findViewById(2131362298).setOnClickListener(this);
+    findViewById(2131365102).setOnClickListener(this);
+    setTitle(HardCodeUtil.a(2131700237));
+    setLeftViewName(2131690529);
     if (a()) {
-      setRightButton(2131692534, new AgeSelectionActivity.1(this));
+      setRightButton(2131692486, new AgeSelectionActivity.1(this));
     }
     this.jdField_a_of_type_JavaUtilCalendar = Calendar.getInstance();
     this.jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(System.currentTimeMillis());
@@ -149,42 +153,35 @@ public class AgeSelectionActivity
     this.jdField_b_of_type_Int = 2000;
     this.c = 1;
     this.d = 1;
-    if (this.jdField_a_of_type_Int > 0)
+    int i = this.jdField_a_of_type_Int;
+    if (i > 0)
     {
-      this.jdField_b_of_type_Int = ((this.jdField_a_of_type_Int & 0xFFFF0000) >>> 16);
-      this.c = ((this.jdField_a_of_type_Int & 0xFF00) >>> 8);
-      this.d = (this.jdField_a_of_type_Int & 0xFF);
+      this.jdField_b_of_type_Int = ((0xFFFF0000 & i) >>> 16);
+      this.c = ((0xFF00 & i) >>> 8);
+      this.d = (i & 0xFF);
     }
     a(this.jdField_b_of_type_Int, this.c, this.d);
     b();
     return true;
   }
   
-  public boolean onBackEvent()
+  protected boolean onBackEvent()
   {
     if (!a()) {
       a();
+    } else if ("VAL_FROM_STATUS_MSG_TAB".equals(this.jdField_b_of_type_JavaLangString)) {
+      ReportHelperKt.a("0X800AF46");
     }
-    for (;;)
-    {
-      return super.onBackEvent();
-      if ("VAL_FROM_STATUS_MSG_TAB".equals(this.jdField_b_of_type_JavaLangString)) {
-        ReportHelperKt.a("0X800AF46");
-      }
-    }
+    return super.onBackEvent();
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    int i = paramView.getId();
+    if ((i == 2131362298) || (i == 2131365102)) {
       b();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   @Override
@@ -196,7 +193,7 @@ public class AgeSelectionActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AgeSelectionActivity
  * JD-Core Version:    0.7.0.1
  */

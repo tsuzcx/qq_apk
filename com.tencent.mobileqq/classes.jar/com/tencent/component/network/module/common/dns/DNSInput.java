@@ -19,9 +19,10 @@ public class DNSInput
   
   private void require(int paramInt)
   {
-    if (paramInt > remaining()) {
-      throw new WireParseException("end of input");
+    if (paramInt <= remaining()) {
+      return;
     }
+    throw new WireParseException("end of input");
   }
   
   public void clearActive()
@@ -36,11 +37,14 @@ public class DNSInput
   
   public void jump(int paramInt)
   {
-    if (paramInt >= this.array.length) {
-      throw new IllegalArgumentException("cannot jump past end of input");
+    byte[] arrayOfByte = this.array;
+    if (paramInt < arrayOfByte.length)
+    {
+      this.pos = paramInt;
+      this.end = arrayOfByte.length;
+      return;
     }
-    this.pos = paramInt;
-    this.end = this.array.length;
+    throw new IllegalArgumentException("cannot jump past end of input");
   }
   
   public void readByteArray(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -55,7 +59,7 @@ public class DNSInput
     int i = remaining();
     byte[] arrayOfByte = new byte[i];
     System.arraycopy(this.array, this.pos, arrayOfByte, 0, i);
-    this.pos = (i + this.pos);
+    this.pos += i;
     this.end = (this.array.length - 1);
     return arrayOfByte;
   }
@@ -85,7 +89,6 @@ public class DNSInput
     int i = this.pos;
     this.pos = (i + 1);
     i = arrayOfByte[i];
-    arrayOfByte = this.array;
     int j = this.pos;
     this.pos = (j + 1);
     return ((i & 0xFF) << 8) + (arrayOfByte[j] & 0xFF);
@@ -98,20 +101,16 @@ public class DNSInput
     int i = this.pos;
     this.pos = (i + 1);
     i = arrayOfByte[i];
-    arrayOfByte = this.array;
     int j = this.pos;
     this.pos = (j + 1);
     j = arrayOfByte[j];
-    arrayOfByte = this.array;
     int k = this.pos;
     this.pos = (k + 1);
     k = arrayOfByte[k];
-    arrayOfByte = this.array;
     int m = this.pos;
     this.pos = (m + 1);
     m = arrayOfByte[m];
-    long l = i & 0xFF;
-    return ((j & 0xFF) << 16) + (l << 24) + ((k & 0xFF) << 8) + (m & 0xFF);
+    return ((i & 0xFF) << 24) + ((j & 0xFF) << 16) + ((k & 0xFF) << 8) + (m & 0xFF);
   }
   
   public int readU8()
@@ -130,13 +129,16 @@ public class DNSInput
   
   public void restore()
   {
-    if (this.saved_pos < 0) {
-      throw new IllegalStateException("no previous state");
+    int i = this.saved_pos;
+    if (i >= 0)
+    {
+      this.pos = i;
+      this.end = this.saved_end;
+      this.saved_pos = -1;
+      this.saved_end = -1;
+      return;
     }
-    this.pos = this.saved_pos;
-    this.end = this.saved_end;
-    this.saved_pos = -1;
-    this.saved_end = -1;
+    throw new IllegalStateException("no previous state");
   }
   
   public void save()
@@ -147,15 +149,19 @@ public class DNSInput
   
   public void setActive(int paramInt)
   {
-    if (paramInt > this.array.length - this.pos) {
-      throw new IllegalArgumentException("cannot set active region past end of input");
+    int i = this.array.length;
+    int j = this.pos;
+    if (paramInt <= i - j)
+    {
+      this.end = (j + paramInt);
+      return;
     }
-    this.end = (this.pos + paramInt);
+    throw new IllegalArgumentException("cannot set active region past end of input");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.module.common.dns.DNSInput
  * JD-Core Version:    0.7.0.1
  */

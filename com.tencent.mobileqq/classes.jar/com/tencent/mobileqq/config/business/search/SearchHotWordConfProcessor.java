@@ -26,8 +26,12 @@ public class SearchHotWordConfProcessor
     }
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchHotWordConfProcessor", 2, "onParsed " + paramArrayOfQConfItem.length);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed ");
+        localStringBuilder.append(paramArrayOfQConfItem.length);
+        QLog.d("SearchHotWordConfProcessor", 2, localStringBuilder.toString());
       }
       return SearchHotWordConfBean.a(paramArrayOfQConfItem[0]);
     }
@@ -36,19 +40,17 @@ public class SearchHotWordConfProcessor
   
   public void a(SearchHotWordConfBean paramSearchHotWordConfBean)
   {
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramSearchHotWordConfBean == null) {
-        break label43;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      if (paramSearchHotWordConfBean != null) {
+        paramSearchHotWordConfBean = paramSearchHotWordConfBean.toString();
+      } else {
+        paramSearchHotWordConfBean = " empty";
       }
-    }
-    label43:
-    for (paramSearchHotWordConfBean = paramSearchHotWordConfBean.toString();; paramSearchHotWordConfBean = " empty")
-    {
-      QLog.d("SearchHotWordConfProcessor", 2, paramSearchHotWordConfBean);
-      return;
+      localStringBuilder.append(paramSearchHotWordConfBean);
+      QLog.d("SearchHotWordConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -74,8 +76,12 @@ public class SearchHotWordConfProcessor
   
   public void onReqFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("SearchHotWordConfProcessor", 2, "onReqFailed " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqFailed ");
+      localStringBuilder.append(paramInt);
+      QLog.e("SearchHotWordConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -86,7 +92,7 @@ public class SearchHotWordConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.search.SearchHotWordConfProcessor
  * JD-Core Version:    0.7.0.1
  */

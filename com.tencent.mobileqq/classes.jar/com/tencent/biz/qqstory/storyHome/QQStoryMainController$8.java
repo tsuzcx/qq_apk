@@ -9,7 +9,8 @@ class QQStoryMainController$8
   
   public void run()
   {
-    this.this$0.a = this.this$0.a();
+    QQStoryMainController localQQStoryMainController = this.this$0;
+    localQQStoryMainController.a = localQQStoryMainController.a();
     if (this.this$0.a != null) {
       this.this$0.a.b();
     }
@@ -17,7 +18,7 @@ class QQStoryMainController$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.QQStoryMainController.8
  * JD-Core Version:    0.7.0.1
  */

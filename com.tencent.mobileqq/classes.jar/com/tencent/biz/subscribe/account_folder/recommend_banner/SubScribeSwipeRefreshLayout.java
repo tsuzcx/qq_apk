@@ -47,7 +47,7 @@ public class SubScribeSwipeRefreshLayout
     {
       ViewGroup localViewGroup = (ViewGroup)((Activity)getContext()).getWindow().getDecorView();
       View localView = localViewGroup.getChildAt(0);
-      Object localObject = localViewGroup;
+      localObject = localViewGroup;
       if (localView != null)
       {
         localObject = localViewGroup;
@@ -60,8 +60,9 @@ public class SubScribeSwipeRefreshLayout
         this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout = ((TopGestureLayout)localObject);
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.setInterceptTouchEventListener(new SubScribeSwipeRefreshLayout.1(this));
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
+    if (localObject != null) {
+      ((TopGestureLayout)localObject).setInterceptTouchEventListener(new SubScribeSwipeRefreshLayout.1(this));
     }
   }
   
@@ -69,19 +70,11 @@ public class SubScribeSwipeRefreshLayout
   {
     int i = paramMotionEvent.getAction();
     int j = paramMotionEvent.getActionIndex();
-    switch (i)
+    if (i != 0)
     {
-    case 1: 
-    default: 
-      return super.onInterceptTouchEvent(paramMotionEvent);
-    case 0: 
-      this.c = ((int)(paramMotionEvent.getX() + 0.5F));
-      this.d = ((int)(paramMotionEvent.getY() + 0.5F));
-      this.b = MotionEventCompat.findPointerIndex(paramMotionEvent, j);
-    }
-    do
-    {
-      return super.onInterceptTouchEvent(paramMotionEvent);
+      if (i != 2) {
+        return super.onInterceptTouchEvent(paramMotionEvent);
+      }
       j = (int)(paramMotionEvent.getX() + 0.5F);
       i = (int)(paramMotionEvent.getY() + 0.5F);
       j -= this.c;
@@ -89,7 +82,16 @@ public class SubScribeSwipeRefreshLayout
       if ((Math.abs(j) > this.jdField_a_of_type_Int) && (Math.abs(j) >= Math.abs(i))) {
         return false;
       }
-    } while ((Math.abs(j) <= this.jdField_a_of_type_Int) || (Math.abs(i) <= Math.abs(j)));
+      if ((Math.abs(j) > this.jdField_a_of_type_Int) && (Math.abs(i) > Math.abs(j))) {
+        return super.onInterceptTouchEvent(paramMotionEvent);
+      }
+    }
+    else
+    {
+      this.c = ((int)(paramMotionEvent.getX() + 0.5F));
+      this.d = ((int)(paramMotionEvent.getY() + 0.5F));
+      this.b = MotionEventCompat.findPointerIndex(paramMotionEvent, j);
+    }
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
@@ -102,7 +104,7 @@ public class SubScribeSwipeRefreshLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.account_folder.recommend_banner.SubScribeSwipeRefreshLayout
  * JD-Core Version:    0.7.0.1
  */

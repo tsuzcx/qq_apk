@@ -103,57 +103,38 @@ public class GLAnimation
     if (this.jdField_a_of_type_Boolean)
     {
       b();
-      return this.jdField_a_of_type_Boolean;
     }
-    if (this.jdField_a_of_type_Long == -1L) {
-      this.jdField_a_of_type_Long = paramLong;
-    }
-    long l1 = paramLong - this.jdField_a_of_type_Long;
-    if (l1 == 0L) {
-      return false;
-    }
-    paramLong = l1;
-    if (l1 >= this.jdField_b_of_type_Int)
+    else
     {
-      paramLong = this.jdField_b_of_type_Int;
-      this.jdField_a_of_type_Boolean = true;
-      b();
-    }
-    float f1;
-    if (this.jdField_a_of_type_Int == 0) {
-      f1 = (float)paramLong * 1.0F / this.jdField_b_of_type_Int;
-    }
-    for (;;)
-    {
-      if (this.jdField_b_of_type_Boolean)
+      if (this.jdField_a_of_type_Long == -1L) {
+        this.jdField_a_of_type_Long = paramLong;
+      }
+      long l1 = paramLong - this.jdField_a_of_type_Long;
+      if (l1 == 0L) {
+        return false;
+      }
+      int i1 = this.jdField_b_of_type_Int;
+      paramLong = l1;
+      if (l1 >= i1)
       {
-        this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float + (this.jdField_b_of_type_Float - this.jdField_a_of_type_Float) * f1);
-        this.f = (this.jdField_d_of_type_Float + (this.jdField_e_of_type_Float - this.jdField_d_of_type_Float) * f1);
-        this.i = (this.g + (this.h - this.g) * f1);
+        paramLong = i1;
+        this.jdField_a_of_type_Boolean = true;
+        b();
       }
-      if (this.jdField_d_of_type_Boolean)
+      i1 = this.jdField_a_of_type_Int;
+      float f1 = 1.0F;
+      float f2;
+      if (i1 == 0)
       {
-        this.q = (this.m + (this.o - this.m) * f1);
-        this.r = (this.n + (this.p - this.n) * f1);
+        f1 = (float)paramLong * 1.0F / this.jdField_b_of_type_Int;
       }
-      if (this.jdField_e_of_type_Boolean)
-      {
-        this.y = (this.s + (this.t - this.s) * f1);
-        this.z = (this.u + (this.v - this.u) * f1);
-        this.A = (this.w + (this.x - this.w) * f1);
-      }
-      if (!this.jdField_c_of_type_Boolean) {
-        break;
-      }
-      float f2 = this.j;
-      this.l = (f1 * (this.k - this.j) + f2);
-      break;
-      if (this.jdField_a_of_type_Int == 1)
+      else if (i1 == 1)
       {
         f1 = (float)paramLong;
-        f1 = (float)paramLong * (1.0F * f1) / this.jdField_b_of_type_Int / this.jdField_b_of_type_Int;
+        i1 = this.jdField_b_of_type_Int;
+        f1 = 1.0F * f1 * f1 / i1 / i1;
       }
-      else if (this.jdField_a_of_type_Int == 2)
+      else if (i1 == 2)
       {
         l1 = this.jdField_b_of_type_Int;
         if (paramLong == 0L)
@@ -162,15 +143,43 @@ public class GLAnimation
         }
         else
         {
-          f1 = (float)paramLong * 1.0F * (float)paramLong / (float)l1 / (float)l1;
-          f1 = ((float)l1 * 2.0F / (float)paramLong - 1.0F) * f1;
+          f1 = (float)paramLong;
+          f2 = (float)l1;
+          f1 = f1 * 1.0F * f1 / f2 / f2 * (f2 * 2.0F / f1 - 1.0F);
         }
       }
-      else
+      if (this.jdField_b_of_type_Boolean)
       {
-        f1 = 1.0F;
+        f2 = this.jdField_a_of_type_Float;
+        this.jdField_c_of_type_Float = (f2 + (this.jdField_b_of_type_Float - f2) * f1);
+        f2 = this.jdField_d_of_type_Float;
+        this.f = (f2 + (this.jdField_e_of_type_Float - f2) * f1);
+        f2 = this.g;
+        this.i = (f2 + (this.h - f2) * f1);
+      }
+      if (this.jdField_d_of_type_Boolean)
+      {
+        f2 = this.m;
+        this.q = (f2 + (this.o - f2) * f1);
+        f2 = this.n;
+        this.r = (f2 + (this.p - f2) * f1);
+      }
+      if (this.jdField_e_of_type_Boolean)
+      {
+        f2 = this.s;
+        this.y = (f2 + (this.t - f2) * f1);
+        f2 = this.u;
+        this.z = (f2 + (this.v - f2) * f1);
+        f2 = this.w;
+        this.A = (f2 + (this.x - f2) * f1);
+      }
+      if (this.jdField_c_of_type_Boolean)
+      {
+        f2 = this.j;
+        this.l = (f2 + f1 * (this.k - f2));
       }
     }
+    return this.jdField_a_of_type_Boolean;
   }
   
   public float b()
@@ -180,16 +189,18 @@ public class GLAnimation
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentAvOpenglUiGLView != null) {}
-    synchronized (this.jdField_a_of_type_ComTencentAvOpenglUiGLView.a())
-    {
-      this.jdField_a_of_type_ComTencentAvOpenglUiGLView.a().remove(this);
-      if (this.jdField_a_of_type_ComTencentAvOpenglUiAnimationGLAnimation$AnimationListenerGL != null)
+    ??? = this.jdField_a_of_type_ComTencentAvOpenglUiGLView;
+    if (??? != null) {
+      synchronized (((GLView)???).a())
       {
-        this.jdField_a_of_type_ComTencentAvOpenglUiAnimationGLAnimation$AnimationListenerGL.a();
-        this.jdField_a_of_type_ComTencentAvOpenglUiAnimationGLAnimation$AnimationListenerGL = null;
+        this.jdField_a_of_type_ComTencentAvOpenglUiGLView.a().remove(this);
       }
-      return;
+    }
+    ??? = this.jdField_a_of_type_ComTencentAvOpenglUiAnimationGLAnimation$AnimationListenerGL;
+    if (??? != null)
+    {
+      ((GLAnimation.AnimationListenerGL)???).a();
+      this.jdField_a_of_type_ComTencentAvOpenglUiAnimationGLAnimation$AnimationListenerGL = null;
     }
   }
   
@@ -257,7 +268,7 @@ public class GLAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.ui.animation.GLAnimation
  * JD-Core Version:    0.7.0.1
  */

@@ -18,9 +18,10 @@ public class SimpleUIChoiceView$SpacesItemDecoration
   
   public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    paramRect.right = this.jdField_a_of_type_Int;
-    paramRect.bottom = this.jdField_a_of_type_Int;
-    paramRect.left = this.jdField_a_of_type_Int;
+    int i = this.jdField_a_of_type_Int;
+    paramRect.right = i;
+    paramRect.bottom = i;
+    paramRect.left = i;
     if (paramRecyclerView.getChildPosition(paramView) != 0) {
       paramRect.right = this.jdField_a_of_type_Int;
     }
@@ -28,7 +29,7 @@ public class SimpleUIChoiceView$SpacesItemDecoration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SimpleUIChoiceView.SpacesItemDecoration
  * JD-Core Version:    0.7.0.1
  */

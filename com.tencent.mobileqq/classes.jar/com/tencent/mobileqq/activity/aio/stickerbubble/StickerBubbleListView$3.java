@@ -14,33 +14,30 @@ class StickerBubbleListView$3
   {
     if (((paramView instanceof StickerBubbleImageView)) && (paramView.getVisibility() == 0))
     {
-      ((StickerBubbleImageView)paramView).a();
+      Object localObject = (StickerBubbleImageView)paramView;
+      ((StickerBubbleImageView)localObject).a();
       if ((StickerBubbleListView.a(this.a) == null) || (StickerBubbleListView.a(this.a).get() != paramView)) {
-        StickerBubbleListView.a(this.a, new WeakReference((StickerBubbleImageView)paramView));
+        StickerBubbleListView.a(this.a, new WeakReference(localObject));
       }
       paramView = (View)paramView.getParent();
-      View localView = (View)paramView.getParent();
+      localObject = (View)paramView.getParent();
       if (StickerBubbleListView.a(this.a) == null) {
         StickerBubbleListView.a(this.a, new Rect());
       }
-      Rect localRect = StickerBubbleListView.a(this.a);
-      int i = localView.getLeft();
-      int j = paramView.getLeft();
-      int k = localView.getTop();
-      int m = paramView.getTop();
-      int n = localView.getLeft();
-      int i1 = paramView.getRight();
-      int i2 = localView.getTop();
-      localRect.set(i + j, k + m, n + i1, paramView.getBottom() + i2);
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleListView", 2, "notifyItemViewTouchDown with rect: " + StickerBubbleListView.a(this.a));
+      StickerBubbleListView.a(this.a).set(((View)localObject).getLeft() + paramView.getLeft(), ((View)localObject).getTop() + paramView.getTop(), ((View)localObject).getLeft() + paramView.getRight(), ((View)localObject).getTop() + paramView.getBottom());
+      if (QLog.isColorLevel())
+      {
+        paramView = new StringBuilder();
+        paramView.append("notifyItemViewTouchDown with rect: ");
+        paramView.append(StickerBubbleListView.a(this.a));
+        QLog.d("StickerBubbleListView", 2, paramView.toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleListView.3
  * JD-Core Version:    0.7.0.1
  */

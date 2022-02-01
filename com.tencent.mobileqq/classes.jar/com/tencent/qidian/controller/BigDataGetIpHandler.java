@@ -53,9 +53,12 @@ public class BigDataGetIpHandler
   private static String a(int paramInt1, int paramInt2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramInt1 & 0xFF).append(".");
-    localStringBuilder.append(paramInt1 >> 8 & 0xFF).append(".");
-    localStringBuilder.append(paramInt1 >> 16 & 0xFF).append(".");
+    localStringBuilder.append(paramInt1 & 0xFF);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramInt1 >> 8 & 0xFF);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramInt1 >> 16 & 0xFF);
+    localStringBuilder.append(".");
     localStringBuilder.append(paramInt1 >> 24 & 0xFF);
     return a(localStringBuilder.toString(), paramInt2);
   }
@@ -63,9 +66,12 @@ public class BigDataGetIpHandler
   private static String a(String paramString, int paramInt)
   {
     StringBuffer localStringBuffer = new StringBuffer(200);
-    localStringBuffer.append("http://").append(paramString);
-    if (paramInt != 80) {
-      localStringBuffer.append(":").append(paramInt);
+    localStringBuffer.append("http://");
+    localStringBuffer.append(paramString);
+    if (paramInt != 80)
+    {
+      localStringBuffer.append(":");
+      localStringBuffer.append(paramInt);
     }
     localStringBuffer.append("/");
     return localStringBuffer.toString();
@@ -73,51 +79,64 @@ public class BigDataGetIpHandler
   
   private void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, String[] paramArrayOfString)
   {
-    boolean bool2 = false;
-    boolean bool3 = true;
     for (;;)
     {
       Object localObject;
+      boolean bool1;
       try
       {
         localObject = this.jdField_a_of_type_JavaLangObject;
-        boolean bool1 = bool2;
-        if (paramArrayOfByte1 != null) {
-          bool1 = bool2;
+        if (paramArrayOfByte1 == null) {
+          break label160;
         }
-        try
+      }
+      finally {}
+      try
+      {
+        if (paramArrayOfByte1.length <= 0) {
+          break label160;
+        }
+        this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte1;
+        bool2 = true;
+        bool1 = bool2;
+        if (paramArrayOfByte2 != null)
         {
-          if (paramArrayOfByte1.length > 0)
+          bool1 = bool2;
+          if (paramArrayOfByte2.length > 0)
           {
-            this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte1;
+            this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte2;
             bool1 = true;
           }
-          bool2 = bool1;
-          if (paramArrayOfByte2 != null)
-          {
-            bool2 = bool1;
-            if (paramArrayOfByte2.length > 0)
-            {
-              this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte2;
-              bool2 = true;
-            }
-          }
-          if ((paramArrayOfString == null) || (paramArrayOfString.length <= 0)) {
-            break label154;
-          }
-          this.jdField_a_of_type_Int = 0;
-          this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-          bool2 = bool3;
         }
-        finally {}
-        if (QLog.isColorLevel()) {
-          QLog.d("BigDataGetIpHandler", 2, "saveSrvParam | changed = " + bool2 + " | usingIndex = " + this.jdField_a_of_type_Int);
+        bool2 = bool1;
+        if (paramArrayOfString != null)
+        {
+          bool2 = bool1;
+          if (paramArrayOfString.length > 0)
+          {
+            this.jdField_a_of_type_Int = 0;
+            this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+            bool2 = true;
+          }
+        }
+        if (QLog.isColorLevel())
+        {
+          paramArrayOfByte1 = new StringBuilder();
+          paramArrayOfByte1.append("saveSrvParam | changed = ");
+          paramArrayOfByte1.append(bool2);
+          paramArrayOfByte1.append(" | usingIndex = ");
+          paramArrayOfByte1.append(this.jdField_a_of_type_Int);
+          QLog.d("BigDataGetIpHandler", 2, paramArrayOfByte1.toString());
         }
         return;
       }
-      finally {}
-      label154:
-      if (!bool2) {}
+      finally
+      {
+        continue;
+      }
+      throw paramArrayOfByte1;
+      label160:
+      boolean bool2 = false;
     }
   }
   
@@ -129,8 +148,16 @@ public class BigDataGetIpHandler
       if ((localObject2 != null) && (localObject2.length != 0))
       {
         this.jdField_a_of_type_Int %= localObject2.length;
-        if (QLog.isColorLevel()) {
-          QLog.d("BigDataGetIpHandler", 2, "getSrvUrl | usingIndex = " + this.jdField_a_of_type_Int + " | count = " + localObject2.length + " | result = " + localObject2[this.jdField_a_of_type_Int]);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getSrvUrl | usingIndex = ");
+          localStringBuilder.append(this.jdField_a_of_type_Int);
+          localStringBuilder.append(" | count = ");
+          localStringBuilder.append(localObject2.length);
+          localStringBuilder.append(" | result = ");
+          localStringBuilder.append(localObject2[this.jdField_a_of_type_Int]);
+          QLog.d("BigDataGetIpHandler", 2, localStringBuilder.toString());
         }
         localObject2 = localObject2[this.jdField_a_of_type_Int];
         return localObject2;
@@ -141,115 +168,116 @@ public class BigDataGetIpHandler
   
   protected void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    int i;
+    label557:
+    label562:
+    label567:
     synchronized (this.jdField_b_of_type_JavaLangObject)
     {
       this.jdField_a_of_type_Boolean = false;
-      if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
-      {
+      int i;
+      if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000)) {
         i = 1;
-        int j = paramToServiceMsg.extraData.getInt("big_data_cmd", -1);
-        paramToServiceMsg.extraData.getInt("big_data_sub_cmd", -1);
-        int k = paramToServiceMsg.extraData.getInt("big_data_cmd_seq", -1);
-        if (QLog.isColorLevel()) {
-          QLog.d("BigDataGetIpHandler", 1, "handleGetIPList " + j + " handler: " + getClass().getSimpleName() + " reqSeq = " + k);
-        }
-        if (i == 0) {
-          break label456;
-        }
-        if (paramObject == null) {
-          break label402;
-        }
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        paramToServiceMsg = new subcmd0x501.RspBody();
-        paramToServiceMsg.mergeFrom((byte[])paramObject);
-        paramObject = (subcmd0x501.SubCmd0x501Rspbody)paramToServiceMsg.msg_subcmd_0x501_rsp_body.get();
-        paramToServiceMsg = paramObject.bytes_session_key.get();
-        if ((paramToServiceMsg == null) || (paramToServiceMsg.toByteArray().length <= 0)) {
-          break label533;
-        }
-        paramToServiceMsg = paramToServiceMsg.toByteArray();
-        paramFromServiceMsg = paramObject.bytes_httpconn_sig_session.get();
-        if ((paramFromServiceMsg == null) || (paramFromServiceMsg.toByteArray().length <= 0)) {
-          break label528;
-        }
-        paramFromServiceMsg = paramFromServiceMsg.toByteArray();
-        paramObject = paramObject.rpt_msg_httpconn_addrs.get();
-        if ((paramObject == null) || (paramObject.size() == 0)) {
-          break label523;
-        }
-        paramObject = paramObject.iterator();
-        if (!paramObject.hasNext()) {
-          break label523;
-        }
-        ??? = (subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)paramObject.next();
-        if (((subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)???).uint32_service_type.get() != 1) {
-          continue;
-        }
-        ??? = ((subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)???).rpt_msg_addrs.get();
-        if ((??? == null) || (((List)???).size() == 0)) {
-          break label523;
-        }
-        paramObject = new String[((List)???).size()];
+      } else {
         i = 0;
-        if (i < ((List)???).size())
+      }
+      int j = paramToServiceMsg.extraData.getInt("big_data_cmd", -1);
+      paramToServiceMsg.extraData.getInt("big_data_sub_cmd", -1);
+      int k = paramToServiceMsg.extraData.getInt("big_data_cmd_seq", -1);
+      if (QLog.isColorLevel())
+      {
+        paramToServiceMsg = new StringBuilder();
+        paramToServiceMsg.append("handleGetIPList ");
+        paramToServiceMsg.append(j);
+        paramToServiceMsg.append(" handler: ");
+        paramToServiceMsg.append(getClass().getSimpleName());
+        paramToServiceMsg.append(" reqSeq = ");
+        paramToServiceMsg.append(k);
+        QLog.d("BigDataGetIpHandler", 1, paramToServiceMsg.toString());
+      }
+      if (i != 0)
+      {
+        if (paramObject != null) {}
+        try
         {
-          subcmd0x501.SubCmd0x501Rspbody.IpAddr localIpAddr = (subcmd0x501.SubCmd0x501Rspbody.IpAddr)((List)???).get(i);
-          paramObject[i] = a(localIpAddr.uint32_ip.get(), localIpAddr.uint32_port.get());
-          i += 1;
-          continue;
-          paramToServiceMsg = finally;
-          throw paramToServiceMsg;
+          paramToServiceMsg = new subcmd0x501.RspBody();
+          paramToServiceMsg.mergeFrom((byte[])paramObject);
+          paramObject = (subcmd0x501.SubCmd0x501Rspbody)paramToServiceMsg.msg_subcmd_0x501_rsp_body.get();
+          paramToServiceMsg = paramObject.bytes_session_key.get();
+          if ((paramToServiceMsg == null) || (paramToServiceMsg.toByteArray().length <= 0)) {
+            break label557;
+          }
+          paramToServiceMsg = paramToServiceMsg.toByteArray();
+          paramFromServiceMsg = paramObject.bytes_httpconn_sig_session.get();
+          if ((paramFromServiceMsg == null) || (paramFromServiceMsg.toByteArray().length <= 0)) {
+            break label562;
+          }
+          paramFromServiceMsg = paramFromServiceMsg.toByteArray();
+          paramObject = paramObject.rpt_msg_httpconn_addrs.get();
+          if ((paramObject == null) || (paramObject.size() == 0)) {
+            break label567;
+          }
+          paramObject = paramObject.iterator();
+          do
+          {
+            if (!paramObject.hasNext()) {
+              break;
+            }
+            ??? = (subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)paramObject.next();
+          } while (((subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)???).uint32_service_type.get() != 1);
+          List localList = ((subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)???).rpt_msg_addrs.get();
+          if ((localList == null) || (localList.size() == 0)) {
+            break label567;
+          }
+          ??? = new String[localList.size()];
           i = 0;
-          break;
+          for (;;)
+          {
+            paramObject = ???;
+            if (i >= localList.size()) {
+              break;
+            }
+            paramObject = (subcmd0x501.SubCmd0x501Rspbody.IpAddr)localList.get(i);
+            ???[i] = a(paramObject.uint32_ip.get(), paramObject.uint32_port.get());
+            i += 1;
+          }
+          a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+          notifyUI(2001, true, null);
+          return;
         }
-        a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        notifyUI(2001, true, null);
-        return;
+        catch (Exception paramToServiceMsg)
+        {
+          if (!QLog.isColorLevel()) {
+            break label458;
+          }
+          QLog.d("BigDataGetIpHandler", 1, "handleGetIPList fail, because exception", paramToServiceMsg);
+          paramToServiceMsg.printStackTrace();
+          notifyUI(2001, false, null);
+          return;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("BigDataGetIpHandler", 1, "handleRefreshGetAllTags fail, because data is null");
+        }
+        notifyUI(2001, false, null);
       }
-      catch (Exception paramToServiceMsg)
+      else
       {
-        label402:
-        if (!QLog.isColorLevel()) {
-          continue;
+        label458:
+        if (paramFromServiceMsg == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("BigDataGetIpHandler", 1, "getAllTags handleGetIPList fail, because res is null");
+          }
         }
-        QLog.d("BigDataGetIpHandler", 1, "handleGetIPList fail, because exception", paramToServiceMsg);
-        paramToServiceMsg.printStackTrace();
+        else if (QLog.isColorLevel())
+        {
+          paramToServiceMsg = new StringBuilder();
+          paramToServiceMsg.append("getAllTags handleGetIPList fail, because res code: ");
+          paramToServiceMsg.append(paramFromServiceMsg.getResultCode());
+          QLog.d("BigDataGetIpHandler", 1, paramToServiceMsg.toString());
+        }
         notifyUI(2001, false, null);
         return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("BigDataGetIpHandler", 1, "handleRefreshGetAllTags fail, because data is null");
-      }
-      notifyUI(2001, false, null);
-      return;
-      label456:
-      if (paramFromServiceMsg == null) {
-        if (QLog.isColorLevel()) {
-          QLog.d("BigDataGetIpHandler", 1, "getAllTags handleGetIPList fail, because res is null");
-        }
-      }
-      for (;;)
-      {
-        notifyUI(2001, false, null);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("BigDataGetIpHandler", 1, "getAllTags handleGetIPList fail, because res code: " + paramFromServiceMsg.getResultCode());
-        }
-      }
-      label523:
-      paramObject = null;
-      continue;
-      label528:
-      paramFromServiceMsg = null;
-      continue;
-      label533:
-      paramToServiceMsg = null;
     }
   }
   
@@ -274,10 +302,9 @@ public class BigDataGetIpHandler
       if (QLog.isColorLevel()) {
         QLog.d("BigDataGetIpHandler", 2, "req get ip list");
       }
-      long l2;
       try
       {
-        l2 = Long.parseLong(this.appRuntime.getAccount());
+        long l2 = Long.parseLong(this.appRuntime.getAccount());
         if (l2 <= 0L)
         {
           if (QLog.isColorLevel()) {
@@ -285,40 +312,52 @@ public class BigDataGetIpHandler
           }
           return false;
         }
+        this.jdField_a_of_type_Long = l1;
+        this.c += 1;
+        this.jdField_a_of_type_Boolean = true;
+        paramObject = new subcmd0x501.SubCmd0x501ReqBody();
+        paramObject.uint64_uin.set(l2);
+        paramObject.uint32_idc_id.set(0);
+        paramObject.uint32_appid.set(16);
+        paramObject.uint32_login_sig_type.set(1);
+        paramObject.uint32_request_flag.set(3);
+        Object localObject = new ArrayList();
+        ((List)localObject).add(Integer.valueOf(1));
+        paramObject.rpt_uint32_service_types.set((List)localObject);
+        localObject = new subcmd0x501.ReqBody();
+        ((subcmd0x501.ReqBody)localObject).msg_subcmd_0x501_req_body.set(paramObject);
+        paramObject = createToServiceMsg("HttpConn.0x6ff_501");
+        paramObject.putWupBuffer(((subcmd0x501.ReqBody)localObject).toByteArray());
+        paramObject.extraData.putInt("big_data_cmd", paramInt1);
+        paramObject.extraData.putInt("big_data_sub_cmd", paramInt2);
+        paramInt2 = this.jdField_b_of_type_Int;
+        this.jdField_b_of_type_Int = (paramInt2 + 1);
+        paramObject.extraData.putInt("big_data_cmd_seq", paramInt2);
+        sendPbReq(paramObject);
+        if (QLog.isColorLevel())
+        {
+          paramObject = new StringBuilder();
+          paramObject.append("getIPList ");
+          paramObject.append(paramInt1);
+          paramObject.append(" handler: ");
+          paramObject.append(getClass().getSimpleName());
+          paramObject.append(" reqSeq = ");
+          paramObject.append(this.jdField_b_of_type_Int);
+          paramObject.append(" curSeq = ");
+          paramObject.append(paramInt2);
+          QLog.d("BigDataGetIpHandler", 1, paramObject.toString());
+        }
+        return true;
       }
       catch (Exception paramObject)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("BigDataGetIpHandler", 2, "req get ip list case long fail");
-        }
-        return false;
+        label420:
+        break label420;
       }
-      this.jdField_a_of_type_Long = l1;
-      this.c += 1;
-      this.jdField_a_of_type_Boolean = true;
-      paramObject = new subcmd0x501.SubCmd0x501ReqBody();
-      paramObject.uint64_uin.set(l2);
-      paramObject.uint32_idc_id.set(0);
-      paramObject.uint32_appid.set(16);
-      paramObject.uint32_login_sig_type.set(1);
-      paramObject.uint32_request_flag.set(3);
-      Object localObject = new ArrayList();
-      ((List)localObject).add(Integer.valueOf(1));
-      paramObject.rpt_uint32_service_types.set((List)localObject);
-      localObject = new subcmd0x501.ReqBody();
-      ((subcmd0x501.ReqBody)localObject).msg_subcmd_0x501_req_body.set(paramObject);
-      paramObject = createToServiceMsg("HttpConn.0x6ff_501");
-      paramObject.putWupBuffer(((subcmd0x501.ReqBody)localObject).toByteArray());
-      paramObject.extraData.putInt("big_data_cmd", paramInt1);
-      paramObject.extraData.putInt("big_data_sub_cmd", paramInt2);
-      paramInt2 = this.jdField_b_of_type_Int;
-      this.jdField_b_of_type_Int = (paramInt2 + 1);
-      paramObject.extraData.putInt("big_data_cmd_seq", paramInt2);
-      sendPbReq(paramObject);
       if (QLog.isColorLevel()) {
-        QLog.d("BigDataGetIpHandler", 1, "getIPList " + paramInt1 + " handler: " + getClass().getSimpleName() + " reqSeq = " + this.jdField_b_of_type_Int + " curSeq = " + paramInt2);
+        QLog.d("BigDataGetIpHandler", 2, "req get ip list case long fail");
       }
-      return true;
+      return false;
     }
   }
   
@@ -340,7 +379,7 @@ public class BigDataGetIpHandler
     }
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return QidianBusinessObserver.class;
   }
@@ -358,7 +397,7 @@ public class BigDataGetIpHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qidian.controller.BigDataGetIpHandler
  * JD-Core Version:    0.7.0.1
  */

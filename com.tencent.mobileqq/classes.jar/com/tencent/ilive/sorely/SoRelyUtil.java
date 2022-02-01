@@ -6,14 +6,15 @@ import com.tencent.livesdk.servicefactory.ServiceFactory;
 
 public class SoRelyUtil
 {
-  private static DownLoaderInterface downloader = null;
+  private static DownLoaderInterface downloader;
   
   public static DownLoaderInterface getDownloader(Context paramContext)
   {
-    if (downloader != null) {
-      return downloader;
+    DownLoaderInterface localDownLoaderInterface = downloader;
+    if (localDownLoaderInterface != null) {
+      return localDownLoaderInterface;
     }
-    DownLoaderInterface localDownLoaderInterface = (DownLoaderInterface)ServiceFactory.createService(paramContext, DownLoaderInterface.class);
+    localDownLoaderInterface = (DownLoaderInterface)ServiceFactory.createService(paramContext, DownLoaderInterface.class);
     localDownLoaderInterface.init(new SoRelyUtil.1(paramContext));
     localDownLoaderInterface.onCreate(paramContext);
     downloader = localDownLoaderInterface;
@@ -22,7 +23,7 @@ public class SoRelyUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.sorely.SoRelyUtil
  * JD-Core Version:    0.7.0.1
  */

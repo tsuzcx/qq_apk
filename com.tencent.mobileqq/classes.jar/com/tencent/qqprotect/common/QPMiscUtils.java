@@ -2,7 +2,6 @@ package com.tencent.qqprotect.common;
 
 import android.os.Build;
 import android.os.Build.VERSION;
-import android.text.TextUtils;
 import com.tencent.common.config.AppSetting;
 import com.tencent.ims.QQProtectCommon.QQProtectQueryHead;
 import com.tencent.kingkong.DataReport;
@@ -18,6 +17,7 @@ import java.io.File;
 import mqq.app.MobileQQ;
 
 public class QPMiscUtils
+  extends BaseQPMiscUtils
 {
   public static volatile int a = -1;
   
@@ -41,125 +41,117 @@ public class QPMiscUtils
   
   public static QQProtectCommon.QQProtectQueryHead a(int paramInt)
   {
+    try
+    {
+      localQQProtectQueryHead = new QQProtectCommon.QQProtectQueryHead();
+      localQQProtectQueryHead.uint32_sec_cmd.set(paramInt);
+      localObject2 = QQDeviceInfo.getIMEI("641d5d");
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      localQQProtectQueryHead.bytes_imei.set(ByteStringMicro.copyFromUtf8((String)localObject1));
+      localQQProtectQueryHead.bytes_guid.set(ByteStringMicro.copyFrom(NetConnInfoCenter.GUID));
+      localObject1 = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+      if (localObject1 == null) {
+        break label247;
+      }
+      localObject1 = ((QQAppInterface)localObject1).getCurrentAccountUin();
+    }
+    catch (Throwable localThrowable)
+    {
+      QQProtectCommon.QQProtectQueryHead localQQProtectQueryHead;
+      Object localObject1;
+      StringBuilder localStringBuilder;
+      label151:
+      localThrowable.printStackTrace();
+      return null;
+    }
+    localQQProtectQueryHead.string_uin.set((String)localObject2);
+    localQQProtectQueryHead.os_version.set(Build.VERSION.SDK_INT);
+    paramInt = a();
+    localQQProtectQueryHead.qq_version.set(paramInt);
+    Object localObject2 = localQQProtectQueryHead.cpu_arch;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Build.CPU_ABI);
+    localStringBuilder.append("#");
+    if (b())
+    {
+      localObject1 = "1";
+      localStringBuilder.append((String)localObject1);
+      ((PBStringField)localObject2).set(localStringBuilder.toString());
+      localQQProtectQueryHead.rom_info.set(Build.MODEL);
+      localObject1 = localQQProtectQueryHead.root;
+      if (!a()) {
+        break label267;
+      }
+      paramInt = 1;
+    }
     for (;;)
     {
-      try
-      {
-        localQQProtectQueryHead = new QQProtectCommon.QQProtectQueryHead();
-        localQQProtectQueryHead.uint32_sec_cmd.set(paramInt);
-        localObject3 = QQDeviceInfo.getIMEI("641d5d");
-        localObject1 = localObject3;
-        if (localObject3 == null) {
-          localObject1 = "";
-        }
-        localQQProtectQueryHead.bytes_imei.set(ByteStringMicro.copyFromUtf8((String)localObject1));
-        localQQProtectQueryHead.bytes_guid.set(ByteStringMicro.copyFrom(NetConnInfoCenter.GUID));
-        localObject1 = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-        if (localObject1 == null) {
-          break label243;
-        }
-        localObject1 = ((QQAppInterface)localObject1).getCurrentAccountUin();
+      ((PBUInt32Field)localObject1).set(paramInt);
+      localQQProtectQueryHead.brand_info.set(Build.BRAND);
+      localQQProtectQueryHead.manufacturer.set(Build.MANUFACTURER);
+      localQQProtectQueryHead.package_name.set(a());
+      localQQProtectQueryHead.app_id.set(AppSetting.a());
+      return localQQProtectQueryHead;
+      label247:
+      String str = null;
+      localObject2 = str;
+      if (str != null) {
+        break;
       }
-      catch (Throwable localThrowable)
-      {
-        QQProtectCommon.QQProtectQueryHead localQQProtectQueryHead;
-        Object localObject1;
-        StringBuilder localStringBuilder;
-        localThrowable.printStackTrace();
-        return null;
-      }
-      localQQProtectQueryHead.string_uin.set((String)localObject3);
-      localQQProtectQueryHead.os_version.set(Build.VERSION.SDK_INT);
-      paramInt = a();
-      localQQProtectQueryHead.qq_version.set(paramInt);
-      Object localObject3 = localQQProtectQueryHead.cpu_arch;
-      localStringBuilder = new StringBuilder().append(Build.CPU_ABI).append("#");
-      if (b())
-      {
-        localObject1 = "1";
-        ((PBStringField)localObject3).set((String)localObject1);
-        localQQProtectQueryHead.rom_info.set(Build.MODEL);
-        localObject1 = localQQProtectQueryHead.root;
-        if (a())
-        {
-          paramInt = 1;
-          ((PBUInt32Field)localObject1).set(paramInt);
-          localQQProtectQueryHead.brand_info.set(Build.BRAND);
-          localQQProtectQueryHead.manufacturer.set(Build.MANUFACTURER);
-          localQQProtectQueryHead.package_name.set(c());
-          localQQProtectQueryHead.app_id.set(AppSetting.a());
-          return localQQProtectQueryHead;
-        }
-      }
-      else
-      {
-        localObject1 = "0";
-        continue;
-      }
+      localObject2 = "";
+      break;
+      str = "0";
+      break label151;
+      label267:
       paramInt = 0;
-      continue;
-      label243:
-      Object localObject2 = null;
-      localObject3 = localObject2;
-      if (localObject2 == null) {
-        localObject3 = "";
-      }
     }
-  }
-  
-  public static String a()
-  {
-    return a(33751040);
   }
   
   public static String a(int paramInt)
   {
-    return String.format("%d.%d.%d", new Object[] { Integer.valueOf(paramInt >> 24), Integer.valueOf((0xFF0000 & paramInt) >> 16), Integer.valueOf((0xFF00 & paramInt) >> 8) });
+    return String.format("%d.%d.%d", new Object[] { Integer.valueOf(paramInt >> 24), Integer.valueOf((0xFF0000 & paramInt) >> 16), Integer.valueOf((paramInt & 0xFF00) >> 8) });
   }
   
   public static boolean a()
   {
-    boolean bool3 = true;
-    int i = 0;
-    boolean bool1 = DataReport.a();
-    boolean bool2 = bool1;
-    String[] arrayOfString;
+    bool1 = DataReport.a();
     if (!bool1)
     {
-      arrayOfString = new String[3];
+      String[] arrayOfString = new String[3];
+      int i = 0;
       arrayOfString[0] = "/system/sbin/";
       arrayOfString[1] = "/sbin/";
       arrayOfString[2] = "/vendor/bin/";
-    }
-    try
-    {
-      int j = arrayOfString.length;
-      if (i < j)
+      try
       {
-        String str = arrayOfString[i];
-        bool2 = new File(str + "su").exists();
-        if (bool2) {
-          bool1 = bool3;
+        int j = arrayOfString.length;
+        while (i < j)
+        {
+          String str = arrayOfString[i];
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(str);
+          localStringBuilder.append("su");
+          boolean bool2 = new File(localStringBuilder.toString()).exists();
+          if (bool2) {
+            return true;
+          }
+          i += 1;
         }
+        return bool1;
       }
-      for (;;)
+      catch (Exception localException)
       {
-        bool2 = bool1;
-        return bool2;
-        i += 1;
-        break;
+        localException.printStackTrace();
       }
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      return bool1;
     }
   }
   
   public static String b()
   {
-    return a(a);
+    return a(33751040);
   }
   
   public static String b(int paramInt)
@@ -169,15 +161,20 @@ public class QPMiscUtils
     {
       return QQDeviceInfo.getIMEI("641d5d");
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      String str;
+      break label35;
+    }
     if (paramInt == 2) {
       return QQDeviceInfo.getMAC("641d5d");
     }
     if (paramInt == 3)
     {
-      String str = QQDeviceInfo.getIMSI("641d5d");
+      str = QQDeviceInfo.getIMSI("641d5d");
       return str;
     }
+    label35:
     return null;
   }
   
@@ -189,17 +186,12 @@ public class QPMiscUtils
   
   public static String c()
   {
-    String str2 = MobileQQ.sMobileQQ.getPackageName();
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "com.tencent.mobileqq";
-    }
-    return str1;
+    return a(a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.common.QPMiscUtils
  * JD-Core Version:    0.7.0.1
  */

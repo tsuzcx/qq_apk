@@ -79,33 +79,34 @@ public class TAVBaseAutomaticEffect
   
   public String getFilePath()
   {
-    if (this.parameter != null) {
-      return this.parameter.filePath;
+    TAVEffectParameter localTAVEffectParameter = this.parameter;
+    if (localTAVEffectParameter != null) {
+      return localTAVEffectParameter.filePath;
     }
     return null;
   }
   
   protected String getFullPath()
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
     if (!TextUtils.isEmpty(this.fileDir))
     {
-      localObject1 = localObject2;
-      if (this.parameter != null)
+      Object localObject = this.parameter;
+      if ((localObject != null) && (!TextUtils.isEmpty(((TAVEffectParameter)localObject).filePath)))
       {
-        localObject1 = localObject2;
-        if (!TextUtils.isEmpty(this.parameter.filePath)) {
-          localObject1 = this.fileDir + File.separator + this.parameter.filePath;
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.fileDir);
+        ((StringBuilder)localObject).append(File.separator);
+        ((StringBuilder)localObject).append(this.parameter.filePath);
+        return ((StringBuilder)localObject).toString();
       }
     }
-    return localObject1;
+    return null;
   }
   
   public TAVMovieSticker.TAVMovieStickerMode getMode()
   {
-    if ((this.parameter != null) && ("filter".equalsIgnoreCase(this.parameter.type))) {
+    TAVEffectParameter localTAVEffectParameter = this.parameter;
+    if ((localTAVEffectParameter != null) && ("filter".equalsIgnoreCase(localTAVEffectParameter.type))) {
       return TAVMovieSticker.TAVMovieStickerMode.TAVMovieStickerModeFilter;
     }
     return TAVMovieSticker.TAVMovieStickerMode.TAVMovieStickerModeOverlay;
@@ -113,16 +114,18 @@ public class TAVBaseAutomaticEffect
   
   public int getProcMethod()
   {
-    if (this.parameter != null) {
-      return this.parameter.procMethod;
+    TAVEffectParameter localTAVEffectParameter = this.parameter;
+    if (localTAVEffectParameter != null) {
+      return localTAVEffectParameter.procMethod;
     }
     return 0;
   }
   
   public float getSpeed()
   {
-    if (this.parameter != null) {
-      return this.parameter.speed;
+    TAVEffectParameter localTAVEffectParameter = this.parameter;
+    if (localTAVEffectParameter != null) {
+      return localTAVEffectParameter.speed;
     }
     return 1.0F;
   }

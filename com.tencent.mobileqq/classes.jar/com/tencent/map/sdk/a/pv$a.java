@@ -11,11 +11,8 @@ abstract class pv$a
   
   public pv$a(pv parampv, int[] paramArrayOfInt)
   {
-    if (pv.a(this.b) != 2) {}
-    for (;;)
+    if (pv.a(this.b) == 2)
     {
-      this.a = paramArrayOfInt;
-      return;
       parampv = new int[15];
       System.arraycopy(paramArrayOfInt, 0, parampv, 0, 12);
       parampv[12] = 12352;
@@ -23,34 +20,38 @@ abstract class pv$a
       parampv[14] = 12344;
       paramArrayOfInt = parampv;
     }
+    this.a = paramArrayOfInt;
   }
   
   public final EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
   {
     int[] arrayOfInt = new int[1];
-    if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.a, null, 0, arrayOfInt)) {
-      throw new IllegalArgumentException("eglChooseConfig failed");
-    }
-    int i = arrayOfInt[0];
-    if (i <= 0) {
+    if (paramEGL10.eglChooseConfig(paramEGLDisplay, this.a, null, 0, arrayOfInt))
+    {
+      int i = arrayOfInt[0];
+      if (i > 0)
+      {
+        EGLConfig[] arrayOfEGLConfig = new EGLConfig[i];
+        if (paramEGL10.eglChooseConfig(paramEGLDisplay, this.a, arrayOfEGLConfig, i, arrayOfInt))
+        {
+          paramEGL10 = a(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
+          if (paramEGL10 != null) {
+            return paramEGL10;
+          }
+          throw new IllegalArgumentException("No config chosen");
+        }
+        throw new IllegalArgumentException("eglChooseConfig#2 failed");
+      }
       throw new IllegalArgumentException("No configs match configSpec");
     }
-    EGLConfig[] arrayOfEGLConfig = new EGLConfig[i];
-    if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.a, arrayOfEGLConfig, i, arrayOfInt)) {
-      throw new IllegalArgumentException("eglChooseConfig#2 failed");
-    }
-    paramEGL10 = a(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
-    if (paramEGL10 == null) {
-      throw new IllegalArgumentException("No config chosen");
-    }
-    return paramEGL10;
+    throw new IllegalArgumentException("eglChooseConfig failed");
   }
   
   abstract EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.pv.a
  * JD-Core Version:    0.7.0.1
  */

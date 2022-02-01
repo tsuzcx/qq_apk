@@ -17,21 +17,19 @@ class Login$7
   {
     if (paramInt3 < 2)
     {
-      this.a.jdField_b_of_type_Boolean = false;
-      if (paramCharSequence.length() == 0) {
-        this.a.jdField_b_of_type_AndroidViewView.setVisibility(4);
+      this.a.autoFillInPasswd = false;
+      if (paramCharSequence.length() == 0)
+      {
+        this.a.mDelPassBtn.setVisibility(4);
+        return;
       }
+      this.a.mDelPassBtn.setVisibility(0);
     }
-    else
-    {
-      return;
-    }
-    this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqconnect.wtlogin.Login.7
  * JD-Core Version:    0.7.0.1
  */

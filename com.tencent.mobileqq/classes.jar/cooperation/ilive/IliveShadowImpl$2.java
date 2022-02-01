@@ -1,8 +1,8 @@
 package cooperation.ilive;
 
 import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.shadow.dynamic.host.EnterCallback;
-import cooperation.qqreader.utils.Log;
 
 class IliveShadowImpl$2
   implements EnterCallback
@@ -11,31 +11,43 @@ class IliveShadowImpl$2
   
   public void onCloseLoadingView()
   {
-    if (this.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback != null) {
-      this.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback.onCloseLoadingView();
+    Object localObject = this.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback;
+    if (localObject != null) {
+      ((EnterCallback)localObject).onCloseLoadingView();
     }
-    Log.c("IliveAuthShadowImpl", "[onCloseLoadingView] formId = " + this.jdField_a_of_type_Long);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[onCloseLoadingView] formId = ");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    QLog.i("IliveAuthShadowImpl", 1, ((StringBuilder)localObject).toString());
   }
   
   public void onEnterComplete()
   {
-    if (this.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback != null) {
-      this.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback.onEnterComplete();
+    Object localObject = this.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback;
+    if (localObject != null) {
+      ((EnterCallback)localObject).onEnterComplete();
     }
-    Log.c("IliveAuthShadowImpl", "[onEnterComplete] formId = " + this.jdField_a_of_type_Long);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[onEnterComplete] formId = ");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    QLog.i("IliveAuthShadowImpl", 1, ((StringBuilder)localObject).toString());
   }
   
   public void onShowLoadingView(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback != null) {
-      this.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback.onShowLoadingView(paramView);
+    EnterCallback localEnterCallback = this.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback;
+    if (localEnterCallback != null) {
+      localEnterCallback.onShowLoadingView(paramView);
     }
-    Log.c("IliveAuthShadowImpl", "[onShowLoadingView] formId = " + this.jdField_a_of_type_Long);
+    paramView = new StringBuilder();
+    paramView.append("[onShowLoadingView] formId = ");
+    paramView.append(this.jdField_a_of_type_Long);
+    QLog.i("IliveAuthShadowImpl", 1, paramView.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.IliveShadowImpl.2
  * JD-Core Version:    0.7.0.1
  */

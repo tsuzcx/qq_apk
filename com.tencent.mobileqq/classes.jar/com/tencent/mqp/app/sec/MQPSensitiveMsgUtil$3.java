@@ -11,7 +11,10 @@ class MQPSensitiveMsgUtil$3
   
   public void run()
   {
-    Object localObject = "sp_confirmed_sensmsg_" + MQPSensitiveMsgUtil.a();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("sp_confirmed_sensmsg_");
+    ((StringBuilder)localObject).append(MQPSensitiveMsgUtil.a());
+    localObject = ((StringBuilder)localObject).toString();
     localObject = BaseApplication.getContext().getSharedPreferences((String)localObject, 0).edit();
     ((SharedPreferences.Editor)localObject).putString(this.a, this.b);
     ((SharedPreferences.Editor)localObject).commit();
@@ -19,7 +22,7 @@ class MQPSensitiveMsgUtil$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mqp.app.sec.MQPSensitiveMsgUtil.3
  * JD-Core Version:    0.7.0.1
  */

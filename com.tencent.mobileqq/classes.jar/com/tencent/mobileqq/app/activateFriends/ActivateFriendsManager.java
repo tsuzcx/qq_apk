@@ -72,7 +72,11 @@ public class ActivateFriendsManager
   {
     this.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("pref_act_frd" + paramQQAppInterface.getCurrentAccountUin(), 0);
+    BaseApplication localBaseApplication = paramQQAppInterface.getApp();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pref_act_frd");
+    localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+    this.jdField_a_of_type_AndroidContentSharedPreferences = localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0);
     this.jdField_a_of_type_Long = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_check_stamp", 0L);
     this.jdField_c_of_type_Long = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_memorial_check_stamp", 0L);
     this.jdField_b_of_type_Long = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_check_interval", 120000L);
@@ -96,12 +100,11 @@ public class ActivateFriendsManager
     ((GregorianCalendar)localObject).set(2, paramInt2 - 1);
     ((GregorianCalendar)localObject).set(1, paramInt1);
     paramInt3 = ((GregorianCalendar)localObject).get(6);
-    if (i == paramInt1) {
-      if (paramInt3 >= k) {}
-    }
-    while (paramInt1 <= i)
+    if (i == paramInt1)
     {
-      return 0;
+      if (paramInt3 < k) {
+        return 0;
+      }
       if (paramInt3 == k) {
         return 1;
       }
@@ -110,14 +113,14 @@ public class ActivateFriendsManager
       }
       return 3;
     }
-    if ((paramInt1 == i + 1) && (j + 1 + 0 == 12) && (paramInt2 == 1))
+    if (paramInt1 > i)
     {
-      if (m == paramInt3) {
+      if ((paramInt1 == i + 1) && (j + 1 - 0 == 12) && (paramInt2 == 1) && (m == paramInt3)) {
         return 2;
       }
       return 3;
     }
-    return 3;
+    return 0;
   }
   
   public static int a(byte[] paramArrayOfByte)
@@ -142,25 +145,25 @@ public class ActivateFriendsManager
   {
     int[] arrayOfInt = new int[10];
     int[] tmp6_5 = arrayOfInt;
-    tmp6_5[0] = 2131689855;
+    tmp6_5[0] = 2131689774;
     int[] tmp11_6 = tmp6_5;
-    tmp11_6[1] = 2131689860;
+    tmp11_6[1] = 2131689779;
     int[] tmp16_11 = tmp11_6;
-    tmp16_11[2] = 2131689859;
+    tmp16_11[2] = 2131689778;
     int[] tmp21_16 = tmp16_11;
-    tmp21_16[3] = 2131689853;
+    tmp21_16[3] = 2131689772;
     int[] tmp26_21 = tmp21_16;
-    tmp26_21[4] = 2131689852;
+    tmp26_21[4] = 2131689771;
     int[] tmp31_26 = tmp26_21;
-    tmp31_26[5] = 2131689857;
+    tmp31_26[5] = 2131689776;
     int[] tmp36_31 = tmp31_26;
-    tmp36_31[6] = 2131689856;
+    tmp36_31[6] = 2131689775;
     int[] tmp42_36 = tmp36_31;
-    tmp42_36[7] = 2131689851;
+    tmp42_36[7] = 2131689770;
     int[] tmp48_42 = tmp42_36;
-    tmp48_42[8] = 2131689854;
+    tmp48_42[8] = 2131689773;
     int[] tmp54_48 = tmp48_42;
-    tmp54_48[9] = 2131689858;
+    tmp54_48[9] = 2131689777;
     tmp54_48;
     return paramContext.getString(arrayOfInt[new java.util.Random().nextInt(arrayOfInt.length)]);
   }
@@ -171,63 +174,66 @@ public class ActivateFriendsManager
     String str1 = str2;
     if (TextUtils.isEmpty(str2))
     {
-      if (paramMsgBody.uint32_msg_type.get() != 1) {
-        break label63;
+      if (paramMsgBody.uint32_msg_type.get() == 1) {
+        return String.format(paramContext.getString(2131689767), new Object[] { paramMsgBody.msg_geographic_notify.bytes_local_city.get().toStringUtf8() });
       }
-      str1 = String.format(paramContext.getString(2131689848), new Object[] { paramMsgBody.msg_geographic_notify.bytes_local_city.get().toStringUtf8() });
-    }
-    label63:
-    do
-    {
-      return str1;
       if (paramMsgBody.uint32_msg_type.get() == 2) {
-        return paramContext.getString(2131689846);
+        return paramContext.getString(2131689765);
       }
       str1 = str2;
-    } while (paramMsgBody.uint32_msg_type.get() != 3);
-    return paramContext.getString(2131689850);
+      if (paramMsgBody.uint32_msg_type.get() == 3) {
+        str1 = paramContext.getString(2131689769);
+      }
+    }
+    return str1;
   }
   
   private Set<Long> a(int paramInt)
   {
-    Object localObject1 = null;
+    Object localObject1;
     if (paramInt == 1) {
       localObject1 = this.jdField_b_of_type_JavaUtilSet;
+    } else if (paramInt == 2) {
+      localObject1 = this.jdField_c_of_type_JavaUtilSet;
+    } else {
+      localObject1 = null;
     }
-    Object localObject2;
-    for (;;)
+    Object localObject2 = localObject1;
+    if (localObject1 == null)
     {
-      localObject2 = localObject1;
-      if (localObject1 != null) {
-        break label194;
-      }
       localObject2 = new HashSet(6);
-      localObject1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("key_uin_sended_" + paramInt, "");
-      if (QLog.isColorLevel()) {
-        QLog.d("ActivateFriends.Manager", 2, "getUinSendedSet, str = " + (String)localObject1 + ", msgType = " + paramInt);
+      localObject1 = this.jdField_a_of_type_AndroidContentSharedPreferences;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_uin_sended_");
+      localStringBuilder.append(paramInt);
+      localObject1 = ((SharedPreferences)localObject1).getString(localStringBuilder.toString(), "");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getUinSendedSet, str = ");
+        localStringBuilder.append((String)localObject1);
+        localStringBuilder.append(", msgType = ");
+        localStringBuilder.append(paramInt);
+        QLog.d("ActivateFriends.Manager", 2, localStringBuilder.toString());
       }
       localObject1 = ((String)localObject1).split("-");
       int j = localObject1.length;
       int i = 0;
       while (i < j)
       {
-        CharSequence localCharSequence = localObject1[i];
-        if (!TextUtils.isEmpty(localCharSequence)) {
-          ((Set)localObject2).add(Long.valueOf(Long.parseLong(localCharSequence)));
+        localStringBuilder = localObject1[i];
+        if (!TextUtils.isEmpty(localStringBuilder)) {
+          ((Set)localObject2).add(Long.valueOf(Long.parseLong(localStringBuilder)));
         }
         i += 1;
       }
-      if (paramInt == 2) {
-        localObject1 = this.jdField_c_of_type_JavaUtilSet;
+      if (paramInt == 1)
+      {
+        this.jdField_b_of_type_JavaUtilSet = ((Set)localObject2);
+        return localObject2;
       }
+      this.jdField_c_of_type_JavaUtilSet = ((Set)localObject2);
     }
-    if (paramInt == 1)
-    {
-      this.jdField_b_of_type_JavaUtilSet = ((Set)localObject2);
-      label194:
-      return localObject2;
-    }
-    this.jdField_c_of_type_JavaUtilSet = ((Set)localObject2);
     return localObject2;
   }
   
@@ -241,10 +247,12 @@ public class ActivateFriendsManager
       localStringBuilder.append("activiate_friends|onReceiveReadedActivateFriendsPush|");
     }
     int j = 0;
-    Object localObject1 = paramQQAppInterface.getMessageFacade().b(AppConstants.ACTIVATE_FRIENDS_UIN, 9002);
+    Object localObject1 = paramQQAppInterface.getMessageFacade().a(AppConstants.ACTIVATE_FRIENDS_UIN, 9002);
     HashSet localHashSet = new HashSet(((List)localObject1).size());
-    if (QLog.isColorLevel()) {
-      localStringBuilder.append(null).append("get unread msgs|");
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder.append(null);
+      localStringBuilder.append("get unread msgs|");
     }
     localObject1 = ((List)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
@@ -256,8 +264,10 @@ public class ActivateFriendsManager
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
           localHashSet.add(localObject2);
-          if (QLog.isColorLevel()) {
-            localStringBuilder.append((String)localObject2).append("|");
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder.append((String)localObject2);
+            localStringBuilder.append("|");
           }
         }
       }
@@ -266,42 +276,36 @@ public class ActivateFriendsManager
     if (paramMsgBody.rpt_msg_info.has())
     {
       paramMsgBody = paramMsgBody.rpt_msg_info.get().iterator();
-      for (;;)
+      do
       {
-        if (paramMsgBody.hasNext())
-        {
-          localObject1 = Integer.toString(((submsgtype0xeb.MsgInfo)paramMsgBody.next()).uint32_msg_seq.get());
-          if (localHashSet.contains(localObject1))
-          {
-            j = 1;
-            i = j;
-            if (QLog.isColorLevel())
-            {
-              localStringBuilder.append("we have ").append((String)localObject1).append(" in unread msgs|");
-              i = j;
-            }
-          }
+        i = j;
+        if (!paramMsgBody.hasNext()) {
+          break;
         }
+        localObject1 = Integer.toString(((submsgtype0xeb.MsgInfo)paramMsgBody.next()).uint32_msg_seq.get());
+      } while (!localHashSet.contains(localObject1));
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder.append("we have ");
+        localStringBuilder.append((String)localObject1);
+        localStringBuilder.append(" in unread msgs|");
       }
+      i = 1;
     }
-    for (;;)
+    else
     {
-      if (i != 0) {
-        paramQQAppInterface.getMessageFacade().c(AppConstants.ACTIVATE_FRIENDS_UIN, 9002);
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("ActivateFriends.Manager", 2, localStringBuilder.toString());
-      return;
       i = j;
       if (QLog.isColorLevel())
       {
         localStringBuilder.append("rpt_msg_info is null|");
         i = j;
-        continue;
-        i = 0;
       }
+    }
+    if (i != 0) {
+      paramQQAppInterface.getMessageFacade().a(AppConstants.ACTIVATE_FRIENDS_UIN, 9002);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ActivateFriends.Manager", 2, localStringBuilder.toString());
     }
   }
   
@@ -313,18 +317,28 @@ public class ActivateFriendsManager
         return this.jdField_d_of_type_JavaUtilSet;
       }
       HashSet localHashSet = new HashSet(6);
-      Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("key_uin_wished_" + paramInt, "");
-      if (QLog.isColorLevel()) {
-        QLog.d("ActivateFriends.Manager", 2, "getUinWishedSet, str = " + (String)localObject + ", type = " + paramInt);
+      Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_uin_wished_");
+      localStringBuilder.append(paramInt);
+      localObject = ((SharedPreferences)localObject).getString(localStringBuilder.toString(), "");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getUinWishedSet, str = ");
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append(", type = ");
+        localStringBuilder.append(paramInt);
+        QLog.d("ActivateFriends.Manager", 2, localStringBuilder.toString());
       }
       localObject = ((String)localObject).split("-");
       int i = localObject.length;
       paramInt = 0;
       while (paramInt < i)
       {
-        CharSequence localCharSequence = localObject[paramInt];
-        if (!TextUtils.isEmpty(localCharSequence)) {
-          localHashSet.add(Long.valueOf(Long.parseLong(localCharSequence)));
+        localStringBuilder = localObject[paramInt];
+        if (!TextUtils.isEmpty(localStringBuilder)) {
+          localHashSet.add(Long.valueOf(Long.parseLong(localStringBuilder)));
         }
         paramInt += 1;
       }
@@ -341,18 +355,28 @@ public class ActivateFriendsManager
         return this.jdField_e_of_type_JavaUtilSet;
       }
       HashSet localHashSet = new HashSet(6);
-      Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("key_uin_expired_" + paramInt, "");
-      if (QLog.isColorLevel()) {
-        QLog.d("ActivateFriends.Manager", 2, "getUinWishedSet, str = " + (String)localObject + ", type = " + paramInt);
+      Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_uin_expired_");
+      localStringBuilder.append(paramInt);
+      localObject = ((SharedPreferences)localObject).getString(localStringBuilder.toString(), "");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getUinWishedSet, str = ");
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append(", type = ");
+        localStringBuilder.append(paramInt);
+        QLog.d("ActivateFriends.Manager", 2, localStringBuilder.toString());
       }
       localObject = ((String)localObject).split("-");
       int i = localObject.length;
       paramInt = 0;
       while (paramInt < i)
       {
-        CharSequence localCharSequence = localObject[paramInt];
-        if (!TextUtils.isEmpty(localCharSequence)) {
-          localHashSet.add(Long.valueOf(Long.parseLong(localCharSequence)));
+        localStringBuilder = localObject[paramInt];
+        if (!TextUtils.isEmpty(localStringBuilder)) {
+          localHashSet.add(Long.valueOf(Long.parseLong(localStringBuilder)));
         }
         paramInt += 1;
       }
@@ -363,15 +387,12 @@ public class ActivateFriendsManager
   
   String a(String paramString)
   {
-    String str;
     if (TextUtils.isEmpty(paramString)) {
-      str = null;
+      return null;
     }
-    do
-    {
-      return str;
-      str = paramString;
-    } while (paramString.length() <= 3);
+    if (paramString.length() <= 3) {
+      return paramString;
+    }
     return paramString.substring(paramString.length() - 3, paramString.length());
   }
   
@@ -383,32 +404,44 @@ public class ActivateFriendsManager
   
   public void a(int paramInt)
   {
+    boolean bool = QLog.isColorLevel();
     int i = 2;
-    if (QLog.isColorLevel()) {
-      QLog.d("ActivateFriends.Manager", 2, "onReceivePushMessage  msgType = " + paramInt);
+    if (bool)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onReceivePushMessage  msgType = ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("ActivateFriends.Manager", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString("key_uin_sended_" + paramInt, "").commit();
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString("key_uin_wished_" + paramInt, "").commit();
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString("key_uin_expired_" + paramInt, "").commit();
+    Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_uin_sended_");
+    localStringBuilder.append(paramInt);
+    ((SharedPreferences.Editor)localObject).putString(localStringBuilder.toString(), "").commit();
+    localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_uin_wished_");
+    localStringBuilder.append(paramInt);
+    ((SharedPreferences.Editor)localObject).putString(localStringBuilder.toString(), "").commit();
+    localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_uin_expired_");
+    localStringBuilder.append(paramInt);
+    ((SharedPreferences.Editor)localObject).putString(localStringBuilder.toString(), "").commit();
     if (paramInt == 1) {
       this.jdField_b_of_type_JavaUtilSet = new HashSet();
+    } else if (paramInt == 2) {
+      this.jdField_c_of_type_JavaUtilSet = new HashSet();
     }
-    for (;;)
+    if ((paramInt == 2) || (paramInt == 3))
     {
-      if ((paramInt == 2) || (paramInt == 3))
-      {
-        if (paramInt == 2) {
-          i = 1;
-        }
-        LpReportInfo_pf00064.allReport(220, 1, i);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007210", "0X8007211", 0, 0, "", "", "", "");
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("key_last_birth_msg_stamp", MessageCache.a()).commit();
-        ThreadManager.getSubThreadHandler().post(new ActivateFriendsManager.4(this));
-      }
-      return;
       if (paramInt == 2) {
-        this.jdField_c_of_type_JavaUtilSet = new HashSet();
+        i = 1;
       }
+      LpReportInfo_pf00064.allReport(220, 1, i);
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007210", "0X8007211", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("key_last_birth_msg_stamp", MessageCache.a()).commit();
+      ThreadManager.getSubThreadHandler().post(new ActivateFriendsManager.4(this));
     }
   }
   
@@ -419,46 +452,45 @@ public class ActivateFriendsManager
   
   public void a(int paramInt1, long[] paramArrayOfLong1, long[] paramArrayOfLong2, String paramString, int paramInt2)
   {
-    int j = 0;
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder();
+      StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("sendMessages | uin = ");
-      if ((paramArrayOfLong1 != null) && (paramArrayOfLong1.length != 0)) {
-        break label120;
+      int j = 0;
+      int k;
+      int i;
+      if ((paramArrayOfLong1 != null) && (paramArrayOfLong1.length != 0))
+      {
+        k = paramArrayOfLong1.length;
+        i = 0;
       }
-      localStringBuilder.append("null");
+      while (i < k)
+      {
+        localStringBuilder.append(a(String.valueOf(paramArrayOfLong1[i])));
+        localStringBuilder.append(",");
+        i += 1;
+        continue;
+        localStringBuilder.append("null");
+      }
       localStringBuilder.append(" | time = ");
-      if ((paramArrayOfLong2 != null) && (paramArrayOfLong2.length != 0)) {
-        break label166;
+      if ((paramArrayOfLong2 != null) && (paramArrayOfLong2.length != 0))
+      {
+        k = paramArrayOfLong2.length;
+        i = j;
       }
-      localStringBuilder.append("null");
-    }
-    for (;;)
-    {
-      localStringBuilder.append(" | giftId = ").append(paramInt2);
+      while (i < k)
+      {
+        localStringBuilder.append(paramArrayOfLong2[i]);
+        localStringBuilder.append(",");
+        i += 1;
+        continue;
+        localStringBuilder.append("null");
+      }
+      localStringBuilder.append(" | giftId = ");
+      localStringBuilder.append(paramInt2);
       QLog.d("ActivateFriends.Manager", 2, localStringBuilder.toString());
-      ThreadManager.getSubThreadHandler().post(new ActivateFriendsManager.3(this, paramInt1, paramArrayOfLong1, paramString, paramInt2, paramArrayOfLong2));
-      return;
-      label120:
-      int k = paramArrayOfLong1.length;
-      int i = 0;
-      while (i < k)
-      {
-        localStringBuilder.append(a(String.valueOf(paramArrayOfLong1[i]))).append(",");
-        i += 1;
-      }
-      break;
-      label166:
-      k = paramArrayOfLong2.length;
-      i = j;
-      while (i < k)
-      {
-        localStringBuilder.append(paramArrayOfLong2[i]).append(",");
-        i += 1;
-      }
     }
+    ThreadManager.getSubThreadHandler().post(new ActivateFriendsManager.3(this, paramInt1, paramArrayOfLong1, paramString, paramInt2, paramArrayOfLong2));
   }
   
   void a(long paramLong)
@@ -470,70 +502,109 @@ public class ActivateFriendsManager
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     this.jdField_b_of_type_Long = l;
     this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("key_check_stamp", System.currentTimeMillis()).putLong("key_check_interval", l).commit();
-    if (QLog.isColorLevel()) {
-      QLog.d("ActivateFriends.Manager", 2, "saveBirthdayCheckInStamp=" + this.jdField_b_of_type_Long);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("saveBirthdayCheckInStamp=");
+      localStringBuilder.append(this.jdField_b_of_type_Long);
+      QLog.d("ActivateFriends.Manager", 2, localStringBuilder.toString());
     }
   }
   
   public void a(long paramLong, Map<Long, Integer> paramMap, int paramInt)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(Long.toString(paramLong))) {
+    if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(Long.toString(paramLong)))
+    {
+      if (QLog.isColorLevel())
+      {
+        paramMap = new StringBuilder();
+        paramMap.append("currentUin:");
+        paramMap.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        paramMap.append(" do not equals to QzoneUin");
+        paramMap.append(Long.toString(paramLong));
+        QLog.d("ActivateFriends.Manager", 2, paramMap.toString());
+      }
+      return;
+    }
+    if ((paramMap != null) && (paramMap.size() != 0) && (paramInt == 2))
+    {
+      HashSet localHashSet = new HashSet(6);
+      Object localObject1 = new HashSet(6);
+      if ((b(paramInt) != null) && (b(paramInt).size() != 0)) {
+        localHashSet.addAll(b(paramInt));
+      }
+      int i = localHashSet.size();
+      Object localObject2 = paramMap.entrySet();
+      StringBuilder localStringBuilder1 = new StringBuilder("QZone FriendUin :");
+      localObject2 = ((Set)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject4 = (Map.Entry)((Iterator)localObject2).next();
+        localObject3 = (Long)((Map.Entry)localObject4).getKey();
+        localObject4 = (Integer)((Map.Entry)localObject4).getValue();
+        StringBuilder localStringBuilder2;
+        if ((localObject3 != null) && (((Integer)localObject4).intValue() == 1))
+        {
+          localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append(Long.toString(((Long)localObject3).longValue()));
+          localStringBuilder2.append("_");
+          localStringBuilder2.append(localObject4);
+          localStringBuilder2.append("|");
+          localStringBuilder1.append(localStringBuilder2.toString());
+          localHashSet.add(localObject3);
+        }
+        else if ((localObject3 != null) && (((Integer)localObject4).intValue() == 2))
+        {
+          localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append(Long.toString(((Long)localObject3).longValue()));
+          localStringBuilder2.append("_");
+          localStringBuilder2.append(localObject4);
+          localStringBuilder2.append("|");
+          localStringBuilder1.append(localStringBuilder2.toString());
+          ((Set)localObject1).add(localObject3);
+        }
+      }
       if (QLog.isColorLevel()) {
-        QLog.d("ActivateFriends.Manager", 2, "currentUin:" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + " do not equals to QzoneUin" + Long.toString(paramLong));
+        QLog.d("ActivateFriends.Manager", 2, localStringBuilder1.toString());
+      }
+      localObject2 = new StringBuilder();
+      localStringBuilder1 = new StringBuilder();
+      Object localObject3 = localHashSet.iterator();
+      while (((Iterator)localObject3).hasNext())
+      {
+        ((StringBuilder)localObject2).append((Long)((Iterator)localObject3).next());
+        ((StringBuilder)localObject2).append("-");
+      }
+      localObject3 = ((Set)localObject1).iterator();
+      while (((Iterator)localObject3).hasNext())
+      {
+        localStringBuilder1.append((Long)((Iterator)localObject3).next());
+        localStringBuilder1.append("-");
+      }
+      localObject3 = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+      Object localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append("key_uin_wished_");
+      ((StringBuilder)localObject4).append(paramInt);
+      ((SharedPreferences.Editor)localObject3).putString(((StringBuilder)localObject4).toString(), ((StringBuilder)localObject2).toString()).commit();
+      localObject2 = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("key_uin_expired_");
+      ((StringBuilder)localObject3).append(paramInt);
+      ((SharedPreferences.Editor)localObject2).putString(((StringBuilder)localObject3).toString(), localStringBuilder1.toString()).commit();
+      this.jdField_d_of_type_JavaUtilSet = localHashSet;
+      this.jdField_e_of_type_JavaUtilSet = ((Set)localObject1);
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("WishedFriends count = ");
+        ((StringBuilder)localObject1).append(paramMap.size());
+        ((StringBuilder)localObject1).append(", orginal count = ");
+        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append(", new count = ");
+        ((StringBuilder)localObject1).append(localHashSet.size());
+        QLog.d("ActivateFriends.Manager", 2, ((StringBuilder)localObject1).toString());
       }
     }
-    HashSet localHashSet1;
-    int i;
-    do
-    {
-      do
-      {
-        return;
-      } while ((paramMap == null) || (paramMap.size() == 0) || (paramInt != 2));
-      localHashSet1 = new HashSet(6);
-      HashSet localHashSet2 = new HashSet(6);
-      if ((b(paramInt) != null) && (b(paramInt).size() != 0)) {
-        localHashSet1.addAll(b(paramInt));
-      }
-      i = localHashSet1.size();
-      Object localObject1 = paramMap.entrySet();
-      StringBuilder localStringBuilder = new StringBuilder("QZone FriendUin :");
-      localObject1 = ((Set)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        Object localObject3 = (Map.Entry)((Iterator)localObject1).next();
-        localObject2 = (Long)((Map.Entry)localObject3).getKey();
-        localObject3 = (Integer)((Map.Entry)localObject3).getValue();
-        if ((localObject2 != null) && (((Integer)localObject3).intValue() == 1))
-        {
-          localStringBuilder.append(Long.toString(((Long)localObject2).longValue()) + "_" + localObject3 + "|");
-          localHashSet1.add(localObject2);
-        }
-        else if ((localObject2 != null) && (((Integer)localObject3).intValue() == 2))
-        {
-          localStringBuilder.append(Long.toString(((Long)localObject2).longValue()) + "_" + localObject3 + "|");
-          localHashSet2.add(localObject2);
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ActivateFriends.Manager", 2, localStringBuilder.toString());
-      }
-      localStringBuilder = new StringBuilder();
-      localObject1 = new StringBuilder();
-      Object localObject2 = localHashSet1.iterator();
-      while (((Iterator)localObject2).hasNext()) {
-        localStringBuilder.append((Long)((Iterator)localObject2).next()).append("-");
-      }
-      localObject2 = localHashSet2.iterator();
-      while (((Iterator)localObject2).hasNext()) {
-        ((StringBuilder)localObject1).append((Long)((Iterator)localObject2).next()).append("-");
-      }
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString("key_uin_wished_" + paramInt, localStringBuilder.toString()).commit();
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString("key_uin_expired_" + paramInt, ((StringBuilder)localObject1).toString()).commit();
-      this.jdField_d_of_type_JavaUtilSet = localHashSet1;
-      this.jdField_e_of_type_JavaUtilSet = localHashSet2;
-    } while (!QLog.isColorLevel());
-    QLog.d("ActivateFriends.Manager", 2, "WishedFriends count = " + paramMap.size() + ", orginal count = " + i + ", new count = " + localHashSet1.size());
   }
   
   public void a(WeakReference<QQReminderSwitchObserver.QQReminderSwitchListener> paramWeakReference)
@@ -553,7 +624,11 @@ public class ActivateFriendsManager
       ((CardHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).l(paramBoolean1);
       return;
     }
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131694958) + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramBoolean1).commit();
+    SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131694948));
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    localEditor.putBoolean(localStringBuilder.toString(), paramBoolean1).commit();
   }
   
   public void a(long[] paramArrayOfLong, int paramInt)
@@ -568,33 +643,46 @@ public class ActivateFriendsManager
       localHashSet.add(Long.valueOf(paramArrayOfLong[i]));
       i += 1;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = localHashSet.iterator();
-    while (localIterator.hasNext()) {
-      localStringBuilder.append((Long)localIterator.next()).append("-");
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    Object localObject = localHashSet.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      localStringBuilder1.append((Long)((Iterator)localObject).next());
+      localStringBuilder1.append("-");
     }
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString("key_uin_sended_" + paramInt, localStringBuilder.toString()).commit();
+    localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("key_uin_sended_");
+    localStringBuilder2.append(paramInt);
+    ((SharedPreferences.Editor)localObject).putString(localStringBuilder2.toString(), localStringBuilder1.toString()).commit();
     if (paramInt == 1) {
       this.jdField_b_of_type_JavaUtilSet = localHashSet;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ActivateFriends.Manager", 2, "onSendTimingMsgSuc, send count = " + paramArrayOfLong.length + ", orginal count = " + j + ", new count = " + localHashSet.size());
-      }
-      return;
+    } else {
       this.jdField_c_of_type_JavaUtilSet = localHashSet;
+    }
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("onSendTimingMsgSuc, send count = ");
+      localStringBuilder1.append(paramArrayOfLong.length);
+      localStringBuilder1.append(", orginal count = ");
+      localStringBuilder1.append(j);
+      localStringBuilder1.append(", new count = ");
+      localStringBuilder1.append(localHashSet.size());
+      QLog.d("ActivateFriends.Manager", 2, localStringBuilder1.toString());
     }
   }
   
   public boolean a(int paramInt)
   {
-    if (this.jdField_e_of_type_Int == paramInt) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_e_of_type_Int = paramInt;
-      return bool;
+    boolean bool;
+    if (this.jdField_e_of_type_Int == paramInt) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.jdField_e_of_type_Int = paramInt;
+    return bool;
   }
   
   public boolean a(long paramLong, int paramInt)
@@ -606,12 +694,16 @@ public class ActivateFriendsManager
   {
     if (paramBoolean)
     {
-      TempGetProfileDetailProcessor localTempGetProfileDetailProcessor = (TempGetProfileDetailProcessor)ProfileServiceUtils.getBusinessProcessor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, TempGetProfileDetailProcessor.class);
-      if (localTempGetProfileDetailProcessor != null) {
-        localTempGetProfileDetailProcessor.getActivateFriendSwitch();
+      localObject = (TempGetProfileDetailProcessor)ProfileServiceUtils.getBusinessProcessor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, TempGetProfileDetailProcessor.class);
+      if (localObject != null) {
+        ((TempGetProfileDetailProcessor)localObject).getActivateFriendSwitch();
       }
     }
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131694958) + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true);
+    Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131694948));
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    return ((SharedPreferences)localObject).getBoolean(localStringBuilder.toString(), true);
   }
   
   public boolean a(byte[] paramArrayOfByte)
@@ -621,8 +713,12 @@ public class ActivateFriendsManager
       SubMsgType0x76.MsgBody localMsgBody = new SubMsgType0x76.MsgBody();
       localMsgBody.mergeFrom(paramArrayOfByte);
       boolean bool = localMsgBody.bool_strong_notify.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("ActivateFriends.Manager", 2, "shouldMsgTips | " + bool);
+      if (QLog.isColorLevel())
+      {
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("shouldMsgTips | ");
+        paramArrayOfByte.append(bool);
+        QLog.d("ActivateFriends.Manager", 2, paramArrayOfByte.toString());
       }
       return bool;
     }
@@ -655,29 +751,37 @@ public class ActivateFriendsManager
     this.jdField_c_of_type_Long = System.currentTimeMillis();
     this.jdField_d_of_type_Long = l;
     this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("key_memorial_check_stamp", System.currentTimeMillis()).putLong("key_memorial_check_interval", l).commit();
-    if (QLog.isColorLevel()) {
-      QLog.d("ActivateFriends.Manager", 2, "saveMemorialCheckInStamp=" + this.jdField_d_of_type_Long);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("saveMemorialCheckInStamp=");
+      localStringBuilder.append(this.jdField_d_of_type_Long);
+      QLog.d("ActivateFriends.Manager", 2, localStringBuilder.toString());
     }
   }
   
   public boolean b(long paramLong, int paramInt)
   {
-    if ((b(paramInt) == null) || (b(paramInt).size() == 0)) {
-      return false;
+    if ((b(paramInt) != null) && (b(paramInt).size() != 0)) {
+      return b(paramInt).contains(Long.valueOf(paramLong));
     }
-    return b(paramInt).contains(Long.valueOf(paramLong));
+    return false;
   }
   
   public boolean b(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      TempGetProfileDetailProcessor localTempGetProfileDetailProcessor = (TempGetProfileDetailProcessor)ProfileServiceUtils.getBusinessProcessor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, TempGetProfileDetailProcessor.class);
-      if (localTempGetProfileDetailProcessor != null) {
-        localTempGetProfileDetailProcessor.getActivateFriendSwitch();
+      localObject = (TempGetProfileDetailProcessor)ProfileServiceUtils.getBusinessProcessor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, TempGetProfileDetailProcessor.class);
+      if (localObject != null) {
+        ((TempGetProfileDetailProcessor)localObject).getActivateFriendSwitch();
       }
     }
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131694958) + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
+    Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131694948));
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    return ((SharedPreferences)localObject).getBoolean(localStringBuilder.toString(), false);
   }
   
   public boolean b(byte[] arg1)
@@ -707,10 +811,10 @@ public class ActivateFriendsManager
   
   public boolean c(long paramLong, int paramInt)
   {
-    if ((c(paramInt) == null) || (c(paramInt).size() == 0)) {
-      return false;
+    if ((c(paramInt) != null) && (c(paramInt).size() != 0)) {
+      return c(paramInt).contains(Long.valueOf(paramLong));
     }
-    return c(paramInt).contains(Long.valueOf(paramLong));
+    return false;
   }
   
   public void d()
@@ -730,7 +834,7 @@ public class ActivateFriendsManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.activateFriends.ActivateFriendsManager
  * JD-Core Version:    0.7.0.1
  */

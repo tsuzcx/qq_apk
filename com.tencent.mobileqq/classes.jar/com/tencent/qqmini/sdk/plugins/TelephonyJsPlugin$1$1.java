@@ -19,11 +19,18 @@ class TelephonyJsPlugin$1$1
   {
     if (paramBoolean)
     {
-      String str = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAccount();
-      StorageUtil.getPreference().edit().putString(str + "_PhoneNumber", paramJSONObject.optString("purePhoneNumber")).commit();
+      Object localObject = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAccount();
+      SharedPreferences.Editor localEditor = StorageUtil.getPreference().edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("_PhoneNumber");
+      localEditor.putString(localStringBuilder.toString(), paramJSONObject.optString("purePhoneNumber")).commit();
       paramJSONObject.remove("countryCode");
       paramJSONObject.remove("purePhoneNumber");
-      QMLog.d("TelephonyJsPlugin", "getPhoneNumber ret : " + paramJSONObject);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getPhoneNumber ret : ");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      QMLog.d("TelephonyJsPlugin", ((StringBuilder)localObject).toString());
       this.this$1.val$req.ok(paramJSONObject);
       return;
     }
@@ -32,7 +39,7 @@ class TelephonyJsPlugin$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.TelephonyJsPlugin.1.1
  * JD-Core Version:    0.7.0.1
  */

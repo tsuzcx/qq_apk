@@ -25,7 +25,7 @@ public final class DeviceInstance
   public static final String MODEL_OPPO_X909 = "OPPO_X909";
   public static final String MODEL_VIVO_Y23L = "VIVO_vivo_Y23L";
   public static final String NUBIA_NX511J = "NUBIA_NX511J";
-  private static String TAG = DeviceInstance.class.getSimpleName();
+  private static String TAG = "DeviceInstance";
   private String mDeviceName = "";
   private ConcurrentHashMap<String, String> mModelMap = new ConcurrentHashMap();
   private ConcurrentHashMap<String, String> mSocMap = new ConcurrentHashMap();
@@ -42,83 +42,142 @@ public final class DeviceInstance
   
   private void initModels(Context paramContext, String paramString)
   {
-    String str = FileUtils.genSeperateFileDir(paramString) + "brand_name.json";
-    paramString = str;
-    if (!FileUtils.isFileExist(str))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(FileUtils.genSeperateFileDir(paramString));
+    ((StringBuilder)localObject).append("brand_name.json");
+    localObject = ((StringBuilder)localObject).toString();
+    paramString = (String)localObject;
+    if (!FileUtils.isFileExist((String)localObject))
     {
-      str = FileUtils.load(paramContext, "assets://brand_name.json");
-      paramString = str;
-      if (FileUtils.isFileExist(str)) {}
-    }
-    for (;;)
-    {
-      return;
-      paramContext = FileUtils.load(paramContext, paramString);
-      try
-      {
-        paramContext = (DeviceInstance.BrandNames)new Gson().fromJson(paramContext, DeviceInstance.BrandNames.class);
-        if ((paramContext == null) || (paramContext.BRAND_NAMES == null)) {
-          continue;
-        }
-        paramContext = paramContext.BRAND_NAMES.entrySet().iterator();
-        if (paramContext == null) {
-          continue;
-        }
-        this.mModelMap.clear();
-        while (paramContext.hasNext())
-        {
-          paramString = (Map.Entry)paramContext.next();
-          this.mModelMap.put(((String)paramString.getKey()).toUpperCase(), paramString.getValue());
-        }
+      localObject = FileUtils.load(paramContext, "assets://brand_name.json");
+      paramString = (String)localObject;
+      if (!FileUtils.isFileExist((String)localObject)) {
+        return;
       }
-      catch (NoSuchMethodError paramContext)
+    }
+    paramContext = FileUtils.load(paramContext, paramString);
+    try
+    {
+      paramContext = (DeviceInstance.BrandNames)new Gson().fromJson(paramContext, DeviceInstance.BrandNames.class);
+    }
+    catch (NoSuchMethodError paramContext)
+    {
+      LightLogUtil.e(TAG, paramContext.toString());
+      paramContext = null;
+    }
+    if ((paramContext != null) && (paramContext.BRAND_NAMES != null))
+    {
+      paramContext = paramContext.BRAND_NAMES.entrySet().iterator();
+      if (paramContext == null) {
+        return;
+      }
+      this.mModelMap.clear();
+      while (paramContext.hasNext())
       {
-        for (;;)
-        {
-          LightLogUtil.e(TAG, paramContext.toString());
-          paramContext = null;
-        }
+        paramString = (Map.Entry)paramContext.next();
+        this.mModelMap.put(((String)paramString.getKey()).toUpperCase(), paramString.getValue());
       }
     }
   }
   
   private void initSOCs(Context paramContext, String paramString)
   {
-    String str = FileUtils.genSeperateFileDir(paramString) + "score_phone.json";
-    paramString = str;
-    if (!FileUtils.isFileExist(str))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(FileUtils.genSeperateFileDir(paramString));
+    ((StringBuilder)localObject).append("score_phone.json");
+    localObject = ((StringBuilder)localObject).toString();
+    paramString = (String)localObject;
+    if (!FileUtils.isFileExist((String)localObject))
     {
-      str = FileUtils.load(paramContext, "assets://score_phone.json");
-      paramString = str;
-      if (FileUtils.isFileExist(str)) {}
+      localObject = FileUtils.load(paramContext, "assets://score_phone.json");
+      paramString = (String)localObject;
+      if (!FileUtils.isFileExist((String)localObject)) {
+        return;
+      }
     }
-    do
-    {
-      return;
-      paramContext = FileUtils.load(paramContext, paramString);
-      paramContext = (DeviceInstance.SOCPhones)new Gson().fromJson(paramContext, DeviceInstance.SOCPhones.class);
-      this.mSocMap.clear();
-    } while ((paramContext == null) || (paramContext.SOC_SCORE == null));
-    this.mSocMap.putAll(paramContext.SOC_SCORE);
+    paramContext = FileUtils.load(paramContext, paramString);
+    paramContext = (DeviceInstance.SOCPhones)new Gson().fromJson(paramContext, DeviceInstance.SOCPhones.class);
+    this.mSocMap.clear();
+    if ((paramContext != null) && (paramContext.SOC_SCORE != null)) {
+      this.mSocMap.putAll(paramContext.SOC_SCORE);
+    }
   }
   
   private void showDeviceInfo()
   {
     LightLogUtil.d(TAG, "****** DeviceInfo  (+) *****");
-    LightLogUtil.d(TAG, "DeviceName = " + getDeviceName());
-    LightLogUtil.d(TAG, "SubName = " + getDeviceName() + "_" + Build.DISPLAY.replace(" ", "_").toUpperCase());
-    LightLogUtil.d(TAG, "MODEL = " + Build.MODEL);
-    LightLogUtil.d(TAG, "SDK_INT = " + Build.VERSION.SDK_INT);
-    LightLogUtil.d(TAG, "BRAND = " + Build.BRAND);
-    LightLogUtil.d(TAG, "DEVICE = " + Build.DEVICE);
-    LightLogUtil.d(TAG, "DISPLAY = " + Build.DISPLAY);
-    LightLogUtil.d(TAG, "HARDWARE = " + Build.HARDWARE);
-    LightLogUtil.d(TAG, "MANUFACTURER = " + Build.MANUFACTURER);
-    LightLogUtil.d(TAG, "PRODUCT = " + Build.PRODUCT);
-    LightLogUtil.d(TAG, "TAGS = " + Build.TAGS);
-    LightLogUtil.d(TAG, "USER = " + Build.USER);
-    LightLogUtil.d(TAG, "TYPE = " + Build.TYPE);
-    LightLogUtil.d(TAG, "BOARD = " + Build.BOARD);
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceName = ");
+    localStringBuilder.append(getDeviceName());
+    LightLogUtil.d(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SubName = ");
+    localStringBuilder.append(getDeviceName());
+    localStringBuilder.append("_");
+    localStringBuilder.append(Build.DISPLAY.replace(" ", "_").toUpperCase());
+    LightLogUtil.d(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MODEL = ");
+    localStringBuilder.append(Build.MODEL);
+    LightLogUtil.d(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SDK_INT = ");
+    localStringBuilder.append(Build.VERSION.SDK_INT);
+    LightLogUtil.d(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BRAND = ");
+    localStringBuilder.append(Build.BRAND);
+    LightLogUtil.d(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DEVICE = ");
+    localStringBuilder.append(Build.DEVICE);
+    LightLogUtil.d(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DISPLAY = ");
+    localStringBuilder.append(Build.DISPLAY);
+    LightLogUtil.d(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("HARDWARE = ");
+    localStringBuilder.append(Build.HARDWARE);
+    LightLogUtil.d(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MANUFACTURER = ");
+    localStringBuilder.append(Build.MANUFACTURER);
+    LightLogUtil.d(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PRODUCT = ");
+    localStringBuilder.append(Build.PRODUCT);
+    LightLogUtil.d(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TAGS = ");
+    localStringBuilder.append(Build.TAGS);
+    LightLogUtil.d(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("USER = ");
+    localStringBuilder.append(Build.USER);
+    LightLogUtil.d(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TYPE = ");
+    localStringBuilder.append(Build.TYPE);
+    LightLogUtil.d(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BOARD = ");
+    localStringBuilder.append(Build.BOARD);
+    LightLogUtil.d(str, localStringBuilder.toString());
     LightLogUtil.d(TAG, "****** DeviceInfo (-) *****");
   }
   
@@ -126,24 +185,26 @@ public final class DeviceInstance
   {
     if (TextUtils.isEmpty(this.mDeviceName))
     {
-      if (!Build.MODEL.equalsIgnoreCase("K-Touch W619")) {
-        break label98;
-      }
-      this.mDeviceName = ((String)this.mModelMap.get("TIANYU") + " " + Build.MODEL);
-    }
-    for (;;)
-    {
-      this.mDeviceName = this.mDeviceName.replace(" ", "_").replace("+", "").replace("(t)", "");
-      return this.mDeviceName;
-      label98:
-      if ((Build.MODEL.equalsIgnoreCase("8150")) && (Build.BRAND.equalsIgnoreCase("COOLPAD")))
+      Object localObject1;
+      if (Build.MODEL.equalsIgnoreCase("K-Touch W619"))
       {
-        this.mDeviceName = ((String)this.mModelMap.get("COOLPAD") + " " + Build.MODEL);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append((String)this.mModelMap.get("TIANYU"));
+        ((StringBuilder)localObject1).append(" ");
+        ((StringBuilder)localObject1).append(Build.MODEL);
+        this.mDeviceName = ((StringBuilder)localObject1).toString();
+      }
+      else if ((Build.MODEL.equalsIgnoreCase("8150")) && (Build.BRAND.equalsIgnoreCase("COOLPAD")))
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append((String)this.mModelMap.get("COOLPAD"));
+        ((StringBuilder)localObject1).append(" ");
+        ((StringBuilder)localObject1).append(Build.MODEL);
+        this.mDeviceName = ((StringBuilder)localObject1).toString();
       }
       else
       {
         Object localObject2 = (String)this.mModelMap.get(Build.MANUFACTURER.toUpperCase());
-        Object localObject1;
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
           localObject1 = localObject2;
@@ -162,51 +223,75 @@ public final class DeviceInstance
         {
           localObject2 = Build.BRAND.toUpperCase();
         }
-        this.mDeviceName = ((String)localObject2 + " " + Build.MODEL);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append((String)localObject2);
+        ((StringBuilder)localObject1).append(" ");
+        ((StringBuilder)localObject1).append(Build.MODEL);
+        this.mDeviceName = ((StringBuilder)localObject1).toString();
       }
+      this.mDeviceName = this.mDeviceName.replace(" ", "_").replace("+", "").replace("(t)", "");
     }
+    return this.mDeviceName;
   }
   
   public DeviceInstance.SOC_CLASS getDeviceSocClass(String paramString)
   {
-    LightLogUtil.d(TAG, "[getDeviceSocClass] + BEGIN, socInfo = " + paramString);
-    String str2 = "";
-    String str1 = str2;
+    Object localObject1 = TAG;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("[getDeviceSocClass] + BEGIN, socInfo = ");
+    ((StringBuilder)localObject2).append(paramString);
+    LightLogUtil.d((String)localObject1, ((StringBuilder)localObject2).toString());
     if (!TextUtils.isEmpty(paramString))
     {
-      str1 = str2;
-      if (this.mSocMap != null)
+      localObject1 = this.mSocMap;
+      if ((localObject1 != null) && (((ConcurrentHashMap)localObject1).containsKey(paramString)))
       {
-        str1 = str2;
-        if (this.mSocMap.containsKey(paramString)) {
-          str1 = (String)this.mSocMap.get(paramString);
+        localObject1 = (String)this.mSocMap.get(paramString);
+        break label80;
+      }
+    }
+    localObject1 = "";
+    label80:
+    paramString = TAG;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("[getDeviceSocClass] scoreValue = ");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    LightLogUtil.d(paramString, ((StringBuilder)localObject2).toString());
+    localObject2 = DeviceInstance.SOC_CLASS.NULL;
+    paramString = (String)localObject2;
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      int i = Integer.parseInt((String)localObject1);
+      if (i >= DeviceInstance.SOC_CLASS.V_HIGH.score)
+      {
+        paramString = DeviceInstance.SOC_CLASS.V_HIGH;
+      }
+      else if (i >= DeviceInstance.SOC_CLASS.HIGH.score)
+      {
+        paramString = DeviceInstance.SOC_CLASS.HIGH;
+      }
+      else if (i >= DeviceInstance.SOC_CLASS.NORMAL.score)
+      {
+        paramString = DeviceInstance.SOC_CLASS.NORMAL;
+      }
+      else if (i >= DeviceInstance.SOC_CLASS.LOW.score)
+      {
+        paramString = DeviceInstance.SOC_CLASS.LOW;
+      }
+      else
+      {
+        paramString = (String)localObject2;
+        if (i > DeviceInstance.SOC_CLASS.V_LOW.score) {
+          paramString = DeviceInstance.SOC_CLASS.V_LOW;
         }
       }
     }
-    LightLogUtil.d(TAG, "[getDeviceSocClass] scoreValue = " + str1);
-    paramString = DeviceInstance.SOC_CLASS.NULL;
-    int i;
-    if (!TextUtils.isEmpty(str1))
-    {
-      i = Integer.parseInt(str1);
-      if (i >= DeviceInstance.SOC_CLASS.V_HIGH.score) {
-        paramString = DeviceInstance.SOC_CLASS.V_HIGH;
-      }
-    }
-    for (;;)
-    {
-      LightLogUtil.d(TAG, "[getDeviceSocClass] + END, socClass = " + paramString);
-      return paramString;
-      if (i >= DeviceInstance.SOC_CLASS.HIGH.score) {
-        paramString = DeviceInstance.SOC_CLASS.HIGH;
-      } else if (i >= DeviceInstance.SOC_CLASS.NORMAL.score) {
-        paramString = DeviceInstance.SOC_CLASS.NORMAL;
-      } else if (i >= DeviceInstance.SOC_CLASS.LOW.score) {
-        paramString = DeviceInstance.SOC_CLASS.LOW;
-      } else if (i > DeviceInstance.SOC_CLASS.V_LOW.score) {
-        paramString = DeviceInstance.SOC_CLASS.V_LOW;
-      }
-    }
+    localObject1 = TAG;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("[getDeviceSocClass] + END, socClass = ");
+    ((StringBuilder)localObject2).append(paramString);
+    LightLogUtil.d((String)localObject1, ((StringBuilder)localObject2).toString());
+    return paramString;
   }
   
   public int getMaxMemorySizeInKB()
@@ -235,18 +320,19 @@ public final class DeviceInstance
   public boolean isMeiZuDevice()
   {
     LightLogUtil.d(TAG, "[isMeiZuDevice] + BEGIN");
-    boolean bool2 = false;
     String str = getDeviceName();
-    boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(str))
-    {
-      bool1 = bool2;
-      if (str.startsWith("MEIZU")) {
-        bool1 = true;
-      }
+    boolean bool;
+    if ((!TextUtils.isEmpty(str)) && (str.startsWith("MEIZU"))) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    LightLogUtil.d(TAG, "[isMeiZuDevice] + END, isMeizu = " + bool1);
-    return bool1;
+    str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[isMeiZuDevice] + END, isMeizu = ");
+    localStringBuilder.append(bool);
+    LightLogUtil.d(str, localStringBuilder.toString());
+    return bool;
   }
   
   public boolean isOppoX909Device()
@@ -258,18 +344,19 @@ public final class DeviceInstance
   public boolean isViVoDevice()
   {
     LightLogUtil.d(TAG, "[isViVoDevice] + BEGIN");
-    boolean bool2 = false;
     String str = getDeviceName();
-    boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(str))
-    {
-      bool1 = bool2;
-      if (str.startsWith("VIVO")) {
-        bool1 = true;
-      }
+    boolean bool;
+    if ((!TextUtils.isEmpty(str)) && (str.startsWith("VIVO"))) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    LightLogUtil.d(TAG, "[isViVoDevice] + END, isViVo = " + bool1);
-    return bool1;
+    str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[isViVoDevice] + END, isViVo = ");
+    localStringBuilder.append(bool);
+    LightLogUtil.d(str, localStringBuilder.toString());
+    return bool;
   }
   
   public boolean isVivoY23LDevice()
@@ -281,57 +368,60 @@ public final class DeviceInstance
   public boolean isXiaoMiDevice()
   {
     LightLogUtil.d(TAG, "[isXiaoMiDevice] + BEGIN");
-    boolean bool2 = false;
     String str = getDeviceName();
-    boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(str))
-    {
-      bool1 = bool2;
-      if (str.startsWith("XIAOMI")) {
-        bool1 = true;
-      }
+    boolean bool;
+    if ((!TextUtils.isEmpty(str)) && (str.startsWith("XIAOMI"))) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    LightLogUtil.d(TAG, "[isXiaoMiDevice] + END, isXiaomi = " + bool1);
-    return bool1;
+    str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[isXiaoMiDevice] + END, isXiaomi = ");
+    localStringBuilder.append(bool);
+    LightLogUtil.d(str, localStringBuilder.toString());
+    return bool;
   }
   
   public boolean isXiaoMiMixDevice()
   {
     LightLogUtil.d(TAG, "[isXiaoMiMixDevice] + BEGIN");
     String str = getDeviceName();
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(str))
-    {
-      bool1 = bool2;
-      if (str.equals("XIAOMI_MIX")) {
-        bool1 = true;
-      }
+    boolean bool;
+    if ((!TextUtils.isEmpty(str)) && (str.equals("XIAOMI_MIX"))) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    LightLogUtil.d(TAG, "[isXiaoMiMixDevice] + END, isXiaoMiMix = " + bool1);
-    return bool1;
+    str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[isXiaoMiMixDevice] + END, isXiaoMiMix = ");
+    localStringBuilder.append(bool);
+    LightLogUtil.d(str, localStringBuilder.toString());
+    return bool;
   }
   
   public boolean isXiaoMiRedmi6Device()
   {
     LightLogUtil.d(TAG, "[isXiaoMiRedmi6Device] + BEGIN");
-    boolean bool2 = false;
     String str = getDeviceName();
-    boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(str))
-    {
-      bool1 = bool2;
-      if (str.contains("Redmi_6")) {
-        bool1 = true;
-      }
+    boolean bool;
+    if ((!TextUtils.isEmpty(str)) && (str.contains("Redmi_6"))) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    LightLogUtil.d(TAG, "[isXiaoMiRedmi6Device] + END, isRedmi6 = " + bool1);
-    return bool1;
+    str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[isXiaoMiRedmi6Device] + END, isRedmi6 = ");
+    localStringBuilder.append(bool);
+    LightLogUtil.d(str, localStringBuilder.toString());
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.light.device.DeviceInstance
  * JD-Core Version:    0.7.0.1
  */

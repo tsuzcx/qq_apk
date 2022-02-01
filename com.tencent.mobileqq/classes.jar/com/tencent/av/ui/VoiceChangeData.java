@@ -10,29 +10,25 @@ import org.json.JSONObject;
 
 public class VoiceChangeData
 {
-  private static VoiceChangeData jdField_a_of_type_ComTencentAvUiVoiceChangeData = null;
-  public static String a;
+  private static VoiceChangeData jdField_a_of_type_ComTencentAvUiVoiceChangeData;
+  public static String a = "VoiceChangeData";
   private final int jdField_a_of_type_Int = 40;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private boolean jdField_a_of_type_Boolean = false;
   private VoiceChangeData.VoiceInfo[] jdField_a_of_type_ArrayOfComTencentAvUiVoiceChangeData$VoiceInfo = null;
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = "VoiceChangeData";
-  }
-  
   public static VoiceChangeData a()
   {
-    if (jdField_a_of_type_ComTencentAvUiVoiceChangeData == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentAvUiVoiceChangeData == null) {
-        jdField_a_of_type_ComTencentAvUiVoiceChangeData = new VoiceChangeData();
+    if (jdField_a_of_type_ComTencentAvUiVoiceChangeData == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentAvUiVoiceChangeData == null) {
+          jdField_a_of_type_ComTencentAvUiVoiceChangeData = new VoiceChangeData();
+        }
       }
-      return jdField_a_of_type_ComTencentAvUiVoiceChangeData;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentAvUiVoiceChangeData;
   }
   
   protected void a(String paramString)
@@ -46,22 +42,28 @@ public class VoiceChangeData
       try
       {
         Object localObject2 = new JSONObject(paramString);
+        Object localObject3;
+        Object localObject4;
         if (((JSONObject)localObject2).has("voices"))
         {
           localObject2 = ((JSONObject)localObject2).getJSONArray("voices");
-          AVLog.printAllUserLog(jdField_a_of_type_JavaLangString, "parseConfig|voices size= " + ((JSONArray)localObject2).length());
+          localObject3 = jdField_a_of_type_JavaLangString;
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("parseConfig|voices size= ");
+          ((StringBuilder)localObject4).append(((JSONArray)localObject2).length());
+          AVLog.printAllUserLog((String)localObject3, ((StringBuilder)localObject4).toString());
           this.jdField_a_of_type_ArrayOfComTencentAvUiVoiceChangeData$VoiceInfo = new VoiceChangeData.VoiceInfo[((JSONArray)localObject2).length()];
           int i = 0;
           while (i < ((JSONArray)localObject2).length())
           {
-            JSONObject localJSONObject = ((JSONArray)localObject2).getJSONObject(i);
-            VoiceChangeData.VoiceInfo localVoiceInfo = new VoiceChangeData.VoiceInfo();
-            localVoiceInfo.jdField_a_of_type_JavaLangString = localJSONObject.getString("name");
-            localVoiceInfo.jdField_b_of_type_JavaLangString = localJSONObject.getString("icon1");
-            localVoiceInfo.c = localJSONObject.getString("icon2");
-            localVoiceInfo.jdField_a_of_type_Int = Integer.parseInt(localJSONObject.getString("type"));
-            localVoiceInfo.jdField_b_of_type_Int = Integer.parseInt(localJSONObject.getString("vip_level"));
-            this.jdField_a_of_type_ArrayOfComTencentAvUiVoiceChangeData$VoiceInfo[i] = localVoiceInfo;
+            localObject3 = ((JSONArray)localObject2).getJSONObject(i);
+            localObject4 = new VoiceChangeData.VoiceInfo();
+            ((VoiceChangeData.VoiceInfo)localObject4).jdField_a_of_type_JavaLangString = ((JSONObject)localObject3).getString("name");
+            ((VoiceChangeData.VoiceInfo)localObject4).jdField_b_of_type_JavaLangString = ((JSONObject)localObject3).getString("icon1");
+            ((VoiceChangeData.VoiceInfo)localObject4).c = ((JSONObject)localObject3).getString("icon2");
+            ((VoiceChangeData.VoiceInfo)localObject4).jdField_a_of_type_Int = Integer.parseInt(((JSONObject)localObject3).getString("type"));
+            ((VoiceChangeData.VoiceInfo)localObject4).jdField_b_of_type_Int = Integer.parseInt(((JSONObject)localObject3).getString("vip_level"));
+            this.jdField_a_of_type_ArrayOfComTencentAvUiVoiceChangeData$VoiceInfo[i] = localObject4;
             i += 1;
           }
         }
@@ -69,10 +71,19 @@ public class VoiceChangeData
       }
       catch (JSONException localJSONException)
       {
-        QLog.w(jdField_a_of_type_JavaLangString, 1, "parseConfig, JSONException, \ncontent[" + paramString + "]", localJSONException);
+        localObject3 = jdField_a_of_type_JavaLangString;
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("parseConfig, JSONException, \ncontent[");
+        ((StringBuilder)localObject4).append(paramString);
+        ((StringBuilder)localObject4).append("]");
+        QLog.w((String)localObject3, 1, ((StringBuilder)localObject4).toString(), localJSONException);
         this.jdField_a_of_type_ArrayOfComTencentAvUiVoiceChangeData$VoiceInfo = null;
         return;
       }
+    }
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
@@ -91,7 +102,7 @@ public class VoiceChangeData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VoiceChangeData
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ class ArkVsync$1
   
   public void run()
   {
-    ArkVsync.ENV.logI("ArkApp.ArkVsync", "addFrameCallback, start vsync");
+    Logger.logI("ArkApp.ArkVsync", "addFrameCallback, start vsync");
     this.this$0.mImpl.start(this.val$_this);
   }
 }

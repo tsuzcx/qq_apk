@@ -7,13 +7,13 @@ class PublicAcntSearchFragment$2$2
   
   public void run()
   {
-    this.a.a.h_(true);
-    this.a.a.g_(false);
+    PublicAcntSearchFragment.c(this.a.a, true);
+    PublicAcntSearchFragment.d(this.a.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.PublicAcntSearchFragment.2.2
  * JD-Core Version:    0.7.0.1
  */

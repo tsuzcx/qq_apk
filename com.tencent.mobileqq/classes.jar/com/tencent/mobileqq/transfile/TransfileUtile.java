@@ -29,13 +29,18 @@ public class TransfileUtile
   
   public static String[] analysisTransFileProtocolData(String paramString)
   {
-    if (paramString == null) {}
-    do
-    {
+    if (paramString == null) {
       return null;
-      paramString = paramString.split("\026");
-    } while ((paramString == null) || (paramString.length < 2));
-    return paramString[1].split("\\|");
+    }
+    paramString = paramString.split("\026");
+    if (paramString != null)
+    {
+      if (paramString.length < 2) {
+        return null;
+      }
+      return paramString[1].split("\\|");
+    }
+    return null;
   }
   
   public static String getForwardMsgContent(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt)
@@ -58,9 +63,8 @@ public class TransfileUtile
       localStringBuilder.append("");
       localStringBuilder.append('|');
     }
-    for (;;)
+    else
     {
-      return localStringBuilder.toString();
       localStringBuilder.append(paramString2);
       localStringBuilder.append('|');
       localStringBuilder.append(paramString3);
@@ -69,111 +73,143 @@ public class TransfileUtile
       localStringBuilder.append('|');
       localStringBuilder.append(paramInt);
     }
+    return localStringBuilder.toString();
   }
   
   public static byte getImgFormat(String paramString)
   {
-    byte b2 = 0;
     int i = paramString.lastIndexOf(".");
-    byte b1 = b2;
     if (i < paramString.length())
     {
       paramString = paramString.substring(i + 1).toLowerCase();
-      if (!"bmp".equals(paramString)) {
-        break label43;
+      if ("bmp".equals(paramString)) {
+        return 1;
       }
-      b1 = 1;
-    }
-    label43:
-    do
-    {
-      return b1;
       if ("gif".equals(paramString)) {
         return 2;
       }
-      if (("jpg".equals(paramString)) || ("jpeg".equals(paramString))) {
+      if ((!"jpg".equals(paramString)) && (!"jpeg".equals(paramString)))
+      {
+        if ("png".equals(paramString)) {
+          return 4;
+        }
+      }
+      else {
         return 3;
       }
-      b1 = b2;
-    } while (!"png".equals(paramString));
-    return 4;
+    }
+    return 0;
   }
   
   public static String getPicMD5ByMsgContent(String paramString)
   {
     paramString = analysisTransFileProtocolData(paramString);
-    if ((paramString == null) || (paramString.length < 6)) {}
-    do
+    if (paramString != null)
     {
-      return null;
+      if (paramString.length < 6) {
+        return null;
+      }
       paramString = paramString[5];
-      if (QLog.isColorLevel()) {
-        QLog.d("TransfileUtile", 2, "getPicMD5ByMsgContent:" + paramString);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getPicMD5ByMsgContent:");
+        localStringBuilder.append(paramString);
+        QLog.d("TransfileUtile", 2, localStringBuilder.toString());
       }
-      if (paramString.length() == 32) {
-        break;
+      if (paramString.length() != 32)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TransfileUtile", 2, "getPicMD5ByMsgContent: error md5: length is not 32.");
+        }
+        return null;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("TransfileUtile", 2, "getPicMD5ByMsgContent: error md5: length is not 32.");
+      return paramString;
+    }
     return null;
-    return paramString;
   }
   
   @Deprecated
   public static String makeTransFileProtocolData(String paramString, long paramLong, int paramInt, boolean paramBoolean)
   {
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append('\026');
-    localStringBuffer.append(paramString);
-    localStringBuffer.append('|');
-    localStringBuffer.append(paramLong);
-    localStringBuffer.append('|');
-    localStringBuffer.append(paramInt);
-    localStringBuffer.append('|');
-    if (paramBoolean) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      localStringBuffer.append(paramInt);
-      return localStringBuffer.toString();
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   @Deprecated
   public static String makeTransFileProtocolData(String paramString1, long paramLong, int paramInt, boolean paramBoolean, String paramString2)
   {
     paramString1 = makeTransFileProtocolData(paramString1, paramLong, paramInt, paramBoolean);
-    paramString1 = paramString1 + "|";
-    if ((paramString2 == null) || (paramString2.length() <= 0)) {
-      return paramString1 + "null";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("|");
+    paramString1 = localStringBuilder.toString();
+    if ((paramString2 != null) && (paramString2.length() > 0))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(paramString2);
+      return localStringBuilder.toString();
     }
-    return paramString1 + paramString2;
+    paramString2 = new StringBuilder();
+    paramString2.append(paramString1);
+    paramString2.append("null");
+    return paramString2.toString();
   }
   
   public static String makeTransFileProtocolData(String paramString1, long paramLong, int paramInt, boolean paramBoolean, String paramString2, String paramString3, String paramString4)
   {
     paramString1 = makeTransFileProtocolData(paramString1, paramLong, paramInt, paramBoolean);
-    paramString1 = paramString1 + "|";
-    if ((paramString2 == null) || (paramString2.length() <= 0))
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("|");
+    paramString1 = localStringBuilder.toString();
+    if ((paramString2 != null) && (paramString2.length() > 0))
     {
-      paramString1 = paramString1 + "null";
-      paramString1 = paramString1 + "|";
-      if ((paramString3 != null) && (paramString3.length() > 0)) {
-        break label191;
-      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(paramString2);
+      paramString1 = localStringBuilder.toString();
     }
-    label191:
-    for (paramString1 = paramString1 + "null";; paramString1 = paramString1 + paramString3)
+    else
     {
-      paramString1 = paramString1 + "|";
-      if ((paramString4 != null) && (paramString4.length() > 0)) {
-        break label214;
-      }
-      return paramString1 + "null";
-      paramString1 = paramString1 + paramString2;
-      break;
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString1);
+      paramString2.append("null");
+      paramString1 = paramString2.toString();
     }
-    label214:
-    return paramString1 + paramString4;
+    paramString2 = new StringBuilder();
+    paramString2.append(paramString1);
+    paramString2.append("|");
+    paramString1 = paramString2.toString();
+    if ((paramString3 != null) && (paramString3.length() > 0))
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString1);
+      paramString2.append(paramString3);
+      paramString1 = paramString2.toString();
+    }
+    else
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString1);
+      paramString2.append("null");
+      paramString1 = paramString2.toString();
+    }
+    paramString2 = new StringBuilder();
+    paramString2.append(paramString1);
+    paramString2.append("|");
+    paramString1 = paramString2.toString();
+    if ((paramString4 != null) && (paramString4.length() > 0))
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString1);
+      paramString2.append(paramString4);
+      return paramString2.toString();
+    }
+    paramString2 = new StringBuilder();
+    paramString2.append(paramString1);
+    paramString2.append("null");
+    return paramString2.toString();
   }
   
   public static String makeTransFileProtocolData(String paramString1, long paramLong, int paramInt1, boolean paramBoolean, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt2, int paramInt3)
@@ -184,50 +220,107 @@ public class TransfileUtile
   public static String makeTransFileProtocolData(String paramString1, long paramLong, int paramInt1, boolean paramBoolean, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt2, int paramInt3, String paramString9)
   {
     paramString1 = makeTransFileProtocolData(paramString1, paramLong, paramInt1, paramBoolean, paramString2, paramString3, paramString4);
-    paramString1 = paramString1 + "|";
-    if ((paramString5 == null) || (paramString5.length() <= 0))
+    paramString2 = new StringBuilder();
+    paramString2.append(paramString1);
+    paramString2.append("|");
+    paramString1 = paramString2.toString();
+    if ((paramString5 != null) && (paramString5.length() > 0))
     {
-      paramString1 = paramString1 + "null";
-      paramString1 = paramString1 + "|";
-      if ((paramString6 != null) && (paramString6.length() > 0)) {
-        break label382;
-      }
-      paramString1 = paramString1 + "null";
-      label121:
-      paramString1 = paramString1 + "|";
-      if ((paramString7 != null) && (paramString7.length() > 0)) {
-        break label405;
-      }
-      paramString1 = paramString1 + "null";
-      label174:
-      paramString1 = paramString1 + "|";
-      if ((paramString8 != null) && (paramString8.length() > 0)) {
-        break label428;
-      }
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString1);
+      paramString2.append(paramString5);
+      paramString1 = paramString2.toString();
     }
-    label405:
-    label428:
-    for (paramString1 = paramString1 + "null";; paramString1 = paramString1 + paramString8)
+    else
     {
-      paramString1 = paramString1 + "|";
-      paramString1 = paramString1 + paramInt2;
-      paramString1 = paramString1 + "|";
-      paramString2 = paramString1 + paramInt3;
-      paramString1 = paramString2;
-      if (paramString9 != null)
-      {
-        paramString1 = paramString2 + "|";
-        paramString1 = paramString1 + paramString9;
-      }
-      return paramString1;
-      paramString1 = paramString1 + paramString5;
-      break;
-      label382:
-      paramString1 = paramString1 + paramString6;
-      break label121;
-      paramString1 = paramString1 + paramString7;
-      break label174;
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString1);
+      paramString2.append("null");
+      paramString1 = paramString2.toString();
     }
+    paramString2 = new StringBuilder();
+    paramString2.append(paramString1);
+    paramString2.append("|");
+    paramString1 = paramString2.toString();
+    if ((paramString6 != null) && (paramString6.length() > 0))
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString1);
+      paramString2.append(paramString6);
+      paramString1 = paramString2.toString();
+    }
+    else
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString1);
+      paramString2.append("null");
+      paramString1 = paramString2.toString();
+    }
+    paramString2 = new StringBuilder();
+    paramString2.append(paramString1);
+    paramString2.append("|");
+    paramString1 = paramString2.toString();
+    if ((paramString7 != null) && (paramString7.length() > 0))
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString1);
+      paramString2.append(paramString7);
+      paramString1 = paramString2.toString();
+    }
+    else
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString1);
+      paramString2.append("null");
+      paramString1 = paramString2.toString();
+    }
+    paramString2 = new StringBuilder();
+    paramString2.append(paramString1);
+    paramString2.append("|");
+    paramString1 = paramString2.toString();
+    if ((paramString8 != null) && (paramString8.length() > 0))
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString1);
+      paramString2.append(paramString8);
+      paramString1 = paramString2.toString();
+    }
+    else
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString1);
+      paramString2.append("null");
+      paramString1 = paramString2.toString();
+    }
+    paramString2 = new StringBuilder();
+    paramString2.append(paramString1);
+    paramString2.append("|");
+    paramString1 = paramString2.toString();
+    paramString2 = new StringBuilder();
+    paramString2.append(paramString1);
+    paramString2.append(paramInt2);
+    paramString1 = paramString2.toString();
+    paramString2 = new StringBuilder();
+    paramString2.append(paramString1);
+    paramString2.append("|");
+    paramString1 = paramString2.toString();
+    paramString2 = new StringBuilder();
+    paramString2.append(paramString1);
+    paramString2.append(paramInt3);
+    paramString2 = paramString2.toString();
+    paramString1 = paramString2;
+    if (paramString9 != null)
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append(paramString2);
+      paramString1.append("|");
+      paramString1 = paramString1.toString();
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString1);
+      paramString2.append(paramString9);
+      paramString1 = paramString2.toString();
+    }
+    return paramString1;
   }
   
   public static String makeTransFileProtocolDataForForwardImage(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt)
@@ -242,12 +335,15 @@ public class TransfileUtile
     localStringBuffer.append(paramLong);
     localStringBuffer.append('|');
     localStringBuffer.append(paramInt);
-    return paramString1 + localStringBuffer.toString();
+    paramString2 = new StringBuilder();
+    paramString2.append(paramString1);
+    paramString2.append(localStringBuffer.toString());
+    return paramString2.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.TransfileUtile
  * JD-Core Version:    0.7.0.1
  */

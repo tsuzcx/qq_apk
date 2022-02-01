@@ -34,17 +34,23 @@ public class VoiceChangeHandler
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramListenChangeVoicePanel);
     paramListenChangeVoicePanel = super.createToServiceMsg("voiceChange.Auth");
     paramListenChangeVoicePanel.extraData.putInt("callId", paramInt2);
-    VipVoiceChange.voiceChangeReq localvoiceChangeReq = new VipVoiceChange.voiceChangeReq();
-    localvoiceChangeReq.int32_platform.set(109);
-    localvoiceChangeReq.int32_sub_cmd.set(1);
-    localvoiceChangeReq.str_qq_version.set("8.5.5");
+    Object localObject = new VipVoiceChange.voiceChangeReq();
+    ((VipVoiceChange.voiceChangeReq)localObject).int32_platform.set(109);
+    ((VipVoiceChange.voiceChangeReq)localObject).int32_sub_cmd.set(1);
+    ((VipVoiceChange.voiceChangeReq)localObject).str_qq_version.set("8.7.0");
     VipVoiceChange.subCmd0x1ReqAuth localsubCmd0x1ReqAuth = new VipVoiceChange.subCmd0x1ReqAuth();
     localsubCmd0x1ReqAuth.int32_item_id.set(paramInt2);
-    localvoiceChangeReq.msg_subcmd0x1_req_auth.set(localsubCmd0x1ReqAuth);
-    localvoiceChangeReq.setHasFlag(true);
-    paramListenChangeVoicePanel.putWupBuffer(localvoiceChangeReq.toByteArray());
-    if (QLog.isColorLevel()) {
-      QLog.d("VoiceChangeHandler", 2, "sendReqToSVR funcType=" + paramInt1 + ", voiceID:" + paramInt2);
+    ((VipVoiceChange.voiceChangeReq)localObject).msg_subcmd0x1_req_auth.set(localsubCmd0x1ReqAuth);
+    ((VipVoiceChange.voiceChangeReq)localObject).setHasFlag(true);
+    paramListenChangeVoicePanel.putWupBuffer(((VipVoiceChange.voiceChangeReq)localObject).toByteArray());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("sendReqToSVR funcType=");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(", voiceID:");
+      ((StringBuilder)localObject).append(paramInt2);
+      QLog.d("VoiceChangeHandler", 2, ((StringBuilder)localObject).toString());
     }
     super.sendPbReq(paramListenChangeVoicePanel);
   }
@@ -59,65 +65,97 @@ public class VoiceChangeHandler
     if (!"voiceChange.Auth".equals(paramFromServiceMsg.getServiceCmd())) {
       return;
     }
-    Bundle localBundle;
     for (;;)
     {
       try
       {
-        localBundle = new Bundle();
+        Bundle localBundle = new Bundle();
         localBundle.putInt("callId", paramToServiceMsg.extraData.getInt("callId"));
-        if ((!paramFromServiceMsg.isSuccess()) || (paramObject == null)) {
-          break label171;
+        boolean bool = paramFromServiceMsg.isSuccess();
+        if ((bool) && (paramObject != null)) {
+          i = 1;
+        } else {
+          i = 0;
         }
-        i = 1;
-        if (i != 0) {
-          break;
+        if (i == 0)
+        {
+          paramToServiceMsg = new StringBuilder();
+          paramToServiceMsg.append("onReceive~ isSuccess=false ,data=");
+          paramToServiceMsg.append(PkgTools.toHexStr((byte[])paramObject));
+          QLog.e("VoiceChangeHandler", 1, paramToServiceMsg.toString());
+          ReportCenter.a().a("voiceChange.Auth", 100, paramFromServiceMsg.getBusinessFailCode(), this.appRuntime.getAccount(), 0, HardCodeUtil.a(2131716325), true);
+          localBundle.putInt("result", -1);
+          super.notifyUI(1, false, localBundle);
+          return;
         }
-        QLog.e("VoiceChangeHandler", 1, "onReceive~ isSuccess=false ,data=" + PkgTools.toHexStr((byte[])paramObject));
-        ReportCenter.a().a("voiceChange.Auth", 100, paramFromServiceMsg.getBusinessFailCode(), this.appRuntime.getAccount(), 0, HardCodeUtil.a(2131716670), true);
-        localBundle.putInt("result", -1);
-        super.notifyUI(1, false, localBundle);
-        return;
+        paramToServiceMsg = new VipVoiceChange.voiceChangeRsp();
+        paramToServiceMsg.mergeFrom((byte[])paramObject);
+        int i = paramToServiceMsg.int32_sub_cmd.get();
+        paramToServiceMsg = (VipVoiceChange.subCmd0x1RspAuth)paramToServiceMsg.msg_subcmd0x1_rsp_auth.get();
+        int j = paramToServiceMsg.int32_ret.get();
+        paramFromServiceMsg = paramToServiceMsg.str_error_msg.get();
+        paramObject = paramToServiceMsg.str_active_url.get();
+        localBundle.putInt("result", j);
+        bool = QLog.isColorLevel();
+        if (bool)
+        {
+          paramToServiceMsg = new StringBuilder();
+          paramToServiceMsg.append("VoiceChangeHandler onReceive~ ret=");
+          paramToServiceMsg.append(j);
+          paramToServiceMsg.append(",msg=");
+          paramToServiceMsg.append(paramFromServiceMsg);
+          paramToServiceMsg.append(", url=");
+          paramToServiceMsg.append(paramObject);
+          paramToServiceMsg.append(", funcType=");
+          paramToServiceMsg.append(i);
+          paramToServiceMsg.append(", actStr=");
+          paramToServiceMsg.append(null);
+          QLog.d("VoiceChangeHandler", 2, paramToServiceMsg.toString());
+        }
+        localBundle.putString("message", paramFromServiceMsg);
+        localBundle.putString("svr_url", paramObject);
+        localBundle.putString("svr_actStr", null);
+        if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
+          break label527;
+        }
+        paramToServiceMsg = (ListenChangeVoicePanel)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if (paramToServiceMsg != null)
+        {
+          paramToServiceMsg.a(i, j, localBundle, false);
+        }
+        else
+        {
+          paramToServiceMsg = new StringBuilder();
+          paramToServiceMsg.append("VoiceChangeHandler onReceive~ null == listenChangeVoicePanel ret=");
+          paramToServiceMsg.append(j);
+          paramToServiceMsg.append(",msg=");
+          paramToServiceMsg.append(paramFromServiceMsg);
+          paramToServiceMsg.append(", url=");
+          paramToServiceMsg.append(paramObject);
+          paramToServiceMsg.append(", funcType=");
+          paramToServiceMsg.append(i);
+          paramToServiceMsg.append(", actStr=");
+          paramToServiceMsg.append(null);
+          QLog.e("VoiceChangeHandler", 1, paramToServiceMsg.toString());
+        }
       }
       catch (Exception paramToServiceMsg)
       {
-        QLog.e("VoiceChangeHandler", 1, "onReceive prb.mergeFrom error: " + paramToServiceMsg.getMessage());
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("onReceive prb.mergeFrom error: ");
+        paramFromServiceMsg.append(paramToServiceMsg.getMessage());
+        QLog.e("VoiceChangeHandler", 1, paramFromServiceMsg.toString());
       }
       this.jdField_a_of_type_JavaLangRefWeakReference = null;
       return;
-      label171:
-      i = 0;
-    }
-    paramToServiceMsg = new VipVoiceChange.voiceChangeRsp();
-    paramToServiceMsg.mergeFrom((byte[])paramObject);
-    int i = paramToServiceMsg.int32_sub_cmd.get();
-    paramToServiceMsg = (VipVoiceChange.subCmd0x1RspAuth)paramToServiceMsg.msg_subcmd0x1_rsp_auth.get();
-    int j = paramToServiceMsg.int32_ret.get();
-    paramFromServiceMsg = paramToServiceMsg.str_error_msg.get();
-    paramObject = paramToServiceMsg.str_active_url.get();
-    localBundle.putInt("result", j);
-    if (QLog.isColorLevel()) {
-      QLog.d("VoiceChangeHandler", 2, "VoiceChangeHandler onReceive~ ret=" + j + ",msg=" + paramFromServiceMsg + ", url=" + paramObject + ", funcType=" + i + ", actStr=" + null);
-    }
-    localBundle.putString("message", paramFromServiceMsg);
-    localBundle.putString("svr_url", paramObject);
-    localBundle.putString("svr_actStr", null);
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {}
-    for (paramToServiceMsg = (ListenChangeVoicePanel)this.jdField_a_of_type_JavaLangRefWeakReference.get();; paramToServiceMsg = null)
-    {
-      if (paramToServiceMsg != null)
-      {
-        paramToServiceMsg.a(i, j, localBundle, false);
-        break;
-      }
-      QLog.e("VoiceChangeHandler", 1, "VoiceChangeHandler onReceive~ null == listenChangeVoicePanel ret=" + j + ",msg=" + paramFromServiceMsg + ", url=" + paramObject + ", funcType=" + i + ", actStr=" + null);
-      break;
+      label527:
+      paramToServiceMsg = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.VoiceChangeHandler
  * JD-Core Version:    0.7.0.1
  */

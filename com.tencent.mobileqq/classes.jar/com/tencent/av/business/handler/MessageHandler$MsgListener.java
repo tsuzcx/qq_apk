@@ -11,22 +11,27 @@ public abstract class MessageHandler$MsgListener<T1 extends MessageMicro, T2 ext
   {
     Object localObject = MessageHandler.a(this);
     ((MessageHandler.ClassInfo)localObject).a("QAVMessageHandler", paramLong);
-    if ((((MessageHandler.ClassInfo)localObject).a != null) && (((MessageHandler.ClassInfo)localObject).b != null)) {}
-    try
-    {
-      MessageMicro localMessageMicro = (MessageMicro)((MessageHandler.ClassInfo)localObject).a.newInstance();
-      localObject = (MessageMicro)((MessageHandler.ClassInfo)localObject).b.newInstance();
-      paramToServiceMsg = paramToServiceMsg.getWupBuffer();
-      if ((paramToServiceMsg != null) && (paramToServiceMsg.length > 4)) {
-        localMessageMicro.mergeFrom(paramToServiceMsg, 4, paramToServiceMsg.length - 4);
+    if ((((MessageHandler.ClassInfo)localObject).a != null) && (((MessageHandler.ClassInfo)localObject).b != null)) {
+      try
+      {
+        MessageMicro localMessageMicro = (MessageMicro)((MessageHandler.ClassInfo)localObject).a.newInstance();
+        localObject = (MessageMicro)((MessageHandler.ClassInfo)localObject).b.newInstance();
+        paramToServiceMsg = paramToServiceMsg.getWupBuffer();
+        if ((paramToServiceMsg != null) && (paramToServiceMsg.length > 4)) {
+          localMessageMicro.mergeFrom(paramToServiceMsg, 4, paramToServiceMsg.length - 4);
+        }
+        ((MessageMicro)localObject).mergeFrom(paramFromServiceMsg.getWupBuffer());
+        a(paramLong, paramFromServiceMsg.isSuccess(), localMessageMicro, (MessageMicro)localObject, paramObject);
+        return;
       }
-      ((MessageMicro)localObject).mergeFrom(paramFromServiceMsg.getWupBuffer());
-      a(paramLong, paramFromServiceMsg.isSuccess(), localMessageMicro, (MessageMicro)localObject, paramObject);
-      return;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      QLog.w("QAVMessageHandler", 1, "onSendMsgRsp, Exception, seq[" + paramLong + "]", paramToServiceMsg);
+      catch (Exception paramToServiceMsg)
+      {
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("onSendMsgRsp, Exception, seq[");
+        paramFromServiceMsg.append(paramLong);
+        paramFromServiceMsg.append("]");
+        QLog.w("QAVMessageHandler", 1, paramFromServiceMsg.toString(), paramToServiceMsg);
+      }
     }
   }
   
@@ -34,7 +39,7 @@ public abstract class MessageHandler$MsgListener<T1 extends MessageMicro, T2 ext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.handler.MessageHandler.MsgListener
  * JD-Core Version:    0.7.0.1
  */

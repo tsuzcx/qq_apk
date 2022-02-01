@@ -35,7 +35,7 @@ public final class ViewGroupCompat
     if (Build.VERSION.SDK_INT >= 21) {
       return paramViewGroup.isTransitionGroup();
     }
-    Boolean localBoolean = (Boolean)paramViewGroup.getTag(2131378923);
+    Boolean localBoolean = (Boolean)paramViewGroup.getTag(2131378311);
     return ((localBoolean != null) && (localBoolean.booleanValue())) || (paramViewGroup.getBackground() != null) || (ViewCompat.getTransitionName(paramViewGroup) != null);
   }
   
@@ -65,12 +65,12 @@ public final class ViewGroupCompat
       paramViewGroup.setTransitionGroup(paramBoolean);
       return;
     }
-    paramViewGroup.setTag(2131378923, Boolean.valueOf(paramBoolean));
+    paramViewGroup.setTag(2131378311, Boolean.valueOf(paramBoolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.view.ViewGroupCompat
  * JD-Core Version:    0.7.0.1
  */

@@ -133,8 +133,9 @@ public final class SvcRequestGetMsgV2
   {
     paramJceOutputStream.write(this.lUin, 0);
     paramJceOutputStream.write(this.uDateTime, 1);
-    if (this.sA2 != null) {
-      paramJceOutputStream.write(this.sA2, 2);
+    Object localObject = this.sA2;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.cVerifyType, 3);
     paramJceOutputStream.write(this.cRecivePic, 4);
@@ -143,20 +144,23 @@ public final class SvcRequestGetMsgV2
     paramJceOutputStream.write(this.cMsgStoreType, 7);
     paramJceOutputStream.write(this.cPushService, 8);
     paramJceOutputStream.write(this.cChannel, 9);
-    if (this.vCookies != null) {
-      paramJceOutputStream.write(this.vCookies, 10);
+    localObject = this.vCookies;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 10);
     }
     paramJceOutputStream.write(this.eBusiType, 11);
     paramJceOutputStream.write(this.eMqqSysType, 12);
-    if (this.vNotifyCookie != null) {
-      paramJceOutputStream.write(this.vNotifyCookie, 13);
+    localObject = this.vNotifyCookie;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 13);
     }
     paramJceOutputStream.write(this.iOSVersion, 14);
     paramJceOutputStream.write(this.cUnFilter, 15);
     paramJceOutputStream.write(this.cInst, 16);
     paramJceOutputStream.write(this.cChannelEx, 17);
-    if (this.vSyncCookie != null) {
-      paramJceOutputStream.write(this.vSyncCookie, 18);
+    localObject = this.vSyncCookie;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 18);
     }
     paramJceOutputStream.write(this.cSyncFlag, 19);
     paramJceOutputStream.write(this.cRambleFlag, 20);
@@ -166,14 +170,15 @@ public final class SvcRequestGetMsgV2
     paramJceOutputStream.write(this.cOnlineSyncFlag, 24);
     paramJceOutputStream.write(this.cContextFlag, 25);
     paramJceOutputStream.write(this.lGeneralAbi, 26);
-    if (this.vPubAccountCookie != null) {
-      paramJceOutputStream.write(this.vPubAccountCookie, 27);
+    localObject = this.vPubAccountCookie;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 27);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.SvcRequestGetMsgV2
  * JD-Core Version:    0.7.0.1
  */

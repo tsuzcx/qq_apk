@@ -28,8 +28,10 @@ public class MiniChatLinearLayout
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    while (BaseChatItemLayout.jdField_a_of_type_Boolean) {
+    if (this.jdField_a_of_type_Boolean) {
+      return true;
+    }
+    if (BaseChatItemLayout.jdField_a_of_type_Boolean) {
       return true;
     }
     return super.onInterceptTouchEvent(paramMotionEvent);
@@ -52,30 +54,29 @@ public class MiniChatLinearLayout
   {
     if (BaseChatItemLayout.jdField_a_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_AndroidWidgetCheckBox != null) {
-        break label126;
+      if (this.jdField_a_of_type_AndroidWidgetCheckBox == null)
+      {
+        this.jdField_a_of_type_AndroidWidgetCheckBox = new CheckBox(getContext());
+        this.jdField_a_of_type_AndroidWidgetCheckBox.setButtonDrawable(null);
+        this.jdField_a_of_type_AndroidWidgetCheckBox.setId(2131364547);
+        this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(BaseChatItemLayout.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
+        paramMiniChatLinearLayout = new LinearLayout.LayoutParams(1, 1);
+        addView(this.jdField_a_of_type_AndroidWidgetCheckBox, paramMiniChatLinearLayout);
       }
-      this.jdField_a_of_type_AndroidWidgetCheckBox = new CheckBox(getContext());
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setButtonDrawable(null);
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setId(2131364660);
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(BaseChatItemLayout.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-      paramMiniChatLinearLayout = new LinearLayout.LayoutParams(1, 1);
-      addView(this.jdField_a_of_type_AndroidWidgetCheckBox, paramMiniChatLinearLayout);
-    }
-    for (;;)
-    {
+      else
+      {
+        paramMiniChatLinearLayout = new LinearLayout.LayoutParams(1, 1);
+        this.jdField_a_of_type_AndroidWidgetCheckBox.setLayoutParams(paramMiniChatLinearLayout);
+      }
       this.jdField_a_of_type_AndroidWidgetCheckBox.setTag(paramChatMessage);
       paramMiniChatLinearLayout = AIOLongShotHelper.a();
       if ((paramMiniChatLinearLayout != null) && (paramMiniChatLinearLayout.a())) {
         this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(paramMiniChatLinearLayout.a(paramChatMessage));
       }
-      if (this.jdField_a_of_type_AndroidWidgetCheckBox != null) {
-        this.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
-      }
-      return;
-      label126:
-      paramMiniChatLinearLayout = new LinearLayout.LayoutParams(1, 1);
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setLayoutParams(paramMiniChatLinearLayout);
+    }
+    paramChatMessage = this.jdField_a_of_type_AndroidWidgetCheckBox;
+    if (paramChatMessage != null) {
+      paramChatMessage.setVisibility(8);
     }
   }
   
@@ -91,7 +92,7 @@ public class MiniChatLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniChatLinearLayout
  * JD-Core Version:    0.7.0.1
  */

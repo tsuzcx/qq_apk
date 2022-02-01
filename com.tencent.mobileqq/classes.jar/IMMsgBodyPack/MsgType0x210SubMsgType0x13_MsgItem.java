@@ -33,14 +33,15 @@ public final class MsgType0x210SubMsgType0x13_MsgItem
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uint32_type, 0);
-    if (this.bytes_text != null) {
-      paramJceOutputStream.write(this.bytes_text, 1);
+    byte[] arrayOfByte = this.bytes_text;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     IMMsgBodyPack.MsgType0x210SubMsgType0x13_MsgItem
  * JD-Core Version:    0.7.0.1
  */

@@ -14,20 +14,29 @@ class EmoticonPanelMallHelper$4
   
   public void onPackageEnd(EmoticonPackage paramEmoticonPackage, int paramInt)
   {
-    if ((paramEmoticonPackage == null) || (TextUtils.isEmpty(paramEmoticonPackage.epId))) {}
-    do
+    if (paramEmoticonPackage != null)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonPanelMallHelper", 2, "onPackageEnd resultCode = " + paramInt + ",ep = " + paramEmoticonPackage);
+      if (TextUtils.isEmpty(paramEmoticonPackage.epId)) {
+        return;
       }
-    } while (this.this$0.mPanelController.detached);
-    ThreadManager.getUIHandler().post(new EmoticonPanelMallHelper.4.1(this, paramEmoticonPackage, paramInt));
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onPackageEnd resultCode = ");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(",ep = ");
+        localStringBuilder.append(paramEmoticonPackage);
+        QLog.d("EmoticonPanelMallHelper", 2, localStringBuilder.toString());
+      }
+      if (!((EmoticonPanelController)this.this$0.mPanelController).getBasePanelView().detached) {
+        ThreadManager.getUIHandler().post(new EmoticonPanelMallHelper.4.1(this, paramEmoticonPackage, paramInt));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelMallHelper.4
  * JD-Core Version:    0.7.0.1
  */

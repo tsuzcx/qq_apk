@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.profilecard.bussiness.troop.fansinfo;
 
 import android.view.View;
+import com.tencent.mobileqq.profilecard.utils.ProfileUtils;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 
 class ProfileTroopFansInfoComponent$3
   implements Runnable
@@ -11,7 +11,7 @@ class ProfileTroopFansInfoComponent$3
   
   public void run()
   {
-    if ((ProfileCardMoreInfoView.a((View)ProfileTroopFansInfoComponent.access$400(this.this$0))) && (!ProfileTroopFansInfoComponent.access$500(this.this$0)))
+    if ((ProfileUtils.isVisible((View)ProfileTroopFansInfoComponent.access$400(this.this$0))) && (!ProfileTroopFansInfoComponent.access$500(this.this$0)))
     {
       ReportController.b(null, "dc00898", "", "", "0X800B597", "0X800B597", 0, 0, "", "", "", "");
       ProfileTroopFansInfoComponent.access$502(this.this$0, true);
@@ -20,7 +20,7 @@ class ProfileTroopFansInfoComponent$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.troop.fansinfo.ProfileTroopFansInfoComponent.3
  * JD-Core Version:    0.7.0.1
  */

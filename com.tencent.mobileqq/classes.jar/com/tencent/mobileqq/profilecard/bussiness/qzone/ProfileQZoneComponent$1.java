@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.profilecard.bussiness.qzone;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
 import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import cooperation.qzone.report.lp.LpReportManager;
 import cooperation.qzone.util.QZLog;
@@ -16,16 +16,16 @@ class ProfileQZoneComponent$1
   {
     try
     {
-      if (!TextUtils.isEmpty(this.val$cardInfo.a.a))
+      if (!TextUtils.isEmpty(this.val$cardInfo.allInOne.uin))
       {
-        Object localObject = this.val$cardInfo.a.a;
-        if (this.val$cardInfo.a.a.startsWith("+")) {
-          localObject = this.val$cardInfo.a.a.substring(1);
+        Object localObject = this.val$cardInfo.allInOne.uin;
+        if (this.val$cardInfo.allInOne.uin.startsWith("+")) {
+          localObject = this.val$cardInfo.allInOne.uin.substring(1);
         }
         localObject = new LpReportInfo_pf00064(699, 1, Long.valueOf((String)localObject).longValue());
         LpReportManager.getInstance().reportToPF00064((LpReportInfo_pf00064)localObject, false, false);
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -35,7 +35,7 @@ class ProfileQZoneComponent$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.qzone.ProfileQZoneComponent.1
  * JD-Core Version:    0.7.0.1
  */

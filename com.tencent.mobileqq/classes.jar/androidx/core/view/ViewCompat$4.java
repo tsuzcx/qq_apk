@@ -4,7 +4,7 @@ import android.text.TextUtils;
 import android.view.View;
 import androidx.annotation.RequiresApi;
 
-final class ViewCompat$4
+class ViewCompat$4
   extends ViewCompat.AccessibilityViewProperty<CharSequence>
 {
   ViewCompat$4(int paramInt1, Class paramClass, int paramInt2, int paramInt3)
@@ -26,12 +26,12 @@ final class ViewCompat$4
   
   boolean shouldUpdate(CharSequence paramCharSequence1, CharSequence paramCharSequence2)
   {
-    return !TextUtils.equals(paramCharSequence1, paramCharSequence2);
+    return TextUtils.equals(paramCharSequence1, paramCharSequence2) ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.view.ViewCompat.4
  * JD-Core Version:    0.7.0.1
  */

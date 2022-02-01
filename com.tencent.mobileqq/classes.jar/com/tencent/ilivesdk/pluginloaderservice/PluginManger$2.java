@@ -19,73 +19,69 @@ final class PluginManger$2
     LogUtil.b("PluginManger", (String)localObject1, new Object[0]);
     DataReport.g((String)localObject1);
     localObject1 = this.jdField_a_of_type_ComTencentIlivesdkPluginloaderservicePlugin.a();
-    Object localObject3;
-    Object localObject2;
     try
     {
-      localObject3 = PluginManger.a((IPlugin)localObject1);
-      if (localObject3 == null)
+      Object localObject2 = PluginManger.a((IPlugin)localObject1);
+      if (localObject2 == null)
       {
         localObject1 = String.format("install; download plugin[%s] fail.", new Object[] { this.jdField_a_of_type_JavaLangString });
         DataReport.h((String)localObject1);
         LogUtil.a("PluginManger", (String)localObject1, new Object[0]);
         return null;
       }
-    }
-    catch (IOException localIOException1)
-    {
-      localObject2 = String.format("install; download plugin[%s] exception: %s", new Object[] { this.jdField_a_of_type_JavaLangString, localIOException1.getMessage() });
-      DataReport.h((String)localObject2);
-      LogUtil.c("PluginManger", (String)localObject2, new Object[0]);
-      return null;
-    }
-    DataReport.i(String.format("install; download plugin[%s] Success.", new Object[] { this.jdField_a_of_type_JavaLangString }));
-    String str2;
-    try
-    {
-      localObject2 = PluginManger.a((IPlugin)localObject2, (File)localObject3);
-      if (localObject2 == null)
+      DataReport.i(String.format("install; download plugin[%s] Success.", new Object[] { this.jdField_a_of_type_JavaLangString }));
+      try
       {
+        localObject1 = PluginManger.a((IPlugin)localObject1, (File)localObject2);
+        if (localObject1 == null)
+        {
+          localObject1 = String.format("install; install plugin[%s] fail.", new Object[] { this.jdField_a_of_type_JavaLangString });
+          DataReport.j((String)localObject1);
+          LogUtil.c("PluginManger", (String)localObject1, new Object[0]);
+          return null;
+        }
+        DataReport.l(String.format("install; install plugin[%s] success.", new Object[] { this.jdField_a_of_type_JavaLangString }));
+        ((IPlugin)localObject1).a(PluginManger.a((IPlugin)localObject1));
+        if (((IPlugin)localObject1).a())
+        {
+          localObject2 = String.format("install; install plugin[%s] success.", new Object[] { this.jdField_a_of_type_JavaLangString });
+          DataReport.q((String)localObject2);
+          LogUtil.b("PluginManger", (String)localObject2, new Object[0]);
+          return localObject1;
+        }
         localObject2 = String.format("install; install plugin[%s] fail.", new Object[] { this.jdField_a_of_type_JavaLangString });
-        DataReport.j((String)localObject2);
-        LogUtil.c("PluginManger", (String)localObject2, new Object[0]);
+        DataReport.k((String)localObject2);
+        LogUtil.b("PluginManger", (String)localObject2, new Object[0]);
+        return localObject1;
+      }
+      catch (JSONException localJSONException)
+      {
+        String str1 = String.format("install; install plugin[%s] exception: %s", new Object[] { this.jdField_a_of_type_JavaLangString, localJSONException.getMessage() });
+        DataReport.j(str1);
+        LogUtil.c("PluginManger", str1, new Object[0]);
         return null;
       }
+      catch (IOException localIOException1)
+      {
+        String str2 = String.format("install; install plugin[%s] exception: %s", new Object[] { this.jdField_a_of_type_JavaLangString, localIOException1.getMessage() });
+        DataReport.j(str2);
+        LogUtil.c("PluginManger", str2, new Object[0]);
+        return null;
+      }
+      String str3;
+      return null;
     }
     catch (IOException localIOException2)
     {
-      String str1 = String.format("install; install plugin[%s] exception: %s", new Object[] { this.jdField_a_of_type_JavaLangString, localIOException2.getMessage() });
-      DataReport.j(str1);
-      LogUtil.c("PluginManger", str1, new Object[0]);
-      return null;
-    }
-    catch (JSONException localJSONException)
-    {
-      str2 = String.format("install; install plugin[%s] exception: %s", new Object[] { this.jdField_a_of_type_JavaLangString, localJSONException.getMessage() });
-      DataReport.j(str2);
-      LogUtil.c("PluginManger", str2, new Object[0]);
-      return null;
-    }
-    DataReport.l(String.format("install; install plugin[%s] success.", new Object[] { this.jdField_a_of_type_JavaLangString }));
-    str2.a(PluginManger.a(str2));
-    if (str2.a())
-    {
-      localObject3 = String.format("install; install plugin[%s] success.", new Object[] { this.jdField_a_of_type_JavaLangString });
-      DataReport.q((String)localObject3);
-      LogUtil.b("PluginManger", (String)localObject3, new Object[0]);
-    }
-    for (;;)
-    {
-      return str2;
-      localObject3 = String.format("install; install plugin[%s] fail.", new Object[] { this.jdField_a_of_type_JavaLangString });
-      DataReport.k((String)localObject3);
-      LogUtil.b("PluginManger", (String)localObject3, new Object[0]);
+      str3 = String.format("install; download plugin[%s] exception: %s", new Object[] { this.jdField_a_of_type_JavaLangString, localIOException2.getMessage() });
+      DataReport.h(str3);
+      LogUtil.c("PluginManger", str3, new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.pluginloaderservice.PluginManger.2
  * JD-Core Version:    0.7.0.1
  */

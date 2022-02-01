@@ -11,27 +11,29 @@ final class cq$1
   
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramIntent == null) || (!"android.net.conn.CONNECTIVITY_CHANGE".equals(paramIntent.getAction()))) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        boolean bool = paramIntent.getBooleanExtra("noConnectivity", false);
-        co.a("intent:" + paramIntent + ",");
-        if (!bool)
-        {
-          co.a(cq.a(this.a), 107, 2000L);
-          return;
-        }
+    if (paramIntent != null) {
+      if (!"android.net.conn.CONNECTIVITY_CHANGE".equals(paramIntent.getAction())) {
+        return;
       }
-      catch (Throwable paramContext) {}
     }
+    try
+    {
+      boolean bool = paramIntent.getBooleanExtra("noConnectivity", false);
+      paramContext = new StringBuilder("intent:");
+      paramContext.append(paramIntent);
+      paramContext.append(",");
+      co.a(paramContext.toString());
+      if (!bool) {
+        co.a(cq.a(this.a), 107, 2000L);
+      }
+      return;
+    }
+    catch (Throwable paramContext) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.cq.1
  * JD-Core Version:    0.7.0.1
  */

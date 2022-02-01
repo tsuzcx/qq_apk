@@ -16,8 +16,19 @@ public class SpringFestivalRedpacketConfBean$SpringFestivalHbEntryInfo$FixedEntr
   {
     try
     {
-      String str = "FixedEntryInfo{defaultBanner='" + this.defaultBanner + '\'' + ", useStagger=" + this.useStagger + ", staggerPeakIntervalBefore=" + this.staggerPeakIntervalBefore + ", entryBannerList=" + this.entryBannerList + '}';
-      return str;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("FixedEntryInfo{defaultBanner='");
+      ((StringBuilder)localObject).append(this.defaultBanner);
+      ((StringBuilder)localObject).append('\'');
+      ((StringBuilder)localObject).append(", useStagger=");
+      ((StringBuilder)localObject).append(this.useStagger);
+      ((StringBuilder)localObject).append(", staggerPeakIntervalBefore=");
+      ((StringBuilder)localObject).append(this.staggerPeakIntervalBefore);
+      ((StringBuilder)localObject).append(", entryBannerList=");
+      ((StringBuilder)localObject).append(this.entryBannerList);
+      ((StringBuilder)localObject).append('}');
+      localObject = ((StringBuilder)localObject).toString();
+      return localObject;
     }
     catch (Throwable localThrowable)
     {
@@ -28,7 +39,7 @@ public class SpringFestivalRedpacketConfBean$SpringFestivalHbEntryInfo$FixedEntr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.config.SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.FixedEntryInfo
  * JD-Core Version:    0.7.0.1
  */

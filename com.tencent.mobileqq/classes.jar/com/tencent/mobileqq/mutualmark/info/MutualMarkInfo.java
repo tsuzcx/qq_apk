@@ -80,27 +80,35 @@ public class MutualMarkInfo
   
   public static ConcurrentHashMap<Long, MutualMarkInfo> a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MutualMarkInfo", 1, "parseFrom json_str:" + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("parseFrom json_str:");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.i("MutualMarkInfo", 1, ((StringBuilder)localObject1).toString());
     }
-    localConcurrentHashMap = new ConcurrentHashMap();
+    localObject1 = new ConcurrentHashMap();
     try
     {
       paramString = new JSONArray(paramString);
       int j = 0;
+      Object localObject2;
       while (j < paramString.length())
       {
-        MutualMarkInfo localMutualMarkInfo = a(paramString.getJSONObject(j));
-        if (localMutualMarkInfo != null) {
-          localConcurrentHashMap.put(Long.valueOf(localMutualMarkInfo.jdField_a_of_type_Long), localMutualMarkInfo);
+        localObject2 = a(paramString.getJSONObject(j));
+        if (localObject2 != null) {
+          ((ConcurrentHashMap)localObject1).put(Long.valueOf(((MutualMarkInfo)localObject2).jdField_a_of_type_Long), localObject2);
         }
         j += 1;
       }
-      return localConcurrentHashMap;
+      return localObject1;
     }
     catch (JSONException paramString)
     {
-      QLog.e("MutualMarkInfo", 1, "toJsonString error:" + paramString.getMessage());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("toJsonString error:");
+      ((StringBuilder)localObject2).append(paramString.getMessage());
+      QLog.e("MutualMarkInfo", 1, ((StringBuilder)localObject2).toString());
     }
   }
   
@@ -127,19 +135,28 @@ public class MutualMarkInfo
     }
     catch (JSONException localJSONException)
     {
-      QLog.e("MutualMarkInfo", 1, "toJsonForStore error:" + localJSONException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("toJsonForStore error:");
+      localStringBuilder.append(localJSONException.getMessage());
+      QLog.e("MutualMarkInfo", 1, localStringBuilder.toString());
     }
     return localJSONObject;
   }
   
   public boolean a(ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo paramRelationalChainPushInfo, long paramLong)
   {
-    boolean bool2 = true;
-    if (paramRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo != null)
+    Object localObject = paramRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo;
+    boolean bool = false;
+    if (localObject != null)
     {
       if (((paramLong == 11002L) || (paramLong == 11001L)) && (this.jdField_d_of_type_Long > 0L) && (paramRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_c_of_type_Long < this.jdField_d_of_type_Long))
       {
-        QLog.i("MutualMarkInfo", 1, "ignore mergeFrom now.last_action_time:" + paramRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_c_of_type_Long + " last_action_time:" + this.jdField_d_of_type_Long);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("ignore mergeFrom now.last_action_time:");
+        ((StringBuilder)localObject).append(paramRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_c_of_type_Long);
+        ((StringBuilder)localObject).append(" last_action_time:");
+        ((StringBuilder)localObject).append(this.jdField_d_of_type_Long);
+        QLog.i("MutualMarkInfo", 1, ((StringBuilder)localObject).toString());
         return false;
       }
       this.jdField_a_of_type_Long = paramRelationalChainPushInfo.jdField_a_of_type_Int;
@@ -163,22 +180,16 @@ public class MutualMarkInfo
       this.jdField_b_of_type_JavaLangString = paramRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_d_of_type_JavaLangString;
       this.jdField_c_of_type_JavaLangString = paramRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_g_of_type_JavaLangString;
       this.jdField_a_of_type_Boolean = paramRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_a_of_type_Boolean;
-      bool1 = bool2;
-      if (this.jdField_a_of_type_Long == 17L)
+      if ((this.jdField_a_of_type_Long == 17L) && (this.jdField_b_of_type_Long > 0L) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
       {
-        bool1 = bool2;
-        if (this.jdField_b_of_type_Long > 0L)
-        {
-          bool1 = bool2;
-          if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-            QLog.i("MutualMarkInfo", 1, "mergeFrom push info resource invalid: " + this);
-          }
-        }
+        paramRelationalChainPushInfo = new StringBuilder();
+        paramRelationalChainPushInfo.append("mergeFrom push info resource invalid: ");
+        paramRelationalChainPushInfo.append(this);
+        QLog.i("MutualMarkInfo", 1, paramRelationalChainPushInfo.toString());
       }
+      bool = true;
     }
-    for (boolean bool1 = bool2;; bool1 = false) {
-      return bool1;
-    }
+    return bool;
   }
   
   public boolean a(MutualMarkPullInfo paramMutualMarkPullInfo)
@@ -195,8 +206,12 @@ public class MutualMarkInfo
     this.jdField_b_of_type_JavaLangString = paramMutualMarkPullInfo.jdField_d_of_type_JavaLangString;
     this.jdField_c_of_type_JavaLangString = paramMutualMarkPullInfo.jdField_g_of_type_JavaLangString;
     this.jdField_a_of_type_Boolean = paramMutualMarkPullInfo.jdField_a_of_type_Boolean;
-    if ((this.jdField_a_of_type_Long == 17L) && (this.jdField_b_of_type_Long > 0L) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      QLog.i("MutualMarkInfo", 1, "mergeFrom pull info resource invalid: " + this);
+    if ((this.jdField_a_of_type_Long == 17L) && (this.jdField_b_of_type_Long > 0L) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    {
+      paramMutualMarkPullInfo = new StringBuilder();
+      paramMutualMarkPullInfo.append("mergeFrom pull info resource invalid: ");
+      paramMutualMarkPullInfo.append(this);
+      QLog.i("MutualMarkInfo", 1, paramMutualMarkPullInfo.toString());
     }
     return true;
   }
@@ -205,28 +220,46 @@ public class MutualMarkInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("MutualMarkInfo{");
-    localStringBuilder.append("type=").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(", level=").append(this.jdField_b_of_type_Long);
-    localStringBuilder.append(", count=").append(this.jdField_a_of_type_Float);
-    localStringBuilder.append(", continue_days=").append(this.jdField_c_of_type_Long);
-    localStringBuilder.append(", last_action_time=").append(this.jdField_d_of_type_Long);
-    localStringBuilder.append(", last_change_time=").append(this.e);
-    localStringBuilder.append(", icon_status=").append(this.f);
-    localStringBuilder.append(", icon_status_end_time=").append(this.jdField_g_of_type_Long);
-    localStringBuilder.append(", sub_level=").append(this.h);
-    localStringBuilder.append(", hasRemindInContact=").append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append(", remindAnimStartTime=").append(this.i);
-    localStringBuilder.append(", icon_static_url='").append(this.jdField_a_of_type_JavaLangString).append("'");
-    localStringBuilder.append(", icon_dynamic_url='").append(this.jdField_b_of_type_JavaLangString).append("'");
-    localStringBuilder.append(", icon_name='").append(this.jdField_c_of_type_JavaLangString).append("'");
-    localStringBuilder.append(", user_close_flag=").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("type=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", level=");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", count=");
+    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(", continue_days=");
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(", last_action_time=");
+    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append(", last_change_time=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", icon_status=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", icon_status_end_time=");
+    localStringBuilder.append(this.jdField_g_of_type_Long);
+    localStringBuilder.append(", sub_level=");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(", hasRemindInContact=");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(", remindAnimStartTime=");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(", icon_static_url='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("'");
+    localStringBuilder.append(", icon_dynamic_url='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("'");
+    localStringBuilder.append(", icon_name='");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append("'");
+    localStringBuilder.append(", user_close_flag=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.info.MutualMarkInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -37,12 +37,15 @@ public class NetworkUtil
       return false;
     }
     paramContext = paramContext.getActiveNetworkInfo();
-    return (paramContext != null) && (paramContext.isAvailable());
+    if (paramContext != null) {
+      return paramContext.isAvailable();
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.intervideo.nowproxy.common.util.NetworkUtil
  * JD-Core Version:    0.7.0.1
  */

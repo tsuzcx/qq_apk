@@ -14,23 +14,26 @@ class TogetherWatchingDelegate$2
   {
     TogetherWatchingDelegate localTogetherWatchingDelegate = this.jdField_a_of_type_ComTencentMobileqqTogetherTogetherWatchingDelegate;
     String str2 = this.jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_Int == 8) {}
-    for (String str1 = "clk_openframe_open";; str1 = "clk_joinbar_open")
+    String str1;
+    if (this.jdField_a_of_type_Int == 8) {
+      str1 = "clk_openframe_open";
+    } else {
+      str1 = "clk_joinbar_open";
+    }
+    TogetherWatchingDelegate.a(localTogetherWatchingDelegate, str2, str1);
+    paramDialogInterface.dismiss();
+    paramInt = this.jdField_a_of_type_Int;
+    if (paramInt == 8)
     {
-      TogetherWatchingDelegate.a(localTogetherWatchingDelegate, str2, str1);
-      paramDialogInterface.dismiss();
-      if (this.jdField_a_of_type_Int != 8) {
-        break;
-      }
-      TogetherWatchingDelegate.a(this.jdField_a_of_type_ComTencentMobileqqTogetherTogetherWatchingDelegate, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
+      TogetherWatchingDelegate.a(this.jdField_a_of_type_ComTencentMobileqqTogetherTogetherWatchingDelegate, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.b, paramInt);
       return;
     }
-    TogetherWatchingDelegate.a(this.jdField_a_of_type_ComTencentMobileqqTogetherTogetherWatchingDelegate, this.jdField_a_of_type_AndroidContentContext, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    TogetherWatchingDelegate.a(this.jdField_a_of_type_ComTencentMobileqqTogetherTogetherWatchingDelegate, this.jdField_a_of_type_AndroidContentContext, this.b, this.jdField_a_of_type_JavaLangString, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.together.TogetherWatchingDelegate.2
  * JD-Core Version:    0.7.0.1
  */

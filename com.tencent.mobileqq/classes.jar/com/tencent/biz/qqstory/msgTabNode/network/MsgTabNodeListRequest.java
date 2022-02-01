@@ -41,15 +41,12 @@ public class MsgTabNodeListRequest
     try
     {
       localRspMsgTabNodeList.mergeFrom(paramArrayOfByte);
-      return new MsgTabNodeListRequest.MsgTabNodeListResponse(localRspMsgTabNodeList);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      paramArrayOfByte.printStackTrace();
     }
+    return new MsgTabNodeListRequest.MsgTabNodeListResponse(localRspMsgTabNodeList);
   }
   
   public String a()
@@ -57,7 +54,7 @@ public class MsgTabNodeListRequest
     return jdField_a_of_type_JavaLangString;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     if (jdField_b_of_type_Boolean)
     {
@@ -79,18 +76,28 @@ public class MsgTabNodeListRequest
     }
     localReqMsgTabNodeList.device.set(ByteStringMicro.copyFromUtf8(Build.DEVICE));
     localReqMsgTabNodeList.force_refresh.set(this.jdField_a_of_type_Boolean);
-    localReqMsgTabNodeList.client_version.set(ByteStringMicro.copyFromUtf8("8.5.5"));
+    localReqMsgTabNodeList.client_version.set(ByteStringMicro.copyFromUtf8("8.7.0"));
     return localReqMsgTabNodeList.toByteArray();
   }
   
   public String toString()
   {
-    return "MsgTabNodeListRequest{cookie='" + this.jdField_c_of_type_JavaLangString + '\'' + ", seq='" + this.jdField_b_of_type_JavaLangString + '\'' + ", source=" + this.jdField_c_of_type_Int + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MsgTabNodeListRequest{cookie='");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", seq='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", source=");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.network.MsgTabNodeListRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -13,14 +13,18 @@ class LazyInitObserver$2
   {
     if (!LazyInitObserver.access$100(this.this$0))
     {
-      Log.e("LazyInitSequence", "ATTENTION:\n=========================ERROR============================\n\n\n    " + "ERROR: 你可能忘记调用markToProceed！会导致数据无法上报！" + "\n\n\n========================ERROR END=========================\n");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ATTENTION:\n=========================ERROR============================\n\n\n    ");
+      localStringBuilder.append("ERROR: 你可能忘记调用markToProceed！会导致数据无法上报！");
+      localStringBuilder.append("\n\n\n========================ERROR END=========================\n");
+      Log.e("LazyInitSequence", localStringBuilder.toString());
       Toast.makeText(ReportUtils.getContext(), "ERROR: 你可能忘记调用markToProceed！会导致数据无法上报！", 1).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.lazy.LazyInitObserver.2
  * JD-Core Version:    0.7.0.1
  */

@@ -42,95 +42,103 @@ public class TroopFeedsDataManager$TroopNotify
   
   public static TroopNotify a(QQAppInterface paramQQAppInterface, String paramString, JSONObject paramJSONObject)
   {
-    boolean bool2 = true;
-    if ((paramJSONObject == null) || (!paramJSONObject.has("msg"))) {
-      return null;
-    }
-    TroopNotify localTroopNotify = new TroopNotify();
-    localTroopNotify.jdField_a_of_type_JavaLangString = paramJSONObject.optString("fid");
-    if (paramJSONObject.has("is_read")) {
-      if (paramJSONObject.optInt("is_read") == 0) {
-        break label79;
-      }
-    }
-    JSONObject localJSONObject;
-    label79:
-    for (boolean bool1 = true;; bool1 = false)
+    if (paramJSONObject != null)
     {
-      localTroopNotify.jdField_d_of_type_Boolean = bool1;
-      localJSONObject = paramJSONObject.optJSONObject("msg");
-      if (localJSONObject != null) {
-        break;
+      if (!paramJSONObject.has("msg")) {
+        return null;
       }
-      return null;
-    }
-    localTroopNotify.jdField_c_of_type_JavaLangString = localJSONObject.optString("text_face");
-    if (localTroopNotify.jdField_c_of_type_JavaLangString != null) {
-      localTroopNotify.jdField_c_of_type_JavaLangString = localTroopNotify.jdField_c_of_type_JavaLangString.replace("&#10;", "<br/>");
-    }
-    localTroopNotify.jdField_b_of_type_JavaLangString = localJSONObject.optString("title");
-    if (localTroopNotify.jdField_b_of_type_JavaLangString != null) {
-      localTroopNotify.jdField_b_of_type_JavaLangString = localTroopNotify.jdField_b_of_type_JavaLangString.replace("&#10;", "<br/>");
-    }
-    if ((localTroopNotify.jdField_b_of_type_JavaLangString == null) || (localTroopNotify.jdField_c_of_type_JavaLangString == null)) {
-      return null;
-    }
-    localTroopNotify.j = paramJSONObject.optString("fid");
-    Object localObject = localJSONObject.optJSONArray("pics");
-    if ((localObject != null) && (((JSONArray)localObject).length() > 0))
-    {
-      localObject = ((JSONArray)localObject).optJSONObject(0);
-      if (localObject != null)
+      TroopNotify localTroopNotify = new TroopNotify();
+      localTroopNotify.jdField_a_of_type_JavaLangString = paramJSONObject.optString("fid");
+      boolean bool1 = paramJSONObject.has("is_read");
+      boolean bool2 = true;
+      if (bool1)
       {
-        localTroopNotify.jdField_d_of_type_JavaLangString = ("https://gdynamic.qpic.cn/gdynamic/" + ((JSONObject)localObject).optString("id") + "/628");
-        localTroopNotify.e = ("https://gdynamic.qpic.cn/gdynamic/" + ((JSONObject)localObject).optString("id") + "/");
+        if (paramJSONObject.optInt("is_read") != 0) {
+          bool1 = true;
+        } else {
+          bool1 = false;
+        }
+        localTroopNotify.jdField_d_of_type_Boolean = bool1;
       }
-    }
-    localObject = paramJSONObject.optJSONObject("settings");
-    if (localObject != null)
-    {
-      if (((JSONObject)localObject).optInt("is_show_edit_card", 0) != 1) {
-        break label459;
+      JSONObject localJSONObject = paramJSONObject.optJSONObject("msg");
+      if (localJSONObject == null) {
+        return null;
       }
-      bool1 = true;
-      localTroopNotify.jdField_a_of_type_Boolean = bool1;
-      if (((JSONObject)localObject).optInt("tip_window_type", 0) != 0) {
-        break label464;
+      localTroopNotify.jdField_c_of_type_JavaLangString = localJSONObject.optString("text_face");
+      Object localObject = localTroopNotify.jdField_c_of_type_JavaLangString;
+      if (localObject != null) {
+        localTroopNotify.jdField_c_of_type_JavaLangString = ((String)localObject).replace("&#10;", "<br/>");
       }
-      bool1 = true;
-      label338:
-      localTroopNotify.jdField_b_of_type_Boolean = bool1;
-      if (((JSONObject)localObject).optInt("confirm_required", 0) != 1) {
-        break label469;
+      localTroopNotify.jdField_b_of_type_JavaLangString = localJSONObject.optString("title");
+      localObject = localTroopNotify.jdField_b_of_type_JavaLangString;
+      if (localObject != null) {
+        localTroopNotify.jdField_b_of_type_JavaLangString = ((String)localObject).replace("&#10;", "<br/>");
       }
-    }
-    label459:
-    label464:
-    label469:
-    for (bool1 = bool2;; bool1 = false)
-    {
-      localTroopNotify.jdField_c_of_type_Boolean = bool1;
-      if (localJSONObject.has("v"))
+      if (localTroopNotify.jdField_b_of_type_JavaLangString != null)
       {
-        localJSONObject = localJSONObject.optJSONObject("v");
-        localTroopNotify.f = localJSONObject.optString("l");
-        localTroopNotify.jdField_d_of_type_JavaLangString = localJSONObject.optString("bi");
+        if (localTroopNotify.jdField_c_of_type_JavaLangString == null) {
+          return null;
+        }
+        localTroopNotify.j = paramJSONObject.optString("fid");
+        localObject = localJSONObject.optJSONArray("pics");
+        if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+        {
+          localObject = ((JSONArray)localObject).optJSONObject(0);
+          if (localObject != null)
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("https://gdynamic.qpic.cn/gdynamic/");
+            localStringBuilder.append(((JSONObject)localObject).optString("id"));
+            localStringBuilder.append("/628");
+            localTroopNotify.jdField_d_of_type_JavaLangString = localStringBuilder.toString();
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("https://gdynamic.qpic.cn/gdynamic/");
+            localStringBuilder.append(((JSONObject)localObject).optString("id"));
+            localStringBuilder.append("/");
+            localTroopNotify.e = localStringBuilder.toString();
+          }
+        }
+        localObject = paramJSONObject.optJSONObject("settings");
+        if (localObject != null)
+        {
+          if (((JSONObject)localObject).optInt("is_show_edit_card", 0) == 1) {
+            bool1 = true;
+          } else {
+            bool1 = false;
+          }
+          localTroopNotify.jdField_a_of_type_Boolean = bool1;
+          if (((JSONObject)localObject).optInt("tip_window_type", 0) == 0) {
+            bool1 = true;
+          } else {
+            bool1 = false;
+          }
+          localTroopNotify.jdField_b_of_type_Boolean = bool1;
+          if (((JSONObject)localObject).optInt("confirm_required", 0) == 1) {
+            bool1 = bool2;
+          } else {
+            bool1 = false;
+          }
+          localTroopNotify.jdField_c_of_type_Boolean = bool1;
+        }
+        if (localJSONObject.has("v"))
+        {
+          localJSONObject = localJSONObject.optJSONObject("v");
+          localTroopNotify.f = localJSONObject.optString("l");
+          localTroopNotify.jdField_d_of_type_JavaLangString = localJSONObject.optString("bi");
+        }
+        localTroopNotify.g = paramJSONObject.optString("u");
+        localTroopNotify.h = ContactUtils.b(paramQQAppInterface, paramString, localTroopNotify.g);
+        localTroopNotify.jdField_a_of_type_Long = paramJSONObject.optLong("pubt");
+        localTroopNotify.jdField_b_of_type_Int = paramJSONObject.optInt("read_num");
+        return localTroopNotify;
       }
-      localTroopNotify.g = paramJSONObject.optString("u");
-      localTroopNotify.h = ContactUtils.g(paramQQAppInterface, paramString, localTroopNotify.g);
-      localTroopNotify.jdField_a_of_type_Long = paramJSONObject.optLong("pubt");
-      localTroopNotify.jdField_b_of_type_Int = paramJSONObject.optInt("read_num");
-      return localTroopNotify;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label338;
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFeedsDataManager.TroopNotify
  * JD-Core Version:    0.7.0.1
  */

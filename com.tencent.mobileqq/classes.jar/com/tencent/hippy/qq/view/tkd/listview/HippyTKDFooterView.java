@@ -40,16 +40,16 @@ public class HippyTKDFooterView
   
   private void changeVisibility(int paramInt1, int paramInt2)
   {
-    paramInt2 = paramInt1 ^ paramInt2;
-    if (paramInt2 == 0) {}
-    do
-    {
+    paramInt2 ^= paramInt1;
+    if (paramInt2 == 0) {
       return;
-      if ((paramInt1 == 0) || ((paramInt2 & 0x4) != 0)) {
-        invalidate();
-      }
-    } while ((paramInt2 & 0x8) == 0);
-    requestLayout();
+    }
+    if ((paramInt1 == 0) || ((paramInt2 & 0x4) != 0)) {
+      invalidate();
+    }
+    if ((paramInt2 & 0x8) != 0) {
+      requestLayout();
+    }
   }
   
   public void setImageDrawable(Drawable paramDrawable)
@@ -99,7 +99,7 @@ public class HippyTKDFooterView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.listview.HippyTKDFooterView
  * JD-Core Version:    0.7.0.1
  */

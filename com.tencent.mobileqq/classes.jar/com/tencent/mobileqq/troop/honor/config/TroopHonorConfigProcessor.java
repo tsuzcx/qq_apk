@@ -12,7 +12,10 @@ public class TroopHonorConfigProcessor
 {
   public TroopHonorConfig a(int paramInt)
   {
-    QLog.d("TroopHonor.config", 2, "migrateOldOrDefaultContent, type: " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("migrateOldOrDefaultContent, type: ");
+    localStringBuilder.append(paramInt);
+    QLog.d("TroopHonor.config", 2, localStringBuilder.toString());
     return new TroopHonorConfig();
   }
   
@@ -26,7 +29,10 @@ public class TroopHonorConfigProcessor
   
   public void a(TroopHonorConfig paramTroopHonorConfig)
   {
-    QLog.d("TroopHonor.config", 1, "onUpdate, newConf = " + paramTroopHonorConfig);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onUpdate, newConf = ");
+    localStringBuilder.append(paramTroopHonorConfig);
+    QLog.d("TroopHonor.config", 1, localStringBuilder.toString());
     ((ITroopHonorService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(ITroopHonorService.class, "")).updateConfig(paramTroopHonorConfig, false);
   }
   
@@ -52,7 +58,10 @@ public class TroopHonorConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.d("TroopHonor.config", 1, "onReqFailed, failCode = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReqFailed, failCode = ");
+    localStringBuilder.append(paramInt);
+    QLog.d("TroopHonor.config", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -62,7 +71,7 @@ public class TroopHonorConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.honor.config.TroopHonorConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

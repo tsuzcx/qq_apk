@@ -41,15 +41,12 @@ public class DownloadCallbackWebImpl
     try
     {
       localJSONObject.put("nettype", paramInt);
-      return localJSONObject.toString();
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        LogUtility.c("DownloadCallbackWebImpl", "getCallBackJsonObject >>> ", localJSONException);
-      }
+      LogUtility.c("DownloadCallbackWebImpl", "getCallBackJsonObject >>> ", localJSONException);
     }
+    return localJSONObject.toString();
   }
   
   protected String a(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3, String paramString3, int paramInt4, int paramInt5)
@@ -65,15 +62,12 @@ public class DownloadCallbackWebImpl
       localJSONObject.put("errorMsg", paramString3);
       localJSONObject.put("errorCode", paramInt4);
       localJSONObject.put("writecodestate", paramInt5);
-      return localJSONObject.toString();
     }
     catch (JSONException paramString1)
     {
-      for (;;)
-      {
-        LogUtility.c("DownloadCallbackWebImpl", "getCallBackJsonObject >>> ", paramString1);
-      }
+      LogUtility.c("DownloadCallbackWebImpl", "getCallBackJsonObject >>> ", paramString1);
     }
+    return localJSONObject.toString();
   }
   
   protected String a(String paramString1, int paramInt, String paramString2)
@@ -85,15 +79,12 @@ public class DownloadCallbackWebImpl
       localJSONObject.put("appid", paramString1);
       localJSONObject.put("state", paramInt);
       localJSONObject.put("pro", 0);
-      return localJSONObject.toString();
     }
     catch (JSONException paramString1)
     {
-      for (;;)
-      {
-        LogUtility.c("DownloadCallbackWebImpl", "getCallBackJsonObject >>> ", paramString1);
-      }
+      LogUtility.c("DownloadCallbackWebImpl", "getCallBackJsonObject >>> ", paramString1);
     }
+    return localJSONObject.toString();
   }
   
   public JSONObject a(DownloadInfo paramDownloadInfo, int paramInt)
@@ -117,7 +108,10 @@ public class DownloadCallbackWebImpl
     }
     catch (JSONException paramDownloadInfo)
     {
-      LogUtility.c("DownloadCallbackWebImpl", "onNetworkConnect " + paramDownloadInfo.getMessage(), paramDownloadInfo);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onNetworkConnect ");
+      localStringBuilder.append(paramDownloadInfo.getMessage());
+      LogUtility.c("DownloadCallbackWebImpl", localStringBuilder.toString(), paramDownloadInfo);
     }
     return localJSONObject;
   }
@@ -137,41 +131,47 @@ public class DownloadCallbackWebImpl
   protected void a(String paramString)
   {
     H5JSCallbackManager localH5JSCallbackManager = H5JSCallbackManager.a();
-    for (;;)
+    try
     {
-      int i;
-      try
+      int j = localH5JSCallbackManager.a().size();
+      int i = 0;
+      while (i < j)
       {
-        int j = localH5JSCallbackManager.a().size();
-        i = 0;
-        if (i < j)
+        Object localObject = (IJsCallBack)localH5JSCallbackManager.a().get(i);
+        WebView localWebView = ((IJsCallBack)localObject).getWebview();
+        if (localWebView != null)
         {
-          Object localObject = (IJsCallBack)localH5JSCallbackManager.a().get(i);
-          WebView localWebView = ((IJsCallBack)localObject).getWebview();
-          if (localWebView != null) {
-            if (TextUtils.isEmpty(((IJsCallBack)localObject).getJsCallbackMethod()))
-            {
-              localObject = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('loadProcess'," + paramString + ");}void(0);";
-              LogUtility.a("DownloadCallbackWebImpl", " commonJsCallBack >>> " + (String)localObject);
-              this.jdField_a_of_type_AndroidOsHandler.post(new DownloadCallbackWebImpl.1(this, localWebView, (String)localObject));
-            }
-            else
-            {
-              localObject = "javascript:" + ((IJsCallBack)localObject).getJsCallbackMethod() + "(" + paramString + ")";
-              continue;
-            }
+          if (TextUtils.isEmpty(((IJsCallBack)localObject).getJsCallbackMethod()))
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('loadProcess',");
+            ((StringBuilder)localObject).append(paramString);
+            ((StringBuilder)localObject).append(");}void(0);");
+            localObject = ((StringBuilder)localObject).toString();
           }
+          else
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("javascript:");
+            localStringBuilder.append(((IJsCallBack)localObject).getJsCallbackMethod());
+            localStringBuilder.append("(");
+            localStringBuilder.append(paramString);
+            localStringBuilder.append(")");
+            localObject = localStringBuilder.toString();
+          }
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(" commonJsCallBack >>> ");
+          localStringBuilder.append((String)localObject);
+          LogUtility.a("DownloadCallbackWebImpl", localStringBuilder.toString());
+          this.jdField_a_of_type_AndroidOsHandler.post(new DownloadCallbackWebImpl.1(this, localWebView, (String)localObject));
         }
-        else
-        {
-          return;
-        }
+        i += 1;
       }
-      catch (Exception paramString)
-      {
-        LogUtility.c("DownloadCallbackWebImpl", "doJsCallback >>> ", paramString);
-      }
-      i += 1;
+      return;
+    }
+    catch (Exception paramString)
+    {
+      LogUtility.c("DownloadCallbackWebImpl", "doJsCallback >>> ", paramString);
     }
   }
   
@@ -242,7 +242,7 @@ public class DownloadCallbackWebImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appcommon.now.download.js.DownloadCallbackWebImpl
  * JD-Core Version:    0.7.0.1
  */

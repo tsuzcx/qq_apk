@@ -19,29 +19,32 @@ class TopPanelPresenter$1
   {
     if (paramBoolean)
     {
-      SLog.c("VSNetworkHelper", "sendRequest GetRecommendUserList success  time ==> " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+      paramBaseRequest = new StringBuilder();
+      paramBaseRequest.append("sendRequest GetRecommendUserList success  time ==> ");
+      paramBaseRequest.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      SLog.c("VSNetworkHelper", paramBaseRequest.toString());
       if (paramStGetRecommendUserListRsp != null)
       {
         paramBaseRequest = TopPanelPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelPresenter, paramStGetRecommendUserListRsp);
         TopPanelPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelPresenter, (COMM.StCommonExt)paramStGetRecommendUserListRsp.extInfo.get());
-        if (paramStGetRecommendUserListRsp.isFinish.get() != 1) {
-          break label107;
+        int i = paramStGetRecommendUserListRsp.isFinish.get();
+        paramBoolean = true;
+        if (i != 1) {
+          paramBoolean = false;
         }
-      }
-      label107:
-      for (paramBoolean = true;; paramBoolean = false)
-      {
         Collections.shuffle(paramBaseRequest);
         ThreadManager.getUIHandler().post(new TopPanelPresenter.1.1(this, paramStGetRecommendUserListRsp, paramBaseRequest, paramBoolean));
-        return;
       }
     }
-    SLog.c(TopPanelPresenter.a(), "sendRequest GetRecommendUserList error");
+    else
+    {
+      SLog.c(TopPanelPresenter.a(), "sendRequest GetRecommendUserList error");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.account_folder.top_pannel.TopPanelPresenter.1
  * JD-Core Version:    0.7.0.1
  */

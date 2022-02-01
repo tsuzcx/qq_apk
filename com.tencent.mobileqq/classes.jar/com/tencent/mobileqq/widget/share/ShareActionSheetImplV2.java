@@ -51,6 +51,11 @@ public class ShareActionSheetImplV2
     return this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.getActionSheetPanelViewHeight();
   }
   
+  public Bundle getExtras()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.getExtras();
+  }
+  
   public int getIconWidth()
   {
     return this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.getIconWidth();
@@ -178,13 +183,14 @@ public class ShareActionSheetImplV2
   
   public void show()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareValidator.a()) {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareValidator.a())
+    {
       this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.show();
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("ShareActionSheetImplV2", 2, "show() called 参数无效");
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareActionSheetImplV2", 2, "show() called 参数无效");
+    }
   }
   
   public void updateUI()
@@ -199,7 +205,7 @@ public class ShareActionSheetImplV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.share.ShareActionSheetImplV2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,55 +1,36 @@
 package com.huawei.hms.opendevice;
 
-import com.huawei.hmf.tasks.TaskCompletionSource;
-import com.huawei.hms.aaid.HmsInstanceId;
-import com.huawei.hms.aaid.entity.DeleteTokenResp;
-import com.huawei.hms.common.ApiException;
-import com.huawei.hms.common.internal.ResponseErrorCode;
-import com.huawei.hms.common.internal.TaskApiCall;
-import com.huawei.hms.support.api.client.Status;
-import com.huawei.hms.support.log.HMSLog;
-import com.huawei.hms.utils.JsonUtil;
+import android.content.Context;
+import com.huawei.hms.aaid.constant.ErrorEnum;
+import com.huawei.hms.aaid.entity.AAIDResult;
+import java.util.concurrent.Callable;
 
 public class j
-  extends TaskApiCall<l, Void>
+  implements Callable<AAIDResult>
 {
-  public j(String paramString1, String paramString2, String paramString3)
+  public Context a;
+  
+  public j(Context paramContext)
   {
-    super(paramString1, paramString2, paramString3);
+    this.a = paramContext;
   }
   
-  protected void doExecute(l paraml, ResponseErrorCode paramResponseErrorCode, String paramString, TaskCompletionSource<Void> paramTaskCompletionSource)
+  public AAIDResult call()
   {
-    if (paramResponseErrorCode.getErrorCode() != 0)
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      HMSLog.e(HmsInstanceId.TAG, "DeleteTokenTask failed, ErrorCode: " + paramResponseErrorCode.getErrorCode());
-      paraml = a.a(paramResponseErrorCode.getErrorCode());
-      if (paraml != a.g)
-      {
-        paramTaskCompletionSource.setException(a.a(paraml));
-        return;
-      }
-      paramTaskCompletionSource.setException(new ApiException(new Status(paramResponseErrorCode.getErrorCode(), paramResponseErrorCode.getErrorReason())));
-      return;
+      localObject = o.c((Context)localObject);
+      AAIDResult localAAIDResult = new AAIDResult();
+      localAAIDResult.setId((String)localObject);
+      return localAAIDResult;
     }
-    paramString = a.a(((DeleteTokenResp)JsonUtil.jsonToEntity(paramString, new DeleteTokenResp())).getRetCode());
-    if (paramString != a.a)
-    {
-      paramTaskCompletionSource.setException(a.a(paramString));
-      return;
-    }
-    paramTaskCompletionSource.setResult(null);
-    p.a(paraml.getContext(), getUri(), paramResponseErrorCode);
-  }
-  
-  public int getMinApkVersion()
-  {
-    return 30000000;
+    throw ErrorEnum.ERROR_ARGUMENTS_INVALID.toApiException();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.opendevice.j
  * JD-Core Version:    0.7.0.1
  */

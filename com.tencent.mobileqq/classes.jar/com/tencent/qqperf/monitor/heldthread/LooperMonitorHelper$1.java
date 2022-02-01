@@ -17,48 +17,45 @@ final class LooperMonitorHelper$1
     {
       Looper.getMainLooper().setMessageLogging(null);
       MqqMessageQueue.getSubMainThreadQueue().setMessageLogging(null);
-    }
-    do
-    {
-      Object localObject;
-      do
-      {
-        return;
-        if (paramInt == 4)
-        {
-          ThreadManager.getSubThreadLooper().setMessageLogging(null);
-          return;
-        }
-        if (paramInt == 5)
-        {
-          ThreadManager.getFileThreadLooper().setMessageLogging(null);
-          return;
-        }
-        if (paramInt == 14)
-        {
-          Looper.getMainLooper().setMessageLogging(null);
-          return;
-        }
-        if (paramInt != 18) {
-          break;
-        }
-        localObject = MsfCore.sCore;
-        if (localObject == null)
-        {
-          QLog.e("MagnifierSDK.QAPM", 1, "msf core hasnot init");
-          return;
-        }
-        localObject = ((MsfCore)localObject).getNetworkHandlerThread();
-      } while ((localObject == null) || (((HandlerThread)localObject).getLooper() == null));
-      ((HandlerThread)localObject).getLooper().setMessageLogging(null);
       return;
-    } while (paramInt != 19);
-    Looper.getMainLooper().setMessageLogging(null);
+    }
+    if (paramInt == 4)
+    {
+      ThreadManager.getSubThreadLooper().setMessageLogging(null);
+      return;
+    }
+    if (paramInt == 5)
+    {
+      ThreadManager.getFileThreadLooper().setMessageLogging(null);
+      return;
+    }
+    if (paramInt == 14)
+    {
+      Looper.getMainLooper().setMessageLogging(null);
+      return;
+    }
+    if (paramInt == 18)
+    {
+      Object localObject = MsfCore.sCore;
+      if (localObject == null)
+      {
+        QLog.e("MagnifierSDK.QAPM", 1, "msf core hasnot init");
+        return;
+      }
+      localObject = ((MsfCore)localObject).getNetworkHandlerThread();
+      if ((localObject != null) && (((HandlerThread)localObject).getLooper() != null)) {
+        ((HandlerThread)localObject).getLooper().setMessageLogging(null);
+      }
+    }
+    else if (paramInt == 19)
+    {
+      Looper.getMainLooper().setMessageLogging(null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.monitor.heldthread.LooperMonitorHelper.1
  * JD-Core Version:    0.7.0.1
  */

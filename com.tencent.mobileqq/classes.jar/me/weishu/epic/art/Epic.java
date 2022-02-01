@@ -31,22 +31,33 @@ public final class Epic
     if (Runtime.is64Bit()) {
       switch (i)
       {
+      default: 
+        break;
+      case 24: 
+      case 25: 
+      case 26: 
+      case 27: 
+        ShellCode = new Arm64_2();
+        break;
+      case 23: 
+        ShellCode = new Arm64_2();
+        break;
       }
+    } else if (Runtime.isThumb2()) {
+      ShellCode = new Thumb2();
+    } else {
+      Logger.w("Epic", "ARM32, not support now.");
     }
-    while (ShellCode == null)
+    if (ShellCode != null)
     {
-      throw new RuntimeException("Do not support this ARCH now!! API LEVEL:" + i);
-      ShellCode = new Arm64_2();
-      continue;
-      ShellCode = new Arm64_2();
-      continue;
-      if (Runtime.isThumb2()) {
-        ShellCode = new Thumb2();
-      } else {
-        Logger.w("Epic", "ARM32, not support now.");
-      }
+      localStringBuilder = new StringBuilder("Using: ");
+      localStringBuilder.append(ShellCode.getName());
+      Logger.i("Epic", localStringBuilder.toString());
+      return;
     }
-    Logger.i("Epic", "Using: " + ShellCode.getName());
+    StringBuilder localStringBuilder = new StringBuilder("Do not support this ARCH now!! API LEVEL:");
+    localStringBuilder.append(i);
+    throw new RuntimeException(localStringBuilder.toString());
   }
   
   public static ArtMethod getBackMethod(ArtMethod paramArtMethod)
@@ -72,7 +83,9 @@ public final class Epic
   public static int getQuickCompiledCodeSize(ArtMethod paramArtMethod)
   {
     int i = ByteBuffer.wrap(EpicNative.get(ShellCode.toMem(paramArtMethod.getEntryPointFromQuickCompiledCode()) - 4L, 4)).order(ByteOrder.LITTLE_ENDIAN).getInt();
-    Logger.d("Epic", "getQuickCompiledCodeSize: " + i);
+    paramArtMethod = new StringBuilder("getQuickCompiledCodeSize: ");
+    paramArtMethod.append(i);
+    Logger.d("Epic", paramArtMethod.toString());
     return i;
   }
   
@@ -90,54 +103,61 @@ public final class Epic
   {
     ??? = new Epic.MethodInfo();
     ((Epic.MethodInfo)???).isStatic = Modifier.isStatic(paramArtMethod.getModifiers());
-    Class[] arrayOfClass = paramArtMethod.getParameterTypes();
-    if (arrayOfClass != null)
+    Object localObject2 = paramArtMethod.getParameterTypes();
+    if (localObject2 != null)
     {
-      ((Epic.MethodInfo)???).paramNumber = arrayOfClass.length;
-      ((Epic.MethodInfo)???).paramTypes = arrayOfClass;
+      ((Epic.MethodInfo)???).paramNumber = localObject2.length;
+      ((Epic.MethodInfo)???).paramTypes = ((Class[])localObject2);
     }
-    for (;;)
+    else
     {
-      ((Epic.MethodInfo)???).returnType = paramArtMethod.getReturnType();
-      ((Epic.MethodInfo)???).method = paramArtMethod;
-      originSigs.put(Long.valueOf(paramArtMethod.getAddress()), ???);
-      if (!paramArtMethod.isAccessible()) {
-        paramArtMethod.setAccessible(true);
-      }
-      paramArtMethod.ensureResolved();
-      long l2 = paramArtMethod.getEntryPointFromQuickCompiledCode();
-      long l1 = l2;
-      if (l2 == ArtMethod.getQuickToInterpreterBridge())
+      ((Epic.MethodInfo)???).paramNumber = 0;
+      ((Epic.MethodInfo)???).paramTypes = new Class[0];
+    }
+    ((Epic.MethodInfo)???).returnType = paramArtMethod.getReturnType();
+    ((Epic.MethodInfo)???).method = paramArtMethod;
+    originSigs.put(Long.valueOf(paramArtMethod.getAddress()), ???);
+    if (!paramArtMethod.isAccessible()) {
+      paramArtMethod.setAccessible(true);
+    }
+    paramArtMethod.ensureResolved();
+    long l2 = paramArtMethod.getEntryPointFromQuickCompiledCode();
+    long l1 = l2;
+    if (l2 == ArtMethod.getQuickToInterpreterBridge())
+    {
+      ??? = new StringBuilder("this method is not compiled, compile it now. current entry: 0x");
+      ((StringBuilder)???).append(Long.toHexString(l2));
+      Logger.i("Epic", ((StringBuilder)???).toString());
+      if (paramArtMethod.compile())
       {
-        Logger.i("Epic", "this method is not compiled, compile it now. current entry: 0x" + Long.toHexString(l2));
-        if (paramArtMethod.compile())
-        {
-          l1 = paramArtMethod.getEntryPointFromQuickCompiledCode();
-          Logger.i("Epic", "compile method success, new entry: 0x" + Long.toHexString(l1));
-        }
+        l1 = paramArtMethod.getEntryPointFromQuickCompiledCode();
+        ??? = new StringBuilder("compile method success, new entry: 0x");
+        ((StringBuilder)???).append(Long.toHexString(l1));
+        Logger.i("Epic", ((StringBuilder)???).toString());
       }
       else
       {
-        ??? = paramArtMethod.backup();
-        Logger.i("Epic", "backup method address:" + Debug.addrHex(((ArtMethod)???).getAddress()));
-        Logger.i("Epic", "backup method entry :" + Debug.addrHex(((ArtMethod)???).getEntryPointFromQuickCompiledCode()));
-        if (getBackMethod(paramArtMethod) == null) {
-          setBackMethod(paramArtMethod, (ArtMethod)???);
-        }
-      }
-      synchronized (Epic.EntryLock.obtain(l1))
-      {
-        if (!scripts.containsKey(Long.valueOf(l1))) {
-          scripts.put(Long.valueOf(l1), new Trampoline(ShellCode, l1));
-        }
-        boolean bool = ((Trampoline)scripts.get(Long.valueOf(l1))).install(paramArtMethod);
-        return bool;
-        ((Epic.MethodInfo)???).paramNumber = 0;
-        ((Epic.MethodInfo)???).paramTypes = new Class[0];
-        continue;
         Logger.e("Epic", "compile method failed...");
         return false;
       }
+    }
+    ??? = paramArtMethod.backup();
+    localObject2 = new StringBuilder("backup method address:");
+    ((StringBuilder)localObject2).append(Debug.addrHex(((ArtMethod)???).getAddress()));
+    Logger.i("Epic", ((StringBuilder)localObject2).toString());
+    localObject2 = new StringBuilder("backup method entry :");
+    ((StringBuilder)localObject2).append(Debug.addrHex(((ArtMethod)???).getEntryPointFromQuickCompiledCode()));
+    Logger.i("Epic", ((StringBuilder)localObject2).toString());
+    if (getBackMethod(paramArtMethod) == null) {
+      setBackMethod(paramArtMethod, (ArtMethod)???);
+    }
+    synchronized (Epic.EntryLock.obtain(l1))
+    {
+      if (!scripts.containsKey(Long.valueOf(l1))) {
+        scripts.put(Long.valueOf(l1), new Trampoline(ShellCode, l1));
+      }
+      boolean bool = ((Trampoline)scripts.get(Long.valueOf(l1))).install(paramArtMethod);
+      return bool;
     }
   }
   
@@ -158,7 +178,7 @@ public final class Epic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     me.weishu.epic.art.Epic
  * JD-Core Version:    0.7.0.1
  */

@@ -34,20 +34,23 @@ public class VSEntranceWidgetProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      QLog.i("Q.videostory.config.VSEntranceWidgetProcessor", 2, "onParsed " + paramArrayOfQConfItem[0].a);
-      VSEntranceWidgetBean localVSEntranceWidgetBean = VSEntranceWidgetBean.a(paramArrayOfQConfItem[0].a);
-      if (localVSEntranceWidgetBean == null)
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onParsed ");
+      ((StringBuilder)localObject).append(paramArrayOfQConfItem[0].a);
+      QLog.i("Q.videostory.config.VSEntranceWidgetProcessor", 2, ((StringBuilder)localObject).toString());
+      localObject = VSEntranceWidgetBean.a(paramArrayOfQConfItem[0].a);
+      if (localObject == null)
       {
         QLog.e("Q.videostory.config.VSEntranceWidgetProcessor", 2, "onParsed error!");
         return null;
       }
       String str = (String)VSConfigManager.a().a("KEY_VS_ENTRANCE_WIDGET_MD5", "");
-      if ((!TextUtils.isEmpty(localVSEntranceWidgetBean.b())) && (!localVSEntranceWidgetBean.b().equals(str)))
+      if ((!TextUtils.isEmpty(((VSEntranceWidgetBean)localObject).b())) && (!((VSEntranceWidgetBean)localObject).b().equals(str)))
       {
-        VSEntranceWidgetDownLoadHelper.a().a(localVSEntranceWidgetBean);
-        a(localVSEntranceWidgetBean.b(), paramArrayOfQConfItem[0].a);
+        VSEntranceWidgetDownLoadHelper.a().a((VSEntranceWidgetBean)localObject);
+        a(((VSEntranceWidgetBean)localObject).b(), paramArrayOfQConfItem[0].a);
       }
-      return localVSEntranceWidgetBean;
+      return localObject;
     }
     QLog.e("Q.videostory.config.VSEntranceWidgetProcessor", 2, "onParsed conf content is null!");
     return null;
@@ -55,8 +58,12 @@ public class VSEntranceWidgetProcessor
   
   public void a(VSEntranceWidgetBean paramVSEntranceWidgetBean)
   {
-    if (paramVSEntranceWidgetBean != null) {
-      QLog.i("Q.videostory.config.VSEntranceWidgetProcessor", 2, "onUpdate:" + paramVSEntranceWidgetBean.toString());
+    if (paramVSEntranceWidgetBean != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate:");
+      localStringBuilder.append(paramVSEntranceWidgetBean.toString());
+      QLog.i("Q.videostory.config.VSEntranceWidgetProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -89,7 +96,7 @@ public class VSEntranceWidgetProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.config.processor.VSEntranceWidgetProcessor
  * JD-Core Version:    0.7.0.1
  */

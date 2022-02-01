@@ -35,35 +35,41 @@ public abstract class BaseService$Stub
   
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    switch (paramInt1)
+    if (paramInt1 != 1)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.assistant.sdk.remote.BaseService");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.assistant.sdk.remote.BaseService");
-      paramInt1 = registerActionCallback(paramParcel1.readString(), paramParcel1.readString(), SDKActionCallback.Stub.asInterface(paramParcel1.readStrongBinder()));
-      paramParcel2.writeNoException();
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 2: 
+      if (paramInt1 != 2)
+      {
+        if (paramInt1 != 3)
+        {
+          if (paramInt1 != 4)
+          {
+            if (paramInt1 != 1598968902) {
+              return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+            }
+            paramParcel2.writeString("com.tencent.assistant.sdk.remote.BaseService");
+            return true;
+          }
+          paramParcel1.enforceInterface("com.tencent.assistant.sdk.remote.BaseService");
+          sendAsyncData(paramParcel1.readString(), paramParcel1.createByteArray());
+          paramParcel2.writeNoException();
+          return true;
+        }
+        paramParcel1.enforceInterface("com.tencent.assistant.sdk.remote.BaseService");
+        paramParcel1 = sendSyncData(paramParcel1.readString(), paramParcel1.createByteArray());
+        paramParcel2.writeNoException();
+        paramParcel2.writeByteArray(paramParcel1);
+        return true;
+      }
       paramParcel1.enforceInterface("com.tencent.assistant.sdk.remote.BaseService");
       paramInt1 = unregisterActionCallback(SDKActionCallback.Stub.asInterface(paramParcel1.readStrongBinder()));
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
-    case 3: 
-      paramParcel1.enforceInterface("com.tencent.assistant.sdk.remote.BaseService");
-      paramParcel1 = sendSyncData(paramParcel1.readString(), paramParcel1.createByteArray());
-      paramParcel2.writeNoException();
-      paramParcel2.writeByteArray(paramParcel1);
-      return true;
     }
     paramParcel1.enforceInterface("com.tencent.assistant.sdk.remote.BaseService");
-    sendAsyncData(paramParcel1.readString(), paramParcel1.createByteArray());
+    paramInt1 = registerActionCallback(paramParcel1.readString(), paramParcel1.readString(), SDKActionCallback.Stub.asInterface(paramParcel1.readStrongBinder()));
     paramParcel2.writeNoException();
+    paramParcel2.writeInt(paramInt1);
     return true;
   }
 }

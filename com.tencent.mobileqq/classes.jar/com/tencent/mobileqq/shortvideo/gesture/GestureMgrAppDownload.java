@@ -70,7 +70,11 @@ public class GestureMgrAppDownload
   
   public static void a(String paramString)
   {
-    BaseApplicationImpl.sApplication.getSharedPreferences("so_sp", 4).edit().putString("key_so_version_" + paramString, AppSetting.g()).commit();
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.sApplication.getSharedPreferences("so_sp", 4).edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_so_version_");
+    localStringBuilder.append(paramString);
+    localEditor.putString(localStringBuilder.toString(), AppSetting.g()).commit();
   }
   
   public static boolean a()
@@ -84,7 +88,13 @@ public class GestureMgrAppDownload
     if (this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo == null) {
       this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
     }
-    QLog.w("QavGesture", 1, "handle_QAG_Gesture_Config, configInfo[" + paramConfigInfo + "], mDownloadInfo[" + this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo + "]");
+    paramQQAppInterface = new StringBuilder();
+    paramQQAppInterface.append("handle_QAG_Gesture_Config, configInfo[");
+    paramQQAppInterface.append(paramConfigInfo);
+    paramQQAppInterface.append("], mDownloadInfo[");
+    paramQQAppInterface.append(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo);
+    paramQQAppInterface.append("]");
+    QLog.w("QavGesture", 1, paramQQAppInterface.toString());
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = false;
@@ -97,44 +107,40 @@ public class GestureMgrAppDownload
   boolean b()
   {
     Object localObject = BaseApplicationImpl.sApplication.getRuntime();
-    boolean bool2;
-    if ((localObject instanceof QQAppInterface))
+    boolean bool2 = localObject instanceof QQAppInterface;
+    boolean bool1 = true;
+    if (bool2)
     {
       if (((QQAppInterface)localObject).getManager(QQManagerFactory.MGR_NET_ENGINE) == null)
       {
         QLog.d("QavGesture", 1, "innerDownload, getNetEngine 为空");
-        bool2 = false;
-        return bool2;
+        return false;
       }
-    }
-    else
-    {
-      QLog.d("QavGesture", 1, "appRuntime 不是 QQAppInterface");
-      return false;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo == null) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo;
-    if (localObject == null)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      return false;
-    }
-    if (11 == GestureUtil.a((DownloadInfo)localObject)) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
+      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo == null) {
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
+      }
+      localObject = this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo;
+      if (localObject == null)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        return false;
+      }
+      if (11 != GestureUtil.a((DownloadInfo)localObject)) {
+        bool1 = false;
+      }
       bool2 = bool1;
-      if (!bool1) {
-        break;
+      if (bool1) {
+        bool2 = this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrAppDownload$DownloadContrl.a((DownloadInfo)localObject);
       }
-      return this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrAppDownload$DownloadContrl.a((DownloadInfo)localObject);
+      return bool2;
     }
+    QLog.d("QavGesture", 1, "appRuntime 不是 QQAppInterface");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.gesture.GestureMgrAppDownload
  * JD-Core Version:    0.7.0.1
  */

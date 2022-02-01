@@ -30,9 +30,7 @@ public class MiniAppCheckNavigateRightServlet
   {
     Bundle localBundle = new Bundle();
     localBundle.putInt("key_index", paramIntent.getIntExtra("key_index", -1));
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess())) {}
-    for (;;)
-    {
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess())) {
       try
       {
         PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
@@ -55,12 +53,11 @@ public class MiniAppCheckNavigateRightServlet
       {
         localInvalidProtocolBufferMicroException.printStackTrace();
         notifyObserver(paramIntent, 1023, false, localBundle, MiniAppObserver.class);
-        continue;
       }
-      doReport(paramIntent, paramFromServiceMsg);
-      return;
+    } else {
       notifyObserver(paramIntent, 1023, false, localBundle, MiniAppObserver.class);
     }
+    doReport(paramIntent, paramFromServiceMsg);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -69,27 +66,14 @@ public class MiniAppCheckNavigateRightServlet
     Object localObject2 = paramIntent.getStringExtra("target_app_id");
     int i = paramIntent.getIntExtra("key_index", -1);
     byte[] arrayOfByte = paramIntent.getByteArrayExtra("key_ext");
-    COMM.StCommonExt localStCommonExt;
-    if (arrayOfByte != null) {
-      localStCommonExt = new COMM.StCommonExt();
-    }
-    try
+    if (arrayOfByte != null)
     {
-      localStCommonExt.mergeFrom(arrayOfByte);
-      localObject2 = new CheckNavigateRightRequest((String)localObject1, (String)localObject2).encode(paramIntent, i, getTraceId());
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = new byte[4];
+      COMM.StCommonExt localStCommonExt = new COMM.StCommonExt();
+      try
+      {
+        localStCommonExt.mergeFrom(arrayOfByte);
       }
-      paramPacket.setSSOCommand("LightAppSvc.mini_app_info.CheckNavigateRight");
-      paramPacket.putSendData(WupUtil.a((byte[])localObject1));
-      paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-      super.onSend(paramIntent, paramPacket);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
         if (QLog.isColorLevel()) {
           QLog.e("MiniAppCheckNavigateRightServlet", 2, "onSend. mergeFrom exception!");
@@ -97,11 +81,20 @@ public class MiniAppCheckNavigateRightServlet
         localInvalidProtocolBufferMicroException.printStackTrace();
       }
     }
+    localObject2 = new CheckNavigateRightRequest((String)localObject1, (String)localObject2).encode(paramIntent, i, getTraceId());
+    localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new byte[4];
+    }
+    paramPacket.setSSOCommand("LightAppSvc.mini_app_info.CheckNavigateRight");
+    paramPacket.putSendData(WupUtil.a((byte[])localObject1));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    super.onSend(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppCheckNavigateRightServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -25,14 +25,15 @@ public final class QzmallAvatar
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stAvatarItem != null) {
-      paramJceOutputStream.write(this.stAvatarItem, 0);
+    AvatarItem localAvatarItem = this.stAvatarItem;
+    if (localAvatarItem != null) {
+      paramJceOutputStream.write(localAvatarItem, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.QzmallAvatar
  * JD-Core Version:    0.7.0.1
  */

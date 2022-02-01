@@ -29,18 +29,18 @@ public class QQCustomDialogDevLock
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365844));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368653));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379092));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368654));
-    this.c = ((TextView)findViewById(2131379094));
-    this.d = ((TextView)findViewById(2131365796));
-    this.e = ((TextView)findViewById(2131365802));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365680));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368388));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378461));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368389));
+    this.c = ((TextView)findViewById(2131378463));
+    this.d = ((TextView)findViewById(2131365633));
+    this.e = ((TextView)findViewById(2131365639));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogDevLock
  * JD-Core Version:    0.7.0.1
  */

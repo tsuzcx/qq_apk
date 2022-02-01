@@ -50,24 +50,39 @@ public class ContactSearchableSearchHistory
   
   public int c()
   {
-    switch (this.jdField_a_of_type_ComTencentMobileqqDataSearchHistory.type)
+    int i = this.jdField_a_of_type_ComTencentMobileqqDataSearchHistory.type;
+    if (i != 1)
     {
-    default: 
-    case 3000: 
-    case 1: 
-    case 1006: 
-    case 56938: 
-    case 1008: 
-      do
-      {
-        return 1;
-        return 101;
-        return 4;
-        return 11;
-      } while (!TextUtils.equals(this.jdField_a_of_type_ComTencentMobileqqDataSearchHistory.uin, AppConstants.NEW_KANDIAN_UIN));
-      return 110;
+      if (i != 1006) {
+        if (i != 1008)
+        {
+          if (i != 3000)
+          {
+            if (i != 7220)
+            {
+              if (i != 56938) {
+                return 1;
+              }
+            }
+            else {
+              return 111;
+            }
+          }
+          else {
+            return 101;
+          }
+        }
+        else
+        {
+          if (TextUtils.equals(this.jdField_a_of_type_ComTencentMobileqqDataSearchHistory.uin, AppConstants.NEW_KANDIAN_UIN)) {
+            return 110;
+          }
+          return 1;
+        }
+      }
+      return 11;
     }
-    return 111;
+    return 4;
   }
   
   public String c()
@@ -80,8 +95,13 @@ public class ContactSearchableSearchHistory
     if (this.jdField_a_of_type_ComTencentMobileqqDataSearchHistory.type == 1)
     {
       TroopInfo localTroopInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.jdField_a_of_type_ComTencentMobileqqDataSearchHistory.uin);
-      if ((localTroopInfo != null) && (!TextUtils.isEmpty(localTroopInfo.troopRemark))) {
-        return "(" + localTroopInfo.troopRemark + ")";
+      if ((localTroopInfo != null) && (!TextUtils.isEmpty(localTroopInfo.troopRemark)))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("(");
+        localStringBuilder.append(localTroopInfo.troopRemark);
+        localStringBuilder.append(")");
+        return localStringBuilder.toString();
       }
     }
     return "";
@@ -94,7 +114,7 @@ public class ContactSearchableSearchHistory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.ContactSearchableSearchHistory
  * JD-Core Version:    0.7.0.1
  */

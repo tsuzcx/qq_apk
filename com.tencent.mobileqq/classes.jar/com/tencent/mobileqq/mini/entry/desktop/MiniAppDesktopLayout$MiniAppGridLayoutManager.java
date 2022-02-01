@@ -24,7 +24,10 @@ public class MiniAppDesktopLayout$MiniAppGridLayoutManager
     }
     catch (Throwable paramRecycler)
     {
-      QLog.e("MicroAppEntryLayout", 1, "onLayoutChildren, exception: " + Log.getStackTraceString(paramRecycler));
+      paramState = new StringBuilder();
+      paramState.append("onLayoutChildren, exception: ");
+      paramState.append(Log.getStackTraceString(paramRecycler));
+      QLog.e("MicroAppEntryLayout", 1, paramState.toString());
     }
   }
   
@@ -37,14 +40,17 @@ public class MiniAppDesktopLayout$MiniAppGridLayoutManager
     }
     catch (Throwable paramRecycler)
     {
-      QLog.e("MicroAppEntryLayout", 1, "scrollHorizontallyBy, exception: " + Log.getStackTraceString(paramRecycler));
+      paramState = new StringBuilder();
+      paramState.append("scrollHorizontallyBy, exception: ");
+      paramState.append(Log.getStackTraceString(paramRecycler));
+      QLog.e("MicroAppEntryLayout", 1, paramState.toString());
     }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopLayout.MiniAppGridLayoutManager
  * JD-Core Version:    0.7.0.1
  */

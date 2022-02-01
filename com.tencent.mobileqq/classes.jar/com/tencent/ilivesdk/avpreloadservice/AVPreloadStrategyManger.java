@@ -18,9 +18,12 @@ public class AVPreloadStrategyManger
   
   public AVPreloadStrategyManger()
   {
-    this.b.put(AVPreloadServiceInterface.AVPreloadScenes.SWITCH_ROOM, Integer.valueOf(3));
+    Map localMap = this.b;
+    AVPreloadServiceInterface.AVPreloadScenes localAVPreloadScenes = AVPreloadServiceInterface.AVPreloadScenes.SWITCH_ROOM;
+    Integer localInteger = Integer.valueOf(3);
+    localMap.put(localAVPreloadScenes, localInteger);
     this.b.put(AVPreloadServiceInterface.AVPreloadScenes.CLICKED_FEEDS, Integer.valueOf(6));
-    this.b.put(AVPreloadServiceInterface.AVPreloadScenes.LIVE_TAB, Integer.valueOf(3));
+    this.b.put(AVPreloadServiceInterface.AVPreloadScenes.LIVE_TAB, localInteger);
     this.b.put(AVPreloadServiceInterface.AVPreloadScenes.NO_UPDATE_FEEDS, Integer.valueOf(5));
   }
   
@@ -66,35 +69,34 @@ public class AVPreloadStrategyManger
   
   public void a(AVPreloadServiceInterface.AVPreloadScenes paramAVPreloadScenes, AVPreloadTask paramAVPreloadTask)
   {
-    Object localObject = (List)this.jdField_a_of_type_JavaUtilMap.get(paramAVPreloadScenes);
-    if (localObject == null)
+    List localList = (List)this.jdField_a_of_type_JavaUtilMap.get(paramAVPreloadScenes);
+    Object localObject = localList;
+    if (localList == null)
     {
       localObject = new CopyOnWriteArrayList();
       this.jdField_a_of_type_JavaUtilMap.put(paramAVPreloadScenes, localObject);
     }
-    for (;;)
+    if (((List)localObject).contains(paramAVPreloadTask)) {
+      ((List)localObject).remove(paramAVPreloadTask);
+    }
+    ((List)localObject).add(paramAVPreloadTask);
+    int i = a(paramAVPreloadScenes);
+    if (i == 0)
     {
-      if (((List)localObject).contains(paramAVPreloadTask)) {
-        ((List)localObject).remove(paramAVPreloadTask);
+      ((List)localObject).clear();
+      paramAVPreloadTask = new StringBuilder();
+      paramAVPreloadTask.append("add task max size == 0, scene ");
+      paramAVPreloadTask.append(paramAVPreloadScenes);
+      AVPreloadLog.c("AVPreload|AVPreloadStrategyManger", paramAVPreloadTask.toString(), new Object[0]);
+      return;
+    }
+    while (((List)localObject).size() > i)
+    {
+      paramAVPreloadTask = this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadStrategyManger$AVPreloadStrategyChangeListener;
+      if (paramAVPreloadTask != null) {
+        paramAVPreloadTask.a(paramAVPreloadScenes, (AVPreloadTask)((List)localObject).get(0));
       }
-      ((List)localObject).add(paramAVPreloadTask);
-      int i = a(paramAVPreloadScenes);
-      if (i == 0)
-      {
-        ((List)localObject).clear();
-        AVPreloadLog.c("AVPreload|AVPreloadStrategyManger", "add task max size == 0, scene " + paramAVPreloadScenes, new Object[0]);
-      }
-      for (;;)
-      {
-        return;
-        while (((List)localObject).size() > i)
-        {
-          if (this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadStrategyManger$AVPreloadStrategyChangeListener != null) {
-            this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadStrategyManger$AVPreloadStrategyChangeListener.a(paramAVPreloadScenes, (AVPreloadTask)((List)localObject).get(0));
-          }
-          ((List)localObject).remove(0);
-        }
-      }
+      ((List)localObject).remove(0);
     }
   }
   
@@ -105,12 +107,12 @@ public class AVPreloadStrategyManger
       paramAVPreloadTask.d(0);
       return;
     }
-    paramAVPreloadTask.d(15);
+    paramAVPreloadTask.d(60);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadservice.AVPreloadStrategyManger
  * JD-Core Version:    0.7.0.1
  */

@@ -9,9 +9,7 @@ class ConfessHalfScreenActivity$ConfessBrowserFragment$1
   
   public Object a(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 2) {
       return null;
     }
     return new ConfessHalfScreenActivity.ConfessBrowserFragment.ConfessUIStyleHandler(this.a);
@@ -19,7 +17,7 @@ class ConfessHalfScreenActivity$ConfessBrowserFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity.ConfessBrowserFragment.1
  * JD-Core Version:    0.7.0.1
  */

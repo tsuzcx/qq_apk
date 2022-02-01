@@ -45,17 +45,18 @@ public class ClickPreventableTextView
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.jdField_a_of_type_Boolean)
+    {
       this.jdField_a_of_type_Boolean = false;
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-        this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+      View.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidViewView$OnClickListener;
+      if (localOnClickListener != null) {
+        localOnClickListener.onClick(paramView);
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -77,7 +78,7 @@ public class ClickPreventableTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.ClickPreventableTextView
  * JD-Core Version:    0.7.0.1
  */

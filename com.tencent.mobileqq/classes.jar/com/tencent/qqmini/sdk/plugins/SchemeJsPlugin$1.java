@@ -17,23 +17,31 @@ class SchemeJsPlugin$1
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    QMLog.d("SchemeJsPlugin", "onReceiveResult resultCode : " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReceiveResult resultCode : ");
+    localStringBuilder.append(paramInt);
+    QMLog.d("SchemeJsPlugin", localStringBuilder.toString());
     if (paramInt == 1)
     {
       this.val$req.ok();
       return;
     }
-    String str = "";
     if (paramBundle != null) {
-      str = paramBundle.getString("errMsg");
+      paramBundle = paramBundle.getString("errMsg");
+    } else {
+      paramBundle = "";
     }
-    QMLog.d("SchemeJsPlugin", this.val$scheme + " failed, errMsg : " + str);
-    this.val$req.fail(str);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.val$scheme);
+    localStringBuilder.append(" failed, errMsg : ");
+    localStringBuilder.append(paramBundle);
+    QMLog.d("SchemeJsPlugin", localStringBuilder.toString());
+    this.val$req.fail(paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.SchemeJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

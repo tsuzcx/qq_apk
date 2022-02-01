@@ -65,26 +65,21 @@ public final class ProfileDisplaySettingItem
   
   public final boolean b()
   {
-    boolean bool;
-    switch (this.e)
-    {
-    default: 
-      bool = true;
-    }
-    while (ProfileSettingUtils.a.a(this.b)) {
-      if (!bool)
-      {
-        return true;
-        bool = true;
-        continue;
-        bool = false;
-      }
-      else
-      {
-        return false;
+    int i = this.e;
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (i != 0) {
+      if (i != 1) {
+        bool1 = bool2;
+      } else {
+        bool1 = false;
       }
     }
-    return bool;
+    bool2 = bool1;
+    if (ProfileSettingUtils.a.a(this.b)) {
+      bool2 = bool1 ^ true;
+    }
+    return bool2;
   }
   
   public final int c()
@@ -119,27 +114,43 @@ public final class ProfileDisplaySettingItem
   
   public final int g()
   {
-    switch (this.e)
+    int j = this.e;
+    int i = j;
+    if (j != 0)
     {
-    default: 
-      return 0;
-    case 0: 
-      return this.e;
-    case 1: 
-      return this.e;
+      i = j;
+      if (j != 1)
+      {
+        i = j;
+        if (j != 2) {
+          i = 0;
+        }
+      }
     }
-    return this.e;
+    return i;
   }
   
   @NotNull
   public String toString()
   {
-    return "ProfileDisplaySettingItem(type=" + this.jdField_a_of_type_Int + ", fieldId=" + this.b + ", titleResId=" + this.c + ", state=" + this.e + ", changed=" + this.jdField_a_of_type_Boolean + ')';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ProfileDisplaySettingItem(type=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", fieldId=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", titleResId=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", state=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", changed=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(')');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilesetting.ProfileDisplaySettingItem
  * JD-Core Version:    0.7.0.1
  */

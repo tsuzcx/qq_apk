@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <dov.com.qq.im.aeeditor.module.clip.image.AEImageCropperContainer android:id="@id/kuj" android:background="#fff2f2f5" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" app:addPaddingToMakeSquare="false" app:fitToCenter="false" app:gridColor="@color/al3" app:gridOpacity="0.7" app:gridThickness="1.1999817dip" />
-    <RelativeLayout android:background="#fffafafb" android:layout_width="fill_parent" android:layout_height="182.0dip">
-        <ImageView android:id="@id/mt_" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="20.0dip" android:layout_marginTop="14.0dip" android:src="@drawable/g5d" android:scaleType="centerInside" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-        <TextView android:textSize="12.0sp" android:textColor="@color/aiv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/wpm" android:layout_centerHorizontal="true" />
-        <ImageView android:id="@id/mta" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginTop="14.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/g5l" android:scaleType="centerInside" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="52.0dip">
-            <dov.com.qq.im.aeeditor.module.clip.image.AEEditorCropperRatioButton android:id="@id/mvf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-2.0dip" android:layout_marginRight="-2.0dip" android:layout_weight="1.0" />
-            <dov.com.qq.im.aeeditor.module.clip.image.AEEditorCropperRatioButton android:id="@id/mvg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-2.0dip" android:layout_marginRight="-2.0dip" android:layout_weight="1.0" />
-            <dov.com.qq.im.aeeditor.module.clip.image.AEEditorCropperRatioButton android:id="@id/mvh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-2.0dip" android:layout_marginRight="-2.0dip" android:layout_weight="1.0" />
-            <dov.com.qq.im.aeeditor.module.clip.image.AEEditorCropperRatioButton android:id="@id/mvi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-2.0dip" android:layout_marginRight="-2.0dip" android:layout_weight="1.0" />
-            <dov.com.qq.im.aeeditor.module.clip.image.AEEditorCropperRatioButton android:id="@id/mvj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-2.0dip" android:layout_marginRight="-2.0dip" android:layout_weight="1.0" />
-        </LinearLayout>
-    </RelativeLayout>
-</LinearLayout>
+<FrameLayout android:descendantFocusability="blocksDescendants" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:textSize="14.0sp" android:gravity="center" android:id="@id/mo7" android:paddingLeft="12.0dip" android:paddingTop="4.0dip" android:paddingRight="12.0dip" android:paddingBottom="4.0dip" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="12.0dip" android:drawablePadding="7.0dip" />
+</FrameLayout>

@@ -17,12 +17,16 @@ public class DownloadingUrlEntry
   
   public static String makeKey(String paramString, int paramInt)
   {
-    return paramString + "_" + paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.DownloadingUrlEntry
  * JD-Core Version:    0.7.0.1
  */

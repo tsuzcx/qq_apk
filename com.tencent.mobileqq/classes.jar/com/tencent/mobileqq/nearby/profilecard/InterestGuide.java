@@ -21,7 +21,6 @@ import com.tencent.mobileqq.nearby.NearbyUtils;
 import com.tencent.mobileqq.widget.BounceScrollView;
 import com.tencent.mobileqq.widget.ScrollStateDetector;
 import com.tencent.mobileqq.widget.ScrollStateDetector.OnScrollListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.util.WeakReferenceHandler;
 import java.lang.ref.WeakReference;
 
@@ -45,18 +44,11 @@ public class InterestGuide
   int d = 0;
   int e = 3;
   
-  static
-  {
-    jdField_a_of_type_JavaLangBoolean = null;
-    jdField_a_of_type_JavaLangString = null;
-    jdField_a_of_type_JavaLangRefWeakReference = null;
-  }
-  
   public InterestGuide(String paramString, View paramView, int paramInt)
   {
     this.jdField_b_of_type_JavaLangString = paramString;
     this.e = paramInt;
-    paramString = (BounceScrollView)paramView.findViewById(2131363856);
+    paramString = (BounceScrollView)paramView.findViewById(2131363784);
     if (paramString != null) {
       paramString.setScrollListener(new ScrollStateDetector(this, paramString.getContext()));
     }
@@ -82,12 +74,11 @@ public class InterestGuide
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 100L);
       }
     }
-    for (;;)
+    else
     {
-      this.d = paramInt2;
-      return;
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
     }
+    this.d = paramInt2;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -95,20 +86,15 @@ public class InterestGuide
     if (NearbyUtils.a()) {
       NearbyUtils.a("InterestGuide", "MSG_CHECK_INTEREST", new Object[] { Integer.valueOf(paramMessage.what), Integer.valueOf(this.d), Integer.valueOf(this.e), Integer.valueOf(this.jdField_a_of_type_AndroidViewView.getMeasuredHeight()) });
     }
-    Context localContext;
-    int k;
-    Object localObject;
-    int i;
-    int m;
-    int j;
     if ((paramMessage.what == 0) && (this.d == 0) && (this.e != 1) && (this.jdField_a_of_type_AndroidViewView.getMeasuredHeight() > 0))
     {
-      if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null)
+      paramMessage = this.jdField_a_of_type_AndroidWidgetPopupWindow;
+      if (paramMessage != null)
       {
-        this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+        paramMessage.dismiss();
         this.jdField_a_of_type_AndroidWidgetPopupWindow = null;
       }
-      localContext = this.jdField_a_of_type_AndroidViewView.getContext();
+      Context localContext = this.jdField_a_of_type_AndroidViewView.getContext();
       if ((this.jdField_a_of_type_ArrayOfInt == null) || (this.jdField_a_of_type_AndroidGraphicsRectF == null))
       {
         this.jdField_a_of_type_ArrayOfInt = new int[2];
@@ -119,39 +105,46 @@ public class InterestGuide
         this.jdField_a_of_type_Float = paramMessage.density;
         this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Float * 120.0F));
       }
-      k = 0;
-      localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131377295);
+      Object localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131376750);
+      int j;
+      int k;
       if (localObject != null)
       {
         ((View)localObject).getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
-        paramMessage = ((View)localObject).findViewById(2131379533);
-        localObject = ((View)localObject).findViewById(2131370153);
+        paramMessage = ((View)localObject).findViewById(2131378881);
+        localObject = ((View)localObject).findViewById(2131369824);
         i = this.jdField_a_of_type_ArrayOfInt[1];
-        k = paramMessage.getMeasuredHeight() + i + ((View)localObject).getMeasuredHeight();
+        j = paramMessage.getMeasuredHeight();
+        k = ((View)localObject).getMeasuredHeight() + (i + j);
+      }
+      else
+      {
+        k = 0;
       }
       paramMessage = new int[3];
-      Message tmp268_267 = paramMessage;
-      tmp268_267[0] = 2131363801;
-      Message tmp273_268 = tmp268_267;
-      tmp273_268[1] = 2131372200;
-      Message tmp278_273 = tmp273_268;
-      tmp278_273[2] = 2131368538;
-      tmp278_273;
-      i = this.c;
-      m = 0;
-      if (m < paramMessage.length)
+      Message tmp272_271 = paramMessage;
+      tmp272_271[0] = 2131363731;
+      Message tmp277_272 = tmp272_271;
+      tmp277_272[1] = 2131371784;
+      Message tmp282_277 = tmp277_272;
+      tmp282_277[2] = 2131368282;
+      tmp282_277;
+      int i = this.c;
+      int m = 0;
+      while (m < paramMessage.length)
       {
         localObject = this.jdField_a_of_type_AndroidViewView.findViewById(paramMessage[m]);
         int n;
         if ((localObject != null) && (((View)localObject).getVisibility() == 0))
         {
           ((View)localObject).getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
+          int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
           j = i;
-          if (this.jdField_a_of_type_ArrayOfInt[1] > k)
+          if (arrayOfInt[1] > k)
           {
             j = i;
-            if (this.jdField_a_of_type_ArrayOfInt[1] < i) {
-              j = this.jdField_a_of_type_ArrayOfInt[1];
+            if (arrayOfInt[1] < i) {
+              j = arrayOfInt[1];
             }
           }
           n = j;
@@ -161,11 +154,8 @@ public class InterestGuide
             n = j;
           }
         }
-        for (;;)
+        else
         {
-          m += 1;
-          i = n;
-          break;
           n = i;
           if (NearbyUtils.a())
           {
@@ -173,31 +163,37 @@ public class InterestGuide
             n = i;
           }
         }
+        m += 1;
+        i = n;
       }
       this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, k, this.jdField_b_of_type_Int, i);
       if (NearbyUtils.a()) {
         NearbyUtils.a("InterestGuide", "checkShowGuide", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.c), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(k), Integer.valueOf(i) });
       }
-      localObject = null;
       i = 0;
-      paramMessage = (Message)localObject;
-      if (0 == 0)
+      for (;;)
       {
-        paramMessage = (Message)localObject;
-        if (i < this.jdField_a_of_type_ArrayOfAndroidViewView.length)
-        {
-          if ((this.jdField_a_of_type_ArrayOfAndroidViewView[i] == null) || (this.jdField_a_of_type_ArrayOfAndroidViewView[i].getVisibility() != 0)) {}
-          do
-          {
-            i += 1;
-            break;
-            this.jdField_a_of_type_ArrayOfAndroidViewView[i].getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
-            j = this.jdField_a_of_type_ArrayOfAndroidViewView[i].getMeasuredWidth();
-            k = this.jdField_a_of_type_ArrayOfAndroidViewView[i].getMeasuredHeight();
-          } while (!this.jdField_a_of_type_AndroidGraphicsRectF.contains(this.jdField_a_of_type_ArrayOfInt[0], this.jdField_a_of_type_ArrayOfInt[1], j + this.jdField_a_of_type_ArrayOfInt[0], k + this.jdField_a_of_type_ArrayOfInt[1]));
-          paramMessage = this.jdField_a_of_type_ArrayOfAndroidViewView[i];
+        paramMessage = this.jdField_a_of_type_ArrayOfAndroidViewView;
+        if (i >= paramMessage.length) {
+          break;
         }
+        if ((paramMessage[i] != null) && (paramMessage[i].getVisibility() == 0))
+        {
+          this.jdField_a_of_type_ArrayOfAndroidViewView[i].getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
+          j = this.jdField_a_of_type_ArrayOfAndroidViewView[i].getMeasuredWidth();
+          k = this.jdField_a_of_type_ArrayOfAndroidViewView[i].getMeasuredHeight();
+          paramMessage = this.jdField_a_of_type_AndroidGraphicsRectF;
+          localObject = this.jdField_a_of_type_ArrayOfInt;
+          if (paramMessage.contains(localObject[0], localObject[1], localObject[0] + j, localObject[1] + k))
+          {
+            paramMessage = this.jdField_a_of_type_ArrayOfAndroidViewView[i];
+            break label694;
+          }
+        }
+        i += 1;
       }
+      paramMessage = null;
+      label694:
       if (paramMessage != null)
       {
         localObject = new LinearLayout(localContext);
@@ -208,67 +204,67 @@ public class InterestGuide
         m = this.c - j - k;
         if (j > 0)
         {
-          if (m <= this.jdField_a_of_type_Int) {
-            break label1003;
+          if (m > this.jdField_a_of_type_Int)
+          {
+            paramMessage = new View(localContext);
           }
-          paramMessage = new View(localContext);
+          else
+          {
+            paramMessage = LayoutInflater.from(localContext).inflate(2131561189, null);
+            ((Button)paramMessage.findViewById(2131363819)).setOnClickListener(this);
+          }
           paramMessage.setBackgroundColor(i);
           ((LinearLayout)localObject).addView(paramMessage, new LinearLayout.LayoutParams(this.jdField_b_of_type_Int, j));
         }
         ((LinearLayout)localObject).addView(new View(localContext), new LinearLayout.LayoutParams(this.jdField_b_of_type_Int, k));
         if (m > 0)
         {
-          if (m <= this.jdField_a_of_type_Int) {
-            break label1032;
+          if (m > this.jdField_a_of_type_Int)
+          {
+            paramMessage = LayoutInflater.from(localContext).inflate(2131561188, null);
+            ((Button)paramMessage.findViewById(2131363819)).setOnClickListener(this);
           }
-          paramMessage = LayoutInflater.from(localContext).inflate(2131561349, null);
-          ((Button)paramMessage.findViewById(2131363891)).setOnClickListener(this);
+          else
+          {
+            paramMessage = new View(localContext);
+          }
+          paramMessage.setBackgroundColor(i);
+          ((LinearLayout)localObject).addView(paramMessage, new LinearLayout.LayoutParams(this.jdField_b_of_type_Int, m));
         }
+        if (NearbyUtils.a()) {
+          NearbyUtils.a("InterestGuide", "checkShowGuide", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m) });
+        }
+        this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(localContext);
+        this.jdField_a_of_type_AndroidWidgetPopupWindow.setWidth(this.jdField_b_of_type_Int);
+        this.jdField_a_of_type_AndroidWidgetPopupWindow.setHeight(this.c);
+        this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView((View)localObject);
+        this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(null);
+        this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(false);
+        this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(this.jdField_a_of_type_AndroidViewView, 51, 0, 0);
       }
     }
-    for (;;)
-    {
-      paramMessage.setBackgroundColor(i);
-      ((LinearLayout)localObject).addView(paramMessage, new LinearLayout.LayoutParams(this.jdField_b_of_type_Int, m));
-      if (NearbyUtils.a()) {
-        NearbyUtils.a("InterestGuide", "checkShowGuide", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m) });
-      }
-      this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(localContext);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setWidth(this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setHeight(this.c);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView((View)localObject);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(null);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(false);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(this.jdField_a_of_type_AndroidViewView, 51, 0, 0);
-      return true;
-      label1003:
-      paramMessage = LayoutInflater.from(localContext).inflate(2131561350, null);
-      ((Button)paramMessage.findViewById(2131363891)).setOnClickListener(this);
-      break;
-      label1032:
-      paramMessage = new View(localContext);
-    }
+    return true;
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null)
+    paramView = this.jdField_a_of_type_AndroidWidgetPopupWindow;
+    if (paramView != null)
     {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
-      BounceScrollView localBounceScrollView = (BounceScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363856);
-      if (localBounceScrollView != null) {
-        localBounceScrollView.setScrollListener(null);
+      paramView.dismiss();
+      paramView = (BounceScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363784);
+      if (paramView != null) {
+        paramView.setScrollListener(null);
       }
       jdField_a_of_type_JavaLangRefWeakReference = null;
       jdField_a_of_type_JavaLangBoolean = Boolean.FALSE;
       ThreadManager.post(new InterestGuide.2(this), 5, null, false);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.InterestGuide
  * JD-Core Version:    0.7.0.1
  */

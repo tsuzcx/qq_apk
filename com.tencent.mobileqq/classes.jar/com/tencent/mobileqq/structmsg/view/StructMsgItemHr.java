@@ -35,21 +35,29 @@ public class StructMsgItemHr
       if (paramView == null) {
         paramBundle = new View(paramContext);
       }
-      if (this.o == 0) {
-        paramBundle.setBackgroundColor(-2170912);
-      }
-      do
+      int i = this.o;
+      if (i == 0)
       {
-        do
+        paramBundle.setBackgroundColor(-2170912);
+        return paramBundle;
+      }
+      paramContext = paramBundle;
+      if (i == 1)
+      {
+        paramBundle.setBackgroundResource(2130847707);
+        paramContext = paramBundle;
+        if (Build.VERSION.SDK_INT >= 11)
         {
+          paramBundle.setLayerType(1, null);
           return paramBundle;
-        } while (this.o != 1);
-        paramBundle.setBackgroundResource(2130847840);
-      } while (Build.VERSION.SDK_INT < 11);
-      paramBundle.setLayerType(1, null);
-      return paramBundle;
+        }
+      }
     }
-    return null;
+    else
+    {
+      paramContext = null;
+    }
+    return paramContext;
   }
   
   public String a()
@@ -75,76 +83,78 @@ public class StructMsgItemHr
   public void a(ObjectOutput paramObjectOutput)
   {
     super.a(paramObjectOutput);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str = "true";; str = "false")
-    {
-      paramObjectOutput.writeUTF(str);
-      paramObjectOutput.writeInt(this.o);
-      return;
+    String str;
+    if (this.jdField_a_of_type_Boolean) {
+      str = "true";
+    } else {
+      str = "false";
     }
+    paramObjectOutput.writeUTF(str);
+    paramObjectOutput.writeInt(this.o);
   }
   
   public void a(XmlSerializer paramXmlSerializer)
   {
     paramXmlSerializer.startTag(null, "hr");
-    if (this.jdField_a_of_type_Int > 4) {
-      if (!this.jdField_a_of_type_Boolean) {
-        break label76;
-      }
-    }
-    label76:
-    for (String str = "true";; str = "false")
+    if (this.jdField_a_of_type_Int > 4)
     {
-      paramXmlSerializer.attribute(null, "hidden", str);
-      if (this.jdField_a_of_type_Int >= 9) {
-        paramXmlSerializer.attribute(null, "style", String.valueOf(this.o));
+      String str;
+      if (this.jdField_a_of_type_Boolean) {
+        str = "true";
+      } else {
+        str = "false";
       }
-      paramXmlSerializer.endTag(null, "hr");
-      return;
+      paramXmlSerializer.attribute(null, "hidden", str);
     }
+    if (this.jdField_a_of_type_Int >= 9) {
+      paramXmlSerializer.attribute(null, "style", String.valueOf(this.o));
+    }
+    paramXmlSerializer.endTag(null, "hr");
   }
   
   public boolean a(StructMsgNode paramStructMsgNode)
   {
-    if (paramStructMsgNode == null) {}
-    for (;;)
-    {
+    if (paramStructMsgNode == null) {
       return true;
-      if (this.jdField_a_of_type_Int > 4)
-      {
-        String str = paramStructMsgNode.a("hidden");
-        if ((str != null) && (str.toLowerCase().equals("true"))) {
-          this.jdField_a_of_type_Boolean = true;
-        }
+    }
+    if (this.jdField_a_of_type_Int > 4)
+    {
+      String str = paramStructMsgNode.a("hidden");
+      if ((str != null) && (str.toLowerCase().equals("true"))) {
+        this.jdField_a_of_type_Boolean = true;
       }
-      if (this.jdField_a_of_type_Int >= 9)
-      {
-        paramStructMsgNode = paramStructMsgNode.a("style");
-        if (!TextUtils.isEmpty(paramStructMsgNode)) {
-          try
+    }
+    if (this.jdField_a_of_type_Int >= 9)
+    {
+      paramStructMsgNode = paramStructMsgNode.a("style");
+      if (!TextUtils.isEmpty(paramStructMsgNode)) {
+        try
+        {
+          this.o = Integer.parseInt(paramStructMsgNode);
+          if (QLog.isColorLevel())
           {
-            this.o = Integer.parseInt(paramStructMsgNode);
-            if (QLog.isColorLevel())
-            {
-              QLog.i("StructMsg", 2, "type=" + this.o);
-              return true;
-            }
+            paramStructMsgNode = new StringBuilder();
+            paramStructMsgNode.append("type=");
+            paramStructMsgNode.append(this.o);
+            QLog.i("StructMsg", 2, paramStructMsgNode.toString());
+            return true;
           }
-          catch (NumberFormatException paramStructMsgNode)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("StructMsg", 2, "", paramStructMsgNode);
-            }
+        }
+        catch (NumberFormatException paramStructMsgNode)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("StructMsg", 2, "", paramStructMsgNode);
           }
+          return false;
         }
       }
     }
-    return false;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemHr
  * JD-Core Version:    0.7.0.1
  */

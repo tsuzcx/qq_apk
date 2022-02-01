@@ -18,7 +18,7 @@ public class WMTokenizer
   private static final int ALIGN_TOP = 3;
   private static final String ELLIPSIZE = "...";
   private static final String STRING_EMPTY = "";
-  private static final String TAG = WMTokenizer.class.getSimpleName();
+  private static final String TAG = "WMTokenizer";
   protected int mAlignMode;
   private float mCharHeight;
   private float mCharWidth;
@@ -65,77 +65,95 @@ public class WMTokenizer
     if ((this.mWidth <= 0) || (TextUtils.isEmpty(this.mText))) {
       LogUtils.e(TAG, "ERROR => mWidth <= 0 || TextUtils.isEmpty(mText)");
     }
-    float f = 0.0F;
-    int j = 0;
     int i = 0;
-    int k;
-    if (i < this.mText.length())
-    {
-      f += this.mTextWidths[i];
-      if (f > this.mWidth)
-      {
-        f -= this.mTextWidths[i];
-        k = i - 1;
-        label75:
-        if (k <= j) {
-          break label481;
-        }
-        if (isDelimiter(this.mText.charAt(k))) {
-          i = k + 1;
-        }
-      }
-    }
-    label481:
+    int k = 0;
+    float f1 = 0.0F;
+    int j = i;
     for (;;)
     {
-      Object localObject = this.mText.substring(j, i);
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        LogUtils.e(TAG, "ERROR => TextUtils.isEmpty(textRow)");
+      if (j >= this.mText.length()) {
+        break label230;
       }
-      WMTokenizer.Token localToken = new WMTokenizer.Token(this);
-      localToken.text = ((String)localObject);
-      localToken.width = f;
-      localToken.height = this.mCharHeight;
-      this.mTokens.add(localToken);
-      j = i;
-      f = 0.0F;
-      break;
-      f -= this.mTextWidths[k];
-      k -= 1;
-      break label75;
-      f += this.mSpacingPlus;
-      i += 1;
-      break;
-      if (j < this.mText.length())
+      localObject1 = this.mTextWidths;
+      f1 += localObject1[j];
+      if (f1 > this.mWidth)
       {
-        localObject = new WMTokenizer.Token(this);
-        ((WMTokenizer.Token)localObject).text = this.mText.substring(j);
-        ((WMTokenizer.Token)localObject).width = f;
-        ((WMTokenizer.Token)localObject).height = this.mCharHeight;
-        this.mTokens.add(localObject);
-      }
-      if ((this.mHeight <= 0) || (this.mTokens.size() * this.mCharHeight <= this.mHeight)) {}
-      for (boolean bool = true;; bool = false)
-      {
-        this.mFitIn = bool;
-        if ((this.mHeight <= 0) || (this.mHeight < this.mCharHeight)) {
-          break;
+        f1 -= localObject1[j];
+        int m = j - 1;
+        for (;;)
+        {
+          i = j;
+          if (m <= k) {
+            break;
+          }
+          if (isDelimiter(this.mText.charAt(m)))
+          {
+            i = m + 1;
+            break;
+          }
+          f1 -= this.mTextWidths[m];
+          m -= 1;
         }
-        i = (int)(this.mHeight / this.mCharHeight);
+        localObject1 = this.mText.substring(k, i);
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          LogUtils.e(TAG, "ERROR => TextUtils.isEmpty(textRow)");
+        }
+        localObject2 = new WMTokenizer.Token(this);
+        ((WMTokenizer.Token)localObject2).text = ((String)localObject1);
+        ((WMTokenizer.Token)localObject2).width = f1;
+        ((WMTokenizer.Token)localObject2).height = this.mCharHeight;
+        this.mTokens.add(localObject2);
+        k = i;
+        break;
+      }
+      f1 += this.mSpacingPlus;
+      j += 1;
+    }
+    label230:
+    if (k < this.mText.length())
+    {
+      localObject1 = new WMTokenizer.Token(this);
+      ((WMTokenizer.Token)localObject1).text = this.mText.substring(k);
+      ((WMTokenizer.Token)localObject1).width = f1;
+      ((WMTokenizer.Token)localObject1).height = this.mCharHeight;
+      this.mTokens.add(localObject1);
+    }
+    boolean bool;
+    if ((this.mHeight > 0) && (this.mTokens.size() * this.mCharHeight > this.mHeight)) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    this.mFitIn = bool;
+    i = this.mHeight;
+    if (i > 0)
+    {
+      f1 = i;
+      float f2 = this.mCharHeight;
+      if (f1 >= f2)
+      {
+        i = (int)(i / f2);
         if (this.mTokens.size() > i)
         {
-          localObject = (WMTokenizer.Token)this.mTokens.get(i - 1);
-          if (((WMTokenizer.Token)localObject).text.length() > 3) {
-            ((WMTokenizer.Token)localObject).text = (((WMTokenizer.Token)localObject).text.substring(0, ((WMTokenizer.Token)localObject).text.length() - 3) + "...");
+          localObject1 = (WMTokenizer.Token)this.mTokens.get(i - 1);
+          if (((WMTokenizer.Token)localObject1).text.length() > 3)
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append(((WMTokenizer.Token)localObject1).text.substring(0, ((WMTokenizer.Token)localObject1).text.length() - 3));
+            ((StringBuilder)localObject2).append("...");
+            ((WMTokenizer.Token)localObject1).text = ((StringBuilder)localObject2).toString();
           }
         }
         while (this.mTokens.size() > i) {
           this.mTokens.remove(i);
         }
       }
-      LogUtils.d(TAG, "mTokens => " + this.mTokens.toString());
-      return;
     }
+    Object localObject1 = TAG;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("mTokens => ");
+    ((StringBuilder)localObject2).append(this.mTokens.toString());
+    LogUtils.d((String)localObject1, ((StringBuilder)localObject2).toString());
   }
   
   private void tokenizerHorizontalSingleRow()
@@ -143,63 +161,63 @@ public class WMTokenizer
     if ((this.mWidth <= 0) || (TextUtils.isEmpty(this.mText))) {
       LogUtils.e(TAG, "ERROR => mWidth <= 0 || TextUtils.isEmpty(mText)");
     }
-    float f1 = 0.0F;
     int i = 0;
-    int j;
-    if (i < this.mText.length())
+    float f = 0.0F;
+    while (i < this.mText.length())
     {
-      f1 += this.mTextWidths[i];
-      if (f1 > this.mWidth)
+      localObject1 = this.mTextWidths;
+      f += localObject1[i];
+      if (f > this.mWidth)
       {
-        float f2 = this.mTextWidths[i];
+        f -= localObject1[i];
         j = i - 1;
-        f1 -= f2;
+        i = 1;
+        break label101;
       }
+      f += this.mSpacingPlus;
+      i += 1;
     }
-    for (i = 1;; i = 0)
+    int k = 0;
+    int j = i;
+    i = k;
+    label101:
+    k = this.mHeight;
+    boolean bool;
+    if (((k <= 0) || (k >= this.mCharHeight)) && (i == 0)) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.mFitIn = bool;
+    Object localObject1 = new WMTokenizer.Token(this);
+    if (j >= this.mText.length())
     {
-      boolean bool;
-      label104:
-      WMTokenizer.Token localToken;
-      if (((this.mHeight <= 0) || (this.mHeight >= this.mCharHeight)) && (i == 0))
-      {
-        bool = true;
-        this.mFitIn = bool;
-        localToken = new WMTokenizer.Token(this);
-        if (j < this.mText.length()) {
-          break label218;
-        }
-        localToken.text = this.mText;
-      }
-      for (;;)
-      {
-        localToken.width = f1;
-        localToken.height = this.mCharHeight;
-        this.mTokens.add(localToken);
-        LogUtils.d(TAG, "mTokens => " + this.mTokens.toString());
-        return;
-        f1 += this.mSpacingPlus;
-        i += 1;
-        break;
-        bool = false;
-        break label104;
-        label218:
-        if (j > 1)
-        {
-          String str = this.mText.substring(0, j - 1 + 1);
-          str = str + "...";
-          if (TextUtils.isEmpty(str)) {
-            LogUtils.e(TAG, "ERROR => TextUtils.isEmpty(text2Draw)");
-          }
-          localToken.text = str;
-        }
-        else
-        {
-          localToken.text = this.mText;
-        }
-      }
-      j = i;
+      ((WMTokenizer.Token)localObject1).text = this.mText;
     }
+    else if (j > 1)
+    {
+      localObject2 = this.mText.substring(0, j - 1 + 1);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject2);
+      localStringBuilder.append("...");
+      localObject2 = localStringBuilder.toString();
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
+        LogUtils.e(TAG, "ERROR => TextUtils.isEmpty(text2Draw)");
+      }
+      ((WMTokenizer.Token)localObject1).text = ((String)localObject2);
+    }
+    else
+    {
+      ((WMTokenizer.Token)localObject1).text = this.mText;
+    }
+    ((WMTokenizer.Token)localObject1).width = f;
+    ((WMTokenizer.Token)localObject1).height = this.mCharHeight;
+    this.mTokens.add(localObject1);
+    localObject1 = TAG;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("mTokens => ");
+    ((StringBuilder)localObject2).append(this.mTokens.toString());
+    LogUtils.d((String)localObject1, ((StringBuilder)localObject2).toString());
   }
   
   private void tokenizerVertical()
@@ -217,76 +235,95 @@ public class WMTokenizer
     if ((this.mHeight <= 0) || (TextUtils.isEmpty(this.mText))) {
       LogUtils.e(TAG, "ERROR => mHeight <= 0 || TextUtils.isEmpty(mText)");
     }
-    float f = 0.0F;
-    int j = 0;
     int i = 0;
-    int k;
-    if (i < this.mText.length())
-    {
-      f += this.mCharHeight;
-      if (f > this.mHeight)
-      {
-        f -= this.mCharHeight;
-        k = i - 1;
-        label71:
-        if (k <= j) {
-          break label467;
-        }
-        if (isDelimiter(this.mText.charAt(k))) {
-          i = k + 1;
-        }
-      }
-    }
-    label467:
+    int k = 0;
+    float f1 = 0.0F;
+    int j = i;
+    float f2;
     for (;;)
     {
-      Object localObject = this.mText.substring(j, i);
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        LogUtils.e(TAG, "ERROR => TextUtils.isEmpty(textColumn)");
+      if (j >= this.mText.length()) {
+        break label211;
       }
-      WMTokenizer.Token localToken = new WMTokenizer.Token(this);
-      localToken.text = ((String)localObject);
-      localToken.width = this.mCharWidth;
-      localToken.height = f;
-      this.mTokens.add(localToken);
-      j = i;
-      f = 0.0F;
-      break;
-      f -= this.mCharHeight;
-      k -= 1;
-      break label71;
-      i += 1;
-      break;
-      if (j < this.mText.length())
+      f2 = this.mCharHeight;
+      f1 += f2;
+      if (f1 > this.mHeight)
       {
-        localObject = new WMTokenizer.Token(this);
-        ((WMTokenizer.Token)localObject).text = this.mText.substring(j);
-        ((WMTokenizer.Token)localObject).width = this.mCharWidth;
-        ((WMTokenizer.Token)localObject).height = f;
-        this.mTokens.add(localObject);
-      }
-      if ((this.mWidth <= 0) || (this.mTokens.size() * this.mCharWidth <= this.mWidth)) {}
-      for (boolean bool = true;; bool = false)
-      {
-        this.mFitIn = bool;
-        if ((this.mWidth <= 0) || (this.mWidth < this.mCharWidth)) {
-          break;
+        f1 -= f2;
+        int m = j - 1;
+        for (;;)
+        {
+          i = j;
+          if (m <= k) {
+            break;
+          }
+          if (isDelimiter(this.mText.charAt(m)))
+          {
+            i = m + 1;
+            break;
+          }
+          f1 -= this.mCharHeight;
+          m -= 1;
         }
-        i = (int)(this.mWidth / this.mCharWidth);
+        localObject1 = this.mText.substring(k, i);
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          LogUtils.e(TAG, "ERROR => TextUtils.isEmpty(textColumn)");
+        }
+        localObject2 = new WMTokenizer.Token(this);
+        ((WMTokenizer.Token)localObject2).text = ((String)localObject1);
+        ((WMTokenizer.Token)localObject2).width = this.mCharWidth;
+        ((WMTokenizer.Token)localObject2).height = f1;
+        this.mTokens.add(localObject2);
+        k = i;
+        break;
+      }
+      j += 1;
+    }
+    label211:
+    if (k < this.mText.length())
+    {
+      localObject1 = new WMTokenizer.Token(this);
+      ((WMTokenizer.Token)localObject1).text = this.mText.substring(k);
+      ((WMTokenizer.Token)localObject1).width = this.mCharWidth;
+      ((WMTokenizer.Token)localObject1).height = f1;
+      this.mTokens.add(localObject1);
+    }
+    boolean bool;
+    if ((this.mWidth > 0) && (this.mTokens.size() * this.mCharWidth > this.mWidth)) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    this.mFitIn = bool;
+    i = this.mWidth;
+    if (i > 0)
+    {
+      f1 = i;
+      f2 = this.mCharWidth;
+      if (f1 >= f2)
+      {
+        i = (int)(i / f2);
         if (this.mTokens.size() > i)
         {
-          localObject = (WMTokenizer.Token)this.mTokens.get(i - 1);
-          if (((WMTokenizer.Token)localObject).text.length() > 3) {
-            ((WMTokenizer.Token)localObject).text = (((WMTokenizer.Token)localObject).text.substring(0, ((WMTokenizer.Token)localObject).text.length() - 3) + "...");
+          localObject1 = (WMTokenizer.Token)this.mTokens.get(i - 1);
+          if (((WMTokenizer.Token)localObject1).text.length() > 3)
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append(((WMTokenizer.Token)localObject1).text.substring(0, ((WMTokenizer.Token)localObject1).text.length() - 3));
+            ((StringBuilder)localObject2).append("...");
+            ((WMTokenizer.Token)localObject1).text = ((StringBuilder)localObject2).toString();
           }
         }
         while (this.mTokens.size() > i) {
           this.mTokens.remove(i);
         }
       }
-      LogUtils.d(TAG, "mTokens => " + this.mTokens.toString());
-      return;
     }
+    Object localObject1 = TAG;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("mTokens => ");
+    ((StringBuilder)localObject2).append(this.mTokens.toString());
+    LogUtils.d((String)localObject1, ((StringBuilder)localObject2).toString());
   }
   
   private void tokenizerVerticalSingleColumn()
@@ -294,44 +331,46 @@ public class WMTokenizer
     if ((this.mHeight <= 0) || (TextUtils.isEmpty(this.mText))) {
       LogUtils.e(TAG, "ERROR => mHeight <= 0 || TextUtils.isEmpty(mText)");
     }
-    WMTokenizer.Token localToken = new WMTokenizer.Token(this);
-    localToken.text = this.mText;
-    int i = (int)(this.mHeight / this.mCharHeight);
+    Object localObject = new WMTokenizer.Token(this);
+    ((WMTokenizer.Token)localObject).text = this.mText;
+    int j = (int)(this.mHeight / this.mCharHeight);
+    int i = this.mWidth;
     boolean bool;
-    if (((this.mWidth <= 0) || (this.mWidth >= this.mCharWidth)) && (i > this.mText.length()))
-    {
+    if (((i <= 0) || (i >= this.mCharWidth)) && (j > this.mText.length())) {
       bool = true;
-      this.mFitIn = bool;
-      if (i < this.mText.length())
+    } else {
+      bool = false;
+    }
+    this.mFitIn = bool;
+    if (j < this.mText.length())
+    {
+      str = this.mText.substring(0, j);
+      if (j > 3)
       {
-        String str = this.mText.substring(0, i);
-        if (i <= 3) {
-          break label242;
-        }
-        str = str.substring(0, i - 3);
-        str = str + "...";
-        label149:
-        localToken.text = str;
+        str = str.substring(0, j - 3);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append("...");
+        str = localStringBuilder.toString();
       }
-      localToken.width = this.mCharWidth;
-      if (i <= this.mText.length()) {
-        break label253;
+      else
+      {
+        LogUtils.e(TAG, "countColumn <= 3");
       }
+      ((WMTokenizer.Token)localObject).text = str;
+    }
+    ((WMTokenizer.Token)localObject).width = this.mCharWidth;
+    i = j;
+    if (j > this.mText.length()) {
       i = this.mText.length();
     }
-    label242:
-    label253:
-    for (;;)
-    {
-      localToken.height = (i * this.mCharHeight);
-      this.mTokens.add(localToken);
-      LogUtils.d(TAG, "mTokens => " + this.mTokens.toString());
-      return;
-      bool = false;
-      break;
-      LogUtils.e(TAG, "countColumn <= 3");
-      break label149;
-    }
+    ((WMTokenizer.Token)localObject).height = (i * this.mCharHeight);
+    this.mTokens.add(localObject);
+    String str = TAG;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("mTokens => ");
+    ((StringBuilder)localObject).append(this.mTokens.toString());
+    LogUtils.d(str, ((StringBuilder)localObject).toString());
   }
   
   public void doLayout()
@@ -340,129 +379,113 @@ public class WMTokenizer
     if (this.mTokens.isEmpty()) {
       return;
     }
-    label88:
-    Object localObject2;
-    if (this.mVertical)
-    {
-      f1 = (this.mWidth - this.mTokens.size() * this.mCharWidth) / 2.0F;
-      if (this.mAlignMode == 2)
-      {
-        f1 = this.mWidth - this.mCharWidth * this.mTokens.size();
-        localObject1 = this.mTokens.iterator();
-        if (!((Iterator)localObject1).hasNext()) {
-          break label455;
-        }
-        localObject2 = (WMTokenizer.Token)((Iterator)localObject1).next();
-        switch (this.mAlignMode)
-        {
-        }
-      }
-      for (;;)
-      {
-        ((WMTokenizer.Token)localObject2).x = f1;
-        f1 = ((WMTokenizer.Token)localObject2).width + f1;
-        break label88;
-        if (this.mAlignMode != 1) {
-          break;
-        }
-        f1 = (this.mWidth - this.mCharWidth * this.mTokens.size()) / 2.0F;
-        break;
-        ((WMTokenizer.Token)localObject2).y = 0.0F;
-        continue;
-        ((WMTokenizer.Token)localObject2).y = ((this.mHeight - ((WMTokenizer.Token)localObject2).height) / 2.0F);
-        continue;
-        ((WMTokenizer.Token)localObject2).y = (this.mHeight - ((WMTokenizer.Token)localObject2).height);
-      }
-    }
-    else
-    {
-      f1 = (this.mHeight - this.mCharHeight * this.mTokens.size()) / 2.0F;
-      if (this.mAlignMode == 4)
-      {
-        f1 = this.mHeight - this.mCharHeight * this.mTokens.size();
-        localObject1 = this.mTokens.iterator();
-        label302:
-        if (!((Iterator)localObject1).hasNext()) {
-          break label455;
-        }
-        localObject2 = (WMTokenizer.Token)((Iterator)localObject1).next();
-        switch (this.mAlignMode)
-        {
-        }
-      }
-      for (;;)
-      {
-        ((WMTokenizer.Token)localObject2).y = f1;
-        f1 = ((WMTokenizer.Token)localObject2).height + f1;
-        break label302;
-        if (this.mAlignMode != 1) {
-          break;
-        }
-        f1 = (this.mHeight - this.mCharHeight * this.mTokens.size()) / 2.0F;
-        break;
-        ((WMTokenizer.Token)localObject2).x = 0.0F;
-        continue;
-        ((WMTokenizer.Token)localObject2).x = ((this.mWidth - ((WMTokenizer.Token)localObject2).width) / 2.0F);
-        continue;
-        ((WMTokenizer.Token)localObject2).x = (this.mWidth - ((WMTokenizer.Token)localObject2).width);
-      }
-    }
-    label455:
-    Object localObject1 = (WMTokenizer.Token)this.mTokens.get(0);
-    float f1 = ((WMTokenizer.Token)localObject1).x;
-    float f2 = ((WMTokenizer.Token)localObject1).y;
-    float f3 = ((WMTokenizer.Token)localObject1).x;
-    float f4 = ((WMTokenizer.Token)localObject1).width;
-    float f5 = ((WMTokenizer.Token)localObject1).y;
-    this.mTextRect = new RectF(f1, f2, f3 + f4, ((WMTokenizer.Token)localObject1).height + f5);
+    boolean bool = this.mVertical;
     int i = 1;
-    label528:
-    if (i < this.mTokens.size())
+    Object localObject2;
+    if (bool)
+    {
+      f1 = this.mWidth;
+      float f3 = this.mTokens.size();
+      float f2 = this.mCharWidth;
+      f1 = (f1 - f3 * f2) / 2.0F;
+      j = this.mAlignMode;
+      if (j == 2) {
+        f1 = this.mWidth - f2 * this.mTokens.size();
+      } else if (j == 1) {
+        f1 = (this.mWidth - f2 * this.mTokens.size()) / 2.0F;
+      }
+      localObject1 = this.mTokens.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (WMTokenizer.Token)((Iterator)localObject1).next();
+        j = this.mAlignMode;
+        if (j != 1)
+        {
+          if (j != 3)
+          {
+            if (j == 4) {
+              ((WMTokenizer.Token)localObject2).y = (this.mHeight - ((WMTokenizer.Token)localObject2).height);
+            }
+          }
+          else {
+            ((WMTokenizer.Token)localObject2).y = 0.0F;
+          }
+        }
+        else {
+          ((WMTokenizer.Token)localObject2).y = ((this.mHeight - ((WMTokenizer.Token)localObject2).height) / 2.0F);
+        }
+        ((WMTokenizer.Token)localObject2).x = f1;
+        f1 += ((WMTokenizer.Token)localObject2).width;
+      }
+    }
+    float f1 = (this.mHeight - this.mCharHeight * this.mTokens.size()) / 2.0F;
+    int j = this.mAlignMode;
+    if (j == 4) {
+      f1 = this.mHeight - this.mCharHeight * this.mTokens.size();
+    } else if (j == 1) {
+      f1 = (this.mHeight - this.mCharHeight * this.mTokens.size()) / 2.0F;
+    }
+    Object localObject1 = this.mTokens.iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (WMTokenizer.Token)((Iterator)localObject1).next();
+      j = this.mAlignMode;
+      if (j != 0)
+      {
+        if (j != 1)
+        {
+          if (j == 2) {
+            ((WMTokenizer.Token)localObject2).x = (this.mWidth - ((WMTokenizer.Token)localObject2).width);
+          }
+        }
+        else {
+          ((WMTokenizer.Token)localObject2).x = ((this.mWidth - ((WMTokenizer.Token)localObject2).width) / 2.0F);
+        }
+      }
+      else {
+        ((WMTokenizer.Token)localObject2).x = 0.0F;
+      }
+      ((WMTokenizer.Token)localObject2).y = f1;
+      f1 += ((WMTokenizer.Token)localObject2).height;
+    }
+    localObject1 = (WMTokenizer.Token)this.mTokens.get(0);
+    this.mTextRect = new RectF(((WMTokenizer.Token)localObject1).x, ((WMTokenizer.Token)localObject1).y, ((WMTokenizer.Token)localObject1).x + ((WMTokenizer.Token)localObject1).width, ((WMTokenizer.Token)localObject1).y + ((WMTokenizer.Token)localObject1).height);
+    while (i < this.mTokens.size())
     {
       localObject1 = (WMTokenizer.Token)this.mTokens.get(i);
       localObject2 = this.mTextRect;
-      if (this.mTextRect.left > ((WMTokenizer.Token)localObject1).x) {
-        break label719;
+      if (((RectF)localObject2).left <= ((WMTokenizer.Token)localObject1).x) {
+        f1 = this.mTextRect.left;
+      } else {
+        f1 = ((WMTokenizer.Token)localObject1).x;
       }
-      f1 = this.mTextRect.left;
-      label584:
       ((RectF)localObject2).left = f1;
       localObject2 = this.mTextRect;
-      if (this.mTextRect.right < ((WMTokenizer.Token)localObject1).x + ((WMTokenizer.Token)localObject1).width) {
-        break label728;
+      if (((RectF)localObject2).right >= ((WMTokenizer.Token)localObject1).x + ((WMTokenizer.Token)localObject1).width) {
+        f1 = this.mTextRect.right;
+      } else {
+        f1 = ((WMTokenizer.Token)localObject1).x + ((WMTokenizer.Token)localObject1).width;
       }
-      f1 = this.mTextRect.right;
-      label626:
       ((RectF)localObject2).right = f1;
       localObject2 = this.mTextRect;
-      if (this.mTextRect.top > ((WMTokenizer.Token)localObject1).y) {
-        break label743;
+      if (((RectF)localObject2).top <= ((WMTokenizer.Token)localObject1).y) {
+        f1 = this.mTextRect.top;
+      } else {
+        f1 = ((WMTokenizer.Token)localObject1).y;
       }
-      f1 = this.mTextRect.top;
-      label662:
       ((RectF)localObject2).top = f1;
       localObject2 = this.mTextRect;
-      if (this.mTextRect.bottom < ((WMTokenizer.Token)localObject1).y + ((WMTokenizer.Token)localObject1).height) {
-        break label752;
+      if (((RectF)localObject2).bottom >= ((WMTokenizer.Token)localObject1).y + ((WMTokenizer.Token)localObject1).height)
+      {
+        f1 = this.mTextRect.bottom;
       }
-    }
-    for (f1 = this.mTextRect.bottom;; f1 = ((WMTokenizer.Token)localObject1).height + f1)
-    {
+      else
+      {
+        f1 = ((WMTokenizer.Token)localObject1).y;
+        f1 = ((WMTokenizer.Token)localObject1).height + f1;
+      }
       ((RectF)localObject2).bottom = f1;
       i += 1;
-      break label528;
-      break;
-      label719:
-      f1 = ((WMTokenizer.Token)localObject1).x;
-      break label584;
-      label728:
-      f1 = ((WMTokenizer.Token)localObject1).x + ((WMTokenizer.Token)localObject1).width;
-      break label626;
-      label743:
-      f1 = ((WMTokenizer.Token)localObject1).y;
-      break label662;
-      label752:
-      f1 = ((WMTokenizer.Token)localObject1).y;
     }
   }
   
@@ -498,15 +521,11 @@ public class WMTokenizer
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      if (!paramString.equals("left")) {
-        break label24;
+      if (paramString.equals("left"))
+      {
+        this.mAlignMode = 0;
+        return this;
       }
-      this.mAlignMode = 0;
-    }
-    label24:
-    do
-    {
-      return this;
       if (paramString.equals("center"))
       {
         this.mAlignMode = 1;
@@ -522,8 +541,10 @@ public class WMTokenizer
         this.mAlignMode = 3;
         return this;
       }
-    } while (!paramString.equals("down"));
-    this.mAlignMode = 4;
+      if (paramString.equals("down")) {
+        this.mAlignMode = 4;
+      }
+    }
     return this;
   }
   
@@ -575,7 +596,9 @@ public class WMTokenizer
       i += 1;
     }
     localObject = new Rect();
-    this.mPaint.getTextBounds(this.mText, 0, this.mText.length(), (Rect)localObject);
+    TextPaint localTextPaint = this.mPaint;
+    String str = this.mText;
+    localTextPaint.getTextBounds(str, 0, str.length(), (Rect)localObject);
     this.mCharHeight = ((Rect)localObject).height();
     if (this.mVertical)
     {
@@ -587,7 +610,7 @@ public class WMTokenizer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.util.WMTokenizer
  * JD-Core Version:    0.7.0.1
  */

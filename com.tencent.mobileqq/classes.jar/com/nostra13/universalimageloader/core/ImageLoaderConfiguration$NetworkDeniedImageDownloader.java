@@ -15,9 +15,8 @@ class ImageLoaderConfiguration$NetworkDeniedImageDownloader
   
   public InputStream getStream(String paramString, Object paramObject)
   {
-    switch (ImageLoaderConfiguration.1.$SwitchMap$com$nostra13$universalimageloader$core$download$ImageDownloader$Scheme[com.nostra13.universalimageloader.core.download.ImageDownloader.Scheme.ofUri(paramString).ordinal()])
-    {
-    default: 
+    int i = ImageLoaderConfiguration.1.$SwitchMap$com$nostra13$universalimageloader$core$download$ImageDownloader$Scheme[com.nostra13.universalimageloader.core.download.ImageDownloader.Scheme.ofUri(paramString).ordinal()];
+    if ((i != 1) && (i != 2)) {
       return this.wrappedDownloader.getStream(paramString, paramObject);
     }
     throw new IllegalStateException();
@@ -25,7 +24,7 @@ class ImageLoaderConfiguration$NetworkDeniedImageDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nostra13.universalimageloader.core.ImageLoaderConfiguration.NetworkDeniedImageDownloader
  * JD-Core Version:    0.7.0.1
  */

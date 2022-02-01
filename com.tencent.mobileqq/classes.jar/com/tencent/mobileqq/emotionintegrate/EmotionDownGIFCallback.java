@@ -29,25 +29,26 @@ public class EmotionDownGIFCallback
   
   public void a(int paramInt, PicResult paramPicResult)
   {
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() == null) {
-      QLog.d("EmotionDownGIFCallback", 1, "onDownload fail, callback is null");
-    }
-    do
+    if (this.jdField_a_of_type_MqqUtilWeakReference.get() == null)
     {
+      QLog.d("EmotionDownGIFCallback", 1, "onDownload fail, callback is null");
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionDownGIFCallback", 2, new Object[] { "onDownload ", Integer.valueOf(paramPicResult.jdField_a_of_type_Int) });
-      }
-      if (paramPicResult.jdField_a_of_type_Int == 0)
-      {
-        ((EmotionDownGIFCallback.UiCallback)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
-        return;
-      }
-    } while (-1 != paramPicResult.jdField_a_of_type_Int);
-    if (paramPicResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo != null) {
-      QLog.d("EmotionDownGIFCallback", 1, new Object[] { "onDownloadFail errDec:", paramPicResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.b });
     }
-    ((EmotionDownGIFCallback.UiCallback)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(false, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+    if (QLog.isColorLevel()) {
+      QLog.d("EmotionDownGIFCallback", 2, new Object[] { "onDownload ", Integer.valueOf(paramPicResult.jdField_a_of_type_Int) });
+    }
+    if (paramPicResult.jdField_a_of_type_Int == 0)
+    {
+      ((EmotionDownGIFCallback.UiCallback)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+      return;
+    }
+    if (-1 == paramPicResult.jdField_a_of_type_Int)
+    {
+      if (paramPicResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo != null) {
+        QLog.d("EmotionDownGIFCallback", 1, new Object[] { "onDownloadFail errDec:", paramPicResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.b });
+      }
+      ((EmotionDownGIFCallback.UiCallback)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(false, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+    }
   }
   
   public void a(int paramInt, ArrayList<PicResult> paramArrayList) {}
@@ -64,8 +65,13 @@ public class EmotionDownGIFCallback
   
   public void a_(int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionDownGIFCallback", 2, new Object[] { "onUpdateProgress:", paramInt + " needRefresh:" + paramBoolean, " picMr:", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq) });
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" needRefresh:");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("EmotionDownGIFCallback", 2, new Object[] { "onUpdateProgress:", localStringBuilder.toString(), " picMr:", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq) });
     }
     if (this.jdField_a_of_type_MqqUtilWeakReference.get() != null) {
       ((EmotionDownGIFCallback.UiCallback)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(paramInt, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
@@ -80,7 +86,7 @@ public class EmotionDownGIFCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.EmotionDownGIFCallback
  * JD-Core Version:    0.7.0.1
  */

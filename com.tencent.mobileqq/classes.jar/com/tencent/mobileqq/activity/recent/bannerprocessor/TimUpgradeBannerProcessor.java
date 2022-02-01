@@ -9,6 +9,7 @@ import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.banner.Banner;
 import com.tencent.mobileqq.banner.BannerManager;
+import com.tencent.mobileqq.banner.BannerTypeCollections;
 import com.tencent.mobileqq.banner.TipsBar;
 import com.tencent.mobileqq.banner.processor.BaseBannerProcessor;
 import com.tencent.mobileqq.banner.processor.IBannerLifecycle;
@@ -24,8 +25,14 @@ public class TimUpgradeBannerProcessor
   extends BaseBannerProcessor
   implements Handler.Callback, IBannerLifecycle
 {
+  public static final int a;
   public boolean a;
   public boolean b = false;
+  
+  static
+  {
+    jdField_a_of_type_Int = BannerTypeCollections.C;
+  }
   
   public TimUpgradeBannerProcessor(QBaseActivity paramQBaseActivity)
   {
@@ -42,7 +49,7 @@ public class TimUpgradeBannerProcessor
   public View a(Banner paramBanner)
   {
     paramBanner = new TipsBar(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-    paramBanner.setTipsIcon(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getDrawable(2130851050));
+    paramBanner.setTipsIcon(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getDrawable(2130850990));
     paramBanner.b(true);
     UpgradeTIMWrapper localUpgradeTIMWrapper = UpgradeTIMWrapper.a((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime());
     paramBanner.setTipsText(localUpgradeTIMWrapper.f);
@@ -67,12 +74,17 @@ public class TimUpgradeBannerProcessor
     }
   }
   
-  public void b() {}
-  
-  public void b(AppRuntime paramAppRuntime)
+  public void a(AppRuntime paramAppRuntime)
   {
     this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
   }
+  
+  public int b()
+  {
+    return jdField_a_of_type_Int;
+  }
+  
+  public void b() {}
   
   public boolean handleMessage(Message paramMessage)
   {
@@ -84,14 +96,14 @@ public class TimUpgradeBannerProcessor
       UpgradeTIMWrapper localUpgradeTIMWrapper = UpgradeTIMWrapper.a((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime());
       localUpgradeTIMWrapper.a();
       UpgradeTIMWrapper.a((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), localUpgradeTIMWrapper);
-      BannerManager.a().a(29, 0, paramMessage);
+      BannerManager.a().a(jdField_a_of_type_Int, 0, paramMessage);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.TimUpgradeBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

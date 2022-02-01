@@ -85,8 +85,13 @@ public class TPAssetResourceLoader
         }
         this.mLoadingRequests.clear();
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   private String getBusinessFilePath()
@@ -99,136 +104,67 @@ public class TPAssetResourceLoader
     if (TextUtils.isEmpty(this.mDataCacheFilePath))
     {
       String str = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-      paramContext = TPDLFileSystem.getExternalCacheFile(paramContext, "resourceLoader", str + "-" + paramInt + this.mFileSuffix);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append("-");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(this.mFileSuffix);
+      paramContext = TPDLFileSystem.getExternalCacheFile(paramContext, "resourceLoader", localStringBuilder.toString());
       TPDLIOUtil.createFile(paramContext);
       this.mDataCacheFilePath = paramContext.getAbsolutePath();
     }
     return this.mDataCacheFilePath;
   }
   
-  /* Error */
   private int getDataReadyLength(long paramLong)
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_3
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: aload_0
-    //   5: getfield 71	com/tencent/thumbplayer/datatransport/resourceloader/TPAssetResourceLoader:mLoadingRequests	Ljava/util/ArrayList;
-    //   8: astore 5
-    //   10: aload 5
-    //   12: ifnonnull +7 -> 19
-    //   15: aload_0
-    //   16: monitorexit
-    //   17: iload_3
-    //   18: ireturn
-    //   19: iconst_0
-    //   20: istore 4
-    //   22: iconst_0
-    //   23: istore_3
-    //   24: iload 4
-    //   26: aload_0
-    //   27: getfield 71	com/tencent/thumbplayer/datatransport/resourceloader/TPAssetResourceLoader:mLoadingRequests	Ljava/util/ArrayList;
-    //   30: invokevirtual 228	java/util/ArrayList:size	()I
-    //   33: if_icmpge +33 -> 66
-    //   36: iload_3
-    //   37: aload_0
-    //   38: getfield 71	com/tencent/thumbplayer/datatransport/resourceloader/TPAssetResourceLoader:mLoadingRequests	Ljava/util/ArrayList;
-    //   41: iload 4
-    //   43: invokevirtual 232	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   46: checkcast 157	com/tencent/thumbplayer/datatransport/resourceloader/TPAssetResourceLoadingRequest
-    //   49: lload_1
-    //   50: invokevirtual 234	com/tencent/thumbplayer/datatransport/resourceloader/TPAssetResourceLoadingRequest:getDataReadyLength	(J)I
-    //   53: invokestatic 240	java/lang/Math:max	(II)I
-    //   56: istore_3
-    //   57: iload 4
-    //   59: iconst_1
-    //   60: iadd
-    //   61: istore 4
-    //   63: goto -39 -> 24
-    //   66: goto -51 -> 15
-    //   69: astore 5
-    //   71: aload_0
-    //   72: monitorexit
-    //   73: aload 5
-    //   75: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	76	0	this	TPAssetResourceLoader
-    //   0	76	1	paramLong	long
-    //   1	56	3	i	int
-    //   20	42	4	j	int
-    //   8	3	5	localArrayList	ArrayList
-    //   69	5	5	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   4	10	69	finally
-    //   24	57	69	finally
+    try
+    {
+      ArrayList localArrayList = this.mLoadingRequests;
+      int i = 0;
+      if (localArrayList == null) {
+        return 0;
+      }
+      int j = 0;
+      while (i < this.mLoadingRequests.size())
+      {
+        j = Math.max(j, ((TPAssetResourceLoadingRequest)this.mLoadingRequests.get(i)).getDataReadyLength(paramLong));
+        i += 1;
+      }
+      return j;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
-  /* Error */
   private TPAssetResourceLoadingRequest getLoadingRequestWithNum(int paramInt)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 71	com/tencent/thumbplayer/datatransport/resourceloader/TPAssetResourceLoader:mLoadingRequests	Ljava/util/ArrayList;
-    //   6: astore 4
-    //   8: aload 4
-    //   10: ifnonnull +11 -> 21
-    //   13: aconst_null
-    //   14: astore 4
-    //   16: aload_0
-    //   17: monitorexit
-    //   18: aload 4
-    //   20: areturn
-    //   21: iconst_0
-    //   22: istore_2
-    //   23: iload_2
-    //   24: aload_0
-    //   25: getfield 71	com/tencent/thumbplayer/datatransport/resourceloader/TPAssetResourceLoader:mLoadingRequests	Ljava/util/ArrayList;
-    //   28: invokevirtual 228	java/util/ArrayList:size	()I
-    //   31: if_icmpge +37 -> 68
-    //   34: aload_0
-    //   35: getfield 71	com/tencent/thumbplayer/datatransport/resourceloader/TPAssetResourceLoader:mLoadingRequests	Ljava/util/ArrayList;
-    //   38: iload_2
-    //   39: invokevirtual 232	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   42: checkcast 157	com/tencent/thumbplayer/datatransport/resourceloader/TPAssetResourceLoadingRequest
-    //   45: astore 4
-    //   47: aload 4
-    //   49: invokevirtual 246	com/tencent/thumbplayer/datatransport/resourceloader/TPAssetResourceLoadingRequest:getLoadingDataRequest	()Lcom/tencent/thumbplayer/datatransport/resourceloader/TPAssetResourceLoadingDataRequest;
-    //   52: invokevirtual 251	com/tencent/thumbplayer/datatransport/resourceloader/TPAssetResourceLoadingDataRequest:getRequestNum	()I
-    //   55: istore_3
-    //   56: iload_3
-    //   57: iload_1
-    //   58: if_icmpeq -42 -> 16
-    //   61: iload_2
-    //   62: iconst_1
-    //   63: iadd
-    //   64: istore_2
-    //   65: goto -42 -> 23
-    //   68: aconst_null
-    //   69: astore 4
-    //   71: goto -55 -> 16
-    //   74: astore 4
-    //   76: aload_0
-    //   77: monitorexit
-    //   78: aload 4
-    //   80: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	81	0	this	TPAssetResourceLoader
-    //   0	81	1	paramInt	int
-    //   22	43	2	i	int
-    //   55	4	3	j	int
-    //   6	64	4	localObject1	Object
-    //   74	5	4	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	8	74	finally
-    //   23	56	74	finally
+    try
+    {
+      Object localObject1 = this.mLoadingRequests;
+      if (localObject1 == null) {
+        return null;
+      }
+      int i = 0;
+      while (i < this.mLoadingRequests.size())
+      {
+        localObject1 = (TPAssetResourceLoadingRequest)this.mLoadingRequests.get(i);
+        int j = ((TPAssetResourceLoadingRequest)localObject1).getLoadingDataRequest().getRequestNum();
+        if (j == paramInt) {
+          return localObject1;
+        }
+        i += 1;
+      }
+      return null;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   private long getRequestLength(long paramLong1, long paramLong2)
@@ -245,29 +181,39 @@ public class TPAssetResourceLoader
   
   private void handleResourceLoaderCallback(int paramInt1, int paramInt2, int paramInt3, Object paramObject)
   {
-    if (this.mCallbackForResourceLoaderHandler != null)
+    Object localObject = this.mCallbackForResourceLoaderHandler;
+    if (localObject != null)
     {
-      Message localMessage = this.mCallbackForResourceLoaderHandler.obtainMessage();
-      localMessage.what = paramInt1;
-      localMessage.arg1 = paramInt2;
-      localMessage.arg2 = paramInt3;
-      localMessage.obj = paramObject;
-      this.mCallbackForResourceLoaderHandler.sendMessage(localMessage);
+      localObject = ((TPAssetResourceLoader.EventHandler)localObject).obtainMessage();
+      ((Message)localObject).what = paramInt1;
+      ((Message)localObject).arg1 = paramInt2;
+      ((Message)localObject).arg2 = paramInt3;
+      ((Message)localObject).obj = paramObject;
+      this.mCallbackForResourceLoaderHandler.sendMessage((Message)localObject);
     }
   }
   
   private void handleStopReadData(int paramInt)
   {
-    TPAssetResourceLoadingRequest localTPAssetResourceLoadingRequest = getLoadingRequestWithNum(paramInt);
-    if (localTPAssetResourceLoadingRequest == null)
+    Object localObject1 = getLoadingRequestWithNum(paramInt);
+    if (localObject1 == null)
     {
-      TPLogUtil.e(TAG, "TPAssetLoader can't find the request " + paramInt + " with current loading requests");
+      localObject1 = TAG;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("TPAssetLoader can't find the request ");
+      ((StringBuilder)localObject2).append(paramInt);
+      ((StringBuilder)localObject2).append(" with current loading requests");
+      TPLogUtil.e((String)localObject1, ((StringBuilder)localObject2).toString());
       return;
     }
-    localTPAssetResourceLoadingRequest.cancelRequest();
-    TPLogUtil.i(TAG, "handleStopReadData, cancel the loading request with id " + paramInt);
-    removeRequest(localTPAssetResourceLoadingRequest);
-    this.mTPAssetResourceLoaderListener.didCancelLoadingRequest(localTPAssetResourceLoadingRequest);
+    ((TPAssetResourceLoadingRequest)localObject1).cancelRequest();
+    Object localObject2 = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleStopReadData, cancel the loading request with id ");
+    localStringBuilder.append(paramInt);
+    TPLogUtil.i((String)localObject2, localStringBuilder.toString());
+    removeRequest((TPAssetResourceLoadingRequest)localObject1);
+    this.mTPAssetResourceLoaderListener.didCancelLoadingRequest((ITPAssetResourceLoadingRequest)localObject1);
   }
   
   private void removeRequest(TPAssetResourceLoadingRequest paramTPAssetResourceLoadingRequest)
@@ -298,7 +244,13 @@ public class TPAssetResourceLoader
     this.mContentType = this.mContentInformation.contentType;
     this.mDataTotalSize = this.mContentInformation.dataTotalSize;
     this.mBusinessFilePath = this.mContentInformation.dataFilePath;
-    TPLogUtil.i(TAG, "proxy start, mDataTotalSize: " + this.mDataTotalSize + " businessPath:" + this.mBusinessFilePath);
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("proxy start, mDataTotalSize: ");
+    localStringBuilder.append(this.mDataTotalSize);
+    localStringBuilder.append(" businessPath:");
+    localStringBuilder.append(this.mBusinessFilePath);
+    TPLogUtil.i(str, localStringBuilder.toString());
   }
   
   public String getContentType(int paramInt, String paramString)
@@ -322,12 +274,28 @@ public class TPAssetResourceLoader
   
   public int onReadData(int paramInt, String paramString, long paramLong1, long paramLong2)
   {
-    TPLogUtil.d(TAG, "read data, offset:" + paramLong1 + ", length:" + paramLong2);
-    int i = getDataReadyLength(paramLong1);
+    paramString = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("read data, offset:");
+    localStringBuilder.append(paramLong1);
+    localStringBuilder.append(", length:");
+    localStringBuilder.append(paramLong2);
+    TPLogUtil.d(paramString, localStringBuilder.toString());
+    int i = (int)Math.min(getDataReadyLength(paramLong1), paramLong2);
     if (i <= 0) {
       return -1;
     }
-    TPLogUtil.i(TAG, "on read data, fileId: " + paramInt + " readOffset: " + paramLong1 + " readLength:" + paramLong2 + " readyLength:" + i);
+    paramString = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("on read data, fileId: ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" readOffset: ");
+    localStringBuilder.append(paramLong1);
+    localStringBuilder.append(" readLength:");
+    localStringBuilder.append(paramLong2);
+    localStringBuilder.append(" readyLength:");
+    localStringBuilder.append(i);
+    TPLogUtil.d(paramString, localStringBuilder.toString());
     return i;
   }
   
@@ -338,13 +306,23 @@ public class TPAssetResourceLoader
       TPLogUtil.e(TAG, "listener not set");
       return 0;
     }
-    TPLogUtil.i(TAG, "onStartReadData, fileId:" + paramInt + ", fileKey:" + paramString + ", requestStart:" + paramLong1 + ", requestEnd:" + paramLong2);
+    Object localObject = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onStartReadData, fileId:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", fileKey:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", requestStart:");
+    localStringBuilder.append(paramLong1);
+    localStringBuilder.append(", requestEnd:");
+    localStringBuilder.append(paramLong2);
+    TPLogUtil.i((String)localObject, localStringBuilder.toString());
     int i = this.mRequestNum + 1;
-    TPAssetResourceLoader.StartReadDataParams localStartReadDataParams = new TPAssetResourceLoader.StartReadDataParams(null);
-    localStartReadDataParams.requestStart = paramLong1;
-    localStartReadDataParams.requestEnd = paramLong2;
-    localStartReadDataParams.fileKey = paramString;
-    handleResourceLoaderCallback(256, paramInt, i, localStartReadDataParams);
+    localObject = new TPAssetResourceLoader.StartReadDataParams(null);
+    ((TPAssetResourceLoader.StartReadDataParams)localObject).requestStart = paramLong1;
+    ((TPAssetResourceLoader.StartReadDataParams)localObject).requestEnd = paramLong2;
+    ((TPAssetResourceLoader.StartReadDataParams)localObject).fileKey = paramString;
+    handleResourceLoaderCallback(256, paramInt, i, localObject);
     this.mRequestNum = i;
     return this.mRequestNum;
   }
@@ -364,14 +342,22 @@ public class TPAssetResourceLoader
   {
     TPLogUtil.i(TAG, "release start");
     reset();
-    if (this.mHandlerThread != null)
+    Object localObject = this.mCallbackForResourceLoaderHandler;
+    if (localObject != null)
     {
-      this.mHandlerThread.quit();
+      ((TPAssetResourceLoader.EventHandler)localObject).removeCallbacksAndMessages(null);
+      this.mCallbackForResourceLoaderHandler = null;
+    }
+    localObject = this.mHandlerThread;
+    if (localObject != null)
+    {
+      ((HandlerThread)localObject).quit();
       this.mHandlerThread = null;
     }
-    if (this.mWriteDataThread != null)
+    localObject = this.mWriteDataThread;
+    if (localObject != null)
     {
-      this.mWriteDataThread.quit();
+      ((HandlerThread)localObject).quit();
       this.mWriteDataThread = null;
     }
     this.mLoadingRequests = null;
@@ -384,16 +370,24 @@ public class TPAssetResourceLoader
     this.mDataTotalSize = 0L;
     this.mContentType = "";
     this.mBusinessFilePath = "";
-    if (!TextUtils.isEmpty(this.mDataCacheFilePath)) {}
-    try
-    {
-      new File(this.mDataCacheFilePath).deleteOnExit();
-      this.mDataCacheFilePath = "";
-      return;
+    if (!TextUtils.isEmpty(this.mDataCacheFilePath)) {
+      try
+      {
+        new File(this.mDataCacheFilePath).deleteOnExit();
+        this.mDataCacheFilePath = "";
+      }
+      catch (Exception localException)
+      {
+        String str = TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("reset, delete cache file has exception:");
+        localStringBuilder.append(localException.toString());
+        TPLogUtil.e(str, localStringBuilder.toString());
+      }
     }
-    catch (Exception localException)
-    {
-      TPLogUtil.e(TAG, "reset, delete cache file has exception:" + localException.toString());
+    TPAssetResourceLoader.EventHandler localEventHandler = this.mCallbackForResourceLoaderHandler;
+    if (localEventHandler != null) {
+      localEventHandler.removeCallbacksAndMessages(null);
     }
   }
   
@@ -404,7 +398,7 @@ public class TPAssetResourceLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.datatransport.resourceloader.TPAssetResourceLoader
  * JD-Core Version:    0.7.0.1
  */

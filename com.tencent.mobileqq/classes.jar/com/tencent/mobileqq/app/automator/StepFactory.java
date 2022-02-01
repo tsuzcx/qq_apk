@@ -2,11 +2,12 @@ package com.tencent.mobileqq.app.automator;
 
 import android.text.TextUtils;
 import android.util.SparseArray;
-import com.tencent.biz.pubaccount.readinjoy.data.ReadInJoyDAUReport;
+import com.tencent.biz.pubaccount.api.IPublicAccountCheck;
+import com.tencent.biz.pubaccount.api.IPublicAccountProxy;
 import com.tencent.gamecenter.appointment.GameCenterCheck;
 import com.tencent.mobileqq.activity.activateFriend.biz.QQReminderStepAsync;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgTabServerInitStep;
-import com.tencent.mobileqq.apollo.GetApolloContentUpdateStatus;
+import com.tencent.mobileqq.apollo.utils.ApolloClassFactoryApi;
 import com.tencent.mobileqq.app.automator.step.ActiveAccount;
 import com.tencent.mobileqq.app.automator.step.ActivityDAUReport;
 import com.tencent.mobileqq.app.automator.step.AfterSyncMsg;
@@ -18,7 +19,6 @@ import com.tencent.mobileqq.app.automator.step.CheckAuthCode;
 import com.tencent.mobileqq.app.automator.step.CheckFriendsLastLoginInfo;
 import com.tencent.mobileqq.app.automator.step.CheckHotSpotNode;
 import com.tencent.mobileqq.app.automator.step.CheckMsgCount;
-import com.tencent.mobileqq.app.automator.step.CheckPublicAccount;
 import com.tencent.mobileqq.app.automator.step.CheckQZoneOatFile;
 import com.tencent.mobileqq.app.automator.step.CheckSafeCenterConfig;
 import com.tencent.mobileqq.app.automator.step.CleanCache;
@@ -35,7 +35,6 @@ import com.tencent.mobileqq.app.automator.step.GetEmoticonWhenNoFile;
 import com.tencent.mobileqq.app.automator.step.GetFunCallData;
 import com.tencent.mobileqq.app.automator.step.GetGeneralSettings;
 import com.tencent.mobileqq.app.automator.step.GetJoinedHotChatListMessageStep;
-import com.tencent.mobileqq.app.automator.step.GetJoinedHotChatListStep;
 import com.tencent.mobileqq.app.automator.step.GetLocalRedtouchStep;
 import com.tencent.mobileqq.app.automator.step.GetNumRedStep;
 import com.tencent.mobileqq.app.automator.step.GetQZoneFeedCount;
@@ -86,8 +85,13 @@ import com.tencent.mobileqq.app.automator.step.VideoConfigUpdate;
 import com.tencent.mobileqq.app.automator.step.VipCheckGift;
 import com.tencent.mobileqq.app.automator.step.VipRequestMessageRoamPassword;
 import com.tencent.mobileqq.app.automator.step.WeiyunCheckAlbum;
+import com.tencent.mobileqq.hotchat.api.IHotChatApi;
+import com.tencent.mobileqq.kandian.biz.common.api.IKanDianClassProvider;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.startup.step.DtSdkInitStep;
+import com.tencent.mobileqq.startup.step.FeatureSwitchStep;
 import com.tencent.mobileqq.startup.step.MetricSdkInit;
+import com.tencent.mobileqq.startup.step.QQShopStep;
 import com.tencent.mobileqq.startup.step.TABSDKInit;
 import com.tencent.mobileqq.statistics.DailyReport;
 import com.tencent.mobileqq.vashealth.StepServiceAsync;
@@ -98,14 +102,17 @@ import java.util.Set;
 public class StepFactory
 {
   public static SparseArray<Class<? extends AsyncStep>> a;
+  public static final String a;
   public static final int[] a;
   public static final String[] a;
+  public static final String b;
+  private static final String c;
   
   static
   {
     jdField_a_of_type_ArrayOfInt = new int[] { 6, 12, 24, 168 };
     jdField_a_of_type_ArrayOfJavaLangString = new String[] { "{,101}", "{94}", "{56,64,36,52,66,68,62,76,75,83,90,31}", "{}" };
-    jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(120);
+    jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(122);
     jdField_a_of_type_AndroidUtilSparseArray.append(2, ActiveAccount.class);
     jdField_a_of_type_AndroidUtilSparseArray.append(3, UpdateFriend.class);
     jdField_a_of_type_AndroidUtilSparseArray.append(7, UpdateFriend.class);
@@ -113,8 +120,8 @@ public class StepFactory
     jdField_a_of_type_AndroidUtilSparseArray.append(4, UpdateTroop.class);
     jdField_a_of_type_AndroidUtilSparseArray.append(9, UpdateTroop.class);
     jdField_a_of_type_AndroidUtilSparseArray.append(5, UpdateDiscuss.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(6, CheckPublicAccount.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(10, CheckPublicAccount.class);
+    jdField_a_of_type_AndroidUtilSparseArray.append(6, ((IPublicAccountProxy)QRoute.api(IPublicAccountProxy.class)).getImplClass(IPublicAccountCheck.class));
+    jdField_a_of_type_AndroidUtilSparseArray.append(10, ((IPublicAccountProxy)QRoute.api(IPublicAccountProxy.class)).getImplClass(IPublicAccountCheck.class));
     jdField_a_of_type_AndroidUtilSparseArray.append(12, RegisterPush.class);
     jdField_a_of_type_AndroidUtilSparseArray.append(13, RegisterPush.class);
     jdField_a_of_type_AndroidUtilSparseArray.append(17, RegisterProxy.class);
@@ -161,13 +168,13 @@ public class StepFactory
     jdField_a_of_type_AndroidUtilSparseArray.append(53, CheckMsgCount.class);
     jdField_a_of_type_AndroidUtilSparseArray.append(75, TimerCheckMsgCount.class);
     jdField_a_of_type_AndroidUtilSparseArray.append(55, GetClubContentUpdateStatus.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(107, GetApolloContentUpdateStatus.class);
+    jdField_a_of_type_AndroidUtilSparseArray.append(107, ApolloClassFactoryApi.a());
     jdField_a_of_type_AndroidUtilSparseArray.append(56, VideoConfigUpdate.class);
     jdField_a_of_type_AndroidUtilSparseArray.append(57, TimerChecker.class);
     jdField_a_of_type_AndroidUtilSparseArray.append(105, AutomatorFinish.class);
     jdField_a_of_type_AndroidUtilSparseArray.append(54, SignatureScan.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(58, GetJoinedHotChatListStep.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(59, GetJoinedHotChatListStep.class);
+    jdField_a_of_type_AndroidUtilSparseArray.append(58, ((IHotChatApi)QRoute.api(IHotChatApi.class)).getGetJoinedHotChatListStepClass());
+    jdField_a_of_type_AndroidUtilSparseArray.append(59, ((IHotChatApi)QRoute.api(IHotChatApi.class)).getGetJoinedHotChatListStepClass());
     jdField_a_of_type_AndroidUtilSparseArray.append(60, GetJoinedHotChatListMessageStep.class);
     jdField_a_of_type_AndroidUtilSparseArray.append(61, GetTroopRedPointInfoStep.class);
     jdField_a_of_type_AndroidUtilSparseArray.append(65, UpdateIcon.class);
@@ -193,7 +200,7 @@ public class StepFactory
     jdField_a_of_type_AndroidUtilSparseArray.append(87, GetDonateFriends.class);
     jdField_a_of_type_AndroidUtilSparseArray.append(88, GetRedpointStep.class);
     jdField_a_of_type_AndroidUtilSparseArray.append(89, GetRedpointStep.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(90, ReadInJoyDAUReport.class);
+    jdField_a_of_type_AndroidUtilSparseArray.append(90, ((IKanDianClassProvider)QRoute.api(IKanDianClassProvider.class)).getReadInJoyDAUReportClass());
     jdField_a_of_type_AndroidUtilSparseArray.append(92, GetLocalRedtouchStep.class);
     jdField_a_of_type_AndroidUtilSparseArray.append(93, GetCommonUsedSystemEmojiStep.class);
     jdField_a_of_type_AndroidUtilSparseArray.append(94, DailyReport.class);
@@ -217,6 +224,69 @@ public class StepFactory
     jdField_a_of_type_AndroidUtilSparseArray.append(113, DtSdkInitStep.class);
     jdField_a_of_type_AndroidUtilSparseArray.append(114, MetricSdkInit.class);
     jdField_a_of_type_AndroidUtilSparseArray.append(115, TABSDKInit.class);
+    jdField_a_of_type_AndroidUtilSparseArray.append(116, QQShopStep.class);
+    jdField_a_of_type_AndroidUtilSparseArray.append(117, FeatureSwitchStep.class);
+    c = new InitCacheHelper().a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{85,");
+    localStringBuilder.append(c);
+    localStringBuilder.append(",");
+    localStringBuilder.append("[");
+    localStringBuilder.append(11);
+    localStringBuilder.append(",");
+    localStringBuilder.append(12);
+    localStringBuilder.append(",");
+    localStringBuilder.append(14);
+    localStringBuilder.append("]");
+    localStringBuilder.append(",");
+    localStringBuilder.append(17);
+    localStringBuilder.append(",");
+    localStringBuilder.append(20);
+    localStringBuilder.append(",");
+    localStringBuilder.append(21);
+    localStringBuilder.append(",");
+    localStringBuilder.append(59);
+    localStringBuilder.append(",");
+    localStringBuilder.append(60);
+    localStringBuilder.append(",");
+    localStringBuilder.append(22);
+    localStringBuilder.append(",");
+    localStringBuilder.append(113);
+    localStringBuilder.append(",");
+    localStringBuilder.append(115);
+    localStringBuilder.append(",");
+    localStringBuilder.append(117);
+    localStringBuilder.append(",");
+    localStringBuilder.append(108);
+    localStringBuilder.append(",");
+    localStringBuilder.append(44);
+    localStringBuilder.append(",");
+    localStringBuilder.append(45);
+    localStringBuilder.append(",");
+    localStringBuilder.append("[100,65,25,10,26,27,28,29,30,32,34,35,39,40,41,42,43,47,48,50,55,107,69,93,70,71,72,73,{91},53,54,61,104,63,77,81,67,80,74,36,37,38,87,88,78,82,84,98,86,102,103,109,110,111,112,116]");
+    localStringBuilder.append(",");
+    localStringBuilder.append(57);
+    localStringBuilder.append(",");
+    localStringBuilder.append(114);
+    localStringBuilder.append(",");
+    localStringBuilder.append(95);
+    localStringBuilder.append(",");
+    localStringBuilder.append(105);
+    localStringBuilder.append("}");
+    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{");
+    localStringBuilder.append(c);
+    localStringBuilder.append(",");
+    localStringBuilder.append(44);
+    localStringBuilder.append(",");
+    localStringBuilder.append(45);
+    localStringBuilder.append(",");
+    localStringBuilder.append("[100,65,25,10,26,27,28,29,30,32,34,35,39,40,41,42,43,47,48,50,55,107,69,93,70,71,72,73,{91},53,54,61,104,63,77,81,67,80,74,36,37,38,87,88,78,82,84,98,86,102,103,109,110,111,112,116]");
+    localStringBuilder.append(",");
+    localStringBuilder.append(57);
+    localStringBuilder.append("}");
+    b = localStringBuilder.toString();
     DeviceOptSwitch.b.add(Integer.valueOf(85));
     DeviceOptSwitch.b.add(Integer.valueOf(4));
     DeviceOptSwitch.b.add(Integer.valueOf(3));
@@ -234,13 +304,15 @@ public class StepFactory
   
   public static int a(LinearGroup paramLinearGroup, boolean paramBoolean)
   {
-    if ("{85,{4,3,5,6},[11,12,14],17,20,21,59,60,22,113,108,44,45,115,114,[100,65,25,10,26,27,28,29,30,32,34,35,39,40,41,42,43,47,48,50,55,107,69,93,70,71,72,73,{91},53,54,61,104,63,77,81,67,80,74,36,37,38,87,88,78,82,84,98,86,102,103,109,110,111,112],57,95,105}".equals(paramLinearGroup.jdField_a_of_type_JavaLangString)) {
-      if (paramLinearGroup.e <= 4) {}
-    }
-    while (paramBoolean)
+    if (jdField_a_of_type_JavaLangString.equals(paramLinearGroup.mName))
     {
-      return 1;
+      if (paramLinearGroup.b > 4) {
+        return 1;
+      }
       return 0;
+    }
+    if (paramBoolean) {
+      return 1;
     }
     return 0;
   }
@@ -251,107 +323,147 @@ public class StepFactory
     if (paramString != null) {
       str = paramString.trim();
     }
-    if (TextUtils.isEmpty(str)) {
-      throw new RuntimeException("createStepGroup: " + str);
-    }
-    int i = -1;
-    if (str.startsWith("{"))
+    if (!TextUtils.isEmpty(str))
     {
-      paramString = new LinearGroup();
-      paramString.b = str;
-    }
-    for (;;)
-    {
-      paramString.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator = paramAutomator;
-      paramString.b = i;
-      if (i < 0) {
-        break;
+      paramString = null;
+      int i = -1;
+      if (str.startsWith("{"))
+      {
+        paramString = new LinearGroup();
+        paramString.jdField_a_of_type_JavaLangString = str;
       }
-      paramString.jdField_a_of_type_JavaLangString = paramString.getClass().getSimpleName();
-      return paramString;
-      if (str.startsWith("["))
+      else if (str.startsWith("["))
       {
         paramString = new ParallGroup();
-        paramString.b = str;
+        paramString.jdField_a_of_type_JavaLangString = str;
       }
       else
       {
         i = Integer.parseInt(str);
-        paramString = (Class)jdField_a_of_type_AndroidUtilSparseArray.get(i);
-        if (paramString != null) {
+        Object localObject = (Class)jdField_a_of_type_AndroidUtilSparseArray.get(i);
+        if (localObject != null) {
           try
           {
-            paramString = (AsyncStep)paramString.newInstance();
+            localObject = (AsyncStep)((Class)localObject).newInstance();
+            paramString = (String)localObject;
           }
-          catch (Exception paramString)
+          catch (Exception localException)
           {
-            QLog.e("QQInitHandler", 1, paramString, new Object[0]);
-            paramString = null;
+            QLog.e("QQInitHandler", 1, localException, new Object[0]);
           }
         } else {
           paramString = new AsyncStep();
         }
       }
+      paramString.mAutomator = paramAutomator;
+      paramString.mStepId = i;
+      if (i >= 0)
+      {
+        paramString.mName = paramString.getClass().getSimpleName();
+        return paramString;
+      }
+      paramString.mName = str;
+      return paramString;
     }
-    paramString.jdField_a_of_type_JavaLangString = str;
-    return paramString;
+    paramAutomator = new StringBuilder();
+    paramAutomator.append("createStepGroup: ");
+    paramAutomator.append(str);
+    throw new RuntimeException(paramAutomator.toString());
   }
   
   public static boolean a(LinearGroup paramLinearGroup)
   {
-    if ("{85,{4,3,5,6},[11,12,14],17,20,21,59,60,22,113,108,44,45,115,114,[100,65,25,10,26,27,28,29,30,32,34,35,39,40,41,42,43,47,48,50,55,107,69,93,70,71,72,73,{91},53,54,61,104,63,77,81,67,80,74,36,37,38,87,88,78,82,84,98,86,102,103,109,110,111,112],57,95,105}".equals(paramLinearGroup.jdField_a_of_type_JavaLangString)) {
-      if (paramLinearGroup.e < 3) {}
-    }
-    do
+    boolean bool4 = jdField_a_of_type_JavaLangString.equals(paramLinearGroup.mName);
+    boolean bool2 = false;
+    boolean bool3 = false;
+    boolean bool1 = false;
+    if (bool4)
     {
-      do
-      {
-        return true;
-        return false;
-        if (!"{[13,16],19,21,58,60,89,23,46,33,61,42,92,96,97,99}".equals(paramLinearGroup.jdField_a_of_type_JavaLangString)) {
-          break;
-        }
-      } while (paramLinearGroup.e >= 1);
-      return false;
-    } while (("{15,18,21,58,60,24}".equals(paramLinearGroup.jdField_a_of_type_JavaLangString)) || (!"{[11,12,14],17,20,21,22108,}".equals(paramLinearGroup.jdField_a_of_type_JavaLangString)) || (paramLinearGroup.e >= 2));
-    return false;
+      if (paramLinearGroup.b >= 3) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    if ("{[13,16],19,21,58,60,89,23,46,33,61,42,92,96,97,99}".equals(paramLinearGroup.mName))
+    {
+      bool1 = bool2;
+      if (paramLinearGroup.b >= 1) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    if ("{15,18,21,58,60,24}".equals(paramLinearGroup.mName)) {
+      return true;
+    }
+    if ("{[11,12,14],17,20,21,22108,}".equals(paramLinearGroup.mName))
+    {
+      bool1 = bool3;
+      if (paramLinearGroup.b >= 2) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    return true;
   }
   
   public static boolean b(LinearGroup paramLinearGroup)
   {
-    return (!"{85,{4,3,5,6},[11,12,14],17,20,21,59,60,22,113,108,44,45,115,114,[100,65,25,10,26,27,28,29,30,32,34,35,39,40,41,42,43,47,48,50,55,107,69,93,70,71,72,73,{91},53,54,61,104,63,77,81,67,80,74,36,37,38,87,88,78,82,84,98,86,102,103,109,110,111,112],57,95,105}".equals(paramLinearGroup.jdField_a_of_type_JavaLangString)) || (paramLinearGroup.e > 5);
+    boolean bool2 = jdField_a_of_type_JavaLangString.equals(paramLinearGroup.mName);
+    boolean bool1 = true;
+    if (bool2)
+    {
+      if (paramLinearGroup.b > 5) {
+        return true;
+      }
+      bool1 = false;
+    }
+    return bool1;
   }
   
   public static boolean c(LinearGroup paramLinearGroup)
   {
-    if ("{85,{4,3,5,6},[11,12,14],17,20,21,59,60,22,113,108,44,45,115,114,[100,65,25,10,26,27,28,29,30,32,34,35,39,40,41,42,43,47,48,50,55,107,69,93,70,71,72,73,{91},53,54,61,104,63,77,81,67,80,74,36,37,38,87,88,78,82,84,98,86,102,103,109,110,111,112],57,95,105}".equals(paramLinearGroup.jdField_a_of_type_JavaLangString)) {
-      if (paramLinearGroup.e <= 4) {}
-    }
-    do
+    boolean bool5 = jdField_a_of_type_JavaLangString.equals(paramLinearGroup.mName);
+    boolean bool2 = false;
+    boolean bool3 = false;
+    boolean bool4 = false;
+    boolean bool1 = false;
+    if (bool5)
     {
-      do
-      {
-        do
-        {
-          return true;
-          return false;
-          if (!"{[13,16],19,21,58,60,89,23,46,33,61,42,92,96,97,99}".equals(paramLinearGroup.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-        } while (paramLinearGroup.e > 2);
-        return false;
-        if (!"{15,18,21,58,60,24}".equals(paramLinearGroup.jdField_a_of_type_JavaLangString)) {
-          break;
-        }
-      } while (paramLinearGroup.e > 2);
-      return false;
-    } while ((!"{[11,12,14],17,20,21,22108,}".equals(paramLinearGroup.jdField_a_of_type_JavaLangString)) || (paramLinearGroup.e > 2));
-    return false;
+      if (paramLinearGroup.b > 4) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    if ("{[13,16],19,21,58,60,89,23,46,33,61,42,92,96,97,99}".equals(paramLinearGroup.mName))
+    {
+      bool1 = bool2;
+      if (paramLinearGroup.b > 2) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    if ("{15,18,21,58,60,24}".equals(paramLinearGroup.mName))
+    {
+      bool1 = bool3;
+      if (paramLinearGroup.b > 2) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    if ("{[11,12,14],17,20,21,22108,}".equals(paramLinearGroup.mName))
+    {
+      bool1 = bool4;
+      if (paramLinearGroup.b > 2) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.StepFactory
  * JD-Core Version:    0.7.0.1
  */

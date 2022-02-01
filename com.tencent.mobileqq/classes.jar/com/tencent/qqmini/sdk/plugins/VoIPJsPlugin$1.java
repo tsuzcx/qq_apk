@@ -19,16 +19,15 @@ class VoIPJsPlugin$1
     try
     {
       this.val$res.put("errCode", paramInt);
-      this.val$req.jsService.evaluateCallbackJs(this.val$req.callbackId, ApiUtil.wrapCallbackFail(this.val$req.event, this.val$res, "状态错误").toString());
-      return;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        QMLog.e("[mini] VoIPJsPlugin", "参数错误 " + this.val$req.jsonParams, localJSONException);
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("参数错误 ");
+      localStringBuilder.append(this.val$req.jsonParams);
+      QMLog.e("[mini] VoIPJsPlugin", localStringBuilder.toString(), localJSONException);
     }
+    this.val$req.jsService.evaluateCallbackJs(this.val$req.callbackId, ApiUtil.wrapCallbackFail(this.val$req.event, this.val$res, "状态错误").toString());
   }
   
   public void onSuccess()
@@ -37,21 +36,20 @@ class VoIPJsPlugin$1
     {
       this.val$res.put("muteMicrophone", VoIPManager.getInstance().isMicMute());
       this.val$res.put("muteEarphone", VoIPManager.getInstance().isEarPhoneMute());
-      this.val$req.jsService.evaluateCallbackJs(this.val$req.callbackId, ApiUtil.wrapCallbackOk(this.val$req.event, this.val$res).toString());
-      return;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        QMLog.e("[mini] VoIPJsPlugin", "参数错误 " + this.val$req.jsonParams, localJSONException);
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("参数错误 ");
+      localStringBuilder.append(this.val$req.jsonParams);
+      QMLog.e("[mini] VoIPJsPlugin", localStringBuilder.toString(), localJSONException);
     }
+    this.val$req.jsService.evaluateCallbackJs(this.val$req.callbackId, ApiUtil.wrapCallbackOk(this.val$req.event, this.val$res).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.VoIPJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

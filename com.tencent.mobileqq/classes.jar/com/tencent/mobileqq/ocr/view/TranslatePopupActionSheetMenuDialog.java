@@ -32,33 +32,40 @@ public class TranslatePopupActionSheetMenuDialog
     try
     {
       this.jdField_a_of_type_AndroidAppActivity.getWindowManager().removeView(this.jdField_a_of_type_AndroidViewView);
-      if (Build.VERSION.SDK_INT >= 11)
-      {
-        super.dismiss();
-        if ((this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$OnClickActionListener != null) && (this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$MenuItem != null)) {
-          this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$OnClickActionListener.a(this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$MenuItem);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$MenuItem = null;
-        if (this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$OnDismissListener != null) {
-          this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$OnDismissListener.a();
-        }
-        return;
-      }
     }
     catch (Exception localException)
     {
-      do
+      if (QLog.isColorLevel()) {
+        QLog.i("TranslatePopupActionSheetMenuDialog", 2, localException.toString());
+      }
+    }
+    Object localObject;
+    if (Build.VERSION.SDK_INT >= 11)
+    {
+      super.dismiss();
+      localObject = this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$OnClickActionListener;
+      if (localObject != null)
       {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("TranslatePopupActionSheetMenuDialog", 2, localException.toString());
-          }
+        TranslatePopupActionSheetMenuDialog.MenuItem localMenuItem = this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$MenuItem;
+        if (localMenuItem != null) {
+          ((TranslatePopupActionSheetMenuDialog.OnClickActionListener)localObject).a(localMenuItem);
         }
-      } while ((!isShowing()) || ((this.jdField_a_of_type_AndroidViewAnimationAnimation != null) && (!this.jdField_a_of_type_AndroidViewAnimationAnimation.hasEnded())));
+      }
+      this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$MenuItem = null;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$OnDismissListener;
+      if (localObject != null) {
+        ((TranslatePopupActionSheetMenuDialog.OnDismissListener)localObject).a();
+      }
+    }
+    else if (isShowing())
+    {
+      localObject = this.jdField_a_of_type_AndroidViewAnimationAnimation;
+      if ((localObject != null) && (!((Animation)localObject).hasEnded())) {
+        return;
+      }
       if (this.jdField_a_of_type_AndroidViewAnimationAnimation == null)
       {
-        this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772342);
+        this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772372);
         this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this);
       }
       getContentView().startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
@@ -79,12 +86,18 @@ public class TranslatePopupActionSheetMenuDialog
     if (QLog.isColorLevel()) {
       QLog.i("TranslatePopupActionSheetMenuDialog", 2, "onAnimationEnd");
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$OnClickActionListener != null) && (this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$MenuItem != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$OnClickActionListener.a(this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$MenuItem);
+    paramAnimation = this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$OnClickActionListener;
+    if (paramAnimation != null)
+    {
+      TranslatePopupActionSheetMenuDialog.MenuItem localMenuItem = this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$MenuItem;
+      if (localMenuItem != null) {
+        paramAnimation.a(localMenuItem);
+      }
     }
     this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$MenuItem = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$OnDismissListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$OnDismissListener.a();
+    paramAnimation = this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$OnDismissListener;
+    if (paramAnimation != null) {
+      paramAnimation.a();
     }
     super.dismiss();
   }
@@ -109,26 +122,26 @@ public class TranslatePopupActionSheetMenuDialog
     try
     {
       this.jdField_a_of_type_AndroidAppActivity.getWindowManager().addView(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
-      super.showAsDropDown(paramView, paramInt1, paramInt2);
-      if (QLog.isColorLevel()) {
-        QLog.i("TranslatePopupActionSheetMenuDialog", 2, "showAsDropDown " + isAboveAnchor());
-      }
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("TranslatePopupActionSheetMenuDialog", 2, localException.toString());
-        }
+      if (QLog.isColorLevel()) {
+        QLog.i("TranslatePopupActionSheetMenuDialog", 2, localException.toString());
       }
+    }
+    super.showAsDropDown(paramView, paramInt1, paramInt2);
+    if (QLog.isColorLevel())
+    {
+      paramView = new StringBuilder();
+      paramView.append("showAsDropDown ");
+      paramView.append(isAboveAnchor());
+      QLog.i("TranslatePopupActionSheetMenuDialog", 2, paramView.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.TranslatePopupActionSheetMenuDialog
  * JD-Core Version:    0.7.0.1
  */

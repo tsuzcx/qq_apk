@@ -1,7 +1,6 @@
 package com.tencent.biz.qqstory.storyHome;
 
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.utils.BitmapUtils.OutOfMemHandleCommand;
 import com.tribe.async.dispatch.Dispatcher.Dispatchable;
 import com.tribe.async.dispatch.Subscriber;
 import java.lang.ref.WeakReference;
@@ -19,20 +18,20 @@ class QQStoryBaseActivity$OutOfMemoryHandler
   
   public void accept(@NonNull List<Class<? extends Dispatcher.Dispatchable>> paramList)
   {
-    paramList.add(BitmapUtils.OutOfMemHandleCommand.class);
+    paramList.add(QQStoryBaseActivity.OutOfMemHandleCommand.class);
   }
   
   public void handleDispatch(@NonNull Dispatcher.Dispatchable paramDispatchable)
   {
     paramDispatchable = (QQStoryBaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (paramDispatchable != null) {
-      paramDispatchable.c();
+      paramDispatchable.onOutOfMemory();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity.OutOfMemoryHandler
  * JD-Core Version:    0.7.0.1
  */

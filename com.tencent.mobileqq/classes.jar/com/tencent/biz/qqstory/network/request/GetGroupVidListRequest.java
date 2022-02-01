@@ -23,15 +23,12 @@ public class GetGroupVidListRequest
     try
     {
       localRspGetGroupVidList.mergeFrom(paramArrayOfByte);
-      return new GetGroupVidListResponse(localRspGetGroupVidList);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      paramArrayOfByte.printStackTrace();
     }
+    return new GetGroupVidListResponse(localRspGetGroupVidList);
   }
   
   public String a()
@@ -39,7 +36,7 @@ public class GetGroupVidListRequest
     return a;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqGetGroupVidList localReqGetGroupVidList = new qqstory_service.ReqGetGroupVidList();
     localReqGetGroupVidList.pull_type.set(this.c);
@@ -49,7 +46,7 @@ public class GetGroupVidListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetGroupVidListRequest
  * JD-Core Version:    0.7.0.1
  */

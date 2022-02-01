@@ -32,26 +32,42 @@ public final class stBusinessAdInfo
   
   public String toString()
   {
-    return "stBusinessAdInfo{adType=" + this.adType + ", adId='" + this.adId + '\'' + ", creativeId='" + this.creativeId + '\'' + ", advertiserId='" + this.advertiserId + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("stBusinessAdInfo{adType=");
+    localStringBuilder.append(this.adType);
+    localStringBuilder.append(", adId='");
+    localStringBuilder.append(this.adId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", creativeId='");
+    localStringBuilder.append(this.creativeId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", advertiserId='");
+    localStringBuilder.append(this.advertiserId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.adType, 0);
-    if (this.adId != null) {
-      paramJceOutputStream.write(this.adId, 1);
+    String str = this.adId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.creativeId != null) {
-      paramJceOutputStream.write(this.creativeId, 2);
+    str = this.creativeId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.advertiserId != null) {
-      paramJceOutputStream.write(this.advertiserId, 3);
+    str = this.advertiserId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stBusinessAdInfo
  * JD-Core Version:    0.7.0.1
  */

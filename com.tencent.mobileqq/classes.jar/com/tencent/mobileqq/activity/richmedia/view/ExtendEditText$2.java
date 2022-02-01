@@ -12,78 +12,59 @@ final class ExtendEditText$2
   public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
     int i;
-    if (paramInt1 <= paramInt2)
-    {
+    if (paramInt1 <= paramInt2) {
       i = paramInt1;
-      if (paramInt1 > paramInt2) {
-        break label75;
-      }
-    }
-    int j;
-    for (;;)
-    {
-      j = 0;
-      paramInt1 = i;
-      while ((paramInt1 < paramInt2) && (paramInt1 < paramCharSequence.length()))
-      {
-        int k = j;
-        if (a(paramCharSequence.charAt(paramInt1))) {
-          k = j + 1;
-        }
-        paramInt1 += 1;
-        j = k;
-      }
+    } else {
       i = paramInt2;
-      break;
-      label75:
-      paramInt2 = paramInt1;
     }
-    return j + (paramInt2 - i);
+    int j = paramInt1;
+    if (paramInt1 <= paramInt2) {
+      j = paramInt2;
+    }
+    paramInt1 = i;
+    int k;
+    for (paramInt2 = 0; (paramInt1 < j) && (paramInt1 < paramCharSequence.length()); paramInt2 = k)
+    {
+      k = paramInt2;
+      if (a(paramCharSequence.charAt(paramInt1))) {
+        k = paramInt2 + 1;
+      }
+      paramInt1 += 1;
+    }
+    return j - i + paramInt2;
   }
   
   public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    int m = 0;
     int i;
-    if (paramInt1 <= paramInt2)
-    {
+    if (paramInt1 <= paramInt2) {
       i = paramInt1;
-      if (paramInt1 > paramInt2) {
-        break label83;
-      }
-      label16:
-      paramInt1 = i;
+    } else {
+      i = paramInt2;
     }
+    int j = paramInt1;
+    if (paramInt1 <= paramInt2) {
+      j = paramInt2;
+    }
+    paramInt1 = i;
     int k;
-    for (int j = 0;; j = k)
+    for (paramInt2 = 0; paramInt1 < paramCharSequence.length(); paramInt2 = k)
     {
-      k = m;
-      if (paramInt1 < paramCharSequence.length())
-      {
-        k = j;
-        if (a(paramCharSequence.charAt(paramInt1))) {
-          k = j + 1;
-        }
-        if (paramInt1 + k >= paramInt2) {
-          k = paramInt1 - i;
-        }
+      k = paramInt2;
+      if (a(paramCharSequence.charAt(paramInt1))) {
+        k = paramInt2 + 1;
       }
-      else
-      {
-        return k;
-        i = paramInt2;
-        break;
-        label83:
-        paramInt2 = paramInt1;
-        break label16;
+      if (paramInt1 + k >= j) {
+        return paramInt1 - i;
       }
       paramInt1 += 1;
     }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.view.ExtendEditText.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.troop.activity;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -35,21 +37,35 @@ public class TroopAvatarWallPreviewActivity$ForwardAsyncTask
   
   protected Bundle a(Void... paramVarArgs)
   {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (this.jdField_a_of_type_ComTencentImageURLDrawable == null)) {
-      return null;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("forward_type", 1);
-    paramVarArgs = new File(AppConstants.SDCARD_IMG_FORWARD_URLDRAWABLE);
-    if (!paramVarArgs.exists()) {
-      paramVarArgs.mkdirs();
-    }
-    String str = AppConstants.SDCARD_IMG_FORWARD_URLDRAWABLE + this.jdField_a_of_type_JavaLangString + Utils.Crc64String(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
-    paramVarArgs = str;
-    if (!new File(str).exists()) {}
-    try
+    paramVarArgs = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if ((paramVarArgs != null) && (paramVarArgs.get() != null))
     {
-      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(str);
+      if (this.jdField_a_of_type_ComTencentImageURLDrawable == null) {
+        return null;
+      }
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("forward_type", 1);
+      paramVarArgs = new File(AppConstants.SDCARD_IMG_FORWARD_URLDRAWABLE);
+      if (!paramVarArgs.exists()) {
+        paramVarArgs.mkdirs();
+      }
+      paramVarArgs = new StringBuilder();
+      paramVarArgs.append(AppConstants.SDCARD_IMG_FORWARD_URLDRAWABLE);
+      paramVarArgs.append(this.jdField_a_of_type_JavaLangString);
+      paramVarArgs.append(Utils.Crc64String(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString()));
+      String str = paramVarArgs.toString();
+      paramVarArgs = str;
+      if (!new File(str).exists()) {
+        try
+        {
+          paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(str);
+        }
+        catch (IOException paramVarArgs)
+        {
+          QLog.e("foward", 2, "IOException", paramVarArgs);
+          return null;
+        }
+      }
       localBundle.putBoolean("forward_urldrawable", true);
       localBundle.putString("forward_urldrawable_thumb_url", this.b);
       localBundle.putString("forward_filepath", paramVarArgs);
@@ -62,33 +78,33 @@ public class TroopAvatarWallPreviewActivity$ForwardAsyncTask
       }
       return localBundle;
     }
-    catch (IOException paramVarArgs)
-    {
-      QLog.e("foward", 2, "IOException", paramVarArgs);
-    }
     return null;
   }
   
   protected void a(Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
-      return;
-    }
-    TroopAvatarWallPreviewActivity localTroopAvatarWallPreviewActivity = (TroopAvatarWallPreviewActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramBundle == null)
+    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localObject != null)
     {
-      QQToast.a(localTroopAvatarWallPreviewActivity, HardCodeUtil.a(2131715070), 0).b(localTroopAvatarWallPreviewActivity.getTitleBarHeight());
-      return;
+      if (((WeakReference)localObject).get() == null) {
+        return;
+      }
+      localObject = (TroopAvatarWallPreviewActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramBundle == null)
+      {
+        QQToast.a((Context)localObject, HardCodeUtil.a(2131714993), 0).b(((TroopAvatarWallPreviewActivity)localObject).getTitleBarHeight());
+        return;
+      }
+      Intent localIntent = new Intent();
+      localIntent.putExtras(paramBundle);
+      ForwardBaseOption.a((Activity)localObject, localIntent, 21);
+      TroopAvatarWallPreviewActivity.access$1300((TroopAvatarWallPreviewActivity)localObject, "0X8006A81", "0X8006A95");
     }
-    Intent localIntent = new Intent();
-    localIntent.putExtras(paramBundle);
-    ForwardBaseOption.a(localTroopAvatarWallPreviewActivity, localIntent, 21);
-    TroopAvatarWallPreviewActivity.a(localTroopAvatarWallPreviewActivity, "0X8006A81", "0X8006A95");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.ForwardAsyncTask
  * JD-Core Version:    0.7.0.1
  */

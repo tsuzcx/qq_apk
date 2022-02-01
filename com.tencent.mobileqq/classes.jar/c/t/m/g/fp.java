@@ -1,13 +1,9 @@
 package c.t.m.g;
 
 import android.location.Location;
-import android.telephony.NeighboringCellInfo;
 import com.tencent.tencentmap.lbssdk.service.e;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -30,7 +26,7 @@ public final class fp
   
   private static double a(double paramDouble)
   {
-    return 3.141592653589793D * paramDouble / 180.0D;
+    return paramDouble * 3.141592653589793D / 180.0D;
   }
   
   public static double a(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4)
@@ -39,8 +35,9 @@ public final class fp
     paramDouble3 = a(paramDouble3);
     paramDouble2 = a(paramDouble2);
     paramDouble4 = a(paramDouble4);
-    double d1 = Math.pow(Math.sin((paramDouble1 - paramDouble3) / 2.0D), 2.0D);
-    return Math.round(Math.asin(Math.sqrt(Math.cos(paramDouble1) * Math.cos(paramDouble3) * Math.pow(Math.sin((paramDouble2 - paramDouble4) / 2.0D), 2.0D) + d1)) * 2.0D * 6378.1369999999997D * 10000.0D) / 10000.0D * 1000.0D;
+    paramDouble1 = Math.round(Math.asin(Math.sqrt(Math.pow(Math.sin((paramDouble1 - paramDouble3) / 2.0D), 2.0D) + Math.cos(paramDouble1) * Math.cos(paramDouble3) * Math.pow(Math.sin((paramDouble2 - paramDouble4) / 2.0D), 2.0D))) * 2.0D * 6378.1369999999997D * 10000.0D);
+    Double.isNaN(paramDouble1);
+    return paramDouble1 / 10000.0D * 1000.0D;
   }
   
   public static double a(double paramDouble, int paramInt)
@@ -84,118 +81,28 @@ public final class fp
   
   public static String a(et paramet, boolean paramBoolean)
   {
-    if (paramet == null) {
-      return "[]";
-    }
-    int j = paramet.b;
-    int k = paramet.c;
-    int m = paramet.a.ordinal();
-    Object localObject1 = new ArrayList();
-    Object localObject2 = paramet.a();
-    int i;
-    int n;
-    Object localObject4;
-    if (fj.a(m, j, k, paramet.d, paramet.e))
-    {
-      i = paramet.d;
-      int i2 = paramet.e;
-      int i3 = paramet.f;
-      n = paramet.g;
-      int i1 = paramet.h;
-      localObject4 = new StringBuilder();
-      ((StringBuilder)localObject4).append("{");
-      ((StringBuilder)localObject4).append("\"mcc\":");
-      ((StringBuilder)localObject4).append(j);
-      ((StringBuilder)localObject4).append(",\"mnc\":");
-      ((StringBuilder)localObject4).append(k);
-      ((StringBuilder)localObject4).append(",\"lac\":");
-      ((StringBuilder)localObject4).append(i);
-      ((StringBuilder)localObject4).append(",\"cellid\":");
-      ((StringBuilder)localObject4).append(i2);
-      ((StringBuilder)localObject4).append(",\"rss\":");
-      ((StringBuilder)localObject4).append(i3);
-      ((StringBuilder)localObject4).append(",\"seed\":");
-      if (paramBoolean)
-      {
-        i = 1;
-        ((StringBuilder)localObject4).append(i);
-        ((StringBuilder)localObject4).append(",\"networktype\":");
-        ((StringBuilder)localObject4).append(m);
-        if ((n != 2147483647) && (i1 != 2147483647))
-        {
-          ((StringBuilder)localObject4).append(",\"stationLat\":");
-          ((StringBuilder)localObject4).append(String.format("%.6f", new Object[] { Float.valueOf(n / 14400.0F) }));
-          ((StringBuilder)localObject4).append(",\"stationLng\":");
-          ((StringBuilder)localObject4).append(String.format("%.6f", new Object[] { Float.valueOf(i1 / 14400.0F) }));
-        }
-        ((StringBuilder)localObject4).append("}");
-        ((ArrayList)localObject1).add(((StringBuilder)localObject4).toString());
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        localObject2 = ((List)localObject2).iterator();
-        if (((Iterator)localObject2).hasNext())
-        {
-          localObject4 = (NeighboringCellInfo)((Iterator)localObject2).next();
-          i = ((NeighboringCellInfo)localObject4).getLac();
-          n = ((NeighboringCellInfo)localObject4).getCid();
-          if (!fj.a(m, j, k, i, n)) {
-            break label585;
-          }
-          ((ArrayList)localObject1).add(a(j, k, i, n, (((NeighboringCellInfo)localObject4).getRssi() << 1) - 113, 2147483647, 2147483647));
-          continue;
-        }
-      }
-      catch (Exception localException)
-      {
-        try
-        {
-          paramet = paramet.b().iterator();
-          Object localObject3;
-          if (paramet.hasNext())
-          {
-            localObject3 = (et)paramet.next();
-            ((ArrayList)localObject1).add(a(((et)localObject3).b, ((et)localObject3).c, ((et)localObject3).d, ((et)localObject3).e, ((et)localObject3).f, ((et)localObject3).g, ((et)localObject3).h));
-            continue;
-          }
-          i = 0;
-        }
-        catch (Throwable paramet)
-        {
-          paramet = new StringBuilder("[");
-          localObject3 = new fl(",");
-          localObject1 = ((Iterable)localObject1).iterator();
-          paramet.append(((fl)localObject3).a(new StringBuilder(), (Iterator)localObject1).toString());
-          paramet.append("]");
-          return paramet.toString();
-        }
-      }
-      a("illeagal main cell! ", j, k, m, paramet.d, paramet.e);
-      continue;
-      label585:
-      a("illeagal neighboringCell! ", j, k, m, i, n);
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   private static void a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    boolean bool = true;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("getCellInfoWithJsonFormat: ");
     localStringBuilder.append(paramString);
-    paramString = localStringBuilder.append("isGsm=");
-    if (paramInt3 == 1) {}
-    for (;;)
-    {
-      paramString.append(bool);
-      localStringBuilder.append(", mcc,mnc=").append(paramInt1).append(",").append(paramInt2);
-      localStringBuilder.append(", lac,cid=").append(paramInt4).append(",").append(paramInt5);
-      return;
+    localStringBuilder.append("isGsm=");
+    boolean bool = true;
+    if (paramInt3 != 1) {
       bool = false;
     }
+    localStringBuilder.append(bool);
+    localStringBuilder.append(", mcc,mnc=");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", lac,cid=");
+    localStringBuilder.append(paramInt4);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramInt5);
   }
   
   public static boolean a(Location paramLocation, double[] paramArrayOfDouble)
@@ -239,40 +146,34 @@ public final class fp
     paramLocation = new double[2];
     try
     {
-      e.b(n ^ m, m ^ i1, paramLocation);
-      label169:
+      e.b(n ^ m, i1 ^ m, paramLocation);
+      label168:
       paramArrayOfDouble[0] = paramLocation[0];
       paramArrayOfDouble[1] = paramLocation[1];
       return true;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      break label169;
+      break label168;
     }
   }
   
   public static boolean a(String paramString)
   {
-    do
+    try
     {
-      JSONObject localJSONObject;
-      do
-      {
-        try
-        {
-          localJSONObject = new JSONObject(paramString);
-          if (paramString.contains("latitude")) {
-            return true;
-          }
-        }
-        catch (Exception paramString)
-        {
-          return false;
-        }
-        paramString = localJSONObject.optJSONArray("cells");
-      } while ((paramString != null) && (paramString.length() > 0));
+      JSONObject localJSONObject = new JSONObject(paramString);
+      if (paramString.contains("latitude")) {
+        return true;
+      }
+      paramString = localJSONObject.optJSONArray("cells");
+      if ((paramString != null) && (paramString.length() > 0)) {
+        return true;
+      }
       paramString = localJSONObject.optJSONArray("wifis");
-    } while ((paramString != null) && (paramString.length() > 0));
+      return (paramString != null) && (paramString.length() > 0);
+    }
+    catch (Exception paramString) {}
     return false;
   }
   
@@ -283,7 +184,7 @@ public final class fp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.fp
  * JD-Core Version:    0.7.0.1
  */

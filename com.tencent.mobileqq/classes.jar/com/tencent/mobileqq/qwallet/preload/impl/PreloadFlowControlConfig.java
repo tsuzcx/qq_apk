@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.qwallet.preload.impl;
 
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qwallet.impl.QWalletTools;
 import com.tencent.mobileqq.qwallet.preload.PreloadStaticApi;
 import java.io.Serializable;
 import java.util.HashMap;
@@ -29,85 +30,47 @@ public class PreloadFlowControlConfig
   
   public static String getConfigPath(String paramString, AppRuntime paramAppRuntime)
   {
-    return PreloadStaticApi.a(paramAppRuntime) + paramString + "flow_config";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(PreloadStaticApi.a(paramAppRuntime));
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("flow_config");
+    return localStringBuilder.toString();
   }
   
-  /* Error */
   public static PreloadFlowControlConfig getFlowControlConfig(String paramString, AppRuntime paramAppRuntime)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: new 47	java/lang/StringBuilder
-    //   6: dup
-    //   7: invokespecial 48	java/lang/StringBuilder:<init>	()V
-    //   10: aload_0
-    //   11: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14: aload_1
-    //   15: invokevirtual 70	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
-    //   18: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   21: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   24: astore_3
-    //   25: getstatic 34	com/tencent/mobileqq/qwallet/preload/impl/PreloadFlowControlConfig:a	Ljava/util/Map;
-    //   28: aload_3
-    //   29: invokeinterface 76 2 0
-    //   34: checkcast 2	com/tencent/mobileqq/qwallet/preload/impl/PreloadFlowControlConfig
-    //   37: astore_2
-    //   38: aload_2
-    //   39: ifnull +10 -> 49
-    //   42: aload_2
-    //   43: astore_1
-    //   44: ldc 2
-    //   46: monitorexit
-    //   47: aload_1
-    //   48: areturn
-    //   49: aload_0
-    //   50: aload_1
-    //   51: invokestatic 78	com/tencent/mobileqq/qwallet/preload/impl/PreloadFlowControlConfig:getConfigPath	(Ljava/lang/String;Lmqq/app/AppRuntime;)Ljava/lang/String;
-    //   54: astore 4
-    //   56: aload 4
-    //   58: invokestatic 83	com/tencent/mobileqq/activity/qwallet/utils/QWalletTools:a	(Ljava/lang/String;)Ljava/lang/Object;
-    //   61: checkcast 2	com/tencent/mobileqq/qwallet/preload/impl/PreloadFlowControlConfig
-    //   64: astore_0
-    //   65: aload_0
-    //   66: astore_1
-    //   67: aload_0
-    //   68: ifnonnull +13 -> 81
-    //   71: new 2	com/tencent/mobileqq/qwallet/preload/impl/PreloadFlowControlConfig
-    //   74: dup
-    //   75: aload 4
-    //   77: invokespecial 85	com/tencent/mobileqq/qwallet/preload/impl/PreloadFlowControlConfig:<init>	(Ljava/lang/String;)V
-    //   80: astore_1
-    //   81: getstatic 34	com/tencent/mobileqq/qwallet/preload/impl/PreloadFlowControlConfig:a	Ljava/util/Map;
-    //   84: aload_3
-    //   85: aload_1
-    //   86: invokeinterface 89 3 0
-    //   91: pop
-    //   92: goto -48 -> 44
-    //   95: astore_0
-    //   96: ldc 2
-    //   98: monitorexit
-    //   99: aload_0
-    //   100: athrow
-    //   101: astore_0
-    //   102: aload_2
-    //   103: astore_0
-    //   104: goto -39 -> 65
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	107	0	paramString	String
-    //   0	107	1	paramAppRuntime	AppRuntime
-    //   37	66	2	localPreloadFlowControlConfig	PreloadFlowControlConfig
-    //   24	61	3	str1	String
-    //   54	22	4	str2	String
-    // Exception table:
-    //   from	to	target	type
-    //   3	38	95	finally
-    //   49	56	95	finally
-    //   56	65	95	finally
-    //   71	81	95	finally
-    //   81	92	95	finally
-    //   56	65	101	java/lang/Exception
+    Object localObject;
+    String str1;
+    String str2;
+    label72:
+    try
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(paramAppRuntime.getAccount());
+      str1 = ((StringBuilder)localObject).toString();
+      localObject = (PreloadFlowControlConfig)a.get(str1);
+      if (localObject != null) {
+        return localObject;
+      }
+      str2 = getConfigPath(paramString, paramAppRuntime);
+    }
+    finally {}
+    try
+    {
+      paramString = (PreloadFlowControlConfig)QWalletTools.a(str2);
+    }
+    catch (Exception paramString)
+    {
+      break label72;
+    }
+    paramString = (String)localObject;
+    paramAppRuntime = paramString;
+    if (paramString == null) {
+      paramAppRuntime = new PreloadFlowControlConfig(str2);
+    }
+    a.put(str1, paramAppRuntime);
+    return paramAppRuntime;
   }
   
   public void saveConfig()
@@ -117,7 +80,7 @@ public class PreloadFlowControlConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadFlowControlConfig
  * JD-Core Version:    0.7.0.1
  */

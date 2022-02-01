@@ -34,7 +34,7 @@ public class PatchedTextView
     return (this.mTmpEnable) && (super.isEnabled());
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     try
     {
@@ -109,7 +109,7 @@ public class PatchedTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PatchedTextView
  * JD-Core Version:    0.7.0.1
  */

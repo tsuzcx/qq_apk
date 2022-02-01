@@ -9,10 +9,12 @@ public class ForwardingTimeout
   
   public ForwardingTimeout(Timeout paramTimeout)
   {
-    if (paramTimeout == null) {
-      throw new IllegalArgumentException("delegate == null");
+    if (paramTimeout != null)
+    {
+      this.delegate = paramTimeout;
+      return;
     }
-    this.delegate = paramTimeout;
+    throw new IllegalArgumentException("delegate == null");
   }
   
   public Timeout clearDeadline()
@@ -47,11 +49,12 @@ public class ForwardingTimeout
   
   public final ForwardingTimeout setDelegate(Timeout paramTimeout)
   {
-    if (paramTimeout == null) {
-      throw new IllegalArgumentException("delegate == null");
+    if (paramTimeout != null)
+    {
+      this.delegate = paramTimeout;
+      return this;
     }
-    this.delegate = paramTimeout;
-    return this;
+    throw new IllegalArgumentException("delegate == null");
   }
   
   public void throwIfReached()
@@ -71,7 +74,7 @@ public class ForwardingTimeout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okio.ForwardingTimeout
  * JD-Core Version:    0.7.0.1
  */

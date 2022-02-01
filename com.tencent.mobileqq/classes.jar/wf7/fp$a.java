@@ -13,19 +13,18 @@ class fp$a
   {
     if ("android.location.PROVIDERS_CHANGED".equals(paramIntent.getAction()))
     {
-      if (dj.g(gv.dE())) {
+      if (dj.g(gv.dE()))
+      {
         fp.g(this.ra);
+        return;
       }
+      fp.h(this.ra);
     }
-    else {
-      return;
-    }
-    fp.h(this.ra);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.fp.a
  * JD-Core Version:    0.7.0.1
  */

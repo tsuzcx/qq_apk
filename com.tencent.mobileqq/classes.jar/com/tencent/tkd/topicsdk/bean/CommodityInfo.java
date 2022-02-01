@@ -63,18 +63,18 @@ public final class CommodityInfo
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof CommodityInfo))
       {
         paramObject = (CommodityInfo)paramObject;
-        if ((!Intrinsics.areEqual(this.id, paramObject.id)) || (!Intrinsics.areEqual(this.num, paramObject.num)) || (!Intrinsics.areEqual(this.name, paramObject.name)) || (!Intrinsics.areEqual(this.url, paramObject.url))) {}
+        if ((Intrinsics.areEqual(this.id, paramObject.id)) && (Intrinsics.areEqual(this.num, paramObject.num)) && (Intrinsics.areEqual(this.name, paramObject.name)) && (Intrinsics.areEqual(this.url, paramObject.url))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   @NotNull
@@ -103,49 +103,54 @@ public final class CommodityInfo
   
   public int hashCode()
   {
-    int m = 0;
     String str = this.id;
+    int m = 0;
     int i;
-    int j;
-    if (str != null)
-    {
+    if (str != null) {
       i = str.hashCode();
-      str = this.num;
-      if (str == null) {
-        break label95;
-      }
-      j = str.hashCode();
-      label37:
-      str = this.name;
-      if (str == null) {
-        break label100;
-      }
-    }
-    label95:
-    label100:
-    for (int k = str.hashCode();; k = 0)
-    {
-      str = this.url;
-      if (str != null) {
-        m = str.hashCode();
-      }
-      return (k + (j + i * 31) * 31) * 31 + m;
+    } else {
       i = 0;
-      break;
-      j = 0;
-      break label37;
     }
+    str = this.num;
+    int j;
+    if (str != null) {
+      j = str.hashCode();
+    } else {
+      j = 0;
+    }
+    str = this.name;
+    int k;
+    if (str != null) {
+      k = str.hashCode();
+    } else {
+      k = 0;
+    }
+    str = this.url;
+    if (str != null) {
+      m = str.hashCode();
+    }
+    return ((i * 31 + j) * 31 + k) * 31 + m;
   }
   
   @NotNull
   public String toString()
   {
-    return "CommodityInfo(id=" + this.id + ", num=" + this.num + ", name=" + this.name + ", url=" + this.url + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CommodityInfo(id=");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append(", num=");
+    localStringBuilder.append(this.num);
+    localStringBuilder.append(", name=");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append(", url=");
+    localStringBuilder.append(this.url);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.bean.CommodityInfo
  * JD-Core Version:    0.7.0.1
  */

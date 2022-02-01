@@ -36,22 +36,34 @@ public class WXFileObject
   
   public boolean checkArgs()
   {
-    if (((this.fileData == null) || (this.fileData.length == 0)) && ((this.filePath == null) || (this.filePath.length() == 0)))
+    Object localObject = this.fileData;
+    if ((localObject == null) || (localObject.length == 0))
     {
-      Log.e("MicroMsg.SDK.WXFileObject", "checkArgs fail, both arguments is null");
-      return false;
+      localObject = this.filePath;
+      if ((localObject == null) || (((String)localObject).length() == 0)) {}
     }
-    if ((this.fileData != null) && (this.fileData.length > this.contentLengthLimit))
+    else
     {
-      Log.e("MicroMsg.SDK.WXFileObject", "checkArgs fail, fileData is too large");
-      return false;
+      localObject = this.fileData;
+      if ((localObject != null) && (localObject.length > this.contentLengthLimit)) {
+        localObject = "checkArgs fail, fileData is too large";
+      }
     }
-    if ((this.filePath != null) && (getFileSize(this.filePath) > this.contentLengthLimit))
+    for (;;)
     {
-      Log.e("MicroMsg.SDK.WXFileObject", "checkArgs fail, fileSize is too large");
+      Log.e("MicroMsg.SDK.WXFileObject", (String)localObject);
       return false;
+      localObject = this.filePath;
+      if ((localObject != null) && (getFileSize((String)localObject) > this.contentLengthLimit))
+      {
+        localObject = "checkArgs fail, fileSize is too large";
+      }
+      else
+      {
+        return true;
+        localObject = "checkArgs fail, both arguments is null";
+      }
     }
-    return true;
   }
   
   public void serialize(Bundle paramBundle)
@@ -88,7 +100,7 @@ public class WXFileObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXFileObject
  * JD-Core Version:    0.7.0.1
  */

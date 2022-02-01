@@ -19,12 +19,12 @@ class TroopGiftMsgItemBuilder$ClickAction$1
   {
     this.a.a.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(false);
     this.a.a.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.removeTextChangedListener(this);
-    this.a.a.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTag(2131374332, null);
+    this.a.a.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTag(2131373888, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder.ClickAction.1
  * JD-Core Version:    0.7.0.1
  */

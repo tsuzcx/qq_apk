@@ -59,64 +59,66 @@ public final class d
   {
     this.h = false;
     this.g = false;
-    if (this.a != null)
+    TextView localTextView = this.a;
+    if (localTextView != null)
     {
-      this.a.setText(paramString1);
+      localTextView.setText(paramString1);
       this.a.setContentDescription(paramString1);
     }
-    if (this.b != null)
+    paramString1 = this.b;
+    if (paramString1 != null)
     {
-      this.b.setText(paramString2);
+      paramString1.setText(paramString2);
       this.b.setContentDescription(paramString2);
     }
     if ((this.c == null) || (!TextUtils.isEmpty(paramString4))) {}
     try
     {
       this.c.setTextColor(Color.parseColor(paramString4));
-      label83:
-      this.c.setText(paramString3);
-      this.c.setContentDescription(paramString3);
-      if (paramOnClickListener != null) {
-        this.c.setOnClickListener(paramOnClickListener);
-      }
-      for (;;)
-      {
-        if ((!paramBoolean) || ((this.d == null) || (!TextUtils.isEmpty(paramString6)))) {}
-        try
-        {
-          this.d.setTextColor(Color.parseColor(paramString6));
-          label145:
-          this.d.setText(paramString5);
-          this.d.setContentDescription(paramString5);
-          if (paramOnClickListener != null) {
-            this.d.setOnClickListener(paramOnClickListener);
-          }
-          for (;;)
-          {
-            show();
-            return;
-            this.c.setOnClickListener(this);
-            break;
-            this.d.setOnClickListener(this);
-            continue;
-            if (this.d != null) {
-              this.d.setVisibility(8);
-            }
-            if (this.e != null) {
-              this.e.setVisibility(8);
-            }
-          }
-        }
-        catch (IllegalArgumentException paramString1)
-        {
-          break label145;
-        }
-      }
     }
     catch (IllegalArgumentException paramString1)
     {
-      break label83;
+      label87:
+      break label87;
     }
+    this.c.setText(paramString3);
+    this.c.setContentDescription(paramString3);
+    if (paramOnClickListener != null) {
+      this.c.setOnClickListener(paramOnClickListener);
+    } else {
+      this.c.setOnClickListener(this);
+    }
+    if ((!paramBoolean) || ((this.d == null) || (!TextUtils.isEmpty(paramString6)))) {}
+    try
+    {
+      this.d.setTextColor(Color.parseColor(paramString6));
+    }
+    catch (IllegalArgumentException paramString1)
+    {
+      label163:
+      break label163;
+    }
+    this.d.setText(paramString5);
+    this.d.setContentDescription(paramString5);
+    if (paramOnClickListener != null)
+    {
+      this.d.setOnClickListener(paramOnClickListener);
+    }
+    else
+    {
+      this.d.setOnClickListener(this);
+      break label239;
+      paramString1 = this.d;
+      if (paramString1 != null) {
+        paramString1.setVisibility(8);
+      }
+      paramString1 = this.e;
+      if (paramString1 != null) {
+        paramString1.setVisibility(8);
+      }
+    }
+    label239:
+    show();
   }
   
   public void a(boolean paramBoolean)
@@ -146,21 +148,17 @@ public final class d
       b(true);
       dismiss();
     }
-    for (;;)
+    else if (paramView.getId() == R.id.f)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (paramView.getId() == R.id.f)
-      {
-        a(true);
-        dismiss();
-      }
+      a(true);
+      dismiss();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.d
  * JD-Core Version:    0.7.0.1
  */

@@ -30,32 +30,34 @@ public class TroopFileError$TroopFileErrorObserver
     this.jdField_a_of_type_Int = 0;
   }
   
-  public void onTroopFileReportSimpleError(Object paramObject)
+  protected void b(Object paramObject)
   {
-    if ((paramObject == null) || (!(paramObject instanceof TroopFileError.SimpleErrorInfo))) {}
-    Context localContext;
-    long l1;
-    do
+    if (paramObject != null)
     {
-      return;
+      if (!(paramObject instanceof TroopFileError.SimpleErrorInfo)) {
+        return;
+      }
       paramObject = (TroopFileError.SimpleErrorInfo)paramObject;
-      localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      Context localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       long l2 = this.jdField_a_of_type_Long;
-      l1 = l2;
+      long l1 = l2;
       if (l2 == 0L)
       {
+        TroopFileError.TroopFileErrorFilter localTroopFileErrorFilter = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileError$TroopFileErrorFilter;
         l1 = l2;
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileError$TroopFileErrorFilter != null) {
-          l1 = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileError$TroopFileErrorFilter.a();
+        if (localTroopFileErrorFilter != null) {
+          l1 = localTroopFileErrorFilter.a();
         }
       }
-    } while (localContext == null);
-    TroopFileError.a(paramObject, l1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localContext);
+      if (localContext != null) {
+        TroopFileError.a(paramObject, l1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localContext);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileError.TroopFileErrorObserver
  * JD-Core Version:    0.7.0.1
  */

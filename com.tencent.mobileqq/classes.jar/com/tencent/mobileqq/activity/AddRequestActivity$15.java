@@ -11,21 +11,18 @@ class AddRequestActivity$15
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool = true;
     paramDialogInterface = this.a;
-    if (paramInt == 1) {}
-    for (;;)
-    {
-      AddRequestActivity.b(paramDialogInterface, bool);
-      ReportController.b(this.a.app, "dc00898", "", "", "0X800B084", "0X800B084", 0, 0, "", "", "", "");
-      return;
+    boolean bool = true;
+    if (paramInt != 1) {
       bool = false;
     }
+    AddRequestActivity.b(paramDialogInterface, bool);
+    ReportController.b(this.a.app, "dc00898", "", "", "0X800B084", "0X800B084", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddRequestActivity.15
  * JD-Core Version:    0.7.0.1
  */

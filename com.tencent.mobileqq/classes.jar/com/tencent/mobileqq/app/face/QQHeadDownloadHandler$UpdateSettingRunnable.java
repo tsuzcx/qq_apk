@@ -35,51 +35,78 @@ class QQHeadDownloadHandler$UpdateSettingRunnable
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("UpdateSettingRunnable", 2, "run start. | uin=" + this.mSetting.uin + ", updateTimestamp=" + this.mSetting.updateTimestamp + ", usrtype=" + this.mSetting.bUsrType + ", headImgTimestamp=" + this.mSetting.headImgTimestamp + ", usrtype=" + this.mSetting.bHeadType + ", status=" + this.mSetting.getStatus() + ", id=" + this.mSetting.getId() + ", currentTimeMillis=" + System.currentTimeMillis());
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("run start. | uin=");
+      ((StringBuilder)localObject1).append(this.mSetting.uin);
+      ((StringBuilder)localObject1).append(", updateTimestamp=");
+      ((StringBuilder)localObject1).append(this.mSetting.updateTimestamp);
+      ((StringBuilder)localObject1).append(", usrtype=");
+      ((StringBuilder)localObject1).append(this.mSetting.bUsrType);
+      ((StringBuilder)localObject1).append(", headImgTimestamp=");
+      ((StringBuilder)localObject1).append(this.mSetting.headImgTimestamp);
+      ((StringBuilder)localObject1).append(", usrtype=");
+      ((StringBuilder)localObject1).append(this.mSetting.bHeadType);
+      ((StringBuilder)localObject1).append(", status=");
+      ((StringBuilder)localObject1).append(this.mSetting.getStatus());
+      ((StringBuilder)localObject1).append(", id=");
+      ((StringBuilder)localObject1).append(this.mSetting.getId());
+      ((StringBuilder)localObject1).append(", currentTimeMillis=");
+      ((StringBuilder)localObject1).append(System.currentTimeMillis());
+      QLog.i("UpdateSettingRunnable", 2, ((StringBuilder)localObject1).toString());
     }
     Object localObject1 = QQHeadDownloadHandler.access$100(this.this$0).getEntityManagerFactory().createEntityManager();
-    if (this.mSetting.getStatus() == 1000)
-    {
+    if (this.mSetting.getStatus() == 1000) {
       ((EntityManager)localObject1).persistOrReplace(this.mSetting);
-      ((EntityManager)localObject1).close();
-      localObject1 = QQHeadDownloadHandler.access$000(this.this$0).a(this.mInfo.uin, this.mInfo.phoneNum);
-      String str = ((IQQAvatarDataService)QQHeadDownloadHandler.access$100(this.this$0).getRuntimeService(IQQAvatarDataService.class, "")).getCustomFaceFilePath(this.mInfo.dstUsrType, (String)localObject1, this.mInfo.idType, this.mInfo.sizeType);
-      Object localObject2 = str.substring(0, str.lastIndexOf("/"));
-      str = str.substring(str.lastIndexOf("/") + 1);
-      if ((!TextUtils.isEmpty(str)) && (str.endsWith("jpg_")))
-      {
-        localObject2 = new File((String)localObject2 + File.separator + str.substring(0, str.lastIndexOf("jpg_")) + "png");
-        if (((File)localObject2).exists()) {
-          ((File)localObject2).delete();
-        }
-      }
-      if (this.mInfo.dstUsrType != 32) {
-        break label452;
-      }
-      clearAvatar("stranger_" + this.mInfo.idType + "_" + (String)localObject1);
-    }
-    for (;;)
-    {
-      QQHeadDownloadHandler.access$000(this.this$0).notifyUI(0, true, this.mSetting);
-      return;
-      if ((this.mSetting.getStatus() != 1001) && (this.mSetting.getStatus() != 1002)) {
-        break;
-      }
+    } else if ((this.mSetting.getStatus() == 1001) || (this.mSetting.getStatus() == 1002)) {
       ((EntityManager)localObject1).update(this.mSetting);
-      break;
-      label452:
-      if (this.mInfo.dstUsrType == 16) {
-        clearAvatar("qcall_" + this.mInfo.idType + "_" + (String)localObject1);
-      } else {
-        clearAvatar((String)localObject1);
+    }
+    ((EntityManager)localObject1).close();
+    localObject1 = QQHeadDownloadHandler.access$000(this.this$0).a(this.mInfo.uin, this.mInfo.phoneNum);
+    String str = ((IQQAvatarDataService)QQHeadDownloadHandler.access$100(this.this$0).getRuntimeService(IQQAvatarDataService.class, "")).getCustomFaceFilePath(this.mInfo.dstUsrType, (String)localObject1, this.mInfo.idType, this.mInfo.sizeType);
+    Object localObject2 = str.substring(0, str.lastIndexOf("/"));
+    str = str.substring(str.lastIndexOf("/") + 1);
+    if ((!TextUtils.isEmpty(str)) && (str.endsWith("jpg_")))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject2);
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append(str.substring(0, str.lastIndexOf("jpg_")));
+      localStringBuilder.append("png");
+      localObject2 = new File(localStringBuilder.toString());
+      if (((File)localObject2).exists()) {
+        ((File)localObject2).delete();
       }
     }
+    if (this.mInfo.dstUsrType == 32)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("stranger_");
+      ((StringBuilder)localObject2).append(this.mInfo.idType);
+      ((StringBuilder)localObject2).append("_");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      clearAvatar(((StringBuilder)localObject2).toString());
+    }
+    else if (this.mInfo.dstUsrType == 16)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("qcall_");
+      ((StringBuilder)localObject2).append(this.mInfo.idType);
+      ((StringBuilder)localObject2).append("_");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      clearAvatar(((StringBuilder)localObject2).toString());
+    }
+    else
+    {
+      clearAvatar((String)localObject1);
+    }
+    QQHeadDownloadHandler.access$000(this.this$0).notifyUI(0, true, this.mSetting);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.QQHeadDownloadHandler.UpdateSettingRunnable
  * JD-Core Version:    0.7.0.1
  */

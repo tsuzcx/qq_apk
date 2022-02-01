@@ -29,13 +29,15 @@ public final class SttResultPush$TransPttResp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 66, 72, 80, 88, 98, 106 }, new String[] { "uint64_sessionid", "uint32_ptt_type", "uint32_error_code", "uint32_total_len", "uint32_seq", "uint32_pos", "uint32_len", "bytes_text", "uint64_sender_uin", "uint64_receiver_uin", "uint32_FileID", "str_Filemd5", "str_file_path" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), "", "" }, TransPttResp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 66, 72, 80, 88, 98, 106 }, new String[] { "uint64_sessionid", "uint32_ptt_type", "uint32_error_code", "uint32_total_len", "uint32_seq", "uint32_pos", "uint32_len", "bytes_text", "uint64_sender_uin", "uint64_receiver_uin", "uint32_FileID", "str_Filemd5", "str_file_path" }, new Object[] { localLong, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localByteStringMicro, localLong, localLong, localInteger, "", "" }, TransPttResp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x210.submsgtype0x3d.SttResultPush.TransPttResp
  * JD-Core Version:    0.7.0.1
  */

@@ -46,21 +46,21 @@ public class VideoViewFactory$TVKSDKOnLogListener
     try
     {
       this.a = Integer.parseInt(paramString2.substring(paramString2.lastIndexOf("=") + 1));
-      label32:
-      if (QLog.isColorLevel()) {
-        QLog.w(paramString1, 2, paramString2);
-      }
-      return 0;
     }
     catch (Exception localException)
     {
-      break label32;
+      label35:
+      break label35;
     }
+    if (QLog.isColorLevel()) {
+      QLog.w(paramString1, 2, paramString2);
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.VideoViewFactory.TVKSDKOnLogListener
  * JD-Core Version:    0.7.0.1
  */

@@ -56,7 +56,7 @@ public class ChatHistoryC2CMediaFragment
   {
     if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView.i();
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView.h();
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B2", "0X800A0B2", 1, 0, "", "", "", "");
     }
   }
@@ -83,7 +83,7 @@ public class ChatHistoryC2CMediaFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CMediaFragment
  * JD-Core Version:    0.7.0.1
  */

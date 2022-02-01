@@ -16,8 +16,18 @@ class HttpInterfaceForTVKImp$NetEngineResponseListener
       this.this$0.mErrDesc = paramNetResp.mErrDesc;
       this.this$0.mHttpCode = paramNetResp.mHttpCode;
       HttpInterfaceForTVKImp.access$302(this.this$0, true);
-      if (QLog.isColorLevel()) {
-        QLog.d("HttpInterfaceForTVKImp", 0, "onResp, result = " + HttpInterfaceForTVKImp.access$100(this.this$0) + " , errorCode = " + HttpInterfaceForTVKImp.access$200(this.this$0) + " , mErrDesc = " + this.this$0.mErrDesc + " , mHttpCode = " + this.this$0.mHttpCode);
+      if (QLog.isColorLevel())
+      {
+        paramNetResp = new StringBuilder();
+        paramNetResp.append("onResp, result = ");
+        paramNetResp.append(HttpInterfaceForTVKImp.access$100(this.this$0));
+        paramNetResp.append(" , errorCode = ");
+        paramNetResp.append(HttpInterfaceForTVKImp.access$200(this.this$0));
+        paramNetResp.append(" , mErrDesc = ");
+        paramNetResp.append(this.this$0.mErrDesc);
+        paramNetResp.append(" , mHttpCode = ");
+        paramNetResp.append(this.this$0.mHttpCode);
+        QLog.d("HttpInterfaceForTVKImp", 0, paramNetResp.toString());
       }
       HttpInterfaceForTVKImp.access$000(this.this$0).notify();
       return;
@@ -28,7 +38,7 @@ class HttpInterfaceForTVKImp$NetEngineResponseListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.HttpInterfaceForTVKImp.NetEngineResponseListener
  * JD-Core Version:    0.7.0.1
  */

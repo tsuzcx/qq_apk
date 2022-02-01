@@ -26,16 +26,17 @@ public final class PushUpdateFeeds
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     byte[] arrayOfByte = (byte[])new byte[1];
     ((byte[])arrayOfByte)[0] = 0;
-    cache_feeds_data.put(Integer.valueOf(0), arrayOfByte);
+    cache_feeds_data.put(localInteger, arrayOfByte);
     cache_extendinfo = new HashMap();
     cache_extendinfo.put("", "");
     cache_cell_infos = new HashMap();
-    cache_cell_infos.put(Integer.valueOf(0), "");
+    cache_cell_infos.put(localInteger, "");
     cache_commmet_reply_info = new CommentReplyInfo();
     cache_cell_checksum = new HashMap();
-    cache_cell_checksum.put(Integer.valueOf(0), "");
+    cache_cell_checksum.put(localInteger, "");
   }
   
   public PushUpdateFeeds() {}
@@ -68,32 +69,38 @@ public final class PushUpdateFeeds
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.ugc_key != null) {
-      paramJceOutputStream.write(this.ugc_key, 0);
+    Object localObject = this.ugc_key;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.feeds_data != null) {
-      paramJceOutputStream.write(this.feeds_data, 1);
+    localObject = this.feeds_data;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 1);
     }
-    if (this.extendinfo != null) {
-      paramJceOutputStream.write(this.extendinfo, 2);
+    localObject = this.extendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
-    if (this.cell_infos != null) {
-      paramJceOutputStream.write(this.cell_infos, 3);
+    localObject = this.cell_infos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
-    if (this.commmet_reply_info != null) {
-      paramJceOutputStream.write(this.commmet_reply_info, 4);
+    localObject = this.commmet_reply_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
     paramJceOutputStream.write(this.feeds_update_time, 5);
     paramJceOutputStream.write(this.need_pull, 6);
-    if (this.cell_checksum != null) {
-      paramJceOutputStream.write(this.cell_checksum, 7);
+    localObject = this.cell_checksum;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 7);
     }
     paramJceOutputStream.write(this.all_pull, 8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PUSH_UPDATE_FEEDS.PushUpdateFeeds
  * JD-Core Version:    0.7.0.1
  */

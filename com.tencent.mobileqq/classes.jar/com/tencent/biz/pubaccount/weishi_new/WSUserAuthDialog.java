@@ -13,7 +13,6 @@ import com.tencent.biz.pubaccount.weishi_new.net.WeishiTask;
 import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 import com.tencent.biz.pubaccount.weishi_new.request.UserAuthRequest;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class WSUserAuthDialog
 {
@@ -21,13 +20,13 @@ public class WSUserAuthDialog
   
   private Dialog a(Context paramContext, String paramString)
   {
-    ReportDialog localReportDialog = new ReportDialog(paramContext, 2131756058);
-    localReportDialog.setContentView(2131560124);
-    View localView = localReportDialog.findViewById(2131365837);
-    localView.findViewById(2131382036).setOnClickListener(new WSUserAuthDialog.2(this, paramContext, paramString));
-    localReportDialog.setOnCancelListener(new WSUserAuthDialog.3(this, paramString));
-    localView.findViewById(2131382035).setOnClickListener(new WSUserAuthDialog.4(this, paramString));
-    return localReportDialog;
+    Dialog localDialog = new Dialog(paramContext, 2131756409);
+    localDialog.setContentView(2131559996);
+    View localView = localDialog.findViewById(2131365674);
+    localView.findViewById(2131381241).setOnClickListener(new WSUserAuthDialog.2(this, paramContext, paramString));
+    localDialog.setOnCancelListener(new WSUserAuthDialog.3(this, paramString));
+    localView.findViewById(2131381240).setOnClickListener(new WSUserAuthDialog.4(this, paramString));
+    return localDialog;
   }
   
   private static void a()
@@ -58,19 +57,20 @@ public class WSUserAuthDialog
       WSLog.a("WSUserAuthDialog", "user_auth.schema == null");
       return false;
     }
-    if ((localstUserAuth.schema.type != 1) || (TextUtils.isEmpty(localstUserAuth.schema.miniAppSchema)))
+    if ((localstUserAuth.schema.type == 1) && (!TextUtils.isEmpty(localstUserAuth.schema.miniAppSchema)))
     {
-      WSLog.a("WSUserAuthDialog", "下发scheme不合法，不展示弹窗");
-      return false;
+      WSLog.a("WSUserAuthDialog", localstUserAuth.toString());
+      return localstUserAuth.show_confirm;
     }
-    WSLog.a("WSUserAuthDialog", localstUserAuth.toString());
-    return localstUserAuth.show_confirm;
+    WSLog.a("WSUserAuthDialog", "下发scheme不合法，不展示弹窗");
+    return false;
   }
   
   private void b()
   {
     WSLog.a("WSUserAuthDialog", "dialog dismiss");
-    if ((this.a != null) && (this.a.isShowing())) {
+    Dialog localDialog = this.a;
+    if ((localDialog != null) && (localDialog.isShowing())) {
       this.a.dismiss();
     }
   }
@@ -78,16 +78,17 @@ public class WSUserAuthDialog
   public void b(Context paramContext, String paramString)
   {
     this.a = a(paramContext, paramString);
-    if (this.a != null)
+    paramContext = this.a;
+    if (paramContext != null)
     {
-      this.a.setCanceledOnTouchOutside(true);
+      paramContext.setCanceledOnTouchOutside(true);
       this.a.show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSUserAuthDialog
  * JD-Core Version:    0.7.0.1
  */

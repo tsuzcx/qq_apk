@@ -31,8 +31,9 @@ public class QQDrawScreenFilter
       QQFilterLogManager.setOnDrawFilterStart();
       GLES20.glBindFramebuffer(36160, 0);
       GLES20.glViewport(0, 0, i, j);
-      if (this.textureRender != null) {
-        this.textureRender.drawTexture(3553, this.mInputTextureID, null, null);
+      TextureRender localTextureRender = this.textureRender;
+      if (localTextureRender != null) {
+        localTextureRender.drawTexture(3553, this.mInputTextureID, null, null);
       }
       QQFilterLogManager.setOnDrawFilterEnd("绘制到屏幕");
     }
@@ -41,16 +42,17 @@ public class QQDrawScreenFilter
   
   public void onSurfaceDestroy()
   {
-    if (this.textureRender != null)
+    TextureRender localTextureRender = this.textureRender;
+    if (localTextureRender != null)
     {
-      this.textureRender.release();
+      localTextureRender.release();
       this.textureRender = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQDrawScreenFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -44,15 +44,15 @@ public class TroopPicEffectGuidePicActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     getWindow().setFlags(1024, 1024);
-    setContentView(2131563171);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131380013));
-    this.b = ((ImageButton)findViewById(2131380014));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131380015));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131380017));
+    setContentView(2131562995);
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131379342));
+    this.b = ((ImageButton)findViewById(2131379343));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131379344));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379346));
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
     this.b.setOnClickListener(this);
     a(this.jdField_a_of_type_AndroidWidgetImageButton);
@@ -65,7 +65,7 @@ public class TroopPicEffectGuidePicActivity
     this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramBundle);
     this.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
     paramBundle = URLDrawable.URLDrawableOptions.obtain();
-    localObject = getResources().getDrawable(2130851230);
+    localObject = getResources().getDrawable(2130851146);
     paramBundle.mFailedDrawable = ((Drawable)localObject);
     paramBundle.mLoadingDrawable = ((Drawable)localObject);
     paramBundle = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/groupgift/troop_pic_effects_select_pic_button.png", paramBundle);
@@ -87,14 +87,11 @@ public class TroopPicEffectGuidePicActivity
       TroopPicEffectsEditActivity.a(this, getIntent().getStringExtra("friendUin"), getIntent().getStringExtra("troopUin"));
       finish();
     }
-    for (;;)
+    else if (paramView == this.b)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (paramView == this.b) {
-        finish();
-      }
+      finish();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   @Override
@@ -117,7 +114,7 @@ public class TroopPicEffectGuidePicActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.TroopPicEffectGuidePicActivity
  * JD-Core Version:    0.7.0.1
  */

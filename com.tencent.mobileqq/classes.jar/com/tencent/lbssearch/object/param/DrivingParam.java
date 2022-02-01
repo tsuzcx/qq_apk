@@ -45,26 +45,23 @@ public class DrivingParam
   
   public DrivingParam addWayPoints(Iterable<LatLng> paramIterable)
   {
-    int k;
     if (paramIterable != null)
     {
+      int k = 0;
       paramIterable = paramIterable.iterator();
-      k = 0;
-    }
-    for (;;)
-    {
-      if (paramIterable.hasNext())
+      int m;
+      do
       {
+        if (!paramIterable.hasNext()) {
+          break;
+        }
         LatLng localLatLng = (LatLng)paramIterable.next();
         this.a.add(localLatLng);
-        k += 1;
-        if (k <= 10) {}
-      }
-      else
-      {
-        return this;
-      }
+        m = k + 1;
+        k = m;
+      } while (m <= 10);
     }
+    return this;
   }
   
   public fn buildParameters()
@@ -76,30 +73,34 @@ public class DrivingParam
     if (!TextUtils.isEmpty(this.e)) {
       localfn.a("to_poi", this.e);
     }
-    if (this.f != -1) {
-      localfn.a("heading", this.f);
+    int k = this.f;
+    if (k != -1) {
+      localfn.a("heading", k);
     }
-    if (this.g != -1) {
-      localfn.a("speed", this.g);
+    k = this.g;
+    if (k != -1) {
+      localfn.a("speed", k);
     }
-    if (this.h != -1) {
-      localfn.a("accuracy", this.h);
+    k = this.h;
+    if (k != -1) {
+      localfn.a("accuracy", k);
     }
     localfn.a("road_type", this.i.ordinal());
-    if ((this.j != null) && (this.j.points.size() > 0)) {
+    Object localObject = this.j;
+    if ((localObject != null) && (((DrivingParam.Travel)localObject).points.size() > 0)) {
       localfn.a("from_track", this.j.toString());
     }
     if (this.a.size() > 0)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
+      localObject = new StringBuilder();
       Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext())
       {
-        localStringBuilder.append(a((LatLng)localIterator.next()));
-        localStringBuilder.append(";");
+        ((StringBuilder)localObject).append(a((LatLng)localIterator.next()));
+        ((StringBuilder)localObject).append(";");
       }
-      localStringBuilder.setLength(localStringBuilder.length() - 1);
-      localfn.a("waypoints", localStringBuilder.toString());
+      ((StringBuilder)localObject).setLength(((StringBuilder)localObject).length() - 1);
+      localfn.a("waypoints", ((StringBuilder)localObject).toString());
     }
     if (!TextUtils.isEmpty(this.b)) {
       localfn.a("policy", this.b);
@@ -151,7 +152,8 @@ public class DrivingParam
       while (k < m)
       {
         paramPolicy = paramVarArgs[k];
-        localStringBuilder.append(",").append(paramPolicy.name());
+        localStringBuilder.append(",");
+        localStringBuilder.append(paramPolicy.name());
         k += 1;
       }
     }
@@ -197,7 +199,7 @@ public class DrivingParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.lbssearch.object.param.DrivingParam
  * JD-Core Version:    0.7.0.1
  */

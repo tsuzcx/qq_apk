@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.app.automator.step;
 
+import com.tencent.comic.api.IQQDcReporter;
 import com.tencent.mobileqq.activity.aio.photo.AIOGallerySceneWithBusiness;
 import com.tencent.mobileqq.app.MessageObserver;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.structmsg.StructMsgFactory;
 import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
-import cooperation.comic.VipComicReportUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -18,10 +19,11 @@ class QQComicStep$1
   
   public void onMessageRecordAdded(List<MessageRecord> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {}
-    for (;;)
+    if (paramList != null)
     {
-      return;
+      if (paramList.isEmpty()) {
+        return;
+      }
       paramList = new ArrayList(paramList).iterator();
       while (paramList.hasNext())
       {
@@ -33,7 +35,7 @@ class QQComicStep$1
           {
             String[] arrayOfString = ((StructMsgForImageShare)localObject).mMsgActionData.substring(((StructMsgForImageShare)localObject).mMsgActionData.indexOf("|") + 1).split("\\|");
             if (arrayOfString.length >= 8) {
-              VipComicReportUtils.a(this.a.a.a, "3009", "1", "30014", arrayOfString[0], new String[] { arrayOfString[2], arrayOfString[4], AIOGallerySceneWithBusiness.a(((StructMsgForImageShare)localObject).mMsgActionData) });
+              ((IQQDcReporter)QRoute.api(IQQDcReporter.class)).reportDC00145(this.a.mAutomator.a, "3009", "1", "30014", arrayOfString[0], new String[] { arrayOfString[2], arrayOfString[4], AIOGallerySceneWithBusiness.a(((StructMsgForImageShare)localObject).mMsgActionData) });
             }
           }
         }
@@ -43,7 +45,7 @@ class QQComicStep$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.QQComicStep.1
  * JD-Core Version:    0.7.0.1
  */

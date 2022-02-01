@@ -21,17 +21,15 @@ class RegisterByNicknameAndPwdActivity$1
         RegisterByNicknameAndPwdActivity.access$100(this.a).setVisibility(0);
         RegisterByNicknameAndPwdActivity.access$200(this.a).setVisibility(0);
         RegisterByNicknameAndPwdActivity.access$300(this.a).setVisibility(0);
+        return;
       }
+      RegisterByNicknameAndPwdActivity.access$100(this.a).setVisibility(8);
     }
-    else {
-      return;
-    }
-    RegisterByNicknameAndPwdActivity.access$100(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity.1
  * JD-Core Version:    0.7.0.1
  */

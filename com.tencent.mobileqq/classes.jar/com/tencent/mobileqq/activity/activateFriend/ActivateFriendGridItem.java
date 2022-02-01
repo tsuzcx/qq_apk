@@ -35,11 +35,11 @@ public class ActivateFriendGridItem
   
   private void a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
   {
-    LayoutInflater.from(paramContext).inflate(2131561042, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368603));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373073));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372115));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363697));
+    LayoutInflater.from(paramContext).inflate(2131560906, this, true);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368343));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372653));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371697));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363627));
     if (!paramBoolean2)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setHorizontallyScrolling(false);
@@ -47,7 +47,7 @@ public class ActivateFriendGridItem
     }
     if (!paramBoolean1)
     {
-      paramContext = findViewById(2131368326).getBackground();
+      paramContext = findViewById(2131368078).getBackground();
       if ((paramContext != null) && ((paramContext instanceof GradientDrawable))) {
         ((GradientDrawable)paramContext).setColor(-1);
       }
@@ -59,7 +59,8 @@ public class ActivateFriendGridItem
   public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
     super.onInitializeAccessibilityNodeInfo(paramAccessibilityNodeInfo);
-    if ((this.jdField_b_of_type_AndroidWidgetImageView != null) && (this.jdField_b_of_type_AndroidWidgetImageView.getVisibility() != 8))
+    ImageView localImageView = this.jdField_b_of_type_AndroidWidgetImageView;
+    if ((localImageView != null) && (localImageView.getVisibility() != 8))
     {
       paramAccessibilityNodeInfo.setCheckable(true);
       paramAccessibilityNodeInfo.setChecked(this.jdField_a_of_type_Boolean);
@@ -86,19 +87,23 @@ public class ActivateFriendGridItem
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130844851);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130844727);
+    } else {
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130844729);
     }
-    for (;;)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidWidgetTextView.getText());
+    String str = ((StringBuilder)localObject).toString();
+    localObject = str;
+    if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0)
     {
-      String str2 = "" + this.jdField_a_of_type_AndroidWidgetTextView.getText();
-      String str1 = str2;
-      if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0) {
-        str1 = str2 + this.jdField_b_of_type_AndroidWidgetTextView.getText();
-      }
-      setContentDescription(str1);
-      return;
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130844853);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_AndroidWidgetTextView.getText());
+      localObject = ((StringBuilder)localObject).toString();
     }
+    setContentDescription((CharSequence)localObject);
   }
   
   public void setHead(Bitmap paramBitmap)
@@ -118,7 +123,7 @@ public class ActivateFriendGridItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ActivateFriendGridItem
  * JD-Core Version:    0.7.0.1
  */

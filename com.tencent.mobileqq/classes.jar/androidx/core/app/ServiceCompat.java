@@ -17,17 +17,16 @@ public final class ServiceCompat
       paramService.stopForeground(paramInt);
       return;
     }
-    if ((paramInt & 0x1) != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramService.stopForeground(bool);
-      return;
+    boolean bool = true;
+    if ((paramInt & 0x1) == 0) {
+      bool = false;
     }
+    paramService.stopForeground(bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.ServiceCompat
  * JD-Core Version:    0.7.0.1
  */

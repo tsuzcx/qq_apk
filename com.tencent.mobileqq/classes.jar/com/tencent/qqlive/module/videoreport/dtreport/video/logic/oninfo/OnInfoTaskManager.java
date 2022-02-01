@@ -32,24 +32,34 @@ public class OnInfoTaskManager
   
   public void doTask(int paramInt1, Object paramObject, int paramInt2, long paramLong1, long paramLong2)
   {
-    Log.i("OnInfoTaskManager", "doTask playerState=" + paramInt1 + " ,playerObject" + paramObject + " ,what" + paramInt2);
-    VideoReportFlowInfo localVideoReportFlowInfo = VideoReportManager.getInstance().getVideoReportFlowInfo(Integer.valueOf(paramObject.hashCode()));
-    if (localVideoReportFlowInfo == null) {
-      Log.w("OnInfoTaskManager", "OnInfoTaskManager doTask flowInfo is null, ptr=" + paramObject);
-    }
-    IOnInfoTask localIOnInfoTask;
-    do
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("doTask playerState=");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(" ,playerObject");
+    ((StringBuilder)localObject).append(paramObject);
+    ((StringBuilder)localObject).append(" ,what");
+    ((StringBuilder)localObject).append(paramInt2);
+    Log.i("OnInfoTaskManager", ((StringBuilder)localObject).toString());
+    localObject = VideoReportManager.getInstance().getVideoReportFlowInfo(Integer.valueOf(paramObject.hashCode()));
+    if (localObject == null)
     {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("OnInfoTaskManager doTask flowInfo is null, ptr=");
+      ((StringBuilder)localObject).append(paramObject);
+      Log.w("OnInfoTaskManager", ((StringBuilder)localObject).toString());
       return;
-      localIOnInfoTask = (IOnInfoTask)this.onInfoTaskMap.get(paramInt2);
-    } while (localIOnInfoTask == null);
-    localIOnInfoTask.setExtraParams(paramInt1, localVideoReportFlowInfo);
-    localIOnInfoTask.doTask(paramObject, paramInt2, paramLong1, paramLong2);
+    }
+    IOnInfoTask localIOnInfoTask = (IOnInfoTask)this.onInfoTaskMap.get(paramInt2);
+    if (localIOnInfoTask != null)
+    {
+      localIOnInfoTask.setExtraParams(paramInt1, (VideoReportFlowInfo)localObject);
+      localIOnInfoTask.doTask(paramObject, paramInt2, paramLong1, paramLong2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.video.logic.oninfo.OnInfoTaskManager
  * JD-Core Version:    0.7.0.1
  */

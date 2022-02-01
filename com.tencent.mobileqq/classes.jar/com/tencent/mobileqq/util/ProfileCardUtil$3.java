@@ -10,19 +10,25 @@ final class ProfileCardUtil$3
   
   public void run()
   {
-    File localFile = new File(this.a);
-    if ((localFile.exists()) && (localFile.isFile()))
+    Object localObject = new File(this.a);
+    if ((((File)localObject).exists()) && (((File)localObject).isFile()))
     {
-      boolean bool = localFile.delete();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.profilecard.VoiceIntro", 2, "delete result=" + bool + " f.path=" + this.a);
+      boolean bool = ((File)localObject).delete();
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("delete result=");
+        ((StringBuilder)localObject).append(bool);
+        ((StringBuilder)localObject).append(" f.path=");
+        ((StringBuilder)localObject).append(this.a);
+        QLog.d("Q.profilecard.VoiceIntro", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.ProfileCardUtil.3
  * JD-Core Version:    0.7.0.1
  */

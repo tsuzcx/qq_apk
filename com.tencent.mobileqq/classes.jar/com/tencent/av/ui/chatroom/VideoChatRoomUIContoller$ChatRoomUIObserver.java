@@ -17,20 +17,18 @@ class VideoChatRoomUIContoller$ChatRoomUIObserver
   public void update(Observable paramObservable, Object paramObject)
   {
     paramObservable = (Object[])paramObject;
-    switch (((Integer)paramObservable[0]).intValue())
-    {
-    }
-    do
-    {
+    if (((Integer)paramObservable[0]).intValue() != 6503) {
       return;
-      paramObject = (VideoChatRoomUIContoller)this.a.get();
-    } while ((paramObject == null) || (paramObservable.length < 2) || (!(paramObservable[1] instanceof Boolean)) || (((Boolean)paramObservable[1]).booleanValue()));
-    paramObject.a();
+    }
+    paramObject = (VideoChatRoomUIContoller)this.a.get();
+    if ((paramObject != null) && (paramObservable.length >= 2) && ((paramObservable[1] instanceof Boolean)) && (!((Boolean)paramObservable[1]).booleanValue())) {
+      paramObject.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.chatroom.VideoChatRoomUIContoller.ChatRoomUIObserver
  * JD-Core Version:    0.7.0.1
  */

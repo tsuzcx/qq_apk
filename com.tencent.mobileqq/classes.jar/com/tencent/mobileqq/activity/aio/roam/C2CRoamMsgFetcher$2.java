@@ -13,29 +13,33 @@ class C2CRoamMsgFetcher$2
   
   public void onCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    long l;
     if (QLog.isColorLevel())
     {
-      l = System.currentTimeMillis();
-      paramWUserSigInfo = new StringBuilder().append("CheckDevLockStatus ret: ").append(paramInt).append(", has devinfo: ");
-      if (paramDevlockInfo != null) {
-        break label100;
+      long l = System.currentTimeMillis();
+      paramWUserSigInfo = new StringBuilder();
+      paramWUserSigInfo.append("CheckDevLockStatus ret: ");
+      paramWUserSigInfo.append(paramInt);
+      paramWUserSigInfo.append(", has devinfo: ");
+      boolean bool;
+      if (paramDevlockInfo == null) {
+        bool = true;
+      } else {
+        bool = false;
       }
+      paramWUserSigInfo.append(bool);
+      paramWUserSigInfo.append(", cost: ");
+      paramWUserSigInfo.append(l - this.jdField_a_of_type_Long);
+      paramWUserSigInfo.append("ms");
+      QLog.d("C2CMsgRoamProxy", 2, paramWUserSigInfo.toString());
     }
-    label100:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("C2CMsgRoamProxy", 2, bool + ", cost: " + (l - this.jdField_a_of_type_Long) + "ms");
-      this.jdField_a_of_type_ArrayOfInt[0] = paramInt;
-      this.jdField_a_of_type_ArrayOfOicqWlogin_sdkDevicelockDevlockInfo[0] = paramDevlockInfo;
-      C2CRoamMsgFetcher.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRoamC2CRoamMsgFetcher).b();
-      return;
-    }
+    this.jdField_a_of_type_ArrayOfInt[0] = paramInt;
+    this.jdField_a_of_type_ArrayOfOicqWlogin_sdkDevicelockDevlockInfo[0] = paramDevlockInfo;
+    C2CRoamMsgFetcher.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRoamC2CRoamMsgFetcher).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.roam.C2CRoamMsgFetcher.2
  * JD-Core Version:    0.7.0.1
  */

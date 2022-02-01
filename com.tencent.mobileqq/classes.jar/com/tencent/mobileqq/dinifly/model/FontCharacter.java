@@ -26,7 +26,7 @@ public class FontCharacter
   
   public static int hashFor(char paramChar, String paramString1, String paramString2)
   {
-    return ((paramChar + '\000') * 31 + paramString1.hashCode()) * 31 + paramString2.hashCode();
+    return (('\000' + paramChar) * 31 + paramString1.hashCode()) * 31 + paramString2.hashCode();
   }
   
   public List<ShapeGroup> getShapes()
@@ -56,7 +56,7 @@ public class FontCharacter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.model.FontCharacter
  * JD-Core Version:    0.7.0.1
  */

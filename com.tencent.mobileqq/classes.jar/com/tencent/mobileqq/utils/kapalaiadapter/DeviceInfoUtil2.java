@@ -13,32 +13,30 @@ public class DeviceInfoUtil2
   
   public static boolean a(String paramString1, String paramString2, String paramString3)
   {
-    boolean bool1 = false;
+    boolean bool;
     if (!TextUtils.isEmpty(paramString1)) {
-      bool1 = paramString1.equalsIgnoreCase(Build.MANUFACTURER);
+      bool = paramString1.equalsIgnoreCase(Build.MANUFACTURER);
+    } else {
+      bool = false;
     }
-    boolean bool2;
-    if (!bool1) {
-      bool2 = bool1;
+    if (!bool) {
+      return bool;
     }
-    do
-    {
-      do
-      {
-        return bool2;
-        if (!TextUtils.isEmpty(paramString2)) {
-          bool1 = paramString2.equalsIgnoreCase(Build.BRAND);
-        }
-        bool2 = bool1;
-      } while (!bool1);
-      bool2 = bool1;
-    } while (TextUtils.isEmpty(paramString3));
-    return paramString3.equalsIgnoreCase(Build.MODEL);
+    if (!TextUtils.isEmpty(paramString2)) {
+      bool = paramString2.equalsIgnoreCase(Build.BRAND);
+    }
+    if (!bool) {
+      return bool;
+    }
+    if (!TextUtils.isEmpty(paramString3)) {
+      bool = paramString3.equalsIgnoreCase(Build.MODEL);
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.kapalaiadapter.DeviceInfoUtil2
  * JD-Core Version:    0.7.0.1
  */

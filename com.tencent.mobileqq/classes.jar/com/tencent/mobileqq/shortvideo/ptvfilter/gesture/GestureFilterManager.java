@@ -23,7 +23,7 @@ public class GestureFilterManager
   public static int GestureFilterManager_Layout_ShortVideo = 0;
   public static final int MAX_GESTURE_NUMS = 3;
   public static final String TAG = "GestureFilterManager";
-  public static volatile String sGestureTips;
+  public static volatile String sGestureTips = "";
   public static volatile String sGestureType = "";
   public static volatile int sLayoutType = GestureFilterManager_Layout_ShortVideo;
   private ArrayList<GestureFilterManager.AnimationWrapper> deadQueue = new ArrayList();
@@ -40,13 +40,6 @@ public class GestureFilterManager
   private ArrayList<GestureFilterManager.AnimationWrapper> runQueue = new ArrayList();
   public long startTimes;
   private int[] tex = new int[1];
-  
-  static
-  {
-    sGestureTips = "";
-    GestureFilterManager_Layout_None = 0;
-    GestureFilterManager_Layout_ShortVideo = 0;
-  }
   
   public GestureFilterManager(StickerItem paramStickerItem, String paramString)
   {
@@ -126,7 +119,14 @@ public class GestureFilterManager
   
   public String printControllerInfo()
   {
-    return "mGestureAnimType:=" + this.mGestureAnimType + ";" + this.mGestureAnimGapTime + ";" + this.mGesturePointIndex;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mGestureAnimType:=");
+    localStringBuilder.append(this.mGestureAnimType);
+    localStringBuilder.append(";");
+    localStringBuilder.append(this.mGestureAnimGapTime);
+    localStringBuilder.append(";");
+    localStringBuilder.append(this.mGesturePointIndex);
+    return localStringBuilder.toString();
   }
   
   public void removeAnimationFromList()
@@ -181,149 +181,166 @@ public class GestureFilterManager
   
   public void updatePreview(Object paramObject)
   {
-    int j = 1;
-    if ((paramObject instanceof PTDetectInfo)) {}
-    for (paramObject = (PTDetectInfo)paramObject; paramObject == null; paramObject = null) {
+    if ((paramObject instanceof PTDetectInfo)) {
+      paramObject = (PTDetectInfo)paramObject;
+    } else {
+      paramObject = null;
+    }
+    if (paramObject == null) {
       return;
     }
     this.lastConsumerTime = System.currentTimeMillis();
     Object localObject1 = GestureMgrRecognize.getInstance().getGestureInfo();
-    if ((this.mLastGestureInfo != null) && (((GestureKeyInfo)localObject1).timeStamp == this.mLastGestureInfo.timeStamp)) {}
-    for (int i = 0;; i = 1)
+    int i;
+    if ((this.mLastGestureInfo != null) && (((GestureKeyInfo)localObject1).timeStamp == this.mLastGestureInfo.timeStamp)) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    this.mLastGestureInfo = ((GestureKeyInfo)localObject1);
+    Object localObject2;
+    Object localObject3;
+    if ((localObject1 != null) && (((GestureKeyInfo)localObject1).vaild) && (((GestureKeyInfo)localObject1).type.equalsIgnoreCase(sGestureType)) && (i != 0))
     {
-      this.mLastGestureInfo = ((GestureKeyInfo)localObject1);
-      if ((localObject1 != null) && (((GestureKeyInfo)localObject1).vaild) && (((GestureKeyInfo)localObject1).type.equalsIgnoreCase(sGestureType)) && (i != 0))
+      if (SLog.isEnable())
       {
-        if (SLog.isEnable()) {
-          SLog.d("GestureFilterManager", "gesture info is x" + localObject1.hotPoints[0].x + ":y =" + localObject1.hotPoints[0].y + "lastAnimation is " + this.mLastRecongnizeAnimation);
-        }
-        if (this.mGestureAnimType == 1)
-        {
-          i = 0;
-          if (i != 0) {
-            break label588;
-          }
-          if (this.mLastRecongnizeAnimation == null) {
-            break label568;
-          }
-          if (!GestureFilterManager.AnimationWrapper.compareGestureInfo(this.mLastRecongnizeAnimation.mGestureInfo, (GestureKeyInfo)localObject1, this.width * 0.08F)) {
-            break label472;
-          }
-          if (this.mLastRecongnizeAnimation.getAnimationStatus(paramObject.timestamp) != 2) {
-            break label408;
-          }
-          this.mLastRecongnizeAnimation.resetAnimationEndStatus();
-          this.mLastRecongnizeAnimation.updateFilterPostion((GestureKeyInfo)localObject1, localObject1.hotPoints[0]);
-          if (SLog.isEnable()) {
-            SLog.d("GestureFilterManager", "update old point position");
-          }
-        }
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("gesture info is x");
+        ((StringBuilder)localObject2).append(localObject1.hotPoints[0].x);
+        ((StringBuilder)localObject2).append(":y =");
+        ((StringBuilder)localObject2).append(localObject1.hotPoints[0].y);
+        ((StringBuilder)localObject2).append("lastAnimation is ");
+        ((StringBuilder)localObject2).append(this.mLastRecongnizeAnimation);
+        SLog.d("GestureFilterManager", ((StringBuilder)localObject2).toString());
       }
-      label270:
-      label918:
-      for (;;)
+      if (this.mGestureAnimType == 1) {
+        i = 0;
+      } else {
+        i = 1;
+      }
+      if (i == 0)
       {
-        localObject1 = this.runQueue.iterator();
-        Object localObject2;
-        for (;;)
+        localObject2 = this.mLastRecongnizeAnimation;
+        if (localObject2 != null)
         {
-          if (((Iterator)localObject1).hasNext())
+          if (GestureFilterManager.AnimationWrapper.compareGestureInfo(((GestureFilterManager.AnimationWrapper)localObject2).mGestureInfo, (GestureKeyInfo)localObject1, this.width * 0.08F))
           {
-            localObject2 = (GestureFilterManager.AnimationWrapper)((Iterator)localObject1).next();
-            if (((GestureFilterManager.AnimationWrapper)localObject2).getAnimationStatus(paramObject.timestamp) == 2)
+            if (this.mLastRecongnizeAnimation.getAnimationStatus(paramObject.timestamp) == 2)
             {
+              this.mLastRecongnizeAnimation.resetAnimationEndStatus();
+              this.mLastRecongnizeAnimation.updateFilterPostion((GestureKeyInfo)localObject1, localObject1.hotPoints[0]);
               if (SLog.isEnable()) {
-                SLog.d("GestureFilterManager", "runQueue remove this item " + localObject2 + " animation status is" + ((GestureFilterManager.AnimationWrapper)localObject2).getAnimationStatus(paramObject.timestamp));
+                SLog.d("GestureFilterManager", "update old point position");
               }
-              if (localObject2 == this.mLastRecongnizeAnimation) {
-                this.mLastRecongnizeAnimation = null;
-              }
-              ((GestureFilterManager.AnimationWrapper)localObject2).clearGLSLSelf();
-              ((Iterator)localObject1).remove();
-              this.mCurrentAnimationNums -= 1;
-              continue;
-              i = 1;
-              break;
-              label408:
-              if (!SLog.isEnable()) {
-                break label270;
-              }
-              SLog.d("GestureFilterManager", "old animation is play now " + this.runQueue.contains(this.mLastRecongnizeAnimation) + " animation status is" + this.mLastRecongnizeAnimation.getAnimationStatus(paramObject.timestamp));
-              break label270;
-              label472:
-              if (this.mLastRecongnizeAnimation.getAnimationStatus(paramObject.timestamp) == 2)
-              {
-                this.mLastRecongnizeAnimation.clearGLSLSelf();
-                removeAnimationFromRunQueue(this.mLastRecongnizeAnimation);
-              }
-              for (;;)
-              {
-                addAnimationToList(this.mItem, (GestureKeyInfo)localObject1, localObject1.hotPoints[0]);
-                if (!SLog.isEnable()) {
-                  break;
-                }
-                SLog.d("GestureFilterManager", "stop old point position");
-                break;
-                this.mLastRecongnizeAnimation.updateDeadLineTimeStamp(paramObject.timestamp + this.mGestureAnimGapTime);
-                this.deadQueue.add(this.mLastRecongnizeAnimation);
-              }
-              label568:
-              addAnimationToList(this.mItem, (GestureKeyInfo)localObject1, localObject1.hotPoints[0]);
-              break label270;
-              label588:
-              localObject2 = this.runQueue.iterator();
-              while (((Iterator)localObject2).hasNext())
-              {
-                GestureFilterManager.AnimationWrapper localAnimationWrapper = (GestureFilterManager.AnimationWrapper)((Iterator)localObject2).next();
-                if (GestureFilterManager.AnimationWrapper.compareGestureInfo(localAnimationWrapper.mGestureInfo, (GestureKeyInfo)localObject1, this.width * 0.08F))
-                {
-                  if (localAnimationWrapper.getAnimationStatus(paramObject.timestamp) == 2) {
-                    localAnimationWrapper.resetAnimationEndStatus();
-                  }
-                  localAnimationWrapper.updateFilterPostion((GestureKeyInfo)localObject1, localObject1.hotPoints[0]);
-                  this.mLastRecongnizeAnimation = localAnimationWrapper;
-                }
-              }
+            }
+            else if (SLog.isEnable())
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("old animation is play now ");
+              ((StringBuilder)localObject1).append(this.runQueue.contains(this.mLastRecongnizeAnimation));
+              ((StringBuilder)localObject1).append(" animation status is");
+              ((StringBuilder)localObject1).append(this.mLastRecongnizeAnimation.getAnimationStatus(paramObject.timestamp));
+              SLog.d("GestureFilterManager", ((StringBuilder)localObject1).toString());
+            }
+          }
+          else
+          {
+            if (this.mLastRecongnizeAnimation.getAnimationStatus(paramObject.timestamp) == 2)
+            {
+              this.mLastRecongnizeAnimation.clearGLSLSelf();
+              removeAnimationFromRunQueue(this.mLastRecongnizeAnimation);
+            }
+            else
+            {
+              this.mLastRecongnizeAnimation.updateDeadLineTimeStamp(paramObject.timestamp + this.mGestureAnimGapTime);
+              this.deadQueue.add(this.mLastRecongnizeAnimation);
+            }
+            addAnimationToList(this.mItem, (GestureKeyInfo)localObject1, localObject1.hotPoints[0]);
+            if (SLog.isEnable()) {
+              SLog.d("GestureFilterManager", "stop old point position");
             }
           }
         }
-        for (i = j;; i = 0)
-        {
-          if (i != 0) {
-            break label918;
-          }
+        else {
           addAnimationToList(this.mItem, (GestureKeyInfo)localObject1, localObject1.hotPoints[0]);
-          break label270;
-          if ((((GestureKeyInfo)localObject1).vaild) && (((GestureKeyInfo)localObject1).type.equalsIgnoreCase(sGestureType))) {
-            break label270;
-          }
-          removeAnimationFromList();
-          this.mLastRecongnizeAnimation = null;
-          break label270;
-          localObject1 = this.deadQueue.iterator();
-          while (((Iterator)localObject1).hasNext())
-          {
-            localObject2 = (GestureFilterManager.AnimationWrapper)((Iterator)localObject1).next();
-            if ((((GestureFilterManager.AnimationWrapper)localObject2).getAnimationStatus(paramObject.timestamp) == 2) || (((GestureFilterManager.AnimationWrapper)localObject2).getDeadLineTimeStamp() >= paramObject.timestamp))
-            {
-              if (SLog.isEnable()) {
-                SLog.d("GestureFilterManager", "deadQueue remove this item " + localObject2);
-              }
-              ((GestureFilterManager.AnimationWrapper)localObject2).clearGLSLSelf();
-              ((Iterator)localObject1).remove();
-            }
-          }
-          localObject1 = this.runQueue.iterator();
-          while (((Iterator)localObject1).hasNext()) {
-            ((GestureFilterManager.AnimationWrapper)((Iterator)localObject1).next()).updatePreview(paramObject);
-          }
-          localObject1 = this.deadQueue.iterator();
-          while (((Iterator)localObject1).hasNext()) {
-            ((GestureFilterManager.AnimationWrapper)((Iterator)localObject1).next()).updatePreview(paramObject);
-          }
-          break;
         }
       }
+      else
+      {
+        localObject2 = this.runQueue.iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          localObject3 = (GestureFilterManager.AnimationWrapper)((Iterator)localObject2).next();
+          if (GestureFilterManager.AnimationWrapper.compareGestureInfo(((GestureFilterManager.AnimationWrapper)localObject3).mGestureInfo, (GestureKeyInfo)localObject1, this.width * 0.08F))
+          {
+            if (((GestureFilterManager.AnimationWrapper)localObject3).getAnimationStatus(paramObject.timestamp) == 2) {
+              ((GestureFilterManager.AnimationWrapper)localObject3).resetAnimationEndStatus();
+            }
+            ((GestureFilterManager.AnimationWrapper)localObject3).updateFilterPostion((GestureKeyInfo)localObject1, localObject1.hotPoints[0]);
+            this.mLastRecongnizeAnimation = ((GestureFilterManager.AnimationWrapper)localObject3);
+            i = 1;
+            break label575;
+          }
+        }
+        i = 0;
+        label575:
+        if (i == 0) {
+          addAnimationToList(this.mItem, (GestureKeyInfo)localObject1, localObject1.hotPoints[0]);
+        }
+      }
+    }
+    else if ((!((GestureKeyInfo)localObject1).vaild) || (!((GestureKeyInfo)localObject1).type.equalsIgnoreCase(sGestureType)))
+    {
+      removeAnimationFromList();
+      this.mLastRecongnizeAnimation = null;
+    }
+    localObject1 = this.runQueue.iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (GestureFilterManager.AnimationWrapper)((Iterator)localObject1).next();
+      if (((GestureFilterManager.AnimationWrapper)localObject2).getAnimationStatus(paramObject.timestamp) == 2)
+      {
+        if (SLog.isEnable())
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("runQueue remove this item ");
+          ((StringBuilder)localObject3).append(localObject2);
+          ((StringBuilder)localObject3).append(" animation status is");
+          ((StringBuilder)localObject3).append(((GestureFilterManager.AnimationWrapper)localObject2).getAnimationStatus(paramObject.timestamp));
+          SLog.d("GestureFilterManager", ((StringBuilder)localObject3).toString());
+        }
+        if (localObject2 == this.mLastRecongnizeAnimation) {
+          this.mLastRecongnizeAnimation = null;
+        }
+        ((GestureFilterManager.AnimationWrapper)localObject2).clearGLSLSelf();
+        ((Iterator)localObject1).remove();
+        this.mCurrentAnimationNums -= 1;
+      }
+    }
+    localObject1 = this.deadQueue.iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (GestureFilterManager.AnimationWrapper)((Iterator)localObject1).next();
+      if ((((GestureFilterManager.AnimationWrapper)localObject2).getAnimationStatus(paramObject.timestamp) == 2) || (((GestureFilterManager.AnimationWrapper)localObject2).getDeadLineTimeStamp() >= paramObject.timestamp))
+      {
+        if (SLog.isEnable())
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("deadQueue remove this item ");
+          ((StringBuilder)localObject3).append(localObject2);
+          SLog.d("GestureFilterManager", ((StringBuilder)localObject3).toString());
+        }
+        ((GestureFilterManager.AnimationWrapper)localObject2).clearGLSLSelf();
+        ((Iterator)localObject1).remove();
+      }
+    }
+    localObject1 = this.runQueue.iterator();
+    while (((Iterator)localObject1).hasNext()) {
+      ((GestureFilterManager.AnimationWrapper)((Iterator)localObject1).next()).updatePreview(paramObject);
+    }
+    localObject1 = this.deadQueue.iterator();
+    while (((Iterator)localObject1).hasNext()) {
+      ((GestureFilterManager.AnimationWrapper)((Iterator)localObject1).next()).updatePreview(paramObject);
     }
   }
   
@@ -338,7 +355,7 @@ public class GestureFilterManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ptvfilter.gesture.GestureFilterManager
  * JD-Core Version:    0.7.0.1
  */

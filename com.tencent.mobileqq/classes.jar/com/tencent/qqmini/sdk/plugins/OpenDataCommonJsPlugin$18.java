@@ -21,33 +21,37 @@ class OpenDataCommonJsPlugin$18
     if ((OpenDataCommonJsPlugin.access$1600(this.this$0).getAttachedActivity() != null) && (!OpenDataCommonJsPlugin.access$1700(this.this$0).getAttachedActivity().isFinishing())) {
       try
       {
-        MiniCustomDialog localMiniCustomDialog = new MiniCustomDialog(OpenDataCommonJsPlugin.access$1800(this.this$0).getAttachedActivity(), R.style.mini_sdk_MiniAppInputDialog);
-        localMiniCustomDialog.setContentView(R.layout.mini_sdk_custom_dialog_temp);
-        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-        for (String str = null;; str = this.jdField_a_of_type_JavaLangString)
-        {
-          localMiniCustomDialog.setTitle(str).setMessage(this.jdField_b_of_type_JavaLangString);
-          localMiniCustomDialog.setPositiveButton(this.c, ColorUtils.parseColor("#3CC51F"), this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
-          if (this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {
-            localMiniCustomDialog.setNegativeButton(this.d, ColorUtils.parseColor("#000000"), this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener);
-          }
-          localMiniCustomDialog.setCanceledOnTouchOutside(true);
-          localMiniCustomDialog.setOnCancelListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener);
-          localMiniCustomDialog.show();
-          return;
+        localObject = new MiniCustomDialog(OpenDataCommonJsPlugin.access$1800(this.this$0).getAttachedActivity(), R.style.mini_sdk_MiniAppInputDialog);
+        ((MiniCustomDialog)localObject).setContentView(R.layout.mini_sdk_custom_dialog_temp);
+        String str;
+        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+          str = null;
+        } else {
+          str = this.jdField_a_of_type_JavaLangString;
         }
+        ((MiniCustomDialog)localObject).setTitle(str).setMessage(this.jdField_b_of_type_JavaLangString);
+        ((MiniCustomDialog)localObject).setPositiveButton(this.c, ColorUtils.parseColor("#3CC51F"), this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
+        if (this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {
+          ((MiniCustomDialog)localObject).setNegativeButton(this.d, ColorUtils.parseColor("#000000"), this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener);
+        }
+        ((MiniCustomDialog)localObject).setCanceledOnTouchOutside(true);
+        ((MiniCustomDialog)localObject).setOnCancelListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener);
+        ((MiniCustomDialog)localObject).show();
         return;
       }
       catch (Throwable localThrowable)
       {
-        QMLog.e("OpenDataCommonJsPlugin", "showQQCustomModel error " + localThrowable.getMessage());
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("showQQCustomModel error ");
+        ((StringBuilder)localObject).append(localThrowable.getMessage());
+        QMLog.e("OpenDataCommonJsPlugin", ((StringBuilder)localObject).toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.OpenDataCommonJsPlugin.18
  * JD-Core Version:    0.7.0.1
  */

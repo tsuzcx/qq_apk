@@ -22,114 +22,84 @@ class MsfCmdConfig$d
   
   protected void a(int paramInt, List paramList)
   {
-    Object localObject1 = null;
-    boolean bool = false;
-    Object localObject2 = BaseApplication.getContext().getSharedPreferences("not_restart_control_file", 4);
-    SharedPreferences.Editor localEditor;
-    int i;
-    int j;
-    if (paramInt > ((SharedPreferences)localObject2).getInt("key_not_restart_version", 0))
+    Object localObject = BaseApplication.getContext().getSharedPreferences("not_restart_control_file", 4);
+    boolean bool1 = false;
+    if (paramInt > ((SharedPreferences)localObject).getInt("key_not_restart_version", 0))
     {
-      localEditor = ((SharedPreferences)localObject2).edit();
+      SharedPreferences.Editor localEditor = ((SharedPreferences)localObject).edit();
       localEditor.putInt("key_not_restart_version", paramInt);
       Iterator localIterator = paramList.iterator();
       paramList = null;
-      i = 100;
+      localObject = paramList;
       paramInt = 2147483647;
-      if (localIterator.hasNext())
+      int i = 100;
+      List localList = paramList;
+      for (;;)
       {
-        localObject2 = (Pair)localIterator.next();
-        if ("enable".equals(((Pair)localObject2).first))
+        if (!localIterator.hasNext()) {
+          break label290;
+        }
+        Pair localPair = (Pair)localIterator.next();
+        if ("enable".equals(localPair.first))
         {
-          bool = Boolean.parseBoolean((String)((Pair)localObject2).second);
-          j = i;
-          localObject2 = localObject1;
-          i = paramInt;
-          paramInt = j;
-          localObject1 = paramList;
-          paramList = (List)localObject2;
+          bool1 = Boolean.parseBoolean((String)localPair.second);
+        }
+        else if ("maxCrashNum".equals(localPair.first))
+        {
+          if (localPair.second == null) {
+            paramInt = 2147483647;
+          } else {
+            paramInt = Integer.parseInt((String)localPair.second);
+          }
+        }
+        else
+        {
+          boolean bool2 = "crashType".equals(localPair.first);
+          paramList = "";
+          if (bool2)
+          {
+            if (localPair.second != null) {
+              paramList = (String)localPair.second;
+            }
+            localList = paramList;
+          }
+          else if ("crashStack".equals(localPair.first))
+          {
+            if (localPair.second != null) {
+              paramList = (String)localPair.second;
+            }
+            localObject = paramList;
+          }
+          else if ("delayMill".equals(localPair.first))
+          {
+            if (localPair.second == null)
+            {
+              paramList = localList;
+              break;
+            }
+            i = Integer.parseInt((String)localPair.second);
+          }
         }
       }
-    }
-    for (;;)
-    {
-      j = i;
-      localObject2 = localObject1;
-      localObject1 = paramList;
-      paramList = (List)localObject2;
-      i = paramInt;
-      paramInt = j;
-      break;
-      if ("maxCrashNum".equals(((Pair)localObject2).first))
-      {
-        if (((Pair)localObject2).second == null) {}
-        for (paramInt = 2147483647;; paramInt = Integer.parseInt((String)((Pair)localObject2).second))
-        {
-          j = paramInt;
-          localObject2 = paramList;
-          paramList = (List)localObject1;
-          localObject1 = localObject2;
-          paramInt = i;
-          i = j;
-          break;
-        }
-      }
-      if ("crashType".equals(((Pair)localObject2).first))
-      {
-        if (((Pair)localObject2).second == null) {}
-        for (paramList = "";; paramList = (String)((Pair)localObject2).second)
-        {
-          j = paramInt;
-          localObject2 = paramList;
-          paramList = (List)localObject1;
-          localObject1 = localObject2;
-          paramInt = i;
-          i = j;
-          break;
-        }
-      }
-      if ("crashStack".equals(((Pair)localObject2).first))
-      {
-        if (((Pair)localObject2).second == null) {}
-        for (localObject1 = "";; localObject1 = (String)((Pair)localObject2).second)
-        {
-          localObject2 = paramList;
-          j = paramInt;
-          paramList = (List)localObject1;
-          localObject1 = localObject2;
-          paramInt = i;
-          i = j;
-          break;
-        }
-      }
-      if ("delayMill".equals(((Pair)localObject2).first))
-      {
-        if (((Pair)localObject2).second == null) {}
-        for (i = 100;; i = Integer.parseInt((String)((Pair)localObject2).second))
-        {
-          j = paramInt;
-          localObject2 = paramList;
-          paramInt = i;
-          paramList = (List)localObject1;
-          localObject1 = localObject2;
-          i = j;
-          break;
-        }
-        QLog.d("MsfCmdConfig", 1, "enable=" + bool + ",maxCrashNum=" + paramInt + ",crashType=" + paramList + ",crashStack=" + (String)localObject1 + ",delayMill=" + i);
-        localEditor.putBoolean("key_not_restart_enable", bool);
-        localEditor.putInt("key_not_restart_max_crash", paramInt);
-        localEditor.putString("key_not_restart_crash_type", paramList);
-        localEditor.putString("key_not_restart_crash_stack", (String)localObject1);
-        localEditor.putInt("key_not_restart_delay_mill", i);
-        localEditor.commit();
-        return;
-      }
-      localObject2 = paramList;
-      j = paramInt;
-      paramList = (List)localObject1;
-      localObject1 = localObject2;
-      paramInt = i;
-      i = j;
+      label290:
+      paramList = new StringBuilder();
+      paramList.append("enable=");
+      paramList.append(bool1);
+      paramList.append(",maxCrashNum=");
+      paramList.append(paramInt);
+      paramList.append(",crashType=");
+      paramList.append(localList);
+      paramList.append(",crashStack=");
+      paramList.append((String)localObject);
+      paramList.append(",delayMill=");
+      paramList.append(i);
+      QLog.d("MsfCmdConfig", 1, paramList.toString());
+      localEditor.putBoolean("key_not_restart_enable", bool1);
+      localEditor.putInt("key_not_restart_max_crash", paramInt);
+      localEditor.putString("key_not_restart_crash_type", localList);
+      localEditor.putString("key_not_restart_crash_stack", (String)localObject);
+      localEditor.putInt("key_not_restart_delay_mill", i);
+      localEditor.commit();
     }
   }
   
@@ -148,7 +118,7 @@ class MsfCmdConfig$d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.utils.MsfCmdConfig.d
  * JD-Core Version:    0.7.0.1
  */

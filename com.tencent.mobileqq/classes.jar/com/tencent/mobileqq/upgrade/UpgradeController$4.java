@@ -16,15 +16,10 @@ class UpgradeController$4
   
   public void run()
   {
-    if ((UpgradeController.a(this.this$0) == null) || (UpgradeController.a(this.this$0).jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig == null) || (UpgradeController.a(this.this$0).jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog == null)) {
-      QLog.d("UpgradeController", 1, "showUpgradeDialog fail, invalid param.");
-    }
-    Intent localIntent;
-    do
+    if ((UpgradeController.a(this.this$0) != null) && (UpgradeController.a(this.this$0).jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig != null) && (UpgradeController.a(this.this$0).jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog != null))
     {
-      return;
       Object localObject = UpgradeController.a(this.this$0).jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog;
-      localIntent = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
+      Intent localIntent = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
       localIntent.putExtra("StrTitle", ((NewUpgradeConfig.Dialog)localObject).jdField_b_of_type_JavaLangString);
       localIntent.putExtra("StrUpgradeDesc", ((NewUpgradeConfig.Dialog)localObject).c);
       if (this.jdField_a_of_type_Boolean) {
@@ -50,13 +45,17 @@ class UpgradeController$4
         return;
       }
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.upgradeData = null;
-    } while (BaseActivity.sTopActivity == null);
-    BaseActivity.sTopActivity.startActivity(localIntent);
+      if (BaseActivity.sTopActivity != null) {
+        BaseActivity.sTopActivity.startActivity(localIntent);
+      }
+      return;
+    }
+    QLog.d("UpgradeController", 1, "showUpgradeDialog fail, invalid param.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.UpgradeController.4
  * JD-Core Version:    0.7.0.1
  */

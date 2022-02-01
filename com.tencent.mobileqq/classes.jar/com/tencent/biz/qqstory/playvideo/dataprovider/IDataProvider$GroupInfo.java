@@ -26,7 +26,7 @@ public class IDataProvider$GroupInfo
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId = paramGroupId;
-    AssertUtils.a(paramGroupId);
+    AssertUtils.checkNotNull(paramGroupId);
     if ((paramGroupId instanceof MsgTabPlayPageLoader.MsgTabGroupId))
     {
       paramGroupId = ((MsgTabPlayPageLoader.MsgTabGroupId)paramGroupId).a;
@@ -40,8 +40,9 @@ public class IDataProvider$GroupInfo
   {
     GroupInfo localGroupInfo = new GroupInfo(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId);
     localGroupInfo.jdField_a_of_type_JavaUtilMap.putAll(this.jdField_a_of_type_JavaUtilMap);
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      localGroupInfo.jdField_a_of_type_JavaUtilList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList != null) {
+      localGroupInfo.jdField_a_of_type_JavaUtilList = new ArrayList(localList);
     }
     localGroupInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
     return localGroupInfo;
@@ -79,29 +80,36 @@ public class IDataProvider$GroupInfo
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      paramObject = (GroupInfo)paramObject;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId != null) {
-        return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId.equals(paramObject.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId);
-      }
-    } while (paramObject.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId == null);
-    return false;
+    }
+    paramObject = (GroupInfo)paramObject;
+    IDataProvider.GroupId localGroupId = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId;
+    if (localGroupId != null) {
+      return localGroupId.equals(paramObject.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId);
+    }
+    return paramObject.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId == null;
   }
   
   public int hashCode()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId != null) {
-      return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId.hashCode();
+    IDataProvider.GroupId localGroupId = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId;
+    if (localGroupId != null) {
+      return localGroupId.hashCode();
     }
     return 0;
   }
   
   public String toString()
   {
-    if ("gi{g=" + this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId + ", fv=" + this.jdField_a_of_type_JavaLangString + ", vlist=" + this.jdField_a_of_type_JavaUtilList != null) {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("gi{g=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId);
+    localStringBuilder.append(", fv=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", vlist=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    if (localStringBuilder.toString() != null) {
       return String.valueOf(this.jdField_a_of_type_JavaUtilList.size());
     }
     return "}";
@@ -109,7 +117,7 @@ public class IDataProvider$GroupInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.IDataProvider.GroupInfo
  * JD-Core Version:    0.7.0.1
  */

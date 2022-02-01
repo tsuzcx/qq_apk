@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.dinifly.model;
 
-import android.support.annotation.CheckResult;
 import android.support.annotation.Nullable;
 import android.support.annotation.RestrictTo;
+import androidx.annotation.CheckResult;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -26,7 +26,8 @@ public class KeyPath
   
   private boolean endsWithGlobstar()
   {
-    return ((String)this.keys.get(this.keys.size() - 1)).equals("**");
+    List localList = this.keys;
+    return ((String)localList.get(localList.size() - 1)).equals("**");
   }
   
   private boolean isContainer(String paramString)
@@ -34,8 +35,8 @@ public class KeyPath
     return "__container".equals(paramString);
   }
   
-  @CheckResult
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+  @CheckResult
   public KeyPath addKey(String paramString)
   {
     KeyPath localKeyPath = new KeyPath(this);
@@ -46,53 +47,75 @@ public class KeyPath
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
   public boolean fullyResolvesTo(String paramString, int paramInt)
   {
-    if (paramInt >= this.keys.size()) {}
-    label117:
-    label121:
-    do
+    int i = this.keys.size();
+    boolean bool3 = false;
+    boolean bool2 = false;
+    if (paramInt >= i) {
+      return false;
+    }
+    if (paramInt == this.keys.size() - 1) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    String str = (String)this.keys.get(paramInt);
+    int j;
+    boolean bool1;
+    if (!str.equals("**"))
     {
-      int i;
-      for (;;)
+      if ((!str.equals(paramString)) && (!str.equals("*"))) {
+        j = 0;
+      } else {
+        j = 1;
+      }
+      if (i == 0)
       {
-        return false;
-        if (paramInt == this.keys.size() - 1)
+        bool1 = bool2;
+        if (paramInt == this.keys.size() - 2)
         {
-          i = 1;
-          String str = (String)this.keys.get(paramInt);
-          if (str.equals("**")) {
-            break;
-          }
-          if ((!str.equals(paramString)) && (!str.equals("*"))) {
-            break label117;
-          }
-        }
-        for (j = 1;; j = 0)
-        {
-          if (((i == 0) && ((paramInt != this.keys.size() - 2) || (!endsWithGlobstar()))) || (j == 0)) {
-            break label121;
-          }
-          return true;
-          i = 0;
-          break;
+          bool1 = bool2;
+          if (!endsWithGlobstar()) {}
         }
       }
-      if ((i == 0) && (((String)this.keys.get(paramInt + 1)).equals(paramString))) {}
-      for (int j = 1;; j = 0)
+      else
       {
-        if (j == 0) {
-          break label202;
+        bool1 = bool2;
+        if (j != 0) {
+          bool1 = true;
         }
-        if ((paramInt != this.keys.size() - 2) && ((paramInt != this.keys.size() - 3) || (!endsWithGlobstar()))) {
-          break;
+      }
+      return bool1;
+    }
+    if ((i == 0) && (((String)this.keys.get(paramInt + 1)).equals(paramString))) {
+      j = 1;
+    } else {
+      j = 0;
+    }
+    if (j != 0)
+    {
+      if (paramInt != this.keys.size() - 2)
+      {
+        bool1 = bool3;
+        if (paramInt == this.keys.size() - 3)
+        {
+          bool1 = bool3;
+          if (!endsWithGlobstar()) {}
         }
-        return true;
       }
-      if (i != 0) {
-        return true;
+      else
+      {
+        bool1 = true;
       }
-    } while (paramInt + 1 < this.keys.size() - 1);
-    label202:
-    return ((String)this.keys.get(paramInt + 1)).equals(paramString);
+      return bool1;
+    }
+    if (i != 0) {
+      return true;
+    }
+    paramInt += 1;
+    if (paramInt < this.keys.size() - 1) {
+      return false;
+    }
+    return ((String)this.keys.get(paramInt)).equals(paramString);
   }
   
   @Nullable
@@ -134,19 +157,28 @@ public class KeyPath
     if (paramInt >= this.keys.size()) {
       return false;
     }
-    return (((String)this.keys.get(paramInt)).equals(paramString)) || (((String)this.keys.get(paramInt)).equals("**")) || (((String)this.keys.get(paramInt)).equals("*"));
+    if ((!((String)this.keys.get(paramInt)).equals(paramString)) && (!((String)this.keys.get(paramInt)).equals("**"))) {
+      return ((String)this.keys.get(paramInt)).equals("*");
+    }
+    return true;
   }
   
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
   public boolean propagateToChildren(String paramString, int paramInt)
   {
-    if ("__container".equals(paramString)) {
+    boolean bool2 = "__container".equals(paramString);
+    boolean bool1 = true;
+    if (bool2) {
       return true;
     }
-    if ((paramInt < this.keys.size() - 1) || (((String)this.keys.get(paramInt)).equals("**"))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    if (paramInt >= this.keys.size() - 1)
+    {
+      if (((String)this.keys.get(paramInt)).equals("**")) {
+        return true;
+      }
+      bool1 = false;
     }
+    return bool1;
   }
   
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
@@ -159,16 +191,24 @@ public class KeyPath
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("KeyPath{keys=").append(this.keys).append(",resolved=");
-    if (this.resolvedElement != null) {}
-    for (boolean bool = true;; bool = false) {
-      return bool + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("KeyPath{keys=");
+    localStringBuilder.append(this.keys);
+    localStringBuilder.append(",resolved=");
+    boolean bool;
+    if (this.resolvedElement != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    localStringBuilder.append(bool);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.model.KeyPath
  * JD-Core Version:    0.7.0.1
  */

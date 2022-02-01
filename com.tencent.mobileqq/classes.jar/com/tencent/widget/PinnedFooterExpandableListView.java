@@ -49,44 +49,36 @@ public class PinnedFooterExpandableListView
   
   private View getTouchTarget(View paramView, int paramInt1, int paramInt2)
   {
-    Object localObject;
     if (!(paramView instanceof ViewGroup)) {
-      localObject = paramView;
+      return paramView;
     }
-    label58:
-    label89:
-    label101:
+    ViewGroup localViewGroup = (ViewGroup)paramView;
+    int k = localViewGroup.getChildCount();
+    boolean bool = isChildrenDrawingOrderEnabled();
+    Object localObject = null;
+    int i = k - 1;
     for (;;)
     {
-      return localObject;
-      localObject = (ViewGroup)paramView;
-      int k = ((ViewGroup)localObject).getChildCount();
-      boolean bool = isChildrenDrawingOrderEnabled();
-      int i = k - 1;
-      int j;
-      if (i >= 0) {
-        if (bool)
-        {
-          j = getChildDrawingOrder(k, i);
-          paramView = ((ViewGroup)localObject).getChildAt(j);
-          if (!isTouchPointInView(paramView, paramInt1, paramInt2)) {
-            break label89;
-          }
-        }
-      }
-      for (;;)
-      {
-        if (paramView == null) {
-          break label101;
-        }
-        return paramView;
-        j = i;
-        break label58;
-        i -= 1;
+      paramView = localObject;
+      if (i < 0) {
         break;
-        paramView = null;
       }
+      int j;
+      if (bool) {
+        j = getChildDrawingOrder(k, i);
+      } else {
+        j = i;
+      }
+      paramView = localViewGroup.getChildAt(j);
+      if (isTouchPointInView(paramView, paramInt1, paramInt2)) {
+        break;
+      }
+      i -= 1;
     }
+    if (paramView == null) {
+      return localViewGroup;
+    }
+    return paramView;
   }
   
   private void init(Context paramContext)
@@ -107,127 +99,129 @@ public class PinnedFooterExpandableListView
       return;
     }
     localObject = (PinnedHeaderExpandableListView.ExpandableListAdapter)localObject;
-    int i2 = getFirstVisiblePosition();
-    int k = getLastVisiblePosition();
-    int i3 = getPackedPositionGroup(getExpandableListPosition(k));
-    int n = this.mHeaderView.getMeasuredHeight();
-    int i1 = getHeight();
-    int i4 = i1 - n;
-    int j = k - 2;
-    int m = k - 1;
+    int i3 = getFirstVisiblePosition();
+    int m = getLastVisiblePosition();
+    int i2 = getPackedPositionGroup(getExpandableListPosition(m));
+    int i1 = this.mHeaderView.getMeasuredHeight();
+    int i4 = getHeight();
+    int k = i4 - i1;
+    int j = m - 2;
+    int n = m - 1;
     int i5 = getPackedPositionGroup(getExpandableListPosition(j));
-    int i;
-    if (i3 == ((PinnedHeaderExpandableListView.ExpandableListAdapter)localObject).getGroupCount() - 1)
-    {
+    if (i2 == ((PinnedHeaderExpandableListView.ExpandableListAdapter)localObject).getGroupCount() - 1) {
       i = 1;
-      label98:
-      if ((j < 0) || (i5 == i3)) {
-        break label425;
-      }
-      if (getPackedPositionGroup(getExpandableListPosition(m)) != i3) {
-        break label521;
-      }
+    } else {
+      i = 0;
     }
-    label521:
-    for (j = m;; j = k)
+    if ((j >= 0) && (i5 != i2))
     {
-      localObject = getChildAt(j - i2);
-      if ((localObject != null) && (i1 - ((View)localObject).getTop() >= n))
+      if (getPackedPositionGroup(getExpandableListPosition(n)) == i2) {
+        j = n;
+      } else {
+        j = m;
+      }
+      localObject = getChildAt(j - i3);
+      if ((localObject != null) && (i4 - ((View)localObject).getTop() >= i1))
       {
-        j = i3 + 1;
-        if ((this.mAdapter != null) && (j < this.mAdapter.getGroupCount()))
+        j = i2 + 1;
+        PinnedHeaderExpandableListView.ExpandableListAdapter localExpandableListAdapter = this.mAdapter;
+        if ((localExpandableListAdapter != null) && (j < localExpandableListAdapter.getGroupCount()))
         {
           this.mFloatingGroupPos = j;
           this.mAdapter.configHeaderView(this.mHeaderView, j);
         }
-        k = ((View)localObject).getTop() + n;
-        j = k;
-        if (k < i1 - n) {
-          j = i1 - n;
+        m = ((View)localObject).getTop() + i1;
+        j = m;
+        if (m < k) {
+          j = k;
         }
         if (i != 0)
         {
           this.mFloatingGroupPos = -1;
-          this.mHeaderView.layout(0, -n, this.mHeaderWidth, -n);
+          localObject = this.mHeaderView;
+          i = -i1;
+          ((View)localObject).layout(0, i, this.mHeaderWidth, i);
           return;
-          i = 0;
-          break label98;
         }
-        this.mHeaderView.layout(0, j, this.mHeaderWidth, j + n);
+        this.mHeaderView.layout(0, j, this.mHeaderWidth, i1 + j);
         return;
       }
-      if ((this.mAdapter != null) && (i3 < this.mAdapter.getGroupCount()))
+      localObject = this.mAdapter;
+      if ((localObject != null) && (i2 < ((PinnedHeaderExpandableListView.ExpandableListAdapter)localObject).getGroupCount()))
       {
-        this.mFloatingGroupPos = i3;
-        this.mAdapter.configHeaderView(this.mHeaderView, i3);
+        this.mFloatingGroupPos = i2;
+        this.mAdapter.configHeaderView(this.mHeaderView, i2);
       }
-      if ((i != 0) && (j != k))
+      if ((i != 0) && (j != m))
       {
         this.mFloatingGroupPos = -1;
-        this.mHeaderView.layout(0, -n, this.mHeaderWidth, -this.mHeaderHeight);
+        this.mHeaderView.layout(0, -i1, this.mHeaderWidth, -this.mHeaderHeight);
         return;
       }
-      if (getPackedPositionType(getExpandableListPosition(m)) == 0)
+      if (getPackedPositionType(getExpandableListPosition(n)) == 0)
       {
         setFooterEnable(false);
-        if (this.mListener != null) {
-          this.mListener.onHeaderDisable();
+        localObject = this.mListener;
+        if (localObject != null) {
+          ((PinnedFooterExpandableListView.FooterExpandListViewListener)localObject).onHeaderDisable();
         }
         this.mFloatingGroupPos = -1;
-        this.mHeaderView.layout(0, -n, this.mHeaderWidth, -this.mHeaderHeight);
+        this.mHeaderView.layout(0, -i1, this.mHeaderWidth, -this.mHeaderHeight);
         return;
       }
-      this.mHeaderView.layout(0, i4, this.mHeaderWidth, this.mHeaderHeight + i4);
+      this.mHeaderView.layout(0, k, this.mHeaderWidth, this.mHeaderHeight + k);
       return;
-      label425:
-      if (i != 0)
-      {
-        this.mFloatingGroupPos = -1;
-        this.mHeaderView.layout(0, -this.mHeaderHeight, this.mHeaderWidth, -this.mHeaderHeight);
-      }
-      for (;;)
-      {
-        i = i3 + 1;
-        if ((this.mAdapter == null) || (i >= this.mAdapter.getGroupCount())) {
-          break;
-        }
-        this.mFloatingGroupPos = i;
-        this.mAdapter.configHeaderView(this.mHeaderView, i);
-        return;
-        this.mHeaderView.layout(0, i4, this.mHeaderWidth, this.mHeaderHeight + i4);
-      }
+    }
+    if (i != 0)
+    {
+      this.mFloatingGroupPos = -1;
+      localObject = this.mHeaderView;
+      i = this.mHeaderHeight;
+      ((View)localObject).layout(0, -i, this.mHeaderWidth, -i);
+    }
+    else
+    {
+      this.mHeaderView.layout(0, k, this.mHeaderWidth, this.mHeaderHeight + k);
+    }
+    int i = i2 + 1;
+    localObject = this.mAdapter;
+    if ((localObject != null) && (i < ((PinnedHeaderExpandableListView.ExpandableListAdapter)localObject).getGroupCount()))
+    {
+      this.mFloatingGroupPos = i;
+      this.mAdapter.configHeaderView(this.mHeaderView, i);
     }
   }
   
   public void createHeaderView()
   {
-    if (this.mHeaderView != null) {}
-    int i;
-    do
-    {
-      ExpandableListAdapter localExpandableListAdapter;
-      do
-      {
-        do
-        {
-          return;
-        } while (!this.mFooterEnable);
-        localExpandableListAdapter = getExpandableListAdapter();
-      } while (!(localExpandableListAdapter instanceof PinnedHeaderExpandableListView.ExpandableListAdapter));
-      this.mAdapter = ((PinnedHeaderExpandableListView.ExpandableListAdapter)localExpandableListAdapter);
-      i = this.mAdapter.getHeaderViewLayoutResourceId();
-    } while (i == 0);
-    this.mHeaderView = LayoutInflater.from(this.mContext).inflate(i, this, false);
     if (this.mHeaderView != null) {
-      this.mHeaderView.setOnClickListener(new PinnedFooterExpandableListView.1(this, this));
+      return;
     }
-    requestLayout();
+    if (!this.mFooterEnable) {
+      return;
+    }
+    Object localObject = getExpandableListAdapter();
+    if ((localObject instanceof PinnedHeaderExpandableListView.ExpandableListAdapter))
+    {
+      this.mAdapter = ((PinnedHeaderExpandableListView.ExpandableListAdapter)localObject);
+      int i = this.mAdapter.getHeaderViewLayoutResourceId();
+      if (i != 0)
+      {
+        this.mHeaderView = LayoutInflater.from(this.mContext).inflate(i, this, false);
+        localObject = this.mHeaderView;
+        if (localObject != null) {
+          ((View)localObject).setOnClickListener(new PinnedFooterExpandableListView.1(this, this));
+        }
+        requestLayout();
+      }
+    }
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
-    if ((this.mHeaderView != null) && (this.mHeaderView.getVisibility() == 0)) {
+    View localView = this.mHeaderView;
+    if ((localView != null) && (localView.getVisibility() == 0)) {
       drawChild(paramCanvas, this.mHeaderView, getDrawingTime());
     }
   }
@@ -237,26 +231,25 @@ public class PinnedFooterExpandableListView
     int i = (int)paramMotionEvent.getX();
     int j = (int)paramMotionEvent.getY();
     int k = pointToPosition(i, j);
-    if ((this.mHeaderView != null) && (this.mHeaderView.getVisibility() == 0) && (j >= this.mHeaderView.getTop()) && (j <= this.mHeaderView.getBottom()))
+    View localView = this.mHeaderView;
+    if ((localView != null) && (localView.getVisibility() == 0) && (j >= this.mHeaderView.getTop()) && (j <= this.mHeaderView.getBottom()))
     {
       if (paramMotionEvent.getAction() == 0)
       {
         this.mTouchTarget = getTouchTarget(this.mHeaderView, i, j);
         this.mActionDownHappened = true;
-      }
-      while (paramMotionEvent.getAction() != 1) {
         return true;
       }
-      if ((getTouchTarget(this.mHeaderView, i, j) == this.mTouchTarget) && (this.mTouchTarget.isClickable()))
+      if (paramMotionEvent.getAction() == 1)
       {
-        this.mTouchTarget.performClick();
-        invalidate(new Rect(0, 0, this.mHeaderWidth, this.mHeaderHeight));
-      }
-      for (;;)
-      {
-        this.mActionDownHappened = false;
-        return true;
-        if (this.mIsHeaderGroupClickable)
+        paramMotionEvent = getTouchTarget(this.mHeaderView, i, j);
+        localView = this.mTouchTarget;
+        if ((paramMotionEvent == localView) && (localView.isClickable()))
+        {
+          this.mTouchTarget.performClick();
+          invalidate(new Rect(0, 0, this.mHeaderWidth, this.mHeaderHeight));
+        }
+        else if (this.mIsHeaderGroupClickable)
         {
           i = getPackedPositionGroup(getExpandableListPosition(k));
           if ((i != -1) && (this.mActionDownHappened)) {
@@ -267,33 +260,38 @@ public class PinnedFooterExpandableListView
             }
           }
         }
+        this.mActionDownHappened = false;
       }
+      return true;
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
-  public void drawableStateChanged()
+  protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if (this.mHeaderView != null) {
-      this.mHeaderView.refreshDrawableState();
+    View localView = this.mHeaderView;
+    if (localView != null) {
+      localView.refreshDrawableState();
     }
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.mOnLayoutListener != null) {
-      this.mOnLayoutListener.onLayout(this, paramInt1, paramInt2, paramInt3, paramInt4);
+    PinnedFooterExpandableListView.OnLayoutListener localOnLayoutListener = this.mOnLayoutListener;
+    if (localOnLayoutListener != null) {
+      localOnLayoutListener.onLayout(this, paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if (this.mHeaderView != null)
+    View localView = this.mHeaderView;
+    if (localView != null)
     {
-      measureChild(this.mHeaderView, paramInt1, paramInt2);
+      measureChild(localView, paramInt1, paramInt2);
       this.mHeaderWidth = this.mHeaderView.getMeasuredWidth();
       this.mHeaderHeight = this.mHeaderView.getMeasuredHeight();
     }
@@ -304,15 +302,17 @@ public class PinnedFooterExpandableListView
     if (this.mHeaderView != null) {
       refreshHeader();
     }
-    if (this.mOnScrollListener != null) {
-      this.mOnScrollListener.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    AbsListView.OnScrollListener localOnScrollListener = this.mOnScrollListener;
+    if (localOnScrollListener != null) {
+      localOnScrollListener.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.mOnScrollListener != null) {
-      this.mOnScrollListener.onScrollStateChanged(paramAbsListView, paramInt);
+    AbsListView.OnScrollListener localOnScrollListener = this.mOnScrollListener;
+    if (localOnScrollListener != null) {
+      localOnScrollListener.onScrollStateChanged(paramAbsListView, paramInt);
     }
   }
   
@@ -325,16 +325,16 @@ public class PinnedFooterExpandableListView
   public void setFooterEnable(boolean paramBoolean)
   {
     this.mFooterEnable = paramBoolean;
-    if (this.mHeaderView != null)
+    View localView = this.mHeaderView;
+    if (localView != null)
     {
-      if (this.mFooterEnable) {
-        this.mHeaderView.setVisibility(0);
+      if (this.mFooterEnable)
+      {
+        localView.setVisibility(0);
+        return;
       }
+      localView.setVisibility(8);
     }
-    else {
-      return;
-    }
-    this.mHeaderView.setVisibility(8);
   }
   
   public void setListener(PinnedFooterExpandableListView.FooterExpandListViewListener paramFooterExpandListViewListener)
@@ -354,7 +354,7 @@ public class PinnedFooterExpandableListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.PinnedFooterExpandableListView
  * JD-Core Version:    0.7.0.1
  */

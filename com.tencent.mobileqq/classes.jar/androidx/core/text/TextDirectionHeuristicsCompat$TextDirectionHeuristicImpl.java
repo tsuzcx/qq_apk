@@ -14,27 +14,29 @@ abstract class TextDirectionHeuristicsCompat$TextDirectionHeuristicImpl
   
   private boolean doCheck(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    switch (this.mAlgorithm.checkRtl(paramCharSequence, paramInt1, paramInt2))
+    paramInt1 = this.mAlgorithm.checkRtl(paramCharSequence, paramInt1, paramInt2);
+    if (paramInt1 != 0)
     {
-    default: 
-      return defaultIsRtl();
-    case 0: 
-      return true;
+      if (paramInt1 != 1) {
+        return defaultIsRtl();
+      }
+      return false;
     }
-    return false;
+    return true;
   }
   
   protected abstract boolean defaultIsRtl();
   
   public boolean isRtl(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    if ((paramCharSequence == null) || (paramInt1 < 0) || (paramInt2 < 0) || (paramCharSequence.length() - paramInt2 < paramInt1)) {
-      throw new IllegalArgumentException();
+    if ((paramCharSequence != null) && (paramInt1 >= 0) && (paramInt2 >= 0) && (paramCharSequence.length() - paramInt2 >= paramInt1))
+    {
+      if (this.mAlgorithm == null) {
+        return defaultIsRtl();
+      }
+      return doCheck(paramCharSequence, paramInt1, paramInt2);
     }
-    if (this.mAlgorithm == null) {
-      return defaultIsRtl();
-    }
-    return doCheck(paramCharSequence, paramInt1, paramInt2);
+    throw new IllegalArgumentException();
   }
   
   public boolean isRtl(char[] paramArrayOfChar, int paramInt1, int paramInt2)
@@ -44,7 +46,7 @@ abstract class TextDirectionHeuristicsCompat$TextDirectionHeuristicImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.text.TextDirectionHeuristicsCompat.TextDirectionHeuristicImpl
  * JD-Core Version:    0.7.0.1
  */

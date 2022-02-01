@@ -11,10 +11,19 @@ public class BaseSharedPreUtil
 {
   public static Object a(Context paramContext, String paramString1, String paramString2, Object paramObject)
   {
-    if (Build.VERSION.SDK_INT >= 24) {}
-    for (String str = PreferenceManager.getDefaultSharedPreferencesName(paramContext);; str = paramContext.getPackageName() + "_preferences") {
-      return a(paramContext, str, paramString1, paramString2, paramObject);
+    Object localObject;
+    if (Build.VERSION.SDK_INT >= 24)
+    {
+      localObject = PreferenceManager.getDefaultSharedPreferencesName(paramContext);
     }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramContext.getPackageName());
+      ((StringBuilder)localObject).append("_preferences");
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    return a(paramContext, (String)localObject, paramString1, paramString2, paramObject);
   }
   
   public static Object a(Context paramContext, String paramString1, String paramString2, String paramString3, Object paramObject)
@@ -27,29 +36,42 @@ public class BaseSharedPreUtil
     paramContext = paramContext.getSharedPreferences(paramString1, paramInt);
     try
     {
-      paramString1 = paramString3 + paramString2;
-      if ((paramObject.getClass() == Integer.TYPE) || (paramObject.getClass() == Integer.class)) {
-        return Integer.valueOf(paramContext.getInt(paramString1, ((Integer)paramObject).intValue()));
-      }
-      if (paramObject.getClass() == String.class) {
-        return paramContext.getString(paramString1, (String)paramObject);
-      }
-      if ((paramObject.getClass() == Boolean.TYPE) || (paramObject.getClass() == Boolean.class)) {
-        return Boolean.valueOf(paramContext.getBoolean(paramString1, ((Boolean)paramObject).booleanValue()));
-      }
-      if ((paramObject.getClass() == Float.TYPE) || (paramObject.getClass() == Float.class)) {
-        return Float.valueOf(paramContext.getFloat(paramString1, ((Float)paramObject).floatValue()));
-      }
-      if ((paramObject.getClass() == Long.TYPE) || (paramObject.getClass() == Long.class))
+      paramString1 = new StringBuilder();
+      paramString1.append(paramString3);
+      paramString1.append(paramString2);
+      paramString1 = paramString1.toString();
+      if ((paramObject.getClass() != Integer.TYPE) && (paramObject.getClass() != Integer.class))
       {
-        long l = paramContext.getLong(paramString1, ((Long)paramObject).longValue());
-        return Long.valueOf(l);
+        if (paramObject.getClass() == String.class) {
+          paramContext = paramContext.getString(paramString1, (String)paramObject);
+        } else if ((paramObject.getClass() != Boolean.TYPE) && (paramObject.getClass() != Boolean.class))
+        {
+          if ((paramObject.getClass() != Float.TYPE) && (paramObject.getClass() != Float.class))
+          {
+            if ((paramObject.getClass() != Long.TYPE) && (paramObject.getClass() != Long.class)) {
+              break label251;
+            }
+            paramContext = Long.valueOf(paramContext.getLong(paramString1, ((Long)paramObject).longValue()));
+          }
+          else
+          {
+            paramContext = Float.valueOf(paramContext.getFloat(paramString1, ((Float)paramObject).floatValue()));
+          }
+        }
+        else {
+          paramContext = Boolean.valueOf(paramContext.getBoolean(paramString1, ((Boolean)paramObject).booleanValue()));
+        }
       }
+      else {
+        paramContext = Integer.valueOf(paramContext.getInt(paramString1, ((Integer)paramObject).intValue()));
+      }
+      return paramContext;
     }
     catch (Exception paramContext)
     {
       QLog.e("SharedPreUtil", 1, paramContext, new Object[0]);
     }
+    label251:
     return paramObject;
   }
   
@@ -61,67 +83,86 @@ public class BaseSharedPreUtil
   public static void a(Context paramContext, String paramString1, String paramString2, boolean paramBoolean, String paramString3, Object paramObject, int paramInt)
   {
     paramContext = paramContext.getSharedPreferences(paramString1, paramInt).edit();
-    for (;;)
+    try
     {
-      try
+      paramString1 = new StringBuilder();
+      paramString1.append(paramString3);
+      paramString1.append(paramString2);
+      paramString1 = paramString1.toString();
+      if ((paramObject.getClass() != Integer.TYPE) && (paramObject.getClass() != Integer.class))
       {
-        paramString1 = paramString3 + paramString2;
-        if ((paramObject.getClass() == Integer.TYPE) || (paramObject.getClass() == Integer.class))
-        {
-          paramContext.putInt(paramString1, ((Integer)paramObject).intValue());
-          if (!paramBoolean) {
-            break;
-          }
-          paramContext.apply();
-          return;
-        }
-        if (paramObject.getClass() == String.class)
-        {
+        if (paramObject.getClass() == String.class) {
           paramContext.putString(paramString1, (String)paramObject);
-          continue;
+        } else if ((paramObject.getClass() != Boolean.TYPE) && (paramObject.getClass() != Boolean.class))
+        {
+          if ((paramObject.getClass() != Float.TYPE) && (paramObject.getClass() != Float.class))
+          {
+            if ((paramObject.getClass() == Long.TYPE) || (paramObject.getClass() == Long.class)) {
+              paramContext.putLong(paramString1, ((Long)paramObject).longValue());
+            }
+          }
+          else {
+            paramContext.putFloat(paramString1, ((Float)paramObject).floatValue());
+          }
         }
-        if (paramObject.getClass() == Boolean.TYPE) {
-          break label141;
+        else {
+          paramContext.putBoolean(paramString1, ((Boolean)paramObject).booleanValue());
         }
       }
-      catch (Exception paramContext)
+      else {
+        paramContext.putInt(paramString1, ((Integer)paramObject).intValue());
+      }
+      if (paramBoolean)
       {
-        QLog.e("SharedPreUtil", 1, paramContext, new Object[0]);
+        paramContext.apply();
         return;
       }
-      if (paramObject.getClass() == Boolean.class) {
-        label141:
-        paramContext.putBoolean(paramString1, ((Boolean)paramObject).booleanValue());
-      } else if ((paramObject.getClass() == Float.TYPE) || (paramObject.getClass() == Float.class)) {
-        paramContext.putFloat(paramString1, ((Float)paramObject).floatValue());
-      } else if ((paramObject.getClass() == Long.TYPE) || (paramObject.getClass() == Long.class)) {
-        paramContext.putLong(paramString1, ((Long)paramObject).longValue());
-      }
+      paramContext.commit();
+      return;
     }
-    paramContext.commit();
+    catch (Exception paramContext)
+    {
+      QLog.e("SharedPreUtil", 1, paramContext, new Object[0]);
+    }
   }
   
   public static void a(Context paramContext, String paramString1, boolean paramBoolean, String paramString2, Object paramObject)
   {
-    if (Build.VERSION.SDK_INT >= 24) {}
-    for (String str = PreferenceManager.getDefaultSharedPreferencesName(paramContext);; str = paramContext.getPackageName() + "_preferences")
+    Object localObject;
+    if (Build.VERSION.SDK_INT >= 24)
     {
-      a(paramContext, str, paramString1, paramBoolean, paramString2, paramObject);
-      return;
+      localObject = PreferenceManager.getDefaultSharedPreferencesName(paramContext);
     }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramContext.getPackageName());
+      ((StringBuilder)localObject).append("_preferences");
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    a(paramContext, (String)localObject, paramString1, paramBoolean, paramString2, paramObject);
   }
   
   public static <T> T b(Context paramContext, String paramString1, String paramString2, T paramT)
   {
-    if (Build.VERSION.SDK_INT >= 24) {}
-    for (String str = PreferenceManager.getDefaultSharedPreferencesName(paramContext);; str = paramContext.getPackageName() + "_preferences") {
-      return a(paramContext, str, paramString1, paramString2, paramT);
+    Object localObject;
+    if (Build.VERSION.SDK_INT >= 24)
+    {
+      localObject = PreferenceManager.getDefaultSharedPreferencesName(paramContext);
     }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramContext.getPackageName());
+      ((StringBuilder)localObject).append("_preferences");
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    return a(paramContext, (String)localObject, paramString1, paramString2, paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.BaseSharedPreUtil
  * JD-Core Version:    0.7.0.1
  */

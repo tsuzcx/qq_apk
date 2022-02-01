@@ -111,30 +111,30 @@ public final class Engine
     Intrinsics.checkParameterIsNotNull(paramGameLaunchCallback, "gameLaunchCallback");
     Lock localLock = (Lock)this.context.getLock();
     localLock.lock();
-    for (;;)
+    try
     {
-      EngineState localEngineState;
-      try
+      EngineState localEngineState = this.context.getEngineState();
+      if (localEngineState != null)
       {
-        localEngineState = this.context.getEngineState();
-        if (localEngineState == null) {
-          throw ((Throwable)new IllegalStateException("already launched"));
+        int i = Engine.WhenMappings.$EnumSwitchMapping$0[localEngineState.ordinal()];
+        if (i != 1)
+        {
+          if (i == 2) {
+            throw ((Throwable)new IllegalStateException("engine is destroyed"));
+          }
+        }
+        else
+        {
+          this.engineInit.launchGameLocked(paramGameLaunchParam, paramGameLaunchCallback);
+          paramGameLaunchParam = Unit.INSTANCE;
+          return;
         }
       }
-      finally
-      {
-        localLock.unlock();
-      }
-      switch (Engine.WhenMappings.$EnumSwitchMapping$0[localEngineState.ordinal()])
-      {
-      case 1: 
-        this.engineInit.launchGameLocked(paramGameLaunchParam, paramGameLaunchCallback);
-        paramGameLaunchParam = Unit.INSTANCE;
-        localLock.unlock();
-        return;
-      case 2: 
-        throw ((Throwable)new IllegalStateException("engine is destroyed"));
-      }
+      throw ((Throwable)new IllegalStateException("already launched"));
+    }
+    finally
+    {
+      localLock.unlock();
     }
   }
   
@@ -210,12 +210,25 @@ public final class Engine
   @NotNull
   public String toString()
   {
-    return super.toString() + " [" + this.context.getId() + "] (name=" + this.context.getGamePackage().getName() + ", " + "appId=" + this.context.getGamePackage().getId() + ", " + "enginePackageVersion=" + this.context.getEnginePackage().getVersion() + ')';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append(" [");
+    localStringBuilder.append(this.context.getId());
+    localStringBuilder.append("] (name=");
+    localStringBuilder.append(this.context.getGamePackage().getName());
+    localStringBuilder.append(", ");
+    localStringBuilder.append("appId=");
+    localStringBuilder.append(this.context.getGamePackage().getId());
+    localStringBuilder.append(", ");
+    localStringBuilder.append("enginePackageVersion=");
+    localStringBuilder.append(this.context.getEnginePackage().getVersion());
+    localStringBuilder.append(')');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.engine.Engine
  * JD-Core Version:    0.7.0.1
  */

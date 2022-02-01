@@ -41,33 +41,32 @@ public class TimerModule
   
   private void a(TimerModule.a parama)
   {
-    long l2 = 0L;
-    if ((this.a) || (this.b.isEmpty())) {
-      a();
-    }
-    while ((parama == null) || ((this.d != 0L) && (parama.d + parama.c >= this.d))) {
-      return;
-    }
-    this.d = (parama.d + parama.c);
-    long l1;
-    if (this.d < 0L)
+    if ((!this.a) && (!this.b.isEmpty()))
     {
-      this.d = SystemClock.elapsedRealtime();
-      l1 = 0L;
-      this.c.removeMessages(100);
-      parama = this.c;
-      if (l1 > 0L) {
-        break label132;
+      if ((parama != null) && ((this.d == 0L) || (parama.d + parama.c < this.d)))
+      {
+        this.d = (parama.d + parama.c);
+        long l1 = this.d;
+        if (l1 < 0L)
+        {
+          this.d = SystemClock.elapsedRealtime();
+          l1 = 0L;
+        }
+        else
+        {
+          l1 -= SystemClock.elapsedRealtime();
+        }
+        this.c.removeMessages(100);
+        parama = this.c;
+        long l2 = l1;
+        if (l1 <= 0L) {
+          l2 = 0L;
+        }
+        parama.sendEmptyMessageDelayed(100, l2);
       }
-      l1 = l2;
     }
-    label132:
-    for (;;)
-    {
-      parama.sendEmptyMessageDelayed(100, l1);
-      return;
-      l1 = this.d - SystemClock.elapsedRealtime();
-      break;
+    else {
+      a();
     }
   }
   
@@ -106,7 +105,8 @@ public class TimerModule
       if (localObject2 != null)
       {
         localObject2 = (TimerModule.a)((Map.Entry)localObject2).getValue();
-        if (localObject2 != null) {
+        if (localObject2 != null)
+        {
           if (((TimerModule.a)localObject2).d + ((TimerModule.a)localObject2).c <= l)
           {
             if (((TimerModule.a)localObject2).e != null) {
@@ -115,19 +115,22 @@ public class TimerModule
             if (!((TimerModule.a)localObject2).b)
             {
               localIterator.remove();
+              continue;
             }
-            else
-            {
-              ((TimerModule.a)localObject2).d = l;
-              if ((localObject1 == null) || (((TimerModule.a)localObject2).d + ((TimerModule.a)localObject2).c < localObject1.d + localObject1.c)) {
-                localObject1 = localObject2;
+            ((TimerModule.a)localObject2).d = l;
+            if (localObject1 != null) {
+              if (((TimerModule.a)localObject2).d + ((TimerModule.a)localObject2).c >= localObject1.d + localObject1.c) {
+                continue;
               }
             }
           }
-          else if ((localObject1 == null) || (((TimerModule.a)localObject2).d + ((TimerModule.a)localObject2).c < localObject1.d + localObject1.c))
+          else
           {
-            localObject1 = localObject2;
+            if ((localObject1 != null) && (((TimerModule.a)localObject2).d + ((TimerModule.a)localObject2).c >= localObject1.d + localObject1.c)) {
+              continue;
+            }
           }
+          localObject1 = localObject2;
         }
       }
     }
@@ -136,14 +139,10 @@ public class TimerModule
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
+    if (paramMessage.what == 100) {
       doFrame();
     }
+    return false;
   }
   
   public void initialize()
@@ -153,15 +152,17 @@ public class TimerModule
   
   public void onEnginePause()
   {
-    if (this.c != null) {
-      this.c.post(new TimerModule.2(this));
+    Handler localHandler = this.c;
+    if (localHandler != null) {
+      localHandler.post(new TimerModule.2(this));
     }
   }
   
   public void onEngineResume()
   {
-    if (this.c != null) {
-      this.c.post(new TimerModule.1(this));
+    Handler localHandler = this.c;
+    if (localHandler != null) {
+      localHandler.post(new TimerModule.1(this));
     }
   }
   
@@ -183,7 +184,7 @@ public class TimerModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.timer.TimerModule
  * JD-Core Version:    0.7.0.1
  */

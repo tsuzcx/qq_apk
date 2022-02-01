@@ -7,12 +7,14 @@ public class SwipPinnedHeaderExpandableListView$SmoothInterpolator
 {
   public float getInterpolation(float paramFloat)
   {
-    return (float)(Math.pow(paramFloat - 1.0D, 5.0D) + 1.0D);
+    double d = paramFloat;
+    Double.isNaN(d);
+    return (float)(Math.pow(d - 1.0D, 5.0D) + 1.0D);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.SwipPinnedHeaderExpandableListView.SmoothInterpolator
  * JD-Core Version:    0.7.0.1
  */

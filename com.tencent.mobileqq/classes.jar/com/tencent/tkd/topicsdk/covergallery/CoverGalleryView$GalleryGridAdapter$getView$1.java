@@ -24,11 +24,11 @@ final class CoverGalleryView$GalleryGridAdapter$getView$1
   public final void onClick(View paramView)
   {
     paramView = BitmapUtils.a.a(((Media)CoverGalleryView.a(this.jdField_a_of_type_ComTencentTkdTopicsdkCovergalleryCoverGalleryView$GalleryGridAdapter.a).get(this.jdField_a_of_type_Int)).getFilePath());
-    if ((((Number)paramView.getFirst()).intValue() < CoverGalleryView.a(this.jdField_a_of_type_ComTencentTkdTopicsdkCovergalleryCoverGalleryView$GalleryGridAdapter.a) / 2) || (((Number)paramView.getSecond()).intValue() < CoverGalleryView.b(this.jdField_a_of_type_ComTencentTkdTopicsdkCovergalleryCoverGalleryView$GalleryGridAdapter.a) / 2))
+    if (((Number)paramView.getFirst()).intValue() * ((Number)paramView.getSecond()).intValue() < 921600)
     {
       paramView = this.jdField_a_of_type_ComTencentTkdTopicsdkCovergalleryCoverGalleryView$GalleryGridAdapter.a.getContext();
       Intrinsics.checkExpressionValueIsNotNull(paramView, "context");
-      paramView = paramView.getResources().getString(R.string.o);
+      paramView = paramView.getResources().getString(R.string.k);
       Intrinsics.checkExpressionValueIsNotNull(paramView, "context.resources.getStr…ing.cover_size_too_small)");
       TopicSDKHelperKt.a(paramView, false, null, 6, null);
       return;
@@ -43,7 +43,7 @@ final class CoverGalleryView$GalleryGridAdapter$getView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.covergallery.CoverGalleryView.GalleryGridAdapter.getView.1
  * JD-Core Version:    0.7.0.1
  */

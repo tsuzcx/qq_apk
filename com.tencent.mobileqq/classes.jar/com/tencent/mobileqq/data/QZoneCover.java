@@ -25,10 +25,10 @@ public class QZoneCover
   
   public HashMap<String, String> parseCoverInfo()
   {
+    Object localObject1 = this.vCoverInfo;
     Object localObject2 = null;
     HashMap localHashMap = null;
-    Object localObject1;
-    if (this.vCoverInfo != null) {
+    if (localObject1 != null) {
       localObject1 = localObject2;
     }
     try
@@ -50,51 +50,51 @@ public class QZoneCover
   
   public ArrayList<Map<Integer, String>> parsePhotoInfo()
   {
-    Object localObject4 = null;
+    Object localObject1 = this.vPhotoInfo;
     Object localObject5 = null;
-    Object localObject1 = null;
-    Object localObject2;
-    Object localObject3;
-    if (this.vPhotoInfo != null)
+    Object localObject3 = null;
+    Object localObject4 = null;
+    if (localObject1 != null)
     {
-      localObject2 = localObject4;
-      localObject3 = localObject5;
-    }
-    try
-    {
-      Parcel localParcel = Parcel.obtain();
-      localObject2 = localObject4;
-      localObject3 = localObject5;
-      localParcel.unmarshall(this.vPhotoInfo, 0, this.vPhotoInfo.length);
-      localObject2 = localObject4;
-      localObject3 = localObject5;
-      localParcel.setDataPosition(0);
-      localObject2 = localObject4;
-      localObject3 = localObject5;
-      localObject1 = localParcel.readArrayList(getClass().getClassLoader());
-      localObject2 = localObject1;
-      localObject3 = localObject1;
-      localParcel.recycle();
-    }
-    catch (Exception localException)
-    {
-      do
+      localObject1 = localObject4;
+      Object localObject2 = localObject5;
+      try
       {
-        localObject1 = localObject2;
-      } while (!QLog.isColorLevel());
-      QLog.i("Q.profilecard.", 2, localException.toString());
-      return localObject2;
-    }
-    catch (Error localError)
-    {
-      do
+        Parcel localParcel = Parcel.obtain();
+        localObject1 = localObject4;
+        localObject2 = localObject5;
+        localParcel.unmarshall(this.vPhotoInfo, 0, this.vPhotoInfo.length);
+        localObject1 = localObject4;
+        localObject2 = localObject5;
+        localParcel.setDataPosition(0);
+        localObject1 = localObject4;
+        localObject2 = localObject5;
+        localObject3 = localParcel.readArrayList(getClass().getClassLoader());
+        localObject1 = localObject3;
+        localObject2 = localObject3;
+        localParcel.recycle();
+        return localObject3;
+      }
+      catch (Error localError)
       {
-        localObject1 = localException;
-      } while (!QLog.isColorLevel());
-      QLog.i("Q.profilecard.", 2, localError.toString());
+        localObject3 = localObject1;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("Q.profilecard.", 2, localError.toString());
+          return localObject1;
+        }
+      }
+      catch (Exception localException)
+      {
+        localObject3 = localError;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("Q.profilecard.", 2, localException.toString());
+          localObject3 = localError;
+        }
+      }
     }
-    return localObject1;
-    return localException;
+    return localObject3;
   }
   
   protected void printInfo(String paramString1, String paramString2, String paramString3, Map<String, String> paramMap, ArrayList<Map<Integer, String>> paramArrayList)
@@ -102,24 +102,37 @@ public class QZoneCover
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramString1).append(", cover = ").append(paramString2).append(", type = ").append(paramString3).append("\r\n");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(", cover = ");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(", type = ");
+      localStringBuilder.append(paramString3);
+      localStringBuilder.append("\r\n");
       if (paramMap != null)
       {
         paramString1 = paramMap.entrySet().iterator();
-        localStringBuilder.append("MulRelsotionUrl: ").append("\r\n");
+        localStringBuilder.append("MulRelsotionUrl: ");
+        localStringBuilder.append("\r\n");
         while (paramString1.hasNext())
         {
           paramString2 = (Map.Entry)paramString1.next();
-          localStringBuilder.append("[").append((String)paramString2.getKey()).append(",").append((String)paramString2.getValue()).append(']');
+          localStringBuilder.append("[");
+          localStringBuilder.append((String)paramString2.getKey());
+          localStringBuilder.append(",");
+          localStringBuilder.append((String)paramString2.getValue());
+          localStringBuilder.append(']');
         }
       }
       if (paramArrayList != null)
       {
-        localStringBuilder.append("vecUrls:").append("\r\n");
+        localStringBuilder.append("vecUrls:");
+        localStringBuilder.append("\r\n");
         int i = 0;
         while (i < paramArrayList.size())
         {
-          localStringBuilder.append("i = ").append(i).append("[");
+          localStringBuilder.append("i = ");
+          localStringBuilder.append(i);
+          localStringBuilder.append("[");
           paramString1 = (Map)paramArrayList.get(i);
           if (paramString1 != null)
           {
@@ -127,7 +140,9 @@ public class QZoneCover
             while (paramString1.hasNext())
             {
               paramString2 = (Map.Entry)paramString1.next();
-              localStringBuilder.append(paramString2.getKey()).append(":").append((String)paramString2.getValue());
+              localStringBuilder.append(paramString2.getKey());
+              localStringBuilder.append(":");
+              localStringBuilder.append((String)paramString2.getValue());
             }
           }
           localStringBuilder.append("]");
@@ -179,7 +194,7 @@ public class QZoneCover
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.QZoneCover
  * JD-Core Version:    0.7.0.1
  */

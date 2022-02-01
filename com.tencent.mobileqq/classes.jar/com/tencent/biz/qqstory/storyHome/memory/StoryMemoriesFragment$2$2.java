@@ -11,48 +11,34 @@ class StoryMemoriesFragment$2$2
 {
   StoryMemoriesFragment$2$2(StoryMemoriesFragment.2 param2) {}
   
-  public void a()
+  public void b(int paramInt)
   {
-    super.a();
-    StoryMemoriesFragment.a(this.a.a, null);
+    super.b(paramInt);
+    boolean bool1 = QQStoryContext.a().b(StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq);
+    boolean bool2 = StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isVip;
+    int i = StoryMemoriesFragment.a(StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_Int);
+    String str2 = "1";
+    String str1;
+    if (bool1) {
+      str1 = "1";
+    } else {
+      str1 = "2";
+    }
+    if (bool2 != true) {
+      str2 = "2";
+    }
+    StoryReportor.a("memory", "share_suc", i, paramInt, new String[] { str1, str2, "", "" });
   }
   
-  public void a(int paramInt)
+  public void d()
   {
-    super.a(paramInt);
-    boolean bool = QQStoryContext.a().b(StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq);
-    int i;
-    int j;
-    String str1;
-    if (StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isVip)
-    {
-      i = 1;
-      j = StoryMemoriesFragment.a(StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_Int);
-      if (!bool) {
-        break label124;
-      }
-      str1 = "1";
-      label76:
-      if (i != 1) {
-        break label131;
-      }
-    }
-    label131:
-    for (String str2 = "1";; str2 = "2")
-    {
-      StoryReportor.a("memory", "share_suc", j, paramInt, new String[] { str1, str2, "", "" });
-      return;
-      i = 0;
-      break;
-      label124:
-      str1 = "2";
-      break label76;
-    }
+    super.d();
+    StoryMemoriesFragment.a(this.a.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment.2.2
  * JD-Core Version:    0.7.0.1
  */

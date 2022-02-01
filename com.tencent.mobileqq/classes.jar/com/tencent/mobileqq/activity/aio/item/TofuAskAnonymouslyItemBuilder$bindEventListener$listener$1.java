@@ -1,14 +1,15 @@
 package com.tencent.mobileqq.activity.aio.item;
 
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.profile.lifeachivement.LifeAchivementHelper;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.profilecard.bussiness.anonymous.bean.AnonymousQuestion;
 import com.tencent.mobileqq.profilecard.bussiness.anonymous.utils.AnonymousViewHelper;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.util.Utils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import kotlin.Metadata;
 import kotlin.TypeCastException;
@@ -23,73 +24,78 @@ final class TofuAskAnonymouslyItemBuilder$bindEventListener$listener$1
   public final void onClick(View paramView)
   {
     Intrinsics.checkExpressionValueIsNotNull(paramView, "v");
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i != 2131374156) {}
+    Object localObject;
+    switch (i)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      int i = (int)this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousBeanAnonymousQuestion.mTotalPraiseCount;
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousBeanAnonymousQuestion;
+    default: 
+      switch (i)
+      {
+      }
+      break;
+    case 2131374151: 
+      i = (int)this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousBeanAnonymousQuestion.mTotalPraiseCount;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousBeanAnonymousQuestion;
       long l;
-      if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousBeanAnonymousQuestion.mPraised)
-      {
+      if (((AnonymousQuestion)localObject).mPraised) {
         l = i - 1;
-        label114:
-        ((AnonymousQuestion)localObject).mTotalPraiseCount = l;
-        AnonymousViewHelper.onClickLike(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousBeanAnonymousQuestion);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousBeanAnonymousQuestion;
-        if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousBeanAnonymousQuestion.mPraised) {
-          break label321;
-        }
-      }
-      label321:
-      for (boolean bool = true;; bool = false)
-      {
-        ((AnonymousQuestion)localObject).mPraised = bool;
-        if (TofuAskAnonymouslyItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder, TofuAskAnonymouslyItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder)))
-        {
-          TofuAskAnonymouslyItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder).b(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousBeanAnonymousQuestion.mPraised);
-          TofuAskAnonymouslyItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder).a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousBeanAnonymousQuestion.mTotalPraiseCount);
-        }
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder;
-        bool = this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousBeanAnonymousQuestion.mPraised;
-        TextView localTextView = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.d();
-        if (localTextView == null) {
-          Intrinsics.throwNpe();
-        }
-        ImageView localImageView = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.i();
-        if (localImageView == null) {
-          Intrinsics.throwNpe();
-        }
-        TofuAskAnonymouslyItemBuilder.a((TofuAskAnonymouslyItemBuilder)localObject, bool, localTextView, localImageView, this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousBeanAnonymousQuestion.mTotalPraiseCount);
-        ReportController.b(null, "dc00898", "", TofuAskAnonymouslyItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder).a(), "0X800B5C2", "0X800B5C2", 0, 0, "", "", "", "");
-        break;
+      } else {
         l = i + 1L;
-        break label114;
       }
-      LifeAchivementHelper.a(paramView);
+      ((AnonymousQuestion)localObject).mTotalPraiseCount = l;
+      AnonymousViewHelper.onClickLike((AppInterface)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousBeanAnonymousQuestion);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousBeanAnonymousQuestion;
+      ((AnonymousQuestion)localObject).mPraised ^= true;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder;
+      if (TofuAskAnonymouslyItemBuilder.a((TofuAskAnonymouslyItemBuilder)localObject, TofuAskAnonymouslyItemBuilder.a((TofuAskAnonymouslyItemBuilder)localObject)))
+      {
+        TofuAskAnonymouslyItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder).b(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousBeanAnonymousQuestion.mPraised);
+        TofuAskAnonymouslyItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder).a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousBeanAnonymousQuestion.mTotalPraiseCount);
+      }
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder;
+      boolean bool = this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousBeanAnonymousQuestion.mPraised;
+      TextView localTextView = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.d();
+      if (localTextView == null) {
+        Intrinsics.throwNpe();
+      }
+      ImageView localImageView = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.i();
+      if (localImageView == null) {
+        Intrinsics.throwNpe();
+      }
+      TofuAskAnonymouslyItemBuilder.a((TofuAskAnonymouslyItemBuilder)localObject, bool, localTextView, localImageView, this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousBeanAnonymousQuestion.mTotalPraiseCount);
+      ReportController.b(null, "dc00898", "", TofuAskAnonymouslyItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder).a(), "0X800B5C2", "0X800B5C2", 0, 0, "", "", "", "");
+      break;
+    case 2131374150: 
+      Utils.a(paramView);
       localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder.jdField_a_of_type_AndroidContentContext;
-      if (localObject == null) {
-        throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.BaseActivity");
+      if (localObject != null)
+      {
+        AnonymousViewHelper.jumpToAnonymousDetail((Activity)localObject, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.a(), this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousBeanAnonymousQuestion.mId, "", 11, this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousBeanAnonymousQuestion.mQuestTime);
+        ReportController.b(null, "dc00898", "", TofuAskAnonymouslyItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder).a(), "0X800B5C3", "0X800B5C3", 0, 0, "", "", "", "");
       }
-      AnonymousViewHelper.jumpToAnonymousDetail((BaseActivity)localObject, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.a(), this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousBeanAnonymousQuestion.mId, "", 11, this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousBeanAnonymousQuestion.mQuestTime);
-      ReportController.b(null, "dc00898", "", TofuAskAnonymouslyItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder).a(), "0X800B5C3", "0X800B5C3", 0, 0, "", "", "", "");
-      continue;
-      LifeAchivementHelper.a(paramView);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder.jdField_a_of_type_AndroidContentContext;
-      if (localObject == null) {
+      else
+      {
         throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.BaseActivity");
+        Utils.a(paramView);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder.jdField_a_of_type_AndroidContentContext;
+        if (localObject == null) {
+          break label484;
+        }
+        AnonymousViewHelper.jumpToQuestionListAndAnswer((Activity)localObject, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.a(), 10);
+        ReportController.b(null, "dc00898", "", TofuAskAnonymouslyItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder).a(), "0X800B5C1", "0X800B5C1", 0, 0, "", "", "", "");
       }
-      AnonymousViewHelper.jumpToQuestionListAndAnswer((BaseActivity)localObject, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.a(), 10);
-      ReportController.b(null, "dc00898", "", TofuAskAnonymouslyItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder).a(), "0X800B5C1", "0X800B5C1", 0, 0, "", "", "", "");
+      break;
     }
+    EventCollector.getInstance().onViewClicked(paramView);
+    return;
+    label484:
+    throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.BaseActivity");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TofuAskAnonymouslyItemBuilder.bindEventListener.listener.1
  * JD-Core Version:    0.7.0.1
  */

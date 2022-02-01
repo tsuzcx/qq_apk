@@ -22,13 +22,13 @@ public class StoryVideoItem$InteractPasterLayout
   
   private StoryVideoItem$InteractPasterLayout(JSONObject paramJSONObject)
   {
-    int j;
     try
     {
       this.jdField_a_of_type_JavaLangString = paramJSONObject.toString();
       this.jdField_a_of_type_Int = paramJSONObject.getInt("t");
       this.h = paramJSONObject.getJSONObject("a").getInt("r");
       JSONArray localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ss");
+      int i = 0;
       this.b = localJSONArray.getInt(0);
       this.c = localJSONArray.getInt(1);
       localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ls");
@@ -38,20 +38,25 @@ public class StoryVideoItem$InteractPasterLayout
       this.f = localJSONArray.getInt(0);
       this.g = localJSONArray.getInt(1);
       paramJSONObject = paramJSONObject.getJSONArray("c");
-      j = paramJSONObject.length();
-      if (j < 1) {
-        throw new IllegalArgumentException("content length should more than 1");
+      int j = paramJSONObject.length();
+      if (j >= 1)
+      {
+        this.jdField_a_of_type_ArrayOfJavaLangString = new String[j];
+        while (i < j)
+        {
+          this.jdField_a_of_type_ArrayOfJavaLangString[i] = paramJSONObject.optString(i, "(NULL)");
+          i += 1;
+        }
       }
+      throw new IllegalArgumentException("content length should more than 1");
     }
     catch (JSONException paramJSONObject)
     {
-      throw new IllegalArgumentException(paramJSONObject);
-    }
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[j];
-    while (i < j)
-    {
-      this.jdField_a_of_type_ArrayOfJavaLangString[i] = paramJSONObject.optString(i, "(NULL)");
-      i += 1;
+      paramJSONObject = new IllegalArgumentException(paramJSONObject);
+      for (;;)
+      {
+        throw paramJSONObject;
+      }
     }
   }
   
@@ -62,12 +67,12 @@ public class StoryVideoItem$InteractPasterLayout
       paramString = a(new JSONObject(paramString));
       return paramString;
     }
-    catch (JSONException paramString)
+    catch (NullPointerException paramString)
     {
       SLog.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
       return null;
     }
-    catch (NullPointerException paramString)
+    catch (JSONException paramString)
     {
       SLog.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
     }
@@ -95,12 +100,32 @@ public class StoryVideoItem$InteractPasterLayout
   
   public String toString()
   {
-    return "PollLayout{type=" + this.jdField_a_of_type_Int + ", screenWidth=" + this.b + ", screenHeight=" + this.c + ", layoutWidth=" + this.d + ", layoutHeight=" + this.e + ", layoutCenterX=" + this.f + ", layoutCenterY=" + this.g + ", rotation=" + this.h + ", contents=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PollLayout{type=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", screenWidth=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", screenHeight=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", layoutWidth=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", layoutHeight=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", layoutCenterX=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", layoutCenterY=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", rotation=");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(", contents=");
+    localStringBuilder.append(Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString));
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.item.StoryVideoItem.InteractPasterLayout
  * JD-Core Version:    0.7.0.1
  */

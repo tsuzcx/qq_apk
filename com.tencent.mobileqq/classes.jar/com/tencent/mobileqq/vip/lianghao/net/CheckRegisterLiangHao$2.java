@@ -11,17 +11,19 @@ class CheckRegisterLiangHao$2
   {
     CheckRegisterLiangHao.RequestCallBack localRequestCallBack = this.jdField_a_of_type_ComTencentMobileqqVipLianghaoNetCheckRegisterLiangHao$RequestCallBack;
     String str = CheckRegisterLiangHao.a(this.this$0);
-    if ((this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoStatusRsp != null) && (this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoStatusRsp.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localRequestCallBack.a(str, bool);
-      return;
+    LiangHaoStatusRsp localLiangHaoStatusRsp = this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoStatusRsp;
+    boolean bool;
+    if ((localLiangHaoStatusRsp != null) && (localLiangHaoStatusRsp.a)) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    localRequestCallBack.a(str, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.net.CheckRegisterLiangHao.2
  * JD-Core Version:    0.7.0.1
  */

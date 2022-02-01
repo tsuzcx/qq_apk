@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.qassistant.wake;
 
+import android.app.KeyguardManager;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build;
@@ -9,23 +11,23 @@ import android.os.Handler.Callback;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.profilecommon.observer.ProfileCommonObserver;
+import com.tencent.mobileqq.qassistant.api.IVoiceAssistantCore;
 import com.tencent.mobileqq.qassistant.audio.AudioNewController;
 import com.tencent.mobileqq.qassistant.core.AssistantUtils;
 import com.tencent.mobileqq.qassistant.core.FriendSortHelper;
 import com.tencent.mobileqq.qassistant.core.LoadManager;
-import com.tencent.mobileqq.qassistant.core.VoiceAssistantManager;
 import com.tencent.mobileqq.qassistant.setting.QassistantConfig;
 import com.tencent.mobileqq.qassistant.wake.aicore.QQWakeAIEngine;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.util.AppUtil;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.ArrayList;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class WakeManager
   implements Handler.Callback
@@ -72,7 +74,10 @@ public class WakeManager
     try
     {
       String str = AssistantUtils.a().getAccount();
-      str = "enable" + str;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("enable");
+      localStringBuilder.append(str);
+      str = localStringBuilder.toString();
       return str;
     }
     catch (Exception localException) {}
@@ -111,7 +116,7 @@ public class WakeManager
       AssistantUtils.a("HelloQQWake", "canStart() wakeManagerInit is false");
       return false;
     }
-    if (QQAssistantGuider.c)
+    if (QQAssistantGuider.jdField_b_of_type_Boolean)
     {
       AssistantUtils.a("HelloQQWake", "canStart() QQAssistantGuider.isShow");
       return false;
@@ -175,37 +180,33 @@ public class WakeManager
       AssistantUtils.a("HelloQQWake", "canInit() canOpenInSp false");
       return false;
     }
-    if (BaseApplicationImpl.sProcessId == 1) {}
-    for (int k = 1; k == 0; k = 0)
+    int k;
+    if (MobileQQ.sProcessId == 1) {
+      k = 1;
+    } else {
+      k = 0;
+    }
+    if (k == 0)
     {
       AssistantUtils.a("HelloQQWake", "canInit() not in MainProcess");
       return false;
     }
-    if (Build.VERSION.SDK_INT >= 23) {
-      if (BaseApplicationImpl.getContext().checkSelfPermission("android.permission.RECORD_AUDIO") == 0) {
-        k = 1;
-      }
+    if ((Build.VERSION.SDK_INT >= 23) && (MobileQQ.sMobileQQ.checkSelfPermission("android.permission.RECORD_AUDIO") != 0)) {
+      k = 0;
+    } else {
+      k = 1;
     }
-    for (;;)
+    if (k == 0)
     {
-      if (k == 0)
-      {
-        AssistantUtils.a("HelloQQWake", "canInit() no record permission");
-        return false;
-        k = 0;
-      }
-      else
-      {
-        QQAppInterface localQQAppInterface = AssistantUtils.a();
-        if ((localQQAppInterface == null) || (!localQQAppInterface.isLogin()))
-        {
-          AssistantUtils.a("HelloQQWake", "canInit() not login");
-          return false;
-        }
-        return true;
-        k = 1;
-      }
+      AssistantUtils.a("HelloQQWake", "canInit() no record permission");
+      return false;
     }
+    if (!AssistantUtils.a().isLogin())
+    {
+      AssistantUtils.a("HelloQQWake", "canInit() not login");
+      return false;
+    }
+    return true;
   }
   
   private void e()
@@ -225,6 +226,23 @@ public class WakeManager
     return a().jdField_a_of_type_Boolean;
   }
   
+  private boolean f()
+  {
+    boolean bool = ((KeyguardManager)AssistantUtils.a().getApplicationContext().getSystemService("keyguard")).inKeyguardRestrictedInputMode();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MSG_IS_IN_BACKGROUND_ROTATION isBackgroundStop:");
+    localStringBuilder.append(AssistantUtils.a().isBackgroundStop);
+    localStringBuilder.append(",isScreenLocked:");
+    localStringBuilder.append(bool);
+    AssistantUtils.a("HelloQQWake", localStringBuilder.toString());
+    return (AssistantUtils.a().isBackgroundStop) || (bool);
+  }
+  
+  private boolean g()
+  {
+    return MobileQQ.sProcessId == 1;
+  }
+  
   public AudioNewController a()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqQassistantAudioAudioNewController == null) {
@@ -242,94 +260,74 @@ public class WakeManager
     }
   }
   
-  /* Error */
-  public void a(BaseActivity paramBaseActivity, String paramString)
+  public void a(QBaseActivity paramQBaseActivity, String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: getstatic 258	com/tencent/mobileqq/qassistant/wake/QQAssistantGuider:jdField_b_of_type_Boolean	Z
-    //   5: ifeq +17 -> 22
-    //   8: invokestatic 262	com/tencent/mobileqq/qassistant/wake/WakeServiceCallBack$WakeServiceCallBackWithTips:b	()Lcom/tencent/mobileqq/qassistant/wake/WakeServiceCallBack;
-    //   11: astore_3
-    //   12: aload_0
-    //   13: aload_1
-    //   14: aload_2
-    //   15: aload_3
-    //   16: invokevirtual 265	com/tencent/mobileqq/qassistant/wake/WakeManager:a	(Lcom/tencent/mobileqq/app/BaseActivity;Ljava/lang/String;Lcom/tencent/mobileqq/qassistant/wake/WakeServiceCallBack;)V
-    //   19: aload_0
-    //   20: monitorexit
-    //   21: return
-    //   22: invokestatic 163	com/tencent/mobileqq/qassistant/wake/WakeServiceCallBack:a	()Lcom/tencent/mobileqq/qassistant/wake/WakeServiceCallBack;
-    //   25: astore_3
-    //   26: goto -14 -> 12
-    //   29: astore_1
-    //   30: aload_0
-    //   31: monitorexit
-    //   32: aload_1
-    //   33: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	34	0	this	WakeManager
-    //   0	34	1	paramBaseActivity	BaseActivity
-    //   0	34	2	paramString	String
-    //   11	15	3	localWakeServiceCallBack	WakeServiceCallBack
-    // Exception table:
-    //   from	to	target	type
-    //   2	12	29	finally
-    //   12	19	29	finally
-    //   22	26	29	finally
+    try
+    {
+      WakeServiceCallBack localWakeServiceCallBack;
+      if (QQAssistantGuider.jdField_a_of_type_Boolean) {
+        localWakeServiceCallBack = WakeServiceCallBackWithTips.b();
+      } else {
+        localWakeServiceCallBack = WakeServiceCallBack.a();
+      }
+      a(paramQBaseActivity, paramString, localWakeServiceCallBack);
+      return;
+    }
+    finally {}
   }
   
-  public void a(BaseActivity paramBaseActivity, String paramString, WakeServiceCallBack paramWakeServiceCallBack)
+  public void a(QBaseActivity paramQBaseActivity, String paramString, WakeServiceCallBack paramWakeServiceCallBack)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        AssistantUtils.a("HelloQQWake", "startRecord():from:" + paramString);
-        if (c())
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("startRecord():from:");
+      localStringBuilder.append(paramString);
+      AssistantUtils.a("HelloQQWake", localStringBuilder.toString());
+      if (c()) {
+        if ((this.d) && (QQAssistantGuiderUtil.a()))
         {
-          if ((!this.d) || (!QQAssistantGuider.a())) {
-            continue;
-          }
-          if ((AppUtil.a()) && (paramBaseActivity != null))
+          if ((g()) && (paramQBaseActivity != null))
           {
-            AssistantUtils.a("HelloQQWake", "startRecord() guider: " + paramBaseActivity.getActivityName());
-            if (!QQAssistantGuider.c) {
-              paramBaseActivity.runOnUiThread(new WakeManager.2(this, paramBaseActivity));
+            paramString = new StringBuilder();
+            paramString.append("startRecord() guider: ");
+            paramString.append(paramQBaseActivity.getActivityName());
+            AssistantUtils.a("HelloQQWake", paramString.toString());
+            if (!QQAssistantGuider.jdField_b_of_type_Boolean) {
+              paramQBaseActivity.runOnUiThread(new WakeManager.2(this, paramQBaseActivity));
             }
-            QQAssistantGuider.c = true;
+            QQAssistantGuider.jdField_b_of_type_Boolean = true;
             ReportController.b(null, "dc00898", "", "", "0X800B162", "0X800B162", 0, 0, "", "", "", "");
           }
         }
-        return;
-        if (a())
+        else if (a())
         {
           AssistantUtils.a("HelloQQWake", "startRecord() no guider");
           this.jdField_a_of_type_ComTencentMobileqqQassistantWakeWakeServiceCallBack = paramWakeServiceCallBack;
-          paramBaseActivity = AssistantUtils.a();
-          if (paramBaseActivity != null) {
-            paramBaseActivity.a(1);
+          paramQBaseActivity = AssistantUtils.a();
+          if (paramQBaseActivity != null) {
+            paramQBaseActivity.sendMessage(1);
           }
-          if (!"firstInit".equals(paramString)) {
-            continue;
+          if ("firstInit".equals(paramString)) {
+            ReportController.b(null, "dc00898", "", "", "0X800B160", "0X800B160", 0, 0, "", "", "", "");
           }
-          ReportController.b(null, "dc00898", "", "", "0X800B160", "0X800B160", 0, 0, "", "", "", "");
-          continue;
         }
-        AssistantUtils.a("HelloQQWake", "startRecord() initRecorder");
+        else
+        {
+          AssistantUtils.a("HelloQQWake", "startRecord() initRecorder");
+          d();
+        }
       }
-      finally {}
-      d();
+      return;
     }
+    finally {}
   }
   
   public void a(String paramString)
   {
     try
     {
-      a(BaseActivity.sTopActivity, paramString);
+      a(QBaseActivity.sTopActivity, paramString);
       return;
     }
     finally
@@ -341,13 +339,16 @@ public class WakeManager
   
   public void a(boolean paramBoolean)
   {
-    AssistantUtils.a("HelloQQWake", "setCanOpenInSp:" + paramBoolean);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setCanOpenInSp:");
+    ((StringBuilder)localObject).append(paramBoolean);
+    AssistantUtils.a("HelloQQWake", ((StringBuilder)localObject).toString());
     this.jdField_a_of_type_Boolean = paramBoolean;
     try
     {
-      SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("qq_assistant_sp_key", 0).edit();
-      localEditor.putBoolean("qq_assistant_wake_open", paramBoolean);
-      localEditor.commit();
+      localObject = MobileQQ.sMobileQQ.getSharedPreferences("qq_assistant_sp_key", 0).edit();
+      ((SharedPreferences.Editor)localObject).putBoolean("qq_assistant_wake_open", paramBoolean);
+      ((SharedPreferences.Editor)localObject).commit();
       return;
     }
     catch (Exception localException)
@@ -363,19 +364,19 @@ public class WakeManager
       AssistantUtils.a("HelloQQWake", "allInit() wakeInit false");
       return false;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqQassistantWakeHelloQQHelper == null) || (!this.jdField_a_of_type_ComTencentMobileqqQassistantWakeHelloQQHelper.b()))
+    if ((this.jdField_a_of_type_ComTencentMobileqqQassistantWakeHelloQQHelper != null) && (this.jdField_a_of_type_ComTencentMobileqqQassistantWakeHelloQQHelper.b()))
     {
-      AssistantUtils.a("HelloQQWake", "allInit() HelloQQHelper.isInit() false");
-      return false;
+      AssistantUtils.a("HelloQQWake", "allInit() wakeInit true");
+      return true;
     }
-    AssistantUtils.a("HelloQQWake", "allInit() wakeInit true");
-    return true;
+    AssistantUtils.a("HelloQQWake", "allInit() HelloQQHelper.isInit() false");
+    return false;
   }
   
   public WakeManager b()
   {
     AssistantUtils.a("HelloQQWake", "init()");
-    Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("qq_assistant_sp_key", 0);
+    Object localObject = MobileQQ.sMobileQQ.getSharedPreferences("qq_assistant_sp_key", 0);
     this.jdField_a_of_type_Boolean = ((SharedPreferences)localObject).getBoolean("qq_assistant_wake_open", false);
     this.d = ((SharedPreferences)localObject).getBoolean(a(), false);
     this.e = ((SharedPreferences)localObject).getBoolean("ban", false);
@@ -385,17 +386,18 @@ public class WakeManager
     {
       localObject = AssistantUtils.a();
       if (localObject != null) {
-        ((VoiceAssistantManager)localObject).a();
+        ((IVoiceAssistantCore)localObject).initVoiceAssistant();
       }
     }
     this.jdField_b_of_type_Boolean = false;
     this.f = false;
     this.g = false;
     this.h = false;
-    this.jdField_a_of_type_ComTencentMobileqqProfilecommonObserverProfileCommonObserver = new WakeManager.1(this);
     localObject = AssistantUtils.a();
-    if (localObject != null) {
-      ((QQAppInterface)localObject).addObserver(this.jdField_a_of_type_ComTencentMobileqqProfilecommonObserverProfileCommonObserver);
+    if (localObject != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqProfilecommonObserverProfileCommonObserver = new WakeManager.1(this);
+      ((AppInterface)localObject).addObserver(this.jdField_a_of_type_ComTencentMobileqqProfilecommonObserverProfileCommonObserver);
     }
     this.j = true;
     return this;
@@ -403,8 +405,9 @@ public class WakeManager
   
   public void b()
   {
-    if (this.jdField_b_of_type_AndroidOsHandler != null) {
-      this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessage(1000);
+    Handler localHandler = this.jdField_b_of_type_AndroidOsHandler;
+    if (localHandler != null) {
+      localHandler.sendEmptyMessage(1000);
     }
   }
   
@@ -412,10 +415,13 @@ public class WakeManager
   {
     try
     {
-      AssistantUtils.a("HelloQQWake", "stopRecord() from:" + paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("stopRecord() from:");
+      localStringBuilder.append(paramString);
+      AssistantUtils.a("HelloQQWake", localStringBuilder.toString());
       paramString = AssistantUtils.a();
       if (paramString != null) {
-        paramString.a(5);
+        paramString.sendMessage(5);
       }
       return;
     }
@@ -424,9 +430,13 @@ public class WakeManager
   
   public boolean b()
   {
+    StringBuilder localStringBuilder;
     if (Build.VERSION.SDK_INT < 21)
     {
-      AssistantUtils.a("HelloQQWake", "getEnable() VERSION : " + Build.VERSION.SDK_INT);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getEnable() VERSION : ");
+      localStringBuilder.append(Build.VERSION.SDK_INT);
+      AssistantUtils.a("HelloQQWake", localStringBuilder.toString());
       return false;
     }
     if (this.i)
@@ -436,7 +446,18 @@ public class WakeManager
     }
     if (this.e)
     {
-      AssistantUtils.a("HelloQQWake", "getEnable() needBan :MANUFACTURER:" + Build.MANUFACTURER + ",BRAND:" + Build.BRAND + ",MODEL:" + Build.MODEL + ",FINGERPRINT:" + Build.FINGERPRINT + ",ANDROID_ID:" + DeviceInfoUtil.f());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getEnable() needBan :MANUFACTURER:");
+      localStringBuilder.append(Build.MANUFACTURER);
+      localStringBuilder.append(",BRAND:");
+      localStringBuilder.append(Build.BRAND);
+      localStringBuilder.append(",MODEL:");
+      localStringBuilder.append(Build.MODEL);
+      localStringBuilder.append(",FINGERPRINT:");
+      localStringBuilder.append(Build.FINGERPRINT);
+      localStringBuilder.append(",ANDROID_ID:");
+      localStringBuilder.append(DeviceInfoUtil.f());
+      AssistantUtils.a("HelloQQWake", localStringBuilder.toString());
       return false;
     }
     if ((!this.d) && (!QassistantConfig.a()))
@@ -449,8 +470,9 @@ public class WakeManager
   
   public void c()
   {
-    if (this.jdField_b_of_type_AndroidOsHandler != null) {
-      this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessage(1001);
+    Handler localHandler = this.jdField_b_of_type_AndroidOsHandler;
+    if (localHandler != null) {
+      localHandler.sendEmptyMessage(1001);
     }
   }
   
@@ -458,47 +480,24 @@ public class WakeManager
   {
     switch (paramMessage.what)
     {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return false;
-                AssistantUtils.a("HelloQQWake", "WakeService MSG_START_RECORD");
-              } while ((this.jdField_b_of_type_Boolean) && (e()));
-              if (this.jdField_a_of_type_ComTencentMobileqqQassistantWakeHelloQQHelper != null) {
-                this.jdField_a_of_type_ComTencentMobileqqQassistantWakeHelloQQHelper.b();
-              }
-              e();
-              AssistantUtils.a("HelloQQWake", "WakeService MSG_START_RECORD isMonitor：" + this.jdField_b_of_type_Boolean);
-              if (this.jdField_b_of_type_Boolean)
-              {
-                paramMessage = this.jdField_b_of_type_AndroidOsHandler.obtainMessage(1004);
-                this.jdField_b_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 10000L);
-              }
-              this.jdField_a_of_type_AndroidOsHandler.post(new WakeManager.3(this));
-              return false;
-              AssistantUtils.a("HelloQQWake", "WakeService stopRecord isMonitor:" + this.jdField_b_of_type_Boolean);
-            } while (!this.jdField_b_of_type_Boolean);
-            this.jdField_b_of_type_Boolean = false;
-            a().b();
-          } while (this.jdField_a_of_type_ComTencentMobileqqQassistantWakeHelloQQHelper == null);
-          this.jdField_a_of_type_ComTencentMobileqqQassistantWakeHelloQQHelper.b();
-          return false;
-        } while ((!(paramMessage.obj instanceof byte[])) || (this.jdField_a_of_type_ComTencentMobileqqQassistantWakeWakeVadDataPool == null) || (this.jdField_a_of_type_ComTencentMobileqqQassistantWakeHelloQQHelper == null));
-        paramMessage = (byte[])paramMessage.obj;
-        paramMessage = this.jdField_a_of_type_ComTencentMobileqqQassistantWakeWakeVadDataPool.a(paramMessage);
-      } while ((paramMessage == null) || (paramMessage.isEmpty()));
-      this.jdField_a_of_type_ComTencentMobileqqQassistantWakeHelloQQHelper.a(paramMessage);
+    default: 
       return false;
+    case 1004: 
+      this.jdField_b_of_type_AndroidOsHandler.removeMessages(1004);
+      AssistantUtils.a("HelloQQWake", "MSG_IS_IN_BACKGROUND_ROTATION");
+      if (f())
+      {
+        AssistantUtils.a("HelloQQWake", "MSG_IS_IN_BACKGROUND_ROTATION isBackground true");
+        b("MSG_IS_IN_BACKGROUND_ROTATION");
+      }
+      if (this.jdField_b_of_type_Boolean)
+      {
+        paramMessage = this.jdField_b_of_type_AndroidOsHandler.obtainMessage(1004);
+        this.jdField_b_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 10000L);
+        return false;
+      }
+      break;
+    case 1003: 
       AssistantUtils.a("HelloQQWake", "releaseQQWake()");
       if (this.jdField_a_of_type_ComTencentMobileqqQassistantWakeHelloQQHelper != null)
       {
@@ -511,22 +510,61 @@ public class WakeManager
       }
       this.c = false;
       return false;
-      this.jdField_b_of_type_AndroidOsHandler.removeMessages(1004);
-      AssistantUtils.a("HelloQQWake", "MSG_IS_IN_BACKGROUND_ROTATION");
-      if (AssistantUtils.a())
+    case 1002: 
+      if (((paramMessage.obj instanceof byte[])) && (this.jdField_a_of_type_ComTencentMobileqqQassistantWakeWakeVadDataPool != null) && (this.jdField_a_of_type_ComTencentMobileqqQassistantWakeHelloQQHelper != null))
       {
-        AssistantUtils.a("HelloQQWake", "MSG_IS_IN_BACKGROUND_ROTATION isBackground true");
-        b("MSG_IS_IN_BACKGROUND_ROTATION");
+        paramMessage = (byte[])paramMessage.obj;
+        paramMessage = this.jdField_a_of_type_ComTencentMobileqqQassistantWakeWakeVadDataPool.a(paramMessage);
+        if ((paramMessage != null) && (!paramMessage.isEmpty()))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqQassistantWakeHelloQQHelper.a(paramMessage);
+          return false;
+        }
       }
-    } while (!this.jdField_b_of_type_Boolean);
-    paramMessage = this.jdField_b_of_type_AndroidOsHandler.obtainMessage(1004);
-    this.jdField_b_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 10000L);
+      break;
+    case 1001: 
+      paramMessage = new StringBuilder();
+      paramMessage.append("WakeService stopRecord isMonitor:");
+      paramMessage.append(this.jdField_b_of_type_Boolean);
+      AssistantUtils.a("HelloQQWake", paramMessage.toString());
+      if (this.jdField_b_of_type_Boolean)
+      {
+        this.jdField_b_of_type_Boolean = false;
+        a().b();
+        if (this.jdField_a_of_type_ComTencentMobileqqQassistantWakeHelloQQHelper != null)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqQassistantWakeHelloQQHelper.b();
+          return false;
+        }
+      }
+      break;
+    case 1000: 
+      AssistantUtils.a("HelloQQWake", "WakeService MSG_START_RECORD");
+      if ((!this.jdField_b_of_type_Boolean) || (!e()))
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqQassistantWakeHelloQQHelper != null) {
+          this.jdField_a_of_type_ComTencentMobileqqQassistantWakeHelloQQHelper.b();
+        }
+        e();
+        paramMessage = new StringBuilder();
+        paramMessage.append("WakeService MSG_START_RECORD isMonitor：");
+        paramMessage.append(this.jdField_b_of_type_Boolean);
+        AssistantUtils.a("HelloQQWake", paramMessage.toString());
+        if (this.jdField_b_of_type_Boolean)
+        {
+          paramMessage = this.jdField_b_of_type_AndroidOsHandler.obtainMessage(1004);
+          this.jdField_b_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 10000L);
+        }
+        this.jdField_a_of_type_AndroidOsHandler.post(new WakeManager.3(this));
+      }
+      break;
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.wake.WakeManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,11 @@
 package com.tencent.mobileqq.app.security;
 
-import android.content.Intent;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.qqsec.api.ISecControllerInterface;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import mqq.util.WeakReference;
@@ -17,9 +15,9 @@ class FrozenNotifyDlgHelper$ExpendClickableSpan
 {
   private int jdField_a_of_type_Int;
   private String jdField_a_of_type_JavaLangString;
-  private WeakReference<BaseActivity> jdField_a_of_type_MqqUtilWeakReference;
+  private WeakReference<QBaseActivity> jdField_a_of_type_MqqUtilWeakReference;
   
-  public FrozenNotifyDlgHelper$ExpendClickableSpan(String paramString, WeakReference<BaseActivity> paramWeakReference, int paramInt)
+  public FrozenNotifyDlgHelper$ExpendClickableSpan(String paramString, WeakReference<QBaseActivity> paramWeakReference, int paramInt)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_MqqUtilWeakReference = paramWeakReference;
@@ -28,37 +26,40 @@ class FrozenNotifyDlgHelper$ExpendClickableSpan
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_MqqUtilWeakReference == null)
+    paramView = this.jdField_a_of_type_MqqUtilWeakReference;
+    if (paramView == null)
     {
       QLog.e("FrozenNotifyDlgHelper", 1, "ExpendClickableSpan param error: mActivity == null");
       return;
     }
-    paramView = (BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    paramView = (QBaseActivity)paramView.get();
     if (paramView == null)
     {
       QLog.e("FrozenNotifyDlgHelper", 1, "ExpendClickableSpan param error: context == null");
       return;
     }
-    if (("https://myun.tenpay.com/mqq/banneduser/index.shtml?_wv=1027".equals(this.jdField_a_of_type_JavaLangString)) && ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 4))) {}
-    for (int i = 1;; i = 0)
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ("https://myun.tenpay.com/mqq/banneduser/index.shtml?_wv=1027".equals(this.jdField_a_of_type_JavaLangString))
     {
-      if ("https://myun.tenpay.com/mqq/banneduser/index.shtml?_wv=1027".equals(this.jdField_a_of_type_JavaLangString)) {
-        FrozenNotifyDlgHelper.a().a(this.jdField_a_of_type_Int);
-      }
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.contains("accounts.qq.com")) && (this.jdField_a_of_type_Int == 1)) {
-        ReportController.a(null, "dc00898", "", "", "0X800B428", "0X800B428", 0, 0, "", "", "", "");
-      }
-      Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
-      localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-      paramView.startActivity(localIntent);
-      if ((i != 0) && ((paramView instanceof NotificationActivity)) && (!paramView.isFinishing()))
+      int i = this.jdField_a_of_type_Int;
+      if (i != 1)
       {
-        ((NotificationActivity)paramView).enableJumpLoginFromFund();
-        return;
+        bool1 = bool2;
+        if (i != 4) {}
       }
-      paramView.finish();
-      return;
+      else
+      {
+        bool1 = true;
+      }
     }
+    if ("https://myun.tenpay.com/mqq/banneduser/index.shtml?_wv=1027".equals(this.jdField_a_of_type_JavaLangString)) {
+      FrozenNotifyDlgHelper.a().a(this.jdField_a_of_type_Int);
+    }
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.contains("accounts.qq.com")) && (this.jdField_a_of_type_Int == 1)) {
+      ReportController.a(null, "dc00898", "", "", "0X800B428", "0X800B428", 0, 0, "", "", "", "");
+    }
+    FrozenNotifyDlgHelper.a().a(paramView, bool1, this.jdField_a_of_type_JavaLangString);
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
@@ -69,7 +70,7 @@ class FrozenNotifyDlgHelper$ExpendClickableSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.security.FrozenNotifyDlgHelper.ExpendClickableSpan
  * JD-Core Version:    0.7.0.1
  */

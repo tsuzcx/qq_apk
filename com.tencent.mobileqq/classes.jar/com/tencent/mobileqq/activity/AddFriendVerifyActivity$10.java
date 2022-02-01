@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity;
 
+import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,42 +20,50 @@ class AddFriendVerifyActivity$10
   public void onClick(View paramView)
   {
     AddFriendVerifyActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity);
-    String str1 = this.jdField_a_of_type_JavaLangStringBuffer.toString();
+    Object localObject = this.jdField_a_of_type_JavaLangStringBuffer.toString();
     int i = 0;
-    String str2;
-    if (i < AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).size())
+    while (i < AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).size())
     {
-      str2 = ((EditText)AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).get(i)).getText().toString().trim();
-      if (!"".equals(str2)) {}
-    }
-    for (i = 1;; i = 0)
-    {
-      if (i != 0) {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131690101), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getTitleBarHeight());
-      }
-      for (;;)
+      String str = ((EditText)AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).get(i)).getText().toString().trim();
+      if ("".equals(str))
       {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X80077B4", "0X80077B4", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.b), "", "");
-        if (QLog.isColorLevel()) {
-          QLog.d("AddFriendVerifyActivity", 2, "reportClickEvent action: 0X80077B4  sourceId = " + this.jdField_a_of_type_Int + " subSourceId = " + this.b);
-        }
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.c)) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00899", "Qidian", "", "0X8008802", "ClickAddFriendButton", 0, 0, "1", "", "", "");
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(this.jdField_a_of_type_Int, this.c);
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        str1 = str1.replaceFirst("\\$\\{answer\\}", Matcher.quoteReplacement(str2));
-        i += 1;
-        break;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(str1, null, "");
+        i = 1;
+        break label92;
       }
+      localObject = ((String)localObject).replaceFirst("\\$\\{answer\\}", Matcher.quoteReplacement(str));
+      i += 1;
     }
+    i = 0;
+    label92:
+    if (i != 0)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity;
+      QQToast.a((Context)localObject, 0, ((AddFriendVerifyActivity)localObject).getString(2131690017), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getTitleBarHeight());
+    }
+    else
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a((String)localObject, null, "");
+    }
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X80077B4", "0X80077B4", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.b), "", "");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reportClickEvent action: 0X80077B4  sourceId = ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(" subSourceId = ");
+      ((StringBuilder)localObject).append(this.b);
+      QLog.d("AddFriendVerifyActivity", 2, ((StringBuilder)localObject).toString());
+    }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.c)) {
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00899", "Qidian", "", "0X8008802", "ClickAddFriendButton", 0, 0, "1", "", "", "");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(this.jdField_a_of_type_Int, this.c);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.10
  * JD-Core Version:    0.7.0.1
  */

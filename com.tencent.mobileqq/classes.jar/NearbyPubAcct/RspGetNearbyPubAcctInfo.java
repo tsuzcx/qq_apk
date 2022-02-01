@@ -60,8 +60,9 @@ public final class RspGetNearbyPubAcctInfo
     paramJceOutputStream.write(this.vContext, 1);
     paramJceOutputStream.write(this.iCompletedFlag, 2);
     paramJceOutputStream.write(this.iRadius, 3);
-    if (this.vGroupInfo != null) {
-      paramJceOutputStream.write(this.vGroupInfo, 4);
+    ArrayList localArrayList = this.vGroupInfo;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 4);
     }
     paramJceOutputStream.write(this.iRedFlag, 5);
     paramJceOutputStream.write(this.iFlagStamp, 6);
@@ -69,7 +70,7 @@ public final class RspGetNearbyPubAcctInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NearbyPubAcct.RspGetNearbyPubAcctInfo
  * JD-Core Version:    0.7.0.1
  */

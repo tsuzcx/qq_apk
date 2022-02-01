@@ -29,38 +29,34 @@ public class ShareGroupCommentEventHandler
     }
     paramView = QQStoryContext.a().b();
     ActionSheet localActionSheet = ActionSheet.create(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.a);
-    if (paramCommentEntry.authorUnionId.equals(paramView)) {
-      if (paramCommentEntry.status == 2)
-      {
-        localActionSheet.addButton(HardCodeUtil.a(2131713881));
-        localActionSheet.addButton(HardCodeUtil.a(2131713875), 3);
-      }
-    }
-    for (;;)
+    if (paramCommentEntry.authorUnionId.equals(paramView))
     {
-      localActionSheet.addCancelButton(HardCodeUtil.a(2131713857));
-      localActionSheet.setOnButtonClickListener(new FeedCommentEventHandler.OnActionSheetButtonClickListener(this, localActionSheet, paramCommentEntry, paramInt));
-      localActionSheet.show();
-      return;
-      localActionSheet.addButton(HardCodeUtil.a(2131713858));
-      break;
-      if ((this.b) && (this.jdField_a_of_type_Boolean))
-      {
-        localActionSheet.addButton(HardCodeUtil.a(2131713869));
-        localActionSheet.addButton(HardCodeUtil.a(2131713878), 3);
-        localActionSheet.addButton(HardCodeUtil.a(2131713885));
+      if (paramCommentEntry.status == 2) {
+        localActionSheet.addButton(HardCodeUtil.a(2131713809));
+      } else {
+        localActionSheet.addButton(HardCodeUtil.a(2131713786));
       }
-      else
-      {
-        localActionSheet.addButton(HardCodeUtil.a(2131713868));
-        localActionSheet.addButton(HardCodeUtil.a(2131713876));
-      }
+      localActionSheet.addButton(HardCodeUtil.a(2131713803), 3);
     }
+    else if ((this.b) && (this.jdField_a_of_type_Boolean))
+    {
+      localActionSheet.addButton(HardCodeUtil.a(2131713797));
+      localActionSheet.addButton(HardCodeUtil.a(2131713806), 3);
+      localActionSheet.addButton(HardCodeUtil.a(2131713813));
+    }
+    else
+    {
+      localActionSheet.addButton(HardCodeUtil.a(2131713796));
+      localActionSheet.addButton(HardCodeUtil.a(2131713804));
+    }
+    localActionSheet.addCancelButton(HardCodeUtil.a(2131713785));
+    localActionSheet.setOnButtonClickListener(new FeedCommentEventHandler.OnActionSheetButtonClickListener(this, localActionSheet, paramCommentEntry, paramInt));
+    localActionSheet.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.ShareGroupCommentEventHandler
  * JD-Core Version:    0.7.0.1
  */

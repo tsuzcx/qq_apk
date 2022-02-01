@@ -6,16 +6,13 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.app.QQStoryConstant;
-import com.tencent.biz.qqstory.boundaries.StoryDepends.CameraFlow;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.rebuild.PlusPanelUtils;
-import com.tencent.mobileqq.activity.richmedia.QQStoryFlowCallback;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
 import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
+import com.tencent.mobileqq.tianshu.api.IRedTouchManager;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
 import java.io.File;
 
@@ -37,55 +34,36 @@ public class QQStoryTakeVideoActivityLauncher
   
   public Intent a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, Intent paramIntent)
   {
-    boolean bool1 = false;
     paramIntent.putExtra("videoIsUsable", paramBoolean2);
-    Object localObject1 = (RedTouchManager)this.a.getManager(QQManagerFactory.MGR_RED_TOUCH);
-    Object localObject2 = ((RedTouchManager)localObject1).a("103100.103500.103501");
-    if (localObject2 != null) {
-      if (((BusinessInfoCheckUpdate.AppInfo)localObject2).iNewFlag.get() == 1) {
-        paramBoolean1 = true;
-      }
+    paramContext = (IRedTouchManager)this.a.getRuntimeService(IRedTouchManager.class, "");
+    paramIntent = paramContext.getAppInfoByPath("103100.103500.103501");
+    if (paramIntent != null) {
+      paramIntent.iNewFlag.get();
     }
-    for (;;)
+    paramIntent = BaseApplicationImpl.getApplication().getSharedPreferences("flow_filter_reddot_sp", 4);
+    if (paramIntent.getBoolean("flow_filter_reddot_key", false))
     {
-      localObject2 = BaseApplicationImpl.getApplication().getSharedPreferences("flow_filter_reddot_sp", 4);
-      if (((SharedPreferences)localObject2).getBoolean("flow_filter_reddot_key", false))
-      {
-        ((RedTouchManager)localObject1).b("103100.103500.103501");
-        ((SharedPreferences)localObject2).edit().putBoolean("flow_filter_reddot_key", false).commit();
-        paramBoolean1 = false;
-      }
-      for (;;)
-      {
-        if (!BaseApplicationImpl.getApplication().getSharedPreferences("flow_filter_reddot_pkg_sp" + this.a.getCurrentAccountUin(), 4).getBoolean("flow_filter_reddot_key", false)) {
-          bool1 = true;
-        }
-        boolean bool2 = PtvFilterSoLoad.a(this.a, BaseApplicationImpl.getContext());
-        localObject1 = PlusPanelUtils.a(QQStoryConstant.e);
-        localObject2 = new File(AppConstants.SDCARD_IMG_CAMERA);
-        if (!((File)localObject2).exists()) {
-          ((File)localObject2).mkdirs();
-        }
-        return StoryDepends.CameraFlow.a(paramContext, paramBoolean2, paramIntent, paramBoolean1, bool1, bool2, (String)localObject1, this.a.getAccount());
-        paramBoolean1 = false;
-        break;
-      }
-      paramBoolean1 = false;
+      paramContext.onRedTouchItemClick("103100.103500.103501");
+      paramIntent.edit().putBoolean("flow_filter_reddot_key", false).commit();
     }
-  }
-  
-  public void a(@NonNull Intent paramIntent)
-  {
-    paramIntent.putExtra("short_video_refer", "qqstory");
-    paramIntent.putExtra("set_user_callback", QQStoryFlowCallback.class.getCanonicalName());
-    paramIntent.putExtra("enable_local_video", true);
-    paramIntent.putExtra("ignore_dpc_duration", true);
-    paramIntent.putExtra("video_duration", 10);
+    paramContext = BaseApplicationImpl.getApplication();
+    paramIntent = new StringBuilder();
+    paramIntent.append("flow_filter_reddot_pkg_sp");
+    paramIntent.append(this.a.getCurrentAccountUin());
+    paramContext.getSharedPreferences(paramIntent.toString(), 4).getBoolean("flow_filter_reddot_key", false);
+    PtvFilterSoLoad.a(this.a, BaseApplicationImpl.getContext());
+    PlusPanelUtils.a(QQStoryConstant.f);
+    paramContext = new File(AppConstants.SDCARD_IMG_CAMERA);
+    if (!paramContext.exists()) {
+      paramContext.mkdirs();
+    }
+    this.a.getAccount();
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.QQStoryTakeVideoActivityLauncher
  * JD-Core Version:    0.7.0.1
  */

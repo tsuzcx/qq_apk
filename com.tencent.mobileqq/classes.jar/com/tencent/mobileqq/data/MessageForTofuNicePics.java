@@ -29,31 +29,28 @@ public class MessageForTofuNicePics
       this.url1 = localJSONObject.optString("key_nice_pics_url_1", "");
       this.url2 = localJSONObject.optString("key_nice_pics_url_2", "");
       this.frdUin = localJSONObject.optLong("key_frd_uin", 0L);
-      if (QLog.isDevelopLevel()) {
-        QLog.i("MessageForTofuInimateAnniversary", 4, "doParse:" + this.msg);
-      }
-      this.isread = true;
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.d("MessageForTofuInimateAnniversary", 1, "doParse", localJSONException);
-      }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.d("MessageForTofuInimateAnniversary", 1, "doParse", localException);
-      }
+      QLog.d("MessageForTofuInimateAnniversary", 1, "doParse", localException);
     }
+    catch (JSONException localJSONException)
+    {
+      QLog.d("MessageForTofuInimateAnniversary", 1, "doParse", localJSONException);
+    }
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doParse:");
+      localStringBuilder.append(this.msg);
+      QLog.i("MessageForTofuInimateAnniversary", 4, localStringBuilder.toString());
+    }
+    this.isread = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTofuNicePics
  * JD-Core Version:    0.7.0.1
  */

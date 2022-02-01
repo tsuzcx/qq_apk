@@ -16,15 +16,24 @@ class GiftService$4
   
   public void onError(boolean paramBoolean, int paramInt, String paramString)
   {
-    if (paramBoolean) {
-      if (this.val$callback != null) {
-        this.val$callback.onFail(201, "time out");
+    if (paramBoolean)
+    {
+      paramString = this.val$callback;
+      if (paramString != null) {
+        paramString.onFail(201, "time out");
       }
     }
-    while (this.val$callback == null) {
-      return;
+    else
+    {
+      GiftServiceInterface.OnQueryGiftInfoCallback localOnQueryGiftInfoCallback = this.val$callback;
+      if (localOnQueryGiftInfoCallback != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("not get data ");
+        localStringBuilder.append(paramString);
+        localOnQueryGiftInfoCallback.onFail(paramInt, localStringBuilder.toString());
+      }
     }
-    this.val$callback.onFail(paramInt, "not get data " + paramString);
   }
   
   public void onRecv(byte[] paramArrayOfByte)
@@ -33,7 +42,8 @@ class GiftService$4
     {
       this.this$0.getServiceAdapter().getLogger().i("GiftService", "queryGiftInfo onRecv", new Object[0]);
       paramArrayOfByte = PersonGetGiftRsp.parseFrom(paramArrayOfByte);
-      if (paramArrayOfByte.result != 0)
+      int i = paramArrayOfByte.result;
+      if (i != 0)
       {
         if (this.val$callback == null) {
           return;
@@ -46,26 +56,26 @@ class GiftService$4
         paramArrayOfByte = GiftService.access$100(this.this$0, paramArrayOfByte.giftInfo);
         GiftService.access$200(this.this$0).put(Integer.valueOf(paramArrayOfByte.mGiftId), Integer.valueOf(paramArrayOfByte.mGiftType));
         GiftService.access$300(this.this$0).put(Integer.valueOf(paramArrayOfByte.mGiftId), paramArrayOfByte);
-        if (this.val$callback == null) {
-          return;
+        if (this.val$callback != null) {
+          this.val$callback.onGetGiftInfo(paramArrayOfByte);
         }
-        this.val$callback.onGetGiftInfo(paramArrayOfByte);
+      }
+      else if (this.val$callback != null)
+      {
+        this.val$callback.onFail(20, "not get data");
         return;
       }
     }
     catch (InvalidProtocolBufferNanoException paramArrayOfByte)
     {
       paramArrayOfByte.printStackTrace();
-      return;
     }
-    if (this.val$callback != null) {
-      this.val$callback.onFail(20, "not get data");
-    }
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.giftservice.GiftService.4
  * JD-Core Version:    0.7.0.1
  */

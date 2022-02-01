@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.vip.diy;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.ViewGroup;
@@ -8,7 +9,7 @@ import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.image.DownloadParams.DecodeHandler;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
 import com.tencent.mobileqq.vip.diy.template.ProfileTemplateBase.BackGroundUpdateListener;
 import com.tencent.mobileqq.vip.diy.template.ProfileTemplateBase.NinePatchDecoderHandler;
 import com.tencent.mobileqq.widget.ProfileNameView;
@@ -34,8 +35,8 @@ public class ProfileTemplateNickNameContainer
   protected URLDrawable a(@NonNull String paramString, DownloadParams.DecodeHandler paramDecodeHandler)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-    localURLDrawableOptions.mFailedDrawable = URLDrawableHelper.TRANSPARENT;
+    localURLDrawableOptions.mLoadingDrawable = URLDrawableHelperConstants.a;
+    localURLDrawableOptions.mFailedDrawable = URLDrawableHelperConstants.a;
     localURLDrawableOptions.mPlayGifImage = false;
     if (paramDecodeHandler != null) {
       localURLDrawableOptions.mMemoryCacheKeySuffix = paramDecodeHandler.toString();
@@ -50,41 +51,42 @@ public class ProfileTemplateNickNameContainer
     return this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.a();
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int n = this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.b();
-    int k = this.jdField_a_of_type_Int;
-    int m = this.jdField_a_of_type_Int + n;
-    int j;
-    int i;
-    if (m > paramInt3 - paramInt1)
+    int m = this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.b();
+    int i = this.jdField_a_of_type_Int;
+    int j = i + m;
+    int k = paramInt3 - paramInt1;
+    if (j > k)
     {
-      j = Math.max(0, paramInt3 - n);
-      i = paramInt3 - paramInt1;
+      paramInt1 = Math.max(0, paramInt3 - m);
+      paramInt3 = k;
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.layout(j, 0, i, paramInt4 - paramInt2);
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateProfileTemplateBase$NinePatchDecoderHandler.a(i - j, paramInt4 - paramInt2);
-      URLDrawable localURLDrawable = a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateProfileTemplateBase$NinePatchDecoderHandler);
-      ProfileTemplateBase.BackGroundUpdateListener.a(localURLDrawable, this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.setBackgroundDrawable(localURLDrawable);
-      return;
-      i = m;
-      j = k;
+      paramInt1 = i;
+      paramInt3 = j;
       if (this.jdField_a_of_type_Boolean)
       {
-        j = (paramInt3 - paramInt1) / 2 - (m - k) / 2;
-        i = j + n;
+        paramInt1 = k / 2 - (j - i) / 2;
+        paramInt3 = paramInt1 + m;
       }
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView;
+    paramInt2 = paramInt4 - paramInt2;
+    ((ProfileNameView)localObject).layout(paramInt1, 0, paramInt3, paramInt2);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateProfileTemplateBase$NinePatchDecoderHandler.a(paramInt3 - paramInt1, paramInt2);
+      localObject = a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateProfileTemplateBase$NinePatchDecoderHandler);
+      ProfileTemplateBase.BackGroundUpdateListener.a((URLDrawable)localObject, this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.setBackgroundDrawable((Drawable)localObject);
+      return;
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.setBackgroundDrawable(null);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.measure(paramInt2, paramInt2);
@@ -96,18 +98,22 @@ public class ProfileTemplateNickNameContainer
     this.jdField_a_of_type_JavaLangString = paramString;
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      int i = UIUtils.b(getContext());
-      this.b = ((int)(i * 0.005D));
-      this.c = ((int)(i * 0.03D));
+      double d = UIUtils.b(getContext());
+      Double.isNaN(d);
+      this.b = ((int)(0.005D * d));
+      Double.isNaN(d);
+      this.c = ((int)(d * 0.03D));
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.a().setPadding(this.c, this.b, this.c, this.b);
-      return;
       this.b = 0;
       this.c = 0;
       this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.setBackgroundDrawable(null);
     }
+    paramString = this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.a();
+    int i = this.c;
+    int j = this.b;
+    paramString.setPadding(i, j, i, j);
   }
   
   public void setTextCenter()
@@ -122,7 +128,7 @@ public class ProfileTemplateNickNameContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.diy.ProfileTemplateNickNameContainer
  * JD-Core Version:    0.7.0.1
  */

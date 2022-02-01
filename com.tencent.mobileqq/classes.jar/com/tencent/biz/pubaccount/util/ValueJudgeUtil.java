@@ -11,17 +11,21 @@ public final class ValueJudgeUtil
   
   private final <T> T a(T paramT1, T paramT2)
   {
-    if (a(paramT1)) {}
-    while (!a(paramT2)) {
+    if (a(paramT1)) {
       return paramT1;
     }
-    return paramT2;
+    if (a(paramT2)) {
+      return paramT2;
+    }
+    return paramT1;
   }
   
   private final boolean a(Object paramObject)
   {
     if ((paramObject instanceof Integer)) {
-      if (((Number)paramObject).intValue() <= 0) {}
+      if (((Number)paramObject).intValue() > 0) {
+        return true;
+      }
     }
     do
     {
@@ -29,20 +33,19 @@ public final class ValueJudgeUtil
       {
         do
         {
-          return true;
           return false;
           if (!(paramObject instanceof Long)) {
             break;
           }
-        } while (((Number)paramObject).longValue() > 0L);
-        return false;
+        } while (((Number)paramObject).longValue() <= 0L);
+        return true;
         if (!(paramObject instanceof String)) {
           break;
         }
-      } while (!StringUtil.a((String)paramObject));
-      return false;
-    } while (paramObject != null);
-    return false;
+      } while (StringUtil.a((String)paramObject));
+      return true;
+    } while (paramObject == null);
+    return true;
   }
   
   public final int a(int paramInt1, int paramInt2)
@@ -63,7 +66,7 @@ public final class ValueJudgeUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.ValueJudgeUtil
  * JD-Core Version:    0.7.0.1
  */

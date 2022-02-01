@@ -2,20 +2,21 @@ package com.tencent.livesdk.livesdkplayer;
 
 public class AVCatonReportManager
 {
-  private static AVCatonReportManager jdField_a_of_type_ComTencentLivesdkLivesdkplayerAVCatonReportManager = null;
+  private static AVCatonReportManager jdField_a_of_type_ComTencentLivesdkLivesdkplayerAVCatonReportManager;
   private AVCatonReport4Player jdField_a_of_type_ComTencentLivesdkLivesdkplayerAVCatonReport4Player = new AVCatonReport4Player();
   
   public static AVCatonReportManager a()
   {
-    if (jdField_a_of_type_ComTencentLivesdkLivesdkplayerAVCatonReportManager == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentLivesdkLivesdkplayerAVCatonReportManager == null) {
-        jdField_a_of_type_ComTencentLivesdkLivesdkplayerAVCatonReportManager = new AVCatonReportManager();
+    if (jdField_a_of_type_ComTencentLivesdkLivesdkplayerAVCatonReportManager == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentLivesdkLivesdkplayerAVCatonReportManager == null) {
+          jdField_a_of_type_ComTencentLivesdkLivesdkplayerAVCatonReportManager = new AVCatonReportManager();
+        }
       }
-      return jdField_a_of_type_ComTencentLivesdkLivesdkplayerAVCatonReportManager;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentLivesdkLivesdkplayerAVCatonReportManager;
   }
   
   public AVCatonReport4Player a()
@@ -32,7 +33,7 @@ public class AVCatonReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.livesdkplayer.AVCatonReportManager
  * JD-Core Version:    0.7.0.1
  */

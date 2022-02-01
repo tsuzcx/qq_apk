@@ -41,21 +41,20 @@ public class NowQwMixAndroidJs
     try
     {
       localJSONObject.put("msg", str);
-      this.customWebView.callJs(paramMap, new String[] { localJSONObject.toString() });
-      return;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        QLog.e("NowQwMixAndroidJs", 1, "get_now_version error: " + localJSONException);
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("get_now_version error: ");
+      localStringBuilder.append(localJSONException);
+      QLog.e("NowQwMixAndroidJs", 1, localStringBuilder.toString());
     }
+    this.customWebView.callJs(paramMap, new String[] { localJSONObject.toString() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.js.NowQwMixAndroidJs
  * JD-Core Version:    0.7.0.1
  */

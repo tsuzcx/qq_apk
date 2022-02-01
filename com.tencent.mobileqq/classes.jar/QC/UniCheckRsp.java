@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class UniCheckRsp
   extends JceStruct
@@ -38,17 +39,19 @@ public final class UniCheckRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret, 0);
-    if (this.errmsg != null) {
-      paramJceOutputStream.write(this.errmsg, 1);
+    Object localObject = this.errmsg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.uniBusinessItemList != null) {
-      paramJceOutputStream.write(this.uniBusinessItemList, 2);
+    localObject = this.uniBusinessItemList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.UniCheckRsp
  * JD-Core Version:    0.7.0.1
  */

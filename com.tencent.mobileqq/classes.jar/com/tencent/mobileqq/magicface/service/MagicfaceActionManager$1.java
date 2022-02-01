@@ -21,18 +21,20 @@ class MagicfaceActionManager$1
         ReportController.b((QQAppInterface)localAppRuntime, "CliOper", "", "", "MbJieshou", "MbWanchengXiaochu", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
       }
     }
-    do
+    else
     {
-      return;
       localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    } while ((localAppRuntime == null) || (!(localAppRuntime instanceof QQAppInterface)));
-    this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-    ReportController.b((QQAppInterface)localAppRuntime, "CliOper", "", "", "MbFasong", "MbZhudongChaozuo", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
+      if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface)))
+      {
+        this.a.jdField_a_of_type_Long = System.currentTimeMillis();
+        ReportController.b((QQAppInterface)localAppRuntime, "CliOper", "", "", "MbFasong", "MbZhudongChaozuo", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.service.MagicfaceActionManager.1
  * JD-Core Version:    0.7.0.1
  */

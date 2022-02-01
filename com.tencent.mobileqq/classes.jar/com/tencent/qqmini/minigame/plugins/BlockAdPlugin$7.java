@@ -13,26 +13,32 @@ class BlockAdPlugin$7
   {
     try
     {
-      HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(this.val$reportUrl).openConnection();
-      localHttpURLConnection.setRequestMethod("GET");
-      localHttpURLConnection.setConnectTimeout(10000);
-      localHttpURLConnection.setReadTimeout(10000);
-      localHttpURLConnection.setUseCaches(false);
-      localHttpURLConnection.setInstanceFollowRedirects(true);
-      localHttpURLConnection.connect();
-      int i = localHttpURLConnection.getResponseCode();
-      QMLog.i("BlockAdPlugin", "reportBlockAd rspCode" + i);
+      Object localObject = (HttpURLConnection)new URL(this.val$reportUrl).openConnection();
+      ((HttpURLConnection)localObject).setRequestMethod("GET");
+      ((HttpURLConnection)localObject).setConnectTimeout(10000);
+      ((HttpURLConnection)localObject).setReadTimeout(10000);
+      ((HttpURLConnection)localObject).setUseCaches(false);
+      ((HttpURLConnection)localObject).setInstanceFollowRedirects(true);
+      ((HttpURLConnection)localObject).connect();
+      int i = ((HttpURLConnection)localObject).getResponseCode();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reportBlockAd rspCode");
+      ((StringBuilder)localObject).append(i);
+      QMLog.i("BlockAdPlugin", ((StringBuilder)localObject).toString());
       return;
     }
     catch (Throwable localThrowable)
     {
-      QMLog.i("BlockAdPlugin", "reportBlockAd error, url = " + this.val$reportUrl, localThrowable);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportBlockAd error, url = ");
+      localStringBuilder.append(this.val$reportUrl);
+      QMLog.i("BlockAdPlugin", localStringBuilder.toString(), localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.BlockAdPlugin.7
  * JD-Core Version:    0.7.0.1
  */

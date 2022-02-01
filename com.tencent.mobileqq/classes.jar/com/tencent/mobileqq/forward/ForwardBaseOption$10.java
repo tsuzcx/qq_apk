@@ -1,38 +1,25 @@
 package com.tencent.mobileqq.forward;
 
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryUtils;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.pic.PicResult;
-import com.tencent.mobileqq.pic.UiCallBack.DownAdapter;
-import com.tencent.mobileqq.transfile.AbsDownloader;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class ForwardBaseOption$10
-  extends UiCallBack.DownAdapter
+  implements Runnable
 {
-  ForwardBaseOption$10(ForwardBaseOption paramForwardBaseOption, ForwardBaseOption.IPicDownloadCallback paramIPicDownloadCallback, MessageForPic paramMessageForPic, String paramString) {}
+  ForwardBaseOption$10(ForwardBaseOption paramForwardBaseOption, Drawable paramDrawable, boolean paramBoolean1, int paramInt, boolean paramBoolean2) {}
   
-  public void a(int paramInt, PicResult paramPicResult)
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption$IPicDownloadCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption$IPicDownloadCallback.b();
-    }
-    AbsDownloader.getFilePath(URLDrawableHelper.getURL(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, 1, null).toString().toString());
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardBaseOption", 2, "DownloadBigPic finish");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null) {
-      ForwardBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption, AIOGalleryUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic), this.jdField_a_of_type_JavaLangString);
+    if (this.this$0.a.isShowing())
+    {
+      this.this$0.a.setPreviewImage(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.b);
+      this.this$0.u();
     }
   }
-  
-  public void a_(int paramInt, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardBaseOption.10
  * JD-Core Version:    0.7.0.1
  */

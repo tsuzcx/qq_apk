@@ -52,47 +52,32 @@ public class DTReportChannel
       return localHashMap;
     }
     Iterator localIterator = paramMap.entrySet().iterator();
-    String str;
-    do
+    while (localIterator.hasNext())
     {
-      if (!localIterator.hasNext()) {
-        break;
-      }
       paramMap = (Map.Entry)localIterator.next();
-      str = (String)paramMap.getKey();
-      paramMap = paramMap.getValue();
-    } while (str == null);
-    for (;;)
-    {
-      try
-      {
-        if (!(paramMap instanceof Map)) {
-          break label119;
-        }
-        paramMap = new JSONObject((Map)paramMap).toString();
-        localHashMap.put(str, paramMap);
-      }
-      catch (Exception paramMap)
-      {
-        Log.e("DTReportChannel", paramMap.getLocalizedMessage());
-      }
-      break;
-      label119:
-      if ((paramMap instanceof List))
-      {
-        paramMap = new JSONArray((List)paramMap).toString();
-      }
-      else if (paramMap != null)
-      {
-        paramMap = String.valueOf(paramMap);
-        continue;
-        return localHashMap;
-      }
-      else
+      String str = (String)paramMap.getKey();
+      Object localObject = paramMap.getValue();
+      if (str != null)
       {
         paramMap = "";
+        try
+        {
+          if ((localObject instanceof Map)) {
+            paramMap = new JSONObject((Map)localObject).toString();
+          } else if ((localObject instanceof List)) {
+            paramMap = new JSONArray((List)localObject).toString();
+          } else if (localObject != null) {
+            paramMap = String.valueOf(localObject);
+          }
+          localHashMap.put(str, paramMap);
+        }
+        catch (Exception paramMap)
+        {
+          Log.e("DTReportChannel", paramMap.getLocalizedMessage());
+        }
       }
     }
+    return localHashMap;
   }
   
   private boolean shouldReportImmediately(String paramString)
@@ -105,7 +90,11 @@ public class DTReportChannel
     if (EVENT_KEY_DICT.containsKey(paramString)) {
       return (String)EVENT_KEY_DICT.get(paramString);
     }
-    Log.i("DTReportChannel", "origin event key:" + paramString + " no need to transform");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("origin event key:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" no need to transform");
+    Log.i("DTReportChannel", localStringBuilder.toString());
     return paramString;
   }
   
@@ -119,24 +108,40 @@ public class DTReportChannel
     paramString1 = transformEvent(paramString1);
     Map localMap = getParamsMap(paramMap);
     boolean bool2 = shouldReportImmediately(paramString1);
-    if (this.mDTReport == null) {}
-    label233:
-    for (;;)
-    {
+    if (this.mDTReport == null) {
       return;
-      if (TextUtils.isEmpty(paramString2)) {}
-      for (boolean bool1 = this.mDTReport.dtEvent(paramObject, paramString1, localMap, bool2);; bool1 = this.mDTReport.dtEvent(paramObject, paramString1, localMap, bool2, paramString2))
+    }
+    boolean bool1;
+    if (TextUtils.isEmpty(paramString2)) {
+      bool1 = this.mDTReport.dtEvent(paramObject, paramString1, localMap, bool2);
+    } else {
+      bool1 = this.mDTReport.dtEvent(paramObject, paramString1, localMap, bool2, paramString2);
+    }
+    if (VideoReport.isDebugMode())
+    {
+      paramObject = new StringBuilder();
+      paramObject.append("eventId = BeaconReporter_");
+      paramObject.append(paramString1);
+      paramObject.append(", immediately = ");
+      paramObject.append(bool2);
+      paramObject.append(", isSuccess=");
+      paramObject.append(bool1);
+      paramObject.append(", params = ");
+      paramObject.append(new JSONObject(new TreeMap(paramMap)));
+      Log.i("DTReportChannel", paramObject.toString());
+      paramObject = paramMap.get("udf_kv");
+      if ((paramObject instanceof Map))
       {
-        if (!VideoReport.isDebugMode()) {
-          break label233;
-        }
-        Log.i("DTReportChannel", "eventId = BeaconReporter_" + paramString1 + ", immediately = " + bool2 + ", isSuccess=" + bool1 + ", params = " + new JSONObject(new TreeMap(paramMap)));
-        paramObject = paramMap.get("udf_kv");
-        if (!(paramObject instanceof Map)) {
-          break;
-        }
-        Log.i("DTReportChannel", "eventId = BeaconReporter_udfkv_" + paramString1 + ", immediately = " + bool2 + ", isSuccess=" + bool1 + ", params = " + new JSONObject(new TreeMap((Map)paramObject)));
-        return;
+        paramMap = new StringBuilder();
+        paramMap.append("eventId = BeaconReporter_udfkv_");
+        paramMap.append(paramString1);
+        paramMap.append(", immediately = ");
+        paramMap.append(bool2);
+        paramMap.append(", isSuccess=");
+        paramMap.append(bool1);
+        paramMap.append(", params = ");
+        paramMap.append(new JSONObject(new TreeMap((Map)paramObject)));
+        Log.i("DTReportChannel", paramMap.toString());
       }
     }
   }
@@ -148,7 +153,7 @@ public class DTReportChannel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.reportchannel.DTReportChannel
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.HandlerThread;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.util.ArrayMap;
 import android.support.v4.util.ArraySet;
 import android.support.v4.util.SparseArrayCompat;
@@ -25,6 +24,7 @@ import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForFuDai;
@@ -44,10 +44,10 @@ public class FudaiItemBuilder
   @Nullable
   private static ArraySet<WeakReference<CustomFrameAnimationDrawable>> jdField_a_of_type_AndroidSupportV4UtilArraySet;
   private static final SparseArrayCompat<String[]> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
+  private int jdField_a_of_type_Int;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   private final ArrayMap<String, Boolean> jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap();
   private ArraySet<Long> b = new ArraySet();
-  private int c;
   private int d;
   private int e;
   private int f;
@@ -60,46 +60,52 @@ public class FudaiItemBuilder
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
     paramQQAppInterface = paramContext.getResources();
-    this.c = paramQQAppInterface.getDimensionPixelSize(2131297146);
-    this.d = paramQQAppInterface.getDimensionPixelSize(2131297145);
-    this.jdField_e_of_type_Int = paramQQAppInterface.getDimensionPixelSize(2131297150);
-    this.f = paramQQAppInterface.getDimensionPixelSize(2131297149);
-    this.g = paramQQAppInterface.getDimensionPixelSize(2131297152);
-    this.h = paramQQAppInterface.getDimensionPixelSize(2131297151);
-    this.i = paramQQAppInterface.getDimensionPixelSize(2131297148);
-    this.j = paramQQAppInterface.getDimensionPixelSize(2131297147);
+    this.jdField_a_of_type_Int = paramQQAppInterface.getDimensionPixelSize(2131297128);
+    this.d = paramQQAppInterface.getDimensionPixelSize(2131297127);
+    this.jdField_e_of_type_Int = paramQQAppInterface.getDimensionPixelSize(2131297132);
+    this.f = paramQQAppInterface.getDimensionPixelSize(2131297131);
+    this.g = paramQQAppInterface.getDimensionPixelSize(2131297134);
+    this.h = paramQQAppInterface.getDimensionPixelSize(2131297133);
+    this.i = paramQQAppInterface.getDimensionPixelSize(2131297130);
+    this.j = paramQQAppInterface.getDimensionPixelSize(2131297129);
   }
   
   @Nullable
   private BaseChatPie a()
   {
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity))
+    boolean bool = this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity;
+    Object localObject = null;
+    if (bool)
     {
-      ChatFragment localChatFragment = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
-      if (localChatFragment == null) {
+      localObject = ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
+      if (localObject == null) {
         return null;
       }
-      return localChatFragment.a();
+      localObject = ((ChatFragment)localObject).a();
     }
-    return null;
+    return localObject;
   }
   
   private String a(MessageForFuDai paramMessageForFuDai)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramMessageForFuDai.aioTails);
-    if (paramMessageForFuDai.isExpired()) {
-      localStringBuilder.append("，").append(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692718));
-    }
-    for (;;)
+    if (paramMessageForFuDai.isExpired())
     {
-      return localStringBuilder.toString();
-      if (paramMessageForFuDai.isGrabByMe()) {
-        localStringBuilder.append("，").append(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692717));
-      } else if (paramMessageForFuDai.isEmpty()) {
-        localStringBuilder.append("，").append(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692719));
-      }
+      localStringBuilder.append("，");
+      localStringBuilder.append(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692675));
     }
+    else if (paramMessageForFuDai.isGrabByMe())
+    {
+      localStringBuilder.append("，");
+      localStringBuilder.append(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692674));
+    }
+    else if (paramMessageForFuDai.isEmpty())
+    {
+      localStringBuilder.append("，");
+      localStringBuilder.append(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692676));
+    }
+    return localStringBuilder.toString();
   }
   
   private void a(MessageForFuDai paramMessageForFuDai, int paramInt) {}
@@ -109,40 +115,38 @@ public class FudaiItemBuilder
     FudaiItemBuilder.Holder.a(paramHolder).setFilter(-1711276033);
     FudaiItemBuilder.Holder.c(paramHolder).setVisibility(0);
     FudaiItemBuilder.Holder.d(paramHolder).setVisibility(8);
-    FudaiItemBuilder.Holder.a(paramHolder).setImageResource(2130845386);
-    FudaiItemBuilder.Holder.c(paramHolder).setImageResource(2130845387);
+    FudaiItemBuilder.Holder.a(paramHolder).setImageResource(2130845259);
+    FudaiItemBuilder.Holder.c(paramHolder).setImageResource(2130845260);
   }
   
   public static void e()
   {
-    if (jdField_a_of_type_AndroidSupportV4UtilArraySet == null) {}
-    for (;;)
-    {
+    Object localObject = jdField_a_of_type_AndroidSupportV4UtilArraySet;
+    if (localObject == null) {
       return;
-      Iterator localIterator = jdField_a_of_type_AndroidSupportV4UtilArraySet.iterator();
-      while (localIterator.hasNext())
-      {
-        CustomFrameAnimationDrawable localCustomFrameAnimationDrawable = (CustomFrameAnimationDrawable)((WeakReference)localIterator.next()).get();
-        if (localCustomFrameAnimationDrawable != null) {
-          localCustomFrameAnimationDrawable.e();
-        }
+    }
+    localObject = ((ArraySet)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      CustomFrameAnimationDrawable localCustomFrameAnimationDrawable = (CustomFrameAnimationDrawable)((WeakReference)((Iterator)localObject).next()).get();
+      if (localCustomFrameAnimationDrawable != null) {
+        localCustomFrameAnimationDrawable.e();
       }
     }
   }
   
   public static void f()
   {
-    if (jdField_a_of_type_AndroidSupportV4UtilArraySet == null) {}
-    for (;;)
-    {
+    Object localObject = jdField_a_of_type_AndroidSupportV4UtilArraySet;
+    if (localObject == null) {
       return;
-      Iterator localIterator = jdField_a_of_type_AndroidSupportV4UtilArraySet.iterator();
-      while (localIterator.hasNext())
-      {
-        CustomFrameAnimationDrawable localCustomFrameAnimationDrawable = (CustomFrameAnimationDrawable)((WeakReference)localIterator.next()).get();
-        if (localCustomFrameAnimationDrawable != null) {
-          localCustomFrameAnimationDrawable.d();
-        }
+    }
+    localObject = ((ArraySet)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      CustomFrameAnimationDrawable localCustomFrameAnimationDrawable = (CustomFrameAnimationDrawable)((WeakReference)((Iterator)localObject).next()).get();
+      if (localCustomFrameAnimationDrawable != null) {
+        localCustomFrameAnimationDrawable.d();
       }
     }
   }
@@ -152,14 +156,14 @@ public class FudaiItemBuilder
     return 0;
   }
   
-  public View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
+  protected View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     paramViewHolder = (FudaiItemBuilder.Holder)paramViewHolder;
     MessageForFuDai localMessageForFuDai = (MessageForFuDai)paramChatMessage;
     paramChatMessage = paramView;
     if (paramView == null)
     {
-      paramChatMessage = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561266, paramBaseChatItemLayout, false);
+      paramChatMessage = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561109, paramBaseChatItemLayout, false);
       FudaiItemBuilder.Holder.a(paramViewHolder, paramChatMessage);
       paramChatMessage.setOnLongClickListener(paramOnLongClickAndTouchListener);
       paramChatMessage.setOnTouchListener(paramOnLongClickAndTouchListener);
@@ -177,79 +181,76 @@ public class FudaiItemBuilder
     if (TextUtils.isEmpty(localMessageForFuDai.aioTails))
     {
       FudaiItemBuilder.Holder.a(paramViewHolder).setVisibility(8);
-      if (QLog.isColorLevel()) {
-        QLog.d("FudaiItemBuilder", 2, "no logo res");
-      }
-      FudaiItemBuilder.Holder.b(paramViewHolder).setVisibility(8);
-      if (!localMessageForFuDai.isExpired()) {
-        break label255;
-      }
-      a(paramViewHolder);
-      FudaiItemBuilder.Holder.b(paramViewHolder).setVisibility(0);
-      FudaiItemBuilder.Holder.b(paramViewHolder).setText(2131692718);
     }
-    for (;;)
+    else
     {
-      if (!this.b.contains(Long.valueOf(localMessageForFuDai.uniseq)))
-      {
-        this.b.add(Long.valueOf(localMessageForFuDai.uniseq));
-        a(localMessageForFuDai, 110);
-      }
-      return paramChatMessage;
       FudaiItemBuilder.Holder.a(paramViewHolder).setVisibility(0);
       FudaiItemBuilder.Holder.a(paramViewHolder).setText(localMessageForFuDai.aioTails);
-      break;
-      label255:
-      if (localMessageForFuDai.isGrabByMe())
-      {
-        a(paramViewHolder);
-        FudaiItemBuilder.Holder.b(paramViewHolder).setVisibility(8);
-      }
-      else if (localMessageForFuDai.isEmpty())
-      {
-        a(paramViewHolder);
-        FudaiItemBuilder.Holder.b(paramViewHolder).setVisibility(0);
-        FudaiItemBuilder.Holder.b(paramViewHolder).setText(2131692719);
-      }
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("FudaiItemBuilder", 2, "no logo res");
+    }
+    FudaiItemBuilder.Holder.b(paramViewHolder).setVisibility(8);
+    if (localMessageForFuDai.isExpired())
+    {
+      a(paramViewHolder);
+      FudaiItemBuilder.Holder.b(paramViewHolder).setVisibility(0);
+      FudaiItemBuilder.Holder.b(paramViewHolder).setText(2131692675);
+    }
+    else if (localMessageForFuDai.isGrabByMe())
+    {
+      a(paramViewHolder);
+      FudaiItemBuilder.Holder.b(paramViewHolder).setVisibility(8);
+    }
+    else if (localMessageForFuDai.isEmpty())
+    {
+      a(paramViewHolder);
+      FudaiItemBuilder.Holder.b(paramViewHolder).setVisibility(0);
+      FudaiItemBuilder.Holder.b(paramViewHolder).setText(2131692676);
+    }
+    if (!this.b.contains(Long.valueOf(localMessageForFuDai.uniseq)))
+    {
+      this.b.add(Long.valueOf(localMessageForFuDai.uniseq));
+      a(localMessageForFuDai, 110);
+    }
+    return paramChatMessage;
   }
   
-  public BaseBubbleBuilder.ViewHolder a()
+  protected BaseBubbleBuilder.ViewHolder a()
   {
     return new FudaiItemBuilder.Holder();
   }
   
-  public String a(ChatMessage paramChatMessage)
+  protected String a(ChatMessage paramChatMessage)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     if (MessageRecordInfo.a(paramChatMessage.issend)) {
       localStringBuilder.append("发出");
-    }
-    for (;;)
-    {
-      localStringBuilder.append(a((MessageForFuDai)paramChatMessage));
-      return localStringBuilder.toString();
+    } else {
       localStringBuilder.append("发来");
     }
+    localStringBuilder.append(a((MessageForFuDai)paramChatMessage));
+    return localStringBuilder.toString();
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
+    Object localObject = this.jdField_a_of_type_AndroidOsHandlerThread;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+      ((HandlerThread)localObject).quit();
       this.jdField_a_of_type_AndroidOsHandlerThread = null;
     }
-    if (jdField_a_of_type_AndroidSupportV4UtilArraySet != null) {
-      jdField_a_of_type_AndroidSupportV4UtilArraySet.clear();
+    localObject = jdField_a_of_type_AndroidSupportV4UtilArraySet;
+    if (localObject != null) {
+      ((ArraySet)localObject).clear();
     }
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
   {
-    switch (paramInt)
+    if (paramInt != 2131365480)
     {
-    default: 
       super.a(paramInt, paramContext, paramChatMessage);
       return;
     }
@@ -265,25 +266,22 @@ public class FudaiItemBuilder
   {
     QQCustomMenu localQQCustomMenu = new QQCustomMenu();
     paramView = AIOUtils.a(paramView);
-    a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131376927, paramView, null);
-    ChatActivityFacade.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131376940, paramView, null);
-    super.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131371997, null, null);
-    super.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131362524, null, null);
+    a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131376417, paramView, null);
+    ChatActivityFacade.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+    a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131376430, paramView, null);
+    super.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131371603, null, null);
+    super.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131362480, null, null);
     return localQQCustomMenu.a();
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    if (paramView.getId() != 2131367389)
     {
-    default: 
       super.onClick(paramView);
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       BaseChatPie localBaseChatPie = a();
       if (localBaseChatPie != null)
       {
@@ -292,11 +290,12 @@ public class FudaiItemBuilder
         ((FuDaiHelper)localBaseChatPie.a(2)).a(localMessageForFuDai);
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.fudai.aio.FudaiItemBuilder
  * JD-Core Version:    0.7.0.1
  */

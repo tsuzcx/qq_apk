@@ -68,21 +68,24 @@ public final class tPullStrategyFeedoper
     paramJceOutputStream.write(this.i_oper_type, 6);
     paramJceOutputStream.write(this.i_oper_times, 7);
     paramJceOutputStream.write(this.i_oper_source, 8);
-    if (this.s_oper_aux != null) {
-      paramJceOutputStream.write(this.s_oper_aux, 9);
+    String str = this.s_oper_aux;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
-    if (this.s_phone_qua != null) {
-      paramJceOutputStream.write(this.s_phone_qua, 10);
+    str = this.s_phone_qua;
+    if (str != null) {
+      paramJceOutputStream.write(str, 10);
     }
     paramJceOutputStream.write(this.phone_sourceid, 11);
-    if (this.s_app_trace_info != null) {
-      paramJceOutputStream.write(this.s_app_trace_info, 12);
+    str = this.s_app_trace_info;
+    if (str != null) {
+      paramJceOutputStream.write(str, 12);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     BOSSStrategyCenter.tPullStrategyFeedoper
  * JD-Core Version:    0.7.0.1
  */

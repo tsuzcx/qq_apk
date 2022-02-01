@@ -49,40 +49,55 @@ public class MultiCardFragment$ReportRunnable
   
   public void run()
   {
-    int i;
     try
     {
       if (this.jdField_a_of_type_Int == this.b) {
         return;
       }
       i = this.b - this.jdField_a_of_type_Int;
-      int j = this.c - this.b - 1;
-      if (j >= 5) {
-        i += 5;
+      j = this.c - this.b - 1;
+      if (j < 5) {
+        break label155;
       }
+      i += 5;
+    }
+    finally
+    {
       for (;;)
       {
-        this.jdField_a_of_type_Int += i;
-        this.b = this.jdField_a_of_type_Int;
-        j = 0;
-        while (j < i)
+        int i;
+        int j;
+        StringBuilder localStringBuilder;
+        for (;;)
         {
-          MultiCardFragment.a("0X800A215", 0);
-          j += 1;
+          throw localObject;
         }
+        label155:
         i += j;
       }
-      if (!QLog.isColorLevel()) {
-        return;
-      }
     }
-    finally {}
-    QLog.d("MultiCardFragment", 2, "0X800A215_report:" + i + " pos:" + this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Int += i;
+    this.b = this.jdField_a_of_type_Int;
+    j = 0;
+    while (j < i)
+    {
+      MultiCardFragment.a("0X800A215", 0);
+      j += 1;
+    }
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("0X800A215_report:");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" pos:");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      QLog.d("MultiCardFragment", 2, localStringBuilder.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardFragment.ReportRunnable
  * JD-Core Version:    0.7.0.1
  */

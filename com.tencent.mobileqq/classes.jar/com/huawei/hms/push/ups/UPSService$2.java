@@ -4,12 +4,13 @@ import com.huawei.hmf.tasks.OnCompleteListener;
 import com.huawei.hmf.tasks.Task;
 import com.huawei.hms.common.ApiException;
 import com.huawei.hms.push.ups.entity.CodeResult;
+import com.huawei.hms.push.ups.entity.ICallbackResult;
 import com.huawei.hms.push.ups.entity.UPSTurnCallBack;
 
-final class UPSService$2
+public final class UPSService$2
   implements OnCompleteListener<Void>
 {
-  UPSService$2(UPSTurnCallBack paramUPSTurnCallBack) {}
+  public UPSService$2(UPSTurnCallBack paramUPSTurnCallBack) {}
   
   public void onComplete(Task<Void> paramTask)
   {

@@ -19,87 +19,101 @@ public class TroopClassControllerManager
   
   public TroopAioClassController a(long paramLong, boolean paramBoolean, TroopChatPie paramTroopChatPie, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopClassControllerMan", 2, "updateTroopAioClassUI troopClassType" + paramLong + ", currentTroopClassType" + this.jdField_a_of_type_Long);
-    }
-    if ((paramLong != this.jdField_a_of_type_Long) && (this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController.a(false, paramTroopChatPie, paramBoolean);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController = a(paramTroopChatPie, paramString);
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController.a(true, paramTroopChatPie, paramBoolean);
-    }
-    for (;;)
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_Long = paramLong;
-      return this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController;
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopClassControllerMan", 2, "currenTroopClassController is null!!!");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateTroopAioClassUI troopClassType");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(", currentTroopClassType");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      QLog.d("TroopClassControllerMan", 2, ((StringBuilder)localObject).toString());
+    }
+    if (paramLong != this.jdField_a_of_type_Long)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController;
+      if (localObject != null) {
+        ((TroopAioClassController)localObject).a(false, paramTroopChatPie, paramBoolean);
       }
     }
+    this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController = a(paramTroopChatPie, paramString);
+    paramString = this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController;
+    if (paramString != null) {
+      paramString.a(true, paramTroopChatPie, paramBoolean);
+    } else if (QLog.isColorLevel()) {
+      QLog.d("TroopClassControllerMan", 2, "currenTroopClassController is null!!!");
+    }
+    this.jdField_a_of_type_Long = paramLong;
+    return this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController;
   }
   
   public TroopAioClassController a(TroopChatPie paramTroopChatPie, String paramString)
   {
     TroopManager localTroopManager = (TroopManager)paramTroopChatPie.a.getManager(QQManagerFactory.TROOP_MANAGER);
-    if (localTroopManager.o(paramString))
+    if (localTroopManager.n(paramString))
     {
       if (!(this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController instanceof HomeworkTroopController)) {
         this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController = new HomeworkTroopController(paramTroopChatPie.a, paramTroopChatPie.a(), paramTroopChatPie);
       }
       this.jdField_a_of_type_Long = 32L;
     }
-    for (;;)
+    else if (localTroopManager.o(paramString))
     {
-      return this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController;
-      if (localTroopManager.p(paramString))
+      this.jdField_a_of_type_Long = 27L;
+    }
+    else
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController = null;
+      this.jdField_a_of_type_Long = 0L;
+      if (QLog.isColorLevel())
       {
-        this.jdField_a_of_type_Long = 27L;
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController = null;
-        this.jdField_a_of_type_Long = 0L;
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopClassControllerMan", 2, "getControllerByTroopUin null " + paramString);
-        }
+        paramTroopChatPie = new StringBuilder();
+        paramTroopChatPie.append("getControllerByTroopUin null ");
+        paramTroopChatPie.append(paramString);
+        QLog.d("TroopClassControllerMan", 2, paramTroopChatPie.toString());
       }
     }
+    return this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController.c();
+    TroopAioClassController localTroopAioClassController = this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController;
+    if (localTroopAioClassController != null) {
+      localTroopAioClassController.c();
     }
   }
   
   public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController instanceof HomeworkTroopController)) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController.a(HWTroopUtils.b(paramInt));
+    TroopAioClassController localTroopAioClassController = this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController;
+    if ((localTroopAioClassController instanceof HomeworkTroopController)) {
+      localTroopAioClassController.a(HWTroopUtils.a(paramInt));
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController.b(paramBoolean);
+    TroopAioClassController localTroopAioClassController = this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController;
+    if (localTroopAioClassController != null) {
+      localTroopAioClassController.b(paramBoolean);
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController.b();
+    TroopAioClassController localTroopAioClassController = this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController;
+    if (localTroopAioClassController != null) {
+      localTroopAioClassController.b();
     }
     this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController = null;
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController.a();
+    TroopAioClassController localTroopAioClassController = this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController;
+    if (localTroopAioClassController != null) {
+      localTroopAioClassController.a();
     }
   }
   
@@ -107,7 +121,7 @@ public class TroopClassControllerManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.groupclass.TroopClassControllerManager
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class GetRandomHbIdiomReq
   extends JceStruct
 {
-  static int cache_subchannel = 0;
+  static int cache_subchannel;
   public long appid = 0L;
   public int fromType = 0;
   public long makeUin = 0L;
@@ -43,21 +43,23 @@ public final class GetRandomHbIdiomReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.makeUin, 0);
-    if (this.sKey != null) {
-      paramJceOutputStream.write(this.sKey, 1);
+    String str = this.sKey;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.appid, 2);
     paramJceOutputStream.write(this.fromType, 3);
     paramJceOutputStream.write(this.platform, 4);
-    if (this.qqVersion != null) {
-      paramJceOutputStream.write(this.qqVersion, 5);
+    str = this.qqVersion;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
     paramJceOutputStream.write(this.subchannel, 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.GetRandomHbIdiomReq
  * JD-Core Version:    0.7.0.1
  */

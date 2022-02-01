@@ -7,25 +7,38 @@ import android.os.SystemClock;
 class ProgressPieView$BlessAnimationHandler
   extends Handler
 {
-  long jdField_a_of_type_Long;
+  int mDuration;
+  boolean mHide;
+  long startTime;
   
   ProgressPieView$BlessAnimationHandler(ProgressPieView paramProgressPieView) {}
   
   public void handleMessage(Message paramMessage)
   {
-    int i = (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long);
-    if (i < this.jdField_a_of_type_ComTencentWidgetProgressPieView.a)
+    int i = (int)(SystemClock.elapsedRealtime() - this.startTime);
+    if (i < this.this$0.mMax)
     {
-      this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(i);
+      this.this$0.setProgress(i);
       sendEmptyMessageDelayed(0, 1L);
       return;
     }
-    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_ComTencentWidgetProgressPieView.a);
+    paramMessage = this.this$0;
+    paramMessage.setProgress(paramMessage.mMax);
+  }
+  
+  public void reset()
+  {
+    this.startTime = SystemClock.elapsedRealtime();
+  }
+  
+  public void setAnimateDuration(int paramInt)
+  {
+    this.mDuration = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.ProgressPieView.BlessAnimationHandler
  * JD-Core Version:    0.7.0.1
  */

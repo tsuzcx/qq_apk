@@ -31,53 +31,47 @@ public class TroopGameCardManager
       if (QLog.isColorLevel()) {
         QLog.d("TroopGameCardManager", 2, "getMemberGradeLevelInfo arg is invalid");
       }
-      paramString = null;
+      return null;
     }
-    Object localObject1;
-    do
+    Object localObject2 = (MemberGradeLevelInfo)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = (MemberGradeLevelInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(MemberGradeLevelInfo.class, paramString);
+    }
+    if (QLog.isColorLevel())
     {
-      return paramString;
-      localObject2 = (MemberGradeLevelInfo)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = (MemberGradeLevelInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(MemberGradeLevelInfo.class, paramString);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getMemberGradeLevelInfo info = ");
+      if (localObject1 == null) {
+        paramString = "null";
+      } else {
+        paramString = ((MemberGradeLevelInfo)localObject1).toString();
       }
-      paramString = (String)localObject1;
-    } while (!QLog.isColorLevel());
-    Object localObject2 = new StringBuilder().append("getMemberGradeLevelInfo info = ");
-    if (localObject1 == null) {}
-    for (paramString = "null";; paramString = ((MemberGradeLevelInfo)localObject1).toString())
-    {
-      QLog.d("TroopGameCardManager", 2, paramString);
-      return localObject1;
+      ((StringBuilder)localObject2).append(paramString);
+      QLog.d("TroopGameCardManager", 2, ((StringBuilder)localObject2).toString());
     }
+    return localObject1;
   }
   
   private boolean a(Entity paramEntity)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())
+    boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen();
+    boolean bool1 = false;
+    if (bool2)
     {
-      if (paramEntity.getStatus() != 1000) {
-        break label48;
+      if (paramEntity.getStatus() == 1000)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramEntity);
+        if (paramEntity.getStatus() == 1001) {
+          bool1 = true;
+        }
+        return bool1;
       }
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramEntity);
-      bool1 = bool2;
-      if (paramEntity.getStatus() == 1001) {
-        bool1 = true;
+      if ((paramEntity.getStatus() == 1001) || (paramEntity.getStatus() == 1002)) {
+        return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramEntity);
       }
     }
-    label48:
-    do
-    {
-      return bool1;
-      if (paramEntity.getStatus() == 1001) {
-        break;
-      }
-      bool1 = bool2;
-    } while (paramEntity.getStatus() != 1002);
-    return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramEntity);
+    return false;
   }
   
   protected void a(Entity paramEntity)
@@ -87,42 +81,52 @@ public class TroopGameCardManager
   
   public void a(MemberGradeLevelInfo paramMemberGradeLevelInfo)
   {
-    if ((paramMemberGradeLevelInfo == null) || (TextUtils.isEmpty(paramMemberGradeLevelInfo.memberuin)))
+    if ((paramMemberGradeLevelInfo != null) && (!TextUtils.isEmpty(paramMemberGradeLevelInfo.memberuin)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopGameCardManager", 2, "saveMemberGradeLevelInfo arg is null");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("saveMemberGradeLevelInfo memberuin = ");
+        localStringBuilder.append(paramMemberGradeLevelInfo.memberuin);
+        localStringBuilder.append(", level = ");
+        localStringBuilder.append(paramMemberGradeLevelInfo.gradeLevel);
+        QLog.d("TroopGameCardManager", 2, localStringBuilder.toString());
       }
+      if (this.jdField_a_of_type_AndroidSupportV4UtilLruCache == null) {
+        this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(1000);
+      }
+      this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramMemberGradeLevelInfo.memberuin, paramMemberGradeLevelInfo);
+      a(paramMemberGradeLevelInfo);
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("TroopGameCardManager", 2, "saveMemberGradeLevelInfo memberuin = " + paramMemberGradeLevelInfo.memberuin + ", level = " + paramMemberGradeLevelInfo.gradeLevel);
+      QLog.d("TroopGameCardManager", 2, "saveMemberGradeLevelInfo arg is null");
     }
-    if (this.jdField_a_of_type_AndroidSupportV4UtilLruCache == null) {
-      this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(1000);
-    }
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramMemberGradeLevelInfo.memberuin, paramMemberGradeLevelInfo);
-    a(paramMemberGradeLevelInfo);
   }
   
   public void a(String paramString, ITroopGameCardService.CallbackInMainThread paramCallbackInMainThread)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramCallbackInMainThread == null)) {
-      return;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (paramCallbackInMainThread == null) {
+        return;
+      }
+      ThreadManager.excute(new TroopGameCardManager.1(this, paramString, paramCallbackInMainThread), 32, null, true);
     }
-    ThreadManager.excute(new TroopGameCardManager.1(this, paramString, paramCallbackInMainThread), 32, null, true);
   }
   
   public void onDestroy()
   {
     this.jdField_a_of_type_MqqAppAppRuntime = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+    if (localEntityManager != null) {
+      localEntityManager.close();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopgame.TroopGameCardManager
  * JD-Core Version:    0.7.0.1
  */

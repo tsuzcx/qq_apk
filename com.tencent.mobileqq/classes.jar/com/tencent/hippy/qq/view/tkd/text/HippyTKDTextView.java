@@ -10,7 +10,7 @@ import android.text.style.ImageSpan;
 import com.tencent.hippy.qq.view.tkd.common.HippyTKDCommonBorderHandler.HippyQBCommonBorder;
 import com.tencent.hippy.qq.view.tkd.common.HippyTKDSkinHandler;
 import com.tencent.hippy.qq.view.tkd.common.HippyTKDSkinHandler.HippyQBCommonSkin;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mtt.hippy.common.HippyArray;
 import com.tencent.mtt.hippy.views.text.HippyTextView;
 
@@ -33,37 +33,41 @@ public class HippyTKDTextView
   @SuppressLint({"GetContentDescriptionOverride"})
   public String getContentDescription()
   {
-    if (this.mContentDescription == null)
+    String str2 = this.mContentDescription;
+    String str1 = str2;
+    if (str2 == null)
     {
       if ((this.mLayout != null) && (this.mLayout.getText() != null)) {
         return this.mLayout.getText().toString();
       }
-      return null;
+      str1 = null;
     }
-    return this.mContentDescription;
+    return str1;
   }
   
   public void hippySwitchSkin()
   {
-    if (this.mColors != null) {
-      setColors(this.mColors);
+    Object localObject = this.mColors;
+    if (localObject != null) {
+      setColors((HippyArray)localObject);
     }
     if ((this.mEmojiEnable) && (this.mLayout != null))
     {
-      Object localObject = (Spanned)this.mLayout.getText();
+      localObject = (Spanned)this.mLayout.getText();
       localObject = (ImageSpan[])((Spanned)localObject).getSpans(0, ((Spanned)localObject).length(), ImageSpan.class);
       int k = localObject.length;
       int i = 0;
-      if (i < k)
+      while (i < k)
       {
         Drawable localDrawable = localObject[i].getDrawable();
-        if (!ThemeUtil.isNowThemeIsNight(null, false, "")) {}
-        for (int j = 255;; j = 100)
-        {
-          localDrawable.setAlpha(j);
-          i += 1;
-          break;
+        int j;
+        if (!ThemeUtil.isNowThemeIsNight(null, false, "")) {
+          j = 255;
+        } else {
+          j = 100;
         }
+        localDrawable.setAlpha(j);
+        i += 1;
       }
     }
     this.mHippyTKDSkinHandler.switchSkin(this);
@@ -129,14 +133,15 @@ public class HippyTKDTextView
   public void setLayout(Layout paramLayout)
   {
     super.setLayout(paramLayout);
-    if (this.mColors != null) {
-      setColors(this.mColors);
+    paramLayout = this.mColors;
+    if (paramLayout != null) {
+      setColors(paramLayout);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.text.HippyTKDTextView
  * JD-Core Version:    0.7.0.1
  */

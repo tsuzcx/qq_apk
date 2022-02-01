@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/NativeAd/report/bean/NFBReportObj;", "Lcom/tencent/biz/pubaccount/NativeAd/report/IReportObj;", "()V", "nfbActionID", "", "nfbActionTxt", "nfbRemark", "getKey", "parseAdReportData", "", "adReportData", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData;", "toJsonObject", "Lorg/json/JSONObject;", "valid", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/NativeAd/report/bean/NFBReportObj;", "Lcom/tencent/biz/pubaccount/NativeAd/report/IReportObj;", "()V", "nfbActionID", "", "nfbActionTxt", "nfbRemark", "getKey", "parseAdReportData", "", "adReportData", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData;", "toJsonObject", "Lorg/json/JSONObject;", "valid", "", "kandian_ad_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class NFBReportObj
   extends IReportObj
 {
@@ -40,35 +40,46 @@ public final class NFBReportObj
   public void a(@NotNull AdReportData paramAdReportData)
   {
     Intrinsics.checkParameterIsNotNull(paramAdReportData, "adReportData");
-    if (AdReportUtil.a(paramAdReportData) != ReportAction.NFB) {}
-    String str;
-    for (;;)
-    {
+    if (AdReportUtil.a(paramAdReportData) != ReportAction.NFB) {
       return;
-      str = paramAdReportData.a();
-      Bundle localBundle = paramAdReportData.a();
-      if (localBundle == null) {
-        break;
-      }
+    }
+    Object localObject1 = paramAdReportData.a();
+    Object localObject2 = paramAdReportData.a();
+    if (localObject2 != null)
+    {
       this.a = "101";
       this.b = "我要吐槽";
-      this.c = localBundle.getString("ad_complain_txt", "");
-      paramAdReportData = localBundle.getString("ad_complain_tel", "");
+      this.c = ((Bundle)localObject2).getString("ad_complain_txt", "");
+      paramAdReportData = ((Bundle)localObject2).getString("ad_complain_tel", "");
       Intrinsics.checkExpressionValueIsNotNull(paramAdReportData, "tel");
-      if (((CharSequence)paramAdReportData).length() > 0) {}
-      for (int i = 1; i != 0; i = 0)
+      int i;
+      if (((CharSequence)paramAdReportData).length() > 0) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (i != 0)
       {
-        this.c = Intrinsics.stringPlus(this.c, '_' + paramAdReportData);
-        return;
+        localObject1 = this.c;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append('_');
+        ((StringBuilder)localObject2).append(paramAdReportData);
+        this.c = Intrinsics.stringPlus((String)localObject1, ((StringBuilder)localObject2).toString());
       }
     }
-    if (TextUtils.isEmpty((CharSequence)str))
+    else
     {
-      this.a = ("" + paramAdReportData.a());
-      return;
+      if (TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("");
+        ((StringBuilder)localObject1).append(paramAdReportData.a());
+        this.a = ((StringBuilder)localObject1).toString();
+        return;
+      }
+      this.a = paramAdReportData.a();
+      this.b = paramAdReportData.b();
     }
-    this.a = paramAdReportData.a();
-    this.b = paramAdReportData.b();
   }
   
   public boolean a()
@@ -78,7 +89,7 @@ public final class NFBReportObj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.report.bean.NFBReportObj
  * JD-Core Version:    0.7.0.1
  */

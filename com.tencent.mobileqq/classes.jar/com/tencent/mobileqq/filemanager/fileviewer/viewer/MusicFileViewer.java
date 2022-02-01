@@ -39,14 +39,14 @@ public class MusicFileViewer
     QLog.i("FileBrowserViewBase", 4, "FileBrowserViewBase: MusicFileViewer initFileView");
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2131560962, this.jdField_a_of_type_AndroidViewViewGroup, false);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372059));
-      this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372540));
-      this.g = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366930));
-      this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131373286));
-      this.f = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362703));
-      this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373424));
-      this.h = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366927));
+      this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2131560837, this.jdField_a_of_type_AndroidViewViewGroup, false);
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371656));
+      this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372125));
+      this.g = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366792));
+      this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131372862));
+      this.f = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362661));
+      this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373004));
+      this.h = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366789));
       if (Build.VERSION.SDK_INT >= 21) {
         this.jdField_a_of_type_AndroidWidgetSeekBar.setSplitTrack(false);
       }
@@ -71,8 +71,8 @@ public class MusicFileViewer
   {
     if (FontSettingManager.getFontLevel() > 17.0F)
     {
-      float f1 = this.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics().density;
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams((int)(150.0F * f1), (int)(f1 * 150.0F));
+      int i = (int)(this.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics().density * 150.0F);
+      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(i, i);
       this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
     }
   }
@@ -108,12 +108,12 @@ public class MusicFileViewer
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844476);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getString(2131691217));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844382);
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getString(2131691138));
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844477);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getString(2131691219));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844383);
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getString(2131691140));
   }
   
   public void e(String paramString)
@@ -123,7 +123,8 @@ public class MusicFileViewer
       this.g.post(new MusicFileViewer.1(this, paramString));
       return;
     }
-    this.g.setText(FileManagerUtil.a(paramString, false, this.g.getMeasuredWidth(), this.g.getPaint(), 2));
+    TextView localTextView = this.g;
+    localTextView.setText(FileManagerUtil.a(paramString, false, localTextView.getMeasuredWidth(), this.g.getPaint(), 2));
   }
   
   public void f(String paramString)
@@ -133,7 +134,7 @@ public class MusicFileViewer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.viewer.MusicFileViewer
  * JD-Core Version:    0.7.0.1
  */

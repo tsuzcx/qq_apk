@@ -36,7 +36,9 @@ public class SignatureActionSpan
   
   public int a()
   {
-    getSize(this.jdField_a_of_type_AndroidGraphicsPaint, this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_JavaLangString.length(), this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetricsInt());
+    Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
+    String str = this.jdField_a_of_type_JavaLangString;
+    getSize(localPaint, str, 0, str.length(), this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetricsInt());
     return this.b;
   }
   
@@ -44,60 +46,60 @@ public class SignatureActionSpan
   {
     Rect localRect = getDrawable().getBounds();
     Paint.FontMetricsInt localFontMetricsInt = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetricsInt();
-    int i = localRect.bottom;
-    int j = -localFontMetricsInt.top;
-    this.c = Math.max(i, localFontMetricsInt.bottom + j);
+    this.c = Math.max(localRect.bottom, -localFontMetricsInt.top + localFontMetricsInt.bottom);
     return this.c;
   }
   
   public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetricsInt().top + paramInt4;; i = paramInt4)
+    int i;
+    if (this.jdField_a_of_type_Boolean) {
+      i = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetricsInt().top + paramInt4;
+    } else {
+      i = paramInt4;
+    }
+    int j = this.b;
+    if (j > 0)
     {
-      if ((this.b > 0) && (this.c > 0))
+      int k = this.c;
+      if (k > 0)
       {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, i, this.b, this.c + i);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, i, j, k + i);
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
       }
-      super.draw(paramCanvas, paramCharSequence, paramInt1, paramInt2, paramFloat, paramInt3, paramInt4, paramInt5, paramPaint);
-      float f = getDrawable().getBounds().right;
-      paramInt1 = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetricsInt().ascent;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (;;)
-      {
-        paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramFloat + f, paramInt4, this.jdField_a_of_type_AndroidGraphicsPaint);
-        return;
-        paramInt4 -= paramInt1;
-      }
     }
+    super.draw(paramCanvas, paramCharSequence, paramInt1, paramInt2, paramFloat, paramInt3, paramInt4, paramInt5, paramPaint);
+    float f = getDrawable().getBounds().right;
+    paramInt1 = paramInt4 - this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetricsInt().ascent;
+    if (this.jdField_a_of_type_Boolean) {
+      paramInt1 = paramInt4;
+    }
+    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramFloat + f, paramInt1, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
   public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
   {
     paramCharSequence = getDrawable().getBounds();
     this.jdField_a_of_type_AndroidGraphicsPaint.getTextWidths(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfFloat);
-    paramInt1 = paramCharSequence.right;
+    paramInt2 = paramCharSequence.right;
     paramFontMetricsInt = this.jdField_a_of_type_ArrayOfFloat;
     int i = paramFontMetricsInt.length;
-    paramInt2 = 0;
-    while (paramInt2 < i)
+    paramInt1 = 0;
+    while (paramInt1 < i)
     {
-      float f = paramFontMetricsInt[paramInt2];
-      paramInt1 = (int)(paramInt1 + f);
-      paramInt2 += 1;
+      float f = paramFontMetricsInt[paramInt1];
+      paramInt2 = (int)(paramInt2 + f);
+      paramInt1 += 1;
     }
-    this.b = paramInt1;
+    this.b = paramInt2;
     paramPaint = paramPaint.getFontMetricsInt();
-    paramInt2 = paramCharSequence.bottom;
-    i = -paramPaint.top;
-    this.c = Math.max(paramInt2, paramPaint.bottom + i);
-    return paramInt1;
+    this.c = Math.max(paramCharSequence.bottom, -paramPaint.top + paramPaint.bottom);
+    return paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureActionSpan
  * JD-Core Version:    0.7.0.1
  */

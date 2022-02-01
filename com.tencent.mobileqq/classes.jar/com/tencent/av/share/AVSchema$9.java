@@ -10,24 +10,45 @@ class AVSchema$9
   
   public void a()
   {
-    QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.a, 1, "joinVideoChat.onCancel, isDetached[" + this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached() + "], seq[" + this.jdField_a_of_type_Long + "]");
+    String str = AVSchema.a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("joinVideoChat.onCancel, isDetached[");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached());
+    localStringBuilder.append("], seq[");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("]");
+    QLog.w(str, 1, localStringBuilder.toString());
     this.jdField_a_of_type_ComTencentAvShareAVSchema.b();
   }
   
   public void b()
   {
-    QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.a, 1, "joinVideoChat.onBeforeStartActivity, isDetached[" + this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached() + "], seq[" + this.jdField_a_of_type_Long + "]");
+    String str = AVSchema.a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("joinVideoChat.onBeforeStartActivity, isDetached[");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached());
+    localStringBuilder.append("], seq[");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("]");
+    QLog.w(str, 1, localStringBuilder.toString());
   }
   
   public void c()
   {
-    QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.a, 1, "joinVideoChat.onAfterStartActivity, isDetached[" + this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached() + "], seq[" + this.jdField_a_of_type_Long + "]");
+    String str = AVSchema.a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("joinVideoChat.onAfterStartActivity, isDetached[");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached());
+    localStringBuilder.append("], seq[");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("]");
+    QLog.w(str, 1, localStringBuilder.toString());
     this.jdField_a_of_type_ComTencentAvShareAVSchema.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.share.AVSchema.9
  * JD-Core Version:    0.7.0.1
  */

@@ -11,20 +11,24 @@ public class ActionBridge$FavoritesActionBridge
   
   public static FavoritesActionBridge obtain(int paramInt, Bundle paramBundle)
   {
-    HashMap localHashMap = null;
     if (paramBundle != null)
     {
-      localHashMap = new HashMap();
-      localHashMap.put("data", paramBundle);
+      localObject = new HashMap();
+      ((Map)localObject).put("data", paramBundle);
+      paramBundle = (Bundle)localObject;
     }
-    paramBundle = new FavoritesActionBridge();
-    paramBundle.setRealAction(obtain("FavoritesAction", paramInt, localHashMap));
-    return paramBundle;
+    else
+    {
+      paramBundle = null;
+    }
+    Object localObject = new FavoritesActionBridge();
+    ((FavoritesActionBridge)localObject).setRealAction(obtain("FavoritesAction", paramInt, paramBundle));
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.action.ActionBridge.FavoritesActionBridge
  * JD-Core Version:    0.7.0.1
  */

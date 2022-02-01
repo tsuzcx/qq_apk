@@ -11,10 +11,11 @@ class BaseTroopChatPie$1
   
   public void onGlobalLayout()
   {
-    if (this.a.N)
+    if (this.a.D)
     {
-      this.a.N = false;
-      this.a.a.sendEmptyMessageDelayed(23, 100L);
+      BaseTroopChatPie localBaseTroopChatPie = this.a;
+      localBaseTroopChatPie.D = false;
+      localBaseTroopChatPie.a.sendEmptyMessageDelayed(23, 100L);
       if (QLog.isColorLevel()) {
         QLog.d(this.a.b, 2, " doOnCreate_initUI onGlobalLayout");
       }
@@ -23,7 +24,7 @@ class BaseTroopChatPie$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseTroopChatPie.1
  * JD-Core Version:    0.7.0.1
  */

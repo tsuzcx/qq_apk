@@ -8,21 +8,21 @@ import java.util.Map;
 
 public class ConnectionErrorMessages
 {
-  private static final Map<String, String> a = new HashMap();
+  private static final Map<String, String> map = new HashMap();
   
   public static String getErrorDialogButtonMessage(Activity paramActivity, int paramInt)
   {
     if (ResourceLoaderUtil.getmContext() == null) {
       ResourceLoaderUtil.setmContext(paramActivity.getApplicationContext());
     }
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return ResourceLoaderUtil.getString("hms_confirm");
-    case 1: 
-      return ResourceLoaderUtil.getString("hms_install");
+      if (paramInt != 2) {
+        return ResourceLoaderUtil.getString("hms_confirm");
+      }
+      return ResourceLoaderUtil.getString("hms_update");
     }
-    return ResourceLoaderUtil.getString("hms_update");
+    return ResourceLoaderUtil.getString("hms_install");
   }
   
   public static String getErrorMessage(Activity paramActivity, int paramInt)
@@ -30,11 +30,14 @@ public class ConnectionErrorMessages
     if (ResourceLoaderUtil.getmContext() == null) {
       ResourceLoaderUtil.setmContext(paramActivity.getApplicationContext());
     }
-    paramActivity = ResourceLoaderUtil.getString("hms_update_title");
-    switch (paramInt)
+    String str = ResourceLoaderUtil.getString("hms_update_title");
+    paramActivity = str;
+    if (paramInt != 1)
     {
-    default: 
-      paramActivity = null;
+      paramActivity = str;
+      if (paramInt != 2) {
+        paramActivity = null;
+      }
     }
     return paramActivity;
   }
@@ -44,30 +47,33 @@ public class ConnectionErrorMessages
     if (ResourceLoaderUtil.getmContext() == null) {
       ResourceLoaderUtil.setmContext(paramActivity.getApplicationContext());
     }
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-    case 8: 
-    default: 
-      HMSLog.e("HuaweiApiAvailability", "Unexpected error code " + paramInt);
-      return null;
-    case 1: 
-      return ResourceLoaderUtil.getString("hms_install_message");
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 9)
+          {
+            paramActivity = new StringBuilder();
+            paramActivity.append("Unexpected error code ");
+            paramActivity.append(paramInt);
+            HMSLog.e("HuaweiApiAvailability", paramActivity.toString());
+            return null;
+          }
+          HMSLog.e("HuaweiApiAvailability", "Huawei Mobile Services is invalid. Cannot recover.");
+          return null;
+        }
+        return ResourceLoaderUtil.getString("hms_bindfaildlg_message");
+      }
       return ResourceLoaderUtil.getString("hms_update_message");
-    case 3: 
-      return ResourceLoaderUtil.getString("hms_bindfaildlg_message");
     }
-    HMSLog.e("HuaweiApiAvailability", "Huawei Mobile Services is invalid. Cannot recover.");
-    return null;
+    return ResourceLoaderUtil.getString("hms_install_message");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.internal.ConnectionErrorMessages
  * JD-Core Version:    0.7.0.1
  */

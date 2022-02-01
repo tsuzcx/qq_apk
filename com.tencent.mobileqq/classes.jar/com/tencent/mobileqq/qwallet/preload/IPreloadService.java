@@ -1,17 +1,15 @@
 package com.tencent.mobileqq.qwallet.preload;
 
 import android.os.ResultReceiver;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.mobileqq.qroute.annotation.Service;
-import com.tencent.mobileqq.qwallet.config.IQWalletConfigApi.ConfigInfo;
-import com.tencent.mobileqq.qwallet.config.IQWalletConfigService.ConfigUpdateListener;
+import com.tencent.mobileqq.qwallet.config.ConfigInfo;
 import java.util.LinkedList;
 import java.util.List;
 import org.json.JSONArray;
 
 @Service(process={""})
 public abstract interface IPreloadService
-  extends INetInfoHandler, IQWalletConfigService.ConfigUpdateListener, IPreloadServiceAbs
+  extends IPreloadServiceAbs
 {
   public static final String CONIFG_FILE_NAME = "preload.config";
   public static final String KEY_CONFIG_FROM_QQ = "config_from_qq";
@@ -66,20 +64,6 @@ public abstract interface IPreloadService
   
   public abstract void onDestroy();
   
-  public abstract void onNetMobile2None();
-  
-  public abstract void onNetMobile2Wifi(String paramString);
-  
-  public abstract void onNetNone2Mobile(String paramString);
-  
-  public abstract void onNetNone2Wifi(String paramString);
-  
-  public abstract void onNetWifi2Mobile(String paramString);
-  
-  public abstract void onNetWifi2None();
-  
-  public abstract void onUpdate(String paramString1, String paramString2, IQWalletConfigApi.ConfigInfo paramConfigInfo);
-  
   public abstract void preCheck();
   
   public abstract void realTimeDownload(DownloadParam paramDownloadParam, IPreloadService.OnGetPathListener paramOnGetPathListener);
@@ -88,7 +72,7 @@ public abstract interface IPreloadService
   
   public abstract void replaceConfig(JSONArray paramJSONArray, int paramInt);
   
-  public abstract void replaceConfigFromMoggy(IQWalletConfigApi.ConfigInfo paramConfigInfo);
+  public abstract void replaceConfigFromMoggy(ConfigInfo paramConfigInfo);
   
   public abstract void savePreloadConfig();
   
@@ -98,7 +82,7 @@ public abstract interface IPreloadService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.IPreloadService
  * JD-Core Version:    0.7.0.1
  */

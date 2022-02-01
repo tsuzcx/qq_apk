@@ -19,13 +19,13 @@ final class TtmlSubtitle
   {
     this.root = paramTtmlNode;
     this.regionMap = paramMap1;
-    if (paramMap != null) {}
-    for (paramMap = Collections.unmodifiableMap(paramMap);; paramMap = Collections.emptyMap())
-    {
-      this.globalStyles = paramMap;
-      this.eventTimesUs = paramTtmlNode.getEventTimesUs();
-      return;
+    if (paramMap != null) {
+      paramMap = Collections.unmodifiableMap(paramMap);
+    } else {
+      paramMap = Collections.emptyMap();
     }
+    this.globalStyles = paramMap;
+    this.eventTimesUs = paramTtmlNode.getEventTimesUs();
   }
   
   public List<Cue> getCues(long paramLong)
@@ -64,7 +64,7 @@ final class TtmlSubtitle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.text.ttml.TtmlSubtitle
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,6 @@ import java.util.Iterator;
 
 public class NetworkChangeNotifier
 {
-  private static final int DISCONNECT_CALLBACK_DELAY = 1000;
   private static final String FILE_NAME = "NetworkChangeNotifier.java";
   private static NetworkChangeNotifier sInstance;
   private NetworkChangeNotifierAutoDetect mAutoDetector;
@@ -51,9 +50,10 @@ public class NetworkChangeNotifier
   
   private void destroyAutoDetector()
   {
-    if (this.mAutoDetector != null)
+    NetworkChangeNotifierAutoDetect localNetworkChangeNotifierAutoDetect = this.mAutoDetector;
+    if (localNetworkChangeNotifierAutoDetect != null)
     {
-      this.mAutoDetector.destroy();
+      localNetworkChangeNotifierAutoDetect.destroy();
       this.mAutoDetector = null;
     }
   }
@@ -86,51 +86,50 @@ public class NetworkChangeNotifier
   
   public static long[] getCurrentNetworksAndTypes()
   {
-    if (getInstance().mAutoDetector == null) {}
-    for (long[] arrayOfLong = new long[0];; arrayOfLong = getInstance().mAutoDetector.getNetworksAndTypes())
-    {
-      TPDLProxyLog.d("NetworkChangeNotifier.java", 0, "tpdlnative", "getCurrentNetworksAndTypes : " + Arrays.toString(arrayOfLong));
-      return arrayOfLong;
+    long[] arrayOfLong;
+    if (getInstance().mAutoDetector == null) {
+      arrayOfLong = new long[0];
+    } else {
+      arrayOfLong = getInstance().mAutoDetector.getNetworksAndTypes();
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getCurrentNetworksAndTypes : ");
+    localStringBuilder.append(Arrays.toString(arrayOfLong));
+    TPDLProxyLog.d("NetworkChangeNotifier.java", 0, "tpdlnative", localStringBuilder.toString());
+    return arrayOfLong;
   }
   
   public static NetworkChangeNotifier getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new NetworkChangeNotifier();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new NetworkChangeNotifier();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public static String getWifiSSID()
   {
-    Object localObject;
     if (checkAppContext()) {
-      localObject = "";
+      return "";
     }
-    String str;
-    do
+    Object localObject = getAppContext().registerReceiver(null, new IntentFilter("android.net.wifi.STATE_CHANGE"));
+    if (localObject != null)
     {
-      return localObject;
-      localObject = getAppContext().registerReceiver(null, new IntentFilter("android.net.wifi.STATE_CHANGE"));
-      if (localObject == null) {
-        break;
-      }
       localObject = (WifiInfo)((Intent)localObject).getParcelableExtra("wifiInfo");
-      if (localObject == null) {
-        break;
+      if (localObject != null)
+      {
+        localObject = ((WifiInfo)localObject).getSSID();
+        if ((localObject != null) && (!((String)localObject).equals("<unknown ssid>"))) {
+          return localObject;
+        }
       }
-      str = ((WifiInfo)localObject).getSSID();
-      if (str == null) {
-        break;
-      }
-      localObject = str;
-    } while (!str.equals("<unknown ssid>"));
+    }
     return "";
   }
   
@@ -158,21 +157,22 @@ public class NetworkChangeNotifier
   
   private void notifyObserversOfConnectionTypeChange(int paramInt, long paramLong)
   {
-    if (TPDownloadProxyNative.getInstance().isNativeLoaded()) {}
-    try
-    {
-      nativeNotifyConnectionTypeChanged(paramInt, paramLong);
-      Iterator localIterator = this.mConnectionTypeObservers.iterator();
-      while (localIterator.hasNext()) {
-        ((NetworkChangeNotifier.ConnectionTypeObserver)localIterator.next()).onConnectionTypeChanged(paramInt);
+    if (TPDownloadProxyNative.getInstance().isNativeLoaded()) {
+      try
+      {
+        nativeNotifyConnectionTypeChanged(paramInt, paramLong);
+      }
+      catch (Throwable localThrowable)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("nativeNotifyConnectionTypeChanged failed, error:");
+        localStringBuilder.append(localThrowable.toString());
+        TPDLProxyLog.e("NetworkChangeNotifier.java", 0, "tpdlnative", localStringBuilder.toString());
       }
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        TPDLProxyLog.e("NetworkChangeNotifier.java", 0, "tpdlnative", "nativeNotifyConnectionTypeChanged failed, error:" + localThrowable.toString());
-      }
+    Iterator localIterator = this.mConnectionTypeObservers.iterator();
+    while (localIterator.hasNext()) {
+      ((NetworkChangeNotifier.ConnectionTypeObserver)localIterator.next()).onConnectionTypeChanged(paramInt);
     }
   }
   
@@ -193,7 +193,10 @@ public class NetworkChangeNotifier
   
   private void setAutoDetectConnectivityStateInternal(boolean paramBoolean, RegistrationPolicy paramRegistrationPolicy)
   {
-    TPDLProxyLog.d("NetworkChangeNotifier.java", 0, "tpdlnative", "setAutoDetectConnectivityStateInternal, shouldAutoDetect:" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setAutoDetectConnectivityStateInternal, shouldAutoDetect:");
+    localStringBuilder.append(paramBoolean);
+    TPDLProxyLog.d("NetworkChangeNotifier.java", 0, "tpdlnative", localStringBuilder.toString());
     if (paramBoolean)
     {
       if (this.mAutoDetector == null)
@@ -203,29 +206,37 @@ public class NetworkChangeNotifier
         updateCurrentConnectionType(paramRegistrationPolicy.getConnectionType());
         notifyObserversOfConnectionSubtypeChange(paramRegistrationPolicy.getConnectionSubtype());
       }
-      return;
     }
-    destroyAutoDetector();
+    else {
+      destroyAutoDetector();
+    }
   }
   
   private void updateCurrentConnectionType(int paramInt)
   {
-    TPDLProxyLog.d("NetworkChangeNotifier.java", 232, "tpdlnative", "updateCurrentConnectionType, newConnectionType:" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateCurrentConnectionType, newConnectionType:");
+    localStringBuilder.append(paramInt);
+    TPDLProxyLog.d("NetworkChangeNotifier.java", 232, "tpdlnative", localStringBuilder.toString());
     this.mCurrentConnectionType = paramInt;
     notifyObserversOfConnectionTypeChange(paramInt);
   }
   
   void notifyObserversOfConnectionSubtypeChange(int paramInt)
   {
-    if (TPDownloadProxyNative.getInstance().isNativeLoaded()) {}
-    try
-    {
-      nativeNotifyMaxBandwidthChanged(paramInt);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      TPDLProxyLog.e("NetworkChangeNotifier.java", 0, "tpdlnative", "nativeNotifyMaxBandwidthChanged failed, error:" + localThrowable.toString());
+    if (TPDownloadProxyNative.getInstance().isNativeLoaded()) {
+      try
+      {
+        nativeNotifyMaxBandwidthChanged(paramInt);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("nativeNotifyMaxBandwidthChanged failed, error:");
+        localStringBuilder.append(localThrowable.toString());
+        TPDLProxyLog.e("NetworkChangeNotifier.java", 0, "tpdlnative", localStringBuilder.toString());
+      }
     }
   }
   
@@ -236,63 +247,79 @@ public class NetworkChangeNotifier
   
   void notifyObserversOfNetworkConnect(long paramLong, int paramInt)
   {
-    if (TPDownloadProxyNative.getInstance().isNativeLoaded()) {}
-    try
-    {
-      nativeNotifyOfNetworkConnect(paramLong, paramInt);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      TPDLProxyLog.e("NetworkChangeNotifier.java", 0, "tpdlnative", "nativeNotifyOfNetworkConnect failed, error:" + localThrowable.toString());
+    if (TPDownloadProxyNative.getInstance().isNativeLoaded()) {
+      try
+      {
+        nativeNotifyOfNetworkConnect(paramLong, paramInt);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("nativeNotifyOfNetworkConnect failed, error:");
+        localStringBuilder.append(localThrowable.toString());
+        TPDLProxyLog.e("NetworkChangeNotifier.java", 0, "tpdlnative", localStringBuilder.toString());
+      }
     }
   }
   
   void notifyObserversOfNetworkDisconnect(long paramLong)
   {
-    if (TPDownloadProxyNative.getInstance().isNativeLoaded()) {}
-    try
-    {
-      nativeNotifyOfNetworkDisconnect(paramLong);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      TPDLProxyLog.e("NetworkChangeNotifier.java", 0, "tpdlnative", "nativeNotifyOfNetworkDisconnect failed, error:" + localThrowable.toString());
+    if (TPDownloadProxyNative.getInstance().isNativeLoaded()) {
+      try
+      {
+        nativeNotifyOfNetworkDisconnect(paramLong);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("nativeNotifyOfNetworkDisconnect failed, error:");
+        localStringBuilder.append(localThrowable.toString());
+        TPDLProxyLog.e("NetworkChangeNotifier.java", 0, "tpdlnative", localStringBuilder.toString());
+      }
     }
   }
   
   void notifyObserversOfNetworkSoonToDisconnect(long paramLong)
   {
-    if (TPDownloadProxyNative.getInstance().isNativeLoaded()) {}
-    try
-    {
-      nativeNotifyOfNetworkSoonToDisconnect(paramLong);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      TPDLProxyLog.e("NetworkChangeNotifier.java", 0, "tpdlnative", "nativeNotifyOfNetworkSoonToDisconnect failed, error:" + localThrowable.toString());
+    if (TPDownloadProxyNative.getInstance().isNativeLoaded()) {
+      try
+      {
+        nativeNotifyOfNetworkSoonToDisconnect(paramLong);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("nativeNotifyOfNetworkSoonToDisconnect failed, error:");
+        localStringBuilder.append(localThrowable.toString());
+        TPDLProxyLog.e("NetworkChangeNotifier.java", 0, "tpdlnative", localStringBuilder.toString());
+      }
     }
   }
   
   void notifyObserversToPurgeActiveNetworkList(long[] paramArrayOfLong)
   {
-    if (TPDownloadProxyNative.getInstance().isNativeLoaded()) {}
-    try
-    {
-      nativeNotifyPurgeActiveNetworkList(paramArrayOfLong);
-      return;
-    }
-    catch (Throwable paramArrayOfLong)
-    {
-      TPDLProxyLog.e("NetworkChangeNotifier.java", 0, "tpdlnative", "nativeNotifyPurgeActiveNetworkList failed, error:" + paramArrayOfLong.toString());
+    if (TPDownloadProxyNative.getInstance().isNativeLoaded()) {
+      try
+      {
+        nativeNotifyPurgeActiveNetworkList(paramArrayOfLong);
+        return;
+      }
+      catch (Throwable paramArrayOfLong)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("nativeNotifyPurgeActiveNetworkList failed, error:");
+        localStringBuilder.append(paramArrayOfLong.toString());
+        TPDLProxyLog.e("NetworkChangeNotifier.java", 0, "tpdlnative", localStringBuilder.toString());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.net.NetworkChangeNotifier
  * JD-Core Version:    0.7.0.1
  */

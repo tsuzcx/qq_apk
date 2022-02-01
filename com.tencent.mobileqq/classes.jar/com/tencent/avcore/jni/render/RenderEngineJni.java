@@ -27,11 +27,16 @@ public class RenderEngineJni
   
   void onFocusDetectResult(boolean paramBoolean)
   {
-    if (AVCoreLog.isColorLevel()) {
-      AVCoreLog.i("RenderJni", "onFocusDetectResult:" + paramBoolean);
+    if (AVCoreLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onFocusDetectResult:");
+      ((StringBuilder)localObject).append(paramBoolean);
+      AVCoreLog.i("RenderJni", ((StringBuilder)localObject).toString());
     }
-    if (this.mAutoFocusCallback != null) {
-      this.mAutoFocusCallback.onFocusDetectResult(paramBoolean);
+    Object localObject = this.mAutoFocusCallback;
+    if (localObject != null) {
+      ((FocusDetectCallback)localObject).onFocusDetectResult(paramBoolean);
     }
   }
   
@@ -47,46 +52,56 @@ public class RenderEngineJni
   
   void setBeautyOrFaceConfig(int paramInt1, int paramInt2)
   {
-    i = 0;
+    int k = 0;
+    int j;
+    int i;
     try
     {
       j = getBeautyConfig();
       i = j;
-      j = i;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
     {
+      localUnsatisfiedLinkError1.printStackTrace();
+      i = 0;
+      j = k;
+    }
+    if (paramInt2 == 0) {
+      i = j / 100 * 100;
+    }
+    for (k = Math.min(paramInt1, 99);; k = paramInt1 * 100)
+    {
+      i += k;
+      break;
+      if (paramInt2 != 1) {
+        break;
+      }
+      i = j % 100;
+    }
+    if (j != i)
+    {
       try
       {
-        int j;
-        do
-        {
-          for (;;)
-          {
-            setBeautyConfig(i);
-            if (AVCoreLog.isColorLevel()) {
-              AVCoreLog.e("RenderJni", "setBeautyOrFaceConfig, [" + j + " --> " + i + "], level[" + paramInt1 + "], type[" + paramInt2 + "]");
-            }
-            return;
-            localUnsatisfiedLinkError1 = localUnsatisfiedLinkError1;
-            localUnsatisfiedLinkError1.printStackTrace();
-            j = 0;
-          }
-        } while (paramInt2 != 1);
-        i = j % 100 + paramInt1 * 100;
+        setBeautyConfig(i);
       }
       catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
       {
-        for (;;)
-        {
-          localUnsatisfiedLinkError2.printStackTrace();
-        }
+        localUnsatisfiedLinkError2.printStackTrace();
       }
-    }
-    if (paramInt2 == 0)
-    {
-      i = j / 100 * 100 + Math.min(paramInt1, 99);
-      if (j == i) {}
+      if (AVCoreLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setBeautyOrFaceConfig, [");
+        localStringBuilder.append(j);
+        localStringBuilder.append(" --> ");
+        localStringBuilder.append(i);
+        localStringBuilder.append("], level[");
+        localStringBuilder.append(paramInt1);
+        localStringBuilder.append("], type[");
+        localStringBuilder.append(paramInt2);
+        localStringBuilder.append("]");
+        AVCoreLog.e("RenderJni", localStringBuilder.toString());
+      }
     }
   }
   
@@ -113,7 +128,7 @@ public class RenderEngineJni
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avcore.jni.render.RenderEngineJni
  * JD-Core Version:    0.7.0.1
  */

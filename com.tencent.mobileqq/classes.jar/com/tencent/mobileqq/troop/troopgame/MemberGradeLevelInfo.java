@@ -14,7 +14,7 @@ public class MemberGradeLevelInfo
   public int gradeLevel = 0;
   public String memberuin;
   
-  public boolean entityByCursor(Cursor paramCursor)
+  protected boolean entityByCursor(Cursor paramCursor)
   {
     this.memberuin = paramCursor.getString(paramCursor.getColumnIndex("memberuin"));
     this.gradeLevel = paramCursor.getInt(paramCursor.getColumnIndex("gradeLevel"));
@@ -23,12 +23,17 @@ public class MemberGradeLevelInfo
   
   public String toString()
   {
-    return "memberuin = " + this.memberuin + ", gradeLevel = " + this.gradeLevel;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("memberuin = ");
+    localStringBuilder.append(this.memberuin);
+    localStringBuilder.append(", gradeLevel = ");
+    localStringBuilder.append(this.gradeLevel);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopgame.MemberGradeLevelInfo
  * JD-Core Version:    0.7.0.1
  */

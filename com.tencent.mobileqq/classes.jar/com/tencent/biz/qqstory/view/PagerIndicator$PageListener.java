@@ -1,8 +1,8 @@
 package com.tencent.biz.qqstory.view;
 
 import android.database.DataSetObserver;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 
 class PagerIndicator$PageListener
   extends DataSetObserver
@@ -13,7 +13,8 @@ class PagerIndicator$PageListener
   public void onChanged()
   {
     Log.d("PagerIndicator", "onChanged");
-    this.a.a(this.a.a.getCurrentItem(), (PagerIndicator.IndicatorAdapter)this.a.a.getAdapter());
+    PagerIndicator localPagerIndicator = this.a;
+    localPagerIndicator.a(localPagerIndicator.a.getCurrentItem(), (PagerIndicator.IndicatorAdapter)this.a.a.getAdapter());
   }
   
   public void onPageScrollStateChanged(int paramInt) {}
@@ -22,13 +23,17 @@ class PagerIndicator$PageListener
   
   public void onPageSelected(int paramInt)
   {
-    Log.d("PagerIndicator", "onPageSelected : " + paramInt);
-    this.a.a(this.a.a.getCurrentItem(), (PagerIndicator.IndicatorAdapter)this.a.a.getAdapter());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onPageSelected : ");
+    ((StringBuilder)localObject).append(paramInt);
+    Log.d("PagerIndicator", ((StringBuilder)localObject).toString());
+    localObject = this.a;
+    ((PagerIndicator)localObject).a(((PagerIndicator)localObject).a.getCurrentItem(), (PagerIndicator.IndicatorAdapter)this.a.a.getAdapter());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.PagerIndicator.PageListener
  * JD-Core Version:    0.7.0.1
  */

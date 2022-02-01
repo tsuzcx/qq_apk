@@ -22,22 +22,25 @@ public final class ARRecordUtils
     paramInt -= i * 60;
     if (i < 10)
     {
-      localStringBuilder.append("0").append(i);
-      localStringBuilder.append(":");
-      if (paramInt >= 10) {
-        break label91;
-      }
-      localStringBuilder.append("0").append(paramInt);
-    }
-    for (;;)
-    {
-      localStringBuilder.append(")");
-      return localStringBuilder.toString();
+      localStringBuilder.append("0");
       localStringBuilder.append(i);
-      break;
-      label91:
+    }
+    else
+    {
+      localStringBuilder.append(i);
+    }
+    localStringBuilder.append(":");
+    if (paramInt < 10)
+    {
+      localStringBuilder.append("0");
       localStringBuilder.append(paramInt);
     }
+    else
+    {
+      localStringBuilder.append(paramInt);
+    }
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
   
   public static void a(File paramFile)
@@ -88,7 +91,7 @@ public final class ARRecordUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.ARRecordUtils
  * JD-Core Version:    0.7.0.1
  */

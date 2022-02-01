@@ -5,11 +5,11 @@ import android.os.Build.VERSION;
 import android.os.Handler;
 import com.tencent.av.audioprocess.AudioProcess;
 import com.tencent.avgame.callback.AVGameUIEventCallback;
+import com.tencent.avgame.report.AVGamePerfReporter;
 import com.tencent.avgame.session.AVGameSession;
 import com.tencent.avgame.session.AVGameSessionManager;
 import com.tencent.avgame.session.AVGameUserInfo;
 import com.tencent.avgame.ui.AVGameHandler;
-import com.tencent.avgame.util.AVGamePerfReporter;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qav.QavDef.MultiUserInfo;
@@ -30,13 +30,14 @@ class AVGameBusinessCtrl$2
   
   public void a()
   {
-    if (!AVGameBusinessCtrl.b()) {}
-    do
-    {
+    if (!AVGameBusinessCtrl.b()) {
       return;
-      AVLog.d("AVGameBusinessCtrl", "onEnterRoom success.");
-      ??? = AVGameBusinessCtrl.a(this.a).a();
-    } while (??? == null);
+    }
+    AVLog.d("AVGameBusinessCtrl", "onEnterRoom success.");
+    ??? = AVGameBusinessCtrl.a(this.a).a();
+    if (??? == null) {
+      return;
+    }
     AVGameBusinessCtrl.a(this.a, true);
     AVGameBusinessCtrl.b(this.a, true);
     AVGameBusinessCtrl.c(this.a, false);
@@ -55,7 +56,7 @@ class AVGameBusinessCtrl$2
     ((IntentFilter)???).addAction("android.bluetooth.adapter.action.STATE_CHANGED");
     BaseApplicationImpl.getContext().registerReceiver(AVGameBusinessCtrl.a(this.a), (IntentFilter)???);
     if (AVGameBusinessCtrl.a(this.a) != null) {
-      AVGameBusinessCtrl.a(this.a).a(0);
+      AVGameBusinessCtrl.a(this.a).onEnterRoom(0);
     }
     AVGameBusinessCtrl.a(this.a, null);
     AVGameBusinessCtrl.b(this.a);
@@ -70,69 +71,41 @@ class AVGameBusinessCtrl$2
           ((AVGameUIEventCallback)localWeakReference.get()).a();
         }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
   public void a(int paramInt)
   {
-    AVLog.d("AVGameBusinessCtrl", "onError, errorType[" + paramInt + "]");
-    if ((paramInt == 2) || (paramInt == 1))
-    {
-      AVLog.d("AVGameBusinessCtrl", "onEnterRoom failed. errorType = " + paramInt);
-      if (AVGameBusinessCtrl.a(this.a).a() == null)
-      {
-        AVLog.a("AVGameBusinessCtrl", "onEnterRoom failed. session == null.");
-        return;
-      }
-      AVGameBusinessCtrl.a(this.a).b(AVGameBusinessCtrl.a(this.a).a().a);
-      ReportController.b(null, "dc00898", "", "", "0X800B041", "0X800B041", 0, 0, "", "", "", "");
-      if (AVGameBusinessCtrl.a(this.a) != null) {
-        AVGameBusinessCtrl.a(this.a).a(paramInt);
-      }
-      AVGameBusinessCtrl.a(this.a, null);
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("onError, errorType[");
+    ((StringBuilder)???).append(paramInt);
+    ((StringBuilder)???).append("]");
+    AVLog.d("AVGameBusinessCtrl", ((StringBuilder)???).toString());
+    if ((paramInt != 2) && (paramInt != 1)) {
+      break label184;
     }
-    for (;;)
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("onEnterRoom failed. errorType = ");
+    ((StringBuilder)???).append(paramInt);
+    AVLog.d("AVGameBusinessCtrl", ((StringBuilder)???).toString());
+    if (AVGameBusinessCtrl.a(this.a).a() == null)
     {
-      AVGamePerfReporter.a().a("param_QAVEnterRoom", paramInt);
-      synchronized (AVGameBusinessCtrl.a(this.a))
-      {
-        Iterator localIterator = AVGameBusinessCtrl.a(this.a).iterator();
-        WeakReference localWeakReference;
-        do
-        {
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localWeakReference = (WeakReference)localIterator.next();
-        } while ((localWeakReference == null) || (localWeakReference.get() == null));
-        ((AVGameUIEventCallback)localWeakReference.get()).a(paramInt);
-      }
-      if ((paramInt == 4) || (paramInt != 3)) {}
-    }
-  }
-  
-  public void a(long paramLong, int paramInt)
-  {
-    AVLog.c("AVGameBusinessCtrl", "onUserFirstVideoFrameIn. userUin = " + paramLong + ", videoSrcType = " + paramInt);
-  }
-  
-  public void a(long paramLong1, int paramInt1, long paramLong2, int paramInt2) {}
-  
-  public void a(QavDef.MultiUserInfo paramMultiUserInfo)
-  {
-    AVLog.d("AVGameBusinessCtrl", "onUserEnter. uin = " + paramMultiUserInfo.mUin + ", isMicOn = " + paramMultiUserInfo.mMicOn);
-    ??? = AVGameBusinessCtrl.a(this.a).a();
-    if (??? == null)
-    {
-      AVLog.a("AVGameBusinessCtrl", "onUserEnter failed. session == null.");
+      AVLog.a("AVGameBusinessCtrl", "onEnterRoom failed. session == null.");
       return;
     }
-    ??? = ((AVGameSession)???).a(paramMultiUserInfo);
-    if (??? != null)
-    {
-      ((AVGameUserInfo)???).mEnterTime = System.currentTimeMillis();
-      AVLog.d("AVGameBusinessCtrl", "onUserEnter time is " + ((AVGameUserInfo)???).mEnterTime);
+    AVGameBusinessCtrl.a(this.a).b(AVGameBusinessCtrl.a(this.a).a().a);
+    ReportController.b(null, "dc00898", "", "", "0X800B041", "0X800B041", 0, 0, "", "", "", "");
+    if (AVGameBusinessCtrl.a(this.a) != null) {
+      AVGameBusinessCtrl.a(this.a).onEnterRoom(paramInt);
     }
+    AVGameBusinessCtrl.a(this.a, null);
+    label184:
+    AVGamePerfReporter.a().a("param_QAVEnterRoom", paramInt);
     synchronized (AVGameBusinessCtrl.a(this.a))
     {
       Iterator localIterator = AVGameBusinessCtrl.a(this.a).iterator();
@@ -140,15 +113,79 @@ class AVGameBusinessCtrl$2
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
         if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+          ((AVGameUIEventCallback)localWeakReference.get()).a(paramInt);
+        }
+      }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
+    }
+  }
+  
+  public void a(long paramLong, int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onUserFirstVideoFrameIn. userUin = ");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(", videoSrcType = ");
+    localStringBuilder.append(paramInt);
+    AVLog.c("AVGameBusinessCtrl", localStringBuilder.toString());
+  }
+  
+  public void a(long paramLong1, int paramInt1, long paramLong2, int paramInt2) {}
+  
+  public void a(QavDef.MultiUserInfo paramMultiUserInfo)
+  {
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("onUserEnter. uin = ");
+    ((StringBuilder)???).append(paramMultiUserInfo.mUin);
+    ((StringBuilder)???).append(", isMicOn = ");
+    ((StringBuilder)???).append(paramMultiUserInfo.mMicOn);
+    AVLog.d("AVGameBusinessCtrl", ((StringBuilder)???).toString());
+    ??? = AVGameBusinessCtrl.a(this.a).a();
+    if (??? == null)
+    {
+      AVLog.a("AVGameBusinessCtrl", "onUserEnter failed. session == null.");
+      return;
+    }
+    ??? = ((AVGameSession)???).a(paramMultiUserInfo);
+    Object localObject2;
+    if (??? != null)
+    {
+      ((AVGameUserInfo)???).mEnterTime = System.currentTimeMillis();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("onUserEnter time is ");
+      ((StringBuilder)localObject2).append(((AVGameUserInfo)???).mEnterTime);
+      AVLog.d("AVGameBusinessCtrl", ((StringBuilder)localObject2).toString());
+    }
+    synchronized (AVGameBusinessCtrl.a(this.a))
+    {
+      localObject2 = AVGameBusinessCtrl.a(this.a).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        WeakReference localWeakReference = (WeakReference)((Iterator)localObject2).next();
+        if ((localWeakReference != null) && (localWeakReference.get() != null)) {
           ((AVGameUIEventCallback)localWeakReference.get()).a(paramMultiUserInfo);
         }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramMultiUserInfo;
     }
   }
   
   public void a(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean)
   {
-    AVLog.d("AVGameBusinessCtrl", "onUserAudioAvailable. uin = " + paramMultiUserInfo.mUin + ", available = " + paramBoolean);
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("onUserAudioAvailable. uin = ");
+    ((StringBuilder)???).append(paramMultiUserInfo.mUin);
+    ((StringBuilder)???).append(", available = ");
+    ((StringBuilder)???).append(paramBoolean);
+    AVLog.d("AVGameBusinessCtrl", ((StringBuilder)???).toString());
     ??? = AVGameBusinessCtrl.a(this.a).a();
     if (??? == null)
     {
@@ -166,6 +203,11 @@ class AVGameBusinessCtrl$2
           ((AVGameUIEventCallback)localWeakReference.get()).a(paramMultiUserInfo, paramBoolean);
         }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramMultiUserInfo;
     }
   }
   
@@ -178,30 +220,44 @@ class AVGameBusinessCtrl$2
       return;
     }
     ??? = ((AVGameSession)???).a(paramMultiUserInfo);
-    if (((AVGameUserInfo)???).mIsSpeaking != paramBoolean) {}
-    for (int i = 1;; i = 0)
+    int i;
+    if (((AVGameUserInfo)???).mIsSpeaking != paramBoolean) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    ((AVGameUserInfo)???).mIsSpeaking = paramBoolean;
+    ((AVGameUserInfo)???).mAudioEnergy = paramInt;
+    if ((QLog.isDevelopLevel()) || (i != 0))
     {
-      ((AVGameUserInfo)???).mIsSpeaking = paramBoolean;
-      ((AVGameUserInfo)???).mAudioEnergy = paramInt;
-      if ((QLog.isDevelopLevel()) || (i != 0)) {
-        AVLog.d("AVGameBusinessCtrl", "onUserSpeaking. uin[ " + paramMultiUserInfo.mUin + "], isSpeaking[" + paramBoolean + "], audioEnergy[" + paramInt + "]");
-      }
-      if ((paramBoolean) && (paramInt < 10)) {
-        break;
-      }
-      synchronized (AVGameBusinessCtrl.a(this.a))
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("onUserSpeaking. uin[ ");
+      ((StringBuilder)???).append(paramMultiUserInfo.mUin);
+      ((StringBuilder)???).append("], isSpeaking[");
+      ((StringBuilder)???).append(paramBoolean);
+      ((StringBuilder)???).append("], audioEnergy[");
+      ((StringBuilder)???).append(paramInt);
+      ((StringBuilder)???).append("]");
+      AVLog.d("AVGameBusinessCtrl", ((StringBuilder)???).toString());
+    }
+    if ((paramBoolean) && (paramInt < 10)) {
+      return;
+    }
+    synchronized (AVGameBusinessCtrl.a(this.a))
+    {
+      Iterator localIterator = AVGameBusinessCtrl.a(this.a).iterator();
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = AVGameBusinessCtrl.a(this.a).iterator();
-        WeakReference localWeakReference;
-        do
-        {
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localWeakReference = (WeakReference)localIterator.next();
-        } while ((localWeakReference == null) || (localWeakReference.get() == null));
-        ((AVGameUIEventCallback)localWeakReference.get()).a(paramMultiUserInfo, paramBoolean, paramInt);
+        WeakReference localWeakReference = (WeakReference)localIterator.next();
+        if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+          ((AVGameUIEventCallback)localWeakReference.get()).a(paramMultiUserInfo, paramBoolean, paramInt);
+        }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramMultiUserInfo;
     }
   }
   
@@ -218,7 +274,12 @@ class AVGameBusinessCtrl$2
     while (((Iterator)localObject3).hasNext())
     {
       QavDef.MultiUserInfo localMultiUserInfo = (QavDef.MultiUserInfo)((Iterator)localObject3).next();
-      AVLog.d("AVGameBusinessCtrl", "onUserUpdate. uin = " + localMultiUserInfo.mUin + ", isMicOn = " + localMultiUserInfo.mMicOn);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUserUpdate. uin = ");
+      localStringBuilder.append(localMultiUserInfo.mUin);
+      localStringBuilder.append(", isMicOn = ");
+      localStringBuilder.append(localMultiUserInfo.mMicOn);
+      AVLog.d("AVGameBusinessCtrl", localStringBuilder.toString());
       ((AVGameSession)???).a(localMultiUserInfo);
       ((List)localObject2).add(Long.valueOf(localMultiUserInfo.mUin));
     }
@@ -233,105 +294,96 @@ class AVGameBusinessCtrl$2
           ((AVGameUIEventCallback)((WeakReference)localObject3).get()).a(paramList);
         }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramList;
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AVGameBusinessCtrl", 2, "onSystemCallStateChanged, isCalling[" + paramBoolean + "], enter[" + AVGameBusinessCtrl.a(this.a) + "]");
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("onSystemCallStateChanged, isCalling[");
+      ((StringBuilder)???).append(paramBoolean);
+      ((StringBuilder)???).append("], enter[");
+      ((StringBuilder)???).append(AVGameBusinessCtrl.a(this.a));
+      ((StringBuilder)???).append("]");
+      QLog.i("AVGameBusinessCtrl", 2, ((StringBuilder)???).toString());
     }
     if (paramBoolean) {
       AVGameBusinessCtrl.c(this.a);
+    } else {
+      AVGameBusinessCtrl.d(this.a);
+    }
+    synchronized (AVGameBusinessCtrl.a(this.a))
+    {
+      Iterator localIterator = AVGameBusinessCtrl.a(this.a).iterator();
+      while (localIterator.hasNext())
+      {
+        WeakReference localWeakReference = (WeakReference)localIterator.next();
+        if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+          ((AVGameUIEventCallback)localWeakReference.get()).a(paramBoolean);
+        }
+      }
+      if ((paramBoolean) && (AVGameBusinessCtrl.a(this.a))) {
+        CallingStateMonitor.a().c();
+      }
+      return;
     }
     for (;;)
     {
-      synchronized (AVGameBusinessCtrl.a(this.a))
-      {
-        Iterator localIterator = AVGameBusinessCtrl.a(this.a).iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        WeakReference localWeakReference = (WeakReference)localIterator.next();
-        if ((localWeakReference == null) || (localWeakReference.get() == null)) {
-          continue;
-        }
-        ((AVGameUIEventCallback)localWeakReference.get()).a(paramBoolean);
-      }
-      AVGameBusinessCtrl.d(this.a);
-    }
-    if ((paramBoolean) && (AVGameBusinessCtrl.a(this.a))) {
-      CallingStateMonitor.a().c();
+      throw localObject2;
     }
   }
   
   public void a(boolean paramBoolean, long paramLong, int paramInt)
   {
-    Object localObject = AVGameSession.a(paramInt, paramLong);
-    localObject = AVGameBusinessCtrl.a(this.a).a((String)localObject);
-    if (localObject == null) {
-      AVLog.a("AVGameBusinessCtrl", "onGoOnStageRet failed. session == null.");
-    }
-    do
+    Object localObject1 = AVGameSession.a(paramInt, paramLong);
+    localObject1 = AVGameBusinessCtrl.a(this.a).a((String)localObject1);
+    if (localObject1 == null)
     {
-      AVGameCameraAssistant localAVGameCameraAssistant;
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            AVLog.d("AVGameBusinessCtrl", "onGoOnStageRet, ret[" + paramBoolean + "], relationId[" + paramLong + "], relationType[" + paramInt + "]");
-            if (!paramBoolean) {
-              break;
-            }
-          } while (((AVGameSession)localObject).d != 1);
-          localAVGameCameraAssistant = this.a.a();
-        } while (localAVGameCameraAssistant == null);
-        localAVGameCameraAssistant.a((AVGameSession)localObject);
-        return;
-        if (!((AVGameSession)localObject).a(1)) {
-          break;
-        }
-        localAVGameCameraAssistant = this.a.a();
-      } while (localAVGameCameraAssistant == null);
-      localAVGameCameraAssistant.b((AVGameSession)localObject);
+      AVLog.a("AVGameBusinessCtrl", "onGoOnStageRet failed. session == null.");
       return;
-    } while (((AVGameSession)localObject).d != 1);
-    ((AVGameSession)localObject).b(0);
+    }
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("onGoOnStageRet, ret[");
+    ((StringBuilder)localObject2).append(paramBoolean);
+    ((StringBuilder)localObject2).append("], relationId[");
+    ((StringBuilder)localObject2).append(paramLong);
+    ((StringBuilder)localObject2).append("], relationType[");
+    ((StringBuilder)localObject2).append(paramInt);
+    ((StringBuilder)localObject2).append("]");
+    AVLog.d("AVGameBusinessCtrl", ((StringBuilder)localObject2).toString());
+    if (paramBoolean)
+    {
+      if (((AVGameSession)localObject1).d == 1)
+      {
+        localObject2 = this.a.a();
+        if (localObject2 != null) {
+          ((AVGameCameraAssistant)localObject2).a((AVGameSession)localObject1);
+        }
+      }
+    }
+    else if (((AVGameSession)localObject1).a(1))
+    {
+      localObject2 = this.a.a();
+      if (localObject2 != null) {
+        ((AVGameCameraAssistant)localObject2).b((AVGameSession)localObject1);
+      }
+    }
+    else if (((AVGameSession)localObject1).d == 1)
+    {
+      ((AVGameSession)localObject1).b(0);
+    }
   }
   
   public void a(boolean paramBoolean, long paramLong1, long paramLong2, int paramInt1, long paramLong3, int paramInt2)
   {
-    paramInt2 = 1;
-    AVLog.c("AVGameBusinessCtrl", "onMemberVideoInOrOut. videoIn = " + paramBoolean + ", userUin = " + paramLong1);
-    ??? = AVGameSession.a(paramInt1, paramLong2);
-    ??? = AVGameBusinessCtrl.a(this.a).a((String)???);
-    if (??? == null)
-    {
-      AVLog.a("AVGameBusinessCtrl", "onMemberVideoInOrOut failed. session == null.");
-      return;
-    }
-    if (paramBoolean) {}
-    for (paramInt1 = paramInt2;; paramInt1 = 0)
-    {
-      boolean bool = ((AVGameSession)???).a(paramLong1, paramBoolean, paramInt1);
-      AVLog.c("AVGameBusinessCtrl", "onMemberVideoInOrOut. updateUserCameraVideoStatus result = " + bool);
-      synchronized (AVGameBusinessCtrl.a(this.a))
-      {
-        Iterator localIterator = AVGameBusinessCtrl.a(this.a).iterator();
-        WeakReference localWeakReference;
-        do
-        {
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localWeakReference = (WeakReference)localIterator.next();
-        } while ((localWeakReference == null) || (localWeakReference.get() == null));
-        ((AVGameUIEventCallback)localWeakReference.get()).a(paramBoolean, paramLong1, 1);
-      }
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge Z and I\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s2stmt(TypeTransformer.java:820)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:843)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void b(int paramInt)
@@ -356,12 +408,20 @@ class AVGameBusinessCtrl$2
           ((AVGameUIEventCallback)localWeakReference.get()).b(paramInt);
         }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
   public void b(QavDef.MultiUserInfo paramMultiUserInfo)
   {
-    AVLog.d("AVGameBusinessCtrl", "onUserExit. uin = " + paramMultiUserInfo.mUin);
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("onUserExit. uin = ");
+    ((StringBuilder)???).append(paramMultiUserInfo.mUin);
+    AVLog.d("AVGameBusinessCtrl", ((StringBuilder)???).toString());
     ??? = AVGameBusinessCtrl.a(this.a).a();
     if (??? == null)
     {
@@ -379,13 +439,25 @@ class AVGameBusinessCtrl$2
           ((AVGameUIEventCallback)localWeakReference.get()).b(paramMultiUserInfo);
         }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramMultiUserInfo;
     }
   }
   
   public void b(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AVGameBusinessCtrl", 2, "onVideoChatCallStateChanged, isCalling[" + paramBoolean + "], enter[" + AVGameBusinessCtrl.a(this.a) + "]");
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("onVideoChatCallStateChanged, isCalling[");
+      ((StringBuilder)???).append(paramBoolean);
+      ((StringBuilder)???).append("], enter[");
+      ((StringBuilder)???).append(AVGameBusinessCtrl.a(this.a));
+      ((StringBuilder)???).append("]");
+      QLog.i("AVGameBusinessCtrl", 2, ((StringBuilder)???).toString());
     }
     synchronized (AVGameBusinessCtrl.a(this.a))
     {
@@ -397,57 +469,78 @@ class AVGameBusinessCtrl$2
           ((AVGameUIEventCallback)localWeakReference.get()).b(paramBoolean);
         }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
   public void b(boolean paramBoolean, long paramLong, int paramInt)
   {
-    Object localObject = AVGameSession.a(paramInt, paramLong);
-    localObject = AVGameBusinessCtrl.a(this.a).a((String)localObject);
-    if (localObject == null) {
-      AVLog.a("AVGameBusinessCtrl", "onGoOffStageRet failed. session == null.");
-    }
-    AVGameCameraAssistant localAVGameCameraAssistant;
-    do
+    Object localObject1 = AVGameSession.a(paramInt, paramLong);
+    localObject1 = AVGameBusinessCtrl.a(this.a).a((String)localObject1);
+    if (localObject1 == null)
     {
+      AVLog.a("AVGameBusinessCtrl", "onGoOffStageRet failed. session == null.");
       return;
-      AVLog.d("AVGameBusinessCtrl", "onGoOffStageRet, ret[" + paramBoolean + "], relationId[" + paramLong + "], relationType[" + paramInt + "]");
-      if (!((AVGameSession)localObject).a(1)) {
-        break;
+    }
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("onGoOffStageRet, ret[");
+    ((StringBuilder)localObject2).append(paramBoolean);
+    ((StringBuilder)localObject2).append("], relationId[");
+    ((StringBuilder)localObject2).append(paramLong);
+    ((StringBuilder)localObject2).append("], relationType[");
+    ((StringBuilder)localObject2).append(paramInt);
+    ((StringBuilder)localObject2).append("]");
+    AVLog.d("AVGameBusinessCtrl", ((StringBuilder)localObject2).toString());
+    if (((AVGameSession)localObject1).a(1))
+    {
+      localObject2 = this.a.a();
+      if (localObject2 != null) {
+        ((AVGameCameraAssistant)localObject2).b((AVGameSession)localObject1);
       }
-      localAVGameCameraAssistant = this.a.a();
-    } while (localAVGameCameraAssistant == null);
-    localAVGameCameraAssistant.b((AVGameSession)localObject);
-    return;
-    ((AVGameSession)localObject).b(0);
+    }
+    else
+    {
+      ((AVGameSession)localObject1).b(0);
+    }
   }
   
   public void c(int paramInt)
   {
-    ??? = new StringBuilder().append("onStartRemoteVideoRequestResult. success = ");
-    if (paramInt == 96) {}
-    for (boolean bool = true;; bool = false)
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("onStartRemoteVideoRequestResult. success = ");
+    boolean bool;
+    if (paramInt == 96) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    ((StringBuilder)???).append(bool);
+    AVLog.c("AVGameBusinessCtrl", ((StringBuilder)???).toString());
+    synchronized (AVGameBusinessCtrl.a(this.a))
     {
-      AVLog.c("AVGameBusinessCtrl", bool);
-      synchronized (AVGameBusinessCtrl.a(this.a))
+      Iterator localIterator = AVGameBusinessCtrl.a(this.a).iterator();
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = AVGameBusinessCtrl.a(this.a).iterator();
-        WeakReference localWeakReference;
-        do
-        {
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localWeakReference = (WeakReference)localIterator.next();
-        } while ((localWeakReference == null) || (localWeakReference.get() == null));
-        ((AVGameUIEventCallback)localWeakReference.get()).c(paramInt);
+        WeakReference localWeakReference = (WeakReference)localIterator.next();
+        if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+          ((AVGameUIEventCallback)localWeakReference.get()).c(paramInt);
+        }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.qav.AVGameBusinessCtrl.2
  * JD-Core Version:    0.7.0.1
  */

@@ -16,32 +16,31 @@ class LbsManager$1
   {
     SLog.b("LbsManager", "onLocationFinish.");
     boolean bool;
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
-    {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null)) {
       bool = true;
-      if (!bool) {
-        break label114;
-      }
+    } else {
+      bool = false;
+    }
+    if (bool)
+    {
       this.a.b = BasicLocation.a(paramSosoLbsInfo.mLocation);
       SLog.a("LbsManager", "onLocationFinish success, [longitude=%s, latitude=%s]", Integer.valueOf(this.a.b.b), Integer.valueOf(this.a.b.a));
     }
-    for (;;)
+    else
     {
-      if (!LbsManager.a(this.a)) {
-        this.a.a(bool, this.a.b);
-      }
-      this.a.a = false;
-      return;
-      bool = false;
-      break;
-      label114:
       SLog.d("LbsManager", "onLocationFinish errorCode = %d", new Object[] { Integer.valueOf(paramInt) });
     }
+    if (!LbsManager.a(this.a))
+    {
+      paramSosoLbsInfo = this.a;
+      paramSosoLbsInfo.a(bool, paramSosoLbsInfo.b);
+    }
+    this.a.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.lbs.LbsManager.1
  * JD-Core Version:    0.7.0.1
  */

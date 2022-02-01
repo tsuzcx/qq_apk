@@ -9,12 +9,15 @@ public class NotifyLightUtil
 {
   public static boolean a(Context paramContext, AppInterface paramAppInterface)
   {
-    return (SettingCloneUtil.readValue(paramContext, paramAppInterface.getCurrentAccountUin(), paramContext.getString(2131718680), "qqsetting_notify_blncontrol_key", true)) && ((paramAppInterface.isBackgroundPause) || (!ReflectionUtil.a(BaseApplication.getContext()))) && (!NoDisturbUtil.a(paramContext));
+    if ((SettingCloneUtil.readValue(paramContext, paramAppInterface.getCurrentAccountUin(), paramContext.getString(2131718398), "qqsetting_notify_blncontrol_key", true)) && ((paramAppInterface.isBackgroundPause) || (!ReflectionUtil.a(BaseApplication.getContext())))) {
+      return !NoDisturbUtil.a(paramContext);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.NotifyLightUtil
  * JD-Core Version:    0.7.0.1
  */

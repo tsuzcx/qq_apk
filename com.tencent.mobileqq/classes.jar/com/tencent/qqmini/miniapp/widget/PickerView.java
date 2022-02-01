@@ -66,24 +66,18 @@ public class PickerView
     Field[] arrayOfField = NumberPicker.class.getDeclaredFields();
     int j = arrayOfField.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      Field localField;
-      if (i < j)
+      Field localField = arrayOfField[i];
+      if (localField.getName().equals("mSelectionDivider"))
       {
-        localField = arrayOfField[i];
-        if (localField.getName().equals("mSelectionDivider")) {
-          localField.setAccessible(true);
-        }
-      }
-      else
-      {
+        localField.setAccessible(true);
         try
         {
           localField.set(paramNumberPicker, new ColorDrawable(ColorUtils.parseColor("#3CB371")));
           return;
         }
-        catch (IllegalArgumentException paramNumberPicker)
+        catch (IllegalAccessException paramNumberPicker)
         {
           paramNumberPicker.printStackTrace();
           return;
@@ -93,7 +87,7 @@ public class PickerView
           paramNumberPicker.printStackTrace();
           return;
         }
-        catch (IllegalAccessException paramNumberPicker)
+        catch (IllegalArgumentException paramNumberPicker)
         {
           paramNumberPicker.printStackTrace();
           return;
@@ -124,32 +118,32 @@ public class PickerView
   
   public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.mOnConfirmListener != null) {
-      this.mOnConfirmListener.onValCancel();
+    paramDialogInterface = this.mOnConfirmListener;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.onValCancel();
     }
   }
   
   public void onClick(View paramView)
   {
+    PickerView.OnConfirmListener localOnConfirmListener;
     if (paramView.getId() == R.id.tv_cancel)
     {
-      if (this.mOnConfirmListener != null) {
-        this.mOnConfirmListener.onValCancel();
+      localOnConfirmListener = this.mOnConfirmListener;
+      if (localOnConfirmListener != null) {
+        localOnConfirmListener.onValCancel();
       }
       dismissDlg();
     }
-    for (;;)
+    else if (paramView.getId() == R.id.tv_confirm)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (paramView.getId() == R.id.tv_confirm)
-      {
-        if (this.mOnConfirmListener != null) {
-          this.mOnConfirmListener.onValConfirm(this.result);
-        }
-        dismissDlg();
+      localOnConfirmListener = this.mOnConfirmListener;
+      if (localOnConfirmListener != null) {
+        localOnConfirmListener.onValConfirm(this.result);
       }
+      dismissDlg();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void setDisplayedValues(String[] paramArrayOfString)
@@ -175,7 +169,7 @@ public class PickerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.PickerView
  * JD-Core Version:    0.7.0.1
  */

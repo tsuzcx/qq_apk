@@ -12,29 +12,24 @@ class ForwardSdkBaseOption$10
   
   public void a(boolean paramBoolean)
   {
-    if (ForwardRecentActivity.class.isInstance(this.a.a)) {
-      if (!this.a.a.isFinishing())
-      {
-        if (!paramBoolean) {
-          break label75;
-        }
-        this.a.a(0, "", "");
-      }
-    }
-    for (;;)
+    if (ForwardRecentActivity.class.isInstance(this.a.a))
     {
+      if (!this.a.a.isFinishing()) {
+        if (paramBoolean) {
+          this.a.a(0, "", "");
+        } else {
+          this.a.a(-1, Constants.d, Constants.d);
+        }
+      }
       if (this.a.l) {
         ForwardSdkBaseOption.a(this.a.a, true, "shareToQQ", this.a.b);
       }
-      return;
-      label75:
-      this.a.a(-1, Constants.d, Constants.d);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSdkBaseOption.10
  * JD-Core Version:    0.7.0.1
  */

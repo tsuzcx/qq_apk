@@ -3,8 +3,8 @@ package com.tencent.mobileqq.app;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.config.business.qvip.QVIPPrettyTroopProcessor;
-import com.tencent.mobileqq.config.business.qvip.QVipPrettyTroopConfig;
+import com.tencent.mobileqq.vas.config.business.qvip.QVIPPrettyTroopProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipPrettyTroopConfig;
 
 public class TroopManager$LiangGroupHelper
 {
@@ -33,7 +33,7 @@ public class TroopManager$LiangGroupHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.TroopManager.LiangGroupHelper
  * JD-Core Version:    0.7.0.1
  */

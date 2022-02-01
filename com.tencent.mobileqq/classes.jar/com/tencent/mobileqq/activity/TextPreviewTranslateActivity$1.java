@@ -14,11 +14,15 @@ class TextPreviewTranslateActivity$1
   {
     if ((paramInt == 6) && (TextPreviewTranslateActivity.a(this.a) != null))
     {
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.a(this.a).getText().toString());
+      paramTextView = this.a;
+      TextPreviewTranslateActivity.a(paramTextView, TextPreviewTranslateActivity.a(paramTextView).getText().toString());
       TextPreviewTranslateActivity.a(this.a);
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.a(this.a));
-      TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.b(this.a));
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.c(this.a)), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
+      paramTextView = this.a;
+      TextPreviewTranslateActivity.a(paramTextView, TextPreviewTranslateActivity.a(paramTextView));
+      paramTextView = this.a;
+      TextPreviewTranslateActivity.b(paramTextView, TextPreviewTranslateActivity.b(paramTextView));
+      paramTextView = this.a;
+      TextPreviewTranslateActivity.a(paramTextView, TextPreviewTranslateActivity.b(paramTextView, TextPreviewTranslateActivity.c(paramTextView)), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
       return true;
     }
     return false;
@@ -26,7 +30,7 @@ class TextPreviewTranslateActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TextPreviewTranslateActivity.1
  * JD-Core Version:    0.7.0.1
  */

@@ -31,15 +31,26 @@ public class QCircleNetPluginParse
     if (paramQCircleSampleInfo == null) {
       return false;
     }
+    StringBuilder localStringBuilder;
     if (paramQCircleSampleInfo.b() != this.jdField_a_of_type_Int)
     {
-      QLog.i("QCIRCLE_PLUGIN", 1, "parseNet#:version not match,config version:" + paramQCircleSampleInfo.b() + " netVersion:" + this.jdField_a_of_type_Int);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parseNet#:version not match,config version:");
+      localStringBuilder.append(paramQCircleSampleInfo.b());
+      localStringBuilder.append(" netVersion:");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      QLog.i("QCIRCLE_PLUGIN", 1, localStringBuilder.toString());
       a(2);
       return false;
     }
     if (paramQCircleSampleInfo.a() > QCircleHostConstants._AppSetting.getHostVersion())
     {
-      QLog.i("QCIRCLE_PLUGIN", 1, "parseNet#:version not match,host version too low supportMinHostVersion:" + paramQCircleSampleInfo.a() + " hostVersion:" + QCircleHostConstants._AppSetting.getHostVersion());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parseNet#:version not match,host version too low supportMinHostVersion:");
+      localStringBuilder.append(paramQCircleSampleInfo.a());
+      localStringBuilder.append(" hostVersion:");
+      localStringBuilder.append(QCircleHostConstants._AppSetting.getHostVersion());
+      QLog.i("QCIRCLE_PLUGIN", 1, localStringBuilder.toString());
       a(4);
       return false;
     }
@@ -69,20 +80,25 @@ public class QCircleNetPluginParse
   {
     String str1 = this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.pluginZipPath;
     String str2 = this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.pluginManagerPath;
-    if ((!((IFileUtilsApi)QRoute.api(IFileUtilsApi.class)).fileExists(this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.pluginZipPath)) || (!((IFileUtilsApi)QRoute.api(IFileUtilsApi.class)).fileExists(this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.pluginManagerPath)) || (!a(this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo))) {
-      return null;
+    if ((((IFileUtilsApi)QRoute.api(IFileUtilsApi.class)).fileExists(this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.pluginZipPath)) && (((IFileUtilsApi)QRoute.api(IFileUtilsApi.class)).fileExists(this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.pluginManagerPath)))
+    {
+      if (!a(this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo)) {
+        return null;
+      }
+      QLog.i("QCIRCLE_PLUGIN", 1, "parseNet#:net plugin has in folder");
+      Object localObject = this.jdField_a_of_type_ComTencentBizQcircleshadowLocalPluginparseQCircleUnZip;
+      localObject = QCircleUnZip.a(new File(str1));
+      if (!a((String)localObject, str1, "parseNet#")) {
+        return null;
+      }
+      localObject = a(a(new File(this.jdField_a_of_type_ComTencentBizQcircleshadowLocalPluginparseQCircleUnZip.a((String)localObject, new File(str1)), "config.json").getAbsolutePath()));
+      if (!a((QCircleSampleInfo)localObject)) {
+        return null;
+      }
+      ((QCircleSampleInfo)localObject).d(this.e).a(str1).b(str2).b(this.jdField_a_of_type_Int);
+      return localObject;
     }
-    QLog.i("QCIRCLE_PLUGIN", 1, "parseNet#:net plugin has in folder");
-    Object localObject = this.jdField_a_of_type_ComTencentBizQcircleshadowLocalPluginparseQCircleUnZip.a(new File(str1));
-    if (!a((String)localObject, str1, "parseNet#")) {
-      return null;
-    }
-    localObject = a(a(new File(this.jdField_a_of_type_ComTencentBizQcircleshadowLocalPluginparseQCircleUnZip.a((String)localObject, new File(str1)), "config.json").getAbsolutePath()));
-    if (!a((QCircleSampleInfo)localObject)) {
-      return null;
-    }
-    ((QCircleSampleInfo)localObject).d(this.e).a(str1).b(str2).b(this.jdField_a_of_type_Int);
-    return localObject;
+    return null;
   }
   
   public QCircleSampleInfo a()
@@ -92,7 +108,7 @@ public class QCircleNetPluginParse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.pluginparse.QCircleNetPluginParse
  * JD-Core Version:    0.7.0.1
  */

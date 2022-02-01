@@ -3,25 +3,17 @@ package com.tencent.mobileqq.activity.aio.photo;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import com.tencent.common.app.AppInterface;
+import com.tencent.aelight.camera.qqstory.api.IAECaptureContext;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.NativeVideoImage;
 import com.tencent.mobileqq.app.BaseActivity2;
-import com.tencent.mobileqq.simpleui.SimpleUIUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.capture.CaptureContext;
 
 public class PeakActivity
   extends BaseActivity2
 {
-  @Deprecated
-  protected AppInterface appInterface;
-  protected boolean mNeedPauseRichMedia = true;
-  
-  protected void adjustStatusBar()
-  {
-    SimpleUIUtil.a(this.mSystemBarComp, getWindow());
-  }
+  protected boolean e = true;
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -32,7 +24,7 @@ public class PeakActivity
     return bool;
   }
   
-  public String getModuleId()
+  protected String getModuleId()
   {
     return "peak";
   }
@@ -44,26 +36,26 @@ public class PeakActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     setVolumeControlStream(3);
     if (!isLatecyWaitRuntime()) {
-      CaptureContext.a();
+      ((IAECaptureContext)QRoute.api(IAECaptureContext.class)).getAppInterface();
     }
   }
   
-  public void onPause()
+  protected void onPause()
   {
     super.onPause();
-    if (this.mNeedPauseRichMedia)
+    if (this.e)
     {
       NativeVideoImage.pauseAll();
       AbstractGifImage.pauseAll();
     }
   }
   
-  public void onResume()
+  protected void onResume()
   {
     super.onResume();
     NativeVideoImage.resumeAll();
@@ -72,7 +64,7 @@ public class PeakActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.PeakActivity
  * JD-Core Version:    0.7.0.1
  */

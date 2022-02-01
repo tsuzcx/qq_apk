@@ -24,13 +24,14 @@ public final class gallery$PictureInfo
   {
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 50, 56, 64 }, new String[] { "bytes_pic_url", "bytes_pic_desc", "uint64_index", "uint64_width", "uint64_height", "bytes_cut_pic_url", "uint64_cut_width", "uint64_cut_height" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro3, Long.valueOf(0L), Long.valueOf(0L) }, PictureInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 50, 56, 64 }, new String[] { "bytes_pic_url", "bytes_pic_desc", "uint64_index", "uint64_width", "uint64_height", "bytes_cut_pic_url", "uint64_cut_width", "uint64_cut_height" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localLong, localLong, localLong, localByteStringMicro3, localLong, localLong }, PictureInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.gallery.gallery.PictureInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -28,23 +28,25 @@ public class LebaHelperServiceImpl
   public void addLebaListener(ResourcePluginListener paramResourcePluginListener)
   {
     initLebaHelper();
-    if (this.mLebaHelper == null)
+    LebaHelper localLebaHelper = this.mLebaHelper;
+    if (localLebaHelper == null)
     {
       QLog.i("LebaHelperServiceImpl", 1, "addLebaListener mLebaHelper == null");
       return;
     }
-    this.mLebaHelper.a(paramResourcePluginListener);
+    localLebaHelper.a(paramResourcePluginListener);
   }
   
   public void checkModleAndRefesh()
   {
     initLebaHelper();
-    if (this.mLebaHelper == null)
+    LebaHelper localLebaHelper = this.mLebaHelper;
+    if (localLebaHelper == null)
     {
       QLog.i("LebaHelperServiceImpl", 1, "checkModleAndRefesh mLebaHelper == null");
       return;
     }
-    this.mLebaHelper.d();
+    localLebaHelper.d();
   }
   
   public void getAllPluginList(AppRuntime paramAppRuntime)
@@ -60,12 +62,13 @@ public class LebaHelperServiceImpl
   public List<LebaPluginInfo> getLebaConfigList()
   {
     initLebaHelper();
-    if (this.mLebaHelper == null)
+    LebaHelper localLebaHelper = this.mLebaHelper;
+    if (localLebaHelper == null)
     {
       QLog.i("LebaHelperServiceImpl", 1, "addLebaListener mLebaHelper == null");
       return null;
     }
-    return this.mLebaHelper.a();
+    return localLebaHelper.a();
   }
   
   public Object getLebaHelper()
@@ -96,15 +99,18 @@ public class LebaHelperServiceImpl
   
   public void initLebaHelper()
   {
-    if (this.mApp == null) {
+    AppRuntime localAppRuntime = this.mApp;
+    if (localAppRuntime == null)
+    {
       QLog.i("LebaHelperServiceImpl", 1, "initLebaHelper mApp == null");
-    }
-    while (this.mLebaHelper != null) {
       return;
     }
-    this.mLebaHelper = new LebaHelper(this.mApp);
-    this.mLebaHelper.b();
-    this.mLebaHelper.a();
+    if (this.mLebaHelper == null)
+    {
+      this.mLebaHelper = new LebaHelper(localAppRuntime);
+      this.mLebaHelper.b();
+      this.mLebaHelper.a();
+    }
   }
   
   public boolean isNeedPreloadPlugin(String paramString)
@@ -135,12 +141,13 @@ public class LebaHelperServiceImpl
   public void notifyPluginListChanged()
   {
     initLebaHelper();
-    if (this.mLebaHelper == null)
+    LebaHelper localLebaHelper = this.mLebaHelper;
+    if (localLebaHelper == null)
     {
       QLog.i("LebaHelperServiceImpl", 1, "notifyPluginListChanged mLebaHelper == null");
       return;
     }
-    this.mLebaHelper.i();
+    localLebaHelper.i();
   }
   
   public void notifyRefreshWebProcess()
@@ -162,8 +169,9 @@ public class LebaHelperServiceImpl
   public void onDestroy()
   {
     QLog.i("LebaHelperServiceImpl", 1, "onDestroy");
-    if (this.mLebaHelper != null) {
-      this.mLebaHelper.e();
+    LebaHelper localLebaHelper = this.mLebaHelper;
+    if (localLebaHelper != null) {
+      localLebaHelper.e();
     }
   }
   
@@ -175,12 +183,13 @@ public class LebaHelperServiceImpl
   public void removeLebaListener(ResourcePluginListener paramResourcePluginListener)
   {
     initLebaHelper();
-    if (this.mLebaHelper == null)
+    LebaHelper localLebaHelper = this.mLebaHelper;
+    if (localLebaHelper == null)
     {
       QLog.i("LebaHelperServiceImpl", 1, "addLebaListener mLebaHelper == null");
       return;
     }
-    this.mLebaHelper.b(paramResourcePluginListener);
+    localLebaHelper.b(paramResourcePluginListener);
   }
   
   public void reportPluginStatus(AppRuntime paramAppRuntime)
@@ -220,7 +229,7 @@ public class LebaHelperServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.impl.LebaHelperServiceImpl
  * JD-Core Version:    0.7.0.1
  */

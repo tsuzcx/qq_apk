@@ -6,6 +6,8 @@ import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import unite.DynamicSearch.ExtensionRequestInfo;
+import unite.DynamicSearch.RootSearcherRequest;
 
 public final class DynamicTabSearch$ReqBody
   extends MessageMicro<ReqBody>
@@ -26,7 +28,7 @@ public final class DynamicTabSearch$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     pb.unite.search.DynamicTabSearch.ReqBody
  * JD-Core Version:    0.7.0.1
  */

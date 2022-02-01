@@ -18,26 +18,24 @@ public class ProfileFeedPresenter$UploadStatusReceiver
   {
     if (paramStoryVideoPublishStatusEvent.a.isSuccess())
     {
-      if (!paramStoryVideoPublishStatusEvent.a()) {
-        break label25;
-      }
-      SLog.c("Q.qqstory.memories.ProfileFeedPresenter", "ignore this upload status event, because it's a troop video.");
-    }
-    label25:
-    do
-    {
-      do
+      if (paramStoryVideoPublishStatusEvent.a())
       {
+        SLog.c("Q.qqstory.memories.ProfileFeedPresenter", "ignore this upload status event, because it's a troop video.");
         return;
-        if (paramStoryVideoPublishStatusEvent.c())
-        {
-          SLog.b("Q.qqstory.memories.ProfileFeedPresenter", "receive share group video upload status change event. %s.", paramStoryVideoPublishStatusEvent.toString());
-          return;
+      }
+      if (paramStoryVideoPublishStatusEvent.c())
+      {
+        SLog.b("Q.qqstory.memories.ProfileFeedPresenter", "receive share group video upload status change event. %s.", paramStoryVideoPublishStatusEvent.toString());
+        return;
+      }
+      if (paramStoryVideoPublishStatusEvent.b())
+      {
+        SLog.a("Q.qqstory.memories.ProfileFeedPresenter", "receive personal video upload status change event. %s. start to refresh year node list", paramStoryVideoPublishStatusEvent.toString());
+        if (paramStoryVideoPublishStatusEvent.b != null) {
+          ProfileFeedPresenter.a(paramProfileFeedPresenter, true);
         }
-      } while (!paramStoryVideoPublishStatusEvent.b());
-      SLog.a("Q.qqstory.memories.ProfileFeedPresenter", "receive personal video upload status change event. %s. start to refresh year node list", paramStoryVideoPublishStatusEvent.toString());
-    } while (paramStoryVideoPublishStatusEvent.b == null);
-    ProfileFeedPresenter.a(paramProfileFeedPresenter, true);
+      }
+    }
   }
   
   public Class acceptEventClass()
@@ -47,7 +45,7 @@ public class ProfileFeedPresenter$UploadStatusReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.controller.ProfileFeedPresenter.UploadStatusReceiver
  * JD-Core Version:    0.7.0.1
  */

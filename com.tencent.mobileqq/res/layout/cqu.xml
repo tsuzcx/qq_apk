@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:id="@id/okl" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ViewStub android:id="@id/okk" android:visibility="gone" android:layout="@layout/cqt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" />
-    <ViewStub android:id="@id/oki" android:visibility="gone" android:layout="@layout/cqq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" />
-    <ViewStub android:id="@id/okj" android:visibility="gone" android:layout="@layout/cqr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" />
-    <ViewStub android:id="@id/okm" android:visibility="gone" android:layout="@layout/cqv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" />
-</FrameLayout>
+<LinearLayout android:orientation="vertical" android:id="@id/om8" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ViewStub android:id="@id/mez" android:visibility="gone" android:layout="@layout/c_n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" />
+    <ViewStub android:id="@id/krd" android:visibility="gone" android:layout="@layout/cqv" android:layout_width="wrap_content" android:layout_height="27.0dip" android:layout_marginBottom="8.0dip" />
+    <ViewStub android:id="@id/krc" android:visibility="gone" android:layout="@layout/ab4" android:layout_width="fill_parent" android:layout_height="32.0dip" android:layout_marginBottom="8.0dip" />
+</LinearLayout>

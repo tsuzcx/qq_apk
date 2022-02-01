@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_gravity="bottom" android:id="@id/ol7" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSPlayerControlBar android:id="@id/oky" android:visibility="visible" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="5.5dip" android:layout_marginBottom="3.0dip" />
-</FrameLayout>
+    <com.tencent.image.URLImageView android:id="@id/mz9" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="351.0dip" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
+    <com.tencent.image.URLImageView android:id="@id/mza" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="60.0dip" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
+    <com.tencent.image.URLImageView android:id="@id/e3" android:layout_width="45.0dip" android:layout_height="20.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <com.tencent.image.URLImageView android:id="@id/aqg" android:background="@drawable/bg2" android:visibility="visible" android:layout_width="8.0dip" android:layout_height="8.0dip" />
+    <com.tencent.image.URLImageView android:id="@id/aqp" android:background="@drawable/bx9" android:visibility="visible" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_alignParentRight="true" />
+    <com.tencent.image.URLImageView android:id="@id/aqa" android:background="@drawable/bg1" android:visibility="visible" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_alignParentBottom="true" />
+    <com.tencent.image.URLImageView android:id="@id/aqk" android:background="@drawable/bx8" android:visibility="visible" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+</RelativeLayout>

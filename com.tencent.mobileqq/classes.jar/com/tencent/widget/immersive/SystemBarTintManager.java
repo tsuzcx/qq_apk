@@ -33,7 +33,7 @@ public class SystemBarTintManager
   private static final String NAV_BAR_WIDTH_RES_NAME = "navigation_bar_width";
   private static final String SHOW_NAV_BAR_RES_NAME = "config_showNavigationBar";
   public static boolean mInPortrait;
-  private static int mhasNavBar;
+  private static int mhasNavBar = -1;
   private static String sNavBarOverride;
   private ColorFilter filter;
   private final SystemBarTintManager.SystemBarConfig mConfig;
@@ -50,23 +50,22 @@ public class SystemBarTintManager
       Method localMethod = Class.forName("android.os.SystemProperties").getDeclaredMethod("get", new Class[] { String.class });
       localMethod.setAccessible(true);
       sNavBarOverride = (String)localMethod.invoke(null, new Object[] { "qemu.hw.mainkeys" });
-      mhasNavBar = -1;
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        sNavBarOverride = null;
-      }
+      label54:
+      break label54;
     }
+    sNavBarOverride = null;
   }
   
   @TargetApi(19)
   public SystemBarTintManager(Window paramWindow, boolean paramBoolean)
   {
     ViewGroup localViewGroup = (ViewGroup)paramWindow.getDecorView();
-    if (ImmersiveUtils.isSupporImmersive() == 1) {
+    int i = ImmersiveUtils.isSupporImmersive();
+    boolean bool = true;
+    if (i == 1) {
       this.mStatusBarAvailable = paramBoolean;
     }
     this.mConfig = new SystemBarTintManager.SystemBarConfig(paramWindow, this.mStatusBarAvailable, null);
@@ -74,95 +73,91 @@ public class SystemBarTintManager
       setupStatusBarView(paramWindow, localViewGroup);
     }
     this.mHandler = new Handler(Looper.getMainLooper(), this);
-    if (paramWindow.getContext().getResources().getConfiguration().orientation == 1) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      mInPortrait = paramBoolean;
-      return;
+    if (paramWindow.getContext().getResources().getConfiguration().orientation == 1) {
+      paramBoolean = bool;
+    } else {
+      paramBoolean = false;
     }
+    mInPortrait = paramBoolean;
   }
   
   private static int getInternalDimensionSize(Resources paramResources, String paramString)
   {
-    int i = 0;
-    int j = paramResources.getIdentifier(paramString, "dimen", "android");
-    if (j > 0) {
-      i = paramResources.getDimensionPixelSize(j);
+    int i = paramResources.getIdentifier(paramString, "dimen", "android");
+    if (i > 0) {
+      return paramResources.getDimensionPixelSize(i);
     }
-    return i;
+    return 0;
   }
   
   @TargetApi(14)
   public static int getNavigationBarHeight(Context paramContext)
   {
     Resources localResources = paramContext.getResources();
-    int i = 0;
-    if (Build.VERSION.SDK_INT >= 14) {
-      if (!mInPortrait) {
-        break label32;
-      }
-    }
-    label32:
-    for (paramContext = "navigation_bar_height";; paramContext = "navigation_bar_height_landscape")
+    if (Build.VERSION.SDK_INT >= 14)
     {
-      i = getInternalDimensionSize(localResources, paramContext);
-      return i;
+      if (mInPortrait) {
+        paramContext = "navigation_bar_height";
+      } else {
+        paramContext = "navigation_bar_height_landscape";
+      }
+      return getInternalDimensionSize(localResources, paramContext);
     }
+    return 0;
   }
   
   @TargetApi(14)
   public static boolean hasNavBar(Context paramContext)
   {
-    if (mhasNavBar != -1) {
-      return mhasNavBar == 1;
+    int i = mhasNavBar;
+    if (i != -1) {
+      return i == 1;
     }
     Resources localResources = paramContext.getResources();
-    int i = localResources.getIdentifier("config_showNavigationBar", "bool", "android");
-    boolean bool;
+    i = localResources.getIdentifier("config_showNavigationBar", "bool", "android");
     if (i != 0)
     {
       bool = localResources.getBoolean(i);
-      if ("1".equals(sNavBarOverride)) {
-        bool = false;
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("XPanelContainer", 2, "hasNavbar=" + bool);
-      }
-      if (bool) {}
-      for (mhasNavBar = 1;; mhasNavBar = 0)
+      if (!"1".equals(sNavBarOverride))
       {
-        return bool;
         if (!"0".equals(sNavBarOverride)) {
-          break;
+          break label97;
         }
         bool = true;
-        break;
-        if (Build.VERSION.SDK_INT < 14) {
-          break label149;
-        }
-        if (!ViewConfiguration.get(paramContext).hasPermanentMenuKey())
-        {
-          bool = true;
-          break;
-        }
-        bool = false;
-        break;
+        break label97;
       }
-      label149:
-      bool = false;
     }
+    else if (Build.VERSION.SDK_INT >= 14)
+    {
+      bool = ViewConfiguration.get(paramContext).hasPermanentMenuKey() ^ true;
+      break label97;
+    }
+    boolean bool = false;
+    label97:
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("hasNavbar=");
+      paramContext.append(bool);
+      QLog.d("XPanelContainer", 2, paramContext.toString());
+    }
+    if (bool)
+    {
+      mhasNavBar = 1;
+      return bool;
+    }
+    mhasNavBar = 0;
+    return bool;
   }
   
   public static void setLayerType(View paramView)
   {
-    if (paramView == null) {}
-    while (Build.VERSION.SDK_INT <= 10) {
+    if (paramView == null) {
       return;
     }
-    paramView.setLayerType(0, null);
+    if (Build.VERSION.SDK_INT > 10) {
+      paramView.setLayerType(0, null);
+    }
   }
   
   private void setupStatusBarView(Window paramWindow, ViewGroup paramViewGroup)
@@ -174,19 +169,15 @@ public class SystemBarTintManager
     try
     {
       setLayerType(this.mStatusBarTintView);
-      this.mStatusBarTintView.setVisibility(8);
-      paramViewGroup.addView(this.mStatusBarTintView);
-      return;
     }
     catch (Exception paramWindow)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("setupStatusBarView", 2, paramWindow.toString());
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("setupStatusBarView", 2, paramWindow.toString());
       }
     }
+    this.mStatusBarTintView.setVisibility(8);
+    paramViewGroup.addView(this.mStatusBarTintView);
   }
   
   public SystemBarTintManager.SystemBarConfig getConfig()
@@ -196,24 +187,31 @@ public class SystemBarTintManager
   
   public boolean handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("status", 2, "SystemBarTintManager=" + paramMessage.what);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("SystemBarTintManager=");
+      localStringBuilder.append(paramMessage.what);
+      QLog.d("status", 2, localStringBuilder.toString());
     }
     if (this.mStatusBarTintView == null) {
       return false;
     }
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 0)
     {
-    default: 
-      return false;
-    case 0: 
-      this.mStatusBarTintView.setVisibility(0);
-      return false;
-    case 1: 
+      if (i != 1)
+      {
+        if (i != 2) {
+          return false;
+        }
+        this.mStatusBarTintView.setVisibility(8);
+        return false;
+      }
       this.mStatusBarTintView.setVisibility(4);
       return false;
     }
-    this.mStatusBarTintView.setVisibility(8);
+    this.mStatusBarTintView.setVisibility(0);
     return false;
   }
   
@@ -271,23 +269,25 @@ public class SystemBarTintManager
   
   public void setStatusBarTintEnabled(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SystemBarTintManager", 2, "setStatusBarTintEnabled enabled = " + paramBoolean);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setStatusBarTintEnabled enabled = ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.d("SystemBarTintManager", 2, ((StringBuilder)localObject).toString());
     }
     this.mStatusBarTintEnabled = paramBoolean;
-    View localView;
     if (this.mStatusBarAvailable)
     {
-      localView = this.mStatusBarTintView;
-      if (!paramBoolean) {
-        break label62;
+      localObject = this.mStatusBarTintView;
+      int i;
+      if (paramBoolean) {
+        i = 0;
+      } else {
+        i = 4;
       }
-    }
-    label62:
-    for (int i = 0;; i = 4)
-    {
-      localView.setVisibility(i);
-      return;
+      ((View)localObject).setVisibility(i);
     }
   }
   
@@ -304,21 +304,29 @@ public class SystemBarTintManager
   
   public void setStatusBarVisible(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("status", 2, "setStatusBarVisible=" + paramInt1);
-    }
-    if (paramInt1 == 0) {}
-    for (this.mStatusBarTintEnabled = true;; this.mStatusBarTintEnabled = false)
+    if (QLog.isColorLevel())
     {
-      this.mHandler.sendEmptyMessageDelayed(paramInt1, paramInt2);
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setStatusBarVisible=");
+      localStringBuilder.append(paramInt1);
+      QLog.d("status", 2, localStringBuilder.toString());
     }
+    if (paramInt1 == 0) {
+      this.mStatusBarTintEnabled = true;
+    } else {
+      this.mStatusBarTintEnabled = false;
+    }
+    this.mHandler.sendEmptyMessageDelayed(paramInt1, paramInt2);
   }
   
   public void setStatusBarVisible(boolean paramBoolean, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("status", 2, "setStatusBarVisible=" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setStatusBarVisible=");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("status", 2, localStringBuilder.toString());
     }
     this.mStatusBarTintEnabled = paramBoolean;
     if (paramBoolean)
@@ -351,7 +359,7 @@ public class SystemBarTintManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.immersive.SystemBarTintManager
  * JD-Core Version:    0.7.0.1
  */

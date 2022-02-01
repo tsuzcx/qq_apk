@@ -83,70 +83,65 @@ public class QQStoryWatcherListAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Object localObject1;
-    int i;
-    label42:
-    QQUserUIItem localQQUserUIItem;
-    Object localObject2;
     if (paramView == null)
     {
       localObject1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-      if (this.jdField_a_of_type_Int == -1)
-      {
-        i = 2131562000;
-        localObject1 = new BaseViewHolder(((LayoutInflater)localObject1).inflate(i, null));
-        localQQUserUIItem = (QQUserUIItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-        localObject2 = (TextView)((BaseViewHolder)localObject1).a(2131372288);
-        String str = localQQUserUIItem.getUserIconUrl();
-        if (TextUtils.isEmpty(str)) {
-          break label286;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.w("zivonchen", 2, "fillFriendsData userIconUrl = " + str);
-        }
-        PlayModeUtils.a(this.jdField_a_of_type_AndroidContentContext.getResources(), (TextView)localObject2, str, 13.0F, 2.0F);
-        label133:
-        ((TextView)localObject2).setText(PlayModeUtils.a(localQQUserUIItem));
-        localObject2 = (ImageView)((BaseViewHolder)localObject1).a(2131368336);
-        if ((!localQQUserUIItem.isVip) || (!HttpUtil.isValidUrl(localQQUserUIItem.headUrl))) {
-          break label304;
-        }
-        UIUtils.a((ImageView)localObject2, localQQUserUIItem.headUrl, 38, 38, 1);
+      int j = this.jdField_a_of_type_Int;
+      int i = j;
+      if (j == -1) {
+        i = 2131561834;
       }
+      localObject1 = new BaseViewHolder(((LayoutInflater)localObject1).inflate(i, null));
     }
-    for (;;)
+    else
     {
-      ((BaseViewHolder)localObject1).a = localQQUserUIItem;
-      if (this.jdField_a_of_type_AndroidViewView$OnTouchListener != null) {
-        ((BaseViewHolder)localObject1).a().setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      }
-      ((BaseViewHolder)localObject1).a().setOnClickListener((View.OnClickListener)localObject1);
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener != null) {
-        ((BaseViewHolder)localObject1).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener);
-      }
-      localObject1 = ((BaseViewHolder)localObject1).a();
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localObject1;
-      i = this.jdField_a_of_type_Int;
-      break;
       localObject1 = (BaseViewHolder)paramView.getTag();
-      break label42;
-      label286:
-      ((TextView)localObject2).setCompoundDrawablePadding(0);
-      ((TextView)localObject2).setCompoundDrawables(null, null, null, null);
-      break label133;
-      label304:
-      if (!TextUtils.isEmpty(localQQUserUIItem.qq)) {
-        PlayModeUtils.a((ImageView)localObject2, localQQUserUIItem.qq);
-      } else {
-        ((ImageView)localObject2).setImageDrawable(ImageUtil.d());
-      }
     }
+    Object localObject2 = (QQUserUIItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    Object localObject3 = (TextView)((BaseViewHolder)localObject1).a(2131371877);
+    String str = ((QQUserUIItem)localObject2).getUserIconUrl();
+    if (!TextUtils.isEmpty(str))
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("fillFriendsData userIconUrl = ");
+        localStringBuilder.append(str);
+        QLog.w("zivonchen", 2, localStringBuilder.toString());
+      }
+      PlayModeUtils.a(this.jdField_a_of_type_AndroidContentContext.getResources(), (TextView)localObject3, str, 13.0F, 2.0F);
+    }
+    else
+    {
+      ((TextView)localObject3).setCompoundDrawablePadding(0);
+      ((TextView)localObject3).setCompoundDrawables(null, null, null, null);
+    }
+    ((TextView)localObject3).setText(PlayModeUtils.a((QQUserUIItem)localObject2));
+    localObject3 = (ImageView)((BaseViewHolder)localObject1).a(2131368087);
+    if ((((QQUserUIItem)localObject2).isVip) && (HttpUtil.isValidUrl(((QQUserUIItem)localObject2).headUrl))) {
+      UIUtils.a((ImageView)localObject3, ((QQUserUIItem)localObject2).headUrl, 38, 38, 1);
+    } else if (!TextUtils.isEmpty(((QQUserUIItem)localObject2).qq)) {
+      PlayModeUtils.a((ImageView)localObject3, ((QQUserUIItem)localObject2).qq);
+    } else {
+      ((ImageView)localObject3).setImageDrawable(ImageUtil.f());
+    }
+    ((BaseViewHolder)localObject1).a = localObject2;
+    if (this.jdField_a_of_type_AndroidViewView$OnTouchListener != null) {
+      ((BaseViewHolder)localObject1).a().setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
+    }
+    ((BaseViewHolder)localObject1).a().setOnClickListener((View.OnClickListener)localObject1);
+    localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener;
+    if (localObject2 != null) {
+      ((BaseViewHolder)localObject1).a((ChildViewClickListener)localObject2);
+    }
+    Object localObject1 = ((BaseViewHolder)localObject1).a();
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.watcherlist.QQStoryWatcherListAdapter
  * JD-Core Version:    0.7.0.1
  */

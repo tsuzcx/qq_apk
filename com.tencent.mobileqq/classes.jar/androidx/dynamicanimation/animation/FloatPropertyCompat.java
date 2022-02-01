@@ -1,21 +1,30 @@
 package androidx.dynamicanimation.animation;
 
+import android.util.FloatProperty;
+import androidx.annotation.RequiresApi;
+
 public abstract class FloatPropertyCompat<T>
 {
-  final String a;
+  final String mPropertyName;
   
   public FloatPropertyCompat(String paramString)
   {
-    this.a = paramString;
+    this.mPropertyName = paramString;
   }
   
-  public abstract float a(T paramT);
+  @RequiresApi(24)
+  public static <T> FloatPropertyCompat<T> createFloatPropertyCompat(FloatProperty<T> paramFloatProperty)
+  {
+    return new FloatPropertyCompat.1(paramFloatProperty.getName(), paramFloatProperty);
+  }
   
-  public abstract void a(T paramT, float paramFloat);
+  public abstract float getValue(T paramT);
+  
+  public abstract void setValue(T paramT, float paramFloat);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.dynamicanimation.animation.FloatPropertyCompat
  * JD-Core Version:    0.7.0.1
  */

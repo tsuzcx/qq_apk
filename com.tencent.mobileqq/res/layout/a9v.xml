@@ -2,7 +2,7 @@
 <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <RelativeLayout android:id="@id/ic3" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/duw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/b9b" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" app:view_height_weight="0.5625" app:view_width_weight="1.0" />
+        <com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView android:id="@id/duw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/b9b" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" app:view_height_weight="0.5625" app:view_width_weight="1.0" />
         <FrameLayout android:id="@id/e5w" android:background="@drawable/td" android:layout_width="fill_parent" android:layout_height="95.0dip" />
         <ImageView android:id="@id/dwq" android:layout_width="62.0dip" android:layout_height="62.0dip" android:src="@drawable/duf" android:layout_centerInParent="true" />
         <TextView android:textSize="18.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/kbs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="11.0dip" android:layout_marginTop="7.0dip" android:layout_marginRight="11.0dip" android:text="" android:maxLines="2" />

@@ -17,13 +17,14 @@ class AdControlView$2
   public void onAnimationEnd(Animator paramAnimator)
   {
     super.onAnimationEnd(paramAnimator);
-    this.a.b = false;
-    this.a.setVisibility(4);
+    paramAnimator = this.a;
+    paramAnimator.b = false;
+    paramAnimator.setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.view.AdControlView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -45,31 +45,52 @@ public class LaunchParam
     if (TextUtils.isEmpty(paramString)) {
       return paramString;
     }
-    String str = "";
     int i = paramString.indexOf("?");
-    Object localObject = paramString;
+    String str = "";
+    Object localObject1;
     if (i != -1)
     {
-      localObject = paramString.substring(0, i);
-      str = paramString.substring(i + 1, paramString.length());
+      localObject1 = paramString.substring(0, i);
+      localObject2 = paramString.substring(i + 1, paramString.length());
+      paramString = (String)localObject1;
+      localObject1 = localObject2;
     }
-    paramString = (String)localObject;
-    if (!((String)localObject).toLowerCase().endsWith(".html")) {
-      paramString = (String)localObject + ".html";
+    else
+    {
+      localObject1 = "";
     }
-    localObject = new StringBuilder().append(paramString);
-    if (TextUtils.isEmpty(str)) {}
-    for (paramString = "";; paramString = "?" + str) {
-      return paramString;
+    Object localObject2 = paramString;
+    if (!paramString.toLowerCase().endsWith(".html"))
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append(".html");
+      localObject2 = ((StringBuilder)localObject2).toString();
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject2);
+    if (TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      paramString = str;
+    }
+    else
+    {
+      paramString = new StringBuilder();
+      paramString.append("?");
+      paramString.append((String)localObject1);
+      paramString = paramString.toString();
+    }
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   public int getReqAction()
   {
-    if (this.scene == 1207) {
+    int i = this.scene;
+    if (i == 1207) {
       return 1;
     }
-    if (this.scene == 1208) {
+    if (i == 1208) {
       return 2;
     }
     return 0;
@@ -77,40 +98,45 @@ public class LaunchParam
   
   public String getScheme()
   {
-    Object localObject2 = "mqqapi://microapp/open?mini_appid=" + this.miniAppId;
-    Object localObject1 = localObject2;
-    if (!TextUtils.isEmpty(this.entryPath)) {
-      localObject1 = (String)localObject2 + "&entryPath=" + this.entryPath;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("mqqapi://microapp/open?mini_appid=");
+    ((StringBuilder)localObject1).append(this.miniAppId);
+    Object localObject2 = ((StringBuilder)localObject1).toString();
+    localObject1 = localObject2;
+    if (!TextUtils.isEmpty(this.entryPath))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append((String)localObject2);
+      ((StringBuilder)localObject1).append("&entryPath=");
+      ((StringBuilder)localObject1).append(this.entryPath);
+      localObject1 = ((StringBuilder)localObject1).toString();
     }
     localObject2 = localObject1;
-    if (!TextUtils.isEmpty(this.navigateExtData)) {
-      localObject2 = (String)localObject1 + "&extraData=" + this.navigateExtData;
+    if (!TextUtils.isEmpty(this.navigateExtData))
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("&extraData=");
+      ((StringBuilder)localObject2).append(this.navigateExtData);
+      localObject2 = ((StringBuilder)localObject2).toString();
     }
     return localObject2;
   }
   
   public boolean isValid()
   {
-    switch (this.scene)
+    int i = this.scene;
+    if ((i != 1207) && (i != 1208))
     {
-    default: 
-      if (!TextUtils.isEmpty(this.miniAppId)) {
-        break;
+      if (i != 1214) {
+        return !TextUtils.isEmpty(this.miniAppId);
       }
-    case 1207: 
-    case 1208: 
-    case 1214: 
-      do
-      {
-        do
-        {
-          return false;
-        } while (TextUtils.isEmpty(this.extraKey));
-        return true;
-      } while ((TextUtils.isEmpty(this.miniAppId)) || (TextUtils.isEmpty(this.fromMiniAppId)));
-      return true;
+      if (!TextUtils.isEmpty(this.miniAppId)) {
+        return !TextUtils.isEmpty(this.fromMiniAppId);
+      }
+      return false;
     }
-    return true;
+    return !TextUtils.isEmpty(this.extraKey);
   }
   
   public void standardize()
@@ -120,12 +146,31 @@ public class LaunchParam
   
   public String toString()
   {
-    return "LaunchParam{scene=" + this.scene + ", miniAppId='" + this.miniAppId + '\'' + ", extraKey='" + this.extraKey + '\'' + ", entryPath='" + this.entryPath + '\'' + ", navigateExtData='" + this.navigateExtData + '\'' + ", fromMiniAppId='" + this.fromMiniAppId + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LaunchParam{scene=");
+    localStringBuilder.append(this.scene);
+    localStringBuilder.append(", miniAppId='");
+    localStringBuilder.append(this.miniAppId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", extraKey='");
+    localStringBuilder.append(this.extraKey);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", entryPath='");
+    localStringBuilder.append(this.entryPath);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", navigateExtData='");
+    localStringBuilder.append(this.navigateExtData);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", fromMiniAppId='");
+    localStringBuilder.append(this.fromMiniAppId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.sdk.LaunchParam
  * JD-Core Version:    0.7.0.1
  */

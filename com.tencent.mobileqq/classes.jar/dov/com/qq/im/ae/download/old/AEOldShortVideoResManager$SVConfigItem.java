@@ -26,20 +26,68 @@ public class AEOldShortVideoResManager$SVConfigItem
   
   public String getSignature()
   {
-    if ((VideoEnvironment64BitUtils.checkIs64bit()) && (check64BitReady())) {
-      return this.arm64v8a_md5 + '_' + this.versionCode;
+    if ((VideoEnvironment64BitUtils.checkIs64bit()) && (check64BitReady()))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.arm64v8a_md5);
+      localStringBuilder.append('_');
+      localStringBuilder.append(this.versionCode);
+      return localStringBuilder.toString();
     }
-    return this.armv7a_md5 + '_' + this.versionCode;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.armv7a_md5);
+    localStringBuilder.append('_');
+    localStringBuilder.append(this.versionCode);
+    return localStringBuilder.toString();
   }
   
   public String toString()
   {
-    return "SVConfigItem{name='" + this.name + '\'' + ", arm_url='" + this.arm_url + '\'' + ", armv7a_url='" + this.armv7a_url + '\'' + ", x86_url='" + this.x86_url + '\'' + ", arm64v8a_url='" + this.arm64v8a_url + '\'' + ", arm_md5='" + this.arm_md5 + '\'' + ", armv7a_md5='" + this.armv7a_md5 + '\'' + ", x86_md5='" + this.x86_md5 + '\'' + ", arm64v8a_md5='" + this.arm64v8a_md5 + '\'' + ", versionCode=" + this.versionCode + ", predownload=" + this.predownload + ", extend1='" + this.extend1 + '\'' + ", extend2='" + this.extend2 + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SVConfigItem{name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", arm_url='");
+    localStringBuilder.append(this.arm_url);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", armv7a_url='");
+    localStringBuilder.append(this.armv7a_url);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", x86_url='");
+    localStringBuilder.append(this.x86_url);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", arm64v8a_url='");
+    localStringBuilder.append(this.arm64v8a_url);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", arm_md5='");
+    localStringBuilder.append(this.arm_md5);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", armv7a_md5='");
+    localStringBuilder.append(this.armv7a_md5);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", x86_md5='");
+    localStringBuilder.append(this.x86_md5);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", arm64v8a_md5='");
+    localStringBuilder.append(this.arm64v8a_md5);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", versionCode=");
+    localStringBuilder.append(this.versionCode);
+    localStringBuilder.append(", predownload=");
+    localStringBuilder.append(this.predownload);
+    localStringBuilder.append(", extend1='");
+    localStringBuilder.append(this.extend1);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", extend2='");
+    localStringBuilder.append(this.extend2);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.download.old.AEOldShortVideoResManager.SVConfigItem
  * JD-Core Version:    0.7.0.1
  */

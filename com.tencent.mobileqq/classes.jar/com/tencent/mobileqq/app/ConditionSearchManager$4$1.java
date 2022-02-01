@@ -10,63 +10,80 @@ class ConditionSearchManager$4$1
   
   public void run()
   {
-    try
+    label366:
+    for (;;)
     {
-      if (this.a.this$0.jdField_a_of_type_ComTencentMobileqqDataCard != null)
+      try
       {
-        Card localCard = this.a.this$0.jdField_a_of_type_ComTencentMobileqqDataCard;
-        Object localObject;
-        String str;
-        if (localCard.strLocationCodes != null)
+        if (this.a.this$0.jdField_a_of_type_ComTencentMobileqqDataCard != null)
         {
-          localObject = localCard.strLocationCodes.split("-");
-          if (QLog.isColorLevel()) {
-            QLog.d("ConditionSearch.Manager", 2, "parse location codes: " + localCard.strLocationCodes);
-          }
-          str = this.a.this$0.a((String[])localObject);
-          localObject = str;
-          if (str.equals("不限")) {
-            localObject = "";
-          }
-          localCard.strLocationDesc = ((String)localObject);
-        }
-        if (localCard.strHometownCodes != null)
-        {
-          String[] arrayOfString = localCard.strHometownCodes.split("-");
-          if (QLog.isColorLevel()) {
-            QLog.d("ConditionSearch.Manager", 2, "parse hometown codes: " + localCard.strHometownCodes);
-          }
-          str = this.a.this$0.a(arrayOfString);
-          localObject = str;
-          if (str.equals("不限")) {
-            localObject = "";
-          }
-          localCard.strHometownDesc = ((String)localObject);
-          localObject = this.a.this$0.a(arrayOfString);
-          if ((localObject != null) && (localObject.length == 4))
+          Card localCard = this.a.this$0.jdField_a_of_type_ComTencentMobileqqDataCard;
+          Object localObject1 = localCard.strLocationCodes;
+          String str = "";
+          Object localObject2;
+          if (localObject1 != null)
           {
-            localCard.strHometownCountry = localObject[0];
-            localCard.strHometownProvince = localObject[1];
-            localCard.strHometownCity = localObject[2];
+            localObject1 = localCard.strLocationCodes.split("-");
+            if (QLog.isColorLevel())
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("parse location codes: ");
+              ((StringBuilder)localObject2).append(localCard.strLocationCodes);
+              QLog.d("ConditionSearch.Manager", 2, ((StringBuilder)localObject2).toString());
+            }
+            localObject2 = this.a.this$0.a((String[])localObject1);
+            localObject1 = localObject2;
+            if (((String)localObject2).equals("不限")) {
+              localObject1 = "";
+            }
+            localCard.strLocationDesc = ((String)localObject1);
           }
+          if (localCard.strHometownCodes != null)
+          {
+            localObject2 = localCard.strHometownCodes.split("-");
+            if (QLog.isColorLevel())
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("parse hometown codes: ");
+              ((StringBuilder)localObject1).append(localCard.strHometownCodes);
+              QLog.d("ConditionSearch.Manager", 2, ((StringBuilder)localObject1).toString());
+            }
+            localObject1 = this.a.this$0.a((String[])localObject2);
+            if (!((String)localObject1).equals("不限")) {
+              break label366;
+            }
+            localObject1 = str;
+            localCard.strHometownDesc = ((String)localObject1);
+            localObject1 = this.a.this$0.a((String[])localObject2);
+            if ((localObject1 != null) && (localObject1.length == 4))
+            {
+              localCard.strHometownCountry = localObject1[0];
+              localCard.strHometownProvince = localObject1[1];
+              localCard.strHometownCity = localObject1[2];
+            }
+          }
+          ((FriendsManager)ConditionSearchManager.a(this.a.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER)).a(localCard);
+          ((CardHandler)ConditionSearchManager.a(this.a.this$0).getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).notifyUI(43, true, localCard);
         }
-        ((FriendsManager)ConditionSearchManager.a(this.a.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER)).a(localCard);
-        ((CardHandler)ConditionSearchManager.a(this.a.this$0).getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).notifyUI(43, true, localCard);
+        else
+        {
+          this.a.this$0.d = false;
+          this.a.this$0.jdField_a_of_type_ComTencentMobileqqDataCard = null;
+          this.a.this$0.b(this.a.this$0.jdField_a_of_type_JavaLangObject);
+          return;
+        }
       }
-      this.a.this$0.d = false;
-      this.a.this$0.jdField_a_of_type_ComTencentMobileqqDataCard = null;
-      this.a.this$0.b(this.a.this$0.jdField_a_of_type_JavaLangObject);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("ConditionSearch.Manager", 1, "pendCardParseRequest fail!", localException);
+      catch (Exception localException)
+      {
+        QLog.e("ConditionSearch.Manager", 1, "pendCardParseRequest fail!", localException);
+        return;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConditionSearchManager.4.1
  * JD-Core Version:    0.7.0.1
  */

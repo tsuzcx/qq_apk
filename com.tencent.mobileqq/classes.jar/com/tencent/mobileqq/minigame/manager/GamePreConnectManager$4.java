@@ -13,18 +13,31 @@ final class GamePreConnectManager$4
   
   public void onFailure(Call paramCall, IOException paramIOException)
   {
-    GameLog.getInstance().e("GamePreConnectManager", "pre-connect onFailure: " + this.val$url);
+    paramCall = GameLog.getInstance();
+    paramIOException = new StringBuilder();
+    paramIOException.append("pre-connect onFailure: ");
+    paramIOException.append(this.val$url);
+    paramCall.e("GamePreConnectManager", paramIOException.toString());
   }
   
   public void onResponse(Call paramCall, Response paramResponse)
   {
     long l = System.currentTimeMillis();
-    GameLog.getInstance().i("GamePreConnectManager", "onResponse [timecost: " + (l - this.val$begin) + "] [url: " + this.val$url + "] [code: " + paramResponse.code() + "]");
+    paramCall = GameLog.getInstance();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onResponse [timecost: ");
+    localStringBuilder.append(l - this.val$begin);
+    localStringBuilder.append("] [url: ");
+    localStringBuilder.append(this.val$url);
+    localStringBuilder.append("] [code: ");
+    localStringBuilder.append(paramResponse.code());
+    localStringBuilder.append("]");
+    paramCall.i("GamePreConnectManager", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.GamePreConnectManager.4
  * JD-Core Version:    0.7.0.1
  */

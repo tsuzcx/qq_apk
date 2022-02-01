@@ -15,25 +15,24 @@ class MediaPlayerManager$3
     if (paramMediaPlayer != null) {
       paramMediaPlayer.release();
     }
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("[SilkPlayer]mFinishListener, onCompletion , mp == null ? ");
-      if (paramMediaPlayer != null) {
-        break label109;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[SilkPlayer]mFinishListener, onCompletion , mp == null ? ");
+      boolean bool;
+      if (paramMediaPlayer == null) {
+        bool = true;
+      } else {
+        bool = false;
       }
+      localStringBuilder.append(bool);
+      QLog.i("MediaPlayerManager", 2, localStringBuilder.toString());
     }
-    label109:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.i("MediaPlayerManager", 2, bool);
-      com.tencent.mobileqq.utils.AudioUtil.a = null;
-      if ((MediaPlayerManager.a(this.a) != null) && ((MediaPlayerManager.a(this.a) instanceof MessageForPtt))) {
-        ((MessageForPtt)MediaPlayerManager.a(this.a)).playProgress = 0.0F;
-      }
-      if ((MediaPlayerManager.a(this.a) == null) || (!MediaPlayerManager.a(this.a))) {
-        break;
-      }
+    com.tencent.mobileqq.utils.AudioUtil.a = null;
+    if ((MediaPlayerManager.a(this.a) != null) && ((MediaPlayerManager.a(this.a) instanceof MessageForPtt))) {
+      ((MessageForPtt)MediaPlayerManager.a(this.a)).playProgress = 0.0F;
+    }
+    if ((MediaPlayerManager.a(this.a) != null) && (MediaPlayerManager.a(this.a))) {
       return;
     }
     MediaPlayerManager.a(this.a, null);
@@ -42,7 +41,7 @@ class MediaPlayerManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.MediaPlayerManager.3
  * JD-Core Version:    0.7.0.1
  */

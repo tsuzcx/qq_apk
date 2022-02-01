@@ -50,6 +50,7 @@ public class WebBundle$WebBundleInterface
   public void setWebBundleOption(int paramInt)
   {
     Object localObject = (IStateHolder)this.holderRef.get();
+    boolean bool = true;
     if (localObject != null) {
       WebBundleManager.getInstance(WebBundle.access$000(this.this$0)).log(3, "WebBundle.WebBundle", new String[] { "[@", String.valueOf(localObject.hashCode()), "][setWebBundleOption] useWebBundle = ", String.valueOf(paramInt) });
     }
@@ -58,20 +59,15 @@ public class WebBundle$WebBundleInterface
     {
       localObject = ((WebBundleConfig)localObject).getOptionListener();
       if (paramInt == 0) {
-        break label106;
+        bool = false;
       }
-    }
-    label106:
-    for (boolean bool = true;; bool = false)
-    {
       ((WebBundleH5OptionListner)localObject).enableWebBundle(bool);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.webbundle.sdk.WebBundle.WebBundleInterface
  * JD-Core Version:    0.7.0.1
  */

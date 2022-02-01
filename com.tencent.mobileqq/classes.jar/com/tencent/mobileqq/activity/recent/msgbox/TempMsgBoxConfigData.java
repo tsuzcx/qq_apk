@@ -14,8 +14,6 @@ public class TempMsgBoxConfigData
   
   public static TempMsgBoxConfigData a(String paramString)
   {
-    boolean bool = true;
-    int i = 0;
     if (paramString == null) {
       return null;
     }
@@ -25,7 +23,10 @@ public class TempMsgBoxConfigData
       {
         TempMsgBoxConfigData localTempMsgBoxConfigData = new TempMsgBoxConfigData();
         paramString = new JSONObject(paramString);
-        if (paramString.optInt("msg_box_switch", 0) == 1)
+        int i = 0;
+        int j = paramString.optInt("msg_box_switch", 0);
+        bool = true;
+        if (j == 1)
         {
           localTempMsgBoxConfigData.jdField_a_of_type_Boolean = bool;
           paramString = paramString.optJSONArray("msg_box_types");
@@ -46,10 +47,10 @@ public class TempMsgBoxConfigData
       }
       catch (Exception paramString)
       {
-        QLog.e("TempMsgBoxConfigProcessor", 2, "TempMsgBoxConfigData parse error", paramString);
+        QLog.e("TempMsgBoxConfigData", 2, "TempMsgBoxConfigData parse error", paramString);
         return null;
       }
-      bool = false;
+      boolean bool = false;
     }
   }
   
@@ -65,7 +66,7 @@ public class TempMsgBoxConfigData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msgbox.TempMsgBoxConfigData
  * JD-Core Version:    0.7.0.1
  */

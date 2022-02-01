@@ -21,18 +21,28 @@ public class MiniAppLauncher
     if (QLog.isColorLevel()) {
       QLog.d("MiniAppLauncher", 2, new Object[] { "createApp type=", Integer.valueOf(paramInt) });
     }
-    switch (paramInt)
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramInt != 0)
     {
-    default: 
-      QLog.e("MiniAppLauncher", 1, "createApp error. unknown appType");
-    case 0: 
-    case 1: 
-    case 2: 
-    case 4: 
-    case 5: 
-      return null;
+      localObject1 = localObject2;
+      if (paramInt != 1)
+      {
+        localObject1 = localObject2;
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if ((paramInt != 4) && (paramInt != 5)) {
+              QLog.e("MiniAppLauncher", 1, "createApp error. unknown appType");
+            }
+            return null;
+          }
+          localObject1 = new QGameApp(paramMiniAppActivity, paramString, paramInt);
+        }
+      }
     }
-    return new QGameApp(paramMiniAppActivity, paramString, paramInt);
+    return localObject1;
   }
   
   void a(IApp paramIApp, MiniAppOptions paramMiniAppOptions)
@@ -54,7 +64,7 @@ public class MiniAppLauncher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.miniapp.MiniAppLauncher
  * JD-Core Version:    0.7.0.1
  */

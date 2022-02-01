@@ -24,13 +24,14 @@ public class RichProto$RichProtoResp$C2CPicUpResp
     localStringBuilder.append(this.blockSize);
     localStringBuilder.append(" netChg:");
     localStringBuilder.append(this.networkChange);
-    localStringBuilder.append(" startOffset:").append(this.startOffset);
+    localStringBuilder.append(" startOffset:");
+    localStringBuilder.append(this.startOffset);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp.C2CPicUpResp
  * JD-Core Version:    0.7.0.1
  */

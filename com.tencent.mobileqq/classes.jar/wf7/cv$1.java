@@ -17,8 +17,9 @@ class cv$1
       if (parambn.e(localct.af()))
       {
         localct.bd();
-        if (this.iy != null) {
-          this.iy.remove(localct);
+        parambn = this.iy;
+        if (parambn != null) {
+          parambn.remove(localct);
         }
       }
     }
@@ -27,7 +28,7 @@ class cv$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.cv.1
  * JD-Core Version:    0.7.0.1
  */

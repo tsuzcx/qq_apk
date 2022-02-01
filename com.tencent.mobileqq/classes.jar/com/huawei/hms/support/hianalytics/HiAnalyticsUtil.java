@@ -20,7 +20,18 @@ public class HiAnalyticsUtil
   private String a(Context paramContext, String paramString)
   {
     String str = paramContext.getPackageName();
-    return "01|" + "" + "|" + str + "|" + Util.getAppId(paramContext) + "|" + 50000301 + "|" + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("01|");
+    localStringBuilder.append("");
+    localStringBuilder.append("|");
+    localStringBuilder.append(str);
+    localStringBuilder.append("|");
+    localStringBuilder.append(Util.getAppId(paramContext));
+    localStringBuilder.append("|");
+    localStringBuilder.append(50200300);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   public static HiAnalyticsUtil getInstance()
@@ -52,7 +63,7 @@ public class HiAnalyticsUtil
     localHashMap.put("result", String.valueOf(paramResponseHeader.getErrorCode()));
     localHashMap.put("errorReason", paramResponseHeader.getErrorReason());
     localHashMap.put("callTime", String.valueOf(System.currentTimeMillis()));
-    localHashMap.put("baseVersion", "5.0.0.301");
+    localHashMap.put("baseVersion", "5.2.0.300");
     return localHashMap;
   }
   
@@ -78,7 +89,7 @@ public class HiAnalyticsUtil
     localHashMap.put("result", String.valueOf(paramResponseHeader.getErrorCode()));
     localHashMap.put("errorReason", paramResponseHeader.getErrorReason());
     localHashMap.put("callTime", String.valueOf(System.currentTimeMillis()));
-    localHashMap.put("baseVersion", "5.0.0.301");
+    localHashMap.put("baseVersion", "5.2.0.300");
     return localHashMap;
   }
   
@@ -102,7 +113,7 @@ public class HiAnalyticsUtil
       localHashMap.put("service", localObject1);
       localHashMap.put("apiName", localObject2);
       localHashMap.put("package", paramContext.getPackageName());
-      localHashMap.put("version", "5.0.0.301");
+      localHashMap.put("version", "5.2.0.300");
       localHashMap.put("callTime", String.valueOf(System.currentTimeMillis()));
     }
     return localHashMap;
@@ -120,7 +131,7 @@ public class HiAnalyticsUtil
     localHashMap.put("apiName", paramRequestHeader.getApiName());
     localHashMap.put("package", paramRequestHeader.getPkgName());
     localHashMap.put("callTime", String.valueOf(System.currentTimeMillis()));
-    localHashMap.put("baseVersion", "5.0.0.301");
+    localHashMap.put("baseVersion", "5.2.0.300");
     return localHashMap;
   }
   
@@ -143,7 +154,7 @@ public class HiAnalyticsUtil
     }
     localHashMap.put("package", paramRequestHeader.getPkgName());
     localHashMap.put("callTime", String.valueOf(System.currentTimeMillis()));
-    localHashMap.put("baseVersion", "5.0.0.301");
+    localHashMap.put("baseVersion", "5.2.0.300");
     return localHashMap;
   }
   
@@ -192,7 +203,7 @@ public class HiAnalyticsUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.support.hianalytics.HiAnalyticsUtil
  * JD-Core Version:    0.7.0.1
  */

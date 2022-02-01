@@ -28,7 +28,7 @@ public class ApkgManager
   public static final String MINI_GAME_PERSISTENT_SP_NAME = "persistent_debug_version_";
   public static final String SUFFIX_WXAPKG = ".qapkg";
   private static final String TAG = "ApkgManager";
-  public static volatile long downloadDuration = 0L;
+  public static volatile long downloadDuration;
   private static volatile ApkgManager sInstance;
   
   private void deleteOldPkg(MiniAppInfo paramMiniAppInfo, String paramString)
@@ -50,142 +50,167 @@ public class ApkgManager
   
   private void downloadApkgByResumableDownloader(MiniAppInfo paramMiniAppInfo, boolean paramBoolean, ApkgManager.OnGetApkgInfoListener paramOnGetApkgInfoListener, String paramString)
   {
-    String str;
-    Object localObject2;
-    Object localObject1;
-    Object localObject3;
-    if (paramMiniAppInfo.firstPage != null)
+    Object localObject2 = paramMiniAppInfo.firstPage;
+    Object localObject1 = null;
+    Object localObject3 = null;
+    if (localObject2 != null)
     {
-      str = paramMiniAppInfo.firstPage.subPkgName;
-      localObject2 = paramMiniAppInfo.subpkgs.iterator();
-      localObject1 = null;
-      if (((Iterator)localObject2).hasNext())
+      localObject2 = paramMiniAppInfo.firstPage.subPkgName;
+      localObject4 = paramMiniAppInfo.subpkgs.iterator();
+      for (localObject1 = null; ((Iterator)localObject4).hasNext(); localObject1 = paramMiniAppInfo.firstPage.pagePath)
       {
-        localObject3 = (SubPkgInfo)((Iterator)localObject2).next();
-        if ((localObject3 != null) && (((SubPkgInfo)localObject3).subPkgName != null) && (((SubPkgInfo)localObject3).subPkgName.equals(str))) {
-          if (((SubPkgInfo)localObject3).independent == 1)
-          {
-            localObject3 = ((SubPkgInfo)localObject3).downloadUrl;
-            localObject2 = localObject1;
-            localObject1 = localObject3;
-          }
+        label40:
+        SubPkgInfo localSubPkgInfo = (SubPkgInfo)((Iterator)localObject4).next();
+        if ((localSubPkgInfo == null) || (localSubPkgInfo.subPkgName == null) || (!localSubPkgInfo.subPkgName.equals(localObject2))) {
+          break label40;
+        }
+        if (localSubPkgInfo.independent == 1)
+        {
+          localObject3 = localSubPkgInfo.downloadUrl;
+          break label122;
         }
       }
-    }
-    for (;;)
-    {
-      localObject3 = localObject1;
-      if (localObject1 == null) {
-        localObject3 = paramMiniAppInfo.downloadUrl;
-      }
-      downloadApkgByResumableDownloader(paramMiniAppInfo, paramBoolean, paramOnGetApkgInfoListener, paramString, (String)localObject3, (String)localObject2, str);
-      return;
-      localObject1 = paramMiniAppInfo.firstPage.pagePath;
-      for (;;)
-      {
-        break;
-      }
-      str = null;
-      localObject2 = localObject1;
-      localObject1 = null;
-      continue;
-      str = null;
       localObject2 = null;
-      localObject1 = null;
+      label122:
+      localObject4 = localObject1;
+      localObject1 = localObject3;
+      localObject3 = localObject4;
     }
+    else
+    {
+      localObject3 = null;
+      localObject2 = localObject3;
+    }
+    Object localObject4 = localObject1;
+    if (localObject1 == null) {
+      localObject4 = paramMiniAppInfo.downloadUrl;
+    }
+    downloadApkgByResumableDownloader(paramMiniAppInfo, paramBoolean, paramOnGetApkgInfoListener, paramString, (String)localObject4, (String)localObject3, (String)localObject2);
   }
   
   private void downloadApkgByResumableDownloader(MiniAppInfo paramMiniAppInfo, boolean paramBoolean, ApkgManager.OnGetApkgInfoListener paramOnGetApkgInfoListener, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    String str = ApkgManager.RootPath.getAppPkgRoot() + paramMiniAppInfo.appId + '_' + paramMiniAppInfo.version + ".qapkg";
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(ApkgManager.RootPath.getAppPkgRoot());
+    ((StringBuilder)localObject).append(paramMiniAppInfo.appId);
+    ((StringBuilder)localObject).append('_');
+    ((StringBuilder)localObject).append(paramMiniAppInfo.version);
+    ((StringBuilder)localObject).append(".qapkg");
+    localObject = ((StringBuilder)localObject).toString();
     long l = System.currentTimeMillis();
-    if (TextUtils.isEmpty(paramString2)) {
+    if (TextUtils.isEmpty(paramString2))
+    {
       if (paramOnGetApkgInfoListener != null)
       {
         paramOnGetApkgInfoListener.onGetApkgInfo(null, 1, "apkUrl is Null!");
         QMLog.e("ApkgManager", "downloadApkgByResumableDownloader apkUrl is null!");
       }
-    }
-    do
-    {
       return;
-      MiniReportManager.reportEventType(paramMiniAppInfo, 619, "0");
-      ((DownloaderProxy)ProxyManager.get(DownloaderProxy.class)).download(paramString2, null, str, 60, new ApkgManager.2(this, paramOnGetApkgInfoListener, paramMiniAppInfo, paramString2, paramString1, str, paramString3, paramString4, l));
-    } while (!paramBoolean);
-    deleteOldPkg(paramMiniAppInfo, paramString1);
+    }
+    MiniReportManager.reportEventType(paramMiniAppInfo, 619, "0");
+    ((DownloaderProxy)ProxyManager.get(DownloaderProxy.class)).download(paramString2, null, (String)localObject, 60, new ApkgManager.2(this, paramOnGetApkgInfoListener, paramMiniAppInfo, paramString2, paramString1, (String)localObject, paramString3, paramString4, l));
+    if (paramBoolean)
+    {
+      deleteOldPkg(paramMiniAppInfo, paramString1);
+      return;
+    }
   }
   
   public static String getApkgFolderPath(MiniAppInfo paramMiniAppInfo)
   {
-    if ((paramMiniAppInfo == null) || (TextUtils.isEmpty(paramMiniAppInfo.appId))) {
-      return "";
+    if ((paramMiniAppInfo != null) && (!TextUtils.isEmpty(paramMiniAppInfo.appId)))
+    {
+      if (paramMiniAppInfo.verType == 3)
+      {
+        localStringBuilder = new StringBuilder(getPkgRoot(paramMiniAppInfo));
+        localStringBuilder.append(MD5Utils.toMD5(paramMiniAppInfo.appId));
+        localStringBuilder.append("_");
+        localStringBuilder.append(paramMiniAppInfo.versionId);
+        return localStringBuilder.toString();
+      }
+      StringBuilder localStringBuilder = new StringBuilder(getPkgRoot(paramMiniAppInfo));
+      localStringBuilder.append(paramMiniAppInfo.appId);
+      localStringBuilder.append("_debug");
+      return localStringBuilder.toString();
     }
-    if (paramMiniAppInfo.verType == 3) {
-      return getPkgRoot(paramMiniAppInfo) + MD5Utils.toMD5(paramMiniAppInfo.appId) + "_" + paramMiniAppInfo.versionId;
-    }
-    return getPkgRoot(paramMiniAppInfo) + paramMiniAppInfo.appId + "_debug";
+    return "";
   }
   
   private void getApkgInfoByConfig(MiniAppInfo paramMiniAppInfo, boolean paramBoolean, ApkgManager.OnGetApkgInfoListener paramOnGetApkgInfoListener)
   {
-    if (paramMiniAppInfo == null) {}
-    String str1;
-    for (;;)
-    {
+    if (paramMiniAppInfo == null) {
       return;
-      str1 = paramMiniAppInfo.version;
-      QMLog.d("ApkgManager", "getApkgInfoByConfig version:" + str1);
-      str1 = getApkgFolderPath(paramMiniAppInfo);
-      if (paramMiniAppInfo.verType != 3)
-      {
-        QMLog.d("ApkgManager", "verType is not online, delete unPackFolderPath." + paramMiniAppInfo.verType);
-        if (new File(str1).exists()) {
-          FileUtils.delete(str1, false);
-        }
-      }
-      if (paramMiniAppInfo.launchParam.isFlutterMode) {
-        try
-        {
-          String str2 = str1 + "_maintmp";
-          if (new File(str2).exists())
-          {
-            ApkgInfo localApkgInfo = ApkgInfo.loadApkgInfoFromFolderPath(str2, null, paramMiniAppInfo);
-            if (localApkgInfo == null) {
-              continue;
-            }
-            QMLog.i("ApkgManager", "apkg has download in main process. folder:" + str2);
-            MiniAppStartState.setApkgDownload(paramMiniAppInfo.appId, true);
-            if (paramOnGetApkgInfoListener == null) {
-              continue;
-            }
-            paramOnGetApkgInfoListener.onGetApkgInfo(localApkgInfo, 0, "加载成功");
-          }
-        }
-        catch (Throwable localThrowable)
-        {
-          QMLog.e("ApkgManager", "", localThrowable);
-        }
+    }
+    String str = paramMiniAppInfo.version;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getApkgInfoByConfig version:");
+    ((StringBuilder)localObject).append(str);
+    QMLog.d("ApkgManager", ((StringBuilder)localObject).toString());
+    str = getApkgFolderPath(paramMiniAppInfo);
+    if (paramMiniAppInfo.verType != 3)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("verType is not online, delete unPackFolderPath.");
+      ((StringBuilder)localObject).append(paramMiniAppInfo.verType);
+      QMLog.d("ApkgManager", ((StringBuilder)localObject).toString());
+      if (new File(str).exists()) {
+        FileUtils.delete(str, false);
       }
     }
-    loadApkgInfo(paramMiniAppInfo, paramBoolean, paramOnGetApkgInfoListener, str1);
+    if (paramMiniAppInfo.launchParam.isFlutterMode) {
+      try
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append("_maintmp");
+        localObject = ((StringBuilder)localObject).toString();
+        if (new File((String)localObject).exists())
+        {
+          ApkgInfo localApkgInfo = ApkgInfo.loadApkgInfoFromFolderPath((String)localObject, null, paramMiniAppInfo);
+          if (localApkgInfo != null)
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("apkg has download in main process. folder:");
+            localStringBuilder.append((String)localObject);
+            QMLog.i("ApkgManager", localStringBuilder.toString());
+            MiniAppStartState.setApkgDownload(paramMiniAppInfo.appId, true);
+            if (paramOnGetApkgInfoListener != null) {
+              paramOnGetApkgInfoListener.onGetApkgInfo(localApkgInfo, 0, "加载成功");
+            }
+          }
+          return;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        QMLog.e("ApkgManager", "", localThrowable);
+      }
+    }
+    loadApkgInfo(paramMiniAppInfo, paramBoolean, paramOnGetApkgInfoListener, str);
   }
   
   public static String getGpkgPluginFolderPath(MiniGamePluginInfo paramMiniGamePluginInfo)
   {
-    return ApkgManager.RootPath.getGamePkgRoot() + MD5Utils.toMD5(paramMiniGamePluginInfo.id) + "_plugin_" + paramMiniGamePluginInfo.version;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(ApkgManager.RootPath.getGamePkgRoot());
+    localStringBuilder.append(MD5Utils.toMD5(paramMiniGamePluginInfo.id));
+    localStringBuilder.append("_plugin_");
+    localStringBuilder.append(paramMiniGamePluginInfo.version);
+    return localStringBuilder.toString();
   }
   
   public static ApkgManager getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new ApkgManager();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new ApkgManager();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public static String getPkgRoot(MiniAppInfo paramMiniAppInfo)
@@ -218,64 +243,66 @@ public class ApkgManager
   
   private void handleApkgDownloadSuccess(String paramString1, String paramString2, MiniAppInfo paramMiniAppInfo, String paramString3, String paramString4, ApkgManager.OnGetApkgInfoListener paramOnGetApkgInfoListener)
   {
+    Object localObject = paramMiniAppInfo.appId;
     boolean bool1 = false;
-    int i = 0;
-    MiniAppStartState.setApkgDownload(paramMiniAppInfo.appId, false);
-    File localFile = new File(paramString1);
+    MiniAppStartState.setApkgDownload((String)localObject, false);
+    localObject = new File(paramString1);
     boolean bool2 = paramMiniAppInfo.launchParam.isFlutterMode;
     if (paramMiniAppInfo.launchParam.isFlutterMode)
     {
       MiniReportManager.reportEventType(paramMiniAppInfo, 621, "0");
-      bool1 = WxapkgUnpacker.unpackSync(localFile.getAbsolutePath(), paramString2);
-      if (bool1)
-      {
-        MiniReportManager.reportEventType(paramMiniAppInfo, 622, null, null, null, i);
-        label80:
-        if ((!bool1) && (bool2)) {
-          break label196;
-        }
-        handleDownloadSubPack(paramString2, paramMiniAppInfo, paramString3, paramString4, paramOnGetApkgInfoListener);
-      }
+      bool1 = WxapkgUnpacker.unpackSync(((File)localObject).getAbsolutePath(), paramString2);
+      MiniReportManager.reportEventType(paramMiniAppInfo, 622, null, null, null, bool1 ^ true);
     }
-    label196:
-    while (paramOnGetApkgInfoListener == null)
+    else
     {
-      return;
-      i = 1;
-      break;
-      if (!FileUtils.copyFile(paramString1, paramString2 + "/mini" + ".qapkg"))
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append("/mini");
+      ((StringBuilder)localObject).append(".qapkg");
+      if (!FileUtils.copyFile(paramString1, ((StringBuilder)localObject).toString()))
       {
-        QMLog.e("ApkgManager", "copyFile to " + paramString1 + paramString2 + "/mini" + ".qapkg" + " err");
+        paramMiniAppInfo = new StringBuilder();
+        paramMiniAppInfo.append("copyFile to ");
+        paramMiniAppInfo.append(paramString1);
+        paramMiniAppInfo.append(paramString2);
+        paramMiniAppInfo.append("/mini");
+        paramMiniAppInfo.append(".qapkg");
+        paramMiniAppInfo.append(" err");
+        QMLog.e("ApkgManager", paramMiniAppInfo.toString());
         return;
       }
       FileUtils.deleteFile(paramString1);
-      break label80;
     }
-    paramOnGetApkgInfoListener.onGetApkgInfo(null, 3, "解包失败");
+    if ((!bool1) && (bool2))
+    {
+      if (paramOnGetApkgInfoListener != null) {
+        paramOnGetApkgInfoListener.onGetApkgInfo(null, 3, "解包失败");
+      }
+    }
+    else {
+      handleDownloadSubPack(paramString2, paramMiniAppInfo, paramString3, paramString4, paramOnGetApkgInfoListener);
+    }
   }
   
   private void handleDownloadSubPack(String paramString1, MiniAppInfo paramMiniAppInfo, String paramString2, String paramString3, ApkgManager.OnGetApkgInfoListener paramOnGetApkgInfoListener)
   {
-    Object localObject = null;
     try
     {
       paramString1 = ApkgInfo.loadApkgInfoFromFolderPath(paramString1, paramString3, paramMiniAppInfo);
-      if ((paramString2 != null) && (paramString1 != null))
-      {
-        downloadSubPack(paramString1, paramMiniAppInfo, paramString2, new ApkgManager.3(this, paramOnGetApkgInfoListener));
-        return;
-      }
     }
     catch (Throwable paramString1)
     {
-      do
-      {
-        for (;;)
-        {
-          QMLog.e("ApkgManager", "exception when loadApkgInfoFromFolderPath.", paramString1);
-          paramString1 = localObject;
-        }
-      } while (paramOnGetApkgInfoListener == null);
+      QMLog.e("ApkgManager", "exception when loadApkgInfoFromFolderPath.", paramString1);
+      paramString1 = null;
+    }
+    if ((paramString2 != null) && (paramString1 != null))
+    {
+      downloadSubPack(paramString1, paramMiniAppInfo, paramString2, new ApkgManager.3(this, paramOnGetApkgInfoListener));
+      return;
+    }
+    if (paramOnGetApkgInfoListener != null)
+    {
       if (paramString1 != null)
       {
         paramOnGetApkgInfoListener.onGetApkgInfo(paramString1, 0, "");
@@ -300,64 +327,60 @@ public class ApkgManager
   
   private void loadApkgInfo(MiniAppInfo paramMiniAppInfo, boolean paramBoolean, ApkgManager.OnGetApkgInfoListener paramOnGetApkgInfoListener, String paramString)
   {
+    boolean bool = new File(paramString).exists();
+    Object localObject4 = null;
     Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (new File(paramString).exists()) {}
-    for (;;)
-    {
+    Object localObject1 = localObject4;
+    if (bool) {
       try
       {
         localObject1 = ApkgInfo.loadApkgInfoFromFolderPath(paramString, null, paramMiniAppInfo);
-        boolean bool;
-        QMLog.e("ApkgManager", "exception when loadApkgInfoFromFolderPath.", localThrowable1);
-      }
-      catch (Throwable localThrowable1)
-      {
         try
         {
           bool = isApkgInfoValid((ApkgInfo)localObject1);
-          if (bool) {
-            break label110;
+          if (!bool)
+          {
+            localObject1 = localObject4;
+            break label86;
           }
-          localObject1 = localObject2;
-          if (localObject1 == null) {
-            break;
-          }
-          if (paramOnGetApkgInfoListener != null) {
-            paramOnGetApkgInfoListener.onGetApkgInfo((ApkgInfo)localObject1, 0, "");
-          }
-          if (paramMiniAppInfo.launchParam == null) {
-            break label113;
-          }
-          paramOnGetApkgInfoListener = paramMiniAppInfo.launchParam.entryPath;
-          MiniAppReportManager2.reportPageView("cache_apkg_hit", "hit", paramOnGetApkgInfoListener, paramMiniAppInfo);
-          return;
         }
-        catch (Throwable localThrowable2)
-        {
-          break label100;
-        }
-        localThrowable1 = localThrowable1;
-        localObject1 = null;
+        catch (Throwable localThrowable1) {}
+        QMLog.e("ApkgManager", "exception when loadApkgInfoFromFolderPath.", (Throwable)localObject3);
       }
-      label100:
-      label110:
-      continue;
-      label113:
-      paramOnGetApkgInfoListener = "";
+      catch (Throwable localThrowable2)
+      {
+        localObject1 = localThrowable1;
+        localObject3 = localThrowable2;
+      }
     }
-    downloadApkgByResumableDownloader(paramMiniAppInfo, paramBoolean, paramOnGetApkgInfoListener, paramString);
-    if (paramMiniAppInfo.launchParam != null) {}
-    for (paramOnGetApkgInfoListener = paramMiniAppInfo.launchParam.entryPath;; paramOnGetApkgInfoListener = "")
+    label86:
+    Object localObject3 = "";
+    if (localObject1 != null)
     {
-      MiniAppReportManager2.reportPageView("cache_apkg_hit", "unhit", paramOnGetApkgInfoListener, paramMiniAppInfo);
+      if (paramOnGetApkgInfoListener != null) {
+        paramOnGetApkgInfoListener.onGetApkgInfo((ApkgInfo)localObject1, 0, "");
+      }
+      if (paramMiniAppInfo.launchParam != null) {
+        localObject3 = paramMiniAppInfo.launchParam.entryPath;
+      }
+      MiniAppReportManager2.reportPageView("cache_apkg_hit", "hit", (String)localObject3, paramMiniAppInfo);
       return;
     }
+    downloadApkgByResumableDownloader(paramMiniAppInfo, paramBoolean, paramOnGetApkgInfoListener, paramString);
+    if (paramMiniAppInfo.launchParam != null) {
+      localObject3 = paramMiniAppInfo.launchParam.entryPath;
+    }
+    MiniAppReportManager2.reportPageView("cache_apkg_hit", "unhit", (String)localObject3, paramMiniAppInfo);
   }
   
   private void onInitApkgInfo(ApkgManager.OnInitApkgListener paramOnInitApkgListener, int paramInt, ApkgInfo paramApkgInfo, String paramString)
   {
-    QMLog.d("ApkgManager", "onInitApkgInfo :" + paramInt + "|" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onInitApkgInfo :");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString);
+    QMLog.d("ApkgManager", localStringBuilder.toString());
     if (paramOnInitApkgListener != null) {
       paramOnInitApkgListener.onInitApkgInfo(paramInt, paramApkgInfo, paramString);
     }
@@ -370,55 +393,66 @@ public class ApkgManager
   
   public void downloadSubPack(ApkgInfo paramApkgInfo, MiniAppInfo paramMiniAppInfo, String paramString, ApkgManager.OnInitApkgListener paramOnInitApkgListener)
   {
-    String str2;
     String str1;
+    String str2;
     if ("/__APP__/".equals(paramString))
     {
-      str2 = "";
       str1 = paramMiniAppInfo.downloadUrl;
-      QMLog.d("ApkgManager", "downloadSubPack | downPage=" + paramString + "; subPackDownloadUrl=" + str1);
-      if (!TextUtils.isEmpty(str1)) {
-        break label119;
+      str2 = "";
+    }
+    else
+    {
+      if (paramApkgInfo == null)
+      {
+        QMLog.e("ApkgManager", "apkgInfo is null");
+        return;
       }
+      str2 = paramApkgInfo.getRootPath(paramString);
+      str1 = getSubPkgDownloadUrl(paramMiniAppInfo, str2);
+    }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("downloadSubPack | downPage=");
+    ((StringBuilder)localObject1).append(paramString);
+    ((StringBuilder)localObject1).append("; subPackDownloadUrl=");
+    ((StringBuilder)localObject1).append(str1);
+    QMLog.d("ApkgManager", ((StringBuilder)localObject1).toString());
+    if (TextUtils.isEmpty(str1))
+    {
       QMLog.e("ApkgManager", "subPackDownloadUrl is null, return.");
       if (paramOnInitApkgListener != null) {
-        paramOnInitApkgListener.onInitApkgInfo(1, paramApkgInfo, null);
+        paramOnInitApkgListener.onInitApkgInfo(5, paramApkgInfo, null);
       }
-    }
-    label119:
-    String str4;
-    label248:
-    do
-    {
-      do
-      {
-        return;
-        if (paramApkgInfo == null)
-        {
-          QMLog.e("ApkgManager", "apkgInfo is null");
-          return;
-        }
-        str2 = paramApkgInfo.getRootPath(paramString);
-        str1 = getSubPkgDownloadUrl(paramMiniAppInfo, str2);
-        break;
-        String str3 = str2.replaceAll("/", "");
-        str4 = getApkgFolderPath(paramMiniAppInfo) + File.separator + str3 + ".qapkg";
-        boolean bool = paramMiniAppInfo.launchParam.isFlutterMode;
-        if ((!new File(str4).exists()) || (bool)) {
-          break label248;
-        }
-        QMLog.d("ApkgManager", "downloadSubPack | subRoot=" + str3 + " has downloaded. path=" + str4);
-      } while (paramOnInitApkgListener == null);
-      paramOnInitApkgListener.onInitApkgInfo(0, paramApkgInfo, null);
       return;
-      if (!"/__APP__/".equals(paramString)) {
-        break label273;
+    }
+    localObject1 = str2.replaceAll("/", "");
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(getApkgFolderPath(paramMiniAppInfo));
+    ((StringBuilder)localObject2).append(File.separator);
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(".qapkg");
+    localObject2 = ((StringBuilder)localObject2).toString();
+    boolean bool = paramMiniAppInfo.launchParam.isFlutterMode;
+    if ((new File((String)localObject2).exists()) && (!bool))
+    {
+      paramMiniAppInfo = new StringBuilder();
+      paramMiniAppInfo.append("downloadSubPack | subRoot=");
+      paramMiniAppInfo.append((String)localObject1);
+      paramMiniAppInfo.append(" has downloaded. path=");
+      paramMiniAppInfo.append((String)localObject2);
+      QMLog.d("ApkgManager", paramMiniAppInfo.toString());
+      if (paramOnInitApkgListener != null) {
+        paramOnInitApkgListener.onInitApkgInfo(0, paramApkgInfo, null);
       }
-    } while (paramOnInitApkgListener == null);
-    paramOnInitApkgListener.onInitApkgInfo(0, paramApkgInfo, null);
-    return;
-    label273:
-    doDownload(paramApkgInfo, paramMiniAppInfo, paramString, paramOnInitApkgListener, str1, str2, str4);
+      return;
+    }
+    if ("/__APP__/".equals(paramString))
+    {
+      if (paramOnInitApkgListener != null) {
+        paramOnInitApkgListener.onInitApkgInfo(0, paramApkgInfo, null);
+      }
+      return;
+    }
+    doDownload(paramApkgInfo, paramMiniAppInfo, paramString, paramOnInitApkgListener, str1, str2, (String)localObject2);
   }
   
   public void getApkgInfoByConfig(MiniAppInfo paramMiniAppInfo, ApkgManager.OnInitApkgListener paramOnInitApkgListener)
@@ -435,7 +469,7 @@ public class ApkgManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.ApkgManager
  * JD-Core Version:    0.7.0.1
  */

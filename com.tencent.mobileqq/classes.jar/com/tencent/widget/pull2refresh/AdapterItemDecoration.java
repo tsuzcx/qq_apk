@@ -14,7 +14,7 @@ public class AdapterItemDecoration
   {
     super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
     if ((paramRecyclerView.getChildViewHolder(paramView) instanceof IViewHolderItemDecoration)) {
-      ((IViewHolderItemDecoration)paramRecyclerView.getChildViewHolder(paramView)).a(paramRect, paramView, paramRecyclerView, paramState);
+      ((IViewHolderItemDecoration)paramRecyclerView.getChildViewHolder(paramView)).getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
     }
   }
   
@@ -25,7 +25,7 @@ public class AdapterItemDecoration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.pull2refresh.AdapterItemDecoration
  * JD-Core Version:    0.7.0.1
  */

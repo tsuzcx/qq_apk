@@ -18,7 +18,7 @@ class NowAppJs$2
   
   public void a(List<String> paramList, int paramInt)
   {
-    DialogUtil.a(NowAppJs.access$100(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizJsNowAppJs), 230, "", HardCodeUtil.a(2131696354), HardCodeUtil.a(2131690800), HardCodeUtil.a(2131693566), new NowAppJs.2.1(this), new NowAppJs.2.2(this)).show();
+    DialogUtil.a(NowAppJs.access$100(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizJsNowAppJs), 230, "", HardCodeUtil.a(2131696373), HardCodeUtil.a(2131690728), HardCodeUtil.a(2131693521), new NowAppJs.2.1(this), new NowAppJs.2.2(this)).show();
   }
   
   public void a(String[] paramArrayOfString, int paramInt)
@@ -26,23 +26,26 @@ class NowAppJs$2
     try
     {
       paramArrayOfString = (String)this.jdField_a_of_type_JavaUtilMap.get("callback");
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("code", "0");
-      localJSONObject.put("msg", "");
-      NowAppJs.access$200(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizJsNowAppJs).callJs(paramArrayOfString, new String[] { localJSONObject.toString() });
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("code", "0");
+      ((JSONObject)localObject).put("msg", "");
+      NowAppJs.access$200(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizJsNowAppJs).callJs(paramArrayOfString, new String[] { ((JSONObject)localObject).toString() });
       NowAppJs.access$302(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizJsNowAppJs, true);
       this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizJsNowAppJs.changeMicrophone(this.jdField_a_of_type_JavaUtilMap);
       return;
     }
     catch (JSONException paramArrayOfString)
     {
-      QLog.e("NowAppJs", 1, "onPermissionGranted has error: " + paramArrayOfString);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onPermissionGranted has error: ");
+      ((StringBuilder)localObject).append(paramArrayOfString);
+      QLog.e("NowAppJs", 1, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.js.NowAppJs.2
  * JD-Core Version:    0.7.0.1
  */

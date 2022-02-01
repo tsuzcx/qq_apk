@@ -27,17 +27,12 @@ public class DoutuConfigReporter
   
   public static void c()
   {
-    ReportController.b(null, "dc00898", "", "", "0X800B549", "0X800B549", 0, 0, "", "", "", "");
-  }
-  
-  public static void d()
-  {
     ReportController.b(null, "dc00898", "", "", "0X800B54A", "0X800B54A", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.DoutuConfigReporter
  * JD-Core Version:    0.7.0.1
  */

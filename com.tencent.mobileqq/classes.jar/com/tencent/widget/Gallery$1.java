@@ -7,13 +7,13 @@ class Gallery$1
   
   public void run()
   {
-    Gallery.a(this.this$0, false);
+    Gallery.access$002(this.this$0, false);
     this.this$0.selectionChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.Gallery.1
  * JD-Core Version:    0.7.0.1
  */

@@ -53,29 +53,36 @@ class LooperPrinter
   
   void gotoReport(@NonNull MonitorInfo paramMonitorInfo, long paramLong)
   {
-    Object localObject = paramMonitorInfo.stack;
-    if ((!PluginController.INSTANCE.canCollect(PluginCombination.loopStackPlugin.plugin)) || (TextUtils.isEmpty((CharSequence)localObject))) {
-      return;
-    }
-    try
+    Object localObject1 = paramMonitorInfo.stack;
+    if (PluginController.INSTANCE.canCollect(PluginCombination.loopStackPlugin.plugin))
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("event_time", paramMonitorInfo.cacheRealStackTime);
-      localJSONObject.put("cost_time", paramLong);
-      localJSONObject.put("stack", localObject);
-      localJSONObject.put("plugin", PluginCombination.loopStackPlugin.plugin);
-      localJSONObject.put("stage", paramMonitorInfo.scene);
-      localJSONObject.put("bread_crumb_id", AthenaReflect.getBreadCrumbId(1, new AthenaInfo(paramMonitorInfo.scene, (int)paramLong)));
-      if (ListenerManager.looperListener != null) {
-        ListenerManager.looperListener.onBeforeReport(new LooperMeta(localJSONObject));
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        return;
       }
-      localObject = new ResultObject(0, "Looper single", true, 1L, 1L, localJSONObject, true, true, BaseInfo.userMeta.uin);
-      ReporterMachine.INSTANCE.addResultObj((ResultObject)localObject, null, paramMonitorInfo.needCheck);
-      return;
-    }
-    catch (Exception paramMonitorInfo)
-    {
-      Logger.INSTANCE.w(new String[] { "QAPM_looper_LooperPrinter", "looper data may be error, " + paramMonitorInfo.getMessage() });
+      try
+      {
+        localObject2 = new JSONObject();
+        ((JSONObject)localObject2).put("event_time", paramMonitorInfo.cacheRealStackTime);
+        ((JSONObject)localObject2).put("cost_time", paramLong);
+        ((JSONObject)localObject2).put("stack", localObject1);
+        ((JSONObject)localObject2).put("plugin", PluginCombination.loopStackPlugin.plugin);
+        ((JSONObject)localObject2).put("stage", paramMonitorInfo.scene);
+        ((JSONObject)localObject2).put("bread_crumb_id", AthenaReflect.getBreadCrumbId(1, new AthenaInfo(paramMonitorInfo.scene, (int)paramLong)));
+        if (ListenerManager.looperListener != null) {
+          ListenerManager.looperListener.onBeforeReport(new LooperMeta((JSONObject)localObject2));
+        }
+        localObject1 = new ResultObject(0, "Looper single", true, 1L, 1L, (JSONObject)localObject2, true, true, BaseInfo.userMeta.uin);
+        ReporterMachine.INSTANCE.addResultObj((ResultObject)localObject1, null, paramMonitorInfo.needCheck);
+        return;
+      }
+      catch (Exception paramMonitorInfo)
+      {
+        localObject1 = Logger.INSTANCE;
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("looper data may be error, ");
+        ((StringBuilder)localObject2).append(paramMonitorInfo.getMessage());
+        ((Logger)localObject1).w(new String[] { "QAPM_looper_LooperPrinter", ((StringBuilder)localObject2).toString() });
+      }
     }
   }
   
@@ -94,32 +101,27 @@ class LooperPrinter
         localMonitorInfo.scene = null;
       }
     }
-    for (;;)
+    else if ((this.startTime != 0L) && (paramString.startsWith("<<")))
     {
-      notifyOriginalPrinters(paramString);
-      return;
-      if ((this.startTime != 0L) && (paramString.startsWith("<<")))
+      long l = SystemClock.uptimeMillis() - this.startTime;
+      this.startTime = 0L;
+      if (l > looperThreshold)
       {
-        long l = SystemClock.uptimeMillis() - this.startTime;
-        this.startTime = 0L;
-        if (l > looperThreshold)
-        {
-          if (Debug.isDebuggerConnected()) {
-            break;
-          }
-          Logger.INSTANCE.i(new String[] { "QAPM_looper_LooperPrinter", this.looperName, ", cost=", String.valueOf(l), ", ", this.lastLog });
-          gotoReport(localMonitorInfo, l);
-          continue;
+        if (Debug.isDebuggerConnected()) {
+          return;
         }
-        if ((localMonitorInfo != null) && (localMonitorInfo.stackGetterInited))
-        {
-          localMonitorInfo.lastStackRequestTime = 0L;
-          localMonitorInfo.lastForceTime = 0L;
-          localMonitorInfo.stack = null;
-          localMonitorInfo.scene = null;
-        }
+        Logger.INSTANCE.i(new String[] { "QAPM_looper_LooperPrinter", this.looperName, ", cost=", String.valueOf(l), ", ", this.lastLog });
+        gotoReport(localMonitorInfo, l);
+      }
+      else if ((localMonitorInfo != null) && (localMonitorInfo.stackGetterInited))
+      {
+        localMonitorInfo.lastStackRequestTime = 0L;
+        localMonitorInfo.lastForceTime = 0L;
+        localMonitorInfo.stack = null;
+        localMonitorInfo.scene = null;
       }
     }
+    notifyOriginalPrinters(paramString);
   }
   
   void setOriginalPrinter(Printer paramPrinter)
@@ -129,7 +131,7 @@ class LooperPrinter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.looper.LooperPrinter
  * JD-Core Version:    0.7.0.1
  */

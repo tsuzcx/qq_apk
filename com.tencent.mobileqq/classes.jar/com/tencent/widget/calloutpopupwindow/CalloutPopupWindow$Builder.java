@@ -76,48 +76,49 @@ public class CalloutPopupWindow$Builder
       Object localObject = new LinearLayout.LayoutParams(-2, -2);
       ((LinearLayout.LayoutParams)localObject).gravity = 17;
       localLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      if (this.jdField_b_of_type_Boolean) {}
-      for (localObject = new KandianTextView(this.jdField_a_of_type_AndroidContentContext);; localObject = new TextView(this.jdField_a_of_type_AndroidContentContext))
-      {
-        ((TextView)localObject).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(17170443));
-        ((TextView)localObject).setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
-        localLinearLayout.addView((View)localObject);
-        if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-        {
-          int k = localLinearLayout.getPaddingLeft();
-          int m = localLinearLayout.getPaddingTop();
-          int n = localLinearLayout.getPaddingRight();
-          int i1 = localLinearLayout.getPaddingBottom();
-          localLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-          localLinearLayout.setPadding(k, m, n, i1);
-        }
-        ((TextView)localObject).setMaxWidth(i);
-        ((TextView)localObject).setMaxHeight(j);
-        ((TextView)localObject).setEllipsize(TextUtils.TruncateAt.END);
-        ((TextView)localObject).setText(this.jdField_a_of_type_JavaLangString);
-        ((TextView)localObject).setTextSize(this.jdField_a_of_type_Float);
-        ((TextView)localObject).setTextColor(this.jdField_a_of_type_Int);
-        localLinearLayout.measure(i, j);
-        localObject = new CalloutPopupWindow(this.jdField_a_of_type_AndroidContentContext, localLinearLayout.getMeasuredWidth(), this.e);
-        ((CalloutPopupWindow)localObject).d(this.jdField_b_of_type_Int);
-        ((CalloutPopupWindow)localObject).a(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
-        ((CalloutPopupWindow)localObject).b(this.jdField_c_of_type_AndroidGraphicsDrawableDrawable);
-        ((CalloutPopupWindow)localObject).e(this.jdField_c_of_type_Int);
-        ((CalloutPopupWindow)localObject).setContentView(localLinearLayout);
-        ((CalloutPopupWindow)localObject).a(83);
-        if (!this.jdField_a_of_type_Boolean) {
-          ((CalloutPopupWindow)localObject).setOutsideTouchable(false);
-        }
-        ((CalloutPopupWindow)localObject).b(DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 6.0F));
-        CalloutPopupWindow.a((CalloutPopupWindow)localObject, this.d);
-        return localObject;
+      if (this.jdField_b_of_type_Boolean) {
+        localObject = new KandianTextView(this.jdField_a_of_type_AndroidContentContext);
+      } else {
+        localObject = new TextView(this.jdField_a_of_type_AndroidContentContext);
       }
-      return null;
+      ((TextView)localObject).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(17170443));
+      ((TextView)localObject).setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
+      localLinearLayout.addView((View)localObject);
+      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+      {
+        int k = localLinearLayout.getPaddingLeft();
+        int m = localLinearLayout.getPaddingTop();
+        int n = localLinearLayout.getPaddingRight();
+        int i1 = localLinearLayout.getPaddingBottom();
+        localLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        localLinearLayout.setPadding(k, m, n, i1);
+      }
+      ((TextView)localObject).setMaxWidth(i);
+      ((TextView)localObject).setMaxHeight(j);
+      ((TextView)localObject).setEllipsize(TextUtils.TruncateAt.END);
+      ((TextView)localObject).setText(this.jdField_a_of_type_JavaLangString);
+      ((TextView)localObject).setTextSize(this.jdField_a_of_type_Float);
+      ((TextView)localObject).setTextColor(this.jdField_a_of_type_Int);
+      localLinearLayout.measure(i, j);
+      localObject = new CalloutPopupWindow(this.jdField_a_of_type_AndroidContentContext, localLinearLayout.getMeasuredWidth(), this.e);
+      ((CalloutPopupWindow)localObject).d(this.jdField_b_of_type_Int);
+      ((CalloutPopupWindow)localObject).a(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
+      ((CalloutPopupWindow)localObject).b(this.jdField_c_of_type_AndroidGraphicsDrawableDrawable);
+      ((CalloutPopupWindow)localObject).e(this.jdField_c_of_type_Int);
+      ((CalloutPopupWindow)localObject).setContentView(localLinearLayout);
+      ((CalloutPopupWindow)localObject).a(83);
+      if (!this.jdField_a_of_type_Boolean) {
+        ((CalloutPopupWindow)localObject).setOutsideTouchable(false);
+      }
+      ((CalloutPopupWindow)localObject).b(DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 6.0F));
+      CalloutPopupWindow.a((CalloutPopupWindow)localObject, this.d);
+      return localObject;
     }
     catch (Throwable localThrowable)
     {
       Log.e("CalloutPopupWindow", "[build] failed to build window", localThrowable);
     }
+    return null;
   }
   
   public Builder b(int paramInt)
@@ -146,7 +147,7 @@ public class CalloutPopupWindow$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.calloutpopupwindow.CalloutPopupWindow.Builder
  * JD-Core Version:    0.7.0.1
  */

@@ -13,10 +13,12 @@ public abstract interface IHotChatService
   public abstract String getHotChatName(String paramString);
   
   public abstract boolean isHotChat(String paramString);
+  
+  public abstract boolean isRobotHotChat(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.IHotChatService
  * JD-Core Version:    0.7.0.1
  */

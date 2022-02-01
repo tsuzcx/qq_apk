@@ -23,11 +23,30 @@ public class ARMIGObjectClassifyResult$JDSearchResult
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ssoErrCode:").append(this.jdField_a_of_type_Int).append(",ssoErrMsg:").append(this.jdField_a_of_type_JavaLangString).append(",errCode:").append(this.jdField_b_of_type_Int).append(",errMsg:").append(this.jdField_b_of_type_JavaLangString).append(",sessionId:").append(this.jdField_c_of_type_JavaLangString).append(",moreUrl:").append(this.d);
+    localStringBuilder.append("ssoErrCode:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",ssoErrMsg:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",errCode:");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(",errMsg:");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(",sessionId:");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(",moreUrl:");
+    localStringBuilder.append(this.d);
     int i = 0;
-    while ((this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchItem != null) && (i < this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchItem.length))
+    for (;;)
     {
-      localStringBuilder.append("\n{index=").append(i).append(":").append(this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchItem[i].toString()).append("}\n");
+      ARMIGObjectClassifyResult.JDSearchItem[] arrayOfJDSearchItem = this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchItem;
+      if ((arrayOfJDSearchItem == null) || (i >= arrayOfJDSearchItem.length)) {
+        break;
+      }
+      localStringBuilder.append("\n{index=");
+      localStringBuilder.append(i);
+      localStringBuilder.append(":");
+      localStringBuilder.append(this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchItem[i].toString());
+      localStringBuilder.append("}\n");
       i += 1;
     }
     return localStringBuilder.toString();
@@ -35,7 +54,7 @@ public class ARMIGObjectClassifyResult$JDSearchResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARMIGObjectClassifyResult.JDSearchResult
  * JD-Core Version:    0.7.0.1
  */

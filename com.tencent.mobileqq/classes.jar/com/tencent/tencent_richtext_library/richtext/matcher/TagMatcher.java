@@ -18,18 +18,15 @@ public class TagMatcher
   public static HashMap<String, Object> a(String paramString1, String paramString2)
   {
     int i = paramString1.indexOf(paramString2);
-    if (i == -1)
+    if (i == -1) {}
+    for (paramString1 = new HashMap();; paramString1 = new HashMap())
     {
-      paramString1 = new HashMap();
       paramString1.put("text", "");
       return paramString1;
-    }
-    i += paramString2.length();
-    if (i > paramString1.length() - 1)
-    {
-      paramString1 = new HashMap();
-      paramString1.put("text", "");
-      return paramString1;
+      i += paramString2.length();
+      if (i <= paramString1.length() - 1) {
+        break;
+      }
     }
     paramString1 = paramString1.substring(i, paramString1.length() - 1);
     try
@@ -39,8 +36,8 @@ public class TagMatcher
     }
     catch (Exception paramString2)
     {
-      label87:
-      break label87;
+      label79:
+      break label79;
     }
     paramString2 = new HashMap();
     paramString2.put("nodeType", Integer.valueOf(QcircleFlutterTextCellParser.h));
@@ -56,7 +53,7 @@ public class TagMatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tencent_richtext_library.richtext.matcher.TagMatcher
  * JD-Core Version:    0.7.0.1
  */

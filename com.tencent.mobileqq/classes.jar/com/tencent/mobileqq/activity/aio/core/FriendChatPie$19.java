@@ -1,29 +1,27 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.contact.newfriend.CloneFriendPushHelper;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.teamwork.TeamWorkObserver;
+import com.tencent.mobileqq.teamwork.api.ITeamWorkUtilsTemp;
 
 class FriendChatPie$19
-  implements Runnable
+  extends TeamWorkObserver
 {
   FriendChatPie$19(FriendChatPie paramFriendChatPie) {}
   
-  public void run()
+  public void a(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    if (CloneFriendPushHelper.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a))
-    {
-      FriendChatPie.b(this.this$0, true);
-      CloneFriendPushHelper.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      ReportController.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8008072", "0X8008072", 0, 0, "", "", "", "");
-      return;
-    }
-    FriendChatPie.b(this.this$0, false);
+    ((ITeamWorkUtilsTemp)QRoute.api(ITeamWorkUtilsTemp.class)).onGetUserAuthDocsGrayTipsInfo(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_MqqOsMqqHandler, paramBoolean, paramArrayOfObject);
+  }
+  
+  public void b(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    ((ITeamWorkUtilsTemp)QRoute.api(ITeamWorkUtilsTemp.class)).onSetUserAuthDocsGrayTipsInfo(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_MqqOsMqqHandler, paramBoolean, paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.FriendChatPie.19
  * JD-Core Version:    0.7.0.1
  */

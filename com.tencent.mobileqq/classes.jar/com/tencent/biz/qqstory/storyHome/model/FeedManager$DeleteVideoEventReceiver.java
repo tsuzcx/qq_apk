@@ -19,25 +19,25 @@ public final class FeedManager$DeleteVideoEventReceiver
   public void a(@NonNull FeedManager paramFeedManager, @NonNull DeleteStoryVideoEvent paramDeleteStoryVideoEvent)
   {
     Iterator localIterator = paramFeedManager.a.iterator();
-    int j;
-    for (int i = 0; localIterator.hasNext(); i = j)
+    int i = 0;
+    while (localIterator.hasNext())
     {
       Object localObject = (StoryHomeFeed)localIterator.next();
-      j = i;
       if ((localObject instanceof GeneralHomeFeed))
       {
-        j = i;
+        localObject = (GeneralHomeFeed)localObject;
         if (((GeneralHomeFeed)localObject).b())
         {
           localObject = ((GeneralHomeFeed)localObject).a().iterator();
+          int j = i;
           for (;;)
           {
-            j = i;
+            i = j;
             if (!((Iterator)localObject).hasNext()) {
               break;
             }
             if (((StoryVideoItem)((Iterator)localObject).next()).mVid.equals(paramDeleteStoryVideoEvent.a)) {
-              i = 1;
+              j = 1;
             }
           }
         }
@@ -55,7 +55,7 @@ public final class FeedManager$DeleteVideoEventReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.FeedManager.DeleteVideoEventReceiver
  * JD-Core Version:    0.7.0.1
  */

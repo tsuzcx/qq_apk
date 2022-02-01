@@ -9,6 +9,7 @@ import android.graphics.CornerPathEffect;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Path.Direction;
+import android.graphics.PathEffect;
 import android.graphics.Point;
 import android.graphics.RectF;
 import android.os.Build.VERSION;
@@ -16,7 +17,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.widget.RelativeLayout;
-import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.qqui.R.styleable;
 import com.tencent.qphone.base.util.QLog;
 
 public class BubbleLayout
@@ -43,15 +44,16 @@ public class BubbleLayout
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.AddContactBubbleLayout);
-    this.b = paramContext.getColor(0, -1);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.jdField_g_of_type_ArrayOfInt);
+    this.b = paramContext.getColor(R.styleable.jdField_a_of_type_Int, -1);
     this.jdField_a_of_type_Int = Color.parseColor("#F5F6FA");
-    int i = paramContext.getColor(4, Color.parseColor("#999999"));
-    int j = paramContext.getDimensionPixelSize(5, (int)TypedValue.applyDimension(0, 0.0F, getResources().getDisplayMetrics()));
-    this.c = paramContext.getDimensionPixelSize(1, 0);
-    this.jdField_a_of_type_Float = paramContext.getDimensionPixelSize(6, 0);
-    this.d = paramContext.getInt(2, 4);
-    this.e = paramContext.getDimensionPixelOffset(3, 0);
+    int i = paramContext.getColor(R.styleable.e, Color.parseColor("#999999"));
+    int j = (int)TypedValue.applyDimension(0, 0.0F, getResources().getDisplayMetrics());
+    j = paramContext.getDimensionPixelSize(R.styleable.f, j);
+    this.c = paramContext.getDimensionPixelSize(R.styleable.b, 0);
+    this.jdField_a_of_type_Float = paramContext.getDimensionPixelSize(R.styleable.jdField_g_of_type_Int, 0);
+    this.d = paramContext.getInt(R.styleable.c, 4);
+    this.e = paramContext.getDimensionPixelOffset(R.styleable.d, 0);
     paramContext.recycle();
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
@@ -71,32 +73,42 @@ public class BubbleLayout
       return;
     }
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.c, this.c, Path.Direction.CCW);
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsPath;
+    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    int j = this.c;
+    ((Path)localObject).addRoundRect(localRectF, j, j, Path.Direction.CCW);
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_AndroidGraphicsPath.moveTo(this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y - i);
       this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsPoint.x - i, this.jdField_a_of_type_AndroidGraphicsPoint.y);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsPoint.x, i + this.jdField_a_of_type_AndroidGraphicsPoint.y);
-      CornerPathEffect localCornerPathEffect = new CornerPathEffect(this.jdField_a_of_type_Float);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setPathEffect(localCornerPathEffect);
+      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y + i);
+      localObject = new CornerPathEffect(this.jdField_a_of_type_Float);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setPathEffect((PathEffect)localObject);
     }
     paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
   private void b()
   {
-    switch (this.d)
+    int i = this.d;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-    case 3: 
+      if (i != 2)
+      {
+        if (i == 3) {
+          break label45;
+        }
+        if (i != 4) {
+          return;
+        }
+      }
       localPoint = this.jdField_a_of_type_AndroidGraphicsPoint;
-      localPoint.y += this.e;
+      localPoint.x += this.e;
       return;
     }
+    label45:
     Point localPoint = this.jdField_a_of_type_AndroidGraphicsPoint;
-    localPoint.x += this.e;
+    localPoint.y += this.e;
   }
   
   private void b(Canvas paramCanvas)
@@ -106,14 +118,17 @@ public class BubbleLayout
       return;
     }
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.c, this.c, Path.Direction.CCW);
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsPath;
+    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    int j = this.c;
+    ((Path)localObject).addRoundRect(localRectF, j, j, Path.Direction.CCW);
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_AndroidGraphicsPath.moveTo(this.jdField_a_of_type_AndroidGraphicsPoint.x + i, this.jdField_a_of_type_AndroidGraphicsPoint.y);
       this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y - i);
       this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsPoint.x - i, this.jdField_a_of_type_AndroidGraphicsPoint.y);
-      CornerPathEffect localCornerPathEffect = new CornerPathEffect(this.jdField_a_of_type_Float);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setPathEffect(localCornerPathEffect);
+      localObject = new CornerPathEffect(this.jdField_a_of_type_Float);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setPathEffect((PathEffect)localObject);
     }
     paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
@@ -125,14 +140,17 @@ public class BubbleLayout
       return;
     }
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.c, this.c, Path.Direction.CCW);
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsPath;
+    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    int j = this.c;
+    ((Path)localObject).addRoundRect(localRectF, j, j, Path.Direction.CCW);
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_AndroidGraphicsPath.moveTo(this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y - i);
       this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsPoint.x + i, this.jdField_a_of_type_AndroidGraphicsPoint.y);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsPoint.x, i + this.jdField_a_of_type_AndroidGraphicsPoint.y);
-      CornerPathEffect localCornerPathEffect = new CornerPathEffect(this.jdField_a_of_type_Float);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setPathEffect(localCornerPathEffect);
+      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y + i);
+      localObject = new CornerPathEffect(this.jdField_a_of_type_Float);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setPathEffect((PathEffect)localObject);
     }
     paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
@@ -144,100 +162,129 @@ public class BubbleLayout
       return;
     }
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.c, this.c, Path.Direction.CCW);
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsPath;
+    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    int j = this.c;
+    ((Path)localObject).addRoundRect(localRectF, j, j, Path.Direction.CCW);
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.c, this.c, Path.Direction.CCW);
+      localObject = this.jdField_a_of_type_AndroidGraphicsPath;
+      localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+      j = this.c;
+      ((Path)localObject).addRoundRect(localRectF, j, j, Path.Direction.CCW);
       this.jdField_a_of_type_AndroidGraphicsPath.moveTo(this.jdField_a_of_type_AndroidGraphicsPoint.x + i, this.jdField_a_of_type_AndroidGraphicsPoint.y);
       this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y + i);
       this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsPoint.x - i, this.jdField_a_of_type_AndroidGraphicsPoint.y);
-      if (Build.VERSION.SDK_INT <= 21) {
-        break label189;
+      if (Build.VERSION.SDK_INT > 21)
+      {
+        localObject = new CornerPathEffect(this.jdField_a_of_type_Float);
+        this.jdField_a_of_type_AndroidGraphicsPaint.setPathEffect((PathEffect)localObject);
       }
-      CornerPathEffect localCornerPathEffect = new CornerPathEffect(this.jdField_a_of_type_Float);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setPathEffect(localCornerPathEffect);
+      else
+      {
+        this.jdField_a_of_type_AndroidGraphicsPath.close();
+      }
     }
-    for (;;)
-    {
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-      return;
-      label189:
-      this.jdField_a_of_type_AndroidGraphicsPath.close();
-    }
+    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
   public void a()
   {
-    switch (this.d)
+    int i = this.d;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-    case 3: 
+      if (i != 2)
+      {
+        if (i == 3) {
+          break label45;
+        }
+        if (i != 4) {
+          return;
+        }
+      }
       localPoint = this.jdField_a_of_type_AndroidGraphicsPoint;
-      localPoint.y -= this.e;
+      localPoint.x -= this.e;
       return;
     }
+    label45:
     Point localPoint = this.jdField_a_of_type_AndroidGraphicsPoint;
-    localPoint.x -= this.e;
+    localPoint.y -= this.e;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if ((this.jdField_a_of_type_AndroidGraphicsPoint.x > 0) && (this.jdField_a_of_type_AndroidGraphicsPoint.y > 0))
-    {
-      if (!this.jdField_a_of_type_Boolean) {
-        break label77;
-      }
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.b);
-    }
-    for (;;)
-    {
-      switch (this.d)
-      {
-      default: 
-        return;
-        label77:
+    if ((this.jdField_a_of_type_AndroidGraphicsPoint.x > 0) && (this.jdField_a_of_type_AndroidGraphicsPoint.y > 0)) {
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.b);
+      } else {
         this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
       }
     }
+    int i = this.d;
+    if (i != 1)
+    {
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4) {
+            return;
+          }
+          d(paramCanvas);
+          return;
+        }
+        c(paramCanvas);
+        return;
+      }
+      b(paramCanvas);
+      return;
+    }
     a(paramCanvas);
-    return;
-    b(paramCanvas);
-    return;
-    c(paramCanvas);
-    return;
-    d(paramCanvas);
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_a_of_type_AndroidGraphicsRectF.left = getPaddingLeft();
     this.jdField_a_of_type_AndroidGraphicsRectF.top = getPaddingTop();
     this.jdField_a_of_type_AndroidGraphicsRectF.right = (paramInt1 - getPaddingRight());
     this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (paramInt2 - getPaddingBottom());
-    switch (this.d)
+    paramInt3 = this.d;
+    if (paramInt3 != 1)
     {
-    }
-    for (;;)
-    {
-      if (this.e != 0) {
-        b();
+      Point localPoint;
+      if (paramInt3 != 2)
+      {
+        if (paramInt3 != 3)
+        {
+          if (paramInt3 == 4)
+          {
+            localPoint = this.jdField_a_of_type_AndroidGraphicsPoint;
+            localPoint.x = (paramInt1 / 2);
+            localPoint.y = (paramInt2 - getPaddingBottom());
+          }
+        }
+        else
+        {
+          this.jdField_a_of_type_AndroidGraphicsPoint.x = (paramInt1 - getPaddingRight());
+          this.jdField_a_of_type_AndroidGraphicsPoint.y = (paramInt2 / 2);
+        }
       }
-      return;
+      else
+      {
+        localPoint = this.jdField_a_of_type_AndroidGraphicsPoint;
+        localPoint.x = (paramInt1 / 2);
+        localPoint.y = getPaddingTop();
+      }
+    }
+    else
+    {
       this.jdField_a_of_type_AndroidGraphicsPoint.x = getPaddingLeft();
       this.jdField_a_of_type_AndroidGraphicsPoint.y = (paramInt2 / 2);
-      continue;
-      this.jdField_a_of_type_AndroidGraphicsPoint.x = (paramInt1 / 2);
-      this.jdField_a_of_type_AndroidGraphicsPoint.y = getPaddingTop();
-      continue;
-      this.jdField_a_of_type_AndroidGraphicsPoint.x = (paramInt1 - getPaddingRight());
-      this.jdField_a_of_type_AndroidGraphicsPoint.y = (paramInt2 / 2);
-      continue;
-      this.jdField_a_of_type_AndroidGraphicsPoint.x = (paramInt1 / 2);
-      this.jdField_a_of_type_AndroidGraphicsPoint.y = (paramInt2 - getPaddingBottom());
+    }
+    if (this.e != 0) {
+      b();
     }
   }
   
@@ -283,7 +330,7 @@ public class BubbleLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.findtroop.BubbleLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -21,15 +21,18 @@ public class DetailLikeListLoader$GetLikeListRequest
   
   public BaseResponse a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspFeedLikeList localRspFeedLikeList = new qqstory_service.RspFeedLikeList();
+    Object localObject = new qqstory_service.RspFeedLikeList();
     try
     {
-      localRspFeedLikeList.mergeFrom(paramArrayOfByte);
-      return new DetailLikeListLoader.GetLikeListResponse(localRspFeedLikeList);
+      ((qqstory_service.RspFeedLikeList)localObject).mergeFrom(paramArrayOfByte);
+      return new DetailLikeListLoader.GetLikeListResponse((qqstory_service.RspFeedLikeList)localObject);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      SLog.d("Q.qqstory:GetLikeListRequest", "" + paramArrayOfByte);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(paramArrayOfByte);
+      SLog.d("Q.qqstory:GetLikeListRequest", ((StringBuilder)localObject).toString());
     }
     return null;
   }
@@ -39,29 +42,40 @@ public class DetailLikeListLoader$GetLikeListRequest
     return StoryApi.a("StorySvc.feed_like_list_715");
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqFeedLikeList localReqFeedLikeList = new qqstory_service.ReqFeedLikeList();
     localReqFeedLikeList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 2;; i = 1)
-    {
-      localReqFeedLikeList.source.set(i);
-      if (this.c != -1) {
-        localReqFeedLikeList.type.set(this.c);
-      }
-      return localReqFeedLikeList.toByteArray();
+    int i;
+    if (this.jdField_a_of_type_Boolean) {
+      i = 2;
+    } else {
+      i = 1;
     }
+    localReqFeedLikeList.source.set(i);
+    if (this.c != -1) {
+      localReqFeedLikeList.type.set(this.c);
+    }
+    return localReqFeedLikeList.toByteArray();
   }
   
   public String toString()
   {
-    return "GetLikeListRequest{, feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isOpen=" + this.jdField_a_of_type_Boolean + ", type=" + this.c + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetLikeListRequest{, feedId='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", isOpen=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.model.DetailLikeListLoader.GetLikeListRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -20,41 +20,40 @@ public class QZoneFeedsServlet
     if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
     {
       paramIntent = paramFromServiceMsg.getWupBuffer();
-      arrayOfInt = new int[1];
+      int[] arrayOfInt = new int[1];
       paramIntent = QZoneNewestFeedRequest.onResponse(paramIntent, (QQAppInterface)getAppRuntime(), arrayOfInt);
       if (paramIntent != null)
       {
         paramFromServiceMsg = new Bundle();
         paramFromServiceMsg.putSerializable("data", paramIntent);
         notifyObserver(null, 1001, true, paramFromServiceMsg, QZoneObserver.class);
+        return;
       }
-    }
-    while (paramFromServiceMsg == null)
-    {
-      int[] arrayOfInt;
-      return;
       if (QLog.isColorLevel()) {
         QLog.d("QZoneFeedsServlet", 2, new Object[] { "inform QZoneFeedsServlet isSuccess false:", paramFromServiceMsg.getBusinessFailMsg() });
       }
       notifyObserver(null, 1001, false, new Bundle(), QZoneObserver.class);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneFeedsServlet", 2, "inform QZoneFeedsServlet resultcode fail.");
+    if (paramFromServiceMsg != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QZoneFeedsServlet", 2, "inform QZoneFeedsServlet resultcode fail.");
+      }
+      notifyObserver(null, 1001, false, new Bundle(), QZoneObserver.class);
     }
-    notifyObserver(null, 1001, false, new Bundle(), QZoneObserver.class);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    if (paramIntent == null) {}
-    long l1;
-    do
-    {
+    if (paramIntent == null) {
       return;
-      l1 = paramIntent.getLongExtra("selfuin", 0L);
-      localObject1 = paramIntent.getLongArrayExtra("hostuin");
-    } while (localObject1 == null);
+    }
+    long l1 = paramIntent.getLongExtra("selfuin", 0L);
+    Object localObject1 = paramIntent.getLongArrayExtra("hostuin");
+    if (localObject1 == null) {
+      return;
+    }
     Object localObject2 = new ArrayList(localObject1.length);
     int j = localObject1.length;
     int i = 0;
@@ -66,21 +65,23 @@ public class QZoneFeedsServlet
     long l2 = paramIntent.getLongExtra("lasttime", 0L);
     i = paramIntent.getIntExtra("src", 0);
     localObject2 = new QZoneNewestFeedRequest(l1, (ArrayList)localObject2, l2, paramIntent.getStringExtra("refer"), i);
-    Object localObject1 = ((QZoneNewestFeedRequest)localObject2).encode();
+    localObject1 = ((QZoneNewestFeedRequest)localObject2).encode();
     paramIntent.putExtra("key_cmd_string", ((QZoneNewestFeedRequest)localObject2).getCmdString());
-    if (localObject1 == null) {}
-    for (paramIntent = new byte[4];; paramIntent = (Intent)localObject1)
-    {
-      paramPacket.setTimeout(60000L);
-      paramPacket.setSSOCommand("SQQzoneSvc." + "getAIONewestFeed");
-      paramPacket.putSendData(paramIntent);
-      return;
+    paramIntent = (Intent)localObject1;
+    if (localObject1 == null) {
+      paramIntent = new byte[4];
     }
+    paramPacket.setTimeout(60000L);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("SQQzoneSvc.");
+    ((StringBuilder)localObject1).append("getAIONewestFeed");
+    paramPacket.setSSOCommand(((StringBuilder)localObject1).toString());
+    paramPacket.putSendData(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.QZoneFeedsServlet
  * JD-Core Version:    0.7.0.1
  */

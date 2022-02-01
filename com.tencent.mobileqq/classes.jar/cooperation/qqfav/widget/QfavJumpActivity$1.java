@@ -15,21 +15,17 @@ class QfavJumpActivity$1
     try
     {
       this.jdField_a_of_type_JavaIoInputStream.close();
-      this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity.finish();
-      return;
     }
     catch (IOException paramDialogInterface)
     {
-      for (;;)
-      {
-        paramDialogInterface.printStackTrace();
-      }
+      paramDialogInterface.printStackTrace();
     }
+    this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqfav.widget.QfavJumpActivity.1
  * JD-Core Version:    0.7.0.1
  */

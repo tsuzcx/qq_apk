@@ -16,13 +16,13 @@ class FavEmosmViewPage$5
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    FavEmosmViewPage.b(this.a);
+    this.a.j();
     ReportController.b(FavEmosmViewPage.a(this.a), "CliOper", "", "", "0X800A6D6", "0X800A6D6", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.FavEmosmViewPage.5
  * JD-Core Version:    0.7.0.1
  */

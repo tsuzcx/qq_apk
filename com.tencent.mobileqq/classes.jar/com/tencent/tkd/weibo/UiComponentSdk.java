@@ -11,7 +11,7 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/weibo/UiComponentSdk;", "", "()V", "colorStrategy", "Lcom/tencent/tkd/weibo/framework/color/IComponentColorStrategy;", "getColorStrategy$tkd_weibo_component_release", "()Lcom/tencent/tkd/weibo/framework/color/IComponentColorStrategy;", "setColorStrategy$tkd_weibo_component_release", "(Lcom/tencent/tkd/weibo/framework/color/IComponentColorStrategy;)V", "hasInited", "Ljava/util/concurrent/atomic/AtomicBoolean;", "value", "", "isNightMode", "()Z", "setNightMode", "(Z)V", "mSdkConfig", "Lcom/tencent/tkd/weibo/UiComponentSdkConfig;", "sdkConfig", "getSdkConfig", "()Lcom/tencent/tkd/weibo/UiComponentSdkConfig;", "initial", "", "config", "Companion", "tkd-weibo-component_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/weibo/UiComponentSdk;", "", "()V", "colorStrategy", "Lcom/tencent/tkd/weibo/framework/color/IComponentColorStrategy;", "getColorStrategy$tkd_weibo_component_release", "()Lcom/tencent/tkd/weibo/framework/color/IComponentColorStrategy;", "setColorStrategy$tkd_weibo_component_release", "(Lcom/tencent/tkd/weibo/framework/color/IComponentColorStrategy;)V", "hasInited", "Ljava/util/concurrent/atomic/AtomicBoolean;", "value", "", "isNightMode", "()Z", "setNightMode", "(Z)V", "mSdkConfig", "Lcom/tencent/tkd/weibo/UiComponentSdkConfig;", "sdkConfig", "getSdkConfig", "()Lcom/tencent/tkd/weibo/UiComponentSdkConfig;", "initial", "", "config", "release", "Companion", "tkd-weibo-component_release"}, k=1, mv={1, 1, 16})
 public final class UiComponentSdk
 {
   public static final UiComponentSdk.Companion a;
@@ -43,6 +43,11 @@ public final class UiComponentSdk
     return this.jdField_a_of_type_ComTencentTkdWeiboFrameworkColorIComponentColorStrategy;
   }
   
+  public final void a()
+  {
+    a().a();
+  }
+  
   public final void a(@NotNull UiComponentSdkConfig paramUiComponentSdkConfig)
   {
     Intrinsics.checkParameterIsNotNull(paramUiComponentSdkConfig, "config");
@@ -60,12 +65,13 @@ public final class UiComponentSdk
   public final void a(boolean paramBoolean)
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (IComponentColorStrategy localIComponentColorStrategy = (IComponentColorStrategy)new LightColorStrategy();; localIComponentColorStrategy = (IComponentColorStrategy)new DarkColorStrategy())
-    {
-      this.jdField_a_of_type_ComTencentTkdWeiboFrameworkColorIComponentColorStrategy = localIComponentColorStrategy;
-      return;
+    Object localObject;
+    if (!this.jdField_a_of_type_Boolean) {
+      localObject = new LightColorStrategy();
+    } else {
+      localObject = new DarkColorStrategy();
     }
+    this.jdField_a_of_type_ComTencentTkdWeiboFrameworkColorIComponentColorStrategy = ((IComponentColorStrategy)localObject);
   }
   
   public final boolean a()
@@ -75,7 +81,7 @@ public final class UiComponentSdk
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.weibo.UiComponentSdk
  * JD-Core Version:    0.7.0.1
  */

@@ -63,34 +63,49 @@ public class TagItem$TagInfoBase
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (TagInfoBase)paramObject;
       if (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long) {
         return false;
       }
-    } while (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int);
+      return this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int;
+    }
     return false;
   }
   
   public int hashCode()
   {
-    return (int)(this.jdField_a_of_type_Long ^ this.jdField_a_of_type_Long >>> 32) * 31 + this.jdField_a_of_type_Int;
+    long l = this.jdField_a_of_type_Long;
+    return (int)(l ^ l >>> 32) * 31 + this.jdField_a_of_type_Int;
   }
   
   public String toString()
   {
-    return "TagInfoBase{id=" + this.jdField_a_of_type_Long + ", name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", desc='" + this.jdField_b_of_type_JavaLangString + '\'' + ", type=" + this.jdField_a_of_type_Int + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TagInfoBase{id=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", name='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", desc='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.tag.TagItem.TagInfoBase
  * JD-Core Version:    0.7.0.1
  */

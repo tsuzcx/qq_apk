@@ -128,13 +128,28 @@ public class ETFont
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (ETFont)paramObject;
-    } while ((this.mFontId != paramObject.mFontId) || (this.mFontSize != paramObject.mFontSize) || (this.mFontStyle != paramObject.mFontStyle) || (this.mDiyHandle != paramObject.mDiyHandle));
-    return true;
+    }
+    paramObject = (ETFont)paramObject;
+    boolean bool1 = bool2;
+    if (this.mFontId == paramObject.mFontId)
+    {
+      bool1 = bool2;
+      if (this.mFontSize == paramObject.mFontSize)
+      {
+        bool1 = bool2;
+        if (this.mFontStyle == paramObject.mFontStyle)
+        {
+          bool1 = bool2;
+          if (this.mDiyHandle == paramObject.mDiyHandle) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public int getColor()
@@ -179,12 +194,14 @@ public class ETFont
   
   public void onDestroy()
   {
-    if (0L != this.mDiyHandle) {
-      ETDIYConfig.a(this.mDiyHandle);
+    long l = this.mDiyHandle;
+    if (0L != l) {
+      ETDIYConfig.a(l);
     }
-    if (this.mSubstitution != 0L)
+    l = this.mSubstitution;
+    if (l != 0L)
     {
-      ETSubstitutionConfig.a(this.mSubstitution);
+      ETSubstitutionConfig.a(l);
       this.mDiyFontImageId = "";
     }
   }
@@ -261,22 +278,20 @@ public class ETFont
   
   public void setSize(float paramFloat)
   {
-    int i = 8;
     int j = (int)paramFloat;
-    if (j < 8) {}
-    for (;;)
-    {
-      this.mFontSize = i;
-      return;
-      i = j;
+    int i = j;
+    if (j < 8) {
+      i = 8;
     }
+    this.mFontSize = i;
   }
   
   public void set_substitution(long paramLong)
   {
-    if (this.mSubstitution != 0L)
+    long l = this.mSubstitution;
+    if (l != 0L)
     {
-      ETSubstitutionConfig.a(this.mSubstitution);
+      ETSubstitutionConfig.a(l);
       this.mSubstitution = 0L;
     }
     this.mSubstitution = paramLong;
@@ -284,12 +299,29 @@ public class ETFont
   
   public String toString()
   {
-    return "ETFont{mFontId=" + this.mFontId + ", mFontPath='" + this.mFontPath + '\'' + ", mText=" + this.mText + ", color = " + this.mFontColor + ", style = " + this.mFontStyle + ", size = " + this.mFontSize + ", diyHandle = " + this.mDiyHandle + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ETFont{mFontId=");
+    localStringBuilder.append(this.mFontId);
+    localStringBuilder.append(", mFontPath='");
+    localStringBuilder.append(this.mFontPath);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mText=");
+    localStringBuilder.append(this.mText);
+    localStringBuilder.append(", color = ");
+    localStringBuilder.append(this.mFontColor);
+    localStringBuilder.append(", style = ");
+    localStringBuilder.append(this.mFontStyle);
+    localStringBuilder.append(", size = ");
+    localStringBuilder.append(this.mFontSize);
+    localStringBuilder.append(", diyHandle = ");
+    localStringBuilder.append(this.mDiyHandle);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.ETFont
  * JD-Core Version:    0.7.0.1
  */

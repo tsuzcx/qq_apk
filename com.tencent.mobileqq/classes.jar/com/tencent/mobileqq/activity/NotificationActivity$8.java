@@ -4,7 +4,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.mobileqq.qqsec.api.ISecControllerInterface;
 import org.json.JSONObject;
 
 class NotificationActivity$8
@@ -23,10 +23,10 @@ class NotificationActivity$8
       paramDialogInterface.put("via", "ANDROIDQQ.NEICE.OTHER");
       paramDialogInterface.put("appPackageName", this.jdField_a_of_type_JavaLangString);
       paramDialogInterface.put("channel", "000316053134377c30");
-      paramDialogInterface.put("appAuthorizedStr", NotificationActivity.access$200(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity));
+      paramDialogInterface.put("appAuthorizedStr", NotificationActivity.access$300(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity));
       paramDialogInterface = paramDialogInterface.toString();
-      MyAppApi.a().a(paramDialogInterface, new NotificationActivity.8.1(this), this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity);
-      NotificationActivity.access$302(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, true);
+      NotificationActivity.access$100().a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, paramDialogInterface);
+      NotificationActivity.access$402(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, true);
       return;
     }
     catch (Exception paramDialogInterface)
@@ -37,7 +37,7 @@ class NotificationActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotificationActivity.8
  * JD-Core Version:    0.7.0.1
  */

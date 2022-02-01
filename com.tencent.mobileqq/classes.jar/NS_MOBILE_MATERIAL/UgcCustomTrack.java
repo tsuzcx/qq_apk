@@ -33,14 +33,15 @@ public final class UgcCustomTrack
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iItemId, 0);
-    if (this.strExtFields != null) {
-      paramJceOutputStream.write(this.strExtFields, 1);
+    byte[] arrayOfByte = this.strExtFields;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.UgcCustomTrack
  * JD-Core Version:    0.7.0.1
  */

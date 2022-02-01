@@ -1,7 +1,7 @@
 package com.tencent.av.app;
 
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
@@ -12,8 +12,19 @@ class DeviceCapabilityExamination$DownloadInfo
   
   void a(String paramString, boolean paramBoolean)
   {
-    QLog.w("DeviceCapabilityExamination", 1, "setDownloadFinish, md5[" + paramString + "], suc[" + paramBoolean + "], time[" + this.b.get(paramString) + "]");
-    AudioHelper.c(HardCodeUtil.a(2131703198) + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setDownloadFinish, md5[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("], suc[");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("], time[");
+    localStringBuilder.append(this.b.get(paramString));
+    localStringBuilder.append("]");
+    QLog.w("DeviceCapabilityExamination", 1, localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(HardCodeUtil.a(2131703330));
+    localStringBuilder.append(paramBoolean);
+    AudioHelper.c(localStringBuilder.toString());
     this.a.remove(paramString);
     this.b.remove(paramString);
   }
@@ -27,7 +38,13 @@ class DeviceCapabilityExamination$DownloadInfo
   {
     if (this.a.get(paramString1) != null)
     {
-      QLog.w("DeviceCapabilityExamination", 1, "isDownloading, md5[" + paramString1 + "], time[" + this.b.get(paramString1) + "]");
+      paramString2 = new StringBuilder();
+      paramString2.append("isDownloading, md5[");
+      paramString2.append(paramString1);
+      paramString2.append("], time[");
+      paramString2.append(this.b.get(paramString1));
+      paramString2.append("]");
+      QLog.w("DeviceCapabilityExamination", 1, paramString2.toString());
       return true;
     }
     this.a.put(paramString1, paramString2);
@@ -37,7 +54,7 @@ class DeviceCapabilityExamination$DownloadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.app.DeviceCapabilityExamination.DownloadInfo
  * JD-Core Version:    0.7.0.1
  */

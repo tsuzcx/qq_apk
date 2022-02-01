@@ -9,7 +9,7 @@ public class StudyRoomJsPlugin
 {
   private final TroopMemberApiClient a = TroopMemberApiClient.a();
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if (("studyroom".equals(paramString2)) && ("predownload".equals(paramString3)))
     {
@@ -19,13 +19,13 @@ public class StudyRoomJsPlugin
     return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
     this.a.a();
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
     this.a.b();
@@ -33,7 +33,7 @@ public class StudyRoomJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.StudyRoomJsPlugin
  * JD-Core Version:    0.7.0.1
  */

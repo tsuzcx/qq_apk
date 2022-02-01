@@ -18,13 +18,16 @@ public class OkHttpDNS
   
   public List<InetAddress> lookup(String paramString)
   {
-    QDLog.i("downloader", "OkHttpDNS lookup:" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OkHttpDNS lookup:");
+    localStringBuilder.append(paramString);
+    QDLog.i("downloader", localStringBuilder.toString());
     return this.okHttpDNSManager.getAllByName(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.module.common.dns.OkHttpDNS
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,15 @@
 package com.tencent.biz.qcircleshadow.lib;
 
-import com.tencent.mobileqq.qcircle.tempapi.api.IQZoneHelper;
-import com.tencent.mobileqq.qroute.QRoute;
-
 public class QCircleHostConstants$_QQStoryMainActivity
 {
   public static int REQUEST_CODE_TAKE_VIDEO()
   {
-    return ((IQZoneHelper)QRoute.api(IQZoneHelper.class)).REQUEST_CODE_TAKE_VIDEO();
+    return 20000;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.QCircleHostConstants._QQStoryMainActivity
  * JD-Core Version:    0.7.0.1
  */

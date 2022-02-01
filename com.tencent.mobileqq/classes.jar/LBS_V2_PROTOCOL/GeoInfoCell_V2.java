@@ -44,21 +44,24 @@ public final class GeoInfoCell_V2
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stGps != null) {
-      paramJceOutputStream.write(this.stGps, 0);
+    Object localObject = this.stGps;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.stGeoInfo != null) {
-      paramJceOutputStream.write(this.stGeoInfo, 1);
+    localObject = this.stGeoInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
     paramJceOutputStream.write(this.iRet, 2);
-    if (this.stClientGps != null) {
-      paramJceOutputStream.write(this.stClientGps, 3);
+    localObject = this.stClientGps;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     LBS_V2_PROTOCOL.GeoInfoCell_V2
  * JD-Core Version:    0.7.0.1
  */

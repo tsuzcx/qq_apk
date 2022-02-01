@@ -3,10 +3,10 @@ package com.tencent.mobileqq.apollo.statistics.trace.sdk.state;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.api.statistics.trace.data.AnnotationData;
-import com.tencent.mobileqq.apollo.api.statistics.trace.data.ResultData;
-import com.tencent.mobileqq.apollo.api.statistics.trace.data.SpanData;
-import com.tencent.mobileqq.apollo.api.statistics.trace.data.TraceData;
+import com.tencent.mobileqq.apollo.statistics.trace.data.AnnotationData;
+import com.tencent.mobileqq.apollo.statistics.trace.data.ResultData;
+import com.tencent.mobileqq.apollo.statistics.trace.data.SpanData;
+import com.tencent.mobileqq.apollo.statistics.trace.data.TraceData;
 import com.tencent.mobileqq.apollo.statistics.trace.sdk.TraceConfig;
 import com.tencent.mobileqq.apollo.statistics.trace.sdk.TraceReportInstance;
 import com.tencent.mobileqq.apollo.statistics.trace.sdk.TraceUtil;
@@ -24,7 +24,7 @@ public class TraceStateControl
   implements TraceStateMachineScheduler.StateMachine, TraceStateMachineScheduler.TimeOutState
 {
   private int jdField_a_of_type_Int = 0;
-  private TraceData jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData = new TraceData();
+  private TraceData jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData = new TraceData();
   private TraceConfig jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig;
   private TraceStateMachineScheduler jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkStateTraceStateMachineScheduler;
   private ConcurrentHashMap<Integer, SpanData> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
@@ -32,16 +32,17 @@ public class TraceStateControl
   
   public TraceStateControl(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.featureId = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.version = "8.5.5";
+    TraceData localTraceData = this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData;
+    localTraceData.featureId = paramInt;
+    localTraceData.version = "8.7.0";
     this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkStateTraceStateMachineScheduler = new TraceStateMachineScheduler(this);
     this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig = TraceReportInstance.a().a();
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig.b(paramInt)) {}
-    for (paramInt = -1;; paramInt = this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig.b())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkStateTraceStateMachineScheduler.a(paramInt, this);
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig.b(paramInt)) {
+      paramInt = -1;
+    } else {
+      paramInt = this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig.b();
     }
+    this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkStateTraceStateMachineScheduler.a(paramInt, this);
   }
   
   private long a()
@@ -51,60 +52,57 @@ public class TraceStateControl
   
   private int b(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.traceId = a();
-    this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.timestamp = paramBundle.getLong("timestamp");
-    this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.startTime = paramBundle.getLong("startTime");
-    this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.serverTime = paramBundle.getLong("serverTime");
-    this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.featureKey = paramBundle.getString("featureKey");
-    this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.isSampleFocus = paramBundle.getBoolean("isSampleFocus");
-    this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.initJavaHeap = paramBundle.getInt("initJavaHeap");
-    this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.initNativeHeap = paramBundle.getInt("initNativeHeap");
+    this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.traceId = a();
+    this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.timestamp = paramBundle.getLong("timestamp");
+    this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.startTime = paramBundle.getLong("startTime");
+    this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.serverTime = paramBundle.getLong("serverTime");
+    this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.featureKey = paramBundle.getString("featureKey");
+    this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.isSampleFocus = paramBundle.getBoolean("isSampleFocus");
+    this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.initJavaHeap = paramBundle.getInt("initJavaHeap");
+    this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.initNativeHeap = paramBundle.getInt("initNativeHeap");
     return -1;
   }
   
   private int c(Bundle paramBundle)
   {
     int i = paramBundle.getInt("spanId");
-    int j = paramBundle.getInt("errCode", -100);
-    Object localObject = paramBundle.getString("msg");
+    String str = paramBundle.getString("msg");
     long l1 = paramBundle.getLong("timestamp");
     long l2 = paramBundle.getLong("serverTime");
     long l3 = paramBundle.getLong("startTime");
-    int k = paramBundle.getInt("extKey");
+    int j = paramBundle.getInt("extKey");
     long l4 = paramBundle.getLong("extValue");
-    paramBundle = (SpanData)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));
-    if (paramBundle == null)
+    Object localObject2 = (SpanData)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      paramBundle = new SpanData(i);
-      paramBundle.c = l3;
-      paramBundle.jdField_a_of_type_Long = l1;
-      paramBundle.b = l2;
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(i), paramBundle);
+      localObject1 = new SpanData(i);
+      ((SpanData)localObject1).c = l3;
+      ((SpanData)localObject1).jdField_a_of_type_Long = l1;
+      ((SpanData)localObject1).b = l2;
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(i), localObject1);
     }
-    for (;;)
+    if (!TextUtils.isEmpty(str))
     {
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        if (paramBundle.jdField_a_of_type_JavaUtilConcurrentBlockingQueue == null) {
-          paramBundle.jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
-        }
-        localObject = a((String)localObject, l1, l2);
-        paramBundle.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localObject);
+      if (((SpanData)localObject1).jdField_a_of_type_JavaUtilConcurrentBlockingQueue == null) {
+        ((SpanData)localObject1).jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
       }
-      if (k > 0)
-      {
-        if (paramBundle.jdField_a_of_type_JavaUtilMap == null) {
-          paramBundle.jdField_a_of_type_JavaUtilMap = new HashMap();
-        }
-        paramBundle.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(k), Long.valueOf(l4));
-      }
-      if (j != -100)
-      {
-        this.jdField_a_of_type_Int = 2;
-        return 0;
-      }
-      return -1;
+      localObject2 = a(str, l1, l2);
+      ((SpanData)localObject1).jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localObject2);
     }
+    if (j > 0)
+    {
+      if (((SpanData)localObject1).jdField_a_of_type_JavaUtilMap == null) {
+        ((SpanData)localObject1).jdField_a_of_type_JavaUtilMap = new HashMap();
+      }
+      ((SpanData)localObject1).jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(j), Long.valueOf(l4));
+    }
+    if (paramBundle.getInt("errCode", -100) != -100)
+    {
+      this.jdField_a_of_type_Int = 2;
+      return 0;
+    }
+    return -1;
   }
   
   private void c()
@@ -117,29 +115,29 @@ public class TraceStateControl
   private int d(Bundle paramBundle)
   {
     int i = paramBundle.getInt("spanId");
-    int j = paramBundle.getInt("errCode");
-    long l = paramBundle.getLong("endTime");
-    paramBundle = paramBundle.getString("featureKey");
-    TraceReportInstance.a().a(this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.featureId, paramBundle);
-    paramBundle = (SpanData)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));
-    if (paramBundle == null) {
-      throw new IllegalArgumentException("illegal span");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.mSpanQueue == null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.mSpanQueue = new LinkedBlockingQueue();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.mSpanQueue.contains(paramBundle)) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.mSpanQueue.remove(paramBundle);
-    }
-    paramBundle.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataResultData = a(j, paramBundle.c, l);
-    paramBundle.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.mSpanQueue.offer(paramBundle);
-    if (j != 0)
+    paramBundle.getString("featureKey");
+    SpanData localSpanData = (SpanData)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));
+    if (localSpanData != null)
     {
-      this.jdField_a_of_type_Int = 3;
-      return 0;
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.mSpanQueue == null) {
+        this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.mSpanQueue = new LinkedBlockingQueue();
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.mSpanQueue.contains(localSpanData)) {
+        this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.mSpanQueue.remove(localSpanData);
+      }
+      i = paramBundle.getInt("errCode");
+      long l = paramBundle.getLong("endTime");
+      localSpanData.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataResultData = a(i, localSpanData.c, l);
+      localSpanData.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.mSpanQueue.offer(localSpanData);
+      if (i != 0)
+      {
+        this.jdField_a_of_type_Int = 3;
+        return 0;
+      }
+      return -1;
     }
-    return -1;
+    throw new IllegalArgumentException("illegal span");
   }
   
   private void d()
@@ -155,12 +153,12 @@ public class TraceStateControl
         }
         AnnotationData localAnnotationData = a("timeout fail", 0L, 0L);
         localSpanData.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localAnnotationData);
-        if (this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.mSpanQueue == null) {
-          this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.mSpanQueue = new LinkedBlockingQueue();
+        if (this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.mSpanQueue == null) {
+          this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.mSpanQueue = new LinkedBlockingQueue();
         }
-        localSpanData.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataResultData = a(-101, localSpanData.c, localSpanData.c);
+        localSpanData.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataResultData = a(-101, localSpanData.c, localSpanData.c);
         localSpanData.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.mSpanQueue.offer(localSpanData);
+        this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.mSpanQueue.offer(localSpanData);
       }
     }
   }
@@ -169,66 +167,87 @@ public class TraceStateControl
   {
     this.jdField_a_of_type_Boolean = true;
     int j = paramBundle.getInt("featureId");
-    String str2 = paramBundle.getString("featureKey");
+    Object localObject2 = paramBundle.getString("featureKey");
     int i = j;
     if (j == 0) {
-      i = this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.featureId;
+      i = this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.featureId;
     }
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.featureKey;
+    Object localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.featureKey;
     }
-    j = TraceReportInstance.a().a(i, str1);
-    if (((i < 0) || (!TextUtils.isEmpty(str1))) && (QLog.isColorLevel())) {
-      QLog.d("TraceReport" + this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig.a(j), 1, new Object[] { "featureId:", Integer.valueOf(j), ",traceId:", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.traceId), ",mappingFeatureId:", Integer.valueOf(i), ",featureKey:", str1 });
+    j = TraceReportInstance.a().a(i, (String)localObject1);
+    if (((i < 0) || (!TextUtils.isEmpty((CharSequence)localObject1))) && (QLog.isColorLevel()))
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[cmshow][TraceReport]");
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig.a(j));
+      QLog.d(((StringBuilder)localObject2).toString(), 1, new Object[] { "featureId:", Integer.valueOf(j), ",traceId:", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.traceId), ",mappingFeatureId:", Integer.valueOf(i), ",featureKey:", localObject1 });
     }
     i = paramBundle.getInt("errCode", 0);
     long l = paramBundle.getLong("endTime");
     if (i == -101) {
       d();
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.featureId = j;
-    this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.result = a(i, this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.startTime, l);
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.isSampleFocus)
+    localObject1 = this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData;
+    ((TraceData)localObject1).featureId = j;
+    ((TraceData)localObject1).result = a(i, ((TraceData)localObject1).startTime, l);
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.isSampleFocus)
     {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.endJavaHeap = paramBundle.getInt("endJavaHeap");
-      this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.endNativeHeap = paramBundle.getInt("endNativeHeap");
-      if ((this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.endJavaHeap == 0) && (this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.endNativeHeap == 0))
+      this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.endJavaHeap = paramBundle.getInt("endJavaHeap");
+      this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.endNativeHeap = paramBundle.getInt("endNativeHeap");
+      if ((this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.endJavaHeap == 0) && (this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.endNativeHeap == 0))
       {
-        this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.endJavaHeap = TraceUtil.c();
-        this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.endNativeHeap = TraceUtil.d();
+        this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.endJavaHeap = TraceUtil.c();
+        this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.endNativeHeap = TraceUtil.d();
       }
-      this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.result.f = (this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.endJavaHeap - this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.initJavaHeap);
-      this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.result.g = (this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.endNativeHeap - this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.initNativeHeap);
+      this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.result.f = (this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.endJavaHeap - this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.initJavaHeap);
+      this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.result.g = (this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.endNativeHeap - this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.initNativeHeap);
     }
-    if (i != 0) {
-      QLog.e("TraceReport" + this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig.a(j), 1, new Object[] { "traceEnd:", this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.toString() });
-    }
-    for (;;)
+    if (i != 0)
     {
-      TraceReportInstance.a().a(this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData);
-      this.jdField_a_of_type_Int = 4;
-      return 0;
-      QLog.i("TraceReport" + this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig.a(j), 1, "traceEnd:" + this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.toString());
+      paramBundle = new StringBuilder();
+      paramBundle.append("[cmshow][TraceReport]");
+      paramBundle.append(this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig.a(j));
+      QLog.e(paramBundle.toString(), 1, new Object[] { "traceEnd:", this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.toString() });
     }
+    else
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("[cmshow][TraceReport]");
+      paramBundle.append(this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig.a(j));
+      paramBundle = paramBundle.toString();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("traceEnd:");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.toString());
+      QLog.i(paramBundle, 1, ((StringBuilder)localObject1).toString());
+    }
+    TraceReportInstance.a().a(this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData);
+    this.jdField_a_of_type_Int = 4;
+    return 0;
   }
   
   public int a(Bundle paramBundle)
   {
     int i = this.jdField_a_of_type_Int;
-    switch (this.jdField_a_of_type_Int)
+    if (i != 0)
     {
-    default: 
-      c();
-      return -1;
-    case 0: 
-      return b(paramBundle);
-    case 3: 
-      return e(paramBundle);
-    case 1: 
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            c();
+            return -1;
+          }
+          return e(paramBundle);
+        }
+        return d(paramBundle);
+      }
       return c(paramBundle);
     }
-    return d(paramBundle);
+    return b(paramBundle);
   }
   
   public AnnotationData a(String paramString, long paramLong1, long paramLong2)
@@ -238,36 +257,32 @@ public class TraceStateControl
   
   public ResultData a(int paramInt, long paramLong1, long paramLong2)
   {
-    long l = 0L;
     ResultData localResultData = new ResultData();
     localResultData.jdField_a_of_type_Int = paramInt;
-    localResultData.e = NetworkUtil.a(null);
-    if (paramLong2 > 0L)
-    {
-      paramLong1 = paramLong2 - paramLong1;
-      if (paramLong1 >= 0L) {
-        break label83;
-      }
-      paramLong1 = l;
+    localResultData.e = NetworkUtil.getSystemNetwork(null);
+    if (paramLong2 <= 0L) {
+      paramLong2 = SystemClock.uptimeMillis();
     }
-    label83:
-    for (;;)
-    {
-      if (paramLong1 > 2147483647L) {}
-      for (paramInt = 2147483647;; paramInt = (int)paramLong1)
-      {
-        localResultData.b = paramInt;
-        return localResultData;
-        paramLong2 = SystemClock.uptimeMillis();
-        break;
-      }
+    paramLong2 -= paramLong1;
+    paramLong1 = paramLong2;
+    if (paramLong2 < 0L) {
+      paramLong1 = 0L;
     }
+    if (paramLong1 > 2147483647L) {
+      paramInt = 2147483647;
+    } else {
+      paramInt = (int)paramLong1;
+    }
+    localResultData.b = paramInt;
+    return localResultData;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    while (this.jdField_a_of_type_Int == 4) {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (this.jdField_a_of_type_Int == 4) {
       return;
     }
     this.jdField_a_of_type_Boolean = true;
@@ -314,24 +329,29 @@ public class TraceStateControl
   
   public void d(Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData == null) {}
-    do
-    {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData;
+    if (localObject == null) {
       return;
-      String str = paramBundle.getString("tuid");
-      this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.extra1 = paramBundle.getInt("extra1");
-      this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.extra2 = paramBundle.getInt("extra2");
-      this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.extra3 = paramBundle.getInt("extra3");
-      if (!TextUtils.isEmpty(str)) {
-        this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.tUid = str;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("TraceReport" + this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig.a(this.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataTraceData.featureId), 2, new Object[] { "updateTraceData:", paramBundle.toString() });
+    }
+    ((TraceData)localObject).extra1 = paramBundle.getInt("extra1");
+    this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.extra2 = paramBundle.getInt("extra2");
+    this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.extra3 = paramBundle.getInt("extra3");
+    localObject = paramBundle.getString("tuid");
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.tUid = ((String)localObject);
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[cmshow][TraceReport]");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig.a(this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataTraceData.featureId));
+      QLog.d(((StringBuilder)localObject).toString(), 2, new Object[] { "updateTraceData:", paramBundle.toString() });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.statistics.trace.sdk.state.TraceStateControl
  * JD-Core Version:    0.7.0.1
  */

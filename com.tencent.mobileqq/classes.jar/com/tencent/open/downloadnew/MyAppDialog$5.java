@@ -12,8 +12,9 @@ class MyAppDialog$5
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog, this.jdField_a_of_type_Int);
+    DialogInterface.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+    if (localOnClickListener != null) {
+      localOnClickListener.onClick(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog, this.jdField_a_of_type_Int);
     }
     if (this.jdField_a_of_type_Boolean) {
       this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.dismiss();
@@ -23,7 +24,7 @@ class MyAppDialog$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppDialog.5
  * JD-Core Version:    0.7.0.1
  */

@@ -17,8 +17,12 @@ public class UtilsServiceForAV
   
   void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UtilsServiceForAV", 2, "toggleProximityWakeLock turnOn = " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("toggleProximityWakeLock turnOn = ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("UtilsServiceForAV", 2, localStringBuilder.toString());
     }
     try
     {
@@ -62,23 +66,21 @@ public class UtilsServiceForAV
     }
     catch (Exception localException1)
     {
-      try
-      {
-        for (;;)
-        {
-          if (this.jdField_a_of_type_AndroidOsPowerManager$WakeLock != null) {
-            this.jdField_a_of_type_AndroidOsPowerManager$WakeLock.setReferenceCounted(false);
-          }
-          return;
-          localException1 = localException1;
-          if (QLog.isColorLevel()) {
-            QLog.e("UtilsServiceForAV", 2, "Exception", localException1);
-          }
-        }
+      if (QLog.isColorLevel()) {
+        QLog.e("UtilsServiceForAV", 2, "Exception", localException1);
       }
-      catch (Exception localException2)
+    }
+    try
+    {
+      if (this.jdField_a_of_type_AndroidOsPowerManager$WakeLock != null)
       {
-        while (!QLog.isColorLevel()) {}
+        this.jdField_a_of_type_AndroidOsPowerManager$WakeLock.setReferenceCounted(false);
+        return;
+      }
+    }
+    catch (Exception localException2)
+    {
+      if (QLog.isColorLevel()) {
         QLog.e("UtilsServiceForAV", 2, "Exception", localException2);
       }
     }
@@ -108,7 +110,7 @@ public class UtilsServiceForAV
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.service.UtilsServiceForAV
  * JD-Core Version:    0.7.0.1
  */

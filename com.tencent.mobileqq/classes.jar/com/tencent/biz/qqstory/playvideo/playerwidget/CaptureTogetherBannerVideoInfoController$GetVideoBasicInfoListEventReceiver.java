@@ -23,48 +23,43 @@ public class CaptureTogetherBannerVideoInfoController$GetVideoBasicInfoListEvent
   
   public void a(@NonNull CaptureTogetherBannerVideoInfoController paramCaptureTogetherBannerVideoInfoController, @NonNull VidToBasicInfoHandler.GetVideoBasicInfoListEvent paramGetVideoBasicInfoListEvent)
   {
-    if (CaptureTogetherBannerVideoInfoController.a(paramCaptureTogetherBannerVideoInfoController) != 1) {}
-    label149:
-    label209:
-    label218:
+    if (CaptureTogetherBannerVideoInfoController.a(paramCaptureTogetherBannerVideoInfoController) != 1) {
+      return;
+    }
+    String str = null;
+    int i = 0;
+    Object localObject;
     for (;;)
     {
-      return;
-      int i = 0;
-      StoryVideoItem localStoryVideoItem;
-      if (i < paramGetVideoBasicInfoListEvent.a.size())
-      {
-        localStoryVideoItem = (StoryVideoItem)paramGetVideoBasicInfoListEvent.a.get(i);
-        if (!localStoryVideoItem.mVid.equals(CaptureTogetherBannerVideoInfoController.a(paramCaptureTogetherBannerVideoInfoController))) {}
+      localObject = str;
+      if (i >= paramGetVideoBasicInfoListEvent.a.size()) {
+        break;
       }
-      for (paramGetVideoBasicInfoListEvent = localStoryVideoItem;; paramGetVideoBasicInfoListEvent = null)
-      {
-        if ((paramGetVideoBasicInfoListEvent == null) || (paramGetVideoBasicInfoListEvent.mErrorCode != 0)) {
-          break label218;
-        }
-        localStoryVideoItem = CaptureTogetherBannerVideoInfoController.a(paramCaptureTogetherBannerVideoInfoController).a();
-        i = localStoryVideoItem.comparedLevel;
-        int j = CaptureTogetherBannerVideoInfoController.a(paramCaptureTogetherBannerVideoInfoController).a.jdField_a_of_type_Int;
-        String str = CaptureTogetherBannerVideoInfoController.a(paramCaptureTogetherBannerVideoInfoController).a.jdField_a_of_type_JavaLangString;
-        CaptureTogetherBannerVideoInfoController.a(paramCaptureTogetherBannerVideoInfoController, CaptureTogetherBannerVideoInfoController.a(paramCaptureTogetherBannerVideoInfoController), str, false, i, j);
-        paramCaptureTogetherBannerVideoInfoController = ((UserManager)SuperManager.a(2)).b(paramGetVideoBasicInfoListEvent.mOwnerUid);
-        if ((paramCaptureTogetherBannerVideoInfoController != null) && (paramCaptureTogetherBannerVideoInfoController.isVip))
-        {
-          i = 1;
-          if (i == 0) {
-            break label209;
-          }
-        }
-        for (paramCaptureTogetherBannerVideoInfoController = "2";; paramCaptureTogetherBannerVideoInfoController = "1")
-        {
-          StoryReportor.a("play_video", "multishoot_entry_clk", 0, j, new String[] { paramCaptureTogetherBannerVideoInfoController, paramGetVideoBasicInfoListEvent.mVid, paramGetVideoBasicInfoListEvent.mOwnerUid, localStoryVideoItem.mVid });
-          return;
-          i += 1;
-          break;
-          i = 0;
-          break label149;
-        }
+      localObject = (StoryVideoItem)paramGetVideoBasicInfoListEvent.a.get(i);
+      if (((StoryVideoItem)localObject).mVid.equals(CaptureTogetherBannerVideoInfoController.a(paramCaptureTogetherBannerVideoInfoController))) {
+        break;
       }
+      i += 1;
+    }
+    if ((localObject != null) && (((StoryVideoItem)localObject).mErrorCode == 0))
+    {
+      paramGetVideoBasicInfoListEvent = CaptureTogetherBannerVideoInfoController.a(paramCaptureTogetherBannerVideoInfoController).a();
+      i = paramGetVideoBasicInfoListEvent.comparedLevel;
+      int j = CaptureTogetherBannerVideoInfoController.a(paramCaptureTogetherBannerVideoInfoController).a.jdField_a_of_type_Int;
+      str = CaptureTogetherBannerVideoInfoController.a(paramCaptureTogetherBannerVideoInfoController).a.jdField_a_of_type_JavaLangString;
+      CaptureTogetherBannerVideoInfoController.a(paramCaptureTogetherBannerVideoInfoController, CaptureTogetherBannerVideoInfoController.a(paramCaptureTogetherBannerVideoInfoController), str, false, i, j);
+      paramCaptureTogetherBannerVideoInfoController = ((UserManager)SuperManager.a(2)).b(((StoryVideoItem)localObject).mOwnerUid);
+      if ((paramCaptureTogetherBannerVideoInfoController != null) && (paramCaptureTogetherBannerVideoInfoController.isVip)) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (i != 0) {
+        paramCaptureTogetherBannerVideoInfoController = "2";
+      } else {
+        paramCaptureTogetherBannerVideoInfoController = "1";
+      }
+      StoryReportor.a("play_video", "multishoot_entry_clk", 0, j, new String[] { paramCaptureTogetherBannerVideoInfoController, ((StoryVideoItem)localObject).mVid, ((StoryVideoItem)localObject).mOwnerUid, paramGetVideoBasicInfoListEvent.mVid });
     }
   }
   
@@ -77,7 +72,7 @@ public class CaptureTogetherBannerVideoInfoController$GetVideoBasicInfoListEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.CaptureTogetherBannerVideoInfoController.GetVideoBasicInfoListEventReceiver
  * JD-Core Version:    0.7.0.1
  */

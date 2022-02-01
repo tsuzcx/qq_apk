@@ -24,17 +24,12 @@ class QQStoryShareGroupProfileActivity$UpdateUserInfoEventReceiver
   {
     if ((paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList != null) && (!paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.isEmpty()) && (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null))
     {
-      if (!paramQQStoryShareGroupProfileActivity.g) {
-        break label54;
+      if (paramQQStoryShareGroupProfileActivity.g)
+      {
+        paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListView.a.notifyDataSetChanged();
+        return;
       }
-      paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListView.a.notifyDataSetChanged();
-    }
-    label54:
-    int j;
-    do
-    {
-      return;
-      j = 0;
+      int j = 0;
       int i = j;
       Object localObject;
       if (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.headerUnionIdList != null)
@@ -69,8 +64,10 @@ class QQStoryShareGroupProfileActivity$UpdateUserInfoEventReceiver
         } while (!paramQQStoryShareGroupProfileActivity.d.equals(((QQUserUIItem)localObject).uid));
         j = 1;
       }
-    } while (j == 0);
-    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
+      if (j != 0) {
+        QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
+      }
+    }
   }
   
   public Class acceptEventClass()
@@ -80,7 +77,7 @@ class QQStoryShareGroupProfileActivity$UpdateUserInfoEventReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity.UpdateUserInfoEventReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -17,11 +17,10 @@ import com.tencent.livesdk.liveengine.LiveEngine;
 import com.tencent.livesdk.roomengine.RoomEngine;
 
 public class RequestFollowCase
-  extends LiveUseCase<RequestFollowCase.ResponseValue, Object>
+  extends LiveUseCase<RequestFollowCase.ResponseValue, Boolean>
 {
   private final String TAG = "RequestFollowCase";
   private AnchorUidInfo anchorUidInfo;
-  private boolean mIsFollow = false;
   LoginServiceInterface mLoginService = (LoginServiceInterface)BizEngineMgr.getInstance().getUserEngine().getService(LoginServiceInterface.class);
   MiniCardServiceInterface mMiniCardService;
   RoomServiceInterface mRoomService;
@@ -44,7 +43,7 @@ public class RequestFollowCase
     return null;
   }
   
-  public void executeRoomUseCase(RoomEngine paramRoomEngine, Object paramObject)
+  protected void executeRoomUseCase(RoomEngine paramRoomEngine, Boolean paramBoolean)
   {
     this.mMiniCardService = ((MiniCardServiceInterface)paramRoomEngine.getService(MiniCardServiceInterface.class));
     this.mRoomService = ((RoomServiceInterface)paramRoomEngine.getService(RoomServiceInterface.class));
@@ -53,25 +52,19 @@ public class RequestFollowCase
       this.mLoginService.notifyNoLogin(NoLoginObserver.NoLoginReason.GUEST);
       return;
     }
-    performFollow();
+    performFollow(paramBoolean.booleanValue());
   }
   
-  public void performFollow()
+  public void performFollow(boolean paramBoolean)
   {
-    boolean bool = true;
     this.anchorUidInfo = getAnchorUidInfo();
-    if (this.anchorUidInfo == null)
+    AnchorUidInfo localAnchorUidInfo = this.anchorUidInfo;
+    if (localAnchorUidInfo == null)
     {
       post(new RequestFollowCase.ResponseValue(true, false));
       return;
     }
-    if (!this.mIsFollow) {}
-    for (;;)
-    {
-      performFollowUser(bool, this.anchorUidInfo);
-      return;
-      bool = false;
-    }
+    performFollowUser(paramBoolean ^ true, localAnchorUidInfo);
   }
   
   void performFollowUser(boolean paramBoolean, AnchorUidInfo paramAnchorUidInfo)
@@ -87,7 +80,7 @@ public class RequestFollowCase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.domain.usecase.RequestFollowCase
  * JD-Core Version:    0.7.0.1
  */

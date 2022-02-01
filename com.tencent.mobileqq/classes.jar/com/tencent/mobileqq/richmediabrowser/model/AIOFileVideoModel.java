@@ -7,120 +7,141 @@ import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.photo.VideoPlayMedioInfo;
 import com.tencent.mobileqq.app.GlobalImageCache;
 import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.filemanager.util.QFileUtils;
-import com.tencent.mobileqq.richmediabrowser.PeakProcessProvider;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.richmediabrowser.IProvider;
+import com.tencent.mobileqq.richmediabrowser.api.IFileDepend;
 import com.tencent.mobileqq.richmediabrowser.view.AIOFileVideoView;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
 import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.richmediabrowser.model.BrowserBaseModel;
+import com.tencent.richmediabrowser.api.decorator.IDecoratorModel;
+import com.tencent.richmediabrowser.api.depend.IBrowserProvider;
+import com.tencent.richmediabrowser.core.IBaseModelBuilder;
 import java.io.File;
 
 public class AIOFileVideoModel
-  extends BrowserBaseModel
+  implements IDecoratorModel
 {
   private void b(AIOFileVideoData paramAIOFileVideoData, Context paramContext, AIOFileVideoView paramAIOFileVideoView)
   {
     paramAIOFileVideoData = new AIOFileVideoModel.1(this, paramContext, paramAIOFileVideoData, paramAIOFileVideoView);
-    FMDialogUtil.a(paramContext, paramContext.getString(2131692609), paramContext.getString(2131692611), paramAIOFileVideoData);
+    FMDialogUtil.a(paramContext, paramContext.getString(2131718247), paramContext.getString(2131718248), paramAIOFileVideoData);
   }
   
   private boolean c(AIOFileVideoData paramAIOFileVideoData)
   {
-    if (a(paramAIOFileVideoData)) {}
-    do
+    if (a(paramAIOFileVideoData)) {
+      return false;
+    }
+    if (paramAIOFileVideoData != null)
     {
-      do
-      {
+      if (paramAIOFileVideoData.g) {
         return false;
-      } while ((paramAIOFileVideoData == null) || (paramAIOFileVideoData.g) || (!FileManagerUtil.a()));
+      }
+      if (!AppNetConnInfo.isMobileConn()) {
+        return false;
+      }
       if ((!TextUtils.isEmpty(paramAIOFileVideoData.jdField_a_of_type_JavaLangString)) && (paramAIOFileVideoData.jdField_c_of_type_Long > 0L) && (paramAIOFileVideoData.jdField_c_of_type_Long > paramAIOFileVideoData.e)) {
         return true;
       }
-    } while (paramAIOFileVideoData.jdField_c_of_type_Long <= 1048576L);
-    return true;
+      if (paramAIOFileVideoData.jdField_c_of_type_Long > 1048576L) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public Drawable a(AIOFileVideoData paramAIOFileVideoData)
   {
-    URLDrawable localURLDrawable = null;
     File localFile = a(paramAIOFileVideoData);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-    localURLDrawableOptions.mFailedDrawable = URLDrawableHelper.TRANSPARENT;
+    localURLDrawableOptions.mLoadingDrawable = URLDrawableHelperConstants.a;
+    localURLDrawableOptions.mFailedDrawable = URLDrawableHelperConstants.a;
     if ((localFile != null) && (GlobalImageCache.a.get(a(paramAIOFileVideoData)) != null)) {
-      localURLDrawable = URLDrawable.getDrawable(a(paramAIOFileVideoData), localURLDrawableOptions);
+      return URLDrawable.getDrawable(a(paramAIOFileVideoData), localURLDrawableOptions);
     }
-    while (localFile == null) {
-      return localURLDrawable;
+    if (localFile != null)
+    {
+      paramAIOFileVideoData = URLDrawable.getDrawable(a(paramAIOFileVideoData), localURLDrawableOptions);
+      paramAIOFileVideoData.downloadImediatly();
+      return paramAIOFileVideoData;
     }
-    paramAIOFileVideoData = URLDrawable.getDrawable(a(paramAIOFileVideoData), localURLDrawableOptions);
-    paramAIOFileVideoData.downloadImediatly();
-    return paramAIOFileVideoData;
+    return null;
   }
   
   public VideoPlayMedioInfo a(AIOFileVideoData paramAIOFileVideoData, boolean paramBoolean)
   {
-    boolean bool = false;
     VideoPlayMedioInfo localVideoPlayMedioInfo = new VideoPlayMedioInfo();
     localVideoPlayMedioInfo.jdField_a_of_type_ArrayOfJavaLangString = new String[] { paramAIOFileVideoData.jdField_d_of_type_JavaLangString };
     localVideoPlayMedioInfo.jdField_a_of_type_JavaUtilArrayList = paramAIOFileVideoData.jdField_a_of_type_JavaUtilArrayList;
-    if (!a(paramAIOFileVideoData)) {
-      bool = true;
+    localVideoPlayMedioInfo.jdField_a_of_type_Boolean = (a(paramAIOFileVideoData) ^ true);
+    String str;
+    if (localVideoPlayMedioInfo.jdField_a_of_type_Boolean) {
+      str = "";
+    } else {
+      str = paramAIOFileVideoData.jdField_c_of_type_JavaLangString;
     }
-    localVideoPlayMedioInfo.jdField_a_of_type_Boolean = bool;
-    if (localVideoPlayMedioInfo.jdField_a_of_type_Boolean) {}
-    for (String str = "";; str = paramAIOFileVideoData.jdField_c_of_type_JavaLangString)
-    {
-      localVideoPlayMedioInfo.jdField_a_of_type_JavaLangString = str;
-      localVideoPlayMedioInfo.jdField_c_of_type_Long = paramAIOFileVideoData.progress;
-      localVideoPlayMedioInfo.jdField_b_of_type_Boolean = true;
-      localVideoPlayMedioInfo.jdField_b_of_type_Long = paramAIOFileVideoData.jdField_c_of_type_Long;
-      localVideoPlayMedioInfo.jdField_a_of_type_Long = paramAIOFileVideoData.jdField_a_of_type_Long;
-      localVideoPlayMedioInfo.jdField_b_of_type_Int = paramAIOFileVideoData.jdField_a_of_type_Int;
-      localVideoPlayMedioInfo.e = paramBoolean;
-      localVideoPlayMedioInfo.jdField_a_of_type_AndroidOsBundle = paramAIOFileVideoData.jdField_a_of_type_AndroidOsBundle;
-      return localVideoPlayMedioInfo;
-    }
+    localVideoPlayMedioInfo.jdField_a_of_type_JavaLangString = str;
+    localVideoPlayMedioInfo.jdField_c_of_type_Long = paramAIOFileVideoData.progress;
+    localVideoPlayMedioInfo.jdField_b_of_type_Boolean = true;
+    localVideoPlayMedioInfo.jdField_b_of_type_Long = paramAIOFileVideoData.jdField_c_of_type_Long;
+    localVideoPlayMedioInfo.jdField_a_of_type_Long = paramAIOFileVideoData.jdField_a_of_type_Long;
+    localVideoPlayMedioInfo.jdField_b_of_type_Int = paramAIOFileVideoData.jdField_a_of_type_Int;
+    localVideoPlayMedioInfo.e = paramBoolean;
+    localVideoPlayMedioInfo.jdField_a_of_type_AndroidOsBundle = paramAIOFileVideoData.jdField_a_of_type_AndroidOsBundle;
+    return localVideoPlayMedioInfo;
   }
   
   public File a(AIOFileVideoData paramAIOFileVideoData)
   {
-    if ((paramAIOFileVideoData == null) || (!FileUtil.b(paramAIOFileVideoData.b))) {
-      return null;
+    if ((paramAIOFileVideoData != null) && (FileUtils.fileExistsAndNotEmpty(paramAIOFileVideoData.b))) {
+      return new File(paramAIOFileVideoData.b);
     }
-    return new File(paramAIOFileVideoData.b);
+    return null;
   }
   
   public String a(AIOFileVideoData paramAIOFileVideoData)
   {
-    if ((paramAIOFileVideoData == null) || (TextUtils.isEmpty(paramAIOFileVideoData.b))) {
-      return "";
+    if ((paramAIOFileVideoData != null) && (!TextUtils.isEmpty(paramAIOFileVideoData.b)))
+    {
+      if (!paramAIOFileVideoData.b.startsWith("/"))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("file:/");
+        localStringBuilder.append(paramAIOFileVideoData.b);
+        return localStringBuilder.toString();
+      }
+      if (paramAIOFileVideoData.b.startsWith("//"))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("file:");
+        localStringBuilder.append(paramAIOFileVideoData.b);
+        return localStringBuilder.toString();
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("file:");
+      localStringBuilder.append(paramAIOFileVideoData.b);
+      return localStringBuilder.toString();
     }
-    if (!paramAIOFileVideoData.b.startsWith("/")) {
-      return "file:/" + paramAIOFileVideoData.b;
-    }
-    if (paramAIOFileVideoData.b.startsWith("//")) {
-      return "file:" + paramAIOFileVideoData.b;
-    }
-    return "file:" + paramAIOFileVideoData.b;
+    return "";
   }
   
   public void a(AIOFileVideoData paramAIOFileVideoData, Context paramContext, AIOFileVideoView paramAIOFileVideoView)
   {
     if (c(paramAIOFileVideoData))
     {
-      if (QFileUtils.a(paramContext, false, new AIOFileVideoModel.2(this, paramAIOFileVideoView))) {
+      if (((IFileDepend)QRoute.api(IFileDepend.class)).doWithWifiChecked(paramContext, false, new AIOFileVideoModel.2(this, paramAIOFileVideoView))) {
         b(paramAIOFileVideoData, paramContext, paramAIOFileVideoView);
       }
-      return;
     }
-    paramAIOFileVideoView.i();
+    else {
+      paramAIOFileVideoView.m();
+    }
   }
+  
+  public void a(IBaseModelBuilder paramIBaseModelBuilder) {}
   
   public boolean a(AIOFileVideoData paramAIOFileVideoData)
   {
@@ -129,7 +150,7 @@ public class AIOFileVideoModel
       if ((TextUtils.isEmpty(paramAIOFileVideoData.jdField_c_of_type_JavaLangString)) && (paramAIOFileVideoData.jdField_a_of_type_AndroidOsBundle != null)) {
         paramAIOFileVideoData.jdField_c_of_type_JavaLangString = paramAIOFileVideoData.jdField_a_of_type_AndroidOsBundle.getString("savepath");
       }
-      if (FileUtils.b(paramAIOFileVideoData.jdField_c_of_type_JavaLangString))
+      if (FileUtils.fileExistsAndNotEmpty(paramAIOFileVideoData.jdField_c_of_type_JavaLangString))
       {
         paramAIOFileVideoData.jdField_d_of_type_Boolean = true;
         return true;
@@ -141,24 +162,30 @@ public class AIOFileVideoModel
     return false;
   }
   
-  public boolean a(AIOFileVideoData paramAIOFileVideoData, PeakProcessProvider paramPeakProcessProvider)
+  public boolean a(AIOFileVideoData paramAIOFileVideoData, IBrowserProvider paramIBrowserProvider)
   {
-    if ((paramAIOFileVideoData == null) || (a(paramAIOFileVideoData)) || (paramPeakProcessProvider == null)) {}
-    while ((!TextUtils.isEmpty(paramAIOFileVideoData.jdField_d_of_type_JavaLangString)) && (paramAIOFileVideoData.jdField_a_of_type_JavaUtilArrayList != null)) {
-      return false;
+    if ((paramAIOFileVideoData != null) && (!a(paramAIOFileVideoData)))
+    {
+      if (!(paramIBrowserProvider instanceof IProvider)) {
+        return false;
+      }
+      if ((paramAIOFileVideoData.jdField_a_of_type_JavaUtilArrayList != null) && (!TextUtils.isEmpty(paramAIOFileVideoData.jdField_d_of_type_JavaLangString))) {
+        return false;
+      }
+      ((IProvider)paramIBrowserProvider).a(paramAIOFileVideoData.jdField_a_of_type_Long, paramAIOFileVideoData.jdField_a_of_type_Int, 16842753);
+      return true;
     }
-    paramPeakProcessProvider.downloadMedia(paramAIOFileVideoData.jdField_a_of_type_Long, paramAIOFileVideoData.jdField_a_of_type_Int, 16842753);
-    return true;
+    return false;
   }
   
   public boolean b(AIOFileVideoData paramAIOFileVideoData)
   {
-    return !TextUtils.isEmpty(paramAIOFileVideoData.f);
+    return TextUtils.isEmpty(paramAIOFileVideoData.f) ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoModel
  * JD-Core Version:    0.7.0.1
  */

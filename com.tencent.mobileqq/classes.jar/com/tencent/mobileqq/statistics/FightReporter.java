@@ -15,6 +15,7 @@ import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.mobileqq.utils.SecurityUtile;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.monitor.crash.catchedexception.CaughtExceptionReport;
 import com.tencent.util.QQDeviceInfo;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
@@ -28,52 +29,56 @@ public class FightReporter
   
   public static void a()
   {
-    if (Build.VERSION.SDK_INT > 28) {}
-    for (;;)
-    {
+    if (Build.VERSION.SDK_INT > 28) {
       return;
-      if (!c)
-      {
-        if (!PreferenceManager.getDefaultGlobalPreference(BaseApplicationImpl.getContext()).getBoolean("saveIDA", false)) {
-          d();
-        }
-        c = true;
+    }
+    if (!c)
+    {
+      if (!PreferenceManager.getDefaultGlobalPreference(BaseApplicationImpl.getContext()).getBoolean("saveIDA", false)) {
+        d();
       }
-      if (b) {
-        continue;
-      }
-      Object localObject = AIOConfigManager.a;
-      if ((localObject == null) || (((AIOConfigData)localObject).f != 1)) {
-        continue;
-      }
+      c = true;
+    }
+    if (b) {
+      return;
+    }
+    Object localObject1 = AIOConfigManager.a;
+    String str1;
+    if ((localObject1 != null) && (((AIOConfigData)localObject1).f == 1))
+    {
       b = true;
-      localObject = PreferenceManager.getDefaultGlobalPreference(BaseApplicationImpl.getContext());
-      if (((SharedPreferences)localObject).getBoolean("FightReporter_deviceid", false)) {
-        continue;
-      }
-      ((SharedPreferences)localObject).edit().putBoolean("FightReporter_deviceid", true).apply();
-      String str2 = QQDeviceInfo.getIMEI("0");
-      try
-      {
-        localObject = Settings.Secure.getString(BaseApplicationImpl.getContext().getContentResolver(), "android_id");
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("imei", str2);
-        localHashMap.put("androidID", localObject);
-        String str3 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-        StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(str3, "FightReporter_deviceid", true, 0L, 0L, localHashMap, null);
-        if (!QLog.isDevelopLevel()) {
-          continue;
-        }
-        QLog.d("FightReporter_", 2, "rYU.i.A.report real...IMEI = " + str2 + ",androidID = " + (String)localObject);
+      localObject1 = PreferenceManager.getDefaultGlobalPreference(BaseApplicationImpl.getContext());
+      if (((SharedPreferences)localObject1).getBoolean("FightReporter_deviceid", false)) {
         return;
       }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          String str1 = "";
-        }
-      }
+      ((SharedPreferences)localObject1).edit().putBoolean("FightReporter_deviceid", true).apply();
+      str1 = QQDeviceInfo.getIMEI("0");
+    }
+    try
+    {
+      localObject1 = Settings.Secure.getString(BaseApplicationImpl.getContext().getContentResolver(), "android_id");
+    }
+    catch (Exception localException)
+    {
+      label126:
+      Object localObject2;
+      String str2;
+      break label126;
+    }
+    localObject1 = "";
+    localObject2 = new HashMap();
+    ((HashMap)localObject2).put("imei", str1);
+    ((HashMap)localObject2).put("androidID", localObject1);
+    str2 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(str2, "FightReporter_deviceid", true, 0L, 0L, (HashMap)localObject2, null);
+    if (QLog.isDevelopLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("rYU.i.A.report real...IMEI = ");
+      ((StringBuilder)localObject2).append(str1);
+      ((StringBuilder)localObject2).append(",androidID = ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.d("FightReporter_", 2, ((StringBuilder)localObject2).toString());
     }
   }
   
@@ -88,9 +93,9 @@ public class FightReporter
         {
           int i = paramMessageRecord.structingMsg.mMsgServiceID;
           a(paramMessageRecord.structingMsg);
+          return;
         }
       }
-      return;
     }
     catch (Throwable paramMessageRecord)
     {
@@ -101,13 +106,14 @@ public class FightReporter
   public static void a(AbsStructMsg paramAbsStructMsg)
   {
     AIOConfigData localAIOConfigData1;
+    label89:
     do
     {
       try
       {
         int i = paramAbsStructMsg.mMsgServiceID;
         if ((i < 0) || (i > 6)) {
-          break;
+          break label89;
         }
         AIOConfigData localAIOConfigData2 = AIOConfigManager.a;
         localAIOConfigData1 = localAIOConfigData2;
@@ -126,12 +132,12 @@ public class FightReporter
       catch (Throwable paramAbsStructMsg)
       {
         QLog.d("FightReporter_", 1, paramAbsStructMsg, new Object[0]);
-        return;
       }
       if (localAIOConfigData1.a == 0) {
-        break;
+        return;
       }
       a("FightReporter_structMsgServiceID", paramAbsStructMsg.getXml());
+      return;
       return;
     } while (localAIOConfigData1 != null);
   }
@@ -148,27 +154,36 @@ public class FightReporter
   
   public static void b()
   {
-    if (d) {}
-    do
-    {
+    if (d) {
       return;
-      d = true;
-      localObject = PreferenceManager.getDefaultGlobalPreference(BaseApplicationImpl.getContext());
-    } while (((SharedPreferences)localObject).getBoolean("FightReporter_cpu_abi", false));
-    ((SharedPreferences)localObject).edit().putBoolean("FightReporter_cpu_abi", true).apply();
-    HashMap localHashMap = new HashMap();
-    if (Build.VERSION.SDK_INT >= 21) {}
-    for (Object localObject = Build.SUPPORTED_ABIS[0];; localObject = Build.CPU_ABI)
-    {
-      localHashMap.put("cpu_abi", localObject);
-      localHashMap.put("sdk", Build.VERSION.SDK_INT + "");
-      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(str, "FightReporter_cpu_abi", true, 0L, 0L, localHashMap, null);
-      if (!QLog.isDevelopLevel()) {
-        break;
-      }
-      QLog.d("FightReporter_", 2, "rYU.i.A.report real...cpu abi = " + (String)localObject + ",sdk = " + Build.VERSION.SDK_INT);
+    }
+    d = true;
+    Object localObject1 = PreferenceManager.getDefaultGlobalPreference(BaseApplicationImpl.getContext());
+    if (((SharedPreferences)localObject1).getBoolean("FightReporter_cpu_abi", false)) {
       return;
+    }
+    ((SharedPreferences)localObject1).edit().putBoolean("FightReporter_cpu_abi", true).apply();
+    Object localObject2 = new HashMap();
+    if (Build.VERSION.SDK_INT >= 21) {
+      localObject1 = Build.SUPPORTED_ABIS[0];
+    } else {
+      localObject1 = Build.CPU_ABI;
+    }
+    ((HashMap)localObject2).put("cpu_abi", localObject1);
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append(Build.VERSION.SDK_INT);
+    ((StringBuilder)localObject3).append("");
+    ((HashMap)localObject2).put("sdk", ((StringBuilder)localObject3).toString());
+    localObject3 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance((String)localObject3, "FightReporter_cpu_abi", true, 0L, 0L, (HashMap)localObject2, null);
+    if (QLog.isDevelopLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("rYU.i.A.report real...cpu abi = ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(",sdk = ");
+      ((StringBuilder)localObject2).append(Build.VERSION.SDK_INT);
+      QLog.d("FightReporter_", 2, ((StringBuilder)localObject2).toString());
     }
   }
   
@@ -182,34 +197,40 @@ public class FightReporter
   
   public static void d()
   {
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultGlobalPreference(BaseApplicationImpl.getContext());
-    String str3 = SecurityUtile.encode("d_iemi");
-    String str2 = SecurityUtile.encode("d_idandroid");
-    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
-    String str4 = QQDeviceInfo.getIMEI("0");
-    Object localObject = "";
+    Object localObject1 = PreferenceManager.getDefaultGlobalPreference(BaseApplicationImpl.getContext());
+    String str2 = SecurityUtile.encode("d_iemi");
+    Object localObject2 = SecurityUtile.encode("d_idandroid");
+    SharedPreferences.Editor localEditor = ((SharedPreferences)localObject1).edit();
+    String str3 = QQDeviceInfo.getIMEI("0");
     try
     {
       str1 = Settings.Secure.getString(BaseApplicationImpl.getContext().getContentResolver(), "android_id");
-      localObject = str1;
     }
     catch (Exception localException)
     {
       String str1;
-      label52:
-      break label52;
+      label49:
+      break label49;
     }
-    str1 = SecurityUtile.encode(str4);
-    localObject = SecurityUtile.encode((String)localObject);
-    localEditor.putString(str3, str1);
-    localEditor.putString(str2, (String)localObject);
+    str1 = "";
+    str3 = SecurityUtile.encode(str3);
+    str1 = SecurityUtile.encode(str1);
+    localEditor.putString(str2, str3);
+    localEditor.putString((String)localObject2, str1);
     localEditor.putBoolean("saveIDA", true);
     localEditor.apply();
     if (QLog.isDevelopLevel())
     {
-      localObject = localSharedPreferences.getString(str3, "");
-      str1 = localSharedPreferences.getString(str2, "");
-      QLog.d("FightReporter_", 4, "has save suc,spIMStr = " + (String)localObject + ", imei = " + SecurityUtile.encode((String)localObject) + ",androidid = " + SecurityUtile.encode(str1));
+      str1 = ((SharedPreferences)localObject1).getString(str2, "");
+      localObject1 = ((SharedPreferences)localObject1).getString((String)localObject2, "");
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("has save suc,spIMStr = ");
+      ((StringBuilder)localObject2).append(str1);
+      ((StringBuilder)localObject2).append(", imei = ");
+      ((StringBuilder)localObject2).append(SecurityUtile.encode(str1));
+      ((StringBuilder)localObject2).append(",androidid = ");
+      ((StringBuilder)localObject2).append(SecurityUtile.encode((String)localObject1));
+      QLog.d("FightReporter_", 4, ((StringBuilder)localObject2).toString());
     }
   }
   
@@ -217,7 +238,7 @@ public class FightReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.FightReporter
  * JD-Core Version:    0.7.0.1
  */

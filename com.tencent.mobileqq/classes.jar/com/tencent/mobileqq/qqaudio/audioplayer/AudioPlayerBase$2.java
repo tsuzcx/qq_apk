@@ -10,22 +10,28 @@ class AudioPlayerBase$2
   
   public void run()
   {
-    if (this.this$0.a != null) {}
-    try
-    {
-      this.this$0.a.d(this.this$0, this.this$0.c());
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("AudioPlayer", 2, "startProgressTimer e= " + localException);
+    if (this.this$0.a != null) {
+      try
+      {
+        this.this$0.a.d(this.this$0, this.this$0.b());
+        return;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("startProgressTimer e= ");
+          localStringBuilder.append(localException);
+          QLog.e("AudioPlayer", 2, localStringBuilder.toString());
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.audioplayer.AudioPlayerBase.2
  * JD-Core Version:    0.7.0.1
  */

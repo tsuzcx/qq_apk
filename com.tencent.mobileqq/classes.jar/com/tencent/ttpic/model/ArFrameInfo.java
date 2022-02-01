@@ -26,7 +26,8 @@ public class ArFrameInfo
     int i = 0;
     while (i < paramArrayOfFloat.length)
     {
-      localStringBuffer.append(paramArrayOfFloat[i]).append(",");
+      localStringBuffer.append(paramArrayOfFloat[i]);
+      localStringBuffer.append(",");
       i += 1;
     }
     return localStringBuffer.toString();
@@ -34,7 +35,7 @@ public class ArFrameInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.model.ArFrameInfo
  * JD-Core Version:    0.7.0.1
  */

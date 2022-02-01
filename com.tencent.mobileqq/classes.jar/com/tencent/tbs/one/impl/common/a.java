@@ -16,19 +16,24 @@ public final class a
     TBSOneManager localTBSOneManager = TBSOneManager.getInstance(paramContext, paramString);
     paramString = localTBSOneManager.getLoadedComponent("extension");
     paramContext = paramString;
-    if (paramString == null) {}
-    try
-    {
-      paramContext = localTBSOneManager.loadComponentSync("extension", 30000L);
-      if (!(paramContext.getEntryObject() instanceof TBSOneRuntimeExtension)) {
-        throw new TBSOneException(504, "Failed to cast the entry object of runtime extension");
+    if (paramString == null) {
+      try
+      {
+        paramContext = localTBSOneManager.loadComponentSync("extension", 30000L);
+      }
+      catch (TBSOneException paramContext)
+      {
+        paramString = new StringBuilder("Failed to load runtime extension, error: [");
+        paramString.append(paramContext.getErrorCode());
+        paramString.append("] ");
+        paramString.append(paramContext.getMessage());
+        throw new TBSOneException(503, paramString.toString(), paramContext.getCause());
       }
     }
-    catch (TBSOneException paramContext)
-    {
-      throw new TBSOneException(503, "Failed to load runtime extension, error: [" + paramContext.getErrorCode() + "] " + paramContext.getMessage(), paramContext.getCause());
+    if ((paramContext.getEntryObject() instanceof TBSOneRuntimeExtension)) {
+      return (TBSOneRuntimeExtension)paramContext.getEntryObject();
     }
-    return (TBSOneRuntimeExtension)paramContext.getEntryObject();
+    throw new TBSOneException(504, "Failed to cast the entry object of runtime extension");
   }
   
   public static void a(Context paramContext, TBSOneCallback<TBSOneDebugPlugin> paramTBSOneCallback)
@@ -50,7 +55,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.common.a
  * JD-Core Version:    0.7.0.1
  */

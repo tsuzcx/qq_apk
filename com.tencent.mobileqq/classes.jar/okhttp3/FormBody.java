@@ -21,29 +21,30 @@ public final class FormBody
   
   private long writeOrCountBytes(@Nullable BufferedSink paramBufferedSink, boolean paramBoolean)
   {
-    long l = 0L;
-    if (paramBoolean) {}
-    for (paramBufferedSink = new Buffer();; paramBufferedSink = paramBufferedSink.buffer())
+    if (paramBoolean) {
+      paramBufferedSink = new Buffer();
+    } else {
+      paramBufferedSink = paramBufferedSink.buffer();
+    }
+    int i = 0;
+    int j = this.encodedNames.size();
+    while (i < j)
     {
-      int j = this.encodedNames.size();
-      int i = 0;
-      while (i < j)
-      {
-        if (i > 0) {
-          paramBufferedSink.writeByte(38);
-        }
-        paramBufferedSink.writeUtf8((String)this.encodedNames.get(i));
-        paramBufferedSink.writeByte(61);
-        paramBufferedSink.writeUtf8((String)this.encodedValues.get(i));
-        i += 1;
+      if (i > 0) {
+        paramBufferedSink.writeByte(38);
       }
+      paramBufferedSink.writeUtf8((String)this.encodedNames.get(i));
+      paramBufferedSink.writeByte(61);
+      paramBufferedSink.writeUtf8((String)this.encodedValues.get(i));
+      i += 1;
     }
     if (paramBoolean)
     {
-      l = paramBufferedSink.size();
+      long l = paramBufferedSink.size();
       paramBufferedSink.clear();
+      return l;
     }
-    return l;
+    return 0L;
   }
   
   public long contentLength()
@@ -88,7 +89,7 @@ public final class FormBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.FormBody
  * JD-Core Version:    0.7.0.1
  */

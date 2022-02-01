@@ -26,28 +26,29 @@ public class QCircleMessageFacadeObserver
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    if ((paramObject instanceof MessageRecord)) {
-      if (HostChatUtils.isQCircleChatType(((MessageRecord)paramObject).istroop)) {}
-    }
-    do
+    if ((paramObject instanceof MessageRecord))
     {
-      do
-      {
-        do
-        {
-          return;
-        } while ((this.a == null) || (this.a.get() == null));
-        ((QCircleMessageFacadeListener)this.a.get()).tryRefreshData();
+      if (!HostChatUtils.isQCircleChatType(((MessageRecord)paramObject).istroop)) {
         return;
-      } while (!(paramObject instanceof RecentUser));
+      }
+      paramObservable = this.a;
+      if ((paramObservable != null) && (paramObservable.get() != null)) {
+        ((QCircleMessageFacadeListener)this.a.get()).tryRefreshData();
+      }
+    }
+    else if ((paramObject instanceof RecentUser))
+    {
       QLog.d("QCircleMessageFacadeObserver", 1, "receiveQCircleRecentUser update");
-    } while ((this.a == null) || (this.a.get() == null));
-    ((QCircleMessageFacadeListener)this.a.get()).tryRefreshData();
+      paramObservable = this.a;
+      if ((paramObservable != null) && (paramObservable.get() != null)) {
+        ((QCircleMessageFacadeListener)this.a.get()).tryRefreshData();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.QCircleMessageFacadeObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -54,9 +54,10 @@ public class OpenGlRenderer2
   
   private void deinitGL()
   {
-    if (this.egl != null)
+    EGL10 localEGL10 = this.egl;
+    if (localEGL10 != null)
     {
-      this.egl.eglMakeCurrent(this.eglDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
+      localEGL10.eglMakeCurrent(this.eglDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
       this.egl.eglDestroySurface(this.eglDisplay, this.eglSurface);
       this.egl.eglDestroyContext(this.eglDisplay, this.eglContext);
       this.egl.eglTerminate(this.eglDisplay);
@@ -70,9 +71,10 @@ public class OpenGlRenderer2
   
   public void disposeEntry()
   {
-    if (this.entry != null)
+    TextureRegistry.SurfaceTextureEntry localSurfaceTextureEntry = this.entry;
+    if (localSurfaceTextureEntry != null)
     {
-      this.entry.surfaceTexture().release();
+      localSurfaceTextureEntry.surfaceTexture().release();
       this.entry.release();
     }
   }
@@ -101,9 +103,13 @@ public class OpenGlRenderer2
         localObject = chooseEglConfig();
         this.eglContext = createContext(this.egl, this.eglDisplay, (EGLConfig)localObject);
         this.eglSurface = this.egl.eglCreateWindowSurface(this.eglDisplay, (EGLConfig)localObject, this.texture, null);
-        if ((this.eglSurface != null) && (this.eglSurface != EGL10.EGL_NO_SURFACE))
+        localObject = this.eglSurface;
+        if ((localObject != null) && (localObject != EGL10.EGL_NO_SURFACE))
         {
-          if (this.egl.eglMakeCurrent(this.eglDisplay, this.eglSurface, this.eglSurface, this.eglContext)) {
+          localObject = this.egl;
+          EGLDisplay localEGLDisplay = this.eglDisplay;
+          EGLSurface localEGLSurface = this.eglSurface;
+          if (((EGL10)localObject).eglMakeCurrent(localEGLDisplay, localEGLSurface, localEGLSurface, this.eglContext)) {
             return;
           }
           localObject = new StringBuilder();
@@ -134,7 +140,7 @@ public class OpenGlRenderer2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.peterlmeng.animate_image.renderer.OpenGlRenderer2
  * JD-Core Version:    0.7.0.1
  */

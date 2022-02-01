@@ -36,67 +36,66 @@ public class ActivityChatItemBuilder
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
   }
   
-  public View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
+  protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    paramLinearLayout = (ActivityChatItemBuilder.Holder)paramViewHolder;
+    paramOnLongClickAndTouchListener = (ActivityChatItemBuilder.Holder)paramViewHolder;
     paramViewHolder = paramView;
     if (paramView == null)
     {
-      paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559995, null);
-      paramLinearLayout.b = ((TextView)paramViewHolder.findViewById(2131364632));
-      paramLinearLayout.c = ((TextView)paramViewHolder.findViewById(2131364631));
-      paramLinearLayout.d = ((TextView)paramViewHolder.findViewById(2131364630));
-      paramLinearLayout.a = ((ImageView)paramViewHolder.findViewById(2131364628));
+      paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559866, null);
+      paramOnLongClickAndTouchListener.b = ((TextView)paramViewHolder.findViewById(2131364519));
+      paramOnLongClickAndTouchListener.c = ((TextView)paramViewHolder.findViewById(2131364518));
+      paramOnLongClickAndTouchListener.d = ((TextView)paramViewHolder.findViewById(2131364517));
+      paramOnLongClickAndTouchListener.a = ((ImageView)paramViewHolder.findViewById(2131364515));
       paramViewHolder.setOnClickListener(this);
-      paramLinearLayout.b.setOnClickListener(this);
-      paramLinearLayout.c.setOnClickListener(this);
-      paramLinearLayout.d.setOnClickListener(this);
-      paramLinearLayout.a.setOnClickListener(this);
+      paramOnLongClickAndTouchListener.b.setOnClickListener(this);
+      paramOnLongClickAndTouchListener.c.setOnClickListener(this);
+      paramOnLongClickAndTouchListener.d.setOnClickListener(this);
+      paramOnLongClickAndTouchListener.a.setOnClickListener(this);
     }
     if ((paramMessageRecord instanceof MessageForActivity))
     {
-      paramView = (MessageForActivity)paramMessageRecord;
-      paramLinearLayout.b.setText(HardCodeUtil.a(2131699868));
-      paramLinearLayout.c.setText(paramView.title);
-      a(paramView.summary, paramLinearLayout.d);
+      paramLinearLayout = (MessageForActivity)paramMessageRecord;
+      paramOnLongClickAndTouchListener.b.setText(HardCodeUtil.a(2131700009));
+      paramOnLongClickAndTouchListener.c.setText(paramLinearLayout.title);
+      a(paramLinearLayout.summary, paramOnLongClickAndTouchListener.d);
     }
     try
     {
-      paramMessageRecord = URLDrawable.getDrawable(paramView.bigPic, paramViewHolder.getResources().getDrawable(2130842688), paramViewHolder.getResources().getDrawable(2130842687));
-      paramLinearLayout.a.setBackgroundDrawable(paramMessageRecord);
-      this.jdField_a_of_type_JavaLangString = paramView.url;
-      if (e)
-      {
-        if (TextUtils.isEmpty(paramView.title))
-        {
-          paramMessageRecord = "";
-          paramLinearLayout = new StringBuilder().append(paramMessageRecord);
-          if (!TextUtils.isEmpty(paramView.summary)) {
-            break label298;
-          }
-          paramMessageRecord = "";
-          paramViewHolder.setContentDescription(paramMessageRecord);
-        }
-      }
-      else {
-        return paramViewHolder;
-      }
+      paramMessageRecord = URLDrawable.getDrawable(paramLinearLayout.bigPic, paramViewHolder.getResources().getDrawable(2130842587), paramViewHolder.getResources().getDrawable(2130842586));
+      paramOnLongClickAndTouchListener.a.setBackgroundDrawable(paramMessageRecord);
     }
     catch (Exception paramMessageRecord)
     {
-      for (;;)
-      {
-        paramLinearLayout.a.setBackgroundResource(2130842687);
-        continue;
-        paramMessageRecord = paramView.title;
-        continue;
-        label298:
-        paramMessageRecord = paramView.summary;
-      }
+      label215:
+      boolean bool;
+      break label215;
     }
+    paramOnLongClickAndTouchListener.a.setBackgroundResource(2130842586);
+    this.jdField_a_of_type_JavaLangString = paramLinearLayout.url;
+    if (e)
+    {
+      bool = TextUtils.isEmpty(paramLinearLayout.title);
+      paramView = "";
+      if (bool) {
+        paramMessageRecord = "";
+      } else {
+        paramMessageRecord = paramLinearLayout.title;
+      }
+      paramOnLongClickAndTouchListener = new StringBuilder();
+      paramOnLongClickAndTouchListener.append(paramMessageRecord);
+      if (TextUtils.isEmpty(paramLinearLayout.summary)) {
+        paramMessageRecord = paramView;
+      } else {
+        paramMessageRecord = paramLinearLayout.summary;
+      }
+      paramOnLongClickAndTouchListener.append(paramMessageRecord);
+      paramViewHolder.setContentDescription(paramOnLongClickAndTouchListener.toString());
+    }
+    return paramViewHolder;
   }
   
-  public AbstractChatItemBuilder.ViewHolder a()
+  protected AbstractChatItemBuilder.ViewHolder a()
   {
     return new ActivityChatItemBuilder.Holder(this);
   }
@@ -121,7 +120,7 @@ public class ActivityChatItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ActivityChatItemBuilder
  * JD-Core Version:    0.7.0.1
  */

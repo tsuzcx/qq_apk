@@ -18,13 +18,9 @@ class ReplyTextItemBuilder$6
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if ((i == 2131365169) || (i == 2131365284) || (i == 2131378114))
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       String str = (String)paramView.getTag();
       if (!TextUtils.isEmpty(str))
       {
@@ -33,15 +29,16 @@ class ReplyTextItemBuilder$6
         localIntent.putExtra("hide_operation_bar", true);
         localIntent.putExtra("url", str);
         this.a.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-        ((Activity)this.a.jdField_a_of_type_AndroidContentContext).overridePendingTransition(2130771999, 0);
+        ((Activity)this.a.jdField_a_of_type_AndroidContentContext).overridePendingTransition(2130772011, 0);
       }
       ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_talk", "", "obj", "link_msg", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder.6
  * JD-Core Version:    0.7.0.1
  */

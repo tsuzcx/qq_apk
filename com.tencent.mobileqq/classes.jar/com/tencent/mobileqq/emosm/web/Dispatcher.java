@@ -1,0 +1,106 @@
+package com.tencent.mobileqq.emosm.web;
+
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/emosm/web/Dispatcher;", "T", "", "()V", "mRoutes", "", "", "Lcom/tencent/mobileqq/emosm/web/Dispatcher$MethodHolder;", "dispatchEvent", "", "key", "params", "(Ljava/lang/String;Ljava/lang/Object;)Z", "getRoute", "registerRoute", "", "clazz", "Ljava/lang/Class;", "obj", "Companion", "MethodHolder", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class Dispatcher<T>
+{
+  public static final Dispatcher.Companion a;
+  private final Map<String, Dispatcher.MethodHolder<T>> a;
+  
+  static
+  {
+    jdField_a_of_type_ComTencentMobileqqEmosmWebDispatcher$Companion = new Dispatcher.Companion(null);
+  }
+  
+  public Dispatcher()
+  {
+    this.jdField_a_of_type_JavaUtilMap = ((Map)new HashMap());
+  }
+  
+  private final Dispatcher.MethodHolder<T> a(String paramString)
+  {
+    return (Dispatcher.MethodHolder)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+  }
+  
+  public final void a(@NotNull Class<?> paramClass)
+  {
+    Intrinsics.checkParameterIsNotNull(paramClass, "clazz");
+    try
+    {
+      paramClass = paramClass.newInstance();
+    }
+    catch (Exception paramClass)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("registerRoute new instance error: ");
+      localStringBuilder.append(paramClass);
+      QLog.e("Dispatcher", 1, localStringBuilder.toString());
+      paramClass = null;
+    }
+    a(paramClass);
+  }
+  
+  public final void a(@Nullable Object paramObject)
+  {
+    if (paramObject == null) {
+      return;
+    }
+    Method[] arrayOfMethod = paramObject.getClass().getDeclaredMethods();
+    if (arrayOfMethod != null)
+    {
+      int j = arrayOfMethod.length;
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject = arrayOfMethod[i];
+        if (((Method)localObject).isAnnotationPresent(RequestRoute.class))
+        {
+          RequestRoute localRequestRoute = (RequestRoute)((Method)localObject).getAnnotation(RequestRoute.class);
+          if (localRequestRoute != null)
+          {
+            Intrinsics.checkExpressionValueIsNotNull(localObject, "m");
+            ((Method)localObject).setAccessible(true);
+            if (this.jdField_a_of_type_JavaUtilMap.containsKey(localRequestRoute.a()))
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("registerRoute already has method with key: ");
+              ((StringBuilder)localObject).append(localRequestRoute.a());
+              ((StringBuilder)localObject).append(' ');
+              QLog.e("Dispatcher", 1, ((StringBuilder)localObject).toString());
+            }
+            else
+            {
+              this.jdField_a_of_type_JavaUtilMap.put(localRequestRoute.a(), new Dispatcher.MethodHolder((Method)localObject, paramObject));
+            }
+          }
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public final boolean a(@Nullable String paramString, T paramT)
+  {
+    paramString = a(paramString);
+    if (paramString != null)
+    {
+      paramString.a(paramT);
+      return true;
+    }
+    return false;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+ * Qualified Name:     com.tencent.mobileqq.emosm.web.Dispatcher
+ * JD-Core Version:    0.7.0.1
+ */

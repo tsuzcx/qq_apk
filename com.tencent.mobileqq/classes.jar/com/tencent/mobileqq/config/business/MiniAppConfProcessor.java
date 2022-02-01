@@ -25,7 +25,10 @@ public class MiniAppConfProcessor
     if (b == -1)
     {
       b = QzoneConfig.getInstance().getConfig("qqminiapp", "miniappfullscreenminedatamaxnum", 50);
-      QLog.d("MiniAppConfProcessor", 1, "[MiniAppUserAppInfoListManager].maxtopnum = " + b);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[MiniAppUserAppInfoListManager].maxtopnum = ");
+      localStringBuilder.append(b);
+      QLog.d("MiniAppConfProcessor", 1, localStringBuilder.toString());
     }
     return b;
   }
@@ -33,84 +36,50 @@ public class MiniAppConfProcessor
   public static int a(int paramInt)
   {
     paramInt = a("miniapptriggerfullscreenheight", paramInt);
-    QLog.d("MiniAppConfProcessor", 2, "getTriggerFullScreenHeight, height = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getTriggerFullScreenHeight, height = ");
+    localStringBuilder.append(paramInt);
+    QLog.d("MiniAppConfProcessor", 2, localStringBuilder.toString());
     return paramInt;
   }
   
-  /* Error */
   public static int a(String paramString, int paramInt)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokevirtual 72	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   4: astore_3
-    //   5: aload_3
-    //   6: astore_0
-    //   7: invokestatic 78	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   10: invokevirtual 82	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
-    //   13: invokevirtual 87	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
-    //   16: astore_3
-    //   17: invokestatic 78	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   20: ldc 89
-    //   22: iconst_4
-    //   23: invokevirtual 93	com/tencent/common/app/BaseApplicationImpl:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   26: new 37	java/lang/StringBuilder
-    //   29: dup
-    //   30: invokespecial 38	java/lang/StringBuilder:<init>	()V
-    //   33: aload_3
-    //   34: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: ldc 95
-    //   39: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   42: aload_0
-    //   43: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   46: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   49: iload_1
-    //   50: invokestatic 99	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   53: invokeinterface 105 3 0
-    //   58: invokestatic 111	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   61: istore_2
-    //   62: iload_2
-    //   63: istore_1
-    //   64: invokestatic 115	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   67: ifeq +37 -> 104
-    //   70: ldc 35
-    //   72: iconst_1
-    //   73: new 37	java/lang/StringBuilder
-    //   76: dup
-    //   77: invokespecial 38	java/lang/StringBuilder:<init>	()V
-    //   80: ldc 117
-    //   82: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   85: aload_0
-    //   86: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   89: ldc 119
-    //   91: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   94: iload_1
-    //   95: invokevirtual 47	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   98: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   101: invokestatic 57	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   104: iload_1
-    //   105: ireturn
-    //   106: astore_3
-    //   107: ldc 35
-    //   109: iconst_1
-    //   110: ldc 121
-    //   112: aload_3
-    //   113: invokestatic 124	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   116: goto -52 -> 64
-    //   119: astore_3
-    //   120: goto -13 -> 107
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	123	0	paramString	String
-    //   0	123	1	paramInt	int
-    //   61	2	2	i	int
-    //   4	30	3	str	String
-    //   106	7	3	localException1	Exception
-    //   119	1	3	localException2	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   0	5	106	java/lang/Exception
-    //   7	62	119	java/lang/Exception
+    Object localObject = paramString;
+    try
+    {
+      paramString = paramString.toLowerCase();
+      localObject = paramString;
+      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      localObject = paramString;
+      SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4);
+      localObject = paramString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localObject = paramString;
+      localStringBuilder.append(str);
+      localObject = paramString;
+      localStringBuilder.append("_");
+      localObject = paramString;
+      localStringBuilder.append(paramString);
+      localObject = paramString;
+      int i = Integer.parseInt(localSharedPreferences.getString(localStringBuilder.toString(), String.valueOf(paramInt)));
+      paramInt = i;
+    }
+    catch (Exception paramString)
+    {
+      QLog.d("MiniAppConfProcessor", 1, "getMiniAppHighPriorityConfig, error!", paramString);
+      paramString = (String)localObject;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getMiniAppHighPriorityConfig, secondaryKey: ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(", Value = ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("MiniAppConfProcessor", 1, ((StringBuilder)localObject).toString());
+    }
+    return paramInt;
   }
   
   public static MiniAppConfBean a()
@@ -120,96 +89,67 @@ public class MiniAppConfProcessor
   
   public static String a()
   {
-    String str = "";
     MiniAppConfBean localMiniAppConfBean = a();
     if (localMiniAppConfBean != null) {
-      str = localMiniAppConfBean.a();
+      return localMiniAppConfBean.a();
     }
-    return str;
+    return "";
   }
   
-  /* Error */
   public static String a(String paramString1, String paramString2)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokevirtual 72	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   4: astore_2
-    //   5: aload_2
-    //   6: astore_0
-    //   7: invokestatic 78	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   10: invokevirtual 82	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
-    //   13: invokevirtual 87	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
-    //   16: astore_2
-    //   17: invokestatic 78	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   20: ldc 89
-    //   22: iconst_4
-    //   23: invokevirtual 93	com/tencent/common/app/BaseApplicationImpl:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   26: new 37	java/lang/StringBuilder
-    //   29: dup
-    //   30: invokespecial 38	java/lang/StringBuilder:<init>	()V
-    //   33: aload_2
-    //   34: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: ldc 95
-    //   39: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   42: aload_0
-    //   43: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   46: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   49: aload_1
-    //   50: invokeinterface 105 3 0
-    //   55: astore_2
-    //   56: aload_2
-    //   57: astore_1
-    //   58: invokestatic 115	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   61: ifeq +37 -> 98
-    //   64: ldc 35
-    //   66: iconst_1
-    //   67: new 37	java/lang/StringBuilder
-    //   70: dup
-    //   71: invokespecial 38	java/lang/StringBuilder:<init>	()V
-    //   74: ldc 117
-    //   76: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   79: aload_0
-    //   80: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   83: ldc 119
-    //   85: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   88: aload_1
-    //   89: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   92: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   95: invokestatic 57	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   98: aload_1
-    //   99: areturn
-    //   100: astore_2
-    //   101: ldc 35
-    //   103: iconst_1
-    //   104: ldc 121
-    //   106: aload_2
-    //   107: invokestatic 124	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   110: goto -52 -> 58
-    //   113: astore_2
-    //   114: goto -13 -> 101
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	117	0	paramString1	String
-    //   0	117	1	paramString2	String
-    //   4	53	2	str	String
-    //   100	7	2	localException1	Exception
-    //   113	1	2	localException2	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   0	5	100	java/lang/Exception
-    //   7	56	113	java/lang/Exception
+    Object localObject = paramString1;
+    try
+    {
+      paramString1 = paramString1.toLowerCase();
+      localObject = paramString1;
+      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      localObject = paramString1;
+      SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4);
+      localObject = paramString1;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localObject = paramString1;
+      localStringBuilder.append(str);
+      localObject = paramString1;
+      localStringBuilder.append("_");
+      localObject = paramString1;
+      localStringBuilder.append(paramString1);
+      localObject = paramString1;
+      str = localSharedPreferences.getString(localStringBuilder.toString(), paramString2);
+      paramString2 = str;
+    }
+    catch (Exception paramString1)
+    {
+      QLog.d("MiniAppConfProcessor", 1, "getMiniAppHighPriorityConfig, error!", paramString1);
+      paramString1 = (String)localObject;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getMiniAppHighPriorityConfig, secondaryKey: ");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(", Value = ");
+      ((StringBuilder)localObject).append(paramString2);
+      QLog.d("MiniAppConfProcessor", 1, ((StringBuilder)localObject).toString());
+    }
+    return paramString2;
   }
   
   public static boolean a()
   {
-    boolean bool = true;
-    MiniAppConfBean localMiniAppConfBean = a();
-    if (localMiniAppConfBean != null) {
-      bool = localMiniAppConfBean.a();
+    Object localObject = a();
+    boolean bool;
+    if (localObject != null) {
+      bool = ((MiniAppConfBean)localObject).a();
+    } else {
+      bool = true;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppConfProcessor", 2, "needShowMiniAppEntry: " + bool);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("needShowMiniAppEntry: ");
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("MiniAppConfProcessor", 2, ((StringBuilder)localObject).toString());
     }
     return bool;
   }
@@ -217,7 +157,10 @@ public class MiniAppConfProcessor
   public static int b(int paramInt)
   {
     paramInt = a("pulldownRefreshMinDistance", paramInt);
-    QLog.d("MiniAppConfProcessor", 2, "getTriggerRefreshMinHeight, height = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getTriggerRefreshMinHeight, height = ");
+    localStringBuilder.append(paramInt);
+    QLog.d("MiniAppConfProcessor", 2, localStringBuilder.toString());
     return paramInt;
   }
   
@@ -228,12 +171,11 @@ public class MiniAppConfProcessor
   
   public static boolean b()
   {
-    boolean bool = false;
     MiniAppConfBean localMiniAppConfBean = a();
     if (localMiniAppConfBean != null) {
-      bool = localMiniAppConfBean.g();
+      return localMiniAppConfBean.g();
     }
-    return bool;
+    return false;
   }
   
   public static String c()
@@ -246,22 +188,27 @@ public class MiniAppConfProcessor
     if (a == -1) {}
     try
     {
-      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      a = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getInt(str + "_" + "miniappshowfullscreen", 1);
-      QLog.d("MiniAppConfProcessor", 1, "[DesktopDataManager].needShowMiniAppFullScreen, showFullScreen = " + a);
-      if (a == 1) {
-        return true;
-      }
+      localObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("_");
+      localStringBuilder.append("miniappshowfullscreen");
+      a = localSharedPreferences.getInt(localStringBuilder.toString(), 1);
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        a = 1;
-        QLog.d("MiniAppConfProcessor", 1, "[DesktopDataManager]. needShowMiniAppFullScreen Exception");
-      }
+      Object localObject;
+      label72:
+      break label72;
     }
-    return false;
+    a = 1;
+    QLog.d("MiniAppConfProcessor", 1, "[DesktopDataManager]. needShowMiniAppFullScreen Exception");
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[DesktopDataManager].needShowMiniAppFullScreen, showFullScreen = ");
+    ((StringBuilder)localObject).append(a);
+    QLog.d("MiniAppConfProcessor", 1, ((StringBuilder)localObject).toString());
+    return a == 1;
   }
   
   public static String d()
@@ -272,30 +219,64 @@ public class MiniAppConfProcessor
     {
       String str3 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
       str1 = str2;
-      str2 = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getString(str3 + "_" + "miniappfullscreentitle", "QQ小程序");
+      localObject = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4);
       str1 = str2;
-      if (QLog.isColorLevel())
-      {
-        str1 = str2;
-        QLog.d("MiniAppConfProcessor", 2, "[DesktopDataManager]. desktopTitleConfig title: " + str2 + "，uin: " + str3);
+      StringBuilder localStringBuilder = new StringBuilder();
+      str1 = str2;
+      localStringBuilder.append(str3);
+      str1 = str2;
+      localStringBuilder.append("_");
+      str1 = str2;
+      localStringBuilder.append("miniappfullscreentitle");
+      str1 = str2;
+      str2 = ((SharedPreferences)localObject).getString(localStringBuilder.toString(), "QQ小程序");
+      localObject = str2;
+      str1 = str2;
+      if (!QLog.isColorLevel()) {
+        break label161;
       }
+      str1 = str2;
+      localObject = new StringBuilder();
+      str1 = str2;
+      ((StringBuilder)localObject).append("[DesktopDataManager]. desktopTitleConfig title: ");
+      str1 = str2;
+      ((StringBuilder)localObject).append(str2);
+      str1 = str2;
+      ((StringBuilder)localObject).append("，uin: ");
+      str1 = str2;
+      ((StringBuilder)localObject).append(str3);
+      str1 = str2;
+      QLog.d("MiniAppConfProcessor", 2, ((StringBuilder)localObject).toString());
       return str2;
     }
     catch (Exception localException)
     {
-      QLog.d("MiniAppConfProcessor", 1, "[DesktopDataManager]. desktopTitleConfig Exception");
+      Object localObject;
+      label151:
+      label161:
+      break label151;
     }
-    return str1;
+    QLog.d("MiniAppConfProcessor", 1, "[DesktopDataManager]. desktopTitleConfig Exception");
+    localObject = str1;
+    return localObject;
   }
   
   public static boolean d()
   {
-    return a("miniappshowreddot", 0) == 1;
+    boolean bool = false;
+    if (a("miniappshowreddot", 0) == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean e()
   {
-    return a("miniappshowmessagereddot", 0) == 1;
+    boolean bool = false;
+    if (a("miniappshowmessagereddot", 0) == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean f()
@@ -305,57 +286,73 @@ public class MiniAppConfProcessor
   
   public static boolean g()
   {
-    if (a("miniappfullscreenshownotificationreddot", 1) == 1) {}
-    for (int i = 1; (f()) && (i != 0); i = 0) {
-      return true;
+    int i;
+    if (a("miniappfullscreenshownotificationreddot", 1) == 1) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return false;
+    return (f()) && (i != 0);
   }
   
   public static boolean h()
   {
-    return !i();
+    return i() ^ true;
   }
   
   public static boolean i()
   {
-    for (;;)
+    boolean bool = false;
+    try
     {
-      try
-      {
-        String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-        i = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getInt(str + "_" + "miniappfullscreenshowsetting", 0);
-        j = i;
-        QLog.d("MiniAppConfProcessor", 1, "[DesktopDataManager]. needShowSettingButton Exception.");
-      }
-      catch (Exception localException1)
-      {
-        try
-        {
-          if (QLog.isColorLevel())
-          {
-            QLog.d("MiniAppConfProcessor", 2, "[DesktopDataManager]. needShowSettingButton settingValue: " + i + "，uin: " + str);
-            j = i;
-          }
-          QLog.d("MiniAppConfProcessor", 1, "[DesktopDataManager].needShowSettingButton, settingValue = " + j);
-          if (j != 1) {
-            break;
-          }
-          return true;
-        }
-        catch (Exception localException2)
-        {
-          int i;
-          int j;
-          break label129;
-        }
-        localException1 = localException1;
-        i = 0;
-      }
-      label129:
+      localObject1 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      localObject2 = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append("_");
+      localStringBuilder.append("miniappfullscreenshowsetting");
+      i = ((SharedPreferences)localObject2).getInt(localStringBuilder.toString(), 0);
       j = i;
     }
-    return false;
+    catch (Exception localException1)
+    {
+      Object localObject1;
+      Object localObject2;
+      int i;
+      int j;
+      label132:
+      label134:
+      break label132;
+    }
+    try
+    {
+      if (!QLog.isColorLevel()) {
+        break label144;
+      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[DesktopDataManager]. needShowSettingButton settingValue: ");
+      ((StringBuilder)localObject2).append(i);
+      ((StringBuilder)localObject2).append("，uin: ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.d("MiniAppConfProcessor", 2, ((StringBuilder)localObject2).toString());
+      j = i;
+    }
+    catch (Exception localException2)
+    {
+      break label134;
+    }
+    i = 0;
+    QLog.d("MiniAppConfProcessor", 1, "[DesktopDataManager]. needShowSettingButton Exception.");
+    j = i;
+    label144:
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("[DesktopDataManager].needShowSettingButton, settingValue = ");
+    ((StringBuilder)localObject1).append(j);
+    QLog.d("MiniAppConfProcessor", 1, ((StringBuilder)localObject1).toString());
+    if (j == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   @NonNull
@@ -377,8 +374,12 @@ public class MiniAppConfProcessor
   
   public void a(MiniAppConfBean paramMiniAppConfBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppConfProcessor", 2, "onUpdate " + paramMiniAppConfBean.toString());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      localStringBuilder.append(paramMiniAppConfBean.toString());
+      QLog.d("MiniAppConfProcessor", 2, localStringBuilder.toString());
     }
     paramMiniAppConfBean = BaseApplicationImpl.getApplication().getRuntime();
     if ((paramMiniAppConfBean instanceof QQAppInterface))
@@ -424,7 +425,7 @@ public class MiniAppConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.MiniAppConfProcessor
  * JD-Core Version:    0.7.0.1
  */

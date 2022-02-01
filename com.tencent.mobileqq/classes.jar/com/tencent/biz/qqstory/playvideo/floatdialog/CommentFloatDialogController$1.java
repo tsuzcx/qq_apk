@@ -11,29 +11,28 @@ class CommentFloatDialogController$1
   
   public void a(int paramInt)
   {
-    if ((paramInt == 1) && (CommentFloatDialogController.a(this.a) != null) && (CommentFloatDialogController.a(this.a).a != null))
-    {
-      if (CommentFloatDialogController.a(this.a).a()) {
-        break label66;
+    if ((paramInt == 1) && (CommentFloatDialogController.a(this.a) != null) && (CommentFloatDialogController.a(this.a).a != null)) {
+      if (!CommentFloatDialogController.a(this.a).a())
+      {
+        if (CommentFloatDialogController.a(this.a).a(true)) {
+          CommentFloatDialogController.a(this.a).c();
+        }
       }
-      if (CommentFloatDialogController.a(this.a).a(true)) {
-        CommentFloatDialogController.a(this.a).c();
+      else
+      {
+        if (CommentFloatDialogController.a(this.a).a(false)) {
+          CommentFloatDialogController.b(this.a).c();
+        }
+        if (CommentFloatDialogController.a(this.a).a(true)) {
+          CommentFloatDialogController.a(this.a).c();
+        }
       }
     }
-    label66:
-    do
-    {
-      return;
-      if (CommentFloatDialogController.a(this.a).a(false)) {
-        CommentFloatDialogController.b(this.a).c();
-      }
-    } while (!CommentFloatDialogController.a(this.a).a(true));
-    CommentFloatDialogController.a(this.a).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialogController.1
  * JD-Core Version:    0.7.0.1
  */

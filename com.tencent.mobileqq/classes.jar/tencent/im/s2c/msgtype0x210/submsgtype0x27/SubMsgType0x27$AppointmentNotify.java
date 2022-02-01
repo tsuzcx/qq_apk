@@ -27,16 +27,17 @@ public final class SubMsgType0x27$AppointmentNotify
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40, 50, 58, 66, 74, 82, 90 }, new String[] { "uint64_from_uin", "str_appoint_id", "uint32_notifytype", "str_tips_content", "uint32_unread_count", "str_join_wording", "str_view_wording", "bytes_sig", "bytes_event_info", "bytes_nearby_event_info", "bytes_feed_event_info" }, new Object[] { Long.valueOf(0L), "", Integer.valueOf(0), "", Integer.valueOf(0), "", "", localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4 }, AppointmentNotify.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40, 50, 58, 66, 74, 82, 90 }, new String[] { "uint64_from_uin", "str_appoint_id", "uint32_notifytype", "str_tips_content", "uint32_unread_count", "str_join_wording", "str_view_wording", "bytes_sig", "bytes_event_info", "bytes_nearby_event_info", "bytes_feed_event_info" }, new Object[] { Long.valueOf(0L), "", localInteger, "", localInteger, "", "", localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4 }, AppointmentNotify.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x210.submsgtype0x27.SubMsgType0x27.AppointmentNotify
  * JD-Core Version:    0.7.0.1
  */

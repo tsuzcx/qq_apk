@@ -1,44 +1,22 @@
 package com.tencent.mobileqq.app.parser;
 
 import android.content.Context;
+import com.tencent.avgame.util.SchemeUtil;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.JumpAction;
 
 public class AVGameShareEntryLobbyParser
   extends JumpParserBase
 {
-  private JumpActionBase a(JumpActionBase paramJumpActionBase, String paramString)
+  public JumpAction a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
   {
-    paramJumpActionBase.a = paramString;
-    paramJumpActionBase.b = "avgame";
-    paramJumpActionBase.c = "lobby";
-    paramString = paramString.split("\\?");
-    if (paramString.length != 2) {}
-    for (;;)
-    {
-      return paramJumpActionBase;
-      paramString = paramString[1].split("&");
-      int i = 0;
-      while (i < paramString.length)
-      {
-        Object localObject = paramString[i];
-        if (localObject.split("=").length == 2)
-        {
-          int j = localObject.indexOf("=");
-          paramJumpActionBase.a(localObject.substring(0, j), localObject.substring(j + 1));
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public JumpActionBase a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
-  {
-    return a(new AVGameShareEntryLobbyAction(paramQQAppInterface, paramContext), paramString);
+    return SchemeUtil.a(new AVGameShareEntryLobbyAction((QQAppInterface)paramBaseQQAppInterface, paramContext), paramString, "avgame", "lobby");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.AVGameShareEntryLobbyParser
  * JD-Core Version:    0.7.0.1
  */

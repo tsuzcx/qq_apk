@@ -33,20 +33,23 @@ public final class f
   {
     paramJceOutputStream.write(this.a, 0);
     paramJceOutputStream.write(this.b, 1);
-    if (this.c != 0) {
-      paramJceOutputStream.write(this.c, 2);
+    int i = this.c;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 2);
     }
-    if (this.d != 0) {
-      paramJceOutputStream.write(this.d, 3);
+    i = this.d;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 3);
     }
-    if (this.e != 0) {
-      paramJceOutputStream.write(this.e, 4);
+    i = this.e;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.securemodule.f
  * JD-Core Version:    0.7.0.1
  */

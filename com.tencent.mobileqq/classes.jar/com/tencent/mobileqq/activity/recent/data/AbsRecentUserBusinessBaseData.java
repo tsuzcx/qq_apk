@@ -6,7 +6,6 @@ import com.tencent.imcore.message.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.imcore.message.IMCoreMessageStub;
 
 public abstract class AbsRecentUserBusinessBaseData
   extends RecentUserBaseData
@@ -41,10 +40,10 @@ public abstract class AbsRecentUserBusinessBaseData
     super.dealDraft(paramQQAppInterface, paramMsgSummary);
   }
   
-  public final void buildMessageBody(IMCoreMessageStub paramIMCoreMessageStub, int paramInt, BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
+  protected final void buildMessageBody(Message paramMessage, int paramInt, BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
   {
-    if (((paramIMCoreMessageStub instanceof Message)) && ((paramBaseQQAppInterface instanceof QQAppInterface))) {
-      a((Message)paramIMCoreMessageStub, paramInt, (QQAppInterface)paramBaseQQAppInterface, paramContext, paramMsgSummary);
+    if ((paramBaseQQAppInterface instanceof QQAppInterface)) {
+      a(paramMessage, paramInt, (QQAppInterface)paramBaseQQAppInterface, paramContext, paramMsgSummary);
     }
   }
   
@@ -62,7 +61,7 @@ public abstract class AbsRecentUserBusinessBaseData
     }
   }
   
-  public final void extraUpdate(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
+  protected final void extraUpdate(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
   {
     if ((paramBaseQQAppInterface instanceof QQAppInterface)) {
       a((QQAppInterface)paramBaseQQAppInterface, paramContext, paramMsgSummary);
@@ -78,7 +77,7 @@ public abstract class AbsRecentUserBusinessBaseData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.AbsRecentUserBusinessBaseData
  * JD-Core Version:    0.7.0.1
  */

@@ -21,12 +21,13 @@ public class ApngQueuePlayer$LocalDrawableBuilder
     Bundle localBundle = new Bundle();
     localBundle.putInt("key_loop", this.jdField_a_of_type_Int);
     localBundle.putBoolean("key_use_cache", false);
-    return VasApngUtil.getApngDrawable(this.jdField_a_of_type_JavaLangString, "dontCacheMe", paramDrawable, null, this.jdField_a_of_type_JavaLangString, localBundle);
+    String str = this.jdField_a_of_type_JavaLangString;
+    return VasApngUtil.getApngDrawable(str, "dontCacheMe", paramDrawable, null, str, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ApngQueuePlayer.LocalDrawableBuilder
  * JD-Core Version:    0.7.0.1
  */

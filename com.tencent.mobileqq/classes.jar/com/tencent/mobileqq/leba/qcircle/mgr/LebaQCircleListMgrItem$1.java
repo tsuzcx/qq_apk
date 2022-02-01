@@ -18,44 +18,47 @@ class LebaQCircleListMgrItem$1
   {
     if ((paramBoolean) && (paramLong == 0L))
     {
-      QLog.w("LebaQCircleListMgrItem", 1, "list setCircleSwitch success isChecked" + this.jdField_a_of_type_Boolean);
+      paramBaseRequest = new StringBuilder();
+      paramBaseRequest.append("list setCircleSwitch success isChecked");
+      paramBaseRequest.append(this.jdField_a_of_type_Boolean);
+      QLog.w("LebaQCircleListMgrItem", 1, paramBaseRequest.toString());
       if (!this.jdField_a_of_type_Boolean)
       {
         QCircleUtils.a().clearPedPoint();
         QLog.w("LebaQCircleListMgrItem", 1, "list setCircleSwitch success clearPedPoint");
       }
-      return;
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      paramString = QzoneConfig.getInstance();
-      if (this.jdField_a_of_type_Boolean)
-      {
-        paramBaseRequest = "0";
-        paramString.updateOneConfig("qqcircle", "qqcircle_entrance_enable_on_children_mode", paramBaseRequest);
-      }
     }
     else
     {
-      paramString = QzoneConfig.getInstance();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label154;
+      paramBoolean = TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
+      paramString = "0";
+      if (!paramBoolean)
+      {
+        paramSetMultiCircleSwitchRsp = QzoneConfig.getInstance();
+        if (this.jdField_a_of_type_Boolean) {
+          paramBaseRequest = "0";
+        } else {
+          paramBaseRequest = "1";
+        }
+        paramSetMultiCircleSwitchRsp.updateOneConfig("qqcircle", "qqcircle_entrance_enable_on_children_mode", paramBaseRequest);
       }
-    }
-    label154:
-    for (paramBaseRequest = "0";; paramBaseRequest = "1")
-    {
-      paramString.updateOneConfig("qqcircle", "qqcircle_entrance_enable", paramBaseRequest);
-      QLog.w("LebaQCircleListMgrItem", 1, "list setCircleSwitch error retcode= " + paramLong);
-      return;
-      paramBaseRequest = "1";
-      break;
+      paramSetMultiCircleSwitchRsp = QzoneConfig.getInstance();
+      if (this.jdField_a_of_type_Boolean) {
+        paramBaseRequest = paramString;
+      } else {
+        paramBaseRequest = "1";
+      }
+      paramSetMultiCircleSwitchRsp.updateOneConfig("qqcircle", "qqcircle_entrance_enable", paramBaseRequest);
+      paramBaseRequest = new StringBuilder();
+      paramBaseRequest.append("list setCircleSwitch error retcode= ");
+      paramBaseRequest.append(paramLong);
+      QLog.w("LebaQCircleListMgrItem", 1, paramBaseRequest.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.qcircle.mgr.LebaQCircleListMgrItem.1
  * JD-Core Version:    0.7.0.1
  */

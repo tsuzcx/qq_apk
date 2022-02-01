@@ -32,11 +32,11 @@ public class BatchGetUserInfoServlet
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
     Bundle localBundle = new Bundle();
-    Object localObject2;
     try
     {
       localBundle.putInt("key_index", paramIntent.getIntExtra("key_index", -1));
-      if (paramFromServiceMsg != null) {
+      if (paramFromServiceMsg != null)
+      {
         if (paramFromServiceMsg.isSuccess())
         {
           Object localObject1 = new PROTOCAL.StQWebRsp();
@@ -64,41 +64,51 @@ public class BatchGetUserInfoServlet
                 localJSONObject.put("city", localStApiUserInfo.address.city.get());
                 localJSONObject.put("openId", localStApiUserInfo.openid.get());
                 ((JSONArray)localObject1).put(localJSONObject);
-                continue;
-                doReport(paramIntent, paramFromServiceMsg);
               }
+              localObject2 = new JSONObject();
+              ((JSONObject)localObject2).put("data", localObject1);
+              localBundle.putString("key_reslut_data", ((JSONObject)localObject2).toString());
+              notifyObserver(paramIntent, 1028, true, localBundle, MiniAppObserver.class);
+            }
+            else
+            {
+              QLog.e("[minigame] BatchGetUserInfoServlet", 2, "inform BatchGetUserInfoServlet result.user == null");
+              notifyObserver(paramIntent, 1028, false, localBundle, MiniAppObserver.class);
             }
           }
+          else
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("inform BatchGetUserInfoServlet rsp.retCode = ");
+            ((StringBuilder)localObject2).append(((PROTOCAL.StQWebRsp)localObject1).retCode.get());
+            QLog.e("[minigame] BatchGetUserInfoServlet", 2, ((StringBuilder)localObject2).toString());
+            notifyObserver(paramIntent, 1028, false, localBundle, MiniAppObserver.class);
+          }
         }
+        else
+        {
+          localBundle.putLong("ret_code", paramFromServiceMsg.getBusinessFailCode());
+          localBundle.putString("err_msg", paramFromServiceMsg.getBusinessFailMsg());
+          QLog.e("[minigame] BatchGetUserInfoServlet", 2, "inform BatchGetUserInfoServlet isSuccess false");
+          notifyObserver(paramIntent, 1028, false, localBundle, MiniAppObserver.class);
+        }
+      }
+      else
+      {
+        QLog.e("[minigame] BatchGetUserInfoServlet", 2, "inform BatchGetUserInfoServlet resultcode fail.");
+        notifyObserver(paramIntent, 1028, false, localBundle, MiniAppObserver.class);
       }
     }
     catch (Throwable localThrowable)
     {
-      QLog.e("[minigame] BatchGetUserInfoServlet", 1, "BatchGetUserInfoServlet exception:" + localThrowable + "onReceive error");
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("BatchGetUserInfoServlet exception:");
+      ((StringBuilder)localObject2).append(localThrowable);
+      ((StringBuilder)localObject2).append("onReceive error");
+      QLog.e("[minigame] BatchGetUserInfoServlet", 1, ((StringBuilder)localObject2).toString());
       notifyObserver(null, 1028, false, localBundle, MiniAppObserver.class);
     }
-    for (;;)
-    {
-      return;
-      localObject2 = new JSONObject();
-      ((JSONObject)localObject2).put("data", localThrowable);
-      localBundle.putString("key_reslut_data", ((JSONObject)localObject2).toString());
-      notifyObserver(paramIntent, 1028, true, localBundle, MiniAppObserver.class);
-      continue;
-      QLog.e("[minigame] BatchGetUserInfoServlet", 2, "inform BatchGetUserInfoServlet result.user == null");
-      notifyObserver(paramIntent, 1028, false, localBundle, MiniAppObserver.class);
-      continue;
-      QLog.e("[minigame] BatchGetUserInfoServlet", 2, "inform BatchGetUserInfoServlet rsp.retCode = " + localThrowable.retCode.get());
-      notifyObserver(paramIntent, 1028, false, localBundle, MiniAppObserver.class);
-      continue;
-      localBundle.putLong("ret_code", paramFromServiceMsg.getBusinessFailCode());
-      localBundle.putString("err_msg", paramFromServiceMsg.getBusinessFailMsg());
-      QLog.e("[minigame] BatchGetUserInfoServlet", 2, "inform BatchGetUserInfoServlet isSuccess false");
-      notifyObserver(paramIntent, 1028, false, localBundle, MiniAppObserver.class);
-      continue;
-      QLog.e("[minigame] BatchGetUserInfoServlet", 2, "inform BatchGetUserInfoServlet resultcode fail.");
-      notifyObserver(paramIntent, 1028, false, localBundle, MiniAppObserver.class);
-    }
+    doReport(paramIntent, paramFromServiceMsg);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -116,7 +126,7 @@ public class BatchGetUserInfoServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.BatchGetUserInfoServlet
  * JD-Core Version:    0.7.0.1
  */

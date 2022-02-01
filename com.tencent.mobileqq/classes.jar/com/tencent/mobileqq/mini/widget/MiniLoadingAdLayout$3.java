@@ -16,7 +16,11 @@ class MiniLoadingAdLayout$3
     }
     if (MiniLoadingAdLayout.access$400(this.this$0) > 0)
     {
-      MiniLoadingAdLayout.access$700(this.this$0).setText(MiniLoadingAdLayout.access$400(this.this$0) + "秒");
+      TextView localTextView = MiniLoadingAdLayout.access$700(this.this$0);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(MiniLoadingAdLayout.access$400(this.this$0));
+      localStringBuilder.append("秒");
+      localTextView.setText(localStringBuilder.toString());
       MiniLoadingAdLayout.access$800(this.this$0).postDelayed(this, 1000L);
       return;
     }
@@ -25,7 +29,7 @@ class MiniLoadingAdLayout$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.MiniLoadingAdLayout.3
  * JD-Core Version:    0.7.0.1
  */

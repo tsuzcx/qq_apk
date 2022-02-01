@@ -31,7 +31,7 @@ import java.util.HashMap;
 
 public class SubscribeLaucher
 {
-  private static long a = 0L;
+  private static long a;
   
   public static int a(int paramInt)
   {
@@ -40,16 +40,14 @@ public class SubscribeLaucher
     case 4: 
     default: 
       return 0;
-    case 0: 
-    case 3: 
-    case 5: 
-    case 6: 
-      return 7000;
     case 2: 
     case 7: 
       return 7001;
+    case 1: 
+    case 8: 
+      return 8001;
     }
-    return 8001;
+    return 7000;
   }
   
   public static CertifiedAccountMeta.StFeed a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, long paramLong)
@@ -136,58 +134,64 @@ public class SubscribeLaucher
   
   public static void a(Context paramContext, String paramString, CertifiedAccountMeta.StFeed paramStFeed, ExtraTypeInfo paramExtraTypeInfo, Intent paramIntent)
   {
-    if (Math.abs(System.currentTimeMillis() - a) < 500L) {
-      QLog.i("SubscribeLauncher", 2, "prevent SubscribeLaucher from doubleClick");
-    }
-    Intent localIntent;
-    for (;;)
+    if (Math.abs(System.currentTimeMillis() - a) < 500L)
     {
+      QLog.i("SubscribeLauncher", 2, "prevent SubscribeLaucher from doubleClick");
       return;
-      a();
-      localIntent = paramIntent;
-      if (paramIntent == null) {
-        localIntent = new Intent();
-      }
-      if (paramString != null) {
-        localIntent.putExtra("url", paramString);
-      }
-      if (paramStFeed != null)
-      {
-        ((CertifiedAccountMeta.StUser)paramStFeed.poster.get()).setHasFlag(true);
-        ((CertifiedAccountMeta.StImage)paramStFeed.cover.get()).setHasFlag(true);
-        ((CertifiedAccountMeta.StVideo)paramStFeed.video.get()).setHasFlag(true);
-        localIntent.putExtra("bundle_key_subscribe_feed_bytes_array", paramStFeed.toByteArray());
-        localIntent.putExtra("bundle_key_feed_type", paramStFeed.type.get());
-      }
-      a = System.currentTimeMillis();
-      localIntent.putExtra("PERF_OPEN_PAGE_TIME", System.currentTimeMillis());
-      if (paramContext == null) {}
-      for (paramString = BaseApplicationImpl.getContext(); !a(paramString, paramStFeed, paramExtraTypeInfo, localIntent); paramString = paramContext)
-      {
-        localIntent.setClass(BaseApplicationImpl.getContext(), QQBrowserActivity.class);
-        localIntent.putExtra("fragment_class", SubscribeHybirdFragment.class.getCanonicalName());
-        if (!(paramContext instanceof Activity)) {
-          break label212;
-        }
-        paramContext.startActivity(localIntent);
-        return;
-      }
     }
-    label212:
+    a();
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
+    }
+    if (paramString != null) {
+      localIntent.putExtra("url", paramString);
+    }
+    if (paramStFeed != null)
+    {
+      ((CertifiedAccountMeta.StUser)paramStFeed.poster.get()).setHasFlag(true);
+      ((CertifiedAccountMeta.StImage)paramStFeed.cover.get()).setHasFlag(true);
+      ((CertifiedAccountMeta.StVideo)paramStFeed.video.get()).setHasFlag(true);
+      localIntent.putExtra("bundle_key_subscribe_feed_bytes_array", paramStFeed.toByteArray());
+      localIntent.putExtra("bundle_key_feed_type", paramStFeed.type.get());
+    }
+    a = System.currentTimeMillis();
+    localIntent.putExtra("PERF_OPEN_PAGE_TIME", System.currentTimeMillis());
+    if (paramContext == null) {
+      paramString = BaseApplicationImpl.getContext();
+    } else {
+      paramString = paramContext;
+    }
+    if (a(paramString, paramStFeed, paramExtraTypeInfo, localIntent)) {
+      return;
+    }
+    localIntent.setClass(BaseApplicationImpl.getContext(), QQBrowserActivity.class);
+    localIntent.putExtra("fragment_class", SubscribeHybirdFragment.class.getCanonicalName());
+    if ((paramContext instanceof Activity))
+    {
+      paramContext.startActivity(localIntent);
+      return;
+    }
     localIntent.addFlags(268435456);
     BaseApplicationImpl.getContext().startActivity(localIntent);
   }
   
   public static void a(Context paramContext, String paramString, CertifiedAccountMeta.StUser paramStUser, int paramInt, Intent paramIntent)
   {
-    PreLoader.remove("1001" + paramString);
-    PreLoader.preLoad("1001" + paramString, new SubscribePersonalDetailPreLoaderTask(paramString));
-    ExtraTypeInfo localExtraTypeInfo = new ExtraTypeInfo(7002, paramInt);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("1001");
+    ((StringBuilder)localObject).append(paramString);
+    PreLoader.remove(((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("1001");
+    ((StringBuilder)localObject).append(paramString);
+    PreLoader.preLoad(((StringBuilder)localObject).toString(), new SubscribePersonalDetailPreLoaderTask(paramString));
+    localObject = new ExtraTypeInfo(7002, paramInt);
     paramString = a("", paramString, -1, 0, 0, 0L);
     if (paramStUser != null) {
       paramString.poster.set(paramStUser);
     }
-    a(paramContext, null, paramString, localExtraTypeInfo, paramIntent);
+    a(paramContext, null, paramString, (ExtraTypeInfo)localObject, paramIntent);
   }
   
   public static void a(Context paramContext, String paramString, Intent paramIntent)
@@ -204,30 +208,33 @@ public class SubscribeLaucher
         QLog.i("SubscribeLauncher", 2, "launchSubscribeBySchema detail");
         paramContext = a(a((String)paramHashMap.get("feedid")), a((String)paramHashMap.get("uin")), Integer.parseInt(b((String)paramHashMap.get("type"))), Integer.parseInt(b((String)paramHashMap.get("width"))), Integer.parseInt(b((String)paramHashMap.get("height"))), Long.parseLong(b((String)paramHashMap.get("createtime"))));
         paramString = (String)paramHashMap.get("commentid");
-        if (TextUtils.isEmpty(paramString)) {
+        if (TextUtils.isEmpty(paramString))
+        {
           a(null, paramContext);
+          return;
         }
-      }
-      do
-      {
-        return;
         ExtraTypeInfo localExtraTypeInfo = new ExtraTypeInfo(0, 0);
         localExtraTypeInfo.setReplyId((String)paramHashMap.get("replyid"));
         localExtraTypeInfo.setCommentId(paramString);
         a(null, paramContext, localExtraTypeInfo);
         return;
-        if (paramString.startsWith("openhomepage"))
-        {
-          QLog.i("SubscribeLauncher", 2, "launchSubscribeBySchema personal page");
-          a(paramContext, a((String)paramHashMap.get("uid")));
-          return;
-        }
-      } while (!paramString.startsWith("opendiscoverpage"));
-      QLog.i("SubscribeLauncher", 2, "launchSubscribeBySchema ServiceAccountFolder page");
-      a(paramContext, 0, 7004, null);
-      return;
+      }
+      if (paramString.startsWith("openhomepage"))
+      {
+        QLog.i("SubscribeLauncher", 2, "launchSubscribeBySchema personal page");
+        a(paramContext, a((String)paramHashMap.get("uid")));
+        return;
+      }
+      if (paramString.startsWith("opendiscoverpage"))
+      {
+        QLog.i("SubscribeLauncher", 2, "launchSubscribeBySchema ServiceAccountFolder page");
+        a(paramContext, 0, 7004, null);
+      }
     }
-    QLog.e("SubscribeLauncher", 2, "launchSubscribeBySchema failed");
+    else
+    {
+      QLog.e("SubscribeLauncher", 2, "launchSubscribeBySchema failed");
+    }
   }
   
   public static void a(String paramString)
@@ -252,7 +259,6 @@ public class SubscribeLaucher
   
   private static boolean a(Context paramContext, CertifiedAccountMeta.StFeed paramStFeed, ExtraTypeInfo paramExtraTypeInfo, Intent paramIntent)
   {
-    boolean bool2 = true;
     ExtraTypeInfo localExtraTypeInfo = paramExtraTypeInfo;
     if (paramExtraTypeInfo == null) {
       localExtraTypeInfo = new ExtraTypeInfo();
@@ -260,76 +266,76 @@ public class SubscribeLaucher
     if ((localExtraTypeInfo.pageType == 0) && (paramStFeed != null)) {
       localExtraTypeInfo.pageType = a(paramStFeed.type.get());
     }
-    boolean bool1;
-    int i;
-    switch (localExtraTypeInfo.pageType)
+    int j = localExtraTypeInfo.pageType;
+    int i = 1;
+    switch (j)
     {
     default: 
-      bool1 = false;
-      bool2 = false;
-      i = 0;
-    }
-    for (;;)
-    {
-      paramIntent.putExtra("key_subscribe_intent_extra_type_info", localExtraTypeInfo);
-      if (i != 0)
+    case 7003: 
+    case 7004: 
+    case 7002: 
+      for (bool1 = false;; bool1 = true)
       {
-        PreLoader.remove("1002" + paramStFeed.id.get());
-        PreLoader.preLoad("1002" + paramStFeed.id.get(), new SubscribeDetailPreLoaderTask(paramStFeed));
+        k = 0;
+        i = 0;
+        break;
+        paramIntent.setClass(paramContext, ServiceAccountFolderActivity.class);
+        paramIntent.setFlags(67108864);
+        continue;
+        paramIntent.setClass(paramContext, PublicFragmentActivity.class);
+        paramIntent.putExtra("public_fragment_class", SubscribePersonalDetailFragment.class.getName());
+        paramIntent.addFlags(268435456);
       }
-      if (bool2)
-      {
-        if ((!bool1) || (!(paramContext instanceof Activity)) || (Build.VERSION.SDK_INT < 16)) {
-          break;
-        }
-        paramContext = (Activity)paramContext;
-        paramContext.startActivity(paramIntent, TransitionAnimHelper.a());
-        paramContext.overridePendingTransition(0, 0);
-      }
-      return bool2;
-      paramIntent.setClass(paramContext, PublicFragmentActivity.class);
-      paramIntent.putExtra("public_fragment_class", SubscribeVideoDetailFragment.class.getName());
-      paramIntent.addFlags(268435456);
-      bool1 = TransitionAnimHelper.a();
-      i = 1;
-      continue;
+    case 7001: 
       paramIntent.setClass(paramContext, PublicFragmentActivity.class);
       paramIntent.putExtra("public_fragment_class", SubscribeMultiPicFragment.class.getName());
       paramIntent.addFlags(268435456);
       bool1 = TransitionAnimHelper.a();
-      i = 1;
-      continue;
+      break;
+    case 7000: 
       paramIntent.setClass(paramContext, PublicFragmentActivity.class);
-      paramIntent.putExtra("public_fragment_class", SubscribePersonalDetailFragment.class.getName());
+      paramIntent.putExtra("public_fragment_class", SubscribeVideoDetailFragment.class.getName());
       paramIntent.addFlags(268435456);
-      bool1 = false;
-      i = 0;
-      continue;
-      paramIntent.setClass(paramContext, ServiceAccountFolderActivity.class);
-      paramIntent.setFlags(67108864);
-      bool1 = false;
-      i = 0;
+      bool1 = TransitionAnimHelper.a();
     }
-    if (!(paramContext instanceof Activity)) {
-      paramIntent.addFlags(268435456);
+    boolean bool2 = true;
+    int k = bool1;
+    boolean bool1 = bool2;
+    paramIntent.putExtra("key_subscribe_intent_extra_type_info", localExtraTypeInfo);
+    if (i != 0)
+    {
+      paramExtraTypeInfo = new StringBuilder();
+      paramExtraTypeInfo.append("1002");
+      paramExtraTypeInfo.append(paramStFeed.id.get());
+      PreLoader.remove(paramExtraTypeInfo.toString());
+      paramExtraTypeInfo = new StringBuilder();
+      paramExtraTypeInfo.append("1002");
+      paramExtraTypeInfo.append(paramStFeed.id.get());
+      PreLoader.preLoad(paramExtraTypeInfo.toString(), new SubscribeDetailPreLoaderTask(paramStFeed));
     }
-    paramContext.startActivity(paramIntent);
-    return bool2;
+    if (bool1)
+    {
+      if ((k != 0) && ((paramContext instanceof Activity)) && (Build.VERSION.SDK_INT >= 16))
+      {
+        paramContext = (Activity)paramContext;
+        paramContext.startActivity(paramIntent, TransitionAnimHelper.a());
+        paramContext.overridePendingTransition(0, 0);
+        return bool1;
+      }
+      if (!(paramContext instanceof Activity)) {
+        paramIntent.addFlags(268435456);
+      }
+      paramContext.startActivity(paramIntent);
+    }
+    return bool1;
   }
   
   private static String b(String paramString)
   {
-    String str;
-    if (paramString != null)
-    {
-      str = paramString;
-      if (paramString.length() != 0) {}
+    if ((paramString != null) && (paramString.length() != 0)) {
+      return paramString;
     }
-    else
-    {
-      str = "0";
-    }
-    return str;
+    return "0";
   }
   
   public static boolean b(int paramInt)
@@ -339,12 +345,20 @@ public class SubscribeLaucher
   
   public static boolean c(int paramInt)
   {
-    return (paramInt == 1) || (paramInt == 8);
+    boolean bool = true;
+    if (paramInt != 1)
+    {
+      if (paramInt == 8) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.SubscribeLaucher
  * JD-Core Version:    0.7.0.1
  */

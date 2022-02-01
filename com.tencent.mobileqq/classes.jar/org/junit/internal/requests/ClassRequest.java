@@ -25,19 +25,20 @@ public class ClassRequest
   
   public Runner getRunner()
   {
-    if (this.runner == null) {}
-    synchronized (this.runnerLock)
-    {
-      if (this.runner == null) {
-        this.runner = new AllDefaultPossibilitiesBuilder(this.canUseSuiteMethod).safeRunnerForClass(this.fTestClass);
+    if (this.runner == null) {
+      synchronized (this.runnerLock)
+      {
+        if (this.runner == null) {
+          this.runner = new AllDefaultPossibilitiesBuilder(this.canUseSuiteMethod).safeRunnerForClass(this.fTestClass);
+        }
       }
-      return this.runner;
     }
+    return this.runner;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.internal.requests.ClassRequest
  * JD-Core Version:    0.7.0.1
  */

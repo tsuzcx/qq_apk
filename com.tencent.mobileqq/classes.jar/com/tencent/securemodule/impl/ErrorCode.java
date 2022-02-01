@@ -32,12 +32,12 @@ public class ErrorCode
   public static ErrorCode.a judgeErrorCode(int paramInt)
   {
     ErrorCode.a locala = ErrorCode.a.d;
-    if (-(-paramInt % 100) == -3) {
+    paramInt = -paramInt;
+    if (-(paramInt % 100) == -3) {
       return ErrorCode.a.c;
     }
-    switch (-(-paramInt / 1000 * 1000))
-    {
-    default: 
+    paramInt = -(paramInt / 1000 * 1000);
+    if ((paramInt != -5000) && (paramInt != -4000) && (paramInt != -3000) && (paramInt != -2000) && (paramInt != -1000)) {
       return locala;
     }
     return ErrorCode.a.a;
@@ -45,7 +45,7 @@ public class ErrorCode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.securemodule.impl.ErrorCode
  * JD-Core Version:    0.7.0.1
  */

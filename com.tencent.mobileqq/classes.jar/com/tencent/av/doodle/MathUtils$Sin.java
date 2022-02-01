@@ -2,12 +2,11 @@ package com.tencent.av.doodle;
 
 class MathUtils$Sin
 {
-  static final float[] a;
+  static final float[] a = new float[16384];
   
   static
   {
     int k = 0;
-    a = new float[16384];
     int i = 0;
     int j;
     for (;;)
@@ -21,14 +20,16 @@ class MathUtils$Sin
     }
     while (j < 360)
     {
-      a[((int)(j * 45.511112F) & 0x3FFF)] = ((float)Math.sin(j * 0.01745329F));
+      float[] arrayOfFloat = a;
+      float f = j;
+      arrayOfFloat[((int)(45.511112F * f) & 0x3FFF)] = ((float)Math.sin(f * 0.01745329F));
       j += 90;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.doodle.MathUtils.Sin
  * JD-Core Version:    0.7.0.1
  */

@@ -17,36 +17,40 @@ public class PluginManagerV2$NetworkReceiver
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    do
-    {
+    if (this.jdField_a_of_type_Boolean) {
       return;
-      this.jdField_a_of_type_Boolean = true;
-      try
-      {
-        AppNetConnInfo.registerNetChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this);
-        return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    try
+    {
+      AppNetConnInfo.registerNetChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this);
+      return;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("plugin_tag", 2, localException, new Object[0]);
       }
-      catch (Exception localException) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("plugin_tag", 2, localException, new Object[0]);
+    }
   }
   
   public void b()
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-    do
-    {
+    if (!this.jdField_a_of_type_Boolean) {
       return;
-      this.jdField_a_of_type_Boolean = false;
-      try
-      {
-        AppNetConnInfo.unregisterNetEventHandler(this);
-        return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    try
+    {
+      AppNetConnInfo.unregisterNetEventHandler(this);
+      return;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("plugin_tag", 2, localException, new Object[0]);
       }
-      catch (Exception localException) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("plugin_tag", 2, localException, new Object[0]);
+    }
   }
   
   public void onNetChangeEvent(boolean paramBoolean)
@@ -56,7 +60,7 @@ public class PluginManagerV2$NetworkReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.plugin.PluginManagerV2.NetworkReceiver
  * JD-Core Version:    0.7.0.1
  */

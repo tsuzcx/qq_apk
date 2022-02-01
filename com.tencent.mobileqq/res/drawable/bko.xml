@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@android:color/white" />
-    <gradient android:startColor="#ff6c5cfc" android:endColor="#ffb373ff" android:angle="180.0" />
-    <corners android:radius="6.0dip" />
-</shape>
+    <item>
+        <rotate android:fromDegrees="45.0" android:pivotX="-39.999996%" android:pivotY="79.99999%">
+            <shape android:shape="rectangle">
+                <size android:height="16.0dip" android:width="16.0dip" />
+                <solid android:color="#ffffffff" />
+            </shape>
+        </rotate>
+    </item>
+</layer-list>

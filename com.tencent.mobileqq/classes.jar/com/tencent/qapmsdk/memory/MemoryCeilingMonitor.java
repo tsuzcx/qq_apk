@@ -40,7 +40,7 @@ public class MemoryCeilingMonitor
   private static final String TAG = "QAPM_memory_MemoryMonitor";
   public static boolean debug = false;
   @Nullable
-  private static volatile MemoryCeilingMonitor instance = null;
+  private static volatile MemoryCeilingMonitor instance;
   @NonNull
   private ArrayList<String> activityList = new ArrayList(20);
   private long delayTime = 5000L;
@@ -64,22 +64,25 @@ public class MemoryCeilingMonitor
   @Nullable
   public static MemoryCeilingMonitor getInstance()
   {
-    if (instance == null) {}
-    try
-    {
-      if (instance == null) {
-        instance = new MemoryCeilingMonitor();
+    if (instance == null) {
+      try
+      {
+        if (instance == null) {
+          instance = new MemoryCeilingMonitor();
+        }
       }
-      return instance;
+      finally {}
     }
-    finally {}
+    return instance;
   }
   
   private boolean isOverMemoryThreshold()
   {
     this.pssSize = AppInfo.getPssMemory(BaseInfo.app, Process.myPid());
     this.heapSize = (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory());
-    this.sb.setLength(0);
+    StringBuilder localStringBuilder = this.sb;
+    boolean bool = false;
+    localStringBuilder.setLength(0);
     this.sb.append("PSS=");
     this.sb.append(this.pssSize / 1024L);
     this.sb.append(" KB HeapMax=");
@@ -90,7 +93,10 @@ public class MemoryCeilingMonitor
     this.sb.append(Runtime.getRuntime().freeMemory() / 1024L);
     this.sb.append(" KB");
     Logger.INSTANCE.v(new String[] { "QAPM_memory_MemoryMonitor", this.sb.toString() });
-    return this.heapSize > PluginCombination.ceilingValuePlugin.threshold * Runtime.getRuntime().maxMemory() / 100L;
+    if (this.heapSize > PluginCombination.ceilingValuePlugin.threshold * Runtime.getRuntime().maxMemory() / 100L) {
+      bool = true;
+    }
+    return bool;
   }
   
   private void onLowMemory(long paramLong)
@@ -101,31 +107,35 @@ public class MemoryCeilingMonitor
     }
     Object localObject = ActivityInfo.getCurrentActivity(BaseInfo.app);
     String str = ActivityInfo.getCurrentActivityName();
-    StringBuilder localStringBuilder = new StringBuilder().append(str).append("@");
-    if (localObject != null) {}
-    for (localObject = Integer.valueOf(localObject.hashCode());; localObject = "")
-    {
-      localObject = localObject;
-      if ((!this.activityList.contains(localObject)) || (debug))
-      {
-        Logger.INSTANCE.d(new String[] { "QAPM_memory_MemoryMonitor", "activityandhash report:", localObject });
-        long l = PluginCombination.ceilingValuePlugin.threshold * Runtime.getRuntime().maxMemory() / 100L;
-        if (localIMemoryCellingListener != null) {
-          localIMemoryCellingListener.onBeforeUpload();
-        }
-        MemoryDumpHelper.getInstance().onReport(paramLong, l, str);
-        this.activityList.add(localObject);
-        if ((localIMemoryCellingListener == null) || (localIMemoryCellingListener.onCanDump(paramLong)))
-        {
-          if (PluginController.INSTANCE.canCollect(PluginCombination.ceilingHprofPlugin.plugin)) {
-            break;
-          }
-          Logger.INSTANCE.d(new String[] { "QAPM_memory_MemoryMonitor", "startDumpingMemory abort canCollect=false" });
-        }
-      }
-      return;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("@");
+    if (localObject != null) {
+      localObject = Integer.valueOf(localObject.hashCode());
+    } else {
+      localObject = "";
     }
-    MemoryDumpHelper.getInstance().startDumpingMemory("LowMemory", localIMemoryCellingListener);
+    localStringBuilder.append(localObject);
+    localObject = localStringBuilder.toString();
+    if ((!this.activityList.contains(localObject)) || (debug))
+    {
+      Logger.INSTANCE.d(new String[] { "QAPM_memory_MemoryMonitor", "activityandhash report:", localObject });
+      long l = PluginCombination.ceilingValuePlugin.threshold * Runtime.getRuntime().maxMemory() / 100L;
+      if (localIMemoryCellingListener != null) {
+        localIMemoryCellingListener.onBeforeUpload();
+      }
+      MemoryDumpHelper.getInstance().onReport(paramLong, l, str);
+      this.activityList.add(localObject);
+      if ((localIMemoryCellingListener == null) || (localIMemoryCellingListener.onCanDump(paramLong)))
+      {
+        if (!PluginController.INSTANCE.canCollect(PluginCombination.ceilingHprofPlugin.plugin))
+        {
+          Logger.INSTANCE.d(new String[] { "QAPM_memory_MemoryMonitor", "startDumpingMemory abort canCollect=false" });
+          return;
+        }
+        MemoryDumpHelper.getInstance().startDumpingMemory("LowMemory", localIMemoryCellingListener);
+      }
+    }
   }
   
   public static void reportHprofFile(DumpResult paramDumpResult)
@@ -141,9 +151,7 @@ public class MemoryCeilingMonitor
   
   public boolean handleMessage(@NonNull Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1) {
       return true;
     }
     if (isOverMemoryThreshold()) {
@@ -209,7 +217,7 @@ public class MemoryCeilingMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.memory.MemoryCeilingMonitor
  * JD-Core Version:    0.7.0.1
  */

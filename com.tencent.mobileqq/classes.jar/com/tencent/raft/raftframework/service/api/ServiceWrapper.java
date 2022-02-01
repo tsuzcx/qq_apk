@@ -18,7 +18,7 @@ public class ServiceWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.raft.raftframework.service.api.ServiceWrapper
  * JD-Core Version:    0.7.0.1
  */

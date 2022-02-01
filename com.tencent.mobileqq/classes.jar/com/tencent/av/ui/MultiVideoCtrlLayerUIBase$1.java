@@ -11,14 +11,14 @@ class MultiVideoCtrlLayerUIBase$1
 {
   MultiVideoCtrlLayerUIBase$1(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
   
-  public void a(long paramLong1, long paramLong2, ArrayList<VideoController.GAudioFriends> paramArrayList)
+  protected void a(long paramLong1, long paramLong2, ArrayList<VideoController.GAudioFriends> paramArrayList)
   {
     ThreadManager.getUIHandler().post(new MultiVideoCtrlLayerUIBase.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUIBase.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,22 @@ class VideoBaseItem$6
   
   public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 21)
     {
+      if (paramInt != 22) {
+        return false;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoBaseItem", 2, "video end buffering !");
+      }
+      if (VideoBaseItem.a(this.a) != null)
+      {
+        VideoBaseItem.a(this.a).a(this.a.b, 1);
+        return false;
+      }
     }
-    do
+    else
     {
-      return false;
       if (QLog.isColorLevel()) {
         QLog.d("VideoBaseItem", 2, "video start buffering !");
       }
@@ -24,18 +34,13 @@ class VideoBaseItem$6
         VideoBaseItem.a(this.a).a(this.a.b, 0);
       }
       this.a.c = 6;
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoBaseItem", 2, "video end buffering !");
-      }
-    } while (VideoBaseItem.a(this.a) == null);
-    VideoBaseItem.a(this.a).a(this.a.b, 1);
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.VideoBaseItem.6
  * JD-Core Version:    0.7.0.1
  */

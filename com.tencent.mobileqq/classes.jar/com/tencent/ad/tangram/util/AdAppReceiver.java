@@ -9,8 +9,8 @@ import android.support.annotation.Keep;
 import android.text.TextUtils;
 import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.log.AdLog;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.ad.tangram.statistics.b;
+import com.tencent.ad.tangram.statistics.AdAnalysisHelperForUtil;
+import com.tencent.ad.tangram.statistics.c;
 import com.tencent.ad.tangram.thread.AdThreadManager;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -50,91 +50,101 @@ public class AdAppReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramContext == null) || (paramIntent == null)) {
-      AdLog.e("AdAppReceiver", "onReceive error");
-    }
-    do
+    if ((paramContext != null) && (paramIntent != null))
     {
-      return;
       AdLog.i("AdAppReceiver", "onReceive");
-    } while (!TextUtils.equals(paramIntent.getAction(), "android.intent.action.PACKAGE_ADDED"));
-    onReceivePackageAdded(paramContext, paramIntent);
+      if (TextUtils.equals(paramIntent.getAction(), "android.intent.action.PACKAGE_ADDED")) {
+        onReceivePackageAdded(paramContext, paramIntent);
+      }
+      return;
+    }
+    AdLog.e("AdAppReceiver", "onReceive error");
   }
   
   protected void onReceivePackageAdded(Context paramContext, Intent paramIntent)
   {
-    if ((paramContext == null) || (paramIntent == null) || (!TextUtils.equals(paramIntent.getAction(), "android.intent.action.PACKAGE_ADDED")) || (paramIntent.getData() == null) || (TextUtils.isEmpty(paramIntent.getData().getSchemeSpecificPart()))) {
-      AdLog.e("AdAppReceiver", "onReceivePackageAdded error");
-    }
-    do
+    if ((paramContext != null) && (paramIntent != null) && (TextUtils.equals(paramIntent.getAction(), "android.intent.action.PACKAGE_ADDED")) && (paramIntent.getData() != null) && (!TextUtils.isEmpty(paramIntent.getData().getSchemeSpecificPart())))
     {
-      do
-      {
+      paramContext = paramIntent.getData().getSchemeSpecificPart();
+      AdLog.i("AdAppReceiver", String.format("onReceivePackageAdded %s", new Object[] { paramContext }));
+      paramIntent = getParams(paramContext);
+      if (paramIntent == null) {
         return;
-        paramContext = paramIntent.getData().getSchemeSpecificPart();
-        AdLog.i("AdAppReceiver", String.format("onReceivePackageAdded %s", new Object[] { paramContext }));
-        paramIntent = getParams(paramContext);
-      } while (paramIntent == null);
+      }
       unObserve(paramContext);
       if (AdClickUtil.isValidForApp(paramIntent))
       {
-        b.reportAsync(new WeakReference(paramIntent.activity.get()), paramIntent.ad, 286);
-        AdReporterForAnalysis.reportForAppInstalled(paramIntent);
+        c.reportAsync(new WeakReference(paramIntent.activity.get()), paramIntent.ad, 286);
+        AdAnalysisHelperForUtil.reportForAppInstalled(paramIntent);
       }
-    } while (!AdClickUtil.isValidForApp(paramIntent));
-    AdThreadManager.INSTANCE.postDelayed(new AdAppReceiver.1(this, paramIntent), 0, 1000L);
+      if (AdClickUtil.isValidForApp(paramIntent)) {
+        AdThreadManager.INSTANCE.postDelayed(new AdAppReceiver.1(this, paramIntent), 0, 1000L);
+      }
+      return;
+    }
+    AdLog.e("AdAppReceiver", "onReceivePackageAdded error");
   }
   
   public void register(Context paramContext)
   {
-    if ((paramContext == null) || (this.registered)) {
-      return;
-    }
-    try
+    if (paramContext != null)
     {
       if (this.registered) {
         return;
       }
-    }
-    finally {}
-    this.registered = true;
-    AdLog.i("AdAppReceiver", "register");
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("android.intent.action.PACKAGE_ADDED");
-    localIntentFilter.addDataScheme("package");
-    try
-    {
-      paramContext.registerReceiver(this, localIntentFilter);
-      return;
-    }
-    catch (Throwable paramContext)
-    {
-      AdLog.e("AdAppReceiver", "register", paramContext);
+      try
+      {
+        if (this.registered) {
+          return;
+        }
+        this.registered = true;
+        AdLog.i("AdAppReceiver", "register");
+        IntentFilter localIntentFilter = new IntentFilter();
+        localIntentFilter.addAction("android.intent.action.PACKAGE_ADDED");
+        localIntentFilter.addDataScheme("package");
+        try
+        {
+          paramContext.registerReceiver(this, localIntentFilter);
+          return;
+        }
+        catch (Throwable paramContext)
+        {
+          AdLog.e("AdAppReceiver", "register", paramContext);
+          return;
+        }
+        return;
+      }
+      finally {}
     }
   }
   
   public void unregister(Context paramContext)
   {
-    if ((paramContext == null) || (!this.registered)) {
-      return;
-    }
-    try
+    if (paramContext != null)
     {
       if (!this.registered) {
         return;
       }
-    }
-    finally {}
-    this.registered = false;
-    AdLog.i("AdAppReceiver", "unregister");
-    try
-    {
-      paramContext.unregisterReceiver(this);
-      return;
-    }
-    catch (Throwable paramContext)
-    {
-      AdLog.e("AdAppReceiver", "unregisterReceiver", paramContext);
+      try
+      {
+        if (!this.registered) {
+          return;
+        }
+        this.registered = false;
+        AdLog.i("AdAppReceiver", "unregister");
+        try
+        {
+          paramContext.unregisterReceiver(this);
+          return;
+        }
+        catch (Throwable paramContext)
+        {
+          AdLog.e("AdAppReceiver", "unregisterReceiver", paramContext);
+          return;
+        }
+        return;
+      }
+      finally {}
     }
   }
 }

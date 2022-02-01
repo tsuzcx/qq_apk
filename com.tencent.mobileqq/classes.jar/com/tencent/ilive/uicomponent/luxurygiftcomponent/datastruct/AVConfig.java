@@ -9,78 +9,44 @@ public class AVConfig
   public static final int RECORD_SCREEN_LEVEL_1280 = 11;
   public static final int RECORD_SCREEN_LEVEL_640 = 12;
   private static int sAVPkgType = 1;
-  private static String sAnchorRolesValue;
+  private static String sAnchorRolesValue = "anchor";
   private static long sAnchorSocreVersion = 0L;
-  private static int sBeautySkinValue;
-  private static int sBeautyWhiteValue;
-  private static int sBitrateOfSreenrecord;
+  private static int sBeautySkinValue = 1;
+  private static int sBeautyWhiteValue = 3;
+  private static int sBitrateOfSreenrecord = 1600;
   private static JSONObject sCameraConfig;
-  private static int sCheckVideoFrameException;
-  private static int sForceUseHwDecConfig;
-  private static int sForceUseHwEncConfig;
-  private static int sHeightOfSceenrecord;
-  private static boolean sIsCameraSetRecordingHint;
-  private static boolean sIsCurrentDisablePtuVideoFilters;
-  private static boolean sIsDubNeedHeadset;
-  private static boolean sIsEnableScreenRecord;
-  private static boolean sIsPtvFilterSupported;
-  private static boolean sIsRecvAudio;
-  private static boolean sIsSupportBeauty;
-  private static boolean sIsSupportHardwareDecodeForRTMP;
-  private static boolean sIsSupportHardwareDecoder;
-  private static boolean sIsSupportHardwareEncode;
-  private static boolean sIsSupportOpenglesAPI;
+  private static int sCheckVideoFrameException = 0;
+  private static int sForceUseHwDecConfig = -1;
+  private static int sForceUseHwEncConfig = -1;
+  private static int sHeightOfSceenrecord = 720;
+  private static boolean sIsCameraSetRecordingHint = true;
+  private static boolean sIsCurrentDisablePtuVideoFilters = false;
+  private static boolean sIsDubNeedHeadset = false;
+  private static boolean sIsEnableScreenRecord = true;
+  private static boolean sIsPtvFilterSupported = true;
+  private static boolean sIsRecvAudio = true;
+  private static boolean sIsSupportBeauty = true;
+  private static boolean sIsSupportHardwareDecodeForRTMP = true;
+  private static boolean sIsSupportHardwareDecoder = true;
+  private static boolean sIsSupportHardwareEncode = true;
+  private static boolean sIsSupportOpenglesAPI = true;
   private static boolean sIsSupportPtuBeauty = false;
-  private static boolean sIsSupportPtuRetouch;
+  private static boolean sIsSupportPtuRetouch = false;
   private static JSONObject sMediaAVConfig;
   private static JSONObject sOpenSdkConfig;
-  private static int sPtuBeautyFilterID;
-  private static int sPtuBeautySecondFilterID;
+  private static int sPtuBeautyFilterID = -1;
+  private static int sPtuBeautySecondFilterID = -1;
   private static int sPtuBeautyType = 1;
-  private static boolean sPtuInitialed;
-  private static int sRecordScreenLevel;
+  private static boolean sPtuInitialed = false;
+  private static int sRecordScreenLevel = 11;
   private static AVConfig.RtmpConfig sRtmpConfig;
-  private static int sRtmpPlayerIndex;
-  private static String sRtmpPlayerUrl;
-  private static String sRtmpRoomID;
-  private static int sUseOpenSdkHwDecConfig;
-  private static int sUseOpenSdkHwEncConfig;
+  private static int sRtmpPlayerIndex = -1;
+  private static String sRtmpPlayerUrl = "";
+  private static String sRtmpRoomID = "";
+  private static int sUseOpenSdkHwDecConfig = 1;
+  private static int sUseOpenSdkHwEncConfig = 1;
   private static JSONObject sVideoGearInfo;
-  private static int sWidthOfScreenrecord;
-  
-  static
-  {
-    sPtuBeautyFilterID = -1;
-    sPtuBeautySecondFilterID = -1;
-    sRtmpRoomID = "";
-    sRtmpPlayerIndex = -1;
-    sRtmpPlayerUrl = "";
-    sRecordScreenLevel = 11;
-    sIsCameraSetRecordingHint = true;
-    sIsSupportHardwareEncode = true;
-    sIsSupportHardwareDecoder = true;
-    sIsPtvFilterSupported = true;
-    sIsSupportBeauty = true;
-    sIsSupportOpenglesAPI = true;
-    sIsEnableScreenRecord = true;
-    sBeautyWhiteValue = 3;
-    sBeautySkinValue = 1;
-    sBitrateOfSreenrecord = 1600;
-    sWidthOfScreenrecord = 1280;
-    sHeightOfSceenrecord = 720;
-    sIsSupportHardwareDecodeForRTMP = true;
-    sAnchorRolesValue = "anchor";
-    sIsRecvAudio = true;
-    sIsDubNeedHeadset = false;
-    sIsCurrentDisablePtuVideoFilters = false;
-    sUseOpenSdkHwDecConfig = 1;
-    sUseOpenSdkHwEncConfig = 1;
-    sForceUseHwDecConfig = -1;
-    sForceUseHwEncConfig = -1;
-    sCheckVideoFrameException = 0;
-    sPtuInitialed = false;
-    sIsSupportPtuRetouch = false;
-  }
+  private static int sWidthOfScreenrecord = 1280;
   
   public static int getAVPkgType()
   {
@@ -149,10 +115,12 @@ public class AVConfig
   
   public static JSONObject getOpenSdkConfig()
   {
-    if (sOpenSdkConfig == null) {
-      return new JSONObject();
+    JSONObject localJSONObject2 = sOpenSdkConfig;
+    JSONObject localJSONObject1 = localJSONObject2;
+    if (localJSONObject2 == null) {
+      localJSONObject1 = new JSONObject();
     }
-    return sOpenSdkConfig;
+    return localJSONObject1;
   }
   
   public static int getPtuBeautyFilterID()
@@ -467,7 +435,7 @@ public class AVConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.uicomponent.luxurygiftcomponent.datastruct.AVConfig
  * JD-Core Version:    0.7.0.1
  */

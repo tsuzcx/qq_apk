@@ -17,7 +17,6 @@ public class b
 {
   private MonitorTask a(Cursor paramCursor)
   {
-    boolean bool = true;
     MonitorTask localMonitorTask = new MonitorTask();
     localMonitorTask.id = paramCursor.getLong(paramCursor.getColumnIndex("_id"));
     localMonitorTask.packageName = paramCursor.getString(paramCursor.getColumnIndex("pkg_name"));
@@ -39,153 +38,119 @@ public class b
     if ((MonitorStep.values().length > i) && (i >= 0))
     {
       localMonitorTask.lastStep = MonitorStep.values()[i];
-      if (paramCursor.getInt(paramCursor.getColumnIndex("is_tdownload")) != 1) {
-        break label438;
-      }
     }
-    for (;;)
+    else
     {
-      localMonitorTask.isTencentDownload = bool;
-      localMonitorTask.externalParams = com.tencent.tmassistantbase.util.d.a(paramCursor.getString(paramCursor.getColumnIndex("external_param")), "&");
-      return localMonitorTask;
       localMonitorTask.lastStep = MonitorStep.DOWNLOADING;
-      ab.e("MonitorTaskTable", "Bad MonitorStep index:" + i);
-      break;
-      label438:
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Bad MonitorStep index:");
+      localStringBuilder.append(i);
+      ab.e("MonitorTaskTable", localStringBuilder.toString());
+    }
+    i = paramCursor.getInt(paramCursor.getColumnIndex("is_tdownload"));
+    boolean bool = true;
+    if (i != 1) {
       bool = false;
     }
+    localMonitorTask.isTencentDownload = bool;
+    localMonitorTask.externalParams = com.tencent.tmassistantbase.util.d.a(paramCursor.getString(paramCursor.getColumnIndex("external_param")), "&");
+    return localMonitorTask;
   }
   
   private ContentValues d(MonitorTask paramMonitorTask)
   {
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("pkg_name", paramMonitorTask.packageName);
-    localContentValues.put("version_code", Integer.valueOf(paramMonitorTask.versionCode));
-    localContentValues.put("app_name", paramMonitorTask.appName);
-    localContentValues.put("file_size", Long.valueOf(paramMonitorTask.fileSize));
-    localContentValues.put("channel_id", paramMonitorTask.cpChannelId);
-    localContentValues.put("file_path", paramMonitorTask.filePath);
-    localContentValues.put("download_url", paramMonitorTask.downloadUrl);
-    localContentValues.put("file_md5", paramMonitorTask.fileMd5);
-    localContentValues.put("install_dir", paramMonitorTask.installDir);
-    localContentValues.put("last_modify_time", Long.valueOf(paramMonitorTask.lastModifedTime));
-    localContentValues.put("yyb_app_id", Long.valueOf(paramMonitorTask.yybAppId));
-    localContentValues.put("yyb_apk_id", Long.valueOf(paramMonitorTask.yybApkId));
-    localContentValues.put("trace_id", paramMonitorTask.traceId);
-    localContentValues.put("task_id", paramMonitorTask.additionalId);
-    localContentValues.put("app_type", Integer.valueOf(paramMonitorTask.appType));
-    if (paramMonitorTask.lastStep != null) {
-      localContentValues.put("last_step", Integer.valueOf(paramMonitorTask.lastStep.ordinal()));
-    }
-    if (paramMonitorTask.isTencentDownload) {}
-    for (int i = 1;; i = 0)
-    {
-      localContentValues.put("is_tdownload", Integer.valueOf(i));
-      if (paramMonitorTask.externalParams != null) {
-        localContentValues.put("external_param", com.tencent.tmassistantbase.util.d.a(paramMonitorTask.externalParams, "&"));
-      }
-      return localContentValues;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public long a(MonitorTask paramMonitorTask)
   {
-    if (paramMonitorTask == null) {}
-    SQLiteDatabase localSQLiteDatabase;
-    do
-    {
+    long l = -1L;
+    if (paramMonitorTask == null) {
       return -1L;
-      paramMonitorTask = d(paramMonitorTask);
-      localSQLiteDatabase = b().getWritableDatabase();
-    } while (localSQLiteDatabase == null);
-    return localSQLiteDatabase.insert("monitor_task_table", null, paramMonitorTask);
+    }
+    paramMonitorTask = d(paramMonitorTask);
+    SQLiteDatabase localSQLiteDatabase = b().getWritableDatabase();
+    if (localSQLiteDatabase != null) {
+      l = localSQLiteDatabase.insert("monitor_task_table", null, paramMonitorTask);
+    }
+    return l;
   }
   
   public MonitorTask a(long paramLong)
   {
-    Object localObject3 = null;
     Object localObject2 = null;
-    if (paramLong <= 0L) {}
-    Object localObject1;
-    Cursor localCursor;
-    do
+    if (paramLong <= 0L) {
+      return null;
+    }
+    Object localObject1 = b().getReadableDatabase();
+    if (localObject1 == null) {
+      return null;
+    }
+    Cursor localCursor = ((SQLiteDatabase)localObject1).query("monitor_task_table", null, "_id =?", new String[] { String.valueOf(paramLong) }, null, null, null);
+    localObject1 = localObject2;
+    if (localCursor != null)
     {
-      do
-      {
-        return localObject2;
-        localObject1 = b().getReadableDatabase();
-      } while (localObject1 == null);
-      localCursor = ((SQLiteDatabase)localObject1).query("monitor_task_table", null, "_id =?", new String[] { String.valueOf(paramLong) }, null, null, null);
-      localObject1 = localObject3;
-      if (localCursor != null)
-      {
-        localObject1 = localObject3;
-        if (localCursor.moveToFirst()) {
-          localObject1 = a(localCursor);
-        }
+      localObject1 = localObject2;
+      if (localCursor.moveToFirst()) {
+        localObject1 = a(localCursor);
       }
-      localObject2 = localObject1;
-    } while (localCursor == null);
-    localCursor.close();
+    }
+    if (localCursor != null) {
+      localCursor.close();
+    }
     return localObject1;
   }
   
   public MonitorTask a(String paramString)
   {
-    Object localObject2 = null;
+    boolean bool = TextUtils.isEmpty(paramString);
     Object localObject1 = null;
-    if (TextUtils.isEmpty(paramString)) {}
-    Object localObject3;
-    do
+    if (bool) {
+      return null;
+    }
+    Object localObject2 = b().getReadableDatabase();
+    if (localObject2 == null) {
+      return null;
+    }
+    localObject2 = ((SQLiteDatabase)localObject2).query("monitor_task_table", null, "task_id =?", new String[] { paramString }, null, null, null);
+    paramString = localObject1;
+    if (localObject2 != null)
     {
-      do
-      {
-        return localObject1;
-        localObject3 = b().getReadableDatabase();
-      } while (localObject3 == null);
-      localObject3 = ((SQLiteDatabase)localObject3).query("monitor_task_table", null, "task_id =?", new String[] { paramString }, null, null, null);
-      paramString = localObject2;
-      if (localObject3 != null)
-      {
-        paramString = localObject2;
-        if (((Cursor)localObject3).moveToFirst()) {
-          paramString = a((Cursor)localObject3);
-        }
+      paramString = localObject1;
+      if (((Cursor)localObject2).moveToFirst()) {
+        paramString = a((Cursor)localObject2);
       }
-      localObject1 = paramString;
-    } while (localObject3 == null);
-    ((Cursor)localObject3).close();
+    }
+    if (localObject2 != null) {
+      ((Cursor)localObject2).close();
+    }
     return paramString;
   }
   
   public ArrayList<MonitorTask> a()
   {
+    Object localObject1 = b().getReadableDatabase();
     Object localObject2 = null;
-    Object localObject1 = null;
-    Object localObject3 = b().getReadableDatabase();
-    if (localObject3 == null) {
-      localObject2 = localObject1;
+    if (localObject1 == null) {
+      return null;
     }
-    do
+    Cursor localCursor = ((SQLiteDatabase)localObject1).query("monitor_task_table", null, null, null, null, null, null);
+    localObject1 = localObject2;
+    if (localCursor != null)
     {
-      return localObject2;
-      localObject3 = ((SQLiteDatabase)localObject3).query("monitor_task_table", null, null, null, null, null, null);
       localObject1 = localObject2;
-      if (localObject3 != null)
+      if (localCursor.moveToFirst())
       {
-        localObject1 = localObject2;
-        if (((Cursor)localObject3).moveToFirst())
+        localObject1 = new ArrayList();
+        do
         {
-          localObject1 = new ArrayList();
-          do
-          {
-            ((ArrayList)localObject1).add(a((Cursor)localObject3));
-          } while (((Cursor)localObject3).moveToNext());
-        }
+          ((ArrayList)localObject1).add(a(localCursor));
+        } while (localCursor.moveToNext());
       }
-      localObject2 = localObject1;
-    } while (localObject3 == null);
-    ((Cursor)localObject3).close();
+    }
+    if (localCursor != null) {
+      localCursor.close();
+    }
     return localObject1;
   }
   
@@ -196,51 +161,60 @@ public class b
   
   public boolean b(MonitorTask paramMonitorTask)
   {
-    boolean bool = true;
-    System.out.print(Thread.currentThread().getName() + " update task.id = " + paramMonitorTask.id);
-    ContentValues localContentValues = d(paramMonitorTask);
-    SQLiteDatabase localSQLiteDatabase = b().getWritableDatabase();
-    if (localSQLiteDatabase != null) {
+    Object localObject1 = System.out;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(Thread.currentThread().getName());
+    ((StringBuilder)localObject2).append(" update task.id = ");
+    ((StringBuilder)localObject2).append(paramMonitorTask.id);
+    ((PrintStream)localObject1).print(((StringBuilder)localObject2).toString());
+    localObject1 = d(paramMonitorTask);
+    localObject2 = b().getWritableDatabase();
+    boolean bool = false;
+    if (localObject2 != null) {
       try
       {
-        if (paramMonitorTask.id > 0L)
+        long l = paramMonitorTask.id;
+        if (l > 0L)
         {
-          if (localSQLiteDatabase.update("monitor_task_table", localContentValues, "_id =?", new String[] { String.valueOf(paramMonitorTask.id) }) <= 0) {
-            break label186;
+          if (((SQLiteDatabase)localObject2).update("monitor_task_table", (ContentValues)localObject1, "_id =?", new String[] { String.valueOf(paramMonitorTask.id) }) <= 0) {
+            break label222;
           }
           return true;
         }
         if (!TextUtils.isEmpty(paramMonitorTask.additionalId))
         {
-          int i = localSQLiteDatabase.update("monitor_task_table", localContentValues, "task_id =?", new String[] { paramMonitorTask.additionalId });
+          int i = ((SQLiteDatabase)localObject2).update("monitor_task_table", (ContentValues)localObject1, "task_id =?", new String[] { paramMonitorTask.additionalId });
           if (i > 0) {
-            break label184;
+            bool = true;
           }
-          return false;
+          return bool;
         }
       }
       catch (Throwable paramMonitorTask)
       {
-        ab.e("MonitorTaskTable", ">update error:" + paramMonitorTask.getMessage() + "|" + paramMonitorTask.getCause());
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(">update error:");
+        ((StringBuilder)localObject1).append(paramMonitorTask.getMessage());
+        ((StringBuilder)localObject1).append("|");
+        ((StringBuilder)localObject1).append(paramMonitorTask.getCause());
+        ab.e("MonitorTaskTable", ((StringBuilder)localObject1).toString());
       }
     } else {
-      bool = false;
+      return false;
     }
-    label184:
-    return bool;
-    label186:
+    label222:
     return false;
   }
   
   public int c(MonitorTask paramMonitorTask)
   {
-    if (paramMonitorTask == null) {}
-    SQLiteDatabase localSQLiteDatabase;
-    do
-    {
+    if (paramMonitorTask == null) {
       return -1;
-      localSQLiteDatabase = b().getWritableDatabase();
-    } while (localSQLiteDatabase == null);
+    }
+    SQLiteDatabase localSQLiteDatabase = b().getWritableDatabase();
+    if (localSQLiteDatabase == null) {
+      return -1;
+    }
     try
     {
       int i = localSQLiteDatabase.delete("monitor_task_table", "_id =?", new String[] { String.valueOf(paramMonitorTask.id) });
@@ -248,7 +222,14 @@ public class b
     }
     catch (Exception localException)
     {
-      ab.e("MonitorTaskTable", ">delete error:" + localException.getMessage() + "|" + localException.getCause() + "|" + paramMonitorTask);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(">delete error:");
+      localStringBuilder.append(localException.getMessage());
+      localStringBuilder.append("|");
+      localStringBuilder.append(localException.getCause());
+      localStringBuilder.append("|");
+      localStringBuilder.append(paramMonitorTask);
+      ab.e("MonitorTaskTable", localStringBuilder.toString());
     }
     return -1;
   }
@@ -260,7 +241,12 @@ public class b
   
   public String[] getAlterSQL(int paramInt1, int paramInt2)
   {
-    ab.c("MonitorTaskTable", ">getAlterSQL " + paramInt1 + "|" + paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(">getAlterSQL ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramInt2);
+    ab.c("MonitorTaskTable", localStringBuilder.toString());
     if ((paramInt1 == 7) && (paramInt2 == 8)) {
       return new String[] { "alter table monitor_task_table add column is_tdownload INTEGER;", "alter table monitor_task_table add column external_param TEXT;" };
     }
@@ -274,7 +260,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.replacemonitor.replace.b.b
  * JD-Core Version:    0.7.0.1
  */

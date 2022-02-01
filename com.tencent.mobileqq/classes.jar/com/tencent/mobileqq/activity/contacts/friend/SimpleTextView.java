@@ -14,7 +14,7 @@ import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.qqui.R.styleable;
 import com.tencent.mobileqq.utils.DisplayUtils;
 import com.tencent.theme.ISkinTypeface;
 
@@ -43,10 +43,10 @@ public class SimpleTextView
     this.jdField_a_of_type_AndroidTextTextPaint.density = ((Resources)localObject).getDisplayMetrics().density;
     if (paramAttributeSet != null)
     {
-      paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.SimpleTextView);
-      paramInt = paramAttributeSet.getDimensionPixelSize(0, (int)DisplayUtils.a(paramContext, 12.0F));
-      localObject = paramAttributeSet.getColorStateList(1);
-      paramContext = paramAttributeSet.getString(2);
+      paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.bl);
+      paramInt = paramAttributeSet.getDimensionPixelSize(R.styleable.bt, (int)DisplayUtils.a(paramContext, 12.0F));
+      localObject = paramAttributeSet.getColorStateList(R.styleable.bu);
+      paramContext = paramAttributeSet.getString(R.styleable.bv);
       this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramInt);
       this.jdField_a_of_type_AndroidGraphicsPaint$FontMetrics = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
       this.jdField_a_of_type_AndroidContentResColorStateList = ((ColorStateList)localObject);
@@ -61,17 +61,15 @@ public class SimpleTextView
   
   private int a(int paramInt1, int paramInt2)
   {
-    int j = View.MeasureSpec.getMode(paramInt1);
-    int i = View.MeasureSpec.getSize(paramInt1);
-    if (j == 1073741824) {
-      paramInt1 = i;
-    }
-    do
-    {
+    int i = View.MeasureSpec.getMode(paramInt1);
+    paramInt1 = View.MeasureSpec.getSize(paramInt1);
+    if (i == 1073741824) {
       return paramInt1;
-      paramInt1 = paramInt2;
-    } while (j != -2147483648);
-    return Math.min(i, paramInt2);
+    }
+    if (i == -2147483648) {
+      return Math.min(paramInt1, paramInt2);
+    }
+    return paramInt2;
   }
   
   private void a()
@@ -96,10 +94,11 @@ public class SimpleTextView
     return this.jdField_a_of_type_JavaLangCharSequence;
   }
   
-  public void drawableStateChanged()
+  protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if ((this.jdField_a_of_type_AndroidContentResColorStateList != null) && (this.jdField_a_of_type_AndroidContentResColorStateList.isStateful())) {
+    ColorStateList localColorStateList = this.jdField_a_of_type_AndroidContentResColorStateList;
+    if ((localColorStateList != null) && (localColorStateList.isStateful())) {
       a();
     }
   }
@@ -109,25 +108,28 @@ public class SimpleTextView
     return this.jdField_a_of_type_AndroidTextTextPaint;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     int i = getMeasuredHeight();
     float f2 = this.jdField_a_of_type_AndroidGraphicsPaint$FontMetrics.bottom;
     float f3 = this.jdField_a_of_type_AndroidGraphicsPaint$FontMetrics.top;
     float f1 = i;
-    f2 = (i - (f2 - f3)) / 2.0F;
+    f2 = (f1 - (f2 - f3)) / 2.0F;
     f3 = this.jdField_a_of_type_AndroidGraphicsPaint$FontMetrics.bottom;
-    paramCanvas.drawText(this.jdField_a_of_type_JavaLangCharSequence, 0, this.jdField_a_of_type_JavaLangCharSequence.length(), getPaddingLeft(), f1 - f2 - f3, this.jdField_a_of_type_AndroidTextTextPaint);
+    CharSequence localCharSequence = this.jdField_a_of_type_JavaLangCharSequence;
+    paramCanvas.drawText(localCharSequence, 0, localCharSequence.length(), getPaddingLeft(), f1 - f2 - f3, this.jdField_a_of_type_AndroidTextTextPaint);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
-    if (this.c != -1) {}
-    for (int i = this.c;; i = (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(this.jdField_a_of_type_JavaLangCharSequence, 0, this.jdField_a_of_type_JavaLangCharSequence.length()))
+    int i = this.c;
+    if (i == -1)
     {
-      setMeasuredDimension(a(paramInt1, i), a(paramInt2, Math.max((int)(this.jdField_a_of_type_AndroidGraphicsPaint$FontMetrics.top - this.jdField_a_of_type_AndroidGraphicsPaint$FontMetrics.bottom), getSuggestedMinimumWidth())));
-      return;
+      TextPaint localTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
+      CharSequence localCharSequence = this.jdField_a_of_type_JavaLangCharSequence;
+      i = (int)localTextPaint.measureText(localCharSequence, 0, localCharSequence.length());
     }
+    setMeasuredDimension(a(paramInt1, i), a(paramInt2, Math.max((int)(this.jdField_a_of_type_AndroidGraphicsPaint$FontMetrics.top - this.jdField_a_of_type_AndroidGraphicsPaint$FontMetrics.bottom), getSuggestedMinimumWidth())));
   }
   
   public void setDefaultTextColor(int paramInt)
@@ -169,20 +171,20 @@ public class SimpleTextView
   public void setTextSize(float paramFloat)
   {
     Object localObject = getContext();
-    if (localObject == null) {}
-    for (localObject = Resources.getSystem();; localObject = ((Context)localObject).getResources())
-    {
-      paramFloat = TypedValue.applyDimension(1, paramFloat, ((Resources)localObject).getDisplayMetrics());
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramFloat);
-      this.jdField_a_of_type_AndroidGraphicsPaint$FontMetrics = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
-      requestLayout();
-      return;
+    if (localObject == null) {
+      localObject = Resources.getSystem();
+    } else {
+      localObject = ((Context)localObject).getResources();
     }
+    paramFloat = TypedValue.applyDimension(1, paramFloat, ((Resources)localObject).getDisplayMetrics());
+    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramFloat);
+    this.jdField_a_of_type_AndroidGraphicsPaint$FontMetrics = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
+    requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.friend.SimpleTextView
  * JD-Core Version:    0.7.0.1
  */

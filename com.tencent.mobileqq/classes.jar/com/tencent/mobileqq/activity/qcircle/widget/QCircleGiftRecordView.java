@@ -44,19 +44,22 @@ public class QCircleGiftRecordView
   
   protected void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(paramContext).inflate(2131560839, this));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131367057));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(paramContext).inflate(2131560713, this));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366902));
     this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = new GradientDrawable();
     this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setColor(-986894);
     this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setCornerRadius(ImmersiveUtils.dpToPx(9.0F));
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369670));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131380386));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369369));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379702));
   }
   
   public void setGiftCount(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = ("x" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("x");
+    localStringBuilder.append(paramInt);
+    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
     if (this.jdField_a_of_type_AndroidWidgetTextView != null)
     {
       ((IQCircleRFWApi)QRoute.api(IQCircleRFWApi.class)).setNumberTypeface(this.jdField_a_of_type_AndroidWidgetTextView, paramBoolean);
@@ -66,8 +69,9 @@ public class QCircleGiftRecordView
   
   public void setIconUrl(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentImageURLImageView != null) {
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageURL(paramString);
+    URLImageView localURLImageView = this.jdField_a_of_type_ComTencentImageURLImageView;
+    if (localURLImageView != null) {
+      localURLImageView.setImageURL(paramString);
     }
   }
   
@@ -78,20 +82,24 @@ public class QCircleGiftRecordView
       if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
         this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(paramString1));
       }
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable != null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setColor(Color.parseColor(paramString2));
+      if (this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable == null) {
+        break label65;
       }
+      this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setColor(Color.parseColor(paramString2));
       return;
     }
     catch (Exception localException)
     {
-      QLog.e("QCircleGiftRecordView", 1, new Object[] { "setUIStyle numColor:", paramString1, ",backColor:", paramString2 });
+      label37:
+      label65:
+      break label37;
     }
+    QLog.e("QCircleGiftRecordView", 1, new Object[] { "setUIStyle numColor:", paramString1, ",backColor:", paramString2 });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qcircle.widget.QCircleGiftRecordView
  * JD-Core Version:    0.7.0.1
  */

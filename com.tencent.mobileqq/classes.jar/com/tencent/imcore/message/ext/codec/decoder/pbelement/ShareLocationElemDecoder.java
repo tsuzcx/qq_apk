@@ -28,55 +28,89 @@ public class ShareLocationElemDecoder
 {
   public static void a(QQAppInterface paramQQAppInterface, List<im_msg_body.Elem> paramList, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, msg_comm.Msg paramMsg, boolean paramBoolean, MessageInfo paramMessageInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareLocationElemDecoder", 2, new Object[] { "decodePBMsgElems_LbsShareMsg: invoked. ", "elems = [" + paramList + "], msgRecords = [" + paramList1 + "], logBuilder = [" + paramStringBuilder + "], msg = [" + paramMsg + "]" });
-    }
-    if ((paramList == null) || (paramList.size() == 0)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("ShareLocationElemDecoder", 2, "decodePBMsgElems_LbsShareMsg msg decode failed");
-      }
-    }
-    do
+    if (QLog.isColorLevel())
     {
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("elems = [");
+      localStringBuilder.append(paramList);
+      localStringBuilder.append("], msgRecords = [");
+      localStringBuilder.append(paramList1);
+      localStringBuilder.append("], logBuilder = [");
+      localStringBuilder.append(paramStringBuilder);
+      localStringBuilder.append("], msg = [");
+      localStringBuilder.append(paramMsg);
+      localStringBuilder.append("]");
+      QLog.d("ShareLocationElemDecoder", 2, new Object[] { "decodePBMsgElems_LbsShareMsg: invoked. ", localStringBuilder.toString() });
+    }
+    if ((paramList != null) && (paramList.size() != 0))
+    {
       if (paramBoolean)
       {
-        if (paramQQAppInterface.getLongAccountUin() == paramMsg.msg_head.to_uin.get()) {}
-        for (paramQQAppInterface = paramMsg.msg_head.from_uin.get() + "";; paramQQAppInterface = paramMsg.msg_head.to_uin.get() + "")
+        if (paramQQAppInterface.getLongAccountUin() == paramMsg.msg_head.to_uin.get())
         {
-          paramList = paramList.iterator();
-          while (paramList.hasNext())
-          {
-            paramMsg = (im_msg_body.Elem)paramList.next();
-            if ((paramMsg.common_elem.has()) && (paramMsg.common_elem.uint32_service_type.get() == 31) && (paramMsg.common_elem.bytes_pb_elem.has())) {
-              try
-              {
-                new hummer_commelem.MsgElemInfo_servtype31().mergeFrom(paramMsg.common_elem.bytes_pb_elem.get().toByteArray());
-              }
-              catch (InvalidProtocolBufferMicroException paramMsg)
-              {
-                QLog.e("ShareLocationElemDecoder", 1, "decodePBMsgElems_LbsShareMsg: failed. ", paramMsg);
-              }
-            }
-          }
+          paramQQAppInterface = new StringBuilder();
+          paramQQAppInterface.append(paramMsg.msg_head.from_uin.get());
+          paramQQAppInterface.append("");
+          paramQQAppInterface = paramQQAppInterface.toString();
+        }
+        else
+        {
+          paramQQAppInterface = new StringBuilder();
+          paramQQAppInterface.append(paramMsg.msg_head.to_uin.get());
+          paramQQAppInterface.append("");
+          paramQQAppInterface = paramQQAppInterface.toString();
         }
       }
-      if (paramMessageInfo != null) {}
-      for (paramQQAppInterface = paramMessageInfo.a;; paramQQAppInterface = paramMsg.msg_head.to_uin.get() + "") {
-        break;
+      else if (paramMessageInfo != null)
+      {
+        paramQQAppInterface = paramMessageInfo.a;
+      }
+      else
+      {
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append(paramMsg.msg_head.to_uin.get());
+        paramQQAppInterface.append("");
+        paramQQAppInterface = paramQQAppInterface.toString();
+      }
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        paramMsg = (im_msg_body.Elem)paramList.next();
+        if ((paramMsg.common_elem.has()) && (paramMsg.common_elem.uint32_service_type.get() == 31) && (paramMsg.common_elem.bytes_pb_elem.has())) {
+          try
+          {
+            new hummer_commelem.MsgElemInfo_servtype31().mergeFrom(paramMsg.common_elem.bytes_pb_elem.get().toByteArray());
+          }
+          catch (InvalidProtocolBufferMicroException paramMsg)
+          {
+            QLog.e("ShareLocationElemDecoder", 1, "decodePBMsgElems_LbsShareMsg: failed. ", paramMsg);
+          }
+        }
       }
       if (QLog.isColorLevel()) {
         paramStringBuilder.append("elemType:LbsShareMsg;\n");
       }
       paramList = (MessageForLocationShare)MessageRecordFactory.a(-2076);
       paramList.msgtype = -2076;
-      paramList.msg = BaseApplication.getContext().getString(2131719499);
+      paramList.msg = BaseApplication.getContext().getString(2131719217);
       paramList.isSharingLocation = true;
       paramList.frienduin = paramQQAppInterface;
       paramList.parse();
       paramList1.add(paramList);
-    } while (!QLog.isColorLevel());
-    paramStringBuilder.append("LbsShareMsg.msg: ").append(paramList.toString() + "\n").append("\n");
+      if (QLog.isColorLevel())
+      {
+        paramStringBuilder.append("LbsShareMsg.msg: ");
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append(paramList.toString());
+        paramQQAppInterface.append("\n");
+        paramStringBuilder.append(paramQQAppInterface.toString());
+        paramStringBuilder.append("\n");
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ShareLocationElemDecoder", 2, "decodePBMsgElems_LbsShareMsg msg decode failed");
+    }
   }
   
   public int a()
@@ -97,7 +131,7 @@ public class ShareLocationElemDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.pbelement.ShareLocationElemDecoder
  * JD-Core Version:    0.7.0.1
  */

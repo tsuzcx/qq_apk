@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.photo;
 
 import android.os.Bundle;
 import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.shortvideo.SVUtils;
 import java.util.ArrayList;
 
 public class VideoPlayMedioInfo
@@ -39,17 +39,18 @@ public class VideoPlayMedioInfo
   
   public String a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) {
+    MessageForShortVideo localMessageForShortVideo = this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
+    if (localMessageForShortVideo == null) {
       return this.jdField_a_of_type_JavaLangString;
     }
     this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_JavaLangString = ShortVideoUtils.getShortVideoSavePath(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, "mp4");
+    this.jdField_a_of_type_JavaLangString = SVUtils.a(localMessageForShortVideo, "mp4");
     return this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.VideoPlayMedioInfo
  * JD-Core Version:    0.7.0.1
  */

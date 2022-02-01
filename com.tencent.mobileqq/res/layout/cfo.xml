@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="#66000000" android:paddingBottom="238.0dip" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/ne0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-            <ProgressBar android:id="@id/g1f" android:layout_width="30.0dip" android:layout_height="30.0dip" style="@style/l8" />
-            <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:id="@id/jfb" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="10.0dip" android:text="@string/wej" android:maxLines="1" android:singleLine="true" />
-        </LinearLayout>
-        <Button android:textSize="14.0sp" android:textColor="@color/al3" android:layout_gravity="center" android:id="@id/mon" android:background="@drawable/fo_" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/cancel" android:layout_below="@id/ne0" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/mgj" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="true" formItem:switchText="@string/ft2" />
+    <TextView android:textSize="13.0sp" android:textColor="@color/skin_color_qq_screen_shot_gray_text" android:id="@id/a0z" android:paddingLeft="@dimen/al3" android:paddingRight="@dimen/al3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/al0" android:layout_marginBottom="@dimen/bch" android:layout_below="@id/mgj" />
 </RelativeLayout>

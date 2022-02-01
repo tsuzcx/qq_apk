@@ -36,27 +36,31 @@ public class TroopMemberUtil
         if (paramQQAppInterface != null) {
           return 2;
         }
-        return -1;
       }
-      return -1;
     }
     return -1;
   }
   
   public static int b(AppInterface paramAppInterface, String paramString1, String paramString2)
   {
-    switch (a(paramAppInterface, paramString1, paramString2))
+    int j = a(paramAppInterface, paramString1, paramString2);
+    int i = 3;
+    if (j != 0)
     {
-    default: 
-      return 4;
-    case 0: 
-      return 3;
-    case 1: 
-      return 2;
-    case 2: 
-      return 1;
+      if (j != 1)
+      {
+        if (j != 2)
+        {
+          if (j != 3) {
+            return 4;
+          }
+          return 0;
+        }
+        return 1;
+      }
+      i = 2;
     }
-    return 0;
+    return i;
   }
   
   private static int c(AppInterface paramAppInterface, String paramString1, String paramString2)
@@ -69,7 +73,7 @@ public class TroopMemberUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.TroopMemberUtil
  * JD-Core Version:    0.7.0.1
  */

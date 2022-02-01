@@ -33,119 +33,140 @@ class MsfCmdConfig$c
   
   protected void a(int paramInt, List paramList)
   {
-    int i;
+    Object localObject1 = this;
     try
     {
-      if (this.d)
+      if (((c)localObject1).d)
       {
-        localObject1 = BaseApplication.getContext().getSharedPreferences("sp_del_time", 0);
-        i = ((SharedPreferences)localObject1).getInt("key_sp_delete_version", 0);
-        if (i == paramInt) {
-          break label387;
-        }
-        localObject1 = ((SharedPreferences)localObject1).edit();
-        if (localObject1 != null)
+        Object localObject2 = BaseApplication.getContext().getSharedPreferences("sp_del_time", 0);
+        i = ((SharedPreferences)localObject2).getInt("key_sp_delete_version", 0);
+        if (i != paramInt)
         {
-          ((SharedPreferences.Editor)localObject1).putInt("key_sp_delete_version", paramInt);
-          ((SharedPreferences.Editor)localObject1).commit();
+          localObject2 = ((SharedPreferences)localObject2).edit();
+          if (localObject2 != null)
+          {
+            ((SharedPreferences.Editor)localObject2).putInt("key_sp_delete_version", paramInt);
+            ((SharedPreferences.Editor)localObject2).commit();
+          }
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("One Time Mode,just delete sp one times,localversion =");
+          ((StringBuilder)localObject2).append(i);
+          ((StringBuilder)localObject2).append(",version = ");
+          ((StringBuilder)localObject2).append(paramInt);
+          QLog.d("MsfCmdConfig", 1, ((StringBuilder)localObject2).toString());
         }
-        QLog.d("MsfCmdConfig", 1, "One Time Mode,just delete sp one times,localversion =" + i + ",version = " + paramInt);
+        else
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("One Time Mode,don't delete sp one more times,localversion =");
+          ((StringBuilder)localObject2).append(i);
+          ((StringBuilder)localObject2).append(",version = ");
+          ((StringBuilder)localObject2).append(paramInt);
+          QLog.d("MsfCmdConfig", 1, ((StringBuilder)localObject2).toString());
+          return;
+        }
       }
     }
     catch (Throwable localThrowable)
     {
-      do
-      {
-        for (;;)
-        {
-          Object localObject1;
-          QLog.e("MsfCmdConfig", 1, "execute delete sp faild", localThrowable);
-          continue;
-          paramInt = 0;
-          continue;
-          MsfPullConfigUtil.showToastForSafeModeTest("执行删除sp指令，修复闪退");
-        }
-        localObject3 = new File(localThrowable).listFiles(new d(this, (Pair)localObject2));
-      } while ((localObject3 == null) || (localObject3.length <= 0));
-      j = localObject3.length;
-      i = 0;
-    }
-    localObject1 = BaseApplication.getContext().getFilesDir().getAbsolutePath().replace("files", "shared_prefs");
-    if (this.c)
-    {
-      paramInt = 4;
+      int i;
+      QLog.e("MsfCmdConfig", 1, "execute delete sp faild", localThrowable);
+      Object localObject3 = BaseApplication.getContext().getFilesDir().getAbsolutePath().replace("files", "shared_prefs");
+      if (((c)localObject1).c) {
+        paramInt = 4;
+      } else {
+        paramInt = 0;
+      }
       QLog.d("MsfCmdConfig", 1, new Object[] { " The SharedPreferenceMode is ", Integer.valueOf(paramInt) });
-      paramList = paramList.iterator();
-    }
-    for (;;)
-    {
-      Object localObject2;
-      Object localObject3;
-      Object localObject4;
-      Object localObject5;
-      if (paramList.hasNext())
+      Iterator localIterator1 = paramList.iterator();
+      for (paramList = (List)localObject3; localIterator1.hasNext(); paramList = (List)localObject1)
       {
-        localObject2 = (Pair)paramList.next();
-        localObject3 = new File((String)localObject1 + File.separator + (String)((Pair)localObject2).first + ".xml");
-        if ((!((File)localObject3).isFile()) || (!((File)localObject3).exists())) {
-          break label450;
-        }
-        localObject4 = BaseApplication.getContext().getSharedPreferences((String)((Pair)localObject2).first, paramInt);
-        localObject3 = ((SharedPreferences)localObject4).edit();
-        if (localObject3 != null)
+        localObject3 = (Pair)localIterator1.next();
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramList);
+        ((StringBuilder)localObject1).append(File.separator);
+        ((StringBuilder)localObject1).append((String)((Pair)localObject3).first);
+        ((StringBuilder)localObject1).append(".xml");
+        localObject1 = new File(((StringBuilder)localObject1).toString());
+        Object localObject4;
+        Object localObject5;
+        if ((((File)localObject1).isFile()) && (((File)localObject1).exists()))
         {
-          localObject4 = ((SharedPreferences)localObject4).getAll();
-          localObject2 = Pattern.compile((String)((Pair)localObject2).second);
-          localObject4 = ((Map)localObject4).entrySet().iterator();
-          while (((Iterator)localObject4).hasNext())
+          localObject4 = BaseApplication.getContext().getSharedPreferences((String)((Pair)localObject3).first, paramInt);
+          localObject1 = ((SharedPreferences)localObject4).edit();
+          if (localObject1 != null)
           {
-            localObject5 = (String)((Map.Entry)((Iterator)localObject4).next()).getKey();
-            if (((Pattern)localObject2).matcher((CharSequence)localObject5).matches())
+            localObject4 = ((SharedPreferences)localObject4).getAll();
+            localObject3 = Pattern.compile((String)((Pair)localObject3).second);
+            localObject4 = ((Map)localObject4).entrySet().iterator();
+            while (((Iterator)localObject4).hasNext())
             {
-              ((SharedPreferences.Editor)localObject3).remove((String)localObject5).commit();
-              QLog.d("MsfCmdConfig", 1, new Object[] { localObject5, " has been removed" });
-            }
-          }
-          label387:
-          QLog.d("MsfCmdConfig", 1, "One Time Mode,don't delete sp one more times,localversion =" + i + ",version = " + paramInt);
-        }
-      }
-      else
-      {
-        return;
-      }
-      label450:
-      int j;
-      while (i < j)
-      {
-        localObject4 = localObject3[i];
-        if ((((File)localObject4).isFile()) && (((File)localObject4).exists()))
-        {
-          localObject4 = ((File)localObject4).getName();
-          if (((String)localObject4).endsWith(".xml"))
-          {
-            localObject4 = ((String)localObject4).substring(0, ((String)localObject4).length() - 4);
-            localObject5 = BaseApplication.getContext().getSharedPreferences((String)localObject4, paramInt);
-            localObject4 = ((SharedPreferences)localObject5).edit();
-            if (localObject4 != null)
-            {
-              Object localObject6 = ((SharedPreferences)localObject5).getAll();
-              localObject5 = Pattern.compile((String)((Pair)localObject2).second);
-              localObject6 = ((Map)localObject6).entrySet().iterator();
-              while (((Iterator)localObject6).hasNext())
+              localObject5 = (String)((Map.Entry)((Iterator)localObject4).next()).getKey();
+              if (((Pattern)localObject3).matcher((CharSequence)localObject5).matches())
               {
-                String str = (String)((Map.Entry)((Iterator)localObject6).next()).getKey();
-                if (((Pattern)localObject5).matcher(str).matches())
-                {
-                  ((SharedPreferences.Editor)localObject4).remove(str).commit();
-                  QLog.d("MsfCmdConfig", 1, new Object[] { str, " has been removed" });
-                }
+                ((SharedPreferences.Editor)localObject1).remove((String)localObject5).commit();
+                QLog.d("MsfCmdConfig", 1, new Object[] { localObject5, " has been removed" });
               }
             }
-            MsfPullConfigUtil.showToastForSafeModeTest("执行删除sp指令，修复闪退");
+          }
+          MsfPullConfigUtil.showToastForSafeModeTest("执行删除sp指令，修复闪退");
+          localObject1 = paramList;
+        }
+        else
+        {
+          localObject4 = new File(paramList).listFiles(new d(this, (Pair)localObject3));
+          localObject1 = paramList;
+          if (localObject4 != null)
+          {
+            localObject1 = paramList;
+            if (localObject4.length > 0)
+            {
+              int j = localObject4.length;
+              i = 0;
+              for (;;)
+              {
+                localObject1 = paramList;
+                if (i >= j) {
+                  break;
+                }
+                localObject1 = localObject4[i];
+                if ((((File)localObject1).isFile()) && (((File)localObject1).exists()))
+                {
+                  localObject1 = ((File)localObject1).getName();
+                  if (((String)localObject1).endsWith(".xml"))
+                  {
+                    localObject1 = ((String)localObject1).substring(0, ((String)localObject1).length() - 4);
+                    Object localObject6 = BaseApplication.getContext().getSharedPreferences((String)localObject1, paramInt);
+                    localObject5 = ((SharedPreferences)localObject6).edit();
+                    localObject1 = paramList;
+                    if (localObject5 != null)
+                    {
+                      localObject1 = ((SharedPreferences)localObject6).getAll();
+                      localObject6 = Pattern.compile((String)((Pair)localObject3).second);
+                      Iterator localIterator2 = ((Map)localObject1).entrySet().iterator();
+                      for (;;)
+                      {
+                        localObject1 = paramList;
+                        if (!localIterator2.hasNext()) {
+                          break;
+                        }
+                        localObject1 = (String)((Map.Entry)localIterator2.next()).getKey();
+                        if (((Pattern)localObject6).matcher((CharSequence)localObject1).matches())
+                        {
+                          ((SharedPreferences.Editor)localObject5).remove((String)localObject1).commit();
+                          QLog.d("MsfCmdConfig", 1, new Object[] { localObject1, " has been removed" });
+                        }
+                      }
+                    }
+                    paramList = (List)localObject1;
+                    MsfPullConfigUtil.showToastForSafeModeTest("执行删除sp指令，修复闪退");
+                  }
+                }
+                i += 1;
+              }
+            }
           }
         }
-        i += 1;
       }
     }
   }
@@ -165,7 +186,7 @@ class MsfCmdConfig$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.utils.MsfCmdConfig.c
  * JD-Core Version:    0.7.0.1
  */

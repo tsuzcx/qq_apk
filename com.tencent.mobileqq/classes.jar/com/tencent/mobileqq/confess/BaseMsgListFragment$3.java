@@ -11,9 +11,11 @@ class BaseMsgListFragment$3
 {
   BaseMsgListFragment$3(BaseMsgListFragment paramBaseMsgListFragment) {}
   
-  public void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
+  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
   {
-    if ((paramBoolean) && ((paramObject instanceof HashMap))) {}
+    if ((paramBoolean) && ((paramObject instanceof HashMap))) {
+      j = 0;
+    }
     try
     {
       paramObject = ((HashMap)paramObject).entrySet().iterator();
@@ -22,6 +24,7 @@ class BaseMsgListFragment$3
         Map.Entry localEntry;
         do
         {
+          i = j;
           if (!paramObject.hasNext()) {
             break;
           }
@@ -35,9 +38,7 @@ class BaseMsgListFragment$3
     {
       for (;;)
       {
-        int i = 0;
-        continue;
-        i = 0;
+        int i = j;
       }
     }
     if (i != 0) {
@@ -47,7 +48,7 @@ class BaseMsgListFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.confess.BaseMsgListFragment.3
  * JD-Core Version:    0.7.0.1
  */

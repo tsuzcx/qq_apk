@@ -23,12 +23,28 @@ public class FeedInfo
   
   public String toString()
   {
-    return "ownerUin:" + this.ownerUin + "  appid:" + this.appid + "  typeid:" + this.typeId + "  feedTime:" + this.feedTime + "  strKey:" + this.strkey + "  hasPic:" + this.hasPic + "  content:" + this.content + "  strImgUrl:" + this.strImgUrl;
+    StringBuilder localStringBuilder = new StringBuilder("ownerUin:");
+    localStringBuilder.append(this.ownerUin);
+    localStringBuilder.append("  appid:");
+    localStringBuilder.append(this.appid);
+    localStringBuilder.append("  typeid:");
+    localStringBuilder.append(this.typeId);
+    localStringBuilder.append("  feedTime:");
+    localStringBuilder.append(this.feedTime);
+    localStringBuilder.append("  strKey:");
+    localStringBuilder.append(this.strkey);
+    localStringBuilder.append("  hasPic:");
+    localStringBuilder.append(this.hasPic);
+    localStringBuilder.append("  content:");
+    localStringBuilder.append(this.content);
+    localStringBuilder.append("  strImgUrl:");
+    localStringBuilder.append(this.strImgUrl);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.qzone.FeedInfo
  * JD-Core Version:    0.7.0.1
  */

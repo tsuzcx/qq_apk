@@ -50,17 +50,21 @@ public class LogUtils
   
   public static void logViewBaseHierarchy(@NonNull ViewBase paramViewBase, String paramString)
   {
-    if (shouldLog()) {}
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      dumpViewBaseHierarchy(paramViewBase, localJSONObject);
-      d(paramString, "logViewBaseHierarchy: " + localJSONObject.toString());
-      return;
-    }
-    catch (Exception paramViewBase)
-    {
-      LogUtil.QLog.e(paramString, 1, "[logViewBaseHierarchy] ", paramViewBase);
+    if (shouldLog()) {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        dumpViewBaseHierarchy(paramViewBase, localJSONObject);
+        paramViewBase = new StringBuilder();
+        paramViewBase.append("logViewBaseHierarchy: ");
+        paramViewBase.append(localJSONObject.toString());
+        d(paramString, paramViewBase.toString());
+        return;
+      }
+      catch (Exception paramViewBase)
+      {
+        LogUtil.QLog.e(paramString, 1, "[logViewBaseHierarchy] ", paramViewBase);
+      }
     }
   }
   
@@ -71,7 +75,7 @@ public class LogUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.LogUtils
  * JD-Core Version:    0.7.0.1
  */

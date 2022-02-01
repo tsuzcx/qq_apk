@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.qqnews;
 
-import android.app.Activity;
+import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
@@ -12,12 +12,12 @@ import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.now.utils.StatusBarUtil;
 import com.tencent.mobileqq.qcall.QCallFacade;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 import com.tencent.mobileqq.widget.navbar.OnItemSelectListener;
 import com.tencent.util.UiThreadUtil;
+import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.HashMap;
 import kotlin.Metadata;
 import kotlin.TypeCastException;
@@ -34,7 +34,7 @@ public final class QQNewsHippyFragment
   
   private final void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO = ((NavBarAIO)this.mRootView.findViewById(2131374902));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO = ((NavBarAIO)this.mRootView.findViewById(2131374438));
     c();
     d();
     e();
@@ -49,20 +49,19 @@ public final class QQNewsHippyFragment
     if (localNavBarAIO != null)
     {
       if (this.jdField_a_of_type_Boolean) {
-        localNavBarAIO.setBackgroundResource(2130850507);
+        localNavBarAIO.setBackgroundResource(2130850433);
+      } else {
+        localNavBarAIO.setBackgroundResource(2130850434);
       }
-      for (;;)
+      Object localObject = localNavBarAIO.getLayoutParams();
+      if (localObject != null)
       {
-        localObject = localNavBarAIO.getLayoutParams();
-        if (localObject != null) {
-          break;
-        }
-        throw new TypeCastException("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
-        localNavBarAIO.setBackgroundResource(2130850508);
+        localObject = (LinearLayout.LayoutParams)localObject;
+        ((LinearLayout.LayoutParams)localObject).setMargins(0, ImmersiveUtils.getStatusBarHeight((Context)getActivity()), 0, 0);
+        localNavBarAIO.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        return;
       }
-      Object localObject = (LinearLayout.LayoutParams)localObject;
-      ((LinearLayout.LayoutParams)localObject).setMargins(0, StatusBarUtil.a((Activity)getActivity()), 0, 0);
-      localNavBarAIO.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      throw new TypeCastException("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
     }
   }
   
@@ -71,21 +70,21 @@ public final class QQNewsHippyFragment
     Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO;
     if (localObject1 != null)
     {
-      Object localObject2 = (TextView)((NavBarAIO)localObject1).findViewById(2131379432);
+      Object localObject2 = (TextView)((NavBarAIO)localObject1).findViewById(2131378784);
       if (localObject2 != null)
       {
         ((TextView)localObject2).setText((CharSequence)QQNewsUtilKt.a());
         ((TextView)localObject2).setContentDescription(((TextView)localObject2).getText());
       }
-      localObject2 = ((NavBarAIO)localObject1).findViewById(2131379477);
+      localObject2 = ((NavBarAIO)localObject1).findViewById(2131378828);
       if (localObject2 != null) {
         ((View)localObject2).setVisibility(8);
       }
-      localObject2 = ((NavBarAIO)localObject1).findViewById(2131379478);
+      localObject2 = ((NavBarAIO)localObject1).findViewById(2131378829);
       if (localObject2 != null) {
         ((View)localObject2).setVisibility(8);
       }
-      localObject1 = ((NavBarAIO)localObject1).findViewById(2131378647);
+      localObject1 = ((NavBarAIO)localObject1).findViewById(2131378040);
       if (localObject1 != null) {
         ((View)localObject1).setVisibility(8);
       }
@@ -106,8 +105,8 @@ public final class QQNewsHippyFragment
   private final void f()
   {
     NavBarAIO localNavBarAIO = this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO;
-    if ((localNavBarAIO != null) && ((ImageView)localNavBarAIO.findViewById(2131369501) != null)) {
-      localNavBarAIO.setRight1Icon(2130850547, 2130850548);
+    if ((localNavBarAIO != null) && ((ImageView)localNavBarAIO.findViewById(2131369216) != null)) {
+      localNavBarAIO.setRight1Icon(2130850473, 2130850474);
     }
   }
   
@@ -119,34 +118,28 @@ public final class QQNewsHippyFragment
       localObject1 = null;
     }
     localObject2 = (QQAppInterface)localObject1;
-    int i;
-    Ref.ObjectRef localObjectRef;
     if (localObject2 != null)
     {
       int j = QCallFacade.a((QQAppInterface)localObject2);
       localObject1 = ((QQAppInterface)localObject2).getMessageFacade();
-      if (localObject1 == null) {
-        break label108;
+      if (localObject1 != null) {
+        i = ((QQMessageFacade)localObject1).b();
+      } else {
+        i = 0;
       }
-      i = ((QQMessageFacade)localObject1).b();
-      i += j;
-      localObjectRef = new Ref.ObjectRef();
+      int i = j + i;
+      Ref.ObjectRef localObjectRef = new Ref.ObjectRef();
       localObjectRef.element = "";
-      if (i > 0) {
-        if (i <= 99) {
-          break label113;
+      if (i > 0)
+      {
+        if (i > 99) {
+          localObject1 = "99+";
+        } else {
+          localObject1 = String.valueOf(i);
         }
+        localObjectRef.element = localObject1;
       }
-    }
-    label108:
-    label113:
-    for (localObject1 = "99+";; localObject1 = String.valueOf(i))
-    {
-      localObjectRef.element = localObject1;
       UiThreadUtil.a((Runnable)new QQNewsHippyFragment.updateUnreadNumOnTitleBar..inlined.let.lambda.1(localObjectRef, this, (QQAppInterface)localObject2));
-      return;
-      i = 0;
-      break;
     }
   }
   
@@ -167,17 +160,18 @@ public final class QQNewsHippyFragment
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
+    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    if (localHashMap != null) {
+      localHashMap.clear();
     }
   }
   
-  public int getLayoutResId()
+  protected int getLayoutResId()
   {
-    return 2131558453;
+    return 2131558482;
   }
   
-  public void initViews()
+  protected void initViews()
   {
     super.initViews();
     this.jdField_a_of_type_Boolean = ThemeUtil.isDefaultOrDIYTheme(false);
@@ -194,7 +188,7 @@ public final class QQNewsHippyFragment
     {
       localNavBarAIO.d();
       localNavBarAIO.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-      localNavBarAIO.setRight1Icon(2130850547, 2130850548);
+      localNavBarAIO.setRight1Icon(2130850473, 2130850474);
     }
   }
   
@@ -209,7 +203,7 @@ public final class QQNewsHippyFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.qqnews.QQNewsHippyFragment
  * JD-Core Version:    0.7.0.1
  */

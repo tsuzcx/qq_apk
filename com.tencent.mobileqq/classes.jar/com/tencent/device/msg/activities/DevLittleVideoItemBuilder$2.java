@@ -2,10 +2,10 @@ package com.tencent.device.msg.activities;
 
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder.UploadTask;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
+import com.tencent.mobileqq.shortvideo.ResultListener;
 
 class DevLittleVideoItemBuilder$2
-  implements EncodeVideoTask.ResultListener
+  implements ResultListener
 {
   DevLittleVideoItemBuilder$2(DevLittleVideoItemBuilder paramDevLittleVideoItemBuilder) {}
   
@@ -22,7 +22,7 @@ class DevLittleVideoItemBuilder$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.msg.activities.DevLittleVideoItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

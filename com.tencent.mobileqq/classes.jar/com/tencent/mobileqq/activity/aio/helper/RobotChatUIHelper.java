@@ -19,7 +19,7 @@ public class RobotChatUIHelper
   
   public int a()
   {
-    return 2130846544;
+    return 2130846419;
   }
   
   protected void a()
@@ -81,20 +81,20 @@ public class RobotChatUIHelper
   
   public void b(boolean paramBoolean)
   {
-    if (!this.c) {}
-    boolean bool;
-    do
-    {
+    if (!this.c) {
       return;
-      super.b(paramBoolean);
-      bool = c();
-      if (!paramBoolean) {
-        break;
+    }
+    super.b(paramBoolean);
+    boolean bool = c();
+    if (paramBoolean)
+    {
+      if (!bool) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.setBackgroundResource(2130838132);
       }
-    } while (bool);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.setBackgroundResource(2130838307);
-    return;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.setBackgroundResource(2130838307);
+    }
+    else {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.setBackgroundResource(2130838132);
+    }
   }
   
   public boolean b()
@@ -118,20 +118,15 @@ public class RobotChatUIHelper
   public void onClick(View paramView)
   {
     super.onClick(paramView);
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    if (paramView.getId() == 2131363032) {
       ReportController.b(null, "dc00898", "", "", "0X800A48A", "0X800A48A", 0, 0, "", "", "", "");
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.RobotChatUIHelper
  * JD-Core Version:    0.7.0.1
  */

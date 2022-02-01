@@ -54,10 +54,11 @@ public class HttpInterface
   {
     try
     {
-      if (this.webView != null) {
+      if (this.webView != null)
+      {
         this.webView.clearCache(true);
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -71,20 +72,21 @@ public class HttpInterface
     int i = 0;
     while (i < j)
     {
-      AsyncTask localAsyncTask = (AsyncTask)this.asyncTaskList.get(i);
-      if ((localAsyncTask != null) && (!localAsyncTask.isCancelled()))
+      localObject = (AsyncTask)this.asyncTaskList.get(i);
+      if ((localObject != null) && (!((AsyncTask)localObject).isCancelled()))
       {
         LogUtility.c("HttpInterface", "cancel AsyncTask when onDestory");
-        localAsyncTask.cancel(true);
-        if ((localAsyncTask instanceof HttpCgiAsyncTask)) {
-          ((HttpCgiAsyncTask)localAsyncTask).b();
+        ((AsyncTask)localObject).cancel(true);
+        if ((localObject instanceof HttpCgiAsyncTask)) {
+          ((HttpCgiAsyncTask)localObject).b();
         }
       }
       i += 1;
     }
-    if (this.mHandler != null)
+    Object localObject = this.mHandler;
+    if (localObject != null)
     {
-      this.mHandler.removeCallbacksAndMessages(null);
+      ((Handler)localObject).removeCallbacksAndMessages(null);
       this.mHandler = null;
     }
   }
@@ -96,89 +98,95 @@ public class HttpInterface
   
   public void httpRequest(String paramString)
   {
-    boolean bool = true;
     if (!hasRight())
     {
       LogUtility.c("HttpInterface", ">>httpReauest has not right>>");
       return;
     }
-    LogUtility.c("HttpInterface", "httpRequest >>> " + paramString.toString());
-    try
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("httpRequest >>> ");
+    ((StringBuilder)localObject1).append(paramString.toString());
+    LogUtility.c("HttpInterface", ((StringBuilder)localObject1).toString());
+    for (;;)
     {
-      localJSONObject = new JSONObject(paramString);
-      localObject1 = localJSONObject.optString("guid");
-      str1 = localJSONObject.optString("url");
-      str2 = localJSONObject.optString("method");
-      str3 = localJSONObject.optString("oncomplate");
-      str4 = localJSONObject.optString("onerror");
-      if (localJSONObject.optInt("supportetag", 1) != 1) {
-        break label328;
-      }
-      i = 1;
-    }
-    catch (JSONException paramString)
-    {
-      String str1;
-      String str2;
-      String str3;
-      String str4;
-      int i;
-      for (;;)
+      try
       {
-        JSONObject localJSONObject;
-        Iterator localIterator;
-        LogUtility.c("HttpInterface", "httpRequest JSONException", paramString);
-        return;
-        i = 0;
-        continue;
-        bool = false;
-      }
-      if (i == 0) {
-        break label360;
-      }
-      paramString.putString("needhttpcache", "");
-      LogUtility.c("HttpInterface", "use supportEtag");
-      LogUtility.c("HttpInterface", "execute asyncTask url >>> " + str1 + " methodName " + str2);
-      Object localObject1 = new HttpCgiAsyncTask(str1, str2, new HttpInterface.JsHttpCallback(this, (WebView)this.mWebViewRef.get(), (String)localObject1, str3, str4, bool));
-      aSyncTaskExecute((HttpCgiAsyncTask)localObject1, paramString);
-      this.asyncTaskList.add(localObject1);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      LogUtility.c("HttpInterface", "httpRequest Exception", paramString);
-    }
-    if (localJSONObject.optInt("from_h5", 0) == 1)
-    {
-      paramString = new Bundle();
-      paramString.putBoolean("from_h5", bool);
-      paramString.putString("platform", CommonDataAdapter.a().g());
-      paramString.putString("keystr", CommonDataAdapter.a().a());
-      paramString.putString("uin", String.valueOf(CommonDataAdapter.a().a()));
-      paramString.putString("resolution", MobileInfoUtil.e());
-      paramString.putString("keytype", "256");
-      if (!str2.equals("POST")) {
-        break label338;
-      }
-      localJSONObject = localJSONObject.optJSONObject("params");
-      if (localJSONObject == null) {
-        break label360;
-      }
-      localIterator = localJSONObject.keys();
-      while (localIterator.hasNext())
-      {
-        String str5 = localIterator.next().toString();
-        Object localObject2 = localJSONObject.get(str5);
-        LogUtility.c("HttpInterface", "key = " + str5 + " value = " + localObject2.toString());
-        if (!TextUtils.isEmpty(str5)) {
-          paramString.putString(str5, localObject2.toString());
+        Object localObject2 = new JSONObject(paramString);
+        localObject1 = ((JSONObject)localObject2).optString("guid");
+        String str1 = ((JSONObject)localObject2).optString("url");
+        String str2 = ((JSONObject)localObject2).optString("method");
+        String str3 = ((JSONObject)localObject2).optString("oncomplate");
+        String str4 = ((JSONObject)localObject2).optString("onerror");
+        if (((JSONObject)localObject2).optInt("supportetag", 1) == 1)
+        {
+          i = 1;
+          if (((JSONObject)localObject2).optInt("from_h5", 0) != 1) {
+            break label507;
+          }
+          bool = true;
+          paramString = new Bundle();
+          paramString.putBoolean("from_h5", bool);
+          paramString.putString("platform", CommonDataAdapter.a().g());
+          paramString.putString("keystr", CommonDataAdapter.a().a());
+          paramString.putString("uin", String.valueOf(CommonDataAdapter.a().a()));
+          paramString.putString("resolution", MobileInfoUtil.getResolution());
+          paramString.putString("keytype", "256");
+          if (str2.equals("POST"))
+          {
+            localObject2 = ((JSONObject)localObject2).optJSONObject("params");
+            if (localObject2 != null)
+            {
+              Iterator localIterator = ((JSONObject)localObject2).keys();
+              if (localIterator.hasNext())
+              {
+                String str5 = localIterator.next().toString();
+                Object localObject3 = ((JSONObject)localObject2).get(str5);
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append("key = ");
+                localStringBuilder.append(str5);
+                localStringBuilder.append(" value = ");
+                localStringBuilder.append(localObject3.toString());
+                LogUtility.c("HttpInterface", localStringBuilder.toString());
+                if (TextUtils.isEmpty(str5)) {
+                  continue;
+                }
+                paramString.putString(str5, localObject3.toString());
+                continue;
+              }
+            }
+          }
+          else if (i != 0)
+          {
+            paramString.putString("needhttpcache", "");
+            LogUtility.c("HttpInterface", "use supportEtag");
+          }
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("execute asyncTask url >>> ");
+          ((StringBuilder)localObject2).append(str1);
+          ((StringBuilder)localObject2).append(" methodName ");
+          ((StringBuilder)localObject2).append(str2);
+          LogUtility.c("HttpInterface", ((StringBuilder)localObject2).toString());
+          localObject1 = new HttpCgiAsyncTask(str1, str2, new HttpInterface.JsHttpCallback(this, (WebView)this.mWebViewRef.get(), (String)localObject1, str3, str4, bool));
+          aSyncTaskExecute((HttpCgiAsyncTask)localObject1, paramString);
+          this.asyncTaskList.add(localObject1);
+          return;
         }
       }
+      catch (Exception paramString)
+      {
+        LogUtility.c("HttpInterface", "httpRequest Exception", paramString);
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        LogUtility.c("HttpInterface", "httpRequest JSONException", paramString);
+        return;
+      }
+      int i = 0;
+      continue;
+      label507:
+      boolean bool = false;
     }
-    label328:
-    label338:
-    label360:
-    return;
   }
   
   @TargetApi(11)
@@ -192,7 +200,7 @@ public class HttpInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appcommon.js.HttpInterface
  * JD-Core Version:    0.7.0.1
  */

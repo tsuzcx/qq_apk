@@ -107,9 +107,9 @@ public class DavEngineProxy
     return this.mJniImpl.ignore(paramLong);
   }
   
-  public int init(Context paramContext, long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, int paramInt, String paramString12, SDKConfigInfo paramSDKConfigInfo, boolean paramBoolean1, boolean paramBoolean2, String paramString13, String paramString14, String paramString15)
+  public int init(Context paramContext, long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, int paramInt, String paramString12, SDKConfigInfo paramSDKConfigInfo, boolean paramBoolean1, boolean paramBoolean2, String paramString13, String paramString14, String paramString15, String paramString16)
   {
-    return this.mJniImpl.init(paramContext, paramLong, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramInt, paramString12, paramSDKConfigInfo, paramBoolean1, paramBoolean2, paramString13, paramString14, paramString15);
+    return this.mJniImpl.init(paramContext, paramLong, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramInt, paramString12, paramSDKConfigInfo, paramBoolean1, paramBoolean2, paramString13, paramString14, paramString15, paramString16);
   }
   
   public void initContext()
@@ -337,6 +337,11 @@ public class DavEngineProxy
     return this.mJniImpl.setProductId(paramInt);
   }
   
+  public void setQosParams(String paramString)
+  {
+    this.mJniImpl.setQosParams(paramString);
+  }
+  
   public int setSelfUin(long paramLong)
   {
     return this.mJniImpl.setSelfUin(paramLong);
@@ -429,7 +434,7 @@ public class DavEngineProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avcore.jni.dav.DavEngineProxy
  * JD-Core Version:    0.7.0.1
  */

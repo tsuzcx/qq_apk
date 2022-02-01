@@ -16,7 +16,6 @@ import com.tencent.biz.qqstory.model.UserManager;
 import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
 import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
 import com.tencent.biz.qqstory.utils.ThumbnailUrlHelper;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.utils.ImageUtil;
@@ -40,15 +39,15 @@ public class ShareGroupsListAdapter$HotSortCardHolder
   {
     super(paramView);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364416));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364436));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364460));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364452));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364458));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364437));
-    this.e = ((TextView)paramView.findViewById(2131364453));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131374956));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131374455));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364307));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364326));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364350));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364342));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364348));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364327));
+    this.e = ((TextView)paramView.findViewById(2131364343));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131374488));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131374000));
   }
   
   public void a()
@@ -65,47 +64,41 @@ public class ShareGroupsListAdapter$HotSortCardHolder
     }
     this.itemView.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    int i = (DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext) - UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 25.0F)) / 2;
-    int j = (int)(i * 1.61D);
+    int i = (UIUtils.a(this.jdField_a_of_type_AndroidContentContext) - UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 25.0F)) / 2;
+    double d1 = i;
+    Double.isNaN(d1);
+    int j = (int)(d1 * 1.61D);
     this.itemView.getLayoutParams().width = i;
     this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = i;
     this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = j;
-    Object localObject;
     if (paramHotSortVideoEntry.coverURL == null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846965));
-      localObject = paramHotSortVideoEntry.storyId;
-      this.itemView.setOnClickListener(new ShareGroupsListAdapter.HotSortCardHolder.1(this, (String)localObject));
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      localObject = ((UserManager)SuperManager.a(2)).c(paramHotSortVideoEntry.unionId);
-      if (localObject != null) {
-        break label333;
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846843));
+    }
+    else
+    {
+      localObject = ThumbnailUrlHelper.c(paramHotSortVideoEntry.coverURL);
+      if (!((String)localObject).equals(this.jdField_a_of_type_AndroidWidgetImageView.getTag()))
+      {
+        this.jdField_a_of_type_AndroidWidgetImageView.setTag(localObject);
+        UIUtils.a(this.jdField_a_of_type_AndroidWidgetImageView, (String)localObject, i, j, i / 30, UIUtils.b, "QQStoryMemory");
       }
+    }
+    Object localObject = paramHotSortVideoEntry.storyId;
+    this.itemView.setOnClickListener(new ShareGroupsListAdapter.HotSortCardHolder.1(this, (String)localObject));
+    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    localObject = ((UserManager)SuperManager.a(2)).c(paramHotSortVideoEntry.unionId);
+    if (localObject == null)
+    {
       if (!"NullImage".equals(this.jdField_b_of_type_AndroidWidgetImageView.getTag()))
       {
         this.jdField_b_of_type_AndroidWidgetImageView.setTag("NullImage");
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(ImageUtil.c());
+        this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(ImageUtil.f());
       }
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(StoryApi.a(2131699763));
-      label217:
-      if ((paramHotSortVideoEntry.likeCount != 0) || (paramHotSortVideoEntry.viewCount != 0)) {
-        break label516;
-      }
-      this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.e.setVisibility(8);
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(StoryApi.a(2131699904));
     }
-    for (;;)
+    else
     {
-      StoryReportor.a("share_story", "exp_video_card", 0, 0, new String[] { paramHotSortVideoEntry.groupId, paramHotSortVideoEntry.storyId });
-      return;
-      localObject = ThumbnailUrlHelper.c(paramHotSortVideoEntry.coverURL);
-      if (((String)localObject).equals(this.jdField_a_of_type_AndroidWidgetImageView.getTag())) {
-        break;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setTag(localObject);
-      UIUtils.a(this.jdField_a_of_type_AndroidWidgetImageView, (String)localObject, i, j, i / 30, UIUtils.b, "QQStoryMemory");
-      break;
-      label333:
       if (!((QQUserUIItem)localObject).headUrl.equals(this.jdField_b_of_type_AndroidWidgetImageView.getTag()))
       {
         this.jdField_b_of_type_AndroidWidgetImageView.setTag(((QQUserUIItem)localObject).headUrl);
@@ -120,33 +113,43 @@ public class ShareGroupsListAdapter$HotSortCardHolder
           this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
           j = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 72.0F);
           this.jdField_c_of_type_AndroidWidgetTextView.setMaxWidth(i - j);
-          break label217;
         }
-        this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
-        PlayModeUtils.a(this.jdField_d_of_type_AndroidWidgetImageView, (QQUserUIItem)localObject);
-        localObject = PlayModeUtils.b((QQUserUIItem)localObject);
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break label217;
+        else
+        {
+          this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+          this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
+          PlayModeUtils.a(this.jdField_d_of_type_AndroidWidgetImageView, (QQUserUIItem)localObject);
+          localObject = PlayModeUtils.b((QQUserUIItem)localObject);
+          if (!TextUtils.isEmpty((CharSequence)localObject)) {
+            this.jdField_d_of_type_AndroidWidgetImageView.setTag(localObject);
+          }
         }
-        this.jdField_d_of_type_AndroidWidgetImageView.setTag(localObject);
-        break label217;
       }
-      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
-      break label217;
-      label516:
-      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847237);
+      else
+      {
+        this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+        this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
+      }
+    }
+    if ((paramHotSortVideoEntry.likeCount == 0) && (paramHotSortVideoEntry.viewCount == 0))
+    {
+      this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.e.setVisibility(8);
+    }
+    else
+    {
+      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847105);
       ((Drawable)localObject).setBounds(0, 0, UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 12.0F), UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 12.0F));
       this.jdField_d_of_type_AndroidWidgetTextView.setText(UIUtils.a(paramHotSortVideoEntry.viewCount));
       this.jdField_d_of_type_AndroidWidgetTextView.setCompoundDrawables((Drawable)localObject, null, null, null);
-      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846832);
+      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846712);
       ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getMinimumWidth(), ((Drawable)localObject).getMinimumHeight());
       this.e.setText(UIUtils.a(paramHotSortVideoEntry.likeCount));
       this.e.setCompoundDrawables((Drawable)localObject, null, null, null);
       this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
       this.e.setVisibility(0);
     }
+    StoryReportor.a("share_story", "exp_video_card", 0, 0, new String[] { paramHotSortVideoEntry.groupId, paramHotSortVideoEntry.storyId });
   }
   
   public void a(MyMemoriesListView.OnUIClickListener paramOnUIClickListener)
@@ -156,7 +159,7 @@ public class ShareGroupsListAdapter$HotSortCardHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListAdapter.HotSortCardHolder
  * JD-Core Version:    0.7.0.1
  */

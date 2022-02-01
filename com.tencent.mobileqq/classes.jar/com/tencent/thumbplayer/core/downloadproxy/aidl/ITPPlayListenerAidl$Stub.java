@@ -56,136 +56,138 @@ public abstract class ITPPlayListenerAidl$Stub
   
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    long l;
-    switch (paramInt1)
+    if (paramInt1 != 1598968902)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
-      return true;
-    case 1: 
+      long l;
+      switch (paramInt1)
+      {
+      default: 
+        return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+      case 21: 
+        paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
+        paramParcel1 = getContentType(paramParcel1.readInt(), paramParcel1.readString());
+        paramParcel2.writeNoException();
+        paramParcel2.writeString(paramParcel1);
+        return true;
+      case 20: 
+        paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
+        paramParcel1 = getDataFilePath(paramParcel1.readInt(), paramParcel1.readString());
+        paramParcel2.writeNoException();
+        paramParcel2.writeString(paramParcel1);
+        return true;
+      case 19: 
+        paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
+        l = getDataTotalSize(paramParcel1.readInt(), paramParcel1.readString());
+        paramParcel2.writeNoException();
+        paramParcel2.writeLong(l);
+        return true;
+      case 18: 
+        paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
+        paramInt1 = onStopReadData(paramParcel1.readInt(), paramParcel1.readString(), paramParcel1.readInt());
+        paramParcel2.writeNoException();
+        paramParcel2.writeInt(paramInt1);
+        return true;
+      case 17: 
+        paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
+        paramInt1 = onReadData(paramParcel1.readInt(), paramParcel1.readString(), paramParcel1.readLong(), paramParcel1.readLong());
+        paramParcel2.writeNoException();
+        paramParcel2.writeInt(paramInt1);
+        return true;
+      case 16: 
+        paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
+        paramInt1 = onStartReadData(paramParcel1.readInt(), paramParcel1.readString(), paramParcel1.readLong(), paramParcel1.readLong());
+        paramParcel2.writeNoException();
+        paramParcel2.writeInt(paramInt1);
+        return true;
+      case 15: 
+        paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
+        paramParcel1 = getPlayInfo(paramParcel1.readString());
+        paramParcel2.writeNoException();
+        paramParcel2.writeString(paramParcel1);
+        return true;
+      case 14: 
+        paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
+        l = getAdvRemainTime();
+        paramParcel2.writeNoException();
+        paramParcel2.writeLong(l);
+        return true;
+      case 13: 
+        paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
+        paramInt1 = getCurrentPlayClipNo();
+        paramParcel2.writeNoException();
+        paramParcel2.writeInt(paramInt1);
+        return true;
+      case 12: 
+        paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
+        l = getCurrentPosition();
+        paramParcel2.writeNoException();
+        paramParcel2.writeLong(l);
+        return true;
+      case 11: 
+        paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
+        l = getPlayerBufferLength();
+        paramParcel2.writeNoException();
+        paramParcel2.writeLong(l);
+        return true;
+      case 10: 
+        paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
+        onQuicDownloadStatusUpdate(paramParcel1.readString());
+        paramParcel2.writeNoException();
+        return true;
+      case 9: 
+        paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
+        onDownloadProtocolUpdate(paramParcel1.readString(), paramParcel1.readString());
+        paramParcel2.writeNoException();
+        return true;
+      case 8: 
+        paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
+        onDownloadStatusUpdate(paramParcel1.readInt());
+        paramParcel2.writeNoException();
+        return true;
+      case 7: 
+        paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
+        onDownloadCdnUrlExpired(paramParcel1.readHashMap(getClass().getClassLoader()));
+        paramParcel2.writeNoException();
+        return true;
+      case 6: 
+        paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
+        onDownloadCdnUrlInfoUpdate(paramParcel1.readString(), paramParcel1.readString(), paramParcel1.readString(), paramParcel1.readString());
+        paramParcel2.writeNoException();
+        return true;
+      case 5: 
+        paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
+        onDownloadCdnUrlUpdate(paramParcel1.readString());
+        paramParcel2.writeNoException();
+        return true;
+      case 4: 
+        paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
+        paramInt1 = onPlayCallback(paramParcel1.readInt(), paramParcel1.readArrayList(getClass().getClassLoader()));
+        paramParcel2.writeNoException();
+        paramParcel2.writeInt(paramInt1);
+        return true;
+      case 3: 
+        paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
+        onDownloadError(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readString());
+        paramParcel2.writeNoException();
+        return true;
+      case 2: 
+        paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
+        onDownloadFinish();
+        paramParcel2.writeNoException();
+        return true;
+      }
       paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
       onDownloadProgressUpdate(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readLong(), paramParcel1.readLong(), paramParcel1.readString());
       paramParcel2.writeNoException();
       return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
-      onDownloadFinish();
-      paramParcel2.writeNoException();
-      return true;
-    case 3: 
-      paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
-      onDownloadError(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readString());
-      paramParcel2.writeNoException();
-      return true;
-    case 4: 
-      paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
-      paramInt1 = onPlayCallback(paramParcel1.readInt(), paramParcel1.readArrayList(getClass().getClassLoader()));
-      paramParcel2.writeNoException();
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 5: 
-      paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
-      onDownloadCdnUrlUpdate(paramParcel1.readString());
-      paramParcel2.writeNoException();
-      return true;
-    case 6: 
-      paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
-      onDownloadCdnUrlInfoUpdate(paramParcel1.readString(), paramParcel1.readString(), paramParcel1.readString(), paramParcel1.readString());
-      paramParcel2.writeNoException();
-      return true;
-    case 7: 
-      paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
-      onDownloadCdnUrlExpired(paramParcel1.readHashMap(getClass().getClassLoader()));
-      paramParcel2.writeNoException();
-      return true;
-    case 8: 
-      paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
-      onDownloadStatusUpdate(paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
-    case 9: 
-      paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
-      onDownloadProtocolUpdate(paramParcel1.readString(), paramParcel1.readString());
-      paramParcel2.writeNoException();
-      return true;
-    case 10: 
-      paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
-      onQuicDownloadStatusUpdate(paramParcel1.readString());
-      paramParcel2.writeNoException();
-      return true;
-    case 11: 
-      paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
-      l = getPlayerBufferLength();
-      paramParcel2.writeNoException();
-      paramParcel2.writeLong(l);
-      return true;
-    case 12: 
-      paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
-      l = getCurrentPosition();
-      paramParcel2.writeNoException();
-      paramParcel2.writeLong(l);
-      return true;
-    case 13: 
-      paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
-      paramInt1 = getCurrentPlayClipNo();
-      paramParcel2.writeNoException();
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 14: 
-      paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
-      l = getAdvRemainTime();
-      paramParcel2.writeNoException();
-      paramParcel2.writeLong(l);
-      return true;
-    case 15: 
-      paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
-      paramParcel1 = getPlayInfo(paramParcel1.readString());
-      paramParcel2.writeNoException();
-      paramParcel2.writeString(paramParcel1);
-      return true;
-    case 16: 
-      paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
-      paramInt1 = onStartReadData(paramParcel1.readInt(), paramParcel1.readString(), paramParcel1.readLong(), paramParcel1.readLong());
-      paramParcel2.writeNoException();
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 17: 
-      paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
-      paramInt1 = onReadData(paramParcel1.readInt(), paramParcel1.readString(), paramParcel1.readLong(), paramParcel1.readLong());
-      paramParcel2.writeNoException();
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 18: 
-      paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
-      paramInt1 = onStopReadData(paramParcel1.readInt(), paramParcel1.readString(), paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 19: 
-      paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
-      l = getDataTotalSize(paramParcel1.readInt(), paramParcel1.readString());
-      paramParcel2.writeNoException();
-      paramParcel2.writeLong(l);
-      return true;
-    case 20: 
-      paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
-      paramParcel1 = getDataFilePath(paramParcel1.readInt(), paramParcel1.readString());
-      paramParcel2.writeNoException();
-      paramParcel2.writeString(paramParcel1);
-      return true;
     }
-    paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
-    paramParcel1 = getContentType(paramParcel1.readInt(), paramParcel1.readString());
-    paramParcel2.writeNoException();
-    paramParcel2.writeString(paramParcel1);
+    paramParcel2.writeString("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl.Stub
  * JD-Core Version:    0.7.0.1
  */

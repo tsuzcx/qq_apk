@@ -12,7 +12,10 @@ public class TroopBlockConfigProcessor
   @NonNull
   public TroopBlockConfig a(int paramInt)
   {
-    QLog.d("TroopBlockConfigProcessor", 2, "migrateOldOrDefaultContent, type: " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("migrateOldOrDefaultContent, type: ");
+    localStringBuilder.append(paramInt);
+    QLog.d("TroopBlockConfigProcessor", 2, localStringBuilder.toString());
     return new TroopBlockConfig();
   }
   
@@ -54,7 +57,10 @@ public class TroopBlockConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.d("TroopBlockConfigProcessor", 1, "onReqFailed, failCode = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReqFailed, failCode = ");
+    localStringBuilder.append(paramInt);
+    QLog.d("TroopBlockConfigProcessor", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -64,7 +70,7 @@ public class TroopBlockConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.blocktroop.TroopBlockConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -48,113 +48,148 @@ public final class WebvttCueParser
   
   private static void applyEntity(String paramString, SpannableStringBuilder paramSpannableStringBuilder)
   {
-    int i = -1;
-    switch (paramString.hashCode())
+    int i = paramString.hashCode();
+    if (i != 3309)
     {
-    }
-    for (;;)
-    {
-      switch (i)
+      if (i != 3464)
       {
-      default: 
-        Log.w("WebvttCueParser", "ignoring unsupported entity: '&" + paramString + ";'");
-        return;
-        if (paramString.equals("lt"))
+        if (i != 96708)
         {
-          i = 0;
-          continue;
-          if (paramString.equals("gt"))
+          if ((i == 3374865) && (paramString.equals("nbsp")))
           {
-            i = 1;
-            continue;
-            if (paramString.equals("nbsp"))
-            {
-              i = 2;
-              continue;
-              if (paramString.equals("amp")) {
-                i = 3;
-              }
-            }
+            i = 2;
+            break label92;
           }
         }
-        break;
+        else if (paramString.equals("amp"))
+        {
+          i = 3;
+          break label92;
+        }
+      }
+      else if (paramString.equals("lt"))
+      {
+        i = 0;
+        break label92;
       }
     }
+    else if (paramString.equals("gt"))
+    {
+      i = 1;
+      break label92;
+    }
+    i = -1;
+    label92:
+    if (i != 0)
+    {
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            paramSpannableStringBuilder = new StringBuilder();
+            paramSpannableStringBuilder.append("ignoring unsupported entity: '&");
+            paramSpannableStringBuilder.append(paramString);
+            paramSpannableStringBuilder.append(";'");
+            Log.w("WebvttCueParser", paramSpannableStringBuilder.toString());
+            return;
+          }
+          paramSpannableStringBuilder.append('&');
+          return;
+        }
+        paramSpannableStringBuilder.append(' ');
+        return;
+      }
+      paramSpannableStringBuilder.append('>');
+      return;
+    }
     paramSpannableStringBuilder.append('<');
-    return;
-    paramSpannableStringBuilder.append('>');
-    return;
-    paramSpannableStringBuilder.append(' ');
-    return;
-    paramSpannableStringBuilder.append('&');
   }
   
   private static void applySpansForTag(String paramString, WebvttCueParser.StartTag paramStartTag, SpannableStringBuilder paramSpannableStringBuilder, List<WebvttCssStyle> paramList, List<WebvttCueParser.StyleMatch> paramList1)
   {
-    int j = paramStartTag.position;
-    int k = paramSpannableStringBuilder.length();
+    int k = paramStartTag.position;
+    int m = paramSpannableStringBuilder.length();
     String str = paramStartTag.name;
-    int i = -1;
-    switch (str.hashCode())
+    int i = str.hashCode();
+    int j = 0;
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      switch (i)
+      if (i != 105)
       {
-      default: 
-        return;
-        if (str.equals("b"))
+        if (i != 3314158)
         {
-          i = 0;
-          continue;
-          if (str.equals("i"))
+          if (i != 98)
           {
-            i = 1;
-            continue;
-            if (str.equals("u"))
+            if (i != 99)
             {
-              i = 2;
-              continue;
-              if (str.equals("c"))
+              if (i != 117)
               {
-                i = 3;
-                continue;
-                if (str.equals("lang"))
+                if ((i == 118) && (str.equals("v")))
                 {
-                  i = 4;
-                  continue;
-                  if (str.equals("v"))
-                  {
-                    i = 5;
-                    continue;
-                    if (str.equals("")) {
-                      i = 6;
-                    }
-                  }
+                  i = 5;
+                  break label194;
                 }
               }
+              else if (str.equals("u"))
+              {
+                i = 2;
+                break label194;
+              }
+            }
+            else if (str.equals("c"))
+            {
+              i = 3;
+              break label194;
             }
           }
+          else if (str.equals("b"))
+          {
+            i = 0;
+            break label194;
+          }
         }
-        break;
+        else if (str.equals("lang"))
+        {
+          i = 4;
+          break label194;
+        }
+      }
+      else if (str.equals("i"))
+      {
+        i = 1;
+        break label194;
       }
     }
-    paramSpannableStringBuilder.setSpan(new StyleSpan(1), j, k, 33);
-    for (;;)
+    else if (str.equals(""))
     {
-      paramList1.clear();
-      getApplicableStyles(paramList, paramString, paramStartTag, paramList1);
-      int m = paramList1.size();
-      i = 0;
-      while (i < m)
-      {
-        applyStyleToText(paramSpannableStringBuilder, ((WebvttCueParser.StyleMatch)paramList1.get(i)).style, j, k);
-        i += 1;
-      }
-      paramSpannableStringBuilder.setSpan(new StyleSpan(2), j, k, 33);
-      continue;
-      paramSpannableStringBuilder.setSpan(new UnderlineSpan(), j, k, 33);
+      i = 6;
+      break label194;
+    }
+    i = -1;
+    switch (i)
+    {
+    default: 
+      return;
+    case 2: 
+      paramSpannableStringBuilder.setSpan(new UnderlineSpan(), k, m, 33);
+      break;
+    case 1: 
+      paramSpannableStringBuilder.setSpan(new StyleSpan(2), k, m, 33);
+      break;
+    case 0: 
+      label194:
+      paramSpannableStringBuilder.setSpan(new StyleSpan(1), k, m, 33);
+    }
+    paramList1.clear();
+    getApplicableStyles(paramList, paramString, paramStartTag, paramList1);
+    int n = paramList1.size();
+    i = j;
+    while (i < n)
+    {
+      applyStyleToText(paramSpannableStringBuilder, ((WebvttCueParser.StyleMatch)paramList1.get(i)).style, k, m);
+      i += 1;
     }
   }
   
@@ -184,18 +219,21 @@ public final class WebvttCueParser
     if (paramWebvttCssStyle.getTextAlign() != null) {
       paramSpannableStringBuilder.setSpan(new AlignmentSpan.Standard(paramWebvttCssStyle.getTextAlign()), paramInt1, paramInt2, 33);
     }
-    switch (paramWebvttCssStyle.getFontSizeUnit())
+    int i = paramWebvttCssStyle.getFontSizeUnit();
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      paramSpannableStringBuilder.setSpan(new AbsoluteSizeSpan((int)paramWebvttCssStyle.getFontSize(), true), paramInt1, paramInt2, 33);
-      return;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3) {
+          return;
+        }
+        paramSpannableStringBuilder.setSpan(new RelativeSizeSpan(paramWebvttCssStyle.getFontSize() / 100.0F), paramInt1, paramInt2, 33);
+        return;
+      }
       paramSpannableStringBuilder.setSpan(new RelativeSizeSpan(paramWebvttCssStyle.getFontSize()), paramInt1, paramInt2, 33);
       return;
     }
-    paramSpannableStringBuilder.setSpan(new RelativeSizeSpan(paramWebvttCssStyle.getFontSize() / 100.0F), paramInt1, paramInt2, 33);
+    paramSpannableStringBuilder.setSpan(new AbsoluteSizeSpan((int)paramWebvttCssStyle.getFontSize(), true), paramInt1, paramInt2, 33);
   }
   
   private static int findEndOfTag(String paramString, int paramInt)
@@ -234,48 +272,55 @@ public final class WebvttCueParser
   
   private static boolean isSupportedTag(String paramString)
   {
-    boolean bool = true;
-    int i = -1;
-    switch (paramString.hashCode())
+    int i = paramString.hashCode();
+    if (i != 98)
     {
-    }
-    for (;;)
-    {
-      switch (i)
+      if (i != 99)
       {
-      default: 
-        bool = false;
-      }
-      return bool;
-      if (paramString.equals("b"))
-      {
-        i = 0;
-        continue;
-        if (paramString.equals("c"))
+        if (i != 105)
         {
-          i = 1;
-          continue;
-          if (paramString.equals("i"))
+          if (i != 3314158)
           {
-            i = 2;
-            continue;
-            if (paramString.equals("lang"))
+            if (i != 117)
             {
-              i = 3;
-              continue;
-              if (paramString.equals("u"))
+              if ((i == 118) && (paramString.equals("v")))
               {
-                i = 4;
-                continue;
-                if (paramString.equals("v")) {
-                  i = 5;
-                }
+                i = 5;
+                break label130;
               }
             }
+            else if (paramString.equals("u"))
+            {
+              i = 4;
+              break label130;
+            }
+          }
+          else if (paramString.equals("lang"))
+          {
+            i = 3;
+            break label130;
           }
         }
+        else if (paramString.equals("i"))
+        {
+          i = 2;
+          break label130;
+        }
+      }
+      else if (paramString.equals("c"))
+      {
+        i = 1;
+        break label130;
       }
     }
+    else if (paramString.equals("b"))
+    {
+      i = 0;
+      break label130;
+    }
+    i = -1;
+    label130:
+    return (i == 0) || (i == 1) || (i == 2) || (i == 3) || (i == 4) || (i == 5);
   }
   
   private static boolean parseCue(String paramString, Matcher paramMatcher, ParsableByteArray paramParsableByteArray, WebvttCue.Builder paramBuilder, StringBuilder paramStringBuilder, List<WebvttCssStyle> paramList)
@@ -297,13 +342,18 @@ public final class WebvttCueParser
         paramStringBuilder.append(paramMatcher.trim());
       }
       parseCueText(paramString, paramStringBuilder.toString(), paramBuilder, paramList);
+      return true;
     }
     catch (NumberFormatException paramString)
     {
-      Log.w("WebvttCueParser", "Skipping cue with bad header: " + paramMatcher.group());
-      return false;
+      label95:
+      break label95;
     }
-    return true;
+    paramString = new StringBuilder();
+    paramString.append("Skipping cue with bad header: ");
+    paramString.append(paramMatcher.group());
+    Log.w("WebvttCueParser", paramString.toString());
+    return false;
   }
   
   static void parseCueSettingsList(String paramString, WebvttCue.Builder paramBuilder)
@@ -311,30 +361,46 @@ public final class WebvttCueParser
     paramString = CUE_SETTING_PATTERN.matcher(paramString);
     while (paramString.find())
     {
-      String str1 = paramString.group(1);
-      String str2 = paramString.group(2);
+      Object localObject = paramString.group(1);
+      String str = paramString.group(2);
       try
       {
-        if (!"line".equals(str1)) {
-          break label78;
+        if ("line".equals(localObject))
+        {
+          parseLineAttribute(str, paramBuilder);
+          continue;
         }
-        parseLineAttribute(str2, paramBuilder);
+        if ("align".equals(localObject))
+        {
+          paramBuilder.setTextAlignment(parseTextAlignment(str));
+          continue;
+        }
+        if ("position".equals(localObject))
+        {
+          parsePositionAttribute(str, paramBuilder);
+          continue;
+        }
+        if ("size".equals(localObject))
+        {
+          paramBuilder.setWidth(WebvttParserUtil.parsePercentage(str));
+          continue;
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Unknown cue setting ");
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append(":");
+        localStringBuilder.append(str);
+        Log.w("WebvttCueParser", localStringBuilder.toString());
       }
       catch (NumberFormatException localNumberFormatException)
       {
-        Log.w("WebvttCueParser", "Skipping bad cue setting: " + paramString.group());
+        label162:
+        break label162;
       }
-      continue;
-      label78:
-      if ("align".equals(localNumberFormatException)) {
-        paramBuilder.setTextAlignment(parseTextAlignment(str2));
-      } else if ("position".equals(localNumberFormatException)) {
-        parsePositionAttribute(str2, paramBuilder);
-      } else if ("size".equals(localNumberFormatException)) {
-        paramBuilder.setWidth(WebvttParserUtil.parsePercentage(str2));
-      } else {
-        Log.w("WebvttCueParser", "Unknown cue setting " + localNumberFormatException + ":" + str2);
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Skipping bad cue setting: ");
+      ((StringBuilder)localObject).append(paramString.group());
+      Log.w("WebvttCueParser", ((StringBuilder)localObject).toString());
     }
   }
   
@@ -344,132 +410,112 @@ public final class WebvttCueParser
     Stack localStack = new Stack();
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    for (;;)
+    while (i < paramString2.length())
     {
-      label129:
+      char c = paramString2.charAt(i);
+      int k;
       int j;
-      if (i < paramString2.length())
+      if (c != '&')
       {
-        char c = paramString2.charAt(i);
-        int k;
-        int m;
-        switch (c)
+        if (c != '<')
         {
-        default: 
           localSpannableStringBuilder.append(c);
           i += 1;
-          break;
-        case '<': 
-          if (i + 1 >= paramString2.length())
+        }
+        else
+        {
+          k = i + 1;
+          if (k >= paramString2.length())
           {
-            i += 1;
-            continue;
+            i = k;
           }
-          int n;
-          if (paramString2.charAt(i + 1) == '/')
+          else
           {
-            k = 1;
-            j = findEndOfTag(paramString2, i + 1);
-            if (paramString2.charAt(j - 2) != '/') {
-              break label220;
+            j = paramString2.charAt(k);
+            int m = 1;
+            if (j == 47) {
+              j = 1;
+            } else {
+              j = 0;
             }
-            m = 1;
+            int i1 = findEndOfTag(paramString2, k);
+            int n = i1 - 2;
+            if (paramString2.charAt(n) == '/') {
+              k = 1;
+            } else {
+              k = 0;
+            }
+            if (j != 0) {
+              m = 2;
+            }
             if (k == 0) {
-              break label226;
+              n = i1 - 1;
             }
-            n = 2;
-            if (m == 0) {
-              break label232;
-            }
-          }
-          Object localObject;
-          String str;
-          for (int i1 = j - 2;; i1 = j - 1)
-          {
-            localObject = paramString2.substring(n + i, i1);
-            str = getTagName((String)localObject);
-            if (str == null) {
-              break label493;
-            }
-            if (isSupportedTag(str)) {
-              break label241;
-            }
-            i = j;
-            break;
-            k = 0;
-            break label129;
-            m = 0;
-            break label155;
-            n = 1;
-            break label163;
-          }
-          if (k != 0)
-          {
-            if (localStack.isEmpty()) {}
-            for (;;)
-            {
-              i = j;
-              break;
-              localObject = (WebvttCueParser.StartTag)localStack.pop();
-              applySpansForTag(paramString1, (WebvttCueParser.StartTag)localObject, localSpannableStringBuilder, paramList, localArrayList);
-              if (!((WebvttCueParser.StartTag)localObject).name.equals(str)) {
-                break label246;
+            Object localObject = paramString2.substring(i + m, n);
+            String str = getTagName((String)localObject);
+            i = i1;
+            if (str != null) {
+              if (!isSupportedTag(str))
+              {
+                i = i1;
+              }
+              else if (j != 0)
+              {
+                do
+                {
+                  if (localStack.isEmpty())
+                  {
+                    i = i1;
+                    break;
+                  }
+                  localObject = (WebvttCueParser.StartTag)localStack.pop();
+                  applySpansForTag(paramString1, (WebvttCueParser.StartTag)localObject, localSpannableStringBuilder, paramList, localArrayList);
+                } while (!((WebvttCueParser.StartTag)localObject).name.equals(str));
+                i = i1;
+              }
+              else
+              {
+                i = i1;
+                if (k == 0)
+                {
+                  localStack.push(WebvttCueParser.StartTag.buildStartTag((String)localObject, localSpannableStringBuilder.length()));
+                  i = i1;
+                }
               }
             }
           }
-          if (m != 0) {
-            break label493;
-          }
-          localStack.push(WebvttCueParser.StartTag.buildStartTag((String)localObject, localSpannableStringBuilder.length()));
-          i = j;
-          break;
-        case '&': 
-          label155:
-          label163:
-          label220:
-          label226:
-          label232:
-          label241:
-          label246:
-          m = paramString2.indexOf(';', i + 1);
-          k = paramString2.indexOf(' ', i + 1);
-          if (m == -1) {
-            j = k;
-          }
-          for (;;)
-          {
-            if (j == -1) {
-              break label428;
-            }
-            applyEntity(paramString2.substring(i + 1, j), localSpannableStringBuilder);
-            if (j == k) {
-              localSpannableStringBuilder.append(" ");
-            }
-            i = j + 1;
-            break;
-            j = m;
-            if (k != -1) {
-              j = Math.min(m, k);
-            }
-          }
-          label428:
-          localSpannableStringBuilder.append(c);
-          i += 1;
-          break;
         }
       }
       else
       {
-        while (!localStack.isEmpty()) {
-          applySpansForTag(paramString1, (WebvttCueParser.StartTag)localStack.pop(), localSpannableStringBuilder, paramList, localArrayList);
+        j = i + 1;
+        i = paramString2.indexOf(';', j);
+        k = paramString2.indexOf(' ', j);
+        if (i == -1) {
+          i = k;
+        } else if (k != -1) {
+          i = Math.min(i, k);
         }
-        applySpansForTag(paramString1, WebvttCueParser.StartTag.buildWholeCueVirtualTag(), localSpannableStringBuilder, paramList, localArrayList);
-        paramBuilder.setText(localSpannableStringBuilder);
-        return;
-        label493:
-        i = j;
+        if (i != -1)
+        {
+          applyEntity(paramString2.substring(j, i), localSpannableStringBuilder);
+          if (i == k) {
+            localSpannableStringBuilder.append(" ");
+          }
+          i += 1;
+        }
+        else
+        {
+          localSpannableStringBuilder.append(c);
+          i = j;
+        }
       }
     }
+    while (!localStack.isEmpty()) {
+      applySpansForTag(paramString1, (WebvttCueParser.StartTag)localStack.pop(), localSpannableStringBuilder, paramList, localArrayList);
+    }
+    applySpansForTag(paramString1, WebvttCueParser.StartTag.buildWholeCueVirtualTag(), localSpannableStringBuilder, paramList, localArrayList);
+    paramBuilder.setText(localSpannableStringBuilder);
   }
   
   private static void parseLineAttribute(String paramString, WebvttCue.Builder paramBuilder)
@@ -480,11 +526,14 @@ public final class WebvttCueParser
       paramBuilder.setLineAnchor(parsePositionAnchor(paramString.substring(i + 1)));
       paramString = paramString.substring(0, i);
     }
-    while (paramString.endsWith("%"))
+    else
+    {
+      paramBuilder.setLineAnchor(-2147483648);
+    }
+    if (paramString.endsWith("%"))
     {
       paramBuilder.setLine(WebvttParserUtil.parsePercentage(paramString)).setLineType(0);
       return;
-      paramBuilder.setLineAnchor(-2147483648);
     }
     int j = Integer.parseInt(paramString);
     i = j;
@@ -496,43 +545,49 @@ public final class WebvttCueParser
   
   private static int parsePositionAnchor(String paramString)
   {
-    int j = 0;
-    int i = -1;
     switch (paramString.hashCode())
     {
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        Log.w("WebvttCueParser", "Invalid anchor value: " + paramString);
-        j = -2147483648;
-      case 0: 
-        return j;
-        if (paramString.equals("start"))
-        {
-          i = 0;
-          continue;
-          if (paramString.equals("center"))
-          {
-            i = 1;
-            continue;
-            if (paramString.equals("middle"))
-            {
-              i = 2;
-              continue;
-              if (paramString.equals("end")) {
-                i = 3;
-              }
-            }
-          }
-        }
-        break;
+    default: 
+      break;
+    case 109757538: 
+      if (paramString.equals("start")) {
+        i = 0;
       }
+      break;
+    case 100571: 
+      if (paramString.equals("end")) {
+        i = 3;
+      }
+      break;
+    case -1074341483: 
+      if (paramString.equals("middle")) {
+        i = 2;
+      }
+      break;
+    case -1364013995: 
+      if (paramString.equals("center")) {
+        i = 1;
+      }
+      break;
     }
-    return 1;
-    return 2;
+    int i = -1;
+    if (i != 0)
+    {
+      if ((i != 1) && (i != 2))
+      {
+        if (i != 3)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Invalid anchor value: ");
+          localStringBuilder.append(paramString);
+          Log.w("WebvttCueParser", localStringBuilder.toString());
+          return -2147483648;
+        }
+        return 2;
+      }
+      return 1;
+    }
+    return 0;
   }
   
   private static void parsePositionAttribute(String paramString, WebvttCue.Builder paramBuilder)
@@ -543,87 +598,94 @@ public final class WebvttCueParser
       paramBuilder.setPositionAnchor(parsePositionAnchor(paramString.substring(i + 1)));
       paramString = paramString.substring(0, i);
     }
-    for (;;)
+    else
     {
-      paramBuilder.setPosition(WebvttParserUtil.parsePercentage(paramString));
-      return;
       paramBuilder.setPositionAnchor(-2147483648);
     }
+    paramBuilder.setPosition(WebvttParserUtil.parsePercentage(paramString));
   }
   
   private static Layout.Alignment parseTextAlignment(String paramString)
   {
-    int i = -1;
     switch (paramString.hashCode())
     {
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        Log.w("WebvttCueParser", "Invalid alignment value: " + paramString);
-        return null;
-        if (paramString.equals("start"))
-        {
-          i = 0;
-          continue;
-          if (paramString.equals("left"))
-          {
-            i = 1;
-            continue;
-            if (paramString.equals("center"))
-            {
-              i = 2;
-              continue;
-              if (paramString.equals("middle"))
-              {
-                i = 3;
-                continue;
-                if (paramString.equals("end"))
-                {
-                  i = 4;
-                  continue;
-                  if (paramString.equals("right")) {
-                    i = 5;
-                  }
-                }
-              }
-            }
-          }
-        }
-        break;
+    default: 
+      break;
+    case 109757538: 
+      if (paramString.equals("start")) {
+        i = 0;
       }
+      break;
+    case 108511772: 
+      if (paramString.equals("right")) {
+        i = 5;
+      }
+      break;
+    case 3317767: 
+      if (paramString.equals("left")) {
+        i = 1;
+      }
+      break;
+    case 100571: 
+      if (paramString.equals("end")) {
+        i = 4;
+      }
+      break;
+    case -1074341483: 
+      if (paramString.equals("middle")) {
+        i = 3;
+      }
+      break;
+    case -1364013995: 
+      if (paramString.equals("center")) {
+        i = 2;
+      }
+      break;
+    }
+    int i = -1;
+    if ((i != 0) && (i != 1))
+    {
+      if ((i != 2) && (i != 3))
+      {
+        if ((i != 4) && (i != 5))
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Invalid alignment value: ");
+          localStringBuilder.append(paramString);
+          Log.w("WebvttCueParser", localStringBuilder.toString());
+          return null;
+        }
+        return Layout.Alignment.ALIGN_OPPOSITE;
+      }
+      return Layout.Alignment.ALIGN_CENTER;
     }
     return Layout.Alignment.ALIGN_NORMAL;
-    return Layout.Alignment.ALIGN_CENTER;
-    return Layout.Alignment.ALIGN_OPPOSITE;
   }
   
   public boolean parseCue(ParsableByteArray paramParsableByteArray, WebvttCue.Builder paramBuilder, List<WebvttCssStyle> paramList)
   {
     String str = paramParsableByteArray.readLine();
-    if (str == null) {}
-    Object localObject;
-    do
-    {
-      do
-      {
-        return false;
-        localObject = CUE_HEADER_PATTERN.matcher(str);
-        if (((Matcher)localObject).matches()) {
-          return parseCue(null, (Matcher)localObject, paramParsableByteArray, paramBuilder, this.textBuilder, paramList);
-        }
-        localObject = paramParsableByteArray.readLine();
-      } while (localObject == null);
-      localObject = CUE_HEADER_PATTERN.matcher((CharSequence)localObject);
-    } while (!((Matcher)localObject).matches());
-    return parseCue(str.trim(), (Matcher)localObject, paramParsableByteArray, paramBuilder, this.textBuilder, paramList);
+    if (str == null) {
+      return false;
+    }
+    Object localObject = CUE_HEADER_PATTERN.matcher(str);
+    if (((Matcher)localObject).matches()) {
+      return parseCue(null, (Matcher)localObject, paramParsableByteArray, paramBuilder, this.textBuilder, paramList);
+    }
+    localObject = paramParsableByteArray.readLine();
+    if (localObject == null) {
+      return false;
+    }
+    localObject = CUE_HEADER_PATTERN.matcher((CharSequence)localObject);
+    if (((Matcher)localObject).matches()) {
+      return parseCue(str.trim(), (Matcher)localObject, paramParsableByteArray, paramBuilder, this.textBuilder, paramList);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.text.webvtt.WebvttCueParser
  * JD-Core Version:    0.7.0.1
  */

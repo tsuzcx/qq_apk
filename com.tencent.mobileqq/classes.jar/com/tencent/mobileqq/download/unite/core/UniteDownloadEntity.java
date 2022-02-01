@@ -41,12 +41,28 @@ public class UniteDownloadEntity
   
   public String toString()
   {
-    return "UniteDownloadEntity{source='" + this.source + '\'' + ", apkMd5='" + this.apkMd5 + '\'' + ", apkPath='" + this.apkPath + '\'' + ", downloadTimestamp=" + this.downloadTimestamp + ", appId='" + this.appId + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("UniteDownloadEntity{source='");
+    localStringBuilder.append(this.source);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", apkMd5='");
+    localStringBuilder.append(this.apkMd5);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", apkPath='");
+    localStringBuilder.append(this.apkPath);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", downloadTimestamp=");
+    localStringBuilder.append(this.downloadTimestamp);
+    localStringBuilder.append(", appId='");
+    localStringBuilder.append(this.appId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.download.unite.core.UniteDownloadEntity
  * JD-Core Version:    0.7.0.1
  */

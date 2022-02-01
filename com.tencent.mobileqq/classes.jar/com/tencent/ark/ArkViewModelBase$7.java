@@ -7,8 +7,9 @@ class ArkViewModelBase$7
   
   public void run()
   {
-    this.this$0.mIsVisible = false;
-    this.this$0.changeContainerActivateStatus();
+    ArkViewModelBase localArkViewModelBase = this.this$0;
+    localArkViewModelBase.mIsVisible = false;
+    localArkViewModelBase.changeContainerActivateStatus();
   }
 }
 

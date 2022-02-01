@@ -71,8 +71,10 @@ public final class FriendListRequestData
   
   public final byte getIfGetGroupInfoParam()
   {
-    if (this.isRequestSingle) {}
-    while (this.friendStartIndex > 0) {
+    if (this.isRequestSingle) {
+      return 0;
+    }
+    if (this.friendStartIndex > 0) {
       return 0;
     }
     return 1;
@@ -80,11 +82,15 @@ public final class FriendListRequestData
   
   public final byte getIfReflushParam()
   {
-    if (this.isRequestSingle) {}
-    while (this.friendStartIndex <= 0) {
+    boolean bool = this.isRequestSingle;
+    byte b = 1;
+    if (bool) {
       return 1;
     }
-    return 0;
+    if (this.friendStartIndex > 0) {
+      b = 0;
+    }
+    return b;
   }
   
   @Nullable
@@ -128,33 +134,24 @@ public final class FriendListRequestData
     if (!this.isRequestSingle) {
       return null;
     }
-    ArrayList localArrayList = new ArrayList();
-    for (;;)
+    localArrayList = new ArrayList();
+    try
     {
-      try
+      if ((((Collection)this.uinList).isEmpty() ^ true))
       {
-        if (!((Collection)this.uinList).isEmpty())
+        Iterator localIterator = this.uinList.iterator();
+        while (localIterator.hasNext())
         {
-          i = 1;
-          if (i != 0)
-          {
-            Iterator localIterator = this.uinList.iterator();
-            if (localIterator.hasNext())
-            {
-              String str = (String)localIterator.next();
-              Intrinsics.checkExpressionValueIsNotNull(str, "uinStr");
-              localArrayList.add(Long.valueOf(Long.parseLong(str)));
-              continue;
-            }
-          }
-          return localArrayList;
+          String str = (String)localIterator.next();
+          Intrinsics.checkExpressionValueIsNotNull(str, "uinStr");
+          localArrayList.add(Long.valueOf(Long.parseLong(str)));
         }
       }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        QLog.e("FriendListRequestData", 1, "getUinListParam", (Throwable)localNumberFormatException);
-      }
-      int i = 0;
+      return localArrayList;
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      QLog.e("FriendListRequestData", 1, "getUinListParam", (Throwable)localNumberFormatException);
     }
   }
   
@@ -222,12 +219,40 @@ public final class FriendListRequestData
   @NotNull
   public String toString()
   {
-    return "FriendListRequest(uinListSize='" + this.uinList.size() + "', " + "friendStartIndex=" + this.friendStartIndex + ", " + "friendCount=" + this.friendCount + ", " + "groupStartIndex=" + this.groupStartIndex + ", " + "groupCount=" + this.groupCount + ", " + "timeStamp=" + this.timeStamp + ", " + "totalFriendCount=" + this.totalFriendCount + ", " + "showTermType=" + this.showTermType + ", " + "isPullRefresh=" + this.isPullRefresh + ')';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FriendListRequest(uinListSize='");
+    localStringBuilder.append(this.uinList.size());
+    localStringBuilder.append("', ");
+    localStringBuilder.append("friendStartIndex=");
+    localStringBuilder.append(this.friendStartIndex);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("friendCount=");
+    localStringBuilder.append(this.friendCount);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("groupStartIndex=");
+    localStringBuilder.append(this.groupStartIndex);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("groupCount=");
+    localStringBuilder.append(this.groupCount);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("timeStamp=");
+    localStringBuilder.append(this.timeStamp);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("totalFriendCount=");
+    localStringBuilder.append(this.totalFriendCount);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("showTermType=");
+    localStringBuilder.append(this.showTermType);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("isPullRefresh=");
+    localStringBuilder.append(this.isPullRefresh);
+    localStringBuilder.append(')');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.friend.data.FriendListRequestData
  * JD-Core Version:    0.7.0.1
  */

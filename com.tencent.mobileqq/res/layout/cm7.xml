@@ -1,10 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/bja" android:background="@drawable/hd0" android:paddingLeft="16.0dip" android:paddingTop="16.0dip" android:paddingRight="16.0dip" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/o1c" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/n_5" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/gs3" android:layout_centerVertical="true" />
-        <TextView android:textSize="20.0sp" android:textStyle="bold" android:textColor="#ff03081a" android:id="@id/obz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-    </RelativeLayout>
-    <ListView android:id="@id/ng1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@null" android:layout_below="@id/o1c" />
-    <View android:id="@id/e_1" android:background="#ffebedf5" android:visibility="visible" android:layout_width="210.0dip" android:layout_height="0.5dip" android:layout_marginTop="15.0dip" android:layout_marginBottom="16.0dip" android:layout_below="@id/o1c" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+<Chronometer android:textAppearance="@style/a5n" android:id="@id/mqd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

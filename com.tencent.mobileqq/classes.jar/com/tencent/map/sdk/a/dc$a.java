@@ -23,12 +23,22 @@ public final class dc$a
   
   public final String toString()
   {
-    return "appid:" + this.f + "," + this.a + "," + this.b + "," + this.c + "," + this.d;
+    StringBuilder localStringBuilder = new StringBuilder("appid:");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.d);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.dc.a
  * JD-Core Version:    0.7.0.1
  */

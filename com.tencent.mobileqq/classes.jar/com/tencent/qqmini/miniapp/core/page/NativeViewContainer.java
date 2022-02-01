@@ -83,58 +83,88 @@ public class NativeViewContainer
   
   private boolean doInsertHTMLWebView(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    if (QMLog.isColorLevel()) {
-      QMLog.d("NativeViewContainer", "insertHTMLWebView htmlId=" + paramInt1 + ",innerWebView=" + this.innerWebView);
-    }
-    if ((this.innerWebView != null) || (this.mWebviewContainer == null) || (this.mWebviewContainer.getAttachActivity() == null)) {
-      return false;
-    }
-    float f = DisplayUtil.getDensity(this.mMiniAppContext.getContext());
-    int i = (int)(paramInt4 * f + 0.5F);
-    paramInt4 = (int)(paramInt5 * f + 0.5F);
-    paramInt5 = (int)(paramInt2 * f + 0.5F);
-    int j = (int)(f * paramInt3 + 0.5F);
-    if (QMLog.isColorLevel()) {
-      QMLog.d("NativeViewContainer", "insertHTMLWebView htmlId=" + paramInt1 + ",left=" + paramInt5 + ",top=" + j + ",w=" + i + ",h=" + paramInt4);
-    }
-    paramInt2 = paramInt4;
-    if (this.mWebviewContainer.isCustomNavibar())
+    Object localObject;
+    if (QMLog.isColorLevel())
     {
-      paramInt3 = paramInt4 - (ViewUtils.dpToPx(44.0F) + DisplayUtil.getStatusBarHeight(this.mMiniAppContext.getContext()));
-      if (this.mWebviewContainer.getBrandPage() != null) {
-        this.mWebviewContainer.getBrandPage().updateViewStyle("default");
-      }
-      paramInt2 = paramInt3;
-      if (this.mWebviewContainer.getNaviBar() != null)
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("insertHTMLWebView htmlId=");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(",innerWebView=");
+      ((StringBuilder)localObject).append(this.innerWebView);
+      QMLog.d("NativeViewContainer", ((StringBuilder)localObject).toString());
+    }
+    if (this.innerWebView == null)
+    {
+      localObject = this.mWebviewContainer;
+      if ((localObject != null) && (((PageWebviewContainer)localObject).getAttachActivity() != null))
       {
-        this.mWebviewContainer.getNaviBar().setBarStyle("default");
-        paramInt2 = paramInt3;
+        float f = DisplayUtil.getDensity(this.mMiniAppContext.getContext());
+        int i = (int)(paramInt4 * f + 0.5F);
+        paramInt4 = (int)(paramInt5 * f + 0.5F);
+        paramInt5 = (int)(paramInt2 * f + 0.5F);
+        int j = (int)(f * paramInt3 + 0.5F);
+        if (QMLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("insertHTMLWebView htmlId=");
+          ((StringBuilder)localObject).append(paramInt1);
+          ((StringBuilder)localObject).append(",left=");
+          ((StringBuilder)localObject).append(paramInt5);
+          ((StringBuilder)localObject).append(",top=");
+          ((StringBuilder)localObject).append(j);
+          ((StringBuilder)localObject).append(",w=");
+          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(",h=");
+          ((StringBuilder)localObject).append(paramInt4);
+          QMLog.d("NativeViewContainer", ((StringBuilder)localObject).toString());
+        }
+        paramInt2 = paramInt4;
+        if (this.mWebviewContainer.isCustomNavibar())
+        {
+          paramInt3 = paramInt4 - (ViewUtils.dpToPx(44.0F) + DisplayUtil.getStatusBarHeight(this.mMiniAppContext.getContext()));
+          if (this.mWebviewContainer.getBrandPage() != null) {
+            this.mWebviewContainer.getBrandPage().updateViewStyle("default");
+          }
+          paramInt2 = paramInt3;
+          if (this.mWebviewContainer.getNaviBar() != null)
+          {
+            this.mWebviewContainer.getNaviBar().setBarStyle("default");
+            paramInt2 = paramInt3;
+          }
+        }
+        this.innerWebView = new InnerWebView(this.mWebviewContainer.getAttachActivity());
+        this.innerWebView.htmlId = paramInt1;
+        localObject = new FrameLayout.LayoutParams(i, paramInt2);
+        ((FrameLayout.LayoutParams)localObject).leftMargin = paramInt5;
+        ((FrameLayout.LayoutParams)localObject).topMargin = j;
+        this.innerWebView.setVisibility(8);
+        addView(this.innerWebView, (ViewGroup.LayoutParams)localObject);
+        return true;
       }
     }
-    this.innerWebView = new InnerWebView(this.mWebviewContainer.getAttachActivity());
-    this.innerWebView.htmlId = paramInt1;
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(i, paramInt2);
-    localLayoutParams.leftMargin = paramInt5;
-    localLayoutParams.topMargin = j;
-    this.innerWebView.setVisibility(8);
-    addView(this.innerWebView, localLayoutParams);
-    return true;
+    return false;
   }
   
   private boolean doRemoveHTMLWebView(int paramInt)
   {
-    if (QMLog.isColorLevel()) {
-      QMLog.d("NativeViewContainer", "removeHTMLWebView htmlId=" + paramInt);
+    if (QMLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("removeHTMLWebView htmlId=");
+      ((StringBuilder)localObject).append(paramInt);
+      QMLog.d("NativeViewContainer", ((StringBuilder)localObject).toString());
     }
-    if ((this.innerWebView == null) || (this.innerWebView.htmlId != paramInt)) {
-      return false;
+    Object localObject = this.innerWebView;
+    if ((localObject != null) && (((InnerWebView)localObject).htmlId == paramInt))
+    {
+      this.innerWebView.loadUrl("about:blank");
+      this.innerWebView.clearView();
+      this.innerWebView.destroy();
+      removeView(this.innerWebView);
+      this.innerWebView = null;
+      return true;
     }
-    this.innerWebView.loadUrl("about:blank");
-    this.innerWebView.clearView();
-    this.innerWebView.destroy();
-    removeView(this.innerWebView);
-    this.innerWebView = null;
-    return true;
+    return false;
   }
   
   private ArrayList<String> getNeedCookieAppIdList()
@@ -143,23 +173,26 @@ public class NativeViewContainer
     {
       if (needCookieAppIdList == null)
       {
-        String str1 = WnsConfig.getConfig("qqminiapp", "MiniAppCookieWhiteAppIdList", "1108164955,1108291530,1109544007");
-        if ((str1 != null) && (!str1.equals(mCurWhiteListConfig)))
+        String str = WnsConfig.getConfig("qqminiapp", "MiniAppCookieWhiteAppIdList", "1108164955,1108291530,1109544007");
+        if ((str != null) && (!str.equals(mCurWhiteListConfig)))
         {
-          QMLog.i("NativeViewContainer", "Default white appid:" + str1);
+          Object localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("Default white appid:");
+          ((StringBuilder)localObject2).append(str);
+          QMLog.i("NativeViewContainer", ((StringBuilder)localObject2).toString());
           needCookieAppIdList = new ArrayList();
           try
           {
-            String[] arrayOfString = str1.split(",");
-            if (arrayOfString != null)
+            localObject2 = str.split(",");
+            if (localObject2 != null)
             {
-              int j = arrayOfString.length;
+              int j = localObject2.length;
               int i = 0;
               while (i < j)
               {
-                String str2 = arrayOfString[i];
-                if (!TextUtils.isEmpty(str2)) {
-                  needCookieAppIdList.add(str2);
+                CharSequence localCharSequence = localObject2[i];
+                if (!TextUtils.isEmpty(localCharSequence)) {
+                  needCookieAppIdList.add(localCharSequence);
                 }
                 i += 1;
               }
@@ -168,36 +201,43 @@ public class NativeViewContainer
           catch (Throwable localThrowable)
           {
             localThrowable.printStackTrace();
-            mCurWhiteListConfig = str1;
+            mCurWhiteListConfig = str;
           }
         }
       }
       return needCookieAppIdList;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject1;
+    }
   }
   
   private void getNeedCookieHostList()
   {
     if (needCookieHostList == null)
     {
-      String str1 = WnsConfig.getConfig("qqminiapp", "MiniAppCookieWhiteHostList", "https://open.mp.qq.com");
-      if ((str1 != null) && (!str1.equals(mWhiteHostConfig)))
+      String str = WnsConfig.getConfig("qqminiapp", "MiniAppCookieWhiteHostList", "https://open.mp.qq.com");
+      if ((str != null) && (!str.equals(mWhiteHostConfig)))
       {
-        QMLog.i("NativeViewContainer", "Default white host:" + str1);
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Default white host:");
+        ((StringBuilder)localObject).append(str);
+        QMLog.i("NativeViewContainer", ((StringBuilder)localObject).toString());
         needCookieHostList = new ArrayList();
         try
         {
-          String[] arrayOfString = str1.split(",");
-          if (arrayOfString != null)
+          localObject = str.split(",");
+          if (localObject != null)
           {
-            int j = arrayOfString.length;
+            int j = localObject.length;
             int i = 0;
             while (i < j)
             {
-              String str2 = arrayOfString[i];
-              if (!TextUtils.isEmpty(str2)) {
-                needCookieHostList.add(str2);
+              CharSequence localCharSequence = localObject[i];
+              if (!TextUtils.isEmpty(localCharSequence)) {
+                needCookieHostList.add(localCharSequence);
               }
               i += 1;
             }
@@ -207,7 +247,7 @@ public class NativeViewContainer
         catch (Throwable localThrowable)
         {
           localThrowable.printStackTrace();
-          mWhiteHostConfig = str1;
+          mWhiteHostConfig = str;
         }
       }
     }
@@ -322,15 +362,18 @@ public class NativeViewContainer
       JSONObject localJSONObject1 = new JSONObject(paramNativeViewRequestEvent.jsonParams);
       int i = localJSONObject1.optInt("canvasId");
       int j = localJSONObject1.optInt("parentId");
-      JSONObject localJSONObject2 = localJSONObject1.optJSONObject("position");
-      JSONObject localJSONObject3 = new JSONObject();
-      localJSONObject3.put("containerId", i);
-      AppBrandTask.runTaskOnUiThread(new NativeViewContainer.10(this, localJSONObject1, i, j, localJSONObject2, localJSONObject1.optString("data"), paramNativeViewRequestEvent, localJSONObject3));
+      localObject = localJSONObject1.optJSONObject("position");
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("containerId", i);
+      AppBrandTask.runTaskOnUiThread(new NativeViewContainer.10(this, localJSONObject1, i, j, (JSONObject)localObject, localJSONObject1.optString("data"), paramNativeViewRequestEvent, localJSONObject2));
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("NativeViewContainer", paramNativeViewRequestEvent.event + " error.", localJSONException);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramNativeViewRequestEvent.event);
+      ((StringBuilder)localObject).append(" error.");
+      QMLog.e("NativeViewContainer", ((StringBuilder)localObject).toString(), localJSONException);
     }
   }
   
@@ -338,20 +381,23 @@ public class NativeViewContainer
   {
     try
     {
-      JSONObject localJSONObject1 = new JSONObject(paramNativeViewRequestEvent.jsonParams);
-      int i = localJSONObject1.optInt("inputId");
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("inputId", i);
-      String str = localJSONObject1.optString("data");
+      JSONObject localJSONObject = new JSONObject(paramNativeViewRequestEvent.jsonParams);
+      int i = localJSONObject.optInt("inputId");
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("inputId", i);
+      String str = localJSONObject.optString("data");
       if (!TextUtils.isEmpty(str)) {
-        localJSONObject2.put("data", str);
+        ((JSONObject)localObject).put("data", str);
       }
-      AppBrandTask.runTaskOnUiThread(new NativeViewContainer.6(this, i, localJSONObject1, paramNativeViewRequestEvent, localJSONObject2));
+      AppBrandTask.runTaskOnUiThread(new NativeViewContainer.6(this, i, localJSONObject, paramNativeViewRequestEvent, (JSONObject)localObject));
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("NativeViewContainer", paramNativeViewRequestEvent.event + " error.", localJSONException);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramNativeViewRequestEvent.event);
+      ((StringBuilder)localObject).append(" error.");
+      QMLog.e("NativeViewContainer", ((StringBuilder)localObject).toString(), localJSONException);
     }
   }
   
@@ -364,7 +410,10 @@ public class NativeViewContainer
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("NativeViewContainer", paramNativeViewRequestEvent.event + " error.", localJSONException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramNativeViewRequestEvent.event);
+      localStringBuilder.append(" error.");
+      QMLog.e("NativeViewContainer", localStringBuilder.toString(), localJSONException);
     }
   }
   
@@ -380,7 +429,10 @@ public class NativeViewContainer
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("NativeViewContainer", paramNativeViewRequestEvent.event + " error.", localJSONException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramNativeViewRequestEvent.event);
+      localStringBuilder.append(" error.");
+      QMLog.e("NativeViewContainer", localStringBuilder.toString(), localJSONException);
     }
   }
   
@@ -393,18 +445,21 @@ public class NativeViewContainer
   {
     try
     {
-      JSONObject localJSONObject2 = new JSONObject(paramNativeViewRequestEvent.jsonParams);
-      int i = localJSONObject2.optInt("canvasId");
-      JSONObject localJSONObject1 = localJSONObject2.optJSONObject("position");
-      boolean bool = localJSONObject2.optBoolean("hide", false);
-      localJSONObject2 = new JSONObject();
-      localJSONObject2.put("containerId", i);
-      AppBrandTask.runTaskOnUiThread(new NativeViewContainer.11(this, i, localJSONObject1, bool, paramNativeViewRequestEvent, localJSONObject2));
+      localObject = new JSONObject(paramNativeViewRequestEvent.jsonParams);
+      int i = ((JSONObject)localObject).optInt("canvasId");
+      JSONObject localJSONObject = ((JSONObject)localObject).optJSONObject("position");
+      boolean bool = ((JSONObject)localObject).optBoolean("hide", false);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("containerId", i);
+      AppBrandTask.runTaskOnUiThread(new NativeViewContainer.11(this, i, localJSONObject, bool, paramNativeViewRequestEvent, (JSONObject)localObject));
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("NativeViewContainer", paramNativeViewRequestEvent.event + " error.", localJSONException);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramNativeViewRequestEvent.event);
+      ((StringBuilder)localObject).append(" error.");
+      QMLog.e("NativeViewContainer", ((StringBuilder)localObject).toString(), localJSONException);
     }
   }
   
@@ -417,20 +472,23 @@ public class NativeViewContainer
   {
     try
     {
-      JSONObject localJSONObject1 = new JSONObject(paramNativeViewRequestEvent.jsonParams);
-      int i = localJSONObject1.optInt("inputId");
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("inputId", i);
-      String str = localJSONObject1.optString("data");
+      JSONObject localJSONObject = new JSONObject(paramNativeViewRequestEvent.jsonParams);
+      int i = localJSONObject.optInt("inputId");
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("inputId", i);
+      String str = localJSONObject.optString("data");
       if (!TextUtils.isEmpty(str)) {
-        localJSONObject2.put("data", str);
+        ((JSONObject)localObject).put("data", str);
       }
-      AppBrandTask.runTaskOnUiThread(new NativeViewContainer.7(this, localJSONObject1, paramNativeViewRequestEvent, localJSONObject2));
+      AppBrandTask.runTaskOnUiThread(new NativeViewContainer.7(this, localJSONObject, paramNativeViewRequestEvent, (JSONObject)localObject));
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("NativeViewContainer", paramNativeViewRequestEvent.event + " error.", localJSONException);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramNativeViewRequestEvent.event);
+      ((StringBuilder)localObject).append(" error.");
+      QMLog.e("NativeViewContainer", ((StringBuilder)localObject).toString(), localJSONException);
     }
   }
   
@@ -439,8 +497,9 @@ public class NativeViewContainer
     this.keyBoardConfirmView = LayoutInflater.from(getContext().getApplicationContext()).inflate(R.layout.mini_sdk_keyboard_confirm, null);
     this.keyBoardConfirmView.setVisibility(8);
     ((TextView)this.keyBoardConfirmView.findViewById(R.id.mini_app_keyboard_confirm_botton)).setOnClickListener(new NativeViewContainer.9(this));
-    if (this.mWebviewContainer != null) {
-      this.mWebviewContainer.addViewOnPage(this.keyBoardConfirmView);
+    PageWebviewContainer localPageWebviewContainer = this.mWebviewContainer;
+    if (localPageWebviewContainer != null) {
+      localPageWebviewContainer.addViewOnPage(this.keyBoardConfirmView);
     }
   }
   
@@ -456,53 +515,61 @@ public class NativeViewContainer
   private void removeCoverChildView(int paramInt)
   {
     int i = 0;
-    if (i < this.mCoverViewSparseArray.size())
+    while (i < this.mCoverViewSparseArray.size())
     {
       int j = this.mCoverViewSparseArray.keyAt(i);
       CoverView localCoverView1 = (CoverView)this.mCoverViewSparseArray.get(j);
-      if ((localCoverView1 != null) && (localCoverView1.getParentId() == paramInt))
-      {
-        if (localCoverView1.getParentId() != 0) {
-          break label70;
+      if ((localCoverView1 != null) && (localCoverView1.getParentId() == paramInt)) {
+        if (localCoverView1.getParentId() == 0)
+        {
+          removeView(localCoverView1);
         }
-        removeView(localCoverView1);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        label70:
-        CoverView localCoverView2 = (CoverView)this.mCoverViewSparseArray.get(localCoverView1.getParentId());
-        if (localCoverView2 != null) {
-          localCoverView2.removeView(localCoverView1);
+        else
+        {
+          CoverView localCoverView2 = (CoverView)this.mCoverViewSparseArray.get(localCoverView1.getParentId());
+          if (localCoverView2 != null) {
+            localCoverView2.removeView(localCoverView1);
+          }
         }
       }
+      i += 1;
     }
   }
   
   private void setWebviewCookie(String paramString)
   {
-    if ((this.mWebviewContainer.getMiniAppContext() != null) && (this.mWebviewContainer.getMiniAppContext().getMiniAppInfo() != null)) {}
-    for (Object localObject = this.mWebviewContainer.getMiniAppContext().getMiniAppInfo();; localObject = null)
+    Object localObject1;
+    if ((this.mWebviewContainer.getMiniAppContext() != null) && (this.mWebviewContainer.getMiniAppContext().getMiniAppInfo() != null)) {
+      localObject1 = this.mWebviewContainer.getMiniAppContext().getMiniAppInfo();
+    } else {
+      localObject1 = null;
+    }
+    Object localObject2;
+    if (localObject1 != null)
     {
-      if ((localObject != null) && (needCookieAppIdList != null) && (needCookieAppIdList.contains(((MiniAppInfo)localObject).appId)))
+      localObject2 = needCookieAppIdList;
+      if ((localObject2 != null) && (((ArrayList)localObject2).contains(((MiniAppInfo)localObject1).appId)))
       {
-        localObject = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
-        if (localObject != null) {
-          ((ChannelProxy)localObject).setWebviewCookie(this.mWebviewContainer.getAttachActivity(), paramString);
+        localObject1 = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
+        if (localObject1 != null) {
+          ((ChannelProxy)localObject1).setWebviewCookie(this.mWebviewContainer.getAttachActivity(), paramString);
         }
       }
-      if (needCookieHostList == null) {
-        break;
-      }
-      paramString = needCookieHostList.iterator();
+    }
+    paramString = needCookieHostList;
+    if (paramString != null)
+    {
+      paramString = paramString.iterator();
       while (paramString.hasNext())
       {
-        localObject = (String)paramString.next();
-        QMLog.i("NativeViewContainer", "setCookie : " + (String)localObject);
-        ChannelProxy localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
-        if (localChannelProxy != null) {
-          localChannelProxy.setWebviewCookie(this.mWebviewContainer.getAttachActivity(), (String)localObject);
+        localObject1 = (String)paramString.next();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("setCookie : ");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        QMLog.i("NativeViewContainer", ((StringBuilder)localObject2).toString());
+        localObject2 = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
+        if (localObject2 != null) {
+          ((ChannelProxy)localObject2).setWebviewCookie(this.mWebviewContainer.getAttachActivity(), (String)localObject1);
         }
       }
     }
@@ -521,7 +588,10 @@ public class NativeViewContainer
       }
     }
     doUpdateHTMLWebView(paramInt, str1);
-    QMLog.e("NativeViewContainer", "updateHTMLWebView domain valid : " + paramString);
+    paramMiniAppInfo = new StringBuilder();
+    paramMiniAppInfo.append("updateHTMLWebView domain valid : ");
+    paramMiniAppInfo.append(paramString);
+    QMLog.e("NativeViewContainer", paramMiniAppInfo.toString());
     paramNativeViewRequestEvent.fail("domain valid");
   }
   
@@ -545,35 +615,52 @@ public class NativeViewContainer
   
   public boolean addCoverView(int paramInt1, int paramInt2, CoverView paramCoverView, boolean paramBoolean)
   {
-    QMLog.d("NativeViewContainer", "addCoverView(). parentViewId = " + paramInt1 + ", coverViewId = " + paramInt2 + ", coverView = " + paramCoverView);
-    new StringBuilder("addCoverView(). ").append("parentViewId = ").append(paramInt1).append("coverViewId = ").append(paramInt2).append("coverView = ").append(paramCoverView).append("fixed = ").append(paramBoolean);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("addCoverView(). parentViewId = ");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(", coverViewId = ");
+    ((StringBuilder)localObject).append(paramInt2);
+    ((StringBuilder)localObject).append(", coverView = ");
+    ((StringBuilder)localObject).append(paramCoverView);
+    QMLog.d("NativeViewContainer", ((StringBuilder)localObject).toString());
+    localObject = new StringBuilder("addCoverView(). ");
+    ((StringBuilder)localObject).append("parentViewId = ");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append("coverViewId = ");
+    ((StringBuilder)localObject).append(paramInt2);
+    ((StringBuilder)localObject).append("coverView = ");
+    ((StringBuilder)localObject).append(paramCoverView);
+    ((StringBuilder)localObject).append("fixed = ");
+    ((StringBuilder)localObject).append(paramBoolean);
     if (paramCoverView == null)
     {
       QMLog.w("NativeViewContainer", "Failed to add coverView, coverView is null");
       return false;
     }
     this.mCoverViewSparseArray.put(paramInt2, paramCoverView);
-    if (paramInt1 == 0) {
+    if (paramInt1 == 0)
+    {
       if (paramBoolean) {
         this.mWebviewContainer.addView(paramCoverView);
+      } else {
+        addView(paramCoverView);
       }
     }
-    for (;;)
+    else
     {
-      return true;
-      addView(paramCoverView);
-      continue;
-      CoverView localCoverView = getCoverView(paramInt1);
-      if (localCoverView != null) {
-        localCoverView.addView(paramCoverView);
+      localObject = getCoverView(paramInt1);
+      if (localObject != null) {
+        ((CoverView)localObject).addView(paramCoverView);
       }
     }
+    return true;
   }
   
   public void addViewOnPage(View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
-    if (this.mWebviewContainer != null) {
-      this.mWebviewContainer.addViewOnPage(paramView, paramLayoutParams);
+    PageWebviewContainer localPageWebviewContainer = this.mWebviewContainer;
+    if (localPageWebviewContainer != null) {
+      localPageWebviewContainer.addViewOnPage(paramView, paramLayoutParams);
     }
   }
   
@@ -587,17 +674,18 @@ public class NativeViewContainer
   
   public void destroy()
   {
-    int j = 0;
-    if (this.innerWebView != null)
+    Object localObject = this.innerWebView;
+    if (localObject != null)
     {
-      removeView(this.innerWebView);
+      removeView((View)localObject);
       this.innerWebView.loadUrl("about:blank");
       this.innerWebView.clearView();
       this.innerWebView.destroy();
       this.innerWebView = null;
     }
-    Object localObject;
-    if ((this.appTextAreaSparseArray != null) && (this.appTextAreaSparseArray.size() > 0))
+    localObject = this.appTextAreaSparseArray;
+    int j = 0;
+    if ((localObject != null) && (((SparseArray)localObject).size() > 0))
     {
       i = 0;
       while (i < this.appTextAreaSparseArray.size())
@@ -613,90 +701,112 @@ public class NativeViewContainer
     }
     this.appTextAreaSparseArray.clear();
     int i = j;
-    if (i < this.mCoverViewSparseArray.size())
+    while (i < this.mCoverViewSparseArray.size())
     {
       localObject = (CoverView)this.mCoverViewSparseArray.valueAt(i);
       if ((localObject instanceof CoverVideoView))
       {
-        ((CoverVideoView)localObject).stop();
-        ((CoverVideoView)localObject).release();
+        CoverVideoView localCoverVideoView = (CoverVideoView)localObject;
+        localCoverVideoView.stop();
+        localCoverVideoView.release();
         removeView((View)localObject);
       }
-      for (;;)
+      else if ((localObject instanceof CoverLiveView))
       {
-        i += 1;
-        break;
-        if ((localObject instanceof CoverLiveView))
-        {
-          ((CoverLiveView)localObject).release();
-          removeView((View)localObject);
-        }
-        else if ((localObject instanceof CoverPusherView))
-        {
-          ((CoverPusherView)localObject).release();
-          removeView((View)localObject);
-        }
-        else if ((localObject instanceof CoverCameraView))
-        {
-          ((CoverCameraView)localObject).closeCamera();
-        }
+        ((CoverLiveView)localObject).release();
+        removeView((View)localObject);
       }
+      else if ((localObject instanceof CoverPusherView))
+      {
+        ((CoverPusherView)localObject).release();
+        removeView((View)localObject);
+      }
+      else if ((localObject instanceof CoverCameraView))
+      {
+        ((CoverCameraView)localObject).closeCamera();
+      }
+      i += 1;
     }
     this.mCoverViewSparseArray.clear();
   }
   
   public boolean doUpdateHTMLWebView(int paramInt, String paramString)
   {
-    QMLog.d("NativeViewContainer", "updateHTMLWebView htmlId=" + paramInt + ",innerWebView=" + this.innerWebView + ",src=" + paramString);
-    if ((this.innerWebView == null) || (this.innerWebView.htmlId != paramInt) || (TextUtils.isEmpty(paramString))) {
-      return false;
-    }
-    if (this.mWebviewContainer == null)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("updateHTMLWebView htmlId=");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(",innerWebView=");
+    ((StringBuilder)localObject).append(this.innerWebView);
+    ((StringBuilder)localObject).append(",src=");
+    ((StringBuilder)localObject).append(paramString);
+    QMLog.d("NativeViewContainer", ((StringBuilder)localObject).toString());
+    localObject = this.innerWebView;
+    if ((localObject != null) && (((InnerWebView)localObject).htmlId == paramInt))
     {
-      QMLog.d("NativeViewContainer", "container is null");
-      return false;
-    }
-    setWebviewCookie(paramString);
-    this.innerWebView.init(this.mWebviewContainer.getMiniAppContext());
-    this.innerWebView.setVisibility(0);
-    String str = CookieManager.getInstance().getCookie(paramString);
-    QMLog.e("NativeViewContainer", "cookie : " + str);
-    this.innerWebView.loadUrl(paramString);
-    try
-    {
-      QMLog.e("NativeViewContainer", "innerWebView.hasFocus() : " + this.innerWebView.hasFocus());
-      if (!this.innerWebView.hasFocus()) {
-        this.innerWebView.requestFocus();
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
       }
-      return true;
-    }
-    catch (Throwable paramString)
-    {
-      for (;;)
+      if (this.mWebviewContainer == null)
+      {
+        QMLog.d("NativeViewContainer", "container is null");
+        return false;
+      }
+      setWebviewCookie(paramString);
+      this.innerWebView.init(this.mWebviewContainer.getMiniAppContext());
+      this.innerWebView.setVisibility(0);
+      localObject = CookieManager.getInstance().getCookie(paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("cookie : ");
+      localStringBuilder.append((String)localObject);
+      QMLog.e("NativeViewContainer", localStringBuilder.toString());
+      this.innerWebView.loadUrl(paramString);
+      try
+      {
+        paramString = new StringBuilder();
+        paramString.append("innerWebView.hasFocus() : ");
+        paramString.append(this.innerWebView.hasFocus());
+        QMLog.e("NativeViewContainer", paramString.toString());
+        if (!this.innerWebView.hasFocus()) {
+          this.innerWebView.requestFocus();
+        }
+      }
+      catch (Throwable paramString)
       {
         QMLog.e("NativeViewContainer", "innerWebView requestFocuserror,", paramString);
       }
+      return true;
     }
+    return false;
   }
   
   public boolean doUpdateHTMLWebView(int paramInt, JSONObject paramJSONObject)
   {
-    if (QMLog.isColorLevel()) {
-      QMLog.d("NativeViewContainer", "updateHTMLWebView htmlId=" + paramInt + ",innerWebView=" + this.innerWebView + ",position=" + paramJSONObject);
+    if (QMLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateHTMLWebView htmlId=");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(",innerWebView=");
+      ((StringBuilder)localObject).append(this.innerWebView);
+      ((StringBuilder)localObject).append(",position=");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      QMLog.d("NativeViewContainer", ((StringBuilder)localObject).toString());
     }
-    if ((this.innerWebView == null) || (this.innerWebView.htmlId != paramInt) || (paramJSONObject == null)) {
-      return false;
+    Object localObject = this.innerWebView;
+    if ((localObject != null) && (((InnerWebView)localObject).htmlId == paramInt) && (paramJSONObject != null))
+    {
+      float f = DisplayUtil.getDensity(getContext());
+      paramInt = (int)(paramJSONObject.optInt("width") * f + 0.5F);
+      int i = (int)(paramJSONObject.optInt("height") * f + 0.5F);
+      int j = (int)(paramJSONObject.optInt("left") * f + 0.5F);
+      int k = (int)(f * paramJSONObject.optInt("top") + 0.5F);
+      paramJSONObject = new FrameLayout.LayoutParams(paramInt, i);
+      paramJSONObject.leftMargin = j;
+      paramJSONObject.topMargin = k;
+      this.innerWebView.setLayoutParams(paramJSONObject);
+      return true;
     }
-    float f = DisplayUtil.getDensity(getContext());
-    paramInt = (int)(paramJSONObject.optInt("width") * f + 0.5F);
-    int i = (int)(paramJSONObject.optInt("height") * f + 0.5F);
-    int j = (int)(paramJSONObject.optInt("left") * f + 0.5F);
-    int k = (int)(f * paramJSONObject.optInt("top") + 0.5F);
-    paramJSONObject = new FrameLayout.LayoutParams(paramInt, i);
-    paramJSONObject.leftMargin = j;
-    paramJSONObject.topMargin = k;
-    this.innerWebView.setLayoutParams(paramJSONObject);
-    return true;
+    return false;
   }
   
   public void drawCanvas(int paramInt, boolean paramBoolean1, boolean paramBoolean2, JSONArray paramJSONArray, NativeViewRequestEvent paramNativeViewRequestEvent)
@@ -704,7 +814,10 @@ public class NativeViewContainer
     CoverView localCoverView = (CoverView)this.mCoverViewSparseArray.get(paramInt);
     if (!(localCoverView instanceof CanvasView))
     {
-      QMLog.e("NativeViewContainer", "updateCanvas failed! appCanvas return null! canvasId: " + paramInt);
+      paramJSONArray = new StringBuilder();
+      paramJSONArray.append("updateCanvas failed! appCanvas return null! canvasId: ");
+      paramJSONArray.append(paramInt);
+      QMLog.e("NativeViewContainer", paramJSONArray.toString());
       paramNativeViewRequestEvent.fail();
       return;
     }
@@ -724,16 +837,27 @@ public class NativeViewContainer
   
   public PageWebview getCurrentPageWebview()
   {
-    if (this.mWebviewContainer != null) {
-      return this.mWebviewContainer.getCurrentPageWebview();
+    PageWebviewContainer localPageWebviewContainer = this.mWebviewContainer;
+    if (localPageWebviewContainer != null) {
+      return localPageWebviewContainer.getCurrentPageWebview();
+    }
+    return null;
+  }
+  
+  public String getInnerWebViewUrl()
+  {
+    InnerWebView localInnerWebView = this.innerWebView;
+    if (localInnerWebView != null) {
+      return localInnerWebView.getOriginalUrl();
     }
     return null;
   }
   
   public int getNaviBarHeight()
   {
-    if (this.mWebviewContainer != null) {
-      return this.mWebviewContainer.getNaviBarHeight();
+    PageWebviewContainer localPageWebviewContainer = this.mWebviewContainer;
+    if (localPageWebviewContainer != null) {
+      return localPageWebviewContainer.getNaviBarHeight();
     }
     return 0;
   }
@@ -745,11 +869,12 @@ public class NativeViewContainer
   
   public MiniAppTextArea getTextArea(int paramInt)
   {
-    if ((this.appTextAreaSparseArray != null) && (this.appTextAreaSparseArray.size() > 0))
+    Object localObject = this.appTextAreaSparseArray;
+    if ((localObject != null) && (((SparseArray)localObject).size() > 0))
     {
-      MiniAppTextArea localMiniAppTextArea = (MiniAppTextArea)this.appTextAreaSparseArray.get(paramInt);
-      if (localMiniAppTextArea != null) {
-        return localMiniAppTextArea;
+      localObject = (MiniAppTextArea)this.appTextAreaSparseArray.get(paramInt);
+      if (localObject != null) {
+        return localObject;
       }
     }
     return null;
@@ -757,52 +882,47 @@ public class NativeViewContainer
   
   public int getWebviewId()
   {
-    if (this.mWebviewContainer != null) {
-      return this.mWebviewContainer.getWebViewId();
+    PageWebviewContainer localPageWebviewContainer = this.mWebviewContainer;
+    if (localPageWebviewContainer != null) {
+      return localPageWebviewContainer.getWebViewId();
     }
     return 0;
   }
   
   public boolean handleBackPressed()
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((this.innerWebView != null) && (this.innerWebView.canGoBack()))
+    Object localObject = this.innerWebView;
+    if ((localObject != null) && (((InnerWebView)localObject).canGoBack()))
     {
       this.innerWebView.goBack();
-      bool1 = true;
+      return true;
     }
-    Object localObject;
-    do
+    int i = 0;
+    while (i < this.mCoverViewSparseArray.size())
     {
-      do
+      localObject = (CoverView)this.mCoverViewSparseArray.valueAt(i);
+      if ((localObject instanceof CoverVideoView))
       {
-        return bool1;
-        int i = 0;
-        while (i < this.mCoverViewSparseArray.size())
+        localObject = (CoverVideoView)localObject;
+        if (((CoverVideoView)localObject).isFullScreen())
         {
-          localObject = (CoverView)this.mCoverViewSparseArray.valueAt(i);
-          if ((localObject instanceof CoverVideoView))
-          {
-            if (((CoverVideoView)localObject).isFullScreen())
-            {
-              ((CoverVideoView)localObject).smallScreen();
-              return true;
-            }
-          }
-          else if (((localObject instanceof CoverLiveView)) && (((CoverLiveView)localObject).isFullScreen()))
-          {
-            ((CoverLiveView)localObject).smallScreen();
-            return true;
-          }
-          i += 1;
+          ((CoverVideoView)localObject).smallScreen();
+          return true;
         }
-        localObject = getCurrentPageWebview();
-        bool1 = bool2;
-      } while (localObject == null);
-      bool1 = bool2;
-    } while (!((PageWebview)localObject).handleBackPressed());
-    return true;
+      }
+      else if ((localObject instanceof CoverLiveView))
+      {
+        localObject = (CoverLiveView)localObject;
+        if (((CoverLiveView)localObject).isFullScreen())
+        {
+          ((CoverLiveView)localObject).smallScreen();
+          return true;
+        }
+      }
+      i += 1;
+    }
+    localObject = getCurrentPageWebview();
+    return (localObject != null) && (((PageWebview)localObject).handleBackPressed());
   }
   
   public void handleInsertHtmlWebview(NativeViewRequestEvent paramNativeViewRequestEvent)
@@ -812,47 +932,48 @@ public class NativeViewContainer
   
   public String handleNativeUIEvent(NativeViewRequestEvent paramNativeViewRequestEvent)
   {
-    QMLog.d("NativeViewContainer", "event = " + paramNativeViewRequestEvent.event + ", params = " + paramNativeViewRequestEvent.jsonParams);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("event = ");
+    localStringBuilder.append(paramNativeViewRequestEvent.event);
+    localStringBuilder.append(", params = ");
+    localStringBuilder.append(paramNativeViewRequestEvent.jsonParams);
+    QMLog.d("NativeViewContainer", localStringBuilder.toString());
     if ("showKeyboard".equals(paramNativeViewRequestEvent.event)) {
       handleShowKeyboard(paramNativeViewRequestEvent);
+    } else if ("hideKeyboard".equals(paramNativeViewRequestEvent.event)) {
+      handleHideKeyboard(paramNativeViewRequestEvent);
+    } else if ("updateInput".equals(paramNativeViewRequestEvent.event)) {
+      handleUpdateInput(paramNativeViewRequestEvent);
+    } else if ("setKeyboardValue".equals(paramNativeViewRequestEvent.event)) {
+      handleSetInputValue(paramNativeViewRequestEvent);
+    } else if ("insertTextArea".equals(paramNativeViewRequestEvent.event)) {
+      handleInsertTextArea(paramNativeViewRequestEvent);
+    } else if ("updateTextArea".equals(paramNativeViewRequestEvent.event)) {
+      handleUpdateTextArea(paramNativeViewRequestEvent);
+    } else if ("removeTextArea".equals(paramNativeViewRequestEvent.event)) {
+      handleRemoveTextArea(paramNativeViewRequestEvent);
+    } else if ("insertCanvas".equals(paramNativeViewRequestEvent.event)) {
+      handleInsertCanvas(paramNativeViewRequestEvent);
+    } else if ("updateCanvas".equals(paramNativeViewRequestEvent.event)) {
+      handleUpdateCanvas(paramNativeViewRequestEvent);
+    } else if ("removeCanvas".equals(paramNativeViewRequestEvent.event)) {
+      handleRemoveCanvas(paramNativeViewRequestEvent);
+    } else if ("drawCanvas".equals(paramNativeViewRequestEvent.event)) {
+      handleDrawCanvas(paramNativeViewRequestEvent);
+    } else if ("canvasToTempFilePath".equals(paramNativeViewRequestEvent.event)) {
+      handleCanvasToTempFilePath(paramNativeViewRequestEvent);
+    } else if ("canvasPutImageData".equals(paramNativeViewRequestEvent.event)) {
+      handleCanvasPutImageData(paramNativeViewRequestEvent);
+    } else if ("canvasGetImageData".equals(paramNativeViewRequestEvent.event)) {
+      handleCanvasGetImageData(paramNativeViewRequestEvent);
+    } else if ("insertHTMLWebView".equals(paramNativeViewRequestEvent.event)) {
+      handleInsertHtmlWebview(paramNativeViewRequestEvent);
+    } else if ("updateHTMLWebView".equals(paramNativeViewRequestEvent.event)) {
+      handleUpdateHtmlWebview(paramNativeViewRequestEvent);
+    } else if ("removeHTMLWebView".equals(paramNativeViewRequestEvent.event)) {
+      handleRemoveHtmlWebview(paramNativeViewRequestEvent);
     }
-    for (;;)
-    {
-      return null;
-      if ("hideKeyboard".equals(paramNativeViewRequestEvent.event)) {
-        handleHideKeyboard(paramNativeViewRequestEvent);
-      } else if ("updateInput".equals(paramNativeViewRequestEvent.event)) {
-        handleUpdateInput(paramNativeViewRequestEvent);
-      } else if ("setKeyboardValue".equals(paramNativeViewRequestEvent.event)) {
-        handleSetInputValue(paramNativeViewRequestEvent);
-      } else if ("insertTextArea".equals(paramNativeViewRequestEvent.event)) {
-        handleInsertTextArea(paramNativeViewRequestEvent);
-      } else if ("updateTextArea".equals(paramNativeViewRequestEvent.event)) {
-        handleUpdateTextArea(paramNativeViewRequestEvent);
-      } else if ("removeTextArea".equals(paramNativeViewRequestEvent.event)) {
-        handleRemoveTextArea(paramNativeViewRequestEvent);
-      } else if ("insertCanvas".equals(paramNativeViewRequestEvent.event)) {
-        handleInsertCanvas(paramNativeViewRequestEvent);
-      } else if ("updateCanvas".equals(paramNativeViewRequestEvent.event)) {
-        handleUpdateCanvas(paramNativeViewRequestEvent);
-      } else if ("removeCanvas".equals(paramNativeViewRequestEvent.event)) {
-        handleRemoveCanvas(paramNativeViewRequestEvent);
-      } else if ("drawCanvas".equals(paramNativeViewRequestEvent.event)) {
-        handleDrawCanvas(paramNativeViewRequestEvent);
-      } else if ("canvasToTempFilePath".equals(paramNativeViewRequestEvent.event)) {
-        handleCanvasToTempFilePath(paramNativeViewRequestEvent);
-      } else if ("canvasPutImageData".equals(paramNativeViewRequestEvent.event)) {
-        handleCanvasPutImageData(paramNativeViewRequestEvent);
-      } else if ("canvasGetImageData".equals(paramNativeViewRequestEvent.event)) {
-        handleCanvasGetImageData(paramNativeViewRequestEvent);
-      } else if ("insertHTMLWebView".equals(paramNativeViewRequestEvent.event)) {
-        handleInsertHtmlWebview(paramNativeViewRequestEvent);
-      } else if ("updateHTMLWebView".equals(paramNativeViewRequestEvent.event)) {
-        handleUpdateHtmlWebview(paramNativeViewRequestEvent);
-      } else if ("removeHTMLWebView".equals(paramNativeViewRequestEvent.event)) {
-        handleRemoveHtmlWebview(paramNativeViewRequestEvent);
-      }
-    }
+    return null;
   }
   
   public void handleRemoveHtmlWebview(NativeViewRequestEvent paramNativeViewRequestEvent)
@@ -875,7 +996,10 @@ public class NativeViewContainer
     }
     catch (Exception localException)
     {
-      QMLog.e("NativeViewContainer", paramNativeViewRequestEvent.event + " error.", localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramNativeViewRequestEvent.event);
+      localStringBuilder.append(" error.");
+      QMLog.e("NativeViewContainer", localStringBuilder.toString(), localException);
     }
   }
   
@@ -888,139 +1012,94 @@ public class NativeViewContainer
   
   public void hideKeyBoardConfirmView()
   {
-    if ((this.keyBoardConfirmView != null) && (this.keyBoardConfirmView.getVisibility() == 0)) {
+    View localView = this.keyBoardConfirmView;
+    if ((localView != null) && (localView.getVisibility() == 0)) {
       this.keyBoardConfirmView.setVisibility(8);
     }
   }
   
   public void insertCanvas(int paramInt1, int paramInt2, JSONObject paramJSONObject, String paramString, boolean paramBoolean1, boolean paramBoolean2, Boolean paramBoolean, boolean paramBoolean3, IJsService paramIJsService)
   {
-    int j = (int)(this.density * paramJSONObject.optInt("width") + 0.5F);
-    int k = (int)(this.density * paramJSONObject.optInt("height") + 0.5F);
-    Object localObject = getCurrentPageWebview();
-    if (localObject != null) {}
-    for (int i = ((PageWebview)localObject).getMeasuredHeight();; i = 0)
-    {
-      QMLog.i("NativeViewContainer", "insertCanvas currentWebview.getMeasuredHeight: " + i + "---canvas height----" + paramJSONObject.optInt("height") + "---" + k + "---canvasId---" + paramInt1);
-      i = (int)(this.density * paramJSONObject.optInt("left") + 0.5F);
-      int m = (int)(this.density * paramJSONObject.optInt("top") + 0.5F);
-      localObject = (CoverView)this.mCoverViewSparseArray.get(paramInt1);
-      paramJSONObject = (JSONObject)localObject;
-      if (localObject == null)
-      {
-        paramJSONObject = new CanvasView(this.mMiniAppContext, this, paramIJsService, this.mWebviewContainer.getApkgInfo(), paramString, paramInt1, paramBoolean2, paramBoolean, paramBoolean3);
-        this.mCoverViewSparseArray.put(paramInt1, paramJSONObject);
-        addView(paramJSONObject);
-        paramJSONObject.setParentId(paramInt2);
-      }
-      if ((paramJSONObject instanceof CanvasView))
-      {
-        paramJSONObject.setContentDescription("CanvasView " + paramInt1);
-        if (paramBoolean1) {
-          paramJSONObject.setVisibility(8);
-        }
-        paramString = new FrameLayout.LayoutParams(j, k);
-        paramString.leftMargin = i;
-        paramString.topMargin = m;
-        paramJSONObject.setLayoutParams(paramString);
-      }
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: fail exe a23 = a20\r\n\tat com.googlecode.dex2jar.ir.ts.an.BaseAnalyze.exec(BaseAnalyze.java:92)\r\n\tat com.googlecode.dex2jar.ir.ts.an.BaseAnalyze.exec(BaseAnalyze.java:1)\r\n\tat com.googlecode.dex2jar.ir.ts.Cfg.dfs(Cfg.java:255)\r\n\tat com.googlecode.dex2jar.ir.ts.an.BaseAnalyze.analyze0(BaseAnalyze.java:75)\r\n\tat com.googlecode.dex2jar.ir.ts.an.BaseAnalyze.analyze(BaseAnalyze.java:69)\r\n\tat com.googlecode.dex2jar.ir.ts.UnSSATransformer.transform(UnSSATransformer.java:274)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:163)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\nCaused by: java.lang.NullPointerException\r\n\tat com.googlecode.dex2jar.ir.ts.UnSSATransformer$LiveA.onUseLocal(UnSSATransformer.java:552)\r\n\tat com.googlecode.dex2jar.ir.ts.UnSSATransformer$LiveA.onUseLocal(UnSSATransformer.java:1)\r\n\tat com.googlecode.dex2jar.ir.ts.an.BaseAnalyze.onUse(BaseAnalyze.java:166)\r\n\tat com.googlecode.dex2jar.ir.ts.an.BaseAnalyze.onUse(BaseAnalyze.java:1)\r\n\tat com.googlecode.dex2jar.ir.ts.Cfg.travel(Cfg.java:331)\r\n\tat com.googlecode.dex2jar.ir.ts.Cfg.travel(Cfg.java:387)\r\n\tat com.googlecode.dex2jar.ir.ts.an.BaseAnalyze.exec(BaseAnalyze.java:90)\r\n\t... 17 more\r\n");
   }
   
   public void insertTextArea(int paramInt, JSONObject paramJSONObject, NativeViewRequestEvent paramNativeViewRequestEvent)
   {
-    Object localObject2 = (MiniAppTextArea)this.appTextAreaSparseArray.get(paramInt);
+    MiniAppTextArea localMiniAppTextArea2 = (MiniAppTextArea)this.appTextAreaSparseArray.get(paramInt);
     int i = paramJSONObject.optInt("parentId");
     boolean bool = paramJSONObject.optBoolean("fixed", false);
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
+    MiniAppTextArea localMiniAppTextArea1 = localMiniAppTextArea2;
+    if (localMiniAppTextArea2 == null)
     {
-      localObject1 = new MiniAppTextArea(getContext(), paramInt, this);
-      ((MiniAppTextArea)localObject1).setFixed(bool);
-      this.appTextAreaSparseArray.put(paramInt, localObject1);
-      if (i == 0) {
-        break label120;
-      }
-      localObject2 = (FrameLayout)this.mCoverViewSparseArray.get(i);
-      if (localObject2 != null)
+      localMiniAppTextArea2 = new MiniAppTextArea(getContext(), paramInt, this);
+      localMiniAppTextArea2.setFixed(bool);
+      this.appTextAreaSparseArray.put(paramInt, localMiniAppTextArea2);
+      if (i != 0)
       {
-        ((FrameLayout)localObject2).addView((View)localObject1);
-        ((MiniAppTextArea)localObject1).setParentId(i);
+        FrameLayout localFrameLayout = (FrameLayout)this.mCoverViewSparseArray.get(i);
+        localMiniAppTextArea1 = localMiniAppTextArea2;
+        if (localFrameLayout != null)
+        {
+          localFrameLayout.addView(localMiniAppTextArea2);
+          localMiniAppTextArea2.setParentId(i);
+          localMiniAppTextArea1 = localMiniAppTextArea2;
+        }
+      }
+      else if (bool)
+      {
+        getPageWebviewContainer().addView(localMiniAppTextArea2);
+        localMiniAppTextArea1 = localMiniAppTextArea2;
+      }
+      else
+      {
+        addView(localMiniAppTextArea2);
+        localMiniAppTextArea1 = localMiniAppTextArea2;
       }
     }
-    for (;;)
-    {
-      ((MiniAppTextArea)localObject1).setAttributes(paramJSONObject, false, paramNativeViewRequestEvent);
-      return;
-      label120:
-      if (bool) {
-        getPageWebviewContainer().addView((View)localObject1);
-      } else {
-        addView((View)localObject1);
-      }
-    }
+    localMiniAppTextArea1.setAttributes(paramJSONObject, false, paramNativeViewRequestEvent);
   }
   
   public boolean isCustomNavibar()
   {
-    if (this.mWebviewContainer != null) {
-      return this.mWebviewContainer.isCustomNavibar();
+    PageWebviewContainer localPageWebviewContainer = this.mWebviewContainer;
+    if (localPageWebviewContainer != null) {
+      return localPageWebviewContainer.isCustomNavibar();
     }
     return false;
   }
   
   public boolean isTextAreaFocused()
   {
-    boolean bool2 = false;
     int i = 0;
-    for (;;)
+    while (i < this.appTextAreaSparseArray.size())
     {
-      boolean bool1 = bool2;
-      if (i < this.appTextAreaSparseArray.size())
-      {
-        MiniAppTextArea localMiniAppTextArea = (MiniAppTextArea)this.appTextAreaSparseArray.valueAt(i);
-        if ((localMiniAppTextArea != null) && (localMiniAppTextArea.isTextAreaFocused())) {
-          bool1 = true;
-        }
-      }
-      else
-      {
-        return bool1;
+      MiniAppTextArea localMiniAppTextArea = (MiniAppTextArea)this.appTextAreaSparseArray.valueAt(i);
+      if ((localMiniAppTextArea != null) && (localMiniAppTextArea.isTextAreaFocused())) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   public boolean isVideoFullScreen()
   {
-    boolean bool2 = false;
     int i = 0;
-    for (;;)
+    while (i < this.mCoverViewSparseArray.size())
     {
-      boolean bool1 = bool2;
-      CoverView localCoverView;
-      if (i < this.mCoverViewSparseArray.size())
+      CoverView localCoverView = (CoverView)this.mCoverViewSparseArray.valueAt(i);
+      if ((localCoverView instanceof CoverVideoView))
       {
-        localCoverView = (CoverView)this.mCoverViewSparseArray.valueAt(i);
-        if ((localCoverView instanceof CoverVideoView))
-        {
-          if (!((CoverVideoView)localCoverView).isFullScreen()) {
-            break label74;
-          }
-          bool1 = true;
+        if (((CoverVideoView)localCoverView).isFullScreen()) {
+          return true;
         }
       }
-      else
-      {
-        return bool1;
-      }
-      if (((localCoverView instanceof CoverLiveView)) && (((CoverLiveView)localCoverView).isFullScreen())) {
+      else if (((localCoverView instanceof CoverLiveView)) && (((CoverLiveView)localCoverView).isFullScreen())) {
         return true;
       }
-      label74:
       i += 1;
     }
+    return false;
   }
   
   public void notifyOnColorNoteAnimStart()
@@ -1130,21 +1209,18 @@ public class NativeViewContainer
     }
     removeCoverChildView(paramInt);
     int i = localCoverView.getParentId();
-    if (i != 0) {
+    if (i != 0)
+    {
       if (this.mCoverViewSparseArray.get(i) != null) {
         ((CoverView)this.mCoverViewSparseArray.get(i)).removeView(localCoverView);
       }
     }
-    for (;;)
-    {
-      this.mCoverViewSparseArray.remove(paramInt);
-      return;
-      if (localCoverView.isFixed()) {
-        this.mWebviewContainer.removeView(localCoverView);
-      } else {
-        removeView(localCoverView);
-      }
+    else if (localCoverView.isFixed()) {
+      this.mWebviewContainer.removeView(localCoverView);
+    } else {
+      removeView(localCoverView);
     }
+    this.mCoverViewSparseArray.remove(paramInt);
   }
   
   public boolean removeConfirmListener(NativeViewContainer.IConfirmListerner paramIConfirmListerner)
@@ -1173,33 +1249,26 @@ public class NativeViewContainer
       if (this.mCoverViewSparseArray.get(i) != null) {
         ((CoverView)this.mCoverViewSparseArray.get(i)).removeView(localCoverView);
       }
-      this.mCoverViewSparseArray.remove(paramInt);
-      if (!(localCoverView instanceof CoverLiveView)) {
-        break label108;
-      }
-      ((CoverLiveView)localCoverView).release();
     }
-    for (;;)
-    {
-      return true;
-      if (localCoverView.isFixed())
-      {
-        this.mWebviewContainer.removeView(localCoverView);
-        break;
-      }
+    else if (localCoverView.isFixed()) {
+      this.mWebviewContainer.removeView(localCoverView);
+    } else {
       removeView(localCoverView);
-      break;
-      label108:
-      if ((localCoverView instanceof CoverPusherView)) {
-        ((CoverPusherView)localCoverView).release();
-      }
     }
+    this.mCoverViewSparseArray.remove(paramInt);
+    if ((localCoverView instanceof CoverLiveView)) {
+      ((CoverLiveView)localCoverView).release();
+    } else if ((localCoverView instanceof CoverPusherView)) {
+      ((CoverPusherView)localCoverView).release();
+    }
+    return true;
   }
   
   public void removeSoftKeyboardStateListener(SoftKeyboardStateHelper.SoftKeyboardStateListener paramSoftKeyboardStateListener)
   {
-    if (this.mWebviewContainer != null) {
-      this.mWebviewContainer.removeSoftKeyboardStateListener(paramSoftKeyboardStateListener);
+    PageWebviewContainer localPageWebviewContainer = this.mWebviewContainer;
+    if (localPageWebviewContainer != null) {
+      localPageWebviewContainer.removeSoftKeyboardStateListener(paramSoftKeyboardStateListener);
     }
   }
   
@@ -1211,76 +1280,77 @@ public class NativeViewContainer
     }
     this.appTextAreaSparseArray.remove(paramInt);
     int i = localMiniAppTextArea.getParentId();
-    if (i != 0) {
+    if (i != 0)
+    {
       if (this.mCoverViewSparseArray.get(i) != null) {
         ((CoverView)this.mCoverViewSparseArray.get(i)).removeView(localMiniAppTextArea);
       }
     }
-    for (;;)
-    {
-      this.appTextAreaSparseArray.remove(paramInt);
-      return;
-      if (localMiniAppTextArea.isFixed()) {
-        getPageWebviewContainer().removeView(localMiniAppTextArea);
-      } else {
-        removeView(localMiniAppTextArea);
-      }
+    else if (localMiniAppTextArea.isFixed()) {
+      getPageWebviewContainer().removeView(localMiniAppTextArea);
+    } else {
+      removeView(localMiniAppTextArea);
     }
+    this.appTextAreaSparseArray.remove(paramInt);
   }
   
   public void setCurInputId(int paramInt)
   {
-    if (this.mWebviewContainer != null) {
-      this.mWebviewContainer.setCurInputId(paramInt);
+    PageWebviewContainer localPageWebviewContainer = this.mWebviewContainer;
+    if (localPageWebviewContainer != null) {
+      localPageWebviewContainer.setCurInputId(paramInt);
     }
   }
   
   public void setSoftKeyboardStateListener(SoftKeyboardStateHelper.SoftKeyboardStateListener paramSoftKeyboardStateListener)
   {
-    if (this.mWebviewContainer != null) {
-      this.mWebviewContainer.setSoftKeyboardStateListener(paramSoftKeyboardStateListener);
+    PageWebviewContainer localPageWebviewContainer = this.mWebviewContainer;
+    if (localPageWebviewContainer != null) {
+      localPageWebviewContainer.setSoftKeyboardStateListener(paramSoftKeyboardStateListener);
     }
   }
   
   public void showKeyBoardConfirmView(int paramInt)
   {
-    if (this.keyBoardConfirmView != null)
+    Object localObject = this.keyBoardConfirmView;
+    if (localObject != null)
     {
-      if (this.keyBoardConfirmView.getVisibility() == 8) {
+      if (((View)localObject).getVisibility() == 8) {
         this.keyBoardConfirmView.setVisibility(0);
       }
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, DisplayUtil.dip2px(getContext(), 50.0F));
-      localLayoutParams.leftMargin = 0;
-      localLayoutParams.topMargin = paramInt;
-      this.keyBoardConfirmView.setLayoutParams(localLayoutParams);
+      localObject = new FrameLayout.LayoutParams(-1, DisplayUtil.dip2px(getContext(), 50.0F));
+      ((FrameLayout.LayoutParams)localObject).leftMargin = 0;
+      ((FrameLayout.LayoutParams)localObject).topMargin = paramInt;
+      this.keyBoardConfirmView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
   }
   
   public void updateCanvas(int paramInt, JSONObject paramJSONObject, boolean paramBoolean)
   {
     CoverView localCoverView = (CoverView)this.mCoverViewSparseArray.get(paramInt);
-    if (!(localCoverView instanceof CanvasView)) {
-      QMLog.e("NativeViewContainer", "updateCanvas failed! appCanvas return null! canvasId: " + paramInt);
-    }
-    for (;;)
+    if (!(localCoverView instanceof CanvasView))
     {
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("updateCanvas failed! appCanvas return null! canvasId: ");
+      paramJSONObject.append(paramInt);
+      QMLog.e("NativeViewContainer", paramJSONObject.toString());
       return;
-      if (paramBoolean) {
-        localCoverView.setVisibility(8);
-      }
-      while (paramJSONObject != null)
-      {
-        paramInt = (int)(this.density * paramJSONObject.optInt("width") + 0.5F);
-        int i = (int)(this.density * paramJSONObject.optInt("height") + 0.5F);
-        int j = (int)(this.density * paramJSONObject.optInt("left") + 0.5F);
-        int k = (int)(this.density * paramJSONObject.optInt("top") + 0.5F);
-        paramJSONObject = new FrameLayout.LayoutParams(paramInt, i);
-        paramJSONObject.leftMargin = j;
-        paramJSONObject.topMargin = k;
-        localCoverView.setLayoutParams(paramJSONObject);
-        return;
-        localCoverView.setVisibility(0);
-      }
+    }
+    if (paramBoolean) {
+      localCoverView.setVisibility(8);
+    } else {
+      localCoverView.setVisibility(0);
+    }
+    if (paramJSONObject != null)
+    {
+      paramInt = (int)(this.density * paramJSONObject.optInt("width") + 0.5F);
+      int i = (int)(this.density * paramJSONObject.optInt("height") + 0.5F);
+      int j = (int)(this.density * paramJSONObject.optInt("left") + 0.5F);
+      int k = (int)(this.density * paramJSONObject.optInt("top") + 0.5F);
+      paramJSONObject = new FrameLayout.LayoutParams(paramInt, i);
+      paramJSONObject.leftMargin = j;
+      paramJSONObject.topMargin = k;
+      localCoverView.setLayoutParams(paramJSONObject);
     }
   }
   
@@ -1304,7 +1374,7 @@ public class NativeViewContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.NativeViewContainer
  * JD-Core Version:    0.7.0.1
  */

@@ -24,8 +24,12 @@ public class PicShareToWXConfigProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
       paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
-      if (QLog.isColorLevel()) {
-        QLog.d("PicShareToWXConfigProcessor", 2, "onParsed, content:" + paramArrayOfQConfItem);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed, content:");
+        localStringBuilder.append(paramArrayOfQConfItem);
+        QLog.d("PicShareToWXConfigProcessor", 2, localStringBuilder.toString());
       }
       return PicShareToWXConfigProcessor.PicShareToWXConifgBean.a(paramArrayOfQConfItem);
     }
@@ -73,7 +77,7 @@ public class PicShareToWXConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.PicShareToWXConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

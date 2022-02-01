@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.view.RIJDownloadView android:id="@id/kap" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/mss" android:background="@drawable/f50" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip">
+        <ImageView android:layout_gravity="center" android:id="@id/n7c" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/mst" android:background="@drawable/f50" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="15.0dip">
+        <ImageView android:layout_gravity="center" android:id="@id/n7d" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/msu" android:background="@drawable/f50" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="30.0dip">
+        <ImageView android:layout_gravity="center" android:id="@id/n7e" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+    </FrameLayout>
 </FrameLayout>

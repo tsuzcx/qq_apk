@@ -14,23 +14,26 @@ class StrictLineReader$1
   
   public String toString()
   {
-    if ((this.count > 0) && (this.buf[(this.count - 1)] == 13)) {}
-    for (int i = this.count - 1;; i = this.count) {
-      try
-      {
-        String str = new String(this.buf, 0, i, StrictLineReader.access$000(this.this$0).name());
-        return str;
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        throw new AssertionError(localUnsupportedEncodingException);
-      }
+    int i;
+    if ((this.count > 0) && (this.buf[(this.count - 1)] == 13)) {
+      i = this.count - 1;
+    } else {
+      i = this.count;
+    }
+    try
+    {
+      String str = new String(this.buf, 0, i, StrictLineReader.access$000(this.this$0).name());
+      return str;
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    {
+      throw new AssertionError(localUnsupportedEncodingException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.cache.StrictLineReader.1
  * JD-Core Version:    0.7.0.1
  */

@@ -8,17 +8,20 @@ import android.text.TextUtils;
 import android.util.Base64;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.config.business.qvip.QVipGiftConfig;
-import com.tencent.mobileqq.config.business.qvip.QVipGiftProcessor;
 import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
 import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.trooplink.api.ITroopLinkApi;
+import com.tencent.mobileqq.troop.trooplink.api.ITroopLinkApi.LinkParams;
+import com.tencent.mobileqq.troop.utils.api.ITroopUtilsApi;
 import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipGiftConfig;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipGiftProcessor;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -37,15 +40,20 @@ public class TroopGiftUtil
 {
   public static Intent a(Activity paramActivity, String paramString1, String paramString2)
   {
-    paramString1 = TroopMemberListActivity.a(paramActivity, paramString1, 14);
-    paramString1.putExtra("custom_title_name", paramActivity.getString(2131697741));
+    paramString1 = ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).getTroopMemberListActivityLaunchIntent(paramActivity, paramString1, 14);
+    paramString1.putExtra("custom_title_name", paramActivity.getString(2131697747));
     paramString1.putExtra("troop_gift_from", paramString2);
     return paramString1;
   }
   
   public static String a(int paramInt)
   {
-    return VFSAssistantUtils.getSDKPrivatePath(Environment.getExternalStorageDirectory().getAbsolutePath() + "/tencent/MobileQQ/.troop/pic_effects/" + paramInt + ".mp4");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Environment.getExternalStorageDirectory().getAbsolutePath());
+    localStringBuilder.append("/tencent/MobileQQ/.troop/pic_effects/");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(".mp4");
+    return VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
   }
   
   public static String a(MessageForDeliverGiftTips paramMessageForDeliverGiftTips)
@@ -60,38 +68,65 @@ public class TroopGiftUtil
   public static String a(String paramString)
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(AppConstants.SDCARD_GIFT_SAVE).append(paramString + "_NEW").append(File.separator);
+    localStringBuffer.append(AppConstants.SDCARD_GIFT_SAVE);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_NEW");
+    localStringBuffer.append(localStringBuilder.toString());
+    localStringBuffer.append(File.separator);
     return localStringBuffer.toString();
   }
   
   public static String a(String paramString, int paramInt)
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    if (paramInt == 1) {
-      localStringBuffer.append(AppConstants.SDCARD_GIFT_SAVE).append(paramString + "_V").append(File.separator);
-    }
-    for (;;)
+    StringBuilder localStringBuilder;
+    if (paramInt == 1)
     {
-      return localStringBuffer.toString();
-      localStringBuffer.append(AppConstants.SDCARD_GIFT_SAVE).append(paramString + "_HD").append(File.separator);
+      localStringBuffer.append(AppConstants.SDCARD_GIFT_SAVE);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("_V");
+      localStringBuffer.append(localStringBuilder.toString());
+      localStringBuffer.append(File.separator);
     }
+    else
+    {
+      localStringBuffer.append(AppConstants.SDCARD_GIFT_SAVE);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("_HD");
+      localStringBuffer.append(localStringBuilder.toString());
+      localStringBuffer.append(File.separator);
+    }
+    return localStringBuffer.toString();
   }
   
   public static String a(String paramString, int paramInt, boolean paramBoolean)
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    if (paramBoolean) {
-      localStringBuffer.append(AppConstants.SDCARD_GIFT_SAVE).append(File.separator).append(paramString).append("_NEW.zip");
-    }
-    for (;;)
+    if (paramBoolean)
     {
-      return localStringBuffer.toString();
-      if (paramInt == 1) {
-        localStringBuffer.append(AppConstants.SDCARD_GIFT_SAVE).append(File.separator).append(paramString).append("_V.zip");
-      } else {
-        localStringBuffer.append(AppConstants.SDCARD_GIFT_SAVE).append(File.separator).append(paramString).append("_HD.zip");
-      }
+      localStringBuffer.append(AppConstants.SDCARD_GIFT_SAVE);
+      localStringBuffer.append(File.separator);
+      localStringBuffer.append(paramString);
+      localStringBuffer.append("_NEW.zip");
     }
+    else if (paramInt == 1)
+    {
+      localStringBuffer.append(AppConstants.SDCARD_GIFT_SAVE);
+      localStringBuffer.append(File.separator);
+      localStringBuffer.append(paramString);
+      localStringBuffer.append("_V.zip");
+    }
+    else
+    {
+      localStringBuffer.append(AppConstants.SDCARD_GIFT_SAVE);
+      localStringBuffer.append(File.separator);
+      localStringBuffer.append(paramString);
+      localStringBuffer.append("_HD.zip");
+    }
+    return localStringBuffer.toString();
   }
   
   public static List<String> a(MessageForDeliverGiftTips paramMessageForDeliverGiftTips)
@@ -116,8 +151,14 @@ public class TroopGiftUtil
   public static JSONObject a(String paramString)
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(AppConstants.SDCARD_GIFT_SAVE).append(paramString + "_NEW").append(File.separator).append("info.json");
-    paramString = FileUtils.a(new File(localStringBuffer.toString()));
+    localStringBuffer.append(AppConstants.SDCARD_GIFT_SAVE);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_NEW");
+    localStringBuffer.append(localStringBuilder.toString());
+    localStringBuffer.append(File.separator);
+    localStringBuffer.append("info.json");
+    paramString = FileUtils.readFileContent(new File(localStringBuffer.toString()));
     if (paramString == null) {
       return null;
     }
@@ -140,35 +181,34 @@ public class TroopGiftUtil
   
   public static void a(Activity paramActivity, String paramString1, String paramString2, QQAppInterface paramQQAppInterface)
   {
-    TroopInfo localTroopInfo;
-    int i;
     if (paramQQAppInterface != null)
     {
-      localTroopInfo = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramString1);
-      if (localTroopInfo != null)
+      Object localObject = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramString1);
+      if (localObject != null)
       {
-        if (!localTroopInfo.isTroopOwner(paramQQAppInterface.getCurrentAccountUin())) {
-          break label134;
+        int i;
+        if (((TroopInfo)localObject).isTroopOwner(paramQQAppInterface.getCurrentAccountUin())) {
+          i = 0;
+        } else if (((TroopInfo)localObject).isAdmin()) {
+          i = 1;
+        } else {
+          i = 2;
         }
-        i = 0;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append("");
+        ReportController.b(paramQQAppInterface, "P_CliOper", "Grp_flower", "", "mber", "exp", 0, 0, paramString1, ((StringBuilder)localObject).toString(), "", "");
       }
     }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      ReportController.b(paramQQAppInterface, "P_CliOper", "Grp_flower", "", "mber", "exp", 0, 0, paramString1, i + "", "", "");
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopUtils", 2, "startSendGiftActivity from:" + paramString2);
-      }
-      paramActivity.startActivityForResult(a(paramActivity, paramString1, paramString2), 12005);
-      paramActivity.overridePendingTransition(2130771999, 2130771992);
-      return;
-      label134:
-      if (localTroopInfo.isAdmin()) {
-        i = 1;
-      } else {
-        i = 2;
-      }
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("startSendGiftActivity from:");
+      paramQQAppInterface.append(paramString2);
+      QLog.d("TroopMemberUtil", 2, paramQQAppInterface.toString());
     }
+    paramActivity.startActivityForResult(a(paramActivity, paramString1, paramString2), 12005);
+    paramActivity.overridePendingTransition(2130772011, 2130772004);
   }
   
   public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, QQAppInterface paramQQAppInterface)
@@ -181,88 +221,83 @@ public class TroopGiftUtil
     if (paramActivity == null) {
       return;
     }
-    for (;;)
+    int i = 0;
+    String str2;
+    try
     {
-      int i;
-      try
+      str2 = Base64.encodeToString(paramString3.getBytes("UTF-8"), 0);
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    {
+      localUnsupportedEncodingException.printStackTrace();
+      str2 = paramString3;
+    }
+    String str1 = null;
+    if (paramQQAppInterface != null)
+    {
+      ITroopLinkApi localITroopLinkApi = (ITroopLinkApi)QRoute.api(ITroopLinkApi.class);
+      str1 = QVipGiftProcessor.a().troopGiftUrl;
+      if (!TextUtils.isEmpty(str1))
       {
-        str1 = Base64.encodeToString(paramString3.getBytes("UTF-8"), 0);
-        Object localObject = null;
-        if (paramQQAppInterface != null)
-        {
-          TroopLinkManager localTroopLinkManager = TroopLinkManager.a();
-          String str2 = QVipGiftProcessor.a().troopGiftUrl;
-          localObject = str2;
-          if (!TextUtils.isEmpty(str2))
-          {
-            localObject = new TroopLinkManager.LinkParams();
-            ((TroopLinkManager.LinkParams)localObject).a = paramString1;
-            ((TroopLinkManager.LinkParams)localObject).c = paramString4;
-            ((TroopLinkManager.LinkParams)localObject).b = paramString2;
-            ((TroopLinkManager.LinkParams)localObject).e = paramString3;
-            localObject = localTroopLinkManager.a(str2, (TroopLinkManager.LinkParams)localObject);
+        ITroopLinkApi.LinkParams localLinkParams = new ITroopLinkApi.LinkParams();
+        localLinkParams.a = paramString1;
+        localLinkParams.c = paramString4;
+        localLinkParams.b = paramString2;
+        localLinkParams.e = paramString3;
+        str1 = localITroopLinkApi.replaceParams(str1, localLinkParams);
+      }
+    }
+    paramString3 = str1;
+    if (TextUtils.isEmpty(str1))
+    {
+      paramString3 = new Bundle();
+      paramString3.putString("troopUin", paramString1);
+      paramString3.putString("uin", paramString2);
+      paramString3.putString("name", str2);
+      paramString3.putString("from", paramString4);
+      paramString3.putString("_wv", "1031");
+      paramString3.putString("_bid", "2204");
+      paramString2 = new StringBuilder();
+      paramString2.append("https://qun.qq.com/qunpay/gifts/index.html?");
+      paramString2.append(HttpUtil.encodeUrl(paramString3));
+      paramString3 = paramString2.toString();
+    }
+    paramString2 = new Intent(paramActivity, QQBrowserActivity.class);
+    paramString2.putExtra("url", paramString3);
+    if ((paramMap != null) && (paramMap.size() > 0))
+    {
+      paramString4 = paramMap.entrySet().iterator();
+      while (paramString4.hasNext())
+      {
+        paramMap = (Map.Entry)paramString4.next();
+        paramString2.putExtra((String)paramMap.getKey(), (String)paramMap.getValue());
+      }
+    }
+    paramActivity.startActivityForResult(paramString2, 13001);
+    if (paramQQAppInterface != null)
+    {
+      paramActivity = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramString1);
+      if (paramActivity != null)
+      {
+        if (!paramActivity.isTroopOwner(paramQQAppInterface.getCurrentAccountUin())) {
+          if (paramActivity.isAdmin()) {
+            i = 1;
+          } else {
+            i = 2;
           }
         }
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          break label445;
-        }
-        paramString3 = new Bundle();
-        paramString3.putString("troopUin", paramString1);
-        paramString3.putString("uin", paramString2);
-        paramString3.putString("name", str1);
-        paramString3.putString("from", paramString4);
-        paramString3.putString("_wv", "1031");
-        paramString3.putString("_bid", "2204");
-        paramString2 = "https://qun.qq.com/qunpay/gifts/index.html?" + HttpUtil.encodeUrl(paramString3);
-        paramString3 = new Intent(paramActivity, QQBrowserActivity.class);
-        paramString3.putExtra("url", paramString2);
-        if ((paramMap != null) && (paramMap.size() > 0))
-        {
-          paramString4 = paramMap.entrySet().iterator();
-          if (paramString4.hasNext())
-          {
-            paramMap = (Map.Entry)paramString4.next();
-            paramString3.putExtra((String)paramMap.getKey(), (String)paramMap.getValue());
-            continue;
-          }
-        }
+        paramActivity = new StringBuilder();
+        paramActivity.append(i);
+        paramActivity.append("");
+        ReportController.b(paramQQAppInterface, "P_CliOper", "Grp_flower", "", "mber", "send_page", 0, 0, paramString1, paramActivity.toString(), "", "");
       }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        localUnsupportedEncodingException.printStackTrace();
-        String str1 = paramString3;
-        continue;
-        paramActivity.startActivityForResult(paramString3, 13001);
-        if (paramQQAppInterface != null)
-        {
-          paramActivity = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramString1);
-          if (paramActivity != null)
-          {
-            if (!paramActivity.isTroopOwner(paramQQAppInterface.getCurrentAccountUin())) {
-              break label426;
-            }
-            i = 0;
-            ReportController.b(paramQQAppInterface, "P_CliOper", "Grp_flower", "", "mber", "send_page", 0, 0, paramString1, i + "", "", "");
-          }
-        }
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("TroopUtils", 2, "openSendTroopGiftUrl url:" + paramString2);
-      return;
-      label426:
-      if (paramActivity.isAdmin())
-      {
-        i = 1;
-      }
-      else
-      {
-        i = 2;
-        continue;
-        label445:
-        paramString2 = localUnsupportedEncodingException;
-      }
+    }
+    if (QLog.isColorLevel())
+    {
+      paramActivity = new StringBuilder();
+      paramActivity.append("openSendTroopGiftUrl url:");
+      paramActivity.append(paramString3);
+      QLog.d("TroopMemberUtil", 2, paramActivity.toString());
     }
   }
   
@@ -274,43 +309,55 @@ public class TroopGiftUtil
       String[] arrayOfString = paramString.list();
       int j = arrayOfString.length;
       int i = 0;
-      if (i < j)
+      while (i < j)
       {
         Object localObject = arrayOfString[i];
-        if (("__MACOSX".equalsIgnoreCase((String)localObject)) || (((String)localObject).endsWith("."))) {}
-        for (;;)
+        if ((!"__MACOSX".equalsIgnoreCase((String)localObject)) && (!((String)localObject).endsWith(".")))
         {
-          i += 1;
-          break;
           String str = paramFile.getAbsolutePath().replace(".zip", "/");
           localObject = new File(paramString, (String)localObject);
           if (((File)localObject).exists())
           {
-            FileUtils.a(((File)localObject).getAbsolutePath(), str, true);
-            FileUtils.a(paramString.getAbsolutePath());
+            FileUtils.copyDirectory(((File)localObject).getAbsolutePath(), str, true);
+            FileUtils.deleteDirectory(paramString.getAbsolutePath());
           }
         }
+        i += 1;
       }
     }
   }
   
   public static boolean a(int paramInt)
   {
-    if ((paramInt < 40003) || (paramInt > 40005)) {}
-    long l;
-    do
+    if (paramInt >= 40003)
     {
-      return true;
-      File localFile = new File(a(paramInt));
-      if (!localFile.exists()) {
-        break;
+      if (paramInt > 40005) {
+        return true;
       }
-      l = localFile.length();
-    } while (((paramInt == 40003) && (l == 827720L)) || ((paramInt == 40004) && (l == 355077L)) || ((paramInt == 40005) && (l == 796025L)));
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopUtils", 2, "isTroopPicEffectVideoValid = false, id:" + paramInt);
+      Object localObject = new File(a(paramInt));
+      if (((File)localObject).exists())
+      {
+        long l = ((File)localObject).length();
+        if ((paramInt == 40003) && (l == 827720L)) {
+          return true;
+        }
+        if ((paramInt == 40004) && (l == 355077L)) {
+          return true;
+        }
+        if ((paramInt == 40005) && (l == 796025L)) {
+          return true;
+        }
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("isTroopPicEffectVideoValid = false, id:");
+        ((StringBuilder)localObject).append(paramInt);
+        QLog.d("TroopMemberUtil", 2, ((StringBuilder)localObject).toString());
+      }
+      return false;
     }
-    return false;
+    return true;
   }
   
   public static boolean a(MessageForDeliverGiftTips paramMessageForDeliverGiftTips)
@@ -320,67 +367,74 @@ public class TroopGiftUtil
   
   public static boolean a(File paramFile)
   {
-    StringBuffer localStringBuffer;
-    Object localObject;
     if (paramFile.exists())
     {
-      localStringBuffer = new StringBuffer();
-      localStringBuffer.append(paramFile.getAbsolutePath()).append(File.separator).append("check.ini");
-      localObject = new File(localStringBuffer.toString());
-      if (((File)localObject).exists()) {}
-    }
-    else
-    {
-      return false;
-    }
-    for (;;)
-    {
-      int i;
-      try
-      {
-        localObject = FileUtils.b((File)localObject);
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break;
-        }
-        localObject = ((String)localObject).split("&");
-        if (localObject == null) {
-          break;
-        }
-        i = 0;
-        if (i >= localObject.length) {
-          break label203;
-        }
-        localStringBuffer.setLength(0);
-        localStringBuffer.append(paramFile.getAbsolutePath()).append(File.separator).append(localObject[i].toString());
-        File localFile = new File(localStringBuffer.toString());
-        if (localFile.exists()) {
-          break label196;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e(".troop.send_giftTroopUtils", 2, "isAnimationPackageValid File not exist:" + localFile.getName());
+      StringBuffer localStringBuffer = new StringBuffer();
+      localStringBuffer.append(paramFile.getAbsolutePath());
+      localStringBuffer.append(File.separator);
+      localStringBuffer.append("check.ini");
+      Object localObject = new File(localStringBuffer.toString());
+      if (!((File)localObject).exists()) {
         return false;
       }
-      catch (IOException paramFile) {}
-      if (!QLog.isColorLevel()) {
-        break;
+      for (;;)
+      {
+        try
+        {
+          localObject = FileUtils.readFileToString((File)localObject);
+          if (TextUtils.isEmpty((CharSequence)localObject)) {
+            return false;
+          }
+          arrayOfString = ((String)localObject).split("&");
+          if (arrayOfString != null) {
+            continue;
+          }
+          return false;
+        }
+        catch (IOException paramFile)
+        {
+          String[] arrayOfString;
+          continue;
+          int i = 0;
+          continue;
+        }
+        if (i >= arrayOfString.length) {
+          continue;
+        }
+        localStringBuffer.setLength(0);
+        localStringBuffer.append(paramFile.getAbsolutePath());
+        localStringBuffer.append(File.separator);
+        localStringBuffer.append(arrayOfString[i].toString());
+        localObject = new File(localStringBuffer.toString());
+        if (!((File)localObject).exists())
+        {
+          if (QLog.isColorLevel())
+          {
+            paramFile = new StringBuilder();
+            paramFile.append("isAnimationPackageValid File not exist:");
+            paramFile.append(((File)localObject).getName());
+            QLog.e(".troop.send_giftTroopMemberUtil", 2, paramFile.toString());
+          }
+          return false;
+        }
+        i += 1;
       }
-      QLog.e("TroopUtils", 2, "isAnimationPackageValid IOException");
-      return false;
-      label196:
-      i += 1;
+      return true;
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopMemberUtil", 2, "isAnimationPackageValid IOException");
+      }
     }
-    label203:
-    return true;
+    return false;
   }
   
   public static boolean a(String paramString, int paramInt, boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (paramString = a(paramString);; paramString = a(paramString, paramInt)) {
-      return a(new File(paramString));
+    if (paramBoolean) {
+      paramString = a(paramString);
+    } else {
+      paramString = a(paramString, paramInt);
     }
+    return a(new File(paramString));
   }
   
   public static boolean a(List<?> paramList)
@@ -390,7 +444,11 @@ public class TroopGiftUtil
   
   public static String b(int paramInt)
   {
-    return "https://pub.idqqimg.com/pc/misc/groupgift/troop_pic_effect_" + paramInt + ".mp4";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("https://pub.idqqimg.com/pc/misc/groupgift/troop_pic_effect_");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(".mp4");
+    return localStringBuilder.toString();
   }
   
   public static String b(MessageForDeliverGiftTips paramMessageForDeliverGiftTips)
@@ -410,18 +468,35 @@ public class TroopGiftUtil
     if ((QVipGiftProcessor.a().isEnable()) && (!TextUtils.isEmpty(paramMessageForDeliverGiftTips.animationPackageUrl))) {
       return paramMessageForDeliverGiftTips.animationPackageUrl;
     }
-    if (paramMessageForDeliverGiftTips.isInteract()) {
-      return "https://pub.idqqimg.com/pc/misc/groupgift/" + str + "_NEW.zip";
+    if (paramMessageForDeliverGiftTips.isInteract())
+    {
+      paramMessageForDeliverGiftTips = new StringBuilder();
+      paramMessageForDeliverGiftTips.append("https://pub.idqqimg.com/pc/misc/groupgift/");
+      paramMessageForDeliverGiftTips.append(str);
+      paramMessageForDeliverGiftTips.append("_NEW.zip");
+      return paramMessageForDeliverGiftTips.toString();
     }
-    if (paramMessageForDeliverGiftTips.animationType == 1) {
-      return "https://pub.idqqimg.com/pc/misc/groupgift/" + str + "_V.zip";
+    if (paramMessageForDeliverGiftTips.animationType == 1)
+    {
+      paramMessageForDeliverGiftTips = new StringBuilder();
+      paramMessageForDeliverGiftTips.append("https://pub.idqqimg.com/pc/misc/groupgift/");
+      paramMessageForDeliverGiftTips.append(str);
+      paramMessageForDeliverGiftTips.append("_V.zip");
+      return paramMessageForDeliverGiftTips.toString();
     }
-    return "https://pub.idqqimg.com/pc/misc/groupgift/" + str + "_HD.zip";
+    paramMessageForDeliverGiftTips = new StringBuilder();
+    paramMessageForDeliverGiftTips.append("https://pub.idqqimg.com/pc/misc/groupgift/");
+    paramMessageForDeliverGiftTips.append(str);
+    paramMessageForDeliverGiftTips.append("_HD.zip");
+    return paramMessageForDeliverGiftTips.toString();
   }
   
   public static String d(MessageForDeliverGiftTips paramMessageForDeliverGiftTips)
   {
-    paramMessageForDeliverGiftTips = new File(a(paramMessageForDeliverGiftTips) + "/video.mp4");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a(paramMessageForDeliverGiftTips));
+    localStringBuilder.append("/video.mp4");
+    paramMessageForDeliverGiftTips = new File(localStringBuilder.toString());
     if (paramMessageForDeliverGiftTips.exists()) {
       return paramMessageForDeliverGiftTips.getAbsolutePath();
     }
@@ -430,7 +505,7 @@ public class TroopGiftUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopGiftUtil
  * JD-Core Version:    0.7.0.1
  */

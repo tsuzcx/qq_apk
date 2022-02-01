@@ -16,49 +16,47 @@ class FontBubblePanelView$3
   {
     if (FontBubblePanelView.a(this.a) == 4)
     {
-      if ((paramBoolean) && (paramBubbleRecommendRsp.vItems.size() > 0)) {
+      if ((paramBoolean) && (paramBubbleRecommendRsp.vItems.size() > 0))
+      {
         FontBubblePanelView.a(this.a, paramBubbleRecommendRsp);
+        return;
       }
+      StringBuilder localStringBuilder = new StringBuilder("onGetBubbleRecommend failed, ");
+      if ((paramBubbleRecommendRsp != null) && (paramBubbleRecommendRsp.stRet != null))
+      {
+        localStringBuilder.append("ret:");
+        localStringBuilder.append(paramBubbleRecommendRsp.stRet.ret);
+        localStringBuilder.append("err:");
+        localStringBuilder.append(paramBubbleRecommendRsp.stRet.err);
+      }
+      QLog.e("FontBubblePanelView", 1, localStringBuilder.toString());
     }
-    else {
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder("onGetBubbleRecommend failed, ");
-    if ((paramBubbleRecommendRsp != null) && (paramBubbleRecommendRsp.stRet != null))
-    {
-      localStringBuilder.append("ret:");
-      localStringBuilder.append(paramBubbleRecommendRsp.stRet.ret);
-      localStringBuilder.append("err:");
-      localStringBuilder.append(paramBubbleRecommendRsp.stRet.err);
-    }
-    QLog.e("FontBubblePanelView", 1, localStringBuilder.toString());
   }
   
   public void onGetFontRecommend(boolean paramBoolean, FontRecommendRsp paramFontRecommendRsp)
   {
     if (FontBubblePanelView.a(this.a) == 3)
     {
-      if ((paramBoolean) && (paramFontRecommendRsp.vItems.size() > 0)) {
+      if ((paramBoolean) && (paramFontRecommendRsp.vItems.size() > 0))
+      {
         FontBubblePanelView.a(this.a, paramFontRecommendRsp);
+        return;
       }
+      StringBuilder localStringBuilder = new StringBuilder("onGetFontRecommend failed, ");
+      if ((paramFontRecommendRsp != null) && (paramFontRecommendRsp.stRet != null))
+      {
+        localStringBuilder.append("ret:");
+        localStringBuilder.append(paramFontRecommendRsp.stRet.ret);
+        localStringBuilder.append("err:");
+        localStringBuilder.append(paramFontRecommendRsp.stRet.err);
+      }
+      QLog.e("FontBubblePanelView", 1, localStringBuilder.toString());
     }
-    else {
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder("onGetFontRecommend failed, ");
-    if ((paramFontRecommendRsp != null) && (paramFontRecommendRsp.stRet != null))
-    {
-      localStringBuilder.append("ret:");
-      localStringBuilder.append(paramFontRecommendRsp.stRet.ret);
-      localStringBuilder.append("err:");
-      localStringBuilder.append(paramFontRecommendRsp.stRet.err);
-    }
-    QLog.e("FontBubblePanelView", 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.FontBubblePanelView.3
  * JD-Core Version:    0.7.0.1
  */

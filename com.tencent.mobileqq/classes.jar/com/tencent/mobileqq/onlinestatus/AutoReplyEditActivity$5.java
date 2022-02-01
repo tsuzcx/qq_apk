@@ -18,12 +18,15 @@ class AutoReplyEditActivity$5
   
   public void afterTextChanged(Editable paramEditable)
   {
-    if ((this.jdField_a_of_type_JavaLangCharSequence != null) && (TextUtils.getQQTextCharCount(String.valueOf(this.jdField_a_of_type_JavaLangCharSequence), 3) > 100))
+    Object localObject = this.jdField_a_of_type_JavaLangCharSequence;
+    if ((localObject != null) && (TextUtils.getQQTextCharCount(String.valueOf(localObject), 3) > 100))
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyEditActivity.getActivity(), 1, 2131690324, 0).a();
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyEditActivity.getQBaseActivity(), 1, 2131690245, 0).a();
       paramEditable.delete(this.jdField_a_of_type_Int, this.b);
     }
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyEditActivity.rightViewText.setEnabled(AutoReplyEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyEditActivity, String.valueOf(AutoReplyEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyEditActivity).getText())));
+    paramEditable = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyEditActivity.d;
+    localObject = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyEditActivity;
+    paramEditable.setEnabled(AutoReplyEditActivity.a((AutoReplyEditActivity)localObject, String.valueOf(AutoReplyEditActivity.a((AutoReplyEditActivity)localObject).getText())));
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -37,7 +40,7 @@ class AutoReplyEditActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity.5
  * JD-Core Version:    0.7.0.1
  */

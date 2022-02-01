@@ -8,9 +8,8 @@ import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.imcore.message.Message;
 import com.tencent.imcore.message.UinTypeUtil;
 import com.tencent.mobileqq.activity.aio.helper.HiddenChatHelper;
-import com.tencent.mobileqq.activity.recent.msgbox.TempMsgBoxManager;
+import com.tencent.mobileqq.activity.recent.msgbox.api.ITempMsgBoxManager;
 import com.tencent.mobileqq.app.DiscussionManager;
-import com.tencent.mobileqq.app.DiscussionObserver;
 import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -27,12 +26,12 @@ import com.tencent.mobileqq.data.PhoneContact;
 import com.tencent.mobileqq.data.QCallRecent;
 import com.tencent.mobileqq.data.QCallRecord;
 import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.model.PhoneContactManager;
+import com.tencent.mobileqq.discussion.observer.DiscussionObserver;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.util.MessageRecordUtil;
-import com.tencent.mobileqq.utils.MsgUtils;
+import com.tencent.mobileqq.util.api.IAppBadgeService;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -45,28 +44,30 @@ public class QCallFacade
   extends Observable
   implements Manager
 {
-  private DiscussionObserver jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new QCallFacade.2(this);
   private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new QCallFacade.1(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private DiscussionObserver jdField_a_of_type_ComTencentMobileqqDiscussionObserverDiscussionObserver = new QCallFacade.2(this);
   
   public QCallFacade(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver);
+    paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqDiscussionObserverDiscussionObserver);
   }
   
   public static int a(QQAppInterface paramQQAppInterface)
   {
     QCallFacade localQCallFacade = (QCallFacade)paramQQAppInterface.getManager(QQManagerFactory.RECENT_CALL_FACADE);
-    if (localQCallFacade != null) {}
-    for (int i = localQCallFacade.a();; i = 0)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("fetchUnReadCount", 4, String.format("getMissCallTotalCountWhenCallTabHidden, callUnReadCount[%s], isConversationTabShow[%s], isInCallList[%s]", new Object[] { Integer.valueOf(i), Boolean.valueOf(paramQQAppInterface.isConversationTabShow), Boolean.valueOf(paramQQAppInterface.isInCallList) }));
-      }
-      return i;
+    int i;
+    if (localQCallFacade != null) {
+      i = localQCallFacade.a();
+    } else {
+      i = 0;
     }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("fetchUnReadCount", 4, String.format("getMissCallTotalCountWhenCallTabHidden, callUnReadCount[%s], isConversationTabShow[%s], isInCallList[%s]", new Object[] { Integer.valueOf(i), Boolean.valueOf(paramQQAppInterface.isConversationTabShow), Boolean.valueOf(paramQQAppInterface.isInCallList) }));
+    }
+    return i;
   }
   
   private long a(QQAppInterface paramQQAppInterface)
@@ -78,167 +79,12 @@ public class QCallFacade
   
   private QCallRecent a(MessageForVideo paramMessageForVideo)
   {
-    int i = 1;
-    Object localObject = paramMessageForVideo.frienduin;
-    long l = paramMessageForVideo.time;
-    QCallRecent localQCallRecent = a().a((String)localObject, paramMessageForVideo.istroop);
-    localQCallRecent.uin = ((String)localObject);
-    localQCallRecent.type = paramMessageForVideo.istroop;
-    localQCallRecent.sendFlag = paramMessageForVideo.issend;
-    localQCallRecent.lastCallMsg = MsgUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramMessageForVideo.text);
-    if (l > localQCallRecent.lastCallTime)
-    {
-      localQCallRecent.lastCallTime = l;
-      localQCallRecent.isSystemCall = 0;
-    }
-    if ((localQCallRecent.type == 1000) || (localQCallRecent.type == 1020) || (localQCallRecent.type == 1004)) {
-      localQCallRecent.troopUin = paramMessageForVideo.senderuin;
-    }
-    int j = localQCallRecent.missedCallCount;
-    localQCallRecent.missedCallCount = d(paramMessageForVideo.frienduin, paramMessageForVideo.istroop);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("fetchUnReadCount", 4, String.format("getMessageToRecentCall, uin[%s], type[%s], count[%s], src[%s]", new Object[] { paramMessageForVideo.frienduin, Integer.valueOf(paramMessageForVideo.istroop), Integer.valueOf(localQCallRecent.missedCallCount), Integer.valueOf(j) }));
-    }
-    localObject = paramMessageForVideo.msg;
-    if (localObject != null)
-    {
-      localObject = ((String)localObject).split("\\|");
-      if ((localObject == null) || (localObject.length <= 3)) {
-        break label308;
-      }
-      if (!"1".equals(localObject[3])) {
-        break label303;
-      }
-    }
-    label303:
-    label308:
-    for (localQCallRecent.isVideo = i;; localQCallRecent.isVideo = 1)
-    {
-      localQCallRecent.isLastCallRealMissed = a(paramMessageForVideo.frienduin, paramMessageForVideo.istroop);
-      localQCallRecent.callType = a(paramMessageForVideo, localQCallRecent.type);
-      return localQCallRecent;
-      i = 0;
-      break;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   private QCallRecord a(MessageForVideo paramMessageForVideo)
   {
-    if (paramMessageForVideo == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QCallFacade", 2, "getMessageToCallRecord message is null");
-      }
-      return null;
-    }
-    QCallRecord localQCallRecord = new QCallRecord();
-    localQCallRecord.friendUin = paramMessageForVideo.frienduin;
-    localQCallRecord.time = paramMessageForVideo.time;
-    localQCallRecord.uinType = paramMessageForVideo.istroop;
-    localQCallRecord.senderuin = paramMessageForVideo.senderuin;
-    localQCallRecord.issend = paramMessageForVideo.issend;
-    localQCallRecord.uniseq = paramMessageForVideo.uniseq;
-    String str = paramMessageForVideo.msg;
-    if (str == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QCallFacade", 2, "getMessageToCallRecord message's msg is null");
-      }
-      return null;
-    }
-    String[] arrayOfString = str.split("\\|");
-    int i;
-    label151:
-    Object localObject;
-    if ((arrayOfString != null) && (arrayOfString.length > 3)) {
-      if ("1".equals(arrayOfString[3]))
-      {
-        i = 1;
-        localQCallRecord.isVideo = i;
-        if (arrayOfString.length <= 3) {
-          break label498;
-        }
-        localObject = arrayOfString[0].trim();
-      }
-    }
-    try
-    {
-      localQCallRecord.state = Integer.parseInt(arrayOfString[1]);
-      paramMessageForVideo = (MessageForVideo)localObject;
-    }
-    catch (Exception paramMessageForVideo)
-    {
-      for (;;)
-      {
-        label180:
-        if ((str != null) && (str.length() > 0) && (str.charAt(0) == '\026'))
-        {
-          paramMessageForVideo = (MessageForVideo)localObject;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("QCallFacade", 2, "getMessageToCallRecord java.lang.NumberFormatException: Invalid int: " + arrayOfString[1] + " msg is " + str);
-            paramMessageForVideo = (MessageForVideo)localObject;
-          }
-        }
-        else
-        {
-          localQCallRecord.state = 5;
-          paramMessageForVideo = (MessageForVideo)localObject;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("QCallFacade", 2, "getMessageToCallRecord java.lang.NumberFormatException: Invalid int: " + arrayOfString[1] + " msg byte " + MessageRecordUtil.a(str));
-            paramMessageForVideo = (MessageForVideo)localObject;
-          }
-        }
-      }
-    }
-    if (((localQCallRecord.state == 0) || (localQCallRecord.state == 2) || (localQCallRecord.state == 24) || (localQCallRecord.state == 46) || (localQCallRecord.state == 47) || (localQCallRecord.state == 48) || (localQCallRecord.state == 57) || (localQCallRecord.state == 9) || (localQCallRecord.state == 15)) && (paramMessageForVideo != null))
-    {
-      paramMessageForVideo = paramMessageForVideo.split(" ");
-      if (paramMessageForVideo != null)
-      {
-        if (paramMessageForVideo.length <= 1) {
-          break label511;
-        }
-        localQCallRecord.talkTime = paramMessageForVideo[1];
-      }
-    }
-    label296:
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder().append("getMessageToCallRecord:");
-      if (localQCallRecord == null) {
-        break label564;
-      }
-    }
-    label564:
-    for (paramMessageForVideo = localQCallRecord.toString();; paramMessageForVideo = "")
-    {
-      QLog.d("QCallFacade", 2, paramMessageForVideo);
-      return localQCallRecord;
-      i = 0;
-      break;
-      localQCallRecord.isVideo = 1;
-      break label151;
-      label498:
-      paramMessageForVideo = "";
-      localQCallRecord.state = 5;
-      break label180;
-      label511:
-      if (paramMessageForVideo.length != 1) {
-        break label296;
-      }
-      if ((2 == localQCallRecord.state) || (24 == localQCallRecord.state))
-      {
-        localQCallRecord.state = 12;
-        break label296;
-      }
-      if (localQCallRecord.state != 0) {
-        break label296;
-      }
-      localQCallRecord.state = 12;
-      break label296;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public static QCallFacade.CallUnreadCountInfo a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2, Message paramMessage)
@@ -248,8 +94,9 @@ public class QCallFacade
   
   private void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().init();
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localQQAppInterface != null) {
+      localQQAppInterface.getProxyManager().a().init();
     }
   }
   
@@ -285,12 +132,20 @@ public class QCallFacade
   {
     try
     {
-      BaseApplication localBaseApplication = paramQQAppInterface.getApp();
+      Object localObject = paramQQAppInterface.getApp();
       paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
       if (paramQQAppInterface == null) {
         return;
       }
-      localBaseApplication.getSharedPreferences("call_time_use_up", 0).edit().putBoolean(paramQQAppInterface + "_show_flag", paramBoolean).putString(paramQQAppInterface + "_wording", paramString).commit();
+      localObject = ((Context)localObject).getSharedPreferences("call_time_use_up", 0).edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramQQAppInterface);
+      localStringBuilder.append("_show_flag");
+      localObject = ((SharedPreferences.Editor)localObject).putBoolean(localStringBuilder.toString(), paramBoolean);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramQQAppInterface);
+      localStringBuilder.append("_wording");
+      ((SharedPreferences.Editor)localObject).putString(localStringBuilder.toString(), paramString).commit();
       return;
     }
     catch (Exception paramQQAppInterface) {}
@@ -323,57 +178,66 @@ public class QCallFacade
   
   private boolean a(String paramString, int paramInt)
   {
-    boolean bool2 = false;
-    boolean bool1 = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QCallFacade", 2, "checkIsRealMissed friendUin:" + paramString + ",uinType:" + paramInt);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("checkIsRealMissed friendUin:");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(",uinType:");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("QCallFacade", 2, ((StringBuilder)localObject).toString());
     }
     paramString = a(paramString, paramInt);
-    if ((paramString == null) || (paramString.isEmpty()))
+    boolean bool2 = false;
+    if ((paramString != null) && (!paramString.isEmpty()))
     {
-      bool2 = bool1;
+      paramInt = 0;
+      boolean bool1;
+      for (;;)
+      {
+        bool1 = bool2;
+        if (paramInt >= paramString.size()) {
+          break;
+        }
+        localObject = (QCallRecord)paramString.get(paramInt);
+        if ((localObject != null) && (((QCallRecord)localObject).type == QCallRecord.TYPE_REALRECORD))
+        {
+          if (!((QCallRecord)localObject).isMissCall())
+          {
+            bool1 = bool2;
+            if (((QCallRecord)localObject).state != 1) {
+              break;
+            }
+          }
+          bool1 = true;
+          break;
+        }
+        paramInt += 1;
+      }
       if (QLog.isColorLevel())
       {
-        QLog.d("QCallFacade", 2, "checkIsRealMissed CallRecord count 0");
-        bool2 = bool1;
+        paramString = new StringBuilder();
+        paramString.append("checkIsRealMissed ret:");
+        paramString.append(bool1);
+        QLog.d("QCallFacade", 2, paramString.toString());
       }
-      return bool2;
-    }
-    paramInt = 0;
-    for (;;)
-    {
-      bool1 = bool2;
-      if (paramInt < paramString.size())
-      {
-        QCallRecord localQCallRecord = (QCallRecord)paramString.get(paramInt);
-        if ((localQCallRecord == null) || (localQCallRecord.type != QCallRecord.TYPE_REALRECORD)) {
-          break label193;
-        }
-        if (!localQCallRecord.isMissCall())
-        {
-          bool1 = bool2;
-          if (localQCallRecord.state != 1) {}
-        }
-        else
-        {
-          bool1 = true;
-        }
-      }
-      bool2 = bool1;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("QCallFacade", 2, "checkIsRealMissed ret:" + bool1);
       return bool1;
-      label193:
-      paramInt += 1;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("QCallFacade", 2, "checkIsRealMissed CallRecord count 0");
+    }
+    return false;
   }
   
   private void b(QCallRecent paramQCallRecent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QCallFacade", 2, "save " + paramQCallRecent);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("save ");
+      localStringBuilder.append(paramQCallRecent);
+      QLog.d("QCallFacade", 2, localStringBuilder.toString());
     }
     a().c(paramQCallRecent);
     if ((UinTypeUtil.b(paramQCallRecent.type)) && (paramQCallRecent.state == 5))
@@ -387,175 +251,177 @@ public class QCallFacade
   private int d(String paramString, int paramInt)
   {
     List localList = a(paramString, paramInt);
-    int j;
-    if ((localList == null) || (localList.isEmpty()))
+    if ((localList != null) && (!localList.isEmpty()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("fetchUnReadCount", 2, String.format("getNewestMissCallCount count 0, uin[%s], type[%s]]", new Object[] { paramString, Integer.valueOf(paramInt) }));
-      }
-      j = 0;
-    }
-    int i;
-    do
-    {
-      return j;
-      j = 0;
+      int i = 0;
       int k;
-      for (i = 0; j < localList.size(); i = k)
+      for (int j = 0; i < localList.size(); j = k)
       {
-        QCallRecord localQCallRecord = (QCallRecord)localList.get(j);
-        k = i;
+        QCallRecord localQCallRecord = (QCallRecord)localList.get(i);
+        k = j;
         if (localQCallRecord != null)
         {
-          k = i;
+          k = j;
           if (localQCallRecord.type == QCallRecord.TYPE_REALRECORD)
           {
             if (!localQCallRecord.isMissCall()) {
               break;
             }
-            k = i + 1;
+            k = j + 1;
           }
         }
-        j += 1;
+        i += 1;
       }
-      j = i;
-    } while (!QLog.isColorLevel());
-    QLog.d("fetchUnReadCount", 2, String.format("getNewestMissCallCount, uin[%s], type[%s], count[%s]", new Object[] { paramString, Integer.valueOf(paramInt), Integer.valueOf(i) }));
-    return i;
+      if (QLog.isColorLevel()) {
+        QLog.d("fetchUnReadCount", 2, String.format("getNewestMissCallCount, uin[%s], type[%s], count[%s]", new Object[] { paramString, Integer.valueOf(paramInt), Integer.valueOf(j) }));
+      }
+      return j;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("fetchUnReadCount", 2, String.format("getNewestMissCallCount count 0, uin[%s], type[%s]]", new Object[] { paramString, Integer.valueOf(paramInt) }));
+    }
+    return 0;
   }
   
   public int a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    do
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      return 0;
+    }
+    if (a().a() == null) {
+      return 0;
+    }
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
+    if (localObject1 == null) {
+      return 0;
+    }
+    localObject1 = ((RecentUserProxy)localObject1).a(false);
+    if (localObject1 != null)
     {
-      do
+      if (((List)localObject1).size() <= 0) {
+        return 0;
+      }
+      localObject1 = ((List)localObject1).iterator();
+      int i = 0;
+      while (((Iterator)localObject1).hasNext())
       {
-        do
+        RecentUser localRecentUser = (RecentUser)((Iterator)localObject1).next();
+        Object localObject2;
+        if (localRecentUser.getType() == 3000)
         {
-          return 0;
-        } while (a().a() == null);
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
-      } while (localObject1 == null);
-      localObject1 = ((RecentUserProxy)localObject1).a(false);
-    } while ((localObject1 == null) || (((List)localObject1).size() <= 0));
-    Object localObject1 = ((List)localObject1).iterator();
-    int i = 0;
-    while (((Iterator)localObject1).hasNext())
-    {
-      RecentUser localRecentUser = (RecentUser)((Iterator)localObject1).next();
-      Object localObject2;
-      if (localRecentUser.getType() == 3000)
-      {
-        localObject2 = (DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
-        DiscussionMemberInfo localDiscussionMemberInfo = ((DiscussionManager)localObject2).a(localRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        if ((localDiscussionMemberInfo != null) && ((localDiscussionMemberInfo.flag & 0x1) == 1))
-        {
-          if (!QLog.isDevelopLevel()) {
+          localObject2 = (DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+          DiscussionMemberInfo localDiscussionMemberInfo = ((DiscussionManager)localObject2).a(localRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+          if ((localDiscussionMemberInfo != null) && ((localDiscussionMemberInfo.flag & 0x1) == 1))
+          {
+            if (!QLog.isDevelopLevel()) {
+              continue;
+            }
+            QLog.d("fetchUnReadCount", 4, String.format("getMissCallTotalCount, 开启了免打扰, disc[%s]", new Object[] { localRecentUser.uin }));
             continue;
           }
-          QLog.d("fetchUnReadCount", 4, String.format("getMissCallTotalCount, 开启了免打扰, disc[%s]", new Object[] { localRecentUser.uin }));
-          continue;
-        }
-        localObject2 = ((DiscussionManager)localObject2).a(localRecentUser.uin);
-        if ((localObject2 == null) || (((DiscussionInfo)localObject2).isUIControlFlag_Hidden_RecentUser()) || (((DiscussionInfo)localObject2).isHidden()))
-        {
-          if (!QLog.isColorLevel()) {
+          localObject2 = ((DiscussionManager)localObject2).a(localRecentUser.uin);
+          if ((localObject2 == null) || (((DiscussionInfo)localObject2).isUIControlFlag_Hidden_RecentUser()) || (((DiscussionInfo)localObject2).isHidden()))
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("getMissCallTotalCount, invalid discussion, uin[");
+            ((StringBuilder)localObject2).append(localRecentUser.uin);
+            ((StringBuilder)localObject2).append("], unread[");
+            ((StringBuilder)localObject2).append(b(localRecentUser.uin, localRecentUser.getType()));
+            ((StringBuilder)localObject2).append("]");
+            QLog.i("QCallFacade", 2, ((StringBuilder)localObject2).toString());
             continue;
           }
-          QLog.i("QCallFacade", 2, "getMissCallTotalCount, invalid discussion, uin[" + localRecentUser.uin + "], unread[" + b(localRecentUser.uin, localRecentUser.getType()) + "]");
-          continue;
+        }
+        if ((localRecentUser.getType() != 0) || ((!FriendsStatusUtil.a(localRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (!HiddenChatHelper.a(localRecentUser.uin, localRecentUser.getType(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))))
+        {
+          localObject2 = (ITempMsgBoxManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITempMsgBoxManager.class, "");
+          if ((!((ITempMsgBoxManager)localObject2).isBelongToMsgBox(localRecentUser.uin, localRecentUser.getType())) && (!((ITempMsgBoxManager)localObject2).isBelongToFilterBox(localRecentUser.uin, localRecentUser.getType()))) {
+            i += b(localRecentUser.uin, localRecentUser.getType());
+          }
         }
       }
-      if ((localRecentUser.getType() != 0) || ((!FriendsStatusUtil.a(localRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (!HiddenChatHelper.a(localRecentUser.uin, localRecentUser.getType(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))))
-      {
-        localObject2 = (TempMsgBoxManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TEMP_MSG_BOX);
-        if ((!((TempMsgBoxManager)localObject2).b(localRecentUser.uin, localRecentUser.getType())) && (!((TempMsgBoxManager)localObject2).a(localRecentUser.uin, localRecentUser.getType()))) {
-          i = b(localRecentUser.uin, localRecentUser.getType()) + i;
-        }
+      if (QLog.isDevelopLevel()) {
+        QLog.d("fetchUnReadCount", 4, String.format("getMissCallTotalCount, count[%s]", new Object[] { Integer.valueOf(i) }));
       }
+      return i;
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("fetchUnReadCount", 4, String.format("getMissCallTotalCount, count[%s]", new Object[] { Integer.valueOf(i) }));
-    }
-    return i;
+    return 0;
   }
   
   public int a(MessageRecord paramMessageRecord, int paramInt)
   {
-    int i = 0;
     if (paramMessageRecord.msgtype == -2046) {
-      i = 2;
+      return 2;
     }
-    while ((paramMessageRecord.msgtype != -2026) && (!UinTypeUtil.b(paramInt))) {
-      return i;
+    if ((paramMessageRecord.msgtype != -2026) && (!UinTypeUtil.b(paramInt))) {
+      return 0;
     }
     return 1;
   }
   
   public int a(String paramString, int paramInt)
   {
-    int i = 0;
     paramString = a().b(paramString, paramInt);
-    paramInt = i;
     if (paramString != null) {
-      paramInt = paramString.state;
+      return paramString.state;
     }
-    return paramInt;
+    return 0;
   }
   
   public int a(String paramString, int paramInt, long paramLong)
   {
-    int k;
     if (TextUtils.isEmpty(paramString))
     {
       if (QLog.isColorLevel()) {
         QLog.d("fetchUnReadCount", 2, String.format("getMissCallRecordCount, uin为空, uin[%s], type[%s], time[%s]", new Object[] { paramString, Integer.valueOf(paramInt), Long.valueOf(paramLong) }));
       }
-      k = 0;
-      return k;
+      return 0;
     }
     paramString = a().a(paramString, paramInt);
     int i = 0;
-    int j = 0;
-    for (;;)
+    j = 0;
+    try
     {
-      for (;;)
+      Object localObject;
+      while (i < paramString.size())
       {
-        k = i;
-        try
+        localObject = (QCallRecord)paramString.get(i);
+        int k;
+        if (((QCallRecord)localObject).type == QCallRecord.TYPE_DATE)
         {
-          if (j >= paramString.size()) {
+          k = j;
+        }
+        else
+        {
+          if (!((QCallRecord)localObject).isMissCall()) {
             break;
           }
-          QCallRecord localQCallRecord = (QCallRecord)paramString.get(j);
-          if (localQCallRecord.type == QCallRecord.TYPE_DATE) {
-            break label234;
+          k = j;
+          if (((QCallRecord)localObject).time > paramLong)
+          {
+            if (QLog.isDevelopLevel()) {
+              QLog.d("fetchUnReadCount", 4, String.format("getMissCallRecordCount, uinType[%s], qcr.time[%s], time[%s], %s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(((QCallRecord)localObject).time), Long.valueOf(paramLong), localObject }));
+            }
+            k = j + 1;
           }
-          k = i;
-          if (!localQCallRecord.isMissCall()) {
-            break;
-          }
-          if (localQCallRecord.time <= paramLong) {
-            break label234;
-          }
-          if (QLog.isDevelopLevel()) {
-            QLog.d("fetchUnReadCount", 4, String.format("getMissCallRecordCount, uinType[%s], qcr.time[%s], time[%s], %s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(localQCallRecord.time), Long.valueOf(paramLong), localQCallRecord }));
-          }
-          i += 1;
         }
-        catch (Exception paramString)
-        {
-          k = i;
-        }
+        i += 1;
+        j = k;
       }
-      if (!QLog.isColorLevel()) {
-        break;
+      return j;
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getMissCallRecordCount:");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.e("QCallFacade", 2, ((StringBuilder)localObject).toString());
       }
-      QLog.e("QCallFacade", 2, "getMissCallRecordCount:" + paramString);
-      return i;
-      label234:
-      j += 1;
     }
   }
   
@@ -567,8 +433,9 @@ public class QCallFacade
   public QCallProxy a()
   {
     a();
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localQQAppInterface != null) {
+      return localQQAppInterface.getProxyManager().a();
     }
     return null;
   }
@@ -579,96 +446,94 @@ public class QCallFacade
     if (localObject1 == null) {
       return "";
     }
-    int j = 0;
-    int i = 0;
     long l2 = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    QCallRecord localQCallRecord1 = null;
-    localObject1 = ((List)localObject1).iterator();
-    int k;
-    if (((Iterator)localObject1).hasNext())
+    Object localObject3 = ((List)localObject1).iterator();
+    localObject1 = null;
+    int i = 0;
+    int j = 0;
+    while (((Iterator)localObject3).hasNext())
     {
-      Object localObject2 = (QCallRecent)((Iterator)localObject1).next();
+      localObject2 = (QCallRecent)((Iterator)localObject3).next();
       long l1;
       if (((QCallRecent)localObject2).readTime > l2) {
         l1 = ((QCallRecent)localObject2).readTime;
+      } else {
+        l1 = l2;
       }
-      for (;;)
+      if ((((QCallRecent)localObject2).lastCallTime > l1) && (((QCallRecent)localObject2).isMissedCall()))
       {
-        if ((((QCallRecent)localObject2).lastCallTime > l1) && (((QCallRecent)localObject2).isMissedCall()))
+        int m = j + 1;
+        if (((QCallRecent)localObject2).uin == null)
         {
-          k = i + 1;
-          if (((QCallRecent)localObject2).uin == null)
-          {
-            i = k;
-            break;
-            l1 = l2;
-            continue;
-          }
-          localObject2 = a().a(((QCallRecent)localObject2).uin, ((QCallRecent)localObject2).type);
-          int m = 0;
-          i = j;
-          if (m >= ((List)localObject2).size()) {
-            break label461;
-          }
-          QCallRecord localQCallRecord2 = (QCallRecord)((List)localObject2).get(m);
-          if (localQCallRecord2.type == QCallRecord.TYPE_DATE) {}
-          for (;;)
-          {
-            label192:
-            m += 1;
-            break;
-            if (!localQCallRecord2.isMissCall()) {
-              break label461;
-            }
-            if (localQCallRecord2.time <= l1) {
-              break label458;
-            }
-            if (i != 0) {
-              break label455;
-            }
-            localQCallRecord1 = (QCallRecord)((List)localObject2).get(m);
-            label238:
-            i += 1;
-          }
-        }
-      }
-      k = i;
-      i = j;
-    }
-    label455:
-    label458:
-    label461:
-    for (j = k;; j = k)
-    {
-      k = j;
-      j = i;
-      i = k;
-      break;
-      localObject1 = new StringBuilder();
-      if ((j == 1) || (i == 1)) {
-        if (paramBoolean) {
-          if (paramString != null) {
-            ((StringBuilder)localObject1).append(paramString).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131695569));
-          }
-        }
-      }
-      for (;;)
-      {
-        return ((StringBuilder)localObject1).toString();
-        if ((localQCallRecord1 != null) && (localQCallRecord1.isVideo()))
-        {
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131695940));
+          j = m;
         }
         else
         {
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131695362));
-          continue;
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131695526, new Object[] { "" + i, "" + j }));
+          List localList = a().a(((QCallRecent)localObject2).uin, ((QCallRecent)localObject2).type);
+          j = 0;
+          while (j < localList.size())
+          {
+            QCallRecord localQCallRecord = (QCallRecord)localList.get(j);
+            int k;
+            if (localQCallRecord.type == QCallRecord.TYPE_DATE)
+            {
+              k = i;
+              localObject2 = localObject1;
+            }
+            else
+            {
+              if (!localQCallRecord.isMissCall()) {
+                break;
+              }
+              k = i;
+              localObject2 = localObject1;
+              if (localQCallRecord.time > l1)
+              {
+                if (i == 0) {
+                  localObject1 = (QCallRecord)localList.get(j);
+                }
+                k = i + 1;
+                localObject2 = localObject1;
+              }
+            }
+            j += 1;
+            i = k;
+            localObject1 = localObject2;
+          }
+          j = m;
         }
       }
-      break label238;
-      break label192;
     }
+    Object localObject2 = new StringBuilder();
+    if ((i != 1) && (j != 1))
+    {
+      paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("");
+      ((StringBuilder)localObject1).append(j);
+      localObject1 = ((StringBuilder)localObject1).toString();
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("");
+      ((StringBuilder)localObject3).append(i);
+      ((StringBuilder)localObject2).append(paramString.getString(2131695537, new Object[] { localObject1, ((StringBuilder)localObject3).toString() }));
+    }
+    else if (paramBoolean)
+    {
+      if (paramString != null)
+      {
+        ((StringBuilder)localObject2).append(paramString);
+        ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131695580));
+      }
+    }
+    else if ((localObject1 != null) && (((QCallRecord)localObject1).isVideo()))
+    {
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131695955));
+    }
+    else
+    {
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131695372));
+    }
+    return ((StringBuilder)localObject2).toString();
   }
   
   public ArrayList<MessageRecord> a()
@@ -680,87 +545,98 @@ public class QCallFacade
     }
     long l2 = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     Iterator localIterator = ((List)localObject).iterator();
-    if (localIterator.hasNext())
+    label378:
+    while (localIterator.hasNext())
     {
       QCallRecent localQCallRecent = (QCallRecent)localIterator.next();
       long l1;
-      label84:
-      int i;
-      label131:
-      QCallRecord localQCallRecord;
-      if (localQCallRecent.readTime > l2)
-      {
+      if (localQCallRecent.readTime > l2) {
         l1 = localQCallRecent.readTime;
-        if ((localQCallRecent.lastCallTime <= l1) || (!localQCallRecent.isMissedCall()) || (localQCallRecent.uin == null)) {
-          break label177;
-        }
-        List localList = a().a(localQCallRecent.uin, localQCallRecent.type);
-        i = 0;
-        if (i < localList.size())
-        {
-          localQCallRecord = (QCallRecord)localList.get(i);
-          if (localQCallRecord.type != QCallRecord.TYPE_DATE) {
-            break label179;
-          }
-        }
-      }
-      for (;;)
-      {
-        i += 1;
-        break label131;
-        break;
+      } else {
         l1 = l2;
-        break label84;
-        label177:
-        break;
-        label179:
-        if (!localQCallRecord.isMissCall()) {
-          break;
-        }
-        if (localQCallRecord.time > l1)
-        {
-          if (localQCallRecent.type != 3000) {
-            break label291;
-          }
-          localObject = MessageRecordFactory.a(-2016);
-          ((MessageRecord)localObject).msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131695620);
-          ((MessageRecord)localObject).frienduin = localQCallRecent.troopUin;
-          ((MessageRecord)localObject).msgtype = -2016;
-          ((MessageRecord)localObject).senderuin = "";
-          ((MessageRecord)localObject).istroop = localQCallRecent.type;
-          ((MessageRecord)localObject).time = localQCallRecord.time;
-          localArrayList.add(localObject);
-        }
       }
-      label291:
-      localObject = MessageRecordFactory.a(-2009);
-      ((MessageRecord)localObject).frienduin = localQCallRecent.uin;
-      ((MessageRecord)localObject).msgtype = -2009;
-      if (localQCallRecord.isVideo()) {}
-      for (((MessageRecord)localObject).msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131695621);; ((MessageRecord)localObject).msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131695619))
+      if ((localQCallRecent.lastCallTime > l1) && (localQCallRecent.isMissedCall()) && (localQCallRecent.uin != null))
       {
-        ((MessageRecord)localObject).senderuin = localQCallRecord.senderuin;
-        break;
+        List localList = a().a(localQCallRecent.uin, localQCallRecent.type);
+        int i = 0;
+        for (;;)
+        {
+          if (i >= localList.size()) {
+            break label378;
+          }
+          QCallRecord localQCallRecord = (QCallRecord)localList.get(i);
+          if (localQCallRecord.type != QCallRecord.TYPE_DATE)
+          {
+            if (!localQCallRecord.isMissCall()) {
+              break;
+            }
+            if (localQCallRecord.time > l1)
+            {
+              if (localQCallRecent.type == 3000)
+              {
+                localObject = MessageRecordFactory.a(-2016);
+                ((MessageRecord)localObject).msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131695634);
+                ((MessageRecord)localObject).frienduin = localQCallRecent.troopUin;
+                ((MessageRecord)localObject).msgtype = -2016;
+                ((MessageRecord)localObject).senderuin = "";
+              }
+              else
+              {
+                localObject = MessageRecordFactory.a(-2009);
+                ((MessageRecord)localObject).frienduin = localQCallRecent.uin;
+                ((MessageRecord)localObject).msgtype = -2009;
+                if (localQCallRecord.isVideo()) {
+                  ((MessageRecord)localObject).msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131695635);
+                } else {
+                  ((MessageRecord)localObject).msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131695633);
+                }
+                ((MessageRecord)localObject).senderuin = localQCallRecord.senderuin;
+              }
+              ((MessageRecord)localObject).istroop = localQCallRecent.type;
+              ((MessageRecord)localObject).time = localQCallRecord.time;
+              localArrayList.add(localObject);
+            }
+          }
+          i += 1;
+        }
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQLSActivity", 2, "getMissCallMessageRecordList = list size" + localArrayList.size());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getMissCallMessageRecordList = list size");
+      ((StringBuilder)localObject).append(localArrayList.size());
+      QLog.d("QQLSActivity", 2, ((StringBuilder)localObject).toString());
     }
     return localArrayList;
   }
   
   public List<QCallRecord> a(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QCallFacade", 2, "getListRecord friendUin:" + paramString + ",uinType:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getListRecord friendUin:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",uinType:");
+      localStringBuilder.append(paramInt);
+      QLog.d("QCallFacade", 2, localStringBuilder.toString());
     }
     return a().a(paramString, paramInt);
   }
   
   public void a(int paramInt, long paramLong, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("QCallFacade", 2, "addQCallRecentAndCallRecord issend=" + paramInt + ", discussId=" + paramLong + ", senderUin=" + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("addQCallRecentAndCallRecord issend=");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(", discussId=");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(", senderUin=");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.e("QCallFacade", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = new QCallRecord();
     ((QCallRecord)localObject).friendUin = String.valueOf(paramLong);
@@ -768,34 +644,30 @@ public class QCallFacade
     ((QCallRecord)localObject).isVideo = 0;
     ((QCallRecord)localObject).time = MessageCache.a();
     ((QCallRecord)localObject).type = QCallRecord.TYPE_REALRECORD;
-    if (paramInt == 1)
-    {
+    if (paramInt == 1) {
       ((QCallRecord)localObject).state = 4;
-      ((QCallRecord)localObject).uinType = 3000;
-      a().a((QCallRecord)localObject);
-      localObject = a().a(String.valueOf(paramLong), 3000);
-      ((QCallRecent)localObject).uin = String.valueOf(paramLong);
-      ((QCallRecent)localObject).lastCallTime = MessageCache.a();
-      ((QCallRecent)localObject).type = 3000;
-      ((QCallRecent)localObject).sendFlag = paramInt;
-      ((QCallRecent)localObject).troopUin = String.valueOf(paramLong);
-      ((QCallRecent)localObject).memberCount = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAVNotifyCenter().a(2, paramLong);
-      ((QCallRecent)localObject).missedCallCount = d(String.valueOf(paramLong), 3000);
-      if (paramInt != 1) {
-        break label275;
-      }
-    }
-    label275:
-    for (((QCallRecent)localObject).state = 4;; ((QCallRecent)localObject).state = 3)
-    {
-      ((QCallRecent)localObject).senderUin = paramString;
-      ((QCallRecent)localObject).isLastCallRealMissed = a(String.valueOf(paramLong), 3000);
-      ((QCallRecent)localObject).isSystemCall = 0;
-      a((QCallRecent)localObject, "when_addQCallRecentAndCallRecord");
-      return;
+    } else {
       ((QCallRecord)localObject).state = 3;
-      break;
     }
+    ((QCallRecord)localObject).uinType = 3000;
+    a().a((QCallRecord)localObject);
+    localObject = a().a(String.valueOf(paramLong), 3000);
+    ((QCallRecent)localObject).uin = String.valueOf(paramLong);
+    ((QCallRecent)localObject).lastCallTime = MessageCache.a();
+    ((QCallRecent)localObject).type = 3000;
+    ((QCallRecent)localObject).sendFlag = paramInt;
+    ((QCallRecent)localObject).troopUin = String.valueOf(paramLong);
+    ((QCallRecent)localObject).memberCount = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAVNotifyCenter().a(2, paramLong);
+    ((QCallRecent)localObject).missedCallCount = d(String.valueOf(paramLong), 3000);
+    if (paramInt == 1) {
+      ((QCallRecent)localObject).state = 4;
+    } else {
+      ((QCallRecent)localObject).state = 3;
+    }
+    ((QCallRecent)localObject).senderUin = paramString;
+    ((QCallRecent)localObject).isLastCallRealMissed = a(String.valueOf(paramLong), 3000);
+    ((QCallRecent)localObject).isSystemCall = 0;
+    a((QCallRecent)localObject, "when_addQCallRecentAndCallRecord");
   }
   
   public void a(int paramInt, long paramLong, String paramString1, String paramString2)
@@ -812,20 +684,17 @@ public class QCallFacade
     localQCallRecent.memberCount = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAVNotifyCenter().a(2, paramLong);
     localQCallRecent.missedCallCount = d(String.valueOf(paramLong), 3000);
     if (localQCallRecent.state != 1) {
-      if (paramInt != 1) {
-        break label201;
+      if (paramInt == 1) {
+        localQCallRecent.state = 4;
+      } else {
+        localQCallRecent.state = 0;
       }
     }
-    label201:
-    for (localQCallRecent.state = 4;; localQCallRecent.state = 0)
-    {
-      localQCallRecent.pstnInfo = paramString2;
-      localQCallRecent.senderUin = paramString1;
-      localQCallRecent.isLastCallRealMissed = a(String.valueOf(paramLong), 3000);
-      localQCallRecent.isSystemCall = 0;
-      a(localQCallRecent, "when_addQCallRecent");
-      return;
-    }
+    localQCallRecent.pstnInfo = paramString2;
+    localQCallRecent.senderUin = paramString1;
+    localQCallRecent.isLastCallRealMissed = a(String.valueOf(paramLong), 3000);
+    localQCallRecent.isSystemCall = 0;
+    a(localQCallRecent, "when_addQCallRecent");
   }
   
   public void a(int paramInt, String paramString1, String paramString2)
@@ -835,15 +704,22 @@ public class QCallFacade
   
   public void a(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2)
   {
-    i = 2;
-    if (QLog.isColorLevel()) {
+    boolean bool = QLog.isColorLevel();
+    int i = 1;
+    if (bool) {
       QLog.e("QCallFacade", 2, String.format("addMissCallMsg, uinType[%s], discussId[%s], peerUin[%s], senderUin[%s]", new Object[] { Integer.valueOf(paramInt1), paramString1, paramString2, paramString3 }));
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    while ((paramString1 == null) || (paramString2 == null)) {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
       return;
     }
-    long l1 = 0L;
+    long l1;
+    if (paramString1 != null)
+    {
+      if (paramString2 == null) {
+        return;
+      }
+      l1 = 0L;
+    }
     try
     {
       long l2 = Long.parseLong(paramString1);
@@ -851,50 +727,38 @@ public class QCallFacade
     }
     catch (Throwable paramString2)
     {
-      for (;;)
-      {
-        continue;
-        i = 1;
-      }
+      label79:
+      break label79;
     }
-    if (paramInt1 == 3000) {}
-    for (;;)
-    {
-      paramString2 = new QCallRecord();
-      paramString2.friendUin = paramString1;
-      paramString2.issend = 0;
-      paramString2.isVideo = 0;
-      paramString2.time = MessageCache.a();
-      paramString2.type = QCallRecord.TYPE_REALRECORD;
-      paramString2.state = paramInt2;
-      paramString2.uinType = paramInt1;
-      a().a(paramString2);
-      paramString2 = a().a(paramString1, paramInt1);
-      paramString2.uin = paramString1;
-      paramString2.lastCallTime = MessageCache.a();
-      paramString2.type = paramInt1;
-      paramString2.sendFlag = 0;
-      paramString2.troopUin = paramString1;
-      paramString2.memberCount = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAVNotifyCenter().a(i, l1);
-      paramString2.state = paramInt2;
-      paramString2.missedCallCount = d(paramString1, paramInt1);
-      paramString2.senderUin = paramString3;
-      paramString2.isLastCallRealMissed = a(paramString1, paramInt1);
-      paramString2.isSystemCall = 0;
-      a(paramString2, "when_addMissCallMsg");
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.refreshAppBadge();
-      return;
-      if (paramInt1 == 1)
-      {
-        i = 1;
-      }
-      else
-      {
-        if (paramInt1 != 0) {
-          break;
-        }
-        i = 3;
-      }
+    if (paramInt1 == 3000) {
+      i = 2;
+    } else if ((paramInt1 != 1) && (paramInt1 == 0)) {
+      i = 3;
+    }
+    paramString2 = new QCallRecord();
+    paramString2.friendUin = paramString1;
+    paramString2.issend = 0;
+    paramString2.isVideo = 0;
+    paramString2.time = MessageCache.a();
+    paramString2.type = QCallRecord.TYPE_REALRECORD;
+    paramString2.state = paramInt2;
+    paramString2.uinType = paramInt1;
+    a().a(paramString2);
+    paramString2 = a().a(paramString1, paramInt1);
+    paramString2.uin = paramString1;
+    paramString2.lastCallTime = MessageCache.a();
+    paramString2.type = paramInt1;
+    paramString2.sendFlag = 0;
+    paramString2.troopUin = paramString1;
+    paramString2.memberCount = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAVNotifyCenter().a(i, l1);
+    paramString2.state = paramInt2;
+    paramString2.missedCallCount = d(paramString1, paramInt1);
+    paramString2.senderUin = paramString3;
+    paramString2.isLastCallRealMissed = a(paramString1, paramInt1);
+    paramString2.isSystemCall = 0;
+    a(paramString2, "when_addMissCallMsg");
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isLogin()) {
+      ((IAppBadgeService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IAppBadgeService.class, "")).refreshAppBadge();
     }
   }
   
@@ -910,52 +774,79 @@ public class QCallFacade
   
   public void a(long paramLong1, long paramLong2, boolean paramBoolean1, long paramLong3, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QCallFacade", 2, "updateDissCall-->discussid=" + paramLong1 + " friendUin=" + paramLong2 + " b=" + paramBoolean1 + " time=" + paramLong3 + " isSend=" + paramBoolean2);
-    }
-    if ((paramLong1 == 0L) || (paramLong2 == 0L)) {}
-    while ((((DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(String.valueOf(paramLong1)) == null) || (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(String.valueOf(paramLong2)))) {
-      return;
-    }
-    QCallRecent localQCallRecent = a().a(String.valueOf(paramLong1), 3000);
-    localQCallRecent.lastCallTime = MessageCache.a();
-    if (paramBoolean1) {
-      localQCallRecent.state = 1;
-    }
-    for (;;)
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      a(localQCallRecent, "when_updateDissCall");
-      return;
-      localQCallRecent.state = 3;
-      localQCallRecent.time = paramLong3;
-      if (paramLong3 > 0L)
-      {
-        localQCallRecord = new QCallRecord();
-        localQCallRecord.friendUin = String.valueOf(paramLong1);
-        localQCallRecord.isVideo = 0;
-        localQCallRecord.time = MessageCache.a();
-        localQCallRecord.talkTime = String.valueOf(paramLong3);
-        localQCallRecord.type = QCallRecord.TYPE_REALRECORD;
-        localQCallRecord.uinType = 3000;
-        if (paramBoolean2) {
-          localQCallRecord.state = 4;
-        }
-        for (localQCallRecord.issend = 1;; localQCallRecord.issend = 0)
-        {
-          a().a(localQCallRecord);
-          break;
-          localQCallRecord.state = 3;
-        }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateDissCall-->discussid=");
+      ((StringBuilder)localObject).append(paramLong1);
+      ((StringBuilder)localObject).append(" friendUin=");
+      ((StringBuilder)localObject).append(paramLong2);
+      ((StringBuilder)localObject).append(" b=");
+      ((StringBuilder)localObject).append(paramBoolean1);
+      ((StringBuilder)localObject).append(" time=");
+      ((StringBuilder)localObject).append(paramLong3);
+      ((StringBuilder)localObject).append(" isSend=");
+      ((StringBuilder)localObject).append(paramBoolean2);
+      QLog.d("QCallFacade", 2, ((StringBuilder)localObject).toString());
+    }
+    if (paramLong1 != 0L)
+    {
+      if (paramLong2 == 0L) {
+        return;
       }
-      QCallRecord localQCallRecord = new QCallRecord();
-      localQCallRecord.friendUin = String.valueOf(paramLong1);
-      localQCallRecord.issend = 1;
-      localQCallRecord.isVideo = 0;
-      localQCallRecord.time = MessageCache.a();
-      localQCallRecord.type = QCallRecord.TYPE_REALRECORD;
-      localQCallRecord.state = 4;
-      localQCallRecord.uinType = 3000;
-      a().a(localQCallRecord);
+      if (((DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(String.valueOf(paramLong1)) == null) {
+        return;
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(String.valueOf(paramLong2)))
+      {
+        localObject = a().a(String.valueOf(paramLong1), 3000);
+        ((QCallRecent)localObject).lastCallTime = MessageCache.a();
+        if (paramBoolean1)
+        {
+          ((QCallRecent)localObject).state = 1;
+        }
+        else
+        {
+          ((QCallRecent)localObject).state = 3;
+          ((QCallRecent)localObject).time = paramLong3;
+          QCallRecord localQCallRecord;
+          if (paramLong3 > 0L)
+          {
+            localQCallRecord = new QCallRecord();
+            localQCallRecord.friendUin = String.valueOf(paramLong1);
+            localQCallRecord.isVideo = 0;
+            localQCallRecord.time = MessageCache.a();
+            localQCallRecord.talkTime = String.valueOf(paramLong3);
+            localQCallRecord.type = QCallRecord.TYPE_REALRECORD;
+            localQCallRecord.uinType = 3000;
+            if (paramBoolean2)
+            {
+              localQCallRecord.state = 4;
+              localQCallRecord.issend = 1;
+            }
+            else
+            {
+              localQCallRecord.state = 3;
+              localQCallRecord.issend = 0;
+            }
+            a().a(localQCallRecord);
+          }
+          else
+          {
+            localQCallRecord = new QCallRecord();
+            localQCallRecord.friendUin = String.valueOf(paramLong1);
+            localQCallRecord.issend = 1;
+            localQCallRecord.isVideo = 0;
+            localQCallRecord.time = MessageCache.a();
+            localQCallRecord.type = QCallRecord.TYPE_REALRECORD;
+            localQCallRecord.state = 4;
+            localQCallRecord.uinType = 3000;
+            a().a(localQCallRecord);
+          }
+        }
+        a((QCallRecent)localObject, "when_updateDissCall");
+      }
     }
   }
   
@@ -966,32 +857,34 @@ public class QCallFacade
     a(paramMessageForVideo, "when_insertMessage");
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      if ((paramMessageForVideo == null) || (paramMessageForVideo.type != 3000)) {
-        break label146;
+      QQAppInterface localQQAppInterface;
+      if ((paramMessageForVideo != null) && (paramMessageForVideo.type == 3000))
+      {
+        localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        if (paramMessageForVideo.isSend()) {
+          paramMessageForVideo = "1";
+        } else {
+          paramMessageForVideo = "0";
+        }
+        ReportController.b(localQQAppInterface, "CliOper", "", "", "0X8004067", "0X8004067", 0, 0, paramMessageForVideo, "", "", "");
       }
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      if (!paramMessageForVideo.isSend()) {
-        break label139;
+      else
+      {
+        localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        if (paramMessageForVideo.isSend()) {
+          paramMessageForVideo = "1";
+        } else {
+          paramMessageForVideo = "0";
+        }
+        ReportController.b(localQQAppInterface, "CliOper", "", "", "Msg_tab", "Call_history_count", 0, 0, paramMessageForVideo, "", "", "");
       }
-    }
-    label139:
-    for (paramMessageForVideo = "1";; paramMessageForVideo = "0")
-    {
-      ReportController.b(localQQAppInterface, "CliOper", "", "", "0X8004067", "0X8004067", 0, 0, paramMessageForVideo, "", "", "");
       if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.mainActivityIsForeground) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isConversationTabShow) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isInCallList)) {
         a(MessageCache.a());
       }
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.refreshMsgTabUnreadNum(true, 0);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.refreshAppBadge();
-      return;
-    }
-    label146:
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (paramMessageForVideo.isSend()) {}
-    for (paramMessageForVideo = "1";; paramMessageForVideo = "0")
-    {
-      ReportController.b(localQQAppInterface, "CliOper", "", "", "Msg_tab", "Call_history_count", 0, 0, paramMessageForVideo, "", "", "");
-      break;
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isLogin()) {
+        ((IAppBadgeService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IAppBadgeService.class, "")).refreshAppBadge();
+      }
     }
   }
   
@@ -1004,8 +897,14 @@ public class QCallFacade
       }
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QCallFacade", 2, "insertCallRecord updateRecentMissedCallCount:" + paramBoolean + ", msg :" + paramMessageForVideo.toString());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("insertCallRecord updateRecentMissedCallCount:");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(", msg :");
+      ((StringBuilder)localObject).append(paramMessageForVideo.toString());
+      QLog.d("QCallFacade", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = a(paramMessageForVideo);
     a().a((QCallRecord)localObject);
@@ -1015,8 +914,12 @@ public class QCallFacade
       if (localObject != null)
       {
         ((QCallRecent)localObject).missedCallCount = d(paramMessageForVideo.frienduin, paramMessageForVideo.istroop);
-        if (QLog.isColorLevel()) {
-          QLog.d("QCallFacade", 2, "insertCallRecord QCallRecent update MissCallCount" + ((QCallRecent)localObject).missedCallCount);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("insertCallRecord QCallRecent update MissCallCount");
+          localStringBuilder.append(((QCallRecent)localObject).missedCallCount);
+          QLog.d("QCallFacade", 2, localStringBuilder.toString());
         }
         ((QCallRecent)localObject).isLastCallRealMissed = a(paramMessageForVideo.frienduin, paramMessageForVideo.istroop);
         a((QCallRecent)localObject, "when_insertCallRecord");
@@ -1067,42 +970,53 @@ public class QCallFacade
   public void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, int paramInt4)
   {
     QLog.d("QCallFacade", 1, String.format("updateDoubleCallStatus, peerUin[%s], uinType[%s], extraType[%s], bindType[%s], bindId[%s], status[%s]", new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString2, Integer.valueOf(paramInt4) }));
-    if ((paramInt1 == 1011) || (paramInt1 == -1)) {}
-    do
+    if (paramInt1 != 1011)
     {
-      FriendsManager localFriendsManager;
-      do
+      if (paramInt1 == -1) {
+        return;
+      }
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      if (localObject == null) {
+        return;
+      }
+      if (paramInt1 == 0)
       {
-        do
-        {
+        localObject = (FriendsManager)((QQAppInterface)localObject).getManager(QQManagerFactory.FRIENDS_MANAGER);
+        if ((localObject != null) && (!((FriendsManager)localObject).b(paramString1))) {
           return;
-        } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null);
-        if (paramInt1 != 0) {
-          break;
         }
-        localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-      } while ((localFriendsManager != null) && (!localFriendsManager.b(paramString1)));
-    } while ((paramString1 == null) || ((paramInt1 == 3000) && (((DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(paramString1) == null)));
-    paramString1 = a().a(paramString1, paramInt1);
-    if ((paramInt4 == 6) || (paramInt4 == 5) || (paramString1.isMissedCall())) {
-      paramString1.lastCallTime = MessageCache.a();
+      }
+      if (paramString1 == null) {
+        return;
+      }
+      if ((paramInt1 == 3000) && (((DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(paramString1) == null)) {
+        return;
+      }
+      paramString1 = a().a(paramString1, paramInt1);
+      if ((paramInt4 == 6) || (paramInt4 == 5) || (paramString1.isMissedCall())) {
+        paramString1.lastCallTime = MessageCache.a();
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("updateDoubleCallStatus lastCallTime = ");
+        ((StringBuilder)localObject).append(paramString1.lastCallTime);
+        QLog.d("QCallFacade", 2, ((StringBuilder)localObject).toString());
+      }
+      paramString1.state = paramInt4;
+      paramString1.extraType = paramInt2;
+      paramString1.bindId = paramString2;
+      paramString1.bindType = paramInt3;
+      if (TextUtils.isEmpty(paramString2)) {
+        paramString1.callType = 1;
+      }
+      if (paramInt4 == 0)
+      {
+        a(paramString1, "when_updateDoubleCallStatus");
+        return;
+      }
+      b(paramString1);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QCallFacade", 2, "updateDoubleCallStatus lastCallTime = " + paramString1.lastCallTime);
-    }
-    paramString1.state = paramInt4;
-    paramString1.extraType = paramInt2;
-    paramString1.bindId = paramString2;
-    paramString1.bindType = paramInt3;
-    if (TextUtils.isEmpty(paramString2)) {
-      paramString1.callType = 1;
-    }
-    if (paramInt4 == 0)
-    {
-      a(paramString1, "when_updateDoubleCallStatus");
-      return;
-    }
-    b(paramString1);
   }
   
   @Deprecated
@@ -1144,34 +1058,26 @@ public class QCallFacade
   public int b()
   {
     Object localObject = a().a();
+    int i = 0;
     if (localObject == null) {
       return 0;
     }
     long l2 = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     localObject = ((List)localObject).iterator();
-    int i = 0;
-    long l1;
-    if (((Iterator)localObject).hasNext())
+    while (((Iterator)localObject).hasNext())
     {
       QCallRecent localQCallRecent = (QCallRecent)((Iterator)localObject).next();
-      if (localQCallRecent.readTime > l2)
-      {
+      long l1;
+      if (localQCallRecent.readTime > l2) {
         l1 = localQCallRecent.readTime;
-        label76:
-        if ((localQCallRecent.lastCallTime <= l1) || (!localQCallRecent.isMissedCall())) {
-          break label109;
-        }
+      } else {
+        l1 = l2;
+      }
+      if ((localQCallRecent.lastCallTime > l1) && (localQCallRecent.isMissedCall())) {
         i += 1;
       }
     }
-    label109:
-    for (;;)
-    {
-      break;
-      l1 = l2;
-      break label76;
-      return i;
-    }
+    return i;
   }
   
   public int b(String paramString, int paramInt)
@@ -1192,73 +1098,56 @@ public class QCallFacade
   @Deprecated
   public void b(String paramString)
   {
-    int k = 0;
-    Object localObject2 = (PhoneContactManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
-    Object localObject1 = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    int i;
-    label59:
-    int j;
-    if (localObject2 == null)
-    {
-      localObject2 = null;
-      if (localObject2 != null)
-      {
-        if (TextUtils.isEmpty(((PhoneContact)localObject2).uin)) {
-          break label154;
-        }
-        i = 1;
-        if ((i == 0) || (((PhoneContact)localObject2).uin.equals("0"))) {
-          break label159;
-        }
-        j = 1;
-        label79:
-        if ((j != 0) && (localObject1 != null)) {
-          break label164;
-        }
-        localObject1 = null;
-        label91:
-        if ((localObject1 == null) || (!((Friends)localObject1).isFriend())) {
-          break label179;
-        }
-        j = 1;
-        label106:
-        if (j == 0) {
-          break label184;
-        }
-        localObject1 = ((PhoneContact)localObject2).uin;
-        i = k;
-      }
+    Object localObject1 = (IPhoneContactService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPhoneContactService.class, "");
+    FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Object localObject2 = null;
+    PhoneContact localPhoneContact;
+    if (localObject1 == null) {
+      localPhoneContact = null;
+    } else {
+      localPhoneContact = ((IPhoneContactService)localObject1).queryContactByCodeNumber(paramString);
     }
-    for (;;)
+    if (localPhoneContact != null)
     {
-      long l = MessageCache.a();
-      a((String)localObject1, i, ((PhoneContact)localObject2).contactID, l, paramString);
-      return;
-      localObject2 = ((PhoneContactManager)localObject2).c(paramString);
-      break;
-      label154:
-      i = 0;
-      break label59;
-      label159:
-      j = 0;
-      break label79;
-      label164:
-      localObject1 = ((FriendsManager)localObject1).e(((PhoneContact)localObject2).uin);
-      break label91;
-      label179:
-      j = 0;
-      break label106;
-      label184:
+      boolean bool = TextUtils.isEmpty(localPhoneContact.uin);
+      int j = 1;
+      int k = bool ^ true;
+      int i;
+      if ((k != 0) && (!localPhoneContact.uin.equals("0"))) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      localObject1 = localObject2;
+      if (i != 0) {
+        if (localFriendsManager == null) {
+          localObject1 = localObject2;
+        } else {
+          localObject1 = localFriendsManager.e(localPhoneContact.uin);
+        }
+      }
+      if ((localObject1 != null) && (((Friends)localObject1).isFriend())) {
+        i = j;
+      } else {
+        i = 0;
+      }
       if (i != 0)
       {
-        localObject1 = ((PhoneContact)localObject2).mobileCode;
+        localObject1 = localPhoneContact.uin;
+        i = 0;
+      }
+      else if (k != 0)
+      {
+        localObject1 = localPhoneContact.mobileCode;
         i = 1006;
       }
       else
       {
-        localObject1 = ((PhoneContact)localObject2).mobileNo;
+        localObject1 = localPhoneContact.mobileNo;
         i = 56938;
       }
+      long l = MessageCache.a();
+      a((String)localObject1, i, localPhoneContact.contactID, l, paramString);
     }
   }
   
@@ -1272,7 +1161,9 @@ public class QCallFacade
       a(localQCallRecent);
     }
     c(paramString, paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.refreshAppBadge();
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isLogin()) {
+      ((IAppBadgeService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IAppBadgeService.class, "")).refreshAppBadge();
+    }
   }
   
   public int c(String paramString, int paramInt)
@@ -1287,66 +1178,59 @@ public class QCallFacade
     }
     long l2 = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     localObject1 = ((List)localObject1).iterator();
-    int k = 0;
-    long l1;
-    label132:
-    int j;
-    int i;
-    label176:
-    QCallRecord localQCallRecord;
-    for (;;)
+    int i = 0;
+    while (((Iterator)localObject1).hasNext())
     {
-      if (((Iterator)localObject1).hasNext())
+      Object localObject2 = (QCallRecent)((Iterator)localObject1).next();
+      if ((paramString.equals(((QCallRecent)localObject2).uin)) && (paramInt == ((QCallRecent)localObject2).type))
       {
-        Object localObject2 = (QCallRecent)((Iterator)localObject1).next();
-        if ((paramString.equals(((QCallRecent)localObject2).uin)) && (paramInt == ((QCallRecent)localObject2).type)) {
-          if (((QCallRecent)localObject2).readTime > l2)
+        long l1;
+        if (((QCallRecent)localObject2).readTime > l2) {
+          l1 = ((QCallRecent)localObject2).readTime;
+        } else {
+          l1 = l2;
+        }
+        if ((((QCallRecent)localObject2).lastCallTime > l1) && (((QCallRecent)localObject2).isMissedCall()) && (((QCallRecent)localObject2).uin != null))
+        {
+          localObject2 = a().a(paramString, paramInt);
+          int j = 0;
+          while (j < ((List)localObject2).size())
           {
-            l1 = ((QCallRecent)localObject2).readTime;
-            if ((((QCallRecent)localObject2).lastCallTime <= l1) || (!((QCallRecent)localObject2).isMissedCall()) || (((QCallRecent)localObject2).uin == null)) {
-              break label230;
+            QCallRecord localQCallRecord = (QCallRecord)((List)localObject2).get(j);
+            int k;
+            if (localQCallRecord.type == QCallRecord.TYPE_DATE)
+            {
+              k = i;
             }
-            localObject2 = a().a(paramString, paramInt);
-            j = 0;
+            else
+            {
+              if (!localQCallRecord.isMissCall()) {
+                break;
+              }
+              k = i;
+              if (localQCallRecord.time > l1) {
+                k = i + 1;
+              }
+            }
+            j += 1;
             i = k;
-            k = i;
-            if (j >= ((List)localObject2).size()) {
-              continue;
-            }
-            localQCallRecord = (QCallRecord)((List)localObject2).get(j);
-            if (localQCallRecord.type != QCallRecord.TYPE_DATE) {
-              break label232;
-            }
           }
         }
       }
     }
-    for (;;)
-    {
-      j += 1;
-      break label176;
-      l1 = l2;
-      break label132;
-      label230:
-      break;
-      label232:
-      k = i;
-      if (!localQCallRecord.isMissCall()) {
-        break;
-      }
-      if (localQCallRecord.time > l1)
-      {
-        i += 1;
-        continue;
-        return k;
-      }
-    }
+    return i;
   }
   
   public void c(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QCallFacade", 2, "clearAllRecord friendUin:" + paramString + ",uinType:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("clearAllRecord friendUin:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",uinType:");
+      localStringBuilder.append(paramInt);
+      QLog.d("QCallFacade", 2, localStringBuilder.toString());
     }
     a().a(paramString, paramInt);
   }
@@ -1354,13 +1238,13 @@ public class QCallFacade
   public void onDestroy()
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqDiscussionObserverDiscussionObserver);
     deleteObservers();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.QCallFacade
  * JD-Core Version:    0.7.0.1
  */

@@ -18,32 +18,40 @@ class QQCustomDialogWtihForwardAvatar$2
   {
     long l2 = System.currentTimeMillis();
     Object localObject = paramView.getTag();
-    if ((localObject instanceof Long)) {}
-    for (long l1 = ((Long)localObject).longValue();; l1 = 0L)
+    long l1;
+    if ((localObject instanceof Long)) {
+      l1 = ((Long)localObject).longValue();
+    } else {
+      l1 = 0L;
+    }
+    if (l2 - l1 < 300L)
     {
-      if (l2 - l1 < 300L)
-      {
-        QLog.i("QQCustomDialogWithForwardAvatar", 2, "click in 300ms clickTime: " + l1 + " newTime :" + l2);
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("click in 300ms clickTime: ");
+      ((StringBuilder)localObject).append(l1);
+      ((StringBuilder)localObject).append(" newTime :");
+      ((StringBuilder)localObject).append(l2);
+      QLog.i("QQCustomDialogWithForwardAvatar", 2, ((StringBuilder)localObject).toString());
+    }
+    else
+    {
       paramView.setTag(Long.valueOf(l2));
-      if ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 3000)) {
+      int i = this.jdField_a_of_type_Int;
+      if ((i != 1) && (i != 3000)) {
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8009BE6", "0X8009BE6", 0, 0, "", "", "", "");
+      } else {
         ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8009BE8", "0X8009BE8", 0, 0, "", "", "", "");
       }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihForwardAvatar.hideSoftInputFromWindow();
-        MiniChatActivity.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, 0.86F, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihForwardAvatar.a(this.jdField_a_of_type_AndroidAppActivity, 0.78F));
-        break;
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8009BE6", "0X8009BE6", 0, 0, "", "", "", "");
-      }
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihForwardAvatar.hideSoftInputFromWindow();
+      localObject = this.jdField_a_of_type_AndroidAppActivity;
+      MiniChatActivity.a((Activity)localObject, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, 0.86F, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihForwardAvatar.a((Activity)localObject, 0.78F));
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogWtihForwardAvatar.2
  * JD-Core Version:    0.7.0.1
  */

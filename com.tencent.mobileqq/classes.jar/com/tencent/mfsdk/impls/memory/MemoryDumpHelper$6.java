@@ -20,22 +20,38 @@ class MemoryDumpHelper$6
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    for (Object localObject = this.jdField_a_of_type_JavaLangString; !this.jdField_a_of_type_Boolean; localObject = this.jdField_b_of_type_JavaLangString)
+    Object localObject;
+    if (this.jdField_a_of_type_Boolean) {
+      localObject = this.jdField_a_of_type_JavaLangString;
+    } else {
+      localObject = this.jdField_b_of_type_JavaLangString;
+    }
+    StringBuilder localStringBuilder;
+    if (!this.jdField_a_of_type_Boolean)
     {
       localDumpResult = MagnifierSDK.a().a().a((String)localObject, new MemoryDumpHelper.6.1(this));
       MagnifierSDK.a().a().a(localDumpResult);
       MemoryDumpHelper.d(this.this$0);
       localFile = new File(localDumpResult.zipFilePath);
-      if (QLog.isColorLevel()) {
-        QLog.d("QAPM_MemoryDumpHelper", 2, "leakFlag=true,ZipFile=true,leakName=" + (String)localObject + ",dumpPath=" + localFile.getAbsolutePath());
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("leakFlag=true,ZipFile=true,leakName=");
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append(",dumpPath=");
+        localStringBuilder.append(localFile.getAbsolutePath());
+        QLog.d("QAPM_MemoryDumpHelper", 2, localStringBuilder.toString());
       }
       if (localDumpResult.success)
       {
         long l = (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) * 100L / Runtime.getRuntime().maxMemory();
         localObject = new HashMap(16);
         ((HashMap)localObject).put("osVersion", Build.VERSION.RELEASE);
-        ((HashMap)localObject).put("deviceName", Build.MANUFACTURER + "_" + Build.MODEL);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(Build.MANUFACTURER);
+        localStringBuilder.append("_");
+        localStringBuilder.append(Build.MODEL);
+        ((HashMap)localObject).put("deviceName", localStringBuilder.toString());
         ((HashMap)localObject).put("maxHeap", String.valueOf(Runtime.getRuntime().maxMemory()));
         ((HashMap)localObject).put("totalHeap", String.valueOf(Runtime.getRuntime().totalMemory()));
         ((HashMap)localObject).put("freeHeap", String.valueOf(Runtime.getRuntime().freeMemory()));
@@ -49,8 +65,14 @@ class MemoryDumpHelper$6
     }
     DumpResult localDumpResult = MagnifierSDK.a().a().a((String)localObject, new MemoryDumpHelper.6.2(this));
     File localFile = new File(localDumpResult.zipFilePath);
-    if (QLog.isColorLevel()) {
-      QLog.d("QAPM_MemoryDumpHelper", 2, "leakFlag=true,ZipFile=true,leakName=" + (String)localObject + ",dumpPath=" + localFile.getAbsolutePath());
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("leakFlag=true,ZipFile=true,leakName=");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(",dumpPath=");
+      localStringBuilder.append(localFile.getAbsolutePath());
+      QLog.d("QAPM_MemoryDumpHelper", 2, localStringBuilder.toString());
     }
     MagnifierSDK.a().a().a(System.currentTimeMillis(), localDumpResult.zipFilePath);
     MemoryDumpHelper.d(this.this$0);
@@ -58,7 +80,7 @@ class MemoryDumpHelper$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mfsdk.impls.memory.MemoryDumpHelper.6
  * JD-Core Version:    0.7.0.1
  */

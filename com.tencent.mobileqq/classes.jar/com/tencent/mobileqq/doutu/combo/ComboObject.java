@@ -21,13 +21,17 @@ public class ComboObject
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("ComboObject:");
-    localStringBuffer.append(this.jdField_a_of_type_JavaLangString).append(',').append(this.jdField_a_of_type_Int).append(',').append(this.jdField_a_of_type_Boolean);
+    localStringBuffer.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuffer.append(',');
+    localStringBuffer.append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(',');
+    localStringBuffer.append(this.jdField_a_of_type_Boolean);
     return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.combo.ComboObject
  * JD-Core Version:    0.7.0.1
  */

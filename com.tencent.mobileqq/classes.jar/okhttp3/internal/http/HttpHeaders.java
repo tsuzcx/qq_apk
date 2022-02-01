@@ -39,15 +39,16 @@ public final class HttpHeaders
   
   public static boolean hasBody(Response paramResponse)
   {
-    if (paramResponse.request().method().equals("HEAD")) {}
-    do
-    {
+    if (paramResponse.request().method().equals("HEAD")) {
       return false;
-      int i = paramResponse.code();
-      if (((i < 100) || (i >= 200)) && (i != 204) && (i != 304)) {
-        return true;
-      }
-    } while ((contentLength(paramResponse) == -1L) && (!"chunked".equalsIgnoreCase(paramResponse.header("Transfer-Encoding"))));
+    }
+    int i = paramResponse.code();
+    if (((i < 100) || (i >= 200)) && (i != 204) && (i != 304)) {
+      return true;
+    }
+    if (contentLength(paramResponse) == -1L) {
+      return "chunked".equalsIgnoreCase(paramResponse.header("Transfer-Encoding"));
+    }
     return true;
   }
   
@@ -63,77 +64,86 @@ public final class HttpHeaders
   
   private static void parseChallengeHeader(List<Challenge> paramList, Buffer paramBuffer)
   {
-    Object localObject1 = null;
-    LinkedHashMap localLinkedHashMap;
+    Object localObject1;
     Object localObject2;
+    String str;
+    int i;
     for (;;)
     {
-      Object localObject3 = localObject1;
+      localObject1 = null;
+      localObject2 = localObject1;
       if (localObject1 == null)
       {
         skipWhitespaceAndCommas(paramBuffer);
         localObject1 = readToken(paramBuffer);
-        localObject3 = localObject1;
-        if (localObject1 != null) {}
-      }
-      boolean bool1;
-      do
-      {
-        return;
-        bool1 = skipWhitespaceAndCommas(paramBuffer);
-        localObject1 = readToken(paramBuffer);
-        if (localObject1 != null) {
-          break;
+        localObject2 = localObject1;
+        if (localObject1 == null) {
+          return;
         }
-      } while (!paramBuffer.exhausted());
-      paramList.add(new Challenge(localObject3, Collections.emptyMap()));
-      return;
+      }
+      boolean bool1 = skipWhitespaceAndCommas(paramBuffer);
+      str = readToken(paramBuffer);
+      if (str == null)
+      {
+        if (!paramBuffer.exhausted()) {
+          return;
+        }
+        paramList.add(new Challenge(localObject2, Collections.emptyMap()));
+        return;
+      }
       i = skipAll(paramBuffer, (byte)61);
       boolean bool2 = skipWhitespaceAndCommas(paramBuffer);
-      if ((!bool1) && ((bool2) || (paramBuffer.exhausted())))
+      if ((bool1) || ((!bool2) && (!paramBuffer.exhausted()))) {
+        break;
+      }
+      localObject1 = (String)null;
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append(str);
+      ((StringBuilder)localObject3).append(repeat('=', i));
+      paramList.add(new Challenge(localObject2, Collections.singletonMap(localObject1, ((StringBuilder)localObject3).toString())));
+    }
+    Object localObject3 = new LinkedHashMap();
+    i += skipAll(paramBuffer, (byte)61);
+    for (;;)
+    {
+      localObject1 = str;
+      if (str == null)
       {
-        paramList.add(new Challenge(localObject3, Collections.singletonMap((String)null, (String)localObject1 + repeat('=', i))));
-        localObject1 = null;
+        localObject1 = readToken(paramBuffer);
+        if (!skipWhitespaceAndCommas(paramBuffer)) {
+          i = skipAll(paramBuffer, (byte)61);
+        }
       }
       else
       {
-        localLinkedHashMap = new LinkedHashMap();
-        i = skipAll(paramBuffer, (byte)61) + i;
-        if (localObject1 != null) {
-          break label324;
+        if (i != 0) {
+          break label245;
         }
-        localObject1 = readToken(paramBuffer);
-        if (!skipWhitespaceAndCommas(paramBuffer)) {
-          break;
-        }
-        localObject2 = localObject1;
-        label198:
-        paramList.add(new Challenge(localObject3, localLinkedHashMap));
-        localObject1 = localObject2;
       }
-    }
-    int i = skipAll(paramBuffer, (byte)61);
-    label322:
-    label324:
-    for (;;)
-    {
-      localObject2 = localObject1;
-      if (i == 0) {
-        break label198;
-      }
-      if ((i > 1) || (skipWhitespaceAndCommas(paramBuffer))) {
-        break;
-      }
-      if ((!paramBuffer.exhausted()) && (paramBuffer.getByte(0L) == 34)) {}
-      for (localObject2 = readQuotedString(paramBuffer);; localObject2 = readToken(paramBuffer))
-      {
-        if ((localObject2 == null) || ((String)localLinkedHashMap.put(localObject1, localObject2) != null) || ((!skipWhitespaceAndCommas(paramBuffer)) && (!paramBuffer.exhausted()))) {
-          break label322;
-        }
-        localObject1 = null;
-        break;
-      }
+      paramList.add(new Challenge(localObject2, (Map)localObject3));
       break;
+      label245:
+      if (i > 1) {
+        return;
+      }
+      if (skipWhitespaceAndCommas(paramBuffer)) {
+        return;
+      }
+      if ((!paramBuffer.exhausted()) && (paramBuffer.getByte(0L) == 34)) {
+        str = readQuotedString(paramBuffer);
+      } else {
+        str = readToken(paramBuffer);
+      }
+      if (str == null) {
+        return;
+      }
+      if ((String)((Map)localObject3).put(localObject1, str) != null) {
+        return;
+      }
+      if ((!skipWhitespaceAndCommas(paramBuffer)) && (!paramBuffer.exhausted())) {
+        return;
+      }
+      str = null;
     }
   }
   
@@ -170,27 +180,33 @@ public final class HttpHeaders
   
   private static String readQuotedString(Buffer paramBuffer)
   {
-    if (paramBuffer.readByte() != 34) {
-      throw new IllegalArgumentException();
-    }
-    Buffer localBuffer = new Buffer();
-    for (;;)
+    if (paramBuffer.readByte() == 34)
     {
-      long l = paramBuffer.indexOfElement(QUOTED_STRING_DELIMITERS);
-      if (l == -1L) {}
-      do
+      Buffer localBuffer = new Buffer();
+      for (;;)
       {
-        return null;
+        long l = paramBuffer.indexOfElement(QUOTED_STRING_DELIMITERS);
+        if (l == -1L) {
+          return null;
+        }
         if (paramBuffer.getByte(l) == 34)
         {
           localBuffer.write(paramBuffer, l);
           paramBuffer.readByte();
           return localBuffer.readUtf8();
         }
-      } while (paramBuffer.size() == l + 1L);
-      localBuffer.write(paramBuffer, l);
-      paramBuffer.readByte();
-      localBuffer.write(paramBuffer, 1L);
+        if (paramBuffer.size() == l + 1L) {
+          return null;
+        }
+        localBuffer.write(paramBuffer, l);
+        paramBuffer.readByte();
+        localBuffer.write(paramBuffer, 1L);
+      }
+    }
+    paramBuffer = new IllegalArgumentException();
+    for (;;)
+    {
+      throw paramBuffer;
     }
   }
   
@@ -212,18 +228,21 @@ public final class HttpHeaders
     }
     catch (EOFException paramBuffer)
     {
-      throw new AssertionError();
+      label39:
+      break label39;
     }
+    throw new AssertionError();
   }
   
   public static void receiveHeaders(CookieJar paramCookieJar, HttpUrl paramHttpUrl, Headers paramHeaders)
   {
-    if (paramCookieJar == CookieJar.NO_COOKIES) {}
-    do
-    {
+    if (paramCookieJar == CookieJar.NO_COOKIES) {
       return;
-      paramHeaders = Cookie.parseAll(paramHttpUrl, paramHeaders);
-    } while (paramHeaders.isEmpty());
+    }
+    paramHeaders = Cookie.parseAll(paramHttpUrl, paramHeaders);
+    if (paramHeaders.isEmpty()) {
+      return;
+    }
     paramCookieJar.saveFromResponse(paramHttpUrl, paramHeaders);
   }
   
@@ -247,30 +266,27 @@ public final class HttpHeaders
   
   public static int skipUntil(String paramString1, int paramInt, String paramString2)
   {
-    for (;;)
+    while (paramInt < paramString1.length())
     {
-      if ((paramInt >= paramString1.length()) || (paramString2.indexOf(paramString1.charAt(paramInt)) != -1)) {
+      if (paramString2.indexOf(paramString1.charAt(paramInt)) != -1) {
         return paramInt;
       }
       paramInt += 1;
     }
+    return paramInt;
   }
   
   public static int skipWhitespace(String paramString, int paramInt)
   {
-    for (;;)
+    while (paramInt < paramString.length())
     {
-      if (paramInt < paramString.length())
-      {
-        int i = paramString.charAt(paramInt);
-        if ((i == 32) || (i == 9)) {}
-      }
-      else
-      {
+      int i = paramString.charAt(paramInt);
+      if ((i != 32) && (i != 9)) {
         return paramInt;
       }
       paramInt += 1;
     }
+    return paramInt;
   }
   
   private static boolean skipWhitespaceAndCommas(Buffer paramBuffer)
@@ -314,12 +330,9 @@ public final class HttpHeaders
     Object localObject2 = Collections.emptySet();
     int k = paramHeaders.size();
     int i = 0;
-    while (i < k) {
-      if (!"Vary".equalsIgnoreCase(paramHeaders.name(i)))
-      {
-        i += 1;
-      }
-      else
+    while (i < k)
+    {
+      if ("Vary".equalsIgnoreCase(paramHeaders.name(i)))
       {
         Object localObject3 = paramHeaders.value(i);
         Object localObject1 = localObject2;
@@ -339,6 +352,7 @@ public final class HttpHeaders
           j += 1;
         }
       }
+      i += 1;
     }
     return localObject2;
   }
@@ -388,7 +402,7 @@ public final class HttpHeaders
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.internal.http.HttpHeaders
  * JD-Core Version:    0.7.0.1
  */

@@ -29,20 +29,21 @@ public final class e
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
       localObject = ((String)localObject).split(":");
-      if (localObject.length != 1) {
-        break label141;
+      if (localObject.length == 1)
+      {
+        this.c = localObject[0];
       }
-      this.c = localObject[0];
+      else if (localObject.length >= 2)
+      {
+        this.c = localObject[0];
+        this.d = localObject[1];
+      }
     }
-    ArrayList localArrayList;
-    for (;;)
+    localObject = paramJSONObject.optJSONArray("FILES");
+    if ((localObject != null) && (((JSONArray)localObject).length() > 0))
     {
-      localObject = paramJSONObject.optJSONArray("FILES");
-      if ((localObject == null) || (((JSONArray)localObject).length() <= 0)) {
-        break label185;
-      }
       int j = ((JSONArray)localObject).length();
-      localArrayList = new ArrayList(j);
+      ArrayList localArrayList = new ArrayList(j);
       int i = 0;
       while (i < j)
       {
@@ -52,68 +53,62 @@ public final class e
         }
         i += 1;
       }
-      label141:
-      if (localObject.length >= 2)
-      {
-        this.c = localObject[0];
-        this.d = localObject[1];
-      }
+      this.e = ((e.a[])localArrayList.toArray(new e.a[0]));
     }
-    this.e = ((e.a[])localArrayList.toArray(new e.a[0]));
-    label185:
     a(paramJSONObject.optJSONArray("RECEIVERS"));
   }
   
   private static e.a a(JSONObject paramJSONObject)
   {
-    Object localObject1 = null;
-    if (paramJSONObject == null) {}
-    e.a locala;
-    label110:
-    do
-    {
-      Object localObject2;
-      do
-      {
-        return localObject1;
-        localObject2 = paramJSONObject.optString("PATH");
-      } while (TextUtils.isEmpty((CharSequence)localObject2));
-      locala = new e.a();
-      locala.a = ((String)localObject2);
-      locala.b = paramJSONObject.optString("MD5");
-      try
-      {
-        localObject1 = paramJSONObject.getJSONArray("UNSEALED");
-        if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
-        {
-          int j = ((JSONArray)localObject1).length();
-          localObject2 = new String[j];
-          int i = 0;
-          while (i < j)
-          {
-            localObject2[i] = ((JSONArray)localObject1).optString(i);
-            i += 1;
-          }
-          locala.c = ((String[])localObject2);
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        break label110;
-      }
-      locala.e = paramJSONObject.optString("URL");
-      paramJSONObject = paramJSONObject.optString("PARENT");
-      localObject1 = locala;
-    } while (TextUtils.isEmpty(paramJSONObject));
-    localObject1 = new e.b();
-    paramJSONObject = paramJSONObject.split(":");
-    if (paramJSONObject.length == 1) {}
-    for (((e.b)localObject1).b = paramJSONObject[0];; ((e.b)localObject1).b = paramJSONObject[1])
-    {
-      locala.d = ((e.b)localObject1);
-      return locala;
-      ((e.b)localObject1).a = paramJSONObject[0];
+    if (paramJSONObject == null) {
+      return null;
     }
+    Object localObject = paramJSONObject.optString("PATH");
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return null;
+    }
+    e.a locala = new e.a();
+    locala.a = ((String)localObject);
+    locala.b = paramJSONObject.optString("MD5");
+    try
+    {
+      localObject = paramJSONObject.getJSONArray("UNSEALED");
+      if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+      {
+        int j = ((JSONArray)localObject).length();
+        String[] arrayOfString = new String[j];
+        int i = 0;
+        while (i < j)
+        {
+          arrayOfString[i] = ((JSONArray)localObject).optString(i);
+          i += 1;
+        }
+        locala.c = arrayOfString;
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      label111:
+      break label111;
+    }
+    locala.e = paramJSONObject.optString("URL");
+    localObject = paramJSONObject.optString("PARENT");
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      paramJSONObject = new e.b();
+      localObject = ((String)localObject).split(":");
+      if (localObject.length == 1)
+      {
+        paramJSONObject.b = localObject[0];
+      }
+      else
+      {
+        paramJSONObject.a = localObject[0];
+        paramJSONObject.b = localObject[1];
+      }
+      locala.d = paramJSONObject;
+    }
+    return locala;
   }
   
   /* Error */
@@ -142,118 +137,180 @@ public final class e
     //   36: aload_3
     //   37: areturn
     //   38: astore_3
-    //   39: aconst_null
-    //   40: astore_1
-    //   41: new 165	com/tencent/tbs/one/TBSOneException
-    //   44: dup
-    //   45: sipush 401
-    //   48: new 167	java/lang/StringBuilder
-    //   51: dup
-    //   52: ldc 169
-    //   54: invokespecial 170	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   57: aload_0
-    //   58: invokevirtual 176	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   61: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   64: ldc 182
-    //   66: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   69: aload_3
-    //   70: invokevirtual 185	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
-    //   73: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   76: invokevirtual 188	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   79: aload_3
-    //   80: invokespecial 191	com/tencent/tbs/one/TBSOneException:<init>	(ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   83: athrow
-    //   84: astore_0
-    //   85: aload_1
-    //   86: invokestatic 163	com/tencent/tbs/one/impl/a/c:a	(Ljava/io/Closeable;)V
-    //   89: aload_0
-    //   90: athrow
-    //   91: astore_3
-    //   92: aconst_null
-    //   93: astore_1
-    //   94: new 165	com/tencent/tbs/one/TBSOneException
-    //   97: dup
-    //   98: sipush 402
-    //   101: new 167	java/lang/StringBuilder
-    //   104: dup
-    //   105: ldc 193
-    //   107: invokespecial 170	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   110: aload_0
-    //   111: invokevirtual 176	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   114: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   117: ldc 182
-    //   119: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   122: aload_3
-    //   123: invokevirtual 194	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   126: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   129: invokevirtual 188	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   132: aload_3
-    //   133: invokespecial 191	com/tencent/tbs/one/TBSOneException:<init>	(ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   136: athrow
-    //   137: new 165	com/tencent/tbs/one/TBSOneException
-    //   140: dup
-    //   141: sipush 403
-    //   144: new 167	java/lang/StringBuilder
-    //   147: dup
-    //   148: ldc 196
-    //   150: invokespecial 170	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   153: aload_0
-    //   154: invokevirtual 176	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   157: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   160: ldc 182
-    //   162: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   165: aload_3
-    //   166: invokevirtual 197	org/json/JSONException:getMessage	()Ljava/lang/String;
-    //   169: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   172: invokevirtual 188	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   175: aload_3
-    //   176: invokespecial 191	com/tencent/tbs/one/TBSOneException:<init>	(ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   179: athrow
-    //   180: astore_0
-    //   181: aconst_null
-    //   182: astore_1
-    //   183: goto -98 -> 85
-    //   186: astore_3
-    //   187: aload_2
-    //   188: astore_1
-    //   189: goto -52 -> 137
-    //   192: astore_3
-    //   193: aload_2
-    //   194: astore_1
-    //   195: goto -101 -> 94
-    //   198: astore_3
-    //   199: aload_2
-    //   200: astore_1
-    //   201: goto -160 -> 41
-    //   204: astore_3
-    //   205: aconst_null
-    //   206: astore_1
-    //   207: goto -70 -> 137
+    //   39: goto +20 -> 59
+    //   42: astore_3
+    //   43: goto +82 -> 125
+    //   46: astore_3
+    //   47: goto +144 -> 191
+    //   50: astore_0
+    //   51: aconst_null
+    //   52: astore_1
+    //   53: goto +205 -> 258
+    //   56: astore_3
+    //   57: aconst_null
+    //   58: astore_2
+    //   59: aload_2
+    //   60: astore_1
+    //   61: new 165	java/lang/StringBuilder
+    //   64: dup
+    //   65: ldc 167
+    //   67: invokespecial 168	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   70: astore 4
+    //   72: aload_2
+    //   73: astore_1
+    //   74: aload 4
+    //   76: aload_0
+    //   77: invokevirtual 174	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   80: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   83: pop
+    //   84: aload_2
+    //   85: astore_1
+    //   86: aload 4
+    //   88: ldc 180
+    //   90: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   93: pop
+    //   94: aload_2
+    //   95: astore_1
+    //   96: aload 4
+    //   98: aload_3
+    //   99: invokevirtual 183	org/json/JSONException:getMessage	()Ljava/lang/String;
+    //   102: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   105: pop
+    //   106: aload_2
+    //   107: astore_1
+    //   108: new 185	com/tencent/tbs/one/TBSOneException
+    //   111: dup
+    //   112: sipush 403
+    //   115: aload 4
+    //   117: invokevirtual 188	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   120: aload_3
+    //   121: invokespecial 191	com/tencent/tbs/one/TBSOneException:<init>	(ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   124: athrow
+    //   125: aload_2
+    //   126: astore_1
+    //   127: new 165	java/lang/StringBuilder
+    //   130: dup
+    //   131: ldc 193
+    //   133: invokespecial 168	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   136: astore 4
+    //   138: aload_2
+    //   139: astore_1
+    //   140: aload 4
+    //   142: aload_0
+    //   143: invokevirtual 174	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   146: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   149: pop
+    //   150: aload_2
+    //   151: astore_1
+    //   152: aload 4
+    //   154: ldc 180
+    //   156: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   159: pop
+    //   160: aload_2
+    //   161: astore_1
+    //   162: aload 4
+    //   164: aload_3
+    //   165: invokevirtual 194	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   168: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   171: pop
+    //   172: aload_2
+    //   173: astore_1
+    //   174: new 185	com/tencent/tbs/one/TBSOneException
+    //   177: dup
+    //   178: sipush 402
+    //   181: aload 4
+    //   183: invokevirtual 188	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   186: aload_3
+    //   187: invokespecial 191	com/tencent/tbs/one/TBSOneException:<init>	(ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   190: athrow
+    //   191: aload_2
+    //   192: astore_1
+    //   193: new 165	java/lang/StringBuilder
+    //   196: dup
+    //   197: ldc 196
+    //   199: invokespecial 168	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   202: astore 4
+    //   204: aload_2
+    //   205: astore_1
+    //   206: aload 4
+    //   208: aload_0
+    //   209: invokevirtual 174	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   212: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   215: pop
+    //   216: aload_2
+    //   217: astore_1
+    //   218: aload 4
+    //   220: ldc 180
+    //   222: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   225: pop
+    //   226: aload_2
+    //   227: astore_1
+    //   228: aload 4
+    //   230: aload_3
+    //   231: invokevirtual 197	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
+    //   234: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   237: pop
+    //   238: aload_2
+    //   239: astore_1
+    //   240: new 185	com/tencent/tbs/one/TBSOneException
+    //   243: dup
+    //   244: sipush 401
+    //   247: aload 4
+    //   249: invokevirtual 188	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   252: aload_3
+    //   253: invokespecial 191	com/tencent/tbs/one/TBSOneException:<init>	(ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   256: athrow
+    //   257: astore_0
+    //   258: aload_1
+    //   259: invokestatic 163	com/tencent/tbs/one/impl/a/c:a	(Ljava/io/Closeable;)V
+    //   262: aload_0
+    //   263: athrow
+    //   264: astore_3
+    //   265: aconst_null
+    //   266: astore_2
+    //   267: goto -142 -> 125
+    //   270: astore_3
+    //   271: aconst_null
+    //   272: astore_2
+    //   273: goto -82 -> 191
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	210	0	paramFile	java.io.File
-    //   10	197	1	localFileInputStream1	java.io.FileInputStream
-    //   8	192	2	localFileInputStream2	java.io.FileInputStream
+    //   0	276	0	paramFile	java.io.File
+    //   10	249	1	localFileInputStream1	java.io.FileInputStream
+    //   8	265	2	localFileInputStream2	java.io.FileInputStream
     //   31	6	3	locale	e
-    //   38	42	3	localFileNotFoundException1	java.io.FileNotFoundException
-    //   91	85	3	localIOException1	IOException
-    //   186	1	3	localJSONException1	JSONException
-    //   192	1	3	localIOException2	IOException
-    //   198	1	3	localFileNotFoundException2	java.io.FileNotFoundException
-    //   204	1	3	localJSONException2	JSONException
+    //   38	1	3	localJSONException1	JSONException
+    //   42	1	3	localIOException1	IOException
+    //   46	1	3	localFileNotFoundException1	java.io.FileNotFoundException
+    //   56	197	3	localJSONException2	JSONException
+    //   264	1	3	localIOException2	IOException
+    //   270	1	3	localFileNotFoundException2	java.io.FileNotFoundException
+    //   70	178	4	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   0	9	38	java/io/FileNotFoundException
-    //   11	32	84	finally
-    //   41	84	84	finally
-    //   94	137	84	finally
-    //   137	180	84	finally
-    //   0	9	91	java/io/IOException
-    //   0	9	180	finally
-    //   11	32	186	org/json/JSONException
-    //   11	32	192	java/io/IOException
-    //   11	32	198	java/io/FileNotFoundException
-    //   0	9	204	org/json/JSONException
+    //   11	32	38	org/json/JSONException
+    //   11	32	42	java/io/IOException
+    //   11	32	46	java/io/FileNotFoundException
+    //   0	9	50	finally
+    //   0	9	56	org/json/JSONException
+    //   11	32	257	finally
+    //   61	72	257	finally
+    //   74	84	257	finally
+    //   86	94	257	finally
+    //   96	106	257	finally
+    //   108	125	257	finally
+    //   127	138	257	finally
+    //   140	150	257	finally
+    //   152	160	257	finally
+    //   162	172	257	finally
+    //   174	191	257	finally
+    //   193	204	257	finally
+    //   206	216	257	finally
+    //   218	226	257	finally
+    //   228	238	257	finally
+    //   240	257	257	finally
+    //   0	9	264	java/io/IOException
+    //   0	9	270	java/io/FileNotFoundException
   }
   
   public static e a(InputStream paramInputStream)
@@ -263,42 +320,49 @@ public final class e
       paramInputStream = new JSONObject(c.a(paramInputStream, "utf-8"));
       return new e(paramInputStream);
     }
-    catch (IOException paramInputStream)
-    {
-      throw new TBSOneException(401, "Failed to read MANIFEST contents, error: " + paramInputStream.getMessage(), paramInputStream);
-    }
     catch (JSONException paramInputStream)
     {
-      throw new TBSOneException(401, "Failed to parse MANIFSET contents, error: " + paramInputStream.getMessage());
+      localStringBuilder = new StringBuilder("Failed to parse MANIFSET contents, error: ");
+      localStringBuilder.append(paramInputStream.getMessage());
+      throw new TBSOneException(401, localStringBuilder.toString());
+    }
+    catch (IOException paramInputStream)
+    {
+      StringBuilder localStringBuilder = new StringBuilder("Failed to read MANIFEST contents, error: ");
+      localStringBuilder.append(paramInputStream.getMessage());
+      throw new TBSOneException(401, localStringBuilder.toString(), paramInputStream);
     }
   }
   
   private void a(JSONArray paramJSONArray)
   {
-    if ((paramJSONArray == null) || (paramJSONArray.length() <= 0)) {
-      return;
-    }
-    int k = paramJSONArray.length();
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < k)
+    if (paramJSONArray != null)
     {
-      Object localObject = paramJSONArray.optJSONObject(i);
-      String str = ((JSONObject)localObject).optString("CLASS");
-      localObject = ((JSONObject)localObject).optJSONArray("EVENTS");
-      if ((localObject != null) && (((JSONArray)localObject).length() > 0))
-      {
-        int m = ((JSONArray)localObject).length();
-        int j = 0;
-        while (j < m)
-        {
-          localArrayList.add(new Pair(((JSONArray)localObject).optString(j), str));
-          j += 1;
-        }
+      if (paramJSONArray.length() <= 0) {
+        return;
       }
-      i += 1;
+      int k = paramJSONArray.length();
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      while (i < k)
+      {
+        Object localObject = paramJSONArray.optJSONObject(i);
+        String str = ((JSONObject)localObject).optString("CLASS");
+        localObject = ((JSONObject)localObject).optJSONArray("EVENTS");
+        if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+        {
+          int m = ((JSONArray)localObject).length();
+          int j = 0;
+          while (j < m)
+          {
+            localArrayList.add(new Pair(((JSONArray)localObject).optString(j), str));
+            j += 1;
+          }
+        }
+        i += 1;
+      }
+      this.f = ((Pair[])localArrayList.toArray(new Pair[0]));
     }
-    this.f = ((Pair[])localArrayList.toArray(new Pair[0]));
   }
   
   public final e.a a(String paramString)
@@ -319,7 +383,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.common.e
  * JD-Core Version:    0.7.0.1
  */

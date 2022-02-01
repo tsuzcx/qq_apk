@@ -22,36 +22,30 @@ class ActionSheetShareUI$1
       ActionSheetShareUI.a(this.a).getActionSheet().dismiss();
     }
     int j = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)paramView.getTag()).a.action;
-    int i;
-    if ((j == 9) || (j == 10)) {
-      if (!WXShareHelper.a().a()) {
-        i = 2131720753;
-      }
-    }
-    for (;;)
+    if ((j == 9) || (j == 10))
     {
-      if (i != -1) {
-        QRUtils.a(1, i);
+      int i;
+      if (!WXShareHelper.a().a()) {
+        i = 2131720478;
+      } else if (!WXShareHelper.a().b()) {
+        i = 2131720479;
+      } else {
+        i = -1;
       }
-      for (;;)
+      if (i != -1)
       {
-        EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-        return;
-        if (WXShareHelper.a().b()) {
-          break label123;
-        }
-        i = 2131720754;
-        break;
-        this.a.a(j);
+        QRUtils.a(1, i);
+        break label117;
       }
-      label123:
-      i = -1;
     }
+    this.a.a(j);
+    label117:
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.ui.ActionSheetShareUI.1
  * JD-Core Version:    0.7.0.1
  */

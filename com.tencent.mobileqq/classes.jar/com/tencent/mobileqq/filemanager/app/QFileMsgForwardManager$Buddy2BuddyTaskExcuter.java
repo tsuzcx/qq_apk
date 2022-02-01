@@ -37,30 +37,46 @@ class QFileMsgForwardManager$Buddy2BuddyTaskExcuter
   {
     if ("1".equals(this.h))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("start Buddy2BuddyTaskExcuter:");
+        paramString.append(this.jdField_a_of_type_JavaLangString);
+        paramString.append(" faild, file is upload paused");
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, paramString.toString());
       }
       paramOnUploadCallback.a(QFileMsgForwardManager.a(this.jdField_a_of_type_Long, false), false);
       return;
     }
-    if ((this.b == null) || (this.b.length() == 0))
+    Object localObject = this.b;
+    if ((localObject != null) && (((String)localObject).length() != 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file uuid is null");
+      localObject = QFileMsgForwardManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager).getFileManagerEngine().a();
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("start forwardOfflineFileToX[");
+        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append("]");
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, localStringBuilder.toString());
       }
-      paramOnUploadCallback.a(QFileMsgForwardManager.a(this.jdField_a_of_type_Long, true), false);
+      ((FileForwardManager)localObject).a(paramString, paramInt, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, 3, new QFileMsgForwardManager.Buddy2BuddyTaskExcuter.1(this, paramString, paramOnUploadCallback));
       return;
     }
-    FileForwardManager localFileForwardManager = QFileMsgForwardManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager).getFileManagerEngine().a();
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start forwardOfflineFileToX[" + this.jdField_a_of_type_JavaLangString + "]");
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("start Buddy2BuddyTaskExcuter:");
+      paramString.append(this.jdField_a_of_type_JavaLangString);
+      paramString.append(" faild, file uuid is null");
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, paramString.toString());
     }
-    localFileForwardManager.a(paramString, paramInt, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, 3, new QFileMsgForwardManager.Buddy2BuddyTaskExcuter.1(this, paramString, paramOnUploadCallback));
+    paramOnUploadCallback.a(QFileMsgForwardManager.a(this.jdField_a_of_type_Long, true), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager.Buddy2BuddyTaskExcuter
  * JD-Core Version:    0.7.0.1
  */

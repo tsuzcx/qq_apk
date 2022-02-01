@@ -21,8 +21,13 @@ public class BaseRender
       while (!paramQueue.isEmpty()) {
         ((Runnable)paramQueue.poll()).run();
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   protected void addTaskBeforeProcess(Runnable paramRunnable)
@@ -44,14 +49,16 @@ public class BaseRender
   {
     this.mWidth = 0;
     this.mHeight = 0;
-    if (this.mOutTextureId != -1)
+    int i = this.mOutTextureId;
+    if (i != -1)
     {
-      GLES20.glDeleteTextures(1, new int[] { this.mOutTextureId }, 0);
+      GLES20.glDeleteTextures(1, new int[] { i }, 0);
       this.mOutTextureId = -1;
     }
-    if (this.mOutFbo != -1)
+    i = this.mOutFbo;
+    if (i != -1)
     {
-      GLES20.glDeleteFramebuffers(1, new int[] { this.mOutFbo }, 0);
+      GLES20.glDeleteFramebuffers(1, new int[] { i }, 0);
       this.mOutFbo = -1;
     }
   }
@@ -62,14 +69,16 @@ public class BaseRender
     {
       this.mWidth = paramInt1;
       this.mHeight = paramInt2;
-      if (this.mOutTextureId != -1)
+      paramInt1 = this.mOutTextureId;
+      if (paramInt1 != -1)
       {
-        GLES20.glDeleteTextures(1, new int[] { this.mOutTextureId }, 0);
+        GLES20.glDeleteTextures(1, new int[] { paramInt1 }, 0);
         this.mOutTextureId = -1;
       }
-      if (this.mOutFbo != -1)
+      paramInt1 = this.mOutFbo;
+      if (paramInt1 != -1)
       {
-        GLES20.glDeleteFramebuffers(1, new int[] { this.mOutFbo }, 0);
+        GLES20.glDeleteFramebuffers(1, new int[] { paramInt1 }, 0);
         this.mOutFbo = -1;
       }
       int[] arrayOfInt = new int[1];
@@ -92,7 +101,7 @@ public class BaseRender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.video.effect.core.BaseRender
  * JD-Core Version:    0.7.0.1
  */

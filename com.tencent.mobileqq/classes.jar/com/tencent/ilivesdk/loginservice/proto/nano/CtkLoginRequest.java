@@ -39,47 +39,70 @@ public final class CtkLoginRequest
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.jdField_a_of_type_Int = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 16: 
-        this.jdField_b_of_type_Int = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 26: 
-        this.jdField_a_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
-        break;
-      case 34: 
-        this.jdField_b_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
-        break;
-      case 42: 
-        this.c = paramCodedInputByteBufferNano.readString();
-        break;
-      case 50: 
-        this.d = paramCodedInputByteBufferNano.readString();
+      if (i == 0) {
         break;
       }
-      this.e = paramCodedInputByteBufferNano.readString();
+      if (i != 8)
+      {
+        if (i != 16)
+        {
+          if (i != 26)
+          {
+            if (i != 34)
+            {
+              if (i != 42)
+              {
+                if (i != 50)
+                {
+                  if (i != 58)
+                  {
+                    if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+                      return this;
+                    }
+                  }
+                  else {
+                    this.e = paramCodedInputByteBufferNano.readString();
+                  }
+                }
+                else {
+                  this.d = paramCodedInputByteBufferNano.readString();
+                }
+              }
+              else {
+                this.c = paramCodedInputByteBufferNano.readString();
+              }
+            }
+            else {
+              this.jdField_b_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+            }
+          }
+          else {
+            this.jdField_a_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+          }
+        }
+        else {
+          this.jdField_b_of_type_Int = paramCodedInputByteBufferNano.readUInt32();
+        }
+      }
+      else {
+        this.jdField_a_of_type_Int = paramCodedInputByteBufferNano.readUInt32();
+      }
     }
+    return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    int k = this.jdField_a_of_type_Int;
     int i = j;
-    if (this.jdField_a_of_type_Int != 0) {
-      i = j + CodedOutputByteBufferNano.computeUInt32Size(1, this.jdField_a_of_type_Int);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeUInt32Size(1, k);
     }
+    k = this.jdField_b_of_type_Int;
     j = i;
-    if (this.jdField_b_of_type_Int != 0) {
-      j = i + CodedOutputByteBufferNano.computeUInt32Size(2, this.jdField_b_of_type_Int);
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeUInt32Size(2, k);
     }
     i = j;
     if (!this.jdField_a_of_type_JavaLangString.equals("")) {
@@ -106,11 +129,13 @@ public final class CtkLoginRequest
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.jdField_a_of_type_Int != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(1, this.jdField_a_of_type_Int);
+    int i = this.jdField_a_of_type_Int;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(1, i);
     }
-    if (this.jdField_b_of_type_Int != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(2, this.jdField_b_of_type_Int);
+    i = this.jdField_b_of_type_Int;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(2, i);
     }
     if (!this.jdField_a_of_type_JavaLangString.equals("")) {
       paramCodedOutputByteBufferNano.writeString(3, this.jdField_a_of_type_JavaLangString);
@@ -132,7 +157,7 @@ public final class CtkLoginRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.loginservice.proto.nano.CtkLoginRequest
  * JD-Core Version:    0.7.0.1
  */

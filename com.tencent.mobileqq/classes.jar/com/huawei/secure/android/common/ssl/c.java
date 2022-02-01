@@ -20,28 +20,30 @@ import javax.net.ssl.X509TrustManager;
 public class c
   implements X509TrustManager
 {
-  private static final String TAG = "WebViewX509TrustManger";
-  private X509Certificate V;
-  private List<X509TrustManager> c = new ArrayList();
+  private static final String c = "WebViewX509TrustManger";
+  private X509Certificate a;
+  private List<X509TrustManager> b = new ArrayList();
   
   public c(Context paramContext)
   {
-    if (paramContext == null) {
-      throw new NullPointerException("WebViewX509TrustManger context is null");
-    }
-    com.huawei.secure.android.common.ssl.util.c.setContext(paramContext);
-    this.V = new j(paramContext).l();
-    if (this.V == null) {
+    if (paramContext != null)
+    {
+      com.huawei.secure.android.common.ssl.util.c.a(paramContext);
+      this.a = new j(paramContext).b();
+      if (this.a != null) {
+        return;
+      }
       throw new NullPointerException("WebViewX509TrustManger cannot get cbg root ca");
     }
+    throw new NullPointerException("WebViewX509TrustManger context is null");
   }
   
   public void checkClientTrusted(X509Certificate[] paramArrayOfX509Certificate, String paramString)
   {
     g.c("WebViewX509TrustManger", "checkClientTrusted");
-    if (!this.c.isEmpty())
+    if (!this.b.isEmpty())
     {
-      ((X509TrustManager)this.c.get(0)).checkClientTrusted(paramArrayOfX509Certificate, paramString);
+      ((X509TrustManager)this.b.get(0)).checkClientTrusted(paramArrayOfX509Certificate, paramString);
       return;
     }
     throw new CertificateException("checkClientTrusted CertificateException");
@@ -49,13 +51,17 @@ public class c
   
   public void checkServerTrusted(X509Certificate[] paramArrayOfX509Certificate, String paramString)
   {
-    int k = 0;
-    int j = 0;
     g.c("WebViewX509TrustManger", "checkServerTrusted");
+    int j = 0;
     int i = 0;
     while (i < paramArrayOfX509Certificate.length)
     {
-      g.b("WebViewX509TrustManger", "checkServerTrusted " + i + " : " + paramArrayOfX509Certificate[i].getIssuerDN().getName());
+      paramString = new StringBuilder();
+      paramString.append("checkServerTrusted ");
+      paramString.append(i);
+      paramString.append(" : ");
+      paramString.append(paramArrayOfX509Certificate[i].getIssuerDN().getName());
+      g.a("WebViewX509TrustManger", paramString.toString());
       i += 1;
     }
     paramString = new X509Certificate[paramArrayOfX509Certificate.length];
@@ -68,53 +74,49 @@ public class c
     paramArrayOfX509Certificate = new CertificateException("CBG root CA CertificateException");
     try
     {
-      boolean bool = b.a(this.V, paramString);
-      i = j;
-      if (bool) {
-        i = 1;
-      }
-    }
-    catch (NoSuchProviderException paramString)
-    {
-      for (;;)
-      {
-        g.e("WebViewX509TrustManger", "checkServerTrusted NoSuchProviderException: " + paramString.getMessage());
-        i = k;
-      }
-    }
-    catch (NoSuchAlgorithmException paramString)
-    {
-      for (;;)
-      {
-        g.e("WebViewX509TrustManger", "checkServerTrusted NoSuchAlgorithmException: " + paramString.getMessage());
-        i = k;
-      }
-    }
-    catch (InvalidKeyException paramString)
-    {
-      for (;;)
-      {
-        g.e("WebViewX509TrustManger", "checkServerTrusted InvalidKeyException: " + paramString.getMessage());
-        i = k;
-      }
-    }
-    catch (SignatureException paramString)
-    {
-      for (;;)
-      {
-        g.e("WebViewX509TrustManger", "checkServerTrusted SignatureException: " + paramString.getMessage());
-        i = k;
-      }
+      boolean bool = b.a(this.a, paramString);
+      j = bool;
     }
     catch (CertificateException paramArrayOfX509Certificate)
     {
-      for (;;)
-      {
-        g.e("WebViewX509TrustManger", "checkServerTrusted CertificateException: " + paramArrayOfX509Certificate.getMessage());
-        i = k;
-      }
+      paramString = new StringBuilder();
+      paramString.append("checkServerTrusted CertificateException: ");
+      paramString.append(paramArrayOfX509Certificate.getMessage());
+      g.b("WebViewX509TrustManger", paramString.toString());
     }
-    if (i == 0) {
+    catch (SignatureException paramString)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkServerTrusted SignatureException: ");
+      localStringBuilder.append(paramString.getMessage());
+      g.b("WebViewX509TrustManger", localStringBuilder.toString());
+    }
+    catch (InvalidKeyException paramString)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkServerTrusted InvalidKeyException: ");
+      localStringBuilder.append(paramString.getMessage());
+      g.b("WebViewX509TrustManger", localStringBuilder.toString());
+    }
+    catch (NoSuchAlgorithmException paramString)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkServerTrusted NoSuchAlgorithmException: ");
+      localStringBuilder.append(paramString.getMessage());
+      g.b("WebViewX509TrustManger", localStringBuilder.toString());
+    }
+    catch (NoSuchProviderException paramString)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkServerTrusted NoSuchProviderException: ");
+      localStringBuilder.append(paramString.getMessage());
+      g.b("WebViewX509TrustManger", localStringBuilder.toString());
+    }
+    if (j != 0) {
+      return;
+    }
+    for (;;)
+    {
       throw paramArrayOfX509Certificate;
     }
   }
@@ -123,25 +125,27 @@ public class c
   {
     try
     {
-      ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.c.iterator();
-      while (localIterator.hasNext()) {
-        localArrayList.addAll(Arrays.asList(((X509TrustManager)localIterator.next()).getAcceptedIssuers()));
+      Object localObject1 = new ArrayList();
+      localObject2 = this.b.iterator();
+      while (((Iterator)localObject2).hasNext()) {
+        ((ArrayList)localObject1).addAll(Arrays.asList(((X509TrustManager)((Iterator)localObject2).next()).getAcceptedIssuers()));
       }
-      arrayOfX509Certificate = (X509Certificate[])localException.toArray(new X509Certificate[localException.size()]);
+      localObject1 = (X509Certificate[])((ArrayList)localObject1).toArray(new X509Certificate[((ArrayList)localObject1).size()]);
+      return localObject1;
     }
     catch (Exception localException)
     {
-      g.e("WebViewX509TrustManger", "getAcceptedIssuers exception : " + localException.getMessage());
-      return new X509Certificate[0];
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getAcceptedIssuers exception : ");
+      ((StringBuilder)localObject2).append(localException.getMessage());
+      g.b("WebViewX509TrustManger", ((StringBuilder)localObject2).toString());
     }
-    X509Certificate[] arrayOfX509Certificate;
-    return arrayOfX509Certificate;
+    return new X509Certificate[0];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.secure.android.common.ssl.c
  * JD-Core Version:    0.7.0.1
  */

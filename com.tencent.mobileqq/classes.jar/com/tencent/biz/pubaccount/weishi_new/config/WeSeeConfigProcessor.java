@@ -18,17 +18,23 @@ public class WeSeeConfigProcessor
   @Nullable
   public WeSeeConfigBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    WSLog.a("WeSeeConfigProcessor", "" + paramArrayOfQConfItem.length);
-    WeSeeConfigBean localWeSeeConfigBean = new WeSeeConfigBean();
-    if (localWeSeeConfigBean.a(paramArrayOfQConfItem)) {
-      return localWeSeeConfigBean;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(paramArrayOfQConfItem.length);
+    WSLog.a("WeSeeConfigProcessor", ((StringBuilder)localObject).toString());
+    localObject = new WeSeeConfigBean();
+    if (((WeSeeConfigBean)localObject).a(paramArrayOfQConfItem)) {
+      return localObject;
     }
     return null;
   }
   
   public void a(WeSeeConfigBean paramWeSeeConfigBean)
   {
-    WSLog.f("WeSeeConfigProcessor", "onUpdate " + paramWeSeeConfigBean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onUpdate ");
+    localStringBuilder.append(paramWeSeeConfigBean);
+    WSLog.f("WeSeeConfigProcessor", localStringBuilder.toString());
     WSConfigManager.a().a(paramWeSeeConfigBean);
   }
   
@@ -72,7 +78,7 @@ public class WeSeeConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.config.WeSeeConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

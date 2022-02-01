@@ -2,6 +2,7 @@ package com.tencent.mtt.hippy.modules.nativemodules.animation;
 
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
+import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.os.Build.VERSION;
@@ -43,6 +44,9 @@ public class e
   
   public void a(HippyMap paramHippyMap)
   {
+    if (paramHippyMap.containsKey("valueType")) {
+      this.i = paramHippyMap.getString("valueType");
+    }
     if (paramHippyMap.containsKey("delay")) {
       this.l = paramHippyMap.getInt("delay");
     }
@@ -56,53 +60,76 @@ public class e
     if (paramHippyMap.containsKey("duration")) {
       this.f = paramHippyMap.getInt("duration");
     }
-    if (paramHippyMap.containsKey("valueType")) {
-      this.i = paramHippyMap.getString("valueType");
-    }
     if (paramHippyMap.containsKey("timingFunction")) {
       this.g = paramHippyMap.getString("timingFunction");
     }
     if (paramHippyMap.containsKey("repeatCount"))
     {
       this.j = paramHippyMap.getInt("repeatCount");
-      if (this.j > 0) {
-        this.j -= 1;
+      int n = this.j;
+      if (n > 0) {
+        this.j = (n - 1);
       }
       this.h.setRepeatCount(this.j);
       this.h.setRepeatMode(1);
     }
+    Object localObject;
     if (paramHippyMap.containsKey("inputRange"))
     {
-      HippyArray localHippyArray = paramHippyMap.getArray("inputRange");
+      localObject = paramHippyMap.getArray("inputRange");
       if (paramHippyMap.containsKey("outputRange")) {
-        this.k = new f(localHippyArray, paramHippyMap.getArray("outputRange"));
+        this.k = new f((HippyArray)localObject, paramHippyMap.getArray("outputRange"));
       }
     }
-    this.h.setFloatValues(new float[] { this.d, this.e });
+    if ((!TextUtils.isEmpty(this.i)) && (this.i.equals("color")))
+    {
+      this.h.setIntValues(new int[] { (int)this.d, (int)this.e });
+      this.h.setEvaluator(new ArgbEvaluator());
+    }
+    else
+    {
+      this.h.setFloatValues(new float[] { this.d, this.e });
+    }
     this.h.setDuration(this.f);
-    if (TextUtils.equals("ease-in", this.g)) {
-      this.h.setInterpolator(new AccelerateInterpolator());
+    if (TextUtils.equals("ease-in", this.g))
+    {
+      localObject = this.h;
+      paramHippyMap = new AccelerateInterpolator();
     }
     for (;;)
     {
-      this.h.setStartDelay(this.l);
-      return;
-      if (TextUtils.equals("ease-out", this.g)) {
-        this.h.setInterpolator(new DecelerateInterpolator());
-      } else if (TextUtils.equals("ease-in-out", this.g)) {
-        this.h.setInterpolator(new AccelerateDecelerateInterpolator());
-      } else if (TextUtils.equals("ease_bezier", this.g))
+      ((ValueAnimator)localObject).setInterpolator(paramHippyMap);
+      break;
+      if (TextUtils.equals("ease-out", this.g))
       {
-        if (Build.VERSION.SDK_INT >= 21) {
-          this.h.setInterpolator(new PathInterpolator(0.42F, 0.0F, 1.0F, 1.0F));
-        } else {
-          this.h.setInterpolator(new d(0.42F, 0.0F, 1.0F, 1.0F));
+        localObject = this.h;
+        paramHippyMap = new DecelerateInterpolator();
+      }
+      else if (TextUtils.equals("ease-in-out", this.g))
+      {
+        localObject = this.h;
+        paramHippyMap = new AccelerateDecelerateInterpolator();
+      }
+      else if (TextUtils.equals("ease_bezier", this.g))
+      {
+        if (Build.VERSION.SDK_INT >= 21)
+        {
+          localObject = this.h;
+          paramHippyMap = new PathInterpolator(0.42F, 0.0F, 1.0F, 1.0F);
+        }
+        else
+        {
+          localObject = this.h;
+          paramHippyMap = new d(0.42F, 0.0F, 1.0F, 1.0F);
         }
       }
-      else {
-        this.h.setInterpolator(new LinearInterpolator());
+      else
+      {
+        localObject = this.h;
+        paramHippyMap = new LinearInterpolator();
       }
     }
+    this.h.setStartDelay(this.l);
   }
   
   public void b()
@@ -121,25 +148,32 @@ public class e
     Object localObject1 = localObject2;
     if ((localObject2 instanceof Number))
     {
+      localObject3 = this.k;
       localObject1 = localObject2;
-      if (this.k != null)
+      if (localObject3 != null)
       {
-        Object localObject3 = this.k.a((Number)localObject2);
+        localObject3 = ((f)localObject3).a((Number)localObject2);
         localObject1 = localObject2;
         if (localObject3 != null) {
           localObject1 = localObject3;
         }
       }
     }
-    if (TextUtils.equals(this.i, "rad")) {
-      localObject2 = localObject1 + "rad";
-    }
-    do
+    localObject2 = this.i;
+    Object localObject3 = "rad";
+    if (TextUtils.equals((CharSequence)localObject2, "rad")) {}
+    for (localObject2 = new StringBuilder();; localObject2 = new StringBuilder())
     {
-      return localObject2;
-      localObject2 = localObject1;
-    } while (!TextUtils.equals(this.i, "deg"));
-    return localObject1 + "deg";
+      ((StringBuilder)localObject2).append(localObject1);
+      ((StringBuilder)localObject2).append((String)localObject3);
+      return ((StringBuilder)localObject2).toString();
+      localObject2 = this.i;
+      localObject3 = "deg";
+      if (!TextUtils.equals((CharSequence)localObject2, "deg")) {
+        break;
+      }
+    }
+    return localObject1;
   }
   
   public Object g()
@@ -171,7 +205,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.animation.e
  * JD-Core Version:    0.7.0.1
  */

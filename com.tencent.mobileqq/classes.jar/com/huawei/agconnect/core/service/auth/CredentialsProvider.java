@@ -5,6 +5,8 @@ import com.huawei.hmf.tasks.Task;
 public abstract interface CredentialsProvider
 {
   public abstract Task<Token> getTokens();
+  
+  public abstract Task<Token> getTokens(boolean paramBoolean);
 }
 
 

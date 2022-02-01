@@ -26,25 +26,28 @@ public class DebugSocketAction
   
   public Boolean perform(BaseRuntime paramBaseRuntime)
   {
-    if (!(paramBaseRuntime instanceof GameRuntime)) {
-      return Boolean.valueOf(false);
+    boolean bool = paramBaseRuntime instanceof GameRuntime;
+    Boolean localBoolean = Boolean.valueOf(false);
+    if (!bool) {
+      return localBoolean;
     }
     paramBaseRuntime = ((GameRuntime)paramBaseRuntime).getQQDebugSocket();
     if (paramBaseRuntime == null)
     {
       QMLog.w("Action", "QQDebugWebSocket is null");
-      return Boolean.valueOf(false);
+      return localBoolean;
     }
-    switch (this.action)
+    int i = this.action;
+    if (i != 1)
     {
+      if (i == 2) {
+        paramBaseRuntime.sendQuitDebugMsgInfo();
+      }
     }
-    for (;;)
-    {
-      return Boolean.valueOf(true);
+    else {
       paramBaseRuntime.sendQQDebugMethodMsg(this.cmd, this.data);
-      continue;
-      paramBaseRuntime.sendQuitDebugMsgInfo();
     }
+    return Boolean.valueOf(true);
   }
   
   public void quitDebugSocket()
@@ -63,7 +66,7 @@ public class DebugSocketAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.action.DebugSocketAction
  * JD-Core Version:    0.7.0.1
  */

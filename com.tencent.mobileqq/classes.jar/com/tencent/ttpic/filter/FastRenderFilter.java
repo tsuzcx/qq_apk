@@ -55,157 +55,7 @@ public class FastRenderFilter
   
   private boolean mergeRenderParams(List<RenderParam> paramList, boolean paramBoolean)
   {
-    int i;
-    Object localObject;
-    int j;
-    int k;
-    int m;
-    if (!paramList.isEmpty())
-    {
-      i = paramList.size();
-      localObject = new float[((RenderParam)paramList.get(0)).position.length * i];
-      i = 0;
-      while (i < paramList.size())
-      {
-        j = 0;
-        while (j < ((RenderParam)paramList.get(i)).position.length)
-        {
-          localObject[(((RenderParam)paramList.get(i)).position.length * i + j)] = ((RenderParam)paramList.get(i)).position[j];
-          j += 1;
-        }
-        i += 1;
-      }
-      setPositions((float[])localObject);
-      localObject = new float[paramList.size() * GlUtil.ORIGIN_TEX_COORDS_TRIANGLES.length];
-      i = 0;
-      while (i < paramList.size())
-      {
-        j = 0;
-        while (j < ((RenderParam)paramList.get(i)).texCords.length)
-        {
-          localObject[(((RenderParam)paramList.get(i)).texCords.length * i + j)] = ((RenderParam)paramList.get(i)).texCords[j];
-          j += 1;
-        }
-        i += 1;
-      }
-      setTexCords((float[])localObject);
-      localObject = new float[paramList.size() * 6];
-      if (paramBoolean)
-      {
-        k = ((RenderParam)paramList.get(0)).texture;
-        i = 0;
-        j = 0;
-        if (j >= localObject.length) {
-          break label379;
-        }
-        m = j / 6;
-        if (((RenderParam)paramList.get(m)).texture == k) {
-          break label968;
-        }
-        k = ((RenderParam)paramList.get(m)).texture;
-        i += 1;
-      }
-    }
-    label968:
-    for (;;)
-    {
-      localObject[j] = (i + 0.5F);
-      j += 1;
-      break;
-      i = 0;
-      while (i < localObject.length)
-      {
-        localObject[i] = (i / 6 + 0.5F);
-        i += 1;
-      }
-      label379:
-      addAttribParam(new AttributeParam("a_stickerIndex", (float[])localObject, 1));
-      localObject = new float[paramList.size() * 6 * 2];
-      i = 0;
-      while (i < paramList.size())
-      {
-        j = 0;
-        while (j < 12)
-        {
-          localObject[(i * 6 * 2 + j)] = ((RenderParam)paramList.get(i)).texAnchor[(j % 2)];
-          j += 1;
-        }
-        i += 1;
-      }
-      addAttribParam(new AttributeParam("texAnchor", (float[])localObject, 2));
-      localObject = new float[paramList.size() * 6 * 1];
-      i = 0;
-      while (i < paramList.size())
-      {
-        j = 0;
-        while (j < 6)
-        {
-          localObject[(i * 6 + j)] = ((RenderParam)paramList.get(i)).texScale;
-          j += 1;
-        }
-        i += 1;
-      }
-      addAttribParam(new AttributeParam("texScale", (float[])localObject, 1));
-      localObject = new float[paramList.size() * 6 * 3];
-      i = 0;
-      while (i < paramList.size())
-      {
-        j = 0;
-        while (j < 18)
-        {
-          localObject[(i * 6 * 3 + j)] = ((RenderParam)paramList.get(i)).texRotate[(j % 3)];
-          j += 1;
-        }
-        i += 1;
-      }
-      addAttribParam(new AttributeParam("texRotate", (float[])localObject, 3));
-      if (paramBoolean)
-      {
-        m = ((RenderParam)paramList.get(0)).texture;
-        int n = 0;
-        i = 0;
-        if (i < paramList.size())
-        {
-          k = n;
-          j = m;
-          if (((RenderParam)paramList.get(i)).texture != m)
-          {
-            k = n + 1;
-            j = ((RenderParam)paramList.get(i)).texture;
-          }
-          localObject = "inputImageTexture" + k;
-          n = ((RenderParam)paramList.get(i)).texture;
-          if (this.hasBlendMode) {}
-          for (m = 1;; m = 0)
-          {
-            addParam(new UniformParam.TextureParam((String)localObject, n, m + (33984 + k)));
-            i += 1;
-            n = k;
-            m = j;
-            break;
-          }
-        }
-      }
-      else
-      {
-        i = 0;
-        if (i < paramList.size())
-        {
-          localObject = "inputImageTexture" + i;
-          k = ((RenderParam)paramList.get(i)).texture;
-          if (this.hasBlendMode) {}
-          for (j = 1;; j = 0)
-          {
-            addParam(new UniformParam.TextureParam((String)localObject, k, j + (33984 + i)));
-            i += 1;
-            break;
-          }
-        }
-      }
-      setCoordNum(paramList.size() * 6);
-      return true;
-      return false;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e2expr(TypeTransformer.java:632)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:716)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   private List<List<RenderParam>> splitRenderParams(List<RenderParam> paramList)
@@ -237,16 +87,15 @@ public class FastRenderFilter
       k = ((RenderParam)paramList.get(0)).texture;
       localObject1 = new ArrayList();
       i = 1;
-      if (j < paramList.size())
+      while (j < paramList.size())
       {
         RenderParam localRenderParam = (RenderParam)paramList.get(j);
-        if (localRenderParam.texture == k) {
+        if (localRenderParam.texture == k)
+        {
           ((List)localObject1).add(localRenderParam);
         }
-        for (;;)
+        else
         {
-          j += 1;
-          break;
           k = i + 1;
           i = k;
           Object localObject2 = localObject1;
@@ -260,6 +109,7 @@ public class FastRenderFilter
           k = localRenderParam.texture;
           localObject1 = localObject2;
         }
+        j += 1;
       }
       localArrayList.add(localObject1);
       return localArrayList;
@@ -384,7 +234,10 @@ public class FastRenderFilter
     int i = 0;
     while (i <= 7)
     {
-      addParam(new UniformParam.TextureParam("inputImageTexture" + i, 0, 33986));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("inputImageTexture");
+      localStringBuilder.append(i);
+      addParam(new UniformParam.TextureParam(localStringBuilder.toString(), 0, 33986));
       i += 1;
     }
   }
@@ -428,7 +281,11 @@ public class FastRenderFilter
         addParam(new UniformParam.Float2fParam("canvasSize", paramFrame.width, paramFrame.height));
         paramFrame.bindFrame(-1, paramFrame.width, paramFrame.height, 0.0D);
       }
-      while (paramBoolean)
+      else
+      {
+        addParam(new UniformParam.Float2fParam("canvasSize", this.width, this.height));
+      }
+      if (paramBoolean)
       {
         Collections.sort(paramList, new FastRenderFilter.1(this));
         paramList = splitRenderParams(paramList, true).iterator();
@@ -439,7 +296,6 @@ public class FastRenderFilter
             renderTexture();
           }
         }
-        addParam(new UniformParam.Float2fParam("canvasSize", this.width, this.height));
       }
       paramList = splitRenderParams(paramList).iterator();
       while (paramList.hasNext()) {
@@ -503,7 +359,7 @@ public class FastRenderFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.FastRenderFilter
  * JD-Core Version:    0.7.0.1
  */

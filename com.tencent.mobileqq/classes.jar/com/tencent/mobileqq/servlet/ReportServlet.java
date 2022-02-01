@@ -31,7 +31,7 @@ public class ReportServlet
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if ("CliLogSvc.UploadReq".equals(paramFromServiceMsg.getServiceCmd()))
+    if (("CliLogSvc.UploadReq".equals(paramFromServiceMsg.getServiceCmd())) && (paramIntent != null) && (paramIntent.getExtras() != null))
     {
       boolean bool = paramFromServiceMsg.isSuccess();
       if (paramIntent.getExtras().getInt("seqKey") != 0) {
@@ -45,22 +45,87 @@ public class ReportServlet
   
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    int i = 0;
-    switch (paramIntent.getExtras().getInt("sendType"))
+    int i = paramIntent.getExtras().getInt("sendType");
+    Object localObject1 = "GBK";
+    Object localObject2 = "UTF-8";
+    Object localObject6;
+    Object localObject3;
+    Object localObject7;
+    Object localObject5;
+    Object localObject4;
+    switch (i)
     {
-    }
-    Object localObject1;
-    label514:
-    label1174:
-    do
-    {
+    case 5: 
+    default: 
       return;
-      sendToMSF(paramIntent, MsfMsgUtil.getAppDataIncermentMsg(null, paramIntent.getStringExtra("uin"), paramIntent.getStringArrayExtra("tags"), paramIntent.getLongExtra("count", 0L)));
-      return;
+    case 10: 
+      localObject6 = new strupbuff();
+      ((strupbuff)localObject6).prefix = "";
+      localObject3 = paramIntent.getExtras().getStringArrayList("tags");
+      localObject7 = paramIntent.getExtras().getStringArrayList("contents");
+      HashMap localHashMap = new HashMap();
+      i = 0;
+      localObject2 = null;
+      while (i < ((List)localObject3).size())
+      {
+        String str = (String)((List)localObject3).get(i);
+        localObject5 = (String)((List)localObject7).get(i);
+        if (QLog.isColorLevel())
+        {
+          if (localObject2 == null) {
+            localObject2 = new StringBuilder("[Capture Report Send:not runtime]:\n");
+          }
+          ((StringBuilder)localObject2).append("[");
+          ((StringBuilder)localObject2).append(i);
+          ((StringBuilder)localObject2).append("]");
+          ((StringBuilder)localObject2).append(" tag = ");
+          ((StringBuilder)localObject2).append(str);
+          ((StringBuilder)localObject2).append(", content = ");
+          ((StringBuilder)localObject2).append((String)localObject5);
+          ((StringBuilder)localObject2).append("\n");
+        }
+        if (ReportController.a(str)) {
+          localObject4 = localObject1;
+        } else {
+          localObject4 = "UTF-8";
+        }
+        try
+        {
+          byte[] arrayOfByte = ((String)localObject5).getBytes((String)localObject4);
+          localObject5 = (ArrayList)localHashMap.get(str);
+          localObject4 = localObject5;
+          if (localObject5 == null)
+          {
+            localObject4 = new ArrayList();
+            localHashMap.put(str, localObject4);
+          }
+          ((ArrayList)localObject4).add(arrayOfByte);
+        }
+        catch (UnsupportedEncodingException localUnsupportedEncodingException)
+        {
+          break label325;
+        }
+        i += 1;
+      }
+      ((strupbuff)localObject6).logstring = new HashMap(localHashMap);
+      ((strupbuff)localObject6).encoding = 0;
+      ((strupbuff)localObject6).seqno = paramIntent.getExtras().getInt("seqKey");
+      paramPacket.setSSOCommand("CliLogSvc.UploadReq");
+      paramPacket.setServantName("QQService.CliLogSvc.MainServantObj");
+      paramPacket.setFuncName("UploadReq");
+      paramPacket.addRequestPacket("Data", (JceStruct)localObject6);
+      paramPacket.setTimeout(30000L);
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        QLog.d("CaptureReport", 2, ((StringBuilder)localObject2).toString());
+        return;
+      }
+      break;
+    case 9: 
       localObject1 = new StrupBuff();
-      Object localObject2 = paramIntent.getExtras().getString("tag");
+      localObject2 = paramIntent.getExtras().getString("tag");
       ((StrupBuff)localObject1).prefix = "";
-      Object localObject3 = paramIntent.getExtras().getByteArray("content");
+      localObject3 = paramIntent.getExtras().getByteArray("content");
       paramIntent = new ArrayList();
       paramIntent.add(localObject3);
       localObject3 = new HashMap();
@@ -73,6 +138,51 @@ public class ReportServlet
       paramPacket.addRequestPacket("Data", (JceStruct)localObject1);
       paramPacket.setNoResponse();
       return;
+    case 8: 
+      localObject2 = new StrupBuff();
+      ((StrupBuff)localObject2).prefix = "";
+      localObject3 = paramIntent.getExtras().getStringArrayList("tags");
+      localObject4 = paramIntent.getExtras().getStringArrayList("contents");
+      localObject5 = new HashMap();
+      i = 0;
+      while (i < ((List)localObject3).size())
+      {
+        localObject6 = (String)((List)localObject3).get(i);
+        paramIntent = (String)((List)localObject4).get(i);
+        try
+        {
+          localObject7 = paramIntent.getBytes("utf-8");
+          localObject1 = (ArrayList)((HashMap)localObject5).get(localObject6);
+          paramIntent = (Intent)localObject1;
+          if (localObject1 == null)
+          {
+            paramIntent = new ArrayList();
+            ((HashMap)localObject5).put(localObject6, paramIntent);
+          }
+          paramIntent.add(localObject7);
+        }
+        catch (UnsupportedEncodingException paramIntent)
+        {
+          long l1;
+          long l2;
+          boolean bool1;
+          boolean bool2;
+          break label678;
+        }
+        i += 1;
+      }
+      ((StrupBuff)localObject2).logstring = new HashMap((Map)localObject5);
+      ((StrupBuff)localObject2).encoding = 2;
+      paramPacket.setSSOCommand("CliLogSvc.UploadReq");
+      paramPacket.setServantName("QQService.CliLogSvc.MainServantObj");
+      paramPacket.setFuncName("UploadReq");
+      paramPacket.addRequestPacket("Data", (JceStruct)localObject2);
+      paramPacket.setNoResponse();
+      return;
+    case 7: 
+      sendToMSF(paramIntent, MsfMsgUtil.getAppDataIncermentMsg(null, paramIntent.getStringExtra("uin"), paramIntent.getStringArrayExtra("tags"), paramIntent.getLongExtra("count", 0L)));
+      return;
+    case 6: 
       localObject1 = new StrupBuff();
       localObject2 = paramIntent.getExtras().getString("tag");
       ((StrupBuff)localObject1).prefix = "";
@@ -102,49 +212,7 @@ public class ReportServlet
       paramPacket.addRequestPacket("Data", (JceStruct)localObject1);
       paramPacket.setNoResponse();
       return;
-      localObject2 = new StrupBuff();
-      ((StrupBuff)localObject2).prefix = "";
-      localObject3 = paramIntent.getExtras().getStringArrayList("tags");
-      Object localObject4 = paramIntent.getExtras().getStringArrayList("contents");
-      Object localObject5 = new HashMap();
-      while (i < ((List)localObject3).size())
-      {
-        localObject6 = (String)((List)localObject3).get(i);
-        paramIntent = (String)((List)localObject4).get(i);
-        try
-        {
-          localObject7 = paramIntent.getBytes("utf-8");
-          localObject1 = (ArrayList)((HashMap)localObject5).get(localObject6);
-          paramIntent = (Intent)localObject1;
-          if (localObject1 == null)
-          {
-            paramIntent = new ArrayList();
-            ((HashMap)localObject5).put(localObject6, paramIntent);
-          }
-          paramIntent.add(localObject7);
-        }
-        catch (UnsupportedEncodingException paramIntent)
-        {
-          Object localObject7;
-          long l1;
-          long l2;
-          boolean bool1;
-          boolean bool2;
-          String str;
-          break label514;
-        }
-        i += 1;
-      }
-      ((StrupBuff)localObject2).logstring = new HashMap((Map)localObject5);
-      ((StrupBuff)localObject2).encoding = 2;
-      paramPacket.setSSOCommand("CliLogSvc.UploadReq");
-      paramPacket.setServantName("QQService.CliLogSvc.MainServantObj");
-      paramPacket.setFuncName("UploadReq");
-      paramPacket.addRequestPacket("Data", (JceStruct)localObject2);
-      paramPacket.setNoResponse();
-      return;
-      sendToMSF(paramIntent, MsfMsgUtil.getCurrentDataCountMsg(null, paramIntent.getStringArrayExtra("tags")));
-      return;
+    case 4: 
       paramPacket = paramIntent.getExtras().getString("tagName");
       l1 = paramIntent.getExtras().getLong("duration");
       l2 = paramIntent.getExtras().getLong("size");
@@ -160,96 +228,54 @@ public class ReportServlet
       ((RdmReq)localObject2).params = ((Map)localObject1);
       sendToMSF(paramIntent, MsfMsgUtil.getRdmReportMsg(null, (RdmReq)localObject2));
       return;
-      localObject1 = new StrupBuff();
-      localObject2 = paramIntent.getExtras().getString("tag");
-      ((StrupBuff)localObject1).prefix = "";
-      localObject3 = paramIntent.getExtras().getString("content");
-      localObject4 = new ArrayList();
-      if (ReportController.a((String)localObject2)) {}
-      for (paramIntent = "GBK";; paramIntent = "UTF-8") {
-        try
-        {
-          ((ArrayList)localObject4).add(((String)localObject3).getBytes(paramIntent));
-          paramIntent = new HashMap();
-          paramIntent.put(localObject2, localObject4);
-          ((StrupBuff)localObject1).logstring = new HashMap(paramIntent);
-          ((StrupBuff)localObject1).encoding = 0;
-          paramPacket.setSSOCommand("CliLogSvc.UploadReq");
-          paramPacket.setServantName("QQService.CliLogSvc.MainServantObj");
-          paramPacket.setFuncName("UploadReq");
-          paramPacket.addRequestPacket("Data", (JceStruct)localObject1);
-          paramPacket.setNoResponse();
-          if ((!QLog.isColorLevel()) || (!"dc02181".equals(localObject2))) {
-            break;
-          }
-          QLog.d("CaptureReport", 2, "[Capture Report Send:runtime] tag = " + (String)localObject2 + ", content = " + (String)localObject3);
-          return;
-        }
-        catch (UnsupportedEncodingException paramIntent)
-        {
-          paramIntent.printStackTrace();
-          return;
-        }
+    case 3: 
+      sendToMSF(paramIntent, MsfMsgUtil.getCurrentDataCountMsg(null, paramIntent.getStringArrayExtra("tags")));
+      return;
+    case 2: 
+      label325:
+      localObject3 = new StrupBuff();
+      label678:
+      localObject1 = paramIntent.getExtras().getString("tag");
+      ((StrupBuff)localObject3).prefix = "";
+      localObject4 = paramIntent.getExtras().getString("content");
+      localObject5 = new ArrayList();
+      paramIntent = (Intent)localObject2;
+      if (ReportController.a((String)localObject1)) {
+        paramIntent = "GBK";
       }
-      localObject4 = new strupbuff();
-      ((strupbuff)localObject4).prefix = "";
-      localObject5 = paramIntent.getExtras().getStringArrayList("tags");
-      Object localObject6 = paramIntent.getExtras().getStringArrayList("contents");
-      localObject7 = new HashMap();
-      i = 0;
-      localObject1 = null;
-      if (i < ((List)localObject5).size())
+      try
       {
-        str = (String)((List)localObject5).get(i);
-        localObject3 = (String)((List)localObject6).get(i);
-        localObject2 = localObject1;
-        if (QLog.isColorLevel())
+        ((ArrayList)localObject5).add(((String)localObject4).getBytes(paramIntent));
+        paramIntent = new HashMap();
+        paramIntent.put(localObject1, localObject5);
+        ((StrupBuff)localObject3).logstring = new HashMap(paramIntent);
+        ((StrupBuff)localObject3).encoding = 0;
+        paramPacket.setSSOCommand("CliLogSvc.UploadReq");
+        paramPacket.setServantName("QQService.CliLogSvc.MainServantObj");
+        paramPacket.setFuncName("UploadReq");
+        paramPacket.addRequestPacket("Data", (JceStruct)localObject3);
+        paramPacket.setNoResponse();
+        if ((QLog.isColorLevel()) && ("dc02181".equals(localObject1)))
         {
-          localObject2 = localObject1;
-          if (localObject1 == null) {
-            localObject2 = new StringBuilder("[Capture Report Send:not runtime]:\n");
-          }
-          ((StringBuilder)localObject2).append("[").append(i).append("]").append(" tag = ").append(str).append(", content = ").append((String)localObject3).append("\n");
-        }
-        if (ReportController.a(str)) {}
-        for (localObject1 = "GBK";; localObject1 = "UTF-8")
-        {
-          try
-          {
-            byte[] arrayOfByte = ((String)localObject3).getBytes((String)localObject1);
-            localObject3 = (ArrayList)((HashMap)localObject7).get(str);
-            localObject1 = localObject3;
-            if (localObject3 == null)
-            {
-              localObject1 = new ArrayList();
-              ((HashMap)localObject7).put(str, localObject1);
-            }
-            ((ArrayList)localObject1).add(arrayOfByte);
-          }
-          catch (UnsupportedEncodingException localUnsupportedEncodingException)
-          {
-            break label1174;
-          }
-          i += 1;
-          localObject1 = localObject2;
-          break;
+          paramIntent = new StringBuilder();
+          paramIntent.append("[Capture Report Send:runtime] tag = ");
+          paramIntent.append((String)localObject1);
+          paramIntent.append(", content = ");
+          paramIntent.append((String)localObject4);
+          QLog.d("CaptureReport", 2, paramIntent.toString());
+          return;
         }
       }
-      ((strupbuff)localObject4).logstring = new HashMap((Map)localObject7);
-      ((strupbuff)localObject4).encoding = 0;
-      ((strupbuff)localObject4).seqno = paramIntent.getExtras().getInt("seqKey");
-      paramPacket.setSSOCommand("CliLogSvc.UploadReq");
-      paramPacket.setServantName("QQService.CliLogSvc.MainServantObj");
-      paramPacket.setFuncName("UploadReq");
-      paramPacket.addRequestPacket("Data", (JceStruct)localObject4);
-      paramPacket.setTimeout(30000L);
-    } while (TextUtils.isEmpty((CharSequence)localObject1));
-    QLog.d("CaptureReport", 2, ((StringBuilder)localObject1).toString());
+      catch (UnsupportedEncodingException paramIntent)
+      {
+        paramIntent.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.ReportServlet
  * JD-Core Version:    0.7.0.1
  */

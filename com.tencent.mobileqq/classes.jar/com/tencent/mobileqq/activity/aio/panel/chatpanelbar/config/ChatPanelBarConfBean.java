@@ -11,13 +11,7 @@ public class ChatPanelBarConfBean
   public static ChatPanelBarConfBean a(String paramString)
   {
     ChatPanelBarConfBean localChatPanelBarConfBean = new ChatPanelBarConfBean();
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatPanelBarConfBean", 2, "[parse] config: " + paramString + ", showCmGame: " + localChatPanelBarConfBean.a);
-      }
-      return localChatPanelBarConfBean;
+    if (!TextUtils.isEmpty(paramString)) {
       try
       {
         localChatPanelBarConfBean.a = new JSONObject(paramString).optInt("cmgame");
@@ -27,6 +21,16 @@ public class ChatPanelBarConfBean
         QLog.e("ChatPanelBarConfBean", 1, "[parse] parse error: ", localThrowable);
       }
     }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[parse] config: ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", showCmGame: ");
+      localStringBuilder.append(localChatPanelBarConfBean.a);
+      QLog.d("ChatPanelBarConfBean", 2, localStringBuilder.toString());
+    }
+    return localChatPanelBarConfBean;
   }
   
   public boolean a()
@@ -36,7 +40,7 @@ public class ChatPanelBarConfBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.chatpanelbar.config.ChatPanelBarConfBean
  * JD-Core Version:    0.7.0.1
  */

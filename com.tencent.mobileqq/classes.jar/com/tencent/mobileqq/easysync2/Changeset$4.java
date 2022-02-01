@@ -15,19 +15,18 @@ final class Changeset$4
     Changeset.a(paramOperation1, paramOperation2, paramOperation3, this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool);
     if (paramOperation3.jdField_a_of_type_Char == '+')
     {
-      if (j == 43) {
+      if (j == 43)
+      {
         this.jdField_a_of_type_JavaLangStringBuilder.append(this.b.a(paramOperation3.jdField_a_of_type_Int));
+        return;
       }
+      this.jdField_a_of_type_JavaLangStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqEasysync2StringIterator.a(paramOperation3.jdField_a_of_type_Int));
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_JavaLangStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqEasysync2StringIterator.a(paramOperation3.jdField_a_of_type_Int));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.Changeset.4
  * JD-Core Version:    0.7.0.1
  */

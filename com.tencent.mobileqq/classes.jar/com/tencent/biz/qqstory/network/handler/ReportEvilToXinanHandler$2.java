@@ -17,49 +17,44 @@ class ReportEvilToXinanHandler$2
   
   public void run()
   {
-    int i = -1;
+    int i;
     try
     {
-      j = new JSONObject(this.jdField_a_of_type_JavaLangString).getInt("rtn_code");
-      i = j;
+      i = new JSONObject(this.jdField_a_of_type_JavaLangString).getInt("rtn_code");
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        ReportEvilToXinanHandler.ReportToXinanEvent localReportToXinanEvent;
-        localJSONException.printStackTrace();
-        continue;
-        j = 2;
-      }
-      QQToast.a(BaseApplication.getContext(), HardCodeUtil.a(2131713369), 0).a();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label205;
-      }
+      localJSONException.printStackTrace();
+      i = -1;
     }
+    int j;
     if (i == 0)
     {
-      QQToast.a(BaseApplication.getContext(), HardCodeUtil.a(2131713368), 0).a();
-      if (this.jdField_a_of_type_Boolean)
-      {
+      QQToast.a(BaseApplication.getContext(), HardCodeUtil.a(2131713336), 0).a();
+      if (this.jdField_a_of_type_Boolean) {
         j = 1;
-        StoryReportor.a("play_video", "report_suc", j, 0, new String[] { this.b, "", "", this.c });
-        localReportToXinanEvent = new ReportEvilToXinanHandler.ReportToXinanEvent(new ErrorMessage(i, ""), this.c, this.d, this.b);
-        StoryDispatcher.a().dispatch(localReportToXinanEvent);
-        return;
+      } else {
+        j = 2;
       }
+      StoryReportor.a("play_video", "report_suc", j, 0, new String[] { this.b, "", "", this.c });
     }
-    label205:
-    for (int j = 1;; j = 2)
+    else
     {
+      QQToast.a(BaseApplication.getContext(), HardCodeUtil.a(2131713337), 0).a();
+      if (this.jdField_a_of_type_Boolean) {
+        j = 1;
+      } else {
+        j = 2;
+      }
       StoryReportor.a("play_video", "report_fail", j, 0, new String[] { this.b, "", "", this.c });
-      break;
     }
+    ReportEvilToXinanHandler.ReportToXinanEvent localReportToXinanEvent = new ReportEvilToXinanHandler.ReportToXinanEvent(new ErrorMessage(i, ""), this.c, this.d, this.b);
+    StoryDispatcher.a().dispatch(localReportToXinanEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.ReportEvilToXinanHandler.2
  * JD-Core Version:    0.7.0.1
  */

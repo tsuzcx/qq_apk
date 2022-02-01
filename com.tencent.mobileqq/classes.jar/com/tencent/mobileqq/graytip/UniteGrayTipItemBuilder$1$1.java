@@ -2,7 +2,7 @@ package com.tencent.mobileqq.graytip;
 
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.pic.PicPreDownloader;
+import com.tencent.mobileqq.pic.api.IPicPreDownload;
 
 class UniteGrayTipItemBuilder$1$1
   implements Runnable
@@ -11,12 +11,12 @@ class UniteGrayTipItemBuilder$1$1
   
   public void run()
   {
-    this.a.this$0.a.getPicPreDownloader().a((MessageForPic)this.a.a, 2);
+    ((IPicPreDownload)this.a.this$0.a.getRuntimeService(IPicPreDownload.class, "")).productFromAIO((MessageForPic)this.a.a, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.graytip.UniteGrayTipItemBuilder.1.1
  * JD-Core Version:    0.7.0.1
  */

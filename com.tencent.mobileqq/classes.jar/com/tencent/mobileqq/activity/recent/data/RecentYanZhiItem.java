@@ -22,54 +22,67 @@ public class RecentYanZhiItem
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if ((paramQQAppInterface == null) || (paramContext == null)) {
-      return;
-    }
-    Object localObject1 = paramQQAppInterface.getMessageFacade().b(this.mData.senderuin, this.mData.istroop);
-    if ((localObject1 instanceof MessageForYanZhi)) {}
-    for (localObject1 = (MessageForYanZhi)localObject1;; localObject1 = null)
+    if (paramQQAppInterface != null)
     {
-      if (localObject1 == null)
-      {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("Q.msg_box.RecentYanZhiItem", 2, "MessageForYanZhi == null");
+      if (paramContext == null) {
         return;
       }
-      ((MessageForYanZhi)localObject1).parse();
-      this.mTitleName = paramContext.getString(2131694337);
-      Object localObject2 = paramQQAppInterface.getConversationFacade();
-      if (localObject2 != null)
-      {
-        this.mUnreadNum = ((ConversationFacade)localObject2).a(((MessageForYanZhi)localObject1).frienduin, ((MessageForYanZhi)localObject1).istroop);
-        if (this.mUnreadNum <= 1) {}
+      Object localObject = paramQQAppInterface.getMessageFacade().b(this.mData.senderuin, this.mData.istroop);
+      MessageForYanZhi localMessageForYanZhi = null;
+      if ((localObject instanceof MessageForYanZhi)) {
+        localMessageForYanZhi = (MessageForYanZhi)localObject;
       }
-      for (this.mUnreadNum = 1;; this.mUnreadNum = 0)
+      if (localMessageForYanZhi == null)
       {
-        this.mUnreadFlag = 1;
-        this.mDisplayTime = ((MessageForYanZhi)localObject1).time;
-        localObject2 = getMsgSummaryTemp();
-        ((MsgSummary)localObject2).strContent = (((MessageForYanZhi)localObject1).likeCount + paramContext.getString(2131694338));
-        extraUpdate(paramQQAppInterface, paramContext, (MsgSummary)localObject2);
-        if (!AppSetting.d) {
-          break;
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.msg_box.RecentYanZhiItem", 2, "MessageForYanZhi == null");
         }
+        return;
+      }
+      localMessageForYanZhi.parse();
+      this.mTitleName = paramContext.getString(2131694302);
+      localObject = paramQQAppInterface.getConversationFacade();
+      if (localObject != null)
+      {
+        this.mUnreadNum = ((ConversationFacade)localObject).a(localMessageForYanZhi.frienduin, localMessageForYanZhi.istroop);
+        if (this.mUnreadNum > 1) {
+          this.mUnreadNum = 1;
+        }
+      }
+      else
+      {
+        this.mUnreadNum = 0;
+      }
+      this.mUnreadFlag = 1;
+      this.mDisplayTime = localMessageForYanZhi.time;
+      localObject = getMsgSummaryTemp();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localMessageForYanZhi.likeCount);
+      localStringBuilder.append(paramContext.getString(2131694303));
+      ((MsgSummary)localObject).strContent = localStringBuilder.toString();
+      extraUpdate(paramQQAppInterface, paramContext, (MsgSummary)localObject);
+      if (AppSetting.d)
+      {
         paramQQAppInterface = new StringBuilder(24);
         paramQQAppInterface.append(this.mTitleName);
-        if (this.mMsgExtroInfo != null) {
-          paramQQAppInterface.append(this.mMsgExtroInfo + ",");
+        if (this.mMsgExtroInfo != null)
+        {
+          paramContext = new StringBuilder();
+          paramContext.append(this.mMsgExtroInfo);
+          paramContext.append(",");
+          paramQQAppInterface.append(paramContext.toString());
         }
-        paramQQAppInterface.append(this.mLastMsg).append(' ').append(this.mShowTime);
+        paramQQAppInterface.append(this.mLastMsg);
+        paramQQAppInterface.append(' ');
+        paramQQAppInterface.append(this.mShowTime);
         this.mContentDesc = paramQQAppInterface.toString();
-        return;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentYanZhiItem
  * JD-Core Version:    0.7.0.1
  */

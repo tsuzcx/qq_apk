@@ -57,341 +57,298 @@ public class TroopGiftAioPanelData
     this.jdField_e_of_type_Int = 0;
     this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
     this.jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
-    if (paramJSONObject == null) {}
-    for (;;)
-    {
+    if (paramJSONObject == null) {
       return;
-      this.jdField_c_of_type_JavaLangString = paramJSONObject.toString();
-      try
+    }
+    this.jdField_c_of_type_JavaLangString = paramJSONObject.toString();
+    try
+    {
+      Object localObject1 = paramJSONObject.optString("date");
+      this.jdField_a_of_type_Long = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse((String)localObject1).getTime();
+      label83:
+      this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isShowRedDot");
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("defaultPackageID");
+      this.jdField_a_of_type_Int = paramJSONObject.optInt("defaultPersonalID");
+      this.jdField_b_of_type_Int = paramJSONObject.optInt("defaultPublicID");
+      this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("defaultQuantity");
+      JSONArray localJSONArray5 = paramJSONObject.optJSONArray("items_personal");
+      JSONArray localJSONArray3 = paramJSONObject.optJSONArray("items_public");
+      Object localObject2 = paramJSONObject.optJSONArray("items_custom");
+      JSONArray localJSONArray4 = paramJSONObject.optJSONArray("items_interact");
+      JSONArray localJSONArray1 = paramJSONObject.optJSONArray("items_exclusive_lib");
+      Object localObject4 = paramJSONObject.optJSONArray("items_package_lib");
+      JSONArray localJSONArray2 = paramJSONObject.optJSONArray("items_personal_tab");
+      Object localObject3 = paramJSONObject.optJSONArray("items_personal_free_tab");
+      localObject1 = paramJSONObject.optJSONArray("web_panel_tab");
+      JSONObject localJSONObject1 = paramJSONObject.optJSONObject("operationInfo");
+      JSONObject localJSONObject2 = paramJSONObject.optJSONObject("coinInfo");
+      int i;
+      int j;
+      if ((localObject2 != null) && (localJSONArray5 != null))
       {
-        Object localObject1 = paramJSONObject.optString("date");
-        this.jdField_a_of_type_Long = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse((String)localObject1).getTime();
-        this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isShowRedDot");
-        this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("defaultPackageID");
-        this.jdField_a_of_type_Int = paramJSONObject.optInt("defaultPersonalID");
-        this.jdField_b_of_type_Int = paramJSONObject.optInt("defaultPublicID");
-        this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("defaultQuantity");
-        Object localObject6 = paramJSONObject.optJSONArray("items_personal");
-        Object localObject4 = paramJSONObject.optJSONArray("items_public");
-        Object localObject7 = paramJSONObject.optJSONArray("items_custom");
-        Object localObject5 = paramJSONObject.optJSONArray("items_interact");
-        JSONArray localJSONArray1 = paramJSONObject.optJSONArray("items_exclusive_lib");
-        Object localObject3 = paramJSONObject.optJSONArray("items_package_lib");
-        JSONArray localJSONArray2 = paramJSONObject.optJSONArray("items_personal_tab");
-        Object localObject2 = paramJSONObject.optJSONArray("items_personal_free_tab");
-        localObject1 = paramJSONObject.optJSONArray("web_panel_tab");
-        JSONObject localJSONObject1 = paramJSONObject.optJSONObject("operationInfo");
-        JSONObject localJSONObject2 = paramJSONObject.optJSONObject("coinInfo");
-        if ((localObject7 != null) && (localObject6 != null))
+        i = ((JSONArray)localObject2).length();
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        j = 0;
+        while (j < i)
         {
-          j = ((JSONArray)localObject7).length();
-          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-          i = 0;
-          if (i < j)
+          Object localObject5 = ((JSONArray)localObject2).optJSONObject(j);
+          if (localObject5 != null)
           {
-            Object localObject8 = ((JSONArray)localObject7).optJSONObject(i);
-            if (localObject8 != null)
-            {
-              localObject8 = new TroopGiftAioItemData((JSONObject)localObject8, i);
-              if (((TroopGiftAioItemData)localObject8).jdField_c_of_type_Int <= 4) {
-                break label298;
-              }
-            }
-            for (;;)
-            {
-              i += 1;
-              break;
-              label298:
-              this.jdField_a_of_type_JavaUtilArrayList.add(localObject8);
+            localObject5 = new TroopGiftAioItemData((JSONObject)localObject5, j);
+            if (((TroopGiftAioItemData)localObject5).jdField_c_of_type_Int <= 4) {
+              this.jdField_a_of_type_JavaUtilArrayList.add(localObject5);
             }
           }
-          j = ((JSONArray)localObject6).length();
-          i = 0;
-          if (i < j)
-          {
-            localObject7 = ((JSONArray)localObject6).optJSONObject(i);
-            if (localObject7 != null)
-            {
-              localObject7 = new TroopGiftAioItemData((JSONObject)localObject7, this.jdField_a_of_type_JavaUtilArrayList.size());
-              if (((TroopGiftAioItemData)localObject7).jdField_c_of_type_Int <= 4) {
-                break label373;
-              }
-            }
-            for (;;)
-            {
-              i += 1;
-              break;
-              label373:
-              if (((TroopGiftAioItemData)localObject7).jdField_b_of_type_Int != 0) {
-                this.jdField_a_of_type_JavaUtilArrayList.add(localObject7);
-              }
-            }
-          }
+          j += 1;
         }
-        else if (localObject6 != null)
+        localObject2 = localObject1;
+        i = localJSONArray5.length();
+        j = 0;
+        for (;;)
         {
-          j = ((JSONArray)localObject6).length();
-          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-          i = 0;
-          if (i < j)
+          localObject1 = localObject2;
+          if (j >= i) {
+            break;
+          }
+          localObject1 = localJSONArray5.optJSONObject(j);
+          if (localObject1 != null)
           {
-            localObject7 = ((JSONArray)localObject6).optJSONObject(i);
-            if (localObject7 != null)
-            {
-              localObject7 = new TroopGiftAioItemData((JSONObject)localObject7, this.jdField_a_of_type_JavaUtilArrayList.size());
-              if (((TroopGiftAioItemData)localObject7).jdField_c_of_type_Int <= 4) {
-                break label472;
-              }
-            }
-            for (;;)
-            {
-              i += 1;
-              break;
-              label472:
-              this.jdField_a_of_type_JavaUtilArrayList.add(localObject7);
+            localObject1 = new TroopGiftAioItemData((JSONObject)localObject1, this.jdField_a_of_type_JavaUtilArrayList.size());
+            if ((((TroopGiftAioItemData)localObject1).jdField_c_of_type_Int <= 4) && (((TroopGiftAioItemData)localObject1).jdField_b_of_type_Int != 0)) {
+              this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
             }
           }
+          j += 1;
         }
-        if (localObject5 != null)
+      }
+      localObject2 = localObject1;
+      localObject1 = localObject2;
+      if (localJSONArray5 != null)
+      {
+        i = localJSONArray5.length();
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        j = 0;
+        for (;;)
         {
-          j = ((JSONArray)localObject5).length();
+          localObject1 = localObject2;
+          if (j >= i) {
+            break;
+          }
+          localObject1 = localJSONArray5.optJSONObject(j);
+          if (localObject1 != null)
+          {
+            localObject1 = new TroopGiftAioItemData((JSONObject)localObject1, this.jdField_a_of_type_JavaUtilArrayList.size());
+            if (((TroopGiftAioItemData)localObject1).jdField_c_of_type_Int <= 4) {
+              this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
+            }
+          }
+          j += 1;
+        }
+      }
+      if (localJSONArray4 != null)
+      {
+        j = localJSONArray4.length();
+        this.jdField_d_of_type_JavaUtilArrayList = new ArrayList(j);
+        i = 0;
+        while (i < j)
+        {
+          localObject2 = localJSONArray4.optJSONObject(i);
+          if (localObject2 != null)
+          {
+            localObject2 = new TroopGiftAioItemData((JSONObject)localObject2, i);
+            if (((TroopGiftAioItemData)localObject2).jdField_c_of_type_Int <= 4)
+            {
+              ((TroopGiftAioItemData)localObject2).jdField_b_of_type_Boolean = true;
+              this.jdField_d_of_type_JavaUtilArrayList.add(localObject2);
+            }
+          }
+          i += 1;
+        }
+      }
+      if (localJSONArray3 != null)
+      {
+        j = localJSONArray3.length();
+        if (this.jdField_d_of_type_JavaUtilArrayList == null) {
           this.jdField_d_of_type_JavaUtilArrayList = new ArrayList(j);
-          i = 0;
-          if (i < j)
+        }
+        i = 0;
+        while (i < j)
+        {
+          localObject2 = localJSONArray3.optJSONObject(i);
+          if (localObject2 != null)
           {
-            localObject6 = ((JSONArray)localObject5).optJSONObject(i);
-            if (localObject6 != null)
+            localObject2 = new TroopGiftAioItemData((JSONObject)localObject2, this.jdField_d_of_type_JavaUtilArrayList.size());
+            if (((TroopGiftAioItemData)localObject2).jdField_c_of_type_Int <= 2) {
+              this.jdField_d_of_type_JavaUtilArrayList.add(localObject2);
+            }
+          }
+          i += 1;
+        }
+      }
+      if (localJSONObject1 != null) {
+        this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData$OperationInfo = new TroopGiftAioPanelData.OperationInfo(localJSONObject1);
+      }
+      if (localJSONObject2 != null) {
+        this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData$CoinInfo = new TroopGiftAioPanelData.CoinInfo(localJSONObject2);
+      }
+      a(localJSONArray1, paramString);
+      if (localObject4 != null)
+      {
+        j = ((JSONArray)localObject4).length();
+        if (this.jdField_e_of_type_JavaUtilArrayList == null) {
+          this.jdField_e_of_type_JavaUtilArrayList = new ArrayList(j);
+        }
+        i = 0;
+        while (i < j)
+        {
+          localObject2 = ((JSONArray)localObject4).optJSONObject(i);
+          if (localObject2 != null)
+          {
+            localObject2 = new TroopGiftAioItemData((JSONObject)localObject2, i);
+            if (((TroopGiftAioItemData)localObject2).jdField_c_of_type_Int <= 4)
             {
-              localObject6 = new TroopGiftAioItemData((JSONObject)localObject6, i);
-              if (((TroopGiftAioItemData)localObject6).jdField_c_of_type_Int <= 4) {
-                break label559;
+              ((TroopGiftAioItemData)localObject2).jdField_c_of_type_Int = 5;
+              ((TroopGiftAioItemData)localObject2).d = true;
+              this.jdField_e_of_type_JavaUtilArrayList.add(localObject2);
+            }
+          }
+          i += 1;
+        }
+      }
+      this.jdField_a_of_type_ComTencentBizTroopgiftGiftConfigManager$ActivityTabInfo = GiftConfigManager.a(paramJSONObject.optJSONObject("activityInfo"));
+      localObject2 = paramJSONObject.optJSONObject("profileCard");
+      if (localObject2 != null) {
+        this.jdField_a_of_type_ComTencentBizTroopgiftGiftConfigManager$TextEntryItem = GiftConfigManager.a(((JSONObject)localObject2).optJSONObject("giftItem"));
+      }
+      this.jdField_a_of_type_ComTencentBizTroopgiftGiftConfigManager$ImgEntryItem = GiftConfigManager.a(paramJSONObject.optJSONObject("panelEntry"));
+      paramJSONObject = new HashMap();
+      localObject2 = this.jdField_a_of_type_JavaUtilArrayList;
+      if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0))
+      {
+        localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          localObject4 = ((Iterator)localObject2).next();
+          if ((localObject4 instanceof TroopGiftAioItemData))
+          {
+            localObject4 = (TroopGiftAioItemData)localObject4;
+            paramJSONObject.put(Integer.valueOf(((TroopGiftAioItemData)localObject4).jdField_a_of_type_Int), localObject4);
+          }
+        }
+      }
+      int k;
+      if ((localObject3 != null) && (((JSONArray)localObject3).length() > 0))
+      {
+        j = ((JSONArray)localObject3).length();
+        this.jdField_c_of_type_JavaUtilArrayList = new ArrayList(j);
+        i = 0;
+        while (i < j)
+        {
+          localObject2 = ((JSONArray)localObject3).optJSONObject(i);
+          if (localObject2 != null)
+          {
+            localObject2 = new TroopGiftAioPanelData.PersonalTabItemInfo((JSONObject)localObject2);
+            this.jdField_c_of_type_JavaUtilArrayList.add(localObject2);
+            localObject4 = ((TroopGiftAioPanelData.PersonalTabItemInfo)localObject2).jdField_a_of_type_JavaUtilArrayList.iterator();
+            while (((Iterator)localObject4).hasNext())
+            {
+              k = ((Integer)((Iterator)localObject4).next()).intValue();
+              if (paramJSONObject.containsKey(Integer.valueOf(k))) {
+                ((TroopGiftAioPanelData.PersonalTabItemInfo)localObject2).jdField_b_of_type_JavaUtilArrayList.add(paramJSONObject.get(Integer.valueOf(k)));
               }
             }
-            for (;;)
-            {
-              i += 1;
-              break;
-              label559:
-              ((TroopGiftAioItemData)localObject6).jdField_b_of_type_Boolean = true;
-              this.jdField_d_of_type_JavaUtilArrayList.add(localObject6);
-            }
           }
+          i += 1;
         }
-        if (localObject4 != null)
+      }
+      if (localJSONArray2 != null)
+      {
+        k = localJSONArray2.length();
+        if (this.jdField_b_of_type_JavaUtilArrayList == null) {
+          this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(k);
+        }
+        i = 0;
+        while (i < k)
         {
-          j = ((JSONArray)localObject4).length();
-          if (this.jdField_d_of_type_JavaUtilArrayList == null) {
-            this.jdField_d_of_type_JavaUtilArrayList = new ArrayList(j);
-          }
-          i = 0;
-          if (i < j)
+          localObject2 = localJSONArray2.optJSONObject(i);
+          if (localObject2 != null)
           {
-            localObject5 = ((JSONArray)localObject4).optJSONObject(i);
-            if (localObject5 != null)
+            localObject2 = new TroopGiftAioPanelData.PersonalTabItemInfo((JSONObject)localObject2);
+            if ((!TextUtils.isEmpty(((TroopGiftAioPanelData.PersonalTabItemInfo)localObject2).jdField_a_of_type_JavaLangString)) && (((TroopGiftAioPanelData.PersonalTabItemInfo)localObject2).jdField_a_of_type_JavaUtilArrayList != null) && (((TroopGiftAioPanelData.PersonalTabItemInfo)localObject2).jdField_b_of_type_JavaUtilArrayList != null))
             {
-              localObject5 = new TroopGiftAioItemData((JSONObject)localObject5, this.jdField_d_of_type_JavaUtilArrayList.size());
-              if (((TroopGiftAioItemData)localObject5).jdField_c_of_type_Int <= 2) {
-                break label665;
-              }
-            }
-            for (;;)
-            {
-              i += 1;
-              break;
-              label665:
-              this.jdField_d_of_type_JavaUtilArrayList.add(localObject5);
-            }
-          }
-        }
-        if (localJSONObject1 != null) {
-          this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData$OperationInfo = new TroopGiftAioPanelData.OperationInfo(localJSONObject1);
-        }
-        if (localJSONObject2 != null) {
-          this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData$CoinInfo = new TroopGiftAioPanelData.CoinInfo(localJSONObject2);
-        }
-        a(localJSONArray1, paramString);
-        if (localObject3 != null)
-        {
-          j = ((JSONArray)localObject3).length();
-          if (this.jdField_e_of_type_JavaUtilArrayList == null) {
-            this.jdField_e_of_type_JavaUtilArrayList = new ArrayList(j);
-          }
-          i = 0;
-          if (i < j)
-          {
-            localObject4 = ((JSONArray)localObject3).optJSONObject(i);
-            if (localObject4 != null)
-            {
-              localObject4 = new TroopGiftAioItemData((JSONObject)localObject4, i);
-              if (((TroopGiftAioItemData)localObject4).jdField_c_of_type_Int <= 4) {
-                break label802;
-              }
-            }
-            for (;;)
-            {
-              i += 1;
-              break;
-              label802:
-              ((TroopGiftAioItemData)localObject4).jdField_c_of_type_Int = 5;
-              ((TroopGiftAioItemData)localObject4).d = true;
-              this.jdField_e_of_type_JavaUtilArrayList.add(localObject4);
-            }
-          }
-        }
-        this.jdField_a_of_type_ComTencentBizTroopgiftGiftConfigManager$ActivityTabInfo = GiftConfigManager.a(paramJSONObject.optJSONObject("activityInfo"));
-        localObject3 = paramJSONObject.optJSONObject("profileCard");
-        if (localObject3 != null) {
-          this.jdField_a_of_type_ComTencentBizTroopgiftGiftConfigManager$TextEntryItem = GiftConfigManager.a(((JSONObject)localObject3).optJSONObject("giftItem"));
-        }
-        this.jdField_a_of_type_ComTencentBizTroopgiftGiftConfigManager$ImgEntryItem = GiftConfigManager.a(paramJSONObject.optJSONObject("panelEntry"));
-        paramJSONObject = new HashMap();
-        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-        {
-          localObject3 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-          while (((Iterator)localObject3).hasNext())
-          {
-            localObject4 = ((Iterator)localObject3).next();
-            if ((localObject4 instanceof TroopGiftAioItemData))
-            {
-              localObject4 = (TroopGiftAioItemData)localObject4;
-              paramJSONObject.put(Integer.valueOf(((TroopGiftAioItemData)localObject4).jdField_a_of_type_Int), localObject4);
-            }
-          }
-        }
-        int k;
-        if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0))
-        {
-          j = ((JSONArray)localObject2).length();
-          this.jdField_c_of_type_JavaUtilArrayList = new ArrayList(j);
-          i = 0;
-          while (i < j)
-          {
-            localObject3 = ((JSONArray)localObject2).optJSONObject(i);
-            if (localObject3 != null)
-            {
-              localObject3 = new TroopGiftAioPanelData.PersonalTabItemInfo((JSONObject)localObject3);
-              this.jdField_c_of_type_JavaUtilArrayList.add(localObject3);
-              localObject4 = ((TroopGiftAioPanelData.PersonalTabItemInfo)localObject3).jdField_a_of_type_JavaUtilArrayList.iterator();
-              while (((Iterator)localObject4).hasNext())
-              {
-                k = ((Integer)((Iterator)localObject4).next()).intValue();
-                if (paramJSONObject.containsKey(Integer.valueOf(k))) {
-                  ((TroopGiftAioPanelData.PersonalTabItemInfo)localObject3).jdField_b_of_type_JavaUtilArrayList.add(paramJSONObject.get(Integer.valueOf(k)));
-                }
-              }
-            }
-            i += 1;
-          }
-        }
-        if (localJSONArray2 != null)
-        {
-          int n = localJSONArray2.length();
-          if (this.jdField_b_of_type_JavaUtilArrayList == null) {
-            this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(n);
-          }
-          j = 0;
-          if (j < n)
-          {
-            localObject2 = localJSONArray2.optJSONObject(j);
-            if (localObject2 != null)
-            {
-              localObject2 = new TroopGiftAioPanelData.PersonalTabItemInfo((JSONObject)localObject2);
-              if ((!TextUtils.isEmpty(((TroopGiftAioPanelData.PersonalTabItemInfo)localObject2).jdField_a_of_type_JavaLangString)) && (((TroopGiftAioPanelData.PersonalTabItemInfo)localObject2).jdField_a_of_type_JavaUtilArrayList != null) && (((TroopGiftAioPanelData.PersonalTabItemInfo)localObject2).jdField_b_of_type_JavaUtilArrayList != null)) {
-                break label1219;
-              }
-            }
-            for (;;)
-            {
-              j += 1;
-              break;
-              label1219:
               localObject3 = ((TroopGiftAioPanelData.PersonalTabItemInfo)localObject2).jdField_a_of_type_JavaUtilArrayList.iterator();
               while (((Iterator)localObject3).hasNext())
               {
-                int i1 = ((Integer)((Iterator)localObject3).next()).intValue();
-                if (paramJSONObject.containsKey(Integer.valueOf(i1)))
+                int m = ((Integer)((Iterator)localObject3).next()).intValue();
+                if (paramJSONObject.containsKey(Integer.valueOf(m)))
                 {
-                  int m = 1;
-                  i = m;
-                  int i3;
                   if (localJSONArray1 != null)
                   {
-                    i3 = localJSONArray1.length();
-                    k = 0;
-                  }
-                  for (;;)
-                  {
-                    i = m;
-                    int i2;
-                    if (k < i3)
+                    int i1 = localJSONArray1.length();
+                    j = 0;
+                    while (j < i1)
                     {
-                      localObject4 = localJSONArray1.optJSONObject(k);
+                      localObject4 = localJSONArray1.optJSONObject(j);
                       if (localObject4 != null)
                       {
-                        i2 = ((JSONObject)localObject4).optInt("packageID");
-                        if ((((JSONObject)localObject4).optInt("giftType") != 0) || (i2 != i1)) {}
+                        int n = ((JSONObject)localObject4).optInt("packageID");
+                        if ((((JSONObject)localObject4).optInt("giftType") == 0) && (n == m)) {
+                          try
+                          {
+                            localObject4 = new JSONArray(paramString);
+                            j = 0;
+                            while (j < ((JSONArray)localObject4).length())
+                            {
+                              i1 = ((Integer)((JSONArray)localObject4).get(j)).intValue();
+                              if (i1 == n) {
+                                break label1460;
+                              }
+                              j += 1;
+                            }
+                            j += 1;
+                          }
+                          catch (Exception localException)
+                          {
+                            if (QLog.isColorLevel()) {
+                              QLog.e("TroopGiftAioPanelData", 2, "mergeExclusiveGift search exp:", localException);
+                            }
+                            j = 0;
+                          }
+                        }
                       }
                     }
-                    else
-                    {
-                      for (;;)
-                      {
-                        try
-                        {
-                          localObject4 = new JSONArray(paramString);
-                          i = 0;
-                          if (i >= ((JSONArray)localObject4).length()) {
-                            break label1620;
-                          }
-                          k = ((Integer)((JSONArray)localObject4).get(i)).intValue();
-                          if (k != i2) {
-                            continue;
-                          }
-                          i = 1;
-                        }
-                        catch (Exception localException)
-                        {
-                          if (!QLog.isColorLevel()) {
-                            continue;
-                          }
-                          QLog.e("TroopGiftAioPanelData", 2, "mergeExclusiveGift search exp:", localException);
-                          i = 0;
-                          continue;
-                        }
-                        if (i == 0) {
-                          break;
-                        }
-                        ((TroopGiftAioPanelData.PersonalTabItemInfo)localObject2).jdField_b_of_type_JavaUtilArrayList.add(paramJSONObject.get(Integer.valueOf(i1)));
-                        break;
-                        i += 1;
-                      }
-                    }
-                    k += 1;
+                  }
+                  label1460:
+                  j = 1;
+                  if (j != 0) {
+                    ((TroopGiftAioPanelData.PersonalTabItemInfo)localObject2).jdField_b_of_type_JavaUtilArrayList.add(paramJSONObject.get(Integer.valueOf(m)));
                   }
                 }
               }
               this.jdField_b_of_type_JavaUtilArrayList.add(localObject2);
             }
           }
+          i += 1;
         }
-        if ((this.jdField_c_of_type_JavaUtilArrayList != null) && (this.jdField_c_of_type_JavaUtilArrayList.size() > 0))
+      }
+      paramJSONObject = this.jdField_c_of_type_JavaUtilArrayList;
+      if ((paramJSONObject != null) && (paramJSONObject.size() > 0))
+      {
+        if (this.jdField_b_of_type_JavaUtilArrayList == null) {
+          this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+        }
+        paramJSONObject = this.jdField_c_of_type_JavaUtilArrayList.iterator();
+        i = 0;
+        while (paramJSONObject.hasNext())
         {
-          i = 0;
-          if (this.jdField_b_of_type_JavaUtilArrayList == null) {
-            this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-          }
-          paramJSONObject = this.jdField_c_of_type_JavaUtilArrayList.iterator();
-          while (paramJSONObject.hasNext())
-          {
-            paramString = paramJSONObject.next();
-            this.jdField_b_of_type_JavaUtilArrayList.add(i, paramString);
-            i += 1;
-          }
+          paramString = paramJSONObject.next();
+          this.jdField_b_of_type_JavaUtilArrayList.add(i, paramString);
+          i += 1;
         }
-        if (localObject1 == null) {
-          continue;
-        }
-        int j = ((JSONArray)localObject1).length();
+      }
+      if (localObject1 != null)
+      {
+        j = ((JSONArray)localObject1).length();
         if (this.f == null) {
           this.f = new ArrayList(j);
         }
@@ -407,15 +364,11 @@ public class TroopGiftAioPanelData
           i += 1;
         }
       }
-      catch (ParseException localParseException)
-      {
-        for (;;)
-        {
-          continue;
-          label1620:
-          int i = 0;
-        }
-      }
+      return;
+    }
+    catch (ParseException localParseException)
+    {
+      break label83;
     }
   }
   
@@ -427,47 +380,46 @@ public class TroopGiftAioPanelData
   public static TroopGiftAioPanelData a(Context paramContext, int paramInt, String paramString)
   {
     long l = System.currentTimeMillis();
-    String str = SharePreferenceUtils.a(paramContext, "troop_gift_aio_panel_data_v2_" + paramInt);
-    if (!TextUtils.isEmpty(str)) {}
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("troop_gift_aio_panel_data_v2_");
+    ((StringBuilder)localObject).append(paramInt);
+    localObject = SharePreferenceUtils.a(paramContext, ((StringBuilder)localObject).toString());
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {}
     for (;;)
     {
       try
       {
-        JSONObject localJSONObject = new JSONObject(str);
+        JSONObject localJSONObject = new JSONObject((String)localObject);
+        paramContext = "";
         if (paramInt != 5) {
-          break label159;
+          break label174;
         }
         paramContext = a();
+        continue;
+        paramContext = a(paramString);
         paramContext = new TroopGiftAioPanelData(localJSONObject, paramContext);
-        if (!QLog.isColorLevel()) {
-          break label157;
+        if (QLog.isColorLevel())
+        {
+          paramString = new StringBuilder();
+          paramString.append("getLocalGiftData, time=");
+          paramString.append(System.currentTimeMillis() - l);
+          paramString.append(", data.len=");
+          paramString.append(((String)localObject).length());
+          QLog.d("TroopGiftPanel.time", 2, paramString.toString());
         }
-        QLog.d("TroopGiftPanel.time", 2, "getLocalGiftData, time=" + (System.currentTimeMillis() - l) + ", data.len=" + str.length());
         return paramContext;
       }
       catch (JSONException paramContext)
       {
-        label122:
-        if (!QLog.isColorLevel()) {
-          break label148;
+        if (QLog.isColorLevel()) {
+          QLog.d("zivonchen", 2, QLog.getStackTraceString(paramContext));
         }
-        QLog.d("zivonchen", 2, QLog.getStackTraceString(paramContext));
       }
-      paramContext = a(paramString);
-      continue;
-      label148:
       return null;
-      label157:
-      label159:
-      do
-      {
-        paramContext = "";
-        break;
-        return paramContext;
-        if ((paramInt == 1) || (paramInt == 6)) {
-          break label122;
-        }
-      } while (paramInt != 4);
+      label174:
+      if ((paramInt != 1) && (paramInt != 6)) {
+        if (paramInt != 4) {}
+      }
     }
   }
   
@@ -475,24 +427,44 @@ public class TroopGiftAioPanelData
   {
     Object localObject = BaseApplication.getContext();
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    str = "exclusive_gift_ids_c2c_" + str;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("exclusive_gift_ids_c2c_");
+    localStringBuilder.append(str);
+    str = localStringBuilder.toString();
     localObject = SharePreferenceUtils.a((Context)localObject, str);
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopGiftAioPanelData", 2, "getC2CExclusiveGiftIds, key=" + str + ", data=" + (String)localObject);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getC2CExclusiveGiftIds, key=");
+      localStringBuilder.append(str);
+      localStringBuilder.append(", data=");
+      localStringBuilder.append((String)localObject);
+      QLog.d("TroopGiftAioPanelData", 2, localStringBuilder.toString());
     }
     return localObject;
   }
   
   public static String a(String paramString)
   {
-    Object localObject = BaseApplication.getContext();
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    paramString = "exclusive_gift_ids_troop_" + str + "_" + paramString;
-    localObject = SharePreferenceUtils.a((Context)localObject, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopGiftAioPanelData", 2, "getTroopExclusiveGiftIds, key=" + paramString + ", data=" + (String)localObject);
+    Object localObject1 = BaseApplication.getContext();
+    Object localObject2 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("exclusive_gift_ids_troop_");
+    localStringBuilder.append((String)localObject2);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString);
+    paramString = localStringBuilder.toString();
+    localObject1 = SharePreferenceUtils.a((Context)localObject1, paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getTroopExclusiveGiftIds, key=");
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append(", data=");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.d("TroopGiftAioPanelData", 2, ((StringBuilder)localObject2).toString());
     }
-    return localObject;
+    return localObject1;
   }
   
   public static String a(List<oidb_0x6c3.ExclusiveGiftItem> paramList)
@@ -512,54 +484,94 @@ public class TroopGiftAioPanelData
   
   public static void a(String paramString)
   {
-    BaseApplication localBaseApplication = BaseApplication.getContext();
+    Object localObject = BaseApplication.getContext();
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    str = "exclusive_gift_ids_c2c_" + str;
-    SharePreferenceUtils.a(localBaseApplication, str, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopGiftAioPanelData", 2, "saveC2CExclusiveGiftIds, key=" + str + ", data=" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("exclusive_gift_ids_c2c_");
+    localStringBuilder.append(str);
+    str = localStringBuilder.toString();
+    SharePreferenceUtils.a((Context)localObject, str, paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("saveC2CExclusiveGiftIds, key=");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(", data=");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("TroopGiftAioPanelData", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   public static void a(String paramString1, String paramString2)
   {
-    if (TextUtils.isEmpty(paramString2)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString2)) {
       return;
-      BaseApplication localBaseApplication = BaseApplication.getContext();
-      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      paramString2 = "exclusive_gift_ids_troop_" + str + "_" + paramString2;
-      SharePreferenceUtils.a(localBaseApplication, paramString2, paramString1);
-    } while (!QLog.isColorLevel());
-    QLog.d("TroopGiftAioPanelData", 2, "saveTroopExclusiveGiftIds, key=" + paramString2 + ", data=" + paramString1);
+    }
+    Object localObject = BaseApplication.getContext();
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("exclusive_gift_ids_troop_");
+    localStringBuilder.append(str);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    paramString2 = localStringBuilder.toString();
+    SharePreferenceUtils.a((Context)localObject, paramString2, paramString1);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("saveTroopExclusiveGiftIds, key=");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(", data=");
+      ((StringBuilder)localObject).append(paramString1);
+      QLog.d("TroopGiftAioPanelData", 2, ((StringBuilder)localObject).toString());
+    }
   }
   
   public static String b(String paramString)
   {
     BaseApplication localBaseApplication = BaseApplication.getContext();
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    return SharePreferenceUtils.a(localBaseApplication, "troop_gift_last_receiver_" + str + "_" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("troop_gift_last_receiver_");
+    localStringBuilder.append(str);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString);
+    return SharePreferenceUtils.a(localBaseApplication, localStringBuilder.toString());
   }
   
   public static void b(String paramString1, String paramString2)
   {
-    if (TextUtils.isEmpty(paramString1)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString1)) {
       return;
-      BaseApplication localBaseApplication = BaseApplication.getContext();
-      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      paramString1 = "troop_gift_last_receiver_" + str + "_" + paramString1;
-      SharePreferenceUtils.a(localBaseApplication, paramString1, paramString2);
-    } while (!QLog.isColorLevel());
-    QLog.d("TroopGiftAioPanelData", 2, "saveLastGiftReceiver, key=" + paramString1 + ", data=" + paramString2);
+    }
+    Object localObject = BaseApplication.getContext();
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("troop_gift_last_receiver_");
+    localStringBuilder.append(str);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString1);
+    paramString1 = localStringBuilder.toString();
+    SharePreferenceUtils.a((Context)localObject, paramString1, paramString2);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("saveLastGiftReceiver, key=");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(", data=");
+      ((StringBuilder)localObject).append(paramString2);
+      QLog.d("TroopGiftAioPanelData", 2, ((StringBuilder)localObject).toString());
+    }
   }
   
   public void a(Context paramContext, int paramInt)
   {
-    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-      SharePreferenceUtils.a(paramContext, "troop_gift_aio_panel_data_v2_" + paramInt, this.jdField_c_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("troop_gift_aio_panel_data_v2_");
+      localStringBuilder.append(paramInt);
+      SharePreferenceUtils.a(paramContext, localStringBuilder.toString(), this.jdField_c_of_type_JavaLangString);
     }
   }
   
@@ -582,129 +594,137 @@ public class TroopGiftAioPanelData
   
   protected void a(JSONArray paramJSONArray, String paramString)
   {
-    int k = 0;
-    if ((paramJSONArray == null) || (paramJSONArray.length() == 0)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopGiftAioPanelData", 2, "mergeExclusiveGift jsonArrayExclusive is empty");
-      }
-    }
-    do
-    {
-      return;
-      if (!TextUtils.isEmpty(paramString)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("TroopGiftAioPanelData", 2, "mergeExclusiveGift exclusiveGiftIds is empty");
-    return;
-    ArrayList localArrayList2 = new ArrayList();
-    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2;
+    ArrayList localArrayList1;
+    int k;
     int i;
-    label98:
-    int j;
-    try
+    if ((paramJSONArray != null) && (paramJSONArray.length() != 0))
     {
-      paramString = new JSONArray(paramString);
-      if ((paramString.length() > 0) && (paramJSONArray.length() > 0))
+      if (TextUtils.isEmpty(paramString))
       {
-        i = 0;
-        if (i < paramString.length())
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopGiftAioPanelData", 2, "mergeExclusiveGift exclusiveGiftIds is empty");
+        }
+        return;
+      }
+      localArrayList2 = new ArrayList();
+      localArrayList1 = new ArrayList();
+      k = 0;
+      try
+      {
+        paramString = new JSONArray(paramString);
+        int j;
+        if ((paramString.length() > 0) && (paramJSONArray.length() > 0))
         {
-          int m = ((Integer)paramString.get(i)).intValue();
-          j = 0;
-          label122:
-          if (j >= paramJSONArray.length()) {
-            break label486;
+          i = 0;
+          while (i < paramString.length())
+          {
+            int m = ((Integer)paramString.get(i)).intValue();
+            j = 0;
+            while (j < paramJSONArray.length())
+            {
+              JSONObject localJSONObject = paramJSONArray.optJSONObject(j);
+              int n = localJSONObject.optInt("packageID");
+              int i1 = localJSONObject.optInt("giftType");
+              if (m == n)
+              {
+                if (i1 == 0)
+                {
+                  localArrayList2.add(new TroopGiftAioItemData(localJSONObject, localArrayList2.size()));
+                  break;
+                }
+                if (i1 != 1) {
+                  break;
+                }
+                localArrayList1.add(new TroopGiftAioItemData(localJSONObject, localArrayList1.size()));
+                break;
+              }
+              j += 1;
+            }
+            i += 1;
           }
-          JSONObject localJSONObject = paramJSONArray.optJSONObject(j);
-          int n = localJSONObject.optInt("packageID");
-          int i1 = localJSONObject.optInt("giftType");
-          if (m != n) {
-            break label493;
+        }
+        try
+        {
+          if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (localArrayList2.size() > 0)) {
+            i = localArrayList2.size() - 1;
           }
-          if (i1 == 0) {
-            localArrayList2.add(new TroopGiftAioItemData(localJSONObject, localArrayList2.size()));
-          } else if (i1 == 1) {
-            localArrayList1.add(new TroopGiftAioItemData(localJSONObject, localArrayList1.size()));
+          while (i >= 0)
+          {
+            paramJSONArray = localArrayList2.get(i);
+            this.jdField_a_of_type_JavaUtilArrayList.add(0, paramJSONArray);
+            i -= 1;
+            continue;
+            while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+            {
+              ((TroopGiftAioItemData)this.jdField_a_of_type_JavaUtilArrayList.get(i)).g = i;
+              i += 1;
+            }
+            if ((this.jdField_d_of_type_JavaUtilArrayList != null) && (localArrayList1.size() > 0))
+            {
+              i = localArrayList1.size() - 1;
+              for (;;)
+              {
+                j = k;
+                if (i < 0) {
+                  break;
+                }
+                paramJSONArray = localArrayList1.get(i);
+                this.jdField_d_of_type_JavaUtilArrayList.add(0, paramJSONArray);
+                i -= 1;
+              }
+              while (j < this.jdField_d_of_type_JavaUtilArrayList.size())
+              {
+                ((TroopGiftAioItemData)this.jdField_d_of_type_JavaUtilArrayList.get(j)).g = j;
+                j += 1;
+              }
+            }
+            return;
+          }
+        }
+        catch (Exception paramJSONArray)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("TroopGiftAioPanelData", 2, "mergeExclusiveGift merge exp:", paramJSONArray);
           }
         }
       }
-    }
-    catch (Exception paramJSONArray)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopGiftAioPanelData", 2, "mergeExclusiveGift search exp:", paramJSONArray);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopGiftAioPanelData", 2, "mergeExclusiveGift, persional.size=" + localArrayList2.size() + ", public.size=" + localArrayList1.size());
+      catch (Exception paramJSONArray)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("TroopGiftAioPanelData", 2, "mergeExclusiveGift search exp:", paramJSONArray);
+        }
+        if (QLog.isColorLevel())
+        {
+          paramJSONArray = new StringBuilder();
+          paramJSONArray.append("mergeExclusiveGift, persional.size=");
+          paramJSONArray.append(localArrayList2.size());
+          paramJSONArray.append(", public.size=");
+          paramJSONArray.append(localArrayList1.size());
+          QLog.d("TroopGiftAioPanelData", 2, paramJSONArray.toString());
+        }
       }
     }
     for (;;)
     {
-      try
-      {
-        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (localArrayList2.size() > 0))
-        {
-          i = localArrayList2.size() - 1;
-          if (i < 0) {
-            break label502;
-          }
-          paramJSONArray = localArrayList2.get(i);
-          this.jdField_a_of_type_JavaUtilArrayList.add(0, paramJSONArray);
-          i -= 1;
-          continue;
-          if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-          {
-            ((TroopGiftAioItemData)this.jdField_a_of_type_JavaUtilArrayList.get(i)).g = i;
-            i += 1;
-            continue;
-          }
-        }
-        if ((this.jdField_d_of_type_JavaUtilArrayList == null) || (localArrayList1.size() <= 0)) {
-          break;
-        }
-        i = localArrayList1.size() - 1;
-        j = k;
-        if (i >= 0)
-        {
-          paramJSONArray = localArrayList1.get(i);
-          this.jdField_d_of_type_JavaUtilArrayList.add(0, paramJSONArray);
-          i -= 1;
-          continue;
-        }
-        if (j >= this.jdField_d_of_type_JavaUtilArrayList.size()) {
-          break;
-        }
-        ((TroopGiftAioItemData)this.jdField_d_of_type_JavaUtilArrayList.get(j)).g = j;
-        j += 1;
-        continue;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopGiftAioPanelData", 2, "mergeExclusiveGift jsonArrayExclusive is empty");
       }
-      catch (Exception paramJSONArray) {}
-      QLog.e("TroopGiftAioPanelData", 2, "mergeExclusiveGift merge exp:", paramJSONArray);
       return;
-      label486:
-      i += 1;
-      break label98;
-      label493:
-      j += 1;
-      break label122;
-      label502:
       i = 0;
     }
   }
   
   public boolean a(int paramInt)
   {
-    if ((this.jdField_b_of_type_JavaUtilArrayList != null) && (this.jdField_c_of_type_JavaUtilArrayList != null) && (paramInt >= 0) && (paramInt < this.jdField_b_of_type_JavaUtilArrayList.size()) && (paramInt < this.jdField_c_of_type_JavaUtilArrayList.size()) && ((this.jdField_b_of_type_JavaUtilArrayList.get(paramInt) instanceof TroopGiftAioPanelData.PersonalTabItemInfo)))
+    Object localObject = this.jdField_b_of_type_JavaUtilArrayList;
+    if ((localObject != null) && (this.jdField_c_of_type_JavaUtilArrayList != null) && (paramInt >= 0) && (paramInt < ((ArrayList)localObject).size()) && (paramInt < this.jdField_c_of_type_JavaUtilArrayList.size()) && ((this.jdField_b_of_type_JavaUtilArrayList.get(paramInt) instanceof TroopGiftAioPanelData.PersonalTabItemInfo)))
     {
-      TroopGiftAioPanelData.PersonalTabItemInfo localPersonalTabItemInfo1 = (TroopGiftAioPanelData.PersonalTabItemInfo)this.jdField_b_of_type_JavaUtilArrayList.get(paramInt);
+      localObject = (TroopGiftAioPanelData.PersonalTabItemInfo)this.jdField_b_of_type_JavaUtilArrayList.get(paramInt);
       if ((this.jdField_c_of_type_JavaUtilArrayList.get(paramInt) instanceof TroopGiftAioPanelData.PersonalTabItemInfo))
       {
-        TroopGiftAioPanelData.PersonalTabItemInfo localPersonalTabItemInfo2 = (TroopGiftAioPanelData.PersonalTabItemInfo)this.jdField_c_of_type_JavaUtilArrayList.get(paramInt);
-        if ((localPersonalTabItemInfo2.jdField_a_of_type_JavaLangString != null) && (localPersonalTabItemInfo2.jdField_a_of_type_JavaLangString.equals(localPersonalTabItemInfo1.jdField_a_of_type_JavaLangString))) {
+        TroopGiftAioPanelData.PersonalTabItemInfo localPersonalTabItemInfo = (TroopGiftAioPanelData.PersonalTabItemInfo)this.jdField_c_of_type_JavaUtilArrayList.get(paramInt);
+        if ((localPersonalTabItemInfo.jdField_a_of_type_JavaLangString != null) && (localPersonalTabItemInfo.jdField_a_of_type_JavaLangString.equals(((TroopGiftAioPanelData.PersonalTabItemInfo)localObject).jdField_a_of_type_JavaLangString))) {
           return true;
         }
       }
@@ -714,8 +734,8 @@ public class TroopGiftAioPanelData
   
   public void b(List<TroopGiftManager.PackGift> paramList)
   {
-    int j = 0;
     this.jdField_b_of_type_AndroidUtilSparseArray.clear();
+    int j = 0;
     int i = 0;
     Object localObject;
     while (i < paramList.size())
@@ -727,11 +747,12 @@ public class TroopGiftAioPanelData
     if (this.jdField_e_of_type_JavaUtilArrayList != null)
     {
       paramList = new ArrayList();
+      localObject = this.jdField_e_of_type_JavaUtilArrayList;
       i = j;
-      if (this.jdField_e_of_type_JavaUtilArrayList != null)
+      if (localObject != null)
       {
         i = j;
-        if (this.jdField_e_of_type_JavaUtilArrayList.size() > 0)
+        if (((ArrayList)localObject).size() > 0)
         {
           i = 0;
           while (i < this.jdField_e_of_type_JavaUtilArrayList.size())
@@ -755,15 +776,17 @@ public class TroopGiftAioPanelData
         ((TroopGiftAioItemData)this.jdField_e_of_type_JavaUtilArrayList.get(i)).g = i;
         i += 1;
       }
-      if (this.jdField_e_of_type_JavaUtilArrayList.size() > this.jdField_e_of_type_Int) {
-        ((TroopGiftAioItemData)this.jdField_e_of_type_JavaUtilArrayList.get(this.jdField_e_of_type_Int)).jdField_a_of_type_Boolean = true;
+      i = this.jdField_e_of_type_JavaUtilArrayList.size();
+      j = this.jdField_e_of_type_Int;
+      if (i > j) {
+        ((TroopGiftAioItemData)this.jdField_e_of_type_JavaUtilArrayList.get(j)).jdField_a_of_type_Boolean = true;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troopgift.TroopGiftAioPanelData
  * JD-Core Version:    0.7.0.1
  */

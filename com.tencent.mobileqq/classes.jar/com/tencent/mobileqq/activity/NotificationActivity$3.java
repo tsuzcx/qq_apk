@@ -8,6 +8,7 @@ import android.os.Bundle;
 import com.tencent.ims.signature.SignatureKickData;
 import com.tencent.mobileqq.app.utils.RouteUtils;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.qqsec.api.ISecControllerInterface;
 import com.tencent.qphone.base.util.QLog;
 
 class NotificationActivity$3
@@ -17,7 +18,10 @@ class NotificationActivity$3
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.i("NotificationActivity", 1, "setPositiveButton.onClick: invoked.  isDialogShow: " + NotificationActivity.access$000(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity));
+    paramDialogInterface = new StringBuilder();
+    paramDialogInterface.append("setPositiveButton.onClick: invoked.  isDialogShow: ");
+    paramDialogInterface.append(NotificationActivity.access$000(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity));
+    QLog.i("NotificationActivity", 1, paramDialogInterface.toString());
     paramDialogInterface = new Bundle();
     paramDialogInterface.putString("password", null);
     paramDialogInterface = new Intent().putExtras(paramDialogInterface).addFlags(67108864);
@@ -26,21 +30,20 @@ class NotificationActivity$3
     {
       paramDialogInterface = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_ComTencentImsSignature$SignatureKickData.str_url.get()));
       this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.startActivity(paramDialogInterface);
-      label104:
-      paramDialogInterface = new Intent("qqplayer_exit_action");
-      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.sendBroadcast(paramDialogInterface);
+      label110:
+      NotificationActivity.access$100().a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, false, false);
       this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
       return;
     }
     catch (Exception paramDialogInterface)
     {
-      break label104;
+      break label110;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotificationActivity.3
  * JD-Core Version:    0.7.0.1
  */

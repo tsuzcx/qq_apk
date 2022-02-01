@@ -12,55 +12,52 @@ final class GVideoUpdateUtil$1
 {
   public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    String str = null;
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
     if (paramInt != 2134) {
       return;
     }
-    if (paramJSONObject != null)
-    {
-      Object localObject;
-      boolean bool;
-      for (;;)
+    if (paramJSONObject != null) {
+      try
       {
-        try
+        Object localObject = paramJSONObject.getJSONObject("data");
+        boolean bool = ((JSONObject)localObject).getBoolean("update");
+        if (bool)
         {
-          localObject = paramJSONObject.getJSONObject("data");
-          bool = ((JSONObject)localObject).getBoolean("update");
-          if (bool)
-          {
-            paramBundle = ((JSONObject)localObject).getString("title");
-            str = ((JSONObject)localObject).getString("tips");
-            GVideoUpdateUtil.a(this.jdField_a_of_type_AndroidContentContext, paramBundle, str, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvUtilsGVideoUpdateUtil$OnGVideoUpdateListener);
-            localObject = (GVideoUpdateUtil.Record)GVideoUpdateUtil.a.get(this.jdField_a_of_type_JavaLangString);
-            if (localObject != null) {
-              break;
-            }
-            localObject = new GVideoUpdateUtil.Record();
-            ((GVideoUpdateUtil.Record)localObject).a(System.currentTimeMillis(), paramBundle, str, bool);
-            GVideoUpdateUtil.a.put(this.jdField_a_of_type_JavaLangString, localObject);
-            return;
-          }
+          paramBundle = ((JSONObject)localObject).getString("title");
+          localObject = ((JSONObject)localObject).getString("tips");
+          GVideoUpdateUtil.a(this.jdField_a_of_type_AndroidContentContext, paramBundle, (String)localObject, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvUtilsGVideoUpdateUtil$OnGVideoUpdateListener);
         }
-        catch (JSONException paramBundle)
+        else
         {
-          paramBundle.printStackTrace();
-          paramJSONObject.optInt("errCode");
-          GVideoUpdateUtil.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvUtilsGVideoUpdateUtil$OnGVideoUpdateListener);
+          this.jdField_a_of_type_ComTencentAvUtilsGVideoUpdateUtil$OnGVideoUpdateListener.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+          paramBundle = null;
+          localObject = paramBundle;
+        }
+        GVideoUpdateUtil.Record localRecord = (GVideoUpdateUtil.Record)GVideoUpdateUtil.a.get(this.jdField_a_of_type_JavaLangString);
+        if (localRecord == null)
+        {
+          localRecord = new GVideoUpdateUtil.Record();
+          localRecord.a(System.currentTimeMillis(), paramBundle, (String)localObject, bool);
+          GVideoUpdateUtil.a.put(this.jdField_a_of_type_JavaLangString, localRecord);
           return;
         }
-        this.jdField_a_of_type_ComTencentAvUtilsGVideoUpdateUtil$OnGVideoUpdateListener.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-        paramBundle = null;
+        localRecord.a(System.currentTimeMillis(), paramBundle, (String)localObject, bool);
+        return;
       }
-      ((GVideoUpdateUtil.Record)localObject).a(System.currentTimeMillis(), paramBundle, str, bool);
-      return;
+      catch (JSONException paramBundle)
+      {
+        paramBundle.printStackTrace();
+        paramJSONObject.optInt("errCode");
+        GVideoUpdateUtil.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvUtilsGVideoUpdateUtil$OnGVideoUpdateListener);
+        return;
+      }
     }
     GVideoUpdateUtil.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvUtilsGVideoUpdateUtil$OnGVideoUpdateListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.GVideoUpdateUtil.1
  * JD-Core Version:    0.7.0.1
  */

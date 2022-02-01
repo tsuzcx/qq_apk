@@ -23,13 +23,17 @@ class QSecFramework$3
         long l = Long.parseLong((String)paramMessage.obj);
         if (l != 0L)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("QSecFramework", 2, "handle native msg for cookie:" + l);
+          if (QLog.isColorLevel())
+          {
+            paramMessage = new StringBuilder();
+            paramMessage.append("handle native msg for cookie:");
+            paramMessage.append(l);
+            QLog.d("QSecFramework", 2, paramMessage.toString());
           }
           QSecFramework.a(6L, l, 0L, 0L, null, null, null, null);
+          return;
         }
       }
-      return;
     }
     catch (Exception paramMessage)
     {
@@ -39,7 +43,7 @@ class QSecFramework$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.QSecFramework.3
  * JD-Core Version:    0.7.0.1
  */

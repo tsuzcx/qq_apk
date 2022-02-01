@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.subaccount.api.ISubAccountService;
 
 class SubLoginActivity$9$1
   implements Runnable
@@ -11,15 +10,15 @@ class SubLoginActivity$9$1
   
   public void run()
   {
-    SubAccountManager localSubAccountManager = (SubAccountManager)this.jdField_a_of_type_ComTencentMobileqqActivitySubLoginActivity$9.a.app.getManager(QQManagerFactory.SUB_ACCOUNT_MANAGER);
-    if (localSubAccountManager != null) {
-      localSubAccountManager.a(this.jdField_a_of_type_JavaLangString, 0, "");
+    ISubAccountService localISubAccountService = (ISubAccountService)this.jdField_a_of_type_ComTencentMobileqqActivitySubLoginActivity$9.a.app.getRuntimeService(ISubAccountService.class, "");
+    if (localISubAccountService != null) {
+      localISubAccountService.updateServerError(this.jdField_a_of_type_JavaLangString, 0, "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubLoginActivity.9.1
  * JD-Core Version:    0.7.0.1
  */

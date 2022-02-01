@@ -44,12 +44,16 @@ public class AudioMix<InputParameters extends AudioMixInputParameters>
   
   public String toString()
   {
-    return "AudioMix{inputParameters=" + this.inputParameters + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AudioMix{inputParameters=");
+    localStringBuilder.append(this.inputParameters);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tav.core.AudioMix
  * JD-Core Version:    0.7.0.1
  */

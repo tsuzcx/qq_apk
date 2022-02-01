@@ -22,21 +22,15 @@ public class SpringFestivalRedpacketPreloadConfProcessor
   
   protected SpringFestivalRedpacketPreloadConfBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfQConfItem != null)
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      localObject1 = localObject2;
-      if (paramArrayOfQConfItem.length > 0)
-      {
-        paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
-        if (QLog.isColorLevel()) {
-          QLog.i("shua2021_SpringFestivalRedpacketPreloadConfProcessor", 2, String.format("onParsed %s", new Object[] { paramArrayOfQConfItem }));
-        }
-        localObject1 = SpringFestivalRedpacketPreloadConfBean.a(paramArrayOfQConfItem);
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+      if (QLog.isColorLevel()) {
+        QLog.i("shua2021_SpringFestivalRedpacketPreloadConfProcessor", 2, String.format("onParsed %s", new Object[] { paramArrayOfQConfItem }));
       }
+      return SpringFestivalRedpacketPreloadConfBean.a(paramArrayOfQConfItem);
     }
-    return localObject1;
+    return null;
   }
   
   public void a(SpringFestivalRedpacketPreloadConfBean paramSpringFestivalRedpacketPreloadConfBean)
@@ -57,11 +51,12 @@ public class SpringFestivalRedpacketPreloadConfProcessor
           localIPreloadService.startCheckConfig(true);
         }
         SpringHbMonitorReporter.a();
-        if ((paramSpringFestivalRedpacketPreloadConfBean.a != null) && (paramSpringFestivalRedpacketPreloadConfBean.a.length() > 0)) {
+        if ((paramSpringFestivalRedpacketPreloadConfBean.a != null) && (paramSpringFestivalRedpacketPreloadConfBean.a.length() > 0))
+        {
           SpringHbMonitorReporter.a(localQQAppInterface, 1, 0, type(), SpringHbMonitorReporter.a(type()), QConfigManager.a().a(type(), localQQAppInterface.getCurrentAccountUin()), true, SpringHbMonitorReporter.a(type()));
+          return;
         }
       }
-      return;
     }
     catch (Throwable paramSpringFestivalRedpacketPreloadConfBean)
     {
@@ -111,7 +106,7 @@ public class SpringFestivalRedpacketPreloadConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.config.SpringFestivalRedpacketPreloadConfProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -46,8 +46,12 @@ public class PublishMoodInfo
   {
     paramString = new StringTokenizer(paramString.toString().replace("\r\n", " ").replace("\n", " "), " ");
     StringBuffer localStringBuffer = new StringBuffer();
-    while (paramString.hasMoreTokens()) {
-      localStringBuffer.append(paramString.nextToken() + ' ');
+    while (paramString.hasMoreTokens())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString.nextToken());
+      localStringBuilder.append(' ');
+      localStringBuffer.append(localStringBuilder.toString());
     }
     return localStringBuffer.toString().trim();
   }
@@ -57,58 +61,87 @@ public class PublishMoodInfo
     if (paramLong < 1024L) {}
     try
     {
-      return paramLong + "B";
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("B");
+      return ((StringBuilder)localObject).toString();
     }
     catch (Exception localException)
     {
       Object localObject;
-      double d1;
-      double d2;
-      QLog.i("[minigame] PublishMoodInfo", 2, "getFileSizeDesc " + paramLong, localException);
+      double d;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getFileSizeDesc ");
+      localStringBuilder.append(paramLong);
+      QLog.i("[minigame] PublishMoodInfo", 2, localStringBuilder.toString(), localException);
     }
     localObject = new DecimalFormat("##0.0");
-    d1 = 1024.0D * 1024.0D;
-    d2 = 1024.0D * d1;
-    if (paramLong < d1) {
-      return ((DecimalFormat)localObject).format(paramLong / 1024.0D) + "K";
+    d = paramLong;
+    if (d < 1048576.0D)
+    {
+      localStringBuilder = new StringBuilder();
+      Double.isNaN(d);
+      d /= 1024.0D;
+      localStringBuilder.append(((DecimalFormat)localObject).format(d));
+      localStringBuilder.append("K");
+      return localStringBuilder.toString();
     }
-    if (paramLong < d2) {
-      return ((DecimalFormat)localObject).format(paramLong / d1) + "M";
+    if (d < 1073741824.0D)
+    {
+      localStringBuilder = new StringBuilder();
+      Double.isNaN(d);
+      d /= 1048576.0D;
+      localStringBuilder.append(((DecimalFormat)localObject).format(d));
+      localStringBuilder.append("M");
+      return localStringBuilder.toString();
     }
-    localObject = ((DecimalFormat)localObject).format(paramLong / d2) + "G";
+    localStringBuilder = new StringBuilder();
+    Double.isNaN(d);
+    d /= 1073741824.0D;
+    localStringBuilder.append(((DecimalFormat)localObject).format(d));
+    localStringBuilder.append("G");
+    localObject = localStringBuilder.toString();
     return localObject;
     return "";
   }
   
   public String toString()
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mText = ");
+    localStringBuilder.append(this.mText);
+    localStringBuilder.append(", mTag = ");
+    localStringBuilder.append(this.mTag);
+    localStringBuilder.append(", media.size = ");
+    Object localObject = this.mMediaInfo;
     int j = 0;
-    StringBuilder localStringBuilder = new StringBuilder().append("mText = ").append(this.mText).append(", mTag = ").append(this.mTag).append(", media.size = ");
-    if (this.mMediaInfo != null)
-    {
-      i = this.mMediaInfo.size();
-      localStringBuilder = localStringBuilder.append(i).append(", mAllImageAndVideo.size = ");
-      if (this.mAllImageAndVideo == null) {
-        break label122;
-      }
-    }
-    label122:
-    for (int i = this.mAllImageAndVideo.size();; i = 0)
-    {
-      localStringBuilder = localStringBuilder.append(i).append(", mMediaInfoHashMap.size = ");
-      i = j;
-      if (this.mMediaInfoHashMap != null) {
-        i = this.mMediaInfoHashMap.size();
-      }
-      return i;
+    if (localObject != null) {
+      i = ((ArrayList)localObject).size();
+    } else {
       i = 0;
-      break;
     }
+    localStringBuilder.append(i);
+    localStringBuilder.append(", mAllImageAndVideo.size = ");
+    localObject = this.mAllImageAndVideo;
+    if (localObject != null) {
+      i = ((ArrayList)localObject).size();
+    } else {
+      i = 0;
+    }
+    localStringBuilder.append(i);
+    localStringBuilder.append(", mMediaInfoHashMap.size = ");
+    localObject = this.mMediaInfoHashMap;
+    int i = j;
+    if (localObject != null) {
+      i = ((HashMap)localObject).size();
+    }
+    localStringBuilder.append(i);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.data.PublishMoodInfo
  * JD-Core Version:    0.7.0.1
  */

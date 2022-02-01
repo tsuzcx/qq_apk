@@ -12,7 +12,7 @@ final class PublicAccountConfigUtilImpl$3
     super(paramInt1, paramInt2, paramInt3);
   }
   
-  public void clearMemory()
+  protected void clearMemory()
   {
     clear();
     PublicAccountConfigUtilImpl.access$000().set(false);
@@ -20,7 +20,7 @@ final class PublicAccountConfigUtilImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountConfigUtilImpl.3
  * JD-Core Version:    0.7.0.1
  */

@@ -21,33 +21,35 @@ class ChatBackgroundManager$ReportChatBgHandler
   public void handleMessage(Message paramMessage)
   {
     int i = paramMessage.what;
-    Object localObject = (Object[])paramMessage.obj;
+    Object localObject1 = (Object[])paramMessage.obj;
     if (i == 1)
     {
       if (ChatBackgroundManager.c < 3)
       {
-        paramMessage = (String)localObject[0];
-        localObject = (QQAppInterface)localObject[1];
-        ChatBackgroundManager.a((QQAppInterface)localObject, paramMessage, StatisticCollector.getInstance(BaseApplication.getContext()));
+        paramMessage = (String)localObject1[0];
+        localObject1 = (QQAppInterface)localObject1[1];
+        ChatBackgroundManager.a((QQAppInterface)localObject1, paramMessage, StatisticCollector.getInstance(BaseApplication.getContext()));
         ChatBackgroundManager.c += 1;
-        if (QLog.isColorLevel()) {
-          QLog.d("ThemeDownloadTrace", 2, "reportTimes is:" + ChatBackgroundManager.c);
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("reportTimes is:");
+          ((StringBuilder)localObject2).append(ChatBackgroundManager.c);
+          QLog.d("ThemeDownloadTrace", 2, ((StringBuilder)localObject2).toString());
         }
-        Message localMessage = ChatBackgroundManager.a.obtainMessage();
-        localMessage.what = 1;
-        localMessage.obj = new Object[] { paramMessage, localObject };
-        ChatBackgroundManager.a.sendMessageDelayed(localMessage, 120000L);
+        Object localObject2 = ChatBackgroundManager.a.obtainMessage();
+        ((Message)localObject2).what = 1;
+        ((Message)localObject2).obj = new Object[] { paramMessage, localObject1 };
+        ChatBackgroundManager.a.sendMessageDelayed((Message)localObject2, 120000L);
+        return;
       }
+      ChatBackgroundManager.c = 0;
     }
-    else {
-      return;
-    }
-    ChatBackgroundManager.c = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.model.ChatBackgroundManager.ReportChatBgHandler
  * JD-Core Version:    0.7.0.1
  */

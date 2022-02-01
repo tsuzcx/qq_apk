@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.minigame.publicaccount;
 
-import android.support.v4.app.FragmentActivity;
+import androidx.fragment.app.FragmentActivity;
 import eipc.EIPCResult;
 import eipc.EIPCResultCallback;
 
@@ -16,7 +16,7 @@ class MiniGamePublicAccountWebFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountWebFragment.1
  * JD-Core Version:    0.7.0.1
  */

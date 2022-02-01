@@ -43,31 +43,37 @@ public class ArkAuthorizeConfigInjector
   
   public boolean a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ArkAuthorizeConfigInjector", 2, "[canShareArkMsg] ArkName: " + paramString + " ArkShareConfig: " + this.jdField_a_of_type_OrgJsonJSONObject);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[canShareArkMsg] ArkName: ");
+      ((StringBuilder)localObject1).append(paramString);
+      ((StringBuilder)localObject1).append(" ArkShareConfig: ");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_OrgJsonJSONObject);
+      QLog.i("ArkAuthorizeConfigInjector", 2, ((StringBuilder)localObject1).toString());
     }
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
     AuthorizeConfig.a().k();
-    Object localObject = this.jdField_a_of_type_OrgJsonJSONObject;
-    JSONArray localJSONArray = null;
-    if (localObject != null) {
-      localJSONArray = ((JSONObject)localObject).optJSONArray("validArkNames");
+    Object localObject2 = this.jdField_a_of_type_OrgJsonJSONObject;
+    Object localObject1 = null;
+    if (localObject2 != null) {
+      localObject1 = ((JSONObject)localObject2).optJSONArray("validArkNames");
     }
-    if (localObject != null)
+    if (localObject2 != null)
     {
-      localObject = localJSONArray;
-      if (localJSONArray != null) {}
+      localObject2 = localObject1;
+      if (localObject1 != null) {}
     }
     else
     {
-      localObject = jdField_a_of_type_OrgJsonJSONArray;
+      localObject2 = jdField_a_of_type_OrgJsonJSONArray;
     }
-    int i = ((JSONArray)localObject).length() - 1;
+    int i = ((JSONArray)localObject2).length() - 1;
     while (i >= 0)
     {
-      if (paramString.equals(((JSONArray)localObject).optString(i))) {
+      if (paramString.equals(((JSONArray)localObject2).optString(i))) {
         return true;
       }
       i -= 1;
@@ -82,7 +88,7 @@ public class ArkAuthorizeConfigInjector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.authorize.ArkAuthorizeConfigInjector
  * JD-Core Version:    0.7.0.1
  */

@@ -42,21 +42,24 @@ public final class s_shoot_info
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.shoot_gps != null) {
-      paramJceOutputStream.write(this.shoot_gps, 0);
+    Object localObject = this.shoot_gps;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.shoot_location != null) {
-      paramJceOutputStream.write(this.shoot_location, 1);
+    localObject = this.shoot_location;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.shoot_time, 2);
-    if (this.extendinfo != null) {
-      paramJceOutputStream.write(this.extendinfo, 3);
+    localObject = this.extendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_shoot_info
  * JD-Core Version:    0.7.0.1
  */

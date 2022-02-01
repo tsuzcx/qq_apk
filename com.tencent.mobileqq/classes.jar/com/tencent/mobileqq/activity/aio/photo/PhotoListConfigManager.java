@@ -22,7 +22,10 @@ public class PhotoListConfigManager
   
   public static int a(Context paramContext, String paramString)
   {
-    return paramContext.getSharedPreferences("PhotoListConfig" + paramString, 0).getInt("k_version", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PhotoListConfig");
+    localStringBuilder.append(paramString);
+    return paramContext.getSharedPreferences(localStringBuilder.toString(), 0).getInt("k_version", 0);
   }
   
   public static PhotoListConfigManager a(QQAppInterface paramQQAppInterface)
@@ -34,7 +37,10 @@ public class PhotoListConfigManager
   
   public static void a(Context paramContext, String paramString, int paramInt)
   {
-    paramContext.getSharedPreferences("PhotoListConfig" + paramString, 0).edit().putInt("k_version", paramInt).apply();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PhotoListConfig");
+    localStringBuilder.append(paramString);
+    paramContext.getSharedPreferences(localStringBuilder.toString(), 0).edit().putInt("k_version", paramInt).apply();
   }
   
   @TargetApi(14)
@@ -45,12 +51,21 @@ public class PhotoListConfigManager
       if (!this.jdField_a_of_type_Boolean)
       {
         this.jdField_a_of_type_Boolean = true;
-        paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences("PhotoListConfig" + paramQQAppInterface.getCurrentAccountUin(), 0);
+        BaseApplication localBaseApplication = paramQQAppInterface.getApp();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("PhotoListConfig");
+        localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+        paramQQAppInterface = localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0);
         this.jdField_a_of_type_Int = paramQQAppInterface.getInt("k_s", 0);
         this.b = paramQQAppInterface.getInt("k_w", 0);
         this.jdField_a_of_type_JavaUtilSet = paramQQAppInterface.getStringSet("k_b_l", null);
         paramQQAppInterface = new StringBuilder("init ");
-        paramQQAppInterface.append("size:").append(this.jdField_a_of_type_Int).append(" width:").append(this.b).append(" black:").append(this.jdField_a_of_type_JavaUtilSet);
+        paramQQAppInterface.append("size:");
+        paramQQAppInterface.append(this.jdField_a_of_type_Int);
+        paramQQAppInterface.append(" width:");
+        paramQQAppInterface.append(this.b);
+        paramQQAppInterface.append(" black:");
+        paramQQAppInterface.append(this.jdField_a_of_type_JavaUtilSet);
         QLog.i("PhotoListConfig", 1, paramQQAppInterface.toString());
       }
       return;
@@ -70,9 +85,18 @@ public class PhotoListConfigManager
       this.jdField_a_of_type_Int = paramInt1;
       this.b = paramInt2;
       this.jdField_a_of_type_JavaUtilSet = paramSet;
-      paramQQAppInterface.getApp().getSharedPreferences("PhotoListConfig" + paramQQAppInterface.getCurrentAccountUin(), 0).edit().putInt("k_s", paramInt1).putInt("k_w", paramInt2).putStringSet("k_b_l", paramSet).apply();
+      BaseApplication localBaseApplication = paramQQAppInterface.getApp();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PhotoListConfig");
+      localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+      localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0).edit().putInt("k_s", paramInt1).putInt("k_w", paramInt2).putStringSet("k_b_l", paramSet).apply();
       paramQQAppInterface = new StringBuilder("updateConfig ");
-      paramQQAppInterface.append("size:").append(this.jdField_a_of_type_Int).append(" width:").append(this.b).append(" black:").append(paramSet);
+      paramQQAppInterface.append("size:");
+      paramQQAppInterface.append(this.jdField_a_of_type_Int);
+      paramQQAppInterface.append(" width:");
+      paramQQAppInterface.append(this.b);
+      paramQQAppInterface.append(" black:");
+      paramQQAppInterface.append(paramSet);
       QLog.i("PhotoListConfig", 1, paramQQAppInterface.toString());
       return;
     }
@@ -87,7 +111,7 @@ public class PhotoListConfigManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.PhotoListConfigManager
  * JD-Core Version:    0.7.0.1
  */

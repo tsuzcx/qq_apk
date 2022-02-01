@@ -313,16 +313,12 @@ public class MsfMsgUtil
     paramString1.getAttributes().put("nick", paramArrayOfByte2);
     if ((paramString2 != null) && (paramString2.length() > 0)) {
       paramString1.getAttributes().put("To_register_lh_uin", paramString2);
+    } else if ((paramString3 != null) && (paramString3.length() > 0)) {
+      paramString1.getAttributes().put("To_register_unbind_lh_uin", paramString3);
     }
-    for (;;)
-    {
-      paramString1.getAttributes().put("to_register_cr_appVersion", paramString4);
-      paramString1.setTimeout(paramLong);
-      return paramString1;
-      if ((paramString3 != null) && (paramString3.length() > 0)) {
-        paramString1.getAttributes().put("To_register_unbind_lh_uin", paramString3);
-      }
-    }
+    paramString1.getAttributes().put("to_register_cr_appVersion", paramString4);
+    paramString1.setTimeout(paramLong);
+    return paramString1;
   }
   
   public static ToServiceMsg get_wt_SetDevlockMobileType(String paramString, int paramInt, long paramLong)
@@ -372,11 +368,10 @@ public class MsfMsgUtil
   
   public static boolean hasResendBy10008(ToServiceMsg paramToServiceMsg)
   {
-    boolean bool = false;
     if (paramToServiceMsg.getAttributes().get("_attr_msg_has_resend_by_10008") != null) {
-      bool = ((Boolean)paramToServiceMsg.getAttributes().get("_attr_msg_has_resend_by_10008")).booleanValue();
+      return ((Boolean)paramToServiceMsg.getAttributes().get("_attr_msg_has_resend_by_10008")).booleanValue();
     }
-    return bool;
+    return false;
   }
   
   public static ToServiceMsg keepProcessAliveMsg(String paramString, boolean paramBoolean)
@@ -391,7 +386,7 @@ public class MsfMsgUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.MsfMsgUtil
  * JD-Core Version:    0.7.0.1
  */

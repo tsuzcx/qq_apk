@@ -60,12 +60,13 @@ class IntimateContentItemLoverAchievementView$CoupleAchievementRvAdapter
   @NonNull
   public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup paramViewGroup, int paramInt)
   {
-    return new IntimateContentItemLoverAchievementView.CoupleAchievementViewHolder(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemLoverAchievementView, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemLoverAchievementView.a).inflate(2131559386, null));
+    paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemLoverAchievementView;
+    return new IntimateContentItemLoverAchievementView.CoupleAchievementViewHolder(paramViewGroup, LayoutInflater.from(paramViewGroup.a).inflate(2131559261, null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemLoverAchievementView.CoupleAchievementRvAdapter
  * JD-Core Version:    0.7.0.1
  */

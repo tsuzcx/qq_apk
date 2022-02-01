@@ -34,17 +34,19 @@ public final class stElem
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.text != null) {
-      paramJceOutputStream.write(this.text, 0);
+    Object localObject = this.text;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.face != null) {
-      paramJceOutputStream.write(this.face, 1);
+    localObject = this.face;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.stElem
  * JD-Core Version:    0.7.0.1
  */

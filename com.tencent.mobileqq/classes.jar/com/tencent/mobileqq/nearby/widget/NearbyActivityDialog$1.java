@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.widget;
 
-import com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout;
+import com.tencent.widget.RoundRelativeLayout;
 
 class NearbyActivityDialog$1
   implements Runnable
@@ -16,7 +16,7 @@ class NearbyActivityDialog$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.widget.NearbyActivityDialog.1
  * JD-Core Version:    0.7.0.1
  */

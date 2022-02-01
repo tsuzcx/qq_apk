@@ -19,13 +19,14 @@ public final class FeedCloudRead$StGetRankingListReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42 }, new String[] { "extInfo", "listType", "count", "listTime", "busiReqData" }, new Object[] { null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, StGetRankingListReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42 }, new String[] { "extInfo", "listType", "count", "listTime", "busiReqData" }, new Object[] { null, localInteger, localInteger, localInteger, localByteStringMicro }, StGetRankingListReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     feedcloud.FeedCloudRead.StGetRankingListReq
  * JD-Core Version:    0.7.0.1
  */

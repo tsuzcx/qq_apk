@@ -8,11 +8,11 @@ public class ContactUtilsProxy
   
   public static String a(BaseQQAppInterface paramBaseQQAppInterface, String paramString, boolean paramBoolean)
   {
-    String str = paramString;
-    if (a != null) {
-      str = a.a(paramBaseQQAppInterface, paramString, paramBoolean);
+    ContactUtilsProxy.Proxy localProxy = a;
+    if (localProxy != null) {
+      return localProxy.a(paramBaseQQAppInterface, paramString, paramBoolean);
     }
-    return str;
+    return paramString;
   }
   
   public static void a(ContactUtilsProxy.Proxy paramProxy)
@@ -22,16 +22,16 @@ public class ContactUtilsProxy
   
   public static String b(BaseQQAppInterface paramBaseQQAppInterface, String paramString, boolean paramBoolean)
   {
-    String str = paramString;
-    if (a != null) {
-      str = a.b(paramBaseQQAppInterface, paramString, paramBoolean);
+    ContactUtilsProxy.Proxy localProxy = a;
+    if (localProxy != null) {
+      return localProxy.b(paramBaseQQAppInterface, paramString, paramBoolean);
     }
-    return str;
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.imcore.proxy.utils.ContactUtilsProxy
  * JD-Core Version:    0.7.0.1
  */

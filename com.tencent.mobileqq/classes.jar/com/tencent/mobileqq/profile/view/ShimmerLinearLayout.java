@@ -49,56 +49,71 @@ public class ShimmerLinearLayout
   
   private ValueAnimator a(boolean paramBoolean)
   {
-    int m = 0;
-    for (;;)
+    try
     {
-      try
+      if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
       {
-        ValueAnimator localValueAnimator;
-        if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
+        if (!paramBoolean)
         {
-          if (!paramBoolean)
-          {
-            localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
-            return localValueAnimator;
-          }
-          QLog.i("ShimmerLinearLayout", 1, "getShimmerAnimation animator remove");
-          this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
-          this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-          this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+          localObject1 = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+          return localObject1;
         }
-        QLog.i("ShimmerLinearLayout", 1, "getShimmerAnimation recreate = " + paramBoolean + "call stack = " + Log.getStackTraceString(new Throwable()));
-        int k = getWidth();
-        i = getHeight();
-        switch (this.jdField_a_of_type_Int)
-        {
-        case 0: 
-          this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F + this.jdField_b_of_type_Int / this.c });
-          this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(this.c + this.jdField_b_of_type_Int);
-          this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(1);
-          this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
-          this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new ShimmerLinearLayout.UpdateListener(this, i, j, k, m, null));
-          localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
-          continue;
-          i = -this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-          j = 0;
-          break;
-        case 1: 
-          j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-          j = -j;
-          k = 0;
-          int n = 0;
-          m = i;
-          i = n;
-          break;
-        default: 
-          k = 0;
-        }
+        QLog.i("ShimmerLinearLayout", 1, "getShimmerAnimation animator remove");
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+        this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
       }
-      finally {}
-      int j = 0;
-      int i = 0;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getShimmerAnimation recreate = ");
+      ((StringBuilder)localObject1).append(paramBoolean);
+      ((StringBuilder)localObject1).append("call stack = ");
+      ((StringBuilder)localObject1).append(Log.getStackTraceString(new Throwable()));
+      QLog.i("ShimmerLinearLayout", 1, ((StringBuilder)localObject1).toString());
+      j = getWidth();
+      i = getHeight();
+      k = this.jdField_a_of_type_Int;
+      if (k != 0)
+      {
+        if (k != 1)
+        {
+          i = 0;
+          j = 0;
+          break label286;
+        }
+        k = -this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+        j = i;
+        i = 0;
+        m = 0;
+      }
+      else
+      {
+        i = -this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+      }
     }
+    finally
+    {
+      for (;;)
+      {
+        Object localObject1;
+        int i;
+        for (;;)
+        {
+          throw localObject2;
+        }
+        label286:
+        int k = 0;
+        int n = 0;
+        int m = j;
+        int j = n;
+      }
+    }
+    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, this.jdField_b_of_type_Int / this.c + 1.0F });
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(this.c + this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(1);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new ShimmerLinearLayout.UpdateListener(this, i, k, m, j, null));
+    localObject1 = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    return localObject1;
   }
   
   private Bitmap a()
@@ -111,51 +126,57 @@ public class ShimmerLinearLayout
   
   public static Bitmap a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    Object localObject = null;
     try
     {
       Bitmap localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-      localObject = localBitmap;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      while (!paramBoolean) {}
-      System.gc();
-      return a(paramInt1, paramInt2, false);
+      return localBitmap;
     }
     catch (Exception localException)
     {
       QLog.d("ShimmerLinearLayout", 1, localException.getMessage());
+      return null;
+      if (paramBoolean)
+      {
+        System.gc();
+        return a(paramInt1, paramInt2, false);
+      }
+      return null;
     }
-    return localObject;
-    return null;
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      label24:
+      break label24;
+    }
   }
   
   private void a(Canvas paramCanvas)
   {
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    if (localBitmap == null) {
+    Bitmap localBitmap2 = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if (localBitmap2 == null) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() != getWidth()) {
-      localBitmap = b();
+    Bitmap localBitmap1 = localBitmap2;
+    if (localBitmap2.getWidth() != getWidth()) {
+      localBitmap1 = b();
     }
-    paramCanvas.clipRect(this.d, this.e, this.d + localBitmap.getWidth(), this.e + localBitmap.getHeight());
+    int i = this.d;
+    paramCanvas.clipRect(i, this.e, localBitmap1.getWidth() + i, this.e + localBitmap1.getHeight());
     paramCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
     super.dispatchDraw(paramCanvas);
-    paramCanvas.drawBitmap(localBitmap, this.d, this.e, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawBitmap(localBitmap1, this.d, this.e, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
   private boolean a(Canvas paramCanvas)
   {
     Bitmap localBitmap = a();
-    if ((localBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap == null)) {
-      return false;
+    if ((localBitmap != null) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null))
+    {
+      super.dispatchDraw(paramCanvas);
+      a(new Canvas(localBitmap));
+      paramCanvas.drawBitmap(localBitmap, 0.0F, 0.0F, null);
+      return true;
     }
-    super.dispatchDraw(paramCanvas);
-    a(new Canvas(localBitmap));
-    paramCanvas.drawBitmap(localBitmap, 0.0F, 0.0F, null);
-    return true;
+    return false;
   }
   
   private Bitmap b()
@@ -229,17 +250,17 @@ public class ShimmerLinearLayout
     this.jdField_a_of_type_Boolean = false;
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
-    if ((!this.jdField_a_of_type_Boolean) || (getWidth() <= 0) || (getHeight() <= 0))
+    if ((this.jdField_a_of_type_Boolean) && (getWidth() > 0) && (getHeight() > 0))
     {
-      super.dispatchDraw(paramCanvas);
+      a(paramCanvas);
       return;
     }
-    a(paramCanvas);
+    super.dispatchDraw(paramCanvas);
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     QLog.i("ShimmerLinearLayout", 1, "ShimmerLinearLayout.onDetachedFromWindow()");
@@ -256,7 +277,7 @@ public class ShimmerLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.ShimmerLinearLayout
  * JD-Core Version:    0.7.0.1
  */

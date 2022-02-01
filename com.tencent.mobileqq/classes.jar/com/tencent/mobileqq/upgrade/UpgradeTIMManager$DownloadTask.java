@@ -79,7 +79,7 @@ class UpgradeTIMManager$DownloadTask
     if (QLog.isColorLevel()) {
       QLog.d("UpgradeTIMManager", 2, "start download...");
     }
-    if (!NetworkUtil.h(BaseApplication.getContext()))
+    if (!NetworkUtil.isWifiConnected(BaseApplication.getContext()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("UpgradeTIMManager", 2, "run download, wifi not connected...");
@@ -93,7 +93,7 @@ class UpgradeTIMManager$DownloadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.UpgradeTIMManager.DownloadTask
  * JD-Core Version:    0.7.0.1
  */

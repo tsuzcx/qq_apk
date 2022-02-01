@@ -4,18 +4,21 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
+import com.tencent.aelight.camera.download.api.IAEKitForQQ;
 import com.tencent.av.AVLog;
 import com.tencent.av.business.manager.pendant.EffectPendantTools;
 import com.tencent.av.camera.CameraObserver;
 import com.tencent.av.camera.CameraUtils;
+import com.tencent.av.camera.api.ICameraManagerApi;
 import com.tencent.av.core.VcSystemInfo;
 import com.tencent.av.opengl.GraphicRenderMgr;
+import com.tencent.av.opengl.api.IGraphicRender;
 import com.tencent.av.opengl.config.EffectFaceDeviceConfig;
 import com.tencent.av.utils.FramePerfData;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.AEKitForQQ;
 
 public abstract class EffectCtrlBase
   extends EffectRenderWrapper
@@ -36,7 +39,7 @@ public abstract class EffectCtrlBase
     {
       paramArrayOfByte1 = a(paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramShort1, paramShort2, (short)paramCameraFrame.jdField_a_of_type_Int, (short)paramCameraFrame.jdField_b_of_type_Int);
       if (paramCameraFrame.jdField_a_of_type_ComTencentAvUtilsFramePerfData != null) {
-        paramCameraFrame.jdField_a_of_type_ComTencentAvUtilsFramePerfData.f();
+        paramCameraFrame.jdField_a_of_type_ComTencentAvUtilsFramePerfData.e();
       }
       GraphicRenderMgr.getInstance().sendCameraFrame(paramCameraFrame.jdField_a_of_type_ArrayOfByte, paramCameraFrame.c, paramCameraFrame.jdField_a_of_type_Int, paramCameraFrame.jdField_b_of_type_Int, paramCameraFrame.d, paramCameraFrame.e, paramCameraFrame.jdField_b_of_type_Long, paramCameraFrame.jdField_a_of_type_Boolean, a(), paramArrayOfByte1, paramCameraFrame.f, paramCameraFrame.g);
       paramCameraFrame.b();
@@ -51,7 +54,10 @@ public abstract class EffectCtrlBase
     int i = DeviceInfoUtil.a();
     if (i < 17)
     {
-      AVLog.printColorLog("EffectRenderWrapper", "isUserEffectFace error  osVersion:" + i);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isUserEffectFace error  osVersion:");
+      localStringBuilder.append(i);
+      AVLog.printColorLog("EffectRenderWrapper", localStringBuilder.toString());
       return false;
     }
     return a(paramInt, paramLong, 1073741824L);
@@ -60,21 +66,40 @@ public abstract class EffectCtrlBase
   public static boolean a(int paramInt, long paramLong1, long paramLong2)
   {
     int i = VcSystemInfo.getNumCores();
+    StringBuilder localStringBuilder;
     if (i < paramInt)
     {
-      QLog.w("EffectRenderWrapper", 1, "isSupportOfDevice fail, cpuCount[" + i + " < " + paramInt + "]");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isSupportOfDevice fail, cpuCount[");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" < ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("]");
+      QLog.w("EffectRenderWrapper", 1, localStringBuilder.toString());
       return false;
     }
     long l = VcSystemInfo.getMaxCpuFreq();
     if ((l != 0L) && (l < paramLong1))
     {
-      QLog.w("EffectRenderWrapper", 1, "isSupportOfDevice fail, cpuFrequency[" + l + " < " + paramLong1 + "]");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isSupportOfDevice fail, cpuFrequency[");
+      localStringBuilder.append(l);
+      localStringBuilder.append(" < ");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append("]");
+      QLog.w("EffectRenderWrapper", 1, localStringBuilder.toString());
       return false;
     }
     paramLong1 = DeviceInfoUtil.a();
     if (paramLong1 < paramLong2)
     {
-      QLog.w("EffectRenderWrapper", 1, "isSupportOfDevice fail, mem[" + paramLong1 + " < " + paramLong2 + "]");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isSupportOfDevice fail, mem[");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append(" < ");
+      localStringBuilder.append(paramLong2);
+      localStringBuilder.append("]");
+      QLog.w("EffectRenderWrapper", 1, localStringBuilder.toString());
       return false;
     }
     return true;
@@ -82,7 +107,7 @@ public abstract class EffectCtrlBase
   
   public static boolean b()
   {
-    return (AEKitForQQ.b()) && (PtvFilterSoLoad.a());
+    return (((IAEKitForQQ)QRoute.api(IAEKitForQQ.class)).isSupported()) && (PtvFilterSoLoad.a());
   }
   
   public static boolean c()
@@ -98,8 +123,8 @@ public abstract class EffectCtrlBase
     if (b) {
       return true;
     }
-    EffectFaceDeviceConfig localEffectFaceDeviceConfig = EffectFaceDeviceConfig.a();
-    if ((localEffectFaceDeviceConfig != null) && (localEffectFaceDeviceConfig.f()))
+    Object localObject = EffectFaceDeviceConfig.a();
+    if ((localObject != null) && (((EffectFaceDeviceConfig)localObject).d()))
     {
       b = true;
       return true;
@@ -107,13 +132,23 @@ public abstract class EffectCtrlBase
     if (!c()) {
       return false;
     }
-    if ((a(4, 1400000L, 1073741824L)) || (a(8, 1200000L, 1073741824L))) {}
-    for (int i = 1; i == 0; i = 0) {
+    int i;
+    if ((!a(4, 1400000L, 1073741824L)) && (!a(8, 1200000L, 1073741824L))) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    if (i == 0) {
       return false;
     }
-    if ((localEffectFaceDeviceConfig != null) && (!localEffectFaceDeviceConfig.e()))
+    if ((localObject != null) && (!((EffectFaceDeviceConfig)localObject).c()))
     {
-      AVLog.printErrorLog("EffectRenderWrapper", "isUserEffectFace| model in black list.modle=" + Build.MANUFACTURER + ":" + Build.MODEL);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isUserEffectFace| model in black list.modle=");
+      ((StringBuilder)localObject).append(Build.MANUFACTURER);
+      ((StringBuilder)localObject).append(":");
+      ((StringBuilder)localObject).append(Build.MODEL);
+      AVLog.printErrorLog("EffectRenderWrapper", ((StringBuilder)localObject).toString());
       return false;
     }
     b = true;
@@ -148,18 +183,18 @@ public abstract class EffectCtrlBase
   public void b()
   {
     super.b();
-    CameraUtils.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_ComTencentAvCameraCameraObserver);
+    CameraUtils.a(this.jdField_a_of_type_AndroidContentContext).addObserver(this.jdField_a_of_type_ComTencentAvCameraCameraObserver);
   }
   
   public void c()
   {
-    CameraUtils.a(this.jdField_a_of_type_AndroidContentContext).b(this.jdField_a_of_type_ComTencentAvCameraCameraObserver);
+    CameraUtils.a(this.jdField_a_of_type_AndroidContentContext).deleteObserver(this.jdField_a_of_type_ComTencentAvCameraCameraObserver);
     super.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.effects.EffectCtrlBase
  * JD-Core Version:    0.7.0.1
  */

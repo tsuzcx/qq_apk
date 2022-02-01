@@ -22,10 +22,8 @@ class PCOnlineBannerProcessor$2
       }
       this.a.b();
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       Intent localIntent = new Intent(PCOnlineBannerProcessor.a(this.a), QRLoginMgrActivity.class);
       localIntent.putExtra("loginInfo", PCOnlineBannerProcessor.b(this.a));
       localIntent.putExtra("appType", PCOnlineBannerProcessor.a(this.a));
@@ -37,11 +35,12 @@ class PCOnlineBannerProcessor$2
         ReportController.b(PCOnlineBannerProcessor.d(this.a).getAppRuntime(), "dc00898", "", "", "0X8008880", "0X8008880", 0, 0, "", "", "", "");
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.PCOnlineBannerProcessor.2
  * JD-Core Version:    0.7.0.1
  */

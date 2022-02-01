@@ -17,45 +17,51 @@ class PublicAccountManagerImpl$5
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-    if (QLog.isColorLevel()) {
-      QLog.i("PublicAccountManager", 2, "success:" + String.valueOf(paramBoolean));
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("success:");
+      ((StringBuilder)localObject).append(String.valueOf(paramBoolean));
+      QLog.i("PublicAccountManager", 2, ((StringBuilder)localObject).toString());
     }
-    bool = paramBoolean;
+    boolean bool = paramBoolean;
     if (paramBoolean) {}
     try
     {
       paramBundle = paramBundle.getByteArray("data");
-      mobileqq_mp.SetRefuseFollowResponse localSetRefuseFollowResponse = new mobileqq_mp.SetRefuseFollowResponse();
-      localSetRefuseFollowResponse.mergeFrom(paramBundle);
+      localObject = new mobileqq_mp.SetRefuseFollowResponse();
+      ((mobileqq_mp.SetRefuseFollowResponse)localObject).mergeFrom(paramBundle);
       bool = paramBoolean;
-      if (localSetRefuseFollowResponse.ret_info.has())
-      {
-        bool = paramBoolean;
-        if (localSetRefuseFollowResponse.ret_info.ret_code.has())
-        {
-          paramInt = localSetRefuseFollowResponse.ret_info.ret_code.get();
-          bool = paramBoolean;
-          if (paramInt != 0L) {
-            bool = false;
-          }
-        }
+      if (!((mobileqq_mp.SetRefuseFollowResponse)localObject).ret_info.has()) {
+        break label138;
+      }
+      bool = paramBoolean;
+      if (!((mobileqq_mp.SetRefuseFollowResponse)localObject).ret_info.ret_code.has()) {
+        break label138;
+      }
+      paramInt = ((mobileqq_mp.SetRefuseFollowResponse)localObject).ret_info.ret_code.get();
+      bool = paramBoolean;
+      if (paramInt == 0L) {
+        break label138;
       }
     }
     catch (Exception paramBundle)
     {
-      for (;;)
-      {
-        bool = false;
-      }
+      label135:
+      break label135;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountManager$refuseAcceptDone != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountManager$refuseAcceptDone.a(bool);
+    bool = false;
+    label138:
+    paramBundle = this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountManager$refuseAcceptDone;
+    if (paramBundle != null) {
+      paramBundle.a(bool);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountManagerImpl.5
  * JD-Core Version:    0.7.0.1
  */

@@ -3,26 +3,25 @@ package com.tencent.mobileqq.troop.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.v4.util.ArrayMap;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.tencent.biz.ProtoUtils;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.ChatActivityFacade.SendMsgParams;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.AIOContext;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.input.AIOInput;
+import com.tencent.mobileqq.activity.aio.core.input.MessageSignal;
 import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.config.business.robot.TroopRobotConfBean;
 import com.tencent.mobileqq.data.AtTroopMemberInfo;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.HotChatInfo;
@@ -31,68 +30,46 @@ import com.tencent.mobileqq.data.MessageForPtt;
 import com.tencent.mobileqq.data.MessageForReplyText;
 import com.tencent.mobileqq.data.MessageForText;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.friend.observer.FriendObserver;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.mobileqq.graytip.UniteGrayTipUtil;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.graytip.UniteGrayTipMsgUtil;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.ReportTask;
-import com.tencent.mobileqq.troop.org.pb.oidb_0x496.Robot;
 import com.tencent.mobileqq.troop.org.pb.oidb_0x496.RobotSubscribeCategory;
-import com.tencent.mobileqq.troop.org.pb.oidb_0x496.UinRange;
+import com.tencent.mobileqq.troop.robot.api.ITroopRobotService;
 import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
 import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.Patterns;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import mqq.manager.Manager;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.oidb.cmd0x934.cmd0x934.ReqBody;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
 public class TroopRobotManager
   implements Manager
 {
-  static Object jdField_a_of_type_JavaLangObject = new Object();
   protected int a;
   protected Handler a;
-  protected ArrayMap<Long, ArrayList<TroopRobotInfo>> a;
   protected AppInterface a;
   private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver;
+  private final FriendObserver jdField_a_of_type_ComTencentMobileqqFriendObserverFriendObserver = new TroopRobotManager.2(this);
   protected String a;
-  protected WeakReference<TroopRobotManager.OnTalkingChangeListener> a;
-  protected ArrayList<String> a;
   protected HashMap<Long, MessageForUniteGrayTip> a;
-  protected List<TroopRobotManager.UinRange> a;
+  protected List<String> a;
   protected boolean a;
-  protected ArrayMap<Long, ArrayList<TroopRobotInfo>> b;
   public String b;
   HashMap<String, Long> jdField_b_of_type_JavaUtilHashMap = new HashMap();
   protected List<String> b;
   private boolean jdField_b_of_type_Boolean = false;
-  protected ArrayMap<Long, Integer> c;
   public String c;
   private HashMap<String, ArrayList<String>> c;
   protected List<String> c;
   public String d;
-  protected List<String> d;
-  public String e;
-  List<oidb_0x496.RobotSubscribeCategory> e;
+  List<oidb_0x496.RobotSubscribeCategory> d;
+  public String e = null;
   private String f = "";
   private String g = "";
   private String h = null;
@@ -102,8 +79,7 @@ public class TroopRobotManager
     this.jdField_a_of_type_JavaUtilList = new ArrayList(5);
     this.jdField_b_of_type_JavaUtilList = new ArrayList(5);
     this.jdField_c_of_type_JavaUtilList = new ArrayList(5);
-    this.jdField_d_of_type_JavaUtilList = new ArrayList(5);
-    this.jdField_e_of_type_JavaUtilList = new ArrayList();
+    this.jdField_d_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_Int = 60000;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_a_of_type_JavaLangString = null;
@@ -112,51 +88,28 @@ public class TroopRobotManager
     this.jdField_b_of_type_JavaLangString = null;
     this.jdField_c_of_type_JavaLangString = null;
     this.jdField_d_of_type_JavaLangString = null;
-    this.jdField_e_of_type_JavaLangString = null;
     this.jdField_c_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap(20);
-    this.jdField_b_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap(50);
-    this.jdField_c_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap(50);
-    this.jdField_a_of_type_JavaUtilArrayList = null;
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_c_of_type_JavaUtilList.add(HardCodeUtil.a(2131715617));
-    this.jdField_d_of_type_JavaUtilList.add(HardCodeUtil.a(2131715603));
-    ThreadManager.post(new TroopRobotManager.1(this), 5, null, true);
-    b();
-  }
-  
-  private void a(QQAppInterface paramQQAppInterface)
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_JavaUtilArrayList == null)
-      {
-        QLog.d("TroopRobotManager", 2, "initRobotRedInRedList ");
-        this.jdField_a_of_type_JavaUtilArrayList = RobotUtils.a(paramQQAppInterface);
-        if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-        }
-      }
-      return;
+    paramAppInterface = (ITroopRobotService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ITroopRobotService.class, "all");
+    a();
+    paramAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    if (paramAppInterface != null) {
+      paramAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqFriendObserverFriendObserver);
     }
   }
   
-  public static void a(MessageRecord paramMessageRecord)
+  private void a()
   {
-    if (!TextUtils.isEmpty(paramMessageRecord.msg))
+    if (this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver == null)
     {
-      Object localObject = Patterns.d.matcher(paramMessageRecord.msg);
-      if (((Matcher)localObject).find())
+      AppInterface localAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+      if (localAppInterface != null)
       {
-        localObject = ((Matcher)localObject).group(0);
-        int i = paramMessageRecord.msg.indexOf((String)localObject);
-        if (i >= 0)
-        {
-          String str = paramMessageRecord.msg.substring(0, i);
-          paramMessageRecord.saveExtInfoToExtStr("robot_short_link_url", (String)localObject);
-          paramMessageRecord.saveExtInfoToExtStr("robot_short_link_description", str);
-          paramMessageRecord.saveExtInfoToExtStr("robot_processed", "true");
+        if (!(localAppInterface instanceof QQAppInterface)) {
+          return;
         }
+        this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new TroopRobotManager.1(this);
+        this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
       }
     }
   }
@@ -170,224 +123,80 @@ public class TroopRobotManager
       l = localSharedPreferences.getLong(paramString, 0L);
       this.jdField_b_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(l));
     }
-    for (;;)
+    else
     {
-      if (paramMessageRecord.shmsgseq > ((Long)this.jdField_b_of_type_JavaUtilHashMap.get(paramString)).longValue())
-      {
-        localSharedPreferences.edit().putLong(paramString, paramMessageRecord.shmsgseq).commit();
-        this.jdField_b_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(paramMessageRecord.shmsgseq));
-      }
-      return;
       l = Math.max(((Long)this.jdField_b_of_type_JavaUtilHashMap.get(paramString)).longValue(), localSharedPreferences.getLong(paramString, 0L));
       localSharedPreferences.edit().putLong(paramString, l).commit();
       this.jdField_b_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(l));
     }
-  }
-  
-  private void a(MessageRecord paramMessageRecord, String paramString1, String paramString2, String paramString3)
-  {
-    b(paramMessageRecord.frienduin, paramString1, paramString2);
-    b(Long.parseLong(paramMessageRecord.frienduin), Long.parseLong(paramString1), paramString3, new TroopRobotManager.5(this, paramString3));
+    if (paramMessageRecord.shmsgseq > ((Long)this.jdField_b_of_type_JavaUtilHashMap.get(paramString)).longValue())
+    {
+      localSharedPreferences.edit().putLong(paramString, paramMessageRecord.shmsgseq).commit();
+      this.jdField_b_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(paramMessageRecord.shmsgseq));
+    }
   }
   
   private void a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      localQQAppInterface = null;
-      if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
-        localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface;
-      }
-    } while (localQQAppInterface == null);
-    SharedPreUtils.c(localQQAppInterface.getApplication(), localQQAppInterface.getCurrentUin(), paramString, false);
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    ReportController.b(null, "dc00899", "Grp_robot", "", paramString1, paramString2, 0, 0, paramString3, paramString4, paramString5, paramString6);
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidOsHandler.post(new TroopRobotManager.3(this));
+    }
+    QQAppInterface localQQAppInterface = null;
+    AppInterface localAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    if ((localAppInterface instanceof QQAppInterface)) {
+      localQQAppInterface = (QQAppInterface)localAppInterface;
+    }
+    if (localQQAppInterface == null) {
+      return;
+    }
+    SharedPreUtils.d(localQQAppInterface.getApplication(), localQQAppInterface.getCurrentUin(), paramString, false);
   }
   
   public static boolean a(TextView paramTextView, MessageRecord paramMessageRecord)
   {
-    boolean bool = false;
     String str1 = paramMessageRecord.getExtInfoFromExtStr("robot_short_link_url");
     if (!TextUtils.isEmpty(str1))
     {
       paramTextView.setText(paramMessageRecord.getExtInfoFromExtStr("robot_short_link_description"));
       paramTextView.append("\r\n");
-      String str2 = HardCodeUtil.a(2131715605);
+      String str2 = HardCodeUtil.a(2131715529);
       SpannableString localSpannableString = new SpannableString(str2);
-      localSpannableString.setSpan(new TroopRobotManager.11(str1, paramMessageRecord), 0, str2.length(), 33);
+      localSpannableString.setSpan(new TroopRobotManager.3(str1, paramMessageRecord), 0, str2.length(), 33);
       paramTextView.append(localSpannableString);
-      bool = true;
+      return true;
     }
-    return bool;
-  }
-  
-  public static String b(MessageRecord paramMessageRecord)
-  {
-    if (b(paramMessageRecord))
-    {
-      String str = paramMessageRecord.getExtInfoFromExtStr("robot_short_link_url");
-      paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("robot_short_link_description");
-      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramMessageRecord))) {
-        return paramMessageRecord + HardCodeUtil.a(2131715613);
-      }
-    }
-    return null;
+    return false;
   }
   
   private void b()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver != null) || (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) || (!(this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface))) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new TroopRobotManager.2(this);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-  }
-  
-  public static boolean b(MessageRecord paramMessageRecord)
-  {
-    return false;
-  }
-  
-  private void c()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver != null) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null))
+    FriendListObserver localFriendListObserver = this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver;
+    if (localFriendListObserver != null)
     {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-      this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = null;
-    }
-  }
-  
-  private void d()
-  {
-    Object localObject1 = SharedPreUtils.f(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-    if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-      try
+      AppInterface localAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+      if (localAppInterface != null)
       {
-        localObject1 = new JSONArray((String)localObject1);
-        this.jdField_c_of_type_JavaUtilHashMap.clear();
-        int i = 0;
-        while (i < ((JSONArray)localObject1).length())
-        {
-          Object localObject3 = ((JSONArray)localObject1).optJSONObject(i);
-          if (localObject3 != null)
-          {
-            String str = ((JSONObject)localObject3).optString("robotUin");
-            localObject3 = ((JSONObject)localObject3).optJSONArray("barItem");
-            if ((!TextUtils.isEmpty(str)) && (localObject3 != null))
-            {
-              ArrayList localArrayList = new ArrayList(((JSONArray)localObject3).length());
-              int j = 0;
-              while (j < ((JSONArray)localObject3).length())
-              {
-                localArrayList.add(((JSONArray)localObject3).optString(j));
-                j += 1;
-              }
-              this.jdField_c_of_type_JavaUtilHashMap.put(str, localArrayList);
-            }
-          }
-          i += 1;
-        }
-        localObject2 = SharedPreUtils.g(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-      }
-      catch (JSONException localJSONException1)
-      {
-        localJSONException1.printStackTrace();
+        localAppInterface.removeObserver(localFriendListObserver);
+        this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = null;
       }
     }
-    Object localObject2;
-    if (!TextUtils.isEmpty((CharSequence)localObject2)) {}
-    try
-    {
-      localObject2 = new JSONObject((String)localObject2);
-      this.f = ((JSONObject)localObject2).optString("userTail");
-      this.g = ((JSONObject)localObject2).optString("robotTail");
-      localObject2 = TroopRobotConfBean.a();
-      if (localObject2 != null) {
-        a(((TroopRobotConfBean)localObject2).a(), ((TroopRobotConfBean)localObject2).a());
-      }
-      return;
-    }
-    catch (JSONException localJSONException2)
-    {
-      for (;;)
-      {
-        localJSONException2.printStackTrace();
-      }
-    }
-  }
-  
-  public static boolean d(MessageRecord paramMessageRecord)
-  {
-    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("robot_processed");
-    return (!TextUtils.isEmpty(paramMessageRecord)) && (paramMessageRecord.equals("true"));
-  }
-  
-  public int a(long paramLong)
-  {
-    int i = 0;
-    if (this.jdField_c_of_type_AndroidSupportV4UtilArrayMap != null) {
-      synchronized (this.jdField_c_of_type_AndroidSupportV4UtilArrayMap)
-      {
-        if (this.jdField_c_of_type_AndroidSupportV4UtilArrayMap.containsKey(Long.valueOf(paramLong))) {
-          i = ((Integer)this.jdField_c_of_type_AndroidSupportV4UtilArrayMap.get(Long.valueOf(paramLong))).intValue();
-        }
-        return i;
-      }
-    }
-    return 0;
   }
   
   public int a(ChatMessage paramChatMessage)
   {
     paramChatMessage = paramChatMessage.getExtInfoFromExtStr("robot_news_class_id");
-    int i = 0;
     if (!TextUtils.isEmpty(paramChatMessage)) {}
     try
     {
-      i = Integer.parseInt(paramChatMessage);
+      int i = Integer.parseInt(paramChatMessage);
       return i;
     }
-    catch (Exception paramChatMessage) {}
-    return 0;
-  }
-  
-  public oidb_0x496.RobotSubscribeCategory a(int paramInt)
-  {
-    Iterator localIterator = this.jdField_e_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    catch (Exception paramChatMessage)
     {
-      oidb_0x496.RobotSubscribeCategory localRobotSubscribeCategory = (oidb_0x496.RobotSubscribeCategory)localIterator.next();
-      if (localRobotSubscribeCategory.id.get() == paramInt) {
-        return localRobotSubscribeCategory;
-      }
+      label22:
+      break label22;
     }
-    return null;
-  }
-  
-  public TroopRobotData a(long paramLong)
-  {
-    TroopRobotData localTroopRobotData = new TroopRobotData();
-    localTroopRobotData.jdField_a_of_type_JavaUtilArrayList = a(paramLong);
-    localTroopRobotData.b = b(paramLong);
-    localTroopRobotData.jdField_a_of_type_Int = a(paramLong);
-    return localTroopRobotData;
-  }
-  
-  public String a()
-  {
-    return this.h;
+    return 0;
   }
   
   public String a(QQAppInterface paramQQAppInterface, MessageForPtt paramMessageForPtt)
@@ -398,62 +207,11 @@ public class TroopRobotManager
   public String a(MessageRecord paramMessageRecord)
   {
     String str = paramMessageRecord.getExtInfoFromExtStr("robot_news_class_id");
-    return paramMessageRecord.frienduin + "_" + str;
-  }
-  
-  public ArrayList<TroopRobotInfo> a(long paramLong)
-  {
-    ArrayList localArrayList = new ArrayList(0);
-    if (this.jdField_b_of_type_AndroidSupportV4UtilArrayMap != null) {
-      synchronized (this.jdField_b_of_type_AndroidSupportV4UtilArrayMap)
-      {
-        if (this.jdField_b_of_type_AndroidSupportV4UtilArrayMap.containsKey(Long.valueOf(paramLong)))
-        {
-          Iterator localIterator = ((ArrayList)this.jdField_b_of_type_AndroidSupportV4UtilArrayMap.get(Long.valueOf(paramLong))).iterator();
-          while (localIterator.hasNext())
-          {
-            TroopRobotInfo localTroopRobotInfo = (TroopRobotInfo)localIterator.next();
-            if (localTroopRobotInfo.a()) {
-              localArrayList.add(localTroopRobotInfo);
-            }
-          }
-        }
-      }
-    }
-    return localArrayList1;
-  }
-  
-  public void a()
-  {
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_d_of_type_JavaLangString = null;
-    a(false);
-  }
-  
-  public void a(int paramInt1, long paramLong1, long paramLong2, int paramInt2, TroopRobotManager.Callback paramCallback)
-  {
-    cmd0x934.ReqBody localReqBody = new cmd0x934.ReqBody();
-    localReqBody.cmd.set(paramInt1, true);
-    localReqBody.version.set(paramInt2, true);
-    localReqBody.group_id.set(paramLong1, true);
-    localReqBody.robot_uin.set(paramLong2);
-    ProtoUtils.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, new TroopRobotManager.8(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0x934_1", 2356, 1, new Bundle(), 12000L);
-  }
-  
-  public void a(int paramInt, long paramLong1, long paramLong2, String paramString, TroopRobotManager.Callback paramCallback)
-  {
-    cmd0x934.ReqBody localReqBody = new cmd0x934.ReqBody();
-    localReqBody.cmd.set(paramInt, true);
-    localReqBody.group_id.set(paramLong1, true);
-    localReqBody.keyword.set(paramString, true);
-    localReqBody.robot_uin.set(paramLong2);
-    ProtoUtils.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, new TroopRobotManager.9(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0x934_1", 2356, 1, new Bundle(), 12000L);
-  }
-  
-  public void a(long paramLong, int paramInt, TroopRobotManager.Callback paramCallback)
-  {
-    a(4, 0L, paramLong, paramInt, paramCallback);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramMessageRecord.frienduin);
+    localStringBuilder.append("_");
+    localStringBuilder.append(str);
+    return localStringBuilder.toString();
   }
   
   public void a(long paramLong1, long paramLong2)
@@ -462,422 +220,59 @@ public class TroopRobotManager
     if (localMessageForUniteGrayTip != null)
     {
       localMessageForUniteGrayTip.shmsgseq = paramLong2;
-      UniteGrayTipUtil.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, localMessageForUniteGrayTip);
-    }
-  }
-  
-  public void a(long paramLong1, long paramLong2, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopRobotManager", 2, "onSetTroopRobot troopuin:" + paramLong1 + " robotuin:" + paramLong2 + " status:" + paramInt);
-    }
-    if (this.jdField_b_of_type_AndroidSupportV4UtilArrayMap != null) {
-      for (;;)
-      {
-        synchronized (this.jdField_b_of_type_AndroidSupportV4UtilArrayMap)
-        {
-          if (this.jdField_b_of_type_AndroidSupportV4UtilArrayMap.containsKey(Long.valueOf(paramLong1)))
-          {
-            ArrayList localArrayList = (ArrayList)this.jdField_b_of_type_AndroidSupportV4UtilArrayMap.get(Long.valueOf(paramLong1));
-            Object localObject4 = null;
-            Object localObject1 = localArrayList.iterator();
-            if (!((Iterator)localObject1).hasNext()) {
-              break label243;
-            }
-            TroopRobotInfo localTroopRobotInfo = (TroopRobotInfo)((Iterator)localObject1).next();
-            if (localTroopRobotInfo.a() != paramLong2) {
-              continue;
-            }
-            localObject1 = localObject4;
-            if (!localTroopRobotInfo.a())
-            {
-              localObject1 = localObject4;
-              if (paramInt == 1) {
-                localObject1 = localTroopRobotInfo;
-              }
-            }
-            localTroopRobotInfo.a(paramInt);
-            if (localObject1 != null)
-            {
-              localArrayList.remove(localObject1);
-              localArrayList.add(0, localObject1);
-              if (QLog.isColorLevel()) {
-                QLog.d("TroopRobotManager", 2, "onSetTroopRobot move position " + ((TroopRobotInfo)localObject1).a());
-              }
-            }
-          }
-          return;
-        }
-        label243:
-        Object localObject3 = null;
-      }
-    }
-  }
-  
-  public void a(long paramLong1, long paramLong2, int paramInt, TroopRobotManager.Callback paramCallback)
-  {
-    a(1, paramLong1, paramLong2, paramInt, paramCallback);
-  }
-  
-  public void a(long paramLong1, long paramLong2, String paramString, TroopRobotManager.Callback paramCallback)
-  {
-    a(3, paramLong1, paramLong2, paramString, paramCallback);
-  }
-  
-  public void a(long paramLong, String paramString, TroopRobotManager.Callback paramCallback)
-  {
-    a(Long.valueOf("1").longValue(), paramLong, paramString, paramCallback);
-  }
-  
-  public void a(long paramLong, ArrayList<TroopRobotInfo> paramArrayList)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onGetAddedRobot ").append(paramLong).append(" ");
-      if (paramArrayList != null) {
-        break label93;
-      }
-      ??? = "null";
-    }
-    for (;;)
-    {
-      QLog.d("TroopRobotManager", 2, (String)???);
-      if ((paramArrayList != null) && (this.jdField_b_of_type_AndroidSupportV4UtilArrayMap != null)) {}
-      synchronized (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap)
-      {
-        this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(Long.valueOf(paramLong), paramArrayList);
-        return;
-        label93:
-        ??? = paramArrayList.toString();
-      }
-    }
-  }
-  
-  public void a(long paramLong, ArrayList<TroopRobotInfo> arg3, int paramInt)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onGetAllRobot ").append(paramLong).append(" ");
-      if (??? != null) {
-        break label137;
-      }
-      ??? = "null";
-    }
-    for (;;)
-    {
-      QLog.d("TroopRobotManager", 2, (String)??? + " " + paramInt);
-      if ((??? != null) && (this.jdField_b_of_type_AndroidSupportV4UtilArrayMap != null)) {}
-      synchronized (this.jdField_b_of_type_AndroidSupportV4UtilArrayMap)
-      {
-        this.jdField_b_of_type_AndroidSupportV4UtilArrayMap.put(Long.valueOf(paramLong), ???);
-        if (this.jdField_c_of_type_AndroidSupportV4UtilArrayMap == null) {}
-      }
-      synchronized (this.jdField_c_of_type_AndroidSupportV4UtilArrayMap)
-      {
-        this.jdField_c_of_type_AndroidSupportV4UtilArrayMap.put(Long.valueOf(paramLong), Integer.valueOf(paramInt));
-        return;
-        label137:
-        ??? = ???.toString();
-        continue;
-        ??? = finally;
-        throw ???;
-      }
+      UniteGrayTipMsgUtil.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, localMessageForUniteGrayTip);
     }
   }
   
   public void a(Context paramContext, BaseChatPie paramBaseChatPie, QQAppInterface paramQQAppInterface, EditText paramEditText, SessionInfo paramSessionInfo, ChatMessage paramChatMessage, String paramString)
   {
-    String str = ContactUtils.g(paramQQAppInterface, paramChatMessage.frienduin, paramChatMessage.senderuin);
-    paramEditText = AtTroopMemberSpan.a(paramQQAppInterface, paramContext, paramSessionInfo.jdField_a_of_type_JavaLangString, paramChatMessage.senderuin, str, false, paramEditText, true, true);
+    Object localObject = ContactUtils.b(paramQQAppInterface, paramChatMessage.frienduin, paramChatMessage.senderuin);
+    paramEditText = AtTroopMemberSpan.a(paramQQAppInterface, paramContext, paramSessionInfo.jdField_a_of_type_JavaLangString, paramChatMessage.senderuin, (String)localObject, false, paramEditText, true, true);
     paramContext = new ArrayList();
-    paramEditText = AtTroopMemberSpan.a(paramEditText, paramContext);
-    paramSessionInfo = paramChatMessage.getExtInfoFromExtStr("robot_news_class_id");
+    paramSessionInfo = AtTroopMemberSpan.a(paramEditText, paramContext);
+    paramEditText = paramChatMessage.getExtInfoFromExtStr("robot_news_class_id");
     try
     {
-      int i = Integer.parseInt(paramSessionInfo);
-      paramBaseChatPie.a(paramEditText + " " + paramString, paramContext, i);
-      new ReportTask(paramQQAppInterface).a("dc00899").b("Grp_robot").c("sub_page").d("next_msg_clk").a(new String[] { paramChatMessage.frienduin, paramSessionInfo }).a();
+      i = Integer.parseInt(paramEditText);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramSessionInfo);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(paramString);
+      paramSessionInfo = ((StringBuilder)localObject).toString();
+    }
+    catch (Exception paramContext)
+    {
+      int i;
+      label180:
+      label183:
+      break label183;
+    }
+    try
+    {
+      a(paramBaseChatPie, paramSessionInfo, paramContext, i);
+      new ReportTask(paramQQAppInterface).a("dc00899").b("Grp_robot").c("sub_page").d("next_msg_clk").a(new String[] { paramChatMessage.frienduin, paramEditText }).a();
       return;
     }
     catch (Exception paramContext)
     {
-      while (!QLog.isColorLevel()) {}
+      break label180;
+    }
+    if (QLog.isColorLevel()) {
       QLog.e("TroopRobotManager", 2, "parse robotNewTipsClsId error");
     }
   }
   
-  public void a(QQAppInterface paramQQAppInterface, long paramLong, ArrayList<String> paramArrayList)
+  public void a(BaseChatPie paramBaseChatPie, String paramString, ArrayList<AtTroopMemberInfo> paramArrayList, int paramInt)
   {
-    int k = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopRobotManager", 2, "onGetRobotRedInfo cacheTime" + paramLong);
-    }
-    a(paramQQAppInterface);
-    ArrayList localArrayList;
-    int i;
-    label182:
-    String str;
-    label271:
-    int j;
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      localArrayList = RobotUtils.b(paramQQAppInterface);
-      if (localArrayList == null)
-      {
-        localArrayList = new ArrayList();
-        if ((paramArrayList == null) || (paramArrayList.size() == 0))
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.clear();
-          RobotUtils.a(paramQQAppInterface, this.jdField_a_of_type_JavaUtilArrayList);
-          RobotUtils.a(paramQQAppInterface, false);
-          RobotUtils.c(paramQQAppInterface, false);
-          return;
-        }
-        QLog.d("TroopRobotManager", 2, "onGetRobotRedInfo historyList " + localArrayList.size() + " uinList: " + paramArrayList.size() + " red:" + this.jdField_a_of_type_JavaUtilArrayList.size());
-        try
-        {
-          i = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-          if (i >= 0)
-          {
-            str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-            if (paramArrayList.contains(str)) {
-              break label527;
-            }
-            this.jdField_a_of_type_JavaUtilArrayList.remove(i);
-            QLog.d("TroopRobotManager", 2, "onGetRobotRedInfo remove red newing " + str + " index: " + i);
-            break label527;
-          }
-          i = paramArrayList.size() - 1;
-          j = k;
-          if (i < 0) {
-            break label402;
-          }
-          str = (String)paramArrayList.get(i);
-          if (localArrayList.contains(str))
-          {
-            paramArrayList.remove(i);
-            QLog.d("TroopRobotManager", 2, "onGetRobotRedInfo remove red uinList " + str + " index: " + i);
-          }
-          else
-          {
-            localArrayList.add(str);
-          }
-        }
-        catch (Exception paramQQAppInterface)
-        {
-          QLog.e("TroopRobotManager", 2, "onGetRobotRedInfo REMOVE EXCEPTION" + paramQQAppInterface.toString());
-        }
-        label392:
-        return;
-      }
-    }
-    for (;;)
-    {
-      label402:
-      if (j < paramArrayList.size())
-      {
-        str = (String)paramArrayList.get(j);
-        if (!this.jdField_a_of_type_JavaUtilArrayList.contains(str))
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.add(str);
-          QLog.d("TroopRobotManager", 2, "onGetRobotRedInfo add red uinList " + str + " index: " + j);
-        }
-      }
-      else
-      {
-        RobotUtils.a(paramQQAppInterface, this.jdField_a_of_type_JavaUtilArrayList);
-        RobotUtils.b(paramQQAppInterface, localArrayList);
-        if (paramArrayList.size() <= 0) {
-          break label392;
-        }
-        RobotUtils.a(paramQQAppInterface, true);
-        RobotUtils.c(paramQQAppInterface, true);
-        break label392;
-        break;
-        i -= 1;
-        break label182;
-        i -= 1;
-        break label271;
-      }
-      label527:
-      j += 1;
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    a(paramQQAppInterface);
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.contains(paramString))) {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(paramString);
-      }
-      RobotUtils.a(paramQQAppInterface, this.jdField_a_of_type_JavaUtilArrayList);
-      QLog.d("TroopRobotManager", 2, "removeRobotRedUinInRed " + paramString);
-      return;
-    }
-  }
-  
-  public void a(oidb_0x496.Robot paramRobot)
-  {
-    try
-    {
-      int i;
-      if (paramRobot.uin_range.has())
-      {
-        this.jdField_a_of_type_JavaUtilList.clear();
-        i = 0;
-        while ((i < paramRobot.uin_range.size()) && (i < 5))
-        {
-          oidb_0x496.UinRange localUinRange = (oidb_0x496.UinRange)paramRobot.uin_range.get(i);
-          TroopRobotManager.UinRange localUinRange1 = new TroopRobotManager.UinRange();
-          localUinRange1.a = localUinRange.start_uin.get();
-          localUinRange1.b = localUinRange.end_uin.get();
-          this.jdField_a_of_type_JavaUtilList.add(localUinRange1);
-          i += 1;
-        }
-      }
-      if (paramRobot.fire_keywords.has())
-      {
-        this.jdField_b_of_type_JavaUtilList.clear();
-        i = 0;
-        while ((i < paramRobot.fire_keywords.size()) && (i < 5))
-        {
-          this.jdField_b_of_type_JavaUtilList.add(paramRobot.fire_keywords.get(i));
-          i += 1;
-        }
-      }
-      if (paramRobot.start_keywords.has())
-      {
-        this.jdField_c_of_type_JavaUtilList.clear();
-        i = 0;
-        while ((i < paramRobot.start_keywords.size()) && (i < 5))
-        {
-          this.jdField_c_of_type_JavaUtilList.add(paramRobot.start_keywords.get(i));
-          i += 1;
-        }
-      }
-      if (paramRobot.end_keywords.has())
-      {
-        this.jdField_d_of_type_JavaUtilList.clear();
-        i = 0;
-        while ((i < paramRobot.end_keywords.size()) && (i < 5))
-        {
-          this.jdField_d_of_type_JavaUtilList.add(paramRobot.end_keywords.get(i));
-          i += 1;
-        }
-      }
-      if (paramRobot.session_timeout.has()) {
-        this.jdField_a_of_type_Int = paramRobot.session_timeout.get();
-      }
-      if (paramRobot.subscribe_categories.has())
-      {
-        this.jdField_e_of_type_JavaUtilList.clear();
-        this.jdField_e_of_type_JavaUtilList.addAll(paramRobot.subscribe_categories.get());
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopRobotManager", 2, "setRobotConfig " + this.jdField_a_of_type_JavaUtilList.toString());
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  public void a(TroopRobotManager.OnTalkingChangeListener paramOnTalkingChangeListener)
-  {
-    if (paramOnTalkingChangeListener == null)
-    {
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
-      return;
-    }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramOnTalkingChangeListener);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    b("1", paramString1, paramString2);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    if ((this.jdField_c_of_type_JavaLangString == null) || (!TextUtils.isEmpty(paramString1))) {}
-    try
-    {
-      b(Long.parseLong(paramString1), Long.parseLong(paramString2), paramString3, new TroopRobotManager.4(this, paramString3));
-      a();
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      return;
-    }
-    catch (Exception paramString3)
-    {
-      for (;;)
-      {
-        QLog.e("TroopRobotManager", 2, "release exception, troopuin:" + paramString1 + " robotuin:" + paramString2);
-      }
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, cmd0x934.RspBody paramRspBody)
-  {
-    ThreadManager.post(new TroopRobotManager.7(this, paramString1, paramString2, paramRspBody), 5, null, true);
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    JSONArray localJSONArray = paramJSONObject.optJSONArray("robot_aio_bar");
-    if (localJSONArray != null) {
-      SharedPreUtils.f(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), localJSONArray.toString());
-    }
-    paramJSONObject = paramJSONObject.optJSONObject("robot_voice_tail");
-    if (paramJSONObject != null) {
-      SharedPreUtils.g(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramJSONObject.toString());
-    }
-    d();
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    this.h = paramString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean a(long paramLong)
-  {
-    boolean bool2 = false;
-    int i = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        TroopRobotManager.UinRange localUinRange = (TroopRobotManager.UinRange)this.jdField_a_of_type_JavaUtilList.get(i);
-        if ((localUinRange != null) && (paramLong >= localUinRange.a) && (paramLong <= localUinRange.b)) {
-          bool1 = true;
-        }
-      }
-      else
-      {
-        return bool1;
-      }
-      i += 1;
-    }
-  }
-  
-  public boolean a(Context paramContext, String paramString, long paramLong)
-  {
-    if (a(paramLong))
-    {
-      RobotUtils.a(paramContext, paramString, String.valueOf(paramLong));
-      return true;
-    }
-    return false;
+    ChatActivityFacade.SendMsgParams localSendMsgParams = new ChatActivityFacade.SendMsgParams();
+    MessageSignal localMessageSignal = paramBaseChatPie.b().a().a();
+    localSendMsgParams.b = localMessageSignal.b();
+    localSendMsgParams.jdField_a_of_type_Int = localMessageSignal.a();
+    localSendMsgParams.jdField_c_of_type_Boolean = localMessageSignal.a();
+    localSendMsgParams.jdField_c_of_type_Int = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
+    localSendMsgParams.jdField_a_of_type_Long = System.currentTimeMillis();
+    localSendMsgParams.g = paramInt;
+    ChatActivityFacade.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseChatPie.jdField_a_of_type_AndroidContentContext, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramString, paramArrayList, localSendMsgParams);
   }
   
   public boolean a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
@@ -885,349 +280,189 @@ public class TroopRobotManager
     return false;
   }
   
-  public boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
-  {
-    boolean bool2 = false;
-    if (!RobotUtils.d(paramQQAppInterface, paramString2))
-    {
-      QLog.d("TroopRobotManager", 2, "isRobotUinNeedShowRed RobotRed ：" + paramString1 + " role not show red in troop:" + paramString2);
-      return false;
-    }
-    a(paramQQAppInterface);
-    paramQQAppInterface = jdField_a_of_type_JavaLangObject;
-    boolean bool1 = bool2;
-    try
-    {
-      if (this.jdField_a_of_type_JavaUtilArrayList != null)
-      {
-        bool1 = bool2;
-        if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramString1)) {
-          bool1 = true;
-        }
-      }
-      QLog.d("TroopRobotManager", 2, "isRobotUinNeedShowRed RobotRed ：" + paramString1 + " " + bool1);
-      return bool1;
-    }
-    finally {}
-  }
-  
   public boolean a(MessageRecord paramMessageRecord)
   {
-    boolean bool3 = true;
+    Object localObject2 = (ITroopRobotService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ITroopRobotService.class, "all");
+    boolean bool = ((ITroopRobotService)localObject2).isRobotTroop(paramMessageRecord.frienduin);
+    int k = 0;
     int j = 0;
-    boolean bool2 = false;
-    boolean bool1;
-    if ((!a(paramMessageRecord.frienduin)) || (paramMessageRecord.mRobotFlag == -1)) {
-      bool1 = false;
-    }
-    Object localObject;
-    label188:
-    do
+    if (bool)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return bool1;
-                bool1 = bool3;
-              } while (paramMessageRecord.mRobotFlag == 1);
-              localObject = ((HotChatManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).a(paramMessageRecord.frienduin);
-              if ((localObject == null) || (!((HotChatInfo)localObject).isRobotHotChat)) {
-                break label188;
-              }
-              if (((paramMessageRecord instanceof MessageForText)) || ((paramMessageRecord instanceof MessageForReplyText)) || ((paramMessageRecord instanceof MessageForPtt))) {
-                break;
-              }
-              bool1 = bool3;
-            } while (!(paramMessageRecord instanceof MessageForMixedMsg));
-            bool1 = bool3;
-          } while (paramMessageRecord.atInfoList == null);
-          bool1 = bool3;
-        } while (paramMessageRecord.atInfoList.size() <= 0);
-        i = 0;
-        for (;;)
-        {
-          bool1 = bool2;
-          if (i < paramMessageRecord.atInfoList.size())
-          {
-            if (a(((AtTroopMemberInfo)paramMessageRecord.atInfoList.get(i)).uin)) {
-              bool1 = true;
-            }
-          }
-          else {
-            return bool1;
-          }
-          i += 1;
-        }
-        if ((!(paramMessageRecord instanceof MessageForText)) && (!(paramMessageRecord instanceof MessageForReplyText)) && (!(paramMessageRecord instanceof MessageForPtt)) && (!(paramMessageRecord instanceof MessageForMixedMsg))) {
-          break label1099;
-        }
-        if (this.jdField_c_of_type_JavaLangString == null) {
-          break;
-        }
-        bool1 = bool3;
-      } while (paramMessageRecord.atInfoList == null);
-      bool1 = bool3;
-    } while (paramMessageRecord.atInfoList.size() <= 0);
-    int i = 0;
-    for (;;)
-    {
-      bool1 = bool3;
-      if (i >= paramMessageRecord.atInfoList.size()) {
-        break;
+      if (paramMessageRecord.mRobotFlag == -1) {
+        return false;
       }
-      if (a(((AtTroopMemberInfo)paramMessageRecord.atInfoList.get(i)).uin))
-      {
-        bool1 = bool3;
-        if ((paramMessageRecord instanceof MessageForPtt)) {
-          break;
-        }
-        bool1 = bool3;
-        if ((paramMessageRecord instanceof MessageForMixedMsg)) {
-          break;
-        }
-        localObject = paramMessageRecord.msg.replace("@" + this.jdField_c_of_type_JavaLangString + " ", "").replace("@" + this.jdField_c_of_type_JavaLangString, "");
-        i = j;
-        for (;;)
-        {
-          bool1 = bool3;
-          if (i >= this.jdField_d_of_type_JavaUtilList.size()) {
-            break;
-          }
-          if (((String)localObject).equals(((String)this.jdField_d_of_type_JavaUtilList.get(i)).replace("$ROBOTNICK$", this.jdField_c_of_type_JavaLangString)))
-          {
-            a(paramMessageRecord.frienduin, this.jdField_b_of_type_JavaLangString, (String)this.jdField_d_of_type_JavaUtilList.get(i));
-            return true;
-          }
-          i += 1;
-        }
-      }
-      i += 1;
-    }
-    String str1;
-    if ((paramMessageRecord.atInfoList != null) && (paramMessageRecord.atInfoList.size() > 0))
-    {
-      i = 0;
-      for (;;)
-      {
-        if (i >= paramMessageRecord.atInfoList.size()) {
-          break label881;
-        }
-        localObject = (AtTroopMemberInfo)paramMessageRecord.atInfoList.get(i);
-        if (a(((AtTroopMemberInfo)localObject).uin))
-        {
-          this.jdField_a_of_type_JavaLangString = (((AtTroopMemberInfo)localObject).uin + "");
-          str1 = ContactUtils.g((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramMessageRecord.frienduin, "" + ((AtTroopMemberInfo)localObject).uin);
-          BaseApplication.getContext().getSharedPreferences("troop_robot_nickname", 0).edit().putString("troopuin_" + paramMessageRecord.frienduin, str1).commit();
-          bool1 = bool3;
-          if ((paramMessageRecord instanceof MessageForPtt)) {
-            break;
-          }
-          bool1 = bool3;
-          if ((paramMessageRecord instanceof MessageForMixedMsg)) {
-            break;
-          }
-          String str2 = paramMessageRecord.msg.replace("@" + str1 + " ", "").replace("@" + str1, "");
-          j = 0;
-          for (;;)
-          {
-            bool1 = bool3;
-            if (j >= this.jdField_c_of_type_JavaUtilList.size()) {
-              break;
-            }
-            if (str2.equals(((String)this.jdField_c_of_type_JavaUtilList.get(j)).replace("$ROBOTNICK$", str1)))
-            {
-              a(paramMessageRecord, "" + ((AtTroopMemberInfo)localObject).uin, str1, (String)this.jdField_c_of_type_JavaUtilList.get(j));
-              ReportController.b((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, "dc00899", "Grp_robot", "", "msg", "conti_dialog_msg", 0, 0, paramMessageRecord.frienduin, this.jdField_a_of_type_JavaLangString, (String)this.jdField_c_of_type_JavaUtilList.get(i), "");
-              return true;
-            }
-            j += 1;
-          }
-        }
-        i += 1;
-      }
-    }
-    label881:
-    if (((paramMessageRecord instanceof MessageForPtt)) || ((paramMessageRecord instanceof MessageForMixedMsg))) {
-      return false;
-    }
-    i = 0;
-    while (i < this.jdField_b_of_type_JavaUtilList.size())
-    {
-      localObject = BaseApplication.getContext().getSharedPreferences("troop_robot_nickname", 0).getString("troopuin_" + paramMessageRecord.frienduin, this.jdField_c_of_type_JavaLangString);
-      if (localObject == null) {}
-      for (localObject = "";; localObject = ((String)localObject).toUpperCase().replaceAll(" ", ""))
-      {
-        localObject = ((String)this.jdField_b_of_type_JavaUtilList.get(i)).replace("$ROBOTNICK$", (CharSequence)localObject);
-        str1 = paramMessageRecord.msg.toUpperCase().replaceAll(" ", "");
-        if ((TextUtils.isEmpty((CharSequence)localObject)) || (!str1.contains((CharSequence)localObject))) {
-          break;
-        }
-        ReportController.b((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, "dc00899", "Grp_robot", "", "msg", "keyword_msg", 0, 0, paramMessageRecord.frienduin, this.jdField_a_of_type_JavaLangString, (String)this.jdField_b_of_type_JavaUtilList.get(i), "");
+      if (paramMessageRecord.mRobotFlag == 1) {
         return true;
       }
-      i += 1;
-    }
-    label1099:
-    return false;
-  }
-  
-  public boolean a(String paramString)
-  {
-    HotChatInfo localHotChatInfo = ((HotChatManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).a(paramString);
-    if (localHotChatInfo != null) {
-      return localHotChatInfo.isRobotHotChat;
-    }
-    paramString = ((TroopManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramString);
-    return (paramString != null) && ((paramString.dwAppPrivilegeFlag & 0x10000000) != 0L);
-  }
-  
-  public boolean a(String paramString1, String paramString2, String paramString3)
-  {
-    boolean bool2 = false;
-    paramString2 = ContactUtils.g((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString3, "" + paramString2);
-    paramString1 = paramString1.replace("@" + paramString2 + " ", "").replace("@" + paramString2, "");
-    int i = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i < this.jdField_c_of_type_JavaUtilList.size())
+      Object localObject1 = ((HotChatManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).a(paramMessageRecord.frienduin);
+      int i;
+      if ((localObject1 != null) && (((HotChatInfo)localObject1).isRobotHotChat))
       {
-        if (paramString1.equals(((String)this.jdField_c_of_type_JavaUtilList.get(i)).replace("$ROBOTNICK$", paramString2))) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i += 1;
-    }
-  }
-  
-  public byte[] a()
-  {
-    return FileUtils.a(BaseApplication.getContext().getFileStreamPath("troop_robot_config"));
-  }
-  
-  public byte[] a(String paramString1, String paramString2)
-  {
-    return FileUtils.a(BaseApplication.getContext().getFileStreamPath("troop_robot_panel_data_" + paramString1 + "_" + paramString2));
-  }
-  
-  public ArrayList<TroopRobotInfo> b(long paramLong)
-  {
-    ArrayList localArrayList = new ArrayList(0);
-    if (this.jdField_b_of_type_AndroidSupportV4UtilArrayMap != null) {
-      synchronized (this.jdField_b_of_type_AndroidSupportV4UtilArrayMap)
-      {
-        if (this.jdField_b_of_type_AndroidSupportV4UtilArrayMap.containsKey(Long.valueOf(paramLong)))
+        if ((((paramMessageRecord instanceof MessageForText)) || ((paramMessageRecord instanceof MessageForReplyText)) || ((paramMessageRecord instanceof MessageForPtt)) || ((paramMessageRecord instanceof MessageForMixedMsg))) && (paramMessageRecord.atInfoList != null) && (paramMessageRecord.atInfoList.size() > 0))
         {
-          Iterator localIterator = ((ArrayList)this.jdField_b_of_type_AndroidSupportV4UtilArrayMap.get(Long.valueOf(paramLong))).iterator();
-          while (localIterator.hasNext())
+          i = 0;
+          while (i < paramMessageRecord.atInfoList.size())
           {
-            TroopRobotInfo localTroopRobotInfo = (TroopRobotInfo)localIterator.next();
-            if (!localTroopRobotInfo.a()) {
-              localArrayList.add(localTroopRobotInfo);
+            if (((ITroopRobotService)localObject2).isRobotUin(((AtTroopMemberInfo)paramMessageRecord.atInfoList.get(i)).uin)) {
+              return true;
             }
+            i += 1;
+          }
+          return false;
+        }
+        return true;
+      }
+      if (((paramMessageRecord instanceof MessageForText)) || ((paramMessageRecord instanceof MessageForReplyText)) || ((paramMessageRecord instanceof MessageForPtt)) || ((paramMessageRecord instanceof MessageForMixedMsg)))
+      {
+        Object localObject3;
+        if (this.jdField_c_of_type_JavaLangString != null)
+        {
+          if ((paramMessageRecord.atInfoList != null) && (paramMessageRecord.atInfoList.size() > 0))
+          {
+            i = 0;
+            while (i < paramMessageRecord.atInfoList.size())
+            {
+              if (((ITroopRobotService)localObject2).isRobotUin(((AtTroopMemberInfo)paramMessageRecord.atInfoList.get(i)).uin))
+              {
+                if (!(paramMessageRecord instanceof MessageForPtt))
+                {
+                  if ((paramMessageRecord instanceof MessageForMixedMsg)) {
+                    return true;
+                  }
+                  localObject1 = paramMessageRecord.msg;
+                  localObject3 = new StringBuilder();
+                  ((StringBuilder)localObject3).append("@");
+                  ((StringBuilder)localObject3).append(this.jdField_c_of_type_JavaLangString);
+                  ((StringBuilder)localObject3).append(" ");
+                  localObject1 = ((String)localObject1).replace(((StringBuilder)localObject3).toString(), "");
+                  localObject3 = new StringBuilder();
+                  ((StringBuilder)localObject3).append("@");
+                  ((StringBuilder)localObject3).append(this.jdField_c_of_type_JavaLangString);
+                  localObject1 = ((String)localObject1).replace(((StringBuilder)localObject3).toString(), "");
+                  i = j;
+                  while (i < this.jdField_c_of_type_JavaUtilList.size())
+                  {
+                    if (((String)localObject1).equals(((String)this.jdField_c_of_type_JavaUtilList.get(i)).replace("$ROBOTNICK$", this.jdField_c_of_type_JavaLangString)))
+                    {
+                      ((ITroopRobotService)localObject2).release(paramMessageRecord.frienduin, this.jdField_b_of_type_JavaLangString, (String)this.jdField_c_of_type_JavaUtilList.get(i));
+                      return true;
+                    }
+                    i += 1;
+                  }
+                }
+                return true;
+              }
+              i += 1;
+            }
+          }
+          return true;
+        }
+        if ((paramMessageRecord.atInfoList != null) && (paramMessageRecord.atInfoList.size() > 0))
+        {
+          i = 0;
+          while (i < paramMessageRecord.atInfoList.size())
+          {
+            localObject3 = (AtTroopMemberInfo)paramMessageRecord.atInfoList.get(i);
+            if (((ITroopRobotService)localObject2).isRobotUin(((AtTroopMemberInfo)localObject3).uin))
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append(((AtTroopMemberInfo)localObject3).uin);
+              ((StringBuilder)localObject1).append("");
+              this.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject1).toString();
+              Object localObject4 = (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+              Object localObject5 = paramMessageRecord.frienduin;
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("");
+              localObject1 = "$ROBOTNICK$";
+              localStringBuilder.append(((AtTroopMemberInfo)localObject3).uin);
+              localObject4 = ContactUtils.b((AppInterface)localObject4, (String)localObject5, localStringBuilder.toString());
+              localObject5 = BaseApplication.getContext().getSharedPreferences("troop_robot_nickname", 0).edit();
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("troopuin_");
+              localStringBuilder.append(paramMessageRecord.frienduin);
+              ((SharedPreferences.Editor)localObject5).putString(localStringBuilder.toString(), (String)localObject4).commit();
+              if ((!(paramMessageRecord instanceof MessageForPtt)) && (!(paramMessageRecord instanceof MessageForMixedMsg)))
+              {
+                localObject5 = paramMessageRecord.msg;
+                localStringBuilder = new StringBuilder();
+                localStringBuilder.append("@");
+                localStringBuilder.append((String)localObject4);
+                localStringBuilder.append(" ");
+                localObject5 = ((String)localObject5).replace(localStringBuilder.toString(), "");
+                localStringBuilder = new StringBuilder();
+                localStringBuilder.append("@");
+                localStringBuilder.append((String)localObject4);
+                localObject5 = ((String)localObject5).replace(localStringBuilder.toString(), "");
+                j = k;
+                while (j < this.jdField_b_of_type_JavaUtilList.size())
+                {
+                  if (((String)localObject5).equals(((String)this.jdField_b_of_type_JavaUtilList.get(j)).replace((CharSequence)localObject1, (CharSequence)localObject4)))
+                  {
+                    localObject1 = new StringBuilder();
+                    ((StringBuilder)localObject1).append("");
+                    ((StringBuilder)localObject1).append(((AtTroopMemberInfo)localObject3).uin);
+                    ((ITroopRobotService)localObject2).markStart(paramMessageRecord, ((StringBuilder)localObject1).toString(), (String)localObject4, (String)this.jdField_b_of_type_JavaUtilList.get(j));
+                    ReportController.b((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, "dc00899", "Grp_robot", "", "msg", "conti_dialog_msg", 0, 0, paramMessageRecord.frienduin, this.jdField_a_of_type_JavaLangString, (String)this.jdField_b_of_type_JavaUtilList.get(i), "");
+                    return true;
+                  }
+                  j += 1;
+                }
+                return true;
+              }
+              return true;
+            }
+            i += 1;
+          }
+        }
+        if (!(paramMessageRecord instanceof MessageForPtt))
+        {
+          if ((paramMessageRecord instanceof MessageForMixedMsg)) {
+            return false;
+          }
+          i = 0;
+          while (i < this.jdField_a_of_type_JavaUtilList.size())
+          {
+            localObject1 = BaseApplication.getContext().getSharedPreferences("troop_robot_nickname", 0);
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("troopuin_");
+            ((StringBuilder)localObject2).append(paramMessageRecord.frienduin);
+            localObject1 = ((SharedPreferences)localObject1).getString(((StringBuilder)localObject2).toString(), this.jdField_c_of_type_JavaLangString);
+            if (localObject1 == null) {
+              localObject1 = "";
+            } else {
+              localObject1 = ((String)localObject1).toUpperCase().replaceAll(" ", "");
+            }
+            localObject1 = ((String)this.jdField_a_of_type_JavaUtilList.get(i)).replace("$ROBOTNICK$", (CharSequence)localObject1);
+            localObject2 = paramMessageRecord.msg.toUpperCase().replaceAll(" ", "");
+            if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject2).contains((CharSequence)localObject1)))
+            {
+              ReportController.b((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, "dc00899", "Grp_robot", "", "msg", "keyword_msg", 0, 0, paramMessageRecord.frienduin, this.jdField_a_of_type_JavaLangString, (String)this.jdField_a_of_type_JavaUtilList.get(i), "");
+              return true;
+            }
+            i += 1;
           }
         }
       }
     }
-    return localArrayList1;
-  }
-  
-  public void b(int paramInt, long paramLong1, long paramLong2, String paramString, TroopRobotManager.Callback paramCallback)
-  {
-    cmd0x934.ReqBody localReqBody = new cmd0x934.ReqBody();
-    localReqBody.cmd.set(paramInt, true);
-    localReqBody.group_id.set(paramLong1, true);
-    localReqBody.keyword.set(paramString, true);
-    localReqBody.robot_uin.set(paramLong2);
-    ProtoUtils.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, new TroopRobotManager.10(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0x934_1", 2356, 1, new Bundle(), 12000L);
-  }
-  
-  public void b(long paramLong1, long paramLong2, String paramString, TroopRobotManager.Callback paramCallback)
-  {
-    b(2, paramLong1, paramLong2, paramString, paramCallback);
-  }
-  
-  public void b(long paramLong, String paramString, TroopRobotManager.Callback paramCallback)
-  {
-    b(2, Long.valueOf("1").longValue(), paramLong, paramString, paramCallback);
-  }
-  
-  public void b(oidb_0x496.Robot paramRobot)
-  {
-    ThreadManager.post(new TroopRobotManager.6(this, paramRobot), 5, null, true);
-  }
-  
-  public void b(String paramString1, String paramString2, String paramString3)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_d_of_type_JavaLangString = paramString1;
-    a(true);
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public boolean b(String paramString)
-  {
-    try
-    {
-      long l = Long.valueOf(paramString).longValue();
-      return a(l);
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(paramString));
-      }
-    }
     return false;
   }
   
-  public boolean b(String paramString1, String paramString2, String paramString3)
+  public boolean b(MessageRecord paramMessageRecord)
   {
-    if ((!a()) || (this.jdField_c_of_type_JavaLangString == null)) {}
-    for (;;)
-    {
+    boolean bool2 = ((ITroopRobotService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ITroopRobotService.class, "all")).isRobotUin(paramMessageRecord.senderuin);
+    boolean bool1 = false;
+    if (!bool2) {
       return false;
-      paramString1 = paramString1.replace("@" + this.jdField_c_of_type_JavaLangString + " ", "").replace("@" + this.jdField_c_of_type_JavaLangString, "");
-      int i = 0;
-      while (i < this.jdField_d_of_type_JavaUtilList.size())
-      {
-        if (paramString1.equals(((String)this.jdField_d_of_type_JavaUtilList.get(i)).replace("$ROBOTNICK$", this.jdField_c_of_type_JavaLangString))) {
-          return true;
-        }
-        i += 1;
-      }
     }
-  }
-  
-  public boolean c(MessageRecord paramMessageRecord)
-  {
-    if (!b(paramMessageRecord.senderuin)) {}
-    String str;
-    do
-    {
+    String str = a(paramMessageRecord);
+    if (TextUtils.isEmpty(str)) {
       return false;
-      str = a(paramMessageRecord);
-    } while (TextUtils.isEmpty(str));
+    }
     a(paramMessageRecord, str);
-    if (paramMessageRecord.shmsgseq == ((Long)this.jdField_b_of_type_JavaUtilHashMap.get(str)).longValue()) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    if (paramMessageRecord.shmsgseq == ((Long)this.jdField_b_of_type_JavaUtilHashMap.get(str)).longValue()) {
+      bool1 = true;
     }
+    return bool1;
   }
   
   public void onDestroy()
@@ -1235,12 +470,16 @@ public class TroopRobotManager
     if (QLog.isColorLevel()) {
       QLog.d("TroopRobotManager", 2, "TroopRobotManager: onDestroy");
     }
-    c();
+    b();
+    AppInterface localAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    if (localAppInterface != null) {
+      localAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqFriendObserverFriendObserver);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopRobotManager
  * JD-Core Version:    0.7.0.1
  */

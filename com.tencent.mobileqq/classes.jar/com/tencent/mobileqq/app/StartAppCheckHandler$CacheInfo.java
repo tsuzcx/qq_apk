@@ -31,17 +31,50 @@ class StartAppCheckHandler$CacheInfo
       return;
     }
     SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("AppStartedObserver", 0);
-    this.jdField_a_of_type_Long = localSharedPreferences.getLong(this.h + "_timeToWait", 0L);
-    this.jdField_b_of_type_Long = localSharedPreferences.getLong(this.h + "_lastReportTime", 0L);
-    this.jdField_c_of_type_Long = localSharedPreferences.getLong(this.h + "_lastUpdateTime", 0L);
-    this.jdField_a_of_type_JavaLangString = localSharedPreferences.getString(this.h + "_sigHash", "");
-    this.jdField_b_of_type_JavaLangString = localSharedPreferences.getString(this.h + "_md5", "");
-    this.jdField_a_of_type_Int = localSharedPreferences.getInt(this.h + "_serverResult", 0);
-    this.jdField_c_of_type_JavaLangString = localSharedPreferences.getString(this.h + "_dlgTitle", "");
-    this.d = localSharedPreferences.getString(this.h + "_dlgContent", "");
-    this.e = localSharedPreferences.getString(this.h + "_dlgLButton", "");
-    this.f = localSharedPreferences.getString(this.h + "_dlgRButoon", "");
-    this.g = localSharedPreferences.getString(this.h + "_dlgUrl", "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("_timeToWait");
+    this.jdField_a_of_type_Long = localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("_lastReportTime");
+    this.jdField_b_of_type_Long = localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("_lastUpdateTime");
+    this.jdField_c_of_type_Long = localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("_sigHash");
+    this.jdField_a_of_type_JavaLangString = localSharedPreferences.getString(localStringBuilder.toString(), "");
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("_md5");
+    this.jdField_b_of_type_JavaLangString = localSharedPreferences.getString(localStringBuilder.toString(), "");
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("_serverResult");
+    this.jdField_a_of_type_Int = localSharedPreferences.getInt(localStringBuilder.toString(), 0);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("_dlgTitle");
+    this.jdField_c_of_type_JavaLangString = localSharedPreferences.getString(localStringBuilder.toString(), "");
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("_dlgContent");
+    this.d = localSharedPreferences.getString(localStringBuilder.toString(), "");
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("_dlgLButton");
+    this.e = localSharedPreferences.getString(localStringBuilder.toString(), "");
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("_dlgRButoon");
+    this.f = localSharedPreferences.getString(localStringBuilder.toString(), "");
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("_dlgUrl");
+    this.g = localSharedPreferences.getString(localStringBuilder.toString(), "");
   }
   
   public void b()
@@ -50,23 +83,56 @@ class StartAppCheckHandler$CacheInfo
       return;
     }
     SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("AppStartedObserver", 0).edit();
-    localEditor.putLong(this.h + "_timeToWait", this.jdField_a_of_type_Long);
-    localEditor.putLong(this.h + "_lastReportTime", this.jdField_b_of_type_Long);
-    localEditor.putLong(this.h + "_lastUpdateTime", this.jdField_c_of_type_Long);
-    localEditor.putString(this.h + "_sigHash", this.jdField_a_of_type_JavaLangString);
-    localEditor.putString(this.h + "_md5", this.jdField_b_of_type_JavaLangString);
-    localEditor.putInt(this.h + "_serverResult", this.jdField_a_of_type_Int);
-    localEditor.putString(this.h + "_dlgTitle", this.jdField_c_of_type_JavaLangString);
-    localEditor.putString(this.h + "_dlgContent", this.d);
-    localEditor.putString(this.h + "_dlgLButton", this.e);
-    localEditor.putString(this.h + "_dlgRButoon", this.f);
-    localEditor.putString(this.h + "_dlgUrl", this.g);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("_timeToWait");
+    localEditor.putLong(localStringBuilder.toString(), this.jdField_a_of_type_Long);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("_lastReportTime");
+    localEditor.putLong(localStringBuilder.toString(), this.jdField_b_of_type_Long);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("_lastUpdateTime");
+    localEditor.putLong(localStringBuilder.toString(), this.jdField_c_of_type_Long);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("_sigHash");
+    localEditor.putString(localStringBuilder.toString(), this.jdField_a_of_type_JavaLangString);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("_md5");
+    localEditor.putString(localStringBuilder.toString(), this.jdField_b_of_type_JavaLangString);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("_serverResult");
+    localEditor.putInt(localStringBuilder.toString(), this.jdField_a_of_type_Int);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("_dlgTitle");
+    localEditor.putString(localStringBuilder.toString(), this.jdField_c_of_type_JavaLangString);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("_dlgContent");
+    localEditor.putString(localStringBuilder.toString(), this.d);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("_dlgLButton");
+    localEditor.putString(localStringBuilder.toString(), this.e);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("_dlgRButoon");
+    localEditor.putString(localStringBuilder.toString(), this.f);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("_dlgUrl");
+    localEditor.putString(localStringBuilder.toString(), this.g);
     localEditor.commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.StartAppCheckHandler.CacheInfo
  * JD-Core Version:    0.7.0.1
  */

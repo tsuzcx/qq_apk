@@ -30,20 +30,19 @@ public class ImageInfo$UploadMediaSegment
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("UploadMediaSegment", 2, new Object[] { "UploadMediaSegment start. mediaType=", Integer.valueOf(this.jdField_a_of_type_Int), ", info status=", Integer.valueOf(paramImageInfo.g) });
+      QLog.d("UploadMediaSegment", 2, new Object[] { "UploadMediaSegment start. mediaType=", Integer.valueOf(this.jdField_a_of_type_Int), ", info status=", Integer.valueOf(paramImageInfo.f) });
     }
     this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo = paramImageInfo;
-    switch (this.jdField_a_of_type_Int)
-    {
+    if (this.jdField_a_of_type_Int != 1) {
+      paramJobContext = paramImageInfo.c;
+    } else {
+      paramJobContext = ((VideoInfo)paramImageInfo).g;
     }
-    for (paramJobContext = paramImageInfo.c;; paramJobContext = ((VideoInfo)paramImageInfo).g)
+    if (QLog.isColorLevel()) {
+      QLog.d("UploadMediaSegment", 2, new Object[] { "UploadMediaSegment start - getFilePath: ", paramJobContext });
+    }
+    if (!TextUtils.isEmpty(paramJobContext))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadMediaSegment", 2, new Object[] { "UploadMediaSegment start - getFilePath: ", paramJobContext });
-      }
-      if (TextUtils.isEmpty(paramJobContext)) {
-        break;
-      }
       this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask = paramImageInfo.a(paramJobContext, this.jdField_a_of_type_JavaLangString);
       this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask.a(new ImageInfo.UploadMediaSegment.MediaUploadCallback(this));
       this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask.b();
@@ -52,33 +51,33 @@ public class ImageInfo$UploadMediaSegment
     notifyError(new Error("-2"));
   }
   
-  public void onCancel()
+  protected void onCancel()
   {
     if (QLog.isColorLevel()) {
       QLog.d(getClass().getSimpleName(), 2, new Object[] { "UploadMediaSegment onCancel. mediaType=", Integer.valueOf(this.jdField_a_of_type_Int) });
     }
-    if (this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask != null) {
-      this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask.c();
+    Object localObject = this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask;
+    if (localObject != null) {
+      ((TroopHomeworkHelper.UploadFileTask)localObject).c();
     }
-    Error localError;
-    switch (this.jdField_a_of_type_Int)
+    int i = this.jdField_a_of_type_Int;
+    if (i != 1)
     {
-    default: 
-      localError = new Error("c_1001");
+      if (i != 2) {
+        localObject = new Error("c_1001");
+      } else {
+        localObject = new Error("c_2003");
+      }
     }
-    for (;;)
-    {
-      notifyError(localError);
-      return;
-      localError = new Error("c_2002");
-      continue;
-      localError = new Error("c_2003");
+    else {
+      localObject = new Error("c_2002");
     }
+    notifyError((Error)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo.UploadMediaSegment
  * JD-Core Version:    0.7.0.1
  */

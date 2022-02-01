@@ -52,7 +52,7 @@ public class CursorOpt
     {
       String[] arrayOfString = getColumnNames();
       HashMap localHashMap = new HashMap(arrayOfString.length);
-      int i = 0;
+      i = 0;
       int j = arrayOfString.length;
       while (i < j)
       {
@@ -61,11 +61,12 @@ public class CursorOpt
       }
       this.mMap = localHashMap;
     }
+    int i = -1;
     paramString = (Integer)this.mMap.get(paramString);
     if (paramString != null) {
-      return paramString.intValue();
+      i = paramString.intValue();
     }
-    return -1;
+    return i;
   }
   
   public int getColumnIndexOrThrow(String paramString)
@@ -244,7 +245,7 @@ public class CursorOpt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.CursorOpt
  * JD-Core Version:    0.7.0.1
  */

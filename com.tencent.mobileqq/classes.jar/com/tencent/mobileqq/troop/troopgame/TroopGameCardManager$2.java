@@ -12,14 +12,18 @@ class TroopGameCardManager$2
   {
     long l = System.currentTimeMillis();
     TroopGameCardManager.a(this.this$0, this.a);
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopGameCardManager", 2, "updateEntity costTime" + (System.currentTimeMillis() - l));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateEntity costTime");
+      localStringBuilder.append(System.currentTimeMillis() - l);
+      QLog.i("TroopGameCardManager", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopgame.TroopGameCardManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -3,6 +3,7 @@ package com.tencent.mobileqq.app.utils;
 import android.os.Looper;
 import android.text.TextUtils;
 import com.qq.taf.jce.HexUtil;
+import com.tencent.mobileqq.activity.photo.album.QQAlbumUtils;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BusinessHandler;
 import com.tencent.mobileqq.app.BusinessObserver;
@@ -15,14 +16,13 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqprotect.singleupdate.MD5FileUtil;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.utils.MediaUtil;
 import java.io.File;
 
 public class PokeBigResHandler
   extends BusinessHandler
 {
   public static final String a;
-  public static boolean a;
+  public static boolean a = false;
   private static final int[] jdField_a_of_type_ArrayOfInt = { 57, 57, 67, 6, 0, 50, 20 };
   private static final String[] jdField_a_of_type_ArrayOfJavaLangString;
   public static final String b;
@@ -33,16 +33,29 @@ public class PokeBigResHandler
   public static final String d;
   private static String e = "";
   private static String f = "";
-  private static final String g = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + "bigPoke");
+  private static final String g;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private PokeBigResHandler.NetEngine jdField_a_of_type_ComTencentMobileqqAppUtilsPokeBigResHandler$NetEngine = new PokeBigResHandler.NetEngine();
   
   static
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_PATH);
+    localStringBuilder.append("bigPoke");
+    g = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
     jdField_a_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_NEW_POKE);
-    jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "/poke_egg";
-    c = jdField_a_of_type_JavaLangString + "/poke_normal";
-    d = c + "/dazhao/dazhao_move.png";
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("/poke_egg");
+    jdField_b_of_type_JavaLangString = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("/poke_normal");
+    c = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c);
+    localStringBuilder.append("/dazhao/dazhao_move.png");
+    d = localStringBuilder.toString();
     jdField_a_of_type_Boolean = false;
     jdField_a_of_type_ArrayOfJavaLangString = new String[] { "/666receive_motion", "/666send_motion", "/bixin_motion", "/chuo_motion", "/dazhao", "/xinsui_motion", "/zan_motion" };
     jdField_b_of_type_ArrayOfJavaLangString = new String[] { "/666_caidan", "/chuo_caidan", "/dazhao_caidan", "/xinsui_caidan" };
@@ -60,34 +73,31 @@ public class PokeBigResHandler
       QLog.d("BigResDown", 2, "start compress");
     }
     long l1 = System.currentTimeMillis();
-    if (!new File(paramString).exists()) {}
-    for (;;)
-    {
+    if (!new File(paramString).exists()) {
       return;
-      try
+    }
+    try
+    {
+      if (!TextUtils.isEmpty(VFSAssistantUtils.getSDKPrivatePath(g)))
       {
-        if (!TextUtils.isEmpty(VFSAssistantUtils.getSDKPrivatePath(g)))
-        {
-          FileUtils.a(VFSAssistantUtils.getSDKPrivatePath(jdField_a_of_type_JavaLangString), false);
-          MediaUtil.a(g);
-          FileUtils.a(paramString, VFSAssistantUtils.getSDKPrivatePath(jdField_a_of_type_JavaLangString), false);
-          MediaUtil.a(jdField_a_of_type_JavaLangString);
-        }
-        FileUtils.a(paramString, false);
-        long l2 = System.currentTimeMillis();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("BigResDown", 2, "end compress ,cost " + (l2 - l1));
-        return;
+        FileUtils.delete(VFSAssistantUtils.getSDKPrivatePath(jdField_a_of_type_JavaLangString), false);
+        QQAlbumUtils.a(g);
+        FileUtils.uncompressZip(paramString, VFSAssistantUtils.getSDKPrivatePath(jdField_a_of_type_JavaLangString), false);
+        QQAlbumUtils.a(jdField_a_of_type_JavaLangString);
       }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
-        }
-      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    FileUtils.delete(paramString, false);
+    long l2 = System.currentTimeMillis();
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("end compress ,cost ");
+      paramString.append(l2 - l1);
+      QLog.d("BigResDown", 2, paramString.toString());
     }
   }
   
@@ -125,43 +135,31 @@ public class PokeBigResHandler
   
   public static boolean a(int paramInt, String paramString)
   {
-    boolean bool2 = false;
-    paramString = new File(paramString + jdField_b_of_type_ArrayOfJavaLangString[paramInt]);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(jdField_b_of_type_ArrayOfJavaLangString[paramInt]);
+    paramString = new File(localStringBuilder.toString());
     paramInt = jdField_b_of_type_ArrayOfInt[paramInt];
-    boolean bool1 = bool2;
     try
     {
-      if (paramString.exists())
+      if ((paramString.exists()) && (paramString.isDirectory()))
       {
-        bool1 = bool2;
-        if (paramString.isDirectory())
+        paramString = paramString.list();
+        if ((paramString != null) && (paramString.length > 0))
         {
-          paramString = paramString.list();
-          bool1 = bool2;
-          if (paramString != null)
-          {
-            bool1 = bool2;
-            if (paramString.length > 0)
-            {
-              int i = paramString.length;
-              bool1 = bool2;
-              if (i == paramInt) {
-                bool1 = true;
-              }
-            }
+          int i = paramString.length;
+          if (i == paramInt) {
+            return true;
           }
         }
       }
     }
     catch (NullPointerException paramString)
     {
-      do
-      {
-        bool1 = bool2;
-      } while (!QLog.isColorLevel());
-      QLog.d("PokeBigResHandler", 2, paramString, new Object[0]);
+      if (QLog.isColorLevel()) {
+        QLog.d("PokeBigResHandler", 2, paramString, new Object[0]);
+      }
     }
-    return bool1;
     return false;
   }
   
@@ -171,7 +169,7 @@ public class PokeBigResHandler
     File localFile = new File(str);
     if ((localFile.exists()) && (localFile.list() != null))
     {
-      MediaUtil.a(str);
+      QQAlbumUtils.a(str);
       return true;
     }
     return false;
@@ -179,160 +177,168 @@ public class PokeBigResHandler
   
   public static boolean b(int paramInt, String paramString)
   {
-    boolean bool = true;
-    paramString = paramString + jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
+    paramString = ((StringBuilder)localObject).toString();
     int i = jdField_a_of_type_ArrayOfInt[paramInt];
     paramString = new File(paramString);
-    if (paramString.exists())
+    boolean bool3 = paramString.exists();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (bool3)
     {
       paramString = paramString.listFiles();
-      if (paramString != null) {
-        break label58;
+      if (paramString == null) {
+        return false;
       }
-    }
-    label58:
-    label68:
-    String[] arrayOfString1;
-    do
-    {
-      return false;
-      if (paramInt != 4) {
-        break label174;
-      }
-      i = paramString.length;
-      paramInt = 0;
-      if (paramInt >= i) {
-        break;
-      }
-      arrayOfString1 = paramString[paramInt];
-    } while (arrayOfString1 == null);
-    if (arrayOfString1.getName().contains("dazhao_move")) {}
-    for (;;)
-    {
-      paramInt += 1;
-      break label68;
-      if (arrayOfString1.getName().contains("daozhao_motion"))
+      if (paramInt == 4)
       {
-        String[] arrayOfString2 = arrayOfString1.list();
-        if (arrayOfString2 == null) {
-          break;
+        i = paramString.length;
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = paramString[paramInt];
+          if (localObject != null)
+          {
+            if (!((File)localObject).getName().contains("dazhao_move")) {
+              if (((File)localObject).getName().contains("daozhao_motion"))
+              {
+                String[] arrayOfString = ((File)localObject).list();
+                if (arrayOfString == null) {
+                  return false;
+                }
+                if (arrayOfString.length == 29) {}
+              }
+              else
+              {
+                if (!((File)localObject).getName().contains("dazhao2_motion")) {
+                  break label197;
+                }
+                localObject = ((File)localObject).list();
+                if (localObject == null) {
+                  return false;
+                }
+                if (localObject.length != 23) {
+                  break label197;
+                }
+              }
+            }
+            paramInt += 1;
+            continue;
+          }
+          label197:
+          return false;
         }
-        if (arrayOfString2.length == 29) {
-          continue;
-        }
+        return true;
       }
-      if (!arrayOfString1.getName().contains("dazhao2_motion")) {
-        break;
-      }
-      arrayOfString1 = arrayOfString1.list();
-      if ((arrayOfString1 == null) || (arrayOfString1.length != 23)) {
-        break;
+      bool1 = bool2;
+      if (paramString.length == i) {
+        bool1 = true;
       }
     }
-    return true;
-    label174:
-    if (paramString.length == i) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
-    }
+    return bool1;
   }
   
   private static boolean b(String paramString)
   {
-    Object localObject = null;
     String str = e;
     File localFile = new File(paramString);
-    if (localFile.exists()) {
+    Object localObject;
+    if (localFile.exists())
+    {
+      localObject = null;
       try
       {
         paramString = HexUtil.bytes2HexStr(MD5.getFileMd5(localFile.getAbsolutePath()));
-        if ((paramString != null) && (str != null) && (paramString.toLowerCase().equals(str.toLowerCase())))
+      }
+      catch (OutOfMemoryError paramString)
+      {
+        if (QLog.isColorLevel())
         {
-          a(localFile.getAbsolutePath());
-          return a();
+          QLog.d("BigResDown", 2, new Object[] { "doOnServerResp, fStorage, OutOfMemoryError, oom.message=", paramString.getMessage() });
+          paramString.printStackTrace();
+        }
+        try
+        {
+          paramString = MD5FileUtil.a(localFile);
+        }
+        catch (Exception paramString)
+        {
+          break label77;
+        }
+        paramString = localObject;
+        if (QLog.isColorLevel())
+        {
+          paramString = new StringBuilder();
+          paramString.append("verifyResource() get file md5 failed:");
+          paramString.append(localFile.getAbsolutePath());
+          QLog.e("BigResDown", 2, paramString.toString());
+          paramString = localObject;
         }
       }
       catch (UnsatisfiedLinkError paramString)
       {
-        for (;;)
+        label77:
+        if (QLog.isColorLevel())
         {
-          if (QLog.isColorLevel())
-          {
-            QLog.d("BigResDown", 2, new Object[] { "doOnServerResp, fStorage, UnsatisfiedLinkError, e.message=", paramString.getMessage() });
-            paramString.printStackTrace();
-          }
-          try
-          {
-            paramString = MD5FileUtil.a(localFile);
-          }
-          catch (Exception paramString)
-          {
-            paramString = localObject;
-          }
-          if (QLog.isColorLevel())
-          {
-            QLog.e("BigResDown", 2, "verifyResource() get file md5 failed:" + localFile.getAbsolutePath());
-            paramString = localObject;
-          }
+          QLog.d("BigResDown", 2, new Object[] { "doOnServerResp, fStorage, UnsatisfiedLinkError, e.message=", paramString.getMessage() });
+          paramString.printStackTrace();
         }
-      }
-      catch (OutOfMemoryError paramString)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel())
-          {
-            QLog.d("BigResDown", 2, new Object[] { "doOnServerResp, fStorage, OutOfMemoryError, oom.message=", paramString.getMessage() });
-            paramString.printStackTrace();
-          }
-          try
-          {
-            paramString = MD5FileUtil.a(localFile);
-          }
-          catch (Exception paramString)
-          {
-            paramString = localObject;
-          }
-          if (QLog.isColorLevel())
-          {
-            QLog.e("BigResDown", 2, "verifyResource() get file md5 failed:" + localFile.getAbsolutePath());
-            paramString = localObject;
-          }
-        }
-        localFile.delete();
       }
     }
+    try
+    {
+      paramString = MD5FileUtil.a(localFile);
+    }
+    catch (Exception paramString)
+    {
+      label166:
+      break label166;
+    }
+    paramString = localObject;
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("verifyResource() get file md5 failed:");
+      paramString.append(localFile.getAbsolutePath());
+      QLog.e("BigResDown", 2, paramString.toString());
+      paramString = localObject;
+    }
+    if ((paramString != null) && (str != null) && (paramString.toLowerCase().equals(str.toLowerCase())))
+    {
+      a(localFile.getAbsolutePath());
+      return a();
+    }
+    localFile.delete();
     return false;
   }
   
   public void a(boolean paramBoolean)
   {
     if (!paramBoolean) {}
-    for (;;)
+    try
     {
-      try
-      {
-        paramBoolean = b();
-        if (paramBoolean) {
-          return;
-        }
-        if (!jdField_b_of_type_Boolean)
-        {
-          PokeBigResHandler.1 local1 = new PokeBigResHandler.1(this);
-          if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
-            ThreadManager.post(local1, 10, null, false);
-          } else {
-            localObject.run();
-          }
-        }
+      paramBoolean = b();
+      if (paramBoolean) {
+        return;
       }
-      finally {}
+      paramBoolean = jdField_b_of_type_Boolean;
+      if (paramBoolean) {
+        return;
+      }
+      PokeBigResHandler.1 local1 = new PokeBigResHandler.1(this);
+      if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
+        ThreadManager.post(local1, 10, null, false);
+      } else {
+        local1.run();
+      }
+      return;
     }
+    finally {}
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return null;
   }
@@ -341,7 +347,7 @@ public class PokeBigResHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.PokeBigResHandler
  * JD-Core Version:    0.7.0.1
  */

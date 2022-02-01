@@ -16,12 +16,15 @@ public class QQGroupDetailRequest
     localstQQGroupDetailReq.posterPersonId = paramString2;
     this.a = localstQQGroupDetailReq;
     this.f = 15000L;
-    WSLog.d("QQGroupDetailRequest", "QQGroupDetailRequest  = " + localstQQGroupDetailReq.toString());
+    paramString1 = new StringBuilder();
+    paramString1.append("QQGroupDetailRequest  = ");
+    paramString1.append(localstQQGroupDetailReq.toString());
+    WSLog.d("QQGroupDetailRequest", paramString1.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.request.QQGroupDetailRequest
  * JD-Core Version:    0.7.0.1
  */

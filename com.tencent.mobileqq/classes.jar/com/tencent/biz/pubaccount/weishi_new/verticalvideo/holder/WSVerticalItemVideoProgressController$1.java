@@ -13,20 +13,24 @@ class WSVerticalItemVideoProgressController$1
   {
     try
     {
-      if (WSVerticalItemVideoProgressController.a(this.this$0) != null) {
-        WSVerticalItemVideoProgressController.a(this.this$0).setThumb(WSVerticalItemVideoProgressController.a(this.this$0).getDrawable(2130841988));
+      if (WSVerticalItemVideoProgressController.a(this.this$0) != null)
+      {
+        WSVerticalItemVideoProgressController.a(this.this$0).setThumb(WSVerticalItemVideoProgressController.a(this.this$0).getDrawable(2130841885));
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
-      WSLog.d("WS_VIDEO_seekBar", "seekBar un active runnable error:" + localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("seekBar un active runnable error:");
+      localStringBuilder.append(localException);
+      WSLog.d("WS_VIDEO_seekBar", localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemVideoProgressController.1
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class stFeed
   extends JceStruct
@@ -47,24 +48,28 @@ public final class stFeed
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.feed != null) {
-      paramJceOutputStream.write(this.feed, 0);
+    Object localObject = this.feed;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.person_meta != null) {
-      paramJceOutputStream.write(this.person_meta, 1);
+    localObject = this.person_meta;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
     paramJceOutputStream.write(this.feed_type, 2);
-    if (this.recommend_splitter != null) {
-      paramJceOutputStream.write(this.recommend_splitter, 3);
+    localObject = this.recommend_splitter;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.friendFeed != null) {
-      paramJceOutputStream.write(this.friendFeed, 4);
+    localObject = this.friendFeed;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stFeed
  * JD-Core Version:    0.7.0.1
  */

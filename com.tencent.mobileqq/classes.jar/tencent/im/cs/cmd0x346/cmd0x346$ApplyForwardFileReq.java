@@ -22,13 +22,14 @@ public final class cmd0x346$ApplyForwardFileReq
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 80, 160, 242, 320, 400, 482 }, new String[] { "uint64_sender_uin", "uint64_recver_uin", "bytes_uuid", "uint32_danger_level", "uint64_total_space", "str_fileidcrc" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro, Integer.valueOf(0), Long.valueOf(0L), "" }, ApplyForwardFileReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 80, 160, 242, 320, 400, 482 }, new String[] { "uint64_sender_uin", "uint64_recver_uin", "bytes_uuid", "uint32_danger_level", "uint64_total_space", "str_fileidcrc" }, new Object[] { localLong, localLong, localByteStringMicro, Integer.valueOf(0), localLong, "" }, ApplyForwardFileReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.cmd0x346.cmd0x346.ApplyForwardFileReq
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,14 @@ class PCActiveNoticeActiviy$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SettingCloneUtil.writeValue(this.a, PCActiveNoticeActiviy.a(this.a), null, "pcactive_notice_key", false);
+    paramDialogInterface = this.a;
+    SettingCloneUtil.writeValue(paramDialogInterface, PCActiveNoticeActiviy.a(paramDialogInterface), null, "pcactive_notice_key", false);
     this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PCActiveNoticeActiviy.1
  * JD-Core Version:    0.7.0.1
  */

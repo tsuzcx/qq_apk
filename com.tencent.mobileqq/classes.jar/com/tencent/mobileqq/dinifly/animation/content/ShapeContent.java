@@ -72,11 +72,14 @@ public class ShapeContent
     while (i < paramList1.size())
     {
       paramList2 = (Content)paramList1.get(i);
-      if (((paramList2 instanceof TrimPathContent)) && (((TrimPathContent)paramList2).getType() == ShapeTrimPath.Type.SIMULTANEOUSLY))
+      if ((paramList2 instanceof TrimPathContent))
       {
         paramList2 = (TrimPathContent)paramList2;
-        this.trimPaths.addTrimPath(paramList2);
-        paramList2.addListener(this);
+        if (paramList2.getType() == ShapeTrimPath.Type.SIMULTANEOUSLY)
+        {
+          this.trimPaths.addTrimPath(paramList2);
+          paramList2.addListener(this);
+        }
       }
       i += 1;
     }
@@ -84,7 +87,7 @@ public class ShapeContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.content.ShapeContent
  * JD-Core Version:    0.7.0.1
  */

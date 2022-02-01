@@ -14,6 +14,7 @@ public abstract class LiveData<T>
   static final Object NOT_SET = new Object();
   static final int START_VERSION = -1;
   int mActiveCount = 0;
+  private boolean mChangingActiveState;
   private volatile Object mData;
   final Object mDataLock = new Object();
   private boolean mDispatchInvalidated;
@@ -37,25 +38,81 @@ public abstract class LiveData<T>
   
   static void assertMainThread(String paramString)
   {
-    if (!ArchTaskExecutor.getInstance().isMainThread()) {
-      throw new IllegalStateException("Cannot invoke " + paramString + " on a background thread");
+    if (ArchTaskExecutor.getInstance().isMainThread()) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Cannot invoke ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" on a background thread");
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   private void considerNotify(LiveData<T>.ObserverWrapper paramLiveData)
   {
-    if (!paramLiveData.mActive) {}
-    do
-    {
+    if (!paramLiveData.mActive) {
       return;
-      if (!paramLiveData.shouldBeActive())
-      {
-        paramLiveData.activeStateChanged(false);
-        return;
-      }
-    } while (paramLiveData.mLastVersion >= this.mVersion);
-    paramLiveData.mLastVersion = this.mVersion;
+    }
+    if (!paramLiveData.shouldBeActive())
+    {
+      paramLiveData.activeStateChanged(false);
+      return;
+    }
+    int i = paramLiveData.mLastVersion;
+    int j = this.mVersion;
+    if (i >= j) {
+      return;
+    }
+    paramLiveData.mLastVersion = j;
     paramLiveData.mObserver.onChanged(this.mData);
+  }
+  
+  @MainThread
+  void changeActiveCounter(int paramInt)
+  {
+    i = this.mActiveCount;
+    this.mActiveCount = (paramInt + i);
+    if (this.mChangingActiveState) {
+      return;
+    }
+    this.mChangingActiveState = true;
+    for (;;)
+    {
+      try
+      {
+        if (i == this.mActiveCount) {
+          continue;
+        }
+        if ((i != 0) || (this.mActiveCount <= 0)) {
+          continue;
+        }
+        paramInt = 1;
+      }
+      finally
+      {
+        int j;
+        this.mChangingActiveState = false;
+        continue;
+        throw localObject;
+        continue;
+        paramInt = 0;
+        continue;
+        i = 0;
+        continue;
+      }
+      if ((i <= 0) || (this.mActiveCount != 0)) {
+        continue;
+      }
+      i = 1;
+      j = this.mActiveCount;
+      if (paramInt != 0) {
+        onActive();
+      } else if (i != 0) {
+        onInactive();
+      }
+      i = j;
+    }
+    this.mChangingActiveState = false;
   }
   
   void dispatchingValue(@Nullable LiveData<T>.ObserverWrapper paramLiveData)
@@ -66,32 +123,31 @@ public abstract class LiveData<T>
       return;
     }
     this.mDispatchingValue = true;
-    this.mDispatchInvalidated = false;
-    LiveData<T>.ObserverWrapper localLiveData;
-    if (paramLiveData != null)
+    do
     {
-      considerNotify(paramLiveData);
-      localLiveData = null;
-    }
-    for (;;)
-    {
-      paramLiveData = localLiveData;
-      if (this.mDispatchInvalidated) {
-        break;
-      }
-      this.mDispatchingValue = false;
-      return;
-      SafeIterableMap.IteratorWithAdditions localIteratorWithAdditions = this.mObservers.iteratorWithAdditions();
-      do
+      this.mDispatchInvalidated = false;
+      LiveData<T>.ObserverWrapper localLiveData;
+      if (paramLiveData != null)
       {
+        considerNotify(paramLiveData);
+        localLiveData = null;
+      }
+      else
+      {
+        SafeIterableMap.IteratorWithAdditions localIteratorWithAdditions = this.mObservers.iteratorWithAdditions();
+        do
+        {
+          localLiveData = paramLiveData;
+          if (!localIteratorWithAdditions.hasNext()) {
+            break;
+          }
+          considerNotify((LiveData.ObserverWrapper)((Map.Entry)localIteratorWithAdditions.next()).getValue());
+        } while (!this.mDispatchInvalidated);
         localLiveData = paramLiveData;
-        if (!localIteratorWithAdditions.hasNext()) {
-          break;
-        }
-        considerNotify((LiveData.ObserverWrapper)((Map.Entry)localIteratorWithAdditions.next()).getValue());
-      } while (!this.mDispatchInvalidated);
-      localLiveData = paramLiveData;
-    }
+      }
+      paramLiveData = localLiveData;
+    } while (this.mDispatchInvalidated);
+    this.mDispatchingValue = false;
   }
   
   @Nullable
@@ -123,17 +179,17 @@ public abstract class LiveData<T>
   public void observe(@NonNull LifecycleOwner paramLifecycleOwner, @NonNull Observer<? super T> paramObserver)
   {
     assertMainThread("observe");
-    if (paramLifecycleOwner.getLifecycle().getCurrentState() == Lifecycle.State.DESTROYED) {}
-    LiveData.LifecycleBoundObserver localLifecycleBoundObserver;
-    do
-    {
+    if (paramLifecycleOwner.getLifecycle().getCurrentState() == Lifecycle.State.DESTROYED) {
       return;
-      localLifecycleBoundObserver = new LiveData.LifecycleBoundObserver(this, paramLifecycleOwner, paramObserver);
-      paramObserver = (LiveData.ObserverWrapper)this.mObservers.putIfAbsent(paramObserver, localLifecycleBoundObserver);
-      if ((paramObserver != null) && (!paramObserver.isAttachedTo(paramLifecycleOwner))) {
-        throw new IllegalArgumentException("Cannot add the same observer with different lifecycles");
-      }
-    } while (paramObserver != null);
+    }
+    LiveData.LifecycleBoundObserver localLifecycleBoundObserver = new LiveData.LifecycleBoundObserver(this, paramLifecycleOwner, paramObserver);
+    paramObserver = (LiveData.ObserverWrapper)this.mObservers.putIfAbsent(paramObserver, localLifecycleBoundObserver);
+    if ((paramObserver != null) && (!paramObserver.isAttachedTo(paramLifecycleOwner))) {
+      throw new IllegalArgumentException("Cannot add the same observer with different lifecycles");
+    }
+    if (paramObserver != null) {
+      return;
+    }
     paramLifecycleOwner.getLifecycle().addObserver(localLifecycleBoundObserver);
   }
   
@@ -143,13 +199,15 @@ public abstract class LiveData<T>
     assertMainThread("observeForever");
     LiveData.AlwaysActiveObserver localAlwaysActiveObserver = new LiveData.AlwaysActiveObserver(this, paramObserver);
     paramObserver = (LiveData.ObserverWrapper)this.mObservers.putIfAbsent(paramObserver, localAlwaysActiveObserver);
-    if ((paramObserver instanceof LiveData.LifecycleBoundObserver)) {
-      throw new IllegalArgumentException("Cannot add the same observer with different lifecycles");
-    }
-    if (paramObserver != null) {
+    if (!(paramObserver instanceof LiveData.LifecycleBoundObserver))
+    {
+      if (paramObserver != null) {
+        return;
+      }
+      localAlwaysActiveObserver.activeStateChanged(true);
       return;
     }
-    localAlwaysActiveObserver.activeStateChanged(true);
+    throw new IllegalArgumentException("Cannot add the same observer with different lifecycles");
   }
   
   protected void onActive() {}
@@ -162,18 +220,17 @@ public abstract class LiveData<T>
     {
       synchronized (this.mDataLock)
       {
-        if (this.mPendingData != NOT_SET) {
-          break label47;
-        }
-        i = 1;
-        this.mPendingData = paramT;
-        if (i == 0) {
+        if (this.mPendingData == NOT_SET)
+        {
+          i = 1;
+          this.mPendingData = paramT;
+          if (i == 0) {
+            return;
+          }
+          ArchTaskExecutor.getInstance().postToMainThread(this.mPostValueRunnable);
           return;
         }
       }
-      ArchTaskExecutor.getInstance().postToMainThread(this.mPostValueRunnable);
-      return;
-      label47:
       int i = 0;
     }
   }
@@ -215,7 +272,7 @@ public abstract class LiveData<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.lifecycle.LiveData
  * JD-Core Version:    0.7.0.1
  */

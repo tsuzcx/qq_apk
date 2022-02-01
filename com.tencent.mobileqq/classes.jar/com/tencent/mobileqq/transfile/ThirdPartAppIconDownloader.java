@@ -37,23 +37,18 @@ public class ThirdPartAppIconDownloader
   
   public static Bitmap fixImageSize(Bitmap paramBitmap, double paramDouble1, double paramDouble2)
   {
-    Object localObject;
     if (paramBitmap == null) {
-      localObject = null;
+      return null;
     }
-    Bitmap localBitmap;
-    do
-    {
-      return localObject;
-      float f1 = paramBitmap.getWidth();
-      float f2 = paramBitmap.getHeight();
-      localObject = new Matrix();
-      ((Matrix)localObject).postScale((float)paramDouble1 / f1, (float)paramDouble2 / f2);
-      localBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, (int)f1, (int)f2, (Matrix)localObject, true);
-      localObject = localBitmap;
-    } while (localBitmap == paramBitmap);
-    paramBitmap.recycle();
-    return localBitmap;
+    float f1 = paramBitmap.getWidth();
+    float f2 = paramBitmap.getHeight();
+    Object localObject = new Matrix();
+    ((Matrix)localObject).postScale((float)paramDouble1 / f1, (float)paramDouble2 / f2);
+    localObject = Bitmap.createBitmap(paramBitmap, 0, 0, (int)f1, (int)f2, (Matrix)localObject, true);
+    if (localObject != paramBitmap) {
+      paramBitmap.recycle();
+    }
+    return localObject;
   }
   
   public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
@@ -62,48 +57,43 @@ public class ThirdPartAppIconDownloader
     try
     {
       paramFile = BitmapFactory.decodeFile(paramFile.getAbsolutePath(), null);
-      paramDownloadParams = fixImageSize(paramFile, this.mDensity * 50.0F, this.mDensity * 50.0F);
-      int i = paramDownloadParams.getWidth();
-      int j = paramDownloadParams.getHeight();
-      paramFile = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-      paramFile.setDensity(160);
-      paramURLDrawableHandler = new Canvas(paramFile);
-      Paint localPaint = new Paint(1);
-      localPaint.setColor(-16777216);
-      Rect localRect = new Rect(0, 0, i, j);
-      RectF localRectF = new RectF(localRect);
-      float f = 10.0F * this.mDensity;
-      paramURLDrawableHandler.drawRoundRect(localRectF, f, f, localPaint);
-      localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-      paramURLDrawableHandler.drawBitmap(paramDownloadParams, localRect, localRect, localPaint);
-    }
-    catch (OutOfMemoryError paramFile)
-    {
-      for (;;)
-      {
-        try
-        {
-          if (!paramDownloadParams.isRecycled()) {
-            paramDownloadParams.recycle();
-          }
-          return paramFile;
-        }
-        catch (Throwable paramDownloadParams)
-        {
-          paramDownloadParams.printStackTrace();
-        }
-        paramFile = paramFile;
-        paramFile.printStackTrace();
-        paramFile = paramDownloadParams;
-      }
     }
     catch (Exception paramFile)
     {
-      for (;;)
+      paramFile.printStackTrace();
+      paramFile = paramDownloadParams;
+    }
+    catch (OutOfMemoryError paramFile)
+    {
+      paramFile.printStackTrace();
+      paramFile = paramDownloadParams;
+    }
+    float f = this.mDensity;
+    paramDownloadParams = fixImageSize(paramFile, f * 50.0F, f * 50.0F);
+    int i = paramDownloadParams.getWidth();
+    int j = paramDownloadParams.getHeight();
+    paramFile = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+    paramFile.setDensity(160);
+    paramURLDrawableHandler = new Canvas(paramFile);
+    Paint localPaint = new Paint(1);
+    localPaint.setColor(-16777216);
+    Rect localRect = new Rect(0, 0, i, j);
+    RectF localRectF = new RectF(localRect);
+    f = this.mDensity * 10.0F;
+    paramURLDrawableHandler.drawRoundRect(localRectF, f, f, localPaint);
+    localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+    paramURLDrawableHandler.drawBitmap(paramDownloadParams, localRect, localRect, localPaint);
+    try
+    {
+      if (!paramDownloadParams.isRecycled())
       {
-        paramFile.printStackTrace();
-        paramFile = paramDownloadParams;
+        paramDownloadParams.recycle();
+        return paramFile;
       }
+    }
+    catch (Throwable paramDownloadParams)
+    {
+      paramDownloadParams.printStackTrace();
     }
     return paramFile;
   }
@@ -117,7 +107,7 @@ public class ThirdPartAppIconDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ThirdPartAppIconDownloader
  * JD-Core Version:    0.7.0.1
  */

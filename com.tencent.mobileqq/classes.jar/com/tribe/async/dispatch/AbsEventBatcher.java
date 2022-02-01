@@ -43,9 +43,14 @@ public abstract class AbsEventBatcher<EVENT>
     {
       this.mQueue.enqueue(paramEVENT);
       this.mEnqueueSize += 1;
-      if ((this.mState.compareAndSet(1, 2)) && (!this.mHandler.sendEmptyMessageDelayed(1, 30L))) {
+      if (this.mState.compareAndSet(1, 2))
+      {
+        if (this.mHandler.sendEmptyMessageDelayed(1, 30L)) {
+          return;
+        }
         throw new RuntimeException("Could not send handler message");
       }
+      return;
     }
     finally {}
   }
@@ -64,7 +69,7 @@ public abstract class AbsEventBatcher<EVENT>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tribe.async.dispatch.AbsEventBatcher
  * JD-Core Version:    0.7.0.1
  */

@@ -23,9 +23,9 @@ import org.json.JSONObject;
 
 public class AVEffectPendantReport
 {
-  private static int jdField_a_of_type_Int = 0;
+  private static int jdField_a_of_type_Int;
   private static ArrayList<PendantItem> jdField_a_of_type_JavaUtilArrayList;
-  private static int b = 0;
+  private static int b;
   
   private static Class<?> a()
   {
@@ -39,16 +39,20 @@ public class AVEffectPendantReport
   
   private static String a(PendantItem paramPendantItem)
   {
-    String str = null;
-    if (paramPendantItem != null) {
-      str = AVPathUtil.c() + paramPendantItem.getName();
+    if (paramPendantItem != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(AVPathUtil.c());
+      localStringBuilder.append(paramPendantItem.getName());
+      return localStringBuilder.toString();
     }
-    return str;
+    return null;
   }
   
   private static ArrayList<PendantItem> a(String paramString)
   {
     localArrayList = new ArrayList();
+    int i = 0;
     b = 0;
     jdField_a_of_type_Int = 0;
     if (!TextUtils.isEmpty(paramString)) {
@@ -61,7 +65,6 @@ public class AVEffectPendantReport
         {
           paramString = paramString.getJSONArray((String)localObject);
           localObject = a();
-          int i = 0;
           while (i < paramString.length())
           {
             PendantItem localPendantItem = (PendantItem)JSONUtils.a((JSONObject)paramString.get(i), (Class)localObject);
@@ -94,7 +97,12 @@ public class AVEffectPendantReport
   public static void a()
   {
     SharedPreUtils.b(jdField_a_of_type_Int, b);
-    AVLog.printColorLog("AVEffectPendantReport", "setAVPendantDownloadInfo()  mTotalCount = " + b + "  mDownloadCount = " + jdField_a_of_type_Int);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setAVPendantDownloadInfo()  mTotalCount = ");
+    localStringBuilder.append(b);
+    localStringBuilder.append("  mDownloadCount = ");
+    localStringBuilder.append(jdField_a_of_type_Int);
+    AVLog.printColorLog("AVEffectPendantReport", localStringBuilder.toString());
   }
   
   private static String b()
@@ -104,26 +112,34 @@ public class AVEffectPendantReport
   
   public static void b()
   {
-    SharedPreUtils.c();
-    AVLog.printColorLog("AVEffectPendantReport", "setAVPendantUseInfo()  time = " + System.currentTimeMillis());
+    SharedPreUtils.b();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setAVPendantUseInfo()  time = ");
+    localStringBuilder.append(System.currentTimeMillis());
+    AVLog.printColorLog("AVEffectPendantReport", localStringBuilder.toString());
   }
   
   private static boolean b(PendantItem paramPendantItem)
   {
-    if ((e() <= 0) || (paramPendantItem == null) || (TextUtils.isEmpty(paramPendantItem.getId()))) {
-      AVLog.printErrorLog("AVEffectPendantReport", "isTemplateUsable:" + e() + "|");
-    }
-    do
+    if ((e() > 0) && (paramPendantItem != null) && (!TextUtils.isEmpty(paramPendantItem.getId())))
     {
-      return false;
-      if (TextUtils.isEmpty(paramPendantItem.getResurl())) {
+      if (TextUtils.isEmpty(paramPendantItem.getResUrl())) {
         return true;
       }
-    } while (!new File(a(paramPendantItem)).exists());
-    System.currentTimeMillis();
-    String str = SecUtil.getFileMd5(a(paramPendantItem));
-    System.currentTimeMillis();
-    return paramPendantItem.getMd5().equalsIgnoreCase(str);
+      if (!new File(a(paramPendantItem)).exists()) {
+        return false;
+      }
+      System.currentTimeMillis();
+      String str = SecUtil.getFileMd5(a(paramPendantItem));
+      System.currentTimeMillis();
+      return paramPendantItem.getMd5().equalsIgnoreCase(str);
+    }
+    paramPendantItem = new StringBuilder();
+    paramPendantItem.append("isTemplateUsable:");
+    paramPendantItem.append(e());
+    paramPendantItem.append("|");
+    AVLog.printErrorLog("AVEffectPendantReport", paramPendantItem.toString());
+    return false;
   }
   
   public static void c()
@@ -145,60 +161,79 @@ public class AVEffectPendantReport
   
   public static void e()
   {
-    long l1 = -1L;
-    try
+    Object localObject1;
+    do
     {
-      localHashMap = new HashMap();
-      bool = SharedPreUtils.b();
-      arrayOfInt = SharedPreUtils.b();
-      l2 = SharedPreUtils.b();
-      if ((!bool) && (arrayOfInt[1] <= 0))
+      try
       {
-        CapturePtvTemplateManager.a().b(false);
-        SharedPreUtils.d();
+        localHashMap = new HashMap();
+        bool = SharedPreUtils.b();
+        localObject1 = SharedPreUtils.b();
+        l2 = SharedPreUtils.b();
+        if ((!bool) && (localObject1[1] <= 0))
+        {
+          CapturePtvTemplateManager.a().b(false);
+          SharedPreUtils.c();
+        }
+        l1 = -1L;
+        if (l2 <= 0L) {
+          continue;
+        }
+        l1 = (System.currentTimeMillis() - l2) / 1000L;
       }
-      if (l2 <= 0L) {
-        break label380;
-      }
-      l1 = (System.currentTimeMillis() - l2) / 1000L;
-    }
-    catch (Throwable localThrowable)
-    {
-      int[] arrayOfInt;
-      do
+      catch (Throwable localThrowable)
       {
         HashMap localHashMap;
         boolean bool;
         long l2;
-        BigDecimal localBigDecimal;
+        long l1;
+        Object localObject2;
         if (!QLog.isColorLevel()) {
-          break;
+          continue;
         }
         QLog.d("AVEffectPendantReport", 2, "reportAVPendantDownloadInfo", localThrowable);
         return;
-        if ((arrayOfInt[0] <= 0) && (arrayOfInt[1] <= 0)) {
-          break;
-        }
-      } while (arrayOfInt[0] <= arrayOfInt[1]);
-    }
-    localBigDecimal = new BigDecimal(arrayOfInt[0] * 1.0F / arrayOfInt[1]);
-    localHashMap.put("filter_download", String.valueOf(arrayOfInt[0]));
-    localHashMap.put("filter_total", String.valueOf(arrayOfInt[1]));
-    localHashMap.put("filter_ratio", String.valueOf(localBigDecimal.setScale(2, 4).floatValue()));
-    localHashMap.put("filter_spacing", String.valueOf(l1));
-    if (QLog.isColorLevel()) {
-      QLog.d("DailyReport", 2, "reportAVPendantDownloadInfo filter_download = " + arrayOfInt[0] + ",filter_total = " + arrayOfInt[1] + ",filter_spacing" + l1);
-    }
-    bool = UserAction.onUserAction("AVFunChatExpression", true, -1L, -1L, localHashMap, true);
-    UserAction.flushObjectsToDB(true);
-    AVLog.printColorLog("AVEffectPendantReport", "reportAVPendantDownloadInfo, filter_download[" + (String)localHashMap.get("filter_download") + "], filter_total[" + (String)localHashMap.get("filter_total") + "],filter_total[" + (String)localHashMap.get("filter_ratio") + "],filter_ratio[" + (String)localHashMap.get("filter_spacing") + "], lastUserTime = " + l2 + "    ret[" + bool + "]");
-    return;
-    label380:
+      }
+      localObject2 = new BigDecimal(localObject1[0] * 1.0F / localObject1[1]);
+      localHashMap.put("filter_download", String.valueOf(localObject1[0]));
+      localHashMap.put("filter_total", String.valueOf(localObject1[1]));
+      localHashMap.put("filter_ratio", String.valueOf(((BigDecimal)localObject2).setScale(2, 4).floatValue()));
+      localHashMap.put("filter_spacing", String.valueOf(l1));
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("reportAVPendantDownloadInfo filter_download = ");
+        ((StringBuilder)localObject2).append(localObject1[0]);
+        ((StringBuilder)localObject2).append(",filter_total = ");
+        ((StringBuilder)localObject2).append(localObject1[1]);
+        ((StringBuilder)localObject2).append(",filter_spacing");
+        ((StringBuilder)localObject2).append(l1);
+        QLog.d("DailyReport", 2, ((StringBuilder)localObject2).toString());
+      }
+      bool = UserAction.onUserAction("AVFunChatExpression", true, -1L, -1L, localHashMap, true);
+      UserAction.flushObjectsToDB(true);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("reportAVPendantDownloadInfo, filter_download[");
+      ((StringBuilder)localObject1).append((String)localHashMap.get("filter_download"));
+      ((StringBuilder)localObject1).append("], filter_total[");
+      ((StringBuilder)localObject1).append((String)localHashMap.get("filter_total"));
+      ((StringBuilder)localObject1).append("],filter_total[");
+      ((StringBuilder)localObject1).append((String)localHashMap.get("filter_ratio"));
+      ((StringBuilder)localObject1).append("],filter_ratio[");
+      ((StringBuilder)localObject1).append((String)localHashMap.get("filter_spacing"));
+      ((StringBuilder)localObject1).append("], lastUserTime = ");
+      ((StringBuilder)localObject1).append(l2);
+      ((StringBuilder)localObject1).append("    ret[");
+      ((StringBuilder)localObject1).append(bool);
+      ((StringBuilder)localObject1).append("]");
+      AVLog.printColorLog("AVEffectPendantReport", ((StringBuilder)localObject1).toString());
+      return;
+    } while (((localObject1[0] > 0) || (localObject1[1] > 0)) && (localObject1[0] <= localObject1[1]));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.pendant.AVEffectPendantReport
  * JD-Core Version:    0.7.0.1
  */

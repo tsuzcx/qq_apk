@@ -21,34 +21,38 @@ final class a$b
   
   public a.a getCacheByIPC(Context paramContext)
   {
-    if (paramContext == null) {}
-    do
+    if (paramContext != null)
     {
-      do
+      Bundle localBundle = new Bundle();
+      localBundle.putString("IPC_ACTION", "GET_IPV4");
+      localBundle.putString("IPC_TO_PROCESS_NAME", AdProcessManager.INSTANCE.getMainProcessName());
+      paramContext = AdIPCManager.INSTANCE.send(paramContext, new AdIPCManager.Params(localBundle));
+      if ((paramContext != null) && (paramContext.success) && (paramContext.bundle != null) && (paramContext.bundle.containsKey("IPV4_ADDRESS")))
       {
-        return null;
-        Bundle localBundle = new Bundle();
-        localBundle.putString("IPC_ACTION", "GET_IPV4");
-        localBundle.putString("IPC_TO_PROCESS_NAME", AdProcessManager.INSTANCE.getMainProcessName());
-        paramContext = AdIPCManager.INSTANCE.send(paramContext, new AdIPCManager.Params(localBundle));
-      } while ((paramContext == null) || (!paramContext.success) || (paramContext.bundle == null) || (!paramContext.bundle.containsKey("IPV4_ADDRESS")));
-      paramContext = paramContext.bundle.getSerializable("IPV4_ADDRESS");
-    } while ((paramContext == null) || (!(paramContext instanceof a.a)));
+        paramContext = paramContext.bundle.getSerializable("IPV4_ADDRESS");
+        if ((paramContext != null) && ((paramContext instanceof a.a))) {
+          break label119;
+        }
+      }
+    }
+    return null;
+    label119:
     return (a.a)a.a.class.cast(paramContext);
   }
   
   public AdIPCManager.Result handle(AdIPCManager.Params paramParams)
   {
     paramParams = AdProcessManager.INSTANCE.isOnMainProcess();
-    if ((paramParams == null) || (!paramParams.booleanValue())) {
-      return null;
+    if ((paramParams != null) && (paramParams.booleanValue()))
+    {
+      paramParams = new Bundle();
+      paramParams.putSerializable("IPV4_ADDRESS", a.access$000(a.INSTANCE));
+      AdIPCManager.Result localResult = new AdIPCManager.Result();
+      localResult.success = true;
+      localResult.bundle = paramParams;
+      return localResult;
     }
-    paramParams = new Bundle();
-    paramParams.putSerializable("IPV4_ADDRESS", a.access$000(a.INSTANCE));
-    AdIPCManager.Result localResult = new AdIPCManager.Result();
-    localResult.success = true;
-    localResult.bundle = paramParams;
-    return localResult;
+    return null;
   }
 }
 

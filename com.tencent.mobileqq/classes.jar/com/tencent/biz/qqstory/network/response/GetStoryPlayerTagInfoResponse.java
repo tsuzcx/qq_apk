@@ -24,34 +24,28 @@ public class GetStoryPlayerTagInfoResponse
   {
     super(paramRspStoryPlayerTagInfo.result);
     Iterator localIterator = paramRspStoryPlayerTagInfo.tag_info.get().iterator();
-    Object localObject;
-    String str;
-    qqstory_struct.TagInfoBase localTagInfoBase;
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
-      localObject = (qqstory_struct.TagInfoBaseVidList)localIterator.next();
-      str = ((qqstory_struct.TagInfoBaseVidList)localObject).vid.get().toStringUtf8();
-      localTagInfoBase = (qqstory_struct.TagInfoBase)((qqstory_struct.TagInfoBaseVidList)localObject).tag_info.get();
-      if (!((qqstory_struct.TagInfoBaseVidList)localObject).comp_info.has()) {
-        break label163;
+      qqstory_struct.TagInfoBaseVidList localTagInfoBaseVidList = (qqstory_struct.TagInfoBaseVidList)localIterator.next();
+      String str2 = localTagInfoBaseVidList.vid.get().toStringUtf8();
+      qqstory_struct.TagInfoBase localTagInfoBase = (qqstory_struct.TagInfoBase)localTagInfoBaseVidList.tag_info.get();
+      boolean bool = localTagInfoBaseVidList.comp_info.has();
+      String str1 = null;
+      if (bool) {
+        paramRspStoryPlayerTagInfo = new CompInfoBase((qqstory_struct.CompInfoBase)localTagInfoBaseVidList.comp_info.get());
+      } else {
+        paramRspStoryPlayerTagInfo = null;
       }
-    }
-    label163:
-    for (paramRspStoryPlayerTagInfo = new CompInfoBase((qqstory_struct.CompInfoBase)((qqstory_struct.TagInfoBaseVidList)localObject).comp_info.get());; paramRspStoryPlayerTagInfo = null)
-    {
-      if (((qqstory_struct.TagInfoBaseVidList)localObject).extern_config_json.has()) {}
-      for (localObject = ((qqstory_struct.TagInfoBaseVidList)localObject).extern_config_json.get().toStringUtf8();; localObject = null)
-      {
-        this.a.add(new GetStoryPlayerTagInfoRequest.TagInfoBaseVidList(str, new TagItem.TagInfoBase(localTagInfoBase), paramRspStoryPlayerTagInfo, (String)localObject));
-        break;
-        return;
+      if (localTagInfoBaseVidList.extern_config_json.has()) {
+        str1 = localTagInfoBaseVidList.extern_config_json.get().toStringUtf8();
       }
+      this.a.add(new GetStoryPlayerTagInfoRequest.TagInfoBaseVidList(str2, new TagItem.TagInfoBase(localTagInfoBase), paramRspStoryPlayerTagInfo, str1));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.GetStoryPlayerTagInfoResponse
  * JD-Core Version:    0.7.0.1
  */

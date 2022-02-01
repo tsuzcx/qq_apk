@@ -38,36 +38,43 @@ class MessengerService$9
         }
       }
       this.a.b.putBundle("response", paramRichStatus);
-      this.a.a(this.a.b);
+      paramRichStatus = this.a;
+      paramRichStatus.a(paramRichStatus.b);
       this.a.b = null;
     }
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if (paramInt == -1) {
+    if (paramInt == -1)
+    {
       if (this.a.a != null) {
         this.a.a.post(new MessengerService.9.1(this));
       }
     }
-    while (this.a.c == null) {
-      return;
+    else if (this.a.c != null)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("isSync: ");
+        ((StringBuilder)localObject).append(paramBoolean);
+        QLog.d("SigImg2Zone", 4, ((StringBuilder)localObject).toString());
+      }
+      Object localObject = new Bundle();
+      ((Bundle)localObject).putBoolean("isSync", paramBoolean);
+      this.a.c.putBundle("response", (Bundle)localObject);
+      localObject = this.a;
+      ((MessengerService)localObject).a(((MessengerService)localObject).c);
+      this.a.c = null;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("SigImg2Zone", 4, "isSync: " + paramBoolean);
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("isSync", paramBoolean);
-    this.a.c.putBundle("response", localBundle);
-    this.a.a(this.a.c);
-    this.a.c = null;
   }
   
   public void b(int paramInt, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.9
  * JD-Core Version:    0.7.0.1
  */

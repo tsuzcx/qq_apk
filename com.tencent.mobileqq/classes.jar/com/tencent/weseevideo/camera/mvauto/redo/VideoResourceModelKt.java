@@ -48,13 +48,13 @@ public final class VideoResourceModelKt
     this.width = paramInt2;
     this.height = paramInt3;
     this.rotate = paramInt4;
-    if (this.selectTimeDuration == 0L) {}
-    for (float f = 1.0F;; f = (float)this.selectTimeDuration * 1.0F / (float)this.scaleDuration)
-    {
-      this.scaleSpeed = f;
-      this.selectTimeEndUs = (((float)(this.selectTimeStartUs + this.selectTimeDurationUs) / this.scaleSpeed));
-      return;
+    paramLong1 = this.selectTimeDuration;
+    float f = 1.0F;
+    if (paramLong1 != 0L) {
+      f = (float)paramLong1 * 1.0F / (float)this.scaleDuration;
     }
+    this.scaleSpeed = f;
+    this.selectTimeEndUs = (((float)(this.selectTimeStartUs + this.selectTimeDurationUs) / this.scaleSpeed));
   }
   
   @NotNull
@@ -155,18 +155,18 @@ public final class VideoResourceModelKt
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof VideoResourceModelKt))
       {
         paramObject = (VideoResourceModelKt)paramObject;
-        if ((!Intrinsics.areEqual(this.path, paramObject.path)) || (this.type != paramObject.type) || (this.scaleDuration != paramObject.scaleDuration) || (this.sourceTimeStart != paramObject.sourceTimeStart) || (this.sourceTimeDuration != paramObject.sourceTimeDuration) || (this.sourceTimeStartUs != paramObject.sourceTimeStartUs) || (this.sourceTimeDurationUs != paramObject.sourceTimeDurationUs) || (this.selectTimeStart != paramObject.selectTimeStart) || (this.selectTimeDuration != paramObject.selectTimeDuration) || (this.selectTimeStartUs != paramObject.selectTimeStartUs) || (this.selectTimeDurationUs != paramObject.selectTimeDurationUs) || (this.cutTimeStart != paramObject.cutTimeStart) || (this.cutTimeDuration != paramObject.cutTimeDuration) || (this.width != paramObject.width) || (this.height != paramObject.height) || (this.rotate != paramObject.rotate)) {}
+        if ((Intrinsics.areEqual(this.path, paramObject.path)) && (this.type == paramObject.type) && (this.scaleDuration == paramObject.scaleDuration) && (this.sourceTimeStart == paramObject.sourceTimeStart) && (this.sourceTimeDuration == paramObject.sourceTimeDuration) && (this.sourceTimeStartUs == paramObject.sourceTimeStartUs) && (this.sourceTimeDurationUs == paramObject.sourceTimeDurationUs) && (this.selectTimeStart == paramObject.selectTimeStart) && (this.selectTimeDuration == paramObject.selectTimeDuration) && (this.selectTimeStartUs == paramObject.selectTimeStartUs) && (this.selectTimeDurationUs == paramObject.selectTimeDurationUs) && (this.cutTimeStart == paramObject.cutTimeStart) && (this.cutTimeDuration == paramObject.cutTimeDuration) && (this.width == paramObject.width) && (this.height == paramObject.height) && (this.rotate == paramObject.rotate)) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public final long getCutTimeDuration()
@@ -263,44 +263,80 @@ public final class VideoResourceModelKt
   public int hashCode()
   {
     String str = this.path;
-    if (str != null) {}
-    for (int i = str.hashCode();; i = 0)
-    {
-      int j = this.type;
-      long l = this.scaleDuration;
-      int k = (int)(l ^ l >>> 32);
-      l = this.sourceTimeStart;
-      int m = (int)(l ^ l >>> 32);
-      l = this.sourceTimeDuration;
-      int n = (int)(l ^ l >>> 32);
-      l = this.sourceTimeStartUs;
-      int i1 = (int)(l ^ l >>> 32);
-      l = this.sourceTimeDurationUs;
-      int i2 = (int)(l ^ l >>> 32);
-      l = this.selectTimeStart;
-      int i3 = (int)(l ^ l >>> 32);
-      l = this.selectTimeDuration;
-      int i4 = (int)(l ^ l >>> 32);
-      l = this.selectTimeStartUs;
-      int i5 = (int)(l ^ l >>> 32);
-      l = this.selectTimeDurationUs;
-      int i6 = (int)(l ^ l >>> 32);
-      l = this.cutTimeStart;
-      int i7 = (int)(l ^ l >>> 32);
-      l = this.cutTimeDuration;
-      return ((((((((((((((i * 31 + j) * 31 + k) * 31 + m) * 31 + n) * 31 + i1) * 31 + i2) * 31 + i3) * 31 + i4) * 31 + i5) * 31 + i6) * 31 + i7) * 31 + (int)(l ^ l >>> 32)) * 31 + this.width) * 31 + this.height) * 31 + this.rotate;
+    int i;
+    if (str != null) {
+      i = str.hashCode();
+    } else {
+      i = 0;
     }
+    int j = this.type;
+    long l = this.scaleDuration;
+    int k = (int)(l ^ l >>> 32);
+    l = this.sourceTimeStart;
+    int m = (int)(l ^ l >>> 32);
+    l = this.sourceTimeDuration;
+    int n = (int)(l ^ l >>> 32);
+    l = this.sourceTimeStartUs;
+    int i1 = (int)(l ^ l >>> 32);
+    l = this.sourceTimeDurationUs;
+    int i2 = (int)(l ^ l >>> 32);
+    l = this.selectTimeStart;
+    int i3 = (int)(l ^ l >>> 32);
+    l = this.selectTimeDuration;
+    int i4 = (int)(l ^ l >>> 32);
+    l = this.selectTimeStartUs;
+    int i5 = (int)(l ^ l >>> 32);
+    l = this.selectTimeDurationUs;
+    int i6 = (int)(l ^ l >>> 32);
+    l = this.cutTimeStart;
+    int i7 = (int)(l ^ l >>> 32);
+    l = this.cutTimeDuration;
+    return ((((((((((((((i * 31 + j) * 31 + k) * 31 + m) * 31 + n) * 31 + i1) * 31 + i2) * 31 + i3) * 31 + i4) * 31 + i5) * 31 + i6) * 31 + i7) * 31 + (int)(l ^ l >>> 32)) * 31 + this.width) * 31 + this.height) * 31 + this.rotate;
   }
   
   @NotNull
   public String toString()
   {
-    return "VideoResourceModelKt(path=" + this.path + ", type=" + this.type + ", scaleDuration=" + this.scaleDuration + ", sourceTimeStart=" + this.sourceTimeStart + ", sourceTimeDuration=" + this.sourceTimeDuration + ", sourceTimeStartUs=" + this.sourceTimeStartUs + ", sourceTimeDurationUs=" + this.sourceTimeDurationUs + ", selectTimeStart=" + this.selectTimeStart + ", selectTimeDuration=" + this.selectTimeDuration + ", selectTimeStartUs=" + this.selectTimeStartUs + ", selectTimeDurationUs=" + this.selectTimeDurationUs + ", cutTimeStart=" + this.cutTimeStart + ", cutTimeDuration=" + this.cutTimeDuration + ", width=" + this.width + ", height=" + this.height + ", rotate=" + this.rotate + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VideoResourceModelKt(path=");
+    localStringBuilder.append(this.path);
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(", scaleDuration=");
+    localStringBuilder.append(this.scaleDuration);
+    localStringBuilder.append(", sourceTimeStart=");
+    localStringBuilder.append(this.sourceTimeStart);
+    localStringBuilder.append(", sourceTimeDuration=");
+    localStringBuilder.append(this.sourceTimeDuration);
+    localStringBuilder.append(", sourceTimeStartUs=");
+    localStringBuilder.append(this.sourceTimeStartUs);
+    localStringBuilder.append(", sourceTimeDurationUs=");
+    localStringBuilder.append(this.sourceTimeDurationUs);
+    localStringBuilder.append(", selectTimeStart=");
+    localStringBuilder.append(this.selectTimeStart);
+    localStringBuilder.append(", selectTimeDuration=");
+    localStringBuilder.append(this.selectTimeDuration);
+    localStringBuilder.append(", selectTimeStartUs=");
+    localStringBuilder.append(this.selectTimeStartUs);
+    localStringBuilder.append(", selectTimeDurationUs=");
+    localStringBuilder.append(this.selectTimeDurationUs);
+    localStringBuilder.append(", cutTimeStart=");
+    localStringBuilder.append(this.cutTimeStart);
+    localStringBuilder.append(", cutTimeDuration=");
+    localStringBuilder.append(this.cutTimeDuration);
+    localStringBuilder.append(", width=");
+    localStringBuilder.append(this.width);
+    localStringBuilder.append(", height=");
+    localStringBuilder.append(this.height);
+    localStringBuilder.append(", rotate=");
+    localStringBuilder.append(this.rotate);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.camera.mvauto.redo.VideoResourceModelKt
  * JD-Core Version:    0.7.0.1
  */

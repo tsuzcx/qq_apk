@@ -20,14 +20,15 @@ public class Step$QIPCConnectStep
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("QIPCEnvironmentInit", 2, "tryConnect", localException);
+      if (QLog.isColorLevel()) {
+        QLog.d("QIPCEnvironmentInit", 2, "tryConnect", localException);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.Step.QIPCConnectStep
  * JD-Core Version:    0.7.0.1
  */

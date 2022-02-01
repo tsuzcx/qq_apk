@@ -19,83 +19,88 @@ class ARTipsManager$1
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ARTipsManager.ViewHolder localViewHolder;
-    float f2;
-    float f1;
     if (ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager) != null)
     {
-      paramView = (ARTipsManager.TipsInfo)ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).getTag(2131362973);
-      localViewHolder = (ARTipsManager.ViewHolder)ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).getTag();
+      paramView = (ARTipsManager.TipsInfo)ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).getTag(2131362922);
+      ARTipsManager.ViewHolder localViewHolder = (ARTipsManager.ViewHolder)ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).getTag();
       if ((paramView != null) && (localViewHolder != null))
       {
-        f2 = paramMotionEvent.getX();
-        f1 = paramMotionEvent.getY();
-      }
-    }
-    switch (paramMotionEvent.getAction())
-    {
-    default: 
-    case 0: 
-    case 2: 
-      do
-      {
-        do
+        float f2 = paramMotionEvent.getX();
+        float f1 = paramMotionEvent.getY();
+        int i = paramMotionEvent.getAction();
+        if (i != 0)
         {
-          do
+          if (i != 1)
           {
+            if (i != 2)
+            {
+              if (i != 3) {
+                return true;
+              }
+              this.jdField_a_of_type_Float = 0.0F;
+              this.b = 0.0F;
+              this.jdField_a_of_type_Long = 0L;
+              localViewHolder.a.setPressed(false);
+              return true;
+            }
+            if ((paramView.jdField_a_of_type_Int == 1) && (paramView.b == 2))
+            {
+              f2 -= this.jdField_a_of_type_Float;
+              f1 -= this.b;
+              if ((float)Math.sqrt(f2 * f2 + f1 * f1) >= ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).getScaledTouchSlop())
+              {
+                localViewHolder.a.setPressed(false);
+                return true;
+              }
+            }
+          }
+          else
+          {
+            f2 -= this.jdField_a_of_type_Float;
+            f1 -= this.b;
+            f2 = (float)Math.sqrt(f2 * f2 + f1 * f1);
+            long l1 = System.currentTimeMillis();
+            long l2 = this.jdField_a_of_type_Long;
+            if (f2 < ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).getScaledTouchSlop())
+            {
+              if (paramView.b == 2)
+              {
+                ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).removeMessages(101);
+                ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).obtainMessage(101).sendToTarget();
+                if (paramView.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager$ButtonClickListener != null) {
+                  paramView.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager$ButtonClickListener.a();
+                }
+              }
+            }
+            else if ((f2 > ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).getScaledTouchSlop()) && (f1 > 50.0F) && ((float)(l1 - l2) < 300.0F) && (paramView.jdField_a_of_type_Int == 1))
+            {
+              ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).removeMessages(101);
+              ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).obtainMessage(101).sendToTarget();
+            }
+            this.jdField_a_of_type_Float = 0.0F;
+            this.b = 0.0F;
+            this.jdField_a_of_type_Long = 0L;
+            localViewHolder.a.setPressed(false);
             return true;
-            this.jdField_a_of_type_Float = f2;
-            this.b = f1;
-            this.jdField_a_of_type_Long = System.currentTimeMillis();
-          } while ((paramView.jdField_a_of_type_Int != 1) || (paramView.b != 2));
-          localViewHolder.a.setPressed(true);
-          return true;
-        } while ((paramView.jdField_a_of_type_Int != 1) || (paramView.b != 2));
-        f2 -= this.jdField_a_of_type_Float;
-        f1 -= this.b;
-      } while ((float)Math.sqrt(f2 * f2 + f1 * f1) < ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).getScaledTouchSlop());
-      localViewHolder.a.setPressed(false);
-      return true;
-    case 1: 
-      f2 -= this.jdField_a_of_type_Float;
-      f1 -= this.b;
-      f2 = (float)Math.sqrt(f2 * f2 + f1 * f1);
-      long l1 = System.currentTimeMillis();
-      long l2 = this.jdField_a_of_type_Long;
-      if (f2 < ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).getScaledTouchSlop()) {
-        if (paramView.b == 2)
+          }
+        }
+        else
         {
-          ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).removeMessages(101);
-          ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).obtainMessage(101).sendToTarget();
-          if (paramView.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager$ButtonClickListener != null) {
-            paramView.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager$ButtonClickListener.a();
+          this.jdField_a_of_type_Float = f2;
+          this.b = f1;
+          this.jdField_a_of_type_Long = System.currentTimeMillis();
+          if ((paramView.jdField_a_of_type_Int == 1) && (paramView.b == 2)) {
+            localViewHolder.a.setPressed(true);
           }
         }
       }
-      for (;;)
-      {
-        this.jdField_a_of_type_Float = 0.0F;
-        this.b = 0.0F;
-        this.jdField_a_of_type_Long = 0L;
-        localViewHolder.a.setPressed(false);
-        return true;
-        if ((f2 > ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).getScaledTouchSlop()) && (f1 > 50.0F) && ((float)(l1 - l2) < 300.0F) && (paramView.jdField_a_of_type_Int == 1))
-        {
-          ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).removeMessages(101);
-          ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).obtainMessage(101).sendToTarget();
-        }
-      }
     }
-    this.jdField_a_of_type_Float = 0.0F;
-    this.b = 0.0F;
-    this.jdField_a_of_type_Long = 0L;
-    localViewHolder.a.setPressed(false);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.activity.ARTipsManager.1
  * JD-Core Version:    0.7.0.1
  */

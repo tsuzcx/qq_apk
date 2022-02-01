@@ -1,121 +1,100 @@
 package com.tencent.turingfd.sdk.xq;
 
-import android.content.Context;
-import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
-
 public class Arbutus
+  extends case
 {
-  public static Arbutus zg = new Arbutus();
+  public static byte[] Jc;
+  public static Banana Kc = new Banana();
+  public static Virgo Lc = new Virgo();
+  public static byte[] q = new byte[1];
+  public byte[] F = null;
+  public int Mc = 0;
+  public int Nc = 0;
+  public int Oc = 0;
+  public int Pc = 0;
+  public int Qc = 0;
+  public int Rc = 0;
+  public int Sc = 0;
+  public long Tc = 0L;
+  public byte[] Uc = null;
+  public int Vc = 0;
+  public int Wc = 0;
+  public Banana Xc = null;
+  public Virgo Yc = null;
   
-  public void D(Context paramContext)
+  static
   {
-    try
-    {
-      new File(G(paramContext)).delete();
-      return;
-    }
-    catch (Throwable paramContext) {}
+    q[0] = 0;
+    Jc = new byte[1];
+    Jc[0] = 0;
   }
   
-  public Map<Integer, Integer> E(Context paramContext)
+  public void a(byte parambyte)
   {
-    Object localObject = zg.J(paramContext);
-    paramContext = new HashMap();
-    if (localObject == null) {}
-    do
-    {
-      return paramContext;
-      localObject = ((Bootes)localObject).I;
-    } while (localObject == null);
-    return localObject;
+    parambyte.b(this.Mc, 0);
+    parambyte.b(this.Nc, 1);
+    parambyte.b(this.Oc, 2);
+    parambyte.b(this.Pc, 3);
+    parambyte.b(this.Qc, 4);
+    Object localObject = this.F;
+    if (localObject != null) {
+      parambyte.a((byte[])localObject, 5);
+    }
+    parambyte.b(this.Rc, 6);
+    parambyte.b(this.Sc, 7);
+    parambyte.a(this.Tc, 8);
+    localObject = this.Uc;
+    if (localObject != null) {
+      parambyte.a((byte[])localObject, 9);
+    }
+    parambyte.b(this.Vc, 10);
+    parambyte.b(this.Wc, 11);
+    localObject = this.Xc;
+    if (localObject != null) {
+      parambyte.a((case)localObject, 12);
+    }
+    localObject = this.Yc;
+    if (localObject != null) {
+      parambyte.a((case)localObject, 13);
+    }
   }
   
-  public String F(Context paramContext)
+  public void a(try paramtry)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    paramContext = zg.J(paramContext);
-    if (paramContext != null)
-    {
-      localStringBuilder.append(paramContext.G);
-      localStringBuilder.append("_");
-      localStringBuilder.append(paramContext.version);
-    }
-    return localStringBuilder.toString();
+    this.Mc = paramtry.a(this.Mc, 0, false);
+    this.Nc = paramtry.a(this.Nc, 1, false);
+    this.Oc = paramtry.a(this.Oc, 2, false);
+    this.Pc = paramtry.a(this.Pc, 3, false);
+    this.Qc = paramtry.a(this.Qc, 4, false);
+    this.F = paramtry.a(q, 5, false);
+    this.Rc = paramtry.a(this.Rc, 6, false);
+    this.Sc = paramtry.a(this.Sc, 7, false);
+    this.Tc = paramtry.a(this.Tc, 8, false);
+    this.Uc = paramtry.a(Jc, 9, false);
+    this.Vc = paramtry.a(this.Vc, 10, false);
+    this.Wc = paramtry.a(this.Wc, 11, false);
+    this.Xc = ((Banana)paramtry.a(Kc, 12, false));
+    this.Yc = ((Virgo)paramtry.a(Lc, 13, false));
   }
   
-  public String G(Context paramContext)
+  public boolean equals(Object paramObject)
   {
-    paramContext = paramContext.getDir("turingfd", 0);
-    if (paramContext == null) {
-      return "";
+    if (this == paramObject) {
+      return true;
     }
-    paramContext = new File(paramContext.getAbsolutePath() + File.separator + "12");
-    if ((!paramContext.exists()) && (!paramContext.mkdirs())) {
-      return "";
+    if (paramObject == null) {
+      return false;
     }
-    return paramContext.getAbsolutePath() + File.separator + final.jf + "_" + "xqFull" + "_" + "1";
-  }
-  
-  public long H(Context paramContext)
-  {
-    paramContext = zg.J(paramContext);
-    if (paramContext == null) {}
-    long l;
-    do
-    {
-      return 57600L;
-      l = paramContext.J;
-    } while (l <= 0L);
-    return l;
-  }
-  
-  public long I(Context paramContext)
-  {
-    paramContext = zg.J(paramContext);
-    if (paramContext == null) {}
-    do
-    {
-      return 0L;
-      paramContext = paramContext.K;
-    } while ((paramContext == null) || (!paramContext.containsKey("1")));
-    try
-    {
-      l = Long.valueOf((String)paramContext.get("1")).longValue();
-      l = l * 3600L * 1000L;
+    if (!(paramObject instanceof Arbutus)) {
+      return false;
     }
-    catch (Throwable paramContext)
-    {
-      for (;;)
-      {
-        long l = 0L;
-      }
-    }
-    return l;
-  }
-  
-  public final Bootes J(Context paramContext)
-  {
-    try
-    {
-      Bootes localBootes = new Bootes();
-      localBootes.a(new try(extends.i(G(paramContext))));
-      return localBootes;
-    }
-    catch (Throwable paramContext) {}
-    return null;
-  }
-  
-  public void a(Context paramContext, Bootes paramBootes)
-  {
-    paramBootes = paramBootes.toByteArray();
-    extends.a(G(paramContext), paramBootes);
+    paramObject = (Arbutus)paramObject;
+    return (char.equals(this.Mc, paramObject.Mc)) && (char.equals(this.Nc, paramObject.Nc)) && (char.equals(this.Oc, paramObject.Oc)) && (char.equals(this.Pc, paramObject.Pc)) && (char.equals(this.Qc, paramObject.Qc)) && (char.equals(this.F, paramObject.F)) && (char.equals(this.Rc, paramObject.Rc)) && (char.equals(this.Sc, paramObject.Sc)) && (char.a(this.Tc, paramObject.Tc)) && (char.equals(this.Uc, paramObject.Uc)) && (char.equals(this.Vc, paramObject.Vc)) && (char.equals(this.Wc, paramObject.Wc)) && (char.equals(this.Xc, paramObject.Xc)) && (char.equals(this.Yc, paramObject.Yc));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Arbutus
  * JD-Core Version:    0.7.0.1
  */

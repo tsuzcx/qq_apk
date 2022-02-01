@@ -51,20 +51,23 @@ public class TimeDownTextView
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
     this.jdField_b_of_type_AndroidTextTextPaint = new TextPaint(1);
     this.jdField_b_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#FFFFFF"));
-    this.jdField_b_of_type_AndroidTextTextPaint.setTextSize(AIOUtils.a(16.0F, getResources()));
+    this.jdField_b_of_type_AndroidTextTextPaint.setTextSize(AIOUtils.b(16.0F, getResources()));
     this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
-    this.k = AIOUtils.a(5.0F, getResources());
+    this.k = AIOUtils.b(5.0F, getResources());
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      paramCanvas.drawText(this.jdField_b_of_type_JavaLangCharSequence, 0, this.jdField_b_of_type_JavaLangCharSequence.length(), this.g, this.h, this.jdField_b_of_type_AndroidTextTextPaint);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      localCharSequence = this.jdField_b_of_type_JavaLangCharSequence;
+      paramCanvas.drawText(localCharSequence, 0, localCharSequence.length(), this.g, this.h, this.jdField_b_of_type_AndroidTextTextPaint);
     }
-    paramCanvas.drawText(this.jdField_a_of_type_JavaLangCharSequence, 0, this.jdField_a_of_type_JavaLangCharSequence.length(), this.e, this.f, this.jdField_a_of_type_AndroidTextTextPaint);
+    CharSequence localCharSequence = this.jdField_a_of_type_JavaLangCharSequence;
+    paramCanvas.drawText(localCharSequence, 0, localCharSequence.length(), this.e, this.f, this.jdField_a_of_type_AndroidTextTextPaint);
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_b_of_type_Int = paramInt2;
@@ -130,7 +133,7 @@ public class TimeDownTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.portal.TimeDownTextView
  * JD-Core Version:    0.7.0.1
  */

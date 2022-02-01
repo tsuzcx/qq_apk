@@ -33,39 +33,45 @@ public class VideoFilterListSnapshot
   
   public void addAllFreezeTrigger()
   {
-    if (this.mFaceAttr != null)
+    Object localObject = this.mFaceAttr;
+    if (localObject != null)
     {
-      Set localSet = this.mFaceAttr.getTriggeredExpression();
-      if (localSet != null) {
-        localSet.add(Integer.valueOf(PTFaceAttr.PTExpression.ALL_VIEWER_ITEM_FRAME_FROZEN.value));
+      localObject = ((PTFaceAttr)localObject).getTriggeredExpression();
+      if (localObject != null) {
+        ((Set)localObject).add(Integer.valueOf(PTFaceAttr.PTExpression.ALL_VIEWER_ITEM_FRAME_FROZEN.value));
       }
     }
   }
   
   public void clear()
   {
-    if (this.mFreezeFrame != null)
+    Object localObject = this.mFreezeFrame;
+    if (localObject != null)
     {
-      this.mFreezeFrame.setCanUnlock(true);
+      ((Frame)localObject).setCanUnlock(true);
       this.mFreezeFrame.unlock();
       this.mFreezeFrame.clear();
       this.mFreezeFrame = null;
     }
-    if (this.mFreezeMaskFrame != null)
+    localObject = this.mFreezeMaskFrame;
+    if (localObject != null)
     {
-      this.mFreezeMaskFrame.setCanUnlock(true);
+      ((Frame)localObject).setCanUnlock(true);
       this.mFreezeMaskFrame.unlock();
       this.mFreezeMaskFrame.clear();
       this.mFreezeMaskFrame = null;
     }
-    if (this.mFaceAttr != null) {
-      this.mFaceAttr.setData(null);
+    localObject = this.mFaceAttr;
+    if (localObject != null) {
+      ((PTFaceAttr)localObject).setData(null);
     }
-    if (this.mSegAttr != null) {
-      this.mSegAttr.setMaskFrame(null);
+    localObject = this.mSegAttr;
+    if (localObject != null) {
+      ((PTSegAttr)localObject).setMaskFrame(null);
     }
-    if (this.mHandActionCounter != null) {
-      this.mHandActionCounter.clear();
+    localObject = this.mHandActionCounter;
+    if (localObject != null) {
+      ((Map)localObject).clear();
     }
   }
   
@@ -106,11 +112,12 @@ public class VideoFilterListSnapshot
   
   public void removeAllFreezeTrigger()
   {
-    if (this.mFaceAttr != null)
+    Object localObject = this.mFaceAttr;
+    if (localObject != null)
     {
-      Set localSet = this.mFaceAttr.getTriggeredExpression();
-      if (localSet != null) {
-        localSet.remove(Integer.valueOf(PTFaceAttr.PTExpression.ALL_VIEWER_ITEM_FRAME_FROZEN.value));
+      localObject = ((PTFaceAttr)localObject).getTriggeredExpression();
+      if (localObject != null) {
+        ((Set)localObject).remove(Integer.valueOf(PTFaceAttr.PTExpression.ALL_VIEWER_ITEM_FRAME_FROZEN.value));
       }
     }
   }
@@ -147,13 +154,14 @@ public class VideoFilterListSnapshot
   
   public void setHandActionCounter(Map<Integer, Integer> paramMap)
   {
-    if (this.mHandActionCounter != null) {
-      this.mHandActionCounter.clear();
+    Object localObject = this.mHandActionCounter;
+    if (localObject != null) {
+      ((Map)localObject).clear();
     }
-    Iterator localIterator = paramMap.keySet().iterator();
-    while (localIterator.hasNext())
+    localObject = paramMap.keySet().iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      int i = ((Integer)localIterator.next()).intValue();
+      int i = ((Integer)((Iterator)localObject).next()).intValue();
       Integer localInteger = (Integer)paramMap.get(Integer.valueOf(i));
       if (localInteger != null) {
         this.mHandActionCounter.put(Integer.valueOf(i), localInteger);
@@ -173,7 +181,7 @@ public class VideoFilterListSnapshot
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.VideoFilterListSnapshot
  * JD-Core Version:    0.7.0.1
  */

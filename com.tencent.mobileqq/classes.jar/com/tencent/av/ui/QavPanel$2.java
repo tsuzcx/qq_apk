@@ -12,21 +12,22 @@ class QavPanel$2
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
+      if ((i == 1) || (i == 3)) {
+        this.a.a.setAlpha(255);
+      }
     }
-    for (;;)
-    {
-      return false;
+    else {
       this.a.a.setAlpha(127);
-      continue;
-      this.a.a.setAlpha(255);
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.QavPanel.2
  * JD-Core Version:    0.7.0.1
  */

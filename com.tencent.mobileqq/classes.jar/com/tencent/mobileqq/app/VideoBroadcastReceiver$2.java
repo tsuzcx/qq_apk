@@ -13,9 +13,10 @@ class VideoBroadcastReceiver$2
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     DataReport.e(false, false);
-    if (this.jdField_a_of_type_Int == 3000)
+    paramInt = this.jdField_a_of_type_Int;
+    if (paramInt == 3000)
     {
-      VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, false, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, false, null, true, new Object[0]);
+      VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, this.jdField_b_of_type_Int, false, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, false, null, true, new Object[0]);
       VideoBroadcastReceiver.a(this.jdField_a_of_type_ComTencentMobileqqAppVideoBroadcastReceiver, 3, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.c, this.d);
     }
     if (paramDialogInterface != null) {
@@ -26,7 +27,7 @@ class VideoBroadcastReceiver$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.VideoBroadcastReceiver.2
  * JD-Core Version:    0.7.0.1
  */

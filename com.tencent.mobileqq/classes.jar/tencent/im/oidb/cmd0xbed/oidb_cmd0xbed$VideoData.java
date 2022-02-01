@@ -21,14 +21,15 @@ public final class oidb_cmd0xbed$VideoData
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48, 58 }, new String[] { "uint32_busi_type", "uint32_duration", "uint32_width", "uint32_height", "bytes_vid", "uint32_file_size", "bytes_video_url" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2 }, VideoData.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48, 58 }, new String[] { "uint32_busi_type", "uint32_duration", "uint32_width", "uint32_height", "bytes_vid", "uint32_file_size", "bytes_video_url" }, new Object[] { localInteger, localInteger, localInteger, localInteger, localByteStringMicro1, localInteger, localByteStringMicro2 }, VideoData.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xbed.oidb_cmd0xbed.VideoData
  * JD-Core Version:    0.7.0.1
  */

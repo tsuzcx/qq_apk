@@ -30,58 +30,65 @@ public class CustomHttpService
   
   private void a(String paramString, Map<String, String> paramMap1, Map<String, String> paramMap2, Callback paramCallback)
   {
-    this.jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpInterface$HttpComponentAdapter.getLog().i("HttpComponent", "post url = " + paramString, new Object[0]);
-    Request.Builder localBuilder = new Request.Builder().url(paramString);
-    Iterator localIterator;
+    Object localObject1 = this.jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpInterface$HttpComponentAdapter.getLog();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("post url = ");
+    ((StringBuilder)localObject2).append(paramString);
+    ((LogInterface)localObject1).i("HttpComponent", ((StringBuilder)localObject2).toString(), new Object[0]);
+    localObject1 = new Request.Builder().url(paramString);
     String str1;
     String str2;
     if (paramMap1 != null)
     {
-      localIterator = paramMap1.keySet().iterator();
-      while (localIterator.hasNext())
+      localObject2 = paramMap1.keySet().iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        str1 = (String)localIterator.next();
+        str1 = (String)((Iterator)localObject2).next();
         str2 = (String)paramMap1.get(str1);
         if (str2 != null) {
-          localBuilder.addHeader(str1, str2);
+          ((Request.Builder)localObject1).addHeader(str1, str2);
         }
       }
     }
-    localBuilder.addHeader("Content-Type", "application/x-www-form-urlencoded");
+    ((Request.Builder)localObject1).addHeader("Content-Type", "application/x-www-form-urlencoded");
     paramMap1 = new FormBody.Builder();
     if (paramMap2 != null)
     {
-      localIterator = paramMap2.keySet().iterator();
-      while (localIterator.hasNext())
+      localObject2 = paramMap2.keySet().iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        str1 = (String)localIterator.next();
+        str1 = (String)((Iterator)localObject2).next();
         str2 = (String)paramMap2.get(str1);
         if (str2 != null) {
           paramMap1.add(str1, str2);
         }
       }
     }
-    paramMap1 = localBuilder.post(paramMap1.build()).build();
+    paramMap1 = ((Request.Builder)localObject1).post(paramMap1.build()).build();
     OkHttpClientFactory.a().newCall(paramMap1).enqueue(new CustomHttpService.4(this, paramString, paramCallback));
   }
   
   private void a(String paramString, Map<String, String> paramMap, Callback paramCallback)
   {
-    this.jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpInterface$HttpComponentAdapter.getLog().i("HttpComponent", "get url = " + paramString, new Object[0]);
-    Request.Builder localBuilder = new Request.Builder().url(paramString);
+    Object localObject1 = this.jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpInterface$HttpComponentAdapter.getLog();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("get url = ");
+    ((StringBuilder)localObject2).append(paramString);
+    ((LogInterface)localObject1).i("HttpComponent", ((StringBuilder)localObject2).toString(), new Object[0]);
+    localObject1 = new Request.Builder().url(paramString);
     if (paramMap != null)
     {
-      Iterator localIterator = paramMap.keySet().iterator();
-      while (localIterator.hasNext())
+      localObject2 = paramMap.keySet().iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        String str1 = (String)localIterator.next();
+        String str1 = (String)((Iterator)localObject2).next();
         String str2 = (String)paramMap.get(str1);
         if (str2 != null) {
-          localBuilder.addHeader(str1, str2);
+          ((Request.Builder)localObject1).addHeader(str1, str2);
         }
       }
     }
-    paramMap = localBuilder.build();
+    paramMap = ((Request.Builder)localObject1).build();
     OkHttpClientFactory.a().newCall(paramMap).enqueue(new CustomHttpService.3(this, paramString, paramCallback));
   }
   
@@ -134,7 +141,7 @@ public class CustomHttpService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.http.CustomHttpService
  * JD-Core Version:    0.7.0.1
  */

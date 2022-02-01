@@ -93,34 +93,41 @@ public final class ConfigRect
     paramJceOutputStream.write(this.iWp, 4);
     paramJceOutputStream.write(this.iHp, 5);
     paramJceOutputStream.write(this.iCanEdit, 6);
-    if (this.strText != null) {
-      paramJceOutputStream.write(this.strText, 7);
+    Object localObject = this.strText;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.strUserText != null) {
-      paramJceOutputStream.write(this.strUserText, 8);
+    localObject = this.strUserText;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.stTextColor != null) {
-      paramJceOutputStream.write(this.stTextColor, 9);
+    localObject = this.stTextColor;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 9);
     }
-    if (this.stTextColorClick != null) {
-      paramJceOutputStream.write(this.stTextColorClick, 10);
+    localObject = this.stTextColorClick;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 10);
     }
     paramJceOutputStream.write(this.iFontSize, 11);
-    if (this.strSchema != null) {
-      paramJceOutputStream.write(this.strSchema, 12);
+    localObject = this.strSchema;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
-    if (this.strImageUrl != null) {
-      paramJceOutputStream.write(this.strImageUrl, 13);
+    localObject = this.strImageUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
     paramJceOutputStream.write(this.iContentStyle, 14);
-    if (this.mapExtInfo != null) {
-      paramJceOutputStream.write(this.mapExtInfo, 15);
+    localObject = this.mapExtInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 15);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_CUSTOM.ConfigRect
  * JD-Core Version:    0.7.0.1
  */

@@ -18,25 +18,25 @@ class GivingHeartItemBuilder$10
     if (((Build.VERSION.SDK_INT > 16) && (this.jdField_a_of_type_AndroidAppActivity.isDestroyed())) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing())) {
       return;
     }
-    View localView = ((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView()).getChildAt(0).findViewById(2131362327);
+    View localView = ((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView()).getChildAt(0).findViewById(2131362288);
     if (QLog.isColorLevel()) {
       QLog.d("GivingHeart", 2, "start to shake");
     }
-    if (this.jdField_a_of_type_Boolean) {}
-    for (AnimationSet localAnimationSet = GivingHeartItemBuilder.a(this.this$0, this.b);; localAnimationSet = GivingHeartItemBuilder.a(this.this$0.a, this.b))
-    {
-      localAnimationSet.setAnimationListener(new GivingHeartItemBuilder.10.1(this));
-      if (localView == null) {
-        break;
-      }
+    AnimationSet localAnimationSet;
+    if (this.jdField_a_of_type_Boolean) {
+      localAnimationSet = GivingHeartItemBuilder.a(this.this$0, this.b);
+    } else {
+      localAnimationSet = GivingHeartItemBuilder.a(this.this$0.a, this.b);
+    }
+    localAnimationSet.setAnimationListener(new GivingHeartItemBuilder.10.1(this));
+    if (localView != null) {
       localView.startAnimation(localAnimationSet);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder.10
  * JD-Core Version:    0.7.0.1
  */

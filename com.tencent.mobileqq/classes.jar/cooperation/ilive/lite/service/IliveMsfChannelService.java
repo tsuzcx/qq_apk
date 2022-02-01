@@ -1,12 +1,12 @@
 package cooperation.ilive.lite.service;
 
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.falco.base.libapi.login.LoginInfo;
 import com.tencent.falco.base.libapi.login.LoginType;
 import com.tencent.falco.utils.HexUtil;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.channel.MsfChannelService;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -45,7 +45,10 @@ public class IliveMsfChannelService
   
   private String a()
   {
-    return "key_login_data_" + BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_login_data_");
+    localStringBuilder.append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    return localStringBuilder.toString();
   }
   
   private String a(LoginInfo paramLoginInfo)
@@ -62,42 +65,36 @@ public class IliveMsfChannelService
       localJSONObject.put("openId", paramLoginInfo.openId);
       localJSONObject.put("accessToken", paramLoginInfo.access_token);
       localJSONObject.put("businessUid", paramLoginInfo.businessUid);
-      return localJSONObject.toString();
     }
     catch (Throwable paramLoginInfo)
     {
-      for (;;)
-      {
-        QLog.e("IliveMsfChannelService", 1, "getJsonFromLoginInfo error ", paramLoginInfo);
-        paramLoginInfo.printStackTrace();
-      }
+      QLog.e("IliveMsfChannelService", 1, "getJsonFromLoginInfo error ", paramLoginInfo);
+      paramLoginInfo.printStackTrace();
     }
+    return localJSONObject.toString();
   }
   
-  public LoginInfo a()
+  protected LoginInfo a()
   {
     String str = this.a.getString(a(), "");
-    if (QLog.isColorLevel()) {
-      QLog.i("IliveMsfChannelService", 2, "getSaveLoginInfo json = " + str);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getSaveLoginInfo json = ");
+      localStringBuilder.append(str);
+      QLog.i("IliveMsfChannelService", 2, localStringBuilder.toString());
     }
     return a(str);
   }
   
-  public void a(LoginInfo paramLoginInfo)
+  protected void a(LoginInfo paramLoginInfo)
   {
-    paramLoginInfo = a(paramLoginInfo);
-    if (!TextUtils.isEmpty(paramLoginInfo))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("IliveMsfChannelService", 2, "saveLoginInfo json = " + paramLoginInfo);
-      }
-      this.a.edit().putString(a(), paramLoginInfo).apply();
-    }
+    ThreadManager.executeOnFileThread(new IliveMsfChannelService.1(this, paramLoginInfo));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.lite.service.IliveMsfChannelService
  * JD-Core Version:    0.7.0.1
  */

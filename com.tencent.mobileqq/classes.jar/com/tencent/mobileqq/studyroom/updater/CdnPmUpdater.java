@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.studyroom.updater;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
@@ -26,30 +25,11 @@ public class CdnPmUpdater
   private final File jdField_a_of_type_JavaIoFile;
   private final String jdField_a_of_type_JavaLangString;
   private Future<File> jdField_a_of_type_JavaUtilConcurrentFuture;
-  private final AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(System.currentTimeMillis() - 180000L);
-  private final boolean jdField_a_of_type_Boolean;
+  private final AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong;
   private final File jdField_b_of_type_JavaIoFile;
   private final String jdField_b_of_type_JavaLangString;
   private final String c;
   private final String d;
-  private final String e;
-  
-  public CdnPmUpdater(Context paramContext, String paramString1, String paramString2, String paramString3)
-  {
-    this.e = paramString3;
-    this.jdField_a_of_type_AndroidContentSharedPreferences = paramContext.getSharedPreferences(String.format("%sShadowCdnPmUpdater", new Object[] { paramString1 }), 0);
-    this.jdField_b_of_type_JavaIoFile = new File(new File(paramContext.getFilesDir(), "ShadowCdnPmUpdater"), paramString1);
-    this.jdField_b_of_type_JavaIoFile.mkdirs();
-    this.jdField_a_of_type_JavaIoFile = new File(this.jdField_b_of_type_JavaIoFile, paramString1 + this.e + "_pm.temp");
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.c = ("pm_name_" + paramString1 + "_" + paramString2 + "_" + this.e);
-    this.d = ("wasUpdate_" + paramString1 + "_" + this.e);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = "https://downv6.qq.com/innovate/qq/pm/release/StudyRoomPluginManager.apk";
-    if (QLog.isColorLevel()) {
-      QLog.i("studyroom.CdnPmUpdater", 2, "use cdnupdater url = " + this.jdField_a_of_type_JavaLangString);
-    }
-  }
   
   private void a(File paramFile)
   {
@@ -60,73 +40,83 @@ public class CdnPmUpdater
   private void a(boolean paramBoolean)
   {
     this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.d, paramBoolean).commit();
-    if (QLog.isColorLevel()) {
-      QLog.i("studyroom.CdnPmUpdater", 2, "setWasUpdating:" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setWasUpdating:");
+      localStringBuilder.append(paramBoolean);
+      QLog.i("studyroom.CdnPmUpdater", 2, localStringBuilder.toString());
+    }
+  }
+  
+  private boolean a()
+  {
+    Object localObject1 = getLatest();
+    boolean bool = true;
+    if (localObject1 == null) {
+      return true;
+    }
+    long l = System.currentTimeMillis() - this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get();
+    if (l <= 180000L)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("短时间内不重复检测interval==");
+        ((StringBuilder)localObject1).append(l);
+        QLog.i("studyroom.CdnPmUpdater", 2, ((StringBuilder)localObject1).toString());
+      }
+      return false;
+    }
+    try
+    {
+      localObject4 = new URL(this.jdField_a_of_type_JavaLangString).openConnection();
+      if ((localObject4 instanceof HttpURLConnection))
+      {
+        localObject4 = (HttpURLConnection)localObject4;
+        try
+        {
+          if (((HttpURLConnection)localObject4).getResponseCode() == 200)
+          {
+            l = ((File)localObject1).length();
+            int i = ((HttpURLConnection)localObject4).getContentLength();
+            this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(System.currentTimeMillis());
+            if (l == i) {
+              bool = false;
+            }
+            if (localObject4 != null) {
+              ((HttpURLConnection)localObject4).disconnect();
+            }
+            return bool;
+          }
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(HardCodeUtil.a(2131701684));
+          ((StringBuilder)localObject1).append(200);
+          ((StringBuilder)localObject1).append(HardCodeUtil.a(2131701685));
+          ((StringBuilder)localObject1).append(((HttpURLConnection)localObject4).getResponseCode());
+          throw new Error(((StringBuilder)localObject1).toString());
+        }
+        finally
+        {
+          break label283;
+        }
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(HardCodeUtil.a(2131701682));
+      throw new Error(localStringBuilder.toString());
+    }
+    finally
+    {
+      Object localObject4 = null;
+      label283:
+      if (localObject4 != null) {
+        ((HttpURLConnection)localObject4).disconnect();
+      }
     }
   }
   
   private boolean b()
-  {
-    boolean bool1 = true;
-    boolean bool2 = true;
-    File localFile = getLatest();
-    if (localFile == null) {}
-    for (;;)
-    {
-      return bool2;
-      long l = System.currentTimeMillis() - this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get();
-      if (l <= 180000L)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("studyroom.CdnPmUpdater", 2, "短时间内不重复检测interval==" + l);
-        }
-        return false;
-      }
-      try
-      {
-        localObject1 = new URL(this.jdField_a_of_type_JavaLangString).openConnection();
-        if ((localObject1 instanceof HttpURLConnection)) {
-          break label148;
-        }
-        throw new Error(this.jdField_a_of_type_JavaLangString + HardCodeUtil.a(2131701542));
-      }
-      finally
-      {
-        localObject1 = null;
-      }
-      label135:
-      if (localObject1 != null) {
-        ((HttpURLConnection)localObject1).disconnect();
-      }
-      throw localObject2;
-      label148:
-      Object localObject1 = (HttpURLConnection)localObject1;
-      try
-      {
-        if (((HttpURLConnection)localObject1).getResponseCode() != 200) {
-          throw new Error(HardCodeUtil.a(2131701544) + 200 + HardCodeUtil.a(2131701545) + ((HttpURLConnection)localObject1).getResponseCode());
-        }
-        l = localObject2.length();
-        int i = ((HttpURLConnection)localObject1).getContentLength();
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(System.currentTimeMillis());
-        if (l != i) {}
-        for (;;)
-        {
-          bool2 = bool1;
-          if (localObject1 == null) {
-            break;
-          }
-          ((HttpURLConnection)localObject1).disconnect();
-          return bool1;
-          bool1 = false;
-        }
-        break label135;
-      }
-      finally {}
-    }
-  }
-  
-  private boolean c()
   {
     return this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(this.d, false);
   }
@@ -136,35 +126,32 @@ public class CdnPmUpdater
     if (QLog.isColorLevel()) {
       QLog.d("studyroom.CdnPmUpdater", 2, "start download ");
     }
-    File localFile = new File(this.jdField_b_of_type_JavaIoFile, this.jdField_b_of_type_JavaLangString + "_" + Long.valueOf(new StringBuilder().append(System.currentTimeMillis()).append("").toString(), 36) + ".apk");
-    CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    Exception[] arrayOfException = new Exception[1];
+    File localFile = this.jdField_b_of_type_JavaIoFile;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append("_");
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(System.currentTimeMillis());
+    ((StringBuilder)localObject2).append("");
+    ((StringBuilder)localObject1).append(Long.valueOf(((StringBuilder)localObject2).toString(), 36));
+    ((StringBuilder)localObject1).append(".apk");
+    localFile = new File(localFile, ((StringBuilder)localObject1).toString());
+    localObject1 = new CountDownLatch(1);
+    localObject2 = new Exception[1];
     System.currentTimeMillis();
     NowDownloadManager localNowDownloadManager = new NowDownloadManager();
     localNowDownloadManager.a(BaseApplicationImpl.getContext());
-    localNowDownloadManager.a(this.jdField_a_of_type_JavaLangString, new CdnPmUpdater.3(this, localFile, arrayOfException, localCountDownLatch));
-    localNowDownloadManager.a(NowDownloadTaskInfo.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile.getAbsolutePath()));
-    localCountDownLatch.await();
-    if (arrayOfException[0] == null)
+    localNowDownloadManager.a(this.jdField_a_of_type_JavaLangString, new CdnPmUpdater.3(this, localFile, (Exception[])localObject2, (CountDownLatch)localObject1));
+    String str = this.jdField_a_of_type_JavaLangString;
+    localNowDownloadManager.a(NowDownloadTaskInfo.a(str, str, this.jdField_a_of_type_JavaIoFile.getAbsolutePath()));
+    ((CountDownLatch)localObject1).await();
+    if (localObject2[0] == null)
     {
       localFile.setLastModified(localFile.lastModified() + 1000L);
       a(localFile);
       return localFile;
     }
-    throw arrayOfException[0];
-  }
-  
-  public void a()
-  {
-    File localFile = getLatest();
-    if (localFile != null) {
-      localFile.delete();
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
+    throw localObject2[0];
   }
   
   public File getLatest()
@@ -182,7 +169,7 @@ public class CdnPmUpdater
   
   public Future<Boolean> isAvailable(File paramFile)
   {
-    throw new UnsupportedOperationException(HardCodeUtil.a(2131701543));
+    throw new UnsupportedOperationException(HardCodeUtil.a(2131701683));
   }
   
   public Future<File> update()
@@ -191,7 +178,8 @@ public class CdnPmUpdater
     if (QLog.isColorLevel()) {
       QLog.i("studyroom.CdnPmUpdater", 2, "update");
     }
-    if ((this.jdField_a_of_type_JavaUtilConcurrentFuture != null) && (!this.jdField_a_of_type_JavaUtilConcurrentFuture.isDone()))
+    Future localFuture = this.jdField_a_of_type_JavaUtilConcurrentFuture;
+    if ((localFuture != null) && (!localFuture.isDone()))
     {
       if (QLog.isColorLevel()) {
         QLog.i("studyroom.CdnPmUpdater", 2, "上一次update还没结束，返回相同Future");
@@ -204,12 +192,12 @@ public class CdnPmUpdater
   
   public boolean wasUpdating()
   {
-    return c();
+    return b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.updater.CdnPmUpdater
  * JD-Core Version:    0.7.0.1
  */

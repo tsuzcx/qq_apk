@@ -40,41 +40,49 @@ class WSLutEffectNode$WSLutEffectFilter
   
   public CIImage apply(TAVVideoEffect paramTAVVideoEffect, CIImage paramCIImage, RenderInfo paramRenderInfo)
   {
-    if (this.mEffect == null) {}
-    long l;
-    do
+    if (this.mEffect == null) {
+      return paramCIImage;
+    }
+    CIContext localCIContext = paramRenderInfo.getCiContext();
+    paramTAVVideoEffect = paramCIImage;
+    if (localCIContext != null)
     {
-      do
-      {
+      if (localCIContext.getRenderContext() == null) {
         return paramCIImage;
-        paramTAVVideoEffect = paramRenderInfo.getCiContext();
-      } while ((paramTAVVideoEffect == null) || (paramTAVVideoEffect.getRenderContext() == null));
-      l = paramRenderInfo.getTime().getTimeUs() / 1000L;
-    } while (((WSLutEffectNode.access$000(this.this$0) != null) && ((l < WSLutEffectNode.access$000(this.this$0).getLutStartTime()) || (l > WSLutEffectNode.access$000(this.this$0).getLutStartTime() + WSLutEffectNode.access$000(this.this$0).getLutDuration()))) || (!BitmapUtil.isValidBitmap(WSLutEffectNode.access$100(this.this$0))));
-    this.mEffect.setLUTBitmap(WSLutEffectNode.access$100(this.this$0));
-    if (WSLutEffectNode.access$000(this.this$0) != null) {
-      this.mEffect.setIntensity(WSLutEffectNode.access$000(this.this$0).getLutAlpha());
+      }
+      long l = paramRenderInfo.getTime().getTimeUs() / 1000L;
+      if ((WSLutEffectNode.access$000(this.this$0) != null) && ((l < WSLutEffectNode.access$000(this.this$0).getLutStartTime()) || (l > WSLutEffectNode.access$000(this.this$0).getLutStartTime() + WSLutEffectNode.access$000(this.this$0).getLutDuration()))) {
+        return paramCIImage;
+      }
+      if (!BitmapUtil.isValidBitmap(WSLutEffectNode.access$100(this.this$0))) {
+        return paramCIImage;
+      }
+      this.mEffect.setLUTBitmap(WSLutEffectNode.access$100(this.this$0));
+      if (WSLutEffectNode.access$000(this.this$0) != null) {
+        this.mEffect.setIntensity(WSLutEffectNode.access$000(this.this$0).getLutAlpha());
+      }
+      int i = (int)paramCIImage.getSize().width;
+      int j = (int)paramCIImage.getSize().height;
+      this.mEffect.setRendererWidth(i);
+      this.mEffect.setRendererHeight(j);
+      if (this.cacheTextureInfo == null)
+      {
+        localCIContext.getRenderContext().makeCurrent();
+        this.cacheTextureInfo = CIContext.newTextureInfo(i, j);
+      }
+      if ((this.cacheTextureInfo.width != i) || (this.cacheTextureInfo.height != j))
+      {
+        localCIContext.getRenderContext().makeCurrent();
+        this.cacheTextureInfo.release();
+        this.cacheTextureInfo = CIContext.newTextureInfo(i, j);
+      }
+      localCIContext.convertImageToTexture(paramCIImage, this.cacheTextureInfo);
+      paramTAVVideoEffect = getTavTextureInfo(this.cacheTextureInfo);
+      paramTAVVideoEffect = getOutputTextureInfo(this.mEffect.applyFilter(paramTAVVideoEffect));
+      paramTAVVideoEffect.setTextureMatrix(this.cacheTextureInfo.getTextureMatrix());
+      paramTAVVideoEffect = new CIImage(paramTAVVideoEffect);
     }
-    int i = (int)paramCIImage.getSize().width;
-    int j = (int)paramCIImage.getSize().height;
-    this.mEffect.setRendererWidth(i);
-    this.mEffect.setRendererHeight(j);
-    if (this.cacheTextureInfo == null)
-    {
-      paramTAVVideoEffect.getRenderContext().makeCurrent();
-      this.cacheTextureInfo = CIContext.newTextureInfo(i, j);
-    }
-    if ((this.cacheTextureInfo.width != i) || (this.cacheTextureInfo.height != j))
-    {
-      paramTAVVideoEffect.getRenderContext().makeCurrent();
-      this.cacheTextureInfo.release();
-      this.cacheTextureInfo = CIContext.newTextureInfo(i, j);
-    }
-    paramTAVVideoEffect.convertImageToTexture(paramCIImage, this.cacheTextureInfo);
-    paramTAVVideoEffect = getTavTextureInfo(this.cacheTextureInfo);
-    paramTAVVideoEffect = getOutputTextureInfo(this.mEffect.applyFilter(paramTAVVideoEffect));
-    paramTAVVideoEffect.setTextureMatrix(this.cacheTextureInfo.getTextureMatrix());
-    return new CIImage(paramTAVVideoEffect);
+    return paramTAVVideoEffect;
   }
   
   public String getReportKey()
@@ -84,19 +92,21 @@ class WSLutEffectNode$WSLutEffectFilter
   
   public void release()
   {
-    if (this.mEffect != null)
+    Object localObject = this.mEffect;
+    if (localObject != null)
     {
-      this.mEffect.release();
+      ((WSLutEffectNode.LUTFilter)localObject).release();
       this.mEffect = null;
     }
-    if ((this.cacheTextureInfo != null) && (!this.cacheTextureInfo.isReleased())) {
+    localObject = this.cacheTextureInfo;
+    if ((localObject != null) && (!((TextureInfo)localObject).isReleased())) {
       this.cacheTextureInfo.release();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.composition.effectnode.WSLutEffectNode.WSLutEffectFilter
  * JD-Core Version:    0.7.0.1
  */

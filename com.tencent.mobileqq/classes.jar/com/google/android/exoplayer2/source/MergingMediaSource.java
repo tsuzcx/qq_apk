@@ -38,11 +38,10 @@ public final class MergingMediaSource
   {
     if (this.periodCount == -1) {
       this.periodCount = paramTimeline.getPeriodCount();
+    } else if (paramTimeline.getPeriodCount() != this.periodCount) {
+      return new MergingMediaSource.IllegalMergeException(0);
     }
-    while (paramTimeline.getPeriodCount() == this.periodCount) {
-      return null;
-    }
-    return new MergingMediaSource.IllegalMergeException(0);
+    return null;
   }
   
   public MediaPeriod createPeriod(MediaSource.MediaPeriodId paramMediaPeriodId, Allocator paramAllocator)
@@ -59,10 +58,13 @@ public final class MergingMediaSource
   
   public void maybeThrowSourceInfoRefreshError()
   {
-    if (this.mergeError != null) {
-      throw this.mergeError;
+    MergingMediaSource.IllegalMergeException localIllegalMergeException = this.mergeError;
+    if (localIllegalMergeException == null)
+    {
+      super.maybeThrowSourceInfoRefreshError();
+      return;
     }
-    super.maybeThrowSourceInfoRefreshError();
+    throw localIllegalMergeException;
   }
   
   protected void onChildSourceInfoRefreshed(Integer paramInteger, MediaSource paramMediaSource, Timeline paramTimeline, @Nullable Object paramObject)
@@ -70,18 +72,18 @@ public final class MergingMediaSource
     if (this.mergeError == null) {
       this.mergeError = checkTimelineMerges(paramTimeline);
     }
-    if (this.mergeError != null) {}
-    do
-    {
+    if (this.mergeError != null) {
       return;
-      this.pendingTimelineSources.remove(paramMediaSource);
-      if (paramMediaSource == this.mediaSources[0])
-      {
-        this.primaryTimeline = paramTimeline;
-        this.primaryManifest = paramObject;
-      }
-    } while (!this.pendingTimelineSources.isEmpty());
-    this.listener.onSourceInfoRefreshed(this, this.primaryTimeline, this.primaryManifest);
+    }
+    this.pendingTimelineSources.remove(paramMediaSource);
+    if (paramMediaSource == this.mediaSources[0])
+    {
+      this.primaryTimeline = paramTimeline;
+      this.primaryManifest = paramObject;
+    }
+    if (this.pendingTimelineSources.isEmpty()) {
+      this.listener.onSourceInfoRefreshed(this, this.primaryTimeline, this.primaryManifest);
+    }
   }
   
   public void prepareSource(ExoPlayer paramExoPlayer, boolean paramBoolean, MediaSource.Listener paramListener)
@@ -100,9 +102,13 @@ public final class MergingMediaSource
   {
     paramMediaPeriod = (MergingMediaPeriod)paramMediaPeriod;
     int i = 0;
-    while (i < this.mediaSources.length)
+    for (;;)
     {
-      this.mediaSources[i].releasePeriod(paramMediaPeriod.periods[i]);
+      MediaSource[] arrayOfMediaSource = this.mediaSources;
+      if (i >= arrayOfMediaSource.length) {
+        break;
+      }
+      arrayOfMediaSource[i].releasePeriod(paramMediaPeriod.periods[i]);
       i += 1;
     }
   }
@@ -121,7 +127,7 @@ public final class MergingMediaSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.MergingMediaSource
  * JD-Core Version:    0.7.0.1
  */

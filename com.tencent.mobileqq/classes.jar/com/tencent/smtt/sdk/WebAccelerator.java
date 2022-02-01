@@ -22,23 +22,16 @@ public class WebAccelerator
   
   public static boolean initTbsEnvironment(Context paramContext, int paramInt)
   {
-    boolean bool = false;
     if (paramContext != null)
     {
-      if (paramInt != 1) {
-        break label31;
-      }
-      f.a(true).a(paramContext, false, false, null);
-    }
-    for (;;)
-    {
-      bool = x.a().b();
-      return bool;
-      label31:
-      if (paramInt == 2) {
+      if (paramInt == 1) {
+        f.a(true).a(paramContext, false, false, null);
+      } else if (paramInt == 2) {
         x.a().a(paramContext, null);
       }
+      return x.a().b();
     }
+    return false;
   }
   
   public static void preConnect(Context paramContext, String paramString, int paramInt, boolean paramBoolean)
@@ -76,7 +69,7 @@ public class WebAccelerator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebAccelerator
  * JD-Core Version:    0.7.0.1
  */

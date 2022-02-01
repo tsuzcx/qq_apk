@@ -19,9 +19,9 @@ public class h
     this.e = paramString1;
   }
   
-  public File a()
+  public String a()
   {
-    return this.c;
+    return this.e;
   }
   
   public void a(boolean paramBoolean)
@@ -29,29 +29,19 @@ public class h
     this.a = paramBoolean;
   }
   
-  public String b()
-  {
-    return this.d;
-  }
-  
-  public String c()
-  {
-    return this.e;
-  }
-  
-  public boolean d()
+  public boolean b()
   {
     return this.b.getBoolean("js_remote_debug", false);
   }
   
-  public boolean e()
+  public boolean c()
   {
     return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.a.h
  * JD-Core Version:    0.7.0.1
  */

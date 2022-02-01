@@ -20,32 +20,46 @@ class TableQueryController$2
     if ("action.query.data.viewer" == paramContext)
     {
       paramIntent = (TReportData)paramIntent.getSerializableExtra("queryData");
-      if (paramIntent != null) {}
-    }
-    int i;
-    do
-    {
-      do
-      {
+      if (paramIntent == null) {
         return;
-        QueryData localQueryData = new QueryData();
-        localQueryData.k = "";
-        localQueryData.b = (paramIntent.actionName + "\n" + paramIntent.subAction + "\n" + paramIntent.mainAction + "\n");
-        if (paramIntent.actionName == null) {}
-        for (paramContext = paramIntent.mainAction;; paramContext = paramIntent.subAction)
-        {
-          localQueryData.a = paramContext;
-          if ((TableQueryController.a) && (!TableQueryController.b) && (TableQueryController.a(this.a) != null)) {
-            TableQueryController.a(this.a).a(localQueryData);
-          }
-          if ((TableQueryController.a) && ((TableQueryController.c) || (TableQueryController.a()))) {
-            TableQueryController.a(this.a).a((QQAppInterface)TableQueryController.a(this.a).get(), paramIntent.table, 2, paramIntent.mainAction, paramIntent.actionName, paramIntent.subAction);
-          }
-          QLog.d("TableQueryController", 1, paramIntent.actionName + "\n" + paramIntent.mainAction + "\n" + paramIntent.subAction + "\n" + paramIntent.table + "\n");
-          return;
-        }
-      } while ("com.tencent.plugin.state.change" != paramContext);
-      i = paramIntent.getIntExtra("key_plugin_state", -1);
+      }
+      QueryData localQueryData = new QueryData();
+      localQueryData.k = "";
+      paramContext = new StringBuilder();
+      paramContext.append(paramIntent.actionName);
+      paramContext.append("\n");
+      paramContext.append(paramIntent.subAction);
+      paramContext.append("\n");
+      paramContext.append(paramIntent.mainAction);
+      paramContext.append("\n");
+      localQueryData.b = paramContext.toString();
+      if (paramIntent.actionName == null) {
+        paramContext = paramIntent.mainAction;
+      } else {
+        paramContext = paramIntent.subAction;
+      }
+      localQueryData.a = paramContext;
+      if ((TableQueryController.a) && (!TableQueryController.b) && (TableQueryController.a(this.a) != null)) {
+        TableQueryController.a(this.a).a(localQueryData);
+      }
+      if ((TableQueryController.a) && ((TableQueryController.c) || (TableQueryController.a()))) {
+        TableQueryController.a(this.a).a((QQAppInterface)TableQueryController.a(this.a).get(), paramIntent.table, 2, paramIntent.mainAction, paramIntent.actionName, paramIntent.subAction);
+      }
+      paramContext = new StringBuilder();
+      paramContext.append(paramIntent.actionName);
+      paramContext.append("\n");
+      paramContext.append(paramIntent.mainAction);
+      paramContext.append("\n");
+      paramContext.append(paramIntent.subAction);
+      paramContext.append("\n");
+      paramContext.append(paramIntent.table);
+      paramContext.append("\n");
+      QLog.d("TableQueryController", 1, paramContext.toString());
+      return;
+    }
+    if ("com.tencent.plugin.state.change" == paramContext)
+    {
+      int i = paramIntent.getIntExtra("key_plugin_state", -1);
       if (1 == i)
       {
         this.a.b();
@@ -53,14 +67,17 @@ class TableQueryController$2
         ThreadManager.getSubThreadHandler().postDelayed(paramContext, 2000L);
         return;
       }
-    } while (i != 0);
-    this.a.c();
-    TableQueryController.a = false;
+      if (i == 0)
+      {
+        this.a.c();
+        TableQueryController.a = false;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tablequery.TableQueryController.2
  * JD-Core Version:    0.7.0.1
  */

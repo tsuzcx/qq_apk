@@ -4,22 +4,22 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
-import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.activity.QPublicFragmentActivity.Launcher;
+import com.tencent.mobileqq.activity.QPublicTransFragmentActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.fragment.QPublicBaseFragment;
 import com.tencent.mobileqq.onlinestatus.ReportHelperKt;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 
 public class AutoStatusHintFragment
-  extends PublicBaseFragment
+  extends QPublicBaseFragment
   implements View.OnClickListener
 {
   private Button a;
@@ -28,16 +28,16 @@ public class AutoStatusHintFragment
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("public_fragment_window_feature", 1);
-    localIntent.setClass(paramContext, PublicTransFragmentActivity.class);
+    localIntent.setClass(paramContext, QPublicTransFragmentActivity.class);
     localIntent.putExtra("public_fragment_class", AutoStatusHintFragment.class.getName());
-    PublicFragmentActivity.Launcher.a(localIntent, PublicTransFragmentActivity.class, AutoStatusHintFragment.class);
+    QPublicFragmentActivity.Launcher.a(localIntent, QPublicTransFragmentActivity.class, AutoStatusHintFragment.class);
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
   {
     super.initWindowStyleAndAnimation(paramActivity);
     paramActivity.getWindow().setSoftInputMode(3);
-    paramActivity.overridePendingTransition(2130771988, 2130771987);
+    paramActivity.overridePendingTransition(2130772000, 2130771999);
   }
   
   public boolean isWrapContent()
@@ -57,42 +57,38 @@ public class AutoStatusHintFragment
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    if (paramView.getId() == 2131372968)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       ReportHelperKt.a("0X800B0F4");
-      getActivity().finish();
+      getQBaseActivity().finish();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramLayoutInflater = paramLayoutInflater.inflate(2131558417, null);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131558445, null);
     paramLayoutInflater.setOnClickListener(this);
-    this.a = ((Button)paramLayoutInflater.findViewById(2131373388));
+    this.a = ((Button)paramLayoutInflater.findViewById(2131372968));
     this.a.setOnClickListener(this);
     ReportHelperKt.a("0X800B0F3");
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
   public void onFinish()
   {
-    FragmentActivity localFragmentActivity = getActivity();
-    if (localFragmentActivity != null) {
-      localFragmentActivity.overridePendingTransition(2130771988, 2130771987);
+    QBaseActivity localQBaseActivity = getQBaseActivity();
+    if (localQBaseActivity != null) {
+      localQBaseActivity.overridePendingTransition(2130772000, 2130771999);
     }
     super.onFinish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.view.AutoStatusHintFragment
  * JD-Core Version:    0.7.0.1
  */

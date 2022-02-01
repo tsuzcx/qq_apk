@@ -1,13 +1,14 @@
 package com.tencent.qqlive.module.videoreport.reportdata;
 
 import com.tencent.qqlive.module.videoreport.data.DataEntity;
+import java.lang.ref.WeakReference;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Iterator;
 
 public class PathData
 {
-  private Object mPage;
+  private WeakReference<Object> mPageRef;
   private final Deque<DataEntity> mPathPackages = new ArrayDeque();
   
   public void addFirst(DataEntity paramDataEntity)
@@ -23,7 +24,7 @@ public class PathData
   public PathData copy()
   {
     PathData localPathData = new PathData();
-    localPathData.mPage = this.mPage;
+    localPathData.mPageRef = this.mPageRef;
     Iterator localIterator = this.mPathPackages.iterator();
     while (localIterator.hasNext())
     {
@@ -40,7 +41,11 @@ public class PathData
   
   public Object getPage()
   {
-    return this.mPage;
+    WeakReference localWeakReference = this.mPageRef;
+    if (localWeakReference != null) {
+      return localWeakReference.get();
+    }
+    return null;
   }
   
   public boolean isEmpty()
@@ -62,7 +67,7 @@ public class PathData
   
   public void setPage(Object paramObject)
   {
-    this.mPage = paramObject;
+    this.mPageRef = new WeakReference(paramObject);
   }
   
   public int size()
@@ -72,7 +77,7 @@ public class PathData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.reportdata.PathData
  * JD-Core Version:    0.7.0.1
  */

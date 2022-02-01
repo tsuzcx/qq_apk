@@ -9,22 +9,24 @@ class ColorNickColorPanelAdapter$1
   
   public int getSpanSize(int paramInt)
   {
-    int i = 3;
-    switch (this.a.getItemViewType(paramInt))
+    paramInt = this.a.getItemViewType(paramInt);
+    if ((paramInt != 1) && (paramInt != 2))
     {
-    default: 
-      i = 1;
-    case 1: 
-    case 2: 
-    case 4: 
-      return i;
+      if (paramInt != 3)
+      {
+        if (paramInt != 4) {
+          return 1;
+        }
+        return 3;
+      }
+      return 1;
     }
-    return 1;
+    return 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ColorNickColorPanelAdapter.1
  * JD-Core Version:    0.7.0.1
  */

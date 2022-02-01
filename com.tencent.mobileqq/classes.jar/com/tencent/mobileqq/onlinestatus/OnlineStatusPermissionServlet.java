@@ -3,8 +3,10 @@ package com.tencent.mobileqq.onlinestatus;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.onlinestatus.api.IOnlineStatusManagerService;
+import com.tencent.mobileqq.onlinestatus.api.IOnlineStatusService;
+import com.tencent.mobileqq.onlinestatus.manager.IOnlineStatusPermissionManager;
+import com.tencent.mobileqq.onlinestatus.manager.OnlineStatusPermissionManager;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBoolField;
@@ -16,6 +18,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
+import mqq.app.AppRuntime;
 import mqq.app.AppRuntime.Status;
 import mqq.app.MSFServlet;
 import mqq.app.NewIntent;
@@ -28,13 +31,14 @@ import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 public class OnlineStatusPermissionServlet
   extends MSFServlet
 {
-  public static NewIntent a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt, List<Long> paramList, ArrayList<Integer> paramArrayList, @NonNull Bundle paramBundle)
+  public static NewIntent a(AppRuntime paramAppRuntime, long paramLong, int paramInt, List<Long> paramList, ArrayList<Integer> paramArrayList, @NonNull Bundle paramBundle)
   {
-    int j = 0;
-    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApplication(), OnlineStatusPermissionServlet.class);
+    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), OnlineStatusPermissionServlet.class);
     localNewIntent.putExtra("param_online_status_request", 2);
     localNewIntent.putExtra("param_online_status_type", paramLong);
     localNewIntent.putExtra("param_has_all_permission", paramInt);
+    int j = 0;
+    int i;
     if (paramList != null)
     {
       long[] arrayOfLong = new long[paramList.size()];
@@ -46,141 +50,138 @@ public class OnlineStatusPermissionServlet
       }
       localNewIntent.putExtra("param_part_permission_list", arrayOfLong);
     }
-    if (QLog.isColorLevel()) {
-      if (paramList != null) {
-        break label190;
-      }
-    }
-    label190:
-    for (int i = j;; i = paramList.size())
+    if (QLog.isColorLevel())
     {
+      if (paramList == null) {
+        i = j;
+      } else {
+        i = paramList.size();
+      }
       QLog.d("OnlineStatusPermissionServlet", 2, new Object[] { "hasAllPermission flag=", Integer.valueOf(paramInt), " partPermissionList=", Integer.valueOf(i) });
-      localNewIntent.putExtra("param_extra_bundle", paramBundle);
-      localNewIntent.putIntegerArrayListExtra("param_smart_status_list", paramArrayList);
-      paramQQAppInterface.startServlet(localNewIntent);
-      return localNewIntent;
     }
+    localNewIntent.putExtra("param_extra_bundle", paramBundle);
+    localNewIntent.putIntegerArrayListExtra("param_smart_status_list", paramArrayList);
+    paramAppRuntime.startServlet(localNewIntent);
+    return localNewIntent;
   }
   
-  public static NewIntent a(QQAppInterface paramQQAppInterface, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
+  public static NewIntent a(AppRuntime paramAppRuntime, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
   {
     if (QLog.isColorLevel()) {
       QLog.d("OnlineStatusPermissionServlet", 2, new Object[] { "requestOnlineStatusPermission | onlineStatusType = ", Long.valueOf(paramLong) });
     }
-    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApplication(), OnlineStatusPermissionServlet.class);
+    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), OnlineStatusPermissionServlet.class);
     localNewIntent.putExtra("param_online_status_request", 1);
     localNewIntent.putExtra("param_online_status_type", paramLong);
     localNewIntent.putExtra("param_fetch_only_smart_devices", paramBoolean1);
     localNewIntent.putExtra("from_register", paramBoolean2);
-    paramQQAppInterface.startServlet(localNewIntent);
+    paramAppRuntime.startServlet(localNewIntent);
     return localNewIntent;
   }
   
-  public static NewIntent a(QQAppInterface paramQQAppInterface, OnlineStatusPermissionChecker.OnlineStatusPermissionItem paramOnlineStatusPermissionItem, ArrayList<Integer> paramArrayList, boolean paramBoolean)
+  public static NewIntent a(AppRuntime paramAppRuntime, OnlineStatusPermissionChecker.OnlineStatusPermissionItem paramOnlineStatusPermissionItem, ArrayList<Integer> paramArrayList, boolean paramBoolean)
   {
-    int i = 0;
+    int i;
     if (paramOnlineStatusPermissionItem != null)
     {
-      if (!paramOnlineStatusPermissionItem.isAllHasPermission()) {
-        break label112;
+      if (paramOnlineStatusPermissionItem.isAllHasPermission()) {
+        i = 1;
+      } else {
+        i = 2;
       }
-      i = 1;
       if (QLog.isColorLevel()) {
         QLog.d("OnlineStatusPermissionServlet", 2, new Object[] { "modifySmartOnlineStatusPermission flag=", Integer.valueOf(i), " size=", Integer.valueOf(paramOnlineStatusPermissionItem.getPermissionUins().size()) });
       }
     }
+    else
+    {
+      i = 0;
+    }
     Bundle localBundle = new Bundle();
     localBundle.putBoolean("param_need_switch_online_status", paramBoolean);
     localBundle.putInt("StatusId", 40001);
-    if (paramOnlineStatusPermissionItem == null) {}
-    for (paramOnlineStatusPermissionItem = null;; paramOnlineStatusPermissionItem = paramOnlineStatusPermissionItem.getPermissionUins())
-    {
-      return a(paramQQAppInterface, 40001L, i, paramOnlineStatusPermissionItem, paramArrayList, localBundle);
-      label112:
-      i = 2;
-      break;
+    if (paramOnlineStatusPermissionItem == null) {
+      paramOnlineStatusPermissionItem = null;
+    } else {
+      paramOnlineStatusPermissionItem = paramOnlineStatusPermissionItem.getPermissionUins();
     }
+    return a(paramAppRuntime, 40001L, i, paramOnlineStatusPermissionItem, paramArrayList, localBundle);
   }
   
   private void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    boolean bool2 = false;
     long l = paramIntent.getLongExtra("param_online_status_type", 0L);
-    if (QLog.isColorLevel()) {
+    boolean bool2 = QLog.isColorLevel();
+    boolean bool1 = false;
+    if (bool2) {
       QLog.d("OnlineStatusPermissionServlet", 2, new Object[] { "handleModifyOnlineStatusPermission | onlineStatusType = ", Long.valueOf(l) });
     }
     Bundle localBundle = paramIntent.getBundleExtra("param_extra_bundle");
-    if (paramFromServiceMsg.isSuccess()) {}
-    for (;;)
+    if (paramFromServiceMsg.isSuccess())
     {
       try
       {
-        localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+        Object localObject1 = new oidb_sso.OIDBSSOPkg();
+        try
+        {
+          paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
+          Object localObject2 = new byte[paramFromServiceMsg.getInt() - 4];
+          paramFromServiceMsg.get((byte[])localObject2);
+          ((oidb_sso.OIDBSSOPkg)localObject1).mergeFrom((byte[])localObject2);
+          localObject2 = localObject1;
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
+        {
+          paramFromServiceMsg = (FromServiceMsg)localObject1;
+          localObject1 = localInvalidProtocolBufferMicroException2;
+        }
+        localFromServiceMsg = paramFromServiceMsg;
       }
       catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
       {
-        oidb_sso.OIDBSSOPkg localOIDBSSOPkg;
-        int i;
         paramFromServiceMsg = null;
       }
-      try
-      {
-        paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
-        localObject2 = new byte[paramFromServiceMsg.getInt() - 4];
-        paramFromServiceMsg.get((byte[])localObject2);
-        localOIDBSSOPkg.mergeFrom((byte[])localObject2);
-        localObject2 = localOIDBSSOPkg;
-        i = ((oidb_sso.OIDBSSOPkg)localObject2).uint32_result.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("OnlineStatusPermissionServlet", 2, new Object[] { "handleModifyOnlineStatusPermission | result = ", Integer.valueOf(i) });
-        }
-        if (i != 0) {
-          break;
-        }
-        if ((getAppRuntime() instanceof QQAppInterface))
-        {
-          paramFromServiceMsg = (QQAppInterface)getAppRuntime();
-          a(paramFromServiceMsg, paramIntent);
-          bool1 = localBundle.getBoolean("param_need_switch_online_status", false);
-          i = localBundle.getInt("StatusId", 0);
-          if (bool1) {
-            paramFromServiceMsg.updateOnlineStatus(AppRuntime.Status.online, i);
-          }
-        }
-        bool1 = true;
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
-      {
-        for (;;)
-        {
-          paramFromServiceMsg = localInvalidProtocolBufferMicroException1;
-          Object localObject1 = localInvalidProtocolBufferMicroException2;
-        }
-        bool1 = false;
-        continue;
-      }
-      notifyObserver(paramIntent, 2, bool1, localBundle, OnlineStatusPermissionObserver.class);
-      return;
-      Object localObject2 = paramFromServiceMsg;
+      FromServiceMsg localFromServiceMsg;
       if (QLog.isColorLevel())
       {
         QLog.d("OnlineStatusPermissionServlet", 2, "handleModifyOnlineStatusPermission parseFrom byte", localInvalidProtocolBufferMicroException1);
-        localObject2 = paramFromServiceMsg;
-        continue;
-        bool1 = bool2;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("OnlineStatusPermissionServlet", 2, "handleModifyOnlineStatusPermission | response.result = " + paramFromServiceMsg.getResultCode());
-          bool1 = bool2;
+        localFromServiceMsg = paramFromServiceMsg;
+      }
+      int i = localFromServiceMsg.uint32_result.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("OnlineStatusPermissionServlet", 2, new Object[] { "handleModifyOnlineStatusPermission | result = ", Integer.valueOf(i) });
+      }
+      if (i == 0)
+      {
+        a(getAppRuntime(), paramIntent);
+        bool1 = localBundle.getBoolean("param_need_switch_online_status", false);
+        i = localBundle.getInt("StatusId", 0);
+        if (bool1) {
+          ((IOnlineStatusService)getAppRuntime().getRuntimeService(IOnlineStatusService.class, "")).updateOnlineStatus(AppRuntime.Status.online, i);
         }
+        bool1 = true;
       }
     }
+    else
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handleModifyOnlineStatusPermission | response.result = ");
+        localStringBuilder.append(paramFromServiceMsg.getResultCode());
+        QLog.d("OnlineStatusPermissionServlet", 2, localStringBuilder.toString());
+      }
+      bool1 = false;
+    }
+    notifyObserver(paramIntent, 2, bool1, localBundle, OnlineStatusPermissionObserver.class);
   }
   
   private void a(Intent paramIntent, Packet paramPacket)
   {
     long l = paramIntent.getLongExtra("param_online_status_type", 0L);
-    if (QLog.isColorLevel()) {
+    boolean bool2 = QLog.isColorLevel();
+    boolean bool1 = true;
+    if (bool2) {
       QLog.d("OnlineStatusPermissionServlet", 2, new Object[] { "packModifyOnlineStatusPermission | onlineStatusType = ", Long.valueOf(l) });
     }
     int i = paramIntent.getIntExtra("param_has_all_permission", 0);
@@ -202,322 +203,212 @@ public class OnlineStatusPermissionServlet
         paramIntent.rpt_uint64_uin.set(localArrayList2);
       }
     }
-    if (localArrayList1 != null) {
-      if (localArrayList1.size() > 0) {
-        break label280;
-      }
-    }
-    label280:
-    for (boolean bool = true;; bool = false)
+    if (localArrayList1 != null)
     {
-      paramIntent.bool_clear_smart_status.set(bool);
+      if (localArrayList1.size() > 0) {
+        bool1 = false;
+      }
+      paramIntent.bool_clear_smart_status.set(bool1);
       paramIntent.rpt_uint32_smart_status.set(localArrayList1);
-      localObject = new oidb_sso.OIDBSSOPkg();
-      ((oidb_sso.OIDBSSOPkg)localObject).uint32_command.set(3682);
-      ((oidb_sso.OIDBSSOPkg)localObject).uint32_service_type.set(2);
-      ((oidb_sso.OIDBSSOPkg)localObject).uint32_result.set(0);
-      ((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramIntent.toByteArray()));
-      paramIntent = ((oidb_sso.OIDBSSOPkg)localObject).toByteArray();
-      paramPacket.setSSOCommand("OidbSvc.0xe63_1");
-      localObject = ByteBuffer.allocate(paramIntent.length + 4);
-      ((ByteBuffer)localObject).putInt(paramIntent.length + 4);
-      ((ByteBuffer)localObject).put(paramIntent);
-      paramPacket.putSendData(((ByteBuffer)localObject).array());
-      return;
     }
+    localObject = new oidb_sso.OIDBSSOPkg();
+    ((oidb_sso.OIDBSSOPkg)localObject).uint32_command.set(3682);
+    ((oidb_sso.OIDBSSOPkg)localObject).uint32_service_type.set(2);
+    ((oidb_sso.OIDBSSOPkg)localObject).uint32_result.set(0);
+    ((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramIntent.toByteArray()));
+    paramIntent = ((oidb_sso.OIDBSSOPkg)localObject).toByteArray();
+    paramPacket.setSSOCommand("OidbSvc.0xe63_1");
+    localObject = ByteBuffer.allocate(paramIntent.length + 4);
+    ((ByteBuffer)localObject).putInt(paramIntent.length + 4);
+    ((ByteBuffer)localObject).put(paramIntent);
+    paramPacket.putSendData(((ByteBuffer)localObject).array());
   }
   
-  private void a(QQAppInterface paramQQAppInterface, Intent paramIntent)
+  private void a(AppRuntime paramAppRuntime, Intent paramIntent)
   {
+    OnlineStatusPermissionManager localOnlineStatusPermissionManager = (OnlineStatusPermissionManager)((IOnlineStatusManagerService)paramAppRuntime.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineStatusPermissionManager.class);
     int i = 0;
-    OnlineStatusPermissionManager localOnlineStatusPermissionManager = (OnlineStatusPermissionManager)paramQQAppInterface.getManager(QQManagerFactory.ONLINE_STATUS_PERMISSION_MANAGER);
     int j = paramIntent.getIntExtra("param_has_all_permission", 0);
     long[] arrayOfLong = paramIntent.getLongArrayExtra("param_part_permission_list");
-    paramIntent = paramIntent.getIntegerArrayListExtra("param_smart_status_list");
-    boolean bool;
+    ArrayList localArrayList = paramIntent.getIntegerArrayListExtra("param_smart_status_list");
+    boolean bool = true;
     if ((j == 1) || (j == 2))
     {
-      if (j == 1) {}
-      for (bool = true;; bool = false)
+      if (j != 1) {
+        bool = false;
+      }
+      paramAppRuntime = null;
+      if (arrayOfLong != null)
       {
-        if (arrayOfLong == null) {
-          break label134;
-        }
-        paramQQAppInterface = new ArrayList(arrayOfLong.length);
-        while (i < arrayOfLong.length)
+        paramIntent = new ArrayList(arrayOfLong.length);
+        for (;;)
         {
-          paramQQAppInterface.add(Long.valueOf(arrayOfLong[i]));
+          paramAppRuntime = paramIntent;
+          if (i >= arrayOfLong.length) {
+            break;
+          }
+          paramIntent.add(Long.valueOf(arrayOfLong[i]));
           i += 1;
         }
       }
+      localOnlineStatusPermissionManager.a(new OnlineStatusFriendsPermissionItem(bool, paramAppRuntime));
     }
-    for (;;)
-    {
-      localOnlineStatusPermissionManager.a(new OnlineStatusFriendsPermissionItem(bool, paramQQAppInterface));
-      if (paramIntent != null) {
-        localOnlineStatusPermissionManager.a(paramIntent);
-      }
-      return;
-      label134:
-      paramQQAppInterface = null;
+    if (localArrayList != null) {
+      localOnlineStatusPermissionManager.a(localArrayList);
     }
   }
   
   private void a(oidb_cmd0xe63.RspBody paramRspBody)
   {
-    boolean bool;
+    boolean bool1;
     if (paramRspBody.bool_online_status_visible_to_all_frd.has())
     {
-      bool = paramRspBody.bool_online_status_visible_to_all_frd.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("OnlineStatusPermissionServlet", 2, new Object[] { "handleOnlineStatusPermission | entity.allHasPermission = ", Boolean.valueOf(bool) });
-      }
-    }
-    for (;;)
-    {
-      Object localObject;
-      if (paramRspBody.rpt_uint64_uin_can_see_my_online_status.has()) {
-        if (paramRspBody.rpt_uint64_uin_can_see_my_online_status.get() == null)
-        {
-          localObject = new ArrayList(0);
-          if (QLog.isColorLevel()) {
-            QLog.d("OnlineStatusPermissionServlet", 2, new Object[] { "handleOnlineStatusPermission | entity.hasPermissionList.size=", Integer.valueOf(((List)localObject).size()) });
-          }
-        }
-      }
-      for (;;)
+      boolean bool2 = paramRspBody.bool_online_status_visible_to_all_frd.get();
+      bool1 = bool2;
+      if (QLog.isColorLevel())
       {
-        if (paramRspBody.rpt_uint32_smart_status.has()) {
-          if (paramRspBody.rpt_uint32_smart_status.get() == null)
-          {
-            paramRspBody = new ArrayList(0);
-            label139:
-            if (!QLog.isColorLevel()) {
-              break label288;
-            }
-            QLog.d("OnlineStatusPermissionServlet", 2, new Object[] { "handleOnlineStatusPermission | entity.smartSelectedStatusList.size=", Integer.valueOf(paramRspBody.size()) });
-          }
-        }
-        label288:
-        for (;;)
-        {
-          label173:
-          if ((!bool) && (paramRspBody.size() <= 0)) {
-            if (QLog.isColorLevel()) {
-              QLog.d("OnlineStatusPermissionServlet", 2, "saveReceiveData | params is error");
-            }
-          }
-          while (!(getAppRuntime() instanceof QQAppInterface))
-          {
-            return;
-            localObject = paramRspBody.rpt_uint64_uin_can_see_my_online_status.get();
-            break;
-            paramRspBody = paramRspBody.rpt_uint32_smart_status.get();
-            break label139;
-            paramRspBody = new ArrayList(0);
-            break label173;
-          }
-          OnlineStatusPermissionManager localOnlineStatusPermissionManager = (OnlineStatusPermissionManager)((QQAppInterface)getAppRuntime()).getManager(QQManagerFactory.ONLINE_STATUS_PERMISSION_MANAGER);
-          localObject = new OnlineStatusFriendsPermissionItem(bool, (List)localObject);
-          localOnlineStatusPermissionManager.a(paramRspBody);
-          localOnlineStatusPermissionManager.a((OnlineStatusFriendsPermissionItem)localObject);
-          return;
-        }
-        localObject = null;
+        QLog.d("OnlineStatusPermissionServlet", 2, new Object[] { "handleOnlineStatusPermission | entity.allHasPermission = ", Boolean.valueOf(bool2) });
+        bool1 = bool2;
       }
-      bool = true;
     }
+    else
+    {
+      bool1 = true;
+    }
+    Object localObject2 = null;
+    Object localObject1;
+    if (paramRspBody.rpt_uint64_uin_can_see_my_online_status.has())
+    {
+      if (paramRspBody.rpt_uint64_uin_can_see_my_online_status.get() == null) {
+        localObject1 = new ArrayList(0);
+      } else {
+        localObject1 = paramRspBody.rpt_uint64_uin_can_see_my_online_status.get();
+      }
+      localObject2 = localObject1;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("OnlineStatusPermissionServlet", 2, new Object[] { "handleOnlineStatusPermission | entity.hasPermissionList.size=", Integer.valueOf(((List)localObject1).size()) });
+        localObject2 = localObject1;
+      }
+    }
+    if (paramRspBody.rpt_uint32_smart_status.has())
+    {
+      if (paramRspBody.rpt_uint32_smart_status.get() == null) {
+        paramRspBody = new ArrayList(0);
+      } else {
+        paramRspBody = paramRspBody.rpt_uint32_smart_status.get();
+      }
+      localObject1 = paramRspBody;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("OnlineStatusPermissionServlet", 2, new Object[] { "handleOnlineStatusPermission | entity.smartSelectedStatusList.size=", Integer.valueOf(paramRspBody.size()) });
+        localObject1 = paramRspBody;
+      }
+    }
+    else
+    {
+      localObject1 = new ArrayList(0);
+    }
+    if ((!bool1) && (((List)localObject1).size() <= 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("OnlineStatusPermissionServlet", 2, "saveReceiveData | params is error");
+      }
+      return;
+    }
+    paramRspBody = (OnlineStatusPermissionManager)((IOnlineStatusManagerService)getAppRuntime().getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineStatusPermissionManager.class);
+    localObject2 = new OnlineStatusFriendsPermissionItem(bool1, (List)localObject2);
+    paramRspBody.a((List)localObject1);
+    paramRspBody.a((OnlineStatusFriendsPermissionItem)localObject2);
   }
   
-  /* Error */
   private void b(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    // Byte code:
-    //   0: aload_1
-    //   1: ldc 31
-    //   3: lconst_0
-    //   4: invokevirtual 156	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
-    //   7: lstore 4
-    //   9: aload_1
-    //   10: ldc 112
-    //   12: iconst_0
-    //   13: invokevirtual 417	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
-    //   16: istore 6
-    //   18: new 128	android/os/Bundle
-    //   21: dup
-    //   22: invokespecial 129	android/os/Bundle:<init>	()V
-    //   25: astore 9
-    //   27: aload 9
-    //   29: ldc 112
-    //   31: iload 6
-    //   33: invokevirtual 135	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   36: invokestatic 63	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   39: ifeq +27 -> 66
-    //   42: ldc 65
-    //   44: iconst_2
-    //   45: iconst_2
-    //   46: anewarray 67	java/lang/Object
-    //   49: dup
-    //   50: iconst_0
-    //   51: ldc_w 419
-    //   54: aastore
-    //   55: dup
-    //   56: iconst_1
-    //   57: lload 4
-    //   59: invokestatic 105	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   62: aastore
-    //   63: invokestatic 81	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   66: aload_2
-    //   67: invokevirtual 167	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
-    //   70: ifeq +216 -> 286
-    //   73: new 169	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   76: dup
-    //   77: invokespecial 170	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
-    //   80: astore 7
-    //   82: aload_2
-    //   83: invokevirtual 174	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
-    //   86: invokestatic 180	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
-    //   89: astore_2
-    //   90: aload_2
-    //   91: invokevirtual 183	java/nio/ByteBuffer:getInt	()I
-    //   94: iconst_4
-    //   95: isub
-    //   96: newarray byte
-    //   98: astore 8
-    //   100: aload_2
-    //   101: aload 8
-    //   103: invokevirtual 185	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
-    //   106: pop
-    //   107: aload 7
-    //   109: aload 8
-    //   111: invokevirtual 189	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   114: pop
-    //   115: aload 7
-    //   117: astore 8
-    //   119: aload 8
-    //   121: getfield 193	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   124: invokevirtual 197	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   127: istore_3
-    //   128: invokestatic 63	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   131: ifeq +26 -> 157
-    //   134: ldc 65
-    //   136: iconst_2
-    //   137: iconst_2
-    //   138: anewarray 67	java/lang/Object
-    //   141: dup
-    //   142: iconst_0
-    //   143: ldc_w 421
-    //   146: aastore
-    //   147: dup
-    //   148: iconst_1
-    //   149: iload_3
-    //   150: invokestatic 75	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   153: aastore
-    //   154: invokestatic 81	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   157: iload_3
-    //   158: ifne +122 -> 280
-    //   161: aload 8
-    //   163: getfield 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   166: invokevirtual 422	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   169: ifeq +111 -> 280
-    //   172: aload 8
-    //   174: getfield 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   177: invokevirtual 425	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   180: ifnull +100 -> 280
-    //   183: aload 8
-    //   185: getfield 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   188: invokevirtual 425	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   191: invokevirtual 426	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   194: astore_2
-    //   195: new 385	tencent/im/oidb/cmd0xe63/oidb_cmd0xe63$RspBody
-    //   198: dup
-    //   199: invokespecial 427	tencent/im/oidb/cmd0xe63/oidb_cmd0xe63$RspBody:<init>	()V
-    //   202: astore 7
-    //   204: aload 7
-    //   206: aload_2
-    //   207: invokevirtual 428	tencent/im/oidb/cmd0xe63/oidb_cmd0xe63$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   210: pop
-    //   211: aload_0
-    //   212: aload 7
-    //   214: invokespecial 430	com/tencent/mobileqq/onlinestatus/OnlineStatusPermissionServlet:a	(Ltencent/im/oidb/cmd0xe63/oidb_cmd0xe63$RspBody;)V
-    //   217: iconst_1
-    //   218: istore 6
-    //   220: aload_0
-    //   221: aload_1
-    //   222: iconst_1
-    //   223: iload 6
-    //   225: aload 9
-    //   227: ldc 225
-    //   229: invokevirtual 229	com/tencent/mobileqq/onlinestatus/OnlineStatusPermissionServlet:notifyObserver	(Landroid/content/Intent;IZLandroid/os/Bundle;Ljava/lang/Class;)V
-    //   232: return
-    //   233: astore 7
-    //   235: aconst_null
-    //   236: astore_2
-    //   237: aload_2
-    //   238: astore 8
-    //   240: invokestatic 63	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   243: ifeq -124 -> 119
-    //   246: ldc 65
-    //   248: iconst_2
-    //   249: ldc_w 432
-    //   252: aload 7
-    //   254: invokestatic 234	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   257: aload_2
-    //   258: astore 8
-    //   260: goto -141 -> 119
-    //   263: astore_2
-    //   264: invokestatic 63	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   267: ifeq +13 -> 280
-    //   270: ldc 65
-    //   272: iconst_2
-    //   273: ldc_w 434
-    //   276: aload_2
-    //   277: invokestatic 234	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   280: iconst_0
-    //   281: istore 6
-    //   283: goto -63 -> 220
-    //   286: invokestatic 63	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   289: ifeq +32 -> 321
-    //   292: ldc 65
-    //   294: iconst_2
-    //   295: new 236	java/lang/StringBuilder
-    //   298: dup
-    //   299: invokespecial 237	java/lang/StringBuilder:<init>	()V
-    //   302: ldc_w 436
-    //   305: invokevirtual 243	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   308: aload_2
-    //   309: invokevirtual 246	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
-    //   312: invokevirtual 249	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   315: invokevirtual 253	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   318: invokestatic 256	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   321: iconst_0
-    //   322: istore 6
-    //   324: goto -104 -> 220
-    //   327: astore 8
-    //   329: aload 7
-    //   331: astore_2
-    //   332: aload 8
-    //   334: astore 7
-    //   336: goto -99 -> 237
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	339	0	this	OnlineStatusPermissionServlet
-    //   0	339	1	paramIntent	Intent
-    //   0	339	2	paramFromServiceMsg	FromServiceMsg
-    //   127	31	3	i	int
-    //   7	51	4	l	long
-    //   16	307	6	bool	boolean
-    //   80	133	7	localObject1	Object
-    //   233	97	7	localInvalidProtocolBufferMicroException1	InvalidProtocolBufferMicroException
-    //   334	1	7	localObject2	Object
-    //   98	161	8	localObject3	Object
-    //   327	6	8	localInvalidProtocolBufferMicroException2	InvalidProtocolBufferMicroException
-    //   25	201	9	localBundle	Bundle
-    // Exception table:
-    //   from	to	target	type
-    //   73	82	233	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   195	217	263	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   82	115	327	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    long l = paramIntent.getLongExtra("param_online_status_type", 0L);
+    boolean bool2 = false;
+    boolean bool1 = paramIntent.getBooleanExtra("from_register", false);
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("from_register", bool1);
+    if (QLog.isColorLevel()) {
+      QLog.d("OnlineStatusPermissionServlet", 2, new Object[] { "handleOnlineStatusPermission | onlineStatusType = ", Long.valueOf(l) });
+    }
+    Object localObject2;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      try
+      {
+        Object localObject1 = new oidb_sso.OIDBSSOPkg();
+        try
+        {
+          paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
+          Object localObject3 = new byte[paramFromServiceMsg.getInt() - 4];
+          paramFromServiceMsg.get((byte[])localObject3);
+          ((oidb_sso.OIDBSSOPkg)localObject1).mergeFrom((byte[])localObject3);
+          localObject3 = localObject1;
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
+        {
+          paramFromServiceMsg = (FromServiceMsg)localObject1;
+          localObject1 = localInvalidProtocolBufferMicroException2;
+        }
+        localFromServiceMsg = paramFromServiceMsg;
+      }
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
+      {
+        paramFromServiceMsg = null;
+      }
+      FromServiceMsg localFromServiceMsg;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("OnlineStatusPermissionServlet", 2, "handleOnlineStatusPermission parseFrom byte", localInvalidProtocolBufferMicroException1);
+        localFromServiceMsg = paramFromServiceMsg;
+      }
+      int i = localFromServiceMsg.uint32_result.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("OnlineStatusPermissionServlet", 2, new Object[] { "handleOnlineStatusPermission | result = ", Integer.valueOf(i) });
+      }
+      bool1 = bool2;
+      if (i == 0)
+      {
+        bool1 = bool2;
+        if (localFromServiceMsg.bytes_bodybuffer.has())
+        {
+          bool1 = bool2;
+          if (localFromServiceMsg.bytes_bodybuffer.get() != null)
+          {
+            paramFromServiceMsg = localFromServiceMsg.bytes_bodybuffer.get().toByteArray();
+            try
+            {
+              localObject2 = new oidb_cmd0xe63.RspBody();
+              ((oidb_cmd0xe63.RspBody)localObject2).mergeFrom(paramFromServiceMsg);
+              a((oidb_cmd0xe63.RspBody)localObject2);
+              bool1 = true;
+            }
+            catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+            {
+              bool1 = bool2;
+              if (QLog.isColorLevel())
+              {
+                QLog.d("OnlineStatusPermissionServlet", 2, "handleOnlineStatusPermission erro ", paramFromServiceMsg);
+                bool1 = bool2;
+              }
+            }
+          }
+        }
+      }
+    }
+    else
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("handleOnlineStatusPermission | response.result = ");
+        ((StringBuilder)localObject2).append(paramFromServiceMsg.getResultCode());
+        QLog.d("OnlineStatusPermissionServlet", 2, ((StringBuilder)localObject2).toString());
+      }
+      bool1 = false;
+    }
+    notifyObserver(paramIntent, 1, bool1, localBundle, OnlineStatusPermissionObserver.class);
   }
   
   private void b(Intent paramIntent, Packet paramPacket)
@@ -546,31 +437,29 @@ public class OnlineStatusPermissionServlet
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
     String str2 = paramFromServiceMsg.getServiceCmd();
-    String str1;
     if (QLog.isColorLevel())
     {
       boolean bool = paramFromServiceMsg.isSuccess();
-      StringBuilder localStringBuilder = new StringBuilder().append("OnlineStatusPermissionServlet onReceive:").append(str2).append(" is ");
-      if (bool)
-      {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("OnlineStatusPermissionServlet onReceive:");
+      localStringBuilder.append(str2);
+      localStringBuilder.append(" is ");
+      String str1;
+      if (bool) {
         str1 = "";
-        QLog.d("OnlineStatusPermissionServlet", 2, str1 + " success");
+      } else {
+        str1 = "not";
       }
+      localStringBuilder.append(str1);
+      localStringBuilder.append(" success");
+      QLog.d("OnlineStatusPermissionServlet", 2, localStringBuilder.toString());
     }
-    else
+    if (str2 != null)
     {
-      if ((str2 != null) && (str2.equals("OidbSvc.0xe63_1"))) {
-        break label101;
+      if (!str2.equals("OidbSvc.0xe63_1")) {
+        return;
       }
-    }
-    label101:
-    int i;
-    do
-    {
-      return;
-      str1 = "not";
-      break;
-      i = paramIntent.getIntExtra("param_online_status_request", 0);
+      int i = paramIntent.getIntExtra("param_online_status_request", 0);
       if (QLog.isColorLevel()) {
         QLog.d("OnlineStatusPermissionServlet", 2, new Object[] { "OnlineStatusPermissionServlet onReceive reqType", Integer.valueOf(i) });
       }
@@ -579,8 +468,10 @@ public class OnlineStatusPermissionServlet
         b(paramIntent, paramFromServiceMsg);
         return;
       }
-    } while (i != 2);
-    a(paramIntent, paramFromServiceMsg);
+      if (i == 2) {
+        a(paramIntent, paramFromServiceMsg);
+      }
+    }
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -589,18 +480,19 @@ public class OnlineStatusPermissionServlet
     if (QLog.isColorLevel()) {
       QLog.d("OnlineStatusPermissionServlet", 2, new Object[] { "OnlineStatusPermissionServlet onSend reqType", Integer.valueOf(i) });
     }
-    if (i == 1) {
+    if (i == 1)
+    {
       b(paramIntent, paramPacket);
-    }
-    while (i != 2) {
       return;
     }
-    a(paramIntent, paramPacket);
+    if (i == 2) {
+      a(paramIntent, paramPacket);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnlineStatusPermissionServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -14,23 +14,28 @@ class LiteLuxuryGiftModule$7
   
   public void onGiftMessageReceive(GiftMessage paramGiftMessage)
   {
-    LiteLuxuryGiftModule.access$900(this.this$0).d("LiteLuxuryGiftModule", "giftMessage.messageType is " + paramGiftMessage.mMessageType + " giftMessage.giftType is " + paramGiftMessage.mGiftType, new Object[0]);
+    LogInterface localLogInterface = LiteLuxuryGiftModule.access$800(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("giftMessage.messageType is ");
+    localStringBuilder.append(paramGiftMessage.mMessageType);
+    localStringBuilder.append(" giftMessage.giftType is ");
+    localStringBuilder.append(paramGiftMessage.mGiftType);
+    localLogInterface.d("LiteLuxuryGiftModule", localStringBuilder.toString(), new Object[0]);
     if ((paramGiftMessage.mMessageType == 4) && (paramGiftMessage.mGiftType == 104))
     {
-      if (this.this$0.getRoomBizContext().getRoomState().isSwipedScreen) {
-        LiteLuxuryGiftModule.access$900(this.this$0).d("LiteLuxuryGiftModule", "luxury show swipe screen return ", new Object[0]);
+      if (this.this$0.getRoomBizContext().getRoomState().isSwipedScreen)
+      {
+        LiteLuxuryGiftModule.access$800(this.this$0).d("LiteLuxuryGiftModule", "luxury show swipe screen return ", new Object[0]);
+        return;
       }
+      paramGiftMessage = LiteLuxuryGiftModule.access$1800(this.this$0, paramGiftMessage);
+      LiteLuxuryGiftModule.access$1600(this.this$0).displayLuxuryGift(paramGiftMessage);
     }
-    else {
-      return;
-    }
-    paramGiftMessage = LiteLuxuryGiftModule.access$1900(this.this$0, paramGiftMessage);
-    LiteLuxuryGiftModule.access$1700(this.this$0).displayLuxuryGift(paramGiftMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.litepages.room.bizmodule.LiteLuxuryGiftModule.7
  * JD-Core Version:    0.7.0.1
  */

@@ -33,20 +33,20 @@ public class PayRequest
     Object localObject = new COMM.Entry();
     ((COMM.Entry)localObject).key.set("refer");
     PBStringField localPBStringField = ((COMM.Entry)localObject).value;
-    paramString1 = paramString3;
-    if (TextUtils.isEmpty(paramString3)) {
-      paramString1 = "";
+    boolean bool = TextUtils.isEmpty(paramString3);
+    paramString1 = "";
+    if (bool) {
+      paramString3 = "";
     }
-    localPBStringField.set(paramString1);
+    localPBStringField.set(paramString3);
     localArrayList.add(localObject);
     paramString3 = new COMM.Entry();
     paramString3.key.set("via");
     localObject = paramString3.value;
-    paramString1 = paramString4;
     if (TextUtils.isEmpty(paramString4)) {
-      paramString1 = "";
+      paramString4 = paramString1;
     }
-    ((PBStringField)localObject).set(paramString1);
+    ((PBStringField)localObject).set(paramString4);
     localArrayList.add(paramString3);
     paramString2.mapInfo.set(localArrayList);
     this.req.extInfo.setHasFlag(true);
@@ -77,25 +77,23 @@ public class PayRequest
     try
     {
       localStGamePayRsp.mergeFrom(paramArrayOfByte);
-      if (localStGamePayRsp != null)
-      {
-        paramJSONObject.put("response", localStGamePayRsp);
-        paramJSONObject.put("resultCode", paramJSONObject.get("retCode"));
-        return paramJSONObject;
-      }
+      paramJSONObject.put("response", localStGamePayRsp);
+      paramJSONObject.put("resultCode", paramJSONObject.get("retCode"));
+      return paramJSONObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      QMLog.d("MiniAppPayRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("onResponse fail.");
+      paramJSONObject.append(paramArrayOfByte);
+      QMLog.d("MiniAppPayRequest", paramJSONObject.toString());
     }
-    QMLog.d("MiniAppPayRequest", "onResponse fail.rsp = null");
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.PayRequest
  * JD-Core Version:    0.7.0.1
  */

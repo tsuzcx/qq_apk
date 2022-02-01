@@ -39,42 +39,48 @@ public class QZoneWebViewPlugin
   
   private boolean handleBanUrlOrScheme(String paramString)
   {
-    try
+    for (;;)
     {
-      Object localObject = this.mRuntime.a().getIntent();
-      if ((localObject != null) && (((Intent)localObject).getBooleanExtra("fromQZone", false))) {}
-      for (boolean bool = true;; bool = false)
+      try
       {
+        Object localObject = this.mRuntime.a().getIntent();
+        if ((localObject == null) || (!((Intent)localObject).getBooleanExtra("fromQZone", false))) {
+          break label77;
+        }
+        bool = true;
         CustomWebView localCustomWebView = this.mRuntime.a();
         localObject = null;
         if (localCustomWebView != null) {
           localObject = localCustomWebView.getUrl();
         }
         bool = QzoneStringMatcher.needIgoreUrl((String)localObject, paramString, bool);
-        if (!bool) {
-          break;
+        if (bool) {
+          return true;
         }
-        return true;
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("QZoneWebViewPlugin", 1, "handleBanUrlOrScheme error", paramString);
       }
       return false;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("QZoneWebViewPlugin", 1, "handleBanUrlOrScheme error", paramString);
+      label77:
+      boolean bool = false;
     }
   }
   
   private void initInsidePlugins()
   {
-    int i = 0;
-    if ((this.insidePlugins == null) || (this.insidePlugins.length == 0))
+    Object localObject = this.insidePlugins;
+    if ((localObject == null) || (localObject.length == 0))
     {
-      this.insidePlugins = new QzoneInternalWebViewPlugin[] { new QZonePublishSecretShuoShuoH5Plugin(), new QzoneUgcSettingJsPlugin(), new QzoneVipPaymentJsPlugin(), new QzoneBlogJsPlugin(), new QzonePersonalizeJsPlugin(), new QzoneMoodPlugin(), new QzoneDeviceTagJsPlugin(), new QZoneFeedActionJsPlugin(), new QzoneDynamicAlbumPlugin(), new QzonePhotoWallPlugin(), new QZoneGiftFullScreenJsPlugin(), new QZonePassivePraiseJsPlugin(), new QzoneQunFeedJsPlugin(), new QzoneAlbumSelectJSPlugin(), new QzoneAlbumJsPlugin(), new QzoneReactMessageDeliverPlugin(), new QZoneLiveJsPlugin(), new QzoneVideoTabJsPlugin(), new QzoneFamousShareJsPlugin(), new QZoneEventTagJsPlugin(), new QzoneSettingJsPlugin(), new QzoneBasicJsPlugin(), new QzoneInterActiveVideoPlugin(), new QzoneUiJsPlugin(), new QZoneDNSAnalyzeJsPlugin(), new QzoneUploadPlugin(), new QzoneSoundPlugin(), new QZoneRedPocketGiftJsPlugin(), new QZoneSharePictureJsPlugin(), new QzoneCommonJsPlugin(), new QzoneBannerJsPlugin(), new QZonePublishVoiceShuoShuoH5Plugin(), new QzoneWanbaJsPlugin(), new QzoneHomePageJsPlugin(), new QzoneRecommedPhotoJsPlugin(), new QzoneUserHomePageJsPlugin(), new QZoneCategoryAlbumPlugin(), new QzoneNuanProfileJsPlugin(), new QZoneECLiveJsPlugin(), new AdvFloatVideoJsPlugin() };
-      QzoneInternalWebViewPlugin[] arrayOfQzoneInternalWebViewPlugin = this.insidePlugins;
-      int j = arrayOfQzoneInternalWebViewPlugin.length;
+      localObject = new QZonePublishSecretShuoShuoH5Plugin();
+      int i = 0;
+      this.insidePlugins = new QzoneInternalWebViewPlugin[] { localObject, new QzoneUgcSettingJsPlugin(), new QzoneVipPaymentJsPlugin(), new QzoneBlogJsPlugin(), new QzonePersonalizeJsPlugin(), new QzoneMoodPlugin(), new QzoneDeviceTagJsPlugin(), new QZoneFeedActionJsPlugin(), new QzoneDynamicAlbumPlugin(), new QzonePhotoWallPlugin(), new QZoneGiftFullScreenJsPlugin(), new QZonePassivePraiseJsPlugin(), new QzoneQunFeedJsPlugin(), new QzoneAlbumSelectJSPlugin(), new QzoneAlbumJsPlugin(), new QzoneReactMessageDeliverPlugin(), new QZoneLiveJsPlugin(), new QzoneVideoTabJsPlugin(), new QzoneFamousShareJsPlugin(), new QZoneEventTagJsPlugin(), new QzoneSettingJsPlugin(), new QzoneBasicJsPlugin(), new QzoneInterActiveVideoPlugin(), new QzoneUiJsPlugin(), new QZoneDNSAnalyzeJsPlugin(), new QzoneUploadPlugin(), new QzoneSoundPlugin(), new QZoneRedPocketGiftJsPlugin(), new QZoneSharePictureJsPlugin(), new QzoneCommonJsPlugin(), new QzoneBannerJsPlugin(), new QZonePublishVoiceShuoShuoH5Plugin(), new QzoneWanbaJsPlugin(), new QzoneHomePageJsPlugin(), new QzoneRecommedPhotoJsPlugin(), new QzoneUserHomePageJsPlugin(), new QZoneCategoryAlbumPlugin(), new QzoneNuanProfileJsPlugin(), new QZoneECLiveJsPlugin(), new AdvFloatVideoJsPlugin() };
+      localObject = this.insidePlugins;
+      int j = localObject.length;
       while (i < j)
       {
-        arrayOfQzoneInternalWebViewPlugin[i].initRuntime(this);
+        localObject[i].initRuntime(this);
         i += 1;
       }
     }
@@ -92,24 +98,25 @@ public class QZoneWebViewPlugin
   
   public long getWebViewEventByNameSpace(String paramString)
   {
-    if (("Qzone".equals(paramString)) || ("qzDynamicAlbum".equals(paramString)) || ("QZImagePicker".equals(paramString)) || ("checkin".equals(paramString)) || ("qzlive".equals(paramString))) {
-      return 8589934591L;
+    if ((!"Qzone".equals(paramString)) && (!"qzDynamicAlbum".equals(paramString)) && (!"QZImagePicker".equals(paramString)) && (!"checkin".equals(paramString)) && (!"qzlive".equals(paramString)))
+    {
+      if ("gdtReportPlugin".equals(paramString)) {
+        return 2L;
+      }
+      return super.getWebViewEventByNameSpace(paramString);
     }
-    if ("gdtReportPlugin".equals(paramString)) {
-      return 2L;
-    }
-    return super.getWebViewEventByNameSpace(paramString);
+    return 8589934591L;
   }
   
   public long getWebViewSchemaByNameSpace(String paramString)
   {
-    if (("Qzone".equals(paramString)) || ("qzDynamicAlbum".equals(paramString)) || ("QZImagePicker".equals(paramString)) || ("checkin".equals(paramString)) || ("qzlive".equals(paramString))) {
-      return 4294967295L;
+    if ((!"Qzone".equals(paramString)) && (!"qzDynamicAlbum".equals(paramString)) && (!"QZImagePicker".equals(paramString)) && (!"checkin".equals(paramString)) && (!"qzlive".equals(paramString))) {
+      return super.getWebViewSchemaByNameSpace(paramString);
     }
-    return super.getWebViewSchemaByNameSpace(paramString);
+    return 4294967295L;
   }
   
-  public Object handleEvent(String paramString, long paramLong)
+  protected Object handleEvent(String paramString, long paramLong)
   {
     initInsidePlugins();
     QzoneInternalWebViewPlugin[] arrayOfQzoneInternalWebViewPlugin = this.insidePlugins;
@@ -126,54 +133,14 @@ public class QZoneWebViewPlugin
     return null;
   }
   
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  protected boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
     if ((paramLong == 8589934601L) && (!TextUtils.isEmpty(paramString)) && ((paramString.startsWith("https://qzs.qzone.qq.com/qzone/hybrid/module/sendGift/index.html")) || (paramString.startsWith("https://qzs.qzone.qq.com/qzone/hybrid/module/gift/mall.html"))))
     {
       paramString = new Intent();
       this.mRuntime.a().setResult(0, paramString);
       this.mRuntime.a().finish();
-    }
-    label116:
-    do
-    {
       return true;
-      initInsidePlugins();
-      QzoneInternalWebViewPlugin[] arrayOfQzoneInternalWebViewPlugin = this.insidePlugins;
-      int j = arrayOfQzoneInternalWebViewPlugin.length;
-      int i = 0;
-      for (;;)
-      {
-        if (i >= j) {
-          break label116;
-        }
-        if (arrayOfQzoneInternalWebViewPlugin[i].handleEvent(paramString, paramLong, paramMap)) {
-          break;
-        }
-        i += 1;
-      }
-      if ((paramLong == 8589934594L) && (this.needClearHistory))
-      {
-        paramMap = null;
-        if (this.mRuntime != null) {
-          paramMap = this.mRuntime.a();
-        }
-        if (paramMap != null) {
-          paramMap.clearHistory();
-        }
-        this.needClearHistory = false;
-      }
-    } while ((1024L == paramLong) && (handleBanUrlOrScheme(paramString)));
-    return false;
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((!paramString2.equals("Qzone")) && (!paramString2.equals("qzDynamicAlbum")) && (!paramString2.equals("QZImagePicker")) && (!paramString2.equals("qzlive")) && (!paramString2.equals("qzui")) && (!paramString2.equals("QzoneUpload")) && (!paramString2.equals("QzoneAudio")) && (!paramString2.equals("qqexplive")) && (!paramString2.equals("checkin"))) {
-      return false;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneWebViewPlugin", 2, "handleJsRequest pkgName: " + paramString2 + ",method: " + paramString3);
     }
     initInsidePlugins();
     QzoneInternalWebViewPlugin[] arrayOfQzoneInternalWebViewPlugin = this.insidePlugins;
@@ -181,7 +148,47 @@ public class QZoneWebViewPlugin
     int i = 0;
     while (i < j)
     {
-      if (arrayOfQzoneInternalWebViewPlugin[i].handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs)) {
+      if (arrayOfQzoneInternalWebViewPlugin[i].handleEvent(paramString, paramLong, paramMap)) {
+        return true;
+      }
+      i += 1;
+    }
+    if ((paramLong == 8589934594L) && (this.needClearHistory))
+    {
+      paramMap = null;
+      if (this.mRuntime != null) {
+        paramMap = this.mRuntime.a();
+      }
+      if (paramMap != null) {
+        paramMap.clearHistory();
+      }
+      this.needClearHistory = false;
+    }
+    return (1024L == paramLong) && (handleBanUrlOrScheme(paramString));
+  }
+  
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    boolean bool = paramString2.equals("Qzone");
+    int i = 0;
+    if ((!bool) && (!paramString2.equals("qzDynamicAlbum")) && (!paramString2.equals("QZImagePicker")) && (!paramString2.equals("qzlive")) && (!paramString2.equals("qzui")) && (!paramString2.equals("QzoneUpload")) && (!paramString2.equals("QzoneAudio")) && (!paramString2.equals("qqexplive")) && (!paramString2.equals("checkin"))) {
+      return false;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleJsRequest pkgName: ");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(",method: ");
+      ((StringBuilder)localObject).append(paramString3);
+      QLog.d("QZoneWebViewPlugin", 2, ((StringBuilder)localObject).toString());
+    }
+    initInsidePlugins();
+    Object localObject = this.insidePlugins;
+    int j = localObject.length;
+    while (i < j)
+    {
+      if (localObject[i].handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs)) {
         return true;
       }
       i += 1;
@@ -200,31 +207,32 @@ public class QZoneWebViewPlugin
       localObject[i].onActivityResult(paramIntent, paramByte, paramInt);
       i += 1;
     }
-    switch (paramByte)
+    if (paramByte != 1)
     {
-    }
-    do
-    {
-      do
-      {
+      if (paramByte != 3) {
         return;
-      } while (paramInt != -1);
-      this.mRuntime.a().finish();
-      return;
-    } while (paramInt != -1);
-    try
-    {
-      localObject = paramIntent.getStringExtra("uin");
-      paramIntent = paramIntent.getStringExtra("cellid");
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("id", paramIntent);
-      localJSONObject.put("uin", localObject);
-      dispatchJsEvent("deleteMessageSuccess", localJSONObject, new JSONObject());
-      return;
+      }
+      if (paramInt != -1) {
+        return;
+      }
+      try
+      {
+        localObject = paramIntent.getStringExtra("uin");
+        paramIntent = paramIntent.getStringExtra("cellid");
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("id", paramIntent);
+        localJSONObject.put("uin", localObject);
+        dispatchJsEvent("deleteMessageSuccess", localJSONObject, new JSONObject());
+        return;
+      }
+      catch (Exception paramIntent)
+      {
+        paramIntent.printStackTrace();
+        return;
+      }
     }
-    catch (Exception paramIntent)
-    {
-      paramIntent.printStackTrace();
+    if (paramInt == -1) {
+      this.mRuntime.a().finish();
     }
   }
   
@@ -244,7 +252,7 @@ public class QZoneWebViewPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneWebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

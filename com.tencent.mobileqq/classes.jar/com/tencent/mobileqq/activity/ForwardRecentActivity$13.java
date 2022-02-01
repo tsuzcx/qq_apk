@@ -9,16 +9,16 @@ class ForwardRecentActivity$13
 {
   ForwardRecentActivity$13(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onGetTroopMemberCardInfoResult(boolean paramBoolean1, ArrayList<TroopMemberCardInfo> paramArrayList, boolean paramBoolean2)
+  protected void onGetTroopMemberCardInfoResult(boolean paramBoolean1, ArrayList<TroopMemberCardInfo> paramArrayList, boolean paramBoolean2)
   {
     if ((paramBoolean1) && (paramArrayList != null) && (paramArrayList.size() > 0) && (paramBoolean2)) {
-      ForwardRecentActivity.f(this.a);
+      ForwardRecentActivity.access$1900(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardRecentActivity.13
  * JD-Core Version:    0.7.0.1
  */

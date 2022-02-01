@@ -20,14 +20,15 @@ class FrameGifView$DecoderRunnable
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Boolean);
+    QQFrameZipDecoder localQQFrameZipDecoder = this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder;
+    if (localQQFrameZipDecoder != null) {
+      localQQFrameZipDecoder.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Boolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.FrameGifView.DecoderRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -35,26 +35,31 @@ public final class FuncallOp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.media_url != null) {
-      paramJceOutputStream.write(this.media_url, 0);
+    String str = this.media_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.image_url != null) {
-      paramJceOutputStream.write(this.image_url, 1);
+    str = this.image_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.small_image_url != null) {
-      paramJceOutputStream.write(this.small_image_url, 2);
+    str = this.small_image_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.thumb_nail_url != null) {
-      paramJceOutputStream.write(this.thumb_nail_url, 3);
+    str = this.thumb_nail_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.fuzz_image_url != null) {
-      paramJceOutputStream.write(this.fuzz_image_url, 4);
+    str = this.fuzz_image_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.FuncallOp
  * JD-Core Version:    0.7.0.1
  */

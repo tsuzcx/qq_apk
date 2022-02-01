@@ -25,22 +25,30 @@ public class RoundRectRelativeLayout
   private void a()
   {
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    if (this.jdField_a_of_type_Int == 0)
+    int i = this.jdField_a_of_type_Int;
+    if (i == 0)
     {
       this.jdField_a_of_type_AndroidGraphicsPath.addRect(0.0F, 0.0F, this.b, this.c, Path.Direction.CCW);
       return;
     }
-    int i = Math.min(this.jdField_a_of_type_Int * 2, Math.min(this.b, this.c)) / 2;
-    this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(new RectF(0.0F, 0.0F, this.b, this.c), i, i, Path.Direction.CCW);
+    i = Math.min(i * 2, Math.min(this.b, this.c)) / 2;
+    Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+    RectF localRectF = new RectF(0.0F, 0.0F, this.b, this.c);
+    float f = i;
+    localPath.addRoundRect(localRectF, f, f, Path.Direction.CCW);
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
-    Integer localInteger = null;
+    Integer localInteger;
     if (this.jdField_a_of_type_AndroidGraphicsPath != null)
     {
       localInteger = Integer.valueOf(paramCanvas.save());
       paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+    }
+    else
+    {
+      localInteger = null;
     }
     paramCanvas.drawColor(this.d);
     super.dispatchDraw(paramCanvas);
@@ -50,7 +58,7 @@ public class RoundRectRelativeLayout
   }
   
   @SuppressLint({"DrawAllocation"})
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     paramInt1 = getWidth();
@@ -88,7 +96,7 @@ public class RoundRectRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.RoundRectRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

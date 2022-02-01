@@ -46,42 +46,29 @@ public final class H264Reader
   
   private void endNalUnit(long paramLong1, int paramInt1, int paramInt2, long paramLong2)
   {
-    Object localObject;
     if ((!this.hasOutputFormat) || (this.sampleReader.needsSpsPps()))
     {
       this.sps.endNalUnit(paramInt2);
       this.pps.endNalUnit(paramInt2);
-      if (this.hasOutputFormat) {
-        break label320;
-      }
-      if ((this.sps.isCompleted()) && (this.pps.isCompleted()))
+      Object localObject;
+      if (!this.hasOutputFormat)
       {
-        localObject = new ArrayList();
-        ((List)localObject).add(Arrays.copyOf(this.sps.nalData, this.sps.nalLength));
-        ((List)localObject).add(Arrays.copyOf(this.pps.nalData, this.pps.nalLength));
-        NalUnitUtil.SpsData localSpsData = NalUnitUtil.parseSpsNalUnit(this.sps.nalData, 3, this.sps.nalLength);
-        NalUnitUtil.PpsData localPpsData = NalUnitUtil.parsePpsNalUnit(this.pps.nalData, 3, this.pps.nalLength);
-        this.output.format(Format.createVideoSampleFormat(this.formatId, "video/avc", null, -1, -1, localSpsData.width, localSpsData.height, -1.0F, (List)localObject, -1, localSpsData.pixelWidthAspectRatio, null));
-        this.hasOutputFormat = true;
-        this.sampleReader.putSps(localSpsData);
-        this.sampleReader.putPps(localPpsData);
-        this.sps.reset();
-        this.pps.reset();
+        if ((this.sps.isCompleted()) && (this.pps.isCompleted()))
+        {
+          localObject = new ArrayList();
+          ((List)localObject).add(Arrays.copyOf(this.sps.nalData, this.sps.nalLength));
+          ((List)localObject).add(Arrays.copyOf(this.pps.nalData, this.pps.nalLength));
+          NalUnitUtil.SpsData localSpsData = NalUnitUtil.parseSpsNalUnit(this.sps.nalData, 3, this.sps.nalLength);
+          NalUnitUtil.PpsData localPpsData = NalUnitUtil.parsePpsNalUnit(this.pps.nalData, 3, this.pps.nalLength);
+          this.output.format(Format.createVideoSampleFormat(this.formatId, "video/avc", null, -1, -1, localSpsData.width, localSpsData.height, -1.0F, (List)localObject, -1, localSpsData.pixelWidthAspectRatio, null));
+          this.hasOutputFormat = true;
+          this.sampleReader.putSps(localSpsData);
+          this.sampleReader.putPps(localPpsData);
+          this.sps.reset();
+          this.pps.reset();
+        }
       }
-    }
-    for (;;)
-    {
-      if (this.sei.endNalUnit(paramInt2))
-      {
-        paramInt2 = NalUnitUtil.unescapeStream(this.sei.nalData, this.sei.nalLength);
-        this.seiWrapper.reset(this.sei.nalData, paramInt2);
-        this.seiWrapper.setPosition(4);
-        this.seiReader.consume(paramLong2, this.seiWrapper);
-      }
-      this.sampleReader.endNalUnit(paramLong1, paramInt1);
-      return;
-      label320:
-      if (this.sps.isCompleted())
+      else if (this.sps.isCompleted())
       {
         localObject = NalUnitUtil.parseSpsNalUnit(this.sps.nalData, 3, this.sps.nalLength);
         this.sampleReader.putSps((NalUnitUtil.SpsData)localObject);
@@ -94,6 +81,14 @@ public final class H264Reader
         this.pps.reset();
       }
     }
+    if (this.sei.endNalUnit(paramInt2))
+    {
+      paramInt2 = NalUnitUtil.unescapeStream(this.sei.nalData, this.sei.nalLength);
+      this.seiWrapper.reset(this.sei.nalData, paramInt2);
+      this.seiWrapper.setPosition(4);
+      this.seiReader.consume(paramLong2, this.seiWrapper);
+    }
+    this.sampleReader.endNalUnit(paramLong1, paramInt1);
   }
   
   private void nalUnitData(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -125,26 +120,29 @@ public final class H264Reader
     byte[] arrayOfByte = paramParsableByteArray.data;
     this.totalBytesWritten += paramParsableByteArray.bytesLeft();
     this.output.sampleData(paramParsableByteArray, paramParsableByteArray.bytesLeft());
-    int k = NalUnitUtil.findNalUnit(arrayOfByte, i, j, this.prefixFlags);
-    if (k == j)
+    for (;;)
     {
-      nalUnitData(arrayOfByte, i, j);
-      return;
-    }
-    int m = NalUnitUtil.getNalUnitType(arrayOfByte, k);
-    int i1 = k - i;
-    if (i1 > 0) {
-      nalUnitData(arrayOfByte, i, k);
-    }
-    int n = j - k;
-    long l = this.totalBytesWritten - n;
-    if (i1 < 0) {}
-    for (i = -i1;; i = 0)
-    {
+      int k = NalUnitUtil.findNalUnit(arrayOfByte, i, j, this.prefixFlags);
+      if (k == j)
+      {
+        nalUnitData(arrayOfByte, i, j);
+        return;
+      }
+      int m = NalUnitUtil.getNalUnitType(arrayOfByte, k);
+      int i1 = k - i;
+      if (i1 > 0) {
+        nalUnitData(arrayOfByte, i, k);
+      }
+      int n = j - k;
+      long l = this.totalBytesWritten - n;
+      if (i1 < 0) {
+        i = -i1;
+      } else {
+        i = 0;
+      }
       endNalUnit(l, n, i, this.pesTimeUs);
       startNalUnit(l, m, this.pesTimeUs);
       i = k + 3;
-      break;
     }
   }
   
@@ -176,7 +174,7 @@ public final class H264Reader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ts.H264Reader
  * JD-Core Version:    0.7.0.1
  */

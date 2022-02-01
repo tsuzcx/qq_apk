@@ -99,7 +99,8 @@ public final class AmrPlayer
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) && (this.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying());
+    MediaPlayer localMediaPlayer = this.jdField_a_of_type_AndroidMediaMediaPlayer;
+    return (localMediaPlayer != null) && (localMediaPlayer.isPlaying());
   }
   
   public int b()
@@ -118,8 +119,9 @@ public final class AmrPlayer
     this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(this);
     this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(this);
     this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(this);
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      ThreadManager.post(this.jdField_a_of_type_JavaLangRunnable, 5, null, false);
+    Runnable localRunnable = this.jdField_a_of_type_JavaLangRunnable;
+    if (localRunnable != null) {
+      ThreadManager.post(localRunnable, 5, null, false);
     }
   }
   
@@ -145,9 +147,19 @@ public final class AmrPlayer
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_succ_flag", "0");
-    localHashMap.put("errCode", paramInt + "");
-    localHashMap.put("param_version", Build.VERSION.SDK_INT + "");
-    localHashMap.put("param_deviceName", Build.MANUFACTURER + "_" + Build.MODEL);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("");
+    localHashMap.put("errCode", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Build.VERSION.SDK_INT);
+    localStringBuilder.append("");
+    localHashMap.put("param_version", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Build.MANUFACTURER);
+    localStringBuilder.append("_");
+    localStringBuilder.append(Build.MODEL);
+    localHashMap.put("param_deviceName", localStringBuilder.toString());
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "PttAmrPlaryerError", true, 0L, 0L, localHashMap, null);
   }
   
@@ -187,49 +199,62 @@ public final class AmrPlayer
   
   protected void h()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AmrPlayer", 2, "playAmr AmrPlayerThread " + this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("playAmr AmrPlayerThread ");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      QLog.d("AmrPlayer", 2, localStringBuilder.toString());
     }
     try
     {
       if (QLog.isColorLevel()) {
         QLog.d("AmrPlayer", 2, "playAmr AmrPlayerThread onPlayThreadStart");
       }
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayerListener.c();
+      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayerListener.f();
       if (QLog.isColorLevel()) {
         QLog.d("AmrPlayer", 2, "playAmr AmrPlayerThread start");
       }
       this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
       int i = this.jdField_a_of_type_Int - 1000;
       this.jdField_a_of_type_Int = i;
-      if (i > 0) {
+      if (i > 0)
+      {
         this.jdField_a_of_type_AndroidMediaMediaPlayer.seekTo(this.jdField_a_of_type_Int);
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
-      while (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayerListener == null) {}
-      Message localMessage = Message.obtain();
-      localMessage.what = 1;
-      localMessage.obj = localException.toString();
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage(localMessage);
+      if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayerListener != null)
+      {
+        Message localMessage = Message.obtain();
+        localMessage.what = 1;
+        localMessage.obj = localException.toString();
+        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage(localMessage);
+      }
     }
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    if (paramMessage.what == 1) {
-      if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayerListener != null)
+    if (paramMessage.what == 1)
+    {
+      IAudioFilePlayerListener localIAudioFilePlayerListener = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayerListener;
+      if (localIAudioFilePlayerListener != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayerListener.a(this, 8, 0, (String)paramMessage.obj);
+        localIAudioFilePlayerListener.a(this, 8, 0, (String)paramMessage.obj);
         c(0);
+        return true;
       }
     }
-    while ((paramMessage.what != 2) || (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayerListener == null)) {
-      return true;
+    else if (paramMessage.what == 2)
+    {
+      paramMessage = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayerListener;
+      if (paramMessage != null) {
+        paramMessage.a();
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayerListener.a();
     return true;
   }
   
@@ -239,8 +264,9 @@ public final class AmrPlayer
       QLog.d("AmrPlayer", 2, "playAmr onCompletion");
     }
     this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAmrPlayer$AmrPlayerThread = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayerListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayerListener.a();
+    paramMediaPlayer = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayerListener;
+    if (paramMediaPlayer != null) {
+      paramMediaPlayer.a();
     }
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
   }
@@ -251,8 +277,16 @@ public final class AmrPlayer
       QLog.d("AmrPlayer", 2, "playAmr onError");
     }
     this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAmrPlayer$AmrPlayerThread = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayerListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayerListener.a(this, 9, 0, "what = " + paramInt1 + " extra=" + paramInt2);
+    paramMediaPlayer = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayerListener;
+    if (paramMediaPlayer != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Error (");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(",");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(")");
+      paramMediaPlayer.a(this, 9, 0, localStringBuilder.toString());
     }
     c(paramInt1);
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
@@ -268,7 +302,7 @@ public final class AmrPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.audioplayer.AmrPlayer
  * JD-Core Version:    0.7.0.1
  */

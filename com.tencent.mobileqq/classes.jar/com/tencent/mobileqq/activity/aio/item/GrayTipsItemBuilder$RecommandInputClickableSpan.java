@@ -34,37 +34,39 @@ class GrayTipsItemBuilder$RecommandInputClickableSpan
   {
     paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     Object localObject = (Context)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-    if ((paramView == null) || (localObject == null)) {}
-    long l;
-    do
+    if (paramView != null)
     {
-      do
-      {
-        return;
-      } while (!(localObject instanceof Activity));
-      if (!NetworkUtil.d((Context)localObject))
-      {
-        QQToast.a((Context)localObject, 2131692257, 0).b(((Context)localObject).getResources().getDimensionPixelSize(2131299166));
+      if (localObject == null) {
         return;
       }
-      l = System.currentTimeMillis();
-      if ((GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder) == 0L) || (l <= GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder)) || (l - GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder) > 800L)) {
-        break;
+      if ((localObject instanceof Activity))
+      {
+        if (!NetworkUtil.isNetSupport((Context)localObject))
+        {
+          QQToast.a((Context)localObject, 2131692183, 0).b(((Context)localObject).getResources().getDimensionPixelSize(2131299168));
+          return;
+        }
+        long l = System.currentTimeMillis();
+        if ((GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder) != 0L) && (l > GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder)) && (l - GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder) <= 800L))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("GrayTipsItemBuilder", 2, "click too often...ignore click envent");
+          }
+          return;
+        }
+        GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder, l);
+        localObject = JumpParser.a(paramView, (Context)localObject, String.format("mqqapi://nearby_entry/nearby_profile?src_type=web&version=1&from=10003&from_type=0&uin=%s&mode=3", new Object[] { this.jdField_b_of_type_JavaLangString }));
+        if (localObject != null) {
+          ((JumpAction)localObject).a();
+        }
+        ReportController.b(paramView, "CliOper", "", "", "0X80055FD", "0X80055FD", 0, 0, ((com.tencent.mobileqq.nearpeople.api.INearbyRecommenderUtils)com.tencent.mobileqq.qroute.QRoute.api(com.tencent.mobileqq.nearpeople.api.INearbyRecommenderUtils.class)).getReasonTypeAndUins(paramView)[0], this.jdField_b_of_type_JavaLangString, "", "");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("GrayTipsItemBuilder", 2, "click too often...ignore click envent");
-    return;
-    GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder, l);
-    localObject = JumpParser.a(paramView, (Context)localObject, String.format("mqqapi://nearby_entry/nearby_profile?src_type=web&version=1&from=10003&from_type=0&uin=%s&mode=3", new Object[] { this.jdField_b_of_type_JavaLangString }));
-    if (localObject != null) {
-      ((JumpAction)localObject).a();
     }
-    ReportController.b(paramView, "CliOper", "", "", "0X80055FD", "0X80055FD", 0, 0, com.tencent.mobileqq.nearpeople.NearbyRecommender.NearbyRecommenderUtils.a(paramView)[0], this.jdField_b_of_type_JavaLangString, "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder.RecommandInputClickableSpan
  * JD-Core Version:    0.7.0.1
  */

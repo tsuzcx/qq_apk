@@ -42,56 +42,56 @@ public class FlutterPushModuleProtocol
       if ((paramMethodCall instanceof Integer))
       {
         i = ((Integer)paramMethodCall).intValue();
-        if (this.mDelegate != null) {
-          this.mDelegate.registerPushTypeWithPushType(i, paramMethodChannelResultWrapper);
+        paramMethodCall = this.mDelegate;
+        if (paramMethodCall == null) {
+          return;
         }
+        paramMethodCall.registerPushTypeWithPushType(i, paramMethodChannelResultWrapper);
+        return;
       }
     }
-    do
+    for (paramMethodChannelResultWrapper = new StringBuilder();; paramMethodChannelResultWrapper = new StringBuilder())
     {
-      return;
-      paramMethodChannelResultWrapper = new StringBuilder();
       paramMethodChannelResultWrapper.append("[onMethodCall] param error ");
       paramMethodChannelResultWrapper.append(paramMethodCall);
       Log.w("Expand.PushModulePro", paramMethodChannelResultWrapper.toString());
       return;
       if (!"unregisterPushType".equals(str)) {
-        break label174;
-      }
-      paramMethodCall = paramMethodCall.argument("pushType");
-      if (!(paramMethodCall instanceof Integer)) {
         break;
       }
-      i = ((Integer)paramMethodCall).intValue();
-    } while (this.mDelegate == null);
-    this.mDelegate.unregisterPushTypeWithPushType(i, paramMethodChannelResultWrapper);
-    return;
-    paramMethodChannelResultWrapper = new StringBuilder();
-    paramMethodChannelResultWrapper.append("[onMethodCall] param error ");
-    paramMethodChannelResultWrapper.append(paramMethodCall);
-    Log.w("Expand.PushModulePro", paramMethodChannelResultWrapper.toString());
-    return;
-    label174:
+      paramMethodCall = paramMethodCall.argument("pushType");
+      if ((paramMethodCall instanceof Integer))
+      {
+        i = ((Integer)paramMethodCall).intValue();
+        paramMethodCall = this.mDelegate;
+        if (paramMethodCall == null) {
+          return;
+        }
+        paramMethodCall.unregisterPushTypeWithPushType(i, paramMethodChannelResultWrapper);
+        return;
+      }
+    }
     paramMethodChannelResultWrapper.notImplemented();
   }
   
   public void onCancel(Object paramObject)
   {
-    if (!(paramObject instanceof String)) {}
-    do
+    if (!(paramObject instanceof String)) {
+      return;
+    }
+    paramObject = (String)paramObject;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onCancel ");
+    localStringBuilder.append(paramObject);
+    Log.d("Expand.PushModulePro", localStringBuilder.toString());
+    if ("onPushEvent".equals(paramObject))
     {
-      do
-      {
-        return;
-        paramObject = (String)paramObject;
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("onCancel ");
-        localStringBuilder.append(paramObject);
-        Log.d("Expand.PushModulePro", localStringBuilder.toString());
-      } while (!"onPushEvent".equals(paramObject));
       this.mEventSink = null;
-    } while (this.mDelegate == null);
-    this.mDelegate.cancel_onPushEvent();
+      paramObject = this.mDelegate;
+      if (paramObject != null) {
+        paramObject.cancel_onPushEvent();
+      }
+    }
   }
   
   public void onDestroy()
@@ -112,21 +112,22 @@ public class FlutterPushModuleProtocol
   
   public void onListen(Object paramObject, EventChannel.EventSink paramEventSink)
   {
-    if (!(paramObject instanceof String)) {}
-    do
+    if (!(paramObject instanceof String)) {
+      return;
+    }
+    paramObject = (String)paramObject;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onListen ");
+    localStringBuilder.append(paramObject);
+    Log.d("Expand.PushModulePro", localStringBuilder.toString());
+    if ("onPushEvent".equals(paramObject))
     {
-      do
-      {
-        return;
-        paramObject = (String)paramObject;
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("onListen ");
-        localStringBuilder.append(paramObject);
-        Log.d("Expand.PushModulePro", localStringBuilder.toString());
-      } while (!"onPushEvent".equals(paramObject));
       this.mEventSink = paramEventSink;
-    } while (this.mDelegate == null);
-    this.mDelegate.listen_onPushEvent(paramEventSink);
+      paramObject = this.mDelegate;
+      if (paramObject != null) {
+        paramObject.listen_onPushEvent(paramEventSink);
+      }
+    }
   }
   
   public void setPushModuleDelegate(FlutterPushModuleProtocol.PushModuleDelegate paramPushModuleDelegate)
@@ -134,14 +135,15 @@ public class FlutterPushModuleProtocol
     Log.d("Expand.PushModulePro", "setPushModuleDelegate");
     setApiDelegate(paramPushModuleDelegate);
     this.mDelegate = paramPushModuleDelegate;
-    if (this.mEventSink != null) {
-      this.mDelegate.listen_onPushEvent(this.mEventSink);
+    paramPushModuleDelegate = this.mEventSink;
+    if (paramPushModuleDelegate != null) {
+      this.mDelegate.listen_onPushEvent(paramPushModuleDelegate);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqexpand.FlutterPushModuleProtocol
  * JD-Core Version:    0.7.0.1
  */

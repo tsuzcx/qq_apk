@@ -1,109 +1,140 @@
 package com.tencent.mobileqq.activity;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.subaccount.api.ISubAccountApi.MessageObserverCallback;
 import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
 import com.tencent.mobileqq.subaccount.logic.SubAccountThirdQQBackProtocData;
 import com.tencent.qphone.base.util.QLog;
 
 class AssociatedAccountActivity$15
-  extends MessageObserver
+  implements ISubAccountApi.MessageObserverCallback
 {
   AssociatedAccountActivity$15(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
-  public void onGetSubAccountMsg(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData)
+  public void a(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData)
   {
-    if (AssociatedAccountActivity.a(this.a, paramString, paramSubAccountBackProtocData)) {}
-    do
-    {
+    if (AssociatedAccountActivity.access$1800(this.a, paramString, paramSubAccountBackProtocData)) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("AssociatedAccountActivity", 2, "onGetSubAccountMsg subAccount=" + paramString + " mIsFromPull=" + this.a.jdField_b_of_type_Boolean + " isSuccess=" + paramBoolean + "  mPullReqNeedBackNum=" + this.a.jdField_a_of_type_Int);
-      }
-      if (this.a.jdField_b_of_type_Boolean)
-      {
-        AssociatedAccountActivity.a(this.a, paramBoolean, true);
-        return;
-      }
-      this.a.jdField_a_of_type_Int = 0;
-      this.a.c = false;
-      if ((paramBoolean) && (paramSubAccountBackProtocData.c))
-      {
-        this.a.c();
-        return;
-      }
-    } while (!paramBoolean);
-    this.a.a();
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGetSubAccountMsg subAccount=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" mIsFromPull=");
+      localStringBuilder.append(this.a.mIsFromPull);
+      localStringBuilder.append(" isSuccess=");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("  mPullReqNeedBackNum=");
+      localStringBuilder.append(this.a.mPullReqNeedBackNum);
+      QLog.d("AssociatedAccountActivity", 2, localStringBuilder.toString());
+    }
+    if (this.a.mIsFromPull)
+    {
+      AssociatedAccountActivity.access$1900(this.a, paramBoolean, true);
+      return;
+    }
+    paramString = this.a;
+    paramString.mPullReqNeedBackNum = 0;
+    paramString.mIsPullReqSuccess = false;
+    if ((paramBoolean) && (paramSubAccountBackProtocData.c))
+    {
+      this.a.loadItemDataList();
+      return;
+    }
+    if (paramBoolean) {
+      this.a.updateSubAccountStatus();
+    }
   }
   
-  public void onPushSubAccountMsg(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData)
+  public void a(boolean paramBoolean, String paramString, SubAccountThirdQQBackProtocData paramSubAccountThirdQQBackProtocData)
   {
-    if (AssociatedAccountActivity.a(this.a, paramString, paramSubAccountBackProtocData)) {}
-    do
-    {
+    if (AssociatedAccountActivity.access$2000(this.a, paramString, paramSubAccountThirdQQBackProtocData)) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("AssociatedAccountActivity", 2, "onPushSubAccountMsg subUin" + paramString);
-      }
-    } while (!paramBoolean);
-    AssociatedAccountActivity.b(this.a, false);
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onSubAccountThirdQQUnreadMsgNum mIsFromPull=");
+      localStringBuilder.append(this.a.mIsFromPull);
+      localStringBuilder.append("  mPullReqNeedBackNum=");
+      localStringBuilder.append(this.a.mPullReqNeedBackNum);
+      localStringBuilder.append(" isSuccess=");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("  mainAccount=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("  data=");
+      localStringBuilder.append(paramSubAccountThirdQQBackProtocData);
+      QLog.d("AssociatedAccountActivity", 2, localStringBuilder.toString());
+    }
+    if (this.a.mIsFromPull)
+    {
+      AssociatedAccountActivity.access$1900(this.a, paramBoolean, false);
+      return;
+    }
+    paramString = this.a;
+    paramString.mPullReqNeedBackNum = 0;
+    paramString.mIsPullReqSuccess = false;
+    if (paramBoolean) {
+      AssociatedAccountActivity.access$2100(paramString, paramSubAccountThirdQQBackProtocData);
+    }
   }
   
-  public void onSubAccountMsgNumConfirm(boolean paramBoolean, String paramString1, String paramString2)
+  public void a(boolean paramBoolean, String paramString1, String paramString2)
   {
     if (TextUtils.isEmpty(paramString1)) {
       return;
     }
     if (QLog.isColorLevel())
     {
-      paramString1 = new StringBuilder().append("onSubAccountMsgNumConfirm isSuccess=").append(paramBoolean).append(" subUin=").append(paramString1).append(" set need2ConfirmMsgNum=");
-      if (paramBoolean) {
-        break label157;
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onSubAccountMsgNumConfirm isSuccess=");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(" subUin=");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" set need2ConfirmMsgNum=");
+      localStringBuilder.append(paramBoolean ^ true);
+      localStringBuilder.append(" nextAction=");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(" mNeed2ConfirmMsgNum=");
+      localStringBuilder.append(this.a.mNeed2ConfirmMsgNum);
+      QLog.d("AssociatedAccountActivity", 2, localStringBuilder.toString());
     }
-    label157:
-    for (paramBoolean = true;; paramBoolean = false)
+    if ("sub.account.switchAccount".equals(paramString2))
     {
-      QLog.d("AssociatedAccountActivity", 2, paramBoolean + " nextAction=" + paramString2 + " mNeed2ConfirmMsgNum=" + this.a.jdField_b_of_type_Int);
-      if (!"sub.account.switchAccount".equals(paramString2)) {
-        break;
-      }
       paramString1 = this.a;
-      paramString1.jdField_b_of_type_Int -= 1;
-      if (this.a.jdField_b_of_type_Int <= 0) {
-        AssociatedAccountActivity.b(this.a, false, this.a.jdField_a_of_type_JavaLangString);
+      paramString1.mNeed2ConfirmMsgNum -= 1;
+      if (this.a.mNeed2ConfirmMsgNum <= 0)
+      {
+        paramString1 = this.a;
+        AssociatedAccountActivity.access$1700(paramString1, false, paramString1.mCurrentSwitchUin);
       }
-      if (this.a.jdField_b_of_type_Int >= 0) {
-        break;
+      if (this.a.mNeed2ConfirmMsgNum < 0) {
+        this.a.mNeed2ConfirmMsgNum = 0;
       }
-      this.a.jdField_b_of_type_Int = 0;
-      return;
     }
   }
   
-  public void onSubAccountThirdQQUnreadMsgNum(boolean paramBoolean, String paramString, SubAccountThirdQQBackProtocData paramSubAccountThirdQQBackProtocData)
+  public void b(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData)
   {
-    if (AssociatedAccountActivity.a(this.a, paramString, paramSubAccountThirdQQBackProtocData)) {}
-    do
-    {
+    if (AssociatedAccountActivity.access$1800(this.a, paramString, paramSubAccountBackProtocData)) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("AssociatedAccountActivity", 2, "onSubAccountThirdQQUnreadMsgNum mIsFromPull=" + this.a.jdField_b_of_type_Boolean + "  mPullReqNeedBackNum=" + this.a.jdField_a_of_type_Int + " isSuccess=" + paramBoolean + "  mainAccount=" + paramString + "  data=" + paramSubAccountThirdQQBackProtocData);
-      }
-      if (this.a.jdField_b_of_type_Boolean)
-      {
-        AssociatedAccountActivity.a(this.a, paramBoolean, false);
-        return;
-      }
-      this.a.jdField_a_of_type_Int = 0;
-      this.a.c = false;
-    } while (!paramBoolean);
-    AssociatedAccountActivity.a(this.a, paramSubAccountThirdQQBackProtocData);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramSubAccountBackProtocData = new StringBuilder();
+      paramSubAccountBackProtocData.append("onPushSubAccountMsg subUin");
+      paramSubAccountBackProtocData.append(paramString);
+      QLog.d("AssociatedAccountActivity", 2, paramSubAccountBackProtocData.toString());
+    }
+    if (paramBoolean) {
+      AssociatedAccountActivity.access$1600(this.a, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountActivity.15
  * JD-Core Version:    0.7.0.1
  */

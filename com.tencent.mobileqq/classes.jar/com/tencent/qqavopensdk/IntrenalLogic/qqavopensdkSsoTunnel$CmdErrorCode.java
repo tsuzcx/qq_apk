@@ -24,7 +24,7 @@ public final class qqavopensdkSsoTunnel$CmdErrorCode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqavopensdk.IntrenalLogic.qqavopensdkSsoTunnel.CmdErrorCode
  * JD-Core Version:    0.7.0.1
  */

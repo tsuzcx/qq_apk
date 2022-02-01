@@ -16,7 +16,9 @@ public final class a
     }
     catch (Exception paramBundle)
     {
-      Log.e("MicroMsg.IntentUtil", "getIntExtra exception:" + paramBundle.getMessage());
+      paramString = new StringBuilder("getIntExtra exception:");
+      paramString.append(paramBundle.getMessage());
+      Log.e("MicroMsg.IntentUtil", paramString.toString());
     }
     return -1;
   }
@@ -33,14 +35,16 @@ public final class a
     }
     catch (Exception paramBundle)
     {
-      Log.e("MicroMsg.IntentUtil", "getStringExtra exception:" + paramBundle.getMessage());
+      paramString = new StringBuilder("getStringExtra exception:");
+      paramString.append(paramBundle.getMessage());
+      Log.e("MicroMsg.IntentUtil", paramString.toString());
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.opensdk.utils.a
  * JD-Core Version:    0.7.0.1
  */

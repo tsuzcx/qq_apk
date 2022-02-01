@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.recent.bannerprocessor;
 
-import com.tencent.mobileqq.model.PhoneContactManager.IPhoneContactListener;
+import com.tencent.mobileqq.phonecontact.listener.IPhoneContactListener;
 import mqq.os.MqqHandler;
 
 class ContactBannerProcessor$2
-  implements PhoneContactManager.IPhoneContactListener
+  implements IPhoneContactListener
 {
   ContactBannerProcessor$2(ContactBannerProcessor paramContactBannerProcessor) {}
   
@@ -31,7 +31,7 @@ class ContactBannerProcessor$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.ContactBannerProcessor.2
  * JD-Core Version:    0.7.0.1
  */

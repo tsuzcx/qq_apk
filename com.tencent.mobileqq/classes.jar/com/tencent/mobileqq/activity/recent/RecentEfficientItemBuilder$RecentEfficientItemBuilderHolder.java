@@ -17,7 +17,7 @@ public class RecentEfficientItemBuilder$RecentEfficientItemBuilderHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentEfficientItemBuilder.RecentEfficientItemBuilderHolder
  * JD-Core Version:    0.7.0.1
  */

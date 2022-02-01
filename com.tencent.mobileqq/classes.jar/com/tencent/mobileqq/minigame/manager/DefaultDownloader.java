@@ -15,14 +15,24 @@ public class DefaultDownloader
   
   public void download()
   {
-    String str = BaseApplicationImpl.getContext().getCacheDir() + File.separator + UUID.randomUUID() + ".zip";
-    MiniappDownloadUtil.getInstance().download(this.mUrl, str, true, new DefaultDownloader.1(this, str), Downloader.DownloadMode.StrictMode, null);
-    QLog.i("DefaultDownloader", 1, "[MiniEng] download " + this.mUrl + " start, saveTo=" + str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(BaseApplicationImpl.getContext().getCacheDir());
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(UUID.randomUUID());
+    ((StringBuilder)localObject).append(".zip");
+    localObject = ((StringBuilder)localObject).toString();
+    MiniappDownloadUtil.getInstance().download(this.mUrl, (String)localObject, true, new DefaultDownloader.1(this, (String)localObject), Downloader.DownloadMode.StrictMode, null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[MiniEng] download ");
+    localStringBuilder.append(this.mUrl);
+    localStringBuilder.append(" start, saveTo=");
+    localStringBuilder.append((String)localObject);
+    QLog.i("DefaultDownloader", 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.DefaultDownloader
  * JD-Core Version:    0.7.0.1
  */

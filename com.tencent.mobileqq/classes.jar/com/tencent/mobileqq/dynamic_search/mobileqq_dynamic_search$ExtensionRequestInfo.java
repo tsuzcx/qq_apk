@@ -22,14 +22,15 @@ public final class mobileqq_dynamic_search$ExtensionRequestInfo
   static
   {
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    Float localFloat = Float.valueOf(0.0F);
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 21, 29, 32, 42, 50 }, new String[] { "action", "latitude", "longitude", "radius", "city", "region" }, new Object[] { localByteStringMicro1, Float.valueOf(0.0F), Float.valueOf(0.0F), Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3 }, ExtensionRequestInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 21, 29, 32, 42, 50 }, new String[] { "action", "latitude", "longitude", "radius", "city", "region" }, new Object[] { localByteStringMicro1, localFloat, localFloat, Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3 }, ExtensionRequestInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dynamic_search.mobileqq_dynamic_search.ExtensionRequestInfo
  * JD-Core Version:    0.7.0.1
  */

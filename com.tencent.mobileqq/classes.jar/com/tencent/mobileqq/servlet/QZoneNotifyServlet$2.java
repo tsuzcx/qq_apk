@@ -23,19 +23,21 @@ final class QZoneNotifyServlet$2
     if ((paramInt == 0) && (paramSosoLbsInfo != null))
     {
       QZoneNotifyServlet.a(LbsDataV2.convertFromSoso(paramSosoLbsInfo.mLocation));
-      QZLog.i("Q.lebatab.UndealCount.QZoneNotifyServlet", 1, "[QZ_LBS_MODULE]onLocationFinish succeed! gps=" + QZoneNotifyServlet.a());
+      paramSosoLbsInfo = new StringBuilder();
+      paramSosoLbsInfo.append("[QZ_LBS_MODULE]onLocationFinish succeed! gps=");
+      paramSosoLbsInfo.append(QZoneNotifyServlet.a());
+      QZLog.i("Q.lebatab.UndealCount.QZoneNotifyServlet", 1, paramSosoLbsInfo.toString());
     }
-    for (;;)
+    else
     {
-      QZoneNotifyServlet.a(paramInt);
-      return;
       QZLog.e("Q.lebatab.UndealCount.QZoneNotifyServlet", "[QZ_LBS_MODULE]onLocationFinish failed: error in force gps info update..");
     }
+    QZoneNotifyServlet.a(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.QZoneNotifyServlet.2
  * JD-Core Version:    0.7.0.1
  */

@@ -8,9 +8,9 @@ public final class SimpleOnlineFriendInfo
   extends JceStruct
 {
   static int cache_eIconType;
-  static int cache_eNetworkType = 0;
+  static int cache_eNetworkType;
   static byte[] cache_vecExtOnlineBusinessInfo;
-  static byte[] cache_vecMusicInfo;
+  static byte[] cache_vecMusicInfo = (byte[])new byte[1];
   static byte[] cache_vecPoiInfo;
   public byte cNetwork = 0;
   public byte cSpecialFlag = 0;
@@ -35,8 +35,6 @@ public final class SimpleOnlineFriendInfo
   
   static
   {
-    cache_eIconType = 0;
-    cache_vecMusicInfo = (byte[])new byte[1];
     ((byte[])cache_vecMusicInfo)[0] = 0;
     cache_vecPoiInfo = (byte[])new byte[1];
     ((byte[])cache_vecPoiInfo)[0] = 0;
@@ -103,8 +101,9 @@ public final class SimpleOnlineFriendInfo
     paramJceOutputStream.write(this.isIphoneOnline, 4);
     paramJceOutputStream.write(this.detalStatusFlag, 5);
     paramJceOutputStream.write(this.sqqOnLineStateV2, 6);
-    if (this.sShowName != null) {
-      paramJceOutputStream.write(this.sShowName, 7);
+    Object localObject = this.sShowName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
     paramJceOutputStream.write(this.cSpecialFlag, 8);
     paramJceOutputStream.write(this.iTermType, 9);
@@ -112,25 +111,29 @@ public final class SimpleOnlineFriendInfo
     paramJceOutputStream.write(this.uAbiFlag, 11);
     paramJceOutputStream.write(this.eNetworkType, 12);
     paramJceOutputStream.write(this.eIconType, 13);
-    if (this.strTermDesc != null) {
-      paramJceOutputStream.write(this.strTermDesc, 14);
+    localObject = this.strTermDesc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 14);
     }
     paramJceOutputStream.write(this.uExtOnlineStatus, 15);
     paramJceOutputStream.write(this.iBatteryStatus, 16);
-    if (this.vecMusicInfo != null) {
-      paramJceOutputStream.write(this.vecMusicInfo, 17);
+    localObject = this.vecMusicInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 17);
     }
-    if (this.vecPoiInfo != null) {
-      paramJceOutputStream.write(this.vecPoiInfo, 18);
+    localObject = this.vecPoiInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 18);
     }
-    if (this.vecExtOnlineBusinessInfo != null) {
-      paramJceOutputStream.write(this.vecExtOnlineBusinessInfo, 19);
+    localObject = this.vecExtOnlineBusinessInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 19);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     friendlist.SimpleOnlineFriendInfo
  * JD-Core Version:    0.7.0.1
  */

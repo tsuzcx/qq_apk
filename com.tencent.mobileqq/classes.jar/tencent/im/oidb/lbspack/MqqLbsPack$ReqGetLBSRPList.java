@@ -29,16 +29,19 @@ public final class MqqLbsPack$ReqGetLBSRPList
   
   static
   {
+    Integer localInteger1 = Integer.valueOf(0);
+    Integer localInteger2 = Integer.valueOf(900000000);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 50, 56, 64, 82, 90, 96, 106 }, new String[] { "int32_lat", "int32_lon", "bytes_cookie", "bytes_pid", "uint64_poi_id", "bytes_page_cookie", "uint64_adcode", "uint32_req_occasion", "msg_lbs_sig", "msg_lbs_info", "uint32_lbs_accuracy", "bytes_encrypt_sig" }, new Object[] { Integer.valueOf(900000000), Integer.valueOf(900000000), localByteStringMicro1, localByteStringMicro2, Long.valueOf(0L), localByteStringMicro3, Long.valueOf(0L), Integer.valueOf(0), null, null, Integer.valueOf(0), localByteStringMicro4 }, ReqGetLBSRPList.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 50, 56, 64, 82, 90, 96, 106 }, new String[] { "int32_lat", "int32_lon", "bytes_cookie", "bytes_pid", "uint64_poi_id", "bytes_page_cookie", "uint64_adcode", "uint32_req_occasion", "msg_lbs_sig", "msg_lbs_info", "uint32_lbs_accuracy", "bytes_encrypt_sig" }, new Object[] { localInteger2, localInteger2, localByteStringMicro1, localByteStringMicro2, localLong, localByteStringMicro3, localLong, localInteger1, null, null, localInteger1, localByteStringMicro4 }, ReqGetLBSRPList.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.lbspack.MqqLbsPack.ReqGetLBSRPList
  * JD-Core Version:    0.7.0.1
  */

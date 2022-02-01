@@ -28,16 +28,20 @@ public class QueryCurrencyRequest
   
   public static MiniAppMidasPay.StQueryStarCurrencyRsp onResponse(byte[] paramArrayOfByte)
   {
-    MiniAppMidasPay.StQueryStarCurrencyRsp localStQueryStarCurrencyRsp = new MiniAppMidasPay.StQueryStarCurrencyRsp();
+    Object localObject = new MiniAppMidasPay.StQueryStarCurrencyRsp();
     try
     {
-      localStQueryStarCurrencyRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStQueryStarCurrencyRsp;
+      ((MiniAppMidasPay.StQueryStarCurrencyRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QueryCurrencyRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("QueryCurrencyRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -50,7 +54,7 @@ public class QueryCurrencyRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.QueryCurrencyRequest
  * JD-Core Version:    0.7.0.1
  */

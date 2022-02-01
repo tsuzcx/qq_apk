@@ -38,8 +38,14 @@ public class StoryMsgNotification
   
   static
   {
-    jdField_a_of_type_JavaLangString = QQStoryConstant.jdField_a_of_type_JavaLangString + HardCodeUtil.a(2131714408);
-    jdField_b_of_type_JavaLangString = QQStoryConstant.jdField_a_of_type_JavaLangString + HardCodeUtil.a(2131714409);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(QQStoryConstant.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(HardCodeUtil.a(2131714329));
+    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(QQStoryConstant.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(HardCodeUtil.a(2131714330));
+    jdField_b_of_type_JavaLangString = localStringBuilder.toString();
     jdField_a_of_type_ComTencentBizQqstoryNotificationStoryMsgNotification = null;
     jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
     jdField_a_of_type_AndroidUtilSparseIntArray.put(1, 246);
@@ -94,21 +100,27 @@ public class StoryMsgNotification
     String str = jdField_a_of_type_JavaLangString;
     int i = a(paramStoryPushMsg.jdField_a_of_type_Int);
     int j = b(i);
-    switch (i)
+    if ((i != 1) && (i != 2) && (i != 4) && (i != 12) && (i != 13))
     {
-    }
-    do
-    {
-      do
+      switch (i)
       {
+      default: 
         return str;
-        if (j > 100) {
-          return String.format(jdField_b_of_type_JavaLangString, new Object[] { "99+" });
-        }
-      } while (j <= 1);
-      return String.format(jdField_b_of_type_JavaLangString, new Object[] { String.valueOf(j) });
-    } while (android.text.TextUtils.isEmpty(paramStoryPushMsg.h));
-    return paramStoryPushMsg.h;
+      }
+      if (!android.text.TextUtils.isEmpty(paramStoryPushMsg.h)) {
+        return paramStoryPushMsg.h;
+      }
+    }
+    else
+    {
+      if (j > 100) {
+        return String.format(jdField_b_of_type_JavaLangString, new Object[] { "99+" });
+      }
+      if (j > 1) {
+        str = String.format(jdField_b_of_type_JavaLangString, new Object[] { String.valueOf(j) });
+      }
+    }
+    return str;
   }
   
   public void a(Context paramContext)
@@ -121,102 +133,121 @@ public class StoryMsgNotification
     int i = a(paramInt);
     jdField_a_of_type_AndroidUtilSparseArray.remove(i);
     QQNotificationManager.getInstance().cancel("StoryMsgNotification", jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt));
-    if (QLog.isColorLevel()) {
-      QLog.w("Q.qqstory.protocol", 2, "readPushMsgs type = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("readPushMsgs type = ");
+      paramContext.append(paramInt);
+      QLog.w("Q.qqstory.protocol", 2, paramContext.toString());
     }
   }
   
   protected void a(StoryPushMsg paramStoryPushMsg)
   {
-    if (paramStoryPushMsg == null) {}
-    UserManager localUserManager;
-    do
+    if (paramStoryPushMsg == null) {
+      return;
+    }
+    int i = a(paramStoryPushMsg.jdField_a_of_type_Int);
+    paramStoryPushMsg.jdField_b_of_type_Int = (b(i) + 1);
+    jdField_a_of_type_AndroidUtilSparseArray.put(i, paramStoryPushMsg);
+    if (i == 3)
     {
-      int i;
-      do
+      UserManager localUserManager = (UserManager)SuperManager.a(2);
+      if (localUserManager.b(paramStoryPushMsg.a()) == null)
       {
-        return;
-        i = a(paramStoryPushMsg.jdField_a_of_type_Int);
-        paramStoryPushMsg.jdField_b_of_type_Int = (b(i) + 1);
-        jdField_a_of_type_AndroidUtilSparseArray.put(i, paramStoryPushMsg);
-      } while (i != 3);
-      localUserManager = (UserManager)SuperManager.a(2);
-    } while (localUserManager.b(paramStoryPushMsg.a()) != null);
-    QQUserUIItem localQQUserUIItem = new QQUserUIItem();
-    localQQUserUIItem.uid = paramStoryPushMsg.a();
-    localQQUserUIItem.setUnionId(paramStoryPushMsg.c);
-    localUserManager.a(localQQUserUIItem);
+        QQUserUIItem localQQUserUIItem = new QQUserUIItem();
+        localQQUserUIItem.uid = paramStoryPushMsg.a();
+        localQQUserUIItem.setUnionId(paramStoryPushMsg.c);
+        localUserManager.a(localQQUserUIItem);
+      }
+    }
   }
   
   public void a(QQAppInterface paramQQAppInterface, int paramInt, StoryPushMsg paramStoryPushMsg)
   {
-    if ((paramQQAppInterface == null) || (paramStoryPushMsg == null)) {}
-    int i;
-    do
+    if (paramQQAppInterface != null)
     {
-      return;
-      i = jdField_a_of_type_AndroidUtilSparseIntArray.get(paramStoryPushMsg.jdField_a_of_type_Int);
-    } while (i == 0);
-    a(paramStoryPushMsg);
-    Object localObject1 = "";
-    if ((paramStoryPushMsg.jdField_a_of_type_Int == 3) || (paramStoryPushMsg.jdField_a_of_type_Int == 9)) {
-      localObject1 = String.valueOf(paramStoryPushMsg.jdField_a_of_type_Long);
-    }
-    if (android.text.TextUtils.isEmpty(paramStoryPushMsg.jdField_a_of_type_JavaLangString)) {}
-    for (Object localObject2 = "9999";; localObject2 = paramStoryPushMsg.jdField_a_of_type_JavaLangString)
-    {
+      if (paramStoryPushMsg == null) {
+        return;
+      }
+      int i = jdField_a_of_type_AndroidUtilSparseIntArray.get(paramStoryPushMsg.jdField_a_of_type_Int);
+      if (i == 0) {
+        return;
+      }
+      a(paramStoryPushMsg);
+      if ((paramStoryPushMsg.jdField_a_of_type_Int != 3) && (paramStoryPushMsg.jdField_a_of_type_Int != 9)) {
+        localObject1 = "";
+      } else {
+        localObject1 = String.valueOf(paramStoryPushMsg.jdField_a_of_type_Long);
+      }
+      boolean bool = android.text.TextUtils.isEmpty(paramStoryPushMsg.jdField_a_of_type_JavaLangString);
+      Object localObject3 = "9999";
+      if (bool) {
+        localObject2 = "9999";
+      } else {
+        localObject2 = paramStoryPushMsg.jdField_a_of_type_JavaLangString;
+      }
       StoryReportor.a("notice_msg", "push_suc_all", 0, 0, new String[] { localObject2, localObject1, "", "" });
-      if (!StoryMsgNotificationUtils.a(paramQQAppInterface)) {
-        break label139;
+      if (StoryMsgNotificationUtils.a(paramQQAppInterface))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("Q.qqstory.protocol", 2, "showQQStoryMsgNotification QQIsForeground return--------");
+        }
+        return;
       }
-      if (!QLog.isColorLevel()) {
-        break;
+      if (android.text.TextUtils.isEmpty(paramStoryPushMsg.jdField_a_of_type_JavaLangString)) {
+        localObject2 = localObject3;
+      } else {
+        localObject2 = paramStoryPushMsg.jdField_a_of_type_JavaLangString;
       }
-      QLog.w("Q.qqstory.protocol", 2, "showQQStoryMsgNotification QQIsForeground return--------");
-      return;
-    }
-    label139:
-    if (android.text.TextUtils.isEmpty(paramStoryPushMsg.jdField_a_of_type_JavaLangString)) {}
-    NotificationCompat.Builder localBuilder;
-    for (localObject2 = "9999";; localObject2 = paramStoryPushMsg.jdField_a_of_type_JavaLangString)
-    {
       StoryReportor.a("notice_msg", "push_suc", 0, 0, new String[] { localObject2, localObject1, "", "" });
       StoryMsgNotificationUtils.a(paramInt, paramQQAppInterface);
-      String str = a(paramStoryPushMsg);
-      localObject2 = paramStoryPushMsg.jdField_b_of_type_JavaLangString;
-      if (QLog.isColorLevel()) {
-        QLog.w("zivonchen", 2, "showQQStoryMsgNotification line1 = " + str + ", line2 = " + (String)localObject2);
+      Object localObject4 = a(paramStoryPushMsg);
+      Object localObject2 = paramStoryPushMsg.jdField_b_of_type_JavaLangString;
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("showQQStoryMsgNotification line1 = ");
+        ((StringBuilder)localObject1).append((String)localObject4);
+        ((StringBuilder)localObject1).append(", line2 = ");
+        ((StringBuilder)localObject1).append((String)localObject2);
+        QLog.w("zivonchen", 2, ((StringBuilder)localObject1).toString());
       }
-      localBuilder = new NotificationCompat.Builder(paramQQAppInterface.getApp());
-      localObject1 = localObject2;
+      localObject3 = new NotificationCompat.Builder(paramQQAppInterface.getApp());
+      Object localObject1 = localObject2;
       if (com.tencent.mobileqq.text.TextUtils.hasSysEmotion((String)localObject2)) {
         localObject1 = new QQTextBuilder(EmotionCodecUtils.b((String)localObject2), 3, 16).toPlainText();
       }
-      localBuilder.setSmallIcon(2130841587).setWhen(System.currentTimeMillis()).setContentTitle(str).setContentText((CharSequence)localObject1).setPriority(2).setStyle(new NotificationCompat.BigTextStyle().bigText((CharSequence)localObject1));
-      if (android.text.TextUtils.isEmpty(paramStoryPushMsg.g)) {
-        break label517;
+      ((NotificationCompat.Builder)localObject3).setSmallIcon(2130841470).setWhen(System.currentTimeMillis()).setContentTitle((CharSequence)localObject4).setContentText((CharSequence)localObject1).setPriority(2).setStyle(new NotificationCompat.BigTextStyle().bigText((CharSequence)localObject1));
+      if (!android.text.TextUtils.isEmpty(paramStoryPushMsg.g))
+      {
+        localObject1 = URLDrawable.URLDrawableOptions.obtain();
+        localObject1 = URLDrawable.getDrawable(paramStoryPushMsg.g, (URLDrawable.URLDrawableOptions)localObject1);
+        ((URLDrawable)localObject1).setURLDrawableListener(new StoryMsgNotification.1(this, (NotificationCompat.Builder)localObject3, paramQQAppInterface, paramStoryPushMsg, i));
+        if (((URLDrawable)localObject1).getStatus() == 1)
+        {
+          localObject1 = com.tencent.mobileqq.utils.ImageUtil.a(((URLDrawable)localObject1).getCurrDrawable(), 200, 200);
+          localObject2 = com.tencent.biz.common.util.ImageUtil.b((Bitmap)localObject1, 1);
+          ((NotificationCompat.Builder)localObject3).setLargeIcon((Bitmap)localObject2);
+          if ((QLog.isColorLevel()) && (localObject2 != null))
+          {
+            localObject4 = new StringBuilder();
+            ((StringBuilder)localObject4).append("thumbDrawable onLoadSuccessed start, cutBitmap.size():");
+            ((StringBuilder)localObject4).append(((Bitmap)localObject2).getHeight());
+            ((StringBuilder)localObject4).append(", ");
+            ((StringBuilder)localObject4).append(((Bitmap)localObject2).getWidth());
+            QLog.d("StoryMsgNotification", 2, ((StringBuilder)localObject4).toString());
+          }
+          a(paramQQAppInterface, paramStoryPushMsg, i, (NotificationCompat.Builder)localObject3);
+          ((Bitmap)localObject1).recycle();
+          return;
+        }
+        ((URLDrawable)localObject1).startDownload();
+        this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
+        return;
       }
-      localObject1 = URLDrawable.URLDrawableOptions.obtain();
-      localObject1 = URLDrawable.getDrawable(paramStoryPushMsg.g, (URLDrawable.URLDrawableOptions)localObject1);
-      ((URLDrawable)localObject1).setURLDrawableListener(new StoryMsgNotification.1(this, localBuilder, paramQQAppInterface, paramStoryPushMsg, i));
-      if (((URLDrawable)localObject1).getStatus() != 1) {
-        break;
-      }
-      localObject1 = com.tencent.mobileqq.utils.ImageUtil.a(((URLDrawable)localObject1).getCurrDrawable(), 200, 200);
-      localObject2 = com.tencent.biz.common.util.ImageUtil.b((Bitmap)localObject1, 1);
-      localBuilder.setLargeIcon((Bitmap)localObject2);
-      if ((QLog.isColorLevel()) && (localObject2 != null)) {
-        QLog.d("StoryMsgNotification", 2, "thumbDrawable onLoadSuccessed start, cutBitmap.size():" + ((Bitmap)localObject2).getHeight() + ", " + ((Bitmap)localObject2).getWidth());
-      }
-      a(paramQQAppInterface, paramStoryPushMsg, i, localBuilder);
-      ((Bitmap)localObject1).recycle();
-      return;
+      a(paramQQAppInterface, paramStoryPushMsg, i, (NotificationCompat.Builder)localObject3);
     }
-    ((URLDrawable)localObject1).startDownload();
-    this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
-    return;
-    label517:
-    a(paramQQAppInterface, paramStoryPushMsg, i, localBuilder);
   }
   
   public void a(QQAppInterface paramQQAppInterface, StoryPushMsg paramStoryPushMsg, int paramInt, NotificationCompat.Builder paramBuilder)
@@ -236,8 +267,12 @@ public class StoryMsgNotification
     paramBuilder.deleteIntent = PendingIntent.getBroadcast(paramQQAppInterface.getApp(), paramInt, localIntent2, 134217728);
     BadgeUtils.a(paramQQAppInterface.getApp(), 0, paramBuilder);
     localQQNotificationManager.notify("StoryMsgNotification", paramInt, paramBuilder);
-    if (QLog.isColorLevel()) {
-      QLog.w("Q.qqstory.protocol", 2, "showQQStoryMsgNotification pushMsg: " + paramStoryPushMsg);
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("showQQStoryMsgNotification pushMsg: ");
+      paramQQAppInterface.append(paramStoryPushMsg);
+      QLog.w("Q.qqstory.protocol", 2, paramQQAppInterface.toString());
     }
   }
   
@@ -252,7 +287,7 @@ public class StoryMsgNotification
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.notification.StoryMsgNotification
  * JD-Core Version:    0.7.0.1
  */

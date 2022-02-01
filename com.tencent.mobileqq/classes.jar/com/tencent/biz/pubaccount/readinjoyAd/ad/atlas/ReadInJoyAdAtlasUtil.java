@@ -28,17 +28,22 @@ public class ReadInJoyAdAtlasUtil
   
   static
   {
-    a.put(Integer.valueOf(385), new Pair(Integer.valueOf(1000), Integer.valueOf(560)));
-    a.put(Integer.valueOf(65), new Pair(Integer.valueOf(1000), Integer.valueOf(560)));
-    a.put(Integer.valueOf(600), new Pair(Integer.valueOf(1000), Integer.valueOf(560)));
-    a.put(Integer.valueOf(769), new Pair(Integer.valueOf(1280), Integer.valueOf(720)));
-    a.put(Integer.valueOf(710), new Pair(Integer.valueOf(720), Integer.valueOf(1280)));
+    HashMap localHashMap = a;
+    Integer localInteger1 = Integer.valueOf(1000);
+    Integer localInteger2 = Integer.valueOf(560);
+    localHashMap.put(Integer.valueOf(385), new Pair(localInteger1, localInteger2));
+    a.put(Integer.valueOf(65), new Pair(localInteger1, localInteger2));
+    a.put(Integer.valueOf(600), new Pair(localInteger1, localInteger2));
+    localHashMap = a;
+    localInteger1 = Integer.valueOf(1280);
+    localInteger2 = Integer.valueOf(720);
+    localHashMap.put(Integer.valueOf(769), new Pair(localInteger1, localInteger2));
+    a.put(Integer.valueOf(710), new Pair(localInteger2, localInteger1));
   }
   
   public static AdvertisementInfo a(oidb_0x885.AdInfo paramAdInfo)
   {
     AdvertisementInfo localAdvertisementInfo = new AdvertisementInfo();
-    int i;
     if ((paramAdInfo != null) && (paramAdInfo.has()))
     {
       localAdvertisementInfo.mAdKdPos = paramAdInfo.int32_kd_pos.get();
@@ -110,32 +115,29 @@ public class ReadInJoyAdAtlasUtil
         localAdvertisementInfo.mInteractImageList = paramAdInfo.string_interact_image_list.get();
       }
       localAdvertisementInfo.mInteractType = paramAdInfo.uint32_interact_type.get();
-      if (!paramAdInfo.int32_soft_ad_type.has()) {
-        break label820;
+      int i;
+      if (paramAdInfo.int32_soft_ad_type.has()) {
+        i = paramAdInfo.int32_soft_ad_type.get();
+      } else {
+        i = 0;
       }
-      i = paramAdInfo.int32_soft_ad_type.get();
       localAdvertisementInfo.mSoftAdType = i;
-      if (!paramAdInfo.bytes_soft_ad_data.has()) {
-        break label825;
+      if (paramAdInfo.bytes_soft_ad_data.has()) {
+        paramAdInfo = paramAdInfo.bytes_soft_ad_data.get().toStringUtf8();
+      } else {
+        paramAdInfo = new JSONObject().toString();
       }
-    }
-    label820:
-    label825:
-    for (paramAdInfo = paramAdInfo.bytes_soft_ad_data.get().toStringUtf8();; paramAdInfo = new JSONObject().toString())
-    {
       localAdvertisementInfo.mSoftAdData = paramAdInfo;
       if (localAdvertisementInfo.mSoftAdType == 2) {
         localAdvertisementInfo.processSoftDataInfo(localAdvertisementInfo.mSoftAdData);
       }
-      return localAdvertisementInfo;
-      i = 0;
-      break;
     }
+    return localAdvertisementInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.atlas.ReadInJoyAdAtlasUtil
  * JD-Core Version:    0.7.0.1
  */

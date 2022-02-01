@@ -34,7 +34,7 @@ public final class j
     //   17: aload_1
     //   18: astore_2
     //   19: aload_3
-    //   20: ifnull +57 -> 77
+    //   20: ifnull +61 -> 81
     //   23: ldc 42
     //   25: iconst_1
     //   26: anewarray 4	java/lang/Object
@@ -54,43 +54,43 @@ public final class j
     //   50: aload_2
     //   51: areturn
     //   52: astore_2
-    //   53: aconst_null
-    //   54: astore_1
-    //   55: ldc 57
-    //   57: iconst_2
-    //   58: anewarray 4	java/lang/Object
-    //   61: dup
-    //   62: iconst_0
-    //   63: aload_0
-    //   64: invokevirtual 48	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   67: aastore
-    //   68: dup
-    //   69: iconst_1
-    //   70: aload_2
+    //   53: goto +6 -> 59
+    //   56: astore_2
+    //   57: aconst_null
+    //   58: astore_1
+    //   59: ldc 57
+    //   61: iconst_2
+    //   62: anewarray 4	java/lang/Object
+    //   65: dup
+    //   66: iconst_0
+    //   67: aload_0
+    //   68: invokevirtual 48	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   71: aastore
-    //   72: invokestatic 59	com/tencent/tbs/one/impl/a/f:c	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   75: aload_1
-    //   76: astore_2
-    //   77: aload_2
-    //   78: invokestatic 64	com/tencent/tbs/one/impl/a/c:a	(Ljava/io/Closeable;)V
-    //   81: aconst_null
-    //   82: areturn
-    //   83: astore_2
-    //   84: goto -29 -> 55
+    //   72: dup
+    //   73: iconst_1
+    //   74: aload_2
+    //   75: aastore
+    //   76: invokestatic 59	com/tencent/tbs/one/impl/a/f:c	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   79: aload_1
+    //   80: astore_2
+    //   81: aload_2
+    //   82: invokestatic 64	com/tencent/tbs/one/impl/a/c:a	(Ljava/io/Closeable;)V
+    //   85: aconst_null
+    //   86: areturn
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	87	0	paramFile	File
-    //   8	68	1	localFileOutputStream1	FileOutputStream
+    //   8	72	1	localFileOutputStream1	FileOutputStream
     //   18	33	2	localObject	Object
-    //   52	19	2	localThrowable1	java.lang.Throwable
-    //   76	2	2	localFileOutputStream2	FileOutputStream
-    //   83	1	2	localThrowable2	java.lang.Throwable
+    //   52	1	2	localThrowable1	java.lang.Throwable
+    //   56	19	2	localThrowable2	java.lang.Throwable
+    //   80	2	2	localFileOutputStream2	FileOutputStream
     //   16	30	3	localFileLock	FileLock
     // Exception table:
     //   from	to	target	type
-    //   0	9	52	java/lang/Throwable
-    //   9	17	83	java/lang/Throwable
-    //   23	50	83	java/lang/Throwable
+    //   9	17	52	java/lang/Throwable
+    //   23	50	52	java/lang/Throwable
+    //   0	9	56	java/lang/Throwable
   }
   
   /* Error */
@@ -112,7 +112,7 @@ public final class j
     //   23: aload 5
     //   25: ifnull +27 -> 52
     //   28: iload 4
-    //   30: ifle +100 -> 130
+    //   30: ifle +112 -> 142
     //   33: ldc 79
     //   35: iconst_1
     //   36: anewarray 4	java/lang/Object
@@ -148,36 +148,44 @@ public final class j
     //   93: aload_0
     //   94: invokespecial 92	java/lang/RuntimeException:<init>	(Ljava/lang/Throwable;)V
     //   97: athrow
-    //   98: new 89	java/lang/RuntimeException
+    //   98: new 94	java/lang/StringBuilder
     //   101: dup
-    //   102: new 94	java/lang/StringBuilder
-    //   105: dup
-    //   106: ldc 96
-    //   108: invokespecial 99	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   111: aload_1
-    //   112: invokevirtual 48	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   115: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   118: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   121: invokespecial 107	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
-    //   124: athrow
-    //   125: astore 5
-    //   127: goto -48 -> 79
-    //   130: aload 5
-    //   132: areturn
+    //   102: ldc 96
+    //   104: invokespecial 99	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   107: astore_0
+    //   108: aload_0
+    //   109: aload_1
+    //   110: invokevirtual 48	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   113: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   116: pop
+    //   117: new 89	java/lang/RuntimeException
+    //   120: dup
+    //   121: aload_0
+    //   122: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   125: invokespecial 107	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
+    //   128: astore_0
+    //   129: goto +5 -> 134
+    //   132: aload_0
+    //   133: athrow
+    //   134: goto -2 -> 132
+    //   137: astore 5
+    //   139: goto -60 -> 79
+    //   142: aload 5
+    //   144: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	133	0	paramCallable	java.util.concurrent.Callable<T>
-    //   0	133	1	paramFile	File
-    //   0	133	2	paramLong	long
+    //   0	145	0	paramCallable	java.util.concurrent.Callable<T>
+    //   0	145	1	paramFile	File
+    //   0	145	2	paramLong	long
     //   1	83	4	i	int
     //   21	29	5	localObject	Object
-    //   125	6	5	localInterruptedException	java.lang.InterruptedException
+    //   137	6	5	localInterruptedException	java.lang.InterruptedException
     // Exception table:
     //   from	to	target	type
     //   15	23	88	java/lang/Exception
     //   33	49	88	java/lang/Exception
     //   57	73	88	java/lang/Exception
-    //   73	79	125	java/lang/InterruptedException
+    //   73	79	137	java/lang/InterruptedException
   }
   
   public final void a()
@@ -187,9 +195,12 @@ public final class j
       f.a("Deleting lock file: %s", new Object[] { this.a.getAbsolutePath() });
       this.c.release();
       this.b.close();
-      if (!this.a.delete()) {
-        throw new IOException("Failed to delete lock file: " + this.a.getAbsolutePath());
+      if (this.a.delete()) {
+        return;
       }
+      StringBuilder localStringBuilder = new StringBuilder("Failed to delete lock file: ");
+      localStringBuilder.append(this.a.getAbsolutePath());
+      throw new IOException(localStringBuilder.toString());
     }
     catch (IOException localIOException)
     {
@@ -199,7 +210,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.a.j
  * JD-Core Version:    0.7.0.1
  */

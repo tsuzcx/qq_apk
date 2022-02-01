@@ -67,11 +67,12 @@ public class FlutterRuntimeLoader
       notifyRuntimeEvent(10, new Object[0]);
       onRuntimeLoadResult(0, "");
       MiniAppPrelaunchRecorder.get().onFlutterTaskDone();
-      if (this.baselibLoadTask != null)
+      Object localObject = this.baselibLoadTask;
+      if (localObject != null)
       {
-        BaselibLoader.BaselibContent localBaselibContent = this.baselibLoadTask.getBaselibContent();
-        if ((localBaselibContent != null) && ((getRuntime() instanceof NativeAppBrandRuntime))) {
-          ((NativeAppBrandRuntime)getRuntime()).setBaselibContent(localBaselibContent);
+        localObject = ((BaselibLoadAsyncTask)localObject).getBaselibContent();
+        if ((localObject != null) && ((getRuntime() instanceof NativeAppBrandRuntime))) {
+          ((NativeAppBrandRuntime)getRuntime()).setBaselibContent((BaselibLoader.BaselibContent)localObject);
         }
       }
     }
@@ -80,13 +81,16 @@ public class FlutterRuntimeLoader
   
   private void setRuntimeBaselib()
   {
-    if ((this.mRuntime == null) || (this.baselibLoadTask.getBaselibContent() == null)) {
-      return;
+    if (this.mRuntime != null)
+    {
+      if (this.baselibLoadTask.getBaselibContent() == null) {
+        return;
+      }
+      ((BaseRuntimeImpl.BaselibProvider)this.mRuntime.getManager(BaseRuntimeImpl.BaselibProvider.class)).setBaseLib(this.baselibLoadTask.getBaselibContent());
     }
-    ((BaseRuntimeImpl.BaselibProvider)this.mRuntime.getManager(BaseRuntimeImpl.BaselibProvider.class)).setBaseLib(this.baselibLoadTask.getBaselibContent());
   }
   
-  public BaseRuntime createRuntime(Context paramContext)
+  protected BaseRuntime createRuntime(Context paramContext)
   {
     try
     {
@@ -138,18 +142,20 @@ public class FlutterRuntimeLoader
     if (checkAllTaskIsDone()) {
       setStatus(5);
     }
-    if (paramBaseTask == this.preloadFlagTask) {
+    if (paramBaseTask == this.preloadFlagTask)
+    {
       onPreloadFlagTaskDone();
     }
-    for (;;)
+    else if (paramBaseTask == this.baselibLoadTask)
     {
-      super.onTaskDone(paramBaseTask);
-      return;
-      if (paramBaseTask == this.baselibLoadTask) {
-        setRuntimeBaselib();
-      } else if (paramBaseTask == this.runtimeCreateTask)
+      setRuntimeBaselib();
+    }
+    else
+    {
+      NativeRuntimeCreateTask localNativeRuntimeCreateTask = this.runtimeCreateTask;
+      if (paramBaseTask == localNativeRuntimeCreateTask)
       {
-        if (this.runtimeCreateTask.isSucceed()) {
+        if (localNativeRuntimeCreateTask.isSucceed()) {
           setRuntimeBaselib();
         }
       }
@@ -159,6 +165,7 @@ public class FlutterRuntimeLoader
         onApkgLoadTaskDone();
       }
     }
+    super.onTaskDone(paramBaseTask);
   }
   
   public void setMiniAppInfo(MiniAppInfo paramMiniAppInfo)
@@ -170,7 +177,7 @@ public class FlutterRuntimeLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.flutter.FlutterRuntimeLoader
  * JD-Core Version:    0.7.0.1
  */

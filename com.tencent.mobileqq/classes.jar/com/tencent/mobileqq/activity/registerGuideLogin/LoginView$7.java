@@ -13,7 +13,10 @@ class LoginView$7
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QLog.d("LoginActivity.LoginView", 1, "onReceive action=" + paramIntent.getAction());
+    paramContext = new StringBuilder();
+    paramContext.append("onReceive action=");
+    paramContext.append(paramIntent.getAction());
+    QLog.d("LoginActivity.LoginView", 1, paramContext.toString());
     if ("mqq.intent.action.QRCODE_LOGIN_FINISH".equals(paramIntent.getAction()))
     {
       LoginView.a(this.a, 1, "0X800BA19");
@@ -23,7 +26,7 @@ class LoginView$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginView.7
  * JD-Core Version:    0.7.0.1
  */

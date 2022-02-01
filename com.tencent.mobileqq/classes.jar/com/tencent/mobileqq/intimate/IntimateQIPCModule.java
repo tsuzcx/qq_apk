@@ -1,16 +1,8 @@
 package com.tencent.mobileqq.intimate;
 
 import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mutualmark.MutualMarkUtils;
 import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
-import mqq.app.AppRuntime;
 
 public class IntimateQIPCModule
   extends QIPCModule
@@ -24,66 +16,26 @@ public class IntimateQIPCModule
   
   public static IntimateQIPCModule a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new IntimateQIPCModule("IntimateQIPCModule");
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new IntimateQIPCModule("IntimateQIPCModule");
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if (!(localObject instanceof QQAppInterface)) {
-      return null;
-    }
-    localObject = (QQAppInterface)localObject;
-    boolean bool;
-    if ("key_web_change_switch_request".equals(paramString))
-    {
-      bool = paramBundle.getBoolean("key_web_mutual_mark_switch_status");
-      if (QLog.isColorLevel()) {
-        QLog.d("IntimateQIPCModule", 2, "onCall KEY_WEB_CHANGE_SWITCH_REQUEST ,status = " + bool);
-      }
-      if (bool)
-      {
-        paramInt = 1;
-        ReportController.b((AppRuntime)localObject, "CliOper", "", "", "0X8007021", "0X8007021", 0, 0, String.valueOf(paramInt), "", "", "");
-        paramString = (CardHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
-        if (bool) {
-          break label141;
-        }
-        bool = true;
-        label128:
-        paramString.j(bool);
-      }
-    }
-    for (;;)
-    {
-      return null;
-      paramInt = 0;
-      break;
-      label141:
-      bool = false;
-      break label128;
-      if ("key_web_jump_show_reactive_request".equals(paramString))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("IntimateQIPCModule", 2, "onCall KEY_WEB_JUMP_SHOW_REACTIVE_REQUEST");
-        }
-        paramInt = paramBundle.getInt("key_web_jump_show_reactive_entry_value");
-        MutualMarkUtils.a((QQAppInterface)localObject, ((QQAppInterface)localObject).getApp(), paramInt);
-      }
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge Z and I\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.intimate.IntimateQIPCModule
  * JD-Core Version:    0.7.0.1
  */

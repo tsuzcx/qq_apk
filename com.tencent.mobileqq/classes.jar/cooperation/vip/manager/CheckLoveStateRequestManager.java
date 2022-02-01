@@ -36,40 +36,43 @@ public class CheckLoveStateRequestManager
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    boolean bool = false;
     paramIntent = a();
     if (paramIntent != null)
     {
       paramIntent = (LoveZoneInfoHandler)paramIntent.getBusinessHandler(BusinessHandlerFactory.LOVE_STATE_CHANGE_HANDLER);
-      if (paramIntent != null) {
-        if (paramFromServiceMsg == null) {
-          break label90;
+      if (paramIntent != null)
+      {
+        int i;
+        if (paramFromServiceMsg != null) {
+          i = paramFromServiceMsg.getResultCode();
+        } else {
+          i = -1;
         }
+        boolean bool = false;
+        if (i == 1000)
+        {
+          paramFromServiceMsg = (sweet_pair_check_rsp)ProtocolUtils.decode(paramFromServiceMsg.getWupBuffer(), "getPairState");
+          if (paramFromServiceMsg != null)
+          {
+            sweet_rsp_comm localsweet_rsp_comm = paramFromServiceMsg.rsp_comm;
+            if (localsweet_rsp_comm != null)
+            {
+              if (localsweet_rsp_comm.retcode == 0) {
+                bool = true;
+              }
+              paramIntent.a(bool, paramFromServiceMsg);
+              return;
+            }
+          }
+        }
+        paramIntent.a(false, null);
       }
     }
-    label90:
-    for (int i = paramFromServiceMsg.getResultCode(); i == 1000; i = -1)
-    {
-      paramFromServiceMsg = (sweet_pair_check_rsp)ProtocolUtils.decode(paramFromServiceMsg.getWupBuffer(), "getPairState");
-      if (paramFromServiceMsg == null) {
-        break;
-      }
-      sweet_rsp_comm localsweet_rsp_comm = paramFromServiceMsg.rsp_comm;
-      if (localsweet_rsp_comm == null) {
-        break;
-      }
-      if (localsweet_rsp_comm.retcode == 0) {
-        bool = true;
-      }
-      paramIntent.a(bool, paramFromServiceMsg);
-      return;
-    }
-    paramIntent.a(false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.manager.CheckLoveStateRequestManager
  * JD-Core Version:    0.7.0.1
  */

@@ -14,10 +14,11 @@ public class QFlutterNetworkImage
   
   public void getNetworkImage(String paramString, int paramInt1, int paramInt2, MethodChannel.Result paramResult)
   {
-    if (this.impl == null) {
+    QFlutterNetworkImageInterface localQFlutterNetworkImageInterface = this.impl;
+    if (localQFlutterNetworkImageInterface == null) {
       return;
     }
-    this.impl.loadBitmap(paramString, paramInt1, paramInt2, new QFlutterNetworkImage.1(this, paramResult));
+    localQFlutterNetworkImageInterface.loadBitmap(paramString, paramInt1, paramInt2, new QFlutterNetworkImage.1(this, paramResult));
   }
   
   public void init(QFlutterNetworkImageInterface paramQFlutterNetworkImageInterface)
@@ -28,16 +29,17 @@ public class QFlutterNetworkImage
   
   public void releaseNetworkImage(String paramString, MethodChannel.Result paramResult)
   {
-    if (this.impl == null) {
+    QFlutterNetworkImageInterface localQFlutterNetworkImageInterface = this.impl;
+    if (localQFlutterNetworkImageInterface == null) {
       return;
     }
-    this.impl.releaseBitmap(paramString);
+    localQFlutterNetworkImageInterface.releaseBitmap(paramString);
     paramResult.success(Boolean.valueOf(true));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.qflutter.qflutter_network_image.QFlutterNetworkImage
  * JD-Core Version:    0.7.0.1
  */

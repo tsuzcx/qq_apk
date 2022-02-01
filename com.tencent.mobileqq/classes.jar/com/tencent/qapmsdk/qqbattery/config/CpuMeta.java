@@ -41,8 +41,8 @@ public class CpuMeta
       {
         this.firstBgInterval = (Integer.valueOf(localObject[2][0]).intValue() * 60 * 1000L);
         this.bgCollectCount = Integer.valueOf(localObject[2][1]).intValue();
+        return this;
       }
-      return this;
     }
     catch (Exception paramString)
     {
@@ -53,7 +53,7 @@ public class CpuMeta
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.qqbattery.config.CpuMeta
  * JD-Core Version:    0.7.0.1
  */

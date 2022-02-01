@@ -15,8 +15,12 @@ class TroopStoryManager$1
   
   public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.troopstory.TroopStoryManager", 2, "troop story revoke result, code=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("troop story revoke result, code=");
+      paramBundle.append(paramInt);
+      QLog.d("Q.qqstory.troopstory.TroopStoryManager", 2, paramBundle.toString());
     }
     if ((paramInt == 0) && (paramArrayOfByte != null)) {
       try
@@ -24,8 +28,12 @@ class TroopStoryManager$1
         paramBundle = new qqstory_group.RspGroupVideoDelete();
         paramBundle.mergeFrom(paramArrayOfByte);
         paramArrayOfByte = (qqstory_struct.ErrorInfo)paramBundle.result.get();
-        if (paramArrayOfByte.error_code.has()) {
-          QLog.d("Q.qqstory.troopstory.TroopStoryManager", 2, "revoke rsp.result.error_code=" + paramArrayOfByte.error_code.get());
+        if (paramArrayOfByte.error_code.has())
+        {
+          paramBundle = new StringBuilder();
+          paramBundle.append("revoke rsp.result.error_code=");
+          paramBundle.append(paramArrayOfByte.error_code.get());
+          QLog.d("Q.qqstory.troopstory.TroopStoryManager", 2, paramBundle.toString());
         }
         return paramArrayOfByte;
       }
@@ -41,7 +49,7 @@ class TroopStoryManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.troop.TroopStoryManager.1
  * JD-Core Version:    0.7.0.1
  */

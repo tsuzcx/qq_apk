@@ -21,8 +21,9 @@ public class VasUpdateWrapper
   
   public static ICmdManager getCmdManager()
   {
-    if (mCmdManager != null) {
-      return mCmdManager;
+    ICmdManager localICmdManager = mCmdManager;
+    if (localICmdManager != null) {
+      return localICmdManager;
     }
     mCmdManager = mWrapper.getCmdManager();
     if (mCmdManager == null) {
@@ -33,8 +34,9 @@ public class VasUpdateWrapper
   
   public static ICommonManager getCommonManager()
   {
-    if (mCommonManager != null) {
-      return mCommonManager;
+    ICommonManager localICommonManager = mCommonManager;
+    if (localICommonManager != null) {
+      return localICommonManager;
     }
     mCommonManager = mWrapper.getCommonManager();
     if (mCommonManager == null) {
@@ -45,8 +47,9 @@ public class VasUpdateWrapper
   
   public static IDbManager getDbManager()
   {
-    if (mDbManager != null) {
-      return mDbManager;
+    IDbManager localIDbManager = mDbManager;
+    if (localIDbManager != null) {
+      return localIDbManager;
     }
     mDbManager = mWrapper.getDbManager();
     if (mDbManager == null) {
@@ -57,8 +60,9 @@ public class VasUpdateWrapper
   
   public static IHttpDownloader getHttpDownloader()
   {
-    if (mHttpDownloader != null) {
-      return mHttpDownloader;
+    IHttpDownloader localIHttpDownloader = mHttpDownloader;
+    if (localIHttpDownloader != null) {
+      return localIHttpDownloader;
     }
     mHttpDownloader = mWrapper.getHttpDownloader();
     if (mHttpDownloader == null) {
@@ -69,8 +73,9 @@ public class VasUpdateWrapper
   
   public static IVasLog getLog()
   {
-    if (mVasLog != null) {
-      return mVasLog;
+    IVasLog localIVasLog = mVasLog;
+    if (localIVasLog != null) {
+      return localIVasLog;
     }
     mVasLog = mWrapper.getLog();
     if (mVasLog == null) {
@@ -81,8 +86,9 @@ public class VasUpdateWrapper
   
   public static IReportManager getReportManager()
   {
-    if (mReporter != null) {
-      return mReporter;
+    IReportManager localIReportManager = mReporter;
+    if (localIReportManager != null) {
+      return localIReportManager;
     }
     mReporter = mWrapper.getReportManager();
     if (mReporter == null) {
@@ -102,7 +108,7 @@ public class VasUpdateWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.vas.update.wrapper.VasUpdateWrapper
  * JD-Core Version:    0.7.0.1
  */

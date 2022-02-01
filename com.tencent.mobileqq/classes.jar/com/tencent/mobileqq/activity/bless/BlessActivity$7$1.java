@@ -21,13 +21,13 @@ class BlessActivity$7$1
     if (BlessActivity.a(this.a.a) != null) {
       BlessActivity.a(this.a.a).bringToFront();
     }
-    this.a.a.findViewById(2131369534).bringToFront();
-    this.a.a.findViewById(2131379432).bringToFront();
+    this.a.a.findViewById(2131369249).bringToFront();
+    this.a.a.findViewById(2131378784).bringToFront();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessActivity.7.1
  * JD-Core Version:    0.7.0.1
  */

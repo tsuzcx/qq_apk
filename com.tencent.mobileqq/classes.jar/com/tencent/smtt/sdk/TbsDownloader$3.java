@@ -14,7 +14,10 @@ final class TbsDownloader$3
     long l = System.currentTimeMillis();
     this.a.mSyncMap.put("last_check", Long.valueOf(l));
     this.a.commit();
-    TbsLog.i("TbsDownload", "[TbsDownloader.sendRequest] httpResponseCode=" + paramInt);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[TbsDownloader.sendRequest] httpResponseCode=");
+    ((StringBuilder)localObject).append(paramInt);
+    TbsLog.i("TbsDownload", ((StringBuilder)localObject).toString());
     if ((TbsShareManager.isThirdPartyApp(TbsDownloader.a())) && (paramInt == 200))
     {
       this.a.mSyncMap.put("last_request_success", Long.valueOf(System.currentTimeMillis()));
@@ -24,19 +27,23 @@ final class TbsDownloader$3
     }
     if (paramInt >= 300)
     {
-      if (this.b) {
-        this.a.setDownloadInterruptCode(-107);
+      if (this.b)
+      {
+        localObject = this.a;
+        paramInt = -107;
       }
+      else
+      {
+        localObject = this.a;
+        paramInt = -207;
+      }
+      ((TbsDownloadConfig)localObject).setDownloadInterruptCode(paramInt);
     }
-    else {
-      return;
-    }
-    this.a.setDownloadInterruptCode(-207);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsDownloader.3
  * JD-Core Version:    0.7.0.1
  */

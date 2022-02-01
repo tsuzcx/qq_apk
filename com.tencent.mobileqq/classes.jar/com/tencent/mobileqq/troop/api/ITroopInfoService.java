@@ -56,6 +56,8 @@ public abstract interface ITroopInfoService
   
   public abstract EntityTransaction getEntityTransaction();
   
+  public abstract long getInsertJoinTroopMsgTime(String paramString);
+  
   public abstract String getTroopCodeByTroopUin(String paramString);
   
   public abstract void getTroopCodeByTroopUinAsync(String paramString, ITroopInfoService.GetTroopCodeCallback paramGetTroopCodeCallback);
@@ -108,13 +110,15 @@ public abstract interface ITroopInfoService
   
   public abstract void saveTroops(ArrayList<TroopInfo> paramArrayList, long paramLong);
   
+  public abstract void setInsertJoinTroopMsgTime(String paramString, long paramLong);
+  
   public abstract void setTroopEliminated(List<String> paramList);
   
   public abstract boolean updateEntity(Entity paramEntity);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.ITroopInfoService
  * JD-Core Version:    0.7.0.1
  */

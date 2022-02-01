@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
@@ -19,7 +20,7 @@ public class ProfileContentTitleView
 {
   private static final String TAG = "ProfileContentTitleView";
   public FrameLayout mContentContainer;
-  public Context mContext;
+  protected Context mContext;
   protected ViewGroup mRoot;
   public ImageView mTitleArrow;
   public ViewGroup mTitleContainer;
@@ -42,127 +43,137 @@ public class ProfileContentTitleView
   
   public void addContentView(View paramView)
   {
-    if (this.mContentContainer != null)
+    FrameLayout localFrameLayout = this.mContentContainer;
+    if (localFrameLayout != null)
     {
-      if (this.mContentContainer.getChildCount() > 0) {
+      if (localFrameLayout.getChildCount() > 0)
+      {
         QLog.e("ProfileContentTitleView", 1, "addContentView add fail, already exit.");
+        return;
       }
+      this.mContentContainer.addView(paramView);
     }
-    else {
-      return;
-    }
-    this.mContentContainer.addView(paramView);
   }
   
   public View getContentView()
   {
-    if (this.mContentContainer != null) {
-      return this.mContentContainer.getChildAt(0);
+    FrameLayout localFrameLayout = this.mContentContainer;
+    if (localFrameLayout != null) {
+      return localFrameLayout.getChildAt(0);
     }
     return null;
   }
   
   protected void init()
   {
-    LayoutInflater.from(this.mContext).inflate(2131559703, this, true);
-    this.mRoot = ((ViewGroup)findViewById(2131377366));
-    this.mTitleContainer = ((ViewGroup)findViewById(2131379471));
-    this.mTitleIcon = ((ImageView)findViewById(2131379477));
-    this.mTitleText = ((TextView)findViewById(2131379527));
-    this.mTitleTextBg = ((ViewGroup)findViewById(2131379528));
-    this.mTitleArrow = ((ImageView)findViewById(2131379449));
-    this.mTitleExtContainer = ((RelativeLayout)findViewById(2131379476));
-    this.mContentContainer = ((FrameLayout)findViewById(2131365304));
+    LayoutInflater.from(this.mContext).inflate(2131559579, this, true);
+    this.mRoot = ((ViewGroup)findViewById(2131376818));
+    this.mTitleContainer = ((ViewGroup)findViewById(2131378823));
+    this.mTitleIcon = ((ImageView)findViewById(2131378828));
+    this.mTitleText = ((TextView)findViewById(2131378876));
+    this.mTitleTextBg = ((ViewGroup)findViewById(2131378877));
+    this.mTitleArrow = ((ImageView)findViewById(2131378801));
+    this.mTitleExtContainer = ((RelativeLayout)findViewById(2131378827));
+    this.mContentContainer = ((FrameLayout)findViewById(2131365179));
     setIconEnable(false);
   }
   
   public void removeContentViews()
   {
-    if (this.mContentContainer != null) {
-      this.mContentContainer.removeAllViews();
+    FrameLayout localFrameLayout = this.mContentContainer;
+    if (localFrameLayout != null) {
+      localFrameLayout.removeAllViews();
     }
   }
   
   public void setArrowEnable(boolean paramBoolean)
   {
-    ImageView localImageView;
-    if (this.mTitleArrow != null)
+    ImageView localImageView = this.mTitleArrow;
+    if (localImageView != null)
     {
-      localImageView = this.mTitleArrow;
-      if (!paramBoolean) {
-        break label24;
+      int i;
+      if (paramBoolean) {
+        i = 0;
+      } else {
+        i = 8;
       }
-    }
-    label24:
-    for (int i = 0;; i = 8)
-    {
       localImageView.setVisibility(i);
-      return;
     }
   }
   
   public void setIcon(Drawable paramDrawable)
   {
-    if (this.mTitleIcon != null) {
-      this.mTitleIcon.setBackgroundDrawable(paramDrawable);
+    ImageView localImageView = this.mTitleIcon;
+    if (localImageView != null) {
+      localImageView.setBackgroundDrawable(paramDrawable);
     }
   }
   
   public void setIconEnable(boolean paramBoolean)
   {
-    ImageView localImageView;
-    if (this.mTitleIcon != null)
+    ImageView localImageView = this.mTitleIcon;
+    if (localImageView != null)
     {
-      localImageView = this.mTitleIcon;
-      if (!paramBoolean) {
-        break label24;
+      int i;
+      if (paramBoolean) {
+        i = 0;
+      } else {
+        i = 8;
       }
-    }
-    label24:
-    for (int i = 0;; i = 8)
-    {
       localImageView.setVisibility(i);
-      return;
     }
   }
   
   public void setMarginBottomEnable(boolean paramBoolean)
   {
-    if (this.mRoot != null) {
-      if (!paramBoolean) {
-        break label50;
-      }
-    }
-    label50:
-    for (int i = getResources().getDimensionPixelSize(2131297601);; i = 0)
+    if (this.mRoot != null)
     {
+      int i = 0;
+      if (paramBoolean) {
+        i = getResources().getDimensionPixelSize(2131297592);
+      }
       FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.mRoot.getLayoutParams();
       if (localLayoutParams != null)
       {
         localLayoutParams.bottomMargin = i;
         this.mRoot.setLayoutParams(localLayoutParams);
       }
-      return;
     }
   }
   
   public void setTitle(String paramString)
   {
-    if (this.mTitleText != null) {
-      this.mTitleText.setText(paramString);
+    TextView localTextView = this.mTitleText;
+    if (localTextView != null) {
+      localTextView.setText(paramString);
     }
   }
   
   public void setTitleBackground(Drawable paramDrawable)
   {
-    if (this.mTitleContainer != null) {
-      this.mTitleContainer.setBackgroundDrawable(paramDrawable);
+    ViewGroup localViewGroup = this.mTitleContainer;
+    if (localViewGroup != null) {
+      localViewGroup.setBackgroundDrawable(paramDrawable);
     }
+  }
+  
+  public void updateViewHeight(int paramInt)
+  {
+    Object localObject = this.mContentContainer;
+    if (localObject == null) {
+      return;
+    }
+    localObject = ((FrameLayout)localObject).getLayoutParams();
+    if (localObject == null) {
+      return;
+    }
+    ((ViewGroup.LayoutParams)localObject).height = (paramInt + this.mContentContainer.getPaddingTop() + this.mContentContainer.getPaddingBottom());
+    invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.view.ProfileContentTitleView
  * JD-Core Version:    0.7.0.1
  */

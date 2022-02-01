@@ -7,11 +7,11 @@ class SmallScreenService$2
 {
   SmallScreenService$2(SmallScreenService paramSmallScreenService) {}
   
-  public void a(long paramLong, int paramInt, String paramString) {}
+  protected void a(long paramLong, int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenService.2
  * JD-Core Version:    0.7.0.1
  */

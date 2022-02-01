@@ -14,7 +14,15 @@ class ActionLivenessState$6$1
   
   public void onGetBestImage(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    YtLogger.d(ActionLivenessState.access$200(), "获取到最优图. width:" + paramInt1 + " height: " + paramInt2 + " bytes size: " + paramArrayOfByte.length);
+    String str = ActionLivenessState.access$200();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("获取到最优图. width:");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(" height: ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(" bytes size: ");
+    localStringBuilder.append(paramArrayOfByte.length);
+    YtLogger.d(str, localStringBuilder.toString());
     paramArrayOfByte = new YuvImage(paramArrayOfByte, 17, paramInt1, paramInt2, null);
     ActionLivenessState.access$1700(this.this$1.this$0).put("best_frame", paramArrayOfByte);
     ActionLivenessState.access$1802(this.this$1.this$0, YtSDKKitCommon.StateNameHelper.StateClassName.NET_LIVENESS_REQ_RESULT_STATE);
@@ -23,7 +31,7 @@ class ActionLivenessState$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.liveness.ActionLivenessState.6.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,37 +14,37 @@ public class TeamWorkSaveDialog
 {
   public TeamWorkSaveDialog(Context paramContext, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    super(paramContext, 2131755842);
-    setContentView(2131563103);
-    paramContext = (TextView)findViewById(2131379432);
+    super(paramContext, 2131756189);
+    setContentView(2131562929);
+    paramContext = (TextView)findViewById(2131378784);
     if (!TextUtils.isEmpty(paramString1))
     {
       paramContext.setVisibility(0);
       paramContext.setText(paramString1);
-      paramContext = (TextView)findViewById(2131365294);
-      if (TextUtils.isEmpty(paramString2)) {
-        break label142;
-      }
+    }
+    else
+    {
+      paramContext.setVisibility(8);
+    }
+    paramContext = (TextView)findViewById(2131365169);
+    if (!TextUtils.isEmpty(paramString2))
+    {
       paramContext.setVisibility(0);
       paramContext.setMovementMethod(LinkMovementMethod.getInstance());
       paramContext.setText(new OpenDefaultBrowserQQText(paramString2, 8));
     }
-    for (;;)
+    else
     {
-      ((Button)findViewById(2131365207)).setOnClickListener(new TeamWorkSaveDialog.1(this, paramOnClickListener1));
-      ((ImageView)findViewById(2131364824)).setOnClickListener(new TeamWorkSaveDialog.2(this, paramOnClickListener2));
-      setCanceledOnTouchOutside(false);
-      return;
-      paramContext.setVisibility(8);
-      break;
-      label142:
       paramContext.setVisibility(8);
     }
+    ((Button)findViewById(2131365086)).setOnClickListener(new TeamWorkSaveDialog.1(this, paramOnClickListener1));
+    ((ImageView)findViewById(2131364711)).setOnClickListener(new TeamWorkSaveDialog.2(this, paramOnClickListener2));
+    setCanceledOnTouchOutside(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkSaveDialog
  * JD-Core Version:    0.7.0.1
  */

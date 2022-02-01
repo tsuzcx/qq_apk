@@ -10,7 +10,6 @@ import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
 import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
 import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 import com.tencent.qqlive.mediaplayer.api.TVK_UserInfo;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
 
 public class TVKPlayerFactory
   implements IWSPlayerFactory<TVK_UserInfo, TVK_PlayerVideoInfo>
@@ -22,8 +21,8 @@ public class TVKPlayerFactory
   
   public IWSPlayer a(Context paramContext, IWSVideoView paramIWSVideoView)
   {
-    paramIWSVideoView = null;
     TVK_IProxyFactory localTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
+    paramIWSVideoView = null;
     if (localTVK_IProxyFactory != null) {
       paramIWSVideoView = localTVK_IProxyFactory.createMediaPlayer(paramContext, null);
     }
@@ -42,21 +41,23 @@ public class TVKPlayerFactory
   public IWSVideoView a(Context paramContext, boolean paramBoolean)
   {
     TVK_IProxyFactory localTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
-    IVideoViewBase localIVideoViewBase = null;
-    if (localTVK_IProxyFactory != null) {
-      if (!paramBoolean) {
-        break label34;
+    if (localTVK_IProxyFactory != null)
+    {
+      if (paramBoolean) {
+        paramContext = localTVK_IProxyFactory.createVideoView_Scroll(paramContext);
+      } else {
+        paramContext = localTVK_IProxyFactory.createVideoView(paramContext);
       }
     }
-    label34:
-    for (localIVideoViewBase = localTVK_IProxyFactory.createVideoView_Scroll(paramContext);; localIVideoViewBase = localTVK_IProxyFactory.createVideoView(paramContext)) {
-      return new TVKPlayerVideoView(localIVideoViewBase);
+    else {
+      paramContext = null;
     }
+    return new TVKPlayerVideoView(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.wrapper.tvkplayer.TVKPlayerFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.mobileqq.minigame.manager;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -38,43 +39,47 @@ class GameCloseManager$MiniAppViewItem
   public GameCloseManager$MiniAppViewItem(Context paramContext)
   {
     this.context = paramContext;
-    this.root = LayoutInflater.from(paramContext).inflate(2131559529, null, false);
-    this.imageView = ((ImageView)this.root.findViewById(2131371751));
-    this.buttonView = ((RelativeLayout)this.root.findViewById(2131371747));
-    if ((this.imageView instanceof ThemeImageView)) {
-      ((ThemeImageView)this.imageView).setMaskShape(ThemeImageWrapper.MODE_OTHER);
+    this.root = LayoutInflater.from(paramContext).inflate(2131559405, null, false);
+    this.imageView = ((ImageView)this.root.findViewById(2131371377));
+    this.buttonView = ((RelativeLayout)this.root.findViewById(2131371373));
+    paramContext = this.imageView;
+    if ((paramContext instanceof ThemeImageView)) {
+      ((ThemeImageView)paramContext).setMaskShape(ThemeImageWrapper.MODE_OTHER);
     }
-    this.textView = ((TextView)this.root.findViewById(2131371754));
-    this.gap = this.root.findViewById(2131371750);
-    this.subtitleView = ((TextView)this.root.findViewById(2131371753));
-    this.friendIcon0 = ((ImageView)this.root.findViewById(2131371743));
-    this.friendIcon1 = ((ImageView)this.root.findViewById(2131371744));
-    this.friendIcon2 = ((ImageView)this.root.findViewById(2131371745));
+    this.textView = ((TextView)this.root.findViewById(2131371380));
+    this.gap = this.root.findViewById(2131371376);
+    this.subtitleView = ((TextView)this.root.findViewById(2131371379));
+    this.friendIcon0 = ((ImageView)this.root.findViewById(2131371369));
+    this.friendIcon1 = ((ImageView)this.root.findViewById(2131371370));
+    this.friendIcon2 = ((ImageView)this.root.findViewById(2131371371));
     this.friendIconList.add(this.friendIcon0);
     this.friendIconList.add(this.friendIcon1);
     this.friendIconList.add(this.friendIcon2);
-    this.friendIconLayout = ((RelativeLayout)this.root.findViewById(2131371746));
+    this.friendIconLayout = ((RelativeLayout)this.root.findViewById(2131371372));
   }
   
   private void setSubtitleData(Context paramContext, MiniAppInfo paramMiniAppInfo)
   {
-    if (paramContext == null) {}
-    for (;;)
-    {
+    if (paramContext == null) {
       return;
-      int j = paramMiniAppInfo.friendNum;
-      List localList = paramMiniAppInfo.users;
-      if ((j <= 0) || (localList == null) || (localList.size() < j)) {
-        break;
-      }
-      this.subtitleView.setText(paramMiniAppInfo.friendNum + "个好友在玩");
+    }
+    int j = paramMiniAppInfo.friendNum;
+    Object localObject1 = paramMiniAppInfo.users;
+    int i;
+    if ((j > 0) && (localObject1 != null) && (((List)localObject1).size() >= j))
+    {
+      Object localObject2 = this.subtitleView;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramMiniAppInfo.friendNum);
+      localStringBuilder.append("个好友在玩");
+      ((TextView)localObject2).setText(localStringBuilder.toString());
       this.friendIconLayout.setVisibility(0);
       this.gap.setVisibility(0);
-      paramMiniAppInfo = paramContext.getResources().getDrawable(2130840452);
+      paramMiniAppInfo = paramContext.getResources().getDrawable(2130840321);
       paramContext = URLDrawable.URLDrawableOptions.obtain();
       paramContext.mLoadingDrawable = paramMiniAppInfo;
       paramContext.mFailedDrawable = paramMiniAppInfo;
-      int i = ViewUtils.a(12.0F);
+      i = ViewUtils.a(12.0F);
       paramContext.mRequestHeight = i;
       paramContext.mRequestWidth = i;
       i = 0;
@@ -82,34 +87,48 @@ class GameCloseManager$MiniAppViewItem
       {
         paramMiniAppInfo = (ImageView)this.friendIconList.get(i);
         paramMiniAppInfo.setVisibility(0);
-        URLDrawable localURLDrawable = URLDrawable.getDrawable(((UseUserInfo)localList.get(i)).avatar, paramContext);
-        localURLDrawable.setTag(URLDrawableDecodeHandler.a(ViewUtils.a(12.0F), ViewUtils.a(12.0F)));
-        localURLDrawable.setDecodeHandler(URLDrawableDecodeHandler.p);
-        paramMiniAppInfo.setImageDrawable(localURLDrawable);
+        localObject2 = URLDrawable.getDrawable(((UseUserInfo)((List)localObject1).get(i)).avatar, paramContext);
+        ((URLDrawable)localObject2).setTag(URLDrawableDecodeHandler.a(ViewUtils.a(12.0F), ViewUtils.a(12.0F)));
+        ((URLDrawable)localObject2).setDecodeHandler(URLDrawableDecodeHandler.n);
+        paramMiniAppInfo.setImageDrawable((Drawable)localObject2);
         i += 1;
       }
-      if (j < 3)
-      {
+      if (j < 3) {
         i = 2;
-        while (i >= j)
-        {
-          ((ImageView)this.friendIconList.get(i)).setVisibility(8);
-          i -= 1;
-        }
       }
     }
-    this.friendIconLayout.setVisibility(8);
-    this.gap.setVisibility(8);
-    paramContext = "1";
-    if (paramMiniAppInfo.userNum >= 10000) {
-      paramContext = paramMiniAppInfo.userNum % 10000 + "万";
-    }
-    for (;;)
+    else
     {
-      this.subtitleView.setText(paramContext + "人在玩");
-      return;
-      if (paramMiniAppInfo.userNum > 0) {
-        paramContext = paramMiniAppInfo.userNum + "";
+      while (i >= j)
+      {
+        ((ImageView)this.friendIconList.get(i)).setVisibility(8);
+        i -= 1;
+        continue;
+        this.friendIconLayout.setVisibility(8);
+        this.gap.setVisibility(8);
+        if (paramMiniAppInfo.userNum >= 10000)
+        {
+          paramContext = new StringBuilder();
+          paramContext.append(paramMiniAppInfo.userNum % 10000);
+          paramContext.append("万");
+          paramContext = paramContext.toString();
+        }
+        else if (paramMiniAppInfo.userNum > 0)
+        {
+          paramContext = new StringBuilder();
+          paramContext.append(paramMiniAppInfo.userNum);
+          paramContext.append("");
+          paramContext = paramContext.toString();
+        }
+        else
+        {
+          paramContext = "1";
+        }
+        paramMiniAppInfo = this.subtitleView;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramContext);
+        ((StringBuilder)localObject1).append("人在玩");
+        paramMiniAppInfo.setText(((StringBuilder)localObject1).toString());
       }
     }
   }
@@ -126,7 +145,7 @@ class GameCloseManager$MiniAppViewItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.GameCloseManager.MiniAppViewItem
  * JD-Core Version:    0.7.0.1
  */

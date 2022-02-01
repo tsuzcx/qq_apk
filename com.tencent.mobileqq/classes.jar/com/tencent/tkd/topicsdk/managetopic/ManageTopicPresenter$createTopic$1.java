@@ -24,7 +24,17 @@ final class ManageTopicPresenter$createTopic$1
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "errorMsg");
     Intrinsics.checkParameterIsNotNull(paramString2, "tip");
-    TLog.a("ManageTopicPresenter", "createTopic response errorCode = " + paramInt + ", " + "errorMsg = " + paramString1 + ", tip = " + paramString2 + ", topicId = " + paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("createTopic response errorCode = ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("errorMsg = ");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(", tip = ");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(", topicId = ");
+    localStringBuilder.append(paramLong);
+    TLog.a("ManageTopicPresenter", localStringBuilder.toString());
     if (ManageTopicPresenter.a(this.this$0) == null) {
       TLog.d("ManageTopicPresenter", "createTopic view is null!");
     }
@@ -32,6 +42,7 @@ final class ManageTopicPresenter$createTopic$1
     if (paramString2 != null) {
       paramString2.k();
     }
+    int i = 1;
     if (paramInt == 0)
     {
       this.$topicInfo.setTopicId(paramLong);
@@ -41,39 +52,39 @@ final class ManageTopicPresenter$createTopic$1
       }
       paramString1 = ManageTopicPresenter.a(this.this$0);
       if (paramString1 != null) {
-        paramString1.a(R.string.s);
+        paramString1.a(R.string.o);
       }
       ManageTopicPresenter.a(this.this$0).a();
-    }
-    label240:
-    do
-    {
       return;
+    }
+    paramString2 = ManageTopicPresenter.a(this.this$0);
+    if (paramString2 != null) {
+      paramString2.a(this.$topicInfo, false);
+    }
+    if (((CharSequence)paramString1).length() > 0) {
+      paramInt = i;
+    } else {
+      paramInt = 0;
+    }
+    if (paramInt != 0)
+    {
       paramString2 = ManageTopicPresenter.a(this.this$0);
       if (paramString2 != null) {
-        paramString2.a(this.$topicInfo, false);
-      }
-      if (((CharSequence)paramString1).length() > 0) {}
-      for (paramInt = 1;; paramInt = 0)
-      {
-        if (paramInt == 0) {
-          break label240;
-        }
-        paramString2 = ManageTopicPresenter.a(this.this$0);
-        if (paramString2 == null) {
-          break;
-        }
         paramString2.a(paramString1);
-        return;
       }
+    }
+    else
+    {
       paramString1 = ManageTopicPresenter.a(this.this$0);
-    } while (paramString1 == null);
-    paramString1.a(R.string.r);
+      if (paramString1 != null) {
+        paramString1.a(R.string.n);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.managetopic.ManageTopicPresenter.createTopic.1
  * JD-Core Version:    0.7.0.1
  */

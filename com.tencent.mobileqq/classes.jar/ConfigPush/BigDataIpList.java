@@ -50,15 +50,16 @@ public final class BigDataIpList
   {
     paramJceOutputStream.write(this.uService_type, 0);
     paramJceOutputStream.write(this.vIplist, 1);
-    if (this.netSegConfs != null) {
-      paramJceOutputStream.write(this.netSegConfs, 2);
+    ArrayList localArrayList = this.netSegConfs;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
     paramJceOutputStream.write(this.ufragment_size, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ConfigPush.BigDataIpList
  * JD-Core Version:    0.7.0.1
  */

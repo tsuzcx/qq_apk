@@ -17,36 +17,37 @@ class InnerWebView$7
   public Void perform(BaseRuntime paramBaseRuntime)
   {
     paramBaseRuntime = paramBaseRuntime.getPage();
-    if (!(paramBaseRuntime instanceof AppBrandPageContainer)) {
-      QMLog.d("Action", "Page is invalid");
-    }
-    for (;;)
+    if (!(paramBaseRuntime instanceof AppBrandPageContainer))
     {
+      QMLog.d("Action", "Page is invalid");
       return null;
-      paramBaseRuntime = (AppBrandPageContainer)paramBaseRuntime;
-      try
+    }
+    paramBaseRuntime = (AppBrandPageContainer)paramBaseRuntime;
+    try
+    {
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("htmlId", this.this$0.htmlId);
+      ((JSONObject)localObject).put("src", this.val$url);
+      int i = PageAction.obtain(InnerWebView.access$600(this.this$0)).getPageId();
+      if ((paramBaseRuntime.getShowingPage() != null) && (paramBaseRuntime.getShowingPage().getBrandPageWebview() != null))
       {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("htmlId", this.this$0.htmlId);
-        localJSONObject.put("src", this.val$url);
-        int i = PageAction.obtain(InnerWebView.access$600(this.this$0)).getPageId();
-        if ((paramBaseRuntime.getShowingPage() != null) && (paramBaseRuntime.getShowingPage().getBrandPageWebview() != null))
-        {
-          paramBaseRuntime.getShowingPage().getBrandPageWebview().evaluateSubscribeJS("onWebviewError", localJSONObject.toString(), i);
-          return null;
-        }
+        paramBaseRuntime.getShowingPage().getBrandPageWebview().evaluateSubscribeJS("onWebviewError", ((JSONObject)localObject).toString(), i);
+        return null;
       }
-      catch (Exception paramBaseRuntime)
-      {
-        QMLog.e("Action", "onPageStarted error." + paramBaseRuntime);
-      }
+    }
+    catch (Exception paramBaseRuntime)
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onPageStarted error.");
+      ((StringBuilder)localObject).append(paramBaseRuntime);
+      QMLog.e("Action", ((StringBuilder)localObject).toString());
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.InnerWebView.7
  * JD-Core Version:    0.7.0.1
  */

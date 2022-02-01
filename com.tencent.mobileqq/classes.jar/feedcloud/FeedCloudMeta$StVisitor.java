@@ -19,13 +19,14 @@ public final class FeedCloudMeta$StVisitor
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34 }, new String[] { "viewCount", "busiData", "recomCount", "viewDesc" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), "" }, StVisitor.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34 }, new String[] { "viewCount", "busiData", "recomCount", "viewDesc" }, new Object[] { localInteger, localByteStringMicro, localInteger, "" }, StVisitor.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     feedcloud.FeedCloudMeta.StVisitor
  * JD-Core Version:    0.7.0.1
  */

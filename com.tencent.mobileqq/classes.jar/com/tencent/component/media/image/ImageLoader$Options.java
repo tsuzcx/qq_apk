@@ -45,7 +45,7 @@ public class ImageLoader$Options
   
   static
   {
-    localLinkedList = mObjectCache;
+    LinkedList localLinkedList = mObjectCache;
     int i = 0;
     for (;;)
     {
@@ -55,7 +55,16 @@ public class ImageLoader$Options
         mObjectCache.add(new Options());
         i += 1;
       }
-      finally {}
+      finally
+      {
+        break label56;
+      }
+    }
+    return;
+    label56:
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
@@ -156,7 +165,7 @@ public class ImageLoader$Options
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.image.ImageLoader.Options
  * JD-Core Version:    0.7.0.1
  */

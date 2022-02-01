@@ -40,7 +40,12 @@ public class MiniAppSetUserAppTopServlet
       return;
     }
     notifyObserver(paramIntent, 1007, false, paramBundle, MiniAppObserver.class);
-    QLog.e("MiniAppSetUserAppTopServlet", 1, "MiniAppSetUserAppTopServlet retCode : " + l + "; errMsg : " + paramArrayOfByte);
+    paramIntent = new StringBuilder();
+    paramIntent.append("MiniAppSetUserAppTopServlet retCode : ");
+    paramIntent.append(l);
+    paramIntent.append("; errMsg : ");
+    paramIntent.append(paramArrayOfByte);
+    QLog.e("MiniAppSetUserAppTopServlet", 1, paramIntent.toString());
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -53,30 +58,14 @@ public class MiniAppSetUserAppTopServlet
     int n = paramIntent.getIntExtra("key_from_new_download", 0);
     byte[] arrayOfByte = paramIntent.getByteArrayExtra("key_ext");
     int i1 = paramIntent.getIntExtra("key_index", -1);
-    Object localObject1 = null;
-    if (arrayOfByte != null) {
+    if (arrayOfByte != null)
+    {
       localObject1 = new COMM.StCommonExt();
-    }
-    try
-    {
-      ((COMM.StCommonExt)localObject1).mergeFrom(arrayOfByte);
-      localObject2 = new SetUserAppTopRequest((COMM.StCommonExt)localObject1, (String)localObject2, i, j, k, m, n).encode(paramIntent, i1, getTraceId());
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = new byte[4];
+      try
+      {
+        ((COMM.StCommonExt)localObject1).mergeFrom(arrayOfByte);
       }
-      paramPacket.setSSOCommand("LightAppSvc.mini_app_userapp.SetUserAppTop");
-      paramPacket.putSendData(WupUtil.a((byte[])localObject1));
-      paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniAppSetUserAppTopServlet", 2, "onSend. intent: " + paramIntent.toString());
-      }
-      super.onSend(paramIntent, paramPacket);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
         if (QLog.isColorLevel()) {
           QLog.e("MiniAppSetUserAppTopServlet", 2, "onSend. mergeFrom exception!");
@@ -84,11 +73,31 @@ public class MiniAppSetUserAppTopServlet
         localInvalidProtocolBufferMicroException.printStackTrace();
       }
     }
+    else
+    {
+      localObject1 = null;
+    }
+    localObject2 = new SetUserAppTopRequest((COMM.StCommonExt)localObject1, (String)localObject2, i, j, k, m, n).encode(paramIntent, i1, getTraceId());
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new byte[4];
+    }
+    paramPacket.setSSOCommand("LightAppSvc.mini_app_userapp.SetUserAppTop");
+    paramPacket.putSendData(WupUtil.a((byte[])localObject1));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onSend. intent: ");
+      ((StringBuilder)localObject1).append(paramIntent.toString());
+      QLog.d("MiniAppSetUserAppTopServlet", 2, ((StringBuilder)localObject1).toString());
+    }
+    super.onSend(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppSetUserAppTopServlet
  * JD-Core Version:    0.7.0.1
  */

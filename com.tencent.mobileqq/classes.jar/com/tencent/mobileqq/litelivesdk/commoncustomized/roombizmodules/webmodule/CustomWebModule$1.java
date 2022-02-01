@@ -14,7 +14,10 @@ class CustomWebModule$1
   
   public void onLoginFail(int paramInt)
   {
-    QLog.e("IliveCustomWebModule", 1, "wait login--fail--errCode=" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("wait login--fail--errCode=");
+    localStringBuilder.append(paramInt);
+    QLog.e("IliveCustomWebModule", 1, localStringBuilder.toString());
   }
   
   public void onLoginSucceed()
@@ -24,7 +27,7 @@ class CustomWebModule$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.CustomWebModule.1
  * JD-Core Version:    0.7.0.1
  */

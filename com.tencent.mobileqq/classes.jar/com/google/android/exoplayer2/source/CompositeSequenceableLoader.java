@@ -24,28 +24,27 @@ public class CompositeSequenceableLoader
       SequenceableLoader[] arrayOfSequenceableLoader = this.loaders;
       int k = arrayOfSequenceableLoader.length;
       int i = 0;
-      bool1 = false;
-      if (i < k)
+      boolean bool2;
+      for (bool1 = false; i < k; bool1 = bool2)
       {
         SequenceableLoader localSequenceableLoader = arrayOfSequenceableLoader[i];
         long l2 = localSequenceableLoader.getNextLoadPositionUs();
-        if ((l2 != -9223372036854775808L) && (l2 <= paramLong)) {}
-        for (int j = 1;; j = 0)
-        {
-          boolean bool2;
-          if (l2 != l1)
-          {
-            bool2 = bool1;
-            if (j == 0) {}
-          }
-          else
-          {
-            bool2 = bool1 | localSequenceableLoader.continueLoading(paramLong);
-          }
-          i += 1;
-          bool1 = bool2;
-          break;
+        int j;
+        if ((l2 != -9223372036854775808L) && (l2 <= paramLong)) {
+          j = 1;
+        } else {
+          j = 0;
         }
+        if (l2 != l1)
+        {
+          bool2 = bool1;
+          if (j == 0) {}
+        }
+        else
+        {
+          bool2 = bool1 | localSequenceableLoader.continueLoading(paramLong);
+        }
+        i += 1;
       }
       bool4 = bool3 | bool1;
       bool3 = bool4;
@@ -109,7 +108,7 @@ public class CompositeSequenceableLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.CompositeSequenceableLoader
  * JD-Core Version:    0.7.0.1
  */

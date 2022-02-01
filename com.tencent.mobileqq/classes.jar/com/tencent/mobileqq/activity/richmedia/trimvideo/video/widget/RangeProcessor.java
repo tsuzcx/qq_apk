@@ -43,9 +43,10 @@ public class RangeProcessor
     this.jdField_a_of_type_Float = (ViewUtils.a() * 0.0375F);
     this.jdField_b_of_type_Float = paramFloat2;
     this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float * 0.5F);
-    this.d = paramInt3;
-    paramFrameParent = a(((Context)localObject).getResources(), 2130849542, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
-    localObject = a(((Context)localObject).getResources(), 2130849544, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
+    paramFloat2 = paramInt3;
+    this.d = paramFloat2;
+    paramFrameParent = a(((Context)localObject).getResources(), 2130849428, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
+    localObject = a(((Context)localObject).getResources(), 2130849430, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
     ColorDrawable localColorDrawable = new ColorDrawable(this.jdField_c_of_type_Int);
     localColorDrawable.setBounds(0, 0, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
     this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap((int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float, Bitmap.Config.RGB_565);
@@ -60,11 +61,15 @@ public class RangeProcessor
     if (localObject != null) {
       localCanvas.drawBitmap((Bitmap)localObject, (this.jdField_a_of_type_Float - ((Bitmap)localObject).getWidth()) / 2.0F, (this.jdField_b_of_type_Float - ((Bitmap)localObject).getHeight()) / 2.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
-    this.h = (1.0F * paramInt4 / paramInt2 * paramFloat1 + this.jdField_a_of_type_Float);
-    this.g = (2000.0F / paramInt2 * paramFloat1);
-    this.j = (paramInt3 - this.jdField_a_of_type_Float);
-    this.k = this.jdField_a_of_type_Float;
-    this.e = this.jdField_a_of_type_Float;
+    float f2 = paramInt4;
+    float f1 = paramInt2;
+    f2 = f2 * 1.0F / f1;
+    float f3 = this.jdField_a_of_type_Float;
+    this.h = (f2 * paramFloat1 + f3);
+    this.g = (2000.0F / f1 * paramFloat1);
+    this.j = (paramFloat2 - f3);
+    this.k = f3;
+    this.e = f3;
     this.f = this.h;
   }
   
@@ -121,34 +126,38 @@ public class RangeProcessor
   
   public Bitmap a(Resources paramResources, int paramInt1, int paramInt2, int paramInt3)
   {
-    int m = 1;
-    if (paramResources == null) {}
-    while (paramInt1 <= 0) {
+    if (paramResources == null) {
+      return null;
+    }
+    if (paramInt1 <= 0) {
       return null;
     }
     try
     {
       BitmapFactory.Options localOptions = new BitmapFactory.Options();
+      int m = 1;
       localOptions.inJustDecodeBounds = true;
       BitmapFactory.decodeResource(paramResources, paramInt1, localOptions);
-      if ((paramInt2 <= 0) && (paramInt3 <= 0)) {}
-      for (paramInt2 = m;; paramInt2 = a(localOptions, paramInt2, paramInt3))
-      {
-        localOptions.inJustDecodeBounds = false;
-        localOptions.inSampleSize = paramInt2;
-        return BitmapFactory.decodeResource(paramResources, paramInt1, localOptions);
+      if ((paramInt2 <= 0) && (paramInt3 <= 0)) {
+        paramInt2 = m;
+      } else {
+        paramInt2 = a(localOptions, paramInt2, paramInt3);
       }
+      localOptions.inJustDecodeBounds = false;
+      localOptions.inSampleSize = paramInt2;
+      paramResources = BitmapFactory.decodeResource(paramResources, paramInt1, localOptions);
+      return paramResources;
+    }
+    catch (OutOfMemoryError paramResources)
+    {
+      paramResources.printStackTrace();
       return null;
     }
     catch (Exception paramResources)
     {
       paramResources.printStackTrace();
-      return null;
     }
-    catch (OutOfMemoryError paramResources)
-    {
-      paramResources.printStackTrace();
-    }
+    return null;
   }
   
   public void a()
@@ -160,13 +169,15 @@ public class RangeProcessor
   
   public void a(float paramFloat1, float paramFloat2)
   {
-    if (paramFloat1 >= 0.0F) {}
-    for (this.k = (this.jdField_a_of_type_Float + paramFloat1);; this.k = this.jdField_a_of_type_Float)
+    if (paramFloat1 >= 0.0F) {
+      this.k = (paramFloat1 + this.jdField_a_of_type_Float);
+    } else {
+      this.k = this.jdField_a_of_type_Float;
+    }
+    if (paramFloat2 >= 0.0F)
     {
-      if (paramFloat2 >= 0.0F) {
-        this.j = Math.min(this.jdField_a_of_type_Float + paramFloat2, this.d - this.jdField_a_of_type_Float);
-      }
-      return;
+      paramFloat1 = this.jdField_a_of_type_Float;
+      this.j = Math.min(paramFloat2 + paramFloat1, this.d - paramFloat1);
     }
   }
   
@@ -176,7 +187,9 @@ public class RangeProcessor
     int m = this.jdField_a_of_type_AndroidGraphicsPaint.getColor();
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_c_of_type_Int);
     paramCanvas.drawRect(this.e, 0.0F, this.f, this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawRect(this.e, this.jdField_b_of_type_Float - this.jdField_b_of_type_Int, this.f, this.jdField_b_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+    float f1 = this.e;
+    float f2 = this.jdField_b_of_type_Float;
+    paramCanvas.drawRect(f1, f2 - this.jdField_b_of_type_Int, this.f, f2, this.jdField_a_of_type_AndroidGraphicsPaint);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(m);
     b(this.e, paramCanvas);
     a(this.f, paramCanvas);
@@ -194,60 +207,62 @@ public class RangeProcessor
       this.i = paramMotionEvent.getX();
       return;
     }
-    float f2;
-    float f3;
     if (paramMotionEvent.getAction() == 2)
     {
-      f2 = f1 - this.i;
-      if (this.jdField_a_of_type_Int != 0) {
-        break label186;
-      }
-      f3 = Math.max(this.f - this.h, this.k);
-      if (f1 < f3)
+      float f2 = f1 - this.i;
+      int m = this.jdField_a_of_type_Int;
+      float f3;
+      if (m == 0)
       {
-        this.e = f3;
-        return;
-      }
-      if ((f2 >= 0.0F) || (f2 + this.e > this.jdField_a_of_type_Float)) {
-        break label148;
-      }
-      this.e = f3;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameParent.invalidate();
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor$OnRangeChangeListener == null) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor$OnRangeChangeListener.a(this.e, this.f);
-      return;
-      label148:
-      if (this.f - f1 < this.g)
-      {
-        this.e = (this.f - this.g);
-      }
-      else
-      {
-        this.e = f1;
-        continue;
-        label186:
-        if (this.jdField_a_of_type_Int == 1)
+        f3 = Math.max(this.f - this.h, this.k);
+        if (f1 < f3)
         {
-          f3 = Math.min(this.e + this.h, this.j);
-          if (f1 > f3)
-          {
-            this.f = f3;
-            return;
+          this.e = f3;
+          return;
+        }
+        if ((f2 < 0.0F) && (this.e + f2 <= this.jdField_a_of_type_Float))
+        {
+          this.e = f3;
+        }
+        else
+        {
+          f2 = this.f;
+          f3 = this.g;
+          if (f2 - f1 < f3) {
+            this.e = (f2 - f3);
+          } else {
+            this.e = f1;
           }
-          if ((f2 > 0.0F) && (f2 + this.f >= this.h)) {
-            this.f = f3;
-          } else if (f1 - this.e < this.g) {
-            this.f = (this.e + this.g);
+        }
+      }
+      else if (m == 1)
+      {
+        f3 = Math.min(this.e + this.h, this.j);
+        if (f1 > f3)
+        {
+          this.f = f3;
+          return;
+        }
+        if ((f2 > 0.0F) && (this.f + f2 >= this.h))
+        {
+          this.f = f3;
+        }
+        else
+        {
+          f2 = this.e;
+          f3 = this.g;
+          if (f1 - f2 < f3) {
+            this.f = (f2 + f3);
           } else {
             this.f = f1;
           }
         }
       }
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameParent.invalidate();
+    paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor$OnRangeChangeListener;
+    if (paramMotionEvent != null) {
+      paramMotionEvent.a(this.e, this.f);
     }
   }
   
@@ -297,7 +312,7 @@ public class RangeProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.RangeProcessor
  * JD-Core Version:    0.7.0.1
  */

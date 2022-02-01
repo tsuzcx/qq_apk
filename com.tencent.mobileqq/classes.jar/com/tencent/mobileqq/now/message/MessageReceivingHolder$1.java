@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.now.message;
 
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.tencent.mobileqq.now.widget.DecoratorViewPager;
 
 class MessageReceivingHolder$1
@@ -31,12 +31,13 @@ class MessageReceivingHolder$1
   public void onPageSelected(int paramInt)
   {
     MessageReceivingHolder.a(this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingHolder, paramInt);
-    MessageReceivingHolder.a(this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingHolder, MessageReceivingHolder.a(this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingHolder).a(paramInt));
+    MessageReceivingHolder localMessageReceivingHolder = this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingHolder;
+    MessageReceivingHolder.a(localMessageReceivingHolder, MessageReceivingHolder.a(localMessageReceivingHolder).a(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.message.MessageReceivingHolder.1
  * JD-Core Version:    0.7.0.1
  */

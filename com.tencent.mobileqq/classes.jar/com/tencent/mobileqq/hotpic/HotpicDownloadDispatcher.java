@@ -3,6 +3,7 @@ package com.tencent.mobileqq.hotpic;
 import android.util.SparseArray;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.qphone.base.util.QLog;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -32,123 +33,45 @@ public class HotpicDownloadDispatcher
     b(false);
   }
   
-  /* Error */
   private void c()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 29	com/tencent/mobileqq/hotpic/HotpicDownloadDispatcher:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   6: astore_1
-    //   7: aload_1
-    //   8: monitorenter
-    //   9: aload_0
-    //   10: aload_0
-    //   11: getfield 46	com/tencent/mobileqq/hotpic/HotpicDownloadDispatcher:jdField_b_of_type_Int	I
-    //   14: iconst_1
-    //   15: isub
-    //   16: putfield 46	com/tencent/mobileqq/hotpic/HotpicDownloadDispatcher:jdField_b_of_type_Int	I
-    //   19: aload_0
-    //   20: getfield 46	com/tencent/mobileqq/hotpic/HotpicDownloadDispatcher:jdField_b_of_type_Int	I
-    //   23: aload_0
-    //   24: getfield 27	com/tencent/mobileqq/hotpic/HotpicDownloadDispatcher:jdField_a_of_type_Int	I
-    //   27: if_icmpge +88 -> 115
-    //   30: aload_0
-    //   31: getfield 34	com/tencent/mobileqq/hotpic/HotpicDownloadDispatcher:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   34: invokevirtual 62	java/util/LinkedList:size	()I
-    //   37: ifle +78 -> 115
-    //   40: aload_0
-    //   41: getfield 34	com/tencent/mobileqq/hotpic/HotpicDownloadDispatcher:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   44: invokevirtual 66	java/util/LinkedList:removeFirst	()Ljava/lang/Object;
-    //   47: checkcast 68	com/tencent/image/URLDrawable
-    //   50: astore_2
-    //   51: aload_2
-    //   52: invokevirtual 71	com/tencent/image/URLDrawable:getStatus	()I
-    //   55: iconst_1
-    //   56: if_icmpeq -37 -> 19
-    //   59: aload_2
-    //   60: invokevirtual 71	com/tencent/image/URLDrawable:getStatus	()I
-    //   63: iconst_2
-    //   64: if_icmpne +94 -> 158
-    //   67: aload_2
-    //   68: invokevirtual 74	com/tencent/image/URLDrawable:restartDownload	()V
-    //   71: aload_0
-    //   72: aload_0
-    //   73: getfield 46	com/tencent/mobileqq/hotpic/HotpicDownloadDispatcher:jdField_b_of_type_Int	I
-    //   76: iconst_1
-    //   77: iadd
-    //   78: putfield 46	com/tencent/mobileqq/hotpic/HotpicDownloadDispatcher:jdField_b_of_type_Int	I
-    //   81: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   84: ifeq +31 -> 115
-    //   87: ldc 82
-    //   89: iconst_2
-    //   90: new 84	java/lang/StringBuilder
-    //   93: dup
-    //   94: invokespecial 85	java/lang/StringBuilder:<init>	()V
-    //   97: ldc 87
-    //   99: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   102: aload_0
-    //   103: getfield 46	com/tencent/mobileqq/hotpic/HotpicDownloadDispatcher:jdField_b_of_type_Int	I
-    //   106: invokevirtual 94	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   109: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   112: invokestatic 102	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   115: aload_0
-    //   116: getfield 46	com/tencent/mobileqq/hotpic/HotpicDownloadDispatcher:jdField_b_of_type_Int	I
-    //   119: ifne +34 -> 153
-    //   122: aload_0
-    //   123: getfield 34	com/tencent/mobileqq/hotpic/HotpicDownloadDispatcher:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   126: invokevirtual 62	java/util/LinkedList:size	()I
-    //   129: ifne +24 -> 153
-    //   132: aload_0
-    //   133: getfield 50	com/tencent/mobileqq/hotpic/HotpicDownloadDispatcher:jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView	Lcom/tencent/mobileqq/hotpic/HotPicPageView;
-    //   136: ifnull +17 -> 153
-    //   139: aload_0
-    //   140: getfield 25	com/tencent/mobileqq/hotpic/HotpicDownloadDispatcher:jdField_a_of_type_Boolean	Z
-    //   143: ifeq +10 -> 153
-    //   146: aload_0
-    //   147: getfield 50	com/tencent/mobileqq/hotpic/HotpicDownloadDispatcher:jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView	Lcom/tencent/mobileqq/hotpic/HotPicPageView;
-    //   150: invokevirtual 105	com/tencent/mobileqq/hotpic/HotPicPageView:m	()V
-    //   153: aload_1
-    //   154: monitorexit
-    //   155: aload_0
-    //   156: monitorexit
-    //   157: return
-    //   158: aload_2
-    //   159: invokevirtual 108	com/tencent/image/URLDrawable:startDownload	()V
-    //   162: aload_0
-    //   163: aload_0
-    //   164: getfield 46	com/tencent/mobileqq/hotpic/HotpicDownloadDispatcher:jdField_b_of_type_Int	I
-    //   167: iconst_1
-    //   168: iadd
-    //   169: putfield 46	com/tencent/mobileqq/hotpic/HotpicDownloadDispatcher:jdField_b_of_type_Int	I
-    //   172: goto -57 -> 115
-    //   175: astore_2
-    //   176: aload_1
-    //   177: monitorexit
-    //   178: aload_2
-    //   179: athrow
-    //   180: astore_1
-    //   181: aload_0
-    //   182: monitorexit
-    //   183: aload_1
-    //   184: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	185	0	this	HotpicDownloadDispatcher
-    //   180	4	1	localObject2	Object
-    //   50	109	2	localURLDrawable	URLDrawable
-    //   175	4	2	localObject3	Object
-    // Exception table:
-    //   from	to	target	type
-    //   9	19	175	finally
-    //   19	115	175	finally
-    //   115	153	175	finally
-    //   153	155	175	finally
-    //   158	172	175	finally
-    //   176	178	175	finally
-    //   2	9	180	finally
-    //   178	180	180	finally
+    try
+    {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        this.jdField_b_of_type_Int -= 1;
+        while ((this.jdField_b_of_type_Int < this.jdField_a_of_type_Int) && (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0))
+        {
+          Object localObject3 = (URLDrawable)this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
+          if (((URLDrawable)localObject3).getStatus() != 1) {
+            if (((URLDrawable)localObject3).getStatus() == 2)
+            {
+              ((URLDrawable)localObject3).restartDownload();
+              this.jdField_b_of_type_Int += 1;
+              if (QLog.isColorLevel())
+              {
+                localObject3 = new StringBuilder();
+                ((StringBuilder)localObject3).append("handlerNext,restartDownload, current ");
+                ((StringBuilder)localObject3).append(this.jdField_b_of_type_Int);
+                QLog.i("HotPicManager.Panel.HotpicDownloadDispatcher", 2, ((StringBuilder)localObject3).toString());
+              }
+            }
+            else
+            {
+              ((URLDrawable)localObject3).startDownload();
+              this.jdField_b_of_type_Int += 1;
+            }
+          }
+        }
+        if ((this.jdField_b_of_type_Int == 0) && (this.jdField_a_of_type_JavaUtilLinkedList.size() == 0) && (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView != null) && (this.jdField_a_of_type_Boolean)) {
+          this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.m();
+        }
+        return;
+      }
+      throw localObject2;
+    }
+    finally {}
+    for (;;) {}
   }
   
   public void a()
@@ -174,6 +97,7 @@ public class HotpicDownloadDispatcher
   
   public void a(URLDrawable paramURLDrawable, int paramInt)
   {
+    label176:
     for (;;)
     {
       try
@@ -185,36 +109,37 @@ public class HotpicDownloadDispatcher
           }
           this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(paramInt));
           paramURLDrawable.setDownloadListener(this);
-          if (this.jdField_b_of_type_Int < this.jdField_a_of_type_Int) {
-            break label154;
-          }
-          if (!this.jdField_a_of_type_JavaUtilLinkedList.contains(paramURLDrawable))
+          if (this.jdField_b_of_type_Int >= this.jdField_a_of_type_Int)
           {
-            paramURLDrawable.setAutoDownload(false);
-            this.jdField_a_of_type_JavaUtilLinkedList.addFirst(paramURLDrawable);
-            int i = this.jdField_a_of_type_JavaUtilLinkedList.size();
-            if (!this.jdField_b_of_type_Boolean) {
-              break label148;
-            }
-            paramInt = 20;
-            if (i > paramInt)
+            if (!this.jdField_a_of_type_JavaUtilLinkedList.contains(paramURLDrawable))
             {
-              paramURLDrawable = (URLDrawable)this.jdField_a_of_type_JavaUtilLinkedList.removeLast();
-              paramURLDrawable.setAutoDownload(true);
-              paramURLDrawable.setDownloadListener(null);
+              paramURLDrawable.setAutoDownload(false);
+              this.jdField_a_of_type_JavaUtilLinkedList.addFirst(paramURLDrawable);
+              int i = this.jdField_a_of_type_JavaUtilLinkedList.size();
+              if (!this.jdField_b_of_type_Boolean) {
+                break label176;
+              }
+              paramInt = 20;
+              if (i > paramInt)
+              {
+                paramURLDrawable = (URLDrawable)this.jdField_a_of_type_JavaUtilLinkedList.removeLast();
+                paramURLDrawable.setAutoDownload(true);
+                paramURLDrawable.setDownloadListener(null);
+              }
             }
           }
+          else
+          {
+            if (paramURLDrawable.getStatus() == 2) {
+              paramURLDrawable.restartDownload();
+            }
+            this.jdField_b_of_type_Int += 1;
+          }
+          return;
         }
         paramInt = 15;
       }
       finally {}
-      label148:
-      continue;
-      label154:
-      if (paramURLDrawable.getStatus() == 2) {
-        paramURLDrawable.restartDownload();
-      }
-      this.jdField_b_of_type_Int += 1;
     }
   }
   
@@ -225,19 +150,24 @@ public class HotpicDownloadDispatcher
   
   public void b()
   {
-    int i = 0;
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
-      if (localIterator.hasNext()) {
+      while (localIterator.hasNext()) {
         ((URLDrawable)localIterator.next()).setDownloadListener(null);
       }
+      this.jdField_a_of_type_JavaUtilLinkedList.clear();
+      int i = 0;
+      while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+      {
+        ((URLDrawable)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(0)).setDownloadListener(null);
+        i += 1;
+      }
+      return;
     }
-    this.jdField_a_of_type_JavaUtilLinkedList.clear();
-    while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+    for (;;)
     {
-      ((URLDrawable)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(0)).setDownloadListener(null);
-      i += 1;
+      throw localObject2;
     }
   }
   
@@ -246,12 +176,14 @@ public class HotpicDownloadDispatcher
     if (paramBoolean)
     {
       this.jdField_a_of_type_Boolean = true;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (int i = 3;; i = 4)
-      {
-        this.jdField_a_of_type_Int = i;
-        return;
+      int i;
+      if (this.jdField_a_of_type_Boolean) {
+        i = 3;
+      } else {
+        i = 4;
       }
+      this.jdField_a_of_type_Int = i;
+      return;
     }
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_Int = 1;
@@ -277,7 +209,7 @@ public class HotpicDownloadDispatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotpicDownloadDispatcher
  * JD-Core Version:    0.7.0.1
  */

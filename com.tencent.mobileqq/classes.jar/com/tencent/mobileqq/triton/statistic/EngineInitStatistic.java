@@ -87,18 +87,18 @@ public final class EngineInitStatistic
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof EngineInitStatistic))
       {
         paramObject = (EngineInitStatistic)paramObject;
-        if ((this.success != paramObject.success) || (!Intrinsics.areEqual(this.exception, paramObject.exception)) || (this.loadNativeLibraryTimeMs != paramObject.loadNativeLibraryTimeMs) || (this.loadEngineScriptTimeMs != paramObject.loadEngineScriptTimeMs) || (this.createEGLContextTimeMs != paramObject.createEGLContextTimeMs) || (this.totalInitTimesMs != paramObject.totalInitTimesMs) || (!Intrinsics.areEqual(this.engineScriptLoadStatics, paramObject.engineScriptLoadStatics)) || (!Intrinsics.areEqual(this.nativeLibraryLoadStatistics, paramObject.nativeLibraryLoadStatistics))) {}
+        if ((this.success == paramObject.success) && (Intrinsics.areEqual(this.exception, paramObject.exception)) && (this.loadNativeLibraryTimeMs == paramObject.loadNativeLibraryTimeMs) && (this.loadEngineScriptTimeMs == paramObject.loadEngineScriptTimeMs) && (this.createEGLContextTimeMs == paramObject.createEGLContextTimeMs) && (this.totalInitTimesMs == paramObject.totalInitTimesMs) && (Intrinsics.areEqual(this.engineScriptLoadStatics, paramObject.engineScriptLoadStatics)) && (Intrinsics.areEqual(this.nativeLibraryLoadStatistics, paramObject.nativeLibraryLoadStatistics))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public final long getCreateEGLContextTimeMs()
@@ -152,12 +152,30 @@ public final class EngineInitStatistic
   @NotNull
   public String toString()
   {
-    return "EngineInitStatistic(success=" + this.success + ", exception=" + this.exception + ", loadNativeLibraryTimeMs=" + this.loadNativeLibraryTimeMs + ", loadEngineScriptTimeMs=" + this.loadEngineScriptTimeMs + ", createEGLContextTimeMs=" + this.createEGLContextTimeMs + ", totalInitTimesMs=" + this.totalInitTimesMs + ", engineScriptLoadStatics=" + this.engineScriptLoadStatics + ", nativeLibraryLoadStatistics=" + this.nativeLibraryLoadStatistics + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EngineInitStatistic(success=");
+    localStringBuilder.append(this.success);
+    localStringBuilder.append(", exception=");
+    localStringBuilder.append(this.exception);
+    localStringBuilder.append(", loadNativeLibraryTimeMs=");
+    localStringBuilder.append(this.loadNativeLibraryTimeMs);
+    localStringBuilder.append(", loadEngineScriptTimeMs=");
+    localStringBuilder.append(this.loadEngineScriptTimeMs);
+    localStringBuilder.append(", createEGLContextTimeMs=");
+    localStringBuilder.append(this.createEGLContextTimeMs);
+    localStringBuilder.append(", totalInitTimesMs=");
+    localStringBuilder.append(this.totalInitTimesMs);
+    localStringBuilder.append(", engineScriptLoadStatics=");
+    localStringBuilder.append(this.engineScriptLoadStatics);
+    localStringBuilder.append(", nativeLibraryLoadStatistics=");
+    localStringBuilder.append(this.nativeLibraryLoadStatistics);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.statistic.EngineInitStatistic
  * JD-Core Version:    0.7.0.1
  */

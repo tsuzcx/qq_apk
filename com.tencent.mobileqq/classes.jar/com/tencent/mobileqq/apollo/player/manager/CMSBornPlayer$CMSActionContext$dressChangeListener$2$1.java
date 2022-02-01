@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.player.manager;
 
 import com.tencent.mobileqq.apollo.api.IApolloManagerService;
-import com.tencent.mobileqq.apollo.api.handler.impl.ApolloExtensionObserverImpl;
+import com.tencent.mobileqq.apollo.handler.ApolloExtensionObserver;
 import com.tencent.mobileqq.apollo.player.CMSHelper;
 import com.tencent.mobileqq.apollo.script.SpriteAioScript;
 import com.tencent.mobileqq.apollo.script.SpriteScriptCreator;
@@ -14,58 +14,64 @@ import java.util.Set;
 import kotlin.Metadata;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/apollo/player/manager/CMSBornPlayer$CMSActionContext$dressChangeListener$2$1", "Lcom/tencent/mobileqq/apollo/api/handler/impl/ApolloExtensionObserverImpl;", "onApolloDressChange", "", "result", "", "data", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/apollo/player/manager/CMSBornPlayer$CMSActionContext$dressChangeListener$2$1", "Lcom/tencent/mobileqq/apollo/handler/ApolloExtensionObserver;", "onApolloDressChange", "", "result", "", "data", "", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
 public final class CMSBornPlayer$CMSActionContext$dressChangeListener$2$1
-  extends ApolloExtensionObserverImpl
+  extends ApolloExtensionObserver
 {
-  public void e(boolean paramBoolean, @Nullable Object paramObject)
+  protected void b(boolean paramBoolean, @Nullable Object paramObject)
   {
-    super.e(paramBoolean, paramObject);
-    QLog.w("cmshow_scripted_[CMSPlayer]CMSBornPlayer", 1, "onApolloDressChange, result:" + paramBoolean + ", data:" + paramObject + ", cacheUins:" + this.a.this$0.a());
-    if ((!paramBoolean) || (paramObject == null)) {}
-    for (;;)
+    super.b(paramBoolean, paramObject);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("onApolloDressChange, result:");
+    ((StringBuilder)localObject1).append(paramBoolean);
+    ((StringBuilder)localObject1).append(", data:");
+    ((StringBuilder)localObject1).append(paramObject);
+    ((StringBuilder)localObject1).append(", cacheUins:");
+    ((StringBuilder)localObject1).append(this.a.this$0.a());
+    QLog.w("[cmshow][scripted][CMSPlayer]CMSBornPlayer", 1, ((StringBuilder)localObject1).toString());
+    if (paramBoolean) {
+      if (paramObject == null) {
+        return;
+      }
+    }
+    try
     {
-      return;
-      try
+      localObject1 = (ArrayList)paramObject;
+      if (((ArrayList)localObject1).size() == 0) {
+        return;
+      }
+      paramObject = this.a.this$0.a().getSpriteCreator().b(0);
+      if (paramObject != null)
       {
-        Object localObject = (ArrayList)paramObject;
-        if (((ArrayList)localObject).size() != 0)
+        localObject1 = ((Iterable)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
         {
-          paramObject = this.a.this$0.a().getSpriteCreator().a(0);
-          if (paramObject != null)
+          String str = (String)((Iterator)localObject1).next();
+          if (this.a.this$0.a().contains(str))
           {
-            localObject = ((Iterable)localObject).iterator();
-            for (;;)
-            {
-              if (!((Iterator)localObject).hasNext()) {
-                break label225;
-              }
-              String str = (String)((Iterator)localObject).next();
-              if (this.a.this$0.a().contains(str))
-              {
-                QQAppInterface localQQAppInterface = CMSHelper.a.a();
-                if (localQQAppInterface == null) {
-                  break;
-                }
-                if (((IApolloManagerService)localQQAppInterface.getRuntimeService(IApolloManagerService.class, "all")).getCmShowStatus(localQQAppInterface, str) == 1)
-                {
-                  QLog.w("cmshow_scripted_[CMSPlayer]CMSBornPlayer", 1, "onApolloDressChange, checkDressRec for " + str);
-                  paramObject.a(str, true);
-                }
-              }
+            Object localObject2 = CMSHelper.a.a();
+            if (localObject2 == null) {
+              break;
             }
-            label225:
-            return;
+            if (((IApolloManagerService)((QQAppInterface)localObject2).getRuntimeService(IApolloManagerService.class, "all")).getCmShowStatus(str) == 1)
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("onApolloDressChange, checkDressRec for ");
+              ((StringBuilder)localObject2).append(str);
+              QLog.w("[cmshow][scripted][CMSPlayer]CMSBornPlayer", 1, ((StringBuilder)localObject2).toString());
+              paramObject.a(str, true);
+            }
           }
         }
       }
-      catch (Exception paramObject) {}
+      return;
     }
+    catch (Exception paramObject) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.player.manager.CMSBornPlayer.CMSActionContext.dressChangeListener.2.1
  * JD-Core Version:    0.7.0.1
  */

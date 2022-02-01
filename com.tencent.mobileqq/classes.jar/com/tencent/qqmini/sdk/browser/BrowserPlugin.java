@@ -25,21 +25,26 @@ public class BrowserPlugin
   
   public static JSONObject getJsonFromJSBridge(String paramString)
   {
-    int i;
     try
     {
-      i = paramString.indexOf("=");
-      if ((i == -1) || (i + 1 > paramString.length() - 1)) {
-        throw new Exception("illegal json");
+      int i = paramString.indexOf("=");
+      if (i != -1)
+      {
+        i += 1;
+        if (i <= paramString.length() - 1) {
+          return new JSONObject(URLDecoder.decode(paramString.substring(i), "UTF-8"));
+        }
       }
+      throw new Exception("illegal json");
     }
     catch (Exception localException)
     {
-      QMLog.e("WebViewPlugin", "getJsonFromJSBridge error!" + paramString, localException);
-      return null;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getJsonFromJSBridge error!");
+      localStringBuilder.append(paramString);
+      QMLog.e("WebViewPlugin", localStringBuilder.toString(), localException);
     }
-    JSONObject localJSONObject = new JSONObject(URLDecoder.decode(paramString.substring(i + 1), "UTF-8"));
-    return localJSONObject;
+    return null;
   }
   
   protected Object handleEvent(String paramString, long paramLong)
@@ -82,7 +87,7 @@ public class BrowserPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.browser.BrowserPlugin
  * JD-Core Version:    0.7.0.1
  */

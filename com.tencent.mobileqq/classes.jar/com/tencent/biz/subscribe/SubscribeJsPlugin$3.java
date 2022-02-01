@@ -12,15 +12,16 @@ class SubscribeJsPlugin$3
   
   public void run()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if (localObject == null) {
       return;
     }
     try
     {
-      String str = SubscribeUtils.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      localObject = SubscribeUtils.a((Bitmap)localObject);
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("uin", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("avatarData", str);
+      localJSONObject.put("avatarData", localObject);
       this.this$0.dispatchJsEvent("getAvatarCallback", localJSONObject, null);
       return;
     }
@@ -32,7 +33,7 @@ class SubscribeJsPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.SubscribeJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

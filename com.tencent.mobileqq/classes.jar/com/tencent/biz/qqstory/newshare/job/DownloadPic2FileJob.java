@@ -60,7 +60,7 @@ public class DownloadPic2FileJob
     this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlBitmapDownloader.a(paramString, 0, 0, new DownloadPic2FileJob.1(this, paramString));
   }
   
-  public void a(Map<String, Object> paramMap)
+  protected void a(Map<String, Object> paramMap)
   {
     if ((paramMap != null) && (!paramMap.isEmpty()))
     {
@@ -78,7 +78,7 @@ public class DownloadPic2FileJob
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.job.DownloadPic2FileJob
  * JD-Core Version:    0.7.0.1
  */

@@ -23,15 +23,13 @@ public class MsgTabVideoPreloaderDataProvider
           QLog.i("MsgTabVideoPreloaderDataProvider", 2, "下载vidList和VideoInfo");
         }
         Stream.of(paramMsgTabNodeInfo).map(new MsgTabNodeVidListPullSegment("MsgTabPreloader")).map(new MsgTabNodePullVideoBasicInfoSegment(null)).subscribe(new MsgTabVideoPreloaderDataProvider.2(this, paramDataProviderListener, paramMsgTabNodeInfo));
+        return;
       }
+      if (QLog.isColorLevel()) {
+        QLog.i("MsgTabVideoPreloaderDataProvider", 2, "只加载vidList");
+      }
+      Stream.of(paramMsgTabNodeInfo).map(new MsgTabNodeVidListPullSegment("MsgTabPreloader")).subscribe(new MsgTabVideoPreloaderDataProvider.3(this, paramDataProviderListener, paramMsgTabNodeInfo));
     }
-    else {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("MsgTabVideoPreloaderDataProvider", 2, "只加载vidList");
-    }
-    Stream.of(paramMsgTabNodeInfo).map(new MsgTabNodeVidListPullSegment("MsgTabPreloader")).subscribe(new MsgTabVideoPreloaderDataProvider.3(this, paramDataProviderListener, paramMsgTabNodeInfo));
   }
   
   public void a(boolean paramBoolean)
@@ -46,7 +44,7 @@ public class MsgTabVideoPreloaderDataProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.network.MsgTabVideoPreloaderDataProvider
  * JD-Core Version:    0.7.0.1
  */

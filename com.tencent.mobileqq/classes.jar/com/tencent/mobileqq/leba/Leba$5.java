@@ -11,8 +11,12 @@ class Leba$5
   
   public void a(byte paramByte)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("ResourcePluginListener", 4, "ResourcePluginListener listener notify = " + paramByte);
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ResourcePluginListener listener notify = ");
+      localStringBuilder.append(paramByte);
+      QLog.d("ResourcePluginListener", 4, localStringBuilder.toString());
     }
     if (paramByte != -1) {
       this.a.a.sendEmptyMessage(11340002);
@@ -21,7 +25,7 @@ class Leba$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.Leba.5
  * JD-Core Version:    0.7.0.1
  */

@@ -26,21 +26,21 @@ class FileUtils$FileCopyTask
     super.onPostExecute(paramBoolean);
     if (this.mListener != null)
     {
-      if (paramBoolean.booleanValue()) {
+      if (paramBoolean.booleanValue())
+      {
         this.mListener.onCopySuccess();
+        return;
       }
+      this.mListener.onCopyFailed();
     }
-    else {
-      return;
-    }
-    this.mListener.onCopyFailed();
   }
   
   protected void onPreExecute()
   {
     super.onPreExecute();
-    if (this.mListener != null) {
-      this.mListener.onCopyStart();
+    FileUtils.OnFileCopyListener localOnFileCopyListener = this.mListener;
+    if (localOnFileCopyListener != null) {
+      localOnFileCopyListener.onCopyStart();
     }
   }
   
@@ -51,7 +51,7 @@ class FileUtils$FileCopyTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.baseutils.io.FileUtils.FileCopyTask
  * JD-Core Version:    0.7.0.1
  */

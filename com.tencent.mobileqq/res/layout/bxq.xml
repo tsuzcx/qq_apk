@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/oly" android:layout_width="100.0dip" android:layout_height="105.0dip" android:layout_marginLeft="-10.0dip" android:layout_marginRight="-10.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout android:layout_width="70.0dip" android:layout_height="70.0dip" android:layout_marginTop="15.0dip" android:layout_centerHorizontal="true" app:qqArMapGuideRadius="3">
-        <View android:id="@id/mpz" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true" />
-        <ImageView android:id="@id/o3w" android:background="@drawable/ftt" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/fry" android:scaleType="centerCrop" android:layout_centerHorizontal="true" />
-        <ImageView android:id="@id/e16" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/frz" android:scaleType="centerCrop" android:layout_centerHorizontal="true" />
-    </com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="58.0dip" style="@style/a42"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@android:id/icon1" android:visibility="invisible" android:layout_width="@dimen/ba5" android:layout_height="48.0dip" android:scaleType="centerInside" android:layout_alignParentTop="true" android:layout_alignParentBottom="true" style="@style/a43" />
+    <ImageView android:id="@id/my1" android:background="?a8n" android:visibility="gone" android:layout_width="48.0dip" android:layout_height="48.0dip" android:scaleType="centerInside" android:layout_alignParentTop="true" android:layout_alignParentBottom="true" style="@style/a45" />
+    <ImageView android:id="@android:id/icon2" android:visibility="gone" android:layout_width="48.0dip" android:layout_height="48.0dip" android:scaleType="centerInside" android:layout_alignParentTop="true" android:layout_alignParentBottom="true" android:layout_alignWithParentIfMissing="true" style="@style/a44" />
+    <TextView android:textAppearance="?a9i" android:gravity="top" android:id="@android:id/text2" android:paddingBottom="4.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="29.0dip" android:singleLine="true" android:layout_alignParentBottom="true" android:layout_alignWithParentIfMissing="true" style="?android:dropDownItemStyle" />
+    <TextView android:textAppearance="?a9j" android:id="@android:id/text1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_above="@android:id/text2" android:layout_centerVertical="true" style="?android:dropDownItemStyle" />
 </RelativeLayout>

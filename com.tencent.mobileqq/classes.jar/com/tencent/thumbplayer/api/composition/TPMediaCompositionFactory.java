@@ -1,10 +1,12 @@
 package com.tencent.thumbplayer.api.composition;
 
+import com.tencent.thumbplayer.api.TPCommonEnum.TP_DRM_TYPE;
 import com.tencent.thumbplayer.composition.TPEmptyTrackClip;
 import com.tencent.thumbplayer.composition.TPMediaComposition;
 import com.tencent.thumbplayer.composition.TPMediaCompositionTrack;
 import com.tencent.thumbplayer.composition.TPMediaCompositionTrackClip;
 import com.tencent.thumbplayer.composition.TPMediaDRMAsset;
+import com.tencent.thumbplayer.composition.TPMediaRtcAsset;
 import java.util.Iterator;
 import java.util.List;
 
@@ -22,9 +24,14 @@ public class TPMediaCompositionFactory
     return new TPMediaComposition();
   }
   
-  public static ITPMediaDRMAsset createMediaDRMAsset(int paramInt, String paramString)
+  public static ITPMediaDRMAsset createMediaDRMAsset(@TPCommonEnum.TP_DRM_TYPE int paramInt, String paramString)
   {
     return new TPMediaDRMAsset(paramInt, paramString);
+  }
+  
+  public static ITPMediaAsset createMediaRTCAsset(String paramString1, String paramString2)
+  {
+    return new TPMediaRtcAsset(paramString1, paramString2);
   }
   
   public static ITPMediaTrack createMediaTrack(int paramInt)
@@ -67,7 +74,7 @@ public class TPMediaCompositionFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.api.composition.TPMediaCompositionFactory
  * JD-Core Version:    0.7.0.1
  */

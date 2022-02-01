@@ -18,27 +18,33 @@ public class DrawableUtil
     if (paramString == null) {
       return null;
     }
-    if (drawableHelper != null) {}
-    for (paramDrawable1 = drawableHelper.getDrawable(paramContext, paramString, paramDrawable1, paramDrawable2);; paramDrawable1 = null)
-    {
-      if (paramDrawable1 != null) {
-        return paramDrawable1;
-      }
-      paramDrawable1 = ImageCommon.getDrawableResourceId(paramString);
-      if (paramDrawable1 != null) {
-        try
-        {
-          paramContext = paramContext.getResources().getDrawable(paramDrawable1.intValue());
-          return paramContext;
-        }
-        catch (Resources.NotFoundException paramContext)
-        {
-          LogUtil.QLog.d("readinjoy.proteus", 2, "getDrawable: cant find in resources dir, do nothing");
-        }
-      }
-      LogUtil.QLog.e("readinjoy.proteus", 2, "getDrawable: cant find path :" + paramString);
-      return null;
+    DrawableUtil.DrawableHelper localDrawableHelper = drawableHelper;
+    if (localDrawableHelper != null) {
+      paramDrawable1 = localDrawableHelper.getDrawable(paramContext, paramString, paramDrawable1, paramDrawable2);
+    } else {
+      paramDrawable1 = null;
     }
+    if (paramDrawable1 != null) {
+      return paramDrawable1;
+    }
+    paramDrawable1 = ImageCommon.getDrawableResourceId(paramString);
+    if (paramDrawable1 != null) {}
+    try
+    {
+      paramContext = paramContext.getResources().getDrawable(paramDrawable1.intValue());
+      return paramContext;
+    }
+    catch (Resources.NotFoundException paramContext)
+    {
+      label62:
+      break label62;
+    }
+    LogUtil.QLog.d("readinjoy.proteus", 2, "getDrawable: cant find in resources dir, do nothing");
+    paramContext = new StringBuilder();
+    paramContext.append("getDrawable: cant find path :");
+    paramContext.append(paramString);
+    LogUtil.QLog.e("readinjoy.proteus", 2, paramContext.toString());
+    return null;
   }
   
   public static Drawable getDrawable(String paramString)
@@ -97,7 +103,7 @@ public class DrawableUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil
  * JD-Core Version:    0.7.0.1
  */

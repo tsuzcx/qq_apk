@@ -1,27 +1,26 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.NearbyUtils;
+import com.tencent.qphone.base.util.QLog;
 
 class NearbyProfileDisplayPanel$25
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   NearbyProfileDisplayPanel$25(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    EntityManager localEntityManager = this.this$0.a.app.getEntityManagerFactory().createEntityManager();
-    if (localEntityManager != null)
-    {
-      localEntityManager.update(NearbyProfileDisplayPanel.a(this.this$0));
-      localEntityManager.close();
+    NearbyUtils.a(this.a.a, 1032);
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.bindphone", 2, "openBindPhonePage");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel.25
  * JD-Core Version:    0.7.0.1
  */

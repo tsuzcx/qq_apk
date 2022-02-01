@@ -21,174 +21,184 @@ class RegisterActivity$13
     if (!paramBoolean)
     {
       this.a.c();
-      QQToast.a(this.a.getApplicationContext(), HardCodeUtil.a(2131713314), 1).a();
+      QQToast.a(this.a.getApplicationContext(), HardCodeUtil.a(2131713282), 1).a();
       return;
     }
-    label166:
-    for (;;)
+    try
     {
+      paramArrayOfByte = new String(paramArrayOfByte, "utf-8");
       try
       {
-        paramArrayOfByte = new String(paramArrayOfByte, "utf-8");
-        Object localObject;
-        localException1.printStackTrace();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("RegisterActivity onRegQueryAccountResp code = ");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(";strMsg = ");
+        localStringBuilder.append(paramArrayOfByte);
+        QLog.d("RegisterActivity", 2, localStringBuilder.toString());
       }
-      catch (Exception localException1)
+      catch (Exception localException1) {}
+      localException2.printStackTrace();
+    }
+    catch (Exception localException2)
+    {
+      paramArrayOfByte = null;
+    }
+    if (paramInt != 0)
+    {
+      if (paramInt != 1)
       {
-        try
+        if (paramInt != 2)
         {
-          QLog.d("RegisterActivity", 2, "RegisterActivity onRegQueryAccountResp code = " + paramInt + ";strMsg = " + paramArrayOfByte);
-          switch (paramInt)
+          if (paramInt != 3)
           {
-          default: 
             this.a.c();
-            localObject = paramArrayOfByte;
+            Object localObject = paramArrayOfByte;
             if (TextUtils.isEmpty(paramArrayOfByte)) {
-              localObject = HardCodeUtil.a(2131713305);
+              localObject = HardCodeUtil.a(2131713273);
             }
             QQToast.a(this.a.getApplicationContext(), (CharSequence)localObject, 1).a();
             return;
           }
+          this.a.c();
+          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
+          return;
         }
-        catch (Exception localException2)
-        {
-          break label166;
-        }
-        localException1 = localException1;
-        paramArrayOfByte = null;
+        this.a.c();
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
+        return;
       }
+      this.a.c();
+      this.a.b("该手机号码已绑定其他QQ号码", HardCodeUtil.a(2131713287));
+      return;
     }
     this.a.a();
-    return;
-    this.a.c();
-    this.a.b("该手机号码已绑定其他QQ号码", HardCodeUtil.a(2131713319));
-    return;
-    this.a.c();
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
-    return;
-    this.a.c();
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
   }
   
   public void onRegisterCommitMobileResp(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, String paramString)
   {
-    Object localObject = null;
-    paramString = null;
-    if (this.a.isFinishing()) {}
-    do
-    {
+    if (this.a.isFinishing()) {
       return;
-      this.a.c();
-      if (!paramBoolean)
+    }
+    this.a.c();
+    if (!paramBoolean)
+    {
+      QQToast.a(this.a.getApplicationContext(), HardCodeUtil.a(2131713258), 1).a();
+      return;
+    }
+    if (paramInt != 0)
+    {
+      if (paramInt != 1)
       {
-        QQToast.a(this.a.getApplicationContext(), HardCodeUtil.a(2131713290), 1).a();
-        return;
-      }
-      switch (paramInt)
-      {
-      default: 
-        QQToast.a(this.a.getApplicationContext(), HardCodeUtil.a(2131713311), 1).a();
-        return;
-      case 0: 
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-        return;
-      case 2: 
-        try
+        if (paramInt != 2)
         {
-          paramArrayOfByte2 = new String(paramArrayOfByte2, "utf-8");
+          if (paramInt != 3)
+          {
+            if (paramInt != 4)
+            {
+              QQToast.a(this.a.getApplicationContext(), HardCodeUtil.a(2131713279), 1).a();
+              return;
+            }
+            try
+            {
+              paramArrayOfByte1 = new String(paramArrayOfByte1, "utf-8");
+              if (!TextUtils.isEmpty(paramArrayOfByte1))
+              {
+                this.a.jdField_a_of_type_AndroidOsHandler.post(new RegisterActivity.13.1(this, paramArrayOfByte1));
+                return;
+              }
+              if (!QLog.isColorLevel()) {
+                return;
+              }
+              QLog.d("IphoneTitleBarActivity", 2, "captcha url is empty");
+              return;
+            }
+            catch (Throwable paramArrayOfByte1)
+            {
+              paramArrayOfByte1.printStackTrace();
+              return;
+            }
+          }
+          else
+          {
+            try
+            {
+              paramArrayOfByte1 = new String(paramArrayOfByte1, "utf-8");
+            }
+            catch (UnsupportedEncodingException paramArrayOfByte1)
+            {
+              paramArrayOfByte1.printStackTrace();
+              paramArrayOfByte1 = null;
+            }
+            if (TextUtils.isEmpty(paramArrayOfByte1))
+            {
+              QQToast.a(this.a.getApplicationContext(), HardCodeUtil.a(2131713276), 1).a();
+              return;
+            }
+            this.a.b(paramArrayOfByte1);
+          }
         }
-        catch (UnsupportedEncodingException paramArrayOfByte2)
+        else
         {
           try
           {
-            for (;;)
-            {
-              paramArrayOfByte1 = new String(paramArrayOfByte1, "utf-8");
-              if ((!TextUtils.isEmpty(paramArrayOfByte2)) && (!TextUtils.isEmpty(paramArrayOfByte1))) {
-                break;
-              }
-              QQToast.a(this.a.getApplicationContext(), HardCodeUtil.a(2131713316), 1).a();
-              return;
-              paramArrayOfByte2 = paramArrayOfByte2;
-              paramArrayOfByte2.printStackTrace();
-              paramArrayOfByte2 = null;
-            }
+            paramArrayOfByte2 = new String(paramArrayOfByte2, "utf-8");
+          }
+          catch (UnsupportedEncodingException paramArrayOfByte2)
+          {
+            paramArrayOfByte2.printStackTrace();
+            paramArrayOfByte2 = null;
+          }
+          try
+          {
+            paramArrayOfByte1 = new String(paramArrayOfByte1, "utf-8");
           }
           catch (UnsupportedEncodingException paramArrayOfByte1)
           {
-            for (;;)
-            {
-              paramArrayOfByte1.printStackTrace();
-              paramArrayOfByte1 = paramString;
-            }
+            paramArrayOfByte1.printStackTrace();
+            paramArrayOfByte1 = null;
+          }
+          if ((!TextUtils.isEmpty(paramArrayOfByte2)) && (!TextUtils.isEmpty(paramArrayOfByte1)))
+          {
             this.a.c(paramArrayOfByte2, paramArrayOfByte1);
             return;
           }
+          QQToast.a(this.a.getApplicationContext(), HardCodeUtil.a(2131713284), 1).a();
         }
-      case 1: 
+      }
+      else {
         this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-        return;
-      case 3: 
-        try
-        {
-          paramArrayOfByte1 = new String(paramArrayOfByte1, "utf-8");
-          if (TextUtils.isEmpty(paramArrayOfByte1))
-          {
-            QQToast.a(this.a.getApplicationContext(), HardCodeUtil.a(2131713308), 1).a();
-            return;
-          }
-        }
-        catch (UnsupportedEncodingException paramArrayOfByte1)
-        {
-          for (;;)
-          {
-            paramArrayOfByte1.printStackTrace();
-            paramArrayOfByte1 = localObject;
-          }
-          this.a.b(paramArrayOfByte1);
-          return;
-        }
       }
-      try
-      {
-        paramArrayOfByte1 = new String(paramArrayOfByte1, "utf-8");
-        if (!TextUtils.isEmpty(paramArrayOfByte1))
-        {
-          this.a.jdField_a_of_type_AndroidOsHandler.post(new RegisterActivity.13.1(this, paramArrayOfByte1));
-          return;
-        }
-      }
-      catch (Throwable paramArrayOfByte1)
-      {
-        paramArrayOfByte1.printStackTrace();
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("IphoneTitleBarActivity", 2, "captcha url is empty");
+    }
+    else {
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    }
   }
   
   public void onRegisterCommitPassResp(boolean paramBoolean, int paramInt, String paramString, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
   {
-    boolean bool = true;
     if (this.a.isFinishing()) {
       return;
     }
+    boolean bool = true;
     if (!paramBoolean)
     {
       this.a.c();
-      QQToast.a(this.a.getApplicationContext(), HardCodeUtil.a(2131713301), 1).a();
+      QQToast.a(this.a.getApplicationContext(), HardCodeUtil.a(2131713269), 1).a();
       return;
     }
-    paramString = new StringBuilder().append("RegisterActivity onRegisterCommitPassResp code = ").append(paramInt).append(";uin = ").append(paramString).append(";contactsig = ");
-    if (paramArrayOfByte1 == null) {}
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      QLog.d("RegisterActivity", 2, paramBoolean);
-      if (paramInt != 0) {
-        break;
-      }
-      return;
+    paramArrayOfByte2 = new StringBuilder();
+    paramArrayOfByte2.append("RegisterActivity onRegisterCommitPassResp code = ");
+    paramArrayOfByte2.append(paramInt);
+    paramArrayOfByte2.append(";uin = ");
+    paramArrayOfByte2.append(paramString);
+    paramArrayOfByte2.append(";contactsig = ");
+    if (paramArrayOfByte1 == null) {
+      paramBoolean = bool;
+    } else {
+      paramBoolean = false;
     }
+    paramArrayOfByte2.append(paramBoolean);
+    QLog.d("RegisterActivity", 2, paramArrayOfByte2.toString());
   }
   
   public void onRegisterCommitSmsCodeResp(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte, String paramString4)
@@ -199,72 +209,82 @@ class RegisterActivity$13
     if (!paramBoolean)
     {
       this.a.c();
-      QQToast.a(this.a.getApplicationContext(), HardCodeUtil.a(2131713307), 1).a();
+      QQToast.a(this.a.getApplicationContext(), HardCodeUtil.a(2131713275), 1).a();
       return;
     }
-    if (paramInt == 0) {
+    if (paramInt == 0)
+    {
       this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
     }
-    for (;;)
+    else
     {
-      QLog.d("RegisterActivity", 2, "RegisterActivity onRegisterCommitSmsCodeResp code = " + paramInt);
-      return;
-      this.a.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131713294);
+      this.a.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131713262);
       this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
     }
+    paramString1 = new StringBuilder();
+    paramString1.append("RegisterActivity onRegisterCommitSmsCodeResp code = ");
+    paramString1.append(paramInt);
+    QLog.d("RegisterActivity", 2, paramString1.toString());
   }
   
   public void onRegisterQuerySmsStatResp(boolean paramBoolean, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    if (this.a.isFinishing()) {}
-    do
-    {
+    if (this.a.isFinishing()) {
       return;
-      RegisterActivity.c(this.a);
-      if (!paramBoolean)
-      {
-        RegisterActivity.d(this.a);
-        QQToast.a(this.a.getApplicationContext(), HardCodeUtil.a(2131713302), 1).a();
-        return;
-      }
-      paramString1 = null;
-      if (paramArrayOfByte != null) {}
-      try
-      {
-        paramString1 = new String(paramArrayOfByte, "utf-8");
-        QLog.d("RegisterActivity", 2, "zsw RegisterActivity onRegisterQuerySmsStatResp code = " + paramInt1 + ";strMsg = " + paramString1 + ";next_chk_time =" + paramInt2 + ";total_time_over =" + paramInt3);
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        for (;;)
-        {
-          paramArrayOfByte.printStackTrace();
-        }
-      }
-      if (paramInt1 == 0)
-      {
-        RegisterActivity.d(this.a);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
-        return;
-      }
-    } while (paramInt1 != 4);
-    paramInt1 = paramInt2;
-    if (paramInt2 <= 0) {
-      paramInt1 = 60000;
     }
-    RegisterActivity.a(this.a, paramInt1 * 1000);
-    paramInt1 = paramInt3;
-    if (paramInt3 <= 0) {
-      paramInt1 = 60000;
+    RegisterActivity.c(this.a);
+    if (!paramBoolean)
+    {
+      RegisterActivity.d(this.a);
+      QQToast.a(this.a.getApplicationContext(), HardCodeUtil.a(2131713270), 1).a();
+      return;
     }
+    paramString1 = null;
+    if (paramArrayOfByte != null) {}
     try
     {
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new RegisterActivity.13.2(this), paramInt1 * 1000);
-      return;
+      paramString1 = new String(paramArrayOfByte, "utf-8");
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("zsw RegisterActivity onRegisterQuerySmsStatResp code = ");
+      paramArrayOfByte.append(paramInt1);
+      paramArrayOfByte.append(";strMsg = ");
+      paramArrayOfByte.append(paramString1);
+      paramArrayOfByte.append(";next_chk_time =");
+      paramArrayOfByte.append(paramInt2);
+      paramArrayOfByte.append(";total_time_over =");
+      paramArrayOfByte.append(paramInt3);
+      QLog.d("RegisterActivity", 2, paramArrayOfByte.toString());
     }
     catch (Exception paramArrayOfByte)
     {
       paramArrayOfByte.printStackTrace();
+    }
+    if (paramInt1 == 0)
+    {
+      RegisterActivity.d(this.a);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
+      return;
+    }
+    if (paramInt1 == 4)
+    {
+      int i = 60000;
+      paramInt1 = paramInt2;
+      if (paramInt2 <= 0) {
+        paramInt1 = 60000;
+      }
+      RegisterActivity.a(this.a, paramInt1 * 1000);
+      if (paramInt3 <= 0) {
+        paramInt3 = i;
+      }
+      try
+      {
+        this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new RegisterActivity.13.2(this), paramInt3 * 1000);
+        return;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
     }
   }
   
@@ -275,13 +295,22 @@ class RegisterActivity$13
     }
     if (!paramBoolean)
     {
-      QQToast.a(this.a.getApplicationContext(), HardCodeUtil.a(2131713306), 1).a();
+      QQToast.a(this.a.getApplicationContext(), HardCodeUtil.a(2131713274), 1).a();
       return;
     }
     try
     {
       paramArrayOfByte = new String(paramArrayOfByte, "utf-8");
-      QLog.d("RegisterActivity", 2, "RegisterActivity onRegisterSendResendSmsreqResp code = " + paramInt1 + ";strMsg = " + paramArrayOfByte + ";next_chk_time =" + paramInt2 + ";total_time_over =" + paramInt3);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("RegisterActivity onRegisterSendResendSmsreqResp code = ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(";strMsg = ");
+      localStringBuilder.append(paramArrayOfByte);
+      localStringBuilder.append(";next_chk_time =");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(";total_time_over =");
+      localStringBuilder.append(paramInt3);
+      QLog.d("RegisterActivity", 2, localStringBuilder.toString());
       return;
     }
     catch (Exception paramArrayOfByte)
@@ -292,7 +321,7 @@ class RegisterActivity$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterActivity.13
  * JD-Core Version:    0.7.0.1
  */

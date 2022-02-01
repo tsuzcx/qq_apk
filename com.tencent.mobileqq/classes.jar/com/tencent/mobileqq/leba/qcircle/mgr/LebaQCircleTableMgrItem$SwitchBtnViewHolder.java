@@ -22,13 +22,13 @@ public class LebaQCircleTableMgrItem$SwitchBtnViewHolder
   public LebaQCircleTableMgrItem$SwitchBtnViewHolder(Context paramContext, View paramView, boolean paramBoolean)
   {
     super(paramView);
-    this.a = ((FormSwitchItem)paramView.findViewById(2131370253));
+    this.a = ((FormSwitchItem)paramView.findViewById(2131369921));
     if (paramBoolean)
     {
-      this.a.setBackgroundColor(paramContext.getResources().getColor(2131165773));
+      this.a.setBackgroundColor(paramContext.getResources().getColor(2131165764));
       return;
     }
-    this.a.setBackgroundColor(paramContext.getResources().getColor(2131165772));
+    this.a.setBackgroundColor(paramContext.getResources().getColor(2131165763));
   }
   
   private void a(FormSwitchItem paramFormSwitchItem)
@@ -36,59 +36,54 @@ public class LebaQCircleTableMgrItem$SwitchBtnViewHolder
     QzoneConfig.getInstance();
     if (QzoneConfig.isQQCircleShowLebaBySwitchButton(StudyModeManager.a())) {
       paramFormSwitchItem.setChecked(true);
-    }
-    for (;;)
-    {
-      paramFormSwitchItem.setOnCheckedChangeListener(new LebaQCircleTableMgrItem.SwitchBtnViewHolder.1(this));
-      return;
+    } else {
       paramFormSwitchItem.setChecked(false);
     }
+    paramFormSwitchItem.setOnCheckedChangeListener(new LebaQCircleTableMgrItem.SwitchBtnViewHolder.1(this));
   }
   
   public void a(LebaMgrViewItem paramLebaMgrViewItem, Context paramContext, boolean paramBoolean)
   {
-    String str;
     if (!TextUtils.isEmpty(paramLebaMgrViewItem.a))
     {
       this.a.setText(paramLebaMgrViewItem.a);
       this.a.setVisibility(0);
       a(this.a);
-      if (AppSetting.d)
-      {
-        if (!TextUtils.isEmpty(paramLebaMgrViewItem.a)) {
-          break label143;
-        }
-        str = "";
-        label57:
-        this.a.setFocusable(true);
-        AccessibilityUtil.a(this.a, str, Button.class.getName());
-      }
-      if (paramLebaMgrViewItem.b != 0) {
-        this.a.setLeftIcon(paramLebaMgrViewItem.b);
-      }
-      paramLebaMgrViewItem = this.a.a();
-      if (paramLebaMgrViewItem != null) {
-        if (!paramBoolean) {
-          break label152;
-        }
-      }
     }
-    label143:
-    label152:
-    for (int i = 2131165775;; i = 2131165774)
+    else
     {
-      paramLebaMgrViewItem.setTextColor(paramContext.getResources().getColor(i));
-      return;
       this.a.setVisibility(8);
-      break;
-      str = paramLebaMgrViewItem.a;
-      break label57;
+    }
+    if (AppSetting.d)
+    {
+      String str;
+      if (TextUtils.isEmpty(paramLebaMgrViewItem.a)) {
+        str = "";
+      } else {
+        str = paramLebaMgrViewItem.a;
+      }
+      this.a.setFocusable(true);
+      AccessibilityUtil.a(this.a, str, Button.class.getName());
+    }
+    if (paramLebaMgrViewItem.b != 0) {
+      this.a.setLeftIcon(paramLebaMgrViewItem.b);
+    }
+    paramLebaMgrViewItem = this.a.a();
+    if (paramLebaMgrViewItem != null)
+    {
+      int i;
+      if (paramBoolean) {
+        i = 2131165766;
+      } else {
+        i = 2131165765;
+      }
+      paramLebaMgrViewItem.setTextColor(paramContext.getResources().getColor(i));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.qcircle.mgr.LebaQCircleTableMgrItem.SwitchBtnViewHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -22,8 +22,12 @@ public class AIOAuthorizeConfigInjector
   
   public void a(JSONObject paramJSONObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAuthorizeConfigInjector", 1, "WebViewSwitchAio loadFuncDevWebViewConfig return " + paramJSONObject.toString());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("WebViewSwitchAio loadFuncDevWebViewConfig return ");
+      localStringBuilder.append(paramJSONObject.toString());
+      QLog.d("AIOAuthorizeConfigInjector", 1, localStringBuilder.toString());
     }
     paramJSONObject = paramJSONObject.optJSONArray("WebViewSwitchAioConfig");
     if ((paramJSONObject != null) && (paramJSONObject.length() > 0)) {
@@ -39,36 +43,44 @@ public class AIOAuthorizeConfigInjector
   public boolean a(String paramString)
   {
     AuthorizeConfig.a().k();
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
-      Object localObject1 = Uri.parse(paramString);
-      Object localObject2 = ((Uri)localObject1).getScheme();
-      if (("http".equals(localObject2)) || ("https".equals(localObject2)))
+    }
+    Object localObject1 = Uri.parse(paramString);
+    Object localObject2 = ((Uri)localObject1).getScheme();
+    if ((!"http".equals(localObject2)) && (!"https".equals(localObject2))) {
+      return false;
+    }
+    localObject1 = ((Uri)localObject1).getHost();
+    localObject2 = this.a;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("WebViewSwitchAio call canSwitchAIO url ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" config ");
+      localStringBuilder.append(localObject2);
+      QLog.d("AIOAuthorizeConfigInjector", 1, localStringBuilder.toString());
+    }
+    if ((localObject2 != null) && (!TextUtils.isEmpty((CharSequence)localObject1)))
+    {
+      if (((JSONObject)localObject2).optInt("enable", 0) != 1) {
+        return false;
+      }
+      paramString = ((JSONObject)localObject2).optJSONArray("domains");
+      if (paramString != null)
       {
-        localObject1 = ((Uri)localObject1).getHost();
-        localObject2 = this.a;
-        if (QLog.isColorLevel()) {
-          QLog.d("AIOAuthorizeConfigInjector", 1, "WebViewSwitchAio call canSwitchAIO url " + paramString + " config " + localObject2);
-        }
-        if ((localObject2 != null) && (!TextUtils.isEmpty((CharSequence)localObject1)) && (((JSONObject)localObject2).optInt("enable", 0) == 1))
+        int i = paramString.length() - 1;
+        while (i >= 0)
         {
-          paramString = ((JSONObject)localObject2).optJSONArray("domains");
-          if (paramString != null)
-          {
-            int i = paramString.length() - 1;
-            while (i >= 0)
-            {
-              if (((String)localObject1).endsWith(paramString.optString(i))) {
-                return true;
-              }
-              i -= 1;
-            }
+          if (((String)localObject1).endsWith(paramString.optString(i))) {
+            return true;
           }
+          i -= 1;
         }
       }
     }
+    return false;
   }
   
   public boolean a(String paramString1, String paramString2)
@@ -78,7 +90,7 @@ public class AIOAuthorizeConfigInjector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.authorize.AIOAuthorizeConfigInjector
  * JD-Core Version:    0.7.0.1
  */

@@ -9,13 +9,14 @@ class QQLSActivity$1
   
   public void run()
   {
-    this.this$0.a = new QQLSSensor(this.this$0.getApplicationContext(), this.this$0);
+    QQLSActivity localQQLSActivity = this.this$0;
+    localQQLSActivity.a = new QQLSSensor(localQQLSActivity.getApplicationContext(), this.this$0);
     this.this$0.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSActivity.1
  * JD-Core Version:    0.7.0.1
  */

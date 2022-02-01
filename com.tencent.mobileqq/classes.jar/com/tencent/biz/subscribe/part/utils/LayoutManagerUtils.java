@@ -9,7 +9,6 @@ public class LayoutManagerUtils
 {
   public static int a(RecyclerView paramRecyclerView)
   {
-    int i;
     if (paramRecyclerView != null) {
       try
       {
@@ -18,14 +17,13 @@ public class LayoutManagerUtils
         }
         if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
         {
-          i = paramRecyclerView.getLayoutManager().getColumnCountForAccessibility(null, null);
+          int i = paramRecyclerView.getLayoutManager().getColumnCountForAccessibility(null, null);
           int[] arrayOfInt = new int[i];
           ((StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager()).findLastCompletelyVisibleItemPositions(arrayOfInt);
           i = arrayOfInt[(i - 1)];
-          if (arrayOfInt.length != 2) {
-            return i;
+          if (arrayOfInt.length == 2) {
+            i = Math.max(arrayOfInt[0], arrayOfInt[1]);
           }
-          i = Math.max(arrayOfInt[0], arrayOfInt[1]);
           return i;
         }
       }
@@ -33,15 +31,13 @@ public class LayoutManagerUtils
       {
         paramRecyclerView.printStackTrace();
       }
-    } else {
-      i = -1;
     }
-    return i;
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.part.utils.LayoutManagerUtils
  * JD-Core Version:    0.7.0.1
  */

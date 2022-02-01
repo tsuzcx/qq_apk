@@ -29,31 +29,23 @@ public class PageFactory
     try
     {
       LiveFragment localLiveFragment1 = (LiveFragment)((Class)getFragmentConfig().get().get(Integer.valueOf(paramInt))).newInstance();
-      if (localLiveFragment1 == null)
-      {
-        Log.d("PageFactory", "fragment newInstance failed!");
-        return null;
-      }
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      for (;;)
-      {
-        localIllegalAccessException.printStackTrace();
-        Object localObject = null;
-      }
     }
     catch (InstantiationException localInstantiationException)
     {
-      LiveFragment localLiveFragment2;
-      for (;;)
-      {
-        localInstantiationException.printStackTrace();
-        localLiveFragment2 = null;
-      }
-      localLiveFragment2.init(paramInt, new PageFactory.1(paramFragmentActionCallback));
-      return localLiveFragment2;
+      localInstantiationException.printStackTrace();
     }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      localIllegalAccessException.printStackTrace();
+    }
+    LiveFragment localLiveFragment2 = null;
+    if (localLiveFragment2 == null)
+    {
+      Log.d("PageFactory", "fragment newInstance failed!");
+      return null;
+    }
+    localLiveFragment2.init(paramInt, new PageFactory.1(paramFragmentActionCallback));
+    return localLiveFragment2;
   }
   
   public static ActivityConfig getActivityConfig()
@@ -74,16 +66,18 @@ public class PageFactory
   
   public static void startActivity(Intent paramIntent, Context paramContext, int paramInt)
   {
-    if ((paramContext == null) || (!getActivityConfig().contains(paramInt))) {
-      throw new RuntimeException("has not activity to start!");
+    if ((paramContext != null) && (getActivityConfig().contains(paramInt)))
+    {
+      paramIntent.setClass(paramContext, (Class)getActivityConfig().get().get(Integer.valueOf(paramInt)));
+      paramContext.startActivity(paramIntent);
+      return;
     }
-    paramIntent.setClass(paramContext, (Class)getActivityConfig().get().get(Integer.valueOf(paramInt)));
-    paramContext.startActivity(paramIntent);
+    throw new RuntimeException("has not activity to start!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.base.page.PageFactory
  * JD-Core Version:    0.7.0.1
  */

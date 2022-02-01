@@ -31,7 +31,7 @@ public abstract interface IQQAvatarUtilApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.api.IQQAvatarUtilApi
  * JD-Core Version:    0.7.0.1
  */

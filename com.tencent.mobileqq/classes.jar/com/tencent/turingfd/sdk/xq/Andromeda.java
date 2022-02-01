@@ -1,174 +1,91 @@
 package com.tencent.turingfd.sdk.xq;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.text.TextUtils;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Set;
-
 public class Andromeda
+  implements protected
 {
-  public static final String FILE_NAME = final.jf + "_" + "xqFull";
-  public Handler Jg;
+  public final String Cg;
+  public final String Gg;
+  public final String Hg;
+  public final String Ig;
+  public final boolean Og;
+  public final int Pg;
+  public final String Qg;
+  public final String Rg;
+  public final int vb;
+  public final long zg;
   
-  public Andromeda(Handler paramHandler)
+  public Andromeda(Andromeda.do paramdo)
   {
-    this.Jg = paramHandler;
+    this.Og = paramdo.jdField_a_of_type_Boolean;
+    this.zg = paramdo.jdField_a_of_type_Long;
+    this.Cg = paramdo.jdField_a_of_type_JavaLangString;
+    this.vb = paramdo.jdField_a_of_type_Int;
+    this.Pg = paramdo.jdField_b_of_type_Int;
+    this.Qg = paramdo.jdField_b_of_type_JavaLangString;
+    this.Gg = paramdo.c;
+    this.Hg = paramdo.d;
+    this.Ig = paramdo.e;
+    this.Rg = paramdo.f;
   }
   
-  public static String c(Context paramContext, String paramString)
+  public static Andromeda.do a(long paramLong)
   {
-    try
-    {
-      paramContext = paramContext.getSharedPreferences(FILE_NAME, 0);
-      if (paramContext == null)
-      {
-        paramContext = "";
-        return paramContext;
-      }
-    }
-    catch (Throwable paramContext)
-    {
-      do
-      {
-        for (;;)
-        {
-          paramContext = null;
-        }
-        paramString = paramContext.getString(paramString, "");
-        paramContext = paramString;
-      } while (TextUtils.isEmpty(paramString));
-      try
-      {
-        paramContext = this.a(this.e(paramString), this.e());
-        paramContext = new String(paramContext, "UTF-8");
-        return paramContext;
-      }
-      catch (Throwable paramContext) {}
-    }
-    return "";
+    return new Andromeda.do(false, paramLong, null);
   }
   
-  public void a(Context paramContext, long paramLong)
+  public long getErrorCode()
   {
-    long l = paramLong;
-    if (paramLong >= 9223372036854775807L) {
-      l = 9223372036854775807L;
-    }
-    a(paramContext, "201", "" + l, true);
+    return this.zg;
   }
   
-  public void a(Context paramContext, finally<Long> paramfinally)
+  public String getFileMd5()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < paramfinally.size())
-    {
-      localStringBuilder.append(paramfinally.Xf.get(i));
-      if (i != paramfinally.size() - 1) {
-        localStringBuilder.append("_");
-      }
-      i += 1;
-    }
-    a(paramContext, "101", localStringBuilder.toString(), true);
+    return this.Hg;
   }
   
-  public final void a(Context paramContext, String paramString1, String paramString2, boolean paramBoolean)
+  public String getFileName()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(paramString1, paramString2);
-    if (paramBoolean)
-    {
-      a(paramContext, localHashMap);
-      return;
-    }
-    this.Jg.post(new synchronized(this, paramContext, localHashMap));
+    return this.Ig;
   }
   
-  public final void a(Context paramContext, Map<String, String> paramMap)
+  public String getFileSha1()
   {
-    try
-    {
-      paramContext = paramContext.getSharedPreferences(FILE_NAME, 0);
-      if (paramContext == null) {
-        return;
-      }
-    }
-    catch (Throwable paramContext)
-    {
-      do
-      {
-        for (;;)
-        {
-          paramContext = null;
-        }
-        paramContext = paramContext.edit();
-      } while (paramContext == null);
-      Iterator localIterator = paramMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str1 = (String)localIterator.next();
-        String str2 = (String)paramMap.get(str1);
-        try
-        {
-          paramContext.putString(str1, this.b(this.b(str2.getBytes(), this.e())));
-        }
-        catch (Throwable localThrowable) {}
-      }
-      try
-      {
-        paramContext.commit();
-        return;
-      }
-      catch (Throwable paramContext) {}
-    }
+    return this.Gg;
   }
   
-  public long n(Context paramContext)
+  public String getHandleUrl()
   {
-    paramContext = c(paramContext, "201");
-    try
-    {
-      long l = Long.valueOf(paramContext).longValue();
-      return l;
-    }
-    catch (Throwable paramContext) {}
-    return 0L;
+    return this.Qg;
   }
   
-  public finally<Long> o(Context paramContext)
+  public String getPkgName()
   {
-    System.currentTimeMillis();
-    finally localfinally = new finally(6);
-    paramContext = c(paramContext, "101").split("_");
-    int j = paramContext.length;
-    int i = 0;
-    while (i < j)
-    {
-      String str = paramContext[i];
-      try
-      {
-        long l = Long.valueOf(str).longValue();
-        localfinally.offer(Long.valueOf(l));
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        label62:
-        break label62;
-      }
-      i += 1;
-    }
-    return localfinally;
+    return this.Cg;
+  }
+  
+  public int getRiskCategory()
+  {
+    return this.Pg;
+  }
+  
+  public String getRiskTips()
+  {
+    return this.Rg;
+  }
+  
+  public int getSafeLevel()
+  {
+    return this.vb;
+  }
+  
+  public boolean isSucceed()
+  {
+    return this.Og;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Andromeda
  * JD-Core Version:    0.7.0.1
  */

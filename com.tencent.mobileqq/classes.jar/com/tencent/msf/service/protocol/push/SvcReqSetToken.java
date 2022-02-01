@@ -4,12 +4,14 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class SvcReqSetToken
   extends JceStruct
 {
   static byte[] cache_vNewToken;
   static byte[] cache_vNewVoipToken;
+  static byte[] cache_vProfileID;
   static ArrayList cache_vTokenID = new ArrayList();
   static ArrayList cache_vVoipToken;
   public byte bEnterVersion = 0;
@@ -28,23 +30,27 @@ public final class SvcReqSetToken
   public String sVideoSound = "";
   public byte[] vNewToken = null;
   public byte[] vNewVoipToken = null;
+  public byte[] vProfileID = null;
   public ArrayList vTokenID = null;
   public ArrayList vVoipToken = null;
   
   static
   {
-    cache_vTokenID.add(Integer.valueOf(0));
+    Integer localInteger = Integer.valueOf(0);
+    cache_vTokenID.add(localInteger);
     cache_vVoipToken = new ArrayList();
-    cache_vVoipToken.add(Integer.valueOf(0));
+    cache_vVoipToken.add(localInteger);
     cache_vNewToken = (byte[])new byte[1];
     ((byte[])cache_vNewToken)[0] = 0;
     cache_vNewVoipToken = (byte[])new byte[1];
     ((byte[])cache_vNewVoipToken)[0] = 0;
+    cache_vProfileID = (byte[])new byte[1];
+    ((byte[])cache_vProfileID)[0] = 0;
   }
   
   public SvcReqSetToken() {}
   
-  public SvcReqSetToken(long paramLong, ArrayList paramArrayList1, String paramString1, String paramString2, byte paramByte1, byte paramByte2, byte paramByte3, byte paramByte4, byte paramByte5, byte paramByte6, String paramString3, String paramString4, String paramString5, byte paramByte7, ArrayList paramArrayList2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte paramByte8)
+  public SvcReqSetToken(long paramLong, ArrayList paramArrayList1, String paramString1, String paramString2, byte paramByte1, byte paramByte2, byte paramByte3, byte paramByte4, byte paramByte5, byte paramByte6, String paramString3, String paramString4, String paramString5, byte paramByte7, ArrayList paramArrayList2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte paramByte8, byte[] paramArrayOfByte3)
   {
     this.lUin = paramLong;
     this.vTokenID = paramArrayList1;
@@ -64,6 +70,7 @@ public final class SvcReqSetToken
     this.vNewToken = paramArrayOfByte1;
     this.vNewVoipToken = paramArrayOfByte2;
     this.bScenes = paramByte8;
+    this.vProfileID = paramArrayOfByte3;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -86,6 +93,7 @@ public final class SvcReqSetToken
     this.vNewToken = ((byte[])paramJceInputStream.read(cache_vNewToken, 15, false));
     this.vNewVoipToken = ((byte[])paramJceInputStream.read(cache_vNewVoipToken, 16, false));
     this.bScenes = paramJceInputStream.read(this.bScenes, 17, false);
+    this.vProfileID = ((byte[])paramJceInputStream.read(cache_vProfileID, 18, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -100,31 +108,41 @@ public final class SvcReqSetToken
     paramJceOutputStream.write(this.bEnterVersion, 7);
     paramJceOutputStream.write(this.bPhotoPush, 8);
     paramJceOutputStream.write(this.bPushWithoutContent, 9);
-    if (this.sPushSound != null) {
-      paramJceOutputStream.write(this.sPushSound, 10);
+    Object localObject = this.sPushSound;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.sEmptySound != null) {
-      paramJceOutputStream.write(this.sEmptySound, 11);
+    localObject = this.sEmptySound;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
-    if (this.sVideoSound != null) {
-      paramJceOutputStream.write(this.sVideoSound, 12);
+    localObject = this.sVideoSound;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
     paramJceOutputStream.write(this.bVoipFlag, 13);
-    if (this.vVoipToken != null) {
-      paramJceOutputStream.write(this.vVoipToken, 14);
+    localObject = this.vVoipToken;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 14);
     }
-    if (this.vNewToken != null) {
-      paramJceOutputStream.write(this.vNewToken, 15);
+    localObject = this.vNewToken;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 15);
     }
-    if (this.vNewVoipToken != null) {
-      paramJceOutputStream.write(this.vNewVoipToken, 16);
+    localObject = this.vNewVoipToken;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 16);
     }
     paramJceOutputStream.write(this.bScenes, 17);
+    localObject = this.vProfileID;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 18);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.msf.service.protocol.push.SvcReqSetToken
  * JD-Core Version:    0.7.0.1
  */

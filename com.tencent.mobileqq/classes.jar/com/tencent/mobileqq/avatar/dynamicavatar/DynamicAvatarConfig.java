@@ -33,128 +33,90 @@ public class DynamicAvatarConfig
     Object localObject = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.dynamic_avatar.name());
     this.jdField_a_of_type_JavaLangString = ((String)localObject);
     this.jdField_a_of_type_Boolean = true;
-    for (;;)
+    try
     {
-      try
+      localObject = ((String)localObject).split("\\|");
+      if (localObject.length >= 11)
       {
-        localObject = ((String)localObject).split("\\|");
-        if (localObject.length < 11) {
-          continue;
-        }
         this.jdField_a_of_type_Boolean = false;
-        if (Integer.valueOf(localObject[0]).intValue() != 1) {
-          continue;
+        if (Integer.valueOf(localObject[0]).intValue() == 1) {
+          this.jdField_b_of_type_Boolean = true;
+        } else {
+          this.jdField_b_of_type_Boolean = false;
         }
-        this.jdField_b_of_type_Boolean = true;
-        if (!this.jdField_b_of_type_Boolean) {
-          continue;
+        if (this.jdField_b_of_type_Boolean)
+        {
+          if (Integer.valueOf(localObject[1]).intValue() == 1) {
+            this.jdField_c_of_type_Boolean = true;
+          } else {
+            this.jdField_c_of_type_Boolean = false;
+          }
+          if (Integer.valueOf(localObject[2]).intValue() == 1) {
+            this.jdField_d_of_type_Boolean = true;
+          } else {
+            this.jdField_d_of_type_Boolean = false;
+          }
+          if (Integer.valueOf(localObject[3]).intValue() == 1) {
+            this.e = true;
+          } else {
+            this.e = false;
+          }
+          if (Integer.valueOf(localObject[4]).intValue() == 1) {
+            this.f = true;
+          } else {
+            this.f = false;
+          }
+          if (Integer.valueOf(localObject[5]).intValue() == 1) {
+            this.g = true;
+          } else {
+            this.g = false;
+          }
+          if (Integer.valueOf(localObject[6]).intValue() == 1) {
+            this.h = true;
+          } else {
+            this.h = false;
+          }
+          if (Integer.valueOf(localObject[11]).intValue() == 1) {
+            this.i = true;
+          } else {
+            this.i = false;
+          }
+          if (Integer.valueOf(localObject[12]).intValue() == 1) {
+            this.j = true;
+          } else {
+            this.j = false;
+          }
         }
-        if (Integer.valueOf(localObject[1]).intValue() != 1) {
-          continue;
+        else
+        {
+          this.jdField_c_of_type_Boolean = false;
+          this.jdField_d_of_type_Boolean = false;
+          this.e = false;
+          this.f = false;
+          this.g = false;
+          this.h = false;
+          this.i = false;
+          this.j = false;
         }
-        this.jdField_c_of_type_Boolean = true;
+        this.jdField_a_of_type_Int = Integer.valueOf(localObject[7]).intValue();
+        this.jdField_b_of_type_Int = Integer.valueOf(localObject[8]).intValue();
+        this.jdField_c_of_type_Int = Integer.valueOf(localObject[9]).intValue();
+        this.jdField_d_of_type_Int = Integer.valueOf(localObject[10]).intValue();
       }
-      catch (Exception localException)
+    }
+    catch (Exception localException)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      if (QLog.isColorLevel())
       {
-        this.jdField_a_of_type_Boolean = true;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("DynamicAvatarConfig", 2, "parse config exception:" + localException.getMessage());
-        continue;
-        this.jdField_c_of_type_Boolean = false;
-        continue;
-        this.jdField_d_of_type_Boolean = false;
-        continue;
-        this.e = false;
-        continue;
-        this.f = false;
-        continue;
-        this.g = false;
-        continue;
-        this.h = false;
-        continue;
-        this.i = false;
-        continue;
-        this.j = false;
-        continue;
-        this.jdField_c_of_type_Boolean = false;
-        this.jdField_d_of_type_Boolean = false;
-        this.e = false;
-        this.f = false;
-        this.g = false;
-        this.h = false;
-        this.i = false;
-        this.j = false;
-        continue;
-        if ((this.jdField_a_of_type_Int > 0) && (this.jdField_b_of_type_Int > 0)) {
-          continue;
-        }
-        this.jdField_b_of_type_Boolean = false;
-        this.jdField_c_of_type_Boolean = false;
-        this.jdField_d_of_type_Boolean = false;
-        this.e = false;
-        this.f = false;
-        this.g = false;
-        this.h = false;
-        this.i = false;
-        this.j = false;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("DynamicAvatarConfig", 2, "maxPlayingCount or maxPlayCountOneDay <= 0");
-        if (this.jdField_c_of_type_Int > 0) {
-          continue;
-        }
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("DynamicAvatarConfig", 2, "adjust samllSizeFPS:" + this.jdField_c_of_type_Int);
-        this.jdField_c_of_type_Int = 18;
-        if (this.jdField_d_of_type_Int > 0) {
-          continue;
-        }
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("DynamicAvatarConfig", 2, "adjust bigSizeFPS:" + this.jdField_d_of_type_Int);
-        this.jdField_d_of_type_Int = 18;
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("parse config exception:");
+        localStringBuilder2.append(localException.getMessage());
+        QLog.d("DynamicAvatarConfig", 2, localStringBuilder2.toString());
       }
-      if (Integer.valueOf(localObject[2]).intValue() != 1) {
-        continue;
-      }
-      this.jdField_d_of_type_Boolean = true;
-      if (Integer.valueOf(localObject[3]).intValue() != 1) {
-        continue;
-      }
-      this.e = true;
-      if (Integer.valueOf(localObject[4]).intValue() != 1) {
-        continue;
-      }
-      this.f = true;
-      if (Integer.valueOf(localObject[5]).intValue() != 1) {
-        continue;
-      }
-      this.g = true;
-      if (Integer.valueOf(localObject[6]).intValue() != 1) {
-        continue;
-      }
-      this.h = true;
-      if (Integer.valueOf(localObject[11]).intValue() != 1) {
-        continue;
-      }
-      this.i = true;
-      if (Integer.valueOf(localObject[12]).intValue() != 1) {
-        continue;
-      }
-      this.j = true;
-      this.jdField_a_of_type_Int = Integer.valueOf(localObject[7]).intValue();
-      this.jdField_b_of_type_Int = Integer.valueOf(localObject[8]).intValue();
-      this.jdField_c_of_type_Int = Integer.valueOf(localObject[9]).intValue();
-      this.jdField_d_of_type_Int = Integer.valueOf(localObject[10]).intValue();
-      if (!this.jdField_a_of_type_Boolean) {
-        continue;
-      }
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
       this.jdField_b_of_type_Boolean = true;
       this.jdField_c_of_type_Boolean = true;
       this.jdField_d_of_type_Boolean = true;
@@ -169,20 +131,86 @@ public class DynamicAvatarConfig
       this.i = true;
       this.j = true;
       return;
+    }
+    if ((this.jdField_a_of_type_Int <= 0) || (this.jdField_b_of_type_Int <= 0))
+    {
       this.jdField_b_of_type_Boolean = false;
+      this.jdField_c_of_type_Boolean = false;
+      this.jdField_d_of_type_Boolean = false;
+      this.e = false;
+      this.f = false;
+      this.g = false;
+      this.h = false;
+      this.i = false;
+      this.j = false;
+      if (QLog.isColorLevel()) {
+        QLog.d("DynamicAvatarConfig", 2, "maxPlayingCount or maxPlayCountOneDay <= 0");
+      }
+    }
+    StringBuilder localStringBuilder1;
+    if (this.jdField_c_of_type_Int <= 0)
+    {
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("adjust samllSizeFPS:");
+        localStringBuilder1.append(this.jdField_c_of_type_Int);
+        QLog.d("DynamicAvatarConfig", 2, localStringBuilder1.toString());
+      }
+      this.jdField_c_of_type_Int = 18;
+    }
+    if (this.jdField_d_of_type_Int <= 0)
+    {
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("adjust bigSizeFPS:");
+        localStringBuilder1.append(this.jdField_d_of_type_Int);
+        QLog.d("DynamicAvatarConfig", 2, localStringBuilder1.toString());
+      }
+      this.jdField_d_of_type_Int = 18;
     }
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("");
-    localStringBuilder.append("dpcString:").append(this.jdField_a_of_type_JavaLangString).append(",isPlayInAll:").append(this.jdField_b_of_type_Boolean).append(",isPlayInMsgTab:").append(this.jdField_c_of_type_Boolean).append(",isPlayInContacts:").append(this.jdField_d_of_type_Boolean).append(",isPlayInNearList:").append(this.e).append(",isPlayInFriendProfile:").append(this.f).append(",isPlayInNearProfile:").append(this.g).append(",isPlayInTroopProfile:").append(this.h).append(",maxPlayingCount:").append(this.jdField_a_of_type_Int).append(",maxPlayCountOneDay:").append(this.jdField_b_of_type_Int).append(",bigSizeFPS:").append(this.jdField_d_of_type_Int).append(",smallSizeFPS:").append(this.jdField_c_of_type_Int).append(",isConvsPlayAfterKill:").append(this.i).append(",isContactPlayAfterKill:").append(this.j).append(",isUseDefault:").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("dpcString:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",isPlayInAll:");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(",isPlayInMsgTab:");
+    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(",isPlayInContacts:");
+    localStringBuilder.append(this.jdField_d_of_type_Boolean);
+    localStringBuilder.append(",isPlayInNearList:");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(",isPlayInFriendProfile:");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(",isPlayInNearProfile:");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(",isPlayInTroopProfile:");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(",maxPlayingCount:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",maxPlayCountOneDay:");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(",bigSizeFPS:");
+    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(",smallSizeFPS:");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(",isConvsPlayAfterKill:");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(",isContactPlayAfterKill:");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append(",isUseDefault:");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public final class SvcRespParam
   extends JceStruct
 {
-  public static ArrayList<OnlineInfos> cache_vOnlineInfo = null;
+  public static ArrayList<OnlineInfos> cache_vOnlineInfo;
   public int PCstat = 0;
   public int iIsSupportC2CRoamMsg = 0;
   public int iIsSupportDataLine = 0;
@@ -53,17 +53,13 @@ public final class SvcRespParam
     try
     {
       this.onlineinfos = ((ArrayList)paramJceInputStream.read(cache_vOnlineInfo, 7, false));
-      this.iPCClientType = paramJceInputStream.read(this.iPCClientType, 8, false);
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-        QLog.d("==read info  onlineinfos===", 2, "", localException);
-      }
+      localException.printStackTrace();
+      QLog.d("==read info  onlineinfos===", 2, "", localException);
     }
+    this.iPCClientType = paramJceInputStream.read(this.iPCClientType, 8, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -81,7 +77,7 @@ public final class SvcRespParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     RegisterProxySvcPack.SvcRespParam
  * JD-Core Version:    0.7.0.1
  */

@@ -22,28 +22,30 @@ class DirectForwarder$1
       return null;
     }
     int i = paramInt1;
-    if (paramInt1 == 0) {
-      switch (FileManagerUtil.a(paramString))
+    if (paramInt1 == 0)
+    {
+      paramInt1 = FileManagerUtil.a(paramString);
+      if (paramInt1 != 1)
       {
-      default: 
-        i = 0;
+        if (paramInt1 != 2) {
+          i = 0;
+        } else {
+          i = 2;
+        }
+      }
+      else {
+        i = 3;
       }
     }
-    for (;;)
-    {
-      DataLineMsgRecord localDataLineMsgRecord = new DataLineMsgRecord();
-      localDataLineMsgRecord.msgtype = DataLineHandler.a(i);
-      localDataLineMsgRecord.sessionid = paramDataLineHandler.a(0, this.jdField_a_of_type_Int).longValue();
-      localDataLineMsgRecord.path = paramString;
-      localDataLineMsgRecord.thumbPath = null;
-      localDataLineMsgRecord.groupId = paramInt2;
-      localDataLineMsgRecord.groupSize = paramInt3;
-      localDataLineMsgRecord.groupIndex = paramInt4;
-      return localDataLineMsgRecord;
-      i = 3;
-      continue;
-      i = 2;
-    }
+    DataLineMsgRecord localDataLineMsgRecord = new DataLineMsgRecord();
+    localDataLineMsgRecord.msgtype = DataLineHandler.a(i);
+    localDataLineMsgRecord.sessionid = paramDataLineHandler.a(0, this.jdField_a_of_type_Int).longValue();
+    localDataLineMsgRecord.path = paramString;
+    localDataLineMsgRecord.thumbPath = null;
+    localDataLineMsgRecord.groupId = paramInt2;
+    localDataLineMsgRecord.groupSize = paramInt3;
+    localDataLineMsgRecord.groupIndex = paramInt4;
+    return localDataLineMsgRecord;
   }
   
   protected String a(Integer... paramVarArgs)
@@ -55,113 +57,101 @@ class DirectForwarder$1
   
   void a(List<String> paramList, int paramInt)
   {
-    if (paramList == null) {}
-    DataLineHandler localDataLineHandler;
-    int j;
-    int i;
-    Object localObject;
+    if (paramList == null) {
+      return;
+    }
+    DataLineHandler localDataLineHandler = (DataLineHandler)this.jdField_a_of_type_ComDatalineCoreDirectForwarder.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
     for (;;)
     {
-      return;
-      localDataLineHandler = (DataLineHandler)this.jdField_a_of_type_ComDatalineCoreDirectForwarder.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
-      j = paramList.size();
-      if (j > 3) {
-        break;
-      }
-      i = 0;
-      while (i < j)
+      int j = paramList.size();
+      if (j <= 3)
       {
-        localObject = a(localDataLineHandler, (String)paramList.get(i), paramInt, 0, 0, 0);
-        if (localObject != null) {
-          localDataLineHandler.a((DataLineMsgRecord)localObject, false);
-        }
-        i += 1;
-      }
-    }
-    label118:
-    DataLineMsgRecord localDataLineMsgRecord;
-    if ((j > 3) && (j < 50))
-    {
-      localObject = new ArrayList();
-      int k = localDataLineHandler.a();
-      i = 0;
-      if (i < j)
-      {
-        localDataLineMsgRecord = a(localDataLineHandler, (String)paramList.get(i), paramInt, k, j, i);
-        if (localDataLineMsgRecord != null) {
-          ((ArrayList)localObject).add(localDataLineMsgRecord);
-        }
-        if (!DataLineMsgSet.isSingle(paramInt, k)) {
-          break label409;
-        }
-        if (localDataLineMsgRecord != null)
+        i = 0;
+        while (i < j)
         {
-          localDataLineMsgRecord.groupId = 0;
-          localDataLineMsgRecord.groupIndex = 0;
-          localDataLineMsgRecord.groupSize = 0;
+          localObject1 = a(localDataLineHandler, (String)paramList.get(i), paramInt, 0, 0, 0);
+          if (localObject1 != null) {
+            localDataLineHandler.a((DataLineMsgRecord)localObject1, false);
+          }
+          i += 1;
         }
-        if (((ArrayList)localObject).size() > 0) {
-          localDataLineHandler.a((ArrayList)localObject, false);
+      }
+      DataLineMsgRecord localDataLineMsgRecord;
+      Object localObject2;
+      if ((j > 3) && (j < 50))
+      {
+        localObject1 = new ArrayList();
+        int k = localDataLineHandler.a();
+        i = 0;
+        while (i < j)
+        {
+          localDataLineMsgRecord = a(localDataLineHandler, (String)paramList.get(i), paramInt, k, j, i);
+          if (localDataLineMsgRecord != null) {
+            ((ArrayList)localObject1).add(localDataLineMsgRecord);
+          }
+          localObject2 = localObject1;
+          if (DataLineMsgSet.isSingle(paramInt, k))
+          {
+            if (localDataLineMsgRecord != null)
+            {
+              localDataLineMsgRecord.groupId = 0;
+              localDataLineMsgRecord.groupIndex = 0;
+              localDataLineMsgRecord.groupSize = 0;
+            }
+            if (((ArrayList)localObject1).size() > 0) {
+              localDataLineHandler.a((ArrayList)localObject1, false);
+            }
+            localObject2 = new ArrayList();
+          }
+          i += 1;
+          localObject1 = localObject2;
         }
-        localObject = new ArrayList();
+        if (((ArrayList)localObject1).size() > 0) {
+          localDataLineHandler.a((ArrayList)localObject1, false);
+        }
+        return;
       }
-    }
-    label260:
-    label406:
-    label409:
-    for (;;)
-    {
-      i += 1;
-      break label118;
-      if (((ArrayList)localObject).size() <= 0) {
-        break;
-      }
-      localDataLineHandler.a((ArrayList)localObject, false);
-      return;
-      localObject = new ArrayList();
+      Object localObject1 = new ArrayList();
       j = localDataLineHandler.a();
-      i = 0;
-      if (i < 50)
+      int i = 0;
+      while (i < 50)
       {
         localDataLineMsgRecord = a(localDataLineHandler, (String)paramList.get(i), paramInt, j, 50, i);
         if (localDataLineMsgRecord != null) {
-          ((ArrayList)localObject).add(localDataLineMsgRecord);
+          ((ArrayList)localObject1).add(localDataLineMsgRecord);
         }
-        if (!DataLineMsgSet.isSingle(paramInt, j)) {
-          break label406;
-        }
-        if (localDataLineMsgRecord != null)
+        localObject2 = localObject1;
+        if (DataLineMsgSet.isSingle(paramInt, j))
         {
-          localDataLineMsgRecord.groupId = 0;
-          localDataLineMsgRecord.groupIndex = 0;
-          localDataLineMsgRecord.groupSize = 0;
+          if (localDataLineMsgRecord != null)
+          {
+            localDataLineMsgRecord.groupId = 0;
+            localDataLineMsgRecord.groupIndex = 0;
+            localDataLineMsgRecord.groupSize = 0;
+          }
+          if (((ArrayList)localObject1).size() > 0) {
+            localDataLineHandler.a((ArrayList)localObject1, false);
+          }
+          localObject2 = new ArrayList();
         }
-        if (((ArrayList)localObject).size() > 0) {
-          localDataLineHandler.a((ArrayList)localObject, false);
-        }
-        localObject = new ArrayList();
-      }
-      for (;;)
-      {
         i += 1;
-        break label260;
-        if (((ArrayList)localObject).size() > 0) {
-          localDataLineHandler.a((ArrayList)localObject, false);
-        }
-        i = 0;
-        while (i < 50)
-        {
-          paramList.remove(0);
-          i += 1;
-        }
-        break;
+        localObject1 = localObject2;
+      }
+      if (((ArrayList)localObject1).size() > 0) {
+        localDataLineHandler.a((ArrayList)localObject1, false);
+      }
+      i = 0;
+      while (i < 50)
+      {
+        paramList.remove(0);
+        i += 1;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.core.DirectForwarder.1
  * JD-Core Version:    0.7.0.1
  */

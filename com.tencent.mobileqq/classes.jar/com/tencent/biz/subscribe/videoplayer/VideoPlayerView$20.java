@@ -7,26 +7,27 @@ class VideoPlayerView$20
   
   public void run()
   {
-    switch (this.a)
+    int i = this.a;
+    if (i != 112)
     {
-    default: 
-      return;
-    case 112: 
-      VideoPlayerView.a(this.this$0, 4);
-      VideoPlayerView.a(this.this$0, true);
-      VideoPlayerView.b(this.this$0, true);
-      VideoPlayerView.e(this.this$0);
+      if (i != 113) {
+        return;
+      }
+      VideoPlayerView.a(this.this$0, 5);
+      VideoPlayerView.a(this.this$0, false);
+      VideoPlayerView.b(this.this$0, false);
+      VideoPlayerView.j(this.this$0);
       return;
     }
-    VideoPlayerView.a(this.this$0, 5);
-    VideoPlayerView.a(this.this$0, false);
-    VideoPlayerView.b(this.this$0, false);
-    VideoPlayerView.j(this.this$0);
+    VideoPlayerView.a(this.this$0, 4);
+    VideoPlayerView.a(this.this$0, true);
+    VideoPlayerView.b(this.this$0, true);
+    VideoPlayerView.e(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.videoplayer.VideoPlayerView.20
  * JD-Core Version:    0.7.0.1
  */

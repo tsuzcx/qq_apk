@@ -17,12 +17,31 @@ public class RaftAnnotationConfigArg
   
   public String toString()
   {
-    return "RaftAnnotationConfigArg{configClassName='" + this.configClassName + '\'' + ", configMethodName='" + this.configMethodName + '\'' + ", argMethod='" + this.argMethod + '\'' + ", argName='" + this.argName + '\'' + ", modifier=" + this.modifier + ", returnType='" + this.returnType + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RaftAnnotationConfigArg{configClassName='");
+    localStringBuilder.append(this.configClassName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", configMethodName='");
+    localStringBuilder.append(this.configMethodName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", argMethod='");
+    localStringBuilder.append(this.argMethod);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", argName='");
+    localStringBuilder.append(this.argName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", modifier=");
+    localStringBuilder.append(this.modifier);
+    localStringBuilder.append(", returnType='");
+    localStringBuilder.append(this.returnType);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.raft.codegenmeta.annotation.RaftAnnotationConfigArg
  * JD-Core Version:    0.7.0.1
  */

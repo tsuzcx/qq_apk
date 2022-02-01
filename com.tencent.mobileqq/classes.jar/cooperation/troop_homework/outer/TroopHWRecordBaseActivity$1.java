@@ -11,24 +11,17 @@ class TroopHWRecordBaseActivity$1
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    if ((paramView.getId() == 2131379086) && (!this.a.a))
     {
+      this.a.setResult(0);
+      this.a.finish();
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (!this.a.a)
-      {
-        this.a.setResult(0);
-        this.a.finish();
-      }
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.troop_homework.outer.TroopHWRecordBaseActivity.1
  * JD-Core Version:    0.7.0.1
  */

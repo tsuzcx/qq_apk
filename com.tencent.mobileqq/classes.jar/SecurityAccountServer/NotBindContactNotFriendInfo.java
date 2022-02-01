@@ -57,14 +57,15 @@ public final class NotBindContactNotFriendInfo
     paramJceOutputStream.write(this.age, 4);
     paramJceOutputStream.write(this.sameFriend, 5);
     paramJceOutputStream.write(this.isNew, 6);
-    if (this.nickname != null) {
-      paramJceOutputStream.write(this.nickname, 7);
+    String str = this.nickname;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.NotBindContactNotFriendInfo
  * JD-Core Version:    0.7.0.1
  */

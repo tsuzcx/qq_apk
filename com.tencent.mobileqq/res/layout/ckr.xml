@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/njo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="13.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/mg6" android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <FrameLayout android:id="@id/n5p" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <ImageView android:id="@id/n5n" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-        <ImageView android:id="@id/n5o" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" />
-    </FrameLayout>
-    <ViewStub android:id="@id/nde" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/njk" android:background="@drawable/ijj" android:layout_width="fill_parent" android:layout_height="74.0dip">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/njn" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="12.0dip" android:scaleType="fitXY" />
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="42.0dip" android:layout_marginLeft="9.0dip" android:layout_marginBottom="1.0dip">
+            <LinearLayout android:paddingTop="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0sp" android:textColor="#ff03081a" android:gravity="center_horizontal" android:layout_gravity="center_vertical" android:id="@id/njq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="示例文字" />
+                <TextView android:textSize="10.0sp" android:textColor="#ff489cff" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/njp" android:background="@drawable/ijl" android:paddingLeft="1.0dip" android:paddingRight="1.0dip" android:layout_width="48.0dip" android:layout_height="15.0dip" android:layout_marginLeft="4.0dip" android:text="最常使用" />
+            </LinearLayout>
+            <TextView android:textSize="12.0sp" android:textColor="#ff7a7a8d" android:gravity="bottom" android:id="@id/njm" android:paddingBottom="1.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="示例文字" />
+        </LinearLayout>
+        <LinearLayout android:gravity="right" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:layout_gravity="center" android:id="@id/njj" android:paddingLeft="5.0dip" android:paddingTop="18.0dip" android:paddingRight="3.0dip" android:paddingBottom="18.0dip" android:layout_width="52.0dip" android:layout_height="60.0dip" android:src="@drawable/iji" android:scaleType="fitXY" />
+            <ImageView android:gravity="center" android:layout_gravity="center" android:id="@id/njl" android:paddingLeft="10.0dip" android:paddingTop="24.0dip" android:paddingRight="10.0dip" android:paddingBottom="24.0dip" android:layout_width="32.0dip" android:layout_height="60.0dip" android:layout_marginRight="5.0dip" android:src="@drawable/ijk" android:scaleType="fitXY" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

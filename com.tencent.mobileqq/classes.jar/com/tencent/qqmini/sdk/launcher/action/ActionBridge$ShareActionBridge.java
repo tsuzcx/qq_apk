@@ -16,20 +16,24 @@ public class ActionBridge$ShareActionBridge
   
   public static ShareActionBridge obtain(int paramInt, Bundle paramBundle)
   {
-    HashMap localHashMap = null;
     if (paramBundle != null)
     {
-      localHashMap = new HashMap();
-      localHashMap.put("data", paramBundle);
+      localObject = new HashMap();
+      ((Map)localObject).put("data", paramBundle);
+      paramBundle = (Bundle)localObject;
     }
-    paramBundle = new ShareActionBridge();
-    paramBundle.setRealAction(obtain("ShareAction", paramInt, localHashMap));
-    return paramBundle;
+    else
+    {
+      paramBundle = null;
+    }
+    Object localObject = new ShareActionBridge();
+    ((ShareActionBridge)localObject).setRealAction(obtain("ShareAction", paramInt, paramBundle));
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.action.ActionBridge.ShareActionBridge
  * JD-Core Version:    0.7.0.1
  */

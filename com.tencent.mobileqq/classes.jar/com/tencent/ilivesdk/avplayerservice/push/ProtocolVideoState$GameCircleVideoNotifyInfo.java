@@ -28,14 +28,15 @@ public final class ProtocolVideoState$GameCircleVideoNotifyInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40, 48 }, new String[] { "uuid", "sessionid", "OperType", "VideoResList", "LiveType", "uin" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), null, Integer.valueOf(0), Long.valueOf(0L) }, GameCircleVideoNotifyInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40, 48 }, new String[] { "uuid", "sessionid", "OperType", "VideoResList", "LiveType", "uin" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localInteger, null, localInteger, Long.valueOf(0L) }, GameCircleVideoNotifyInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avplayerservice.push.ProtocolVideoState.GameCircleVideoNotifyInfo
  * JD-Core Version:    0.7.0.1
  */

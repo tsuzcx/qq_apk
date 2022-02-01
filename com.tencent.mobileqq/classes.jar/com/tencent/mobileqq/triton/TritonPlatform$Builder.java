@@ -40,107 +40,138 @@ public final class TritonPlatform$Builder
   
   private final void checkNonNull(Object paramObject, String paramString)
   {
-    if (paramObject == null) {
-      throw ((Throwable)new TritonInitException(paramString + " is not set", null, null, 6, null));
+    if (paramObject != null) {
+      return;
     }
+    paramObject = new StringBuilder();
+    paramObject.append(paramString);
+    paramObject.append(" is not set");
+    throw ((Throwable)new TritonInitException(paramObject.toString(), null, null, 6, null));
   }
   
   private final TritonPlatform performBuild()
   {
-    Object localObject1 = this.debugConfig;
-    if (localObject1 != null) {}
-    for (;;)
+    Object localObject = this.debugConfig;
+    if (localObject == null) {
+      localObject = new DebugConfig(false, 0L, 0L, 0, 0, 31, null);
+    }
+    this.debugConfig = ((DebugConfig)localObject);
+    if (this.context != null)
     {
-      this.debugConfig = ((DebugConfig)localObject1);
-      if (this.context != null) {
-        break;
-      }
-      throw ((Throwable)new TritonInitException("context" + " is not set", null, null, 6, null));
-      localObject1 = new DebugConfig(false, 0L, 0L, 0, 0, 31, null);
-    }
-    if (this.logger == null) {
-      throw ((Throwable)new TritonInitException("logger" + " is not set", null, null, 6, null));
-    }
-    if (this.scriptPluginFactory == null) {
-      throw ((Throwable)new TritonInitException("scriptPluginFactory" + " is not set", null, null, 6, null));
-    }
-    if (this.enginePackage == null) {
-      throw ((Throwable)new TritonInitException("enginePackage" + " is not set", null, null, 6, null));
-    }
-    boolean bool1 = this.enableCodeCache;
-    if (this.workerExecutor == null) {
-      throw ((Throwable)new TritonInitException("workerExecutor" + " is not set", null, null, 6, null));
-    }
-    if (this.mainThreadExecutor == null) {
-      throw ((Throwable)new TritonInitException("mainThreadExecutor" + " is not set", null, null, 6, null));
-    }
-    if (this.downloader == null) {
-      throw ((Throwable)new TritonInitException("downloader" + " is not set", null, null, 6, null));
-    }
-    localObject1 = this.enginePackage;
-    if (localObject1 != null)
-    {
-      localObject1 = ((EnginePackage)localObject1).getEngineJar();
-      if (localObject1 != null)
+      if (this.logger != null)
       {
-        localContext = this.context;
-        if (localContext == null) {
-          Intrinsics.throwNpe();
+        if (this.scriptPluginFactory != null)
+        {
+          localObject = this.enginePackage;
+          if (localObject != null)
+          {
+            boolean bool1 = this.enableCodeCache;
+            if (this.workerExecutor != null)
+            {
+              if (this.mainThreadExecutor != null)
+              {
+                if (this.downloader != null)
+                {
+                  Context localContext;
+                  if (localObject != null)
+                  {
+                    localObject = ((EnginePackage)localObject).getEngineJar();
+                    if (localObject != null)
+                    {
+                      localContext = this.context;
+                      if (localContext == null) {
+                        Intrinsics.throwNpe();
+                      }
+                      localObject = (ClassLoader)new TritonPlatform.Builder.TritonClassLoader((File)localObject, localContext);
+                      break label154;
+                    }
+                  }
+                  localObject = TritonPlatform.class.getClassLoader();
+                  try
+                  {
+                    label154:
+                    localObject = ((ClassLoader)localObject).loadClass("com.tencent.mobileqq.triton.internal.engine.EnginePlatformFactory").newInstance();
+                    if (localObject != null)
+                    {
+                      localObject = (TritonPlatform.Builder.TritonPlatformFactory)localObject;
+                      localContext = this.context;
+                      if (localContext == null) {
+                        Intrinsics.throwNpe();
+                      }
+                      LogDelegate localLogDelegate = this.logger;
+                      if (localLogDelegate == null) {
+                        Intrinsics.throwNpe();
+                      }
+                      DebugConfig localDebugConfig = this.debugConfig;
+                      if (localDebugConfig == null) {
+                        Intrinsics.throwNpe();
+                      }
+                      ScriptPluginFactory localScriptPluginFactory = this.scriptPluginFactory;
+                      if (localScriptPluginFactory == null) {
+                        Intrinsics.throwNpe();
+                      }
+                      EnginePackage localEnginePackage = this.enginePackage;
+                      if (localEnginePackage == null) {
+                        Intrinsics.throwNpe();
+                      }
+                      bool1 = this.enableCodeCache;
+                      boolean bool2 = this.enableOpenGlEs3;
+                      boolean bool3 = this.preloadEngine;
+                      Executor localExecutor1 = this.workerExecutor;
+                      if (localExecutor1 == null) {
+                        Intrinsics.throwNpe();
+                      }
+                      Executor localExecutor2 = this.mainThreadExecutor;
+                      if (localExecutor2 == null) {
+                        Intrinsics.throwNpe();
+                      }
+                      Downloader localDownloader = this.downloader;
+                      if (localDownloader == null) {
+                        Intrinsics.throwNpe();
+                      }
+                      return ((TritonPlatform.Builder.TritonPlatformFactory)localObject).create(localContext, localLogDelegate, localDebugConfig, localScriptPluginFactory, localEnginePackage, bool1, bool2, bool3, localExecutor1, localExecutor2, localDownloader);
+                    }
+                    throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.triton.TritonPlatform.Builder.TritonPlatformFactory");
+                  }
+                  catch (Throwable localThrowable)
+                  {
+                    throw ((Throwable)new TritonInitException("failed to create TritonEngine", ErrorCodes.UNKNOWN, localThrowable));
+                  }
+                }
+                localStringBuilder = new StringBuilder();
+                localStringBuilder.append("downloader");
+                localStringBuilder.append(" is not set");
+                throw ((Throwable)new TritonInitException(localStringBuilder.toString(), null, null, 6, null));
+              }
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("mainThreadExecutor");
+              localStringBuilder.append(" is not set");
+              throw ((Throwable)new TritonInitException(localStringBuilder.toString(), null, null, 6, null));
+            }
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("workerExecutor");
+            localStringBuilder.append(" is not set");
+            throw ((Throwable)new TritonInitException(localStringBuilder.toString(), null, null, 6, null));
+          }
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("enginePackage");
+          localStringBuilder.append(" is not set");
+          throw ((Throwable)new TritonInitException(localStringBuilder.toString(), null, null, 6, null));
         }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("scriptPluginFactory");
+        localStringBuilder.append(" is not set");
+        throw ((Throwable)new TritonInitException(localStringBuilder.toString(), null, null, 6, null));
       }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("logger");
+      localStringBuilder.append(" is not set");
+      throw ((Throwable)new TritonInitException(localStringBuilder.toString(), null, null, 6, null));
     }
-    for (localObject1 = (ClassLoader)new TritonPlatform.Builder.TritonClassLoader((File)localObject1, localContext);; localObject2 = TritonPlatform.class.getClassLoader()) {
-      try
-      {
-        localObject1 = ((ClassLoader)localObject1).loadClass("com.tencent.mobileqq.triton.internal.engine.EnginePlatformFactory").newInstance();
-        if (localObject1 != null) {
-          break;
-        }
-        throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.triton.TritonPlatform.Builder.TritonPlatformFactory");
-      }
-      catch (Throwable localThrowable)
-      {
-        throw ((Throwable)new TritonInitException("failed to create TritonEngine", ErrorCodes.UNKNOWN, localThrowable));
-      }
-    }
-    Object localObject2 = (TritonPlatform.Builder.TritonPlatformFactory)localObject2;
-    Context localContext = this.context;
-    if (localContext == null) {
-      Intrinsics.throwNpe();
-    }
-    LogDelegate localLogDelegate = this.logger;
-    if (localLogDelegate == null) {
-      Intrinsics.throwNpe();
-    }
-    DebugConfig localDebugConfig = this.debugConfig;
-    if (localDebugConfig == null) {
-      Intrinsics.throwNpe();
-    }
-    ScriptPluginFactory localScriptPluginFactory = this.scriptPluginFactory;
-    if (localScriptPluginFactory == null) {
-      Intrinsics.throwNpe();
-    }
-    EnginePackage localEnginePackage = this.enginePackage;
-    if (localEnginePackage == null) {
-      Intrinsics.throwNpe();
-    }
-    bool1 = this.enableCodeCache;
-    boolean bool2 = this.enableOpenGlEs3;
-    boolean bool3 = this.preloadEngine;
-    Executor localExecutor1 = this.workerExecutor;
-    if (localExecutor1 == null) {
-      Intrinsics.throwNpe();
-    }
-    Executor localExecutor2 = this.mainThreadExecutor;
-    if (localExecutor2 == null) {
-      Intrinsics.throwNpe();
-    }
-    Downloader localDownloader = this.downloader;
-    if (localDownloader == null) {
-      Intrinsics.throwNpe();
-    }
-    localObject2 = ((TritonPlatform.Builder.TritonPlatformFactory)localObject2).create(localContext, localLogDelegate, localDebugConfig, localScriptPluginFactory, localEnginePackage, bool1, bool2, bool3, localExecutor1, localExecutor2, localDownloader);
-    return localObject2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("context");
+    localStringBuilder.append(" is not set");
+    throw ((Throwable)new TritonInitException(localStringBuilder.toString(), null, null, 6, null));
   }
   
   @NotNull
@@ -150,116 +181,130 @@ public final class TritonPlatform$Builder
     localLock.lock();
     try
     {
-      TritonPlatform localTritonPlatform1 = previouslyBuiltPlatform;
-      if (localTritonPlatform1 != null)
+      TritonPlatform localTritonPlatform = previouslyBuiltPlatform;
+      if (localTritonPlatform != null)
       {
-        String str = "TritonPlatform is singleton, can't build twice. Previously built one is [" + localTritonPlatform1 + ']';
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("TritonPlatform is singleton, can't build twice. Previously built one is [");
+        ((StringBuilder)localObject2).append(localTritonPlatform);
+        ((StringBuilder)localObject2).append(']');
+        localObject2 = ((StringBuilder)localObject2).toString();
         Throwable localThrowable = previouslyBuildingStackTrace;
         if (localThrowable == null) {
           Intrinsics.throwNpe();
         }
-        throw ((Throwable)new TritonPlatformInitTwiceException(str, localTritonPlatform1, localThrowable));
+        throw ((Throwable)new TritonPlatformInitTwiceException((String)localObject2, localTritonPlatform, localThrowable));
       }
+      localTritonPlatform = performBuild();
+      previouslyBuiltPlatform = localTritonPlatform;
+      previouslyBuildingStackTrace = new Throwable("previously building stacktrace");
+      return localTritonPlatform;
     }
     finally
     {
       localLock.unlock();
     }
-    TritonPlatform localTritonPlatform2 = performBuild();
-    previouslyBuiltPlatform = localTritonPlatform2;
-    previouslyBuildingStackTrace = new Throwable("previously building stacktrace");
-    localLock.unlock();
-    return localTritonPlatform2;
   }
   
   @NotNull
   public final Builder context(@NotNull Context paramContext)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    ((Builder)this).context = paramContext.getApplicationContext();
-    return (Builder)this;
+    Builder localBuilder = (Builder)this;
+    localBuilder.context = paramContext.getApplicationContext();
+    return localBuilder;
   }
   
   @NotNull
   public final Builder debugConfig(@NotNull DebugConfig paramDebugConfig)
   {
     Intrinsics.checkParameterIsNotNull(paramDebugConfig, "debugConfig");
-    ((Builder)this).debugConfig = paramDebugConfig;
-    return (Builder)this;
+    Builder localBuilder = (Builder)this;
+    localBuilder.debugConfig = paramDebugConfig;
+    return localBuilder;
   }
   
   @NotNull
   public final Builder downloader(@NotNull Downloader paramDownloader)
   {
     Intrinsics.checkParameterIsNotNull(paramDownloader, "downloader");
-    ((Builder)this).downloader = paramDownloader;
-    return (Builder)this;
+    Builder localBuilder = (Builder)this;
+    localBuilder.downloader = paramDownloader;
+    return localBuilder;
   }
   
   @NotNull
   public final Builder enableCodeCache(boolean paramBoolean)
   {
-    ((Builder)this).enableCodeCache = paramBoolean;
-    return (Builder)this;
+    Builder localBuilder = (Builder)this;
+    localBuilder.enableCodeCache = paramBoolean;
+    return localBuilder;
   }
   
   @NotNull
   public final Builder enableOpenGlEs3(boolean paramBoolean)
   {
-    ((Builder)this).enableOpenGlEs3 = paramBoolean;
-    return (Builder)this;
+    Builder localBuilder = (Builder)this;
+    localBuilder.enableOpenGlEs3 = paramBoolean;
+    return localBuilder;
   }
   
   @NotNull
   public final Builder enablePreloadEngine(boolean paramBoolean)
   {
-    ((Builder)this).preloadEngine = paramBoolean;
-    return (Builder)this;
+    Builder localBuilder = (Builder)this;
+    localBuilder.preloadEngine = paramBoolean;
+    return localBuilder;
   }
   
   @NotNull
   public final Builder enginePackage(@NotNull EnginePackage paramEnginePackage)
   {
     Intrinsics.checkParameterIsNotNull(paramEnginePackage, "enginePackage");
-    ((Builder)this).enginePackage = paramEnginePackage;
-    return (Builder)this;
+    Builder localBuilder = (Builder)this;
+    localBuilder.enginePackage = paramEnginePackage;
+    return localBuilder;
   }
   
   @NotNull
   public final Builder logger(@NotNull LogDelegate paramLogDelegate)
   {
     Intrinsics.checkParameterIsNotNull(paramLogDelegate, "logger");
-    ((Builder)this).logger = paramLogDelegate;
-    return (Builder)this;
+    Builder localBuilder = (Builder)this;
+    localBuilder.logger = paramLogDelegate;
+    return localBuilder;
   }
   
   @NotNull
   public final Builder mainThreadExecutor(@NotNull Executor paramExecutor)
   {
     Intrinsics.checkParameterIsNotNull(paramExecutor, "mainThreadExecutor");
-    ((Builder)this).mainThreadExecutor = paramExecutor;
-    return (Builder)this;
+    Builder localBuilder = (Builder)this;
+    localBuilder.mainThreadExecutor = paramExecutor;
+    return localBuilder;
   }
   
   @NotNull
   public final Builder scriptPluginFactory(@NotNull ScriptPluginFactory paramScriptPluginFactory)
   {
     Intrinsics.checkParameterIsNotNull(paramScriptPluginFactory, "scriptPluginFactory");
-    ((Builder)this).scriptPluginFactory = paramScriptPluginFactory;
-    return (Builder)this;
+    Builder localBuilder = (Builder)this;
+    localBuilder.scriptPluginFactory = paramScriptPluginFactory;
+    return localBuilder;
   }
   
   @NotNull
   public final Builder workerExecutor(@NotNull Executor paramExecutor)
   {
     Intrinsics.checkParameterIsNotNull(paramExecutor, "workerExecutor");
-    ((Builder)this).workerExecutor = paramExecutor;
-    return (Builder)this;
+    Builder localBuilder = (Builder)this;
+    localBuilder.workerExecutor = paramExecutor;
+    return localBuilder;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.TritonPlatform.Builder
  * JD-Core Version:    0.7.0.1
  */

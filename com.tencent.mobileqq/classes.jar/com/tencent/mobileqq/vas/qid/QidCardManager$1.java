@@ -18,16 +18,30 @@ final class QidCardManager$1
   public void onDone(DownloadTask paramDownloadTask)
   {
     super.onDone(paramDownloadTask);
-    if ((this.jdField_a_of_type_AndroidAppActivity == null) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing())) {
-      return;
-    }
-    if ((paramDownloadTask.a() == 3) && (paramDownloadTask.a == 0)) {}
-    for (int i = 1; i != 0; i = 0)
+    Object localObject = this.jdField_a_of_type_AndroidAppActivity;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqVasQidQidPagView.a(this.jdField_a_of_type_ComTencentMobileqqVasQidQidPagView$QidData);
-      return;
+      if (((Activity)localObject).isFinishing()) {
+        return;
+      }
+      int i;
+      if ((paramDownloadTask.a() == 3) && (paramDownloadTask.a == 0)) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (i != 0)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqVasQidQidPagView.a(this.jdField_a_of_type_ComTencentMobileqqVasQidQidPagView$QidData);
+        return;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("QID_QR,download,error:");
+      ((StringBuilder)localObject).append(paramDownloadTask.a);
+      ((StringBuilder)localObject).append(",");
+      ((StringBuilder)localObject).append(paramDownloadTask.b);
+      QLog.d("QidCardManager", 2, ((StringBuilder)localObject).toString());
     }
-    QLog.d("QidCardManager", 2, "QID_QR,download,error:" + paramDownloadTask.a + "," + paramDownloadTask.b);
   }
   
   public boolean onStart(DownloadTask paramDownloadTask)
@@ -40,7 +54,7 @@ final class QidCardManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qid.QidCardManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -37,32 +37,41 @@ public abstract class ApkUtils
       paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionName;
       return paramContext;
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label18:
+      break label18;
+    }
     return "";
   }
   
   public static boolean a(String paramString, Context paramContext)
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
-    for (;;)
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramContext != null)
     {
-      return false;
-      paramContext = paramContext.getPackageManager();
-      try
-      {
-        paramString = paramContext.getApplicationInfo(paramString, 0);
-        if (paramString != null) {
-          return true;
-        }
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
       }
-      catch (PackageManager.NameNotFoundException paramString) {}
+      paramContext = paramContext.getPackageManager();
     }
+    try
+    {
+      paramString = paramContext.getApplicationInfo(paramString, 0);
+      bool1 = bool2;
+      if (paramString != null) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    catch (PackageManager.NameNotFoundException paramString) {}
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.cooperation.ApkUtils
  * JD-Core Version:    0.7.0.1
  */

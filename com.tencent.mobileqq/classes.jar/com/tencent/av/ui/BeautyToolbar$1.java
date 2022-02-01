@@ -15,29 +15,28 @@ class BeautyToolbar$1
     if (this.a.mBeautyValue != paramInt)
     {
       this.a.updateTip(paramInt);
-      if ((paramInt != 0) || (this.a.mBeautyValue <= 0)) {
-        break label125;
-      }
-      this.a.mSeek.setThumb(this.a.mThumb_0);
-    }
-    for (;;)
-    {
-      if (paramBoolean) {
-        this.a.mSeek.setContentDescription(paramInt + "%");
-      }
-      this.a.mBeautyValue = paramInt;
-      this.a.mApp.a("BEAUTY_SKIN", this.a.mBeautyValue, false);
-      EffectSettingUi.a(this.a.mApp, -1003L);
-      return;
-      label125:
-      if ((paramInt > 0) && (paramInt <= 30) && ((this.a.mBeautyValue <= 0) || (this.a.mBeautyValue > 30))) {
+      if ((paramInt == 0) && (this.a.mBeautyValue > 0)) {
+        this.a.mSeek.setThumb(this.a.mThumb_0);
+      } else if ((paramInt > 0) && (paramInt <= 30) && ((this.a.mBeautyValue <= 0) || (this.a.mBeautyValue > 30))) {
         this.a.mSeek.setThumb(this.a.mThumb_30);
       } else if ((paramInt > 30) && (paramInt <= 60) && ((this.a.mBeautyValue <= 30) || (this.a.mBeautyValue > 60))) {
         this.a.mSeek.setThumb(this.a.mThumb_60);
       } else if ((paramInt > 60) && (paramInt <= 100) && ((this.a.mBeautyValue <= 60) || (this.a.mBeautyValue > 100))) {
         this.a.mSeek.setThumb(this.a.mThumb_100);
       }
+      if (paramBoolean)
+      {
+        paramSeekBar = this.a.mSeek;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append("%");
+        paramSeekBar.setContentDescription(localStringBuilder.toString());
+      }
+      paramSeekBar = this.a;
+      paramSeekBar.mBeautyValue = paramInt;
+      paramSeekBar.mApp.a("BEAUTY_SKIN", this.a.mBeautyValue, false);
     }
+    EffectSettingUi.a(this.a.mApp, -1003L);
   }
   
   public void onStartTrackingTouch(SeekBar paramSeekBar)
@@ -54,7 +53,7 @@ class BeautyToolbar$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.BeautyToolbar.1
  * JD-Core Version:    0.7.0.1
  */

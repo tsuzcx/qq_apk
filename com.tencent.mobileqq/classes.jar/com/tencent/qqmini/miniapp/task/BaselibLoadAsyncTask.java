@@ -35,14 +35,18 @@ public class BaselibLoadAsyncTask
   
   public void executeAsync()
   {
-    MiniAppReportManager2.reportLaunchPiecewise(204, "", getRuntimeLoader().getMiniAppInfoForReport());
-    if (getRuntimeLoader().getMiniAppInfoForReport() != null) {}
-    for (String str = getRuntimeLoader().getMiniAppInfoForReport().appId;; str = "")
+    Object localObject = getRuntimeLoader().getMiniAppInfoForReport();
+    String str = "";
+    MiniAppReportManager2.reportLaunchPiecewise(204, "", (MiniAppInfo)localObject);
+    if (getRuntimeLoader().getMiniAppInfoForReport() != null) {
+      str = getRuntimeLoader().getMiniAppInfoForReport().appId;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("startLoadBaseLib. appid:");
+    ((StringBuilder)localObject).append(str);
+    QMLog.d("BaseRuntimeLoader", ((StringBuilder)localObject).toString());
+    if (isBaseLibInit())
     {
-      QMLog.d("BaseRuntimeLoader", "startLoadBaseLib. appid:" + str);
-      if (!isBaseLibInit()) {
-        break;
-      }
       onTaskSucceed();
       return;
     }
@@ -65,7 +69,8 @@ public class BaselibLoadAsyncTask
   
   public boolean isBaseLibInit()
   {
-    return (this.mBaselibContent != null) && (this.mBaselibContent.isBaseLibInited());
+    BaselibLoader.BaselibContent localBaselibContent = this.mBaselibContent;
+    return (localBaselibContent != null) && (localBaselibContent.isBaseLibInited());
   }
   
   public void loadBaselib()
@@ -75,22 +80,52 @@ public class BaselibLoadAsyncTask
       BaselibLoader.BaselibContent localBaselibContent = new BaselibLoader.BaselibContent();
       String str2 = StorageUtil.getPreference().getString("downloadUrl", "");
       String str1 = StorageUtil.getPreference().getString("version", "1.22.0.00008");
-      QMLog.i("BaselibLoadAsyncTask", "execute baseLibLoad task. url=" + str2 + " version=" + str1);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("execute baseLibLoad task. url=");
+      ((StringBuilder)localObject2).append(str2);
+      ((StringBuilder)localObject2).append(" version=");
+      ((StringBuilder)localObject2).append(str1);
+      QMLog.i("BaselibLoadAsyncTask", ((StringBuilder)localObject2).toString());
       str2 = BaseLibManager.g().getBaseLibDir(str2, str1);
       try
       {
-        MiniAppProxy localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-        if ((localMiniAppProxy != null) && (localMiniAppProxy.isDebugVersion()))
+        localObject2 = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+        if ((localObject2 != null) && (((MiniAppProxy)localObject2).isDebugVersion()))
         {
           QMLog.d("BaselibLoadAsyncTask", "readJsFromFile from sdcard.");
-          localBaselibContent.waWebviewJsStr = FileUtils.readFileToStr(new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator, "QView.js"));
-          localBaselibContent.waServiceJsStr = FileUtils.readFileToStr(new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator, "QLogic.js"));
-          localBaselibContent.waServicePath = (Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "QLogic.js");
-          localBaselibContent.waConsoleJsStr = FileUtils.readFileToStr(new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator, "QVConsole.js"));
-          localBaselibContent.waRemoteDebugStr = FileUtils.readFileToStr(new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator, "QRemoteDebug.js"));
-          localBaselibContent.miniappWebviewStr = FileUtils.readFileToStr(new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator, "QWebview.js"));
-          localBaselibContent.waWorkerStr = FileUtils.readFileToStr(new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator, "QWorker.js"));
-          localBaselibContent.pageFrameStr = FileUtils.readFileToStr(new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator, "QPageFrame.html"));
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(Environment.getExternalStorageDirectory().getAbsolutePath());
+          ((StringBuilder)localObject2).append(File.separator);
+          localBaselibContent.waWebviewJsStr = FileUtils.readFileToStr(new File(((StringBuilder)localObject2).toString(), "QView.js"));
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(Environment.getExternalStorageDirectory().getAbsolutePath());
+          ((StringBuilder)localObject2).append(File.separator);
+          localBaselibContent.waServiceJsStr = FileUtils.readFileToStr(new File(((StringBuilder)localObject2).toString(), "QLogic.js"));
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(Environment.getExternalStorageDirectory().getAbsolutePath());
+          ((StringBuilder)localObject2).append(File.separator);
+          ((StringBuilder)localObject2).append("QLogic.js");
+          localBaselibContent.waServicePath = ((StringBuilder)localObject2).toString();
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(Environment.getExternalStorageDirectory().getAbsolutePath());
+          ((StringBuilder)localObject2).append(File.separator);
+          localBaselibContent.waConsoleJsStr = FileUtils.readFileToStr(new File(((StringBuilder)localObject2).toString(), "QVConsole.js"));
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(Environment.getExternalStorageDirectory().getAbsolutePath());
+          ((StringBuilder)localObject2).append(File.separator);
+          localBaselibContent.waRemoteDebugStr = FileUtils.readFileToStr(new File(((StringBuilder)localObject2).toString(), "QRemoteDebug.js"));
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(Environment.getExternalStorageDirectory().getAbsolutePath());
+          ((StringBuilder)localObject2).append(File.separator);
+          localBaselibContent.miniappWebviewStr = FileUtils.readFileToStr(new File(((StringBuilder)localObject2).toString(), "QWebview.js"));
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(Environment.getExternalStorageDirectory().getAbsolutePath());
+          ((StringBuilder)localObject2).append(File.separator);
+          localBaselibContent.waWorkerStr = FileUtils.readFileToStr(new File(((StringBuilder)localObject2).toString(), "QWorker.js"));
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(Environment.getExternalStorageDirectory().getAbsolutePath());
+          ((StringBuilder)localObject2).append(File.separator);
+          localBaselibContent.pageFrameStr = FileUtils.readFileToStr(new File(((StringBuilder)localObject2).toString(), "QPageFrame.html"));
           localBaselibContent.version = "1.22.0.00008";
         }
         int j = 1;
@@ -107,14 +142,23 @@ public class BaselibLoadAsyncTask
         else
         {
           i = 0;
-          QMLog.e("BaselibLoadAsyncTask", "download baselib invalid! use assert baselib. download_version=" + str1 + " assert_version=" + "1.22.0.00008");
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("download baselib invalid! use assert baselib. download_version=");
+          ((StringBuilder)localObject2).append(str1);
+          ((StringBuilder)localObject2).append(" assert_version=");
+          ((StringBuilder)localObject2).append("1.22.0.00008");
+          QMLog.e("BaselibLoadAsyncTask", ((StringBuilder)localObject2).toString());
         }
         if ((!localBaselibContent.isBaseLibInited()) && (i != 0))
         {
           QMLog.d("BaselibLoadAsyncTask", "readJsFromFile from download.");
           localBaselibContent.waWebviewJsStr = FileUtils.readFileToStr(new File(str2, "QView.js"));
           localBaselibContent.waServiceJsStr = FileUtils.readFileToStr(new File(str2, "QLogic.js"));
-          localBaselibContent.waServicePath = (str2 + File.separator + "QLogic.js");
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(str2);
+          ((StringBuilder)localObject2).append(File.separator);
+          ((StringBuilder)localObject2).append("QLogic.js");
+          localBaselibContent.waServicePath = ((StringBuilder)localObject2).toString();
           localBaselibContent.waConsoleJsStr = FileUtils.readFileToStr(new File(str2, "QVConsole.js"));
           localBaselibContent.waRemoteDebugStr = FileUtils.readFileToStr(new File(str2, "QRemoteDebug.js"));
           localBaselibContent.miniappWebviewStr = FileUtils.readFileToStr(new File(str2, "QWebview.js"));
@@ -138,10 +182,7 @@ public class BaselibLoadAsyncTask
       }
       catch (Throwable localThrowable)
       {
-        for (;;)
-        {
-          QMLog.e("BaselibLoadAsyncTask", "readJsFromFile failed.", localThrowable);
-        }
+        QMLog.e("BaselibLoadAsyncTask", "readJsFromFile failed.", localThrowable);
       }
       if (localBaselibContent.isBaseLibInited()) {
         this.mBaselibContent = localBaselibContent;
@@ -165,7 +206,7 @@ public class BaselibLoadAsyncTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.task.BaselibLoadAsyncTask
  * JD-Core Version:    0.7.0.1
  */

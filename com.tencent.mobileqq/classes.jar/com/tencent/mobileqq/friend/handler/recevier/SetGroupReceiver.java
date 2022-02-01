@@ -16,6 +16,7 @@ import friendlist.DelGroupResp;
 import friendlist.ReSortGroupResp;
 import friendlist.RenameGroupResp;
 import friendlist.SetGroupResp;
+import java.io.Serializable;
 import java.nio.ByteBuffer;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
@@ -39,29 +40,40 @@ public final class SetGroupReceiver
   
   private final void a(int paramInt)
   {
-    QLog.d("IMCore.friend.SetGroupReceiver", 1, "handleSetGroupRequestFailed| reqType: " + paramInt);
-    switch (paramInt)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleSetGroupRequestFailed| reqType: ");
+    localStringBuilder.append(paramInt);
+    QLog.d("IMCore.friend.SetGroupReceiver", 1, localStringBuilder.toString());
+    if (paramInt != 0)
     {
-    default: 
-      QLog.e("IMCore.friend.SetGroupReceiver", 1, "handleSetGroupFail| error reqType: " + paramInt);
-      return;
-    case 0: 
-      ((FriendHandler)a()).notifyUI(18, false, null);
-      return;
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("handleSetGroupFail| error reqType: ");
+            localStringBuilder.append(paramInt);
+            QLog.e("IMCore.friend.SetGroupReceiver", 1, localStringBuilder.toString());
+            return;
+          }
+          ((FriendHandler)a()).notifyUI(22, false, null);
+          return;
+        }
+        ((FriendHandler)a()).notifyUI(21, false, null);
+        return;
+      }
       ((FriendHandler)a()).notifyUI(19, false, null);
       return;
-    case 2: 
-      ((FriendHandler)a()).notifyUI(21, false, null);
-      return;
     }
-    ((FriendHandler)a()).notifyUI(22, false, null);
+    ((FriendHandler)a()).notifyUI(18, false, null);
   }
   
   private final void a(int paramInt, String paramString, ByteBuffer paramByteBuffer, GroupRequestData paramGroupRequestData)
   {
-    boolean bool = true;
     AddGroupResp localAddGroupResp = new AddGroupResp();
+    boolean bool = true;
     if (paramInt == 0)
     {
       FriendDataServiceImpl localFriendDataServiceImpl = FriendDataServiceImpl.getService((AppRuntime)a());
@@ -81,22 +93,25 @@ public final class SetGroupReceiver
     }
     paramByteBuffer = new GroupActionResp(paramInt, paramString, localAddGroupResp);
     paramGroupRequestData = (FriendHandler)a();
-    if (paramInt == 0) {}
-    for (;;)
-    {
-      paramGroupRequestData.notifyUI(18, bool, paramByteBuffer);
-      if (QLog.isColorLevel()) {
-        QLog.d("IMCore.friend.SetGroupReceiver", 2, "handleAddGroup| resultCode = " + paramInt + ", errorStr = " + paramString);
-      }
-      return;
+    if (paramInt != 0) {
       bool = false;
+    }
+    paramGroupRequestData.notifyUI(18, bool, paramByteBuffer);
+    if (QLog.isColorLevel())
+    {
+      paramByteBuffer = new StringBuilder();
+      paramByteBuffer.append("handleAddGroup| resultCode = ");
+      paramByteBuffer.append(paramInt);
+      paramByteBuffer.append(", errorStr = ");
+      paramByteBuffer.append(paramString);
+      QLog.d("IMCore.friend.SetGroupReceiver", 2, paramByteBuffer.toString());
     }
   }
   
   private final void b(int paramInt, String paramString, ByteBuffer paramByteBuffer, GroupRequestData paramGroupRequestData)
   {
-    boolean bool = true;
     RenameGroupResp localRenameGroupResp = new RenameGroupResp();
+    boolean bool = true;
     if (paramInt == 0)
     {
       FriendDataServiceImpl localFriendDataServiceImpl = FriendDataServiceImpl.getService((AppRuntime)a());
@@ -119,22 +134,25 @@ public final class SetGroupReceiver
     }
     paramByteBuffer = new GroupActionResp(paramInt, paramString, localRenameGroupResp);
     paramGroupRequestData = (FriendHandler)a();
-    if (paramInt == 0) {}
-    for (;;)
-    {
-      paramGroupRequestData.notifyUI(19, bool, paramByteBuffer);
-      if (QLog.isColorLevel()) {
-        QLog.d("IMCore.friend.SetGroupReceiver", 2, "handleRenameGroup| resultCode = " + paramInt + ", errorStr = " + paramString);
-      }
-      return;
+    if (paramInt != 0) {
       bool = false;
+    }
+    paramGroupRequestData.notifyUI(19, bool, paramByteBuffer);
+    if (QLog.isColorLevel())
+    {
+      paramByteBuffer = new StringBuilder();
+      paramByteBuffer.append("handleRenameGroup| resultCode = ");
+      paramByteBuffer.append(paramInt);
+      paramByteBuffer.append(", errorStr = ");
+      paramByteBuffer.append(paramString);
+      QLog.d("IMCore.friend.SetGroupReceiver", 2, paramByteBuffer.toString());
     }
   }
   
   private final void c(int paramInt, String paramString, ByteBuffer paramByteBuffer, GroupRequestData paramGroupRequestData)
   {
-    boolean bool = false;
     paramGroupRequestData = new DelGroupResp();
+    boolean bool = false;
     if (paramInt == 0)
     {
       FriendDataServiceImpl localFriendDataServiceImpl = FriendDataServiceImpl.getService((AppRuntime)a());
@@ -149,8 +167,14 @@ public final class SetGroupReceiver
       bool = true;
     }
     paramGroupRequestData.notifyUI(21, bool, paramByteBuffer);
-    if (QLog.isColorLevel()) {
-      QLog.d("IMCore.friend.SetGroupReceiver", 2, "handleDelGroup| resultCode = " + paramInt + ", errorStr = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      paramByteBuffer = new StringBuilder();
+      paramByteBuffer.append("handleDelGroup| resultCode = ");
+      paramByteBuffer.append(paramInt);
+      paramByteBuffer.append(", errorStr = ");
+      paramByteBuffer.append(paramString);
+      QLog.d("IMCore.friend.SetGroupReceiver", 2, paramByteBuffer.toString());
     }
   }
   
@@ -166,14 +190,21 @@ public final class SetGroupReceiver
     }
     paramByteBuffer = new GroupActionResp(paramInt, paramString, localReSortGroupResp);
     paramGroupRequestData = (FriendHandler)a();
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if (paramInt == 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    paramGroupRequestData.notifyUI(22, bool, paramByteBuffer);
+    if (QLog.isColorLevel())
     {
-      paramGroupRequestData.notifyUI(22, bool, paramByteBuffer);
-      if (QLog.isColorLevel()) {
-        QLog.d("IMCore.friend.SetGroupReceiver", 2, "handleResortGroup| resultCode = " + paramInt + ", errorStr = " + paramString);
-      }
-      return;
+      paramByteBuffer = new StringBuilder();
+      paramByteBuffer.append("handleResortGroup| resultCode = ");
+      paramByteBuffer.append(paramInt);
+      paramByteBuffer.append(", errorStr = ");
+      paramByteBuffer.append(paramString);
+      QLog.d("IMCore.friend.SetGroupReceiver", 2, paramByteBuffer.toString());
     }
   }
   
@@ -187,56 +218,70 @@ public final class SetGroupReceiver
   {
     Intrinsics.checkParameterIsNotNull(paramToServiceMsg, "req");
     Intrinsics.checkParameterIsNotNull(paramFromServiceMsg, "res");
-    paramToServiceMsg = paramToServiceMsg.extraData.getSerializable(Reflection.getOrCreateKotlinClass(GroupRequestData.class).getSimpleName());
-    if (!(paramToServiceMsg instanceof GroupRequestData))
+    Serializable localSerializable = paramToServiceMsg.extraData.getSerializable(Reflection.getOrCreateKotlinClass(GroupRequestData.class).getSimpleName());
+    if (!(localSerializable instanceof GroupRequestData))
     {
       QLog.e("IMCore.friend.SetGroupReceiver", 1, "encodeGroupRequest, requestData is not GroupRequestData");
       return;
     }
-    if ((!paramFromServiceMsg.isSuccess()) || (!(paramObject instanceof SetGroupResp)))
+    if ((paramFromServiceMsg.isSuccess()) && ((paramObject instanceof SetGroupResp)))
     {
-      QLog.d("IMCore.friend.SetGroupReceiver", 1, "receiveSetGroupResponse| fail " + paramFromServiceMsg.getResultCode());
-      a(((GroupRequestData)paramToServiceMsg).getReqType());
+      paramObject = (SetGroupResp)paramObject;
+      paramToServiceMsg = ByteBuffer.wrap(paramObject.vecBody);
+      paramFromServiceMsg = (GroupRequestData)localSerializable;
+      int i = paramFromServiceMsg.getReqType();
+      if (i != 0)
+      {
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            if (i != 3)
+            {
+              paramToServiceMsg = new StringBuilder();
+              paramToServiceMsg.append("receiveSetGroupResponse| error reqType: ");
+              paramToServiceMsg.append(paramFromServiceMsg.getReqType());
+              QLog.e("IMCore.friend.SetGroupReceiver", 1, paramToServiceMsg.toString());
+              return;
+            }
+            i = paramObject.result;
+            paramObject = paramObject.ErrorString;
+            Intrinsics.checkExpressionValueIsNotNull(paramObject, "data.ErrorString");
+            Intrinsics.checkExpressionValueIsNotNull(paramToServiceMsg, "buffer");
+            d(i, paramObject, paramToServiceMsg, paramFromServiceMsg);
+            return;
+          }
+          i = paramObject.result;
+          paramObject = paramObject.ErrorString;
+          Intrinsics.checkExpressionValueIsNotNull(paramObject, "data.ErrorString");
+          Intrinsics.checkExpressionValueIsNotNull(paramToServiceMsg, "buffer");
+          c(i, paramObject, paramToServiceMsg, paramFromServiceMsg);
+          return;
+        }
+        i = paramObject.result;
+        paramObject = paramObject.ErrorString;
+        Intrinsics.checkExpressionValueIsNotNull(paramObject, "data.ErrorString");
+        Intrinsics.checkExpressionValueIsNotNull(paramToServiceMsg, "buffer");
+        b(i, paramObject, paramToServiceMsg, paramFromServiceMsg);
+        return;
+      }
+      i = paramObject.result;
+      paramObject = paramObject.ErrorString;
+      Intrinsics.checkExpressionValueIsNotNull(paramObject, "data.ErrorString");
+      Intrinsics.checkExpressionValueIsNotNull(paramToServiceMsg, "buffer");
+      a(i, paramObject, paramToServiceMsg, paramFromServiceMsg);
       return;
     }
-    paramFromServiceMsg = ByteBuffer.wrap(((SetGroupResp)paramObject).vecBody);
-    switch (((GroupRequestData)paramToServiceMsg).getReqType())
-    {
-    default: 
-      QLog.e("IMCore.friend.SetGroupReceiver", 1, "receiveSetGroupResponse| error reqType: " + ((GroupRequestData)paramToServiceMsg).getReqType());
-      return;
-    case 0: 
-      i = ((SetGroupResp)paramObject).result;
-      paramObject = ((SetGroupResp)paramObject).ErrorString;
-      Intrinsics.checkExpressionValueIsNotNull(paramObject, "data.ErrorString");
-      Intrinsics.checkExpressionValueIsNotNull(paramFromServiceMsg, "buffer");
-      a(i, paramObject, paramFromServiceMsg, (GroupRequestData)paramToServiceMsg);
-      return;
-    case 1: 
-      i = ((SetGroupResp)paramObject).result;
-      paramObject = ((SetGroupResp)paramObject).ErrorString;
-      Intrinsics.checkExpressionValueIsNotNull(paramObject, "data.ErrorString");
-      Intrinsics.checkExpressionValueIsNotNull(paramFromServiceMsg, "buffer");
-      b(i, paramObject, paramFromServiceMsg, (GroupRequestData)paramToServiceMsg);
-      return;
-    case 2: 
-      i = ((SetGroupResp)paramObject).result;
-      paramObject = ((SetGroupResp)paramObject).ErrorString;
-      Intrinsics.checkExpressionValueIsNotNull(paramObject, "data.ErrorString");
-      Intrinsics.checkExpressionValueIsNotNull(paramFromServiceMsg, "buffer");
-      c(i, paramObject, paramFromServiceMsg, (GroupRequestData)paramToServiceMsg);
-      return;
-    }
-    int i = ((SetGroupResp)paramObject).result;
-    paramObject = ((SetGroupResp)paramObject).ErrorString;
-    Intrinsics.checkExpressionValueIsNotNull(paramObject, "data.ErrorString");
-    Intrinsics.checkExpressionValueIsNotNull(paramFromServiceMsg, "buffer");
-    d(i, paramObject, paramFromServiceMsg, (GroupRequestData)paramToServiceMsg);
+    paramToServiceMsg = new StringBuilder();
+    paramToServiceMsg.append("receiveSetGroupResponse| fail ");
+    paramToServiceMsg.append(paramFromServiceMsg.getResultCode());
+    QLog.d("IMCore.friend.SetGroupReceiver", 1, paramToServiceMsg.toString());
+    a(((GroupRequestData)localSerializable).getReqType());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.friend.handler.recevier.SetGroupReceiver
  * JD-Core Version:    0.7.0.1
  */

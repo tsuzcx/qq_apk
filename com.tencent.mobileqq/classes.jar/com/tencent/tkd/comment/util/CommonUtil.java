@@ -39,7 +39,11 @@ public class CommonUtil
       i = paramContext.getResources().getDimensionPixelSize(i);
       return i;
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label39:
+      break label39;
+    }
     return 38;
   }
   
@@ -59,19 +63,17 @@ public class CommonUtil
     if (Build.VERSION.SDK_INT >= 16)
     {
       paramWindow = paramWindow.getDecorView();
-      if (Build.VERSION.SDK_INT < 19) {
-        break label47;
+      int i;
+      if (Build.VERSION.SDK_INT >= 19) {
+        i = 4610;
+      } else {
+        i = 515;
       }
-    }
-    label47:
-    for (int i = 4610;; i = 515)
-    {
       int j = i;
       if (Build.VERSION.SDK_INT < 21) {
         j = i | 0x100;
       }
       paramWindow.setSystemUiVisibility(j);
-      return;
     }
   }
   
@@ -88,12 +90,14 @@ public class CommonUtil
     if (paramContext == null) {
       return;
     }
-    ((InputMethodManager)paramContext.getSystemService("input_method")).showSoftInput(paramView, 1);
+    paramContext = (InputMethodManager)paramContext.getSystemService("input_method");
+    paramView.requestFocus();
+    paramContext.showSoftInput(paramView, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.comment.util.CommonUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -14,114 +14,134 @@ class PreloadResourceImpl$3
 {
   PreloadResourceImpl$3(PreloadResourceImpl paramPreloadResourceImpl, WeakReference paramWeakReference, DownloadListener paramDownloadListener, PreloadModuleImpl paramPreloadModuleImpl) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle arg3)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    int i = 60;
-    PreloadServiceImpl localPreloadServiceImpl;
-    label83:
-    JudgeDownloadRsp localJudgeDownloadRsp;
-    if (paramInt == 1)
+    if (paramInt == 1) {}
+    for (;;)
     {
       try
       {
-        localPreloadServiceImpl = (PreloadServiceImpl)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (!PreloadServiceImpl.isManagerValid(localPreloadServiceImpl)) {
+        Object localObject1 = (PreloadServiceImpl)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if (!PreloadServiceImpl.isManagerValid((PreloadServiceImpl)localObject1)) {
           return;
         }
-        if (paramBoolean) {
-          break label83;
-        }
-        localPreloadServiceImpl.notifyResFlowCheckNext();
-        return;
-      }
-      catch (Throwable ???)
-      {
-        if (!QLog.isColorLevel()) {
-          break label572;
-        }
-      }
-      QLog.d("PreloadResource", 2, this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl.mResId + " startFlowControlReq onReceive exception:" + ???);
-      return;
-      localJudgeDownloadRsp = (JudgeDownloadRsp)???.getSerializable("rsp");
-      if (localJudgeDownloadRsp == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PreloadResource", 2, "onReceive rsp is null:" + localJudgeDownloadRsp);
-        }
-        localPreloadServiceImpl.notifyResFlowCheckNext();
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PreloadResource", 2, this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl.mResId + "FlowControlRsp|" + localJudgeDownloadRsp.iDownloadStatus + "|" + localJudgeDownloadRsp.iSegTime + "|" + localJudgeDownloadRsp.iFailedRetryMax);
-      }
-    }
-    for (;;)
-    {
-      synchronized (PreloadResourceImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl))
-      {
-        switch (localJudgeDownloadRsp.iDownloadStatus)
+        if (!paramBoolean)
         {
-        case 1: 
-          PreloadResourceImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl).mDownloadStatus = 2;
-          localPreloadFlowControlConfig = PreloadResourceImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl);
-          if (localJudgeDownloadRsp.iSegTime > 60) {
-            i = localJudgeDownloadRsp.iSegTime;
+          ((PreloadServiceImpl)localObject1).notifyResFlowCheckNext();
+          return;
+        }
+        paramBundle = (JudgeDownloadRsp)paramBundle.getSerializable("rsp");
+        if (paramBundle == null)
+        {
+          if (QLog.isColorLevel())
+          {
+            ??? = new StringBuilder();
+            ((StringBuilder)???).append("onReceive rsp is null:");
+            ((StringBuilder)???).append(paramBundle);
+            QLog.d("PreloadResource", 2, ((StringBuilder)???).toString());
           }
-          localPreloadFlowControlConfig.mNextCanReqTime = (i * 1000 + NetConnInfoCenter.getServerTimeMillis());
-          if (localJudgeDownloadRsp.iDownloadStatus != 0) {
+          ((PreloadServiceImpl)localObject1).notifyResFlowCheckNext();
+          return;
+        }
+        if (QLog.isColorLevel())
+        {
+          ??? = new StringBuilder();
+          ((StringBuilder)???).append(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl.mResId);
+          ((StringBuilder)???).append("FlowControlRsp|");
+          ((StringBuilder)???).append(paramBundle.iDownloadStatus);
+          ((StringBuilder)???).append("|");
+          ((StringBuilder)???).append(paramBundle.iSegTime);
+          ((StringBuilder)???).append("|");
+          ((StringBuilder)???).append(paramBundle.iFailedRetryMax);
+          QLog.d("PreloadResource", 2, ((StringBuilder)???).toString());
+        }
+        synchronized (PreloadResourceImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl))
+        {
+          i = paramBundle.iDownloadStatus;
+          paramInt = 60;
+          PreloadFlowControlConfig localPreloadFlowControlConfig;
+          if (i != 0)
+          {
+            if (i != 1)
+            {
+              PreloadResourceImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl).mDownloadStatus = 2;
+              localPreloadFlowControlConfig = PreloadResourceImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl);
+              if (paramBundle.iSegTime > 60) {
+                paramInt = paramBundle.iSegTime;
+              }
+              localPreloadFlowControlConfig.mNextCanReqTime = (paramInt * 1000 + NetConnInfoCenter.getServerTimeMillis());
+            }
+            else
+            {
+              PreloadResourceImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl).mDownloadStatus = 1;
+              localPreloadFlowControlConfig = PreloadResourceImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl);
+              if (paramBundle.iFailedRetryMax <= 0) {
+                break label589;
+              }
+              i = paramBundle.iFailedRetryMax;
+              localPreloadFlowControlConfig.mRetryDownloadTimes = i;
+              localPreloadFlowControlConfig = PreloadResourceImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl);
+              if (paramBundle.iSegTime > 60) {
+                paramInt = paramBundle.iSegTime;
+              }
+              localPreloadFlowControlConfig.mValidDownloadTime = (paramInt * 1000 + NetConnInfoCenter.getServerTimeMillis());
+            }
+          }
+          else
+          {
+            PreloadResourceImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl).mDownloadStatus = 0;
+            localPreloadFlowControlConfig = PreloadResourceImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl);
+            if (paramBundle.iSegTime > 60) {
+              paramInt = paramBundle.iSegTime;
+            }
+            localPreloadFlowControlConfig.mNextRetryReqTime = (paramInt * 1000 + NetConnInfoCenter.getServerTimeMillis());
+          }
+          if (paramBundle.iDownloadStatus != 0) {
             PreloadResourceImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl).mRetryReqTimes = 0;
           }
           PreloadResourceImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl).saveConfig();
-          if (localJudgeDownloadRsp.iDownloadStatus != 2) {
-            break label520;
-          }
-          localPreloadServiceImpl.notifyResFlowCheckNext();
-          if (this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener == null) {
-            break label572;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl.notifyListenerDownloadFailInFlowControl(this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadModuleImpl, localPreloadServiceImpl);
-          return;
-          PreloadResourceImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl).mDownloadStatus = 1;
-          localPreloadFlowControlConfig = PreloadResourceImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl);
-          if (localJudgeDownloadRsp.iFailedRetryMax > 0)
+          if (paramBundle.iDownloadStatus == 2)
           {
-            paramInt = localJudgeDownloadRsp.iFailedRetryMax;
-            localPreloadFlowControlConfig.mRetryDownloadTimes = paramInt;
-            localPreloadFlowControlConfig = PreloadResourceImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl);
-            if (localJudgeDownloadRsp.iSegTime > 60) {
-              i = localJudgeDownloadRsp.iSegTime;
+            ((PreloadServiceImpl)localObject1).notifyResFlowCheckNext();
+            if (this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener != null) {
+              this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl.notifyListenerDownloadFailInFlowControl(this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadModuleImpl, (PreloadServiceImpl)localObject1);
             }
-            localPreloadFlowControlConfig.mValidDownloadTime = (i * 1000 + NetConnInfoCenter.getServerTimeMillis());
           }
-          break;
+          else
+          {
+            if (paramBundle.iDownloadStatus == 0)
+            {
+              this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl.handleFlowConfig((IPreloadService)localObject1, this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadModuleImpl, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener);
+              return;
+            }
+            if (paramBundle.iDownloadStatus == 1)
+            {
+              this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl.handleFlowConfig((IPreloadService)localObject1, this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadModuleImpl, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener);
+              return;
+            }
+          }
         }
-      }
-      paramInt = 3;
-      continue;
-      PreloadResourceImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl).mDownloadStatus = 0;
-      PreloadFlowControlConfig localPreloadFlowControlConfig = PreloadResourceImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl);
-      if (localJudgeDownloadRsp.iSegTime > 60) {
-        i = localJudgeDownloadRsp.iSegTime;
-      }
-      localPreloadFlowControlConfig.mNextRetryReqTime = (i * 1000 + NetConnInfoCenter.getServerTimeMillis());
-      continue;
-      label520:
-      if (localJudgeDownloadRsp.iDownloadStatus == 0)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl.handleFlowConfig(localIPreloadService, this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadModuleImpl, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener);
         return;
       }
-      if (localJudgeDownloadRsp.iDownloadStatus == 1) {
-        this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl.handleFlowConfig(localIPreloadService, this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadModuleImpl, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener);
+      catch (Throwable paramBundle)
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl.mResId);
+          ((StringBuilder)localObject1).append(" startFlowControlReq onReceive exception:");
+          ((StringBuilder)localObject1).append(paramBundle);
+          QLog.d("PreloadResource", 2, ((StringBuilder)localObject1).toString());
+        }
       }
-      label572:
-      return;
+      label589:
+      int i = 3;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadResourceImpl.3
  * JD-Core Version:    0.7.0.1
  */

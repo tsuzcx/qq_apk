@@ -13,12 +13,17 @@ class UniformDownloadActivity$10$2
   {
     UniformDownloadActivity.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityUniformDownloadActivity$10.a).setVisibility(0);
     UniformDownloadActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityUniformDownloadActivity$10.a).setVisibility(0);
-    UniformDownloadActivity.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityUniformDownloadActivity$10.a).setText(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityUniformDownloadActivity$10.a.getString(2131691919, new Object[] { this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f + "%" }));
+    TextView localTextView = UniformDownloadActivity.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityUniformDownloadActivity$10.a);
+    UniformDownloadActivity localUniformDownloadActivity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityUniformDownloadActivity$10.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f);
+    localStringBuilder.append("%");
+    localTextView.setText(localUniformDownloadActivity.getString(2131691846, new Object[] { localStringBuilder.toString() }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.10.2
  * JD-Core Version:    0.7.0.1
  */

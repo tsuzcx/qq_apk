@@ -28,7 +28,7 @@ public class QQTabWidget
   {
     if (QLog.isColorLevel())
     {
-      int i = paramMotionEvent.getAction();
+      i = paramMotionEvent.getAction();
       if ((i == 0) || (i == 1) || (i == 3)) {
         try
         {
@@ -36,28 +36,43 @@ public class QQTabWidget
         }
         catch (Exception localException)
         {
-          QLog.d("QQTabWidget", 2, "QQTabWidget onInterceptTouchEvent. action=" + i + ",x=" + paramMotionEvent.getRawX() + ",y=" + paramMotionEvent.getRawY(), localException);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("QQTabWidget onInterceptTouchEvent. action=");
+          localStringBuilder.append(i);
+          localStringBuilder.append(",x=");
+          localStringBuilder.append(paramMotionEvent.getRawX());
+          localStringBuilder.append(",y=");
+          localStringBuilder.append(paramMotionEvent.getRawY());
+          QLog.d("QQTabWidget", 2, localStringBuilder.toString(), localException);
         }
       }
     }
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
+      if ((i != 1) && (i == 2))
+      {
+        float f1 = paramMotionEvent.getX();
+        float f2 = paramMotionEvent.getY();
+        float f3 = this.b;
+        if ((f2 < f3) && (f3 - f2 > 50.0F) && (f3 - f2 > Math.abs(this.jdField_a_of_type_Float - f1)))
+        {
+          QQTabWidget.onTabWidgetTouchMoveListener localonTabWidgetTouchMoveListener = this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabWidget$onTabWidgetTouchMoveListener;
+          if ((localonTabWidgetTouchMoveListener != null) && (!this.jdField_a_of_type_Boolean))
+          {
+            this.jdField_a_of_type_Boolean = true;
+            localonTabWidgetTouchMoveListener.a();
+          }
+        }
+      }
     }
-    for (;;)
+    else
     {
-      return super.onInterceptTouchEvent(paramMotionEvent);
       this.jdField_a_of_type_Boolean = false;
       this.jdField_a_of_type_Float = paramMotionEvent.getX();
       this.b = paramMotionEvent.getY();
-      continue;
-      float f1 = paramMotionEvent.getX();
-      float f2 = paramMotionEvent.getY();
-      if ((f2 < this.b) && (this.b - f2 > 50.0F) && (this.b - f2 > Math.abs(this.jdField_a_of_type_Float - f1)) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabWidget$onTabWidgetTouchMoveListener != null) && (!this.jdField_a_of_type_Boolean))
-      {
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabWidget$onTabWidgetTouchMoveListener.a();
-      }
     }
+    return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -72,7 +87,7 @@ public class QQTabWidget
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQTabWidget
  * JD-Core Version:    0.7.0.1
  */

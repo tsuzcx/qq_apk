@@ -6,12 +6,15 @@ public class ThreadExecutor
   implements Thread.UncaughtExceptionHandler
 {
   HippyHandlerThread mDomThread;
+  private int mGroupId = -1;
   HippyHandlerThread mJsBridgeThread;
-  HippyHandlerThread mJsThread = new HippyHandlerThread("hippy-js-Thread");
+  HippyHandlerThread mJsThread;
   ThreadExecutor.UncaughtExceptionHandler mUncaughtExceptionHandler;
   
-  public ThreadExecutor()
+  public ThreadExecutor(int paramInt)
   {
+    this.mGroupId = paramInt;
+    this.mJsThread = new HippyHandlerThread("hippy-js-Thread");
     this.mJsThread.setUncaughtExceptionHandler(this);
     this.mJsBridgeThread = new HippyHandlerThread("hippy-jsBridge-Thread");
     this.mJsBridgeThread.setUncaughtExceptionHandler(this);
@@ -21,38 +24,44 @@ public class ThreadExecutor
   
   public void assertOnDomThread()
   {
-    if (Thread.currentThread().getId() != this.mDomThread.getId()) {
-      throw new RuntimeException("call is not on dom-thread");
+    if (Thread.currentThread().getId() == this.mDomThread.getId()) {
+      return;
     }
+    throw new RuntimeException("call is not on dom-thread");
   }
   
   public void assertOnJsBridge()
   {
-    if (Thread.currentThread().getId() != this.mJsBridgeThread.getId()) {
-      throw new RuntimeException("call is not on Js-bridge-thread");
+    if (Thread.currentThread().getId() == this.mJsBridgeThread.getId()) {
+      return;
     }
+    throw new RuntimeException("call is not on Js-bridge-thread");
   }
   
   public void assertOnJsThread()
   {
-    if (Thread.currentThread().getId() != this.mJsThread.getId()) {
-      throw new RuntimeException("call is not on Js-thread");
+    if (Thread.currentThread().getId() == this.mJsThread.getId()) {
+      return;
     }
+    throw new RuntimeException("call is not on Js-thread");
   }
   
   public void destroy()
   {
-    if ((this.mDomThread != null) && (this.mDomThread.isThreadAlive()))
+    HippyHandlerThread localHippyHandlerThread = this.mDomThread;
+    if ((localHippyHandlerThread != null) && (localHippyHandlerThread.isThreadAlive()))
     {
       this.mDomThread.quit();
       this.mDomThread.setUncaughtExceptionHandler(null);
     }
-    if ((this.mJsBridgeThread != null) && (this.mJsBridgeThread.isThreadAlive()))
+    localHippyHandlerThread = this.mJsBridgeThread;
+    if ((localHippyHandlerThread != null) && (localHippyHandlerThread.isThreadAlive()))
     {
       this.mJsBridgeThread.quit();
       this.mJsBridgeThread.setUncaughtExceptionHandler(null);
     }
-    if ((this.mJsThread != null) && (this.mJsThread.isThreadAlive()))
+    localHippyHandlerThread = this.mJsThread;
+    if ((localHippyHandlerThread != null) && (localHippyHandlerThread.isThreadAlive()))
     {
       this.mJsThread.quit();
       this.mJsThread.setUncaughtExceptionHandler(null);
@@ -102,9 +111,10 @@ public class ThreadExecutor
   
   public void uncaughtException(Thread paramThread, Throwable paramThrowable)
   {
-    if (this.mUncaughtExceptionHandler != null)
+    ThreadExecutor.UncaughtExceptionHandler localUncaughtExceptionHandler = this.mUncaughtExceptionHandler;
+    if (localUncaughtExceptionHandler != null)
     {
-      this.mUncaughtExceptionHandler.handleThreadUncaughtException(paramThread, paramThrowable);
+      localUncaughtExceptionHandler.handleThreadUncaughtException(paramThread, paramThrowable, Integer.valueOf(this.mGroupId));
       return;
     }
     throw new RuntimeException(paramThrowable);
@@ -112,7 +122,7 @@ public class ThreadExecutor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.common.ThreadExecutor
  * JD-Core Version:    0.7.0.1
  */

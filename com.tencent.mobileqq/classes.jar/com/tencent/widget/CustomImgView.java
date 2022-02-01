@@ -53,7 +53,7 @@ public class CustomImgView
     return this.a.getDrawable();
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
   }
@@ -86,14 +86,15 @@ public class CustomImgView
   
   public void setURLDrawableListener(URLDrawableDownListener paramURLDrawableDownListener)
   {
-    if ((this.a != null) && ((this.a instanceof URLImageView))) {
-      ((URLImageView)this.a).setURLDrawableDownListener(paramURLDrawableDownListener);
+    ImageView localImageView = this.a;
+    if ((localImageView != null) && ((localImageView instanceof URLImageView))) {
+      ((URLImageView)localImageView).setURLDrawableDownListener(paramURLDrawableDownListener);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.CustomImgView
  * JD-Core Version:    0.7.0.1
  */

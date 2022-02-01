@@ -13,7 +13,7 @@ public final class eh
   implements SensorEventListener
 {
   private static volatile eh h;
-  public volatile boolean a = false;
+  public volatile boolean a;
   private SensorManager b;
   private final boolean c;
   private boolean d;
@@ -23,22 +23,23 @@ public final class eh
   
   private eh(Context paramContext)
   {
+    boolean bool = false;
+    this.a = false;
     try
     {
       if (Build.VERSION.SDK_INT != 23) {
         this.b = ((SensorManager)paramContext.getSystemService("sensor"));
       }
-      label30:
-      if (this.b != null) {}
-      for (boolean bool = true;; bool = false)
-      {
-        this.c = bool;
-        return;
+      label32:
+      if (this.b != null) {
+        bool = true;
       }
+      this.c = bool;
+      return;
     }
     catch (Throwable paramContext)
     {
-      break label30;
+      break label32;
     }
   }
   
@@ -52,46 +53,44 @@ public final class eh
   
   public final int a(Handler paramHandler, TencentDirectionListener paramTencentDirectionListener)
   {
-    int i = 3;
     if (!this.c) {
-      i = 2;
+      return 2;
     }
-    for (;;)
+    Object localObject1;
+    if (!this.d) {
+      localObject1 = null;
+    }
+    try
     {
-      return i;
-      Object localObject1;
-      if (!this.d) {
-        localObject1 = null;
-      }
-      try
+      localObject2 = this.b.getDefaultSensor(11);
+      localObject1 = localObject2;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
       {
-        localObject2 = this.b.getDefaultSensor(11);
-        localObject1 = localObject2;
-      }
-      catch (Throwable localThrowable)
-      {
-        Object localObject2;
-        label38:
-        break label38;
-      }
-      localObject2 = localObject1;
-      if (localObject1 == null) {}
-      try
-      {
-        localObject2 = this.b.getDefaultSensor(3);
-        if (localObject2 == null) {
-          continue;
+        try
+        {
+          Object localObject2 = this.b.getDefaultSensor(3);
+          if (localObject2 != null)
+          {
+            this.b.registerListener(this, (Sensor)localObject2, 3, paramHandler);
+            this.g = paramTencentDirectionListener;
+            this.d = true;
+          }
+          else
+          {
+            return 3;
+          }
+          return 0;
         }
-        this.b.registerListener(this, (Sensor)localObject2, 3, paramHandler);
-        this.g = paramTencentDirectionListener;
-        this.d = true;
-        return 0;
-      }
-      catch (Throwable paramHandler)
-      {
-        return 3;
+        catch (Throwable paramHandler) {}
+        localThrowable = localThrowable;
       }
     }
+    localObject2 = localObject1;
+    if (localObject1 == null) {}
+    return 3;
   }
   
   public final void a()
@@ -106,8 +105,8 @@ public final class eh
         this.d = false;
         this.e = (0.0D / 0.0D);
         this.b.unregisterListener(this);
-        return;
       }
+      return;
     }
     catch (Exception localException) {}
   }
@@ -149,6 +148,7 @@ public final class eh
         SensorManager.getRotationMatrixFromVector(arrayOfFloat1, paramSensorEvent.values);
         SensorManager.getOrientation(arrayOfFloat1, arrayOfFloat2);
         d1 = arrayOfFloat2[0];
+        Double.isNaN(d1);
         d1 = d1 * 180.0D / 3.1415926D;
         try
         {
@@ -185,7 +185,7 @@ public final class eh
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.eh
  * JD-Core Version:    0.7.0.1
  */

@@ -39,8 +39,9 @@ public class LightAppSettingInfo
   
   public int hashCode()
   {
-    if (this.jdField_a_of_type_Long != 0L) {
-      return Long.valueOf(this.jdField_a_of_type_Long).hashCode();
+    long l = this.jdField_a_of_type_Long;
+    if (l != 0L) {
+      return Long.valueOf(l).hashCode();
     }
     return 0;
   }
@@ -67,7 +68,7 @@ public class LightAppSettingInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.utils.LightAppSettingInfo
  * JD-Core Version:    0.7.0.1
  */

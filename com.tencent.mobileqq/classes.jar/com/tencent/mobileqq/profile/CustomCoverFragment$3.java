@@ -1,19 +1,7 @@
 package com.tencent.mobileqq.profile;
 
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SVIPHandler;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class CustomCoverFragment$3
   implements View.OnClickListener
@@ -22,89 +10,12 @@ class CustomCoverFragment$3
   
   public void onClick(View paramView)
   {
-    int i = 1;
-    if (paramView.getId() == 2131369602) {
-      if (CustomCoverFragment.a(this.a) != null)
-      {
-        localObject = this.a;
-        if (CustomCoverFragment.c(this.a)) {
-          break label166;
-        }
-        bool = true;
-        CustomCoverFragment.b((CustomCoverFragment)localObject, bool);
-        localObject = (SVIPHandler)CustomCoverFragment.a(this.a).getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER);
-        if (!CustomCoverFragment.b(this.a)) {
-          break label172;
-        }
-        i = 1;
-        ((SVIPHandler)localObject).h(i);
-        CustomCoverFragment.a(this.a).a(0, this.a.getString(2131698870), 0, CustomCoverFragment.a(this.a));
-        str = CustomCoverFragment.a(this.a).getCurrentAccountUin();
-        if (!CustomCoverFragment.b(this.a)) {
-          break label177;
-        }
-        localObject = "open_random";
-        VasWebviewUtil.reportCommercialDrainage(str, "defaultcard", (String)localObject, "", 1, 0, 0, "", "", "");
-      }
-    }
-    label166:
-    label172:
-    label177:
-    while (this.a.getActivity() == null) {
-      for (;;)
-      {
-        String str;
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        boolean bool = false;
-        continue;
-        i = 0;
-        continue;
-        localObject = "close_random";
-      }
-    }
-    Object localObject = paramView.getTag();
-    if ((localObject instanceof Integer)) {}
-    for (int j = ((Integer)localObject).intValue();; j = 0)
-    {
-      if ((paramView instanceof Button))
-      {
-        if (CustomCoverFragment.c(this.a))
-        {
-          QQToast.a(this.a.getActivity(), 0, 2131690817, 0).a();
-          break;
-        }
-        if (CustomCoverFragment.a(this.a) != j)
-        {
-          CustomCoverFragment.a(this.a, j);
-          break;
-        }
-        if (j != CustomCoverFragment.a(this.a)) {
-          break;
-        }
-        CustomCoverFragment.a(this.a, 0);
-        break;
-      }
-      if (!(paramView instanceof ImageView)) {
-        break;
-      }
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("cover_id_key", j);
-      if (!CustomCoverFragment.c(this.a)) {
-        if (CustomCoverFragment.a(this.a) != j) {}
-      }
-      for (i = 2;; i = 0)
-      {
-        ((Intent)localObject).putExtra("cover_button_key", i);
-        PublicFragmentActivity.Launcher.a(this.a.getActivity(), (Intent)localObject, PublicFragmentActivity.class, CoverDetailFragment.class, 2001);
-        break;
-      }
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.CustomCoverFragment.3
  * JD-Core Version:    0.7.0.1
  */

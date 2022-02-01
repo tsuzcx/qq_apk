@@ -32,12 +32,13 @@ public class PttBallImageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if (localBitmap != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(this.jdField_a_of_type_Float / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_b_of_type_Float / this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+      this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(this.jdField_a_of_type_Float / localBitmap.getWidth(), this.jdField_b_of_type_Float / this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
       float f1 = this.jdField_a_of_type_Int;
       float f2 = this.jdField_a_of_type_Float / 2.0F;
       float f3 = this.jdField_b_of_type_Int;
@@ -66,7 +67,7 @@ public class PttBallImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PttBallImageView
  * JD-Core Version:    0.7.0.1
  */

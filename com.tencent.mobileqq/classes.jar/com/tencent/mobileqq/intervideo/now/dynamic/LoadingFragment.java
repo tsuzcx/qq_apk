@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +15,7 @@ import com.tencent.intervideo.nowproxy.Global;
 import com.tencent.intervideo.nowproxy.NowLive;
 import com.tencent.intervideo.nowproxy.NowPluginObserver;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
@@ -28,7 +28,7 @@ public class LoadingFragment
   static View jdField_a_of_type_AndroidViewView;
   NowPluginObserver jdField_a_of_type_ComTencentIntervideoNowproxyNowPluginObserver = new LoadingFragment.1(this);
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  DynamicNowManager jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager;
+  IDynamicNowManager jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicIDynamicNowManager;
   
   public static void a(Context paramContext, Bundle paramBundle, View paramView)
   {
@@ -43,22 +43,22 @@ public class LoadingFragment
   
   protected void a()
   {
-    FragmentActivity localFragmentActivity = getActivity();
-    if (localFragmentActivity != null) {
-      localFragmentActivity.finish();
+    BaseActivity localBaseActivity = getBaseActivity();
+    if (localBaseActivity != null) {
+      localBaseActivity.finish();
     }
   }
   
-  public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
+  protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    FragmentActivity localFragmentActivity;
-    do
-    {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
       return;
-      localFragmentActivity = getActivity();
-    } while (localFragmentActivity == null);
-    localFragmentActivity.overridePendingTransition(0, 0);
+    }
+    BaseActivity localBaseActivity = getBaseActivity();
+    if (localBaseActivity == null) {
+      return;
+    }
+    localBaseActivity.overridePendingTransition(0, 0);
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     getArguments().putBoolean("loadingShow", true);
     hideTitleBar();
@@ -74,23 +74,27 @@ public class LoadingFragment
         paramLayoutInflater.addView(jdField_a_of_type_AndroidViewView, paramViewGroup);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager.a.a.a();
+    ((NowDataReporter)this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicIDynamicNowManager.a()).a();
   }
   
-  public int getContentLayoutId()
+  protected int getContentLayoutId()
   {
-    return 2131561365;
+    return 2131561204;
   }
   
-  public void init(Bundle paramBundle)
+  protected void init(Bundle paramBundle)
   {
     super.init(paramBundle);
-    paramBundle = getActivity();
-    if (paramBundle == null) {}
-    for (paramBundle = null; (paramBundle instanceof QQAppInterface); paramBundle = paramBundle.getAppInterface())
+    paramBundle = getBaseActivity();
+    if (paramBundle == null) {
+      paramBundle = null;
+    } else {
+      paramBundle = paramBundle.getAppInterface();
+    }
+    if ((paramBundle instanceof QQAppInterface))
     {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramBundle);
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager = ((DynamicNowManager)paramBundle.getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER));
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicIDynamicNowManager = ((IDynamicNowManager)paramBundle.getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER));
       Global.addNowPluginObserver(this.jdField_a_of_type_ComTencentIntervideoNowproxyNowPluginObserver);
       return;
     }
@@ -106,16 +110,17 @@ public class LoadingFragment
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager != null) {
+    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicIDynamicNowManager != null) {
       Global.removeNowPluginObserver(this.jdField_a_of_type_ComTencentIntervideoNowproxyNowPluginObserver);
     }
-    if (jdField_a_of_type_AndroidViewView != null)
+    Object localObject = jdField_a_of_type_AndroidViewView;
+    if (localObject != null)
     {
-      ViewGroup localViewGroup = (ViewGroup)jdField_a_of_type_AndroidViewView.getParent();
-      if (localViewGroup != null)
+      localObject = (ViewGroup)((View)localObject).getParent();
+      if (localObject != null)
       {
         QLog.i("LoadingFragment", 4, "removeView ");
-        localViewGroup.removeView(jdField_a_of_type_AndroidViewView);
+        ((ViewGroup)localObject).removeView(jdField_a_of_type_AndroidViewView);
       }
     }
     jdField_a_of_type_AndroidViewView = null;
@@ -149,7 +154,7 @@ public class LoadingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.LoadingFragment
  * JD-Core Version:    0.7.0.1
  */

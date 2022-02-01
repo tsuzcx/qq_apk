@@ -29,7 +29,7 @@ public class LRULimitedMemoryCache
     super.clear();
   }
   
-  public Reference<Bitmap> createReference(Bitmap paramBitmap)
+  protected Reference<Bitmap> createReference(Bitmap paramBitmap)
   {
     return new WeakReference(paramBitmap);
   }
@@ -40,7 +40,7 @@ public class LRULimitedMemoryCache
     return super.get(paramString);
   }
   
-  public int getSize(Bitmap paramBitmap)
+  protected int getSize(Bitmap paramBitmap)
   {
     return paramBitmap.getRowBytes() * paramBitmap.getHeight();
   }
@@ -61,24 +61,27 @@ public class LRULimitedMemoryCache
     return super.remove(paramString);
   }
   
-  public Bitmap removeNext()
+  protected Bitmap removeNext()
   {
-    Bitmap localBitmap = null;
-    synchronized (this.lruCache)
+    for (;;)
     {
-      Iterator localIterator = this.lruCache.entrySet().iterator();
-      if (localIterator.hasNext())
+      synchronized (this.lruCache)
       {
-        localBitmap = (Bitmap)((Map.Entry)localIterator.next()).getValue();
-        localIterator.remove();
+        Iterator localIterator = this.lruCache.entrySet().iterator();
+        if (localIterator.hasNext())
+        {
+          Bitmap localBitmap = (Bitmap)((Map.Entry)localIterator.next()).getValue();
+          localIterator.remove();
+          return localBitmap;
+        }
       }
-      return localBitmap;
+      Object localObject2 = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nostra13.universalimageloader.cache.memory.impl.LRULimitedMemoryCache
  * JD-Core Version:    0.7.0.1
  */

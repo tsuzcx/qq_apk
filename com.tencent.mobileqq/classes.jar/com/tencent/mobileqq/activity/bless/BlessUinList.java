@@ -18,31 +18,45 @@ public class BlessUinList
   
   public static BlessUinList a(SharedPreferences paramSharedPreferences, int paramInt)
   {
-    String str2 = "bless_uin_list";
-    String str1 = "bless_uin_list_time_millis";
+    Object localObject;
+    String str;
     if (paramInt == 2)
     {
-      str2 = "web_uin_list";
-      str1 = "web_uin_list_time_millis";
+      localObject = "web_uin_list";
+      str = "web_uin_list_time_millis";
+    }
+    else
+    {
+      localObject = "bless_uin_list";
+      str = "bless_uin_list_time_millis";
     }
     BlessUinList localBlessUinList = new BlessUinList();
-    localBlessUinList.jdField_a_of_type_Long = paramSharedPreferences.getLong(str1, 0L);
+    localBlessUinList.jdField_a_of_type_Long = paramSharedPreferences.getLong(str, 0L);
     if (DateUtils.isToday(localBlessUinList.jdField_a_of_type_Long)) {
       try
       {
-        paramSharedPreferences = paramSharedPreferences.getString(str2, "[]");
-        if (QLog.isColorLevel()) {
-          QLog.d("BlessManager", 2, "read uin list from mode=" + paramInt + " ,SP=" + paramSharedPreferences);
+        paramSharedPreferences = paramSharedPreferences.getString((String)localObject, "[]");
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("read uin list from mode=");
+          ((StringBuilder)localObject).append(paramInt);
+          ((StringBuilder)localObject).append(" ,SP=");
+          ((StringBuilder)localObject).append(paramSharedPreferences);
+          QLog.d("BlessManager", 2, ((StringBuilder)localObject).toString());
         }
         paramSharedPreferences = new JSONArray(paramSharedPreferences);
         paramInt = 0;
-        while (paramInt + 1 < paramSharedPreferences.length())
+        for (;;)
         {
-          localBlessUinList.a(paramSharedPreferences.getString(paramInt), paramSharedPreferences.getInt(paramInt + 1));
+          int i = paramInt + 1;
+          if (i >= paramSharedPreferences.length()) {
+            break;
+          }
+          localBlessUinList.a(paramSharedPreferences.getString(paramInt), paramSharedPreferences.getInt(i));
           paramInt += 2;
-          continue;
-          localBlessUinList.jdField_a_of_type_Long = System.currentTimeMillis();
         }
+        localBlessUinList.jdField_a_of_type_Long = System.currentTimeMillis();
       }
       catch (Exception paramSharedPreferences)
       {
@@ -56,31 +70,34 @@ public class BlessUinList
   public static void a(SharedPreferences paramSharedPreferences, BlessUinList paramBlessUinList, int paramInt)
   {
     paramBlessUinList.a();
-    Object localObject = new JSONArray();
-    Iterator localIterator = paramBlessUinList.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
+    Object localObject1 = new JSONArray();
+    Object localObject2 = paramBlessUinList.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      ((JSONArray)localObject).put(localEntry.getKey());
-      ((JSONArray)localObject).put(localEntry.getValue());
+      Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
+      ((JSONArray)localObject1).put(localEntry.getKey());
+      ((JSONArray)localObject1).put(localEntry.getValue());
     }
     paramSharedPreferences = paramSharedPreferences.edit();
-    localObject = ((JSONArray)localObject).toString();
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessManager", 2, "save uin list to SP=" + (String)localObject);
+    localObject1 = ((JSONArray)localObject1).toString();
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("save uin list to SP=");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.d("BlessManager", 2, ((StringBuilder)localObject2).toString());
     }
     if (paramInt == 2)
     {
-      paramSharedPreferences.putString("web_uin_list", (String)localObject);
+      paramSharedPreferences.putString("web_uin_list", (String)localObject1);
       paramSharedPreferences.putLong("web_uin_list_time_millis", paramBlessUinList.jdField_a_of_type_Long);
     }
-    for (;;)
+    else
     {
-      paramSharedPreferences.commit();
-      return;
-      paramSharedPreferences.putString("bless_uin_list", (String)localObject);
+      paramSharedPreferences.putString("bless_uin_list", (String)localObject1);
       paramSharedPreferences.putLong("bless_uin_list_time_millis", paramBlessUinList.jdField_a_of_type_Long);
     }
+    paramSharedPreferences.commit();
   }
   
   private void a(String paramString, int paramInt)
@@ -106,7 +123,8 @@ public class BlessUinList
     this.jdField_a_of_type_Int += 1;
     if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
     {
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue() + 1));
+      HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+      localHashMap.put(paramString, Integer.valueOf(((Integer)localHashMap.get(paramString)).intValue() + 1));
       return;
     }
     this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(1));
@@ -131,7 +149,7 @@ public class BlessUinList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessUinList
  * JD-Core Version:    0.7.0.1
  */

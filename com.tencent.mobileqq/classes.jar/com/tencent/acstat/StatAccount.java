@@ -74,27 +74,34 @@ public class StatAccount
   public String toJsonString()
   {
     JSONObject localJSONObject = new JSONObject();
-    if (StatCommonHelper.isStringValid(this.a)) {}
-    try
-    {
-      Util.jsonPut(localJSONObject, "a", this.a);
-      localJSONObject.put("t", this.b);
-      Util.jsonPut(localJSONObject, "e", this.c);
-      Util.jsonPut(localJSONObject, "e1", this.d);
-      return localJSONObject.toString();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+    if (StatCommonHelper.isStringValid(this.a)) {
+      try
+      {
+        Util.jsonPut(localJSONObject, "a", this.a);
+        localJSONObject.put("t", this.b);
+        Util.jsonPut(localJSONObject, "e", this.c);
+        Util.jsonPut(localJSONObject, "e1", this.d);
+      }
+      catch (JSONException localJSONException)
       {
         localJSONException.printStackTrace();
       }
     }
+    return localJSONObject.toString();
   }
   
   public String toString()
   {
-    return "StatAccount [account=" + this.a + ", accountType=" + this.b + ", ext=" + this.c + ", ext1=" + this.d + "]";
+    StringBuilder localStringBuilder = new StringBuilder("StatAccount [account=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", accountType=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", ext=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", ext1=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 

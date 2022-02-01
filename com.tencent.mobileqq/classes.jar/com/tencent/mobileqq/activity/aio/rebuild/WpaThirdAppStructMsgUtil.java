@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
 import com.tencent.biz.widgets.ShareAioResultDialog;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.service.MobileQQService;
 import com.tencent.mobileqq.service.message.MessageRecordFactory;
@@ -25,101 +25,95 @@ public class WpaThirdAppStructMsgUtil
   public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, SessionInfo paramSessionInfo, boolean paramBoolean)
   {
     paramActivity = paramActivity.getIntent();
-    if (paramActivity == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while ((!paramActivity.getBooleanExtra("showFirstStructMsg", false)) || (!paramBoolean));
-        if (QLog.isColorLevel()) {
-          QLog.d("send3rdAppStructMsg", 2, "send first struct msg");
-        }
-        paramActivity = paramActivity.getByteArrayExtra("stuctmsg_bytes");
-      } while (paramActivity == null);
-      paramActivity = StructMsgFactory.a(paramActivity);
-    } while (paramActivity == null);
-    ShareMsgHelper.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramActivity, null);
-    ReportController.b(paramQQAppInterface, "CliOper", "", paramSessionInfo.jdField_a_of_type_JavaLangString, "0X8004B51", "0X8004B51", 0, 0, "", "", "", "");
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, SessionInfo paramSessionInfo, AbsShareMsg paramAbsShareMsg, String paramString)
-  {
-    if (0 != 0) {
-      throw new NullPointerException();
-    }
-    ShareAioResultDialog localShareAioResultDialog = new ShareAioResultDialog(paramFragmentActivity);
-    String str = paramFragmentActivity.getString(2131719148);
-    if (paramString != null) {}
-    for (paramString = str + paramString;; paramString = str)
-    {
-      paramAbsShareMsg = new WpaThirdAppStructMsgUtil.1(paramAbsShareMsg, paramFragmentActivity, paramFragmentActivity, paramQQAppInterface, paramSessionInfo);
-      localShareAioResultDialog.a(paramString, paramAbsShareMsg);
-      localShareAioResultDialog.a(paramFragmentActivity.getResources().getString(2131719155));
-      localShareAioResultDialog.a(paramAbsShareMsg);
-      localShareAioResultDialog.a(false);
-      localShareAioResultDialog.show();
-      ReportController.b(paramQQAppInterface, "CliOper", "", paramSessionInfo.jdField_a_of_type_JavaLangString, "0X8004B54", "0X8004B54", 0, 0, "", "", "", "");
+    if (paramActivity == null) {
       return;
     }
+    if ((paramActivity.getBooleanExtra("showFirstStructMsg", false)) && (paramBoolean))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("send3rdAppStructMsg", 2, "send first struct msg");
+      }
+      paramActivity = paramActivity.getByteArrayExtra("stuctmsg_bytes");
+      if (paramActivity != null)
+      {
+        paramActivity = StructMsgFactory.a(paramActivity);
+        if (paramActivity != null)
+        {
+          ShareMsgHelper.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramActivity, null);
+          ReportController.b(paramQQAppInterface, "CliOper", "", paramSessionInfo.jdField_a_of_type_JavaLangString, "0X8004B51", "0X8004B51", 0, 0, "", "", "", "");
+        }
+      }
+    }
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, SessionInfo paramSessionInfo)
+  public static void a(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, SessionInfo paramSessionInfo, AbsShareMsg paramAbsShareMsg, String paramString)
   {
-    boolean bool = false;
-    ReportController.b(paramQQAppInterface, "CliOper", "", paramSessionInfo.jdField_a_of_type_JavaLangString, "0X8004B53", "0X8004B53", 0, 0, "", "", "", "");
-    Object localObject = paramFragmentActivity.getIntent().getByteArrayExtra("stuctmsg_bytes");
-    String str = paramFragmentActivity.getIntent().getStringExtra("thirdAppDisplayName");
-    localObject = StructMsgFactory.a((byte[])localObject);
-    if ((localObject != null) && ((localObject instanceof AbsShareMsg))) {}
-    for (localObject = (AbsShareMsg)localObject;; localObject = null)
+    ShareAioResultDialog localShareAioResultDialog = new ShareAioResultDialog(paramBaseActivity);
+    String str = paramBaseActivity.getString(2131718866);
+    Object localObject = str;
+    if (paramString != null)
     {
-      if ("webview".equals(paramFragmentActivity.getIntent().getStringExtra("from")))
-      {
-        JumpAction.jdField_a_of_type_Int -= 1;
-        if (!(paramFragmentActivity instanceof SplashActivity))
-        {
-          paramFragmentActivity.finish();
-          bool = true;
-        }
-        return bool;
-      }
-      a(paramQQAppInterface, paramFragmentActivity, paramSessionInfo, (AbsShareMsg)localObject, str);
-      return true;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(paramString);
+      localObject = ((StringBuilder)localObject).toString();
     }
+    paramAbsShareMsg = new WpaThirdAppStructMsgUtil.1(paramAbsShareMsg, paramBaseActivity, paramBaseActivity, paramQQAppInterface, paramSessionInfo);
+    localShareAioResultDialog.a((String)localObject, paramAbsShareMsg);
+    localShareAioResultDialog.a(paramBaseActivity.getResources().getString(2131718873));
+    localShareAioResultDialog.a(paramAbsShareMsg);
+    localShareAioResultDialog.a(false);
+    localShareAioResultDialog.show();
+    ReportController.b(paramQQAppInterface, "CliOper", "", paramSessionInfo.jdField_a_of_type_JavaLangString, "0X8004B54", "0X8004B54", 0, 0, "", "", "", "");
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Intent paramIntent)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramIntent.getBooleanExtra("from3rdApp", false))
+    if ((paramIntent.getBooleanExtra("from3rdApp", false)) && (paramIntent.getBooleanExtra("showFirstStructMsg", false)))
     {
-      bool1 = bool2;
-      if (paramIntent.getBooleanExtra("showFirstStructMsg", false))
+      paramIntent = paramIntent.getByteArrayExtra("stuctmsg_bytes");
+      if (paramIntent != null)
       {
-        paramIntent = paramIntent.getByteArrayExtra("stuctmsg_bytes");
-        bool1 = bool2;
-        if (paramIntent != null)
-        {
-          paramIntent = StructMsgFactory.a(paramIntent);
-          long l = MobileQQService.seq;
-          paramSessionInfo = MessageRecordFactory.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, l, paramIntent);
-          paramIntent = new ArrayList();
-          paramIntent.add(paramSessionInfo);
-          paramQQAppInterface.getMessageFacade().b(paramIntent, paramQQAppInterface.getCurrentAccountUin());
-          bool1 = true;
-        }
+        paramIntent = StructMsgFactory.a(paramIntent);
+        long l = MobileQQService.seq;
+        paramSessionInfo = MessageRecordFactory.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, l, paramIntent);
+        paramIntent = new ArrayList();
+        paramIntent.add(paramSessionInfo);
+        paramQQAppInterface.getMessageFacade().b(paramIntent, paramQQAppInterface.getCurrentAccountUin());
+        return true;
       }
     }
-    return bool1;
+    return false;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, SessionInfo paramSessionInfo)
+  {
+    ReportController.b(paramQQAppInterface, "CliOper", "", paramSessionInfo.jdField_a_of_type_JavaLangString, "0X8004B53", "0X8004B53", 0, 0, "", "", "", "");
+    Object localObject = paramBaseActivity.getIntent().getByteArrayExtra("stuctmsg_bytes");
+    String str = paramBaseActivity.getIntent().getStringExtra("thirdAppDisplayName");
+    localObject = StructMsgFactory.a((byte[])localObject);
+    if ((localObject != null) && ((localObject instanceof AbsShareMsg))) {
+      localObject = (AbsShareMsg)localObject;
+    } else {
+      localObject = null;
+    }
+    if ("webview".equals(paramBaseActivity.getIntent().getStringExtra("from")))
+    {
+      JumpAction.jdField_a_of_type_Int -= 1;
+      if (!(paramBaseActivity instanceof SplashActivity))
+      {
+        paramBaseActivity.finish();
+        return true;
+      }
+      return false;
+    }
+    a(paramQQAppInterface, paramBaseActivity, paramSessionInfo, (AbsShareMsg)localObject, str);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.WpaThirdAppStructMsgUtil
  * JD-Core Version:    0.7.0.1
  */

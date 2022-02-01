@@ -16,7 +16,7 @@ class UncommonlyUsedContactsActivity$6
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (NetworkUtil.d(BaseApplication.getContext()))
+    if (NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
       ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).delFriend(this.jdField_a_of_type_JavaLangString, (byte)2);
       paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app.getHandler(ChatActivity.class);
@@ -27,14 +27,16 @@ class UncommonlyUsedContactsActivity$6
       if (paramDialogInterface != null) {
         paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
       }
-      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.a(2131694511, 0);
+    else
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.a(2131694476, 0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import com.tencent.mobileqq.apollo.api.res.impl.CmShowRscCacheManagerImpl.IdolRscItem;
+import com.tencent.mobileqq.apollo.res.api.impl.CmShowRscCacheManagerImpl.IdolRscItem;
 import java.util.List;
 
 public abstract interface CmShowRscDownloader$OnRscDownLoadListener
@@ -9,7 +9,7 @@ public abstract interface CmShowRscDownloader$OnRscDownLoadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.CmShowRscDownloader.OnRscDownLoadListener
  * JD-Core Version:    0.7.0.1
  */

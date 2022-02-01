@@ -34,8 +34,14 @@ class TimeSelectView$5
     if ((!TimeSelectView.a(this.a)) && (this.a.a != null))
     {
       this.a.a.vibrate(QQAppInterface.VIBRATOR_TIME_SELECTOR, -1);
-      if (QLog.isColorLevel()) {
-        QLog.d("TimeSelectView", 1, "hasVibrator: " + this.a.a.hasVibrator() + "Vibrator vibrate! " + TimeSelectView.a(this.a));
+      if (QLog.isColorLevel())
+      {
+        paramAdapterView = new StringBuilder();
+        paramAdapterView.append("hasVibrator: ");
+        paramAdapterView.append(this.a.a.hasVibrator());
+        paramAdapterView.append("Vibrator vibrate! ");
+        paramAdapterView.append(TimeSelectView.a(this.a));
+        QLog.d("TimeSelectView", 1, paramAdapterView.toString());
       }
     }
     TimeSelectView.a(this.a, false);
@@ -45,7 +51,7 @@ class TimeSelectView$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.widget.TimeSelectView.5
  * JD-Core Version:    0.7.0.1
  */

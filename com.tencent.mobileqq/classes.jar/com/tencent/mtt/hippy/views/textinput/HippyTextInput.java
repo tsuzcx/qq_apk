@@ -73,50 +73,43 @@ public class HippyTextInput
   
   private CommonBackgroundDrawable getOrCreateReactViewBackground()
   {
-    Drawable localDrawable;
     if (this.mReactBackgroundDrawable == null)
     {
       this.mReactBackgroundDrawable = new CommonBackgroundDrawable();
-      localDrawable = getBackground();
+      Drawable localDrawable = getBackground();
       super.setBackgroundDrawable(null);
-      if (localDrawable != null) {
-        break label45;
+      if (localDrawable == null) {
+        super.setBackgroundDrawable(this.mReactBackgroundDrawable);
+      } else {
+        super.setBackgroundDrawable(new LayerDrawable(new Drawable[] { this.mReactBackgroundDrawable, localDrawable }));
       }
-      super.setBackgroundDrawable(this.mReactBackgroundDrawable);
     }
-    for (;;)
-    {
-      return this.mReactBackgroundDrawable;
-      label45:
-      super.setBackgroundDrawable(new LayerDrawable(new Drawable[] { this.mReactBackgroundDrawable, localDrawable }));
-    }
+    return this.mReactBackgroundDrawable;
   }
   
   private int getRootViewHeight()
   {
     View localView = getRootView();
-    if (localView == null) {}
-    for (;;)
-    {
+    if (localView == null) {
       return -1;
-      try
-      {
-        localView.getWindowVisibleDisplayFrame(this.mRect);
-        int i = this.mRect.bottom - this.mRect.top;
-        if (i < 0) {
-          continue;
-        }
-        return i;
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          LogUtils.d("InputMethodStatusMonitor:", "getWindowVisibleDisplayFrame failed !" + localThrowable);
-          localThrowable.printStackTrace();
-        }
-      }
     }
+    try
+    {
+      localView.getWindowVisibleDisplayFrame(this.mRect);
+    }
+    catch (Throwable localThrowable)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getWindowVisibleDisplayFrame failed !");
+      localStringBuilder.append(localThrowable);
+      LogUtils.d("InputMethodStatusMonitor:", localStringBuilder.toString());
+      localThrowable.printStackTrace();
+    }
+    int i = this.mRect.bottom - this.mRect.top;
+    if (i < 0) {
+      return -1;
+    }
+    return i;
   }
   
   private int getScreenHeight()
@@ -130,7 +123,13 @@ public class HippyTextInput
         return i;
       }
     }
-    catch (SecurityException localSecurityException) {}
+    catch (SecurityException localSecurityException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getScreenHeight: ");
+      localStringBuilder.append(localSecurityException.getMessage());
+      LogUtils.d("HippyTextInput", localStringBuilder.toString());
+    }
     return -1;
   }
   
@@ -147,15 +146,16 @@ public class HippyTextInput
   public void hideInputMethod()
   {
     InputMethodManager localInputMethodManager = getInputMethodManager();
-    if ((localInputMethodManager != null) && (localInputMethodManager.isActive(this))) {}
-    try
-    {
-      localInputMethodManager.hideSoftInputFromWindow(getWindowToken(), 0);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    if ((localInputMethodManager != null) && (localInputMethodManager.isActive(this))) {
+      try
+      {
+        localInputMethodManager.hideSoftInputFromWindow(getWindowToken(), 0);
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
     }
   }
   
@@ -185,7 +185,7 @@ public class HippyTextInput
     this.bUserSetValue = false;
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     if ((getRootView() != null) && (Build.VERSION.SDK_INT >= 16)) {
@@ -193,7 +193,7 @@ public class HippyTextInput
     }
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     if ((getRootView() != null) && (Build.VERSION.SDK_INT >= 16)) {
@@ -206,30 +206,32 @@ public class HippyTextInput
     HippyMap localHippyMap = new HippyMap();
     localHippyMap.pushInt("actionCode", paramInt);
     localHippyMap.pushString("text", getText().toString());
+    String str;
     switch (paramInt)
     {
     default: 
-      localHippyMap.pushString("actionName", "unknown");
+      str = "unknown";
     }
     for (;;)
     {
-      ((EventDispatcher)this.mHippyContext.getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveUIComponentEvent(getId(), "onEditorAction", localHippyMap);
-      super.onEditorAction(paramInt);
-      return;
-      localHippyMap.pushString("actionName", "go");
+      localHippyMap.pushString("actionName", str);
+      break;
+      str = "previous";
       continue;
-      localHippyMap.pushString("actionName", "next");
+      str = "done";
       continue;
-      localHippyMap.pushString("actionName", "none");
+      str = "next";
       continue;
-      localHippyMap.pushString("actionName", "previous");
+      str = "send";
       continue;
-      localHippyMap.pushString("actionName", "search");
+      str = "search";
       continue;
-      localHippyMap.pushString("actionName", "send");
+      str = "go";
       continue;
-      localHippyMap.pushString("actionName", "done");
+      str = "none";
     }
+    ((EventDispatcher)this.mHippyContext.getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveUIComponentEvent(getId(), "onEditorAction", localHippyMap);
+    super.onEditorAction(paramInt);
   }
   
   public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
@@ -245,21 +247,31 @@ public class HippyTextInput
   
   public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    paramView = new HippyMap();
-    paramView.pushString("text", getText().toString());
+    HippyMap localHippyMap = new HippyMap();
+    localHippyMap.pushString("text", getText().toString());
+    EventDispatcher localEventDispatcher;
+    int i;
     if (paramBoolean)
     {
-      ((EventDispatcher)this.mHippyContext.getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveUIComponentEvent(getId(), "onFocus", paramView);
-      return;
+      localEventDispatcher = (EventDispatcher)this.mHippyContext.getModuleManager().getJavaScriptModule(EventDispatcher.class);
+      i = getId();
+      paramView = "onFocus";
     }
-    ((EventDispatcher)this.mHippyContext.getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveUIComponentEvent(getId(), "onBlur", paramView);
+    else
+    {
+      localEventDispatcher = (EventDispatcher)this.mHippyContext.getModuleManager().getJavaScriptModule(EventDispatcher.class);
+      i = getId();
+      paramView = "onBlur";
+    }
+    localEventDispatcher.receiveUIComponentEvent(i, paramView, localHippyMap);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.mReactContentSizeWatcher != null) {
-      this.mReactContentSizeWatcher.onLayout();
+    HippyTextInput.ReactContentSizeWatcher localReactContentSizeWatcher = this.mReactContentSizeWatcher;
+    if (localReactContentSizeWatcher != null) {
+      localReactContentSizeWatcher.onLayout();
     }
   }
   
@@ -280,8 +292,9 @@ public class HippyTextInput
   protected void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
     super.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
-    if (this.mReactContentSizeWatcher != null) {
-      this.mReactContentSizeWatcher.onLayout();
+    paramCharSequence = this.mReactContentSizeWatcher;
+    if (paramCharSequence != null) {
+      paramCharSequence.onLayout();
     }
   }
   
@@ -296,13 +309,10 @@ public class HippyTextInput
     int j = getPaddingTop();
     int k = getPaddingLeft();
     int m = getPaddingRight();
-    if ((paramInt == 0) && (this.mReactBackgroundDrawable == null)) {}
-    for (;;)
-    {
-      setPadding(k, j, m, i);
-      return;
+    if ((paramInt != 0) || (this.mReactBackgroundDrawable != null)) {
       getOrCreateReactViewBackground().setBackgroundColor(paramInt);
     }
+    setPadding(k, j, m, i);
   }
   
   public void setBlurOrOnFocus(boolean paramBoolean)
@@ -334,7 +344,6 @@ public class HippyTextInput
   
   public void setCursorColor(int paramInt)
   {
-    Object localObject2;
     do
     {
       try
@@ -345,6 +354,7 @@ public class HippyTextInput
         localObject1 = TextView.class.getDeclaredField("mEditor");
         ((Field)localObject1).setAccessible(true);
         localObject3 = ((Field)localObject1).get(this);
+        localObject1 = null;
         j = Build.VERSION.SDK_INT;
         if (j >= 21) {
           localObject1 = getContext().getDrawable(i);
@@ -357,38 +367,45 @@ public class HippyTextInput
         Object localObject1;
         Object localObject3;
         int j;
-        Class localClass;
-        LogUtils.d("robinsli", localThrowable1.getMessage());
-        return;
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("setCursorColor: ");
+        ((StringBuilder)localObject2).append(localThrowable1.getMessage());
+        LogUtils.d("HippyTextInput", ((StringBuilder)localObject2).toString());
       }
       ((Drawable)localObject1).setColorFilter(paramInt, PorterDuff.Mode.SRC_IN);
-      localClass = localObject3.getClass();
-      while (localClass != null) {
-        if (j >= 28)
+      localObject2 = localObject3.getClass();
+      for (;;)
+      {
+        if (localObject2 != null)
         {
+          if (j >= 28) {}
           try
           {
-            Field localField1 = localClass.getDeclaredField("mDrawableForCursor");
-            localField1.setAccessible(true);
-            localField1.set(localObject3, localObject1);
+            localField = ((Class)localObject2).getDeclaredField("mDrawableForCursor");
+            localField.setAccessible(true);
+            localField.set(localObject3, localObject1);
             return;
           }
           catch (Throwable localThrowable2)
           {
-            LogUtils.d("robinsli", localThrowable2.getMessage());
-            localClass = localClass.getSuperclass();
+            Field localField;
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("setCursorColor: ");
+            localStringBuilder.append(localThrowable2.getMessage());
+            LogUtils.d("HippyTextInput", localStringBuilder.toString());
+            localObject2 = ((Class)localObject2).getSuperclass();
           }
+          localField = ((Class)localObject2).getDeclaredField("mCursorDrawable");
+          localField.setAccessible(true);
+          localField.set(localObject3, new Drawable[] { localObject1, localObject1 });
+          return;
         }
         else
         {
-          Field localField2 = localClass.getDeclaredField("mCursorDrawable");
-          localField2.setAccessible(true);
-          localField2.set(localObject3, new Drawable[] { localObject1, localObject1 });
           return;
-          localObject2 = null;
         }
       }
-    } while (localObject2 != null);
+    } while (localThrowable1 != null);
   }
   
   public void setGestureDispatcher(NativeGestureDispatcher paramNativeGestureDispatcher) {}
@@ -399,7 +416,7 @@ public class HippyTextInput
     if (paramInt == 0) {
       i = this.mDefaultGravityHorizontal;
     }
-    setGravity(getGravity() & 0xFFFFFFF8 & 0xFF7FFFF8 | i);
+    setGravity(i | getGravity() & 0xFFFFFFF8 & 0xFF7FFFF8);
   }
   
   void setGravityVertical(int paramInt)
@@ -408,7 +425,7 @@ public class HippyTextInput
     if (paramInt == 0) {
       i = this.mDefaultGravityVertical;
     }
-    setGravity(getGravity() & 0xFFFFFF8F | i);
+    setGravity(i | getGravity() & 0xFFFFFF8F);
   }
   
   public void setOnChangeListener(boolean paramBoolean)
@@ -429,12 +446,13 @@ public class HippyTextInput
   
   public void setOnContentSizeChange(boolean paramBoolean)
   {
-    if (paramBoolean == true)
-    {
-      this.mReactContentSizeWatcher = new HippyTextInput.ReactContentSizeWatcher(this, this, this.mHippyContext);
-      return;
+    HippyTextInput.ReactContentSizeWatcher localReactContentSizeWatcher;
+    if (paramBoolean == true) {
+      localReactContentSizeWatcher = new HippyTextInput.ReactContentSizeWatcher(this, this, this.mHippyContext);
+    } else {
+      localReactContentSizeWatcher = null;
     }
-    this.mReactContentSizeWatcher = null;
+    this.mReactContentSizeWatcher = localReactContentSizeWatcher;
   }
   
   public void setOnEndEditingListener(boolean paramBoolean)
@@ -475,7 +493,7 @@ public class HippyTextInput
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.textinput.HippyTextInput
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ public abstract interface PlayerResources$RawId
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qzoneplayer.ui.common.PlayerResources.RawId
  * JD-Core Version:    0.7.0.1
  */

@@ -13,15 +13,20 @@ public class StructMsgHelper
 {
   public static AbsStructMsg a(ArrayList<String> paramArrayList)
   {
-    if (paramArrayList != null) {}
-    for (int i = paramArrayList.size(); i <= 0; i = 0) {
+    int i;
+    if (paramArrayList != null) {
+      i = paramArrayList.size();
+    } else {
+      i = 0;
+    }
+    if (i <= 0) {
       return null;
     }
     StructMsgForGeneralShare localStructMsgForGeneralShare = new StructMsgForGeneralShare();
     localStructMsgForGeneralShare.setFlag(1);
     localStructMsgForGeneralShare.mMsgTemplateID = 1;
     localStructMsgForGeneralShare.mMsgServiceID = 19;
-    localStructMsgForGeneralShare.mMsgBrief = HardCodeUtil.a(2131714495);
+    localStructMsgForGeneralShare.mMsgBrief = HardCodeUtil.a(2131714416);
     localStructMsgForGeneralShare.mMsgAction = "plugin";
     localStructMsgForGeneralShare.mMsgActionData = "mqqapi://qzone/to_publish_queue";
     localStructMsgForGeneralShare.mMsg_A_ActionData = "";
@@ -32,7 +37,7 @@ public class StructMsgHelper
       localAbsStructMsgItem1 = StructMsgElementFactory.a(2);
       localAbsStructMsgItem1.a(new StructMsgItemCover((String)paramArrayList.get(0)));
       localAbsStructMsgItem1.a(new StructMsgItemTitle(""));
-      localAbsStructMsgItem1.a(new StructMsgItemSummary(HardCodeUtil.a(2131714485)));
+      localAbsStructMsgItem1.a(new StructMsgItemSummary(HardCodeUtil.a(2131714406)));
       paramArrayList = StructMsgElementFactory.a(0);
       paramArrayList.a(new StructMsgItemProgress(0));
       localStructMsgForGeneralShare.addItem(localAbsStructMsgItem1);
@@ -45,36 +50,47 @@ public class StructMsgHelper
       localAbsStructMsgItem1.a(new StructMsgItemCover((String)paramArrayList.get(0)));
       localAbsStructMsgItem1.a(new StructMsgItemCover((String)paramArrayList.get(1)));
     }
-    for (;;)
+    else
     {
-      paramArrayList = StructMsgElementFactory.a(0);
-      paramArrayList.a(new StructMsgItemProgress(0));
-      AbsStructMsgItem localAbsStructMsgItem2 = StructMsgElementFactory.a(0);
-      localAbsStructMsgItem2.a(new StructMsgItemSummary(HardCodeUtil.a(2131714476)));
-      localStructMsgForGeneralShare.addItem(localAbsStructMsgItem1);
-      localStructMsgForGeneralShare.addItem(paramArrayList);
-      localStructMsgForGeneralShare.addItem(localAbsStructMsgItem2);
-      break;
       localAbsStructMsgItem1.a(new StructMsgItemCover((String)paramArrayList.get(0)));
       localAbsStructMsgItem1.a(new StructMsgItemCover((String)paramArrayList.get(1)));
       localAbsStructMsgItem1.a(new StructMsgItemCover((String)paramArrayList.get(2)));
     }
+    paramArrayList = StructMsgElementFactory.a(0);
+    paramArrayList.a(new StructMsgItemProgress(0));
+    AbsStructMsgItem localAbsStructMsgItem2 = StructMsgElementFactory.a(0);
+    localAbsStructMsgItem2.a(new StructMsgItemSummary(HardCodeUtil.a(2131714397)));
+    localStructMsgForGeneralShare.addItem(localAbsStructMsgItem1);
+    localStructMsgForGeneralShare.addItem(paramArrayList);
+    localStructMsgForGeneralShare.addItem(localAbsStructMsgItem2);
+    return localStructMsgForGeneralShare;
   }
   
   public static boolean a(MessageRecord paramMessageRecord)
   {
-    if ((paramMessageRecord == null) || (paramMessageRecord.msgtype != -2011)) {}
-    do
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramMessageRecord != null)
     {
-      return false;
+      if (paramMessageRecord.msgtype != -2011) {
+        return false;
+      }
       paramMessageRecord = ((MessageForStructing)paramMessageRecord).structingMsg;
-    } while ((paramMessageRecord == null) || (paramMessageRecord.mMsgServiceID != 19));
-    return true;
+      bool1 = bool2;
+      if (paramMessageRecord != null)
+      {
+        bool1 = bool2;
+        if (paramMessageRecord.mMsgServiceID == 19) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgHelper
  * JD-Core Version:    0.7.0.1
  */

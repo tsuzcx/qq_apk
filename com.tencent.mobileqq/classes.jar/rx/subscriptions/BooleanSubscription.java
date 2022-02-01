@@ -37,18 +37,20 @@ public final class BooleanSubscription
   
   public final void unsubscribe()
   {
-    if ((Action0)this.actionRef.get() != EMPTY_ACTION)
+    Action0 localAction01 = (Action0)this.actionRef.get();
+    Action0 localAction02 = EMPTY_ACTION;
+    if (localAction01 != localAction02)
     {
-      Action0 localAction0 = (Action0)this.actionRef.getAndSet(EMPTY_ACTION);
-      if ((localAction0 != null) && (localAction0 != EMPTY_ACTION)) {
-        localAction0.call();
+      localAction01 = (Action0)this.actionRef.getAndSet(localAction02);
+      if ((localAction01 != null) && (localAction01 != EMPTY_ACTION)) {
+        localAction01.call();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.subscriptions.BooleanSubscription
  * JD-Core Version:    0.7.0.1
  */

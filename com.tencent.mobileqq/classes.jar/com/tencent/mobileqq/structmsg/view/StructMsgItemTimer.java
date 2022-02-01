@@ -36,28 +36,30 @@ public class StructMsgItemTimer
   
   private long a()
   {
-    if (!this.jdField_d_of_type_Boolean)
+    boolean bool = this.jdField_d_of_type_Boolean;
+    long l1 = 0L;
+    if (!bool)
     {
-      long l1 = MessageCache.a();
-      long l2 = this.c + this.q - l1;
-      if (l2 < 0L)
+      l1 = MessageCache.a();
+      long l2 = this.c;
+      int i = this.q;
+      l1 = l2 + i - l1;
+      if (l1 < 0L)
       {
         this.jdField_d_of_type_Boolean = true;
-        l1 = 0L;
+        return 0L;
       }
-      do
+      if (l1 > 0L)
       {
-        return l1;
-        if (l2 <= 0L) {
-          break;
+        if (l1 >= i) {
+          return i;
         }
-        l1 = l2;
-      } while (l2 < this.q);
-      return this.q;
-      this.jdField_d_of_type_Boolean = true;
-      return l2;
+      }
+      else {
+        this.jdField_d_of_type_Boolean = true;
+      }
     }
-    return 0L;
+    return l1;
   }
   
   private SpannableStringBuilder a(long paramLong)
@@ -68,10 +70,13 @@ public class StructMsgItemTimer
     if (paramLong > 0L)
     {
       int i = localSpannableStringBuilder.length();
-      String str = String.valueOf(paramLong) + HardCodeUtil.a(2131714486);
-      localSpannableStringBuilder.append(str);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(String.valueOf(paramLong));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131714407));
+      localObject = ((StringBuilder)localObject).toString();
+      localSpannableStringBuilder.append((CharSequence)localObject);
       localSpannableStringBuilder.append(this.ai);
-      localSpannableStringBuilder.setSpan(localForegroundColorSpan, i, str.length() + i, 33);
+      localSpannableStringBuilder.setSpan(localForegroundColorSpan, i, ((String)localObject).length() + i, 33);
       return localSpannableStringBuilder;
     }
     localSpannableStringBuilder.append(this.at);
@@ -88,7 +93,7 @@ public class StructMsgItemTimer
       return paramContext;
     }
     paramContext = new CountdownTextView(paramContext);
-    paramContext.setId(2131380289);
+    paramContext.setId(2131379601);
     paramContext.setTag(this);
     paramContext.setMaxLines(3);
     paramContext.setTextColor(-10987432);
@@ -122,28 +127,24 @@ public class StructMsgItemTimer
   public void a(ObjectOutput paramObjectOutput)
   {
     super.a(paramObjectOutput);
-    if (this.as == null)
-    {
-      str = "";
-      paramObjectOutput.writeUTF(str);
-      if (this.at != null) {
-        break label108;
-      }
+    String str2 = this.as;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    label108:
-    for (String str = "";; str = this.at)
-    {
-      paramObjectOutput.writeUTF(str);
-      paramObjectOutput.writeLong(this.c);
-      paramObjectOutput.writeInt(this.q);
-      paramObjectOutput.writeInt(this.r);
-      paramObjectOutput.writeLong(this.jdField_d_of_type_Long);
-      paramObjectOutput.writeLong(this.e);
-      paramObjectOutput.writeBoolean(this.jdField_d_of_type_Boolean);
-      return;
-      str = this.as;
-      break;
+    paramObjectOutput.writeUTF(str1);
+    str2 = this.at;
+    str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
+    paramObjectOutput.writeUTF(str1);
+    paramObjectOutput.writeLong(this.c);
+    paramObjectOutput.writeInt(this.q);
+    paramObjectOutput.writeInt(this.r);
+    paramObjectOutput.writeLong(this.jdField_d_of_type_Long);
+    paramObjectOutput.writeLong(this.e);
+    paramObjectOutput.writeBoolean(this.jdField_d_of_type_Boolean);
   }
   
   public void a(XmlSerializer paramXmlSerializer)
@@ -178,7 +179,7 @@ public class StructMsgItemTimer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemTimer
  * JD-Core Version:    0.7.0.1
  */

@@ -46,9 +46,11 @@ public abstract class AbstractPredictor
     if (this.currentPredition < 0L) {
       this.currentPredition = 0L;
     }
-    if ((float)Math.abs(this.currentPredition - this.prediction) / (float)this.prediction < 0.2F)
+    float f = (float)Math.abs(this.currentPredition - this.prediction);
+    paramLong = this.prediction;
+    if (f / (float)paramLong < 0.2F)
     {
-      this.prediction = Math.max(this.currentPredition, this.prediction);
+      this.prediction = Math.max(this.currentPredition, paramLong);
       return;
     }
     this.prediction = this.currentPredition;
@@ -56,7 +58,7 @@ public abstract class AbstractPredictor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.bandwidth.AbstractPredictor
  * JD-Core Version:    0.7.0.1
  */

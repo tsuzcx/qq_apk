@@ -25,18 +25,20 @@ public class MessageQueueDecodeMultiplexTask
   static
   {
     mDispatcher = null;
-    if (ImageManagerEnv.g().getDispatcher() != null) {}
-    HandlerThread localHandlerThread;
-    for (mDispatcher = new MessageQueueDecodeMultiplexTask.ImageDecodeMultiplexHandler(ImageManagerEnv.g().getDispatcher());; mDispatcher = new MessageQueueDecodeMultiplexTask.ImageDecodeMultiplexHandler(localHandlerThread.getLooper()))
+    if (ImageManagerEnv.g().getDispatcher() != null)
     {
-      sPool = null;
-      sPoolSync = new Object();
-      mObjectPoolSize = 0;
-      clearAndInitSize();
-      return;
-      localHandlerThread = new HandlerThread("ImageDecodeMultiplexThread");
-      localHandlerThread.start();
+      mDispatcher = new MessageQueueDecodeMultiplexTask.ImageDecodeMultiplexHandler(ImageManagerEnv.g().getDispatcher());
     }
+    else
+    {
+      HandlerThread localHandlerThread = new HandlerThread("ImageDecodeMultiplexThread");
+      localHandlerThread.start();
+      mDispatcher = new MessageQueueDecodeMultiplexTask.ImageDecodeMultiplexHandler(localHandlerThread.getLooper());
+    }
+    sPool = null;
+    sPoolSync = new Object();
+    mObjectPoolSize = 0;
+    clearAndInitSize();
   }
   
   private MessageQueueDecodeMultiplexTask(ImageTask paramImageTask)
@@ -60,13 +62,17 @@ public class MessageQueueDecodeMultiplexTask
       }
       return;
     }
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   private static MessageQueueDecodeMultiplexTask getNextSameDecodeImageTask(int paramInt)
   {
+    LinkedList localLinkedList = (LinkedList)mDecodeImageTaskQueue.get(Integer.valueOf(paramInt));
     Object localObject = null;
     MessageQueueDecodeMultiplexTask localMessageQueueDecodeMultiplexTask = null;
-    LinkedList localLinkedList = (LinkedList)mDecodeImageTaskQueue.get(Integer.valueOf(paramInt));
     if (localLinkedList != null)
     {
       localObject = localMessageQueueDecodeMultiplexTask;
@@ -96,30 +102,29 @@ public class MessageQueueDecodeMultiplexTask
     {
       paramMessageQueueDecodeMultiplexTask = new LinkedList();
       mDecodeImageTaskQueue.put(Integer.valueOf(i), paramMessageQueueDecodeMultiplexTask);
+      return false;
     }
-    for (boolean bool = false;; bool = true)
-    {
-      return bool;
-      localLinkedList.addLast(paramMessageQueueDecodeMultiplexTask);
-    }
+    localLinkedList.addLast(paramMessageQueueDecodeMultiplexTask);
+    return true;
   }
   
   public static MessageQueueDecodeMultiplexTask obtain(ImageTask paramImageTask)
   {
-    if (needRecycle) {}
-    synchronized (sPoolSync)
-    {
-      if (sPool != null)
+    if (needRecycle) {
+      synchronized (sPoolSync)
       {
-        MessageQueueDecodeMultiplexTask localMessageQueueDecodeMultiplexTask = sPool;
-        sPool = sPool.next;
-        localMessageQueueDecodeMultiplexTask.next = null;
-        mObjectPoolSize -= 1;
-        localMessageQueueDecodeMultiplexTask.setImageTask(paramImageTask);
-        return localMessageQueueDecodeMultiplexTask;
+        if (sPool != null)
+        {
+          MessageQueueDecodeMultiplexTask localMessageQueueDecodeMultiplexTask = sPool;
+          sPool = sPool.next;
+          localMessageQueueDecodeMultiplexTask.next = null;
+          mObjectPoolSize -= 1;
+          localMessageQueueDecodeMultiplexTask.setImageTask(paramImageTask);
+          return localMessageQueueDecodeMultiplexTask;
+        }
       }
-      return new MessageQueueDecodeMultiplexTask(paramImageTask);
     }
+    return new MessageQueueDecodeMultiplexTask(paramImageTask);
   }
   
   private static List<MessageQueueDecodeMultiplexTask> removeSameDecodeImageTask(int paramInt)
@@ -138,36 +143,42 @@ public class MessageQueueDecodeMultiplexTask
   protected void onResult(int paramInt, Object... paramVarArgs)
   {
     ImageTracer.end(getImageKey().url);
-    switch (paramInt)
+    if (paramInt != 8)
     {
-    case 10: 
-    case 12: 
-    default: 
-      setResult(paramInt, paramVarArgs);
-    }
-    do
-    {
-      return;
+      if (paramInt != 9)
+      {
+        if (paramInt != 11)
+        {
+          if (paramInt != 13)
+          {
+            setResult(paramInt, paramVarArgs);
+            return;
+          }
+          paramVarArgs = mDispatcher.obtainMessage();
+          paramVarArgs.what = 13;
+          paramVarArgs.obj = new Object[] { this };
+          paramVarArgs.sendToTarget();
+          return;
+        }
+        localMessage = mDispatcher.obtainMessage();
+        localMessage.what = 11;
+        localMessage.obj = new Object[] { this, paramVarArgs[0] };
+        localMessage.sendToTarget();
+        return;
+      }
+      if (needRetry) {
+        return;
+      }
       paramVarArgs = mDispatcher.obtainMessage();
-      paramVarArgs.what = 13;
+      paramVarArgs.what = 9;
       paramVarArgs.obj = new Object[] { this };
       paramVarArgs.sendToTarget();
       return;
-      Message localMessage = mDispatcher.obtainMessage();
-      localMessage.what = 11;
-      localMessage.obj = new Object[] { this, paramVarArgs[0] };
-      localMessage.sendToTarget();
-      return;
-      localMessage = mDispatcher.obtainMessage();
-      localMessage.what = 8;
-      localMessage.obj = new Object[] { this, paramVarArgs[0], paramVarArgs[1], paramVarArgs[2], paramVarArgs[3], paramVarArgs[4], paramVarArgs[5] };
-      localMessage.sendToTarget();
-      return;
-    } while (needRetry);
-    paramVarArgs = mDispatcher.obtainMessage();
-    paramVarArgs.what = 9;
-    paramVarArgs.obj = new Object[] { this };
-    paramVarArgs.sendToTarget();
+    }
+    Message localMessage = mDispatcher.obtainMessage();
+    localMessage.what = 8;
+    localMessage.obj = new Object[] { this, paramVarArgs[0], paramVarArgs[1], paramVarArgs[2], paramVarArgs[3], paramVarArgs[4], paramVarArgs[5] };
+    localMessage.sendToTarget();
   }
   
   public void recycle()
@@ -190,7 +201,7 @@ public class MessageQueueDecodeMultiplexTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.image.MessageQueueDecodeMultiplexTask
  * JD-Core Version:    0.7.0.1
  */

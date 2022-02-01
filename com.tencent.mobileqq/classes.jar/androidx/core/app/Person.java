@@ -44,10 +44,13 @@ public class Person
   public static Person fromAndroidPerson(@NonNull android.app.Person paramPerson)
   {
     Person.Builder localBuilder = new Person.Builder().setName(paramPerson.getName());
-    if (paramPerson.getIcon() != null) {}
-    for (IconCompat localIconCompat = IconCompat.createFromIcon(paramPerson.getIcon());; localIconCompat = null) {
-      return localBuilder.setIcon(localIconCompat).setUri(paramPerson.getUri()).setKey(paramPerson.getKey()).setBot(paramPerson.isBot()).setImportant(paramPerson.isImportant()).build();
+    IconCompat localIconCompat;
+    if (paramPerson.getIcon() != null) {
+      localIconCompat = IconCompat.createFromIcon(paramPerson.getIcon());
+    } else {
+      localIconCompat = null;
     }
+    return localBuilder.setIcon(localIconCompat).setUri(paramPerson.getUri()).setKey(paramPerson.getKey()).setBot(paramPerson.isBot()).setImportant(paramPerson.isImportant()).build();
   }
   
   @NonNull
@@ -55,10 +58,12 @@ public class Person
   {
     Object localObject = paramBundle.getBundle("icon");
     Person.Builder localBuilder = new Person.Builder().setName(paramBundle.getCharSequence("name"));
-    if (localObject != null) {}
-    for (localObject = IconCompat.createFromBundle((Bundle)localObject);; localObject = null) {
-      return localBuilder.setIcon((IconCompat)localObject).setUri(paramBundle.getString("uri")).setKey(paramBundle.getString("key")).setBot(paramBundle.getBoolean("isBot")).setImportant(paramBundle.getBoolean("isImportant")).build();
+    if (localObject != null) {
+      localObject = IconCompat.createFromBundle((Bundle)localObject);
+    } else {
+      localObject = null;
     }
+    return localBuilder.setIcon((IconCompat)localObject).setUri(paramBundle.getString("uri")).setKey(paramBundle.getString("key")).setBot(paramBundle.getBoolean("isBot")).setImportant(paramBundle.getBoolean("isImportant")).build();
   }
   
   @NonNull
@@ -109,10 +114,13 @@ public class Person
   public android.app.Person toAndroidPerson()
   {
     android.app.Person.Builder localBuilder = new android.app.Person.Builder().setName(getName());
-    if (getIcon() != null) {}
-    for (Icon localIcon = getIcon().toIcon();; localIcon = null) {
-      return localBuilder.setIcon(localIcon).setUri(getUri()).setKey(getKey()).setBot(isBot()).setImportant(isImportant()).build();
+    Icon localIcon;
+    if (getIcon() != null) {
+      localIcon = getIcon().toIcon();
+    } else {
+      localIcon = null;
     }
+    return localBuilder.setIcon(localIcon).setUri(getUri()).setKey(getKey()).setBot(isBot()).setImportant(isImportant()).build();
   }
   
   @NonNull
@@ -124,18 +132,20 @@ public class Person
   @NonNull
   public Bundle toBundle()
   {
-    Bundle localBundle2 = new Bundle();
-    localBundle2.putCharSequence("name", this.mName);
-    if (this.mIcon != null) {}
-    for (Bundle localBundle1 = this.mIcon.toBundle();; localBundle1 = null)
-    {
-      localBundle2.putBundle("icon", localBundle1);
-      localBundle2.putString("uri", this.mUri);
-      localBundle2.putString("key", this.mKey);
-      localBundle2.putBoolean("isBot", this.mIsBot);
-      localBundle2.putBoolean("isImportant", this.mIsImportant);
-      return localBundle2;
+    Bundle localBundle = new Bundle();
+    localBundle.putCharSequence("name", this.mName);
+    Object localObject = this.mIcon;
+    if (localObject != null) {
+      localObject = ((IconCompat)localObject).toBundle();
+    } else {
+      localObject = null;
     }
+    localBundle.putBundle("icon", (Bundle)localObject);
+    localBundle.putString("uri", this.mUri);
+    localBundle.putString("key", this.mKey);
+    localBundle.putBoolean("isBot", this.mIsBot);
+    localBundle.putBoolean("isImportant", this.mIsImportant);
+    return localBundle;
   }
   
   @NonNull
@@ -144,21 +154,23 @@ public class Person
   public PersistableBundle toPersistableBundle()
   {
     PersistableBundle localPersistableBundle = new PersistableBundle();
-    if (this.mName != null) {}
-    for (String str = this.mName.toString();; str = null)
-    {
-      localPersistableBundle.putString("name", str);
-      localPersistableBundle.putString("uri", this.mUri);
-      localPersistableBundle.putString("key", this.mKey);
-      localPersistableBundle.putBoolean("isBot", this.mIsBot);
-      localPersistableBundle.putBoolean("isImportant", this.mIsImportant);
-      return localPersistableBundle;
+    Object localObject = this.mName;
+    if (localObject != null) {
+      localObject = ((CharSequence)localObject).toString();
+    } else {
+      localObject = null;
     }
+    localPersistableBundle.putString("name", (String)localObject);
+    localPersistableBundle.putString("uri", this.mUri);
+    localPersistableBundle.putString("key", this.mKey);
+    localPersistableBundle.putBoolean("isBot", this.mIsBot);
+    localPersistableBundle.putBoolean("isImportant", this.mIsImportant);
+    return localPersistableBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.Person
  * JD-Core Version:    0.7.0.1
  */

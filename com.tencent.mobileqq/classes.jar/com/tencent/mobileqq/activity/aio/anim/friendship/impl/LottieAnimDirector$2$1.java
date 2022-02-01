@@ -10,10 +10,11 @@ class LottieAnimDirector$2$1
   
   public void run()
   {
-    if ((LottieAnimDirector.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplLottieAnimDirector$2.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplLottieAnimDirector)) || (LottieAnimDirector.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplLottieAnimDirector$2.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplLottieAnimDirector))) {}
-    do
+    if (!LottieAnimDirector.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplLottieAnimDirector$2.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplLottieAnimDirector))
     {
-      return;
+      if (LottieAnimDirector.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplLottieAnimDirector$2.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplLottieAnimDirector)) {
+        return;
+      }
       if (this.jdField_a_of_type_Boolean)
       {
         QQAppInterface localQQAppInterface = LottieAnimDirector.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplLottieAnimDirector$2.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplLottieAnimDirector);
@@ -21,13 +22,15 @@ class LottieAnimDirector$2$1
           LottieAnimDirector.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplLottieAnimDirector$2.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplLottieAnimDirector, localQQAppInterface);
         }
       }
-    } while (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplLottieAnimDirector$2.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseIDirector$OnDirectorPrepared == null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplLottieAnimDirector$2.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseIDirector$OnDirectorPrepared.a(this.jdField_a_of_type_Boolean);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplLottieAnimDirector$2.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseIDirector$OnDirectorPrepared != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplLottieAnimDirector$2.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseIDirector$OnDirectorPrepared.a(this.jdField_a_of_type_Boolean);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.friendship.impl.LottieAnimDirector.2.1
  * JD-Core Version:    0.7.0.1
  */

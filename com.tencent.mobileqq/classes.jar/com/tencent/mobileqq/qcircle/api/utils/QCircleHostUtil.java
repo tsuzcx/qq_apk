@@ -19,13 +19,11 @@ import feedcloud.FeedCloudMeta.StUser;
 import feedcloud.FeedCloudMeta.StVideo;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import qqcircle.QQCircleBase.StUserBusiData;
-import qqcircle.QQCircleBase.UserCircleInfo;
 
 public class QCircleHostUtil
 {
@@ -38,27 +36,44 @@ public class QCircleHostUtil
   
   public static String bigNumberFormatTranfer(long paramLong, boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (String str = HardCodeUtil.a(2131697848); paramLong < 10000L; str = "W") {
+    String str;
+    if (paramBoolean) {
+      str = HardCodeUtil.a(2131697854);
+    } else {
+      str = "W";
+    }
+    if (paramLong < 10000L) {
       return String.valueOf(paramLong);
     }
     if (paramLong < 1000000L)
     {
-      DecimalFormat localDecimalFormat = new DecimalFormat();
-      localDecimalFormat.setMaximumFractionDigits(1);
-      localDecimalFormat.setGroupingSize(0);
-      localDecimalFormat.setRoundingMode(RoundingMode.HALF_UP);
-      return localDecimalFormat.format(paramLong / 10000.0D) + str;
+      localObject = new DecimalFormat();
+      ((DecimalFormat)localObject).setMaximumFractionDigits(1);
+      ((DecimalFormat)localObject).setGroupingSize(0);
+      ((DecimalFormat)localObject).setRoundingMode(RoundingMode.HALF_UP);
+      StringBuilder localStringBuilder = new StringBuilder();
+      double d = paramLong;
+      Double.isNaN(d);
+      localStringBuilder.append(((DecimalFormat)localObject).format(d / 10000.0D));
+      localStringBuilder.append(str);
+      return localStringBuilder.toString();
     }
-    if (paramLong < 100000000L) {
-      return paramLong / 10000L + str;
+    if (paramLong < 100000000L)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramLong / 10000L);
+      ((StringBuilder)localObject).append(str);
+      return ((StringBuilder)localObject).toString();
     }
-    return "9999" + str;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("9999");
+    ((StringBuilder)localObject).append(str);
+    return ((StringBuilder)localObject).toString();
   }
   
   public static boolean checkOperateMaskEnabled(long paramLong, int paramInt)
   {
-    return (1 << paramInt & paramLong) != 0L;
+    return (paramLong & 1 << paramInt) != 0L;
   }
   
   public static String fansNumberFormatTranfer(long paramLong)
@@ -68,16 +83,28 @@ public class QCircleHostUtil
     }
     if (paramLong < 1000000L)
     {
-      DecimalFormat localDecimalFormat = new DecimalFormat();
-      localDecimalFormat.setMaximumFractionDigits(1);
-      localDecimalFormat.setGroupingSize(0);
-      localDecimalFormat.setRoundingMode(RoundingMode.HALF_UP);
-      return localDecimalFormat.format(paramLong / 10000.0D) + "w";
+      localObject = new DecimalFormat();
+      ((DecimalFormat)localObject).setMaximumFractionDigits(1);
+      ((DecimalFormat)localObject).setGroupingSize(0);
+      ((DecimalFormat)localObject).setRoundingMode(RoundingMode.HALF_UP);
+      StringBuilder localStringBuilder = new StringBuilder();
+      double d = paramLong;
+      Double.isNaN(d);
+      localStringBuilder.append(((DecimalFormat)localObject).format(d / 10000.0D));
+      localStringBuilder.append("w");
+      return localStringBuilder.toString();
     }
-    if (paramLong < 100000000L) {
-      return paramLong / 10000L + "w";
+    if (paramLong < 100000000L)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramLong / 10000L);
+      ((StringBuilder)localObject).append("w");
+      return ((StringBuilder)localObject).toString();
     }
-    return "9999" + "w";
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("9999");
+    ((StringBuilder)localObject).append("w");
+    return ((StringBuilder)localObject).toString();
   }
   
   public static String getFeedTagName(FeedCloudMeta.StFeed paramStFeed)
@@ -101,25 +128,24 @@ public class QCircleHostUtil
     int[] arrayOfInt = new int[2];
     if (paramStFeed != null)
     {
-      if (paramStFeed.dittoFeed.dittoId.get() == 0) {
-        break label31;
+      if (paramStFeed.dittoFeed.dittoId.get() != 0)
+      {
+        arrayOfInt[0] = 3;
+        arrayOfInt[1] = 1;
+        return arrayOfInt;
       }
-      arrayOfInt[0] = 3;
-      arrayOfInt[1] = 1;
-    }
-    label31:
-    do
-    {
-      return arrayOfInt;
       if (paramStFeed.type.get() == 2)
       {
         arrayOfInt[0] = 1;
         arrayOfInt[1] = 1;
         return arrayOfInt;
       }
-    } while (paramStFeed.type.get() != 3);
-    arrayOfInt[0] = 1;
-    arrayOfInt[1] = 2;
+      if (paramStFeed.type.get() == 3)
+      {
+        arrayOfInt[0] = 1;
+        arrayOfInt[1] = 2;
+      }
+    }
     return arrayOfInt;
   }
   
@@ -180,7 +206,18 @@ public class QCircleHostUtil
   
   public static boolean isFollow(FeedCloudMeta.StUser paramStUser)
   {
-    return (paramStUser != null) && (!isOwner(paramStUser)) && ((paramStUser.followState.get() == 1) || (paramStUser.followState.get() == 2));
+    boolean bool = true;
+    if ((paramStUser != null) && (!isOwner(paramStUser)))
+    {
+      if (paramStUser.followState.get() == 1) {
+        return bool;
+      }
+      if (paramStUser.followState.get() == 3) {
+        return true;
+      }
+    }
+    bool = false;
+    return bool;
   }
   
   public static boolean isOwner(FeedCloudMeta.StUser paramStUser)
@@ -197,36 +234,10 @@ public class QCircleHostUtil
   {
     return (paramStFeed != null) && (!TextUtils.isEmpty(paramStFeed.video.fileId.get()));
   }
-  
-  public static void updateCircleAuthInfo(ArrayList<QQCircleBase.UserCircleInfo> paramArrayList, int paramInt, String paramString)
-  {
-    if ((paramArrayList == null) || (TextUtils.isEmpty(paramString))) {
-      return;
-    }
-    int j = paramArrayList.size();
-    int i = 0;
-    while (i < j)
-    {
-      localUserCircleInfo = (QQCircleBase.UserCircleInfo)paramArrayList.get(i);
-      if ((!paramString.equals(localUserCircleInfo.name.get())) || (localUserCircleInfo.circleTab.get() == 1))
-      {
-        i += 1;
-      }
-      else
-      {
-        localUserCircleInfo.circleTab.set(paramInt);
-        return;
-      }
-    }
-    QQCircleBase.UserCircleInfo localUserCircleInfo = new QQCircleBase.UserCircleInfo();
-    localUserCircleInfo.name.set(paramString);
-    localUserCircleInfo.circleTab.set(paramInt);
-    paramArrayList.add(localUserCircleInfo);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.utils.QCircleHostUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -12,17 +12,18 @@ class AddContactsActivity$3
   {
     AddContactsActivity.a(this.a, paramBoolean);
     ImageView localImageView = AddContactsActivity.a(this.a);
-    if (AddContactsActivity.a(this.a)) {}
-    for (int i = 0;; i = 8)
-    {
-      localImageView.setVisibility(i);
-      return;
+    int i;
+    if (AddContactsActivity.a(this.a)) {
+      i = 0;
+    } else {
+      i = 8;
     }
+    localImageView.setVisibility(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity.3
  * JD-Core Version:    0.7.0.1
  */

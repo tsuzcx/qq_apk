@@ -258,46 +258,55 @@ public final class FriendInfo
     paramJceOutputStream.write(this.isIphoneOnline, 9);
     paramJceOutputStream.write(this.detalStatusFlag, 10);
     paramJceOutputStream.write(this.sqqOnLineStateV2, 11);
-    if (this.sShowName != null) {
-      paramJceOutputStream.write(this.sShowName, 12);
+    Object localObject = this.sShowName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
     paramJceOutputStream.write(this.isRemark, 13);
-    if (this.nick != null) {
-      paramJceOutputStream.write(this.nick, 14);
+    localObject = this.nick;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 14);
     }
     paramJceOutputStream.write(this.cSpecialFlag, 15);
-    if (this.vecIMGroupID != null) {
-      paramJceOutputStream.write(this.vecIMGroupID, 16);
+    localObject = this.vecIMGroupID;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 16);
     }
-    if (this.vecMSFGroupID != null) {
-      paramJceOutputStream.write(this.vecMSFGroupID, 17);
+    localObject = this.vecMSFGroupID;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 17);
     }
     paramJceOutputStream.write(this.iTermType, 18);
-    if (this.oVipInfo != null) {
-      paramJceOutputStream.write(this.oVipInfo, 19);
+    localObject = this.oVipInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 19);
     }
     paramJceOutputStream.write(this.cNetwork, 20);
-    if (this.vecRing != null) {
-      paramJceOutputStream.write(this.vecRing, 21);
+    localObject = this.vecRing;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 21);
     }
     paramJceOutputStream.write(this.uAbiFlag, 22);
     paramJceOutputStream.write(this.ulFaceAddonId, 23);
     paramJceOutputStream.write(this.eNetworkType, 24);
     paramJceOutputStream.write(this.uVipFont, 25);
     paramJceOutputStream.write(this.eIconType, 26);
-    if (this.strTermDesc != null) {
-      paramJceOutputStream.write(this.strTermDesc, 27);
+    localObject = this.strTermDesc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 27);
     }
     paramJceOutputStream.write(this.uColorRing, 28);
     paramJceOutputStream.write(this.cApolloFlag, 29);
     paramJceOutputStream.write(this.uApolloTimestamp, 30);
     paramJceOutputStream.write(this.cSex, 31);
     paramJceOutputStream.write(this.uFounderFont, 32);
-    if (this.strEimId != null) {
-      paramJceOutputStream.write(this.strEimId, 33);
+    localObject = this.strEimId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 33);
     }
-    if (this.strEimMobile != null) {
-      paramJceOutputStream.write(this.strEimMobile, 34);
+    localObject = this.strEimMobile;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 34);
     }
     paramJceOutputStream.write(this.cOlympicTorch, 35);
     paramJceOutputStream.write(this.uApolloSignTime, 36);
@@ -305,50 +314,59 @@ public final class FriendInfo
     paramJceOutputStream.write(this.uTagUpdateTime, 38);
     paramJceOutputStream.write(this.uGameLastLoginTime, 39);
     paramJceOutputStream.write(this.uGameAppid, 40);
-    if (this.vecCardID != null) {
-      paramJceOutputStream.write(this.vecCardID, 41);
+    localObject = this.vecCardID;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 41);
     }
     paramJceOutputStream.write(this.ulBitSet, 42);
     paramJceOutputStream.write(this.cKingOfGloryFlag, 43);
     paramJceOutputStream.write(this.ulKingOfGloryRank, 44);
-    if (this.strMasterUin != null) {
-      paramJceOutputStream.write(this.strMasterUin, 45);
+    localObject = this.strMasterUin;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 45);
     }
     paramJceOutputStream.write(this.uLastMedalUpdateTime, 46);
     paramJceOutputStream.write(this.uFaceStoreId, 47);
     paramJceOutputStream.write(this.uFontEffect, 48);
-    if (this.sDOVId != null) {
-      paramJceOutputStream.write(this.sDOVId, 49);
+    localObject = this.sDOVId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 49);
     }
     paramJceOutputStream.write(this.uBothFlag, 50);
     paramJceOutputStream.write(this.cCentiShow3DFlag, 51);
-    if (this.vecIntimateInfo != null) {
-      paramJceOutputStream.write(this.vecIntimateInfo, 52);
+    localObject = this.vecIntimateInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 52);
     }
     paramJceOutputStream.write(this.cShowNameplate, 53);
     paramJceOutputStream.write(this.cNewLoverDiamondFlag, 54);
-    if (this.vecExtSnsFrdData != null) {
-      paramJceOutputStream.write(this.vecExtSnsFrdData, 55);
+    localObject = this.vecExtSnsFrdData;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 55);
     }
-    if (this.vecMutualMarkData != null) {
-      paramJceOutputStream.write(this.vecMutualMarkData, 56);
+    localObject = this.vecMutualMarkData;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 56);
     }
     paramJceOutputStream.write(this.uExtOnlineStatus, 57);
     paramJceOutputStream.write(this.iBatteryStatus, 58);
-    if (this.vecMusicInfo != null) {
-      paramJceOutputStream.write(this.vecMusicInfo, 59);
+    localObject = this.vecMusicInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 59);
     }
-    if (this.vecPoiInfo != null) {
-      paramJceOutputStream.write(this.vecPoiInfo, 60);
+    localObject = this.vecPoiInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 60);
     }
-    if (this.vecExtOnlineBusinessInfo != null) {
-      paramJceOutputStream.write(this.vecExtOnlineBusinessInfo, 61);
+    localObject = this.vecExtOnlineBusinessInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 61);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     friendlist.FriendInfo
  * JD-Core Version:    0.7.0.1
  */

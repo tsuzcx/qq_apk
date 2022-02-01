@@ -9,47 +9,40 @@ public final class RepeatModeUtil
   public static int getNextRepeatMode(int paramInt1, int paramInt2)
   {
     int i = 1;
-    for (;;)
+    while (i <= 2)
     {
-      int j = paramInt1;
-      if (i <= 2)
-      {
-        j = (paramInt1 + i) % 3;
-        if (!isRepeatModeEnabled(j, paramInt2)) {}
-      }
-      else
-      {
+      int j = (paramInt1 + i) % 3;
+      if (isRepeatModeEnabled(j, paramInt2)) {
         return j;
       }
       i += 1;
     }
+    return paramInt1;
   }
   
   public static boolean isRepeatModeEnabled(int paramInt1, int paramInt2)
   {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    switch (paramInt1)
+    boolean bool = true;
+    if (paramInt1 != 0)
     {
-    default: 
-      bool1 = false;
-    }
-    do
-    {
-      do
+      if (paramInt1 != 1)
       {
-        return bool1;
-        bool1 = bool2;
-      } while ((paramInt2 & 0x1) != 0);
-      return false;
-      bool1 = bool2;
-    } while ((paramInt2 & 0x2) != 0);
-    return false;
+        if (paramInt1 != 2) {
+          return false;
+        }
+        return (paramInt2 & 0x2) != 0;
+      }
+      if ((paramInt2 & 0x1) != 0) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.util.RepeatModeUtil
  * JD-Core Version:    0.7.0.1
  */

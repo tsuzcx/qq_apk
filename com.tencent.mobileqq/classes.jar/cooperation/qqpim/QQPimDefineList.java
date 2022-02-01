@@ -2,61 +2,35 @@ package cooperation.qqpim;
 
 public class QQPimDefineList
 {
-  public static int a;
-  public static String a;
-  public static boolean a;
-  public static int b;
-  public static String b;
-  public static int c;
-  public static String c;
-  public static String d;
-  public static String e;
-  public static String f;
-  public static String g;
-  public static String h;
-  public static String i;
-  public static String j;
-  public static String k;
-  public static String l;
-  public static String m;
-  public static String n;
-  public static String o;
-  public static String p;
-  public static String q;
-  public static String r;
+  public static int a = 1;
+  public static String a = "qqpim";
+  public static boolean a = false;
+  public static int b = 2;
+  public static String b = "com.tencent.mobileqq:tool";
+  public static int c = 3;
+  public static String c = "qqpimPlugin";
+  public static String d = "getTipsInfo";
+  public static String e = "clickTipsInfo";
+  public static String f = "getIsQQPimServiceRunning";
+  public static String g = "noticeServiceActive";
+  public static String h = "noticeHasBackup";
+  public static String i = "com.qqpim.activity.QQPimSyncActivity";
+  public static String j = "com.qqpim.activity.QQPimDownloadActivity";
+  public static String k = "com.qqpim.service.QQPimSyncServer";
+  public static String l = "account";
+  public static String m = "a2";
+  public static String n = "tipsInfo";
+  public static String o = "activity_type";
+  public static String p = "repeat_contact_num";
+  public static String q = "cloud_contact_num";
+  public static String r = "click_tips_type";
   public static String s = "merge_contact";
   public static String t = "restore_contact";
   public static String u = "mainui";
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "qqpim";
-    jdField_a_of_type_Boolean = false;
-    jdField_b_of_type_JavaLangString = "com.tencent.mobileqq:tool";
-    jdField_c_of_type_JavaLangString = "qqpimPlugin";
-    d = "getTipsInfo";
-    e = "clickTipsInfo";
-    f = "getIsQQPimServiceRunning";
-    g = "noticeServiceActive";
-    h = "noticeHasBackup";
-    i = "com.qqpim.activity.QQPimSyncActivity";
-    j = "com.qqpim.activity.QQPimDownloadActivity";
-    k = "com.qqpim.service.QQPimSyncServer";
-    l = "account";
-    m = "a2";
-    n = "tipsInfo";
-    o = "activity_type";
-    p = "repeat_contact_num";
-    q = "cloud_contact_num";
-    r = "click_tips_type";
-    jdField_a_of_type_Int = 1;
-    jdField_b_of_type_Int = 2;
-    jdField_c_of_type_Int = 3;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqpim.QQPimDefineList
  * JD-Core Version:    0.7.0.1
  */

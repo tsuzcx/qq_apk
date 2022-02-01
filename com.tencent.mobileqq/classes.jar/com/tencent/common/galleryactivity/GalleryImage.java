@@ -18,16 +18,20 @@ public abstract class GalleryImage
     float f2 = paramRect.height();
     float f3 = paramDrawable.getIntrinsicWidth();
     float f4 = paramDrawable.getIntrinsicHeight();
-    if ((f1 <= 0.0F) || (f2 <= 0.0F) || (f3 <= 0.0F) || (f4 <= 0.0F)) {}
-    do
+    if ((f1 > 0.0F) && (f2 > 0.0F) && (f3 > 0.0F))
     {
-      return 0;
+      if (f4 <= 0.0F) {
+        return 0;
+      }
       f1 = f1 * f4 / (f2 * f3);
       if (f1 < 1.0F) {
         return 1;
       }
-    } while (f1 <= 1.0F);
-    return 2;
+      if (f1 > 1.0F) {
+        return 2;
+      }
+    }
+    return 0;
   }
   
   public abstract Drawable getAnimationDrawable();
@@ -71,7 +75,7 @@ public abstract class GalleryImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.common.galleryactivity.GalleryImage
  * JD-Core Version:    0.7.0.1
  */

@@ -63,7 +63,11 @@ public class NeoVideoRecordButton
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(400L);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new NeoVideoRecordButton.1(this));
     this.jdField_b_of_type_AndroidAnimationValueAnimator = new ValueAnimator();
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofObject("radius", new IntEvaluator(), new Object[] { Integer.valueOf(1), Integer.valueOf(this.f - this.jdField_b_of_type_Int) }), PropertyValuesHolder.ofObject("color", new ArgbEvaluator(), new Object[] { Integer.valueOf(16777215), Integer.valueOf(16777215), Integer.valueOf(16777215), Integer.valueOf(2147483647), Integer.valueOf(16777215) }) });
+    paramContext = this.jdField_b_of_type_AndroidAnimationValueAnimator;
+    paramAttributeSet = PropertyValuesHolder.ofObject("radius", new IntEvaluator(), new Object[] { Integer.valueOf(1), Integer.valueOf(this.f - this.jdField_b_of_type_Int) });
+    ArgbEvaluator localArgbEvaluator = new ArgbEvaluator();
+    Integer localInteger = Integer.valueOf(16777215);
+    paramContext.setValues(new PropertyValuesHolder[] { paramAttributeSet, PropertyValuesHolder.ofObject("color", localArgbEvaluator, new Object[] { localInteger, localInteger, localInteger, Integer.valueOf(2147483647), localInteger }) });
     this.jdField_b_of_type_AndroidAnimationValueAnimator.setInterpolator(new DecelerateInterpolator());
     this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(1500L);
     this.jdField_b_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
@@ -93,12 +97,12 @@ public class NeoVideoRecordButton
     if (paramFloat > 1.0F) {
       f1 = paramFloat - 1.0F;
     }
-    return (int)(360.0F * f1) - 90;
+    return (int)(f1 * 360.0F) - 90;
   }
   
   public static int a(Context paramContext, float paramFloat)
   {
-    return (int)(a(paramContext) * paramFloat + 0.5F);
+    return (int)(paramFloat * a(paramContext) + 0.5F);
   }
   
   private void b()
@@ -120,7 +124,7 @@ public class NeoVideoRecordButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.NeoVideoRecordButton
  * JD-Core Version:    0.7.0.1
  */

@@ -12,6 +12,7 @@ public class CMSampleBuffer
   
   public CMSampleBuffer(@NonNull CMSampleState paramCMSampleState)
   {
+    Utils.a(paramCMSampleState);
     this.state = paramCMSampleState;
     this.state.setNewFrame(false);
     this.texture = null;
@@ -20,6 +21,7 @@ public class CMSampleBuffer
   
   public CMSampleBuffer(@NonNull CMSampleState paramCMSampleState, TextureInfo paramTextureInfo)
   {
+    Utils.a(paramCMSampleState);
     this.state = paramCMSampleState;
     this.texture = paramTextureInfo;
     this.sampleByteBuffer = null;
@@ -27,6 +29,7 @@ public class CMSampleBuffer
   
   public CMSampleBuffer(@NonNull CMSampleState paramCMSampleState, TextureInfo paramTextureInfo, boolean paramBoolean)
   {
+    Utils.a(paramCMSampleState);
     this.state = paramCMSampleState;
     this.state.setNewFrame(paramBoolean);
     this.texture = paramTextureInfo;
@@ -35,6 +38,7 @@ public class CMSampleBuffer
   
   public CMSampleBuffer(@NonNull CMSampleState paramCMSampleState, ByteBuffer paramByteBuffer)
   {
+    Utils.a(paramCMSampleState);
     this.state = paramCMSampleState;
     this.sampleByteBuffer = paramByteBuffer;
     this.texture = null;
@@ -42,6 +46,7 @@ public class CMSampleBuffer
   
   public CMSampleBuffer(@NonNull CMSampleState paramCMSampleState, ByteBuffer paramByteBuffer, boolean paramBoolean)
   {
+    Utils.a(paramCMSampleState);
     this.state = paramCMSampleState;
     this.state.setNewFrame(paramBoolean);
     this.sampleByteBuffer = paramByteBuffer;
@@ -112,12 +117,20 @@ public class CMSampleBuffer
   
   public String toString()
   {
-    return "CMSampleBuffer{, state=" + this.state + ", texture=" + this.texture + ", sampleByteBuffer=" + this.sampleByteBuffer + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CMSampleBuffer{, state=");
+    localStringBuilder.append(this.state);
+    localStringBuilder.append(", texture=");
+    localStringBuilder.append(this.texture);
+    localStringBuilder.append(", sampleByteBuffer=");
+    localStringBuilder.append(this.sampleByteBuffer);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tav.coremedia.CMSampleBuffer
  * JD-Core Version:    0.7.0.1
  */

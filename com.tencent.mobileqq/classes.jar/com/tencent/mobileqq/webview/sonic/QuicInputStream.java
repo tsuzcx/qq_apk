@@ -21,47 +21,48 @@ public class QuicInputStream
   
   public int read()
   {
-    if (!this.isFinish) {}
-    for (;;)
-    {
+    int i;
+    Object localObject;
+    if (!this.isFinish) {
       try
       {
-        int i = ((Integer)this.blockingQueue.take()).intValue();
-        String str;
-        StringBuilder localStringBuilder;
-        int j;
-        i = -1;
-      }
-      catch (InterruptedException localInterruptedException1)
-      {
+        i = ((Integer)this.blockingQueue.take()).intValue();
         try
         {
           this.account += 1;
-          if (i == -1)
-          {
-            this.isFinish = true;
-            str = TAG;
-            localStringBuilder = new StringBuilder().append("QuicInputStream already finish. length=");
-            j = this.account;
-            this.account = (j + 1);
-            SonicUtils.log(str, 4, j);
-          }
-          return i;
         }
-        catch (InterruptedException localInterruptedException2)
-        {
-          continue;
-        }
-        localInterruptedException1 = localInterruptedException1;
-        i = -1;
-        localInterruptedException1.printStackTrace();
+        catch (InterruptedException localInterruptedException1) {}
+        StringBuilder localStringBuilder;
+        localInterruptedException2.printStackTrace();
       }
       catch (Throwable localThrowable)
       {
-        SonicUtils.log(TAG, 6, "read error:" + localThrowable.getMessage());
+        localObject = TAG;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("read error:");
+        localStringBuilder.append(localThrowable.getMessage());
+        SonicUtils.log((String)localObject, 6, localStringBuilder.toString());
         throw new IOException(localThrowable);
       }
+      catch (InterruptedException localInterruptedException2)
+      {
+        i = -1;
+      }
+    } else {
+      i = -1;
     }
+    if (i == -1)
+    {
+      this.isFinish = true;
+      String str = TAG;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("QuicInputStream already finish. length=");
+      int j = this.account;
+      this.account = (j + 1);
+      ((StringBuilder)localObject).append(j);
+      SonicUtils.log(str, 4, ((StringBuilder)localObject).toString());
+    }
+    return i;
   }
   
   public int read(@NonNull byte[] paramArrayOfByte)
@@ -80,7 +81,7 @@ public class QuicInputStream
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.sonic.QuicInputStream
  * JD-Core Version:    0.7.0.1
  */

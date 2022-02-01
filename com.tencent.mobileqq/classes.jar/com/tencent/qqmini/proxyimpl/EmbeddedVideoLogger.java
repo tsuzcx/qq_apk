@@ -5,15 +5,20 @@ import java.util.concurrent.ConcurrentHashMap;
 public class EmbeddedVideoLogger
   implements com.tencent.oskplayer.util.QLog
 {
-  private static ConcurrentHashMap<String, String> a = null;
+  private static ConcurrentHashMap<String, String> a;
   
   private static String a(String paramString)
   {
     if (a == null) {
       a = new ConcurrentHashMap();
     }
-    if (!a.containsKey(paramString)) {
-      a.put(paramString, "VIDEO_LOG/" + paramString);
+    if (!a.containsKey(paramString))
+    {
+      ConcurrentHashMap localConcurrentHashMap = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("VIDEO_LOG/");
+      localStringBuilder.append(paramString);
+      localConcurrentHashMap.put(paramString, localStringBuilder.toString());
     }
     return (String)a.get(paramString);
   }
@@ -94,7 +99,7 @@ public class EmbeddedVideoLogger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.EmbeddedVideoLogger
  * JD-Core Version:    0.7.0.1
  */

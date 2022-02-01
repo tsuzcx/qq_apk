@@ -22,11 +22,12 @@ public class ChatFragmentTopGestureLayout
     this.mMyDispatchDrawListener = paramMyDispatchDrawListener;
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
-    if (this.mMyDispatchDrawListener != null) {
-      this.mMyDispatchDrawListener.a();
+    paramCanvas = this.mMyDispatchDrawListener;
+    if (paramCanvas != null) {
+      paramCanvas.a();
     }
   }
   
@@ -37,7 +38,7 @@ public class ChatFragmentTopGestureLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.fling.ChatFragmentTopGestureLayout
  * JD-Core Version:    0.7.0.1
  */

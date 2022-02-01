@@ -12,27 +12,28 @@ class CloudAVEngineImpl$1
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null) && (paramObject != null)) {
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null) && (paramObject != null))
+    {
       if (QLog.isColorLevel()) {
         QLog.d("QSec.AVEngine", 2, "server reply packet");
       }
-    }
-    try
-    {
-      paramToServiceMsg = new QSecCloudAVEngineMsg.QSecCloudRespBody();
-      paramToServiceMsg.mergeFrom((byte[])paramObject);
-      CloudAVEngineImpl.a(this.a).sendMessage(CloudAVEngineImpl.a(this.a).obtainMessage(4, paramToServiceMsg));
-      return;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      paramToServiceMsg.printStackTrace();
+      try
+      {
+        paramToServiceMsg = new QSecCloudAVEngineMsg.QSecCloudRespBody();
+        paramToServiceMsg.mergeFrom((byte[])paramObject);
+        CloudAVEngineImpl.a(this.a).sendMessage(CloudAVEngineImpl.a(this.a).obtainMessage(4, paramToServiceMsg));
+        return;
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        paramToServiceMsg.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.CloudAVEngineImpl.1
  * JD-Core Version:    0.7.0.1
  */

@@ -139,7 +139,8 @@ public class LottieComposition
   
   public ArrayList<String> getWarnings()
   {
-    return new ArrayList(Arrays.asList(this.warnings.toArray(new String[this.warnings.size()])));
+    HashSet localHashSet = this.warnings;
+    return new ArrayList(Arrays.asList(localHashSet.toArray(new String[localHashSet.size()])));
   }
   
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
@@ -150,7 +151,7 @@ public class LottieComposition
   
   public boolean hasImages()
   {
-    return !this.images.isEmpty();
+    return this.images.isEmpty() ^ true;
   }
   
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
@@ -205,7 +206,7 @@ public class LottieComposition
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.LottieComposition
  * JD-Core Version:    0.7.0.1
  */

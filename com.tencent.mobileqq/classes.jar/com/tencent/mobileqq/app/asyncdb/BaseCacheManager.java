@@ -38,8 +38,14 @@ public class BaseCacheManager
       if (localBaseCache != null)
       {
         localBaseCache.init();
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.db.Cache", 2, "cacheManager init cache:" + localBaseCache.getClass().getName() + " cost=" + (System.currentTimeMillis() - l));
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("cacheManager init cache:");
+          localStringBuilder.append(localBaseCache.getClass().getName());
+          localStringBuilder.append(" cost=");
+          localStringBuilder.append(System.currentTimeMillis() - l);
+          QLog.d("Q.db.Cache", 2, localStringBuilder.toString());
         }
         localBaseCache.notifyObserver(0);
       }
@@ -54,26 +60,35 @@ public class BaseCacheManager
   
   public BaseCache getCache(int paramInt)
   {
-    ??? = this.cacheArray[paramInt];
-    if (??? == null) {
-      synchronized (this.cacheArray)
+    BaseCache[] arrayOfBaseCache = this.cacheArray;
+    BaseCache localBaseCache1 = arrayOfBaseCache[paramInt];
+    if (localBaseCache1 == null) {
+      try
       {
-        BaseCache localBaseCache = this.cacheArray[paramInt];
-        if (localBaseCache != null) {
-          return localBaseCache;
+        localBaseCache1 = this.cacheArray[paramInt];
+        if (localBaseCache1 != null) {
+          return localBaseCache1;
         }
         long l = System.currentTimeMillis();
-        localBaseCache = createCacheByName(paramInt);
-        if ((localBaseCache != null) && (this.cacheArray[paramInt] == null)) {
-          this.cacheArray[paramInt] = localBaseCache;
+        localBaseCache1 = createCacheByName(paramInt);
+        if ((localBaseCache1 != null) && (this.cacheArray[paramInt] == null)) {
+          this.cacheArray[paramInt] = localBaseCache1;
         }
-        if ((QLog.isColorLevel()) && (localBaseCache != null)) {
-          QLog.d("Q.db.Cache", 2, "get cache instance:" + localBaseCache.getClass().getName() + " cost time =[" + (System.currentTimeMillis() - l) + "]");
+        if ((QLog.isColorLevel()) && (localBaseCache1 != null))
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("get cache instance:");
+          localStringBuilder.append(localBaseCache1.getClass().getName());
+          localStringBuilder.append(" cost time =[");
+          localStringBuilder.append(System.currentTimeMillis() - l);
+          localStringBuilder.append("]");
+          QLog.d("Q.db.Cache", 2, localStringBuilder.toString());
         }
-        return localBaseCache;
+        return localBaseCache1;
       }
+      finally {}
     }
-    return ???;
+    return localBaseCache2;
   }
   
   public DBDelayManager getDBDelayManager()
@@ -102,34 +117,30 @@ public class BaseCacheManager
   
   public void onDestroy()
   {
-    for (;;)
+    int i;
+    synchronized (this.cacheArray)
     {
-      int i;
-      synchronized (this.cacheArray)
+      BaseCache[] arrayOfBaseCache2 = this.cacheArray;
+      int j = arrayOfBaseCache2.length;
+      i = 0;
+      if (i < j)
       {
-        BaseCache[] arrayOfBaseCache2 = this.cacheArray;
-        int j = arrayOfBaseCache2.length;
-        i = 0;
-        if (i < j)
-        {
-          BaseCache localBaseCache = arrayOfBaseCache2[i];
-          if (localBaseCache != null) {
-            localBaseCache.destroy();
-          }
-        }
-        else
-        {
-          this.dbDelayManager.onDestroy();
-          return;
+        BaseCache localBaseCache = arrayOfBaseCache2[i];
+        if (localBaseCache != null) {
+          localBaseCache.destroy();
         }
       }
-      i += 1;
+      else
+      {
+        this.dbDelayManager.onDestroy();
+        return;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.asyncdb.BaseCacheManager
  * JD-Core Version:    0.7.0.1
  */

@@ -19,8 +19,9 @@ final class JsApiUpdateManager$2
   {
     if ((paramInt == 0) && (paramMiniGamePkg != null))
     {
-      if (this.val$fileManager != null) {
-        this.val$fileManager.initFileManager(paramMiniGamePkg, true);
+      paramString = this.val$fileManager;
+      if (paramString != null) {
+        paramString.initFileManager(paramMiniGamePkg, true);
       }
       ThreadManager.executeOnDiskIOThreadPool(new JsApiUpdateManager.2.1(this));
       JsApiUpdateManager.access$200(this.val$callback, true);
@@ -31,7 +32,7 @@ final class JsApiUpdateManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.manager.JsApiUpdateManager.2
  * JD-Core Version:    0.7.0.1
  */

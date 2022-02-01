@@ -8,7 +8,11 @@ class AVTestforEncDecConfig$Item
   
   public String toString()
   {
-    return "size[" + this.a.size() + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("size[");
+    localStringBuilder.append(this.a.size());
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 

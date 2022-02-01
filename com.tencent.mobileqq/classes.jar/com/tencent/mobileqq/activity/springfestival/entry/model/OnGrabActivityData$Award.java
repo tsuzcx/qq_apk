@@ -26,12 +26,26 @@ public class OnGrabActivityData$Award
   
   public String toString()
   {
-    return "Award{id='" + this.id + '\'' + ", logoImgUrl='" + this.logoImgUrl + '\'' + ", nameWording='" + this.nameWording + '\'' + ", greetWording='" + this.greetWording + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Award{id='");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", logoImgUrl='");
+    localStringBuilder.append(this.logoImgUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", nameWording='");
+    localStringBuilder.append(this.nameWording);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", greetWording='");
+    localStringBuilder.append(this.greetWording);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.model.OnGrabActivityData.Award
  * JD-Core Version:    0.7.0.1
  */

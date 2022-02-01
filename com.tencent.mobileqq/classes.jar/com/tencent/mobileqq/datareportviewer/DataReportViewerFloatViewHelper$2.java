@@ -17,35 +17,37 @@ class DataReportViewerFloatViewHelper$2
   public void d()
   {
     int j = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 50.0F);
-    if (Build.VERSION.SDK_INT >= 26) {}
-    for (int i = 2038;; i = 2003)
-    {
-      WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(j, -2, i, 776, -2);
-      localLayoutParams.gravity = 51;
-      localLayoutParams.x = 0;
-      localLayoutParams.y = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 72.0F);
-      DataReportViewerFloatViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewerFloatViewHelper).updateViewLayout(DataReportViewerFloatViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewerFloatViewHelper), localLayoutParams);
-      return;
+    int i;
+    if (Build.VERSION.SDK_INT >= 26) {
+      i = 2038;
+    } else {
+      i = 2003;
     }
+    WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(j, -2, i, 776, -2);
+    localLayoutParams.gravity = 51;
+    localLayoutParams.x = 0;
+    localLayoutParams.y = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 72.0F);
+    DataReportViewerFloatViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewerFloatViewHelper).updateViewLayout(DataReportViewerFloatViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewerFloatViewHelper), localLayoutParams);
   }
   
   public void e()
   {
-    if (Build.VERSION.SDK_INT >= 26) {}
-    for (int i = 2038;; i = 2003)
-    {
-      WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(-1, -2, i, 776, -2);
-      localLayoutParams.gravity = 51;
-      localLayoutParams.x = 0;
-      localLayoutParams.y = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 72.0F);
-      DataReportViewerFloatViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewerFloatViewHelper).updateViewLayout(DataReportViewerFloatViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewerFloatViewHelper), localLayoutParams);
-      return;
+    int i;
+    if (Build.VERSION.SDK_INT >= 26) {
+      i = 2038;
+    } else {
+      i = 2003;
     }
+    WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(-1, -2, i, 776, -2);
+    localLayoutParams.gravity = 51;
+    localLayoutParams.x = 0;
+    localLayoutParams.y = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 72.0F);
+    DataReportViewerFloatViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewerFloatViewHelper).updateViewLayout(DataReportViewerFloatViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewerFloatViewHelper), localLayoutParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.datareportviewer.DataReportViewerFloatViewHelper.2
  * JD-Core Version:    0.7.0.1
  */

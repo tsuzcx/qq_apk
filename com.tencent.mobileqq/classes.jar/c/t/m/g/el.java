@@ -36,35 +36,41 @@ public final class el
   
   private void a(boolean paramBoolean)
   {
-    if ((!this.n) || (this.b != null)) {}
+    SensorManager localSensorManager;
+    if (this.n)
+    {
+      localSensorManager = this.b;
+      if (localSensorManager == null) {}
+    }
     try
     {
-      this.b.unregisterListener(this, this.c);
+      localSensorManager.unregisterListener(this, this.c);
       this.b.unregisterListener(this, this.d);
       try
       {
-        label38:
+        label37:
         if ((Build.VERSION.SDK_INT >= 19) && (this.e != null)) {
           this.b.unregisterListener(this, this.e);
         }
-        label65:
-        this.k = 0L;
-        this.l = 0L;
-        if (paramBoolean) {}
-        for (this.o = "vehicle";; this.o = "unknown")
-        {
-          this.n = false;
-          return;
-        }
       }
-      catch (Throwable localThrowable1)
+      catch (Throwable localThrowable2)
       {
-        break label65;
+        label67:
+        break label67;
       }
+      this.k = 0L;
+      this.l = 0L;
+      if (paramBoolean) {
+        this.o = "vehicle";
+      } else {
+        this.o = "unknown";
+      }
+      this.n = false;
+      return;
     }
-    catch (Throwable localThrowable2)
+    catch (Throwable localThrowable1)
     {
-      break label38;
+      break label37;
     }
   }
   
@@ -85,44 +91,47 @@ public final class el
   
   public final void a(int paramInt, double paramDouble1, double paramDouble2, long paramLong)
   {
-    new StringBuilder("speedType:").append(paramInt).append("speed:").append(paramDouble1).append(",").append(paramDouble2).append(",").append(paramLong);
-    if (paramLong > this.m)
+    StringBuilder localStringBuilder = new StringBuilder("speedType:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("speed:");
+    localStringBuilder.append(paramDouble1);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramDouble2);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramLong);
+    double d1 = paramLong;
+    if (d1 > this.m)
     {
-      this.m = paramLong;
-      if (paramInt == 2)
-      {
-        if ((paramDouble2 <= 4.0D) || (paramDouble1 <= 4.0D)) {
-          break label151;
+      this.m = d1;
+      if (paramInt == 2) {
+        if ((paramDouble2 > 4.0D) && (paramDouble1 > 4.0D)) {
+          this.o = "vehicle";
+        } else {
+          this.o = "unknown";
         }
-        this.o = "vehicle";
       }
       if (paramInt == 1) {
-        if ((paramDouble2 <= 8.0D) || (paramDouble1 <= 8.0D)) {
-          break label160;
+        if ((paramDouble2 > 8.0D) && (paramDouble1 > 8.0D)) {
+          this.o = "vehicle";
+        } else {
+          this.o = "unknown";
         }
       }
-    }
-    label151:
-    label160:
-    for (this.o = "vehicle";; this.o = "unknown")
-    {
       if (this.o.equalsIgnoreCase("vehicle")) {
         a(true);
       }
       if (!this.o.equalsIgnoreCase("vehicle")) {
         d();
       }
-      return;
-      this.o = "unknown";
-      break;
     }
   }
   
   public final void c()
   {
-    if (this.g != null)
+    HandlerThread localHandlerThread = this.g;
+    if (localHandlerThread != null)
     {
-      this.g.quit();
+      localHandlerThread.quit();
       this.g = null;
     }
     a(false);
@@ -132,40 +141,47 @@ public final class el
   @TargetApi(19)
   final void d()
   {
-    if (!this.n)
-    {
+    if (!this.n) {
       this.k = System.currentTimeMillis();
-      try
+    }
+    try
+    {
+      if (this.b == null)
       {
-        if (this.b == null)
-        {
-          this.h = -1;
-          return;
-        }
-        Handler localHandler = new Handler(this.g.getLooper());
-        if (!this.b.registerListener(this, this.c, 1, localHandler)) {
-          this.h = -1;
-        }
-        this.b.registerListener(this, this.d, 3, localHandler);
-        if ((Build.VERSION.SDK_INT >= 19) && (this.e != null)) {
-          this.b.registerListener(this, this.e, 3, localHandler);
-        }
-        this.n = true;
+        this.h = -1;
         return;
       }
-      catch (Throwable localThrowable)
-      {
-        this.n = false;
+      Handler localHandler = new Handler(this.g.getLooper());
+      if (!this.b.registerListener(this, this.c, 1, localHandler)) {
+        this.h = -1;
       }
+      this.b.registerListener(this, this.d, 3, localHandler);
+      if ((Build.VERSION.SDK_INT >= 19) && (this.e != null)) {
+        this.b.registerListener(this, this.e, 3, localHandler);
+      }
+      this.n = true;
+      return;
     }
+    catch (Throwable localThrowable)
+    {
+      label115:
+      break label115;
+    }
+    this.n = false;
   }
   
   public final String e()
   {
-    if ((this.o.equals("vehicle")) && (this.m > 0.0D) && (System.currentTimeMillis() - this.m > 30000.0D))
+    if ((this.o.equals("vehicle")) && (this.m > 0.0D))
     {
-      this.o = "unknown";
-      this.m = 0.0D;
+      double d1 = System.currentTimeMillis();
+      double d2 = this.m;
+      Double.isNaN(d1);
+      if (d1 - d2 > 30000.0D)
+      {
+        this.o = "unknown";
+        this.m = 0.0D;
+      }
     }
     if (this.o.equals("vehicle"))
     {
@@ -198,207 +214,205 @@ public final class el
   
   public final void onSensorChanged(SensorEvent paramSensorEvent)
   {
+    int i1 = paramSensorEvent.sensor.getType();
+    int i5 = 0;
     Object localObject;
-    long l1;
     float f1;
     float f2;
-    float f3;
-    long l2;
-    label138:
-    int i2;
-    int i1;
-    label242:
-    int i3;
-    switch (paramSensorEvent.sensor.getType())
+    if (i1 != 1)
     {
-    default: 
-    case 1: 
-      do
+      if (i1 != 10)
       {
-        return;
-      } while ((paramSensorEvent == null) || (paramSensorEvent.values.length != 3));
-      localObject = this.a;
-      float[] arrayOfFloat = paramSensorEvent.values;
-      l1 = paramSensorEvent.timestamp;
-      f1 = arrayOfFloat[0];
-      f2 = arrayOfFloat[1];
-      f3 = arrayOfFloat[2];
-      l2 = System.currentTimeMillis();
-      if (((dv)localObject).b == null)
-      {
-        ((dv)localObject).b = new fp(l2, l1, f1, f2, f3);
-        ((dv)localObject).d = ((dv)localObject).b.a();
-        if ((((dv)localObject).d != 0.0F) && (((dv)localObject).e != 0.0F))
-        {
-          paramSensorEvent = new fn(((dv)localObject).d, ((dv)localObject).e, ((dv)localObject).b.a(), l1);
-          ((dv)localObject).a.add(paramSensorEvent);
-        }
-        if (((dv)localObject).f == 0L) {
-          ((dv)localObject).f = l1;
-        }
-        if ((float)(l1 - ((dv)localObject).f) < 6.0E+008F) {
-          break label603;
-        }
-        if (!((dv)localObject).g) {
-          break label633;
-        }
-        i2 = 0;
-        i1 = 0;
-        if (i1 >= ((dv)localObject).a.size()) {
-          break label504;
-        }
-        paramSensorEvent = (fn)((dv)localObject).a.get(i1);
-        if ((paramSensorEvent.a < 0.0F) || (paramSensorEvent.b > 0.0F)) {
-          break label498;
-        }
-        i3 = 1;
-        label290:
-        if ((i3 == 0) || (((dv)localObject).h >= Math.abs(((fn)((dv)localObject).a.get(i1)).c - ((fn)((dv)localObject).a.get(0)).c))) {
-          break label1280;
-        }
-        ((dv)localObject).h = Math.abs(((fn)((dv)localObject).a.get(i1)).c - ((fn)((dv)localObject).a.get(0)).c);
-        i2 = i1;
-      }
-      break;
-    }
-    label1280:
-    for (;;)
-    {
-      i1 += 1;
-      break label242;
-      ((dv)localObject).b = new fp(l2, l1, ((dv)localObject).b.a * 0.9F + 0.1F * f1, ((dv)localObject).b.b * 0.9F + 0.1F * f2, ((dv)localObject).b.c * 0.9F + 0.1F * f3);
-      if (((dv)localObject).c == null) {
-        break label138;
-      }
-      ((dv)localObject).d = (((dv)localObject).b.a() - ((dv)localObject).c.a());
-      break label138;
-      label498:
-      i3 = 0;
-      break label290;
-      label504:
-      if ((i2 > 0) && (i2 < ((dv)localObject).a.size()))
-      {
-        ((dv)localObject).f = ((fn)((dv)localObject).a.get(i2)).d;
-        i1 = 0;
-        while (i1 < i2)
-        {
-          ((dv)localObject).a.removeFirst();
-          i1 += 1;
-        }
-        if (((dv)localObject).h > 1.0F) {
-          ((dv)localObject).i.a();
-        }
-        ((dv)localObject).h = 0.0F;
-        ((dv)localObject).g = false;
-      }
-      for (;;)
-      {
-        label603:
-        ((dv)localObject).c = ((dv)localObject).b;
-        ((dv)localObject).e = ((dv)localObject).d;
-        return;
-        ((dv)localObject).f = 0L;
-      }
-      label633:
-      i2 = 0;
-      i1 = 0;
-      label639:
-      if (i1 < ((dv)localObject).a.size())
-      {
-        paramSensorEvent = (fn)((dv)localObject).a.get(i1);
-        if ((paramSensorEvent.a <= 0.0F) && (paramSensorEvent.b >= 0.0F))
-        {
-          i3 = 1;
-          if ((i3 == 0) || (((dv)localObject).h >= Math.abs(((fn)((dv)localObject).a.get(i1)).c - ((fn)((dv)localObject).a.get(0)).c))) {
-            break label1277;
-          }
-          ((dv)localObject).h = Math.abs(((fn)((dv)localObject).a.get(i1)).c - ((fn)((dv)localObject).a.get(0)).c);
-          i2 = i1;
-        }
-      }
-      label687:
-      label1277:
-      for (;;)
-      {
-        i1 += 1;
-        break label639;
-        i3 = 0;
-        break label687;
-        if ((i2 > 0) && (i2 < ((dv)localObject).a.size()))
-        {
-          ((dv)localObject).f = ((fn)((dv)localObject).a.get(i2)).d;
-          i1 = 0;
-          while (i1 < i2)
-          {
-            ((dv)localObject).a.removeFirst();
-            i1 += 1;
-          }
-          ((dv)localObject).h = 0.0F;
-          ((dv)localObject).g = true;
-          break label603;
-        }
-        ((dv)localObject).f = 0L;
-        break label603;
-        if ((paramSensorEvent == null) || (paramSensorEvent.values.length != 3)) {
-          break;
-        }
-        double d1 = paramSensorEvent.values[0] * paramSensorEvent.values[0] + paramSensorEvent.values[1] * paramSensorEvent.values[1] + paramSensorEvent.values[2] * paramSensorEvent.values[2];
-        if (d1 < 0.1D)
-        {
-          this.q += 1;
-          if (this.q <= 5) {
-            break;
-          }
-          this.o = "static";
+        if (i1 != 19) {
           return;
         }
-        if ((d1 > 0.1D) && (d1 < 1.0D))
-        {
-          this.q -= 1;
-          if (this.q > 1) {
-            break;
-          }
-          this.o = "unknown";
-          return;
-        }
-        if (d1 <= 3.0D) {
-          break;
-        }
-        this.q = -5;
-        this.o = "unknown";
-        return;
         if (paramSensorEvent.values[0] > 2.147484E+009F)
         {
           new StringBuilder("Sensor: probably not a real value: ").append(paramSensorEvent.values[0]);
           return;
         }
-        if ((int)paramSensorEvent.values[0] <= 0) {
-          break;
-        }
-        localObject = (String)dy.b(i, "stepStr", "");
-        if (TextUtils.isEmpty((CharSequence)localObject))
+        if ((int)paramSensorEvent.values[0] > 0)
         {
-          paramSensorEvent = paramSensorEvent.values[0] + "," + System.currentTimeMillis() + ",0";
+          localObject = (String)dy.b(i, "stepStr", "");
+          if (TextUtils.isEmpty((CharSequence)localObject))
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(paramSensorEvent.values[0]);
+            ((StringBuilder)localObject).append(",");
+            ((StringBuilder)localObject).append(System.currentTimeMillis());
+            ((StringBuilder)localObject).append(",0");
+            paramSensorEvent = ((StringBuilder)localObject).toString();
+            dy.a(i, "stepStr", paramSensorEvent);
+            return;
+          }
+          localObject = ((String)localObject).split(",");
+          f1 = Float.valueOf(localObject[0]).floatValue();
+          f2 = Float.valueOf(localObject[2]).floatValue();
+          if (f1 > paramSensorEvent.values[0]) {
+            f1 = paramSensorEvent.values[0];
+          } else {
+            f1 = paramSensorEvent.values[0] - f1;
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramSensorEvent.values[0]);
+          ((StringBuilder)localObject).append(",");
+          ((StringBuilder)localObject).append(System.currentTimeMillis());
+          ((StringBuilder)localObject).append(",");
+          ((StringBuilder)localObject).append(f2 + f1);
+          paramSensorEvent = ((StringBuilder)localObject).toString();
           dy.a(i, "stepStr", paramSensorEvent);
-          return;
-        }
-        localObject = ((String)localObject).split(",");
-        f1 = Float.valueOf(localObject[0]).floatValue();
-        f2 = Float.valueOf(localObject[2]).floatValue();
-        if (f1 > paramSensorEvent.values[0]) {}
-        for (f1 = f2 + paramSensorEvent.values[0];; f1 = f2 + (paramSensorEvent.values[0] - f1))
-        {
-          paramSensorEvent = paramSensorEvent.values[0] + "," + System.currentTimeMillis() + "," + f1;
-          dy.a(i, "stepStr", paramSensorEvent);
-          return;
         }
       }
+      else if ((paramSensorEvent != null) && (paramSensorEvent.values.length == 3))
+      {
+        double d1 = paramSensorEvent.values[0] * paramSensorEvent.values[0] + paramSensorEvent.values[1] * paramSensorEvent.values[1] + paramSensorEvent.values[2] * paramSensorEvent.values[2];
+        if (d1 < 0.1D)
+        {
+          this.q += 1;
+          if (this.q > 5) {
+            this.o = "static";
+          }
+        }
+        else if ((d1 > 0.1D) && (d1 < 1.0D))
+        {
+          this.q -= 1;
+          if (this.q <= 1) {
+            this.o = "unknown";
+          }
+        }
+        else if (d1 > 3.0D)
+        {
+          this.q = -5;
+          this.o = "unknown";
+        }
+      }
+    }
+    else if ((paramSensorEvent != null) && (paramSensorEvent.values.length == 3))
+    {
+      localObject = this.a;
+      float[] arrayOfFloat = paramSensorEvent.values;
+      long l1 = paramSensorEvent.timestamp;
+      f1 = arrayOfFloat[0];
+      f2 = arrayOfFloat[1];
+      float f3 = arrayOfFloat[2];
+      long l2 = System.currentTimeMillis();
+      if (((dv)localObject).b == null)
+      {
+        ((dv)localObject).b = new fp(l2, l1, f1, f2, f3);
+        ((dv)localObject).d = ((dv)localObject).b.a();
+      }
+      else
+      {
+        ((dv)localObject).b = new fp(l2, l1, f1 * 0.1F + ((dv)localObject).b.a * 0.9F, f2 * 0.1F + ((dv)localObject).b.b * 0.9F, f3 * 0.1F + ((dv)localObject).b.c * 0.9F);
+        if (((dv)localObject).c != null) {
+          ((dv)localObject).d = (((dv)localObject).b.a() - ((dv)localObject).c.a());
+        }
+      }
+      if ((((dv)localObject).d != 0.0F) && (((dv)localObject).e != 0.0F))
+      {
+        paramSensorEvent = new fn(((dv)localObject).d, ((dv)localObject).e, ((dv)localObject).b.a(), l1);
+        ((dv)localObject).a.add(paramSensorEvent);
+      }
+      if (((dv)localObject).f == 0L) {
+        ((dv)localObject).f = l1;
+      }
+      if ((float)(l1 - ((dv)localObject).f) >= 6.0E+008F)
+      {
+        int i2;
+        int i4;
+        int i3;
+        if (((dv)localObject).g)
+        {
+          i1 = 0;
+          for (i2 = 0; i1 < ((dv)localObject).a.size(); i2 = i3)
+          {
+            paramSensorEvent = (fn)((dv)localObject).a.get(i1);
+            if ((paramSensorEvent.a >= 0.0F) && (paramSensorEvent.b <= 0.0F)) {
+              i4 = 1;
+            } else {
+              i4 = 0;
+            }
+            i3 = i2;
+            if (i4 != 0)
+            {
+              i3 = i2;
+              if (((dv)localObject).h < Math.abs(((fn)((dv)localObject).a.get(i1)).c - ((fn)((dv)localObject).a.get(0)).c))
+              {
+                ((dv)localObject).h = Math.abs(((fn)((dv)localObject).a.get(i1)).c - ((fn)((dv)localObject).a.get(0)).c);
+                i3 = i1;
+              }
+            }
+            i1 += 1;
+          }
+          if ((i2 > 0) && (i2 < ((dv)localObject).a.size()))
+          {
+            ((dv)localObject).f = ((fn)((dv)localObject).a.get(i2)).d;
+            i1 = 0;
+            while (i1 < i2)
+            {
+              ((dv)localObject).a.removeFirst();
+              i1 += 1;
+            }
+            if (((dv)localObject).h > 1.0F) {
+              ((dv)localObject).i.a();
+            }
+            ((dv)localObject).h = 0.0F;
+            ((dv)localObject).g = false;
+          }
+          else
+          {
+            ((dv)localObject).f = 0L;
+          }
+        }
+        else
+        {
+          i1 = 0;
+          for (i2 = 0; i1 < ((dv)localObject).a.size(); i2 = i3)
+          {
+            paramSensorEvent = (fn)((dv)localObject).a.get(i1);
+            if ((paramSensorEvent.a <= 0.0F) && (paramSensorEvent.b >= 0.0F)) {
+              i4 = 1;
+            } else {
+              i4 = 0;
+            }
+            i3 = i2;
+            if (i4 != 0)
+            {
+              i3 = i2;
+              if (((dv)localObject).h < Math.abs(((fn)((dv)localObject).a.get(i1)).c - ((fn)((dv)localObject).a.get(0)).c))
+              {
+                ((dv)localObject).h = Math.abs(((fn)((dv)localObject).a.get(i1)).c - ((fn)((dv)localObject).a.get(0)).c);
+                i3 = i1;
+              }
+            }
+            i1 += 1;
+          }
+          if ((i2 > 0) && (i2 < ((dv)localObject).a.size()))
+          {
+            ((dv)localObject).f = ((fn)((dv)localObject).a.get(i2)).d;
+            i1 = i5;
+            while (i1 < i2)
+            {
+              ((dv)localObject).a.removeFirst();
+              i1 += 1;
+            }
+            ((dv)localObject).h = 0.0F;
+            ((dv)localObject).g = true;
+          }
+          else
+          {
+            ((dv)localObject).f = 0L;
+          }
+        }
+      }
+      ((dv)localObject).c = ((dv)localObject).b;
+      ((dv)localObject).e = ((dv)localObject).d;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.el
  * JD-Core Version:    0.7.0.1
  */

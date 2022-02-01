@@ -13,12 +13,14 @@ public class OpenSdkD55Processor
   public static boolean a()
   {
     OpenSdkD55Bean localOpenSdkD55Bean = (OpenSdkD55Bean)QConfigManager.a().a(613);
-    if (localOpenSdkD55Bean != null) {}
-    for (boolean bool = localOpenSdkD55Bean.a();; bool = false)
-    {
-      QLog.d("OpenSdkD55Processor", 1, new Object[] { "isSwitchOpen = ", Boolean.valueOf(bool) });
-      return bool;
+    boolean bool;
+    if (localOpenSdkD55Bean != null) {
+      bool = localOpenSdkD55Bean.a();
+    } else {
+      bool = false;
     }
+    QLog.d("OpenSdkD55Processor", 1, new Object[] { "isSwitchOpen = ", Boolean.valueOf(bool) });
+    return bool;
   }
   
   @NonNull
@@ -31,24 +33,26 @@ public class OpenSdkD55Processor
   public OpenSdkD55Bean a(QConfItem[] paramArrayOfQConfItem)
   {
     int i = 0;
-    if (paramArrayOfQConfItem == null) {}
-    for (;;)
+    if (paramArrayOfQConfItem != null) {
+      i = paramArrayOfQConfItem.length;
+    }
+    QLog.d("OpenSdkD55Processor", 1, new Object[] { "onParsed confFiles.length=", Integer.valueOf(i) });
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      QLog.d("OpenSdkD55Processor", 1, new Object[] { "onParsed confFiles.length=", Integer.valueOf(i) });
-      if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length <= 0)) {
-        break;
-      }
       new OpenSdkD55Bean();
       return OpenSdkD55Bean.a(paramArrayOfQConfItem);
-      i = paramArrayOfQConfItem.length;
     }
     return null;
   }
   
   public void a(OpenSdkD55Bean paramOpenSdkD55Bean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("OpenSdkD55Processor", 2, "onUpdate " + paramOpenSdkD55Bean.toString());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      localStringBuilder.append(paramOpenSdkD55Bean.toString());
+      QLog.d("OpenSdkD55Processor", 2, localStringBuilder.toString());
     }
   }
   
@@ -86,7 +90,7 @@ public class OpenSdkD55Processor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.OpenSdkD55Processor
  * JD-Core Version:    0.7.0.1
  */

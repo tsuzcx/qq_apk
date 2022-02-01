@@ -110,53 +110,46 @@ public class QunUppUploadTask
     return TaskTypeConfig.QunUploadTaskType;
   }
   
-  public void processFileUploadFinishRsp(byte[] paramArrayOfByte)
+  protected void processFileUploadFinishRsp(byte[] paramArrayOfByte)
   {
-    Object localObject;
+    StringBuilder localStringBuilder;
     try
     {
       UploadUppInfoV2Rsp localUploadUppInfoV2Rsp = (UploadUppInfoV2Rsp)ProtocolUtil.unpack(UploadUppInfoV2Rsp.class.getSimpleName(), paramArrayOfByte);
-      if (localUploadUppInfoV2Rsp == null)
-      {
-        paramArrayOfByte = "unpack PhotoWallUploadResult==null. " + paramArrayOfByte;
-        onError(Const.UploadRetCode.DATA_UNPACK_FAILED_RETCODE.getCode(), paramArrayOfByte);
-        return;
-      }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        UploadLog.w("QunUppUploadTask", "finish", localException);
-        localObject = null;
-      }
-      if (this.uploadTaskCallback == null) {
-        break label134;
-      }
+      UploadLog.w("QunUppUploadTask", "finish", localException);
+      localStringBuilder = null;
     }
-    if (localObject != null)
+    if (localStringBuilder == null)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("unpack PhotoWallUploadResult==null. ");
+      localStringBuilder.append(paramArrayOfByte);
+      paramArrayOfByte = localStringBuilder.toString();
+      onError(Const.UploadRetCode.DATA_UNPACK_FAILED_RETCODE.getCode(), paramArrayOfByte);
+      return;
+    }
+    if ((this.uploadTaskCallback != null) && (localStringBuilder != null))
     {
       QunUppUploadResult localQunUppUploadResult = new QunUppUploadResult();
       localQunUppUploadResult.flowId = this.flowId;
-      localQunUppUploadResult.url = localObject.sUrl;
-      localQunUppUploadResult.photoId = localObject.sPhotoId;
-      localQunUppUploadResult.mapSpecInfo = localObject.mapSpecInfo;
+      localQunUppUploadResult.url = localStringBuilder.sUrl;
+      localQunUppUploadResult.photoId = localStringBuilder.sPhotoId;
+      localQunUppUploadResult.mapSpecInfo = localStringBuilder.mapSpecInfo;
       this.uploadTaskCallback.onUploadSucceed(this, localQunUppUploadResult);
     }
-    for (;;)
+    else if (this.uploadTaskCallback != null)
     {
-      super.processFileUploadFinishRsp(paramArrayOfByte);
-      return;
-      label134:
-      if (this.uploadTaskCallback != null) {
-        this.uploadTaskCallback.onUploadSucceed(this, null);
-      }
+      this.uploadTaskCallback.onUploadSucceed(this, null);
     }
+    super.processFileUploadFinishRsp(paramArrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.uinterface.data.QunUppUploadTask
  * JD-Core Version:    0.7.0.1
  */

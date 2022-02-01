@@ -18,7 +18,7 @@ public class EmoJiEmotionPanelAdapter
   }
   
   @NotNull
-  public BaseEmotionViewHolder b(@NotNull ViewGroup paramViewGroup, int paramInt)
+  protected BaseEmotionViewHolder b(@NotNull ViewGroup paramViewGroup, int paramInt)
   {
     if (paramInt == -1) {
       return new DeleteEmotionViewHolder(this.a.inflate(R.layout.a, paramViewGroup, false));
@@ -28,7 +28,7 @@ public class EmoJiEmotionPanelAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.comment.panel.emoji.list.EmoJiEmotionPanelAdapter
  * JD-Core Version:    0.7.0.1
  */

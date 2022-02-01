@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msgbackup.controller;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.data.MessageForFile;
 import com.tencent.mobileqq.data.MessageForTroopFile;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -18,208 +18,264 @@ import org.json.JSONObject;
 public class MsgBackupFileProcessor
   implements IMsgBackupRichProcessor
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private BaseQQAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
   private OfflineFileMsgBackupHandler jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler;
   private TroopFileMsgBackupHandler jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupTroopFileMsgBackupHandler;
   
-  public MsgBackupFileProcessor(QQAppInterface paramQQAppInterface)
+  public MsgBackupFileProcessor(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = paramBaseQQAppInterface;
   }
   
   private FileMsgBackupHandler a(int paramInt)
   {
-    QLog.i("MsgBackupFileProcessor<QFile>", 1, "getMsgBackupHandler: chatTYpe[" + paramInt + "]");
-    Object localObject1 = null;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("getMsgBackupHandler: chatTYpe[");
+    ((StringBuilder)localObject1).append(paramInt);
+    ((StringBuilder)localObject1).append("]");
+    QLog.i("MsgBackupFileProcessor<QFile>", 1, ((StringBuilder)localObject1).toString());
     if (paramInt == 1)
     {
       if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler == null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler = new OfflineFileMsgBackupHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler = new OfflineFileMsgBackupHandler(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
       }
       localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler;
     }
-    for (;;)
+    else if (paramInt == 2)
     {
-      Object localObject2 = localObject1;
-      if (localObject1 == null)
-      {
-        QLog.i("MsgBackupFileProcessor<QFile>", 1, "getMsgBackupHandler: target backup handle is null");
-        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler == null) {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler = new OfflineFileMsgBackupHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        }
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler == null) {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler = new OfflineFileMsgBackupHandler(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
       }
-      return localObject2;
-      if (paramInt == 2)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler == null) {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler = new OfflineFileMsgBackupHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        }
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler;
-      }
-      else if (paramInt == 3)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupTroopFileMsgBackupHandler == null) {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupTroopFileMsgBackupHandler = new TroopFileMsgBackupHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        }
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupTroopFileMsgBackupHandler;
-      }
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler;
     }
+    else if (paramInt == 3)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupTroopFileMsgBackupHandler == null) {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupTroopFileMsgBackupHandler = new TroopFileMsgBackupHandler(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
+      }
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupTroopFileMsgBackupHandler;
+    }
+    else
+    {
+      localObject1 = null;
+    }
+    Object localObject2 = localObject1;
+    if (localObject1 == null)
+    {
+      QLog.i("MsgBackupFileProcessor<QFile>", 1, "getMsgBackupHandler: target backup handle is null");
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler == null) {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler = new OfflineFileMsgBackupHandler(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
+      }
+      localObject2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler;
+    }
+    return localObject2;
   }
   
   private FileMsgBackupHandler a(MessageRecord paramMessageRecord)
   {
+    boolean bool = paramMessageRecord.isMultiMsg;
     Object localObject = null;
-    if (paramMessageRecord.isMultiMsg)
+    if (bool)
     {
       paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileType");
       if (!TextUtils.isEmpty(paramMessageRecord))
       {
-        if (Integer.parseInt(paramMessageRecord) != 3) {
-          break label72;
+        if (Integer.parseInt(paramMessageRecord) == 3)
+        {
+          if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupTroopFileMsgBackupHandler == null) {
+            this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupTroopFileMsgBackupHandler = new TroopFileMsgBackupHandler(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
+          }
+          paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupTroopFileMsgBackupHandler;
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupTroopFileMsgBackupHandler == null) {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupTroopFileMsgBackupHandler = new TroopFileMsgBackupHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        else
+        {
+          if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler == null) {
+            this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler = new OfflineFileMsgBackupHandler(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
+          }
+          paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler;
         }
-        localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupTroopFileMsgBackupHandler;
+        localObject = paramMessageRecord;
       }
     }
-    for (;;)
+    else if ((paramMessageRecord instanceof MessageForFile))
     {
-      if (localObject == null) {
-        QLog.i("MsgBackupFileProcessor<QFile>", 1, "getMsgBackupHandler: target backup handle is null");
-      }
-      return localObject;
-      label72:
       if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler == null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler = new OfflineFileMsgBackupHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler = new OfflineFileMsgBackupHandler(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
       }
       localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler;
-      continue;
-      if ((paramMessageRecord instanceof MessageForFile))
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler == null) {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler = new OfflineFileMsgBackupHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        }
-        localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler;
-      }
-      else if ((paramMessageRecord instanceof MessageForTroopFile))
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupTroopFileMsgBackupHandler == null) {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupTroopFileMsgBackupHandler = new TroopFileMsgBackupHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        }
-        localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupTroopFileMsgBackupHandler;
-      }
     }
+    else if ((paramMessageRecord instanceof MessageForTroopFile))
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupTroopFileMsgBackupHandler == null) {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupTroopFileMsgBackupHandler = new TroopFileMsgBackupHandler(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
+      }
+      localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupTroopFileMsgBackupHandler;
+    }
+    if (localObject == null) {
+      QLog.i("MsgBackupFileProcessor<QFile>", 1, "getMsgBackupHandler: target backup handle is null");
+    }
+    return localObject;
   }
   
   private HashMap<String, String> a(String paramString)
   {
     HashMap localHashMap = new HashMap();
-    if (TextUtils.isEmpty(paramString)) {}
+    if (TextUtils.isEmpty(paramString)) {
+      return localHashMap;
+    }
     for (;;)
     {
-      return localHashMap;
       try
       {
         paramString = new JSONObject(paramString);
-        String str;
-        if (paramString.has("uint64_sender_uin"))
+        boolean bool = paramString.has("uint64_sender_uin");
+        if (bool)
         {
-          str = paramString.getString("uint64_sender_uin");
-          a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo senderUin[" + str + "]");
-          localHashMap.put("uint64_sender_uin", str);
-        }
-        if (paramString.has("uint64_receiver_uin"))
-        {
-          str = paramString.getString("uint64_receiver_uin");
-          a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo recvUin[" + str + "]");
-          localHashMap.put("uint64_receiver_uin", str);
-        }
-        int i;
-        if (paramString.has("uint32_file_type"))
-        {
-          i = paramString.getInt("uint32_file_type");
-          a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo peerType[" + i + "]");
-          localHashMap.put("uint32_file_type", String.valueOf(i));
-        }
-        if (paramString.has("bytes_file_uuid"))
-        {
-          str = paramString.getString("bytes_file_uuid");
-          a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo fileUuid[" + str + "]");
-          localHashMap.put("bytes_file_uuid", str);
-        }
-        if (paramString.has("str_file_name"))
-        {
-          str = paramString.getString("str_file_name");
-          a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo fileName[" + str + "]");
-          localHashMap.put("str_file_name", str);
-        }
-        if (paramString.has("uint64_file_size"))
-        {
-          long l = paramString.getLong("uint64_file_size");
-          a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo fileSize[" + l + "]");
-          localHashMap.put("uint64_file_size", String.valueOf(l));
-        }
-        if (paramString.has("md5"))
-        {
-          str = paramString.getString("md5");
-          if (!TextUtils.isEmpty(str))
+          Object localObject = paramString.getString("uint64_sender_uin");
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("decodeResExtInfo senderUin[");
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append("]");
+          a("MsgBackupFileProcessor<QFile>", localStringBuilder.toString());
+          localHashMap.put("uint64_sender_uin", localObject);
+          if (paramString.has("uint64_receiver_uin"))
           {
-            a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo fileMd5[" + str + "]");
-            localHashMap.put("md5", str);
+            localObject = paramString.getString("uint64_receiver_uin");
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("decodeResExtInfo recvUin[");
+            localStringBuilder.append((String)localObject);
+            localStringBuilder.append("]");
+            a("MsgBackupFileProcessor<QFile>", localStringBuilder.toString());
+            localHashMap.put("uint64_receiver_uin", localObject);
           }
-        }
-        if (paramString.has("md510"))
-        {
-          str = paramString.getString("md510");
-          if (!TextUtils.isEmpty(str))
+          int i;
+          if (paramString.has("uint32_file_type"))
           {
-            a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo file10Md5[" + str + "]");
-            localHashMap.put("md510", str);
+            i = paramString.getInt("uint32_file_type");
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("decodeResExtInfo peerType[");
+            ((StringBuilder)localObject).append(i);
+            ((StringBuilder)localObject).append("]");
+            a("MsgBackupFileProcessor<QFile>", ((StringBuilder)localObject).toString());
+            localHashMap.put("uint32_file_type", String.valueOf(i));
           }
-        }
-        if (paramString.has("sha"))
-        {
-          str = paramString.getString("sha");
-          if (!TextUtils.isEmpty(str))
+          if (paramString.has("bytes_file_uuid"))
           {
-            a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo sha[" + str + "]");
-            localHashMap.put("sha", str);
+            localObject = paramString.getString("bytes_file_uuid");
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("decodeResExtInfo fileUuid[");
+            localStringBuilder.append((String)localObject);
+            localStringBuilder.append("]");
+            a("MsgBackupFileProcessor<QFile>", localStringBuilder.toString());
+            localHashMap.put("bytes_file_uuid", localObject);
           }
-        }
-        if (paramString.has("sha3"))
-        {
-          str = paramString.getString("sha3");
-          if (!TextUtils.isEmpty(str))
+          if (paramString.has("str_file_name"))
           {
-            a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo sha3[" + str + "]");
-            localHashMap.put("sha3", str);
+            localObject = paramString.getString("str_file_name");
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("decodeResExtInfo fileName[");
+            localStringBuilder.append((String)localObject);
+            localStringBuilder.append("]");
+            a("MsgBackupFileProcessor<QFile>", localStringBuilder.toString());
+            localHashMap.put("str_file_name", localObject);
           }
-        }
-        if (paramString.has("uint32_img_width"))
-        {
-          i = paramString.getInt("uint32_img_width");
-          if (i != 0)
+          if (paramString.has("uint64_file_size"))
           {
-            a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo imgWidth[" + i + "]");
-            localHashMap.put("uint32_img_width", String.valueOf(i));
+            long l = paramString.getLong("uint64_file_size");
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("decodeResExtInfo fileSize[");
+            ((StringBuilder)localObject).append(l);
+            ((StringBuilder)localObject).append("]");
+            a("MsgBackupFileProcessor<QFile>", ((StringBuilder)localObject).toString());
+            localHashMap.put("uint64_file_size", String.valueOf(l));
           }
-        }
-        if (paramString.has("uint32_img_height"))
-        {
-          i = paramString.getInt("uint32_img_height");
-          if (i != 0)
+          if (paramString.has("md5"))
           {
-            a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo imgWidth[" + i + "]");
-            localHashMap.put("uint32_img_height", String.valueOf(i));
-            return localHashMap;
+            localObject = paramString.getString("md5");
+            if (!TextUtils.isEmpty((CharSequence)localObject))
+            {
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("decodeResExtInfo fileMd5[");
+              localStringBuilder.append((String)localObject);
+              localStringBuilder.append("]");
+              a("MsgBackupFileProcessor<QFile>", localStringBuilder.toString());
+              localHashMap.put("md5", localObject);
+            }
           }
+          if (paramString.has("md510"))
+          {
+            localObject = paramString.getString("md510");
+            if (!TextUtils.isEmpty((CharSequence)localObject))
+            {
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("decodeResExtInfo file10Md5[");
+              localStringBuilder.append((String)localObject);
+              localStringBuilder.append("]");
+              a("MsgBackupFileProcessor<QFile>", localStringBuilder.toString());
+              localHashMap.put("md510", localObject);
+            }
+          }
+          if (paramString.has("sha"))
+          {
+            localObject = paramString.getString("sha");
+            if (!TextUtils.isEmpty((CharSequence)localObject))
+            {
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("decodeResExtInfo sha[");
+              localStringBuilder.append((String)localObject);
+              localStringBuilder.append("]");
+              a("MsgBackupFileProcessor<QFile>", localStringBuilder.toString());
+              localHashMap.put("sha", localObject);
+            }
+          }
+          if (paramString.has("sha3"))
+          {
+            localObject = paramString.getString("sha3");
+            if (!TextUtils.isEmpty((CharSequence)localObject))
+            {
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("decodeResExtInfo sha3[");
+              localStringBuilder.append((String)localObject);
+              localStringBuilder.append("]");
+              a("MsgBackupFileProcessor<QFile>", localStringBuilder.toString());
+              localHashMap.put("sha3", localObject);
+            }
+          }
+          bool = paramString.has("uint32_img_width");
+          if (bool)
+          {
+            i = paramString.getInt("uint32_img_width");
+            if (i != 0)
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("decodeResExtInfo imgWidth[");
+              ((StringBuilder)localObject).append(i);
+              ((StringBuilder)localObject).append("]");
+              a("MsgBackupFileProcessor<QFile>", ((StringBuilder)localObject).toString());
+              localHashMap.put("uint32_img_width", String.valueOf(i));
+            }
+          }
+          if (paramString.has("uint32_img_height"))
+          {
+            i = paramString.getInt("uint32_img_height");
+            if (i != 0)
+            {
+              paramString = new StringBuilder();
+              paramString.append("decodeResExtInfo imgWidth[");
+              paramString.append(i);
+              paramString.append("]");
+              a("MsgBackupFileProcessor<QFile>", paramString.toString());
+              localHashMap.put("uint32_img_height", String.valueOf(i));
+            }
+          }
+          return localHashMap;
         }
       }
-      catch (Exception paramString) {}
+      catch (Exception paramString)
+      {
+        return localHashMap;
+      }
     }
-    return localHashMap;
   }
   
   private void a(String paramString1, String paramString2)
@@ -247,7 +303,11 @@ public class MsgBackupFileProcessor
     String str = (String)a(paramMsgBackupResEntity.extraDataStr).get("uint32_file_type");
     if (TextUtils.isEmpty(str))
     {
-      QLog.i("MsgBackupFileProcessor<QFile>", 1, "isNeedDownloadRes: can not find chatType from extInfo. resInfo[" + paramMsgBackupResEntity.toLogString() + "]");
+      paramMessageRecord = new StringBuilder();
+      paramMessageRecord.append("isNeedDownloadRes: can not find chatType from extInfo. resInfo[");
+      paramMessageRecord.append(paramMsgBackupResEntity.toLogString());
+      paramMessageRecord.append("]");
+      QLog.i("MsgBackupFileProcessor<QFile>", 1, paramMessageRecord.toString());
       localResDownloadObject.a = false;
       return localResDownloadObject;
     }
@@ -278,11 +338,10 @@ public class MsgBackupFileProcessor
   
   public boolean a(MessageRecord paramMessageRecord)
   {
-    if ((paramMessageRecord instanceof MessageForTroopFile)) {}
-    while ((paramMessageRecord instanceof MessageForFile)) {
+    if ((paramMessageRecord instanceof MessageForTroopFile)) {
       return true;
     }
-    return false;
+    return (paramMessageRecord instanceof MessageForFile);
   }
   
   public boolean a(MsgBackupResEntity paramMsgBackupResEntity)
@@ -300,7 +359,7 @@ public class MsgBackupFileProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.controller.MsgBackupFileProcessor
  * JD-Core Version:    0.7.0.1
  */

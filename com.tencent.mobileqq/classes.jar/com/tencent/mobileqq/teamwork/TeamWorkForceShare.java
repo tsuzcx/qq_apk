@@ -9,7 +9,6 @@ import android.os.Bundle;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.biz.webviewplugin.Share;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.activity.ForwardRecentTranslucentActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -39,7 +38,7 @@ import org.json.JSONObject;
 public class TeamWorkForceShare
   implements DialogInterface.OnCancelListener, BitmapDecodedListener, ShareActionSheet.OnItemClickListener
 {
-  private static final String jdField_a_of_type_JavaLangString = TeamWorkForceShare.class.getSimpleName();
+  private static final String jdField_a_of_type_JavaLangString = "TeamWorkForceShare";
   private Activity jdField_a_of_type_AndroidAppActivity;
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   private WebViewPlugin jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin;
@@ -101,147 +100,166 @@ public class TeamWorkForceShare
       this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.dismiss();
     }
     int i = paramActionSheetItem.action;
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "action = " + paramActionSheetItem.action);
-    Object localObject;
-    switch (i)
+    paramShareActionSheet = jdField_a_of_type_JavaLangString;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("action = ");
+    ((StringBuilder)localObject1).append(paramActionSheetItem.action);
+    QLog.d(paramShareActionSheet, 1, ((StringBuilder)localObject1).toString());
+    if (i != 2)
     {
-    default: 
-      return;
-    case 72: 
-      paramShareActionSheet = new Bundle();
-      paramShareActionSheet.putInt("key_req", ForwardRecentActivity.f);
-      paramShareActionSheet.putInt("key_direct_show_uin_type", paramActionSheetItem.uinType);
-      paramShareActionSheet.putString("key_direct_show_uin", paramActionSheetItem.uin);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(this.c, new String[] { String.format("{\"type\":%d,\"action\":%d,\"ec\":%d,\"em\":\"%s\"}", new Object[] { Integer.valueOf(1), Integer.valueOf(1), Integer.valueOf(0), "ok" }) });
-      paramActionSheetItem = ((QQBrowserActivity)this.jdField_a_of_type_AndroidAppActivity).getCurrentWebViewFragment();
-      if (paramActionSheetItem == null)
+      if (i != 3)
       {
-        QLog.d(jdField_a_of_type_JavaLangString, 1, "fragment == null");
+        if ((i != 9) && (i != 10))
+        {
+          if (i != 72) {
+            return;
+          }
+          paramShareActionSheet = new Bundle();
+          paramShareActionSheet.putInt("key_req", 1);
+          paramShareActionSheet.putInt("key_direct_show_uin_type", paramActionSheetItem.uinType);
+          paramShareActionSheet.putString("key_direct_show_uin", paramActionSheetItem.uin);
+          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(this.c, new String[] { String.format("{\"type\":%d,\"action\":%d,\"ec\":%d,\"em\":\"%s\"}", new Object[] { Integer.valueOf(1), Integer.valueOf(1), Integer.valueOf(0), "ok" }) });
+          paramActionSheetItem = ((QQBrowserActivity)this.jdField_a_of_type_AndroidAppActivity).getCurrentWebViewFragment();
+          if (paramActionSheetItem == null)
+          {
+            QLog.d(jdField_a_of_type_JavaLangString, 1, "fragment == null");
+            return;
+          }
+          localObject1 = (Share)paramActionSheetItem.getShare();
+          if (localObject1 == null)
+          {
+            QLog.d(jdField_a_of_type_JavaLangString, 1, "share == null");
+            return;
+          }
+          paramActionSheetItem = new Bundle();
+          paramActionSheetItem.putBoolean("key_flag_from_plugin", true);
+          paramActionSheetItem.putString("pluginName", "web_share");
+          paramActionSheetItem.putString("struct_share_key_source_icon", "https://docs.qq.com/desktop/favicon.ico");
+          paramActionSheetItem.putString("app_name", ((Share)localObject1).e());
+          paramActionSheetItem.putString("struct_share_key_source_action", "web");
+          paramActionSheetItem.putString("struct_share_key_source_url", "https://docs.qq.com/desktop/m/index.html?_wv=2");
+          str = ((Share)localObject1).a();
+          paramActionSheetItem.putString("detail_url", ((Share)localObject1).getShareUrl());
+          paramActionSheetItem.putString("title", str);
+          paramActionSheetItem.putString("desc", ((Share)localObject1).b());
+          paramActionSheetItem.putString("struct_share_key_content_action", "web");
+          paramActionSheetItem.putInt("forward_type", 1001);
+          paramActionSheetItem.putString("image_url_remote", ((Share)localObject1).c());
+          paramActionSheetItem.putInt("emoInputType", 2);
+          localObject2 = jdField_a_of_type_JavaLangString;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("title = ");
+          localStringBuilder.append(str);
+          localStringBuilder.append(", desc = ");
+          localStringBuilder.append(((Share)localObject1).b());
+          localStringBuilder.append(", url = ");
+          localStringBuilder.append(((Share)localObject1).getShareUrl());
+          QLog.d((String)localObject2, 1, localStringBuilder.toString());
+          paramActionSheetItem.putString("openerProc", MobileQQ.getMobileQQ().getQQProcessName());
+          paramActionSheetItem.putBoolean("k_back", true);
+          paramActionSheetItem.putString("brief_key", this.jdField_a_of_type_AndroidAppActivity.getString(2131696401, new Object[] { str }));
+          paramActionSheetItem.putByteArray("stuctmsg_bytes", StructMsgFactory.a(paramActionSheetItem).getBytes());
+          localObject1 = new Intent();
+          ((Intent)localObject1).putExtras(paramActionSheetItem);
+          ((Intent)localObject1).putExtras(paramShareActionSheet);
+          ForwardBaseOption.a(this.jdField_a_of_type_AndroidAppActivity, (Intent)localObject1, ForwardRecentTranslucentActivity.class, WebViewUtil.a("docx") << 8 | 0x12, -1, "");
+          return;
+        }
+        boolean bool;
+        if (i == 9) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        if (bool) {
+          i = 3;
+        } else {
+          i = 4;
+        }
+        if (!WXShareHelper.a().a())
+        {
+          QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131720478, 1).a();
+          QLog.d(jdField_a_of_type_JavaLangString, 1, "wx not installed");
+          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(this.c, new String[] { String.format("{\"type\":%d,\"action\":%d,\"ec\":%d,\"em\":\"%s\"}", new Object[] { Integer.valueOf(i), Integer.valueOf(1), Integer.valueOf(1), "wx not installed" }) });
+          return;
+        }
+        if (!WXShareHelper.a().b())
+        {
+          QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131720479, 1).a();
+          QLog.d(jdField_a_of_type_JavaLangString, 1, "wx version too low");
+          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(this.c, new String[] { String.format("{\"type\":%d,\"action\":%d,\"ec\":%d,\"em\":\"%s\"}", new Object[] { Integer.valueOf(i), Integer.valueOf(1), Integer.valueOf(2), "wx version too low" }) });
+          return;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(this.c, new String[] { String.format("{\"type\":%d,\"action\":%d,\"ec\":%d,\"em\":\"%s\"}", new Object[] { Integer.valueOf(i), Integer.valueOf(1), Integer.valueOf(0), "ok" }) });
+        ThreadManager.postImmediately(new TeamWorkForceShare.2(this, bool), null, true);
         return;
       }
-      localObject = paramActionSheetItem.getShare();
-      if (localObject == null)
-      {
-        QLog.d(jdField_a_of_type_JavaLangString, 1, "share == null");
-        return;
-      }
-      paramActionSheetItem = new Bundle();
-      paramActionSheetItem.putBoolean("key_flag_from_plugin", true);
-      paramActionSheetItem.putString("pluginName", "web_share");
-      paramActionSheetItem.putString("struct_share_key_source_icon", TeamWorkUtils.d);
-      paramActionSheetItem.putString("app_name", ((Share)localObject).f());
-      paramActionSheetItem.putString("struct_share_key_source_action", "web");
-      paramActionSheetItem.putString("struct_share_key_source_url", TeamWorkUtils.b);
-      String str = ((Share)localObject).b();
-      paramActionSheetItem.putString("detail_url", ((Share)localObject).a());
-      paramActionSheetItem.putString("title", str);
-      paramActionSheetItem.putString("desc", ((Share)localObject).c());
-      paramActionSheetItem.putString("struct_share_key_content_action", "web");
-      paramActionSheetItem.putInt("forward_type", 1001);
-      paramActionSheetItem.putString("image_url_remote", ((Share)localObject).d());
-      paramActionSheetItem.putInt("emoInputType", 2);
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "title = " + str + ", desc = " + ((Share)localObject).c() + ", url = " + ((Share)localObject).a());
-      paramActionSheetItem.putString("openerProc", MobileQQ.getMobileQQ().getQQProcessName());
-      paramActionSheetItem.putBoolean("k_back", true);
-      paramActionSheetItem.putString("brief_key", this.jdField_a_of_type_AndroidAppActivity.getString(2131696382, new Object[] { str }));
-      paramActionSheetItem.putByteArray("stuctmsg_bytes", StructMsgFactory.a(paramActionSheetItem).getBytes());
-      localObject = new Intent();
-      ((Intent)localObject).putExtras(paramActionSheetItem);
-      ((Intent)localObject).putExtras(paramShareActionSheet);
-      ForwardBaseOption.a(this.jdField_a_of_type_AndroidAppActivity, (Intent)localObject, ForwardRecentTranslucentActivity.class, WebViewUtil.a("docx") << 8 | 0x12, -1, "");
-      return;
-    case 2: 
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(this.c, new String[] { String.format("{\"type\":%d,\"action\":%d,\"ec\":%d,\"em\":\"%s\"}", new Object[] { Integer.valueOf(1), Integer.valueOf(1), Integer.valueOf(0), "ok" }) });
-      paramActionSheetItem = ((QQBrowserActivity)this.jdField_a_of_type_AndroidAppActivity).getCurrentWebViewFragment();
-      if (paramActionSheetItem == null)
-      {
-        QLog.d(jdField_a_of_type_JavaLangString, 1, "fragment == null");
-        return;
-      }
-      paramShareActionSheet = paramActionSheetItem.getShare();
-      if (paramShareActionSheet == null)
-      {
-        QLog.d(jdField_a_of_type_JavaLangString, 1, "share == null");
-        return;
-      }
-      paramActionSheetItem = new Bundle();
-      paramActionSheetItem.putBoolean("key_flag_from_plugin", true);
-      paramActionSheetItem.putString("pluginName", "web_share");
-      paramActionSheetItem.putString("struct_share_key_source_icon", TeamWorkUtils.d);
-      paramActionSheetItem.putString("app_name", paramShareActionSheet.f());
-      paramActionSheetItem.putString("struct_share_key_source_action", "web");
-      paramActionSheetItem.putString("struct_share_key_source_url", TeamWorkUtils.b);
-      localObject = paramShareActionSheet.b();
-      paramActionSheetItem.putString("detail_url", paramShareActionSheet.a());
-      paramActionSheetItem.putString("title", (String)localObject);
-      paramActionSheetItem.putString("desc", paramShareActionSheet.c());
-      paramActionSheetItem.putString("struct_share_key_content_action", "web");
-      paramActionSheetItem.putInt("forward_type", 1001);
-      paramActionSheetItem.putString("image_url_remote", paramShareActionSheet.d());
-      paramActionSheetItem.putInt("emoInputType", 2);
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "title = " + (String)localObject + ", desc = " + paramShareActionSheet.c() + ", url = " + paramShareActionSheet.a());
-      paramActionSheetItem.putString("openerProc", MobileQQ.getMobileQQ().getQQProcessName());
-      paramActionSheetItem.putBoolean("k_back", true);
-      paramActionSheetItem.putString("brief_key", this.jdField_a_of_type_AndroidAppActivity.getString(2131696382, new Object[] { localObject }));
-      paramActionSheetItem.putByteArray("stuctmsg_bytes", StructMsgFactory.a(paramActionSheetItem).getBytes());
-      paramShareActionSheet = new Intent();
-      paramShareActionSheet.putExtras(paramActionSheetItem);
-      ForwardBaseOption.a(this.jdField_a_of_type_AndroidAppActivity, paramShareActionSheet, WebViewUtil.a("docx") << 8 | 0x12);
-      return;
-    case 3: 
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(this.c, new String[] { String.format("{\"type\":%d,\"action\":%d,\"ec\":%d,\"em\":\"%s\"}", new Object[] { Integer.valueOf(2), Integer.valueOf(1), Integer.valueOf(0), "ok" }) });
       paramActionSheetItem = AbsDownloader.getFilePath(this.b);
       paramShareActionSheet = QZoneHelper.UserInfo.getInstance();
-      if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
+      localObject1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+      if (localObject1 != null)
       {
-        paramShareActionSheet.qzone_uin = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount();
-        if (!(this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof VideoAppInterface)) {
-          break label1094;
+        paramShareActionSheet.qzone_uin = ((AppInterface)localObject1).getAccount();
+        localObject1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+        if ((localObject1 instanceof VideoAppInterface)) {
+          paramShareActionSheet.nickname = ((VideoAppInterface)localObject1).a(0, ((AppInterface)localObject1).getCurrentAccountUin(), null);
+        } else {
+          paramShareActionSheet.nickname = null;
         }
       }
-      label1094:
-      for (paramShareActionSheet.nickname = ((VideoAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).a(0, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), null);; paramShareActionSheet.nickname = null)
-      {
-        QZoneHelper.forwardToPublishMood(this.jdField_a_of_type_AndroidAppActivity, paramShareActionSheet, paramActionSheetItem, BaseApplication.getContext().getString(2131692179), "", WebViewUtil.a("docx") << 8 | 0x34);
-        return;
-      }
-    }
-    boolean bool;
-    if (i == 9)
-    {
-      bool = true;
-      if (!bool) {
-        break label1213;
-      }
-    }
-    label1213:
-    for (i = 3;; i = 4)
-    {
-      if (WXShareHelper.a().a()) {
-        break label1218;
-      }
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131720753, 1).a();
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "wx not installed");
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(this.c, new String[] { String.format("{\"type\":%d,\"action\":%d,\"ec\":%d,\"em\":\"%s\"}", new Object[] { Integer.valueOf(i), Integer.valueOf(1), Integer.valueOf(1), "wx not installed" }) });
-      return;
-      bool = false;
-      break;
-    }
-    label1218:
-    if (!WXShareHelper.a().b())
-    {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131720754, 1).a();
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "wx version too low");
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(this.c, new String[] { String.format("{\"type\":%d,\"action\":%d,\"ec\":%d,\"em\":\"%s\"}", new Object[] { Integer.valueOf(i), Integer.valueOf(1), Integer.valueOf(2), "wx version too low" }) });
+      QZoneHelper.forwardToPublishMood(this.jdField_a_of_type_AndroidAppActivity, paramShareActionSheet, paramActionSheetItem, BaseApplication.getContext().getString(2131692105), "", WebViewUtil.a("docx") << 8 | 0x34);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(this.c, new String[] { String.format("{\"type\":%d,\"action\":%d,\"ec\":%d,\"em\":\"%s\"}", new Object[] { Integer.valueOf(i), Integer.valueOf(1), Integer.valueOf(0), "ok" }) });
-    ThreadManager.postImmediately(new TeamWorkForceShare.2(this, bool), null, true);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(this.c, new String[] { String.format("{\"type\":%d,\"action\":%d,\"ec\":%d,\"em\":\"%s\"}", new Object[] { Integer.valueOf(1), Integer.valueOf(1), Integer.valueOf(0), "ok" }) });
+    paramActionSheetItem = ((QQBrowserActivity)this.jdField_a_of_type_AndroidAppActivity).getCurrentWebViewFragment();
+    if (paramActionSheetItem == null)
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "fragment == null");
+      return;
+    }
+    paramShareActionSheet = (Share)paramActionSheetItem.getShare();
+    if (paramShareActionSheet == null)
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "share == null");
+      return;
+    }
+    paramActionSheetItem = new Bundle();
+    paramActionSheetItem.putBoolean("key_flag_from_plugin", true);
+    paramActionSheetItem.putString("pluginName", "web_share");
+    paramActionSheetItem.putString("struct_share_key_source_icon", "https://docs.qq.com/desktop/favicon.ico");
+    paramActionSheetItem.putString("app_name", paramShareActionSheet.e());
+    paramActionSheetItem.putString("struct_share_key_source_action", "web");
+    paramActionSheetItem.putString("struct_share_key_source_url", "https://docs.qq.com/desktop/m/index.html?_wv=2");
+    localObject1 = paramShareActionSheet.a();
+    paramActionSheetItem.putString("detail_url", paramShareActionSheet.getShareUrl());
+    paramActionSheetItem.putString("title", (String)localObject1);
+    paramActionSheetItem.putString("desc", paramShareActionSheet.b());
+    paramActionSheetItem.putString("struct_share_key_content_action", "web");
+    paramActionSheetItem.putInt("forward_type", 1001);
+    paramActionSheetItem.putString("image_url_remote", paramShareActionSheet.c());
+    paramActionSheetItem.putInt("emoInputType", 2);
+    String str = jdField_a_of_type_JavaLangString;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("title = ");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(", desc = ");
+    ((StringBuilder)localObject2).append(paramShareActionSheet.b());
+    ((StringBuilder)localObject2).append(", url = ");
+    ((StringBuilder)localObject2).append(paramShareActionSheet.getShareUrl());
+    QLog.d(str, 1, ((StringBuilder)localObject2).toString());
+    paramActionSheetItem.putString("openerProc", MobileQQ.getMobileQQ().getQQProcessName());
+    paramActionSheetItem.putBoolean("k_back", true);
+    paramActionSheetItem.putString("brief_key", this.jdField_a_of_type_AndroidAppActivity.getString(2131696401, new Object[] { localObject1 }));
+    paramActionSheetItem.putByteArray("stuctmsg_bytes", StructMsgFactory.a(paramActionSheetItem).getBytes());
+    paramShareActionSheet = new Intent();
+    paramShareActionSheet.putExtras(paramActionSheetItem);
+    ForwardBaseOption.a(this.jdField_a_of_type_AndroidAppActivity, paramShareActionSheet, WebViewUtil.a("docx") << 8 | 0x12);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkForceShare
  * JD-Core Version:    0.7.0.1
  */

@@ -19,15 +19,15 @@ class MultiVideoCtrlLayerUIBase$RequestVideoTimeOutRunnable
         ReportController.b(null, "CliOper", "", "", "0X8004425", "0X8004425", 0, 0, "", "", "", "");
       }
     }
-    while (!QLog.isColorLevel()) {
-      return;
+    else if (QLog.isColorLevel())
+    {
+      QLog.e(this.this$0.d, 2, "RequestVideoTimeOutRunnable, mVideoController = null!!!");
     }
-    QLog.e(this.this$0.d, 2, "RequestVideoTimeOutRunnable, mVideoController = null!!!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUIBase.RequestVideoTimeOutRunnable
  * JD-Core Version:    0.7.0.1
  */

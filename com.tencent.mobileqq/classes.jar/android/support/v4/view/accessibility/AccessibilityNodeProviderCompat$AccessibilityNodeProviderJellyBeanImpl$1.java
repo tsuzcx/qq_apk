@@ -21,23 +21,25 @@ class AccessibilityNodeProviderCompat$AccessibilityNodeProviderJellyBeanImpl$1
   public List<Object> findAccessibilityNodeInfosByText(String paramString, int paramInt)
   {
     List localList = this.val$compat.findAccessibilityNodeInfosByText(paramString, paramInt);
-    Object localObject = null;
-    paramString = localObject;
     if (localList != null)
     {
       int i = localList.size();
-      paramString = localObject;
       if (i > 0)
       {
-        paramString = new ArrayList();
+        ArrayList localArrayList = new ArrayList();
         paramInt = 0;
-        while (paramInt < i)
+        for (;;)
         {
-          paramString.add(((AccessibilityNodeInfoCompat)localList.get(paramInt)).getInfo());
+          paramString = localArrayList;
+          if (paramInt >= i) {
+            break;
+          }
+          localArrayList.add(((AccessibilityNodeInfoCompat)localList.get(paramInt)).getInfo());
           paramInt += 1;
         }
       }
     }
+    paramString = null;
     return paramString;
   }
   

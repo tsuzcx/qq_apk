@@ -5,7 +5,8 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.config.business.tendoc.TencentDocConvertConfigBean;
 import com.tencent.mobileqq.config.business.tendoc.TencentDocConvertConfigProcessor;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.teamwork.api.IGetExternalInterface;
 import com.tencent.qphone.base.util.QLog;
 
 final class TeamWorkConvertUtils$2
@@ -17,7 +18,7 @@ final class TeamWorkConvertUtils$2
   {
     try
     {
-      FileManagerUtil.c(this.jdField_a_of_type_AndroidContentContext, TencentDocConvertConfigProcessor.a().a());
+      ((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).fileManagerUtilOpenUrl(this.jdField_a_of_type_AndroidContentContext, TencentDocConvertConfigProcessor.a().a());
       return;
     }
     catch (Exception paramDialogInterface)
@@ -28,7 +29,7 @@ final class TeamWorkConvertUtils$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkConvertUtils.2
  * JD-Core Version:    0.7.0.1
  */

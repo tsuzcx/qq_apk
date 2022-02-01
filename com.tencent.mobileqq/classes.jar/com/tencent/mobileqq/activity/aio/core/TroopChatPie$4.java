@@ -1,35 +1,26 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.confess.TroopConfessUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pic.api.IPicPreDownload;
 
 class TroopChatPie$4
-  extends BroadcastReceiver
+  implements Runnable
 {
   TroopChatPie$4(TroopChatPie paramTroopChatPie) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if ("com.tencent.mobileqq.action.ACTION_CONFESS_START_EVENT".equals(paramIntent.getAction()))
+    if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.b, 2, "Confess action! ");
-      }
-      if (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer != null)
-      {
-        this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(35);
-        TroopConfessUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
-      }
+      String str = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+      ((IPicPreDownload)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPicPreDownload.class, "")).increaseTroopCountWhenEnterAIO(str);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.TroopChatPie.4
  * JD-Core Version:    0.7.0.1
  */

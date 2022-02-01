@@ -9,17 +9,39 @@ class DataBinder$ViewDataBinder
   @Nullable
   public DataEntity getDataEntity(Object paramObject)
   {
-    return (DataEntity)((View)paramObject).getTag(2131369987);
+    if (!(paramObject instanceof View)) {
+      return null;
+    }
+    try
+    {
+      paramObject = ((View)paramObject).getTag(2131369672);
+      if ((paramObject instanceof DataEntity))
+      {
+        paramObject = (DataEntity)paramObject;
+        return paramObject;
+      }
+      return null;
+    }
+    catch (Throwable paramObject) {}
+    return null;
   }
   
   public void setDataEntity(Object paramObject, DataEntity paramDataEntity)
   {
-    ((View)paramObject).setTag(2131369987, paramDataEntity);
+    if (!(paramObject instanceof View)) {
+      return;
+    }
+    try
+    {
+      ((View)paramObject).setTag(2131369672, paramDataEntity);
+      return;
+    }
+    catch (Throwable paramObject) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.data.DataBinder.ViewDataBinder
  * JD-Core Version:    0.7.0.1
  */

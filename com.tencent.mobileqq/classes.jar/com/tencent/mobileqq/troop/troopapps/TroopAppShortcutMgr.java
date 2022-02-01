@@ -46,8 +46,12 @@ public class TroopAppShortcutMgr
         localObject2 = (Map.Entry)((Iterator)localObject1).next();
         if (((TroopAppShortcutMgr.LRUCacheInfo)((Map.Entry)localObject2).getValue()).jdField_a_of_type_Long < l)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopAppShortcutMgr", 2, "eliminateAppInfoCache troopUin:" + ((Map.Entry)localObject2).getKey());
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("eliminateAppInfoCache troopUin:");
+            localStringBuilder.append(((Map.Entry)localObject2).getKey());
+            QLog.d("TroopAppShortcutMgr", 2, localStringBuilder.toString());
           }
           ((Iterator)localObject1).remove();
         }
@@ -106,7 +110,7 @@ public class TroopAppShortcutMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.TroopAppShortcutMgr
  * JD-Core Version:    0.7.0.1
  */

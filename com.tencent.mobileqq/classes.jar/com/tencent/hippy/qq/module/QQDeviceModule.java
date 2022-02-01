@@ -33,7 +33,13 @@ public class QQDeviceModule
   public void getClientInfo(Promise paramPromise)
   {
     String str = AppUtil.a(BaseApplicationImpl.getContext());
-    paramPromise.resolve("{\"qqVersion\":\"" + str + "\",\"qqBuild\":\"" + "5105" + "\"}");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{\"qqVersion\":\"");
+    localStringBuilder.append(str);
+    localStringBuilder.append("\",\"qqBuild\":\"");
+    localStringBuilder.append("5295");
+    localStringBuilder.append("\"}");
+    paramPromise.resolve(localStringBuilder.toString());
   }
   
   @HippyMethod(name="getDeviceInfo")
@@ -55,10 +61,6 @@ public class QQDeviceModule
         if (TextUtils.isEmpty(paramHippyMap))
         {
           paramHippyMap = GdtDeviceInfoHelper.a(BaseApplication.getContext());
-          paramHippyMap = GdtJsonPbUtil.a(paramHippyMap);
-          if ((paramHippyMap instanceof JSONObject)) {
-            paramPromise.resolve(((JSONObject)paramHippyMap).toString());
-          }
         }
         else
         {
@@ -66,20 +68,28 @@ public class QQDeviceModule
           ((GdtDeviceInfoHelper.Params)localObject2).a = paramHippyMap;
           localObject2 = GdtDeviceInfoHelper.a(BaseApplication.getContext(), (GdtDeviceInfoHelper.Params)localObject2);
           paramHippyMap = localObject1;
-          if (localObject2 == null) {
-            continue;
+          if (localObject2 != null) {
+            paramHippyMap = ((GdtDeviceInfoHelper.Result)localObject2).a;
           }
-          paramHippyMap = ((GdtDeviceInfoHelper.Result)localObject2).a;
+        }
+        paramHippyMap = GdtJsonPbUtil.a(paramHippyMap);
+        if (!(paramHippyMap instanceof JSONObject)) {
           continue;
         }
-        paramHippyMap = null;
-      }
-      catch (Throwable paramHippyMap)
-      {
-        QLog.e("QQDeviceModule", 1, "getGdtDeviceInfo e:" + paramHippyMap);
-        paramPromise.resolve("");
+        paramPromise.resolve(((JSONObject)paramHippyMap).toString());
         return;
       }
+      catch (Throwable localThrowable)
+      {
+        continue;
+      }
+      paramHippyMap = new StringBuilder();
+      paramHippyMap.append("getGdtDeviceInfo e:");
+      paramHippyMap.append(localObject1);
+      QLog.e("QQDeviceModule", 1, paramHippyMap.toString());
+      paramPromise.resolve("");
+      return;
+      paramHippyMap = null;
     }
   }
   
@@ -91,7 +101,7 @@ public class QQDeviceModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQDeviceModule
  * JD-Core Version:    0.7.0.1
  */

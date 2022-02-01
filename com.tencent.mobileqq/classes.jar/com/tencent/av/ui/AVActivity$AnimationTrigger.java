@@ -61,8 +61,13 @@ public class AVActivity$AnimationTrigger
   {
     if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("AnimationTrigger", 1, "[childLock] trigger animation, isTriggeredAnimation[" + this.jdField_a_of_type_Boolean + "]");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[childLock] trigger animation, isTriggeredAnimation[");
+        localStringBuilder.append(this.jdField_a_of_type_Boolean);
+        localStringBuilder.append("]");
+        QLog.w("AnimationTrigger", 1, localStringBuilder.toString());
       }
       this.jdField_a_of_type_Boolean = true;
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(119), Integer.valueOf(1), Float.valueOf(this.jdField_a_of_type_Float), Float.valueOf(this.b) });
@@ -71,7 +76,7 @@ public class AVActivity$AnimationTrigger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.AVActivity.AnimationTrigger
  * JD-Core Version:    0.7.0.1
  */

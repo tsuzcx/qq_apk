@@ -22,19 +22,21 @@ class RelativePersonalDetailHeadItemView$FansGroupAdapter
   
   public int getItemCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList == null) {
       return 0;
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return localList.size();
   }
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt))
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if ((localObject != null) && (((List)localObject).size() > paramInt))
     {
-      RelativePersonalDetailHeadItemView.FansGroupHolder localFansGroupHolder = (RelativePersonalDetailHeadItemView.FansGroupHolder)paramViewHolder;
-      if (localFansGroupHolder != null) {
-        localFansGroupHolder.a((CertifiedAccountMeta.StQQGroup)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+      localObject = (RelativePersonalDetailHeadItemView.FansGroupHolder)paramViewHolder;
+      if (localObject != null) {
+        ((RelativePersonalDetailHeadItemView.FansGroupHolder)localObject).a((CertifiedAccountMeta.StQQGroup)this.jdField_a_of_type_JavaUtilList.get(paramInt));
       }
     }
     EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
@@ -42,8 +44,9 @@ class RelativePersonalDetailHeadItemView$FansGroupAdapter
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup = (ViewGroup)LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558855, paramViewGroup, false);
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() == 1)) {
+    paramViewGroup = (ViewGroup)LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558753, paramViewGroup, false);
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if ((localList != null) && (localList.size() == 1)) {
       paramViewGroup.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
     }
     return new RelativePersonalDetailHeadItemView.FansGroupHolder(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView, paramViewGroup);
@@ -51,7 +54,7 @@ class RelativePersonalDetailHeadItemView$FansGroupAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalDetailHeadItemView.FansGroupAdapter
  * JD-Core Version:    0.7.0.1
  */

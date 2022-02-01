@@ -62,7 +62,9 @@ public class QQGameBuckleFaceFilter
   
   private static float RADIANS2DEGREES(float paramFloat)
   {
-    return (float)(180.0F * paramFloat / 3.141592653589793D);
+    double d = paramFloat * 180.0F;
+    Double.isNaN(d);
+    return (float)(d / 3.141592653589793D);
   }
   
   private void checkGlError(String paramString)
@@ -73,14 +75,23 @@ public class QQGameBuckleFaceFilter
       if (i == 0) {
         break;
       }
-      SLog.e("QQGameBuckleFaceFilter", new RuntimeException(paramString + ": glError " + i));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": glError ");
+      localStringBuilder.append(i);
+      SLog.e("QQGameBuckleFaceFilter", new RuntimeException(localStringBuilder.toString()));
     }
   }
   
   private void checkLocation(int paramInt, String paramString)
   {
-    if (paramInt < 0) {
-      SLog.e("QQGameBuckleFaceFilter", new RuntimeException("Unable to locate '" + paramString + "' in program"));
+    if (paramInt < 0)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Unable to locate '");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("' in program");
+      SLog.e("QQGameBuckleFaceFilter", new RuntimeException(localStringBuilder.toString()));
     }
   }
   
@@ -100,25 +111,48 @@ public class QQGameBuckleFaceFilter
   
   public void computeFaceRectAndUpdateShader(List<PointF> paramList, float[] paramArrayOfFloat, BuckleFrameItem paramBuckleFrameItem)
   {
-    double d1 = paramBuckleFrameItem.size[0];
-    double d2 = paramBuckleFrameItem.size[1];
-    double d3 = paramBuckleFrameItem.nosePoint[0];
-    double d4 = paramBuckleFrameItem.nosePoint[1];
-    float f1 = (float)Math.min(d1 / this.width, d2 / this.height);
-    float f2 = (float)(d1 / f1);
-    float f3 = (float)(d2 / f1);
-    Object localObject = new PointF((f2 - this.width) / 2.0F, (f3 - this.height) / 2.0F);
-    float f6 = (float)(paramBuckleFrameItem.faceWidth / f1);
-    f2 = (float)(d3 / f1 - ((PointF)localObject).x);
-    f3 = (float)(d4 / f1 - ((PointF)localObject).y);
+    double d3 = paramBuckleFrameItem.size[0];
+    double d4 = paramBuckleFrameItem.size[1];
+    double d2 = paramBuckleFrameItem.nosePoint[0];
+    double d1 = paramBuckleFrameItem.nosePoint[1];
+    double d5 = this.width;
+    Double.isNaN(d5);
+    d5 = d3 / d5;
+    double d6 = this.height;
+    Double.isNaN(d6);
+    d5 = (float)Math.min(d5, d4 / d6);
+    Double.isNaN(d5);
+    float f1 = (float)(d3 / d5);
+    Double.isNaN(d5);
+    float f2 = (float)(d4 / d5);
+    Object localObject = new PointF((f1 - this.width) / 2.0F, (f2 - this.height) / 2.0F);
+    d3 = paramBuckleFrameItem.faceWidth;
+    Double.isNaN(d5);
+    float f7 = (float)(d3 / d5);
+    Double.isNaN(d5);
+    d2 /= d5;
+    d3 = ((PointF)localObject).x;
+    Double.isNaN(d3);
+    f2 = (float)(d2 - d3);
+    Double.isNaN(d5);
+    d1 /= d5;
+    d2 = ((PointF)localObject).y;
+    Double.isNaN(d2);
+    float f3 = (float)(d1 - d2);
     localObject = FaceOffUtil.getFullCoords(paramList, 3.0F);
     paramList = ((List)localObject).iterator();
     PointF localPointF;
     while (paramList.hasNext())
     {
       localPointF = (PointF)paramList.next();
-      localPointF.x = ((float)(localPointF.x / this.mScreenScale));
-      localPointF.y = ((float)(localPointF.y / this.mScreenScale));
+      d1 = localPointF.x;
+      d2 = this.mScreenScale;
+      Double.isNaN(d1);
+      localPointF.x = ((float)(d1 / d2));
+      d1 = localPointF.y;
+      d2 = this.mScreenScale;
+      Double.isNaN(d1);
+      localPointF.y = ((float)(d1 / d2));
     }
     f1 = DISTANCE_OF((PointF)((List)localObject).get(0), (PointF)((List)localObject).get(18));
     float f4 = ((PointF)((List)localObject).get(64)).x;
@@ -128,43 +162,51 @@ public class QQGameBuckleFaceFilter
     paramList.add(((List)localObject).get(105));
     paramList.add(((List)localObject).get(101));
     paramList.add(((List)localObject).get(103));
-    float f7 = f6 / f1;
-    float f8 = paramArrayOfFloat[1];
-    f1 = 0.0F;
-    if (Math.abs(f8) > 0.2D) {
-      if (f8 <= 0.0F) {
-        break label563;
-      }
-    }
-    label563:
-    for (f1 = (f8 - 0.2F) * f6;; f1 = (0.2F + f8) * f6)
+    float f6 = f7 / f1;
+    f1 = paramArrayOfFloat[1];
+    if (Math.abs(f1) > 0.2D)
     {
-      localObject = new Matrix();
-      ((Matrix)localObject).reset();
-      ((Matrix)localObject).postRotate(RADIANS2DEGREES((float)(paramArrayOfFloat[2] - paramBuckleFrameItem.faceAngle)), f4, f5);
-      ((Matrix)localObject).postScale(f7, f7, f4, f5);
-      ((Matrix)localObject).postTranslate(f2 - f4, f3 - f5);
-      ((Matrix)localObject).postTranslate(f1, 0.0F);
-      paramArrayOfFloat = new ArrayList();
-      paramBuckleFrameItem = paramList.iterator();
-      while (paramBuckleFrameItem.hasNext())
-      {
-        localPointF = (PointF)paramBuckleFrameItem.next();
-        float[] arrayOfFloat = new float[2];
-        ((Matrix)localObject).mapPoints(arrayOfFloat, new float[] { localPointF.x, localPointF.y });
-        paramArrayOfFloat.add(new PointF(arrayOfFloat[0], arrayOfFloat[1]));
+      if (f1 > 0.0F) {
+        f1 -= 0.2F;
+      } else {
+        f1 += 0.2F;
       }
+      f1 = f7 * f1;
     }
-    int j = 0;
+    else
+    {
+      f1 = 0.0F;
+    }
+    localObject = new Matrix();
+    ((Matrix)localObject).reset();
+    d1 = paramArrayOfFloat[2];
+    d2 = paramBuckleFrameItem.faceAngle;
+    Double.isNaN(d1);
+    ((Matrix)localObject).postRotate(RADIANS2DEGREES((float)(d1 - d2)), f4, f5);
+    ((Matrix)localObject).postScale(f6, f6, f4, f5);
+    ((Matrix)localObject).postTranslate(f2 - f4, f3 - f5);
+    ((Matrix)localObject).postTranslate(f1, 0.0F);
+    paramArrayOfFloat = new ArrayList();
+    paramBuckleFrameItem = paramList.iterator();
+    while (paramBuckleFrameItem.hasNext())
+    {
+      localPointF = (PointF)paramBuckleFrameItem.next();
+      float[] arrayOfFloat = new float[2];
+      ((Matrix)localObject).mapPoints(arrayOfFloat, new float[] { localPointF.x, localPointF.y });
+      paramArrayOfFloat.add(new PointF(arrayOfFloat[0], arrayOfFloat[1]));
+    }
     int i = 0;
+    int j = 0;
     while (i < 4)
     {
       paramBuckleFrameItem = (PointF)paramArrayOfFloat.get(i);
-      this.attrPositions[j] = (2.0F * paramBuckleFrameItem.x / this.width - 1.0F);
-      this.attrPositions[(j + 1)] = (paramBuckleFrameItem.y * 2.0F / this.height - 1.0F);
+      this.attrPositions[j] = (paramBuckleFrameItem.x * 2.0F / this.width - 1.0F);
+      localObject = this.attrPositions;
+      int k = j + 1;
+      localObject[k] = (paramBuckleFrameItem.y * 2.0F / this.height - 1.0F);
       paramBuckleFrameItem = (PointF)paramList.get(i);
       this.attrTexCoords[j] = (paramBuckleFrameItem.x / this.width);
-      this.attrTexCoords[(j + 1)] = (paramBuckleFrameItem.y / this.height);
+      this.attrTexCoords[k] = (paramBuckleFrameItem.y / this.height);
       j += 2;
       i += 1;
     }
@@ -210,8 +252,12 @@ public class QQGameBuckleFaceFilter
       return;
     }
     this.mProgram = GlUtil.createProgram(this.mVertexShader, this.mFragmentShader);
-    if (this.mProgram == 0) {
-      SLog.e("QQGameBuckleFaceFilter", new RuntimeException("failed creating program " + getClass().getSimpleName()));
+    if (this.mProgram == 0)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("failed creating program ");
+      localStringBuilder.append(getClass().getSimpleName());
+      SLog.e("QQGameBuckleFaceFilter", new RuntimeException(localStringBuilder.toString()));
     }
     this.mIsInitialized = true;
   }
@@ -225,7 +271,7 @@ public class QQGameBuckleFaceFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQGameBuckleFaceFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.hippy.qq.module;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import com.tencent.mobileqq.activity.qwallet.utils.FlymeOSStatusBarFontUtils;
+import com.tencent.mobileqq.app.QBaseFragment;
+import com.tencent.mobileqq.qwallet.utils.FlymeOSStatusBarFontUtils;
 
 class QQUiModule$1
   implements Runnable
@@ -12,14 +12,14 @@ class QQUiModule$1
   public void run()
   {
     Object localObject = this.this$0.getActivity();
-    Fragment localFragment = this.this$0.getFragment();
-    if ((localObject != null) && (localFragment != null))
+    QBaseFragment localQBaseFragment = this.this$0.getFragment();
+    if ((localObject != null) && (localQBaseFragment != null))
     {
-      localObject = localFragment.getArguments().getBundle("params");
+      localObject = localQBaseFragment.getArguments().getBundle("params");
       if (localObject != null) {
         ((Bundle)localObject).putBoolean("isStatusBarDarkFont", this.val$isDarkFont);
       }
-      if (localFragment.getUserVisibleHint()) {
+      if (localQBaseFragment.getUserVisibleHint()) {
         FlymeOSStatusBarFontUtils.a(this.this$0.getActivity(), this.val$isDarkFont);
       }
     }
@@ -27,7 +27,7 @@ class QQUiModule$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQUiModule.1
  * JD-Core Version:    0.7.0.1
  */

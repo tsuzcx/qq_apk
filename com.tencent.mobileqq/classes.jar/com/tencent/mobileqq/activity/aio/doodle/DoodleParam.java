@@ -4,8 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.util.DisplayMetrics;
-import com.tencent.av.utils.UITools;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.util.Utils;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,14 +27,14 @@ public class DoodleParam
   
   public DoodleParam()
   {
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    BaseApplication localBaseApplication = BaseApplication.getContext();
     DisplayMetrics localDisplayMetrics = localBaseApplication.getResources().getDisplayMetrics();
     this.jdField_a_of_type_Int = Math.min(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
     float f = this.jdField_a_of_type_Int / 750.0F;
     this.jdField_a_of_type_Float = (12.0F * f);
     this.b = (f * 6.0F);
-    this.c = (UITools.a(localBaseApplication, 50.0F) / 1000.0F);
-    this.d = (UITools.a(localBaseApplication, 0.4F) / 1000.0F);
+    this.c = (Utils.a(50.0F, localBaseApplication.getResources()) / 1000.0F);
+    this.d = (Utils.a(0.4F, localBaseApplication.getResources()) / 1000.0F);
   }
   
   public DoodleParam(MyParcel paramMyParcel)
@@ -56,32 +55,32 @@ public class DoodleParam
   public float a(long paramLong, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     float f = (float)paramLong / 1000.0F;
-    paramFloat1 = (float)Math.sqrt((paramFloat3 - paramFloat1) * (paramFloat3 - paramFloat1) + (paramFloat4 - paramFloat2) * (paramFloat4 - paramFloat2));
-    if (paramFloat1 <= 0.0F)
-    {
-      paramFloat1 = a();
-      return paramFloat1;
+    paramFloat1 = paramFloat3 - paramFloat1;
+    paramFloat2 = paramFloat4 - paramFloat2;
+    paramFloat1 = (float)Math.sqrt(paramFloat1 * paramFloat1 + paramFloat2 * paramFloat2);
+    if (paramFloat1 <= 0.0F) {
+      return a();
     }
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    paramFloat2 = f / paramFloat1;
-    if (this.jdField_a_of_type_AndroidGraphicsRect.width() > 0) {}
-    for (paramFloat1 = this.jdField_a_of_type_AndroidGraphicsRect.width();; paramFloat1 = this.jdField_a_of_type_Int)
-    {
-      paramFloat2 *= UITools.b(localBaseApplication, paramFloat1);
-      paramFloat3 = c();
-      paramFloat4 = d();
-      f = b();
-      paramFloat1 = a();
-      if (paramFloat2 > paramFloat3) {
-        break;
-      }
-      if (paramFloat2 >= paramFloat4) {
-        break label139;
-      }
+    BaseApplication localBaseApplication = BaseApplication.getContext();
+    paramFloat1 = f / paramFloat1;
+    int i;
+    if (this.jdField_a_of_type_AndroidGraphicsRect.width() > 0) {
+      i = this.jdField_a_of_type_AndroidGraphicsRect.width();
+    } else {
+      i = this.jdField_a_of_type_Int;
+    }
+    paramFloat1 *= Utils.a(i, localBaseApplication.getResources());
+    paramFloat2 = c();
+    paramFloat3 = d();
+    paramFloat4 = b();
+    f = a();
+    if (paramFloat1 > paramFloat2) {
       return f;
     }
-    label139:
-    return (paramFloat2 - paramFloat4) * (a() - f) / (paramFloat3 - paramFloat4) + f;
+    if (paramFloat1 < paramFloat3) {
+      return paramFloat4;
+    }
+    return paramFloat4 + (paramFloat1 - paramFloat3) * (a() - paramFloat4) / (paramFloat2 - paramFloat3);
   }
   
   public Rect a()
@@ -120,31 +119,28 @@ public class DoodleParam
   
   public void a(PathData paramPathData)
   {
-    if (paramPathData == null) {}
-    for (;;)
-    {
+    if (paramPathData == null) {
       return;
-      ArrayList localArrayList = paramPathData.a();
-      if (localArrayList != null)
+    }
+    ArrayList localArrayList = paramPathData.a();
+    if (localArrayList != null)
+    {
+      int j = localArrayList.size();
+      int i = 1;
+      if (j == 1)
       {
-        int j = localArrayList.size();
-        if (j == 1)
+        ((PathData.PointData)localArrayList.get(0)).c(a());
+        return;
+      }
+      if (j > 1)
+      {
+        ((PathData.PointData)localArrayList.get(0)).c(a());
+        PathData.PointData localPointData;
+        for (paramPathData = (PathData.PointData)localArrayList.get(0); i < j; paramPathData = localPointData)
         {
-          ((PathData.PointData)localArrayList.get(0)).c(a());
-          return;
-        }
-        if (j > 1)
-        {
-          ((PathData.PointData)localArrayList.get(0)).c(a());
-          paramPathData = (PathData.PointData)localArrayList.get(0);
-          int i = 1;
-          while (i < j)
-          {
-            PathData.PointData localPointData = (PathData.PointData)localArrayList.get(i);
-            localPointData.c(a(localPointData.a() - paramPathData.a(), paramPathData.a(), paramPathData.b(), localPointData.a(), localPointData.b()));
-            i += 1;
-            paramPathData = localPointData;
-          }
+          localPointData = (PathData.PointData)localArrayList.get(i);
+          localPointData.c(a(localPointData.a() - paramPathData.a(), paramPathData.a(), paramPathData.b(), localPointData.a(), localPointData.b()));
+          i += 1;
         }
       }
     }
@@ -182,7 +178,7 @@ public class DoodleParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodleParam
  * JD-Core Version:    0.7.0.1
  */

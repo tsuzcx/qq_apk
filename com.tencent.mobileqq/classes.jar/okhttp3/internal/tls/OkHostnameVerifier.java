@@ -32,7 +32,7 @@ public final class OkHostnameVerifier
   
   private static List<String> getSubjectAltNames(X509Certificate paramX509Certificate, int paramInt)
   {
-    localArrayList = new ArrayList();
+    ArrayList localArrayList = new ArrayList();
     try
     {
       paramX509Certificate = paramX509Certificate.getSubjectAlternativeNames();
@@ -59,8 +59,10 @@ public final class OkHostnameVerifier
     }
     catch (CertificateParsingException paramX509Certificate)
     {
-      return Collections.emptyList();
+      label121:
+      break label121;
     }
+    return Collections.emptyList();
   }
   
   private boolean verifyHostname(String paramString, X509Certificate paramX509Certificate)
@@ -111,42 +113,62 @@ public final class OkHostnameVerifier
   
   public boolean verifyHostname(String paramString1, String paramString2)
   {
-    if ((paramString1 == null) || (paramString1.length() == 0) || (paramString1.startsWith(".")) || (paramString1.endsWith(".."))) {}
-    String str;
-    int i;
-    do
+    if ((paramString1 != null) && (paramString1.length() != 0) && (!paramString1.startsWith(".")))
     {
-      do
+      if (paramString1.endsWith("..")) {
+        return false;
+      }
+      if ((paramString2 != null) && (paramString2.length() != 0) && (!paramString2.startsWith(".")))
       {
-        do
+        if (paramString2.endsWith("..")) {
+          return false;
+        }
+        Object localObject = paramString1;
+        if (!paramString1.endsWith("."))
         {
-          do
-          {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramString1);
+          ((StringBuilder)localObject).append('.');
+          localObject = ((StringBuilder)localObject).toString();
+        }
+        paramString1 = paramString2;
+        if (!paramString2.endsWith("."))
+        {
+          paramString1 = new StringBuilder();
+          paramString1.append(paramString2);
+          paramString1.append('.');
+          paramString1 = paramString1.toString();
+        }
+        paramString1 = paramString1.toLowerCase(Locale.US);
+        if (!paramString1.contains("*")) {
+          return ((String)localObject).equals(paramString1);
+        }
+        if (paramString1.startsWith("*."))
+        {
+          if (paramString1.indexOf('*', 1) != -1) {
             return false;
-          } while ((paramString2 == null) || (paramString2.length() == 0) || (paramString2.startsWith(".")) || (paramString2.endsWith("..")));
-          str = paramString1;
-          if (!paramString1.endsWith(".")) {
-            str = paramString1 + '.';
           }
-          paramString1 = paramString2;
-          if (!paramString2.endsWith(".")) {
-            paramString1 = paramString2 + '.';
+          if (((String)localObject).length() < paramString1.length()) {
+            return false;
           }
-          paramString1 = paramString1.toLowerCase(Locale.US);
-          if (!paramString1.contains("*")) {
-            return str.equals(paramString1);
+          if ("*.".equals(paramString1)) {
+            return false;
           }
-        } while ((!paramString1.startsWith("*.")) || (paramString1.indexOf('*', 1) != -1) || (str.length() < paramString1.length()) || ("*.".equals(paramString1)));
-        paramString1 = paramString1.substring(1);
-      } while (!str.endsWith(paramString1));
-      i = str.length() - paramString1.length();
-    } while ((i > 0) && (str.lastIndexOf('.', i - 1) != -1));
-    return true;
+          paramString1 = paramString1.substring(1);
+          if (!((String)localObject).endsWith(paramString1)) {
+            return false;
+          }
+          int i = ((String)localObject).length() - paramString1.length();
+          return (i <= 0) || (((String)localObject).lastIndexOf('.', i - 1) == -1);
+        }
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.internal.tls.OkHostnameVerifier
  * JD-Core Version:    0.7.0.1
  */

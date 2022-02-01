@@ -30,7 +30,7 @@ public class PlusPanelHelper
   
   public int[] interestedIn()
   {
-    return new int[] { 6, 9, 10, 11, 14 };
+    return new int[] { 7, 10, 11, 12, 15 };
   }
   
   public void onMoveToState(int paramInt)
@@ -43,7 +43,7 @@ public class PlusPanelHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.PlusPanelHelper
  * JD-Core Version:    0.7.0.1
  */

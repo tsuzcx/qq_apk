@@ -6,10 +6,10 @@ import android.view.View;
 import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtil.TipsClickedInterface;
 
 class GrayTipsItemBuilder$8
-  implements FileManagerUtil.TipsClickedInterface
+  implements QQFileManagerUtil.TipsClickedInterface
 {
   GrayTipsItemBuilder$8(GrayTipsItemBuilder paramGrayTipsItemBuilder, String paramString) {}
   
@@ -26,7 +26,7 @@ class GrayTipsItemBuilder$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder.8
  * JD-Core Version:    0.7.0.1
  */

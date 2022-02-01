@@ -16,18 +16,19 @@ class AssistantSettingActivity$34
   {
     ScreenShotDetector.a(paramBoolean);
     QQAppInterface localQQAppInterface = this.a.app;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      ReportController.b(localQQAppInterface, "dc00898", "", "", "0X800B4E7", "0X800B4E7", i, 0, "", "", "", "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 1;
+    } else {
+      i = 2;
     }
+    ReportController.b(localQQAppInterface, "dc00898", "", "", "0X800B4E7", "0X800B4E7", i, 0, "", "", "", "");
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssistantSettingActivity.34
  * JD-Core Version:    0.7.0.1
  */

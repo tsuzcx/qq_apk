@@ -13,30 +13,24 @@ class QQCustomDialog$2
   public void onGlobalLayout()
   {
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.text.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    int i;
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.text.getLineCount() > this.jdField_a_of_type_Int)
     {
-      i = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.text.getLayout().getLineEnd(this.jdField_a_of_type_Int - 1);
-      if (this.jdField_a_of_type_JavaLangString != null) {
-        break label122;
-      }
-    }
-    for (;;)
-    {
+      int i = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.text.getLayout().getLineEnd(this.jdField_a_of_type_Int - 1);
+      Object localObject = this.jdField_a_of_type_JavaLangString;
       if ((!this.jdField_a_of_type_Boolean) && (!this.b))
       {
-        str = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.text.getText().subSequence(0, i - 3) + "...";
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.text.setText(str);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.text.getText().subSequence(0, i - 3));
+        ((StringBuilder)localObject).append("...");
+        localObject = ((StringBuilder)localObject).toString();
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.text.setText((CharSequence)localObject);
       }
-      return;
-      label122:
-      String str = this.jdField_a_of_type_JavaLangString;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialog.2
  * JD-Core Version:    0.7.0.1
  */

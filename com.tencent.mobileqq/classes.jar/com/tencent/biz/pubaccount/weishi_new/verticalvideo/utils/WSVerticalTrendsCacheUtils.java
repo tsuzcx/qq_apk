@@ -4,10 +4,10 @@ import UserGrowth.stSimpleGetFeedListRsp;
 import UserGrowth.stSimpleMetaFeed;
 import android.os.Looper;
 import com.tencent.biz.pubaccount.weishi_new.cache.WSVideoPreloadManager;
+import com.tencent.biz.pubaccount.weishi_new.data.IFetchDataRspListener;
 import com.tencent.biz.pubaccount.weishi_new.util.WSFileUtils;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageAdapter;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageContract.View;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.IVerticalRspListener;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataUtil;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalItemData;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -38,50 +38,47 @@ public class WSVerticalTrendsCacheUtils
   
   public static void a(WSVerticalPageContract.View paramView)
   {
-    WSVerticalPageAdapter localWSVerticalPageAdapter;
     if (paramView != null)
     {
-      localWSVerticalPageAdapter = paramView.a();
-      if (localWSVerticalPageAdapter != null) {}
-    }
-    else
-    {
-      return;
-    }
-    int i = localWSVerticalPageAdapter.a();
-    Object localObject = localWSVerticalPageAdapter.a(i);
-    paramView = (WSVerticalPageContract.View)localObject;
-    if (localObject != null)
-    {
-      paramView = (WSVerticalPageContract.View)localObject;
-      if (((stSimpleMetaFeed)localObject).video_type == 2) {
-        paramView = localWSVerticalPageAdapter.a(i + 1);
+      WSVerticalPageAdapter localWSVerticalPageAdapter = paramView.a();
+      if (localWSVerticalPageAdapter == null) {
+        return;
       }
+      int i = localWSVerticalPageAdapter.a();
+      Object localObject = localWSVerticalPageAdapter.a(i);
+      paramView = (WSVerticalPageContract.View)localObject;
+      if (localObject != null)
+      {
+        paramView = (WSVerticalPageContract.View)localObject;
+        if (((stSimpleMetaFeed)localObject).video_type == 2) {
+          paramView = localWSVerticalPageAdapter.a(i + 1);
+        }
+      }
+      localObject = paramView;
+      if (paramView == null) {
+        localObject = localWSVerticalPageAdapter.a(i - 1);
+      }
+      a((stSimpleMetaFeed)localObject);
+      WSVideoPreloadManager.a((stSimpleMetaFeed)localObject);
     }
-    localObject = paramView;
-    if (paramView == null) {
-      localObject = localWSVerticalPageAdapter.a(i - 1);
-    }
-    a((stSimpleMetaFeed)localObject);
-    WSVideoPreloadManager.b((stSimpleMetaFeed)localObject);
   }
   
-  public static void a(boolean paramBoolean, IVerticalRspListener paramIVerticalRspListener)
+  public static void a(boolean paramBoolean, IFetchDataRspListener<WSVerticalItemData> paramIFetchDataRspListener)
   {
-    if (!paramBoolean) {}
-    List localList;
-    do
-    {
-      return;
-      localList = a();
-    } while (localList.size() == 0);
-    paramIVerticalRspListener = new WSVerticalTrendsCacheUtils.1(paramIVerticalRspListener, localList);
-    if (Looper.myLooper() != Looper.getMainLooper())
-    {
-      ThreadManager.getUIHandler().post(paramIVerticalRspListener);
+    if (!paramBoolean) {
       return;
     }
-    paramIVerticalRspListener.run();
+    List localList = a();
+    if (localList.size() == 0) {
+      return;
+    }
+    paramIFetchDataRspListener = new WSVerticalTrendsCacheUtils.1(paramIFetchDataRspListener, localList);
+    if (Looper.myLooper() != Looper.getMainLooper())
+    {
+      ThreadManager.getUIHandler().post(paramIFetchDataRspListener);
+      return;
+    }
+    paramIFetchDataRspListener.run();
   }
   
   private static String b()
@@ -90,18 +87,20 @@ public class WSVerticalTrendsCacheUtils
     if (localObject != null)
     {
       localObject = ((BaseApplicationImpl)localObject).getCacheDir();
-      if (localObject != null) {}
+      if (localObject != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(((File)localObject).getAbsolutePath());
+        localStringBuilder.append("/file/weishi/ws_trends_data");
+        return localStringBuilder.toString();
+      }
     }
-    else
-    {
-      return "";
-    }
-    return ((File)localObject).getAbsolutePath() + "/file/weishi/ws_trends_data";
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.utils.WSVerticalTrendsCacheUtils
  * JD-Core Version:    0.7.0.1
  */

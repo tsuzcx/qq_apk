@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.flashchat;
 
 import com.tencent.mobileqq.activity.aio.item.ArkAppView.OnVisibleChangeListener;
-import com.tencent.mobileqq.hiboom.HiBoomManager;
+import com.tencent.mobileqq.hiboom.HiBoomConstants;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 class FlashChatTextEffectView$FlashChatAdapter$1
@@ -11,12 +11,12 @@ class FlashChatTextEffectView$FlashChatAdapter$1
   
   public boolean a(int paramInt)
   {
-    return (HiBoomManager.c.get()) && (paramInt == 0);
+    return (HiBoomConstants.b.get()) && (paramInt == 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flashchat.FlashChatTextEffectView.FlashChatAdapter.1
  * JD-Core Version:    0.7.0.1
  */

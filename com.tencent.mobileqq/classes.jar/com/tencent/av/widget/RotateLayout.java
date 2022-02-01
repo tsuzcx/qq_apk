@@ -35,12 +35,12 @@ public class RotateLayout
     setWillNotDraw(false);
   }
   
-  public boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+  protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     return paramLayoutParams instanceof RotateLayout.LayoutParams;
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
     paramCanvas.save();
     paramCanvas.rotate(-this.jdField_a_of_type_Int, getWidth() / 2.0F, getHeight() / 2.0F);
@@ -53,7 +53,8 @@ public class RotateLayout
     this.jdField_a_of_type_ArrayOfFloat[0] = paramMotionEvent.getX();
     this.jdField_a_of_type_ArrayOfFloat[1] = paramMotionEvent.getY();
     this.jdField_a_of_type_AndroidGraphicsMatrix.mapPoints(this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfFloat);
-    paramMotionEvent.setLocation(this.jdField_b_of_type_ArrayOfFloat[0], this.jdField_b_of_type_ArrayOfFloat[1]);
+    float[] arrayOfFloat = this.jdField_b_of_type_ArrayOfFloat;
+    paramMotionEvent.setLocation(arrayOfFloat[0], arrayOfFloat[1]);
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
@@ -62,7 +63,7 @@ public class RotateLayout
     return new RotateLayout.LayoutParams(getContext(), paramAttributeSet);
   }
   
-  public ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+  protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     return new RotateLayout.LayoutParams(paramLayoutParams);
   }
@@ -73,7 +74,7 @@ public class RotateLayout
     return super.invalidateChildInParent(paramArrayOfInt, paramRect);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (this.jdField_a_of_type_Boolean)
     {
@@ -91,7 +92,7 @@ public class RotateLayout
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     View localView = getChildAt(0);
     if (localView != null)
@@ -123,7 +124,7 @@ public class RotateLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.widget.RotateLayout
  * JD-Core Version:    0.7.0.1
  */

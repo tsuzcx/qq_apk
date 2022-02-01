@@ -41,7 +41,11 @@ public abstract class BaseRuntime
       paramMiniAppInfo = paramMiniAppInfo.launchParam.fromMiniAppId;
       return paramMiniAppInfo;
     }
-    catch (Exception paramMiniAppInfo) {}
+    catch (Exception paramMiniAppInfo)
+    {
+      label34:
+      break label34;
+    }
     return "";
   }
   
@@ -56,9 +60,9 @@ public abstract class BaseRuntime
   {
     long l1 = System.currentTimeMillis();
     AdReportData localAdReportData = new AdReportData();
-    localAdReportData.lastOnResumeTime = this.onResumeTime;
-    long l2 = this.lastStayTime;
-    localAdReportData.stayTime = (l1 - this.onResumeTime + l2);
+    long l2 = this.onResumeTime;
+    localAdReportData.lastOnResumeTime = l2;
+    localAdReportData.stayTime = (this.lastStayTime + (l1 - l2));
     localAdReportData.startTime = this.startTime;
     localAdReportData.baseLibVersion = getBaseLibVersion();
     MiniAppInfo localMiniAppInfo = getMiniAppInfo();
@@ -124,8 +128,9 @@ public abstract class BaseRuntime
   
   public void notifyRuntimeMsgObserver(int paramInt, Object paramObject)
   {
-    if (this.mRuntimeObserver != null) {
-      this.mRuntimeObserver.onRuntimeMessage(paramInt, paramObject);
+    BaseRuntime.RuntimeMsgObserver localRuntimeMsgObserver = this.mRuntimeObserver;
+    if (localRuntimeMsgObserver != null) {
+      localRuntimeMsgObserver.onRuntimeMessage(paramInt, paramObject);
     }
   }
   
@@ -172,7 +177,7 @@ public abstract class BaseRuntime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.BaseRuntime
  * JD-Core Version:    0.7.0.1
  */

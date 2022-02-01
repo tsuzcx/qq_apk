@@ -26,33 +26,41 @@ public class MimeHelper
   public static final String MIME_TYPE_MOBILEQQ = "mobileqq";
   public static final String MIME_TYPE_MOBILEQQ_CAMERA = "mobileqq/camera";
   public static final String MIME_TYPE_VIDEO = "video";
-  private static final String TAG = "MimeHelper";
+  private static final String TAG = "QQAlbum";
   public static final String VIDEO_MP4 = "video/mp4";
   
   public static String[] getMimeType(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    String[] arrayOfString;
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
-      arrayOfString = paramString.split("/");
-      if (arrayOfString.length == 2) {
-        break;
+    }
+    Object localObject = paramString.split("/");
+    if (localObject.length != 2)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Mimetype error:");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.i("QQAlbum", 2, ((StringBuilder)localObject).toString());
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("MimeHelper", 2, "Mimetype error:" + paramString);
-    return null;
-    return arrayOfString;
+      return null;
+    }
+    return localObject;
   }
   
   public static boolean validateImageType(String paramString)
   {
-    if (("jpg".equals(paramString)) || ("gif".equals(paramString)) || ("png".equals(paramString)) || ("jpeg".equals(paramString))) {}
-    while ((paramString.lastIndexOf("bmp") != -1) || (paramString.lastIndexOf("bitmap") != -1)) {
-      return true;
+    if ((!"jpg".equals(paramString)) && (!"gif".equals(paramString)) && (!"png".equals(paramString)))
+    {
+      if ("jpeg".equals(paramString)) {
+        return true;
+      }
+      if (paramString.lastIndexOf("bmp") == -1) {
+        return paramString.lastIndexOf("bitmap") != -1;
+      }
     }
-    return false;
+    return true;
   }
   
   public static boolean validateVideoType(String paramString)
@@ -62,7 +70,7 @@ public class MimeHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.MimeHelper
  * JD-Core Version:    0.7.0.1
  */

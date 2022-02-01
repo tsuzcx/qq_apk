@@ -14,6 +14,9 @@ class c$1
   public void a(String paramString)
   {
     paramString = d.a(paramString);
+    c localc;
+    int i;
+    ArrayList localArrayList;
     if ((paramString != null) && (paramString.a() == 0))
     {
       g.a().a(this.a, "emergence_req_interval", paramString.b());
@@ -23,15 +26,24 @@ class c$1
         c.a(this.b, this.a, c.b(), paramString);
         return;
       }
-      c.a(this.b, this.a, c.c(), new ArrayList());
-      return;
+      localc = this.b;
+      paramString = this.a;
+      i = c.c();
+      localArrayList = new ArrayList();
     }
-    c.a(this.b, this.a, c.d(), new ArrayList());
+    else
+    {
+      localc = this.b;
+      paramString = this.a;
+      i = c.d();
+      localArrayList = new ArrayList();
+    }
+    c.a(localc, paramString, i, localArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.c.1
  * JD-Core Version:    0.7.0.1
  */

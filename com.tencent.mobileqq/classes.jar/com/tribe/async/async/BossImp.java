@@ -109,19 +109,24 @@ class BossImp
   @NonNull
   public Executor getExecutor(int paramInt)
   {
-    MonitorThreadPoolExecutor localMonitorThreadPoolExecutor = this.mCpuExecutor;
-    switch (paramInt)
+    MonitorThreadPoolExecutor localMonitorThreadPoolExecutor2 = this.mCpuExecutor;
+    MonitorThreadPoolExecutor localMonitorThreadPoolExecutor1 = localMonitorThreadPoolExecutor2;
+    if (paramInt != 2)
     {
-    default: 
-      return localMonitorThreadPoolExecutor;
-    case 2: 
-      return this.mCpuExecutor;
-    case 4: 
-      return this.mDiskReadExecutor;
-    case 8: 
-      return this.mDiskWriteExecutor;
+      if (paramInt != 4)
+      {
+        if (paramInt != 8)
+        {
+          if (paramInt != 16) {
+            return localMonitorThreadPoolExecutor2;
+          }
+          return this.mNetworkExecutor;
+        }
+        return this.mDiskWriteExecutor;
+      }
+      localMonitorThreadPoolExecutor1 = this.mDiskReadExecutor;
     }
-    return this.mNetworkExecutor;
+    return localMonitorThreadPoolExecutor1;
   }
   
   @NonNull
@@ -144,7 +149,11 @@ class BossImp
   
   public void onQueueExceedLimit(String paramString, int paramInt)
   {
-    SLog.e("async.boss.BossImp", paramString + " onQueueExceedLimit, size = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" onQueueExceedLimit, size = ");
+    localStringBuilder.append(paramInt);
+    SLog.e("async.boss.BossImp", localStringBuilder.toString());
     if (SystemClock.uptimeMillis() - this.mReportExceedSize > 7200000L) {
       this.mReportExceedSize = SystemClock.uptimeMillis();
     }
@@ -153,25 +162,21 @@ class BossImp
   public void onWorkerExceedTime(String paramString, List<Runnable> paramList, int paramInt)
   {
     Iterator localIterator = paramList.iterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
-      Runnable localRunnable = (Runnable)localIterator.next();
-      paramList = localRunnable.getClass().getSimpleName();
-      if (!(localRunnable instanceof Worker)) {
-        break label117;
+      Object localObject = (Runnable)localIterator.next();
+      paramList = localObject.getClass().getSimpleName();
+      if ((localObject instanceof Worker)) {
+        paramList = ((Worker)localObject).getJob().getClass().getSimpleName();
       }
-      paramList = ((Worker)localRunnable).getJob().getClass().getSimpleName();
-    }
-    label117:
-    for (;;)
-    {
-      SLog.e("async.boss.BossImp", paramString + " onWorkerExceedTime, runnable = " + paramList);
-      if (SystemClock.uptimeMillis() - this.mReportExceedTime <= 7200000L) {
-        break;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" onWorkerExceedTime, runnable = ");
+      ((StringBuilder)localObject).append(paramList);
+      SLog.e("async.boss.BossImp", ((StringBuilder)localObject).toString());
+      if (SystemClock.uptimeMillis() - this.mReportExceedTime > 7200000L) {
+        this.mReportExceedTime = SystemClock.uptimeMillis();
       }
-      this.mReportExceedTime = SystemClock.uptimeMillis();
-      break;
-      return;
     }
   }
   
@@ -268,7 +273,7 @@ class BossImp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tribe.async.async.BossImp
  * JD-Core Version:    0.7.0.1
  */

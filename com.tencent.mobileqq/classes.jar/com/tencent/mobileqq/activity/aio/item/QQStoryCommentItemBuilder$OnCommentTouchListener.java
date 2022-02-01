@@ -20,13 +20,15 @@ class QQStoryCommentItemBuilder$OnCommentTouchListener
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener.onTouch(paramView, paramMotionEvent);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener;
+    if (localObject != null) {
+      ((OnLongClickAndTouchListener)localObject).onTouch(paramView, paramMotionEvent);
     }
-    if (this.jdField_a_of_type_AndroidViewGestureDetector != null)
+    localObject = this.jdField_a_of_type_AndroidViewGestureDetector;
+    if (localObject != null)
     {
       this.jdField_a_of_type_AndroidViewView = paramView;
-      this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+      ((GestureDetector)localObject).onTouchEvent(paramMotionEvent);
       return true;
     }
     this.jdField_a_of_type_AndroidViewView = null;
@@ -35,7 +37,7 @@ class QQStoryCommentItemBuilder$OnCommentTouchListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QQStoryCommentItemBuilder.OnCommentTouchListener
  * JD-Core Version:    0.7.0.1
  */

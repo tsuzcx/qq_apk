@@ -67,10 +67,11 @@ public class ActivityLifeImpl
   @Nullable
   public Activity getTopActivity()
   {
-    if (this.topVisibleActivity == null) {
+    SoftReference localSoftReference = this.topVisibleActivity;
+    if (localSoftReference == null) {
       return null;
     }
-    return (Activity)this.topVisibleActivity.get();
+    return (Activity)localSoftReference.get();
   }
   
   public void onCreate(Context paramContext)
@@ -90,7 +91,7 @@ public class ActivityLifeImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.activitylife.ActivityLifeImpl
  * JD-Core Version:    0.7.0.1
  */

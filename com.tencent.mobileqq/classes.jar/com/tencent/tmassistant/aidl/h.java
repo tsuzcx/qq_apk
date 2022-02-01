@@ -19,12 +19,14 @@ final class h
     localTMAssistantDownloadTaskInfo.mVia = paramParcel.readString();
     localTMAssistantDownloadTaskInfo.mChannelid = paramParcel.readString();
     localTMAssistantDownloadTaskInfo.showNotification = paramParcel.readInt();
-    if (paramParcel.readByte() != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localTMAssistantDownloadTaskInfo.isAutoInstallBySDK = bool;
-      return localTMAssistantDownloadTaskInfo;
+    boolean bool;
+    if (paramParcel.readByte() != 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    localTMAssistantDownloadTaskInfo.isAutoInstallBySDK = bool;
+    return localTMAssistantDownloadTaskInfo;
   }
   
   public TMAssistantDownloadTaskInfo[] a(int paramInt)
@@ -34,7 +36,7 @@ final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistant.aidl.h
  * JD-Core Version:    0.7.0.1
  */

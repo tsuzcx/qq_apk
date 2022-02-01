@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.avgame.gamelogic.gameres.AvGameResDownloadManager;
+import com.tencent.avgame.gamelogic.gameres.AvGameResDownloadUtil;
 import com.tencent.avgame.gameroom.IGameRoomPresenter;
 import com.tencent.avgame.gameroom.stage.base.BaseStageView;
 import com.tencent.avgame.gameroom.stage.guessaction.GuessActionStageView;
@@ -45,16 +45,6 @@ public class NormalStageView
     this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter = new StagePresenterImp(this);
   }
   
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessactionBaseGuessActionStageView = new GuessActionStageView(getContext());
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureBaseGuessPictureStageView = new GuessPictureStageView(getContext());
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongBaseGuessSongStageView = new GuessSongStageView(getContext());
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextBaseGuessTextStageView = new GuessTextStageView(getContext());
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarBaseGuessStarStageView = new GuessStarStageView(getContext());
-  }
-  
   public void a(IGameRoomPresenter paramIGameRoomPresenter)
   {
     super.a(paramIGameRoomPresenter);
@@ -88,8 +78,12 @@ public class NormalStageView
   
   public void b(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StageView", 2, "onShowImageTipOnStageBottom imageName = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onShowImageTipOnStageBottom imageName = ");
+      localStringBuilder.append(paramString);
+      QLog.d("StageView", 2, localStringBuilder.toString());
     }
     if (TextUtils.isEmpty(paramString)) {
       return;
@@ -98,13 +92,23 @@ public class NormalStageView
       removeView(this.jdField_a_of_type_AndroidWidgetImageView);
     }
     addView(this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(AvGameResDownloadManager.a(paramString));
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(AvGameResDownloadUtil.a(paramString));
     postDelayed(this.jdField_b_of_type_JavaLangRunnable, 1500L);
+  }
+  
+  public void d()
+  {
+    super.d();
+    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessactionBaseGuessActionStageView = new GuessActionStageView(getContext());
+    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureBaseGuessPictureStageView = new GuessPictureStageView(getContext());
+    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongBaseGuessSongStageView = new GuessSongStageView(getContext());
+    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextBaseGuessTextStageView = new GuessTextStageView(getContext());
+    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarBaseGuessStarStageView = new GuessStarStageView(getContext());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.stage.NormalStageView
  * JD-Core Version:    0.7.0.1
  */

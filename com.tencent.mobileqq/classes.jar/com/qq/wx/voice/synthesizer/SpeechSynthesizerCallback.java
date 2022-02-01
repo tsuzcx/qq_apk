@@ -19,21 +19,30 @@ public class SpeechSynthesizerCallback
   {
     if (!this.c)
     {
-      this.d.sendMessage(this.d.obtainMessage(200, Integer.valueOf(paramInt)));
+      localObject = this.d;
+      ((Handler)localObject).sendMessage(((Handler)localObject).obtainMessage(200, Integer.valueOf(paramInt)));
       this.c = true;
     }
-    LogTool.d("isError = " + this.c + " errorCode = " + paramInt);
+    Object localObject = new StringBuilder("isError = ");
+    ((StringBuilder)localObject).append(this.c);
+    ((StringBuilder)localObject).append(" errorCode = ");
+    ((StringBuilder)localObject).append(paramInt);
+    LogTool.d(((StringBuilder)localObject).toString());
   }
   
   protected final void a(SpeechSynthesizerResult paramSpeechSynthesizerResult)
   {
-    this.d.sendMessage(this.d.obtainMessage(300, paramSpeechSynthesizerResult));
+    Handler localHandler = this.d;
+    localHandler.sendMessage(localHandler.obtainMessage(300, paramSpeechSynthesizerResult));
   }
   
   protected final void a(SpeechSynthesizerState paramSpeechSynthesizerState)
   {
-    this.d.sendMessage(this.d.obtainMessage(100, paramSpeechSynthesizerState));
-    LogTool.d("voice record state = " + paramSpeechSynthesizerState);
+    Object localObject = this.d;
+    ((Handler)localObject).sendMessage(((Handler)localObject).obtainMessage(100, paramSpeechSynthesizerState));
+    localObject = new StringBuilder("voice record state = ");
+    ((StringBuilder)localObject).append(paramSpeechSynthesizerState);
+    LogTool.d(((StringBuilder)localObject).toString());
   }
 }
 

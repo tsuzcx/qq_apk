@@ -29,19 +29,19 @@ class MemoryDataPuller$3
     ArrayList localArrayList = new ArrayList();
     localGetMemoryCollectionKeyEvent.jdField_a_of_type_JavaUtilList = paramJobContext.a(this.jdField_a_of_type_JavaLangString, localArrayList);
     localGetMemoryCollectionKeyEvent.jdField_a_of_type_JavaUtilArrayList = localArrayList;
-    if ((paramVarArgs != null) && (paramVarArgs.isEnd == 1)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localGetMemoryCollectionKeyEvent.jdField_a_of_type_Boolean = bool;
-      StoryDispatcher.a().dispatch(localGetMemoryCollectionKeyEvent);
-      SLog.a("Q.qqstory.memories:MemoryDataPuller", "Get memory key list %s", localGetMemoryCollectionKeyEvent.jdField_a_of_type_JavaUtilList);
-      return null;
+    boolean bool = true;
+    if ((paramVarArgs == null) || (paramVarArgs.isEnd != 1)) {
+      bool = false;
     }
+    localGetMemoryCollectionKeyEvent.jdField_a_of_type_Boolean = bool;
+    StoryDispatcher.a().dispatch(localGetMemoryCollectionKeyEvent);
+    SLog.a("Q.qqstory.memories:MemoryDataPuller", "Get memory key list %s", localGetMemoryCollectionKeyEvent.jdField_a_of_type_JavaUtilList);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.controller.MemoryDataPuller.3
  * JD-Core Version:    0.7.0.1
  */

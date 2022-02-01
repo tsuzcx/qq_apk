@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/or5" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <com.tencent.mobileqq.writetogetherui.SavingAnimView android:id="@id/ora" android:visibility="gone" android:layout_width="@dimen/bii" android:layout_height="@dimen/bii" android:layout_marginRight="@dimen/bih" android:layout_alignParentLeft="true" android:layout_centerVertical="true" app:saving_stroke_width="@dimen/bij" app:saving_view_color="@color/skin_bar_text" />
+        <TextView android:textSize="@dimen/bir" android:textColor="@color/skin_bar_text" android:gravity="left" android:id="@id/or8" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/ora" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/bir" android:textColor="@color/skin_bar_text" android:gravity="left" android:id="@id/or_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/yo1" android:layout_toRightOf="@id/ora" android:layout_centerVertical="true" android:alpha="0.0" />
+        <com.tencent.mobileqq.writetogetherui.SavingAnimView android:layout_width="@dimen/bii" android:layout_height="@dimen/bii" android:layout_marginLeft="@dimen/bih" android:layout_toRightOf="@id/or_" android:layout_centerVertical="true" android:alpha="0.0" />
+    </RelativeLayout>
+    <TextView android:textSize="@dimen/bir" android:textColor="@color/skin_bar_text" android:id="@id/or7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/bir" android:textColor="@color/skin_bar_text" android:id="@id/or6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" />
+</RelativeLayout>

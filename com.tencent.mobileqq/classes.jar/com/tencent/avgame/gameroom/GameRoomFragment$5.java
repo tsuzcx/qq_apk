@@ -14,10 +14,9 @@ class GameRoomFragment$5
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool = true;
     if (paramMotionEvent.getAction() == 1)
     {
-      paramView = paramView.findViewById(2131363238);
+      paramView = paramView.findViewById(2131363170);
       Rect localRect = new Rect();
       paramView.getHitRect(localRect);
       if (localRect.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))
@@ -25,14 +24,14 @@ class GameRoomFragment$5
         GameRoomFragment.a(this.a).setVisibility(8);
         this.a.a.a();
       }
-      bool = false;
+      return false;
     }
-    return bool;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.GameRoomFragment.5
  * JD-Core Version:    0.7.0.1
  */

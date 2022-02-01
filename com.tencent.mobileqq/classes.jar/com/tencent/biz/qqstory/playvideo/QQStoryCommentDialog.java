@@ -31,34 +31,23 @@ public class QQStoryCommentDialog
   
   public int a(CharSequence paramCharSequence)
   {
+    boolean bool = TextUtils.isEmpty(paramCharSequence);
+    int j = 0;
+    if (bool) {
+      return 0;
+    }
+    int k = paramCharSequence.length();
     int i = 0;
-    int k = 0;
-    if (TextUtils.isEmpty(paramCharSequence)) {}
-    int m;
-    int j;
-    do
+    while (j < k)
     {
-      return k;
-      m = paramCharSequence.length();
-      j = 0;
-      k = i;
-    } while (j >= m);
-    if (StringUtil.c(paramCharSequence.charAt(j))) {
-      i += 3;
-    }
-    for (;;)
-    {
+      if (StringUtil.c(paramCharSequence.charAt(j))) {
+        i += 3;
+      } else {
+        i += 1;
+      }
       j += 1;
-      break;
-      i += 1;
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      dismiss();
-    }
+    return i;
   }
   
   public void dismiss()
@@ -81,13 +70,24 @@ public class QQStoryCommentDialog
   
   public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((4 == paramInt) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryCommentDialog$OnSendListener != null))
+    if (4 == paramInt)
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryCommentDialog$OnSendListener.a(this, paramTextView.getText().toString());
-      return true;
+      paramKeyEvent = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryCommentDialog$OnSendListener;
+      if (paramKeyEvent != null)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        paramKeyEvent.a(this, paramTextView.getText().toString());
+        return true;
+      }
     }
     return false;
+  }
+  
+  public void onSizeChange(boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      dismiss();
+    }
   }
   
   public void show()
@@ -105,7 +105,7 @@ public class QQStoryCommentDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.QQStoryCommentDialog
  * JD-Core Version:    0.7.0.1
  */

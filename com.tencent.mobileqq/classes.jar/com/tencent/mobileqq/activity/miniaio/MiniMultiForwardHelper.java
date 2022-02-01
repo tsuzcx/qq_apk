@@ -32,29 +32,42 @@ public class MiniMultiForwardHelper
   
   public int[] interestedIn()
   {
-    return new int[] { 4, 6, 10, 14 };
+    return new int[] { 4, 7, 11, 15 };
   }
   
   public void onMoveToState(int paramInt)
   {
-    QLog.i("MiniMultiForwardHelper", 2, "RESUME onMoveToState：=" + paramInt);
-    switch (paramInt)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RESUME onMoveToState：=");
+    localStringBuilder.append(paramInt);
+    QLog.i("MiniMultiForwardHelper", 2, localStringBuilder.toString());
+    if (paramInt != 7)
     {
-    default: 
-      return;
-    case 6: 
-      this.jdField_a_of_type_Boolean = BaseChatItemLayout.jdField_a_of_type_Boolean;
-      BaseChatItemLayout.jdField_a_of_type_Boolean = false;
-      QLog.i("MiniMultiForwardHelper", 2, "RESUME mPreCheckBoxVisibleStat：=" + this.jdField_a_of_type_Boolean + "  BaseChatItemLayout.CheckBoxVisible :" + BaseChatItemLayout.jdField_a_of_type_Boolean);
+      if (paramInt != 11) {
+        return;
+      }
+      BaseChatItemLayout.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("RESUME mPreCheckBoxVisibleStat：=");
+      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append("  BaseChatItemLayout.CheckBoxVisible :");
+      localStringBuilder.append(BaseChatItemLayout.jdField_a_of_type_Boolean);
+      QLog.i("MiniMultiForwardHelper", 2, localStringBuilder.toString());
       return;
     }
-    BaseChatItemLayout.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    QLog.i("MiniMultiForwardHelper", 2, "RESUME mPreCheckBoxVisibleStat：=" + this.jdField_a_of_type_Boolean + "  BaseChatItemLayout.CheckBoxVisible :" + BaseChatItemLayout.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Boolean = BaseChatItemLayout.jdField_a_of_type_Boolean;
+    BaseChatItemLayout.jdField_a_of_type_Boolean = false;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RESUME mPreCheckBoxVisibleStat：=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("  BaseChatItemLayout.CheckBoxVisible :");
+    localStringBuilder.append(BaseChatItemLayout.jdField_a_of_type_Boolean);
+    QLog.i("MiniMultiForwardHelper", 2, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMultiForwardHelper
  * JD-Core Version:    0.7.0.1
  */

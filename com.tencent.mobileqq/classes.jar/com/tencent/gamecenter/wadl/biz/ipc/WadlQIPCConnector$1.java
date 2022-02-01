@@ -15,9 +15,7 @@ class WadlQIPCConnector$1
       WadlQIPCConnector.a(this.a, paramEIPCConnection.procName);
     }
     WadlQIPCConnector.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("WadlQIPCConnector", 2, "onConnectBind");
-    }
+    QLog.d("Wadl_QIPCConnector", 1, "onConnectBind");
   }
   
   public void onConnectUnbind(EIPCConnection paramEIPCConnection)
@@ -26,14 +24,12 @@ class WadlQIPCConnector$1
       WadlQIPCConnector.a(this.a, paramEIPCConnection.procName);
     }
     WadlQIPCConnector.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("WadlQIPCConnector", 2, "onConnectUnbind");
-    }
+    QLog.d("Wadl_QIPCConnector", 1, "onConnectUnbind");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.biz.ipc.WadlQIPCConnector.1
  * JD-Core Version:    0.7.0.1
  */

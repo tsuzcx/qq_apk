@@ -31,15 +31,12 @@ public class GetWeatherRequest
     try
     {
       localRspGetWeather.mergeFrom(paramArrayOfByte);
-      return new GetWeatherResponse(localRspGetWeather);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      paramArrayOfByte.printStackTrace();
     }
+    return new GetWeatherResponse(localRspGetWeather);
   }
   
   public String a()
@@ -47,7 +44,7 @@ public class GetWeatherRequest
     return a;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqGetWeather localReqGetWeather = new qqstory_service.ReqGetWeather();
     localReqGetWeather.coordinate.set(this.c);
@@ -58,7 +55,7 @@ public class GetWeatherRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetWeatherRequest
  * JD-Core Version:    0.7.0.1
  */

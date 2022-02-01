@@ -15,17 +15,25 @@ class FloatWindowModule$4
   
   public void onChanged(@Nullable ShowAnchorStateEvent paramShowAnchorStateEvent)
   {
-    if (paramShowAnchorStateEvent.uin != FloatWindowModule.access$600(this.this$0).getAnchorInfo().uid) {}
-    while ((!FloatWindowModule.access$700(this.this$0)) || (FloatWindowModule.access$000(this.this$0) == null) || (!FloatWindowModule.access$000(this.this$0).isReallyShow()) || (paramShowAnchorStateEvent.anchorState != ShowAnchorStateEvent.AnchorState.PAUSE)) {
+    if (paramShowAnchorStateEvent.uin != FloatWindowModule.access$500(this.this$0).getAnchorInfo().uid) {
       return;
     }
-    FloatWindowModule.access$800(this.this$0, "主播暂时离开");
-    FloatWindowModule.access$400(this.this$0, 1);
+    if (!FloatWindowModule.access$600(this.this$0)) {
+      return;
+    }
+    if (this.this$0.floatWindowComponent == null) {
+      return;
+    }
+    if ((this.this$0.floatWindowComponent.isReallyShow()) && (paramShowAnchorStateEvent.anchorState == ShowAnchorStateEvent.AnchorState.PAUSE))
+    {
+      FloatWindowModule.access$700(this.this$0, "主播暂时离开");
+      FloatWindowModule.access$300(this.this$0, 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.bizmodule.FloatWindowModule.4
  * JD-Core Version:    0.7.0.1
  */

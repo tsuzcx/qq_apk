@@ -38,35 +38,27 @@ public abstract class ILoadPluginDelegate
   
   private static void iteratorCallbacks(List<WeakReference<ILoadPluginDelegate>> paramList, int paramInt, String paramString)
   {
-    for (;;)
+    try
     {
-      ILoadPluginDelegate localILoadPluginDelegate;
-      try
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        paramList = paramList.iterator();
-        if (paramList.hasNext())
+        ILoadPluginDelegate localILoadPluginDelegate = (ILoadPluginDelegate)((WeakReference)paramList.next()).get();
+        if (paramInt == 0)
         {
-          localILoadPluginDelegate = (ILoadPluginDelegate)((WeakReference)paramList.next()).get();
-          if (paramInt == 0)
-          {
-            if (localILoadPluginDelegate == null) {
-              continue;
-            }
+          if (localILoadPluginDelegate != null) {
             localILoadPluginDelegate.onLoadingSuccess();
           }
         }
-        else
-        {
-          return;
+        else if (localILoadPluginDelegate != null) {
+          localILoadPluginDelegate.onLoadingFailed(paramInt, paramString);
         }
       }
-      catch (Exception paramList)
-      {
-        QLog.d("QCIRCLE_PLUGIN", 1, paramList.getMessage());
-      }
-      if (localILoadPluginDelegate != null) {
-        localILoadPluginDelegate.onLoadingFailed(paramInt, paramString);
-      }
+      return;
+    }
+    catch (Exception paramList)
+    {
+      QLog.d("QCIRCLE_PLUGIN", 1, paramList.getMessage());
     }
   }
   
@@ -84,7 +76,7 @@ public abstract class ILoadPluginDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.delegate.ILoadPluginDelegate
  * JD-Core Version:    0.7.0.1
  */

@@ -14,20 +14,22 @@ class PermissionPrivacyFragment$8
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    PermissionPrivacyFragment.a(this.a, this.a.a.a(), paramBoolean);
+    PermissionPrivacyFragment localPermissionPrivacyFragment = this.a;
+    PermissionPrivacyFragment.a(localPermissionPrivacyFragment, localPermissionPrivacyFragment.a.a(), paramBoolean);
   }
   
   public void b(int paramInt, boolean paramBoolean)
   {
     if (paramInt == -1) {
-      PermissionPrivacyFragment.a(this.a, 2131719116);
+      PermissionPrivacyFragment.a(this.a, 2131718834);
     }
-    PermissionPrivacyFragment.a(this.a, this.a.a.a(), PermissionPrivacyFragment.a(this.a).b());
+    PermissionPrivacyFragment localPermissionPrivacyFragment = this.a;
+    PermissionPrivacyFragment.a(localPermissionPrivacyFragment, localPermissionPrivacyFragment.a.a(), PermissionPrivacyFragment.a(this.a).b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.settings.fragment.PermissionPrivacyFragment.8
  * JD-Core Version:    0.7.0.1
  */

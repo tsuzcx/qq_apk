@@ -1,6 +1,7 @@
 package com.tencent.qqlive.module.videoreport.traversal;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.qqlive.module.videoreport.Log;
@@ -19,6 +20,19 @@ public class ViewTraverser
     }
   }
   
+  @Nullable
+  private View fetchChildAt(ViewGroup paramViewGroup, View[] paramArrayOfView, int paramInt)
+  {
+    if (paramArrayOfView == null) {
+      return paramViewGroup.getChildAt(paramInt);
+    }
+    if (paramInt < paramArrayOfView.length) {
+      return paramArrayOfView[paramInt];
+    }
+    Log.e("ViewTraverser", "Attention: get child errorrrrrrrrr!");
+    return null;
+  }
+  
   public static ViewTraverser getInstance()
   {
     return ViewTraverser.InstanceHolder.INSTANCE;
@@ -26,19 +40,24 @@ public class ViewTraverser
   
   private void performInternal(@NonNull View paramView, int paramInt, @NonNull IViewTraverseCallback paramIViewTraverseCallback)
   {
-    if (this.mOnTraverseListener != null) {
-      this.mOnTraverseListener.onViewVisited(paramView);
+    Object localObject = this.mOnTraverseListener;
+    if (localObject != null) {
+      ((OnViewTraverseListener)localObject).onViewVisited(paramView);
     }
     if ((paramIViewTraverseCallback.onEnter(paramView, paramInt)) && ((paramView instanceof ViewGroup)))
     {
-      ViewGroup localViewGroup = (ViewGroup)paramView;
-      int i = localViewGroup.getChildCount();
+      localObject = (ViewGroup)paramView;
+      int i = ((ViewGroup)localObject).getChildCount();
       if (i != 0)
       {
+        View[] arrayOfView = ViewGroupDrawingCompat.getChildrenByDrawingOrder((ViewGroup)localObject);
         i -= 1;
         while (i >= 0)
         {
-          performInternal(localViewGroup.getChildAt(i), paramInt + 1, paramIViewTraverseCallback);
+          View localView = fetchChildAt((ViewGroup)localObject, arrayOfView, i);
+          if (localView != null) {
+            performInternal(localView, paramInt + 1, paramIViewTraverseCallback);
+          }
           i -= 1;
         }
       }
@@ -48,10 +67,13 @@ public class ViewTraverser
   
   public void perform(View paramView, IViewTraverseCallback paramIViewTraverseCallback)
   {
-    if ((paramView == null) || (paramIViewTraverseCallback == null)) {
-      return;
+    if (paramView != null)
+    {
+      if (paramIViewTraverseCallback == null) {
+        return;
+      }
+      performInternal(paramView, 1, paramIViewTraverseCallback);
     }
-    performInternal(paramView, 1, paramIViewTraverseCallback);
   }
   
   public void setListener(OnViewTraverseListener paramOnViewTraverseListener)
@@ -61,7 +83,7 @@ public class ViewTraverser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.traversal.ViewTraverser
  * JD-Core Version:    0.7.0.1
  */

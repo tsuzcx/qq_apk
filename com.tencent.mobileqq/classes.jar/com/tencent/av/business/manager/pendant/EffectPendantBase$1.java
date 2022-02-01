@@ -18,14 +18,15 @@ class EffectPendantBase$1
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.i(this.this$0.jdField_a_of_type_JavaLangString, 2, "isTemplateUsable unzip error", localException);
+      if (QLog.isColorLevel()) {
+        QLog.i(this.this$0.jdField_a_of_type_JavaLangString, 2, "isTemplateUsable unzip error", localException);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.pendant.EffectPendantBase.1
  * JD-Core Version:    0.7.0.1
  */

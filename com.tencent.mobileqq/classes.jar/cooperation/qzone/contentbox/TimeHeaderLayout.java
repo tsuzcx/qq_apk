@@ -19,7 +19,6 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.app.face.FaceDrawable;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.QUA;
 import cooperation.qzone.report.lp.LpReportInfo_dc02880;
@@ -76,40 +75,44 @@ public class TimeHeaderLayout
   
   private String getVisitorJumpUrl()
   {
-    String str2 = QzoneConfig.getInstance().getConfig("H5Url", "QzoneVisitor", "https://h5.qzone.qq.com/qzone/visitor/{hostUin}?uin={uin}&from={from}&qua={qua}&clicktime={clicktime}&hostuin={hostUin}&_wv=3&_proxy=1&trace_detail=%7B%22appid%22%3A%22{refer}%22%7D");
-    if (TextUtils.isEmpty(str2)) {
-      return str2;
+    Object localObject2 = QzoneConfig.getInstance().getConfig("H5Url", "QzoneVisitor", "https://h5.qzone.qq.com/qzone/visitor/{hostUin}?uin={uin}&from={from}&qua={qua}&clicktime={clicktime}&hostuin={hostUin}&_wv=3&_proxy=1&trace_detail=%7B%22appid%22%3A%22{refer}%22%7D");
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      return localObject2;
     }
-    String str3 = getCurrentUin();
-    String str1 = str2;
-    if (!TextUtils.isEmpty(str3)) {
-      str1 = str2.replace("{uin}", str3).replace("{hostUin}", str3);
+    String str = getCurrentUin();
+    Object localObject1 = localObject2;
+    if (!TextUtils.isEmpty(str)) {
+      localObject1 = ((String)localObject2).replace("{uin}", str).replace("{hostUin}", str);
     }
-    return str1.replace("{clicktime}", System.currentTimeMillis() + "").replace("{from}", "androidQQ").replace("{qua}", QUA.getQUA3());
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(System.currentTimeMillis());
+    ((StringBuilder)localObject2).append("");
+    return ((String)localObject1).replace("{clicktime}", ((StringBuilder)localObject2).toString()).replace("{from}", "androidQQ").replace("{qua}", QUA.getQUA3());
   }
   
   private void init()
   {
     this.handler = new Handler(Looper.getMainLooper());
-    LayoutInflater.from(getContext()).inflate(2131562572, this, true);
+    LayoutInflater.from(getContext()).inflate(2080636947, this, true);
     this.preferences = BaseApplicationImpl.getApplication().getSharedPreferences("qzone_time_capsule", 0);
-    this.timeCapsule = findViewById(2131379344);
-    this.avatarView = ((ImageView)findViewById(2131363196));
-    this.registerDyasView = ((TextView)findViewById(2131376283));
-    this.loginDaysView = ((TextView)findViewById(2131375775));
-    this.vistorView = ((TextView)findViewById(2131376356));
-    this.mLayoutVisitor = ((LinearLayout)findViewById(2131370220));
+    this.timeCapsule = findViewById(2080571524);
+    this.avatarView = ((ImageView)findViewById(2080571397));
+    this.registerDyasView = ((TextView)findViewById(2080571499));
+    this.loginDaysView = ((TextView)findViewById(2080571494));
+    this.vistorView = ((TextView)findViewById(2080571500));
+    this.mLayoutVisitor = ((LinearLayout)findViewById(2080571462));
     this.mLayoutVisitor.setOnClickListener(this);
-    findViewById(2131379344).setOnClickListener(this);
+    findViewById(2080571524).setOnClickListener(this);
     VipReporterManager.a(9, 1);
   }
   
   private void onDetailClick(TimeHeaderLayout.HeadInfo paramHeadInfo)
   {
-    LpReportInfo_dc02880 localLpReportInfo_dc02880 = new LpReportInfo_dc02880(7, 3);
-    LpReportManager.getInstance().reportToDC02880(localLpReportInfo_dc02880, false, true);
-    if ((this.onDetailClickListner != null) && (paramHeadInfo != null)) {
-      this.onDetailClickListner.onDetailClick(paramHeadInfo.jumpUrl, 2131379344);
+    Object localObject = new LpReportInfo_dc02880(7, 3);
+    LpReportManager.getInstance().reportToDC02880((LpReportInfo_dc02880)localObject, false, true);
+    localObject = this.onDetailClickListner;
+    if ((localObject != null) && (paramHeadInfo != null)) {
+      ((TimeHeaderLayout.OnDetailClickListner)localObject).onDetailClick(paramHeadInfo.jumpUrl, 2080571524);
     }
   }
   
@@ -118,54 +121,51 @@ public class TimeHeaderLayout
     Object localObject = FaceDrawable.getDefaultDrawable(1, 3);
     localObject = FaceDrawable.getFaceDrawable(((BaseActivity)this.mContext).app, 1, BaseApplicationImpl.getApplication().getRuntime().getAccount(), 3, (Drawable)localObject, (Drawable)localObject, null);
     this.avatarView.setImageDrawable((Drawable)localObject);
-    if (this.headInfo != null)
+    localObject = this.headInfo;
+    if (localObject != null)
     {
-      if (this.headInfo.todayVisitor <= 999L) {
-        break label122;
+      if (((TimeHeaderLayout.HeadInfo)localObject).todayVisitor > 999L) {
+        this.vistorView.setText("999+");
+      } else {
+        this.vistorView.setText(String.valueOf(this.headInfo.todayVisitor));
       }
-      this.vistorView.setText("999+");
-      if (this.headInfo.loginDays <= 999L) {
-        break label142;
+      if (this.headInfo.loginDays > 999L) {
+        this.loginDaysView.setText("999+");
+      } else {
+        this.loginDaysView.setText(String.valueOf(this.headInfo.loginDays));
       }
-      this.loginDaysView.setText("999+");
+      if (this.headInfo.registerDays > 9999L)
+      {
+        this.registerDyasView.setText("9999+");
+        return;
+      }
+      this.registerDyasView.setText(String.valueOf(this.headInfo.registerDays));
     }
-    for (;;)
-    {
-      if (this.headInfo.registerDays <= 9999L) {
-        break label162;
-      }
-      this.registerDyasView.setText("9999+");
-      return;
-      label122:
-      this.vistorView.setText(String.valueOf(this.headInfo.todayVisitor));
-      break;
-      label142:
-      this.loginDaysView.setText(String.valueOf(this.headInfo.loginDays));
-    }
-    label162:
-    this.registerDyasView.setText(String.valueOf(this.headInfo.registerDays));
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i != 2080571462)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      onDetailClick(this.headInfo);
-      continue;
-      if (this.onDetailClickListner != null)
-      {
-        String str = getVisitorJumpUrl();
-        if (QLog.isColorLevel()) {
-          QLog.i("QZoneMsg", 0, " jump url = " + str);
-        }
-        VipReporterManager.a(9, 2);
-        this.onDetailClickListner.onDetailClick(str, 2131370220);
+      if (i != 2080571524) {
+        return;
       }
+      onDetailClick(this.headInfo);
+      return;
+    }
+    if (this.onDetailClickListner != null)
+    {
+      paramView = getVisitorJumpUrl();
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" jump url = ");
+        localStringBuilder.append(paramView);
+        QLog.i("QZoneMsg", 0, localStringBuilder.toString());
+      }
+      VipReporterManager.a(9, 2);
+      this.onDetailClickListner.onDetailClick(paramView, 2080571462);
     }
   }
   
@@ -184,7 +184,7 @@ public class TimeHeaderLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.contentbox.TimeHeaderLayout
  * JD-Core Version:    0.7.0.1
  */

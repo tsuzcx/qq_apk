@@ -1,15 +1,14 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDoingSomething;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyReportUserApps;
 import com.tencent.imcore.message.ConversationFacade;
-import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.MsgCountChecker;
 import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
+import com.tencent.mobileqq.kandian.base.report.api.IReadInJoyDoingSomething;
+import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoyHelper;
+import com.tencent.mobileqq.qroute.QRoute;
 
 class TimerCheckMsgCount$1
   implements Runnable
@@ -18,46 +17,27 @@ class TimerCheckMsgCount$1
   
   public void run()
   {
-    this.this$0.a.a.getMessageFacade().l();
-    ((HotChatManager)this.this$0.a.a.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).b();
-    this.this$0.a.a.getConversationFacade().c();
-    if (!ReadInJoyHelper.q(this.this$0.a.a)) {
-      if (((Boolean)ReadInJoyHelper.a("kandian_report_user_apps_switch", Boolean.valueOf(false))).booleanValue()) {
-        break label119;
-      }
-    }
-    for (;;)
-    {
-      for (;;)
-      {
-        TimerCheckMsgCount.a(this.this$0, null);
-        return;
-        try
-        {
-          TimerCheckMsgCount.a(this.this$0);
-          ReadInJoyDoingSomething.a();
-        }
-        catch (Exception localException1)
-        {
-          localException1.printStackTrace();
-        }
-      }
-      break;
+    TimerCheckMsgCount.a(this.this$0).a(this.this$0.mAutomator.a);
+    ((HotChatManager)this.this$0.mAutomator.a.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).b();
+    this.this$0.mAutomator.a.getConversationFacade().c();
+    if (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getKanDianReportTTSwitch()) {
       try
       {
-        label119:
-        ReadInJoyReportUserApps.a();
+        TimerCheckMsgCount.a(this.this$0);
+        ((IReadInJoyDoingSomething)QRoute.api(IReadInJoyDoingSomething.class)).reportManyAppsData();
       }
-      catch (Exception localException2)
+      catch (Exception localException)
       {
-        QLog.e("QQInitHandler", 1, "TImerCheckMsgCount run: ", localException2);
+        localException.printStackTrace();
       }
     }
+    ((Boolean)((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getReadInJoySpValue("kandian_report_user_apps_switch", Boolean.valueOf(false))).booleanValue();
+    TimerCheckMsgCount.a(this.this$0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.TimerCheckMsgCount.1
  * JD-Core Version:    0.7.0.1
  */

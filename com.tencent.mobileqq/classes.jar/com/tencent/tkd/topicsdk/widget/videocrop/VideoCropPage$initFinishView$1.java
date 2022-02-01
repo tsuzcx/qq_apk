@@ -14,7 +14,8 @@ final class VideoCropPage$initFinishView$1
   {
     if (!VideoCropPage.a(this.a).b())
     {
-      this.a.a(VideoCropPage.a(this.a).a(), "");
+      paramView = this.a;
+      paramView.a(VideoCropPage.a(paramView).a(), "");
       return;
     }
     VideoCropPage.a(this.a).b();
@@ -22,7 +23,7 @@ final class VideoCropPage$initFinishView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocrop.VideoCropPage.initFinishView.1
  * JD-Core Version:    0.7.0.1
  */

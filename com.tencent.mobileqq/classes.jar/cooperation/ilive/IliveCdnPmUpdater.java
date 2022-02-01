@@ -15,8 +15,12 @@ public class IliveCdnPmUpdater
   public IliveCdnPmUpdater()
   {
     String str = IlivePluginDownloadManager.a().b();
-    if (QLog.isColorLevel()) {
-      QLog.i("IliveCdnPmUpdater", 2, "new IliveCdnPmUpdater file = " + str);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("new IliveCdnPmUpdater file = ");
+      localStringBuilder.append(str);
+      QLog.i("IliveCdnPmUpdater", 2, localStringBuilder.toString());
     }
     this.a = new File(str);
   }
@@ -46,7 +50,7 @@ public class IliveCdnPmUpdater
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.IliveCdnPmUpdater
  * JD-Core Version:    0.7.0.1
  */

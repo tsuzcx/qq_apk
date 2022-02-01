@@ -83,11 +83,21 @@ class AudioJsPlugin$AudioManager
     {
       JSONObject localJSONObject = new JSONObject();
       paramString = ((MiniAppFileManager)AudioJsPlugin.access$3000(this.this$0).getManager(MiniAppFileManager.class)).getWxFilePath(paramString);
-      QMLog.d("AudioJsPlugin", "handleOnRecordEnd, tempFilePath:" + paramString + ", duration:" + paramLong1 + ", fileSize:" + paramLong2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleOnRecordEnd, tempFilePath:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", duration:");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append(", fileSize:");
+      localStringBuilder.append(paramLong2);
+      QMLog.d("AudioJsPlugin", localStringBuilder.toString());
       localJSONObject.put("tempFilePath", paramString);
       localJSONObject.put("duration", paramLong1);
       localJSONObject.put("fileSize", paramLong2);
-      QMLog.d("AudioJsPlugin", "handleOnRecordEnd : " + this.isRecordManagerApi);
+      paramString = new StringBuilder();
+      paramString.append("handleOnRecordEnd : ");
+      paramString.append(this.isRecordManagerApi);
+      QMLog.d("AudioJsPlugin", paramString.toString());
       if (this.isRecordManagerApi)
       {
         localJSONObject.put("state", "stop");
@@ -95,17 +105,20 @@ class AudioJsPlugin$AudioManager
         return;
       }
       this.startRecordReq.ok(localJSONObject);
-      if (this.stopRecordReq != null)
-      {
-        this.stopRecordReq.ok();
-        this.stopRecordReq = null;
-        return;
+      if (this.stopRecordReq == null) {
+        break label226;
       }
+      this.stopRecordReq.ok();
+      this.stopRecordReq = null;
+      return;
     }
     catch (Exception paramString)
     {
-      handleRecordFail("onRecordEnd exception");
+      label220:
+      label226:
+      break label220;
     }
+    handleRecordFail("onRecordEnd exception");
   }
   
   private void handlePlayVoice(int paramInt)
@@ -120,15 +133,21 @@ class AudioJsPlugin$AudioManager
   
   private void handleRecordFail(String paramString)
   {
-    QMLog.d("AudioJsPlugin", "handleRecordFail : " + this.isRecordManagerApi);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("handleRecordFail : ");
+    ((StringBuilder)localObject).append(this.isRecordManagerApi);
+    QMLog.d("AudioJsPlugin", ((StringBuilder)localObject).toString());
     if (this.isRecordManagerApi)
     {
-      JSONObject localJSONObject = new JSONObject();
+      localObject = new JSONObject();
       try
       {
-        localJSONObject.put("state", "error");
-        localJSONObject.put("errMsg", "recordError:" + paramString);
-        AudioJsPlugin.access$3200(this.this$0, "onRecorderStateChange", localJSONObject.toString());
+        ((JSONObject)localObject).put("state", "error");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("recordError:");
+        localStringBuilder.append(paramString);
+        ((JSONObject)localObject).put("errMsg", localStringBuilder.toString());
+        AudioJsPlugin.access$3200(this.this$0, "onRecorderStateChange", ((JSONObject)localObject).toString());
         return;
       }
       catch (Exception paramString)
@@ -160,7 +179,10 @@ class AudioJsPlugin$AudioManager
   public void onErrorInfo(String paramString)
   {
     paramString = getLameMp3Recorder().getRecordFilPath();
-    QMLog.e("AudioJsPlugin", "AudioManager.onRecorderNotReady() is called,path is:" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AudioManager.onRecorderNotReady() is called,path is:");
+    localStringBuilder.append(paramString);
+    QMLog.e("AudioJsPlugin", localStringBuilder.toString());
     this.startRecordReq.fail();
   }
   
@@ -197,98 +219,112 @@ class AudioJsPlugin$AudioManager
   
   public void onRecordFrame(byte[] paramArrayOfByte, boolean paramBoolean)
   {
-    JSONObject localJSONObject;
-    if (paramArrayOfByte != null) {
-      localJSONObject = new JSONObject();
-    }
-    try
+    if (paramArrayOfByte != null)
     {
-      localJSONObject.put("state", "frameRecorded");
-      NativeBuffer.packNativeBuffer(null, paramArrayOfByte, NativeBuffer.TYPE_BUFFER_BASE64, "frameBuffer", localJSONObject);
-      localJSONObject.put("isLastFrame", paramBoolean);
-      AudioJsPlugin.access$2900(this.this$0, "onRecorderStateChange", localJSONObject.toString());
-      return;
-    }
-    catch (Throwable paramArrayOfByte)
-    {
-      while (!QMLog.isColorLevel()) {}
-      QMLog.e("AudioJsPlugin", "onRecordFrame failed! " + Log.getStackTraceString(paramArrayOfByte));
+      Object localObject = new JSONObject();
+      try
+      {
+        ((JSONObject)localObject).put("state", "frameRecorded");
+        NativeBuffer.packNativeBuffer(null, paramArrayOfByte, NativeBuffer.TYPE_BUFFER_BASE64, "frameBuffer", (JSONObject)localObject);
+        ((JSONObject)localObject).put("isLastFrame", paramBoolean);
+        AudioJsPlugin.access$2900(this.this$0, "onRecorderStateChange", ((JSONObject)localObject).toString());
+        return;
+      }
+      catch (Throwable paramArrayOfByte)
+      {
+        if (QMLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("onRecordFrame failed! ");
+          ((StringBuilder)localObject).append(Log.getStackTraceString(paramArrayOfByte));
+          QMLog.e("AudioJsPlugin", ((StringBuilder)localObject).toString());
+        }
+      }
     }
   }
   
   public void onRecordPause()
   {
-    QMLog.d("AudioJsPlugin", "onRecordPause : " + this.isRecordManagerApi);
-    JSONObject localJSONObject;
-    if (this.isRecordManagerApi) {
-      localJSONObject = new JSONObject();
-    }
-    try
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onRecordPause : ");
+    ((StringBuilder)localObject).append(this.isRecordManagerApi);
+    QMLog.d("AudioJsPlugin", ((StringBuilder)localObject).toString());
+    if (this.isRecordManagerApi)
     {
-      localJSONObject.put("state", "pause");
-      AudioJsPlugin.access$2700(this.this$0, "onRecorderStateChange", localJSONObject.toString());
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+      localObject = new JSONObject();
+      try
+      {
+        ((JSONObject)localObject).put("state", "pause");
+        AudioJsPlugin.access$2700(this.this$0, "onRecorderStateChange", ((JSONObject)localObject).toString());
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
     }
   }
   
   public void onRecordResume()
   {
-    QMLog.d("AudioJsPlugin", "onRecordResume : " + this.isRecordManagerApi);
-    JSONObject localJSONObject;
-    if (this.isRecordManagerApi) {
-      localJSONObject = new JSONObject();
-    }
-    try
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onRecordResume : ");
+    ((StringBuilder)localObject).append(this.isRecordManagerApi);
+    QMLog.d("AudioJsPlugin", ((StringBuilder)localObject).toString());
+    if (this.isRecordManagerApi)
     {
-      localJSONObject.put("state", "resume");
-      AudioJsPlugin.access$2800(this.this$0, "onRecorderStateChange", localJSONObject.toString());
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+      localObject = new JSONObject();
+      try
+      {
+        ((JSONObject)localObject).put("state", "resume");
+        AudioJsPlugin.access$2800(this.this$0, "onRecorderStateChange", ((JSONObject)localObject).toString());
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
     }
   }
   
   public void onRecordStart()
   {
-    QMLog.d("AudioJsPlugin", "onRecordStart : " + this.isRecordManagerApi);
-    JSONObject localJSONObject;
-    if (this.isRecordManagerApi) {
-      localJSONObject = new JSONObject();
-    }
-    try
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onRecordStart : ");
+    ((StringBuilder)localObject).append(this.isRecordManagerApi);
+    QMLog.d("AudioJsPlugin", ((StringBuilder)localObject).toString());
+    if (this.isRecordManagerApi)
     {
-      localJSONObject.put("state", "start");
-      AudioJsPlugin.access$2600(this.this$0, "onRecorderStateChange", localJSONObject.toString());
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      QMLog.e("AudioJsPlugin", localException.getMessage());
+      localObject = new JSONObject();
+      try
+      {
+        ((JSONObject)localObject).put("state", "start");
+        AudioJsPlugin.access$2600(this.this$0, "onRecorderStateChange", ((JSONObject)localObject).toString());
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        QMLog.e("AudioJsPlugin", localException.getMessage());
+      }
     }
   }
   
   public void onRecordStop(String paramString, long paramLong1, long paramLong2)
   {
-    if (this.recorder == null) {}
-    int i;
-    do
-    {
+    if (this.recorder == null) {
       return;
-      i = getFateOfRecorder();
-      QMLog.d("AudioJsPlugin", "onRecordStop, fateOfRecorder is:" + i + ", recordFilePath:" + paramString);
-      if (i == 0)
-      {
-        handleOnRecordEnd(paramString, paramLong1, paramLong2);
-        return;
-      }
-    } while (i != 1);
+    }
+    int i = getFateOfRecorder();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onRecordStop, fateOfRecorder is:");
+    localStringBuilder.append(i);
+    localStringBuilder.append(", recordFilePath:");
+    localStringBuilder.append(paramString);
+    QMLog.d("AudioJsPlugin", localStringBuilder.toString());
+    if (i == 0) {
+      handleOnRecordEnd(paramString, paramLong1, paramLong2);
+    }
   }
   
   public void onRecordUpdate(int paramInt1, int paramInt2) {}
@@ -341,49 +377,55 @@ class AudioJsPlugin$AudioManager
     }
     Object localObject = Environment.getExternalStorageDirectory();
     int i;
-    if ((((File)localObject).exists()) && (((File)localObject).canWrite()))
-    {
+    if ((((File)localObject).exists()) && (((File)localObject).canWrite())) {
       i = 1;
-      if ((!Environment.getExternalStorageState().equals("mounted")) || (i == 0)) {
-        break label182;
-      }
-      i = 1;
+    } else {
+      i = 0;
     }
-    for (;;)
+    if ((Environment.getExternalStorageState().equals("mounted")) && (i != 0)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
     {
-      if (i != 0)
+      localObject = DeviceInfoUtil.getSDCardMemory();
+      if ((new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath()).getAvailableBlocks() > 1) && (localObject != null) && (localObject[1] > 2L))
       {
-        localObject = DeviceInfoUtil.getSDCardMemory();
-        if ((new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath()).getAvailableBlocks() > 1) && (localObject != null) && (localObject[1] > 2L))
+        if (AudioHelper.isForbidByRubbishMeizu(1))
         {
-          if (AudioHelper.isForbidByRubbishMeizu(1))
-          {
-            QMLog.i("AudioJsPlugin", "startRecord() " + this.context.getString(R.string.mini_sdk_microphone_forbidden));
-            paramRequestEvent.fail();
-            return;
-            i = 0;
-            break;
-            label182:
-            i = 0;
-            continue;
-          }
-          QMLog.d("AudioJsPlugin", "startRecord() is called");
-          if (this.recorder == null) {
-            this.recorder = getLameMp3Recorder();
-          }
-          paramRequestEvent = this.recorder.getRecordFilPath();
-          QMLog.i("AudioJsPlugin", "path: " + paramRequestEvent);
-          ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).muteAudioFocus(this.context, true);
-          this.recorder.recordStart();
-          setFateOfRecorder(0);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("startRecord() ");
+          ((StringBuilder)localObject).append(this.context.getString(R.string.mini_sdk_microphone_forbidden));
+          QMLog.i("AudioJsPlugin", ((StringBuilder)localObject).toString());
+          paramRequestEvent.fail();
           return;
         }
-        QMLog.d("AudioJsPlugin", "startRecord() " + this.context.getString(R.string.mini_sdk_sdcard_full_no_send));
-        paramRequestEvent.fail();
+        QMLog.d("AudioJsPlugin", "startRecord() is called");
+        if (this.recorder == null) {
+          this.recorder = getLameMp3Recorder();
+        }
+        paramRequestEvent = this.recorder.getRecordFilPath();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("path: ");
+        ((StringBuilder)localObject).append(paramRequestEvent);
+        QMLog.i("AudioJsPlugin", ((StringBuilder)localObject).toString());
+        ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).muteAudioFocus(this.context, true);
+        this.recorder.recordStart();
+        setFateOfRecorder(0);
         return;
       }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startRecord() ");
+      ((StringBuilder)localObject).append(this.context.getString(R.string.mini_sdk_sdcard_full_no_send));
+      QMLog.d("AudioJsPlugin", ((StringBuilder)localObject).toString());
+      paramRequestEvent.fail();
+      return;
     }
-    QMLog.w("AudioJsPlugin", "startRecord() " + this.context.getString(R.string.mini_sdk_nosdcardnosend));
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("startRecord() ");
+    ((StringBuilder)localObject).append(this.context.getString(R.string.mini_sdk_nosdcardnosend));
+    QMLog.w("AudioJsPlugin", ((StringBuilder)localObject).toString());
     paramRequestEvent.fail();
   }
   
@@ -413,7 +455,7 @@ class AudioJsPlugin$AudioManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.AudioJsPlugin.AudioManager
  * JD-Core Version:    0.7.0.1
  */

@@ -16,10 +16,9 @@ final class ol$b$1
   public final void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    ol.b.a locala;
     if ((paramMessage.obj instanceof ol.b.a))
     {
-      locala = (ol.b.a)paramMessage.obj;
+      ol.b.a locala = (ol.b.a)paramMessage.obj;
       if (locala.b != null) {
         locala.e = locala.b.a(locala.c);
       }
@@ -27,22 +26,20 @@ final class ol$b$1
       if (locala.e != null)
       {
         ol.b.a(this.a).add(locala);
-        if (locala.h == null) {
-          break label96;
+        Handler localHandler;
+        if (locala.h != null) {
+          localHandler = locala.h;
+        } else {
+          localHandler = ol.a();
         }
+        locala.a(paramMessage, localHandler, 0L);
       }
-    }
-    label96:
-    for (Handler localHandler = locala.h;; localHandler = ol.a())
-    {
-      locala.a(paramMessage, localHandler, 0L);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.ol.b.1
  * JD-Core Version:    0.7.0.1
  */

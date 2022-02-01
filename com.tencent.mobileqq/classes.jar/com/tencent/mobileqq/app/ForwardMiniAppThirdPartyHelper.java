@@ -17,18 +17,22 @@ public class ForwardMiniAppThirdPartyHelper
       QLog.e("ForwardMiniAppThirdPartyHelper", 1, "Data is null");
       return "";
     }
-    oidb_0xd55.RspBody localRspBody = new oidb_0xd55.RspBody();
+    Object localObject = new oidb_0xd55.RspBody();
     try
     {
-      localRspBody.mergeFrom(paramArrayOfByte);
-      if (localRspBody.wording.has()) {
-        return localRspBody.wording.get();
+      ((oidb_0xd55.RspBody)localObject).mergeFrom(paramArrayOfByte);
+      if (((oidb_0xd55.RspBody)localObject).wording.has())
+      {
+        paramArrayOfByte = ((oidb_0xd55.RspBody)localObject).wording.get();
+        return paramArrayOfByte;
       }
-      return "";
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      QLog.e("ForwardMiniAppThirdPartyHelper", 1, "oidb_0xd55_RspBody merge fail:" + paramArrayOfByte.getMessage());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("oidb_0xd55_RspBody merge fail:");
+      ((StringBuilder)localObject).append(paramArrayOfByte.getMessage());
+      QLog.e("ForwardMiniAppThirdPartyHelper", 1, ((StringBuilder)localObject).toString());
     }
     return "";
   }
@@ -48,7 +52,7 @@ public class ForwardMiniAppThirdPartyHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ForwardMiniAppThirdPartyHelper
  * JD-Core Version:    0.7.0.1
  */

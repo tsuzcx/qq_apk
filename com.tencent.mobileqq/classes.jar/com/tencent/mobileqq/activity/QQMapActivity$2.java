@@ -15,25 +15,20 @@ class QQMapActivity$2
   
   public void onClick(View paramView)
   {
-    if (!NetworkUtil.d(this.a)) {
-      this.a.x();
+    if (!NetworkUtil.isNetSupport(this.a)) {
+      this.a.showInvalidNetworkAlert();
+    } else if (NetworkUtil.isWifiEnabled(this.a)) {
+      this.a.jumpToStreetViewMap();
+    } else {
+      DialogUtil.a(this.a, 230).setTitle(this.a.getString(2131689979)).setMessage(2131694642).setPositiveButton(2131691065, new QQMapActivity.2.2(this)).setNegativeButton(2131690728, new QQMapActivity.2.1(this)).show();
     }
-    for (;;)
-    {
-      QQMapRoutingHelper.a("see_streetview");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (NetworkUtil.a(this.a)) {
-        this.a.p();
-      } else {
-        DialogUtil.a(this.a, 230).setTitle(this.a.getString(2131690063)).setMessage(2131694673).setPositiveButton(2131691145, new QQMapActivity.2.2(this)).setNegativeButton(2131690800, new QQMapActivity.2.1(this)).show();
-      }
-    }
+    QQMapRoutingHelper.a("see_streetview");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQMapActivity.2
  * JD-Core Version:    0.7.0.1
  */

@@ -10,20 +10,27 @@ class LoginInfoActivity$6
 {
   LoginInfoActivity$6(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void a(FaceSecureCheck.SecureCheckResponse paramSecureCheckResponse)
+  public void checkSecureResponse(FaceSecureCheck.SecureCheckResponse paramSecureCheckResponse)
   {
     LoginInfoActivity.access$1802(this.a, paramSecureCheckResponse);
   }
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void onFailedResponse(String paramString1, int paramInt, String paramString2)
   {
     QQToast.a(this.a, paramString2, 0).a();
-    QLog.e("LoginInfoActivity.AccDevSec", 1, "cmd : " + paramString1 + " request failed  code : " + paramInt + " message : " + paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("cmd : ");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(" request failed  code : ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" message : ");
+    localStringBuilder.append(paramString2);
+    QLog.e("LoginInfoActivity.AccDevSec", 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginInfoActivity.6
  * JD-Core Version:    0.7.0.1
  */

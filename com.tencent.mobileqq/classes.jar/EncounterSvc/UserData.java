@@ -52,17 +52,19 @@ public final class UserData
     paramJceOutputStream.write(this.iLon, 2);
     paramJceOutputStream.write(this.lOriginGrid, 3);
     paramJceOutputStream.write(this.lNextGrid, 4);
-    if (this.strProvince != null) {
-      paramJceOutputStream.write(this.strProvince, 5);
+    Object localObject = this.strProvince;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.strCookie != null) {
-      paramJceOutputStream.write(this.strCookie, 6);
+    localObject = this.strCookie;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     EncounterSvc.UserData
  * JD-Core Version:    0.7.0.1
  */

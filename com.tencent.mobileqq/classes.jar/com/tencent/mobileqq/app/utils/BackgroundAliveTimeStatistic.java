@@ -12,39 +12,32 @@ import mqq.os.MqqHandler;
 
 public class BackgroundAliveTimeStatistic
 {
-  private static int jdField_a_of_type_Int;
-  public static long a;
-  private static boolean jdField_a_of_type_Boolean;
+  private static int jdField_a_of_type_Int = 0;
+  public static long a = 0L;
+  private static boolean jdField_a_of_type_Boolean = false;
   private static boolean b;
   private static boolean c;
   
   static
   {
-    boolean bool2 = true;
-    jdField_a_of_type_Long = 0L;
-    jdField_a_of_type_Boolean = false;
-    if (MobileQQ.sProcessId == 1)
-    {
+    int i = MobileQQ.sProcessId;
+    boolean bool2 = false;
+    if (i == 1) {
       bool1 = true;
-      b = bool1;
-      jdField_a_of_type_Int = 0;
-      if (Math.random() >= 9.999999747378752E-005D) {
-        break label49;
-      }
-    }
-    label49:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      c = bool1;
-      return;
+    } else {
       bool1 = false;
-      break;
     }
+    b = bool1;
+    jdField_a_of_type_Int = 0;
+    boolean bool1 = bool2;
+    if (Math.random() < 9.999999747378752E-005D) {
+      bool1 = true;
+    }
+    c = bool1;
   }
   
   public static void a()
   {
-    int i = 0;
     try
     {
       if ((b) && (c) && (jdField_a_of_type_Boolean))
@@ -53,16 +46,18 @@ public class BackgroundAliveTimeStatistic
         if (jdField_a_of_type_Long == 1L) {
           jdField_a_of_type_Int = (int)Debug.getPss();
         }
-        SharedPreferences.Editor localEditor = MobileQQ.getContext().getSharedPreferences("bg_alive_sp_file", 0).edit();
-        localEditor.putLong("bg_time_sp_key", jdField_a_of_type_Long);
-        localEditor.putInt("bg_mem_sp_key", jdField_a_of_type_Int);
+        Object localObject = MobileQQ.getContext();
+        int i = 0;
+        localObject = ((BaseApplication)localObject).getSharedPreferences("bg_alive_sp_file", 0).edit();
+        ((SharedPreferences.Editor)localObject).putLong("bg_time_sp_key", jdField_a_of_type_Long);
+        ((SharedPreferences.Editor)localObject).putInt("bg_mem_sp_key", jdField_a_of_type_Int);
         if (GdtAppPreOrderUtil.a()) {
           i = 1;
         }
-        localEditor.putInt("bg_download_launched_sp_key", i);
-        localEditor.apply();
+        ((SharedPreferences.Editor)localObject).putInt("bg_download_launched_sp_key", i);
+        ((SharedPreferences.Editor)localObject).apply();
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -90,8 +85,8 @@ public class BackgroundAliveTimeStatistic
         localEditor.putInt("bg_mem_sp_key", 0);
         localEditor.putInt("bg_download_launched_sp_key", 0);
         localEditor.apply();
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -115,8 +110,8 @@ public class BackgroundAliveTimeStatistic
         localEditor.putInt("bg_mem_sp_key", 0);
         localEditor.putInt("bg_download_launched_sp_key", 0);
         localEditor.apply();
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -126,7 +121,7 @@ public class BackgroundAliveTimeStatistic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.BackgroundAliveTimeStatistic
  * JD-Core Version:    0.7.0.1
  */

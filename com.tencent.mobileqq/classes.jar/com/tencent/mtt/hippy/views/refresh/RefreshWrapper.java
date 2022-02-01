@@ -47,111 +47,128 @@ public class RefreshWrapper
   {
     if ((paramView instanceof RefreshWrapperItemView)) {
       this.mRefreshWrapperItemView = ((RefreshWrapperItemView)paramView);
-    }
-    for (;;)
-    {
-      super.addView(paramView, paramInt);
-      return;
+    } else {
       this.mContentView = paramView;
     }
+    super.addView(paramView, paramInt);
   }
   
   void bounceToHead(float paramFloat)
   {
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.mContentView, "TranslationY", new float[] { this.mContentView.getTranslationY(), paramFloat });
-    localObjectAnimator1.setDuration(this.mBounceTime);
-    localObjectAnimator1.setInterpolator(new AccelerateInterpolator());
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.mRefreshWrapperItemView, "TranslationY", new float[] { this.mRefreshWrapperItemView.getTranslationY(), paramFloat });
-    localObjectAnimator2.setInterpolator(new AccelerateInterpolator());
-    localObjectAnimator2.setDuration(this.mBounceTime);
-    localObjectAnimator1.start();
-    localObjectAnimator2.start();
+    Object localObject1 = this.mContentView;
+    if ((localObject1 != null) && (this.mRefreshWrapperItemView != null))
+    {
+      localObject1 = ObjectAnimator.ofFloat(localObject1, "TranslationY", new float[] { ((View)localObject1).getTranslationY(), paramFloat });
+      ((Animator)localObject1).setDuration(this.mBounceTime);
+      ((Animator)localObject1).setInterpolator(new AccelerateInterpolator());
+      Object localObject2 = this.mRefreshWrapperItemView;
+      localObject2 = ObjectAnimator.ofFloat(localObject2, "TranslationY", new float[] { ((RefreshWrapperItemView)localObject2).getTranslationY(), paramFloat });
+      ((Animator)localObject2).setInterpolator(new AccelerateInterpolator());
+      ((Animator)localObject2).setDuration(this.mBounceTime);
+      ((Animator)localObject1).start();
+      ((Animator)localObject2).start();
+    }
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     float f2 = paramMotionEvent.getRawY();
     float f1 = paramMotionEvent.getRawX();
-    if ((this.mContentView != null) && (this.mRefreshWrapperItemView != null)) {}
-    switch (paramMotionEvent.getAction())
+    if ((this.mContentView != null) && (this.mRefreshWrapperItemView != null))
     {
-    default: 
-    case 0: 
-    case 2: 
-      do
+      int i = paramMotionEvent.getAction();
+      if (i != 0)
       {
-        do
+        if (i != 1)
         {
-          do
-          {
-            do
+          if (i == 2) {
+            if (f2 - this.mStartY > 0.0F)
             {
-              for (;;)
+              if (getCompactScrollY() == 0.0F)
               {
-                return super.dispatchTouchEvent(paramMotionEvent);
-                this.mStartY = paramMotionEvent.getRawY();
-                this.mStartX = paramMotionEvent.getRawX();
-                this.mStartTransY = this.mRefreshWrapperItemView.getTranslationY();
+                float f3 = this.mStartDownY;
+                if (f3 == -1.0F)
+                {
+                  this.mStartDownY = f2;
+                }
+                else
+                {
+                  this.mTansY = ((f2 - f3) / 3.0F);
+                  setSTranslationY(this.mTansY + this.mStartTransY);
+                  sendOnScrollEvent(-this.mTansY);
+                }
+                if (Math.abs(f1 - this.mStartX) < Math.abs(f2 - this.mStartY)) {
+                  return true;
+                }
               }
-              if (f2 - this.mStartY <= 0.0F) {
-                break;
-              }
-            } while (getCompactScrollY() != 0.0F);
-            if (this.mStartDownY == -1.0F) {
-              this.mStartDownY = f2;
             }
-            while (Math.abs(f1 - this.mStartX) < Math.abs(f2 - this.mStartY))
+            else if (this.mState == RefreshWrapper.RefreshState.Loading)
             {
-              return true;
-              this.mTansY = ((f2 - this.mStartDownY) / 3.0F);
-              setSTranslationY(this.mTansY + this.mStartTransY);
-              sendOnScrollEvent(-this.mTansY);
-            }
-          } while (this.mState != RefreshWrapper.RefreshState.Loading);
-          f2 -= this.mStartY;
-        } while (this.mRefreshWrapperItemView.getTranslationY() <= 0.0F);
-        setSTranslationY(this.mStartTransY + f2);
-      } while (Math.abs(f1 - this.mStartX) >= Math.abs(f2));
-      return true;
-    }
-    if (this.mState == RefreshWrapper.RefreshState.Init) {
-      if ((this.mTansY < this.mRefreshWrapperItemView.getHeight()) && (this.mRefreshWrapperItemView.getTranslationY() > 0.0F))
-      {
-        bounceToHead(0.0F);
-        if (Math.abs(f1 - this.mStartX) < Math.abs(f2 - this.mStartY)) {
-          sendCancelEvent(paramMotionEvent);
-        }
-      }
-    }
-    for (;;)
-    {
-      this.mStartDownY = -1.0F;
-      break;
-      if (this.mTansY > this.mRefreshWrapperItemView.getHeight())
-      {
-        startRefresh();
-        if (Math.abs(f1 - this.mStartX) < Math.abs(f2 - this.mStartY))
-        {
-          sendCancelEvent(paramMotionEvent);
-          continue;
-          if ((this.mState == RefreshWrapper.RefreshState.Loading) && (this.mRefreshWrapperItemView.getTranslationY() > this.mRefreshWrapperItemView.getHeight()))
-          {
-            startRefresh();
-            if (Math.abs(f1 - this.mStartX) < Math.abs(f2 - this.mStartY)) {
-              sendCancelEvent(paramMotionEvent);
+              f2 -= this.mStartY;
+              if (this.mRefreshWrapperItemView.getTranslationY() > 0.0F)
+              {
+                setSTranslationY(this.mStartTransY + f2);
+                if (Math.abs(f1 - this.mStartX) < Math.abs(f2)) {
+                  return true;
+                }
+              }
             }
           }
         }
+        else
+        {
+          if (this.mState == RefreshWrapper.RefreshState.Init)
+          {
+            if ((this.mTansY < this.mRefreshWrapperItemView.getHeight()) && (this.mRefreshWrapperItemView.getTranslationY() > 0.0F))
+            {
+              bounceToHead(0.0F);
+              if (Math.abs(f1 - this.mStartX) >= Math.abs(f2 - this.mStartY)) {
+                break label380;
+              }
+            }
+            else
+            {
+              if (this.mTansY <= this.mRefreshWrapperItemView.getHeight()) {
+                break label380;
+              }
+              startRefresh();
+              if (Math.abs(f1 - this.mStartX) >= Math.abs(f2 - this.mStartY)) {
+                break label380;
+              }
+            }
+          }
+          else
+          {
+            if ((this.mState != RefreshWrapper.RefreshState.Loading) || (this.mRefreshWrapperItemView.getTranslationY() <= this.mRefreshWrapperItemView.getHeight())) {
+              break label380;
+            }
+            startRefresh();
+            if (Math.abs(f1 - this.mStartX) >= Math.abs(f2 - this.mStartY)) {
+              break label380;
+            }
+          }
+          sendCancelEvent(paramMotionEvent);
+          label380:
+          this.mStartDownY = -1.0F;
+        }
+      }
+      else
+      {
+        this.mStartY = paramMotionEvent.getRawY();
+        this.mStartX = paramMotionEvent.getRawX();
+        this.mStartTransY = this.mRefreshWrapperItemView.getTranslationY();
       }
     }
+    return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   float getCompactScrollY()
   {
-    if ((this.mContentView instanceof HippyListView)) {
-      return ((HippyListView)this.mContentView).getOffsetY();
+    View localView = this.mContentView;
+    if ((localView instanceof HippyListView)) {}
+    for (int i = ((HippyListView)localView).getOffsetY();; i = localView.getScrollY()) {
+      return i;
     }
-    return this.mContentView.getScrollY();
   }
   
   public void refreshComplected()
@@ -169,18 +186,15 @@ public class RefreshWrapper
   
   public void sendOnScrollEvent(float paramFloat)
   {
-    long l;
     if (this.mScrollEventEnable)
     {
-      l = System.currentTimeMillis();
-      if (l - this.mLastScrollEventTimeStamp >= this.mScrollEventThrottle) {}
+      long l = System.currentTimeMillis();
+      if (l - this.mLastScrollEventTimeStamp < this.mScrollEventThrottle) {
+        return;
+      }
+      new HippyViewEvent("onScroll").send(this, generateScrollEvent(paramFloat));
+      this.mLastScrollEventTimeStamp = l;
     }
-    else
-    {
-      return;
-    }
-    new HippyViewEvent("onScroll").send(this, generateScrollEvent(paramFloat));
-    this.mLastScrollEventTimeStamp = l;
   }
   
   public void setOnScrollEventEnable(boolean paramBoolean)
@@ -190,32 +204,24 @@ public class RefreshWrapper
   
   void setSTranslationY(float paramFloat)
   {
-    Object localObject;
-    float f;
-    if (this.mRefreshWrapperItemView != null)
+    Object localObject = this.mRefreshWrapperItemView;
+    if (localObject != null)
     {
-      localObject = this.mRefreshWrapperItemView;
-      if (paramFloat > 0.0F)
-      {
+      float f;
+      if (paramFloat > 0.0F) {
         f = paramFloat;
-        ((RefreshWrapperItemView)localObject).setTranslationY(f);
+      } else {
+        f = 0.0F;
       }
+      ((RefreshWrapperItemView)localObject).setTranslationY(f);
     }
-    else if (this.mContentView != null)
+    localObject = this.mContentView;
+    if (localObject != null)
     {
-      localObject = this.mContentView;
       if (paramFloat <= 0.0F) {
-        break label54;
+        paramFloat = 0.0F;
       }
-    }
-    for (;;)
-    {
       ((View)localObject).setTranslationY(paramFloat);
-      return;
-      f = 0.0F;
-      break;
-      label54:
-      paramFloat = 0.0F;
     }
   }
   
@@ -239,7 +245,7 @@ public class RefreshWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.refresh.RefreshWrapper
  * JD-Core Version:    0.7.0.1
  */

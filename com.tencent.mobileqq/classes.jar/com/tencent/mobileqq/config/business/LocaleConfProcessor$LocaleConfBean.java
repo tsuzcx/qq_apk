@@ -20,8 +20,12 @@ public class LocaleConfProcessor$LocaleConfBean
     try
     {
       paramString = new JSONObject(paramString).optString("ShowLocaleEntrance");
-      if (QLog.isColorLevel()) {
-        QLog.e("LocaleConfProcessor", 2, "manager parse, showEntrance: " + paramString);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("manager parse, showEntrance: ");
+        localStringBuilder.append(paramString);
+        QLog.e("LocaleConfProcessor", 2, localStringBuilder.toString());
       }
       paramString = new LocaleConfBean(paramString.trim());
       return paramString;
@@ -35,7 +39,7 @@ public class LocaleConfProcessor$LocaleConfBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.LocaleConfProcessor.LocaleConfBean
  * JD-Core Version:    0.7.0.1
  */

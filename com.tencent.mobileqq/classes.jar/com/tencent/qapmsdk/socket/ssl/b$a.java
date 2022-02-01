@@ -21,7 +21,10 @@ public class b$a
   {
     try
     {
-      this.a = ((SSLContextSpi)d.a(d.a() + ".DefaultSSLContextImpl").a(new Class[0]).newInstance(new Object[0]));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(d.a());
+      localStringBuilder.append(".DefaultSSLContextImpl");
+      this.a = ((SSLContextSpi)d.a(localStringBuilder.toString()).a(new Class[0]).newInstance(new Object[0]));
       return;
     }
     catch (Exception localException1)
@@ -44,7 +47,7 @@ public class b$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.socket.ssl.b.a
  * JD-Core Version:    0.7.0.1
  */

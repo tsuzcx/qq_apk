@@ -8,15 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.av.SessionMgr;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.smallscreen.SmallScreenUtils;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ChatActivityUtils.ConfIdownloadTask;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.QAVGroupConfig.Report;
 import com.tencent.mobileqq.utils.QAVHrMeeting;
@@ -40,8 +39,13 @@ public class GaInviteDialogActivity
   
   private void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_b_of_type_JavaLangString, 2, "sendIsResumeBroadcast isResume = " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      String str = this.jdField_b_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sendIsResumeBroadcast isResume = ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
     SmallScreenUtils.a(BaseApplicationImpl.getContext(), paramBoolean);
   }
@@ -72,38 +76,38 @@ public class GaInviteDialogActivity
   
   public void BtnOnClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i != 2131373416)
     {
-    default: 
-      return;
-    case 2131373844: 
-      QAVGroupConfig.Report.a(false);
-      super.a(-1036L);
-      return;
-    }
-    QAVGroupConfig.Report.a(true);
-    if ((this.jdField_a_of_type_ComTencentAvVideoController.d) || (this.jdField_a_of_type_ComTencentAvVideoController.l())) {
-      e();
-    }
-    for (;;)
-    {
+      if (i != 2131373423) {
+        return;
+      }
+      QAVGroupConfig.Report.a(true);
+      if (this.jdField_a_of_type_ComTencentAvVideoController.d)
+      {
+        e();
+      }
+      else
+      {
+        long l = AudioHelper.b();
+        sendBroadcast(new Intent("com.gvideo.com.tencent.av.EXIT_GROUP_VIDEO"));
+        sendBroadcast(new Intent("tencent.video.v2g.exitAVGame"));
+        paramView = this.jdField_b_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("BtnOnClick[qav_gaudio_join], relationId[");
+        localStringBuilder.append(this.jdField_a_of_type_ComTencentAvAppSessionInfo.f);
+        localStringBuilder.append("], seq[");
+        localStringBuilder.append(l);
+        localStringBuilder.append("]");
+        QLog.w(paramView, 1, localStringBuilder.toString());
+        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(308), Long.valueOf(this.jdField_a_of_type_ComTencentAvAppSessionInfo.f) });
+        h();
+      }
       ReportController.b(null, "CliOper", "", "", "Multi_call", "Multi_call_join", 0, 0, "", "", "", "");
       return;
-      long l = AudioHelper.b();
-      sendBroadcast(new Intent("com.gvideo.com.tencent.av.EXIT_GROUP_VIDEO"));
-      sendBroadcast(new Intent("tencent.video.v2g.exitAVGame"));
-      QLog.w(this.jdField_b_of_type_JavaLangString, 1, "BtnOnClick[qav_gaudio_join], relationId[" + this.jdField_a_of_type_ComTencentAvAppSessionInfo.g + "], mAnyChatCloseByFriend[" + this.jdField_a_of_type_ComTencentAvVideoController.f + "], seq[" + l + "]");
-      if (this.jdField_a_of_type_ComTencentAvVideoController.f)
-      {
-        paramView = SessionMgr.a().a();
-        if (paramView != null) {
-          paramView.b(l);
-        }
-        this.jdField_a_of_type_ComTencentAvVideoController.e(true);
-      }
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(308), Long.valueOf(this.jdField_a_of_type_ComTencentAvAppSessionInfo.g) });
-      h();
     }
+    QAVGroupConfig.Report.a(false);
+    super.a(-1036L);
   }
   
   void b(Intent paramIntent)
@@ -114,19 +118,19 @@ public class GaInviteDialogActivity
   
   protected void c()
   {
-    if ((!NetworkUtil.h(super.getApplicationContext())) && ((NetworkUtil.c(super.getApplicationContext())) || (NetworkUtil.b(super.getApplicationContext())))) {
+    if ((!NetworkUtil.isWifiConnected(super.getApplicationContext())) && ((NetworkUtil.is3Gor4G(super.getApplicationContext())) || (NetworkUtil.isMobileNetWork(super.getApplicationContext())))) {
       this.jdField_h_of_type_Boolean = false;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131373848));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131373829));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131373842));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131373844));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131373851));
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839479);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131373420));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131373401));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131373414));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131373416));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131373423));
+    a(null, 3);
     this.jdField_b_of_type_AndroidWidgetTextView.setSingleLine();
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131365787);
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131365624);
     if (!this.jdField_h_of_type_Boolean) {
-      ((TextView)super.findViewById(2131373854)).setVisibility(0);
+      ((TextView)super.findViewById(2131373426)).setVisibility(0);
     }
     super.c();
   }
@@ -152,18 +156,18 @@ public class GaInviteDialogActivity
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_b_of_type_JavaLangString, 2, "onCreate");
     }
-    super.setTheme(2131755251);
-    super.setContentView(2131559819);
+    super.setTheme(2131755416);
+    super.setContentView(2131559695);
     super.onCreate(paramBundle);
   }
   
-  public void onPause()
+  protected void onPause()
   {
     super.onPause();
     a(false);
   }
   
-  public void onResume()
+  protected void onResume()
   {
     super.onResume();
     a(true);
@@ -171,7 +175,7 @@ public class GaInviteDialogActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.gaudio.GaInviteDialogActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -28,25 +28,22 @@ public class TroopMemberInfoServiceImpl$SaveTroopMemberTask
     EntityManager localEntityManager = this.this$0.app.getEntityManagerFactory().createEntityManager();
     if (this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.getStatus() == 1000) {
       localEntityManager.persistOrReplace(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo);
-    }
-    for (;;)
-    {
-      localEntityManager.close();
-      new Handler(Looper.getMainLooper()).post(new TroopMemberInfoServiceImpl.SaveTroopMemberTask.1(this));
-      if (this.jdField_a_of_type_Boolean) {
-        ((ITroopNameHelperService)this.this$0.app.getRuntimeService(ITroopNameHelperService.class, "")).updateTroopName(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.troopuin);
-      }
-      this.b = false;
-      TroopMemberInfoServiceImpl.access$000(this.this$0).remove(this);
-      this.this$0.runNextSaveTask();
-      return;
+    } else {
       localEntityManager.update(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo);
     }
+    localEntityManager.close();
+    new Handler(Looper.getMainLooper()).post(new TroopMemberInfoServiceImpl.SaveTroopMemberTask.1(this));
+    if (this.jdField_a_of_type_Boolean) {
+      ((ITroopNameHelperService)this.this$0.app.getRuntimeService(ITroopNameHelperService.class, "")).updateTroopName(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.troopuin);
+    }
+    this.b = false;
+    TroopMemberInfoServiceImpl.access$200(this.this$0).remove(this);
+    this.this$0.runNextSaveTask();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.impl.TroopMemberInfoServiceImpl.SaveTroopMemberTask
  * JD-Core Version:    0.7.0.1
  */

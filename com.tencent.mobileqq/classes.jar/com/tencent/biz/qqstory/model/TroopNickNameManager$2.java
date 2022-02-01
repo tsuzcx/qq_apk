@@ -15,25 +15,22 @@ class TroopNickNameManager$2
   {
     if (this.this$0.a.c(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq) != null)
     {
-      localTroopNickNameUpdateEvent = new TroopNickNameManager.TroopNickNameUpdateEvent();
-      localArrayList = new ArrayList();
+      TroopNickNameManager.TroopNickNameUpdateEvent localTroopNickNameUpdateEvent = new TroopNickNameManager.TroopNickNameUpdateEvent();
+      ArrayList localArrayList = new ArrayList();
       localArrayList.add(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq);
       localTroopNickNameUpdateEvent.jdField_a_of_type_JavaUtilList = localArrayList;
       localTroopNickNameUpdateEvent.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
       StoryDispatcher.a().dispatch(localTroopNickNameUpdateEvent);
-    }
-    while (this.jdField_a_of_type_Boolean)
-    {
-      TroopNickNameManager.TroopNickNameUpdateEvent localTroopNickNameUpdateEvent;
-      ArrayList localArrayList;
       return;
     }
-    this.this$0.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem, this.jdField_a_of_type_JavaLangString, this.b);
+    if (!this.jdField_a_of_type_Boolean) {
+      this.this$0.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem, this.jdField_a_of_type_JavaLangString, this.b);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.TroopNickNameManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.manager;
 
-import com.tencent.biz.pubaccount.VideoAdInfo;
-import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.mobileqq.kandian.biz.ad.entity.VideoAdInfo;
+import com.tencent.mobileqq.kandian.biz.fastweb.data.AdData;
+import com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoInfo;
 import java.util.Arrays;
 
 class AdExposeFreshManager$CacheAd
 {
   double jdField_a_of_type_Double;
   long jdField_a_of_type_Long = System.currentTimeMillis();
-  VideoInfo jdField_a_of_type_ComTencentBizPubaccountVideoInfo;
   AdvertisementInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
-  AdData jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData;
+  AdData jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData;
+  VideoInfo jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo;
   long b;
-  
-  public AdExposeFreshManager$CacheAd(VideoInfo paramVideoInfo)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo = paramVideoInfo;
-    this.b = paramVideoInfo.a.e;
-    this.jdField_a_of_type_Double = paramVideoInfo.a.jdField_a_of_type_Double;
-  }
   
   public AdExposeFreshManager$CacheAd(AdvertisementInfo paramAdvertisementInfo)
   {
@@ -32,7 +25,14 @@ class AdExposeFreshManager$CacheAd
   public AdExposeFreshManager$CacheAd(AdData paramAdData)
   {
     this(paramAdData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData = paramAdData;
+    this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData = paramAdData;
+  }
+  
+  public AdExposeFreshManager$CacheAd(VideoInfo paramVideoInfo)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo = paramVideoInfo;
+    this.b = paramVideoInfo.a.e;
+    this.jdField_a_of_type_Double = paramVideoInfo.a.jdField_a_of_type_Double;
   }
   
   public boolean a()
@@ -42,15 +42,17 @@ class AdExposeFreshManager$CacheAd
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (CacheAd)paramObject;
-    } while (this.b == paramObject.b);
+      return this.b == paramObject.b;
+    }
     return false;
   }
   
@@ -61,7 +63,7 @@ class AdExposeFreshManager$CacheAd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.manager.AdExposeFreshManager.CacheAd
  * JD-Core Version:    0.7.0.1
  */

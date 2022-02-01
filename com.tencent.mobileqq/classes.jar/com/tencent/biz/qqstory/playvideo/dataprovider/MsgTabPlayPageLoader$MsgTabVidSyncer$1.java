@@ -32,20 +32,16 @@ class MsgTabPlayPageLoader$MsgTabVidSyncer$1
       localGroupInfo.jdField_a_of_type_JavaLangString = paramList.b;
     }
     localArrayList.add(localGroupInfo);
-    paramList = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIGroupPageLoader$IVidFullSyncer$CallBack;
-    if (!MsgTabPlayPageLoader.MsgTabVidSyncer.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayPageLoader$MsgTabVidSyncer).a()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramList.a(localArrayList, bool);
-      return;
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIGroupPageLoader$IVidFullSyncer$CallBack.a(localArrayList, MsgTabPlayPageLoader.MsgTabVidSyncer.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayPageLoader$MsgTabVidSyncer).a() ^ true);
   }
   
   public void onError(@NonNull Error paramError)
   {
-    int i = 0;
+    int i;
     if ((paramError instanceof ErrorMessage)) {
       i = ((ErrorMessage)paramError).errorCode;
+    } else {
+      i = 0;
     }
     paramError = new ArrayList();
     paramError.add(MsgTabPlayPageLoader.MsgTabVidSyncer.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayPageLoader$MsgTabVidSyncer));
@@ -54,7 +50,7 @@ class MsgTabPlayPageLoader$MsgTabVidSyncer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayPageLoader.MsgTabVidSyncer.1
  * JD-Core Version:    0.7.0.1
  */

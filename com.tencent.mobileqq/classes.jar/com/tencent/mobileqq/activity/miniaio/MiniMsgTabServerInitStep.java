@@ -7,13 +7,8 @@ import com.tencent.util.notification.NotificationLimiterImpl;
 public class MiniMsgTabServerInitStep
   extends AsyncStep
 {
+  private static String a = "MiniMsgTabServerInitStep";
   public static boolean a = false;
-  private static String b;
-  
-  static
-  {
-    jdField_b_of_type_JavaLangString = "MiniMsgTabServerInitStep";
-  }
   
   private void a()
   {
@@ -21,21 +16,17 @@ public class MiniMsgTabServerInitStep
     NotificationLimiterUtil.setLimiter(new NotificationLimiterImpl());
   }
   
-  public int a()
+  protected int doStep()
   {
-    switch (this.jdField_b_of_type_Int)
-    {
-    }
-    for (;;)
-    {
-      return 7;
+    if (this.mStepId == 108) {
       a();
     }
+    return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMsgTabServerInitStep
  * JD-Core Version:    0.7.0.1
  */

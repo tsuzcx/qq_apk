@@ -1,97 +1,97 @@
 package com.huawei.hms.framework.network.grs.c;
 
-import android.text.TextUtils;
-import com.huawei.hms.framework.common.Logger;
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import android.content.Context;
+import android.net.Uri;
+import com.huawei.hms.framework.network.grs.GrsBaseInfo;
+import com.huawei.hms.framework.network.grs.a.c;
+import java.util.concurrent.Callable;
 
 public class b
 {
-  private static final String a = b.class.getSimpleName();
-  private static final Pattern b = Pattern.compile("[0-9]*[a-z|A-Z]*[一-龥]*");
+  protected f a;
+  private String b;
+  private a c;
+  private int d;
+  private Context e;
+  private String f;
+  private GrsBaseInfo g;
+  private c h;
   
-  public static String a(String paramString)
+  public b(String paramString1, int paramInt, a parama, Context paramContext, String paramString2, GrsBaseInfo paramGrsBaseInfo, c paramc)
   {
-    return a(paramString, "SHA-256");
+    this.b = paramString1;
+    this.c = parama;
+    this.d = paramInt;
+    this.e = paramContext;
+    this.f = paramString2;
+    this.g = paramGrsBaseInfo;
+    this.h = paramc;
   }
   
-  private static String a(String paramString1, String paramString2)
+  private String a(String paramString)
   {
-    try
-    {
-      paramString1 = paramString1.getBytes("UTF-8");
+    return Uri.parse(paramString).getPath();
+  }
+  
+  private b.a h()
+  {
+    if (this.b.isEmpty()) {
+      return b.a.c;
+    }
+    String str = a(this.b);
+    if (str.contains("1.0")) {
+      return b.a.b;
+    }
+    if (str.contains("2.0")) {
+      return b.a.a;
+    }
+    return b.a.c;
+  }
+  
+  public a a()
+  {
+    return this.c;
+  }
+  
+  public Context b()
+  {
+    return this.e;
+  }
+  
+  public String c()
+  {
+    return this.b;
+  }
+  
+  public int d()
+  {
+    return this.d;
+  }
+  
+  public String e()
+  {
+    return this.f;
+  }
+  
+  public c f()
+  {
+    return this.h;
+  }
+  
+  public Callable<f> g()
+  {
+    if (b.a.c.equals(h())) {
       return null;
     }
-    catch (UnsupportedEncodingException paramString1)
-    {
-      try
-      {
-        paramString1 = a(MessageDigest.getInstance(paramString2).digest(paramString1));
-        return paramString1;
-      }
-      catch (NoSuchAlgorithmException paramString1)
-      {
-        Logger.w(a, "encrypt NoSuchAlgorithmException");
-      }
-      paramString1 = paramString1;
-      Logger.w(a, "encrypt UnsupportedEncodingException");
-      return null;
+    if (b.a.b.equals(h())) {
+      return new i(this.b, this.d, this.c, this.e, this.f, this.g);
     }
-  }
-  
-  private static String a(byte[] paramArrayOfByte)
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    int i = 0;
-    while (i < paramArrayOfByte.length)
-    {
-      String str = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
-      if (str.length() == 1) {
-        localStringBuffer.append("0");
-      }
-      localStringBuffer.append(str);
-      i += 1;
-    }
-    return localStringBuffer.toString();
-  }
-  
-  public static String b(String paramString)
-  {
-    int j = 1;
-    if (TextUtils.isEmpty(paramString)) {
-      return paramString;
-    }
-    if (paramString.length() == 1) {
-      return "*";
-    }
-    StringBuffer localStringBuffer = new StringBuffer();
-    int i = 0;
-    while (i < paramString.length())
-    {
-      String str1 = paramString.charAt(i) + "";
-      int k = j;
-      String str2 = str1;
-      if (b.matcher(str1).matches())
-      {
-        if (j % 2 == 0) {
-          str1 = "*";
-        }
-        k = j + 1;
-        str2 = str1;
-      }
-      localStringBuffer.append(str2);
-      i += 1;
-      j = k;
-    }
-    return localStringBuffer.toString();
+    return new j(this.b, this.d, this.c, this.e, this.f, this.g, this.h);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.framework.network.grs.c.b
  * JD-Core Version:    0.7.0.1
  */

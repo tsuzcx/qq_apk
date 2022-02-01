@@ -11,7 +11,7 @@ import mqq.util.WeakReference;
 
 public class SecurityPolicyChecker
 {
-  private static SecurityPolicyChecker jdField_a_of_type_ComTencentAvgameQavSecurityPolicyChecker = null;
+  private static SecurityPolicyChecker jdField_a_of_type_ComTencentAvgameQavSecurityPolicyChecker;
   private Runnable jdField_a_of_type_JavaLangRunnable = null;
   private String jdField_a_of_type_JavaLangString = null;
   private boolean jdField_a_of_type_Boolean = false;
@@ -19,52 +19,61 @@ public class SecurityPolicyChecker
   
   public static SecurityPolicyChecker a()
   {
-    if (jdField_a_of_type_ComTencentAvgameQavSecurityPolicyChecker == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentAvgameQavSecurityPolicyChecker == null) {
-        jdField_a_of_type_ComTencentAvgameQavSecurityPolicyChecker = new SecurityPolicyChecker();
+    if (jdField_a_of_type_ComTencentAvgameQavSecurityPolicyChecker == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentAvgameQavSecurityPolicyChecker == null) {
+          jdField_a_of_type_ComTencentAvgameQavSecurityPolicyChecker = new SecurityPolicyChecker();
+        }
       }
-      return jdField_a_of_type_ComTencentAvgameQavSecurityPolicyChecker;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentAvgameQavSecurityPolicyChecker;
   }
   
   public void a(EngineData paramEngineData, String paramString)
   {
-    Player localPlayer;
     if (paramEngineData != null)
     {
       int i = paramEngineData.a();
       if ((i != 0) && (i != 10))
       {
-        localPlayer = paramEngineData.b();
-        if ((localPlayer == null) || (!paramEngineData.b(localPlayer.uin))) {}
+        Player localPlayer = paramEngineData.b();
+        if ((localPlayer != null) && (paramEngineData.b(localPlayer.uin)))
+        {
+          paramEngineData = localPlayer.uin;
+          break label53;
+        }
       }
     }
-    for (paramEngineData = localPlayer.uin;; paramEngineData = null)
+    paramEngineData = null;
+    label53:
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString))
     {
-      boolean bool2 = false;
-      boolean bool1 = bool2;
-      if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString))
-      {
-        bool1 = bool2;
-        if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramEngineData)) {
-          bool1 = true;
-        }
+      bool1 = bool2;
+      if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramEngineData)) {
+        bool1 = true;
       }
-      this.jdField_a_of_type_JavaLangString = paramEngineData;
-      if (bool1)
-      {
-        if (this.jdField_a_of_type_JavaLangRunnable == null) {
-          this.jdField_a_of_type_JavaLangRunnable = new SecurityPolicyChecker.CheckCameraTask(null);
-        }
-        AVGameHandler.a().b().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
+    }
+    this.jdField_a_of_type_JavaLangString = paramEngineData;
+    if (bool1)
+    {
+      if (this.jdField_a_of_type_JavaLangRunnable == null) {
+        this.jdField_a_of_type_JavaLangRunnable = new SecurityPolicyChecker.CheckCameraTask(null);
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("SecurityPolicyChecker", 2, "setPlayer1, [" + this.jdField_a_of_type_JavaLangString + "," + bool1 + "]");
-      }
-      return;
+      AVGameHandler.a().b().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramEngineData = new StringBuilder();
+      paramEngineData.append("setPlayer1, [");
+      paramEngineData.append(this.jdField_a_of_type_JavaLangString);
+      paramEngineData.append(",");
+      paramEngineData.append(bool1);
+      paramEngineData.append("]");
+      QLog.i("SecurityPolicyChecker", 2, paramEngineData.toString());
     }
   }
   
@@ -77,8 +86,15 @@ public class SecurityPolicyChecker
   {
     if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("SecurityPolicyChecker", 2, "setPlayer2, [" + this.jdField_a_of_type_JavaLangString + "-->" + paramString + "]");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setPlayer2, [");
+        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append("-->");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("]");
+        QLog.i("SecurityPolicyChecker", 2, localStringBuilder.toString());
       }
       this.jdField_a_of_type_JavaLangString = paramString;
     }
@@ -91,11 +107,10 @@ public class SecurityPolicyChecker
   
   public boolean a(long paramLong)
   {
-    boolean bool = true;
     if (this.jdField_a_of_type_Boolean) {
-      bool = TextUtils.equals(this.jdField_a_of_type_JavaLangString, String.valueOf(paramLong));
+      return TextUtils.equals(this.jdField_a_of_type_JavaLangString, String.valueOf(paramLong));
     }
-    return bool;
+    return true;
   }
   
   public boolean b()
@@ -110,7 +125,7 @@ public class SecurityPolicyChecker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.qav.SecurityPolicyChecker
  * JD-Core Version:    0.7.0.1
  */

@@ -45,12 +45,14 @@ public class RoomSwitchCgiService
   {
     this.mContext = paramContext;
     StringBuilder localStringBuilder = new StringBuilder();
-    if (DevOptUtil.isTestEnv(paramContext)) {}
-    for (paramContext = this.TEST_DOMAIN;; paramContext = this.DOMAIN)
-    {
-      this.mCgiUrl = (paramContext + this.mUrl);
-      return;
+    if (DevOptUtil.isTestEnv(paramContext)) {
+      paramContext = this.TEST_DOMAIN;
+    } else {
+      paramContext = this.DOMAIN;
     }
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append(this.mUrl);
+    this.mCgiUrl = localStringBuilder.toString();
   }
   
   public void onDestroy() {}
@@ -67,7 +69,7 @@ public class RoomSwitchCgiService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.service.RoomSwitchCgiService
  * JD-Core Version:    0.7.0.1
  */

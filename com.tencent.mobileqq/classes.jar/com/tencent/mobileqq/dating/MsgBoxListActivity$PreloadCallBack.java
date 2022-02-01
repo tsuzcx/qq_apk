@@ -2,7 +2,8 @@ package com.tencent.mobileqq.dating;
 
 import android.os.Handler.Callback;
 import android.os.Message;
-import com.tencent.mobileqq.nearby.NearbyProcessMonitor;
+import com.tencent.mobileqq.nearby.api.INearbyProcessMonitor;
+import com.tencent.mobileqq.qroute.QRoute;
 
 class MsgBoxListActivity$PreloadCallBack
   implements Handler.Callback
@@ -16,18 +17,16 @@ class MsgBoxListActivity$PreloadCallBack
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 0) {
       return true;
     }
-    NearbyProcessMonitor.a(this.a, 1);
+    ((INearbyProcessMonitor)QRoute.api(INearbyProcessMonitor.class)).startNearbyProcess(this.a, 1);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dating.MsgBoxListActivity.PreloadCallBack
  * JD-Core Version:    0.7.0.1
  */

@@ -16,14 +16,14 @@ class RichBlockDialog$2
   {
     WSLog.c("RichBlockDialog", "onLoadCanceled - ");
     if (RichBlockDialog.a(this.a) != null) {
-      RichBlockDialog.a(this.a).setImageResource(2130841881);
+      RichBlockDialog.a(this.a).setImageResource(2130841770);
     }
   }
   
   public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
     if (RichBlockDialog.a(this.a) != null) {
-      RichBlockDialog.a(this.a).setImageResource(2130841881);
+      RichBlockDialog.a(this.a).setImageResource(2130841770);
     }
   }
   
@@ -39,7 +39,7 @@ class RichBlockDialog$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.RichBlockDialog.2
  * JD-Core Version:    0.7.0.1
  */

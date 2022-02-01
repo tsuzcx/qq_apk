@@ -11,36 +11,36 @@ class QQInputView$1
   
   public void run()
   {
-    String str1 = null;
-    String str2;
-    if (QQInputView.a(this.this$0) != null)
+    Object localObject = QQInputView.a(this.this$0);
+    String str = null;
+    if (localObject != null)
     {
-      str2 = QQInputView.a(this.this$0).a();
-      str1 = QQInputView.a(this.this$0).b();
+      str = QQInputView.a(this.this$0).a();
+      localObject = QQInputView.a(this.this$0).b();
     }
-    for (;;)
+    else
     {
-      if (!TextUtils.isEmpty(str2))
-      {
-        QQInputView.a(this.this$0).setText(str2);
-        QQInputView.a(this.this$0).setSelection(str2.length());
-        QQInputView.a(this.this$0).setEnabled(true);
-        QQInputView.a(this.this$0).setSelected(true);
-      }
-      while (TextUtils.isEmpty(str1)) {
-        return;
-      }
-      QQInputView.a(this.this$0).setHint(str1);
+      localObject = null;
+    }
+    if (!TextUtils.isEmpty(str))
+    {
+      QQInputView.a(this.this$0).setText(str);
+      QQInputView.a(this.this$0).setSelection(str.length());
+      QQInputView.a(this.this$0).setEnabled(true);
+      QQInputView.a(this.this$0).setSelected(true);
+      return;
+    }
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      QQInputView.a(this.this$0).setHint((CharSequence)localObject);
       QQInputView.a(this.this$0).setEnabled(false);
       QQInputView.a(this.this$0).setSelected(false);
-      return;
-      str2 = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.freshnews.QQInputView.1
  * JD-Core Version:    0.7.0.1
  */

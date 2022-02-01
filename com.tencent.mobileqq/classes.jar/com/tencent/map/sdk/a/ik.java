@@ -16,8 +16,9 @@ public final class ik
   protected final void handleDataChanged()
   {
     super.handleDataChanged();
-    if (this.a != null) {
-      this.a.b();
+    ik.a locala = this.a;
+    if (locala != null) {
+      locala.b();
     }
   }
   
@@ -28,7 +29,7 @@ public final class ik
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.ik
  * JD-Core Version:    0.7.0.1
  */

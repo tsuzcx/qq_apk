@@ -2,25 +2,32 @@ package com.tencent.qqlive.module.videoreport.dtreport.video.data;
 
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
-import java.util.HashMap;
+import android.view.View;
+import java.lang.ref.WeakReference;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class VideoSession
 {
   private static final long INVALID_PLAY_TIME = -1L;
   private String contentId;
   private int contentType;
-  private HashMap<String, Object> customParamsMap = new HashMap();
+  private Object curPage;
+  private Map<String, Object> customParamsMap = new ConcurrentHashMap();
   private boolean isBizReady;
+  private boolean isForceReportStart;
   private long playEndPosition;
   private int playEndReason;
   private int playStartReason;
   private long playStartTime;
   private int playType;
   private long playedTime;
+  private Map<String, Object> startParams;
   private long startPosition;
+  private long videoEndTime;
   private VideoBaseEntity videoEntity;
   private int videoPlayerObject;
+  private long videoStartTime;
   
   public VideoSession(@NonNull VideoEntity paramVideoEntity, @NonNull int paramInt)
   {
@@ -44,22 +51,34 @@ public class VideoSession
   
   public void bufferStart()
   {
-    if (this.playStartTime == -1L) {
+    try
+    {
+      long l = this.playStartTime;
+      if (l == -1L) {
+        return;
+      }
+      this.playedTime += SystemClock.elapsedRealtime() - this.playStartTime;
+      this.playStartTime = -1L;
       return;
     }
-    this.playedTime += SystemClock.elapsedRealtime() - this.playStartTime;
-    this.playStartTime = -1L;
+    finally {}
   }
   
   public void end(long paramLong, int paramInt)
   {
-    if (this.playStartTime != -1L)
+    try
     {
-      this.playedTime += SystemClock.elapsedRealtime() - this.playStartTime;
-      this.playStartTime = -1L;
+      if (this.playStartTime != -1L)
+      {
+        this.playedTime += SystemClock.elapsedRealtime() - this.playStartTime;
+        this.playStartTime = -1L;
+      }
+      this.playEndPosition = paramLong;
+      this.playEndReason = paramInt;
+      this.videoEndTime = System.currentTimeMillis();
+      return;
     }
-    this.playEndPosition = paramLong;
-    this.playEndReason = paramInt;
+    finally {}
   }
   
   public String getContentId()
@@ -70,6 +89,11 @@ public class VideoSession
   public int getContentType()
   {
     return this.contentType;
+  }
+  
+  public Object getCurPage()
+  {
+    return this.curPage;
   }
   
   public Map<String, Object> getCustomParams()
@@ -102,6 +126,11 @@ public class VideoSession
     return String.valueOf(this.playedTime);
   }
   
+  public Map<String, Object> getStartParams()
+  {
+    return this.startParams;
+  }
+  
   public String getStartPlayReason()
   {
     return String.valueOf(this.playStartReason);
@@ -122,14 +151,34 @@ public class VideoSession
     return String.valueOf(this.videoEntity.getVideoDuration());
   }
   
+  public long getVideoEndTime()
+  {
+    return this.videoEndTime;
+  }
+  
   public int getVideoPlayerObject()
   {
     return this.videoPlayerObject;
   }
   
+  public long getVideoStartTime()
+  {
+    return this.videoStartTime;
+  }
+  
+  public WeakReference<View> getVideoView()
+  {
+    return this.videoEntity.getVideoView();
+  }
+  
   public boolean isBizReady()
   {
     return this.isBizReady;
+  }
+  
+  public boolean isForceReportStart()
+  {
+    return this.isForceReportStart;
   }
   
   public boolean isIgnoreReport()
@@ -142,6 +191,58 @@ public class VideoSession
     this.contentType = paramInt;
   }
   
+  public void setCurPage(Object paramObject)
+  {
+    this.curPage = paramObject;
+  }
+  
+  public void setForceReportStart(boolean paramBoolean)
+  {
+    this.isForceReportStart = paramBoolean;
+  }
+  
+  public void setPlayedTime(long paramLong)
+  {
+    this.playedTime = paramLong;
+  }
+  
+  public void setStartParams(Map<String, Object> paramMap)
+  {
+    this.startParams = paramMap;
+  }
+  
+  public void setStartPosition(long paramLong)
+  {
+    this.startPosition = paramLong;
+  }
+  
+  public void setVideoEndTime(long paramLong)
+  {
+    this.videoEndTime = paramLong;
+  }
+  
+  public void setVideoStartTime(long paramLong)
+  {
+    this.videoStartTime = paramLong;
+  }
+  
+  public void stagingEnd(long paramLong, int paramInt)
+  {
+    try
+    {
+      if (this.playStartTime != -1L)
+      {
+        this.playedTime += SystemClock.elapsedRealtime() - this.playStartTime;
+        this.playStartTime = SystemClock.elapsedRealtime();
+      }
+      this.playEndPosition = paramLong;
+      this.playEndReason = paramInt;
+      this.videoEndTime = System.currentTimeMillis();
+      return;
+    }
+    finally {}
+  }
+  
   public void start(int paramInt1, long paramLong, int paramInt2)
   {
     this.playStartReason = paramInt1;
@@ -149,6 +250,7 @@ public class VideoSession
     this.playStartTime = SystemClock.elapsedRealtime();
     this.playedTime = 0L;
     this.playType = paramInt2;
+    this.videoStartTime = System.currentTimeMillis();
   }
   
   public void updateVideoEntity(VideoBaseEntity paramVideoBaseEntity)
@@ -160,7 +262,7 @@ public class VideoSession
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.video.data.VideoSession
  * JD-Core Version:    0.7.0.1
  */

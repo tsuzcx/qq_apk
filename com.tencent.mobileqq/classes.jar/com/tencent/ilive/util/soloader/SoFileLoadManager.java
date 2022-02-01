@@ -11,46 +11,49 @@ public class SoFileLoadManager
 {
   public static int copy(String paramString1, String paramString2)
   {
-    int k = 0;
     paramString1 = new File(paramString1);
-    int i;
     if (!paramString1.exists()) {
-      i = -1;
+      return -1;
     }
-    int m;
-    int j;
-    do
+    paramString1 = paramString1.listFiles();
+    File localFile = new File(paramString2);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    if ((paramString1 != null) && (paramString1.length > 0))
     {
-      do
+      int j = paramString1.length;
+      int i = 0;
+      while (i < j)
       {
-        do
+        localFile = paramString1[i];
+        Object localObject;
+        StringBuilder localStringBuilder;
+        if (localFile.isDirectory())
         {
-          return i;
-          paramString1 = paramString1.listFiles();
-          localFile = new File(paramString2);
-          if (!localFile.exists()) {
-            localFile.mkdirs();
-          }
-          i = k;
-        } while (paramString1 == null);
-        i = k;
-      } while (paramString1.length <= 0);
-      m = paramString1.length;
-      j = 0;
-      i = k;
-    } while (j >= m);
-    File localFile = paramString1[j];
-    if (localFile.isDirectory()) {
-      copy(localFile.getPath() + "/", paramString2 + localFile.getName() + "/");
-    }
-    for (;;)
-    {
-      j += 1;
-      break;
-      if (localFile.getName().endsWith(".so")) {
-        copySdcardFile(localFile.getPath(), paramString2 + File.separator + localFile.getName());
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(localFile.getPath());
+          ((StringBuilder)localObject).append("/");
+          localObject = ((StringBuilder)localObject).toString();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramString2);
+          localStringBuilder.append(localFile.getName());
+          localStringBuilder.append("/");
+          copy((String)localObject, localStringBuilder.toString());
+        }
+        else if (localFile.getName().endsWith(".so"))
+        {
+          localObject = localFile.getPath();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramString2);
+          localStringBuilder.append(File.separator);
+          localStringBuilder.append(localFile.getName());
+          copySdcardFile((String)localObject, localStringBuilder.toString());
+        }
+        i += 1;
       }
     }
+    return 0;
   }
   
   public static int copySdcardFile(String paramString1, String paramString2)
@@ -81,25 +84,21 @@ public class SoFileLoadManager
   
   private static boolean isLoadSoFile(File paramFile)
   {
-    boolean bool1 = false;
-    boolean bool2 = false;
     paramFile = paramFile.listFiles();
+    int i = 0;
     if (paramFile == null) {
-      return bool2;
+      return false;
     }
     int j = paramFile.length;
-    int i = 0;
-    for (;;)
+    boolean bool = false;
+    while (i < j)
     {
-      bool2 = bool1;
-      if (i >= j) {
-        break;
-      }
       if (paramFile[i].getName().toLowerCase().contains("duqian")) {
-        bool1 = true;
+        bool = true;
       }
       i += 1;
     }
+    return bool;
   }
   
   public static void loadSoFile(Context paramContext, String paramString)
@@ -111,13 +110,16 @@ public class SoFileLoadManager
     }
     catch (Throwable paramContext)
     {
-      Log.e("dq", "loadSoFile error " + paramContext.getMessage());
+      paramString = new StringBuilder();
+      paramString.append("loadSoFile error ");
+      paramString.append(paramContext.getMessage());
+      Log.e("dq", paramString.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.util.soloader.SoFileLoadManager
  * JD-Core Version:    0.7.0.1
  */

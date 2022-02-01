@@ -24,7 +24,8 @@ class RootViewDetectListener$1
     if ((RootViewDetectListener.access$000(this.this$0) != null) && (RootViewDetectListener.access$000(this.this$0).get() != null) && ((RootViewDetectListener.access$000(this.this$0).get() instanceof ViewGroup)))
     {
       paramMessage = new ArrayList();
-      RootViewDetectListener.access$200(this.this$0, paramMessage, RootViewDetectListener.access$100(this.this$0), ClassUtil.getClassName(RootViewDetectListener.access$000(this.this$0).get(), null), (View)RootViewDetectListener.access$000(this.this$0).get());
+      RootViewDetectListener localRootViewDetectListener = this.this$0;
+      RootViewDetectListener.access$200(localRootViewDetectListener, paramMessage, RootViewDetectListener.access$100(localRootViewDetectListener), ClassUtil.getClassName(RootViewDetectListener.access$000(this.this$0).get(), null), (View)RootViewDetectListener.access$000(this.this$0).get());
       if (paramMessage.size() > 0) {
         BitmapMonitor.getInstance().exceedBitmapListener.onBitmapExceed(paramMessage);
       }
@@ -33,7 +34,7 @@ class RootViewDetectListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.bigbitmap.RootViewDetectListener.1
  * JD-Core Version:    0.7.0.1
  */

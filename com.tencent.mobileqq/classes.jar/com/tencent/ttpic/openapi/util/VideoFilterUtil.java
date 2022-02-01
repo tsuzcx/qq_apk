@@ -6,7 +6,6 @@ import android.graphics.PointF;
 import android.text.TextUtils;
 import com.tencent.aekit.api.standard.AEModule;
 import com.tencent.aekit.api.standard.GLCapabilities;
-import com.tencent.aekit.openrender.internal.AEFilterI;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.camerasdk.avreport.AEKitBean;
@@ -26,22 +25,12 @@ import com.tencent.ttpic.filter.NormalVideoFilter;
 import com.tencent.ttpic.filter.ThreeDimFilter;
 import com.tencent.ttpic.filter.VideoFilterInputFreeze;
 import com.tencent.ttpic.filter.VoiceTextFilter;
-import com.tencent.ttpic.offlineset.beans.StyleFilterSettingJsonBean;
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
-import com.tencent.ttpic.openapi.filter.CosFunFilterGroup;
 import com.tencent.ttpic.openapi.filter.CustomFilterItem;
-import com.tencent.ttpic.openapi.filter.CyberpunkFilter;
 import com.tencent.ttpic.openapi.filter.FaceOff3DFilter;
 import com.tencent.ttpic.openapi.filter.RenderItem;
 import com.tencent.ttpic.openapi.filter.TransformFilter;
-import com.tencent.ttpic.openapi.filter.stylizefilter.IStlylizeFilterIniter;
-import com.tencent.ttpic.openapi.filter.stylizefilter.TTMoonaPencilFilter;
-import com.tencent.ttpic.openapi.filter.stylizefilter.TTPencilFilterGroup;
-import com.tencent.ttpic.openapi.filter.stylizefilter.TTSelfInnovSketchFilter;
-import com.tencent.ttpic.openapi.filter.stylizefilter.TTWeseeSketchFilter;
-import com.tencent.ttpic.openapi.filter.stylizefilter.cartoonfilter.TTCartoonFilterGroup;
 import com.tencent.ttpic.openapi.filter.stylizefilter.customFilter.StyleCustomFilterGroup;
-import com.tencent.ttpic.openapi.filter.stylizefilter.toonFilter.TTToonFilterGroup;
 import com.tencent.ttpic.openapi.initializer.TNNStyleChildInitializer;
 import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
 import com.tencent.ttpic.openapi.model.FaceStyleItem;
@@ -56,10 +45,6 @@ import com.tencent.ttpic.openapi.model.cosfun.CosFun.CosFunItem;
 import com.tencent.ttpic.openapi.offlineset.AEOfflineConfig;
 import com.tencent.ttpic.particle.ParticleFilter;
 import com.tencent.ttpic.particle.ParticleFilter3D;
-import com.tencent.ttpic.renderitem.StyleFilterRender;
-import com.tencent.ttpic.trigger.TriggerCtrlItem;
-import com.tencent.ttpic.trigger.TriggerManager;
-import com.tencent.ttpic.trigger.triggerctrlitem.StyleFilterTriggerCtrlItem;
 import com.tencent.ttpic.util.FrameUtil;
 import com.tencent.ttpic.util.VideoFilterFactory.STICKER_TYPE;
 import java.io.File;
@@ -87,58 +72,82 @@ public class VideoFilterUtil
     if (paramList == null) {
       return false;
     }
-    if ((paramList1 == null) || (paramList1.size() == 0) || (paramSet == null)) {
-      return true;
-    }
-    paramList = paramList1.iterator();
-    while (paramList.hasNext())
+    if ((paramList1 != null) && (paramList1.size() != 0))
     {
-      paramList1 = (StickerItem)paramList.next();
-      if ((paramList1 != null) && (paramSet.contains(Integer.valueOf(paramList1.getTriggerTypeInt())))) {
+      if (paramSet == null) {
         return true;
       }
+      paramList = paramList1.iterator();
+      while (paramList.hasNext())
+      {
+        paramList1 = (StickerItem)paramList.next();
+        if ((paramList1 != null) && (paramSet.contains(Integer.valueOf(paramList1.getTriggerTypeInt())))) {
+          return true;
+        }
+      }
+      return false;
     }
-    return false;
+    return true;
   }
   
   public static boolean canUseBlendMode(VideoFilterBase paramVideoFilterBase)
   {
-    if (paramVideoFilterBase == null) {}
-    do
+    boolean bool2 = false;
+    boolean bool3 = false;
+    boolean bool1 = false;
+    if (paramVideoFilterBase == null) {
+      return false;
+    }
+    if ((paramVideoFilterBase instanceof NormalVideoFilter))
     {
-      do
-      {
-        do
-        {
-          return false;
-          if (!(paramVideoFilterBase instanceof NormalVideoFilter)) {
-            break;
-          }
-        } while ((!((NormalVideoFilter)paramVideoFilterBase).canUseBlendMode()) && (!GLCapabilities.isSupportFramebufferFetch()));
-        return true;
-        if (((paramVideoFilterBase instanceof FaceOffByImageFilter)) || ((paramVideoFilterBase instanceof ThreeDimFilter)) || ((paramVideoFilterBase instanceof ARParticleFilter)) || ((paramVideoFilterBase instanceof HeadCropFilter))) {
-          return true;
-        }
-        if (!(paramVideoFilterBase instanceof FaceOffFilter)) {
-          break;
-        }
-      } while ((!((FaceOffFilter)paramVideoFilterBase).canUseBlendMode()) && (!GLCapabilities.isSupportFramebufferFetch()));
-      return true;
-      if (!(paramVideoFilterBase instanceof FaceOff3DFilter)) {
-        break;
+      if ((((NormalVideoFilter)paramVideoFilterBase).canUseBlendMode()) || (GLCapabilities.isSupportFramebufferFetch())) {
+        bool1 = true;
       }
-    } while ((!((FaceOff3DFilter)paramVideoFilterBase).canUseBlendMode()) && (!GLCapabilities.isSupportFramebufferFetch()));
+      return bool1;
+    }
+    if ((!(paramVideoFilterBase instanceof FaceOffByImageFilter)) && (!(paramVideoFilterBase instanceof ThreeDimFilter)) && (!(paramVideoFilterBase instanceof ARParticleFilter)))
+    {
+      if ((paramVideoFilterBase instanceof HeadCropFilter)) {
+        return true;
+      }
+      if ((paramVideoFilterBase instanceof FaceOffFilter))
+      {
+        if (!((FaceOffFilter)paramVideoFilterBase).canUseBlendMode())
+        {
+          bool1 = bool2;
+          if (!GLCapabilities.isSupportFramebufferFetch()) {}
+        }
+        else
+        {
+          bool1 = true;
+        }
+        return bool1;
+      }
+      if ((paramVideoFilterBase instanceof FaceOff3DFilter))
+      {
+        if (!((FaceOff3DFilter)paramVideoFilterBase).canUseBlendMode())
+        {
+          bool1 = bool3;
+          if (!GLCapabilities.isSupportFramebufferFetch()) {}
+        }
+        else
+        {
+          bool1 = true;
+        }
+        return bool1;
+      }
+      if ((paramVideoFilterBase instanceof VoiceTextFilter)) {
+        return true;
+      }
+      if ((paramVideoFilterBase instanceof ParticleFilter)) {
+        return true;
+      }
+      if ((paramVideoFilterBase instanceof ParticleFilter3D)) {
+        return true;
+      }
+      return paramVideoFilterBase.canUseBlendMode();
+    }
     return true;
-    if ((paramVideoFilterBase instanceof VoiceTextFilter)) {
-      return true;
-    }
-    if ((paramVideoFilterBase instanceof ParticleFilter)) {
-      return true;
-    }
-    if ((paramVideoFilterBase instanceof ParticleFilter3D)) {
-      return true;
-    }
-    return paramVideoFilterBase.canUseBlendMode();
   }
   
   private static List<StyleCustomFilterGroup> createCosFunCustomFilterGroup(CosFun paramCosFun)
@@ -170,112 +179,51 @@ public class VideoFilterUtil
     return localArrayList;
   }
   
-  private static CosFunFilterGroup createCosFunFilterGroup(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager, List<RenderItem> paramList, boolean paramBoolean)
-  {
-    CosFun localCosFun = paramVideoMaterial.getCosFun();
-    if ((localCosFun != null) && (paramTriggerManager != null)) {
-      return new CosFunFilterGroup(paramVideoMaterial, paramTriggerManager, paramList, createCosFunCustomFilterGroup(localCosFun), paramBoolean);
-    }
-    return null;
-  }
-  
   private static StyleCustomFilterGroup createCustomFilterGroup(List<CustomFilterItem> paramList)
   {
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      return null;
+    if ((paramList != null) && (paramList.size() > 0)) {
+      return new StyleCustomFilterGroup(paramList);
     }
-    return new StyleCustomFilterGroup(paramList);
+    return null;
   }
   
   @Deprecated
   private static VideoFilterInputFreeze createFreezeFilter(StickerItem paramStickerItem)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramStickerItem != null)
+    if ((paramStickerItem != null) && (paramStickerItem.stickerType == VideoFilterFactory.STICKER_TYPE.FREEZE_FRAME.type))
     {
-      localObject1 = localObject2;
-      if (paramStickerItem.stickerType == VideoFilterFactory.STICKER_TYPE.FREEZE_FRAME.type)
+      VideoFilterInputFreeze localVideoFilterInputFreeze = new VideoFilterInputFreeze();
+      if (PTFaceAttr.PTExpression.TIME_TRIGGER.value == paramStickerItem.getTriggerTypeInt())
       {
-        localObject1 = new VideoFilterInputFreeze();
-        if (PTFaceAttr.PTExpression.TIME_TRIGGER.value != paramStickerItem.getTriggerTypeInt()) {
-          break label165;
-        }
-        ((VideoFilterInputFreeze)localObject1).setFreezeFrameStartTime((paramStickerItem.triggerFrameStartTime * paramStickerItem.frameDuration), (paramStickerItem.triggerFrameDurationTime * paramStickerItem.frameDuration), paramStickerItem.alwaysTriggered);
-        ((VideoFilterInputFreeze)localObject1).setTriggerTimeUpdater(paramStickerItem.triggerTimeUpdater);
-      }
-    }
-    for (;;)
-    {
-      if ((paramStickerItem.triggerState != null) && (paramStickerItem.triggerState.size() > 0))
-      {
-        ((VideoFilterInputFreeze)localObject1).setIsStateTrigger(true);
-        ((VideoFilterInputFreeze)localObject1).setStateTriggerParam(paramStickerItem.renderId, paramStickerItem.triggerState, paramStickerItem.triggerStateRange);
-      }
-      ((VideoFilterInputFreeze)localObject1).setFramesAndCount((paramStickerItem.frames * paramStickerItem.playCount * paramStickerItem.frameDuration));
-      ((VideoFilterInputFreeze)localObject1).setPlayTimes(paramStickerItem.triggedTimes);
-      ((VideoFilterInputFreeze)localObject1).setDelayTriggerTime((paramStickerItem.frameDuration * paramStickerItem.delayedTriggedTime));
-      return localObject1;
-      label165:
-      ((VideoFilterInputFreeze)localObject1).setFreezeFrameTriggleType(paramStickerItem.getTriggerTypeInt(), paramStickerItem.alwaysTriggered, paramStickerItem.activateTriggerCount, paramStickerItem.activateTriggerTotalCount);
-    }
-  }
-  
-  public static RenderItem createStyleRenderItem(StyleFilterSettingJsonBean paramStyleFilterSettingJsonBean)
-  {
-    StyleFilterTriggerCtrlItem localStyleFilterTriggerCtrlItem = null;
-    if (paramStyleFilterSettingJsonBean == null) {
-      return null;
-    }
-    if (paramStyleFilterSettingJsonBean.isDenoise > 0.0F) {
-      localStyleFilterTriggerCtrlItem = new StyleFilterTriggerCtrlItem(paramStyleFilterSettingJsonBean.isDenoise);
-    }
-    return createStyleRenderItem(paramStyleFilterSettingJsonBean, false, 0, localStyleFilterTriggerCtrlItem);
-  }
-  
-  private static RenderItem createStyleRenderItem(StyleFilterSettingJsonBean paramStyleFilterSettingJsonBean, boolean paramBoolean, int paramInt, TriggerCtrlItem paramTriggerCtrlItem)
-  {
-    Object localObject;
-    switch (paramStyleFilterSettingJsonBean.type)
-    {
-    default: 
-      localObject = null;
-    }
-    while (localObject != null)
-    {
-      if ((localObject instanceof IStlylizeFilterIniter))
-      {
-        IStlylizeFilterIniter localIStlylizeFilterIniter = (IStlylizeFilterIniter)localObject;
-        localIStlylizeFilterIniter.updateLutPaths(paramStyleFilterSettingJsonBean.lutPaths);
-        localIStlylizeFilterIniter.updateMateriaPaths(paramStyleFilterSettingJsonBean.materialPaths);
-        localIStlylizeFilterIniter.updateThresholdValue(paramStyleFilterSettingJsonBean.faceThreshold, paramStyleFilterSettingJsonBean.typeThreshold, paramStyleFilterSettingJsonBean.highlightThreshold);
-      }
-      if (paramBoolean)
-      {
-        int i = paramInt;
-        if (paramInt == 0) {
-          i = 1;
-        }
-        return new StyleFilterRender((AEFilterI)localObject, paramTriggerCtrlItem, i);
-        localObject = new TTWeseeSketchFilter();
-        continue;
-        localObject = new TTSelfInnovSketchFilter();
-        continue;
-        localObject = new TTMoonaPencilFilter();
-        ((TTMoonaPencilFilter)localObject).updateSaturationPercent(paramStyleFilterSettingJsonBean.styleParams);
-        continue;
-        localObject = new TTPencilFilterGroup();
-        continue;
-        localObject = new TTCartoonFilterGroup();
-        continue;
-        localObject = new CyberpunkFilter();
-        continue;
-        localObject = new TTToonFilterGroup();
+        d1 = paramStickerItem.triggerFrameStartTime;
+        d2 = paramStickerItem.frameDuration;
+        Double.isNaN(d1);
+        long l = (d1 * d2);
+        d1 = paramStickerItem.triggerFrameDurationTime;
+        d2 = paramStickerItem.frameDuration;
+        Double.isNaN(d1);
+        localVideoFilterInputFreeze.setFreezeFrameStartTime(l, (d1 * d2), paramStickerItem.alwaysTriggered);
+        localVideoFilterInputFreeze.setTriggerTimeUpdater(paramStickerItem.triggerTimeUpdater);
       }
       else
       {
-        return new StyleFilterRender((AEFilterI)localObject, paramTriggerCtrlItem);
+        localVideoFilterInputFreeze.setFreezeFrameTriggleType(paramStickerItem.getTriggerTypeInt(), paramStickerItem.alwaysTriggered, paramStickerItem.activateTriggerCount, paramStickerItem.activateTriggerTotalCount);
       }
+      if ((paramStickerItem.triggerState != null) && (paramStickerItem.triggerState.size() > 0))
+      {
+        localVideoFilterInputFreeze.setIsStateTrigger(true);
+        localVideoFilterInputFreeze.setStateTriggerParam(paramStickerItem.renderId, paramStickerItem.triggerState, paramStickerItem.triggerStateRange);
+      }
+      double d1 = paramStickerItem.frames * paramStickerItem.playCount;
+      double d2 = paramStickerItem.frameDuration;
+      Double.isNaN(d1);
+      localVideoFilterInputFreeze.setFramesAndCount((d1 * d2));
+      localVideoFilterInputFreeze.setPlayTimes(paramStickerItem.triggedTimes);
+      d1 = paramStickerItem.frameDuration;
+      d2 = paramStickerItem.delayedTriggedTime;
+      Double.isNaN(d2);
+      localVideoFilterInputFreeze.setDelayTriggerTime((d1 * d2));
+      return localVideoFilterInputFreeze;
     }
     return null;
   }
@@ -327,40 +275,42 @@ public class VideoFilterUtil
   public static List<String> getAllPngFileNames(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
-    if (paramString == null) {}
-    do
+    if (paramString == null) {
+      return localArrayList;
+    }
+    if (paramString.startsWith("assets://"))
     {
-      for (;;)
+      try
       {
-        return localArrayList;
-        if (paramString.startsWith("assets://")) {
-          try
-          {
-            paramString = AEModule.getContext().getAssets().list(FileUtils.getRealPath(paramString));
-            if (paramString != null)
-            {
-              int j = paramString.length;
-              int i = 0;
-              while (i < j)
-              {
-                Object localObject = paramString[i];
-                if (localObject.endsWith(".png")) {
-                  localArrayList.add(localObject);
-                }
-                i += 1;
-              }
-              paramString = new File(paramString).list(VideoMaterial.mPngFilter);
-            }
-          }
-          catch (IOException paramString)
-          {
-            paramString.printStackTrace();
-            return localArrayList;
-          }
+        paramString = AEModule.getContext().getAssets().list(FileUtils.getRealPath(paramString));
+        if (paramString == null) {
+          return localArrayList;
         }
+        int j = paramString.length;
+        int i = 0;
+        while (i < j)
+        {
+          Object localObject = paramString[i];
+          if (localObject.endsWith(".png")) {
+            localArrayList.add(localObject);
+          }
+          i += 1;
+        }
+        paramString = new File(paramString).list(VideoMaterial.mPngFilter);
       }
-    } while (paramString == null);
-    localArrayList.addAll(Arrays.asList(paramString));
+      catch (IOException paramString)
+      {
+        paramString.printStackTrace();
+        return localArrayList;
+      }
+    }
+    else
+    {
+      if (paramString == null) {
+        return localArrayList;
+      }
+      localArrayList.addAll(Arrays.asList(paramString));
+    }
     return localArrayList;
   }
   
@@ -371,127 +321,86 @@ public class VideoFilterUtil
   
   public static float getFaceStatus(FaceRangeStatus paramFaceRangeStatus, int paramInt, StickerItem.ValueRange paramValueRange)
   {
-    if (paramFaceRangeStatus == null) {}
-    for (;;)
-    {
+    if (paramFaceRangeStatus == null) {
       return -1.0F;
-      VideoMaterial.RANGE_TRIGGER_TYPE[] arrayOfRANGE_TRIGGER_TYPE = VideoMaterial.RANGE_TRIGGER_TYPE.values();
-      int j = arrayOfRANGE_TRIGGER_TYPE.length;
-      int i = 0;
-      while (i < j)
-      {
-        VideoMaterial.RANGE_TRIGGER_TYPE localRANGE_TRIGGER_TYPE = arrayOfRANGE_TRIGGER_TYPE[i];
-        if (localRANGE_TRIGGER_TYPE.value == paramInt) {
-          return localRANGE_TRIGGER_TYPE.checker.getLevel(paramFaceRangeStatus, paramValueRange);
-        }
-        i += 1;
-      }
     }
+    VideoMaterial.RANGE_TRIGGER_TYPE[] arrayOfRANGE_TRIGGER_TYPE = VideoMaterial.RANGE_TRIGGER_TYPE.values();
+    int j = arrayOfRANGE_TRIGGER_TYPE.length;
+    int i = 0;
+    while (i < j)
+    {
+      VideoMaterial.RANGE_TRIGGER_TYPE localRANGE_TRIGGER_TYPE = arrayOfRANGE_TRIGGER_TYPE[i];
+      if (localRANGE_TRIGGER_TYPE.value == paramInt) {
+        return localRANGE_TRIGGER_TYPE.checker.getLevel(paramFaceRangeStatus, paramValueRange);
+      }
+      i += 1;
+    }
+    return -1.0F;
   }
   
   public static Frame getSecondLastFrame(Frame paramFrame)
   {
-    Frame localFrame;
     if (FrameUtil.isValid(paramFrame))
     {
-      localFrame = paramFrame;
-      if (FrameUtil.isValid(paramFrame.nextFrame)) {}
-    }
-    else
-    {
-      paramFrame = null;
-      return paramFrame;
-    }
-    for (;;)
-    {
-      paramFrame = localFrame;
-      if (!FrameUtil.isValid(localFrame.nextFrame)) {
-        break;
-      }
-      paramFrame = localFrame;
-      if (!FrameUtil.isValid(localFrame.nextFrame.nextFrame)) {
-        break;
-      }
-      localFrame = localFrame.nextFrame;
-    }
-  }
-  
-  public static List<VideoFilterBase> getSimpleNormalVideoFilter(List<VideoFilterBase> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (paramList == null) {
-      return localArrayList;
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      VideoFilterBase localVideoFilterBase = (VideoFilterBase)paramList.next();
-      if (canUseBlendMode(localVideoFilterBase)) {
-        localArrayList.add(localVideoFilterBase);
+      Frame localFrame = paramFrame;
+      if (FrameUtil.isValid(paramFrame.nextFrame))
+      {
+        while ((FrameUtil.isValid(localFrame.nextFrame)) && (FrameUtil.isValid(localFrame.nextFrame.nextFrame))) {
+          localFrame = localFrame.nextFrame;
+        }
+        return localFrame;
       }
     }
-    return localArrayList;
+    return null;
   }
   
   public static boolean hasBlendMode(VideoFilterBase paramVideoFilterBase)
   {
-    boolean bool = true;
     if (paramVideoFilterBase == null) {
-      bool = false;
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return bool;
-          if (!(paramVideoFilterBase instanceof NormalVideoFilter)) {
-            break;
-          }
-        } while (!((NormalVideoFilter)paramVideoFilterBase).canUseBlendMode());
-        return false;
-        if (!(paramVideoFilterBase instanceof FaceOffFilter)) {
-          break;
-        }
-      } while (!((FaceOffFilter)paramVideoFilterBase).canUseBlendMode());
       return false;
-      if (!(paramVideoFilterBase instanceof FaceOff3DFilter)) {
-        break;
-      }
-    } while (!((FaceOff3DFilter)paramVideoFilterBase).canUseBlendMode());
-    return false;
+    }
+    if ((paramVideoFilterBase instanceof NormalVideoFilter)) {
+      return ((NormalVideoFilter)paramVideoFilterBase).canUseBlendMode() ^ true;
+    }
+    if ((paramVideoFilterBase instanceof FaceOffFilter)) {
+      return ((FaceOffFilter)paramVideoFilterBase).canUseBlendMode() ^ true;
+    }
+    if ((paramVideoFilterBase instanceof FaceOff3DFilter)) {
+      return ((FaceOff3DFilter)paramVideoFilterBase).canUseBlendMode() ^ true;
+    }
     return false;
   }
   
   public static boolean isStatusTriggered(FaceRangeStatus paramFaceRangeStatus, int paramInt, StickerItem.ValueRange paramValueRange)
   {
-    if (paramFaceRangeStatus == null) {}
-    for (;;)
-    {
+    if (paramFaceRangeStatus == null) {
       return false;
-      VideoMaterial.RANGE_TRIGGER_TYPE[] arrayOfRANGE_TRIGGER_TYPE = VideoMaterial.RANGE_TRIGGER_TYPE.values();
-      int j = arrayOfRANGE_TRIGGER_TYPE.length;
-      int i = 0;
-      while (i < j)
-      {
-        VideoMaterial.RANGE_TRIGGER_TYPE localRANGE_TRIGGER_TYPE = arrayOfRANGE_TRIGGER_TYPE[i];
-        if (localRANGE_TRIGGER_TYPE.value == paramInt) {
-          return localRANGE_TRIGGER_TYPE.checker.isInRange(paramFaceRangeStatus, paramValueRange);
-        }
-        i += 1;
-      }
     }
+    VideoMaterial.RANGE_TRIGGER_TYPE[] arrayOfRANGE_TRIGGER_TYPE = VideoMaterial.RANGE_TRIGGER_TYPE.values();
+    int j = arrayOfRANGE_TRIGGER_TYPE.length;
+    int i = 0;
+    while (i < j)
+    {
+      VideoMaterial.RANGE_TRIGGER_TYPE localRANGE_TRIGGER_TYPE = arrayOfRANGE_TRIGGER_TYPE[i];
+      if (localRANGE_TRIGGER_TYPE.value == paramInt) {
+        return localRANGE_TRIGGER_TYPE.checker.isInRange(paramFaceRangeStatus, paramValueRange);
+      }
+      i += 1;
+    }
+    return false;
   }
   
   private static boolean isTNNAvailable(FaceStyleItem paramFaceStyleItem)
   {
-    if (isTNNAvailable) {
-      return isTNNAvailable;
+    boolean bool = isTNNAvailable;
+    if (bool) {
+      return bool;
     }
     isTNNAvailable = loadTNNModel(paramFaceStyleItem, 6);
-    tnnMaterialReportInfo.isTNNAvailable = isTNNAvailable;
-    return isTNNAvailable;
+    paramFaceStyleItem = tnnMaterialReportInfo;
+    bool = isTNNAvailable;
+    paramFaceStyleItem.isTNNAvailable = bool;
+    return bool;
   }
   
   private static boolean loadTNNModel(FaceStyleItem paramFaceStyleItem, int paramInt)
@@ -520,15 +429,17 @@ public class VideoFilterUtil
   
   public static boolean needCopy(VideoFilterBase paramVideoFilterBase)
   {
-    if (paramVideoFilterBase == null) {}
-    do
-    {
+    boolean bool = false;
+    if (paramVideoFilterBase == null) {
       return false;
-      if ((paramVideoFilterBase instanceof NormalVideoFilter)) {
-        return ((NormalVideoFilter)paramVideoFilterBase).needCopyTex();
-      }
-    } while ((!(paramVideoFilterBase instanceof FaceOffFilter)) && (!(paramVideoFilterBase instanceof FaceOff3DFilter)));
-    return true;
+    }
+    if ((paramVideoFilterBase instanceof NormalVideoFilter)) {
+      return ((NormalVideoFilter)paramVideoFilterBase).needCopyTex();
+    }
+    if (((paramVideoFilterBase instanceof FaceOffFilter)) || ((paramVideoFilterBase instanceof FaceOff3DFilter))) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean needDepthBuffer(VideoFilterBase paramVideoFilterBase)
@@ -539,52 +450,46 @@ public class VideoFilterUtil
   private static boolean needDowngrade(FaceStyleItem paramFaceStyleItem)
   {
     int i;
-    if (paramFaceStyleItem.limitDeviceLevel == 0)
-    {
+    if (paramFaceStyleItem.limitDeviceLevel == 0) {
       i = 3;
-      paramFaceStyleItem = tnnMaterialReportInfo;
-      if (AEOfflineConfig.getPhonePerfLevel() >= i) {
-        break label42;
-      }
-    }
-    label42:
-    for (boolean bool = true;; bool = false)
-    {
-      paramFaceStyleItem.isDeviceDowngrade = bool;
-      return tnnMaterialReportInfo.isDeviceDowngrade;
+    } else {
       i = paramFaceStyleItem.limitDeviceLevel;
-      break;
     }
+    paramFaceStyleItem = tnnMaterialReportInfo;
+    boolean bool;
+    if (AEOfflineConfig.getPhonePerfLevel() < i) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    paramFaceStyleItem.isDeviceDowngrade = bool;
+    return tnnMaterialReportInfo.isDeviceDowngrade;
   }
   
   public static void removeEmptyFilters(List<VideoFilterBase> paramList)
   {
-    if (paramList == null) {}
-    for (;;)
-    {
+    if (paramList == null) {
       return;
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        if (paramList.next() == null) {
-          paramList.remove();
-        }
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      if (paramList.next() == null) {
+        paramList.remove();
       }
     }
   }
   
   public static void removeEmptyRenderItems(List<RenderItem> paramList)
   {
-    if (paramList == null) {}
-    for (;;)
-    {
+    if (paramList == null) {
       return;
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        RenderItem localRenderItem = (RenderItem)paramList.next();
-        if ((localRenderItem == null) || (localRenderItem.filter == null)) {
-          paramList.remove();
-        }
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      RenderItem localRenderItem = (RenderItem)paramList.next();
+      if ((localRenderItem == null) || (localRenderItem.filter == null)) {
+        paramList.remove();
       }
     }
   }
@@ -592,7 +497,8 @@ public class VideoFilterUtil
   private static void reportTNNInfo()
   {
     AEKitBean localAEKitBean = new AEKitBean(AEKitReportEvent.PREVIEW_TNN_MATERIAL.value);
-    if ((tnnMaterialReportInfo != null) && (!TextUtils.isEmpty(tnnMaterialReportInfo.materialID)))
+    TNNMaterialReportInfo localTNNMaterialReportInfo = tnnMaterialReportInfo;
+    if ((localTNNMaterialReportInfo != null) && (!TextUtils.isEmpty(localTNNMaterialReportInfo.materialID)))
     {
       localAEKitBean.ext_str1 = tnnMaterialReportInfo.materialID;
       localAEKitBean.ext_str2 = Boolean.valueOf(tnnMaterialReportInfo.isTNNAvailable).toString();
@@ -627,37 +533,33 @@ public class VideoFilterUtil
   
   public static void setRenderMode(List<? extends VideoFilterBase> paramList, int paramInt)
   {
-    if (CollectionUtils.isEmpty(paramList)) {}
-    for (;;)
-    {
+    if (CollectionUtils.isEmpty(paramList)) {
       return;
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        ((VideoFilterBase)paramList.next()).setRenderMode(paramInt);
-      }
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      ((VideoFilterBase)paramList.next()).setRenderMode(paramInt);
     }
   }
   
   public static void setRenderModes(List<RenderItem> paramList, int paramInt)
   {
-    if (CollectionUtils.isEmpty(paramList)) {}
-    for (;;)
-    {
+    if (CollectionUtils.isEmpty(paramList)) {
       return;
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        RenderItem localRenderItem = (RenderItem)paramList.next();
-        if ((localRenderItem.filter instanceof VideoFilterBase)) {
-          ((VideoFilterBase)localRenderItem.filter).setRenderMode(paramInt);
-        }
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      RenderItem localRenderItem = (RenderItem)paramList.next();
+      if ((localRenderItem.filter instanceof VideoFilterBase)) {
+        ((VideoFilterBase)localRenderItem.filter).setRenderMode(paramInt);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.VideoFilterUtil
  * JD-Core Version:    0.7.0.1
  */

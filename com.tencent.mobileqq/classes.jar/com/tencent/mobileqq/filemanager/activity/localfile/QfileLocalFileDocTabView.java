@@ -5,10 +5,11 @@ import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
+import com.tencent.mobileqq.filemanager.api.IQQFileTempUtils;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.filemanager.util.IReportVer51;
 import com.tencent.mobileqq.filemanager.widget.QfileTabBarView.ScanParams;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -27,24 +28,25 @@ public class QfileLocalFileDocTabView
   
   private String a(String paramString)
   {
-    paramString = FileUtil.a(paramString);
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return HardCodeUtil.a(2131709643);
+    paramString = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getExtension(paramString);
+    if ((paramString != null) && (paramString.length() != 0))
+    {
+      paramString = paramString.toLowerCase();
+      if (".doc|.docx|.wps|.pages|".indexOf(paramString) >= 0) {
+        return "WORD";
+      }
+      if (".ppt|.pptx.|.dps|.keynote|".indexOf(paramString) >= 0) {
+        return "PPT";
+      }
+      if (".xls|.xlsx|.et|.numbers|".indexOf(paramString) >= 0) {
+        return "EXCEL";
+      }
+      if (".pdf|".indexOf(paramString) >= 0) {
+        return "PDF";
+      }
+      return HardCodeUtil.a(2131692586);
     }
-    paramString = paramString.toLowerCase();
-    if (".doc|.docx|.wps|.pages|".indexOf(paramString) >= 0) {
-      return "WORD";
-    }
-    if (".ppt|.pptx.|.dps|.keynote|".indexOf(paramString) >= 0) {
-      return "PPT";
-    }
-    if (".xls|.xlsx|.et|.numbers|".indexOf(paramString) >= 0) {
-      return "EXCEL";
-    }
-    if (".pdf|".indexOf(paramString) >= 0) {
-      return "PDF";
-    }
-    return HardCodeUtil.a(2131709659);
+    return HardCodeUtil.a(2131692586);
   }
   
   protected QfileBaseExpandableListAdapter a()
@@ -61,10 +63,11 @@ public class QfileLocalFileDocTabView
   
   public void a(Set<FileInfo> paramSet)
   {
-    if ((paramSet == null) || (paramSet.size() == 0)) {}
-    for (;;)
+    if (paramSet != null)
     {
-      return;
+      if (paramSet.size() == 0) {
+        return;
+      }
       paramSet = paramSet.iterator();
       while (paramSet.hasNext()) {
         b((FileInfo)paramSet.next());
@@ -103,15 +106,12 @@ public class QfileLocalFileDocTabView
       }
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.h(true);
     }
-    for (;;)
+    else if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.k())
     {
-      setEditbarButton(false, false, true, true, true);
-      o();
-      return;
-      if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.k()) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().V();
-      }
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().V();
     }
+    setEditbarButton(false, false, true, true, true);
+    o();
   }
   
   public void m()
@@ -122,7 +122,7 @@ public class QfileLocalFileDocTabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileDocTabView
  * JD-Core Version:    0.7.0.1
  */

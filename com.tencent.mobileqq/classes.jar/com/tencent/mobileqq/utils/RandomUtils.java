@@ -22,6 +22,14 @@ public class RandomUtils
     return paramFloat1 + (paramFloat2 - paramFloat1) * a.nextFloat();
   }
   
+  public static int a(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == paramInt2) {
+      return paramInt1;
+    }
+    return paramInt1 + a.nextInt(paramInt2 - paramInt1);
+  }
+  
   public static long a()
   {
     return a(0L, 9223372036854775807L);
@@ -37,7 +45,7 @@ public class RandomUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.RandomUtils
  * JD-Core Version:    0.7.0.1
  */

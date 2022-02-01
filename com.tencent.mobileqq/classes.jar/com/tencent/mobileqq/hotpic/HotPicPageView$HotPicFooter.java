@@ -23,7 +23,8 @@ class HotPicPageView$HotPicFooter
   
   public RecyclerView.ViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new HotPicPageView.MyViewHolder(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.jdField_a_of_type_AndroidContentContext).inflate(2131558652, paramViewGroup, false), null);
+    HotPicPageView localHotPicPageView = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView;
+    return new HotPicPageView.MyViewHolder(localHotPicPageView, LayoutInflater.from(localHotPicPageView.jdField_a_of_type_AndroidContentContext).inflate(2131561596, paramViewGroup, false), null);
   }
   
   public void a(int paramInt)
@@ -33,9 +34,11 @@ class HotPicPageView$HotPicFooter
   
   public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    StaggeredGridLayoutManager.LayoutParams localLayoutParams1 = null;
+    StaggeredGridLayoutManager.LayoutParams localLayoutParams1;
     if (StaggeredGridLayoutManager.LayoutParams.class.isInstance(paramViewHolder.itemView.getLayoutParams())) {
       localLayoutParams1 = (StaggeredGridLayoutManager.LayoutParams)paramViewHolder.itemView.getLayoutParams();
+    } else {
+      localLayoutParams1 = null;
     }
     StaggeredGridLayoutManager.LayoutParams localLayoutParams2 = localLayoutParams1;
     if (localLayoutParams1 == null)
@@ -52,14 +55,14 @@ class HotPicPageView$HotPicFooter
     }
     if (this.jdField_a_of_type_Int == 1)
     {
-      paramViewHolder.itemView.findViewById(2131368562).setVisibility(0);
-      paramViewHolder.itemView.findViewById(2131368563).setVisibility(4);
+      paramViewHolder.itemView.findViewById(2131368305).setVisibility(0);
+      paramViewHolder.itemView.findViewById(2131368306).setVisibility(4);
       return;
     }
     if (HotPicPageView.b())
     {
-      paramViewHolder.itemView.findViewById(2131368563).setVisibility(0);
-      paramViewHolder.itemView.findViewById(2131368562).setVisibility(8);
+      paramViewHolder.itemView.findViewById(2131368306).setVisibility(0);
+      paramViewHolder.itemView.findViewById(2131368305).setVisibility(8);
       return;
     }
     ThreadManager.getUIHandler().post(new HotPicPageView.HotPicFooter.1(this, paramViewHolder));
@@ -72,7 +75,7 @@ class HotPicPageView$HotPicFooter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicPageView.HotPicFooter
  * JD-Core Version:    0.7.0.1
  */

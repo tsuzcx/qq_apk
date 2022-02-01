@@ -25,30 +25,24 @@ final class k
     for (;;)
     {
       this.a = SystemClock.elapsedRealtime();
-      synchronized (j.n())
+      try
       {
-        try
+        synchronized (j.n())
         {
           if (QLog.isColorLevel()) {
             QLog.d("MSF.C.StatReport", 2, "try wait to report");
           }
           j.n().wait(5000L);
         }
-        catch (InterruptedException localInterruptedException)
-        {
-          for (;;)
-          {
-            localInterruptedException.printStackTrace();
-          }
-        }
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        localInterruptedException.printStackTrace();
         this.b = SystemClock.elapsedRealtime();
-        if (this.b - this.a <= 6000L) {
-          break label241;
-        }
-        ??? = j.o().entrySet().iterator();
-        for (;;)
+        if (this.b - this.a > 6000L)
         {
-          if (((Iterator)???).hasNext()) {
+          ??? = j.o().entrySet().iterator();
+          while (((Iterator)???).hasNext()) {
             try
             {
               Map.Entry localEntry = (Map.Entry)((Iterator)???).next();
@@ -61,23 +55,35 @@ final class k
               localException.printStackTrace();
             }
           }
+          j.o().put(Long.valueOf(this.a), Long.valueOf(this.b));
+          j.b(true);
+          if (QLog.isColorLevel())
+          {
+            ??? = new StringBuilder();
+            ((StringBuilder)???).append("find deep sleep. currTime:");
+            ((StringBuilder)???).append(this.b);
+            ((StringBuilder)???).append(", lastTime:");
+            ((StringBuilder)???).append(this.a);
+            ((StringBuilder)???).append(", sleep:");
+            ((StringBuilder)???).append(this.b - this.a);
+            QLog.d("MSF.C.StatReport", 2, ((StringBuilder)???).toString());
+          }
+        }
+        else
+        {
+          j.b(false);
         }
       }
-      j.o().put(Long.valueOf(this.a), Long.valueOf(this.b));
-      j.b(true);
-      if (QLog.isColorLevel())
-      {
-        QLog.d("MSF.C.StatReport", 2, "find deep sleep. currTime:" + this.b + ", lastTime:" + this.a + ", sleep:" + (this.b - this.a));
-        continue;
-        label241:
-        j.b(false);
-      }
+    }
+    for (;;)
+    {
+      throw localException;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.c.k
  * JD-Core Version:    0.7.0.1
  */

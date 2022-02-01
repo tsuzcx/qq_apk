@@ -12,10 +12,11 @@ class AuthorizeConfig$4
   {
     try
     {
-      if (this.jdField_a_of_type_MqqManagerTicketManager != null) {
+      if (this.jdField_a_of_type_MqqManagerTicketManager != null)
+      {
         this.jdField_a_of_type_MqqManagerTicketManager.getPskey(this.jdField_a_of_type_JavaLangString, 16L, this.jdField_a_of_type_ArrayOfJavaLangString, this.this$0.a);
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -25,7 +26,7 @@ class AuthorizeConfig$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.AuthorizeConfig.4
  * JD-Core Version:    0.7.0.1
  */

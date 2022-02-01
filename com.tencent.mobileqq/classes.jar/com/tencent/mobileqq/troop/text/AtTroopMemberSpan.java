@@ -37,6 +37,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import mqq.app.AppRuntime;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -72,226 +73,265 @@ public class AtTroopMemberSpan
   
   public static Spannable a(Spannable paramSpannable, ArrayList<AtTroopMemberInfo> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramSpannable == null)) {
-      return new SpannableStringBuilder();
-    }
-    paramArrayList.clear();
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramSpannable);
-    int m = localSpannableStringBuilder.length();
-    AtTroopMemberSpan[] arrayOfAtTroopMemberSpan = (AtTroopMemberSpan[])paramSpannable.getSpans(0, m - 1, AtTroopMemberSpan.class);
-    if (arrayOfAtTroopMemberSpan.length == 0) {
-      return localSpannableStringBuilder;
-    }
-    if (arrayOfAtTroopMemberSpan.length > 1) {
-      Arrays.sort(arrayOfAtTroopMemberSpan, new AtTroopMemberSpan.1(paramSpannable));
-    }
-    int j = 0;
-    int i = 0;
-    int n;
-    int i1;
-    for (;;)
+    if ((paramArrayList != null) && (paramSpannable != null))
     {
-      if (i >= arrayOfAtTroopMemberSpan.length) {
-        break label342;
+      paramArrayList.clear();
+      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramSpannable);
+      int m = localSpannableStringBuilder.length();
+      AtTroopMemberSpan[] arrayOfAtTroopMemberSpan = (AtTroopMemberSpan[])paramSpannable.getSpans(0, m - 1, AtTroopMemberSpan.class);
+      if (arrayOfAtTroopMemberSpan.length == 0) {
+        return localSpannableStringBuilder;
       }
-      AtTroopMemberSpan localAtTroopMemberSpan = arrayOfAtTroopMemberSpan[i];
-      n = paramSpannable.getSpanStart(localAtTroopMemberSpan) + j;
-      i1 = paramSpannable.getSpanEnd(localAtTroopMemberSpan) + j;
-      String str = localAtTroopMemberSpan.jdField_b_of_type_JavaLangString;
-      if (!TextUtils.isEmpty(localAtTroopMemberSpan.d)) {
-        str = localAtTroopMemberSpan.d;
+      if (arrayOfAtTroopMemberSpan.length > 1) {
+        Arrays.sort(arrayOfAtTroopMemberSpan, new AtTroopMemberSpan.1(paramSpannable));
       }
-      try
+      int i = 0;
+      for (int j = 0; i < arrayOfAtTroopMemberSpan.length; j = k)
       {
-        localSpannableStringBuilder.replace(n, i1, str);
-        AtTroopMemberInfo localAtTroopMemberInfo = new AtTroopMemberInfo();
-        if (localAtTroopMemberSpan.jdField_a_of_type_JavaLangString != null)
-        {
-          localAtTroopMemberInfo.uin = Long.valueOf(localAtTroopMemberSpan.jdField_a_of_type_JavaLangString).longValue();
-          if (localAtTroopMemberSpan.jdField_a_of_type_JavaLangString.equalsIgnoreCase("0")) {
-            localAtTroopMemberInfo.flag = 1;
-          }
+        AtTroopMemberSpan localAtTroopMemberSpan = arrayOfAtTroopMemberSpan[i];
+        int n = paramSpannable.getSpanStart(localAtTroopMemberSpan) + j;
+        int i1 = paramSpannable.getSpanEnd(localAtTroopMemberSpan) + j;
+        Object localObject = localAtTroopMemberSpan.jdField_b_of_type_JavaLangString;
+        if (!TextUtils.isEmpty(localAtTroopMemberSpan.d)) {
+          localObject = localAtTroopMemberSpan.d;
         }
-        localAtTroopMemberInfo.startPos = ((short)n);
-        localAtTroopMemberInfo.textLen = ((short)str.length());
-        paramArrayList.add(localAtTroopMemberInfo);
-        k = j + (localAtTroopMemberInfo.textLen - (i1 - n));
-      }
-      catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
-      {
-        for (;;)
+        try
         {
-          int k = j;
-          if (QLog.isColorLevel())
+          localSpannableStringBuilder.replace(n, i1, (CharSequence)localObject);
+          AtTroopMemberInfo localAtTroopMemberInfo = new AtTroopMemberInfo();
+          String str = localAtTroopMemberSpan.jdField_a_of_type_JavaLangString;
+          if (str != null)
           {
-            QLog.e("AtTroopMemberSpan", 2, String.format(localSpannableStringBuilder.toString() + ",IndexOutOfBoundsException, convertToSendMsg, start:%d | end:%d | msgBLen:%d", new Object[] { Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(m) }));
-            k = j;
-          }
-        }
-      }
-      i += 1;
-      j = k;
-    }
-    label342:
-    return localSpannableStringBuilder;
-  }
-  
-  public static SpannableString a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, EditText paramEditText)
-  {
-    if ((paramQQAppInterface == null) || (paramContext == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (paramEditText == null)) {
-      return null;
-    }
-    int i = paramEditText.getWidth();
-    int j = paramEditText.getPaddingLeft();
-    int k = paramEditText.getPaddingRight();
-    try
-    {
-      paramQQAppInterface = new AtTroopMemberSpan(paramContext, paramString2, paramString3, i - j - k, paramEditText.getPaint(), paramString4);
-      if (paramQQAppInterface == null) {
-        return null;
-      }
-    }
-    catch (OutOfMemoryError paramQQAppInterface)
-    {
-      for (;;)
-      {
-        paramQQAppInterface = null;
-      }
-      paramContext = paramQQAppInterface.jdField_b_of_type_JavaLangString;
-      paramString1 = new SpannableString(new ColorNickText(paramContext + " ", 16).a());
-      paramString1.setSpan(paramQQAppInterface, 0, paramContext.length(), 33);
-    }
-    return paramString1;
-  }
-  
-  public static SpannableString a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, EditText paramEditText, boolean paramBoolean2)
-  {
-    return a(paramQQAppInterface, paramContext, paramString1, paramString2, paramString3, paramBoolean1, paramEditText, paramBoolean2, false);
-  }
-  
-  public static SpannableString a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, EditText paramEditText, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    if ((paramQQAppInterface == null) || (paramContext == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (paramEditText == null)) {
-      return null;
-    }
-    AtTroopMemberSpan[] arrayOfAtTroopMemberSpan = (AtTroopMemberSpan[])paramEditText.getEditableText().getSpans(0, paramEditText.getEditableText().toString().length(), AtTroopMemberSpan.class);
-    int i = paramEditText.getWidth();
-    int j = paramEditText.getPaddingLeft();
-    int k = paramEditText.getPaddingRight();
-    try
-    {
-      paramQQAppInterface = a(paramQQAppInterface, paramContext, paramString1, paramString2, paramString3, paramBoolean1, i - j - k, paramEditText.getPaint(), paramBoolean2);
-      if (paramQQAppInterface == null) {
-        return null;
-      }
-    }
-    catch (OutOfMemoryError paramQQAppInterface)
-    {
-      for (;;)
-      {
-        paramQQAppInterface = null;
-      }
-      paramContext = paramQQAppInterface.jdField_b_of_type_JavaLangString;
-      paramString1 = new SpannableString(new ColorNickText(paramContext + " ", 16).a());
-      paramString1.setSpan(paramQQAppInterface, 0, paramContext.length(), 33);
-    }
-    return paramString1;
-  }
-  
-  public static SpannableString a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramQQAppInterface == null) || (paramContext == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return null;
-    }
-    try
-    {
-      paramQQAppInterface = a(paramQQAppInterface, paramContext, paramString1, paramString2, paramString3, paramBoolean1, 400, new Paint(), paramBoolean2);
-      if (paramQQAppInterface == null) {
-        return null;
-      }
-    }
-    catch (OutOfMemoryError paramQQAppInterface)
-    {
-      for (;;)
-      {
-        paramQQAppInterface = null;
-      }
-      paramContext = paramQQAppInterface.jdField_b_of_type_JavaLangString;
-      paramString1 = new SpannableString(paramContext + " ");
-      paramString1.setSpan(paramQQAppInterface, 0, paramContext.length(), 33);
-    }
-    return paramString1;
-  }
-  
-  public static SpannableString a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2, String paramString4)
-  {
-    if ((paramQQAppInterface == null) || (paramContext == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return null;
-    }
-    try
-    {
-      paramQQAppInterface = a(paramQQAppInterface, paramContext, paramString1, paramString2, paramString3, paramBoolean1, 400, new Paint(), paramBoolean2);
-      if (paramQQAppInterface == null) {
-        return null;
-      }
-    }
-    catch (OutOfMemoryError paramQQAppInterface)
-    {
-      for (;;)
-      {
-        paramQQAppInterface = null;
-      }
-      paramContext = paramQQAppInterface.jdField_b_of_type_JavaLangString;
-      paramString1 = new SpannableString(paramString4 + paramContext + " ");
-      int i = paramString4.length();
-      int j = paramString4.length();
-      paramString1.setSpan(paramQQAppInterface, i, paramContext.length() + j, 33);
-    }
-    return paramString1;
-  }
-  
-  private static AtTroopMemberSpan a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, int paramInt, Paint paramPaint, boolean paramBoolean2)
-  {
-    if ((paramQQAppInterface == null) || (paramContext == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (paramInt <= 0)) {}
-    for (;;)
-    {
-      return null;
-      if (paramBoolean2) {
-        if ((!paramBoolean1) && (!paramString2.equalsIgnoreCase("0")))
-        {
-          paramString1 = ContactUtils.d(paramQQAppInterface, paramString1, paramString2);
-          paramQQAppInterface = paramString1;
-          if (TextUtils.isEmpty(paramString1))
-          {
-            paramQQAppInterface = paramString1;
-            if (!TextUtils.isEmpty(paramString3)) {
-              paramQQAppInterface = paramString3;
+            localAtTroopMemberInfo.uin = Long.valueOf(str).longValue();
+            if (localAtTroopMemberSpan.jdField_a_of_type_JavaLangString.equalsIgnoreCase("0")) {
+              localAtTroopMemberInfo.flag = 1;
             }
           }
+          localAtTroopMemberInfo.startPos = ((short)n);
+          localAtTroopMemberInfo.textLen = ((short)((String)localObject).length());
+          paramArrayList.add(localAtTroopMemberInfo);
+          k = j + (localAtTroopMemberInfo.textLen - (i1 - n));
         }
+        catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
+        {
+          int k;
+          label254:
+          break label254;
+        }
+        k = j;
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(localSpannableStringBuilder.toString());
+          ((StringBuilder)localObject).append(",IndexOutOfBoundsException, convertToSendMsg, start:%d | end:%d | msgBLen:%d");
+          QLog.e("AtTroopMemberSpan", 2, String.format(((StringBuilder)localObject).toString(), new Object[] { Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(m) }));
+          k = j;
+        }
+        i += 1;
       }
-      while (!TextUtils.isEmpty(paramQQAppInterface))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("_At_Me_DISC", 2, " memUin:" + paramString2 + " troopMemName:" + MessageRecordUtil.a(paramQQAppInterface) + " isTroop:" + paramBoolean2);
-        }
-        return new AtTroopMemberSpan(paramContext, paramString2, paramQQAppInterface, paramInt, paramPaint);
-        paramQQAppInterface = paramString3;
-        continue;
-        if (!paramString2.equalsIgnoreCase("0"))
-        {
-          paramString1 = ContactUtils.d(paramQQAppInterface, paramString2, true);
-          paramQQAppInterface = paramString1;
-          if (a(paramString2, paramString1, paramString3)) {
-            paramQQAppInterface = paramString3;
-          }
-        }
-        else
-        {
-          paramQQAppInterface = paramString3;
-        }
+      return localSpannableStringBuilder;
+    }
+    else
+    {
+      return new SpannableStringBuilder();
+    }
+  }
+  
+  public static SpannableString a(AppRuntime paramAppRuntime, Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, EditText paramEditText)
+  {
+    int i;
+    int j;
+    int k;
+    if ((paramAppRuntime != null) && (paramContext != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+    {
+      if (paramEditText == null) {
+        return null;
+      }
+      i = paramEditText.getWidth();
+      j = paramEditText.getPaddingLeft();
+      k = paramEditText.getPaddingRight();
+    }
+    try
+    {
+      paramAppRuntime = new AtTroopMemberSpan(paramContext, paramString2, paramString3, i - j - k, paramEditText.getPaint(), paramString4);
+    }
+    catch (OutOfMemoryError paramAppRuntime)
+    {
+      label80:
+      break label80;
+    }
+    paramAppRuntime = null;
+    if (paramAppRuntime == null) {
+      return null;
+    }
+    paramContext = paramAppRuntime.jdField_b_of_type_JavaLangString;
+    paramString1 = new StringBuilder();
+    paramString1.append(paramContext);
+    paramString1.append(" ");
+    paramString1 = new SpannableString(new ColorNickText(paramString1.toString(), 16).a());
+    paramString1.setSpan(paramAppRuntime, 0, paramContext.length(), 33);
+    return paramString1;
+    return null;
+  }
+  
+  public static SpannableString a(AppRuntime paramAppRuntime, Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, EditText paramEditText, boolean paramBoolean2)
+  {
+    return a(paramAppRuntime, paramContext, paramString1, paramString2, paramString3, paramBoolean1, paramEditText, paramBoolean2, false);
+  }
+  
+  public static SpannableString a(AppRuntime paramAppRuntime, Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, EditText paramEditText, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    int i;
+    int j;
+    int k;
+    if ((paramAppRuntime != null) && (paramContext != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+    {
+      if (paramEditText == null) {
+        return null;
+      }
+      AtTroopMemberSpan[] arrayOfAtTroopMemberSpan = (AtTroopMemberSpan[])paramEditText.getEditableText().getSpans(0, paramEditText.getEditableText().toString().length(), AtTroopMemberSpan.class);
+      i = paramEditText.getWidth();
+      j = paramEditText.getPaddingLeft();
+      k = paramEditText.getPaddingRight();
+    }
+    try
+    {
+      paramAppRuntime = a(paramAppRuntime, paramContext, paramString1, paramString2, paramString3, paramBoolean1, i - j - k, paramEditText.getPaint(), paramBoolean2);
+    }
+    catch (OutOfMemoryError paramAppRuntime)
+    {
+      label109:
+      break label109;
+    }
+    paramAppRuntime = null;
+    if (paramAppRuntime == null) {
+      return null;
+    }
+    paramContext = paramAppRuntime.jdField_b_of_type_JavaLangString;
+    paramString1 = new StringBuilder();
+    paramString1.append(paramContext);
+    paramString1.append(" ");
+    paramString1 = new SpannableString(new ColorNickText(paramString1.toString(), 16).a());
+    paramString1.setSpan(paramAppRuntime, 0, paramContext.length(), 33);
+    return paramString1;
+    return null;
+  }
+  
+  public static SpannableString a(AppRuntime paramAppRuntime, Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramAppRuntime != null) && (paramContext != null) && (!TextUtils.isEmpty(paramString1))) {
+      if (TextUtils.isEmpty(paramString2)) {
+        return null;
       }
     }
+    try
+    {
+      paramAppRuntime = a(paramAppRuntime, paramContext, paramString1, paramString2, paramString3, paramBoolean1, 400, new Paint(), paramBoolean2);
+    }
+    catch (OutOfMemoryError paramAppRuntime)
+    {
+      label51:
+      break label51;
+    }
+    paramAppRuntime = null;
+    if (paramAppRuntime == null) {
+      return null;
+    }
+    paramContext = paramAppRuntime.jdField_b_of_type_JavaLangString;
+    paramString1 = new StringBuilder();
+    paramString1.append(paramContext);
+    paramString1.append(" ");
+    paramString1 = new SpannableString(paramString1.toString());
+    paramString1.setSpan(paramAppRuntime, 0, paramContext.length(), 33);
+    return paramString1;
+    return null;
+  }
+  
+  public static SpannableString a(AppRuntime paramAppRuntime, Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2, String paramString4)
+  {
+    if ((paramAppRuntime != null) && (paramContext != null) && (!TextUtils.isEmpty(paramString1))) {
+      if (TextUtils.isEmpty(paramString2)) {
+        return null;
+      }
+    }
+    try
+    {
+      paramAppRuntime = a(paramAppRuntime, paramContext, paramString1, paramString2, paramString3, paramBoolean1, 400, new Paint(), paramBoolean2);
+    }
+    catch (OutOfMemoryError paramAppRuntime)
+    {
+      label51:
+      break label51;
+    }
+    paramAppRuntime = null;
+    if (paramAppRuntime == null) {
+      return null;
+    }
+    paramContext = paramAppRuntime.jdField_b_of_type_JavaLangString;
+    paramString1 = new StringBuilder();
+    paramString1.append(paramString4);
+    paramString1.append(paramContext);
+    paramString1.append(" ");
+    paramString1 = new SpannableString(paramString1.toString());
+    paramString1.setSpan(paramAppRuntime, paramString4.length(), paramString4.length() + paramContext.length(), 33);
+    return paramString1;
+    return null;
+  }
+  
+  private static AtTroopMemberSpan a(AppRuntime paramAppRuntime, Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, int paramInt, Paint paramPaint, boolean paramBoolean2)
+  {
+    if ((paramAppRuntime != null) && (paramContext != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+    {
+      if (paramInt <= 0) {
+        return null;
+      }
+      if (paramBoolean2)
+      {
+        if ((paramBoolean1) || (paramString2.equalsIgnoreCase("0"))) {
+          break label111;
+        }
+        paramString1 = ContactUtils.a(paramAppRuntime, paramString1, paramString2);
+        paramAppRuntime = paramString1;
+        if (TextUtils.isEmpty(paramString1))
+        {
+          paramAppRuntime = paramString1;
+          if (!TextUtils.isEmpty(paramString3)) {
+            break label111;
+          }
+        }
+      }
+      else
+      {
+        if (paramString2.equalsIgnoreCase("0")) {
+          break label111;
+        }
+        paramString1 = ContactUtils.b(paramAppRuntime, paramString2, true);
+        paramAppRuntime = paramString1;
+        if (a(paramString2, paramString1, paramString3)) {
+          break label111;
+        }
+      }
+      break label114;
+      label111:
+      paramAppRuntime = paramString3;
+      label114:
+      if (TextUtils.isEmpty(paramAppRuntime)) {
+        return null;
+      }
+      if (QLog.isColorLevel())
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append(" memUin:");
+        paramString1.append(paramString2);
+        paramString1.append(" troopMemName:");
+        paramString1.append(MessageRecordUtil.a(paramAppRuntime));
+        paramString1.append(" isTroop:");
+        paramString1.append(paramBoolean2);
+        QLog.d("_At_Me_DISC", 2, paramString1.toString());
+      }
+      return new AtTroopMemberSpan(paramContext, paramString2, paramAppRuntime, paramInt, paramPaint);
+    }
+    return null;
   }
   
   public static String a(Spannable paramSpannable, ArrayList<AtTroopMemberInfo> paramArrayList)
@@ -302,29 +342,31 @@ public class AtTroopMemberSpan
   private static String a(CharSequence paramCharSequence)
   {
     paramCharSequence = new StringBuffer(paramCharSequence);
-    int i = 0;
-    if (i < paramCharSequence.length())
+    int j;
+    for (int i = 0; i < paramCharSequence.length(); i = j + 1)
     {
       int k = paramCharSequence.codePointAt(i);
-      int j;
-      if ((k == 20) && (i < paramCharSequence.length() - 1))
-      {
-        paramCharSequence.delete(i, i + 2);
-        j = i - 1;
-      }
-      do
-      {
-        i = j + 1;
-        break;
-        j = i;
-      } while (EmotcationConstants.EMOJI_MAP.get(k, -1) < 0);
-      if ((k > 65535) && (paramCharSequence.length() >= i + 2)) {
+      if ((k == 20) && (i < paramCharSequence.length() - 1)) {
         paramCharSequence.delete(i, i + 2);
       }
       for (;;)
       {
         j = i - 1;
         break;
+        j = i;
+        if (EmotcationConstants.EMOJI_MAP.get(k, -1) < 0) {
+          break;
+        }
+        if (k > 65535)
+        {
+          j = paramCharSequence.length();
+          k = i + 2;
+          if (j >= k)
+          {
+            paramCharSequence.delete(i, k);
+            continue;
+          }
+        }
         paramCharSequence.delete(i, i + 1);
       }
     }
@@ -336,8 +378,8 @@ public class AtTroopMemberSpan
     try
     {
       JSONArray localJSONArray = new JSONArray();
-      paramArrayList = paramArrayList.iterator();
       int i = 0;
+      paramArrayList = paramArrayList.iterator();
       while (paramArrayList.hasNext())
       {
         localJSONArray.put(i, ((AtTroopMemberInfo)paramArrayList.next()).toJsonObject());
@@ -355,87 +397,95 @@ public class AtTroopMemberSpan
   
   public static StringBuilder a(QQAppInterface paramQQAppInterface, StringBuilder paramStringBuilder, String paramString1, String paramString2, boolean paramBoolean)
   {
-    if ((TextUtils.isEmpty(paramStringBuilder.toString())) || (TextUtils.isEmpty(paramString2)) || (paramBoolean))
+    if ((!TextUtils.isEmpty(paramStringBuilder.toString())) && (!TextUtils.isEmpty(paramString2)) && (!paramBoolean))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AtTroopMemberSpan_At_Me_DISC", 2, "Recv replaceAtMsgByMarkName return discUin:" + paramString2);
-      }
-      paramString1 = paramStringBuilder;
-    }
-    do
-    {
-      return paramString1;
+      StringBuilder localStringBuilder;
       try
       {
-        localJSONArray = new JSONArray(paramString1);
-        m = localJSONArray.length();
-        i = 0;
-        j = 0;
-      }
-      catch (JSONException paramQQAppInterface)
-      {
-        try
+        JSONArray localJSONArray = new JSONArray(paramString1);
+        int m = localJSONArray.length();
+        int i = 0;
+        int j = 0;
+        for (;;)
         {
-          JSONArray localJSONArray;
-          int m;
-          int i;
-          JSONObject localJSONObject = localJSONArray.getJSONObject(i);
-          paramString1 = paramStringBuilder;
           localStringBuilder = paramStringBuilder;
-          int i1 = (byte)localJSONObject.optInt("flag", 1);
-          paramString1 = paramStringBuilder;
-          localStringBuilder = paramStringBuilder;
-          String str = localJSONObject.optString("uin");
-          paramString1 = paramStringBuilder;
-          localStringBuilder = paramStringBuilder;
-          int i2 = localJSONObject.optInt("startPos", 0);
-          paramString1 = paramStringBuilder;
-          localStringBuilder = paramStringBuilder;
-          int n = localJSONObject.optInt("textLen", 0);
-          int k = j;
-          paramString1 = paramStringBuilder;
-          if (i1 == 0)
-          {
-            paramString1 = paramStringBuilder;
-            localStringBuilder = paramStringBuilder;
-            str = "@" + ContactUtils.c(paramQQAppInterface, paramString2, str);
-            paramString1 = paramStringBuilder;
-            localStringBuilder = paramStringBuilder;
-            paramStringBuilder = paramStringBuilder.replace(i2 + j, i2 + n + j, str);
-            paramString1 = paramStringBuilder;
-            localStringBuilder = paramStringBuilder;
-            k = str.length();
-            k = j + (k - n);
-            paramString1 = paramStringBuilder;
+          if (i >= m) {
+            break label307;
           }
-          i += 1;
-          int j = k;
-          paramStringBuilder = paramString1;
+          paramString1 = paramStringBuilder;
+          localStringBuilder = paramStringBuilder;
+          try
+          {
+            Object localObject = localJSONArray.getJSONObject(i);
+            paramString1 = paramStringBuilder;
+            localStringBuilder = paramStringBuilder;
+            int i1 = (byte)((JSONObject)localObject).optInt("flag", 1);
+            paramString1 = paramStringBuilder;
+            localStringBuilder = paramStringBuilder;
+            String str = ((JSONObject)localObject).optString("uin");
+            paramString1 = paramStringBuilder;
+            localStringBuilder = paramStringBuilder;
+            int i2 = ((JSONObject)localObject).optInt("startPos", 0);
+            paramString1 = paramStringBuilder;
+            localStringBuilder = paramStringBuilder;
+            int n = ((JSONObject)localObject).optInt("textLen", 0);
+            paramString1 = paramStringBuilder;
+            int k = j;
+            if (i1 == 0)
+            {
+              paramString1 = paramStringBuilder;
+              localStringBuilder = paramStringBuilder;
+              localObject = new StringBuilder();
+              paramString1 = paramStringBuilder;
+              localStringBuilder = paramStringBuilder;
+              ((StringBuilder)localObject).append("@");
+              paramString1 = paramStringBuilder;
+              localStringBuilder = paramStringBuilder;
+              ((StringBuilder)localObject).append(ContactUtils.a(paramQQAppInterface, paramString2, str));
+              paramString1 = paramStringBuilder;
+              localStringBuilder = paramStringBuilder;
+              str = ((StringBuilder)localObject).toString();
+              paramString1 = paramStringBuilder;
+              localStringBuilder = paramStringBuilder;
+              paramStringBuilder = paramStringBuilder.replace(i2 + j, i2 + n + j, str);
+              paramString1 = paramStringBuilder;
+              localStringBuilder = paramStringBuilder;
+              k = str.length();
+              k = j + (k - n);
+              paramString1 = paramStringBuilder;
+            }
+            i += 1;
+            paramStringBuilder = paramString1;
+            j = k;
+          }
+          catch (Exception paramQQAppInterface)
+          {
+            paramStringBuilder = paramString1;
+          }
+          catch (JSONException paramQQAppInterface) {}
         }
-        catch (Exception paramQQAppInterface)
-        {
-          StringBuilder localStringBuilder;
-          break label296;
-        }
-        catch (JSONException paramQQAppInterface)
-        {
-          break label280;
-        }
-        paramQQAppInterface = paramQQAppInterface;
-        localStringBuilder = paramStringBuilder;
         QLog.e("_At_Me_DISC", 1, "replaceAtMsgByMarkName_1 ", paramQQAppInterface);
-        return localStringBuilder;
       }
       catch (Exception paramQQAppInterface)
       {
-        paramString1 = paramStringBuilder;
         QLog.e("_At_Me_DISC", 1, "replaceAtMsgByMarkName_2", paramQQAppInterface);
-        return paramString1;
+        return paramStringBuilder;
       }
-      paramString1 = paramStringBuilder;
-    } while (i >= m);
-    paramString1 = paramStringBuilder;
-    localStringBuilder = paramStringBuilder;
+      catch (JSONException paramQQAppInterface)
+      {
+        localStringBuilder = paramStringBuilder;
+      }
+      label307:
+      return localStringBuilder;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("Recv replaceAtMsgByMarkName return discUin:");
+      paramQQAppInterface.append(paramString2);
+      QLog.d("AtTroopMemberSpan_At_Me_DISC", 2, paramQQAppInterface.toString());
+    }
+    return paramStringBuilder;
   }
   
   private List<ColorClearableEditText.Paragraph> a(Paint paramPaint)
@@ -449,13 +499,14 @@ public class AtTroopMemberSpan
   
   public static void a(int paramInt, String paramString, ChatMessage paramChatMessage)
   {
-    if (paramInt == 1) {
+    if (paramInt == 1)
+    {
       paramChatMessage.saveExtInfoToExtStr("troop_at_info_list", paramString);
-    }
-    while (paramInt != 3000) {
       return;
     }
-    paramChatMessage.saveExtInfoToExtStr("disc_at_info_list", paramString);
+    if (paramInt == 3000) {
+      paramChatMessage.saveExtInfoToExtStr("disc_at_info_list", paramString);
+    }
   }
   
   public static void a(int paramInt, ArrayList<AtTroopMemberInfo> paramArrayList, ChatMessage paramChatMessage)
@@ -465,8 +516,8 @@ public class AtTroopMemberSpan
       try
       {
         JSONArray localJSONArray = new JSONArray();
-        paramArrayList = paramArrayList.iterator();
         int i = 0;
+        paramArrayList = paramArrayList.iterator();
         while (paramArrayList.hasNext())
         {
           localJSONArray.put(i, ((AtTroopMemberInfo)paramArrayList.next()).toJsonObject());
@@ -504,63 +555,59 @@ public class AtTroopMemberSpan
   
   private void a(Paint paramPaint)
   {
-    float f1 = 0.0F;
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
       return;
     }
     Object localObject2 = a(paramPaint);
     Object localObject1 = paramPaint.getFontMetrics();
-    float f2 = -((Paint.FontMetrics)localObject1).top;
+    float f3 = -((Paint.FontMetrics)localObject1).top;
     int i = (int)Math.ceil(((Paint.FontMetrics)localObject1).bottom - ((Paint.FontMetrics)localObject1).top);
-    Object localObject3 = new RectF(0.0F, ((Paint.FontMetrics)localObject1).ascent - ((Paint.FontMetrics)localObject1).top, this.jdField_a_of_type_Int - 2, ((Paint.FontMetrics)localObject1).descent + f2);
-    localObject1 = Bitmap.createBitmap(this.jdField_a_of_type_Int, i, Bitmap.Config.ARGB_8888);
-    Canvas localCanvas = new Canvas((Bitmap)localObject1);
+    Object localObject3 = new RectF(0.0F, ((Paint.FontMetrics)localObject1).ascent - ((Paint.FontMetrics)localObject1).top, this.jdField_a_of_type_Int - 2, ((Paint.FontMetrics)localObject1).descent + f3);
+    Bitmap localBitmap = Bitmap.createBitmap(this.jdField_a_of_type_Int, i, Bitmap.Config.ARGB_8888);
+    localObject1 = new Canvas(localBitmap);
     int j = paramPaint.getColor();
     paramPaint.setColor(-4331268);
-    localCanvas.drawRect((RectF)localObject3, paramPaint);
+    ((Canvas)localObject1).drawRect((RectF)localObject3, paramPaint);
     paramPaint.setColor(j);
     localObject2 = ((List)localObject2).iterator();
+    float f1 = 0.0F;
+    label294:
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (ColorClearableEditText.Paragraph)((Iterator)localObject2).next();
-      switch (((ColorClearableEditText.Paragraph)localObject3).c)
+      j = ((ColorClearableEditText.Paragraph)localObject3).c;
+      float f2;
+      if (j != 1)
       {
-      default: 
-        break;
-      case 1: 
-        localCanvas.drawText(((ColorClearableEditText.Paragraph)localObject3).jdField_a_of_type_JavaLangString, f1, f2, paramPaint);
-        f1 += paramPaint.measureText(((ColorClearableEditText.Paragraph)localObject3).jdField_a_of_type_JavaLangString);
-        break;
-      case 2: 
+        if (j != 2) {
+          break label294;
+        }
         localObject3 = (EmoticonSpan)((ColorClearableEditText.Paragraph)localObject3).jdField_a_of_type_AndroidTextStyleCharacterStyle;
-        j = ((EmoticonSpan)localObject3).getDrawable().getBounds().height();
-        ((EmoticonSpan)localObject3).draw(localCanvas, "", 0, 0, f1, (i - j) / 2, (i + j) / 2, (j + i) / 2, paramPaint);
-        f1 += ((EmoticonSpan)localObject3).getDrawable().getBounds().width();
+        int k = ((EmoticonSpan)localObject3).getDrawable().getBounds().height();
+        j = (i - k) / 2;
+        k = (k + i) / 2;
+        ((EmoticonSpan)localObject3).draw((Canvas)localObject1, "", 0, 0, f1, j, k, k, paramPaint);
+        f2 = ((EmoticonSpan)localObject3).getDrawable().getBounds().width();
       }
+      else
+      {
+        ((Canvas)localObject1).drawText(((ColorClearableEditText.Paragraph)localObject3).jdField_a_of_type_JavaLangString, f1, f3, paramPaint);
+        f2 = paramPaint.measureText(((ColorClearableEditText.Paragraph)localObject3).jdField_a_of_type_JavaLangString);
+      }
+      f1 += f2;
     }
-    localCanvas.save();
-    localCanvas.restore();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), (Bitmap)localObject1);
+    ((Canvas)localObject1).save();
+    ((Canvas)localObject1).restore();
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap);
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.jdField_a_of_type_Int, i);
   }
   
   private static boolean a(String paramString1, String paramString2, String paramString3)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      bool1 = bool2;
-      if (!paramString2.equals(paramString1)) {}
+    if ((!TextUtils.isEmpty(paramString2)) && (!paramString2.equals(paramString1))) {
+      return false;
     }
-    else
-    {
-      bool1 = bool2;
-      if (!TextUtils.isEmpty(paramString3)) {
-        bool1 = true;
-      }
-    }
-    return bool1;
+    return TextUtils.isEmpty(paramString3) ^ true;
   }
   
   public String a()
@@ -588,15 +635,15 @@ public class AtTroopMemberSpan
   
   public int getSize(@NonNull Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, @Nullable Paint.FontMetricsInt paramFontMetricsInt)
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) || ((paramInt2 - paramInt1 == 1) && (this.c.length() != 1) && (paramInt1 != 0))) {
-      return 0;
+    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && ((paramInt2 - paramInt1 != 1) || (this.c.length() == 1) || (paramInt1 == 0))) {
+      return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getBounds().right;
     }
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getBounds().right;
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.text.AtTroopMemberSpan
  * JD-Core Version:    0.7.0.1
  */

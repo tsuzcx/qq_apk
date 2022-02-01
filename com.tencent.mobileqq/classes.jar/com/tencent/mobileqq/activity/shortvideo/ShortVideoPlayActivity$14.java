@@ -11,12 +11,12 @@ class ShortVideoPlayActivity$14
   public void run()
   {
     QQCustomDialog localQQCustomDialog = DialogUtil.a(this.this$0, 232, null, this.a, new ShortVideoPlayActivity.14.1(this), null);
-    ShortVideoPlayActivity.a(this.this$0, localQQCustomDialog);
+    ShortVideoPlayActivity.access$000(this.this$0, localQQCustomDialog);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.14
  * JD-Core Version:    0.7.0.1
  */

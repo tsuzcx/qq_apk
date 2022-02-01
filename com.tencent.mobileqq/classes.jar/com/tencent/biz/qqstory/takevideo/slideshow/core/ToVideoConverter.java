@@ -3,7 +3,7 @@ package com.tencent.biz.qqstory.takevideo.slideshow.core;
 import android.media.MediaFormat;
 import com.tencent.biz.qqstory.takevideo.slideshow.ResultInfo;
 import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
-import com.tencent.mobileqq.richmedia.mediacodec.recorder.HWVideoRecorder;
+import com.tencent.mobileqq.videocodec.mediacodec.recorder.HWVideoRecorder;
 import com.tencent.qphone.base.util.QLog;
 
 public abstract class ToVideoConverter
@@ -39,15 +39,21 @@ public abstract class ToVideoConverter
   
   protected boolean a(SlideShowProcessor.TaskContext paramTaskContext)
   {
-    if ((!paramTaskContext.d) && (QLog.isColorLevel())) {
-      QLog.d("ToVideoConverter", 2, "run exit:" + paramTaskContext.b + " currContext.isRun:" + paramTaskContext.d);
+    if ((!paramTaskContext.d) && (QLog.isColorLevel()))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("run exit:");
+      localStringBuilder.append(paramTaskContext.b);
+      localStringBuilder.append(" currContext.isRun:");
+      localStringBuilder.append(paramTaskContext.d);
+      QLog.d("ToVideoConverter", 2, localStringBuilder.toString());
     }
-    return !paramTaskContext.d;
+    return paramTaskContext.d ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.slideshow.core.ToVideoConverter
  * JD-Core Version:    0.7.0.1
  */

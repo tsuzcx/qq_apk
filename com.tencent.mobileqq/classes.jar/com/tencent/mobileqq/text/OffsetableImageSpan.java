@@ -27,8 +27,12 @@ public class OffsetableImageSpan
     if (this.mVerticalAlignment == 1) {
       paramInt1 = paramInt2 - paramPaint.getFontMetricsInt().descent;
     }
-    if ((this.mVerticalOffsetValue == 0) && (this.mVerticalOffsetPercent != 0.0F)) {
-      this.mVerticalOffsetValue = ((int)((paramInt5 - paramInt3) * this.mVerticalOffsetPercent));
+    if (this.mVerticalOffsetValue == 0)
+    {
+      float f = this.mVerticalOffsetPercent;
+      if (f != 0.0F) {
+        this.mVerticalOffsetValue = ((int)((paramInt5 - paramInt3) * f));
+      }
     }
     paramCanvas.translate(paramFloat, paramInt1 + this.mVerticalOffsetValue);
     paramCharSequence.draw(paramCanvas);
@@ -43,7 +47,7 @@ public class OffsetableImageSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.text.OffsetableImageSpan
  * JD-Core Version:    0.7.0.1
  */

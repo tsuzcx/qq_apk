@@ -48,44 +48,50 @@ public class BubbleDrawable
   
   private void a(int paramInt, Path paramPath)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 0: 
-      a(this.jdField_a_of_type_AndroidGraphicsRectF, paramPath);
-      return;
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3) {
+            return;
+          }
+          d(this.jdField_a_of_type_AndroidGraphicsRectF, paramPath);
+          return;
+        }
+        b(this.jdField_a_of_type_AndroidGraphicsRectF, paramPath);
+        return;
+      }
       c(this.jdField_a_of_type_AndroidGraphicsRectF, paramPath);
       return;
-    case 2: 
-      b(this.jdField_a_of_type_AndroidGraphicsRectF, paramPath);
-      return;
     }
-    d(this.jdField_a_of_type_AndroidGraphicsRectF, paramPath);
+    a(this.jdField_a_of_type_AndroidGraphicsRectF, paramPath);
   }
   
   private void a(Canvas paramCanvas)
   {
-    switch (this.jdField_c_of_type_Int)
+    int i = this.jdField_c_of_type_Int;
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      a(this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPath);
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-      do
+      if (i == 1)
       {
-        return;
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-        break;
-      } while (this.jdField_a_of_type_AndroidGraphicsBitmap == null);
-      if (this.jdField_a_of_type_AndroidGraphicsBitmapShader == null) {
-        this.jdField_a_of_type_AndroidGraphicsBitmapShader = new BitmapShader(this.jdField_a_of_type_AndroidGraphicsBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+        Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+        if (localBitmap == null) {
+          return;
+        }
+        if (this.jdField_a_of_type_AndroidGraphicsBitmapShader == null) {
+          this.jdField_a_of_type_AndroidGraphicsBitmapShader = new BitmapShader(localBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+        }
+        this.jdField_a_of_type_AndroidGraphicsPaint.setShader(this.jdField_a_of_type_AndroidGraphicsBitmapShader);
+        a();
       }
-      this.jdField_a_of_type_AndroidGraphicsPaint.setShader(this.jdField_a_of_type_AndroidGraphicsBitmapShader);
-      a();
     }
+    else {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
+    }
+    a(this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPath);
+    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
   private void a(RectF paramRectF, Path paramPath)
@@ -99,7 +105,11 @@ public class BubbleDrawable
     paramPath.lineTo(paramRectF.right, paramRectF.bottom - this.jdField_b_of_type_Float);
     paramPath.arcTo(new RectF(paramRectF.right - this.jdField_b_of_type_Float, paramRectF.bottom - this.jdField_b_of_type_Float, paramRectF.right, paramRectF.bottom), 0.0F, 90.0F);
     paramPath.lineTo(paramRectF.left + this.jdField_a_of_type_Float + this.jdField_b_of_type_Float, paramRectF.bottom);
-    paramPath.arcTo(new RectF(paramRectF.left + this.jdField_a_of_type_Float, paramRectF.bottom - this.jdField_b_of_type_Float, this.jdField_b_of_type_Float + paramRectF.left + this.jdField_a_of_type_Float, paramRectF.bottom), 90.0F, 90.0F);
+    float f1 = paramRectF.left;
+    float f2 = this.jdField_a_of_type_Float;
+    float f3 = paramRectF.bottom;
+    float f4 = this.jdField_b_of_type_Float;
+    paramPath.arcTo(new RectF(f1 + f2, f3 - f4, f4 + paramRectF.left + this.jdField_a_of_type_Float, paramRectF.bottom), 90.0F, 90.0F);
     paramPath.lineTo(paramRectF.left + this.jdField_a_of_type_Float, this.jdField_c_of_type_Float + this.d);
     paramPath.lineTo(paramRectF.left, this.d + this.jdField_c_of_type_Float / 2.0F);
     paramPath.lineTo(paramRectF.left + this.jdField_a_of_type_Float, this.d);
@@ -122,7 +132,10 @@ public class BubbleDrawable
     paramPath.lineTo(paramRectF.right, paramRectF.bottom - this.jdField_b_of_type_Float);
     paramPath.arcTo(new RectF(paramRectF.right - this.jdField_b_of_type_Float, paramRectF.bottom - this.jdField_b_of_type_Float, paramRectF.right, paramRectF.bottom), 0.0F, 90.0F);
     paramPath.lineTo(paramRectF.left + this.jdField_b_of_type_Float, paramRectF.bottom);
-    paramPath.arcTo(new RectF(paramRectF.left, paramRectF.bottom - this.jdField_b_of_type_Float, this.jdField_b_of_type_Float + paramRectF.left, paramRectF.bottom), 90.0F, 90.0F);
+    float f1 = paramRectF.left;
+    float f2 = paramRectF.bottom;
+    float f3 = this.jdField_b_of_type_Float;
+    paramPath.arcTo(new RectF(f1, f2 - f3, f3 + paramRectF.left, paramRectF.bottom), 90.0F, 90.0F);
     paramPath.lineTo(paramRectF.left, paramRectF.top + this.jdField_c_of_type_Float + this.jdField_b_of_type_Float);
     paramPath.arcTo(new RectF(paramRectF.left, paramRectF.top + this.jdField_c_of_type_Float, this.jdField_b_of_type_Float + paramRectF.left, this.jdField_b_of_type_Float + paramRectF.top + this.jdField_c_of_type_Float), 180.0F, 90.0F);
     paramPath.close();
@@ -142,7 +155,10 @@ public class BubbleDrawable
     paramPath.lineTo(paramRectF.right - this.jdField_a_of_type_Float, paramRectF.bottom - this.jdField_b_of_type_Float);
     paramPath.arcTo(new RectF(paramRectF.right - this.jdField_b_of_type_Float - this.jdField_a_of_type_Float, paramRectF.bottom - this.jdField_b_of_type_Float, paramRectF.right - this.jdField_a_of_type_Float, paramRectF.bottom), 0.0F, 90.0F);
     paramPath.lineTo(paramRectF.left + this.jdField_a_of_type_Float, paramRectF.bottom);
-    paramPath.arcTo(new RectF(paramRectF.left, paramRectF.bottom - this.jdField_b_of_type_Float, this.jdField_b_of_type_Float + paramRectF.left, paramRectF.bottom), 90.0F, 90.0F);
+    float f1 = paramRectF.left;
+    float f2 = paramRectF.bottom;
+    float f3 = this.jdField_b_of_type_Float;
+    paramPath.arcTo(new RectF(f1, f2 - f3, f3 + paramRectF.left, paramRectF.bottom), 90.0F, 90.0F);
     paramPath.arcTo(new RectF(paramRectF.left, paramRectF.top, this.jdField_b_of_type_Float + paramRectF.left, this.jdField_b_of_type_Float + paramRectF.top), 180.0F, 90.0F);
     paramPath.close();
   }
@@ -161,7 +177,10 @@ public class BubbleDrawable
     paramPath.lineTo(paramRectF.left + this.d + this.jdField_a_of_type_Float / 2.0F, paramRectF.bottom);
     paramPath.lineTo(paramRectF.left + this.d, paramRectF.bottom - this.jdField_c_of_type_Float);
     paramPath.lineTo(paramRectF.left + Math.min(this.jdField_b_of_type_Float, this.d), paramRectF.bottom - this.jdField_c_of_type_Float);
-    paramPath.arcTo(new RectF(paramRectF.left, paramRectF.bottom - this.jdField_b_of_type_Float - this.jdField_c_of_type_Float, this.jdField_b_of_type_Float + paramRectF.left, paramRectF.bottom - this.jdField_c_of_type_Float), 90.0F, 90.0F);
+    float f1 = paramRectF.left;
+    float f2 = paramRectF.bottom;
+    float f3 = this.jdField_b_of_type_Float;
+    paramPath.arcTo(new RectF(f1, f2 - f3 - this.jdField_c_of_type_Float, f3 + paramRectF.left, paramRectF.bottom - this.jdField_c_of_type_Float), 90.0F, 90.0F);
     paramPath.lineTo(paramRectF.left, paramRectF.top + this.jdField_b_of_type_Float);
     paramPath.arcTo(new RectF(paramRectF.left, paramRectF.top, this.jdField_b_of_type_Float + paramRectF.left, this.jdField_b_of_type_Float + paramRectF.top), 180.0F, 90.0F);
     paramPath.close();
@@ -204,7 +223,7 @@ public class BubbleDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.bubble.BubbleDrawable
  * JD-Core Version:    0.7.0.1
  */

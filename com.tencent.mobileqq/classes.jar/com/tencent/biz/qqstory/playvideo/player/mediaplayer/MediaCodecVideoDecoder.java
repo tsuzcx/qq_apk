@@ -35,8 +35,8 @@ class MediaCodecVideoDecoder
     b();
     a(false);
     paramMediaExtractor.a(paramLong, 0);
-    long l1 = 0L;
-    long l3 = 9223372036854775807L;
+    long l1 = 9223372036854775807L;
+    long l3 = 0L;
     int i = 0;
     while ((paramMediaExtractor.a()) && (i < 20))
     {
@@ -47,10 +47,10 @@ class MediaCodecVideoDecoder
       {
         l4 = l3;
         l2 = l1;
-        if (l5 < l3)
+        if (l5 < l1)
         {
-          l2 = paramMediaExtractor.a();
-          l4 = l5;
+          l4 = paramMediaExtractor.a();
+          l2 = l5;
         }
       }
       l3 = l4;
@@ -62,128 +62,152 @@ class MediaCodecVideoDecoder
         l1 = l2;
       }
     }
-    paramMediaExtractor.a(l1, 0);
-    while (paramMediaExtractor.a() != l1) {
+    paramMediaExtractor.a(l3, 0);
+    while (paramMediaExtractor.a() != l3) {
       paramMediaExtractor.a();
     }
-    Log.d(this.jdField_a_of_type_JavaLangString, "exact fastseek match:       " + paramMediaExtractor.a());
-    return l1;
+    paramMediaCodec = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("exact fastseek match:       ");
+    localStringBuilder.append(paramMediaExtractor.a());
+    Log.d(paramMediaCodec, localStringBuilder.toString());
+    return l3;
   }
   
   public int a()
   {
     MediaFormat localMediaFormat = a();
-    if (localMediaFormat != null)
-    {
-      float f = localMediaFormat.getInteger("height");
-      return (int)(localMediaFormat.getFloat("mpx-dar") * f);
+    if (localMediaFormat != null) {
+      return (int)(localMediaFormat.getInteger("height") * localMediaFormat.getFloat("mpx-dar"));
     }
     return 0;
   }
   
   protected MediaCodecDecoder.FrameInfo a(MediaPlayer.SeekMode paramSeekMode, long paramLong, MediaExtractor paramMediaExtractor, MediaCodec paramMediaCodec)
   {
-    long l1 = -1L;
     long l2 = paramLong / 1000L;
-    MediaCodecDecoder.FrameInfo localFrameInfo2 = super.a(paramSeekMode, paramLong, paramMediaExtractor, paramMediaCodec);
-    if (localFrameInfo2 == null)
-    {
-      paramSeekMode = null;
-      return paramSeekMode;
+    MediaCodecDecoder.FrameInfo localFrameInfo = super.a(paramSeekMode, paramLong, paramMediaExtractor, paramMediaCodec);
+    if (localFrameInfo == null) {
+      return null;
     }
-    MediaCodecDecoder.FrameInfo localFrameInfo1;
-    if ((paramSeekMode.b() == 3) || (paramSeekMode.b() == 2) || (paramSeekMode.b() == 0) || (paramSeekMode.b() == 1))
+    int i = paramSeekMode.b();
+    long l5 = -1L;
+    long l4;
+    Object localObject;
+    if ((i != 3) && (paramSeekMode.b() != 2) && (paramSeekMode.b() != 0) && (paramSeekMode.b() != 1))
     {
-      Log.d(this.jdField_a_of_type_JavaLangString, "fast seek to " + paramLong + " arrived at " + localFrameInfo2.jdField_a_of_type_Long);
-      paramLong = l2;
-      localFrameInfo1 = localFrameInfo2;
-    }
-    for (;;)
-    {
-      paramSeekMode = localFrameInfo1;
-      if (l1 != paramLong) {
-        break;
-      }
-      Log.d(this.jdField_a_of_type_JavaLangString, "exact seek match!");
-      return localFrameInfo1;
       if (paramSeekMode.b() == 6)
       {
-        a(localFrameInfo2, false);
+        a(localFrameInfo, false);
         a(paramLong, paramMediaExtractor, paramMediaCodec);
-        paramMediaExtractor = a(true, true);
-        if (paramMediaExtractor == null) {
+        paramSeekMode = a(true, true);
+        if (paramSeekMode == null) {
           return null;
         }
-        Log.d(this.jdField_a_of_type_JavaLangString, "fast_exact seek to " + paramLong + " arrived at " + paramMediaExtractor.jdField_a_of_type_Long);
-        paramSeekMode = paramMediaExtractor;
-        if (paramMediaExtractor.jdField_a_of_type_Long >= paramLong) {
-          break;
+        paramMediaExtractor = this.jdField_a_of_type_JavaLangString;
+        paramMediaCodec = new StringBuilder();
+        paramMediaCodec.append("fast_exact seek to ");
+        paramMediaCodec.append(paramLong);
+        paramMediaCodec.append(" arrived at ");
+        paramMediaCodec.append(paramSeekMode.jdField_a_of_type_Long);
+        Log.d(paramMediaExtractor, paramMediaCodec.toString());
+        if (paramSeekMode.jdField_a_of_type_Long < paramLong) {
+          Log.d(this.jdField_a_of_type_JavaLangString, "presentation is behind...");
         }
-        Log.d(this.jdField_a_of_type_JavaLangString, "presentation is behind...");
-        return paramMediaExtractor;
+        return paramSeekMode;
       }
       if (paramSeekMode.b() != 4)
       {
-        localFrameInfo1 = localFrameInfo2;
-        paramLong = l2;
+        l4 = l2;
+        localObject = localFrameInfo;
         if (paramSeekMode.b() != 5) {}
       }
       else
       {
-        paramLong = localFrameInfo2.jdField_a_of_type_Long / 1000L;
-        int i = 0;
-        localFrameInfo1 = localFrameInfo2;
-        l1 = l2;
-        l2 = -1L;
-        while (paramLong < l1)
+        long l1 = localFrameInfo.jdField_a_of_type_Long / 1000L;
+        long l3 = -1L;
+        i = 0;
+        paramLong = l2;
+        while (l1 < paramLong)
         {
           if (i == 0) {
             Log.d(this.jdField_a_of_type_JavaLangString, "skipping frames...");
           }
           i += 1;
           if (b()) {
-            l1 = localFrameInfo1.jdField_a_of_type_Long / 1000L;
+            paramLong = localFrameInfo.jdField_a_of_type_Long / 1000L;
           }
-          if (localFrameInfo1.jdField_a_of_type_Boolean)
+          if (localFrameInfo.jdField_a_of_type_Boolean)
           {
             Log.d(this.jdField_a_of_type_JavaLangString, "end of stream reached, seeking to last frame");
-            a(localFrameInfo1, false);
-            return a(paramSeekMode, l2, paramMediaExtractor, paramMediaCodec);
+            a(localFrameInfo, false);
+            return a(paramSeekMode, l3, paramMediaExtractor, paramMediaCodec);
           }
-          l2 = localFrameInfo1.jdField_a_of_type_Long;
-          a(localFrameInfo1, false);
-          localFrameInfo1 = a(true, true);
-          if (localFrameInfo1 == null) {
+          l3 = localFrameInfo.jdField_a_of_type_Long;
+          a(localFrameInfo, false);
+          localFrameInfo = a(true, true);
+          if (localFrameInfo == null) {
             return null;
           }
-          paramLong = localFrameInfo1.jdField_a_of_type_Long / 1000L;
+          l1 = localFrameInfo.jdField_a_of_type_Long / 1000L;
         }
-        Log.d(this.jdField_a_of_type_JavaLangString, "frame new position:         " + localFrameInfo1.jdField_a_of_type_Long);
-        Log.d(this.jdField_a_of_type_JavaLangString, "seeking finished, skipped " + i + " frames");
-        if ((paramSeekMode.b() == 5) && (paramLong > l1))
+        localObject = this.jdField_a_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("frame new position:         ");
+        localStringBuilder.append(localFrameInfo.jdField_a_of_type_Long);
+        Log.d((String)localObject, localStringBuilder.toString());
+        localObject = this.jdField_a_of_type_JavaLangString;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("seeking finished, skipped ");
+        localStringBuilder.append(i);
+        localStringBuilder.append(" frames");
+        Log.d((String)localObject, localStringBuilder.toString());
+        l4 = paramLong;
+        localObject = localFrameInfo;
+        l5 = l1;
+        if (paramSeekMode.b() == 5)
         {
-          if (i == 0)
-          {
-            Log.w(this.jdField_a_of_type_JavaLangString, "this should never happen");
-            l2 = paramLong;
-            paramLong = l1;
-            l1 = l2;
+          l4 = paramLong;
+          localObject = localFrameInfo;
+          l5 = l1;
+          if (l1 > paramLong) {
+            if (i == 0)
+            {
+              Log.w(this.jdField_a_of_type_JavaLangString, "this should never happen");
+              l4 = paramLong;
+              localObject = localFrameInfo;
+              l5 = l1;
+            }
+            else
+            {
+              localObject = this.jdField_a_of_type_JavaLangString;
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("exact seek: repeat seek for previous frame at ");
+              localStringBuilder.append(l3);
+              Log.d((String)localObject, localStringBuilder.toString());
+              a(localFrameInfo, false);
+              return a(paramSeekMode, l3, paramMediaExtractor, paramMediaCodec);
+            }
           }
-          else
-          {
-            Log.d(this.jdField_a_of_type_JavaLangString, "exact seek: repeat seek for previous frame at " + l2);
-            a(localFrameInfo1, false);
-            return a(paramSeekMode, l2, paramMediaExtractor, paramMediaCodec);
-          }
-        }
-        else
-        {
-          l2 = paramLong;
-          paramLong = l1;
-          l1 = l2;
         }
       }
     }
+    else
+    {
+      paramSeekMode = this.jdField_a_of_type_JavaLangString;
+      paramMediaExtractor = new StringBuilder();
+      paramMediaExtractor.append("fast seek to ");
+      paramMediaExtractor.append(paramLong);
+      paramMediaExtractor.append(" arrived at ");
+      paramMediaExtractor.append(localFrameInfo.jdField_a_of_type_Long);
+      Log.d(paramSeekMode, paramMediaExtractor.toString());
+      localObject = localFrameInfo;
+      l4 = l2;
+    }
+    if (l5 == l4) {
+      Log.d(this.jdField_a_of_type_JavaLangString, "exact seek match!");
+    }
+    return localObject;
   }
   
   protected void a(MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
@@ -193,11 +217,13 @@ class MediaCodecVideoDecoder
   
   public void a(Surface paramSurface)
   {
-    if (paramSurface == null) {
-      throw new RuntimeException("surface must not be null");
+    if (paramSurface != null)
+    {
+      this.jdField_a_of_type_AndroidViewSurface = paramSurface;
+      a();
+      return;
     }
-    this.jdField_a_of_type_AndroidViewSurface = paramSurface;
-    a();
+    throw new RuntimeException("surface must not be null");
   }
   
   @SuppressLint({"NewApi"})
@@ -223,7 +249,7 @@ class MediaCodecVideoDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaCodecVideoDecoder
  * JD-Core Version:    0.7.0.1
  */

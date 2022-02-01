@@ -83,8 +83,9 @@ public class RecyclerViewWithHeaderFooter
       while (paramAdapter.hasNext()) {
         ((RecyclerViewHeaderViewAdapter)localObject).b((View)paramAdapter.next());
       }
-      if (this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewHeaderViewAdapter$ContentDataObserver != null) {
-        ((RecyclerViewHeaderViewAdapter)localObject).a(this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewHeaderViewAdapter$ContentDataObserver);
+      paramAdapter = this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewHeaderViewAdapter$ContentDataObserver;
+      if (paramAdapter != null) {
+        ((RecyclerViewHeaderViewAdapter)localObject).a(paramAdapter);
       }
     }
     super.setAdapter((RecyclerView.Adapter)localObject);
@@ -92,7 +93,7 @@ public class RecyclerViewWithHeaderFooter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.xrecyclerview.RecyclerViewWithHeaderFooter
  * JD-Core Version:    0.7.0.1
  */

@@ -13,8 +13,10 @@ class AvatarPendantActivity$7
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.a.e == AvatarPendantActivity.d) {}
-    while (Build.VERSION.SDK_INT < 14) {
+    if (this.a.e == AvatarPendantActivity.d) {
+      return;
+    }
+    if (Build.VERSION.SDK_INT < 14) {
       return;
     }
     this.a.b();
@@ -22,7 +24,7 @@ class AvatarPendantActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.7
  * JD-Core Version:    0.7.0.1
  */

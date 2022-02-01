@@ -17,33 +17,35 @@ public class TencentDocEditConvertConfigBean
   
   public static TencentDocEditConvertConfigBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length <= 0)) {
-      return null;
-    }
-    localTencentDocEditConvertConfigBean = new TencentDocEditConvertConfigBean();
-    try
+    TencentDocEditConvertConfigBean localTencentDocEditConvertConfigBean;
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].a);
-      Iterator localIterator = paramArrayOfQConfItem.keys();
-      while (localIterator.hasNext())
+      localTencentDocEditConvertConfigBean = new TencentDocEditConvertConfigBean();
+      try
       {
-        String str = (String)localIterator.next();
-        JSONArray localJSONArray = paramArrayOfQConfItem.getJSONArray(str);
-        ArrayList localArrayList = new ArrayList();
-        int i = 0;
-        while (i < localJSONArray.length())
+        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].a);
+        Iterator localIterator = paramArrayOfQConfItem.keys();
+        while (localIterator.hasNext())
         {
-          localArrayList.add(TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem.a(localJSONArray.getJSONObject(i)));
-          i += 1;
+          String str = (String)localIterator.next();
+          JSONArray localJSONArray = paramArrayOfQConfItem.getJSONArray(str);
+          ArrayList localArrayList = new ArrayList();
+          int i = 0;
+          while (i < localJSONArray.length())
+          {
+            localArrayList.add(TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem.a(localJSONArray.getJSONObject(i)));
+            i += 1;
+          }
+          localTencentDocEditConvertConfigBean.a.put(str, localArrayList);
         }
-        localTencentDocEditConvertConfigBean.a.put(str, localArrayList);
+        return localTencentDocEditConvertConfigBean;
       }
-      return localTencentDocEditConvertConfigBean;
+      catch (JSONException paramArrayOfQConfItem)
+      {
+        QLog.e("TencentDocEditConvertConfigBean", 1, "parse fail", paramArrayOfQConfItem);
+      }
     }
-    catch (JSONException paramArrayOfQConfItem)
-    {
-      QLog.e("TencentDocEditConvertConfigBean", 1, "parse fail", paramArrayOfQConfItem);
-    }
+    return null;
   }
   
   public Map<String, List<TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem>> a()
@@ -53,7 +55,7 @@ public class TencentDocEditConvertConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocEditConvertConfigBean
  * JD-Core Version:    0.7.0.1
  */

@@ -21,16 +21,13 @@ public class ItemLocalVerPrt
     {
       localJSONObject.put("itemId", paramItemLocalVerPrt.mItemId);
       localJSONObject.put("md5", paramItemLocalVerPrt.mMd5);
-      return localJSONObject.toString();
     }
     catch (Exception paramItemLocalVerPrt)
     {
-      for (;;)
-      {
-        paramItemLocalVerPrt.printStackTrace();
-        VasUpdateWrapper.getLog().e("VasUpdate_ItemLocalVerPrt", "ItemLocal convertJson error ", paramItemLocalVerPrt);
-      }
+      paramItemLocalVerPrt.printStackTrace();
+      VasUpdateWrapper.getLog().e("VasUpdate_ItemLocalVerPrt", "ItemLocal convertJson error ", paramItemLocalVerPrt);
     }
+    return localJSONObject.toString();
   }
   
   public static ItemLocalVerPrt parseJsonToItemLocalVerPrt(String paramString)
@@ -56,7 +53,7 @@ public class ItemLocalVerPrt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.vas.update.entity.db.ItemLocalVerPrt
  * JD-Core Version:    0.7.0.1
  */

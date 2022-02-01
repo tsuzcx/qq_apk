@@ -1,9 +1,5 @@
 package com.tencent.xaction.impl;
 
-import android.os.Handler;
-import com.google.gson.Gson;
-import com.tencent.xaction.api.data.AnimData;
-import com.tencent.xaction.api.util.GsonAdapter;
 import kotlin.Metadata;
 import kotlin.jvm.functions.Function0;
 
@@ -15,16 +11,14 @@ final class XAEngine$initAsync$1
   
   public final void run()
   {
-    XAEngine.access$setAnimData$p(this.this$0, (AnimData)GsonAdapter.a().fromJson(this.jdField_a_of_type_JavaLangString, AnimData.class));
-    Handler localHandler = this.this$0.getUiHandler();
-    if (localHandler != null) {
-      localHandler.post((Runnable)new XAEngine.initAsync.1.1(this));
-    }
+    XAEngine localXAEngine = this.this$0;
+    XAEngine.access$setAnimData$p(localXAEngine, XAEngine.access$parseJson(localXAEngine, this.jdField_a_of_type_JavaLangString));
+    XAEngine.access$postMainThread(this.this$0, (Runnable)new XAEngine.initAsync.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.xaction.impl.XAEngine.initAsync.1
  * JD-Core Version:    0.7.0.1
  */

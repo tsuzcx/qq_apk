@@ -14,16 +14,16 @@ class QQInputView$2
   public void run()
   {
     QQInputView.a(this.this$0).setVisibility(8);
-    QQInputView.a(this.this$0).setImageResource(2130848264);
+    QQInputView.a(this.this$0).setImageResource(2130848134);
     if (AppSetting.d) {
-      QQInputView.a(this.this$0).setContentDescription(HardCodeUtil.a(2131710368));
+      QQInputView.a(this.this$0).setContentDescription(HardCodeUtil.a(2131710347));
     }
     InputMethodUtil.a(QQInputView.a(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.freshnews.QQInputView.2
  * JD-Core Version:    0.7.0.1
  */

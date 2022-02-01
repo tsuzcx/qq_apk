@@ -20,19 +20,32 @@ class UpcomingTimeSelector$1
       UpcomingTimeSelector.a(this.a).a(this.a.jdField_a_of_type_Long);
     }
     UpcomingTimeSelector.a(this.a).dismiss();
-    int i = UpcomingTimeSelector.a(this.a, this.a.jdField_a_of_type_Long);
-    if ((UpcomingTimeSelector.a(this.a).a(0) == 0) && (this.a.c < 23)) {}
-    for (String str = this.a.a(UpcomingTimeSelector.a(this.a).a(1));; str = UpcomingTimeSelector.a(this.a).a(1) + this.a.jdField_a_of_type_AndroidContentContext.getString(2131694588))
+    Object localObject = this.a;
+    int i = UpcomingTimeSelector.a((UpcomingTimeSelector)localObject, ((UpcomingTimeSelector)localObject).jdField_a_of_type_Long);
+    if ((UpcomingTimeSelector.a(this.a).a(0) == 0) && (this.a.c < 23))
     {
-      ReportController.b(null, "dc00898", "", "", "0X800AE7F", "0X800AE7F", UpcomingTimeSelector.a(this.a), i, "", "", str, "");
-      return;
+      localObject = this.a;
+      localObject = ((UpcomingTimeSelector)localObject).a(UpcomingTimeSelector.a((UpcomingTimeSelector)localObject).a(1));
     }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(UpcomingTimeSelector.a(this.a).a(1));
+      ((StringBuilder)localObject).append(this.a.jdField_a_of_type_AndroidContentContext.getString(2131694556));
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    ReportController.b(null, "dc00898", "", "", "0X800AE7F", "0X800AE7F", UpcomingTimeSelector.a(this.a), i, "", "", (String)localObject, "");
   }
   
   public void a(int paramInt1, int paramInt2)
   {
     this.a.a(paramInt1, paramInt2);
-    QLog.d("UpComingMsgLogic.UpcomingTimeSelector", 3, "column: " + paramInt1 + ", row: " + paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("column: ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", row: ");
+    localStringBuilder.append(paramInt2);
+    QLog.d("UpComingMsgLogic.UpcomingTimeSelector", 3, localStringBuilder.toString());
     if (paramInt1 == 0) {
       UpcomingTimeSelector.a(this.a).a(1);
     }
@@ -55,7 +68,7 @@ class UpcomingTimeSelector$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.upcoming.UpcomingTimeSelector.1
  * JD-Core Version:    0.7.0.1
  */

@@ -41,17 +41,18 @@ public abstract class DesktopItemInfo
   public void setIsTemp(boolean paramBoolean)
   {
     this.isTemp = paramBoolean;
-    if (paramBoolean) {}
-    for (int i = 4;; i = 0)
-    {
-      this.visible = i;
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 4;
+    } else {
+      i = 0;
     }
+    this.visible = i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopItemInfo
  * JD-Core Version:    0.7.0.1
  */

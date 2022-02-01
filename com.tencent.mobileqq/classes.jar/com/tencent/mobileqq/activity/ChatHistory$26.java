@@ -13,13 +13,14 @@ class ChatHistory$26
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    this.a.m = paramInt;
+    paramAbsListView = this.a;
+    paramAbsListView.m = paramInt;
     if (paramInt == 0)
     {
       AbstractGifImage.resumeAll();
       return;
     }
-    if ((this.a.a != null) && (this.a.a.jdField_a_of_type_Int == 1) && (!this.a.a.jdField_a_of_type_Boolean)) {
+    if ((paramAbsListView.a != null) && (this.a.a.jdField_a_of_type_Int == 1) && (!this.a.a.jdField_a_of_type_Boolean)) {
       this.a.a.d();
     }
     AbstractGifImage.pauseAll();
@@ -27,7 +28,7 @@ class ChatHistory$26
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.26
  * JD-Core Version:    0.7.0.1
  */

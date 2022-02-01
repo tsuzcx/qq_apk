@@ -13,7 +13,7 @@ import java.util.WeakHashMap;
 public final class AnimatorProxy
   extends Animation
 {
-  static final WeakHashMap<View, AnimatorProxy> jdField_a_of_type_JavaUtilWeakHashMap;
+  static final WeakHashMap<View, AnimatorProxy> jdField_a_of_type_JavaUtilWeakHashMap = new WeakHashMap();
   public static final boolean a;
   float jdField_a_of_type_Float = 1.0F;
   final Camera jdField_a_of_type_AndroidGraphicsCamera = new Camera();
@@ -34,13 +34,13 @@ public final class AnimatorProxy
   
   static
   {
-    if (Integer.valueOf(Build.VERSION.SDK_INT).intValue() < 11) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      jdField_a_of_type_JavaUtilWeakHashMap = new WeakHashMap();
-      return;
+    boolean bool;
+    if (Integer.valueOf(Build.VERSION.SDK_INT).intValue() < 11) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    jdField_a_of_type_Boolean = bool;
   }
   
   private AnimatorProxy(View paramView)
@@ -82,55 +82,55 @@ public final class AnimatorProxy
     float f4 = paramView.getHeight();
     boolean bool = this.jdField_b_of_type_Boolean;
     float f1;
-    if (bool)
-    {
+    if (bool) {
       f1 = this.jdField_b_of_type_Float;
-      if (!bool) {
-        break label226;
-      }
-    }
-    label226:
-    for (float f2 = this.c;; f2 = f4 / 2.0F)
-    {
-      float f5 = this.d;
-      float f6 = this.e;
-      float f7 = this.f;
-      if ((f5 != 0.0F) || (f6 != 0.0F) || (f7 != 0.0F))
-      {
-        paramView = this.jdField_a_of_type_AndroidGraphicsCamera;
-        paramView.save();
-        paramView.rotateX(f5);
-        paramView.rotateY(f6);
-        paramView.rotateZ(-f7);
-        paramView.getMatrix(paramMatrix);
-        paramView.restore();
-        paramMatrix.preTranslate(-f1, -f2);
-        paramMatrix.postTranslate(f1, f2);
-      }
-      f5 = this.g;
-      f6 = this.h;
-      if ((f5 != 1.0F) || (f6 != 1.0F))
-      {
-        paramMatrix.postScale(f5, f6);
-        paramMatrix.postTranslate(-(f1 / f3) * (f5 * f3 - f3), -(f2 / f4) * (f6 * f4 - f4));
-      }
-      paramMatrix.postTranslate(this.i, this.j);
-      return;
+    } else {
       f1 = f3 / 2.0F;
-      break;
     }
+    float f2;
+    if (bool) {
+      f2 = this.c;
+    } else {
+      f2 = f4 / 2.0F;
+    }
+    float f5 = this.d;
+    float f6 = this.e;
+    float f7 = this.f;
+    if ((f5 != 0.0F) || (f6 != 0.0F) || (f7 != 0.0F))
+    {
+      paramView = this.jdField_a_of_type_AndroidGraphicsCamera;
+      paramView.save();
+      paramView.rotateX(f5);
+      paramView.rotateY(f6);
+      paramView.rotateZ(-f7);
+      paramView.getMatrix(paramMatrix);
+      paramView.restore();
+      paramMatrix.preTranslate(-f1, -f2);
+      paramMatrix.postTranslate(f1, f2);
+    }
+    f5 = this.g;
+    f6 = this.h;
+    if ((f5 != 1.0F) || (f6 != 1.0F))
+    {
+      paramMatrix.postScale(f5, f6);
+      paramMatrix.postTranslate(-(f1 / f3) * (f5 * f3 - f3), -(f2 / f4) * (f6 * f4 - f4));
+    }
+    paramMatrix.postTranslate(this.i, this.j);
   }
   
   private void b()
   {
     View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localView == null) || (localView.getParent() == null)) {
-      return;
+    if (localView != null)
+    {
+      if (localView.getParent() == null) {
+        return;
+      }
+      RectF localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
+      a(localRectF, localView);
+      localRectF.union(this.jdField_a_of_type_AndroidGraphicsRectF);
+      ((View)localView.getParent()).invalidate((int)Math.floor(localRectF.left), (int)Math.floor(localRectF.top), (int)Math.ceil(localRectF.right), (int)Math.ceil(localRectF.bottom));
     }
-    RectF localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
-    a(localRectF, localView);
-    localRectF.union(this.jdField_a_of_type_AndroidGraphicsRectF);
-    ((View)localView.getParent()).invalidate((int)Math.floor(localRectF.left), (int)Math.floor(localRectF.top), (int)Math.ceil(localRectF.right), (int)Math.ceil(localRectF.bottom));
   }
   
   public void a(float paramFloat)
@@ -250,7 +250,7 @@ public final class AnimatorProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.helpers.AnimatorProxy
  * JD-Core Version:    0.7.0.1
  */

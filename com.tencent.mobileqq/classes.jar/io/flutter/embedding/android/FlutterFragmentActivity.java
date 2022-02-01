@@ -85,27 +85,29 @@ public class FlutterFragmentActivity
   @Nullable
   private Drawable getSplashScreenFromManifest()
   {
+    Drawable localDrawable = null;
     for (;;)
     {
       try
       {
         Object localObject1 = getPackageManager().getActivityInfo(getComponentName(), 128).metaData;
-        if (localObject1 == null) {
-          break label77;
-        }
-        localObject1 = Integer.valueOf(((Bundle)localObject1).getInt("io.flutter.embedding.android.SplashScreenDrawable"));
         if (localObject1 != null)
         {
-          if (Build.VERSION.SDK_INT > 21) {
-            return getResources().getDrawable(((Integer)localObject1).intValue(), getTheme());
+          localObject1 = Integer.valueOf(((Bundle)localObject1).getInt("io.flutter.embedding.android.SplashScreenDrawable"));
+          if (localObject1 != null)
+          {
+            if (Build.VERSION.SDK_INT > 21) {
+              return getResources().getDrawable(((Integer)localObject1).intValue(), getTheme());
+            }
+            localDrawable = getResources().getDrawable(((Integer)localObject1).intValue());
           }
-          localObject1 = getResources().getDrawable(((Integer)localObject1).intValue());
-          return localObject1;
+          return localDrawable;
         }
       }
-      catch (PackageManager.NameNotFoundException localNameNotFoundException) {}
-      return null;
-      label77:
+      catch (PackageManager.NameNotFoundException localNameNotFoundException)
+      {
+        return null;
+      }
       Object localObject2 = null;
     }
   }
@@ -123,20 +125,22 @@ public class FlutterFragmentActivity
       if (localActivityInfo.metaData != null)
       {
         int i = localActivityInfo.metaData.getInt("io.flutter.embedding.android.NormalTheme", -1);
-        if (i != -1) {
-          setTheme(i);
+        if (i == -1) {
+          break label59;
         }
-      }
-      else
-      {
-        Log.v("FlutterFragmentActivity", "Using the launch theme as normal theme.");
+        setTheme(i);
         return;
       }
+      Log.v("FlutterFragmentActivity", "Using the launch theme as normal theme.");
+      return;
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
     {
-      Log.e("FlutterFragmentActivity", "Could not read meta-data for FlutterFragmentActivity. Using the launch theme as normal theme.");
+      label52:
+      label59:
+      break label52;
     }
+    Log.e("FlutterFragmentActivity", "Could not read meta-data for FlutterFragmentActivity. Using the launch theme as normal theme.");
   }
   
   @NonNull
@@ -163,8 +167,13 @@ public class FlutterFragmentActivity
   {
     FlutterActivityLaunchConfigs.BackgroundMode localBackgroundMode = getBackgroundMode();
     RenderMode localRenderMode = getRenderMode();
-    if (localBackgroundMode == FlutterActivityLaunchConfigs.BackgroundMode.opaque) {}
-    for (TransparencyMode localTransparencyMode = TransparencyMode.opaque; getCachedEngineId() != null; localTransparencyMode = TransparencyMode.transparent)
+    TransparencyMode localTransparencyMode;
+    if (localBackgroundMode == FlutterActivityLaunchConfigs.BackgroundMode.opaque) {
+      localTransparencyMode = TransparencyMode.opaque;
+    } else {
+      localTransparencyMode = TransparencyMode.transparent;
+    }
+    if (getCachedEngineId() != null)
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("Creating FlutterFragment with cached engine:\nCached engine ID: ");
@@ -233,14 +242,19 @@ public class FlutterFragmentActivity
   @NonNull
   public String getDartEntrypointFunctionName()
   {
+    Object localObject2 = "main";
     try
     {
-      Object localObject = getPackageManager().getActivityInfo(getComponentName(), 128).metaData;
-      if (localObject != null) {}
-      for (localObject = ((Bundle)localObject).getString("io.flutter.Entrypoint"); localObject != null; localObject = null) {
-        return localObject;
+      Object localObject1 = getPackageManager().getActivityInfo(getComponentName(), 128).metaData;
+      if (localObject1 != null) {
+        localObject1 = ((Bundle)localObject1).getString("io.flutter.Entrypoint");
+      } else {
+        localObject1 = null;
       }
-      return "main";
+      if (localObject1 != null) {
+        localObject2 = localObject1;
+      }
+      return localObject2;
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException) {}
     return "main";
@@ -255,29 +269,25 @@ public class FlutterFragmentActivity
   @NonNull
   protected String getInitialRoute()
   {
-    Object localObject2;
+    Object localObject2 = "/";
     if (getIntent().hasExtra("route")) {
-      localObject2 = getIntent().getStringExtra("route");
+      return getIntent().getStringExtra("route");
     }
-    for (;;)
+    try
     {
-      return localObject2;
-      try
-      {
-        Object localObject1 = getPackageManager().getActivityInfo(getComponentName(), 128).metaData;
-        if (localObject1 != null) {}
-        for (localObject1 = ((Bundle)localObject1).getString("io.flutter.InitialRoute");; localObject1 = null)
-        {
-          localObject2 = localObject1;
-          if (localObject1 != null) {
-            break;
-          }
-          return "/";
-        }
-        return "/";
+      Object localObject1 = getPackageManager().getActivityInfo(getComponentName(), 128).metaData;
+      if (localObject1 != null) {
+        localObject1 = ((Bundle)localObject1).getString("io.flutter.InitialRoute");
+      } else {
+        localObject1 = null;
       }
-      catch (PackageManager.NameNotFoundException localNameNotFoundException) {}
+      if (localObject1 != null) {
+        localObject2 = localObject1;
+      }
+      return localObject2;
     }
+    catch (PackageManager.NameNotFoundException localNameNotFoundException) {}
+    return "/";
   }
   
   @NonNull
@@ -289,7 +299,7 @@ public class FlutterFragmentActivity
     return RenderMode.texture;
   }
   
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     this.flutterFragment.onActivityResult(paramInt1, paramInt2, paramIntent);
@@ -307,7 +317,7 @@ public class FlutterFragmentActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onCreate(@Nullable Bundle paramBundle)
+  protected void onCreate(@Nullable Bundle paramBundle)
   {
     switchLaunchThemeForNormalTheme();
     super.onCreate(paramBundle);
@@ -317,7 +327,7 @@ public class FlutterFragmentActivity
     ensureFlutterFragmentCreated();
   }
   
-  public void onNewIntent(@NonNull Intent paramIntent)
+  protected void onNewIntent(@NonNull Intent paramIntent)
   {
     this.flutterFragment.onNewIntent(paramIntent);
     super.onNewIntent(paramIntent);
@@ -374,7 +384,7 @@ public class FlutterFragmentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterFragmentActivity
  * JD-Core Version:    0.7.0.1
  */

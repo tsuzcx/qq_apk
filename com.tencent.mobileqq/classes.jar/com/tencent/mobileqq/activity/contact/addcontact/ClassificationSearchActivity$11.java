@@ -4,58 +4,44 @@ import android.content.Intent;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.widget.EditText;
-import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
-import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySearchTipsContainer.OnTipClickListener;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.search.api.OnTipClickListener;
+import com.tencent.mobileqq.kandian.biz.search.entity.WordItem;
 import com.tencent.mobileqq.qroute.QRoute;
 import java.util.Iterator;
 import java.util.List;
 
 class ClassificationSearchActivity$11
-  implements ReadInJoySearchTipsContainer.OnTipClickListener
+  implements OnTipClickListener
 {
   ClassificationSearchActivity$11(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
   public void a(String paramString)
   {
-    SearchProtocol.WordItem localWordItem;
     if (paramString != null)
     {
+      Object localObject2 = null;
       Iterator localIterator = this.a.b.iterator();
+      Object localObject1;
       do
       {
+        localObject1 = localObject2;
         if (!localIterator.hasNext()) {
           break;
         }
-        localWordItem = (SearchProtocol.WordItem)localIterator.next();
-      } while (!paramString.equals(localWordItem.word));
-    }
-    for (;;)
-    {
-      if ((localWordItem != null) && (localWordItem.type == 2))
+        localObject1 = (WordItem)localIterator.next();
+      } while (!paramString.equals(((WordItem)localObject1).word));
+      if ((localObject1 != null) && (((WordItem)localObject1).type == 2))
       {
         paramString = new Intent(this.a, QQBrowserActivity.class);
         paramString.putExtra("hide_operation_bar", true);
-        paramString.putExtra("url", localWordItem.jumpUrl);
+        paramString.putExtra("url", ((WordItem)localObject1).jumpUrl);
         paramString.putExtra("articalChannelId", 14);
         this.a.startActivity(paramString);
-        if (localWordItem != null)
-        {
-          paramString = "";
-          if (this.a.f != ClassificationSearchActivity.jdField_a_of_type_Int) {
-            break label343;
-          }
-          paramString = "kan";
-        }
       }
-      for (;;)
+      else
       {
-        if (localWordItem.type != 2) {
-          break label362;
-        }
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006818", "0X8006818", 0, 0, localWordItem.word, localWordItem.jumpUrl, paramString, "");
-        return;
         if (this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int)
         {
           this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramString);
@@ -65,41 +51,42 @@ class ClassificationSearchActivity$11
             ClassificationSearchActivity.a(this.a, paramString);
           }
         }
-        for (;;)
+        else if (this.a.f == ClassificationSearchActivity.d)
         {
-          if ((this.a.f == ClassificationSearchActivity.d) || (TextUtils.isEmpty(paramString.trim()))) {
-            break label341;
-          }
-          this.a.a(paramString);
-          break;
-          if (this.a.f == ClassificationSearchActivity.d)
-          {
-            this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramString);
-            this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramString.length());
-            ClassificationSearchActivity.a(this.a, paramString);
-          }
-          else
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramString, false);
-          }
+          this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramString);
+          this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramString.length());
+          ClassificationSearchActivity.a(this.a, paramString);
         }
-        label341:
-        break;
-        label343:
-        if (this.a.f == ClassificationSearchActivity.d) {
-          paramString = "quan";
+        else
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramString, false);
+        }
+        if ((this.a.f != ClassificationSearchActivity.d) && (!TextUtils.isEmpty(paramString.trim()))) {
+          this.a.a(paramString);
         }
       }
-      label362:
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006818", "0X8006818", 0, 0, localWordItem.word, "0", paramString, "");
-      return;
-      localWordItem = null;
+      if (localObject1 != null)
+      {
+        if (this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int) {
+          paramString = "kan";
+        } else if (this.a.f == ClassificationSearchActivity.d) {
+          paramString = "quan";
+        } else {
+          paramString = "";
+        }
+        if (((WordItem)localObject1).type == 2)
+        {
+          ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006818", "0X8006818", 0, 0, ((WordItem)localObject1).word, ((WordItem)localObject1).jumpUrl, paramString, "");
+          return;
+        }
+        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006818", "0X8006818", 0, 0, ((WordItem)localObject1).word, "0", paramString, "");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity.11
  * JD-Core Version:    0.7.0.1
  */

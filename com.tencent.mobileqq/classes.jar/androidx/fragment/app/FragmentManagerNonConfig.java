@@ -42,15 +42,16 @@ public class FragmentManagerNonConfig
   
   boolean isRetaining(Fragment paramFragment)
   {
-    if (this.mFragments == null) {
+    Collection localCollection = this.mFragments;
+    if (localCollection == null) {
       return false;
     }
-    return this.mFragments.contains(paramFragment);
+    return localCollection.contains(paramFragment);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.fragment.app.FragmentManagerNonConfig
  * JD-Core Version:    0.7.0.1
  */

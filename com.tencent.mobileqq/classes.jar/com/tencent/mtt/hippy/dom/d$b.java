@@ -9,13 +9,14 @@ class d$b
   
   public void a(long paramLong)
   {
-    this.a.c = false;
-    int j = this.a.a.size();
+    d locald = this.a;
     int i = 0;
+    locald.c = false;
+    int j = locald.a.size();
     while (i < j)
     {
       ((d.a)this.a.a.removeFirst()).a(paramLong);
-      d locald = this.a;
+      locald = this.a;
       locald.b -= 1;
       i += 1;
     }
@@ -24,7 +25,7 @@ class d$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.dom.d.b
  * JD-Core Version:    0.7.0.1
  */

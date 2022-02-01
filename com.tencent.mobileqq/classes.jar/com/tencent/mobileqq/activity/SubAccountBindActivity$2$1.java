@@ -17,14 +17,14 @@ class SubAccountBindActivity$2$1
     {
       paramDialogInterface = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountBindActivity$2.a, SubLoginActivity.class);
       paramDialogInterface.putExtra("subuin", this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData.c);
-      paramDialogInterface.putExtra("fromWhere", this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountBindActivity$2.a.b);
+      paramDialogInterface.putExtra("fromWhere", this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountBindActivity$2.a.fromWhere);
       this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountBindActivity$2.a.startActivity(paramDialogInterface);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubAccountBindActivity.2.1
  * JD-Core Version:    0.7.0.1
  */

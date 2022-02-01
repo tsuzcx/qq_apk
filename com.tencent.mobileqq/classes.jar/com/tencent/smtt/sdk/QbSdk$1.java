@@ -16,37 +16,50 @@ final class QbSdk$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    boolean bool = true;
+    if (i != 1)
     {
-    }
-    do
-    {
-      return;
-      if (this.a != null) {
-        this.a.onViewInitFinished(false);
-      }
-      TbsLog.writeLogToDisk();
-      return;
-      QbSdk.a(TbsExtensionFunctionManager.getInstance().canUseFunction(this.b, "disable_unpreinit.txt"));
-      if (QbSdk.j)
+      if (i != 2)
       {
-        paramMessage = x.a().c();
-        if (paramMessage != null) {
-          paramMessage.a(this.b);
+        if (i != 3) {
+          return;
         }
+        paramMessage = this.a;
+        if (paramMessage == null) {
+          return;
+        }
+        paramMessage.onCoreInitFinished();
+        return;
       }
-      if (this.a != null) {
-        this.a.onViewInitFinished(true);
+      paramMessage = this.a;
+      if (paramMessage != null) {
+        bool = false;
       }
-      TbsLog.writeLogToDisk();
-      return;
-    } while (this.a == null);
-    this.a.onCoreInitFinished();
+    }
+    for (;;)
+    {
+      paramMessage.onViewInitFinished(bool);
+      do
+      {
+        TbsLog.writeLogToDisk();
+        return;
+        QbSdk.a(TbsExtensionFunctionManager.getInstance().canUseFunction(this.b, "disable_unpreinit.txt"));
+        if (QbSdk.j)
+        {
+          paramMessage = x.a().c();
+          if (paramMessage != null) {
+            paramMessage.a(this.b);
+          }
+        }
+        paramMessage = this.a;
+      } while (paramMessage == null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.QbSdk.1
  * JD-Core Version:    0.7.0.1
  */

@@ -27,13 +27,15 @@ public class StyleChildPostRender
   public void ApplyGLSLFilter()
   {
     super.ApplyGLSLFilter();
-    GLES20.glGenTextures(this.tex.length, this.tex, 0);
+    int[] arrayOfInt = this.tex;
+    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
   }
   
   public void clearGLSLSelf()
   {
     super.clearGLSLSelf();
-    GLES20.glDeleteTextures(this.tex.length, this.tex, 0);
+    int[] arrayOfInt = this.tex;
+    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
   }
   
   public void initParams(int paramInt1, int paramInt2)
@@ -53,20 +55,17 @@ public class StyleChildPostRender
     addParam(new UniformParam.FloatParam("oriHeight", paramFrame1.height));
     if (paramBoolean2) {
       paramFrame2.bindFrame(-1, this.width, this.height, 0.0D);
-    }
-    for (;;)
-    {
-      if (paramBoolean1)
-      {
-        GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
-        GLES20.glClear(16384);
-      }
-      OnDrawFrameGLSL();
-      renderTexture(paramFrame1.getTextureId(), this.width, this.height);
-      BenchUtil.benchEnd("[child] render");
-      return;
+    } else {
       paramFrame2.bindFrame(-1, paramFrame2.width, paramFrame2.height, 0.0D);
     }
+    if (paramBoolean1)
+    {
+      GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
+      GLES20.glClear(16384);
+    }
+    OnDrawFrameGLSL();
+    renderTexture(paramFrame1.getTextureId(), this.width, this.height);
+    BenchUtil.benchEnd("[child] render");
   }
   
   public void updateParams(Bitmap paramBitmap1, Bitmap paramBitmap2, float[] paramArrayOfFloat)
@@ -79,7 +78,7 @@ public class StyleChildPostRender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.StyleChildPostRender
  * JD-Core Version:    0.7.0.1
  */

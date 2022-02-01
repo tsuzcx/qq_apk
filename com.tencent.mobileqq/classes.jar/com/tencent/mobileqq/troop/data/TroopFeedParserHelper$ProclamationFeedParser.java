@@ -15,57 +15,47 @@ public class TroopFeedParserHelper$ProclamationFeedParser
     if (localTroopFeedItem == null) {
       return null;
     }
-    for (;;)
+    try
     {
-      int i;
-      int j;
-      try
+      localTroopFeedItem.type = paramJSONObject.getInt("feed_type");
+      JSONArray localJSONArray = paramJSONObject.getJSONArray("content");
+      localTroopFeedItem.linkUrl = paramJSONObject.getString("open_url");
+      int i = 0;
+      while (i < localJSONArray.length())
       {
-        localTroopFeedItem.type = paramJSONObject.getInt("feed_type");
-        JSONArray localJSONArray = paramJSONObject.getJSONArray("content");
-        localTroopFeedItem.linkUrl = paramJSONObject.getString("open_url");
-        i = 0;
-        if (i >= localJSONArray.length()) {
-          break label200;
-        }
         paramJSONObject = localJSONArray.getJSONObject(i);
-        j = paramJSONObject.getInt("type");
-        if (j == 0)
-        {
+        int j = paramJSONObject.getInt("type");
+        if (j == 0) {
           localTroopFeedItem.content = paramJSONObject.getString("value");
-        }
-        else if (j == 3)
+        } else if (j == 3)
         {
-          if (!paramJSONObject.has("pic_url")) {
-            break label203;
+          if (paramJSONObject.has("pic_url"))
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(paramJSONObject.getString("pic_url"));
+            localStringBuilder.append("/109");
+            localTroopFeedItem.picPath = localStringBuilder.toString();
           }
-          localTroopFeedItem.picPath = (paramJSONObject.getString("pic_url") + "/109");
         }
+        else if (j == 10) {
+          localTroopFeedItem.title = paramJSONObject.getString("value");
+        } else if ((j == 6) && (StringUtil.a(localTroopFeedItem.picPath)) && (paramJSONObject.has("pic_url"))) {
+          localTroopFeedItem.picPath = paramJSONObject.getString("pic_url");
+        }
+        i += 1;
       }
-      catch (JSONException paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        return null;
-      }
-      if (j == 10)
-      {
-        localTroopFeedItem.title = paramJSONObject.getString("value");
-      }
-      else if ((j == 6) && (StringUtil.a(localTroopFeedItem.picPath)) && (paramJSONObject.has("pic_url")))
-      {
-        localTroopFeedItem.picPath = paramJSONObject.getString("pic_url");
-        break label203;
-        label200:
-        return localTroopFeedItem;
-      }
-      label203:
-      i += 1;
+      return localTroopFeedItem;
     }
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFeedParserHelper.ProclamationFeedParser
  * JD-Core Version:    0.7.0.1
  */

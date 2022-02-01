@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView android:id="@id/gmc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_marginBottom="16.0dip" android:layout_above="@id/m6i" android:layout_alignWithParentIfMissing="true"
-  xmlns:android="http://schemas.android.com/apk/res/android" />

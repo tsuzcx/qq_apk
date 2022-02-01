@@ -23,60 +23,49 @@ public class FileEncryptUtils
   {
     try
     {
-      localObject1 = new byte[4];
+      Object localObject1 = new byte[4];
       paramInputStream.read((byte[])localObject1);
       if ((localObject1[0] == ENCRYPE_HEAD[0]) && (localObject1[1] == ENCRYPE_HEAD[1]) && (localObject1[2] == ENCRYPE_HEAD[2]) && (localObject1[3] == ENCRYPE_HEAD[3]))
       {
         localObject1 = new ByteArrayOutputStream(readInt(paramInputStream));
         int j = readInt(paramInputStream);
         localObject2 = new byte[j];
-        i = paramInputStream.read((byte[])localObject2, 0, j);
-        if (i < j)
+        int i = paramInputStream.read((byte[])localObject2, 0, j);
+        while (i < j)
         {
-          k = paramInputStream.read((byte[])localObject2, i, j - i);
-          if (-1 == k) {
+          int k = paramInputStream.read((byte[])localObject2, i, j - i);
+          if (-1 != k) {
+            i += k;
+          } else {
             throw new RuntimeException("decryptFile: inputStream end before all data read");
           }
         }
+        LogUtils.d("decryptFile m - ", Integer.toString(i));
+        localObject2 = EncryptUtils.decode((byte[])localObject2);
+        ((ByteArrayOutputStream)localObject1).write((byte[])localObject2, 0, localObject2.length);
+        IOUtils.copy(paramInputStream, (OutputStream)localObject1);
+        return ((ByteArrayOutputStream)localObject1).toByteArray();
       }
-    }
-    catch (Exception paramInputStream)
-    {
-      Object localObject1;
-      int i;
-      for (;;)
-      {
-        int k;
-        paramInputStream.printStackTrace();
-        return null;
-        i += k;
-      }
-      LogUtils.d("decryptFile m - ", Integer.toString(i));
-      Object localObject2 = EncryptUtils.decode((byte[])localObject2);
-      ((ByteArrayOutputStream)localObject1).write((byte[])localObject2, 0, localObject2.length);
-      IOUtils.copy(paramInputStream, (OutputStream)localObject1);
-      return ((ByteArrayOutputStream)localObject1).toByteArray();
-      localObject2 = new ByteArrayOutputStream();
+      Object localObject2 = new ByteArrayOutputStream();
       ((ByteArrayOutputStream)localObject2).write((byte[])localObject1);
       IOUtils.copy(paramInputStream, (OutputStream)localObject2);
       paramInputStream = ((ByteArrayOutputStream)localObject2).toByteArray();
       return paramInputStream;
     }
-    catch (OutOfMemoryError paramInputStream)
-    {
-      for (;;)
-      {
-        LogUtils.e("FileEncryptUtils", "decryptFile OOM");
-        paramInputStream.printStackTrace();
-      }
-    }
     catch (AssertionError paramInputStream)
     {
-      for (;;)
-      {
-        LogUtils.e("FileEncryptUtils", paramInputStream.toString());
-      }
+      LogUtils.e("FileEncryptUtils", paramInputStream.toString());
     }
+    catch (OutOfMemoryError paramInputStream)
+    {
+      LogUtils.e("FileEncryptUtils", "decryptFile OOM");
+      paramInputStream.printStackTrace();
+    }
+    catch (Exception paramInputStream)
+    {
+      paramInputStream.printStackTrace();
+    }
+    return null;
   }
   
   public static void encryptByte2File(byte[] paramArrayOfByte, String paramString)
@@ -93,15 +82,14 @@ public class FileEncryptUtils
         paramString.write(arrayOfByte);
         paramString.write(paramArrayOfByte, 1024, paramArrayOfByte.length - 1024);
       }
-      for (;;)
+      else
       {
-        paramString.close();
-        return;
         writeInt(paramString, paramArrayOfByte.length);
         paramArrayOfByte = EncryptUtils.encode(paramArrayOfByte);
         writeInt(paramString, paramArrayOfByte.length);
         paramString.write(paramArrayOfByte);
       }
+      paramString.close();
       return;
     }
     catch (Exception paramArrayOfByte)
@@ -132,10 +120,10 @@ public class FileEncryptUtils
     int j = paramInputStream.read();
     int k = paramInputStream.read();
     int m = paramInputStream.read();
-    if ((i | j | k | m) < 0) {
-      throw new EOFException();
+    if ((i | j | k | m) >= 0) {
+      return (i << 24) + (j << 16) + (k << 8) + (m << 0);
     }
-    return (i << 24) + (j << 16) + (k << 8) + (m << 0);
+    throw new EOFException();
   }
   
   static void writeInt(OutputStream paramOutputStream, int paramInt)
@@ -145,7 +133,7 @@ public class FileEncryptUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.baseutils.encrypt.FileEncryptUtils
  * JD-Core Version:    0.7.0.1
  */

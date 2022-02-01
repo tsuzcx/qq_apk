@@ -11,30 +11,26 @@ class StoryAlbumResourceDownloader$2
   public void loaded(String paramString, int paramInt)
   {
     SLog.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkResource loaded code = %d ", Integer.valueOf(paramInt));
-    switch (paramInt)
-    {
-    case -1: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-    default: 
-      return;
+    if (paramInt != -1) {
+      if (paramInt != 0)
+      {
+        if (paramInt == 5) {}
+      }
+      else
+      {
+        if (this.jdField_a_of_type_Boolean) {
+          StoryAlbumResourceDownloader.a(this.jdField_a_of_type_ComTencentBizQqstoryAlbumStoryAlbumResourceDownloader);
+        }
+        SLog.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkResource download success", Integer.valueOf(paramInt));
+      }
     }
-    if (this.jdField_a_of_type_Boolean) {
-      StoryAlbumResourceDownloader.a(this.jdField_a_of_type_ComTencentBizQqstoryAlbumStoryAlbumResourceDownloader);
-    }
-    SLog.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkResource download success", Integer.valueOf(paramInt));
   }
   
   public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.StoryAlbumResourceDownloader.2
  * JD-Core Version:    0.7.0.1
  */

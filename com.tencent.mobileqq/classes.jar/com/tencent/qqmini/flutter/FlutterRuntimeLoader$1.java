@@ -19,28 +19,30 @@ final class FlutterRuntimeLoader$1
 {
   private boolean checkTissueSo(Bundle paramBundle)
   {
-    if ((TissueGlobal.tissueEnv != null) && (!TextUtils.isEmpty(TissueGlobal.tissueEnv.getNativeLibDir()))) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if ((TissueGlobal.tissueEnv != null) && (!TextUtils.isEmpty(TissueGlobal.tissueEnv.getNativeLibDir()))) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return true;
     }
-    if (paramBundle != null) {
-      try
+    if (paramBundle != null) {}
+    try
+    {
+      paramBundle = (String)paramBundle.get("tissuenativelibdir");
+      if (TissueGlobal.tissueEnv == null)
       {
-        paramBundle = (String)paramBundle.get("tissuenativelibdir");
-        if (TissueGlobal.tissueEnv == null)
-        {
-          TissueGlobal.tissueEnv = new FlutterRuntimeLoader.1.1(this, paramBundle);
-          AppLoaderFactory.g().getCommonManager().setTissueSoPath(paramBundle);
-        }
-        boolean bool = TextUtils.isEmpty(TissueGlobal.tissueEnv.getNativeLibDir());
-        if (!bool) {}
-        for (bool = true;; bool = false) {
-          return bool;
-        }
-        return false;
+        TissueGlobal.tissueEnv = new FlutterRuntimeLoader.1.1(this, paramBundle);
+        AppLoaderFactory.g().getCommonManager().setTissueSoPath(paramBundle);
       }
-      catch (Throwable paramBundle) {}
+      boolean bool = TextUtils.isEmpty(TissueGlobal.tissueEnv.getNativeLibDir());
+      return bool ^ true;
     }
+    catch (Throwable paramBundle) {}
+    return false;
+    return false;
   }
   
   public FlutterRuntimeLoader create(Context paramContext, Bundle paramBundle)
@@ -59,16 +61,18 @@ final class FlutterRuntimeLoader$1
   
   public boolean support(MiniAppInfo paramMiniAppInfo)
   {
-    if (CPUUtil.sIsX86Emulator) {}
-    while (((DeviceInfoUtil.getPerfLevel() == 3) && (!WnsConfig.getConfig("qqminiapp", "mini_app_low_level_device_flutter_enabled", false))) || (paramMiniAppInfo == null) || (!paramMiniAppInfo.isEngineTypeMiniApp()) || (!paramMiniAppInfo.supportNativeRenderMode())) {
+    if (CPUUtil.sIsX86Emulator) {
       return false;
     }
-    return true;
+    if ((DeviceInfoUtil.getPerfLevel() == 3) && (!WnsConfig.getConfig("qqminiapp", "mini_app_low_level_device_flutter_enabled", false))) {
+      return false;
+    }
+    return (paramMiniAppInfo != null) && (paramMiniAppInfo.isEngineTypeMiniApp()) && (paramMiniAppInfo.supportNativeRenderMode());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.flutter.FlutterRuntimeLoader.1
  * JD-Core Version:    0.7.0.1
  */

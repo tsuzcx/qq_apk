@@ -60,17 +60,38 @@ public class OrderDetailInfo
   
   public String toStrLine()
   {
-    return this.result + "," + this.productIdentity + "," + this.stateTag + "," + this.stateTime + "," + this.message;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.result);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.productIdentity);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.stateTag);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.stateTime);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.message);
+    return localStringBuilder.toString();
   }
   
   public String toString()
   {
-    return "result:" + this.result + ", productIdentity:" + this.productIdentity + ",stateTag:" + this.stateTag + ",stateTime:" + this.stateTime + ",message:" + this.message;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("result:");
+    localStringBuilder.append(this.result);
+    localStringBuilder.append(", productIdentity:");
+    localStringBuilder.append(this.productIdentity);
+    localStringBuilder.append(",stateTag:");
+    localStringBuilder.append(this.stateTag);
+    localStringBuilder.append(",stateTime:");
+    localStringBuilder.append(this.stateTime);
+    localStringBuilder.append(",message:");
+    localStringBuilder.append(this.message);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dualsim.common.OrderDetailInfo
  * JD-Core Version:    0.7.0.1
  */

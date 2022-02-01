@@ -31,10 +31,14 @@ final class a
   
   private void appendTask(Context paramContext, AdAppPreOrderTask paramAdAppPreOrderTask)
   {
-    if ((paramAdAppPreOrderTask != null) && (paramAdAppPreOrderTask.isValid(paramContext)) && (getTaskById(paramAdAppPreOrderTask.taskId) == null) && (this.queue != null))
+    if ((paramAdAppPreOrderTask != null) && (paramAdAppPreOrderTask.isValid(paramContext)) && (getTaskById(paramAdAppPreOrderTask.taskId) == null))
     {
-      this.queue.offer(paramAdAppPreOrderTask);
-      writeFile(AdAppPreOrderManager.INSTANCE.getContext(), this.uin, this.queue);
+      paramContext = this.queue;
+      if (paramContext != null)
+      {
+        paramContext.offer(paramAdAppPreOrderTask);
+        writeFile(AdAppPreOrderManager.INSTANCE.getContext(), this.uin, this.queue);
+      }
     }
   }
   
@@ -44,8 +48,12 @@ final class a
     while (paramConcurrentHashMap.hasNext())
     {
       AdAppPreOrderTask localAdAppPreOrderTask = (AdAppPreOrderTask)((Map.Entry)paramConcurrentHashMap.next()).getValue();
-      if ((localAdAppPreOrderTask != null) && (localAdAppPreOrderTask.isValid(paramContext)) && (getTaskById(localAdAppPreOrderTask.taskId) == null) && (this.queue != null)) {
-        this.queue.offer(localAdAppPreOrderTask);
+      if ((localAdAppPreOrderTask != null) && (localAdAppPreOrderTask.isValid(paramContext)) && (getTaskById(localAdAppPreOrderTask.taskId) == null))
+      {
+        ConcurrentLinkedQueue localConcurrentLinkedQueue = this.queue;
+        if (localConcurrentLinkedQueue != null) {
+          localConcurrentLinkedQueue.offer(localAdAppPreOrderTask);
+        }
       }
     }
     writeFile(AdAppPreOrderManager.INSTANCE.getContext(), this.uin, this.queue);
@@ -53,91 +61,102 @@ final class a
   
   private static ConcurrentLinkedQueue<AdAppPreOrderTask> prepare(ConcurrentLinkedQueue<AdAppPreOrderTask> paramConcurrentLinkedQueue)
   {
-    if ((paramConcurrentLinkedQueue == null) || (paramConcurrentLinkedQueue.isEmpty())) {
-      return paramConcurrentLinkedQueue;
-    }
-    ConcurrentLinkedQueue localConcurrentLinkedQueue = new ConcurrentLinkedQueue(paramConcurrentLinkedQueue);
-    paramConcurrentLinkedQueue = paramConcurrentLinkedQueue.iterator();
-    AdAppPreOrderTask localAdAppPreOrderTask;
-    while (paramConcurrentLinkedQueue.hasNext())
+    if (paramConcurrentLinkedQueue != null)
     {
-      localAdAppPreOrderTask = (AdAppPreOrderTask)paramConcurrentLinkedQueue.next();
-      if (localAdAppPreOrderTask == null)
-      {
-        localConcurrentLinkedQueue.remove(localAdAppPreOrderTask);
+      if (paramConcurrentLinkedQueue.isEmpty()) {
+        return paramConcurrentLinkedQueue;
       }
-      else if (localAdAppPreOrderTask.status == -1)
+      ConcurrentLinkedQueue localConcurrentLinkedQueue = new ConcurrentLinkedQueue(paramConcurrentLinkedQueue);
+      paramConcurrentLinkedQueue = paramConcurrentLinkedQueue.iterator();
+      AdAppPreOrderTask localAdAppPreOrderTask;
+      while (paramConcurrentLinkedQueue.hasNext())
       {
-        localConcurrentLinkedQueue.remove(localAdAppPreOrderTask);
-      }
-      else if (localAdAppPreOrderTask.status == 11)
-      {
-        localAdAppPreOrderTask = (AdAppPreOrderTask)localConcurrentLinkedQueue.remove();
-        if (localAdAppPreOrderTask != null) {
-          localConcurrentLinkedQueue.offer(localAdAppPreOrderTask);
+        localAdAppPreOrderTask = (AdAppPreOrderTask)paramConcurrentLinkedQueue.next();
+        if (localAdAppPreOrderTask == null)
+        {
+          localConcurrentLinkedQueue.remove(localAdAppPreOrderTask);
+        }
+        else if (localAdAppPreOrderTask.status == -1)
+        {
+          localConcurrentLinkedQueue.remove(localAdAppPreOrderTask);
+        }
+        else if (localAdAppPreOrderTask.status == 11)
+        {
+          localAdAppPreOrderTask = (AdAppPreOrderTask)localConcurrentLinkedQueue.remove();
+          if (localAdAppPreOrderTask != null) {
+            localConcurrentLinkedQueue.offer(localAdAppPreOrderTask);
+          }
         }
       }
-    }
-    paramConcurrentLinkedQueue = localConcurrentLinkedQueue.iterator();
-    while (paramConcurrentLinkedQueue.hasNext())
-    {
-      localAdAppPreOrderTask = (AdAppPreOrderTask)paramConcurrentLinkedQueue.next();
-      localAdAppPreOrderTask.isDownloadLaunched = false;
-      if ((localAdAppPreOrderTask.status == 7) || (localAdAppPreOrderTask.status == 8)) {
-        localAdAppPreOrderTask.status = 9;
+      paramConcurrentLinkedQueue = localConcurrentLinkedQueue.iterator();
+      while (paramConcurrentLinkedQueue.hasNext())
+      {
+        localAdAppPreOrderTask = (AdAppPreOrderTask)paramConcurrentLinkedQueue.next();
+        localAdAppPreOrderTask.isDownloadLaunched = false;
+        if ((localAdAppPreOrderTask.status == 7) || (localAdAppPreOrderTask.status == 8)) {
+          localAdAppPreOrderTask.status = 9;
+        }
       }
+      return localConcurrentLinkedQueue;
     }
-    return localConcurrentLinkedQueue;
+    return paramConcurrentLinkedQueue;
   }
   
   private static ConcurrentLinkedQueue<AdAppPreOrderTask> readFile(Context paramContext, String paramString)
   {
     paramString = b.fetchFileInDataDir(paramContext, d.md5(paramString, "UTF-8"));
-    if (paramString.exists()) {
+    if (paramString.exists())
+    {
       paramContext = b.read(paramString);
     }
-    for (;;)
+    else
     {
-      if (TextUtils.isEmpty(paramContext)) {
-        AdLog.e("AppPreOrderCache", "readFile cacheContent isEmpty");
-      }
-      for (;;)
+      File localFile = b.fetchFileInDataDir(paramContext, "cache");
+      if (localFile.exists())
       {
-        return null;
-        File localFile = b.fetchFileInDataDir(paramContext, "cache");
-        if (localFile.exists())
-        {
-          paramContext = b.read(localFile);
-          boolean bool = localFile.renameTo(paramString);
-          AdLog.i("AppPreOrderCache", "oldCacheFile.renameTo:" + bool);
-          break;
-          try
-          {
-            paramContext = (AdAppPreOrderTask[])[Lcom.tencent.ad.tangram.preorder.AdAppPreOrderTask.class.cast(AdJSON.toObject(new JSONArray(paramContext), [Lcom.tencent.ad.tangram.preorder.AdAppPreOrderTask.class));
-            if ((paramContext != null) && (paramContext.length > 0)) {
-              return new ConcurrentLinkedQueue(Arrays.asList(paramContext));
-            }
-          }
-          catch (Throwable paramContext)
-          {
-            for (;;)
-            {
-              AdLog.e("AppPreOrderCache", "readFile", paramContext);
-              paramContext = null;
-            }
-          }
-        }
+        paramContext = b.read(localFile);
+        boolean bool = localFile.renameTo(paramString);
+        paramString = new StringBuilder();
+        paramString.append("oldCacheFile.renameTo:");
+        paramString.append(bool);
+        AdLog.i("AppPreOrderCache", paramString.toString());
       }
+      else
+      {
+        paramContext = null;
+      }
+    }
+    if (TextUtils.isEmpty(paramContext))
+    {
+      AdLog.e("AppPreOrderCache", "readFile cacheContent isEmpty");
+      return null;
+    }
+    try
+    {
+      paramContext = (AdAppPreOrderTask[])[Lcom.tencent.ad.tangram.preorder.AdAppPreOrderTask.class.cast(AdJSON.toObject(new JSONArray(paramContext), [Lcom.tencent.ad.tangram.preorder.AdAppPreOrderTask.class));
+    }
+    catch (Throwable paramContext)
+    {
+      AdLog.e("AppPreOrderCache", "readFile", paramContext);
       paramContext = null;
     }
+    if (paramContext != null)
+    {
+      if (paramContext.length <= 0) {
+        return null;
+      }
+      return new ConcurrentLinkedQueue(Arrays.asList(paramContext));
+    }
+    return null;
   }
   
   private static void writeFile(Context paramContext, String paramString, ConcurrentLinkedQueue<AdAppPreOrderTask> paramConcurrentLinkedQueue)
   {
-    if ((paramConcurrentLinkedQueue == null) || (TextUtils.isEmpty(paramString))) {}
-    for (;;)
+    if (paramConcurrentLinkedQueue != null)
     {
-      return;
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
       paramString = b.fetchFileInDataDir(paramContext, d.md5(paramString, "UTF-8"));
       if (paramConcurrentLinkedQueue.isEmpty())
       {
@@ -149,19 +168,18 @@ final class a
       try
       {
         paramContext = (JSONArray)JSONArray.class.cast(AdJSON.fromObject(paramContext));
-        if ((paramContext == null) || (JSONObject.NULL.equals(paramContext)) || (paramContext.length() <= 0)) {
-          continue;
-        }
-        b.write(paramString, paramContext.toString());
-        return;
       }
       catch (Throwable paramContext)
       {
-        for (;;)
-        {
-          AdLog.e("AppPreOrderCache", "writeFile", paramContext);
-          paramContext = null;
+        AdLog.e("AppPreOrderCache", "writeFile", paramContext);
+        paramContext = null;
+      }
+      if ((paramContext != null) && (!JSONObject.NULL.equals(paramContext)))
+      {
+        if (paramContext.length() <= 0) {
+          return;
         }
+        b.write(paramString, paramContext.toString());
       }
     }
   }
@@ -169,35 +187,37 @@ final class a
   public boolean appendTaskWhenReceivedMsg(Context paramContext, AdAppPreOrderTask paramAdAppPreOrderTask, boolean paramBoolean)
   {
     AdLog.i("AppPreOrderCache", String.format("appendTaskWhenReceivedMsg ready:%b", new Object[] { Boolean.valueOf(paramBoolean) }));
-    if ((paramAdAppPreOrderTask == null) || (!paramAdAppPreOrderTask.isValid(paramContext))) {
-      AdLog.e("AppPreOrderCache", "appendTask failed task.isValid()!");
-    }
-    do
+    if ((paramAdAppPreOrderTask != null) && (paramAdAppPreOrderTask.isValid(paramContext)))
     {
-      return false;
-      if (paramBoolean) {
-        break;
+      if (!paramBoolean)
+      {
+        if ((!this.pendingTaskMap.containsKey(paramAdAppPreOrderTask.taskId)) || (this.pendingTaskMap.get(paramAdAppPreOrderTask.taskId) == null)) {
+          this.pendingTaskMap.put(paramAdAppPreOrderTask.taskId, paramAdAppPreOrderTask);
+        }
+        return false;
       }
-    } while ((this.pendingTaskMap.containsKey(paramAdAppPreOrderTask.taskId)) && (this.pendingTaskMap.get(paramAdAppPreOrderTask.taskId) != null));
-    this.pendingTaskMap.put(paramAdAppPreOrderTask.taskId, paramAdAppPreOrderTask);
-    return false;
-    if (getTaskById(paramAdAppPreOrderTask.taskId) != null)
-    {
-      AdLog.e("AppPreOrderCache", "appendTask failed already in queue!");
-      return false;
+      if (getTaskById(paramAdAppPreOrderTask.taskId) != null)
+      {
+        AdLog.e("AppPreOrderCache", "appendTask failed already in queue!");
+        return false;
+      }
+      appendTask(paramContext, paramAdAppPreOrderTask);
+      return true;
     }
-    appendTask(paramContext, paramAdAppPreOrderTask);
-    return true;
+    AdLog.e("AppPreOrderCache", "appendTask failed task.isValid()!");
+    return false;
   }
   
   public void clear()
   {
     this.uin = null;
-    if (this.queue != null) {
-      this.queue.clear();
+    Object localObject = this.queue;
+    if (localObject != null) {
+      ((ConcurrentLinkedQueue)localObject).clear();
     }
-    if (this.pendingTaskMap != null) {
-      this.pendingTaskMap.clear();
+    localObject = this.pendingTaskMap;
+    if (localObject != null) {
+      ((ConcurrentHashMap)localObject).clear();
     }
   }
   
@@ -208,15 +228,18 @@ final class a
   
   public AdAppPreOrderTask getTaskById(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (this.queue.isEmpty())) {
-      return null;
-    }
-    Iterator localIterator = this.queue.iterator();
-    while (localIterator.hasNext())
+    if (!TextUtils.isEmpty(paramString))
     {
-      AdAppPreOrderTask localAdAppPreOrderTask = (AdAppPreOrderTask)localIterator.next();
-      if (paramString.equals(localAdAppPreOrderTask.taskId)) {
-        return localAdAppPreOrderTask;
+      if (this.queue.isEmpty()) {
+        return null;
+      }
+      Iterator localIterator = this.queue.iterator();
+      while (localIterator.hasNext())
+      {
+        AdAppPreOrderTask localAdAppPreOrderTask = (AdAppPreOrderTask)localIterator.next();
+        if (paramString.equals(localAdAppPreOrderTask.taskId)) {
+          return localAdAppPreOrderTask;
+        }
       }
     }
     return null;
@@ -224,19 +247,20 @@ final class a
   
   public List<AdAppPreOrderTask> getTasksByUrl(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (this.queue.isEmpty())) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.queue.iterator();
-    while (localIterator.hasNext())
+    if ((!TextUtils.isEmpty(paramString)) && (!this.queue.isEmpty()))
     {
-      AdAppPreOrderTask localAdAppPreOrderTask = (AdAppPreOrderTask)localIterator.next();
-      if (paramString.equals(localAdAppPreOrderTask.content.ad_info.app_info.pkg_url)) {
-        localArrayList.add(localAdAppPreOrderTask);
+      ArrayList localArrayList = new ArrayList();
+      Iterator localIterator = this.queue.iterator();
+      while (localIterator.hasNext())
+      {
+        AdAppPreOrderTask localAdAppPreOrderTask = (AdAppPreOrderTask)localIterator.next();
+        if (paramString.equals(localAdAppPreOrderTask.content.ad_info.app_info.pkg_url)) {
+          localArrayList.add(localAdAppPreOrderTask);
+        }
       }
+      return localArrayList;
     }
-    return localArrayList;
+    return null;
   }
   
   public void init(Context paramContext, String paramString)
@@ -252,10 +276,14 @@ final class a
   
   public void removeTask(AdAppPreOrderTask paramAdAppPreOrderTask)
   {
-    if ((paramAdAppPreOrderTask != null) && (getTaskById(paramAdAppPreOrderTask.taskId) != null) && (this.queue != null))
+    if ((paramAdAppPreOrderTask != null) && (getTaskById(paramAdAppPreOrderTask.taskId) != null))
     {
-      this.queue.remove(paramAdAppPreOrderTask);
-      writeFile(AdAppPreOrderManager.INSTANCE.getContext(), this.uin, this.queue);
+      ConcurrentLinkedQueue localConcurrentLinkedQueue = this.queue;
+      if (localConcurrentLinkedQueue != null)
+      {
+        localConcurrentLinkedQueue.remove(paramAdAppPreOrderTask);
+        writeFile(AdAppPreOrderManager.INSTANCE.getContext(), this.uin, this.queue);
+      }
     }
   }
   
@@ -263,33 +291,26 @@ final class a
   {
     paramString = getTaskById(paramString);
     if (paramString == null) {
-      paramInt = 0;
+      return 0;
     }
-    int i;
-    do
-    {
-      return paramInt;
-      i = paramString.setStatus(paramInt);
-      paramInt = i;
-    } while (i <= 0);
-    writeFile(AdAppPreOrderManager.INSTANCE.getContext(), this.uin, this.queue);
-    return i;
+    paramInt = paramString.setStatus(paramInt);
+    if (paramInt > 0) {
+      writeFile(AdAppPreOrderManager.INSTANCE.getContext(), this.uin, this.queue);
+    }
+    return paramInt;
   }
   
   public int setTaskStatusAndCommit(String paramString, int paramInt1, int paramInt2)
   {
     paramString = getTaskById(paramString);
     if (paramString == null) {
-      paramInt1 = 0;
+      return 0;
     }
-    do
-    {
-      return paramInt1;
-      paramInt2 = paramString.setStatus(paramInt1, paramInt2);
-      paramInt1 = paramInt2;
-    } while (paramInt2 <= 0);
-    writeFile(AdAppPreOrderManager.INSTANCE.getContext(), this.uin, this.queue);
-    return paramInt2;
+    paramInt1 = paramString.setStatus(paramInt1, paramInt2);
+    if (paramInt1 > 0) {
+      writeFile(AdAppPreOrderManager.INSTANCE.getContext(), this.uin, this.queue);
+    }
+    return paramInt1;
   }
   
   public int setTaskStatusAndCommit(String paramString, int paramInt1, int paramInt2, int paramInt3, AdAppPreOrderTask.a[] paramArrayOfa)
@@ -310,34 +331,26 @@ final class a
   {
     paramString = getTaskById(paramString);
     if (paramString == null) {
-      paramInt = 0;
+      return 0;
     }
-    int i;
-    do
-    {
-      return paramInt;
-      i = paramString.setStatus(paramInt, parammsg_content);
-      paramInt = i;
-    } while (i <= 0);
-    writeFile(AdAppPreOrderManager.INSTANCE.getContext(), this.uin, this.queue);
-    return i;
+    paramInt = paramString.setStatus(paramInt, parammsg_content);
+    if (paramInt > 0) {
+      writeFile(AdAppPreOrderManager.INSTANCE.getContext(), this.uin, this.queue);
+    }
+    return paramInt;
   }
   
   public int setTaskStatusAndCommit(String paramString, int paramInt, boolean paramBoolean)
   {
     paramString = getTaskById(paramString);
     if (paramString == null) {
-      paramInt = 0;
+      return 0;
     }
-    int i;
-    do
-    {
-      return paramInt;
-      i = paramString.setStatus(paramInt, paramBoolean);
-      paramInt = i;
-    } while (i <= 0);
-    writeFile(AdAppPreOrderManager.INSTANCE.getContext(), this.uin, this.queue);
-    return i;
+    paramInt = paramString.setStatus(paramInt, paramBoolean);
+    if (paramInt > 0) {
+      writeFile(AdAppPreOrderManager.INSTANCE.getContext(), this.uin, this.queue);
+    }
+    return paramInt;
   }
   
   public void syncPendingTaskToCacheAndFile(Context paramContext)
@@ -351,7 +364,8 @@ final class a
   
   public void writeCurrentIntoFile(Context paramContext)
   {
-    if ((this.queue != null) && (!this.queue.isEmpty())) {
+    ConcurrentLinkedQueue localConcurrentLinkedQueue = this.queue;
+    if ((localConcurrentLinkedQueue != null) && (!localConcurrentLinkedQueue.isEmpty())) {
       writeFile(paramContext, this.uin, this.queue);
     }
   }

@@ -78,16 +78,16 @@ public abstract class ImageManagerEnv
   public static final int TASK_TYPE_PARALLEL_RENDER_TASK = 2;
   public static final int TASK_TYPE_SERIAL_RENDER_TASK = 1;
   private static volatile Context appContext;
-  static HandlerThread sHandlerThread = null;
-  private static volatile ImageManagerEnv sInstance = null;
+  static HandlerThread sHandlerThread;
+  private static volatile ImageManagerEnv sInstance;
   private static volatile ILog sLogger;
   
   public static ImageManagerEnv g()
   {
-    if (sInstance == null) {
-      throw new RuntimeException("ImageManagerEnv 没有初始化！！！");
+    if (sInstance != null) {
+      return sInstance;
     }
-    return sInstance;
+    throw new RuntimeException("ImageManagerEnv 没有初始化！！！");
   }
   
   public static Context getAppContext()
@@ -143,24 +143,22 @@ public abstract class ImageManagerEnv
   
   public BitmapReference drawableToBitmap(Drawable paramDrawable)
   {
-    BitmapReference localBitmapReference = null;
     if ((paramDrawable instanceof SpecifiedBitmapDrawable)) {
-      localBitmapReference = ((SpecifiedBitmapDrawable)paramDrawable).getBitmapRef();
+      return ((SpecifiedBitmapDrawable)paramDrawable).getBitmapRef();
     }
-    do
-    {
-      return localBitmapReference;
-      if ((paramDrawable instanceof BitmapRefDrawable)) {
-        return ((BitmapRefDrawable)paramDrawable).getBitmapRef();
-      }
-      if ((paramDrawable instanceof BitmapDrawable)) {
-        return BitmapReference.getBitmapReference(((BitmapDrawable)paramDrawable).getBitmap());
-      }
-      if ((paramDrawable instanceof ImageDrawable)) {
-        return ((ImageDrawable)paramDrawable).getBitmapRef();
-      }
-    } while (!(paramDrawable instanceof SpecifiedDrawable));
-    return BitmapUtils.drawableToBitmapByCanvas(paramDrawable);
+    if ((paramDrawable instanceof BitmapRefDrawable)) {
+      return ((BitmapRefDrawable)paramDrawable).getBitmapRef();
+    }
+    if ((paramDrawable instanceof BitmapDrawable)) {
+      return BitmapReference.getBitmapReference(((BitmapDrawable)paramDrawable).getBitmap());
+    }
+    if ((paramDrawable instanceof ImageDrawable)) {
+      return ((ImageDrawable)paramDrawable).getBitmapRef();
+    }
+    if ((paramDrawable instanceof SpecifiedDrawable)) {
+      return BitmapUtils.drawableToBitmapByCanvas(paramDrawable);
+    }
+    return null;
   }
   
   public abstract boolean enableBitmapNativeAlloc();
@@ -353,7 +351,7 @@ public abstract class ImageManagerEnv
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.ImageManagerEnv
  * JD-Core Version:    0.7.0.1
  */

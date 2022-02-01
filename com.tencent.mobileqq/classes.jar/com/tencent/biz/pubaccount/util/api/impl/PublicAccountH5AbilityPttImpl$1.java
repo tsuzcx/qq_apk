@@ -17,42 +17,41 @@ class PublicAccountH5AbilityPttImpl$1
   public void a(int paramInt1, String paramString, int paramInt2)
   {
     paramString = new JSONObject();
-    if (paramInt1 == 8) {}
-    for (;;)
-    {
+    if (paramInt1 == 8) {
       try
       {
         paramString.put("retCode", -1);
         paramString.put("msg", "fail");
         paramString.put("localId", this.a.getLocalIdForPTT());
-        if (this.a.mRuntime.a() != null) {
-          this.a.mRuntime.a().callJs(PublicAccountH5AbilityPluginImpl.voicePlayEndCallback, new String[] { paramString.toString() });
-        }
-        ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2F", "0X8005D2F", 0, 0, "1", "", "", "");
-        if (this.a.mPlayer != null) {
-          this.a.mPlayer.f();
-        }
-        this.a.mPlayer = null;
-        return;
       }
       catch (JSONException localJSONException1)
       {
         localJSONException1.printStackTrace();
-        continue;
       }
-      if (paramInt1 == 4) {
-        try
-        {
-          paramString.put("retCode", 0);
-          paramString.put("msg", HardCodeUtil.a(2131708762) + this.a.getLocalIdForPTT() + HardCodeUtil.a(2131708756));
-          paramString.put("localId", this.a.getLocalIdForPTT());
-        }
-        catch (JSONException localJSONException2)
-        {
-          localJSONException2.printStackTrace();
-        }
+    } else if (paramInt1 == 4) {
+      try
+      {
+        paramString.put("retCode", 0);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(HardCodeUtil.a(2131708768));
+        localStringBuilder.append(this.a.getLocalIdForPTT());
+        localStringBuilder.append(HardCodeUtil.a(2131708762));
+        paramString.put("msg", localStringBuilder.toString());
+        paramString.put("localId", this.a.getLocalIdForPTT());
+      }
+      catch (JSONException localJSONException2)
+      {
+        localJSONException2.printStackTrace();
       }
     }
+    if (this.a.mRuntime.a() != null) {
+      this.a.mRuntime.a().callJs(PublicAccountH5AbilityPluginImpl.voicePlayEndCallback, new String[] { paramString.toString() });
+    }
+    ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2F", "0X8005D2F", 0, 0, "1", "", "", "");
+    if (this.a.mPlayer != null) {
+      this.a.mPlayer.e();
+    }
+    this.a.mPlayer = null;
   }
   
   public void a(String paramString, int paramInt1, int paramInt2) {}
@@ -61,7 +60,7 @@ class PublicAccountH5AbilityPttImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPttImpl.1
  * JD-Core Version:    0.7.0.1
  */

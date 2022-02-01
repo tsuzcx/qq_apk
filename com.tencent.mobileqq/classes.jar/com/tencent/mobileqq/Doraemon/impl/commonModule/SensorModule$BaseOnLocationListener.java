@@ -26,21 +26,35 @@ abstract class SensorModule$BaseOnLocationListener
   
   public void onConsecutiveFailure(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DoraemonOpenAPI.sensor.location", 2, "onConsecutiveFailure: errCode=" + paramInt1 + ", failCount=" + paramInt2);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onConsecutiveFailure: errCode=");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(", failCount=");
+      ((StringBuilder)localObject).append(paramInt2);
+      QLog.d("DoraemonOpenAPI.sensor.location", 2, ((StringBuilder)localObject).toString());
     }
-    if ((paramInt2 * 2000 < this.b) || (!this.jdField_a_of_type_Boolean)) {
-      return;
+    if (paramInt2 * 2000 >= this.b)
+    {
+      if (!this.jdField_a_of_type_Boolean) {
+        return;
+      }
+      this.jdField_a_of_type_Boolean = false;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("error ");
+      localStringBuilder.append(paramInt1);
+      DoraemonUtil.a((APICallback)localObject, paramInt1, localStringBuilder.toString());
+      Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).removeOnLocationListener(this);
     }
-    this.jdField_a_of_type_Boolean = false;
-    DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, paramInt1, "error " + paramInt1);
-    Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-    ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).removeOnLocationListener(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.commonModule.SensorModule.BaseOnLocationListener
  * JD-Core Version:    0.7.0.1
  */

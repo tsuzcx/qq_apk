@@ -13,57 +13,44 @@ public class QvipSpecialSoundConfig
   public static QvipSpecialSoundConfig a(JSONObject paramJSONObject)
   {
     if (paramJSONObject == null) {
-      paramJSONObject = new QvipSpecialSoundConfig();
+      return new QvipSpecialSoundConfig();
     }
-    for (;;)
+    localQvipSpecialSoundConfig = new QvipSpecialSoundConfig();
+    try
     {
-      return paramJSONObject;
-      localQvipSpecialSoundConfig = new QvipSpecialSoundConfig();
-      try
+      paramJSONObject = new JSONArray(paramJSONObject.getString("items"));
+      if (paramJSONObject.length() >= 0)
       {
-        JSONArray localJSONArray = new JSONArray(paramJSONObject.getString("items"));
-        paramJSONObject = localQvipSpecialSoundConfig;
-        if (localJSONArray == null) {
-          continue;
-        }
-        paramJSONObject = localQvipSpecialSoundConfig;
-        if (localJSONArray.length() < 0) {
-          continue;
-        }
-        int j = localJSONArray.length();
+        int j = paramJSONObject.length();
         int i = 0;
-        for (;;)
+        while (i < j)
         {
-          paramJSONObject = localQvipSpecialSoundConfig;
-          if (i >= j) {
-            break;
-          }
-          paramJSONObject = QvipSpecialSoundConfig.SpecialSound.a(localJSONArray.getJSONObject(i));
-          localQvipSpecialSoundConfig.a.add(paramJSONObject);
+          QvipSpecialSoundConfig.SpecialSound localSpecialSound = QvipSpecialSoundConfig.SpecialSound.a(paramJSONObject.getJSONObject(i));
+          localQvipSpecialSoundConfig.a.add(localSpecialSound);
           i += 1;
         }
-        return localQvipSpecialSoundConfig;
       }
-      catch (JSONException paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        return localQvipSpecialSoundConfig;
-      }
-      catch (OutOfMemoryError paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        return localQvipSpecialSoundConfig;
-      }
-      catch (Exception paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-      }
+      return localQvipSpecialSoundConfig;
+    }
+    catch (Exception paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+      return localQvipSpecialSoundConfig;
+    }
+    catch (OutOfMemoryError paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+      return localQvipSpecialSoundConfig;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundConfig
  * JD-Core Version:    0.7.0.1
  */

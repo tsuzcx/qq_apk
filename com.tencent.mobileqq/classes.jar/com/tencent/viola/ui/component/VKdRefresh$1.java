@@ -9,27 +9,21 @@ class VKdRefresh$1
   
   public void run()
   {
-    boolean bool = true;
-    VRefreshLayout localVRefreshLayout;
     if (this.this$0.getHostView() != null)
     {
-      localVRefreshLayout = (VRefreshLayout)this.this$0.getHostView();
-      if (this.val$type != 1) {
-        break label41;
+      VRefreshLayout localVRefreshLayout = (VRefreshLayout)this.this$0.getHostView();
+      int i = this.val$type;
+      boolean bool = true;
+      if (i != 1) {
+        bool = false;
       }
-    }
-    for (;;)
-    {
       localVRefreshLayout.setStateFinish(bool, this.val$text);
-      return;
-      label41:
-      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.component.VKdRefresh.1
  * JD-Core Version:    0.7.0.1
  */

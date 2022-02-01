@@ -41,61 +41,78 @@ public class RoundedTransformation
         float f1 = paramBitmap.getWidth();
         float f2 = paramBitmap.getHeight();
         float f3 = f2 / f1;
-        int m = (int)f2;
-        int k = (int)f1;
+        int n = (int)f2;
+        int i = (int)f1;
         int j;
-        int i;
+        int m;
+        int k;
         if (f3 > this.jdField_a_of_type_Float)
         {
-          m = (int)(paramBitmap.getWidth() * this.jdField_a_of_type_Float);
-          j = (paramBitmap.getHeight() - m) / 2;
-          i = 0;
-          if (this.jdField_a_of_type_JavaUtilMap == null) {
-            break label422;
-          }
-          localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilMap.get("RT:w=" + k + "h=" + m);
-          if ((localBitmap == null) || (localBitmap.isRecycled()))
-          {
-            paramBitmap = Bitmap.createBitmap(paramBitmap, i, j, k, m);
-            localBitmap = paramBitmap;
-            if (this.jdField_a_of_type_JavaUtilMap != null)
-            {
-              this.jdField_a_of_type_JavaUtilMap.put("RT:w=" + k + "h=" + m, paramBitmap);
-              localBitmap = paramBitmap;
-            }
-            Paint localPaint = new Paint();
-            localPaint.setAntiAlias(true);
-            localPaint.setShader(new BitmapShader(localBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP));
-            if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-              break label414;
-            }
-            paramBitmap = Bitmap.createBitmap(localBitmap.getWidth(), localBitmap.getHeight(), Bitmap.Config.ARGB_8888);
-            paramBitmap.eraseColor(0);
-            new Canvas(paramBitmap).drawRoundRect(new RectF(this.b, this.b, localBitmap.getWidth() - this.b, localBitmap.getHeight() - this.b), this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, localPaint);
-            return paramBitmap;
-          }
+          j = (int)(paramBitmap.getWidth() * this.jdField_a_of_type_Float);
+          m = (paramBitmap.getHeight() - j) / 2;
+          k = 0;
+          n = j;
         }
         else
         {
-          k = (int)(paramBitmap.getHeight() / this.jdField_a_of_type_Float);
-          i = (paramBitmap.getWidth() - k) / 2;
-          j = 0;
-          continue;
+          i = (int)(paramBitmap.getHeight() / this.jdField_a_of_type_Float);
+          j = (paramBitmap.getWidth() - i) / 2;
+          m = 0;
+          k = j;
         }
-        localBitmap.eraseColor(0);
-        StoryListUtils.a(paramBitmap, localBitmap, i, j, k, m, null, false);
-        continue;
-        paramBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+        localObject1 = this.jdField_a_of_type_JavaUtilMap;
+        if (localObject1 != null)
+        {
+          localObject1 = this.jdField_a_of_type_JavaUtilMap;
+          Object localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("RT:w=");
+          ((StringBuilder)localObject2).append(i);
+          ((StringBuilder)localObject2).append("h=");
+          ((StringBuilder)localObject2).append(n);
+          localObject1 = (Bitmap)((Map)localObject1).get(((StringBuilder)localObject2).toString());
+          if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled()))
+          {
+            ((Bitmap)localObject1).eraseColor(0);
+            StoryListUtils.a(paramBitmap, (Bitmap)localObject1, k, m, i, n, null, false);
+          }
+          else
+          {
+            paramBitmap = Bitmap.createBitmap(paramBitmap, k, m, i, n);
+            localObject1 = paramBitmap;
+            if (this.jdField_a_of_type_JavaUtilMap != null)
+            {
+              localObject1 = this.jdField_a_of_type_JavaUtilMap;
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("RT:w=");
+              ((StringBuilder)localObject2).append(i);
+              ((StringBuilder)localObject2).append("h=");
+              ((StringBuilder)localObject2).append(n);
+              ((Map)localObject1).put(((StringBuilder)localObject2).toString(), paramBitmap);
+              localObject1 = paramBitmap;
+            }
+          }
+          localObject2 = new Paint();
+          ((Paint)localObject2).setAntiAlias(true);
+          ((Paint)localObject2).setShader(new BitmapShader((Bitmap)localObject1, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP));
+          if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+            paramBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+          } else {
+            paramBitmap = Bitmap.createBitmap(((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), Bitmap.Config.ARGB_8888);
+          }
+          paramBitmap.eraseColor(0);
+          new Canvas(paramBitmap).drawRoundRect(new RectF(this.b, this.b, ((Bitmap)localObject1).getWidth() - this.b, ((Bitmap)localObject1).getHeight() - this.b), this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, (Paint)localObject2);
+          return paramBitmap;
+        }
       }
       catch (Exception paramBitmap)
       {
-        SLog.e("RoundedTransformation", "occur error:" + paramBitmap);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("occur error:");
+        ((StringBuilder)localObject1).append(paramBitmap);
+        SLog.e("RoundedTransformation", ((StringBuilder)localObject1).toString());
         return null;
       }
-      label414:
-      continue;
-      label422:
-      Bitmap localBitmap = null;
+      Object localObject1 = null;
     }
   }
   
@@ -106,7 +123,7 @@ public class RoundedTransformation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.AsyncImage.RoundedTransformation
  * JD-Core Version:    0.7.0.1
  */

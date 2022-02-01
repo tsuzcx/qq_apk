@@ -65,7 +65,7 @@ public class ScanFeatureFilterView
     super(paramContext, paramAttributeSet);
     a();
     this.r = a(getContext(), 10.0F);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130845376);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130845249);
     setZOrderOnTop(true);
     this.jdField_a_of_type_AndroidViewSurfaceHolder = getHolder();
     this.jdField_a_of_type_AndroidViewSurfaceHolder.setFormat(-2);
@@ -74,43 +74,50 @@ public class ScanFeatureFilterView
   
   public static float a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    case 3: 
-    default: 
-      return 1.0F;
-    case 0: 
-      return 0.3F;
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          return 1.0F;
+        }
+        return 0.8F;
+      }
       return 0.5F;
     }
-    return 0.8F;
+    return 0.3F;
   }
   
   private float a(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
   {
-    return (float)Math.sin((float)((paramInt1 + paramInt2 * paramFloat1) * 3.141592653589793D) * paramFloat2);
+    double d1 = paramInt1 + paramFloat1 * paramInt2;
+    Double.isNaN(d1);
+    return (float)Math.sin(paramFloat2 * (float)(d1 * 3.141592653589793D));
   }
   
   public static int a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return 255;
-    case 0: 
-      return 63;
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3) {
+            return 255;
+          }
+          return 229;
+        }
+        return 191;
+      }
       return 127;
-    case 2: 
-      return 191;
     }
-    return 229;
+    return 63;
   }
   
   public static int a(Context paramContext, float paramFloat)
   {
-    return (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
+    return (int)(paramFloat * paramContext.getResources().getDisplayMetrics().density + 0.5F);
   }
   
   public static long a()
@@ -127,11 +134,13 @@ public class ScanFeatureFilterView
   {
     if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidOsHandler != null) && (getVisibility() == 0))
     {
-      if (this.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(100);
+      Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+      if (localHandler != null) {
+        localHandler.removeMessages(100);
       }
-      if (this.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(100, 30L);
+      localHandler = this.jdField_a_of_type_AndroidOsHandler;
+      if (localHandler != null) {
+        localHandler.sendEmptyMessageDelayed(100, 30L);
       }
     }
   }
@@ -141,19 +150,19 @@ public class ScanFeatureFilterView
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 215	com/tencent/tar/jni/ScanFeatureFilterView:b	()V
+    //   1: invokespecial 221	com/tencent/tar/jni/ScanFeatureFilterView:b	()V
     //   4: aload_0
     //   5: getfield 82	com/tencent/tar/jni/ScanFeatureFilterView:jdField_a_of_type_Boolean	Z
-    //   8: ifne +26 -> 34
+    //   8: ifne +299 -> 307
     //   11: aload_0
     //   12: getfield 73	com/tencent/tar/jni/ScanFeatureFilterView:jdField_a_of_type_ComTencentTarJniARScanInfo	Lcom/tencent/tar/jni/ARScanInfo;
-    //   15: ifnull +19 -> 34
+    //   15: ifnull +292 -> 307
     //   18: aload_0
-    //   19: invokevirtual 198	com/tencent/tar/jni/ScanFeatureFilterView:getVisibility	()I
+    //   19: invokevirtual 204	com/tencent/tar/jni/ScanFeatureFilterView:getVisibility	()I
     //   22: bipush 8
-    //   24: if_icmpeq +10 -> 34
+    //   24: if_icmpeq +283 -> 307
     //   27: aload_0
-    //   28: getfield 217	com/tencent/tar/jni/ScanFeatureFilterView:jdField_c_of_type_Boolean	Z
+    //   28: getfield 223	com/tencent/tar/jni/ScanFeatureFilterView:jdField_c_of_type_Boolean	Z
     //   31: ifne +4 -> 35
     //   34: return
     //   35: aconst_null
@@ -179,7 +188,7 @@ public class ScanFeatureFilterView
     //   65: astore_1
     //   66: aload_0
     //   67: getfield 139	com/tencent/tar/jni/ScanFeatureFilterView:jdField_a_of_type_AndroidViewSurfaceHolder	Landroid/view/SurfaceHolder;
-    //   70: invokeinterface 221 1 0
+    //   70: invokeinterface 227 1 0
     //   75: astore_2
     //   76: aload_2
     //   77: ifnull +29 -> 106
@@ -192,138 +201,160 @@ public class ScanFeatureFilterView
     //   90: astore_1
     //   91: aload_2
     //   92: iconst_0
-    //   93: getstatic 227	android/graphics/PorterDuff$Mode:CLEAR	Landroid/graphics/PorterDuff$Mode;
-    //   96: invokevirtual 233	android/graphics/Canvas:drawColor	(ILandroid/graphics/PorterDuff$Mode;)V
+    //   93: getstatic 233	android/graphics/PorterDuff$Mode:CLEAR	Landroid/graphics/PorterDuff$Mode;
+    //   96: invokevirtual 239	android/graphics/Canvas:drawColor	(ILandroid/graphics/PorterDuff$Mode;)V
     //   99: aload_2
     //   100: astore_1
     //   101: aload_0
     //   102: aload_2
-    //   103: invokevirtual 236	com/tencent/tar/jni/ScanFeatureFilterView:a	(Landroid/graphics/Canvas;)V
+    //   103: invokevirtual 242	com/tencent/tar/jni/ScanFeatureFilterView:a	(Landroid/graphics/Canvas;)V
     //   106: aload_2
     //   107: astore_1
     //   108: aload 6
     //   110: monitorexit
     //   111: aload_2
-    //   112: ifnull -78 -> 34
+    //   112: ifnull +139 -> 251
     //   115: aload_0
     //   116: getfield 139	com/tencent/tar/jni/ScanFeatureFilterView:jdField_a_of_type_AndroidViewSurfaceHolder	Landroid/view/SurfaceHolder;
     //   119: aload_2
-    //   120: invokeinterface 239 2 0
+    //   120: invokeinterface 245 2 0
     //   125: return
     //   126: astore_1
-    //   127: ldc 241
-    //   129: iconst_2
-    //   130: new 243	java/lang/StringBuilder
-    //   133: dup
-    //   134: invokespecial 244	java/lang/StringBuilder:<init>	()V
-    //   137: ldc 246
-    //   139: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   142: aload_1
-    //   143: invokevirtual 254	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   146: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   149: invokevirtual 257	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   152: invokestatic 262	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   155: return
-    //   156: astore_3
-    //   157: aload 6
-    //   159: monitorexit
-    //   160: aload_1
-    //   161: astore_2
-    //   162: aload_3
-    //   163: athrow
-    //   164: astore_3
-    //   165: aload_2
-    //   166: astore_1
-    //   167: ldc 241
-    //   169: iconst_2
-    //   170: new 243	java/lang/StringBuilder
-    //   173: dup
-    //   174: invokespecial 244	java/lang/StringBuilder:<init>	()V
-    //   177: ldc_w 264
-    //   180: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   183: aload_3
-    //   184: invokevirtual 265	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   187: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   190: invokevirtual 257	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   193: invokestatic 262	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   196: aload_2
-    //   197: ifnull -163 -> 34
-    //   200: aload_0
-    //   201: getfield 139	com/tencent/tar/jni/ScanFeatureFilterView:jdField_a_of_type_AndroidViewSurfaceHolder	Landroid/view/SurfaceHolder;
-    //   204: aload_2
-    //   205: invokeinterface 239 2 0
-    //   210: return
-    //   211: astore_1
-    //   212: ldc 241
-    //   214: iconst_2
-    //   215: new 243	java/lang/StringBuilder
-    //   218: dup
-    //   219: invokespecial 244	java/lang/StringBuilder:<init>	()V
-    //   222: ldc 246
-    //   224: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   227: aload_1
-    //   228: invokevirtual 254	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   231: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   234: invokevirtual 257	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   237: invokestatic 262	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   240: return
-    //   241: astore_2
-    //   242: aload_1
-    //   243: ifnull +13 -> 256
-    //   246: aload_0
-    //   247: getfield 139	com/tencent/tar/jni/ScanFeatureFilterView:jdField_a_of_type_AndroidViewSurfaceHolder	Landroid/view/SurfaceHolder;
-    //   250: aload_1
-    //   251: invokeinterface 239 2 0
-    //   256: aload_2
-    //   257: athrow
-    //   258: astore_1
-    //   259: ldc 241
-    //   261: iconst_2
-    //   262: new 243	java/lang/StringBuilder
-    //   265: dup
-    //   266: invokespecial 244	java/lang/StringBuilder:<init>	()V
-    //   269: ldc 246
-    //   271: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   274: aload_1
-    //   275: invokevirtual 254	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   278: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   281: invokevirtual 257	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   284: invokestatic 262	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   287: goto -31 -> 256
+    //   127: new 247	java/lang/StringBuilder
+    //   130: dup
+    //   131: invokespecial 248	java/lang/StringBuilder:<init>	()V
+    //   134: astore_2
+    //   135: aload_2
+    //   136: ldc 250
+    //   138: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   141: pop
+    //   142: aload_2
+    //   143: aload_1
+    //   144: invokevirtual 258	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   147: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   150: pop
+    //   151: ldc_w 260
+    //   154: iconst_2
+    //   155: aload_2
+    //   156: invokevirtual 263	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   159: invokestatic 268	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   162: return
+    //   163: astore_3
+    //   164: aload 6
+    //   166: monitorexit
+    //   167: aload_1
+    //   168: astore_2
+    //   169: aload_3
+    //   170: athrow
+    //   171: astore_1
+    //   172: goto +80 -> 252
+    //   175: astore_3
+    //   176: aload_1
+    //   177: astore_2
+    //   178: new 247	java/lang/StringBuilder
+    //   181: dup
+    //   182: invokespecial 248	java/lang/StringBuilder:<init>	()V
+    //   185: astore 4
+    //   187: aload_1
+    //   188: astore_2
+    //   189: aload 4
+    //   191: ldc_w 270
+    //   194: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   197: pop
+    //   198: aload_1
+    //   199: astore_2
+    //   200: aload 4
+    //   202: aload_3
+    //   203: invokevirtual 271	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   206: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   209: pop
+    //   210: aload_1
+    //   211: astore_2
+    //   212: ldc_w 260
+    //   215: iconst_2
+    //   216: aload 4
+    //   218: invokevirtual 263	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   221: invokestatic 268	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   224: aload_1
+    //   225: ifnull +26 -> 251
+    //   228: aload_0
+    //   229: getfield 139	com/tencent/tar/jni/ScanFeatureFilterView:jdField_a_of_type_AndroidViewSurfaceHolder	Landroid/view/SurfaceHolder;
+    //   232: aload_1
+    //   233: invokeinterface 245 2 0
+    //   238: return
+    //   239: astore_1
+    //   240: new 247	java/lang/StringBuilder
+    //   243: dup
+    //   244: invokespecial 248	java/lang/StringBuilder:<init>	()V
+    //   247: astore_2
+    //   248: goto -113 -> 135
+    //   251: return
+    //   252: aload_2
+    //   253: ifnull +52 -> 305
+    //   256: aload_0
+    //   257: getfield 139	com/tencent/tar/jni/ScanFeatureFilterView:jdField_a_of_type_AndroidViewSurfaceHolder	Landroid/view/SurfaceHolder;
+    //   260: aload_2
+    //   261: invokeinterface 245 2 0
+    //   266: goto +39 -> 305
+    //   269: astore_2
+    //   270: new 247	java/lang/StringBuilder
+    //   273: dup
+    //   274: invokespecial 248	java/lang/StringBuilder:<init>	()V
+    //   277: astore_3
+    //   278: aload_3
+    //   279: ldc 250
+    //   281: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   284: pop
+    //   285: aload_3
+    //   286: aload_2
+    //   287: invokevirtual 258	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   290: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   293: pop
+    //   294: ldc_w 260
+    //   297: iconst_2
+    //   298: aload_3
+    //   299: invokevirtual 263	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   302: invokestatic 268	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   305: aload_1
+    //   306: athrow
+    //   307: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	290	0	this	ScanFeatureFilterView
+    //   0	308	0	this	ScanFeatureFilterView
     //   48	60	1	localObject1	Object
-    //   126	35	1	localThrowable1	Throwable
-    //   166	1	1	localObject2	Object
-    //   211	40	1	localThrowable2	Throwable
-    //   258	17	1	localThrowable3	Throwable
-    //   45	160	2	localObject3	Object
-    //   241	16	2	localObject4	Object
-    //   42	23	3	localObject5	Object
-    //   156	7	3	localObject6	Object
-    //   164	20	3	localException	Exception
-    //   36	20	4	localObject7	Object
-    //   39	20	5	localObject8	Object
-    //   53	105	6	localSurfaceHolder	SurfaceHolder
+    //   126	42	1	localThrowable1	Throwable
+    //   171	62	1	localCanvas	Canvas
+    //   239	67	1	localThrowable2	Throwable
+    //   45	216	2	localObject2	Object
+    //   269	18	2	localThrowable3	Throwable
+    //   42	23	3	localObject3	Object
+    //   163	7	3	localObject4	Object
+    //   175	28	3	localException	Exception
+    //   277	22	3	localStringBuilder1	StringBuilder
+    //   36	181	4	localStringBuilder2	StringBuilder
+    //   39	20	5	localObject5	Object
+    //   53	112	6	localSurfaceHolder	SurfaceHolder
     // Exception table:
     //   from	to	target	type
     //   115	125	126	java/lang/Throwable
-    //   66	76	156	finally
-    //   82	89	156	finally
-    //   91	99	156	finally
-    //   101	106	156	finally
-    //   108	111	156	finally
-    //   157	160	156	finally
-    //   49	55	164	java/lang/Exception
-    //   61	64	164	java/lang/Exception
-    //   162	164	164	java/lang/Exception
-    //   200	210	211	java/lang/Throwable
-    //   49	55	241	finally
-    //   61	64	241	finally
-    //   162	164	241	finally
-    //   167	196	241	finally
-    //   246	256	258	java/lang/Throwable
+    //   66	76	163	finally
+    //   82	89	163	finally
+    //   91	99	163	finally
+    //   101	106	163	finally
+    //   108	111	163	finally
+    //   164	167	163	finally
+    //   49	55	171	finally
+    //   61	64	171	finally
+    //   169	171	171	finally
+    //   178	187	171	finally
+    //   189	198	171	finally
+    //   200	210	171	finally
+    //   212	224	171	finally
+    //   49	55	175	java/lang/Exception
+    //   61	64	175	java/lang/Exception
+    //   169	171	175	java/lang/Exception
+    //   228	238	239	java/lang/Throwable
+    //   256	266	269	java/lang/Throwable
   }
   
   protected void a()
@@ -334,163 +365,174 @@ public class ScanFeatureFilterView
   
   protected void a(Canvas paramCanvas)
   {
-    if ((!this.jdField_a_of_type_Boolean) && (this.l == this.j) && (this.jdField_a_of_type_ComTencentTarJniARScanInfo != null) && (!this.jdField_a_of_type_ComTencentTarJniARScanInfo.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentTarJniARScanInfo.jdField_a_of_type_ComTencentTarJniARScanInfo$QBMatrix != null))
+    if ((!this.jdField_a_of_type_Boolean) && (this.l == this.j))
     {
-      int i2;
-      Object localObject;
-      if (!this.jdField_b_of_type_Boolean)
+      Object localObject = this.jdField_a_of_type_ComTencentTarJniARScanInfo;
+      if ((localObject != null) && (!((ARScanInfo)localObject).jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentTarJniARScanInfo.jdField_a_of_type_ComTencentTarJniARScanInfo$QBMatrix != null))
       {
-        i1 = 0;
-        while (i1 < this.p)
+        int i2;
+        int i4;
+        if (!this.jdField_b_of_type_Boolean)
         {
-          i2 = 0;
-          while (i2 < this.q)
+          i1 = 0;
+          while (i1 < this.p)
           {
-            if (this.jdField_a_of_type_Array2dOfComTencentTarJniScanFeatureFilterView$FeaturePoint[i1][i2] == null) {
-              this.jdField_a_of_type_Array2dOfComTencentTarJniScanFeatureFilterView$FeaturePoint[i1][i2] = new ScanFeatureFilterView.FeaturePoint();
-            }
-            i3 = b(4);
-            this.jdField_a_of_type_Array2dOfComTencentTarJniScanFeatureFilterView$FeaturePoint[i1][i2].jdField_b_of_type_Float = a(i3);
-            this.jdField_a_of_type_Array2dOfComTencentTarJniScanFeatureFilterView$FeaturePoint[i1][i2].jdField_a_of_type_Float = a(i3);
-            i2 += 1;
-          }
-          i1 += 1;
-        }
-        localObject = this.jdField_a_of_type_ComTencentTarJniARScanInfo.jdField_a_of_type_ComTencentTarJniARScanInfo$QBMatrix;
-        this.jdField_a_of_type_Long = a();
-        i1 = 0;
-        while (i1 < ((ARScanInfo.QBMatrix)localObject).a())
-        {
-          i3 = ((ARScanInfo.QBMatrix)localObject).a(i1, 0);
-          i2 = ((ARScanInfo.QBMatrix)localObject).a(i1, 1);
-          if ((i3 > this.r) && (i2 > this.r))
-          {
-            i3 /= this.r;
-            i2 /= this.r;
-            if ((i3 < this.q) && (i2 < this.p))
+            i2 = 0;
+            while (i2 < this.q)
             {
-              ScanFeatureFilterView.FeaturePoint localFeaturePoint = this.jdField_a_of_type_Array2dOfComTencentTarJniScanFeatureFilterView$FeaturePoint[i2][i3];
-              localFeaturePoint.jdField_b_of_type_Boolean = true;
-              localFeaturePoint.jdField_b_of_type_Long = (b(10) * 50);
-              localFeaturePoint.jdField_a_of_type_Long = (this.jdField_a_of_type_Long + localFeaturePoint.jdField_b_of_type_Long);
-              localFeaturePoint.jdField_a_of_type_Int = (i3 * this.r);
-              localFeaturePoint.jdField_b_of_type_Int = (this.r * i2);
-            }
-          }
-          i1 += 1;
-        }
-        this.jdField_b_of_type_Boolean = true;
-      }
-      int i1 = 0;
-      this.jdField_b_of_type_Long = (a() - this.jdField_a_of_type_Long);
-      int i3 = 0;
-      int i4;
-      while (i3 < this.p)
-      {
-        i4 = 0;
-        if (i4 < this.q)
-        {
-          localObject = this.jdField_a_of_type_Array2dOfComTencentTarJniScanFeatureFilterView$FeaturePoint[i3][i4];
-          i2 = i1;
-          if (localObject != null) {
-            if (((ScanFeatureFilterView.FeaturePoint)localObject).jdField_b_of_type_Boolean) {}
-          }
-          for (;;)
-          {
-            i4 += 1;
-            break;
-            if (this.jdField_b_of_type_Long < ((ScanFeatureFilterView.FeaturePoint)localObject).jdField_b_of_type_Long)
-            {
-              i1 += 1;
-            }
-            else
-            {
-              float f3 = a(0, 1, ((ScanFeatureFilterView.FeaturePoint)localObject).a(this.o, this.jdField_b_of_type_Long - ((ScanFeatureFilterView.FeaturePoint)localObject).jdField_b_of_type_Long), 1.0F);
-              float f2 = 255.0F * f3;
-              float f1 = f2;
-              if (f2 > 255.0F) {
-                f1 = 255.0F;
+              localObject = this.jdField_a_of_type_Array2dOfComTencentTarJniScanFeatureFilterView$FeaturePoint;
+              if (localObject[i1][i2] == null) {
+                localObject[i1][i2] = new ScanFeatureFilterView.FeaturePoint();
               }
-              f2 = f3;
-              if (f3 > 1.0F) {
-                f2 = 1.0F;
-              }
-              ((ScanFeatureFilterView.FeaturePoint)localObject).jdField_b_of_type_Float = f1;
-              ((ScanFeatureFilterView.FeaturePoint)localObject).jdField_a_of_type_Float = f2;
-              if (((ScanFeatureFilterView.FeaturePoint)localObject).jdField_a_of_type_Boolean)
+              i3 = b(4);
+              this.jdField_a_of_type_Array2dOfComTencentTarJniScanFeatureFilterView$FeaturePoint[i1][i2].jdField_b_of_type_Float = a(i3);
+              this.jdField_a_of_type_Array2dOfComTencentTarJniScanFeatureFilterView$FeaturePoint[i1][i2].jdField_a_of_type_Float = a(i3);
+              i2 += 1;
+            }
+            i1 += 1;
+          }
+          localObject = this.jdField_a_of_type_ComTencentTarJniARScanInfo.jdField_a_of_type_ComTencentTarJniARScanInfo$QBMatrix;
+          this.jdField_a_of_type_Long = a();
+          i1 = 0;
+          while (i1 < ((ARScanInfo.QBMatrix)localObject).a())
+          {
+            i2 = ((ARScanInfo.QBMatrix)localObject).a(i1, 0);
+            i3 = ((ARScanInfo.QBMatrix)localObject).a(i1, 1);
+            i4 = this.r;
+            if ((i2 > i4) && (i3 > i4))
+            {
+              i2 /= i4;
+              i3 /= i4;
+              if ((i2 < this.q) && (i3 < this.p))
               {
-                ((ScanFeatureFilterView.FeaturePoint)localObject).a();
+                ScanFeatureFilterView.FeaturePoint localFeaturePoint = this.jdField_a_of_type_Array2dOfComTencentTarJniScanFeatureFilterView$FeaturePoint[i3][i2];
+                localFeaturePoint.jdField_b_of_type_Boolean = true;
+                localFeaturePoint.jdField_b_of_type_Long = (b(10) * 50);
+                localFeaturePoint.jdField_a_of_type_Long = (this.jdField_a_of_type_Long + localFeaturePoint.jdField_b_of_type_Long);
+                i4 = this.r;
+                localFeaturePoint.jdField_a_of_type_Int = (i2 * i4);
+                localFeaturePoint.jdField_b_of_type_Int = (i3 * i4);
+              }
+            }
+            i1 += 1;
+          }
+          this.jdField_b_of_type_Boolean = true;
+        }
+        this.jdField_b_of_type_Long = (a() - this.jdField_a_of_type_Long);
+        int i3 = 0;
+        int i1 = 0;
+        while (i3 < this.p)
+        {
+          i4 = 0;
+          while (i4 < this.q)
+          {
+            localObject = this.jdField_a_of_type_Array2dOfComTencentTarJniScanFeatureFilterView$FeaturePoint[i3][i4];
+            i2 = i1;
+            if (localObject != null) {
+              if (!((ScanFeatureFilterView.FeaturePoint)localObject).jdField_b_of_type_Boolean)
+              {
+                i2 = i1;
               }
               else
               {
-                i1 += 1;
-                this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)f1);
-                i2 = i1;
-                if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-                {
-                  i2 = i1;
-                  if (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())
-                  {
-                    int i7 = this.r * i4;
-                    i2 = this.r * i3;
-                    localObject = this.jdField_a_of_type_AndroidGraphicsRect;
-                    int i5 = (int)(i7 - this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * f2 / 2.0F);
-                    int i6 = (int)(i2 - this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * f2 / 2.0F);
-                    i7 = (int)(i7 + this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * f2 / 2.0F);
-                    f1 = i2;
-                    ((Rect)localObject).set(i5, i6, i7, (int)(f2 * this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2.0F + f1));
-                    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-                    i2 = i1;
-                  }
+                if (this.jdField_b_of_type_Long >= ((ScanFeatureFilterView.FeaturePoint)localObject).jdField_b_of_type_Long) {
+                  break label460;
                 }
-                i1 = i2;
+                i2 = i1 + 1;
               }
             }
-          }
-        }
-        i3 += 1;
-      }
-      if (i1 <= 16)
-      {
-        i1 = 0;
-        while (i1 < this.p)
-        {
-          i2 = 0;
-          while (i2 < this.q)
-          {
-            if (this.jdField_a_of_type_Array2dOfComTencentTarJniScanFeatureFilterView$FeaturePoint[i1][i2] == null) {
-              this.jdField_a_of_type_Array2dOfComTencentTarJniScanFeatureFilterView$FeaturePoint[i1][i2] = new ScanFeatureFilterView.FeaturePoint();
-            }
-            this.jdField_a_of_type_Array2dOfComTencentTarJniScanFeatureFilterView$FeaturePoint[i1][i2].a();
-            i2 += 1;
-          }
-          i1 += 1;
-        }
-        this.jdField_a_of_type_Long = a();
-        paramCanvas = this.jdField_a_of_type_ComTencentTarJniARScanInfo.jdField_a_of_type_ComTencentTarJniARScanInfo$QBMatrix;
-        i1 = 0;
-        while (i1 < paramCanvas.a())
-        {
-          i2 = paramCanvas.a(i1, 0);
-          i3 = paramCanvas.a(i1, 1);
-          if ((i2 > this.r) && (i3 > this.r))
-          {
-            i2 /= this.r;
-            i3 /= this.r;
-            if ((i2 < this.q) && (i3 < this.p))
+            label460:
+            float f1;
+            do
             {
-              localObject = this.jdField_a_of_type_Array2dOfComTencentTarJniScanFeatureFilterView$FeaturePoint[i3][i2];
-              i4 = b(4);
-              ((ScanFeatureFilterView.FeaturePoint)localObject).jdField_b_of_type_Float = a(i4);
-              ((ScanFeatureFilterView.FeaturePoint)localObject).jdField_a_of_type_Float = a(i4);
-              ((ScanFeatureFilterView.FeaturePoint)localObject).jdField_b_of_type_Long = (b(10) * 50);
-              ((ScanFeatureFilterView.FeaturePoint)localObject).jdField_a_of_type_Long = (this.jdField_a_of_type_Long + ((ScanFeatureFilterView.FeaturePoint)localObject).jdField_b_of_type_Long);
-              ((ScanFeatureFilterView.FeaturePoint)localObject).jdField_a_of_type_Int = (i2 * this.r);
-              ((ScanFeatureFilterView.FeaturePoint)localObject).jdField_b_of_type_Int = (this.r * i3);
-              ((ScanFeatureFilterView.FeaturePoint)localObject).jdField_b_of_type_Boolean = true;
-            }
+              do
+              {
+                for (;;)
+                {
+                  i1 = i2;
+                  break label713;
+                  f3 = a(0, 1, ((ScanFeatureFilterView.FeaturePoint)localObject).a(this.o, this.jdField_b_of_type_Long - ((ScanFeatureFilterView.FeaturePoint)localObject).jdField_b_of_type_Long), 1.0F);
+                  f2 = 255.0F;
+                  f1 = f3 * 255.0F;
+                  if (f1 <= 255.0F) {
+                    f2 = f1;
+                  }
+                  f1 = f3;
+                  if (f3 > 1.0F) {
+                    f1 = 1.0F;
+                  }
+                  ((ScanFeatureFilterView.FeaturePoint)localObject).jdField_b_of_type_Float = f2;
+                  ((ScanFeatureFilterView.FeaturePoint)localObject).jdField_a_of_type_Float = f1;
+                  if (!((ScanFeatureFilterView.FeaturePoint)localObject).jdField_a_of_type_Boolean) {
+                    break;
+                  }
+                  ((ScanFeatureFilterView.FeaturePoint)localObject).a();
+                  i2 = i1;
+                }
+                i1 += 1;
+                this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)f2);
+                localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+                i2 = i1;
+              } while (localObject == null);
+              i2 = i1;
+            } while (((Bitmap)localObject).isRecycled());
+            i2 = this.r;
+            localObject = this.jdField_a_of_type_AndroidGraphicsRect;
+            float f2 = i4 * i2;
+            int i5 = (int)(f2 - this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * f1 / 2.0F);
+            float f3 = i2 * i3;
+            ((Rect)localObject).set(i5, (int)(f3 - this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * f1 / 2.0F), (int)(f2 + this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * f1 / 2.0F), (int)(f3 + this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * f1 / 2.0F));
+            paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+            label713:
+            i4 += 1;
           }
-          i1 += 1;
+          i3 += 1;
+        }
+        if (i1 <= 16)
+        {
+          i1 = 0;
+          while (i1 < this.p)
+          {
+            i2 = 0;
+            while (i2 < this.q)
+            {
+              paramCanvas = this.jdField_a_of_type_Array2dOfComTencentTarJniScanFeatureFilterView$FeaturePoint;
+              if (paramCanvas[i1][i2] == null) {
+                paramCanvas[i1][i2] = new ScanFeatureFilterView.FeaturePoint();
+              }
+              this.jdField_a_of_type_Array2dOfComTencentTarJniScanFeatureFilterView$FeaturePoint[i1][i2].a();
+              i2 += 1;
+            }
+            i1 += 1;
+          }
+          this.jdField_a_of_type_Long = a();
+          paramCanvas = this.jdField_a_of_type_ComTencentTarJniARScanInfo.jdField_a_of_type_ComTencentTarJniARScanInfo$QBMatrix;
+          i1 = 0;
+          while (i1 < paramCanvas.a())
+          {
+            i2 = paramCanvas.a(i1, 0);
+            i3 = paramCanvas.a(i1, 1);
+            i4 = this.r;
+            if ((i2 > i4) && (i3 > i4))
+            {
+              i2 /= i4;
+              i3 /= i4;
+              if ((i2 < this.q) && (i3 < this.p))
+              {
+                localObject = this.jdField_a_of_type_Array2dOfComTencentTarJniScanFeatureFilterView$FeaturePoint[i3][i2];
+                i4 = b(4);
+                ((ScanFeatureFilterView.FeaturePoint)localObject).jdField_b_of_type_Float = a(i4);
+                ((ScanFeatureFilterView.FeaturePoint)localObject).jdField_a_of_type_Float = a(i4);
+                ((ScanFeatureFilterView.FeaturePoint)localObject).jdField_b_of_type_Long = (b(10) * 50);
+                ((ScanFeatureFilterView.FeaturePoint)localObject).jdField_a_of_type_Long = (this.jdField_a_of_type_Long + ((ScanFeatureFilterView.FeaturePoint)localObject).jdField_b_of_type_Long);
+                i4 = this.r;
+                ((ScanFeatureFilterView.FeaturePoint)localObject).jdField_a_of_type_Int = (i2 * i4);
+                ((ScanFeatureFilterView.FeaturePoint)localObject).jdField_b_of_type_Int = (i3 * i4);
+                ((ScanFeatureFilterView.FeaturePoint)localObject).jdField_b_of_type_Boolean = true;
+              }
+            }
+            i1 += 1;
+          }
         }
       }
     }
@@ -498,86 +540,96 @@ public class ScanFeatureFilterView
   
   public void a(Object paramObject)
   {
-    if ((paramObject == null) || (this.jdField_a_of_type_Boolean))
+    if ((paramObject != null) && (!this.jdField_a_of_type_Boolean))
     {
-      this.l = this.i;
-      return;
-    }
-    try
-    {
-      this.jdField_a_of_type_ComTencentTarJniARScanInfo = ((ARScanInfo)paramObject);
+      try
+      {
+        this.jdField_a_of_type_ComTencentTarJniARScanInfo = ((ARScanInfo)paramObject);
+      }
+      catch (Exception paramObject)
+      {
+        paramObject.printStackTrace();
+      }
       this.l = this.j;
       a(true);
       return;
     }
-    catch (Exception paramObject)
-    {
-      for (;;)
-      {
-        paramObject.printStackTrace();
-      }
-    }
+    this.l = this.i;
   }
   
   void a(boolean paramBoolean)
   {
-    if ((!paramBoolean) && (this.jdField_a_of_type_AndroidOsHandler != null)) {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(100);
+    Handler localHandler;
+    if (!paramBoolean)
+    {
+      localHandler = this.jdField_a_of_type_AndroidOsHandler;
+      if (localHandler != null) {
+        localHandler.removeMessages(100);
+      }
     }
-    if ((paramBoolean) && (this.jdField_a_of_type_AndroidOsHandler != null) && (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(100))) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(100);
+    if (paramBoolean)
+    {
+      localHandler = this.jdField_a_of_type_AndroidOsHandler;
+      if ((localHandler != null) && (!localHandler.hasMessages(100))) {
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(100);
+      }
     }
   }
   
   public void a(int[] paramArrayOfInt, ArrayList<Integer> paramArrayList, int paramInt1, int paramInt2)
   {
-    boolean bool = false;
-    if ((this.jdField_a_of_type_Int == 0) || (this.jdField_b_of_type_Int == 0)) {
-      return;
-    }
-    ArrayList localArrayList = new ArrayList(paramArrayList.size() / 2);
-    int i1 = this.jdField_a_of_type_Int / paramInt2;
-    i1 = this.jdField_b_of_type_Int / paramInt1;
-    i1 = 0;
-    while (i1 < paramArrayList.size() / 2)
+    if (this.jdField_a_of_type_Int != 0)
     {
-      float f1 = ((Integer)paramArrayList.get(i1 * 2)).intValue();
-      float f2 = ((Integer)paramArrayList.get(i1 * 2 + 1)).intValue();
-      float f3 = this.jdField_a_of_type_Int / paramInt1;
-      float f4 = this.jdField_b_of_type_Int / paramInt2;
-      localArrayList.add(new Point((int)(f1 * f3), (int)(f2 * f4)));
-      i1 += 1;
+      if (this.jdField_b_of_type_Int == 0) {
+        return;
+      }
+      ArrayList localArrayList = new ArrayList(paramArrayList.size() / 2);
+      int i1 = this.jdField_a_of_type_Int / paramInt2;
+      i1 = this.jdField_b_of_type_Int / paramInt1;
+      boolean bool = false;
+      i1 = 0;
+      while (i1 < paramArrayList.size() / 2)
+      {
+        int i2 = i1 * 2;
+        float f1 = ((Integer)paramArrayList.get(i2)).intValue();
+        float f2 = ((Integer)paramArrayList.get(i2 + 1)).intValue();
+        float f3 = this.jdField_a_of_type_Int / paramInt1;
+        float f4 = this.jdField_b_of_type_Int / paramInt2;
+        localArrayList.add(new Point((int)(f1 * f3), (int)(f2 * f4)));
+        i1 += 1;
+      }
+      if (paramArrayOfInt[0] == 0) {
+        bool = true;
+      }
+      a(ARScanInfo.a(bool, localArrayList));
     }
-    if (paramArrayOfInt[0] == 0) {
-      bool = true;
-    }
-    a(ARScanInfo.a(bool, localArrayList));
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    if (paramMessage.what == 100) {}
+    try
     {
-    }
-    for (;;)
-    {
+      c();
+      label16:
       return true;
-      try
-      {
-        c();
-      }
-      catch (Throwable paramMessage) {}
+    }
+    catch (Throwable paramMessage)
+    {
+      break label16;
     }
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     QLog.d("ScanFeatureFilterView", 2, "onSizeChanged ");
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_a_of_type_Int = getMeasuredWidth();
     this.jdField_b_of_type_Int = getMeasuredHeight();
-    this.q = (this.jdField_a_of_type_Int / this.r);
-    this.p = (this.jdField_b_of_type_Int / this.r);
+    paramInt1 = this.jdField_a_of_type_Int;
+    paramInt2 = this.r;
+    this.q = (paramInt1 / paramInt2);
+    this.p = (this.jdField_b_of_type_Int / paramInt2);
     this.jdField_a_of_type_Array2dOfComTencentTarJniScanFeatureFilterView$FeaturePoint = ((ScanFeatureFilterView.FeaturePoint[][])Array.newInstance(ScanFeatureFilterView.FeaturePoint.class, new int[] { this.p, this.q }));
   }
   
@@ -606,13 +658,16 @@ public class ScanFeatureFilterView
     }
     catch (Exception paramSurfaceHolder)
     {
-      QLog.e("ScanFeatureFilterView", 2, "surfaceDestroyed error = " + paramSurfaceHolder.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("surfaceDestroyed error = ");
+      localStringBuilder.append(paramSurfaceHolder.getMessage());
+      QLog.e("ScanFeatureFilterView", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tar.jni.ScanFeatureFilterView
  * JD-Core Version:    0.7.0.1
  */

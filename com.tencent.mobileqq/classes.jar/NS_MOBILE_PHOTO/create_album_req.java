@@ -49,22 +49,25 @@ public final class create_album_req
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.album, 0);
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 1);
+    Object localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 1);
     }
-    if (this.itemid != null) {
-      paramJceOutputStream.write(this.itemid, 2);
+    localObject = this.itemid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.action, 3);
-    if (this.invite_key != null) {
-      paramJceOutputStream.write(this.invite_key, 4);
+    localObject = this.invite_key;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.is_from_public_url, 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.create_album_req
  * JD-Core Version:    0.7.0.1
  */

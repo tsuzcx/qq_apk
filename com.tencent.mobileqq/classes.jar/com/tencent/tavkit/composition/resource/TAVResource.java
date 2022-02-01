@@ -77,7 +77,15 @@ public abstract class TAVResource
   
   public String toString()
   {
-    return "TAVResource{durationUs=" + this.duration.getTimeUs() + ", sourceTimeRange=" + this.sourceTimeRange.toSimpleString() + ", scaledDurationUs=" + this.scaledDuration.getTimeUs() + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TAVResource{durationUs=");
+    localStringBuilder.append(this.duration.getTimeUs());
+    localStringBuilder.append(", sourceTimeRange=");
+    localStringBuilder.append(this.sourceTimeRange.toSimpleString());
+    localStringBuilder.append(", scaledDurationUs=");
+    localStringBuilder.append(this.scaledDuration.getTimeUs());
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   @Nullable
@@ -97,7 +105,7 @@ public abstract class TAVResource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavkit.composition.resource.TAVResource
  * JD-Core Version:    0.7.0.1
  */

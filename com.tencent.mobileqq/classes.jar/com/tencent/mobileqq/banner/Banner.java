@@ -28,13 +28,21 @@ public class Banner
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer(20);
-    localStringBuffer.append("[").append(this.jdField_a_of_type_Int).append(",").append(this.b).append(",").append(this.jdField_a_of_type_Boolean).append(",").append(this.jdField_a_of_type_AndroidViewView).append("]");
+    localStringBuffer.append("[");
+    localStringBuffer.append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(",");
+    localStringBuffer.append(this.b);
+    localStringBuffer.append(",");
+    localStringBuffer.append(this.jdField_a_of_type_Boolean);
+    localStringBuffer.append(",");
+    localStringBuffer.append(this.jdField_a_of_type_AndroidViewView);
+    localStringBuffer.append("]");
     return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.banner.Banner
  * JD-Core Version:    0.7.0.1
  */

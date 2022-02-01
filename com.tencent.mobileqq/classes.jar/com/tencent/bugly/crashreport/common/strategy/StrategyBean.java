@@ -15,19 +15,19 @@ public class StrategyBean
   public static String c = "https://android.rqd.qq.com/analytics/hsync";
   public long d = -1L;
   public long e = -1L;
-  public boolean f = true;
-  public boolean g = true;
-  public boolean h = true;
-  public boolean i = true;
-  public boolean j = false;
-  public boolean k = true;
-  public boolean l = true;
-  public boolean m = true;
-  public boolean n = true;
+  public boolean f;
+  public boolean g;
+  public boolean h;
+  public boolean i;
+  public boolean j;
+  public boolean k;
+  public boolean l;
+  public boolean m;
+  public boolean n;
   public long o;
-  public long p = 30000L;
-  public String q = b;
-  public String r = c;
+  public long p;
+  public String q;
+  public String r;
   public String s;
   public Map<String, String> t;
   public int u;
@@ -36,124 +36,147 @@ public class StrategyBean
   
   public StrategyBean()
   {
+    this.f = true;
+    this.g = true;
+    this.h = true;
+    this.i = true;
+    this.j = false;
+    this.k = true;
+    this.l = true;
+    this.m = true;
+    this.n = true;
+    this.p = 30000L;
+    this.q = b;
+    this.r = c;
     Object localObject = a;
     this.u = 10;
     this.v = 300000L;
     this.w = -1L;
     this.e = System.currentTimeMillis();
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("S(@L@L").append("@)");
+    ((StringBuilder)localObject).append("S(@L@L");
+    ((StringBuilder)localObject).append("@)");
     ((StringBuilder)localObject).toString();
     ((StringBuilder)localObject).setLength(0);
-    ((StringBuilder)localObject).append("*^@K#K").append("@!");
+    ((StringBuilder)localObject).append("*^@K#K");
+    ((StringBuilder)localObject).append("@!");
     this.s = ((StringBuilder)localObject).toString();
   }
   
   public StrategyBean(Parcel paramParcel)
   {
+    boolean bool2 = true;
+    this.f = true;
+    this.g = true;
+    this.h = true;
+    this.i = true;
+    this.j = false;
+    this.k = true;
+    this.l = true;
+    this.m = true;
+    this.n = true;
+    this.p = 30000L;
+    this.q = b;
+    this.r = c;
     Object localObject = a;
     this.u = 10;
     this.v = 300000L;
     this.w = -1L;
-    try
+    for (;;)
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("S(@L@L").append("@)");
-      ((StringBuilder)localObject).toString();
-      this.e = paramParcel.readLong();
-      if (paramParcel.readByte() == 1)
+      try
       {
-        bool1 = true;
-        this.f = bool1;
-        if (paramParcel.readByte() != 1) {
-          break label360;
-        }
-        bool1 = true;
-        label172:
-        this.g = bool1;
-        if (paramParcel.readByte() != 1) {
-          break label365;
-        }
-        bool1 = true;
-        label187:
-        this.h = bool1;
-        this.q = paramParcel.readString();
-        this.r = paramParcel.readString();
-        this.s = paramParcel.readString();
-        this.t = z.b(paramParcel);
-        if (paramParcel.readByte() != 1) {
-          break label370;
-        }
-        bool1 = true;
-        label234:
-        this.i = bool1;
-        if (paramParcel.readByte() != 1) {
-          break label375;
-        }
-        bool1 = true;
-        label249:
-        this.j = bool1;
-        if (paramParcel.readByte() != 1) {
-          break label380;
-        }
-        bool1 = true;
-        label264:
-        this.m = bool1;
-        if (paramParcel.readByte() != 1) {
-          break label385;
-        }
-        bool1 = true;
-        label279:
-        this.n = bool1;
-        this.p = paramParcel.readLong();
-        if (paramParcel.readByte() != 1) {
-          break label390;
-        }
-        bool1 = true;
-        label302:
-        this.k = bool1;
-        if (paramParcel.readByte() != 1) {
-          break label395;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("S(@L@L");
+        ((StringBuilder)localObject).append("@)");
+        ((StringBuilder)localObject).toString();
+        this.e = paramParcel.readLong();
+        if (paramParcel.readByte() == 1)
+        {
+          bool1 = true;
+          this.f = bool1;
+          if (paramParcel.readByte() != 1) {
+            break label396;
+          }
+          bool1 = true;
+          this.g = bool1;
+          if (paramParcel.readByte() != 1) {
+            break label401;
+          }
+          bool1 = true;
+          this.h = bool1;
+          this.q = paramParcel.readString();
+          this.r = paramParcel.readString();
+          this.s = paramParcel.readString();
+          this.t = z.b(paramParcel);
+          if (paramParcel.readByte() != 1) {
+            break label406;
+          }
+          bool1 = true;
+          this.i = bool1;
+          if (paramParcel.readByte() != 1) {
+            break label411;
+          }
+          bool1 = true;
+          this.j = bool1;
+          if (paramParcel.readByte() != 1) {
+            break label416;
+          }
+          bool1 = true;
+          this.m = bool1;
+          if (paramParcel.readByte() != 1) {
+            break label421;
+          }
+          bool1 = true;
+          this.n = bool1;
+          this.p = paramParcel.readLong();
+          if (paramParcel.readByte() != 1) {
+            break label426;
+          }
+          bool1 = true;
+          this.k = bool1;
+          if (paramParcel.readByte() != 1) {
+            break label431;
+          }
+          bool1 = bool2;
+          this.l = bool1;
+          this.o = paramParcel.readLong();
+          this.u = paramParcel.readInt();
+          this.v = paramParcel.readLong();
+          this.w = paramParcel.readLong();
+          return;
         }
       }
-      label385:
-      label390:
-      label395:
-      for (boolean bool1 = bool2;; bool1 = false)
+      catch (Exception paramParcel)
       {
-        this.l = bool1;
-        this.o = paramParcel.readLong();
-        this.u = paramParcel.readInt();
-        this.v = paramParcel.readLong();
-        this.w = paramParcel.readLong();
+        paramParcel.printStackTrace();
         return;
-        bool1 = false;
-        break;
-        label360:
-        bool1 = false;
-        break label172;
-        label365:
-        bool1 = false;
-        break label187;
-        label370:
-        bool1 = false;
-        break label234;
-        label375:
-        bool1 = false;
-        break label249;
-        label380:
-        bool1 = false;
-        break label264;
-        bool1 = false;
-        break label279;
-        bool1 = false;
-        break label302;
       }
-      return;
-    }
-    catch (Exception paramParcel)
-    {
-      paramParcel.printStackTrace();
+      boolean bool1 = false;
+      continue;
+      label396:
+      bool1 = false;
+      continue;
+      label401:
+      bool1 = false;
+      continue;
+      label406:
+      bool1 = false;
+      continue;
+      label411:
+      bool1 = false;
+      continue;
+      label416:
+      bool1 = false;
+      continue;
+      label421:
+      bool1 = false;
+      continue;
+      label426:
+      bool1 = false;
+      continue;
+      label431:
+      bool1 = false;
     }
   }
   
@@ -164,101 +187,30 @@ public class StrategyBean
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int i1 = 1;
     paramParcel.writeLong(this.e);
-    if (this.f)
-    {
-      paramInt = 1;
-      paramParcel.writeByte((byte)paramInt);
-      if (!this.g) {
-        break label223;
-      }
-      paramInt = 1;
-      label34:
-      paramParcel.writeByte((byte)paramInt);
-      if (!this.h) {
-        break label228;
-      }
-      paramInt = 1;
-      label49:
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeString(this.q);
-      paramParcel.writeString(this.r);
-      paramParcel.writeString(this.s);
-      z.b(paramParcel, this.t);
-      if (!this.i) {
-        break label233;
-      }
-      paramInt = 1;
-      label96:
-      paramParcel.writeByte((byte)paramInt);
-      if (!this.j) {
-        break label238;
-      }
-      paramInt = 1;
-      label111:
-      paramParcel.writeByte((byte)paramInt);
-      if (!this.m) {
-        break label243;
-      }
-      paramInt = 1;
-      label126:
-      paramParcel.writeByte((byte)paramInt);
-      if (!this.n) {
-        break label248;
-      }
-      paramInt = 1;
-      label141:
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeLong(this.p);
-      if (!this.k) {
-        break label253;
-      }
-      paramInt = 1;
-      label164:
-      paramParcel.writeByte((byte)paramInt);
-      if (!this.l) {
-        break label258;
-      }
-    }
-    label258:
-    for (paramInt = i1;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeLong(this.o);
-      paramParcel.writeInt(this.u);
-      paramParcel.writeLong(this.v);
-      paramParcel.writeLong(this.w);
-      return;
-      paramInt = 0;
-      break;
-      label223:
-      paramInt = 0;
-      break label34;
-      label228:
-      paramInt = 0;
-      break label49;
-      label233:
-      paramInt = 0;
-      break label96;
-      label238:
-      paramInt = 0;
-      break label111;
-      label243:
-      paramInt = 0;
-      break label126;
-      label248:
-      paramInt = 0;
-      break label141;
-      label253:
-      paramInt = 0;
-      break label164;
-    }
+    paramParcel.writeByte((byte)this.f);
+    paramParcel.writeByte((byte)this.g);
+    paramParcel.writeByte((byte)this.h);
+    paramParcel.writeString(this.q);
+    paramParcel.writeString(this.r);
+    paramParcel.writeString(this.s);
+    z.b(paramParcel, this.t);
+    paramParcel.writeByte((byte)this.i);
+    paramParcel.writeByte((byte)this.j);
+    paramParcel.writeByte((byte)this.m);
+    paramParcel.writeByte((byte)this.n);
+    paramParcel.writeLong(this.p);
+    paramParcel.writeByte((byte)this.k);
+    paramParcel.writeByte((byte)this.l);
+    paramParcel.writeLong(this.o);
+    paramParcel.writeInt(this.u);
+    paramParcel.writeLong(this.v);
+    paramParcel.writeLong(this.w);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.bugly.crashreport.common.strategy.StrategyBean
  * JD-Core Version:    0.7.0.1
  */

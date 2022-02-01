@@ -12,31 +12,42 @@ public class ForwardTroopListFragment$MyTroopObserver
 {
   protected ForwardTroopListFragment$MyTroopObserver(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void onGetMutilTroopInfoResult(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
+  protected void onGenNewTroopName(String paramString1, String paramString2)
+  {
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
+  }
+  
+  protected void onGetMutilTroopInfoResult(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
   {
     if (paramBoolean) {
       this.a.a();
     }
   }
   
-  public void onGetTroopInfoResult(boolean paramBoolean, String paramString)
+  protected void onGetTroopInfoResult(boolean paramBoolean, String paramString)
   {
     if (paramBoolean) {
       this.a.a();
     }
   }
   
-  public void onUpdateTroopList(boolean paramBoolean)
+  protected void onUpdateTroopList(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("contacts.fragment.TroopFragment", 2, "onUpdateTroopList " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdateTroopList ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("contacts.fragment.TroopFragment", 2, localStringBuilder.toString());
     }
     if (paramBoolean) {
       ThreadManager.getUIHandler().postDelayed(new ForwardTroopListFragment.MyTroopObserver.1(this), 500L);
     }
   }
   
-  public void onUpdateTroopNickname(boolean paramBoolean)
+  protected void onUpdateTroopNickname(boolean paramBoolean)
   {
     if (paramBoolean) {
       this.a.a();
@@ -45,7 +56,7 @@ public class ForwardTroopListFragment$MyTroopObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardTroopListFragment.MyTroopObserver
  * JD-Core Version:    0.7.0.1
  */

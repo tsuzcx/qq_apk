@@ -79,21 +79,16 @@ public class StoryListPresenter
     b();
     if (a()) {
       this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager.b("key_story_has_show_rename_guide", Boolean.valueOf(true));
-    }
-    for (;;)
-    {
-      h();
-      d();
-      return;
+    } else {
       d();
     }
+    h();
+    d();
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    switch (paramInt1)
-    {
-    default: 
+    if (paramInt1 != 80001) {
       return;
     }
     i();
@@ -106,33 +101,35 @@ public class StoryListPresenter
   
   public void a(GetUserGuideInfoStep.Response paramResponse)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
-      SLog.e("Q.qqstory.home.StoryListPresenter", "showGuideDialog but now new User dialog is showing");
-    }
-    int i;
-    do
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    if ((localObject != null) && (((QQCustomDialog)localObject).isShowing()))
     {
+      SLog.e("Q.qqstory.home.StoryListPresenter", "showGuideDialog but now new User dialog is showing");
       return;
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetGuideInfoDialog != null) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetGuideInfoDialog.isShowing()))
-      {
-        SLog.e("Q.qqstory.home.StoryListPresenter", "showGuideDialog but now upgrade dialog is showing");
-        return;
-      }
-      if (paramResponse == null)
-      {
-        SLog.e("Q.qqstory.home.StoryListPresenter", "showGuideDialog userGuideInfo=null");
-        return;
-      }
-      i = ((Integer)this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager.b("qqstory_guide_info_seqno", Integer.valueOf(0))).intValue();
-      SLog.a("Q.qqstory.home.StoryListPresenter", "showGuideDialog local:%s,now:%s", Integer.valueOf(i), Integer.valueOf(paramResponse.b));
-    } while (paramResponse.b <= i);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager.b("qqstory_guide_info_seqno", Integer.valueOf(paramResponse.b));
-    GuideInfoDialog localGuideInfoDialog = new GuideInfoDialog(this.jdField_a_of_type_AndroidAppActivity, 2131755921);
-    localGuideInfoDialog.b(paramResponse.a).c(paramResponse.c).d(paramResponse.e).b(new StoryListPresenter.6(this, localGuideInfoDialog)).e(paramResponse.d).a(new StoryListPresenter.5(this, localGuideInfoDialog)).setCancelable(true);
-    localGuideInfoDialog.c(new StoryListPresenter.7(this, localGuideInfoDialog));
-    localGuideInfoDialog.setCanceledOnTouchOutside(true);
-    localGuideInfoDialog.show();
-    StoryReportor.a("home_page", "guide_cnt", 0, 0, new String[0]);
+    }
+    localObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetGuideInfoDialog;
+    if ((localObject != null) && (((GuideInfoDialog)localObject).isShowing()))
+    {
+      SLog.e("Q.qqstory.home.StoryListPresenter", "showGuideDialog but now upgrade dialog is showing");
+      return;
+    }
+    if (paramResponse == null)
+    {
+      SLog.e("Q.qqstory.home.StoryListPresenter", "showGuideDialog userGuideInfo=null");
+      return;
+    }
+    int i = ((Integer)this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager.b("qqstory_guide_info_seqno", Integer.valueOf(0))).intValue();
+    SLog.a("Q.qqstory.home.StoryListPresenter", "showGuideDialog local:%s,now:%s", Integer.valueOf(i), Integer.valueOf(paramResponse.b));
+    if (paramResponse.b > i)
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager.b("qqstory_guide_info_seqno", Integer.valueOf(paramResponse.b));
+      localObject = new GuideInfoDialog(this.jdField_a_of_type_AndroidAppActivity, 2131756270);
+      ((GuideInfoDialog)localObject).b(paramResponse.a).c(paramResponse.c).d(paramResponse.e).b(new StoryListPresenter.6(this, (GuideInfoDialog)localObject)).e(paramResponse.d).a(new StoryListPresenter.5(this, (GuideInfoDialog)localObject)).setCancelable(true);
+      ((GuideInfoDialog)localObject).c(new StoryListPresenter.7(this, (GuideInfoDialog)localObject));
+      ((GuideInfoDialog)localObject).setCanceledOnTouchOutside(true);
+      ((GuideInfoDialog)localObject).show();
+      StoryReportor.a("home_page", "guide_cnt", 0, 0, new String[0]);
+    }
   }
   
   public void a(IMyStoryListView paramIMyStoryListView)
@@ -148,10 +145,10 @@ public class StoryListPresenter
     {
       this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager.b("qqstory_is_story_new_user", Integer.valueOf(1));
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(HardCodeUtil.a(2131714350));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(HardCodeUtil.a(2131714271));
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage("在这里，你可以拍摄小视频记录真实所见，与好友分享生活美好瞬间。\n");
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(HardCodeUtil.a(2131714335), new StoryListPresenter.2(this)).setPositiveButton("立即拍摄", new StoryListPresenter.1(this));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.getBtnight().setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131166499));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(HardCodeUtil.a(2131714256), new StoryListPresenter.2(this)).setPositiveButton("立即拍摄", new StoryListPresenter.1(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.getBtnight().setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131166513));
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new StoryListPresenter.3(this));
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
       StoryReportor.a("home_page", "guide_exp", 0, 0, new String[0]);
@@ -176,45 +173,47 @@ public class StoryListPresenter
       SLog.e("Q.qqstory.home.StoryListPresenter", "get TroopRedTouchManager is null! so we return have no red point!");
       return false;
     }
-    oidb_0x791.RedDotInfo localRedDotInfo = localTroopRedTouchManager.a();
-    if ((localRedDotInfo == null) && (((MsgTabStoryNodeConfigManager)((QQAppInterface)((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppInterface()).getManager(QQManagerFactory.MSG_TAB_STORY_CONFIG_MANAGER)).jdField_a_of_type_Boolean))
+    oidb_0x791.RedDotInfo localRedDotInfo2 = localTroopRedTouchManager.a();
+    oidb_0x791.RedDotInfo localRedDotInfo1 = localRedDotInfo2;
+    if (localRedDotInfo2 == null)
     {
-      SLog.b("Q.qqstory.home.StoryListPresenter", "check invisible red point for msgtab");
-      localRedDotInfo = localTroopRedTouchManager.a(52);
-      if (localRedDotInfo == null) {
-        localRedDotInfo = localTroopRedTouchManager.a(35);
-      }
-    }
-    for (;;)
-    {
-      if (localRedDotInfo != null)
+      localRedDotInfo1 = localRedDotInfo2;
+      if (((MsgTabStoryNodeConfigManager)((QQAppInterface)((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppInterface()).getManager(QQManagerFactory.MSG_TAB_STORY_CONFIG_MANAGER)).jdField_a_of_type_Boolean)
       {
-        SLog.b("Q.qqstory.home.StoryListPresenter", "it have red point");
-        int i = localRedDotInfo.uint32_last_time.get();
-        if ((i > 0) && (i > this.jdField_a_of_type_Int))
-        {
-          this.jdField_a_of_type_Int = i;
-          return true;
+        SLog.b("Q.qqstory.home.StoryListPresenter", "check invisible red point for msgtab");
+        localRedDotInfo2 = localTroopRedTouchManager.a(52);
+        localRedDotInfo1 = localRedDotInfo2;
+        if (localRedDotInfo2 == null) {
+          localRedDotInfo1 = localTroopRedTouchManager.a(35);
         }
-        return false;
       }
-      return false;
     }
+    if (localRedDotInfo1 != null)
+    {
+      SLog.b("Q.qqstory.home.StoryListPresenter", "it have red point");
+      int i = localRedDotInfo1.uint32_last_time.get();
+      if ((i > 0) && (i > this.jdField_a_of_type_Int))
+      {
+        this.jdField_a_of_type_Int = i;
+        return true;
+      }
+    }
+    return false;
   }
   
   protected void c()
   {
-    if (!(this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity)) {
-      SLog.e("Q.qqstory.home.StoryListPresenter", "get app interface failed.");
-    }
-    long l;
-    do
+    if (!(this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity))
     {
+      SLog.e("Q.qqstory.home.StoryListPresenter", "get app interface failed.");
       return;
-      l = ((StoryConfigManager)SuperManager.a(10)).b();
-    } while (System.currentTimeMillis() - l <= 7200000L);
-    SLog.b("Q.qqstory.home.StoryListPresenter", "need update story config from server.");
-    ((QQStoryHandler)((QQAppInterface)((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppInterface()).getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER)).d();
+    }
+    long l = ((StoryConfigManager)SuperManager.a(10)).b();
+    if (System.currentTimeMillis() - l > 7200000L)
+    {
+      SLog.b("Q.qqstory.home.StoryListPresenter", "need update story config from server.");
+      ((QQStoryHandler)((QQAppInterface)((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppInterface()).getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER)).a();
+    }
   }
   
   public boolean c()
@@ -249,7 +248,7 @@ public class StoryListPresenter
       GetUserInfoHandler.d();
       return true;
     }
-    QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131714325), 0).a();
+    QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131714246), 0).a();
     return false;
   }
   
@@ -257,14 +256,16 @@ public class StoryListPresenter
   
   public void f()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      ((QQCustomDialog)localObject).dismiss();
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetGuideInfoDialog != null)
+    localObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetGuideInfoDialog;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetGuideInfoDialog.dismiss();
+      ((GuideInfoDialog)localObject).dismiss();
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetGuideInfoDialog = null;
     }
   }
@@ -273,18 +274,21 @@ public class StoryListPresenter
   {
     SLog.b("Q.qqstory.home.StoryListPresenter", "-------onDestory---------");
     this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      ((QQCustomDialog)localObject).dismiss();
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetGuideInfoDialog != null)
+    localObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetGuideInfoDialog;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetGuideInfoDialog.dismiss();
+      ((GuideInfoDialog)localObject).dismiss();
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetGuideInfoDialog = null;
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestParallelStepExecutor != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestParallelStepExecutor.c();
+    localObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestParallelStepExecutor;
+    if (localObject != null) {
+      ((ParallelStepExecutor)localObject).c();
     }
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
@@ -298,7 +302,7 @@ public class StoryListPresenter
   protected void h()
   {
     SLog.e("Q.qqstory.home.StoryListPresenter", "showLocalVideoSegmentIfNecessary");
-    ((LocalVideoPushSegment)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView.a("LocalVideoPushSegment")).e_(true);
+    ((LocalVideoPushSegment)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView.a("LocalVideoPushSegment")).a_(true);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -315,7 +319,7 @@ public class StoryListPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter
  * JD-Core Version:    0.7.0.1
  */

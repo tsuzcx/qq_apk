@@ -43,103 +43,130 @@ public class DiffUtil$DiffResult
   
   private void addRootSnake()
   {
-    if (this.mSnakes.isEmpty()) {}
-    for (DiffUtil.Snake localSnake = null;; localSnake = (DiffUtil.Snake)this.mSnakes.get(0))
+    DiffUtil.Snake localSnake;
+    if (this.mSnakes.isEmpty()) {
+      localSnake = null;
+    } else {
+      localSnake = (DiffUtil.Snake)this.mSnakes.get(0);
+    }
+    if ((localSnake == null) || (localSnake.x != 0) || (localSnake.y != 0))
     {
-      if ((localSnake == null) || (localSnake.x != 0) || (localSnake.y != 0))
-      {
-        localSnake = new DiffUtil.Snake();
-        localSnake.x = 0;
-        localSnake.y = 0;
-        localSnake.removal = false;
-        localSnake.size = 0;
-        localSnake.reverse = false;
-        this.mSnakes.add(0, localSnake);
-      }
-      return;
+      localSnake = new DiffUtil.Snake();
+      localSnake.x = 0;
+      localSnake.y = 0;
+      localSnake.removal = false;
+      localSnake.size = 0;
+      localSnake.reverse = false;
+      this.mSnakes.add(0, localSnake);
     }
   }
   
   private void dispatchAdditions(List<DiffUtil.PostponedUpdate> paramList, ListUpdateCallback paramListUpdateCallback, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (!this.mDetectMoves) {
+    if (!this.mDetectMoves)
+    {
       paramListUpdateCallback.onInserted(paramInt1, paramInt2);
-    }
-    do
-    {
       return;
-      paramInt2 -= 1;
-    } while (paramInt2 < 0);
-    int i = this.mNewItemStatuses[(paramInt3 + paramInt2)] & 0x1F;
-    Iterator localIterator;
-    switch (i)
+    }
+    paramInt2 -= 1;
+    while (paramInt2 >= 0)
     {
-    default: 
-      throw new IllegalStateException("unknown flag for pos " + (paramInt2 + paramInt3) + " " + Long.toBinaryString(i));
-    case 0: 
-      paramListUpdateCallback.onInserted(paramInt1, 1);
-      localIterator = paramList.iterator();
-    case 4: 
-    case 8: 
-      while (localIterator.hasNext())
+      Object localObject = this.mNewItemStatuses;
+      int i = paramInt3 + paramInt2;
+      int j = localObject[i] & 0x1F;
+      if (j != 0)
       {
-        DiffUtil.PostponedUpdate localPostponedUpdate = (DiffUtil.PostponedUpdate)localIterator.next();
-        localPostponedUpdate.currentPos += 1;
-        continue;
-        int j = this.mNewItemStatuses[(paramInt3 + paramInt2)] >> 5;
-        paramListUpdateCallback.onMoved(removePostponedUpdate(paramList, j, true).currentPos, paramInt1);
-        if (i == 4) {
-          paramListUpdateCallback.onChanged(paramInt1, 1, this.mCallback.getChangePayload(j, paramInt3 + paramInt2));
+        if ((j != 4) && (j != 8))
+        {
+          if (j == 16)
+          {
+            paramList.add(new DiffUtil.PostponedUpdate(i, paramInt1, false));
+          }
+          else
+          {
+            paramList = new StringBuilder();
+            paramList.append("unknown flag for pos ");
+            paramList.append(i);
+            paramList.append(" ");
+            paramList.append(Long.toBinaryString(j));
+            throw new IllegalStateException(paramList.toString());
+          }
+        }
+        else
+        {
+          int k = this.mNewItemStatuses[i] >> 5;
+          paramListUpdateCallback.onMoved(removePostponedUpdate(paramList, k, true).currentPos, paramInt1);
+          if (j == 4) {
+            paramListUpdateCallback.onChanged(paramInt1, 1, this.mCallback.getChangePayload(k, i));
+          }
         }
       }
-    }
-    for (;;)
-    {
+      else
+      {
+        paramListUpdateCallback.onInserted(paramInt1, 1);
+        localObject = paramList.iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          DiffUtil.PostponedUpdate localPostponedUpdate = (DiffUtil.PostponedUpdate)((Iterator)localObject).next();
+          localPostponedUpdate.currentPos += 1;
+        }
+      }
       paramInt2 -= 1;
-      break;
-      paramList.add(new DiffUtil.PostponedUpdate(paramInt3 + paramInt2, paramInt1, false));
     }
   }
   
   private void dispatchRemovals(List<DiffUtil.PostponedUpdate> paramList, ListUpdateCallback paramListUpdateCallback, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (!this.mDetectMoves) {
+    if (!this.mDetectMoves)
+    {
       paramListUpdateCallback.onRemoved(paramInt1, paramInt2);
-    }
-    do
-    {
       return;
-      paramInt2 -= 1;
-    } while (paramInt2 < 0);
-    int i = this.mOldItemStatuses[(paramInt3 + paramInt2)] & 0x1F;
-    Object localObject;
-    switch (i)
+    }
+    paramInt2 -= 1;
+    while (paramInt2 >= 0)
     {
-    default: 
-      throw new IllegalStateException("unknown flag for pos " + (paramInt2 + paramInt3) + " " + Long.toBinaryString(i));
-    case 0: 
-      paramListUpdateCallback.onRemoved(paramInt1 + paramInt2, 1);
-      localObject = paramList.iterator();
-    case 4: 
-    case 8: 
-      while (((Iterator)localObject).hasNext())
+      Object localObject = this.mOldItemStatuses;
+      int i = paramInt3 + paramInt2;
+      int j = localObject[i] & 0x1F;
+      if (j != 0)
       {
-        DiffUtil.PostponedUpdate localPostponedUpdate = (DiffUtil.PostponedUpdate)((Iterator)localObject).next();
-        localPostponedUpdate.currentPos -= 1;
-        continue;
-        int j = this.mOldItemStatuses[(paramInt3 + paramInt2)] >> 5;
-        localObject = removePostponedUpdate(paramList, j, false);
-        paramListUpdateCallback.onMoved(paramInt1 + paramInt2, ((DiffUtil.PostponedUpdate)localObject).currentPos - 1);
-        if (i == 4) {
-          paramListUpdateCallback.onChanged(((DiffUtil.PostponedUpdate)localObject).currentPos - 1, 1, this.mCallback.getChangePayload(paramInt3 + paramInt2, j));
+        if ((j != 4) && (j != 8))
+        {
+          if (j == 16)
+          {
+            paramList.add(new DiffUtil.PostponedUpdate(i, paramInt1 + paramInt2, true));
+          }
+          else
+          {
+            paramList = new StringBuilder();
+            paramList.append("unknown flag for pos ");
+            paramList.append(i);
+            paramList.append(" ");
+            paramList.append(Long.toBinaryString(j));
+            throw new IllegalStateException(paramList.toString());
+          }
+        }
+        else
+        {
+          int k = this.mOldItemStatuses[i] >> 5;
+          localObject = removePostponedUpdate(paramList, k, false);
+          paramListUpdateCallback.onMoved(paramInt1 + paramInt2, ((DiffUtil.PostponedUpdate)localObject).currentPos - 1);
+          if (j == 4) {
+            paramListUpdateCallback.onChanged(((DiffUtil.PostponedUpdate)localObject).currentPos - 1, 1, this.mCallback.getChangePayload(i, k));
+          }
         }
       }
-    }
-    for (;;)
-    {
+      else
+      {
+        paramListUpdateCallback.onRemoved(paramInt1 + paramInt2, 1);
+        localObject = paramList.iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          DiffUtil.PostponedUpdate localPostponedUpdate = (DiffUtil.PostponedUpdate)((Iterator)localObject).next();
+          localPostponedUpdate.currentPos -= 1;
+        }
+      }
       paramInt2 -= 1;
-      break;
-      paramList.add(new DiffUtil.PostponedUpdate(paramInt3 + paramInt2, paramInt1 + paramInt2, true));
     }
   }
   
@@ -153,51 +180,43 @@ public class DiffUtil$DiffResult
   
   private boolean findMatchingItem(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    int m = 8;
+    int i;
     int j;
     int k;
-    int i;
     if (paramBoolean)
     {
-      j = paramInt2 - 1;
-      k = paramInt2 - 1;
-      i = paramInt1;
-      paramInt2 = j;
+      i = paramInt2 - 1;
+      paramInt2 = paramInt1;
+      j = i;
+    }
+    else
+    {
+      k = paramInt1 - 1;
       j = k;
-      k = i;
       i = paramInt2;
       paramInt2 = k;
     }
-    for (;;)
+    while (paramInt3 >= 0)
     {
-      if (paramInt3 < 0) {
-        break label289;
-      }
-      DiffUtil.Snake localSnake = (DiffUtil.Snake)this.mSnakes.get(paramInt3);
-      k = localSnake.x;
-      int n = localSnake.size;
-      int i1 = localSnake.y;
-      int i2 = localSnake.size;
+      Object localObject = (DiffUtil.Snake)this.mSnakes.get(paramInt3);
+      int m = ((DiffUtil.Snake)localObject).x;
+      int n = ((DiffUtil.Snake)localObject).size;
+      int i1 = ((DiffUtil.Snake)localObject).y;
+      int i2 = ((DiffUtil.Snake)localObject).size;
+      k = 8;
       if (paramBoolean)
       {
         paramInt2 -= 1;
-        for (;;)
+        while (paramInt2 >= m + n)
         {
-          if (paramInt2 < k + n) {
-            break label269;
-          }
           if (this.mCallback.areItemsTheSame(paramInt2, j))
           {
-            if (this.mCallback.areContentsTheSame(paramInt2, j)) {}
-            for (paramInt1 = 8;; paramInt1 = 4)
-            {
-              this.mNewItemStatuses[j] = (paramInt2 << 5 | 0x10);
-              this.mOldItemStatuses[paramInt2] = (paramInt1 | j << 5);
-              return true;
-              j = paramInt1 - 1;
-              i = paramInt1 - 1;
-              break;
+            if (!this.mCallback.areContentsTheSame(paramInt2, j)) {
+              k = 4;
             }
+            this.mNewItemStatuses[j] = (paramInt2 << 5 | 0x10);
+            this.mOldItemStatuses[paramInt2] = (j << 5 | k);
+            return true;
           }
           paramInt2 -= 1;
         }
@@ -207,22 +226,21 @@ public class DiffUtil$DiffResult
       {
         if (this.mCallback.areItemsTheSame(j, paramInt2))
         {
-          if (this.mCallback.areContentsTheSame(j, paramInt2)) {}
-          for (paramInt3 = m;; paramInt3 = 4)
-          {
-            this.mOldItemStatuses[(paramInt1 - 1)] = (paramInt2 << 5 | 0x10);
-            this.mNewItemStatuses[paramInt2] = (paramInt1 - 1 << 5 | paramInt3);
-            return true;
+          if (!this.mCallback.areContentsTheSame(j, paramInt2)) {
+            k = 4;
           }
+          localObject = this.mOldItemStatuses;
+          paramInt1 -= 1;
+          localObject[paramInt1] = (paramInt2 << 5 | 0x10);
+          this.mNewItemStatuses[paramInt2] = (paramInt1 << 5 | k);
+          return true;
         }
         paramInt2 -= 1;
       }
-      label269:
-      paramInt2 = localSnake.x;
-      i = localSnake.y;
+      paramInt2 = ((DiffUtil.Snake)localObject).x;
+      i = ((DiffUtil.Snake)localObject).y;
       paramInt3 -= 1;
     }
-    label289:
     return false;
   }
   
@@ -257,18 +275,18 @@ public class DiffUtil$DiffResult
         }
       }
       i = 0;
-      if (i < localSnake.size)
+      while (i < localSnake.size)
       {
         m = localSnake.x + i;
         n = localSnake.y + i;
-        if (this.mCallback.areContentsTheSame(m, n)) {}
-        for (j = 1;; j = 2)
-        {
-          this.mOldItemStatuses[m] = (n << 5 | j);
-          this.mNewItemStatuses[n] = (j | m << 5);
-          i += 1;
-          break;
+        if (this.mCallback.areContentsTheSame(m, n)) {
+          j = 1;
+        } else {
+          j = 2;
         }
+        this.mOldItemStatuses[m] = (n << 5 | j);
+        this.mNewItemStatuses[n] = (m << 5 | j);
+        i += 1;
       }
       j = localSnake.x;
       i = localSnake.y;
@@ -289,75 +307,79 @@ public class DiffUtil$DiffResult
     int i = paramList.size() - 1;
     while (i >= 0)
     {
-      DiffUtil.PostponedUpdate localPostponedUpdate2 = (DiffUtil.PostponedUpdate)paramList.get(i);
-      if ((localPostponedUpdate2.posInOwnerList == paramInt) && (localPostponedUpdate2.removal == paramBoolean))
+      DiffUtil.PostponedUpdate localPostponedUpdate1 = (DiffUtil.PostponedUpdate)paramList.get(i);
+      if ((localPostponedUpdate1.posInOwnerList == paramInt) && (localPostponedUpdate1.removal == paramBoolean))
       {
         paramList.remove(i);
-        paramInt = i;
-        localPostponedUpdate1 = localPostponedUpdate2;
-        if (paramInt >= paramList.size()) {
-          break label123;
-        }
-        localPostponedUpdate1 = (DiffUtil.PostponedUpdate)paramList.get(paramInt);
-        int j = localPostponedUpdate1.currentPos;
-        if (paramBoolean) {}
-        for (i = 1;; i = -1)
+        while (i < paramList.size())
         {
-          localPostponedUpdate1.currentPos = (i + j);
-          paramInt += 1;
-          break;
+          DiffUtil.PostponedUpdate localPostponedUpdate2 = (DiffUtil.PostponedUpdate)paramList.get(i);
+          int j = localPostponedUpdate2.currentPos;
+          if (paramBoolean) {
+            paramInt = 1;
+          } else {
+            paramInt = -1;
+          }
+          localPostponedUpdate2.currentPos = (j + paramInt);
+          i += 1;
         }
+        return localPostponedUpdate1;
       }
       i -= 1;
     }
-    DiffUtil.PostponedUpdate localPostponedUpdate1 = null;
-    label123:
-    return localPostponedUpdate1;
+    return null;
   }
   
   public int convertNewPositionToOld(@IntRange(from=0L) int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.mNewListSize)) {
-      throw new IndexOutOfBoundsException("Index out of bounds - passed position = " + paramInt + ", new list size = " + this.mNewListSize);
+    if ((paramInt >= 0) && (paramInt < this.mNewListSize))
+    {
+      paramInt = this.mNewItemStatuses[paramInt];
+      if ((paramInt & 0x1F) == 0) {
+        return -1;
+      }
+      return paramInt >> 5;
     }
-    paramInt = this.mNewItemStatuses[paramInt];
-    if ((paramInt & 0x1F) == 0) {
-      return -1;
-    }
-    return paramInt >> 5;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Index out of bounds - passed position = ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", new list size = ");
+    localStringBuilder.append(this.mNewListSize);
+    throw new IndexOutOfBoundsException(localStringBuilder.toString());
   }
   
   public int convertOldPositionToNew(@IntRange(from=0L) int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.mOldListSize)) {
-      throw new IndexOutOfBoundsException("Index out of bounds - passed position = " + paramInt + ", old list size = " + this.mOldListSize);
+    if ((paramInt >= 0) && (paramInt < this.mOldListSize))
+    {
+      paramInt = this.mOldItemStatuses[paramInt];
+      if ((paramInt & 0x1F) == 0) {
+        return -1;
+      }
+      return paramInt >> 5;
     }
-    paramInt = this.mOldItemStatuses[paramInt];
-    if ((paramInt & 0x1F) == 0) {
-      return -1;
-    }
-    return paramInt >> 5;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Index out of bounds - passed position = ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", old list size = ");
+    localStringBuilder.append(this.mOldListSize);
+    throw new IndexOutOfBoundsException(localStringBuilder.toString());
   }
   
   public void dispatchUpdatesTo(@NonNull ListUpdateCallback paramListUpdateCallback)
   {
-    ArrayList localArrayList;
-    int j;
-    int k;
-    int i;
-    if ((paramListUpdateCallback instanceof BatchingListUpdateCallback))
-    {
+    if ((paramListUpdateCallback instanceof BatchingListUpdateCallback)) {
       paramListUpdateCallback = (BatchingListUpdateCallback)paramListUpdateCallback;
-      localArrayList = new ArrayList();
-      j = this.mOldListSize;
-      k = this.mNewListSize;
-      i = this.mSnakes.size() - 1;
+    } else {
+      paramListUpdateCallback = new BatchingListUpdateCallback(paramListUpdateCallback);
     }
-    for (;;)
+    ArrayList localArrayList = new ArrayList();
+    int j = this.mOldListSize;
+    int k = this.mNewListSize;
+    int i = this.mSnakes.size();
+    i -= 1;
+    while (i >= 0)
     {
-      if (i < 0) {
-        break label234;
-      }
       DiffUtil.Snake localSnake = (DiffUtil.Snake)this.mSnakes.get(i);
       int m = localSnake.size;
       int n = localSnake.x + m;
@@ -369,24 +391,17 @@ public class DiffUtil$DiffResult
         dispatchAdditions(localArrayList, paramListUpdateCallback, n, k - i1, i1);
       }
       j = m - 1;
-      for (;;)
+      while (j >= 0)
       {
-        if (j >= 0)
-        {
-          if ((this.mOldItemStatuses[(localSnake.x + j)] & 0x1F) == 2) {
-            paramListUpdateCallback.onChanged(localSnake.x + j, 1, this.mCallback.getChangePayload(localSnake.x + j, localSnake.y + j));
-          }
-          j -= 1;
-          continue;
-          paramListUpdateCallback = new BatchingListUpdateCallback(paramListUpdateCallback);
-          break;
+        if ((this.mOldItemStatuses[(localSnake.x + j)] & 0x1F) == 2) {
+          paramListUpdateCallback.onChanged(localSnake.x + j, 1, this.mCallback.getChangePayload(localSnake.x + j, localSnake.y + j));
         }
+        j -= 1;
       }
       j = localSnake.x;
       k = localSnake.y;
       i -= 1;
     }
-    label234:
     paramListUpdateCallback.dispatchLastEvent();
   }
   
@@ -403,7 +418,7 @@ public class DiffUtil$DiffResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.DiffUtil.DiffResult
  * JD-Core Version:    0.7.0.1
  */

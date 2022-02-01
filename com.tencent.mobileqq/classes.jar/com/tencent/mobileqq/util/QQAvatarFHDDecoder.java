@@ -69,21 +69,21 @@ public class QQAvatarFHDDecoder
     {
       paramString = BitmapFactory.decodeFile(paramString);
       paramString = new BitmapDrawable(a().getApp().getResources(), paramString);
-      Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(1);
-      localMessage.obj = paramString;
-      localMessage.sendToTarget();
-      return;
     }
     catch (Throwable paramString)
     {
-      for (;;)
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("QQAvatarFHDDecoder", 2, "downloadFHDAvatar getDrawable " + paramString.toString());
-        }
-        paramString = null;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("downloadFHDAvatar getDrawable ");
+        ((StringBuilder)localObject).append(paramString.toString());
+        QLog.i("QQAvatarFHDDecoder", 2, ((StringBuilder)localObject).toString());
       }
+      paramString = null;
     }
+    Object localObject = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(1);
+    ((Message)localObject).obj = paramString;
+    ((Message)localObject).sendToTarget();
   }
   
   private void b(String paramString)
@@ -103,74 +103,94 @@ public class QQAvatarFHDDecoder
   
   protected void a(Setting paramSetting)
   {
-    boolean bool1 = false;
-    Object localObject;
-    if ((paramSetting == null) || (TextUtils.isEmpty(paramSetting.uin)) || (TextUtils.isEmpty(paramSetting.url))) {
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder().append("downloadFHDAvatar return ");
-        if (paramSetting == null) {
-          break label71;
-        }
-        paramSetting = paramSetting.toString();
-        QLog.i("QQAvatarFHDDecoder", 2, paramSetting);
-      }
-    }
-    for (;;)
+    Object localObject1;
+    if ((paramSetting != null) && (!TextUtils.isEmpty(paramSetting.uin)) && (!TextUtils.isEmpty(paramSetting.url)))
     {
-      return;
-      label71:
-      paramSetting = "";
-      break;
-      localObject = FaceUtil.b(paramSetting.uin);
-      if (FileUtil.a((String)localObject))
+      localObject1 = FaceUtil.b(paramSetting.uin);
+      if (FileUtil.b((String)localObject1))
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("QQAvatarFHDDecoder", 2, "downloadFHDAvatar already exist " + (String)localObject);
+        if (QLog.isColorLevel())
+        {
+          paramSetting = new StringBuilder();
+          paramSetting.append("downloadFHDAvatar already exist ");
+          paramSetting.append((String)localObject1);
+          QLog.i("QQAvatarFHDDecoder", 2, paramSetting.toString());
         }
-        a((String)localObject);
+        a((String)localObject1);
         return;
       }
-      paramSetting = AvatarDownloadUtil.get1080QQHeadDownLoadUrl(paramSetting.url, paramSetting.bFaceFlags);
-      File localFile1 = new File((String)localObject);
-      File localFile2 = new File(localFile1.getPath() + System.currentTimeMillis());
-      if (HttpDownloadUtil.downloadData(a(), new DownloadInfo(MsfSdkUtils.insertMtype("friendlist", paramSetting), localFile2, 0), this) == 0) {
+      String str = AvatarDownloadUtil.get1080QQHeadDownLoadUrl(paramSetting.url, paramSetting.bFaceFlags);
+      paramSetting = new File((String)localObject1);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramSetting.getPath());
+      ((StringBuilder)localObject2).append(System.currentTimeMillis());
+      localObject2 = new File(((StringBuilder)localObject2).toString());
+      QQAppInterface localQQAppInterface = a();
+      str = MsfSdkUtils.insertMtype("friendlist", str);
+      boolean bool1 = false;
+      if (HttpDownloadUtil.downloadData(localQQAppInterface, new DownloadInfo(str, (File)localObject2, 0), this) == 0) {
         bool1 = true;
       }
       boolean bool2;
       if (bool1)
       {
-        if (localFile2.exists()) {
-          bool1 = localFile2.renameTo(localFile1);
+        if (((File)localObject2).exists()) {
+          bool1 = ((File)localObject2).renameTo(paramSetting);
         }
-        if (QLog.isColorLevel()) {
-          QLog.i("QQAvatarFHDDecoder", 2, "downloadFHDAvatar suc " + bool1 + " " + (String)localObject);
+        if (QLog.isColorLevel())
+        {
+          paramSetting = new StringBuilder();
+          paramSetting.append("downloadFHDAvatar suc ");
+          paramSetting.append(bool1);
+          paramSetting.append(" ");
+          paramSetting.append((String)localObject1);
+          QLog.i("QQAvatarFHDDecoder", 2, paramSetting.toString());
         }
         bool2 = bool1;
         if (bool1)
         {
-          a((String)localObject);
+          a((String)localObject1);
           bool2 = bool1;
         }
       }
-      while (!bool2)
+      else
       {
-        b(this.jdField_a_of_type_JavaLangString);
-        return;
         bool2 = bool1;
-        if (localFile2.exists())
+        if (((File)localObject2).exists())
         {
-          localFile2.delete();
+          ((File)localObject2).delete();
           bool2 = bool1;
         }
       }
+      if (!bool2) {
+        b(this.jdField_a_of_type_JavaLangString);
+      }
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("downloadFHDAvatar return ");
+      if (paramSetting != null) {
+        paramSetting = paramSetting.toString();
+      } else {
+        paramSetting = "";
+      }
+      ((StringBuilder)localObject1).append(paramSetting);
+      QLog.i("QQAvatarFHDDecoder", 2, ((StringBuilder)localObject1).toString());
     }
   }
   
   public void a(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQAvatarFHDDecoder", 2, "onHttpStart " + paramString + " " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onHttpStart ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramInt);
+      QLog.i("QQAvatarFHDDecoder", 2, localStringBuilder.toString());
     }
   }
   
@@ -178,73 +198,89 @@ public class QQAvatarFHDDecoder
   
   public boolean a(String paramString, boolean paramBoolean, QQAvatarFHDDecoder.OnQQAvatarFHDListener paramOnQQAvatarFHDListener)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQAvatarFHDDecoder", 2, "getFHDAvatar " + paramString + " mIsGettingHead：" + this.jdField_a_of_type_Boolean + " mCurrentUin：" + this.jdField_a_of_type_JavaLangString + " forceUpdate：" + paramBoolean);
-    }
-    if ((this.jdField_b_of_type_Boolean) || (TextUtils.isEmpty(paramString)) || (!Friends.isValidUin(paramString))) {}
-    do
+    if (QLog.isColorLevel())
     {
-      do
-      {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getFHDAvatar ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" mIsGettingHead：");
+      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(" mCurrentUin：");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(" forceUpdate：");
+      localStringBuilder.append(paramBoolean);
+      QLog.i("QQAvatarFHDDecoder", 2, localStringBuilder.toString());
+    }
+    if ((!this.jdField_b_of_type_Boolean) && (!TextUtils.isEmpty(paramString)))
+    {
+      if (!Friends.isValidUin(paramString)) {
         return false;
-        if (NetworkUtil.d(a().getApp())) {
-          break;
+      }
+      if (!NetworkUtil.isNetSupport(a().getApp()))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("QQAvatarFHDDecoder", 2, "getFHDAvatar no network");
         }
-      } while (!QLog.isColorLevel());
-      QLog.i("QQAvatarFHDDecoder", 2, "getFHDAvatar no network");
-      return false;
-    } while (this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_MqqUtilWeakReference = new WeakReference(paramOnQQAvatarFHDListener);
-    ThreadManagerV2.excute(new QQAvatarFHDDecoder.2(this, paramString, paramBoolean), 128, null, true);
-    return true;
+        return false;
+      }
+      if (this.jdField_a_of_type_Boolean) {
+        return false;
+      }
+      this.jdField_a_of_type_JavaLangString = paramString;
+      this.jdField_b_of_type_MqqUtilWeakReference = new WeakReference(paramOnQQAvatarFHDListener);
+      ThreadManagerV2.excute(new QQAvatarFHDDecoder.2(this, paramString, paramBoolean), 128, null, true);
+      return true;
+    }
+    return false;
   }
   
   public void b(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQAvatarFHDDecoder", 2, "onHttpEnd " + paramString + " " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onHttpEnd ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramInt);
+      QLog.i("QQAvatarFHDDecoder", 2, localStringBuilder.toString());
     }
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1) {
       return true;
     }
-    if ((paramMessage.obj instanceof Drawable)) {}
-    for (paramMessage = (Drawable)paramMessage.obj;; paramMessage = null)
-    {
-      QQAvatarFHDDecoder.OnQQAvatarFHDListener localOnQQAvatarFHDListener;
-      String str;
-      if (this.jdField_b_of_type_MqqUtilWeakReference != null)
-      {
-        localOnQQAvatarFHDListener = (QQAvatarFHDDecoder.OnQQAvatarFHDListener)this.jdField_b_of_type_MqqUtilWeakReference.get();
-        if (localOnQQAvatarFHDListener != null)
-        {
-          str = this.jdField_a_of_type_JavaLangString;
-          if (paramMessage == null) {
-            break label105;
-          }
-        }
-      }
-      label105:
-      for (boolean bool = true;; bool = false)
-      {
-        localOnQQAvatarFHDListener.a(str, bool, paramMessage);
-        this.jdField_b_of_type_MqqUtilWeakReference = null;
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_JavaLangString = null;
-        return true;
-      }
+    if ((paramMessage.obj instanceof Drawable)) {
+      paramMessage = (Drawable)paramMessage.obj;
+    } else {
+      paramMessage = null;
     }
+    if (this.jdField_b_of_type_MqqUtilWeakReference != null)
+    {
+      QQAvatarFHDDecoder.OnQQAvatarFHDListener localOnQQAvatarFHDListener = (QQAvatarFHDDecoder.OnQQAvatarFHDListener)this.jdField_b_of_type_MqqUtilWeakReference.get();
+      if (localOnQQAvatarFHDListener != null)
+      {
+        String str = this.jdField_a_of_type_JavaLangString;
+        boolean bool;
+        if (paramMessage != null) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        localOnQQAvatarFHDListener.a(str, bool, paramMessage);
+      }
+      this.jdField_b_of_type_MqqUtilWeakReference = null;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = null;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.QQAvatarFHDDecoder
  * JD-Core Version:    0.7.0.1
  */

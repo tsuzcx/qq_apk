@@ -15,17 +15,23 @@ class GroupManagerActivity$2
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((paramInt - 1 < 0) || (this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.a.size() <= paramInt - 1)) {
-      return;
+    paramInt -= 1;
+    if (paramInt >= 0)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.a.size() <= paramInt) {
+        return;
+      }
+      paramAdapterView = this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity;
+      GroupManagerActivity.a(paramAdapterView, (Groups)paramAdapterView.a.get(paramInt));
+      paramAdapterView = this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity;
+      GroupManagerActivity.a(paramAdapterView, DialogUtils.a(paramAdapterView, 2131693089, 2131693093, GroupManagerActivity.a(paramAdapterView).group_name, this.jdField_a_of_type_ComTencentMobileqqUtilsGroupManagerInputTextWatcher, GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity), GroupManagerActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity)));
+      GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity, 1);
     }
-    GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity, (Groups)this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.a.get(paramInt - 1));
-    GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity, DialogUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity, 2131693129, 2131693133, GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity).group_name, this.jdField_a_of_type_ComTencentMobileqqUtilsGroupManagerInputTextWatcher, GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity), GroupManagerActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity)));
-    GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GroupManagerActivity.2
  * JD-Core Version:    0.7.0.1
  */

@@ -19,56 +19,52 @@ class Camera2Control$ImageSaveServer
   
   public void run()
   {
-    int i = 0;
-    if (this.jdField_a_of_type_ArrayOfByte == null)
+    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    String str = null;
+    if (arrayOfByte == null)
     {
       Camera2Utils.a(2, "[Camera2]ImageSaveServer params error!");
       if (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control$Camera2PictureData.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover$PictureCallback != null) {
         this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control$Camera2PictureData.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover$PictureCallback.a(null);
       }
+      return;
     }
-    do
+    int i = Camera2Utils.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control$Camera2PictureData.jdField_a_of_type_AndroidHardwareCamera2CameraCharacteristics, this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control$Camera2PictureData.jdField_a_of_type_Int);
+    boolean bool = this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control$Camera2PictureData.jdField_a_of_type_Boolean;
+    try
     {
-      return;
-      int j = Camera2Utils.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control$Camera2PictureData.jdField_a_of_type_AndroidHardwareCamera2CameraCharacteristics, this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control$Camera2PictureData.jdField_a_of_type_Int);
-      boolean bool = this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control$Camera2PictureData.jdField_a_of_type_Boolean;
-      try
-      {
-        ImageUtil.a(CameraUtils.b(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control$Camera2PictureData.jdField_a_of_type_AndroidGraphicsRect, bool, j), this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control$Camera2PictureData.jdField_a_of_type_JavaIoFile);
-        i = 1;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          CameraCover.PictureCallback localPictureCallback;
-          String str;
-          localException.printStackTrace();
-          Camera2Utils.a(2, "[Camera2]ImageSaveServer Exception:" + localException);
-        }
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        for (;;)
-        {
-          Camera2Utils.a(2, "[Camera2]ImageSaveServer OutOfMemoryError:" + localOutOfMemoryError);
-          continue;
-          Object localObject = null;
-        }
-      }
-    } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control$Camera2PictureData.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover$PictureCallback == null);
-    localPictureCallback = this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control$Camera2PictureData.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover$PictureCallback;
-    if (i != 0)
+      ImageUtil.a(CameraUtils.b(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control$Camera2PictureData.jdField_a_of_type_AndroidGraphicsRect, bool, i), this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control$Camera2PictureData.jdField_a_of_type_JavaIoFile);
+      i = 1;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
     {
-      str = this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control$Camera2PictureData.jdField_a_of_type_JavaIoFile.getAbsolutePath();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[Camera2]ImageSaveServer OutOfMemoryError:");
+      localStringBuilder.append(localOutOfMemoryError);
+      Camera2Utils.a(2, localStringBuilder.toString());
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[Camera2]ImageSaveServer Exception:");
+      localStringBuilder.append(localException);
+      Camera2Utils.a(2, localStringBuilder.toString());
+    }
+    i = 0;
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control$Camera2PictureData.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover$PictureCallback != null)
+    {
+      CameraCover.PictureCallback localPictureCallback = this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control$Camera2PictureData.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover$PictureCallback;
+      if (i != 0) {
+        str = this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control$Camera2PictureData.jdField_a_of_type_JavaIoFile.getAbsolutePath();
+      }
       localPictureCallback.a(str);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.camera2.Camera2Control.ImageSaveServer
  * JD-Core Version:    0.7.0.1
  */

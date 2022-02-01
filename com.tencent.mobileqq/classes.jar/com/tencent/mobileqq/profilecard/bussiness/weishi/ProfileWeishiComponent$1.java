@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.profilecard.bussiness.weishi;
 
 import com.tencent.biz.videostory.widget.view.MineWSPanel.ProcessClickListener;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
 import com.tencent.mobileqq.profilecard.base.report.ProfileCardReport;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
 
 class ProfileWeishiComponent$1
   implements MineWSPanel.ProcessClickListener
@@ -16,7 +16,7 @@ class ProfileWeishiComponent$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.weishi.ProfileWeishiComponent.1
  * JD-Core Version:    0.7.0.1
  */

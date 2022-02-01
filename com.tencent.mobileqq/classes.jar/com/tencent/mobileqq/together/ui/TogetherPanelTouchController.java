@@ -69,26 +69,18 @@ public class TogetherPanelTouchController
   
   public static boolean a(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramView == null) {}
-    int i;
-    int j;
-    int k;
-    int m;
-    int n;
-    int i1;
-    do
-    {
+    if (paramView == null) {
       return false;
-      i = (int)paramMotionEvent.getRawY();
-      j = (int)paramMotionEvent.getRawX();
-      paramMotionEvent = new int[2];
-      paramView.getLocationOnScreen(paramMotionEvent);
-      k = paramMotionEvent[0];
-      m = paramMotionEvent[1];
-      n = paramView.getMeasuredWidth();
-      i1 = paramView.getMeasuredHeight();
-    } while ((i < m) || (i > i1 + m) || (j < k) || (j > n + k));
-    return true;
+    }
+    int i = (int)paramMotionEvent.getRawY();
+    int j = (int)paramMotionEvent.getRawX();
+    paramMotionEvent = new int[2];
+    paramView.getLocationOnScreen(paramMotionEvent);
+    int k = paramMotionEvent[0];
+    int m = paramMotionEvent[1];
+    int n = paramView.getMeasuredWidth();
+    int i1 = paramView.getMeasuredHeight();
+    return (i >= m) && (i <= i1 + m) && (j >= k) && (j <= n + k);
   }
   
   private boolean b(View paramView, MotionEvent paramMotionEvent)
@@ -96,32 +88,31 @@ public class TogetherPanelTouchController
     if (this.jdField_b_of_type_Boolean) {
       return true;
     }
-    if ((!this.c) || (a(paramView, paramMotionEvent)))
-    {
-      this.jdField_b_of_type_Boolean = true;
-      return true;
+    if ((this.c) && (!a(paramView, paramMotionEvent))) {
+      return false;
     }
-    return false;
+    this.jdField_b_of_type_Boolean = true;
+    return true;
   }
   
   public float a(float paramFloat)
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    int i;
-    int j;
-    for (float f = 0.0F;; f = 20.0F)
-    {
-      i = AIOUtils.a(f, getContext().getResources());
-      j = (int)(getScrollY() + paramFloat);
-      if (j >= i) {
-        break;
-      }
+    float f;
+    if (this.jdField_a_of_type_Boolean) {
+      f = 0.0F;
+    } else {
+      f = 20.0F;
+    }
+    int i = AIOUtils.b(f, getContext().getResources());
+    int j = (int)(getScrollY() + paramFloat);
+    if (j < i) {
       return paramFloat;
     }
     if (j >= i)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAtPanelTouchController$AtPanelTouchListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAtPanelTouchController$AtPanelTouchListener.a();
+      AtPanelTouchController.AtPanelTouchListener localAtPanelTouchListener = this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAtPanelTouchController$AtPanelTouchListener;
+      if (localAtPanelTouchListener != null) {
+        localAtPanelTouchListener.a();
       }
       return i - getScrollY();
     }
@@ -130,9 +121,10 @@ public class TogetherPanelTouchController
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidWidgetScroller != null)
+    Scroller localScroller = this.jdField_a_of_type_AndroidWidgetScroller;
+    if (localScroller != null)
     {
-      this.jdField_a_of_type_AndroidWidgetScroller.startScroll(0, getScrollY(), 0, paramInt - getScrollY());
+      localScroller.startScroll(0, getScrollY(), 0, paramInt - getScrollY());
       invalidate();
       return;
     }
@@ -142,25 +134,27 @@ public class TogetherPanelTouchController
   public void computeScroll()
   {
     super.computeScroll();
-    if ((this.jdField_a_of_type_AndroidWidgetScroller != null) && (this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset()))
+    Object localObject = this.jdField_a_of_type_AndroidWidgetScroller;
+    if ((localObject != null) && (((Scroller)localObject).computeScrollOffset()))
     {
       scrollTo(this.jdField_a_of_type_AndroidWidgetScroller.getCurrX(), this.jdField_a_of_type_AndroidWidgetScroller.getCurrY());
       invalidate();
+      return;
     }
-    do
+    if (this.e)
     {
-      do
-      {
-        return;
-      } while (!this.e);
       this.e = false;
-    } while (this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAtPanelTouchController$AtPanelTouchListener == null);
-    this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAtPanelTouchController$AtPanelTouchListener.a(this.jdField_a_of_type_Int);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAtPanelTouchController$AtPanelTouchListener;
+      if (localObject != null) {
+        ((AtPanelTouchController.AtPanelTouchListener)localObject).a(this.jdField_a_of_type_Int);
+      }
+    }
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     View localView2 = this.jdField_a_of_type_AndroidViewView;
+    boolean bool = false;
     View localView1 = localView2;
     if (localView2 == null) {
       localView1 = getChildAt(0);
@@ -169,51 +163,54 @@ public class TogetherPanelTouchController
       return super.dispatchTouchEvent(paramMotionEvent);
     }
     float f1 = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return false;
-      this.d = false;
-      this.jdField_a_of_type_Float = paramMotionEvent.getY();
-      super.dispatchTouchEvent(paramMotionEvent);
-      return true;
-      if (this.jdField_a_of_type_Float == -3.402824E+038F)
-      {
-        this.jdField_a_of_type_Float = f1;
-        return super.dispatchTouchEvent(paramMotionEvent);
-      }
-      float f2 = -(f1 - this.jdField_a_of_type_Float);
-      float f3 = a(f2);
-      if (QLog.isColorLevel()) {
-        QLog.d("UUUU", 2, "NKSS=" + f3 + " differ=" + f2);
-      }
-      if ((this.jdField_b_of_type_Boolean) && (f3 != 0.0F))
-      {
-        scrollBy(0, (int)f3);
-        if (Math.abs(f2) > 5.0F) {
-          this.d = true;
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAtPanelTouchController$AtPanelTouchListener != null)
+      if (i != 1) {
+        if (i != 2)
         {
-          paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAtPanelTouchController$AtPanelTouchListener;
-          if (getScrollY() <= 0) {
-            break label268;
+          if (i != 3) {
+            return false;
           }
         }
-      }
-      label268:
-      for (boolean bool = true;; bool = false)
-      {
-        paramMotionEvent.a(bool);
-        this.jdField_a_of_type_Float = f1;
-        return true;
-        if (f3 <= 0.0F) {
-          break;
+        else
+        {
+          float f2 = this.jdField_a_of_type_Float;
+          if (f2 == -3.402824E+038F)
+          {
+            this.jdField_a_of_type_Float = f1;
+            return super.dispatchTouchEvent(paramMotionEvent);
+          }
+          f2 = -(f1 - f2);
+          float f3 = a(f2);
+          if (QLog.isColorLevel())
+          {
+            paramMotionEvent = new StringBuilder();
+            paramMotionEvent.append("NKSS=");
+            paramMotionEvent.append(f3);
+            paramMotionEvent.append(" differ=");
+            paramMotionEvent.append(f2);
+            QLog.d("UUUU", 2, paramMotionEvent.toString());
+          }
+          if ((this.jdField_b_of_type_Boolean) && (f3 != 0.0F)) {
+            scrollBy(0, (int)f3);
+          } else if (f3 > 0.0F) {
+            scrollBy(0, (int)f3);
+          }
+          if (Math.abs(f2) > 5.0F) {
+            this.d = true;
+          }
+          paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAtPanelTouchController$AtPanelTouchListener;
+          if (paramMotionEvent != null)
+          {
+            if (getScrollY() > 0) {
+              bool = true;
+            }
+            paramMotionEvent.a(bool);
+          }
+          this.jdField_a_of_type_Float = f1;
+          return true;
         }
-        scrollBy(0, (int)f3);
-        break;
       }
       this.jdField_b_of_type_Boolean = false;
       this.jdField_a_of_type_Float = -3.402824E+038F;
@@ -222,22 +219,27 @@ public class TogetherPanelTouchController
       }
       paramMotionEvent.setAction(3);
       super.dispatchTouchEvent(paramMotionEvent);
-      if (-getScrollY() < a()) {}
-      for (int i = 1;; i = 0)
-      {
-        if (i != 1) {
-          break label344;
-        }
-        a(0);
-        break;
+      if (-getScrollY() < a()) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      label344:
+      if (i == 1)
+      {
+        a(0);
+        return false;
+      }
       if (this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAtPanelTouchController$AtPanelTouchListener != null)
       {
         this.e = true;
         a(-this.jdField_b_of_type_Int);
       }
+      return false;
     }
+    this.d = false;
+    this.jdField_a_of_type_Float = paramMotionEvent.getY();
+    super.dispatchTouchEvent(paramMotionEvent);
+    return true;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -272,7 +274,7 @@ public class TogetherPanelTouchController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.together.ui.TogetherPanelTouchController
  * JD-Core Version:    0.7.0.1
  */

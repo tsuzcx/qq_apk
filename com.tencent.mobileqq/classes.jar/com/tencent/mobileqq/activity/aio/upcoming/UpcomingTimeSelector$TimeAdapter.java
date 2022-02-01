@@ -19,55 +19,74 @@ class UpcomingTimeSelector$TimeAdapter
   
   public int a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return 1;
-    case 0: 
-      if (this.a.c >= 23) {
-        return 365;
+      if (paramInt != 1) {
+        return 1;
       }
-      return 366;
+      if ((UpcomingTimeSelector.a(this.a).a(0) == 0) && (this.a.c < 23)) {
+        return this.a.a();
+      }
+      return 24;
     }
-    if ((UpcomingTimeSelector.a(this.a).a(0) == 0) && (this.a.c < 23)) {
-      return this.a.a();
+    if (this.a.c >= 23) {
+      return 365;
     }
-    return 24;
+    return 366;
   }
   
   public String a(int paramInt1, int paramInt2)
   {
-    switch (paramInt1)
+    if (paramInt1 != 0)
     {
-    default: 
-      localObject = "";
-      return localObject;
-    case 0: 
-      Calendar localCalendar = Calendar.getInstance();
-      localCalendar.setFirstDayOfWeek(1);
-      if (this.a.c < 23) {}
-      for (paramInt1 = paramInt2;; paramInt1 = paramInt2 + 1)
-      {
-        localCalendar.add(6, paramInt1);
-        localObject = this.a.a(paramInt2, localCalendar);
-        String str = "" + (String)localObject;
-        localObject = str;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("UpComingMsgLogic.UpcomingTimeSelector", 1, str + " day_of_week " + localCalendar.get(7) + "\n" + localCalendar.getTime().toString());
-        return str;
+      if (paramInt1 != 1) {
+        return "";
       }
+      if ((UpcomingTimeSelector.a(this.a).a(0) == 0) && (this.a.c < 23))
+      {
+        localObject1 = this.a.a(paramInt2);
+      }
+      else
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramInt2);
+        ((StringBuilder)localObject1).append(this.a.a.getString(2131694556));
+        localObject1 = ((StringBuilder)localObject1).toString();
+      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      return ((StringBuilder)localObject2).toString();
     }
-    if ((UpcomingTimeSelector.a(this.a).a(0) == 0) && (this.a.c < 23)) {}
-    for (Object localObject = this.a.a(paramInt2);; localObject = paramInt2 + this.a.a.getString(2131694588)) {
-      return "" + (String)localObject;
+    Object localObject1 = Calendar.getInstance();
+    ((Calendar)localObject1).setFirstDayOfWeek(1);
+    if (this.a.c < 23) {
+      paramInt1 = paramInt2;
+    } else {
+      paramInt1 = paramInt2 + 1;
     }
+    ((Calendar)localObject1).add(6, paramInt1);
+    Object localObject2 = this.a.a(paramInt2, (Calendar)localObject1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append((String)localObject2);
+    localObject2 = localStringBuilder.toString();
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject2);
+      localStringBuilder.append(" day_of_week ");
+      localStringBuilder.append(((Calendar)localObject1).get(7));
+      localStringBuilder.append("\n");
+      localStringBuilder.append(((Calendar)localObject1).getTime().toString());
+      QLog.d("UpComingMsgLogic.UpcomingTimeSelector", 1, localStringBuilder.toString());
+    }
+    return localObject2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.upcoming.UpcomingTimeSelector.TimeAdapter
  * JD-Core Version:    0.7.0.1
  */

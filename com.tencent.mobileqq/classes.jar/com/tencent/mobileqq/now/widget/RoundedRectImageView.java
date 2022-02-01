@@ -50,31 +50,24 @@ public class RoundedRectImageView
         int k = paramContext.getDimensionPixelSize(3, 0);
         int m = paramContext.getDimensionPixelSize(1, 0);
         paramAttributeSet = this.jdField_a_of_type_ArrayOfFloat;
-        float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
         float f = i;
-        arrayOfFloat[1] = f;
+        paramAttributeSet[1] = f;
         paramAttributeSet[0] = f;
-        paramAttributeSet = this.jdField_a_of_type_ArrayOfFloat;
-        arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
         f = k;
-        arrayOfFloat[3] = f;
+        paramAttributeSet[3] = f;
         paramAttributeSet[2] = f;
-        paramAttributeSet = this.jdField_a_of_type_ArrayOfFloat;
-        arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
         f = m;
-        arrayOfFloat[5] = f;
+        paramAttributeSet[5] = f;
         paramAttributeSet[4] = f;
-        paramAttributeSet = this.jdField_a_of_type_ArrayOfFloat;
-        arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
         f = j;
-        arrayOfFloat[7] = f;
+        paramAttributeSet[7] = f;
         paramAttributeSet[6] = f;
         paramContext.recycle();
       }
     }
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, getWidth(), getHeight());
     this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CW);
@@ -84,43 +77,39 @@ public class RoundedRectImageView
   
   public void setBottomLeftRadius(int paramInt)
   {
-    float[] arrayOfFloat1 = this.jdField_a_of_type_ArrayOfFloat;
-    float[] arrayOfFloat2 = this.jdField_a_of_type_ArrayOfFloat;
+    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
     float f = paramInt;
-    arrayOfFloat2[7] = f;
-    arrayOfFloat1[6] = f;
+    arrayOfFloat[7] = f;
+    arrayOfFloat[6] = f;
   }
   
   public void setBottomRightRadius(int paramInt)
   {
-    float[] arrayOfFloat1 = this.jdField_a_of_type_ArrayOfFloat;
-    float[] arrayOfFloat2 = this.jdField_a_of_type_ArrayOfFloat;
+    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
     float f = paramInt;
-    arrayOfFloat2[5] = f;
-    arrayOfFloat1[4] = f;
+    arrayOfFloat[5] = f;
+    arrayOfFloat[4] = f;
   }
   
   public void setTopLeftRadius(int paramInt)
   {
-    float[] arrayOfFloat1 = this.jdField_a_of_type_ArrayOfFloat;
-    float[] arrayOfFloat2 = this.jdField_a_of_type_ArrayOfFloat;
+    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
     float f = paramInt;
-    arrayOfFloat2[1] = f;
-    arrayOfFloat1[0] = f;
+    arrayOfFloat[1] = f;
+    arrayOfFloat[0] = f;
   }
   
   public void setTopRightRadius(int paramInt)
   {
-    float[] arrayOfFloat1 = this.jdField_a_of_type_ArrayOfFloat;
-    float[] arrayOfFloat2 = this.jdField_a_of_type_ArrayOfFloat;
+    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
     float f = paramInt;
-    arrayOfFloat2[3] = f;
-    arrayOfFloat1[2] = f;
+    arrayOfFloat[3] = f;
+    arrayOfFloat[2] = f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.widget.RoundedRectImageView
  * JD-Core Version:    0.7.0.1
  */

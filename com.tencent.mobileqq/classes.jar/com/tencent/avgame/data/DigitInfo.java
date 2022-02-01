@@ -16,12 +16,13 @@ public class DigitInfo
   
   public boolean a()
   {
-    return (this.a >= 0) && (this.a < 10);
+    int i = this.a;
+    return (i >= 0) && (i < 10);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.data.DigitInfo
  * JD-Core Version:    0.7.0.1
  */

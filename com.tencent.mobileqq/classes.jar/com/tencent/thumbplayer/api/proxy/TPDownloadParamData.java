@@ -13,6 +13,7 @@ public class TPDownloadParamData
   private int clipNo = 1;
   private String currentFormat;
   private int currentFormatID;
+  private String decKey;
   private List<Map<String, String>> defInfoList;
   private int dlType;
   private String downloadFileID;
@@ -31,14 +32,17 @@ public class TPDownloadParamData
   private String linkVid;
   private String m3u8;
   private boolean needEncryptCache;
+  private String nonce;
   private ArrayList<String> pcdnUrlList;
   private ArrayList<Integer> pcdnVtList;
   private String playDefinition;
   private long preloadDuration;
   private long preloadSize;
+  private String randoms;
   private String savePath;
   private boolean selfAdaption = false;
   private int starTimeMS;
+  private int taskType;
   private int testid;
   private long tm;
   public String url;
@@ -99,6 +103,11 @@ public class TPDownloadParamData
   public int getCurrentFormatID()
   {
     return this.currentFormatID;
+  }
+  
+  public String getDecKey()
+  {
+    return this.decKey;
   }
   
   public List<Map<String, String>> getDefInfoList()
@@ -171,6 +180,11 @@ public class TPDownloadParamData
     return this.m3u8;
   }
   
+  public String getNonce()
+  {
+    return this.nonce;
+  }
+  
   public ArrayList<String> getPcdnUrlList()
   {
     return this.pcdnUrlList;
@@ -196,6 +210,11 @@ public class TPDownloadParamData
     return this.preloadSize;
   }
   
+  public String getRandoms()
+  {
+    return this.randoms;
+  }
+  
   public String getSavePath()
   {
     return this.savePath;
@@ -209,6 +228,11 @@ public class TPDownloadParamData
   public int getStarTimeMS()
   {
     return this.starTimeMS;
+  }
+  
+  public int getTaskType()
+  {
+    return this.taskType;
   }
   
   public int getTestid()
@@ -311,6 +335,11 @@ public class TPDownloadParamData
     this.currentFormatID = paramInt;
   }
   
+  public void setDecKey(String paramString)
+  {
+    this.decKey = paramString;
+  }
+  
   public void setDefInfoList(List<Map<String, String>> paramList)
   {
     this.defInfoList = paramList;
@@ -391,6 +420,11 @@ public class TPDownloadParamData
     this.needEncryptCache = paramBoolean;
   }
   
+  public void setNonce(String paramString)
+  {
+    this.nonce = paramString;
+  }
+  
   public void setOffline(boolean paramBoolean)
   {
     this.isOffline = paramBoolean;
@@ -421,6 +455,11 @@ public class TPDownloadParamData
     this.preloadSize = paramLong;
   }
   
+  public void setRandoms(String paramString)
+  {
+    this.randoms = paramString;
+  }
+  
   public void setSavePath(String paramString)
   {
     this.savePath = paramString;
@@ -434,6 +473,11 @@ public class TPDownloadParamData
   public void setStarTimeMS(int paramInt)
   {
     this.starTimeMS = paramInt;
+  }
+  
+  public void setTaskType(int paramInt)
+  {
+    this.taskType = paramInt;
   }
   
   public void setTestid(int paramInt)
@@ -478,7 +522,7 @@ public class TPDownloadParamData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.api.proxy.TPDownloadParamData
  * JD-Core Version:    0.7.0.1
  */

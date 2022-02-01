@@ -18,8 +18,8 @@ public class QzoneModuleReport
   private static final String SUCCESS_CODE = "1";
   private static final String TAG = "QzoneModuleReport";
   private static boolean sNeedReport = false;
-  private static long sampleValidEndTime = 0L;
-  private static long sampleValidStartTime = 0L;
+  private static long sampleValidEndTime;
+  private static long sampleValidStartTime;
   
   private static long getSpecifiedTimeInMillis(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
@@ -42,55 +42,65 @@ public class QzoneModuleReport
   
   private static boolean isNeedReport()
   {
-    boolean bool2 = false;
-    boolean bool1 = false;
     for (;;)
     {
-      int i;
+      long l1;
       long l2;
-      int j;
+      boolean bool;
       try
       {
-        long l1 = System.currentTimeMillis();
+        l1 = System.currentTimeMillis();
         if (!isTodayTime(l1))
         {
           i = QzoneConfig.getInstance().getConfig("QZoneSetting", "qzoneModuleReportSample", 100);
           l1 /= 86400000L;
           l2 = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
+          bool = false;
           if (l2 == 0L) {
-            return bool1;
+            return false;
           }
           if (i == 0)
           {
             sNeedReport = false;
+            continue;
+            sNeedReport = bool;
+            if (QLog.isColorLevel())
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("----QzoneModule-sample number： ");
+              localStringBuilder.append(i);
+              QLog.d("QzoneModuleReport", 4, localStringBuilder.toString());
+            }
             sampleValidStartTime = getSpecifiedTimeInMillis(0, 0, 0, 0, 0, 0);
             sampleValidEndTime = getSpecifiedTimeInMillis(0, 0, 0, 24, 0, 0);
           }
         }
         else
         {
-          bool1 = sNeedReport;
-          continue;
-          sNeedReport = bool1;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("QzoneModuleReport", 4, "----QzoneModule-sample number： " + j);
-          continue;
+          bool = sNeedReport;
+          return bool;
         }
-        j = (int)(l1 % i);
       }
       finally {}
-      bool1 = bool2;
-      if (j == l2 % i) {
-        bool1 = true;
+      long l3 = i;
+      int i = (int)(l1 % l3);
+      if (i == l2 % l3) {
+        bool = true;
       }
     }
   }
   
   private static boolean isTodayTime(long paramLong)
   {
-    return (sampleValidStartTime != 0L) && (sampleValidEndTime != 0L) && (paramLong >= sampleValidStartTime) && (paramLong < sampleValidEndTime);
+    long l1 = sampleValidStartTime;
+    if (l1 != 0L)
+    {
+      long l2 = sampleValidEndTime;
+      if ((l2 != 0L) && (paramLong >= l1) && (paramLong < l2)) {
+        return true;
+      }
+    }
+    return false;
   }
   
   private static void report(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3)
@@ -105,53 +115,80 @@ public class QzoneModuleReport
     ThreadManager.post(new QzoneModuleReport.1(paramString1, paramString2, paramBoolean, paramLong1, paramLong2, paramHashMap, paramString3), 5, null, false);
   }
   
-  public static void reportDownloadRes(QzoneModuleConfigManager.QzoneModuleRecord paramQzoneModuleRecord, boolean paramBoolean, long paramLong)
+  public static void reportDownloadRes(QzoneModuleRecord paramQzoneModuleRecord, boolean paramBoolean, long paramLong)
   {
-    if (paramBoolean) {}
-    for (String str = "1";; str = "0")
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("module_id", paramQzoneModuleRecord.mModuleId);
-      localHashMap.put("module_url", paramQzoneModuleRecord.mUrl);
-      localHashMap.put("module_version", String.valueOf(paramQzoneModuleRecord.mVersion));
-      localHashMap.put("downloadState", str);
-      localHashMap.put("param_FailCode", "v" + paramQzoneModuleRecord.mVersion + "_" + str);
-      report(BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramQzoneModuleRecord.mModuleId + "_downloadRes", paramBoolean, paramLong, 0L, localHashMap, "");
-      return;
+    if (paramBoolean) {
+      str = "1";
+    } else {
+      str = "0";
     }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("module_id", paramQzoneModuleRecord.mModuleId);
+    localHashMap.put("module_url", paramQzoneModuleRecord.mUrl);
+    localHashMap.put("module_version", String.valueOf(paramQzoneModuleRecord.mVersion));
+    localHashMap.put("downloadState", str);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("v");
+    localStringBuilder.append(paramQzoneModuleRecord.mVersion);
+    localStringBuilder.append("_");
+    localStringBuilder.append(str);
+    localHashMap.put("param_FailCode", localStringBuilder.toString());
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramQzoneModuleRecord.mModuleId);
+    localStringBuilder.append("_downloadRes");
+    report(str, localStringBuilder.toString(), paramBoolean, paramLong, 0L, localHashMap, "");
   }
   
-  public static void reportLoadRes(QzoneModuleConfigManager.QzoneModuleRecord paramQzoneModuleRecord, boolean paramBoolean, long paramLong)
+  public static void reportLoadRes(QzoneModuleRecord paramQzoneModuleRecord, boolean paramBoolean, long paramLong)
   {
-    if (paramBoolean) {}
-    for (String str = "1";; str = "0")
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("module_id", paramQzoneModuleRecord.mModuleId);
-      localHashMap.put("module_url", paramQzoneModuleRecord.mUrl);
-      localHashMap.put("module_version", String.valueOf(paramQzoneModuleRecord.mVersion));
-      localHashMap.put("loadState", str);
-      localHashMap.put("param_FailCode", "v" + paramQzoneModuleRecord.mVersion + "_" + str);
-      report(BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramQzoneModuleRecord.mModuleId + "_loadRes", paramBoolean, paramLong, 0L, localHashMap, "");
-      return;
+    if (paramBoolean) {
+      str = "1";
+    } else {
+      str = "0";
     }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("module_id", paramQzoneModuleRecord.mModuleId);
+    localHashMap.put("module_url", paramQzoneModuleRecord.mUrl);
+    localHashMap.put("module_version", String.valueOf(paramQzoneModuleRecord.mVersion));
+    localHashMap.put("loadState", str);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("v");
+    localStringBuilder.append(paramQzoneModuleRecord.mVersion);
+    localStringBuilder.append("_");
+    localStringBuilder.append(str);
+    localHashMap.put("param_FailCode", localStringBuilder.toString());
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramQzoneModuleRecord.mModuleId);
+    localStringBuilder.append("_loadRes");
+    report(str, localStringBuilder.toString(), paramBoolean, paramLong, 0L, localHashMap, "");
   }
   
-  public static void reportResolveClassRes(QzoneModuleConfigManager.QzoneModuleRecord paramQzoneModuleRecord, String paramString, long paramLong)
+  public static void reportResolveClassRes(QzoneModuleRecord paramQzoneModuleRecord, String paramString, long paramLong)
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("module_id", paramQzoneModuleRecord.mModuleId);
     localHashMap.put("module_url", paramQzoneModuleRecord.mUrl);
     localHashMap.put("module_version", paramQzoneModuleRecord.mVersion);
     localHashMap.put("resolveClassState", paramString);
-    localHashMap.put("param_FailCode", "v" + paramQzoneModuleRecord.mVersion + "_" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("v");
+    localStringBuilder.append(paramQzoneModuleRecord.mVersion);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString);
+    localHashMap.put("param_FailCode", localStringBuilder.toString());
     boolean bool = "1".equalsIgnoreCase(paramString);
-    report(BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramQzoneModuleRecord.mModuleId + "_resolveClassRes", bool, paramLong, 0L, localHashMap, "");
+    paramString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramQzoneModuleRecord.mModuleId);
+    localStringBuilder.append("_resolveClassRes");
+    report(paramString, localStringBuilder.toString(), bool, paramLong, 0L, localHashMap, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.networkedmodule.QzoneModuleReport
  * JD-Core Version:    0.7.0.1
  */

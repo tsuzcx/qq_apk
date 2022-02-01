@@ -15,9 +15,9 @@ class ArkIDESettingFragment$3
   public void onClick(View paramView)
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(BaseActivity.sTopActivity, null);
-    localActionSheet.setMainTitle(BaseActivity.sTopActivity.getString(2131690224));
-    localActionSheet.addButton(2131690223, 3);
-    localActionSheet.addCancelButton(2131690225);
+    localActionSheet.setMainTitle(BaseActivity.sTopActivity.getString(2131690140));
+    localActionSheet.addButton(2131690139, 3);
+    localActionSheet.addCancelButton(2131690141);
     localActionSheet.setOnDismissListener(new ArkIDESettingFragment.3.1(this, localActionSheet));
     localActionSheet.setOnButtonClickListener(new ArkIDESettingFragment.3.2(this, localActionSheet));
     if (!localActionSheet.isShowing()) {
@@ -28,7 +28,7 @@ class ArkIDESettingFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ark.debug.ArkIDESettingFragment.3
  * JD-Core Version:    0.7.0.1
  */

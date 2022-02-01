@@ -23,7 +23,7 @@ public final class AdUIUtils
     if (paramFloat == 0.0F) {
       return 0;
     }
-    return (int)(paramResources.getDisplayMetrics().density * paramFloat + 0.5F);
+    return (int)(paramFloat * paramResources.getDisplayMetrics().density + 0.5F);
   }
   
   public static String formatNumberToChineseUnit(long paramLong)
@@ -34,93 +34,130 @@ public final class AdUIUtils
       if (paramLong == 0L) {
         return "";
       }
-      if (paramLong < 10000.0D) {
-        return String.valueOf(paramLong) + "次下载";
+      double d = paramLong;
+      if (d < 10000.0D)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(String.valueOf(paramLong));
+        ((StringBuilder)localObject).append("次下载");
+        localObject = ((StringBuilder)localObject).toString();
       }
-      if (paramLong < 100000000.0D) {
-        return ((DecimalFormat)localObject).format(paramLong / 10000.0D) + "万次下载";
+      else
+      {
+        StringBuilder localStringBuilder;
+        if (d < 100000000.0D)
+        {
+          localStringBuilder = new StringBuilder();
+          Double.isNaN(d);
+          d /= 10000.0D;
+          localStringBuilder.append(((DecimalFormat)localObject).format(d));
+          localStringBuilder.append("万次下载");
+          localObject = localStringBuilder.toString();
+        }
+        else
+        {
+          localStringBuilder = new StringBuilder();
+          Double.isNaN(d);
+          d /= 100000000.0D;
+          localStringBuilder.append(((DecimalFormat)localObject).format(d));
+          localStringBuilder.append("亿次下载");
+          localObject = localStringBuilder.toString();
+        }
       }
-      localObject = ((DecimalFormat)localObject).format(paramLong / 100000000.0D) + "亿次下载";
-      return localObject;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
+      return "";
     }
-    return "";
+    return localException;
   }
   
   public static int formatStringToGravity(String paramString1, String paramString2)
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      throw new Exception(paramString2 + " unknown gravity type");
-    }
-    paramString1 = paramString1.toUpperCase();
-    int i = -1;
-    switch (paramString1.hashCode())
+    if (!TextUtils.isEmpty(paramString1))
     {
-    }
-    for (;;)
-    {
-      switch (i)
+      paramString1 = paramString1.toUpperCase();
+      int i = -1;
+      int j = paramString1.hashCode();
+      if (j != 2332679)
       {
-      default: 
-        throw new Exception(paramString2 + " unknown gravity type");
-        if (paramString1.equals("CENTER"))
+        if (j != 77974012)
         {
-          i = 0;
-          continue;
-          if (paramString1.equals("LEFT"))
-          {
-            i = 1;
-            continue;
-            if (paramString1.equals("RIGHT")) {
-              i = 2;
-            }
+          if ((j == 1984282709) && (paramString1.equals("CENTER"))) {
+            i = 0;
           }
         }
-        break;
+        else if (paramString1.equals("RIGHT")) {
+          i = 2;
+        }
       }
+      else if (paramString1.equals("LEFT")) {
+        i = 1;
+      }
+      if (i != 0)
+      {
+        if (i != 1)
+        {
+          if (i == 2) {
+            return 8388613;
+          }
+          paramString1 = new StringBuilder();
+          paramString1.append(paramString2);
+          paramString1.append(" unknown gravity type");
+          throw new Exception(paramString1.toString());
+        }
+        return 8388611;
+      }
+      return 17;
     }
-    return 17;
-    return 8388611;
-    return 8388613;
+    paramString1 = new StringBuilder();
+    paramString1.append(paramString2);
+    paramString1.append(" unknown gravity type");
+    throw new Exception(paramString1.toString());
   }
   
   public static int formatStringToRelativeLayoutRule(String paramString1, String paramString2)
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      throw new Exception(paramString2 + " unknown layout rule type");
-    }
-    int i = -1;
-    switch (paramString1.hashCode())
+    if (!TextUtils.isEmpty(paramString1))
     {
-    }
-    for (;;)
-    {
-      switch (i)
+      int i = -1;
+      int j = paramString1.hashCode();
+      if (j != -1364013995)
       {
-      default: 
-        throw new Exception(paramString2 + " unknown layout rule type");
-        if (paramString1.equals("center"))
+        if (j != -46581362)
         {
-          i = 0;
-          continue;
-          if (paramString1.equals("flex-start"))
-          {
-            i = 1;
-            continue;
-            if (paramString1.equals("flex-end")) {
-              i = 2;
-            }
+          if ((j == 1742952711) && (paramString1.equals("flex-end"))) {
+            i = 2;
           }
         }
-        break;
+        else if (paramString1.equals("flex-start")) {
+          i = 1;
+        }
       }
+      else if (paramString1.equals("center")) {
+        i = 0;
+      }
+      if (i != 0)
+      {
+        if (i != 1)
+        {
+          if (i == 2) {
+            return 11;
+          }
+          paramString1 = new StringBuilder();
+          paramString1.append(paramString2);
+          paramString1.append(" unknown layout rule type");
+          throw new Exception(paramString1.toString());
+        }
+        return 9;
+      }
+      return 14;
     }
-    return 14;
-    return 9;
-    return 11;
+    paramString1 = new StringBuilder();
+    paramString1.append(paramString2);
+    paramString1.append(" unknown layout rule type");
+    throw new Exception(paramString1.toString());
   }
   
   public static Bitmap getBitmapFromString(String paramString)
@@ -139,7 +176,10 @@ public final class AdUIUtils
     }
     catch (Throwable paramString)
     {
-      AdLog.e("AdUIUtils", "getBitmapFromString error" + paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getBitmapFromString error");
+      localStringBuilder.append(paramString);
+      AdLog.e("AdUIUtils", localStringBuilder.toString());
     }
     return null;
   }
@@ -149,25 +189,44 @@ public final class AdUIUtils
     if (paramLong < 1024L) {}
     try
     {
-      return paramLong + "B";
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("B");
+      return ((StringBuilder)localObject).toString();
     }
     catch (Exception localException)
     {
       Object localObject;
-      double d1;
-      double d2;
+      double d;
+      StringBuilder localStringBuilder;
       localException.printStackTrace();
     }
     localObject = new DecimalFormat("##0.0");
-    d1 = 1024.0D * 1024.0D;
-    d2 = 1024.0D * d1;
-    if (paramLong < d1) {
-      return ((DecimalFormat)localObject).format(paramLong / 1024.0D) + "K";
+    d = paramLong;
+    if (d < 1048576.0D)
+    {
+      localStringBuilder = new StringBuilder();
+      Double.isNaN(d);
+      d /= 1024.0D;
+      localStringBuilder.append(((DecimalFormat)localObject).format(d));
+      localStringBuilder.append("K");
+      return localStringBuilder.toString();
     }
-    if (paramLong < d2) {
-      return ((DecimalFormat)localObject).format(paramLong / d1) + "M";
+    if (d < 1073741824.0D)
+    {
+      localStringBuilder = new StringBuilder();
+      Double.isNaN(d);
+      d /= 1048576.0D;
+      localStringBuilder.append(((DecimalFormat)localObject).format(d));
+      localStringBuilder.append("M");
+      return localStringBuilder.toString();
     }
-    localObject = ((DecimalFormat)localObject).format(paramLong / d2) + "G";
+    localStringBuilder = new StringBuilder();
+    Double.isNaN(d);
+    d /= 1073741824.0D;
+    localStringBuilder.append(((DecimalFormat)localObject).format(d));
+    localStringBuilder.append("G");
+    localObject = localStringBuilder.toString();
     return localObject;
     return "";
   }
@@ -181,43 +240,53 @@ public final class AdUIUtils
     }
     catch (Exception paramString1)
     {
-      throw new Exception(paramString2 + " unknown percent string");
+      label17:
+      break label17;
     }
+    paramString1 = new StringBuilder();
+    paramString1.append(paramString2);
+    paramString1.append(" unknown percent string");
+    throw new Exception(paramString1.toString());
   }
   
   public static double getPercentageOfGlobalVisibleRect(View paramView)
   {
-    if (paramView == null) {}
-    Rect localRect;
-    do
-    {
+    if (paramView == null) {
       return 0.0D;
-      localRect = new Rect();
-    } while ((!paramView.getGlobalVisibleRect(localRect)) || (localRect.left >= getScreenWidth(paramView.getContext())) || (localRect.top >= getScreenHeight(paramView.getContext())) || (localRect.right <= 0) || (localRect.bottom <= 0));
-    return 1.0D * localRect.width() * localRect.height() / (paramView.getWidth() * paramView.getHeight());
+    }
+    Rect localRect = new Rect();
+    if (!paramView.getGlobalVisibleRect(localRect)) {
+      return 0.0D;
+    }
+    if ((localRect.left < getScreenWidth(paramView.getContext())) && (localRect.top < getScreenHeight(paramView.getContext())) && (localRect.right > 0))
+    {
+      if (localRect.bottom <= 0) {
+        return 0.0D;
+      }
+      double d1 = localRect.width();
+      Double.isNaN(d1);
+      double d2 = localRect.height();
+      Double.isNaN(d2);
+      double d3 = paramView.getWidth() * paramView.getHeight();
+      Double.isNaN(d3);
+      return d1 * 1.0D * d2 / d3;
+    }
+    return 0.0D;
   }
   
   public static int getPhysicalScreenWidth(Context paramContext)
   {
-    int i;
-    if (paramContext == null)
+    if ((paramContext == null) || (paramContext.getResources() == null) || (paramContext.getResources().getDisplayMetrics() == null))
     {
       AdLog.e("AdUIUtils", "getScreenWidth error");
-      i = -2147483648;
+      return -2147483648;
     }
-    int k;
-    int j;
-    do
-    {
-      return i;
-      if ((paramContext.getResources() == null) || (paramContext.getResources().getDisplayMetrics() == null)) {
-        break;
-      }
-      k = paramContext.getResources().getDisplayMetrics().widthPixels;
-      j = paramContext.getResources().getDisplayMetrics().heightPixels;
-      i = j;
-    } while (k > j);
-    return k;
+    int i = paramContext.getResources().getDisplayMetrics().widthPixels;
+    int j = paramContext.getResources().getDisplayMetrics().heightPixels;
+    if (i > j) {
+      return j;
+    }
+    return i;
   }
   
   public static int getPxFromString(String paramString1, String paramString2)
@@ -229,14 +298,18 @@ public final class AdUIUtils
     }
     catch (Exception paramString1)
     {
-      throw new Exception(paramString2 + " unknown px string");
+      label17:
+      break label17;
     }
+    paramString1 = new StringBuilder();
+    paramString1.append(paramString2);
+    paramString1.append(" unknown px string");
+    throw new Exception(paramString1.toString());
   }
   
   public static int getScreenHeight(Context paramContext)
   {
-    if (paramContext == null) {}
-    while ((paramContext.getResources() == null) || (paramContext.getResources().getDisplayMetrics() == null))
+    if ((paramContext == null) || (paramContext.getResources() == null) || (paramContext.getResources().getDisplayMetrics() == null))
     {
       AdLog.e("AdUIUtils", "getScreenHeight error");
       return -2147483648;
@@ -246,8 +319,7 @@ public final class AdUIUtils
   
   public static int getScreenWidth(Context paramContext)
   {
-    if (paramContext == null) {}
-    while ((paramContext.getResources() == null) || (paramContext.getResources().getDisplayMetrics() == null))
+    if ((paramContext == null) || (paramContext.getResources() == null) || (paramContext.getResources().getDisplayMetrics() == null))
     {
       AdLog.e("AdUIUtils", "getScreenWidth error");
       return -2147483648;
@@ -257,24 +329,31 @@ public final class AdUIUtils
   
   public static int getValueDependsOnScreenWidth(Context paramContext, int paramInt1, int paramInt2)
   {
-    if (paramInt1 != 0) {
-      return Double.valueOf(1.0D * paramInt2 * getPhysicalScreenWidth(paramContext) / paramInt1).intValue();
+    if (paramInt1 != 0)
+    {
+      double d1 = paramInt2;
+      Double.isNaN(d1);
+      double d2 = getPhysicalScreenWidth(paramContext);
+      Double.isNaN(d2);
+      double d3 = paramInt1;
+      Double.isNaN(d3);
+      return Double.valueOf(d1 * 1.0D * d2 / d3).intValue();
     }
     return 0;
   }
   
   public static int px2dp(Context paramContext, int paramInt)
   {
-    if (paramContext == null) {}
     float f;
-    do
+    if ((paramContext != null) && (paramContext.getResources() != null) && (paramContext.getResources().getDisplayMetrics() != null))
     {
-      do
-      {
-        return -2147483648;
-      } while ((paramContext.getResources() == null) || (paramContext.getResources().getDisplayMetrics() == null));
       f = paramContext.getResources().getDisplayMetrics().density;
-    } while (f <= 0.0F);
+      if (f > 0.0F) {}
+    }
+    else
+    {
+      return -2147483648;
+    }
     return Math.round(paramInt / f);
   }
   
@@ -286,7 +365,7 @@ public final class AdUIUtils
   
   public static int rem2pxForXJNative(float paramFloat, Resources paramResources)
   {
-    return (int)(paramResources.getDisplayMetrics().widthPixels / 10.0F * paramFloat);
+    return (int)(paramFloat * (paramResources.getDisplayMetrics().widthPixels / 10.0F));
   }
 }
 

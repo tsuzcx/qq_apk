@@ -4,11 +4,12 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.CloseableBitmap;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.IBitmapCallback;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageManager;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageRequest;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.kandian.base.image.ImageRequest;
+import com.tencent.mobileqq.kandian.base.image.api.IBitmapCallback;
+import com.tencent.mobileqq.kandian.base.image.api.ICloseableBitmap;
+import com.tencent.mobileqq.kandian.base.image.api.IImageManager;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.open.downloadnew.DownloadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
@@ -21,22 +22,28 @@ public class NativeAdPreloadManager
   implements IBitmapCallback, Manager
 {
   private int jdField_a_of_type_Int;
-  private ImageRequest jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest;
+  private ImageRequest jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private int b;
   
   public NativeAdPreloadManager(QQAppInterface paramQQAppInterface)
   {
-    paramQQAppInterface = (WindowManager)paramQQAppInterface.getApplication().getSystemService("window");
-    if (paramQQAppInterface != null)
+    Object localObject = (WindowManager)paramQQAppInterface.getApplication().getSystemService("window");
+    if (localObject != null)
     {
-      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-      paramQQAppInterface.getDefaultDisplay().getMetrics(localDisplayMetrics);
-      this.jdField_a_of_type_Int = localDisplayMetrics.widthPixels;
-      this.b = localDisplayMetrics.heightPixels;
-      if (QLog.isColorLevel()) {
-        QLog.d("NativeAdPreloadManager", 2, "createManager width:" + localDisplayMetrics.widthPixels + ", height:" + localDisplayMetrics.heightPixels);
+      paramQQAppInterface = new DisplayMetrics();
+      ((WindowManager)localObject).getDefaultDisplay().getMetrics(paramQQAppInterface);
+      this.jdField_a_of_type_Int = paramQQAppInterface.widthPixels;
+      this.b = paramQQAppInterface.heightPixels;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("createManager width:");
+        ((StringBuilder)localObject).append(paramQQAppInterface.widthPixels);
+        ((StringBuilder)localObject).append(", height:");
+        ((StringBuilder)localObject).append(paramQQAppInterface.heightPixels);
+        QLog.d("NativeAdPreloadManager", 2, ((StringBuilder)localObject).toString());
       }
     }
     DownloadManager.a();
@@ -44,52 +51,67 @@ public class NativeAdPreloadManager
   
   private void b()
   {
-    for (;;)
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      if ((this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest == null) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
       {
-        String str1;
-        if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest == null) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-          str1 = (String)this.jdField_a_of_type_JavaUtilArrayList.remove(0);
-        }
+        String str = (String)this.jdField_a_of_type_JavaUtilArrayList.remove(0);
         try
         {
-          Object localObject2 = new URL(str1);
-          if (ImageManager.a().a((URL)localObject2))
+          Object localObject3 = new URL(str);
+          if (((IImageManager)QRoute.api(IImageManager.class)).isLocalFileExist((URL)localObject3))
           {
             b();
-            if (QLog.isColorLevel()) {
-              QLog.d("NativeAdPreloadManager", 2, "startImageDownload url:" + str1 + ", file exist!");
+            if (QLog.isColorLevel())
+            {
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append("startImageDownload url:");
+              ((StringBuilder)localObject3).append(str);
+              ((StringBuilder)localObject3).append(", file exist!");
+              QLog.d("NativeAdPreloadManager", 2, ((StringBuilder)localObject3).toString());
             }
-            return;
           }
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest = new ImageRequest();
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_a_of_type_JavaNetURL = ((URL)localObject2);
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.b = this.b;
-          localObject2 = ImageManager.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest);
-          if (localObject2 != null)
+          else
           {
-            ((CloseableBitmap)localObject2).a();
-            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest = null;
-            b();
-            if (!QLog.isColorLevel()) {
-              continue;
+            this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest = new ImageRequest();
+            this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest.jdField_a_of_type_JavaNetURL = ((URL)localObject3);
+            this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+            this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest.b = this.b;
+            localObject3 = ((IImageManager)QRoute.api(IImageManager.class)).getBitmap(this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest);
+            if (localObject3 != null)
+            {
+              ((ICloseableBitmap)localObject3).a();
+              this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest = null;
+              b();
+              if (QLog.isColorLevel())
+              {
+                localObject3 = new StringBuilder();
+                ((StringBuilder)localObject3).append("startImageDownload url:");
+                ((StringBuilder)localObject3).append(str);
+                ((StringBuilder)localObject3).append(", bitmap cached!");
+                QLog.d("NativeAdPreloadManager", 2, ((StringBuilder)localObject3).toString());
+              }
             }
-            QLog.d("NativeAdPreloadManager", 2, "startImageDownload url:" + str1 + ", bitmap cached!");
-            continue;
+            else
+            {
+              ((IImageManager)QRoute.api(IImageManager.class)).loadImage(this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest, this);
+              if (QLog.isColorLevel())
+              {
+                localObject3 = new StringBuilder();
+                ((StringBuilder)localObject3).append("startImageDownload url:");
+                ((StringBuilder)localObject3).append(str);
+                ((StringBuilder)localObject3).append(", begin load!");
+                QLog.d("NativeAdPreloadManager", 2, ((StringBuilder)localObject3).toString());
+              }
+            }
           }
         }
         catch (Exception localException)
         {
           localException.printStackTrace();
-          continue;
         }
       }
-      ImageManager.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest, this);
-      if (QLog.isColorLevel()) {
-        QLog.d("NativeAdPreloadManager", 2, "startImageDownload url:" + str2 + ", begin load!");
-      }
+      return;
     }
   }
   
@@ -110,26 +132,34 @@ public class NativeAdPreloadManager
   
   public void a(ImageRequest paramImageRequest, int paramInt) {}
   
-  public void a(ImageRequest paramImageRequest, CloseableBitmap paramCloseableBitmap)
+  public void a(ImageRequest paramImageRequest, ICloseableBitmap paramICloseableBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NativeAdPreloadManager", 2, "onSuccess url:" + paramImageRequest.jdField_a_of_type_JavaNetURL.toString());
-    }
-    if (paramImageRequest.equals(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest))
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest = null;
+      paramICloseableBitmap = new StringBuilder();
+      paramICloseableBitmap.append("onSuccess url:");
+      paramICloseableBitmap.append(paramImageRequest.jdField_a_of_type_JavaNetURL.toString());
+      QLog.d("NativeAdPreloadManager", 2, paramICloseableBitmap.toString());
+    }
+    if (paramImageRequest.equals(this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest = null;
       b();
     }
   }
   
   public void a(ImageRequest paramImageRequest, Throwable paramThrowable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NativeAdPreloadManager", 2, "onFail url:" + paramImageRequest.jdField_a_of_type_JavaNetURL.toString());
-    }
-    if (paramImageRequest.equals(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest))
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest = null;
+      paramThrowable = new StringBuilder();
+      paramThrowable.append("onFail url:");
+      paramThrowable.append(paramImageRequest.jdField_a_of_type_JavaNetURL.toString());
+      QLog.d("NativeAdPreloadManager", 2, paramThrowable.toString());
+    }
+    if (paramImageRequest.equals(this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest = null;
       b();
     }
   }
@@ -138,58 +168,77 @@ public class NativeAdPreloadManager
   {
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
+      StringBuilder localStringBuilder;
       if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!TextUtils.isEmpty(paramString)) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramString)))
       {
         this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-        if (QLog.isColorLevel()) {
-          QLog.d("NativeAdPreloadManager", 2, "addImageToPreload url:" + paramString);
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("addImageToPreload url:");
+          localStringBuilder.append(paramString);
+          QLog.d("NativeAdPreloadManager", 2, localStringBuilder.toString());
         }
         b();
       }
-      while (!QLog.isColorLevel()) {
-        return;
+      else if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("addImageToPreload url:");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(", skip");
+        QLog.d("NativeAdPreloadManager", 2, localStringBuilder.toString());
       }
-      QLog.d("NativeAdPreloadManager", 2, "addImageToPreload url:" + paramString + ", skip");
+      return;
     }
   }
   
   public void a(ArrayList<String> paramArrayList)
   {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (paramArrayList != null) && (paramArrayList.size() > 0))
+      {
+        paramArrayList = paramArrayList.iterator();
+        while (paramArrayList.hasNext())
+        {
+          String str = (String)paramArrayList.next();
+          StringBuilder localStringBuilder;
+          if ((!TextUtils.isEmpty(str)) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(str)))
+          {
+            this.jdField_a_of_type_JavaUtilArrayList.add(str);
+            if (QLog.isColorLevel())
+            {
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("addImagesToPreload url:");
+              localStringBuilder.append(str);
+              QLog.d("NativeAdPreloadManager", 2, localStringBuilder.toString());
+            }
+          }
+          else if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("addImagesToPreload url:");
+            localStringBuilder.append(str);
+            localStringBuilder.append(", skip");
+            QLog.d("NativeAdPreloadManager", 2, localStringBuilder.toString());
+          }
+        }
+        b();
+      }
+      return;
+    }
     for (;;)
     {
-      String str;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (paramArrayList == null) || (paramArrayList.size() <= 0)) {
-          break label158;
-        }
-        paramArrayList = paramArrayList.iterator();
-        if (!paramArrayList.hasNext()) {
-          break;
-        }
-        str = (String)paramArrayList.next();
-        if ((!TextUtils.isEmpty(str)) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(str)))
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.add(str);
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("NativeAdPreloadManager", 2, "addImagesToPreload url:" + str);
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("NativeAdPreloadManager", 2, "addImagesToPreload url:" + str + ", skip");
-      }
+      throw paramArrayList;
     }
-    b();
-    label158:
   }
   
   public void onDestroy()
   {
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest = null;
+      this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest = null;
       this.jdField_a_of_type_JavaUtilArrayList.clear();
       if (QLog.isColorLevel()) {
         QLog.d("NativeAdPreloadManager", 2, "onDestroy");
@@ -200,7 +249,7 @@ public class NativeAdPreloadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.preload.NativeAdPreloadManager
  * JD-Core Version:    0.7.0.1
  */

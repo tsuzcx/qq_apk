@@ -41,17 +41,21 @@ class NotificationManagerCompat$CancelTask
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("CancelTask[");
-    localStringBuilder.append("packageName:").append(this.packageName);
-    localStringBuilder.append(", id:").append(this.id);
-    localStringBuilder.append(", tag:").append(this.tag);
-    localStringBuilder.append(", all:").append(this.all);
+    localStringBuilder.append("packageName:");
+    localStringBuilder.append(this.packageName);
+    localStringBuilder.append(", id:");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append(", tag:");
+    localStringBuilder.append(this.tag);
+    localStringBuilder.append(", all:");
+    localStringBuilder.append(this.all);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.NotificationManagerCompat.CancelTask
  * JD-Core Version:    0.7.0.1
  */

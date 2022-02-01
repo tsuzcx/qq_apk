@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/ddn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" />
-    <com.tencent.biz.pubaccount.readinjoy.view.KanDianRoundCornerTextView android:textSize="10.0sp" android:textColor="#ffffffff" android:id="@id/bae" android:paddingLeft="2.5dip" android:paddingRight="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="15.0dip" android:layout_marginRight="4.0dip" android:layout_marginBottom="4.0dip" android:text="@string/grc" android:drawableLeft="@drawable/dmx" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    <com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView android:id="@id/ddn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" />
+    <com.tencent.mobileqq.kandian.base.view.widget.KanDianRoundCornerTextView android:textSize="10.0sp" android:textColor="#ffffffff" android:id="@id/bae" android:paddingLeft="2.5dip" android:paddingRight="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="15.0dip" android:layout_marginRight="4.0dip" android:layout_marginBottom="4.0dip" android:text="@string/grc" android:drawableLeft="@drawable/dmx" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
 </merge>

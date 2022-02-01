@@ -24,15 +24,17 @@ public final class oidb_0x6c3$GetStockRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 50, 56, 64, 74 }, new String[] { "int32_count", "int32_give_count", "bytes_give_info", "msg_stock", "bytes_recharge_activity", "msg_imgshow_config", "int64_balance", "int64_midas_gen_balance", "bytes_midas_error" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, null, localByteStringMicro2, null, Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro3 }, GetStockRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 50, 56, 64, 74 }, new String[] { "int32_count", "int32_give_count", "bytes_give_info", "msg_stock", "bytes_recharge_activity", "msg_imgshow_config", "int64_balance", "int64_midas_gen_balance", "bytes_midas_error" }, new Object[] { localInteger, localInteger, localByteStringMicro1, null, localByteStringMicro2, null, localLong, localLong, localByteStringMicro3 }, GetStockRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x6c3.oidb_0x6c3.GetStockRsp
  * JD-Core Version:    0.7.0.1
  */

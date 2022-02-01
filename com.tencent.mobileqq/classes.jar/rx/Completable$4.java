@@ -15,99 +15,103 @@ final class Completable$4
     CompositeSubscription localCompositeSubscription = new CompositeSubscription();
     paramCompletableSubscriber.onSubscribe(localCompositeSubscription);
     AtomicBoolean localAtomicBoolean = new AtomicBoolean();
-    Completable.4.1 local1 = new Completable.4.1(this, localAtomicBoolean, localCompositeSubscription, paramCompletableSubscriber);
-    label272:
-    label298:
-    for (;;)
+    Object localObject = new Completable.4.1(this, localAtomicBoolean, localCompositeSubscription, paramCompletableSubscriber);
+    try
     {
-      Iterator localIterator;
-      try
+      Iterator localIterator = this.val$sources.iterator();
+      if (localIterator == null)
       {
-        localIterator = this.val$sources.iterator();
-        if (localIterator == null)
-        {
-          paramCompletableSubscriber.onError(new NullPointerException("The iterator returned is null"));
-          return;
-        }
-      }
-      catch (Throwable localThrowable1)
-      {
-        paramCompletableSubscriber.onError(localThrowable1);
+        paramCompletableSubscriber.onError(new NullPointerException("The iterator returned is null"));
         return;
       }
-      for (int i = 1;; i = 0)
+      int i = 1;
+      for (;;)
       {
-        for (;;)
+        if (!localAtomicBoolean.get())
         {
-          if ((localAtomicBoolean.get()) || (localThrowable1.isUnsubscribed())) {
-            break label298;
+          if (localCompositeSubscription.isUnsubscribed()) {
+            return;
           }
           try
           {
             boolean bool = localIterator.hasNext();
             if (!bool)
             {
-              if (i == 0) {
-                break;
+              if (i != 0) {
+                paramCompletableSubscriber.onCompleted();
               }
-              paramCompletableSubscriber.onCompleted();
+              return;
+            }
+            if (!localAtomicBoolean.get())
+            {
+              if (localCompositeSubscription.isUnsubscribed()) {
+                return;
+              }
+              try
+              {
+                Completable localCompletable = (Completable)localIterator.next();
+                if (localCompletable == null)
+                {
+                  localObject = new NullPointerException("One of the sources is null");
+                  if (localAtomicBoolean.compareAndSet(false, true))
+                  {
+                    localCompositeSubscription.unsubscribe();
+                    paramCompletableSubscriber.onError((Throwable)localObject);
+                    return;
+                  }
+                  Completable.ERROR_HANDLER.handleError((Throwable)localObject);
+                  return;
+                }
+                if (!localAtomicBoolean.get())
+                {
+                  if (localCompositeSubscription.isUnsubscribed()) {
+                    return;
+                  }
+                  localCompletable.subscribe((Completable.CompletableSubscriber)localObject);
+                  i = 0;
+                  continue;
+                }
+                return;
+              }
+              catch (Throwable localThrowable2)
+              {
+                if (localAtomicBoolean.compareAndSet(false, true))
+                {
+                  localCompositeSubscription.unsubscribe();
+                  paramCompletableSubscriber.onError(localThrowable2);
+                  return;
+                }
+                Completable.ERROR_HANDLER.handleError(localThrowable2);
+              }
+            }
+            else
+            {
               return;
             }
           }
-          catch (Throwable localThrowable2)
+          catch (Throwable localThrowable3)
           {
             if (localAtomicBoolean.compareAndSet(false, true))
             {
-              localThrowable1.unsubscribe();
-              paramCompletableSubscriber.onError(localThrowable2);
+              localCompositeSubscription.unsubscribe();
+              paramCompletableSubscriber.onError(localThrowable3);
               return;
             }
-            Completable.ERROR_HANDLER.handleError(localThrowable2);
-            return;
+            Completable.ERROR_HANDLER.handleError(localThrowable3);
           }
         }
-        if ((localAtomicBoolean.get()) || (localThrowable1.isUnsubscribed())) {
-          break;
-        }
-        Completable localCompletable;
-        try
-        {
-          localCompletable = (Completable)localIterator.next();
-          if (localCompletable != null) {
-            break label272;
-          }
-          NullPointerException localNullPointerException = new NullPointerException("One of the sources is null");
-          if (localAtomicBoolean.compareAndSet(false, true))
-          {
-            localThrowable1.unsubscribe();
-            paramCompletableSubscriber.onError(localNullPointerException);
-            return;
-          }
-        }
-        catch (Throwable localThrowable3)
-        {
-          if (localAtomicBoolean.compareAndSet(false, true))
-          {
-            localThrowable1.unsubscribe();
-            paramCompletableSubscriber.onError(localThrowable3);
-            return;
-          }
-          Completable.ERROR_HANDLER.handleError(localThrowable3);
-          return;
-        }
-        Completable.ERROR_HANDLER.handleError(localThrowable3);
-        return;
-        if ((localAtomicBoolean.get()) || (localThrowable1.isUnsubscribed())) {
-          break;
-        }
-        localCompletable.subscribe(localThrowable3);
       }
+      return;
+    }
+    catch (Throwable localThrowable1)
+    {
+      paramCompletableSubscriber.onError(localThrowable1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.Completable.4
  * JD-Core Version:    0.7.0.1
  */

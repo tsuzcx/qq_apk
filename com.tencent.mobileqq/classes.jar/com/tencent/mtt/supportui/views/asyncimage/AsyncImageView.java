@@ -14,25 +14,23 @@ import android.view.ViewGroup;
 import com.tencent.mtt.supportui.adapters.image.IDrawableTarget;
 import com.tencent.mtt.supportui.adapters.image.IImageLoaderAdapter;
 import com.tencent.mtt.supportui.views.IBorder;
+import com.tencent.mtt.supportui.views.IShadow;
 
 public class AsyncImageView
   extends ViewGroup
-  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener, IBorder
+  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener, IBorder, IShadow
 {
   public static final int FADE_DURATION = 150;
   public static final int IMAGE_LOADED = 2;
   public static final int IMAGE_LOADING = 1;
   public static final int IMAGE_UNLOAD = 0;
   protected static int SOURCE_TYPE_DEFAULT_SRC = 2;
-  public static int SOURCE_TYPE_SRC = 1;
+  protected static int SOURCE_TYPE_SRC = 1;
   private ValueAnimator mAlphaAnimator;
   protected BackgroundDrawable mBGDrawable;
-  protected int mBoxShadowSpreadSize;
-  protected int mBoxShadowX;
-  protected int mBoxShadowY;
   protected Drawable mContentDrawable;
   private IDrawableTarget mDefaultSourceDrawable;
-  public String mDefaultSourceUrl = null;
+  protected String mDefaultSourceUrl = null;
   private long mFadeDuration;
   private boolean mFadeEnable;
   protected IImageLoaderAdapter mImageAdapter;
@@ -41,10 +39,10 @@ public class AsyncImageView
   protected String mImageType = null;
   private boolean mIsAttached;
   protected AsyncImageView.ScaleType mScaleType;
-  public IDrawableTarget mSourceDrawable;
+  protected IDrawableTarget mSourceDrawable;
   protected int mTintColor;
-  public String mUrl = null;
-  public int mUrlFetchState = 0;
+  protected String mUrl = null;
+  protected int mUrlFetchState = 0;
   
   public AsyncImageView(Context paramContext)
   {
@@ -55,71 +53,70 @@ public class AsyncImageView
   
   private void fetchImageByUrl(String paramString, int paramInt)
   {
-    if (paramString == null) {}
-    do
+    if (paramString == null) {
+      return;
+    }
+    if (this.mImageAdapter != null)
     {
-      do
+      if (shouldUseFetchImageMode(paramString))
       {
+        paramString = paramString.trim().replaceAll(" ", "%20");
+        if (paramInt == SOURCE_TYPE_SRC)
+        {
+          if (!shouldFetchImage()) {
+            return;
+          }
+          this.mUrlFetchState = 1;
+        }
+        onFetchImage(paramString);
+        handleGetImageStart();
+        doFetchImage(getFetchParam(), paramInt);
         return;
-      } while (this.mImageAdapter == null);
-      if (!shouldUseFetchImageMode(paramString)) {
-        break;
       }
-      paramString = paramString.trim().replaceAll(" ", "%20");
-    } while (!shouldFetchImage());
-    this.mUrlFetchState = 1;
-    onFetchImage(paramString);
-    handleGetImageStart();
-    doFetchImage(getFetchParam(), paramInt);
-    return;
-    handleGetImageStart();
-    handleImageRequest(this.mImageAdapter.getImage(paramString, null), paramInt, null);
+      handleGetImageStart();
+      handleImageRequest(this.mImageAdapter.getImage(paramString, null), paramInt, null);
+    }
   }
   
   private BackgroundDrawable getBackGround()
   {
-    Drawable localDrawable;
     if (this.mBGDrawable == null)
     {
       this.mBGDrawable = generateBackgroundDrawable();
-      localDrawable = getBackground();
+      Drawable localDrawable = getBackground();
       super.setBackgroundDrawable(null);
-      if (localDrawable != null) {
-        break label42;
+      if (localDrawable == null) {
+        super.setBackgroundDrawable(this.mBGDrawable);
+      } else {
+        super.setBackgroundDrawable(new LayerDrawable(new Drawable[] { this.mBGDrawable, localDrawable }));
       }
-      super.setBackgroundDrawable(this.mBGDrawable);
     }
-    for (;;)
-    {
-      return this.mBGDrawable;
-      label42:
-      super.setBackgroundDrawable(new LayerDrawable(new Drawable[] { this.mBGDrawable, localDrawable }));
-    }
+    return this.mBGDrawable;
   }
   
   protected void afterSetContent(String paramString) {}
   
   protected void applyTintColor(int paramInt)
   {
-    if ((this.mContentDrawable instanceof ContentDrawable))
+    Drawable localDrawable = this.mContentDrawable;
+    if ((localDrawable instanceof ContentDrawable))
     {
-      ((ContentDrawable)this.mContentDrawable).setTintColor(paramInt);
+      ((ContentDrawable)localDrawable).setTintColor(paramInt);
       invalidate();
     }
   }
   
   protected void doFetchImage(Object paramObject, int paramInt)
   {
-    if (this.mImageAdapter != null) {
-      if (paramInt != SOURCE_TYPE_SRC) {
-        break label40;
-      }
-    }
-    label40:
-    for (String str = this.mUrl;; str = this.mDefaultSourceUrl)
+    if (this.mImageAdapter != null)
     {
+      String str;
+      if (paramInt == SOURCE_TYPE_SRC) {
+        str = this.mUrl;
+      } else {
+        str = this.mDefaultSourceUrl;
+      }
       this.mImageAdapter.fetchImage(str, new AsyncImageView.1(this, paramInt), paramObject);
-      return;
     }
   }
   
@@ -135,16 +132,18 @@ public class AsyncImageView
   
   protected Bitmap getBitmap()
   {
-    if (this.mSourceDrawable != null) {
-      return this.mSourceDrawable.getBitmap();
+    IDrawableTarget localIDrawableTarget = this.mSourceDrawable;
+    if (localIDrawableTarget != null) {
+      return localIDrawableTarget.getBitmap();
     }
     return null;
   }
   
   protected Object getFetchParam()
   {
-    if (this.mSourceDrawable != null) {
-      return this.mSourceDrawable.getExtraData();
+    IDrawableTarget localIDrawableTarget = this.mSourceDrawable;
+    if (localIDrawableTarget != null) {
+      return localIDrawableTarget.getExtraData();
     }
     return null;
   }
@@ -169,39 +168,45 @@ public class AsyncImageView
   {
     if (paramIDrawableTarget == null)
     {
-      this.mContentDrawable = null;
-      if (paramInt == SOURCE_TYPE_SRC)
+      int i = SOURCE_TYPE_SRC;
+      paramIDrawableTarget = null;
+      if (paramInt == i)
       {
         this.mSourceDrawable = null;
-        if ((paramObject instanceof Throwable))
+        if (this.mDefaultSourceDrawable != null)
         {
+          if (this.mContentDrawable == null) {
+            this.mContentDrawable = generateContentDrawable();
+          }
+          setContent(SOURCE_TYPE_DEFAULT_SRC);
+        }
+        else
+        {
+          this.mContentDrawable = null;
+        }
+        if ((paramObject instanceof Throwable)) {
           paramIDrawableTarget = (Throwable)paramObject;
-          handleGetImageFail(paramIDrawableTarget);
         }
+        handleGetImageFail(paramIDrawableTarget);
+        return;
       }
-      while (paramInt != SOURCE_TYPE_DEFAULT_SRC) {
-        for (;;)
-        {
-          return;
-          paramIDrawableTarget = null;
-        }
-      }
-      this.mDefaultSourceDrawable = null;
-      return;
-    }
-    this.mContentDrawable = generateContentDrawable();
-    if (paramInt == SOURCE_TYPE_SRC)
-    {
-      this.mSourceDrawable = paramIDrawableTarget;
-      handleGetImageSuccess();
-    }
-    for (;;)
-    {
-      setContent(paramInt);
-      return;
       if (paramInt == SOURCE_TYPE_DEFAULT_SRC) {
+        this.mDefaultSourceDrawable = null;
+      }
+    }
+    else
+    {
+      this.mContentDrawable = generateContentDrawable();
+      if (paramInt == SOURCE_TYPE_SRC)
+      {
+        this.mSourceDrawable = paramIDrawableTarget;
+        handleGetImageSuccess();
+      }
+      else if (paramInt == SOURCE_TYPE_DEFAULT_SRC)
+      {
         this.mDefaultSourceDrawable = paramIDrawableTarget;
       }
+      setContent(paramInt);
     }
   }
   
@@ -219,8 +224,9 @@ public class AsyncImageView
   {
     if (this.mFadeEnable)
     {
-      if (this.mContentDrawable != null) {
-        this.mContentDrawable.setAlpha(255);
+      paramAnimator = this.mContentDrawable;
+      if (paramAnimator != null) {
+        paramAnimator.setAlpha(255);
       }
       restoreBackgroundColorAfterSetContent();
     }
@@ -241,16 +247,21 @@ public class AsyncImageView
   {
     if (this.mFadeEnable)
     {
-      if ((!isAttached()) && (this.mAlphaAnimator != null)) {
-        this.mAlphaAnimator.cancel();
+      if (!isAttached())
+      {
+        localObject = this.mAlphaAnimator;
+        if (localObject != null) {
+          ((ValueAnimator)localObject).cancel();
+        }
       }
-      if (this.mContentDrawable != null) {
-        this.mContentDrawable.setAlpha(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+      Object localObject = this.mContentDrawable;
+      if (localObject != null) {
+        ((Drawable)localObject).setAlpha(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
       }
     }
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     this.mIsAttached = true;
     super.onAttachedToWindow();
@@ -258,42 +269,48 @@ public class AsyncImageView
     {
       this.mDefaultSourceDrawable.onDrawableAttached();
       setContent(SOURCE_TYPE_DEFAULT_SRC);
-      setUrl(this.mUrl);
     }
     fetchImageByUrl(this.mUrl, SOURCE_TYPE_SRC);
     onDrawableAttached();
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     this.mIsAttached = false;
-    if ((this.mFadeEnable) && (this.mAlphaAnimator != null)) {
-      this.mAlphaAnimator.cancel();
+    if (this.mFadeEnable)
+    {
+      localObject = this.mAlphaAnimator;
+      if (localObject != null) {
+        ((ValueAnimator)localObject).cancel();
+      }
     }
     super.onDetachedFromWindow();
     onDrawableDetached();
-    if (this.mDefaultSourceDrawable != null) {
-      this.mDefaultSourceDrawable.onDrawableDetached();
+    Object localObject = this.mDefaultSourceDrawable;
+    if (localObject != null) {
+      ((IDrawableTarget)localObject).onDrawableDetached();
     }
   }
   
   protected void onDrawableAttached()
   {
-    if (this.mSourceDrawable != null) {
-      this.mSourceDrawable.onDrawableAttached();
+    IDrawableTarget localIDrawableTarget = this.mSourceDrawable;
+    if (localIDrawableTarget != null) {
+      localIDrawableTarget.onDrawableAttached();
     }
   }
   
   protected void onDrawableDetached()
   {
-    if (this.mSourceDrawable != null) {
-      this.mSourceDrawable.onDrawableDetached();
+    IDrawableTarget localIDrawableTarget = this.mSourceDrawable;
+    if (localIDrawableTarget != null) {
+      localIDrawableTarget.onDrawableDetached();
     }
   }
   
   protected void onFetchImage(String paramString) {}
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
   protected void onSetContent(String paramString) {}
   
@@ -302,7 +319,7 @@ public class AsyncImageView
     fetchImageByUrl(this.mUrl, SOURCE_TYPE_SRC);
   }
   
-  public void performSetContent()
+  protected void performSetContent()
   {
     setContent(SOURCE_TYPE_SRC);
   }
@@ -318,7 +335,8 @@ public class AsyncImageView
   {
     if (this.mFadeEnable)
     {
-      if ((this.mAlphaAnimator != null) && (this.mAlphaAnimator.isRunning())) {
+      ValueAnimator localValueAnimator = this.mAlphaAnimator;
+      if ((localValueAnimator != null) && (localValueAnimator.isRunning())) {
         this.mAlphaAnimator.cancel();
       }
       this.mAlphaAnimator = null;
@@ -343,9 +361,10 @@ public class AsyncImageView
   public void setBorderRadius(float paramFloat, int paramInt)
   {
     getBackGround().setBorderRadius(paramFloat, paramInt);
-    if ((this.mContentDrawable instanceof ContentDrawable))
+    Drawable localDrawable = this.mContentDrawable;
+    if ((localDrawable instanceof ContentDrawable))
     {
-      ((ContentDrawable)this.mContentDrawable).setBorder(this.mBGDrawable.getBorderRadiusArray(), this.mBGDrawable.getBorderWidthArray());
+      ((ContentDrawable)localDrawable).setBorder(this.mBGDrawable.getBorderRadiusArray(), this.mBGDrawable.getBorderWidthArray());
       invalidate();
     }
   }
@@ -358,56 +377,46 @@ public class AsyncImageView
   public void setBorderWidth(float paramFloat, int paramInt)
   {
     getBackGround().setBorderWidth(paramFloat, paramInt);
-    if ((this.mContentDrawable instanceof ContentDrawable))
+    Drawable localDrawable = this.mContentDrawable;
+    if ((localDrawable instanceof ContentDrawable))
     {
-      ((ContentDrawable)this.mContentDrawable).setBorder(this.mBGDrawable.getBorderRadiusArray(), this.mBGDrawable.getBorderWidthArray());
+      ((ContentDrawable)localDrawable).setBorder(this.mBGDrawable.getBorderRadiusArray(), this.mBGDrawable.getBorderWidthArray());
       invalidate();
     }
   }
   
-  public void setBoxShadowSpreadSize(int paramInt)
-  {
-    this.mBoxShadowSpreadSize = paramInt;
-  }
-  
-  public void setBoxShadowX(int paramInt)
-  {
-    this.mBoxShadowX = paramInt;
-  }
-  
-  public void setBoxShadowY(int paramInt)
-  {
-    this.mBoxShadowY = paramInt;
-  }
-  
   protected void setContent(int paramInt)
   {
-    if ((this.mContentDrawable == null) || (!shouldSetContent())) {
-      return;
-    }
-    onSetContent(this.mUrl);
-    if ((paramInt == SOURCE_TYPE_SRC) && (this.mSourceDrawable != null))
+    if (this.mContentDrawable != null)
     {
-      updateContentDrawableProperty();
-      if (this.mBGDrawable == null) {
-        break label166;
+      if (!shouldSetContent()) {
+        return;
       }
-      if ((this.mContentDrawable instanceof ContentDrawable)) {
-        ((ContentDrawable)this.mContentDrawable).setBorder(this.mBGDrawable.getBorderRadiusArray(), this.mBGDrawable.getBorderWidthArray());
+      onSetContent(this.mUrl);
+      if ((paramInt == SOURCE_TYPE_SRC) && (this.mSourceDrawable != null)) {
+        updateContentDrawableProperty();
+      } else if ((paramInt == SOURCE_TYPE_DEFAULT_SRC) && (this.mDefaultSourceDrawable != null) && ((this.mContentDrawable instanceof ContentDrawable)) && ((this.mUrlFetchState != 2) || (this.mSourceDrawable == null))) {
+        ((ContentDrawable)this.mContentDrawable).setBitmap(this.mDefaultSourceDrawable.getBitmap());
       }
-      setBackgroundDrawable(new LayerDrawable(new Drawable[] { this.mBGDrawable, this.mContentDrawable }));
-    }
-    for (;;)
-    {
+      Object localObject = this.mBGDrawable;
+      if (localObject != null)
+      {
+        Drawable localDrawable = this.mContentDrawable;
+        if ((localDrawable instanceof ContentDrawable))
+        {
+          ((ContentDrawable)localDrawable).setBorder(((BackgroundDrawable)localObject).getBorderRadiusArray(), this.mBGDrawable.getBorderWidthArray());
+          ((ContentDrawable)this.mContentDrawable).setShadowOffsetX(this.mBGDrawable.getShadowOffsetX());
+          ((ContentDrawable)this.mContentDrawable).setShadowOffsetY(this.mBGDrawable.getShadowOffsetY());
+          ((ContentDrawable)this.mContentDrawable).setShadowRadius(this.mBGDrawable.getShadowRadius());
+        }
+        localObject = new LayerDrawable(new Drawable[] { this.mBGDrawable, this.mContentDrawable });
+      }
+      else
+      {
+        localObject = this.mContentDrawable;
+      }
+      setBackgroundDrawable((Drawable)localObject);
       afterSetContent(this.mUrl);
-      return;
-      if ((paramInt != SOURCE_TYPE_DEFAULT_SRC) || (this.mDefaultSourceDrawable == null) || (!(this.mContentDrawable instanceof ContentDrawable))) {
-        break;
-      }
-      ((ContentDrawable)this.mContentDrawable).setBitmap(this.mDefaultSourceDrawable.getBitmap());
-      break;
-      label166:
-      setBackgroundDrawable(this.mContentDrawable);
     }
   }
   
@@ -461,6 +470,36 @@ public class AsyncImageView
     this.mScaleType = paramScaleType;
   }
   
+  public void setShadowColor(int paramInt)
+  {
+    getBackGround().setShadowColor(paramInt);
+  }
+  
+  public void setShadowOffsetX(float paramFloat)
+  {
+    getBackGround().setShadowOffsetX(paramFloat);
+  }
+  
+  public void setShadowOffsetY(float paramFloat)
+  {
+    getBackGround().setShadowOffsetY(paramFloat);
+  }
+  
+  public void setShadowOpacity(float paramFloat)
+  {
+    getBackGround().setShadowOpacity(paramFloat);
+  }
+  
+  public void setShadowRadius(float paramFloat)
+  {
+    getBackGround().setShadowRadius(Math.abs(paramFloat));
+    if (paramFloat != 0.0F) {
+      setLayerType(1, null);
+    }
+  }
+  
+  public void setShadowSpread(float paramFloat) {}
+  
   public void setTintColor(int paramInt)
   {
     this.mTintColor = paramInt;
@@ -508,9 +547,10 @@ public class AsyncImageView
         this.mAlphaAnimator.addListener(this);
         this.mAlphaAnimator.setDuration(this.mFadeDuration);
       }
-      if (this.mAlphaAnimator != null)
+      ValueAnimator localValueAnimator = this.mAlphaAnimator;
+      if (localValueAnimator != null)
       {
-        if (this.mAlphaAnimator.isRunning()) {
+        if (localValueAnimator.isRunning()) {
           this.mAlphaAnimator.cancel();
         }
         this.mAlphaAnimator.setCurrentPlayTime(0L);
@@ -521,9 +561,10 @@ public class AsyncImageView
   
   protected void updateContentDrawableProperty()
   {
-    if ((this.mContentDrawable instanceof ContentDrawable))
+    Drawable localDrawable = this.mContentDrawable;
+    if ((localDrawable instanceof ContentDrawable))
     {
-      ((ContentDrawable)this.mContentDrawable).setBitmap(getBitmap());
+      ((ContentDrawable)localDrawable).setBitmap(getBitmap());
       ((ContentDrawable)this.mContentDrawable).setTintColor(getTintColor());
       ((ContentDrawable)this.mContentDrawable).setScaleType(this.mScaleType);
       ((ContentDrawable)this.mContentDrawable).setImagePositionX(this.mImagePositionX);
@@ -533,7 +574,7 @@ public class AsyncImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.supportui.views.asyncimage.AsyncImageView
  * JD-Core Version:    0.7.0.1
  */

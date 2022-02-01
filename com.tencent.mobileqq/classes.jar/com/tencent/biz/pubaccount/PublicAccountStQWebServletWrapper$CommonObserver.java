@@ -32,32 +32,36 @@ class PublicAccountStQWebServletWrapper$CommonObserver<T extends MessageMicro<?>
     }
     catch (Throwable paramArrayOfByte)
     {
-      Toast.makeText(BaseApplicationImpl.getContext(), 2131695222, 0).show();
-      QLog.w("PublicAccountStQWebServlet", 4, "decode pb err:" + paramArrayOfByte.getMessage(), paramArrayOfByte);
+      Toast.makeText(BaseApplicationImpl.getContext(), 2131695217, 0).show();
+      paramClass = new StringBuilder();
+      paramClass.append("decode pb err:");
+      paramClass.append(paramArrayOfByte.getMessage());
+      QLog.w("PublicAccountStQWebServlet", 4, paramClass.toString(), paramArrayOfByte);
     }
     return null;
   }
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountStQWebServletWrapper$PublicAccountStQCallback == null) {
+    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountStQWebServletWrapper$PublicAccountStQCallback;
+    if (localObject == null) {
       return;
     }
     if (!paramBoolean) {
-      this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountStQWebServletWrapper$PublicAccountStQCallback.a(paramInt, paramBoolean, null, paramBundle);
+      ((PublicAccountStQWebServletWrapper.PublicAccountStQCallback)localObject).a(paramInt, paramBoolean, null, paramBundle);
     }
-    byte[] arrayOfByte = paramBundle.getByteArray("data");
-    if (a(arrayOfByte, this.jdField_a_of_type_JavaLangClass) == null)
+    localObject = paramBundle.getByteArray("data");
+    if (a((byte[])localObject, this.jdField_a_of_type_JavaLangClass) == null)
     {
       this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountStQWebServletWrapper$PublicAccountStQCallback.a(paramInt, false, null, paramBundle);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountStQWebServletWrapper$PublicAccountStQCallback.a(paramInt, paramBoolean, a(arrayOfByte, this.jdField_a_of_type_JavaLangClass), paramBundle);
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountStQWebServletWrapper$PublicAccountStQCallback.a(paramInt, paramBoolean, a((byte[])localObject, this.jdField_a_of_type_JavaLangClass), paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.PublicAccountStQWebServletWrapper.CommonObserver
  * JD-Core Version:    0.7.0.1
  */

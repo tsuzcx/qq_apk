@@ -16,87 +16,109 @@ class QZoneLiveJsPlugin$1
   
   public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
   {
-    boolean bool = false;
     if (paramPluginManagerClient == null) {}
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("QZoneLiveJsPlugin", 2, "context 为空，返回：" + this.val$result);
+      if (QLog.isColorLevel())
+      {
+        paramPluginManagerClient = new StringBuilder();
+        paramPluginManagerClient.append("context 为空，返回：");
+        paramPluginManagerClient.append(this.val$result);
+        QLog.i("QZoneLiveJsPlugin", 2, paramPluginManagerClient.toString());
       }
       this.val$result.put("isInstalled", false);
-      if (QLog.isColorLevel()) {
-        QLog.i("QZoneLiveJsPlugin", 2, "pluginManagerClient 为空，返回：" + this.val$result);
+      if (QLog.isColorLevel())
+      {
+        paramPluginManagerClient = new StringBuilder();
+        paramPluginManagerClient.append("pluginManagerClient 为空，返回：");
+        paramPluginManagerClient.append(this.val$result);
+        QLog.i("QZoneLiveJsPlugin", 2, paramPluginManagerClient.toString());
       }
       this.this$0.parentPlugin.callJs(this.val$callback, new String[] { this.val$result.toString() });
       return;
     }
     catch (JSONException paramPluginManagerClient)
     {
-      if (!QLog.isColorLevel()) {
-        return;
+      for (;;)
+      {
+        Object localObject;
+        StringBuilder localStringBuilder;
+        int i;
+        continue;
+        boolean bool = false;
       }
-      QLog.e("QZoneLiveJsPlugin", 2, "", paramPluginManagerClient);
-      return;
-      if (((PluginBaseInfo)localObject).mState != 4) {
-        break label301;
-      }
-      this.val$result.put("isInstalled", true);
-      if (!QLog.isColorLevel()) {
-        break label272;
-      }
-      QLog.i("QZoneLiveJsPlugin", 2, "插件已安装，返回：" + this.val$result);
-      label272:
-      this.this$0.parentPlugin.callJs(this.val$callback, new String[] { this.val$result.toString() });
-      return;
-      label301:
-      this.val$result.put("isInstalled", false);
-      if (!QLog.isColorLevel()) {
-        break label371;
-      }
-      QLog.i("QZoneLiveJsPlugin", 2, "插件未安装,state=" + ((PluginBaseInfo)localObject).mState + "needInstall：" + this.val$needInstall + "返回：" + this.val$result);
-      label371:
-      if (!this.val$needInstall) {
-        break label449;
-      }
-      int i = NetworkState.getNetworkType();
-      if (!QLog.isColorLevel()) {
-        break label424;
-      }
-      Object localObject = new StringBuilder().append("NetworkState.NET_TYPE_WIFI == type:");
-      if (1 != i) {
-        break label409;
-      }
-      bool = true;
-      label409:
-      QLog.i("QZoneLiveJsPlugin", 2, bool);
-      label424:
-      if (1 != i) {
-        break label449;
-      }
-      if (!QLog.isColorLevel()) {
-        break label443;
-      }
-      QLog.i("QZoneLiveJsPlugin", 2, "开始下载");
-      label443:
-      paramPluginManagerClient.installPlugin("qzone_live_video_plugin.apk");
-      label449:
-      this.this$0.parentPlugin.callJs(this.val$callback, new String[] { this.val$result.toString() });
     }
     localObject = paramPluginManagerClient.queryPlugin("qzone_live_video_plugin.apk");
     if (localObject == null)
     {
       this.val$result.put("isInstalled", false);
-      if (QLog.isColorLevel()) {
-        QLog.i("QZoneLiveJsPlugin", 2, "pluginInfo 为空，返回：" + this.val$result);
+      if (QLog.isColorLevel())
+      {
+        paramPluginManagerClient = new StringBuilder();
+        paramPluginManagerClient.append("pluginInfo 为空，返回：");
+        paramPluginManagerClient.append(this.val$result);
+        QLog.i("QZoneLiveJsPlugin", 2, paramPluginManagerClient.toString());
       }
       this.this$0.parentPlugin.callJs(this.val$callback, new String[] { this.val$result.toString() });
       return;
+    }
+    if (((PluginBaseInfo)localObject).mState == 4)
+    {
+      this.val$result.put("isInstalled", true);
+      if (QLog.isColorLevel())
+      {
+        paramPluginManagerClient = new StringBuilder();
+        paramPluginManagerClient.append("插件已安装，返回：");
+        paramPluginManagerClient.append(this.val$result);
+        QLog.i("QZoneLiveJsPlugin", 2, paramPluginManagerClient.toString());
+      }
+      this.this$0.parentPlugin.callJs(this.val$callback, new String[] { this.val$result.toString() });
+      return;
+    }
+    this.val$result.put("isInstalled", false);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("插件未安装,state=");
+      localStringBuilder.append(((PluginBaseInfo)localObject).mState);
+      localStringBuilder.append("needInstall：");
+      localStringBuilder.append(this.val$needInstall);
+      localStringBuilder.append("返回：");
+      localStringBuilder.append(this.val$result);
+      QLog.i("QZoneLiveJsPlugin", 2, localStringBuilder.toString());
+    }
+    if (this.val$needInstall)
+    {
+      i = NetworkState.getNetworkType();
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("NetworkState.NET_TYPE_WIFI == type:");
+        if (1 != i) {
+          break label534;
+        }
+        bool = true;
+        ((StringBuilder)localObject).append(bool);
+        QLog.i("QZoneLiveJsPlugin", 2, ((StringBuilder)localObject).toString());
+      }
+      if (1 == i)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("QZoneLiveJsPlugin", 2, "开始下载");
+        }
+        paramPluginManagerClient.installPlugin("qzone_live_video_plugin.apk");
+      }
+    }
+    this.this$0.parentPlugin.callJs(this.val$callback, new String[] { this.val$result.toString() });
+    return;
+    if (QLog.isColorLevel()) {
+      QLog.e("QZoneLiveJsPlugin", 2, "", paramPluginManagerClient);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneLiveJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

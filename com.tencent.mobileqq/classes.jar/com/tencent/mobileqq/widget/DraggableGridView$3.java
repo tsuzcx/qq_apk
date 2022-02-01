@@ -17,12 +17,13 @@ class DraggableGridView$3
   {
     DraggableGridView.c(this.a, paramMessage.arg1);
     DraggableGridView.a(this.a).smoothScrollBy(DraggableGridView.d(this.a), 0);
-    DraggableGridView.a(this.a, (int)DraggableGridView.a(this.a), (int)DraggableGridView.b(this.a));
+    paramMessage = this.a;
+    DraggableGridView.a(paramMessage, (int)DraggableGridView.a(paramMessage), (int)DraggableGridView.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.DraggableGridView.3
  * JD-Core Version:    0.7.0.1
  */

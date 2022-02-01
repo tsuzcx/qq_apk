@@ -51,20 +51,22 @@ public final class get_album_req
   {
     paramJceOutputStream.write(this.albumid, 0);
     paramJceOutputStream.write(this.type, 1);
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 2);
+    Object localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
     paramJceOutputStream.write(this.owner_uin, 3);
     paramJceOutputStream.write(this.is_get_url_key, 4);
-    if (this.share_key != null) {
-      paramJceOutputStream.write(this.share_key, 5);
+    localObject = this.share_key;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.is_from_public_url, 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.get_album_req
  * JD-Core Version:    0.7.0.1
  */

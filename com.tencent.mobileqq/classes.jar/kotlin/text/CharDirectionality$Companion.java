@@ -18,16 +18,20 @@ public final class CharDirectionality$Companion
   @NotNull
   public final CharDirectionality valueOf(int paramInt)
   {
-    CharDirectionality localCharDirectionality = (CharDirectionality)((Companion)this).getDirectionalityMap().get(Integer.valueOf(paramInt));
-    if (localCharDirectionality != null) {
-      return localCharDirectionality;
+    Object localObject = (CharDirectionality)((Companion)this).getDirectionalityMap().get(Integer.valueOf(paramInt));
+    if (localObject != null) {
+      return localObject;
     }
-    throw ((Throwable)new IllegalArgumentException("Directionality #" + paramInt + " is not defined."));
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Directionality #");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(" is not defined.");
+    throw ((Throwable)new IllegalArgumentException(((StringBuilder)localObject).toString()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.text.CharDirectionality.Companion
  * JD-Core Version:    0.7.0.1
  */

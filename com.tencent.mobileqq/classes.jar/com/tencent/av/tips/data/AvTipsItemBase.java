@@ -22,40 +22,42 @@ public abstract class AvTipsItemBase
   
   public static boolean a(AvTipsItemBase paramAvTipsItemBase1, AvTipsItemBase paramAvTipsItemBase2)
   {
-    boolean bool2 = true;
-    boolean bool1;
+    boolean bool = false;
     if (paramAvTipsItemBase2 == null) {
-      bool1 = false;
+      return false;
     }
-    do
-    {
-      do
-      {
-        int i;
-        int j;
-        do
-        {
-          do
-          {
-            return bool1;
-            bool1 = bool2;
-          } while (paramAvTipsItemBase1 == null);
-          i = paramAvTipsItemBase2.e();
-          j = paramAvTipsItemBase1.e();
-          TipsManager.a("CheckAvTipsItemLevelCanShow, lvNew[" + i + "], lvOld[" + j + "], idNew[" + paramAvTipsItemBase2.b() + "], idOld[" + paramAvTipsItemBase1.b() + "]");
-          bool1 = bool2;
-        } while (i < j);
-        if (i > j) {
-          return false;
-        }
-        bool1 = bool2;
-      } while (paramAvTipsItemBase1.a());
-      if (paramAvTipsItemBase2.a()) {
-        return false;
-      }
-      bool1 = bool2;
-    } while (paramAvTipsItemBase2.c() <= paramAvTipsItemBase1.c());
-    return false;
+    if (paramAvTipsItemBase1 == null) {
+      return true;
+    }
+    int i = paramAvTipsItemBase2.e();
+    int j = paramAvTipsItemBase1.e();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CheckAvTipsItemLevelCanShow, lvNew[");
+    localStringBuilder.append(i);
+    localStringBuilder.append("], lvOld[");
+    localStringBuilder.append(j);
+    localStringBuilder.append("], idNew[");
+    localStringBuilder.append(paramAvTipsItemBase2.b());
+    localStringBuilder.append("], idOld[");
+    localStringBuilder.append(paramAvTipsItemBase1.b());
+    localStringBuilder.append("]");
+    TipsManager.a(localStringBuilder.toString());
+    if (i < j) {
+      return true;
+    }
+    if (i > j) {
+      return false;
+    }
+    if (paramAvTipsItemBase1.a()) {
+      return true;
+    }
+    if (paramAvTipsItemBase2.a()) {
+      return false;
+    }
+    if (paramAvTipsItemBase2.c() <= paramAvTipsItemBase1.c()) {
+      bool = true;
+    }
+    return bool;
   }
   
   public abstract int a();
@@ -104,18 +106,25 @@ public abstract class AvTipsItemBase
   
   public boolean equals(Object paramObject)
   {
-    if ((paramObject == null) || (!(paramObject instanceof AvTipsItemBase))) {}
-    do
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramObject != null)
     {
-      return false;
+      if (!(paramObject instanceof AvTipsItemBase)) {
+        return false;
+      }
       paramObject = (AvTipsItemBase)paramObject;
-    } while (b() != paramObject.b());
-    return true;
+      bool1 = bool2;
+      if (b() == paramObject.b()) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.tips.data.AvTipsItemBase
  * JD-Core Version:    0.7.0.1
  */

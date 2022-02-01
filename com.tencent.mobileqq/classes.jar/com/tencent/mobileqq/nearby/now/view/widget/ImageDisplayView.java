@@ -9,9 +9,12 @@ import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.now.IResourceUtil;
 import com.tencent.mobileqq.nearby.now.model.ImageData;
 import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.utils.INowVideoReporter;
 import com.tencent.mobileqq.nearby.now.view.StoryViewRelayoutListener;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -44,8 +47,8 @@ public class ImageDisplayView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131561348, this, true);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetFitXImageView = ((FitXImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365907));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(((IResourceUtil)QRoute.api(IResourceUtil.class)).getQQNearbyImageDisplayView(), this, true);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetFitXImageView = ((FitXImageView)this.jdField_a_of_type_AndroidViewView.findViewById(((IResourceUtil)QRoute.api(IResourceUtil.class)).getDisplayImageView()));
   }
   
   private void a(String paramString, int paramInt1, int paramInt2)
@@ -55,9 +58,9 @@ public class ImageDisplayView
   
   public void a(VideoData paramVideoData)
   {
-    com.tencent.mobileqq.nearby.now.utils.NowVideoReporter.c = paramVideoData.jdField_a_of_type_JavaLangString;
-    com.tencent.mobileqq.nearby.now.utils.NowVideoReporter.d = String.valueOf(paramVideoData.jdField_a_of_type_Long);
-    if (paramVideoData.jdField_a_of_type_Int == 4)
+    ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).setFeedId(paramVideoData.jdField_a_of_type_JavaLangString);
+    ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).setAnchorUin(String.valueOf(paramVideoData.jdField_a_of_type_Long));
+    if (paramVideoData.b == 4)
     {
       a(((ImageData)paramVideoData.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_JavaLangString, ((ImageData)paramVideoData.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Int, ((ImageData)paramVideoData.jdField_a_of_type_JavaUtilArrayList.get(0)).b);
       return;
@@ -77,15 +80,17 @@ public class ImageDisplayView
   
   public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStoryViewRelayoutListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStoryViewRelayoutListener.a(paramURLDrawable.getURL().toString(), this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetFitXImageView, 1);
+    StoryViewRelayoutListener localStoryViewRelayoutListener = this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStoryViewRelayoutListener;
+    if (localStoryViewRelayoutListener != null) {
+      localStoryViewRelayoutListener.a(paramURLDrawable.getURL().toString(), this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetFitXImageView, 1);
     }
   }
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStoryViewRelayoutListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStoryViewRelayoutListener.a(paramURLDrawable.getURL().toString(), this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetFitXImageView, 0);
+    paramThrowable = this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStoryViewRelayoutListener;
+    if (paramThrowable != null) {
+      paramThrowable.a(paramURLDrawable.getURL().toString(), this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetFitXImageView, 0);
     }
   }
   
@@ -104,7 +109,7 @@ public class ImageDisplayView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView
  * JD-Core Version:    0.7.0.1
  */

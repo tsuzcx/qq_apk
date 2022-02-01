@@ -5,7 +5,7 @@ import java.io.Serializable;
 public final class e_ad_report_cookie
   implements Serializable
 {
-  public static final e_ad_report_cookie AD_FEED_PAGEUIN;
+  public static final e_ad_report_cookie AD_FEED_PAGEUIN = new e_ad_report_cookie(4, 4, "AD_FEED_PAGEUIN");
   public static final e_ad_report_cookie AD_FEED_QUERYSTRING;
   public static final e_ad_report_cookie AD_FEED_TRACEID;
   public static final e_ad_report_cookie AD_FEED_TYPE;
@@ -26,24 +26,16 @@ public final class e_ad_report_cookie
   public static final int _AD_FEED_VIEWID = 1;
   public static final int _AD_VID = 13;
   public static final int _AD_VIDEO_SOURCE = 5;
-  private static e_ad_report_cookie[] __values;
+  private static e_ad_report_cookie[] __values = new e_ad_report_cookie[5];
   private String __T = new String();
   private int __value;
   
   static
   {
-    if (!e_ad_report_cookie.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      __values = new e_ad_report_cookie[5];
-      AD_FEED_TYPE = new e_ad_report_cookie(0, 0, "AD_FEED_TYPE");
-      AD_FEED_VIEWID = new e_ad_report_cookie(1, 1, "AD_FEED_VIEWID");
-      AD_FEED_QUERYSTRING = new e_ad_report_cookie(2, 2, "AD_FEED_QUERYSTRING");
-      AD_FEED_TRACEID = new e_ad_report_cookie(3, 3, "AD_FEED_TRACEID");
-      AD_FEED_PAGEUIN = new e_ad_report_cookie(4, 4, "AD_FEED_PAGEUIN");
-      return;
-    }
+    AD_FEED_TYPE = new e_ad_report_cookie(0, 0, "AD_FEED_TYPE");
+    AD_FEED_VIEWID = new e_ad_report_cookie(1, 1, "AD_FEED_VIEWID");
+    AD_FEED_QUERYSTRING = new e_ad_report_cookie(2, 2, "AD_FEED_QUERYSTRING");
+    AD_FEED_TRACEID = new e_ad_report_cookie(3, 3, "AD_FEED_TRACEID");
   }
   
   private e_ad_report_cookie(int paramInt1, int paramInt2, String paramString)
@@ -56,15 +48,16 @@ public final class e_ad_report_cookie
   public static e_ad_report_cookie convert(int paramInt)
   {
     int i = 0;
-    while (i < __values.length)
+    for (;;)
     {
-      if (__values[i].value() == paramInt) {
+      e_ad_report_cookie[] arrayOfe_ad_report_cookie = __values;
+      if (i >= arrayOfe_ad_report_cookie.length) {
+        break;
+      }
+      if (arrayOfe_ad_report_cookie[i].value() == paramInt) {
         return __values[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -72,15 +65,16 @@ public final class e_ad_report_cookie
   public static e_ad_report_cookie convert(String paramString)
   {
     int i = 0;
-    while (i < __values.length)
+    for (;;)
     {
-      if (__values[i].toString().equals(paramString)) {
+      e_ad_report_cookie[] arrayOfe_ad_report_cookie = __values;
+      if (i >= arrayOfe_ad_report_cookie.length) {
+        break;
+      }
+      if (arrayOfe_ad_report_cookie[i].toString().equals(paramString)) {
         return __values[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -97,7 +91,7 @@ public final class e_ad_report_cookie
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.e_ad_report_cookie
  * JD-Core Version:    0.7.0.1
  */

@@ -98,10 +98,10 @@ public abstract class RDBaseListLayout<TItemData, TItemViewHolder>
   
   public TItemData a(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return null;
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     }
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    return null;
   }
   
   public abstract TItemViewHolder a(int paramInt, TItemData paramTItemData);
@@ -114,31 +114,37 @@ public abstract class RDBaseListLayout<TItemData, TItemViewHolder>
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return;
-    }
-    if ((!paramBoolean) && (this.jdField_a_of_type_Int >= 0))
+    if (paramInt >= 0)
     {
-      ((RDBaseItemData)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).a(false);
-      this.jdField_a_of_type_Int = -1;
-    }
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    ((RDBaseItemData)localObject).a(true);
-    ((RDBaseItemData)localObject).a(true);
-    if ((this.jdField_a_of_type_AndroidViewView instanceof ListView)) {
-      ((ListView)this.jdField_a_of_type_AndroidViewView).setSelection(paramInt);
-    }
-    for (;;)
-    {
-      a(paramInt, localObject);
-      this.jdField_a_of_type_Int = paramInt;
-      c();
-      return;
-      if ((this.jdField_a_of_type_AndroidViewView instanceof HorizontalListView))
+      if (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+        return;
+      }
+      if (!paramBoolean)
       {
-        ((HorizontalListView)this.jdField_a_of_type_AndroidViewView).setSelection(paramInt);
+        int i = this.jdField_a_of_type_Int;
+        if (i >= 0)
+        {
+          ((RDBaseItemData)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(false);
+          this.jdField_a_of_type_Int = -1;
+        }
+      }
+      Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      Object localObject2 = (RDBaseItemData)localObject1;
+      ((RDBaseItemData)localObject2).a(true);
+      ((RDBaseItemData)localObject2).a(true);
+      localObject2 = this.jdField_a_of_type_AndroidViewView;
+      if ((localObject2 instanceof ListView))
+      {
+        ((ListView)localObject2).setSelection(paramInt);
+      }
+      else if ((localObject2 instanceof HorizontalListView))
+      {
+        ((HorizontalListView)localObject2).setSelection(paramInt);
         ((HorizontalListView)this.jdField_a_of_type_AndroidViewView).smoothScrollToPosition(paramInt, 0, 1);
       }
+      a(paramInt, localObject1);
+      this.jdField_a_of_type_Int = paramInt;
+      c();
     }
   }
   
@@ -160,8 +166,9 @@ public abstract class RDBaseListLayout<TItemData, TItemViewHolder>
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    if (localArrayList != null) {
+      localArrayList.clear();
     }
     if (paramBoolean) {
       c();
@@ -191,69 +198,68 @@ public abstract class RDBaseListLayout<TItemData, TItemViewHolder>
   public void b()
   {
     a();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlRDBaseListLayout$RDBaseListAdapter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlRDBaseListLayout$RDBaseListAdapter.b();
+    RDBaseListLayout.RDBaseListAdapter localRDBaseListAdapter = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlRDBaseListLayout$RDBaseListAdapter;
+    if (localRDBaseListAdapter != null) {
+      localRDBaseListAdapter.b();
     }
   }
   
   public void b(TItemData paramTItemData, boolean paramBoolean)
   {
     int i = 0;
-    for (;;)
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      Object localObject;
-      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      Object localObject = this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      if (paramTItemData.equals(localObject))
       {
-        localObject = this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if (!paramTItemData.equals(localObject)) {
-          break label150;
-        }
-        if ((!paramBoolean) && (this.jdField_a_of_type_Int >= 0))
+        if (!paramBoolean)
         {
-          ((RDBaseItemData)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).a(false);
-          this.jdField_a_of_type_Int = -1;
+          int j = this.jdField_a_of_type_Int;
+          if (j >= 0)
+          {
+            ((RDBaseItemData)this.jdField_a_of_type_JavaUtilArrayList.get(j)).a(false);
+            this.jdField_a_of_type_Int = -1;
+          }
         }
         ((RDBaseItemData)localObject).a(true);
-        if (!(this.jdField_a_of_type_AndroidViewView instanceof ListView)) {
-          break label113;
+        paramTItemData = this.jdField_a_of_type_AndroidViewView;
+        if ((paramTItemData instanceof ListView))
+        {
+          ((ListView)paramTItemData).setSelection(i);
         }
-        ((ListView)this.jdField_a_of_type_AndroidViewView).setSelection(i);
-      }
-      for (;;)
-      {
+        else if ((paramTItemData instanceof HorizontalListView))
+        {
+          ((HorizontalListView)paramTItemData).setSelection(i);
+          ((HorizontalListView)this.jdField_a_of_type_AndroidViewView).smoothScrollToPosition(i, 0, 1);
+        }
         a(i, localObject);
         this.jdField_a_of_type_Int = i;
         c();
         return;
-        label113:
-        if ((this.jdField_a_of_type_AndroidViewView instanceof HorizontalListView))
-        {
-          ((HorizontalListView)this.jdField_a_of_type_AndroidViewView).setSelection(i);
-          ((HorizontalListView)this.jdField_a_of_type_AndroidViewView).smoothScrollToPosition(i, 0, 1);
-        }
       }
-      label150:
       i += 1;
     }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlRDBaseListLayout$RDBaseListAdapter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlRDBaseListLayout$RDBaseListAdapter.notifyDataSetChanged();
+    RDBaseListLayout.RDBaseListAdapter localRDBaseListAdapter = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlRDBaseListLayout$RDBaseListAdapter;
+    if (localRDBaseListAdapter != null) {
+      localRDBaseListAdapter.notifyDataSetChanged();
     }
   }
   
   public void setOverScrollMode(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setOverScrollMode(paramInt);
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if (localView != null) {
+      localView.setOverScrollMode(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.control.RDBaseListLayout
  * JD-Core Version:    0.7.0.1
  */

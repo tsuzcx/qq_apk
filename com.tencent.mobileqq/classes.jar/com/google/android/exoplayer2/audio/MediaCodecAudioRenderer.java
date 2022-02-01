@@ -83,18 +83,13 @@ public class MediaCodecAudioRenderer
   private void updateCurrentPosition()
   {
     long l = this.audioSink.getCurrentPositionUs(isEnded());
-    if (l != -9223372036854775808L) {
-      if (!this.allowPositionDiscontinuity) {
-        break label40;
-      }
-    }
-    for (;;)
+    if (l != -9223372036854775808L)
     {
+      if (!this.allowPositionDiscontinuity) {
+        l = Math.max(this.currentPositionUs, l);
+      }
       this.currentPositionUs = l;
       this.allowPositionDiscontinuity = false;
-      return;
-      label40:
-      l = Math.max(this.currentPositionUs, l);
     }
   }
   
@@ -104,7 +99,7 @@ public class MediaCodecAudioRenderer
     return (i != 0) && (this.audioSink.isEncodingSupported(i));
   }
   
-  public void configureCodec(MediaCodecInfo paramMediaCodecInfo, MediaCodec paramMediaCodec, Format paramFormat, MediaCrypto paramMediaCrypto)
+  protected void configureCodec(MediaCodecInfo paramMediaCodecInfo, MediaCodec paramMediaCodec, Format paramFormat, MediaCrypto paramMediaCrypto)
   {
     this.codecNeedsDiscardChannelsWorkaround = codecNeedsDiscardChannelsWorkaround(paramMediaCodecInfo.name);
     paramMediaCodecInfo = getMediaFormatForPlayback(paramFormat);
@@ -120,7 +115,7 @@ public class MediaCodecAudioRenderer
     this.passthroughMediaFormat = null;
   }
   
-  public MediaCodecInfo getDecoderInfo(MediaCodecSelector paramMediaCodecSelector, Format paramFormat, boolean paramBoolean1, boolean paramBoolean2)
+  protected MediaCodecInfo getDecoderInfo(MediaCodecSelector paramMediaCodecSelector, Format paramFormat, boolean paramBoolean1, boolean paramBoolean2)
   {
     if (allowPassthrough(paramFormat.sampleMimeType))
     {
@@ -155,17 +150,18 @@ public class MediaCodecAudioRenderer
   
   public void handleMessage(int paramInt, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 2)
     {
-    default: 
-      super.handleMessage(paramInt, paramObject);
-      return;
-    case 2: 
-      this.audioSink.setVolume(((Float)paramObject).floatValue());
+      if (paramInt != 3)
+      {
+        super.handleMessage(paramInt, paramObject);
+        return;
+      }
+      paramObject = (AudioAttributes)paramObject;
+      this.audioSink.setAudioAttributes(paramObject);
       return;
     }
-    paramObject = (AudioAttributes)paramObject;
-    this.audioSink.setAudioAttributes(paramObject);
+    this.audioSink.setVolume(((Float)paramObject).floatValue());
   }
   
   public boolean isEnded()
@@ -184,13 +180,13 @@ public class MediaCodecAudioRenderer
   
   protected void onAudioTrackUnderrun(int paramInt, long paramLong1, long paramLong2) {}
   
-  public void onCodecInitialized(String paramString, long paramLong1, long paramLong2)
+  protected void onCodecInitialized(String paramString, long paramLong1, long paramLong2)
   {
     this.eventDispatcher.decoderInitialized(paramString, paramLong1, paramLong2);
   }
   
   /* Error */
-  public void onDisabled()
+  protected void onDisabled()
   {
     // Byte code:
     //   0: aload_0
@@ -255,7 +251,7 @@ public class MediaCodecAudioRenderer
     //   54	58	78	finally
   }
   
-  public void onEnabled(boolean paramBoolean)
+  protected void onEnabled(boolean paramBoolean)
   {
     super.onEnabled(paramBoolean);
     this.eventDispatcher.enabled(this.decoderCounters);
@@ -268,64 +264,64 @@ public class MediaCodecAudioRenderer
     this.audioSink.disableTunneling();
   }
   
-  public void onInputFormatChanged(Format paramFormat)
+  protected void onInputFormatChanged(Format paramFormat)
   {
-    int j = 0;
     super.onInputFormatChanged(paramFormat);
     this.eventDispatcher.inputFormatChanged(paramFormat);
-    if ("audio/raw".equals(paramFormat.sampleMimeType))
-    {
+    if ("audio/raw".equals(paramFormat.sampleMimeType)) {
       i = paramFormat.pcmEncoding;
-      this.pcmEncoding = i;
-      this.channelCount = paramFormat.channelCount;
-      if (paramFormat.encoderDelay == -1) {
-        break label89;
-      }
-    }
-    label89:
-    for (int i = paramFormat.encoderDelay;; i = 0)
-    {
-      this.encoderDelay = i;
-      i = j;
-      if (paramFormat.encoderPadding != -1) {
-        i = paramFormat.encoderPadding;
-      }
-      this.encoderPadding = i;
-      return;
+    } else {
       i = 2;
-      break;
     }
+    this.pcmEncoding = i;
+    this.channelCount = paramFormat.channelCount;
+    int i = paramFormat.encoderDelay;
+    int j = 0;
+    if (i != -1) {
+      i = paramFormat.encoderDelay;
+    } else {
+      i = 0;
+    }
+    this.encoderDelay = i;
+    i = j;
+    if (paramFormat.encoderPadding != -1) {
+      i = paramFormat.encoderPadding;
+    }
+    this.encoderPadding = i;
   }
   
-  public void onOutputFormatChanged(MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
+  protected void onOutputFormatChanged(MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
   {
-    int j = 0;
+    paramMediaCodec = this.passthroughMediaFormat;
     int i;
-    if (this.passthroughMediaFormat != null)
+    if (paramMediaCodec != null)
     {
-      i = MimeTypes.getEncoding(this.passthroughMediaFormat.getString("mime"));
+      i = MimeTypes.getEncoding(paramMediaCodec.getString("mime"));
       paramMediaFormat = this.passthroughMediaFormat;
     }
-    int k;
-    int m;
-    for (;;)
+    else
     {
-      k = paramMediaFormat.getInteger("channel-count");
-      m = paramMediaFormat.getInteger("sample-rate");
-      if ((!this.codecNeedsDiscardChannelsWorkaround) || (k != 6) || (this.channelCount >= 6)) {
-        break;
-      }
-      paramMediaFormat = new int[this.channelCount];
-      for (;;)
-      {
-        paramMediaCodec = paramMediaFormat;
-        if (j >= this.channelCount) {
-          break;
-        }
-        paramMediaFormat[j] = j;
-        j += 1;
-      }
       i = this.pcmEncoding;
+    }
+    int k = paramMediaFormat.getInteger("channel-count");
+    int m = paramMediaFormat.getInteger("sample-rate");
+    if ((this.codecNeedsDiscardChannelsWorkaround) && (k == 6))
+    {
+      int j = this.channelCount;
+      if (j < 6)
+      {
+        paramMediaFormat = new int[j];
+        j = 0;
+        for (;;)
+        {
+          paramMediaCodec = paramMediaFormat;
+          if (j >= this.channelCount) {
+            break;
+          }
+          paramMediaFormat[j] = j;
+          j += 1;
+        }
+      }
     }
     paramMediaCodec = null;
     try
@@ -335,11 +331,15 @@ public class MediaCodecAudioRenderer
     }
     catch (AudioSink.ConfigurationException paramMediaCodec)
     {
-      throw ExoPlaybackException.createForRenderer(paramMediaCodec, getIndex());
+      paramMediaCodec = ExoPlaybackException.createForRenderer(paramMediaCodec, getIndex());
+    }
+    for (;;)
+    {
+      throw paramMediaCodec;
     }
   }
   
-  public void onPositionReset(long paramLong, boolean paramBoolean)
+  protected void onPositionReset(long paramLong, boolean paramBoolean)
   {
     super.onPositionReset(paramLong, paramBoolean);
     this.audioSink.reset();
@@ -348,7 +348,7 @@ public class MediaCodecAudioRenderer
     this.allowPositionDiscontinuity = true;
   }
   
-  public void onQueueInputBuffer(DecoderInputBuffer paramDecoderInputBuffer)
+  protected void onQueueInputBuffer(DecoderInputBuffer paramDecoderInputBuffer)
   {
     if ((this.allowFirstBufferPositionDiscontinuity) && (!paramDecoderInputBuffer.isDecodeOnly()))
     {
@@ -359,20 +359,20 @@ public class MediaCodecAudioRenderer
     }
   }
   
-  public void onStarted()
+  protected void onStarted()
   {
     super.onStarted();
     this.audioSink.play();
   }
   
-  public void onStopped()
+  protected void onStopped()
   {
     this.audioSink.pause();
     updateCurrentPosition();
     super.onStopped();
   }
   
-  public boolean processOutputBuffer(long paramLong1, long paramLong2, MediaCodec paramMediaCodec, ByteBuffer paramByteBuffer, int paramInt1, int paramInt2, long paramLong3, boolean paramBoolean)
+  protected boolean processOutputBuffer(long paramLong1, long paramLong2, MediaCodec paramMediaCodec, ByteBuffer paramByteBuffer, int paramInt1, int paramInt2, long paramLong3, boolean paramBoolean)
   {
     if ((this.passthroughEnabled) && ((paramInt2 & 0x2) != 0))
     {
@@ -396,20 +396,13 @@ public class MediaCodecAudioRenderer
         paramMediaCodec.renderedOutputBufferCount += 1;
         return true;
       }
-    }
-    catch (AudioSink.InitializationException paramMediaCodec)
-    {
-      throw ExoPlaybackException.createForRenderer(paramMediaCodec, getIndex());
       return false;
     }
-    catch (AudioSink.WriteException paramMediaCodec)
-    {
-      label112:
-      break label112;
-    }
+    catch (AudioSink.WriteException paramMediaCodec) {}catch (AudioSink.InitializationException paramMediaCodec) {}
+    throw ExoPlaybackException.createForRenderer(paramMediaCodec, getIndex());
   }
   
-  public void renderToEndOfStream()
+  protected void renderToEndOfStream()
   {
     try
     {
@@ -427,31 +420,35 @@ public class MediaCodecAudioRenderer
     return this.audioSink.setPlaybackParameters(paramPlaybackParameters);
   }
   
-  public int supportsFormat(MediaCodecSelector paramMediaCodecSelector, DrmSessionManager<FrameworkMediaCrypto> paramDrmSessionManager, Format paramFormat)
+  protected int supportsFormat(MediaCodecSelector paramMediaCodecSelector, DrmSessionManager<FrameworkMediaCrypto> paramDrmSessionManager, Format paramFormat)
   {
-    int k = 0;
     String str = paramFormat.sampleMimeType;
-    if (!MimeTypes.isAudio(str)) {
+    boolean bool1 = MimeTypes.isAudio(str);
+    int k = 0;
+    if (!bool1) {
       return 0;
     }
-    if (Util.SDK_INT >= 21) {}
-    boolean bool3;
-    for (int i = 32;; i = 0)
-    {
-      bool3 = supportsFormatDrm(paramDrmSessionManager, paramFormat.drmInitData);
-      if ((!bool3) || (!allowPassthrough(str)) || (paramMediaCodecSelector.getPassthroughDecoderInfo() == null)) {
-        break;
-      }
+    int i;
+    if (Util.SDK_INT >= 21) {
+      i = 32;
+    } else {
+      i = 0;
+    }
+    boolean bool3 = supportsFormatDrm(paramDrmSessionManager, paramFormat.drmInitData);
+    int m = 4;
+    if ((bool3) && (allowPassthrough(str)) && (paramMediaCodecSelector.getPassthroughDecoderInfo() != null)) {
       return i | 0x8 | 0x4;
     }
-    if ((("audio/raw".equals(str)) && (!this.audioSink.isEncodingSupported(paramFormat.pcmEncoding))) || (!this.audioSink.isEncodingSupported(2))) {
+    bool1 = "audio/raw".equals(str);
+    int n = 1;
+    if (((bool1) && (!this.audioSink.isEncodingSupported(paramFormat.pcmEncoding))) || (!this.audioSink.isEncodingSupported(2))) {
       return 1;
     }
     paramDrmSessionManager = paramFormat.drmInitData;
     if (paramDrmSessionManager != null)
     {
       j = 0;
-      boolean bool1 = false;
+      bool1 = false;
       for (;;)
       {
         bool2 = bool1;
@@ -466,10 +463,15 @@ public class MediaCodecAudioRenderer
     paramDrmSessionManager = paramMediaCodecSelector.getDecoderInfo(str, bool2, false);
     if (paramDrmSessionManager == null)
     {
-      if ((bool2) && (paramMediaCodecSelector.getDecoderInfo(str, false, false) != null)) {}
-      for (i = 2;; i = 1) {
-        return i;
+      i = n;
+      if (bool2)
+      {
+        i = n;
+        if (paramMediaCodecSelector.getDecoderInfo(str, false, false) != null) {
+          i = 2;
+        }
       }
+      return i;
     }
     if (!bool3) {
       return 2;
@@ -480,28 +482,30 @@ public class MediaCodecAudioRenderer
       {
         j = k;
         if (!paramDrmSessionManager.isAudioSampleRateSupportedV21(paramFormat.sampleRate)) {
-          break label283;
+          break label299;
         }
       }
       if (paramFormat.channelCount != -1)
       {
         j = k;
         if (!paramDrmSessionManager.isAudioChannelCountSupportedV21(paramFormat.channelCount)) {
-          break label283;
+          break label299;
         }
       }
     }
     int j = 1;
-    label283:
-    if (j != 0) {}
-    for (j = 4;; j = 3) {
-      return j | i | 0x8;
+    label299:
+    if (j != 0) {
+      j = m;
+    } else {
+      j = 3;
     }
+    return i | 0x8 | j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.audio.MediaCodecAudioRenderer
  * JD-Core Version:    0.7.0.1
  */

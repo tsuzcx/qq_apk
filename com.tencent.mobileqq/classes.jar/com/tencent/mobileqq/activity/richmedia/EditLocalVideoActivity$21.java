@@ -15,20 +15,24 @@ class EditLocalVideoActivity$21
       if ((EditLocalVideoActivity.a(this.this$0).isPlaying()) && (EditLocalVideoActivity.b(this.this$0))) {
         EditLocalVideoActivity.a(this.this$0).pause();
       }
-      if (EditLocalVideoActivity.c(this.this$0) == 0) {
-        EditLocalVideoActivity.a(this.this$0).setPlayDuration(this.a, this.b - this.a);
+      if (EditLocalVideoActivity.c(this.this$0) != 0) {
+        break label75;
       }
+      EditLocalVideoActivity.a(this.this$0).setPlayDuration(this.a, this.b - this.a);
       return;
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      QLog.w("EditLocalVideoActivity", 2, "Illegal state: onFramesClipChanged");
+      label67:
+      label75:
+      break label67;
     }
+    QLog.w("EditLocalVideoActivity", 2, "Illegal state: onFramesClipChanged");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity.21
  * JD-Core Version:    0.7.0.1
  */

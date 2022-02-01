@@ -33,7 +33,7 @@ public class TabBarView
   private static final int r = 10;
   private static final int s = 14;
   protected float a;
-  public long a;
+  protected long a;
   public final Paint a;
   private Handler jdField_a_of_type_AndroidOsHandler = new TabBarView.1(this);
   protected LinearLayout.LayoutParams a;
@@ -56,12 +56,12 @@ public class TabBarView
   protected int l;
   protected int m = s;
   protected int n = -1;
-  public int o = -1;
+  protected int o = -1;
   
   static
   {
     BaseApplication localBaseApplication = BaseApplication.getContext();
-    p = (int)(40.0F * localBaseApplication.getResources().getDisplayMetrics().density + 0.5F);
+    p = (int)(localBaseApplication.getResources().getDisplayMetrics().density * 40.0F + 0.5F);
     q = (int)(localBaseApplication.getResources().getDisplayMetrics().density * 4.0F + 0.5F);
   }
   
@@ -80,14 +80,15 @@ public class TabBarView
     this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_b_of_type_Int = p;
     this.jdField_c_of_type_Int = q;
-    this.e = paramContext.getResources().getColor(2131167041);
-    this.f = paramContext.getResources().getColor(2131167033);
+    this.e = paramContext.getResources().getColor(2131167064);
+    this.f = paramContext.getResources().getColor(2131167056);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.e);
     this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(0, -1);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.weight = 1.0F;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.gravity = 17;
-    setBackgroundDrawable(getResources().getDrawable(2130850824));
+    paramContext = this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams;
+    paramContext.weight = 1.0F;
+    paramContext.gravity = 17;
+    setBackgroundDrawable(getResources().getDrawable(2130850760));
     if (jdField_a_of_type_Int == 0) {
       jdField_a_of_type_Int = ((WindowManager)getContext().getSystemService("window")).getDefaultDisplay().getWidth();
     }
@@ -95,8 +96,9 @@ public class TabBarView
   
   private void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView$OnTabChangeListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView$OnTabChangeListener.a(paramInt1, paramInt2);
+    TabBarView.OnTabChangeListener localOnTabChangeListener = this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView$OnTabChangeListener;
+    if (localOnTabChangeListener != null) {
+      localOnTabChangeListener.onTabSelected(paramInt1, paramInt2);
     }
   }
   
@@ -113,9 +115,13 @@ public class TabBarView
         RedDotTextView localRedDotTextView = a(i1);
         if (localRedDotTextView != null)
         {
-          ((StringBuilder)localObject).append(localRedDotTextView.getText()).append("，").append(getContext().getString(2131691194));
-          if (this.o == i1) {
-            ((StringBuilder)localObject).append("，").append("已选中");
+          ((StringBuilder)localObject).append(localRedDotTextView.getText());
+          ((StringBuilder)localObject).append("，");
+          ((StringBuilder)localObject).append(getContext().getString(2131691115));
+          if (this.o == i1)
+          {
+            ((StringBuilder)localObject).append("，");
+            ((StringBuilder)localObject).append("已选中");
           }
           localRedDotTextView.setContentDescription(((StringBuilder)localObject).toString());
           ((StringBuilder)localObject).delete(0, ((StringBuilder)localObject).length());
@@ -127,50 +133,45 @@ public class TabBarView
   
   private void b(int paramInt1, int paramInt2)
   {
-    if (paramInt1 >= 0) {}
-    try
-    {
-      TextView localTextView;
-      if (paramInt1 < this.jdField_a_of_type_JavaUtilList.size())
+    if (paramInt1 >= 0) {
+      try
       {
-        localTextView = (TextView)this.jdField_a_of_type_JavaUtilList.get(paramInt1);
-        if (localTextView != null)
+        if (paramInt1 < this.jdField_a_of_type_JavaUtilList.size())
         {
-          localTextView.setTextColor(this.f);
-          if ((this.g != 0) && (this.h != 0)) {
-            localTextView.setBackgroundResource(this.h);
+          TextView localTextView1 = (TextView)this.jdField_a_of_type_JavaUtilList.get(paramInt1);
+          if (localTextView1 != null)
+          {
+            localTextView1.setTextColor(this.f);
+            if ((this.g != 0) && (this.h != 0)) {
+              localTextView1.setBackgroundResource(this.h);
+            }
           }
         }
       }
-      return;
-    }
-    catch (IndexOutOfBoundsException localIndexOutOfBoundsException1)
-    {
-      for (;;)
+      catch (IndexOutOfBoundsException localIndexOutOfBoundsException1)
       {
-        try
-        {
-          localTextView = (TextView)this.jdField_a_of_type_JavaUtilList.get(paramInt2);
-          if (localTextView != null)
-          {
-            localTextView.setTextColor(this.e);
-            if (this.g != 0) {
-              localTextView.setBackgroundResource(this.g);
-            }
-          }
-          return;
-        }
-        catch (IndexOutOfBoundsException localIndexOutOfBoundsException2)
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("TabBarView", 2, localIndexOutOfBoundsException2, new Object[0]);
-        }
-        localIndexOutOfBoundsException1 = localIndexOutOfBoundsException1;
         if (QLog.isColorLevel()) {
           QLog.d("TabBarView", 2, localIndexOutOfBoundsException1, new Object[0]);
         }
+      }
+    }
+    try
+    {
+      TextView localTextView2 = (TextView)this.jdField_a_of_type_JavaUtilList.get(paramInt2);
+      if (localTextView2 != null)
+      {
+        localTextView2.setTextColor(this.e);
+        if (this.g != 0)
+        {
+          localTextView2.setBackgroundResource(this.g);
+          return;
+        }
+      }
+    }
+    catch (IndexOutOfBoundsException localIndexOutOfBoundsException2)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TabBarView", 2, localIndexOutOfBoundsException2, new Object[0]);
       }
     }
   }
@@ -180,7 +181,7 @@ public class TabBarView
     return this.o;
   }
   
-  public int a(View paramView)
+  protected int a(View paramView)
   {
     int i2 = getChildCount();
     int i1 = 0;
@@ -210,7 +211,7 @@ public class TabBarView
     if (localView == null) {
       return null;
     }
-    localView = localView.findViewById(2131379169);
+    localView = localView.findViewById(2131378532);
     if ((localView instanceof RedDotTextView)) {
       return (RedDotTextView)localView;
     }
@@ -229,168 +230,155 @@ public class TabBarView
   
   public RedDotTextView a(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if ((paramInt < 0) || (paramInt > getChildCount())) {
-      throw new IllegalArgumentException("position is not legal, please check!");
-    }
-    LinearLayout localLinearLayout1 = new LinearLayout(getContext());
-    RedDotTextView localRedDotTextView = new RedDotTextView(getContext());
-    localRedDotTextView.setText(paramString);
-    localRedDotTextView.setTextSize(2, this.m);
-    localRedDotTextView.setTextColor(this.f);
-    localRedDotTextView.setPadding(this.i, this.k, this.j, this.l);
-    localRedDotTextView.setSingleLine();
-    localRedDotTextView.setFocusable(true);
-    localRedDotTextView.setContentDescription(paramString);
-    localRedDotTextView.setGravity(17);
-    if (!TextUtils.isEmpty(paramString)) {
-      localRedDotTextView.setOnClickListener(new TabBarView.2(this, paramInt));
-    }
-    ViewCompat.setAccessibilityDelegate(localRedDotTextView, new TabBarView.3(this));
-    this.jdField_a_of_type_JavaUtilList.add(localRedDotTextView);
-    this.jdField_b_of_type_JavaUtilList.add(localLinearLayout1);
-    this.jdField_c_of_type_JavaUtilList.add(paramString);
-    int i4 = this.jdField_a_of_type_JavaUtilList.size();
-    HashMap localHashMap = new HashMap();
-    if (!paramBoolean3)
+    if ((paramInt >= 0) && (paramInt <= getChildCount()))
     {
-      if (!paramBoolean1) {
-        break label446;
+      LinearLayout localLinearLayout1 = new LinearLayout(getContext());
+      RedDotTextView localRedDotTextView = new RedDotTextView(getContext());
+      localRedDotTextView.setText(paramString);
+      localRedDotTextView.setTextSize(2, this.m);
+      localRedDotTextView.setTextColor(this.f);
+      localRedDotTextView.setPadding(this.i, this.k, this.j, this.l);
+      localRedDotTextView.setSingleLine();
+      localRedDotTextView.setFocusable(true);
+      localRedDotTextView.setContentDescription(paramString);
+      localRedDotTextView.setGravity(17);
+      if (!TextUtils.isEmpty(paramString)) {
+        localRedDotTextView.setOnClickListener(new TabBarView.2(this, paramInt));
       }
-      if (i4 < 6) {
-        break label406;
-      }
-      localHashMap.put("width", Integer.valueOf((int)(jdField_a_of_type_Int / getResources().getDisplayMetrics().density / 6.0F + 0.5F)));
-    }
-    int i1;
-    LinearLayout localLinearLayout2;
-    for (;;)
-    {
-      paramString = new LinearLayout.LayoutParams(0, -1);
-      i1 = 0;
-      for (;;)
-      {
-        if (i1 >= i4) {
-          break label912;
-        }
-        localLinearLayout2 = (LinearLayout)this.jdField_b_of_type_JavaUtilList.get(i1);
-        if ((localHashMap == null) || (localHashMap.get("width") == null)) {
-          break;
-        }
-        paramString.width = ((int)(Integer.parseInt(localHashMap.get("width").toString()) * getResources().getDisplayMetrics().density + 0.5F));
-        label352:
-        if ((!paramBoolean2) || (i4 != 2)) {
-          break label890;
-        }
-        if (i1 != 0) {
-          break label852;
-        }
-        paramString.gravity = 21;
-        localLinearLayout2.setLayoutParams(paramString);
-        localLinearLayout2.setGravity(21);
-        localLinearLayout2.setPadding(0, 0, 50, 0);
-        label397:
-        i1 += 1;
-      }
-      label406:
-      localHashMap.put("width", Integer.valueOf((int)(jdField_a_of_type_Int / getResources().getDisplayMetrics().density / i4 + 0.5F)));
-    }
-    label446:
-    if (i4 == 2) {
-      localHashMap.put("width", Integer.valueOf((int)(jdField_a_of_type_Int / getResources().getDisplayMetrics().density / 3.0F + 0.5F)));
-    }
-    int i2;
-    label507:
-    int i3;
-    if (i4 == 6)
-    {
-      i1 = 0;
-      paramString = Boolean.valueOf(true);
-      i2 = 0;
-      if (i2 < i4)
-      {
-        i3 = ((String)this.jdField_c_of_type_JavaUtilList.get(i2)).toString().length();
-        if (i2 == 0) {
-          i1 = i3;
-        }
-      }
-    }
-    for (;;)
-    {
-      i2 += 1;
-      break label507;
-      if (i1 != i3)
-      {
-        paramString = Boolean.valueOf(false);
-        continue;
-        if (paramString.booleanValue()) {
-          localHashMap.put("width", Integer.valueOf(69));
-        }
-        for (;;)
+      ViewCompat.setAccessibilityDelegate(localRedDotTextView, new TabBarView.3(this));
+      this.jdField_a_of_type_JavaUtilList.add(localRedDotTextView);
+      this.jdField_b_of_type_JavaUtilList.add(localLinearLayout1);
+      this.jdField_c_of_type_JavaUtilList.add(paramString);
+      int i5 = this.jdField_a_of_type_JavaUtilList.size();
+      HashMap localHashMap = new HashMap();
+      int i2;
+      int i3;
+      if (!paramBoolean3) {
+        if (paramBoolean1)
         {
-          if (i4 <= 6) {
-            break label667;
+          if (i5 >= 6) {
+            localHashMap.put("width", Integer.valueOf((int)(jdField_a_of_type_Int / getResources().getDisplayMetrics().density / 6.0F + 0.5F)));
+          } else {
+            localHashMap.put("width", Integer.valueOf((int)(jdField_a_of_type_Int / getResources().getDisplayMetrics().density / i5 + 0.5F)));
           }
-          localHashMap.put("paddingLeft", Integer.valueOf(8));
-          localHashMap.put("paddingRight", Integer.valueOf(8));
-          break;
-          localHashMap.put("paddingLeft", Integer.valueOf(8));
-          localHashMap.put("paddingRight", Integer.valueOf(8));
         }
-        label667:
-        break;
-        if ((localHashMap != null) && (localHashMap.get("paddingLeft") != null) && (localHashMap.get("paddingRight") != null))
+        else
+        {
+          if (i5 == 2) {
+            localHashMap.put("width", Integer.valueOf((int)(jdField_a_of_type_Int / getResources().getDisplayMetrics().density / 3.0F + 0.5F)));
+          }
+          if (i5 == 6)
+          {
+            paramString = Boolean.valueOf(true);
+            i2 = 0;
+            i1 = 0;
+            while (i1 < i5)
+            {
+              int i4 = ((String)this.jdField_c_of_type_JavaUtilList.get(i1)).toString().length();
+              if (i1 == 0)
+              {
+                i3 = i4;
+              }
+              else
+              {
+                i3 = i2;
+                if (i2 != i4)
+                {
+                  paramString = Boolean.valueOf(false);
+                  i3 = i2;
+                }
+              }
+              i1 += 1;
+              i2 = i3;
+            }
+            if (paramString.booleanValue())
+            {
+              localHashMap.put("width", Integer.valueOf(69));
+            }
+            else
+            {
+              localHashMap.put("paddingLeft", Integer.valueOf(8));
+              localHashMap.put("paddingRight", Integer.valueOf(8));
+            }
+          }
+          if (i5 > 6)
+          {
+            localHashMap.put("paddingLeft", Integer.valueOf(8));
+            localHashMap.put("paddingRight", Integer.valueOf(8));
+          }
+        }
+      }
+      paramString = new LinearLayout.LayoutParams(0, -1);
+      int i1 = 0;
+      while (i1 < i5)
+      {
+        LinearLayout localLinearLayout2 = (LinearLayout)this.jdField_b_of_type_JavaUtilList.get(i1);
+        if (localHashMap.get("width") != null)
+        {
+          paramString.width = ((int)(Integer.parseInt(localHashMap.get("width").toString()) * getResources().getDisplayMetrics().density + 0.5F));
+        }
+        else if ((localHashMap.get("paddingLeft") != null) && (localHashMap.get("paddingRight") != null))
         {
           i2 = (int)(Integer.parseInt(localHashMap.get("paddingLeft").toString()) * getResources().getDisplayMetrics().density + 0.5F);
           i3 = (int)(Integer.parseInt(localHashMap.get("paddingRight").toString()) * getResources().getDisplayMetrics().density + 0.5F);
           paramString.leftMargin = i2;
           paramString.rightMargin = i3;
           paramString.width = -2;
-          break label352;
         }
-        if (paramBoolean3)
+        else if (paramBoolean3)
         {
           i2 = (int)((this.m + this.d * 2) * getResources().getDisplayMetrics().density + 0.5F);
           paramString.leftMargin = i2;
           paramString.rightMargin = i2;
           paramString.width = -2;
-          break label352;
         }
-        paramString.weight = 1.0F;
-        break label352;
-        label852:
-        if (i1 != 1) {
-          break label397;
-        }
-        paramString.gravity = 19;
-        localLinearLayout2.setLayoutParams(paramString);
-        localLinearLayout2.setGravity(19);
-        localLinearLayout2.setPadding(50, 0, 0, 0);
-        break label397;
-        label890:
-        paramString.gravity = 17;
-        localLinearLayout2.setLayoutParams(paramString);
-        localLinearLayout2.setGravity(17);
-        break label397;
-        label912:
-        localRedDotTextView.setId(2131379169);
-        if ((localHashMap != null) && (localHashMap.get("paddingLeft") != null))
+        else
         {
-          localLinearLayout1.addView(localRedDotTextView, paramString);
-          if (i4 != 2) {
-            break label981;
+          paramString.weight = 1.0F;
+        }
+        if ((paramBoolean2) && (i5 == 2))
+        {
+          if (i1 == 0)
+          {
+            paramString.gravity = 21;
+            localLinearLayout2.setLayoutParams(paramString);
+            localLinearLayout2.setGravity(21);
+            localLinearLayout2.setPadding(0, 0, 50, 0);
           }
-          setGravity(1);
+          else if (i1 == 1)
+          {
+            paramString.gravity = 19;
+            localLinearLayout2.setLayoutParams(paramString);
+            localLinearLayout2.setGravity(19);
+            localLinearLayout2.setPadding(50, 0, 0, 0);
+          }
         }
-        for (;;)
+        else
         {
-          addView(localLinearLayout1, paramInt);
-          return localRedDotTextView;
-          localLinearLayout1.addView(localRedDotTextView, this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
-          break;
-          label981:
-          setGravity(8388627);
+          paramString.gravity = 17;
+          localLinearLayout2.setLayoutParams(paramString);
+          localLinearLayout2.setGravity(17);
         }
+        i1 += 1;
       }
+      localRedDotTextView.setId(2131378532);
+      if (localHashMap.get("paddingLeft") != null) {
+        localLinearLayout1.addView(localRedDotTextView, paramString);
+      } else {
+        localLinearLayout1.addView(localRedDotTextView, this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
+      }
+      if (i5 == 2) {
+        setGravity(1);
+      } else {
+        setGravity(8388627);
+      }
+      addView(localLinearLayout1, paramInt);
+      return localRedDotTextView;
+    }
+    paramString = new IllegalArgumentException("position is not legal, please check!");
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
@@ -406,59 +394,53 @@ public class TabBarView
   
   public void a(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= getChildCount())) {
-      throw new IllegalArgumentException("index is not legal, please check!");
+    if ((paramInt >= 0) && (paramInt < getChildCount()))
+    {
+      this.jdField_a_of_type_JavaUtilList.remove(paramInt);
+      this.jdField_b_of_type_JavaUtilList.remove(paramInt);
+      this.jdField_c_of_type_JavaUtilList.remove(paramInt);
+      removeViewAt(paramInt);
+      return;
     }
-    this.jdField_a_of_type_JavaUtilList.remove(paramInt);
-    this.jdField_b_of_type_JavaUtilList.remove(paramInt);
-    this.jdField_c_of_type_JavaUtilList.remove(paramInt);
-    removeViewAt(paramInt);
+    throw new IllegalArgumentException("index is not legal, please check!");
   }
   
   protected void a(Canvas paramCanvas)
   {
     View localView1 = getChildAt(this.o);
-    int i2;
-    int i1;
     if (localView1 != null)
     {
       View localView2 = (View)this.jdField_a_of_type_JavaUtilList.get(this.o);
       this.jdField_b_of_type_AndroidGraphicsPaint.setTextSize(this.m * getContext().getResources().getDisplayMetrics().density + 0.5F);
       float f1 = this.jdField_b_of_type_AndroidGraphicsPaint.measureText(((String)this.jdField_c_of_type_JavaUtilList.get(this.o)).toString());
-      i2 = (int)((localView1.getRight() - localView1.getLeft() - f1) / 2.0F);
-      i1 = (int)(f1 + i2);
+      int i2 = (int)((localView1.getRight() - localView1.getLeft() - f1) / 2.0F);
+      int i1 = (int)(i2 + f1);
       if (localView2 != null)
       {
-        i2 = localView1.getLeft() + i2 - this.d;
-        int i3 = localView1.getLeft();
-        i1 = this.d + (i3 + i1);
-        if (this.jdField_a_of_type_Float <= 0.0F) {
-          break label329;
+        int i3 = localView1.getLeft() + i2 - this.d;
+        int i4 = localView1.getLeft() + i1 + this.d;
+        i2 = i4;
+        i1 = i3;
+        if (this.jdField_a_of_type_Float > 0.0F)
+        {
+          localView1 = getChildAt(this.n);
+          i2 = i4;
+          i1 = i3;
+          if (localView1 != null)
+          {
+            f1 = this.jdField_b_of_type_AndroidGraphicsPaint.measureText(((String)this.jdField_c_of_type_JavaUtilList.get(this.n)).toString());
+            i1 = (int)((localView1.getRight() - localView1.getLeft() - f1) / 2.0F);
+            i2 = (int)(i1 + f1);
+            i1 = (int)(i3 + this.jdField_a_of_type_Float * (localView1.getLeft() + i1 - this.d - i3));
+            i2 = (int)(i4 + this.jdField_a_of_type_Float * (localView1.getLeft() + i2 + this.d - i4));
+          }
         }
-        localView1 = getChildAt(this.n);
-        if (localView1 == null) {
-          break label329;
-        }
-        f1 = this.jdField_b_of_type_AndroidGraphicsPaint.measureText(((String)this.jdField_c_of_type_JavaUtilList.get(this.n)).toString());
-        int i4 = (int)((localView1.getRight() - localView1.getLeft() - f1) / 2.0F);
-        i3 = (int)(f1 + i4);
-        f1 = i2;
-        float f2 = this.jdField_a_of_type_Float;
-        i2 = (int)((i4 + localView1.getLeft() - this.d - i2) * f2 + f1);
-        f1 = i1;
-        f2 = this.jdField_a_of_type_Float;
-        i1 = (int)((i3 + localView1.getLeft() + this.d - i1) * f2 + f1);
+        paramCanvas.drawRect(i1, getHeight() - this.jdField_c_of_type_Int, i2, getHeight(), this.jdField_a_of_type_AndroidGraphicsPaint);
       }
-    }
-    label329:
-    for (;;)
-    {
-      paramCanvas.drawRect(i2, getHeight() - this.jdField_c_of_type_Int, i1, getHeight(), this.jdField_a_of_type_AndroidGraphicsPaint);
-      return;
     }
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
     a(paramCanvas);
     super.dispatchDraw(paramCanvas);
@@ -507,9 +489,10 @@ public class TabBarView
     if (i1 >= i2) {
       paramInt = i2 - 1;
     }
-    if (this.o != paramInt)
+    i1 = this.o;
+    if (i1 != paramInt)
     {
-      if (this.o == -1) {
+      if (i1 == -1) {
         paramBoolean1 = false;
       }
       if (paramBoolean1)
@@ -517,11 +500,8 @@ public class TabBarView
         this.jdField_a_of_type_Float = 0.0F;
         this.n = paramInt;
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+        return;
       }
-    }
-    while ((!this.jdField_a_of_type_Boolean) || (!paramBoolean2))
-    {
-      return;
       if (paramBoolean2) {
         a(this.o, paramInt);
       }
@@ -533,7 +513,9 @@ public class TabBarView
       b();
       return;
     }
-    a(this.o, this.o);
+    if ((this.jdField_a_of_type_Boolean) && (paramBoolean2)) {
+      a(i1, i1);
+    }
   }
   
   public void setTabHeight(int paramInt)
@@ -581,7 +563,7 @@ public class TabBarView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TabBarView
  * JD-Core Version:    0.7.0.1
  */

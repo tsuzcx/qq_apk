@@ -14,10 +14,12 @@ public class QQAVImageBeautyHighPassFilter
   
   public void onDestroy()
   {
-    if (this.mFrameBuffers != null)
+    int[] arrayOfInt = this.mFrameBuffers;
+    if (arrayOfInt != null)
     {
-      GLES20.glDeleteFramebuffers(this.mFrameBuffers.length, this.mFrameBuffers, 0);
-      GLES20.glDeleteTextures(this.mFrameBufferTextures.length, this.mFrameBufferTextures, 0);
+      GLES20.glDeleteFramebuffers(arrayOfInt.length, arrayOfInt, 0);
+      arrayOfInt = this.mFrameBufferTextures;
+      GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
     }
     this.mGaussianBlurFilter.destroy();
     this.mTwoInputFilter.destroy();
@@ -27,12 +29,20 @@ public class QQAVImageBeautyHighPassFilter
   public void onDraw2(int paramInt1, int paramInt2)
   {
     runPendingOnDrawTasks();
-    if ((!isInitialized()) || (this.mFrameBuffers == null) || (this.mFrameBufferTextures == null)) {
-      return;
+    if (isInitialized())
+    {
+      Object localObject = this.mFrameBuffers;
+      if (localObject != null)
+      {
+        if (this.mFrameBufferTextures == null) {
+          return;
+        }
+        this.mGaussianBlurFilter.onDraw2(paramInt1, localObject[0]);
+        localObject = this.mTwoInputFilter;
+        ((QQAVImageTwoInputFilter)localObject).mFilterSourceTexture2 = this.mFrameBufferTextures[0];
+        ((QQAVImageTwoInputFilter)localObject).onDraw2(paramInt1, paramInt2);
+      }
     }
-    this.mGaussianBlurFilter.onDraw2(paramInt1, this.mFrameBuffers[0]);
-    this.mTwoInputFilter.mFilterSourceTexture2 = this.mFrameBufferTextures[0];
-    this.mTwoInputFilter.onDraw2(paramInt1, paramInt2);
   }
   
   public void onInit()
@@ -51,17 +61,21 @@ public class QQAVImageBeautyHighPassFilter
   
   public void onOutputSizeChanged(int paramInt1, int paramInt2)
   {
-    if ((this.mOutputWidth != paramInt1) || (this.mOutputHeight != paramInt2)) {}
-    for (int i = 1;; i = 0)
+    int i;
+    if ((this.mOutputWidth == paramInt1) && (this.mOutputHeight == paramInt2)) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    super.onOutputSizeChanged(paramInt1, paramInt2);
+    if (i != 0)
     {
-      super.onOutputSizeChanged(paramInt1, paramInt2);
-      if (i == 0) {
-        break;
-      }
-      if (this.mFrameBuffers != null)
+      int[] arrayOfInt = this.mFrameBuffers;
+      if (arrayOfInt != null)
       {
-        GLES20.glDeleteFramebuffers(this.mFrameBuffers.length, this.mFrameBuffers, 0);
-        GLES20.glDeleteTextures(this.mFrameBufferTextures.length, this.mFrameBufferTextures, 0);
+        GLES20.glDeleteFramebuffers(arrayOfInt.length, arrayOfInt, 0);
+        arrayOfInt = this.mFrameBufferTextures;
+        GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
       }
       this.mGaussianBlurFilter.onOutputSizeChanged(paramInt1, paramInt2);
       this.mTwoInputFilter.onOutputSizeChanged(paramInt1, paramInt2);
@@ -93,7 +107,7 @@ public class QQAVImageBeautyHighPassFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.video.effect.core.qqavimage.beauty.QQAVImageBeautyHighPassFilter
  * JD-Core Version:    0.7.0.1
  */

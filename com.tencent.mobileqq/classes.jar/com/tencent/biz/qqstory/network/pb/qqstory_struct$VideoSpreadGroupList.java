@@ -20,13 +20,14 @@ public final class qqstory_struct$VideoSpreadGroupList
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "visibility_type", "group_list", "visibility_sharegroup_type", "share_group_list" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro }, VideoSpreadGroupList.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "visibility_type", "group_list", "visibility_sharegroup_type", "share_group_list" }, new Object[] { localInteger, Long.valueOf(0L), localInteger, localByteStringMicro }, VideoSpreadGroupList.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoSpreadGroupList
  * JD-Core Version:    0.7.0.1
  */

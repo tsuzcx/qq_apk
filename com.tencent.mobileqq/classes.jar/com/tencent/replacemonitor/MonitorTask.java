@@ -44,12 +44,51 @@ public class MonitorTask
   
   public String toString()
   {
-    return "MonitorTask:" + " id = " + this.id + " packageName = " + this.packageName + " versionCode = " + this.versionCode + " appName = " + this.appName + " fileSize = " + this.fileSize + " fileMd5 = " + this.fileMd5 + " cpChannelId = " + this.cpChannelId + " filePath = " + this.filePath + " downloadUrl = " + this.downloadUrl + " yybAppId = " + this.yybAppId + " yybApkId = " + this.yybApkId + " installDir = " + this.installDir + " lastModifedTime = " + this.lastModifedTime + " additionalId = " + this.additionalId + " traceId = " + this.traceId + " appType = " + this.appType + " lastStep = " + this.lastStep + " isTencentDownload = " + this.isTencentDownload + " externalParams = " + d.a(this.externalParams, "&");
+    StringBuffer localStringBuffer = new StringBuffer("MonitorTask:");
+    localStringBuffer.append(" id = ");
+    localStringBuffer.append(this.id);
+    localStringBuffer.append(" packageName = ");
+    localStringBuffer.append(this.packageName);
+    localStringBuffer.append(" versionCode = ");
+    localStringBuffer.append(this.versionCode);
+    localStringBuffer.append(" appName = ");
+    localStringBuffer.append(this.appName);
+    localStringBuffer.append(" fileSize = ");
+    localStringBuffer.append(this.fileSize);
+    localStringBuffer.append(" fileMd5 = ");
+    localStringBuffer.append(this.fileMd5);
+    localStringBuffer.append(" cpChannelId = ");
+    localStringBuffer.append(this.cpChannelId);
+    localStringBuffer.append(" filePath = ");
+    localStringBuffer.append(this.filePath);
+    localStringBuffer.append(" downloadUrl = ");
+    localStringBuffer.append(this.downloadUrl);
+    localStringBuffer.append(" yybAppId = ");
+    localStringBuffer.append(this.yybAppId);
+    localStringBuffer.append(" yybApkId = ");
+    localStringBuffer.append(this.yybApkId);
+    localStringBuffer.append(" installDir = ");
+    localStringBuffer.append(this.installDir);
+    localStringBuffer.append(" lastModifedTime = ");
+    localStringBuffer.append(this.lastModifedTime);
+    localStringBuffer.append(" additionalId = ");
+    localStringBuffer.append(this.additionalId);
+    localStringBuffer.append(" traceId = ");
+    localStringBuffer.append(this.traceId);
+    localStringBuffer.append(" appType = ");
+    localStringBuffer.append(this.appType);
+    localStringBuffer.append(" lastStep = ");
+    localStringBuffer.append(this.lastStep);
+    localStringBuffer.append(" isTencentDownload = ");
+    localStringBuffer.append(this.isTencentDownload);
+    localStringBuffer.append(" externalParams = ");
+    localStringBuffer.append(d.a(this.externalParams, "&"));
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.replacemonitor.MonitorTask
  * JD-Core Version:    0.7.0.1
  */

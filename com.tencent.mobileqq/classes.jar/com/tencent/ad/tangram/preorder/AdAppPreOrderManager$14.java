@@ -33,8 +33,9 @@ class AdAppPreOrderManager$14
       AdAppPreOrderManager.access$702(this.this$0, false);
       AdAppPreOrderManager.access$202(this.this$0, false);
       AdAppPreOrderManager.access$102(this.this$0, 0L);
-      this.this$0.downloadingTaskCount = 0;
-      this.this$0.init(this.this$0.getContext(), this.val$uin);
+      AdAppPreOrderManager localAdAppPreOrderManager = this.this$0;
+      localAdAppPreOrderManager.downloadingTaskCount = 0;
+      localAdAppPreOrderManager.init(localAdAppPreOrderManager.getContext(), this.val$uin);
       return;
     }
     finally {}

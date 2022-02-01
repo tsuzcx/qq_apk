@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import com.tencent.mobileqq.webview.swift.WebUiBaseInterface;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebTitleBarInterface;
+import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebViewProviderInterface;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 
 class EmojiJsPlugin$8
@@ -12,17 +12,18 @@ class EmojiJsPlugin$8
   
   public void run()
   {
-    WebUiBaseInterface localWebUiBaseInterface = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
-    if ((localWebUiBaseInterface != null) && ((localWebUiBaseInterface instanceof WebUiUtils.WebTitleBarInterface)))
+    WebUiUtils.WebViewProviderInterface localWebViewProviderInterface = this.this$0.mRuntime.a();
+    if ((localWebViewProviderInterface != null) && (localWebViewProviderInterface.getWebTitleBarInterface() != null))
     {
-      this.this$0.progressDialog = new QQProgressDialog(this.this$0.mRuntime.a(), ((WebUiUtils.WebTitleBarInterface)localWebUiBaseInterface).getTitleBarHeight());
+      EmojiJsPlugin localEmojiJsPlugin = this.this$0;
+      localEmojiJsPlugin.progressDialog = new QQProgressDialog(localEmojiJsPlugin.mRuntime.a(), localWebViewProviderInterface.getWebTitleBarInterface().a());
       this.this$0.progressDialog.show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.EmojiJsPlugin.8
  * JD-Core Version:    0.7.0.1
  */

@@ -16,20 +16,10 @@ import wf7.hv;
 public class WifiSDKMainFragImpl
   extends BaseFragmentImpl
 {
-  private static final String TAG = WifiSDKMainFragImpl.class.getSimpleName();
-  private static final int tu;
+  private static final String TAG = "WifiSDKMainFragImpl";
+  private static final int tu = 10;
   private TMSDKWifiManager ts;
   private a tt;
-  
-  static
-  {
-    if ("qq".equals("qq")) {}
-    for (int i = 10;; i = 2147483647)
-    {
-      tu = i;
-      return;
-    }
-  }
   
   public void onActivityCreated(@Nullable Bundle paramBundle)
   {
@@ -109,7 +99,7 @@ public class WifiSDKMainFragImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.wifisdk.ui.fragments.WifiSDKMainFragImpl
  * JD-Core Version:    0.7.0.1
  */

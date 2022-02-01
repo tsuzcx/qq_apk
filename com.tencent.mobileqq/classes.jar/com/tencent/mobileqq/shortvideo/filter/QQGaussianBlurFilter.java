@@ -41,16 +41,27 @@ public class QQGaussianBlurFilter
   
   public void onDrawFrame()
   {
-    if (this.frameIndex % this.picRate == 0)
+    int i = this.frameIndex;
+    int j = this.picRate;
+    if (i % j == 0)
     {
-      this.picIndex = (this.frameIndex / this.picRate);
+      this.picIndex = (i / j);
       if (this.picIndex < this.imgSize)
       {
-        Log.d("rejectliu", "scale Filter OnDrawFrame frameIndex : " + this.frameIndex + "  picRate : " + this.picRate + " imgSize : " + this.imgSize + "  picIndex : " + this.picIndex);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("scale Filter OnDrawFrame frameIndex : ");
+        localStringBuilder.append(this.frameIndex);
+        localStringBuilder.append("  picRate : ");
+        localStringBuilder.append(this.picRate);
+        localStringBuilder.append(" imgSize : ");
+        localStringBuilder.append(this.imgSize);
+        localStringBuilder.append("  picIndex : ");
+        localStringBuilder.append(this.picIndex);
+        Log.d("rejectliu", localStringBuilder.toString());
         this.glImage.loadTextureSync((String)this.pathList.get(this.picIndex));
       }
     }
-    int i = this.glImage.getTexture();
+    i = this.glImage.getTexture();
     this.compose.drawTexture(i);
     i = this.compose.getTextureId();
     this.mRenderFBO.bind();
@@ -102,7 +113,7 @@ public class QQGaussianBlurFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQGaussianBlurFilter
  * JD-Core Version:    0.7.0.1
  */

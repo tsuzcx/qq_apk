@@ -50,10 +50,17 @@ public class NativeMemoryInfo
         int k = this.jdField_a_of_type_ComTencentMobileqqStatisticsNatmemNativeMemoryInfo$BackTrace.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i);
         NativeMemoryInfo.BackTraceLine localBackTraceLine1 = (NativeMemoryInfo.BackTraceLine)this.jdField_a_of_type_ComTencentMobileqqStatisticsNatmemNativeMemoryInfo$BackTrace.jdField_a_of_type_AndroidUtilSparseArray.get(k);
         NativeMemoryInfo.BackTraceLine localBackTraceLine2 = (NativeMemoryInfo.BackTraceLine)paramObject.jdField_a_of_type_ComTencentMobileqqStatisticsNatmemNativeMemoryInfo$BackTrace.jdField_a_of_type_AndroidUtilSparseArray.get(k);
-        if ((localBackTraceLine1 == null) || (!localBackTraceLine1.equals(localBackTraceLine2))) {
+        if (localBackTraceLine1 != null)
+        {
+          if (!localBackTraceLine1.equals(localBackTraceLine2)) {
+            return false;
+          }
+          i += 1;
+        }
+        else
+        {
           return false;
         }
-        i += 1;
       }
       return true;
     }
@@ -63,16 +70,21 @@ public class NativeMemoryInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(128);
-    localStringBuilder.append("create time:").append(a());
-    localStringBuilder.append(" address:").append(this.b);
-    localStringBuilder.append(" size:").append(this.jdField_a_of_type_Int).append("\n");
-    localStringBuilder.append("trace:").append(this.jdField_a_of_type_ComTencentMobileqqStatisticsNatmemNativeMemoryInfo$BackTrace.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("create time:");
+    localStringBuilder.append(a());
+    localStringBuilder.append(" address:");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(" size:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("trace:");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqStatisticsNatmemNativeMemoryInfo$BackTrace.jdField_a_of_type_JavaLangString);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.natmem.NativeMemoryInfo
  * JD-Core Version:    0.7.0.1
  */

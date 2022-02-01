@@ -12,7 +12,7 @@ public class IPSiteModel$Gxzb
   public static final String BUBBLE;
   public static final String CARD;
   public static final Parcelable.Creator<Gxzb> CREATOR = new IPSiteModel.Gxzb.1();
-  public static final String EMOJI = MobileQQ.sMobileQQ.getString(2131719704);
+  public static final String EMOJI = MobileQQ.sMobileQQ.getString(2131719425);
   public static final String FONT;
   public static final String FUNCALL;
   public static final String PENDANT;
@@ -27,14 +27,14 @@ public class IPSiteModel$Gxzb
   
   static
   {
-    BUBBLE = MobileQQ.sMobileQQ.getString(2131719701);
-    THEME = MobileQQ.sMobileQQ.getString(2131719712);
-    PENDANT = MobileQQ.sMobileQQ.getString(2131719708);
-    FONT = MobileQQ.sMobileQQ.getString(2131719706);
-    BACKGROUND = MobileQQ.sMobileQQ.getString(2131719700);
-    FUNCALL = MobileQQ.sMobileQQ.getString(2131719707);
-    CARD = MobileQQ.sMobileQQ.getString(2131719702);
-    REDPACKT = MobileQQ.sMobileQQ.getString(2131719710);
+    BUBBLE = MobileQQ.sMobileQQ.getString(2131719422);
+    THEME = MobileQQ.sMobileQQ.getString(2131719433);
+    PENDANT = MobileQQ.sMobileQQ.getString(2131719429);
+    FONT = MobileQQ.sMobileQQ.getString(2131719427);
+    BACKGROUND = MobileQQ.sMobileQQ.getString(2131719421);
+    FUNCALL = MobileQQ.sMobileQQ.getString(2131719428);
+    CARD = MobileQQ.sMobileQQ.getString(2131719423);
+    REDPACKT = MobileQQ.sMobileQQ.getString(2131719431);
   }
   
   public IPSiteModel$Gxzb() {}
@@ -56,7 +56,25 @@ public class IPSiteModel$Gxzb
   
   public String toString()
   {
-    return "Gxzb{appid=" + this.appid + ", appName='" + this.appName + '\'' + ", cover='" + this.cover + '\'' + ", feeType=" + this.feeType + ", id='" + this.id + '\'' + ", name='" + this.name + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Gxzb{appid=");
+    localStringBuilder.append(this.appid);
+    localStringBuilder.append(", appName='");
+    localStringBuilder.append(this.appName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", cover='");
+    localStringBuilder.append(this.cover);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", feeType=");
+    localStringBuilder.append(this.feeType);
+    localStringBuilder.append(", id='");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -71,7 +89,7 @@ public class IPSiteModel$Gxzb
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.IPSiteModel.Gxzb
  * JD-Core Version:    0.7.0.1
  */

@@ -23,19 +23,19 @@ public class BrowserService
     return this.a;
   }
   
-  public Map<String, String[]> getCompatibleCmd2HandlerMap()
+  protected Map<String, String[]> getCompatibleCmd2HandlerMap()
   {
     return Cmd2HandlerMap.a();
   }
   
-  public Class<? extends MSFServlet> getServlet()
+  protected Class<? extends MSFServlet> getServlet()
   {
     return WebSSOAgentServlet.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.BrowserService
  * JD-Core Version:    0.7.0.1
  */

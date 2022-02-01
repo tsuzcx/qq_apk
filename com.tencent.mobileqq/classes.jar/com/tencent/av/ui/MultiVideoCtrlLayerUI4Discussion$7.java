@@ -14,14 +14,22 @@ class MultiVideoCtrlLayerUI4Discussion$7
     if (this.this$0.jdField_a_of_type_Boolean) {
       return;
     }
-    String str = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a(String.valueOf(this.a), String.valueOf(this.this$0.b), this.this$0.e);
-    this.this$0.jdField_a_of_type_JavaUtilMap.put(String.valueOf(this.a), str);
-    QLog.d(this.this$0.d, 1, "refreshUI --> user name mark name=" + str + ", mApp.getCurrentAccountUin()=" + String.valueOf(this.a) + ", mMapNickNameCache.size()=" + this.this$0.jdField_a_of_type_JavaUtilMap.size());
+    String str1 = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a(String.valueOf(this.a), String.valueOf(this.this$0.b), this.this$0.e);
+    this.this$0.jdField_a_of_type_JavaUtilMap.put(String.valueOf(this.a), str1);
+    String str2 = this.this$0.d;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("refreshUI --> user name mark name=");
+    localStringBuilder.append(str1);
+    localStringBuilder.append(", mApp.getCurrentAccountUin()=");
+    localStringBuilder.append(String.valueOf(this.a));
+    localStringBuilder.append(", mMapNickNameCache.size()=");
+    localStringBuilder.append(this.this$0.jdField_a_of_type_JavaUtilMap.size());
+    QLog.d(str2, 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion.7
  * JD-Core Version:    0.7.0.1
  */

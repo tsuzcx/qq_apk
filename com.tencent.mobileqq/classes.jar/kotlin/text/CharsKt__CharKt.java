@@ -9,35 +9,35 @@ class CharsKt__CharKt
 {
   public static final boolean equals(char paramChar1, char paramChar2, boolean paramBoolean)
   {
-    if (paramChar1 == paramChar2) {}
-    do
-    {
+    if (paramChar1 == paramChar2) {
       return true;
-      if (!paramBoolean) {
-        return false;
-      }
-    } while ((Character.toUpperCase(paramChar1) == Character.toUpperCase(paramChar2)) || (Character.toLowerCase(paramChar1) == Character.toLowerCase(paramChar2)));
-    return false;
+    }
+    if (!paramBoolean) {
+      return false;
+    }
+    if (Character.toUpperCase(paramChar1) == Character.toUpperCase(paramChar2)) {
+      return true;
+    }
+    return Character.toLowerCase(paramChar1) == Character.toLowerCase(paramChar2);
   }
   
   public static final boolean isSurrogate(char paramChar)
   {
-    if (55296 > paramChar) {}
-    while (57343 < paramChar) {
-      return false;
-    }
-    return true;
+    return (55296 <= paramChar) && (57343 >= paramChar);
   }
   
   @InlineOnly
   private static final String plus(char paramChar, String paramString)
   {
-    return String.valueOf(paramChar) + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(String.valueOf(paramChar));
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.text.CharsKt__CharKt
  * JD-Core Version:    0.7.0.1
  */

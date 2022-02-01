@@ -10,19 +10,28 @@ class MiniAppCamera$7$1
   
   public void onFailure(String paramString)
   {
-    QMLog.i("MiniAppCamera", "compress failed " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("compress failed ");
+    localStringBuilder.append(paramString);
+    QMLog.i("MiniAppCamera", localStringBuilder.toString());
     MiniAppCamera.access$700(this.this$1.this$0, this.this$1.val$srcPath, this.this$1.val$req);
   }
   
   public void onFinish(boolean paramBoolean)
   {
-    QMLog.i("MiniAppCamera", "compress finish " + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("compress finish ");
+    localStringBuilder.append(paramBoolean);
+    QMLog.i("MiniAppCamera", localStringBuilder.toString());
     MiniAppCamera.access$600(this.this$1.this$0);
   }
   
   public void onProgress(String paramString)
   {
-    QMLog.i("MiniAppCamera", "compress progress " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("compress progress ");
+    localStringBuilder.append(paramString);
+    QMLog.i("MiniAppCamera", localStringBuilder.toString());
   }
   
   public void onStart()
@@ -32,13 +41,16 @@ class MiniAppCamera$7$1
   
   public void onSuccess(String paramString)
   {
-    QMLog.i("MiniAppCamera", "compress success " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("compress success ");
+    localStringBuilder.append(paramString);
+    QMLog.i("MiniAppCamera", localStringBuilder.toString());
     MiniAppCamera.access$700(this.this$1.this$0, this.this$1.val$outPath, this.this$1.val$req);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.camera.MiniAppCamera.7.1
  * JD-Core Version:    0.7.0.1
  */

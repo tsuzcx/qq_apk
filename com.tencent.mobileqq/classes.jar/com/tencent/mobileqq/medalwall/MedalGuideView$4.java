@@ -20,8 +20,9 @@ class MedalGuideView$4
     f = paramValueAnimator.getAnimatedFraction();
     if ((!this.a.c) && (f >= 0.8857143F))
     {
-      this.a.c = true;
-      this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(4);
+      MedalGuideView localMedalGuideView = this.a;
+      localMedalGuideView.c = true;
+      localMedalGuideView.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(4);
       if (QLog.isDevelopLevel()) {
         QLog.i("MedalWallMng", 4, "send MSG_START_3D_ROTATE");
       }
@@ -33,7 +34,7 @@ class MedalGuideView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.medalwall.MedalGuideView.4
  * JD-Core Version:    0.7.0.1
  */

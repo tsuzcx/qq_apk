@@ -31,8 +31,9 @@ public final class d
   
   protected final void a(Bundle paramBundle)
   {
-    if (this.aK != null) {
-      this.aK.writeToBundle(paramBundle);
+    WeiboMultiMessage localWeiboMultiMessage = this.aK;
+    if (localWeiboMultiMessage != null) {
+      localWeiboMultiMessage.writeToBundle(paramBundle);
     }
     paramBundle.putString("token", this.ak);
     paramBundle.putString("packageName", this.packageName);
@@ -86,7 +87,7 @@ public final class d
     //   74: aload_0
     //   75: getfield 31	com/sina/weibo/sdk/web/b/d:aK	Lcom/sina/weibo/sdk/api/WeiboMultiMessage;
     //   78: getfield 126	com/sina/weibo/sdk/api/WeiboMultiMessage:imageObject	Lcom/sina/weibo/sdk/api/ImageObject;
-    //   81: ifnull +96 -> 177
+    //   81: ifnull +197 -> 278
     //   84: aload_0
     //   85: getfield 31	com/sina/weibo/sdk/web/b/d:aK	Lcom/sina/weibo/sdk/api/WeiboMultiMessage;
     //   88: getfield 126	com/sina/weibo/sdk/api/WeiboMultiMessage:imageObject	Lcom/sina/weibo/sdk/api/ImageObject;
@@ -96,125 +97,131 @@ public final class d
     //   98: astore_1
     //   99: aload_1
     //   100: invokestatic 137	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   103: ifne +109 -> 212
+    //   103: ifne +152 -> 255
     //   106: new 139	java/io/File
     //   109: dup
     //   110: aload_1
     //   111: invokespecial 142	java/io/File:<init>	(Ljava/lang/String;)V
-    //   114: astore_1
-    //   115: aload_1
+    //   114: astore_2
+    //   115: aload_2
     //   116: invokevirtual 146	java/io/File:exists	()Z
-    //   119: ifeq +93 -> 212
-    //   122: aload_1
+    //   119: ifeq +136 -> 255
+    //   122: aload_2
     //   123: invokevirtual 149	java/io/File:canRead	()Z
-    //   126: ifeq +86 -> 212
-    //   129: aload_1
+    //   126: ifeq +129 -> 255
+    //   129: aload_2
     //   130: invokevirtual 153	java/io/File:length	()J
     //   133: lconst_0
     //   134: lcmp
-    //   135: ifle +77 -> 212
-    //   138: aload_1
+    //   135: ifle +120 -> 255
+    //   138: aload_2
     //   139: invokevirtual 153	java/io/File:length	()J
     //   142: l2i
     //   143: newarray byte
-    //   145: astore_3
-    //   146: new 155	java/io/FileInputStream
-    //   149: dup
-    //   150: aload_1
-    //   151: invokespecial 158	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   154: astore_2
+    //   145: astore 6
+    //   147: aconst_null
+    //   148: astore_3
+    //   149: aconst_null
+    //   150: astore_1
+    //   151: new 155	java/io/FileInputStream
+    //   154: dup
     //   155: aload_2
-    //   156: astore_1
-    //   157: aload_2
-    //   158: aload_3
-    //   159: invokevirtual 162	java/io/FileInputStream:read	([B)I
-    //   162: pop
-    //   163: aload_2
-    //   164: astore_1
-    //   165: aload_0
-    //   166: aload_3
-    //   167: invokestatic 167	com/sina/weibo/sdk/c/e:b	([B)[B
-    //   170: putfield 66	com/sina/weibo/sdk/web/b/d:aL	[B
-    //   173: aload_2
-    //   174: invokevirtual 170	java/io/FileInputStream:close	()V
-    //   177: aload_0
-    //   178: aload 4
-    //   180: invokevirtual 173	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   183: putfield 174	com/sina/weibo/sdk/web/b/d:text	Ljava/lang/String;
-    //   186: return
-    //   187: astore_1
-    //   188: aload_1
-    //   189: invokevirtual 177	java/io/IOException:printStackTrace	()V
-    //   192: goto -15 -> 177
-    //   195: astore_3
-    //   196: aconst_null
-    //   197: astore_2
-    //   198: aload_2
-    //   199: astore_1
-    //   200: aload_3
-    //   201: invokevirtual 178	java/lang/Exception:printStackTrace	()V
-    //   204: aload_2
-    //   205: ifnull +7 -> 212
-    //   208: aload_2
-    //   209: invokevirtual 170	java/io/FileInputStream:close	()V
-    //   212: aload 5
-    //   214: getfield 181	com/sina/weibo/sdk/api/ImageObject:imageData	[B
-    //   217: astore_1
-    //   218: aload_1
-    //   219: ifnull -42 -> 177
-    //   222: aload_1
-    //   223: arraylength
-    //   224: ifle -47 -> 177
-    //   227: aload_0
-    //   228: aload_1
-    //   229: invokestatic 167	com/sina/weibo/sdk/c/e:b	([B)[B
-    //   232: putfield 66	com/sina/weibo/sdk/web/b/d:aL	[B
-    //   235: goto -58 -> 177
-    //   238: astore_1
-    //   239: aload_1
-    //   240: invokevirtual 177	java/io/IOException:printStackTrace	()V
-    //   243: goto -31 -> 212
-    //   246: astore_2
-    //   247: aconst_null
+    //   156: invokespecial 158	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   159: astore_2
+    //   160: aload_2
+    //   161: aload 6
+    //   163: invokevirtual 162	java/io/FileInputStream:read	([B)I
+    //   166: pop
+    //   167: aload_0
+    //   168: aload 6
+    //   170: invokestatic 167	com/sina/weibo/sdk/c/e:b	([B)[B
+    //   173: putfield 66	com/sina/weibo/sdk/web/b/d:aL	[B
+    //   176: aload_2
+    //   177: invokevirtual 170	java/io/FileInputStream:close	()V
+    //   180: goto +98 -> 278
+    //   183: astore_1
+    //   184: aload_1
+    //   185: invokevirtual 173	java/io/IOException:printStackTrace	()V
+    //   188: goto +90 -> 278
+    //   191: astore_3
+    //   192: aload_2
+    //   193: astore_1
+    //   194: aload_3
+    //   195: astore_2
+    //   196: goto +41 -> 237
+    //   199: astore_3
+    //   200: goto +12 -> 212
+    //   203: astore_2
+    //   204: goto +33 -> 237
+    //   207: astore_1
+    //   208: aload_3
+    //   209: astore_2
+    //   210: aload_1
+    //   211: astore_3
+    //   212: aload_2
+    //   213: astore_1
+    //   214: aload_3
+    //   215: invokevirtual 174	java/lang/Exception:printStackTrace	()V
+    //   218: aload_2
+    //   219: ifnull +36 -> 255
+    //   222: aload_2
+    //   223: invokevirtual 170	java/io/FileInputStream:close	()V
+    //   226: goto +29 -> 255
+    //   229: astore_1
+    //   230: aload_1
+    //   231: invokevirtual 173	java/io/IOException:printStackTrace	()V
+    //   234: goto +21 -> 255
+    //   237: aload_1
+    //   238: ifnull +15 -> 253
+    //   241: aload_1
+    //   242: invokevirtual 170	java/io/FileInputStream:close	()V
+    //   245: goto +8 -> 253
     //   248: astore_1
     //   249: aload_1
-    //   250: ifnull +7 -> 257
-    //   253: aload_1
-    //   254: invokevirtual 170	java/io/FileInputStream:close	()V
-    //   257: aload_2
-    //   258: athrow
-    //   259: astore_1
-    //   260: aload_1
-    //   261: invokevirtual 177	java/io/IOException:printStackTrace	()V
-    //   264: goto -7 -> 257
-    //   267: astore_2
-    //   268: goto -19 -> 249
-    //   271: astore_3
-    //   272: goto -74 -> 198
+    //   250: invokevirtual 173	java/io/IOException:printStackTrace	()V
+    //   253: aload_2
+    //   254: athrow
+    //   255: aload 5
+    //   257: getfield 177	com/sina/weibo/sdk/api/ImageObject:imageData	[B
+    //   260: astore_1
+    //   261: aload_1
+    //   262: ifnull +16 -> 278
+    //   265: aload_1
+    //   266: arraylength
+    //   267: ifle +11 -> 278
+    //   270: aload_0
+    //   271: aload_1
+    //   272: invokestatic 167	com/sina/weibo/sdk/c/e:b	([B)[B
+    //   275: putfield 66	com/sina/weibo/sdk/web/b/d:aL	[B
+    //   278: aload_0
+    //   279: aload 4
+    //   281: invokevirtual 180	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   284: putfield 181	com/sina/weibo/sdk/web/b/d:text	Ljava/lang/String;
+    //   287: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	275	0	this	d
-    //   0	275	1	paramBundle	Bundle
-    //   154	55	2	localFileInputStream	java.io.FileInputStream
-    //   246	12	2	localObject1	java.lang.Object
-    //   267	1	2	localObject2	java.lang.Object
-    //   145	22	3	arrayOfByte	byte[]
-    //   195	6	3	localException1	java.lang.Exception
-    //   271	1	3	localException2	java.lang.Exception
-    //   46	133	4	localStringBuilder	java.lang.StringBuilder
-    //   91	122	5	localImageObject	com.sina.weibo.sdk.api.ImageObject
+    //   0	288	0	this	d
+    //   0	288	1	paramBundle	Bundle
+    //   114	82	2	localObject1	Object
+    //   203	1	2	localObject2	Object
+    //   209	45	2	localObject3	Object
+    //   148	1	3	localObject4	Object
+    //   191	4	3	localObject5	Object
+    //   199	10	3	localException	java.lang.Exception
+    //   211	4	3	localBundle	Bundle
+    //   46	234	4	localStringBuilder	StringBuilder
+    //   91	165	5	localImageObject	com.sina.weibo.sdk.api.ImageObject
+    //   145	24	6	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   173	177	187	java/io/IOException
-    //   146	155	195	java/lang/Exception
-    //   208	212	238	java/io/IOException
-    //   146	155	246	finally
-    //   253	257	259	java/io/IOException
-    //   157	163	267	finally
-    //   165	173	267	finally
-    //   200	204	267	finally
-    //   157	163	271	java/lang/Exception
-    //   165	173	271	java/lang/Exception
+    //   176	180	183	java/io/IOException
+    //   160	176	191	finally
+    //   160	176	199	java/lang/Exception
+    //   151	160	203	finally
+    //   214	218	203	finally
+    //   151	160	207	java/lang/Exception
+    //   222	226	229	java/io/IOException
+    //   241	245	248	java/io/IOException
   }
   
   public final String getUrl()
@@ -222,16 +229,16 @@ public final class d
     Uri.Builder localBuilder = Uri.parse("https://service.weibo.com/share/mobilesdk.php").buildUpon();
     localBuilder.appendQueryParameter("title", this.text);
     localBuilder.appendQueryParameter("version", "0041005000");
-    String str1 = this.aI.a().getAppKey();
-    if (!TextUtils.isEmpty(str1)) {
-      localBuilder.appendQueryParameter("source", str1);
+    String str = this.aI.a().getAppKey();
+    if (!TextUtils.isEmpty(str)) {
+      localBuilder.appendQueryParameter("source", str);
     }
     if (!TextUtils.isEmpty(this.ak)) {
       localBuilder.appendQueryParameter("access_token", this.ak);
     }
-    String str2 = com.sina.weibo.sdk.c.e.f(this.af, str1);
-    if (!TextUtils.isEmpty(str2)) {
-      localBuilder.appendQueryParameter("aid", str2);
+    Object localObject = com.sina.weibo.sdk.c.e.f(this.af, str);
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      localBuilder.appendQueryParameter("aid", (String)localObject);
     }
     if (!TextUtils.isEmpty(this.packageName)) {
       localBuilder.appendQueryParameter("packagename", this.packageName);
@@ -240,13 +247,16 @@ public final class d
       localBuilder.appendQueryParameter("picinfo", this.aM);
     }
     localBuilder.appendQueryParameter("luicode", "10000360");
-    localBuilder.appendQueryParameter("lfid", "OP_" + str1);
+    localObject = new StringBuilder("OP_");
+    ((StringBuilder)localObject).append(str);
+    localBuilder.appendQueryParameter("lfid", ((StringBuilder)localObject).toString());
     return localBuilder.build().toString();
   }
   
   public final boolean w()
   {
-    if ((this.aL != null) && (this.aL.length > 0)) {
+    byte[] arrayOfByte = this.aL;
+    if ((arrayOfByte != null) && (arrayOfByte.length > 0)) {
       return true;
     }
     return super.w();

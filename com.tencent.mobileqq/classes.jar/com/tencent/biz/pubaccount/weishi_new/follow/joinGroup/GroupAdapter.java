@@ -11,11 +11,10 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.weishi_new.holder.WSFollowFeedHolder;
+import com.tencent.biz.pubaccount.weishi_new.image.WSPicLoader;
 import com.tencent.biz.pubaccount.weishi_new.report.WSFollowBeaconReport;
 import com.tencent.biz.pubaccount.weishi_new.report.WSReportEvent.ActionId;
-import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
 import com.tencent.biz.pubaccount.weishi_new.view.WSLoadingDialog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,67 +40,57 @@ public class GroupAdapter
   {
     if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSLoadingDialog == null)
     {
-      if (this.jdField_a_of_type_AndroidContentContext == null) {
+      Context localContext = this.jdField_a_of_type_AndroidContentContext;
+      if (localContext == null) {
         return;
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSLoadingDialog = new WSLoadingDialog(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131695601));
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSLoadingDialog = new WSLoadingDialog(localContext, localContext.getResources().getString(2131695612));
     }
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSLoadingDialog.show();
   }
   
   private void a(GroupEntity paramGroupEntity)
   {
-    String str2 = "";
-    String str1 = str2;
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder != null)
-    {
-      str1 = str2;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder.a() != null)
-      {
-        str1 = str2;
-        if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder.a().feed == null) {
-          str1 = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder.a().feed.poster_id;
-        }
-      }
+    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder;
+    if ((localObject != null) && (((WSFollowFeedHolder)localObject).a() != null) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder.a().feed == null)) {
+      localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder.a().feed.poster_id;
+    } else {
+      localObject = "";
     }
-    WSJoinGroupDataProcessor.a().a(paramGroupEntity.c, str1, new GroupAdapter.2(this));
+    WSJoinGroupDataProcessor.a().a(paramGroupEntity.c, (String)localObject, new GroupAdapter.2(this));
   }
   
   private void a(GroupEntity paramGroupEntity, int paramInt)
   {
-    stFeed localstFeed;
-    HashMap localHashMap;
-    String str;
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder != null)
+    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder;
+    if (localObject != null)
     {
-      localstFeed = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder.a();
-      localHashMap = new HashMap();
-      localHashMap.put("qq_group_num", paramGroupEntity.c);
-      str = WSReportEvent.ActionId.a;
-      if (localstFeed == null) {
-        break label66;
+      stFeed localstFeed = ((WSFollowFeedHolder)localObject).a();
+      localObject = new HashMap();
+      ((Map)localObject).put("qq_group_num", paramGroupEntity.c);
+      String str = WSReportEvent.ActionId.a;
+      if (localstFeed != null) {
+        paramGroupEntity = localstFeed.feed;
+      } else {
+        paramGroupEntity = null;
       }
-    }
-    label66:
-    for (paramGroupEntity = localstFeed.feed;; paramGroupEntity = null)
-    {
-      WSFollowBeaconReport.a("qqgroup_add", paramInt + 1, str, localHashMap, paramGroupEntity);
-      return;
+      WSFollowBeaconReport.a("qqgroup_add", paramInt + 1, str, (Map)localObject, paramGroupEntity);
     }
   }
   
   private void b()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSLoadingDialog != null) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSLoadingDialog.isShowing())) {
+    WSLoadingDialog localWSLoadingDialog = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSLoadingDialog;
+    if ((localWSLoadingDialog != null) && (localWSLoadingDialog.isShowing())) {
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSLoadingDialog.dismiss();
     }
   }
   
   public GroupViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560141, paramViewGroup, false);
+    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560024, paramViewGroup, false);
     ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
-    localLayoutParams.height = ((int)paramViewGroup.getContext().getResources().getDimension(2131296619));
+    localLayoutParams.height = ((int)paramViewGroup.getContext().getResources().getDimension(2131296598));
     localView.setLayoutParams(localLayoutParams);
     return new GroupViewHolder(localView);
   }
@@ -109,23 +98,23 @@ public class GroupAdapter
   public void a(GroupViewHolder paramGroupViewHolder, int paramInt)
   {
     GroupEntity localGroupEntity = (GroupEntity)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    WeishiUtils.a(this.jdField_a_of_type_AndroidContentContext, paramGroupViewHolder.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView, localGroupEntity.a());
+    WSPicLoader.a(this.jdField_a_of_type_AndroidContentContext, paramGroupViewHolder.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView, localGroupEntity.a());
     paramGroupViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localGroupEntity.b());
     paramGroupViewHolder.b.setOnClickListener(new GroupAdapter.1(this, localGroupEntity, paramInt));
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramGroupViewHolder, paramInt, getItemId(paramInt));
   }
   
   public int getItemCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList == null) {
       return 0;
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return localList.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.follow.joinGroup.GroupAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -13,15 +13,16 @@ class QidianProfileCardActivity$24
   
   public boolean onLongClick(View paramView)
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof URLDrawable)) {
-      QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, (URLDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_ComTencentQidianDataPublicAccountItem.b);
+    paramView = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    if ((paramView instanceof URLDrawable)) {
+      QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, (URLDrawable)paramView, this.jdField_a_of_type_ComTencentQidianDataPublicAccountItem.b);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.24
  * JD-Core Version:    0.7.0.1
  */

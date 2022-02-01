@@ -2,68 +2,107 @@ package com.tencent.mobileqq.soload.biz.entity;
 
 public class LoadOptions$LoadOptionsBuilder
 {
-  private LoadOptions a = new LoadOptions();
+  private LoadOptions mLoadOptions = new LoadOptions();
   
-  public LoadOptionsBuilder a(boolean paramBoolean)
+  public LoadOptions build()
+  {
+    return this.mLoadOptions;
+  }
+  
+  public LoadOptionsBuilder setCloseReport(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      localLoadOptions = this.a;
-      localLoadOptions.flag |= 0x1;
+      localLoadOptions = this.mLoadOptions;
+      localLoadOptions.flag |= 0x20;
       return this;
     }
-    LoadOptions localLoadOptions = this.a;
-    localLoadOptions.flag &= 0xFFFFFFFE;
+    LoadOptions localLoadOptions = this.mLoadOptions;
+    localLoadOptions.flag &= 0xFFFFFFDF;
     return this;
   }
   
-  public LoadOptions a()
-  {
-    return this.a;
-  }
-  
-  public LoadOptionsBuilder b(boolean paramBoolean)
+  public LoadOptionsBuilder setCloseRetry(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      localLoadOptions = this.a;
-      localLoadOptions.flag |= 0x8;
-      return this;
-    }
-    LoadOptions localLoadOptions = this.a;
-    localLoadOptions.flag &= 0xFFFFFFF7;
-    return this;
-  }
-  
-  public LoadOptionsBuilder c(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      localLoadOptions = this.a;
+      localLoadOptions = this.mLoadOptions;
       localLoadOptions.flag |= 0x10;
       return this;
     }
-    LoadOptions localLoadOptions = this.a;
+    LoadOptions localLoadOptions = this.mLoadOptions;
     localLoadOptions.flag &= 0xFFFFFFEF;
     return this;
   }
   
-  public LoadOptionsBuilder d(boolean paramBoolean)
+  @Deprecated
+  public LoadOptionsBuilder setExtFlag(int paramInt)
+  {
+    LoadOptions localLoadOptions = this.mLoadOptions;
+    localLoadOptions.flag = (paramInt | localLoadOptions.flag);
+    return this;
+  }
+  
+  public LoadOptionsBuilder setIsLoadLastSuccWhenFail(boolean paramBoolean)
+  {
+    this.mLoadOptions.isLoadLastSuccWhenFail = paramBoolean;
+    return this;
+  }
+  
+  public LoadOptionsBuilder setIsNoNeedCRC(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      localLoadOptions = this.a;
-      localLoadOptions.flag |= 0x20;
+      localLoadOptions = this.mLoadOptions;
+      localLoadOptions.flag |= 0x8;
       return this;
     }
-    LoadOptions localLoadOptions = this.a;
-    localLoadOptions.flag &= 0xFFFFFFDF;
+    LoadOptions localLoadOptions = this.mLoadOptions;
+    localLoadOptions.flag &= 0xFFFFFFF7;
+    return this;
+  }
+  
+  public LoadOptionsBuilder setIsNoNeedLoad(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      localLoadOptions = this.mLoadOptions;
+      localLoadOptions.flag |= 0x1;
+      return this;
+    }
+    LoadOptions localLoadOptions = this.mLoadOptions;
+    localLoadOptions.flag &= 0xFFFFFFFE;
+    return this;
+  }
+  
+  public LoadOptionsBuilder setOldSoPathFor32Bit(String paramString)
+  {
+    this.mLoadOptions.oldSoPathFor32Bit = paramString;
+    return this;
+  }
+  
+  public LoadOptionsBuilder setOldSoPathFor64Bit(String paramString)
+  {
+    this.mLoadOptions.oldSoPathFor64Bit = paramString;
+    return this;
+  }
+  
+  public LoadOptionsBuilder setWeakRelated(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      localLoadOptions = this.mLoadOptions;
+      localLoadOptions.flag |= 0x4;
+      return this;
+    }
+    LoadOptions localLoadOptions = this.mLoadOptions;
+    localLoadOptions.flag &= 0xFFFFFFFB;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soload.biz.entity.LoadOptions.LoadOptionsBuilder
  * JD-Core Version:    0.7.0.1
  */

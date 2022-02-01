@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/myu" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="horizontal" android:id="@id/bcy" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v7.widget.RecyclerView android:id="@id/np9" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="1.0dip" android:overScrollMode="never" />
-    <View android:background="@color/dg" android:layout_width="fill_parent" android:layout_height="2.0dip" />
-</FrameLayout>
+    <include android:id="@id/mtu" android:layout_width="0.0dip" android:layout_height="54.0dip" android:layout_weight="1.0" layout="@layout/p" />
+    <include android:id="@id/mtv" android:layout_width="0.0dip" android:layout_height="54.0dip" android:layout_marginLeft="9.0dip" android:layout_weight="1.0" layout="@layout/p" />
+</LinearLayout>

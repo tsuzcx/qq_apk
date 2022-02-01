@@ -44,31 +44,73 @@ public class QidianPubAccountBigDataHandler
     ThreadManager.post(new QidianPubAccountBigDataHandler.1(this), 8, null, true);
   }
   
+  /* Error */
   private void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QidianPubAccountBigDataHandler", 4, "initial ...");
-    }
-    localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    try
-    {
-      a(localEntityManager);
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("QidianPubAccountBigDataHandler", 2, "QidianManager get data from db error: " + localException.getMessage());
-        }
-        localEntityManager.close();
-      }
-    }
-    finally
-    {
-      localEntityManager.close();
-    }
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    // Byte code:
+    //   0: invokestatic 47	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +11 -> 14
+    //   6: ldc 49
+    //   8: iconst_4
+    //   9: ldc 51
+    //   11: invokestatic 55	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   14: aload_0
+    //   15: getfield 58	com/tencent/qidian/controller/QidianPubAccountBigDataHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   18: invokevirtual 64	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   21: invokevirtual 70	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   24: astore_1
+    //   25: aload_0
+    //   26: aload_1
+    //   27: invokespecial 73	com/tencent/qidian/controller/QidianPubAccountBigDataHandler:a	(Lcom/tencent/mobileqq/persistence/EntityManager;)V
+    //   30: aload_1
+    //   31: invokevirtual 78	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   34: goto +51 -> 85
+    //   37: astore_2
+    //   38: goto +55 -> 93
+    //   41: astore_2
+    //   42: invokestatic 47	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   45: ifeq -15 -> 30
+    //   48: new 80	java/lang/StringBuilder
+    //   51: dup
+    //   52: invokespecial 81	java/lang/StringBuilder:<init>	()V
+    //   55: astore_3
+    //   56: aload_3
+    //   57: ldc 83
+    //   59: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   62: pop
+    //   63: aload_3
+    //   64: aload_2
+    //   65: invokevirtual 91	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   68: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   71: pop
+    //   72: ldc 49
+    //   74: iconst_2
+    //   75: aload_3
+    //   76: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   79: invokestatic 97	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   82: goto -52 -> 30
+    //   85: getstatic 18	com/tencent/qidian/controller/QidianPubAccountBigDataHandler:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   88: iconst_1
+    //   89: invokevirtual 100	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   92: return
+    //   93: aload_1
+    //   94: invokevirtual 78	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   97: goto +5 -> 102
+    //   100: aload_2
+    //   101: athrow
+    //   102: goto -2 -> 100
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	105	0	this	QidianPubAccountBigDataHandler
+    //   24	70	1	localEntityManager	EntityManager
+    //   37	1	2	localObject	Object
+    //   41	60	2	localException	Exception
+    //   55	21	3	localStringBuilder	StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   25	30	37	finally
+    //   42	82	37	finally
+    //   25	30	41	java/lang/Exception
   }
   
   private void a(long paramLong1, PubAccountNavigationMenu paramPubAccountNavigationMenu, long paramLong2)
@@ -80,24 +122,25 @@ public class QidianPubAccountBigDataHandler
       localObject1 = new subcmd0x519.GetNavigationMenuReqBody();
       ((subcmd0x519.GetNavigationMenuReqBody)localObject1).uint64_puin.set(paramLong1);
       Object localObject2 = ((subcmd0x519.GetNavigationMenuReqBody)localObject1).uint32_ver_no;
-      if (paramPubAccountNavigationMenu == null) {}
-      for (int i = 0;; i = paramPubAccountNavigationMenu.version)
-      {
-        ((PBUInt32Field)localObject2).set(i);
-        ((subcmd0x519.GetNavigationMenuReqBody)localObject1).uint64_uin.set(paramLong2);
-        localObject2 = new subcmd0x519.ReqBody();
-        ((subcmd0x519.ReqBody)localObject2).uint32_sub_cmd.set(36);
-        ((subcmd0x519.ReqBody)localObject2).msg_get_navigation_menu_req.set((MessageMicro)localObject1);
-        localObject1 = new subcmd0x519.CRMMsgHead();
-        ((subcmd0x519.CRMMsgHead)localObject1).uint32_ver_no.set(LoginUtils.a("8.5.5"));
-        ((subcmd0x519.CRMMsgHead)localObject1).uint32_crm_sub_cmd.set(36);
-        ((subcmd0x519.CRMMsgHead)localObject1).uint32_clienttype.set(2);
-        ((subcmd0x519.CRMMsgHead)localObject1).uint64_kf_uin.set(paramLong1);
-        ((subcmd0x519.CRMMsgHead)localObject1).uint64_puin.set(paramLong1);
-        ((subcmd0x519.ReqBody)localObject2).msg_crm_common_head.set((MessageMicro)localObject1);
-        a(3001, (MessageMicro)localObject2, 1305, paramPubAccountNavigationMenu);
-        return;
+      int i;
+      if (paramPubAccountNavigationMenu == null) {
+        i = 0;
+      } else {
+        i = paramPubAccountNavigationMenu.version;
       }
+      ((PBUInt32Field)localObject2).set(i);
+      ((subcmd0x519.GetNavigationMenuReqBody)localObject1).uint64_uin.set(paramLong2);
+      localObject2 = new subcmd0x519.ReqBody();
+      ((subcmd0x519.ReqBody)localObject2).uint32_sub_cmd.set(36);
+      ((subcmd0x519.ReqBody)localObject2).msg_get_navigation_menu_req.set((MessageMicro)localObject1);
+      localObject1 = new subcmd0x519.CRMMsgHead();
+      ((subcmd0x519.CRMMsgHead)localObject1).uint32_ver_no.set(LoginUtils.a("8.7.0"));
+      ((subcmd0x519.CRMMsgHead)localObject1).uint32_crm_sub_cmd.set(36);
+      ((subcmd0x519.CRMMsgHead)localObject1).uint32_clienttype.set(2);
+      ((subcmd0x519.CRMMsgHead)localObject1).uint64_kf_uin.set(paramLong1);
+      ((subcmd0x519.CRMMsgHead)localObject1).uint64_puin.set(paramLong1);
+      ((subcmd0x519.ReqBody)localObject2).msg_crm_common_head.set((MessageMicro)localObject1);
+      a(3001, (MessageMicro)localObject2, 1305, paramPubAccountNavigationMenu);
       return;
     }
     catch (Exception paramPubAccountNavigationMenu) {}
@@ -114,8 +157,12 @@ public class QidianPubAccountBigDataHandler
         while (paramEntityManager.hasNext())
         {
           PubAccountNavigationMenu localPubAccountNavigationMenu = (PubAccountNavigationMenu)paramEntityManager.next();
-          if (QLog.isColorLevel()) {
-            QLog.d("QidianPubAccountBigDataHandler", 4, "loadMenus query from db: " + localPubAccountNavigationMenu);
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("loadMenus query from db: ");
+            localStringBuilder.append(localPubAccountNavigationMenu);
+            QLog.d("QidianPubAccountBigDataHandler", 4, localStringBuilder.toString());
           }
           if (!this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(localPubAccountNavigationMenu.puin))) {
             this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(localPubAccountNavigationMenu.puin), localPubAccountNavigationMenu);
@@ -141,28 +188,36 @@ public class QidianPubAccountBigDataHandler
         Object localObject = new subcmd0x519.RspBody();
         ((subcmd0x519.RspBody)localObject).mergeFrom((byte[])paramArrayOfByte);
         localObject = ((subcmd0x519.RspBody)localObject).msg_get_navigation_menu_rsp;
-        paramArrayOfByte = (subcmd0x519.RetInfo)((subcmd0x519.GetNavigationMenuRspBody)localObject).msg_ret.get();
-        i = paramArrayOfByte.uint32_ret_code.get();
+        subcmd0x519.RetInfo localRetInfo = (subcmd0x519.RetInfo)((subcmd0x519.GetNavigationMenuRspBody)localObject).msg_ret.get();
+        i = localRetInfo.uint32_ret_code.get();
         if (i == 0)
         {
           if ((!((subcmd0x519.GetNavigationMenuRspBody)localObject).int32_is_show.has()) || (((subcmd0x519.GetNavigationMenuRspBody)localObject).int32_is_show.get() != 1)) {
-            break label397;
+            break label436;
           }
           paramBoolean = true;
           if (!((subcmd0x519.GetNavigationMenuRspBody)localObject).str_struct_msg.has()) {
-            break label402;
+            break label441;
           }
           paramArrayOfByte = ((subcmd0x519.GetNavigationMenuRspBody)localObject).str_struct_msg.get();
           if (!((subcmd0x519.GetNavigationMenuRspBody)localObject).uint32_ver_no.has()) {
-            break label409;
+            break label448;
           }
           i = ((subcmd0x519.GetNavigationMenuRspBody)localObject).uint32_ver_no.get();
           if (paramObject == null) {
-            break label391;
+            break label454;
           }
           paramObject = (PubAccountNavigationMenu)paramObject;
-          if (QLog.isColorLevel()) {
-            QLog.d("QidianPubAccountBigDataHandler", 2, "handleGetNatigationMenu isShow: " + paramBoolean + " version: " + i + " | xml: " + paramArrayOfByte);
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("handleGetNatigationMenu isShow: ");
+            ((StringBuilder)localObject).append(paramBoolean);
+            ((StringBuilder)localObject).append(" version: ");
+            ((StringBuilder)localObject).append(i);
+            ((StringBuilder)localObject).append(" | xml: ");
+            ((StringBuilder)localObject).append(paramArrayOfByte);
+            QLog.d("QidianPubAccountBigDataHandler", 2, ((StringBuilder)localObject).toString());
           }
           localObject = paramObject;
           if (paramObject == null) {
@@ -186,11 +241,26 @@ public class QidianPubAccountBigDataHandler
             return;
           }
           if (!QLog.isColorLevel()) {
-            break label396;
+            break label435;
           }
           QLog.d("QidianPubAccountBigDataHandler", 2, "handleGetNatigationMenu no need show");
           return;
         }
+        notifyUI(3001, false, null);
+        paramArrayOfByte = "Unknown error";
+        if (localRetInfo.str_error_msg.has()) {
+          paramArrayOfByte = localRetInfo.str_error_msg.get();
+        }
+        if (!QLog.isColorLevel()) {
+          break label435;
+        }
+        paramObject = new StringBuilder();
+        paramObject.append("handleGetNatigationMenu error: ");
+        paramObject.append(i);
+        paramObject.append(" msg: ");
+        paramObject.append(paramArrayOfByte);
+        QLog.d("QidianPubAccountBigDataHandler", 2, paramObject.toString());
+        return;
       }
       catch (Exception paramArrayOfByte)
       {
@@ -199,38 +269,22 @@ public class QidianPubAccountBigDataHandler
         return;
       }
       notifyUI(3001, false, null);
-      if (paramArrayOfByte.str_error_msg.has()) {
-        paramArrayOfByte = paramArrayOfByte.str_error_msg.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("QidianPubAccountBigDataHandler", 2, "handleGetNatigationMenu fail");
       }
-      for (;;)
-      {
-        if (QLog.isColorLevel())
-        {
-          QLog.d("QidianPubAccountBigDataHandler", 2, "handleGetNatigationMenu error: " + i + " msg: " + paramArrayOfByte);
-          return;
-          notifyUI(3001, false, null);
-          if (QLog.isColorLevel())
-          {
-            QLog.d("QidianPubAccountBigDataHandler", 2, "handleGetNatigationMenu fail");
-            return;
-            paramArrayOfByte = "Unknown error";
-            continue;
-            label391:
-            paramObject = null;
-            break;
-          }
-        }
-      }
-      label396:
+      label435:
       return;
-      label397:
+      label436:
       paramBoolean = false;
       continue;
-      label402:
+      label441:
       paramArrayOfByte = "";
       continue;
-      label409:
+      label448:
       int i = 0;
+      continue;
+      label454:
+      paramObject = null;
     }
   }
   
@@ -263,9 +317,7 @@ public class QidianPubAccountBigDataHandler
       }
       return;
     }
-    switch (paramInt1)
-    {
-    default: 
+    if (paramInt1 != 3001) {
       return;
     }
     if (QLog.isColorLevel()) {
@@ -294,44 +346,43 @@ public class QidianPubAccountBigDataHandler
     if (QLog.isColorLevel()) {
       QLog.d("QidianPubAccountBigDataHandler", 2, "getNatigationMenu: BEGIN");
     }
-    for (;;)
+    try
     {
-      try
+      long l = Long.parseLong(paramString);
+      paramString = (PubAccountNavigationMenu)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(l));
+      if (paramString != null)
       {
-        l = Long.parseLong(paramString);
-        paramString = (PubAccountNavigationMenu)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(l));
-        if (paramString == null) {
-          continue;
-        }
         a(l, paramString, paramLong);
       }
-      catch (Exception paramString)
+      else if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
       {
-        long l;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("QidianPubAccountBigDataHandler", 2, "getNatigationMenu error: " + paramString.getMessage());
-        continue;
+        paramString = new PubAccountNavigationMenu();
+        paramString.version = 0;
+        paramString.puin = l;
+        paramString.xml = "";
+        a(l, paramString, paramLong);
+      }
+      else
+      {
         ThreadManager.post(new QidianPubAccountBigDataHandler.2(this, l, paramLong), 8, null, true);
-        continue;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("QidianPubAccountBigDataHandler", 2, "getNatigationMenu: END");
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getNatigationMenu error: ");
+        localStringBuilder.append(paramString.getMessage());
+        QLog.d("QidianPubAccountBigDataHandler", 2, localStringBuilder.toString());
       }
-      return;
-      if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-        continue;
-      }
-      paramString = new PubAccountNavigationMenu();
-      paramString.version = 0;
-      paramString.puin = l;
-      paramString.xml = "";
-      a(l, paramString, paramLong);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QidianPubAccountBigDataHandler", 2, "getNatigationMenu: END");
     }
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return QidianBusinessObserver.class;
   }
@@ -345,7 +396,7 @@ public class QidianPubAccountBigDataHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qidian.controller.QidianPubAccountBigDataHandler
  * JD-Core Version:    0.7.0.1
  */

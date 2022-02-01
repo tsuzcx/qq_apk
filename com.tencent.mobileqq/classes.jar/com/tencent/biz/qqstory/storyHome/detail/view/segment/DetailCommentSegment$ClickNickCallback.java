@@ -24,16 +24,20 @@ public class DetailCommentSegment$ClickNickCallback
   public void a(String paramString, int paramInt)
   {
     SLog.a("Q.qqstory.detail.DetailCommentSegment", "on nick click. unionId = %s.", paramString);
-    if ((paramInt == 1002) || (paramInt == 1003)) {}
-    while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
-      return;
+    if (paramInt != 1002)
+    {
+      if (paramInt == 1003) {
+        return;
+      }
+      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
+        ((DetailEventCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_Int, paramString);
+      }
     }
-    ((DetailEventCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_Int, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.view.segment.DetailCommentSegment.ClickNickCallback
  * JD-Core Version:    0.7.0.1
  */

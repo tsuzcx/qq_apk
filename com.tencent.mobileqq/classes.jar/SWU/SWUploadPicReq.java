@@ -109,72 +109,89 @@ public final class SWUploadPicReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.sPicTitle != null) {
-      paramJceOutputStream.write(this.sPicTitle, 0);
+    Object localObject = this.sPicTitle;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.sPicDesc != null) {
-      paramJceOutputStream.write(this.sPicDesc, 1);
+    localObject = this.sPicDesc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.eUseType, 2);
-    if (this.sAlbumID != null) {
-      paramJceOutputStream.write(this.sAlbumID, 3);
+    localObject = this.sAlbumID;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.iBatchID, 4);
     paramJceOutputStream.write(this.eFileType, 5);
-    if (this.sPicPath != null) {
-      paramJceOutputStream.write(this.sPicPath, 6);
+    localObject = this.sPicPath;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
     paramJceOutputStream.write(this.iPicWidth, 7);
     paramJceOutputStream.write(this.iPicHight, 8);
-    if (this.sClientip != null) {
-      paramJceOutputStream.write(this.sClientip, 9);
+    localObject = this.sClientip;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
     paramJceOutputStream.write(this.isShareFeeds, 10);
-    if (this.sUserAgent != null) {
-      paramJceOutputStream.write(this.sUserAgent, 11);
+    localObject = this.sUserAgent;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
-    if (this.sAddress != null) {
-      paramJceOutputStream.write(this.sAddress, 12);
+    localObject = this.sAddress;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
     paramJceOutputStream.write(this.iPictotalNum, 13);
     paramJceOutputStream.write(this.iCurPicNum, 14);
     paramJceOutputStream.write(this.iFromQZone, 15);
-    if (this.pic_url != null) {
-      paramJceOutputStream.write(this.pic_url, 16);
+    localObject = this.pic_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 16);
     }
-    if (this.localid != null) {
-      paramJceOutputStream.write(this.localid, 17);
+    localObject = this.localid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 17);
     }
-    if (this.os != null) {
-      paramJceOutputStream.write(this.os, 18);
+    localObject = this.os;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 18);
     }
-    if (this.device != null) {
-      paramJceOutputStream.write(this.device, 19);
+    localObject = this.device;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 19);
     }
-    if (this.osver != null) {
-      paramJceOutputStream.write(this.osver, 20);
+    localObject = this.osver;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 20);
     }
-    if (this.ver != null) {
-      paramJceOutputStream.write(this.ver, 21);
+    localObject = this.ver;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 21);
     }
     paramJceOutputStream.write(this.keyType, 22);
-    if (this.wnskey != null) {
-      paramJceOutputStream.write(this.wnskey, 23);
+    localObject = this.wnskey;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 23);
     }
-    if (this.duration != null) {
-      paramJceOutputStream.write(this.duration, 24);
+    localObject = this.duration;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 24);
     }
-    if (this.itemid != null) {
-      paramJceOutputStream.write(this.itemid, 25);
+    localObject = this.itemid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 25);
     }
-    if (this.emojitype != null) {
-      paramJceOutputStream.write(this.emojitype, 26);
+    localObject = this.emojitype;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 26);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SWU.SWUploadPicReq
  * JD-Core Version:    0.7.0.1
  */

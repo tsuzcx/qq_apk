@@ -39,19 +39,7 @@ public class TextInfo
     return this.jdField_a_of_type_JavaLangString.length();
   }
   
-  public void a(JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("text");
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaLangString.length();
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public void b(String paramString)
+  public void a(String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
     try
@@ -64,10 +52,22 @@ public class TextInfo
       paramString.printStackTrace();
     }
   }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("text");
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaLangString.length();
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.model.TextInfo
  * JD-Core Version:    0.7.0.1
  */

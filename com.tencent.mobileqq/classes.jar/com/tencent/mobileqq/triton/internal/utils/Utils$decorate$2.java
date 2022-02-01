@@ -25,7 +25,9 @@ public final class Utils$decorate$2
   
   Utils$decorate$2(GamePackage paramGamePackage, boolean paramBoolean)
   {
-    Object localObject = (Iterable)this.$this_decorate.getPlugins();
+    paramGamePackage = this.$this_decorate;
+    this.$$delegate_0 = paramGamePackage;
+    Object localObject = (Iterable)paramGamePackage.getPlugins();
     paramGamePackage = (Collection)new ArrayList(CollectionsKt.collectionSizeOrDefault((Iterable)localObject, 10));
     localObject = ((Iterable)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
@@ -98,7 +100,7 @@ public final class Utils$decorate$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.utils.Utils.decorate.2
  * JD-Core Version:    0.7.0.1
  */

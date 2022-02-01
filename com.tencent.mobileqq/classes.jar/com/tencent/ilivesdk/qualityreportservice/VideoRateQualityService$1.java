@@ -11,12 +11,15 @@ class VideoRateQualityService$1
   
   public void onResponse(int paramInt, JSONObject paramJSONObject)
   {
-    Log.d("VideoRateQualityService", "onResponse code " + paramInt);
+    paramJSONObject = new StringBuilder();
+    paramJSONObject.append("onResponse code ");
+    paramJSONObject.append(paramInt);
+    Log.d("VideoRateQualityService", paramJSONObject.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.qualityreportservice.VideoRateQualityService.1
  * JD-Core Version:    0.7.0.1
  */

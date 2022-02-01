@@ -20,36 +20,32 @@ class SubpackageJsPlugin$1
       paramApkgInfo.put("moduleName", this.val$moduleName);
       if (paramInt == 0) {
         paramApkgInfo.put("state", "success");
-      }
-      for (;;)
-      {
-        this.val$req.jsService.evaluateSubscribeJS("onLoadSubPackageTaskStateChange", paramApkgInfo.toString(), 0);
-        return;
+      } else {
         paramApkgInfo.put("state", "fail");
       }
+      this.val$req.jsService.evaluateSubscribeJS("onLoadSubPackageTaskStateChange", paramApkgInfo.toString(), 0);
+      return;
+    }
+    catch (Throwable paramString)
+    {
       try
       {
         paramApkgInfo.put("taskId", this.val$loadTaskId);
         paramApkgInfo.put("moduleName", this.val$moduleName);
         paramApkgInfo.put("state", "fail");
-        this.val$req.jsService.evaluateSubscribeJS("onLoadSubPackageTaskStateChange", paramApkgInfo.toString(), 0);
-        paramString.printStackTrace();
-        return;
       }
       catch (Throwable localThrowable)
       {
-        for (;;)
-        {
-          localThrowable.printStackTrace();
-        }
+        localThrowable.printStackTrace();
       }
+      this.val$req.jsService.evaluateSubscribeJS("onLoadSubPackageTaskStateChange", paramApkgInfo.toString(), 0);
+      paramString.printStackTrace();
     }
-    catch (Throwable paramString) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.SubpackageJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

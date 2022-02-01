@@ -17,14 +17,13 @@ import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.model.PhoneContactManager;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
+import com.tencent.mobileqq.phonecontact.observer.ContactBindObserver;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.ActionSheet;
@@ -36,7 +35,7 @@ public class PhoneUnityChangeActivity
 {
   private int a;
   public Button a;
-  public PhoneContactManager a;
+  public IPhoneContactService a;
   public ContactBindObserver a;
   public QQCustomDialog a;
   public ActionSheet a;
@@ -49,56 +48,62 @@ public class PhoneUnityChangeActivity
     {
       this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this, null));
       this.jdField_a_of_type_ComTencentWidgetActionSheet.setCanceledOnTouchOutside(true);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(HardCodeUtil.a(2131708010), 3);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.addCancelButton(2131690800);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(HardCodeUtil.a(2131708029), 3);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.addCancelButton(2131690728);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnButtonClickListener(new PhoneUnityChangeActivity.1(this));
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.addCancelButton(2131690800);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.addCancelButton(2131690728);
     }
-    if ((this.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (!this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) && (!isFinishing())) {
+    if ((!this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) && (!isFinishing())) {
       this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
     }
   }
   
   public boolean a()
   {
-    Object localObject1 = (PhoneContactManager)this.app.getManager(QQManagerFactory.CONTACT_MANAGER);
-    int i = ((PhoneContactManager)localObject1).d();
-    localObject1 = ((PhoneContactManager)localObject1).a();
-    if ((1 != i) && (5 != i)) {}
-    try
-    {
-      this.jdField_a_of_type_JavaLangString = ("" + ((RespondQueryQQBindingStat)localObject1).mobileNo);
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    Object localObject1 = (IPhoneContactService)this.app.getRuntimeService(IPhoneContactService.class, "");
+    int i = ((IPhoneContactService)localObject1).getSelfBindState();
+    localObject1 = ((IPhoneContactService)localObject1).getSelfBindInfo();
+    if ((1 != i) && (5 != i)) {
+      try
       {
-        super.finish();
-        return false;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("");
+        localStringBuilder.append(((RespondQueryQQBindingStat)localObject1).mobileNo);
+        this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Exception localException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("PhoneUnityChangeActivity", 2, "" + i, localException);
+        StringBuilder localStringBuilder;
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("");
+          localStringBuilder.append(i);
+          QLog.d("PhoneUnityChangeActivity", 2, localStringBuilder.toString(), localException);
         }
       }
-      super.setTitle(HardCodeUtil.a(2131708021));
-      Object localObject2 = "更换手机号码#name#，\n将更新以下功能。".replace("#name#", PhoneUnityManager.a(this.jdField_a_of_type_JavaLangString));
-      ((TextView)findViewById(2131380252)).setText((CharSequence)localObject2);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363951));
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      localObject2 = (ImageView)findViewById(2131369501);
-      ((ImageView)localObject2).setVisibility(0);
-      if (AppSetting.d) {
-        ((ImageView)localObject2).setContentDescription(getString(2131694780));
-      }
-      i = 2130843941;
-      if (!ThemeUtil.isNowThemeIsNight(this.app, false, null)) {
-        i = 2130840478;
-      }
-      ((ImageView)localObject2).setImageResource(i);
-      ((ImageView)localObject2).setOnClickListener(this);
     }
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      super.finish();
+      return false;
+    }
+    super.setTitle(HardCodeUtil.a(2131708040));
+    Object localObject2 = "更换手机号码#name#，\n将更新以下功能。".replace("#name#", PhoneUnityManager.a(this.jdField_a_of_type_JavaLangString));
+    ((TextView)findViewById(2131379567)).setText((CharSequence)localObject2);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363876));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    localObject2 = (ImageView)findViewById(2131369216);
+    ((ImageView)localObject2).setVisibility(0);
+    if (AppSetting.d) {
+      ((ImageView)localObject2).setContentDescription(getString(2131694766));
+    }
+    i = 2130843861;
+    if (!ThemeUtil.isNowThemeIsNight(this.app, false, null)) {
+      i = 2130840347;
+    }
+    ((ImageView)localObject2).setImageResource(i);
+    ((ImageView)localObject2).setOnClickListener(this);
     return true;
   }
   
@@ -123,43 +128,45 @@ public class PhoneUnityChangeActivity
     a();
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    if (getIntent() == null) {
+    if (getIntent() == null)
+    {
+      super.finish();
+      return true;
+    }
+    super.setContentView(2131559550);
+    this.jdField_a_of_type_ComTencentMobileqqPhonecontactApiIPhoneContactService = ((IPhoneContactService)this.app.getRuntimeService(IPhoneContactService.class, ""));
+    this.jdField_a_of_type_Int = getIntent().getIntExtra("kSrouce", -1);
+    if (!a()) {
       super.finish();
     }
-    do
-    {
-      return true;
-      super.setContentView(2131559672);
-      this.jdField_a_of_type_ComTencentMobileqqModelPhoneContactManager = ((PhoneContactManager)this.app.getManager(QQManagerFactory.CONTACT_MANAGER));
-      this.jdField_a_of_type_Int = getIntent().getIntExtra("kSrouce", -1);
-    } while (a());
-    super.finish();
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver != null)
     {
-      this.app.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = null;
+      this.app.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver);
+      this.jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver = null;
     }
     if (this.b != null)
     {
       this.app.unRegistObserver(this.b);
       this.b = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      ((QQCustomDialog)localObject).dismiss();
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
     }
-    if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null)
+    localObject = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      ((ActionSheet)localObject).dismiss();
       this.jdField_a_of_type_ComTencentWidgetActionSheet = null;
     }
     this.app.removeHandler(PhoneUnityChangeActivity.class);
@@ -168,34 +175,34 @@ public class PhoneUnityChangeActivity
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i != 2131363876)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      a();
-      continue;
-      if (NetworkUtil.d(this)) {
-        break;
+      if (i == 2131369216) {
+        a();
       }
-      a(2131694510);
     }
-    Intent localIntent = new Intent(this, BindNumberActivity.class);
-    localIntent.putExtra("kNeedUnbind", true);
-    localIntent.putExtra("cmd_param_is_from_uni", true);
-    localIntent.putExtra("cmd_param_is_from_change_bind", true);
-    if (this.jdField_a_of_type_Int != -1) {}
-    for (int i = this.jdField_a_of_type_Int;; i = 1)
+    else if (!NetworkUtil.isNetSupport(this))
     {
+      showToast(2131694475);
+    }
+    else
+    {
+      Intent localIntent = new Intent(this, BindNumberActivity.class);
+      localIntent.putExtra("kNeedUnbind", true);
+      localIntent.putExtra("cmd_param_is_from_uni", true);
+      localIntent.putExtra("cmd_param_is_from_change_bind", true);
+      i = this.jdField_a_of_type_Int;
+      if (i == -1) {
+        i = 1;
+      }
       localIntent.putExtra("kSrouce", i);
       localIntent.putExtra("kFPhoneChange", true);
       startActivityForResult(localIntent, 1001);
       ReportController.b(this.app, "CliOper", "", "", "0X8005B80", "0X8005B80", 0, 0, "", "", "", "");
       ContactUtils.a(1);
-      break;
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   @Override
@@ -207,7 +214,7 @@ public class PhoneUnityChangeActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PhoneUnityChangeActivity
  * JD-Core Version:    0.7.0.1
  */

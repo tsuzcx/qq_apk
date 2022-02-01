@@ -17,31 +17,36 @@ public class WeishiServlet
   private String a(WeishiRequest paramWeishiRequest, String paramString)
   {
     WeSeeConfigBean localWeSeeConfigBean = WSConfigManager.a().a();
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (localWeSeeConfigBean != null)
-    {
-      bool1 = bool2;
-      if (localWeSeeConfigBean.a != null) {
-        bool1 = localWeSeeConfigBean.a.a();
-      }
+    boolean bool;
+    if ((localWeSeeConfigBean != null) && (localWeSeeConfigBean.a != null)) {
+      bool = localWeSeeConfigBean.a.a();
+    } else {
+      bool = false;
     }
-    paramWeishiRequest.b(bool1);
-    if (bool1) {
+    paramWeishiRequest.b(bool);
+    if (bool) {
       return paramString;
     }
-    return "SQQzoneSvc." + paramString;
+    paramWeishiRequest = new StringBuilder();
+    paramWeishiRequest.append("SQQzoneSvc.");
+    paramWeishiRequest.append(paramString);
+    return paramWeishiRequest.toString();
   }
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (paramIntent == null) {
+    if (paramIntent == null)
+    {
       Log.e("weishi", "***onReceive request is null");
-    }
-    while ((!(paramIntent instanceof WeishiIntent)) || (((WeishiIntent)paramIntent).a == null)) {
       return;
     }
-    ((WeishiIntent)paramIntent).a.a.a(paramFromServiceMsg);
+    if ((paramIntent instanceof WeishiIntent))
+    {
+      paramIntent = (WeishiIntent)paramIntent;
+      if (paramIntent.a != null) {
+        paramIntent.a.a.a(paramFromServiceMsg);
+      }
+    }
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -51,47 +56,64 @@ public class WeishiServlet
       Log.e("weishi", "onSend request is null");
       return;
     }
-    for (;;)
+    try
     {
-      try
+      if ((paramIntent instanceof WeishiIntent))
       {
-        if ((paramIntent instanceof WeishiIntent))
+        Object localObject3 = (WeishiIntent)paramIntent;
+        WeishiTask localWeishiTask = ((WeishiIntent)localObject3).a;
+        WeishiRequest localWeishiRequest = localWeishiTask.a;
+        Object localObject2 = localWeishiRequest.encode();
+        Object localObject1 = localObject2;
+        if (localObject2 == null)
         {
-          WeishiIntent localWeishiIntent = (WeishiIntent)paramIntent;
-          WeishiTask localWeishiTask = localWeishiIntent.a;
-          WeishiRequest localWeishiRequest = localWeishiTask.a;
-          Object localObject2 = localWeishiRequest.encode();
-          Object localObject1 = localObject2;
-          if (localObject2 == null)
-          {
-            Log.e("weishi-Servlet", "onSend request encode result is null.cmd=" + localWeishiTask.a.uniKey());
-            localObject1 = new byte[4];
-          }
-          long l = localWeishiIntent.getLongExtra("timeout", 30000L);
-          paramPacket.setTimeout(l);
-          WSLog.d("weishi-Servlet", "request = " + localWeishiTask.a.getCmdString() + "; timeout:" + l);
-          localObject2 = a(localWeishiRequest, localWeishiRequest.d());
-          paramPacket.setSSOCommand((String)localObject2);
-          Log.i("weishi-Servlet", "SSO命令字: " + (String)localObject2);
-          localWeishiRequest.e = localObject1.length;
-          paramPacket.putSendData((byte[])localObject1);
-          Log.i("weishi-Servlet", "onSend request cmd=" + localWeishiTask.a.uniKey() + " is correct");
-          ((WeishiIntent)paramIntent).a.a.a = System.currentTimeMillis();
-          return;
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("onSend request encode result is null.cmd=");
+          ((StringBuilder)localObject1).append(localWeishiTask.a.uniKey());
+          Log.e("weishi-Servlet", ((StringBuilder)localObject1).toString());
+          localObject1 = new byte[4];
         }
+        long l = ((WeishiIntent)localObject3).getLongExtra("timeout", 30000L);
+        paramPacket.setTimeout(l);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("request = ");
+        ((StringBuilder)localObject2).append(localWeishiTask.a.getCmdString());
+        ((StringBuilder)localObject2).append("; timeout:");
+        ((StringBuilder)localObject2).append(l);
+        WSLog.d("weishi-Servlet", ((StringBuilder)localObject2).toString());
+        localObject2 = a(localWeishiRequest, localWeishiRequest.d());
+        paramPacket.setSSOCommand((String)localObject2);
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("SSO命令字: ");
+        ((StringBuilder)localObject3).append((String)localObject2);
+        Log.i("weishi-Servlet", ((StringBuilder)localObject3).toString());
+        localWeishiRequest.e = localObject1.length;
+        paramPacket.putSendData((byte[])localObject1);
+        paramPacket = new StringBuilder();
+        paramPacket.append("onSend request cmd=");
+        paramPacket.append(localWeishiTask.a.uniKey());
+        paramPacket.append(" is correct");
+        Log.i("weishi-Servlet", paramPacket.toString());
       }
-      catch (Exception paramIntent)
+      else
       {
-        Log.e("weishi-Servlet", "onSend occur exception.Exception detail=" + Log.getStackTraceString(paramIntent));
-        return;
+        Log.e("weishi-Servlet", "onSend request instanceod WeishiIntent is false");
       }
-      Log.e("weishi-Servlet", "onSend request instanceod WeishiIntent is false");
+      ((WeishiIntent)paramIntent).a.a.a = System.currentTimeMillis();
+      return;
+    }
+    catch (Exception paramIntent)
+    {
+      paramPacket = new StringBuilder();
+      paramPacket.append("onSend occur exception.Exception detail=");
+      paramPacket.append(Log.getStackTraceString(paramIntent));
+      Log.e("weishi-Servlet", paramPacket.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.net.WeishiServlet
  * JD-Core Version:    0.7.0.1
  */

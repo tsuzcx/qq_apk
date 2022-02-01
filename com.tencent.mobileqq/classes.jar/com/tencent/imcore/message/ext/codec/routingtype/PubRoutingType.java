@@ -1,5 +1,6 @@
 package com.tencent.imcore.message.ext.codec.routingtype;
 
+import com.tencent.common.app.AppInterface;
 import com.tencent.imcore.message.core.codec.RoutingType;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -12,7 +13,7 @@ import msf.msgsvc.msg_svc.PublicPlat;
 import msf.msgsvc.msg_svc.RoutingHead;
 
 public class PubRoutingType
-  implements RoutingType
+  implements RoutingType<AppInterface>
 {
   public int a()
   {
@@ -24,15 +25,15 @@ public class PubRoutingType
     return false;
   }
   
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, AppInterface paramAppInterface)
   {
-    paramQQAppInterface = paramQQAppInterface.getMsgCache().a(paramMessageRecord.frienduin);
+    paramAppInterface = ((QQAppInterface)paramAppInterface).getMsgCache().a(paramMessageRecord.frienduin);
     msg_svc.PublicPlat localPublicPlat = new msg_svc.PublicPlat();
     localPublicPlat.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    if (paramQQAppInterface != null)
+    if (paramAppInterface != null)
     {
-      paramMessageRecord = new byte[paramQQAppInterface.length - 2];
-      PkgTools.copyData(paramMessageRecord, 0, paramQQAppInterface, 2, paramQQAppInterface.length - 2);
+      paramMessageRecord = new byte[paramAppInterface.length - 2];
+      PkgTools.copyData(paramMessageRecord, 0, paramAppInterface, 2, paramAppInterface.length - 2);
       localPublicPlat.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
     }
     paramRoutingHead.public_plat.set(localPublicPlat);
@@ -46,7 +47,7 @@ public class PubRoutingType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.routingtype.PubRoutingType
  * JD-Core Version:    0.7.0.1
  */

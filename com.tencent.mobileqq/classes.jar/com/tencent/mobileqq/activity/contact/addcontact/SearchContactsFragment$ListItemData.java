@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import com.tencent.pb.addcontacts.AccountSearchPb.ResultItem;
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import addcontacts.AccountSearchPb.ResultItem;
+import addcontacts.AccountSearchPb.hotwordrecord;
+import addcontacts.AccountSearchPb.record;
 
 class SearchContactsFragment$ListItemData
 {
@@ -19,7 +19,7 @@ class SearchContactsFragment$ListItemData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment.ListItemData
  * JD-Core Version:    0.7.0.1
  */

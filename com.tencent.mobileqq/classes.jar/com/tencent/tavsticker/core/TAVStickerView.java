@@ -58,160 +58,185 @@ public class TAVStickerView
     }
     if (!TextUtils.isEmpty(this.assetPath)) {
       setStickerAssetPath(this.assetPath);
+    } else if (!TextUtils.isEmpty(this.path)) {
+      setStickerPath(this.path);
     }
-    for (;;)
-    {
-      this.pagView.setRepeatCount(this.repeatCount);
-      if (this.isAutoPlay) {
-        this.pagView.play();
-      }
-      return;
-      if (!TextUtils.isEmpty(this.path)) {
-        setStickerPath(this.path);
-      }
+    this.pagView.setRepeatCount(this.repeatCount);
+    if (this.isAutoPlay) {
+      this.pagView.play();
     }
   }
   
   public void addListener(Animator.AnimatorListener paramAnimatorListener)
   {
-    if ((paramAnimatorListener != null) && (this.pagView != null)) {
-      this.pagView.addListener(paramAnimatorListener);
+    if (paramAnimatorListener != null)
+    {
+      PAGView localPAGView = this.pagView;
+      if (localPAGView != null) {
+        localPAGView.addListener(paramAnimatorListener);
+      }
     }
   }
   
   public long duration()
   {
-    if (this.pagView != null) {
-      return this.pagView.duration() / 1000L;
+    PAGView localPAGView = this.pagView;
+    if (localPAGView != null) {
+      return localPAGView.duration() / 1000L;
     }
     return 0L;
   }
   
   public boolean flush()
   {
-    if (this.pagView != null) {
-      return this.pagView.flush();
+    PAGView localPAGView = this.pagView;
+    if (localPAGView != null) {
+      return localPAGView.flush();
     }
     return false;
   }
   
   public boolean flush(boolean paramBoolean)
   {
-    if (this.pagView != null) {
-      return this.pagView.flush(paramBoolean);
+    PAGView localPAGView = this.pagView;
+    if (localPAGView != null) {
+      return localPAGView.flush(paramBoolean);
     }
     return false;
   }
   
   public PAGFile getPagFile()
   {
-    if (this.pagView != null) {
-      return this.pagView.getFile();
+    PAGView localPAGView = this.pagView;
+    if (localPAGView != null) {
+      return localPAGView.getFile();
     }
     return null;
   }
   
   public double getProgress()
   {
-    if (this.pagView != null) {
-      this.pagView.getProgress();
+    PAGView localPAGView = this.pagView;
+    if (localPAGView != null) {
+      localPAGView.getProgress();
     }
     return 0.0D;
   }
   
   public boolean isPlaying()
   {
-    if (this.pagView != null) {
-      return this.pagView.isPlaying();
+    PAGView localPAGView = this.pagView;
+    if (localPAGView != null) {
+      return localPAGView.isPlaying();
     }
     return false;
   }
   
   public float maxFrameRate()
   {
-    if (this.pagView != null) {
-      this.pagView.maxFrameRate();
+    PAGView localPAGView = this.pagView;
+    if (localPAGView != null) {
+      localPAGView.maxFrameRate();
     }
     return 0.0F;
   }
   
   public void play(int paramInt)
   {
-    if (this.pagView != null)
+    PAGView localPAGView = this.pagView;
+    if (localPAGView != null)
     {
-      this.pagView.setRepeatCount(paramInt);
+      localPAGView.setRepeatCount(paramInt);
       this.pagView.play();
     }
   }
   
   public void removeListener(Animator.AnimatorListener paramAnimatorListener)
   {
-    if ((paramAnimatorListener != null) && (this.pagView != null)) {
-      this.pagView.removeListener(paramAnimatorListener);
+    if (paramAnimatorListener != null)
+    {
+      PAGView localPAGView = this.pagView;
+      if (localPAGView != null) {
+        localPAGView.removeListener(paramAnimatorListener);
+      }
     }
   }
   
   public void replaceImage(int paramInt, PAGImage paramPAGImage)
   {
-    if (this.pagView != null) {
-      this.pagView.replaceImage(paramInt, paramPAGImage);
+    PAGView localPAGView = this.pagView;
+    if (localPAGView != null) {
+      localPAGView.replaceImage(paramInt, paramPAGImage);
     }
   }
   
   public void setMaxFrameRate(float paramFloat)
   {
-    if (this.pagView != null) {
-      this.pagView.setMaxFrameRate(paramFloat);
+    PAGView localPAGView = this.pagView;
+    if (localPAGView != null) {
+      localPAGView.setMaxFrameRate(paramFloat);
     }
   }
   
   public void setProgress(double paramDouble)
   {
-    if (this.pagView != null) {
-      this.pagView.setProgress(paramDouble);
+    PAGView localPAGView = this.pagView;
+    if (localPAGView != null) {
+      localPAGView.setProgress(paramDouble);
     }
   }
   
   public void setRepeatCount(int paramInt)
   {
-    if (this.pagView != null) {
-      this.pagView.setRepeatCount(paramInt);
+    PAGView localPAGView = this.pagView;
+    if (localPAGView != null) {
+      localPAGView.setRepeatCount(paramInt);
     }
   }
   
   public void setStickerAssetPath(String paramString)
   {
     paramString = TAVPAGFileManager.getInstance().getPAGFileFromAsset(this.context, paramString);
-    if ((paramString != null) && (this.pagView != null)) {
-      this.pagView.setFile(paramString);
+    if (paramString != null)
+    {
+      PAGView localPAGView = this.pagView;
+      if (localPAGView != null) {
+        localPAGView.setFile(paramString);
+      }
     }
   }
   
   public void setStickerPath(String paramString)
   {
     paramString = TAVPAGFileManager.getInstance().getPAGFileFromPath(paramString);
-    if ((paramString != null) && (this.pagView != null)) {
-      this.pagView.setFile(paramString);
+    if (paramString != null)
+    {
+      PAGView localPAGView = this.pagView;
+      if (localPAGView != null) {
+        localPAGView.setFile(paramString);
+      }
     }
   }
   
   public void setTextData(int paramInt, PAGText paramPAGText)
   {
-    if (this.pagView != null) {
-      this.pagView.setTextData(paramInt, paramPAGText);
+    PAGView localPAGView = this.pagView;
+    if (localPAGView != null) {
+      localPAGView.setTextData(paramInt, paramPAGText);
     }
   }
   
   public void stop()
   {
-    if (this.pagView != null) {
-      this.pagView.stop();
+    PAGView localPAGView = this.pagView;
+    if (localPAGView != null) {
+      localPAGView.stop();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavsticker.core.TAVStickerView
  * JD-Core Version:    0.7.0.1
  */

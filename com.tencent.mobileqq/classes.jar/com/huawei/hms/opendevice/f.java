@@ -1,38 +1,98 @@
 package com.huawei.hms.opendevice;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.huawei.agconnect.config.AGConnectServicesConfig;
-import com.huawei.hms.framework.network.grs.GrsBaseInfo;
-import com.huawei.hms.framework.network.grs.GrsClient;
+import com.huawei.hms.aaid.HmsInstanceId;
+import com.huawei.hms.aaid.constant.ErrorEnum;
+import com.huawei.hms.common.ApiException;
 import com.huawei.hms.support.log.HMSLog;
+import com.huawei.hms.utils.Util;
 
-public abstract class f
+public class f
+  implements Runnable
 {
-  public static String a(@NonNull Context paramContext)
+  public Context a;
+  
+  public f(Context paramContext)
   {
-    String str = AGConnectServicesConfig.fromContext(paramContext).getString("region");
-    if (TextUtils.isEmpty(str))
+    this.a = paramContext;
+  }
+  
+  public void run()
+  {
+    try
     {
-      HMSLog.i("QueryGrs", "The data storage region is empty.");
-      return "";
+      i = ErrorEnum.SUCCESS.getInternalCode();
+      localObject1 = null;
+      try
+      {
+        String str = HmsInstanceId.getInstance(this.a).getToken(Util.getAppId(this.a), null);
+        localObject1 = str;
+        HMSLog.i("AutoInit", "Push init succeed");
+        localObject1 = str;
+        bool = TextUtils.isEmpty(str);
+        localObject1 = str;
+        if (bool) {
+          return;
+        }
+      }
+      catch (ApiException localApiException)
+      {
+        i = localApiException.getStatusCode();
+        HMSLog.e("AutoInit", "Push init failed");
+      }
     }
-    GrsBaseInfo localGrsBaseInfo = new GrsBaseInfo();
-    localGrsBaseInfo.setSerCountry(str);
-    paramContext = new GrsClient(paramContext, localGrsBaseInfo).synGetGrsUrl("com.huawei.hms.opendevicesdk", "ROOT");
-    if (TextUtils.isEmpty(paramContext))
+    catch (Exception localException)
     {
-      HMSLog.i("QueryGrs", "Query Grs base url is empty.");
-      return "";
+      int i;
+      Object localObject1;
+      boolean bool;
+      Object localObject2;
+      label215:
+      HMSLog.e("AutoInit", "Push init failed", localException);
     }
-    HMSLog.i("QueryGrs", "Query Grs base url: " + paramContext);
-    return paramContext;
+    try
+    {
+      localObject2 = this.a.getPackageManager().getApplicationInfo(this.a.getPackageName(), 128);
+      if (((ApplicationInfo)localObject2).metaData != null)
+      {
+        localObject2 = ((ApplicationInfo)localObject2).metaData;
+        if (((Bundle)localObject2).getString("com.huawei.hms.client.service.name:push") != null)
+        {
+          localObject2 = new Intent("com.huawei.push.action.MESSAGING_EVENT");
+          ((Intent)localObject2).setPackage(this.a.getPackageName());
+          Bundle localBundle = new Bundle();
+          localBundle.putString("message_type", "new_token");
+          localBundle.putString("device_token", localObject1);
+          localBundle.putInt("error", i);
+          bool = new h().a(this.a, localBundle, (Intent)localObject2);
+          if (bool) {
+            break label232;
+          }
+          HMSLog.e("AutoInit", "start service failed");
+          return;
+        }
+      }
+      HMSLog.i("AutoInit", "push kit sdk not exists");
+      return;
+    }
+    catch (PackageManager.NameNotFoundException localNameNotFoundException)
+    {
+      break label215;
+    }
+    HMSLog.i("AutoInit", "push kit sdk not exists");
+    return;
+    label232:
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.opendevice.f
  * JD-Core Version:    0.7.0.1
  */

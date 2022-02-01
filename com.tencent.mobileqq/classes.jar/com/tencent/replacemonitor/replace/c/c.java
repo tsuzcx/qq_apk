@@ -12,7 +12,10 @@ class c
   public void run()
   {
     MonitorTask localMonitorTask = com.tencent.replacemonitor.replace.b.a.a().a(this.a.id);
-    ab.c("WashMonitor", "ReplaceMonitorImpl>>执行安装后定时检查 task1 = " + localMonitorTask);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ReplaceMonitorImpl>>执行安装后定时检查 task1 = ");
+    localStringBuilder.append(localMonitorTask);
+    ab.c("WashMonitor", localStringBuilder.toString());
     if (localMonitorTask != null) {
       new com.tencent.replacemonitor.replace.c(localMonitorTask, MonitorStep.AFTER_INSTALL, this.b).run();
     }
@@ -20,7 +23,7 @@ class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.replacemonitor.replace.c.c
  * JD-Core Version:    0.7.0.1
  */

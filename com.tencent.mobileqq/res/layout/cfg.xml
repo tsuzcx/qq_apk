@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/o1g" android:background="@drawable/bi8" android:paddingRight="13.0dip" android:layout_width="fill_parent" android:layout_height="44.0dip">
-        <SeekBar android:layout_gravity="center" android:id="@id/mxw" android:paddingLeft="24.0dip" android:paddingRight="11.0dip" android:layout_width="fill_parent" android:layout_height="28.0dip" android:maxHeight="9.0dip" android:max="100" android:progress="0" android:progressDrawable="@drawable/bif" android:minHeight="9.0dip" android:thumb="@drawable/g5s" android:thumbOffset="10.0dip" android:layout_toLeftOf="@id/m3p" android:layout_centerVertical="true" />
-        <ImageView android:id="@id/m3p" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/b2l" android:src="@drawable/fpg" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-    <android.support.v7.widget.RecyclerView android:orientation="horizontal" android:id="@id/mxv" android:background="@color/m7" android:paddingLeft="10.0dip" android:paddingTop="22.0dip" android:paddingRight="10.0dip" android:paddingBottom="30.0dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="@dimen/b_p" android:layout_below="@id/o1g" />
-</RelativeLayout>
+    <com.tencent.widget.HorizontalListView android:orientation="horizontal" android:id="@id/n70" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="16.0dip" />
+</FrameLayout>

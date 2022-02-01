@@ -6,16 +6,16 @@ import android.os.Message;
 import com.tencent.mobileqq.activity.aio.ChatAdapter1;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.item.PttSlideStateHelper;
+import com.tencent.mobileqq.activity.aio.item.PttConstants;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.config.business.qvip.QVipAutoPttConfig;
-import com.tencent.mobileqq.config.business.qvip.QVipAutoPttProcessor;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.graytip.UniteGrayTipMsgUtil;
 import com.tencent.mobileqq.graytip.UniteGrayTipParam;
-import com.tencent.mobileqq.graytip.UniteGrayTipUtil;
-import com.tencent.mobileqq.vip.QVipConfigManager;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipAutoPttConfig;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipAutoPttProcessor;
+import com.tencent.mobileqq.vas.vip.QVipConfigManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -37,27 +37,26 @@ public class PttAutoToTxtHelper
     List localList = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.a();
     Iterator localIterator = localList.iterator();
     int i = 0;
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       ChatMessage localChatMessage = (ChatMessage)localIterator.next();
-      if (QLog.isColorLevel()) {
-        QLog.d("vip_ptt.helper", 1, "SHOW_FIRST:" + localChatMessage.msgtype);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("SHOW_FIRST:");
+        localStringBuilder.append(localChatMessage.msgtype);
+        QLog.d("vip_ptt.helper", 1, localStringBuilder.toString());
       }
-      if (localChatMessage.msgtype != -2002) {
-        break label123;
+      if (localChatMessage.msgtype == -2002)
+      {
+        QLog.e("vip_ptt.helper", 1, "SHOW_FIRST find the ptt msg");
+        i = 1;
       }
-      QLog.e("vip_ptt.helper", 1, "SHOW_FIRST find the ptt msg");
-      i = 1;
     }
-    label123:
-    for (;;)
-    {
-      break;
-      if (i != 0) {
-        return (ChatMessage)localList.get(localList.size() - 1);
-      }
-      return null;
+    if (i != 0) {
+      return (ChatMessage)localList.get(localList.size() - 1);
     }
+    return null;
   }
   
   private void a(ChatMessage paramChatMessage, String paramString)
@@ -68,14 +67,14 @@ public class PttAutoToTxtHelper
       localMessageForUniteGrayTip.shmsgseq = paramChatMessage.shmsgseq;
     }
     localMessageForUniteGrayTip.initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
-    UniteGrayTipUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForUniteGrayTip);
+    UniteGrayTipMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForUniteGrayTip);
     QLog.e("vip_ptt.helper", 1, "It is need add gray msg and insert success");
   }
   
   private boolean a()
   {
-    if ((QVipAutoPttProcessor.c().a <= 1) && (PttSlideStateHelper.c)) {
-      return !QVipConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "have_add_ptt_gray_msg", false);
+    if ((QVipAutoPttProcessor.c().a <= 1) && (PttConstants.c)) {
+      return QVipConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "have_add_ptt_gray_msg", false) ^ true;
     }
     return false;
   }
@@ -90,7 +89,7 @@ public class PttAutoToTxtHelper
     paramMessage = (ChatMessage)paramMessage.obj;
     if (QVipAutoPttProcessor.c().a <= 1)
     {
-      a(paramMessage, HardCodeUtil.a(2131708694));
+      a(paramMessage, HardCodeUtil.a(2131708700));
       QVipConfigManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "have_add_ptt_gray_msg", true);
     }
     return true;
@@ -98,40 +97,43 @@ public class PttAutoToTxtHelper
   
   public int[] interestedIn()
   {
-    return new int[] { 7, 8, 11 };
+    return new int[] { 8, 9, 12 };
   }
   
   public void onMoveToState(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 8)
     {
-    case 9: 
-    case 10: 
-    default: 
-    case 7: 
-    case 8: 
-      do
+      if (paramInt != 9)
       {
-        return;
-        QLog.e("vip_ptt.helper", 1, "SHOW_FIRST_BEGIN");
-        return;
-      } while (!a());
-      QLog.e("vip_ptt.helper", 1, "It is need add gray msg");
-      ChatMessage localChatMessage = a();
-      if (localChatMessage == null)
-      {
-        QLog.e("vip_ptt.helper", 1, "It is need add gray msg,but this aio not ptt msg");
+        if (paramInt != 12) {
+          return;
+        }
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(10102);
         return;
       }
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(10102, localChatMessage));
-      return;
+      if (a())
+      {
+        QLog.e("vip_ptt.helper", 1, "It is need add gray msg");
+        ChatMessage localChatMessage = a();
+        if (localChatMessage == null)
+        {
+          QLog.e("vip_ptt.helper", 1, "It is need add gray msg,but this aio not ptt msg");
+          return;
+        }
+        Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+        localHandler.sendMessage(localHandler.obtainMessage(10102, localChatMessage));
+      }
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(10102);
+    else
+    {
+      QLog.e("vip_ptt.helper", 1, "SHOW_FIRST_BEGIN");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.PttAutoToTxtHelper
  * JD-Core Version:    0.7.0.1
  */

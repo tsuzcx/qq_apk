@@ -45,37 +45,38 @@ public class PaddingFilter
       this.textPoint[i] = paramArrayOfFloat[i];
       i += 1;
     }
-    this.textPoint[6] = paramArrayOfFloat[(paramArrayOfFloat.length - 2)];
-    this.textPoint[7] = paramArrayOfFloat[(paramArrayOfFloat.length - 1)];
-    paramArrayOfFloat = this.textPoint;
-    paramArrayOfFloat[0] += this.mPaddingWidth;
-    paramArrayOfFloat = this.textPoint;
-    paramArrayOfFloat[1] += this.mPaddingHeight;
-    paramArrayOfFloat = this.textPoint;
-    paramArrayOfFloat[2] += this.mPaddingWidth;
-    paramArrayOfFloat = this.textPoint;
-    paramArrayOfFloat[3] -= this.mPaddingHeight;
-    paramArrayOfFloat = this.textPoint;
-    paramArrayOfFloat[4] -= this.mPaddingWidth;
-    paramArrayOfFloat = this.textPoint;
-    paramArrayOfFloat[5] -= this.mPaddingHeight;
-    paramArrayOfFloat = this.textPoint;
-    paramArrayOfFloat[6] -= this.mPaddingWidth;
-    paramArrayOfFloat = this.textPoint;
-    paramArrayOfFloat[7] += this.mPaddingHeight;
+    float[] arrayOfFloat = this.textPoint;
+    arrayOfFloat[6] = paramArrayOfFloat[(paramArrayOfFloat.length - 2)];
+    arrayOfFloat[7] = paramArrayOfFloat[(paramArrayOfFloat.length - 1)];
+    float f2 = arrayOfFloat[0];
+    float f1 = this.mPaddingWidth;
+    arrayOfFloat[0] = (f2 + f1);
+    f2 = arrayOfFloat[1];
+    float f3 = this.mPaddingHeight;
+    arrayOfFloat[1] = (f2 + f3);
+    arrayOfFloat[2] += f1;
+    arrayOfFloat[3] -= f3;
+    arrayOfFloat[4] -= f1;
+    arrayOfFloat[5] -= f3;
+    arrayOfFloat[6] -= f1;
+    arrayOfFloat[7] += f3;
     i = j;
-    while (i < this.vetextPoint.length)
+    for (;;)
     {
-      this.vetextPoint[i] = (this.textPoint[i] * 2.0F - 1.0F);
+      paramArrayOfFloat = this.vetextPoint;
+      if (i >= paramArrayOfFloat.length) {
+        break;
+      }
+      paramArrayOfFloat[i] = (this.textPoint[i] * 2.0F - 1.0F);
       i += 1;
     }
-    super.setPositions(this.vetextPoint);
+    super.setPositions(paramArrayOfFloat);
     return super.setTexCords(this.textPoint);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.zoomfilter.PaddingFilter
  * JD-Core Version:    0.7.0.1
  */

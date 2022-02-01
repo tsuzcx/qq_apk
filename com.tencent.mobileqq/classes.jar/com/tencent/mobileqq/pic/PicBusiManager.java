@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.pic;
 
 import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.mixedmsg.api.IMsgMixed;
 import com.tencent.mobileqq.pic.operator.AbstractPicOperator;
 import com.tencent.mobileqq.pic.operator.AioQuickSendPicOperator;
 import com.tencent.mobileqq.pic.operator.AioQzonePicOperator;
@@ -18,11 +18,13 @@ import com.tencent.mobileqq.pic.operator.SendBlessOperator;
 import com.tencent.mobileqq.pic.operator.SendFlashPicOperator;
 import com.tencent.mobileqq.pic.operator.UploadPicOperator;
 import com.tencent.mobileqq.pic.operator.multipic.MultiPicsOperator;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.RichMediaBugReport;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.HashMap;
+import mqq.app.MobileQQ;
 
 public class PicBusiManager
 {
@@ -57,9 +59,9 @@ public class PicBusiManager
     jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(1), f);
   }
   
-  public static QQAppInterface a()
+  public static AppInterface a()
   {
-    return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    return (AppInterface)MobileQQ.sMobileQQ.peekAppRuntime();
   }
   
   public static CompressInfo a(int paramInt, Intent paramIntent)
@@ -128,19 +130,29 @@ public class PicBusiManager
       Logger.b("PicBusiManager", "launch", "error,req == null");
       return null;
     }
-    AbstractPicOperator localAbstractPicOperator = a(paramPicReq.jdField_a_of_type_Int, paramPicReq.jdField_b_of_type_Int);
-    if (localAbstractPicOperator == null)
+    Object localObject = a(paramPicReq.jdField_a_of_type_Int, paramPicReq.jdField_b_of_type_Int);
+    if (localObject == null)
     {
-      Logger.b("PicBusiManager", "launch", "error,busiInterface == null,req.busiType:" + paramPicReq.jdField_b_of_type_Int);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("error,busiInterface == null,req.busiType:");
+      ((StringBuilder)localObject).append(paramPicReq.jdField_b_of_type_Int);
+      Logger.b("PicBusiManager", "launch", ((StringBuilder)localObject).toString());
       return null;
     }
-    localAbstractPicOperator.jdField_a_of_type_ComTencentMobileqqPicPicReq = paramPicReq;
-    localAbstractPicOperator.jdField_a_of_type_JavaLangString = paramPicReq.jdField_a_of_type_JavaLangString;
-    localAbstractPicOperator.jdField_b_of_type_JavaLangString = paramPicReq.jdField_b_of_type_JavaLangString;
-    localAbstractPicOperator.a(paramPicReq.jdField_a_of_type_ComTencentMobileqqPicUiCallBack);
-    Logger.a("PicBusiManager", "launch", "cmd:" + paramPicReq.jdField_a_of_type_Int + ",busiType:" + paramPicReq.jdField_b_of_type_Int + "localUUID:" + paramPicReq.jdField_a_of_type_JavaLangString);
-    localAbstractPicOperator.a();
-    return localAbstractPicOperator;
+    ((AbstractPicOperator)localObject).jdField_a_of_type_ComTencentMobileqqPicPicReq = paramPicReq;
+    ((AbstractPicOperator)localObject).jdField_a_of_type_JavaLangString = paramPicReq.jdField_a_of_type_JavaLangString;
+    ((AbstractPicOperator)localObject).jdField_b_of_type_JavaLangString = paramPicReq.jdField_b_of_type_JavaLangString;
+    ((AbstractPicOperator)localObject).a(paramPicReq.jdField_a_of_type_ComTencentMobileqqPicUiCallBack);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("cmd:");
+    localStringBuilder.append(paramPicReq.jdField_a_of_type_Int);
+    localStringBuilder.append(",busiType:");
+    localStringBuilder.append(paramPicReq.jdField_b_of_type_Int);
+    localStringBuilder.append("localUUID:");
+    localStringBuilder.append(paramPicReq.jdField_a_of_type_JavaLangString);
+    Logger.a("PicBusiManager", "launch", localStringBuilder.toString());
+    ((AbstractPicOperator)localObject).a();
+    return localObject;
   }
   
   private static <T extends AbstractPicOperator> T a(OperatorMap<T> paramOperatorMap, int paramInt)
@@ -162,18 +174,21 @@ public class PicBusiManager
     return null;
   }
   
-  public static ArrayList<PicFowardInfo> a(int paramInt1, MessageForMixedMsg paramMessageForMixedMsg, int paramInt2, String paramString1, String paramString2, String paramString3)
+  public static ArrayList<PicFowardInfo> a(int paramInt1, MessageRecord paramMessageRecord, int paramInt2, String paramString1, String paramString2, String paramString3)
   {
-    MultiPicsOperator localMultiPicsOperator = (MultiPicsOperator)a(e, paramInt1);
-    if (localMultiPicsOperator != null) {
-      return localMultiPicsOperator.a(paramMessageForMixedMsg, paramInt2, paramString1, paramString2, paramString3);
+    if (((IMsgMixed)QRoute.api(IMsgMixed.class)).isMessageForMixedMsg(paramMessageRecord))
+    {
+      MultiPicsOperator localMultiPicsOperator = (MultiPicsOperator)a(e, paramInt1);
+      if (localMultiPicsOperator != null) {
+        return localMultiPicsOperator.a(paramMessageRecord, paramInt2, paramString1, paramString2, paramString3);
+      }
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicBusiManager
  * JD-Core Version:    0.7.0.1
  */

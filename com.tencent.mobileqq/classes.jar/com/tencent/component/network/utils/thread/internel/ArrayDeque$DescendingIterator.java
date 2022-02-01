@@ -20,34 +20,40 @@ class ArrayDeque$DescendingIterator
   
   public E next()
   {
-    if (this.cursor == this.fence) {
-      throw new NoSuchElementException();
-    }
-    this.cursor = (this.cursor - 1 & ArrayDeque.access$400(this.this$0).length - 1);
-    Object localObject = ArrayDeque.access$400(this.this$0)[this.cursor];
-    if ((ArrayDeque.access$200(this.this$0) != this.fence) || (localObject == null)) {
+    int i = this.cursor;
+    if (i != this.fence)
+    {
+      this.cursor = (i - 1 & ArrayDeque.access$400(this.this$0).length - 1);
+      Object localObject = ArrayDeque.access$400(this.this$0)[this.cursor];
+      if ((ArrayDeque.access$200(this.this$0) == this.fence) && (localObject != null))
+      {
+        this.lastRet = this.cursor;
+        return localObject;
+      }
       throw new ConcurrentModificationException();
     }
-    this.lastRet = this.cursor;
-    return localObject;
+    throw new NoSuchElementException();
   }
   
   public void remove()
   {
-    if (this.lastRet < 0) {
-      throw new IllegalStateException();
-    }
-    if (!ArrayDeque.access$500(this.this$0, this.lastRet))
+    int i = this.lastRet;
+    if (i >= 0)
     {
-      this.cursor = (this.cursor + 1 & ArrayDeque.access$400(this.this$0).length - 1);
-      this.fence = ArrayDeque.access$200(this.this$0);
+      if (!ArrayDeque.access$500(this.this$0, i))
+      {
+        this.cursor = (this.cursor + 1 & ArrayDeque.access$400(this.this$0).length - 1);
+        this.fence = ArrayDeque.access$200(this.this$0);
+      }
+      this.lastRet = -1;
+      return;
     }
-    this.lastRet = -1;
+    throw new IllegalStateException();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.utils.thread.internel.ArrayDeque.DescendingIterator
  * JD-Core Version:    0.7.0.1
  */

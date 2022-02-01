@@ -18,7 +18,7 @@ import tencent.im.s2c.msgtype0x210.submsgtype0x83.SubMsgType0x83.MsgBody;
 import tencent.im.s2c.msgtype0x210.submsgtype0x83.SubMsgType0x83.MsgParams;
 
 public class SubType0x83
-  implements Msg0X210SubTypeDecoder
+  implements Msg0X210SubTypeDecoder<OnLinePushMessageProcessor>
 {
   private static void a(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, byte[] paramArrayOfByte)
   {
@@ -26,116 +26,114 @@ public class SubType0x83
       QLog.d("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SubMsgType0x83");
     }
     Object localObject = new SubMsgType0x83.MsgBody();
-    do
+    try
     {
-      try
+      ((SubMsgType0x83.MsgBody)localObject).mergeFrom(paramArrayOfByte);
+      if (!((SubMsgType0x83.MsgBody)localObject).uint64_group_id.has())
       {
-        ((SubMsgType0x83.MsgBody)localObject).mergeFrom(paramArrayOfByte);
-        if (!((SubMsgType0x83.MsgBody)localObject).uint64_group_id.has())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SubMsgType0x83 : msg has not uint64_group_id");
-          }
-          return;
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SubMsgType0x83 : msg has not uint64_group_id");
         }
-      }
-      catch (Exception paramOnLinePushMessageProcessor)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.e("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SubMsgType0x83 : fail to parse submsgtype0x83.");
         return;
       }
-    } while (!((SubMsgType0x83.MsgBody)localObject).rpt_msg_params.has());
-    paramArrayOfByte = ((SubMsgType0x83.MsgBody)localObject).rpt_msg_params;
-    if (((SubMsgType0x83.MsgBody)localObject).uint64_seq.has()) {}
-    for (long l1 = ((SubMsgType0x83.MsgBody)localObject).uint64_seq.get();; l1 = -1L)
-    {
-      if (((SubMsgType0x83.MsgBody)localObject).uint64_group_id.has()) {}
-      for (long l2 = ((SubMsgType0x83.MsgBody)localObject).uint64_group_id.get();; l2 = -1L)
+      if (((SubMsgType0x83.MsgBody)localObject).rpt_msg_params.has())
       {
+        paramArrayOfByte = ((SubMsgType0x83.MsgBody)localObject).rpt_msg_params;
+        boolean bool = ((SubMsgType0x83.MsgBody)localObject).uint64_seq.has();
+        long l2 = -1L;
+        long l1;
+        if (bool) {
+          l1 = ((SubMsgType0x83.MsgBody)localObject).uint64_seq.get();
+        } else {
+          l1 = -1L;
+        }
+        if (((SubMsgType0x83.MsgBody)localObject).uint64_group_id.has()) {
+          l2 = ((SubMsgType0x83.MsgBody)localObject).uint64_group_id.get();
+        }
         int i = 0;
-        label133:
-        if (i < paramArrayOfByte.size())
+        while (i < paramArrayOfByte.size())
         {
           localObject = (SubMsgType0x83.MsgParams)paramArrayOfByte.get(i);
-          if ((localObject != null) && (((SubMsgType0x83.MsgParams)localObject).uint32_type.has())) {
-            break label174;
+          if ((localObject != null) && (((SubMsgType0x83.MsgParams)localObject).uint32_type.has()))
+          {
+            int j = ((SubMsgType0x83.MsgParams)localObject).uint32_type.get();
+            a((QQAppInterface)paramOnLinePushMessageProcessor.a(), l1, l2, (SubMsgType0x83.MsgParams)localObject, j);
           }
-        }
-        for (;;)
-        {
           i += 1;
-          break label133;
-          break;
-          label174:
-          int j = ((SubMsgType0x83.MsgParams)localObject).uint32_type.get();
-          a(paramOnLinePushMessageProcessor.a(), l1, l2, (SubMsgType0x83.MsgParams)localObject, j);
         }
       }
+      return;
+    }
+    catch (Exception paramOnLinePushMessageProcessor)
+    {
+      label205:
+      break label205;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SubMsgType0x83 : fail to parse submsgtype0x83.");
     }
   }
   
   private static void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, SubMsgType0x83.MsgParams paramMsgParams, int paramInt)
   {
+    Object localObject;
     if ((paramInt >= 2001) && (paramInt <= 3000)) {
-      if ((paramMsgParams.str_data.has()) && (paramMsgParams.uint64_from_uin.has()) && (paramMsgParams.uint64_to_uin.has())) {}
+      if ((paramMsgParams.str_data.has()) && (paramMsgParams.uint64_from_uin.has()))
+      {
+        if (!paramMsgParams.uint64_to_uin.has()) {
+          return;
+        }
+        localObject = paramMsgParams.str_data.get();
+      }
     }
-    do
+    try
+    {
+      i = new JSONObject((String)localObject).getInt("count");
+      paramQQAppInterface.getGAudioHandler().a(paramInt, paramMsgParams.uint64_from_uin.get(), paramMsgParams.uint64_to_uin.get(), i, paramLong1, paramLong2);
+      return;
+    }
+    catch (Exception paramQQAppInterface)
     {
       int i;
-      do
+      return;
+    }
+    return;
+    if (paramInt == 1005)
+    {
+      if ((paramMsgParams.str_data.has()) && (paramMsgParams.uint64_from_uin.has()))
       {
-        return;
+        if (!paramMsgParams.uint64_to_uin.has()) {
+          return;
+        }
         localObject = paramMsgParams.str_data.get();
-        try
-        {
-          i = new JSONObject((String)localObject).getInt("count");
-          paramQQAppInterface.getGAudioHandler().a(paramInt, paramMsgParams.uint64_from_uin.get(), paramMsgParams.uint64_to_uin.get(), i, paramLong1, paramLong2);
-          return;
-        }
-        catch (Exception paramQQAppInterface)
-        {
-          return;
-        }
-        if (paramInt != 1005) {
-          break;
-        }
-      } while ((!paramMsgParams.str_data.has()) || (!paramMsgParams.uint64_from_uin.has()) || (!paramMsgParams.uint64_to_uin.has()));
-      Object localObject = paramMsgParams.str_data.get();
-      try
-      {
         localObject = new JSONObject((String)localObject);
         paramInt = ((JSONObject)localObject).optInt("enable");
         i = ((JSONObject)localObject).optInt("level");
         paramQQAppInterface.getGAudioHandler().a(paramMsgParams.uint32_type.get(), paramMsgParams.uint64_from_uin.get(), paramMsgParams.uint64_to_uin.get(), paramInt, i, paramLong1, paramLong2);
         return;
       }
-      catch (Exception paramQQAppInterface)
-      {
+      return;
+    }
+    if (paramInt == 1010)
+    {
+      if (!paramMsgParams.bytes_data.has()) {
         return;
       }
-    } while ((paramInt != 1010) || (!paramMsgParams.bytes_data.has()));
-    paramMsgParams = new String(paramMsgParams.bytes_data.get().toByteArray());
+      paramMsgParams = new String(paramMsgParams.bytes_data.get().toByteArray());
+      paramMsgParams = new JSONObject(paramMsgParams);
+      if (paramMsgParams.getInt("sndRank") == 0) {
+        break label324;
+      }
+      paramInt = 1;
+    }
     for (;;)
     {
-      try
-      {
-        paramMsgParams = new JSONObject(paramMsgParams);
-        if (paramMsgParams.getInt("sndRank") != 0)
-        {
-          paramInt = 1;
-          boolean bool = paramMsgParams.getBoolean("rank_changed");
-          if ((paramInt == 0) || (!bool)) {
-            break;
-          }
-          paramQQAppInterface.getGAudioHandler().a(paramLong2);
-          return;
-        }
+      boolean bool = paramMsgParams.getBoolean("rank_changed");
+      if ((paramInt != 0) && (bool)) {
+        paramQQAppInterface.getGAudioHandler().a(paramLong2);
       }
-      catch (Exception paramQQAppInterface)
-      {
-        return;
-      }
+      return;
+      label324:
       paramInt = 0;
     }
   }
@@ -148,7 +146,7 @@ public class SubType0x83
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x83
  * JD-Core Version:    0.7.0.1
  */

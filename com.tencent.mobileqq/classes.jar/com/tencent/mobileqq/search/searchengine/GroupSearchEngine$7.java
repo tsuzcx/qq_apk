@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.search.searchengine;
 
 import android.os.Bundle;
+import com.tencent.mobileqq.search.base.engine.ISearchEngine;
+import com.tencent.mobileqq.search.base.model.SearchRequest;
 import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
 import com.tencent.mobileqq.search.model.ISearchResultModel;
 import java.util.ArrayList;
@@ -26,7 +28,7 @@ class GroupSearchEngine$7
     paramSearchRequest.a.putInt("SEARCH_REQUEST_EXTRA_SEARCH_TYPE", 16);
     paramSearchRequest.a.putInt("SEARCH_REQUEST_EXTRA_PAGE", 0);
     ArrayList localArrayList = new ArrayList();
-    paramSearchRequest = this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchEngine.a(paramSearchRequest);
+    paramSearchRequest = this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchEngine.a(paramSearchRequest);
     if (paramSearchRequest != null) {
       localArrayList.addAll(paramSearchRequest);
     }
@@ -35,7 +37,7 @@ class GroupSearchEngine$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.GroupSearchEngine.7
  * JD-Core Version:    0.7.0.1
  */

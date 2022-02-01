@@ -1,25 +1,33 @@
 package com.tencent.mobileqq.settings.message;
 
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.screendetect.ScreenShotDetector;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
+import com.tencent.mobileqq.fragment.BottomTabSettingFragment;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class AssistantSettingFragment$33
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
   AssistantSettingFragment$33(AssistantSettingFragment paramAssistantSettingFragment) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    ScreenShotDetector.a(paramBoolean);
-    ReportClickEventHelper.a(AssistantSettingFragment.a(this.a), "0X800B888", paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    Intent localIntent = new Intent();
+    localIntent.setFlags(268435456);
+    localIntent.putExtra("KEY_ENTRANCE", "VALUE_QQ_SETTING_FRAGMENT");
+    PublicFragmentActivity.Launcher.a(paramView.getContext(), localIntent, PublicFragmentActivity.class, BottomTabSettingFragment.class);
+    ReportController.b(BaseApplicationImpl.getApplication().getRuntime(), "CliOper", "", "", "bottom_tab", "entrance_clk", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.AssistantSettingFragment.33
  * JD-Core Version:    0.7.0.1
  */

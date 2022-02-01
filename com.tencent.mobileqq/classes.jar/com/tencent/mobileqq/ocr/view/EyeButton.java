@@ -27,21 +27,27 @@ public class EyeButton
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return true;
-      if (this.a != null)
+      if ((i != 1) && (i != 3)) {
+        return true;
+      }
+      paramMotionEvent = this.a;
+      if (paramMotionEvent != null)
       {
-        this.a.a();
-        continue;
-        if (this.a != null) {
-          this.a.b();
-        }
+        paramMotionEvent.b();
+        return true;
       }
     }
+    else
+    {
+      paramMotionEvent = this.a;
+      if (paramMotionEvent != null) {
+        paramMotionEvent.a();
+      }
+    }
+    return true;
   }
   
   public void setLonTouchListener(EyeButton.EyeButtonLonTouchListener paramEyeButtonLonTouchListener)
@@ -51,7 +57,7 @@ public class EyeButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.EyeButton
  * JD-Core Version:    0.7.0.1
  */

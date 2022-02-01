@@ -12,23 +12,24 @@ public final class InputStatusConfig$Config
   
   private void a(String paramString)
   {
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.a = paramString.optBoolean("input_status_gray_switch", false);
-      this.b = paramString.optBoolean("expand_chat_input_status_switch", true);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("InputStatusConfig", 1, paramString, new Object[0]);
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        this.a = paramString.optBoolean("input_status_gray_switch", false);
+        this.b = paramString.optBoolean("expand_chat_input_status_switch", true);
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("InputStatusConfig", 1, paramString, new Object[0]);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.inputstatus.InputStatusConfig.Config
  * JD-Core Version:    0.7.0.1
  */

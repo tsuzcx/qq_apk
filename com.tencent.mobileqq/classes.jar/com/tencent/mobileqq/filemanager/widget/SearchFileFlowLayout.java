@@ -51,7 +51,7 @@ public class SearchFileFlowLayout
     return new ViewGroup.MarginLayoutParams(getContext(), paramAttributeSet);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_b_of_type_JavaUtilList.clear();
@@ -59,198 +59,179 @@ public class SearchFileFlowLayout
     this.e.clear();
     this.d.clear();
     int m = getWidth();
-    paramInt3 = 0;
-    paramInt2 = 0;
     int n = getChildCount();
     if (n == 0) {
       return;
     }
-    paramInt1 = 0;
     paramInt4 = 0;
-    Object localObject1;
+    paramInt3 = 0;
+    paramInt1 = 0;
+    paramInt2 = 0;
     Object localObject2;
-    int k;
     int j;
+    int k;
     while (paramInt4 < n)
     {
       localObject1 = getChildAt(paramInt4);
       localObject2 = (ViewGroup.MarginLayoutParams)((View)localObject1).getLayoutParams();
       int i2 = ((View)localObject1).getMeasuredWidth();
       int i1 = ((View)localObject1).getMeasuredHeight();
-      if (i2 + paramInt3 + ((ViewGroup.MarginLayoutParams)localObject2).leftMargin + ((ViewGroup.MarginLayoutParams)localObject2).rightMargin <= m - getPaddingLeft() - getPaddingRight())
+      if (i2 + paramInt1 + ((ViewGroup.MarginLayoutParams)localObject2).leftMargin + ((ViewGroup.MarginLayoutParams)localObject2).rightMargin <= m - getPaddingLeft() - getPaddingRight())
       {
-        k = paramInt1;
-        i = paramInt2;
-        j = paramInt3;
-        if (paramInt1 > this.jdField_b_of_type_Int)
+        int i3 = this.jdField_b_of_type_Int;
+        j = paramInt1;
+        k = paramInt2;
+        i = paramInt3;
+        if (paramInt2 > i3)
         {
-          k = paramInt1;
-          i = paramInt2;
-          j = paramInt3;
-          if (this.jdField_b_of_type_Int == -1) {}
+          j = paramInt1;
+          k = paramInt2;
+          i = paramInt3;
+          if (i3 == -1) {}
         }
       }
       else
       {
-        this.jdField_b_of_type_JavaUtilList.add(Integer.valueOf(paramInt2));
-        this.c.add(Integer.valueOf(paramInt3));
+        this.jdField_b_of_type_JavaUtilList.add(Integer.valueOf(paramInt3));
+        this.c.add(Integer.valueOf(paramInt1));
         this.jdField_a_of_type_JavaUtilList.add(this.e);
-        j = 0;
-        paramInt1 = ((ViewGroup.MarginLayoutParams)localObject2).topMargin;
-        i = ((ViewGroup.MarginLayoutParams)localObject2).bottomMargin + (paramInt1 + i1);
+        i = ((ViewGroup.MarginLayoutParams)localObject2).topMargin + i1 + ((ViewGroup.MarginLayoutParams)localObject2).bottomMargin;
         this.e = new ArrayList();
+        j = 0;
         k = 0;
       }
-      paramInt1 = k + 1;
-      paramInt3 = j + (i2 + ((ViewGroup.MarginLayoutParams)localObject2).leftMargin + ((ViewGroup.MarginLayoutParams)localObject2).rightMargin);
-      paramInt2 = ((ViewGroup.MarginLayoutParams)localObject2).topMargin;
-      paramInt2 = Math.max(i, ((ViewGroup.MarginLayoutParams)localObject2).bottomMargin + (paramInt2 + i1));
+      paramInt2 = k + 1;
+      paramInt1 = j + (i2 + ((ViewGroup.MarginLayoutParams)localObject2).leftMargin + ((ViewGroup.MarginLayoutParams)localObject2).rightMargin);
+      paramInt3 = Math.max(i, i1 + ((ViewGroup.MarginLayoutParams)localObject2).topMargin + ((ViewGroup.MarginLayoutParams)localObject2).bottomMargin);
       this.e.add(localObject1);
       paramInt4 += 1;
     }
-    this.jdField_b_of_type_JavaUtilList.add(Integer.valueOf(paramInt2));
-    this.c.add(Integer.valueOf(paramInt3));
+    this.jdField_b_of_type_JavaUtilList.add(Integer.valueOf(paramInt3));
+    this.c.add(Integer.valueOf(paramInt1));
     this.jdField_a_of_type_JavaUtilList.add(this.e);
-    paramInt3 = getPaddingLeft();
-    paramInt4 = getPaddingTop();
+    paramInt4 = getPaddingLeft();
+    paramInt3 = getPaddingTop();
     int i = this.jdField_a_of_type_JavaUtilList.size();
-    QLog.d("FlowLayout", 2, "一共有 " + i + " 行");
-    paramInt2 = 0;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("一共有 ");
+    ((StringBuilder)localObject1).append(i);
+    ((StringBuilder)localObject1).append(" 行");
+    QLog.d("FlowLayout", 2, ((StringBuilder)localObject1).toString());
     paramInt1 = 0;
-    while (paramInt2 < i)
+    paramInt2 = 0;
+    while (paramInt1 < i)
     {
-      localObject1 = (ViewGroup.MarginLayoutParams)getChildAt(paramInt1).getLayoutParams();
-      localObject2 = getChildAt(((List)this.jdField_a_of_type_JavaUtilList.get(paramInt2)).size() + paramInt1 - 1);
-      j = ((List)this.jdField_a_of_type_JavaUtilList.get(paramInt2)).size();
+      localObject1 = (ViewGroup.MarginLayoutParams)getChildAt(paramInt2).getLayoutParams();
+      localObject2 = getChildAt(((List)this.jdField_a_of_type_JavaUtilList.get(paramInt1)).size() + paramInt2 - 1);
+      paramInt2 += ((List)this.jdField_a_of_type_JavaUtilList.get(paramInt1)).size();
       localObject2 = (ViewGroup.MarginLayoutParams)((View)localObject2).getLayoutParams();
-      List localList = this.d;
-      k = getMeasuredWidth();
-      m = ((Integer)this.c.get(paramInt2)).intValue();
-      localList.add(Integer.valueOf((((ViewGroup.MarginLayoutParams)localObject1).leftMargin + (k - m) + ((ViewGroup.MarginLayoutParams)localObject2).rightMargin) / 2));
-      paramInt2 += 1;
-      paramInt1 += j;
+      this.d.add(Integer.valueOf((getMeasuredWidth() - ((Integer)this.c.get(paramInt1)).intValue() + ((ViewGroup.MarginLayoutParams)localObject1).leftMargin + ((ViewGroup.MarginLayoutParams)localObject2).rightMargin) / 2));
+      paramInt1 += 1;
     }
-    paramInt2 = paramInt4;
-    paramInt1 = paramInt3;
-    paramInt3 = 0;
-    label584:
-    if (paramInt3 < i)
+    paramInt1 = paramInt4;
+    paramInt4 = 0;
+    while (paramInt4 < i)
     {
-      this.e = ((List)this.jdField_a_of_type_JavaUtilList.get(paramInt3));
-      j = ((Integer)this.jdField_b_of_type_JavaUtilList.get(paramInt3)).intValue();
-      if (this.jdField_a_of_type_Int == 2) {
-        paramInt1 = ((Integer)this.d.get(paramInt3)).intValue() * 2 + paramInt1;
-      }
-    }
-    label661:
-    label836:
-    for (;;)
-    {
-      paramInt4 = 0;
-      if (paramInt4 < this.e.size())
+      this.e = ((List)this.jdField_a_of_type_JavaUtilList.get(paramInt4));
+      j = ((Integer)this.jdField_b_of_type_JavaUtilList.get(paramInt4)).intValue();
+      k = this.jdField_a_of_type_Int;
+      if (k == 2) {}
+      for (paramInt2 = ((Integer)this.d.get(paramInt4)).intValue() * 2;; paramInt2 = ((Integer)this.d.get(paramInt4)).intValue())
       {
-        localObject1 = (View)this.e.get(paramInt4);
-        if (((View)localObject1).getVisibility() == 8) {}
-        for (;;)
-        {
-          paramInt4 += 1;
-          break label661;
-          if (this.jdField_a_of_type_Int != 1) {
-            break label836;
-          }
-          paramInt1 = ((Integer)this.d.get(paramInt3)).intValue() + paramInt1;
+        paramInt2 = paramInt1 + paramInt2;
+        break;
+        paramInt2 = paramInt1;
+        if (k != 1) {
           break;
-          localObject2 = (ViewGroup.MarginLayoutParams)((View)localObject1).getLayoutParams();
-          k = ((ViewGroup.MarginLayoutParams)localObject2).leftMargin + paramInt1;
-          m = ((ViewGroup.MarginLayoutParams)localObject2).topMargin + paramInt2;
-          ((View)localObject1).layout(k, m, ((View)localObject1).getMeasuredWidth() + k, ((View)localObject1).getMeasuredHeight() + m);
-          paramInt1 += ((View)localObject1).getMeasuredWidth() + ((ViewGroup.MarginLayoutParams)localObject2).leftMargin + ((ViewGroup.MarginLayoutParams)localObject2).rightMargin;
         }
       }
+      paramInt1 = 0;
+      while (paramInt1 < this.e.size())
+      {
+        localObject1 = (View)this.e.get(paramInt1);
+        if (((View)localObject1).getVisibility() != 8)
+        {
+          localObject2 = (ViewGroup.MarginLayoutParams)((View)localObject1).getLayoutParams();
+          k = ((ViewGroup.MarginLayoutParams)localObject2).leftMargin + paramInt2;
+          m = ((ViewGroup.MarginLayoutParams)localObject2).topMargin + paramInt3;
+          ((View)localObject1).layout(k, m, ((View)localObject1).getMeasuredWidth() + k, ((View)localObject1).getMeasuredHeight() + m);
+          paramInt2 += ((View)localObject1).getMeasuredWidth() + ((ViewGroup.MarginLayoutParams)localObject2).leftMargin + ((ViewGroup.MarginLayoutParams)localObject2).rightMargin;
+        }
+        paramInt1 += 1;
+      }
       paramInt1 = getPaddingLeft();
-      paramInt3 += 1;
-      paramInt2 += j;
-      break label584;
-      break;
+      paramInt3 += j;
+      paramInt4 += 1;
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
-    int i5 = View.MeasureSpec.getSize(paramInt1);
+    int j = View.MeasureSpec.getSize(paramInt1);
     int i8 = View.MeasureSpec.getMode(paramInt1);
-    int i4 = View.MeasureSpec.getSize(paramInt2);
+    int i = View.MeasureSpec.getSize(paramInt2);
     int i7 = View.MeasureSpec.getMode(paramInt2);
-    int k = 0;
     int i9 = getChildCount();
-    int j = 0;
-    int i3 = 0;
+    int i4 = 0;
+    int i2 = 0;
     int m = 0;
+    int i1 = 0;
+    int k = 0;
     int n = 0;
-    int i = 0;
-    if (i3 < i9)
+    while (i4 < i9)
     {
-      View localView = getChildAt(i3);
+      View localView = getChildAt(i4);
       measureChild(localView, paramInt1, paramInt2);
       ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)localView.getLayoutParams();
-      int i1 = localView.getMeasuredWidth() + localMarginLayoutParams.leftMargin + localMarginLayoutParams.rightMargin;
-      int i2 = localView.getMeasuredHeight();
-      int i6 = localMarginLayoutParams.topMargin;
-      i2 = localMarginLayoutParams.bottomMargin + (i2 + i6);
-      if ((n + i1 > i5 - getPaddingLeft() - getPaddingRight()) || ((j >= this.jdField_b_of_type_Int) && (this.jdField_b_of_type_Int != -1)))
+      int i3 = localView.getMeasuredWidth() + localMarginLayoutParams.leftMargin + localMarginLayoutParams.rightMargin;
+      int i6 = localView.getMeasuredHeight() + localMarginLayoutParams.topMargin + localMarginLayoutParams.bottomMargin;
+      int i5 = i2 + i3;
+      if (i5 <= j - getPaddingLeft() - getPaddingRight())
       {
-        i6 = Math.max(k, n);
-        k = i1;
-        n = j;
-        i1 = i6;
-        m = i + m;
-        j = k;
-        k = i2;
-        i = n;
-        n = i1;
-      }
-      for (;;)
-      {
-        i1 = m;
-        i2 = n;
-        if (i3 == i9 - 1)
+        int i10 = this.jdField_b_of_type_Int;
+        if ((i1 < i10) || (i10 == -1))
         {
-          i2 = Math.max(j, n);
-          i1 = m + k;
+          n = Math.max(n, i6);
+          i3 = i1 + 1;
+          i1 = i5;
+          i2 = m;
+          i5 = i3;
+          m = k;
+          break label230;
         }
-        i3 += 1;
-        m = k;
-        n = j;
-        k = i2;
-        j = i;
-        i = i1;
-        break;
-        m = Math.max(m, i2);
-        i2 = j + 1;
-        i1 = n + i1;
-        j = m;
-        m = i;
-        n = k;
-        i = i2;
-        k = j;
-        j = i1;
       }
+      i2 = Math.max(m, i2);
+      m = k + n;
+      n = i6;
+      k = i3;
+      i5 = i1;
+      i1 = k;
+      label230:
+      i3 = i2;
+      k = m;
+      if (i4 == i9 - 1)
+      {
+        i3 = Math.max(i1, i2);
+        k = m + n;
+      }
+      i4 += 1;
+      i2 = i1;
+      m = i3;
+      i1 = i5;
     }
     if (i8 == 1073741824)
     {
-      paramInt1 = i5;
-      if (i7 != 1073741824) {
-        break label355;
-      }
+      paramInt1 = j;
     }
-    label355:
-    for (paramInt2 = i4;; paramInt2 = getPaddingTop() + i + getPaddingBottom())
+    else
     {
-      setMeasuredDimension(paramInt1, paramInt2);
-      return;
-      paramInt1 = getPaddingLeft() + k + getPaddingRight();
-      break;
+      paramInt1 = getPaddingLeft();
+      paramInt1 = getPaddingRight() + (m + paramInt1);
     }
+    if (i7 != 1073741824) {
+      i = k + getPaddingTop() + getPaddingBottom();
+    }
+    setMeasuredDimension(paramInt1, i);
   }
   
   public void setAlignMode(int paramInt)
@@ -279,7 +260,7 @@ public class SearchFileFlowLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.SearchFileFlowLayout
  * JD-Core Version:    0.7.0.1
  */

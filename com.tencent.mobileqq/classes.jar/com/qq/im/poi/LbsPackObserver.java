@@ -10,8 +10,14 @@ public class LbsPackObserver
 {
   public void a(double paramDouble1, double paramDouble2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LbsPack", 2, "handleChangeMapViewAngle= " + paramDouble1 + "|" + paramDouble2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleChangeMapViewAngle= ");
+      localStringBuilder.append(paramDouble1);
+      localStringBuilder.append("|");
+      localStringBuilder.append(paramDouble2);
+      QLog.d("LbsPack", 2, localStringBuilder.toString());
     }
   }
   
@@ -19,15 +25,23 @@ public class LbsPackObserver
   
   public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LbsPack", 2, "onGetLBSPoiList, isSuccess  = " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("onGetLBSPoiList, isSuccess  = ");
+      paramBundle.append(paramBoolean);
+      QLog.d("LbsPack", 2, paramBundle.toString());
     }
   }
   
   public void b(boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LbsPack", 2, "onGetRedPackPage, isSuccess  = " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("onGetRedPackPage, isSuccess  = ");
+      paramBundle.append(paramBoolean);
+      QLog.d("LbsPack", 2, paramBundle.toString());
     }
   }
   
@@ -41,47 +55,47 @@ public class LbsPackObserver
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    int i = -1;
     if (QLog.isColorLevel()) {
       QLog.d("LbsPack", 2, new Object[] { "onUpdata, type=", Integer.valueOf(paramInt), ", isSuccess=", Boolean.valueOf(paramBoolean) });
     }
     switch (paramInt)
     {
     default: 
-    case 0: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
-    case 6: 
-      do
+    case 7: 
+      ArrayList localArrayList = null;
+      paramInt = -1;
+      if (paramBundle != null)
       {
-        return;
-        c(paramBoolean, paramBundle);
-        return;
-        d(paramBoolean, paramBundle);
-        return;
-        e(paramBoolean, paramBundle);
-        return;
-        f(paramBoolean, paramBundle);
-        return;
-        b(paramBoolean, paramBundle);
-        return;
-        a(paramBoolean, paramBundle);
-        return;
-      } while (paramBundle == null);
-      a(paramBundle.getDouble("latitude"), paramBundle.getDouble("longitude"));
+        localArrayList = paramBundle.getStringArrayList("key_lbs_template_ids");
+        paramInt = paramBundle.getInt("key_lbs_template_cookie", -1);
+      }
+      a(paramInt, paramBoolean, localArrayList);
       return;
+    case 6: 
+      if (paramBundle != null)
+      {
+        a(paramBundle.getDouble("latitude"), paramBundle.getDouble("longitude"));
+        return;
+      }
+      break;
+    case 5: 
+      a(paramBoolean, paramBundle);
+      return;
+    case 4: 
+      b(paramBoolean, paramBundle);
+      return;
+    case 3: 
+      f(paramBoolean, paramBundle);
+      return;
+    case 2: 
+      e(paramBoolean, paramBundle);
+      return;
+    case 1: 
+      d(paramBoolean, paramBundle);
+      return;
+    case 0: 
+      c(paramBoolean, paramBundle);
     }
-    ArrayList localArrayList = null;
-    paramInt = i;
-    if (paramBundle != null)
-    {
-      localArrayList = paramBundle.getStringArrayList("key_lbs_template_ids");
-      paramInt = paramBundle.getInt("key_lbs_template_cookie", -1);
-    }
-    a(paramInt, paramBoolean, localArrayList);
   }
 }
 

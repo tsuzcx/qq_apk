@@ -15,7 +15,7 @@ class AccountManageActivity$31
     try
     {
       FaceDrawable localFaceDrawable = FaceDrawable.getUserFaceDrawable(this.this$0.app, this.jdField_a_of_type_JavaLangString, (byte)3);
-      ((ImageView)this.this$0.a.getChildAt(this.jdField_a_of_type_Int).findViewById(2131368603)).setImageDrawable(localFaceDrawable);
+      ((ImageView)this.this$0.a.getChildAt(this.jdField_a_of_type_Int).findViewById(2131368343)).setImageDrawable(localFaceDrawable);
       return;
     }
     catch (Exception localException)
@@ -26,7 +26,7 @@ class AccountManageActivity$31
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AccountManageActivity.31
  * JD-Core Version:    0.7.0.1
  */

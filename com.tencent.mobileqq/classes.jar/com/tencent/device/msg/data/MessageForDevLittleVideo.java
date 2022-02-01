@@ -6,6 +6,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.utils.MessagePkgUtils;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.utils.ContactUtils;
+import mqq.app.AppRuntime;
 
 public class MessageForDevLittleVideo
   extends MessageForShortVideo
@@ -17,48 +18,45 @@ public class MessageForDevLittleVideo
   
   public void doParse()
   {
+    Object localObject;
     try
     {
       MessageForDevLittleVideo.DevLittleVideoMsgSerial localDevLittleVideoMsgSerial = (MessageForDevLittleVideo.DevLittleVideoMsgSerial)MessagePkgUtils.a(this.msgData);
-      if (localDevLittleVideoMsgSerial != null)
-      {
-        this.thumbFileKey = localDevLittleVideoMsgSerial.thumbFileKey;
-        this.videoFileKey = localDevLittleVideoMsgSerial.videoFileKey;
-        this.fileKey2 = localDevLittleVideoMsgSerial.fileKey2;
-        this.coverkey2 = localDevLittleVideoMsgSerial.coverKey2;
-        this.videoFileSize = localDevLittleVideoMsgSerial.videoFileSize;
-        this.videoFileFormat = localDevLittleVideoMsgSerial.videoFileFormat;
-        this.videoFileTime = localDevLittleVideoMsgSerial.videoFileTime;
-        this.uuid = localDevLittleVideoMsgSerial.uuid;
-        this.md5 = localDevLittleVideoMsgSerial.md5;
-        this.videoFileName = localDevLittleVideoMsgSerial.videoFileName;
-        this.thumbWidth = localDevLittleVideoMsgSerial.thumbWidth;
-        this.thumbHeight = localDevLittleVideoMsgSerial.thumbHeight;
-        this.thumbMD5 = localDevLittleVideoMsgSerial.thumbMD5;
-        this.mThumbFilePath = localDevLittleVideoMsgSerial.mThumbFilePath;
-        this.mVideoFileSourceDir = localDevLittleVideoMsgSerial.mVideoFileSourceDir;
-        this.videoFileStatus = localDevLittleVideoMsgSerial.videoFileStatus;
-        this.videoFileProgress = localDevLittleVideoMsgSerial.videoFileProgress;
-        this.fileType = localDevLittleVideoMsgSerial.fileType;
-        this.fileSource = localDevLittleVideoMsgSerial.fileSource;
-        this.lastModified = localDevLittleVideoMsgSerial.lastModified;
-        this.thumbFileSize = localDevLittleVideoMsgSerial.thumbFileSize;
-        this.busiType = localDevLittleVideoMsgSerial.busiType;
-        this.fromChatType = localDevLittleVideoMsgSerial.fromChatType;
-        this.toChatType = localDevLittleVideoMsgSerial.toChatType;
-        this.uiOperatorFlag = localDevLittleVideoMsgSerial.uiOperatorFlag;
-        this.issend = localDevLittleVideoMsgSerial.issend;
-        this.senderuin = localDevLittleVideoMsgSerial.senderuin;
-      }
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-        Object localObject = null;
-      }
+      localException.printStackTrace();
+      localObject = null;
+    }
+    if (localObject != null)
+    {
+      this.thumbFileKey = localObject.thumbFileKey;
+      this.videoFileKey = localObject.videoFileKey;
+      this.fileKey2 = localObject.fileKey2;
+      this.coverkey2 = localObject.coverKey2;
+      this.videoFileSize = localObject.videoFileSize;
+      this.videoFileFormat = localObject.videoFileFormat;
+      this.videoFileTime = localObject.videoFileTime;
+      this.uuid = localObject.uuid;
+      this.md5 = localObject.md5;
+      this.videoFileName = localObject.videoFileName;
+      this.thumbWidth = localObject.thumbWidth;
+      this.thumbHeight = localObject.thumbHeight;
+      this.thumbMD5 = localObject.thumbMD5;
+      this.mThumbFilePath = localObject.mThumbFilePath;
+      this.mVideoFileSourceDir = localObject.mVideoFileSourceDir;
+      this.videoFileStatus = localObject.videoFileStatus;
+      this.videoFileProgress = localObject.videoFileProgress;
+      this.fileType = localObject.fileType;
+      this.fileSource = localObject.fileSource;
+      this.lastModified = localObject.lastModified;
+      this.thumbFileSize = localObject.thumbFileSize;
+      this.busiType = localObject.busiType;
+      this.fromChatType = localObject.fromChatType;
+      this.toChatType = localObject.toChatType;
+      this.uiOperatorFlag = localObject.uiOperatorFlag;
+      this.issend = localObject.issend;
+      this.senderuin = localObject.senderuin;
     }
   }
   
@@ -69,9 +67,12 @@ public class MessageForDevLittleVideo
     {
       localObject = (QQAppInterface)localObject;
       if (isSendFromLocal()) {
-        return HardCodeUtil.a(2131706592);
+        return HardCodeUtil.a(2131706614);
       }
-      return ContactUtils.c((QQAppInterface)localObject, this.senderuin, true) + HardCodeUtil.a(2131706596);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(ContactUtils.a((AppRuntime)localObject, this.senderuin, true));
+      localStringBuilder.append(HardCodeUtil.a(2131706618));
+      return localStringBuilder.toString();
     }
     return null;
   }
@@ -119,7 +120,7 @@ public class MessageForDevLittleVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.msg.data.MessageForDevLittleVideo
  * JD-Core Version:    0.7.0.1
  */

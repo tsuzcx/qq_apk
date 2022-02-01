@@ -15,28 +15,21 @@ class AssistantSettingActivity$3
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    boolean bool = true;
-    if (!NetworkUtil.d(this.a.getActivity()))
+    if (!NetworkUtil.isNetSupport(this.a.getActivity()))
     {
-      AssistantSettingActivity.a(this.a, 2131694510, 1);
-      AssistantSettingActivity localAssistantSettingActivity = this.a;
-      if (!paramBoolean) {
-        AssistantSettingActivity.a(localAssistantSettingActivity, bool, this);
-      }
+      AssistantSettingActivity.a(this.a, 2131694475, 1);
+      AssistantSettingActivity.a(this.a, paramBoolean ^ true, this);
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      bool = false;
-      break;
       ((CardHandler)this.a.app.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).q(paramBoolean);
     }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssistantSettingActivity.3
  * JD-Core Version:    0.7.0.1
  */

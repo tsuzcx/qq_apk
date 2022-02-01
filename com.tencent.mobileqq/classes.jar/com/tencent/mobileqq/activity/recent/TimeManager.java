@@ -15,6 +15,7 @@ import java.util.HashMap;
 public class TimeManager
 {
   private static TimeManager jdField_a_of_type_ComTencentMobileqqActivityRecentTimeManager;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
   private long jdField_a_of_type_Long;
   public CountDownTimer a;
   private String jdField_a_of_type_JavaLangString = "yyyy-MM-dd";
@@ -24,44 +25,42 @@ public class TimeManager
   
   private TimeManager()
   {
-    BaseApplication localBaseApplication = BaseApplication.getContext();
+    Object localObject = BaseApplication.getContext();
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     d();
-    Object localObject3 = null;
-    Object localObject1 = localObject3;
-    if (localBaseApplication != null) {
-      localObject1 = localBaseApplication.getContentResolver();
+    if (localObject != null) {
+      localObject = ((Context)localObject).getContentResolver();
     }
     try
     {
-      localObject1 = Settings.System.getString((ContentResolver)localObject1, "date_format");
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
-      for (this.jdField_a_of_type_JavaLangString = ((String)localObject1);; this.jdField_a_of_type_JavaLangString = "yyyy-MM-dd")
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer = new CountDownTimer(Looper.getMainLooper());
-        return;
-      }
+      localObject = Settings.System.getString((ContentResolver)localObject, "date_format");
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        Object localObject2 = localObject3;
-      }
+      label72:
+      break label72;
     }
+    localObject = null;
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      this.jdField_a_of_type_JavaLangString = ((String)localObject);
+    } else {
+      this.jdField_a_of_type_JavaLangString = "yyyy-MM-dd";
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer = new CountDownTimer(Looper.getMainLooper());
   }
   
   public static TimeManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqActivityRecentTimeManager == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqActivityRecentTimeManager == null) {
-        jdField_a_of_type_ComTencentMobileqqActivityRecentTimeManager = new TimeManager();
+    if (jdField_a_of_type_ComTencentMobileqqActivityRecentTimeManager == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqActivityRecentTimeManager == null) {
+          jdField_a_of_type_ComTencentMobileqqActivityRecentTimeManager = new TimeManager();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqActivityRecentTimeManager;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqActivityRecentTimeManager;
   }
   
   private boolean a()
@@ -69,8 +68,11 @@ public class TimeManager
     if (System.currentTimeMillis() >= this.jdField_a_of_type_Long)
     {
       d();
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-      return false;
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        this.jdField_a_of_type_JavaUtilHashMap.clear();
+        return false;
+      }
     }
     return true;
   }
@@ -90,39 +92,57 @@ public class TimeManager
     return this.jdField_a_of_type_JavaLangString;
   }
   
-  public String a(String arg1, long paramLong)
+  public String a(String paramString, long paramLong)
   {
-    HashMap localHashMap = (HashMap)this.jdField_a_of_type_JavaUtilHashMap.get(???);
-    if ((localHashMap == null) || (!a()))
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      localHashMap = new HashMap();
-      this.jdField_a_of_type_JavaUtilHashMap.put(???, localHashMap);
-      ??? = null;
-    }
-    for (;;)
-    {
-      String str = ???;
-      if (??? == null) {}
-      synchronized (this.jdField_a_of_type_JavaLangStringBuffer)
+      Object localObject2 = (HashMap)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      Object localObject3;
+      if ((localObject2 != null) && (a()))
       {
-        str = TimeFormatterUtilsProxy.a(this.jdField_a_of_type_JavaLangStringBuffer, 1000L * paramLong, true, this.jdField_a_of_type_JavaLangString);
-        if (QLog.isDevelopLevel()) {
-          QLog.i("Q.recent", 4, "getMsgDisplayTime, " + this.jdField_a_of_type_JavaLangStringBuffer.toString() + "," + str);
-        }
-        localHashMap.put(String.valueOf(paramLong), str);
-        return str;
-        ??? = (String)localHashMap.get(String.valueOf(paramLong));
-        if (??? == null) {
-          localHashMap.clear();
+        localObject3 = (String)((HashMap)localObject2).get(String.valueOf(paramLong));
+        paramString = (String)localObject2;
+        ??? = localObject3;
+        if (localObject3 == null)
+        {
+          ((HashMap)localObject2).clear();
+          paramString = (String)localObject2;
+          ??? = localObject3;
         }
       }
+      else
+      {
+        localObject2 = new HashMap();
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localObject2);
+        ??? = null;
+        paramString = (String)localObject2;
+      }
+      if (??? == null) {
+        synchronized (this.jdField_a_of_type_JavaLangStringBuffer)
+        {
+          localObject2 = TimeFormatterUtilsProxy.a(this.jdField_a_of_type_JavaLangStringBuffer, 1000L * paramLong, true, this.jdField_a_of_type_JavaLangString);
+          if (QLog.isDevelopLevel())
+          {
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("getMsgDisplayTime, ");
+            ((StringBuilder)localObject3).append(this.jdField_a_of_type_JavaLangStringBuffer.toString());
+            ((StringBuilder)localObject3).append(",");
+            ((StringBuilder)localObject3).append((String)localObject2);
+            QLog.i("Q.recent", 4, ((StringBuilder)localObject3).toString());
+          }
+          paramString.put(String.valueOf(paramLong), localObject2);
+          return localObject2;
+        }
+      }
+      return ???;
     }
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer.g();
+    CountDownTimer localCountDownTimer = this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer;
+    if (localCountDownTimer != null) {
+      localCountDownTimer.g();
     }
   }
   
@@ -131,18 +151,24 @@ public class TimeManager
     this.b.put(paramString, Boolean.valueOf(paramBoolean));
   }
   
-  public boolean a(String paramString)
+  public boolean a(String arg1)
   {
-    boolean bool = false;
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString)) {
-      if (TextUtils.isEmpty(paramString)) {
-        break label43;
-      }
-    }
-    label43:
-    for (this.jdField_a_of_type_JavaLangString = paramString;; this.jdField_a_of_type_JavaLangString = "yyyy-MM-dd")
+    boolean bool;
+    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, ???))
     {
+      if (!TextUtils.isEmpty(???)) {
+        this.jdField_a_of_type_JavaLangString = ???;
+      } else {
+        this.jdField_a_of_type_JavaLangString = "yyyy-MM-dd";
+      }
       bool = true;
+    }
+    else
+    {
+      bool = false;
+    }
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
       if (this.jdField_a_of_type_JavaUtilHashMap != null) {
         this.jdField_a_of_type_JavaUtilHashMap.clear();
       }
@@ -152,8 +178,9 @@ public class TimeManager
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer.d();
+    CountDownTimer localCountDownTimer = this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer;
+    if (localCountDownTimer != null) {
+      localCountDownTimer.d();
     }
   }
   
@@ -164,14 +191,15 @@ public class TimeManager
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer.e();
+    CountDownTimer localCountDownTimer = this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer;
+    if (localCountDownTimer != null) {
+      localCountDownTimer.e();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.TimeManager
  * JD-Core Version:    0.7.0.1
  */

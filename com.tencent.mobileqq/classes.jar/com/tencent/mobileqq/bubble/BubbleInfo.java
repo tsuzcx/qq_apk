@@ -28,7 +28,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class BubbleInfo
 {
-  public static int g = 0;
+  public static int g;
   public double a;
   public int a;
   public NinePatch a;
@@ -121,87 +121,88 @@ public class BubbleInfo
     this.jdField_e_of_type_Int = paramInt5;
     this.jdField_f_of_type_Int = paramInt6;
     this.jdField_b_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    paramString1 = paramList;
     if (paramList == null) {
-      paramString1 = new ArrayList();
+      paramList = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilList = paramString1;
+    this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs = paramCommonAttrs1;
     this.jdField_b_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs = paramCommonAttrs2;
-    paramString1 = paramHashMap;
     if (paramHashMap == null) {
-      paramString1 = new HashMap();
+      paramHashMap = new HashMap();
     }
-    this.jdField_b_of_type_JavaUtilHashMap = paramString1;
+    this.jdField_b_of_type_JavaUtilHashMap = paramHashMap;
   }
   
   private Drawable a(Context paramContext, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2, int paramInt3)
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append("bubbleinfo_").append(paramInt1).append("_bg_").append(paramBoolean1).append("_").append(paramBoolean2);
+    localStringBuffer.append("bubbleinfo_");
+    localStringBuffer.append(paramInt1);
+    localStringBuffer.append("_bg_");
+    localStringBuffer.append(paramBoolean1);
+    localStringBuffer.append("_");
+    localStringBuffer.append(paramBoolean2);
     Object localObject = (Pair)GlobalImageCache.a.get(localStringBuffer.toString());
     if ((localObject != null) && (((Pair)localObject).first != null)) {
-      paramContext = ((Drawable.ConstantState)((Pair)localObject).first).newDrawable(paramContext.getResources());
+      return ((Drawable.ConstantState)((Pair)localObject).first).newDrawable(paramContext.getResources());
     }
-    do
+    localObject = paramContext.getResources().getDrawable(paramInt2);
+    paramContext = paramContext.getResources().getDrawable(paramInt3);
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    if (localObject != null) {
+      localStateListDrawable.addState(new int[] { 16842919, 16842910 }, (Drawable)localObject);
+    }
+    if (paramContext != null)
     {
-      return paramContext;
-      Drawable localDrawable = paramContext.getResources().getDrawable(paramInt2);
-      paramContext = paramContext.getResources().getDrawable(paramInt3);
-      localObject = new StateListDrawable();
-      if (localDrawable != null) {
-        ((StateListDrawable)localObject).addState(new int[] { 16842919, 16842910 }, localDrawable);
-      }
-      if (paramContext != null)
-      {
-        ((StateListDrawable)localObject).addState(new int[] { 16842910 }, paramContext);
-        ((StateListDrawable)localObject).addState(new int[] { -16842910 }, paramContext);
-      }
-      paramInt1 = SkinUtils.a(localDrawable) + SkinUtils.a(paramContext);
-      paramContext = (Context)localObject;
-    } while (paramInt1 <= 0);
-    GlobalImageCache.a.put(localStringBuffer.toString(), new Pair(((StateListDrawable)localObject).getConstantState(), Integer.valueOf(paramInt1)));
-    return localObject;
+      localStateListDrawable.addState(new int[] { 16842910 }, paramContext);
+      localStateListDrawable.addState(new int[] { -16842910 }, paramContext);
+    }
+    paramInt1 = SkinUtils.a((Drawable)localObject) + SkinUtils.a(paramContext);
+    if (paramInt1 > 0) {
+      GlobalImageCache.a.put(localStringBuffer.toString(), new Pair(localStateListDrawable.getConstantState(), Integer.valueOf(paramInt1)));
+    }
+    return localStateListDrawable;
   }
   
   @NotNull
   private Drawable a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    Object localObject = paramQQAppInterface.getApp().getResources();
+    Object localObject1 = paramQQAppInterface.getApp().getResources();
     int j;
-    if (paramBoolean)
-    {
-      j = 2130850409;
-      paramQQAppInterface = ((Resources)localObject).getDrawable(j);
-      if (!paramBoolean) {
-        break label154;
-      }
-      j = 2130850408;
-      label30:
-      Drawable localDrawable = ((Resources)localObject).getDrawable(j);
-      localObject = new StateListDrawable();
-      ((StateListDrawable)localObject).addState(new int[] { 16842919 }, paramQQAppInterface);
-      ((StateListDrawable)localObject).addState(new int[] { 16842910 }, localDrawable);
-      if (GlobalImageCache.a != null) {
-        if (!paramBoolean) {
-          break label160;
-        }
-      }
+    if (paramBoolean) {
+      j = 2130850336;
+    } else {
+      j = 2130850160;
     }
-    label154:
-    label160:
-    for (paramQQAppInterface = "bubblebg://default_mine";; paramQQAppInterface = "bubblebg://default_friend")
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BubbleInfo", 2, "getBubbleDrawable, put default bubble to imageCache, key=" + paramQQAppInterface + ", bubbleId=" + this.jdField_a_of_type_Int);
-      }
-      GlobalImageCache.a.put(paramQQAppInterface, ((StateListDrawable)localObject).getConstantState());
-      return localObject;
-      j = 2130850233;
-      break;
-      j = 2130850232;
-      break label30;
+    paramQQAppInterface = ((Resources)localObject1).getDrawable(j);
+    if (paramBoolean) {
+      j = 2130850335;
+    } else {
+      j = 2130850159;
     }
+    Object localObject2 = ((Resources)localObject1).getDrawable(j);
+    localObject1 = new StateListDrawable();
+    ((StateListDrawable)localObject1).addState(new int[] { 16842919 }, paramQQAppInterface);
+    ((StateListDrawable)localObject1).addState(new int[] { 16842910 }, (Drawable)localObject2);
+    if (GlobalImageCache.a != null)
+    {
+      if (paramBoolean) {
+        paramQQAppInterface = "bubblebg://default_mine";
+      } else {
+        paramQQAppInterface = "bubblebg://default_friend";
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("getBubbleDrawable, put default bubble to imageCache, key=");
+        ((StringBuilder)localObject2).append(paramQQAppInterface);
+        ((StringBuilder)localObject2).append(", bubbleId=");
+        ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+        QLog.d("BubbleInfo", 2, ((StringBuilder)localObject2).toString());
+      }
+      GlobalImageCache.a.put(paramQQAppInterface, ((StateListDrawable)localObject1).getConstantState());
+    }
+    return localObject1;
   }
   
   @Nullable
@@ -210,145 +211,265 @@ public class BubbleInfo
     if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)))
     {
       paramQQAppInterface = new VipBubbleDrawable(paramQQAppInterface.getApp().getResources(), this.jdField_a_of_type_AndroidGraphicsNinePatch, this.jdField_b_of_type_AndroidGraphicsNinePatch, this.jdField_a_of_type_Int);
-      if (!paramBoolean1)
+      paramQQAppInterface.a(paramBoolean1 ^ true, paramBoolean2);
+      if (QLog.isColorLevel())
       {
-        paramBoolean1 = true;
-        paramQQAppInterface.a(paramBoolean1, paramBoolean2);
-        if (QLog.isColorLevel()) {
-          QLog.d("BubbleInfo", 2, "getBubbleDrawable, bubbleId=" + this.jdField_a_of_type_Int + ", vipBubbleDrawable=" + paramQQAppInterface);
+        paramDrawable = new StringBuilder();
+        paramDrawable.append("getBubbleDrawable, bubbleId=");
+        paramDrawable.append(this.jdField_a_of_type_Int);
+        paramDrawable.append(", vipBubbleDrawable=");
+        paramDrawable.append(paramQQAppInterface);
+        QLog.d("BubbleInfo", 2, paramDrawable.toString());
+      }
+      paramDrawable = paramQQAppInterface;
+      if (!BubbleManager.jdField_a_of_type_Boolean)
+      {
+        paramDrawable = paramQQAppInterface;
+        if (this.jdField_a_of_type_Int != 0)
+        {
+          BubbleManager.jdField_a_of_type_Boolean = true;
+          return paramQQAppInterface;
+        }
+      }
+    }
+    else
+    {
+      int j = this.jdField_a_of_type_Int;
+      if ((j == 100000) || (j == 100001))
+      {
+        if (paramBoolean1) {
+          paramQQAppInterface = null;
+        } else {
+          paramQQAppInterface = a(paramQQAppInterface.getApp(), this.jdField_a_of_type_Int, paramBoolean1, paramBoolean2, this.h, this.i);
         }
         paramDrawable = paramQQAppInterface;
-        if (!BubbleManager.jdField_a_of_type_Boolean)
-        {
-          paramDrawable = paramQQAppInterface;
-          if (this.jdField_a_of_type_Int != 0)
-          {
-            BubbleManager.jdField_a_of_type_Boolean = true;
-            paramDrawable = paramQQAppInterface;
-          }
-        }
       }
     }
-    while ((this.jdField_a_of_type_Int != 100000) && (this.jdField_a_of_type_Int != 100001)) {
-      for (;;)
-      {
-        return paramDrawable;
-        paramBoolean1 = false;
-      }
+    return paramDrawable;
+  }
+  
+  @NotNull
+  private Drawable a(QQAppInterface paramQQAppInterface, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, Drawable paramDrawable)
+  {
+    Drawable localDrawable = paramDrawable;
+    if (paramBoolean2) {
+      localDrawable = a(paramQQAppInterface, paramBoolean1, paramBoolean3, paramDrawable);
     }
-    if (paramBoolean1) {}
-    for (paramQQAppInterface = null;; paramQQAppInterface = a(paramQQAppInterface.getApp(), this.jdField_a_of_type_Int, paramBoolean1, paramBoolean2, this.h, this.i)) {
-      return paramQQAppInterface;
+    paramDrawable = localDrawable;
+    if (localDrawable == null) {
+      paramDrawable = a(paramBoolean1, localDrawable);
     }
+    localDrawable = paramDrawable;
+    if (paramDrawable == null) {
+      localDrawable = a(paramQQAppInterface, paramBoolean1);
+    }
+    return localDrawable;
   }
   
   private Drawable a(boolean paramBoolean, Drawable paramDrawable)
   {
-    if (paramBoolean) {}
-    for (String str = "bubblebg://default_mine";; str = "bubblebg://default_friend")
-    {
-      Drawable localDrawable = paramDrawable;
-      if (GlobalImageCache.a != null)
-      {
-        Drawable.ConstantState localConstantState = (Drawable.ConstantState)GlobalImageCache.a.get(str);
-        localDrawable = paramDrawable;
-        if (localConstantState != null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("BubbleInfo", 2, "getBubbleDrawable, get Default from imageCache, key=" + str + ", bubbleId=" + this.jdField_a_of_type_Int);
-          }
-          localDrawable = localConstantState.newDrawable();
-        }
-      }
-      return localDrawable;
+    String str;
+    if (paramBoolean) {
+      str = "bubblebg://default_mine";
+    } else {
+      str = "bubblebg://default_friend";
     }
+    Drawable localDrawable = paramDrawable;
+    if (GlobalImageCache.a != null)
+    {
+      Drawable.ConstantState localConstantState = (Drawable.ConstantState)GlobalImageCache.a.get(str);
+      localDrawable = paramDrawable;
+      if (localConstantState != null)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramDrawable = new StringBuilder();
+          paramDrawable.append("getBubbleDrawable, get Default from imageCache, key=");
+          paramDrawable.append(str);
+          paramDrawable.append(", bubbleId=");
+          paramDrawable.append(this.jdField_a_of_type_Int);
+          QLog.d("BubbleInfo", 2, paramDrawable.toString());
+        }
+        localDrawable = localConstantState.newDrawable();
+      }
+    }
+    return localDrawable;
   }
   
   private Pair<BubbleInfo.CommonAttrs, BubbleInfo.CommonAttrs> a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
+    boolean bool = TextUtils.isEmpty(paramString);
+    Object localObject2 = null;
+    if (bool) {
       return null;
     }
-    Pair localPair;
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    Object localObject3 = this.jdField_a_of_type_JavaUtilList;
+    Object localObject1 = localObject2;
+    if (localObject3 != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      localObject3 = ((List)localObject3).iterator();
       do
       {
-        if (!localIterator.hasNext()) {
+        localObject1 = localObject2;
+        if (!((Iterator)localObject3).hasNext()) {
           break;
         }
-        localPair = (Pair)localIterator.next();
-      } while (!paramString.equals(((BubbleInfo.CommonAttrs)localPair.first).jdField_b_of_type_JavaLangString));
+        localObject1 = (Pair)((Iterator)localObject3).next();
+      } while (!paramString.equals(((BubbleInfo.CommonAttrs)((Pair)localObject1).first).jdField_b_of_type_JavaLangString));
     }
-    for (paramString = localPair;; paramString = null) {
-      return paramString;
+    return localObject1;
+  }
+  
+  private String a(int paramInt, String paramString, BubbleConfig paramBubbleConfig)
+  {
+    if (paramInt != 0)
+    {
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt != 6)
+            {
+              if (paramInt != 7) {
+                return paramString;
+              }
+              return a(paramString, paramBubbleConfig);
+            }
+            return b(paramString, paramBubbleConfig);
+          }
+          return a(paramBubbleConfig);
+        }
+        return c(paramString, paramBubbleConfig);
+      }
+      return b(paramString);
     }
+    return d(paramString, paramBubbleConfig);
+  }
+  
+  private String a(BubbleConfig paramBubbleConfig)
+  {
+    if (paramBubbleConfig.c != null) {
+      return paramBubbleConfig.c.jdField_b_of_type_JavaLangString;
+    }
+    return "width";
+  }
+  
+  private String a(String paramString, BubbleConfig paramBubbleConfig)
+  {
+    if (paramBubbleConfig.e != null) {
+      paramString = paramBubbleConfig.e.jdField_b_of_type_JavaLangString;
+    }
+    return paramString;
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, int paramInt, Drawable paramDrawable)
+  {
+    if (((paramDrawable instanceof VipBubbleDrawable)) && (paramBoolean2) && (!paramBoolean3) && (paramInt > 0))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramInt);
+      paramString = localStringBuilder.toString();
+      ((VipBubbleDrawable)paramDrawable).a(paramQQAppInterface, paramString, paramBoolean1 ^ true);
+    }
+  }
+  
+  private String b(String paramString)
+  {
+    Object localObject = this.jdField_b_of_type_JavaUtilHashMap;
+    String str = paramString;
+    if (localObject != null)
+    {
+      str = paramString;
+      if (((HashMap)localObject).size() > 0)
+      {
+        localObject = this.jdField_f_of_type_JavaLangString;
+        str = paramString;
+        if (localObject != null) {
+          str = (String)this.jdField_b_of_type_JavaUtilHashMap.get(localObject);
+        }
+      }
+    }
+    return str;
+  }
+  
+  private String b(String paramString, BubbleConfig paramBubbleConfig)
+  {
+    if (paramBubbleConfig.d != null) {
+      paramString = paramBubbleConfig.d.jdField_b_of_type_JavaLangString;
+    }
+    return paramString;
+  }
+  
+  private String c(String paramString, BubbleConfig paramBubbleConfig)
+  {
+    if (paramBubbleConfig.b != null) {
+      paramString = paramBubbleConfig.b.jdField_b_of_type_JavaLangString;
+    }
+    return paramString;
+  }
+  
+  private String d(String paramString, BubbleConfig paramBubbleConfig)
+  {
+    if (paramBubbleConfig.a != null) {
+      paramString = paramBubbleConfig.a.jdField_b_of_type_JavaLangString;
+    }
+    return paramString;
   }
   
   public Drawable a(QQAppInterface paramQQAppInterface, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, View paramView, String paramString, int paramInt)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("BubbleInfo", 2, "getBubbleDrawable, bubbleId=" + this.jdField_a_of_type_Int + ", isUser=" + paramBoolean1 + ", needVipBubble=" + paramBoolean2 + ", useAnimationBg=" + paramBoolean3 + ", senderUin=" + paramString);
-    }
-    if (paramBoolean2) {}
-    for (Object localObject2 = a(paramQQAppInterface, paramBoolean1, paramBoolean3, null);; localObject2 = null)
+    if (QLog.isColorLevel())
     {
-      Object localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = a(paramBoolean1, (Drawable)localObject2);
-      }
-      localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = a(paramQQAppInterface, paramBoolean1);
-      }
-      int k;
-      if (((localObject2 instanceof VipBubbleDrawable)) && (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)))
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getBubbleDrawable, bubbleId=");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(", isUser=");
+      ((StringBuilder)localObject).append(paramBoolean1);
+      ((StringBuilder)localObject).append(", needVipBubble=");
+      ((StringBuilder)localObject).append(paramBoolean2);
+      ((StringBuilder)localObject).append(", useAnimationBg=");
+      ((StringBuilder)localObject).append(paramBoolean3);
+      ((StringBuilder)localObject).append(", senderUin=");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("BubbleInfo", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = a(paramQQAppInterface, paramBoolean1, paramBoolean2, paramBoolean3, null);
+    boolean bool = localObject instanceof VipBubbleDrawable;
+    if ((bool) && (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString))) {
+      if ((this.jdField_a_of_type_ComTencentMobileqqBubbleDiyBubbleConfig$DiyBubblePasterConfig != null) && (paramView != null))
       {
-        if ((this.jdField_a_of_type_ComTencentMobileqqBubbleDiyBubbleConfig$DiyBubblePasterConfig == null) || (paramView == null)) {
-          break label375;
-        }
-        k = paramView.getWidth();
-        if (this.jdField_a_of_type_ComTencentMobileqqBubbleDiyBubbleConfig$DiyBubblePasterConfig.jdField_c_of_type_Int == 0) {
-          ((VipBubbleDrawable)localObject2).a(true, this.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqBubbleDiyBubbleConfig$DiyBubblePasterConfig.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_ComTencentMobileqqBubbleDiyBubbleConfig$DiyBubblePasterConfig.jdField_a_of_type_JavaLangString);
-        }
-      }
-      else if (((localObject2 instanceof VipBubbleDrawable)) && (paramBoolean2) && (!paramBoolean3) && (paramInt > 0))
-      {
-        paramString = paramString + "_" + paramInt;
-        localObject1 = (VipBubbleDrawable)localObject2;
-        if (paramBoolean1) {
-          break label398;
-        }
-      }
-      label398:
-      for (paramBoolean1 = bool;; paramBoolean1 = false)
-      {
-        ((VipBubbleDrawable)localObject1).a(paramQQAppInterface, paramString, paramBoolean1);
-        a(paramView, (Drawable)localObject2);
-        return localObject2;
-        int j = k;
-        if (k == 0)
+        int k = paramView.getWidth();
+        if (this.jdField_a_of_type_ComTencentMobileqqBubbleDiyBubbleConfig$DiyBubblePasterConfig.jdField_c_of_type_Int == 0)
         {
-          paramView.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
-          j = paramView.getMeasuredWidth();
+          ((VipBubbleDrawable)localObject).a(true, this.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqBubbleDiyBubbleConfig$DiyBubblePasterConfig.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_ComTencentMobileqqBubbleDiyBubbleConfig$DiyBubblePasterConfig.jdField_a_of_type_JavaLangString);
         }
-        if (j > this.jdField_a_of_type_ComTencentMobileqqBubbleDiyBubbleConfig$DiyBubblePasterConfig.jdField_c_of_type_Int)
+        else
         {
-          ((VipBubbleDrawable)localObject2).a(true, this.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqBubbleDiyBubbleConfig$DiyBubblePasterConfig.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_ComTencentMobileqqBubbleDiyBubbleConfig$DiyBubblePasterConfig.jdField_a_of_type_JavaLangString);
-          break;
+          int j = k;
+          if (k == 0)
+          {
+            paramView.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
+            j = paramView.getMeasuredWidth();
+          }
+          if (j > this.jdField_a_of_type_ComTencentMobileqqBubbleDiyBubbleConfig$DiyBubblePasterConfig.jdField_c_of_type_Int) {
+            ((VipBubbleDrawable)localObject).a(true, this.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqBubbleDiyBubbleConfig$DiyBubblePasterConfig.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_ComTencentMobileqqBubbleDiyBubbleConfig$DiyBubblePasterConfig.jdField_a_of_type_JavaLangString);
+          } else {
+            ((VipBubbleDrawable)localObject).a(false, null, null, null);
+          }
         }
-        ((VipBubbleDrawable)localObject2).a(false, null, null, null);
-        break;
-        label375:
-        if (!(localObject2 instanceof VipBubbleDrawable)) {
-          break;
-        }
-        ((VipBubbleDrawable)localObject2).a(false, null, null, null);
-        break;
+      }
+      else if (bool)
+      {
+        ((VipBubbleDrawable)localObject).a(false, null, null, null);
       }
     }
+    a(paramQQAppInterface, paramBoolean1, paramBoolean2, paramBoolean3, paramString, paramInt, (Drawable)localObject);
+    a(paramView, (Drawable)localObject);
+    return localObject;
   }
   
   public Drawable a(QQAppInterface paramQQAppInterface, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, View paramView, boolean paramBoolean4)
@@ -364,81 +485,48 @@ public class BubbleInfo
   
   public Pair<BubbleInfo.CommonAttrs, BubbleInfo.CommonAttrs> a(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    Object localObject3 = null;
-    Object localObject1;
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface = (BubbleManager)paramQQAppInterface.getManager(QQManagerFactory.CHAT_BUBBLE_MANAGER);
+    } else {
+      paramQQAppInterface = null;
+    }
     if (paramQQAppInterface != null)
     {
-      localObject1 = (BubbleManager)paramQQAppInterface.getManager(QQManagerFactory.CHAT_BUBBLE_MANAGER);
-      localObject2 = localObject3;
-      if (localObject1 != null)
-      {
-        localObject2 = ((BubbleManager)localObject1).a(this.jdField_a_of_type_Int, true);
-        if (localObject2 != null) {
-          break label54;
-        }
-        localObject2 = localObject3;
+      Object localObject = paramQQAppInterface.a(this.jdField_a_of_type_Int, true);
+      if (localObject == null) {
+        return null;
       }
-    }
-    label54:
-    label102:
-    do
-    {
-      do
+      String str = a(paramInt, null, (BubbleConfig)localObject);
+      if (!TextUtils.isEmpty(str))
       {
-        return localObject2;
-        localObject1 = null;
-        break;
-        switch (paramInt)
+        localObject = a(str);
+        localObject = paramQQAppInterface.a(this.jdField_a_of_type_Int, str, (Pair)localObject);
+        if (QLog.isDevelopLevel())
         {
-        case 4: 
-        case 5: 
-        default: 
-          paramQQAppInterface = null;
-          localObject2 = localObject3;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getAttrs|key=");
+          localStringBuilder.append(str);
+          localStringBuilder.append(", animAttrs=");
+          if (localObject == null)
+          {
+            paramQQAppInterface = "null";
+          }
+          else
+          {
+            paramQQAppInterface = new StringBuilder();
+            paramQQAppInterface.append("first:");
+            paramQQAppInterface.append(((Pair)localObject).first);
+            paramQQAppInterface.append(",second:");
+            paramQQAppInterface.append(((Pair)localObject).second);
+            paramQQAppInterface = paramQQAppInterface.toString();
+          }
+          localStringBuilder.append(paramQQAppInterface);
+          QLog.w("BubbleInfo", 4, localStringBuilder.toString());
         }
-      } while (TextUtils.isEmpty(paramQQAppInterface));
-      localObject2 = a(paramQQAppInterface);
-      localObject1 = ((BubbleManager)localObject1).a(this.jdField_a_of_type_Int, paramQQAppInterface, (Pair)localObject2);
-      localObject2 = localObject1;
-    } while (!QLog.isDevelopLevel());
-    Object localObject2 = new StringBuilder().append("getAttrs|key=").append(paramQQAppInterface).append(", animAttrs=");
-    if (localObject1 == null) {}
-    for (paramQQAppInterface = "null";; paramQQAppInterface = "first:" + ((Pair)localObject1).first + ",second:" + ((Pair)localObject1).second)
-    {
-      QLog.w("BubbleInfo", 4, paramQQAppInterface);
-      return localObject1;
-      if (((BubbleConfig)localObject2).a == null) {
-        break;
+        return localObject;
       }
-      paramQQAppInterface = ((BubbleConfig)localObject2).a.jdField_b_of_type_JavaLangString;
-      break label102;
-      if (((BubbleConfig)localObject2).b == null) {
-        break;
-      }
-      paramQQAppInterface = ((BubbleConfig)localObject2).b.jdField_b_of_type_JavaLangString;
-      break label102;
-      paramQQAppInterface = "width";
-      if (((BubbleConfig)localObject2).c == null) {
-        break label102;
-      }
-      paramQQAppInterface = ((BubbleConfig)localObject2).c.jdField_b_of_type_JavaLangString;
-      break label102;
-      if ((this.jdField_b_of_type_JavaUtilHashMap == null) || (this.jdField_b_of_type_JavaUtilHashMap.size() <= 0) || (this.jdField_f_of_type_JavaLangString == null)) {
-        break;
-      }
-      paramQQAppInterface = (String)this.jdField_b_of_type_JavaUtilHashMap.get(this.jdField_f_of_type_JavaLangString);
-      break label102;
-      if (((BubbleConfig)localObject2).d == null) {
-        break;
-      }
-      paramQQAppInterface = ((BubbleConfig)localObject2).d.jdField_b_of_type_JavaLangString;
-      break label102;
-      if (((BubbleConfig)localObject2).e == null) {
-        break;
-      }
-      paramQQAppInterface = ((BubbleConfig)localObject2).e.jdField_b_of_type_JavaLangString;
-      break label102;
     }
+    return null;
   }
   
   public String a(String paramString)
@@ -467,33 +555,34 @@ public class BubbleInfo
     synchronized (this.jdField_b_of_type_JavaUtilList)
     {
       this.jdField_b_of_type_JavaUtilList.clear();
-    }
-    synchronized (this.jdField_c_of_type_JavaUtilList)
-    {
-      this.jdField_c_of_type_JavaUtilList.clear();
-      return;
-      localObject1 = finally;
-      throw localObject1;
+      synchronized (this.jdField_c_of_type_JavaUtilList)
+      {
+        this.jdField_c_of_type_JavaUtilList.clear();
+        return;
+      }
     }
   }
   
   public void a(View paramView, Drawable paramDrawable)
   {
-    if ((paramDrawable == null) || (paramView == null)) {
-      return;
+    if (paramDrawable != null)
+    {
+      if (paramView == null) {
+        return;
+      }
+      Rect localRect = new Rect();
+      paramDrawable.getPadding(localRect);
+      int j = paramView.getPaddingTop();
+      int k = localRect.top;
+      int m = paramView.getPaddingLeft();
+      int n = localRect.left;
+      int i1 = paramView.getPaddingRight();
+      int i2 = localRect.right;
+      int i3 = paramView.getPaddingBottom();
+      int i4 = localRect.bottom;
+      paramView.setBackgroundDrawable(paramDrawable);
+      paramView.setPadding(m + n, j + k, i1 + i2, i3 + i4);
     }
-    Rect localRect = new Rect();
-    paramDrawable.getPadding(localRect);
-    int j = paramView.getPaddingTop();
-    int k = localRect.top;
-    int m = paramView.getPaddingLeft();
-    int n = localRect.left;
-    int i1 = paramView.getPaddingRight();
-    int i2 = localRect.right;
-    int i3 = paramView.getPaddingBottom();
-    int i4 = localRect.bottom;
-    paramView.setBackgroundDrawable(paramDrawable);
-    paramView.setPadding(m + n, j + k, i1 + i2, i4 + i3);
   }
   
   public void a(View arg1, View paramView2)
@@ -501,13 +590,11 @@ public class BubbleInfo
     synchronized (this.jdField_b_of_type_JavaUtilList)
     {
       this.jdField_b_of_type_JavaUtilList.remove(???);
-    }
-    synchronized (this.jdField_c_of_type_JavaUtilList)
-    {
-      this.jdField_c_of_type_JavaUtilList.remove(paramView2);
-      return;
-      ??? = finally;
-      throw ???;
+      synchronized (this.jdField_c_of_type_JavaUtilList)
+      {
+        this.jdField_c_of_type_JavaUtilList.remove(paramView2);
+        return;
+      }
     }
   }
   
@@ -518,17 +605,55 @@ public class BubbleInfo
   
   public boolean a(int paramInt)
   {
-    return (this.jdField_e_of_type_Int > 0) && (this.jdField_f_of_type_Int > this.jdField_e_of_type_Int) && (paramInt >= this.jdField_e_of_type_Int) && (paramInt <= this.jdField_f_of_type_Int);
+    int j = this.jdField_e_of_type_Int;
+    if (j > 0)
+    {
+      int k = this.jdField_f_of_type_Int;
+      if ((k > j) && (paramInt >= j) && (paramInt <= k)) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public String toString()
   {
-    return "BubbleInfo [bubbleId=" + this.jdField_a_of_type_Int + ",aioUserBgNorResPath=" + this.jdField_a_of_type_JavaLangString + ",aioUserPicNorResPath=" + this.jdField_b_of_type_JavaLangString + ",bubbleThumbnailResPath=" + this.jdField_d_of_type_JavaLangString + ",bubbleChartletResPath=" + this.jdField_e_of_type_JavaLangString + ", mTextColor=" + this.jdField_b_of_type_Int + ", mKeyWords=" + Arrays.toString(this.jdField_b_of_type_ArrayOfJavaLangString) + ", currKeyWord=" + this.jdField_f_of_type_JavaLangString + ", mBubbleHeightBegin=" + this.jdField_e_of_type_Int + ", mBubbleHeightEnd=" + this.jdField_f_of_type_Int + ", pttAttrs=" + this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs + ", heightAttrs=" + this.jdField_b_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs + ", keywordAttrs=" + this.jdField_a_of_type_JavaUtilList + ", keyWorsAnimMap=" + this.jdField_b_of_type_JavaUtilHashMap + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BubbleInfo [bubbleId=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",aioUserBgNorResPath=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",aioUserPicNorResPath=");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(",bubbleThumbnailResPath=");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(",bubbleChartletResPath=");
+    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append(", mTextColor=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", mKeyWords=");
+    localStringBuilder.append(Arrays.toString(this.jdField_b_of_type_ArrayOfJavaLangString));
+    localStringBuilder.append(", currKeyWord=");
+    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
+    localStringBuilder.append(", mBubbleHeightBegin=");
+    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append(", mBubbleHeightEnd=");
+    localStringBuilder.append(this.jdField_f_of_type_Int);
+    localStringBuilder.append(", pttAttrs=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs);
+    localStringBuilder.append(", heightAttrs=");
+    localStringBuilder.append(this.jdField_b_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs);
+    localStringBuilder.append(", keywordAttrs=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(", keyWorsAnimMap=");
+    localStringBuilder.append(this.jdField_b_of_type_JavaUtilHashMap);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ public abstract interface AudienceRoomController$RoomCtrlCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.pagelogic.controller.AudienceRoomController.RoomCtrlCallback
  * JD-Core Version:    0.7.0.1
  */

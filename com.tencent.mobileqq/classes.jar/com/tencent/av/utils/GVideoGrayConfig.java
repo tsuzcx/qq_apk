@@ -8,9 +8,9 @@ import android.os.SystemClock;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.AboutActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.GVideoHandler;
+import com.tencent.mobileqq.app.GVideoObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopBusinessObserver;
-import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
@@ -24,7 +24,7 @@ public class GVideoGrayConfig
   public int a;
   private long jdField_a_of_type_Long;
   private GVideoGrayConfig.GVideoPreDownloadListener jdField_a_of_type_ComTencentAvUtilsGVideoGrayConfig$GVideoPreDownloadListener;
-  private TroopBusinessObserver jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver = new GVideoGrayConfig.1(this);
+  private GVideoObserver jdField_a_of_type_ComTencentMobileqqAppGVideoObserver = new GVideoGrayConfig.1(this);
   private LongSparseArray<GVideoGrayConfig.GVideoGrayConfigListener> jdField_a_of_type_ComTencentUtilLongSparseArray = new LongSparseArray();
   private Map<String, GVideoGrayConfig.Record> jdField_a_of_type_JavaUtilMap = new HashMap();
   
@@ -40,7 +40,7 @@ public class GVideoGrayConfig
   
   public static void a(Context paramContext, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
   {
-    DialogUtil.a(paramContext, 230, paramString1, paramString2, 2131695600, 2131695602, new GVideoGrayConfig.2(paramContext), paramOnClickListener).show();
+    DialogUtil.a(paramContext, 230, paramString1, paramString2, 2131695611, 2131695613, new GVideoGrayConfig.2(paramContext), paramOnClickListener).show();
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, Intent paramIntent, int paramInt)
@@ -70,38 +70,39 @@ public class GVideoGrayConfig
   public void a(AppInterface paramAppInterface, String paramString, GVideoGrayConfig.GVideoGrayConfigListener paramGVideoGrayConfigListener)
   {
     Object localObject = (GVideoGrayConfig.Record)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if ((localObject != null) && (SystemClock.elapsedRealtime() - ((GVideoGrayConfig.Record)localObject).jdField_a_of_type_Long < 60000L)) {
-      paramGVideoGrayConfigListener.a(((GVideoGrayConfig.Record)localObject).jdField_a_of_type_Int, (GVideoGrayConfig.Record)localObject, 1000);
-    }
-    do
+    if ((localObject != null) && (SystemClock.elapsedRealtime() - ((GVideoGrayConfig.Record)localObject).jdField_a_of_type_Long < 60000L))
     {
+      paramGVideoGrayConfigListener.a(((GVideoGrayConfig.Record)localObject).jdField_a_of_type_Int, (GVideoGrayConfig.Record)localObject, 1000);
       return;
-      localObject = (TroopHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
-      if (localObject != null)
-      {
-        paramAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver);
-        long l = ((TroopHandler)localObject).a(TroopMemberUtil.b(paramAppInterface, paramAppInterface.getCurrentAccountUin(), paramString), Long.parseLong(paramString));
-        this.jdField_a_of_type_ComTencentUtilLongSparseArray.a(l, paramGVideoGrayConfigListener);
-        return;
-      }
-      paramGVideoGrayConfigListener.a(-1, null, -1);
-    } while (!QLog.isColorLevel());
-    QLog.e("GroupVideoManager.GVideoGrayConfig", 2, "requestGVideoGrayConfig troopHandler is null!!");
+    }
+    localObject = (GVideoHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.GVIDEO_HANDLER);
+    if (localObject != null)
+    {
+      paramAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppGVideoObserver);
+      long l = ((GVideoHandler)localObject).a(TroopMemberUtil.b(paramAppInterface, paramAppInterface.getCurrentAccountUin(), paramString), Long.parseLong(paramString));
+      this.jdField_a_of_type_ComTencentUtilLongSparseArray.a(l, paramGVideoGrayConfigListener);
+      return;
+    }
+    paramGVideoGrayConfigListener.a(-1, null, -1);
+    if (QLog.isColorLevel()) {
+      QLog.e("GroupVideoManager.GVideoGrayConfig", 2, "requestGVideoGrayConfig troopHandler is null!!");
+    }
   }
   
   public void a(AppInterface paramAppInterface, String paramString, GVideoGrayConfig.GVideoPreDownloadListener paramGVideoPreDownloadListener)
   {
     this.jdField_a_of_type_ComTencentAvUtilsGVideoGrayConfig$GVideoPreDownloadListener = paramGVideoPreDownloadListener;
-    if ((this.jdField_a_of_type_Int != -1) && (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long < 7200000L)) {
-      paramGVideoPreDownloadListener.a(this.jdField_a_of_type_Int);
-    }
-    do
+    if ((this.jdField_a_of_type_Int != -1) && (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long < 7200000L))
     {
+      paramGVideoPreDownloadListener.a(this.jdField_a_of_type_Int);
       return;
-      paramGVideoPreDownloadListener = (TroopHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
-    } while (paramGVideoPreDownloadListener == null);
-    paramAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver);
-    paramGVideoPreDownloadListener.a(TroopMemberUtil.b(paramAppInterface, paramAppInterface.getCurrentAccountUin(), paramString), Long.parseLong(paramString));
+    }
+    paramGVideoPreDownloadListener = (GVideoHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.GVIDEO_HANDLER);
+    if (paramGVideoPreDownloadListener != null)
+    {
+      paramAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppGVideoObserver);
+      paramGVideoPreDownloadListener.a(TroopMemberUtil.b(paramAppInterface, paramAppInterface.getCurrentAccountUin(), paramString), Long.parseLong(paramString));
+    }
   }
   
   public void b()
@@ -112,7 +113,7 @@ public class GVideoGrayConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.GVideoGrayConfig
  * JD-Core Version:    0.7.0.1
  */

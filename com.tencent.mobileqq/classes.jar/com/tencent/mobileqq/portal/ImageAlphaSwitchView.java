@@ -41,13 +41,14 @@ public class ImageAlphaSwitchView
   
   private void a()
   {
-    ValueAnimation localValueAnimation = new ValueAnimation(Float.valueOf(0.0F), Float.valueOf(255.0F), new ImageAlphaSwitchView.1(this));
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation != null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.cancel();
+    ValueAnimation localValueAnimation1 = new ValueAnimation(Float.valueOf(0.0F), Float.valueOf(255.0F), new ImageAlphaSwitchView.1(this));
+    ValueAnimation localValueAnimation2 = this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation;
+    if (localValueAnimation2 != null) {
+      localValueAnimation2.cancel();
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation = localValueAnimation;
-    localValueAnimation.setDuration(500L);
-    localValueAnimation.start();
+    this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation = localValueAnimation1;
+    localValueAnimation1.setDuration(500L);
+    localValueAnimation1.start();
     invalidate();
   }
   
@@ -65,94 +66,101 @@ public class ImageAlphaSwitchView
     a();
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
-    boolean bool = false;
     super.onDraw(paramCanvas);
     this.jdField_a_of_type_Int = getWidth();
     this.jdField_b_of_type_Int = getHeight();
-    int i;
-    int m;
+    Bitmap localBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
+    boolean bool = false;
+    int k;
+    int n;
     int j;
-    if (this.jdField_b_of_type_AndroidGraphicsBitmap != null)
+    int m;
+    int i;
+    if (localBitmap != null)
     {
-      i = this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth();
-      k = this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight();
-      m = this.jdField_b_of_type_Int * i / k;
+      k = localBitmap.getWidth();
+      n = this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight();
       j = this.jdField_b_of_type_Int;
-      if (m <= this.jdField_a_of_type_Int) {
-        break label415;
-      }
-      m = this.jdField_a_of_type_Int;
-      j = m * k / i;
-    }
-    label404:
-    label410:
-    label415:
-    for (int k = (this.jdField_b_of_type_Int - j) / 2;; k = 0)
-    {
-      if (this.c == 3) {
-        i = 0;
-      }
-      for (;;)
+      m = j * k / n;
+      i = this.jdField_a_of_type_Int;
+      if (m > i)
       {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)this.jdField_a_of_type_Float);
-        this.jdField_a_of_type_AndroidGraphicsRect.set(i, k, m + i, j);
-        paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-        if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-        {
-          i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-          k = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-          m = this.jdField_b_of_type_Int * i / k;
-          j = this.jdField_b_of_type_Int;
-          if (m <= this.jdField_a_of_type_Int) {
-            break label404;
-          }
-          m = this.jdField_a_of_type_Int;
-          j = this.jdField_a_of_type_Int * k / i;
-        }
-        for (k = (this.jdField_b_of_type_Int - j) / 2;; k = 0)
-        {
-          if (this.c == 3) {
-            i = 0;
-          }
-          for (;;)
-          {
-            this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(255 - (int)this.jdField_a_of_type_Float);
-            this.jdField_a_of_type_AndroidGraphicsRect.set(i, k, m + i, j);
-            paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-            if (this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation != null) {
-              bool = this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation);
-            }
-            if (bool) {
-              invalidate();
-            }
-            return;
-            if (this.c == 17)
-            {
-              i = (this.jdField_a_of_type_Int - m) / 2;
-              break;
-            }
-            if (this.c != 5) {
-              break label410;
-            }
-            i = this.jdField_a_of_type_Int - m;
-            break;
-            if (this.c == 17) {
-              i = (this.jdField_a_of_type_Int - m) / 2;
-            } else if (this.c == 5) {
-              i = this.jdField_a_of_type_Int - m;
-            } else {
-              i = 0;
-            }
-          }
-        }
-        i = 0;
+        k = n * i / k;
+        n = (j - k) / 2;
+        m = i;
+        j = k;
+        k = n;
       }
+      else
+      {
+        k = 0;
+      }
+      i = this.c;
+      if (i == 3) {}
+      do
+      {
+        i = 0;
+        break;
+        if (i == 17)
+        {
+          i = (this.jdField_a_of_type_Int - m) / 2;
+          break;
+        }
+      } while (i != 5);
+      i = this.jdField_a_of_type_Int - m;
+      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)this.jdField_a_of_type_Float);
+      this.jdField_a_of_type_AndroidGraphicsRect.set(i, k, m + i, j);
+      paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+    localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if (localBitmap != null)
+    {
+      k = localBitmap.getWidth();
+      n = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+      j = this.jdField_b_of_type_Int;
+      m = j * k / n;
+      i = this.jdField_a_of_type_Int;
+      if (m > i)
+      {
+        k = n * i / k;
+        n = (j - k) / 2;
+        m = i;
+        j = k;
+        k = n;
+      }
+      else
+      {
+        k = 0;
+      }
+      i = this.c;
+      if (i == 3) {}
+      do
+      {
+        i = 0;
+        break;
+        if (i == 17)
+        {
+          i = (this.jdField_a_of_type_Int - m) / 2;
+          break;
+        }
+      } while (i != 5);
+      i = this.jdField_a_of_type_Int - m;
+      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(255 - (int)this.jdField_a_of_type_Float);
+      this.jdField_a_of_type_AndroidGraphicsRect.set(i, k, m + i, j);
+      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+    paramCanvas = this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation;
+    if (paramCanvas != null) {
+      bool = paramCanvas.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation);
+    }
+    if (bool) {
+      invalidate();
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
   }
@@ -164,8 +172,9 @@ public class ImageAlphaSwitchView
   
   public void setImage(Bitmap paramBitmap)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation != null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.cancel();
+    ValueAnimation localValueAnimation = this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation;
+    if (localValueAnimation != null) {
+      localValueAnimation.cancel();
     }
     this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
     this.jdField_b_of_type_AndroidGraphicsBitmap = null;
@@ -175,7 +184,7 @@ public class ImageAlphaSwitchView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.portal.ImageAlphaSwitchView
  * JD-Core Version:    0.7.0.1
  */

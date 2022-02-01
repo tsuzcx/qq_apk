@@ -22,13 +22,14 @@ public final class hd_video_comm$PstnAudioSrtpSdpInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 48, 56 }, new String[] { "enum_crypto_method", "uint32_crypto_tag", "bytes_raw_key", "uint32_life_time", "uint32_mki_value", "uint32_mki_len", "uint32_key_derivation_rate" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, PstnAudioSrtpSdpInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 48, 56 }, new String[] { "enum_crypto_method", "uint32_crypto_tag", "bytes_raw_key", "uint32_life_time", "uint32_mki_value", "uint32_mki_len", "uint32_key_derivation_rate" }, new Object[] { localInteger, localInteger, localByteStringMicro, localInteger, localInteger, localInteger, localInteger }, PstnAudioSrtpSdpInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.longconn.hd_video_comm.PstnAudioSrtpSdpInfo
  * JD-Core Version:    0.7.0.1
  */

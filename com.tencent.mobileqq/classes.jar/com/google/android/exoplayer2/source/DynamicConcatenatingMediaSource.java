@@ -61,20 +61,18 @@ public final class DynamicConcatenatingMediaSource
   private void addMediaSourceInternal(int paramInt, MediaSource paramMediaSource)
   {
     DynamicConcatenatingMediaSource.DeferredTimeline localDeferredTimeline = new DynamicConcatenatingMediaSource.DeferredTimeline();
-    DynamicConcatenatingMediaSource.MediaSourceHolder localMediaSourceHolder;
-    int i;
     if (paramInt > 0)
     {
-      localMediaSourceHolder = (DynamicConcatenatingMediaSource.MediaSourceHolder)this.mediaSourceHolders.get(paramInt - 1);
-      i = localMediaSourceHolder.firstWindowIndexInChild;
+      DynamicConcatenatingMediaSource.MediaSourceHolder localMediaSourceHolder = (DynamicConcatenatingMediaSource.MediaSourceHolder)this.mediaSourceHolders.get(paramInt - 1);
+      paramMediaSource = new DynamicConcatenatingMediaSource.MediaSourceHolder(paramMediaSource, localDeferredTimeline, paramInt, localMediaSourceHolder.firstWindowIndexInChild + localMediaSourceHolder.timeline.getWindowCount(), localMediaSourceHolder.firstPeriodIndexInChild + localMediaSourceHolder.timeline.getPeriodCount());
     }
-    for (paramMediaSource = new DynamicConcatenatingMediaSource.MediaSourceHolder(paramMediaSource, localDeferredTimeline, paramInt, localMediaSourceHolder.timeline.getWindowCount() + i, localMediaSourceHolder.firstPeriodIndexInChild + localMediaSourceHolder.timeline.getPeriodCount());; paramMediaSource = new DynamicConcatenatingMediaSource.MediaSourceHolder(paramMediaSource, localDeferredTimeline, 0, 0, 0))
+    else
     {
-      correctOffsets(paramInt, 1, localDeferredTimeline.getWindowCount(), localDeferredTimeline.getPeriodCount());
-      this.mediaSourceHolders.add(paramInt, paramMediaSource);
-      prepareChildSource(paramMediaSource, paramMediaSource.mediaSource);
-      return;
+      paramMediaSource = new DynamicConcatenatingMediaSource.MediaSourceHolder(paramMediaSource, localDeferredTimeline, 0, 0, 0);
     }
+    correctOffsets(paramInt, 1, localDeferredTimeline.getWindowCount(), localDeferredTimeline.getPeriodCount());
+    this.mediaSourceHolders.add(paramInt, paramMediaSource);
+    prepareChildSource(paramMediaSource, paramMediaSource.mediaSource);
   }
   
   private void addMediaSourcesInternal(int paramInt, Collection<MediaSource> paramCollection)
@@ -105,26 +103,23 @@ public final class DynamicConcatenatingMediaSource
   
   private int findMediaSourceHolderByPeriodIndex(int paramInt)
   {
-    this.query.firstPeriodIndexInChild = paramInt;
-    int i = Collections.binarySearch(this.mediaSourceHolders, this.query);
-    int j;
-    if (i < 0)
-    {
-      j = -i - 2;
-      return j;
+    Object localObject = this.query;
+    ((DynamicConcatenatingMediaSource.MediaSourceHolder)localObject).firstPeriodIndexInChild = paramInt;
+    int j = Collections.binarySearch(this.mediaSourceHolders, localObject);
+    int i = j;
+    if (j < 0) {
+      return -j - 2;
     }
-    for (;;)
+    while (i < this.mediaSourceHolders.size() - 1)
     {
-      j = i;
-      if (i >= this.mediaSourceHolders.size() - 1) {
+      localObject = this.mediaSourceHolders;
+      j = i + 1;
+      if (((DynamicConcatenatingMediaSource.MediaSourceHolder)((List)localObject).get(j)).firstPeriodIndexInChild != paramInt) {
         break;
       }
-      j = i;
-      if (((DynamicConcatenatingMediaSource.MediaSourceHolder)this.mediaSourceHolders.get(i + 1)).firstPeriodIndexInChild != paramInt) {
-        break;
-      }
-      i += 1;
+      i = j;
     }
+    return i;
   }
   
   private void maybeNotifyListener(@Nullable DynamicConcatenatingMediaSource.EventDispatcher paramEventDispatcher)
@@ -144,17 +139,18 @@ public final class DynamicConcatenatingMediaSource
     int m = Math.max(paramInt1, paramInt2);
     int i = ((DynamicConcatenatingMediaSource.MediaSourceHolder)this.mediaSourceHolders.get(j)).firstWindowIndexInChild;
     int k = ((DynamicConcatenatingMediaSource.MediaSourceHolder)this.mediaSourceHolders.get(j)).firstPeriodIndexInChild;
-    this.mediaSourceHolders.add(paramInt2, this.mediaSourceHolders.remove(paramInt1));
-    paramInt2 = k;
-    paramInt1 = j;
-    while (paramInt1 <= m)
+    Object localObject = this.mediaSourceHolders;
+    ((List)localObject).add(paramInt2, ((List)localObject).remove(paramInt1));
+    paramInt1 = k;
+    paramInt2 = j;
+    while (paramInt2 <= m)
     {
-      DynamicConcatenatingMediaSource.MediaSourceHolder localMediaSourceHolder = (DynamicConcatenatingMediaSource.MediaSourceHolder)this.mediaSourceHolders.get(paramInt1);
-      localMediaSourceHolder.firstWindowIndexInChild = i;
-      localMediaSourceHolder.firstPeriodIndexInChild = paramInt2;
-      i += localMediaSourceHolder.timeline.getWindowCount();
-      paramInt2 += localMediaSourceHolder.timeline.getPeriodCount();
-      paramInt1 += 1;
+      localObject = (DynamicConcatenatingMediaSource.MediaSourceHolder)this.mediaSourceHolders.get(paramInt2);
+      ((DynamicConcatenatingMediaSource.MediaSourceHolder)localObject).firstWindowIndexInChild = i;
+      ((DynamicConcatenatingMediaSource.MediaSourceHolder)localObject).firstPeriodIndexInChild = paramInt1;
+      i += ((DynamicConcatenatingMediaSource.MediaSourceHolder)localObject).timeline.getWindowCount();
+      paramInt1 += ((DynamicConcatenatingMediaSource.MediaSourceHolder)localObject).timeline.getPeriodCount();
+      paramInt2 += 1;
     }
   }
   
@@ -172,34 +168,40 @@ public final class DynamicConcatenatingMediaSource
   
   private void updateMediaSourceInternal(DynamicConcatenatingMediaSource.MediaSourceHolder paramMediaSourceHolder, Timeline paramTimeline)
   {
-    if (paramMediaSourceHolder == null) {
-      throw new IllegalArgumentException();
-    }
-    DynamicConcatenatingMediaSource.DeferredTimeline localDeferredTimeline = paramMediaSourceHolder.timeline;
-    if (localDeferredTimeline.getTimeline() == paramTimeline) {
+    if (paramMediaSourceHolder != null)
+    {
+      DynamicConcatenatingMediaSource.DeferredTimeline localDeferredTimeline = paramMediaSourceHolder.timeline;
+      if (localDeferredTimeline.getTimeline() == paramTimeline) {
+        return;
+      }
+      int i = paramTimeline.getWindowCount() - localDeferredTimeline.getWindowCount();
+      int j = paramTimeline.getPeriodCount() - localDeferredTimeline.getPeriodCount();
+      if ((i != 0) || (j != 0)) {
+        correctOffsets(paramMediaSourceHolder.childIndex + 1, 0, i, j);
+      }
+      paramMediaSourceHolder.timeline = localDeferredTimeline.cloneWithNewTimeline(paramTimeline);
+      if (!paramMediaSourceHolder.isPrepared)
+      {
+        i = this.deferredMediaPeriods.size() - 1;
+        while (i >= 0)
+        {
+          if (((DeferredMediaPeriod)this.deferredMediaPeriods.get(i)).mediaSource == paramMediaSourceHolder.mediaSource)
+          {
+            ((DeferredMediaPeriod)this.deferredMediaPeriods.get(i)).createPeriod();
+            this.deferredMediaPeriods.remove(i);
+          }
+          i -= 1;
+        }
+      }
+      paramMediaSourceHolder.isPrepared = true;
+      maybeNotifyListener(null);
       return;
     }
-    int i = paramTimeline.getWindowCount() - localDeferredTimeline.getWindowCount();
-    int j = paramTimeline.getPeriodCount() - localDeferredTimeline.getPeriodCount();
-    if ((i != 0) || (j != 0)) {
-      correctOffsets(paramMediaSourceHolder.childIndex + 1, 0, i, j);
-    }
-    paramMediaSourceHolder.timeline = localDeferredTimeline.cloneWithNewTimeline(paramTimeline);
-    if (!paramMediaSourceHolder.isPrepared)
+    paramMediaSourceHolder = new IllegalArgumentException();
+    for (;;)
     {
-      i = this.deferredMediaPeriods.size() - 1;
-      while (i >= 0)
-      {
-        if (((DeferredMediaPeriod)this.deferredMediaPeriods.get(i)).mediaSource == paramMediaSourceHolder.mediaSource)
-        {
-          ((DeferredMediaPeriod)this.deferredMediaPeriods.get(i)).createPeriod();
-          this.deferredMediaPeriods.remove(i);
-        }
-        i -= 1;
-      }
+      throw paramMediaSourceHolder;
     }
-    paramMediaSourceHolder.isPrepared = true;
-    maybeNotifyListener(null);
   }
   
   public void addMediaSource(int paramInt, MediaSource paramMediaSource)
@@ -216,75 +218,29 @@ public final class DynamicConcatenatingMediaSource
     }
   }
   
-  /* Error */
   public void addMediaSource(int paramInt, MediaSource paramMediaSource, @Nullable Runnable paramRunnable)
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore 4
-    //   3: aload_0
-    //   4: monitorenter
-    //   5: aload_2
-    //   6: invokestatic 271	com/google/android/exoplayer2/util/Assertions:checkNotNull	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   9: pop
-    //   10: aload_0
-    //   11: getfield 67	com/google/android/exoplayer2/source/DynamicConcatenatingMediaSource:mediaSourcesPublic	Ljava/util/List;
-    //   14: aload_2
-    //   15: invokeinterface 275 2 0
-    //   20: ifne +6 -> 26
-    //   23: iconst_1
-    //   24: istore 4
-    //   26: iload 4
-    //   28: invokestatic 278	com/google/android/exoplayer2/util/Assertions:checkArgument	(Z)V
-    //   31: aload_0
-    //   32: getfield 67	com/google/android/exoplayer2/source/DynamicConcatenatingMediaSource:mediaSourcesPublic	Ljava/util/List;
-    //   35: iload_1
-    //   36: aload_2
-    //   37: invokeinterface 117 3 0
-    //   42: aload_0
-    //   43: getfield 187	com/google/android/exoplayer2/source/DynamicConcatenatingMediaSource:player	Lcom/google/android/exoplayer2/ExoPlayer;
-    //   46: ifnull +37 -> 83
-    //   49: aload_0
-    //   50: getfield 187	com/google/android/exoplayer2/source/DynamicConcatenatingMediaSource:player	Lcom/google/android/exoplayer2/ExoPlayer;
-    //   53: aload_0
-    //   54: invokeinterface 193 2 0
-    //   59: iconst_0
-    //   60: invokevirtual 199	com/google/android/exoplayer2/PlayerMessage:setType	(I)Lcom/google/android/exoplayer2/PlayerMessage;
-    //   63: new 280	com/google/android/exoplayer2/source/DynamicConcatenatingMediaSource$MessageData
-    //   66: dup
-    //   67: iload_1
-    //   68: aload_2
-    //   69: aload_3
-    //   70: invokespecial 283	com/google/android/exoplayer2/source/DynamicConcatenatingMediaSource$MessageData:<init>	(ILjava/lang/Object;Ljava/lang/Runnable;)V
-    //   73: invokevirtual 203	com/google/android/exoplayer2/PlayerMessage:setPayload	(Ljava/lang/Object;)Lcom/google/android/exoplayer2/PlayerMessage;
-    //   76: invokevirtual 207	com/google/android/exoplayer2/PlayerMessage:send	()Lcom/google/android/exoplayer2/PlayerMessage;
-    //   79: pop
-    //   80: aload_0
-    //   81: monitorexit
-    //   82: return
-    //   83: aload_3
-    //   84: ifnull -4 -> 80
-    //   87: aload_3
-    //   88: invokeinterface 288 1 0
-    //   93: goto -13 -> 80
-    //   96: astore_2
-    //   97: aload_0
-    //   98: monitorexit
-    //   99: aload_2
-    //   100: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	101	0	this	DynamicConcatenatingMediaSource
-    //   0	101	1	paramInt	int
-    //   0	101	2	paramMediaSource	MediaSource
-    //   0	101	3	paramRunnable	Runnable
-    //   1	26	4	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   5	10	96	finally
-    //   10	23	96	finally
-    //   26	80	96	finally
-    //   87	93	96	finally
+    for (;;)
+    {
+      try
+      {
+        Assertions.checkNotNull(paramMediaSource);
+        if (!this.mediaSourcesPublic.contains(paramMediaSource))
+        {
+          bool = true;
+          Assertions.checkArgument(bool);
+          this.mediaSourcesPublic.add(paramInt, paramMediaSource);
+          if (this.player != null) {
+            this.player.createMessage(this).setType(0).setPayload(new DynamicConcatenatingMediaSource.MessageData(paramInt, paramMediaSource, paramRunnable)).send();
+          } else if (paramRunnable != null) {
+            paramRunnable.run();
+          }
+          return;
+        }
+      }
+      finally {}
+      boolean bool = false;
+    }
   }
   
   public void addMediaSource(MediaSource paramMediaSource)
@@ -336,34 +292,32 @@ public final class DynamicConcatenatingMediaSource
       try
       {
         Iterator localIterator = paramCollection.iterator();
-        if (!localIterator.hasNext()) {
-          break;
+        boolean bool2 = localIterator.hasNext();
+        bool1 = true;
+        if (!bool2) {
+          continue;
         }
         MediaSource localMediaSource = (MediaSource)localIterator.next();
         Assertions.checkNotNull(localMediaSource);
-        boolean bool;
-        if (!this.mediaSourcesPublic.contains(localMediaSource))
-        {
-          bool = true;
-          Assertions.checkArgument(bool);
-        }
-        else
-        {
-          bool = false;
+        if (this.mediaSourcesPublic.contains(localMediaSource)) {
+          continue;
         }
       }
-      finally {}
+      finally
+      {
+        continue;
+        throw paramCollection;
+        continue;
+        boolean bool1 = false;
+        continue;
+      }
+      Assertions.checkArgument(bool1);
     }
     this.mediaSourcesPublic.addAll(paramInt, paramCollection);
     if ((this.player != null) && (!paramCollection.isEmpty())) {
       this.player.createMessage(this).setType(1).setPayload(new DynamicConcatenatingMediaSource.MessageData(paramInt, paramCollection, paramRunnable)).send();
-    }
-    for (;;)
-    {
-      return;
-      if (paramRunnable != null) {
-        paramRunnable.run();
-      }
+    } else if (paramRunnable != null) {
+      paramRunnable.run();
     }
   }
   
@@ -405,13 +359,13 @@ public final class DynamicConcatenatingMediaSource
       paramMediaPeriodId = new DeferredMediaPeriod(localMediaSourceHolder.mediaSource, paramMediaPeriodId, paramAllocator);
       this.deferredMediaPeriods.add((DeferredMediaPeriod)paramMediaPeriodId);
     }
-    for (;;)
+    else
     {
-      this.mediaSourceByMediaPeriod.put(paramMediaPeriodId, localMediaSourceHolder);
-      localMediaSourceHolder.activeMediaPeriods += 1;
-      return paramMediaPeriodId;
       paramMediaPeriodId = localMediaSourceHolder.mediaSource.createPeriod(paramMediaPeriodId, paramAllocator);
     }
+    this.mediaSourceByMediaPeriod.put(paramMediaPeriodId, localMediaSourceHolder);
+    localMediaSourceHolder.activeMediaPeriods += 1;
+    return paramMediaPeriodId;
   }
   
   public MediaSource getMediaSource(int paramInt)
@@ -450,37 +404,50 @@ public final class DynamicConcatenatingMediaSource
       return;
     }
     this.preventListenerNotification = true;
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      throw new IllegalStateException();
-    case 0: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt == 3)
+          {
+            paramObject = (DynamicConcatenatingMediaSource.MessageData)paramObject;
+            this.shuffleOrder = this.shuffleOrder.cloneAndRemove(paramObject.index);
+            this.shuffleOrder = this.shuffleOrder.cloneAndInsert(((Integer)paramObject.customData).intValue(), 1);
+            moveMediaSourceInternal(paramObject.index, ((Integer)paramObject.customData).intValue());
+            paramObject = paramObject.actionOnCompletion;
+          }
+          else
+          {
+            throw new IllegalStateException();
+          }
+        }
+        else
+        {
+          paramObject = (DynamicConcatenatingMediaSource.MessageData)paramObject;
+          this.shuffleOrder = this.shuffleOrder.cloneAndRemove(paramObject.index);
+          removeMediaSourceInternal(paramObject.index);
+          paramObject = paramObject.actionOnCompletion;
+        }
+      }
+      else
+      {
+        paramObject = (DynamicConcatenatingMediaSource.MessageData)paramObject;
+        this.shuffleOrder = this.shuffleOrder.cloneAndInsert(paramObject.index, ((Collection)paramObject.customData).size());
+        addMediaSourcesInternal(paramObject.index, (Collection)paramObject.customData);
+        paramObject = paramObject.actionOnCompletion;
+      }
+    }
+    else
+    {
       paramObject = (DynamicConcatenatingMediaSource.MessageData)paramObject;
       this.shuffleOrder = this.shuffleOrder.cloneAndInsert(paramObject.index, 1);
       addMediaSourceInternal(paramObject.index, (MediaSource)paramObject.customData);
       paramObject = paramObject.actionOnCompletion;
     }
-    for (;;)
-    {
-      this.preventListenerNotification = false;
-      maybeNotifyListener(paramObject);
-      return;
-      paramObject = (DynamicConcatenatingMediaSource.MessageData)paramObject;
-      this.shuffleOrder = this.shuffleOrder.cloneAndInsert(paramObject.index, ((Collection)paramObject.customData).size());
-      addMediaSourcesInternal(paramObject.index, (Collection)paramObject.customData);
-      paramObject = paramObject.actionOnCompletion;
-      continue;
-      paramObject = (DynamicConcatenatingMediaSource.MessageData)paramObject;
-      this.shuffleOrder = this.shuffleOrder.cloneAndRemove(paramObject.index);
-      removeMediaSourceInternal(paramObject.index);
-      paramObject = paramObject.actionOnCompletion;
-      continue;
-      paramObject = (DynamicConcatenatingMediaSource.MessageData)paramObject;
-      this.shuffleOrder = this.shuffleOrder.cloneAndRemove(paramObject.index);
-      this.shuffleOrder = this.shuffleOrder.cloneAndInsert(((Integer)paramObject.customData).intValue(), 1);
-      moveMediaSourceInternal(paramObject.index, ((Integer)paramObject.customData).intValue());
-      paramObject = paramObject.actionOnCompletion;
-    }
+    this.preventListenerNotification = false;
+    maybeNotifyListener(paramObject);
   }
   
   public void moveMediaSource(int paramInt1, int paramInt2)
@@ -499,24 +466,20 @@ public final class DynamicConcatenatingMediaSource
   
   public void moveMediaSource(int paramInt1, int paramInt2, @Nullable Runnable paramRunnable)
   {
-    if (paramInt1 == paramInt2) {}
-    for (;;)
-    {
+    if (paramInt1 == paramInt2) {
       return;
-      try
-      {
-        this.mediaSourcesPublic.add(paramInt2, this.mediaSourcesPublic.remove(paramInt1));
-        if (this.player != null)
-        {
-          this.player.createMessage(this).setType(3).setPayload(new DynamicConcatenatingMediaSource.MessageData(paramInt1, Integer.valueOf(paramInt2), paramRunnable)).send();
-          continue;
-        }
-      }
-      finally {}
-      if (paramRunnable != null) {
+    }
+    try
+    {
+      this.mediaSourcesPublic.add(paramInt2, this.mediaSourcesPublic.remove(paramInt1));
+      if (this.player != null) {
+        this.player.createMessage(this).setType(3).setPayload(new DynamicConcatenatingMediaSource.MessageData(paramInt1, Integer.valueOf(paramInt2), paramRunnable)).send();
+      } else if (paramRunnable != null) {
         paramRunnable.run();
       }
+      return;
     }
+    finally {}
   }
   
   protected void onChildSourceInfoRefreshed(DynamicConcatenatingMediaSource.MediaSourceHolder paramMediaSourceHolder, MediaSource paramMediaSource, Timeline paramTimeline, @Nullable Object paramObject)
@@ -553,14 +516,13 @@ public final class DynamicConcatenatingMediaSource
       this.deferredMediaPeriods.remove(paramMediaPeriod);
       ((DeferredMediaPeriod)paramMediaPeriod).releasePeriod();
     }
-    for (;;)
+    else
     {
-      localMediaSourceHolder.activeMediaPeriods -= 1;
-      if ((localMediaSourceHolder.activeMediaPeriods == 0) && (localMediaSourceHolder.isRemoved)) {
-        releaseChildSource(localMediaSourceHolder);
-      }
-      return;
       localMediaSourceHolder.mediaSource.releasePeriod(paramMediaPeriod);
+    }
+    localMediaSourceHolder.activeMediaPeriods -= 1;
+    if ((localMediaSourceHolder.activeMediaPeriods == 0) && (localMediaSourceHolder.isRemoved)) {
+      releaseChildSource(localMediaSourceHolder);
     }
   }
   
@@ -589,62 +551,24 @@ public final class DynamicConcatenatingMediaSource
     }
   }
   
-  /* Error */
   public void removeMediaSource(int paramInt, @Nullable Runnable paramRunnable)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 67	com/google/android/exoplayer2/source/DynamicConcatenatingMediaSource:mediaSourcesPublic	Ljava/util/List;
-    //   6: iload_1
-    //   7: invokeinterface 222 2 0
-    //   12: pop
-    //   13: aload_0
-    //   14: getfield 187	com/google/android/exoplayer2/source/DynamicConcatenatingMediaSource:player	Lcom/google/android/exoplayer2/ExoPlayer;
-    //   17: ifnull +37 -> 54
-    //   20: aload_0
-    //   21: getfield 187	com/google/android/exoplayer2/source/DynamicConcatenatingMediaSource:player	Lcom/google/android/exoplayer2/ExoPlayer;
-    //   24: aload_0
-    //   25: invokeinterface 193 2 0
-    //   30: iconst_2
-    //   31: invokevirtual 199	com/google/android/exoplayer2/PlayerMessage:setType	(I)Lcom/google/android/exoplayer2/PlayerMessage;
-    //   34: new 280	com/google/android/exoplayer2/source/DynamicConcatenatingMediaSource$MessageData
-    //   37: dup
-    //   38: iload_1
-    //   39: aconst_null
-    //   40: aload_2
-    //   41: invokespecial 283	com/google/android/exoplayer2/source/DynamicConcatenatingMediaSource$MessageData:<init>	(ILjava/lang/Object;Ljava/lang/Runnable;)V
-    //   44: invokevirtual 203	com/google/android/exoplayer2/PlayerMessage:setPayload	(Ljava/lang/Object;)Lcom/google/android/exoplayer2/PlayerMessage;
-    //   47: invokevirtual 207	com/google/android/exoplayer2/PlayerMessage:send	()Lcom/google/android/exoplayer2/PlayerMessage;
-    //   50: pop
-    //   51: aload_0
-    //   52: monitorexit
-    //   53: return
-    //   54: aload_2
-    //   55: ifnull -4 -> 51
-    //   58: aload_2
-    //   59: invokeinterface 288 1 0
-    //   64: goto -13 -> 51
-    //   67: astore_2
-    //   68: aload_0
-    //   69: monitorexit
-    //   70: aload_2
-    //   71: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	72	0	this	DynamicConcatenatingMediaSource
-    //   0	72	1	paramInt	int
-    //   0	72	2	paramRunnable	Runnable
-    // Exception table:
-    //   from	to	target	type
-    //   2	51	67	finally
-    //   58	64	67	finally
+    try
+    {
+      this.mediaSourcesPublic.remove(paramInt);
+      if (this.player != null) {
+        this.player.createMessage(this).setType(2).setPayload(new DynamicConcatenatingMediaSource.MessageData(paramInt, null, paramRunnable)).send();
+      } else if (paramRunnable != null) {
+        paramRunnable.run();
+      }
+      return;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.DynamicConcatenatingMediaSource
  * JD-Core Version:    0.7.0.1
  */

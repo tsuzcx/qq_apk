@@ -38,12 +38,13 @@ public class BusinessEggsElement
   {
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
+      Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      if (localDrawable == null)
       {
         QLog.e("BusinessEggsElement", 1, "[createEggsView] drawable is null, cannot create view");
         return null;
       }
-      this.jdField_a_of_type_AndroidViewView = a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      this.jdField_a_of_type_AndroidViewView = a(localDrawable);
     }
     return this.jdField_a_of_type_AndroidViewView;
   }
@@ -55,36 +56,39 @@ public class BusinessEggsElement
     Rect localRect = paramDrawable.getBounds();
     if (localRect.isEmpty()) {
       localView.layout(0, 0, paramDrawable.getIntrinsicWidth() / 2, paramDrawable.getIntrinsicHeight() / 2);
-    }
-    for (;;)
-    {
-      localView.setScaleX(1.0F);
-      localView.setScaleY(1.0F);
-      localView.setLayerType(2, null);
-      return localView;
+    } else {
       localView.layout(0, 0, localRect.width() / 2, localRect.height() / 2);
     }
+    localView.setScaleX(1.0F);
+    localView.setScaleY(1.0F);
+    localView.setLayerType(2, null);
+    return localView;
   }
   
   private void a(float paramFloat)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimBusinesseggsBusinessEggsElement$IPathStrategy != null)
+    BusinessEggsElement.IPathStrategy localIPathStrategy = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimBusinesseggsBusinessEggsElement$IPathStrategy;
+    if (localIPathStrategy != null)
     {
-      this.b = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimBusinesseggsBusinessEggsElement$IPathStrategy.a(this.jdField_a_of_type_AndroidGraphicsPoint, this.c, paramFloat);
+      this.b = localIPathStrategy.a(this.jdField_a_of_type_AndroidGraphicsPoint, this.c, paramFloat);
       a(this.b);
     }
   }
   
   private void a(Point paramPoint)
   {
-    if ((this.jdField_a_of_type_AndroidViewView == null) || (paramPoint == null)) {
-      return;
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if (localView != null)
+    {
+      if (paramPoint == null) {
+        return;
+      }
+      int i = localView.getLeft();
+      int j = this.jdField_a_of_type_AndroidViewView.getWidth() / 2;
+      int k = this.jdField_a_of_type_AndroidViewView.getBottom();
+      this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(paramPoint.y - k);
+      this.jdField_a_of_type_AndroidViewView.offsetLeftAndRight(paramPoint.x - (i + j));
     }
-    int i = this.jdField_a_of_type_AndroidViewView.getLeft();
-    int j = this.jdField_a_of_type_AndroidViewView.getWidth() / 2;
-    int k = this.jdField_a_of_type_AndroidViewView.getBottom();
-    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(paramPoint.y - k);
-    this.jdField_a_of_type_AndroidViewView.offsetLeftAndRight(paramPoint.x - (i + j));
   }
   
   private void c()
@@ -104,29 +108,34 @@ public class BusinessEggsElement
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.jdField_a_of_type_Boolean)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("BusinessEggsElement", 2, "[start] eggs animating, return");
       }
-    }
-    do
-    {
-      do
-      {
-        return;
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimBusinesseggsBusinessEggsElement$IPathStrategy == null) && (this.jdField_a_of_type_AndroidViewView != null)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("BusinessEggsElement", 2, "[start] mEggsView is null");
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.addViewInLayout(this.jdField_a_of_type_AndroidViewView, -1, AIOAnimationConatiner.a, false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimBusinesseggsBusinessEggsElement$IPathStrategy.a(this.jdField_a_of_type_AndroidAnimationValueAnimator);
-      this.jdField_a_of_type_AndroidGraphicsPoint = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimBusinesseggsBusinessEggsElement$IPathStrategy.a(this.c);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-      this.jdField_a_of_type_Boolean = true;
-    } while (!QLog.isColorLevel());
-    QLog.d("BusinessEggsElement", 2, "[start] start eggs: " + this.jdField_a_of_type_Long);
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimBusinesseggsBusinessEggsElement$IPathStrategy;
+    localObject = this.jdField_a_of_type_AndroidViewView;
+    if (localObject == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BusinessEggsElement", 2, "[start] mEggsView is null");
+      }
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.addViewInLayout((View)localObject, -1, AIOAnimationConatiner.a, false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimBusinesseggsBusinessEggsElement$IPathStrategy.a(this.jdField_a_of_type_AndroidAnimationValueAnimator);
+    this.jdField_a_of_type_AndroidGraphicsPoint = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimBusinesseggsBusinessEggsElement$IPathStrategy.a(this.c);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+    this.jdField_a_of_type_Boolean = true;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[start] start eggs: ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      QLog.d("BusinessEggsElement", 2, ((StringBuilder)localObject).toString());
+    }
   }
   
   public void a(Drawable paramDrawable)
@@ -138,8 +147,9 @@ public class BusinessEggsElement
   
   public void a(View.OnClickListener paramOnClickListener)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(paramOnClickListener);
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if (localView != null) {
+      localView.setOnClickListener(paramOnClickListener);
     }
   }
   
@@ -161,14 +171,18 @@ public class BusinessEggsElement
     this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
     this.jdField_a_of_type_AndroidViewView = null;
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("BusinessEggsElement", 2, "[stop] stop eggs: " + this.jdField_a_of_type_Long);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[stop] stop eggs: ");
+      localStringBuilder.append(this.jdField_a_of_type_Long);
+      QLog.d("BusinessEggsElement", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.businesseggs.BusinessEggsElement
  * JD-Core Version:    0.7.0.1
  */

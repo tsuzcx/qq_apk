@@ -18,7 +18,7 @@ public class FloatingScreenPlugin
     this.mPluginNameSpace = "floatingWindow";
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if (QLog.isColorLevel()) {
       QLog.d("FloatingScreenPlugin", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
@@ -47,12 +47,18 @@ public class FloatingScreenPlugin
   public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
   {
     super.onActivityResult(paramIntent, paramByte, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatingScreenPlugin", 2, "onActivityResult requestCode=" + paramByte + "  resultCode=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("onActivityResult requestCode=");
+      paramIntent.append(paramByte);
+      paramIntent.append("  resultCode=");
+      paramIntent.append(paramInt);
+      QLog.d("FloatingScreenPlugin", 2, paramIntent.toString());
     }
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
     if (QLog.isColorLevel()) {
@@ -60,7 +66,7 @@ public class FloatingScreenPlugin
     }
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
     if (QLog.isColorLevel()) {
@@ -70,7 +76,7 @@ public class FloatingScreenPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPlugin
  * JD-Core Version:    0.7.0.1
  */

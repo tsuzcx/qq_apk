@@ -18,7 +18,7 @@ public class URLTextImageView
   public String e;
   int i;
   public int j = 0;
-  int k = 2131165559;
+  int k = 2131165535;
   
   public URLTextImageView(Context paramContext)
   {
@@ -53,8 +53,9 @@ public class URLTextImageView
         this.i = ((getHeight() - localFontMetricsInt.bottom + localFontMetricsInt.top) / 2 - localFontMetricsInt.top);
       }
       int m = this.i;
-      if (this.jdField_b_of_type_Float != 0.0F) {
-        m = (int)(this.jdField_b_of_type_Float * getHeight());
+      float f = this.jdField_b_of_type_Float;
+      if (f != 0.0F) {
+        m = (int)(f * getHeight());
       }
       paramCanvas.drawText(this.e, getWidth() / 2, m, this.jdField_b_of_type_AndroidGraphicsPaint);
     }
@@ -63,8 +64,9 @@ public class URLTextImageView
   public void setTextColor(int paramInt)
   {
     this.k = paramInt;
-    if (this.jdField_b_of_type_AndroidGraphicsPaint != null) {
-      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(getContext().getResources().getColor(this.k));
+    Paint localPaint = this.jdField_b_of_type_AndroidGraphicsPaint;
+    if (localPaint != null) {
+      localPaint.setColor(getContext().getResources().getColor(this.k));
     }
   }
   
@@ -80,7 +82,7 @@ public class URLTextImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.URLTextImageView
  * JD-Core Version:    0.7.0.1
  */

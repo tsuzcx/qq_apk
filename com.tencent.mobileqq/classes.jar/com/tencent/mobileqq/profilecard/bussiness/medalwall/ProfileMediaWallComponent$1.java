@@ -10,19 +10,15 @@ class ProfileMediaWallComponent$1
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
+    if (paramMessage.what == 100) {
       ProfileMediaWallComponent.access$000(this.this$0, paramMessage);
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.medalwall.ProfileMediaWallComponent.1
  * JD-Core Version:    0.7.0.1
  */

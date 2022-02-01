@@ -7,11 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
+import com.tencent.common.galleryactivity.URLImageView2;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
@@ -30,7 +30,8 @@ public class BigImageAdapter
   
   public String a(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size()) && (paramInt >= 0)) {
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if ((localList != null) && (paramInt < localList.size()) && (paramInt >= 0)) {
       return (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
     return null;
@@ -38,25 +39,32 @@ public class BigImageAdapter
   
   public String a(String paramString)
   {
-    String str;
     if (TextUtils.isEmpty(paramString)) {
-      str = "";
+      return "";
     }
-    do
+    if (paramString.startsWith("//"))
     {
-      return str;
-      if (paramString.startsWith("//")) {
-        return "file:/" + paramString;
-      }
-      str = paramString;
-    } while (!paramString.startsWith("/"));
-    return "file://" + paramString;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("file:/");
+      ((StringBuilder)localObject).append(paramString);
+      return ((StringBuilder)localObject).toString();
+    }
+    Object localObject = paramString;
+    if (paramString.startsWith("/"))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("file://");
+      ((StringBuilder)localObject).append(paramString);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    return localObject;
   }
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList != null) {
+      return localList.size();
     }
     return 0;
   }
@@ -68,51 +76,71 @@ public class BigImageAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    Object localObject1;
     if (paramView != null)
     {
       localObject1 = paramView;
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localObject1;
     }
-    Object localObject2 = a(a(paramInt));
-    Object localObject3 = (URLDrawable)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("BigImageAdapter", 2, "getView position=" + paramInt + ",cache=" + localObject3 + ",url=" + (String)localObject2);
-    }
-    Object localObject1 = new AbstractImageAdapter.URLImageView2(paramViewGroup.getContext());
-    if ((localObject3 != null) && (((URLDrawable)localObject3).getStatus() == 1)) {
-      ((ImageView)localObject1).setImageDrawable((Drawable)localObject3);
-    }
-    for (;;)
+    else
     {
-      ((ImageView)localObject1).setContentDescription(HardCodeUtil.a(2131708125) + paramInt);
-      break;
-      if (!TextUtils.isEmpty((CharSequence)localObject2))
+      Object localObject2 = a(a(paramInt));
+      Object localObject3 = (URLDrawable)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getView position=");
+        ((StringBuilder)localObject1).append(paramInt);
+        ((StringBuilder)localObject1).append(",cache=");
+        ((StringBuilder)localObject1).append(localObject3);
+        ((StringBuilder)localObject1).append(",url=");
+        ((StringBuilder)localObject1).append((String)localObject2);
+        QLog.d("BigImageAdapter", 2, ((StringBuilder)localObject1).toString());
+      }
+      localObject1 = new URLImageView2(paramViewGroup.getContext());
+      if ((localObject3 != null) && (((URLDrawable)localObject3).getStatus() == 1))
+      {
+        ((ImageView)localObject1).setImageDrawable((Drawable)localObject3);
+      }
+      else if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
         int i = paramViewGroup.getWidth();
         int j = paramViewGroup.getHeight();
         localObject3 = URLDrawable.URLDrawableOptions.obtain();
         ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = i;
         ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = j;
-        ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
+        ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = URLDrawableHelperConstants.a;
         localObject2 = URLDrawable.getDrawable((String)localObject2, (URLDrawable.URLDrawableOptions)localObject3);
-        switch (((URLDrawable)localObject2).getStatus())
+        int k = ((URLDrawable)localObject2).getStatus();
+        if ((k != 1) && (k != 2) && (k != 3))
         {
-        default: 
           ((URLDrawable)localObject2).setTag(Integer.valueOf(1));
           ((URLDrawable)localObject2).startDownload();
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("BigImageAdapter", 2, "getView position=" + paramInt + ",parentWidth=" + i + ",parentHeight=" + j);
+        if (QLog.isColorLevel())
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("getView position=");
+          ((StringBuilder)localObject3).append(paramInt);
+          ((StringBuilder)localObject3).append(",parentWidth=");
+          ((StringBuilder)localObject3).append(i);
+          ((StringBuilder)localObject3).append(",parentHeight=");
+          ((StringBuilder)localObject3).append(j);
+          QLog.d("BigImageAdapter", 2, ((StringBuilder)localObject3).toString());
         }
         ((ImageView)localObject1).setImageDrawable((Drawable)localObject2);
       }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(HardCodeUtil.a(2131708144));
+      ((StringBuilder)localObject2).append(paramInt);
+      ((ImageView)localObject1).setContentDescription(((StringBuilder)localObject2).toString());
     }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gallery.view.BigImageAdapter
  * JD-Core Version:    0.7.0.1
  */

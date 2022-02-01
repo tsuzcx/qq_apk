@@ -39,7 +39,7 @@
                         <TextView android:id="@id/jz7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" style="@style/kd" />
                     </LinearLayout>
                 </LinearLayout>
-                <TextView android:id="@id/oao" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="15.0dip" style="@style/kd" />
+                <TextView android:id="@id/oe0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="15.0dip" style="@style/kd" />
                 <LinearLayout android:orientation="vertical" android:id="@id/jz3" android:background="@drawable/common_strip_setting_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:isScrollContainer="true">
                     <LinearLayout android:orientation="horizontal" android:id="@id/i86" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="44.0dip">
                         <TextView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/i88" android:paddingLeft="15.0dip" android:layout_width="89.0dip" android:layout_height="wrap_content" style="@style/kj" />
@@ -48,7 +48,7 @@
                     <RelativeLayout android:orientation="vertical" android:background="@color/xn" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="15.0dip" />
                     <LinearLayout android:orientation="horizontal" android:id="@id/i8b" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="44.0dip">
                         <TextView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:paddingLeft="15.0dip" android:layout_width="89.0dip" android:layout_height="wrap_content" android:text="@string/esf" style="@style/kj" />
-                        <com.tencent.mobileqq.widget.AnimationTextView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/i8c" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" style="@style/kk" />
+                        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/i8c" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
                     </LinearLayout>
                     <RelativeLayout android:orientation="vertical" android:background="@color/xn" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="15.0dip" />
                     <LinearLayout android:orientation="horizontal" android:id="@id/i84" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="44.0dip">
@@ -62,7 +62,7 @@
                     </LinearLayout>
                 </LinearLayout>
                 <TextView android:id="@id/bh6" android:background="@drawable/common_strip_setting_bg" android:padding="10.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" style="@style/kk" />
-                <TextView android:layout_gravity="center" android:id="@id/jz1" android:paddingTop="20.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/vr" />
+                <TextView android:layout_gravity="center" android:id="@id/jz1" android:paddingTop="20.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a9n" />
                 <LinearLayout android:orientation="horizontal" android:id="@id/jzi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="12.0dip">
                     <Button android:id="@id/i5s" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/q7u" android:layout_weight="1.0" style="@style/bd" />
                     <Button android:id="@id/jb" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:text="@string/q7t" android:layout_weight="1.0" style="@style/b9" />

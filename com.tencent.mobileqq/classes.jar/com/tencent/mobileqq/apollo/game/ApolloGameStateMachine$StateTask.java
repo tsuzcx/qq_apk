@@ -20,16 +20,17 @@ public class ApolloGameStateMachine$StateTask
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaLangRunnable != null)
+    Runnable localRunnable = this.jdField_a_of_type_JavaLangRunnable;
+    if (localRunnable != null)
     {
-      this.jdField_a_of_type_JavaLangRunnable.run();
+      localRunnable.run();
       a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloGameStateMachine.StateTask
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,6 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -59,134 +58,154 @@ public final class be
       }
       label32:
       this.v = new bh(0, "");
-      for (;;)
+      try
       {
-        Object localObject4;
-        Object localObject3;
-        long l2;
-        try
-        {
-          Object localObject1 = new URL(this.b);
-          String str1 = ((URL)localObject1).getHost();
-          this.w = new bd((URL)localObject1, this.b);
-          boolean bool = ((URL)localObject1).getProtocol().toLowerCase().startsWith("https");
-          List localList = this.w.a(this.y, bool);
-          int n = localList.size();
-          long l1 = SystemClock.elapsedRealtime();
-          if (n > 1)
-          {
-            i = this.f / 2;
-            int j = 0;
-            if (j >= n) {
-              break;
-            }
-            this.n.incrementAndGet();
-            this.z = ((ad)localList.get(j));
-            localObject1 = this.z;
-            if ((((ad)localObject1).e == 3) || (((ad)localObject1).e == 4)) {
-              break label597;
-            }
-            k = 1;
-            if (k != 0) {
-              this.s = true;
-            }
-            localObject4 = this.w;
-            localObject1 = this.z;
-            if (!((ad)localObject1).b()) {
-              break label602;
-            }
-            localObject3 = ((bd)localObject4).b;
-            this.B = ((String)localObject3);
-            this.u = new bi(str1, this.B, this.c, this.d, this.e, i, this.h);
-            if ((j != 0) || (this.r)) {
-              this.u.r = true;
-            }
-            if ((ao.j()) && (j != 0)) {
-              this.u.p = true;
-            }
-            this.u.q = this.n.get();
-            this.v = this.u.a();
-            if ((this.s) && (this.v.a != 0) && (ao.i())) {
-              bb.a(str1, this.z, this.v.a, this.v.c);
-            }
-            int m = (int)(this.f - (SystemClock.elapsedRealtime() - l1));
-            if (((this.v.a != 0) || (this.v.c < 200) || (this.v.c >= 400)) && (this.v.a != -20) && (this.v.a != -300) && (this.v.a != -306) && (this.v.a != -292) && (j != n - 1) && (m > 200)) {
-              break label871;
-            }
-            i = 1;
-            k = i;
-            if (i == 0)
-            {
-              k = i;
-              if (this.v.a == -4)
-              {
-                k = as.a("direct_nonet_retry_gap", 0, 10000, 3000);
-                l2 = this.u.o;
-                if (l2 < k) {
-                  break label876;
-                }
-                k = 1;
-              }
-            }
-            if (k != 0) {
-              break;
-            }
-            a(true);
-            j += 1;
-            i = m;
-            continue;
-          }
+        localObject1 = new URL(this.b);
+        String str1 = ((URL)localObject1).getHost();
+        this.w = new bd((URL)localObject1, this.b);
+        boolean bool = ((URL)localObject1).getProtocol().toLowerCase().startsWith("https");
+        List localList = this.w.a(this.y, bool);
+        int n = localList.size();
+        long l1 = SystemClock.elapsedRealtime();
+        int i;
+        if (n > 1) {
+          i = this.f / 2;
+        } else {
           i = this.f;
         }
-        catch (MalformedURLException localMalformedURLException)
+        int j = 0;
+        while (j < n)
         {
-          this.v.a = -300;
-          return this.v;
-        }
-        continue;
-        label597:
-        int k = 0;
-        continue;
-        label602:
-        String str2;
-        if (!((bd)localObject4).a.getProtocol().startsWith("https"))
-        {
-          localObject3 = "http://" + localMalformedURLException.a + ":" + localMalformedURLException.b;
-          label653:
-          str2 = ((bd)localObject4).a.getFile();
-          localObject2 = localObject3;
-          if (!TextUtils.isEmpty(str2)) {
-            if (!str2.startsWith("/")) {
-              break label840;
+          this.n.incrementAndGet();
+          this.z = ((ad)localList.get(j));
+          localObject1 = this.z;
+          if ((((ad)localObject1).e != 3) && (((ad)localObject1).e != 4)) {
+            k = 1;
+          } else {
+            k = 0;
+          }
+          if (k != 0) {
+            this.s = true;
+          }
+          Object localObject3 = this.w;
+          Object localObject2 = this.z;
+          if (((ad)localObject2).b())
+          {
+            localObject1 = ((bd)localObject3).b;
+          }
+          else
+          {
+            if (!((bd)localObject3).a.getProtocol().startsWith("https"))
+            {
+              localObject1 = new StringBuilder("http://");
+              ((StringBuilder)localObject1).append(((ad)localObject2).a);
+              ((StringBuilder)localObject1).append(":");
+              k = ((ad)localObject2).b;
+              ((StringBuilder)localObject1).append(k);
+            }
+            for (;;)
+            {
+              localObject2 = ((StringBuilder)localObject1).toString();
+              break label398;
+              if (((bd)localObject3).c != 0)
+              {
+                localObject1 = new StringBuilder("https://");
+                ((StringBuilder)localObject1).append(((ad)localObject2).a);
+                ((StringBuilder)localObject1).append(":");
+                k = ((bd)localObject3).c;
+                break;
+              }
+              localObject1 = new StringBuilder("https://");
+              ((StringBuilder)localObject1).append(((ad)localObject2).a);
+              ((StringBuilder)localObject1).append(":443");
+            }
+            label398:
+            String str2 = ((bd)localObject3).a.getFile();
+            localObject1 = localObject2;
+            if (!TextUtils.isEmpty(str2)) {
+              if (str2.startsWith("/"))
+              {
+                localObject1 = new StringBuilder();
+                ((StringBuilder)localObject1).append((String)localObject2);
+                ((StringBuilder)localObject1).append(str2);
+                localObject1 = ((StringBuilder)localObject1).toString();
+              }
+              else
+              {
+                localObject1 = new StringBuilder();
+                ((StringBuilder)localObject1).append((String)localObject2);
+                ((StringBuilder)localObject1).append("/");
+                ((StringBuilder)localObject1).append(str2);
+                localObject1 = ((StringBuilder)localObject1).toString();
+              }
+            }
+            localObject2 = ((bd)localObject3).a.getRef();
+            if (!TextUtils.isEmpty((CharSequence)localObject2))
+            {
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append((String)localObject1);
+              ((StringBuilder)localObject3).append("#");
+              ((StringBuilder)localObject3).append((String)localObject2);
+              localObject1 = ((StringBuilder)localObject3).toString();
             }
           }
-        }
-        label840:
-        for (Object localObject2 = (String)localObject3 + str2;; localObject2 = (String)localObject3 + "/" + str2)
-        {
-          localObject4 = ((bd)localObject4).a.getRef();
-          localObject3 = localObject2;
-          if (TextUtils.isEmpty((CharSequence)localObject4)) {
+          this.B = ((String)localObject1);
+          this.u = new bi(str1, this.B, this.c, this.d, this.e, i, this.h);
+          if ((j != 0) || (this.r)) {
+            this.u.r = true;
+          }
+          if ((ao.j()) && (j != 0)) {
+            this.u.p = true;
+          }
+          this.u.q = this.n.get();
+          this.v = this.u.a();
+          if ((this.s) && (this.v.a != 0) && (ao.i())) {
+            bb.a(str1, this.z, this.v.a, this.v.c);
+          }
+          int m = (int)(this.f - (SystemClock.elapsedRealtime() - l1));
+          if (((this.v.a != 0) || (this.v.c < 200) || (this.v.c >= 400)) && (this.v.a != -20) && (this.v.a != -300) && (this.v.a != -306) && (this.v.a != -292) && (j != n - 1) && (m > 200)) {
+            i = 0;
+          } else {
+            i = 1;
+          }
+          int k = i;
+          if (i == 0)
+          {
+            k = i;
+            if (this.v.a == -4)
+            {
+              k = as.a("direct_nonet_retry_gap", 0, 10000, 3000);
+              long l2 = this.u.o;
+              long l3 = k;
+              if (l2 >= l3)
+              {
+                k = 1;
+              }
+              else
+              {
+                SystemClock.sleep(dg.a((int)(l3 - l2), 200, k, 200));
+                k = i;
+              }
+            }
+          }
+          if (k != 0) {
             break;
           }
-          localObject3 = (String)localObject2 + "#" + (String)localObject4;
-          break;
-          if (((bd)localObject4).c != 0)
-          {
-            localObject3 = "https://" + ((ad)localObject2).a + ":" + ((bd)localObject4).c;
-            break label653;
-          }
-          localObject3 = "https://" + ((ad)localObject2).a + ":443";
-          break label653;
+          a(true);
+          j += 1;
+          i = m;
         }
-        label871:
-        int i = 0;
-        continue;
-        label876:
-        SystemClock.sleep(dg.a((int)(k - l2), 200, k, 200));
-        k = i;
+        return this.v;
       }
-      return this.v;
+      catch (MalformedURLException localMalformedURLException)
+      {
+        Object localObject1;
+        label948:
+        break label948;
+      }
+      localObject1 = this.v;
+      ((bh)localObject1).a = -300;
+      return localObject1;
     }
     catch (Exception localException)
     {
@@ -196,85 +215,22 @@ public final class be
   
   public final void a(boolean paramBoolean)
   {
-    int i = 1;
-    HashMap localHashMap1;
-    HashMap localHashMap2;
-    StringBuilder localStringBuilder;
-    if (this.u != null)
-    {
-      if (this.j) {
-        this.u.j = true;
-      }
-      localHashMap1 = new HashMap();
-      if (paramBoolean) {
-        break label505;
-      }
-      localHashMap1.put("B22", this.l);
-      if (!dg.a(this.p)) {
-        localHashMap1.put("B15", this.p);
-      }
-      if (!dg.a(this.A)) {
-        localHashMap1.put("B54", this.A);
-      }
-      localHashMap2 = new HashMap();
-      localHashMap2.put("B82", this.h);
-      if (this.r)
-      {
-        localHashMap1.put("B52", "1");
-        localHashMap1.put("B58", this.t);
-      }
-      localHashMap2.put("B44", this.a);
-      if ((!TextUtils.isEmpty(this.a)) && (!this.a.equals(this.B))) {
-        localHashMap2.put("B49", this.B);
-      }
-      if (this.z != null)
-      {
-        if (!this.z.b()) {
-          localHashMap2.put("B10", this.z.a());
-        }
-        if (this.z.c != -1) {
-          localHashMap2.put("B45", this.z.c);
-        }
-        localHashMap2.put("B202", this.z.e);
-        localHashMap2.put("B204", this.z.d);
-        localStringBuilder = new StringBuilder();
-        if (!this.s) {
-          break label521;
-        }
-      }
-    }
-    for (;;)
-    {
-      localHashMap2.put("B203", i);
-      localHashMap2.put("B53", this.n.get());
-      if (!TextUtils.isEmpty(this.w.d)) {
-        localHashMap2.put("B26", this.w.d);
-      }
-      if (this.k) {
-        localHashMap2.put("B97", "1");
-      }
-      this.u.a(localHashMap1, localHashMap2);
-      return;
-      label505:
-      localHashMap1.put("B46", "1");
-      break;
-      label521:
-      i = 0;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public final boolean b()
   {
     this.m = true;
-    if (this.u != null) {
-      this.u.b();
+    bi localbi = this.u;
+    if (localbi != null) {
+      localbi.b();
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.be
  * JD-Core Version:    0.7.0.1
  */

@@ -18,35 +18,41 @@ public class TbsMediaFactory
   
   private void a()
   {
-    if (this.a == null) {
-      Log.e("TbsVideo", "TbsVideo needs context !!");
-    }
-    do
+    if (this.a == null)
     {
+      Log.e("TbsVideo", "TbsVideo needs context !!");
       return;
-      if (this.b == null)
-      {
-        f.a(true).a(this.a, false, false, null);
-        this.b = f.a(true).a();
-        if (this.b != null) {
-          this.c = this.b.b();
-        }
+    }
+    if (this.b == null)
+    {
+      f.a(true).a(this.a, false, false, null);
+      this.b = f.a(true).a();
+      v localv = this.b;
+      if (localv != null) {
+        this.c = localv.b();
       }
-    } while ((this.b != null) && (this.c != null));
+    }
+    if ((this.b != null) && (this.c != null)) {
+      return;
+    }
     throw new RuntimeException("tbs core dex(s) load failure !!!");
   }
   
   public TbsMediaPlayer createPlayer()
   {
-    if ((this.b == null) || (this.c == null)) {
-      throw new RuntimeException("tbs core dex(s) did not loaded !!!");
+    if (this.b != null)
+    {
+      DexLoader localDexLoader = this.c;
+      if (localDexLoader != null) {
+        return new TbsMediaPlayer(new q(localDexLoader, this.a));
+      }
     }
-    return new TbsMediaPlayer(new q(this.c, this.a));
+    throw new RuntimeException("tbs core dex(s) did not loaded !!!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsMediaFactory
  * JD-Core Version:    0.7.0.1
  */

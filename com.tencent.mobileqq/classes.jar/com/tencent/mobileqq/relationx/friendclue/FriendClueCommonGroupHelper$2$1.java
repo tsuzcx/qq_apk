@@ -11,13 +11,13 @@ class FriendClueCommonGroupHelper$2$1
   
   public void run()
   {
-    String str = FriendClueCommonGroupHelper.a(this.a.a).getResources().getString(2131693477);
+    String str = FriendClueCommonGroupHelper.a(this.a.a).getResources().getString(2131693432);
     QQToast.a(FriendClueCommonGroupHelper.a(this.a.a), 1, str, 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.friendclue.FriendClueCommonGroupHelper.2.1
  * JD-Core Version:    0.7.0.1
  */

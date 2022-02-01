@@ -59,70 +59,79 @@ public class AIOFilePicData
   public File a(int paramInt)
   {
     Object localObject;
-    switch (paramInt)
+    if (paramInt != 16)
     {
-    case 17: 
-    case 19: 
-    default: 
-      localObject = null;
+      if (paramInt != 18)
+      {
+        if (paramInt != 20) {
+          localObject = null;
+        } else {
+          localObject = this.jdField_d_of_type_JavaLangString;
+        }
+      }
+      else {
+        localObject = this.jdField_c_of_type_JavaLangString;
+      }
     }
-    while ((localObject != null) && (!((String)localObject).equals("I:N")))
+    else {
+      localObject = this.jdField_b_of_type_JavaLangString;
+    }
+    if ((localObject != null) && (!((String)localObject).equals("I:N")))
     {
       localObject = new File((String)localObject);
-      if (!((File)localObject).exists()) {
-        break;
+      if (((File)localObject).exists()) {
+        return localObject;
       }
-      return localObject;
-      localObject = this.jdField_b_of_type_JavaLangString;
-      continue;
-      localObject = this.jdField_c_of_type_JavaLangString;
-      continue;
-      localObject = this.jdField_d_of_type_JavaLangString;
     }
     return null;
   }
   
   public String a(int paramInt)
   {
-    Object localObject2 = null;
     String str;
-    switch (paramInt)
+    if (paramInt != 16)
     {
-    case 17: 
-    case 19: 
-    default: 
-      str = null;
-    }
-    for (;;)
-    {
-      Object localObject1 = localObject2;
-      if (str != null)
+      if (paramInt != 18)
       {
-        localObject1 = localObject2;
-        if (!str.equals("I:N"))
-        {
-          if (str.startsWith("/")) {
-            break;
-          }
-          localObject1 = "file:/" + str;
+        if (paramInt != 20) {
+          str = null;
+        } else {
+          str = this.jdField_d_of_type_JavaLangString;
         }
       }
-      return localObject1;
+      else {
+        str = this.jdField_c_of_type_JavaLangString;
+      }
+    }
+    else {
       str = this.jdField_b_of_type_JavaLangString;
-      continue;
-      str = this.jdField_c_of_type_JavaLangString;
-      continue;
-      str = this.jdField_d_of_type_JavaLangString;
     }
-    if (str.startsWith("//")) {
-      return "file:" + str;
+    if ((str != null) && (!str.equals("I:N")))
+    {
+      if (!str.startsWith("/"))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("file:/");
+        localStringBuilder.append(str);
+        return localStringBuilder.toString();
+      }
+      if (str.startsWith("//"))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("file:");
+        localStringBuilder.append(str);
+        return localStringBuilder.toString();
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("file:");
+      localStringBuilder.append(str);
+      return localStringBuilder.toString();
     }
-    return "file:" + str;
+    return null;
   }
   
   public void a(Parcel paramParcel)
   {
-    boolean bool = true;
     super.a(paramParcel);
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_a_of_type_Int = paramParcel.readInt();
@@ -138,17 +147,16 @@ public class AIOFilePicData
     this.jdField_b_of_type_Long = Long.valueOf(paramParcel.readString()).longValue();
     this.jdField_e_of_type_Boolean = Boolean.valueOf(paramParcel.readString()).booleanValue();
     this.jdField_h_of_type_JavaLangString = paramParcel.readString();
-    if (paramParcel.readInt() == 1) {}
-    for (;;)
-    {
-      this.jdField_f_of_type_Boolean = bool;
-      this.i = paramParcel.readString();
-      this.jdField_c_of_type_Int = paramParcel.readInt();
-      this.jdField_d_of_type_Int = paramParcel.readInt();
-      this.jdField_e_of_type_Int = paramParcel.readInt();
-      return;
+    int j = paramParcel.readInt();
+    boolean bool = true;
+    if (j != 1) {
       bool = false;
     }
+    this.jdField_f_of_type_Boolean = bool;
+    this.i = paramParcel.readString();
+    this.jdField_c_of_type_Int = paramParcel.readInt();
+    this.jdField_d_of_type_Int = paramParcel.readInt();
+    this.jdField_e_of_type_Int = paramParcel.readInt();
   }
   
   public void a(QQAppInterface paramQQAppInterface)
@@ -156,48 +164,40 @@ public class AIOFilePicData
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramQQAppInterface.getFileManagerDataCenter().a(this.jdField_f_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null)
+    paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    if (paramQQAppInterface != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strMiddleThumPath == null) {
-        break label181;
+      paramQQAppInterface = paramQQAppInterface.strMiddleThumPath;
+      String str = "I:N";
+      if (paramQQAppInterface != null) {
+        paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strMiddleThumPath;
+      } else {
+        paramQQAppInterface = "I:N";
       }
-      paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strMiddleThumPath;
       this.jdField_b_of_type_JavaLangString = paramQQAppInterface;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath == null) {
-        break label187;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath != null) {
+        paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath;
+      } else {
+        paramQQAppInterface = "I:N";
       }
-      paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath;
-      label78:
       this.jdField_c_of_type_JavaLangString = paramQQAppInterface;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath() == null) {
-        break label193;
+      paramQQAppInterface = str;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath() != null) {
+        paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath();
       }
-      paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath();
-      label101:
       this.jdField_d_of_type_JavaLangString = paramQQAppInterface;
       this.g = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status != 16) {
-        break label199;
+      boolean bool;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status == 16) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label181:
-    label187:
-    label193:
-    label199:
-    for (boolean bool = true;; bool = false)
-    {
       this.jdField_d_of_type_Boolean = bool;
       this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
       this.jdField_h_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
       this.jdField_b_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastSuccessTime;
       this.jdField_e_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.sendCloudUnsuccessful();
-      return;
-      paramQQAppInterface = "I:N";
-      break;
-      paramQQAppInterface = "I:N";
-      break label78;
-      paramQQAppInterface = "I:N";
-      break label101;
     }
   }
   
@@ -206,35 +206,29 @@ public class AIOFilePicData
     if (paramDataLineMsgRecord == null) {
       return;
     }
-    if (paramDataLineMsgRecord.thumbPath != null)
-    {
-      str = paramDataLineMsgRecord.thumbPath;
-      this.jdField_b_of_type_JavaLangString = str;
-      if (paramDataLineMsgRecord.thumbPath == null) {
-        break label92;
-      }
-      str = paramDataLineMsgRecord.thumbPath;
-      label34:
-      this.jdField_c_of_type_JavaLangString = str;
-      if (paramDataLineMsgRecord.path == null) {
-        break label98;
-      }
+    Object localObject = paramDataLineMsgRecord.thumbPath;
+    String str = "I:N";
+    if (localObject != null) {
+      localObject = paramDataLineMsgRecord.thumbPath;
+    } else {
+      localObject = "I:N";
     }
-    label92:
-    label98:
-    for (String str = paramDataLineMsgRecord.path;; str = "I:N")
-    {
-      this.jdField_d_of_type_JavaLangString = str;
-      this.g = paramDataLineMsgRecord.filename;
-      this.jdField_a_of_type_Long = paramDataLineMsgRecord.filesize;
-      this.jdField_h_of_type_Long = paramDataLineMsgRecord.filesize;
-      this.jdField_e_of_type_Boolean = false;
-      return;
-      str = "I:N";
-      break;
-      str = "I:N";
-      break label34;
+    this.jdField_b_of_type_JavaLangString = ((String)localObject);
+    if (paramDataLineMsgRecord.thumbPath != null) {
+      localObject = paramDataLineMsgRecord.thumbPath;
+    } else {
+      localObject = "I:N";
     }
+    this.jdField_c_of_type_JavaLangString = ((String)localObject);
+    localObject = str;
+    if (paramDataLineMsgRecord.path != null) {
+      localObject = paramDataLineMsgRecord.path;
+    }
+    this.jdField_d_of_type_JavaLangString = ((String)localObject);
+    this.g = paramDataLineMsgRecord.filename;
+    this.jdField_a_of_type_Long = paramDataLineMsgRecord.filesize;
+    this.jdField_h_of_type_Long = paramDataLineMsgRecord.filesize;
+    this.jdField_e_of_type_Boolean = false;
   }
   
   public void a(TroopFileStatusInfo paramTroopFileStatusInfo)
@@ -242,103 +236,58 @@ public class AIOFilePicData
     if (paramTroopFileStatusInfo == null) {
       return;
     }
-    String str;
-    if (paramTroopFileStatusInfo.jdField_d_of_type_JavaLangString != null)
-    {
-      str = paramTroopFileStatusInfo.jdField_d_of_type_JavaLangString;
-      this.jdField_b_of_type_JavaLangString = str;
-      if (paramTroopFileStatusInfo.jdField_c_of_type_JavaLangString == null) {
-        break label108;
-      }
-      str = paramTroopFileStatusInfo.jdField_c_of_type_JavaLangString;
-      label34:
-      this.jdField_c_of_type_JavaLangString = str;
-      if (paramTroopFileStatusInfo.jdField_a_of_type_JavaLangString == null) {
-        break label114;
-      }
-      str = paramTroopFileStatusInfo.jdField_a_of_type_JavaLangString;
-      label51:
-      this.jdField_d_of_type_JavaLangString = str;
-      this.g = paramTroopFileStatusInfo.g;
-      if (paramTroopFileStatusInfo.jdField_b_of_type_Int != 12) {
-        break label120;
-      }
+    Object localObject = paramTroopFileStatusInfo.jdField_d_of_type_JavaLangString;
+    String str = "I:N";
+    if (localObject != null) {
+      localObject = paramTroopFileStatusInfo.jdField_d_of_type_JavaLangString;
+    } else {
+      localObject = "I:N";
     }
-    label108:
-    label114:
-    label120:
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_d_of_type_Boolean = bool;
-      this.jdField_a_of_type_Long = paramTroopFileStatusInfo.jdField_c_of_type_Long;
-      this.jdField_h_of_type_Long = paramTroopFileStatusInfo.jdField_c_of_type_Long;
-      this.jdField_e_of_type_Boolean = false;
-      return;
-      str = "I:N";
-      break;
-      str = "I:N";
-      break label34;
-      str = "I:N";
-      break label51;
+    this.jdField_b_of_type_JavaLangString = ((String)localObject);
+    if (paramTroopFileStatusInfo.jdField_c_of_type_JavaLangString != null) {
+      localObject = paramTroopFileStatusInfo.jdField_c_of_type_JavaLangString;
+    } else {
+      localObject = "I:N";
     }
+    this.jdField_c_of_type_JavaLangString = ((String)localObject);
+    localObject = str;
+    if (paramTroopFileStatusInfo.jdField_a_of_type_JavaLangString != null) {
+      localObject = paramTroopFileStatusInfo.jdField_a_of_type_JavaLangString;
+    }
+    this.jdField_d_of_type_JavaLangString = ((String)localObject);
+    this.g = paramTroopFileStatusInfo.g;
+    boolean bool;
+    if (paramTroopFileStatusInfo.jdField_b_of_type_Int == 12) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.jdField_d_of_type_Boolean = bool;
+    this.jdField_a_of_type_Long = paramTroopFileStatusInfo.jdField_c_of_type_Long;
+    this.jdField_h_of_type_Long = paramTroopFileStatusInfo.jdField_c_of_type_Long;
+    this.jdField_e_of_type_Boolean = false;
   }
   
   public boolean a(int paramInt)
   {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    switch (paramInt)
+    if (paramInt != 16)
     {
-    case 17: 
-    case 19: 
-    default: 
-      bool1 = false;
+      if (paramInt != 18) {
+        return paramInt == 20;
+      }
+      return this.jdField_c_of_type_JavaLangString.equals("I:N") ^ true;
     }
-    do
-    {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (!this.jdField_b_of_type_JavaLangString.equals("I:N"));
-      return false;
-      bool1 = bool2;
-    } while (!this.jdField_c_of_type_JavaLangString.equals("I:N"));
-    return false;
+    return this.jdField_b_of_type_JavaLangString.equals("I:N") ^ true;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_f_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeString(this.g);
-    paramParcel.writeString(String.valueOf(this.jdField_d_of_type_Boolean));
-    paramParcel.writeString(String.valueOf(this.jdField_a_of_type_Long));
-    paramParcel.writeString(String.valueOf(this.jdField_b_of_type_Long));
-    paramParcel.writeString(String.valueOf(this.jdField_e_of_type_Boolean));
-    paramParcel.writeString(this.jdField_h_of_type_JavaLangString);
-    if (this.jdField_f_of_type_Boolean) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramParcel.writeInt(paramInt);
-      paramParcel.writeString(this.i);
-      paramParcel.writeInt(this.jdField_c_of_type_Int);
-      paramParcel.writeInt(this.jdField_d_of_type_Int);
-      paramParcel.writeInt(this.jdField_e_of_type_Int);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOFilePicData
  * JD-Core Version:    0.7.0.1
  */

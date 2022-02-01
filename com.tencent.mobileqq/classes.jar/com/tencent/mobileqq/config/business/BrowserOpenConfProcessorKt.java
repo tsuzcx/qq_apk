@@ -25,7 +25,6 @@ public final class BrowserOpenConfProcessorKt
   
   private static final BrowserOpenBean b(String paramString)
   {
-    int k = 0;
     if (paramString == null) {
       return null;
     }
@@ -37,7 +36,7 @@ public final class BrowserOpenConfProcessorKt
       paramString = new JSONObject(paramString);
       localObject1 = paramString.optJSONArray("set_top_app");
       if (localObject1 == null) {
-        break label294;
+        break label270;
       }
       i = ((JSONArray)localObject1).length();
     }
@@ -75,12 +74,15 @@ public final class BrowserOpenConfProcessorKt
     else
     {
       paramString = paramString.optJSONArray("black_list_app");
-      if (paramString != null)
-      {
-        i = paramString.length();
-        j = k;
+      if (paramString == null) {
+        break label284;
       }
-      while (j < i)
+      i = paramString.length();
+      break label286;
+    }
+    for (;;)
+    {
+      if (j < i)
       {
         localObject1 = paramString.getJSONObject(j);
         if (localObject1 != null)
@@ -91,26 +93,27 @@ public final class BrowserOpenConfProcessorKt
           ((List)localObject2).add(localObject1);
         }
         j += 1;
-        continue;
-        i = 0;
-        j = k;
       }
-      return localBrowserOpenBean;
-    }
-    for (;;)
-    {
-      j = 0;
-      break;
-      j += 1;
-      break;
-      label294:
-      i = 0;
+      else
+      {
+        return localBrowserOpenBean;
+        label270:
+        i = 0;
+        j = 0;
+        break;
+        j += 1;
+        break;
+        label284:
+        i = 0;
+        label286:
+        j = 0;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.BrowserOpenConfProcessorKt
  * JD-Core Version:    0.7.0.1
  */

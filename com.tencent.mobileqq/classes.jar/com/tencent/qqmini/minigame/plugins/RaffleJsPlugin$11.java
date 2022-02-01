@@ -22,7 +22,7 @@ class RaffleJsPlugin$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.RaffleJsPlugin.11
  * JD-Core Version:    0.7.0.1
  */

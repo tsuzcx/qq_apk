@@ -18,14 +18,14 @@ final class OperatorEagerConcatMap$EagerInnerSubscriber<T>
   public OperatorEagerConcatMap$EagerInnerSubscriber(OperatorEagerConcatMap.EagerOuterSubscriber<?, T> paramEagerOuterSubscriber, int paramInt)
   {
     this.parent = paramEagerOuterSubscriber;
-    if (UnsafeAccess.isUnsafeAvailable()) {}
-    for (paramEagerOuterSubscriber = new SpscArrayQueue(paramInt);; paramEagerOuterSubscriber = new SpscAtomicArrayQueue(paramInt))
-    {
-      this.queue = paramEagerOuterSubscriber;
-      this.nl = NotificationLite.instance();
-      request(paramInt);
-      return;
+    if (UnsafeAccess.isUnsafeAvailable()) {
+      paramEagerOuterSubscriber = new SpscArrayQueue(paramInt);
+    } else {
+      paramEagerOuterSubscriber = new SpscAtomicArrayQueue(paramInt);
     }
+    this.queue = paramEagerOuterSubscriber;
+    this.nl = NotificationLite.instance();
+    request(paramInt);
   }
   
   public void onCompleted()
@@ -54,7 +54,7 @@ final class OperatorEagerConcatMap$EagerInnerSubscriber<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorEagerConcatMap.EagerInnerSubscriber
  * JD-Core Version:    0.7.0.1
  */

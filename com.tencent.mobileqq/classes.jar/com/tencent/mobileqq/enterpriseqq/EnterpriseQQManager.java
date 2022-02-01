@@ -27,7 +27,7 @@ import java.util.List;
 
 public class EnterpriseQQManager
 {
-  private static EnterpriseQQManager jdField_a_of_type_ComTencentMobileqqEnterpriseqqEnterpriseQQManager = null;
+  private static EnterpriseQQManager jdField_a_of_type_ComTencentMobileqqEnterpriseqqEnterpriseQQManager;
   private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
   private static byte[] jdField_b_of_type_ArrayOfByte = new byte[0];
   private double jdField_a_of_type_Double = 0.0D;
@@ -52,52 +52,55 @@ public class EnterpriseQQManager
   
   public static EnterpriseQQManager a(QQAppInterface paramQQAppInterface)
   {
-    if (jdField_a_of_type_ComTencentMobileqqEnterpriseqqEnterpriseQQManager == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
-    {
-      if (jdField_a_of_type_ComTencentMobileqqEnterpriseqqEnterpriseQQManager == null) {
-        jdField_a_of_type_ComTencentMobileqqEnterpriseqqEnterpriseQQManager = new EnterpriseQQManager(paramQQAppInterface);
+    if (jdField_a_of_type_ComTencentMobileqqEnterpriseqqEnterpriseQQManager == null) {
+      synchronized (jdField_a_of_type_ArrayOfByte)
+      {
+        if (jdField_a_of_type_ComTencentMobileqqEnterpriseqqEnterpriseQQManager == null) {
+          jdField_a_of_type_ComTencentMobileqqEnterpriseqqEnterpriseQQManager = new EnterpriseQQManager(paramQQAppInterface);
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqEnterpriseqqEnterpriseQQManager;
     }
+    return jdField_a_of_type_ComTencentMobileqqEnterpriseqqEnterpriseQQManager;
   }
   
   private static void a(Context paramContext, QQAppInterface paramQQAppInterface, String paramString, StructMsg.ButtonInfo paramButtonInfo)
   {
-    StringBuilder localStringBuilder = new StringBuilder(paramButtonInfo.url.get());
-    if (localStringBuilder.indexOf("?") < 0) {
-      localStringBuilder.append("?");
-    }
-    for (;;)
-    {
-      localStringBuilder.append("uin=" + paramQQAppInterface.getCurrentAccountUin());
-      localStringBuilder.append("&puin=" + paramString);
-      paramButtonInfo = new Bundle();
-      paramButtonInfo.putString("url", localStringBuilder.toString());
-      paramButtonInfo.putString("uin", paramQQAppInterface.getCurrentAccountUin());
-      paramButtonInfo.putString("puin", paramString);
-      paramButtonInfo.putString("assignBackText", paramContext.getResources().getString(2131690778));
-      if (paramString.equalsIgnoreCase("2632129500")) {
-        paramButtonInfo.putBoolean("hide_operation_bar", true);
-      }
-      paramContext = new ActivityURIRequest(paramContext, "/pubaccount/browser");
-      paramContext.extra().putAll(paramButtonInfo);
-      QRoute.startUri(paramContext, null);
-      return;
-      if (localStringBuilder.indexOf("?") < localStringBuilder.length() - 1) {
-        if (localStringBuilder.indexOf("&") < 0) {
-          localStringBuilder.append("&");
-        } else if (localStringBuilder.lastIndexOf("&") < localStringBuilder.length() - 1) {
-          localStringBuilder.append("&");
-        }
+    paramButtonInfo = new StringBuilder(paramButtonInfo.url.get());
+    if (paramButtonInfo.indexOf("?") < 0) {
+      paramButtonInfo.append("?");
+    } else if (paramButtonInfo.indexOf("?") < paramButtonInfo.length() - 1) {
+      if (paramButtonInfo.indexOf("&") < 0) {
+        paramButtonInfo.append("&");
+      } else if (paramButtonInfo.lastIndexOf("&") < paramButtonInfo.length() - 1) {
+        paramButtonInfo.append("&");
       }
     }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("uin=");
+    ((StringBuilder)localObject).append(paramQQAppInterface.getCurrentAccountUin());
+    paramButtonInfo.append(((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("&puin=");
+    ((StringBuilder)localObject).append(paramString);
+    paramButtonInfo.append(((StringBuilder)localObject).toString());
+    localObject = new Bundle();
+    ((Bundle)localObject).putString("url", paramButtonInfo.toString());
+    ((Bundle)localObject).putString("uin", paramQQAppInterface.getCurrentAccountUin());
+    ((Bundle)localObject).putString("puin", paramString);
+    ((Bundle)localObject).putString("assignBackText", paramContext.getResources().getString(2131690706));
+    if (paramString.equalsIgnoreCase("2632129500")) {
+      ((Bundle)localObject).putBoolean("hide_operation_bar", true);
+    }
+    paramContext = new ActivityURIRequest(paramContext, "/pubaccount/browser");
+    paramContext.extra().putAll((Bundle)localObject);
+    QRoute.startUri(paramContext, null);
   }
   
   public List<StructMsg.ButtonInfo> a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqEnterpriseqqEnterPriseQQCache != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqEnterpriseqqEnterPriseQQCache.a(paramString);
+    paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqEnterpriseqqEnterPriseQQCache;
+    if (paramQQAppInterface != null) {
+      return paramQQAppInterface.a(paramString);
     }
     return null;
   }
@@ -157,15 +160,15 @@ public class EnterpriseQQManager
   
   public void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, StructMsg.GetCRMMenuResponse paramGetCRMMenuResponse)
   {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {}
-    long l;
-    do
+    if (paramQQAppInterface != null)
     {
-      return;
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
       if (this.jdField_a_of_type_ComTencentMobileqqEnterpriseqqEnterPriseQQCache == null) {
         this.jdField_a_of_type_ComTencentMobileqqEnterpriseqqEnterPriseQQCache = new EnterPriseQQCache();
       }
-      l = System.currentTimeMillis();
+      long l = System.currentTimeMillis();
       if ((this.jdField_a_of_type_ComTencentMobileqqEnterpriseqqEnterPriseQQCache.a(paramString) != paramInt) && (paramGetCRMMenuResponse != null))
       {
         List localList = paramGetCRMMenuResponse.button_info.get();
@@ -179,22 +182,25 @@ public class EnterpriseQQManager
           localEnterpriseQQMenuEntity.seqno = paramGetCRMMenuResponse.seqno;
           paramQQAppInterface.update(localEnterpriseQQMenuEntity);
         }
-        for (;;)
+        else
         {
-          this.jdField_a_of_type_ComTencentMobileqqEnterpriseqqEnterPriseQQCache.a(paramString, localList, paramInt, l);
-          return;
           paramQQAppInterface.persist(paramGetCRMMenuResponse);
         }
+        this.jdField_a_of_type_ComTencentMobileqqEnterpriseqqEnterPriseQQCache.a(paramString, localList, paramInt, l);
+        return;
       }
-    } while (paramGetCRMMenuResponse == null);
-    paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    paramGetCRMMenuResponse = (EnterpriseQQMenuEntity)paramQQAppInterface.find(EnterpriseQQMenuEntity.class, paramString);
-    if (paramGetCRMMenuResponse != null)
-    {
-      paramGetCRMMenuResponse.savedDateTime = l;
-      paramQQAppInterface.update(paramGetCRMMenuResponse);
+      if (paramGetCRMMenuResponse != null)
+      {
+        paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+        paramGetCRMMenuResponse = (EnterpriseQQMenuEntity)paramQQAppInterface.find(EnterpriseQQMenuEntity.class, paramString);
+        if (paramGetCRMMenuResponse != null)
+        {
+          paramGetCRMMenuResponse.savedDateTime = l;
+          paramQQAppInterface.update(paramGetCRMMenuResponse);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqEnterpriseqqEnterPriseQQCache.a(paramString, l);
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqEnterpriseqqEnterPriseQQCache.a(paramString, l);
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
@@ -202,8 +208,9 @@ public class EnterpriseQQManager
     if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramString)))
     {
       long l = 0L;
-      if (this.jdField_a_of_type_ComTencentMobileqqEnterpriseqqEnterPriseQQCache != null) {
-        l = this.jdField_a_of_type_ComTencentMobileqqEnterpriseqqEnterPriseQQCache.a(paramString);
+      EnterPriseQQCache localEnterPriseQQCache = this.jdField_a_of_type_ComTencentMobileqqEnterpriseqqEnterPriseQQCache;
+      if (localEnterPriseQQCache != null) {
+        l = localEnterPriseQQCache.a(paramString);
       }
       if ((paramBoolean) || ((!paramBoolean) && (System.currentTimeMillis() - l > 43200000L)))
       {
@@ -217,52 +224,69 @@ public class EnterpriseQQManager
   
   public void a(String arg1, Context paramContext, QQAppInterface paramQQAppInterface, String paramString2, StructMsg.ButtonInfo paramButtonInfo)
   {
-    if (paramButtonInfo == null) {
+    if (paramButtonInfo == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.e("EnterpriseQQManager", 2, "buttoninfo is null.");
       }
-    }
-    int i;
-    do
-    {
       return;
-      switch (paramButtonInfo.type.get())
+    }
+    int i = paramButtonInfo.type.get();
+    if (i != 1)
+    {
+      if (i != 2)
       {
-      default: 
+        if (i != 3) {
+          return;
+        }
+        i = paramButtonInfo.event_id.get();
+        if (i == 1) {
+          return;
+        }
+        if (i == 2) {
+          return;
+        }
+        if (i == 3) {
+          return;
+        }
         return;
-      case 1: 
-        if (paramButtonInfo.is_need_lbs.get())
+      }
+      a(paramContext, paramQQAppInterface, paramString2, paramButtonInfo);
+      return;
+    }
+    if (paramButtonInfo.is_need_lbs.get())
+    {
+      if (System.currentTimeMillis() - this.jdField_a_of_type_Long < this.jdField_b_of_type_Long)
+      {
+        double d1 = this.jdField_a_of_type_Double;
+        if (d1 != 0.0D)
         {
-          if ((System.currentTimeMillis() - this.jdField_a_of_type_Long < this.jdField_b_of_type_Long) && (this.jdField_a_of_type_Double != 0.0D) && (this.jdField_b_of_type_Double != 0.0D))
+          double d2 = this.jdField_b_of_type_Double;
+          if (d2 != 0.0D)
           {
-            a(paramContext, paramQQAppInterface, paramString2, ???, true, this.jdField_a_of_type_Double, this.jdField_b_of_type_Double);
-            return;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-          this.jdField_a_of_type_AndroidContentContext = paramContext;
-          paramContext = new EnterpriseQQManager.EventRequest(this);
-          paramContext.a = paramString2;
-          paramContext.b = ???;
-          synchronized (jdField_b_of_type_ArrayOfByte)
-          {
-            this.jdField_a_of_type_JavaUtilArrayList.add(paramContext);
-            ThreadManager.post(this.jdField_a_of_type_JavaLangRunnable, 8, null, true);
+            a(paramContext, paramQQAppInterface, paramString2, ???, true, d1, d2);
             return;
           }
         }
-        a(paramContext, paramQQAppInterface, paramString2, ???, false, 0.0D, 0.0D);
-        return;
-      case 2: 
-        a(paramContext, paramQQAppInterface, paramString2, paramButtonInfo);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+      this.jdField_a_of_type_AndroidContentContext = paramContext;
+      paramContext = new EnterpriseQQManager.EventRequest(this);
+      paramContext.a = paramString2;
+      paramContext.b = ???;
+      synchronized (jdField_b_of_type_ArrayOfByte)
+      {
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramContext);
+        ThreadManager.post(this.jdField_a_of_type_JavaLangRunnable, 8, null, true);
         return;
       }
-      i = paramButtonInfo.event_id.get();
-    } while ((i == 1) || (i == 2) || (i == 3) || (i != 4));
+    }
+    a(paramContext, paramQQAppInterface, paramString2, ???, false, 0.0D, 0.0D);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager
  * JD-Core Version:    0.7.0.1
  */

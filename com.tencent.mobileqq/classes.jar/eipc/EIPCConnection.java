@@ -58,12 +58,19 @@ public class EIPCConnection
   
   public String toString()
   {
-    return this.logMark + ", EIPCConnection[procName=" + this.procName + ", clientId=" + this.clientId + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.logMark);
+    localStringBuilder.append(", EIPCConnection[procName=");
+    localStringBuilder.append(this.procName);
+    localStringBuilder.append(", clientId=");
+    localStringBuilder.append(this.clientId);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     eipc.EIPCConnection
  * JD-Core Version:    0.7.0.1
  */

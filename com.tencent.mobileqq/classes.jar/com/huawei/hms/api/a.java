@@ -7,12 +7,12 @@ import java.util.List;
 
 class a
 {
-  static final a a = new a();
-  List<Activity> b = new ArrayList(1);
+  static final a b = new a();
+  List<Activity> a = new ArrayList(1);
   
   void a(Activity paramActivity)
   {
-    Iterator localIterator = this.b.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       Activity localActivity = (Activity)localIterator.next();
@@ -20,17 +20,17 @@ class a
         localActivity.finish();
       }
     }
-    this.b.add(paramActivity);
+    this.a.add(paramActivity);
   }
   
   void b(Activity paramActivity)
   {
-    this.b.remove(paramActivity);
+    this.a.remove(paramActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.api.a
  * JD-Core Version:    0.7.0.1
  */

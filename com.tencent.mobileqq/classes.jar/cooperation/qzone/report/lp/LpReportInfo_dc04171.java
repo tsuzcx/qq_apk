@@ -40,7 +40,14 @@ public class LpReportInfo_dc04171
   
   public String getSimpleInfo()
   {
-    return "dc041171:" + this.mUrl + "," + this.mBytesRefer + "," + this.mPlatform;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("dc041171:");
+    localStringBuilder.append(this.mUrl);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.mBytesRefer);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.mPlatform);
+    return localStringBuilder.toString();
   }
   
   public Map<String, String> toMap()
@@ -67,7 +74,7 @@ public class LpReportInfo_dc04171
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc04171
  * JD-Core Version:    0.7.0.1
  */

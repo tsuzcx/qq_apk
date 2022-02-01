@@ -14,36 +14,50 @@ class PublicAccountChatPie$61$1
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a.b, 2, "requestQidiKefu ... onReceive = " + paramBoolean);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = this.a.a.b;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("requestQidiKefu ... onReceive = ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
-    if (paramBoolean) {
-      try
+    if (paramBoolean) {}
+    try
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      localObject = new mobileqq_mp.SendMenuEventResponse();
+      ((mobileqq_mp.SendMenuEventResponse)localObject).mergeFrom(paramBundle);
+      paramInt = ((mobileqq_mp.SendMenuEventResponse)localObject).ret_info.ret_code.get();
+      if (QLog.isColorLevel())
       {
-        paramBundle = paramBundle.getByteArray("data");
-        mobileqq_mp.SendMenuEventResponse localSendMenuEventResponse = new mobileqq_mp.SendMenuEventResponse();
-        localSendMenuEventResponse.mergeFrom(paramBundle);
-        paramInt = localSendMenuEventResponse.ret_info.ret_code.get();
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a.a.b, 2, "requestQidiKefu ... onReceive: retCode = " + paramInt);
-        }
-        if (paramInt == 0)
-        {
-          this.a.a.aj = true;
-          this.a.a.bw();
-          this.a.a.bi();
-          return;
-        }
+        paramBundle = this.a.a.b;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("requestQidiKefu ... onReceive: retCode = ");
+        ((StringBuilder)localObject).append(paramInt);
+        QLog.d(paramBundle, 2, ((StringBuilder)localObject).toString());
       }
-      catch (Exception paramBundle) {}
+      if (paramInt == 0)
+      {
+        this.a.a.Z = true;
+        this.a.a.aC();
+        this.a.a.ao();
+        return;
+      }
     }
-    this.a.a.w(2131695222);
-    this.a.a.bi();
+    catch (Exception paramBundle)
+    {
+      label179:
+      break label179;
+    }
+    this.a.a.m(2131695217);
+    this.a.a.ao();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.61.1
  * JD-Core Version:    0.7.0.1
  */

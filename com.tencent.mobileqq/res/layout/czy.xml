@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.dinifly.DiniFlyAnimationView android:id="@id/nbl" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="3.0dip" android:scaleType="center" android:layout_centerVertical="true" android:contentDescription="@string/yk6" />
+</RelativeLayout>

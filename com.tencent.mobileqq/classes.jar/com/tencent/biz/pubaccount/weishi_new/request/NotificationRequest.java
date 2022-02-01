@@ -16,12 +16,15 @@ public class NotificationRequest
     localstNotificationReq.linkStrategyArgs = WeishiLinkUtil.a();
     localstNotificationReq.push_info = paramString;
     this.a = localstNotificationReq;
-    WSLog.b("NotificationRequest", "stNotificationReq = " + localstNotificationReq.toString());
+    paramString = new StringBuilder();
+    paramString.append("stNotificationReq = ");
+    paramString.append(localstNotificationReq.toString());
+    WSLog.b("NotificationRequest", paramString.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.request.NotificationRequest
  * JD-Core Version:    0.7.0.1
  */

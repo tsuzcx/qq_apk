@@ -45,7 +45,7 @@ public final class VideoPreviewPage
   
   private final void a(View paramView)
   {
-    paramView = paramView.findViewById(R.id.bm);
+    paramView = paramView.findViewById(R.id.aK);
     Intrinsics.checkExpressionValueIsNotNull(paramView, "view.findViewById(R.id.sv_video)");
     this.jdField_a_of_type_AndroidViewSurfaceView = ((SurfaceView)paramView);
     paramView = this.jdField_a_of_type_AndroidViewSurfaceView;
@@ -65,14 +65,13 @@ public final class VideoPreviewPage
     if (localObject != null)
     {
       localObject = ((Bundle)localObject).getString("video_url");
-      if (localObject == null) {}
+      if (localObject != null) {}
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_JavaLangString = ((String)localObject);
-      return;
       localObject = "";
     }
+    this.jdField_a_of_type_JavaLangString = ((String)localObject);
   }
   
   private final void g()
@@ -121,11 +120,11 @@ public final class VideoPreviewPage
   public View a(@NotNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup)
   {
     Intrinsics.checkParameterIsNotNull(paramLayoutInflater, "inflater");
-    paramLayoutInflater = paramLayoutInflater.inflate(R.layout.n, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(R.layout.m, paramViewGroup, false);
     f();
     Intrinsics.checkExpressionValueIsNotNull(paramLayoutInflater, "view");
     a(paramLayoutInflater);
-    ((RelativeLayout)paramLayoutInflater.findViewById(R.id.bb)).setOnClickListener((View.OnClickListener)new VideoPreviewPage.onCreateView.1(this));
+    ((RelativeLayout)paramLayoutInflater.findViewById(R.id.aA)).setOnClickListener((View.OnClickListener)new VideoPreviewPage.onCreateView.1(this));
     return paramLayoutInflater;
   }
   
@@ -136,15 +135,18 @@ public final class VideoPreviewPage
     if (localObject != null)
     {
       localObject = ((Activity)localObject).getResources();
-      if (localObject == null) {}
-    }
-    for (localObject = Integer.valueOf(((Resources)localObject).getColor(R.color.b));; localObject = null)
-    {
-      if (localObject == null) {
-        Intrinsics.throwNpe();
+      if (localObject != null)
+      {
+        localObject = Integer.valueOf(((Resources)localObject).getColor(R.color.b));
+        break label34;
       }
-      return new Pair(localObject, Integer.valueOf(0));
     }
+    localObject = null;
+    label34:
+    if (localObject == null) {
+      Intrinsics.throwNpe();
+    }
+    return new Pair(localObject, Integer.valueOf(0));
   }
   
   public void a()
@@ -173,7 +175,10 @@ public final class VideoPreviewPage
     }
     catch (Exception paramSurfaceHolder)
     {
-      TLog.d("VideoPreviewFragment", "surfaceCreated: " + paramSurfaceHolder);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("surfaceCreated: ");
+      localStringBuilder.append(paramSurfaceHolder);
+      TLog.d("VideoPreviewFragment", localStringBuilder.toString());
     }
   }
   
@@ -181,7 +186,7 @@ public final class VideoPreviewPage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.videopreview.VideoPreviewPage
  * JD-Core Version:    0.7.0.1
  */

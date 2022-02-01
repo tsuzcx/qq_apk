@@ -57,10 +57,14 @@ public final class SingleSampleMediaChunk
       localObject1 = new DefaultExtractorInput(this.dataSource, this.bytesLoaded, l1);
       Object localObject3 = getOutput();
       ((BaseMediaChunkOutput)localObject3).setSampleOffsetUs(0L);
-      localObject3 = ((BaseMediaChunkOutput)localObject3).track(0, this.trackType);
+      int j = this.trackType;
+      int i = 0;
+      localObject3 = ((BaseMediaChunkOutput)localObject3).track(0, j);
       ((TrackOutput)localObject3).format(this.sampleFormat);
-      for (int i = 0; i != -1; i = ((TrackOutput)localObject3).sampleData((ExtractorInput)localObject1, 2147483647, true)) {
-        this.bytesLoaded = (i + this.bytesLoaded);
+      while (i != -1)
+      {
+        this.bytesLoaded += i;
+        i = ((TrackOutput)localObject3).sampleData((ExtractorInput)localObject1, 2147483647, true);
       }
       i = this.bytesLoaded;
       ((TrackOutput)localObject3).sampleMetadata(this.startTimeUs, 1, i, 0, null);
@@ -72,11 +76,15 @@ public final class SingleSampleMediaChunk
     {
       Util.closeQuietly(this.dataSource);
     }
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.chunk.SingleSampleMediaChunk
  * JD-Core Version:    0.7.0.1
  */

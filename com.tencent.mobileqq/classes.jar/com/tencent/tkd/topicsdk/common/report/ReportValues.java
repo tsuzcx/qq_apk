@@ -20,31 +20,10 @@ public final class ReportValues
   {
     jdField_a_of_type_ComTencentTkdTopicsdkCommonReportReportValues = new ReportValues();
   }
-  
-  @NotNull
-  public final String a()
-  {
-    return c;
-  }
-  
-  @NotNull
-  public final String a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      return jdField_a_of_type_JavaLangString;
-    }
-    return b;
-  }
-  
-  @NotNull
-  public final String b()
-  {
-    return d;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.common.report.ReportValues
  * JD-Core Version:    0.7.0.1
  */

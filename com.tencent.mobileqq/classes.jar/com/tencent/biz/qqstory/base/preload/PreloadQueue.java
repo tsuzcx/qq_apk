@@ -15,19 +15,18 @@ public class PreloadQueue
   
   public void addTask(DownloadTask paramDownloadTask, boolean paramBoolean)
   {
-    localObject = this.dataSafeLock;
+    Object localObject = this.dataSafeLock;
     if (paramBoolean) {}
-    for (;;)
+    try
     {
-      try
-      {
-        addFirst(paramDownloadTask);
-        releaseBlock();
-        return;
-      }
-      finally {}
+      addFirst(paramDownloadTask);
+      break label25;
       add(paramDownloadTask);
+      label25:
+      releaseBlock();
+      return;
     }
+    finally {}
   }
   
   void clearAllTask()
@@ -43,27 +42,32 @@ public class PreloadQueue
   {
     try
     {
-      DownloadTask localDownloadTask = pollFirst();
-      ??? = localDownloadTask;
-      if (this.mQueueId == 2)
+      ??? = pollFirst();
+      if ((this.mQueueId == 2) && (??? == null))
       {
-        ??? = localDownloadTask;
-        if (localDownloadTask == null) {
-          SLog.b("Q.qqstory.download.preload.PreloadQueue", this.mQueueId + " wait");
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append(this.mQueueId);
+        ((StringBuilder)???).append(" wait");
+        SLog.b("Q.qqstory.download.preload.PreloadQueue", ((StringBuilder)???).toString());
+        synchronized (this.notEmptyLock)
+        {
+          this.notEmptyLock.wait(90000L);
+          ??? = pollFirst();
+          return ???;
         }
       }
-      synchronized (this.notEmptyLock)
-      {
-        this.notEmptyLock.wait(90000L);
-        ??? = pollFirst();
-        return ???;
-      }
-      return null;
+      return ???;
     }
     catch (InterruptedException localInterruptedException)
     {
-      SLog.d("Q.qqstory.download.preload.PreloadQueue", "getFirst error , current queue id = " + this.mQueueId);
+      label83:
+      break label83;
     }
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("getFirst error , current queue id = ");
+    ((StringBuilder)???).append(this.mQueueId);
+    SLog.d("Q.qqstory.download.preload.PreloadQueue", ((StringBuilder)???).toString());
+    return null;
   }
   
   public int getId()
@@ -100,7 +104,10 @@ public class PreloadQueue
   {
     synchronized (this.notEmptyLock)
     {
-      SLog.b("Q.qqstory.download.preload.PreloadQueue", this.mQueueId + " releaseBlock");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.mQueueId);
+      localStringBuilder.append(" releaseBlock");
+      SLog.b("Q.qqstory.download.preload.PreloadQueue", localStringBuilder.toString());
       this.notEmptyLock.notifyAll();
       return;
     }
@@ -108,12 +115,16 @@ public class PreloadQueue
   
   public String toString()
   {
-    return "PreloadQueue{mQueueId=" + this.mQueueId + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PreloadQueue{mQueueId=");
+    localStringBuilder.append(this.mQueueId);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.PreloadQueue
  * JD-Core Version:    0.7.0.1
  */

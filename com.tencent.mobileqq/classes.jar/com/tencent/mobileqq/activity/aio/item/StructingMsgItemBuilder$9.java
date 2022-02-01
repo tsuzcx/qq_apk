@@ -23,7 +23,10 @@ class StructingMsgItemBuilder$9
       if (localObject != null)
       {
         ((JumpAction)localObject).b("webview");
-        ((JumpAction)localObject).a("uin_type", i + "");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(i);
+        localStringBuilder.append("");
+        ((JumpAction)localObject).a("uin_type", localStringBuilder.toString());
         ((JumpAction)localObject).a();
       }
     }
@@ -32,7 +35,7 @@ class StructingMsgItemBuilder$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.9
  * JD-Core Version:    0.7.0.1
  */

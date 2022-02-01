@@ -44,24 +44,25 @@ public class JNIEngineLite
   
   static void nativeLog(int paramInt, String paramString)
   {
-    switch (paramInt)
+    if (paramInt != 4)
     {
-    }
-    do
-    {
-      do
+      if (paramInt != 5)
       {
-        do
-        {
+        if (paramInt != 6) {
           return;
-        } while (!QLog.isColorLevel());
-        QLog.i("QFindBLEJNI", 2, paramString);
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.w("QFindBLEJNI", 2, paramString);
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.e("QFindBLEJNI", 2, paramString);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.e("QFindBLEJNI", 2, paramString);
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.w("QFindBLEJNI", 2, paramString);
+      }
+    }
+    else if (QLog.isColorLevel()) {
+      QLog.i("QFindBLEJNI", 2, paramString);
+    }
   }
   
   static void onBindReq(int paramInt, byte[] paramArrayOfByte)
@@ -162,7 +163,7 @@ public class JNIEngineLite
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.ble.JNIEngineLite
  * JD-Core Version:    0.7.0.1
  */

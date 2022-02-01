@@ -33,22 +33,22 @@ public class QQDingdongSoundHandler
   
   public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQDingdongSoundHandler", 2, "download success: " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("download success: ");
+      localStringBuilder.append(paramString);
+      QLog.d("QQDingdongSoundHandler", 2, localStringBuilder.toString());
     }
     try
     {
-      FileUtils.a(paramString, DingdongSoundUtil.a(), false);
-      super.a(paramString);
-      return;
+      FileUtils.uncompressZip(paramString, DingdongSoundUtil.a(), false);
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
+    super.a(paramString);
   }
   
   public void a(boolean paramBoolean)
@@ -83,7 +83,7 @@ public class QQDingdongSoundHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.QQDingdongSoundHandler
  * JD-Core Version:    0.7.0.1
  */

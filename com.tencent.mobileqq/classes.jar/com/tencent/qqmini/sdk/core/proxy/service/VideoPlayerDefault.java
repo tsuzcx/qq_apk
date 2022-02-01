@@ -8,6 +8,7 @@ import android.media.MediaPlayer;
 import android.view.TextureView;
 import android.view.ViewGroup.LayoutParams;
 import android.webkit.URLUtil;
+import com.tencent.qqlive.module.videoreport.dtreport.audio.playback.ReportMediaPlayer;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnCaptureImageListener;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnCompletionListener;
@@ -40,12 +41,13 @@ public class VideoPlayerDefault
   
   private void callbackCaptureImageFailed()
   {
-    if ((this.mOnCaptureImageListenerList != null) && (this.mOnCaptureImageListenerList.size() > 0))
+    Object localObject = this.mOnCaptureImageListenerList;
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      Iterator localIterator = this.mOnCaptureImageListenerList.iterator();
-      while (localIterator.hasNext())
+      localObject = this.mOnCaptureImageListenerList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        AbsVideoPlayer.OnCaptureImageListener localOnCaptureImageListener = (AbsVideoPlayer.OnCaptureImageListener)localIterator.next();
+        AbsVideoPlayer.OnCaptureImageListener localOnCaptureImageListener = (AbsVideoPlayer.OnCaptureImageListener)((Iterator)localObject).next();
         if (localOnCaptureImageListener != null) {
           localOnCaptureImageListener.onCaptureImageFailed();
         }
@@ -55,12 +57,13 @@ public class VideoPlayerDefault
   
   private void callbackCaptureImageSucceed(Bitmap paramBitmap)
   {
-    if ((this.mOnCaptureImageListenerList != null) && (this.mOnCaptureImageListenerList.size() > 0))
+    Object localObject = this.mOnCaptureImageListenerList;
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      Iterator localIterator = this.mOnCaptureImageListenerList.iterator();
-      while (localIterator.hasNext())
+      localObject = this.mOnCaptureImageListenerList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        AbsVideoPlayer.OnCaptureImageListener localOnCaptureImageListener = (AbsVideoPlayer.OnCaptureImageListener)localIterator.next();
+        AbsVideoPlayer.OnCaptureImageListener localOnCaptureImageListener = (AbsVideoPlayer.OnCaptureImageListener)((Iterator)localObject).next();
         if (localOnCaptureImageListener != null) {
           localOnCaptureImageListener.onCaptureImageSucceed(paramBitmap);
         }
@@ -70,24 +73,22 @@ public class VideoPlayerDefault
   
   private void setFitToFillAspectRatio(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    Integer localInteger;
-    ViewGroup.LayoutParams localLayoutParams;
     if ((paramMediaPlayer != null) && (paramInt1 > 0) && (paramInt2 > 0))
     {
       paramMediaPlayer = Integer.valueOf(this.textureView.getWidth());
-      localInteger = Integer.valueOf(this.textureView.getHeight());
-      localLayoutParams = this.textureView.getLayoutParams();
-      if (paramInt1 <= paramInt2) {
-        break label81;
+      Integer localInteger = Integer.valueOf(this.textureView.getHeight());
+      ViewGroup.LayoutParams localLayoutParams = this.textureView.getLayoutParams();
+      if (paramInt1 > paramInt2)
+      {
+        localLayoutParams.width = paramMediaPlayer.intValue();
+        localLayoutParams.height = (paramMediaPlayer.intValue() * paramInt2 / paramInt1);
       }
-      localLayoutParams.width = paramMediaPlayer.intValue();
-    }
-    for (localLayoutParams.height = (paramMediaPlayer.intValue() * paramInt2 / paramInt1);; localLayoutParams.height = localInteger.intValue())
-    {
+      else
+      {
+        localLayoutParams.width = (localInteger.intValue() * paramInt1 / paramInt2);
+        localLayoutParams.height = localInteger.intValue();
+      }
       this.textureView.setLayoutParams(localLayoutParams);
-      return;
-      label81:
-      localLayoutParams.width = (localInteger.intValue() * paramInt1 / paramInt2);
     }
   }
   
@@ -95,57 +96,60 @@ public class VideoPlayerDefault
   {
     try
     {
-      if (this.player != null)
+      if (this.player == null) {
+        break label186;
+      }
+      int i = this.player.getCurrentPosition();
+      Object localObject = new MediaMetadataRetriever();
+      if (URLUtil.isNetworkUrl(this.url)) {
+        ((MediaMetadataRetriever)localObject).setDataSource(this.url, new HashMap());
+      } else {
+        ((MediaMetadataRetriever)localObject).setDataSource(this.url);
+      }
+      Bitmap localBitmap = ((MediaMetadataRetriever)localObject).getFrameAtTime(i, 3);
+      if ((localBitmap != null) && (!localBitmap.isRecycled()))
       {
-        int i = this.player.getCurrentPosition();
-        Object localObject = new MediaMetadataRetriever();
-        if (URLUtil.isNetworkUrl(this.url)) {
-          ((MediaMetadataRetriever)localObject).setDataSource(this.url, new HashMap());
-        }
-        for (;;)
+        i = localBitmap.getWidth();
+        int j = localBitmap.getHeight();
+        localObject = localBitmap;
+        if (i != 0)
         {
-          Bitmap localBitmap = ((MediaMetadataRetriever)localObject).getFrameAtTime(i, 3);
-          if ((localBitmap == null) || (localBitmap.isRecycled())) {
-            break;
-          }
-          i = localBitmap.getWidth();
-          int j = localBitmap.getHeight();
           localObject = localBitmap;
-          if (i != 0)
+          if (j != 0)
           {
-            localObject = localBitmap;
-            if (j != 0)
-            {
-              float f1 = paramInt1 / i;
-              float f2 = paramInt2 / j;
-              localObject = new Matrix();
-              ((Matrix)localObject).postScale(f1, f2);
-              localObject = Bitmap.createBitmap(localBitmap, 0, 0, paramInt1, paramInt2, (Matrix)localObject, true);
-            }
+            float f1 = paramInt1 / i;
+            float f2 = paramInt2 / j;
+            localObject = new Matrix();
+            ((Matrix)localObject).postScale(f1, f2);
+            localObject = Bitmap.createBitmap(localBitmap, 0, 0, paramInt1, paramInt2, (Matrix)localObject, true);
           }
-          callbackCaptureImageSucceed((Bitmap)localObject);
-          return 0;
-          ((MediaMetadataRetriever)localObject).setDataSource(this.url);
         }
+        callbackCaptureImageSucceed((Bitmap)localObject);
+      }
+      else
+      {
         callbackCaptureImageFailed();
       }
     }
     catch (Throwable localThrowable)
     {
-      callbackCaptureImageFailed();
-      return 0;
+      label182:
+      label186:
+      break label182;
     }
+    callbackCaptureImageFailed();
     return 0;
   }
   
   public void createVideoView(Context paramContext, AbsVideoPlayer.OnVideoViewInitListener paramOnVideoViewInitListener)
   {
-    if (this.player != null)
+    MediaPlayer localMediaPlayer = this.player;
+    if (localMediaPlayer != null)
     {
-      this.player.release();
+      localMediaPlayer.release();
       this.player = null;
     }
-    this.player = new MediaPlayer();
+    this.player = new ReportMediaPlayer();
     this.isMute = false;
     this.prepared = false;
     this.context = paramContext;
@@ -158,39 +162,34 @@ public class VideoPlayerDefault
   
   public long getCurrentPostion()
   {
-    long l2 = 0L;
-    long l1 = l2;
-    if (this.player != null)
-    {
-      l1 = l2;
-      if (!this.prepared) {}
-    }
-    try
-    {
-      int i = this.player.getCurrentPosition();
-      l1 = i;
-      return l1;
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      localIllegalStateException.printStackTrace();
+    MediaPlayer localMediaPlayer = this.player;
+    if ((localMediaPlayer != null) && (this.prepared)) {
+      try
+      {
+        int i = localMediaPlayer.getCurrentPosition();
+        return i;
+      }
+      catch (IllegalStateException localIllegalStateException)
+      {
+        localIllegalStateException.printStackTrace();
+      }
     }
     return 0L;
   }
   
   public long getDuration()
   {
-    long l = 0L;
-    if (this.player != null) {}
-    try
-    {
-      int i = this.player.getDuration();
-      l = i;
-      return l;
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      QMLog.i("VideoPlayerDefault", "getDuration", localIllegalStateException);
+    MediaPlayer localMediaPlayer = this.player;
+    if (localMediaPlayer != null) {
+      try
+      {
+        int i = localMediaPlayer.getDuration();
+        return i;
+      }
+      catch (IllegalStateException localIllegalStateException)
+      {
+        QMLog.i("VideoPlayerDefault", "getDuration", localIllegalStateException);
+      }
     }
     return 0L;
   }
@@ -202,88 +201,93 @@ public class VideoPlayerDefault
   
   public int getVideoHeight()
   {
-    if (this.player != null) {
-      return this.player.getVideoHeight();
+    MediaPlayer localMediaPlayer = this.player;
+    if (localMediaPlayer != null) {
+      return localMediaPlayer.getVideoHeight();
     }
     return 0;
   }
   
   public int getVideoWidth()
   {
-    if (this.player != null) {
-      return this.player.getVideoWidth();
+    MediaPlayer localMediaPlayer = this.player;
+    if (localMediaPlayer != null) {
+      return localMediaPlayer.getVideoWidth();
     }
     return 0;
   }
   
   public boolean isPlaying()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.player != null)
-    {
-      bool1 = bool2;
-      if (!this.prepared) {}
-    }
+    MediaPlayer localMediaPlayer = this.player;
+    if ((localMediaPlayer != null) && (this.prepared)) {}
     try
     {
-      bool1 = this.player.isPlaying();
-      return bool1;
+      boolean bool = localMediaPlayer.isPlaying();
+      return bool;
     }
     catch (IllegalStateException localIllegalStateException) {}
+    return false;
     return false;
   }
   
   public void openMediaPlayerByUrl(Context paramContext, String paramString, long paramLong)
   {
-    if (this.player != null) {}
-    try
-    {
-      this.url = paramString;
-      this.player.setDataSource(paramString);
-      this.player.prepareAsync();
-      this.player.seekTo((int)paramLong);
-      this.player.setOnVideoSizeChangedListener(new VideoPlayerDefault.1(this));
-      return;
-    }
-    catch (Throwable paramContext)
-    {
-      paramContext.printStackTrace();
+    paramContext = this.player;
+    if (paramContext != null) {
+      try
+      {
+        this.url = paramString;
+        paramContext.setDataSource(paramString);
+        this.player.prepareAsync();
+        this.player.seekTo((int)paramLong);
+        this.player.setOnVideoSizeChangedListener(new VideoPlayerDefault.1(this));
+        return;
+      }
+      catch (Throwable paramContext)
+      {
+        paramContext.printStackTrace();
+      }
     }
   }
   
   public void pause()
   {
-    if ((this.player != null) && (this.prepared)) {}
-    try
-    {
-      this.player.pause();
-      return;
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      QMLog.i("VideoPlayerDefault", "pause", localIllegalStateException);
+    MediaPlayer localMediaPlayer = this.player;
+    if ((localMediaPlayer != null) && (this.prepared)) {
+      try
+      {
+        localMediaPlayer.pause();
+        return;
+      }
+      catch (IllegalStateException localIllegalStateException)
+      {
+        QMLog.i("VideoPlayerDefault", "pause", localIllegalStateException);
+      }
     }
   }
   
   public void release()
   {
-    if (this.player != null) {
-      this.player.release();
+    MediaPlayer localMediaPlayer = this.player;
+    if (localMediaPlayer != null) {
+      localMediaPlayer.release();
     }
   }
   
   public void seekTo(int paramInt)
   {
-    if (this.player != null) {
-      this.player.seekTo(paramInt);
+    MediaPlayer localMediaPlayer = this.player;
+    if (localMediaPlayer != null) {
+      localMediaPlayer.seekTo(paramInt);
     }
   }
   
   public void setLoopback(boolean paramBoolean)
   {
-    if (this.player != null) {
-      this.player.setLooping(paramBoolean);
+    MediaPlayer localMediaPlayer = this.player;
+    if (localMediaPlayer != null) {
+      localMediaPlayer.setLooping(paramBoolean);
     }
   }
   
@@ -302,57 +306,61 @@ public class VideoPlayerDefault
   
   public void setOnCompletionListener(AbsVideoPlayer.OnCompletionListener paramOnCompletionListener)
   {
-    if (this.player != null) {
-      this.player.setOnCompletionListener(new VideoPlayerDefault.4(this, paramOnCompletionListener));
+    MediaPlayer localMediaPlayer = this.player;
+    if (localMediaPlayer != null) {
+      localMediaPlayer.setOnCompletionListener(new VideoPlayerDefault.4(this, paramOnCompletionListener));
     }
   }
   
   public void setOnControllerClickListener(AbsVideoPlayer.OnControllerClickListener paramOnControllerClickListener)
   {
-    if (this.player != null) {}
+    paramOnControllerClickListener = this.player;
   }
   
   public void setOnErrorListener(AbsVideoPlayer.OnErrorListener paramOnErrorListener)
   {
-    if (this.player != null) {
-      this.player.setOnErrorListener(new VideoPlayerDefault.5(this, paramOnErrorListener));
+    MediaPlayer localMediaPlayer = this.player;
+    if (localMediaPlayer != null) {
+      localMediaPlayer.setOnErrorListener(new VideoPlayerDefault.5(this, paramOnErrorListener));
     }
   }
   
   public void setOnInfoListener(AbsVideoPlayer.OnInfoListener paramOnInfoListener)
   {
-    if (this.player != null) {
-      this.player.setOnInfoListener(new VideoPlayerDefault.6(this, paramOnInfoListener));
+    MediaPlayer localMediaPlayer = this.player;
+    if (localMediaPlayer != null) {
+      localMediaPlayer.setOnInfoListener(new VideoPlayerDefault.6(this, paramOnInfoListener));
     }
   }
   
   public void setOnSeekCompleteListener(AbsVideoPlayer.OnSeekCompleteListener paramOnSeekCompleteListener)
   {
-    if (this.player != null) {
-      this.player.setOnSeekCompleteListener(new VideoPlayerDefault.7(this, paramOnSeekCompleteListener));
+    MediaPlayer localMediaPlayer = this.player;
+    if (localMediaPlayer != null) {
+      localMediaPlayer.setOnSeekCompleteListener(new VideoPlayerDefault.7(this, paramOnSeekCompleteListener));
     }
   }
   
   public void setOnVideoPreparedListener(AbsVideoPlayer.OnVideoPreparedListener paramOnVideoPreparedListener)
   {
-    if (this.player != null) {
-      this.player.setOnPreparedListener(new VideoPlayerDefault.3(this, paramOnVideoPreparedListener));
+    MediaPlayer localMediaPlayer = this.player;
+    if (localMediaPlayer != null) {
+      localMediaPlayer.setOnPreparedListener(new VideoPlayerDefault.3(this, paramOnVideoPreparedListener));
     }
   }
   
   public boolean setOutputMute(boolean paramBoolean)
   {
-    if (this.player != null)
+    MediaPlayer localMediaPlayer = this.player;
+    if (localMediaPlayer != null)
     {
       this.isMute = paramBoolean;
       if (paramBoolean) {
-        this.player.setVolume(0.0F, 0.0F);
+        localMediaPlayer.setVolume(0.0F, 0.0F);
+      } else {
+        localMediaPlayer.setVolume(0.8F, 0.8F);
       }
-      for (;;)
-      {
-        return true;
-        this.player.setVolume(0.8F, 0.8F);
-      }
+      return true;
     }
     return false;
   }
@@ -364,7 +372,8 @@ public class VideoPlayerDefault
   
   public void start()
   {
-    if ((this.player != null) && (this.prepared) && (!this.player.isPlaying())) {
+    MediaPlayer localMediaPlayer = this.player;
+    if ((localMediaPlayer != null) && (this.prepared) && (!localMediaPlayer.isPlaying())) {
       this.player.start();
     }
   }
@@ -375,10 +384,11 @@ public class VideoPlayerDefault
   {
     try
     {
-      if ((this.player != null) && (this.prepared)) {
+      if ((this.player != null) && (this.prepared))
+      {
         this.player.stop();
+        return;
       }
-      return;
     }
     catch (IllegalStateException localIllegalStateException)
     {
@@ -390,7 +400,7 @@ public class VideoPlayerDefault
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.VideoPlayerDefault
  * JD-Core Version:    0.7.0.1
  */

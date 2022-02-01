@@ -27,23 +27,57 @@ public class b
   
   static
   {
-    fW.put(fF.fX, fF);
-    fW.put(fG.fX, fG);
-    fW.put(fH.fX, fH);
-    fW.put(fI.fX, fI);
-    fW.put(fJ.fX, fJ);
-    fW.put(fK.fX, fK);
-    fW.put(fL.fX, fL);
-    fW.put(fM.fX, fM);
-    fW.put(fN.fX, fN);
-    fW.put(fO.fX, fO);
-    fW.put(fP.fX, fP);
-    fW.put(fQ.fX, fQ);
-    fW.put(fR.fX, fR);
-    fW.put(fS.fX, fS);
-    fW.put(fT.fX, fT);
-    fW.put(fU.fX, fU);
-    fW.put(fV.fX, fV);
+    HashMap localHashMap = fW;
+    b localb = fF;
+    localHashMap.put(localb.fX, localb);
+    localHashMap = fW;
+    localb = fG;
+    localHashMap.put(localb.fX, localb);
+    localHashMap = fW;
+    localb = fH;
+    localHashMap.put(localb.fX, localb);
+    localHashMap = fW;
+    localb = fI;
+    localHashMap.put(localb.fX, localb);
+    localHashMap = fW;
+    localb = fJ;
+    localHashMap.put(localb.fX, localb);
+    localHashMap = fW;
+    localb = fK;
+    localHashMap.put(localb.fX, localb);
+    localHashMap = fW;
+    localb = fL;
+    localHashMap.put(localb.fX, localb);
+    localHashMap = fW;
+    localb = fM;
+    localHashMap.put(localb.fX, localb);
+    localHashMap = fW;
+    localb = fN;
+    localHashMap.put(localb.fX, localb);
+    localHashMap = fW;
+    localb = fO;
+    localHashMap.put(localb.fX, localb);
+    localHashMap = fW;
+    localb = fP;
+    localHashMap.put(localb.fX, localb);
+    localHashMap = fW;
+    localb = fQ;
+    localHashMap.put(localb.fX, localb);
+    localHashMap = fW;
+    localb = fR;
+    localHashMap.put(localb.fX, localb);
+    localHashMap = fW;
+    localb = fS;
+    localHashMap.put(localb.fX, localb);
+    localHashMap = fW;
+    localb = fT;
+    localHashMap.put(localb.fX, localb);
+    localHashMap = fW;
+    localb = fU;
+    localHashMap.put(localb.fX, localb);
+    localHashMap = fW;
+    localb = fV;
+    localHashMap.put(localb.fX, localb);
   }
   
   b(String paramString1, String paramString2)
@@ -59,7 +93,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqpimsecure.wificore.api.recognize.monitor.b
  * JD-Core Version:    0.7.0.1
  */

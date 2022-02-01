@@ -34,65 +34,86 @@ public class RecentItemPcDataLine
     CharSequence localCharSequence = paramMessage.getMessageText();
     if (localCharSequence != null)
     {
-      if (paramBoolean1) {
-        paramMessage = "F " + localCharSequence;
-      }
-      for (;;)
+      if (paramBoolean1)
       {
-        paramMsgSummary.strContent = a(null, paramBoolean1, paramBoolean2, new QQText(paramMessage, 1, 16), paramMsgSummary);
-        return;
+        paramMessage = new StringBuilder();
+        paramMessage.append("F ");
+        paramMessage.append(localCharSequence);
+        paramMessage = paramMessage.toString();
+      }
+      else
+      {
         paramMessage = localCharSequence;
-        if (paramBoolean2) {
-          paramMessage = "S " + localCharSequence;
+        if (paramBoolean2)
+        {
+          paramMessage = new StringBuilder();
+          paramMessage.append("S ");
+          paramMessage.append(localCharSequence);
+          paramMessage = paramMessage.toString();
         }
       }
+      paramMsgSummary.strContent = a(null, paramBoolean1, paramBoolean2, new QQText(paramMessage, 1, 16), paramMsgSummary);
+      return;
     }
     StringBuffer localStringBuffer = new StringBuffer();
-    if (paramBoolean1)
-    {
+    if (paramBoolean1) {
       localStringBuffer.append("F ");
-      if (localCharSequence == null) {
-        break label185;
-      }
-    }
-    label185:
-    for (paramMessage = localCharSequence.toString().trim();; paramMessage = "")
-    {
-      localStringBuffer.append(paramMessage);
-      try
-      {
-        paramMsgSummary.strContent = a(null, paramBoolean1, paramBoolean2, new QQText(localStringBuffer, 1, 16), paramMsgSummary);
-        return;
-      }
-      catch (Exception paramMessage)
-      {
-        paramMessage.printStackTrace();
-        return;
-      }
-      if (!paramBoolean2) {
-        break;
-      }
+    } else if (paramBoolean2) {
       localStringBuffer.append("S ");
-      break;
+    }
+    if (localCharSequence != null) {
+      paramMessage = localCharSequence.toString().trim();
+    } else {
+      paramMessage = "";
+    }
+    localStringBuffer.append(paramMessage);
+    try
+    {
+      paramMsgSummary.strContent = a(null, paramBoolean1, paramBoolean2, new QQText(localStringBuffer, 1, 16), paramMsgSummary);
+      return;
+    }
+    catch (Exception paramMessage)
+    {
+      paramMessage.printStackTrace();
     }
   }
   
   private boolean a(DataLineMsgSet paramDataLineMsgSet)
   {
-    if (paramDataLineMsgSet == null) {}
-    while ((!paramDataLineMsgSet.isSendFromLocal()) || (!paramDataLineMsgSet.hasSendingOrRecving())) {
+    boolean bool2 = false;
+    if (paramDataLineMsgSet == null) {
       return false;
     }
-    return true;
+    boolean bool1 = bool2;
+    if (paramDataLineMsgSet.isSendFromLocal())
+    {
+      bool1 = bool2;
+      if (paramDataLineMsgSet.hasSendingOrRecving()) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   private boolean b(DataLineMsgSet paramDataLineMsgSet)
   {
-    if (paramDataLineMsgSet == null) {}
-    while ((!paramDataLineMsgSet.hasFailed()) || (paramDataLineMsgSet.hasSendingOrRecving()) || (paramDataLineMsgSet.hasWaiting())) {
+    boolean bool2 = false;
+    if (paramDataLineMsgSet == null) {
       return false;
     }
-    return true;
+    boolean bool1 = bool2;
+    if (paramDataLineMsgSet.hasFailed())
+    {
+      bool1 = bool2;
+      if (!paramDataLineMsgSet.hasSendingOrRecving())
+      {
+        bool1 = bool2;
+        if (!paramDataLineMsgSet.hasWaiting()) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   protected CharSequence a(String paramString, boolean paramBoolean1, boolean paramBoolean2, CharSequence paramCharSequence, MsgSummary paramMsgSummary)
@@ -100,26 +121,23 @@ public class RecentItemPcDataLine
     if (paramCharSequence == null)
     {
       paramCharSequence = new SpannableStringBuilder();
-      if (paramBoolean1)
-      {
+      if (paramBoolean1) {
         paramCharSequence.append("F ");
-        paramCharSequence.append(paramString);
+      } else if (paramBoolean2) {
+        paramCharSequence.append("S ");
       }
+      paramCharSequence.append(paramString);
+      paramMsgSummary.mEmojiFlag = 0;
     }
-    for (paramMsgSummary.mEmojiFlag = 0;; paramMsgSummary.mEmojiFlag = 1)
+    else
     {
-      if (!paramBoolean1) {
-        break label76;
-      }
+      paramMsgSummary.mEmojiFlag = 1;
+    }
+    if (paramBoolean1)
+    {
       paramMsgSummary.nState = 2;
       return paramCharSequence;
-      if (!paramBoolean2) {
-        break;
-      }
-      paramCharSequence.append("S ");
-      break;
     }
-    label76:
     if (paramBoolean2)
     {
       paramMsgSummary.nState = 1;
@@ -141,36 +159,35 @@ public class RecentItemPcDataLine
     if ((paramMessage != null) && (paramMessage.msg != null))
     {
       paramContext = paramQQAppInterface.getMessageFacade().a(this.devType).a(paramMessage.msgId);
-      boolean bool2 = b(paramContext);
-      boolean bool3 = a(paramContext);
-      boolean bool1 = bool2;
-      if (bool2)
-      {
-        bool1 = bool2;
-        if (!paramMessage.isSend()) {
-          bool1 = false;
-        }
+      boolean bool1 = b(paramContext);
+      boolean bool2 = a(paramContext);
+      if ((bool1) && (!paramMessage.isSend())) {
+        bool1 = false;
       }
-      switch (paramMessage.msgtype)
-      {
-      default: 
-        return;
-      case -2335: 
-      case -2009: 
-      case -2005: 
-      case -2000: 
-        if (paramContext == null)
+      paramInt = paramMessage.msgtype;
+      if (paramInt != -2335) {
+        if (paramInt != -2015)
+        {
+          if ((paramInt != -2009) && (paramInt != -2005) && (paramInt != -2000))
+          {
+            if (paramInt != -1000) {
+              return;
+            }
+            a(paramMessage, paramMsgSummary, bool1, bool2);
+          }
+        }
+        else
         {
           paramMsgSummary.strContent = "";
           return;
         }
-      case -1000: 
-        a(paramMessage, paramMsgSummary, bool1, bool3);
-        return;
-        paramMsgSummary.strContent = a(FileManagerUtil.a(paramQQAppInterface, paramContext.getFirstItem()), bool1, bool3, null, paramMsgSummary);
+      }
+      if (paramContext == null)
+      {
+        paramMsgSummary.strContent = "";
         return;
       }
-      paramMsgSummary.strContent = "";
+      paramMsgSummary.strContent = a(FileManagerUtil.a(paramQQAppInterface, paramContext.getFirstItem()), bool1, bool2, null, paramMsgSummary);
       return;
     }
     paramMsgSummary.strContent = "";
@@ -178,32 +195,44 @@ public class RecentItemPcDataLine
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if ((paramQQAppInterface == null) || (paramContext == null)) {}
-    label126:
-    do
+    if (paramQQAppInterface != null)
     {
-      return;
-      super.a(paramQQAppInterface, paramContext);
-      if (this.mUser.getType() != 6000) {
-        break;
+      if (paramContext == null) {
+        return;
       }
-      this.mTitle = paramContext.getString(2131693826);
-      this.msgDescreption = paramContext.getString(2131693810);
-      this.devType = 0;
+      super.a(paramQQAppInterface, paramContext);
+      if (this.mUser.getType() == 6000)
+      {
+        this.mTitle = paramContext.getString(2131693779);
+        this.msgDescreption = paramContext.getString(2131693763);
+        this.devType = 0;
+      }
+      else if (this.mUser.getType() == 6003)
+      {
+        this.mTitle = paramContext.getString(2131693780);
+        this.msgDescreption = paramContext.getString(2131693762);
+        this.devType = 1;
+      }
       Message localMessage = null;
       Object localObject = paramQQAppInterface.getMessageFacade();
       if (localObject != null) {
-        localMessage = ((QQMessageFacade)localObject).a(this.mUser.uin, this.mUser.getType());
+        localMessage = ((QQMessageFacade)localObject).getLastMessage(this.mUser.uin, this.mUser.getType());
       }
-      if (localMessage == null) {
-        break label339;
+      if (localMessage != null)
+      {
+        this.mDisplayTime = localMessage.time;
+        localObject = paramQQAppInterface.getConversationFacade();
+        if (localObject != null) {
+          this.mUnreadNum = ((ConversationFacade)localObject).a(localMessage.frienduin, localMessage.istroop);
+        } else {
+          this.mUnreadNum = 0;
+        }
       }
-      this.mDisplayTime = localMessage.time;
-      localObject = paramQQAppInterface.getConversationFacade();
-      if (localObject == null) {
-        break label331;
+      else
+      {
+        this.mUnreadNum = 0;
+        this.mDisplayTime = 0L;
       }
-      this.mUnreadNum = ((ConversationFacade)localObject).a(localMessage.frienduin, localMessage.istroop);
       if (TextUtils.isEmpty(this.mTitleName)) {
         this.mTitleName = this.mTitle;
       }
@@ -212,45 +241,45 @@ public class RecentItemPcDataLine
       a(paramQQAppInterface);
       a(paramQQAppInterface, (MsgSummary)localObject);
       a(paramQQAppInterface, paramContext, (MsgSummary)localObject);
-    } while (!AppSetting.d);
-    paramQQAppInterface = new StringBuilder();
-    paramQQAppInterface.append(this.mTitleName).append(",");
-    if (this.mUnreadNum == 0) {}
-    for (;;)
-    {
-      if (this.mMsgExtroInfo != null) {
-        paramQQAppInterface.append(this.mMsgExtroInfo + ",");
-      }
-      paramQQAppInterface.append(this.mLastMsg).append(",").append(this.mShowTime);
-      this.mContentDesc = paramQQAppInterface.toString();
-      return;
-      if (this.mUser.getType() != 6003) {
-        break;
-      }
-      this.mTitle = paramContext.getString(2131693827);
-      this.msgDescreption = paramContext.getString(2131693809);
-      this.devType = 1;
-      break;
-      label331:
-      this.mUnreadNum = 0;
-      break label126;
-      label339:
-      this.mUnreadNum = 0;
-      this.mDisplayTime = 0L;
-      break label126;
-      if (this.mUnreadNum == 1) {
-        paramQQAppInterface.append("有一条未读");
-      } else if (this.mUnreadNum == 2) {
-        paramQQAppInterface.append("有两条未读");
-      } else if (this.mUnreadNum > 0) {
-        paramQQAppInterface.append("有").append(this.mUnreadNum).append("条未读,");
+      if (AppSetting.d)
+      {
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append(this.mTitleName);
+        paramQQAppInterface.append(",");
+        if (this.mUnreadNum != 0) {
+          if (this.mUnreadNum == 1)
+          {
+            paramQQAppInterface.append("有一条未读");
+          }
+          else if (this.mUnreadNum == 2)
+          {
+            paramQQAppInterface.append("有两条未读");
+          }
+          else if (this.mUnreadNum > 0)
+          {
+            paramQQAppInterface.append("有");
+            paramQQAppInterface.append(this.mUnreadNum);
+            paramQQAppInterface.append("条未读,");
+          }
+        }
+        if (this.mMsgExtroInfo != null)
+        {
+          paramContext = new StringBuilder();
+          paramContext.append(this.mMsgExtroInfo);
+          paramContext.append(",");
+          paramQQAppInterface.append(paramContext.toString());
+        }
+        paramQQAppInterface.append(this.mLastMsg);
+        paramQQAppInterface.append(",");
+        paramQQAppInterface.append(this.mShowTime);
+        this.mContentDesc = paramQQAppInterface.toString();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemPcDataLine
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class SvcReqRegister
   extends JceStruct
@@ -26,6 +27,7 @@ public final class SvcReqRegister
   public byte[] bytes_0x769_reqbody = null;
   public byte cConnType = 0;
   public byte cNetType = 0;
+  public byte cNotifySwitch = 0;
   public int iBatteryStatus = 0;
   public long iLargeSeq = 0L;
   public long iLastWatchStartTime = 0L;
@@ -70,7 +72,7 @@ public final class SvcReqRegister
   
   public SvcReqRegister() {}
   
-  public SvcReqRegister(long paramLong1, long paramLong2, byte paramByte1, String paramString1, int paramInt1, byte paramByte2, byte paramByte3, byte paramByte4, byte paramByte5, byte paramByte6, long paramLong3, long paramLong4, byte paramByte7, String paramString2, byte paramByte8, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2, byte paramByte9, String paramString3, String paramString4, String paramString5, byte paramByte10, long paramLong5, long paramLong6, ArrayList paramArrayList, long paramLong7, long paramLong8, String paramString6, long paramLong9, String paramString7, String paramString8, String paramString9, byte[] paramArrayOfByte3, byte paramByte11, byte[] paramArrayOfByte4, byte paramByte12, long paramLong10, int paramInt3, VendorPushInfo paramVendorPushInfo)
+  public SvcReqRegister(long paramLong1, long paramLong2, byte paramByte1, String paramString1, int paramInt1, byte paramByte2, byte paramByte3, byte paramByte4, byte paramByte5, byte paramByte6, long paramLong3, long paramLong4, byte paramByte7, String paramString2, byte paramByte8, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2, byte paramByte9, String paramString3, String paramString4, String paramString5, byte paramByte10, long paramLong5, long paramLong6, ArrayList paramArrayList, long paramLong7, long paramLong8, String paramString6, long paramLong9, String paramString7, String paramString8, String paramString9, byte[] paramArrayOfByte3, byte paramByte11, byte[] paramArrayOfByte4, byte paramByte12, long paramLong10, int paramInt3, VendorPushInfo paramVendorPushInfo, byte paramByte13)
   {
     this.lUin = paramLong1;
     this.lBid = paramLong2;
@@ -112,6 +114,7 @@ public final class SvcReqRegister
     this.uExtOnlineStatus = paramLong10;
     this.iBatteryStatus = paramInt3;
     this.stVendorPushInfo = paramVendorPushInfo;
+    this.cNotifySwitch = paramByte13;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -153,6 +156,7 @@ public final class SvcReqRegister
     this.bIsSetStatus = paramJceInputStream.read(this.bIsSetStatus, 34, false);
     this.vecServerBuf = ((byte[])paramJceInputStream.read(cache_vecServerBuf, 35, false));
     this.bSetMute = paramJceInputStream.read(this.bSetMute, 36, false);
+    this.cNotifySwitch = paramJceInputStream.read(this.cNetType, 37, false);
     this.uExtOnlineStatus = paramJceInputStream.read(this.uExtOnlineStatus, 38, false);
     this.iBatteryStatus = paramJceInputStream.read(this.iBatteryStatus, 39, false);
     this.stVendorPushInfo = ((VendorPushInfo)paramJceInputStream.read(this.stVendorPushInfo, 42, false));
@@ -173,66 +177,81 @@ public final class SvcReqRegister
     paramJceOutputStream.write(this.timeStamp, 10);
     paramJceOutputStream.write(this.iOSVersion, 11);
     paramJceOutputStream.write(this.cNetType, 12);
-    if (this.sBuildVer != null) {
-      paramJceOutputStream.write(this.sBuildVer, 13);
+    Object localObject = this.sBuildVer;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
     paramJceOutputStream.write(this.bRegType, 14);
-    if (this.vecDevParam != null) {
-      paramJceOutputStream.write(this.vecDevParam, 15);
+    localObject = this.vecDevParam;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 15);
     }
-    if (this.vecGuid != null) {
-      paramJceOutputStream.write(this.vecGuid, 16);
+    localObject = this.vecGuid;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 16);
     }
     paramJceOutputStream.write(this.iLocaleID, 17);
     paramJceOutputStream.write(this.bSlientPush, 18);
-    if (this.strDevName != null) {
-      paramJceOutputStream.write(this.strDevName, 19);
+    localObject = this.strDevName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 19);
     }
-    if (this.strDevType != null) {
-      paramJceOutputStream.write(this.strDevType, 20);
+    localObject = this.strDevType;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 20);
     }
-    if (this.strOSVer != null) {
-      paramJceOutputStream.write(this.strOSVer, 21);
+    localObject = this.strOSVer;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 21);
     }
     paramJceOutputStream.write(this.bOpenPush, 22);
     paramJceOutputStream.write(this.iLargeSeq, 23);
     paramJceOutputStream.write(this.iLastWatchStartTime, 24);
-    if (this.vecBindUin != null) {
-      paramJceOutputStream.write(this.vecBindUin, 25);
+    localObject = this.vecBindUin;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 25);
     }
     paramJceOutputStream.write(this.uOldSSOIp, 26);
     paramJceOutputStream.write(this.uNewSSOIp, 27);
-    if (this.sChannelNo != null) {
-      paramJceOutputStream.write(this.sChannelNo, 28);
+    localObject = this.sChannelNo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 28);
     }
     paramJceOutputStream.write(this.lCpId, 29);
-    if (this.strVendorName != null) {
-      paramJceOutputStream.write(this.strVendorName, 30);
+    localObject = this.strVendorName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 30);
     }
-    if (this.strVendorOSName != null) {
-      paramJceOutputStream.write(this.strVendorOSName, 31);
+    localObject = this.strVendorOSName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 31);
     }
-    if (this.strIOSIdfa != null) {
-      paramJceOutputStream.write(this.strIOSIdfa, 32);
+    localObject = this.strIOSIdfa;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 32);
     }
-    if (this.bytes_0x769_reqbody != null) {
-      paramJceOutputStream.write(this.bytes_0x769_reqbody, 33);
+    localObject = this.bytes_0x769_reqbody;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 33);
     }
     paramJceOutputStream.write(this.bIsSetStatus, 34);
-    if (this.vecServerBuf != null) {
-      paramJceOutputStream.write(this.vecServerBuf, 35);
+    localObject = this.vecServerBuf;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 35);
     }
     paramJceOutputStream.write(this.bSetMute, 36);
+    paramJceOutputStream.write(this.cNotifySwitch, 37);
     paramJceOutputStream.write(this.uExtOnlineStatus, 38);
     paramJceOutputStream.write(this.iBatteryStatus, 39);
-    if (this.stVendorPushInfo != null) {
-      paramJceOutputStream.write(this.stVendorPushInfo, 42);
+    localObject = this.stVendorPushInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 42);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.msf.service.protocol.push.SvcReqRegister
  * JD-Core Version:    0.7.0.1
  */

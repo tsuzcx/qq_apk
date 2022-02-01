@@ -59,42 +59,40 @@ public class ZanCombolEffectView
       return;
     }
     int i = 0;
-    label16:
-    ZanCombolEffectView.Node localNode;
-    float f1;
-    if (i < paramInt)
+    while (i < paramInt)
     {
-      localNode = new ZanCombolEffectView.Node(null);
+      ZanCombolEffectView.Node localNode = new ZanCombolEffectView.Node(null);
       localNode.jdField_a_of_type_Int = (getWidth() / 2);
       localNode.jdField_a_of_type_Float = this.jdField_a_of_type_JavaUtilRandom.nextInt(360);
-      f1 = this.jdField_a_of_type_JavaUtilRandom.nextFloat();
+      float f1 = this.jdField_a_of_type_JavaUtilRandom.nextFloat();
       float f2 = this.jdField_b_of_type_Float;
-      if (this.jdField_a_of_type_JavaUtilRandom.nextFloat() <= 0.5D) {
-        break label257;
+      double d1 = this.jdField_a_of_type_JavaUtilRandom.nextFloat();
+      int k = -1;
+      if (d1 > 0.5D) {
+        j = 1;
+      } else {
+        j = -1;
       }
-      j = 1;
-      label90:
-      localNode.jdField_d_of_type_Float = (j * (f2 * f1));
-      localNode.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)this.jdField_c_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_c_of_type_JavaUtilList.size())));
+      localNode.jdField_d_of_type_Float = (f1 * f2 * j);
+      List localList = this.jdField_c_of_type_JavaUtilList;
+      localNode.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localList.get(this.jdField_a_of_type_JavaUtilRandom.nextInt(localList.size())));
       localNode.e = 1.0F;
       localNode.jdField_c_of_type_Float = (this.jdField_a_of_type_JavaUtilRandom.nextFloat() * this.e + this.jdField_c_of_type_Float);
-      f1 = (float)(this.jdField_a_of_type_JavaUtilRandom.nextFloat() * this.e * 0.2D);
-      if (this.jdField_a_of_type_JavaUtilRandom.nextFloat() <= 0.5D) {
-        break label263;
+      d1 = this.jdField_a_of_type_JavaUtilRandom.nextFloat() * this.e;
+      Double.isNaN(d1);
+      f1 = (float)(d1 * 0.2D);
+      int j = k;
+      if (this.jdField_a_of_type_JavaUtilRandom.nextFloat() > 0.5D) {
+        j = 1;
       }
-    }
-    label257:
-    label263:
-    for (int j = 1;; j = -1)
-    {
-      localNode.jdField_b_of_type_Float = (j * f1 + this.jdField_d_of_type_Float * this.jdField_d_of_type_Float);
-      localNode.jdField_b_of_type_Int = ((int)(-this.jdField_c_of_type_Int * 0.12D));
+      f2 = j;
+      float f3 = this.jdField_d_of_type_Float;
+      localNode.jdField_b_of_type_Float = (f1 * f2 + f3 * f3);
+      d1 = -this.jdField_c_of_type_Int;
+      Double.isNaN(d1);
+      localNode.jdField_b_of_type_Int = ((int)(d1 * 0.12D));
       this.jdField_a_of_type_JavaUtilList.add(localNode);
       i += 1;
-      break label16;
-      break;
-      j = -1;
-      break label90;
     }
   }
   
@@ -120,16 +118,13 @@ public class ZanCombolEffectView
     post(new ZanCombolEffectView.1(this, paramVarArgs));
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
-    int j = 0;
-    if ((this.jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_Boolean)) {}
-    int k;
-    int i;
-    ZanCombolEffectView.Node localNode;
-    do
+    if (!this.jdField_b_of_type_Boolean)
     {
-      return;
+      if (!this.jdField_a_of_type_Boolean) {
+        return;
+      }
       super.onDraw(paramCanvas);
       long l = System.currentTimeMillis();
       if ((l - this.jdField_a_of_type_Long < 800L) && (l - this.jdField_b_of_type_Long > 10L))
@@ -137,49 +132,62 @@ public class ZanCombolEffectView
         a(1);
         this.jdField_b_of_type_Long = l;
       }
-      float f = (float)((l - this.jdField_c_of_type_Long) * 1.0D / 1000.0D);
+      double d1 = l - this.jdField_c_of_type_Long;
+      Double.isNaN(d1);
+      float f = (float)(d1 * 1.0D / 1000.0D);
       this.jdField_c_of_type_Long = l;
-      k = this.jdField_a_of_type_JavaUtilList.size();
-      i = 0;
-      if (i < k)
+      int k = this.jdField_a_of_type_JavaUtilList.size();
+      int j = 0;
+      int i = 0;
+      ZanCombolEffectView.Node localNode;
+      while (i < k)
       {
         localNode = (ZanCombolEffectView.Node)this.jdField_a_of_type_JavaUtilList.get(i);
         localNode.jdField_b_of_type_Int = ((int)(localNode.jdField_b_of_type_Int + localNode.jdField_c_of_type_Float * f));
-        if (localNode.jdField_b_of_type_Int > this.jdField_c_of_type_Int) {
+        if (localNode.jdField_b_of_type_Int > this.jdField_c_of_type_Int)
+        {
           this.jdField_b_of_type_JavaUtilList.add(localNode);
         }
-        for (;;)
+        else
         {
-          i += 1;
-          break;
-          localNode.jdField_a_of_type_Int = ((int)(localNode.jdField_a_of_type_Int + (2.0F * f * localNode.jdField_b_of_type_Float + localNode.jdField_b_of_type_Float * 0.02D)));
+          d1 = localNode.jdField_a_of_type_Int;
+          double d2 = 2.0F * f * localNode.jdField_b_of_type_Float;
+          double d3 = localNode.jdField_b_of_type_Float;
+          Double.isNaN(d3);
+          Double.isNaN(d2);
+          Double.isNaN(d1);
+          localNode.jdField_a_of_type_Int = ((int)(d1 + (d2 + d3 * 0.02D)));
           localNode.jdField_a_of_type_Float += localNode.jdField_d_of_type_Float * f;
         }
+        i += 1;
       }
       this.jdField_a_of_type_JavaUtilList.removeAll(this.jdField_b_of_type_JavaUtilList);
       this.jdField_b_of_type_JavaUtilList.clear();
       k = this.jdField_a_of_type_JavaUtilList.size();
       i = j;
-      if (k != 0) {
-        break;
+      if (k == 0)
+      {
+        this.jdField_a_of_type_Boolean = false;
+        if (this.jdField_c_of_type_Boolean)
+        {
+          HapticManager.a().c(this.jdField_d_of_type_Int);
+          this.jdField_d_of_type_Int = 0;
+        }
+        return;
       }
-      this.jdField_a_of_type_Boolean = false;
-    } while (!this.jdField_c_of_type_Boolean);
-    HapticManager.a().c(this.jdField_d_of_type_Int);
-    this.jdField_d_of_type_Int = 0;
-    return;
-    while (i < k)
-    {
-      localNode = (ZanCombolEffectView.Node)this.jdField_a_of_type_JavaUtilList.get(i);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setTranslate(-localNode.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2, -localNode.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postRotate(localNode.jdField_a_of_type_Float);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.preScale(localNode.e, localNode.e);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(localNode.jdField_a_of_type_Int, localNode.jdField_b_of_type_Int);
-      paramCanvas.drawBitmap(localNode.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, null);
-      i += 1;
+      while (i < k)
+      {
+        localNode = (ZanCombolEffectView.Node)this.jdField_a_of_type_JavaUtilList.get(i);
+        this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
+        this.jdField_a_of_type_AndroidGraphicsMatrix.setTranslate(-localNode.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2, -localNode.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2);
+        this.jdField_a_of_type_AndroidGraphicsMatrix.postRotate(localNode.jdField_a_of_type_Float);
+        this.jdField_a_of_type_AndroidGraphicsMatrix.preScale(localNode.e, localNode.e);
+        this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(localNode.jdField_a_of_type_Int, localNode.jdField_b_of_type_Int);
+        paramCanvas.drawBitmap(localNode.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, null);
+        i += 1;
+      }
+      invalidate();
     }
-    invalidate();
   }
   
   public void setPause(boolean paramBoolean)
@@ -188,20 +196,20 @@ public class ZanCombolEffectView
     if (this.jdField_b_of_type_Boolean) {
       this.jdField_a_of_type_JavaUtilList.clear();
     }
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.jdField_b_of_type_Boolean)
+    {
       if (this.jdField_c_of_type_Boolean) {
         HapticManager.a().a(this.jdField_d_of_type_Int);
       }
     }
-    while (!this.jdField_c_of_type_Boolean) {
-      return;
+    else if (this.jdField_c_of_type_Boolean) {
+      HapticManager.a().b(this.jdField_d_of_type_Int);
     }
-    HapticManager.a().b(this.jdField_d_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ZanCombolEffectView
  * JD-Core Version:    0.7.0.1
  */

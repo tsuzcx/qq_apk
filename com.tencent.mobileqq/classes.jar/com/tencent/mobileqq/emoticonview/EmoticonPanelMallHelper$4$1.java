@@ -13,86 +13,87 @@ class EmoticonPanelMallHelper$4$1
   
   public void run()
   {
-    Object localObject = this.this$1.this$0.mPanelController.pageAdapter;
+    Object localObject = ((EmoticonPanelController)this.this$1.this$0.mPanelController).getPageAdapter();
     if (localObject != null) {
       ((EmotionPanelViewPagerAdapter)localObject).onDownload(this.val$ep.epId);
     }
     if (((this.val$ep.extraFlags & 0x2) > 0) && (this.val$resultCode == 0))
     {
-      this.this$1.this$0.mPanelController.getPanel().mSecondTabInited = false;
-      this.val$ep.extraFlags &= 0xFFFFFFFD;
-      this.this$1.this$0.mPanelController.switchTabMode(EmoticonPanelController.sLastSelectedSecondTabIndex);
-    }
-    label98:
-    do
-    {
-      do
-      {
-        break label98;
-        do
-        {
-          return;
-        } while ((this.val$ep.jobType == 3) || (this.val$ep.jobType == 5));
-        if (this.val$resultCode != 0) {
-          break;
-        }
-        if (this.this$1.this$0.mPanelController.addEmoPkgList.contains(this.val$ep))
-        {
-          this.this$1.this$0.mPanelController.addEmoPkgList.remove(this.val$ep);
-          return;
-        }
-        this.this$1.this$0.mPanelController.mMarketPgkDownloaded = false;
-        this.this$1.this$0.mPanelController.getPanel().mSecondTabInited = false;
-        this.this$1.this$0.mPanelController.isNeedResetX = false;
-      } while ((this.this$1.this$0.mPanelController.getPanel().getVisibility() != 0) || (this.this$1.this$0.mPanelController.app == null));
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonPanelMallHelper", 2, "Emoticon pkg downloaded in panel, refresh");
-      }
-      localObject = this.this$1.this$0.mPanelController.panelDataList;
-    } while (localObject == null);
-    int j = 0;
-    label291:
-    if (j < ((List)localObject).size())
-    {
-      EmoticonPackage localEmoticonPackage = ((EmotionPanelInfo)((List)localObject).get(j)).emotionPkg;
-      if ((localEmoticonPackage == null) || (!this.val$ep.epId.equals(localEmoticonPackage.epId))) {}
-    }
-    for (;;)
-    {
-      int i = j;
-      if (this.this$1.this$0.mPanelController.isClickNoChangeTab)
-      {
-        i = j;
-        if (EmoticonPanelController.sLastSelectedSecondTabIndex >= 0) {
-          i = EmoticonPanelController.sLastSelectedSecondTabIndex;
-        }
-      }
-      j = this.this$1.this$0.mPanelController.findIndexByPanelType(12);
-      if (EmoticonPanelController.sLastSelectedSecondTabIndex == j) {
-        i = j;
-      }
-      this.this$1.this$0.mPanelController.switchTabMode(i);
-      this.this$1.this$0.mPanelController.mNeedUpdate = false;
+      ((EmoticonPanelController)this.this$1.this$0.mPanelController).getPanel().mSecondTabInited = false;
+      localObject = this.val$ep;
+      ((EmoticonPackage)localObject).extraFlags &= 0xFFFFFFFD;
+      ((EmoticonPanelController)this.this$1.this$0.mPanelController).switchTabMode(BasePanelModel.sLastSelectedSecondTabIndex);
       return;
-      j += 1;
-      break label291;
-      if (this.val$resultCode == 11000)
-      {
-        QQToast.a(this.this$1.this$0.mPanelController.context, this.this$1.this$0.mPanelController.context.getString(2131689980), 1).b(this.this$1.this$0.mPanelController.toastOffset);
+    }
+    if (this.val$ep.jobType != 3)
+    {
+      if (this.val$ep.jobType == 5) {
         return;
       }
-      if (this.val$resultCode != 11001) {
-        break;
+      int i = this.val$resultCode;
+      if (i == 0)
+      {
+        if (((EmoticonPanelController)this.this$1.this$0.mPanelController).getBasePanelModel().addEmoPkgList.contains(this.val$ep))
+        {
+          ((EmoticonPanelController)this.this$1.this$0.mPanelController).getBasePanelModel().addEmoPkgList.remove(this.val$ep);
+          return;
+        }
+        ((EmoticonPanelController)this.this$1.this$0.mPanelController).getBasePanelView().mMarketPgkDownloaded = false;
+        ((EmoticonPanelController)this.this$1.this$0.mPanelController).getPanel().mSecondTabInited = false;
+        ((EmoticonPanelController)this.this$1.this$0.mPanelController).getBasePanelView().isNeedResetX = false;
+        if ((((EmoticonPanelController)this.this$1.this$0.mPanelController).getPanel().getVisibility() == 0) && (((EmoticonPanelController)this.this$1.this$0.mPanelController).app != null))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("EmoticonPanelMallHelper", 2, "Emoticon pkg downloaded in panel, refresh");
+          }
+          localObject = ((EmoticonPanelController)this.this$1.this$0.mPanelController).getPanelDataList();
+          if (localObject == null) {
+            return;
+          }
+          int j = 0;
+          while (j < ((List)localObject).size())
+          {
+            EmoticonPackage localEmoticonPackage = ((EmotionPanelInfo)((List)localObject).get(j)).emotionPkg;
+            if ((localEmoticonPackage != null) && (this.val$ep.epId.equals(localEmoticonPackage.epId))) {
+              break label399;
+            }
+            j += 1;
+          }
+          j = 0;
+          label399:
+          i = j;
+          if (this.this$1.this$0.isClickNoChangeTab)
+          {
+            i = j;
+            if (BasePanelModel.sLastSelectedSecondTabIndex >= 0) {
+              i = BasePanelModel.sLastSelectedSecondTabIndex;
+            }
+          }
+          j = ((EmoticonPanelController)this.this$1.this$0.mPanelController).findIndexByPanelType(12);
+          if (BasePanelModel.sLastSelectedSecondTabIndex == j) {
+            i = j;
+          }
+          ((EmoticonPanelController)this.this$1.this$0.mPanelController).switchTabMode(i);
+          ((EmoticonPanelController)this.this$1.this$0.mPanelController).getBasePanelView().mNeedUpdate = false;
+        }
       }
-      QQToast.a(this.this$1.this$0.mPanelController.context, this.this$1.this$0.mPanelController.context.getString(2131689981), 1).b(this.this$1.this$0.mPanelController.toastOffset);
-      return;
-      j = 0;
+      else
+      {
+        if (i == 11000)
+        {
+          QQToast.a(((EmoticonPanelController)this.this$1.this$0.mPanelController).context, ((EmoticonPanelController)this.this$1.this$0.mPanelController).context.getString(2131689895), 1).b(((EmoticonPanelController)this.this$1.this$0.mPanelController).getToastOffset());
+          return;
+        }
+        if (i == 11001) {
+          QQToast.a(((EmoticonPanelController)this.this$1.this$0.mPanelController).context, ((EmoticonPanelController)this.this$1.this$0.mPanelController).context.getString(2131689896), 1).b(((EmoticonPanelController)this.this$1.this$0.mPanelController).getToastOffset());
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelMallHelper.4.1
  * JD-Core Version:    0.7.0.1
  */

@@ -25,23 +25,23 @@ public class HippyMap
   {
     HippyMap localHippyMap = new HippyMap();
     Iterator localIterator = this.mDatas.entrySet().iterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
       Object localObject2 = localEntry.getValue();
       Object localObject1;
-      if ((localObject2 instanceof HippyMap)) {
+      if ((localObject2 instanceof HippyMap))
+      {
         localObject1 = ((HippyMap)localObject2).copy();
       }
-      for (;;)
+      else
       {
-        localHippyMap.pushObject((String)localEntry.getKey(), localObject1);
-        break;
         localObject1 = localObject2;
         if ((localObject2 instanceof HippyArray)) {
           localObject1 = ((HippyArray)localObject2).copy();
         }
       }
+      localHippyMap.pushObject((String)localEntry.getKey(), localObject1);
     }
     return localHippyMap;
   }
@@ -158,47 +158,43 @@ public class HippyMap
     if (paramJSONObject == null) {
       return;
     }
-    for (;;)
+    try
     {
-      String str;
-      Object localObject1;
-      try
+      Iterator localIterator = paramJSONObject.keys();
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = paramJSONObject.keys();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        str = localIterator.next().toString();
-        localObject1 = paramJSONObject.opt(str);
+        String str = localIterator.next().toString();
+        Object localObject1 = paramJSONObject.opt(str);
         if (paramJSONObject.isNull(str))
         {
           pushNull(str);
-          continue;
         }
-        if (!(localObject1 instanceof JSONObject)) {
-          break label95;
+        else
+        {
+          Object localObject2;
+          if ((localObject1 instanceof JSONObject))
+          {
+            localObject2 = new HippyMap();
+            ((HippyMap)localObject2).pushJSONObject((JSONObject)localObject1);
+            pushMap(str, (HippyMap)localObject2);
+          }
+          else if ((localObject1 instanceof JSONArray))
+          {
+            localObject2 = new HippyArray();
+            ((HippyArray)localObject2).pushJSONArray((JSONArray)localObject1);
+            pushArray(str, (HippyArray)localObject2);
+          }
+          else
+          {
+            pushObject(str, localObject1);
+          }
         }
       }
-      catch (Exception paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        return;
-      }
-      Object localObject2 = new HippyMap();
-      ((HippyMap)localObject2).pushJSONObject((JSONObject)localObject1);
-      pushMap(str, (HippyMap)localObject2);
-      continue;
-      label95:
-      if ((localObject1 instanceof JSONArray))
-      {
-        localObject2 = new HippyArray();
-        ((HippyArray)localObject2).pushJSONArray((JSONArray)localObject1);
-        pushArray(str, (HippyArray)localObject2);
-      }
-      else
-      {
-        pushObject(str, localObject1);
-      }
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
     }
   }
   
@@ -241,56 +237,58 @@ public class HippyMap
     }
     if ((paramObject instanceof Integer))
     {
-      pushInt(paramString, ((Integer)paramObject).intValue());
+      paramObject = (Integer)paramObject;
+      label73:
+      pushInt(paramString, paramObject.intValue());
       return;
     }
     if ((paramObject instanceof Boolean))
     {
+      label90:
       pushBoolean(paramString, ((Boolean)paramObject).booleanValue());
       return;
     }
-    if ((paramObject instanceof Double))
+    if ((paramObject instanceof Double)) {}
+    label110:
+    for (double d = ((Double)paramObject).doubleValue();; d = ((Number)paramObject).doubleValue())
     {
-      pushDouble(paramString, ((Double)paramObject).doubleValue());
+      pushDouble(paramString, d);
       return;
+      if (!(paramObject instanceof Float)) {
+        break;
+      }
     }
-    if ((paramObject instanceof Float))
-    {
-      pushDouble(paramString, ((Number)paramObject).doubleValue());
-      return;
-    }
-    if ((paramObject instanceof Long))
-    {
-      pushLong(paramString, ((Long)paramObject).longValue());
-      return;
-    }
-    Class localClass = paramObject.getClass();
-    if (localClass.isAssignableFrom(Integer.TYPE))
-    {
-      pushInt(paramString, ((Integer)paramObject).intValue());
-      return;
-    }
-    if (localClass.isAssignableFrom(Boolean.TYPE))
-    {
-      pushBoolean(paramString, ((Boolean)paramObject).booleanValue());
-      return;
-    }
-    if (localClass.isAssignableFrom(Double.TYPE))
-    {
-      pushDouble(paramString, ((Double)paramObject).doubleValue());
-      return;
-    }
-    if (localClass.isAssignableFrom(Float.TYPE))
-    {
-      pushDouble(paramString, ((Number)paramObject).doubleValue());
-      return;
-    }
-    if (localClass.isAssignableFrom(Long.TYPE))
+    label132:
+    if ((paramObject instanceof Long)) {}
+    Class localClass;
+    do
     {
       pushLong(paramString, ((Long)paramObject).longValue());
       return;
+      if ((paramObject instanceof Byte))
+      {
+        paramObject = Integer.valueOf(((Byte)paramObject).intValue());
+        break label73;
+      }
+      localClass = paramObject.getClass();
+      if (localClass.isAssignableFrom(Integer.TYPE)) {
+        break;
+      }
+      if (localClass.isAssignableFrom(Boolean.TYPE)) {
+        break label90;
+      }
+      if (localClass.isAssignableFrom(Double.TYPE)) {
+        break label110;
+      }
+      if (localClass.isAssignableFrom(Float.TYPE)) {
+        break label132;
+      }
+    } while (localClass.isAssignableFrom(Long.TYPE));
+    paramString = new RuntimeException("push unsupported object into HippyMap");
+    for (;;)
+    {
+      throw paramString;
     }
-    throw new RuntimeException("push unsupported object into HippyMap");
   }
   
   public void pushString(String paramString1, String paramString2)
@@ -310,53 +308,51 @@ public class HippyMap
   
   public JSONObject toJSONObject()
   {
-    JSONObject localJSONObject = new JSONObject();
+    localJSONObject = new JSONObject();
     if (size() <= 0) {
       return localJSONObject;
     }
     Iterator localIterator = entrySet().iterator();
-    for (;;)
+    try
     {
-      Map.Entry localEntry;
-      String str;
-      try
+      if (localIterator.hasNext())
       {
-        if (localIterator.hasNext())
+        Object localObject = (Map.Entry)localIterator.next();
+        String str = (String)((Map.Entry)localObject).getKey();
+        if ((((Map.Entry)localObject).getValue() instanceof HippyMap)) {
+          localObject = ((HippyMap)((Map.Entry)localObject).getValue()).toJSONObject();
+        }
+        for (;;)
         {
-          localEntry = (Map.Entry)localIterator.next();
-          str = (String)localEntry.getKey();
-          if ((localEntry.getValue() instanceof HippyMap)) {
-            localJSONObject.put(str, ((HippyMap)localEntry.getValue()).toJSONObject());
+          localJSONObject.put(str, localObject);
+          break;
+          if ((((Map.Entry)localObject).getValue() instanceof HippyArray)) {
+            localObject = ((HippyArray)((Map.Entry)localObject).getValue()).toJSONArray();
+          } else {
+            localObject = ((Map.Entry)localObject).getValue();
           }
         }
-        else
-        {
-          return localJSONObject;
-        }
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-      if ((localEntry.getValue() instanceof HippyArray)) {
-        localJSONObject.put(str, ((HippyArray)localEntry.getValue()).toJSONArray());
-      } else {
-        localJSONObject.put(str, localEntry.getValue());
-      }
+      return localJSONObject;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
   
   public String toString()
   {
-    if (this.mDatas == null) {
+    HashMap localHashMap = this.mDatas;
+    if (localHashMap == null) {
       return "null";
     }
-    return this.mDatas.toString();
+    return localHashMap.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.common.HippyMap
  * JD-Core Version:    0.7.0.1
  */

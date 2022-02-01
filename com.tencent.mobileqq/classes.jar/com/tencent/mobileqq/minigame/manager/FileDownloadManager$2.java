@@ -21,44 +21,65 @@ final class FileDownloadManager$2
   
   public void onDownloadCanceled(String paramString)
   {
-    if (this.val$listener != null) {
-      this.val$listener.onDownloadFailed(-5, "abort");
+    paramString = this.val$listener;
+    if (paramString != null) {
+      paramString.onDownloadFailed(-5, "abort");
     }
   }
   
   public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    if (this.val$listener != null) {
-      this.val$listener.onDownloadFailed(paramDownloadResult.getStatus().httpStatus, paramDownloadResult.getStatus().getErrorMessage());
+    paramString = this.val$listener;
+    if (paramString != null) {
+      paramString.onDownloadFailed(paramDownloadResult.getStatus().httpStatus, paramDownloadResult.getStatus().getErrorMessage());
     }
   }
   
   public void onDownloadHeadersReceived(String paramString, int paramInt, Map<String, List<String>> paramMap)
   {
     this.headers = paramMap;
-    if (this.val$listener != null) {
-      this.val$listener.onDownloadHeadersReceived(paramInt, paramMap);
+    paramString = this.val$listener;
+    if (paramString != null) {
+      paramString.onDownloadHeadersReceived(paramInt, paramMap);
     }
   }
   
   public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
   {
-    if (this.val$listener != null) {
-      this.val$listener.onDownloadProgress(paramFloat, ((float)paramLong * paramFloat), paramLong);
+    paramString = this.val$listener;
+    if (paramString != null) {
+      paramString.onDownloadProgress(paramFloat, ((float)paramLong * paramFloat), paramLong);
     }
   }
   
   public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    if (this.val$listener != null) {
-      this.val$listener.onDownloadSucceed(paramDownloadResult.getStatus().httpStatus, this.val$filePath, FileDownloadManager.access$100(paramDownloadResult, this.headers));
+    paramString = this.val$listener;
+    if (paramString != null) {
+      paramString.onDownloadSucceed(paramDownloadResult.getStatus().httpStatus, this.val$filePath, FileDownloadManager.access$100(paramDownloadResult, this.headers));
     }
-    QLog.e("FileDownloadManager", 1, "downloadWithDownloader [timecost=" + (SystemClock.uptimeMillis() - this.beginEnqueue) + "][receiveData=" + paramDownloadResult.getReport().t_recvdata + "][connect=" + paramDownloadResult.getReport().t_conn + "][duration=" + paramDownloadResult.getProcess().duration + "][totalDuration=" + paramDownloadResult.getProcess().totalDuration + "][wait=" + paramDownloadResult.getReport().t_wait + "][url=" + this.val$url + "]");
+    paramString = new StringBuilder();
+    paramString.append("downloadWithDownloader [timecost=");
+    paramString.append(SystemClock.uptimeMillis() - this.beginEnqueue);
+    paramString.append("][receiveData=");
+    paramString.append(paramDownloadResult.getReport().t_recvdata);
+    paramString.append("][connect=");
+    paramString.append(paramDownloadResult.getReport().t_conn);
+    paramString.append("][duration=");
+    paramString.append(paramDownloadResult.getProcess().duration);
+    paramString.append("][totalDuration=");
+    paramString.append(paramDownloadResult.getProcess().totalDuration);
+    paramString.append("][wait=");
+    paramString.append(paramDownloadResult.getReport().t_wait);
+    paramString.append("][url=");
+    paramString.append(this.val$url);
+    paramString.append("]");
+    QLog.e("FileDownloadManager", 1, paramString.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.FileDownloadManager.2
  * JD-Core Version:    0.7.0.1
  */

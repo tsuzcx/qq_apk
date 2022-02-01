@@ -31,14 +31,15 @@ public final class GetBulkImageClassifyReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.MultiPics != null) {
-      paramJceOutputStream.write(this.MultiPics, 0);
+    ArrayList localArrayList = this.MultiPics;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     camera.MOBILE_QQ_MATERIAL_INTERFACE.GetBulkImageClassifyReq
  * JD-Core Version:    0.7.0.1
  */

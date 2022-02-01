@@ -9,15 +9,17 @@ final class NearbyFlowerManager$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localQQAppInterface == null) {
       return;
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 1, 0, "", "", "", "");
+    String str = this.jdField_a_of_type_JavaLangString;
+    ReportController.b(localQQAppInterface, "CliOper", "", "", str, str, 0, 1, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.NearbyFlowerManager.1
  * JD-Core Version:    0.7.0.1
  */

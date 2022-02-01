@@ -27,44 +27,34 @@ public class EmbeddedHelper
   public static final String EVENT_INSERT_VIDEO_PLAYER = "insertVideoPlayer";
   public static final String SP_NAME = "update_embedded_status";
   public static final String TAG = "EmbeddedHelper";
-  private static ArrayList<String> appIDWhiteList;
+  private static ArrayList<String> appIDWhiteList = null;
   private static final boolean enableEmbeddedLiveConfig;
   private static final boolean enableEmbeddedVideoConfiog;
   private static boolean enableUpdateForEmbeddedWidget;
   private static volatile Boolean isRunning;
-  private static String mCurWhiteListConfig;
+  private static String mCurWhiteListConfig = null;
   
   static
   {
-    boolean bool2 = true;
+    boolean bool2 = false;
     isRunning = Boolean.valueOf(false);
-    if (WnsConfig.getConfig("qqminiapp", "enableUpdateForEmbeddedWidget", 1) == 1)
-    {
+    if (WnsConfig.getConfig("qqminiapp", "enableUpdateForEmbeddedWidget", 1) == 1) {
       bool1 = true;
-      enableUpdateForEmbeddedWidget = bool1;
-      if (WnsConfig.getConfig("qqminiapp", "enable_embedded_video", 1) != 1) {
-        break label77;
-      }
+    } else {
+      bool1 = false;
+    }
+    enableUpdateForEmbeddedWidget = bool1;
+    if (WnsConfig.getConfig("qqminiapp", "enable_embedded_video", 1) == 1) {
       bool1 = true;
-      label41:
-      enableEmbeddedVideoConfiog = bool1;
-      if (WnsConfig.getConfig("qqminiapp", "enable_embedded_live", 1) != 1) {
-        break label82;
-      }
-    }
-    label77:
-    label82:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      enableEmbeddedLiveConfig = bool1;
-      appIDWhiteList = null;
-      mCurWhiteListConfig = null;
-      return;
+    } else {
       bool1 = false;
-      break;
-      bool1 = false;
-      break label41;
     }
+    enableEmbeddedVideoConfiog = bool1;
+    boolean bool1 = bool2;
+    if (WnsConfig.getConfig("qqminiapp", "enable_embedded_live", 1) == 1) {
+      bool1 = true;
+    }
+    enableEmbeddedLiveConfig = bool1;
   }
   
   public static void checkEmbeddedWidgetSupport(RequestEvent paramRequestEvent, String paramString, Activity paramActivity)
@@ -75,7 +65,9 @@ public class EmbeddedHelper
   private static boolean doRealCheck(RequestEvent paramRequestEvent, String paramString, Activity paramActivity)
   {
     getAppWhiteList();
-    if (isIsRunning().booleanValue())
+    boolean bool = isIsRunning().booleanValue();
+    Boolean localBoolean = Boolean.valueOf(false);
+    if (bool)
     {
       QMLog.d("EmbeddedHelper", "checkEmbeddedWidgetSupport isRunning, return.");
       return false;
@@ -84,59 +76,75 @@ public class EmbeddedHelper
     if (paramRequestEvent == null)
     {
       QMLog.d("EmbeddedHelper", "checkEmbeddedWidgetSupport req nll, return.");
-      setIsRunning(Boolean.valueOf(false));
+      setIsRunning(localBoolean);
       return false;
     }
-    if ((paramActivity == null) || (paramActivity.isFinishing()))
+    if ((paramActivity != null) && (!paramActivity.isFinishing()))
     {
-      setIsRunning(Boolean.valueOf(false));
-      return false;
-    }
-    QMLog.d("EmbeddedHelper", "checkEmbeddedWidgetSupport event : " + paramRequestEvent.event);
-    if (!isEmbeddedWidgetApi(paramRequestEvent))
-    {
-      QMLog.d("EmbeddedHelper", "checkEmbeddedWidgetSupport isEmbeddedWidgetApi false, return.");
-      setIsRunning(Boolean.valueOf(false));
-      return false;
-    }
-    if (!enableUpdateForEmbeddedWidget)
-    {
-      QMLog.d("EmbeddedHelper", "checkEmbeddedWidgetSupport enableUpdateForEmbeddedWidget false, return.");
-      setIsRunning(Boolean.valueOf(false));
-      return false;
-    }
-    if (!appIDWhiteList.contains(paramString))
-    {
-      QMLog.d("EmbeddedHelper", "checkEmbeddedWidgetSupport appIDWhiteList false, appid is : " + paramString + ", return.");
-      setIsRunning(Boolean.valueOf(false));
-      return false;
-    }
-    paramRequestEvent = LoginManager.getInstance().getAccount();
-    paramString = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppVersion();
-    if (getSp().getInt(paramString + paramRequestEvent, 0) == 1)
-    {
-      QMLog.d("EmbeddedHelper", "checkEmbeddedWidgetSupport sp false, return.");
-      setIsRunning(Boolean.valueOf(false));
-      return false;
-    }
-    if ((!enableEmbeddedVideoConfiog) && (!enableEmbeddedLiveConfig))
-    {
-      QMLog.d("EmbeddedHelper", "checkEmbeddedWidgetSupport widget false, return.");
-      setIsRunning(Boolean.valueOf(false));
-      return false;
-    }
-    int i = QbSdk.getTbsVersion(paramActivity);
-    int j = QbSdk.getTmpDirTbsVersion(paramActivity);
-    QMLog.d("EmbeddedHelper", "tbsVersion : " + i + "; tmpDirTbsVersion : " + j);
-    if ((i > 0) || (j > 0))
-    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("checkEmbeddedWidgetSupport event : ");
+      ((StringBuilder)localObject).append(paramRequestEvent.event);
+      QMLog.d("EmbeddedHelper", ((StringBuilder)localObject).toString());
+      if (!isEmbeddedWidgetApi(paramRequestEvent))
+      {
+        QMLog.d("EmbeddedHelper", "checkEmbeddedWidgetSupport isEmbeddedWidgetApi false, return.");
+        setIsRunning(localBoolean);
+        return false;
+      }
+      if (!enableUpdateForEmbeddedWidget)
+      {
+        QMLog.d("EmbeddedHelper", "checkEmbeddedWidgetSupport enableUpdateForEmbeddedWidget false, return.");
+        setIsRunning(localBoolean);
+        return false;
+      }
+      if (!appIDWhiteList.contains(paramString))
+      {
+        paramRequestEvent = new StringBuilder();
+        paramRequestEvent.append("checkEmbeddedWidgetSupport appIDWhiteList false, appid is : ");
+        paramRequestEvent.append(paramString);
+        paramRequestEvent.append(", return.");
+        QMLog.d("EmbeddedHelper", paramRequestEvent.toString());
+        setIsRunning(localBoolean);
+        return false;
+      }
+      paramRequestEvent = LoginManager.getInstance().getAccount();
+      paramString = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppVersion();
+      localObject = getSp();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(paramRequestEvent);
+      if (((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 0) == 1)
+      {
+        QMLog.d("EmbeddedHelper", "checkEmbeddedWidgetSupport sp false, return.");
+        setIsRunning(localBoolean);
+        return false;
+      }
+      if ((!enableEmbeddedVideoConfiog) && (!enableEmbeddedLiveConfig))
+      {
+        QMLog.d("EmbeddedHelper", "checkEmbeddedWidgetSupport widget false, return.");
+        setIsRunning(localBoolean);
+        return false;
+      }
+      int i = QbSdk.getTbsVersion(paramActivity);
+      int j = QbSdk.getTmpDirTbsVersion(paramActivity);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("tbsVersion : ");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append("; tmpDirTbsVersion : ");
+      ((StringBuilder)localObject).append(j);
+      QMLog.d("EmbeddedHelper", ((StringBuilder)localObject).toString());
+      if ((i <= 0) && (j <= 0))
+      {
+        AppBrandTask.runTaskOnUiThread(new EmbeddedHelper.2(paramActivity, paramString, paramRequestEvent));
+        setTbsListener(paramActivity);
+        return true;
+      }
       QMLog.d("EmbeddedHelper", "checkEmbeddedWidgetSupport tbsVersion || tmpDirTbsVersion > 0, return.");
-      setIsRunning(Boolean.valueOf(false));
+      setIsRunning(localBoolean);
       return false;
     }
-    AppBrandTask.runTaskOnUiThread(new EmbeddedHelper.2(paramActivity, paramString, paramRequestEvent));
-    setTbsListener(paramActivity);
-    return true;
+    setIsRunning(localBoolean);
+    return false;
   }
   
   private static void downloadSuccess(Activity paramActivity)
@@ -218,7 +226,7 @@ public class EmbeddedHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.util.EmbeddedHelper
  * JD-Core Version:    0.7.0.1
  */

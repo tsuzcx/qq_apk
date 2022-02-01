@@ -21,37 +21,18 @@ public class GetTagListRequest
   private int c;
   private final int d;
   
-  public GetTagListRequest(int paramInt1, long paramLong, String paramString, int paramInt2)
-  {
-    this.c = paramInt1;
-    this.jdField_b_of_type_Long = paramLong;
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.d = paramInt2;
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public GetTagListRequest(String paramString, int paramInt)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.d = paramInt;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
   public BaseResponse a(byte[] paramArrayOfByte)
   {
     qqstory_service.RspGetTagList localRspGetTagList = new qqstory_service.RspGetTagList();
     try
     {
       localRspGetTagList.mergeFrom(paramArrayOfByte);
-      return new GetTagListResponse(localRspGetTagList);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      paramArrayOfByte.printStackTrace();
     }
+    return new GetTagListResponse(localRspGetTagList);
   }
   
   public String a()
@@ -59,7 +40,7 @@ public class GetTagListRequest
     return jdField_a_of_type_JavaLangString;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqGetTagList localReqGetTagList = new qqstory_service.ReqGetTagList();
     if (this.jdField_a_of_type_Boolean)
@@ -74,7 +55,7 @@ public class GetTagListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetTagListRequest
  * JD-Core Version:    0.7.0.1
  */

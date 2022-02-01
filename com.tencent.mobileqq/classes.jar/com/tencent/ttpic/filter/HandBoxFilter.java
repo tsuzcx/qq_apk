@@ -22,25 +22,34 @@ public class HandBoxFilter
   
   private void normalizePoints(List<PointF> paramList, int paramInt1, int paramInt2)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
+    if (paramList != null)
+    {
+      if (paramList.size() == 0) {
+        return;
+      }
+      float[] arrayOfFloat = this.pointsVertex;
+      float f2 = ((PointF)paramList.get(1)).x;
+      float f1 = paramInt1;
+      arrayOfFloat[0] = (f2 * 2.0F / f1 - 1.0F);
+      arrayOfFloat = this.pointsVertex;
+      f2 = ((PointF)paramList.get(1)).y;
+      float f3 = paramInt2;
+      arrayOfFloat[1] = (f2 * 2.0F / f3 - 1.0F);
+      this.pointsVertex[2] = (((PointF)paramList.get(3)).x * 2.0F / f1 - 1.0F);
+      this.pointsVertex[3] = (((PointF)paramList.get(3)).y * 2.0F / f3 - 1.0F);
+      this.pointsVertex[4] = (((PointF)paramList.get(3)).x * 2.0F / f1 - 1.0F);
+      this.pointsVertex[5] = (((PointF)paramList.get(3)).y * 2.0F / f3 - 1.0F);
+      this.pointsVertex[6] = (((PointF)paramList.get(8)).x * 2.0F / f1 - 1.0F);
+      this.pointsVertex[7] = (((PointF)paramList.get(8)).y * 2.0F / f3 - 1.0F);
+      this.pointsVertex[8] = (((PointF)paramList.get(8)).x * 2.0F / f1 - 1.0F);
+      this.pointsVertex[9] = (((PointF)paramList.get(8)).y * 2.0F / f3 - 1.0F);
+      this.pointsVertex[10] = (((PointF)paramList.get(6)).x * 2.0F / f1 - 1.0F);
+      this.pointsVertex[11] = (((PointF)paramList.get(6)).y * 2.0F / f3 - 1.0F);
+      this.pointsVertex[12] = (((PointF)paramList.get(6)).x * 2.0F / f1 - 1.0F);
+      this.pointsVertex[13] = (((PointF)paramList.get(6)).y * 2.0F / f3 - 1.0F);
+      this.pointsVertex[14] = (((PointF)paramList.get(1)).x * 2.0F / f1 - 1.0F);
+      this.pointsVertex[15] = (((PointF)paramList.get(1)).y * 2.0F / f3 - 1.0F);
     }
-    this.pointsVertex[0] = (((PointF)paramList.get(1)).x * 2.0F / paramInt1 - 1.0F);
-    this.pointsVertex[1] = (((PointF)paramList.get(1)).y * 2.0F / paramInt2 - 1.0F);
-    this.pointsVertex[2] = (((PointF)paramList.get(3)).x * 2.0F / paramInt1 - 1.0F);
-    this.pointsVertex[3] = (((PointF)paramList.get(3)).y * 2.0F / paramInt2 - 1.0F);
-    this.pointsVertex[4] = (((PointF)paramList.get(3)).x * 2.0F / paramInt1 - 1.0F);
-    this.pointsVertex[5] = (((PointF)paramList.get(3)).y * 2.0F / paramInt2 - 1.0F);
-    this.pointsVertex[6] = (((PointF)paramList.get(8)).x * 2.0F / paramInt1 - 1.0F);
-    this.pointsVertex[7] = (((PointF)paramList.get(8)).y * 2.0F / paramInt2 - 1.0F);
-    this.pointsVertex[8] = (((PointF)paramList.get(8)).x * 2.0F / paramInt1 - 1.0F);
-    this.pointsVertex[9] = (((PointF)paramList.get(8)).y * 2.0F / paramInt2 - 1.0F);
-    this.pointsVertex[10] = (((PointF)paramList.get(6)).x * 2.0F / paramInt1 - 1.0F);
-    this.pointsVertex[11] = (((PointF)paramList.get(6)).y * 2.0F / paramInt2 - 1.0F);
-    this.pointsVertex[12] = (((PointF)paramList.get(6)).x * 2.0F / paramInt1 - 1.0F);
-    this.pointsVertex[13] = (((PointF)paramList.get(6)).y * 2.0F / paramInt2 - 1.0F);
-    this.pointsVertex[14] = (((PointF)paramList.get(1)).x * 2.0F / paramInt1 - 1.0F);
-    this.pointsVertex[15] = (((PointF)paramList.get(1)).y * 2.0F / paramInt2 - 1.0F);
   }
   
   public void ApplyGLSLFilter()
@@ -75,20 +84,20 @@ public class HandBoxFilter
   
   public void updatePoints(List<PointF> paramList, float paramFloat, int paramInt1, int paramInt2)
   {
-    if ((paramList == null) || (paramList.size() != 9))
+    if ((paramList != null) && (paramList.size() == 9))
     {
-      this.mNoPoints = true;
+      this.mNoPoints = false;
+      normalizePoints(paramList, (int)(paramInt1 * paramFloat), (int)(paramInt2 * paramFloat));
+      setCoordNum(8);
+      setPositions(this.pointsVertex);
       return;
     }
-    this.mNoPoints = false;
-    normalizePoints(paramList, (int)(paramInt1 * paramFloat), (int)(paramInt2 * paramFloat));
-    setCoordNum(8);
-    setPositions(this.pointsVertex);
+    this.mNoPoints = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.HandBoxFilter
  * JD-Core Version:    0.7.0.1
  */

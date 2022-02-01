@@ -58,11 +58,8 @@ public class MessageForConfessNews
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("MessageForConfessNews", 2, "doParse", localJSONException);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.i("MessageForConfessNews", 2, "doParse", localJSONException);
       }
     }
     if (QLog.isDevelopLevel()) {
@@ -75,7 +72,7 @@ public class MessageForConfessNews
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForConfessNews
  * JD-Core Version:    0.7.0.1
  */

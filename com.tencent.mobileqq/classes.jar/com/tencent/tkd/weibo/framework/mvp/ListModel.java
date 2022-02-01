@@ -46,17 +46,20 @@ public abstract class ListModel<BEAN, COOKIE>
   
   private final void a(List<? extends BEAN> paramList, Function6<? super Boolean, ? super List<? extends BEAN>, ? super Integer, ? super Boolean, ? super Integer, ? super String, Unit> paramFunction6)
   {
+    Boolean localBoolean = Boolean.valueOf(true);
     this.jdField_b_of_type_Boolean = true;
-    if (!this.jdField_a_of_type_Boolean)
+    boolean bool = this.jdField_a_of_type_Boolean;
+    Integer localInteger = Integer.valueOf(0);
+    if (!bool)
     {
       this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.addAll((Collection)paramList);
       this.d = false;
-      paramFunction6.invoke(Boolean.valueOf(true), paramList, Integer.valueOf(0), Boolean.valueOf(true), Integer.valueOf(0), "");
+      paramFunction6.invoke(localBoolean, paramList, localInteger, localBoolean, localInteger, "");
       return;
     }
     if (this.c)
     {
-      paramFunction6.invoke(Boolean.valueOf(false), paramList, Integer.valueOf(0), Boolean.valueOf(true), Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString);
+      paramFunction6.invoke(Boolean.valueOf(false), paramList, localInteger, localBoolean, Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString);
       return;
     }
     a((List)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList);
@@ -68,47 +71,34 @@ public abstract class ListModel<BEAN, COOKIE>
     if ((paramBoolean2) && (paramInt1 >= 0)) {
       this.jdField_b_of_type_Int = paramInt1;
     }
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.jdField_b_of_type_Boolean)
+    {
       if (paramBoolean2)
       {
         this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
         this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.addAll((Collection)paramList);
         a(paramList);
         this.jdField_a_of_type_JavaLangObject = paramCOOKIE;
-        if (!paramBoolean3)
-        {
-          paramBoolean1 = true;
-          this.d = paramBoolean1;
-        }
+        this.d = (paramBoolean3 ^ true);
       }
-      else
-      {
-        paramFunction6.invoke(Boolean.valueOf(paramBoolean2), paramList, Integer.valueOf(paramInt1), Boolean.valueOf(false), Integer.valueOf(paramInt2), paramString);
-      }
-    }
-    do
-    {
+      paramFunction6.invoke(Boolean.valueOf(paramBoolean2), paramList, Integer.valueOf(paramInt1), Boolean.valueOf(false), Integer.valueOf(paramInt2), paramString);
       return;
-      paramBoolean1 = false;
-      break;
-      if (paramBoolean2)
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.addAll((Collection)paramList);
-        this.jdField_a_of_type_JavaLangObject = paramCOOKIE;
-        if (!paramBoolean3) {}
-        for (paramBoolean1 = true;; paramBoolean1 = false)
-        {
-          this.d = paramBoolean1;
-          paramFunction6.invoke(Boolean.valueOf(paramBoolean2), paramList, Integer.valueOf(paramInt1), Boolean.valueOf(false), Integer.valueOf(paramInt2), paramString);
-          return;
-        }
-      }
-      this.c = true;
-      this.jdField_a_of_type_Int = paramInt2;
-      this.jdField_a_of_type_JavaLangString = paramString;
-    } while (paramBoolean1);
-    paramFunction6.invoke(Boolean.valueOf(paramBoolean2), paramList, Integer.valueOf(paramInt1), Boolean.valueOf(false), Integer.valueOf(paramInt2), paramString);
+    }
+    if (paramBoolean2)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.addAll((Collection)paramList);
+      this.jdField_a_of_type_JavaLangObject = paramCOOKIE;
+      this.d = (paramBoolean3 ^ true);
+      paramFunction6.invoke(Boolean.valueOf(paramBoolean2), paramList, Integer.valueOf(paramInt1), Boolean.valueOf(false), Integer.valueOf(paramInt2), paramString);
+      return;
+    }
+    this.c = true;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (!paramBoolean1) {
+      paramFunction6.invoke(Boolean.valueOf(paramBoolean2), paramList, Integer.valueOf(paramInt1), Boolean.valueOf(false), Integer.valueOf(paramInt2), paramString);
+    }
   }
   
   @NotNull
@@ -151,7 +141,7 @@ public abstract class ListModel<BEAN, COOKIE>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.weibo.framework.mvp.ListModel
  * JD-Core Version:    0.7.0.1
  */

@@ -36,16 +36,16 @@ public class PlayerCommentTitleSegment
   
   public View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
-    paramViewGroup = (TextView)paramBaseViewHolder.a(2131379432);
-    paramViewGroup = (ImageView)paramBaseViewHolder.a(2131364824);
+    paramViewGroup = (TextView)paramBaseViewHolder.a(2131378784);
+    paramViewGroup = (ImageView)paramBaseViewHolder.a(2131364711);
     return paramBaseViewHolder.a();
   }
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561890, paramViewGroup, false));
-    paramViewGroup = (ImageView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131364824);
-    TextView localTextView = (TextView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131379432);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561740, paramViewGroup, false));
+    paramViewGroup = (ImageView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131364711);
+    TextView localTextView = (TextView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131378784);
     paramViewGroup.setOnClickListener(this);
     localTextView.setOnClickListener(this);
     return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder;
@@ -58,22 +58,19 @@ public class PlayerCommentTitleSegment
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    if (paramView.getId() == 2131364711)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogPlayerCommentEventCallback != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogPlayerCommentEventCallback.a();
+      PlayerCommentEventCallback localPlayerCommentEventCallback = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogPlayerCommentEventCallback;
+      if (localPlayerCommentEventCallback != null) {
+        localPlayerCommentEventCallback.a();
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.PlayerCommentTitleSegment
  * JD-Core Version:    0.7.0.1
  */

@@ -14,38 +14,29 @@ class EditActivity$2
   public void onClick(View paramView)
   {
     EditActivity localEditActivity = this.a;
-    boolean bool;
-    if (!EditActivity.a(this.a))
+    EditActivity.a(localEditActivity, EditActivity.a(localEditActivity) ^ true);
+    if (EditActivity.a(this.a))
     {
-      bool = true;
-      EditActivity.a(localEditActivity, bool);
-      if (!EditActivity.a(this.a)) {
-        break label86;
-      }
       this.a.b();
-      EditActivity.a(this.a).setImageResource(2130838192);
+      EditActivity.a(this.a).setImageResource(2130838033);
       if (EditActivity.a(this.a) != null) {
         EditActivity.a(this.a).setVisibility(0);
       }
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      bool = false;
-      break;
-      label86:
       if (EditActivity.a(this.a) != null) {
         EditActivity.a(this.a).setVisibility(4);
       }
-      EditActivity.a(this.a).setImageResource(2130848264);
+      EditActivity.a(this.a).setImageResource(2130848134);
       this.a.a();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.EditActivity.2
  * JD-Core Version:    0.7.0.1
  */

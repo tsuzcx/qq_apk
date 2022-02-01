@@ -13,7 +13,7 @@ import mqq.app.AppRuntime;
 public class PhotoPlusModule
   extends QIPCModule
 {
-  private static PhotoPlusModule a = null;
+  private static PhotoPlusModule a;
   
   private PhotoPlusModule()
   {
@@ -22,51 +22,60 @@ public class PhotoPlusModule
   
   public static PhotoPlusModule a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new PhotoPlusModule();
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new PhotoPlusModule();
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoPlusModule", 2, "[onCall] action = " + paramString + ", params = " + paramBundle + ", callbackId=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[onCall] action = ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", params = ");
+      localStringBuilder.append(paramBundle);
+      localStringBuilder.append(", callbackId=");
+      localStringBuilder.append(paramInt);
+      QLog.d("PhotoPlusModule", 2, localStringBuilder.toString());
     }
     paramBundle = BaseApplicationImpl.sApplication.getRuntime();
-    if (!QQAppInterface.class.isInstance(paramBundle)) {
+    if (!QQAppInterface.class.isInstance(paramBundle))
+    {
       if (QLog.isColorLevel()) {
         QLog.e("PhotoPlusModule", 2, "[onCall] get app failed.");
       }
-    }
-    do
-    {
       return null;
-      paramBundle = (PhotoPlusManager)paramBundle.getManager(QQManagerFactory.PHOTO_PLUS_MANAGER);
-      if ("action_get_sticker_templates".equals(paramString))
-      {
-        paramBundle.b(true);
-        ThreadManager.postImmediately(new PhotoPlusModule.1(this, paramBundle, paramInt), null, true);
-        return null;
-      }
-      if ("action_exit_sticker".equals(paramString))
-      {
-        paramBundle.b(false);
-        return null;
-      }
-    } while (!"action_jump_to_shortvideo".equals(paramString));
-    paramBundle.c(true);
+    }
+    paramBundle = (PhotoPlusManager)paramBundle.getManager(QQManagerFactory.PHOTO_PLUS_MANAGER);
+    if ("action_get_sticker_templates".equals(paramString))
+    {
+      paramBundle.b(true);
+      ThreadManager.postImmediately(new PhotoPlusModule.1(this, paramBundle, paramInt), null, true);
+      return null;
+    }
+    if ("action_exit_sticker".equals(paramString))
+    {
+      paramBundle.b(false);
+      return null;
+    }
+    if ("action_jump_to_shortvideo".equals(paramString)) {
+      paramBundle.c(true);
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.photoplus.PhotoPlusModule
  * JD-Core Version:    0.7.0.1
  */

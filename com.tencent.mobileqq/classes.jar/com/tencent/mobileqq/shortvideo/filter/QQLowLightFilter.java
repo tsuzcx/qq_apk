@@ -14,6 +14,7 @@ import com.tencent.sveffects.SdkContext;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.OutputStream;
 
 public class QQLowLightFilter
   extends QQBaseFilter
@@ -25,9 +26,9 @@ public class QQLowLightFilter
   private static int ResUncheck = 0;
   private static final String TAG = "QQLowLightFilter";
   private static boolean enableNightMode = false;
-  public static String lowLightDir = SdkContext.getInstance().getResources().getLowLightResource().getLowLightDir() + "capture_qsvf" + File.separator + "lowlight";
-  public static String lowLightPath = lowLightDir + File.separator + "LowLight.png";
-  public static int mLowLightResStatus = 0;
+  public static String lowLightDir;
+  public static String lowLightPath;
+  public static int mLowLightResStatus;
   private boolean bwork = false;
   private int lastHeight = 0;
   private int lastWidth = 0;
@@ -36,6 +37,18 @@ public class QQLowLightFilter
   
   static
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(SdkContext.getInstance().getResources().getLowLightResource().getLowLightDir());
+    localStringBuilder.append("capture_qsvf");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("lowlight");
+    lowLightDir = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(lowLightDir);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("LowLight.png");
+    lowLightPath = localStringBuilder.toString();
+    mLowLightResStatus = 0;
     ResExist = 2;
     ResGenerating = 1;
   }
@@ -63,26 +76,24 @@ public class QQLowLightFilter
   
   public static boolean bResReady()
   {
-    boolean bool = false;
     if (mLowLightResStatus == ResUncheck) {
       CheckLowLightRes();
     }
-    if (mLowLightResStatus == ResExist) {
-      bool = true;
-    }
-    return bool;
+    return mLowLightResStatus == ResExist;
   }
   
   private void destroyRender()
   {
-    if (this.mLowLightRender != null)
+    Object localObject = this.mLowLightRender;
+    if (localObject != null)
     {
-      this.mLowLightRender.destroy();
+      ((LowLightRender)localObject).destroy();
       this.mLowLightRender = null;
     }
-    if (this.mDenoiseRender != null)
+    localObject = this.mDenoiseRender;
+    if (localObject != null)
     {
-      this.mDenoiseRender.destroy();
+      ((DenoiseRender)localObject).destroy();
       this.mDenoiseRender = null;
     }
   }
@@ -95,38 +106,38 @@ public class QQLowLightFilter
   private static void generateLowlightRes()
   {
     File localFile = new File(lowLightPath);
-    if (localFile.exists()) {
+    if (localFile.exists())
+    {
       localFile.delete();
     }
-    for (;;)
+    else
     {
-      Object localObject = LowLightTools.getLowLightImage(3.0F, 0.88F, 0.96F, 1.22F, false);
-      try
-      {
-        BufferedOutputStream localBufferedOutputStream = new BufferedOutputStream(new FileOutputStream(localFile));
-        ((Bitmap)localObject).compress(Bitmap.CompressFormat.PNG, 100, localBufferedOutputStream);
-        localBufferedOutputStream.flush();
-        localBufferedOutputStream.close();
-        if (!localFile.exists())
-        {
-          mLowLightResStatus = ResFailed;
-          return;
-          localObject = localFile.getParentFile();
-          if (((File)localObject).exists()) {
-            continue;
-          }
-          ((File)localObject).mkdirs();
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          SLog.w("QQLowLightFilter", "LowLightTools saveBitmap:" + localException);
-        }
-        mLowLightResStatus = ResExist;
+      localObject1 = localFile.getParentFile();
+      if (!((File)localObject1).exists()) {
+        ((File)localObject1).mkdirs();
       }
     }
+    Object localObject1 = LowLightTools.getLowLightImage(3.0F, 0.88F, 0.96F, 1.22F, false);
+    try
+    {
+      localObject2 = new BufferedOutputStream(new FileOutputStream(localFile));
+      ((Bitmap)localObject1).compress(Bitmap.CompressFormat.PNG, 100, (OutputStream)localObject2);
+      ((BufferedOutputStream)localObject2).flush();
+      ((BufferedOutputStream)localObject2).close();
+    }
+    catch (Exception localException)
+    {
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("LowLightTools saveBitmap:");
+      ((StringBuilder)localObject2).append(localException);
+      SLog.w("QQLowLightFilter", ((StringBuilder)localObject2).toString());
+    }
+    if (!localFile.exists())
+    {
+      mLowLightResStatus = ResFailed;
+      return;
+    }
+    mLowLightResStatus = ResExist;
   }
   
   public boolean isFilterWork()
@@ -136,14 +147,24 @@ public class QQLowLightFilter
   
   public void onDrawFrame()
   {
-    if (this.mLowLightRender == null)
-    {
-      if (!bResReady()) {
-        break label208;
+    if (this.mLowLightRender == null) {
+      if (bResReady())
+      {
+        this.mLowLightRender = new LowLightRender(SdkContext.getInstance().getApplication(), lowLightDir);
+        if (SLog.isEnable()) {
+          SLog.d("lowlightRender_time", "小太阳耗时 create with res");
+        }
       }
-      this.mLowLightRender = new LowLightRender(SdkContext.getInstance().getApplication(), lowLightDir);
-      if (SLog.isEnable()) {
-        SLog.d("lowlightRender_time", "小太阳耗时 create with res");
+      else if (bResCheckedFailed())
+      {
+        this.mLowLightRender = new LowLightRender(SdkContext.getInstance().getApplication());
+        if (SLog.isEnable()) {
+          SLog.d("lowlightRender_time", "小太阳耗时 create without res");
+        }
+      }
+      else if (SLog.isEnable())
+      {
+        SLog.d("lowlightRender_time", "小太阳耗时 create wait");
       }
     }
     if (this.mDenoiseRender == null)
@@ -155,34 +176,22 @@ public class QQLowLightFilter
     this.lastHeight = getQQFilterRenderManager().getFilterHeight();
     if ((enableNightMode) && (this.mLowLightRender != null))
     {
-      if ((SdkContext.getInstance().getDpcSwitcher().isDeNoiseSwitchOpen()) && (this.mDenoiseRender != null))
+      if (SdkContext.getInstance().getDpcSwitcher().isDeNoiseSwitchOpen())
       {
-        this.mInputTextureID = this.mDenoiseRender.process(this.mInputTextureID, -1, this.lastWidth, this.lastHeight).getTextureId();
-        QQFilterLogManager.setFilterStatus("QQDeNoiseFilter", true);
-      }
-      for (;;)
-      {
-        this.mOutputTextureID = this.mLowLightRender.process(this.mInputTextureID, -1, this.lastWidth, this.lastHeight).getTextureId();
-        QQFilterLogManager.setFilterStatus("QQLowLightFilter", true);
-        this.bwork = true;
-        return;
-        label208:
-        if (bResCheckedFailed())
+        DenoiseRender localDenoiseRender = this.mDenoiseRender;
+        if (localDenoiseRender != null)
         {
-          this.mLowLightRender = new LowLightRender(SdkContext.getInstance().getApplication());
-          if (!SLog.isEnable()) {
-            break;
-          }
-          SLog.d("lowlightRender_time", "小太阳耗时 create without res");
-          break;
+          this.mInputTextureID = localDenoiseRender.process(this.mInputTextureID, -1, this.lastWidth, this.lastHeight).getTextureId();
+          QQFilterLogManager.setFilterStatus("QQDeNoiseFilter", true);
+          break label233;
         }
-        if (!SLog.isEnable()) {
-          break;
-        }
-        SLog.d("lowlightRender_time", "小太阳耗时 create wait");
-        break;
-        QQFilterLogManager.setFilterStatus("QQDeNoiseFilter", false);
       }
+      QQFilterLogManager.setFilterStatus("QQDeNoiseFilter", false);
+      label233:
+      this.mOutputTextureID = this.mLowLightRender.process(this.mInputTextureID, -1, this.lastWidth, this.lastHeight).getTextureId();
+      QQFilterLogManager.setFilterStatus("QQLowLightFilter", true);
+      this.bwork = true;
+      return;
     }
     this.mOutputTextureID = this.mInputTextureID;
     QQFilterLogManager.setFilterStatus("QQLowLightFilter", false);
@@ -191,7 +200,8 @@ public class QQLowLightFilter
   
   public void onSurfaceChange(int paramInt1, int paramInt2)
   {
-    if ((this.lastHeight != paramInt1) || (this.lastHeight != paramInt2)) {
+    int i = this.lastHeight;
+    if ((i != paramInt1) || (i != paramInt2)) {
       destroyRender();
     }
   }
@@ -203,7 +213,7 @@ public class QQLowLightFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQLowLightFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -18,35 +18,32 @@ class MiniAppCamera$7
     try
     {
       Thread.sleep(50L);
-      QMLog.i("MiniAppCamera", "execCommand start ");
     }
     catch (InterruptedException localInterruptedException)
     {
-      for (;;)
+      localInterruptedException.printStackTrace();
+    }
+    QMLog.i("MiniAppCamera", "execCommand start ");
+    try
+    {
+      ChannelProxy localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
+      if (localChannelProxy != null)
       {
-        try
-        {
-          ChannelProxy localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
-          if (localChannelProxy != null) {
-            localChannelProxy.ffmpegExecCommand(this.val$cmds, new MiniAppCamera.7.1(this));
-          }
-          return;
-        }
-        catch (Exception localException)
-        {
-          Log.e("MiniAppCamera", "run: ", localException);
-          MiniAppCamera.access$700(this.this$0, this.val$srcPath, this.val$req);
-          MiniAppCamera.access$600(this.this$0);
-        }
-        localInterruptedException = localInterruptedException;
-        localInterruptedException.printStackTrace();
+        localChannelProxy.ffmpegExecCommand(this.val$cmds, new MiniAppCamera.7.1(this));
+        return;
       }
+    }
+    catch (Exception localException)
+    {
+      Log.e("MiniAppCamera", "run: ", localException);
+      MiniAppCamera.access$700(this.this$0, this.val$srcPath, this.val$req);
+      MiniAppCamera.access$600(this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.camera.MiniAppCamera.7
  * JD-Core Version:    0.7.0.1
  */

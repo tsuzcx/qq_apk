@@ -28,8 +28,8 @@ public class GPUOESMovieFilter
   private FloatBuffer mTextureBuffer;
   private FloatBuffer mTextureBuffer2;
   private int mTextureCoordinateHandle;
-  private float[] mTextureCoords = { 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, HALF, 0.0F, 0.0F, 1.0F, HALF, 1.0F, 0.0F, 1.0F };
-  private float[] mTextureCoords2 = { HALF, 1.0F, 0.0F, 1.0F, HALF, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 1.0F };
+  private float[] mTextureCoords;
+  private float[] mTextureCoords2;
   private int mTextureParamHandle;
   private int mTextureTranformHandle;
   private FloatBuffer mVertexBuffer;
@@ -46,6 +46,9 @@ public class GPUOESMovieFilter
     super("attribute vec4 vPosition;\nattribute vec4 vTexCoordinate;\nattribute vec4 vTexAlphaCoordinate;\nuniform mat4 textureTransform;\nvarying vec2 v_TexCoordinate;\nvarying vec2 v_TexAlphaCoordinate;\nvoid main () {\n    v_TexCoordinate = (textureTransform * vTexCoordinate).xy;\n    v_TexAlphaCoordinate = (textureTransform * vTexAlphaCoordinate).xy;\n    gl_Position = vPosition;\n}\n", "#extension GL_OES_EGL_image_external : require\nprecision mediump float;\nuniform samplerExternalOES texture;\nvarying vec2 v_TexCoordinate;\nvarying vec2 v_TexAlphaCoordinate;\nuniform int v_isAlpha;\nuniform float real_half;\nuniform float x_add_margin;\n\nvoid main () {\n    if(v_TexCoordinate.x  > x_add_margin && v_TexCoordinate.x  < real_half - x_add_margin\n    && v_TexCoordinate.y  > 0.0 && v_TexCoordinate.y  < 1.0) {\n        vec4 color;\n        color = texture2D(texture, v_TexCoordinate);\n        float alpha = 1.0;\n        if (v_isAlpha == 1) {\n            alpha = texture2D(texture, v_TexAlphaCoordinate).g;\n        }\n        gl_FragColor = color;\n        gl_FragColor.a = gl_FragColor.a * alpha;\n        gl_FragColor.r = gl_FragColor.r * alpha;\n        gl_FragColor.g = gl_FragColor.g * alpha;\n        gl_FragColor.b = gl_FragColor.b * alpha;\n    } else {\n        gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0);\n    } \n}");
     this.mTextureType = 36197;
     this.mFilterType = 102;
+    float f = HALF;
+    this.mTextureCoords = new float[] { 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, f, 0.0F, 0.0F, 1.0F, f, 1.0F, 0.0F, 1.0F };
+    this.mTextureCoords2 = new float[] { f, 1.0F, 0.0F, 1.0F, f, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 1.0F };
   }
   
   private void setupGraphics()
@@ -64,9 +67,10 @@ public class GPUOESMovieFilter
   
   private void setupTexture()
   {
-    if ((this.mTextureBuffer != null) && (this.mTextureBuffer2 != null))
+    FloatBuffer localFloatBuffer = this.mTextureBuffer;
+    if ((localFloatBuffer != null) && (this.mTextureBuffer2 != null))
     {
-      this.mTextureBuffer.clear();
+      localFloatBuffer.clear();
       this.mTextureBuffer.put(this.mTextureCoords);
       this.mTextureBuffer.position(0);
       this.mTextureBuffer2.clear();
@@ -90,51 +94,53 @@ public class GPUOESMovieFilter
   
   public void adjustVideo(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    float f1;
     if ((this.mOutputHeight != 0) && (this.mOutputWidth != 0))
     {
       paramFloat1 = paramFloat1 / HALF / (this.mOutputHeight * 1.0F / this.mOutputWidth);
-      if (paramFloat1 > 1.0F)
-      {
+      if (paramFloat1 > 1.0F) {
         f1 = 1.0F;
-        if (paramFloat1 <= 1.0F) {
-          break label294;
-        }
+      } else {
+        f1 = paramFloat1;
+      }
+      if (paramFloat1 > 1.0F) {
         paramFloat1 = 1.0F / paramFloat1;
+      } else {
+        paramFloat1 = 1.0F;
       }
     }
-    for (;;)
+    else
     {
-      float f2 = HALF * 0.5F * (1.0F - f1);
-      float f3 = (1.0F - paramFloat1) * 0.5F;
-      paramFloat2 = f1 * (HALF * paramFloat2);
-      paramFloat1 *= paramFloat3;
-      this.mTextureCoords[0] = (f2 + paramFloat2);
-      this.mTextureCoords[1] = (1.0F - f3 + paramFloat1);
-      this.mTextureCoords[4] = (f2 + paramFloat2);
-      this.mTextureCoords[5] = (f3 + paramFloat1);
-      this.mTextureCoords[8] = (HALF - f2 + paramFloat2);
-      this.mTextureCoords[9] = (f3 + paramFloat1);
-      this.mTextureCoords[12] = (HALF - f2 + paramFloat2);
-      this.mTextureCoords[13] = (1.0F - f3 + paramFloat1);
-      this.mTextureCoords2[0] = (HALF + f2 + paramFloat2);
-      this.mTextureCoords2[1] = (1.0F - f3 + paramFloat1);
-      this.mTextureCoords2[4] = (HALF + f2 + paramFloat2);
-      this.mTextureCoords2[5] = (f3 + paramFloat1);
-      this.mTextureCoords2[8] = (1.0F - f2 + paramFloat2);
-      this.mTextureCoords2[9] = (f3 + paramFloat1);
-      this.mTextureCoords2[12] = (paramFloat2 + (1.0F - f2));
-      this.mTextureCoords2[13] = (paramFloat1 + (1.0F - f3));
-      setupTexture();
-      return;
-      f1 = paramFloat1;
-      break;
-      label294:
-      paramFloat1 = 1.0F;
-      continue;
       paramFloat1 = 1.0F;
       f1 = 1.0F;
     }
+    float f2 = HALF;
+    float f3 = f2 * 0.5F * (1.0F - f1);
+    float f4 = (1.0F - paramFloat1) * 0.5F;
+    paramFloat2 = f2 * paramFloat2 * f1;
+    paramFloat3 = paramFloat1 * paramFloat3;
+    float[] arrayOfFloat = this.mTextureCoords;
+    float f1 = f3 + paramFloat2;
+    arrayOfFloat[0] = f1;
+    paramFloat1 = 1.0F - f4 + paramFloat3;
+    arrayOfFloat[1] = paramFloat1;
+    arrayOfFloat[4] = f1;
+    paramFloat3 = f4 + paramFloat3;
+    arrayOfFloat[5] = paramFloat3;
+    arrayOfFloat[8] = (f2 - f3 + paramFloat2);
+    arrayOfFloat[9] = paramFloat3;
+    arrayOfFloat[12] = (f2 - f3 + paramFloat2);
+    arrayOfFloat[13] = paramFloat1;
+    arrayOfFloat = this.mTextureCoords2;
+    arrayOfFloat[0] = (f2 + f3 + paramFloat2);
+    arrayOfFloat[1] = paramFloat1;
+    arrayOfFloat[4] = (f2 + f3 + paramFloat2);
+    arrayOfFloat[5] = paramFloat3;
+    paramFloat2 = 1.0F - f3 + paramFloat2;
+    arrayOfFloat[8] = paramFloat2;
+    arrayOfFloat[9] = paramFloat3;
+    arrayOfFloat[12] = paramFloat2;
+    arrayOfFloat[13] = paramFloat1;
+    setupTexture();
   }
   
   public void drawTexture(int paramInt, float[] paramArrayOfFloat)
@@ -166,21 +172,20 @@ public class GPUOESMovieFilter
       GLES20.glEnableVertexAttribArray(this.mTextureAlphaCoordinateHandle);
       GLES20.glVertexAttribPointer(this.mTextureAlphaCoordinateHandle, 4, 5126, false, 0, this.mTextureBuffer2);
     }
-    for (;;)
+    else
     {
-      GLES20.glUniformMatrix4fv(this.mTextureTranformHandle, 1, false, arrayOfFloat, 0);
-      GLES20.glEnable(3042);
-      GLES20.glBlendFunc(1, 771);
-      GLES20.glDrawElements(4, sDrawOrder.length, 5123, this.mDrawListBuffer);
-      GLES20.glDisableVertexAttribArray(this.mPositionHandle);
-      GLES20.glDisableVertexAttribArray(this.mTextureCoordinateHandle);
-      GLES20.glDisableVertexAttribArray(this.mTextureAlphaCoordinateHandle);
-      return;
       GLES20.glUniform1i(this.mSupportAlphaHandle, 0);
     }
+    GLES20.glUniformMatrix4fv(this.mTextureTranformHandle, 1, false, arrayOfFloat, 0);
+    GLES20.glEnable(3042);
+    GLES20.glBlendFunc(1, 771);
+    GLES20.glDrawElements(4, sDrawOrder.length, 5123, this.mDrawListBuffer);
+    GLES20.glDisableVertexAttribArray(this.mPositionHandle);
+    GLES20.glDisableVertexAttribArray(this.mTextureCoordinateHandle);
+    GLES20.glDisableVertexAttribArray(this.mTextureAlphaCoordinateHandle);
   }
   
-  public void onInitialized()
+  protected void onInitialized()
   {
     setupGraphics();
     setupVertexBuffer();
@@ -189,7 +194,7 @@ public class GPUOESMovieFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUOESMovieFilter
  * JD-Core Version:    0.7.0.1
  */

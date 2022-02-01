@@ -21,8 +21,13 @@ class VideoPlayerProxy$1
         if (this.val$recordPos)
         {
           long l = (int)VideoPlayerProxy.access$000(this.this$0).getCurrentPositionMs();
-          if (LogUtil.isColorLevel()) {
-            LogUtil.d(this.this$0.getLogTag(), 2, "releasePlayer,record play pos = " + l);
+          if (LogUtil.isColorLevel())
+          {
+            String str = this.this$0.getLogTag();
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("releasePlayer,record play pos = ");
+            localStringBuilder.append(l);
+            LogUtil.d(str, 2, localStringBuilder.toString());
           }
           if (VideoPlayerProxy.access$100(this.this$0) != null) {
             VideoPlayerProxy.access$100(this.this$0).mLastPlayPosMs = l;
@@ -44,7 +49,7 @@ class VideoPlayerProxy$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.VideoPlayerProxy.1
  * JD-Core Version:    0.7.0.1
  */

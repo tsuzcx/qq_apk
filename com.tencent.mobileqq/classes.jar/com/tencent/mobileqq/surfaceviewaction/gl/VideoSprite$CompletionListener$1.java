@@ -12,21 +12,27 @@ class VideoSprite$CompletionListener$1
   {
     try
     {
-      if (this.a.a != null) {
+      if (this.a.a != null)
+      {
         this.a.a.start();
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("VideoSprite", 2, "onCompletion: " + QLog.getStackTraceString(localException));
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onCompletion: ");
+        localStringBuilder.append(QLog.getStackTraceString(localException));
+        QLog.e("VideoSprite", 2, localStringBuilder.toString());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.CompletionListener.1
  * JD-Core Version:    0.7.0.1
  */

@@ -26,52 +26,56 @@ class UniformDownloadActivity$7
     if (paramView != null)
     {
       paramView = this.a.jdField_a_of_type_ComTencentWidgetActionSheet.getContent(paramInt);
-      if (!TextUtils.isEmpty(paramView))
-      {
-        if ((!paramView.equals(this.a.getResources().getString(2131691901))) && (!paramView.equals(this.a.getResources().getString(2131691902)))) {
-          break label270;
+      if (!TextUtils.isEmpty(paramView)) {
+        if ((!paramView.equals(this.a.getResources().getString(2131691830))) && (!paramView.equals(this.a.getResources().getString(2131691831))))
+        {
+          if ((paramView.equals(this.a.getResources().getString(2131691829))) || (paramView.equals(this.a.getResources().getString(2131690089))) || (paramView.equals(this.a.getResources().getString(2131690088)))) {
+            UniformDownloadActivity.c(this.a);
+          }
         }
-        ReportController.b(null, "dc00898", "", "", "0X8008F87", "0X8008F87", 1, 0, "", "", "", "");
-        if (!UniformDownloadActivity.a(this.a)) {
-          break label241;
+        else
+        {
+          ReportController.b(null, "dc00898", "", "", "0X8008F87", "0X8008F87", 1, 0, "", "", "", "");
+          if (UniformDownloadActivity.a(this.a))
+          {
+            if (ControlPolicyUtil.g())
+            {
+              OpenSdkStatic.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3007", false);
+              paramView = UniformDownloadActivity.a(this.a);
+              UniformDownloadActivity.a(this.a, paramView);
+              paramView = UniformDownloadActivity.a(this.a, paramView);
+              if (QLog.isColorLevel())
+              {
+                String str = UniformDownloadActivity.jdField_a_of_type_JavaLangString;
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append("tmastUrl=");
+                localStringBuilder.append(paramView);
+                QLog.d(str, 2, localStringBuilder.toString());
+              }
+              UniformDownloadActivity.a(this.a, paramView);
+              UniformDownloadActivity.b(this.a);
+              this.a.finish();
+              this.a.overridePendingTransition(0, 0);
+            }
+            else
+            {
+              UniformDownloadActivity.c(this.a);
+            }
+          }
+          else
+          {
+            UniformDownloadActivity.b(this.a).setVisibility(0);
+            ThreadManager.getSubThreadHandler().post(new UniformDownloadActivity.7.1(this));
+          }
         }
-        if (!ControlPolicyUtil.g()) {
-          break label231;
-        }
-        OpenSdkStatic.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3007", false);
-        paramView = UniformDownloadActivity.a(this.a);
-        UniformDownloadActivity.a(this.a, paramView);
-        paramView = UniformDownloadActivity.a(this.a, paramView);
-        if (QLog.isColorLevel()) {
-          QLog.d(UniformDownloadActivity.jdField_a_of_type_JavaLangString, 2, "tmastUrl=" + paramView);
-        }
-        UniformDownloadActivity.a(this.a, paramView);
-        UniformDownloadActivity.b(this.a);
-        this.a.finish();
-        this.a.overridePendingTransition(0, 0);
       }
     }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      label231:
-      UniformDownloadActivity.c(this.a);
-      continue;
-      label241:
-      UniformDownloadActivity.b(this.a).setVisibility(0);
-      ThreadManager.getSubThreadHandler().post(new UniformDownloadActivity.7.1(this));
-      continue;
-      label270:
-      if ((paramView.equals(this.a.getResources().getString(2131691900))) || (paramView.equals(this.a.getResources().getString(2131690172))) || (paramView.equals(this.a.getResources().getString(2131690171)))) {
-        UniformDownloadActivity.c(this.a);
-      }
-    }
+    this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.7
  * JD-Core Version:    0.7.0.1
  */

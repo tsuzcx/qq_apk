@@ -23,32 +23,34 @@ class SensorJsPlugin$AccelerometerSensorJsPlugin
   
   public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    if (SensorJsPlugin.access$200(this.this$0)) {}
-    while (paramSensorEvent.sensor.getType() != 1) {
+    if (SensorJsPlugin.access$200(this.this$0)) {
       return;
     }
-    paramSensorEvent = paramSensorEvent.values;
-    float f1 = -paramSensorEvent[0] / 10.0F;
-    float f2 = -paramSensorEvent[1] / 10.0F;
-    float f3 = -paramSensorEvent[2] / 10.0F;
-    try
+    if (paramSensorEvent.sensor.getType() == 1)
     {
-      paramSensorEvent = new JSONObject();
-      paramSensorEvent.put("x", f1);
-      paramSensorEvent.put("y", f2);
-      paramSensorEvent.put("z", f3);
-      SensorJsPlugin.access$300(this.this$0, "onAccelerometerChange", paramSensorEvent.toString(), 0, this.mJsService);
-      return;
-    }
-    catch (JSONException paramSensorEvent)
-    {
-      paramSensorEvent.printStackTrace();
+      paramSensorEvent = paramSensorEvent.values;
+      float f1 = -paramSensorEvent[0] / 10.0F;
+      float f2 = -paramSensorEvent[1] / 10.0F;
+      float f3 = -paramSensorEvent[2] / 10.0F;
+      try
+      {
+        paramSensorEvent = new JSONObject();
+        paramSensorEvent.put("x", f1);
+        paramSensorEvent.put("y", f2);
+        paramSensorEvent.put("z", f3);
+        SensorJsPlugin.access$300(this.this$0, "onAccelerometerChange", paramSensorEvent.toString(), 0, this.mJsService);
+        return;
+      }
+      catch (JSONException paramSensorEvent)
+      {
+        paramSensorEvent.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.SensorJsPlugin.AccelerometerSensorJsPlugin
  * JD-Core Version:    0.7.0.1
  */

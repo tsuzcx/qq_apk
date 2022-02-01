@@ -14,10 +14,21 @@ public class WSBasePresenter<V extends IWSBaseView>
   @UiThread
   public V a()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localWeakReference == null) {
       return null;
     }
-    return (IWSBaseView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    return (IWSBaseView)localWeakReference.get();
+  }
+  
+  public void a()
+  {
+    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localWeakReference != null)
+    {
+      localWeakReference.clear();
+      this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    }
   }
   
   @UiThread
@@ -27,23 +38,14 @@ public class WSBasePresenter<V extends IWSBaseView>
     this.jdField_a_of_type_Boolean = false;
   }
   
-  public void c()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      this.jdField_a_of_type_JavaLangRefWeakReference.clear();
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    }
-  }
-  
-  public void d()
+  public void b()
   {
     this.jdField_a_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.presenter.WSBasePresenter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.playvideo.lrtbwidget;
 
-import android.support.v4.view.ViewPager.PageTransformer;
 import android.view.View;
+import androidx.viewpager.widget.ViewPager.PageTransformer;
 
 public class PageTransformerWrapper
   implements XViewPager.PageTransformer
@@ -20,7 +20,7 @@ public class PageTransformerWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.PageTransformerWrapper
  * JD-Core Version:    0.7.0.1
  */

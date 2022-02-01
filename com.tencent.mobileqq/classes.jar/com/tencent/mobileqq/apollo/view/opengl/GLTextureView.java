@@ -7,7 +7,6 @@ import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
 import com.tencent.qphone.base.util.QLog;
@@ -18,7 +17,7 @@ public class GLTextureView
   extends TextureView
   implements TextureView.SurfaceTextureListener, GLRenderView
 {
-  private static final String TAG = "GLTextureView";
+  private static final String TAG = "[ApolloGL][GLTextureView]";
   private static final GLThreadManager sGLThreadManager = new GLThreadManager();
   private int mDebugFlags;
   private boolean mDestroyOnAsync;
@@ -30,7 +29,7 @@ public class GLTextureView
   private EGLWindowSurfaceFactory mEGLWindowSurfaceFactory;
   private GLTextureView.FinishDrawing mFinishDrawing = new GLTextureView.FinishDrawing(this, null);
   private Runnable mForceSetAlphaTask = new GLTextureView.2(this);
-  protected GLThread mGLThread;
+  private GLThread mGLThread;
   private GLWrapper mGLWrapper;
   private boolean mPreserveEGLContextOnPause;
   private Renderer mRenderer;
@@ -58,9 +57,10 @@ public class GLTextureView
   
   private void checkRenderThreadState()
   {
-    if (this.mGLThread != null) {
-      throw new IllegalStateException("setRenderer has already been called for this instance.");
+    if (this.mGLThread == null) {
+      return;
     }
+    throw new IllegalStateException("setRenderer has already been called for this instance.");
   }
   
   private void checkSetAlpha()
@@ -133,6 +133,15 @@ public class GLTextureView
     return this.mEGLWindowSurfaceFactory;
   }
   
+  public long getGLThreadId()
+  {
+    GLThread localGLThread = this.mGLThread;
+    if (localGLThread != null) {
+      return localGLThread.getId();
+    }
+    return -1L;
+  }
+  
   public GLWrapper getGLWrapper()
   {
     return this.mGLWrapper;
@@ -163,43 +172,54 @@ public class GLTextureView
     return this.mRenderer;
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    Log.d("GLTextureView", "onAttachedToWindow reattach =" + this.mDetached + ", mDisableCreateRenderThread: " + this.mDisableCreateRenderThread);
-    if ((this.mDetached) && (this.mRenderer != null)) {
-      if (this.mGLThread == null) {
-        break label195;
-      }
-    }
-    label195:
-    for (int i = this.mGLThread.a();; i = 1)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onAttachedToWindow reattach =");
+    ((StringBuilder)localObject).append(this.mDetached);
+    ((StringBuilder)localObject).append(", mDisableCreateRenderThread: ");
+    ((StringBuilder)localObject).append(this.mDisableCreateRenderThread);
+    QLog.d("[ApolloGL][GLTextureView]", 1, ((StringBuilder)localObject).toString());
+    if ((this.mDetached) && (this.mRenderer != null))
     {
+      localObject = this.mGLThread;
+      int i;
+      if (localObject != null) {
+        i = ((GLThread)localObject).a();
+      } else {
+        i = 1;
+      }
       if (!this.mDisableCreateRenderThread)
       {
         this.mGLThread = new GLThread(sGLThreadManager, this.mThisWeakRef);
         this.mGLThread.a(this.mDestroyOnAsync);
-        this.mGLThread.setName(getRenderThreadName() + "_" + this.mGLThread.getId());
+        localObject = this.mGLThread;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(getRenderThreadName());
+        localStringBuilder.append("_");
+        localStringBuilder.append(this.mGLThread.getId());
+        ((GLThread)localObject).setName(localStringBuilder.toString());
         this.mGLThread.b(false);
         if (i != 1) {
           this.mGLThread.a(i);
         }
         this.mGLThread.start();
       }
-      for (;;)
+      else
       {
-        this.mDetached = false;
-        return;
-        QLog.e("GLTextureView", 1, "onAttachedToWindow mDisableCreateRenderThread true");
+        QLog.e("[ApolloGL][GLTextureView]", 1, "onAttachedToWindow mDisableCreateRenderThread true");
       }
     }
+    this.mDetached = false;
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
-    Log.d("GLTextureView", "onDetachedFromWindow");
-    if (this.mGLThread != null) {
-      this.mGLThread.f();
+    QLog.d("[ApolloGL][GLTextureView]", 1, "onDetachedFromWindow");
+    GLThread localGLThread = this.mGLThread;
+    if (localGLThread != null) {
+      localGLThread.f();
     }
     this.mDetached = true;
     super.onDetachedFromWindow();
@@ -220,25 +240,34 @@ public class GLTextureView
     this.mGLThread.b(this.mFinishDrawing);
     this.mSurfaceWidth = 0;
     this.mSurfaceHeight = 0;
-    Log.d("GLTextureView", "onSurfaceTextureAvailable");
+    QLog.d("[ApolloGL][GLTextureView]", 1, "onSurfaceTextureAvailable");
     long l = System.currentTimeMillis();
     surfaceCreated(paramSurfaceTexture);
-    if (QLog.isColorLevel()) {
-      QLog.d("GLTextureView", 2, " TextureView onSurfaceTextureAvailable surfaceCreated use:" + (System.currentTimeMillis() - l));
+    boolean bool = QLog.isColorLevel();
+    Integer localInteger = Integer.valueOf(2);
+    if (bool)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" TextureView onSurfaceTextureAvailable surfaceCreated cost:");
+      localStringBuilder.append(System.currentTimeMillis() - l);
+      QLog.d("[ApolloGL][GLTextureView]", 1, new Object[] { localInteger, localStringBuilder.toString() });
     }
     surfaceChanged(paramSurfaceTexture, 0, paramInt1, paramInt2);
-    if (QLog.isColorLevel()) {
-      QLog.d("GLTextureView", 2, " TextureView onSurfaceTextureAvailable surfaceChanged use:" + (System.currentTimeMillis() - l));
+    if (QLog.isColorLevel())
+    {
+      paramSurfaceTexture = new StringBuilder();
+      paramSurfaceTexture.append(" TextureView onSurfaceTextureAvailable surfaceChanged cost:");
+      paramSurfaceTexture.append(System.currentTimeMillis() - l);
+      QLog.d("[ApolloGL][GLTextureView]", 1, new Object[] { localInteger, paramSurfaceTexture.toString() });
     }
   }
   
   public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
-    this.mGLThread.b(this.mFinishDrawing);
-    Log.d("GLTextureView", "onSurfaceTextureDestroyed");
+    QLog.d("[ApolloGL][GLTextureView]", 1, "onSurfaceTextureDestroyed");
     surfaceDestroyed(paramSurfaceTexture);
     if (QLog.isColorLevel()) {
-      QLog.d("GLTextureView", 2, " TextureView onSurfaceTextureDestroyed");
+      QLog.d("[ApolloGL][GLTextureView]", 1, "TextureView onSurfaceTextureDestroyed");
     }
     setViewAlpha(0.0F);
     return true;
@@ -247,10 +276,14 @@ public class GLTextureView
   public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     long l = System.currentTimeMillis();
-    Log.d("GLTextureView", "onSurfaceTextureSizeChanged");
+    QLog.d("[ApolloGL][GLTextureView]", 1, "onSurfaceTextureSizeChanged");
     surfaceChanged(paramSurfaceTexture, 0, paramInt1, paramInt2);
-    if (QLog.isColorLevel()) {
-      QLog.d("GLTextureView", 2, " TextureView onSurfaceTextureSizeChanged surfaceChanged use:" + (System.currentTimeMillis() - l));
+    if (QLog.isColorLevel())
+    {
+      paramSurfaceTexture = new StringBuilder();
+      paramSurfaceTexture.append("TextureView onSurfaceTextureSizeChanged surfaceChanged cost:");
+      paramSurfaceTexture.append(System.currentTimeMillis() - l);
+      QLog.d("[ApolloGL][GLTextureView]", 1, paramSurfaceTexture.toString());
     }
   }
   
@@ -340,7 +373,12 @@ public class GLTextureView
     this.mRenderer = paramRenderer;
     this.mGLThread = new GLThread(sGLThreadManager, this.mThisWeakRef);
     this.mGLThread.a(this.mDestroyOnAsync);
-    this.mGLThread.setName(getRenderThreadName() + "_" + this.mGLThread.getId());
+    paramRenderer = this.mGLThread;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getRenderThreadName());
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.mGLThread.getId());
+    paramRenderer.setName(localStringBuilder.toString());
     this.mGLThread.b(false);
     this.mGLThread.start();
   }
@@ -348,17 +386,30 @@ public class GLTextureView
   public void surfaceChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2, int paramInt3)
   {
     long l = System.currentTimeMillis();
-    if ((this.mSurfaceWidth != paramInt2) || (this.mSurfaceHeight != paramInt3))
+    if ((this.mSurfaceWidth == paramInt2) && (this.mSurfaceHeight == paramInt3))
     {
-      this.mSurfaceWidth = paramInt2;
-      this.mSurfaceHeight = paramInt3;
-      this.mGLThread.b(this.mFinishDrawing);
-      this.mGLThread.a(paramInt2, paramInt3);
-      if (QLog.isColorLevel()) {
-        QLog.d("GLTextureView", 2, " surfaceChanged, onWindowResize");
-      }
+      paramSurfaceTexture = new StringBuilder();
+      paramSurfaceTexture.append("surfaceChanged, bug width and height not change. width:");
+      paramSurfaceTexture.append(paramInt2);
+      paramSurfaceTexture.append(", height:");
+      paramSurfaceTexture.append(paramInt3);
+      paramSurfaceTexture.append(", cost:");
+      paramSurfaceTexture.append(System.currentTimeMillis() - l);
+      QLog.d("[ApolloGL][GLTextureView]", 1, paramSurfaceTexture.toString());
+      return;
     }
-    QLog.d("GLTextureView", 2, " surfaceChanged, w:" + paramInt2 + ",h:" + paramInt3 + " use:" + (System.currentTimeMillis() - l));
+    this.mSurfaceWidth = paramInt2;
+    this.mSurfaceHeight = paramInt3;
+    this.mGLThread.b(this.mFinishDrawing);
+    this.mGLThread.a(paramInt2, paramInt3);
+    paramSurfaceTexture = new StringBuilder();
+    paramSurfaceTexture.append("surfaceChanged, onWindowResize, width/height change to ");
+    paramSurfaceTexture.append(paramInt2);
+    paramSurfaceTexture.append("/");
+    paramSurfaceTexture.append(paramInt3);
+    paramSurfaceTexture.append(", cost:");
+    paramSurfaceTexture.append(System.currentTimeMillis() - l);
+    QLog.d("[ApolloGL][GLTextureView]", 1, paramSurfaceTexture.toString());
   }
   
   public void surfaceCreated(SurfaceTexture paramSurfaceTexture)
@@ -373,7 +424,7 @@ public class GLTextureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.opengl.GLTextureView
  * JD-Core Version:    0.7.0.1
  */

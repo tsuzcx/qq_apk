@@ -23,12 +23,13 @@ public enum AdAccount
   
   public void onAccountStatusChanged(String paramString1, String paramString2)
   {
-    if ((this.listeners != null) && (!this.listeners.isEmpty()))
+    Object localObject = this.listeners;
+    if ((localObject != null) && (!((CopyOnWriteArrayList)localObject).isEmpty()))
     {
-      Iterator localIterator = this.listeners.iterator();
-      while (localIterator.hasNext())
+      localObject = this.listeners.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        AdAccountListener localAdAccountListener = (AdAccountListener)localIterator.next();
+        AdAccountListener localAdAccountListener = (AdAccountListener)((Iterator)localObject).next();
         if (localAdAccountListener != null) {
           localAdAccountListener.onAccountStatusChanged(paramString1, paramString2);
         }

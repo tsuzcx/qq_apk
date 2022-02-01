@@ -35,27 +35,28 @@ public class ChatRoomAdapter
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
     VideoAppInterface localVideoAppInterface = (VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     this.b = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getWidth();
-    this.jdField_a_of_type_Int = AIOUtils.a(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.jdField_a_of_type_Int = AIOUtils.b(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
   }
   
   private BitmapDrawable a(String paramString)
   {
-    Object localObject = null;
-    if (0 == 0)
-    {
-      localObject = VideoController.a().a();
-      if ((((SessionInfo)localObject).d != 1) && (((SessionInfo)localObject).d != 2)) {
-        break label71;
+    Object localObject = VideoController.a().a();
+    int k = ((SessionInfo)localObject).d;
+    int j = 1;
+    int i = j;
+    if (k != 1) {
+      if (((SessionInfo)localObject).d == 2) {
+        i = j;
+      } else {
+        i = 0;
       }
     }
-    label71:
-    for (int i = 1; i != 0; i = 0)
+    if (i != 0)
     {
       localObject = (VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      localObject = new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), ((VideoAppInterface)localObject).a(0, paramString, null, true, true));
-      return localObject;
+      return new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), ((VideoAppInterface)localObject).a(0, paramString, null, true, true));
     }
-    paramString = VideoController.a().a(String.valueOf(paramString), String.valueOf(((SessionInfo)localObject).g), ((SessionInfo)localObject).F, true, true);
+    paramString = VideoController.a().a(String.valueOf(paramString), String.valueOf(((SessionInfo)localObject).f), ((SessionInfo)localObject).E, true, true);
     return new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramString);
   }
   
@@ -66,11 +67,11 @@ public class ChatRoomAdapter
       localView = paramLayoutInflater.inflate(paramInt2, paramViewGroup, false);
     }
     paramLayoutInflater = a(paramInt1);
-    paramView = localView.findViewById(2131368281);
-    paramViewGroup = (TextView)localView.findViewById(2131379091);
+    paramView = localView.findViewById(2131368033);
+    paramViewGroup = (TextView)localView.findViewById(2131378460);
     paramView.setVisibility(0);
     paramView.setBackgroundDrawable(a(paramLayoutInflater.a()));
-    paramViewGroup.setPadding(AIOUtils.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+    paramViewGroup.setPadding(AIOUtils.b(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
     paramViewGroup.setText(paramLayoutInflater.a());
     paramViewGroup.setTextColor(-1);
     paramViewGroup.setSpannableFactory(QQText.SPANNABLE_FACTORY);
@@ -110,14 +111,14 @@ public class ChatRoomAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    View localView = a(this.jdField_a_of_type_AndroidViewLayoutInflater, paramInt, paramView, paramViewGroup, 2131559891);
+    View localView = a(this.jdField_a_of_type_AndroidViewLayoutInflater, paramInt, paramView, paramViewGroup, 2131559762);
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
     return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.chatroom.ChatRoomAdapter
  * JD-Core Version:    0.7.0.1
  */

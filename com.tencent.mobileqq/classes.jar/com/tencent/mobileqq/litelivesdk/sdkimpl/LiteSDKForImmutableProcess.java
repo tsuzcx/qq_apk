@@ -27,36 +27,39 @@ public class LiteSDKForImmutableProcess
   
   public static ILiveSDK a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqLitelivesdkApiILiveSDK == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_ComTencentMobileqqLitelivesdkApiILiveSDK == null) {
-        jdField_a_of_type_ComTencentMobileqqLitelivesdkApiILiveSDK = new LiteSDKForImmutableProcess();
+    if (jdField_a_of_type_ComTencentMobileqqLitelivesdkApiILiveSDK == null) {
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        if (jdField_a_of_type_ComTencentMobileqqLitelivesdkApiILiveSDK == null) {
+          jdField_a_of_type_ComTencentMobileqqLitelivesdkApiILiveSDK = new LiteSDKForImmutableProcess();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqLitelivesdkApiILiveSDK;
     }
+    return jdField_a_of_type_ComTencentMobileqqLitelivesdkApiILiveSDK;
   }
   
   public boolean a(String paramString1, String paramString2)
   {
     if ((BusinessManager.a.a() != null) && (BusinessManager.a.a().a.equals(paramString1))) {
       RoomManager.a(BaseApplicationImpl.getContext(), paramString2);
-    }
-    for (;;)
-    {
-      return true;
+    } else {
       BusinessManager.a.a(paramString1).a(new LiteSDKForImmutableProcess.1(this, paramString2));
     }
+    return true;
   }
   
   public void onSDKInited(boolean paramBoolean)
   {
-    LogFactory.a().e("LiteSDKForImmutableProcess", "======onSDKInited:  " + paramBoolean);
+    LogInterface localLogInterface = LogFactory.a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("======onSDKInited:  ");
+    localStringBuilder.append(paramBoolean);
+    localLogInterface.e("LiteSDKForImmutableProcess", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.sdkimpl.LiteSDKForImmutableProcess
  * JD-Core Version:    0.7.0.1
  */

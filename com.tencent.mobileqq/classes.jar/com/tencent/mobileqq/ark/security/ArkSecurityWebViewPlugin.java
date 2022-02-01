@@ -5,7 +5,9 @@ import android.os.Bundle;
 import com.tencent.ark.open.security.ArkBaseUrlChecker;
 import com.tencent.biz.common.util.Util;
 import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.ark.api.IArkSecureReport;
 import com.tencent.mobileqq.ark.image.ChooseImageIPCModule;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.webview.swift.IPreCreatePluginChecker;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
@@ -27,15 +29,18 @@ public class ArkSecurityWebViewPlugin
   
   protected void a()
   {
-    if (this.mRuntime == null) {}
-    CustomWebView localCustomWebView;
-    do
-    {
+    if (this.mRuntime == null) {
       return;
-      localCustomWebView = this.mRuntime.a();
-    } while (localCustomWebView == null);
-    QLog.i("ArkApp.ArkSecurityWebViewPlugin", 1, "now jump url=" + Util.b("https://qzonestyle.gtimg.cn/qzone/hybrid/page/safeTips/index.html", new String[0]));
-    localCustomWebView.loadUrl("https://qzonestyle.gtimg.cn/qzone/hybrid/page/safeTips/index.html");
+    }
+    CustomWebView localCustomWebView = this.mRuntime.a();
+    if (localCustomWebView != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("now jump url=");
+      localStringBuilder.append(Util.b("https://qzonestyle.gtimg.cn/qzone/hybrid/page/safeTips/index.html", new String[0]));
+      QLog.i("ArkApp.ArkSecurityWebViewPlugin", 1, localStringBuilder.toString());
+      localCustomWebView.loadUrl("https://qzonestyle.gtimg.cn/qzone/hybrid/page/safeTips/index.html");
+    }
   }
   
   public long getWebViewSchemaByNameSpace(String paramString)
@@ -48,101 +53,95 @@ public class ArkSecurityWebViewPlugin
     return 0;
   }
   
-  public boolean handleSchemaRequest(String paramString1, String paramString2)
+  protected boolean handleSchemaRequest(String paramString1, String paramString2)
   {
-    boolean bool3 = true;
     if ("https://qzonestyle.gtimg.cn/qzone/hybrid/page/safeTips/index.html".equals(paramString1))
     {
       QLog.d("ArkApp.ArkSecurityWebViewPlugin", 1, new Object[] { "ArkSafe now jump url=", paramString1 });
       return false;
     }
-    boolean bool1;
-    int i;
-    if (this.jdField_a_of_type_ComTencentArkOpenSecurityArkBaseUrlChecker != null)
+    paramString2 = this.jdField_a_of_type_ComTencentArkOpenSecurityArkBaseUrlChecker;
+    boolean bool2;
+    if (paramString2 != null)
     {
-      int j = this.jdField_a_of_type_ComTencentArkOpenSecurityArkBaseUrlChecker.checkURLLoose(paramString1);
-      if (j == 0)
-      {
+      int j = paramString2.checkURLLoose(paramString1);
+      boolean bool1;
+      if (j == 0) {
         bool1 = true;
-        if (bool1) {
-          break label201;
-        }
-        if (this.jdField_a_of_type_Boolean) {
-          break label196;
-        }
-        QLog.d("ArkApp.ArkSecurityWebViewPlugin", 1, new Object[] { "ArkSafe.UrlCheck.setDisable.web.set isPermitted=true,url=", Util.b(paramString1, new String[0]) });
-        i = 2;
-        bool1 = true;
-        label101:
-        ArkSecurityReporter.c(this.jdField_a_of_type_JavaLangString, paramString1, j, i, this.b);
-        bool2 = bool1;
-        if (!bool1)
-        {
-          QLog.d("ArkApp.ArkSecurityWebViewPlugin", 1, new Object[] { "ArkSafe.handleSchemaRequest,isPermitted=", Boolean.valueOf(bool1), ", url=", Util.b(paramString1, new String[0]) });
-          a();
-        }
-      }
-    }
-    for (boolean bool2 = bool1;; bool2 = true)
-    {
-      if (!bool2) {}
-      for (bool1 = bool3;; bool1 = false)
-      {
-        return bool1;
+      } else {
         bool1 = false;
-        break;
       }
-      label196:
-      i = 1;
-      break label101;
-      label201:
-      i = 0;
-      break label101;
+      int i;
+      if (!bool1)
+      {
+        if (!this.jdField_a_of_type_Boolean)
+        {
+          QLog.d("ArkApp.ArkSecurityWebViewPlugin", 1, new Object[] { "ArkSafe.UrlCheck.setDisable.web.set isPermitted=true,url=", Util.b(paramString1, new String[0]) });
+          bool1 = true;
+          i = 2;
+        }
+        else
+        {
+          i = 1;
+        }
+      }
+      else {
+        i = 0;
+      }
+      ((IArkSecureReport)QRoute.api(IArkSecureReport.class)).reportNavigateURLAccess(this.jdField_a_of_type_JavaLangString, paramString1, j, i, this.b);
+      bool2 = bool1;
+      if (!bool1)
+      {
+        QLog.d("ArkApp.ArkSecurityWebViewPlugin", 1, new Object[] { "ArkSafe.handleSchemaRequest,isPermitted=", Boolean.valueOf(bool1), ", url=", Util.b(paramString1, new String[0]) });
+        a();
+        bool2 = bool1;
+      }
     }
+    else
+    {
+      bool2 = true;
+    }
+    return bool2 ^ true;
   }
   
   public boolean isNeedPreCreatePlugin(Intent paramIntent, String paramString1, String paramString2)
   {
-    paramIntent = paramIntent.getExtras();
-    if ((paramIntent == null) || (paramIntent.getParcelable("h5_ark_url_web_checker") == null))
+    paramString1 = paramIntent.getExtras();
+    if ((paramString1 != null) && (paramString1.getParcelable("h5_ark_url_web_checker") != null))
     {
-      QLog.d("ArkApp.ArkSecurityWebViewPlugin", 1, "ArkSafe.ArkSecurityWebViewPlugin init bundle is null");
-      return false;
-    }
-    try
-    {
-      paramIntent.setClassLoader(ArkSecurityWebViewPlugin.class.getClassLoader());
-      this.jdField_a_of_type_ComTencentArkOpenSecurityArkBaseUrlChecker = ((ArkBaseUrlChecker)paramIntent.getParcelable("h5_ark_url_web_checker"));
-      this.jdField_a_of_type_JavaLangString = paramIntent.getString("h5_ark_app_name", null);
-      this.b = paramIntent.getString("h5_ark_url_web_sender_uin", "");
-      this.jdField_a_of_type_Boolean = paramIntent.getBoolean("h5_ark_url_web_checker_enable", true);
+      paramIntent = null;
+      try
+      {
+        paramString1.setClassLoader(ArkSecurityWebViewPlugin.class.getClassLoader());
+        this.jdField_a_of_type_ComTencentArkOpenSecurityArkBaseUrlChecker = ((ArkBaseUrlChecker)paramString1.getParcelable("h5_ark_url_web_checker"));
+        this.jdField_a_of_type_JavaLangString = paramString1.getString("h5_ark_app_name", null);
+        this.b = paramString1.getString("h5_ark_url_web_sender_uin", "");
+        this.jdField_a_of_type_Boolean = paramString1.getBoolean("h5_ark_url_web_checker_enable", true);
+      }
+      catch (Exception paramString1)
+      {
+        QLog.e("ArkApp.ArkSecurityWebViewPlugin", 1, "ArkSafe.ArkSecurityWebViewPlugin init exception:", paramString1);
+      }
       paramString1 = this.jdField_a_of_type_JavaLangString;
       boolean bool = this.jdField_a_of_type_Boolean;
       paramString2 = this.b;
-      if (this.jdField_a_of_type_ComTencentArkOpenSecurityArkBaseUrlChecker != null)
-      {
-        paramIntent = this.jdField_a_of_type_ComTencentArkOpenSecurityArkBaseUrlChecker.toString();
-        QLog.d("ArkApp.ArkSecurityWebViewPlugin", 1, new Object[] { "ArkSafe.ArkSecurityWebViewPlugin init appname = ", paramString1, ",mEnableUrlCheck = ", Boolean.valueOf(bool), ", senderUin=", paramString2, ", mUrlChecker=", paramIntent });
-        return true;
+      ArkBaseUrlChecker localArkBaseUrlChecker = this.jdField_a_of_type_ComTencentArkOpenSecurityArkBaseUrlChecker;
+      if (localArkBaseUrlChecker != null) {
+        paramIntent = localArkBaseUrlChecker.toString();
       }
+      QLog.d("ArkApp.ArkSecurityWebViewPlugin", 1, new Object[] { "ArkSafe.ArkSecurityWebViewPlugin init appname = ", paramString1, ",mEnableUrlCheck = ", Boolean.valueOf(bool), ", senderUin=", paramString2, ", mUrlChecker=", paramIntent });
+      return true;
     }
-    catch (Exception paramIntent)
-    {
-      for (;;)
-      {
-        QLog.e("ArkApp.ArkSecurityWebViewPlugin", 1, "ArkSafe.ArkSecurityWebViewPlugin init exception:", paramIntent);
-        continue;
-        paramIntent = null;
-      }
-    }
+    QLog.d("ArkApp.ArkSecurityWebViewPlugin", 1, "ArkSafe.ArkSecurityWebViewPlugin init bundle is null");
+    return false;
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
     QLog.d("ArkApp.ArkSecurityWebViewPlugin", 1, "ArkSafe.ArkSecurityWebViewPlugin onDestroy");
@@ -151,7 +150,7 @@ public class ArkSecurityWebViewPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ark.security.ArkSecurityWebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

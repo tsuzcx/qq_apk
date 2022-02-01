@@ -40,23 +40,27 @@ public final class IPCDownloadParam
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.baseParam, 0);
-    if (this.opList != null) {
-      paramJceOutputStream.write(this.opList, 1);
+    String str = this.opList;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.actionFlag != null) {
-      paramJceOutputStream.write(this.actionFlag, 2);
+    str = this.actionFlag;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.verifyType != null) {
-      paramJceOutputStream.write(this.verifyType, 3);
+    str = this.verifyType;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.reverse != null) {
-      paramJceOutputStream.write(this.reverse, 4);
+    str = this.reverse;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.param.jce.IPCDownloadParam
  * JD-Core Version:    0.7.0.1
  */

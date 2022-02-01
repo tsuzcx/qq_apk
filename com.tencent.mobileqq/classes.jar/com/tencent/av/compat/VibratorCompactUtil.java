@@ -13,86 +13,81 @@ public class VibratorCompactUtil
   @SuppressLint({"NewApi"})
   public static AudioAttributes a()
   {
-    Object localObject = null;
     if (AVUtil.b())
     {
-      localObject = new AudioAttributes.Builder();
-      ((AudioAttributes.Builder)localObject).setUsage(6);
-      ((AudioAttributes.Builder)localObject).setContentType(0);
-      localObject = ((AudioAttributes.Builder)localObject).build();
+      AudioAttributes.Builder localBuilder = new AudioAttributes.Builder();
+      localBuilder.setUsage(6);
+      localBuilder.setContentType(0);
+      return localBuilder.build();
     }
-    return localObject;
+    return null;
   }
   
   @SuppressLint({"NewApi"})
   public static void a(Context paramContext, long paramLong)
   {
-    AudioAttributes localAudioAttributes;
-    if (paramContext == null)
-    {
+    AudioAttributes localAudioAttributes = null;
+    if (paramContext == null) {
       paramContext = null;
-      if (paramContext == null) {
-        break label100;
-      }
-      localAudioAttributes = a();
-      if (localAudioAttributes != null) {
-        break label91;
-      }
-      paramContext.vibrate(paramLong);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("VibratorCompactUtil", 2, "vibrate, audioAttributes[" + localAudioAttributes + "], vibrate[" + paramContext + "], milliseconds[" + paramLong + "]");
-      }
-      return;
+    } else {
       paramContext = (Vibrator)paramContext.getSystemService("vibrator");
-      break;
-      label91:
-      paramContext.vibrate(paramLong, localAudioAttributes);
-      continue;
-      label100:
-      localAudioAttributes = null;
+    }
+    if (paramContext != null)
+    {
+      localAudioAttributes = a();
+      if (localAudioAttributes == null) {
+        paramContext.vibrate(paramLong);
+      } else {
+        paramContext.vibrate(paramLong, localAudioAttributes);
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("vibrate, audioAttributes[");
+      localStringBuilder.append(localAudioAttributes);
+      localStringBuilder.append("], vibrate[");
+      localStringBuilder.append(paramContext);
+      localStringBuilder.append("], milliseconds[");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append("]");
+      QLog.i("VibratorCompactUtil", 2, localStringBuilder.toString());
     }
   }
   
   @SuppressLint({"NewApi"})
   public static void a(Context paramContext, long[] paramArrayOfLong, int paramInt)
   {
-    AudioAttributes localAudioAttributes;
-    if (paramContext == null)
-    {
+    AudioAttributes localAudioAttributes = null;
+    if (paramContext == null) {
       paramContext = null;
-      if (paramContext == null) {
-        break label97;
-      }
-      localAudioAttributes = a();
-      if (localAudioAttributes != null) {
-        break label85;
-      }
-      paramContext.vibrate(paramArrayOfLong, paramInt);
-      paramArrayOfLong = localAudioAttributes;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("VibratorCompactUtil", 2, "vibrate, audioAttributes[" + paramArrayOfLong + "], vibrate[" + paramContext + "]");
-      }
-      return;
+    } else {
       paramContext = (Vibrator)paramContext.getSystemService("vibrator");
-      break;
-      label85:
-      paramContext.vibrate(paramArrayOfLong, paramInt, localAudioAttributes);
-      paramArrayOfLong = localAudioAttributes;
-      continue;
-      label97:
-      paramArrayOfLong = null;
+    }
+    if (paramContext != null)
+    {
+      localAudioAttributes = a();
+      if (localAudioAttributes == null) {
+        paramContext.vibrate(paramArrayOfLong, paramInt);
+      } else {
+        paramContext.vibrate(paramArrayOfLong, paramInt, localAudioAttributes);
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      paramArrayOfLong = new StringBuilder();
+      paramArrayOfLong.append("vibrate, audioAttributes[");
+      paramArrayOfLong.append(localAudioAttributes);
+      paramArrayOfLong.append("], vibrate[");
+      paramArrayOfLong.append(paramContext);
+      paramArrayOfLong.append("]");
+      QLog.i("VibratorCompactUtil", 2, paramArrayOfLong.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.compat.VibratorCompactUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -5,9 +5,9 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.v4.app.FragmentActivity;
 import android.view.ViewGroup;
 import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -41,50 +41,64 @@ public class TroopInteractGiftAnimationController
       this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(5, 3, 0);
       return;
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("TroopInteractGiftAnimationController", 2, QLog.getStackTraceString(localUnsatisfiedLinkError));
-      return;
+      if (QLog.isColorLevel())
+      {
+        QLog.e("TroopInteractGiftAnimationController", 2, QLog.getStackTraceString(localException));
+        return;
+      }
     }
     catch (ExceptionInInitializerError localExceptionInInitializerError)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("TroopInteractGiftAnimationController", 2, QLog.getStackTraceString(localExceptionInInitializerError));
-      return;
+      if (QLog.isColorLevel())
+      {
+        QLog.e("TroopInteractGiftAnimationController", 2, QLog.getStackTraceString(localExceptionInInitializerError));
+        return;
+      }
     }
-    catch (Exception localException)
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("TroopInteractGiftAnimationController", 2, QLog.getStackTraceString(localException));
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopInteractGiftAnimationController", 2, QLog.getStackTraceString(localUnsatisfiedLinkError));
+      }
     }
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie == null)) {}
-    do
+    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView != null)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopInteractGiftAnimationController", 2, "TroopInteractGiftAnimationController: dismissAnimation" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie == null) {
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("TroopInteractGiftAnimationController: dismissAnimation");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId);
+        QLog.d("TroopInteractGiftAnimationController", 2, ((StringBuilder)localObject).toString());
       }
       this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView.n();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new TroopInteractGiftAnimationController.5(this));
-    } while (this.jdField_a_of_type_AndroidMediaSoundPool == null);
-    this.jdField_a_of_type_AndroidMediaSoundPool.unload(this.b);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new TroopInteractGiftAnimationController.5(this));
+      Object localObject = this.jdField_a_of_type_AndroidMediaSoundPool;
+      if (localObject != null) {
+        ((SoundPool)localObject).unload(this.b);
+      }
+    }
   }
   
   public void a(TroopChatPie paramTroopChatPie)
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie = paramTroopChatPie;
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.c.findViewById(2131364598));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.c.findViewById(2131364485));
   }
   
   protected void a(MessageForDeliverGiftTips paramMessageForDeliverGiftTips)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie != null) {
-      ((TroopGiftManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_GIFT_MANAGER)).a(paramMessageForDeliverGiftTips.frienduin, paramMessageForDeliverGiftTips.interactId, paramMessageForDeliverGiftTips.animationPackageId, new TroopInteractGiftAnimationController.4(this, paramMessageForDeliverGiftTips));
+    TroopChatPie localTroopChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie;
+    if (localTroopChatPie != null) {
+      ((TroopGiftManager)localTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_GIFT_MANAGER)).a(paramMessageForDeliverGiftTips.frienduin, paramMessageForDeliverGiftTips.interactId, paramMessageForDeliverGiftTips.animationPackageId, new TroopInteractGiftAnimationController.4(this, paramMessageForDeliverGiftTips));
     }
   }
   
@@ -99,8 +113,9 @@ public class TroopInteractGiftAnimationController
   
   protected void a(MessageForDeliverGiftTips paramMessageForDeliverGiftTips, String paramString1, String paramString2, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie != null) {
-      ((TroopGiftManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_GIFT_MANAGER)).a(paramString1, paramString2, paramInt1, paramInt2, new TroopInteractGiftAnimationController.2(this, paramInt2, paramString2, paramMessageForDeliverGiftTips, paramBoolean));
+    TroopChatPie localTroopChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie;
+    if (localTroopChatPie != null) {
+      ((TroopGiftManager)localTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_GIFT_MANAGER)).a(paramString1, paramString2, paramInt1, paramInt2, new TroopInteractGiftAnimationController.2(this, paramInt2, paramString2, paramMessageForDeliverGiftTips, paramBoolean));
     }
     this.jdField_a_of_type_Int = 0;
   }
@@ -111,11 +126,20 @@ public class TroopInteractGiftAnimationController
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips = paramMessageForDeliverGiftTips;
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopInteractGiftAnimationController", 2, "TroopInteractGiftAnimationController: showAnimation" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("TroopInteractGiftAnimationController: showAnimation");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId);
+      QLog.d("TroopInteractGiftAnimationController", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_AndroidMediaSoundPool != null) {
-      this.b = this.jdField_a_of_type_AndroidMediaSoundPool.load(TroopGiftUtil.a(paramString) + "sound.wav", 1);
+    Object localObject = this.jdField_a_of_type_AndroidMediaSoundPool;
+    if (localObject != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(TroopGiftUtil.a(paramString));
+      localStringBuilder.append("sound.wav");
+      this.b = ((SoundPool)localObject).load(localStringBuilder.toString(), 1);
     }
     ThreadManager.post(new TroopInteractGiftAnimationController.1(this, paramString, paramMessageForDeliverGiftTips, paramBoolean, paramOnFrameEndListener, (TroopGiftManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_GIFT_MANAGER)), 8, null, true);
   }
@@ -143,7 +167,7 @@ public class TroopInteractGiftAnimationController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController
  * JD-Core Version:    0.7.0.1
  */

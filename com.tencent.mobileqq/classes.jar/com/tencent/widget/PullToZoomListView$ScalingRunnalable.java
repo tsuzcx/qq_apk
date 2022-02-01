@@ -35,33 +35,34 @@ class PullToZoomListView$ScalingRunnalable
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout == null) {}
-    while ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Float <= 1.0D)) {
+    if (this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout == null) {
       return;
     }
-    float f1 = ((float)SystemClock.currentThreadTimeMillis() - (float)this.b) / (float)this.jdField_a_of_type_Long;
-    float f2 = this.jdField_a_of_type_Float;
-    float f3 = this.jdField_a_of_type_Float;
-    f1 = f2 - PullToZoomListView.a().getInterpolation(f1) * (f3 - 1.0F);
-    ViewGroup.LayoutParams localLayoutParams1 = this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
-    ViewGroup.LayoutParams localLayoutParams2 = this.this$0.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    if (f1 > 1.0F)
+    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Float > 1.0D))
     {
-      localLayoutParams1.height = this.this$0.b;
-      localLayoutParams2.height = (this.this$0.b - this.this$0.c);
-      localLayoutParams1.height = ((int)(f1 * this.this$0.b));
-      localLayoutParams1.height -= this.this$0.c;
-      this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams(localLayoutParams1);
-      this.this$0.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams2);
-      this.this$0.post(this);
-      return;
+      float f1 = ((float)SystemClock.currentThreadTimeMillis() - (float)this.b) / (float)this.jdField_a_of_type_Long;
+      float f2 = this.jdField_a_of_type_Float;
+      f1 = f2 - (f2 - 1.0F) * PullToZoomListView.a().getInterpolation(f1);
+      ViewGroup.LayoutParams localLayoutParams1 = this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
+      ViewGroup.LayoutParams localLayoutParams2 = this.this$0.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      if (f1 > 1.0F)
+      {
+        localLayoutParams1.height = this.this$0.b;
+        localLayoutParams2.height = (this.this$0.b - this.this$0.c);
+        localLayoutParams1.height = ((int)(f1 * this.this$0.b));
+        localLayoutParams1.height -= this.this$0.c;
+        this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams(localLayoutParams1);
+        this.this$0.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams2);
+        this.this$0.post(this);
+        return;
+      }
+      this.jdField_a_of_type_Boolean = true;
     }
-    this.jdField_a_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.PullToZoomListView.ScalingRunnalable
  * JD-Core Version:    0.7.0.1
  */

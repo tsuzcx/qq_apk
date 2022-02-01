@@ -56,9 +56,9 @@ public class FavoritesJsPlugin
     if (ProxyManager.get(FavoritesProxy.class) != null)
     {
       ((FavoritesProxy)ProxyManager.get(FavoritesProxy.class)).onJsAddToFavorites(paramBundle);
-      if (paramMiniCmdCallback == null) {}
-    }
-    while (paramMiniCmdCallback == null) {
+      if (paramMiniCmdCallback == null) {
+        return;
+      }
       try
       {
         paramMiniCmdCallback.onCmdResult(true, new Bundle());
@@ -70,36 +70,45 @@ public class FavoritesJsPlugin
         return;
       }
     }
-    try
-    {
-      paramMiniCmdCallback.onCmdResult(false, new Bundle());
-      return;
-    }
-    catch (Throwable paramBundle)
-    {
-      QMLog.e("FavoritesJsPlugin", "addFavoritesBundle", paramBundle);
+    if (paramMiniCmdCallback != null) {
+      try
+      {
+        paramMiniCmdCallback.onCmdResult(false, new Bundle());
+        return;
+      }
+      catch (Throwable paramBundle)
+      {
+        QMLog.e("FavoritesJsPlugin", "addFavoritesBundle", paramBundle);
+      }
     }
   }
   
   private String fixEntryPath(String paramString1, String paramString2)
   {
-    if (this.mMiniAppContext.isMiniGame()) {
-      if (TextUtils.isEmpty(paramString2)) {
-        paramString1 = "miniGamePath";
-      }
-    }
-    String str;
-    do
+    if (this.mMiniAppContext.isMiniGame())
     {
-      return paramString1;
-      return "?" + paramString2;
-      str = paramString1;
-      if (TextUtils.isEmpty(paramString1)) {
-        str = this.mApkgInfo.getAppConfigInfo().entryPagePath;
+      if (TextUtils.isEmpty(paramString2)) {
+        return "miniGamePath";
       }
-      paramString1 = str;
-    } while (TextUtils.isEmpty(paramString2));
-    return str + "?" + paramString2;
+      paramString1 = new StringBuilder();
+      paramString1.append("?");
+      paramString1.append(paramString2);
+      return paramString1.toString();
+    }
+    String str = paramString1;
+    if (TextUtils.isEmpty(paramString1)) {
+      str = this.mApkgInfo.getAppConfigInfo().entryPagePath;
+    }
+    paramString1 = str;
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append(str);
+      paramString1.append("?");
+      paramString1.append(paramString2);
+      paramString1 = paramString1.toString();
+    }
+    return paramString1;
   }
   
   private String fixPicPath(String paramString)
@@ -107,53 +116,46 @@ public class FavoritesJsPlugin
     if (TextUtils.isEmpty(paramString)) {
       return getDefaultPic();
     }
-    ByteArrayInputStream localByteArrayInputStream;
-    ByteArrayOutputStream localByteArrayOutputStream;
+    Object localObject1 = paramString;
     try
     {
-      if (paramString.startsWith("http")) {
+      if (!paramString.startsWith("http"))
+      {
+        if (this.mMiniAppContext.isMiniGame()) {
+          return ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(paramString);
+        }
+        localObject1 = this.mApkgInfo.readApkgToStream(paramString);
+        if (localObject1 != null)
+        {
+          ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+          Object localObject2 = new byte[4096];
+          for (;;)
+          {
+            int i = ((ByteArrayInputStream)localObject1).read((byte[])localObject2);
+            if (i == -1) {
+              break;
+            }
+            localByteArrayOutputStream.write((byte[])localObject2, 0, i);
+          }
+          paramString = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getTmpPathByUrl(paramString);
+          new File(paramString).setWritable(true);
+          localObject2 = new FileOutputStream(paramString);
+          ((FileOutputStream)localObject2).write(localByteArrayOutputStream.toByteArray());
+          ((FileOutputStream)localObject2).close();
+          localByteArrayOutputStream.close();
+          ((ByteArrayInputStream)localObject1).close();
+          return paramString;
+        }
+        paramString = getDefaultPic();
         return paramString;
       }
-      if (this.mMiniAppContext.isMiniGame()) {
-        return ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(paramString);
-      }
-      localByteArrayInputStream = this.mApkgInfo.readApkgToStream(paramString);
-      if (localByteArrayInputStream == null) {
-        break label197;
-      }
-      localByteArrayOutputStream = new ByteArrayOutputStream();
-      if (localByteArrayOutputStream == null) {
-        break label192;
-      }
-      localObject = new byte[4096];
-      for (;;)
-      {
-        int i = localByteArrayInputStream.read((byte[])localObject);
-        if (i == -1) {
-          break;
-        }
-        localByteArrayOutputStream.write((byte[])localObject, 0, i);
-      }
-      paramString = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getTmpPathByUrl(paramString);
     }
     catch (Throwable paramString)
     {
       QMLog.e("FavoritesJsPlugin", "fixPicPath", paramString);
-      return getDefaultPic();
+      localObject1 = getDefaultPic();
     }
-    new File(paramString).setWritable(true);
-    Object localObject = new FileOutputStream(paramString);
-    ((FileOutputStream)localObject).write(localByteArrayOutputStream.toByteArray());
-    ((FileOutputStream)localObject).close();
-    localByteArrayOutputStream.close();
-    localByteArrayInputStream.close();
-    return paramString;
-    label192:
-    return getDefaultPic();
-    label197:
-    paramString = getDefaultPic();
-    return paramString;
-    return paramString;
+    return localObject1;
   }
   
   private String fixTitle(String paramString)
@@ -235,7 +237,7 @@ public class FavoritesJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.FavoritesJsPlugin
  * JD-Core Version:    0.7.0.1
  */

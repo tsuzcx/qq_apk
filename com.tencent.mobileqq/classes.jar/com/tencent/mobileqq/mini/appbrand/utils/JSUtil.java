@@ -54,59 +54,60 @@ public class JSUtil
     //   47: aload_2
     //   48: areturn
     //   49: astore_2
-    //   50: aconst_null
-    //   51: astore_1
-    //   52: aload_1
-    //   53: astore_0
-    //   54: aload_2
-    //   55: invokevirtual 60	java/lang/Exception:printStackTrace	()V
-    //   58: aload_1
-    //   59: ifnull +7 -> 66
+    //   50: goto +12 -> 62
+    //   53: astore_1
+    //   54: aconst_null
+    //   55: astore_0
+    //   56: goto +23 -> 79
+    //   59: astore_2
+    //   60: aconst_null
+    //   61: astore_1
     //   62: aload_1
-    //   63: invokevirtual 57	java/io/InputStream:close	()V
-    //   66: aconst_null
-    //   67: areturn
-    //   68: astore_1
-    //   69: aconst_null
-    //   70: astore_0
-    //   71: aload_0
-    //   72: ifnull +7 -> 79
-    //   75: aload_0
-    //   76: invokevirtual 57	java/io/InputStream:close	()V
-    //   79: aload_1
-    //   80: athrow
-    //   81: astore_0
-    //   82: aload_2
-    //   83: areturn
-    //   84: astore_0
-    //   85: goto -19 -> 66
-    //   88: astore_0
-    //   89: goto -10 -> 79
-    //   92: astore_1
-    //   93: goto -22 -> 71
-    //   96: astore_2
-    //   97: goto -45 -> 52
+    //   63: astore_0
+    //   64: aload_2
+    //   65: invokevirtual 60	java/lang/Exception:printStackTrace	()V
+    //   68: aload_1
+    //   69: ifnull +7 -> 76
+    //   72: aload_1
+    //   73: invokevirtual 57	java/io/InputStream:close	()V
+    //   76: aconst_null
+    //   77: areturn
+    //   78: astore_1
+    //   79: aload_0
+    //   80: ifnull +7 -> 87
+    //   83: aload_0
+    //   84: invokevirtual 57	java/io/InputStream:close	()V
+    //   87: aload_1
+    //   88: athrow
+    //   89: astore_0
+    //   90: aload_2
+    //   91: areturn
+    //   92: astore_0
+    //   93: aconst_null
+    //   94: areturn
+    //   95: astore_0
+    //   96: goto -9 -> 87
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	100	0	paramContext	android.content.Context
-    //   0	100	1	paramString	String
+    //   0	99	0	paramContext	android.content.Context
+    //   0	99	1	paramString	String
     //   17	31	2	localObject	Object
-    //   49	34	2	localException1	Exception
-    //   96	1	2	localException2	Exception
+    //   49	1	2	localException1	Exception
+    //   59	32	2	localException2	Exception
     // Exception table:
     //   from	to	target	type
-    //   0	9	49	java/lang/Exception
-    //   0	9	68	finally
-    //   43	47	81	java/io/IOException
-    //   62	66	84	java/io/IOException
-    //   75	79	88	java/io/IOException
-    //   11	18	92	finally
-    //   20	26	92	finally
-    //   28	39	92	finally
-    //   54	58	92	finally
-    //   11	18	96	java/lang/Exception
-    //   20	26	96	java/lang/Exception
-    //   28	39	96	java/lang/Exception
+    //   11	18	49	java/lang/Exception
+    //   20	26	49	java/lang/Exception
+    //   28	39	49	java/lang/Exception
+    //   0	9	53	finally
+    //   0	9	59	java/lang/Exception
+    //   11	18	78	finally
+    //   20	26	78	finally
+    //   28	39	78	finally
+    //   64	68	78	finally
+    //   43	47	89	java/io/IOException
+    //   72	76	92	java/io/IOException
+    //   83	87	95	java/io/IOException
   }
   
   public static String filterKeyForLog(String paramString, String... paramVarArgs)
@@ -119,28 +120,25 @@ public class JSUtil
   
   public static Constructor<?> getDeclaredConstructor(Class<?> paramClass, Class... paramVarArgs)
   {
-    if (VersionUtils.isHoneycomb())
-    {
-      paramClass = paramClass.getConstructor(paramVarArgs);
-      return paramClass;
+    if (VersionUtils.isHoneycomb()) {
+      return paramClass.getConstructor(paramVarArgs);
     }
-    Constructor[] arrayOfConstructor = paramClass.getDeclaredConstructors();
-    int j = arrayOfConstructor.length;
+    paramClass = paramClass.getDeclaredConstructors();
+    int j = paramClass.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i >= j) {
-        break label59;
-      }
-      Constructor localConstructor = arrayOfConstructor[i];
-      paramClass = localConstructor;
+      Constructor<?> localConstructor = paramClass[i];
       if (isParameterTypesMatch(paramVarArgs, localConstructor.getParameterTypes())) {
-        break;
+        return localConstructor;
       }
       i += 1;
     }
-    label59:
-    throw new NoSuchMethodException();
+    paramClass = new NoSuchMethodException();
+    for (;;)
+    {
+      throw paramClass;
+    }
   }
   
   public static int[] getDecoderVersion()
@@ -169,53 +167,69 @@ public class JSUtil
   
   public static String getSpecifiedLevelDomain(String paramString, int paramInt)
   {
-    str2 = "";
-    Object localObject1 = str2;
-    if (!TextUtils.isEmpty(paramString))
+    boolean bool = TextUtils.isEmpty(paramString);
+    Object localObject3 = "";
+    Object localObject1 = localObject3;
+    if (!bool)
     {
-      localObject1 = str2;
+      localObject1 = localObject3;
       if (paramInt <= 0) {}
     }
-    try
+    for (;;)
     {
-      Object localObject2 = Uri.parse(paramString);
-      localObject1 = str2;
-      if (((Uri)localObject2).isHierarchical())
+      int i;
+      try
       {
-        localObject2 = ((Uri)localObject2).getHost();
-        localObject1 = str2;
-        if (localObject2 != null)
-        {
-          localObject2 = ((String)localObject2).split("\\.");
-          localObject1 = str2;
-          if (localObject2.length > 0)
-          {
-            int i = Math.max(0, localObject2.length - (paramInt + 1));
-            localObject1 = new StringBuilder(256);
-            ((StringBuilder)localObject1).append(localObject2[i]);
-            i += 1;
-            while (i < localObject2.length)
-            {
-              ((StringBuilder)localObject1).append('.').append(localObject2[i]);
-              i += 1;
-            }
-            localObject1 = ((StringBuilder)localObject1).toString();
-          }
+        localObject4 = Uri.parse(paramString);
+        localObject1 = localObject3;
+        if (!((Uri)localObject4).isHierarchical()) {
+          break label164;
         }
+        localObject4 = ((Uri)localObject4).getHost();
+        localObject1 = localObject3;
+        if (localObject4 == null) {
+          break label164;
+        }
+        localObject4 = ((String)localObject4).split("\\.");
+        localObject1 = localObject3;
+        if (localObject4.length <= 0) {
+          break label164;
+        }
+        i = Math.max(0, localObject4.length - (paramInt + 1));
+        localObject1 = new StringBuilder(256);
+        ((StringBuilder)localObject1).append(localObject4[i]);
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Exception localException)
       {
+        Object localObject4;
         localException.printStackTrace();
-        String str1 = str2;
+        localObject2 = localObject3;
       }
+      if (i < localObject4.length)
+      {
+        ((StringBuilder)localObject1).append('.');
+        ((StringBuilder)localObject1).append(localObject4[i]);
+      }
+      else
+      {
+        localObject1 = ((StringBuilder)localObject1).toString();
+        Object localObject2;
+        label164:
+        if (QLog.isColorLevel())
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("Get ");
+          ((StringBuilder)localObject3).append(paramInt);
+          ((StringBuilder)localObject3).append(" level domain= ");
+          ((StringBuilder)localObject3).append(localObject2);
+          ((StringBuilder)localObject3).append(" from ");
+          ((StringBuilder)localObject3).append(paramString);
+          QLog.d("QLog", 2, ((StringBuilder)localObject3).toString());
+        }
+        return localObject2;
+      }
+      i += 1;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QLog", 2, "Get " + paramInt + " level domain= " + (String)localObject1 + " from " + paramString);
-    }
-    return localObject1;
   }
   
   private static boolean isParameterTypesMatch(Class<?>[] paramArrayOfClass1, Class<?>[] paramArrayOfClass2)
@@ -225,24 +239,21 @@ public class JSUtil
     }
     int j = paramArrayOfClass1.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i >= j) {
-        break label35;
-      }
       if (paramArrayOfClass1[i] != paramArrayOfClass2[i]) {
-        break;
+        return false;
       }
       i += 1;
     }
-    label35:
     return true;
   }
   
   public static int[] jsStringToJavaIntArray(String paramString)
   {
+    boolean bool = TextUtils.isEmpty(paramString);
     int i = 0;
-    if (TextUtils.isEmpty(paramString)) {
+    if (bool) {
       return new int[0];
     }
     paramString = paramString.replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
@@ -253,14 +264,14 @@ public class JSUtil
       try
       {
         arrayOfInt[i] = Integer.parseInt(paramString[i]);
-        label61:
+        label63:
         i += 1;
         continue;
         return arrayOfInt;
       }
       catch (NumberFormatException localNumberFormatException)
       {
-        break label61;
+        break label63;
       }
     }
   }
@@ -274,35 +285,46 @@ public class JSUtil
     localStringBuilder.append("\"");
     int j = paramString.length();
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       char c = paramString.charAt(i);
-      switch (c)
+      if (c != '\f')
       {
-      default: 
-        if (c <= '\037') {
-          localStringBuilder.append(String.format("\\u%04x", new Object[] { Integer.valueOf(c) }));
+        if (c != '\r')
+        {
+          if ((c != '"') && (c != '/') && (c != '\\')) {}
+          switch (c)
+          {
+          default: 
+            if (c <= '\037') {
+              localStringBuilder.append(String.format("\\u%04x", new Object[] { Integer.valueOf(c) }));
+            } else {
+              localStringBuilder.append(c);
+            }
+            break;
+          case '\n': 
+            localStringBuilder.append("\\n");
+            break;
+          case '\t': 
+            localStringBuilder.append("\\t");
+            break;
+          case '\b': 
+            localStringBuilder.append("\\b");
+            break;
+            localStringBuilder.append('\\');
+            localStringBuilder.append(c);
+            break;
+          }
         }
-        break;
+        else
+        {
+          localStringBuilder.append("\\r");
+        }
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        localStringBuilder.append('\\').append(c);
-        continue;
-        localStringBuilder.append("\\t");
-        continue;
-        localStringBuilder.append("\\b");
-        continue;
-        localStringBuilder.append("\\n");
-        continue;
-        localStringBuilder.append("\\r");
-        continue;
+      else {
         localStringBuilder.append("\\f");
-        continue;
-        localStringBuilder.append(c);
       }
+      i += 1;
     }
     localStringBuilder.append("\"");
     return localStringBuilder.toString();
@@ -310,26 +332,21 @@ public class JSUtil
   
   public static void webViewLoadLocalJsInner(WebView paramWebView, String paramString, ValueCallback paramValueCallback)
   {
-    Object localObject = null;
     try
     {
       paramString = FileUtils.readFileToString(new File(paramString));
-      paramWebView.evaluateJavascript(paramString, paramValueCallback);
-      return;
     }
     catch (IOException paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = localObject;
-      }
+      paramString.printStackTrace();
+      paramString = null;
     }
+    paramWebView.evaluateJavascript(paramString, paramValueCallback);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.utils.JSUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.emoticonview.ipc.proxy;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.app.FavEmoRoamingHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
 import eipc.EIPCResult;
 import java.io.Serializable;
 
@@ -16,14 +15,14 @@ public class FavEmoRoamingHandlerProxy
   private static final String PARAM_TYPE = "param_type";
   public static final String TAG = "FavEmoRoamingHandlerProxy";
   
-  public FavEmoRoamingHandlerProxy(QQAppInterface paramQQAppInterface)
+  public FavEmoRoamingHandlerProxy(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    super(paramQQAppInterface, BusinessHandlerFactory.FAVEMO_ROAMING_HANDLER);
+    super(paramBaseQQAppInterface, FavEmoRoamingHandler.a);
   }
   
-  public static EIPCResult onNotifyUI(QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, int paramInt)
+  public static EIPCResult onNotifyUI(BaseQQAppInterface paramBaseQQAppInterface, String paramString, Bundle paramBundle, int paramInt)
   {
-    ((FavEmoRoamingHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FAVEMO_ROAMING_HANDLER)).notifyUI(paramBundle.getInt("param_type"), paramBundle.getBoolean("param_success"), paramBundle.getSerializable("param_data"));
+    ((FavEmoRoamingHandler)paramBaseQQAppInterface.getBusinessHandler(FavEmoRoamingHandler.a)).notifyUI(paramBundle.getInt("param_type"), paramBundle.getBoolean("param_success"), paramBundle.getSerializable("param_data"));
     return null;
   }
   
@@ -36,7 +35,7 @@ public class FavEmoRoamingHandlerProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.ipc.proxy.FavEmoRoamingHandlerProxy
  * JD-Core Version:    0.7.0.1
  */

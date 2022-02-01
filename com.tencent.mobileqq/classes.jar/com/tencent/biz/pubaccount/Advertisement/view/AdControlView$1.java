@@ -13,14 +13,17 @@ class AdControlView$1
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    QLog.d("Ron", 2, "alpha:" + f);
+    paramValueAnimator = new StringBuilder();
+    paramValueAnimator.append("alpha:");
+    paramValueAnimator.append(f);
+    QLog.d("Ron", 2, paramValueAnimator.toString());
     AdControlView.a(this.a).setAlpha(f);
     this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.view.AdControlView.1
  * JD-Core Version:    0.7.0.1
  */

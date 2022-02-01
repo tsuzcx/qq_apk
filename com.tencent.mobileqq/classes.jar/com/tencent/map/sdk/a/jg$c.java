@@ -25,7 +25,11 @@ public final class jg$c
       localJSONObject.put("netError", this.f);
       return localJSONObject;
     }
-    catch (JSONException localJSONException) {}
+    catch (JSONException localJSONException)
+    {
+      label76:
+      break label76;
+    }
     return null;
   }
   
@@ -43,15 +47,16 @@ public final class jg$c
   
   public final int hashCode()
   {
-    if (this.a == null) {
+    String str = this.a;
+    if (str == null) {
       return super.hashCode();
     }
-    return this.a.hashCode();
+    return str.hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.jg.c
  * JD-Core Version:    0.7.0.1
  */

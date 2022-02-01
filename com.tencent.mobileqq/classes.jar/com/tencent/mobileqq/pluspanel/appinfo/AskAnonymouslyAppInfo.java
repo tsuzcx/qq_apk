@@ -9,9 +9,9 @@ import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopBusinessObserver;
-import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.troopmanager.api.ITroopManagerBizHandler;
+import com.tencent.mobileqq.troop.troopmanager.api.TroopManagerBizObserver;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -23,7 +23,7 @@ public class AskAnonymouslyAppInfo
 {
   public static final String TAG = "AskAnonymouslyAppInfo";
   private WeakReference<Activity> actRef;
-  TroopBusinessObserver mTroopBusinessObserver = new AskAnonymouslyAppInfo.1(this);
+  TroopManagerBizObserver mTroopBusinessObserver = new AskAnonymouslyAppInfo.1(this);
   
   AskAnonymouslyAppInfo() {}
   
@@ -34,7 +34,7 @@ public class AskAnonymouslyAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839258;
+    return 2130839112;
   }
   
   public int getAppID()
@@ -57,15 +57,15 @@ public class AskAnonymouslyAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131695097);
+    return BaseApplicationImpl.getContext().getString(2131695087);
   }
   
-  public void onChatPieLifeCycle(int paramInt)
+  protected void onChatPieLifeCycle(int paramInt)
   {
     if (QLog.isColorLevel()) {
       QLog.i("AskAnonymouslyAppInfo", 2, String.format("onChatPieLifeCycle %d", new Object[] { Integer.valueOf(paramInt) }));
     }
-    if ((paramInt == 11) || (paramInt == 14))
+    if ((paramInt == 12) || (paramInt == 15))
     {
       AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
       if ((localAppRuntime instanceof QQAppInterface)) {
@@ -76,25 +76,32 @@ public class AskAnonymouslyAppInfo
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    if ((paramBaseChatPie == null) || (paramBaseChatPie.a() == null)) {}
-    do
+    if (paramBaseChatPie != null)
     {
-      do
-      {
+      if (paramBaseChatPie.a() == null) {
         return;
-        this.actRef = new WeakReference(paramBaseChatPie.a());
-        paramPlusPanelViewModel = paramBaseChatPie.a;
-      } while (paramSessionInfo.jdField_a_of_type_Int != 1);
-      paramPlusPanelViewModel.addObserver(this.mTroopBusinessObserver);
-      ((TroopHandler)paramPlusPanelViewModel.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).b(Long.valueOf(paramSessionInfo.jdField_a_of_type_JavaLangString).longValue(), 8, 0);
-      ReportController.b(null, "dc00899", "Grp_AIO", "", "ask_tab", "clk_ask", 0, 0, paramSessionInfo.jdField_a_of_type_JavaLangString, "0", "", "");
-    } while (!QLog.isColorLevel());
-    QLog.d("AskAnonymouslyAppInfo", 2, "onPlusPanelAppClick " + paramSessionInfo.jdField_a_of_type_JavaLangString);
+      }
+      this.actRef = new WeakReference(paramBaseChatPie.a());
+      paramPlusPanelViewModel = paramBaseChatPie.a;
+      if (paramSessionInfo.jdField_a_of_type_Int == 1)
+      {
+        paramPlusPanelViewModel.addObserver(this.mTroopBusinessObserver);
+        ((ITroopManagerBizHandler)paramPlusPanelViewModel.getBusinessHandler(BusinessHandlerFactory.TROOP_MANAGER_BIZ_HANDLER)).a(Long.valueOf(paramSessionInfo.jdField_a_of_type_JavaLangString).longValue(), 8);
+        ReportController.b(null, "dc00899", "Grp_AIO", "", "ask_tab", "clk_ask", 0, 0, paramSessionInfo.jdField_a_of_type_JavaLangString, "0", "", "");
+        if (QLog.isColorLevel())
+        {
+          paramPlusPanelViewModel = new StringBuilder();
+          paramPlusPanelViewModel.append("onPlusPanelAppClick ");
+          paramPlusPanelViewModel.append(paramSessionInfo.jdField_a_of_type_JavaLangString);
+          QLog.d("AskAnonymouslyAppInfo", 2, paramPlusPanelViewModel.toString());
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.AskAnonymouslyAppInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -20,58 +20,67 @@ class TroopConfessItemBuilder$TroopConfessViewHolder
   
   public void a(TroopConfessMsg paramTroopConfessMsg)
   {
-    if (paramTroopConfessMsg == null) {
+    if (paramTroopConfessMsg == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.i("TroopConfessItemBuilder", 2, "TroopConfessViewHolder bindData null is troopConfessMsgItem.");
       }
-    }
-    do
-    {
       return;
-      if ((paramTroopConfessMsg.items != null) && (!paramTroopConfessMsg.items.isEmpty())) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("TroopConfessItemBuilder", 2, "TroopConfessViewHolder bindData items is null or empty.");
-    return;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramTroopConfessMsg.getConfessToNick());
-    this.b.setText(((TroopConfessMsgItem)paramTroopConfessMsg.items.get(0)).topic);
-    String str2 = ((TroopConfessMsgItem)paramTroopConfessMsg.items.get(0)).topic;
-    float f = TagUtils.a(str2);
-    int i;
-    if (f > 8.0F)
+    }
+    if ((paramTroopConfessMsg.items != null) && (!paramTroopConfessMsg.items.isEmpty()))
     {
-      this.b.setTextSize(1, 24.0F);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 18.0F);
-      this.b.setLineSpacing(0.0F, 1.1F);
-      str1 = str2;
-      if (f <= 12.0F)
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramTroopConfessMsg.getConfessToNick());
+      this.b.setText(((TroopConfessMsgItem)paramTroopConfessMsg.items.get(0)).topic);
+      String str = ((TroopConfessMsgItem)paramTroopConfessMsg.items.get(0)).topic;
+      float f = TagUtils.a(str);
+      Object localObject;
+      if (f > 8.0F)
       {
-        str1 = str2;
-        if (TagUtils.a(str2)) {
-          i = (int)(f * 0.7D);
+        this.b.setTextSize(1, 24.0F);
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 18.0F);
+        this.b.setLineSpacing(0.0F, 1.1F);
+        localObject = str;
+        if (f <= 12.0F)
+        {
+          localObject = str;
+          if (TagUtils.a(str))
+          {
+            double d = f;
+            Double.isNaN(d);
+            int i = (int)(d * 0.7D);
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(str.substring(0, i));
+            ((StringBuilder)localObject).append("\n");
+            ((StringBuilder)localObject).append(str.substring(i, str.length()));
+            localObject = ((StringBuilder)localObject).toString();
+          }
         }
       }
-    }
-    for (String str1 = str2.substring(0, i) + "\n" + str2.substring(i, str2.length());; str1 = str2)
-    {
-      this.b.setText(str1);
-      if (paramTroopConfessMsg.totalCount > 1) {
-        break;
+      else
+      {
+        this.b.setTextSize(1, 24.0F);
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 18.0F);
+        this.b.setLineSpacing(0.0F, 1.0F);
+        localObject = str;
       }
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.b.setText((CharSequence)localObject);
+      if (paramTroopConfessMsg.totalCount <= 1)
+      {
+        this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+        return;
+      }
+      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(String.format(HardCodeUtil.a(2131715057), new Object[] { Integer.valueOf(paramTroopConfessMsg.totalCount - 1) }));
       return;
-      this.b.setTextSize(1, 24.0F);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 18.0F);
-      this.b.setLineSpacing(0.0F, 1.0F);
     }
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(String.format(HardCodeUtil.a(2131715134), new Object[] { Integer.valueOf(paramTroopConfessMsg.totalCount - 1) }));
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopConfessItemBuilder", 2, "TroopConfessViewHolder bindData items is null or empty.");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.confess.TroopConfessItemBuilder.TroopConfessViewHolder
  * JD-Core Version:    0.7.0.1
  */

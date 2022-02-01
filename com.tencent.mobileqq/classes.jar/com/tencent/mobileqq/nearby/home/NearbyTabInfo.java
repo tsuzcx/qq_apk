@@ -1,29 +1,30 @@
 package com.tencent.mobileqq.nearby.home;
 
+import com.tencent.mobileqq.qroute.QRoute;
 import java.io.Serializable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class NearbyTabInfo
-  implements Serializable, Comparable<NearbyTabInfo>
+  implements INearbyTabInfo, Serializable, Comparable<NearbyTabInfo>
 {
   public static final int TAB_HOT_CHAT = 3;
-  public static final int TAB_NEARBY = 1;
   public static final int TAB_NEARBY_HYBRID = 5;
   public static final int TAB_NEARBY_MATCH_MAKER = 7;
   public static final int TAB_NEARBY_MSG = 6;
   public static final int TAB_NEARBY_YULIAO = 8;
   public static final int TAB_NOW = 2;
   public static final int TAB_WEB = 4;
-  public int autoEnter;
-  public int disableScroll;
-  public int needLoc;
-  public int reportId;
-  public boolean showRedRot;
-  public int tabIndex;
-  public String tabName;
-  public int tabType;
-  public String tabUrl;
+  private int autoEnter;
+  private int disableScroll;
+  private INearbyTabInfoDelegate nearbyTabInfoDelegate = (INearbyTabInfoDelegate)QRoute.api(INearbyTabInfoDelegate.class);
+  private int needLoc;
+  private int reportId;
+  private boolean showRedRot;
+  private int tabIndex;
+  private String tabName;
+  private int tabType;
+  private String tabUrl;
   
   public static NearbyTabInfo fromJson(String paramString)
   {
@@ -54,9 +55,105 @@ public class NearbyTabInfo
     return this.tabIndex - paramNearbyTabInfo.tabIndex;
   }
   
+  public int getAutoEnter()
+  {
+    return this.autoEnter;
+  }
+  
+  public int getDisableScroll()
+  {
+    return this.disableScroll;
+  }
+  
+  public int getNeedLoc()
+  {
+    return this.needLoc;
+  }
+  
+  public int getReportId()
+  {
+    return this.reportId;
+  }
+  
+  public int getTabIndex()
+  {
+    return this.tabIndex;
+  }
+  
+  public String getTabName()
+  {
+    return this.tabName;
+  }
+  
   public String getTabTag()
   {
-    return "android:switcher:" + 2131381782 + ":" + this.tabIndex;
+    int i = this.nearbyTabInfoDelegate.getVpContentViewId();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("android:switcher:");
+    localStringBuilder.append(i);
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.tabIndex);
+    return localStringBuilder.toString();
+  }
+  
+  public int getTabType()
+  {
+    return this.tabType;
+  }
+  
+  public String getTabUrl()
+  {
+    return this.tabUrl;
+  }
+  
+  public boolean isShowRedRot()
+  {
+    return this.showRedRot;
+  }
+  
+  public void setAutoEnter(int paramInt)
+  {
+    this.autoEnter = paramInt;
+  }
+  
+  public void setDisableScroll(int paramInt)
+  {
+    this.disableScroll = paramInt;
+  }
+  
+  public void setNeedLoc(int paramInt)
+  {
+    this.needLoc = paramInt;
+  }
+  
+  public void setReportId(int paramInt)
+  {
+    this.reportId = paramInt;
+  }
+  
+  public void setShowRedRot(boolean paramBoolean)
+  {
+    this.showRedRot = paramBoolean;
+  }
+  
+  public void setTabIndex(int paramInt)
+  {
+    this.tabIndex = paramInt;
+  }
+  
+  public void setTabName(String paramString)
+  {
+    this.tabName = paramString;
+  }
+  
+  public void setTabType(int paramInt)
+  {
+    this.tabType = paramInt;
+  }
+  
+  public void setTabUrl(String paramString)
+  {
+    this.tabUrl = paramString;
   }
   
   public String toJson()
@@ -73,20 +170,17 @@ public class NearbyTabInfo
       localJSONObject.put("reportId", this.reportId);
       localJSONObject.put("autoEnter", this.autoEnter);
       localJSONObject.put("showRedRot", this.showRedRot);
-      return localJSONObject.toString();
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    return localJSONObject.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.home.NearbyTabInfo
  * JD-Core Version:    0.7.0.1
  */

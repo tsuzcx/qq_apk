@@ -1,18 +1,69 @@
 package com.tencent.mobileqq.activity.contacts.publicaccount;
 
+import com.tencent.biz.pubaccount.api.IPublicAccountObserver.OnCallback;
+import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsBaseFragment.RefreshDataListener;
+import com.tencent.qphone.base.util.QLog;
+
 class PublicAccountFragment$2
-  implements Runnable
+  extends IPublicAccountObserver.OnCallback
 {
   PublicAccountFragment$2(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public void run()
+  public void onFollowPublicAccount(int paramInt, Object paramObject)
   {
-    this.this$0.i();
+    if (QLog.isColorLevel())
+    {
+      paramObject = new StringBuilder();
+      paramObject.append("onFollowPublicAccount errCode: ");
+      paramObject.append(paramInt);
+      QLog.d("Contacts.PublicAccountFragment", 2, paramObject.toString());
+    }
+    if (paramInt == 0) {
+      this.a.i();
+    }
+  }
+  
+  public void onUnfollowPublicAccount(int paramInt, Object paramObject)
+  {
+    if (QLog.isColorLevel())
+    {
+      paramObject = new StringBuilder();
+      paramObject.append("onUnfollowPublicAccount errCode: ");
+      paramObject.append(paramInt);
+      QLog.d("Contacts.PublicAccountFragment", 2, paramObject.toString());
+    }
+    if (paramInt == 0) {
+      this.a.i();
+    }
+  }
+  
+  public void onUpdateUserFollowList(int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdateUserFollowList errCode: ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" isFinish:");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("Contacts.PublicAccountFragment", 2, localStringBuilder.toString());
+    }
+    if (paramBoolean)
+    {
+      if (PublicAccountFragment.a(this.a))
+      {
+        if (PublicAccountFragment.a(this.a) != null) {
+          PublicAccountFragment.b(this.a).a(this.a.b(), true, null);
+        }
+        PublicAccountFragment.a(this.a, false);
+      }
+      this.a.i();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment.2
  * JD-Core Version:    0.7.0.1
  */

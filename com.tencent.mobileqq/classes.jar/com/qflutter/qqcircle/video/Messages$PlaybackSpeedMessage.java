@@ -14,16 +14,20 @@ public class Messages$PlaybackSpeedMessage
     if (localObject == null)
     {
       localObject = null;
-      localPlaybackSpeedMessage.textureId = ((Long)localObject);
-      localPlaybackSpeedMessage.speed = ((Double)paramHashMap.get("speed"));
-      return localPlaybackSpeedMessage;
     }
-    if ((localObject instanceof Integer)) {}
-    for (long l = ((Integer)localObject).intValue();; l = ((Long)localObject).longValue())
+    else
     {
+      long l;
+      if ((localObject instanceof Integer)) {
+        l = ((Integer)localObject).intValue();
+      } else {
+        l = ((Long)localObject).longValue();
+      }
       localObject = Long.valueOf(l);
-      break;
     }
+    localPlaybackSpeedMessage.textureId = ((Long)localObject);
+    localPlaybackSpeedMessage.speed = ((Double)paramHashMap.get("speed"));
+    return localPlaybackSpeedMessage;
   }
   
   public Double getSpeed()
@@ -56,7 +60,7 @@ public class Messages$PlaybackSpeedMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.qflutter.qqcircle.video.Messages.PlaybackSpeedMessage
  * JD-Core Version:    0.7.0.1
  */

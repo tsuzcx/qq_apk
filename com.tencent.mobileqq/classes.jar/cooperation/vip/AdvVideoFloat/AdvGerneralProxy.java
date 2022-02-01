@@ -21,61 +21,69 @@ public class AdvGerneralProxy
   
   public String getCallBackData(String paramString)
   {
-    if (this.mEngineImpl != null) {
-      return this.mEngineImpl.getCallBackData(paramString);
+    IAdvGerneralVideo localIAdvGerneralVideo = this.mEngineImpl;
+    if (localIAdvGerneralVideo != null) {
+      return localIAdvGerneralVideo.getCallBackData(paramString);
     }
     return null;
   }
   
   public int getFirstKey()
   {
-    if (this.mEngineImpl != null) {
-      return this.mEngineImpl.getFirstKey();
+    IAdvGerneralVideo localIAdvGerneralVideo = this.mEngineImpl;
+    if (localIAdvGerneralVideo != null) {
+      return localIAdvGerneralVideo.getFirstKey();
     }
     return 0;
   }
   
   public int getFourthKey()
   {
-    if (this.mEngineImpl != null) {
-      return this.mEngineImpl.getFourthKey();
+    IAdvGerneralVideo localIAdvGerneralVideo = this.mEngineImpl;
+    if (localIAdvGerneralVideo != null) {
+      return localIAdvGerneralVideo.getFourthKey();
     }
     return 0;
   }
   
   public int getSecondKey()
   {
-    if (this.mEngineImpl != null) {
-      return this.mEngineImpl.getSecondKey();
+    IAdvGerneralVideo localIAdvGerneralVideo = this.mEngineImpl;
+    if (localIAdvGerneralVideo != null) {
+      return localIAdvGerneralVideo.getSecondKey();
     }
     return 0;
   }
   
   public void notifyH5PageReady(String paramString)
   {
-    if (this.mEngineImpl != null) {
-      this.mEngineImpl.notifyH5PageReady(paramString);
+    IAdvGerneralVideo localIAdvGerneralVideo = this.mEngineImpl;
+    if (localIAdvGerneralVideo != null) {
+      localIAdvGerneralVideo.notifyH5PageReady(paramString);
     }
   }
   
   public void notifyOnlyReportClick(String paramString)
   {
-    if (this.mEngineImpl != null) {
-      this.mEngineImpl.notifyOnlyReportClick(paramString);
+    IAdvGerneralVideo localIAdvGerneralVideo = this.mEngineImpl;
+    if (localIAdvGerneralVideo != null) {
+      localIAdvGerneralVideo.notifyOnlyReportClick(paramString);
     }
   }
   
   public void notifyOnlyReportClickArea(int paramInt)
   {
-    if (this.mEngineImpl != null) {
-      this.mEngineImpl.notifyOnlyReportClickArea(paramInt);
+    IAdvGerneralVideo localIAdvGerneralVideo = this.mEngineImpl;
+    if (localIAdvGerneralVideo != null) {
+      localIAdvGerneralVideo.notifyOnlyReportClickArea(paramInt);
     }
   }
   
   public void notifyVideoBlankClick(String paramString)
   {
-    if (this.mEngineImpl != null) {
-      this.mEngineImpl.notifyVideoBlankClick(paramString);
+    IAdvGerneralVideo localIAdvGerneralVideo = this.mEngineImpl;
+    if (localIAdvGerneralVideo != null) {
+      localIAdvGerneralVideo.notifyVideoBlankClick(paramString);
     }
   }
   
@@ -86,7 +94,7 @@ public class AdvGerneralProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.AdvVideoFloat.AdvGerneralProxy
  * JD-Core Version:    0.7.0.1
  */

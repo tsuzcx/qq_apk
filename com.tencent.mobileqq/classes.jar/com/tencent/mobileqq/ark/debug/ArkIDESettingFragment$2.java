@@ -16,21 +16,20 @@ class ArkIDESettingFragment$2
     {
       this.a.b();
       this.a.a("");
-      ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("IDEDebug is open", new Object[0]));
+      ArkAppCenter.a("ArkApp.DebugOnlineActivity", String.format("IDEDebug is open", new Object[0]));
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
       this.a.c();
       this.a.a("close");
-      ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("IDEDebug is close", new Object[0]));
+      ArkAppCenter.a("ArkApp.DebugOnlineActivity", String.format("IDEDebug is close", new Object[0]));
     }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ark.debug.ArkIDESettingFragment.2
  * JD-Core Version:    0.7.0.1
  */

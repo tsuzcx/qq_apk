@@ -12,14 +12,13 @@ public class ThreadLog
   
   public static boolean needRecordJob()
   {
-    boolean bool = false;
     if (needReportRunOrBlocking()) {
-      bool = true;
+      return true;
     }
-    while (ThreadManagerV2.sThreadWrapContext == null) {
-      return bool;
+    if (ThreadManagerV2.sThreadWrapContext != null) {
+      return ThreadManagerV2.sThreadWrapContext.isShotReportRejectedError();
     }
-    return ThreadManagerV2.sThreadWrapContext.isShotReportRejectedError();
+    return false;
   }
   
   public static boolean needReportRunOrBlocking()
@@ -48,7 +47,7 @@ public class ThreadLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ThreadLog
  * JD-Core Version:    0.7.0.1
  */

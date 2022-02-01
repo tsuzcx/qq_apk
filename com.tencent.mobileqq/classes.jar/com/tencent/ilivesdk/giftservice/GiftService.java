@@ -88,6 +88,7 @@ public class GiftService
     localGiftInfo.mActiveIcon = new String(paramGiftInfoRsp.activeIcon, StandardCharsets.UTF_8);
     localGiftInfo.mGiftComment = paramGiftInfoRsp.giftComment;
     localGiftInfo.mIsLocked = paramGiftInfoRsp.isLocked;
+    localGiftInfo.mTagUrl = paramGiftInfoRsp.tagUrl;
     ArrayList localArrayList = new ArrayList();
     if (paramGiftInfoRsp.clickEffectList.length > 0)
     {
@@ -120,55 +121,48 @@ public class GiftService
   
   public boolean canShowLuxuryAnimation(GiftMessage paramGiftMessage, GiftInfo paramGiftInfo)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((paramGiftMessage == null) || (paramGiftInfo == null))
+    if (paramGiftMessage != null)
     {
-      bool1 = false;
-      return bool1;
-    }
-    if ((paramGiftInfo.mClickEffectList == null) || (paramGiftInfo.mClickEffectList.size() == 0)) {
-      return false;
-    }
-    if (paramGiftInfo.mClickEffectList.size() > 1)
-    {
-      Iterator localIterator = paramGiftInfo.mClickEffectList.iterator();
-      GiftInfo.GiftNewEffect localGiftNewEffect;
-      do
+      if (paramGiftInfo == null) {
+        return false;
+      }
+      if (paramGiftInfo.mClickEffectList != null)
       {
+        if (paramGiftInfo.mClickEffectList.size() == 0) {
+          return false;
+        }
+        if (paramGiftInfo.mClickEffectList.size() > 1)
+        {
+          Iterator localIterator = paramGiftInfo.mClickEffectList.iterator();
+          while (localIterator.hasNext())
+          {
+            GiftInfo.GiftNewEffect localGiftNewEffect = (GiftInfo.GiftNewEffect)localIterator.next();
+            if (localGiftNewEffect.mEffectNum > paramGiftMessage.mComboCount) {
+              return false;
+            }
+            if ((paramGiftInfo.mGiftType != 106) || (localGiftNewEffect.mEffectNum == 0))
+            {
+              if (localGiftNewEffect.mEffectNum == 1) {
+                return true;
+              }
+              if (paramGiftMessage.mComboCount == localGiftNewEffect.mEffectNum) {
+                return true;
+              }
+            }
+          }
+          return false;
+        }
+        paramGiftInfo = (GiftInfo.GiftNewEffect)paramGiftInfo.mClickEffectList.get(0);
         do
         {
-          if (localIterator.hasNext())
-          {
-            localGiftNewEffect = (GiftInfo.GiftNewEffect)localIterator.next();
-            if (localGiftNewEffect.mEffectNum <= paramGiftMessage.mComboCount) {}
+          if (paramGiftInfo.mEffectNum == 1) {
+            return true;
           }
-          else
-          {
-            return false;
-          }
-        } while ((paramGiftInfo.mGiftType == 106) && (localGiftNewEffect.mEffectNum != 0));
-        bool1 = bool2;
-        if (localGiftNewEffect.mEffectNum == 1) {
-          break;
-        }
-      } while (paramGiftMessage.mComboCount != localGiftNewEffect.mEffectNum);
-      return true;
-    }
-    paramGiftInfo = (GiftInfo.GiftNewEffect)paramGiftInfo.mClickEffectList.get(0);
-    int i = 1;
-    for (;;)
-    {
-      bool1 = bool2;
-      if (paramGiftInfo.mEffectNum == 1) {
-        break;
+        } while (paramGiftMessage.mComboCount != paramGiftInfo.mEffectNum);
+        return true;
       }
-      bool1 = bool2;
-      if (paramGiftMessage.mComboCount == paramGiftInfo.mEffectNum) {
-        break;
-      }
-      i += 1;
     }
+    return false;
   }
   
   public void clearEventOutput()
@@ -200,36 +194,30 @@ public class GiftService
         if (localObject1 != null)
         {
           i = 0;
-          label97:
-          if (i < ((List)localObject1).size()) {
-            if (((List)localObject1).get(i) != null) {
-              break label130;
-            }
-          }
-          for (;;)
+          while (i < ((List)localObject1).size())
           {
-            i += 1;
-            break label97;
-            break;
-            label130:
-            Object localObject2 = (GiftInfo)((List)localObject1).get(i);
-            if (StringUtil.isEmpty(((GiftInfo)localObject2).mEffectId))
+            if (((List)localObject1).get(i) != null)
             {
-              if (((GiftInfo)localObject2).mNewEffectList != null)
+              Object localObject2 = (GiftInfo)((List)localObject1).get(i);
+              if (StringUtil.isEmpty(((GiftInfo)localObject2).mEffectId))
               {
-                localObject2 = ((GiftInfo)localObject2).mNewEffectList.iterator();
-                while (((Iterator)localObject2).hasNext())
+                if (((GiftInfo)localObject2).mNewEffectList != null)
                 {
-                  GiftInfo.GiftNewEffect localGiftNewEffect = (GiftInfo.GiftNewEffect)((Iterator)localObject2).next();
-                  if ((localGiftNewEffect != null) && (!StringUtil.isEmpty(localGiftNewEffect.mEffectId)) && (!localArrayList.contains(localGiftNewEffect.mEffectId))) {
-                    localArrayList.add(localGiftNewEffect.mEffectId);
+                  localObject2 = ((GiftInfo)localObject2).mNewEffectList.iterator();
+                  while (((Iterator)localObject2).hasNext())
+                  {
+                    GiftInfo.GiftNewEffect localGiftNewEffect = (GiftInfo.GiftNewEffect)((Iterator)localObject2).next();
+                    if ((localGiftNewEffect != null) && (!StringUtil.isEmpty(localGiftNewEffect.mEffectId)) && (!localArrayList.contains(localGiftNewEffect.mEffectId))) {
+                      localArrayList.add(localGiftNewEffect.mEffectId);
+                    }
                   }
                 }
               }
+              else if (!localArrayList.contains(((GiftInfo)localObject2).mEffectId)) {
+                localArrayList.add(((GiftInfo)localObject2).mEffectId);
+              }
             }
-            else if (!localArrayList.contains(((GiftInfo)localObject2).mEffectId)) {
-              localArrayList.add(((GiftInfo)localObject2).mEffectId);
-            }
+            i += 1;
           }
         }
       }
@@ -266,32 +254,34 @@ public class GiftService
   
   public String getGiftLogoUrl(String paramString, long paramLong)
   {
-    localObject3 = null;
-    Object localObject1 = localObject3;
-    if (this.mServiceAdapter.updateGiftLogoFormatKey() != null) {}
-    try
-    {
-      localObject1 = (String)this.mServiceAdapter.updateGiftLogoFormatKey().get("gift_logo_pic");
-      boolean bool = StringUtil.isEmpty((String)localObject1);
-      if (bool) {
-        break label144;
+    Object localObject3 = this.mServiceAdapter.updateGiftLogoFormatKey();
+    StringBuilder localStringBuilder = null;
+    Object localObject1 = localStringBuilder;
+    if (localObject3 != null) {
+      try
+      {
+        localObject3 = (String)this.mServiceAdapter.updateGiftLogoFormatKey().get("gift_logo_pic");
+        boolean bool = StringUtil.isEmpty((String)localObject3);
+        localObject1 = localStringBuilder;
+        if (!bool) {
+          localObject1 = localObject3;
+        }
       }
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      catch (JSONException localJSONException)
       {
         localJSONException.printStackTrace();
-        Object localObject2 = localObject3;
-        continue;
-        localObject2 = null;
+        localObject2 = localStringBuilder;
       }
     }
-    if (!StringUtil.isEmpty((String)localObject1)) {
-      this.mGiftLogoFormatKey = ((String)localObject1);
+    if (!StringUtil.isEmpty((String)localObject2)) {
+      this.mGiftLogoFormatKey = ((String)localObject2);
     }
     paramString = String.format(this.mGiftLogoFormatKey, new Object[] { paramString, Long.valueOf(paramLong) });
-    this.mServiceAdapter.getLogger().d("GiftService", "getGiftLogoUrl urlString = \n" + paramString, new Object[0]);
+    Object localObject2 = this.mServiceAdapter.getLogger();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getGiftLogoUrl urlString = \n");
+    localStringBuilder.append(paramString);
+    ((LogInterface)localObject2).d("GiftService", localStringBuilder.toString(), new Object[0]);
     return paramString;
   }
   
@@ -317,8 +307,9 @@ public class GiftService
   
   public void onDestroy()
   {
-    if (this.mGiftPushReceiver != null) {
-      this.mGiftPushReceiver.unInit();
+    PushReceiver localPushReceiver = this.mGiftPushReceiver;
+    if (localPushReceiver != null) {
+      localPushReceiver.unInit();
     }
     this.mGiftEffectResourceController.onDestroy();
   }
@@ -360,18 +351,28 @@ public class GiftService
   public void queryAllGiftsInfo(long paramLong, int paramInt, GiftServiceInterface.OnQueryAllGiftsInfoCallback paramOnQueryAllGiftsInfoCallback)
   {
     getServiceAdapter().getLogger().i("GiftService", "queryAllGiftsInfo", new Object[0]);
-    Object localObject = new PersonGiftListNewReq();
+    Object localObject1 = new PersonGiftListNewReq();
     if (paramLong <= 0L)
     {
-      getServiceAdapter().getLogger().e("GiftService", "queryAllGiftsInfo roomId <= 0 is " + paramLong, new Object[0]);
-      if (this.mServiceAdapter.getAppInfo().isDebug()) {
-        this.mServiceAdapter.getToastInterface().showToast("queryAllGiftsInfo roomid = " + paramLong + "赶紧找开发onehuang看看", 1);
+      Object localObject2 = getServiceAdapter().getLogger();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("queryAllGiftsInfo roomId <= 0 is ");
+      localStringBuilder.append(paramLong);
+      ((LogInterface)localObject2).e("GiftService", localStringBuilder.toString(), new Object[0]);
+      if (this.mServiceAdapter.getAppInfo().isDebug())
+      {
+        localObject2 = this.mServiceAdapter.getToastInterface();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("queryAllGiftsInfo roomid = ");
+        localStringBuilder.append(paramLong);
+        localStringBuilder.append("赶紧找开发onehuang看看");
+        ((ToastInterface)localObject2).showToast(localStringBuilder.toString(), 1);
       }
     }
-    ((PersonGiftListNewReq)localObject).roomId = paramLong;
-    ((PersonGiftListNewReq)localObject).roomType = paramInt;
-    localObject = MessageNano.toByteArray((MessageNano)localObject);
-    getServiceAdapter().getChannel().createCsTask().cmd(1511, 119).callback(new GiftService.2(this, paramLong, paramOnQueryAllGiftsInfoCallback)).send((byte[])localObject).retryOnError(3);
+    ((PersonGiftListNewReq)localObject1).roomId = paramLong;
+    ((PersonGiftListNewReq)localObject1).roomType = paramInt;
+    localObject1 = MessageNano.toByteArray((MessageNano)localObject1);
+    getServiceAdapter().getChannel().createCsTask().cmd(1511, 119).callback(new GiftService.2(this, paramLong, paramOnQueryAllGiftsInfoCallback)).send((byte[])localObject1).retryOnError(3);
   }
   
   public void queryGiftInfo(int paramInt, GiftServiceInterface.OnQueryGiftInfoCallback paramOnQueryGiftInfoCallback)
@@ -381,19 +382,29 @@ public class GiftService
       paramOnQueryGiftInfoCallback.onGetGiftInfo((GiftInfo)this.mAllGifts.get(Integer.valueOf(paramInt)));
       return;
     }
-    Object localObject = new PersonGetGiftReq();
-    ((PersonGetGiftReq)localObject).giftId = paramInt;
-    ((PersonGetGiftReq)localObject).roomId = this.mServiceAdapter.getRoomId();
-    if (((PersonGetGiftReq)localObject).roomId <= 0L)
+    Object localObject1 = new PersonGetGiftReq();
+    ((PersonGetGiftReq)localObject1).giftId = paramInt;
+    ((PersonGetGiftReq)localObject1).roomId = this.mServiceAdapter.getRoomId();
+    if (((PersonGetGiftReq)localObject1).roomId <= 0L)
     {
-      getServiceAdapter().getLogger().e("GiftService", "queryGiftInfo roomId <= 0 is " + ((PersonGetGiftReq)localObject).roomId, new Object[0]);
-      if (this.mServiceAdapter.getAppInfo().isDebug()) {
-        this.mServiceAdapter.getToastInterface().showToast("queryGiftInfo roomid = " + ((PersonGetGiftReq)localObject).roomId + "赶紧找开发onehuang看看", 1);
+      Object localObject2 = getServiceAdapter().getLogger();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("queryGiftInfo roomId <= 0 is ");
+      localStringBuilder.append(((PersonGetGiftReq)localObject1).roomId);
+      ((LogInterface)localObject2).e("GiftService", localStringBuilder.toString(), new Object[0]);
+      if (this.mServiceAdapter.getAppInfo().isDebug())
+      {
+        localObject2 = this.mServiceAdapter.getToastInterface();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("queryGiftInfo roomid = ");
+        localStringBuilder.append(((PersonGetGiftReq)localObject1).roomId);
+        localStringBuilder.append("赶紧找开发onehuang看看");
+        ((ToastInterface)localObject2).showToast(localStringBuilder.toString(), 1);
       }
     }
-    ((PersonGetGiftReq)localObject).subRoomId = this.mServiceAdapter.getRoomId();
-    localObject = MessageNano.toByteArray((MessageNano)localObject);
-    getServiceAdapter().getChannel().send(1511, 39, (byte[])localObject, new GiftService.4(this, paramOnQueryGiftInfoCallback));
+    ((PersonGetGiftReq)localObject1).subRoomId = this.mServiceAdapter.getRoomId();
+    localObject1 = MessageNano.toByteArray((MessageNano)localObject1);
+    getServiceAdapter().getChannel().send(1511, 39, (byte[])localObject1, new GiftService.4(this, paramOnQueryGiftInfoCallback));
   }
   
   public void queryH264GiftInfo(ArrayList<String> paramArrayList, IGetGiftEffectResInfoListener paramIGetGiftEffectResInfoListener)
@@ -410,7 +421,7 @@ public class GiftService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.giftservice.GiftService
  * JD-Core Version:    0.7.0.1
  */

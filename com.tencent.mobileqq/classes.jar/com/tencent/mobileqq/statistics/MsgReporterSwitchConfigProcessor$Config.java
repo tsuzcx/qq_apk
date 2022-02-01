@@ -10,25 +10,30 @@ public final class MsgReporterSwitchConfigProcessor$Config
   
   private void a(String paramString)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgReporterSwitchConfigProcessor", 2, "MsgReporterSwitch configText : " + paramString);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("MsgReporterSwitch configText : ");
+        localStringBuilder.append(paramString);
+        QLog.d("MsgReporterSwitchConfigProcessor", 2, localStringBuilder.toString());
       }
-    }
-    try
-    {
-      this.a = new JSONObject(paramString).optBoolean("MsgHopperUpload", false);
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("MsgReporterSwitchConfigProcessor", 1, paramString, new Object[0]);
+      try
+      {
+        this.a = new JSONObject(paramString).optBoolean("MsgHopperUpload", false);
+        return;
+      }
+      catch (Throwable paramString)
+      {
+        QLog.e("MsgReporterSwitchConfigProcessor", 1, paramString, new Object[0]);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.MsgReporterSwitchConfigProcessor.Config
  * JD-Core Version:    0.7.0.1
  */

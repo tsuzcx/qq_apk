@@ -14,8 +14,7 @@ final class MediaDisplayLayout$MediaDisplayGridAdapter$getView$3
   
   public final void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetMediaDisplayLayout$MediaDisplayGridAdapter.a.setLastClickPosition(this.jdField_a_of_type_Int);
-    paramView = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetMediaDisplayLayout$MediaDisplayGridAdapter.a.b();
+    paramView = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetMediaDisplayLayout$MediaDisplayGridAdapter.a.c();
     if (paramView != null) {
       paramView = (Unit)paramView.invoke(Integer.valueOf(this.jdField_a_of_type_Int));
     }
@@ -23,7 +22,7 @@ final class MediaDisplayLayout$MediaDisplayGridAdapter$getView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.MediaDisplayLayout.MediaDisplayGridAdapter.getView.3
  * JD-Core Version:    0.7.0.1
  */

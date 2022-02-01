@@ -27,6 +27,7 @@ public final class DiskLruCacheUtil
     catch (RuntimeException paramCloseable)
     {
       throw paramCloseable;
+      return;
     }
     catch (Exception paramCloseable) {}
   }
@@ -36,8 +37,13 @@ public final class DiskLruCacheUtil
     if (!TextUtils.isEmpty(paramString))
     {
       int i = paramString.lastIndexOf(":");
-      if ((i != -1) && (paramString.length() > i + 1)) {
-        return new String[] { paramString.substring(0, i), paramString.substring(i + 1) };
+      if (i != -1)
+      {
+        int j = paramString.length();
+        int k = i + 1;
+        if (j > k) {
+          return new String[] { paramString.substring(0, i), paramString.substring(k) };
+        }
       }
     }
     return null;
@@ -45,22 +51,38 @@ public final class DiskLruCacheUtil
   
   static void deleteContents(File paramFile)
   {
-    File[] arrayOfFile = paramFile.listFiles();
-    if (arrayOfFile == null) {
-      throw new IOException("not a readable directory: " + paramFile);
-    }
-    int j = arrayOfFile.length;
-    int i = 0;
-    while (i < j)
+    Object localObject = paramFile.listFiles();
+    if (localObject != null)
     {
-      paramFile = arrayOfFile[i];
-      if (paramFile.isDirectory()) {
-        deleteContents(paramFile);
+      int j = localObject.length;
+      int i = 0;
+      while (i < j)
+      {
+        paramFile = localObject[i];
+        if (paramFile.isDirectory()) {
+          deleteContents(paramFile);
+        }
+        if (paramFile.delete())
+        {
+          i += 1;
+        }
+        else
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("failed to delete file: ");
+          ((StringBuilder)localObject).append(paramFile);
+          throw new IOException(((StringBuilder)localObject).toString());
+        }
       }
-      if (!paramFile.delete()) {
-        throw new IOException("failed to delete file: " + paramFile);
-      }
-      i += 1;
+      return;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("not a readable directory: ");
+    ((StringBuilder)localObject).append(paramFile);
+    paramFile = new IOException(((StringBuilder)localObject).toString());
+    for (;;)
+    {
+      throw paramFile;
     }
   }
   
@@ -71,8 +93,13 @@ public final class DiskLruCacheUtil
   
   public static String encode(String paramString1, String paramString2)
   {
-    if (!TextUtils.isEmpty(paramString2)) {
-      return paramString1 + ":" + paramString2;
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(":");
+      localStringBuilder.append(paramString2);
+      return localStringBuilder.toString();
     }
     return null;
   }
@@ -86,7 +113,7 @@ public final class DiskLruCacheUtil
   {
     try
     {
-      StringWriter localStringWriter = new StringWriter();
+      Object localObject1 = new StringWriter();
       char[] arrayOfChar = new char[1024];
       for (;;)
       {
@@ -94,17 +121,20 @@ public final class DiskLruCacheUtil
         if (i == -1) {
           break;
         }
-        localStringWriter.write(arrayOfChar, 0, i);
+        ((StringWriter)localObject1).write(arrayOfChar, 0, i);
       }
-      str = localObject.toString();
+      localObject1 = ((StringWriter)localObject1).toString();
+      paramReader.close();
+      return localObject1;
     }
     finally
     {
       paramReader.close();
     }
-    String str;
-    paramReader.close();
-    return str;
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public static JSONArray setToJSONArray(Set paramSet)
@@ -122,7 +152,7 @@ public final class DiskLruCacheUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.cache.DiskLruCacheUtil
  * JD-Core Version:    0.7.0.1
  */

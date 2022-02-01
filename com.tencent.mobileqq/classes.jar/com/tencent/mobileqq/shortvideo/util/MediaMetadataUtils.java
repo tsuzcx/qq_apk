@@ -10,49 +10,37 @@ public class MediaMetadataUtils
   public static int a(String paramString, MediaMetadataUtils.MetaData paramMetaData)
   {
     MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-    label226:
-    for (;;)
+    try
     {
-      String str1;
-      String str2;
-      String str3;
-      try
+      localMediaMetadataRetriever.setDataSource(paramString);
+      String str2 = localMediaMetadataRetriever.extractMetadata(18);
+      String str3 = localMediaMetadataRetriever.extractMetadata(19);
+      String str1 = localMediaMetadataRetriever.extractMetadata(24);
+      String str4 = localMediaMetadataRetriever.extractMetadata(9);
+      localMediaMetadataRetriever.release();
+      if ((str1 != null) && (!"".equals(str1)))
       {
-        localMediaMetadataRetriever.setDataSource(paramString);
-        str1 = localMediaMetadataRetriever.extractMetadata(18);
-        str2 = localMediaMetadataRetriever.extractMetadata(19);
-        paramString = localMediaMetadataRetriever.extractMetadata(24);
-        str3 = localMediaMetadataRetriever.extractMetadata(9);
-        localMediaMetadataRetriever.release();
-        if ((paramString != null) && (!"".equals(paramString)) && (!"null".equals(paramString))) {
-          break label226;
-        }
+        paramString = str1;
+        if (!"null".equals(str1)) {}
+      }
+      else
+      {
         paramString = "0";
-        if ((str1 == null) || (str2 == null))
-        {
-          QLog.e("MediaMetadataUtils", 1, "[@] extractMetadata:width=" + str1 + " height=" + str2);
-          return -2;
-        }
       }
-      catch (RuntimeException paramString)
+      if ((str2 != null) && (str3 != null))
       {
-        QLog.e("MediaMetadataUtils", 1, "[@] setDataSource", paramString);
-        return -1;
-      }
-      for (;;)
-      {
+        int i;
         try
         {
-          paramMetaData.a[0] = Integer.parseInt(str1);
-          paramMetaData.a[1] = Integer.parseInt(str2);
-          paramMetaData.a[3] = Integer.parseInt(str3);
+          paramMetaData.a[0] = Integer.parseInt(str2);
+          paramMetaData.a[1] = Integer.parseInt(str3);
+          paramMetaData.a[3] = Integer.parseInt(str4);
           i = 0;
         }
         catch (NumberFormatException localNumberFormatException)
         {
-          QLog.e("MediaMetadataUtils", 1, "[@] parseInt", localNumberFormatException);
-          int i = -3;
-          continue;
+          QLog.e("MediaMetadataUtils", 1, "parseInt", localNumberFormatException);
+          i = -103;
         }
         try
         {
@@ -62,17 +50,29 @@ public class MediaMetadataUtils
         }
         catch (NumberFormatException paramString)
         {
-          QLog.e("MediaMetadataUtils", 1, "[@] parseInt", paramString);
+          QLog.e("MediaMetadataUtils", 1, "parseInt", paramString);
           paramMetaData.a[2] = 0;
           return i;
         }
       }
+      paramString = new StringBuilder();
+      paramString.append("extractMetadata:width=");
+      paramString.append(str2);
+      paramString.append(" height=");
+      paramString.append(str3);
+      QLog.e("MediaMetadataUtils", 1, paramString.toString());
+      return -102;
     }
+    catch (RuntimeException paramString)
+    {
+      QLog.e("MediaMetadataUtils", 1, "setDataSource", paramString);
+    }
+    return -101;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.MediaMetadataUtils
  * JD-Core Version:    0.7.0.1
  */

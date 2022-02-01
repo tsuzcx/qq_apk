@@ -62,9 +62,9 @@ public class ProfileProtocolServiceImpl
   
   private ContactCard processContactCard(Bundle paramBundle, RespSummaryCard paramRespSummaryCard)
   {
-    boolean bool = true;
     Object localObject = paramBundle.getString("searchName");
     paramBundle = (IProfileDataService)this.appRuntime.getRuntimeService(IProfileDataService.class, "all");
+    boolean bool = true;
     localObject = paramBundle.getContactCardByMobileNo((String)localObject, true);
     ((ContactCard)localObject).bAge = paramRespSummaryCard.bAge;
     ((ContactCard)localObject).bSex = paramRespSummaryCard.bSex;
@@ -73,21 +73,17 @@ public class ProfileProtocolServiceImpl
     ((ContactCard)localObject).strCountry = paramRespSummaryCard.strCountry;
     ((ContactCard)localObject).strCity = paramRespSummaryCard.strCity;
     ((ContactCard)localObject).strContactName = paramRespSummaryCard.strContactName;
-    if (paramRespSummaryCard.iContactNotBindQQ != 1)
-    {
-      ((ContactCard)localObject).bindQQ = bool;
-      if (paramRespSummaryCard.lUIN <= 0L) {
-        break label151;
-      }
-    }
-    label151:
-    for (((ContactCard)localObject).uin = String.valueOf(paramRespSummaryCard.lUIN);; ((ContactCard)localObject).uin = "")
-    {
-      paramBundle.saveContactCard((ContactCard)localObject);
-      return localObject;
+    if (paramRespSummaryCard.iContactNotBindQQ == 1) {
       bool = false;
-      break;
     }
+    ((ContactCard)localObject).bindQQ = bool;
+    if (paramRespSummaryCard.lUIN > 0L) {
+      ((ContactCard)localObject).uin = String.valueOf(paramRespSummaryCard.lUIN);
+    } else {
+      ((ContactCard)localObject).uin = "";
+    }
+    paramBundle.saveContactCard((ContactCard)localObject);
+    return localObject;
   }
   
   private Card processProfileCard(Bundle paramBundle, RespHead paramRespHead, RespSummaryCard paramRespSummaryCard)
@@ -138,22 +134,16 @@ public class ProfileProtocolServiceImpl
   
   public <T extends AbsProfileBusinessProcessor> T getBusinessProcessor(Class<? extends AbsProfileBusinessProcessor> paramClass)
   {
-    Object localObject = null;
     Iterator localIterator = this.processorFactory.getBusinessProcessors(this.appRuntime).iterator();
-    if (localIterator.hasNext())
+    Object localObject = null;
+    while (localIterator.hasNext())
     {
       AbsProfileBusinessProcessor localAbsProfileBusinessProcessor = (AbsProfileBusinessProcessor)localIterator.next();
-      if (!localAbsProfileBusinessProcessor.getClass().equals(paramClass)) {
-        break label59;
+      if (localAbsProfileBusinessProcessor.getClass().equals(paramClass)) {
+        localObject = localAbsProfileBusinessProcessor;
       }
-      localObject = localAbsProfileBusinessProcessor;
     }
-    label59:
-    for (;;)
-    {
-      break;
-      return localObject;
-    }
+    return localObject;
   }
   
   public void getProfileDetail(String paramString, List<Short> paramList, int paramInt, Bundle paramBundle)
@@ -178,20 +168,20 @@ public class ProfileProtocolServiceImpl
         paramBundle.putShort(((Short)paramList.next()).shortValue());
       }
       paramList = new oidb_sso.OIDBSSOPkg();
+      paramList.uint32_command.set(1152);
+      paramList.uint32_service_type.set(paramInt);
+      paramList.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramBundle.array()));
+      paramBundle = getProfileCardHandler();
+      ToServiceMsg localToServiceMsg = paramBundle.createToServiceMsg("OidbSvc.0x480_9_IMCore");
+      localToServiceMsg.putWupBuffer(paramList.toByteArray());
+      localToServiceMsg.extraData.putAll(paramString);
+      paramBundle.sendPbReq(localToServiceMsg);
+      return;
     }
     catch (Exception paramString)
     {
       QLog.e("ProfileCardProtocolServiceImpl", 1, "getProfileDetail fail.", paramString);
-      return;
     }
-    paramList.uint32_command.set(1152);
-    paramList.uint32_service_type.set(paramInt);
-    paramList.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramBundle.array()));
-    paramBundle = getProfileCardHandler();
-    ToServiceMsg localToServiceMsg = paramBundle.createToServiceMsg("OidbSvc.0x480_9_IMCore");
-    localToServiceMsg.putWupBuffer(paramList.toByteArray());
-    localToServiceMsg.extraData.putAll(paramString);
-    paramBundle.sendPbReq(localToServiceMsg);
   }
   
   public void getProfileDetailForEdit()
@@ -298,245 +288,213 @@ public class ProfileProtocolServiceImpl
   
   public void responseGetProfileDetail(Bundle paramBundle, boolean paramBoolean, int paramInt, Object paramObject)
   {
-    IProfileDataService localIProfileDataService = null;
-    Iterator localIterator = null;
     List localList = this.processorFactory.getBusinessProcessors(this.appRuntime);
-    Object localObject = localList.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((AbsProfileBusinessProcessor)((Iterator)localObject).next()).onGetProfileDetailResponseBegin(paramBundle);
+    Object localObject1 = localList.iterator();
+    while (((Iterator)localObject1).hasNext()) {
+      ((AbsProfileBusinessProcessor)((Iterator)localObject1).next()).onGetProfileDetailResponseBegin(paramBundle);
     }
-    localObject = localIProfileDataService;
-    boolean bool = paramBoolean;
-    int j = paramInt;
-    if (paramBoolean)
-    {
-      localObject = localIterator;
-      j = paramInt;
-    }
-    ByteBuffer localByteBuffer;
-    Long localLong;
-    short s1;
+    int n = 2;
+    int i1 = 0;
+    localObject1 = null;
+    Object localObject3 = null;
+    Object localObject2 = null;
+    if (paramBoolean) {}
     for (;;)
     {
+      int k;
       try
       {
-        paramObject = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])paramObject);
-        localObject = localIterator;
-        j = paramInt;
-        if (!paramObject.uint32_result.has()) {
-          break label445;
+        localObject3 = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])paramObject);
+        if (((oidb_sso.OIDBSSOPkg)localObject3).uint32_result.has())
+        {
+          k = ((oidb_sso.OIDBSSOPkg)localObject3).uint32_result.get();
+          if (k == 0) {
+            paramBoolean = true;
+          } else {
+            paramBoolean = false;
+          }
+          paramInt = k;
         }
-        localObject = localIterator;
-        j = paramInt;
-        paramInt = paramObject.uint32_result.get();
-        if (paramInt != 0) {
-          break label440;
+        else
+        {
+          paramBoolean = false;
         }
-        paramBoolean = true;
+        paramObject = localObject2;
+        if (paramBoolean) {
+          try
+          {
+            ByteBuffer localByteBuffer = ByteBuffer.wrap(((oidb_sso.OIDBSSOPkg)localObject3).bytes_bodybuffer.get().toByteArray());
+            Long localLong = Long.valueOf(Utils.a(localByteBuffer.getInt()));
+            localByteBuffer.get();
+            int i = localByteBuffer.getShort();
+            if (QLog.isColorLevel()) {
+              QLog.i("ProfileCardProtocolServiceImpl", 2, String.format("responseGetProfileCard uin=%s tlvCount=%s", new Object[] { localLong, Short.valueOf(i) }));
+            }
+            localObject2 = (IProfileDataService)this.appRuntime.getRuntimeService(IProfileDataService.class, "all");
+            paramObject = ((IProfileDataService)localObject2).getProfileCard(String.valueOf(localLong), true);
+            localObject1 = paramObject;
+            try
+            {
+              localObject3 = localList.iterator();
+              localObject1 = paramObject;
+              boolean bool = ((Iterator)localObject3).hasNext();
+              if (bool)
+              {
+                localObject1 = paramObject;
+                try
+                {
+                  ((AbsProfileBusinessProcessor)((Iterator)localObject3).next()).onGetProfileDetailTLVBegin(paramBundle, localLong.longValue(), paramObject);
+                }
+                catch (Exception paramObject)
+                {
+                  continue;
+                }
+              }
+              localObject1 = paramObject;
+              int i2 = localByteBuffer.position();
+              k = 0;
+              int m = i;
+              localObject1 = paramObject;
+              int j;
+              AbsProfileBusinessProcessor localAbsProfileBusinessProcessor;
+              long l;
+              if ((localByteBuffer.hasRemaining()) && (k < m))
+              {
+                localObject1 = paramObject;
+                localByteBuffer.position(i2);
+                localObject1 = paramObject;
+                i = localByteBuffer.getShort();
+                localObject1 = paramObject;
+                j = localByteBuffer.getShort();
+                localObject1 = paramObject;
+                i2 = localByteBuffer.position() + j;
+                localObject1 = paramObject;
+                bool = QLog.isColorLevel();
+                if (bool)
+                {
+                  localObject1 = paramObject;
+                  localObject3 = new Object[3];
+                  localObject1 = paramObject;
+                  localObject3[i1] = Short.valueOf(i);
+                  localObject1 = paramObject;
+                  localObject3[1] = Short.valueOf(j);
+                  localObject1 = paramObject;
+                  localObject3[n] = Integer.valueOf(i2);
+                  localObject1 = paramObject;
+                  QLog.d("ProfileCardProtocolServiceImpl", n, String.format("responseGetProfileCard K=%s, L=%s, nextTLVPosition=%s", (Object[])localObject3));
+                }
+                localObject1 = paramObject;
+                Iterator localIterator = localList.iterator();
+                localObject3 = localObject2;
+                localObject1 = paramObject;
+                if (!localIterator.hasNext()) {
+                  break label841;
+                }
+                localObject1 = paramObject;
+                localAbsProfileBusinessProcessor = (AbsProfileBusinessProcessor)localIterator.next();
+                localObject1 = paramObject;
+                l = localLong.longValue();
+                localObject2 = paramObject;
+                localObject1 = localObject2;
+              }
+              try
+              {
+                localAbsProfileBusinessProcessor.onGetProfileDetailTLV(paramBundle, l, paramObject, i, j, localByteBuffer);
+                paramObject = localObject2;
+                n = 2;
+                i1 = 0;
+              }
+              catch (Exception paramObject)
+              {
+                continue;
+              }
+              localObject1 = paramObject;
+              localObject3 = localList.iterator();
+              localObject1 = paramObject;
+              if (((Iterator)localObject3).hasNext())
+              {
+                localObject1 = paramObject;
+                ((AbsProfileBusinessProcessor)((Iterator)localObject3).next()).onGetProfileDetailTLVEnd(paramBundle, localLong.longValue(), paramObject);
+                continue;
+              }
+              localObject1 = paramObject;
+              if (paramBundle.getBoolean("parse_profile_location"))
+              {
+                localObject1 = paramObject;
+                localObject3 = localList.iterator();
+                localObject1 = paramObject;
+                if (((Iterator)localObject3).hasNext())
+                {
+                  localObject1 = paramObject;
+                  ((AbsProfileBusinessProcessor)((Iterator)localObject3).next()).requestParseProfileLocation(paramObject);
+                  continue;
+                }
+              }
+              localObject1 = paramObject;
+              ((IProfileDataService)localObject2).saveProfileCard(paramObject);
+            }
+            catch (Exception paramObject) {}
+          }
+          catch (Exception paramObject) {}
+        }
       }
       catch (Exception paramObject)
       {
-        bool = false;
         QLog.e("ProfileCardProtocolServiceImpl", 1, "responseGetProfileCard fail.", paramObject);
+        paramBoolean = false;
+        paramObject = localObject1;
       }
-      localObject = localIProfileDataService;
-      bool = paramBoolean;
-      j = paramInt;
-      if (paramBoolean)
-      {
-        localObject = localIterator;
-        j = paramInt;
-        localByteBuffer = ByteBuffer.wrap(paramObject.bytes_bodybuffer.get().toByteArray());
-        localObject = localIterator;
-        j = paramInt;
-        localLong = Long.valueOf(Utils.a(localByteBuffer.getInt()));
-        localObject = localIterator;
-        j = paramInt;
-        localByteBuffer.get();
-        localObject = localIterator;
-        j = paramInt;
-        s1 = localByteBuffer.getShort();
-        localObject = localIterator;
-        j = paramInt;
-        if (QLog.isColorLevel())
-        {
-          localObject = localIterator;
-          j = paramInt;
-          QLog.i("ProfileCardProtocolServiceImpl", 2, String.format("responseGetProfileCard uin=%s tlvCount=%s", new Object[] { localLong, Short.valueOf(s1) }));
-        }
-        localObject = localIterator;
-        j = paramInt;
-        localIProfileDataService = (IProfileDataService)this.appRuntime.getRuntimeService(IProfileDataService.class, "all");
-        localObject = localIterator;
-        j = paramInt;
-        paramObject = localIProfileDataService.getProfileCard(String.valueOf(localLong), true);
-        localObject = paramObject;
-        j = paramInt;
-        localIterator = localList.iterator();
-        localObject = paramObject;
-        j = paramInt;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject = paramObject;
-        j = paramInt;
-        ((AbsProfileBusinessProcessor)localIterator.next()).onGetProfileDetailTLVBegin(paramBundle, localLong.longValue(), paramObject);
-        continue;
+      paramObject = localObject3;
+      localObject1 = localList.iterator();
+      while (((Iterator)localObject1).hasNext()) {
+        ((AbsProfileBusinessProcessor)((Iterator)localObject1).next()).onGetProfileDetailResponseEnd(paramBundle, paramBoolean, paramObject);
       }
-      label400:
-      paramObject = localList.iterator();
-      while (paramObject.hasNext()) {
-        ((AbsProfileBusinessProcessor)paramObject.next()).onGetProfileDetailResponseEnd(paramBundle, bool, (Card)localObject);
-      }
-      label440:
-      paramBoolean = false;
-      break label898;
-      label445:
-      paramBoolean = false;
-    }
-    short s3 = 0;
-    localObject = paramObject;
-    j = paramInt;
-    int m = localByteBuffer.position();
-    for (;;)
-    {
-      localObject = paramObject;
-      j = paramInt;
-      if ((localByteBuffer.hasRemaining()) && (s3 < s1))
-      {
-        localObject = paramObject;
-        j = paramInt;
-        localByteBuffer.position(m);
-        localObject = paramObject;
-        j = paramInt;
-        short s2 = localByteBuffer.getShort();
-        localObject = paramObject;
-        j = paramInt;
-        int i = localByteBuffer.getShort();
-        localObject = paramObject;
-        j = paramInt;
-        m = localByteBuffer.position() + i;
-        localObject = paramObject;
-        j = paramInt;
-        if (QLog.isColorLevel())
-        {
-          localObject = paramObject;
-          j = paramInt;
-          QLog.d("ProfileCardProtocolServiceImpl", 2, String.format("responseGetProfileCard K=%s, L=%s, nextTLVPosition=%s", new Object[] { Short.valueOf(s2), Short.valueOf(i), Integer.valueOf(m) }));
-        }
-        localObject = paramObject;
-        j = paramInt;
-        localIterator = localList.iterator();
-        for (;;)
-        {
-          localObject = paramObject;
-          j = paramInt;
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localObject = paramObject;
-          j = paramInt;
-          ((AbsProfileBusinessProcessor)localIterator.next()).onGetProfileDetailTLV(paramBundle, localLong.longValue(), paramObject, s2, i, localByteBuffer);
-        }
-      }
-      localObject = paramObject;
-      j = paramInt;
-      localIterator = localList.iterator();
-      for (;;)
-      {
-        localObject = paramObject;
-        j = paramInt;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject = paramObject;
-        j = paramInt;
-        ((AbsProfileBusinessProcessor)localIterator.next()).onGetProfileDetailTLVEnd(paramBundle, localLong.longValue(), paramObject);
-      }
-      localObject = paramObject;
-      j = paramInt;
-      if (paramBundle.getBoolean("parse_profile_location"))
-      {
-        localObject = paramObject;
-        j = paramInt;
-        localIterator = localList.iterator();
-        for (;;)
-        {
-          localObject = paramObject;
-          j = paramInt;
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localObject = paramObject;
-          j = paramInt;
-          ((AbsProfileBusinessProcessor)localIterator.next()).requestParseProfileLocation(paramObject);
-        }
-      }
-      localObject = paramObject;
-      j = paramInt;
-      localIProfileDataService.saveProfileCard(paramObject);
-      localObject = paramObject;
-      bool = paramBoolean;
-      j = paramInt;
-      break label400;
       if (QLog.isColorLevel()) {
-        QLog.d("ProfileCardProtocolServiceImpl", 2, String.format("responseGetProfileCard success=%s resultCode=%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(j) }));
+        QLog.d("ProfileCardProtocolServiceImpl", 2, String.format("responseGetProfileCard success=%s resultCode=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
       }
-      notifyUI(1002, bool, localObject);
+      notifyUI(1002, paramBoolean, paramObject);
       return;
-      label898:
-      break;
-      int k;
-      s3 += 1;
+      label841:
+      k += 1;
+      localObject2 = localObject3;
     }
   }
   
   public void responseProfileCard(Bundle paramBundle, RespHead paramRespHead, RespSummaryCard paramRespSummaryCard)
   {
     boolean bool;
-    if ((paramRespHead != null) && (paramRespSummaryCard != null)) {
-      if (paramRespHead.iResult == 0) {
-        bool = true;
-      }
-    }
-    for (;;)
-    {
-      long l1 = paramBundle.getLong("selfUin");
-      long l2 = paramBundle.getLong("targetUin");
-      int i = paramBundle.getInt("comeFromType");
-      String str = paramBundle.getString("searchName");
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileCardProtocolServiceImpl", 2, String.format("responseProfileCard selfUin=%s targetUin=%s comeFromType=%s success=%s", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i), Boolean.valueOf(bool) }));
-      }
-      Iterator localIterator = this.processorFactory.getBusinessProcessors(this.appRuntime).iterator();
-      for (;;)
-      {
-        if (localIterator.hasNext())
-        {
-          ((AbsProfileBusinessProcessor)localIterator.next()).onResponseProfileCard(bool, paramBundle, paramRespHead, paramRespSummaryCard);
-          continue;
-          bool = false;
-          break;
-        }
-      }
-      if (bool)
-      {
-        if (isContactCardResponse(l2, i))
-        {
-          notifyUI(1001, true, processContactCard(paramBundle, paramRespSummaryCard));
-          return;
-        }
-        notifyUI(1001, true, processProfileCard(paramBundle, paramRespHead, paramRespSummaryCard));
-        return;
-      }
-      if (l2 <= 0L) {}
-      for (paramBundle = str;; paramBundle = String.valueOf(l2))
-      {
-        notifyUI(1001, false, paramBundle);
-        return;
-      }
+    if ((paramRespHead != null) && (paramRespSummaryCard != null) && (paramRespHead.iResult == 0)) {
+      bool = true;
+    } else {
       bool = false;
     }
+    long l1 = paramBundle.getLong("selfUin");
+    long l2 = paramBundle.getLong("targetUin");
+    int i = paramBundle.getInt("comeFromType");
+    String str = paramBundle.getString("searchName");
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCardProtocolServiceImpl", 2, String.format("responseProfileCard selfUin=%s targetUin=%s comeFromType=%s success=%s", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i), Boolean.valueOf(bool) }));
+    }
+    Iterator localIterator = this.processorFactory.getBusinessProcessors(this.appRuntime).iterator();
+    while (localIterator.hasNext()) {
+      ((AbsProfileBusinessProcessor)localIterator.next()).onResponseProfileCard(bool, paramBundle, paramRespHead, paramRespSummaryCard);
+    }
+    if (bool)
+    {
+      if (isContactCardResponse(l2, i))
+      {
+        notifyUI(1001, true, processContactCard(paramBundle, paramRespSummaryCard));
+        return;
+      }
+      notifyUI(1001, true, processProfileCard(paramBundle, paramRespHead, paramRespSummaryCard));
+      return;
+    }
+    if (l2 <= 0L) {
+      paramBundle = str;
+    } else {
+      paramBundle = String.valueOf(l2);
+    }
+    notifyUI(1001, false, paramBundle);
   }
   
   public void setProfileDetail(Bundle paramBundle)
@@ -546,7 +504,7 @@ public class ProfileProtocolServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.api.impl.ProfileProtocolServiceImpl
  * JD-Core Version:    0.7.0.1
  */

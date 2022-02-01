@@ -13,30 +13,28 @@ class HomeFeedPresenter$GamePKCommentReceiver$1
   public void run()
   {
     CommentManager localCommentManager = (CommentManager)SuperManager.a(17);
-    int i;
     if (HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem))
     {
       CommentEntry localCommentEntry = this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryCommentGamePKCommentEvent.b == 0)
-      {
+      int i;
+      if (this.jdField_a_of_type_ComTencentBizQqstoryCommentGamePKCommentEvent.b == 0) {
         i = 3;
-        localCommentEntry.type = i;
-        localCommentManager.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      } else {
+        i = 4;
       }
+      localCommentEntry.type = i;
+      localCommentManager.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
     }
-    for (;;)
+    else
     {
-      ((FeedManager)SuperManager.a(11)).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
-      return;
-      i = 4;
-      break;
       localCommentManager.b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
     }
+    ((FeedManager)SuperManager.a(11)).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter.GamePKCommentReceiver.1
  * JD-Core Version:    0.7.0.1
  */

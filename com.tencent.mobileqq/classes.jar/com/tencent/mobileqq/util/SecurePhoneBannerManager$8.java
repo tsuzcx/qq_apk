@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.util;
 
 import android.content.Context;
+import com.tencent.mobileqq.activity.recent.bannerprocessor.SecurePhoneChangeNotifyBannerProcessor;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.banner.BannerManager;
 import com.tencent.mobileqq.observer.LoginVerifyObserver;
@@ -16,7 +17,7 @@ class SecurePhoneBannerManager$8
 {
   SecurePhoneBannerManager$8(SecurePhoneBannerManager paramSecurePhoneBannerManager, QQAppInterface paramQQAppInterface, Context paramContext, String paramString) {}
   
-  public void a(oidb_0xe96.RspBody paramRspBody)
+  public void getSecurePhoneSuccess(oidb_0xe96.RspBody paramRspBody)
   {
     SecurePhoneBannerManager.a(this.jdField_a_of_type_ComTencentMobileqqUtilSecurePhoneBannerManager, paramRspBody.str_change_mibao_url.get());
     SecurePhoneBannerManager.a(this.jdField_a_of_type_ComTencentMobileqqUtilSecurePhoneBannerManager, paramRspBody.uint32_next_access_time.get());
@@ -27,7 +28,7 @@ class SecurePhoneBannerManager$8
     QLog.d("SecurePhoneBannerManager", 1, new Object[] { "getSecurePhoneState, displayTag : ", Integer.valueOf(SecurePhoneBannerManager.a(this.jdField_a_of_type_ComTencentMobileqqUtilSecurePhoneBannerManager)) });
     if (SecurePhoneBannerManager.a(this.jdField_a_of_type_ComTencentMobileqqUtilSecurePhoneBannerManager) == 1)
     {
-      BannerManager.a().a(5, 2, null);
+      BannerManager.a().a(SecurePhoneChangeNotifyBannerProcessor.a, 2, null);
       SecurePhoneBannerManager.a(this.jdField_a_of_type_ComTencentMobileqqUtilSecurePhoneBannerManager, true);
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B0C3", "0X800B0C3", 0, 0, "", "", "", "");
       ReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009EDE", "0X8009EDE", 24, 0, "", "", "", "");
@@ -38,7 +39,7 @@ class SecurePhoneBannerManager$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.SecurePhoneBannerManager.8
  * JD-Core Version:    0.7.0.1
  */

@@ -15,27 +15,21 @@ public class StatisticFolder
   
   public List<Statistic> poll(int paramInt)
   {
-    Object localObject;
-    if (paramInt < 1)
-    {
-      localObject = null;
-      return localObject;
+    if (paramInt < 1) {
+      return null;
     }
     ArrayList localArrayList = new ArrayList();
     int i = Math.min(paramInt, size());
     paramInt = 0;
-    for (;;)
+    while (paramInt < i)
     {
-      localObject = localArrayList;
-      if (paramInt >= i) {
-        break;
-      }
-      localObject = poll();
-      if (localObject != null) {
-        localArrayList.add(localObject);
+      Statistic localStatistic = poll();
+      if (localStatistic != null) {
+        localArrayList.add(localStatistic);
       }
       paramInt += 1;
     }
+    return localArrayList;
   }
   
   public List<Statistic> pollAll()
@@ -55,7 +49,7 @@ public class StatisticFolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.statistic.access.concept.StatisticFolder
  * JD-Core Version:    0.7.0.1
  */

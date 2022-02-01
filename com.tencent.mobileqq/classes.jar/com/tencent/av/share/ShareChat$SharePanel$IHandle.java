@@ -1,7 +1,7 @@
 package com.tencent.av.share;
 
 import android.graphics.Bitmap;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.troop.data.TroopInfoData;
 
 abstract interface ShareChat$SharePanel$IHandle
 {
@@ -29,7 +29,7 @@ abstract interface ShareChat$SharePanel$IHandle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.share.ShareChat.SharePanel.IHandle
  * JD-Core Version:    0.7.0.1
  */

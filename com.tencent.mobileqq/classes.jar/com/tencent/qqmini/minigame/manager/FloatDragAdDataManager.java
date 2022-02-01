@@ -33,50 +33,30 @@ public class FloatDragAdDataManager
   
   private static FloatDragAdInfo getFloatDragAdInfo(String paramString, int paramInt, TianShuAccess.AdItem paramAdItem)
   {
-    String str = null;
-    Iterator localIterator = paramAdItem.argList.get().iterator();
-    Object localObject2 = null;
-    Object localObject1 = null;
-    Object localObject3;
-    if (localIterator.hasNext())
+    Object localObject = paramAdItem.argList.get().iterator();
+    String str3 = null;
+    String str2 = null;
+    String str1 = str2;
+    while (((Iterator)localObject).hasNext())
     {
-      localObject3 = (TianShuAccess.MapEntry)localIterator.next();
-      if ("type".equals(((TianShuAccess.MapEntry)localObject3).key.get()))
-      {
-        localObject3 = ((TianShuAccess.MapEntry)localObject3).value.get();
-        localObject1 = localObject2;
-        localObject2 = localObject3;
+      TianShuAccess.MapEntry localMapEntry = (TianShuAccess.MapEntry)((Iterator)localObject).next();
+      if ("type".equals(localMapEntry.key.get())) {
+        str3 = localMapEntry.value.get();
+      } else if ("url".equals(localMapEntry.key.get())) {
+        str2 = localMapEntry.value.get();
+      } else if ("pic".equals(localMapEntry.key.get())) {
+        str1 = localMapEntry.value.get();
       }
     }
-    for (;;)
-    {
-      localObject3 = localObject2;
-      localObject2 = localObject1;
-      localObject1 = localObject3;
-      break;
-      if ("url".equals(((TianShuAccess.MapEntry)localObject3).key.get()))
-      {
-        localObject3 = ((TianShuAccess.MapEntry)localObject3).value.get();
-        localObject2 = localObject1;
-        localObject1 = localObject3;
-      }
-      else if ("pic".equals(((TianShuAccess.MapEntry)localObject3).key.get()))
-      {
-        str = ((TianShuAccess.MapEntry)localObject3).value.get();
-        localObject3 = localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject3;
-        continue;
-        QMLog.i("FloatDragAdDataManager", "handleTianShuResponse type:" + localObject1 + ", jumpUrl:" + localObject2 + ", pictureUrl:" + str);
-        return new FloatDragAdInfo.Builder().adItem(paramAdItem).type(localObject1).pictureUrl(str).jumpUrl(localObject2).appId(paramString).scene(paramInt).build();
-      }
-      else
-      {
-        localObject3 = localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject3;
-      }
-    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("handleTianShuResponse type:");
+    ((StringBuilder)localObject).append(str3);
+    ((StringBuilder)localObject).append(", jumpUrl:");
+    ((StringBuilder)localObject).append(str2);
+    ((StringBuilder)localObject).append(", pictureUrl:");
+    ((StringBuilder)localObject).append(str1);
+    QMLog.i("FloatDragAdDataManager", ((StringBuilder)localObject).toString());
+    return new FloatDragAdInfo.Builder().adItem(paramAdItem).type(str3).pictureUrl(str1).jumpUrl(str2).appId(paramString).scene(paramInt).build();
   }
   
   private static FloatDragAdInfo handleTianShuResponse(String paramString, int paramInt, JSONObject paramJSONObject)
@@ -84,25 +64,23 @@ public class FloatDragAdDataManager
     try
     {
       paramJSONObject = (TianShuAccess.GetAdsRsp)paramJSONObject.get("response");
-      if ((paramJSONObject == null) || (paramJSONObject.mapAds.isEmpty()))
+      if ((paramJSONObject != null) && (!paramJSONObject.mapAds.isEmpty()))
       {
-        QMLog.e("FloatDragAdDataManager", "handleTianShuResponse mapAds is empty");
-        return null;
-      }
-      paramJSONObject = (TianShuAccess.RspEntry)paramJSONObject.mapAds.get(0);
-      if ((paramJSONObject == null) || (paramJSONObject.value == null) || (paramJSONObject.value.lst == null) || (paramJSONObject.value.lst.isEmpty()))
-      {
+        paramJSONObject = (TianShuAccess.RspEntry)paramJSONObject.mapAds.get(0);
+        if ((paramJSONObject != null) && (paramJSONObject.value != null) && (paramJSONObject.value.lst != null) && (!paramJSONObject.value.lst.isEmpty()))
+        {
+          paramJSONObject = (TianShuAccess.AdItem)paramJSONObject.value.lst.get(0);
+          if ((paramJSONObject != null) && (paramJSONObject.argList != null) && (!paramJSONObject.argList.isEmpty())) {
+            return getFloatDragAdInfo(paramString, paramInt, paramJSONObject);
+          }
+          QMLog.e("FloatDragAdDataManager", "handleTianShuResponse adItem is empty");
+          return null;
+        }
         QMLog.e("FloatDragAdDataManager", "handleTianShuResponse rspEntry is empty");
         return null;
       }
-      paramJSONObject = (TianShuAccess.AdItem)paramJSONObject.value.lst.get(0);
-      if ((paramJSONObject == null) || (paramJSONObject.argList == null) || (paramJSONObject.argList.isEmpty()))
-      {
-        QMLog.e("FloatDragAdDataManager", "handleTianShuResponse adItem is empty");
-        return null;
-      }
-      paramString = getFloatDragAdInfo(paramString, paramInt, paramJSONObject);
-      return paramString;
+      QMLog.e("FloatDragAdDataManager", "handleTianShuResponse mapAds is empty");
+      return null;
     }
     catch (JSONException paramString)
     {
@@ -118,18 +96,23 @@ public class FloatDragAdDataManager
   
   private static void requestTianShu(Context paramContext, IMiniAppContext paramIMiniAppContext, String paramString, int paramInt)
   {
-    if (paramString == null) {}
-    do
-    {
+    if (paramString == null) {
       return;
-      QMLog.i("FloatDragAdDataManager", "requestTianShu with appId=" + paramString + " scene=" + paramInt);
-    } while (((ChannelProxy)ProxyManager.get(ChannelProxy.class)).tianshuRequestAdv(paramContext, paramString, paramInt, 473, 1, new FloatDragAdDataManager.2(paramString, paramInt, paramIMiniAppContext)));
-    QMLog.e("FloatDragAdDataManager", "requestTianShu isImpl=false");
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("requestTianShu with appId=");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" scene=");
+    localStringBuilder.append(paramInt);
+    QMLog.i("FloatDragAdDataManager", localStringBuilder.toString());
+    if (!((ChannelProxy)ProxyManager.get(ChannelProxy.class)).tianshuRequestAdv(paramContext, paramString, paramInt, 473, 1, new FloatDragAdDataManager.2(paramString, paramInt, paramIMiniAppContext))) {
+      QMLog.e("FloatDragAdDataManager", "requestTianShu isImpl=false");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.manager.FloatDragAdDataManager
  * JD-Core Version:    0.7.0.1
  */

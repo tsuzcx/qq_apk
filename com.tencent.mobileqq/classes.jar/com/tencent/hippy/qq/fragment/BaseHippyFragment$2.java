@@ -17,7 +17,12 @@ class BaseHippyFragment$2
       }
       this.this$0.onLoadHippyFinish(paramInt, paramString);
     }
-    QLog.d("BaseHippyFragment", 1, "Hippy: initHippy error statusCode=" + paramInt + ", msg=" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Hippy: initHippy error statusCode=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", msg=");
+    localStringBuilder.append(paramString);
+    QLog.d("BaseHippyFragment", 1, localStringBuilder.toString());
   }
   
   public void onSuccess()
@@ -29,7 +34,7 @@ class BaseHippyFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.fragment.BaseHippyFragment.2
  * JD-Core Version:    0.7.0.1
  */

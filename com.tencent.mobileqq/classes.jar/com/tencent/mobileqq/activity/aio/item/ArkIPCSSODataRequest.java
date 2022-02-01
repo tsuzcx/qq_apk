@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.item;
 
 import com.tencent.ark.open.delegate.ArkDelegateManager;
-import com.tencent.ark.open.delegate.IArkDelegateNet;
+import com.tencent.ark.open.delegate.IArkDelegateSSO;
 import java.lang.ref.WeakReference;
 
 class ArkIPCSSODataRequest
@@ -12,20 +12,20 @@ class ArkIPCSSODataRequest
     super(null, paramString);
   }
   
-  protected boolean a(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  protected boolean a(ArkSSODataRequest.Request paramRequest, int paramInt)
   {
     WeakReference localWeakReference = new WeakReference(this);
-    IArkDelegateNet localIArkDelegateNet = ArkDelegateManager.getInstance().getNetDelegate();
-    if (localIArkDelegateNet == null) {
+    IArkDelegateSSO localIArkDelegateSSO = ArkDelegateManager.getInstance().getSSODelegate();
+    if (localIArkDelegateSSO == null) {
       return false;
     }
-    localIArkDelegateNet.sendAppMsg(paramString1, paramString2, this.a, paramInt2, new ArkIPCSSODataRequest.1(this, localWeakReference));
+    localIArkDelegateSSO.send(paramRequest.a, paramRequest.b, paramInt, new ArkIPCSSODataRequest.1(this, localWeakReference, paramRequest));
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkIPCSSODataRequest
  * JD-Core Version:    0.7.0.1
  */

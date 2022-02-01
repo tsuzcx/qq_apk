@@ -1,10 +1,10 @@
 package com.tencent.biz.webviewplugin;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
+import com.tencent.mobileqq.emosm.OnRemoteRespObserver;
 
 class HotchatPlugin$6
-  extends Client.OnRemoteRespObserver
+  extends OnRemoteRespObserver
 {
   HotchatPlugin$6(HotchatPlugin paramHotchatPlugin) {}
   
@@ -31,7 +31,7 @@ class HotchatPlugin$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.HotchatPlugin.6
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import com.tencent.mobileqq.debug.io.util.NativeMethodHook;
 public class FileIOMonitor
   extends Monitor
 {
-  static FileIOMonitor jdField_a_of_type_ComTencentQqperfDebugFileIOMonitor = null;
+  static FileIOMonitor jdField_a_of_type_ComTencentQqperfDebugFileIOMonitor;
   private int jdField_a_of_type_Int;
   private NativeMethodHook jdField_a_of_type_ComTencentMobileqqDebugIoUtilNativeMethodHook = null;
   private String jdField_a_of_type_JavaLangString = null;
@@ -18,7 +18,7 @@ public class FileIOMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.debug.FileIOMonitor
  * JD-Core Version:    0.7.0.1
  */

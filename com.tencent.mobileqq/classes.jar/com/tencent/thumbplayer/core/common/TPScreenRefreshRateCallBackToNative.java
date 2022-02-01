@@ -33,13 +33,16 @@ public class TPScreenRefreshRateCallBackToNative
   
   public void onScreenRefreshRateChanged(float paramFloat)
   {
-    TPNativeLog.printLog(2, "TPScreenRefreshRateCallBack", "onScreenRefreshRateChanged refreshRate:" + paramFloat);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onScreenRefreshRateChanged refreshRate:");
+    localStringBuilder.append(paramFloat);
+    TPNativeLog.printLog(2, "TPScreenRefreshRateCallBack", localStringBuilder.toString());
     _onScreenRefreshRateChanged(paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPScreenRefreshRateCallBackToNative
  * JD-Core Version:    0.7.0.1
  */

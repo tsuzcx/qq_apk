@@ -21,14 +21,15 @@ public final class RoomidRouteConfig
   
   public static RoomidRouteConfig[] a()
   {
-    if (jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoRoomidRouteConfig == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoRoomidRouteConfig == null) {
-        jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoRoomidRouteConfig = new RoomidRouteConfig[0];
+    if (jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoRoomidRouteConfig == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoRoomidRouteConfig == null) {
+          jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoRoomidRouteConfig = new RoomidRouteConfig[0];
+        }
       }
-      return jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoRoomidRouteConfig;
     }
+    return jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoRoomidRouteConfig;
   }
   
   public RoomidRouteConfig a()
@@ -45,51 +46,48 @@ public final class RoomidRouteConfig
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
+      if (i == 0) {
+        break;
+      }
       int j;
       long[] arrayOfLong;
-      switch (i)
+      if (i != 8)
       {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 8);
-        if (this.jdField_a_of_type_ArrayOfLong == null) {}
-        for (i = 0;; i = this.jdField_a_of_type_ArrayOfLong.length)
+        if (i != 10)
         {
-          arrayOfLong = new long[j + i];
-          j = i;
-          if (i != 0)
+          if (i != 18)
           {
-            System.arraycopy(this.jdField_a_of_type_ArrayOfLong, 0, arrayOfLong, 0, i);
-            j = i;
+            if (i != 26)
+            {
+              if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+                return this;
+              }
+            }
+            else {
+              this.b = paramCodedInputByteBufferNano.readString();
+            }
           }
-          while (j < arrayOfLong.length - 1)
+          else {
+            this.jdField_a_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+          }
+        }
+        else
+        {
+          int k = paramCodedInputByteBufferNano.pushLimit(paramCodedInputByteBufferNano.readRawVarint32());
+          i = paramCodedInputByteBufferNano.getPosition();
+          j = 0;
+          while (paramCodedInputByteBufferNano.getBytesUntilLimit() > 0)
           {
-            arrayOfLong[j] = paramCodedInputByteBufferNano.readUInt64();
-            paramCodedInputByteBufferNano.readTag();
+            paramCodedInputByteBufferNano.readUInt64();
             j += 1;
           }
-        }
-        arrayOfLong[j] = paramCodedInputByteBufferNano.readUInt64();
-        this.jdField_a_of_type_ArrayOfLong = arrayOfLong;
-        break;
-      case 10: 
-        int k = paramCodedInputByteBufferNano.pushLimit(paramCodedInputByteBufferNano.readRawVarint32());
-        i = paramCodedInputByteBufferNano.getPosition();
-        j = 0;
-        while (paramCodedInputByteBufferNano.getBytesUntilLimit() > 0)
-        {
-          paramCodedInputByteBufferNano.readUInt64();
-          j += 1;
-        }
-        paramCodedInputByteBufferNano.rewindToPosition(i);
-        if (this.jdField_a_of_type_ArrayOfLong == null) {}
-        for (i = 0;; i = this.jdField_a_of_type_ArrayOfLong.length)
-        {
+          paramCodedInputByteBufferNano.rewindToPosition(i);
+          arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+          if (arrayOfLong == null) {
+            i = 0;
+          } else {
+            i = arrayOfLong.length;
+          }
           arrayOfLong = new long[j + i];
           j = i;
           if (i != 0)
@@ -102,53 +100,87 @@ public final class RoomidRouteConfig
             arrayOfLong[j] = paramCodedInputByteBufferNano.readUInt64();
             j += 1;
           }
+          this.jdField_a_of_type_ArrayOfLong = arrayOfLong;
+          paramCodedInputByteBufferNano.popLimit(k);
         }
-        this.jdField_a_of_type_ArrayOfLong = arrayOfLong;
-        paramCodedInputByteBufferNano.popLimit(k);
-        break;
-      case 18: 
-        this.jdField_a_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
-        break;
       }
-      this.b = paramCodedInputByteBufferNano.readString();
+      else
+      {
+        j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 8);
+        arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+        if (arrayOfLong == null) {
+          i = 0;
+        } else {
+          i = arrayOfLong.length;
+        }
+        arrayOfLong = new long[j + i];
+        j = i;
+        if (i != 0)
+        {
+          System.arraycopy(this.jdField_a_of_type_ArrayOfLong, 0, arrayOfLong, 0, i);
+          j = i;
+        }
+        while (j < arrayOfLong.length - 1)
+        {
+          arrayOfLong[j] = paramCodedInputByteBufferNano.readUInt64();
+          paramCodedInputByteBufferNano.readTag();
+          j += 1;
+        }
+        arrayOfLong[j] = paramCodedInputByteBufferNano.readUInt64();
+        this.jdField_a_of_type_ArrayOfLong = arrayOfLong;
+      }
     }
+    return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
-    int i = 0;
     int k = super.computeSerializedSize();
-    if ((this.jdField_a_of_type_ArrayOfLong != null) && (this.jdField_a_of_type_ArrayOfLong.length > 0))
+    long[] arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+    int i = k;
+    if (arrayOfLong != null)
     {
-      j = 0;
-      while (i < this.jdField_a_of_type_ArrayOfLong.length)
+      i = k;
+      if (arrayOfLong.length > 0)
       {
-        j += CodedOutputByteBufferNano.computeUInt64SizeNoTag(this.jdField_a_of_type_ArrayOfLong[i]);
-        i += 1;
+        i = 0;
+        j = 0;
+        for (;;)
+        {
+          arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+          if (i >= arrayOfLong.length) {
+            break;
+          }
+          j += CodedOutputByteBufferNano.computeUInt64SizeNoTag(arrayOfLong[i]);
+          i += 1;
+        }
+        i = k + j + arrayOfLong.length * 1;
       }
     }
-    for (int j = k + j + this.jdField_a_of_type_ArrayOfLong.length * 1;; j = k)
-    {
-      i = j;
-      if (!this.jdField_a_of_type_JavaLangString.equals("")) {
-        i = j + CodedOutputByteBufferNano.computeStringSize(2, this.jdField_a_of_type_JavaLangString);
-      }
-      j = i;
-      if (!this.b.equals("")) {
-        j = i + CodedOutputByteBufferNano.computeStringSize(3, this.b);
-      }
-      return j;
+    int j = i;
+    if (!this.jdField_a_of_type_JavaLangString.equals("")) {
+      j = i + CodedOutputByteBufferNano.computeStringSize(2, this.jdField_a_of_type_JavaLangString);
     }
+    i = j;
+    if (!this.b.equals("")) {
+      i = j + CodedOutputByteBufferNano.computeStringSize(3, this.b);
+    }
+    return i;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if ((this.jdField_a_of_type_ArrayOfLong != null) && (this.jdField_a_of_type_ArrayOfLong.length > 0))
+    long[] arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+    if ((arrayOfLong != null) && (arrayOfLong.length > 0))
     {
       int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfLong.length)
+      for (;;)
       {
-        paramCodedOutputByteBufferNano.writeUInt64(1, this.jdField_a_of_type_ArrayOfLong[i]);
+        arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+        if (i >= arrayOfLong.length) {
+          break;
+        }
+        paramCodedOutputByteBufferNano.writeUInt64(1, arrayOfLong[i]);
         i += 1;
       }
     }
@@ -163,7 +195,7 @@ public final class RoomidRouteConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.iliveRoomDispatch.iliveRoomDispatch.nano.RoomidRouteConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -11,18 +11,20 @@ class AVGameQuestionClassSelectDialog$1
   public boolean handleMessage(Message paramMessage)
   {
     paramMessage = this.a;
-    if (AVGameQuestionClassSelectDialog.a(this.a) > 0) {}
-    for (int i = AVGameQuestionClassSelectDialog.a(this.a) - 1;; i = 0)
-    {
-      AVGameQuestionClassSelectDialog.a(paramMessage, i);
-      AVGameQuestionClassSelectDialog.a(this.a);
-      return true;
+    int i;
+    if (AVGameQuestionClassSelectDialog.a(paramMessage) > 0) {
+      i = AVGameQuestionClassSelectDialog.a(this.a) - 1;
+    } else {
+      i = 0;
     }
+    AVGameQuestionClassSelectDialog.a(paramMessage, i);
+    AVGameQuestionClassSelectDialog.a(this.a);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.ui.AVGameQuestionClassSelectDialog.1
  * JD-Core Version:    0.7.0.1
  */

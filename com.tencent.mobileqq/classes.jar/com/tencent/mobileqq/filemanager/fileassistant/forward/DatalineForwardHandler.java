@@ -8,6 +8,7 @@ import android.text.SpannableString;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.filemanager.api.IFMSettings;
 import com.tencent.mobileqq.filemanager.fileassistant.util.DatalineDeviceChooseModel;
 import com.tencent.mobileqq.filemanager.fileassistant.util.QFileAssistantUtils;
 import com.tencent.mobileqq.filemanager.settings.FMSettings;
@@ -41,39 +42,51 @@ public class DatalineForwardHandler
   
   private String a(String paramString)
   {
-    if (!FileUtils.b(paramString)) {
-      QLog.i("DatalineForwardHandler", 1, "copyForwardFile:error. filePath[" + paramString + "]");
-    }
-    String str;
-    do
+    if (!FileUtils.fileExistsAndNotEmpty(paramString))
     {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("copyForwardFile:error. filePath[");
+      ((StringBuilder)localObject1).append(paramString);
+      ((StringBuilder)localObject1).append("]");
+      QLog.i("DatalineForwardHandler", 1, ((StringBuilder)localObject1).toString());
       return paramString;
-      str = FileManagerUtil.a(paramString);
-      long l = FileUtils.a(paramString);
-      if (l > 5242880L)
-      {
-        QLog.i("DatalineForwardHandler", 1, "copyForwardFile:error. fileSize[" + l + "]");
-        return paramString;
-      }
-      if ((float)l > FileUtils.c())
-      {
-        QLog.i("DatalineForwardHandler", 1, "copyForwardFile:error. file space not enough");
-        return paramString;
-      }
-      str = FileManagerUtil.b(FMSettings.a().b() + str);
-    } while (!FileUtils.d(paramString, str));
-    return str;
+    }
+    Object localObject1 = FileManagerUtil.a(paramString);
+    long l = FileUtils.getFileSizes(paramString);
+    if (l > 5242880L)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("copyForwardFile:error. fileSize[");
+      ((StringBuilder)localObject1).append(l);
+      ((StringBuilder)localObject1).append("]");
+      QLog.i("DatalineForwardHandler", 1, ((StringBuilder)localObject1).toString());
+      return paramString;
+    }
+    if ((float)l > FileUtils.getAvailableExternalMemorySize())
+    {
+      QLog.i("DatalineForwardHandler", 1, "copyForwardFile:error. file space not enough");
+      return paramString;
+    }
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(FMSettings.a().getDefaultRecvPath());
+    ((StringBuilder)localObject2).append((String)localObject1);
+    localObject2 = FileManagerUtil.b(((StringBuilder)localObject2).toString());
+    localObject1 = paramString;
+    if (FileUtils.copyFile(paramString, (String)localObject2)) {
+      localObject1 = localObject2;
+    }
+    return localObject1;
   }
   
   private void b(Intent paramIntent)
   {
-    if (paramIntent.getBooleanExtra("dataline_share_finish", false)) {}
-    Bundle localBundle;
-    do
-    {
+    if (paramIntent.getBooleanExtra("dataline_share_finish", false)) {
       return;
-      localBundle = paramIntent.getExtras();
-    } while (localBundle == null);
+    }
+    Bundle localBundle = paramIntent.getExtras();
+    if (localBundle == null) {
+      return;
+    }
     String str = paramIntent.getType();
     if ((str.startsWith("text")) && (!localBundle.containsKey("android.intent.extra.STREAM")))
     {
@@ -91,12 +104,12 @@ public class DatalineForwardHandler
     paramIntent = a(paramIntent);
     if (paramIntent.isEmpty())
     {
-      b(this.jdField_a_of_type_AndroidContentContext.getString(2131693763));
+      b(this.jdField_a_of_type_AndroidContentContext.getString(2131693716));
       return;
     }
     if (paramIntent.size() > 50)
     {
-      b(this.jdField_a_of_type_AndroidContentContext.getString(2131693763));
+      b(this.jdField_a_of_type_AndroidContentContext.getString(2131693716));
       return;
     }
     a(paramIntent);
@@ -105,17 +118,23 @@ public class DatalineForwardHandler
   protected List<Uri> a(Intent paramIntent)
   {
     Object localObject = paramIntent.getExtras();
-    String str = paramIntent.getAction();
-    paramIntent = new ArrayList();
-    if (str.equals("android.intent.action.SEND"))
+    paramIntent = paramIntent.getAction();
+    ArrayList localArrayList = new ArrayList();
+    if (paramIntent.equals("android.intent.action.SEND"))
     {
       localObject = (Uri)((Bundle)localObject).get("android.intent.extra.STREAM");
-      if (localObject != null) {
-        paramIntent.add(localObject);
+      paramIntent = localArrayList;
+      if (localObject != null)
+      {
+        localArrayList.add(localObject);
+        return localArrayList;
       }
-      return paramIntent;
     }
-    return (ArrayList)((Bundle)localObject).get("android.intent.extra.STREAM");
+    else
+    {
+      paramIntent = (ArrayList)((Bundle)localObject).get("android.intent.extra.STREAM");
+    }
+    return paramIntent;
   }
   
   public void a(Intent paramIntent)
@@ -130,64 +149,74 @@ public class DatalineForwardHandler
   
   protected void a(List<Uri> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if (paramList != null)
     {
-      String str = a((Uri)paramList.next());
-      if (FileUtils.b(str)) {
-        localArrayList.add(str);
+      if (paramList.size() == 0) {
+        return;
       }
+      ArrayList localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        String str = a((Uri)paramList.next());
+        if (FileUtils.fileExistsAndNotEmpty(str)) {
+          localArrayList.add(str);
+        }
+      }
+      b(localArrayList);
     }
-    b(localArrayList);
   }
   
   protected void a(List<String> paramList, int paramInt)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if (paramList != null)
     {
-      String str = (String)paramList.next();
-      if (FileUtils.b(str)) {
-        localArrayList.add(str);
+      if (paramList.size() == 0) {
+        return;
       }
+      ArrayList localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        String str = (String)paramList.next();
+        if (FileUtils.fileExistsAndNotEmpty(str)) {
+          localArrayList.add(str);
+        }
+      }
+      ThreadManagerV2.executeOnSubThread(new DatalineForwardHandler.SendFileTask(this, localArrayList, paramInt));
     }
-    ThreadManagerV2.executeOnSubThread(new DatalineForwardHandler.SendFileTask(this, localArrayList, paramInt));
   }
   
   protected void b(String paramString)
   {
     DatalineForwardHandler.2 local2 = new DatalineForwardHandler.2(this);
-    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 233, this.jdField_a_of_type_AndroidContentContext.getString(2131719900), paramString, 2131693747, 2131693747, local2, null).show();
+    Context localContext = this.jdField_a_of_type_AndroidContentContext;
+    DialogUtil.a(localContext, 233, localContext.getString(2131719632), paramString, 2131693700, 2131693700, local2, null).show();
   }
   
   protected void b(List<String> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if (paramList != null)
     {
-      String str = (String)paramList.next();
-      if (FileUtils.b(str)) {
-        localArrayList.add(str);
+      if (paramList.size() == 0) {
+        return;
       }
+      ArrayList localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        String str = (String)paramList.next();
+        if (FileUtils.fileExistsAndNotEmpty(str)) {
+          localArrayList.add(str);
+        }
+      }
+      DatalineDeviceChooseModel.a(localArrayList).a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new DatalineForwardHandler.1(this, localArrayList));
     }
-    DatalineDeviceChooseModel.a(localArrayList).a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new DatalineForwardHandler.1(this, localArrayList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.forward.DatalineForwardHandler
  * JD-Core Version:    0.7.0.1
  */

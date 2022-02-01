@@ -45,15 +45,17 @@ public abstract interface ITabFrameController
   
   public abstract boolean isFragmentNotMatch();
   
-  public abstract boolean isLebaHasRedPoint(HashMap<String, View> paramHashMap);
-  
   public abstract int mainTabID2TabIndex(Bundle paramBundle);
   
   public abstract void onDrawCompleteAfter(FrameFragment paramFrameFragment);
   
+  public abstract void onFragmentDrawerClosed(FrameFragment paramFrameFragment, int paramInt1, int paramInt2);
+  
   public abstract void onResumeAfter(FrameFragment paramFrameFragment);
   
   public abstract void onResumeUpdateSound(FrameFragment paramFrameFragment);
+  
+  public abstract void onTouchDragChange(boolean paramBoolean);
   
   public abstract void revertTabIconChange(FrameFragment paramFrameFragment);
   
@@ -77,7 +79,7 @@ public abstract interface ITabFrameController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.ITabFrameController
  * JD-Core Version:    0.7.0.1
  */

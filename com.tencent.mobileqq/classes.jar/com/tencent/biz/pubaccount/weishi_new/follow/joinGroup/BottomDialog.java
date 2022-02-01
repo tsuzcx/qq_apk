@@ -14,10 +14,9 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.TranslateAnimation;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class BottomDialog
-  extends ReportDialog
+  extends Dialog
 {
   private Context jdField_a_of_type_AndroidContentContext;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
@@ -28,7 +27,7 @@ public class BottomDialog
   
   public BottomDialog(@NonNull Context paramContext)
   {
-    super(paramContext, 2131755078);
+    super(paramContext, 2131755240);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
@@ -50,11 +49,11 @@ public class BottomDialog
   
   private void a(View paramView)
   {
-    this.b = paramView.findViewById(2131365255);
-    this.c = paramView.findViewById(2131363419);
-    this.c.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165361));
+    this.b = paramView.findViewById(2131365132);
+    this.c = paramView.findViewById(2131363349);
+    this.c.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165329));
     this.c.setOnClickListener(new BottomDialog.1(this));
-    paramView.findViewById(2131364815).setOnClickListener(new BottomDialog.2(this));
+    paramView.findViewById(2131364703).setOnClickListener(new BottomDialog.2(this));
   }
   
   private void b()
@@ -119,7 +118,7 @@ public class BottomDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.follow.joinGroup.BottomDialog
  * JD-Core Version:    0.7.0.1
  */

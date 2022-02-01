@@ -23,31 +23,72 @@ class LoginInfoActivity$12
     {
       if (QLog.isColorLevel())
       {
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "OnCheckDevLockStatus ret = " + paramInt);
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo devSetup:" + paramDevlockInfo.DevSetup + " countryCode:" + paramDevlockInfo.CountryCode + " mobile:" + paramDevlockInfo.Mobile + " MbItemSmsCodeStatus:" + paramDevlockInfo.MbItemSmsCodeStatus + " TimeLimit:" + paramDevlockInfo.TimeLimit + " AvailableMsgCount:" + paramDevlockInfo.AvailableMsgCount + " AllowSet:" + paramDevlockInfo.AllowSet);
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo.ProtectIntro:" + paramDevlockInfo.ProtectIntro + "  info.MbGuideType:" + paramDevlockInfo.MbGuideType);
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo.MbGuideMsg:" + paramDevlockInfo.MbGuideMsg);
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo.MbGuideInfoType:" + paramDevlockInfo.MbGuideInfoType);
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo.MbGuideInfo:" + paramDevlockInfo.MbGuideInfo);
+        paramWUserSigInfo = new StringBuilder();
+        paramWUserSigInfo.append("OnCheckDevLockStatus ret = ");
+        paramWUserSigInfo.append(paramInt);
+        QLog.d("LoginInfoActivity.AccDevSec", 2, paramWUserSigInfo.toString());
+        paramWUserSigInfo = new StringBuilder();
+        paramWUserSigInfo.append("DevlockInfo devSetup:");
+        paramWUserSigInfo.append(paramDevlockInfo.DevSetup);
+        paramWUserSigInfo.append(" countryCode:");
+        paramWUserSigInfo.append(paramDevlockInfo.CountryCode);
+        paramWUserSigInfo.append(" mobile:");
+        paramWUserSigInfo.append(paramDevlockInfo.Mobile);
+        paramWUserSigInfo.append(" MbItemSmsCodeStatus:");
+        paramWUserSigInfo.append(paramDevlockInfo.MbItemSmsCodeStatus);
+        paramWUserSigInfo.append(" TimeLimit:");
+        paramWUserSigInfo.append(paramDevlockInfo.TimeLimit);
+        paramWUserSigInfo.append(" AvailableMsgCount:");
+        paramWUserSigInfo.append(paramDevlockInfo.AvailableMsgCount);
+        paramWUserSigInfo.append(" AllowSet:");
+        paramWUserSigInfo.append(paramDevlockInfo.AllowSet);
+        QLog.d("LoginInfoActivity.AccDevSec", 2, paramWUserSigInfo.toString());
+        paramWUserSigInfo = new StringBuilder();
+        paramWUserSigInfo.append("DevlockInfo.ProtectIntro:");
+        paramWUserSigInfo.append(paramDevlockInfo.ProtectIntro);
+        paramWUserSigInfo.append("  info.MbGuideType:");
+        paramWUserSigInfo.append(paramDevlockInfo.MbGuideType);
+        QLog.d("LoginInfoActivity.AccDevSec", 2, paramWUserSigInfo.toString());
+        paramWUserSigInfo = new StringBuilder();
+        paramWUserSigInfo.append("DevlockInfo.MbGuideMsg:");
+        paramWUserSigInfo.append(paramDevlockInfo.MbGuideMsg);
+        QLog.d("LoginInfoActivity.AccDevSec", 2, paramWUserSigInfo.toString());
+        paramWUserSigInfo = new StringBuilder();
+        paramWUserSigInfo.append("DevlockInfo.MbGuideInfoType:");
+        paramWUserSigInfo.append(paramDevlockInfo.MbGuideInfoType);
+        QLog.d("LoginInfoActivity.AccDevSec", 2, paramWUserSigInfo.toString());
+        paramWUserSigInfo = new StringBuilder();
+        paramWUserSigInfo.append("DevlockInfo.MbGuideInfo:");
+        paramWUserSigInfo.append(paramDevlockInfo.MbGuideInfo);
+        QLog.d("LoginInfoActivity.AccDevSec", 2, paramWUserSigInfo.toString());
       }
       DevlockPhoneStatus.a().a(paramDevlockInfo.TransferInfo);
       LoginInfoActivity.access$202(this.a, paramDevlockInfo);
-      LoginInfoActivity.access$300(this.a, LoginInfoActivity.access$200(this.a));
-      LoginInfoActivity.access$2500(this.a, LoginInfoActivity.access$200(this.a));
+      paramWUserSigInfo = this.a;
+      LoginInfoActivity.access$300(paramWUserSigInfo, LoginInfoActivity.access$200(paramWUserSigInfo));
+      paramWUserSigInfo = this.a;
+      LoginInfoActivity.access$2500(paramWUserSigInfo, LoginInfoActivity.access$200(paramWUserSigInfo));
       return;
     }
     if (QLog.isColorLevel())
     {
-      QLog.d("LoginInfoActivity.AccDevSec", 2, "OnCheckDevLockStatus ret = " + paramInt);
-      if (paramErrMsg != null) {
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "OnCheckDevLockStatus errMsg:" + paramErrMsg.getMessage());
+      paramWUserSigInfo = new StringBuilder();
+      paramWUserSigInfo.append("OnCheckDevLockStatus ret = ");
+      paramWUserSigInfo.append(paramInt);
+      QLog.d("LoginInfoActivity.AccDevSec", 2, paramWUserSigInfo.toString());
+      if (paramErrMsg != null)
+      {
+        paramWUserSigInfo = new StringBuilder();
+        paramWUserSigInfo.append("OnCheckDevLockStatus errMsg:");
+        paramWUserSigInfo.append(paramErrMsg.getMessage());
+        QLog.d("LoginInfoActivity.AccDevSec", 2, paramWUserSigInfo.toString());
       }
       if (paramDevlockInfo == null) {
         QLog.d("LoginInfoActivity.AccDevSec", 2, "OnCheckDevLockStatus DevlockInfo is null");
       }
     }
     LoginInfoActivity.access$2600(this.a);
-    paramDevlockInfo = this.a.getString(2131692094);
+    paramDevlockInfo = this.a.getString(2131692013);
     paramWUserSigInfo = paramDevlockInfo;
     if (paramErrMsg != null)
     {
@@ -61,7 +102,7 @@ class LoginInfoActivity$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginInfoActivity.12
  * JD-Core Version:    0.7.0.1
  */

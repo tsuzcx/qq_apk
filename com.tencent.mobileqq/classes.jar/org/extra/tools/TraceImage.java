@@ -11,12 +11,18 @@ public class TraceImage
   {
     Bitmap localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
     localBitmap.copyPixelsFromBuffer(paramByteBuffer);
-    Log.i(paramString, "Image(width = " + localBitmap.getWidth() + ", height = " + localBitmap.getHeight() + ")");
+    paramByteBuffer = new StringBuilder();
+    paramByteBuffer.append("Image(width = ");
+    paramByteBuffer.append(localBitmap.getWidth());
+    paramByteBuffer.append(", height = ");
+    paramByteBuffer.append(localBitmap.getHeight());
+    paramByteBuffer.append(")");
+    Log.i(paramString, paramByteBuffer.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.extra.tools.TraceImage
  * JD-Core Version:    0.7.0.1
  */

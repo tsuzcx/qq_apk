@@ -17,7 +17,10 @@ public class WSPlayerWrapHelper
   private boolean a()
   {
     int i = WSExpABTestManager.a().a();
-    WSLog.d("WS_VIDEO_PLAYER", "[WSPlayerWrapHelper.java][isSuperPlayer] playerType:" + i);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSPlayerWrapHelper.java][isSuperPlayer] playerType:");
+    localStringBuilder.append(i);
+    WSLog.d("WS_VIDEO_PLAYER", localStringBuilder.toString());
     return i == 1;
   }
   
@@ -39,7 +42,7 @@ public class WSPlayerWrapHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.wrapper.WSPlayerWrapHelper
  * JD-Core Version:    0.7.0.1
  */

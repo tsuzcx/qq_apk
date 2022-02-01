@@ -23,14 +23,18 @@ public class StickerRecCacheEntity
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    if (paramObject == null) {
       return false;
-      if (paramObject == this) {
-        return true;
-      }
-    } while ((getClass() != paramObject.getClass()) || (!(paramObject instanceof StickerRecCacheEntity)));
+    }
+    if (paramObject == this) {
+      return true;
+    }
+    if (getClass() != paramObject.getClass()) {
+      return false;
+    }
+    if (!(paramObject instanceof StickerRecCacheEntity)) {
+      return false;
+    }
     paramObject = (StickerRecCacheEntity)paramObject;
     return this.md5.equals(paramObject.md5);
   }
@@ -44,7 +48,7 @@ public class StickerRecCacheEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecCacheEntity
  * JD-Core Version:    0.7.0.1
  */

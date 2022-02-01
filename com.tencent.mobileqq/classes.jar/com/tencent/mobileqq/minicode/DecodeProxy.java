@@ -2,9 +2,6 @@ package com.tencent.mobileqq.minicode;
 
 public class DecodeProxy
 {
-  public static final int MODE_FAST = 0;
-  public static final int MODE_SLOW = 1;
-  
   public static native boolean checkQRExist(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3);
   
   public static native String getVersion();
@@ -15,7 +12,7 @@ public class DecodeProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.minicode.DecodeProxy
  * JD-Core Version:    0.7.0.1
  */

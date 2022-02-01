@@ -21,7 +21,6 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Map;
 import mqq.os.MqqHandler;
@@ -34,22 +33,20 @@ public class WSReportDc00898
   
   public static String a()
   {
-    String str = "Other";
-    int i = NetworkUtil.a(BaseApplicationImpl.getApplication());
+    int i = NetworkUtil.getSystemNetwork(BaseApplicationImpl.getApplication());
     if (i == 1) {
-      str = "WiFi";
+      return "WiFi";
     }
-    do
-    {
-      return str;
-      if (i == 2) {
-        return "2G";
-      }
-      if (i == 3) {
-        return "3G";
-      }
-    } while (i != 4);
-    return "4G";
+    if (i == 2) {
+      return "2G";
+    }
+    if (i == 3) {
+      return "3G";
+    }
+    if (i == 4) {
+      return "4G";
+    }
+    return "Other";
   }
   
   private static String a(int paramInt)
@@ -65,146 +62,175 @@ public class WSReportDc00898
   
   public static String a(int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    boolean bool = true;
     if (paramstSimpleMetaFeed == null) {
       return "";
     }
     stWaterFallCardStyle localstWaterFallCardStyle = paramstSimpleMetaFeed.waterFallCardStyle;
     HashMap localHashMap = new HashMap();
+    boolean bool = true;
     localHashMap.put("position", Integer.valueOf(paramInt + 1));
-    if (localstWaterFallCardStyle != null)
-    {
+    if (localstWaterFallCardStyle != null) {
       paramInt = localstWaterFallCardStyle.cardType;
-      localHashMap.put("cardtype", Integer.valueOf(paramInt));
-      localHashMap.put("feedid", paramstSimpleMetaFeed.id);
-      localHashMap.put("poolType", Integer.valueOf(paramstSimpleMetaFeed.videoPoolType));
-      if (localstWaterFallCardStyle == null) {
-        break label192;
-      }
-      paramInt = localstWaterFallCardStyle.ratioW;
-      label94:
-      localHashMap.put("ratioW", Integer.valueOf(paramInt));
-      if (localstWaterFallCardStyle == null) {
-        break label197;
-      }
-      paramInt = localstWaterFallCardStyle.ratioH;
-      label115:
-      localHashMap.put("ratioH", Integer.valueOf(paramInt));
-      if ((localstWaterFallCardStyle == null) || (!localstWaterFallCardStyle.isFullSpan)) {
-        break label202;
-      }
-    }
-    for (;;)
-    {
-      localHashMap.put("isFullSpan", Boolean.valueOf(bool));
-      localHashMap.put("dynamic_cover", Integer.valueOf(0));
-      localHashMap.put("cover_type", WeishiUtils.a(paramstSimpleMetaFeed));
-      return new JSONObject(localHashMap).toString();
+    } else {
       paramInt = 1;
-      break;
-      label192:
+    }
+    localHashMap.put("cardtype", Integer.valueOf(paramInt));
+    localHashMap.put("feedid", paramstSimpleMetaFeed.id);
+    localHashMap.put("poolType", Integer.valueOf(paramstSimpleMetaFeed.videoPoolType));
+    if (localstWaterFallCardStyle != null) {
+      paramInt = localstWaterFallCardStyle.ratioW;
+    } else {
       paramInt = 0;
-      break label94;
-      label197:
+    }
+    localHashMap.put("ratioW", Integer.valueOf(paramInt));
+    if (localstWaterFallCardStyle != null) {
+      paramInt = localstWaterFallCardStyle.ratioH;
+    } else {
       paramInt = 0;
-      break label115;
-      label202:
+    }
+    localHashMap.put("ratioH", Integer.valueOf(paramInt));
+    if ((localstWaterFallCardStyle == null) || (!localstWaterFallCardStyle.isFullSpan)) {
       bool = false;
     }
+    localHashMap.put("isFullSpan", Boolean.valueOf(bool));
+    localHashMap.put("dynamic_cover", Integer.valueOf(0));
+    localHashMap.put("cover_type", WeishiUtils.a(paramstSimpleMetaFeed));
+    return new JSONObject(localHashMap).toString();
   }
   
   public static String a(int paramInt, boolean paramBoolean)
   {
-    String str1 = "";
-    String str2 = "";
+    String str3 = "popup_install";
+    String str4 = "popup_dl_fin";
+    String str1;
+    String str2;
+    if (paramInt != 300) {
+      if (paramInt != 302) {
+        if (paramInt != 501) {
+          if (paramInt != 401)
+          {
+            str1 = str3;
+            str2 = str4;
+            if (paramInt == 402) {
+              break label320;
+            }
+            str1 = str3;
+            str2 = str4;
+          }
+        }
+      }
+    }
     switch (paramInt)
     {
+    default: 
+      switch (paramInt)
+      {
+      default: 
+        switch (paramInt)
+        {
+        default: 
+          str1 = "";
+          str2 = str1;
+          break;
+        case 603: 
+          str2 = "home_ps_menu_dl_fin";
+          str1 = "home_ps_menu_install";
+          break;
+        case 602: 
+          str2 = "home_msg_menu_dl_fin";
+          str1 = "home_msg_menu_install";
+          break;
+        case 601: 
+          str2 = "home_msg_bubble_dl_fin";
+          str1 = "home_msg_bubble_install";
+        }
+        break;
+      case 101: 
+      case 102: 
+      case 103: 
+        str2 = "msg_dl_fin";
+        str1 = "msg_install";
+        break;
+      case 100: 
+      case 104: 
+        str2 = "feeds_dl_ws_fin";
+        str1 = "feeds_dl_ws_install";
+      }
+      break;
+    case 9: 
+    case 10: 
+    case 11: 
+      str2 = "popup_dl_ws_fin";
+      str1 = "popup_ws_install";
+      break;
+    case 8: 
+      str2 = "lens_dl_ws_fin";
+      str1 = "lens_install";
+      break;
+    case 4: 
+      str2 = "videolay_tag_dl_fin";
+      str1 = "videolay_tag_install";
+      break;
+    case 3: 
+      str2 = "videoplay_title_dl_fin";
+      str1 = "videoplay_title_install";
+      break;
+    case 2: 
+      str2 = "follow_dl_fin";
+      str1 = "follow_install";
+      break;
+    case 1: 
+      str2 = "videolay_prof_dl_fin";
+      str1 = "videolay_prof_install";
+      break;
+      str2 = "feeds_popup_dl_fin";
+      str1 = "feeds_popup_install";
+      break;
+      str2 = "feeds_opcard_dl_ws_fin";
+      str1 = "feeds_opcard_install_ws";
+      break;
+      str2 = "ftest_dl_ws_fin";
+      str1 = "ftest_dl_ws_install";
+      break;
+      str2 = "dtest_dl_fin";
+      str1 = "dtest_dl_install";
     }
-    while (paramBoolean)
-    {
-      return str1;
-      str1 = "videolay_prof_dl_fin";
-      str2 = "videolay_prof_install";
-      continue;
-      str1 = "videoplay_title_dl_fin";
-      str2 = "videoplay_title_install";
-      continue;
-      str1 = "popup_dl_fin";
-      str2 = "popup_install";
-      continue;
-      str1 = "popup_dl_ws_fin";
-      str2 = "popup_ws_install";
-      continue;
-      str1 = "follow_dl_fin";
-      str2 = "follow_install";
-      continue;
-      str1 = "videolay_tag_dl_fin";
-      str2 = "videolay_tag_install";
-      continue;
-      str1 = "msg_dl_fin";
-      str2 = "msg_install";
-      continue;
-      str1 = "feeds_dl_ws_fin";
-      str2 = "feeds_dl_ws_install";
-      continue;
-      str1 = "dtest_dl_fin";
-      str2 = "dtest_dl_install";
-      continue;
-      str1 = "lens_dl_ws_fin";
-      str2 = "lens_install";
-      continue;
-      str1 = "feeds_popup_dl_fin";
-      str2 = "feeds_popup_install";
-      continue;
-      str1 = "popup_dl_fin";
-      str2 = "popup_install";
-      continue;
-      str1 = "feeds_opcard_dl_ws_fin";
-      str2 = "feeds_opcard_install_ws";
-      continue;
-      str1 = "ftest_dl_ws_fin";
-      str2 = "ftest_dl_ws_install";
-      continue;
-      str1 = "home_msg_bubble_dl_fin";
-      str2 = "home_msg_bubble_install";
-      continue;
-      str1 = "home_msg_menu_dl_fin";
-      str2 = "home_msg_menu_install";
-      continue;
-      str1 = "home_ps_menu_dl_fin";
-      str2 = "home_ps_menu_install";
+    label320:
+    if (paramBoolean) {
+      return str2;
     }
-    return str2;
+    return str1;
   }
   
   public static String a(WSRedDotPushMsg paramWSRedDotPushMsg)
   {
-    int i = 0;
     HashMap localHashMap = new HashMap();
+    int i = 0;
+    String str2 = "0";
     String str1;
     boolean bool;
     if (paramWSRedDotPushMsg != null)
     {
-      str1 = paramWSRedDotPushMsg.mFeedIds;
-      String str2 = paramWSRedDotPushMsg.mPushId;
+      str2 = paramWSRedDotPushMsg.mFeedIds;
+      str1 = paramWSRedDotPushMsg.mPushId;
       bool = WeishiUtils.a(paramWSRedDotPushMsg);
       paramWSRedDotPushMsg = str2;
     }
-    for (;;)
+    else
     {
-      localHashMap.put("feed_id", str1);
-      localHashMap.put("push_id", paramWSRedDotPushMsg);
-      if (bool) {
-        i = 1;
-      }
-      localHashMap.put("preload_status", Integer.valueOf(i));
-      localHashMap.put("networkType", a());
-      localHashMap.put("ipAddress", WSDeviceUtils.a());
-      return new JSONObject(localHashMap).toString();
       str1 = "0";
-      paramWSRedDotPushMsg = "0";
       bool = false;
+      paramWSRedDotPushMsg = str2;
     }
+    localHashMap.put("feed_id", paramWSRedDotPushMsg);
+    localHashMap.put("push_id", str1);
+    if (bool) {
+      i = 1;
+    }
+    localHashMap.put("preload_status", Integer.valueOf(i));
+    localHashMap.put("networkType", a());
+    localHashMap.put("ipAddress", WSDeviceUtils.a());
+    return new JSONObject(localHashMap).toString();
   }
   
   private static String a(String paramString)
@@ -255,52 +281,70 @@ public class WSReportDc00898
   
   public static void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    WSLog.c("898", "optionId:" + paramInt3);
-    String str1 = WeishiUtils.a(4);
-    String str2 = String.valueOf(paramInt3);
-    switch (paramInt1)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("optionId:");
+    ((StringBuilder)localObject).append(paramInt3);
+    WSLog.c("898", ((StringBuilder)localObject).toString());
+    localObject = WeishiUtils.a(4);
+    String str = String.valueOf(paramInt3);
+    if (paramInt1 != 6)
     {
-    default: 
-      return;
-    case 6: 
-      a("weishi_share_officialacc", "msg_entry_exp", paramInt2, 0, 0L, 0L, str2, str1);
-      return;
-    case 115: 
-      a("weishi_share_officialacc", "msg_dl_ws", paramInt2, 0, 0L, 0L, str2, str1);
-      return;
-    case 114: 
-      a("weishi_share_officialacc", "msg_clk_ws", paramInt2, 0, 0L, 0L, str2, str1);
-      return;
-    case 140: 
-      a("weishi_share_officialacc", "msg_clk_h5", paramInt2, 0, 0L, 0L, str2, str1);
+      if (paramInt1 != 112)
+      {
+        if (paramInt1 != 140)
+        {
+          if (paramInt1 != 114)
+          {
+            if (paramInt1 != 115) {
+              return;
+            }
+            a("weishi_share_officialacc", "msg_dl_ws", paramInt2, 0, 0L, 0L, str, (String)localObject);
+            return;
+          }
+          a("weishi_share_officialacc", "msg_clk_ws", paramInt2, 0, 0L, 0L, str, (String)localObject);
+          return;
+        }
+        a("weishi_share_officialacc", "msg_clk_h5", paramInt2, 0, 0L, 0L, str, (String)localObject);
+        return;
+      }
+      a("weishi_share_officialacc", "msg_clk", paramInt2, 0, 0L, 0L, str, (String)localObject);
       return;
     }
-    a("weishi_share_officialacc", "msg_clk", paramInt2, 0, 0L, 0L, str2, str1);
+    a("weishi_share_officialacc", "msg_entry_exp", paramInt2, 0, 0L, 0L, str, (String)localObject);
   }
   
   public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     paramInt3 += 1;
-    WSLog.d("898", "optionId:" + paramInt4);
-    String str = String.valueOf(paramInt4);
-    switch (paramInt1)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("optionId:");
+    ((StringBuilder)localObject).append(paramInt4);
+    WSLog.d("898", ((StringBuilder)localObject).toString());
+    localObject = String.valueOf(paramInt4);
+    if (paramInt1 != 6)
     {
-    default: 
-      return;
-    case 6: 
-      a("weishi_share_officialacc", "feeds_op_card_exp", paramInt2, 0, paramInt3, 0L, str, b());
-      return;
-    case 112: 
-      a("weishi_share_officialacc", "feeds_op_card_clk", paramInt2, 0, paramInt3, 0L, str, b());
-      return;
-    case 115: 
-      a("weishi_share_officialacc", "feeds_opcard_dl_ws", paramInt2, 0, paramInt3, 0L, str, b());
-      return;
-    case 114: 
-      a("weishi_share_officialacc", "feeds_opcard_clk_ws", paramInt2, 0, paramInt3, 0L, str, b());
+      if (paramInt1 != 112)
+      {
+        if (paramInt1 != 140)
+        {
+          if (paramInt1 != 114)
+          {
+            if (paramInt1 != 115) {
+              return;
+            }
+            a("weishi_share_officialacc", "feeds_opcard_dl_ws", paramInt2, 0, paramInt3, 0L, (String)localObject, b());
+            return;
+          }
+          a("weishi_share_officialacc", "feeds_opcard_clk_ws", paramInt2, 0, paramInt3, 0L, (String)localObject, b());
+          return;
+        }
+        a("weishi_share_officialacc", "feeds_opcard_clk_h5", paramInt2, 0, paramInt3, 0L, (String)localObject, b());
+        return;
+      }
+      a("weishi_share_officialacc", "feeds_op_card_clk", paramInt2, 0, paramInt3, 0L, (String)localObject, b());
       return;
     }
-    a("weishi_share_officialacc", "feeds_opcard_clk_h5", paramInt2, 0, paramInt3, 0L, str, b());
+    a("weishi_share_officialacc", "feeds_op_card_exp", paramInt2, 0, paramInt3, 0L, (String)localObject, b());
   }
   
   public static void a(int paramInt1, int paramInt2, String paramString)
@@ -315,13 +359,14 @@ public class WSReportDc00898
   
   public static void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramInt == 1) {
+    if (paramInt == 1)
+    {
       a("officialacc_weishi", "weishi_share_officialacc", paramBoolean1, paramBoolean2);
-    }
-    while (paramInt != 2) {
       return;
     }
-    a("trandstab_weishi", "weishi_share_trendstab", paramBoolean1, paramBoolean2);
+    if (paramInt == 2) {
+      a("trandstab_weishi", "weishi_share_trendstab", paramBoolean1, paramBoolean2);
+    }
   }
   
   public static void a(WSDownloadParams paramWSDownloadParams, int paramInt)
@@ -334,88 +379,72 @@ public class WSReportDc00898
   
   public static void a(WSPlayerParam paramWSPlayerParam, boolean paramBoolean)
   {
-    if ((paramWSPlayerParam == null) || (paramWSPlayerParam.a == null)) {
-      return;
+    if (paramWSPlayerParam != null)
+    {
+      if (paramWSPlayerParam.a == null) {
+        return;
+      }
+      paramWSPlayerParam = WSReportDC898Vertical.a(paramWSPlayerParam, paramBoolean);
+      paramWSPlayerParam = new Gson().toJson(paramWSPlayerParam);
+      a(WSReportUtils.a(), "focus_video_play", 0, 0, 0L, 0L, paramWSPlayerParam, WeishiUtils.a(9));
     }
-    paramWSPlayerParam = WSReportDC898Vertical.a(paramWSPlayerParam, paramBoolean);
-    paramWSPlayerParam = new Gson().toJson(paramWSPlayerParam);
-    a(WSReportUtils.a(), "focus_video_play", 0, 0, 0L, 0L, paramWSPlayerParam, WeishiUtils.a(9));
   }
   
   public static void a(WSRedDotPushMsg paramWSRedDotPushMsg)
   {
-    IWSPushBaseStrategy localIWSPushBaseStrategy;
-    Object localObject;
-    int i;
-    int k;
-    int j;
     if (paramWSRedDotPushMsg != null)
     {
-      localIWSPushBaseStrategy = paramWSRedDotPushMsg.mStrategyInfo;
-      if (!(localIWSPushBaseStrategy instanceof WSPushStrategyInfo)) {
-        break label134;
+      IWSPushBaseStrategy localIWSPushBaseStrategy = paramWSRedDotPushMsg.mStrategyInfo;
+      boolean bool = localIWSPushBaseStrategy instanceof WSPushStrategyInfo;
+      int i = 0;
+      int j = 0;
+      if (bool)
+      {
+        localObject = (WSPushStrategyInfo)localIWSPushBaseStrategy;
+        i = j;
+        if (((WSPushStrategyInfo)localObject).mWSPushModel != null) {
+          i = ((WSPushStrategyInfo)localObject).mWSPushModel.a;
+        }
+        j = ((WSPushStrategyInfo)localObject).getType();
       }
-      localObject = (WSPushStrategyInfo)localIWSPushBaseStrategy;
-      if (((WSPushStrategyInfo)localObject).mWSPushModel == null) {
-        break label129;
+      else
+      {
+        j = 0;
       }
-      i = ((WSPushStrategyInfo)localObject).mWSPushModel.a;
-      k = ((WSPushStrategyInfo)localObject).getType();
-      j = i;
-      i = k;
-    }
-    for (;;)
-    {
-      k = i;
-      if (i == 3) {
-        k = 1;
+      if (j == 3) {
+        j = 1;
       }
       long l1;
-      long l2;
-      if (WeishiGuideUtils.a(BaseApplicationImpl.getApplication().getApplicationContext()))
-      {
+      if (WeishiGuideUtils.a(BaseApplicationImpl.getApplication().getApplicationContext())) {
         l1 = 1L;
-        l2 = j;
-        localObject = paramWSRedDotPushMsg.mPushId;
-        if (localIWSPushBaseStrategy == null) {
-          break label123;
-        }
-      }
-      label123:
-      for (paramWSRedDotPushMsg = localIWSPushBaseStrategy.getAbTest();; paramWSRedDotPushMsg = "")
-      {
-        a("officialacc_weishi", "push_text_clk", k, 0, l1, l2, (String)localObject, paramWSRedDotPushMsg);
-        return;
+      } else {
         l1 = 0L;
-        break;
       }
-      label129:
-      i = 0;
-      break;
-      label134:
-      i = 0;
-      j = 0;
+      long l2 = i;
+      Object localObject = paramWSRedDotPushMsg.mPushId;
+      if (localIWSPushBaseStrategy != null) {
+        paramWSRedDotPushMsg = localIWSPushBaseStrategy.getAbTest();
+      } else {
+        paramWSRedDotPushMsg = "";
+      }
+      a("officialacc_weishi", "push_text_clk", j, 0, l1, l2, (String)localObject, paramWSRedDotPushMsg);
     }
   }
   
   public static void a(WSRedDotPushMsg paramWSRedDotPushMsg, boolean paramBoolean)
   {
     int i;
-    if ((paramWSRedDotPushMsg != null) && (paramWSRedDotPushMsg.mStrategyInfo != null))
-    {
+    if ((paramWSRedDotPushMsg != null) && (paramWSRedDotPushMsg.mStrategyInfo != null)) {
       i = paramWSRedDotPushMsg.mStrategyInfo.getType();
-      if (!paramBoolean) {
-        break label51;
-      }
-    }
-    label51:
-    for (paramWSRedDotPushMsg = "1";; paramWSRedDotPushMsg = "2")
-    {
-      a("trandstab_weishi", "trandstab_clk", i, 0, 0L, 0L, paramWSRedDotPushMsg, "");
-      return;
+    } else {
       i = 0;
-      break;
     }
+    if (paramBoolean) {
+      paramWSRedDotPushMsg = "1";
+    } else {
+      paramWSRedDotPushMsg = "2";
+    }
+    a("trandstab_weishi", "trandstab_clk", i, 0, 0L, 0L, paramWSRedDotPushMsg, "");
   }
   
   public static void a(String paramString1, String paramString2, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString3, String paramString4)
@@ -454,49 +483,15 @@ public class WSReportDc00898
     a("weishi_share_zhibo", "zhibo_feeds_exp", 0, 0, 0L, 0L, "", b());
   }
   
-  public static void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, String paramString)
-  {
-    if ((paramInt1 < 0) || (paramInt1 >= a.length))
-    {
-      QLog.w("WSReportDc00898", 1, "reportSummon: wrong type " + paramInt1);
-      return;
-    }
-    if (paramInt2 == 0) {
-      paramBoolean1 = true;
-    }
-    QLog.d("WSReportDc00898", 4, "reportSummon: " + paramBoolean1 + " " + paramInt1 + " " + paramInt2 + " " + paramBoolean2 + "" + paramString);
-    String str1;
-    String str2;
-    long l2;
-    if (paramBoolean1)
-    {
-      str1 = "frdvideoplay_weishi";
-      str2 = a[paramInt1];
-      l2 = paramInt2;
-      if (!paramBoolean2) {
-        break label173;
-      }
-    }
-    label173:
-    for (long l1 = 1L;; l1 = 0L)
-    {
-      a(str1, str2, 0, 0, l2, l1, paramString, "");
-      return;
-      str1 = "qzonevideo_weishi";
-      str2 = b[paramInt1];
-      break;
-    }
-  }
-  
   public static void a(boolean paramBoolean, WSDownloadParams paramWSDownloadParams)
   {
-    if (paramWSDownloadParams == null) {}
-    String str;
-    do
-    {
+    if (paramWSDownloadParams == null) {
       return;
-      str = a(paramWSDownloadParams.mScene);
-    } while (TextUtils.isEmpty(str));
+    }
+    String str = a(paramWSDownloadParams.mScene);
+    if (TextUtils.isEmpty(str)) {
+      return;
+    }
     if (paramBoolean)
     {
       a(str, "dl_clk_QQdownloader", 0, 0, 0L, 0L, "", paramWSDownloadParams.mTestId);
@@ -522,17 +517,20 @@ public class WSReportDc00898
   
   public static void b(int paramInt1, int paramInt2, int paramInt3)
   {
-    WSLog.c("898", "optionId:" + paramInt3);
-    String str = String.valueOf(paramInt3);
-    switch (paramInt1)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("optionId:");
+    ((StringBuilder)localObject).append(paramInt3);
+    WSLog.c("898", ((StringBuilder)localObject).toString());
+    localObject = String.valueOf(paramInt3);
+    if (paramInt1 != 6)
     {
-    default: 
-      return;
-    case 6: 
-      a("officialacc_weishi", "comment_popup_exp", 0, 0, 0L, 0L, str, "");
+      if (paramInt1 != 112) {
+        return;
+      }
+      a("weishi_share_officialacc", "comment_popup_clk", paramInt2, 0, 0L, 0L, (String)localObject, "");
       return;
     }
-    a("weishi_share_officialacc", "comment_popup_clk", paramInt2, 0, 0L, 0L, str, "");
+    a("officialacc_weishi", "comment_popup_exp", 0, 0, 0L, 0L, (String)localObject, "");
   }
   
   public static void b(boolean paramBoolean)
@@ -557,26 +555,35 @@ public class WSReportDc00898
   
   public static void c(int paramInt1, int paramInt2, int paramInt3)
   {
-    WSLog.d("898", "optionId:" + paramInt3);
-    String str = String.valueOf(paramInt3);
-    switch (paramInt1)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("optionId:");
+    ((StringBuilder)localObject).append(paramInt3);
+    WSLog.d("898", ((StringBuilder)localObject).toString());
+    localObject = String.valueOf(paramInt3);
+    if (paramInt1 != 6)
     {
-    default: 
-      return;
-    case 6: 
-      a("weishi_share_officialacc", "feeds_popup_exp", paramInt2, 0, 0L, 0L, str, b());
-      return;
-    case 112: 
-      a("weishi_share_officialacc", "feeds_popup_clk", paramInt2, 0, 0L, 0L, str, b());
-      return;
-    case 115: 
-      a("weishi_share_officialacc", "feeds_popup_dl_ws", paramInt2, 0, 0L, 0L, str, b());
-      return;
-    case 114: 
-      a("weishi_share_officialacc", "feeds_popup_clk_ws", paramInt2, 0, 0L, 0L, str, b());
+      if (paramInt1 != 112)
+      {
+        if (paramInt1 != 117)
+        {
+          if (paramInt1 != 114)
+          {
+            if (paramInt1 != 115) {
+              return;
+            }
+            a("weishi_share_officialacc", "feeds_popup_dl_ws", paramInt2, 0, 0L, 0L, (String)localObject, b());
+            return;
+          }
+          a("weishi_share_officialacc", "feeds_popup_clk_ws", paramInt2, 0, 0L, 0L, (String)localObject, b());
+          return;
+        }
+        a("officialacc_weishi", "feeds_popup_close", paramInt2, 0, 0L, 0L, (String)localObject, b());
+        return;
+      }
+      a("weishi_share_officialacc", "feeds_popup_clk", paramInt2, 0, 0L, 0L, (String)localObject, b());
       return;
     }
-    a("officialacc_weishi", "feeds_popup_close", paramInt2, 0, 0L, 0L, str, b());
+    a("weishi_share_officialacc", "feeds_popup_exp", paramInt2, 0, 0L, 0L, (String)localObject, b());
   }
   
   private static String d()
@@ -589,7 +596,7 @@ public class WSReportDc00898
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSReportDc00898
  * JD-Core Version:    0.7.0.1
  */

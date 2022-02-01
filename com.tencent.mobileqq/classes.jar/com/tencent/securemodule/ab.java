@@ -24,32 +24,36 @@ public class ab
   
   public void a(ArrayList<AppInfo> paramArrayList)
   {
+    Object localObject;
     if (paramArrayList.size() > 0)
     {
       SecureService.a(this.a, "1000022", paramArrayList);
-      Intent localIntent = new Intent();
-      localIntent.setAction("1000030");
-      localIntent.putExtra("key_rise", paramArrayList);
-      this.a.sendBroadcast(localIntent);
+      localObject = new Intent();
+      ((Intent)localObject).setAction("1000030");
+      ((Intent)localObject).putExtra("key_rise", paramArrayList);
+      this.a.sendBroadcast((Intent)localObject);
       return;
     }
-    if (this.b != 0) {
-      SecureService.a(this.a, "1000023", null);
-    }
-    for (;;)
+    if (this.b != 0)
     {
-      paramArrayList = new Intent();
-      paramArrayList.setAction("1000031");
-      paramArrayList.putExtra("key_errcode", this.b);
-      this.a.sendBroadcast(paramArrayList);
-      return;
-      SecureService.a(this.a, "1000021", null);
+      localObject = this.a;
+      paramArrayList = "1000023";
     }
+    else
+    {
+      localObject = this.a;
+      paramArrayList = "1000021";
+    }
+    SecureService.a((SecureService)localObject, paramArrayList, null);
+    paramArrayList = new Intent();
+    paramArrayList.setAction("1000031");
+    paramArrayList.putExtra("key_errcode", this.b);
+    this.a.sendBroadcast(paramArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.securemodule.ab
  * JD-Core Version:    0.7.0.1
  */

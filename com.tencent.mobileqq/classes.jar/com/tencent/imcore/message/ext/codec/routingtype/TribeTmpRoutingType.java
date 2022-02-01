@@ -1,5 +1,6 @@
 package com.tencent.imcore.message.ext.codec.routingtype;
 
+import com.tencent.common.app.AppInterface;
 import com.tencent.imcore.message.Message;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.core.codec.RoutingType;
@@ -16,7 +17,7 @@ import msf.msgsvc.msg_svc.CommTmp;
 import msf.msgsvc.msg_svc.RoutingHead;
 
 public class TribeTmpRoutingType
-  implements RoutingType
+  implements RoutingType<AppInterface>
 {
   public int a()
   {
@@ -28,21 +29,32 @@ public class TribeTmpRoutingType
     return false;
   }
   
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, AppInterface paramAppInterface)
   {
     msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
     localCommTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
     localCommTmp.c2c_type.set(1);
     localCommTmp.svr_type.set(149);
-    Message localMessage = paramQQAppInterface.getMessageFacade().a(paramMessageRecord.frienduin, 1001);
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeTmpRoutingType", 2, "TRIBE_TMP------>reply=" + localMessage.hasReply);
+    paramAppInterface = (QQAppInterface)paramAppInterface;
+    Message localMessage = paramAppInterface.getMessageFacade().getLastMessage(paramMessageRecord.frienduin, 1001);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("TRIBE_TMP------>reply=");
+      localStringBuilder.append(localMessage.hasReply);
+      QLog.d("TribeTmpRoutingType", 2, localStringBuilder.toString());
     }
-    paramMessageRecord = paramQQAppInterface.getMsgCache().j(paramMessageRecord.frienduin);
+    paramMessageRecord = paramAppInterface.getMsgCache().j(paramMessageRecord.frienduin);
     if (paramMessageRecord != null)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("fight_accost", 4, "发送兴趣部落临时会消息 有key------>" + HexUtil.bytes2HexStr(paramMessageRecord) + ",length:" + paramMessageRecord.length);
+      if (QLog.isDevelopLevel())
+      {
+        paramAppInterface = new StringBuilder();
+        paramAppInterface.append("发送兴趣部落临时会消息 有key------>");
+        paramAppInterface.append(HexUtil.bytes2HexStr(paramMessageRecord));
+        paramAppInterface.append(",length:");
+        paramAppInterface.append(paramMessageRecord.length);
+        QLog.d("fight_accost", 4, paramAppInterface.toString());
       }
       localCommTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
     }
@@ -57,7 +69,7 @@ public class TribeTmpRoutingType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.routingtype.TribeTmpRoutingType
  * JD-Core Version:    0.7.0.1
  */

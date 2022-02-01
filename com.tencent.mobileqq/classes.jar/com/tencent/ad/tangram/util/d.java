@@ -24,26 +24,20 @@ public final class d
   
   public static String md5(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      paramString1 = null;
-    }
-    for (;;)
+    if (!TextUtils.isEmpty(paramString1))
     {
-      return paramString1;
+      if (TextUtils.isEmpty(paramString2)) {
+        return null;
+      }
       try
       {
         paramString1 = md5(paramString1.getBytes(paramString2));
-        paramString2 = AdHexUtil.bytes2HexString(paramString1);
-        if (!TextUtils.isEmpty(paramString2))
-        {
-          paramString1 = paramString2;
-          if (paramString2.length() == 32) {}
+        paramString1 = AdHexUtil.bytes2HexString(paramString1);
+        if ((!TextUtils.isEmpty(paramString1)) && (paramString1.length() == 32)) {
+          return paramString1;
         }
-        else
-        {
-          AdLog.e("AdMessageDigestUtil", "md5 error");
-          return null;
-        }
+        AdLog.e("AdMessageDigestUtil", "md5 error");
+        return null;
       }
       catch (Throwable paramString1)
       {
@@ -55,20 +49,17 @@ public final class d
   
   public static byte[] md5(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
-      paramArrayOfByte = null;
-    }
-    byte[] arrayOfByte;
-    do
+    if (paramArrayOfByte != null)
     {
-      return paramArrayOfByte;
-      arrayOfByte = digest("md5", paramArrayOfByte);
-      if (arrayOfByte == null) {
-        break;
+      if (paramArrayOfByte.length <= 0) {
+        return null;
       }
-      paramArrayOfByte = arrayOfByte;
-    } while (arrayOfByte.length == 16);
-    AdLog.e("AdMessageDigestUtil", "md5 error");
+      paramArrayOfByte = digest("md5", paramArrayOfByte);
+      if ((paramArrayOfByte != null) && (paramArrayOfByte.length == 16)) {
+        return paramArrayOfByte;
+      }
+      AdLog.e("AdMessageDigestUtil", "md5 error");
+    }
     return null;
   }
 }

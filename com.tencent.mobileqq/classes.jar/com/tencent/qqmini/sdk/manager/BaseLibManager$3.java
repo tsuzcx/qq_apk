@@ -13,16 +13,26 @@ class BaseLibManager$3
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QMLog.i("miniapp-process_BaseLibManager", "[MiniEng] updateBaseLib response. isSuc=" + paramBoolean + " rsp=" + paramJSONObject);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[MiniEng] updateBaseLib response. isSuc=");
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append(" rsp=");
+    ((StringBuilder)localObject).append(paramJSONObject);
+    QMLog.i("miniapp-process_BaseLibManager", ((StringBuilder)localObject).toString());
     if ((paramBoolean) && (paramJSONObject != null))
     {
       ThreadManager.executeOnDiskIOThreadPool(new BaseLibManager.3.1(this, paramJSONObject));
-      Object localObject = BaseLibInfo.fromJSON(paramJSONObject.optJSONObject(BaseLibInfo.getKey(1)));
+      localObject = BaseLibInfo.fromJSON(paramJSONObject.optJSONObject(BaseLibInfo.getKey(1)));
       if (BaseLibManager.access$300(this.this$0, (BaseLibInfo)localObject).booleanValue())
       {
         paramJSONObject = ((BaseLibInfo)localObject).baseLibVersion;
         localObject = ((BaseLibInfo)localObject).baseLibUrl;
-        QMLog.i("miniapp-process_BaseLibManager", "[MiniEng] updateBaseLib end : version : " + paramJSONObject + "; url : " + (String)localObject);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[MiniEng] updateBaseLib end : version : ");
+        localStringBuilder.append(paramJSONObject);
+        localStringBuilder.append("; url : ");
+        localStringBuilder.append((String)localObject);
+        QMLog.i("miniapp-process_BaseLibManager", localStringBuilder.toString());
         this.this$0.doDownloadBaselib((String)localObject, paramJSONObject, this.val$baseLibUrl, this.val$baseLibVersion, null);
         return;
       }
@@ -36,7 +46,7 @@ class BaseLibManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.BaseLibManager.3
  * JD-Core Version:    0.7.0.1
  */

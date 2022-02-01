@@ -17,20 +17,20 @@ class AutoPlayImageView$1
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (AutoPlayImageView.a(this.a) == 2) {
+    if (AutoPlayImageView.a(this.a) == 2)
+    {
       if ((paramURLDrawable != null) && ((paramURLDrawable.getCurrDrawable() instanceof QQLiveDrawable))) {
         ((QQLiveDrawable)paramURLDrawable.getCurrDrawable()).pause();
       }
     }
-    while ((AutoPlayImageView.a(this.a) != 3) || (paramURLDrawable == null) || (!(paramURLDrawable.getCurrDrawable() instanceof QQLiveDrawable))) {
-      return;
+    else if ((AutoPlayImageView.a(this.a) == 3) && (paramURLDrawable != null) && ((paramURLDrawable.getCurrDrawable() instanceof QQLiveDrawable))) {
+      ((QQLiveDrawable)paramURLDrawable.getCurrDrawable()).recyleAndKeepPostion();
     }
-    ((QQLiveDrawable)paramURLDrawable.getCurrDrawable()).recyleAndKeepPostion();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.AutoPlayImageView.1
  * JD-Core Version:    0.7.0.1
  */

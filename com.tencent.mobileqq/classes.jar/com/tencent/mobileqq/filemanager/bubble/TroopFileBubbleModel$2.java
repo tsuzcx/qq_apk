@@ -18,23 +18,23 @@ class TroopFileBubbleModel$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 0: 
-      paramDialogInterface = TroopFileManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerBubbleTroopFileBubbleModel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
-      paramDialogInterface.b(paramDialogInterface.a(this.jdField_a_of_type_JavaUtilUUID));
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerBubbleTroopFileBubbleModel.c(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerBubbleTroopFileBubbleModel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().e(this.jdField_a_of_type_ComTencentMobileqqFilemanagerBubbleTroopFileBubbleModel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerBubbleTroopFileBubbleModel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+      if (paramInt != 1) {
+        return;
+      }
+      new TroopFileItemOperation(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqFilemanagerBubbleTroopFileBubbleModel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity).a(this.jdField_a_of_type_JavaUtilUUID);
       return;
     }
-    new TroopFileItemOperation(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqFilemanagerBubbleTroopFileBubbleModel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity).a(this.jdField_a_of_type_JavaUtilUUID);
+    paramDialogInterface = TroopFileManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerBubbleTroopFileBubbleModel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+    paramDialogInterface.b(paramDialogInterface.a(this.jdField_a_of_type_JavaUtilUUID));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerBubbleTroopFileBubbleModel.c(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerBubbleTroopFileBubbleModel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerBubbleTroopFileBubbleModel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerBubbleTroopFileBubbleModel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.bubble.TroopFileBubbleModel.2
  * JD-Core Version:    0.7.0.1
  */

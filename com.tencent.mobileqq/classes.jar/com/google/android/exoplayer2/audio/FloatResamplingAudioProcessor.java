@@ -19,7 +19,9 @@ final class FloatResamplingAudioProcessor
   
   private static void writePcm32BitFloat(int paramInt, ByteBuffer paramByteBuffer)
   {
-    int i = Float.floatToIntBits((float)(4.656612875245797E-010D * paramInt));
+    double d = paramInt;
+    Double.isNaN(d);
+    int i = Float.floatToIntBits((float)(d * 4.656612875245797E-010D));
     paramInt = i;
     if (i == FLOAT_NAN_AS_INT) {
       paramInt = Float.floatToIntBits(0.0F);
@@ -29,16 +31,17 @@ final class FloatResamplingAudioProcessor
   
   public boolean configure(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (!Util.isEncodingHighResolutionIntegerPcm(paramInt3)) {
-      throw new AudioProcessor.UnhandledFormatException(paramInt1, paramInt2, paramInt3);
+    if (Util.isEncodingHighResolutionIntegerPcm(paramInt3))
+    {
+      if ((this.sampleRateHz == paramInt1) && (this.channelCount == paramInt2) && (this.sourceEncoding == paramInt3)) {
+        return false;
+      }
+      this.sampleRateHz = paramInt1;
+      this.channelCount = paramInt2;
+      this.sourceEncoding = paramInt3;
+      return true;
     }
-    if ((this.sampleRateHz == paramInt1) && (this.channelCount == paramInt2) && (this.sourceEncoding == paramInt3)) {
-      return false;
-    }
-    this.sampleRateHz = paramInt1;
-    this.channelCount = paramInt2;
-    this.sourceEncoding = paramInt3;
-    return true;
+    throw new AudioProcessor.UnhandledFormatException(paramInt1, paramInt2, paramInt3);
   }
   
   public void flush()
@@ -88,47 +91,34 @@ final class FloatResamplingAudioProcessor
   {
     Assertions.checkState(isActive());
     int i;
-    int j;
-    int m;
-    int k;
-    if (this.sourceEncoding == 1073741824)
-    {
+    if (this.sourceEncoding == 1073741824) {
       i = 1;
-      j = paramByteBuffer.position();
-      m = paramByteBuffer.limit();
-      k = m - j;
-      if (i == 0) {
-        break label149;
-      }
-      label39:
-      if (this.buffer.capacity() >= k) {
-        break label160;
-      }
-      this.buffer = ByteBuffer.allocateDirect(k).order(ByteOrder.nativeOrder());
+    } else {
+      i = 0;
     }
-    for (;;)
-    {
-      if (i == 0) {
-        break label171;
-      }
+    int j = paramByteBuffer.position();
+    int m = paramByteBuffer.limit();
+    int k = m - j;
+    if (i == 0) {
+      k = k / 3 * 4;
+    }
+    if (this.buffer.capacity() < k) {
+      this.buffer = ByteBuffer.allocateDirect(k).order(ByteOrder.nativeOrder());
+    } else {
+      this.buffer.clear();
+    }
+    k = j;
+    if (i != 0) {
       while (j < m)
       {
         writePcm32BitFloat(paramByteBuffer.get(j) & 0xFF | (paramByteBuffer.get(j + 1) & 0xFF) << 8 | (paramByteBuffer.get(j + 2) & 0xFF) << 16 | (paramByteBuffer.get(j + 3) & 0xFF) << 24, this.buffer);
         j += 4;
       }
-      i = 0;
-      break;
-      label149:
-      k = k / 3 * 4;
-      break label39;
-      label160:
-      this.buffer.clear();
     }
-    label171:
-    while (j < m)
+    while (k < m)
     {
-      writePcm32BitFloat((paramByteBuffer.get(j) & 0xFF) << 8 | (paramByteBuffer.get(j + 1) & 0xFF) << 16 | (paramByteBuffer.get(j + 2) & 0xFF) << 24, this.buffer);
-      j += 3;
+      writePcm32BitFloat((paramByteBuffer.get(k) & 0xFF) << 8 | (paramByteBuffer.get(k + 1) & 0xFF) << 16 | (paramByteBuffer.get(k + 2) & 0xFF) << 24, this.buffer);
+      k += 3;
     }
     paramByteBuffer.position(paramByteBuffer.limit());
     this.buffer.flip();
@@ -146,7 +136,7 @@ final class FloatResamplingAudioProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.audio.FloatResamplingAudioProcessor
  * JD-Core Version:    0.7.0.1
  */

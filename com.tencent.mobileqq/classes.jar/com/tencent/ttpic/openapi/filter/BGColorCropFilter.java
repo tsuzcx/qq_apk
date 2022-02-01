@@ -43,17 +43,14 @@ public class BGColorCropFilter
     }
     catch (Exception paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
+      paramString.printStackTrace();
     }
     addParam(new UniformParam.Float4fParam("clearColor", arrayOfFloat[0], arrayOfFloat[1], arrayOfFloat[2], arrayOfFloat[3]));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.BGColorCropFilter
  * JD-Core Version:    0.7.0.1
  */

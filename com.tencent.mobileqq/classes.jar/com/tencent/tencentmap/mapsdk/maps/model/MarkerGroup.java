@@ -17,9 +17,9 @@ public class MarkerGroup
   
   public void addMarker(Marker paramMarker)
   {
-    if (this.b != null)
+    kn localkn = this.b;
+    if (localkn != null)
     {
-      kn localkn = this.b;
       String str = this.a;
       if (localkn.a != null) {
         localkn.a.a(str, paramMarker);
@@ -29,9 +29,9 @@ public class MarkerGroup
   
   public void addMarkerById(String paramString)
   {
-    if (this.b != null)
+    kn localkn = this.b;
+    if (localkn != null)
     {
-      kn localkn = this.b;
       String str = this.a;
       if (localkn.a != null) {
         localkn.a.a(str, paramString);
@@ -41,9 +41,9 @@ public class MarkerGroup
   
   public void addMarkerList(List<Marker> paramList)
   {
-    if (this.b != null)
+    kn localkn = this.b;
+    if (localkn != null)
     {
-      kn localkn = this.b;
       String str = this.a;
       if (localkn.a != null) {
         localkn.a.a(str, paramList);
@@ -53,9 +53,9 @@ public class MarkerGroup
   
   public void clear()
   {
-    if (this.b != null)
+    kn localkn = this.b;
+    if (localkn != null)
     {
-      kn localkn = this.b;
       String str = this.a;
       if (localkn.a != null) {
         localkn.a.a(str);
@@ -65,50 +65,41 @@ public class MarkerGroup
   
   public boolean containMarker(Marker paramMarker)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.b != null)
+    kn localkn = this.b;
+    if (localkn != null)
     {
-      kn localkn = this.b;
       String str = this.a;
-      bool1 = bool2;
       if (localkn.a != null) {
-        bool1 = localkn.a.c(str, paramMarker);
+        return localkn.a.c(str, paramMarker);
       }
     }
-    return bool1;
+    return false;
   }
   
   public boolean containMarkerById(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.b != null)
+    kn localkn = this.b;
+    if (localkn != null)
     {
-      kn localkn = this.b;
       String str = this.a;
-      bool1 = bool2;
       if (localkn.a != null) {
-        bool1 = localkn.a.d(str, paramString);
+        return localkn.a.d(str, paramString);
       }
     }
-    return bool1;
+    return false;
   }
   
   public Marker findMarkerById(String paramString)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.b != null)
+    kn localkn = this.b;
+    if (localkn != null)
     {
-      kn localkn = this.b;
       String str = this.a;
-      localObject1 = localObject2;
       if (localkn.a != null) {
-        localObject1 = localkn.a.c(str, paramString);
+        return localkn.a.c(str, paramString);
       }
     }
-    return localObject1;
+    return null;
   }
   
   public String getId()
@@ -118,73 +109,61 @@ public class MarkerGroup
   
   public List<String> getMarkerIdList()
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.b != null)
+    kn localkn = this.b;
+    if (localkn != null)
     {
-      kn localkn = this.b;
       String str = this.a;
-      localObject1 = localObject2;
       if (localkn.a != null) {
-        localObject1 = localkn.a.c(str);
+        return localkn.a.c(str);
       }
     }
-    return localObject1;
+    return null;
   }
   
   public List<Marker> getMarkerList()
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.b != null)
+    kn localkn = this.b;
+    if (localkn != null)
     {
-      kn localkn = this.b;
       String str = this.a;
-      localObject1 = localObject2;
       if (localkn.a != null) {
-        localObject1 = localkn.a.b(str);
+        return localkn.a.b(str);
       }
     }
-    return localObject1;
+    return null;
   }
   
   public boolean removeMarker(Marker paramMarker)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.b != null)
+    kn localkn = this.b;
+    if (localkn != null)
     {
-      kn localkn = this.b;
       String str = this.a;
-      bool1 = bool2;
       if (localkn.a != null) {
-        bool1 = localkn.a.b(str, paramMarker);
+        return localkn.a.b(str, paramMarker);
       }
     }
-    return bool1;
+    return false;
   }
   
   public boolean removeMarkerById(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.b != null)
+    kn localkn = this.b;
+    if (localkn != null)
     {
-      kn localkn = this.b;
       String str = this.a;
-      bool1 = bool2;
       if (localkn.a != null) {
-        bool1 = localkn.a.b(str, paramString);
+        return localkn.a.b(str, paramString);
       }
     }
-    return bool1;
+    return false;
   }
   
   public void setMarkerGroupOnTapMapBubblesHidden(boolean paramBoolean)
   {
-    if (this.b != null)
+    kn localkn = this.b;
+    if (localkn != null)
     {
-      kn localkn = this.b;
       String str = this.a;
       if (localkn.a != null) {
         localkn.a.d(str);
@@ -194,9 +173,9 @@ public class MarkerGroup
   
   public void setMarkerGroupOnTapMapInfoWindowHidden(boolean paramBoolean)
   {
-    if (this.b != null)
+    kn localkn = this.b;
+    if (localkn != null)
     {
-      kn localkn = this.b;
       String str = this.a;
       if (localkn.a != null) {
         localkn.a.a(str, paramBoolean);
@@ -206,55 +185,46 @@ public class MarkerGroup
   
   public boolean setMarkerOnTapMapBubblesHidden(Marker paramMarker, boolean paramBoolean)
   {
-    boolean bool = false;
-    paramBoolean = bool;
-    if (this.b != null)
+    kn localkn = this.b;
+    if (localkn != null)
     {
-      kn localkn = this.b;
       String str = this.a;
-      paramBoolean = bool;
       if (localkn.a != null) {
-        paramBoolean = localkn.a.d(str, paramMarker);
+        return localkn.a.d(str, paramMarker);
       }
     }
-    return paramBoolean;
+    return false;
   }
   
   public boolean setOnTapMapBubblesHiddenById(String paramString, boolean paramBoolean)
   {
-    boolean bool = false;
-    paramBoolean = bool;
-    if (this.b != null)
+    kn localkn = this.b;
+    if (localkn != null)
     {
-      kn localkn = this.b;
       String str = this.a;
-      paramBoolean = bool;
       if (localkn.a != null) {
-        paramBoolean = localkn.a.e(str, paramString);
+        return localkn.a.e(str, paramString);
       }
     }
-    return paramBoolean;
+    return false;
   }
   
   public boolean updateMarkerOptionById(String paramString, MarkerOptions paramMarkerOptions)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.b != null)
+    kn localkn = this.b;
+    if (localkn != null)
     {
-      kn localkn = this.b;
       String str = this.a;
-      bool1 = bool2;
       if (localkn.a != null) {
-        bool1 = localkn.a.a(str, paramString, paramMarkerOptions);
+        return localkn.a.a(str, paramString, paramMarkerOptions);
       }
     }
-    return bool1;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.MarkerGroup
  * JD-Core Version:    0.7.0.1
  */

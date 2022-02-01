@@ -22,7 +22,12 @@ class WebSocketServerInspectAgent$AgentServer
   
   public void onClose(WebSocket paramWebSocket, int paramInt, String paramString, boolean paramBoolean)
   {
-    Logger.w("WebSocketServerInspectAgent", "Debugger disconnected " + paramString + " " + paramWebSocket);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Debugger disconnected ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(paramWebSocket);
+    Logger.w("WebSocketServerInspectAgent", localStringBuilder.toString());
     WebSocketServerInspectAgent.access$002(this.this$0, null);
   }
   
@@ -37,24 +42,39 @@ class WebSocketServerInspectAgent$AgentServer
     if (WebSocketServerInspectAgent.access$100(this.this$0) != null)
     {
       WebSocketServerInspectAgent.access$100(this.this$0).sendMessageToEngine(paramString);
-      Logger.i("WebSocketServerInspectAgent", "<< " + paramString);
+      paramWebSocket = new StringBuilder();
+      paramWebSocket.append("<< ");
+      paramWebSocket.append(paramString);
+      Logger.i("WebSocketServerInspectAgent", paramWebSocket.toString());
     }
   }
   
   public void onOpen(WebSocket paramWebSocket, ClientHandshake paramClientHandshake)
   {
     WebSocketServerInspectAgent.access$002(this.this$0, paramWebSocket);
-    Logger.w("WebSocketServerInspectAgent", "Debugger connected " + paramWebSocket);
+    paramClientHandshake = new StringBuilder();
+    paramClientHandshake.append("Debugger connected ");
+    paramClientHandshake.append(paramWebSocket);
+    Logger.w("WebSocketServerInspectAgent", paramClientHandshake.toString());
   }
   
   public void onStart()
   {
-    Logger.i("WebSocketServerInspectAgent", "ScriptEngine Inspector Debugger server successfully started on port:" + this.mPort + "\nfollow the steps to start debug:\n1. adb forward tcp:" + this.mPort + " tcp:" + this.mPort + "\n2. open chrome with url to start inspect\nchrome-devtools://devtools/bundled/js_app.html?ws=localhost:" + this.mPort);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ScriptEngine Inspector Debugger server successfully started on port:");
+    localStringBuilder.append(this.mPort);
+    localStringBuilder.append("\nfollow the steps to start debug:\n1. adb forward tcp:");
+    localStringBuilder.append(this.mPort);
+    localStringBuilder.append(" tcp:");
+    localStringBuilder.append(this.mPort);
+    localStringBuilder.append("\n2. open chrome with url to start inspect\nchrome-devtools://devtools/bundled/js_app.html?ws=localhost:");
+    localStringBuilder.append(this.mPort);
+    Logger.i("WebSocketServerInspectAgent", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.v8rt.debug.WebSocketServerInspectAgent.AgentServer
  * JD-Core Version:    0.7.0.1
  */

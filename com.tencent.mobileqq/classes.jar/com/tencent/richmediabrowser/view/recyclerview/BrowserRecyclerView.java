@@ -45,16 +45,17 @@ public class BrowserRecyclerView
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getActionMasked())
+    int i = paramMotionEvent.getActionMasked();
+    if (i != 1)
     {
+      if (i == 5) {
+        this.isIntercept = true;
+      }
     }
-    for (;;)
-    {
-      return super.dispatchTouchEvent(paramMotionEvent);
-      this.isIntercept = true;
-      continue;
+    else {
       this.isIntercept = false;
     }
+    return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   public boolean fling(int paramInt1, int paramInt2)
@@ -66,40 +67,63 @@ public class BrowserRecyclerView
   {
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
-    switch (paramMotionEvent.getActionMasked())
+    int i = paramMotionEvent.getActionMasked();
+    MainBrowserPresenter localMainBrowserPresenter;
+    if (i != 0)
     {
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i == 5)
+          {
+            localMainBrowserPresenter = this.mMainBrowserPresenter;
+            if (localMainBrowserPresenter != null) {
+              localMainBrowserPresenter.requestDisallowInterceptDragEvent(true);
+            }
+            this.isIntercept = true;
+          }
+        }
+        else
+        {
+          localMainBrowserPresenter = this.mMainBrowserPresenter;
+          if (localMainBrowserPresenter != null) {
+            localMainBrowserPresenter.requestDisallowInterceptDragEvent(true);
+          }
+          localMainBrowserPresenter = this.mMainBrowserPresenter;
+          if ((localMainBrowserPresenter != null) && (localMainBrowserPresenter.isNeedDisallowInterceptEvent(paramMotionEvent)))
+          {
+            requestDisallowInterceptTouchEvent(true);
+            return false;
+          }
+          float f3 = f1 - this.mLastX;
+          float f4 = f2 - this.mLastY;
+          if ((f4 > 0.0F) && (Math.abs(f4) / Math.abs(f3) >= 6.0F) && (Math.abs(f3) < 10.0F))
+          {
+            localMainBrowserPresenter = this.mMainBrowserPresenter;
+            if (localMainBrowserPresenter != null) {
+              localMainBrowserPresenter.requestDisallowInterceptDragEvent(false);
+            }
+          }
+          this.mLastX = f1;
+          this.mLastY = f2;
+        }
+      }
+      else {
+        this.isIntercept = false;
+      }
     }
-    while (this.isIntercept)
+    else
     {
-      return false;
-      if (this.mMainBrowserPresenter != null) {
-        this.mMainBrowserPresenter.requestDisallowInterceptDragEvent(true);
+      localMainBrowserPresenter = this.mMainBrowserPresenter;
+      if (localMainBrowserPresenter != null) {
+        localMainBrowserPresenter.requestDisallowInterceptDragEvent(true);
       }
       this.mLastX = 0.0F;
       this.mLastY = 0.0F;
-      continue;
-      if (this.mMainBrowserPresenter != null) {
-        this.mMainBrowserPresenter.requestDisallowInterceptDragEvent(true);
-      }
-      if ((this.mMainBrowserPresenter != null) && (this.mMainBrowserPresenter.isNeedDisallowInterceptEvent(paramMotionEvent)))
-      {
-        requestDisallowInterceptTouchEvent(true);
-        return false;
-      }
-      float f3 = f1 - this.mLastX;
-      float f4 = f2 - this.mLastY;
-      if ((f4 > 0.0F) && (Math.abs(f4) / Math.abs(f3) >= 6.0F) && (Math.abs(f3) < 10.0F) && (this.mMainBrowserPresenter != null)) {
-        this.mMainBrowserPresenter.requestDisallowInterceptDragEvent(false);
-      }
-      this.mLastX = f1;
-      this.mLastY = f2;
-      continue;
-      if (this.mMainBrowserPresenter != null) {
-        this.mMainBrowserPresenter.requestDisallowInterceptDragEvent(true);
-      }
-      this.isIntercept = true;
-      continue;
-      this.isIntercept = false;
+    }
+    if (this.isIntercept) {
+      return false;
     }
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
@@ -121,7 +145,7 @@ public class BrowserRecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmediabrowser.view.recyclerview.BrowserRecyclerView
  * JD-Core Version:    0.7.0.1
  */

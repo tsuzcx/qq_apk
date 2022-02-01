@@ -14,17 +14,18 @@ class OpenDataCommonJsPlugin$19
   {
     MiniAppInfo localMiniAppInfo = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext.getMiniAppInfo();
     String str2 = SDKMiniProgramLpReportDC04239.getAppType(localMiniAppInfo);
-    if ("0".equals(str2)) {}
-    for (String str1 = PageAction.obtain(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext).getPageUrl();; str1 = null)
-    {
-      SDKMiniProgramLpReportDC04239.report(localMiniAppInfo, str2, str1, "user_click", "custom_button", this.jdField_a_of_type_JavaLangString, this.b, String.valueOf(this.jdField_a_of_type_Int), str1, this.c, null);
-      return;
+    String str1;
+    if ("0".equals(str2)) {
+      str1 = PageAction.obtain(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext).getPageUrl();
+    } else {
+      str1 = null;
     }
+    SDKMiniProgramLpReportDC04239.report(localMiniAppInfo, str2, str1, "user_click", "custom_button", this.jdField_a_of_type_JavaLangString, this.b, String.valueOf(this.jdField_a_of_type_Int), str1, this.c, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.OpenDataCommonJsPlugin.19
  * JD-Core Version:    0.7.0.1
  */

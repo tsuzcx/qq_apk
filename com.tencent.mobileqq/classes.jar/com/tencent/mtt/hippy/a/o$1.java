@@ -9,8 +9,10 @@ class o$1
   
   public void run()
   {
-    if (!o.a(this.a)) {}
-    while ((o.b(this.a) != null) && (o.b(this.a).c())) {
+    if (!o.a(this.a)) {
+      return;
+    }
+    if ((o.b(this.a) != null) && (o.b(this.a).c())) {
       return;
     }
     o.c(this.a);
@@ -18,7 +20,7 @@ class o$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.a.o.1
  * JD-Core Version:    0.7.0.1
  */

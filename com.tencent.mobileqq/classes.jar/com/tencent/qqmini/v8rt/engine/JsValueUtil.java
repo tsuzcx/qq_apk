@@ -15,30 +15,29 @@ public class JsValueUtil
   
   public static Object convertJsValueString(String paramString)
   {
-    String str = null;
     if ((paramString.startsWith("\"")) && (paramString.endsWith("\""))) {
-      str = paramString.substring(1, paramString.length() - 1);
+      return paramString.substring(1, paramString.length() - 1);
     }
-    do
-    {
-      return str;
-      if ((paramString.startsWith("{")) && (paramString.endsWith("}"))) {
-        return getMapObject(paramString);
-      }
-      if ((paramString.startsWith("[")) && (paramString.endsWith("]"))) {
-        return getArrayObject(paramString);
-      }
-      if ((paramString.equals("true")) || (paramString.equals("false"))) {
-        return Boolean.valueOf(paramString.equals("true"));
-      }
-    } while (paramString.equals("null"));
-    if (paramString.matches("^-?\\d+"))
-    {
-      Logger.w("Utils", "javascript number not handled");
-      return Long.valueOf(Long.parseLong(paramString));
+    if ((paramString.startsWith("{")) && (paramString.endsWith("}"))) {
+      return getMapObject(paramString);
     }
-    Logger.w("Utils", "unknown return data types");
-    return null;
+    if ((paramString.startsWith("[")) && (paramString.endsWith("]"))) {
+      return getArrayObject(paramString);
+    }
+    if ((!paramString.equals("true")) && (!paramString.equals("false")))
+    {
+      if (paramString.equals("null")) {
+        return null;
+      }
+      if (paramString.matches("^-?\\d+"))
+      {
+        Logger.w("Utils", "javascript number not handled");
+        return Long.valueOf(Long.parseLong(paramString));
+      }
+      Logger.w("Utils", "unknown return data types");
+      return null;
+    }
+    return Boolean.valueOf(paramString.equals("true"));
   }
   
   private static Object convertJsonToMap(JSONObject paramJSONObject, Map<String, Object> paramMap)
@@ -47,8 +46,12 @@ public class JsValueUtil
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      if ((!putObject(paramJSONObject, str, paramMap)) && (!putArray(paramJSONObject, str, paramMap)) && (!putNumber(paramJSONObject, str, paramMap)) && (!putNull(paramJSONObject, str, paramMap)) && (!putString(paramJSONObject, str, paramMap)) && (!putBoolean(paramJSONObject, str, paramMap))) {
-        Logger.w("Utils", "unrecognized property " + str);
+      if ((!putObject(paramJSONObject, str, paramMap)) && (!putArray(paramJSONObject, str, paramMap)) && (!putNumber(paramJSONObject, str, paramMap)) && (!putNull(paramJSONObject, str, paramMap)) && (!putString(paramJSONObject, str, paramMap)) && (!putBoolean(paramJSONObject, str, paramMap)))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("unrecognized property ");
+        localStringBuilder.append(str);
+        Logger.w("Utils", localStringBuilder.toString());
       }
     }
     return paramMap;
@@ -56,95 +59,96 @@ public class JsValueUtil
   
   private static Object getArrayObject(String paramString)
   {
-    ArrayList localArrayList = null;
     try
     {
-      JSONArray localJSONArray = new JSONArray(paramString);
-      paramString = localJSONArray;
+      localObject = new JSONArray(paramString);
+      paramString = (String)localObject;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        Log.e("Utils", "unexpected json array notation " + paramString);
-        paramString = null;
-      }
+      Object localObject;
+      label14:
+      break label14;
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("unexpected json array notation ");
+    ((StringBuilder)localObject).append(paramString);
+    Log.e("Utils", ((StringBuilder)localObject).toString());
+    paramString = null;
     if (paramString != null) {
-      localArrayList = putArray(paramString, new ArrayList());
+      return putArray(paramString, new ArrayList());
     }
-    return localArrayList;
+    return null;
   }
   
   private static Object getMapObject(String paramString)
   {
-    Object localObject2 = null;
     try
     {
-      localObject1 = new JSONObject(paramString);
-      paramString = (String)localObject1;
+      localObject = new JSONObject(paramString);
+      paramString = (String)localObject;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        Object localObject1;
-        Log.e("Utils", "unexpected json object notation " + paramString);
-        paramString = null;
-      }
+      Object localObject;
+      label14:
+      break label14;
     }
-    localObject1 = localObject2;
-    if (paramString != null)
-    {
-      localObject1 = localObject2;
-      if (!JSONObject.NULL.equals(paramString)) {
-        localObject1 = convertJsonToMap(paramString, new HashMap());
-      }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("unexpected json object notation ");
+    ((StringBuilder)localObject).append(paramString);
+    Log.e("Utils", ((StringBuilder)localObject).toString());
+    paramString = null;
+    if ((paramString != null) && (!JSONObject.NULL.equals(paramString))) {
+      return convertJsonToMap(paramString, new HashMap());
     }
-    return localObject1;
+    return null;
   }
   
   private static ArrayList putArray(JSONArray paramJSONArray, ArrayList paramArrayList)
   {
     int i = 0;
-    for (;;)
+    while (i < paramJSONArray.length())
     {
-      if (i < paramJSONArray.length())
+      try
       {
-        Object localObject2;
-        try
+        localObject1 = paramJSONArray.get(i);
+        if (JSONObject.NULL.equals(localObject1))
         {
-          Object localObject1 = paramJSONArray.get(i);
-          if (JSONObject.NULL.equals(localObject1))
-          {
-            paramArrayList.add(null);
-          }
-          else if ((localObject1 instanceof JSONObject))
+          paramArrayList.add(null);
+        }
+        else
+        {
+          Object localObject2;
+          if ((localObject1 instanceof JSONObject))
           {
             localObject2 = new HashMap();
             paramArrayList.add(convertJsonToMap((JSONObject)localObject1, (Map)localObject2));
           }
-        }
-        catch (JSONException localJSONException)
-        {
-          Logger.e("Utils", "failed get value from json array " + paramJSONArray);
-        }
-        if ((localJSONException instanceof JSONArray))
-        {
-          localObject2 = new ArrayList();
-          paramArrayList.add(putArray((JSONArray)localJSONException, (ArrayList)localObject2));
-        }
-        else
-        {
-          paramArrayList.add(localJSONException);
+          else if ((localObject1 instanceof JSONArray))
+          {
+            localObject2 = new ArrayList();
+            paramArrayList.add(putArray((JSONArray)localObject1, (ArrayList)localObject2));
+          }
+          else
+          {
+            paramArrayList.add(localObject1);
+          }
         }
       }
-      else
+      catch (JSONException localJSONException)
       {
-        return paramArrayList;
+        Object localObject1;
+        label110:
+        break label110;
       }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("failed get value from json array ");
+      ((StringBuilder)localObject1).append(paramJSONArray);
+      Logger.e("Utils", ((StringBuilder)localObject1).toString());
       i += 1;
     }
+    return paramArrayList;
   }
   
   private static boolean putArray(JSONObject paramJSONObject, String paramString, Map paramMap)
@@ -154,7 +158,11 @@ public class JsValueUtil
       paramMap.put(paramString, putArray(paramJSONObject.getJSONArray(paramString), new ArrayList()));
       return true;
     }
-    catch (JSONException paramJSONObject) {}
+    catch (JSONException paramJSONObject)
+    {
+      label25:
+      break label25;
+    }
     return false;
   }
   
@@ -165,7 +173,11 @@ public class JsValueUtil
       paramMap.put(paramString, Boolean.valueOf(paramJSONObject.getBoolean(paramString)));
       return true;
     }
-    catch (JSONException paramJSONObject) {}
+    catch (JSONException paramJSONObject)
+    {
+      label18:
+      break label18;
+    }
     return false;
   }
   
@@ -188,20 +200,28 @@ public class JsValueUtil
     }
     catch (JSONException localJSONException1)
     {
-      try
-      {
-        paramMap.put(paramString, Long.valueOf(paramJSONObject.getLong(paramString)));
-        return true;
-      }
-      catch (JSONException localJSONException2)
-      {
-        try
-        {
-          paramMap.put(paramString, Integer.valueOf(paramJSONObject.getInt(paramString)));
-          return true;
-        }
-        catch (JSONException paramJSONObject) {}
-      }
+      label18:
+      label36:
+      label54:
+      break label18;
+    }
+    try
+    {
+      paramMap.put(paramString, Long.valueOf(paramJSONObject.getLong(paramString)));
+      return true;
+    }
+    catch (JSONException localJSONException2)
+    {
+      break label36;
+    }
+    try
+    {
+      paramMap.put(paramString, Integer.valueOf(paramJSONObject.getInt(paramString)));
+      return true;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      break label54;
     }
     return false;
   }
@@ -216,7 +236,11 @@ public class JsValueUtil
       paramMap.put(paramString, localHashMap);
       return true;
     }
-    catch (JSONException paramJSONObject) {}
+    catch (JSONException paramJSONObject)
+    {
+      label31:
+      break label31;
+    }
     return false;
   }
   
@@ -227,13 +251,17 @@ public class JsValueUtil
       paramMap.put(paramString, paramJSONObject.getString(paramString));
       return true;
     }
-    catch (JSONException paramJSONObject) {}
+    catch (JSONException paramJSONObject)
+    {
+      label15:
+      break label15;
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.v8rt.engine.JsValueUtil
  * JD-Core Version:    0.7.0.1
  */

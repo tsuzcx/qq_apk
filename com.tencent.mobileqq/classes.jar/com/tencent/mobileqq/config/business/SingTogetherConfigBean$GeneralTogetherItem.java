@@ -35,13 +35,26 @@ public class SingTogetherConfigBean$GeneralTogetherItem
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("showC2CChatSetting=").append(this.jdField_a_of_type_Boolean).append(" showGroupChatSetting=").append(this.jdField_b_of_type_Boolean).append(" serviceType=").append(this.jdField_a_of_type_Int).append(" jumpType=").append(this.jdField_b_of_type_Int).append(" version=").append(this.c).append(" appId=").append(this.d).append(" jumpUrl=").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("showC2CChatSetting=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" showGroupChatSetting=");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(" serviceType=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" jumpType=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(" version=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(" appId=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(" jumpUrl=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.SingTogetherConfigBean.GeneralTogetherItem
  * JD-Core Version:    0.7.0.1
  */

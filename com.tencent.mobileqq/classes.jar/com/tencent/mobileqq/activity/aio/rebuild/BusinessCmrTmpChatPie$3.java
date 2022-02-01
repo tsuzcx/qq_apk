@@ -1,64 +1,54 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qidian.QidianManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.EqqDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import mqq.os.MqqHandler;
 
 class BusinessCmrTmpChatPie$3
-  implements View.OnClickListener
+  implements BusinessObserver
 {
   BusinessCmrTmpChatPie$3(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    boolean bool = true;
-    Object localObject1 = paramView.getTag();
-    if ((localObject1 == null) || (!(localObject1 instanceof Integer))) {}
-    for (;;)
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      Object localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-      switch (((Integer)localObject1).intValue())
-      {
-      default: 
-        break;
-      case 1: 
-        ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, (String)localObject2, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, true);
-        break;
-      case 2: 
-        ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, (String)localObject2, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, false);
-        break;
-      case 3: 
-        if (this.a.b.f(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
-        {
-          localObject1 = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-          localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-          String str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131690778);
-          if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("param_return_addr") != null) {}
-          for (;;)
-          {
-            ChatActivityUtils.a((Activity)localObject1, (SessionInfo)localObject2, str, bool);
-            break;
-            bool = false;
-          }
-        }
-        this.a.bm();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("success:");
+      ((StringBuilder)localObject).append(String.valueOf(paramBoolean));
+      QLog.d("BusinessChatPie", 2, ((StringBuilder)localObject).toString());
+    }
+    if (paramBoolean)
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null) {
+        localObject = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
       }
     }
+    try
+    {
+      ((mobileqq_mp.GetEqqAccountDetailInfoResponse)localObject).mergeFrom(paramBundle);
+      if (((mobileqq_mp.RetInfo)((mobileqq_mp.GetEqqAccountDetailInfoResponse)localObject).ret_info.get()).ret_code.get() == 0)
+      {
+        paramBundle = new EqqDetail((mobileqq_mp.GetEqqAccountDetailInfoResponse)localObject);
+        ThreadManager.getFileThreadHandler().post(new BusinessCmrTmpChatPie.3.1(this, paramBundle));
+      }
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramBundle) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie.3
  * JD-Core Version:    0.7.0.1
  */

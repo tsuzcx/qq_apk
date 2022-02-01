@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ZoomButtonsController;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.webview.dtwebview.DtX5WebView;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
 import java.lang.reflect.Field;
@@ -25,7 +26,7 @@ import java.util.List;
 import java.util.Timer;
 
 public class FileWebView
-  extends WebView
+  extends DtX5WebView
 {
   float jdField_a_of_type_Float = 1.0F;
   long jdField_a_of_type_Long = 0L;
@@ -111,129 +112,151 @@ public class FileWebView
       return false;
     }
     Object localObject1 = paramString.split("[?]");
-    int i;
-    Object localObject2;
-    WebView localWebView;
-    if ((paramString.length() > 1) && (localObject1.length > 1))
+    i = paramString.length();
+    paramString = "";
+    if ((i > 1) && (localObject1.length > 1))
     {
       paramWebView = localObject1[0];
       paramString = localObject1[1].replaceFirst("p=", "");
-      paramWebView = Arrays.asList((paramWebView + "/#").split("/"));
-      if (paramWebView.size() < 5) {
-        return false;
-      }
-      if (!((String)paramWebView.get(2)).equalsIgnoreCase("preview")) {
-        return false;
-      }
-      String str = (String)paramWebView.get(3);
-      localObject1 = null;
-      try
-      {
-        paramWebView = FileManagerUtil.a(paramString);
-        localObject1 = paramWebView;
-      }
-      catch (Exception paramWebView)
-      {
-        for (;;)
-        {
-          Method[] arrayOfMethod;
-          int j;
-          if (QLog.isColorLevel()) {
-            QLog.e("FileWebView", 1, "paramString parse fail!,paramString:" + paramString);
-          }
-          paramWebView.printStackTrace();
-          continue;
-          i += 1;
-          paramWebView = localWebView;
-        }
-      }
-      arrayOfMethod = paramJSInterface.getClass().getMethods();
-      j = arrayOfMethod.length;
-      i = 0;
-      paramWebView = null;
-      if (i < j)
-      {
-        localObject2 = arrayOfMethod[i];
-        localWebView = paramWebView;
-        if (((Method)localObject2).getName().equals(str))
-        {
-          paramWebView = ((Method)localObject2).getParameterTypes();
-          localWebView = paramWebView;
-          if (paramWebView.length == ((LinkedHashMap)localObject1).size())
-          {
-            localWebView = paramWebView;
-            paramWebView = (WebView)localObject2;
-            label214:
-            if (paramWebView != null) {
-              break label278;
-            }
-            paramJSInterface.webLog(paramString);
-            return true;
-          }
-        }
-      }
     }
-    for (;;)
+    else
     {
-      try
+      paramWebView = "";
+    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(paramWebView);
+    ((StringBuilder)localObject1).append("/#");
+    paramWebView = Arrays.asList(((StringBuilder)localObject1).toString().split("/"));
+    if (paramWebView.size() < 5) {
+      return false;
+    }
+    if (!((String)paramWebView.get(2)).equalsIgnoreCase("preview")) {
+      return false;
+    }
+    String str = (String)paramWebView.get(3);
+    try
+    {
+      localObject1 = FileManagerUtil.a(paramString);
+    }
+    catch (Exception paramWebView)
+    {
+      if (QLog.isColorLevel())
       {
-        label278:
-        if (((LinkedHashMap)localObject1).size() == 0)
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("paramString parse fail!,paramString:");
+        ((StringBuilder)localObject1).append(paramString);
+        QLog.e("FileWebView", 1, ((StringBuilder)localObject1).toString());
+      }
+      paramWebView.printStackTrace();
+      localObject1 = null;
+    }
+    Method[] arrayOfMethod = paramJSInterface.getClass().getMethods();
+    int j = arrayOfMethod.length;
+    paramWebView = null;
+    i = 0;
+    Object localObject3;
+    while (i < j)
+    {
+      localObject3 = arrayOfMethod[i];
+      localObject2 = paramWebView;
+      if (((Method)localObject3).getName().equals(str))
+      {
+        paramWebView = ((Method)localObject3).getParameterTypes();
+        localObject2 = paramWebView;
+        if (paramWebView.length == ((LinkedHashMap)localObject1).size())
         {
-          paramWebView.invoke(paramJSInterface, new Object[0]);
-          return true;
-        }
-        paramString = ((LinkedHashMap)localObject1).values().toArray();
-        localObject1 = new Object[localWebView.length];
-        i = 0;
-        if (i < localWebView.length)
-        {
-          localObject2 = a(localWebView[i], i).toString().toLowerCase();
-          if ((((String)localObject2).contains("int")) || (((String)localObject2).contains("integer"))) {
-            localObject1[i] = Integer.valueOf(Integer.parseInt((String)paramString[i]));
-          } else if (((String)localObject2).contains("long")) {
-            localObject1[i] = Long.valueOf(Long.parseLong((String)paramString[i]));
-          }
+          localObject2 = localObject3;
+          break label300;
         }
       }
-      catch (IllegalAccessException paramWebView)
+      i += 1;
+      paramWebView = (WebView)localObject2;
+    }
+    Object localObject2 = null;
+    label300:
+    if (localObject2 == null)
+    {
+      paramJSInterface.webLog(paramString);
+      return true;
+    }
+    try
+    {
+      if (((LinkedHashMap)localObject1).size() == 0)
       {
-        QLog.e("FileWebView", 2, "invoke method exception!!! IllegalAccessException");
-        return false;
-        if (((String)localObject2).contains("string")) {
-          localObject1[i] = ((String)paramString[i]);
-        }
-      }
-      catch (IllegalArgumentException paramWebView)
-      {
-        QLog.e("FileWebView", 2, "invoke method exception!!! IllegalArgumentException");
-        return false;
-        if (!((String)localObject2).contains("boolean")) {
-          break label555;
-        }
-        localObject1[i] = Boolean.valueOf(Boolean.parseBoolean((String)paramString[i]));
-      }
-      catch (InvocationTargetException paramWebView)
-      {
-        QLog.e("FileWebView", 1, "invoke method exception!!! InvocationTargetException");
-        return false;
-        paramWebView.invoke(paramJSInterface, (Object[])localObject1);
+        ((Method)localObject2).invoke(paramJSInterface, new Object[0]);
         return true;
       }
-      catch (Exception paramWebView)
+      paramString = ((LinkedHashMap)localObject1).values().toArray();
+      localObject1 = new Object[paramWebView.length];
+      i = 0;
+    }
+    catch (IllegalAccessException paramWebView)
+    {
+      break label565;
+    }
+    catch (IllegalArgumentException paramWebView)
+    {
+      break label554;
+    }
+    catch (InvocationTargetException paramWebView)
+    {
+      break label543;
+    }
+    catch (Exception paramWebView)
+    {
+      for (;;) {}
+    }
+    if (i < paramWebView.length) {
+      localObject3 = paramWebView[i];
+    }
+    try
+    {
+      localObject3 = a((Type)localObject3, i).toString().toLowerCase();
+      if ((!((String)localObject3).contains("int")) && (!((String)localObject3).contains("integer")))
       {
-        QLog.e("FileWebView", 1, "invoke method exception!!! Exception");
-        return false;
+        if (((String)localObject3).contains("long")) {
+          localObject1[i] = Long.valueOf(Long.parseLong((String)paramString[i]));
+        } else if (((String)localObject3).contains("string")) {
+          localObject1[i] = ((String)paramString[i]);
+        } else if (((String)localObject3).contains("boolean")) {
+          localObject1[i] = Boolean.valueOf(Boolean.parseBoolean((String)paramString[i]));
+        }
       }
-      localWebView = paramWebView;
-      paramWebView = null;
-      break label214;
-      paramWebView = "";
-      paramString = "";
-      break;
-      label555:
+      else {
+        localObject1[i] = Integer.valueOf(Integer.parseInt((String)paramString[i]));
+      }
+    }
+    catch (IllegalAccessException paramWebView)
+    {
+      break label565;
+    }
+    catch (IllegalArgumentException paramWebView)
+    {
+      break label554;
+    }
+    catch (InvocationTargetException paramWebView)
+    {
+      break label543;
+    }
+    catch (Exception paramWebView)
+    {
+      break label532;
       i += 1;
     }
+    ((Method)localObject2).invoke(paramJSInterface, (Object[])localObject1);
+    return true;
+    label532:
+    QLog.e("FileWebView", 1, "invoke method exception!!! Exception");
+    return false;
+    label543:
+    QLog.e("FileWebView", 1, "invoke method exception!!! InvocationTargetException");
+    return false;
+    label554:
+    QLog.e("FileWebView", 2, "invoke method exception!!! IllegalArgumentException");
+    return false;
+    label565:
+    QLog.e("FileWebView", 2, "invoke method exception!!! IllegalAccessException");
+    return false;
   }
   
   public void destroy()
@@ -242,7 +265,13 @@ public class FileWebView
     {
       if (this.jdField_a_of_type_JavaUtilTimer != null)
       {
-        QLog.d("FileWebView", 4, "memoryleaktest webview timer " + this.jdField_a_of_type_JavaUtilTimer + " this " + this + "is cancel");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("memoryleaktest webview timer ");
+        localStringBuilder.append(this.jdField_a_of_type_JavaUtilTimer);
+        localStringBuilder.append(" this ");
+        localStringBuilder.append(this);
+        localStringBuilder.append("is cancel");
+        QLog.d("FileWebView", 4, localStringBuilder.toString());
         this.jdField_a_of_type_JavaUtilTimer.cancel();
         this.jdField_a_of_type_JavaUtilTimer = null;
       }
@@ -256,46 +285,59 @@ public class FileWebView
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface == null) {
       return super.dispatchTouchEvent(paramMotionEvent);
     }
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return super.dispatchTouchEvent(paramMotionEvent);
-      this.jdField_a_of_type_Long = Calendar.getInstance().getTimeInMillis();
-      this.jdField_b_of_type_Float = paramMotionEvent.getY();
-      continue;
-      if (Calendar.getInstance().getTimeInMillis() - this.jdField_a_of_type_Long < 80L)
+      if (i != 1)
       {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.e();
-        return super.dispatchTouchEvent(paramMotionEvent);
+        if (i == 2) {
+          this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.d();
+        }
       }
-      this.c = paramMotionEvent.getY();
-      if (this.jdField_b_of_type_Float > this.c)
+      else
       {
-        getContentHeight();
-        getHeight();
-        int i = getWebScrollY();
-        getScale();
-        if ((getContentHeight() * getScale() - (getView().getHeight() + getWebScrollY()) < 1.0D) || (i == 0))
+        if (Calendar.getInstance().getTimeInMillis() - this.jdField_a_of_type_Long < 80L)
         {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.b();
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.c();
+          this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.e();
           return super.dispatchTouchEvent(paramMotionEvent);
         }
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.a();
-      }
-      do
-      {
+        this.c = paramMotionEvent.getY();
+        if (this.jdField_b_of_type_Float > this.c)
+        {
+          getContentHeight();
+          getHeight();
+          i = getWebScrollY();
+          getScale();
+          if ((getContentHeight() * getScale() - (getView().getHeight() + getWebScrollY()) >= 1.0D) && (i != 0))
+          {
+            this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.a();
+          }
+          else
+          {
+            this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.b();
+            this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.c();
+            return super.dispatchTouchEvent(paramMotionEvent);
+          }
+        }
+        else
+        {
+          this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.f();
+          if (getScrollY() < 1.0F)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.a(false);
+            this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.c();
+            return super.dispatchTouchEvent(paramMotionEvent);
+          }
+        }
         this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.c();
-        break;
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.f();
-      } while (getScrollY() >= 1.0F);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.a(false);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.c();
-      return super.dispatchTouchEvent(paramMotionEvent);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.d();
+      }
     }
+    else
+    {
+      this.jdField_a_of_type_Long = Calendar.getInstance().getTimeInMillis();
+      this.jdField_b_of_type_Float = paramMotionEvent.getY();
+    }
+    return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   public boolean onCheckIsTextEditor()
@@ -306,32 +348,43 @@ public class FileWebView
     return super.onCheckIsTextEditor();
   }
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface == null) {}
-    do
-    {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface == null) {
       return;
-      paramInt1 = getContentHeight();
-      paramInt3 = getView().getHeight();
-      int i = getWebScrollY();
-      float f = getScale();
-      if (QLog.isDevelopLevel()) {
-        QLog.d("FileWebView", 4, "contentHeight[" + paramInt1 + "],height[" + paramInt3 + "],scroolY[" + i + "],scale[" + f + "]");
-      }
-      f = getContentHeight() * getScale() - (getView().getHeight() + getWebScrollY());
-      if ((f < paramInt3 * 2) && (!FileManagerUtil.a())) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.g();
-      }
-      if (f < 2.5D) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.b();
-      }
-    } while ((paramInt2 != 0) || (paramInt4 == 0));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.a(false);
+    }
+    paramInt1 = getContentHeight();
+    paramInt3 = getView().getHeight();
+    int i = getWebScrollY();
+    float f = getScale();
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("contentHeight[");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append("],height[");
+      localStringBuilder.append(paramInt3);
+      localStringBuilder.append("],scroolY[");
+      localStringBuilder.append(i);
+      localStringBuilder.append("],scale[");
+      localStringBuilder.append(f);
+      localStringBuilder.append("]");
+      QLog.d("FileWebView", 4, localStringBuilder.toString());
+    }
+    f = getContentHeight() * getScale() - (getView().getHeight() + getWebScrollY());
+    if ((f < paramInt3 * 2) && (!FileManagerUtil.a())) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.g();
+    }
+    if (f < 2.5D) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.b();
+    }
+    if ((paramInt2 == 0) && (paramInt4 != 0)) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.a(false);
+    }
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (paramInt2 != 0) {
       super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
@@ -356,21 +409,9 @@ public class FileWebView
       localField.setAccessible(true);
       ZoomButtonsController localZoomButtonsController = new ZoomButtonsController(paramView);
       localZoomButtonsController.getZoomControls().setVisibility(8);
-      return;
-    }
-    catch (SecurityException paramView)
-    {
       try
       {
         localField.set(paramView, localZoomButtonsController);
-        return;
-      }
-      catch (IllegalArgumentException paramView)
-      {
-        paramView.printStackTrace();
-        return;
-        paramView = paramView;
-        paramView.printStackTrace();
         return;
       }
       catch (IllegalAccessException paramView)
@@ -378,8 +419,19 @@ public class FileWebView
         paramView.printStackTrace();
         return;
       }
+      catch (IllegalArgumentException paramView)
+      {
+        paramView.printStackTrace();
+        return;
+      }
+      return;
     }
     catch (NoSuchFieldException paramView)
+    {
+      paramView.printStackTrace();
+      return;
+    }
+    catch (SecurityException paramView)
     {
       paramView.printStackTrace();
     }
@@ -387,7 +439,7 @@ public class FileWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.FileWebView
  * JD-Core Version:    0.7.0.1
  */

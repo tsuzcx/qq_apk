@@ -5,8 +5,6 @@ import com.tencent.mobileqq.app.HardCodeUtil;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.concurrent.TimeUnit;
 
 public class DateUtils
@@ -57,15 +55,32 @@ public class DateUtils
   
   public static boolean a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    Calendar localCalendar;
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
-      localCalendar = Calendar.getInstance();
-      paramString = UIUtils.a(paramString);
-    } while ((localCalendar.get(1) != paramString[0]) || (localCalendar.get(2) + 1 != paramString[1]) || (localCalendar.get(5) != paramString[2]));
-    return true;
+    }
+    Calendar localCalendar = Calendar.getInstance();
+    paramString = a(paramString);
+    return (localCalendar.get(1) == paramString[0]) && (localCalendar.get(2) + 1 == paramString[1]) && (localCalendar.get(5) == paramString[2]);
+  }
+  
+  public static int[] a(long paramLong)
+  {
+    return new int[] { (int)(paramLong / 10000L), (int)(paramLong % 10000L / 100L), (int)(paramLong % 100L) };
+  }
+  
+  public static int[] a(String paramString)
+  {
+    try
+    {
+      paramString = a(Long.valueOf(paramString).longValue());
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      label13:
+      break label13;
+    }
+    return new int[] { 0, 0, 0 };
   }
   
   public static String[] a(long paramLong)
@@ -74,12 +89,12 @@ public class DateUtils
     int i = (int)((System.currentTimeMillis() - paramLong) / 86400000L);
     if (i == 0)
     {
-      arrayOfString[1] = HardCodeUtil.a(2131702839);
+      arrayOfString[1] = HardCodeUtil.a(2131719716);
       return arrayOfString;
     }
     if (i == 1)
     {
-      arrayOfString[1] = HardCodeUtil.a(2131702879);
+      arrayOfString[1] = HardCodeUtil.a(2131720491);
       return arrayOfString;
     }
     return jdField_a_of_type_JavaTextDateFormat.format(Long.valueOf(paramLong)).split("/");
@@ -96,10 +111,10 @@ public class DateUtils
     long l = System.currentTimeMillis();
     int i = (int)((l - paramLong) / 86400000L);
     if (i == 0) {
-      return HardCodeUtil.a(2131702871);
+      return HardCodeUtil.a(2131719716);
     }
     if (i == 1) {
-      return HardCodeUtil.a(2131702858);
+      return HardCodeUtil.a(2131720491);
     }
     if (a(l, paramLong)) {
       return d.format(Long.valueOf(paramLong));
@@ -119,37 +134,17 @@ public class DateUtils
   
   public static boolean c(long paramLong)
   {
-    boolean bool2 = false;
-    GregorianCalendar localGregorianCalendar = new GregorianCalendar();
-    localGregorianCalendar.set(11, 0);
-    localGregorianCalendar.set(12, 0);
-    localGregorianCalendar.set(13, 0);
-    localGregorianCalendar.set(14, 0);
-    long l = localGregorianCalendar.getTime().getTime();
-    boolean bool1 = bool2;
-    if (paramLong - l > 0L)
-    {
-      bool1 = bool2;
-      if (paramLong - l < 86400000L) {
-        bool1 = true;
-      }
-    }
-    return bool1;
+    return (int)((System.currentTimeMillis() - paramLong) / 86400000L) == 1;
   }
   
   public static String d(long paramLong)
   {
     return c.format(Long.valueOf(paramLong));
   }
-  
-  public static boolean d(long paramLong)
-  {
-    return (int)((System.currentTimeMillis() - paramLong) / 86400000L) == 1;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.DateUtils
  * JD-Core Version:    0.7.0.1
  */

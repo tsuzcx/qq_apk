@@ -2,7 +2,7 @@ package com.tencent.mobileqq.vas.qvip.fragment;
 
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
+import com.tencent.mobileqq.qqgamepub.view.QQGamePubViewpager;
 
 class QQVipFeedWedFragment$3
   implements ValueAnimator.AnimatorUpdateListener
@@ -16,7 +16,7 @@ class QQVipFeedWedFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.fragment.QQVipFeedWedFragment.3
  * JD-Core Version:    0.7.0.1
  */

@@ -24,55 +24,45 @@ public class QQEmojiResImpl
   
   public String getDescription(int paramInt)
   {
-    String str2 = "";
-    String str1 = str2;
-    if (this.mConfigItemMap != null)
-    {
-      str1 = str2;
-      if (this.mConfigItemMap.containsKey(Integer.valueOf(paramInt))) {
-        str1 = ((QQSysAndEmojiResInfo.QQEmoConfigItem)this.mConfigItemMap.get(Integer.valueOf(paramInt))).QDes;
-      }
+    if ((this.mConfigItemMap != null) && (this.mConfigItemMap.containsKey(Integer.valueOf(paramInt)))) {
+      return ((QQSysAndEmojiResInfo.QQEmoConfigItem)this.mConfigItemMap.get(Integer.valueOf(paramInt))).QDes;
     }
-    return str1;
+    return "";
   }
   
   public Drawable getDrawable(int paramInt)
   {
-    for (;;)
+    URL localURL1;
+    URL localURL2;
+    try
     {
+      localURL1 = new URL("qqsys_emoji", "host_emoji", String.format("emoji_%03d.png", new Object[] { Integer.valueOf(paramInt) }));
+      localURL2 = localURL1;
       try
       {
-        localURL1 = new URL("qqsys_emoji", "host_emoji", String.format("emoji_%03d.png", new Object[] { Integer.valueOf(paramInt) }));
-        localURL2 = localURL1;
-        localURL2 = localURL1;
-      }
-      catch (MalformedURLException localMalformedURLException1)
-      {
-        try
-        {
-          if (QLog.isColorLevel())
-          {
-            QLog.d("QQEmojiResInfo", 2, "getDrawable url:" + localURL1.toString());
-            localURL2 = localURL1;
-          }
-          return getUrlDrawable(localURL2, null, false, String.valueOf(paramInt));
+        if (!QLog.isColorLevel()) {
+          break label105;
         }
-        catch (MalformedURLException localMalformedURLException2)
-        {
-          URL localURL1;
-          URL localURL2;
-          break label82;
-        }
-        localMalformedURLException1 = localMalformedURLException1;
-        localURL1 = null;
-      }
-      label82:
-      if (QLog.isColorLevel())
-      {
-        QLog.d("QQEmojiResInfo", 2, "getDrawable ,", localMalformedURLException1);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getDrawable url:");
+        localStringBuilder.append(localURL1.toString());
+        QLog.d("QQEmojiResInfo", 2, localStringBuilder.toString());
         localURL2 = localURL1;
       }
+      catch (MalformedURLException localMalformedURLException1) {}
+      localURL2 = localURL1;
     }
+    catch (MalformedURLException localMalformedURLException2)
+    {
+      localURL1 = null;
+    }
+    if (QLog.isColorLevel())
+    {
+      QLog.d("QQEmojiResInfo", 2, "getDrawable ,", localMalformedURLException2);
+      localURL2 = localURL1;
+    }
+    label105:
+    return getUrlDrawable(localURL2, null, false, String.valueOf(paramInt));
   }
   
   public int getMaxLocalId()
@@ -82,16 +72,10 @@ public class QQEmojiResImpl
   
   public int getServerId(int paramInt)
   {
-    int j = -1;
-    int i = j;
-    if (this.mConfigItemMap != null)
-    {
-      i = j;
-      if (this.mConfigItemMap.containsKey(Integer.valueOf(paramInt))) {
-        i = Integer.parseInt(((QQSysAndEmojiResInfo.QQEmoConfigItem)this.mConfigItemMap.get(Integer.valueOf(paramInt))).QCid);
-      }
+    if ((this.mConfigItemMap != null) && (this.mConfigItemMap.containsKey(Integer.valueOf(paramInt)))) {
+      return Integer.parseInt(((QQSysAndEmojiResInfo.QQEmoConfigItem)this.mConfigItemMap.get(Integer.valueOf(paramInt))).QCid);
     }
-    return i;
+    return -1;
   }
   
   public boolean isResReady(int paramInt)
@@ -134,24 +118,17 @@ public class QQEmojiResImpl
         this.mEMCodeToLocalMap.clear();
         long l = System.currentTimeMillis();
         int i = 0;
-        for (;;)
+        while (i < localJSONArray.length())
         {
-          if (i >= localJSONArray.length()) {
-            break label394;
-          }
           localObject1 = null;
           try
           {
-            localObject2 = localJSONArray.getJSONObject(i);
-            localObject1 = localObject2;
+            JSONObject localJSONObject = localJSONArray.getJSONObject(i);
+            localObject1 = localJSONObject;
           }
           catch (JSONException localJSONException)
           {
-            for (;;)
-            {
-              Object localObject2;
-              localJSONException.printStackTrace();
-            }
+            localJSONException.printStackTrace();
           }
           localObject1 = (QQSysAndEmojiResInfo.QQEmoConfigItem)JSONConverter.a((JSONObject)localObject1, QQSysAndEmojiResInfo.QQEmoConfigItem.class);
           try
@@ -160,7 +137,11 @@ public class QQEmojiResImpl
             int k = Integer.parseInt(((QQSysAndEmojiResInfo.QQEmoConfigItem)localObject1).QCid);
             if (!TextUtils.isEmpty(((QQSysAndEmojiResInfo.QQEmoConfigItem)localObject1).EMCode))
             {
-              localObject2 = "[em]e" + ((QQSysAndEmojiResInfo.QQEmoConfigItem)localObject1).EMCode + "[/em]";
+              Object localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("[em]e");
+              ((StringBuilder)localObject2).append(((QQSysAndEmojiResInfo.QQEmoConfigItem)localObject1).EMCode);
+              ((StringBuilder)localObject2).append("[/em]");
+              localObject2 = ((StringBuilder)localObject2).toString();
               String str = ((QQSysAndEmojiResInfo.QQEmoConfigItem)localObject1).QDes;
               this.mDesToEMCodeMap.put(str, localObject2);
               this.mEMCodeToLocalMap.put(localObject2, Integer.valueOf(j));
@@ -170,20 +151,20 @@ public class QQEmojiResImpl
             if (!isEmoticonHide((QQSysAndEmojiResInfo.QQEmoConfigItem)localObject1)) {
               this.mOrderList.add(Integer.valueOf(j));
             }
-            if (j > this.mMaxLocalId) {
-              this.mMaxLocalId = j;
+            if (j <= this.mMaxLocalId) {
+              break label398;
             }
+            this.mMaxLocalId = j;
           }
           catch (NumberFormatException localNumberFormatException)
           {
-            for (;;)
-            {
-              QLog.d("QQEmojiResInfo", 1, new Object[] { "error occur in emoji AQLid:", ((QQSysAndEmojiResInfo.QQEmoConfigItem)localObject1).AQLid });
-            }
+            label375:
+            break label375;
           }
+          QLog.d("QQEmojiResInfo", 1, new Object[] { "error occur in emoji AQLid:", ((QQSysAndEmojiResInfo.QQEmoConfigItem)localObject1).AQLid });
+          label398:
           i += 1;
         }
-        label394:
         if (QLog.isColorLevel()) {
           QLog.d("QQEmojiResInfo", 2, new Object[] { "emoji configItem:", Integer.valueOf(this.mConfigItemMap.size()), " ,orderlist:", Integer.valueOf(this.mOrderList.size()), ", maxLid:", Integer.valueOf(this.mMaxLocalId), " ,costTime = [", Long.valueOf(System.currentTimeMillis() - l), "]" });
         }
@@ -210,7 +191,7 @@ public class QQEmojiResImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.QQEmojiResImpl
  * JD-Core Version:    0.7.0.1
  */

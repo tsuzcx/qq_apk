@@ -10,29 +10,14 @@ class WebProcessReceiver$1
   
   public void run()
   {
-    WebProcessReceiver localWebProcessReceiver;
-    Context localContext;
-    boolean bool2;
-    if (TbsDownloader.needDownload(this.val$context, this.val$isDownloadForeground))
-    {
-      localWebProcessReceiver = this.this$0;
-      localContext = this.val$context;
-      bool2 = this.val$isDownloadForeground;
-      if (this.val$fromMiniApp) {
-        break label49;
-      }
-    }
-    label49:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      localWebProcessReceiver.downloadTbs(localContext, false, bool2, bool1);
-      return;
+    if (TbsDownloader.needDownload(this.val$context, this.val$isDownloadForeground)) {
+      this.this$0.downloadTbs(this.val$context, false, this.val$isDownloadForeground, this.val$fromMiniApp ^ true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.receiver.WebProcessReceiver.1
  * JD-Core Version:    0.7.0.1
  */

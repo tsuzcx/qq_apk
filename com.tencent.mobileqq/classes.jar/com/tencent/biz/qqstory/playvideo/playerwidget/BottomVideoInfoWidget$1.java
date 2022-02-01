@@ -16,50 +16,48 @@ class BottomVideoInfoWidget$1
   
   public boolean onLongClick(View paramView)
   {
+    int j = paramView.getId();
     int i = 0;
-    switch (paramView.getId())
+    boolean bool;
+    if (j != 2131364910)
     {
-    default: 
-    case 2131371850: 
-    case 2131377936: 
-      do
-      {
-        do
-        {
-          return true;
-          paramView = (StoryConfigManager)SuperManager.a(10);
-          if (((Boolean)paramView.b("player_show_debug_panel", Boolean.valueOf(false))).booleanValue()) {
-            break;
-          }
-          bool = true;
-          paramView.b("player_show_debug_panel", Boolean.valueOf(bool));
-          paramView = ((StoryPlayerGroupHolder)this.a.a()).a();
-        } while (paramView == null);
-        paramView = (VideoViewVideoHolder)paramView.a(VideoViewVideoHolder.class);
-      } while (paramView == null);
-      if (bool) {}
-      for (;;)
-      {
-        paramView.a(i);
+      if ((j != 2131371472) && (j != 2131377360)) {
         return true;
-        bool = false;
-        break;
-        i = 8;
+      }
+      paramView = (StoryConfigManager)SuperManager.a(10);
+      bool = ((Boolean)paramView.b("player_show_debug_panel", Boolean.valueOf(false))).booleanValue() ^ true;
+      paramView.b("player_show_debug_panel", Boolean.valueOf(bool));
+      paramView = ((StoryPlayerGroupHolder)this.a.a()).a();
+      if (paramView != null)
+      {
+        paramView = (VideoViewVideoHolder)paramView.a(VideoViewVideoHolder.class);
+        if (paramView != null)
+        {
+          if (!bool) {
+            i = 8;
+          }
+          paramView.a(i);
+          return true;
+        }
       }
     }
-    paramView = (StoryConfigManager)SuperManager.a(10);
-    if (!((Boolean)paramView.b("player_use_tvk", Boolean.valueOf(false))).booleanValue()) {}
-    for (boolean bool = true;; bool = false)
+    else
     {
+      paramView = (StoryConfigManager)SuperManager.a(10);
+      bool = ((Boolean)paramView.b("player_use_tvk", Boolean.valueOf(false))).booleanValue() ^ true;
       paramView.b("player_use_tvk", Boolean.valueOf(bool));
-      QQToast.a(this.a.b(), "UserTVK: " + bool, 0).a();
-      return true;
+      paramView = this.a.b();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("UserTVK: ");
+      localStringBuilder.append(bool);
+      QQToast.a(paramView, localStringBuilder.toString(), 0).a();
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.BottomVideoInfoWidget.1
  * JD-Core Version:    0.7.0.1
  */

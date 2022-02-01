@@ -52,20 +52,11 @@ public final class QflutterNativeRouterPlugin
     Intrinsics.checkParameterIsNotNull(paramMethodCall, "call");
     Intrinsics.checkParameterIsNotNull(paramResult, "result");
     Object localObject1 = paramMethodCall.method;
-    if (localObject1 == null) {}
-    String str1;
-    String str2;
-    Object localObject2;
-    do
+    if ((localObject1 != null) && (((String)localObject1).hashCode() == 2075029808) && (((String)localObject1).equals("openNativePage")))
     {
-      do
-      {
-        paramResult.notImplemented();
-        return;
-      } while ((((String)localObject1).hashCode() != 2075029808) || (!((String)localObject1).equals("openNativePage")));
-      str1 = (String)paramMethodCall.argument("nativeType");
-      str2 = (String)paramMethodCall.argument("url");
-      localObject2 = paramMethodCall.argument("urlParams");
+      String str1 = (String)paramMethodCall.argument("nativeType");
+      String str2 = (String)paramMethodCall.argument("url");
+      Object localObject2 = paramMethodCall.argument("urlParams");
       localObject1 = localObject2;
       if (!(localObject2 instanceof Map)) {
         localObject1 = null;
@@ -73,13 +64,19 @@ public final class QflutterNativeRouterPlugin
       localObject1 = (Map)localObject1;
       paramMethodCall = (Map)paramMethodCall.argument("exts");
       localObject2 = sRouter;
-    } while (localObject2 == null);
-    ((NativeRouter)localObject2).openNativePage(str1, str2, (Map)localObject1, paramMethodCall, paramResult);
+      if (localObject2 != null) {
+        ((NativeRouter)localObject2).openNativePage(str1, str2, (Map)localObject1, paramMethodCall, paramResult);
+      }
+    }
+    else
+    {
+      paramResult.notImplemented();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.qflutter.qflutter_native_router.QflutterNativeRouterPlugin
  * JD-Core Version:    0.7.0.1
  */

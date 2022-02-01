@@ -1,6 +1,7 @@
 package com.tencent.av.business.handler;
 
 import com.tencent.av.common.ErrorInfo;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.av.utils.SeqUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BusinessHandler;
@@ -12,7 +13,6 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -91,57 +91,83 @@ public class MessageHandler
     a(l, paramMsgListener);
     paramAppInterface.putWupBuffer(paramMessageMicro.toByteArray());
     localMessageHandler.sendPbReq(paramAppInterface);
-    if (QLog.isDevelopLevel()) {
-      QLog.w("QAVMessageHandler", 1, "sendMsg, msgListener[" + paramMsgListener + "], msgSeq_for_callback[" + l + "], seq[" + paramLong + "]");
+    if (QLog.isDevelopLevel())
+    {
+      paramAppInterface = new StringBuilder();
+      paramAppInterface.append("sendMsg, msgListener[");
+      paramAppInterface.append(paramMsgListener);
+      paramAppInterface.append("], msgSeq_for_callback[");
+      paramAppInterface.append(l);
+      paramAppInterface.append("], seq[");
+      paramAppInterface.append(paramLong);
+      paramAppInterface.append("]");
+      QLog.w("QAVMessageHandler", 1, paramAppInterface.toString());
     }
   }
   
   private static MessageHandler.ClassInfo b(MessageHandler.MsgListener paramMsgListener)
   {
     paramMsgListener = paramMsgListener.getClass().getGenericSuperclass();
-    Object localObject;
-    String str;
-    if (paramMsgListener != null) {
+    if (paramMsgListener != null)
+    {
       if ((paramMsgListener instanceof ParameterizedType))
       {
-        localObject = ((ParameterizedType)paramMsgListener).getActualTypeArguments();
-        if (localObject != null) {
-          if (localObject.length == 2)
+        paramMsgListener = ((ParameterizedType)paramMsgListener).getActualTypeArguments();
+        if (paramMsgListener != null)
+        {
+          if (paramMsgListener.length == 2)
           {
-            paramMsgListener = (Class)localObject[0];
-            localObject = (Class)localObject[1];
-            str = "reqType[" + paramMsgListener + "]rspType[" + localObject + "]";
+            localObject = (Class)paramMsgListener[0];
+            localClass = (Class)paramMsgListener[1];
+            paramMsgListener = new StringBuilder();
+            paramMsgListener.append("reqType[");
+            paramMsgListener.append(localObject);
+            paramMsgListener.append("]rspType[");
+            paramMsgListener.append(localClass);
+            paramMsgListener.append("]");
+            paramMsgListener = paramMsgListener.toString();
+            break label187;
           }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("ActualTypeArguments长度为");
+          ((StringBuilder)localObject).append(paramMsgListener.length);
+          paramMsgListener = ((StringBuilder)localObject).toString();
+        }
+        else
+        {
+          paramMsgListener = "getActualTypeArguments为空";
         }
       }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("type[");
+        ((StringBuilder)localObject).append(paramMsgListener.getClass().getName());
+        ((StringBuilder)localObject).append("]");
+        paramMsgListener = ((StringBuilder)localObject).toString();
+      }
     }
-    while (((paramMsgListener == null) || (localObject == null)) && (AudioHelper.d()))
+    else {
+      paramMsgListener = "genericInterfaces为空";
+    }
+    Class localClass = null;
+    Object localObject = localClass;
+    label187:
+    if (((localObject != null) && (localClass != null)) || (!AudioHelper.a()))
     {
-      throw new IllegalArgumentException("QAVMessageHandler get getClassInfo失败, " + str);
-      str = "ActualTypeArguments长度为" + localObject.length;
-      localObject = null;
-      paramMsgListener = null;
-      continue;
-      localObject = null;
-      str = "getActualTypeArguments为空";
-      paramMsgListener = null;
-      continue;
-      str = "type[" + paramMsgListener.getClass().getName() + "]";
-      localObject = null;
-      paramMsgListener = null;
-      continue;
-      str = "genericInterfaces为空";
-      localObject = null;
-      paramMsgListener = null;
+      MessageHandler.ClassInfo localClassInfo = new MessageHandler.ClassInfo(null);
+      localClassInfo.jdField_a_of_type_JavaLangString = paramMsgListener;
+      localClassInfo.jdField_a_of_type_JavaLangClass = ((Class)localObject);
+      localClassInfo.b = localClass;
+      return localClassInfo;
     }
-    MessageHandler.ClassInfo localClassInfo = new MessageHandler.ClassInfo(null);
-    localClassInfo.jdField_a_of_type_JavaLangString = str;
-    localClassInfo.jdField_a_of_type_JavaLangClass = paramMsgListener;
-    localClassInfo.b = ((Class)localObject);
-    return localClassInfo;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("QAVMessageHandler get getClassInfo失败, ");
+    ((StringBuilder)localObject).append(paramMsgListener);
+    throw new IllegalArgumentException(((StringBuilder)localObject).toString());
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return MessageObserver.class;
   }
@@ -150,32 +176,57 @@ public class MessageHandler
   {
     String str = paramFromServiceMsg.getServiceCmd();
     long l2 = SeqUtil.a(paramToServiceMsg.getAttributes());
-    long l1 = 0L;
     Object localObject = paramToServiceMsg.getAttribute("msgSeq_for_callback");
+    long l1;
     if ((localObject instanceof Integer)) {
       l1 = ((Integer)localObject).intValue();
+    } else if ((localObject instanceof Long)) {
+      l1 = ((Long)localObject).longValue();
+    } else {
+      l1 = 0L;
     }
-    for (;;)
+    localObject = a(l1);
+    if (QLog.isColorLevel())
     {
-      localObject = a(l1);
-      if (QLog.isColorLevel()) {
-        QLog.w("QAVMessageHandler", 1, "onReceive, cmd[" + str + "], req_cmd[" + paramToServiceMsg.getServiceCmd() + "], isSuccess[" + paramFromServiceMsg.isSuccess() + "], RequestSsoSeq[" + paramToServiceMsg.getRequestSsoSeq() + "], ResultCode[" + paramFromServiceMsg.getResultCode() + "], RequestSsoSeq[" + paramFromServiceMsg.getRequestSsoSeq() + "], msgSeq_for_callback[" + l1 + "], msgListener[" + localObject + "], seq[" + l2 + "]");
-      }
-      if (localObject == null) {
-        break;
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReceive, cmd[");
+      localStringBuilder.append(str);
+      localStringBuilder.append("], req_cmd[");
+      localStringBuilder.append(paramToServiceMsg.getServiceCmd());
+      localStringBuilder.append("], isSuccess[");
+      localStringBuilder.append(paramFromServiceMsg.isSuccess());
+      localStringBuilder.append("], RequestSsoSeq[");
+      localStringBuilder.append(paramToServiceMsg.getRequestSsoSeq());
+      localStringBuilder.append("], ResultCode[");
+      localStringBuilder.append(paramFromServiceMsg.getResultCode());
+      localStringBuilder.append("], RequestSsoSeq[");
+      localStringBuilder.append(paramFromServiceMsg.getRequestSsoSeq());
+      localStringBuilder.append("], msgSeq_for_callback[");
+      localStringBuilder.append(l1);
+      localStringBuilder.append("], msgListener[");
+      localStringBuilder.append(localObject);
+      localStringBuilder.append("], seq[");
+      localStringBuilder.append(l2);
+      localStringBuilder.append("]");
+      QLog.w("QAVMessageHandler", 1, localStringBuilder.toString());
+    }
+    if (localObject != null)
+    {
       ((MessageHandler.MsgListener)localObject).a(l2, paramToServiceMsg, paramFromServiceMsg, paramObject);
       return;
-      if ((localObject instanceof Long)) {
-        l1 = ((Long)localObject).longValue();
-      }
     }
-    QLog.w("QAVMessageHandler", 1, "onReceive, 没有MsgListener， cmd[" + str + "], seq[" + l2 + "]");
+    paramToServiceMsg = new StringBuilder();
+    paramToServiceMsg.append("onReceive, 没有MsgListener， cmd[");
+    paramToServiceMsg.append(str);
+    paramToServiceMsg.append("], seq[");
+    paramToServiceMsg.append(l2);
+    paramToServiceMsg.append("]");
+    QLog.w("QAVMessageHandler", 1, paramToServiceMsg.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.handler.MessageHandler
  * JD-Core Version:    0.7.0.1
  */

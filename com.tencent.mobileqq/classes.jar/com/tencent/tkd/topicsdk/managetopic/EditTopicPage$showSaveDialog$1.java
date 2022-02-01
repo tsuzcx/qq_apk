@@ -20,40 +20,34 @@ public final class EditTopicPage$showSaveDialog$1
   public void a()
   {
     int i;
-    long l;
-    if (((CharSequence)this.a.a().a()).length() > 0)
-    {
+    if (((CharSequence)this.a.a().a()).length() > 0) {
       i = 1;
-      if (i == 0) {
-        break label157;
-      }
-      String str = this.a.b();
+    } else {
+      i = 0;
+    }
+    if (i != 0)
+    {
+      String str = this.a.a();
       ManageTopicPresenter localManageTopicPresenter = this.a.a();
       TopicInfo localTopicInfo = EditTopicPage.a(this.a);
-      if (localTopicInfo == null) {
-        break label152;
+      long l;
+      if (localTopicInfo != null) {
+        l = localTopicInfo.getTopicId();
+      } else {
+        l = 0L;
       }
-      l = localTopicInfo.getTopicId();
-      label65:
-      localManageTopicPresenter.a(l, new TopicPublishInfo(str, this.a.a().a(), this.a.b().a(), this.a.f()));
+      localManageTopicPresenter.a(l, new TopicPublishInfo(str, this.a.a().a(), this.a.b().a(), this.a.a()));
     }
-    for (;;)
+    else
     {
-      DispatchManager.a.a((IEvent)new UserActionEvent(ReportEventKey.EVENT_CLICK, ReportEventPage.PAGE_EDIT_COLUMN_DRAFT_DIALOG, ReportEventElement.BUTTON_CONFIRM, this.a.a(), this.a.a()));
-      return;
-      i = 0;
-      break;
-      label152:
-      l = 0L;
-      break label65;
-      label157:
-      this.a.a(R.string.C);
+      this.a.a(R.string.x);
     }
+    DispatchManager.a.a((IEvent)new UserActionEvent(null, ReportEventKey.EVENT_CLICK, ReportEventPage.PAGE_EDIT_COLUMN_DRAFT_DIALOG, ReportEventElement.BUTTON_CONFIRM, this.a.a(), this.a.a(), null, 65, null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.managetopic.EditTopicPage.showSaveDialog.1
  * JD-Core Version:    0.7.0.1
  */

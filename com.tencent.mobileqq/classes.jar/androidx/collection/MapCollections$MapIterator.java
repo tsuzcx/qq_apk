@@ -19,36 +19,41 @@ final class MapCollections$MapIterator
   
   public boolean equals(Object paramObject)
   {
-    boolean bool = true;
-    if (!this.mEntryValid) {
-      throw new IllegalStateException("This container does not support retaining Map.Entry objects");
-    }
-    if (!(paramObject instanceof Map.Entry)) {
-      return false;
-    }
-    paramObject = (Map.Entry)paramObject;
-    if ((ContainerHelpers.equal(paramObject.getKey(), this.this$0.colGetEntry(this.mIndex, 0))) && (ContainerHelpers.equal(paramObject.getValue(), this.this$0.colGetEntry(this.mIndex, 1)))) {}
-    for (;;)
+    if (this.mEntryValid)
     {
-      return bool;
-      bool = false;
+      boolean bool1 = paramObject instanceof Map.Entry;
+      boolean bool2 = false;
+      if (!bool1) {
+        return false;
+      }
+      paramObject = (Map.Entry)paramObject;
+      bool1 = bool2;
+      if (ContainerHelpers.equal(paramObject.getKey(), this.this$0.colGetEntry(this.mIndex, 0)))
+      {
+        bool1 = bool2;
+        if (ContainerHelpers.equal(paramObject.getValue(), this.this$0.colGetEntry(this.mIndex, 1))) {
+          bool1 = true;
+        }
+      }
+      return bool1;
     }
+    throw new IllegalStateException("This container does not support retaining Map.Entry objects");
   }
   
   public K getKey()
   {
-    if (!this.mEntryValid) {
-      throw new IllegalStateException("This container does not support retaining Map.Entry objects");
+    if (this.mEntryValid) {
+      return this.this$0.colGetEntry(this.mIndex, 0);
     }
-    return this.this$0.colGetEntry(this.mIndex, 0);
+    throw new IllegalStateException("This container does not support retaining Map.Entry objects");
   }
   
   public V getValue()
   {
-    if (!this.mEntryValid) {
-      throw new IllegalStateException("This container does not support retaining Map.Entry objects");
+    if (this.mEntryValid) {
+      return this.this$0.colGetEntry(this.mIndex, 1);
     }
-    return this.this$0.colGetEntry(this.mIndex, 1);
+    throw new IllegalStateException("This container does not support retaining Map.Entry objects");
   }
   
   public boolean hasNext()
@@ -58,67 +63,70 @@ final class MapCollections$MapIterator
   
   public int hashCode()
   {
-    int j = 0;
-    if (!this.mEntryValid) {
-      throw new IllegalStateException("This container does not support retaining Map.Entry objects");
-    }
-    Object localObject1 = this.this$0.colGetEntry(this.mIndex, 0);
-    Object localObject2 = this.this$0.colGetEntry(this.mIndex, 1);
-    int i;
-    if (localObject1 == null)
+    if (this.mEntryValid)
     {
-      i = 0;
-      if (localObject2 != null) {
-        break label69;
+      Object localObject1 = this.this$0;
+      int i = this.mIndex;
+      int j = 0;
+      localObject1 = ((MapCollections)localObject1).colGetEntry(i, 0);
+      Object localObject2 = this.this$0.colGetEntry(this.mIndex, 1);
+      if (localObject1 == null) {
+        i = 0;
+      } else {
+        i = localObject1.hashCode();
       }
+      if (localObject2 != null) {
+        j = localObject2.hashCode();
+      }
+      return i ^ j;
     }
-    for (;;)
-    {
-      return j ^ i;
-      i = localObject1.hashCode();
-      break;
-      label69:
-      j = localObject2.hashCode();
-    }
+    throw new IllegalStateException("This container does not support retaining Map.Entry objects");
   }
   
   public Map.Entry<K, V> next()
   {
-    if (!hasNext()) {
-      throw new NoSuchElementException();
+    if (hasNext())
+    {
+      this.mIndex += 1;
+      this.mEntryValid = true;
+      return this;
     }
-    this.mIndex += 1;
-    this.mEntryValid = true;
-    return this;
+    throw new NoSuchElementException();
   }
   
   public void remove()
   {
-    if (!this.mEntryValid) {
-      throw new IllegalStateException();
+    if (this.mEntryValid)
+    {
+      this.this$0.colRemoveAt(this.mIndex);
+      this.mIndex -= 1;
+      this.mEnd -= 1;
+      this.mEntryValid = false;
+      return;
     }
-    this.this$0.colRemoveAt(this.mIndex);
-    this.mIndex -= 1;
-    this.mEnd -= 1;
-    this.mEntryValid = false;
+    throw new IllegalStateException();
   }
   
   public V setValue(V paramV)
   {
-    if (!this.mEntryValid) {
-      throw new IllegalStateException("This container does not support retaining Map.Entry objects");
+    if (this.mEntryValid) {
+      return this.this$0.colSetValue(this.mIndex, paramV);
     }
-    return this.this$0.colSetValue(this.mIndex, paramV);
+    throw new IllegalStateException("This container does not support retaining Map.Entry objects");
   }
   
   public String toString()
   {
-    return getKey() + "=" + getValue();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getKey());
+    localStringBuilder.append("=");
+    localStringBuilder.append(getValue());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.collection.MapCollections.MapIterator
  * JD-Core Version:    0.7.0.1
  */

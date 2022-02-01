@@ -25,11 +25,12 @@ public final class ProxyParcel
   
   private void a()
   {
-    if (this.jdField_a_of_type_Long != 0L)
+    long l = this.jdField_a_of_type_Long;
+    if (l != 0L)
     {
       if (this.jdField_a_of_type_Boolean)
       {
-        nativeDestroy(this.jdField_a_of_type_Long);
+        nativeDestroy(l);
         a(0L);
       }
       this.jdField_a_of_type_Long = 0L;
@@ -45,9 +46,7 @@ public final class ProxyParcel
       if (paramLong > 2147483647L) {
         l = 2147483647L;
       }
-      if (l != this.jdField_b_of_type_Long)
-      {
-        int i = (int)(l - this.jdField_b_of_type_Long);
+      if (l != this.jdField_b_of_type_Long) {
         this.jdField_b_of_type_Long = l;
       }
     }
@@ -127,7 +126,7 @@ public final class ProxyParcel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.robolectric.ProxyParcel
  * JD-Core Version:    0.7.0.1
  */

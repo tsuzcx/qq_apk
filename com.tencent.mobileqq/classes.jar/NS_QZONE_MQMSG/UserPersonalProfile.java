@@ -45,14 +45,15 @@ public final class UserPersonalProfile
     paramJceOutputStream.write(this.vipLevel, 1);
     paramJceOutputStream.write(this.isAnnualVip, 2);
     paramJceOutputStream.write(this.isLoversVip, 3);
-    if (this.vecBuff != null) {
-      paramJceOutputStream.write(this.vecBuff, 4);
+    byte[] arrayOfByte = this.vecBuff;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QZONE_MQMSG.UserPersonalProfile
  * JD-Core Version:    0.7.0.1
  */

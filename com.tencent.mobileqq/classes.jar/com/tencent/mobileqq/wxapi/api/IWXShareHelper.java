@@ -32,10 +32,14 @@ public abstract interface IWXShareHelper
   public abstract void removeObserver(IWXShareHelperListener paramIWXShareHelperListener);
   
   public abstract void shareQcircleToWX(String paramString1, String paramString2, Bitmap paramBitmap, String paramString3, String paramString4, int paramInt);
+  
+  public abstract void shareTroopToWXFriend(String paramString1, String paramString2, Bitmap paramBitmap, String paramString3, String paramString4);
+  
+  public abstract void shareTroopToWXFriendCircle(String paramString1, String paramString2, Bitmap paramBitmap, String paramString3, String paramString4);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.wxapi.api.IWXShareHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -20,27 +20,27 @@ public final class GdtAdError
     {
     default: 
       return null;
-    case 0: 
-      return "Success";
-    case 1: 
-      return "Internal Error";
-    case 2: 
-      return "Ad was re-loaded too frequently";
-    case 3: 
-      return "Network Error";
-    case 4: 
-      return "Invalid Request";
-    case 5: 
-      return "No Fill";
+    case 7: 
+      return "Display Format Mismatch";
     case 6: 
       return "Server Error";
+    case 5: 
+      return "No Fill";
+    case 4: 
+      return "Invalid Request";
+    case 3: 
+      return "Network Error";
+    case 2: 
+      return "Ad was re-loaded too frequently";
+    case 1: 
+      return "Internal Error";
     }
-    return "Display Format Mismatch";
+    return "Success";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.api.GdtAdError
  * JD-Core Version:    0.7.0.1
  */

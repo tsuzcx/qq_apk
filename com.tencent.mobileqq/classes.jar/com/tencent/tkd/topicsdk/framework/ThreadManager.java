@@ -37,17 +37,6 @@ public final class ThreadManager
     jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIThreadManager = paramIThreadManager;
   }
   
-  public final void a(@NotNull ThreadType paramThreadType, @NotNull Runnable paramRunnable)
-  {
-    Intrinsics.checkParameterIsNotNull(paramThreadType, "threadType");
-    Intrinsics.checkParameterIsNotNull(paramRunnable, "runnable");
-    IThreadManager localIThreadManager = jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIThreadManager;
-    if (localIThreadManager == null) {
-      Intrinsics.throwUninitializedPropertyAccessException("impl");
-    }
-    localIThreadManager.a(paramThreadType, paramRunnable);
-  }
-  
   public final void a(@NotNull ThreadType paramThreadType, @NotNull Function0<Unit> paramFunction0)
   {
     Intrinsics.checkParameterIsNotNull(paramThreadType, "threadType");
@@ -61,7 +50,7 @@ public final class ThreadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.framework.ThreadManager
  * JD-Core Version:    0.7.0.1
  */

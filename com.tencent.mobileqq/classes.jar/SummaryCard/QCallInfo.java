@@ -31,8 +31,9 @@ public final class QCallInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.bStatus, 0);
-    if (this.strNick != null) {
-      paramJceOutputStream.write(this.strNick, 1);
+    String str = this.strNick;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.uQCallId, 2);
   }

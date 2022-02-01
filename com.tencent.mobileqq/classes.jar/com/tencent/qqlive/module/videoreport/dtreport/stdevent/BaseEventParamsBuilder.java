@@ -11,10 +11,16 @@ abstract class BaseEventParamsBuilder<T>
   
   boolean checkSingleParam(StringBuilder paramStringBuilder, String paramString, Object paramObject)
   {
-    if (paramObject == null) {}
-    for (paramObject = null; TextUtils.isEmpty(paramObject); paramObject = paramObject.toString())
+    if (paramObject == null) {
+      paramObject = null;
+    } else {
+      paramObject = paramObject.toString();
+    }
+    if (TextUtils.isEmpty(paramObject))
     {
-      paramStringBuilder.append("[").append(paramString).append("] 是必填项，请修改\n");
+      paramStringBuilder.append("[");
+      paramStringBuilder.append(paramString);
+      paramStringBuilder.append("] 是必填项，请修改\n");
       return false;
     }
     return true;
@@ -24,12 +30,12 @@ abstract class BaseEventParamsBuilder<T>
   
   void putSingleParam(Map<String, String> paramMap, String paramString, Object paramObject)
   {
-    if (paramObject == null) {}
-    for (paramObject = null;; paramObject = paramObject.toString())
-    {
-      paramMap.put(paramString, paramObject);
-      return;
+    if (paramObject == null) {
+      paramObject = null;
+    } else {
+      paramObject = paramObject.toString();
     }
+    paramMap.put(paramString, paramObject);
   }
   
   T self()
@@ -47,7 +53,7 @@ abstract class BaseEventParamsBuilder<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.stdevent.BaseEventParamsBuilder
  * JD-Core Version:    0.7.0.1
  */

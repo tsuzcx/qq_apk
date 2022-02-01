@@ -22,10 +22,17 @@ public class SoLoadReportImpl
     HashMap localHashMap = new HashMap();
     localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
     localHashMap.put("osVersion", Build.VERSION.RELEASE);
-    localHashMap.put("deviceName", Build.MANUFACTURER + "_" + Build.MODEL);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Build.MANUFACTURER);
+    localStringBuilder.append("_");
+    localStringBuilder.append(Build.MODEL);
+    localHashMap.put("deviceName", localStringBuilder.toString());
     localHashMap.put("time", a.format(new Date(System.currentTimeMillis())));
     localHashMap.put("libName", paramString);
-    localHashMap.put("costTime", paramLong + "");
+    paramString = new StringBuilder();
+    paramString.append(paramLong);
+    paramString.append("");
+    localHashMap.put("costTime", paramString.toString());
     localHashMap.put("processName", MobileQQ.processName);
     return localHashMap;
   }
@@ -44,70 +51,82 @@ public class SoLoadReportImpl
   
   public void report(int paramInt, String paramString, long paramLong)
   {
-    HashMap localHashMap1 = a(paramString, paramLong);
-    HashMap localHashMap2 = a(paramString, paramLong);
+    Object localObject = a(paramString, paramLong);
+    HashMap localHashMap = a(paramString, paramLong);
+    int i = paramInt & 0x2;
     boolean bool;
-    int i;
-    if (((paramInt & 0x2) == 2) || ((paramInt & 0x40000) == 262144))
+    if ((i != 2) && ((paramInt & 0x40000) != 262144))
     {
-      a(true, 0, localHashMap1);
-      bool = true;
-      QLog.i("SoLoadUtilNew", 1, "load " + paramString + " result:" + bool + " code " + paramInt);
-      if ((paramInt & 0x2) != 2) {
-        break label189;
-      }
-      if (((paramInt & 0x8000) != 32768) || ((paramInt & 0x1000) != 4096) || ((paramInt & 0x800) != 0)) {
-        break label149;
-      }
-      i = 0;
-    }
-    for (;;)
-    {
-      a(false, i, localHashMap2);
-      return;
-      a(true, paramInt, localHashMap1);
+      a(true, paramInt, (HashMap)localObject);
       bool = false;
-      break;
-      label149:
-      i = paramInt;
-      if ((paramInt & 0x200) == 512)
+    }
+    else
+    {
+      a(true, 0, (HashMap)localObject);
+      bool = true;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("load ");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(" result:");
+    ((StringBuilder)localObject).append(bool);
+    ((StringBuilder)localObject).append(" code ");
+    ((StringBuilder)localObject).append(paramInt);
+    QLog.i("SoLoadUtilNew", 1, ((StringBuilder)localObject).toString());
+    if (i == 2)
+    {
+      if (((paramInt & 0x8000) != 32768) || ((paramInt & 0x1000) != 4096) || ((paramInt & 0x800) != 0))
       {
         i = paramInt;
-        if ((paramInt & 0x40) == 0)
-        {
-          i = paramInt;
-          if ((paramInt & 0x8) == 0)
-          {
-            i = 0;
-            continue;
-            label189:
-            i = paramInt;
-            if ((paramInt & 0x40000) == 262144) {
-              i = 0;
-            }
-          }
+        if ((paramInt & 0x200) != 512) {
+          break label219;
+        }
+        i = paramInt;
+        if ((paramInt & 0x40) != 0) {
+          break label219;
+        }
+        i = paramInt;
+        if ((paramInt & 0x8) != 0) {
+          break label219;
         }
       }
     }
+    else
+    {
+      i = paramInt;
+      if ((paramInt & 0x40000) != 262144) {
+        break label219;
+      }
+    }
+    i = 0;
+    label219:
+    a(false, i, localHashMap);
   }
   
   public void reportThrowable(Throwable paramThrowable, String paramString)
   {
-    if (paramString == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((paramThrowable == null) || (!(paramThrowable instanceof UnsatisfiedLinkError)));
-      paramThrowable = paramThrowable.getMessage();
-    } while ((paramThrowable == null) || (paramThrowable.indexOf("too many libraries") < 0));
+    if (paramString == null) {
+      return;
+    }
+    if (paramThrowable == null) {
+      return;
+    }
+    if (!(paramThrowable instanceof UnsatisfiedLinkError)) {
+      return;
+    }
+    paramThrowable = paramThrowable.getMessage();
+    if (paramThrowable == null) {
+      return;
+    }
+    if (paramThrowable.indexOf("too many libraries") < 0) {
+      return;
+    }
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "SoCountLimit", false, 0L, 0L, a(paramString, 0L), "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.SoLoadReportImpl
  * JD-Core Version:    0.7.0.1
  */

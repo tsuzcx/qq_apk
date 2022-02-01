@@ -1,7 +1,8 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.editor.composite.VideoCompositeHelper.VideoCompositeCallBack;
+import com.tencent.mobileqq.editor.database.PublishVideoEntry;
 
 class VideoCompositeManager$1$1
   implements VideoCompositeHelper.VideoCompositeCallBack
@@ -15,7 +16,7 @@ class VideoCompositeManager$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.VideoCompositeManager.1.1
  * JD-Core Version:    0.7.0.1
  */

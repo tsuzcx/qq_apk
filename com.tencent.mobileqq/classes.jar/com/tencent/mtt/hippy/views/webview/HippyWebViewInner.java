@@ -6,10 +6,11 @@ import android.view.KeyEvent;
 import android.webkit.WebSettings;
 import android.webkit.WebSettings.RenderPriority;
 import android.webkit.WebView;
+import com.tencent.qqlive.module.videoreport.inject.webview.dtwebview.DtWebView;
 import java.io.File;
 
 class HippyWebViewInner
-  extends WebView
+  extends DtWebView
 {
   public HippyWebViewInner(Context paramContext)
   {
@@ -31,7 +32,7 @@ class HippyWebViewInner
     localWebSettings.setDatabasePath(paramContext.getDir("hwebview_databases", 0).getPath());
     localWebSettings.setGeolocationDatabasePath(paramContext.getDir("hwebview_geolocation", 0).getPath());
     localWebSettings.setLoadsImagesAutomatically(true);
-    localWebSettings.setAllowContentAccess(true);
+    localWebSettings.setAllowContentAccess(false);
     localWebSettings.setDatabaseEnabled(true);
     localWebSettings.setDomStorageEnabled(true);
     localWebSettings.setLoadWithOverviewMode(true);
@@ -57,7 +58,7 @@ class HippyWebViewInner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.webview.HippyWebViewInner
  * JD-Core Version:    0.7.0.1
  */

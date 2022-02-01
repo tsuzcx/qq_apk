@@ -7,7 +7,7 @@ import java.io.IOException;
 public final class eo
   implements ey
 {
-  private static d a = null;
+  private static d a;
   
   public eo(Context paramContext, String paramString)
   {
@@ -18,88 +18,80 @@ public final class eo
     }
     catch (Throwable paramContext)
     {
-      a = null;
+      label22:
+      break label22;
     }
+    a = null;
   }
   
   private static String a(String paramString)
   {
-    String str2 = "GBK";
-    String str1 = str2;
-    int j;
-    int i;
     if (paramString != null)
     {
       paramString = paramString.split(";");
-      j = paramString.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      str1 = str2;
-      if (i < j)
+      int j = paramString.length;
+      int i = 0;
+      while (i < j)
       {
-        str1 = paramString[i].trim();
-        int k = str1.indexOf("charset=");
+        String str = paramString[i].trim();
+        int k = str.indexOf("charset=");
         if (-1 != k) {
-          str1 = str1.substring(k + 8, str1.length());
+          return str.substring(k + 8, str.length());
         }
+        i += 1;
       }
-      else
-      {
-        return str1;
-      }
-      i += 1;
     }
+    return "GBK";
   }
   
   public final Pair<byte[], String> a(String paramString, byte[] paramArrayOfByte)
   {
-    if (a == null) {
-      throw new IOException("can not init net sdk");
-    }
-    try
-    {
-      d locald = a;
-      paramString = locald.a(paramString, paramArrayOfByte);
-      paramString.a("User-Agent", "Dalvik/1.6.0 (Linux; U; Android 4.4; Nexus 5 Build/KRT16M)");
-      paramString.b();
-      new StringBuilder("req id: ").append(paramString.a());
-      paramString = locald.a(paramString);
-      if (paramString.a() == 0) {
-        break label123;
-      }
-      throw new IOException("net sdk error: errorCode=" + paramString.a());
-    }
-    catch (Exception paramString)
-    {
-      if (!(paramString instanceof IOException)) {
-        break label230;
-      }
-    }
-    throw ((IOException)paramString);
-    label123:
-    switch (paramString.b())
-    {
-    }
-    for (;;)
-    {
-      throw new IOException("net sdk error: httpStatus=" + paramString.b());
-      if (paramString.c() != null)
+    d locald = a;
+    if (locald != null) {
+      try
       {
-        paramArrayOfByte = a(paramString.a("content-type"));
-        return Pair.create(paramString.c(), paramArrayOfByte);
+        paramString = locald.a(paramString, paramArrayOfByte);
+        paramString.a("User-Agent", "Dalvik/1.6.0 (Linux; U; Android 4.4; Nexus 5 Build/KRT16M)");
+        paramString.b();
+        new StringBuilder("req id: ").append(paramString.a());
+        paramString = locald.a(paramString);
+        if (paramString.a() == 0)
+        {
+          int i = paramString.b();
+          if (i != 200)
+          {
+            if (i != 204)
+            {
+              paramArrayOfByte = new StringBuilder("net sdk error: httpStatus=");
+              paramArrayOfByte.append(paramString.b());
+              throw new IOException(paramArrayOfByte.toString());
+            }
+          }
+          else if (paramString.c() != null)
+          {
+            paramArrayOfByte = a(paramString.a("content-type"));
+            return Pair.create(paramString.c(), paramArrayOfByte);
+          }
+          return Pair.create("{}".getBytes(), "utf-8");
+        }
+        paramArrayOfByte = new StringBuilder("net sdk error: errorCode=");
+        paramArrayOfByte.append(paramString.a());
+        throw new IOException(paramArrayOfByte.toString());
       }
-      paramString = Pair.create("{}".getBytes(), "utf-8");
-      return paramString;
-      label230:
-      throw new IOException(paramString.getMessage());
+      catch (Exception paramString)
+      {
+        if ((paramString instanceof IOException)) {
+          throw ((IOException)paramString);
+        }
+        throw new IOException(paramString.getMessage());
+      }
     }
+    throw new IOException("can not init net sdk");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.eo
  * JD-Core Version:    0.7.0.1
  */

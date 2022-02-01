@@ -21,14 +21,19 @@ class MessageForGrayTips$HightlightClickableSpan$3
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("MessageForGrayTips", 2, "MsgNotifyPushDialog.pushOpenNotifyIntent==null " + localException.getMessage());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("MsgNotifyPushDialog.pushOpenNotifyIntent==null ");
+        localStringBuilder.append(localException.getMessage());
+        QLog.d("MessageForGrayTips", 2, localStringBuilder.toString());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan.3
  * JD-Core Version:    0.7.0.1
  */

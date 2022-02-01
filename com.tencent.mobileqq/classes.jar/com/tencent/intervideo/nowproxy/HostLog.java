@@ -9,8 +9,9 @@ public class HostLog
   
   public void flushLogs()
   {
-    if (this.mCustomizedLog != null) {
-      this.mCustomizedLog.onFlushLogs();
+    CustomizedLog localCustomizedLog = this.mCustomizedLog;
+    if (localCustomizedLog != null) {
+      localCustomizedLog.onFlushLogs();
     }
   }
   
@@ -21,8 +22,9 @@ public class HostLog
   
   public void log(int paramInt, String paramString1, String paramString2)
   {
-    if (this.mCustomizedLog != null) {
-      this.mCustomizedLog.onLog(paramInt, paramString1, paramString2);
+    CustomizedLog localCustomizedLog = this.mCustomizedLog;
+    if (localCustomizedLog != null) {
+      localCustomizedLog.onLog(paramInt, paramString1, paramString2);
     }
   }
   
@@ -33,14 +35,15 @@ public class HostLog
   
   public void uploadLogs()
   {
-    if (this.mCustomizedLog != null) {
-      this.mCustomizedLog.onUploadLogs();
+    CustomizedLog localCustomizedLog = this.mCustomizedLog;
+    if (localCustomizedLog != null) {
+      localCustomizedLog.onUploadLogs();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.intervideo.nowproxy.HostLog
  * JD-Core Version:    0.7.0.1
  */

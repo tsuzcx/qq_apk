@@ -20,17 +20,23 @@ class DesktopDataManager$17$2
   
   public void Failed(ErrMsg paramErrMsg)
   {
-    QLog.e("DesktopDataManager", 1, "Failed : " + paramErrMsg);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Failed : ");
+    localStringBuilder.append(paramErrMsg);
+    QLog.e("DesktopDataManager", 1, localStringBuilder.toString());
   }
   
   public void Timeout(ErrMsg paramErrMsg)
   {
-    QLog.e("DesktopDataManager", 1, "Timeout : " + paramErrMsg);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Timeout : ");
+    localStringBuilder.append(paramErrMsg);
+    QLog.e("DesktopDataManager", 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.17.2
  * JD-Core Version:    0.7.0.1
  */

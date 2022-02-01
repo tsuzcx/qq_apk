@@ -40,42 +40,41 @@ public class MiniAioInterfaceImpl
       localIntent1.putExtra("banner_wording", "正在浏览语音房");
       localIntent1.putExtra("banner_iconIdx", 13);
     }
-    for (;;)
+    else if (this.jdField_a_of_type_Int == 10001)
     {
-      localIntent1.putExtra("banner_businessCategory", "NOW");
-      localIntent1.putExtra("banner_activityName", JumpActivity.class);
-      localIntent1.putExtra("banner_plguinType", 1);
-      localIntent1.putExtra("banner_pluginProxyActivityName", paramActivity.getClass().getName());
-      Intent localIntent2 = new Intent(paramActivity, JumpActivity.class);
-      localIntent2.setData(Uri.parse(String.format("nowmqqapi://now/openroom?src_type=app&version=1&bid=88&roomid=%d&fromid=%d&roomtype=%d", new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.b), Integer.valueOf(this.jdField_a_of_type_Int) })));
-      localIntent2.addFlags(268435456);
-      localIntent1.putExtra("banner_pendingIntent", PendingIntent.getActivities(paramActivity, 0, new Intent[] { localIntent2 }, 134217728));
-      return localIntent1;
-      if (this.jdField_a_of_type_Int == 10001)
-      {
-        localIntent1.putExtra("banner_wording", "正在浏览NOW交友");
-        localIntent1.putExtra("banner_iconIdx", 13);
-      }
-      else
-      {
-        localIntent1.putExtra("banner_wording", "正在浏览NOW直播");
-        localIntent1.putExtra("banner_iconIdx", 14);
-      }
+      localIntent1.putExtra("banner_wording", "正在浏览NOW交友");
+      localIntent1.putExtra("banner_iconIdx", 13);
     }
+    else
+    {
+      localIntent1.putExtra("banner_wording", "正在浏览NOW直播");
+      localIntent1.putExtra("banner_iconIdx", 14);
+    }
+    localIntent1.putExtra("banner_businessCategory", "NOW");
+    localIntent1.putExtra("banner_activityName", JumpActivity.class);
+    localIntent1.putExtra("banner_plguinType", 1);
+    localIntent1.putExtra("banner_pluginProxyActivityName", paramActivity.getClass().getName());
+    Intent localIntent2 = new Intent(paramActivity, JumpActivity.class);
+    localIntent2.setData(Uri.parse(String.format("nowmqqapi://now/openroom?src_type=app&version=1&bid=88&roomid=%d&fromid=%d&roomtype=%d", new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.b), Integer.valueOf(this.jdField_a_of_type_Int) })));
+    localIntent2.addFlags(268435456);
+    localIntent1.putExtra("banner_pendingIntent", PendingIntent.getActivities(paramActivity, 0, new Intent[] { localIntent2 }, 134217728));
+    return localIntent1;
   }
   
   protected MiniMsgUserParam a(Activity paramActivity)
   {
-    int j = paramActivity.getApplication().getResources().getDisplayMetrics().widthPixels;
+    int i = paramActivity.getApplication().getResources().getDisplayMetrics().widthPixels;
     int k = ImmersiveUtils.getStatusBarHeight(paramActivity);
-    int m = paramActivity.getApplication().getResources().getDimensionPixelSize(2131297362);
-    int i = j - m * 4 - ViewUtils.b(47.0F);
-    if (this.c != -1) {
-      i = j - m * 4 - this.c;
+    int j = i - paramActivity.getApplication().getResources().getDimensionPixelSize(2131297351) * 4;
+    i = j - ViewUtils.b(47.0F);
+    int m = this.c;
+    if (m != -1) {
+      i = j - m;
     }
     j = ViewUtils.a(7.0F) + k;
-    if (this.d != -1) {
-      j = this.d + k;
+    m = this.d;
+    if (m != -1) {
+      j = k + m;
     }
     MiniMsgUserParam localMiniMsgUserParam = new MiniMsgUserParam();
     localMiniMsgUserParam.businessName = 11;
@@ -87,7 +86,7 @@ public class MiniAioInterfaceImpl
     localMiniMsgUserParam.backConversationIntent = a(paramActivity);
     if (this.b == 10026)
     {
-      localMiniMsgUserParam.contentIconResId = 2130851314;
+      localMiniMsgUserParam.contentIconResId = 2130851227;
       localMiniMsgUserParam.colorType = 2;
       return localMiniMsgUserParam;
     }
@@ -97,8 +96,9 @@ public class MiniAioInterfaceImpl
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser.onClick(null);
+    MiniMsgUser localMiniMsgUser = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser;
+    if (localMiniMsgUser != null) {
+      localMiniMsgUser.onClick(null);
     }
   }
   
@@ -156,7 +156,7 @@ public class MiniAioInterfaceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.MiniAioInterfaceImpl
  * JD-Core Version:    0.7.0.1
  */

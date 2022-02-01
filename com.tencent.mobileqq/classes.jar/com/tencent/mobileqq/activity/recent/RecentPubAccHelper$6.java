@@ -17,21 +17,17 @@ class RecentPubAccHelper$6
       return;
     }
     RecentPubAccHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccHelper, true);
-    switch (paramInt)
+    if (paramInt == 0)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin(), "0X800991E", "0X800991E", 0, 0, "", "", "", "");
       RecentPubAccHelper.c(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccHelper, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentPubAccHelper.6
  * JD-Core Version:    0.7.0.1
  */

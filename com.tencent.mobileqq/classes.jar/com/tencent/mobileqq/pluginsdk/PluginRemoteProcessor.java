@@ -21,69 +21,85 @@ public class PluginRemoteProcessor
   
   private PluginRemoteProcessor()
   {
-    Object localObject = IPluginAdapterProxy.getProxy();
-    Looper localLooper = null;
-    if (localObject != null) {
-      localLooper = ((IPluginAdapterProxy)localObject).getSubThreadLooper();
+    Object localObject1 = IPluginAdapterProxy.getProxy();
+    if (localObject1 != null) {
+      localObject1 = ((IPluginAdapterProxy)localObject1).getSubThreadLooper();
+    } else {
+      localObject1 = null;
     }
-    localObject = localLooper;
-    if (localLooper == null) {
-      localObject = Looper.getMainLooper();
+    Object localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = Looper.getMainLooper();
     }
-    this.mHandler = new Handler((Looper)localObject);
+    this.mHandler = new Handler((Looper)localObject2);
   }
   
   public static PluginRemoteProcessor get()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new PluginRemoteProcessor();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new PluginRemoteProcessor();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   private void processInner(PluginRemoteProcessor.WrappedServiceConnection paramWrappedServiceConnection)
   {
-    Object localObject = null;
-    switch (PluginRemoteProcessor.WrappedServiceConnection.access$200(paramWrappedServiceConnection))
+    int i = PluginRemoteProcessor.WrappedServiceConnection.access$200(paramWrappedServiceConnection);
+    Object localObject1;
+    if (i != 0)
     {
+      if (i != 1) {
+        localObject1 = null;
+      } else {
+        localObject1 = PluginRemoteService.Sub2.class;
+      }
     }
-    for (;;)
+    else {
+      localObject1 = PluginRemoteService.Sub1.class;
+    }
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("plugin_tag", 2, "processInner, " + paramWrappedServiceConnection + ", " + localObject);
-      }
-      if (localObject != null) {
-        break;
-      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("processInner, ");
+      ((StringBuilder)localObject2).append(paramWrappedServiceConnection);
+      ((StringBuilder)localObject2).append(", ");
+      ((StringBuilder)localObject2).append(localObject1);
+      QLog.i("plugin_tag", 2, ((StringBuilder)localObject2).toString());
+    }
+    if (localObject1 == null) {
       return;
-      localObject = PluginRemoteService.Sub1.class;
-      continue;
-      localObject = PluginRemoteService.Sub2.class;
     }
-    Context localContext = PluginRemoteProcessor.WrappedServiceConnection.access$100(paramWrappedServiceConnection).getApplicationContext();
-    Intent localIntent = new Intent(localContext, (Class)localObject);
+    Object localObject2 = PluginRemoteProcessor.WrappedServiceConnection.access$100(paramWrappedServiceConnection).getApplicationContext();
+    Intent localIntent = new Intent((Context)localObject2, (Class)localObject1);
     localIntent.putExtra("key_binder_type", PluginRemoteProcessor.WrappedServiceConnection.access$200(paramWrappedServiceConnection));
     try
     {
-      localContext.bindService(localIntent, paramWrappedServiceConnection, 1);
+      ((Context)localObject2).bindService(localIntent, paramWrappedServiceConnection, 1);
       return;
     }
     catch (SecurityException localSecurityException)
     {
       QLog.i("plugin_tag", 1, "processInner", localSecurityException);
-      paramWrappedServiceConnection.onServiceDisconnected(new ComponentName(PluginRemoteProcessor.WrappedServiceConnection.access$100(paramWrappedServiceConnection), ((Class)localObject).getCanonicalName()));
+      paramWrappedServiceConnection.onServiceDisconnected(new ComponentName(PluginRemoteProcessor.WrappedServiceConnection.access$100(paramWrappedServiceConnection), ((Class)localObject1).getCanonicalName()));
     }
   }
   
   private void processInnerDelay(PluginRemoteProcessor.WrappedServiceConnection paramWrappedServiceConnection, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("plugin_tag", 2, "processInnerDelay. " + paramInt + ", " + paramWrappedServiceConnection);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("processInnerDelay. ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(paramWrappedServiceConnection);
+      QLog.i("plugin_tag", 2, localStringBuilder.toString());
     }
     this.mHandler.postDelayed(new PluginRemoteProcessor.1(this, paramWrappedServiceConnection), paramInt);
   }
@@ -93,32 +109,36 @@ public class PluginRemoteProcessor
     synchronized (this.mQueue)
     {
       Iterator localIterator = this.mQueue.iterator();
-      for (;;)
+      while (localIterator.hasNext())
       {
-        PluginRemoteProcessor.WrappedServiceConnection localWrappedServiceConnection;
-        if (localIterator.hasNext()) {
-          localWrappedServiceConnection = (PluginRemoteProcessor.WrappedServiceConnection)localIterator.next();
-        }
+        PluginRemoteProcessor.WrappedServiceConnection localWrappedServiceConnection = (PluginRemoteProcessor.WrappedServiceConnection)localIterator.next();
         try
         {
-          if (PluginRemoteProcessor.WrappedServiceConnection.access$000(localWrappedServiceConnection) != paramServiceConnection) {
-            continue;
+          if (PluginRemoteProcessor.WrappedServiceConnection.access$000(localWrappedServiceConnection) == paramServiceConnection) {
+            PluginRemoteProcessor.WrappedServiceConnection.access$100(localWrappedServiceConnection).unbindService(localWrappedServiceConnection);
           }
-          PluginRemoteProcessor.WrappedServiceConnection.access$100(localWrappedServiceConnection).unbindService(localWrappedServiceConnection);
-          return;
         }
         catch (Throwable localThrowable)
         {
           localThrowable.printStackTrace();
         }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramServiceConnection;
     }
   }
   
   public void process(Context arg1, ServiceConnection paramServiceConnection, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("plugin_tag", 2, "PluginRemoteProcessor.process, " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PluginRemoteProcessor.process, ");
+      localStringBuilder.append(paramInt);
+      QLog.i("plugin_tag", 2, localStringBuilder.toString());
     }
     paramServiceConnection = new PluginRemoteProcessor.WrappedServiceConnection(this, paramServiceConnection, ???, paramInt);
     if (this.mProcessing)
@@ -138,7 +158,7 @@ public class PluginRemoteProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.PluginRemoteProcessor
  * JD-Core Version:    0.7.0.1
  */

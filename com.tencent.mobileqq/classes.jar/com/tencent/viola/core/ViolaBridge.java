@@ -19,49 +19,58 @@ public class ViolaBridge
   
   public static void callError(int paramInt, String paramString)
   {
-    ViolaLogUtils.e("ViolaBridge", "callError info: type: " + paramInt + ";info: \n" + paramString);
-    Object localObject = ViolaSDKManager.getInstance().getReportDelegate();
-    if (localObject != null)
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("callError info: type: ");
+    ((StringBuilder)localObject1).append(paramInt);
+    ((StringBuilder)localObject1).append(";info: \n");
+    ((StringBuilder)localObject1).append(paramString);
+    ViolaLogUtils.e("ViolaBridge", ((StringBuilder)localObject1).toString());
+    localObject1 = ViolaSDKManager.getInstance().getReportDelegate();
+    if (localObject1 != null)
     {
-      if (!ViolaSDKManager.getInstance().isRenderJsEnd()) {
-        break label191;
+      if (ViolaSDKManager.getInstance().isRenderJsEnd())
+      {
+        ViolaSDKManager.getInstance().addRunningJsErrorCount();
       }
-      ViolaSDKManager.getInstance().addRunningJsErrorCount();
-      ((IReportDelegate)localObject).reportJsError(ViolaSDKManager.getInstance().isRenderJsEnd(), paramInt, paramString);
+      else
+      {
+        ViolaSDKManager.getInstance().addJsErrorCount();
+        ((IReportDelegate)localObject1).addReportData(ViolaEnvironment.JS_ERROR_BEFORE_RENDER, Integer.toString(ViolaSDKManager.getInstance().getJsErrorCount()));
+      }
+      ((IReportDelegate)localObject1).reportJsError(ViolaSDKManager.getInstance().isRenderJsEnd(), paramInt, paramString);
     }
     for (;;)
     {
       try
       {
-        localObject = new JSONObject();
-        JSONObject localJSONObject1 = new JSONObject();
-        JSONObject localJSONObject2 = new JSONObject();
+        localObject1 = new JSONObject();
+        localObject2 = new JSONObject();
+        JSONObject localJSONObject = new JSONObject();
         if (!ViolaSDKManager.getInstance().isRenderJsEnd()) {
-          continue;
+          break label268;
         }
         paramInt = 1;
-        localJSONObject2.put("ifOpen", paramInt);
-        localJSONObject1.put("error", paramString);
-        localJSONObject1.put("tags", localJSONObject2);
-        ((JSONObject)localObject).put("data", localJSONObject1);
-        ((JSONObject)localObject).put("type", "error");
-        ViolaSDKManager.getInstance().updateInstance(ViolaSDKManager.getInstance().getCurrentViolaInstance(), ((JSONObject)localObject).toString());
+        localJSONObject.put("ifOpen", paramInt);
+        ((JSONObject)localObject2).put("error", paramString);
+        ((JSONObject)localObject2).put("tags", localJSONObject);
+        ((JSONObject)localObject1).put("data", localObject2);
+        ((JSONObject)localObject1).put("type", "error");
+        ViolaSDKManager.getInstance().updateInstance(ViolaSDKManager.getInstance().getCurrentViolaInstance(), ((JSONObject)localObject1).toString());
       }
       catch (Exception localException)
       {
-        label191:
-        ViolaLogUtils.e("ViolaBridge", "callError JSONException e:" + localException.getMessage());
-        continue;
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("callError JSONException e:");
+        ((StringBuilder)localObject2).append(localException.getMessage());
+        ViolaLogUtils.e("ViolaBridge", ((StringBuilder)localObject2).toString());
       }
       ViolaLogUtils.setLogText(paramString);
-      localObject = ViolaSDKManager.getInstance().getLogAdapter();
-      if (localObject != null) {
-        ((ILogAdapter)localObject).onJSError(paramString);
+      ILogAdapter localILogAdapter = ViolaSDKManager.getInstance().getLogAdapter();
+      if (localILogAdapter != null) {
+        localILogAdapter.onJSError(paramString);
       }
       return;
-      ViolaSDKManager.getInstance().addJsErrorCount();
-      ((IReportDelegate)localObject).addReportData(ViolaEnvironment.JS_ERROR_BEFORE_RENDER, Integer.toString(ViolaSDKManager.getInstance().getJsErrorCount()));
-      break;
+      label268:
       paramInt = 0;
     }
   }
@@ -88,9 +97,11 @@ public class ViolaBridge
         i = 0;
         if (i < localJSONArray.length())
         {
-          localJSONObject = localJSONArray.getJSONObject(i);
-          localObject = localJSONObject.get("args");
-          if (localJSONObject.has("module")) {
+          JSONObject localJSONObject = localJSONArray.getJSONObject(i);
+          Object localObject = localJSONObject.get("args");
+          boolean bool = localJSONObject.has("module");
+          if (bool)
+          {
             if ("dom".equals(localJSONObject.getString("module")))
             {
               DomModule localDomModule = ViolaModuleManager.getDomModule(paramString);
@@ -103,27 +114,35 @@ public class ViolaBridge
               ViolaBridgeManager.getInstance().callNativeModule(paramString, localJSONObject.getString("module"), localJSONObject.getString("method"), (JSONArray)localObject, null);
             }
           }
+          else if (localJSONObject.has("component")) {
+            ViolaBridgeManager.getInstance().callNativeComponent(paramString, localJSONObject.getString("component"), localJSONObject.getString("method"), (JSONArray)localObject);
+          }
         }
-      }
-      catch (JSONException paramString)
-      {
-        JSONObject localJSONObject;
-        Object localObject;
-        ViolaLogUtils.e("ViolaBridge", "callSerializableNative JSONException e:" + paramString.getMessage());
-        return;
-        if (!localJSONObject.has("component")) {
-          break label255;
+        else
+        {
+          paramString = new StringBuilder();
+          paramString.append("callSerializableNative params :");
+          paramString.append(paramArrayOfByte);
+          ViolaLogUtils.d("ViolaBridge", paramString.toString());
+          return;
         }
-        ViolaBridgeManager.getInstance().callNativeComponent(paramString, localJSONObject.getString("component"), localJSONObject.getString("method"), (JSONArray)localObject);
       }
       catch (Exception paramString)
       {
-        ViolaLogUtils.e("ViolaBridge", "callSerializableNative Exception e:" + paramString.getMessage());
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("callSerializableNative Exception e:");
+        paramArrayOfByte.append(paramString.getMessage());
+        ViolaLogUtils.e("ViolaBridge", paramArrayOfByte.toString());
         return;
       }
-      ViolaLogUtils.d("ViolaBridge", "callSerializableNative params :" + paramArrayOfByte);
-      return;
-      label255:
+      catch (JSONException paramString)
+      {
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("callSerializableNative JSONException e:");
+        paramArrayOfByte.append(paramString.getMessage());
+        ViolaLogUtils.e("ViolaBridge", paramArrayOfByte.toString());
+        return;
+      }
       i += 1;
     }
   }
@@ -153,15 +172,20 @@ public class ViolaBridge
         i = 0;
         if (i < localJSONArray.length())
         {
-          localJSONObject = localJSONArray.getJSONObject(i);
-          localObject = localJSONObject.get("args");
-          if (localJSONObject.has("module")) {
+          JSONObject localJSONObject = localJSONArray.getJSONObject(i);
+          Object localObject = localJSONObject.get("args");
+          boolean bool = localJSONObject.has("module");
+          if (bool)
+          {
             if ("dom".equals(localJSONObject.getString("module")))
             {
               DomModule localDomModule = ViolaModuleManager.getDomModule(paramString1);
               if (localDomModule != null)
               {
-                ViolaLogUtils.d("debugForTimeCost", "preloadTest  invokeDomMethod: " + System.currentTimeMillis());
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append("preloadTest  invokeDomMethod: ");
+                localStringBuilder.append(System.currentTimeMillis());
+                ViolaLogUtils.d("debugForTimeCost", localStringBuilder.toString());
                 localDomModule.invokeDomMethod(localJSONObject.getString("method"), localObject);
               }
             }
@@ -170,27 +194,35 @@ public class ViolaBridge
               ViolaBridgeManager.getInstance().callNativeModule(paramString1, localJSONObject.getString("module"), localJSONObject.getString("method"), (JSONArray)localObject, null);
             }
           }
+          else if (localJSONObject.has("component")) {
+            ViolaBridgeManager.getInstance().callNativeComponent(paramString1, localJSONObject.getString("component"), localJSONObject.getString("method"), (JSONArray)localObject);
+          }
         }
-      }
-      catch (JSONException paramString1)
-      {
-        JSONObject localJSONObject;
-        Object localObject;
-        ViolaLogUtils.e("ViolaBridge", "callSerializableNative JSONException e:" + paramString1.getMessage());
-        return;
-        if (!localJSONObject.has("component")) {
-          break label272;
+        else
+        {
+          paramString1 = new StringBuilder();
+          paramString1.append("callSerializableNative params :");
+          paramString1.append(paramString2);
+          ViolaLogUtils.d("ViolaBridge", paramString1.toString());
+          return;
         }
-        ViolaBridgeManager.getInstance().callNativeComponent(paramString1, localJSONObject.getString("component"), localJSONObject.getString("method"), (JSONArray)localObject);
       }
       catch (Exception paramString1)
       {
-        ViolaLogUtils.e("ViolaBridge", "callSerializableNative Exception e:" + paramString1.getMessage());
+        paramString2 = new StringBuilder();
+        paramString2.append("callSerializableNative Exception e:");
+        paramString2.append(paramString1.getMessage());
+        ViolaLogUtils.e("ViolaBridge", paramString2.toString());
         return;
       }
-      ViolaLogUtils.d("ViolaBridge", "callSerializableNative params :" + paramString2);
-      return;
-      label272:
+      catch (JSONException paramString1)
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("callSerializableNative JSONException e:");
+        paramString2.append(paramString1.getMessage());
+        ViolaLogUtils.e("ViolaBridge", paramString2.toString());
+        return;
+      }
       i += 1;
     }
   }
@@ -217,7 +249,7 @@ public class ViolaBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.core.ViolaBridge
  * JD-Core Version:    0.7.0.1
  */

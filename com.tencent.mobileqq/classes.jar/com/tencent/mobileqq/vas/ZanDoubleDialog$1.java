@@ -13,28 +13,29 @@ class ZanDoubleDialog$1
   {
     switch (paramView.getId())
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    default: 
+      break;
+    case 2131374947: 
       this.a.dismiss();
-      continue;
-      if (this.a.a != null) {
-        this.a.a.onLeftClick();
-      }
-      this.a.dismiss();
-      continue;
+      break;
+    case 2131374946: 
       if (this.a.a != null) {
         this.a.a.onRightClick();
       }
       this.a.dismiss();
+      break;
+    case 2131374945: 
+      if (this.a.a != null) {
+        this.a.a.onLeftClick();
+      }
+      this.a.dismiss();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ZanDoubleDialog.1
  * JD-Core Version:    0.7.0.1
  */

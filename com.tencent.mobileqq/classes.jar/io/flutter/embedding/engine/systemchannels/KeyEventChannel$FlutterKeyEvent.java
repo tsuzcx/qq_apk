@@ -37,16 +37,10 @@ public class KeyEventChannel$FlutterKeyEvent
     this.repeatCount = paramInt9;
     this.eventId = paramLong;
     paramCharacter = InputDevice.getDevice(paramInt1);
-    if (paramCharacter != null)
+    if ((paramCharacter != null) && (Build.VERSION.SDK_INT >= 19))
     {
-      if (Build.VERSION.SDK_INT >= 19)
-      {
-        this.vendorId = paramCharacter.getVendorId();
-        this.productId = paramCharacter.getProductId();
-        return;
-      }
-      this.vendorId = 0;
-      this.productId = 0;
+      this.vendorId = paramCharacter.getVendorId();
+      this.productId = paramCharacter.getProductId();
       return;
     }
     this.vendorId = 0;
@@ -65,7 +59,7 @@ public class KeyEventChannel$FlutterKeyEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.KeyEventChannel.FlutterKeyEvent
  * JD-Core Version:    0.7.0.1
  */

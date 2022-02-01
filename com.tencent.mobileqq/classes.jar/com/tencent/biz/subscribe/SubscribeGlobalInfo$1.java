@@ -13,19 +13,18 @@ final class SubscribeGlobalInfo$1
   {
     if ((paramBoolean) && (paramLong == 0L))
     {
-      if (paramStGetMainPageRsp != null) {
+      if (paramStGetMainPageRsp != null)
+      {
         SubscribeGlobalInfo.a((CertifiedAccountMeta.StUser)paramStGetMainPageRsp.user.get());
+        return;
       }
+      QLog.w(SubscribeGlobalInfo.class.getSimpleName(), 1, "getPuinUser empty");
     }
-    else {
-      return;
-    }
-    QLog.w(SubscribeGlobalInfo.class.getSimpleName(), 1, "getPuinUser empty");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.SubscribeGlobalInfo.1
  * JD-Core Version:    0.7.0.1
  */

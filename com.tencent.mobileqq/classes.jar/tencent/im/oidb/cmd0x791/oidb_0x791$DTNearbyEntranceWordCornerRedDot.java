@@ -17,13 +17,14 @@ public final class oidb_0x791$DTNearbyEntranceWordCornerRedDot
   
   static
   {
+    Boolean localBoolean = Boolean.valueOf(false);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "bool_enable", "bool_switch_to_word_corner", "str_hintText" }, new Object[] { Boolean.valueOf(false), Boolean.valueOf(false), localByteStringMicro }, DTNearbyEntranceWordCornerRedDot.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "bool_enable", "bool_switch_to_word_corner", "str_hintText" }, new Object[] { localBoolean, localBoolean, localByteStringMicro }, DTNearbyEntranceWordCornerRedDot.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x791.oidb_0x791.DTNearbyEntranceWordCornerRedDot
  * JD-Core Version:    0.7.0.1
  */

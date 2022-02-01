@@ -12,13 +12,14 @@ class UrlSecurityCheckManager$1
     if (this.a.c) {
       return;
     }
-    this.a.b = false;
-    UrlSecurityCheckManager.a(this.a);
+    paramBundle = this.a;
+    paramBundle.b = false;
+    UrlSecurityCheckManager.a(paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.UrlSecurityCheckManager.1
  * JD-Core Version:    0.7.0.1
  */

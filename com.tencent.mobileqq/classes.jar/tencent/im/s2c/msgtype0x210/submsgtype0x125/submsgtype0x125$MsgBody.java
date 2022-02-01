@@ -23,16 +23,18 @@ public final class submsgtype0x125$MsgBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 48, 792, 802 }, new String[] { "uint32_msg_type", "bytes_msg_info", "bytes_version_ctrl", "uint64_oper_uin", "bytes_gray_tips", "uint64_msg_seq", "uint32_push_type", "bytes_ext_info" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Long.valueOf(0L), localByteStringMicro3, Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro4 }, MsgBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 48, 792, 802 }, new String[] { "uint32_msg_type", "bytes_msg_info", "bytes_version_ctrl", "uint64_oper_uin", "bytes_gray_tips", "uint64_msg_seq", "uint32_push_type", "bytes_ext_info" }, new Object[] { localInteger, localByteStringMicro1, localByteStringMicro2, localLong, localByteStringMicro3, localLong, localInteger, localByteStringMicro4 }, MsgBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x210.submsgtype0x125.submsgtype0x125.MsgBody
  * JD-Core Version:    0.7.0.1
  */

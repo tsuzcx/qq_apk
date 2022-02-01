@@ -21,16 +21,25 @@ class CustomerJsPlugin$1
     if ((paramBoolean) && (paramJSONObject != null))
     {
       Object localObject = paramJSONObject.opt("robotUin");
-      if (((localObject instanceof String)) && (!TextUtils.isEmpty((String)localObject)))
+      if ((localObject instanceof String))
       {
-        if (!((ChannelProxy)ProxyManager.get(ChannelProxy.class)).openRobotProfileCard(CustomerJsPlugin.access$000(this.this$0).getAttachedActivity(), null, (String)localObject))
+        localObject = (String)localObject;
+        if (!TextUtils.isEmpty((CharSequence)localObject))
         {
-          MiniToast.makeText(CustomerJsPlugin.access$100(this.this$0), 0, "暂不支持在" + QUAUtil.getApplicationName(CustomerJsPlugin.access$200(this.this$0)) + "中下载应用", 1);
-          this.val$req.fail("app not implement");
+          if (!((ChannelProxy)ProxyManager.get(ChannelProxy.class)).openRobotProfileCard(CustomerJsPlugin.access$000(this.this$0).getAttachedActivity(), null, (String)localObject))
+          {
+            paramJSONObject = CustomerJsPlugin.access$100(this.this$0);
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("暂不支持在");
+            ((StringBuilder)localObject).append(QUAUtil.getApplicationName(CustomerJsPlugin.access$200(this.this$0)));
+            ((StringBuilder)localObject).append("中下载应用");
+            MiniToast.makeText(paramJSONObject, 0, ((StringBuilder)localObject).toString(), 1);
+            this.val$req.fail("app not implement");
+            return;
+          }
+          this.val$req.ok(paramJSONObject);
           return;
         }
-        this.val$req.ok(paramJSONObject);
-        return;
       }
       this.val$req.fail("batchGetContact failed.");
       return;
@@ -41,7 +50,7 @@ class CustomerJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.CustomerJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

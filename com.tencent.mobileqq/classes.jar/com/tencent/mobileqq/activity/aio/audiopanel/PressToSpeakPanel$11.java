@@ -10,16 +10,16 @@ class PressToSpeakPanel$11
   
   public void run()
   {
-    PressToSpeakPanel.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam);
-    PressToSpeakPanel.a(this.this$0).b(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam);
-    PressToSpeakPanel.a(this.this$0).b(this.jdField_a_of_type_JavaLangString, null);
+    ((AudioPanelAioHelper)PressToSpeakPanel.a(this.this$0).a(128)).b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam);
+    ((AudioPanelAioHelper)PressToSpeakPanel.a(this.this$0).a(128)).c(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam);
+    ((AudioPanelAioHelper)PressToSpeakPanel.a(this.this$0).a(128)).a(this.jdField_a_of_type_JavaLangString, null);
     this.this$0.a();
-    PressToSpeakPanel.a(this.this$0).c(this.jdField_a_of_type_JavaLangString, (int)this.jdField_a_of_type_Double, this.jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam);
+    ((AudioPanelAioHelper)PressToSpeakPanel.a(this.this$0).a(128)).a(this.jdField_a_of_type_JavaLangString, (int)this.jdField_a_of_type_Double, this.jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel.11
  * JD-Core Version:    0.7.0.1
  */

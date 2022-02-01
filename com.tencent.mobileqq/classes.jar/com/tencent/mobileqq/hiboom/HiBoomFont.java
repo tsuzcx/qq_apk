@@ -5,30 +5,30 @@ import android.os.Message;
 import com.Vas.ColorFont.FastColorFontHelper;
 import com.etrump.mixlayout.ETEngine;
 import com.etrump.mixlayout.FontSoLoader;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
 import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.vas.api.IVasCommonAdapter;
 import com.tencent.mobileqq.vas.updatesystem.api.IVasQuickUpdateService;
 import com.tencent.mobileqq.vas.util.VasSoUtils;
-import com.tencent.mobileqq.vaswebviewplugin.ChatFontJsPlugin;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.io.FilenameFilter;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
-import javax.annotation.Nonnull;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class HiBoomFont
   implements Handler.Callback
 {
   private static HiBoomFont jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont;
+  public static FilenameFilter a;
   public static final String a;
-  private static ConcurrentHashMap<Integer, ConcurrentHashMap<Integer, HiBoomFontDrawer>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private static ConcurrentHashMap<Integer, ConcurrentHashMap<Integer, HiBoomFontDrawer>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
   public static final String b;
   public static final String c;
   public static final String d;
@@ -39,10 +39,24 @@ public class HiBoomFont
   
   static
   {
-    jdField_a_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + ".hiboom_font/");
-    jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "font/";
-    c = jdField_a_of_type_JavaLangString + "config/";
-    d = jdField_a_of_type_JavaLangString + "tags/";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_PATH);
+    localStringBuilder.append(".hiboom_font/");
+    jdField_a_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("font/");
+    jdField_b_of_type_JavaLangString = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("config/");
+    c = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("tags/");
+    d = localStringBuilder.toString();
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    jdField_a_of_type_JavaIoFilenameFilter = new HiBoomFont.1();
   }
   
   private HiBoomFont()
@@ -61,15 +75,19 @@ public class HiBoomFont
   
   public static boolean a(int paramInt)
   {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(paramInt);
+    localObject = new File(((StringBuilder)localObject).toString());
+    boolean bool3 = ((File)localObject).exists();
     boolean bool2 = false;
-    Object localObject = new File(jdField_b_of_type_JavaLangString + paramInt);
     boolean bool1 = bool2;
-    if (((File)localObject).exists())
+    if (bool3)
     {
       bool1 = bool2;
       if (((File)localObject).isDirectory())
       {
-        localObject = ((File)localObject).list(ChatFontJsPlugin.mHiBoomFontFilter);
+        localObject = ((File)localObject).list(jdField_a_of_type_JavaIoFilenameFilter);
         bool1 = bool2;
         if (localObject != null)
         {
@@ -90,19 +108,20 @@ public class HiBoomFont
     return paramHiBoomFontDownloader;
   }
   
-  public HiBoomFontDrawer a(int paramInt1, int paramInt2, @Nonnull HiBoomFont.HiBoomFontDownloader paramHiBoomFontDownloader)
+  public HiBoomFontDrawer a(int paramInt1, int paramInt2, HiBoomFont.HiBoomFontDownloader paramHiBoomFontDownloader)
   {
     try
     {
       if ((ConcurrentHashMap)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt2)) == null) {
         jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt2), new ConcurrentHashMap());
       }
-      HiBoomFontDrawer localHiBoomFontDrawer2 = (HiBoomFontDrawer)((ConcurrentHashMap)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt2))).get(Integer.valueOf(paramInt1));
-      HiBoomFontDrawer localHiBoomFontDrawer1 = localHiBoomFontDrawer2;
-      if (localHiBoomFontDrawer2 == null) {
-        localHiBoomFontDrawer1 = b(paramInt1, paramInt2, paramHiBoomFontDownloader);
+      HiBoomFontDrawer localHiBoomFontDrawer = (HiBoomFontDrawer)((ConcurrentHashMap)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt2))).get(Integer.valueOf(paramInt1));
+      if (localHiBoomFontDrawer == null)
+      {
+        paramHiBoomFontDownloader = b(paramInt1, paramInt2, paramHiBoomFontDownloader);
+        return paramHiBoomFontDownloader;
       }
-      return localHiBoomFontDrawer1;
+      return localHiBoomFontDrawer;
     }
     finally {}
   }
@@ -124,16 +143,16 @@ public class HiBoomFont
   
   void b()
   {
-    int j = 1048576;
     for (;;)
     {
-      int i;
       try
       {
         if (QLog.isColorLevel()) {
           QLog.d("HiBoomFont", 2, "initHYEngine");
         }
-        if ((!FontSoLoader.b()) && (ETEngine.getInstanceForAnimation().isEngineInited.compareAndSet(false, true)))
+        boolean bool1 = FontSoLoader.b();
+        boolean bool4 = false;
+        if ((!bool1) && (ETEngine.getInstanceForAnimation().isEngineInited.compareAndSet(false, true)))
         {
           if (QLog.isColorLevel()) {
             QLog.d("HiBoomFont", 2, "initHYEngine load so");
@@ -144,91 +163,109 @@ public class HiBoomFont
         {
           this.jdField_a_of_type_ComEtrumpMixlayoutETEngine = ETEngine.getInstance();
           this.jdField_b_of_type_ComEtrumpMixlayoutETEngine = ETEngine.getInstanceForAnimation();
-        }
-        try
-        {
-          if (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-            break label314;
+          try
+          {
+            localObject1 = MobileQQ.sMobileQQ.peekAppRuntime();
+            if (localObject1 == null) {
+              break label327;
+            }
+            i = ((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).getChatTextSize((AppRuntime)localObject1);
+            i = i * i * 240 * 18 * 2;
           }
-          i = ChatTextSizeSettingActivity.a(((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getApp());
-          i = i * i * 240 * 18 * 2;
-        }
-        catch (Exception localException)
-        {
-          boolean bool2;
-          boolean bool1;
-          boolean bool3;
-          AtomicBoolean localAtomicBoolean;
-          QLog.e("HiBoomFont", 1, "initEngine error", localException);
-          continue;
-        }
-        bool2 = this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.isEngineReady.get();
-        bool1 = bool2;
-        if (!bool2)
-        {
-          bool1 = this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.initEngine(18, j);
-          this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.isEngineReady.set(bool1);
-        }
-        bool3 = this.jdField_b_of_type_ComEtrumpMixlayoutETEngine.isEngineReady.get();
-        bool2 = bool3;
-        if (!bool3)
-        {
-          bool2 = this.jdField_b_of_type_ComEtrumpMixlayoutETEngine.initEngine(10, 3145728);
-          this.jdField_b_of_type_ComEtrumpMixlayoutETEngine.isEngineReady.set(bool2);
-        }
-        localAtomicBoolean = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-        if ((bool1) && (bool2))
-        {
-          bool3 = true;
-          localAtomicBoolean.set(bool3);
-          if (QLog.isColorLevel()) {
-            QLog.d("HiBoomFont", 2, "initHYEngine ret = " + bool1 + " ret2=" + bool2);
+          catch (Exception localException)
+          {
+            Object localObject1;
+            boolean bool2;
+            boolean bool3;
+            QLog.e("HiBoomFont", 1, "initEngine error", localException);
+          }
+          bool2 = this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.isEngineReady.get();
+          bool1 = bool2;
+          if (!bool2)
+          {
+            bool1 = this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.initEngine(18, i);
+            this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.isEngineReady.set(bool1);
+          }
+          bool3 = this.jdField_b_of_type_ComEtrumpMixlayoutETEngine.isEngineReady.get();
+          bool2 = bool3;
+          if (!bool3)
+          {
+            bool2 = this.jdField_b_of_type_ComEtrumpMixlayoutETEngine.initEngine(10, 3145728);
+            this.jdField_b_of_type_ComEtrumpMixlayoutETEngine.isEngineReady.set(bool2);
+          }
+          localObject1 = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
+          bool3 = bool4;
+          if (bool1)
+          {
+            bool3 = bool4;
+            if (bool2) {
+              bool3 = true;
+            }
+          }
+          ((AtomicBoolean)localObject1).set(bool3);
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("initHYEngine ret = ");
+            ((StringBuilder)localObject1).append(bool1);
+            ((StringBuilder)localObject1).append(" ret2=");
+            ((StringBuilder)localObject1).append(bool2);
+            QLog.d("HiBoomFont", 2, ((StringBuilder)localObject1).toString());
           }
           this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+        }
+        else
+        {
           return;
         }
-        bool3 = false;
-        continue;
-        i = 0;
       }
       finally {}
-      label314:
-      if (i > 1048576) {
-        j = i;
+      label327:
+      int i = 0;
+      if (i <= 1048576) {
+        i = 1048576;
       }
     }
   }
   
   void c()
   {
+    int i;
+    try
+    {
+      boolean bool = FastColorFontHelper.a().jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+      if (bool) {
+        return;
+      }
+      FastColorFontHelper.a().jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      i = VasSoUtils.a(VasSoUtils.a(), "libFounderColorFont_818.so");
+      if (!QLog.isColorLevel()) {
+        break label139;
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("tryInitFZEngine: loadSoRes=");
+      ((StringBuilder)localObject1).append(i);
+      QLog.d("HiBoomFont", 2, ((StringBuilder)localObject1).toString());
+    }
+    finally {}
+    Object localObject1 = MobileQQ.sMobileQQ.peekAppRuntime();
+    if (localObject1 != null)
+    {
+      ((IVasQuickUpdateService)((AppRuntime)localObject1).getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(1004L, "libColorFont_818", "HiBoomFont_initFZEngine");
+      break label131;
+      label121:
+      FastColorFontHelper.a().jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    }
     for (;;)
     {
-      int i;
-      try
-      {
-        boolean bool = FastColorFontHelper.a().jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-        if (bool) {
-          return;
-        }
-        FastColorFontHelper.a().jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-        i = VasSoUtils.a(VasSoUtils.a(), "libFounderColorFont_818.so");
-        if (!QLog.isColorLevel()) {
-          break label136;
-        }
-        QLog.d("HiBoomFont", 2, "tryInitFZEngine: loadSoRes=" + i);
+      label131:
+      return;
+      label139:
+      if (i == 0) {
+        break label121;
       }
-      finally {}
-      FastColorFontHelper.a().jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      continue;
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime instanceof QQAppInterface))
-      {
-        ((IVasQuickUpdateService)localAppRuntime.getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(1004L, "libColorFont_818", "HiBoomFont_initFZEngine");
-        continue;
-        label136:
-        switch (i)
-        {
-        }
+      if (i == 1) {
+        break;
       }
     }
   }
@@ -238,7 +275,7 @@ public class HiBoomFont
     if (QLog.isColorLevel()) {
       QLog.d("HiBoomFont", 2, "clearCache");
     }
-    BaseApplicationImpl.getApplication().waitAppRuntime(null);
+    MobileQQ.sMobileQQ.peekAppRuntime();
     if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
       if (QLog.isColorLevel()) {
@@ -254,21 +291,15 @@ public class HiBoomFont
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
+    if ((paramMessage.what == 257) && ((paramMessage.obj instanceof HiBoomTextView))) {
+      ((HiBoomTextView)paramMessage.obj).invalidate();
     }
-    for (;;)
-    {
-      return true;
-      if ((paramMessage.obj instanceof HiBoomTextView)) {
-        ((HiBoomTextView)paramMessage.obj).invalidate();
-      }
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.HiBoomFont
  * JD-Core Version:    0.7.0.1
  */

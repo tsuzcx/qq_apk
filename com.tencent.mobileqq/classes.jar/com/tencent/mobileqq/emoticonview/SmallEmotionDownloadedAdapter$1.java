@@ -6,6 +6,7 @@ import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.emoticonview.api.IBigEmotionService;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class SmallEmotionDownloadedAdapter$1
@@ -15,33 +16,28 @@ class SmallEmotionDownloadedAdapter$1
   
   public void onClick(View paramView)
   {
-    IBigEmotionService localIBigEmotionService = (IBigEmotionService)QRoute.api(IBigEmotionService.class);
     String str1;
-    String str3;
-    if (this.this$0.app == null)
-    {
+    if (this.this$0.app == null) {
       str1 = "";
-      str3 = this.this$0.emotionPkg.epId;
-      if (!this.val$hasRecommendDressup) {
-        break label212;
-      }
-    }
-    label212:
-    for (String str2 = "1";; str2 = "2")
-    {
-      localIBigEmotionService.reportCommercialDrainage(str1, "ep_mall", "0X8007192", null, 1, 0, 0, null, str3, str2);
-      ((IBigEmotionService)QRoute.api(IBigEmotionService.class)).openEmojiDetailPage(this.this$0.mContext, this.this$0.app, this.this$0.app.getAccount(), 0, String.valueOf(this.this$0.emotionPkg.epId), false, null, true, this.val$hasRecommendDressup, this.this$0.emotionPkg.extraFlags, this.this$0.emotionPkg.epId);
-      ReportController.b(this.this$0.app.getQQAppInterface(), "CliOper", "", "", "ep_mall", "0X8007192", 0, 0, "", this.this$0.emotionPkg.epId, "2", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    } else {
       str1 = this.this$0.app.getCurrentAccountUin();
-      break;
     }
+    String str3 = this.this$0.emotionPkg.epId;
+    String str2;
+    if (this.val$hasRecommendDressup) {
+      str2 = "1";
+    } else {
+      str2 = "2";
+    }
+    VasWebviewUtil.a(str1, "ep_mall", "0X8007192", null, 1, 0, 0, null, str3, str2);
+    ((IBigEmotionService)QRoute.api(IBigEmotionService.class)).openEmojiDetailPage(this.this$0.mContext, this.this$0.app, this.this$0.app.getAccount(), 0, String.valueOf(this.this$0.emotionPkg.epId), false, null, true, this.val$hasRecommendDressup, this.this$0.emotionPkg.extraFlags, this.this$0.emotionPkg.epId);
+    ReportController.b(this.this$0.app.getQQAppInterface(), "CliOper", "", "", "ep_mall", "0X8007192", 0, 0, "", this.this$0.emotionPkg.epId, "2", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SmallEmotionDownloadedAdapter.1
  * JD-Core Version:    0.7.0.1
  */

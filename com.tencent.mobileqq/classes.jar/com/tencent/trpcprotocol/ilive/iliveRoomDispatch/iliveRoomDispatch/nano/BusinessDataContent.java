@@ -27,20 +27,24 @@ public final class BusinessDataContent
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
+      if (i == 0) {
+        break;
       }
-      int j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 10);
-      if (this.a == null) {}
-      BusinessDataItem[] arrayOfBusinessDataItem;
-      for (i = 0;; i = this.a.length)
+      if (i != 10)
       {
+        if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+          return this;
+        }
+      }
+      else
+      {
+        int j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 10);
+        BusinessDataItem[] arrayOfBusinessDataItem = this.a;
+        if (arrayOfBusinessDataItem == null) {
+          i = 0;
+        } else {
+          i = arrayOfBusinessDataItem.length;
+        }
         arrayOfBusinessDataItem = new BusinessDataItem[j + i];
         j = i;
         if (i != 0)
@@ -55,33 +59,36 @@ public final class BusinessDataContent
           paramCodedInputByteBufferNano.readTag();
           j += 1;
         }
+        arrayOfBusinessDataItem[j] = new BusinessDataItem();
+        paramCodedInputByteBufferNano.readMessage(arrayOfBusinessDataItem[j]);
+        this.a = arrayOfBusinessDataItem;
       }
-      arrayOfBusinessDataItem[j] = new BusinessDataItem();
-      paramCodedInputByteBufferNano.readMessage(arrayOfBusinessDataItem[j]);
-      this.a = arrayOfBusinessDataItem;
     }
+    return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int i = super.computeSerializedSize();
+    Object localObject = this.a;
     int k = i;
-    if (this.a != null)
+    if (localObject != null)
     {
       k = i;
-      if (this.a.length > 0)
+      if (localObject.length > 0)
       {
         int j = 0;
         for (;;)
         {
+          localObject = this.a;
           k = i;
-          if (j >= this.a.length) {
+          if (j >= localObject.length) {
             break;
           }
-          BusinessDataItem localBusinessDataItem = this.a[j];
+          localObject = localObject[j];
           k = i;
-          if (localBusinessDataItem != null) {
-            k = i + CodedOutputByteBufferNano.computeMessageSize(1, localBusinessDataItem);
+          if (localObject != null) {
+            k = i + CodedOutputByteBufferNano.computeMessageSize(1, (MessageNano)localObject);
           }
           j += 1;
           i = k;
@@ -93,14 +100,19 @@ public final class BusinessDataContent
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if ((this.a != null) && (this.a.length > 0))
+    Object localObject = this.a;
+    if ((localObject != null) && (localObject.length > 0))
     {
       int i = 0;
-      while (i < this.a.length)
+      for (;;)
       {
-        BusinessDataItem localBusinessDataItem = this.a[i];
-        if (localBusinessDataItem != null) {
-          paramCodedOutputByteBufferNano.writeMessage(1, localBusinessDataItem);
+        localObject = this.a;
+        if (i >= localObject.length) {
+          break;
+        }
+        localObject = localObject[i];
+        if (localObject != null) {
+          paramCodedOutputByteBufferNano.writeMessage(1, (MessageNano)localObject);
         }
         i += 1;
       }
@@ -110,7 +122,7 @@ public final class BusinessDataContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.iliveRoomDispatch.iliveRoomDispatch.nano.BusinessDataContent
  * JD-Core Version:    0.7.0.1
  */

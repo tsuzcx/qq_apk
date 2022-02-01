@@ -21,10 +21,13 @@ class SearchResultActivity$DataAdapter
   public int getCount()
   {
     int j = this.a.jdField_a_of_type_JavaUtilList.size();
-    if (this.a.b != 0) {}
-    for (int i = 1;; i = 0) {
-      return i + j;
+    int i;
+    if (this.a.b != 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
+    return j + i;
   }
   
   public Object getItem(int paramInt)
@@ -48,74 +51,79 @@ class SearchResultActivity$DataAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     View localView;
+    Object localObject;
     if (getItemViewType(paramInt) == 0)
     {
       localView = paramView;
       if (paramView == null)
       {
-        localView = this.a.getLayoutInflater().inflate(2131561149, null);
+        localView = this.a.getLayoutInflater().inflate(2131561012, null);
         localView.setOnClickListener(this.a);
         paramView = new SearchResultActivity.ItemViewHolder();
-        paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368314));
-        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131372287));
-        paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378168));
-        paramView.jdField_b_of_type_ComTencentMobileqqWidgetInterestLabelTextView = ((InterestLabelTextView)localView.findViewById(2131367834));
-        paramView.c = ((InterestLabelTextView)localView.findViewById(2131382094));
-        paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView = ((InterestLabelTextView)localView.findViewById(2131364463));
-        paramView.d = ((InterestLabelTextView)localView.findViewById(2131370780));
+        paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368066));
+        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371876));
+        paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377592));
+        paramView.jdField_b_of_type_ComTencentMobileqqWidgetInterestLabelTextView = ((InterestLabelTextView)localView.findViewById(2131367601));
+        paramView.c = ((InterestLabelTextView)localView.findViewById(2131381296));
+        paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView = ((InterestLabelTextView)localView.findViewById(2131364353));
+        paramView.d = ((InterestLabelTextView)localView.findViewById(2131370414));
         localView.setTag(paramView);
       }
       paramView = (SearchResultActivity.ItemViewHolder)localView.getTag();
-      CondFitUser localCondFitUser = (CondFitUser)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-      paramView = this.a.a(paramView, localCondFitUser);
-      if (SearchResultActivity.jdField_a_of_type_Boolean) {
-        localView.setContentDescription(paramView);
-      }
+      localObject = (CondFitUser)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+      localObject = this.a.a(paramView, (CondFitUser)localObject);
       paramView = localView;
+      if (SearchResultActivity.jdField_a_of_type_Boolean)
+      {
+        localView.setContentDescription((CharSequence)localObject);
+        paramView = localView;
+      }
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
       localView = paramView;
       if (paramView == null)
       {
-        localView = this.a.getLayoutInflater().inflate(2131559592, null);
+        localView = this.a.getLayoutInflater().inflate(2131559469, null);
         localView.setOnClickListener(this.a);
         paramView = new SearchResultActivity.MoreViewHolder();
         localView.setTag(paramView);
-        paramView.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)localView.findViewById(2131376854));
-        localView.findViewById(2131370717).setVisibility(8);
-        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371896));
+        paramView.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)localView.findViewById(2131376345));
+        localView.findViewById(2131370354).setVisibility(8);
+        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371517));
       }
       if (this.a.b == 1)
       {
-        this.a.b = 2;
-        SearchResultActivity.d(this.a);
+        paramView = this.a;
+        paramView.b = 2;
+        SearchResultActivity.d(paramView);
       }
-      paramView = (SearchResultActivity.MoreViewHolder)localView.getTag();
+      localObject = (SearchResultActivity.MoreViewHolder)localView.getTag();
       if (this.a.b == 3)
       {
-        paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131713609));
+        ((SearchResultActivity.MoreViewHolder)localObject).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+        ((SearchResultActivity.MoreViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131713576));
         paramView = localView;
       }
       else if (this.a.b == 2)
       {
-        paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131713600));
+        ((SearchResultActivity.MoreViewHolder)localObject).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+        ((SearchResultActivity.MoreViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131713567));
         paramView = localView;
       }
       else
       {
+        paramView = localView;
         if (this.a.b == 4)
         {
-          paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-          paramView.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131713599));
+          ((SearchResultActivity.MoreViewHolder)localObject).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+          ((SearchResultActivity.MoreViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131713566));
+          paramView = localView;
         }
-        paramView = localView;
       }
     }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
   
   public int getViewTypeCount()
@@ -125,7 +133,7 @@ class SearchResultActivity$DataAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.SearchResultActivity.DataAdapter
  * JD-Core Version:    0.7.0.1
  */

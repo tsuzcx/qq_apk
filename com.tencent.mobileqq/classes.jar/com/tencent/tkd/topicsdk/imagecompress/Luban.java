@@ -66,40 +66,43 @@ public class Luban
     if (paramContext != null)
     {
       paramContext = new File(paramContext, paramString);
-      if ((paramContext.mkdirs()) || ((paramContext.exists()) && (paramContext.isDirectory()))) {}
-    }
-    while (!Log.isLoggable("Luban", 6))
-    {
-      return null;
+      if ((!paramContext.mkdirs()) && ((!paramContext.exists()) || (!paramContext.isDirectory()))) {
+        return null;
+      }
       return paramContext;
     }
-    Log.e("Luban", "default disk cache dir is null");
+    if (Log.isLoggable("Luban", 6)) {
+      Log.e("Luban", "default disk cache dir is null");
+    }
     return null;
   }
   
   private void a(Context paramContext)
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || ((this.jdField_a_of_type_JavaUtilList.size() == 0) && (this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressOnCompressListener != null))) {
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if ((localObject == null) || ((((List)localObject).size() == 0) && (this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressOnCompressListener != null))) {
       this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressOnCompressListener.a(new NullPointerException("image file cannot be null"));
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      InputStreamProvider localInputStreamProvider = (InputStreamProvider)localIterator.next();
+      InputStreamProvider localInputStreamProvider = (InputStreamProvider)((Iterator)localObject).next();
       AsyncTask.SERIAL_EXECUTOR.execute(new Luban.1(this, paramContext, localInputStreamProvider));
-      localIterator.remove();
+      ((Iterator)localObject).remove();
     }
   }
   
   private File b(Context paramContext, InputStreamProvider paramInputStreamProvider)
   {
     File localFile = b(paramContext, Checker.SINGLE.extSuffix(paramInputStreamProvider));
-    if (this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressOnRenameListener != null) {
-      localFile = c(paramContext, this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressOnRenameListener.a(paramInputStreamProvider.a()));
+    OnRenameListener localOnRenameListener = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressOnRenameListener;
+    if (localOnRenameListener != null) {
+      localFile = c(paramContext, localOnRenameListener.a(paramInputStreamProvider.a()));
     }
-    if (this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressCompressionPredicate != null)
+    paramContext = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressCompressionPredicate;
+    if (paramContext != null)
     {
-      if ((this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressCompressionPredicate.a(paramInputStreamProvider.a())) && (Checker.SINGLE.needCompress(this.jdField_a_of_type_Int, paramInputStreamProvider.a()))) {
+      if ((paramContext.a(paramInputStreamProvider.a())) && (Checker.SINGLE.needCompress(this.jdField_a_of_type_Int, paramInputStreamProvider.a()))) {
         return new Engine(paramInputStreamProvider, localFile, this.jdField_a_of_type_Boolean).a();
       }
       return new File(paramInputStreamProvider.a());
@@ -115,12 +118,17 @@ public class Luban
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       this.jdField_a_of_type_JavaLangString = a(paramContext).getAbsolutePath();
     }
-    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("/").append(System.currentTimeMillis()).append((int)(Math.random() * 1000.0D));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("/");
+    localStringBuilder.append(System.currentTimeMillis());
+    localStringBuilder.append((int)(Math.random() * 1000.0D));
     paramContext = paramString;
     if (TextUtils.isEmpty(paramString)) {
       paramContext = ".jpg";
     }
-    return new File(paramContext);
+    localStringBuilder.append(paramContext);
+    return new File(localStringBuilder.toString());
   }
   
   private File c(Context paramContext, String paramString)
@@ -128,7 +136,11 @@ public class Luban
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       this.jdField_a_of_type_JavaLangString = a(paramContext).getAbsolutePath();
     }
-    return new File(this.jdField_a_of_type_JavaLangString + "/" + paramString);
+    paramContext = new StringBuilder();
+    paramContext.append(this.jdField_a_of_type_JavaLangString);
+    paramContext.append("/");
+    paramContext.append(paramString);
+    return new File(paramContext.toString());
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -136,24 +148,27 @@ public class Luban
     if (this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressOnCompressListener == null) {
       return false;
     }
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 0)
     {
-    default: 
-      return false;
-    case 0: 
-      this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressOnCompressListener.a((File)paramMessage.obj);
-      return false;
-    case 1: 
+      if (i != 1)
+      {
+        if (i != 2) {
+          return false;
+        }
+        this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressOnCompressListener.a((Throwable)paramMessage.obj);
+        return false;
+      }
       this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressOnCompressListener.a();
       return false;
     }
-    this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressOnCompressListener.a((Throwable)paramMessage.obj);
+    this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressOnCompressListener.a((File)paramMessage.obj);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.imagecompress.Luban
  * JD-Core Version:    0.7.0.1
  */

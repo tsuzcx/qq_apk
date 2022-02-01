@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<animation-list android:oneshot="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#ffc573ff" />
-    <corners android:topLeftRadius="2.0dip" android:topRightRadius="2.0dip" android:bottomLeftRadius="2.0dip" android:bottomRightRadius="2.0dip" />
-</shape>
+    <item android:duration="50" android:drawable="@drawable/id5" />
+    <item android:duration="50" android:drawable="@drawable/id6" />
+    <item android:duration="50" android:drawable="@drawable/id7" />
+    <item android:duration="50" android:drawable="@drawable/id8" />
+    <item android:duration="50" android:drawable="@drawable/id9" />
+    <item android:duration="50" android:drawable="@drawable/id_" />
+    <item android:duration="50" android:drawable="@drawable/ida" />
+    <item android:duration="50" android:drawable="@drawable/idb" />
+    <item android:duration="50" android:drawable="@drawable/idc" />
+    <item android:duration="50" android:drawable="@drawable/idd" />
+    <item android:duration="50" android:drawable="@drawable/ide" />
+    <item android:duration="50" android:drawable="@drawable/idf" />
+    <item android:duration="50" android:drawable="@drawable/idg" />
+    <item android:duration="50" android:drawable="@drawable/idh" />
+    <item android:duration="50" android:drawable="@drawable/idi" />
+</animation-list>

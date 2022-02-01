@@ -18,16 +18,20 @@ public final class CharCategory$Companion
   @NotNull
   public final CharCategory valueOf(int paramInt)
   {
-    CharCategory localCharCategory = (CharCategory)((Companion)this).getCategoryMap().get(Integer.valueOf(paramInt));
-    if (localCharCategory != null) {
-      return localCharCategory;
+    Object localObject = (CharCategory)((Companion)this).getCategoryMap().get(Integer.valueOf(paramInt));
+    if (localObject != null) {
+      return localObject;
     }
-    throw ((Throwable)new IllegalArgumentException("Category #" + paramInt + " is not defined."));
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Category #");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(" is not defined.");
+    throw ((Throwable)new IllegalArgumentException(((StringBuilder)localObject).toString()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.text.CharCategory.Companion
  * JD-Core Version:    0.7.0.1
  */

@@ -23,7 +23,7 @@ public class HippyPullHeaderViewController
     return new i(paramInt, paramHippyMap, paramString, paramHippyRootView, paramControllerManager, paramBoolean);
   }
   
-  public View createViewImpl(Context paramContext)
+  protected View createViewImpl(Context paramContext)
   {
     return new HippyPullHeaderView(paramContext);
   }
@@ -32,39 +32,34 @@ public class HippyPullHeaderViewController
   {
     super.dispatchFunction(paramHippyPullHeaderView, paramString, paramHippyArray);
     paramHippyPullHeaderView = paramHippyPullHeaderView.getParentView();
-    int i;
     if ((paramHippyPullHeaderView != null) && ((paramHippyPullHeaderView instanceof HippyListView)))
     {
-      i = -1;
-      switch (paramString.hashCode())
+      int i = -1;
+      int j = paramString.hashCode();
+      if (j != -2068662420)
       {
-      }
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        return;
-        if (paramString.equals("collapsePullHeader"))
-        {
+        if ((j == -259784513) && (paramString.equals("collapsePullHeader"))) {
           i = 0;
-          continue;
-          if (paramString.equals("expandPullHeader")) {
-            i = 1;
-          }
         }
-        break;
       }
+      else if (paramString.equals("expandPullHeader")) {
+        i = 1;
+      }
+      if (i != 0)
+      {
+        if (i != 1) {
+          return;
+        }
+        ((HippyListView)paramHippyPullHeaderView).onHeaderRefresh();
+        return;
+      }
+      ((HippyListView)paramHippyPullHeaderView).onHeaderRefreshFinish();
     }
-    ((HippyListView)paramHippyPullHeaderView).onHeaderRefreshFinish();
-    return;
-    ((HippyListView)paramHippyPullHeaderView).onHeaderRefresh();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.refresh.HippyPullHeaderViewController
  * JD-Core Version:    0.7.0.1
  */

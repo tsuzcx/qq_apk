@@ -8,7 +8,7 @@ class RecyclerView$AdapterDataObservable
 {
   public boolean hasObservers()
   {
-    return !this.mObservers.isEmpty();
+    return this.mObservers.isEmpty() ^ true;
   }
   
   public void notifyChanged()

@@ -9,10 +9,9 @@ import androidx.annotation.Nullable;
 import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
-import com.tencent.mobileqq.filemanager.api.IQQFileTempUtils;
 import com.tencent.mobileqq.filemanager.api.util.QStorage;
 import com.tencent.mobileqq.filemanager.app.QFileConfigManager;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtilImpl;
 import com.tencent.qphone.base.util.QLog;
 
 public class QFileExcitingGroupDownloadConfigProcessor
@@ -38,17 +37,25 @@ public class QFileExcitingGroupDownloadConfigProcessor
   {
     if (paramQFileExcitingGroupDownloadConfigBean != null)
     {
-      Object localObject = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getApp();
-      if (localObject != null)
+      BaseQQAppInterface localBaseQQAppInterface = QQFileManagerUtilImpl.a();
+      if (localBaseQQAppInterface != null)
       {
         if (TextUtils.isEmpty(paramQFileExcitingGroupDownloadConfigBean.a)) {
           paramQFileExcitingGroupDownloadConfigBean.a = "{}";
         }
-        localObject = ((BaseQQAppInterface)localObject).getApplicationContext().getSharedPreferences("groupfile_excitingdownload_" + ((BaseQQAppInterface)localObject).getCurrentUin(), 0).edit();
+        Object localObject = localBaseQQAppInterface.getApplicationContext();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("groupfile_excitingdownload_");
+        localStringBuilder.append(localBaseQQAppInterface.getCurrentUin());
+        localObject = ((Context)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit();
         ((SharedPreferences.Editor)localObject).putString("qfile_groupfile_excitingdownload", paramQFileExcitingGroupDownloadConfigBean.a);
         ((SharedPreferences.Editor)localObject).apply();
-        QLog.i("QFileExcitingGroupDownloadConfigProcessor<FileAssistant>", 1, "save Exciting-Group-Download config [" + paramQFileExcitingGroupDownloadConfigBean.a + "]");
-        QFileConfigManager.a().a(paramQFileExcitingGroupDownloadConfigBean);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("save Exciting-Group-Download config [");
+        ((StringBuilder)localObject).append(paramQFileExcitingGroupDownloadConfigBean.a);
+        ((StringBuilder)localObject).append("]");
+        QLog.i("QFileExcitingGroupDownloadConfigProcessor<FileAssistant>", 1, ((StringBuilder)localObject).toString());
+        QFileConfigManager.a(localBaseQQAppInterface).a(paramQFileExcitingGroupDownloadConfigBean);
       }
     }
   }
@@ -75,7 +82,11 @@ public class QFileExcitingGroupDownloadConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.i("QFileExcitingGroupDownloadConfigProcessor<FileAssistant>", 1, "onReqFailed: failCode[" + paramInt + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReqFailed: failCode[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]");
+    QLog.i("QFileExcitingGroupDownloadConfigProcessor<FileAssistant>", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -85,7 +96,7 @@ public class QFileExcitingGroupDownloadConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QFileExcitingGroupDownloadConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

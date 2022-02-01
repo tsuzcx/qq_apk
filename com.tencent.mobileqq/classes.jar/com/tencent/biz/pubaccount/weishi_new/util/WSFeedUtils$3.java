@@ -12,7 +12,11 @@ final class WSFeedUtils$3
   
   public void onClick(@NonNull View paramView)
   {
-    WeishiScehmeUtil.a(WSFeedUtils.a(), "biz_src_jc_gzh_weishi", "weishi://profile?person_id=" + this.a);
+    paramView = WSFeedUtils.a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("weishi://profile?person_id=");
+    localStringBuilder.append(this.a);
+    WeishiScehmeUtil.a(paramView, "biz_src_jc_gzh_weishi", localStringBuilder.toString());
   }
   
   public void updateDrawState(@NonNull TextPaint paramTextPaint)
@@ -22,7 +26,7 @@ final class WSFeedUtils$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WSFeedUtils.3
  * JD-Core Version:    0.7.0.1
  */

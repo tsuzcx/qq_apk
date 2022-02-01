@@ -2,7 +2,6 @@ package com.tencent.biz.pubaccount.weishi_new.player.wrapper.superplayer;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import com.tencent.biz.pubaccount.weishi_new.config.experiment.WSExpABTestManager;
@@ -40,50 +39,56 @@ public class SuperPlayerImpl
   
   private int a(int paramInt)
   {
-    switch (paramInt)
+    int i = 1;
+    if (paramInt != 1)
     {
-    default: 
-      return 0;
-    case 1: 
-      return 1;
-    case 2: 
-      return 2;
+      i = 2;
+      if (paramInt != 2)
+      {
+        i = 3;
+        if (paramInt != 3) {
+          return 0;
+        }
+      }
     }
-    return 3;
+    return i;
   }
   
   private int b(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 112)
     {
-    default: 
-      return paramInt;
-    case 112: 
-      return 112;
+      if (paramInt != 113) {
+        return paramInt;
+      }
+      return 113;
     }
-    return 113;
+    return 112;
   }
   
   public int a()
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getVideoWidth();
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      return localISuperPlayer.getVideoWidth();
     }
     return 0;
   }
   
   public long a()
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getDurationMs();
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      return localISuperPlayer.getDurationMs();
     }
     return 0L;
   }
   
   public String a()
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getStreamDumpInfo();
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      return localISuperPlayer.getStreamDumpInfo();
     }
     return "";
   }
@@ -95,15 +100,17 @@ public class SuperPlayerImpl
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.start();
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.start();
     }
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setXYaxis(a(paramInt));
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.setXYaxis(a(paramInt));
     }
   }
   
@@ -120,9 +127,10 @@ public class SuperPlayerImpl
   public void a(IWSPlayerListener paramIWSPlayerListener)
   {
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerListener = paramIWSPlayerListener;
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null)
+    paramIWSPlayerListener = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (paramIWSPlayerListener != null)
     {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnVideoPreparedListener(this);
+      paramIWSPlayerListener.setOnVideoPreparedListener(this);
       this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnCompletionListener(this);
       this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnErrorListener(this);
       this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnInfoListener(this);
@@ -156,168 +164,212 @@ public class SuperPlayerImpl
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setLoopback(paramBoolean);
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.setLoopback(paramBoolean);
     }
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) && (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.isPlaying());
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    return (localISuperPlayer != null) && (localISuperPlayer.isPlaying());
   }
   
   public int b()
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getVideoHeight();
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      return localISuperPlayer.getVideoHeight();
     }
     return 0;
   }
   
   public long b()
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getCurrentPositionMs();
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      return localISuperPlayer.getCurrentPositionMs();
     }
     return 0L;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.pause();
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.pause();
     }
   }
   
   public void b(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.seekTo(paramInt);
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.seekTo(paramInt);
     }
   }
   
   public void b(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOutputMute(paramBoolean);
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.setOutputMute(paramBoolean);
     }
   }
   
   public boolean b()
   {
-    return (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) && (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.isPausing());
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    return (localISuperPlayer != null) && (localISuperPlayer.isPausing());
   }
   
   public void c()
   {
-    if ((this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSVideoView != null))
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null)
     {
-      View localView = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSVideoView.a();
-      if ((localView instanceof ISPlayerVideoView))
+      Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSVideoView;
+      if (localObject != null)
       {
-        this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.reset();
-        this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.updatePlayerVideoView((ISPlayerVideoView)localView);
+        localObject = ((IWSVideoView)localObject).a();
+        if ((localObject instanceof ISPlayerVideoView))
+        {
+          this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.reset();
+          this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.updatePlayerVideoView((ISPlayerVideoView)localObject);
+        }
       }
     }
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null)
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null)
     {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.stop();
+      localISuperPlayer.stop();
       this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.release();
     }
   }
   
   public void e()
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.pauseDownload();
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.pauseDownload();
     }
   }
   
   public void f()
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.resumeDownload();
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.resumeDownload();
     }
   }
   
   public void onCaptureImageFailed(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerListener != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerListener.a(this, paramInt1, paramInt2);
+    paramISuperPlayer = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerListener;
+    if (paramISuperPlayer != null) {
+      paramISuperPlayer.a(this, paramInt1, paramInt2);
     }
   }
   
   public void onCaptureImageSucceed(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerListener != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerListener.a(this, paramInt1, paramInt2, paramInt3, paramBitmap);
+    paramISuperPlayer = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerListener;
+    if (paramISuperPlayer != null) {
+      paramISuperPlayer.a(this, paramInt1, paramInt2, paramInt3, paramBitmap);
     }
   }
   
   public void onCompletion(ISuperPlayer paramISuperPlayer)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerListener != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerListener.b(this);
+    paramISuperPlayer = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerListener;
+    if (paramISuperPlayer != null) {
+      paramISuperPlayer.b(this);
     }
   }
   
   public boolean onError(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerListener != null) {
-      return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerListener.a(this, paramInt1, paramInt2, paramInt3, paramString);
+    paramISuperPlayer = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerListener;
+    if (paramISuperPlayer != null) {
+      return paramISuperPlayer.a(this, paramInt1, paramInt2, paramInt3, paramString);
     }
     return false;
   }
   
   public boolean onInfo(ISuperPlayer paramISuperPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
   {
-    WSLog.e("WS_VIDEO_SuperPlayerImpl", "[SuperPlayerImpl.java][onInfo] what:" + paramInt + ", arg1:" + paramLong1 + ", arg2:" + paramLong2 + ", extra:" + paramObject);
-    switch (paramInt)
+    paramISuperPlayer = new StringBuilder();
+    paramISuperPlayer.append("[SuperPlayerImpl.java][onInfo] what:");
+    paramISuperPlayer.append(paramInt);
+    paramISuperPlayer.append(", arg1:");
+    paramISuperPlayer.append(paramLong1);
+    paramISuperPlayer.append(", arg2:");
+    paramISuperPlayer.append(paramLong2);
+    paramISuperPlayer.append(", extra:");
+    paramISuperPlayer.append(paramObject);
+    WSLog.e("WS_VIDEO_SuperPlayerImpl", paramISuperPlayer.toString());
+    if (paramInt != 201)
     {
-    }
-    while (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerListener != null)
-    {
-      return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerListener.a(this, b(paramInt), paramObject);
-      if ((paramObject instanceof TPPlayerMsg.TPDownLoadProgressInfo))
+      if (paramInt != 204)
       {
-        paramISuperPlayer = (TPPlayerMsg.TPDownLoadProgressInfo)paramObject;
-        if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerListener != null) {
-          this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerListener.a(paramISuperPlayer.downloadSpeedKBps, paramISuperPlayer.totalFileSize, paramISuperPlayer.extraInfo);
-        }
-        return true;
-        if ((paramObject instanceof TPPlayerMsg.TPCDNURLInfo))
+        if ((paramInt == 207) && ((paramObject instanceof TPPlayerMsg.TPDownLoadProgressInfo)))
         {
-          paramISuperPlayer = (TPPlayerMsg.TPCDNURLInfo)paramObject;
-          WSLog.d("WS_VIDEO_SuperPlayerImpl", "[SuperPlayerImpl.java][onInfo] TPCDNURLInfo url:" + paramISuperPlayer.url + ", uIp:" + paramISuperPlayer.uIp + ", cdnIp:" + paramISuperPlayer.cdnIp + ", errorStr:" + paramISuperPlayer.errorStr);
-          continue;
-          WSLog.e("WS_VIDEO_SuperPlayerImpl", "[SuperPlayerImpl.java][onInfo] PLAYER_INFO_ALL_DOWNLOAD_FINISH!");
+          paramISuperPlayer = (TPPlayerMsg.TPDownLoadProgressInfo)paramObject;
+          paramObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerListener;
+          if (paramObject != null) {
+            paramObject.a(paramISuperPlayer.downloadSpeedKBps, paramISuperPlayer.totalFileSize, paramISuperPlayer.extraInfo);
+          }
+          return true;
         }
       }
+      else if ((paramObject instanceof TPPlayerMsg.TPCDNURLInfo))
+      {
+        paramISuperPlayer = (TPPlayerMsg.TPCDNURLInfo)paramObject;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[SuperPlayerImpl.java][onInfo] TPCDNURLInfo url:");
+        localStringBuilder.append(paramISuperPlayer.url);
+        localStringBuilder.append(", uIp:");
+        localStringBuilder.append(paramISuperPlayer.uIp);
+        localStringBuilder.append(", cdnIp:");
+        localStringBuilder.append(paramISuperPlayer.cdnIp);
+        localStringBuilder.append(", errorStr:");
+        localStringBuilder.append(paramISuperPlayer.errorStr);
+        WSLog.d("WS_VIDEO_SuperPlayerImpl", localStringBuilder.toString());
+      }
+    }
+    else {
+      WSLog.e("WS_VIDEO_SuperPlayerImpl", "[SuperPlayerImpl.java][onInfo] PLAYER_INFO_ALL_DOWNLOAD_FINISH!");
+    }
+    paramISuperPlayer = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerListener;
+    if (paramISuperPlayer != null) {
+      return paramISuperPlayer.a(this, b(paramInt), paramObject);
     }
     return false;
   }
   
   public void onSeekComplete(ISuperPlayer paramISuperPlayer)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerListener != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerListener.c(this);
+    paramISuperPlayer = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerListener;
+    if (paramISuperPlayer != null) {
+      paramISuperPlayer.c(this);
     }
   }
   
   public void onVideoPrepared(ISuperPlayer paramISuperPlayer)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerListener != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerListener.a(this);
+    paramISuperPlayer = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerListener;
+    if (paramISuperPlayer != null) {
+      paramISuperPlayer.a(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.wrapper.superplayer.SuperPlayerImpl
  * JD-Core Version:    0.7.0.1
  */

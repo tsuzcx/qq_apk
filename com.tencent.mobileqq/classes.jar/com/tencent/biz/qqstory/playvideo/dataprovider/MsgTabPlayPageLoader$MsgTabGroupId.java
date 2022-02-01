@@ -32,20 +32,22 @@ public class MsgTabPlayPageLoader$MsgTabGroupId
   
   public String a()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo != null) {
-      return this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_JavaLangString;
+    MsgTabNodeInfo localMsgTabNodeInfo = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo;
+    if (localMsgTabNodeInfo != null) {
+      return localMsgTabNodeInfo.jdField_a_of_type_JavaLangString;
     }
     return this.jdField_a_of_type_JavaLangString;
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo != null) && (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_Int == 12);
+    MsgTabNodeInfo localMsgTabNodeInfo = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo;
+    return (localMsgTabNodeInfo != null) && (localMsgTabNodeInfo.jdField_a_of_type_Int == 12);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayPageLoader.MsgTabGroupId
  * JD-Core Version:    0.7.0.1
  */

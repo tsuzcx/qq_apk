@@ -20,7 +20,7 @@ class QQSpecialFriendSettingActivity$1$1
     if (QLog.isColorLevel()) {
       QLog.d("QQSpecialFriendSettingActivity", 2, "finish all settings when dialog dismiss");
     }
-    if (NetworkUtil.g(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialFriendSettingActivity$1.a))
+    if (NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialFriendSettingActivity$1.a))
     {
       boolean bool1 = QQSpecialFriendSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialFriendSettingActivity$1.a).a();
       boolean bool2 = QQSpecialFriendSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialFriendSettingActivity$1.a).a();
@@ -29,30 +29,28 @@ class QQSpecialFriendSettingActivity$1$1
       int i = QQSpecialFriendSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialFriendSettingActivity$1.a);
       paramDialogInterface.setSpecialCareSwitchesOfAPerson(str, new int[] { 2, 3 }, new boolean[] { bool1, bool2 }, new String[] { String.valueOf(i), null });
       paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialFriendSettingActivity$1.a.a.obtainMessage(8193);
-      paramDialogInterface.obj = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialFriendSettingActivity$1.a.getString(2131699210);
+      paramDialogInterface.obj = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialFriendSettingActivity$1.a.getString(2131699314);
       this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialFriendSettingActivity$1.a.a.sendMessage(paramDialogInterface);
-      if ((bool1) && (bool2))
-      {
+      if ((bool1) && (bool2)) {
         paramDialogInterface = "0";
-        ReportController.b(null, "CliOper", "", "", "0X80050E2", "0X80050E2", 0, 0, paramDialogInterface, "", "", "");
+      } else {
+        paramDialogInterface = "1";
       }
+      ReportController.b(null, "CliOper", "", "", "0X80050E2", "0X80050E2", 0, 0, paramDialogInterface, "", "", "");
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppMsgnotifyMsgNotifyPushForSpecialCareDialog.a();
-      return;
-      paramDialogInterface = "1";
-      break;
       paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialFriendSettingActivity$1.a.a.obtainMessage(8195);
       paramDialogInterface.arg1 = 0;
-      paramDialogInterface.arg2 = 2131692257;
+      paramDialogInterface.arg2 = 2131692183;
       this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialFriendSettingActivity$1.a.a.sendMessage(paramDialogInterface);
     }
+    this.jdField_a_of_type_ComTencentMobileqqAppMsgnotifyMsgNotifyPushForSpecialCareDialog.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity.1.1
  * JD-Core Version:    0.7.0.1
  */

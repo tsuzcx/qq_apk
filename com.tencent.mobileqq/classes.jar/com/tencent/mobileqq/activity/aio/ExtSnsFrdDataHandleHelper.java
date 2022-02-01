@@ -29,359 +29,416 @@ public class ExtSnsFrdDataHandleHelper
 {
   private static int a(QQAppInterface paramQQAppInterface, FriendsManager paramFriendsManager, Friends paramFriends, ExtensionInfo paramExtensionInfo, String paramString, Oidb_0xd50.ExtSnsFrdData paramExtSnsFrdData)
   {
-    int j = 0;
     LocationShareServiceHolder.a(paramQQAppInterface);
-    boolean bool7 = false;
-    boolean bool2 = false;
-    boolean bool8 = false;
-    boolean bool1 = false;
-    boolean bool9 = false;
-    boolean bool3 = false;
-    boolean bool6 = bool7;
-    boolean bool5 = bool8;
-    boolean bool4 = bool9;
-    if (paramFriends != null)
+    boolean bool4;
+    boolean bool5;
+    boolean bool6;
+    if ((paramFriends != null) && (paramFriends.isFriend()))
     {
-      bool6 = bool7;
-      bool5 = bool8;
-      bool4 = bool9;
-      if (paramFriends.isFriend())
+      if (paramExtSnsFrdData.bytes_music_switch.has()) {
+        bool1 = ListenTogetherAIOStatusHelper.a(paramExtSnsFrdData.bytes_music_switch.get().toByteArray());
+      } else {
+        bool1 = false;
+      }
+      if (paramExtSnsFrdData.bytes_ksing_switch.has()) {
+        bool2 = SingTogetherParser.a(paramExtSnsFrdData.bytes_ksing_switch.get().toByteArray());
+      } else {
+        bool2 = false;
+      }
+      if (paramExtSnsFrdData.bytes_lbs_share.has()) {
+        bool3 = LocationMessageUtil.a(paramExtSnsFrdData.bytes_lbs_share);
+      } else {
+        bool3 = false;
+      }
+      bool4 = bool1;
+      bool5 = bool2;
+      bool6 = bool3;
+      if (paramExtSnsFrdData.bytes_aio_quick_app.has())
       {
-        if (paramExtSnsFrdData.bytes_music_switch.has()) {
-          bool2 = ListenTogetherAIOStatusHelper.a(paramExtSnsFrdData.bytes_music_switch.get().toByteArray());
-        }
-        if (paramExtSnsFrdData.bytes_ksing_switch.has()) {
-          bool1 = SingTogetherParser.a(paramExtSnsFrdData.bytes_ksing_switch.get().toByteArray());
-        }
-        if (paramExtSnsFrdData.bytes_lbs_share.has()) {
-          bool3 = LocationMessageUtil.a(paramExtSnsFrdData.bytes_lbs_share);
-        }
-        bool6 = bool2;
-        bool5 = bool1;
-        bool4 = bool3;
-        if (paramExtSnsFrdData.bytes_aio_quick_app.has())
-        {
-          bool4 = C2CShortcutBarSwitcher.a(paramExtSnsFrdData.bytes_aio_quick_app);
-          bool5 = bool1;
-          bool1 = bool4;
-        }
+        bool7 = C2CShortcutBarSwitcher.a(paramExtSnsFrdData.bytes_aio_quick_app);
+        break label169;
       }
     }
-    for (;;)
+    else
     {
-      if (paramExtensionInfo.isTogetherBusinessOpen(16777216) != bool5)
-      {
-        paramExtensionInfo.setTogetherBusiness(bool5, 16777216);
+      bool4 = false;
+      bool5 = false;
+      bool6 = false;
+    }
+    boolean bool7 = false;
+    boolean bool3 = bool6;
+    boolean bool2 = bool5;
+    boolean bool1 = bool4;
+    label169:
+    if (paramExtensionInfo.isTogetherBusinessOpen(16777216) != bool2)
+    {
+      paramExtensionInfo.setTogetherBusiness(bool2, 16777216);
+      j = 1;
+    }
+    else
+    {
+      j = 0;
+    }
+    int i = j;
+    if (paramExtensionInfo.isListenTogetherOpen != bool1)
+    {
+      paramExtensionInfo.isListenTogetherOpen = bool1;
+      i = j | 0x1;
+    }
+    if (paramExtensionInfo.isSharingLocation == 1) {
+      bool4 = true;
+    } else {
+      bool4 = false;
+    }
+    if (bool4 != bool3)
+    {
+      if (bool3) {
         j = 1;
+      } else {
+        j = 0;
       }
-      int i = j;
-      if (paramExtensionInfo.isListenTogetherOpen != bool2)
-      {
-        paramExtensionInfo.isListenTogetherOpen = bool2;
-        i = j | 0x1;
-      }
-      if (paramExtensionInfo.isSharingLocation == 1)
-      {
+      paramExtensionInfo.isSharingLocation = j;
+      if (paramExtensionInfo.isSharingLocation == 1) {
         bool4 = true;
-        j = i;
-        if (bool4 != bool3)
-        {
-          if (!bool3) {
-            break label560;
-          }
-          j = 1;
-          label254:
-          paramExtensionInfo.isSharingLocation = j;
-          if (paramExtensionInfo.isSharingLocation != 1) {
-            break label566;
-          }
-          bool4 = true;
-          label271:
-          LocationMessageUtil.a(paramQQAppInterface, 0, paramString, bool4);
-          if (QLog.isColorLevel()) {
-            QLog.d("ExtSnsFrdDataHandlerHelper", 2, new Object[] { "handleExtSnsFrdData: invoked. update ei & msg data ", " isSharingLbs: ", Boolean.valueOf(bool3) });
-          }
-          j = i | 0x1;
-        }
-        if (paramExtensionInfo.isAioShortcutBarOpen == bool1) {
-          break label622;
-        }
-        paramExtensionInfo.isAioShortcutBarOpen = bool1;
+      } else {
+        bool4 = false;
       }
-      label439:
-      label578:
-      label622:
-      for (i = j | 0x1;; i = j)
+      LocationMessageUtil.a(paramQQAppInterface, 0, paramString, bool4);
+      if (QLog.isColorLevel()) {
+        QLog.d("ExtSnsFrdDataHandlerHelper", 2, new Object[] { "handleExtSnsFrdData: invoked. update ei & msg data ", " isSharingLbs: ", Boolean.valueOf(bool3) });
+      }
+      j = i | 0x1;
+    }
+    else
+    {
+      j = i;
+    }
+    i = j;
+    if (paramExtensionInfo.isAioShortcutBarOpen != bool7)
+    {
+      paramExtensionInfo.isAioShortcutBarOpen = bool7;
+      i = j | 0x1;
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleExtSnsFrdData friendUin:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" newIsOpen:");
+      localStringBuilder.append(bool1);
+      localStringBuilder.append(" oldIsOpen");
+      localStringBuilder.append(paramExtensionInfo.isListenTogetherOpen);
+      localStringBuilder.append(" is_sing_together=");
+      localStringBuilder.append(bool2);
+      localStringBuilder.append(" isSharingLocation: ");
+      localStringBuilder.append(paramExtensionInfo.isSharingLocation);
+      localStringBuilder.append(" isAioShortcutBarOpen: ");
+      localStringBuilder.append(paramExtensionInfo.isAioShortcutBarOpen);
+      localStringBuilder.append(" friend:");
+      if (paramFriends != null) {
+        paramExtensionInfo = Boolean.valueOf(paramFriends.isFriend());
+      } else {
+        paramExtensionInfo = "null";
+      }
+      localStringBuilder.append(paramExtensionInfo);
+      QLog.d("ExtSnsFrdDataHandlerHelper", 1, localStringBuilder.toString());
+    }
+    int j = i;
+    if (paramFriends != null) {
+      if (paramExtSnsFrdData.bytes_mutualmark_alienation.has())
       {
+        MutualMarkAlienationHelper.a(paramQQAppInterface, paramFriendsManager, paramFriends, paramString, paramExtSnsFrdData.bytes_mutualmark_alienation.get().toByteArray(), false);
+        i |= 0x2;
+        j = i;
         if (QLog.isColorLevel())
         {
-          StringBuilder localStringBuilder = new StringBuilder().append("handleExtSnsFrdData friendUin:").append(paramString).append(" newIsOpen:").append(bool2).append(" oldIsOpen").append(paramExtensionInfo.isListenTogetherOpen).append(" is_sing_together=").append(bool5).append(" isSharingLocation: ").append(paramExtensionInfo.isSharingLocation).append(" isAioShortcutBarOpen: ").append(paramExtensionInfo.isAioShortcutBarOpen).append(" friend:");
-          if (paramFriends != null)
-          {
-            paramExtensionInfo = Boolean.valueOf(paramFriends.isFriend());
-            QLog.d("ExtSnsFrdDataHandlerHelper", 1, paramExtensionInfo);
-          }
+          paramQQAppInterface = new StringBuilder();
+          paramQQAppInterface.append("handleExtSnsFrdData friendUin:");
+          paramQQAppInterface.append(paramString);
+          paramQQAppInterface.append(" relationIconFlag");
+          paramQQAppInterface.append(paramFriends.relationIconFlag);
+          QLog.d("ExtSnsFrdDataHandlerHelper", 1, paramQQAppInterface.toString());
+          return i;
         }
-        else
-        {
-          j = i;
-          if (paramFriends != null)
-          {
-            if (!paramExtSnsFrdData.bytes_mutualmark_alienation.has()) {
-              break label578;
-            }
-            MutualMarkAlienationHelper.a(paramQQAppInterface, paramFriendsManager, paramFriends, paramString, paramExtSnsFrdData.bytes_mutualmark_alienation.get().toByteArray(), false);
-            i |= 0x2;
-            j = i;
-            if (QLog.isColorLevel())
-            {
-              QLog.d("ExtSnsFrdDataHandlerHelper", 1, "handleExtSnsFrdData friendUin:" + paramString + " relationIconFlag" + paramFriends.relationIconFlag);
-              j = i;
-            }
-          }
-        }
-        do
-        {
-          return j;
-          bool4 = false;
-          break;
-          j = 0;
-          break label254;
-          bool4 = false;
-          break label271;
-          paramExtensionInfo = "null";
-          break label439;
-          j = i;
-        } while (!QLog.isColorLevel());
-        QLog.e("ExtSnsFrdDataHandlerHelper", 2, "handleExtSnsFrdData ExtSnsFrdData  friendUin:" + paramString + " doesn't has bytes_mutualmark_alienation");
-        return i;
       }
-      label560:
-      label566:
-      bool2 = bool6;
-      bool1 = false;
-      bool3 = bool4;
+      else
+      {
+        j = i;
+        if (QLog.isColorLevel())
+        {
+          paramQQAppInterface = new StringBuilder();
+          paramQQAppInterface.append("handleExtSnsFrdData ExtSnsFrdData  friendUin:");
+          paramQQAppInterface.append(paramString);
+          paramQQAppInterface.append(" doesn't has bytes_mutualmark_alienation");
+          QLog.e("ExtSnsFrdDataHandlerHelper", 2, paramQQAppInterface.toString());
+          j = i;
+        }
+      }
     }
+    return j;
   }
   
   public static void a(QQAppInterface paramQQAppInterface, FriendsManager paramFriendsManager, Friends paramFriends, ExtensionInfo paramExtensionInfo, ExtSnsRelationChainChangePushInfo paramExtSnsRelationChainChangePushInfo, PushMsg0x210C7Info paramPushMsg0x210C7Info)
   {
-    if (paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo != null) {}
-    switch (paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int)
-    {
-    default: 
-      if (MutualMarkUtils.b(paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int)) {
-        MutualMarkDataS2CHandleHelper.a(paramQQAppInterface, paramFriendsManager, paramFriends, paramExtensionInfo, paramExtSnsRelationChainChangePushInfo, paramPushMsg0x210C7Info);
+    if (paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo != null) {
+      if (paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int != 10)
+      {
+        if (MutualMarkUtils.b(paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int)) {
+          MutualMarkDataS2CHandleHelper.a(paramQQAppInterface, paramFriendsManager, paramFriends, paramExtensionInfo, paramExtSnsRelationChainChangePushInfo, paramPushMsg0x210C7Info);
+        }
       }
-      return;
+      else {
+        MutualMarkAlienationHelper.a(paramQQAppInterface, paramFriendsManager, paramFriends, paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString, paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ArrayOfByte, true);
+      }
     }
-    MutualMarkAlienationHelper.a(paramQQAppInterface, paramFriendsManager, paramFriends, paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString, paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ArrayOfByte, true);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Friends paramFriends, String paramString, Oidb_0xd50.ExtSnsFrdData paramExtSnsFrdData)
   {
-    if (paramFriends != null)
-    {
-      if (!paramExtSnsFrdData.bytes_mutualmark_alienation.has()) {
-        break label87;
+    if (paramFriends != null) {
+      if (paramExtSnsFrdData.bytes_mutualmark_alienation.has())
+      {
+        paramExtSnsFrdData = paramExtSnsFrdData.bytes_mutualmark_alienation.get().toByteArray();
+        MutualMarkAlienationHelper.a(paramQQAppInterface, (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER), paramFriends, paramString, paramExtSnsFrdData, false);
+        if (QLog.isColorLevel())
+        {
+          paramQQAppInterface = new StringBuilder();
+          paramQQAppInterface.append("handleMutualMarExtSnsFrdData friendUin:");
+          paramQQAppInterface.append(paramString);
+          paramQQAppInterface.append(" relationIconFlag");
+          paramQQAppInterface.append(paramFriends.relationIconFlag);
+          QLog.d("ExtSnsFrdDataHandlerHelper", 1, paramQQAppInterface.toString());
+        }
       }
-      paramExtSnsFrdData = paramExtSnsFrdData.bytes_mutualmark_alienation.get().toByteArray();
-      MutualMarkAlienationHelper.a(paramQQAppInterface, (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER), paramFriends, paramString, paramExtSnsFrdData, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("ExtSnsFrdDataHandlerHelper", 1, "handleMutualMarExtSnsFrdData friendUin:" + paramString + " relationIconFlag" + paramFriends.relationIconFlag);
+      else if (QLog.isColorLevel())
+      {
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("handleMutualMarExtSnsFrdData ExtSnsFrdData  friendUin:");
+        paramQQAppInterface.append(paramString);
+        paramQQAppInterface.append(" doesn't has bytes_mutualmark_alienation");
+        QLog.e("ExtSnsFrdDataHandlerHelper", 2, paramQQAppInterface.toString());
       }
     }
-    label87:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.e("ExtSnsFrdDataHandlerHelper", 2, "handleMutualMarExtSnsFrdData ExtSnsFrdData  friendUin:" + paramString + " doesn't has bytes_mutualmark_alienation");
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Oidb_0xd50.ExtSnsFrdData paramExtSnsFrdData)
   {
-    if (paramExtSnsFrdData == null) {}
-    String str;
-    int i;
-    do
+    if (paramExtSnsFrdData == null) {
+      return;
+    }
+    long l = paramExtSnsFrdData.frd_uin.get();
+    if (l <= 0L) {
+      return;
+    }
+    String str = String.valueOf(l);
+    FriendsManager localFriendsManager = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Object localObject2 = localFriendsManager.a(str);
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      long l;
-      do
-      {
-        return;
-        l = paramExtSnsFrdData.frd_uin.get();
-      } while (l <= 0L);
-      str = String.valueOf(l);
-      FriendsManager localFriendsManager = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-      Object localObject2 = localFriendsManager.a(str);
-      Object localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        localObject1 = new ExtensionInfo();
-        ((ExtensionInfo)localObject1).uin = str;
-      }
-      localObject2 = localFriendsManager.e(str);
-      i = a(paramQQAppInterface, localFriendsManager, (Friends)localObject2, (ExtensionInfo)localObject1, str, paramExtSnsFrdData);
-      if ((localObject1 != null) && ((i & 0x1) != 0)) {
-        localFriendsManager.a((ExtensionInfo)localObject1);
-      }
-      if ((localObject2 != null) && ((i & 0x2) != 0))
-      {
-        localFriendsManager.a((Friends)localObject2);
-        paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER).notifyUI(3, true, str);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ExtSnsFrdDataHandlerHelper", 1, "handleGet0x5e0ExtSnsFrdData uin:" + str + " changeType:" + i);
+      localObject1 = new ExtensionInfo();
+      ((ExtensionInfo)localObject1).uin = str;
+    }
+    localObject2 = localFriendsManager.e(str);
+    int i = a(paramQQAppInterface, localFriendsManager, (Friends)localObject2, (ExtensionInfo)localObject1, str, paramExtSnsFrdData);
+    if ((localObject1 != null) && ((i & 0x1) != 0)) {
+      localFriendsManager.a((ExtensionInfo)localObject1);
+    }
+    if ((localObject2 != null) && ((i & 0x2) != 0))
+    {
+      localFriendsManager.a((Friends)localObject2);
+      paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER).notifyUI(3, true, str);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("handleGet0x5e0ExtSnsFrdData uin:");
+      paramQQAppInterface.append(str);
+      paramQQAppInterface.append(" changeType:");
+      paramQQAppInterface.append(i);
+      QLog.d("ExtSnsFrdDataHandlerHelper", 1, paramQQAppInterface.toString());
+    }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, submsgtype0xc7.RelationalChainChange paramRelationalChainChange, PushMsg0x210C7Info paramPushMsg0x210C7Info)
   {
-    if ((paramQQAppInterface == null) || (paramRelationalChainChange == null) || (paramPushMsg0x210C7Info == null)) {}
-    ExtSnsRelationChainChangePushInfo localExtSnsRelationChainChangePushInfo;
-    do
+    if ((paramQQAppInterface != null) && (paramRelationalChainChange != null))
     {
-      return;
-      localExtSnsRelationChainChangePushInfo = ExtSnsRelationChainChangePushInfo.a(paramRelationalChainChange, paramPushMsg0x210C7Info.a);
-    } while ((!TextUtils.equals(paramQQAppInterface.getCurrentAccountUin(), localExtSnsRelationChainChangePushInfo.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString)));
-    FriendsManager localFriendsManager = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    Friends localFriends = localFriendsManager.e(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString);
-    ExtensionInfo localExtensionInfo = localFriendsManager.a(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString);
-    ExtensionInfoLogUtils.a("ExtSnsFrdDataHandlerHelper", "decodeC2CMsgPkgSubMsgType0xc7 before fm.getExtensionInfo，friendUin:", localExtensionInfo);
-    paramRelationalChainChange = localExtensionInfo;
-    if (localExtensionInfo == null)
-    {
-      paramRelationalChainChange = new ExtensionInfo();
-      paramRelationalChainChange.uin = localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString;
+      if (paramPushMsg0x210C7Info == null) {
+        return;
+      }
+      ExtSnsRelationChainChangePushInfo localExtSnsRelationChainChangePushInfo = ExtSnsRelationChainChangePushInfo.a(paramRelationalChainChange, paramPushMsg0x210C7Info.a);
+      if (TextUtils.equals(paramQQAppInterface.getCurrentAccountUin(), localExtSnsRelationChainChangePushInfo.jdField_a_of_type_JavaLangString))
+      {
+        if (TextUtils.isEmpty(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString)) {
+          return;
+        }
+        FriendsManager localFriendsManager = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+        Friends localFriends = localFriendsManager.e(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString);
+        Object localObject = localFriendsManager.a(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString);
+        ExtensionInfoLogUtils.a("ExtSnsFrdDataHandlerHelper", "decodeC2CMsgPkgSubMsgType0xc7 before fm.getExtensionInfo，friendUin:", (ExtensionInfo)localObject);
+        paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject;
+        if (localObject == null)
+        {
+          paramRelationalChainChange = new ExtensionInfo();
+          paramRelationalChainChange.uin = localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString;
+        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("decodeC2CMsgPkgSubMsgType0xc7 msginfo:");
+        ((StringBuilder)localObject).append(paramPushMsg0x210C7Info);
+        ((StringBuilder)localObject).append("changePushInfo:");
+        ((StringBuilder)localObject).append(localExtSnsRelationChainChangePushInfo);
+        QLog.i("ExtSnsFrdDataHandlerHelper", 1, ((StringBuilder)localObject).toString());
+        int i = localExtSnsRelationChainChangePushInfo.jdField_a_of_type_Int;
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            if (i != 3)
+            {
+              if (i != 50000)
+              {
+                switch (i)
+                {
+                default: 
+                  switch (i)
+                  {
+                  default: 
+                    return;
+                  case 11002: 
+                    k(paramQQAppInterface, localFriendsManager, localFriends, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo, paramPushMsg0x210C7Info);
+                    return;
+                  case 11001: 
+                    j(paramQQAppInterface, localFriendsManager, localFriends, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo, paramPushMsg0x210C7Info);
+                    return;
+                  }
+                  i(paramQQAppInterface, localFriendsManager, localFriends, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo, paramPushMsg0x210C7Info);
+                  return;
+                case 10005: 
+                  h(paramQQAppInterface, localFriendsManager, localFriends, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo, paramPushMsg0x210C7Info);
+                  return;
+                case 10004: 
+                  g(paramQQAppInterface, localFriendsManager, localFriends, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo, paramPushMsg0x210C7Info);
+                  return;
+                case 10003: 
+                  f(paramQQAppInterface, localFriendsManager, localFriends, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo, paramPushMsg0x210C7Info);
+                  return;
+                case 10002: 
+                  e(paramQQAppInterface, localFriendsManager, localFriends, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo, paramPushMsg0x210C7Info);
+                  return;
+                }
+                d(paramQQAppInterface, localFriendsManager, localFriends, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo, paramPushMsg0x210C7Info);
+                return;
+              }
+              l(paramQQAppInterface, localFriendsManager, localFriends, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo, paramPushMsg0x210C7Info);
+              return;
+            }
+            c(paramQQAppInterface, localFriendsManager, localFriends, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo, paramPushMsg0x210C7Info);
+            return;
+          }
+          b(paramQQAppInterface, localFriendsManager, localFriends, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo, paramPushMsg0x210C7Info);
+          return;
+        }
+        a(paramQQAppInterface, localFriendsManager, localFriends, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo, paramPushMsg0x210C7Info);
+      }
     }
-    QLog.i("ExtSnsFrdDataHandlerHelper", 1, "decodeC2CMsgPkgSubMsgType0xc7 msginfo:" + paramPushMsg0x210C7Info + "changePushInfo:" + localExtSnsRelationChainChangePushInfo);
-    switch (localExtSnsRelationChainChangePushInfo.jdField_a_of_type_Int)
-    {
-    default: 
-      return;
-    case 1: 
-      a(paramQQAppInterface, localFriendsManager, localFriends, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo, paramPushMsg0x210C7Info);
-      return;
-    case 2: 
-      b(paramQQAppInterface, localFriendsManager, localFriends, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo, paramPushMsg0x210C7Info);
-      return;
-    case 3: 
-      c(paramQQAppInterface, localFriendsManager, localFriends, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo, paramPushMsg0x210C7Info);
-      return;
-    case 10001: 
-      d(paramQQAppInterface, localFriendsManager, localFriends, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo, paramPushMsg0x210C7Info);
-      return;
-    case 10002: 
-      e(paramQQAppInterface, localFriendsManager, localFriends, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo, paramPushMsg0x210C7Info);
-      return;
-    case 10003: 
-      f(paramQQAppInterface, localFriendsManager, localFriends, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo, paramPushMsg0x210C7Info);
-      return;
-    case 10004: 
-      g(paramQQAppInterface, localFriendsManager, localFriends, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo, paramPushMsg0x210C7Info);
-      return;
-    case 10005: 
-      h(paramQQAppInterface, localFriendsManager, localFriends, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo, paramPushMsg0x210C7Info);
-      return;
-    case 11000: 
-      i(paramQQAppInterface, localFriendsManager, localFriends, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo, paramPushMsg0x210C7Info);
-      return;
-    case 11001: 
-      j(paramQQAppInterface, localFriendsManager, localFriends, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo, paramPushMsg0x210C7Info);
-      return;
-    case 11002: 
-      k(paramQQAppInterface, localFriendsManager, localFriends, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo, paramPushMsg0x210C7Info);
-      return;
-    }
-    l(paramQQAppInterface, localFriendsManager, localFriends, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo, paramPushMsg0x210C7Info);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean, ExtensionInfo paramExtensionInfo, String paramString, Oidb_0xd50.ExtSnsFrdData paramExtSnsFrdData)
   {
     boolean bool1;
     boolean bool2;
-    label58:
-    boolean bool4;
-    label79:
-    boolean bool5;
     boolean bool3;
-    if (paramBoolean) {
-      if (paramExtSnsFrdData.bytes_music_switch.has())
-      {
+    boolean bool5;
+    boolean bool4;
+    if (paramBoolean)
+    {
+      if (paramExtSnsFrdData.bytes_music_switch.has()) {
         bool1 = ListenTogetherAIOStatusHelper.a(paramExtSnsFrdData.bytes_music_switch.get().toByteArray());
-        if (paramExtSnsFrdData.bytes_ksing_switch.has())
-        {
-          bool2 = SingTogetherParser.a(paramExtSnsFrdData.bytes_ksing_switch.get().toByteArray());
-          if (paramExtSnsFrdData.bytes_lbs_share.has())
-          {
-            bool4 = LocationMessageUtil.a(paramExtSnsFrdData.bytes_lbs_share);
-            if (paramExtSnsFrdData.bytes_aio_quick_app.has())
-            {
-              bool5 = C2CShortcutBarSwitcher.a(paramExtSnsFrdData.bytes_aio_quick_app);
-              bool3 = bool1;
-              bool1 = bool5;
-            }
-          }
-        }
+      } else {
+        bool1 = false;
+      }
+      if (paramExtSnsFrdData.bytes_ksing_switch.has()) {
+        bool2 = SingTogetherParser.a(paramExtSnsFrdData.bytes_ksing_switch.get().toByteArray());
+      } else {
+        bool2 = false;
+      }
+      if (paramExtSnsFrdData.bytes_lbs_share.has()) {
+        bool3 = LocationMessageUtil.a(paramExtSnsFrdData.bytes_lbs_share);
+      } else {
+        bool3 = false;
+      }
+      if (paramExtSnsFrdData.bytes_aio_quick_app.has())
+      {
+        bool5 = C2CShortcutBarSwitcher.a(paramExtSnsFrdData.bytes_aio_quick_app);
+        bool4 = bool1;
+        bool1 = bool5;
+      }
+      else
+      {
+        bool5 = false;
+        bool4 = bool1;
+        bool1 = bool5;
       }
     }
-    for (;;)
+    else
     {
-      if (paramExtensionInfo.isTogetherBusinessOpen(16777216) != bool2) {
-        paramExtensionInfo.setTogetherBusiness(bool2, 16777216);
-      }
-      if (paramExtensionInfo.isListenTogetherOpen != bool3) {
-        paramExtensionInfo.isListenTogetherOpen = bool3;
-      }
-      int i;
-      if (paramExtensionInfo.isSharingLocation == 1)
-      {
-        bool5 = true;
-        if (bool5 != bool4)
-        {
-          if (!bool4) {
-            break label347;
-          }
-          i = 1;
-          label168:
-          paramExtensionInfo.isSharingLocation = i;
-          if (paramExtensionInfo.isSharingLocation != 1) {
-            break label353;
-          }
-        }
-      }
-      label347:
-      label353:
-      for (bool5 = true;; bool5 = false)
-      {
-        LocationMessageUtil.a(paramQQAppInterface, 0, paramString, bool5);
-        if (QLog.isColorLevel()) {
-          QLog.d("ExtSnsFrdDataHandlerHelper", 2, new Object[] { "handleExtSnsFrdDataForListenTogether: invoked. update ei & msg data ", " isSharingLbs: ", Boolean.valueOf(bool4) });
-        }
-        if (paramExtensionInfo.isAioShortcutBarOpen != bool1) {
-          paramExtensionInfo.isAioShortcutBarOpen = bool1;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ExtSnsFrdDataHandlerHelper", 1, "handleExtSnsFrdDataForListenTogether friendUin:" + paramString + " newIsOpen:" + bool3 + " oldIsOpen" + paramExtensionInfo.isListenTogetherOpen + " is_sing_together=" + bool2 + " isSharingLocation: " + paramExtensionInfo.isSharingLocation + " isAioShortcutBarOpen: " + paramExtensionInfo.isAioShortcutBarOpen + " friend:" + paramBoolean);
-        }
-        return;
-        bool5 = false;
-        break;
-        i = 0;
-        break label168;
-      }
-      bool3 = bool1;
-      bool1 = false;
-      continue;
-      bool4 = false;
-      break label79;
-      bool2 = false;
-      break label58;
-      bool1 = false;
-      break;
       bool1 = false;
       bool4 = false;
       bool2 = false;
       bool3 = false;
+    }
+    if (paramExtensionInfo.isTogetherBusinessOpen(16777216) != bool2) {
+      paramExtensionInfo.setTogetherBusiness(bool2, 16777216);
+    }
+    if (paramExtensionInfo.isListenTogetherOpen != bool4) {
+      paramExtensionInfo.isListenTogetherOpen = bool4;
+    }
+    if (paramExtensionInfo.isSharingLocation == 1) {
+      bool5 = true;
+    } else {
+      bool5 = false;
+    }
+    if (bool5 != bool3)
+    {
+      int i;
+      if (bool3) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      paramExtensionInfo.isSharingLocation = i;
+      if (paramExtensionInfo.isSharingLocation == 1) {
+        bool5 = true;
+      } else {
+        bool5 = false;
+      }
+      LocationMessageUtil.a(paramQQAppInterface, 0, paramString, bool5);
+      if (QLog.isColorLevel()) {
+        QLog.d("ExtSnsFrdDataHandlerHelper", 2, new Object[] { "handleExtSnsFrdDataForListenTogether: invoked. update ei & msg data ", " isSharingLbs: ", Boolean.valueOf(bool3) });
+      }
+    }
+    if (paramExtensionInfo.isAioShortcutBarOpen != bool1) {
+      paramExtensionInfo.isAioShortcutBarOpen = bool1;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("handleExtSnsFrdDataForListenTogether friendUin:");
+      paramQQAppInterface.append(paramString);
+      paramQQAppInterface.append(" newIsOpen:");
+      paramQQAppInterface.append(bool4);
+      paramQQAppInterface.append(" oldIsOpen");
+      paramQQAppInterface.append(paramExtensionInfo.isListenTogetherOpen);
+      paramQQAppInterface.append(" is_sing_together=");
+      paramQQAppInterface.append(bool2);
+      paramQQAppInterface.append(" isSharingLocation: ");
+      paramQQAppInterface.append(paramExtensionInfo.isSharingLocation);
+      paramQQAppInterface.append(" isAioShortcutBarOpen: ");
+      paramQQAppInterface.append(paramExtensionInfo.isAioShortcutBarOpen);
+      paramQQAppInterface.append(" friend:");
+      paramQQAppInterface.append(paramBoolean);
+      QLog.d("ExtSnsFrdDataHandlerHelper", 1, paramQQAppInterface.toString());
     }
   }
   
@@ -398,16 +455,17 @@ public class ExtSnsFrdDataHandleHelper
   
   public static void c(QQAppInterface paramQQAppInterface, FriendsManager paramFriendsManager, Friends paramFriends, ExtensionInfo paramExtensionInfo, ExtSnsRelationChainChangePushInfo paramExtSnsRelationChainChangePushInfo, PushMsg0x210C7Info paramPushMsg0x210C7Info)
   {
-    if (paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo != null) {}
-    switch (paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int)
-    {
-    default: 
-      if (MutualMarkUtils.b(paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int)) {
-        MutualMarkDataS2CHandleHelper.c(paramQQAppInterface, paramFriendsManager, paramFriends, paramExtensionInfo, paramExtSnsRelationChainChangePushInfo, paramPushMsg0x210C7Info);
+    if (paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo != null) {
+      if (paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int != 10)
+      {
+        if (MutualMarkUtils.b(paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int)) {
+          MutualMarkDataS2CHandleHelper.c(paramQQAppInterface, paramFriendsManager, paramFriends, paramExtensionInfo, paramExtSnsRelationChainChangePushInfo, paramPushMsg0x210C7Info);
+        }
       }
-      return;
+      else {
+        MutualMarkAlienationHelper.a(paramQQAppInterface, paramFriendsManager, paramFriends, paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString, paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ArrayOfByte, true);
+      }
     }
-    MutualMarkAlienationHelper.a(paramQQAppInterface, paramFriendsManager, paramFriends, paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString, paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ArrayOfByte, true);
   }
   
   public static void d(QQAppInterface paramQQAppInterface, FriendsManager paramFriendsManager, Friends paramFriends, ExtensionInfo paramExtensionInfo, ExtSnsRelationChainChangePushInfo paramExtSnsRelationChainChangePushInfo, PushMsg0x210C7Info paramPushMsg0x210C7Info)
@@ -495,7 +553,7 @@ public class ExtSnsFrdDataHandleHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.ExtSnsFrdDataHandleHelper
  * JD-Core Version:    0.7.0.1
  */

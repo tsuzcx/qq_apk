@@ -29,7 +29,7 @@ public class LimitedAgeDiskCache
   public LimitedAgeDiskCache(File paramFile1, File paramFile2, FileNameGenerator paramFileNameGenerator, long paramLong)
   {
     super(paramFile1, paramFile2, paramFileNameGenerator);
-    this.maxFileAge = (1000L * paramLong);
+    this.maxFileAge = (paramLong * 1000L);
   }
   
   private void rememberUsage(String paramString)
@@ -49,30 +49,29 @@ public class LimitedAgeDiskCache
   public File get(String paramString)
   {
     File localFile = super.get(paramString);
-    int i;
     if ((localFile != null) && (localFile.exists()))
     {
       paramString = (Long)this.loadingDates.get(localFile);
-      if (paramString != null) {
-        break label79;
+      int i;
+      if (paramString == null)
+      {
+        paramString = Long.valueOf(localFile.lastModified());
+        i = 0;
       }
-      i = 0;
-      paramString = Long.valueOf(localFile.lastModified());
-      if (System.currentTimeMillis() - paramString.longValue() <= this.maxFileAge) {
-        break label84;
+      else
+      {
+        i = 1;
       }
-      localFile.delete();
-      this.loadingDates.remove(localFile);
+      if (System.currentTimeMillis() - paramString.longValue() > this.maxFileAge)
+      {
+        localFile.delete();
+        this.loadingDates.remove(localFile);
+        return localFile;
+      }
+      if (i == 0) {
+        this.loadingDates.put(localFile, paramString);
+      }
     }
-    label79:
-    label84:
-    while (i != 0)
-    {
-      return localFile;
-      i = 1;
-      break;
-    }
-    this.loadingDates.put(localFile, paramString);
     return localFile;
   }
   
@@ -98,7 +97,7 @@ public class LimitedAgeDiskCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiskCache
  * JD-Core Version:    0.7.0.1
  */

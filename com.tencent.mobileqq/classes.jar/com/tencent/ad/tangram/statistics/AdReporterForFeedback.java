@@ -15,8 +15,12 @@ public final class AdReporterForFeedback
   
   private static String getUrl(Ad paramAd, int paramInt)
   {
-    if ((paramAd != null) && (paramAd.isValid())) {}
-    for (paramAd = paramAd.getUrlForFeedBack(); TextUtils.isEmpty(paramAd); paramAd = null) {
+    if ((paramAd != null) && (paramAd.isValid())) {
+      paramAd = paramAd.getUrlForFeedBack();
+    } else {
+      paramAd = null;
+    }
+    if (TextUtils.isEmpty(paramAd)) {
       return null;
     }
     return paramAd.replaceAll("__ACT_TYPE__", String.valueOf(paramInt));
@@ -26,13 +30,14 @@ public final class AdReporterForFeedback
   {
     String str = getUrl(paramAd, paramInt);
     AdLog.i("AdReporterForFeedback", String.format("reportAsync %s", new Object[] { str }));
-    if (paramWeakReference != null) {}
-    for (Context localContext = (Context)paramWeakReference.get();; localContext = null)
-    {
-      AdReporterForAnalysis.reportForFeedbackStatisticsStart(localContext, paramAd, str);
-      AdThreadManager.INSTANCE.post(new AdReporterForFeedback.1(str, paramWeakReference, paramAd), 4);
-      return;
+    Context localContext;
+    if (paramWeakReference != null) {
+      localContext = (Context)paramWeakReference.get();
+    } else {
+      localContext = null;
     }
+    a.reportForFeedbackStatisticsStart(localContext, paramAd, str);
+    AdThreadManager.INSTANCE.post(new AdReporterForFeedback.1(str, paramWeakReference, paramAd), 4);
   }
 }
 

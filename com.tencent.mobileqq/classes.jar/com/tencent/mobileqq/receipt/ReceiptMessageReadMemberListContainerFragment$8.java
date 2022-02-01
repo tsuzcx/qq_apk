@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.receipt;
 
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.tencent.mobileqq.widget.QQViewPager;
 import com.tencent.mobileqq.widget.TabBarView;
 
@@ -26,7 +26,7 @@ class ReceiptMessageReadMemberListContainerFragment$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment.8
  * JD-Core Version:    0.7.0.1
  */

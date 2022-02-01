@@ -11,7 +11,7 @@ public final class CompositingReportSession
   private static final String REPORT_EVENT = "android_tavkit_compositing";
   public static final String REPORT_KEY_AVG_RENDER_TIME_US = "avg_render_time_us";
   private static final String REPORT_SERVICE = "TAVKit_Android";
-  private static final String REPORT_VERSION = "1.5.0.14-beta";
+  private static final String REPORT_VERSION = "1.5.2.3-beta";
   private static final String TAG = "CompositingReportSessio";
   @Nullable
   private static CompositingReportSession.IReporter reporter;
@@ -40,7 +40,10 @@ public final class CompositingReportSession
     CompositingReportSession.Bean.access$202(localBean, this.successCount);
     CompositingReportSession.Bean.access$302(localBean, (int)this.renderHeight);
     CompositingReportSession.Bean.access$402(localBean, (int)this.renderWidth);
-    Log.d("CompositingReportSessio", "commit: bean = " + localBean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("commit: bean = ");
+    localStringBuilder.append(localBean);
+    Log.d("CompositingReportSessio", localStringBuilder.toString());
     AVReportCenter.getInstance().commit(localBean, Boolean.valueOf(false));
     try
     {
@@ -100,7 +103,7 @@ public final class CompositingReportSession
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavkit.report.CompositingReportSession
  * JD-Core Version:    0.7.0.1
  */

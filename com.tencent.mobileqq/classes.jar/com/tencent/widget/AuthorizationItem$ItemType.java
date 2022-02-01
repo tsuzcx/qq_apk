@@ -15,21 +15,23 @@ public final class AuthorizationItem$ItemType
   
   public static ItemType a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return AuthorizationItem.d;
-    case 0: 
-      return AuthorizationItem.a;
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          return AuthorizationItem.d;
+        }
+        return AuthorizationItem.c;
+      }
       return AuthorizationItem.b;
     }
-    return AuthorizationItem.c;
+    return AuthorizationItem.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.AuthorizationItem.ItemType
  * JD-Core Version:    0.7.0.1
  */

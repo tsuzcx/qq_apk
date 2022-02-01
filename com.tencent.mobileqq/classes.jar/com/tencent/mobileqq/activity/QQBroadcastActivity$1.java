@@ -10,19 +10,17 @@ class QQBroadcastActivity$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
+    if (paramMessage.what != 1010) {
       return;
-    } while (this.a.a == null);
-    this.a.a.changeCursor(this.a.a());
+    }
+    if (this.a.a != null) {
+      this.a.a.changeCursor(this.a.a());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQBroadcastActivity.1
  * JD-Core Version:    0.7.0.1
  */

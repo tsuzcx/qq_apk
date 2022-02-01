@@ -34,15 +34,20 @@ public class ChangeVoiceListAdapter
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      return (this.jdField_a_of_type_JavaUtilArrayList.size() + this.jdField_a_of_type_Int - 1) / this.jdField_a_of_type_Int;
+    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    if (localArrayList != null)
+    {
+      int i = localArrayList.size();
+      int j = this.jdField_a_of_type_Int;
+      return (i + j - 1) / j;
     }
     return 0;
   }
   
   public Object getItem(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > paramInt)) {
+    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    if ((localArrayList != null) && (localArrayList.size() > paramInt)) {
       return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     }
     return null;
@@ -55,81 +60,84 @@ public class ChangeVoiceListAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    int j = this.jdField_a_of_type_Int;
-    Object localObject2;
+    int k = this.jdField_a_of_type_Int;
+    int j = 0;
+    Object localObject1 = paramView;
     int i;
     Object localObject3;
-    Object localObject1;
     if (paramView == null)
     {
       localObject2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext, null);
       ((LinearLayout)localObject2).setOrientation(0);
       paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
       i = 0;
-      while (i < this.jdField_a_of_type_Int)
+      for (;;)
       {
+        localObject1 = localObject2;
+        if (i >= this.jdField_a_of_type_Int) {
+          break;
+        }
         localObject3 = new LinearLayout.LayoutParams(-1, -2);
         ((LinearLayout.LayoutParams)localObject3).weight = 1.0F;
         localObject1 = paramView;
         if (paramView == null) {
           localObject1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
         }
-        ((LinearLayout)localObject2).addView(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561058, null), (ViewGroup.LayoutParams)localObject3);
+        ((LinearLayout)localObject2).addView(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560922, null), (ViewGroup.LayoutParams)localObject3);
         i += 1;
         paramView = (View)localObject1;
       }
-      paramView = (View)localObject2;
     }
-    for (;;)
+    Object localObject2 = (ViewGroup)localObject1;
+    if (paramInt == 0)
     {
-      localObject2 = (ViewGroup)paramView;
-      if (paramInt == 0) {
-        ((ViewGroup)localObject2).setPadding(AIOUtils.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      }
-      int k;
-      for (;;)
+      ((ViewGroup)localObject2).setPadding(AIOUtils.b(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      i = j;
+    }
+    else
+    {
+      ((ViewGroup)localObject2).setPadding(AIOUtils.b(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(7.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      i = j;
+    }
+    while (i < this.jdField_a_of_type_Int)
+    {
+      j = k * paramInt + i;
+      localObject3 = (ChangeVoiceView)((ViewGroup)localObject2).getChildAt(i);
+      if (localObject3 == null)
       {
-        i = 0;
-        for (;;)
-        {
-          if (i >= this.jdField_a_of_type_Int) {
-            break label403;
-          }
-          k = j * paramInt + i;
-          localObject3 = (ChangeVoiceView)((ViewGroup)localObject2).getChildAt(i);
-          if (localObject3 != null) {
-            break;
-          }
-          QLog.e("ChangeVoiceListAdapter", 1, "getView view == null,view=" + ((ViewGroup)localObject2).getChildAt(i));
-          i += 1;
+        paramView = new StringBuilder();
+        paramView.append("getView view == null,view=");
+        paramView.append(((ViewGroup)localObject2).getChildAt(i));
+        QLog.e("ChangeVoiceListAdapter", 1, paramView.toString());
+      }
+      else
+      {
+        ((ChangeVoiceView)localObject3).b = this.b;
+        paramView = this.jdField_a_of_type_JavaUtilArrayList;
+        if ((paramView != null) && (j < paramView.size())) {
+          paramView = (VoiceChangeData)this.jdField_a_of_type_JavaUtilArrayList.get(j);
+        } else {
+          paramView = null;
         }
-        ((ViewGroup)localObject2).setPadding(AIOUtils.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(7.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      }
-      ((ChangeVoiceView)localObject3).b = this.b;
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (k < this.jdField_a_of_type_JavaUtilArrayList.size())) {}
-      for (localObject1 = (VoiceChangeData)this.jdField_a_of_type_JavaUtilArrayList.get(k);; localObject1 = null)
-      {
-        ((ChangeVoiceView)localObject3).a((VoiceChangeData)localObject1);
+        ((ChangeVoiceView)localObject3).a(paramView);
         if (this.jdField_a_of_type_Boolean) {
           ((ChangeVoiceView)localObject3).a();
         }
-        if (localObject1 != null)
-        {
+        if (paramView != null) {
           ((ChangeVoiceView)localObject3).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-          break;
+        } else {
+          ((ChangeVoiceView)localObject3).setOnClickListener(null);
         }
-        ((ChangeVoiceView)localObject3).setOnClickListener(null);
-        break;
-        label403:
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
       }
+      i += 1;
     }
+    EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
+    return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.ChangeVoiceListAdapter
  * JD-Core Version:    0.7.0.1
  */

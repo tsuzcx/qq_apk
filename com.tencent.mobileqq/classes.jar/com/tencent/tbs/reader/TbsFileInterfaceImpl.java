@@ -11,26 +11,24 @@ public class TbsFileInterfaceImpl
 {
   public static int FILE_READER_WINDOW_TYPE_DEFAULT = 0;
   public static int FILE_READER_WINDOW_TYPE_VIEW = 2;
-  static TbsFileInterfaceImpl stbsFileImpl = null;
+  static TbsFileInterfaceImpl stbsFileImpl;
   TbsReaderManager mReaderManager = null;
   
   @Deprecated
   public static boolean canOpenFile(String paramString)
   {
-    boolean bool = false;
     if (ReaderEngine.getInstance().isSupportCurrentPlatform()) {
-      bool = ReaderEngine.getInstance().isSupportExt(3, paramString);
+      return ReaderEngine.getInstance().isSupportExt(3, paramString);
     }
-    return bool;
+    return false;
   }
   
   public static boolean canOpenFileExt(String paramString)
   {
-    boolean bool = false;
     if (ReaderEngine.getInstance().isSupportCurrentPlatform()) {
-      bool = ReaderEngine.getInstance().isSupportExt(3, paramString);
+      return ReaderEngine.getInstance().isSupportExt(3, paramString);
     }
-    return bool;
+    return false;
   }
   
   public static TbsFileInterfaceImpl getInstance()
@@ -61,8 +59,9 @@ public class TbsFileInterfaceImpl
   
   public void closeFileReader()
   {
-    if (this.mReaderManager != null) {
-      this.mReaderManager.destroy();
+    TbsReaderManager localTbsReaderManager = this.mReaderManager;
+    if (localTbsReaderManager != null) {
+      localTbsReaderManager.destroy();
     }
   }
   
@@ -86,8 +85,9 @@ public class TbsFileInterfaceImpl
   
   public void onSizeChanged(int paramInt1, int paramInt2)
   {
-    if (this.mReaderManager != null) {
-      this.mReaderManager.onSizeChanged(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
+    TbsReaderManager localTbsReaderManager = this.mReaderManager;
+    if (localTbsReaderManager != null) {
+      localTbsReaderManager.onSizeChanged(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
     }
   }
   
@@ -99,11 +99,10 @@ public class TbsFileInterfaceImpl
   public int openFileReader(Context paramContext, Bundle paramBundle, ITbsReaderCallback paramITbsReaderCallback, FrameLayout paramFrameLayout)
   {
     closeFileReader();
-    int i = -1;
     if (initReader(paramContext, paramITbsReaderCallback)) {
-      i = this.mReaderManager.openFileReader(paramContext, paramBundle, paramITbsReaderCallback, paramFrameLayout);
+      return this.mReaderManager.openFileReader(paramContext, paramBundle, paramITbsReaderCallback, paramFrameLayout);
     }
-    return i;
+    return -1;
   }
   
   public void pluginPreLoad(Context paramContext, String paramString)
@@ -121,7 +120,7 @@ public class TbsFileInterfaceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.reader.TbsFileInterfaceImpl
  * JD-Core Version:    0.7.0.1
  */

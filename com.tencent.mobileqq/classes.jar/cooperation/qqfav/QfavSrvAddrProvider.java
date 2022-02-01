@@ -23,69 +23,75 @@ public class QfavSrvAddrProvider
   {
     Object localObject = BaseApplicationImpl.getApplication();
     int i;
-    if (Build.VERSION.SDK_INT > 10)
-    {
+    if (Build.VERSION.SDK_INT > 10) {
       i = 4;
-      localObject = ((BaseApplicationImpl)localObject).getSharedPreferences("QfavSrvAddrList", i);
-      if (localObject != null) {
-        break label32;
-      }
-    }
-    label32:
-    while ((paramFileStoragePushFSSvcList == null) || (paramFileStoragePushFSSvcList.domainIpChannel == null) || (paramFileStoragePushFSSvcList.domainIpChannel.vDomain_iplists == null))
-    {
-      return;
+    } else {
       i = 0;
-      break;
     }
-    paramFileStoragePushFSSvcList = paramFileStoragePushFSSvcList.domainIpChannel.vDomain_iplists.iterator();
-    while (paramFileStoragePushFSSvcList.hasNext())
+    localObject = ((BaseApplicationImpl)localObject).getSharedPreferences("QfavSrvAddrList", i);
+    if (localObject == null) {
+      return;
+    }
+    if ((paramFileStoragePushFSSvcList != null) && (paramFileStoragePushFSSvcList.domainIpChannel != null) && (paramFileStoragePushFSSvcList.domainIpChannel.vDomain_iplists != null))
     {
-      DomainIpList localDomainIpList = (DomainIpList)paramFileStoragePushFSSvcList.next();
-      StringBuilder localStringBuilder = new StringBuilder();
-      if ((localDomainIpList.uDomain_type == 4) || (localDomainIpList.uDomain_type == 5) || (localDomainIpList.uDomain_type == 6))
+      paramFileStoragePushFSSvcList = paramFileStoragePushFSSvcList.domainIpChannel.vDomain_iplists.iterator();
+      while (paramFileStoragePushFSSvcList.hasNext())
       {
-        if ((localDomainIpList.vIplist != null) && (localDomainIpList.vIplist.size() != 0))
+        DomainIpList localDomainIpList = (DomainIpList)paramFileStoragePushFSSvcList.next();
+        StringBuilder localStringBuilder = new StringBuilder();
+        if ((localDomainIpList.uDomain_type == 4) || (localDomainIpList.uDomain_type == 5) || (localDomainIpList.uDomain_type == 6))
         {
-          i = 0;
-          while (i < localDomainIpList.vIplist.size())
+          if ((localDomainIpList.vIplist != null) && (localDomainIpList.vIplist.size() != 0))
           {
-            DomainIpInfo localDomainIpInfo = (DomainIpInfo)localDomainIpList.vIplist.get(i);
-            localStringBuilder.append(NetworkUtil.a(localDomainIpInfo.uIp)).append(":").append(localDomainIpInfo.uPort);
-            if (i < localDomainIpList.vIplist.size() - 1) {
-              localStringBuilder.append("|");
+            i = 0;
+            while (i < localDomainIpList.vIplist.size())
+            {
+              DomainIpInfo localDomainIpInfo = (DomainIpInfo)localDomainIpList.vIplist.get(i);
+              localStringBuilder.append(NetworkUtil.intAddr2Ip(localDomainIpInfo.uIp));
+              localStringBuilder.append(":");
+              localStringBuilder.append(localDomainIpInfo.uPort);
+              if (i < localDomainIpList.vIplist.size() - 1) {
+                localStringBuilder.append("|");
+              }
+              i += 1;
             }
-            i += 1;
+          }
+        }
+        else
+        {
+          i = localDomainIpList.uDomain_type;
+          if (i != 4)
+          {
+            if (i != 5)
+            {
+              if (i == 6)
+              {
+                this.b = localStringBuilder.toString();
+                ((SharedPreferences)localObject).edit().putString("QfavSrvAddrList_PicPlatformIp", this.b).commit();
+              }
+            }
+            else
+            {
+              this.c = localStringBuilder.toString();
+              ((SharedPreferences)localObject).edit().putString("QfavSrvAddrList_UploadPicIp", this.c).commit();
+            }
+          }
+          else
+          {
+            this.a = localStringBuilder.toString();
+            ((SharedPreferences)localObject).edit().putString("QfavSrvAddrList_FavIp", this.a).commit();
           }
         }
       }
-      else {
-        switch (localDomainIpList.uDomain_type)
-        {
-        default: 
-          break;
-        case 4: 
-          this.a = localStringBuilder.toString();
-          ((SharedPreferences)localObject).edit().putString("QfavSrvAddrList_FavIp", this.a).commit();
-          break;
-        case 5: 
-          this.c = localStringBuilder.toString();
-          ((SharedPreferences)localObject).edit().putString("QfavSrvAddrList_UploadPicIp", this.c).commit();
-          break;
-        case 6: 
-          this.b = localStringBuilder.toString();
-          ((SharedPreferences)localObject).edit().putString("QfavSrvAddrList_PicPlatformIp", this.b).commit();
-        }
-      }
+      paramFileStoragePushFSSvcList = new Intent("com.tencent.receiver.qfav.srvaddr");
+      paramFileStoragePushFSSvcList.putExtra("com.tencent.receiver.qfav.srvaddr.type", 0);
+      BaseApplicationImpl.getApplication().sendBroadcast(paramFileStoragePushFSSvcList);
     }
-    paramFileStoragePushFSSvcList = new Intent("com.tencent.receiver.qfav.srvaddr");
-    paramFileStoragePushFSSvcList.putExtra("com.tencent.receiver.qfav.srvaddr.type", 0);
-    BaseApplicationImpl.getApplication().sendBroadcast(paramFileStoragePushFSSvcList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqfav.QfavSrvAddrProvider
  * JD-Core Version:    0.7.0.1
  */

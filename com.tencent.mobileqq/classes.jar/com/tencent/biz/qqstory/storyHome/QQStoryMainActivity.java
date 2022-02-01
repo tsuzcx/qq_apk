@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.view.MotionEvent;
+import com.tencent.aelight.camera.util.api.IQIMShortVideoUtil;
 import com.tencent.biz.qqstory.app.QQStoryConstant;
 import com.tencent.biz.qqstory.comment.StoryFailCommentCacher;
 import com.tencent.biz.qqstory.model.StoryConfigManager;
@@ -16,12 +17,12 @@ import com.tencent.biz.widgets.ShareAioResultDialog;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.MessageProgressController;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tribe.async.dispatch.Subscriber;
-import dov.com.qq.im.QIMShortVideoUtils;
 import java.util.Map;
 import mqq.app.MobileQQ;
 
@@ -31,24 +32,20 @@ public class QQStoryMainActivity
   public static long a;
   protected QQStoryMainController a;
   private ShareAioResultDialog jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog = null;
+  public AppInterface a;
   NavBarCommon jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon;
   private boolean jdField_a_of_type_Boolean = false;
-  public AppInterface b = null;
-  
-  static
-  {
-    jdField_a_of_type_Long = 0L;
-  }
   
   public QQStoryMainActivity()
   {
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController = new QQStoryMainController(new QQStoryMainActivity.1(this), QQStoryMainController.c);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController.a(this);
   }
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon = ((NavBarCommon)findViewById(2131377159));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon = ((NavBarCommon)findViewById(2131376636));
     this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setOnItemSelectListener(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController.a);
     a(QQStoryConstant.a);
   }
@@ -60,7 +57,7 @@ public class QQStoryMainActivity
       if (paramIntent.getBooleanExtra("is_from_share", false))
       {
         String str = paramIntent.getStringExtra("struct_share_key_source_name");
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new QQStoryMainActivity.3(this, paramIntent, str), 1800L);
+        this.mHandler.postDelayed(new QQStoryMainActivity.3(this, paramIntent, str), 1800L);
       }
       return;
     }
@@ -72,34 +69,38 @@ public class QQStoryMainActivity
     if (this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog == null) {
       this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog = new ShareAioResultDialog(this);
     }
-    String str2 = this.app.getApplication().getString(2131719148);
-    String str1 = str2;
-    if (paramString != null) {
-      str1 = str2 + paramString;
+    String str = this.app.getApplication().getString(2131718866);
+    Object localObject = str;
+    if (paramString != null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(paramString);
+      localObject = ((StringBuilder)localObject).toString();
     }
     paramIntent = new QQStoryMainActivity.4(this, paramIntent);
-    this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(str1, paramIntent);
+    this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a((String)localObject, paramIntent);
     this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(paramIntent);
     this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.show();
   }
   
   private void a(@NonNull String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon == null) {
+    NavBarCommon localNavBarCommon = this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon;
+    if (localNavBarCommon == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setTitle(paramString, paramString);
+    localNavBarCommon.setTitle(paramString, paramString);
   }
   
   private void a(@NonNull String paramString1, @NonNull String paramString2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon == null) {
+    NavBarCommon localNavBarCommon = this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon;
+    if (localNavBarCommon == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setTitle(paramString1, paramString1, paramString2, paramString2);
+    localNavBarCommon.setTitle(paramString1, paramString1, paramString2, paramString2);
   }
-  
-  protected void a(@NonNull Map<Subscriber, String> paramMap) {}
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -110,7 +111,7 @@ public class QQStoryMainActivity
     return bool;
   }
   
-  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController.a(paramInt1, paramInt2, paramIntent);
@@ -122,7 +123,7 @@ public class QQStoryMainActivity
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController.b();
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, " doOnCreate");
@@ -131,17 +132,17 @@ public class QQStoryMainActivity
     this.mUseOptimizMode = true;
     jdField_a_of_type_Long = System.currentTimeMillis();
     super.doOnCreate(paramBundle);
-    setContentView(2131561844);
+    setContentView(2131561695);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController.a(paramBundle);
     a();
     int i = ((Integer)((StoryConfigManager)SuperManager.a(10)).b("string_story_global_log_level", Integer.valueOf(-1))).intValue();
     QQStoryLoggingDelegate.a().a(i);
-    QIMShortVideoUtils.a(BaseApplicationImpl.getContext(), new QQStoryMainActivity.2(this), null);
+    ((IQIMShortVideoUtil)QRoute.api(IQIMShortVideoUtil.class)).preLoadPeakProcess(BaseApplicationImpl.getContext(), new QQStoryMainActivity.2(this), null);
     a(getIntent());
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, " doOnDestroy");
@@ -151,22 +152,23 @@ public class QQStoryMainActivity
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController.d(this);
     QQStoryLoggingDelegate.a().a(-1);
     StoryFailCommentCacher.a().b();
-    if (this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog != null)
+    ShareAioResultDialog localShareAioResultDialog = this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog;
+    if (localShareAioResultDialog != null)
     {
-      this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.dismiss();
+      localShareAioResultDialog.dismiss();
       this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog = null;
     }
     MessageProgressController.a().a();
   }
   
-  public void doOnNewIntent(Intent paramIntent)
+  protected void doOnNewIntent(Intent paramIntent)
   {
     super.doOnNewIntent(paramIntent);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController.a(paramIntent);
     a(paramIntent);
   }
   
-  public void doOnPause()
+  protected void doOnPause()
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, " doOnPause");
@@ -175,7 +177,7 @@ public class QQStoryMainActivity
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController.a();
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, " doOnResume");
@@ -184,13 +186,13 @@ public class QQStoryMainActivity
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController.b(this);
   }
   
-  public void doOnSaveInstanceState(Bundle paramBundle)
+  protected void doOnSaveInstanceState(Bundle paramBundle)
   {
     super.doOnSaveInstanceState(paramBundle);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController.b(paramBundle);
   }
   
-  public void doOnStop()
+  protected void doOnStop()
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, " doOnStop");
@@ -206,12 +208,12 @@ public class QQStoryMainActivity
     super.finish();
   }
   
-  public boolean isWrapContent()
+  protected boolean isWrapContent()
   {
     return false;
   }
   
-  public boolean onBackEvent()
+  protected boolean onBackEvent()
   {
     return super.onBackEvent();
   }
@@ -222,10 +224,12 @@ public class QQStoryMainActivity
     super.onConfigurationChanged(paramConfiguration);
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
+  
+  protected void onCreateSubscribers(@NonNull Map<Subscriber, String> paramMap) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.QQStoryMainActivity
  * JD-Core Version:    0.7.0.1
  */

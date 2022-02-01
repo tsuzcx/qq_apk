@@ -14,32 +14,33 @@ class AdvertisementVideoPreloadManager$PreloadCompleteCallback
   
   public void onComplete(String paramString1, String paramString2)
   {
-    for (;;)
+    synchronized (AdvertisementVideoPreloadManager.a(this.a))
     {
-      synchronized (AdvertisementVideoPreloadManager.a(this.a))
-      {
-        AdvertisementVideoPreloadManager.c("onPreloadComplete vid:" + paramString1 + ", detail:" + paramString2);
-        paramString2 = new File(AdvertisementVideoPreloadManager.b(paramString1));
-        if (paramString2.exists()) {
-          paramString2.renameTo(new File(AdvertisementVideoPreloadManager.a(paramString1)));
-        }
-        ReportController.a(null, "dc00898", "", "", "0X8008F77", "0X8008F77", 0, 0, "", "", AdvertisementVideoPreloadManager.a(this.a).mVideoVid, String.valueOf(AdvertisementVideoPreloadManager.a(this.a).mSource));
-        paramString2 = (QQAppInterface)AdvertisementVideoPreloadManager.a(this.a).get();
-        if (paramString2 != null)
-        {
-          paramString2 = paramString2.getCurrentAccountUin();
-          AdvertisementStatistics.b(paramString2, paramString1);
-          AdvertisementVideoPreloadManager.a(this.a, AdvertisementVideoPreloadManager.a(this.a));
-          return;
-        }
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("onPreloadComplete vid:");
+      ((StringBuilder)localObject2).append(paramString1);
+      ((StringBuilder)localObject2).append(", detail:");
+      ((StringBuilder)localObject2).append(paramString2);
+      AdvertisementVideoPreloadManager.c(((StringBuilder)localObject2).toString());
+      paramString2 = new File(AdvertisementVideoPreloadManager.b(paramString1));
+      if (paramString2.exists()) {
+        paramString2.renameTo(new File(AdvertisementVideoPreloadManager.a(paramString1)));
       }
+      ReportController.a(null, "dc00898", "", "", "0X8008F77", "0X8008F77", 0, 0, "", "", AdvertisementVideoPreloadManager.a(this.a).mVideoVid, String.valueOf(AdvertisementVideoPreloadManager.a(this.a).mSource));
       paramString2 = "";
+      localObject2 = (QQAppInterface)AdvertisementVideoPreloadManager.a(this.a).get();
+      if (localObject2 != null) {
+        paramString2 = ((QQAppInterface)localObject2).getCurrentAccountUin();
+      }
+      AdvertisementStatistics.b(paramString2, paramString1);
+      AdvertisementVideoPreloadManager.a(this.a, AdvertisementVideoPreloadManager.a(this.a));
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager.PreloadCompleteCallback
  * JD-Core Version:    0.7.0.1
  */

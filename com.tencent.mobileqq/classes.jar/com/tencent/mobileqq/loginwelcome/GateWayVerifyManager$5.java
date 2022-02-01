@@ -1,23 +1,19 @@
 package com.tencent.mobileqq.loginwelcome;
 
-import android.net.Network;
-import mqq.os.MqqHandler;
-import tencent.im.login.GatewayVerify.SelfPhoneUrl;
-
 class GateWayVerifyManager$5
-  implements GateWayVerifyManager.OnNetChangedListener
+  implements Runnable
 {
-  GateWayVerifyManager$5(GateWayVerifyManager paramGateWayVerifyManager, GatewayVerify.SelfPhoneUrl paramSelfPhoneUrl, GatewayCallback paramGatewayCallback) {}
+  GateWayVerifyManager$5(GateWayVerifyManager paramGateWayVerifyManager, GateWayVerifyManager.OnNetChangedListener paramOnNetChangedListener, GatewayCallback paramGatewayCallback) {}
   
-  public void a(Network paramNetwork)
+  public void run()
   {
-    GateWayVerifyManager.a(this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeGateWayVerifyManager).removeCallbacksAndMessages(null);
-    GateWayVerifyManager.a(this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeGateWayVerifyManager, this.jdField_a_of_type_TencentImLoginGatewayVerify$SelfPhoneUrl, paramNetwork, new NetGatewayCallback(this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeGatewayCallback, paramNetwork));
+    GateWayVerifyManager.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeGateWayVerifyManager$OnNetChangedListener);
+    this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeGatewayCallback.a(new Exception("change network to mobile timeout"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.loginwelcome.GateWayVerifyManager.5
  * JD-Core Version:    0.7.0.1
  */

@@ -69,29 +69,34 @@ public final class QfavUtil
   
   public static int a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return 1;
-    case 1: 
-      return 2;
-    case 3000: 
-      return 3;
+      if (paramInt != 1006)
+      {
+        if (paramInt != 3000) {
+          return 1;
+        }
+        return 3;
+      }
+      return 5;
     }
-    return 5;
+    return 2;
   }
   
   public static long a(List<byte[]> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return -1L;
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if (paramList != null)
     {
-      long l = a((byte[])paramList.next());
-      if (l > 0L) {
-        return l;
+      if (paramList.size() == 0) {
+        return -1L;
+      }
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        long l = a((byte[])paramList.next());
+        if (l > 0L) {
+          return l;
+        }
       }
     }
     return -1L;
@@ -99,11 +104,18 @@ public final class QfavUtil
   
   public static long a(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 16)) {}
-    while (a(paramArrayOfByte, 8) != 5L) {
-      return -1L;
+    long l = -1L;
+    if (paramArrayOfByte != null)
+    {
+      if (paramArrayOfByte.length <= 16) {
+        return -1L;
+      }
+      if (a(paramArrayOfByte, 8) != 5L) {
+        return -1L;
+      }
+      l = a(paramArrayOfByte, 16);
     }
-    return a(paramArrayOfByte, 16);
+    return l;
   }
   
   private static long a(byte[] paramArrayOfByte, int paramInt)
@@ -120,124 +132,140 @@ public final class QfavUtil
   
   public static ContentValues a(AppInterface paramAppInterface, FileManagerEntity paramFileManagerEntity, String paramString, boolean paramBoolean)
   {
-    if ((paramFileManagerEntity == null) && (TextUtils.isEmpty(paramString))) {}
-    while ((!paramBoolean) && (paramFileManagerEntity == null)) {
+    if ((paramFileManagerEntity == null) && (TextUtils.isEmpty(paramString))) {
+      return null;
+    }
+    if ((!paramBoolean) && (paramFileManagerEntity == null)) {
       return null;
     }
     QfavRequestQueue.a().a = true;
     int i;
-    String str1;
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       i = 3;
-      str1 = paramString;
-      if (i == 5)
-      {
-        str1 = paramFileManagerEntity.strFilePath;
-        paramBoolean = true;
-      }
-      if ((!paramBoolean) || (TextUtils.isEmpty(str1))) {
-        break label638;
-      }
+    } else {
+      i = FileManagerUtil.a(paramFileManagerEntity);
     }
-    label633:
-    label638:
-    for (paramString = new File(str1);; paramString = null)
+    String str1;
+    if (i == 5)
     {
-      if (paramFileManagerEntity != null) {
-        paramString = paramFileManagerEntity.fileName.getBytes();
-      }
-      for (;;)
-      {
-        if (paramString.length >= 256)
+      str1 = paramFileManagerEntity.strFilePath;
+      paramBoolean = true;
+    }
+    else
+    {
+      str1 = paramString;
+    }
+    if ((paramBoolean) && (!TextUtils.isEmpty(str1))) {
+      paramString = new File(str1);
+    } else {
+      paramString = null;
+    }
+    if (paramFileManagerEntity != null) {
+      paramString = paramFileManagerEntity.fileName.getBytes();
+    } else if (paramString != null) {
+      paramString = paramString.getName().getBytes();
+    } else {
+      paramString = null;
+    }
+    if (paramString.length >= 256)
+    {
+      new ContentValues().put("errorMsg", BaseApplicationImpl.getContext().getResources().getString(2131692202));
+      return null;
+    }
+    if (i != 1)
+    {
+      if ((i != 2) && (i != 3)) {
+        if (i != 4)
         {
-          new ContentValues().put("errorMsg", BaseApplicationImpl.getContext().getResources().getString(2131692276));
-          return null;
-          i = FileManagerUtil.a(paramFileManagerEntity);
-          break;
-          if (paramString == null) {
-            break label633;
-          }
-          paramString = paramString.getName().getBytes();
-          continue;
-        }
-        switch (i)
-        {
-        default: 
-          new ContentValues().put("errorMsg", BaseApplicationImpl.getContext().getResources().getString(2131692278));
-          return null;
-        case 1: 
-          if ((paramFileManagerEntity.lastTime > 0L) && (paramFileManagerEntity.lastTime <= System.currentTimeMillis() / 1000L))
+          if (i != 5)
           {
-            new ContentValues().put("errorMsg", BaseApplicationImpl.getContext().getResources().getString(2131692275));
+            new ContentValues().put("errorMsg", BaseApplicationImpl.getContext().getResources().getString(2131692204));
             return null;
           }
-          break;
-        case 4: 
-          if ((104 == paramFileManagerEntity.busId) && (paramFileManagerEntity.lastTime > 0L) && (paramFileManagerEntity.lastTime <= System.currentTimeMillis() / 1000L))
-          {
-            new ContentValues().put("errorMsg", BaseApplicationImpl.getContext().getResources().getString(2131692275));
-            return null;
-          }
-          break;
         }
-        if (paramFileManagerEntity != null)
+        else if ((104 == paramFileManagerEntity.busId) && (paramFileManagerEntity.lastTime > 0L) && (paramFileManagerEntity.lastTime <= System.currentTimeMillis() / 1000L))
         {
-          String str2 = paramFileManagerEntity.selfUin;
-          paramString = paramFileManagerEntity.peerUin;
-          if (paramFileManagerEntity.bSend) {}
-          paramString = str2;
-          switch (paramFileManagerEntity.peerType)
-          {
-          default: 
-            paramString = str2;
-            if (!paramFileManagerEntity.bSend) {
-              paramString = paramFileManagerEntity.peerUin;
-            }
-            break;
-          }
-          if (TextUtils.isEmpty(paramString)) {
-            paramAppInterface.getCurrentAccountUin();
-          }
+          new ContentValues().put("errorMsg", BaseApplicationImpl.getContext().getResources().getString(2131692201));
+          return null;
         }
-        paramString = "";
-        paramAppInterface = paramString;
-        switch (i)
-        {
-        default: 
-          paramAppInterface = paramString;
-        }
-        for (;;)
-        {
-          paramString = new ContentValues();
-          paramString.put("fileCloudType", Integer.valueOf(i));
-          if (paramFileManagerEntity == null) {
-            break;
-          }
-          paramString.put("fileUuId", paramAppInterface);
-          paramString.put("fileSize", Long.valueOf(paramFileManagerEntity.fileSize));
-          paramString.put("fileName", paramFileManagerEntity.fileName);
-          paramString.put("fileMd5", paramFileManagerEntity.strFileMd5);
-          paramString.put("filePath", paramFileManagerEntity.getFilePath());
-          paramString.put("fileThumbPath", paramFileManagerEntity.strThumbPath);
-          paramString.put("filePeerType", Integer.valueOf(paramFileManagerEntity.peerType));
-          paramString.put("fileBid", Integer.valueOf(paramFileManagerEntity.busId));
-          return paramString;
-          paramAppInterface = paramFileManagerEntity.Uuid;
-          continue;
-          paramAppInterface = paramFileManagerEntity.strTroopFilePath;
-          continue;
-          if (TextUtils.isEmpty(paramFileManagerEntity.WeiYunDirKey)) {
-            paramAppInterface = paramFileManagerEntity.WeiYunFileId;
-          } else {
-            paramAppInterface = paramFileManagerEntity.WeiYunDirKey + paramFileManagerEntity.WeiYunFileId;
-          }
-        }
-        paramString.put("filePath", str1);
-        return paramString;
-        paramString = null;
       }
     }
+    else if ((paramFileManagerEntity.lastTime > 0L) && (paramFileManagerEntity.lastTime <= System.currentTimeMillis() / 1000L))
+    {
+      new ContentValues().put("errorMsg", BaseApplicationImpl.getContext().getResources().getString(2131692201));
+      return null;
+    }
+    if (paramFileManagerEntity != null)
+    {
+      String str2 = paramFileManagerEntity.selfUin;
+      paramString = paramFileManagerEntity.peerUin;
+      paramBoolean = paramFileManagerEntity.bSend;
+      int j = paramFileManagerEntity.peerType;
+      paramString = str2;
+      if (j != 1)
+      {
+        paramString = str2;
+        if (j != 1000)
+        {
+          paramString = str2;
+          if (j != 1004)
+          {
+            paramString = str2;
+            if (j != 3000)
+            {
+              paramString = str2;
+              if (!paramFileManagerEntity.bSend) {
+                paramString = paramFileManagerEntity.peerUin;
+              }
+            }
+          }
+        }
+      }
+      if (TextUtils.isEmpty(paramString)) {
+        paramAppInterface.getCurrentAccountUin();
+      }
+    }
+    if (i != 1)
+    {
+      if (i != 2)
+      {
+        if (i != 4) {
+          paramAppInterface = "";
+        } else {
+          paramAppInterface = paramFileManagerEntity.strTroopFilePath;
+        }
+      }
+      else if (TextUtils.isEmpty(paramFileManagerEntity.WeiYunDirKey))
+      {
+        paramAppInterface = paramFileManagerEntity.WeiYunFileId;
+      }
+      else
+      {
+        paramAppInterface = new StringBuilder();
+        paramAppInterface.append(paramFileManagerEntity.WeiYunDirKey);
+        paramAppInterface.append(paramFileManagerEntity.WeiYunFileId);
+        paramAppInterface = paramAppInterface.toString();
+      }
+    }
+    else {
+      paramAppInterface = paramFileManagerEntity.Uuid;
+    }
+    paramString = new ContentValues();
+    paramString.put("fileCloudType", Integer.valueOf(i));
+    if (paramFileManagerEntity != null)
+    {
+      paramString.put("fileUuId", paramAppInterface);
+      paramString.put("fileSize", Long.valueOf(paramFileManagerEntity.fileSize));
+      paramString.put("fileName", paramFileManagerEntity.fileName);
+      paramString.put("fileMd5", paramFileManagerEntity.strFileMd5);
+      paramString.put("filePath", paramFileManagerEntity.getFilePath());
+      paramString.put("fileThumbPath", paramFileManagerEntity.strThumbPath);
+      paramString.put("filePeerType", Integer.valueOf(paramFileManagerEntity.peerType));
+      paramString.put("fileBid", Integer.valueOf(paramFileManagerEntity.busId));
+      return paramString;
+    }
+    paramString.put("filePath", str1);
+    return paramString;
   }
   
   public static ContentValues a(WeiYunFileInfo paramWeiYunFileInfo)
@@ -245,13 +273,24 @@ public final class QfavUtil
     if (paramWeiYunFileInfo == null) {
       return null;
     }
-    if (TextUtils.isEmpty(paramWeiYunFileInfo.b)) {}
-    for (String str = paramWeiYunFileInfo.jdField_a_of_type_JavaLangString; TextUtils.isEmpty(str); str = paramWeiYunFileInfo.b + paramWeiYunFileInfo.jdField_a_of_type_JavaLangString) {
+    Object localObject;
+    if (TextUtils.isEmpty(paramWeiYunFileInfo.b))
+    {
+      localObject = paramWeiYunFileInfo.jdField_a_of_type_JavaLangString;
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramWeiYunFileInfo.b);
+      ((StringBuilder)localObject).append(paramWeiYunFileInfo.jdField_a_of_type_JavaLangString);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
       return null;
     }
     ContentValues localContentValues = new ContentValues();
     localContentValues.put("fileCloudType", Integer.valueOf(2));
-    localContentValues.put("fileUuId", str);
+    localContentValues.put("fileUuId", (String)localObject);
     localContentValues.put("fileSize", Long.valueOf(paramWeiYunFileInfo.jdField_a_of_type_Long));
     localContentValues.put("fileName", paramWeiYunFileInfo.c);
     localContentValues.put("fileMd5", paramWeiYunFileInfo.i);
@@ -269,91 +308,83 @@ public final class QfavUtil
     Iterator localIterator = a(paramEntity).iterator();
     while (localIterator.hasNext())
     {
-      Object localObject1 = (Field)localIterator.next();
-      String str = paramString + ((Field)localObject1).getName();
-      if (!((Field)localObject1).isAccessible()) {
-        ((Field)localObject1).setAccessible(true);
+      Object localObject2 = (Field)localIterator.next();
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramString);
+      ((StringBuilder)localObject1).append(((Field)localObject2).getName());
+      String str = ((StringBuilder)localObject1).toString();
+      if (!((Field)localObject2).isAccessible()) {
+        ((Field)localObject2).setAccessible(true);
       }
-      Object localObject3;
+      localObject1 = null;
       try
       {
-        localObject1 = ((Field)localObject1).get(paramEntity);
-        if ((localObject1 instanceof Entity)) {
-          localContentValues.putAll(a((Entity)localObject1, str + "."));
-        }
-      }
-      catch (IllegalArgumentException localIllegalArgumentException)
-      {
-        for (;;)
-        {
-          localIllegalArgumentException.printStackTrace();
-          Object localObject2 = null;
-        }
+        localObject2 = ((Field)localObject2).get(paramEntity);
+        localObject1 = localObject2;
       }
       catch (IllegalAccessException localIllegalAccessException)
       {
-        for (;;)
-        {
-          localIllegalAccessException.printStackTrace();
-          localObject3 = null;
-        }
-        if ((localObject3 instanceof Integer))
-        {
-          localContentValues.put(str, (Integer)localObject3);
-          continue;
-        }
-        if ((localObject3 instanceof Long))
-        {
-          localContentValues.put(str, (Long)localObject3);
-          continue;
-        }
-        if ((localObject3 instanceof String))
-        {
-          localContentValues.put(str, (String)localObject3);
-          continue;
-        }
-        if ((localObject3 instanceof byte[]))
-        {
-          localContentValues.put(str, (byte[])localObject3);
-          continue;
-        }
-        if ((localObject3 instanceof Short))
-        {
-          localContentValues.put(str, (Short)localObject3);
-          continue;
-        }
-        if ((localObject3 instanceof Boolean))
-        {
-          localContentValues.put(str, (Boolean)localObject3);
-          continue;
-        }
-        if ((localObject3 instanceof Double))
-        {
-          localContentValues.put(str, (Double)localObject3);
-          continue;
-        }
-        if ((localObject3 instanceof Float))
-        {
-          localContentValues.put(str, (Float)localObject3);
-          continue;
-        }
-        if ((localObject3 instanceof Byte))
-        {
-          localContentValues.put(str, (Byte)localObject3);
-          continue;
-        }
-        if ((localObject3 instanceof Boolean)) {
-          localContentValues.put(str, (Boolean)localObject3);
-        }
+        localIllegalAccessException.printStackTrace();
       }
-      if ((localObject3 instanceof List)) {
-        try
-        {
-          localContentValues.putAll(a((List)localObject3, str + "."));
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
+      catch (IllegalArgumentException localIllegalArgumentException)
+      {
+        localIllegalArgumentException.printStackTrace();
+      }
+      StringBuilder localStringBuilder;
+      if ((localObject1 instanceof Entity))
+      {
+        localObject1 = (Entity)localObject1;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append(".");
+        localContentValues.putAll(a((Entity)localObject1, localStringBuilder.toString()));
+      }
+      else if ((localObject1 instanceof Integer))
+      {
+        localContentValues.put(str, (Integer)localObject1);
+      }
+      else if ((localObject1 instanceof Long))
+      {
+        localContentValues.put(str, (Long)localObject1);
+      }
+      else if ((localObject1 instanceof String))
+      {
+        localContentValues.put(str, (String)localObject1);
+      }
+      else if ((localObject1 instanceof byte[]))
+      {
+        localContentValues.put(str, (byte[])localObject1);
+      }
+      else if ((localObject1 instanceof Short))
+      {
+        localContentValues.put(str, (Short)localObject1);
+      }
+      else
+      {
+        boolean bool = localObject1 instanceof Boolean;
+        if (bool) {
+          localContentValues.put(str, (Boolean)localObject1);
+        } else if ((localObject1 instanceof Double)) {
+          localContentValues.put(str, (Double)localObject1);
+        } else if ((localObject1 instanceof Float)) {
+          localContentValues.put(str, (Float)localObject1);
+        } else if ((localObject1 instanceof Byte)) {
+          localContentValues.put(str, (Byte)localObject1);
+        } else if (bool) {
+          localContentValues.put(str, (Boolean)localObject1);
+        } else if ((localObject1 instanceof List)) {
+          try
+          {
+            localObject1 = (List)localObject1;
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append(str);
+            localStringBuilder.append(".");
+            localContentValues.putAll(a((List)localObject1, localStringBuilder.toString()));
+          }
+          catch (Exception localException)
+          {
+            localException.printStackTrace();
+          }
         }
       }
     }
@@ -365,12 +396,24 @@ public final class QfavUtil
     ContentValues localContentValues = new ContentValues();
     if ((paramList != null) && (paramList.size() > 0))
     {
-      localContentValues.put(paramString + "n", Integer.valueOf(paramList.size()));
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("n");
+      localContentValues.put(((StringBuilder)localObject).toString(), Integer.valueOf(paramList.size()));
       int i = 0;
       while (i < paramList.size())
       {
-        localContentValues.put(paramString + i + ".-", ((Entity)paramList.get(i)).getClass().getName());
-        localContentValues.putAll(a((Entity)paramList.get(i), paramString + i + "."));
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(".-");
+        localContentValues.put(((StringBuilder)localObject).toString(), ((Entity)paramList.get(i)).getClass().getName());
+        localObject = (Entity)paramList.get(i);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(i);
+        localStringBuilder.append(".");
+        localContentValues.putAll(a((Entity)localObject, localStringBuilder.toString()));
         i += 1;
       }
     }
@@ -379,17 +422,21 @@ public final class QfavUtil
   
   public static ContentValues a(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 16)) {}
-    do
+    if (paramArrayOfByte != null)
     {
-      return null;
-      if (a(paramArrayOfByte, 8) == 3L) {
-        break;
+      if (paramArrayOfByte.length <= 16) {
+        return null;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("qqfav", 2, "unParcelStructMsg, is not structMsg");
+      if (a(paramArrayOfByte, 8) != 3L)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("qqfav", 2, "unParcelStructMsg, is not structMsg");
+        }
+        return null;
+      }
+      return a(paramArrayOfByte, 16, paramArrayOfByte.length - 16);
+    }
     return null;
-    return a(paramArrayOfByte, 16, paramArrayOfByte.length - 16);
   }
   
   public static ContentValues a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -416,100 +463,129 @@ public final class QfavUtil
     {
       Entity localEntity = (Entity)Class.forName(paramString1).newInstance();
       paramString1 = localEntity;
-      if (localEntity != null)
+      if (localEntity == null) {
+        break label625;
+      }
+      paramString1 = localEntity;
+      if (paramContentValues == null) {
+        break label625;
+      }
+      paramString1 = a(localEntity).iterator();
+      while (paramString1.hasNext())
       {
-        paramString1 = localEntity;
-        if (paramContentValues != null)
+        Field localField = (Field)paramString1.next();
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramString2);
+        ((StringBuilder)localObject1).append(localField.getName());
+        localObject1 = ((StringBuilder)localObject1).toString();
+        Object localObject2 = localField.getType();
+        boolean bool = Entity.class.isAssignableFrom((Class)localObject2);
+        Object localObject3;
+        if (bool)
         {
-          paramString1 = a(localEntity).iterator();
-          while (paramString1.hasNext())
-          {
-            Field localField = (Field)paramString1.next();
-            Object localObject1 = paramString2 + localField.getName();
-            Object localObject2 = localField.getType();
-            if (Entity.class.isAssignableFrom((Class)localObject2))
-            {
-              localObject1 = a(paramContentValues, ((Class)localObject2).getName(), (String)localObject1 + ".");
-              localEntity.setStatus(1002);
-              localField.set(localEntity, localObject1);
-            }
-            else if (localObject2 == List.class)
-            {
-              int j = paramContentValues.getAsInteger((String)localObject1 + ".n").intValue();
-              localObject2 = new ArrayList();
-              int i = 0;
-              while (i < j)
-              {
-                ((ArrayList)localObject2).add(a(paramContentValues, paramContentValues.getAsString((String)localObject1 + "." + i + ".-"), (String)localObject1 + "." + i + "."));
-                i += 1;
-              }
-              localField.set(localEntity, localObject2);
-            }
-            else if (localObject2 == Long.TYPE)
-            {
-              localField.set(localEntity, paramContentValues.getAsLong((String)localObject1));
-            }
-            else if (localObject2 == Integer.TYPE)
-            {
-              localField.set(localEntity, paramContentValues.getAsInteger((String)localObject1));
-            }
-            else if (localObject2 == String.class)
-            {
-              localField.set(localEntity, paramContentValues.getAsString((String)localObject1));
-            }
-            else if (localObject2 == Byte.TYPE)
-            {
-              localField.set(localEntity, paramContentValues.getAsByte((String)localObject1));
-            }
-            else if (localObject2 == [B.class)
-            {
-              localField.set(localEntity, paramContentValues.getAsByteArray((String)localObject1));
-            }
-            else if (localObject2 == Short.TYPE)
-            {
-              localField.set(localEntity, paramContentValues.getAsShort((String)localObject1));
-            }
-            else if (localObject2 == Boolean.TYPE)
-            {
-              localField.set(localEntity, paramContentValues.getAsBoolean((String)localObject1));
-            }
-            else if (localObject2 == Float.TYPE)
-            {
-              localField.set(localEntity, paramContentValues.getAsFloat((String)localObject1));
-            }
-            else if (localObject2 == Double.TYPE)
-            {
-              localField.set(localEntity, paramContentValues.getAsDouble((String)localObject1));
-            }
-          }
-          if (localEntity.getId() != -1L)
-          {
-            localEntity.setStatus(1001);
-            return localEntity;
-          }
+          localObject2 = ((Class)localObject2).getName();
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append((String)localObject1);
+          ((StringBuilder)localObject3).append(".");
+          localObject1 = a(paramContentValues, (String)localObject2, ((StringBuilder)localObject3).toString());
           localEntity.setStatus(1002);
-          return localEntity;
+          localField.set(localEntity, localObject1);
+        }
+        else if (localObject2 == List.class)
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append((String)localObject1);
+          ((StringBuilder)localObject2).append(".n");
+          int j = paramContentValues.getAsInteger(((StringBuilder)localObject2).toString()).intValue();
+          localObject2 = new ArrayList();
+          int i = 0;
+          while (i < j)
+          {
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append((String)localObject1);
+            ((StringBuilder)localObject3).append(".");
+            ((StringBuilder)localObject3).append(i);
+            ((StringBuilder)localObject3).append(".-");
+            localObject3 = paramContentValues.getAsString(((StringBuilder)localObject3).toString());
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append((String)localObject1);
+            localStringBuilder.append(".");
+            localStringBuilder.append(i);
+            localStringBuilder.append(".");
+            ((ArrayList)localObject2).add(a(paramContentValues, (String)localObject3, localStringBuilder.toString()));
+            i += 1;
+          }
+          localField.set(localEntity, localObject2);
+        }
+        else if (localObject2 == Long.TYPE)
+        {
+          localField.set(localEntity, paramContentValues.getAsLong((String)localObject1));
+        }
+        else if (localObject2 == Integer.TYPE)
+        {
+          localField.set(localEntity, paramContentValues.getAsInteger((String)localObject1));
+        }
+        else if (localObject2 == String.class)
+        {
+          localField.set(localEntity, paramContentValues.getAsString((String)localObject1));
+        }
+        else if (localObject2 == Byte.TYPE)
+        {
+          localField.set(localEntity, paramContentValues.getAsByte((String)localObject1));
+        }
+        else if (localObject2 == [B.class)
+        {
+          localField.set(localEntity, paramContentValues.getAsByteArray((String)localObject1));
+        }
+        else if (localObject2 == Short.TYPE)
+        {
+          localField.set(localEntity, paramContentValues.getAsShort((String)localObject1));
+        }
+        else if (localObject2 == Boolean.TYPE)
+        {
+          localField.set(localEntity, paramContentValues.getAsBoolean((String)localObject1));
+        }
+        else if (localObject2 == Float.TYPE)
+        {
+          localField.set(localEntity, paramContentValues.getAsFloat((String)localObject1));
+        }
+        else if (localObject2 == Double.TYPE)
+        {
+          localField.set(localEntity, paramContentValues.getAsDouble((String)localObject1));
         }
       }
+      if (localEntity.getId() != -1L)
+      {
+        localEntity.setStatus(1001);
+        return localEntity;
+      }
+      localEntity.setStatus(1002);
+      return localEntity;
     }
     catch (Exception paramContentValues)
     {
-      paramString1 = null;
+      label623:
+      label625:
+      break label623;
     }
+    paramString1 = null;
     return paramString1;
   }
   
   public static AbsStructMsg a(List<byte[]> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return null;
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if (paramList != null)
     {
-      AbsStructMsg localAbsStructMsg = a((byte[])paramList.next());
-      if (localAbsStructMsg != null) {
-        return localAbsStructMsg;
+      if (paramList.size() == 0) {
+        return null;
+      }
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        AbsStructMsg localAbsStructMsg = a((byte[])paramList.next());
+        if (localAbsStructMsg != null) {
+          return localAbsStructMsg;
+        }
       }
     }
     return null;
@@ -517,19 +593,23 @@ public final class QfavUtil
   
   public static AbsStructMsg a(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 16)) {}
-    do
+    if (paramArrayOfByte != null)
     {
-      return null;
-      if (a(paramArrayOfByte, 8) == 2L) {
-        break;
+      if (paramArrayOfByte.length <= 16) {
+        return null;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("qqfav", 2, "unParcelStructMsg, is not structMsg");
+      if (a(paramArrayOfByte, 8) != 2L)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("qqfav", 2, "unParcelStructMsg, is not structMsg");
+        }
+        return null;
+      }
+      byte[] arrayOfByte = new byte[paramArrayOfByte.length - 16];
+      System.arraycopy(paramArrayOfByte, 16, arrayOfByte, 0, paramArrayOfByte.length - 16);
+      return StructMsgFactory.a(arrayOfByte);
+    }
     return null;
-    byte[] arrayOfByte = new byte[paramArrayOfByte.length - 16];
-    System.arraycopy(paramArrayOfByte, 16, arrayOfByte, 0, paramArrayOfByte.length - 16);
-    return StructMsgFactory.a(arrayOfByte);
   }
   
   public static StructMsgItemImage a(StructMsgForImageShare paramStructMsgForImageShare)
@@ -550,73 +630,75 @@ public final class QfavUtil
   
   public static QfavMergeData.MessageData a(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 16)) {
-      return null;
-    }
-    if (a(paramArrayOfByte, 8) != 1L) {
-      return null;
-    }
-    Object localObject2 = Parcel.obtain();
-    ((Parcel)localObject2).unmarshall(paramArrayOfByte, 16, paramArrayOfByte.length - 16);
-    ((Parcel)localObject2).setDataPosition(0);
-    Object localObject1 = (Bundle)Bundle.CREATOR.createFromParcel((Parcel)localObject2);
-    ((Parcel)localObject2).recycle();
-    paramArrayOfByte = ((Bundle)localObject1).getString("entityNickName");
-    localObject2 = ((Bundle)localObject1).getString("sEntityClassName");
-    localObject2 = a((ContentValues)((Bundle)localObject1).getParcelable("cvEntityContents"), (String)localObject2);
-    if ((localObject2 instanceof ChatMessage))
+    if (paramArrayOfByte != null)
     {
-      if ((localObject2 instanceof MessageForStructing))
+      if (paramArrayOfByte.length <= 16) {
+        return null;
+      }
+      if (a(paramArrayOfByte, 8) != 1L) {
+        return null;
+      }
+      Object localObject2 = Parcel.obtain();
+      ((Parcel)localObject2).unmarshall(paramArrayOfByte, 16, paramArrayOfByte.length - 16);
+      ((Parcel)localObject2).setDataPosition(0);
+      Object localObject1 = (Bundle)Bundle.CREATOR.createFromParcel((Parcel)localObject2);
+      ((Parcel)localObject2).recycle();
+      paramArrayOfByte = ((Bundle)localObject1).getString("entityNickName");
+      localObject2 = ((Bundle)localObject1).getString("sEntityClassName");
+      localObject2 = a((ContentValues)((Bundle)localObject1).getParcelable("cvEntityContents"), (String)localObject2);
+      if ((localObject2 instanceof ChatMessage))
       {
-        localObject1 = ((Bundle)localObject1).getByteArray("sEntityData");
-        if (localObject1 != null)
+        if ((localObject2 instanceof MessageForStructing))
         {
-          localObject1 = StructMsgFactory.a((byte[])localObject1);
-          ((MessageForStructing)localObject2).structingMsg = ((AbsStructMsg)localObject1);
+          localObject1 = ((Bundle)localObject1).getByteArray("sEntityData");
+          if (localObject1 != null)
+          {
+            localObject1 = StructMsgFactory.a((byte[])localObject1);
+            ((MessageForStructing)localObject2).structingMsg = ((AbsStructMsg)localObject1);
+          }
+          return new QfavMergeData.MessageData((ChatMessage)localObject2, paramArrayOfByte);
         }
         return new QfavMergeData.MessageData((ChatMessage)localObject2, paramArrayOfByte);
       }
-      return new QfavMergeData.MessageData((ChatMessage)localObject2, paramArrayOfByte);
     }
     return null;
   }
   
   public static String a(String paramString1, String paramString2)
   {
+    String str = paramString1;
     if (TextUtils.isEmpty(paramString1)) {
-      return paramString2;
+      str = paramString2;
     }
-    return paramString1;
+    return str;
   }
   
   private static String a(Node paramNode)
   {
-    if (paramNode.getNodeType() == 3) {}
-    Object localObject;
-    for (paramNode = paramNode.getNodeValue();; paramNode = ((StringBuilder)localObject).toString())
+    if (paramNode.getNodeType() == 3)
     {
-      localObject = paramNode;
-      if (paramNode == null) {
-        localObject = "";
-      }
-      return localObject;
+      paramNode = paramNode.getNodeValue();
+    }
+    else
+    {
       localObject = new StringBuilder();
       int j = paramNode.getChildNodes().getLength();
       int i = 0;
-      if (i < j)
+      while (i < j)
       {
         Node localNode = paramNode.getChildNodes().item(i);
-        if (localNode == null) {}
-        for (;;)
-        {
-          i += 1;
-          break;
-          if (localNode.getNodeType() == 3) {
-            ((StringBuilder)localObject).append(localNode.getNodeValue());
-          }
+        if ((localNode != null) && (localNode.getNodeType() == 3)) {
+          ((StringBuilder)localObject).append(localNode.getNodeValue());
         }
+        i += 1;
       }
+      paramNode = ((StringBuilder)localObject).toString();
     }
+    Object localObject = paramNode;
+    if (paramNode == null) {
+      localObject = "";
+    }
+    return localObject;
   }
   
   private static List<Field> a(Entity paramEntity)
@@ -645,52 +727,56 @@ public final class QfavUtil
   
   public static List<QfavMergeData> a(List<byte[]> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if ((paramList != null) && (paramList.size() != 0))
     {
-      Object localObject = (byte[])paramList.next();
-      long l1 = a((byte[])localObject, 8);
-      if (l1 != 2L)
+      ArrayList localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        long l2;
-        if (l1 == 1L)
+        Object localObject = (byte[])paramList.next();
+        long l1 = a((byte[])localObject, 8);
+        if (l1 != 2L)
         {
-          l2 = a((byte[])localObject, 0);
-          localObject = a((byte[])localObject);
-          if (localObject != null) {
-            localArrayList.add(new QfavMergeData(l2, l1, ((QfavMergeData.MessageData)localObject).jdField_a_of_type_ComTencentMobileqqDataChatMessage, ((QfavMergeData.MessageData)localObject).jdField_a_of_type_JavaLangString));
-          } else if (QLog.isColorLevel()) {
-            QLog.i("qqfav", 2, "unparcelMergeMsg is null");
+          long l2;
+          if (l1 == 1L)
+          {
+            l2 = a((byte[])localObject, 0);
+            localObject = a((byte[])localObject);
+            if (localObject != null) {
+              localArrayList.add(new QfavMergeData(l2, l1, ((QfavMergeData.MessageData)localObject).jdField_a_of_type_ComTencentMobileqqDataChatMessage, ((QfavMergeData.MessageData)localObject).jdField_a_of_type_JavaLangString));
+            } else if (QLog.isColorLevel()) {
+              QLog.i("qqfav", 2, "unparcelMergeMsg is null");
+            }
           }
-        }
-        else if (l1 == 3L)
-        {
-          l2 = a((byte[])localObject, 0);
-          localObject = a((byte[])localObject);
-          if (localObject != null) {
-            localArrayList.add(new QfavMergeData(l2, l1, (ContentValues)localObject));
+          else if (l1 == 3L)
+          {
+            l2 = a((byte[])localObject, 0);
+            localObject = a((byte[])localObject);
+            if (localObject != null) {
+              localArrayList.add(new QfavMergeData(l2, l1, (ContentValues)localObject));
+            }
           }
         }
       }
+      return localArrayList;
     }
-    return localArrayList;
+    return null;
   }
   
   public static Map<String, String> a(List<byte[]> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return null;
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if (paramList != null)
     {
-      Map localMap = a((byte[])paramList.next());
-      if (localMap != null) {
-        return localMap;
+      if (paramList.size() == 0) {
+        return null;
+      }
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        Map localMap = a((byte[])paramList.next());
+        if (localMap != null) {
+          return localMap;
+        }
       }
     }
     return null;
@@ -698,47 +784,74 @@ public final class QfavUtil
   
   public static Map<String, String> a(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 16)) {
-      return null;
-    }
-    if (a(paramArrayOfByte, 8) != 4L)
+    Object localObject = null;
+    if (paramArrayOfByte != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("qqfav", 2, "unParcelStructMsg, is not structMsg");
+      if (paramArrayOfByte.length <= 16) {
+        return null;
       }
-      return null;
-    }
-    Object localObject = Parcel.obtain();
-    ((Parcel)localObject).unmarshall(paramArrayOfByte, 16, paramArrayOfByte.length - 16);
-    ((Parcel)localObject).setDataPosition(0);
-    paramArrayOfByte = (ContentValues)ContentValues.CREATOR.createFromParcel((Parcel)localObject);
-    ((Parcel)localObject).recycle();
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    localObject = new HashMap();
-    Iterator localIterator = paramArrayOfByte.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      ((Map)localObject).put(str, paramArrayOfByte.getAsString(str));
+      if (a(paramArrayOfByte, 8) != 4L)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("qqfav", 2, "unParcelStructMsg, is not structMsg");
+        }
+        return null;
+      }
+      localObject = Parcel.obtain();
+      ((Parcel)localObject).unmarshall(paramArrayOfByte, 16, paramArrayOfByte.length - 16);
+      ((Parcel)localObject).setDataPosition(0);
+      ContentValues localContentValues = (ContentValues)ContentValues.CREATOR.createFromParcel((Parcel)localObject);
+      ((Parcel)localObject).recycle();
+      if (localContentValues == null) {
+        return null;
+      }
+      paramArrayOfByte = new HashMap();
+      Iterator localIterator = localContentValues.keySet().iterator();
+      for (;;)
+      {
+        localObject = paramArrayOfByte;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject = (String)localIterator.next();
+        paramArrayOfByte.put(localObject, localContentValues.getAsString((String)localObject));
+      }
     }
     return localObject;
   }
   
   private static void a(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, long paramLong, String paramString6, String paramString7)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("qqfav", 2, "dumpFileInfo，cloudtype:" + paramInt1 + " bid:" + paramInt2 + " uuid：" + paramString1 + " troopfilepath:" + paramString2 + " name:" + paramString5 + " size:" + paramLong + " md5:" + paramString6 + " path:" + paramString7);
+    if (QLog.isColorLevel())
+    {
+      paramString3 = new StringBuilder();
+      paramString3.append("dumpFileInfo，cloudtype:");
+      paramString3.append(paramInt1);
+      paramString3.append(" bid:");
+      paramString3.append(paramInt2);
+      paramString3.append(" uuid：");
+      paramString3.append(paramString1);
+      paramString3.append(" troopfilepath:");
+      paramString3.append(paramString2);
+      paramString3.append(" name:");
+      paramString3.append(paramString5);
+      paramString3.append(" size:");
+      paramString3.append(paramLong);
+      paramString3.append(" md5:");
+      paramString3.append(paramString6);
+      paramString3.append(" path:");
+      paramString3.append(paramString7);
+      QLog.d("qqfav", 2, paramString3.toString());
     }
   }
   
   public static void a(long paramLong, List<QfavMergeData> paramList1, List<QfavMergeData> paramList2)
   {
-    if ((paramList1 == null) || (paramList2 == null)) {}
-    for (;;)
+    if (paramList1 != null)
     {
-      return;
+      if (paramList2 == null) {
+        return;
+      }
       paramList1 = paramList1.iterator();
       while (paramList1.hasNext())
       {
@@ -753,7 +866,7 @@ public final class QfavUtil
   public static void a(Context paramContext, int paramInt1, int paramInt2)
   {
     QQToast localQQToast = QQToast.a(paramContext, paramInt2, paramInt1, 2000);
-    paramInt1 = paramContext.getResources().getDimensionPixelSize(2131299166) - (int)DisplayUtils.a(paramContext, 5.0F);
+    paramInt1 = paramContext.getResources().getDimensionPixelSize(2131299168) - (int)DisplayUtils.a(paramContext, 5.0F);
     paramContext = Looper.getMainLooper();
     if (Thread.currentThread() != paramContext.getThread())
     {
@@ -766,7 +879,7 @@ public final class QfavUtil
   public static void a(Context paramContext, String paramString, int paramInt)
   {
     paramString = QQToast.a(paramContext, paramInt, paramString, 2000);
-    paramInt = paramContext.getResources().getDimensionPixelSize(2131299166) - (int)DisplayUtils.a(paramContext, 5.0F);
+    paramInt = paramContext.getResources().getDimensionPixelSize(2131299168) - (int)DisplayUtils.a(paramContext, 5.0F);
     paramContext = Looper.getMainLooper();
     if (Thread.currentThread() != paramContext.getThread())
     {
@@ -781,44 +894,45 @@ public final class QfavUtil
     if (paramMessageForStructing == null) {
       return;
     }
-    if ((paramList != null) && (paramList.size() > 0)) {
-      label18:
-      if (paramList == null) {
-        break label160;
-      }
+    if ((paramList == null) || (paramList.size() <= 0))
+    {
+      paramList = MultiMsgManager.a().a(paramQQAppInterface, paramMessageForStructing.uniseq);
+      paramMap = null;
+    }
+    if (paramList == null) {
+      return;
     }
     for (;;)
     {
       try
       {
         Iterator localIterator = paramList.iterator();
-        if (!localIterator.hasNext()) {
-          break;
+        if (localIterator.hasNext())
+        {
+          ChatMessage localChatMessage = (ChatMessage)localIterator.next();
+          if (paramMap != null)
+          {
+            paramList = (String)paramMap.get(MsgProxyUtils.a(localChatMessage));
+            paramArrayList.add(a(paramQQAppInterface, paramMessageForStructing.uniseq, localChatMessage, paramList));
+            if (!a(localChatMessage)) {
+              continue;
+            }
+            a(paramQQAppInterface, (MessageForStructing)localChatMessage, null, null, paramArrayList);
+          }
         }
-        ChatMessage localChatMessage = (ChatMessage)localIterator.next();
-        if (paramMap == null) {
-          break label162;
+        else
+        {
+          return;
         }
-        paramList = (String)paramMap.get(MsgProxyUtils.a(localChatMessage));
-        paramArrayList.add(a(paramQQAppInterface, paramMessageForStructing.uniseq, localChatMessage, paramList));
-        if (!a(localChatMessage)) {
-          continue;
-        }
-        a(paramQQAppInterface, (MessageForStructing)localChatMessage, null, null, paramArrayList);
-        continue;
-        paramList = MultiMsgManager.a().a(paramQQAppInterface, paramMessageForStructing.uniseq);
       }
       catch (Exception paramQQAppInterface)
       {
         paramQQAppInterface.printStackTrace();
-        QLog.e("qqfav", 2, "parcelMergeMsg exception:" + paramQQAppInterface);
-        return;
+        paramMessageForStructing = new StringBuilder();
+        paramMessageForStructing.append("parcelMergeMsg exception:");
+        paramMessageForStructing.append(paramQQAppInterface);
+        QLog.e("qqfav", 2, paramMessageForStructing.toString());
       }
-      paramMap = null;
-      break label18;
-      label160:
-      break;
-      label162:
       paramList = null;
     }
   }
@@ -830,12 +944,14 @@ public final class QfavUtil
       if (QLog.isColorLevel()) {
         QLog.d("qqfav", 2, "dumpFileInfo， messageforfile is null");
       }
-      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("qqfav", 2, "dumpFileInfo， MessageForFile:");
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("qqfav", 2, "dumpFileInfo， MessageForFile:");
+      }
+      a(paramMessageForFile.fileName, paramMessageForFile.filePath, paramMessageForFile.fileSize, paramMessageForFile.extStr);
     }
-    a(paramMessageForFile.fileName, paramMessageForFile.filePath, paramMessageForFile.fileSize, paramMessageForFile.extStr);
   }
   
   private static void a(MessageForTroopFile paramMessageForTroopFile)
@@ -845,12 +961,14 @@ public final class QfavUtil
       if (QLog.isColorLevel()) {
         QLog.d("qqfav", 2, "dumpFileInfo， messageforfile is null");
       }
-      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("qqfav", 2, "dumpFileInfo， MessageForTroopFile:");
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("qqfav", 2, "dumpFileInfo， MessageForTroopFile:");
+      }
+      a(paramMessageForTroopFile.fileName, paramMessageForTroopFile.uuid, paramMessageForTroopFile.fileSize, paramMessageForTroopFile.extStr);
     }
-    a(paramMessageForTroopFile.fileName, paramMessageForTroopFile.uuid, paramMessageForTroopFile.fileSize, paramMessageForTroopFile.extStr);
   }
   
   private static void a(FileManagerEntity paramFileManagerEntity)
@@ -860,69 +978,104 @@ public final class QfavUtil
       if (QLog.isColorLevel()) {
         QLog.d("qqfav", 2, "dumpFileInfo， entity is null");
       }
-      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("qqfav", 2, "dumpFileInfo， entity");
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("qqfav", 2, "dumpFileInfo， entity");
+      }
+      a(FileManagerUtil.a(paramFileManagerEntity), paramFileManagerEntity.busId, paramFileManagerEntity.Uuid, paramFileManagerEntity.strTroopFilePath, paramFileManagerEntity.WeiYunDirKey, paramFileManagerEntity.WeiYunFileId, paramFileManagerEntity.fileName, paramFileManagerEntity.fileSize, paramFileManagerEntity.strFileMd5, paramFileManagerEntity.getFilePath());
     }
-    a(FileManagerUtil.a(paramFileManagerEntity), paramFileManagerEntity.busId, paramFileManagerEntity.Uuid, paramFileManagerEntity.strTroopFilePath, paramFileManagerEntity.WeiYunDirKey, paramFileManagerEntity.WeiYunFileId, paramFileManagerEntity.fileName, paramFileManagerEntity.fileSize, paramFileManagerEntity.strFileMd5, paramFileManagerEntity.getFilePath());
   }
   
   public static void a(String paramString)
   {
-    Object localObject = BaseApplicationImpl.getApplication();
-    if (Build.VERSION.SDK_INT > 10) {}
-    for (int i = 4;; i = 0)
-    {
-      localObject = ((BaseApplicationImpl)localObject).getSharedPreferences("mobileQQ", i);
-      String str = "qfav_click_red_point_" + paramString;
-      if (!((SharedPreferences)localObject).getBoolean(str, false)) {
-        ((SharedPreferences)localObject).edit().putBoolean(str, true).commit();
-      }
-      paramString = "favorites_entry_red_point_" + paramString;
-      if (!((SharedPreferences)localObject).getBoolean(paramString, false)) {
-        ((SharedPreferences)localObject).edit().putBoolean(paramString, true).commit();
-      }
-      return;
+    Object localObject1 = BaseApplicationImpl.getApplication();
+    int i;
+    if (Build.VERSION.SDK_INT > 10) {
+      i = 4;
+    } else {
+      i = 0;
+    }
+    localObject1 = ((BaseApplicationImpl)localObject1).getSharedPreferences("mobileQQ", i);
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("qfav_click_red_point_");
+    ((StringBuilder)localObject2).append(paramString);
+    localObject2 = ((StringBuilder)localObject2).toString();
+    if (!((SharedPreferences)localObject1).getBoolean((String)localObject2, false)) {
+      ((SharedPreferences)localObject1).edit().putBoolean((String)localObject2, true).commit();
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("favorites_entry_red_point_");
+    ((StringBuilder)localObject2).append(paramString);
+    paramString = ((StringBuilder)localObject2).toString();
+    if (!((SharedPreferences)localObject1).getBoolean(paramString, false)) {
+      ((SharedPreferences)localObject1).edit().putBoolean(paramString, true).commit();
     }
   }
   
   private static void a(String paramString1, String paramString2, long paramLong, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("qqfav", 2, "dumpFileInfo， name:" + paramString1 + " size:" + paramLong + " strExtInfo:" + paramString3 + " path or uuid:" + paramString2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("dumpFileInfo， name:");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" size:");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(" strExtInfo:");
+      localStringBuilder.append(paramString3);
+      localStringBuilder.append(" path or uuid:");
+      localStringBuilder.append(paramString2);
+      QLog.d("qqfav", 2, localStringBuilder.toString());
     }
   }
   
   public static void a(boolean paramBoolean)
   {
     Object localObject = BaseApplicationImpl.getApplication();
-    if (Build.VERSION.SDK_INT > 10) {}
-    for (int i = 4;; i = 0)
+    int i;
+    if (Build.VERSION.SDK_INT > 10) {
+      i = 4;
+    } else {
+      i = 0;
+    }
+    localObject = ((BaseApplicationImpl)localObject).getSharedPreferences("QfavEdit", i);
+    if (localObject != null)
     {
-      localObject = ((BaseApplicationImpl)localObject).getSharedPreferences("QfavEdit", i);
-      if (localObject != null)
+      localObject = ((SharedPreferences)localObject).edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(BaseApplicationImpl.sApplication.getRuntime().getAccount());
+      localStringBuilder.append("QfavEdit");
+      boolean bool = ((SharedPreferences.Editor)localObject).putBoolean(localStringBuilder.toString(), paramBoolean).commit();
+      if (QLog.isColorLevel())
       {
-        boolean bool = ((SharedPreferences)localObject).edit().putBoolean(BaseApplicationImpl.sApplication.getRuntime().getAccount() + "QfavEdit", paramBoolean).commit();
-        if (QLog.isColorLevel()) {
-          QLog.i("qqfav", 2, "setEditFlag:" + paramBoolean + ",suc:" + bool);
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("setEditFlag:");
+        ((StringBuilder)localObject).append(paramBoolean);
+        ((StringBuilder)localObject).append(",suc:");
+        ((StringBuilder)localObject).append(bool);
+        QLog.i("qqfav", 2, ((StringBuilder)localObject).toString());
       }
-      return;
     }
   }
   
   public static boolean a()
   {
     Object localObject = BaseApplicationImpl.getApplication();
-    if (Build.VERSION.SDK_INT > 10) {}
-    for (int i = 4;; i = 0)
+    int i;
+    if (Build.VERSION.SDK_INT > 10) {
+      i = 4;
+    } else {
+      i = 0;
+    }
+    localObject = ((BaseApplicationImpl)localObject).getSharedPreferences("QfavEdit", i);
+    if (localObject != null)
     {
-      localObject = ((BaseApplicationImpl)localObject).getSharedPreferences("QfavEdit", i);
-      if (localObject == null) {
-        break;
-      }
-      return ((SharedPreferences)localObject).getBoolean(BaseApplicationImpl.sApplication.getRuntime().getAccount() + "QfavEdit", false);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(BaseApplicationImpl.sApplication.getRuntime().getAccount());
+      localStringBuilder.append("QfavEdit");
+      return ((SharedPreferences)localObject).getBoolean(localStringBuilder.toString(), false);
     }
     return true;
   }
@@ -931,12 +1084,12 @@ public final class QfavUtil
   {
     if (!SystemUtil.a())
     {
-      a(paramActivity, 2131693818, 1);
+      a(paramActivity, 2131693771, 1);
       return false;
     }
     if (SystemUtil.a() < 500L)
     {
-      a(paramActivity, 2131693817, 1);
+      a(paramActivity, 2131693770, 1);
       return false;
     }
     return true;
@@ -944,22 +1097,40 @@ public final class QfavUtil
   
   public static boolean a(ChatMessage paramChatMessage)
   {
+    boolean bool2 = false;
     if (paramChatMessage == null) {
       return false;
     }
-    if (((paramChatMessage instanceof MessageForStructing)) && (((MessageForStructing)paramChatMessage).structingMsg != null) && (((MessageForStructing)paramChatMessage).structingMsg.mMsgServiceID == 35)) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    boolean bool1 = bool2;
+    if ((paramChatMessage instanceof MessageForStructing))
+    {
+      paramChatMessage = (MessageForStructing)paramChatMessage;
+      bool1 = bool2;
+      if (paramChatMessage.structingMsg != null)
+      {
+        bool1 = bool2;
+        if (paramChatMessage.structingMsg.mMsgServiceID == 35) {
+          bool1 = true;
+        }
+      }
     }
+    return bool1;
   }
   
   public static boolean a(String paramString)
   {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    if (Build.VERSION.SDK_INT > 10) {}
-    for (int i = 4;; i = 0) {
-      return localBaseApplicationImpl.getSharedPreferences("mobileQQ", i).getBoolean("qfav_unsupport_msg_dialog_flag_" + paramString, false);
+    Object localObject = BaseApplicationImpl.getApplication();
+    int i;
+    if (Build.VERSION.SDK_INT > 10) {
+      i = 4;
+    } else {
+      i = 0;
     }
+    localObject = ((BaseApplicationImpl)localObject).getSharedPreferences("mobileQQ", i);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("qfav_unsupport_msg_dialog_flag_");
+    localStringBuilder.append(paramString);
+    return ((SharedPreferences)localObject).getBoolean(localStringBuilder.toString(), false);
   }
   
   public static boolean a(String paramString, long paramLong)
@@ -978,11 +1149,11 @@ public final class QfavUtil
   private static byte[] a(long paramLong)
   {
     byte[] arrayOfByte = new byte[8];
-    int i = 0;
-    while (i < 8)
+    int j;
+    for (int i = 0; i < 8; i = j)
     {
-      arrayOfByte[i] = ((byte)(int)(paramLong >> 64 - (i + 1) * 8 & 0xFF));
-      i += 1;
+      j = i + 1;
+      arrayOfByte[i] = ((byte)(int)(paramLong >> 64 - j * 8 & 0xFF));
     }
     return arrayOfByte;
   }
@@ -1007,24 +1178,18 @@ public final class QfavUtil
   private static byte[] a(long paramLong1, long paramLong2, byte[] paramArrayOfByte)
   {
     int i;
-    if (paramArrayOfByte != null) {
-      if (paramArrayOfByte.length == 0) {
-        i = 16;
-      }
-    }
-    for (;;)
-    {
-      byte[] arrayOfByte = new byte[i];
-      System.arraycopy(a(paramLong1), 0, arrayOfByte, 0, 8);
-      System.arraycopy(a(paramLong2), 0, arrayOfByte, 8, 8);
-      if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {
-        System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 16, paramArrayOfByte.length);
-      }
-      return arrayOfByte;
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0)) {
       i = paramArrayOfByte.length + 16;
-      continue;
+    } else {
       i = 16;
     }
+    byte[] arrayOfByte = new byte[i];
+    System.arraycopy(a(paramLong1), 0, arrayOfByte, 0, 8);
+    System.arraycopy(a(paramLong2), 0, arrayOfByte, 8, 8);
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {
+      System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 16, paramArrayOfByte.length);
+    }
+    return arrayOfByte;
   }
   
   public static byte[] a(long paramLong, AbsStructMsg paramAbsStructMsg)
@@ -1037,17 +1202,18 @@ public final class QfavUtil
   
   public static byte[] a(long paramLong, Map<String, String> paramMap)
   {
-    if ((paramMap == null) || (paramMap.size() == 0)) {
-      return null;
-    }
-    ContentValues localContentValues = new ContentValues();
-    paramMap = paramMap.entrySet().iterator();
-    while (paramMap.hasNext())
+    if ((paramMap != null) && (paramMap.size() != 0))
     {
-      Map.Entry localEntry = (Map.Entry)paramMap.next();
-      localContentValues.put((String)localEntry.getKey(), (String)localEntry.getValue());
+      ContentValues localContentValues = new ContentValues();
+      paramMap = paramMap.entrySet().iterator();
+      while (paramMap.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)paramMap.next();
+        localContentValues.put((String)localEntry.getKey(), (String)localEntry.getValue());
+      }
+      return a(paramLong, 4L, localContentValues);
     }
-    return a(paramLong, 4L, localContentValues);
+    return null;
   }
   
   public static byte[] a(ContentValues paramContentValues)
@@ -1071,1363 +1237,867 @@ public final class QfavUtil
     if (TextUtils.isEmpty(paramString)) {
       str = MultiFavoriteHelper.a(paramQQAppInterface, paramChatMessage);
     }
-    if (((paramChatMessage instanceof MessageForFile)) || ((paramChatMessage instanceof MessageForTroopFile)) || ((paramChatMessage instanceof MessageForDLFile))) {
-      return b(paramQQAppInterface, paramLong, paramChatMessage, str);
+    if ((!(paramChatMessage instanceof MessageForFile)) && (!(paramChatMessage instanceof MessageForTroopFile)) && (!(paramChatMessage instanceof MessageForDLFile)))
+    {
+      paramQQAppInterface = new Bundle();
+      paramQQAppInterface.putParcelable("cvEntityContents", a(paramChatMessage, ""));
+      paramQQAppInterface.putString("sEntityClassName", paramChatMessage.getClass().getName());
+      paramQQAppInterface.putString("entityNickName", str);
+      if ((paramChatMessage instanceof MessageForStructing))
+      {
+        paramChatMessage = (MessageForStructing)paramChatMessage;
+        if (paramChatMessage.structingMsg != null) {
+          paramQQAppInterface.putByteArray("sEntityData", paramChatMessage.structingMsg.getBytes());
+        }
+      }
+      return a(paramLong, 1L, paramQQAppInterface);
     }
-    paramQQAppInterface = new Bundle();
-    paramQQAppInterface.putParcelable("cvEntityContents", a(paramChatMessage, ""));
-    paramQQAppInterface.putString("sEntityClassName", paramChatMessage.getClass().getName());
-    paramQQAppInterface.putString("entityNickName", str);
-    if (((paramChatMessage instanceof MessageForStructing)) && (((MessageForStructing)paramChatMessage).structingMsg != null)) {
-      paramQQAppInterface.putByteArray("sEntityData", ((MessageForStructing)paramChatMessage).structingMsg.getBytes());
-    }
-    return a(paramLong, 1L, paramQQAppInterface);
+    return b(paramQQAppInterface, paramLong, paramChatMessage, str);
   }
   
   public static byte[] a(byte[] paramArrayOfByte)
   {
     if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
+      return null;
     }
-    int i;
-    byte[] arrayOfByte;
-    do
-    {
-      return paramArrayOfByte;
-      i = paramArrayOfByte[0];
-      arrayOfByte = new byte[paramArrayOfByte.length - 1];
-      System.arraycopy(paramArrayOfByte, 1, arrayOfByte, 0, arrayOfByte.length);
-      paramArrayOfByte = arrayOfByte;
-    } while (i != 1);
-    return StructMsgUtils.a(arrayOfByte);
+    int i = paramArrayOfByte[0];
+    byte[] arrayOfByte = new byte[paramArrayOfByte.length - 1];
+    System.arraycopy(paramArrayOfByte, 1, arrayOfByte, 0, arrayOfByte.length);
+    paramArrayOfByte = arrayOfByte;
+    if (i == 1) {
+      paramArrayOfByte = StructMsgUtils.a(arrayOfByte);
+    }
+    return paramArrayOfByte;
   }
   
   /* Error */
   public static String[] a(byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: invokestatic 945	javax/xml/parsers/DocumentBuilderFactory:newInstance	()Ljavax/xml/parsers/DocumentBuilderFactory;
-    //   6: astore 5
-    //   8: aload 5
-    //   10: invokevirtual 949	javax/xml/parsers/DocumentBuilderFactory:newDocumentBuilder	()Ljavax/xml/parsers/DocumentBuilder;
-    //   13: new 951	java/io/ByteArrayInputStream
-    //   16: dup
-    //   17: aload_0
-    //   18: invokespecial 954	java/io/ByteArrayInputStream:<init>	([B)V
-    //   21: invokevirtual 960	javax/xml/parsers/DocumentBuilder:parse	(Ljava/io/InputStream;)Lorg/w3c/dom/Document;
-    //   24: invokeinterface 966 1 0
-    //   29: astore 5
-    //   31: aload 4
-    //   33: astore_0
-    //   34: aconst_null
-    //   35: invokestatic 61	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   38: ifeq +14 -> 52
-    //   41: aload 5
-    //   43: ldc_w 968
-    //   46: invokeinterface 973 2 0
-    //   51: astore_0
-    //   52: aload 5
-    //   54: invokeinterface 974 1 0
-    //   59: astore 26
-    //   61: aload 26
-    //   63: invokeinterface 563 1 0
-    //   68: istore_3
-    //   69: iconst_0
-    //   70: istore_1
-    //   71: aconst_null
-    //   72: astore 4
-    //   74: aconst_null
-    //   75: astore 5
-    //   77: aconst_null
-    //   78: astore 6
-    //   80: aconst_null
-    //   81: astore 8
-    //   83: aconst_null
-    //   84: astore 7
-    //   86: iload_1
-    //   87: iload_3
-    //   88: if_icmpge +1688 -> 1776
-    //   91: aload 4
-    //   93: astore 16
-    //   95: aload 5
-    //   97: astore 10
-    //   99: aload 6
-    //   101: astore 13
-    //   103: aload 7
-    //   105: astore 19
-    //   107: aload 4
-    //   109: astore 17
-    //   111: aload 5
-    //   113: astore 11
-    //   115: aload 6
-    //   117: astore 14
-    //   119: aload 7
-    //   121: astore 20
-    //   123: aload 4
-    //   125: astore 18
-    //   127: aload 5
-    //   129: astore 12
-    //   131: aload 6
-    //   133: astore 15
-    //   135: aload 7
-    //   137: astore 21
-    //   139: aload 26
-    //   141: iload_1
-    //   142: invokeinterface 567 2 0
-    //   147: astore 27
-    //   149: aload 4
-    //   151: astore 16
-    //   153: aload 5
-    //   155: astore 10
-    //   157: aload 6
-    //   159: astore 13
-    //   161: aload 7
-    //   163: astore 19
-    //   165: aload 4
-    //   167: astore 17
-    //   169: aload 5
-    //   171: astore 11
-    //   173: aload 6
-    //   175: astore 14
-    //   177: aload 7
-    //   179: astore 20
-    //   181: aload 4
-    //   183: astore 18
-    //   185: aload 5
-    //   187: astore 12
-    //   189: aload 6
-    //   191: astore 15
-    //   193: aload 7
-    //   195: astore 21
-    //   197: aload 27
-    //   199: invokeinterface 977 1 0
-    //   204: astore 28
-    //   206: aload 4
-    //   208: astore 16
-    //   210: aload 5
-    //   212: astore 10
-    //   214: aload 6
-    //   216: astore 13
-    //   218: aload 7
-    //   220: astore 19
-    //   222: aload 4
-    //   224: astore 17
-    //   226: aload 5
-    //   228: astore 11
-    //   230: aload 6
-    //   232: astore 14
-    //   234: aload 7
-    //   236: astore 20
-    //   238: aload 4
-    //   240: astore 18
-    //   242: aload 5
-    //   244: astore 12
-    //   246: aload 6
-    //   248: astore 15
-    //   250: aload 7
-    //   252: astore 21
-    //   254: aload 28
-    //   256: ldc_w 978
-    //   259: invokevirtual 981	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   262: ifeq +1246 -> 1508
-    //   265: aload 4
-    //   267: astore 16
-    //   269: aload 5
-    //   271: astore 10
-    //   273: aload 6
-    //   275: astore 13
-    //   277: aload 7
-    //   279: astore 19
-    //   281: aload 4
-    //   283: astore 17
-    //   285: aload 5
-    //   287: astore 11
-    //   289: aload 6
-    //   291: astore 14
-    //   293: aload 7
-    //   295: astore 20
-    //   297: aload 4
-    //   299: astore 18
-    //   301: aload 5
-    //   303: astore 12
-    //   305: aload 6
-    //   307: astore 15
-    //   309: aload 7
-    //   311: astore 21
-    //   313: aload 27
-    //   315: invokeinterface 558 1 0
-    //   320: astore 27
-    //   322: iconst_0
-    //   323: istore_2
-    //   324: aload 4
-    //   326: astore 22
-    //   328: aload 5
-    //   330: astore 23
-    //   332: aload 6
-    //   334: astore 24
-    //   336: aload 8
-    //   338: astore 25
-    //   340: aload 7
-    //   342: astore 9
-    //   344: aload 4
-    //   346: astore 16
-    //   348: aload 5
-    //   350: astore 10
-    //   352: aload 6
-    //   354: astore 13
-    //   356: aload 7
-    //   358: astore 19
-    //   360: aload 4
-    //   362: astore 17
-    //   364: aload 5
-    //   366: astore 11
-    //   368: aload 6
+    //   0: invokestatic 945	javax/xml/parsers/DocumentBuilderFactory:newInstance	()Ljavax/xml/parsers/DocumentBuilderFactory;
+    //   3: astore 5
+    //   5: aload 5
+    //   7: invokevirtual 949	javax/xml/parsers/DocumentBuilderFactory:newDocumentBuilder	()Ljavax/xml/parsers/DocumentBuilder;
+    //   10: new 951	java/io/ByteArrayInputStream
+    //   13: dup
+    //   14: aload_0
+    //   15: invokespecial 954	java/io/ByteArrayInputStream:<init>	([B)V
+    //   18: invokevirtual 960	javax/xml/parsers/DocumentBuilder:parse	(Ljava/io/InputStream;)Lorg/w3c/dom/Document;
+    //   21: invokeinterface 966 1 0
+    //   26: astore 5
+    //   28: aconst_null
+    //   29: invokestatic 61	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   32: ifeq +17 -> 49
+    //   35: aload 5
+    //   37: ldc_w 968
+    //   40: invokeinterface 973 2 0
+    //   45: astore_0
+    //   46: goto +5 -> 51
+    //   49: aconst_null
+    //   50: astore_0
+    //   51: aload 5
+    //   53: invokeinterface 974 1 0
+    //   58: astore 18
+    //   60: aload 18
+    //   62: invokeinterface 563 1 0
+    //   67: istore_3
+    //   68: aconst_null
+    //   69: astore 8
+    //   71: aload 8
+    //   73: astore 9
+    //   75: aload 9
+    //   77: astore 7
+    //   79: aload 7
+    //   81: astore 6
+    //   83: aload 6
+    //   85: astore 5
+    //   87: iconst_0
+    //   88: istore_1
+    //   89: aload_0
+    //   90: astore 10
+    //   92: aload 8
+    //   94: astore 11
+    //   96: aload 9
+    //   98: astore 12
+    //   100: aload 7
+    //   102: astore 13
+    //   104: aload 6
+    //   106: astore 14
+    //   108: aload 5
+    //   110: astore 15
+    //   112: iload_1
+    //   113: iload_3
+    //   114: if_icmpge +1004 -> 1118
+    //   117: aload 18
+    //   119: iload_1
+    //   120: invokeinterface 567 2 0
+    //   125: astore 15
+    //   127: aload 15
+    //   129: invokeinterface 977 1 0
+    //   134: astore 16
+    //   136: aload 16
+    //   138: ldc_w 978
+    //   141: invokevirtual 981	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   144: ifeq +664 -> 808
+    //   147: aload 15
+    //   149: invokeinterface 558 1 0
+    //   154: astore 19
+    //   156: aload 6
+    //   158: astore 10
+    //   160: iconst_0
+    //   161: istore_2
+    //   162: aload 5
+    //   164: astore 6
+    //   166: aload 10
+    //   168: astore 5
+    //   170: aload 5
+    //   172: astore 11
+    //   174: aload 5
+    //   176: astore 12
+    //   178: aload 5
+    //   180: astore 13
+    //   182: iload_2
+    //   183: aload 19
+    //   185: invokeinterface 563 1 0
+    //   190: if_icmpge +556 -> 746
+    //   193: aload 5
+    //   195: astore 11
+    //   197: aload 5
+    //   199: astore 12
+    //   201: aload 5
+    //   203: astore 13
+    //   205: aload 19
+    //   207: iload_2
+    //   208: invokeinterface 567 2 0
+    //   213: astore 10
+    //   215: aload 5
+    //   217: astore 11
+    //   219: aload 5
+    //   221: astore 12
+    //   223: aload 5
+    //   225: astore 13
+    //   227: aload 10
+    //   229: invokeinterface 977 1 0
+    //   234: ldc_w 983
+    //   237: invokevirtual 981	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   240: istore 4
+    //   242: iload 4
+    //   244: ifeq +88 -> 332
+    //   247: aload 8
+    //   249: astore 15
+    //   251: aload 7
+    //   253: astore 16
+    //   255: aload 5
+    //   257: astore 14
+    //   259: aload 6
+    //   261: astore 17
+    //   263: aload 5
+    //   265: astore 11
+    //   267: aload 5
+    //   269: astore 12
+    //   271: aload 5
+    //   273: astore 13
+    //   275: aload 5
+    //   277: invokestatic 61	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   280: ifeq +443 -> 723
+    //   283: aload 5
+    //   285: astore 11
+    //   287: aload 5
+    //   289: astore 12
+    //   291: aload 5
+    //   293: astore 13
+    //   295: aload 10
+    //   297: invokeinterface 987 1 0
+    //   302: ldc_w 989
+    //   305: invokeinterface 995 2 0
+    //   310: invokeinterface 554 1 0
+    //   315: astore 14
+    //   317: aload 8
+    //   319: astore 15
+    //   321: aload 7
+    //   323: astore 16
+    //   325: aload 6
+    //   327: astore 17
+    //   329: goto +394 -> 723
+    //   332: aload 5
+    //   334: astore 11
+    //   336: aload 5
+    //   338: astore 12
+    //   340: aload 5
+    //   342: astore 13
+    //   344: aload 10
+    //   346: invokeinterface 977 1 0
+    //   351: ldc_w 997
+    //   354: invokevirtual 981	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   357: ifeq +73 -> 430
+    //   360: aload 8
+    //   362: astore 15
+    //   364: aload 7
+    //   366: astore 16
+    //   368: aload 5
     //   370: astore 14
-    //   372: aload 7
-    //   374: astore 20
-    //   376: aload 4
-    //   378: astore 18
+    //   372: aload 6
+    //   374: astore 17
+    //   376: aload 5
+    //   378: astore 11
     //   380: aload 5
     //   382: astore 12
-    //   384: aload 6
-    //   386: astore 15
-    //   388: aload 7
-    //   390: astore 21
-    //   392: iload_2
-    //   393: aload 27
-    //   395: invokeinterface 563 1 0
-    //   400: if_icmpge +1349 -> 1749
-    //   403: aload 4
-    //   405: astore 16
-    //   407: aload 5
-    //   409: astore 10
-    //   411: aload 6
-    //   413: astore 13
+    //   384: aload 5
+    //   386: astore 13
+    //   388: aload 8
+    //   390: invokestatic 61	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   393: ifeq +330 -> 723
+    //   396: aload 5
+    //   398: astore 11
+    //   400: aload 5
+    //   402: astore 12
+    //   404: aload 5
+    //   406: astore 13
+    //   408: aload 10
+    //   410: invokestatic 999	cooperation/qqfav/QfavUtil:a	(Lorg/w3c/dom/Node;)Ljava/lang/String;
+    //   413: astore 15
     //   415: aload 7
-    //   417: astore 19
-    //   419: aload 4
-    //   421: astore 17
-    //   423: aload 5
-    //   425: astore 11
-    //   427: aload 6
-    //   429: astore 14
-    //   431: aload 7
-    //   433: astore 20
-    //   435: aload 4
-    //   437: astore 18
-    //   439: aload 5
-    //   441: astore 12
-    //   443: aload 6
-    //   445: astore 15
-    //   447: aload 7
-    //   449: astore 21
-    //   451: aload 27
-    //   453: iload_2
-    //   454: invokeinterface 567 2 0
-    //   459: astore 9
-    //   461: aload 4
-    //   463: astore 16
-    //   465: aload 5
-    //   467: astore 10
-    //   469: aload 6
-    //   471: astore 13
-    //   473: aload 7
-    //   475: astore 19
-    //   477: aload 4
-    //   479: astore 17
-    //   481: aload 5
-    //   483: astore 11
-    //   485: aload 6
-    //   487: astore 14
-    //   489: aload 7
-    //   491: astore 20
-    //   493: aload 4
-    //   495: astore 18
-    //   497: aload 5
-    //   499: astore 12
-    //   501: aload 6
-    //   503: astore 15
-    //   505: aload 7
-    //   507: astore 21
-    //   509: aload 9
-    //   511: invokeinterface 977 1 0
-    //   516: ldc_w 983
-    //   519: invokevirtual 981	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   522: ifeq +160 -> 682
-    //   525: aload 4
-    //   527: astore 16
-    //   529: aload 5
-    //   531: astore 10
-    //   533: aload 6
-    //   535: astore 13
-    //   537: aload 7
-    //   539: astore 19
-    //   541: aload 4
-    //   543: astore 17
-    //   545: aload 5
-    //   547: astore 11
-    //   549: aload 6
-    //   551: astore 14
-    //   553: aload 7
-    //   555: astore 20
-    //   557: aload 4
-    //   559: astore 18
-    //   561: aload 5
-    //   563: astore 12
-    //   565: aload 6
-    //   567: astore 15
-    //   569: aload 7
-    //   571: astore 21
-    //   573: aload 4
-    //   575: astore 23
-    //   577: aload 5
-    //   579: astore 22
-    //   581: aload 6
-    //   583: astore 24
-    //   585: aload 7
-    //   587: astore 25
-    //   589: aload 5
-    //   591: invokestatic 61	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   594: ifeq +1463 -> 2057
-    //   597: aload 4
-    //   599: astore 16
+    //   417: astore 16
+    //   419: aload 5
+    //   421: astore 14
+    //   423: aload 6
+    //   425: astore 17
+    //   427: goto +296 -> 723
+    //   430: aload 5
+    //   432: astore 11
+    //   434: aload 5
+    //   436: astore 12
+    //   438: aload 5
+    //   440: astore 13
+    //   442: aload 10
+    //   444: invokeinterface 977 1 0
+    //   449: ldc_w 1001
+    //   452: invokevirtual 981	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   455: ifeq +73 -> 528
+    //   458: aload 8
+    //   460: astore 15
+    //   462: aload 7
+    //   464: astore 16
+    //   466: aload 5
+    //   468: astore 14
+    //   470: aload 6
+    //   472: astore 17
+    //   474: aload 5
+    //   476: astore 11
+    //   478: aload 5
+    //   480: astore 12
+    //   482: aload 5
+    //   484: astore 13
+    //   486: aload 7
+    //   488: invokestatic 61	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   491: ifeq +232 -> 723
+    //   494: aload 5
+    //   496: astore 11
+    //   498: aload 5
+    //   500: astore 12
+    //   502: aload 5
+    //   504: astore 13
+    //   506: aload 10
+    //   508: invokestatic 999	cooperation/qqfav/QfavUtil:a	(Lorg/w3c/dom/Node;)Ljava/lang/String;
+    //   511: astore 16
+    //   513: aload 8
+    //   515: astore 15
+    //   517: aload 5
+    //   519: astore 14
+    //   521: aload 6
+    //   523: astore 17
+    //   525: goto +198 -> 723
+    //   528: aload 8
+    //   530: astore 15
+    //   532: aload 7
+    //   534: astore 16
+    //   536: aload 5
+    //   538: astore 14
+    //   540: aload 6
+    //   542: astore 17
+    //   544: aload 5
+    //   546: astore 11
+    //   548: aload 5
+    //   550: astore 12
+    //   552: aload 5
+    //   554: astore 13
+    //   556: aload 10
+    //   558: invokeinterface 977 1 0
+    //   563: ldc_w 1003
+    //   566: invokevirtual 981	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   569: ifeq +154 -> 723
+    //   572: aload 5
+    //   574: astore 11
+    //   576: aload 5
+    //   578: astore 12
+    //   580: aload 5
+    //   582: astore 13
+    //   584: aload 10
+    //   586: invokeinterface 987 1 0
+    //   591: astore 20
+    //   593: aload 5
+    //   595: astore 10
+    //   597: aload 5
+    //   599: astore 11
     //   601: aload 5
-    //   603: astore 10
-    //   605: aload 6
+    //   603: astore 12
+    //   605: aload 5
     //   607: astore 13
-    //   609: aload 7
-    //   611: astore 19
-    //   613: aload 4
-    //   615: astore 17
+    //   609: aload 5
+    //   611: invokestatic 61	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   614: ifeq +32 -> 646
     //   617: aload 5
     //   619: astore 11
-    //   621: aload 6
-    //   623: astore 14
-    //   625: aload 7
-    //   627: astore 20
-    //   629: aload 4
-    //   631: astore 18
-    //   633: aload 5
-    //   635: astore 12
-    //   637: aload 6
-    //   639: astore 15
-    //   641: aload 7
-    //   643: astore 21
-    //   645: aload 9
-    //   647: invokeinterface 987 1 0
-    //   652: ldc_w 989
-    //   655: invokeinterface 995 2 0
-    //   660: invokeinterface 554 1 0
-    //   665: astore 22
-    //   667: aload 4
-    //   669: astore 23
-    //   671: aload 6
-    //   673: astore 24
-    //   675: aload 7
-    //   677: astore 25
-    //   679: goto +1378 -> 2057
-    //   682: aload 4
-    //   684: astore 16
-    //   686: aload 5
-    //   688: astore 10
-    //   690: aload 6
+    //   621: aload 5
+    //   623: astore 12
+    //   625: aload 5
+    //   627: astore 13
+    //   629: aload 20
+    //   631: ldc_w 989
+    //   634: invokeinterface 995 2 0
+    //   639: invokeinterface 554 1 0
+    //   644: astore 10
+    //   646: aload 8
+    //   648: astore 15
+    //   650: aload 7
+    //   652: astore 16
+    //   654: aload 10
+    //   656: astore 14
+    //   658: aload 6
+    //   660: astore 17
+    //   662: aload 10
+    //   664: astore 11
+    //   666: aload 10
+    //   668: astore 12
+    //   670: aload 10
+    //   672: astore 13
+    //   674: aload 6
+    //   676: invokestatic 61	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   679: ifeq +44 -> 723
+    //   682: aload 10
+    //   684: astore 11
+    //   686: aload 10
+    //   688: astore 12
+    //   690: aload 10
     //   692: astore 13
-    //   694: aload 7
-    //   696: astore 19
-    //   698: aload 4
-    //   700: astore 17
-    //   702: aload 5
-    //   704: astore 11
-    //   706: aload 6
-    //   708: astore 14
-    //   710: aload 7
-    //   712: astore 20
-    //   714: aload 4
-    //   716: astore 18
-    //   718: aload 5
-    //   720: astore 12
-    //   722: aload 6
-    //   724: astore 15
-    //   726: aload 7
-    //   728: astore 21
-    //   730: aload 9
-    //   732: invokeinterface 977 1 0
-    //   737: ldc_w 997
-    //   740: invokevirtual 981	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   743: ifeq +145 -> 888
-    //   746: aload 4
-    //   748: astore 16
-    //   750: aload 5
-    //   752: astore 10
-    //   754: aload 6
-    //   756: astore 13
-    //   758: aload 7
-    //   760: astore 19
-    //   762: aload 4
-    //   764: astore 17
-    //   766: aload 5
-    //   768: astore 11
-    //   770: aload 6
-    //   772: astore 14
-    //   774: aload 7
-    //   776: astore 20
-    //   778: aload 4
-    //   780: astore 18
-    //   782: aload 5
-    //   784: astore 12
-    //   786: aload 6
-    //   788: astore 15
-    //   790: aload 7
-    //   792: astore 21
-    //   794: aload 4
-    //   796: astore 23
-    //   798: aload 5
-    //   800: astore 22
-    //   802: aload 6
-    //   804: astore 24
-    //   806: aload 7
-    //   808: astore 25
-    //   810: aload 7
-    //   812: invokestatic 61	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   815: ifeq +1242 -> 2057
-    //   818: aload 4
-    //   820: astore 16
-    //   822: aload 5
-    //   824: astore 10
-    //   826: aload 6
-    //   828: astore 13
-    //   830: aload 7
-    //   832: astore 19
-    //   834: aload 4
-    //   836: astore 17
-    //   838: aload 5
-    //   840: astore 11
-    //   842: aload 6
-    //   844: astore 14
-    //   846: aload 7
-    //   848: astore 20
-    //   850: aload 4
-    //   852: astore 18
-    //   854: aload 5
-    //   856: astore 12
-    //   858: aload 6
-    //   860: astore 15
-    //   862: aload 7
-    //   864: astore 21
-    //   866: aload 9
-    //   868: invokestatic 999	cooperation/qqfav/QfavUtil:a	(Lorg/w3c/dom/Node;)Ljava/lang/String;
-    //   871: astore 25
-    //   873: aload 4
-    //   875: astore 23
-    //   877: aload 5
-    //   879: astore 22
-    //   881: aload 6
-    //   883: astore 24
-    //   885: goto +1172 -> 2057
-    //   888: aload 4
-    //   890: astore 16
-    //   892: aload 5
-    //   894: astore 10
-    //   896: aload 6
-    //   898: astore 13
-    //   900: aload 7
-    //   902: astore 19
-    //   904: aload 4
-    //   906: astore 17
-    //   908: aload 5
-    //   910: astore 11
-    //   912: aload 6
-    //   914: astore 14
-    //   916: aload 7
-    //   918: astore 20
-    //   920: aload 4
-    //   922: astore 18
-    //   924: aload 5
-    //   926: astore 12
-    //   928: aload 6
-    //   930: astore 15
-    //   932: aload 7
-    //   934: astore 21
-    //   936: aload 9
-    //   938: invokeinterface 977 1 0
-    //   943: ldc_w 1001
-    //   946: invokevirtual 981	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   949: ifeq +145 -> 1094
-    //   952: aload 4
-    //   954: astore 16
-    //   956: aload 5
-    //   958: astore 10
-    //   960: aload 6
-    //   962: astore 13
-    //   964: aload 7
-    //   966: astore 19
-    //   968: aload 4
-    //   970: astore 17
-    //   972: aload 5
-    //   974: astore 11
-    //   976: aload 6
-    //   978: astore 14
-    //   980: aload 7
-    //   982: astore 20
-    //   984: aload 4
-    //   986: astore 18
-    //   988: aload 5
-    //   990: astore 12
-    //   992: aload 6
-    //   994: astore 15
-    //   996: aload 7
-    //   998: astore 21
-    //   1000: aload 4
-    //   1002: astore 23
-    //   1004: aload 5
-    //   1006: astore 22
-    //   1008: aload 6
-    //   1010: astore 24
-    //   1012: aload 7
-    //   1014: astore 25
-    //   1016: aload 6
-    //   1018: invokestatic 61	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   1021: ifeq +1036 -> 2057
-    //   1024: aload 4
-    //   1026: astore 16
-    //   1028: aload 5
-    //   1030: astore 10
-    //   1032: aload 6
-    //   1034: astore 13
-    //   1036: aload 7
-    //   1038: astore 19
-    //   1040: aload 4
-    //   1042: astore 17
-    //   1044: aload 5
-    //   1046: astore 11
-    //   1048: aload 6
-    //   1050: astore 14
-    //   1052: aload 7
-    //   1054: astore 20
-    //   1056: aload 4
-    //   1058: astore 18
-    //   1060: aload 5
-    //   1062: astore 12
-    //   1064: aload 6
-    //   1066: astore 15
-    //   1068: aload 7
-    //   1070: astore 21
-    //   1072: aload 9
-    //   1074: invokestatic 999	cooperation/qqfav/QfavUtil:a	(Lorg/w3c/dom/Node;)Ljava/lang/String;
-    //   1077: astore 24
-    //   1079: aload 4
-    //   1081: astore 23
-    //   1083: aload 5
-    //   1085: astore 22
-    //   1087: aload 7
-    //   1089: astore 25
-    //   1091: goto +966 -> 2057
-    //   1094: aload 4
-    //   1096: astore 16
-    //   1098: aload 5
-    //   1100: astore 10
-    //   1102: aload 6
-    //   1104: astore 13
-    //   1106: aload 7
-    //   1108: astore 19
-    //   1110: aload 4
-    //   1112: astore 17
-    //   1114: aload 5
-    //   1116: astore 11
-    //   1118: aload 6
-    //   1120: astore 14
-    //   1122: aload 7
-    //   1124: astore 20
-    //   1126: aload 4
-    //   1128: astore 18
-    //   1130: aload 5
-    //   1132: astore 12
-    //   1134: aload 6
-    //   1136: astore 15
-    //   1138: aload 7
-    //   1140: astore 21
-    //   1142: aload 4
-    //   1144: astore 23
-    //   1146: aload 5
-    //   1148: astore 22
-    //   1150: aload 6
-    //   1152: astore 24
-    //   1154: aload 7
-    //   1156: astore 25
-    //   1158: aload 9
-    //   1160: invokeinterface 977 1 0
-    //   1165: ldc_w 1003
-    //   1168: invokevirtual 981	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1171: ifeq +886 -> 2057
-    //   1174: aload 4
-    //   1176: astore 16
-    //   1178: aload 5
-    //   1180: astore 10
-    //   1182: aload 6
-    //   1184: astore 13
-    //   1186: aload 7
-    //   1188: astore 19
-    //   1190: aload 4
-    //   1192: astore 17
-    //   1194: aload 5
-    //   1196: astore 11
-    //   1198: aload 6
-    //   1200: astore 14
-    //   1202: aload 7
-    //   1204: astore 20
-    //   1206: aload 4
-    //   1208: astore 18
-    //   1210: aload 5
-    //   1212: astore 12
-    //   1214: aload 6
-    //   1216: astore 15
-    //   1218: aload 7
-    //   1220: astore 21
-    //   1222: aload 9
-    //   1224: invokeinterface 987 1 0
-    //   1229: astore 28
-    //   1231: aload 5
-    //   1233: astore 9
-    //   1235: aload 4
-    //   1237: astore 16
-    //   1239: aload 5
-    //   1241: astore 10
-    //   1243: aload 6
-    //   1245: astore 13
-    //   1247: aload 7
-    //   1249: astore 19
-    //   1251: aload 4
-    //   1253: astore 17
-    //   1255: aload 5
-    //   1257: astore 11
-    //   1259: aload 6
-    //   1261: astore 14
-    //   1263: aload 7
-    //   1265: astore 20
-    //   1267: aload 4
-    //   1269: astore 18
-    //   1271: aload 5
-    //   1273: astore 12
-    //   1275: aload 6
-    //   1277: astore 15
-    //   1279: aload 7
-    //   1281: astore 21
-    //   1283: aload 5
-    //   1285: invokestatic 61	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   1288: ifeq +68 -> 1356
-    //   1291: aload 4
-    //   1293: astore 16
-    //   1295: aload 5
-    //   1297: astore 10
-    //   1299: aload 6
-    //   1301: astore 13
-    //   1303: aload 7
-    //   1305: astore 19
-    //   1307: aload 4
-    //   1309: astore 17
-    //   1311: aload 5
-    //   1313: astore 11
-    //   1315: aload 6
-    //   1317: astore 14
-    //   1319: aload 7
-    //   1321: astore 20
-    //   1323: aload 4
-    //   1325: astore 18
-    //   1327: aload 5
-    //   1329: astore 12
-    //   1331: aload 6
-    //   1333: astore 15
-    //   1335: aload 7
-    //   1337: astore 21
-    //   1339: aload 28
-    //   1341: ldc_w 989
-    //   1344: invokeinterface 995 2 0
-    //   1349: invokeinterface 554 1 0
-    //   1354: astore 9
-    //   1356: aload 4
-    //   1358: astore 16
-    //   1360: aload 9
-    //   1362: astore 10
-    //   1364: aload 6
-    //   1366: astore 13
-    //   1368: aload 7
-    //   1370: astore 19
-    //   1372: aload 4
-    //   1374: astore 17
-    //   1376: aload 9
-    //   1378: astore 11
-    //   1380: aload 6
-    //   1382: astore 14
-    //   1384: aload 7
-    //   1386: astore 20
-    //   1388: aload 4
-    //   1390: astore 18
-    //   1392: aload 9
-    //   1394: astore 12
-    //   1396: aload 6
-    //   1398: astore 15
-    //   1400: aload 7
-    //   1402: astore 21
-    //   1404: aload 4
-    //   1406: astore 23
-    //   1408: aload 9
-    //   1410: astore 22
-    //   1412: aload 6
-    //   1414: astore 24
-    //   1416: aload 7
-    //   1418: astore 25
-    //   1420: aload 4
-    //   1422: invokestatic 61	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   1425: ifeq +632 -> 2057
-    //   1428: aload 4
-    //   1430: astore 16
-    //   1432: aload 9
-    //   1434: astore 10
-    //   1436: aload 6
-    //   1438: astore 13
-    //   1440: aload 7
-    //   1442: astore 19
-    //   1444: aload 4
-    //   1446: astore 17
-    //   1448: aload 9
-    //   1450: astore 11
-    //   1452: aload 6
-    //   1454: astore 14
-    //   1456: aload 7
-    //   1458: astore 20
-    //   1460: aload 4
-    //   1462: astore 18
-    //   1464: aload 9
-    //   1466: astore 12
-    //   1468: aload 6
-    //   1470: astore 15
-    //   1472: aload 7
-    //   1474: astore 21
-    //   1476: aload 28
-    //   1478: ldc_w 1005
-    //   1481: invokeinterface 995 2 0
-    //   1486: invokeinterface 554 1 0
-    //   1491: astore 23
-    //   1493: aload 9
-    //   1495: astore 22
-    //   1497: aload 6
-    //   1499: astore 24
-    //   1501: aload 7
-    //   1503: astore 25
-    //   1505: goto +552 -> 2057
-    //   1508: aload 4
-    //   1510: astore 22
-    //   1512: aload 5
-    //   1514: astore 23
-    //   1516: aload 6
-    //   1518: astore 24
-    //   1520: aload 8
-    //   1522: astore 25
-    //   1524: aload 7
-    //   1526: astore 9
-    //   1528: aload 4
-    //   1530: astore 16
-    //   1532: aload 5
-    //   1534: astore 10
-    //   1536: aload 6
-    //   1538: astore 13
-    //   1540: aload 7
-    //   1542: astore 19
-    //   1544: aload 4
-    //   1546: astore 17
-    //   1548: aload 5
-    //   1550: astore 11
-    //   1552: aload 6
-    //   1554: astore 14
-    //   1556: aload 7
-    //   1558: astore 20
-    //   1560: aload 4
-    //   1562: astore 18
-    //   1564: aload 5
-    //   1566: astore 12
-    //   1568: aload 6
-    //   1570: astore 15
-    //   1572: aload 7
-    //   1574: astore 21
-    //   1576: aload 28
-    //   1578: ldc_w 1007
-    //   1581: invokevirtual 981	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1584: ifeq +165 -> 1749
-    //   1587: aload 4
-    //   1589: astore 22
-    //   1591: aload 5
-    //   1593: astore 23
-    //   1595: aload 6
-    //   1597: astore 24
-    //   1599: aload 8
-    //   1601: astore 25
-    //   1603: aload 7
-    //   1605: astore 9
-    //   1607: aload 4
-    //   1609: astore 16
-    //   1611: aload 5
-    //   1613: astore 10
-    //   1615: aload 6
-    //   1617: astore 13
-    //   1619: aload 7
-    //   1621: astore 19
-    //   1623: aload 4
-    //   1625: astore 17
-    //   1627: aload 5
-    //   1629: astore 11
-    //   1631: aload 6
-    //   1633: astore 14
-    //   1635: aload 7
-    //   1637: astore 20
-    //   1639: aload 4
-    //   1641: astore 18
-    //   1643: aload 5
-    //   1645: astore 12
-    //   1647: aload 6
-    //   1649: astore 15
-    //   1651: aload 7
-    //   1653: astore 21
-    //   1655: aload 8
-    //   1657: invokestatic 61	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   1660: ifeq +89 -> 1749
-    //   1663: aload 4
-    //   1665: astore 16
-    //   1667: aload 5
-    //   1669: astore 10
-    //   1671: aload 6
-    //   1673: astore 13
-    //   1675: aload 7
-    //   1677: astore 19
-    //   1679: aload 4
-    //   1681: astore 17
-    //   1683: aload 5
-    //   1685: astore 11
-    //   1687: aload 6
-    //   1689: astore 14
-    //   1691: aload 7
-    //   1693: astore 20
-    //   1695: aload 4
-    //   1697: astore 18
-    //   1699: aload 5
-    //   1701: astore 12
-    //   1703: aload 6
-    //   1705: astore 15
-    //   1707: aload 7
-    //   1709: astore 21
-    //   1711: aload 27
-    //   1713: invokeinterface 987 1 0
-    //   1718: ldc_w 1009
-    //   1721: invokeinterface 995 2 0
-    //   1726: invokeinterface 554 1 0
-    //   1731: astore 25
-    //   1733: aload 7
-    //   1735: astore 9
-    //   1737: aload 6
-    //   1739: astore 24
-    //   1741: aload 5
-    //   1743: astore 23
-    //   1745: aload 4
-    //   1747: astore 22
-    //   1749: iload_1
-    //   1750: iconst_1
-    //   1751: iadd
-    //   1752: istore_1
-    //   1753: aload 22
-    //   1755: astore 4
-    //   1757: aload 23
-    //   1759: astore 5
-    //   1761: aload 24
-    //   1763: astore 6
-    //   1765: aload 25
-    //   1767: astore 8
-    //   1769: aload 9
-    //   1771: astore 7
-    //   1773: goto -1687 -> 86
-    //   1776: aload_0
-    //   1777: astore 9
-    //   1779: aload 6
-    //   1781: astore_0
-    //   1782: bipush 6
-    //   1784: anewarray 85	java/lang/String
-    //   1787: dup
-    //   1788: iconst_0
-    //   1789: aload 7
-    //   1791: aastore
-    //   1792: dup
-    //   1793: iconst_1
-    //   1794: aload 9
-    //   1796: aastore
-    //   1797: dup
-    //   1798: iconst_2
-    //   1799: aload 8
-    //   1801: aastore
-    //   1802: dup
-    //   1803: iconst_3
-    //   1804: aload_0
-    //   1805: aastore
-    //   1806: dup
-    //   1807: iconst_4
-    //   1808: aload 5
-    //   1810: aastore
-    //   1811: dup
-    //   1812: iconst_5
-    //   1813: aload 4
-    //   1815: aastore
-    //   1816: areturn
-    //   1817: astore 9
-    //   1819: aconst_null
-    //   1820: astore 4
-    //   1822: aconst_null
-    //   1823: astore 5
-    //   1825: aconst_null
-    //   1826: astore_0
-    //   1827: aconst_null
-    //   1828: astore 8
-    //   1830: aconst_null
-    //   1831: astore 6
-    //   1833: aconst_null
-    //   1834: astore 7
-    //   1836: aload 9
-    //   1838: invokevirtual 1010	javax/xml/parsers/ParserConfigurationException:printStackTrace	()V
-    //   1841: aload 6
-    //   1843: astore 9
-    //   1845: goto -63 -> 1782
-    //   1848: astore 9
-    //   1850: aconst_null
-    //   1851: astore 4
-    //   1853: aconst_null
-    //   1854: astore 5
-    //   1856: aconst_null
-    //   1857: astore_0
-    //   1858: aconst_null
-    //   1859: astore 8
-    //   1861: aconst_null
-    //   1862: astore 6
-    //   1864: aconst_null
-    //   1865: astore 7
-    //   1867: aload 9
-    //   1869: invokevirtual 1011	org/xml/sax/SAXException:printStackTrace	()V
-    //   1872: aload 6
-    //   1874: astore 9
-    //   1876: goto -94 -> 1782
-    //   1879: astore 9
-    //   1881: aconst_null
-    //   1882: astore 4
-    //   1884: aconst_null
-    //   1885: astore 5
-    //   1887: aconst_null
-    //   1888: astore_0
-    //   1889: aconst_null
-    //   1890: astore 8
-    //   1892: aconst_null
-    //   1893: astore 6
-    //   1895: aconst_null
-    //   1896: astore 7
-    //   1898: aload 9
-    //   1900: invokevirtual 1012	java/io/IOException:printStackTrace	()V
-    //   1903: aload 6
-    //   1905: astore 9
-    //   1907: goto -125 -> 1782
-    //   1910: astore 9
-    //   1912: aconst_null
-    //   1913: astore 4
-    //   1915: aconst_null
-    //   1916: astore 5
-    //   1918: aconst_null
-    //   1919: astore 10
-    //   1921: aconst_null
-    //   1922: astore 8
-    //   1924: aload_0
-    //   1925: astore 6
-    //   1927: aconst_null
-    //   1928: astore 7
-    //   1930: aload 10
-    //   1932: astore_0
-    //   1933: goto -35 -> 1898
-    //   1936: astore 9
-    //   1938: aload 19
-    //   1940: astore 7
-    //   1942: aload_0
-    //   1943: astore 6
-    //   1945: aload 16
-    //   1947: astore 4
-    //   1949: aload 10
-    //   1951: astore 5
-    //   1953: aload 13
-    //   1955: astore_0
-    //   1956: goto -58 -> 1898
-    //   1959: astore 9
-    //   1961: aconst_null
-    //   1962: astore 4
-    //   1964: aconst_null
-    //   1965: astore 5
-    //   1967: aconst_null
-    //   1968: astore 10
-    //   1970: aconst_null
-    //   1971: astore 8
-    //   1973: aload_0
-    //   1974: astore 6
-    //   1976: aconst_null
-    //   1977: astore 7
-    //   1979: aload 10
-    //   1981: astore_0
-    //   1982: goto -115 -> 1867
-    //   1985: astore 9
-    //   1987: aload 20
-    //   1989: astore 7
-    //   1991: aload_0
-    //   1992: astore 6
-    //   1994: aload 17
-    //   1996: astore 4
-    //   1998: aload 11
-    //   2000: astore 5
-    //   2002: aload 14
-    //   2004: astore_0
-    //   2005: goto -138 -> 1867
-    //   2008: astore 9
-    //   2010: aconst_null
-    //   2011: astore 4
-    //   2013: aconst_null
-    //   2014: astore 5
-    //   2016: aconst_null
-    //   2017: astore 10
-    //   2019: aconst_null
-    //   2020: astore 8
-    //   2022: aload_0
-    //   2023: astore 6
-    //   2025: aconst_null
-    //   2026: astore 7
-    //   2028: aload 10
-    //   2030: astore_0
-    //   2031: goto -195 -> 1836
-    //   2034: astore 9
-    //   2036: aload 21
-    //   2038: astore 7
-    //   2040: aload_0
-    //   2041: astore 6
-    //   2043: aload 18
-    //   2045: astore 4
-    //   2047: aload 12
-    //   2049: astore 5
-    //   2051: aload 15
-    //   2053: astore_0
-    //   2054: goto -218 -> 1836
-    //   2057: iload_2
-    //   2058: iconst_1
-    //   2059: iadd
-    //   2060: istore_2
-    //   2061: aload 23
-    //   2063: astore 4
-    //   2065: aload 22
-    //   2067: astore 5
-    //   2069: aload 24
-    //   2071: astore 6
-    //   2073: aload 25
-    //   2075: astore 7
-    //   2077: goto -1753 -> 324
+    //   694: aload 20
+    //   696: ldc_w 1005
+    //   699: invokeinterface 995 2 0
+    //   704: invokeinterface 554 1 0
+    //   709: astore 17
+    //   711: aload 10
+    //   713: astore 14
+    //   715: aload 7
+    //   717: astore 16
+    //   719: aload 8
+    //   721: astore 15
+    //   723: iload_2
+    //   724: iconst_1
+    //   725: iadd
+    //   726: istore_2
+    //   727: aload 15
+    //   729: astore 8
+    //   731: aload 16
+    //   733: astore 7
+    //   735: aload 14
+    //   737: astore 5
+    //   739: aload 17
+    //   741: astore 6
+    //   743: goto -573 -> 170
+    //   746: aload 8
+    //   748: astore 10
+    //   750: aload 9
+    //   752: astore 11
+    //   754: aload 7
+    //   756: astore 12
+    //   758: aload 5
+    //   760: astore 13
+    //   762: aload 6
+    //   764: astore 14
+    //   766: goto +139 -> 905
+    //   769: astore 10
+    //   771: aload 6
+    //   773: astore 5
+    //   775: aload 11
+    //   777: astore 6
+    //   779: goto +205 -> 984
+    //   782: astore 10
+    //   784: aload 6
+    //   786: astore 5
+    //   788: aload 12
+    //   790: astore 6
+    //   792: goto +245 -> 1037
+    //   795: astore 10
+    //   797: aload 6
+    //   799: astore 5
+    //   801: aload 13
+    //   803: astore 6
+    //   805: goto +285 -> 1090
+    //   808: aload 8
+    //   810: astore 10
+    //   812: aload 9
+    //   814: astore 11
+    //   816: aload 7
+    //   818: astore 12
+    //   820: aload 6
+    //   822: astore 13
+    //   824: aload 5
+    //   826: astore 14
+    //   828: aload 16
+    //   830: ldc_w 1007
+    //   833: invokevirtual 981	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   836: ifeq +69 -> 905
+    //   839: aload 8
+    //   841: astore 10
+    //   843: aload 9
+    //   845: astore 11
+    //   847: aload 7
+    //   849: astore 12
+    //   851: aload 6
+    //   853: astore 13
+    //   855: aload 5
+    //   857: astore 14
+    //   859: aload 9
+    //   861: invokestatic 61	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   864: ifeq +41 -> 905
+    //   867: aload 15
+    //   869: invokeinterface 987 1 0
+    //   874: ldc_w 1009
+    //   877: invokeinterface 995 2 0
+    //   882: invokeinterface 554 1 0
+    //   887: astore 11
+    //   889: aload 5
+    //   891: astore 14
+    //   893: aload 6
+    //   895: astore 13
+    //   897: aload 7
+    //   899: astore 12
+    //   901: aload 8
+    //   903: astore 10
+    //   905: iload_1
+    //   906: iconst_1
+    //   907: iadd
+    //   908: istore_1
+    //   909: aload 10
+    //   911: astore 8
+    //   913: aload 11
+    //   915: astore 9
+    //   917: aload 12
+    //   919: astore 7
+    //   921: aload 13
+    //   923: astore 6
+    //   925: aload 14
+    //   927: astore 5
+    //   929: goto -840 -> 89
+    //   932: astore 10
+    //   934: goto +50 -> 984
+    //   937: astore 10
+    //   939: goto +98 -> 1037
+    //   942: astore 10
+    //   944: goto +146 -> 1090
+    //   947: astore 10
+    //   949: goto +17 -> 966
+    //   952: astore 10
+    //   954: goto +65 -> 1019
+    //   957: astore 10
+    //   959: goto +113 -> 1072
+    //   962: astore 10
+    //   964: aconst_null
+    //   965: astore_0
+    //   966: aconst_null
+    //   967: astore 8
+    //   969: aconst_null
+    //   970: astore 9
+    //   972: aload 9
+    //   974: astore 7
+    //   976: aload 7
+    //   978: astore 6
+    //   980: aload 6
+    //   982: astore 5
+    //   984: aload 10
+    //   986: invokevirtual 1010	java/io/IOException:printStackTrace	()V
+    //   989: aload_0
+    //   990: astore 10
+    //   992: aload 8
+    //   994: astore 11
+    //   996: aload 9
+    //   998: astore 12
+    //   1000: aload 7
+    //   1002: astore 13
+    //   1004: aload 6
+    //   1006: astore 14
+    //   1008: aload 5
+    //   1010: astore 15
+    //   1012: goto +106 -> 1118
+    //   1015: astore 10
+    //   1017: aconst_null
+    //   1018: astore_0
+    //   1019: aconst_null
+    //   1020: astore 8
+    //   1022: aconst_null
+    //   1023: astore 9
+    //   1025: aload 9
+    //   1027: astore 7
+    //   1029: aload 7
+    //   1031: astore 6
+    //   1033: aload 6
+    //   1035: astore 5
+    //   1037: aload 10
+    //   1039: invokevirtual 1011	org/xml/sax/SAXException:printStackTrace	()V
+    //   1042: aload_0
+    //   1043: astore 10
+    //   1045: aload 8
+    //   1047: astore 11
+    //   1049: aload 9
+    //   1051: astore 12
+    //   1053: aload 7
+    //   1055: astore 13
+    //   1057: aload 6
+    //   1059: astore 14
+    //   1061: aload 5
+    //   1063: astore 15
+    //   1065: goto +53 -> 1118
+    //   1068: astore 10
+    //   1070: aconst_null
+    //   1071: astore_0
+    //   1072: aconst_null
+    //   1073: astore 8
+    //   1075: aconst_null
+    //   1076: astore 9
+    //   1078: aload 9
+    //   1080: astore 7
+    //   1082: aload 7
+    //   1084: astore 6
+    //   1086: aload 6
+    //   1088: astore 5
+    //   1090: aload 10
+    //   1092: invokevirtual 1012	javax/xml/parsers/ParserConfigurationException:printStackTrace	()V
+    //   1095: aload 5
+    //   1097: astore 15
+    //   1099: aload 6
+    //   1101: astore 14
+    //   1103: aload 7
+    //   1105: astore 13
+    //   1107: aload 9
+    //   1109: astore 12
+    //   1111: aload 8
+    //   1113: astore 11
+    //   1115: aload_0
+    //   1116: astore 10
+    //   1118: bipush 6
+    //   1120: anewarray 90	java/lang/String
+    //   1123: dup
+    //   1124: iconst_0
+    //   1125: aload 11
+    //   1127: aastore
+    //   1128: dup
+    //   1129: iconst_1
+    //   1130: aload 10
+    //   1132: aastore
+    //   1133: dup
+    //   1134: iconst_2
+    //   1135: aload 12
+    //   1137: aastore
+    //   1138: dup
+    //   1139: iconst_3
+    //   1140: aload 13
+    //   1142: aastore
+    //   1143: dup
+    //   1144: iconst_4
+    //   1145: aload 14
+    //   1147: aastore
+    //   1148: dup
+    //   1149: iconst_5
+    //   1150: aload 15
+    //   1152: aastore
+    //   1153: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	2080	0	paramArrayOfByte	byte[]
-    //   70	1683	1	i	int
-    //   323	1738	2	j	int
-    //   68	21	3	k	int
-    //   1	2063	4	localObject1	Object
-    //   6	2062	5	localObject2	Object
-    //   78	1994	6	localObject3	Object
-    //   84	1992	7	localObject4	Object
-    //   81	1940	8	localObject5	Object
-    //   342	1453	9	localObject6	Object
-    //   1817	20	9	localParserConfigurationException1	javax.xml.parsers.ParserConfigurationException
-    //   1843	1	9	localObject7	Object
-    //   1848	20	9	localSAXException1	org.xml.sax.SAXException
-    //   1874	1	9	localObject8	Object
-    //   1879	20	9	localIOException1	java.io.IOException
-    //   1905	1	9	localObject9	Object
-    //   1910	1	9	localIOException2	java.io.IOException
-    //   1936	1	9	localIOException3	java.io.IOException
-    //   1959	1	9	localSAXException2	org.xml.sax.SAXException
-    //   1985	1	9	localSAXException3	org.xml.sax.SAXException
-    //   2008	1	9	localParserConfigurationException2	javax.xml.parsers.ParserConfigurationException
-    //   2034	1	9	localParserConfigurationException3	javax.xml.parsers.ParserConfigurationException
-    //   97	1932	10	localObject10	Object
-    //   113	1886	11	localObject11	Object
-    //   129	1919	12	localObject12	Object
-    //   101	1853	13	localObject13	Object
-    //   117	1886	14	localObject14	Object
-    //   133	1919	15	localObject15	Object
-    //   93	1853	16	localObject16	Object
-    //   109	1886	17	localObject17	Object
-    //   125	1919	18	localObject18	Object
-    //   105	1834	19	localObject19	Object
-    //   121	1867	20	localObject20	Object
-    //   137	1900	21	localObject21	Object
-    //   326	1740	22	localObject22	Object
-    //   330	1732	23	localObject23	Object
-    //   334	1736	24	localObject24	Object
-    //   338	1736	25	localObject25	Object
-    //   59	81	26	localNodeList	NodeList
-    //   147	1565	27	localObject26	Object
-    //   204	1373	28	localObject27	Object
+    //   0	1154	0	paramArrayOfByte	byte[]
+    //   88	821	1	i	int
+    //   161	566	2	j	int
+    //   67	48	3	k	int
+    //   240	3	4	bool	boolean
+    //   3	1093	5	localObject1	Object
+    //   81	1019	6	localObject2	Object
+    //   77	1027	7	localObject3	Object
+    //   69	1043	8	localObject4	Object
+    //   73	1035	9	localObject5	Object
+    //   90	659	10	localObject6	Object
+    //   769	1	10	localIOException1	java.io.IOException
+    //   782	1	10	localSAXException1	org.xml.sax.SAXException
+    //   795	1	10	localParserConfigurationException1	javax.xml.parsers.ParserConfigurationException
+    //   810	100	10	localObject7	Object
+    //   932	1	10	localIOException2	java.io.IOException
+    //   937	1	10	localSAXException2	org.xml.sax.SAXException
+    //   942	1	10	localParserConfigurationException2	javax.xml.parsers.ParserConfigurationException
+    //   947	1	10	localIOException3	java.io.IOException
+    //   952	1	10	localSAXException3	org.xml.sax.SAXException
+    //   957	1	10	localParserConfigurationException3	javax.xml.parsers.ParserConfigurationException
+    //   962	23	10	localIOException4	java.io.IOException
+    //   990	1	10	arrayOfByte1	byte[]
+    //   1015	23	10	localSAXException4	org.xml.sax.SAXException
+    //   1043	1	10	arrayOfByte2	byte[]
+    //   1068	23	10	localParserConfigurationException4	javax.xml.parsers.ParserConfigurationException
+    //   1116	15	10	arrayOfByte3	byte[]
+    //   94	1032	11	localObject8	Object
+    //   98	1038	12	localObject9	Object
+    //   102	1039	13	localObject10	Object
+    //   106	1040	14	localObject11	Object
+    //   110	1041	15	localObject12	Object
+    //   134	695	16	localObject13	Object
+    //   261	479	17	localObject14	Object
+    //   58	60	18	localNodeList1	NodeList
+    //   154	52	19	localNodeList2	NodeList
+    //   591	104	20	localNamedNodeMap	org.w3c.dom.NamedNodeMap
     // Exception table:
     //   from	to	target	type
-    //   8	31	1817	javax/xml/parsers/ParserConfigurationException
-    //   34	52	1817	javax/xml/parsers/ParserConfigurationException
-    //   8	31	1848	org/xml/sax/SAXException
-    //   34	52	1848	org/xml/sax/SAXException
-    //   8	31	1879	java/io/IOException
-    //   34	52	1879	java/io/IOException
-    //   52	69	1910	java/io/IOException
-    //   139	149	1936	java/io/IOException
-    //   197	206	1936	java/io/IOException
-    //   254	265	1936	java/io/IOException
-    //   313	322	1936	java/io/IOException
-    //   392	403	1936	java/io/IOException
-    //   451	461	1936	java/io/IOException
-    //   509	525	1936	java/io/IOException
-    //   589	597	1936	java/io/IOException
-    //   645	667	1936	java/io/IOException
-    //   730	746	1936	java/io/IOException
-    //   810	818	1936	java/io/IOException
-    //   866	873	1936	java/io/IOException
-    //   936	952	1936	java/io/IOException
-    //   1016	1024	1936	java/io/IOException
-    //   1072	1079	1936	java/io/IOException
-    //   1158	1174	1936	java/io/IOException
-    //   1222	1231	1936	java/io/IOException
-    //   1283	1291	1936	java/io/IOException
-    //   1339	1356	1936	java/io/IOException
-    //   1420	1428	1936	java/io/IOException
-    //   1476	1493	1936	java/io/IOException
-    //   1576	1587	1936	java/io/IOException
-    //   1655	1663	1936	java/io/IOException
-    //   1711	1733	1936	java/io/IOException
-    //   52	69	1959	org/xml/sax/SAXException
-    //   139	149	1985	org/xml/sax/SAXException
-    //   197	206	1985	org/xml/sax/SAXException
-    //   254	265	1985	org/xml/sax/SAXException
-    //   313	322	1985	org/xml/sax/SAXException
-    //   392	403	1985	org/xml/sax/SAXException
-    //   451	461	1985	org/xml/sax/SAXException
-    //   509	525	1985	org/xml/sax/SAXException
-    //   589	597	1985	org/xml/sax/SAXException
-    //   645	667	1985	org/xml/sax/SAXException
-    //   730	746	1985	org/xml/sax/SAXException
-    //   810	818	1985	org/xml/sax/SAXException
-    //   866	873	1985	org/xml/sax/SAXException
-    //   936	952	1985	org/xml/sax/SAXException
-    //   1016	1024	1985	org/xml/sax/SAXException
-    //   1072	1079	1985	org/xml/sax/SAXException
-    //   1158	1174	1985	org/xml/sax/SAXException
-    //   1222	1231	1985	org/xml/sax/SAXException
-    //   1283	1291	1985	org/xml/sax/SAXException
-    //   1339	1356	1985	org/xml/sax/SAXException
-    //   1420	1428	1985	org/xml/sax/SAXException
-    //   1476	1493	1985	org/xml/sax/SAXException
-    //   1576	1587	1985	org/xml/sax/SAXException
-    //   1655	1663	1985	org/xml/sax/SAXException
-    //   1711	1733	1985	org/xml/sax/SAXException
-    //   52	69	2008	javax/xml/parsers/ParserConfigurationException
-    //   139	149	2034	javax/xml/parsers/ParserConfigurationException
-    //   197	206	2034	javax/xml/parsers/ParserConfigurationException
-    //   254	265	2034	javax/xml/parsers/ParserConfigurationException
-    //   313	322	2034	javax/xml/parsers/ParserConfigurationException
-    //   392	403	2034	javax/xml/parsers/ParserConfigurationException
-    //   451	461	2034	javax/xml/parsers/ParserConfigurationException
-    //   509	525	2034	javax/xml/parsers/ParserConfigurationException
-    //   589	597	2034	javax/xml/parsers/ParserConfigurationException
-    //   645	667	2034	javax/xml/parsers/ParserConfigurationException
-    //   730	746	2034	javax/xml/parsers/ParserConfigurationException
-    //   810	818	2034	javax/xml/parsers/ParserConfigurationException
-    //   866	873	2034	javax/xml/parsers/ParserConfigurationException
-    //   936	952	2034	javax/xml/parsers/ParserConfigurationException
-    //   1016	1024	2034	javax/xml/parsers/ParserConfigurationException
-    //   1072	1079	2034	javax/xml/parsers/ParserConfigurationException
-    //   1158	1174	2034	javax/xml/parsers/ParserConfigurationException
-    //   1222	1231	2034	javax/xml/parsers/ParserConfigurationException
-    //   1283	1291	2034	javax/xml/parsers/ParserConfigurationException
-    //   1339	1356	2034	javax/xml/parsers/ParserConfigurationException
-    //   1420	1428	2034	javax/xml/parsers/ParserConfigurationException
-    //   1476	1493	2034	javax/xml/parsers/ParserConfigurationException
-    //   1576	1587	2034	javax/xml/parsers/ParserConfigurationException
-    //   1655	1663	2034	javax/xml/parsers/ParserConfigurationException
-    //   1711	1733	2034	javax/xml/parsers/ParserConfigurationException
+    //   182	193	769	java/io/IOException
+    //   205	215	769	java/io/IOException
+    //   227	242	769	java/io/IOException
+    //   275	283	769	java/io/IOException
+    //   295	317	769	java/io/IOException
+    //   344	360	769	java/io/IOException
+    //   388	396	769	java/io/IOException
+    //   408	415	769	java/io/IOException
+    //   442	458	769	java/io/IOException
+    //   486	494	769	java/io/IOException
+    //   506	513	769	java/io/IOException
+    //   556	572	769	java/io/IOException
+    //   584	593	769	java/io/IOException
+    //   609	617	769	java/io/IOException
+    //   629	646	769	java/io/IOException
+    //   674	682	769	java/io/IOException
+    //   694	711	769	java/io/IOException
+    //   182	193	782	org/xml/sax/SAXException
+    //   205	215	782	org/xml/sax/SAXException
+    //   227	242	782	org/xml/sax/SAXException
+    //   275	283	782	org/xml/sax/SAXException
+    //   295	317	782	org/xml/sax/SAXException
+    //   344	360	782	org/xml/sax/SAXException
+    //   388	396	782	org/xml/sax/SAXException
+    //   408	415	782	org/xml/sax/SAXException
+    //   442	458	782	org/xml/sax/SAXException
+    //   486	494	782	org/xml/sax/SAXException
+    //   506	513	782	org/xml/sax/SAXException
+    //   556	572	782	org/xml/sax/SAXException
+    //   584	593	782	org/xml/sax/SAXException
+    //   609	617	782	org/xml/sax/SAXException
+    //   629	646	782	org/xml/sax/SAXException
+    //   674	682	782	org/xml/sax/SAXException
+    //   694	711	782	org/xml/sax/SAXException
+    //   182	193	795	javax/xml/parsers/ParserConfigurationException
+    //   205	215	795	javax/xml/parsers/ParserConfigurationException
+    //   227	242	795	javax/xml/parsers/ParserConfigurationException
+    //   275	283	795	javax/xml/parsers/ParserConfigurationException
+    //   295	317	795	javax/xml/parsers/ParserConfigurationException
+    //   344	360	795	javax/xml/parsers/ParserConfigurationException
+    //   388	396	795	javax/xml/parsers/ParserConfigurationException
+    //   408	415	795	javax/xml/parsers/ParserConfigurationException
+    //   442	458	795	javax/xml/parsers/ParserConfigurationException
+    //   486	494	795	javax/xml/parsers/ParserConfigurationException
+    //   506	513	795	javax/xml/parsers/ParserConfigurationException
+    //   556	572	795	javax/xml/parsers/ParserConfigurationException
+    //   584	593	795	javax/xml/parsers/ParserConfigurationException
+    //   609	617	795	javax/xml/parsers/ParserConfigurationException
+    //   629	646	795	javax/xml/parsers/ParserConfigurationException
+    //   674	682	795	javax/xml/parsers/ParserConfigurationException
+    //   694	711	795	javax/xml/parsers/ParserConfigurationException
+    //   117	156	932	java/io/IOException
+    //   828	839	932	java/io/IOException
+    //   859	889	932	java/io/IOException
+    //   117	156	937	org/xml/sax/SAXException
+    //   828	839	937	org/xml/sax/SAXException
+    //   859	889	937	org/xml/sax/SAXException
+    //   117	156	942	javax/xml/parsers/ParserConfigurationException
+    //   828	839	942	javax/xml/parsers/ParserConfigurationException
+    //   859	889	942	javax/xml/parsers/ParserConfigurationException
+    //   51	68	947	java/io/IOException
+    //   51	68	952	org/xml/sax/SAXException
+    //   51	68	957	javax/xml/parsers/ParserConfigurationException
+    //   5	46	962	java/io/IOException
+    //   5	46	1015	org/xml/sax/SAXException
+    //   5	46	1068	javax/xml/parsers/ParserConfigurationException
   }
   
   public static int b(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return 3;
-    case 1: 
-      return 4;
+      if (paramInt != 3000) {
+        return 3;
+      }
+      return 5;
     }
-    return 5;
+    return 4;
   }
   
   public static void b(String paramString)
   {
     Object localObject = BaseApplicationImpl.getApplication();
-    if (Build.VERSION.SDK_INT > 10) {}
-    for (int i = 4;; i = 0)
-    {
-      localObject = ((BaseApplicationImpl)localObject).getSharedPreferences("mobileQQ", i);
-      paramString = "qfav_unsupport_msg_dialog_flag_" + paramString;
-      if (!((SharedPreferences)localObject).getBoolean(paramString, false)) {
-        ((SharedPreferences)localObject).edit().putBoolean(paramString, true).commit();
-      }
-      return;
+    int i;
+    if (Build.VERSION.SDK_INT > 10) {
+      i = 4;
+    } else {
+      i = 0;
+    }
+    localObject = ((BaseApplicationImpl)localObject).getSharedPreferences("mobileQQ", i);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("qfav_unsupport_msg_dialog_flag_");
+    localStringBuilder.append(paramString);
+    paramString = localStringBuilder.toString();
+    if (!((SharedPreferences)localObject).getBoolean(paramString, false)) {
+      ((SharedPreferences)localObject).edit().putBoolean(paramString, true).commit();
     }
   }
   
   public static boolean b(ChatMessage paramChatMessage)
   {
+    boolean bool2 = false;
     if (paramChatMessage == null) {
       return false;
     }
-    if (((paramChatMessage instanceof MessageForStructing)) && (((MessageForStructing)paramChatMessage).structingMsg != null) && (((MessageForStructing)paramChatMessage).structingMsg.mMsgServiceID == 14)) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    boolean bool1 = bool2;
+    if ((paramChatMessage instanceof MessageForStructing))
+    {
+      paramChatMessage = (MessageForStructing)paramChatMessage;
+      bool1 = bool2;
+      if (paramChatMessage.structingMsg != null)
+      {
+        bool1 = bool2;
+        if (paramChatMessage.structingMsg.mMsgServiceID == 14) {
+          bool1 = true;
+        }
+      }
     }
+    return bool1;
   }
   
   public static byte[] b(QQAppInterface paramQQAppInterface, long paramLong, ChatMessage paramChatMessage, String paramString)
   {
-    Object localObject = null;
-    QfavBuilder localQfavBuilder;
-    if (((paramChatMessage instanceof MessageForTroopFile)) || ((paramChatMessage instanceof MessageForFile)))
-    {
-      localQfavBuilder = new QfavBuilder(3);
-      if (!(paramChatMessage instanceof MessageForFile)) {
-        break label240;
-      }
-      a((MessageForFile)paramChatMessage);
-      if (!paramChatMessage.isMultiMsg) {
-        break label192;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("qqfav", 2, "parcelFileMsg create new entity");
-      }
-      localObject = MultiFavoriteHelper.a(paramQQAppInterface, paramChatMessage);
-      a((FileManagerEntity)localObject);
-      if (localObject == null) {
-        break label221;
-      }
-      localQfavBuilder.a(paramQQAppInterface, null, (FileManagerEntity)localObject, paramChatMessage, true);
+    boolean bool = paramChatMessage instanceof MessageForTroopFile;
+    FileManagerEntity localFileManagerEntity = null;
+    if ((!bool) && (!(paramChatMessage instanceof MessageForFile))) {
+      return null;
     }
-    label192:
-    label588:
-    for (;;)
+    QfavBuilder localQfavBuilder = new QfavBuilder(3);
+    if ((paramChatMessage instanceof MessageForFile))
     {
-      paramQQAppInterface = new ContentValues();
-      localObject = (ContentValues)localQfavBuilder.a().getExtras().getParcelable("fileContents");
-      if (localObject != null) {
-        paramQQAppInterface.put("fileContents", a((ContentValues)localObject));
-      }
-      localObject = MsgProxyUtils.a(paramChatMessage);
-      long l = paramChatMessage.time;
-      paramQQAppInterface.put("sUin", (String)localObject);
-      paramQQAppInterface.put("time", Long.valueOf(l));
-      paramQQAppInterface.put("entityNickName", paramString);
-      localObject = a(paramLong, 3L, paramQQAppInterface);
-      return localObject;
-      if (QLog.isColorLevel()) {
-        QLog.d("qqfav", 2, "parcelFileMsg get entity from db");
-      }
-      localObject = FileManagerUtil.a(paramQQAppInterface, (MessageForFile)paramChatMessage);
-      break;
-      label221:
-      label490:
-      if (QLog.isColorLevel())
+      localObject = (MessageForFile)paramChatMessage;
+      a((MessageForFile)localObject);
+      if (paramChatMessage.isMultiMsg)
       {
+        if (QLog.isColorLevel()) {
+          QLog.d("qqfav", 2, "parcelFileMsg create new entity");
+        }
+        localObject = MultiFavoriteHelper.a(paramQQAppInterface, paramChatMessage);
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("qqfav", 2, "parcelFileMsg get entity from db");
+        }
+        localObject = FileManagerUtil.a(paramQQAppInterface, (MessageForFile)localObject);
+      }
+      a((FileManagerEntity)localObject);
+      if (localObject != null) {
+        localQfavBuilder.a(paramQQAppInterface, null, (FileManagerEntity)localObject, paramChatMessage, true);
+      } else if (QLog.isColorLevel()) {
         QLog.d("qqfav", 2, "entity == null");
-        continue;
-        label240:
-        if ((paramChatMessage instanceof MessageForTroopFile))
+      }
+    }
+    else if (bool)
+    {
+      MessageForTroopFile localMessageForTroopFile = (MessageForTroopFile)paramChatMessage;
+      a(localMessageForTroopFile);
+      if (paramChatMessage.isMultiMsg)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("qqfav", 2, "parcelFileMsg, isMultiMsg T, create new entity");
+        }
+        localObject = MultiFavoriteHelper.a(paramQQAppInterface, paramChatMessage);
+      }
+      for (;;)
+      {
+        break;
+        if (QLog.isColorLevel()) {
+          QLog.d("qqfav", 2, "parcelFileMsg, isMultiMsg T, find in db");
+        }
+        localObject = TroopFileUtils.a(paramQQAppInterface, localMessageForTroopFile);
+        if (localObject != null)
         {
-          MessageForTroopFile localMessageForTroopFile = (MessageForTroopFile)paramChatMessage;
-          a(localMessageForTroopFile);
-          if (paramChatMessage.isMultiMsg)
+          localFileManagerEntity = MultiFavoriteHelper.a((TroopFileStatusInfo)localObject);
+          localObject = TroopFileManager.a(paramQQAppInterface, ((TroopFileStatusInfo)localObject).b);
+          if ((localObject != null) && (localFileManagerEntity != null) && (!TextUtils.isEmpty(localFileManagerEntity.strTroopFilePath)))
           {
-            if (QLog.isColorLevel()) {
-              QLog.d("qqfav", 2, "parcelFileMsg, isMultiMsg T, create new entity");
-            }
-            localObject = MultiFavoriteHelper.a(paramQQAppInterface, paramChatMessage);
-          }
-          for (;;)
-          {
-            a((FileManagerEntity)localObject);
-            MultiFavoriteHelper.a((FileManagerEntity)localObject, localMessageForTroopFile);
-            if (localObject == null) {
-              break label490;
-            }
-            localQfavBuilder.a(paramQQAppInterface, null, (FileManagerEntity)localObject, localMessageForTroopFile, true);
-            break;
-            if (QLog.isColorLevel()) {
-              QLog.d("qqfav", 2, "parcelFileMsg, isMultiMsg T, find in db");
-            }
-            localObject = TroopFileUtils.a(paramQQAppInterface, localMessageForTroopFile);
-            if (localObject != null)
+            TroopFileInfo localTroopFileInfo = ((TroopFileManager)localObject).a(localFileManagerEntity.strTroopFilePath);
+            localObject = localFileManagerEntity;
+            if (localTroopFileInfo != null)
             {
-              FileManagerEntity localFileManagerEntity = MultiFavoriteHelper.a((TroopFileStatusInfo)localObject);
-              localObject = TroopFileManager.a(paramQQAppInterface, ((TroopFileStatusInfo)localObject).b);
-              if ((localObject != null) && (localFileManagerEntity != null) && (!TextUtils.isEmpty(localFileManagerEntity.strTroopFilePath)))
-              {
-                TroopFileInfo localTroopFileInfo = ((TroopFileManager)localObject).a(localFileManagerEntity.strTroopFilePath);
-                localObject = localFileManagerEntity;
-                if (localTroopFileInfo != null)
-                {
-                  localFileManagerEntity.lastTime = localTroopFileInfo.c;
-                  localFileManagerEntity.selfUin = String.valueOf(localTroopFileInfo.b);
-                  localObject = localFileManagerEntity;
-                }
-              }
-              else
-              {
-                localObject = localFileManagerEntity;
-                if (QLog.isColorLevel())
-                {
-                  QLog.d("qqfav", 2, "troopFileManager != null or fileManagerEntity4Favorite.strTroopFilePath == null");
-                  localObject = localFileManagerEntity;
-                }
-              }
-            }
-            else
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("qqfav", 2, "info == null");
-              }
-              localObject = null;
+              localFileManagerEntity.lastTime = localTroopFileInfo.c;
+              localFileManagerEntity.selfUin = String.valueOf(localTroopFileInfo.b);
+              localObject = localFileManagerEntity;
             }
           }
-          if (QLog.isColorLevel()) {
-            QLog.d("qqfav", 2, "fileManagerEntity4Favorite == null");
+          else
+          {
+            localObject = localFileManagerEntity;
+            if (QLog.isColorLevel())
+            {
+              QLog.d("qqfav", 2, "troopFileManager != null or fileManagerEntity4Favorite.strTroopFilePath == null");
+              localObject = localFileManagerEntity;
+            }
           }
         }
-        else if ((paramChatMessage instanceof MessageForDLFile))
+        else
         {
-          int i = ((MessageForDLFile)paramChatMessage).deviceType;
-          l = ((MessageForDLFile)paramChatMessage).associatedId;
-          localObject = paramQQAppInterface.getMessageFacade().a(i).a(l);
-          if (localObject != null) {}
-          for (localObject = ((DataLineMsgRecord)localObject).path;; localObject = "")
+          localObject = localFileManagerEntity;
+          if (QLog.isColorLevel())
           {
-            if (FileUtils.b((String)localObject)) {
-              break label588;
-            }
-            localQfavBuilder.a(paramQQAppInterface, null, (String)localObject);
-            break;
+            QLog.d("qqfav", 2, "info == null");
+            localObject = localFileManagerEntity;
           }
         }
       }
+      a((FileManagerEntity)localObject);
+      MultiFavoriteHelper.a((FileManagerEntity)localObject, localMessageForTroopFile);
+      if (localObject != null) {
+        localQfavBuilder.a(paramQQAppInterface, null, (FileManagerEntity)localObject, localMessageForTroopFile, true);
+      } else if (QLog.isColorLevel()) {
+        QLog.d("qqfav", 2, "fileManagerEntity4Favorite == null");
+      }
     }
+    else if ((paramChatMessage instanceof MessageForDLFile))
+    {
+      localObject = (MessageForDLFile)paramChatMessage;
+      int i = ((MessageForDLFile)localObject).deviceType;
+      l = ((MessageForDLFile)localObject).associatedId;
+      localObject = paramQQAppInterface.getMessageFacade().a(i).a(l);
+      if (localObject != null) {
+        localObject = ((DataLineMsgRecord)localObject).path;
+      } else {
+        localObject = "";
+      }
+      if (!FileUtils.fileExistsAndNotEmpty((String)localObject)) {
+        localQfavBuilder.a(paramQQAppInterface, null, (String)localObject);
+      }
+    }
+    paramQQAppInterface = new ContentValues();
+    Object localObject = (ContentValues)localQfavBuilder.a().getExtras().getParcelable("fileContents");
+    if (localObject != null) {
+      paramQQAppInterface.put("fileContents", a((ContentValues)localObject));
+    }
+    localObject = MsgProxyUtils.a(paramChatMessage);
+    long l = paramChatMessage.time;
+    paramQQAppInterface.put("sUin", (String)localObject);
+    paramQQAppInterface.put("time", Long.valueOf(l));
+    paramQQAppInterface.put("entityNickName", paramString);
+    return a(paramLong, 3L, paramQQAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqfav.QfavUtil
  * JD-Core Version:    0.7.0.1
  */

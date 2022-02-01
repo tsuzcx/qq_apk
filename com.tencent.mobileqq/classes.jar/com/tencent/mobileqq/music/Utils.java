@@ -9,34 +9,40 @@ public class Utils
   
   public static boolean a()
   {
-    boolean bool2 = false;
     String str = Build.MODEL;
-    String[] arrayOfString = a;
-    int j = arrayOfString.length;
+    Object localObject = a;
+    int j = localObject.length;
+    boolean bool2 = false;
     int i = 0;
+    boolean bool1;
     for (;;)
     {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (arrayOfString[i].contains(str)) {
-          bool1 = true;
-        }
+      bool1 = bool2;
+      if (i >= j) {
+        break;
       }
-      else
+      if (localObject[i].contains(str))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQPlayerService", 2, "isPhoneInWhiteList ： phone = " + str + ", result=" + bool1);
-        }
-        return bool1;
+        bool1 = true;
+        break;
       }
       i += 1;
     }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isPhoneInWhiteList ： phone = ");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(", result=");
+      ((StringBuilder)localObject).append(bool1);
+      QLog.d("QQPlayerService", 2, ((StringBuilder)localObject).toString());
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.music.Utils
  * JD-Core Version:    0.7.0.1
  */

@@ -25,14 +25,19 @@ public final class g
     DataInputStream localDataInputStream = new DataInputStream(new BufferedInputStream(new FileInputStream(this.f)));
     localDataInputStream.skip(this.d.f);
     int i = 0;
-    while ((localDataInputStream.available() >= 4) && (i == 0)) {
-      switch (localDataInputStream.readInt())
+    while ((localDataInputStream.available() >= 4) && (i == 0))
+    {
+      int j = localDataInputStream.readInt();
+      if (j != 1347092738)
       {
-      default: 
-        break;
-      case 1347092738: 
+        if (j == 1347093766) {
+          i = 1;
+        }
+      }
+      else
+      {
         b localb = new b();
-        int j = localDataInputStream.readShort();
+        j = localDataInputStream.readShort();
         localb.a = ((short)(j >> 8 & 0xFF | (j & 0xFF) << 8));
         j = localDataInputStream.readShort();
         localb.b = ((short)(j >> 8 & 0xFF | (j & 0xFF) << 8));
@@ -71,9 +76,6 @@ public final class g
           this.c.add(str);
         }
         this.b.put(str, localb);
-        break;
-      case 1347093766: 
-        i = 1;
       }
     }
     localDataInputStream.close();
@@ -81,34 +83,34 @@ public final class g
   
   private void a(RandomAccessFile paramRandomAccessFile)
   {
-    long l = 1024L;
-    if (1024L > this.e) {
-      l = this.e;
+    long l = this.e;
+    if (1024L <= l) {
+      l = 1024L;
     }
     byte[] arrayOfByte = new byte[1024];
     paramRandomAccessFile.skipBytes((int)(this.e - l));
-    paramRandomAccessFile.read(arrayOfByte, 0, (int)l);
+    int j = (int)l;
     int i = 0;
-    for (;;)
+    paramRandomAccessFile.read(arrayOfByte, 0, j);
+    while (i < l - 4L)
     {
-      if (i < l - 4L)
+      int k = arrayOfByte[i];
+      j = i + 1;
+      if ((k << 24) + (arrayOfByte[j] << 16) + (arrayOfByte[(i + 2)] << 8) + arrayOfByte[(i + 3)] == 1347093766)
       {
-        if ((arrayOfByte[i] << 24) + (arrayOfByte[(i + 1)] << 16) + (arrayOfByte[(i + 2)] << 8) + arrayOfByte[(i + 3)] == 1347093766) {}
+        i += 4;
         try
         {
-          paramRandomAccessFile = new DataInputStream(new ByteArrayInputStream(arrayOfByte, i + 4, (int)(l - (i + 4))));
+          paramRandomAccessFile = new DataInputStream(new ByteArrayInputStream(arrayOfByte, i, (int)(l - i)));
           this.d.a(paramRandomAccessFile);
           paramRandomAccessFile.close();
-          i += 1;
         }
         catch (IOException paramRandomAccessFile)
         {
-          for (;;)
-          {
-            paramRandomAccessFile.printStackTrace();
-          }
+          paramRandomAccessFile.printStackTrace();
         }
       }
+      i = j;
     }
   }
   
@@ -116,14 +118,15 @@ public final class g
   {
     DataInputStream localDataInputStream = new DataInputStream(new BufferedInputStream(new FileInputStream(this.f)));
     int i = 0;
-    if ((localDataInputStream.available() >= 4) && (i == 0))
-    {
+    while ((localDataInputStream.available() >= 4) && (i == 0)) {
       switch (localDataInputStream.readInt())
       {
-      }
-      for (;;)
-      {
+      default: 
         break;
+      case 1347094280: 
+        localDataInputStream.skipBytes(12);
+        break;
+      case 1347093252: 
         f localf = new f();
         localDataInputStream.readShort();
         localDataInputStream.readShort();
@@ -153,10 +156,8 @@ public final class g
         localDataInputStream.skipBytes(localf.a);
         this.a.put(str, localf);
         break;
-        localDataInputStream.skipBytes(12);
-        break;
-        i = 1;
-        break;
+      case 1347092738: 
+      case 1347093766: 
         i = 1;
       }
     }
@@ -179,7 +180,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.apkupdate.a.g
  * JD-Core Version:    0.7.0.1
  */

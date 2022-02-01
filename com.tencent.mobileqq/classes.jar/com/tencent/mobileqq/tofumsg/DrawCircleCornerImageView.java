@@ -30,7 +30,7 @@ public class DrawCircleCornerImageView
   }
   
   /* Error */
-  public void a(android.graphics.Canvas paramCanvas)
+  protected void b(android.graphics.Canvas paramCanvas)
   {
     // Byte code:
     //   0: aload_0
@@ -62,32 +62,30 @@ public class DrawCircleCornerImageView
     //   50: aload_0
     //   51: getfield 26	com/tencent/mobileqq/tofumsg/DrawCircleCornerImageView:jdField_a_of_type_AndroidGraphicsPaint	Landroid/graphics/Paint;
     //   54: invokevirtual 53	android/graphics/Canvas:drawCircle	(FFFLandroid/graphics/Paint;)V
-    //   57: aload_1
-    //   58: iload_2
-    //   59: invokevirtual 56	android/graphics/Canvas:restoreToCount	(I)V
-    //   62: return
-    //   63: astore_3
-    //   64: aload_1
-    //   65: iload_2
-    //   66: invokevirtual 56	android/graphics/Canvas:restoreToCount	(I)V
-    //   69: return
-    //   70: astore_3
-    //   71: aload_1
-    //   72: iload_2
-    //   73: invokevirtual 56	android/graphics/Canvas:restoreToCount	(I)V
-    //   76: aload_3
-    //   77: athrow
+    //   57: goto +11 -> 68
+    //   60: astore_3
+    //   61: aload_1
+    //   62: iload_2
+    //   63: invokevirtual 56	android/graphics/Canvas:restoreToCount	(I)V
+    //   66: aload_3
+    //   67: athrow
+    //   68: aload_1
+    //   69: iload_2
+    //   70: invokevirtual 56	android/graphics/Canvas:restoreToCount	(I)V
+    //   73: return
+    //   74: astore_3
+    //   75: goto -7 -> 68
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	78	0	this	DrawCircleCornerImageView
     //   0	78	1	paramCanvas	android.graphics.Canvas
-    //   33	40	2	i	int
-    //   63	1	3	localException	java.lang.Exception
-    //   70	7	3	localObject	java.lang.Object
+    //   33	37	2	i	int
+    //   60	7	3	localObject	java.lang.Object
+    //   74	1	3	localException	java.lang.Exception
     // Exception table:
     //   from	to	target	type
-    //   34	57	63	java/lang/Exception
-    //   34	57	70	finally
+    //   34	57	60	finally
+    //   34	57	74	java/lang/Exception
   }
   
   public void setCircle(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -96,14 +94,15 @@ public class DrawCircleCornerImageView
     this.b = paramInt2;
     this.c = paramInt4;
     this.d = paramInt3;
-    if (this.jdField_a_of_type_AndroidGraphicsPaint != null) {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt4);
+    Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
+    if (localPaint != null) {
+      localPaint.setColor(paramInt4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tofumsg.DrawCircleCornerImageView
  * JD-Core Version:    0.7.0.1
  */

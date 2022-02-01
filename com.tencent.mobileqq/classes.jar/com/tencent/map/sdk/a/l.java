@@ -33,20 +33,20 @@ public final class l
   
   private void a(int paramInt)
   {
-    int i;
-    if (this.a.remaining() < paramInt) {
-      i = this.a.capacity();
-    }
-    try
+    if (this.a.remaining() < paramInt)
     {
-      ByteBuffer localByteBuffer = ByteBuffer.allocate((i + paramInt) * 2);
-      localByteBuffer.put(this.a.array(), 0, this.a.position());
-      this.a = localByteBuffer;
-      return;
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      throw localIllegalArgumentException;
+      int i = this.a.capacity();
+      try
+      {
+        ByteBuffer localByteBuffer = ByteBuffer.allocate((i + paramInt) * 2);
+        localByteBuffer.put(this.a.array(), 0, this.a.position());
+        this.a = localByteBuffer;
+        return;
+      }
+      catch (IllegalArgumentException localIllegalArgumentException)
+      {
+        throw localIllegalArgumentException;
+      }
     }
   }
   
@@ -153,7 +153,7 @@ public final class l
     byte b1;
     if (paramInt < 15)
     {
-      b1 = (byte)(paramInt << 4 | paramByte);
+      b1 = (byte)(paramByte | paramInt << 4);
       this.a.put(b1);
       return;
     }
@@ -327,7 +327,9 @@ public final class l
       a((Collection)paramObject, paramInt);
       return;
     }
-    throw new j("write object error: unsupport type. " + paramObject.getClass());
+    StringBuilder localStringBuilder = new StringBuilder("write object error: unsupport type. ");
+    localStringBuilder.append(paramObject.getClass());
+    throw new j(localStringBuilder.toString());
   }
   
   public final void a(String paramString, int paramInt)
@@ -339,14 +341,10 @@ public final class l
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      for (;;)
-      {
-        paramString = paramString.getBytes();
-      }
-      b((byte)6, paramInt);
-      this.a.put((byte)paramString.length);
-      this.a.put(paramString);
+      label14:
+      break label14;
     }
+    paramString = paramString.getBytes();
     a(paramString.length + 10);
     if (paramString.length > 255)
     {
@@ -355,19 +353,23 @@ public final class l
       this.a.put(paramString);
       return;
     }
+    b((byte)6, paramInt);
+    this.a.put((byte)paramString.length);
+    this.a.put(paramString);
   }
   
   public final <T> void a(Collection<T> paramCollection, int paramInt)
   {
     a(8);
     b((byte)9, paramInt);
-    if (paramCollection == null) {}
-    for (paramInt = 0;; paramInt = paramCollection.size())
+    if (paramCollection == null) {
+      paramInt = 0;
+    } else {
+      paramInt = paramCollection.size();
+    }
+    a(paramInt, 0);
+    if (paramCollection != null)
     {
-      a(paramInt, 0);
-      if (paramCollection == null) {
-        break;
-      }
       paramCollection = paramCollection.iterator();
       while (paramCollection.hasNext()) {
         a(paramCollection.next(), 0);
@@ -379,13 +381,14 @@ public final class l
   {
     a(8);
     b((byte)8, paramInt);
-    if (paramMap == null) {}
-    for (paramInt = 0;; paramInt = paramMap.size())
+    if (paramMap == null) {
+      paramInt = 0;
+    } else {
+      paramInt = paramMap.size();
+    }
+    a(paramInt, 0);
+    if (paramMap != null)
     {
-      a(paramInt, 0);
-      if (paramMap == null) {
-        break;
-      }
       paramMap = paramMap.entrySet().iterator();
       while (paramMap.hasNext())
       {
@@ -410,12 +413,7 @@ public final class l
   
   public final void a(boolean paramBoolean, int paramInt)
   {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      a((byte)i, paramInt);
-      return;
-    }
+    a((byte)paramBoolean, paramInt);
   }
   
   public final void a(byte[] paramArrayOfByte, int paramInt)
@@ -436,7 +434,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.l
  * JD-Core Version:    0.7.0.1
  */

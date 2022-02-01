@@ -23,28 +23,34 @@ public class WSExpDataModule
     WsBeaconReportPresenter.a().a(paramLong, paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest, "", false);
     if (!paramWeishiTask.a())
     {
-      WSLog.d("WSExpDataModule", "[WSExpDataModule.java][handleOnSubThread] failCode:" + paramWeishiTask.jdField_a_of_type_Int + ", failMsg:" + paramWeishiTask.jdField_a_of_type_JavaLangString);
+      paramString = new StringBuilder();
+      paramString.append("[WSExpDataModule.java][handleOnSubThread] failCode:");
+      paramString.append(paramWeishiTask.jdField_a_of_type_Int);
+      paramString.append(", failMsg:");
+      paramString.append(paramWeishiTask.jdField_a_of_type_JavaLangString);
+      WSLog.d("WSExpDataModule", paramString.toString());
       WsBeaconReportPresenter.a().a(paramLong, paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest, paramWeishiTask.jdField_a_of_type_Int, paramWeishiTask.jdField_a_of_type_JavaLangString);
       if (paramIGetExperimentListener != null) {
         paramIGetExperimentListener.a(paramWeishiTask.jdField_a_of_type_Int, paramWeishiTask.jdField_a_of_type_JavaLangString);
       }
-    }
-    do
-    {
-      do
-      {
-        return;
-        if ((paramWeishiTask.jdField_a_of_type_JavaLangObject instanceof stGetAllABTestPolicyRsp)) {
-          break;
-        }
-        WSLog.d("WSExpDataModule", "[WSExpDataModule.java][handleOnSubThread] task.mResultBean instanceof stGetAllABTestPolicyRsp: false! task.mResultBean:" + paramWeishiTask.jdField_a_of_type_JavaLangObject);
-        WsBeaconReportPresenter.a().a(paramLong, paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest, -1, "数据无法解析或为空");
-      } while (paramIGetExperimentListener == null);
-      paramIGetExperimentListener.a(-1, "数据无法解析或为空");
       return;
-      paramWeishiTask = (stGetAllABTestPolicyRsp)paramWeishiTask.jdField_a_of_type_JavaLangObject;
-    } while (paramIGetExperimentListener == null);
-    paramIGetExperimentListener.a(new WSExpPolicyEntities(paramString, paramWeishiTask));
+    }
+    if (!(paramWeishiTask.jdField_a_of_type_JavaLangObject instanceof stGetAllABTestPolicyRsp))
+    {
+      paramString = new StringBuilder();
+      paramString.append("[WSExpDataModule.java][handleOnSubThread] task.mResultBean instanceof stGetAllABTestPolicyRsp: false! task.mResultBean:");
+      paramString.append(paramWeishiTask.jdField_a_of_type_JavaLangObject);
+      WSLog.d("WSExpDataModule", paramString.toString());
+      WsBeaconReportPresenter.a().a(paramLong, paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest, -1, "数据无法解析或为空");
+      if (paramIGetExperimentListener != null) {
+        paramIGetExperimentListener.a(-1, "数据无法解析或为空");
+      }
+      return;
+    }
+    paramWeishiTask = (stGetAllABTestPolicyRsp)paramWeishiTask.jdField_a_of_type_JavaLangObject;
+    if (paramIGetExperimentListener != null) {
+      paramIGetExperimentListener.a(new WSExpPolicyEntities(paramString, paramWeishiTask));
+    }
   }
   
   public void a(String paramString, IGetExperimentListener paramIGetExperimentListener)
@@ -54,7 +60,10 @@ public class WSExpDataModule
   
   public void b(String paramString, IGetExperimentListener paramIGetExperimentListener)
   {
-    WSLog.e("WSExpDataModule", "[WSExpDataModule.java][fetchData] uin:" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSExpDataModule.java][fetchData] uin:");
+    localStringBuilder.append(paramString);
+    WSLog.e("WSExpDataModule", localStringBuilder.toString());
     paramIGetExperimentListener = new WSExpDataModule.2(this, paramString, paramIGetExperimentListener, SystemClock.uptimeMillis());
     paramString = new WeishiTask(new WSGetABTestPolicyRequest(paramString), null, paramIGetExperimentListener, 4016);
     WeishiBusinessLooper.a().a(paramString);
@@ -62,7 +71,7 @@ public class WSExpDataModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.config.experiment.WSExpDataModule
  * JD-Core Version:    0.7.0.1
  */

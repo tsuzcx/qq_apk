@@ -9,12 +9,14 @@ class ComponentCenter$9
   
   public void onTraversalComponent(IComponent paramIComponent)
   {
-    ComponentCenter.access$002(this.this$0, ComponentCenter.access$000(this.this$0) | paramIComponent.onBackPressed());
+    ComponentCenter localComponentCenter = this.this$0;
+    boolean bool = ComponentCenter.access$000(localComponentCenter);
+    ComponentCenter.access$002(localComponentCenter, paramIComponent.onBackPressed() | bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.framework.impl.ComponentCenter.9
  * JD-Core Version:    0.7.0.1
  */

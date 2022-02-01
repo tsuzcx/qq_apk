@@ -24,7 +24,11 @@ public class jh
   
   private jh(lf paramlf)
   {
-    this.e = (paramlf.b().getFilesDir().getAbsolutePath() + File.separator + "stData");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramlf.b().getFilesDir().getAbsolutePath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("stData");
+    this.e = localStringBuilder.toString();
     om.a(this.e);
     this.f = "";
     this.g = "";
@@ -38,15 +42,16 @@ public class jh
   
   public static jh a(lf paramlf)
   {
-    if (d == null) {}
-    try
-    {
-      if (d == null) {
-        d = new jh(paramlf);
+    if (d == null) {
+      try
+      {
+        if (d == null) {
+          d = new jh(paramlf);
+        }
       }
-      return d;
+      finally {}
     }
-    finally {}
+    return d;
   }
   
   /* Error */
@@ -59,87 +64,94 @@ public class jh
     //   3: invokestatic 132	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   6: istore_2
     //   7: iload_2
-    //   8: ifne +41 -> 49
-    //   11: new 134	java/io/FileOutputStream
-    //   14: dup
-    //   15: aload_0
-    //   16: getfield 79	com/tencent/map/sdk/a/jh:e	Ljava/lang/String;
-    //   19: invokespecial 136	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   22: astore 4
-    //   24: aload 4
-    //   26: astore_3
-    //   27: aload 4
-    //   29: aload_1
-    //   30: invokevirtual 142	java/lang/String:getBytes	()[B
-    //   33: invokevirtual 146	java/io/FileOutputStream:write	([B)V
-    //   36: aload 4
-    //   38: astore_3
-    //   39: aload 4
-    //   41: invokevirtual 149	java/io/FileOutputStream:flush	()V
-    //   44: aload 4
-    //   46: invokestatic 154	com/tencent/map/sdk/a/on:a	(Ljava/io/Closeable;)V
-    //   49: aload_0
-    //   50: monitorexit
-    //   51: return
-    //   52: astore 5
-    //   54: aconst_null
-    //   55: astore_1
-    //   56: aload_1
-    //   57: astore_3
-    //   58: aload 5
-    //   60: invokestatic 160	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   63: invokestatic 163	com/tencent/map/sdk/a/or:a	(Ljava/lang/String;)V
-    //   66: aload_1
-    //   67: invokestatic 154	com/tencent/map/sdk/a/on:a	(Ljava/io/Closeable;)V
-    //   70: goto -21 -> 49
-    //   73: astore_1
-    //   74: aload_0
-    //   75: monitorexit
-    //   76: aload_1
-    //   77: athrow
-    //   78: astore_1
-    //   79: aconst_null
-    //   80: astore_3
-    //   81: aload_3
-    //   82: invokestatic 154	com/tencent/map/sdk/a/on:a	(Ljava/io/Closeable;)V
-    //   85: aload_1
-    //   86: athrow
-    //   87: astore_1
-    //   88: goto -7 -> 81
-    //   91: astore 5
-    //   93: aload 4
-    //   95: astore_1
-    //   96: goto -40 -> 56
+    //   8: ifne +92 -> 100
+    //   11: aconst_null
+    //   12: astore 5
+    //   14: aconst_null
+    //   15: astore_3
+    //   16: new 134	java/io/FileOutputStream
+    //   19: dup
+    //   20: aload_0
+    //   21: getfield 79	com/tencent/map/sdk/a/jh:e	Ljava/lang/String;
+    //   24: invokespecial 136	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   27: astore 4
+    //   29: aload 4
+    //   31: aload_1
+    //   32: invokevirtual 142	java/lang/String:getBytes	()[B
+    //   35: invokevirtual 146	java/io/FileOutputStream:write	([B)V
+    //   38: aload 4
+    //   40: invokevirtual 149	java/io/FileOutputStream:flush	()V
+    //   43: aload 4
+    //   45: invokestatic 154	com/tencent/map/sdk/a/on:a	(Ljava/io/Closeable;)V
+    //   48: aload_0
+    //   49: monitorexit
+    //   50: return
+    //   51: astore_1
+    //   52: aload 4
+    //   54: astore_3
+    //   55: goto +39 -> 94
+    //   58: astore_3
+    //   59: aload 4
+    //   61: astore_1
+    //   62: aload_3
+    //   63: astore 4
+    //   65: goto +12 -> 77
+    //   68: astore_1
+    //   69: goto +25 -> 94
+    //   72: astore 4
+    //   74: aload 5
+    //   76: astore_1
+    //   77: aload_1
+    //   78: astore_3
+    //   79: aload 4
+    //   81: invokestatic 160	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   84: invokestatic 163	com/tencent/map/sdk/a/or:a	(Ljava/lang/String;)V
+    //   87: aload_1
+    //   88: invokestatic 154	com/tencent/map/sdk/a/on:a	(Ljava/io/Closeable;)V
+    //   91: aload_0
+    //   92: monitorexit
+    //   93: return
+    //   94: aload_3
+    //   95: invokestatic 154	com/tencent/map/sdk/a/on:a	(Ljava/io/Closeable;)V
+    //   98: aload_1
+    //   99: athrow
+    //   100: aload_0
+    //   101: monitorexit
+    //   102: return
+    //   103: astore_1
+    //   104: aload_0
+    //   105: monitorexit
+    //   106: aload_1
+    //   107: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	99	0	this	jh
-    //   0	99	1	paramString	String
+    //   0	108	0	this	jh
+    //   0	108	1	paramString	String
     //   6	2	2	bool	boolean
-    //   26	56	3	localObject	Object
-    //   22	72	4	localFileOutputStream	java.io.FileOutputStream
-    //   52	7	5	localException1	java.lang.Exception
-    //   91	1	5	localException2	java.lang.Exception
+    //   15	40	3	localObject1	Object
+    //   58	5	3	localException1	java.lang.Exception
+    //   78	17	3	str	String
+    //   27	37	4	localObject2	Object
+    //   72	8	4	localException2	java.lang.Exception
+    //   12	63	5	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   11	24	52	java/lang/Exception
-    //   2	7	73	finally
-    //   44	49	73	finally
-    //   66	70	73	finally
-    //   81	87	73	finally
-    //   11	24	78	finally
-    //   27	36	87	finally
-    //   39	44	87	finally
-    //   58	66	87	finally
-    //   27	36	91	java/lang/Exception
-    //   39	44	91	java/lang/Exception
+    //   29	43	51	finally
+    //   29	43	58	java/lang/Exception
+    //   16	29	68	finally
+    //   79	87	68	finally
+    //   16	29	72	java/lang/Exception
+    //   2	7	103	finally
+    //   43	48	103	finally
+    //   87	91	103	finally
+    //   94	100	103	finally
   }
   
   public final JSONArray a(List<jg> paramList)
   {
-    JSONArray localJSONArray;
     try
     {
-      localJSONArray = new JSONArray();
+      JSONArray localJSONArray = new JSONArray();
       if (paramList != null)
       {
         paramList = paramList.iterator();
@@ -155,9 +167,13 @@ public class jh
           }
         }
       }
+      return localJSONArray;
     }
     finally {}
-    return localJSONArray;
+    for (;;)
+    {
+      throw paramList;
+    }
   }
   
   /* Error */
@@ -210,7 +226,7 @@ public class jh
     //   78: invokestatic 218	com/tencent/map/sdk/a/jg:a	(Lorg/json/JSONObject;)Lcom/tencent/map/sdk/a/jg;
     //   81: astore 5
     //   83: aload 5
-    //   85: ifnull +99 -> 184
+    //   85: ifnull +111 -> 196
     //   88: aload_3
     //   89: astore_2
     //   90: aload_0
@@ -218,7 +234,7 @@ public class jh
     //   94: aload 5
     //   96: invokeinterface 222 2 0
     //   101: pop
-    //   102: goto +82 -> 184
+    //   102: goto +94 -> 196
     //   105: aload_3
     //   106: astore_2
     //   107: aload_0
@@ -231,90 +247,98 @@ public class jh
     //   120: monitorexit
     //   121: return
     //   122: astore 4
-    //   124: aconst_null
-    //   125: astore_3
-    //   126: aload_3
+    //   124: goto +13 -> 137
     //   127: astore_2
-    //   128: invokestatic 226	com/tencent/map/sdk/a/or:a	()Z
-    //   131: ifeq +23 -> 154
-    //   134: aload_3
-    //   135: astore_2
-    //   136: invokestatic 226	com/tencent/map/sdk/a/or:a	()Z
-    //   139: ifeq +15 -> 154
-    //   142: aload_3
-    //   143: astore_2
-    //   144: ldc 228
-    //   146: ldc 230
-    //   148: aload 4
-    //   150: invokestatic 234	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    //   153: pop
-    //   154: aload_3
-    //   155: invokestatic 154	com/tencent/map/sdk/a/on:a	(Ljava/io/Closeable;)V
-    //   158: goto -39 -> 119
-    //   161: astore_2
-    //   162: aload_0
-    //   163: monitorexit
-    //   164: aload_2
-    //   165: athrow
-    //   166: astore_3
-    //   167: aconst_null
-    //   168: astore_2
-    //   169: aload_2
-    //   170: invokestatic 154	com/tencent/map/sdk/a/on:a	(Ljava/io/Closeable;)V
-    //   173: aload_3
-    //   174: athrow
+    //   128: aconst_null
+    //   129: astore_3
+    //   130: goto +49 -> 179
+    //   133: astore 4
+    //   135: aconst_null
+    //   136: astore_3
+    //   137: aload_3
+    //   138: astore_2
+    //   139: invokestatic 226	com/tencent/map/sdk/a/or:a	()Z
+    //   142: ifeq +23 -> 165
+    //   145: aload_3
+    //   146: astore_2
+    //   147: invokestatic 226	com/tencent/map/sdk/a/or:a	()Z
+    //   150: ifeq +15 -> 165
+    //   153: aload_3
+    //   154: astore_2
+    //   155: ldc 228
+    //   157: ldc 230
+    //   159: aload 4
+    //   161: invokestatic 234	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   164: pop
+    //   165: aload_3
+    //   166: invokestatic 154	com/tencent/map/sdk/a/on:a	(Ljava/io/Closeable;)V
+    //   169: aload_0
+    //   170: monitorexit
+    //   171: return
+    //   172: astore 4
+    //   174: aload_2
     //   175: astore_3
-    //   176: goto -7 -> 169
-    //   179: astore 4
-    //   181: goto -55 -> 126
-    //   184: iload_1
-    //   185: iconst_1
-    //   186: iadd
-    //   187: istore_1
-    //   188: goto -129 -> 59
+    //   176: aload 4
+    //   178: astore_2
+    //   179: aload_3
+    //   180: invokestatic 154	com/tencent/map/sdk/a/on:a	(Ljava/io/Closeable;)V
+    //   183: aload_2
+    //   184: athrow
+    //   185: astore_2
+    //   186: aload_0
+    //   187: monitorexit
+    //   188: goto +5 -> 193
+    //   191: aload_2
+    //   192: athrow
+    //   193: goto -2 -> 191
+    //   196: iload_1
+    //   197: iconst_1
+    //   198: iadd
+    //   199: istore_1
+    //   200: goto -141 -> 59
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	191	0	this	jh
-    //   58	130	1	i	int
-    //   22	122	2	localBufferedReader1	java.io.BufferedReader
-    //   161	4	2	localObject1	Object
-    //   168	2	2	localCloseable	java.io.Closeable
-    //   20	135	3	localBufferedReader2	java.io.BufferedReader
-    //   166	8	3	localObject2	Object
-    //   175	1	3	localObject3	Object
-    //   27	46	4	localObject4	Object
-    //   122	27	4	localException1	java.lang.Exception
-    //   179	1	4	localException2	java.lang.Exception
+    //   0	203	0	this	jh
+    //   58	142	1	i	int
+    //   22	85	2	localObject1	Object
+    //   127	1	2	localObject2	Object
+    //   138	46	2	localObject3	Object
+    //   185	7	2	localObject4	Object
+    //   20	160	3	localObject5	Object
+    //   27	46	4	localObject6	Object
+    //   122	1	4	localException1	java.lang.Exception
+    //   133	27	4	localException2	java.lang.Exception
+    //   172	5	4	localObject7	Object
     //   81	14	5	localjg	jg
     // Exception table:
     //   from	to	target	type
-    //   2	21	122	java/lang/Exception
-    //   115	119	161	finally
-    //   154	158	161	finally
-    //   169	175	161	finally
-    //   2	21	166	finally
-    //   23	29	175	finally
-    //   36	47	175	finally
-    //   49	57	175	finally
-    //   61	70	175	finally
-    //   72	83	175	finally
-    //   90	102	175	finally
-    //   107	115	175	finally
-    //   128	134	175	finally
-    //   136	142	175	finally
-    //   144	154	175	finally
-    //   23	29	179	java/lang/Exception
-    //   36	47	179	java/lang/Exception
-    //   49	57	179	java/lang/Exception
-    //   61	70	179	java/lang/Exception
-    //   72	83	179	java/lang/Exception
-    //   90	102	179	java/lang/Exception
-    //   107	115	179	java/lang/Exception
+    //   23	29	122	java/lang/Exception
+    //   36	47	122	java/lang/Exception
+    //   49	57	122	java/lang/Exception
+    //   61	70	122	java/lang/Exception
+    //   72	83	122	java/lang/Exception
+    //   90	102	122	java/lang/Exception
+    //   107	115	122	java/lang/Exception
+    //   2	21	127	finally
+    //   2	21	133	java/lang/Exception
+    //   23	29	172	finally
+    //   36	47	172	finally
+    //   49	57	172	finally
+    //   61	70	172	finally
+    //   72	83	172	finally
+    //   90	102	172	finally
+    //   107	115	172	finally
+    //   139	145	172	finally
+    //   147	153	172	finally
+    //   155	165	172	finally
+    //   115	119	185	finally
+    //   165	169	185	finally
+    //   179	185	185	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.jh
  * JD-Core Version:    0.7.0.1
  */

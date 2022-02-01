@@ -18,64 +18,76 @@ class TbsLinuxToolsJni
   
   private void a(Context paramContext)
   {
-    label63:
-    label220:
     try
     {
-      TbsLog.i("TbsLinuxToolsJni", "TbsLinuxToolsJni init mbIsInited is " + b);
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("TbsLinuxToolsJni init mbIsInited is ");
+      ((StringBuilder)localObject1).append(b);
+      TbsLog.i("TbsLinuxToolsJni", ((StringBuilder)localObject1).toString());
       if (b) {
         return;
       }
       b = true;
-    }
-    finally {}
-    try
-    {
-      if (TbsShareManager.isThirdPartyApp(paramContext))
+      try
       {
-        localObject1 = TbsShareManager.a();
-        if (localObject1 != null) {
-          break label292;
-        }
-        localObject1 = TbsShareManager.c(paramContext);
-      }
-    }
-    catch (Throwable paramContext)
-    {
-      paramContext.printStackTrace();
-      a = false;
-      TbsLog.i("TbsLinuxToolsJni", "TbsLinuxToolsJni init error !!! " + paramContext.getMessage() + " ## " + paramContext.getCause());
-      break label220;
-      break label63;
-    }
-    for (Object localObject1 = new File((String)localObject1);; localObject1 = p.a().q(paramContext))
-    {
-      if (localObject1 != null)
-      {
-        File localFile = new File(((File)localObject1).getAbsolutePath() + File.separator + "liblinuxtoolsfortbssdk_jni.so");
         Object localObject2;
-        if (localFile != null)
+        if (TbsShareManager.isThirdPartyApp(paramContext))
         {
-          localObject2 = localObject1;
-          if (localFile.exists()) {}
+          localObject2 = TbsShareManager.a();
+          localObject1 = localObject2;
+          if (localObject2 == null) {
+            localObject1 = TbsShareManager.c(paramContext);
+          }
+          localObject1 = new File((String)localObject1);
         }
         else
         {
+          localObject1 = p.a().q(paramContext);
+        }
+        if (localObject1 != null)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(((File)localObject1).getAbsolutePath());
+          localStringBuilder.append(File.separator);
+          localStringBuilder.append("liblinuxtoolsfortbssdk_jni.so");
           localObject2 = localObject1;
-          if (!TbsShareManager.isThirdPartyApp(paramContext)) {
-            localObject2 = p.a().p(paramContext);
+          if (!new File(localStringBuilder.toString()).exists())
+          {
+            localObject2 = localObject1;
+            if (!TbsShareManager.isThirdPartyApp(paramContext)) {
+              localObject2 = p.a().p(paramContext);
+            }
+          }
+          if (localObject2 != null)
+          {
+            paramContext = new StringBuilder();
+            paramContext.append("TbsLinuxToolsJni init tbsSharePath is ");
+            paramContext.append(((File)localObject2).getAbsolutePath());
+            TbsLog.i("TbsLinuxToolsJni", paramContext.toString());
+            paramContext = new StringBuilder();
+            paramContext.append(((File)localObject2).getAbsolutePath());
+            paramContext.append(File.separator);
+            paramContext.append("liblinuxtoolsfortbssdk_jni.so");
+            System.load(paramContext.toString());
+            a = true;
           }
         }
-        if (localObject2 != null)
-        {
-          TbsLog.i("TbsLinuxToolsJni", "TbsLinuxToolsJni init tbsSharePath is " + ((File)localObject2).getAbsolutePath());
-          System.load(((File)localObject2).getAbsolutePath() + File.separator + "liblinuxtoolsfortbssdk_jni.so");
-          a = true;
-        }
+        ChmodInner("/checkChmodeExists", "700");
       }
-      ChmodInner("/checkChmodeExists", "700");
+      catch (Throwable paramContext)
+      {
+        paramContext.printStackTrace();
+        a = false;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("TbsLinuxToolsJni init error !!! ");
+        ((StringBuilder)localObject1).append(paramContext.getMessage());
+        ((StringBuilder)localObject1).append(" ## ");
+        ((StringBuilder)localObject1).append(paramContext.getCause());
+        TbsLog.i("TbsLinuxToolsJni", ((StringBuilder)localObject1).toString());
+      }
       return;
     }
+    finally {}
   }
   
   public int a(String paramString1, String paramString2)
@@ -90,7 +102,7 @@ class TbsLinuxToolsJni
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsLinuxToolsJni
  * JD-Core Version:    0.7.0.1
  */

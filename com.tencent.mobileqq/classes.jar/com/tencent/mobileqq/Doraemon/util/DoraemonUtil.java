@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.Doraemon.util;
 
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.Doraemon.APICallback;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
 
@@ -16,73 +16,82 @@ public class DoraemonUtil
     {
     default: 
       return 7;
-    case 2: 
-      return 0;
-    case 3: 
-      return 9;
-    case 4: 
-      return 11;
-    case 5: 
-      return 12;
+    case 7: 
+      return 14;
     case 6: 
       return 13;
+    case 5: 
+      return 12;
+    case 4: 
+      return 11;
+    case 3: 
+      return 9;
     }
-    return 14;
+    return 0;
   }
   
   public static String a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    case 1: 
-    default: 
-      return "android";
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 5)
+            {
+              if (paramInt != 6) {
+                return "android";
+              }
+              return "qqpay";
+            }
+            return "limi";
+          }
+          return "mini_app";
+        }
+        return "mini_game";
+      }
       return "ark";
-    case 5: 
-      return "limi";
-    case 3: 
-      return "mini_game";
-    case 4: 
-      return "mini_app";
-    case 6: 
-      return "qqpay";
     }
     return "web";
   }
   
   public static String a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
+    if (TextUtils.isEmpty(paramString))
+    {
       if (QLog.isColorLevel()) {
         QLog.d("DoraemonOpenAPI.util", 2, "url is empty");
       }
-    }
-    do
-    {
       return null;
-      if ((paramString.startsWith("http://")) || (paramString.startsWith("https://"))) {
-        break;
+    }
+    if ((!paramString.startsWith("http://")) && (!paramString.startsWith("https://")))
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("scheme not match ");
+        localStringBuilder.append(paramString);
+        QLog.d("DoraemonOpenAPI.util", 2, localStringBuilder.toString());
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("DoraemonOpenAPI.util", 2, "scheme not match " + paramString);
-    return null;
+      return null;
+    }
     int i = paramString.indexOf('?');
     int j = paramString.indexOf('#');
     if (i == -1)
     {
-      i = j;
       if (j == -1) {
         i = paramString.length();
+      } else {
+        i = j;
       }
     }
-    for (;;)
-    {
-      return paramString.substring(0, i);
-      if (j != -1) {
-        i = Math.min(i, j);
-      }
+    else if (j != -1) {
+      i = Math.min(i, j);
     }
+    return paramString.substring(0, i);
   }
   
   public static void a(APICallback paramAPICallback, int paramInt)
@@ -102,7 +111,7 @@ public class DoraemonUtil
   
   public static boolean a()
   {
-    return BaseApplicationImpl.sProcessId == 1;
+    return MobileQQ.sProcessId == 1;
   }
   
   public static void b(APICallback paramAPICallback, JSONObject paramJSONObject)
@@ -112,7 +121,7 @@ public class DoraemonUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.util.DoraemonUtil
  * JD-Core Version:    0.7.0.1
  */

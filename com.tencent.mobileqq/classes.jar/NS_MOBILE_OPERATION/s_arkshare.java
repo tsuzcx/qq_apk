@@ -29,20 +29,23 @@ public final class s_arkshare
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.ark_id != null) {
-      paramJceOutputStream.write(this.ark_id, 0);
+    String str = this.ark_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.view_id != null) {
-      paramJceOutputStream.write(this.view_id, 1);
+    str = this.view_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.ark_content != null) {
-      paramJceOutputStream.write(this.ark_content, 2);
+    str = this.ark_content;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.s_arkshare
  * JD-Core Version:    0.7.0.1
  */

@@ -34,16 +34,19 @@ public class AddGroupVideoRequest
   
   public AddGroupVideoRequest(String paramString, List<String> paramList, List<Long> paramList1, List<Integer> paramList2, int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      throw new IllegalArgumentException("union_id should not be empty");
-    }
-    if ((paramList == null) || (paramList.isEmpty())) {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if ((paramList != null) && (!paramList.isEmpty()))
+      {
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Collections.unmodifiableList(paramList));
+        this.jdField_a_of_type_JavaUtilList = paramList1;
+        this.b = paramList2;
+        this.c = paramInt;
+        return;
+      }
       throw new IllegalArgumentException("vidList is empty");
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Collections.unmodifiableList(paramList));
-    this.jdField_a_of_type_JavaUtilList = paramList1;
-    this.b = paramList2;
-    this.c = paramInt;
+    throw new IllegalArgumentException("union_id should not be empty");
   }
   
   public BaseResponse a(byte[] paramArrayOfByte)
@@ -52,15 +55,12 @@ public class AddGroupVideoRequest
     try
     {
       localRspAddGroupVideo.mergeFrom(paramArrayOfByte);
-      return new AddGroupVideoResponse(localRspAddGroupVideo);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        SLog.b("AddGroupVideoRequest", "decodeResponse", paramArrayOfByte);
-      }
+      SLog.b("AddGroupVideoRequest", "decodeResponse", paramArrayOfByte);
     }
+    return new AddGroupVideoResponse(localRspAddGroupVideo);
   }
   
   public String a()
@@ -68,7 +68,7 @@ public class AddGroupVideoRequest
     return StoryApi.a("StoryGroupSvc.add_video");
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_group.ReqAddGroupVideo localReqAddGroupVideo = new qqstory_group.ReqAddGroupVideo();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
@@ -97,7 +97,7 @@ public class AddGroupVideoRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.AddGroupVideoRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -71,11 +71,11 @@ public abstract class ab
       c.a().onSendToService(paramToServiceMsg, i1);
       return i1;
     }
-    catch (RemoteException paramToServiceMsg)
+    catch (NullPointerException paramToServiceMsg)
     {
       throw paramToServiceMsg;
     }
-    catch (NullPointerException paramToServiceMsg)
+    catch (RemoteException paramToServiceMsg)
     {
       throw paramToServiceMsg;
     }
@@ -96,10 +96,11 @@ public abstract class ab
       Intent localIntent = new Intent();
       localIntent.setComponent(localComponentName);
       BaseApplication.getContext().startService(localIntent);
-      if (QLog.isColorLevel()) {
+      if (QLog.isColorLevel())
+      {
         QLog.d("MSF.D.RemoteServiceProxy", 2, " start service finish");
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -118,8 +119,8 @@ public abstract class ab
       {
         paramIMsfServiceCallbacker.asBinder().linkToDeath(this.v, 0);
         QLog.d("MSF.D.RemoteServiceProxy", 1, "linkToDeath");
+        return;
       }
-      return;
     }
     catch (Throwable paramIMsfServiceCallbacker)
     {
@@ -134,97 +135,75 @@ public abstract class ab
   
   protected void b(IMsfServiceCallbacker paramIMsfServiceCallbacker)
   {
-    if (paramIMsfServiceCallbacker != null) {}
-    try
-    {
-      if (this.v != null)
+    if (paramIMsfServiceCallbacker != null) {
+      try
       {
-        paramIMsfServiceCallbacker.asBinder().unlinkToDeath(this.v, 0);
-        QLog.d("MSF.D.RemoteServiceProxy", 1, "unlinkToDeath");
+        if (this.v != null)
+        {
+          paramIMsfServiceCallbacker.asBinder().unlinkToDeath(this.v, 0);
+          QLog.d("MSF.D.RemoteServiceProxy", 1, "unlinkToDeath");
+          return;
+        }
       }
-      return;
-    }
-    catch (Throwable paramIMsfServiceCallbacker)
-    {
-      QLog.e("MSF.D.RemoteServiceProxy", 1, "unlinkToDeath fail.", paramIMsfServiceCallbacker);
+      catch (Throwable paramIMsfServiceCallbacker)
+      {
+        QLog.e("MSF.D.RemoteServiceProxy", 1, "unlinkToDeath fail.", paramIMsfServiceCallbacker);
+      }
     }
   }
   
   protected void b(ToServiceMsg paramToServiceMsg)
   {
-    if (!d.add(paramToServiceMsg)) {
-      QLog.i("MSF.D.RemoteServiceProxy", 1, "addMsgToSendQueue fail, size = " + d.size() + ", msg = " + paramToServiceMsg.getShortStringForLog());
+    if (!d.add(paramToServiceMsg))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("addMsgToSendQueue fail, size = ");
+      localStringBuilder.append(d.size());
+      localStringBuilder.append(", msg = ");
+      localStringBuilder.append(paramToServiceMsg.getShortStringForLog());
+      QLog.i("MSF.D.RemoteServiceProxy", 1, localStringBuilder.toString());
     }
   }
   
-  /* Error */
   boolean b()
   {
-    // Byte code:
-    //   0: new 188	android/content/ComponentName
-    //   3: dup
-    //   4: invokestatic 112	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   7: invokevirtual 191	com/tencent/qphone/base/util/BaseApplication:getPackageName	()Ljava/lang/String;
-    //   10: aload_0
-    //   11: getfield 103	com/tencent/mobileqq/msf/sdk/ab:n	Ljava/lang/String;
-    //   14: invokespecial 194	android/content/ComponentName:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   17: astore_2
-    //   18: new 196	android/content/Intent
-    //   21: dup
-    //   22: invokespecial 197	android/content/Intent:<init>	()V
-    //   25: astore_3
-    //   26: aload_3
-    //   27: aload_2
-    //   28: invokevirtual 201	android/content/Intent:setComponent	(Landroid/content/ComponentName;)Landroid/content/Intent;
-    //   31: pop
-    //   32: invokestatic 112	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   35: aload_3
-    //   36: aload_0
-    //   37: getfield 101	com/tencent/mobileqq/msf/sdk/ab:s	Landroid/content/ServiceConnection;
-    //   40: iconst_1
-    //   41: invokevirtual 289	com/tencent/qphone/base/util/BaseApplication:bindService	(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
-    //   44: istore_1
-    //   45: invokestatic 211	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   48: ifeq +42 -> 90
-    //   51: ldc 8
-    //   53: iconst_2
-    //   54: new 259	java/lang/StringBuilder
-    //   57: dup
-    //   58: invokespecial 260	java/lang/StringBuilder:<init>	()V
-    //   61: ldc_w 291
-    //   64: invokevirtual 266	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   67: aload_0
-    //   68: getfield 103	com/tencent/mobileqq/msf/sdk/ab:n	Ljava/lang/String;
-    //   71: invokevirtual 266	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   74: ldc_w 293
-    //   77: invokevirtual 266	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   80: iload_1
-    //   81: invokevirtual 296	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   84: invokevirtual 283	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   87: invokestatic 216	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   90: iload_1
-    //   91: ireturn
-    //   92: astore_2
-    //   93: iconst_0
-    //   94: istore_1
-    //   95: aload_2
-    //   96: invokevirtual 219	java/lang/Exception:printStackTrace	()V
-    //   99: iload_1
-    //   100: ireturn
-    //   101: astore_2
-    //   102: goto -7 -> 95
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	105	0	this	ab
-    //   44	56	1	bool	boolean
-    //   17	11	2	localComponentName	ComponentName
-    //   92	4	2	localException1	Exception
-    //   101	1	2	localException2	Exception
-    //   25	11	3	localIntent	Intent
-    // Exception table:
-    //   from	to	target	type
-    //   0	45	92	java/lang/Exception
-    //   45	90	101	java/lang/Exception
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    boolean bool3;
+    try
+    {
+      Object localObject = new ComponentName(BaseApplication.getContext().getPackageName(), this.n);
+      bool1 = bool2;
+      Intent localIntent = new Intent();
+      bool1 = bool2;
+      localIntent.setComponent((ComponentName)localObject);
+      bool1 = bool2;
+      bool2 = BaseApplication.getContext().bindService(localIntent, this.s, 1);
+      bool1 = bool2;
+      bool3 = bool2;
+      if (QLog.isColorLevel())
+      {
+        bool1 = bool2;
+        localObject = new StringBuilder();
+        bool1 = bool2;
+        ((StringBuilder)localObject).append(" bind ");
+        bool1 = bool2;
+        ((StringBuilder)localObject).append(this.n);
+        bool1 = bool2;
+        ((StringBuilder)localObject).append(" service finished ");
+        bool1 = bool2;
+        ((StringBuilder)localObject).append(bool2);
+        bool1 = bool2;
+        QLog.d("MSF.D.RemoteServiceProxy", 2, ((StringBuilder)localObject).toString());
+        return bool2;
+      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      bool3 = bool1;
+    }
+    return bool3;
   }
   
   protected void c(ToServiceMsg paramToServiceMsg)
@@ -237,28 +216,30 @@ public abstract class ab
     try
     {
       paramToServiceMsg.getActionListener().onRecvFromMsg(paramFromServiceMsg);
-      c.a().onRespToApp(paramToServiceMsg, paramFromServiceMsg);
-      return;
     }
     catch (RemoteException localRemoteException)
     {
-      for (;;)
-      {
-        localRemoteException.printStackTrace();
-      }
+      localRemoteException.printStackTrace();
     }
+    c.a().onRespToApp(paramToServiceMsg, paramFromServiceMsg);
   }
   
   public boolean c()
   {
     try
     {
-      ComponentName localComponentName = new ComponentName(BaseApplication.getContext(), this.n);
+      Object localObject = new ComponentName(BaseApplication.getContext(), this.n);
       Intent localIntent = new Intent();
-      localIntent.setComponent(localComponentName);
+      localIntent.setComponent((ComponentName)localObject);
       boolean bool = BaseApplication.getContext().stopService(localIntent);
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.D.RemoteServiceProxy", 2, " stopService " + this.n + " service finished " + bool);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(" stopService ");
+        ((StringBuilder)localObject).append(this.n);
+        ((StringBuilder)localObject).append(" service finished ");
+        ((StringBuilder)localObject).append(bool);
+        QLog.d("MSF.D.RemoteServiceProxy", 2, ((StringBuilder)localObject).toString());
       }
       return bool;
     }
@@ -300,7 +281,11 @@ public abstract class ab
       int i1 = this.b.getMsfConnectedIPFamily();
       return i1;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label12:
+      break label12;
+    }
     return 0;
   }
   
@@ -311,7 +296,11 @@ public abstract class ab
       int i1 = this.b.getMsfConnectedNetType();
       return i1;
     }
-    catch (RemoteException localRemoteException) {}
+    catch (RemoteException localRemoteException)
+    {
+      label12:
+      break label12;
+    }
     return 0;
   }
   
@@ -358,7 +347,7 @@ public abstract class ab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.ab
  * JD-Core Version:    0.7.0.1
  */

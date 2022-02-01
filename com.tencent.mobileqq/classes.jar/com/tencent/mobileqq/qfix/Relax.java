@@ -2,6 +2,7 @@ package com.tencent.mobileqq.qfix;
 
 import android.annotation.SuppressLint;
 import android.os.Build.VERSION;
+import java.io.File;
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -9,6 +10,7 @@ import java.lang.reflect.Method;
 public class Relax
 {
   public static final int APPLY_ERROR_GET_METHODS_BYTES = 4;
+  public static final int APPLY_ERROR_INJECT = 5;
   public static final int APPLY_ERROR_PATCH_BOUNDARY = 3;
   public static final int APPLY_ERROR_PREPARE = 1;
   public static final int APPLY_ERROR_REMOVE_PATCH_CLASSES = 2;
@@ -17,6 +19,24 @@ public class Relax
   static
   {
     System.currentTimeMillis();
+  }
+  
+  private static long a(ClassLoader paramClassLoader)
+  {
+    if (!a()) {}
+    try
+    {
+      Field localField = ClassLoader.class.getDeclaredField("classTable");
+      localField.setAccessible(true);
+      long l = localField.getLong(paramClassLoader);
+      return l;
+    }
+    catch (Exception paramClassLoader)
+    {
+      label27:
+      break label27;
+    }
+    return 0L;
   }
   
   @SuppressLint({"PrivateApi"})
@@ -30,20 +50,10 @@ public class Relax
       Class.forName("android.se.omapi.Channel");
       return true;
     }
-    catch (Throwable localThrowable) {}
-    return false;
-  }
-  
-  private static boolean a(ClassLoader paramClassLoader)
-  {
-    try
+    finally
     {
-      boolean bool = init(Relax.c.class.getDeclaredMethod("a", new Class[0]), Relax.c.class.getDeclaredMethod("b", new Class[0]), paramClassLoader, b(paramClassLoader), a());
-      return bool;
-    }
-    catch (NoSuchMethodException paramClassLoader)
-    {
-      paramClassLoader.printStackTrace();
+      label18:
+      break label18;
     }
     return false;
   }
@@ -53,153 +63,155 @@ public class Relax
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 4
-    //   3: new 77	java/io/ByteArrayOutputStream
-    //   6: dup
-    //   7: invokespecial 78	java/io/ByteArrayOutputStream:<init>	()V
-    //   10: astore_3
-    //   11: new 80	java/io/BufferedInputStream
+    //   1: astore_3
+    //   2: new 76	java/io/ByteArrayOutputStream
+    //   5: dup
+    //   6: invokespecial 77	java/io/ByteArrayOutputStream:<init>	()V
+    //   9: astore 4
+    //   11: new 79	java/io/BufferedInputStream
     //   14: dup
     //   15: aload_0
-    //   16: invokespecial 83	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   16: invokespecial 82	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   19: astore_2
     //   20: aload_2
     //   21: astore_0
     //   22: sipush 4000
     //   25: newarray byte
-    //   27: astore 5
-    //   29: aload_2
-    //   30: astore_0
-    //   31: aload_2
-    //   32: aload 5
-    //   34: iconst_0
-    //   35: aload 5
-    //   37: arraylength
-    //   38: invokevirtual 87	java/io/BufferedInputStream:read	([BII)I
-    //   41: istore_1
-    //   42: iload_1
-    //   43: iconst_m1
-    //   44: if_icmpeq +39 -> 83
-    //   47: aload_2
-    //   48: astore_0
-    //   49: aload_3
-    //   50: aload 5
-    //   52: iconst_0
-    //   53: iload_1
-    //   54: invokevirtual 91	java/io/ByteArrayOutputStream:write	([BII)V
-    //   57: goto -28 -> 29
-    //   60: astore_3
-    //   61: aload_2
-    //   62: astore_0
-    //   63: aload_3
-    //   64: invokevirtual 92	java/io/IOException:printStackTrace	()V
+    //   27: astore_3
+    //   28: aload_2
+    //   29: astore_0
+    //   30: aload_2
+    //   31: aload_3
+    //   32: iconst_0
+    //   33: aload_3
+    //   34: arraylength
+    //   35: invokevirtual 86	java/io/BufferedInputStream:read	([BII)I
+    //   38: istore_1
+    //   39: iload_1
+    //   40: iconst_m1
+    //   41: if_icmpeq +16 -> 57
+    //   44: aload_2
+    //   45: astore_0
+    //   46: aload 4
+    //   48: aload_3
+    //   49: iconst_0
+    //   50: iload_1
+    //   51: invokevirtual 90	java/io/ByteArrayOutputStream:write	([BII)V
+    //   54: goto -26 -> 28
+    //   57: aload_2
+    //   58: astore_0
+    //   59: aload 4
+    //   61: iconst_0
+    //   62: invokevirtual 93	java/io/ByteArrayOutputStream:write	(I)V
+    //   65: aload_2
+    //   66: astore_0
     //   67: aload 4
-    //   69: astore_0
-    //   70: aload_2
-    //   71: ifnull +10 -> 81
-    //   74: aload_2
-    //   75: invokevirtual 95	java/io/BufferedInputStream:close	()V
-    //   78: aload 4
-    //   80: astore_0
-    //   81: aload_0
-    //   82: areturn
-    //   83: aload_2
-    //   84: astore_0
-    //   85: aload_3
-    //   86: iconst_0
-    //   87: invokevirtual 98	java/io/ByteArrayOutputStream:write	(I)V
-    //   90: aload_2
-    //   91: astore_0
-    //   92: aload_3
-    //   93: invokevirtual 102	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   69: invokevirtual 97	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   72: astore_3
+    //   73: aload_2
+    //   74: invokevirtual 100	java/io/BufferedInputStream:close	()V
+    //   77: aload_3
+    //   78: areturn
+    //   79: astore_0
+    //   80: aload_0
+    //   81: invokevirtual 103	java/io/IOException:printStackTrace	()V
+    //   84: aload_3
+    //   85: areturn
+    //   86: astore_3
+    //   87: goto +12 -> 99
+    //   90: astore_0
+    //   91: aload_3
+    //   92: astore_2
+    //   93: goto +34 -> 127
     //   96: astore_3
-    //   97: aload_3
-    //   98: astore_0
+    //   97: aconst_null
+    //   98: astore_2
     //   99: aload_2
-    //   100: ifnull -19 -> 81
-    //   103: aload_2
-    //   104: invokevirtual 95	java/io/BufferedInputStream:close	()V
-    //   107: aload_3
-    //   108: areturn
-    //   109: astore_0
-    //   110: aload_0
-    //   111: invokevirtual 92	java/io/IOException:printStackTrace	()V
-    //   114: aload_3
-    //   115: areturn
-    //   116: astore_0
-    //   117: aload_0
-    //   118: invokevirtual 92	java/io/IOException:printStackTrace	()V
-    //   121: aconst_null
-    //   122: areturn
-    //   123: astore_2
-    //   124: aconst_null
-    //   125: astore_0
-    //   126: aload_0
-    //   127: ifnull +7 -> 134
-    //   130: aload_0
-    //   131: invokevirtual 95	java/io/BufferedInputStream:close	()V
-    //   134: aload_2
-    //   135: athrow
-    //   136: astore_0
-    //   137: aload_0
-    //   138: invokevirtual 92	java/io/IOException:printStackTrace	()V
-    //   141: goto -7 -> 134
-    //   144: astore_2
-    //   145: goto -19 -> 126
-    //   148: astore_3
-    //   149: aconst_null
-    //   150: astore_2
-    //   151: goto -90 -> 61
+    //   100: astore_0
+    //   101: aload_3
+    //   102: invokevirtual 103	java/io/IOException:printStackTrace	()V
+    //   105: aload_2
+    //   106: ifnull +14 -> 120
+    //   109: aload_2
+    //   110: invokevirtual 100	java/io/BufferedInputStream:close	()V
+    //   113: aconst_null
+    //   114: areturn
+    //   115: astore_0
+    //   116: aload_0
+    //   117: invokevirtual 103	java/io/IOException:printStackTrace	()V
+    //   120: aconst_null
+    //   121: areturn
+    //   122: astore_3
+    //   123: aload_0
+    //   124: astore_2
+    //   125: aload_3
+    //   126: astore_0
+    //   127: aload_2
+    //   128: ifnull +15 -> 143
+    //   131: aload_2
+    //   132: invokevirtual 100	java/io/BufferedInputStream:close	()V
+    //   135: goto +8 -> 143
+    //   138: astore_2
+    //   139: aload_2
+    //   140: invokevirtual 103	java/io/IOException:printStackTrace	()V
+    //   143: goto +5 -> 148
+    //   146: aload_0
+    //   147: athrow
+    //   148: goto -2 -> 146
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	154	0	paramInputStream	InputStream
-    //   41	13	1	i	int
-    //   19	85	2	localBufferedInputStream	java.io.BufferedInputStream
-    //   123	12	2	localObject1	Object
-    //   144	1	2	localObject2	Object
-    //   150	1	2	localObject3	Object
-    //   10	40	3	localByteArrayOutputStream	java.io.ByteArrayOutputStream
-    //   60	33	3	localIOException1	java.io.IOException
-    //   96	19	3	arrayOfByte1	byte[]
-    //   148	1	3	localIOException2	java.io.IOException
-    //   1	78	4	localObject4	Object
-    //   27	24	5	arrayOfByte2	byte[]
+    //   0	151	0	paramInputStream	InputStream
+    //   38	13	1	i	int
+    //   19	113	2	localObject1	Object
+    //   138	2	2	localIOException1	java.io.IOException
+    //   1	84	3	arrayOfByte	byte[]
+    //   86	6	3	localIOException2	java.io.IOException
+    //   96	6	3	localIOException3	java.io.IOException
+    //   122	4	3	localObject2	Object
+    //   9	59	4	localByteArrayOutputStream	java.io.ByteArrayOutputStream
     // Exception table:
     //   from	to	target	type
-    //   22	29	60	java/io/IOException
-    //   31	42	60	java/io/IOException
-    //   49	57	60	java/io/IOException
-    //   85	90	60	java/io/IOException
-    //   92	97	60	java/io/IOException
-    //   103	107	109	java/io/IOException
-    //   74	78	116	java/io/IOException
-    //   3	20	123	finally
-    //   130	134	136	java/io/IOException
-    //   22	29	144	finally
-    //   31	42	144	finally
-    //   49	57	144	finally
-    //   63	67	144	finally
-    //   85	90	144	finally
-    //   92	97	144	finally
-    //   3	20	148	java/io/IOException
+    //   73	77	79	java/io/IOException
+    //   22	28	86	java/io/IOException
+    //   30	39	86	java/io/IOException
+    //   46	54	86	java/io/IOException
+    //   59	65	86	java/io/IOException
+    //   67	73	86	java/io/IOException
+    //   2	20	90	finally
+    //   2	20	96	java/io/IOException
+    //   109	113	115	java/io/IOException
+    //   22	28	122	finally
+    //   30	39	122	finally
+    //   46	54	122	finally
+    //   59	65	122	finally
+    //   67	73	122	finally
+    //   101	105	122	finally
+    //   131	135	138	java/io/IOException
   }
   
-  public static int apply(InputStream paramInputStream1, InputStream paramInputStream2, InputStream paramInputStream3, boolean paramBoolean)
+  public static int apply(InputStream paramInputStream1, InputStream paramInputStream2, InputStream paramInputStream3, boolean paramBoolean1, File paramFile1, File paramFile2, boolean paramBoolean2)
   {
-    if (!paramBoolean) {
+    if (!paramBoolean1) {
       System.loadLibrary("relax");
     }
     try
     {
       ClassLoader localClassLoader = Relax.class.getClassLoader();
-      paramBoolean = a(localClassLoader);
-      if (!paramBoolean) {
+      if (paramBoolean2)
+      {
+        paramBoolean1 = inject(localClassLoader, paramFile1, paramFile2);
+        if (!paramBoolean1) {
+          return 5;
+        }
+      }
+      paramBoolean1 = b(localClassLoader);
+      if (!paramBoolean1) {
         return 1;
       }
       if ((paramInputStream1 != null) && (paramInputStream2 != null))
       {
-        paramBoolean = remove(localClassLoader, a(paramInputStream1), a(paramInputStream2));
-        if (!paramBoolean) {
+        paramBoolean1 = remove(localClassLoader, a(paramInputStream1), a(paramInputStream2));
+        if (!paramBoolean1) {
           return 2;
         }
       }
@@ -207,8 +219,8 @@ public class Relax
       if (paramInputStream1 == null) {
         return 4;
       }
-      paramBoolean = relax(paramInputStream1);
-      if (!paramBoolean) {
+      paramBoolean1 = relax(paramInputStream1);
+      if (!paramBoolean1) {
         return 3;
       }
       return 0;
@@ -219,22 +231,24 @@ public class Relax
     }
   }
   
-  private static long b(ClassLoader paramClassLoader)
+  private static boolean b(ClassLoader paramClassLoader)
   {
-    long l = 0L;
-    if (!a()) {}
     try
     {
-      Field localField = ClassLoader.class.getDeclaredField("classTable");
-      localField.setAccessible(true);
-      l = localField.getLong(paramClassLoader);
-      return l;
+      Method localMethod = Relax.c.class.getDeclaredMethod("a", new Class[0]);
+      boolean bool = init(localMethod, Relax.c.class.getDeclaredMethod("b", new Class[0]), paramClassLoader, a(paramClassLoader), a());
+      return bool;
     }
-    catch (Exception paramClassLoader) {}
-    return 0L;
+    catch (NoSuchMethodException paramClassLoader)
+    {
+      paramClassLoader.printStackTrace();
+    }
+    return false;
   }
   
   private static native boolean init(Method paramMethod1, Method paramMethod2, ClassLoader paramClassLoader, long paramLong, boolean paramBoolean);
+  
+  private static native boolean inject(ClassLoader paramClassLoader, File paramFile1, File paramFile2);
   
   private static native boolean relax(byte[] paramArrayOfByte);
   
@@ -244,7 +258,7 @@ public class Relax
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qfix.Relax
  * JD-Core Version:    0.7.0.1
  */

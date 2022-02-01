@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 public class DefaultSharedPreferencesAdapter
   implements HippySharedPreferencesAdapter
 {
-  private Context mContext;
+  private final Context mContext;
   
   public DefaultSharedPreferencesAdapter(Context paramContext)
   {
@@ -20,7 +20,7 @@ public class DefaultSharedPreferencesAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.adapter.sharedpreferences.DefaultSharedPreferencesAdapter
  * JD-Core Version:    0.7.0.1
  */

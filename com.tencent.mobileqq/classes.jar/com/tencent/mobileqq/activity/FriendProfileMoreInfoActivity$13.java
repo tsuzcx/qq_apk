@@ -19,15 +19,23 @@ class FriendProfileMoreInfoActivity$13
   
   public String getText(int paramInt1, int paramInt2)
   {
-    if (paramInt2 == 0) {
-      return this.a.getString(2131693923);
+    FriendProfileMoreInfoActivity localFriendProfileMoreInfoActivity;
+    if (paramInt2 == 0)
+    {
+      localFriendProfileMoreInfoActivity = this.a;
+      paramInt1 = 2131693879;
     }
-    return this.a.getString(2131692330);
+    else
+    {
+      localFriendProfileMoreInfoActivity = this.a;
+      paramInt1 = 2131692259;
+    }
+    return localFriendProfileMoreInfoActivity.getString(paramInt1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity.13
  * JD-Core Version:    0.7.0.1
  */

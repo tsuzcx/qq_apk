@@ -28,33 +28,36 @@ public class QzoneUpdatePatchServlet
   
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    Object localObject = null;
-    if ((paramIntent instanceof PluginIntent))
+    boolean bool = paramIntent instanceof PluginIntent;
+    QZonePatchRequest localQZonePatchRequest = null;
+    if (bool)
     {
-      localObject = ((PluginIntent)paramIntent).update_infos;
-      paramIntent = ((PluginIntent)paramIntent).module_update_infos;
+      localObject = (PluginIntent)paramIntent;
+      paramIntent = ((PluginIntent)localObject).update_infos;
+      localObject = ((PluginIntent)localObject).module_update_infos;
     }
-    for (;;)
+    else
     {
-      QZonePatchRequest localQZonePatchRequest = new QZonePatchRequest(getAppRuntime().getLongAccountUin(), (ArrayList)localObject, paramIntent);
-      localObject = localQZonePatchRequest.encode();
-      paramIntent = (Intent)localObject;
-      if (localObject == null) {
-        paramIntent = new byte[4];
-      }
-      paramPacket.setTimeout(60000L);
-      paramPacket.setSSOCommand("SQQzoneSvc." + localQZonePatchRequest.uniKey());
-      paramPacket.putSendData(paramIntent);
-      return;
-      localQZonePatchRequest = null;
-      paramIntent = (Intent)localObject;
-      localObject = localQZonePatchRequest;
+      localObject = null;
+      paramIntent = localQZonePatchRequest;
     }
+    localQZonePatchRequest = new QZonePatchRequest(getAppRuntime().getLongAccountUin(), paramIntent, (ArrayList)localObject);
+    Object localObject = localQZonePatchRequest.encode();
+    paramIntent = (Intent)localObject;
+    if (localObject == null) {
+      paramIntent = new byte[4];
+    }
+    paramPacket.setTimeout(60000L);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("SQQzoneSvc.");
+    ((StringBuilder)localObject).append(localQZonePatchRequest.uniKey());
+    paramPacket.setSSOCommand(((StringBuilder)localObject).toString());
+    paramPacket.putSendData(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.patch.QzoneUpdatePatchServlet
  * JD-Core Version:    0.7.0.1
  */

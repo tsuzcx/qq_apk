@@ -21,34 +21,27 @@ public class AnimationDrawableCreateOption
     }
     this.jdField_a_of_type_Boolean = AnimationDrawableCreateOption.Builder.a(paramBuilder);
     long l;
-    int i;
-    if (AnimationDrawableCreateOption.Builder.a(paramBuilder) > 0L)
-    {
+    if (AnimationDrawableCreateOption.Builder.a(paramBuilder) > 0L) {
       l = AnimationDrawableCreateOption.Builder.a(paramBuilder);
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Int = AnimationDrawableCreateOption.Builder.a(paramBuilder);
-      if (AnimationDrawableCreateOption.Builder.b(paramBuilder) <= 0) {
-        break label107;
-      }
-      i = AnimationDrawableCreateOption.Builder.b(paramBuilder);
-      label69:
-      this.jdField_b_of_type_Int = i;
-      this.jdField_b_of_type_Boolean = AnimationDrawableCreateOption.Builder.b(paramBuilder);
-      if (AnimationDrawableCreateOption.Builder.a(paramBuilder) == null) {
-        break label113;
-      }
-    }
-    label107:
-    label113:
-    for (paramBuilder = AnimationDrawableCreateOption.Builder.a(paramBuilder);; paramBuilder = QCircleDownloadConfig.a())
-    {
-      this.jdField_a_of_type_ComTencentBizRichframeworkDownloadRFWDownloadStrategy = paramBuilder;
-      return;
+    } else {
       l = 1000L;
-      break;
-      i = 50;
-      break label69;
     }
+    this.jdField_a_of_type_Long = l;
+    this.jdField_a_of_type_Int = AnimationDrawableCreateOption.Builder.a(paramBuilder);
+    int i;
+    if (AnimationDrawableCreateOption.Builder.b(paramBuilder) > 0) {
+      i = AnimationDrawableCreateOption.Builder.b(paramBuilder);
+    } else {
+      i = 50;
+    }
+    this.jdField_b_of_type_Int = i;
+    this.jdField_b_of_type_Boolean = AnimationDrawableCreateOption.Builder.b(paramBuilder);
+    if (AnimationDrawableCreateOption.Builder.a(paramBuilder) != null) {
+      paramBuilder = AnimationDrawableCreateOption.Builder.a(paramBuilder);
+    } else {
+      paramBuilder = QCircleDownloadConfig.a();
+    }
+    this.jdField_a_of_type_ComTencentBizRichframeworkDownloadRFWDownloadStrategy = paramBuilder;
   }
   
   public int a()
@@ -88,7 +81,7 @@ public class AnimationDrawableCreateOption
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.richframework.animation.drawable.AnimationDrawableCreateOption
  * JD-Core Version:    0.7.0.1
  */

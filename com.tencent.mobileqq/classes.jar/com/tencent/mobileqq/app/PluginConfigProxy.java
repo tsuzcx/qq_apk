@@ -22,7 +22,7 @@ public class PluginConfigProxy
   public void a(int paramInt, List<GetResourceReqInfoV2> paramList, ServerConfigObserver paramServerConfigObserver)
   {
     this.b.addAll(paramList);
-    this.jdField_a_of_type_Int |= paramInt;
+    this.jdField_a_of_type_Int = (paramInt | this.jdField_a_of_type_Int);
     if (paramServerConfigObserver != null) {
       this.jdField_a_of_type_JavaUtilArrayList.add(paramServerConfigObserver);
     }
@@ -42,25 +42,23 @@ public class PluginConfigProxy
   
   public void onGetPluginConfig(boolean paramBoolean, int paramInt, GetResourceRespV2 paramGetResourceRespV2)
   {
-    if ((this.jdField_a_of_type_Int & paramInt) == 0) {}
-    for (;;)
-    {
+    if ((this.jdField_a_of_type_Int & paramInt) == 0) {
       return;
-      if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (localIterator.hasNext())
-        {
-          ServerConfigObserver localServerConfigObserver = (ServerConfigObserver)localIterator.next();
-          ThreadManager.getSubThreadHandler().post(new PluginConfigProxy.CallbackRunner(this, localServerConfigObserver, paramBoolean, paramInt, paramGetResourceRespV2));
-        }
-      }
+    }
+    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+      return;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      ServerConfigObserver localServerConfigObserver = (ServerConfigObserver)localIterator.next();
+      ThreadManager.getSubThreadHandler().post(new PluginConfigProxy.CallbackRunner(this, localServerConfigObserver, paramBoolean, paramInt, paramGetResourceRespV2));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.PluginConfigProxy
  * JD-Core Version:    0.7.0.1
  */

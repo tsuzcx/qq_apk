@@ -12,23 +12,45 @@ public class GamePartyPlugin$GamePartyBroadcastReceiver
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
+    Object localObject;
     if (paramContext.equals("android.intent.action.gameparty.notify"))
     {
-      paramContext = paramIntent.getStringExtra("uin");
-      paramIntent = paramIntent.getStringExtra("teamId");
-      this.a.callJs("getTeamInfo", new String[] { "'" + paramContext + "'", "'" + paramIntent + "'" });
-    }
-    while (!paramContext.equals("android.intent.action.gameparty.refresh")) {
+      localObject = paramIntent.getStringExtra("uin");
+      paramContext = paramIntent.getStringExtra("teamId");
+      paramIntent = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("'");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("'");
+      localObject = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("'");
+      localStringBuilder.append(paramContext);
+      localStringBuilder.append("'");
+      paramIntent.callJs("getTeamInfo", new String[] { localObject, localStringBuilder.toString() });
       return;
     }
-    paramContext = paramIntent.getStringExtra("uin");
-    long l = paramIntent.getLongExtra("teamId", 0L);
-    this.a.callJs("refreshAudioStatus", new String[] { "'" + paramContext + "'", "'" + l + "'" });
+    if (paramContext.equals("android.intent.action.gameparty.refresh"))
+    {
+      localObject = paramIntent.getStringExtra("uin");
+      long l = paramIntent.getLongExtra("teamId", 0L);
+      paramContext = this.a;
+      paramIntent = new StringBuilder();
+      paramIntent.append("'");
+      paramIntent.append((String)localObject);
+      paramIntent.append("'");
+      paramIntent = paramIntent.toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("'");
+      ((StringBuilder)localObject).append(l);
+      ((StringBuilder)localObject).append("'");
+      paramContext.callJs("refreshAudioStatus", new String[] { paramIntent, ((StringBuilder)localObject).toString() });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.GamePartyPlugin.GamePartyBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

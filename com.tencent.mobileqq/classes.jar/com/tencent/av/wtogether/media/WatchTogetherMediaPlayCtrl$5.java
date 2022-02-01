@@ -12,28 +12,29 @@ class WatchTogetherMediaPlayCtrl$5
   
   public void run()
   {
-    switch (this.jdField_a_of_type_Int)
+    int i = this.jdField_a_of_type_Int;
+    if (i != 112)
     {
-    }
-    for (;;)
-    {
-      Iterator localIterator = WatchTogetherMediaPlayCtrl.a(this.this$0).iterator();
-      while (localIterator.hasNext())
-      {
-        WeakReference localWeakReference = (WeakReference)localIterator.next();
-        if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-          ((WatchTogetherMediaPlayerStatusCallback)localWeakReference.get()).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.b, this.jdField_a_of_type_JavaLangObject);
-        }
+      if (i == 113) {
+        WatchTogetherMediaPlayCtrl.b(this.this$0, 11);
       }
+    }
+    else {
       WatchTogetherMediaPlayCtrl.b(this.this$0, 3);
-      continue;
-      WatchTogetherMediaPlayCtrl.b(this.this$0, 11);
+    }
+    Iterator localIterator = WatchTogetherMediaPlayCtrl.a(this.this$0).iterator();
+    while (localIterator.hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)localIterator.next();
+      if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+        ((WatchTogetherMediaPlayerStatusCallback)localWeakReference.get()).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.b, this.jdField_a_of_type_JavaLangObject);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.media.WatchTogetherMediaPlayCtrl.5
  * JD-Core Version:    0.7.0.1
  */

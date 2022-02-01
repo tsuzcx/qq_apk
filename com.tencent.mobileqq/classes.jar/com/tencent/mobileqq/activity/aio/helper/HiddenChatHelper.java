@@ -2,31 +2,37 @@ package com.tencent.mobileqq.activity.aio.helper;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
+import com.tencent.common.app.AppInterface;
 import com.tencent.imcore.message.Message;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.AIOContext;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.helper.CoreHelperProvider;
+import com.tencent.mobileqq.activity.aio.core.helper.OnFinishListener;
+import com.tencent.mobileqq.activity.aio.core.tips.IMsgTipsFilter;
 import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
 import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import com.tencent.mobileqq.onlinestatus.AccountPanel;
 import com.tencent.mobileqq.statistics.ReportController;
 
 public class HiddenChatHelper
-  implements ILifeCycleHelper
+  implements OnFinishListener, IMsgTipsFilter, ILifeCycleHelper
 {
   private BaseChatPie a;
   
   public HiddenChatHelper(BaseChatPie paramBaseChatPie)
   {
     this.a = paramBaseChatPie;
+    paramBaseChatPie.b().a().a(this);
   }
   
   public static boolean a(Activity paramActivity, Class<? extends PublicBaseFragment> paramClass)
@@ -40,29 +46,28 @@ public class HiddenChatHelper
     localIntent2.setFlags(603979776);
     localIntent1.putExtra("should_restore_from_kill", false);
     PublicFragmentActivity.a(paramActivity, localIntent1, paramClass, -1);
-    paramActivity.overridePendingTransition(2130771990, 2130771991);
+    paramActivity.overridePendingTransition(2130772002, 2130772003);
     return true;
   }
   
-  public static boolean a(String paramString, int paramInt, QQAppInterface paramQQAppInterface)
+  public static boolean a(String paramString, int paramInt, AppInterface paramAppInterface)
   {
-    if ((paramInt == 1) && (b(paramString, paramQQAppInterface))) {}
-    while ((paramInt == 0) && (a(paramString, paramQQAppInterface))) {
+    if ((paramInt == 1) && (b(paramString, paramAppInterface))) {
       return true;
     }
-    return false;
+    return (paramInt == 0) && (a(paramString, paramAppInterface));
   }
   
-  public static boolean a(String paramString, QQAppInterface paramQQAppInterface)
+  public static boolean a(String paramString, AppInterface paramAppInterface)
   {
-    ExtensionInfo localExtensionInfo = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(String.valueOf(paramString));
-    paramQQAppInterface = localExtensionInfo;
+    ExtensionInfo localExtensionInfo = ((FriendsManager)paramAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(String.valueOf(paramString));
+    paramAppInterface = localExtensionInfo;
     if (localExtensionInfo == null)
     {
-      paramQQAppInterface = new ExtensionInfo();
-      paramQQAppInterface.uin = String.valueOf(paramString);
+      paramAppInterface = new ExtensionInfo();
+      paramAppInterface.uin = String.valueOf(paramString);
     }
-    return paramQQAppInterface.hiddenChatSwitch == 1;
+    return paramAppInterface.hiddenChatSwitch == 1;
   }
   
   public static boolean b(Activity paramActivity, Class<?> paramClass)
@@ -74,20 +79,20 @@ public class HiddenChatHelper
     paramClass.putExtra("back_for_hidden_chat", true);
     paramClass.setFlags(603979776);
     paramActivity.startActivity(paramClass);
-    paramActivity.overridePendingTransition(2130771990, 2130771991);
+    paramActivity.overridePendingTransition(2130772002, 2130772003);
     return true;
   }
   
-  public static boolean b(String paramString, QQAppInterface paramQQAppInterface)
+  public static boolean b(String paramString, AppInterface paramAppInterface)
   {
-    TroopInfo localTroopInfo = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramString);
-    paramQQAppInterface = localTroopInfo;
+    TroopInfo localTroopInfo = ((TroopManager)paramAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramString);
+    paramAppInterface = localTroopInfo;
     if (localTroopInfo == null)
     {
-      paramQQAppInterface = new TroopInfo();
-      paramQQAppInterface.troopuin = paramString;
+      paramAppInterface = new TroopInfo();
+      paramAppInterface.troopuin = paramString;
     }
-    return TroopInfo.isCmdUinFlagEx2Open(paramQQAppInterface.cmdUinFlagEx2, 512);
+    return TroopInfo.isCmdUinFlagEx2Open(paramAppInterface.cmdUinFlagEx2, 512);
   }
   
   public static boolean c(Activity paramActivity, Class<?> paramClass)
@@ -100,8 +105,23 @@ public class HiddenChatHelper
     paramClass.putExtra("tab_index", FrameControllerUtil.jdField_a_of_type_Int);
     paramClass.putExtra("fragment_id", 1);
     paramActivity.startActivity(paramClass);
-    paramActivity.overridePendingTransition(2130771990, 2130771991);
+    paramActivity.overridePendingTransition(2130772002, 2130772003);
     return true;
+  }
+  
+  public int a()
+  {
+    return 0;
+  }
+  
+  public CharSequence a(AIOContext paramAIOContext, Intent paramIntent, MessageRecord paramMessageRecord, Message paramMessage)
+  {
+    return null;
+  }
+  
+  public CharSequence a(AIOContext paramAIOContext, MessageRecord paramMessageRecord, Message paramMessage)
+  {
+    return null;
   }
   
   public void a()
@@ -123,15 +143,20 @@ public class HiddenChatHelper
     boolean bool = a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     if (bool)
     {
-      Intent localIntent = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent();
+      Intent localIntent = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent();
       if (localIntent.getIntExtra("entrance", 0) == 2) {
         localIntent.putExtra("FromType", 2);
       }
       localIntent.putExtra("back_for_hidden_chat", true);
-      a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, HiddenChatFragment.class);
+      a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, HiddenChatFragment.class);
       localIntent.removeExtra("back_for_hidden_chat");
     }
     return bool;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return (paramInt == 0) && (a());
   }
   
   public boolean a(Message paramMessage)
@@ -142,6 +167,18 @@ public class HiddenChatHelper
     return a(paramMessage.frienduin, paramMessage.istroop, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
+  public boolean a(AIOContext paramAIOContext, MessageRecord paramMessageRecord, Message paramMessage)
+  {
+    return a(paramMessage);
+  }
+  
+  public boolean a(boolean paramBoolean)
+  {
+    return a();
+  }
+  
+  public void d(int paramInt) {}
+  
   public String getTag()
   {
     return "HiddenChatHelper";
@@ -149,23 +186,23 @@ public class HiddenChatHelper
   
   public int[] interestedIn()
   {
-    return new int[] { 9 };
+    return new int[] { 10 };
   }
   
   public void onMoveToState(int paramInt)
   {
-    if (paramInt == 9)
+    if (paramInt == 10)
     {
       if (a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-        ReportController.b(null, "dc00898", "", "", "0X800A34E", "0X800A34E", this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getIntExtra("hidden_aio_msg_source", 999), 0, "0", "0", "", "");
+        ReportController.b(null, "dc00898", "", "", "0X800A34E", "0X800A34E", this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getIntExtra("hidden_aio_msg_source", 999), 0, "0", "0", "", "");
       }
-      AccountPanel.a("aio opened");
+      FrameHelperActivity.b("aio opened");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.HiddenChatHelper
  * JD-Core Version:    0.7.0.1
  */

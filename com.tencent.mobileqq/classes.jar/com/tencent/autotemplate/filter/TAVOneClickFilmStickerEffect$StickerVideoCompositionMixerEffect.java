@@ -45,40 +45,38 @@ class TAVOneClickFilmStickerEffect$StickerVideoCompositionMixerEffect
   
   public CIImage apply(TAVVideoMixEffect paramTAVVideoMixEffect, ImageCollection paramImageCollection, RenderInfo paramRenderInfo)
   {
-    Object localObject2 = null;
     super.apply(paramTAVVideoMixEffect, paramImageCollection, paramRenderInfo);
     CGSize localCGSize = paramRenderInfo.getRenderSize();
-    Object localObject1 = new ArrayList();
+    Object localObject = new ArrayList();
     ArrayList localArrayList = new ArrayList();
-    if ((this.faceMorphingFilter != null) && (this.faceMorphingFilter.needRender(paramImageCollection, this.currentTime)))
+    TAVFaceMorphingFilter localTAVFaceMorphingFilter = this.faceMorphingFilter;
+    if ((localTAVFaceMorphingFilter != null) && (localTAVFaceMorphingFilter.needRender(paramImageCollection, this.currentTime)))
     {
       paramTAVVideoMixEffect = this.faceMorphingFilter.apply(paramTAVVideoMixEffect, paramImageCollection, paramRenderInfo);
       paramTAVVideoMixEffect = getCachedTexture(paramTAVVideoMixEffect, paramTAVVideoMixEffect.getSize(), paramRenderInfo);
-      ((List)localObject1).add(new TAVSourceImage(paramTAVVideoMixEffect, true, 0));
-      this.stickerContext.setRenderSize(localCGSize);
-      BenchUtil.benchStart("renderStickerChain");
-      long l = this.currentTime.getTimeUs() / 1000L;
-      localObject1 = this.stickerContext.renderStickerChainWithTexture(l, (List)localObject1);
-      BenchUtil.benchEnd("renderStickerChain");
-      this.renderContext.makeCurrent();
-      if (localObject1 == null) {
-        break label190;
-      }
-      paramTAVVideoMixEffect = new CIImage(((CMSampleBuffer)localObject1).getTextureInfo());
+      ((List)localObject).add(new TAVSourceImage(paramTAVVideoMixEffect, true, 0));
     }
-    label190:
-    do
+    else
     {
-      return paramTAVVideoMixEffect;
-      localObject1 = getCachedTextures(paramImageCollection.getVideoChannelImages(), localArrayList, paramRenderInfo, localCGSize);
+      localObject = getCachedTextures(paramImageCollection.getVideoChannelImages(), localArrayList, paramRenderInfo, localCGSize);
       paramTAVVideoMixEffect = null;
-      break;
-      if (paramTAVVideoMixEffect != null) {
-        return new CIImage(paramTAVVideoMixEffect);
-      }
-      paramTAVVideoMixEffect = localObject2;
-    } while (!needCropTexture(paramImageCollection));
-    return getOutputImage((TextureInfo)localArrayList.get(0), paramRenderInfo);
+    }
+    this.stickerContext.setRenderSize(localCGSize);
+    BenchUtil.benchStart("renderStickerChain");
+    long l = this.currentTime.getTimeUs() / 1000L;
+    localObject = this.stickerContext.renderStickerChainWithTexture(l, (List)localObject);
+    BenchUtil.benchEnd("renderStickerChain");
+    this.renderContext.makeCurrent();
+    if (localObject != null) {
+      return new CIImage(((CMSampleBuffer)localObject).getTextureInfo());
+    }
+    if (paramTAVVideoMixEffect != null) {
+      return new CIImage(paramTAVVideoMixEffect);
+    }
+    if (needCropTexture(paramImageCollection)) {
+      return getOutputImage((TextureInfo)localArrayList.get(0), paramRenderInfo);
+    }
+    return null;
   }
   
   public List<TAVSourceImage> getCachedTextures(List<ImageCollection.TrackImagePair> paramList, List<TextureInfo> paramList1, RenderInfo paramRenderInfo, CGSize paramCGSize)
@@ -89,32 +87,37 @@ class TAVOneClickFilmStickerEffect$StickerVideoCompositionMixerEffect
     }
     int j = paramList.size();
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       Object localObject = (ImageCollection.TrackImagePair)paramList.get(i);
-      int k;
       if (localObject != null)
       {
-        k = getPAGLayerIndex((ImageCollection.TrackImagePair)localObject);
-        if ((TAVOneClickFilmStickerEffect.access$200(this.this$0) != 1) || (k != -1)) {
-          break label89;
+        int k = getPAGLayerIndex((ImageCollection.TrackImagePair)localObject);
+        if ((TAVOneClickFilmStickerEffect.access$200(this.this$0) != 1) || (k != -1))
+        {
+          localObject = applyContentMode((ImageCollection.TrackImagePair)localObject, paramCGSize, paramRenderInfo);
+          localObject = getCachedTexture((CIImage)((Pair)localObject).first, (CGSize)((Pair)localObject).second, paramRenderInfo);
+          paramList1.add(localObject);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("PAGImage::layerIndex: ");
+          localStringBuilder.append(i);
+          localStringBuilder.append(", renderSize: ");
+          localStringBuilder.append(((TextureInfo)localObject).width);
+          localStringBuilder.append(", ");
+          localStringBuilder.append(((TextureInfo)localObject).height);
+          localStringBuilder.append(", textureID: ");
+          localStringBuilder.append(((TextureInfo)localObject).textureID);
+          localStringBuilder.append(", context: ");
+          localStringBuilder.append(this.renderContext.eglContext());
+          TLog.d("TAVStickerOverlayEffect", localStringBuilder.toString());
+          if (k == -1) {
+            localArrayList.add(new TAVSourceImage((TextureInfo)localObject, true, i));
+          } else {
+            localArrayList.add(new TAVSourceImage((TextureInfo)localObject, true, k));
+          }
         }
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        label89:
-        localObject = applyContentMode((ImageCollection.TrackImagePair)localObject, paramCGSize, paramRenderInfo);
-        localObject = getCachedTexture((CIImage)((Pair)localObject).first, (CGSize)((Pair)localObject).second, paramRenderInfo);
-        paramList1.add(localObject);
-        TLog.d("TAVStickerOverlayEffect", "PAGImage::layerIndex: " + i + ", renderSize: " + ((TextureInfo)localObject).width + ", " + ((TextureInfo)localObject).height + ", textureID: " + ((TextureInfo)localObject).textureID + ", context: " + this.renderContext.eglContext());
-        if (k == -1) {
-          localArrayList.add(new TAVSourceImage((TextureInfo)localObject, true, i));
-        } else {
-          localArrayList.add(new TAVSourceImage((TextureInfo)localObject, true, k));
-        }
-      }
+      i += 1;
     }
     return localArrayList;
   }
@@ -132,8 +135,9 @@ class TAVOneClickFilmStickerEffect$StickerVideoCompositionMixerEffect
   public String getReportKey()
   {
     ArrayList localArrayList = new ArrayList();
-    if (this.stickerContext != null) {
-      synchronized (this.stickerContext.getStickers())
+    ??? = this.stickerContext;
+    if (??? != null) {
+      synchronized (((TAVAutomaticRenderContext)???).getStickers())
       {
         Iterator localIterator = this.stickerContext.getStickers().iterator();
         while (localIterator.hasNext())
@@ -145,8 +149,14 @@ class TAVOneClickFilmStickerEffect$StickerVideoCompositionMixerEffect
         }
       }
     }
-    if (!localCollection.isEmpty()) {
-      return this.this$0.reportKey + ":[" + MemoryReportHelper.appendKeys(localCollection) + "]";
+    if (!localCollection.isEmpty())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append(this.this$0.reportKey);
+      ((StringBuilder)???).append(":[");
+      ((StringBuilder)???).append(MemoryReportHelper.appendKeys(localCollection));
+      ((StringBuilder)???).append("]");
+      return ((StringBuilder)???).toString();
     }
     return null;
   }
@@ -167,12 +177,16 @@ class TAVOneClickFilmStickerEffect$StickerVideoCompositionMixerEffect
   public void release()
   {
     super.release();
-    if (this.stickerContext != null)
+    Object localObject = this.stickerContext;
+    if (localObject != null)
     {
-      this.stickerContext.release();
+      ((TAVAutomaticRenderContext)localObject).release();
       this.stickerContext = null;
     }
-    TLog.d("TAVStickerOverlayEffect", "release cache." + Log.getStackTraceString(new RuntimeException()));
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("release cache.");
+    ((StringBuilder)localObject).append(Log.getStackTraceString(new RuntimeException()));
+    TLog.d("TAVStickerOverlayEffect", ((StringBuilder)localObject).toString());
   }
 }
 

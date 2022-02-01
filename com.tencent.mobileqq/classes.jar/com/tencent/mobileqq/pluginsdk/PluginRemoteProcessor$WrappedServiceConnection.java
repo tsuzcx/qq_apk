@@ -23,52 +23,65 @@ class PluginRemoteProcessor$WrappedServiceConnection
   
   public void onServiceConnected(ComponentName arg1, IBinder paramIBinder)
   {
-    do
+    try
     {
-      try
+      this.mContext.getApplicationContext().unbindService(this);
+    }
+    catch (Exception localException)
+    {
+      label14:
+      StringBuilder localStringBuilder;
+      break label14;
+    }
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("unbindService, ");
+      localStringBuilder.append(this);
+      QLog.i("plugin_tag", 2, localStringBuilder.toString());
+    }
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onServiceConnected, ");
+      localStringBuilder.append(this);
+      QLog.i("plugin_tag", 2, localStringBuilder.toString());
+    }
+    this.mWrappedConnection.onServiceConnected(???, paramIBinder);
+    synchronized (PluginRemoteProcessor.access$400(this.this$0))
+    {
+      paramIBinder = (WrappedServiceConnection)PluginRemoteProcessor.access$400(this.this$0).poll();
+      if (paramIBinder != null)
       {
-        this.mContext.getApplicationContext().unbindService(this);
         if (QLog.isColorLevel()) {
-          QLog.i("plugin_tag", 2, "onServiceConnected, " + this);
+          QLog.i("plugin_tag", 2, "continue process");
         }
-        this.mWrappedConnection.onServiceConnected(???, paramIBinder);
-      }
-      catch (Exception localException)
-      {
-        synchronized (PluginRemoteProcessor.access$400(this.this$0))
-        {
-          do
-          {
-            paramIBinder = (WrappedServiceConnection)PluginRemoteProcessor.access$400(this.this$0).poll();
-            if (paramIBinder == null) {
-              break;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.i("plugin_tag", 2, "continue process");
-            }
-            PluginRemoteProcessor.access$500(this.this$0, paramIBinder, 300);
-            return;
-            localException = localException;
-          } while (!QLog.isColorLevel());
-          QLog.i("plugin_tag", 2, "unbindService, " + this);
-        }
+        PluginRemoteProcessor.access$500(this.this$0, paramIBinder, 300);
+        return;
       }
       PluginRemoteProcessor.access$602(this.this$0, false);
-    } while (!QLog.isColorLevel());
-    QLog.i("plugin_tag", 2, "queue empty");
+      if (QLog.isColorLevel()) {
+        QLog.i("plugin_tag", 2, "queue empty");
+      }
+      return;
+    }
   }
   
   public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("plugin_tag", 2, "onServiceDisconnected, " + this);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onServiceDisconnected, ");
+      localStringBuilder.append(this);
+      QLog.i("plugin_tag", 2, localStringBuilder.toString());
     }
     this.mWrappedConnection.onServiceDisconnected(paramComponentName);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.PluginRemoteProcessor.WrappedServiceConnection
  * JD-Core Version:    0.7.0.1
  */

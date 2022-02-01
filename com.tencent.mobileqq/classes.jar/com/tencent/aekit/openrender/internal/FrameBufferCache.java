@@ -14,7 +14,7 @@ public class FrameBufferCache
 {
   public static boolean DEBUG = false;
   private static final ThreadLocal<FrameBufferCache> INSTANCE = new FrameBufferCache.1();
-  private static final String TAG = FrameBufferCache.class.getSimpleName();
+  private static final String TAG = "FrameBufferCache";
   private Map<FrameBufferCache.FrameSize, Queue<Frame>> allMap = new HashMap();
   private Map<FrameBufferCache.FrameSize, Integer> countMap = new HashMap();
   private Map<FrameBufferCache.FrameSize, Queue<Frame>> map = new HashMap();
@@ -69,78 +69,84 @@ public class FrameBufferCache
   
   public void forceRecycle()
   {
-    Iterator localIterator1 = this.allMap.values().iterator();
+    Object localObject1 = this.allMap.values().iterator();
     int i = 0;
-    if (localIterator1.hasNext())
+    Object localObject2;
+    if (((Iterator)localObject1).hasNext())
     {
-      Iterator localIterator2 = ((Queue)localIterator1.next()).iterator();
+      localObject2 = ((Queue)((Iterator)localObject1).next()).iterator();
       int j = i;
       for (;;)
       {
         i = j;
-        if (!localIterator2.hasNext()) {
+        if (!((Iterator)localObject2).hasNext()) {
           break;
         }
-        if (((Frame)localIterator2.next()).unlock()) {
+        if (((Frame)((Iterator)localObject2).next()).unlock()) {
           j += 1;
         }
       }
     }
-    if ((DEBUG) && (i > 0)) {
-      Log.e(TAG, i + " frames are leaked!");
+    if ((DEBUG) && (i > 0))
+    {
+      localObject1 = TAG;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(i);
+      ((StringBuilder)localObject2).append(" frames are leaked!");
+      Log.e((String)localObject1, ((StringBuilder)localObject2).toString());
     }
   }
   
   public Frame get(int paramInt1, int paramInt2)
   {
     FrameBufferCache.FrameSize localFrameSize = new FrameBufferCache.FrameSize(this, paramInt1, paramInt2);
-    Object localObject1 = (Queue)this.map.get(localFrameSize);
-    if (localObject1 == null)
+    Object localObject2 = (Queue)this.map.get(localFrameSize);
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
     {
       localObject1 = new LinkedList();
       this.map.put(localFrameSize, localObject1);
     }
-    for (;;)
+    Object localObject3 = (Queue)this.allMap.get(localFrameSize);
+    localObject2 = localObject3;
+    if (localObject3 == null)
     {
-      Object localObject2 = (Queue)this.allMap.get(localFrameSize);
-      if (localObject2 == null)
+      localObject2 = new LinkedList();
+      this.allMap.put(localFrameSize, localObject2);
+    }
+    if (((Queue)localObject1).isEmpty())
+    {
+      localObject3 = new Frame(Frame.Type.FRAME_CACHE);
+      ((Frame)localObject3).bindFrame(-1, paramInt1, paramInt2, 0.0D);
+      ((Queue)localObject2).offer(localObject3);
+    }
+    else
+    {
+      Frame localFrame = (Frame)((Queue)localObject1).poll();
+      localObject3 = localFrame;
+      if (DEBUG)
       {
-        localObject2 = new LinkedList();
-        this.allMap.put(localFrameSize, localObject2);
-      }
-      for (;;)
-      {
-        Frame localFrame;
-        if (((Queue)localObject1).isEmpty())
+        localObject3 = (Queue)this.usedMap.get(localFrameSize);
+        localObject2 = localObject3;
+        if (localObject3 == null)
         {
-          localFrame = new Frame(Frame.Type.FRAME_CACHE);
-          localFrame.bindFrame(-1, paramInt1, paramInt2, 0.0D);
-          ((Queue)localObject2).offer(localFrame);
+          localObject2 = new LinkedList();
+          this.usedMap.put(localFrameSize, localObject2);
         }
-        for (localObject2 = localFrame;; localObject2 = localFrame)
+        localObject3 = localFrame;
+        if (!((Queue)localObject2).contains(localFrame))
         {
-          if (!this.countMap.containsKey(localFrameSize)) {
-            this.countMap.put(localFrameSize, Integer.valueOf(2147483647));
-          }
-          this.countMap.put(localFrameSize, Integer.valueOf(Math.min(((Integer)this.countMap.get(localFrameSize)).intValue(), ((Queue)localObject1).size())));
-          return localObject2;
-          localFrame = (Frame)((Queue)localObject1).poll();
-          if (DEBUG)
-          {
-            Queue localQueue = (Queue)this.usedMap.get(localFrameSize);
-            localObject2 = localQueue;
-            if (localQueue == null)
-            {
-              localObject2 = new LinkedList();
-              this.usedMap.put(localFrameSize, localObject2);
-            }
-            if (!((Queue)localObject2).contains(localFrame)) {
-              ((Queue)localObject2).offer(localFrame);
-            }
-          }
+          ((Queue)localObject2).offer(localFrame);
+          localObject3 = localFrame;
         }
       }
     }
+    if (!this.countMap.containsKey(localFrameSize)) {
+      this.countMap.put(localFrameSize, Integer.valueOf(2147483647));
+    }
+    localObject2 = this.countMap;
+    ((Map)localObject2).put(localFrameSize, Integer.valueOf(Math.min(((Integer)((Map)localObject2).get(localFrameSize)).intValue(), ((Queue)localObject1).size())));
+    return localObject3;
   }
   
   public boolean put(Frame paramFrame)
@@ -178,6 +184,8 @@ public class FrameBufferCache
       int i;
       if (this.countMap.containsKey(((Map.Entry)localObject).getKey())) {
         i = ((Integer)this.countMap.get(((Map.Entry)localObject).getKey())).intValue();
+      } else {
+        i = localQueue1.size();
       }
       while ((i > 0) && (!localQueue1.isEmpty()))
       {
@@ -187,8 +195,6 @@ public class FrameBufferCache
         }
         ((Frame)localObject).clear();
         i -= 1;
-        continue;
-        i = localQueue1.size();
       }
     }
     this.countMap.clear();

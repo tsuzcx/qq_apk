@@ -1,79 +1,80 @@
 package com.huawei.secure.android.common.anonymization;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-
 public class a
 {
-  public static int a(@NonNull String paramString, char paramChar, int paramInt)
+  public static int a(String paramString, char paramChar, int paramInt)
   {
     int i = paramString.length() - 1;
-    int j = paramInt;
-    paramInt = i;
-    for (;;)
+    for (int j = paramInt; i >= 0; j = paramInt)
     {
-      if (paramInt >= 0)
+      paramInt = j;
+      if (paramString.charAt(i) == paramChar)
       {
-        i = j;
-        if (paramString.charAt(paramInt) == paramChar)
-        {
-          j -= 1;
-          i = j;
-          if (j > 0) {}
+        j -= 1;
+        paramInt = j;
+        if (j <= 0) {
+          return i;
         }
       }
-      else
-      {
-        return paramInt;
-      }
-      paramInt -= 1;
-      j = i;
+      i -= 1;
     }
+    return i;
   }
   
-  public static String a(@Nullable String paramString1, @NonNull String paramString2, @NonNull String paramString3)
+  public static String a(String paramString1, String paramString2, String paramString3)
   {
-    if ((paramString1 == null) || (paramString1.length() <= 0) || (paramString2.length() <= 0) || (paramString3.length() <= 0)) {
-      return paramString1;
-    }
-    char[] arrayOfChar = paramString1.toCharArray();
-    paramString1 = new char[paramString1.length()];
-    int j = paramString3.charAt(paramString3.length() - 1);
-    int k = 0;
-    while (k < arrayOfChar.length)
+    if ((paramString1 != null) && (paramString1.length() > 0) && (paramString2.length() > 0))
     {
-      int i = arrayOfChar[k];
-      int m = paramString2.lastIndexOf(i);
-      if (m < 0)
-      {
-        paramString1[k] = i;
-        k += 1;
+      if (paramString3.length() <= 0) {
+        return paramString1;
       }
-      else
+      char[] arrayOfChar = paramString1.toCharArray();
+      paramString1 = new char[paramString1.length()];
+      int j = paramString3.charAt(paramString3.length() - 1);
+      int k = 0;
+      while (k < arrayOfChar.length)
       {
-        if (m >= paramString3.length()) {}
-        for (i = j;; i = paramString3.charAt(m))
+        int i = arrayOfChar[k];
+        int m = paramString2.lastIndexOf(i);
+        if (m < 0)
         {
           paramString1[k] = i;
-          break;
         }
+        else
+        {
+          if (m >= paramString3.length()) {
+            i = j;
+          } else {
+            i = paramString3.charAt(m);
+          }
+          paramString1[k] = i;
+        }
+        k += 1;
       }
+      return new String(paramString1);
     }
-    return new String(paramString1);
+    return paramString1;
   }
   
   public static String a(String[] paramArrayOfString, int paramInt)
   {
-    if ((paramArrayOfString == null) || (paramArrayOfString.length <= 0)) {
-      return "";
+    if (paramArrayOfString != null)
+    {
+      if (paramArrayOfString.length <= 0) {
+        return "";
+      }
+      if (paramInt >= 0)
+      {
+        if (paramInt >= paramArrayOfString.length) {
+          return "";
+        }
+        return paramArrayOfString[paramInt];
+      }
     }
-    if ((paramInt < 0) || (paramInt >= paramArrayOfString.length)) {
-      return "";
-    }
-    return paramArrayOfString[paramInt];
+    return "";
   }
   
-  public static String[] a(@Nullable String paramString, char paramChar)
+  public static String[] a(String paramString, char paramChar)
   {
     if (paramString == null) {
       return new String[0];
@@ -97,7 +98,7 @@ public class a
     StringBuilder localStringBuilder = new StringBuilder(paramString.length());
     j = 0;
     int k = 0;
-    if ((j < paramString.length()) && (k < i))
+    while ((j < paramString.length()) && (k < i))
     {
       char c = paramString.charAt(j);
       if (c == paramChar)
@@ -106,12 +107,11 @@ public class a
         localStringBuilder.setLength(0);
         k += 1;
       }
-      for (;;)
+      else
       {
-        j += 1;
-        break;
         localStringBuilder.append(c);
       }
+      j += 1;
     }
     arrayOfString[k] = localStringBuilder.toString();
     return arrayOfString;
@@ -129,27 +129,28 @@ public class a
     return a(a(paramString, 0), a(a(paramString, 1), paramInt2 - paramInt1, paramInt3 - paramInt1));
   }
   
-  public static String[] a(@Nullable String paramString, int... paramVarArgs)
+  public static String[] a(String paramString, int... paramVarArgs)
   {
     if (paramString == null) {
       return new String[] { "" };
     }
-    if ((paramString.length() <= 1) || (paramVarArgs.length <= 0)) {
-      return new String[] { paramString };
-    }
-    if (paramVarArgs.length <= 1) {
-      return split(paramString, paramVarArgs[0]);
-    }
-    int j = paramVarArgs[0];
-    int[] arrayOfInt = new int[paramVarArgs.length - 1];
-    int i = 0;
-    while (i < arrayOfInt.length)
+    if ((paramString.length() > 1) && (paramVarArgs.length > 0))
     {
-      arrayOfInt[i] = (paramVarArgs[(i + 1)] - j);
-      i += 1;
+      if (paramVarArgs.length <= 1) {
+        return split(paramString, paramVarArgs[0]);
+      }
+      int k = paramVarArgs[0];
+      int[] arrayOfInt = new int[paramVarArgs.length - 1];
+      int j;
+      for (int i = 0; i < arrayOfInt.length; i = j)
+      {
+        j = i + 1;
+        paramVarArgs[j] -= k;
+      }
+      paramString = split(paramString, k);
+      return a(a(paramString, 0), a(a(paramString, 1), arrayOfInt));
     }
-    paramString = split(paramString, j);
-    return a(a(paramString, 0), a(a(paramString, 1), arrayOfInt));
+    return new String[] { paramString };
   }
   
   public static String[] a(String paramString, String[] paramArrayOfString)
@@ -162,15 +163,14 @@ public class a
     return a(paramArrayOfString, new String[] { paramString });
   }
   
-  public static String[] a(@NonNull String[] paramArrayOfString1, @NonNull String[] paramArrayOfString2)
+  public static String[] a(String[] paramArrayOfString1, String[] paramArrayOfString2)
   {
     if (paramArrayOfString1.length <= 0)
     {
-      paramArrayOfString1 = paramArrayOfString2;
       if (paramArrayOfString2.length <= 0) {
-        paramArrayOfString1 = new String[0];
+        return new String[0];
       }
-      return paramArrayOfString1;
+      return paramArrayOfString2;
     }
     if (paramArrayOfString2.length <= 0) {
       return paramArrayOfString1;
@@ -183,50 +183,54 @@ public class a
   
   public static String b(String paramString, char paramChar)
   {
-    if ((paramString == null) || (paramString.length() <= 0)) {
-      return "";
-    }
-    paramString = new char[paramString.length()];
-    int i = 0;
-    while (i < paramString.length)
+    if ((paramString != null) && (paramString.length() > 0))
     {
-      paramString[i] = paramChar;
-      i += 1;
-    }
-    return new String(paramString);
-  }
-  
-  public static String b(@NonNull String paramString, String... paramVarArgs)
-  {
-    if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder(paramVarArgs[0]);
-    int i = 1;
-    while (i < paramVarArgs.length)
-    {
-      if (paramVarArgs[i] != null) {
-        localStringBuilder.append(paramString).append(paramVarArgs[i]);
+      paramString = new char[paramString.length()];
+      int i = 0;
+      while (i < paramString.length)
+      {
+        paramString[i] = paramChar;
+        i += 1;
       }
-      i += 1;
+      return new String(paramString);
     }
-    return localStringBuilder.toString();
+    return "";
   }
   
-  public static String[] split(@Nullable String paramString, int paramInt)
+  public static String b(String paramString, String... paramVarArgs)
+  {
+    if ((paramVarArgs != null) && (paramVarArgs.length > 0))
+    {
+      StringBuilder localStringBuilder = new StringBuilder(paramVarArgs[0]);
+      int i = 1;
+      while (i < paramVarArgs.length)
+      {
+        if (paramVarArgs[i] != null)
+        {
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(paramVarArgs[i]);
+        }
+        i += 1;
+      }
+      return localStringBuilder.toString();
+    }
+    return "";
+  }
+  
+  public static String[] split(String paramString, int paramInt)
   {
     if (paramString == null) {
       return new String[] { "", "" };
     }
-    if ((paramInt < 0) || (paramInt > paramString.length())) {
-      return new String[] { paramString, "" };
+    if ((paramInt >= 0) && (paramInt <= paramString.length())) {
+      return new String[] { paramString.substring(0, paramInt), paramString.substring(paramInt) };
     }
-    return new String[] { paramString.substring(0, paramInt), paramString.substring(paramInt) };
+    return new String[] { paramString, "" };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.secure.android.common.anonymization.a
  * JD-Core Version:    0.7.0.1
  */

@@ -24,7 +24,11 @@ public class RequestHistoryDataMethod
       localObject = new Gson().toJson(localObject);
       return localObject;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label21:
+      break label21;
+    }
     return new JSONArray().toString();
   }
   
@@ -40,7 +44,7 @@ public class RequestHistoryDataMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.nativemethod.RequestHistoryDataMethod
  * JD-Core Version:    0.7.0.1
  */

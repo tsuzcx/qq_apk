@@ -50,31 +50,36 @@ public final class s_profile_for_set
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.nickname != null) {
-      paramJceOutputStream.write(this.nickname, 0);
+    String str = this.nickname;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.gender, 1);
     paramJceOutputStream.write(this.islunar, 2);
     paramJceOutputStream.write(this.birthyear, 3);
     paramJceOutputStream.write(this.birthmonth, 4);
     paramJceOutputStream.write(this.birthday, 5);
-    if (this.country != null) {
-      paramJceOutputStream.write(this.country, 6);
+    str = this.country;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
-    if (this.province != null) {
-      paramJceOutputStream.write(this.province, 7);
+    str = this.province;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
-    if (this.city != null) {
-      paramJceOutputStream.write(this.city, 8);
+    str = this.city;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
-    if (this.qzonedesc != null) {
-      paramJceOutputStream.write(this.qzonedesc, 9);
+    str = this.qzonedesc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_EXTRA.s_profile_for_set
  * JD-Core Version:    0.7.0.1
  */

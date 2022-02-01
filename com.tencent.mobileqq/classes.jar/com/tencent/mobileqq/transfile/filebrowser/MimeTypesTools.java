@@ -23,15 +23,16 @@ public class MimeTypesTools
   {
     int i = paramDrawable.getIntrinsicWidth();
     int j = paramDrawable.getIntrinsicHeight();
-    if (paramDrawable.getOpacity() != -1) {}
-    for (Object localObject = Bitmap.Config.ARGB_8888;; localObject = Bitmap.Config.RGB_565)
-    {
-      localObject = Bitmap.createBitmap(i, j, (Bitmap.Config)localObject);
-      Canvas localCanvas = new Canvas((Bitmap)localObject);
-      paramDrawable.setBounds(0, 0, i, j);
-      paramDrawable.draw(localCanvas);
-      return localObject;
+    if (paramDrawable.getOpacity() != -1) {
+      localObject = Bitmap.Config.ARGB_8888;
+    } else {
+      localObject = Bitmap.Config.RGB_565;
     }
+    Object localObject = Bitmap.createBitmap(i, j, (Bitmap.Config)localObject);
+    Canvas localCanvas = new Canvas((Bitmap)localObject);
+    paramDrawable.setBounds(0, 0, i, j);
+    paramDrawable.draw(localCanvas);
+    return localObject;
   }
   
   public static Bitmap getBitmapForFileName(Context paramContext, String paramString)
@@ -57,7 +58,7 @@ public class MimeTypesTools
     if ((paramString != null) && (paramString.size() > 0)) {
       return ((ResolveInfo)paramString.get(0)).loadIcon(localPackageManager);
     }
-    return paramContext.getResources().getDrawable(2130851241);
+    return paramContext.getResources().getDrawable(2130851158);
   }
   
   public static String getMimeType(Context paramContext, String paramString)
@@ -77,18 +78,15 @@ public class MimeTypesTools
   
   public static boolean isImageType(String paramString)
   {
-    if (paramString == null) {}
-    do
-    {
-      int i;
-      do
-      {
-        return false;
-        i = paramString.lastIndexOf(".");
-      } while (i < 0);
-      paramString = paramString.substring(i, paramString.length());
-    } while ((!".jpg".equalsIgnoreCase(paramString)) && (!".png".equalsIgnoreCase(paramString)) && (!".gif".equalsIgnoreCase(paramString)) && (!".jpeg".equalsIgnoreCase(paramString)) && (!".bmp".equalsIgnoreCase(paramString)));
-    return true;
+    if (paramString == null) {
+      return false;
+    }
+    int i = paramString.lastIndexOf(".");
+    if (i < 0) {
+      return false;
+    }
+    paramString = paramString.substring(i, paramString.length());
+    return (".jpg".equalsIgnoreCase(paramString)) || (".png".equalsIgnoreCase(paramString)) || (".gif".equalsIgnoreCase(paramString)) || (".jpeg".equalsIgnoreCase(paramString)) || (".bmp".equalsIgnoreCase(paramString));
   }
   
   private static void loadMimeTypes(Context paramContext)
@@ -107,17 +105,21 @@ public class MimeTypesTools
     }
     catch (XmlPullParserException paramContext)
     {
-      throw new RuntimeException("PreselectedChannelsActivity: XmlPullParserException");
+      break label47;
     }
     catch (IOException paramContext)
     {
-      throw new RuntimeException("PreselectedChannelsActivity: IOException");
+      label37:
+      label47:
+      break label37;
     }
+    throw new RuntimeException("PreselectedChannelsActivity: IOException");
+    throw new RuntimeException("PreselectedChannelsActivity: XmlPullParserException");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.filebrowser.MimeTypesTools
  * JD-Core Version:    0.7.0.1
  */

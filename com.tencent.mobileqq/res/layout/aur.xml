@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/kt9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:id="@id/ok6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
-    <ImageView android:id="@id/ok9" android:padding="5.0dip" android:visibility="gone" android:layout_width="70.0dip" android:layout_height="70.0dip" android:src="@drawable/dhl" android:layout_centerInParent="true" />
-    <ImageView android:background="@drawable/b4s" android:layout_width="fill_parent" android:layout_height="132.0dip" android:layout_alignParentBottom="true" />
-    <TextView android:textSize="12.0dip" android:textColor="@color/gg" android:id="@id/ok7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="6.0dip" android:layout_marginBottom="70.0dip" android:text="00:00" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
-    <TextView android:textSize="12.0dip" android:textColor="@color/gg" android:id="@id/oka" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="70.0dip" android:text="00:00" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-    <SeekBar android:id="@id/ok_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="72.0dip" android:maxHeight="3.0dip" android:max="100" android:minHeight="3.0dip" android:layout_toLeftOf="@id/oka" android:layout_toRightOf="@id/ok7" android:layout_alignParentBottom="true" style="@style/zz" />
-</RelativeLayout>
+    <androidx.appcompat.widget.ContentFrameLayout android:id="@id/jsc" android:layout_width="fill_parent" android:layout_height="fill_parent" android:foreground="?android:windowContentOverlay" android:foregroundGravity="fill_horizontal|center|top" />
+</merge>

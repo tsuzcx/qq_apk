@@ -20,34 +20,36 @@ class LottieDrawable$ColorFilterData
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (!(paramObject instanceof ColorFilterData)) {
-        return false;
-      }
-      paramObject = (ColorFilterData)paramObject;
-    } while ((hashCode() == paramObject.hashCode()) && (this.colorFilter == paramObject.colorFilter));
-    return false;
+    }
+    if (!(paramObject instanceof ColorFilterData)) {
+      return false;
+    }
+    paramObject = (ColorFilterData)paramObject;
+    return (hashCode() == paramObject.hashCode()) && (this.colorFilter == paramObject.colorFilter);
   }
   
   public int hashCode()
   {
-    int i = 17;
-    if (this.layerName != null) {
-      i = this.layerName.hashCode() * 527;
+    String str = this.layerName;
+    int i;
+    if (str != null) {
+      i = 527 * str.hashCode();
+    } else {
+      i = 17;
     }
+    str = this.contentName;
     int j = i;
-    if (this.contentName != null) {
-      j = i * 31 * this.contentName.hashCode();
+    if (str != null) {
+      j = i * 31 * str.hashCode();
     }
     return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.LottieDrawable.ColorFilterData
  * JD-Core Version:    0.7.0.1
  */

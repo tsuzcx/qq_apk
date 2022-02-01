@@ -12,31 +12,31 @@ public class CheckAuthCode
 {
   private ConfigObserver a;
   
-  public int a()
+  protected int doStep()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new CheckAuthCode.CheckAuthCodeObserver(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.addDefaultObservers(this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver);
+      this.a = new CheckAuthCode.CheckAuthCodeObserver(this, null);
+      this.mAutomator.a.addDefaultObservers(this.a);
     }
-    if (((ConfigHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER)).a()) {
+    if (((ConfigHandler)this.mAutomator.a.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER)).a()) {
       return 2;
     }
     return 7;
   }
   
-  public void c()
+  public void onDestroy()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver != null)
+    if (this.a != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver);
-      this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver = null;
+      this.mAutomator.a.removeObserver(this.a);
+      this.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.CheckAuthCode
  * JD-Core Version:    0.7.0.1
  */

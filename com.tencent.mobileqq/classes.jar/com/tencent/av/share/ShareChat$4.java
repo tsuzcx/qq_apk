@@ -13,12 +13,16 @@ final class ShareChat$4
   public void a(long paramLong, boolean paramBoolean, ReqGroupVideo.ReqPushShareArk paramReqPushShareArk, ReqGroupVideo.RspPushShareArk paramRspPushShareArk, Object paramObject)
   {
     int i = MessageHandler.a((common.ErrorInfo)paramRspPushShareArk.result.get());
-    QLog.d("ShareChat", 1, "shareGAVArkMsg errCode[" + i + "]");
+    paramReqPushShareArk = new StringBuilder();
+    paramReqPushShareArk.append("shareGAVArkMsg errCode[");
+    paramReqPushShareArk.append(i);
+    paramReqPushShareArk.append("]");
+    QLog.d("ShareChat", 1, paramReqPushShareArk.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.share.ShareChat.4
  * JD-Core Version:    0.7.0.1
  */

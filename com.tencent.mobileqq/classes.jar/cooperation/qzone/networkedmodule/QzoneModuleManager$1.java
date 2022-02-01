@@ -17,24 +17,23 @@ class QzoneModuleManager$1
       return;
     }
     QzoneModuleManager.access$008(this.this$0);
-    for (;;)
+    Object localObject;
+    while (QzoneModuleManager.access$000(this.this$0) < QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.size())
     {
-      if (QzoneModuleManager.access$000(this.this$0) < QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.size())
+      localObject = (String)QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.get(QzoneModuleManager.access$000(this.this$0));
+      if (this.this$0.checkIfNeedUpdate((String)localObject))
       {
-        String str = (String)QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.get(QzoneModuleManager.access$000(this.this$0));
-        if (this.this$0.checkIfNeedUpdate(str)) {
-          this.this$0.updateModule(str, this);
-        }
-      }
-      else
-      {
-        if (QzoneModuleManager.access$000(this.this$0) != QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.size()) {
-          break;
-        }
-        QLog.i("QzoneModuleManager", 1, "updateAllModules completed--totalModules:" + QzoneModuleManager.access$000(this.this$0));
-        return;
+        this.this$0.updateModule((String)localObject, this);
+        break;
       }
       QzoneModuleManager.access$008(this.this$0);
+    }
+    if (QzoneModuleManager.access$000(this.this$0) == QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.size())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateAllModules completed--totalModules:");
+      ((StringBuilder)localObject).append(QzoneModuleManager.access$000(this.this$0));
+      QLog.i("QzoneModuleManager", 1, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -58,7 +57,7 @@ class QzoneModuleManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.networkedmodule.QzoneModuleManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,44 +15,71 @@ public class Step$AmStepFactory
   
   public static Step b(int paramInt, StartupDirector paramStartupDirector, int[] paramArrayOfInt)
   {
-    Step localStep = null;
-    Object localObject;
-    switch (paramInt)
-    {
-    default: 
-      if (a != null) {
-        localStep = a.a(paramInt, paramStartupDirector, paramArrayOfInt);
+    if (paramInt != 1) {
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 13)
+            {
+              if (paramInt != 21)
+              {
+                if (paramInt != 49) {}
+                switch (paramInt)
+                {
+                default: 
+                  localObject = a;
+                  Step localStep;
+                  if (localObject != null) {
+                    localStep = ((Step.IStepFactory)localObject).a(paramInt, paramStartupDirector, paramArrayOfInt);
+                  } else {
+                    localStep = null;
+                  }
+                  localObject = localStep;
+                  if (localStep != null) {
+                    break;
+                  }
+                  localObject = new Step();
+                  break;
+                case 9: 
+                  localObject = new OldApplication();
+                  break;
+                case 8: 
+                  localObject = new InitMemoryCache();
+                  break;
+                  localObject = new QCircleInitStep();
+                  break;
+                }
+              }
+              localObject = new StartService();
+              break label193;
+            }
+            localObject = new Update();
+            break label193;
+          }
+        }
+        else
+        {
+          localObject = new CheckPermission();
+          break label193;
+        }
       }
-      localObject = localStep;
-      if (localStep == null) {
-        localObject = new Step();
+      else
+      {
+        localObject = new SetSplash();
+        break label193;
       }
-      break;
     }
-    for (;;)
-    {
-      ((Step)localObject).mId = paramInt;
-      ((Step)localObject).mDirector = paramStartupDirector;
-      if (paramInt == 0) {
-        Step.access$002((Step)localObject, paramArrayOfInt);
-      }
-      return localObject;
-      localObject = new LoadDex();
-      continue;
-      localObject = new InitMemoryCache();
-      continue;
-      localObject = new OldApplication();
-      continue;
-      localObject = new SetSplash();
-      continue;
-      localObject = new CheckPermission();
-      continue;
-      localObject = new Update();
-      continue;
-      localObject = new StartService();
-      continue;
-      localObject = new QCircleInitStep();
+    Object localObject = new LoadDex();
+    label193:
+    ((Step)localObject).mId = paramInt;
+    ((Step)localObject).mDirector = paramStartupDirector;
+    if (paramInt == 0) {
+      Step.access$002((Step)localObject, paramArrayOfInt);
     }
+    return localObject;
   }
   
   public Step a(int paramInt, StartupDirector paramStartupDirector, int[] paramArrayOfInt)
@@ -62,7 +89,7 @@ public class Step$AmStepFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.Step.AmStepFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -25,14 +25,15 @@ public final class EnterRoomRequest
   
   public static EnterRoomRequest[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new EnterRoomRequest[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new EnterRoomRequest[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static EnterRoomRequest parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -57,13 +58,13 @@ public final class EnterRoomRequest
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
-    int n = 0;
     int j = super.computeSerializedSize();
+    long l = this.roomId;
     int i = j;
-    if (this.roomId != 0L) {
-      i = j + CodedOutputByteBufferNano.computeUInt64Size(1, this.roomId);
+    if (l != 0L) {
+      i = j + CodedOutputByteBufferNano.computeUInt64Size(1, l);
     }
     j = i;
     if (!this.machineCode.equals("")) {
@@ -73,28 +74,32 @@ public final class EnterRoomRequest
     if (!Arrays.equals(this.fromSource, WireFormatNano.EMPTY_BYTES)) {
       i = j + CodedOutputByteBufferNano.computeBytesSize(3, this.fromSource);
     }
+    Object localObject = this.format;
     j = i;
-    if (this.format != null)
+    if (localObject != null)
     {
       j = i;
-      if (this.format.length > 0)
+      if (localObject.length > 0)
       {
+        j = 0;
         int k = 0;
-        int m = 0;
-        j = n;
-        while (j < this.format.length)
+        int n;
+        for (int m = 0;; m = n)
         {
-          String str = this.format[j];
+          localObject = this.format;
+          if (j >= localObject.length) {
+            break;
+          }
+          localObject = localObject[j];
           int i1 = k;
           n = m;
-          if (str != null)
+          if (localObject != null)
           {
             n = m + 1;
-            i1 = k + CodedOutputByteBufferNano.computeStringSizeNoTag(str);
+            i1 = k + CodedOutputByteBufferNano.computeStringSizeNoTag((String)localObject);
           }
           j += 1;
           k = i1;
-          m = n;
         }
         j = i + k + m * 1;
       }
@@ -115,58 +120,79 @@ public final class EnterRoomRequest
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.roomId = paramCodedInputByteBufferNano.readUInt64();
-        break;
-      case 18: 
-        this.machineCode = paramCodedInputByteBufferNano.readString();
-        break;
-      case 26: 
-        this.fromSource = paramCodedInputByteBufferNano.readBytes();
-        break;
-      case 34: 
-        int j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 34);
-        if (this.format == null) {}
-        String[] arrayOfString;
-        for (i = 0;; i = this.format.length)
-        {
-          arrayOfString = new String[j + i];
-          j = i;
-          if (i != 0)
-          {
-            System.arraycopy(this.format, 0, arrayOfString, 0, i);
-            j = i;
-          }
-          while (j < arrayOfString.length - 1)
-          {
-            arrayOfString[j] = paramCodedInputByteBufferNano.readString();
-            paramCodedInputByteBufferNano.readTag();
-            j += 1;
-          }
-        }
-        arrayOfString[j] = paramCodedInputByteBufferNano.readString();
-        this.format = arrayOfString;
-        break;
-      case 42: 
-        this.extData = paramCodedInputByteBufferNano.readString();
+      if (i == 0) {
         break;
       }
-      this.programId = paramCodedInputByteBufferNano.readString();
+      if (i != 8)
+      {
+        if (i != 18)
+        {
+          if (i != 26)
+          {
+            if (i != 34)
+            {
+              if (i != 42)
+              {
+                if (i != 50)
+                {
+                  if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+                    return this;
+                  }
+                }
+                else {
+                  this.programId = paramCodedInputByteBufferNano.readString();
+                }
+              }
+              else {
+                this.extData = paramCodedInputByteBufferNano.readString();
+              }
+            }
+            else
+            {
+              int j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 34);
+              String[] arrayOfString = this.format;
+              if (arrayOfString == null) {
+                i = 0;
+              } else {
+                i = arrayOfString.length;
+              }
+              arrayOfString = new String[j + i];
+              j = i;
+              if (i != 0)
+              {
+                System.arraycopy(this.format, 0, arrayOfString, 0, i);
+                j = i;
+              }
+              while (j < arrayOfString.length - 1)
+              {
+                arrayOfString[j] = paramCodedInputByteBufferNano.readString();
+                paramCodedInputByteBufferNano.readTag();
+                j += 1;
+              }
+              arrayOfString[j] = paramCodedInputByteBufferNano.readString();
+              this.format = arrayOfString;
+            }
+          }
+          else {
+            this.fromSource = paramCodedInputByteBufferNano.readBytes();
+          }
+        }
+        else {
+          this.machineCode = paramCodedInputByteBufferNano.readString();
+        }
+      }
+      else {
+        this.roomId = paramCodedInputByteBufferNano.readUInt64();
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.roomId != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(1, this.roomId);
+    long l = this.roomId;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(1, l);
     }
     if (!this.machineCode.equals("")) {
       paramCodedOutputByteBufferNano.writeString(2, this.machineCode);
@@ -174,14 +200,19 @@ public final class EnterRoomRequest
     if (!Arrays.equals(this.fromSource, WireFormatNano.EMPTY_BYTES)) {
       paramCodedOutputByteBufferNano.writeBytes(3, this.fromSource);
     }
-    if ((this.format != null) && (this.format.length > 0))
+    Object localObject = this.format;
+    if ((localObject != null) && (localObject.length > 0))
     {
       int i = 0;
-      while (i < this.format.length)
+      for (;;)
       {
-        String str = this.format[i];
-        if (str != null) {
-          paramCodedOutputByteBufferNano.writeString(4, str);
+        localObject = this.format;
+        if (i >= localObject.length) {
+          break;
+        }
+        localObject = localObject[i];
+        if (localObject != null) {
+          paramCodedOutputByteBufferNano.writeString(4, (String)localObject);
         }
         i += 1;
       }
@@ -197,7 +228,7 @@ public final class EnterRoomRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.roomAccess.roomAccess.nano.EnterRoomRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -52,8 +52,9 @@ public class ArkInputCallback
   
   public int a()
   {
-    if (this.c != null) {
-      return this.c.getHeight();
+    ImageView localImageView = this.c;
+    if (localImageView != null) {
+      return localImageView.getHeight();
     }
     return 0;
   }
@@ -66,19 +67,21 @@ public class ArkInputCallback
   public void onFocusChanged(View paramView, boolean paramBoolean)
   {
     ArkAppView localArkAppView = (ArkAppView)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localArkAppView == null) {}
-    do
-    {
+    if (localArkAppView == null) {
       return;
-      paramView = (ViewGroup)localArkAppView.getParent();
-      if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
-        paramView = this.jdField_a_of_type_AndroidViewViewGroup;
-      }
-    } while (paramView == null);
+    }
+    paramView = (ViewGroup)localArkAppView.getParent();
+    Object localObject1 = this.jdField_a_of_type_AndroidViewViewGroup;
+    if (localObject1 != null) {
+      paramView = (View)localObject1;
+    }
+    if (paramView == null) {
+      return;
+    }
     if (paramBoolean)
     {
-      Object localObject2 = localArkAppView.getResources().getDrawable(2130838773);
-      Object localObject1 = localArkAppView.getResources().getDrawable(2130838772);
+      Object localObject2 = localArkAppView.getResources().getDrawable(2130838618);
+      localObject1 = localArkAppView.getResources().getDrawable(2130838617);
       localArkAppView.setInputSetSelectHolderSize(((Drawable)localObject2).getIntrinsicWidth(), ((Drawable)localObject2).getIntrinsicHeight());
       localArkAppView.setInputSetCaretHolderSize(((Drawable)localObject1).getIntrinsicWidth(), ((Drawable)localObject1).getIntrinsicHeight());
       if (this.jdField_a_of_type_AndroidWidgetImageView == null)
@@ -117,9 +120,10 @@ public class ArkInputCallback
   
   public void onHideMenu(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null)
+    paramView = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+    if (paramView != null)
     {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a();
+      paramView.dismiss();
       this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
     }
   }
@@ -127,46 +131,45 @@ public class ArkInputCallback
   public void onSelectChanged(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     ArkAppView localArkAppView = (ArkAppView)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localArkAppView == null) {}
-    do
-    {
+    if (localArkAppView == null) {
       return;
-      paramView = (ViewGroup)localArkAppView.getParent();
-      if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
-        paramView = this.jdField_a_of_type_AndroidViewViewGroup;
-      }
-    } while (paramView == null);
+    }
+    paramView = (ViewGroup)localArkAppView.getParent();
+    ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
+    if (localViewGroup != null) {
+      paramView = localViewGroup;
+    }
+    if (paramView == null) {
+      return;
+    }
     if ((paramInt1 > 0) && (paramInt2 > 0) && ((paramInt1 < paramInt3) || (paramInt2 < paramInt4)))
     {
       int j = this.jdField_a_of_type_AndroidWidgetImageView.getWidth();
       int i = j;
       if (j <= 0) {
-        i = localArkAppView.getResources().getDrawable(2130838773).getIntrinsicWidth();
+        i = localArkAppView.getResources().getDrawable(2130838618).getIntrinsicWidth();
       }
       a(this.jdField_a_of_type_AndroidWidgetImageView, localArkAppView.getLeft() + paramInt1 - i, localArkAppView.getTop() + paramInt2);
-      if ((paramInt3 <= 0) || (paramInt4 <= 0) || ((paramInt1 >= paramInt3) && (paramInt2 >= paramInt4))) {
-        break label255;
-      }
-      a(this.b, localArkAppView.getLeft() + paramInt3, localArkAppView.getTop() + paramInt4);
     }
-    for (;;)
+    else
     {
-      if ((paramInt1 <= 0) || (paramInt2 <= 0) || (paramInt1 != paramInt3) || (paramInt2 != paramInt4)) {
-        break label266;
-      }
+      a(this.jdField_a_of_type_AndroidWidgetImageView);
+    }
+    if ((paramInt3 > 0) && (paramInt4 > 0) && ((paramInt1 < paramInt3) || (paramInt2 < paramInt4))) {
+      a(this.b, localArkAppView.getLeft() + paramInt3, localArkAppView.getTop() + paramInt4);
+    } else {
+      a(this.b);
+    }
+    if ((paramInt1 > 0) && (paramInt2 > 0) && (paramInt1 == paramInt3) && (paramInt2 == paramInt4))
+    {
       paramInt2 = this.c.getWidth();
       paramInt1 = paramInt2;
       if (paramInt2 <= 0) {
-        paramInt1 = localArkAppView.getResources().getDrawable(2130838772).getIntrinsicWidth();
+        paramInt1 = localArkAppView.getResources().getDrawable(2130838617).getIntrinsicWidth();
       }
-      a(this.c, localArkAppView.getLeft() + paramInt3 - paramInt1 / 2, localArkAppView.getTop() + paramInt4);
+      a(this.c, paramInt3 + localArkAppView.getLeft() - paramInt1 / 2, paramInt4 + localArkAppView.getTop());
       return;
-      a(this.jdField_a_of_type_AndroidWidgetImageView);
-      break;
-      label255:
-      a(this.b);
     }
-    label266:
     a(this.c);
   }
   
@@ -176,38 +179,35 @@ public class ArkInputCallback
     if (localArkAppView == null) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null)
+    Object localObject = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a();
+      ((BubblePopupWindow)localObject).dismiss();
       this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
     }
-    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
+    localObject = new QQCustomMenu();
     if (paramInt4 == 2)
     {
-      localQQCustomMenu.a(0, HardCodeUtil.a(2131700727));
-      localQQCustomMenu.a(1, HardCodeUtil.a(2131700723));
-      localQQCustomMenu.a(2, HardCodeUtil.a(2131700724));
+      ((QQCustomMenu)localObject).a(0, HardCodeUtil.a(2131700871));
+      ((QQCustomMenu)localObject).a(1, HardCodeUtil.a(2131700867));
+      ((QQCustomMenu)localObject).a(2, HardCodeUtil.a(2131700868));
     }
-    for (;;)
+    else if (paramInt4 == 1)
     {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = BubbleContextMenu.a(paramView, paramInt1, paramInt2, paramInt3 + localArkAppView.getResources().getDrawable(2130838772).getIntrinsicHeight(), localQQCustomMenu, new ArkInputCallback.1(this, paramInt4, (ArkViewImplement.ArkViewInterface)paramView));
-      return;
-      if (paramInt4 == 1)
-      {
-        localQQCustomMenu.a(0, HardCodeUtil.a(2131700726));
-        localQQCustomMenu.a(1, HardCodeUtil.a(2131700722));
-        localQQCustomMenu.a(2, HardCodeUtil.a(2131700725));
-      }
-      else
-      {
-        localQQCustomMenu.a(0, HardCodeUtil.a(2131700728));
-      }
+      ((QQCustomMenu)localObject).a(0, HardCodeUtil.a(2131700870));
+      ((QQCustomMenu)localObject).a(1, HardCodeUtil.a(2131700866));
+      ((QQCustomMenu)localObject).a(2, HardCodeUtil.a(2131700869));
     }
+    else
+    {
+      ((QQCustomMenu)localObject).a(0, HardCodeUtil.a(2131700872));
+    }
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = BubbleContextMenu.a(paramView, paramInt1, paramInt2, paramInt3 + localArkAppView.getResources().getDrawable(2130838617).getIntrinsicHeight(), (QQCustomMenu)localObject, new ArkInputCallback.1(this, paramInt4, (ArkViewImplement.ArkViewInterface)paramView));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ark.ArkInputCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ public final class e_permission_flag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.e_permission_flag
  * JD-Core Version:    0.7.0.1
  */

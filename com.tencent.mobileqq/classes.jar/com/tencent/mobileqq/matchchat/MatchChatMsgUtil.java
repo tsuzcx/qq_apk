@@ -4,19 +4,24 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.tencent.biz.expand.utils.DateUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.imcore.message.BaseMsgProxy;
 import com.tencent.imcore.message.ConversationFacade;
+import com.tencent.imcore.message.MsgProxyContainer;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.proxy.QProxyManager;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msg.api.IConversationFacade;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qqexpand.utils.DateUtils;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.mobileqq.tianshu.ui.RedTouch;
 import com.tencent.mobileqq.utils.SharedPreUtils;
@@ -26,32 +31,31 @@ import java.util.List;
 
 public class MatchChatMsgUtil
 {
-  public static int a(QQAppInterface paramQQAppInterface)
+  public static int a(AppInterface paramAppInterface)
   {
-    if (paramQQAppInterface == null) {}
-    do
-    {
+    int i = 0;
+    if (paramAppInterface == null) {
       return 0;
-      if (a(paramQQAppInterface)) {
-        break;
+    }
+    if (!a(paramAppInterface))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("MatchChatMsgUtil", 2, "isMatchChatRedPointSwitchOn false");
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("MatchChatMsgUtil", 2, "isMatchChatRedPointSwitchOn false");
-    return 0;
-    Object localObject = paramQQAppInterface.getMessageProxy(1044).a(AppConstants.MATCH_CHAT_UIN, 1044);
-    if (localObject == null)
+      return 0;
+    }
+    IConversationFacade localIConversationFacade = (IConversationFacade)paramAppInterface.getRuntimeService(IConversationFacade.class, "");
+    paramAppInterface = ((MsgProxyContainer)((QProxyManager)paramAppInterface.getProxyManagerInner()).getProxy(0)).a(1044).a(AppConstants.MATCH_CHAT_UIN, 1044);
+    if (paramAppInterface == null)
     {
       QLog.i("MatchChatMsgUtil", 1, "getMatchChatRedPointNum null");
       return 0;
     }
-    localObject = ((List)localObject).iterator();
-    String str;
-    int j;
-    for (int i = 0; ((Iterator)localObject).hasNext(); i = paramQQAppInterface.getConversationFacade().a(str, j) + i)
+    paramAppInterface = paramAppInterface.iterator();
+    while (paramAppInterface.hasNext())
     {
-      MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
-      str = localMessageRecord.senderuin;
-      j = localMessageRecord.istroop;
+      MessageRecord localMessageRecord = (MessageRecord)paramAppInterface.next();
+      i += localIConversationFacade.getUnreadCount(localMessageRecord.senderuin, localMessageRecord.istroop);
     }
     return i;
   }
@@ -63,15 +67,6 @@ public class MatchChatMsgUtil
     paramContext.putExtra("uin", AppConstants.MATCH_CHAT_UIN);
     paramContext.putExtra("public_fragment_class", MatchChatMsgListFragment.class.getName());
     paramContext.addFlags(268435456);
-    return paramContext;
-  }
-  
-  public static Intent a(Context paramContext, String paramString)
-  {
-    paramContext = a(paramContext);
-    paramContext.putExtra("key_matchchat_from_notification", true);
-    paramContext.putExtra("key_matchchat_from_notification_uin", paramString);
-    paramContext.putExtra("key_matchchat_from_notification_type", 1044);
     return paramContext;
   }
   
@@ -88,7 +83,10 @@ public class MatchChatMsgUtil
   public static BusinessInfoCheckUpdate.AppInfo a(QQAppInterface paramQQAppInterface, String paramString)
   {
     int i = a(paramQQAppInterface);
-    QLog.i("MatchChatMsgUtil", 1, "getMatchChatRedPointAppInfo num = " + i);
+    paramQQAppInterface = new StringBuilder();
+    paramQQAppInterface.append("getMatchChatRedPointAppInfo num = ");
+    paramQQAppInterface.append(i);
+    QLog.i("MatchChatMsgUtil", 1, paramQQAppInterface.toString());
     paramQQAppInterface = new BusinessInfoCheckUpdate.AppInfo();
     paramQQAppInterface.path.set(paramString);
     paramQQAppInterface.num.set(i);
@@ -99,53 +97,66 @@ public class MatchChatMsgUtil
   
   public static void a(QQAppInterface paramQQAppInterface)
   {
-    if (paramQQAppInterface == null) {}
-    for (;;)
-    {
+    if (paramQQAppInterface == null) {
       return;
-      Object localObject = paramQQAppInterface.getMessageProxy(1044).a(AppConstants.MATCH_CHAT_UIN, 1044);
-      if (localObject == null)
+    }
+    Object localObject1 = paramQQAppInterface.getMessageProxy(1044).a(AppConstants.MATCH_CHAT_UIN, 1044);
+    if (localObject1 == null)
+    {
+      QLog.i("MatchChatMsgUtil", 1, "clearMatchChatMessageBox null");
+      return;
+    }
+    localObject1 = ((List)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject1).next();
+      if (QLog.isColorLevel())
       {
-        QLog.i("MatchChatMsgUtil", 1, "clearMatchChatMessageBox null");
-        return;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("clearMatchChatMessageBox, delete uin = ");
+        ((StringBuilder)localObject2).append(localMessageRecord.senderuin);
+        QLog.i("MatchChatMsgUtil", 1, ((StringBuilder)localObject2).toString());
       }
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
-        if (QLog.isColorLevel()) {
-          QLog.i("MatchChatMsgUtil", 1, "clearMatchChatMessageBox, delete uin = " + localMessageRecord.senderuin);
-        }
-        String str = localMessageRecord.senderuin;
-        int i = localMessageRecord.istroop;
-        paramQQAppInterface.getMessageFacade().a(str, i);
-      }
+      Object localObject2 = localMessageRecord.senderuin;
+      int i = localMessageRecord.istroop;
+      paramQQAppInterface.getMessageFacade().a((String)localObject2, i);
     }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, RecentMatchChatListItem paramRecentMatchChatListItem, boolean paramBoolean)
   {
-    if ((paramQQAppInterface == null) || (paramRecentMatchChatListItem == null)) {}
-    int i;
-    do
+    if (paramQQAppInterface != null)
     {
-      return;
-      i = paramQQAppInterface.getConversationFacade().a(paramRecentMatchChatListItem.getRecentUserUin(), paramRecentMatchChatListItem.getRecentUserType());
+      if (paramRecentMatchChatListItem == null) {
+        return;
+      }
+      int i = paramQQAppInterface.getConversationFacade().a(paramRecentMatchChatListItem.getRecentUserUin(), paramRecentMatchChatListItem.getRecentUserType());
       if (paramBoolean) {
         paramQQAppInterface.getMessageFacade().a(AppConstants.MATCH_CHAT_UIN, 1044, paramRecentMatchChatListItem.getRecentUserUin(), paramQQAppInterface.getCurrentAccountUin());
       }
-    } while (i <= 0);
-    paramQQAppInterface.getMessageFacade().a(paramRecentMatchChatListItem.getRecentUserUin(), paramRecentMatchChatListItem.getRecentUserType(), true, false);
+      if (i > 0) {
+        paramQQAppInterface.getMessageFacade().a(paramRecentMatchChatListItem.getRecentUserUin(), paramRecentMatchChatListItem.getRecentUserType(), true, false);
+      }
+    }
   }
   
-  public static void a(RedTouch paramRedTouch, QQAppInterface paramQQAppInterface)
+  public static void a(RedTouch paramRedTouch, BaseQQAppInterface paramBaseQQAppInterface)
   {
-    ThreadManagerV2.excute(new MatchChatMsgUtil.1(paramQQAppInterface, paramRedTouch), 16, null, false);
+    ThreadManagerV2.excute(new MatchChatMsgUtil.1(paramBaseQQAppInterface, paramRedTouch), 16, null, false);
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface)
+  public static boolean a(AppInterface paramAppInterface)
   {
     return true;
+  }
+  
+  static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {
+      return false;
+    }
+    long l = SharedPreUtils.g(paramQQAppInterface.getAccount()).getLong("expandinfo_banner_close_time", 0L);
+    return DateUtils.a.a(7, l);
   }
   
   static void b(QQAppInterface paramQQAppInterface)
@@ -155,19 +166,10 @@ public class MatchChatMsgUtil
     }
     SharedPreUtils.g(paramQQAppInterface.getAccount()).edit().putLong("expandinfo_banner_close_time", System.currentTimeMillis()).apply();
   }
-  
-  static boolean b(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {
-      return false;
-    }
-    long l = SharedPreUtils.g(paramQQAppInterface.getAccount()).getLong("expandinfo_banner_close_time", 0L);
-    return DateUtils.a.a(7, l);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.matchchat.MatchChatMsgUtil
  * JD-Core Version:    0.7.0.1
  */

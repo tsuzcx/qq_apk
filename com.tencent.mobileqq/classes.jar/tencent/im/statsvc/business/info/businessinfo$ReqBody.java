@@ -21,13 +21,14 @@ public final class businessinfo$ReqBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42 }, new String[] { "uint32_status", "uint32_ext_status", "int32_battery_status", "bytes_business_info", "private_info" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, null }, ReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42 }, new String[] { "uint32_status", "uint32_ext_status", "int32_battery_status", "bytes_business_info", "private_info" }, new Object[] { localInteger, localInteger, localInteger, localByteStringMicro, null }, ReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.statsvc.business.info.businessinfo.ReqBody
  * JD-Core Version:    0.7.0.1
  */

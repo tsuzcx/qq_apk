@@ -1,25 +1,31 @@
 package com.tencent.mobileqq.app.parser;
 
 import android.content.Context;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.extendfriend.ExtendOpenPageAction;
+import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.qphone.base.util.QLog;
 
 public class ExtendOpenPageParser
   extends JumpParserBase
 {
-  public JumpActionBase a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
+  public JumpAction a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendOpenPageParser", 2, "parse：" + paramString);
+    if (QLog.isColorLevel())
+    {
+      paramJumpParserResult = new StringBuilder();
+      paramJumpParserResult.append("parse：");
+      paramJumpParserResult.append(paramString);
+      QLog.d("ExtendOpenPageParser", 2, paramJumpParserResult.toString());
     }
-    paramQQAppInterface = new ExtendOpenPageAction(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "expand";
-    paramQQAppInterface.c = "openpage";
+    paramBaseQQAppInterface = new ExtendOpenPageAction((QQAppInterface)paramBaseQQAppInterface, paramContext);
+    paramBaseQQAppInterface.a = paramString;
+    paramBaseQQAppInterface.b = "expand";
+    paramBaseQQAppInterface.c = "openpage";
     paramContext = paramString.split("\\?");
     if (paramContext.length != 2) {
-      return paramQQAppInterface;
+      return paramBaseQQAppInterface;
     }
     paramContext = paramContext[1].split("&");
     if (paramContext != null)
@@ -29,17 +35,17 @@ public class ExtendOpenPageParser
       {
         paramString = paramContext[i].split("=");
         if ((paramString != null) && (paramString.length == 2)) {
-          paramQQAppInterface.a(paramString[0], paramString[1]);
+          paramBaseQQAppInterface.a(paramString[0], paramString[1]);
         }
         i += 1;
       }
     }
-    return paramQQAppInterface;
+    return paramBaseQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.ExtendOpenPageParser
  * JD-Core Version:    0.7.0.1
  */

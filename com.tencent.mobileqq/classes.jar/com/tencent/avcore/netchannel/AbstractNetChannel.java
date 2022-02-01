@@ -21,77 +21,73 @@ public abstract class AbstractNetChannel
   
   public final void receiveGatewayMsg(String paramString, int paramInt)
   {
-    if (this.mDavNetCallback != null) {
-      this.mDavNetCallback.receiveGatewayMsg(paramString, paramInt);
+    Object localObject = this.mDavNetCallback;
+    if (localObject != null) {
+      ((IDavNetCallback)localObject).receiveGatewayMsg(paramString, paramInt);
     }
-    if (this.mMavNetCallback != null) {
-      this.mMavNetCallback.receiveGatewayMsg(paramString, paramInt);
+    localObject = this.mMavNetCallback;
+    if (localObject != null) {
+      ((IMavNetCallback)localObject).receiveGatewayMsg(paramString, paramInt);
     }
   }
   
   public final int receiveMultiVideoMsg(int paramInt, byte[] paramArrayOfByte)
   {
-    if (this.mMavNetCallback == null) {
+    IMavNetCallback localIMavNetCallback = this.mMavNetCallback;
+    if (localIMavNetCallback == null) {
       return 3;
     }
     try
     {
-      paramInt = this.mMavNetCallback.receiveMultiVideoMsg(paramInt, paramArrayOfByte);
+      paramInt = localIMavNetCallback.receiveMultiVideoMsg(paramInt, paramArrayOfByte);
       return paramInt;
     }
-    catch (Throwable paramArrayOfByte) {}
+    catch (Throwable paramArrayOfByte)
+    {
+      label22:
+      break label22;
+    }
     return 1;
   }
   
   public final byte receiveSharpVideoAck(long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
+    IDavNetCallback localIDavNetCallback = this.mDavNetCallback;
+    if (localIDavNetCallback == null) {
+      return 3;
+    }
     byte b2 = 1;
-    byte b1;
-    if (this.mDavNetCallback == null) {
-      b1 = 3;
-    }
-    for (;;)
+    byte b1 = b2;
+    if (paramArrayOfByte1 != null) {}
+    try
     {
-      return b1;
+      int i = localIDavNetCallback.receiveSharpVideoAck(paramLong, paramArrayOfByte1, paramArrayOfByte2);
       b1 = b2;
-      if (paramArrayOfByte1 != null) {
-        try
-        {
-          int i = this.mDavNetCallback.receiveSharpVideoAck(paramLong, paramArrayOfByte1, paramArrayOfByte2);
-          b1 = b2;
-          if (i >= 0) {
-            return 0;
-          }
-        }
-        catch (Throwable paramArrayOfByte1) {}
+      if (i >= 0) {
+        b1 = 0;
       }
+      return b1;
     }
+    catch (Throwable paramArrayOfByte1) {}
     return 1;
   }
   
   public final byte receiveSharpVideoCall(long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    byte b2 = 1;
-    byte b1;
-    if (this.mDavNetCallback == null) {
-      b1 = 3;
+    IDavNetCallback localIDavNetCallback = this.mDavNetCallback;
+    if (localIDavNetCallback == null) {
+      return 3;
     }
-    for (;;)
+    if (paramArrayOfByte1 != null) {}
+    try
     {
-      return b1;
-      b1 = b2;
-      if (paramArrayOfByte1 != null) {
-        try
-        {
-          int i = this.mDavNetCallback.receiveSharpVideoCall(paramLong, paramArrayOfByte1, paramArrayOfByte2);
-          b1 = b2;
-          if (i >= 0) {
-            return 0;
-          }
-        }
-        catch (Throwable paramArrayOfByte1) {}
+      int i = localIDavNetCallback.receiveSharpVideoCall(paramLong, paramArrayOfByte1, paramArrayOfByte2);
+      if (i >= 0) {
+        return 0;
       }
+      return 1;
     }
+    catch (Throwable paramArrayOfByte1) {}
     return 1;
   }
   
@@ -107,7 +103,7 @@ public abstract class AbstractNetChannel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avcore.netchannel.AbstractNetChannel
  * JD-Core Version:    0.7.0.1
  */

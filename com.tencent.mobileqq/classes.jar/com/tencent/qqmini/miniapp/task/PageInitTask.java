@@ -32,33 +32,35 @@ public class PageInitTask
     IPage localIPage = getRuntimeLoader().getRuntime().getPage();
     if (!(localIPage instanceof AppBrandPageContainer))
     {
-      QMLog.w("PageInitTask", "PageContainer type is incorrect! page=" + localIPage);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("PageContainer type is incorrect! page=");
+      ((StringBuilder)localObject).append(localIPage);
+      QMLog.w("PageInitTask", ((StringBuilder)localObject).toString());
       onTaskSucceed();
       return;
     }
-    BaselibLoader.BaselibContent localBaselibContent = ((BaselibLoadAsyncTask)getRuntimeLoader().getTask(BaselibLoadAsyncTask.class)).getBaselibContent();
-    if ((localBaselibContent == null) || (!localBaselibContent.isBaseLibInited()))
-    {
-      QMLog.w("PageInitTask", "Baselib is not inited!");
-      onTaskSucceed();
-      return;
+    Object localObject = ((BaselibLoadAsyncTask)getRuntimeLoader().getTask(BaselibLoadAsyncTask.class)).getBaselibContent();
+    if ((localObject != null) && (((BaselibLoader.BaselibContent)localObject).isBaseLibInited())) {
+      try
+      {
+        ((AppBrandPageContainer)localIPage).initBaseJs((BaselibLoader.BaselibContent)localObject);
+        onTaskSucceed();
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        QMLog.e("PageInitTask", "pageContainer init exception!", localThrowable);
+        onTaskFailed(10, "Page创建失败");
+        return;
+      }
     }
-    try
-    {
-      ((AppBrandPageContainer)localIPage).initBaseJs(localBaselibContent);
-      onTaskSucceed();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QMLog.e("PageInitTask", "pageContainer init exception!", localThrowable);
-      onTaskFailed(10, "Page创建失败");
-    }
+    QMLog.w("PageInitTask", "Baselib is not inited!");
+    onTaskSucceed();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.task.PageInitTask
  * JD-Core Version:    0.7.0.1
  */

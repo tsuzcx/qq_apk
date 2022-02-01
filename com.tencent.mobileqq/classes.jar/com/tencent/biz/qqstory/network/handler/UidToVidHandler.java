@@ -49,56 +49,72 @@ public class UidToVidHandler
     localGetUserVidListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
     localGetUserVidListEvent.jdField_a_of_type_JavaUtilList = paramGetVidListRequest.jdField_a_of_type_JavaUtilList;
     localGetUserVidListEvent.jdField_a_of_type_Int = paramGetVidListRequest.c;
-    if ((paramGetVidListResponse == null) || (paramErrorMessage.isFail()))
+    if ((paramGetVidListResponse != null) && (!paramErrorMessage.isFail()))
     {
-      c();
+      b();
+      paramGetVidListRequest = (StoryManager)SuperManager.a(5);
+      paramErrorMessage = paramGetVidListResponse.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramErrorMessage.hasNext())
+      {
+        GetVidListResponse.UserVidList localUserVidList = (GetVidListResponse.UserVidList)paramErrorMessage.next();
+        int i = this.b;
+        if (i != 3)
+        {
+          if (i != 4)
+          {
+            if (i != 5) {
+              if (i != 6)
+              {
+                if (i == 7) {}
+              }
+              else
+              {
+                paramGetVidListRequest.a(localUserVidList.jdField_a_of_type_JavaLangString, 3, localUserVidList.jdField_a_of_type_JavaUtilList, true);
+                continue;
+              }
+            }
+            paramGetVidListRequest.a(localUserVidList.jdField_a_of_type_JavaLangString, 0, localUserVidList.jdField_a_of_type_JavaUtilList, true);
+          }
+          else
+          {
+            paramGetVidListRequest.a(localUserVidList.jdField_a_of_type_JavaLangString, 0, localUserVidList.jdField_a_of_type_JavaUtilList, true);
+          }
+        }
+        else
+        {
+          paramGetVidListRequest.a(localUserVidList.jdField_a_of_type_JavaLangString, 1, localUserVidList.jdField_a_of_type_JavaUtilList, true);
+          StoryItem localStoryItem = paramGetVidListRequest.a(localUserVidList.jdField_a_of_type_JavaLangString, 1);
+          if (localStoryItem != null)
+          {
+            i = localUserVidList.jdField_a_of_type_JavaUtilList.size();
+            SLog.a("Q.qqstory.net:UidToVidHandler", "update %s unread count , old : %d , new : %d", localUserVidList.jdField_a_of_type_JavaLangString, Integer.valueOf(localStoryItem.unReadCount), Integer.valueOf(i));
+            localStoryItem.unReadCount = i;
+            paramGetVidListRequest.a(localUserVidList.jdField_a_of_type_JavaLangString, 1, localStoryItem);
+          }
+        }
+      }
+      localGetUserVidListEvent.b = paramGetVidListResponse.jdField_a_of_type_JavaUtilList;
       StoryDispatcher.a().dispatch(localGetUserVidListEvent);
       return;
     }
-    b();
-    paramGetVidListRequest = (StoryManager)SuperManager.a(5);
-    paramErrorMessage = paramGetVidListResponse.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramErrorMessage.hasNext())
-    {
-      GetVidListResponse.UserVidList localUserVidList = (GetVidListResponse.UserVidList)paramErrorMessage.next();
-      switch (this.b)
-      {
-      default: 
-        break;
-      case 3: 
-        paramGetVidListRequest.a(localUserVidList.jdField_a_of_type_JavaLangString, 1, localUserVidList.jdField_a_of_type_JavaUtilList, true);
-        StoryItem localStoryItem = paramGetVidListRequest.a(localUserVidList.jdField_a_of_type_JavaLangString, 1);
-        if (localStoryItem != null)
-        {
-          int i = localUserVidList.jdField_a_of_type_JavaUtilList.size();
-          SLog.a("Q.qqstory.net:UidToVidHandler", "update %s unread count , old : %d , new : %d", localUserVidList.jdField_a_of_type_JavaLangString, Integer.valueOf(localStoryItem.unReadCount), Integer.valueOf(i));
-          localStoryItem.unReadCount = i;
-          paramGetVidListRequest.a(localUserVidList.jdField_a_of_type_JavaLangString, 1, localStoryItem);
-        }
-        break;
-      case 5: 
-      case 7: 
-        paramGetVidListRequest.a(localUserVidList.jdField_a_of_type_JavaLangString, 0, localUserVidList.jdField_a_of_type_JavaUtilList, true);
-        break;
-      case 6: 
-        paramGetVidListRequest.a(localUserVidList.jdField_a_of_type_JavaLangString, 3, localUserVidList.jdField_a_of_type_JavaUtilList, true);
-        break;
-      case 4: 
-        paramGetVidListRequest.a(localUserVidList.jdField_a_of_type_JavaLangString, 0, localUserVidList.jdField_a_of_type_JavaUtilList, true);
-      }
-    }
-    localGetUserVidListEvent.b = paramGetVidListResponse.jdField_a_of_type_JavaUtilList;
+    c();
     StoryDispatcher.a().dispatch(localGetUserVidListEvent);
   }
   
   public String toString()
   {
-    return "UidToVidHandler{mUidList=" + this.jdField_a_of_type_JavaUtilList + ", mPullType=" + this.b + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("UidToVidHandler{mUidList=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(", mPullType=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.UidToVidHandler
  * JD-Core Version:    0.7.0.1
  */

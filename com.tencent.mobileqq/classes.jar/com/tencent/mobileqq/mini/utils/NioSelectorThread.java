@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class NioSelectorThread
 {
-  private static NioSelectorThread INSTANCE = null;
+  private static NioSelectorThread INSTANCE;
   private volatile boolean registerSpin = false;
   private final Selector selector = Selector.open();
   
@@ -34,27 +34,32 @@ public class NioSelectorThread
   
   private void loopSelect()
   {
-    for (;;)
-    {
-      if (!this.selector.isOpen()) {
-        return;
-      }
-      try
+    if (this.selector.isOpen()) {
+      for (;;)
       {
-        this.selector.select();
-        Iterator localIterator = this.selector.selectedKeys().iterator();
-        while (localIterator.hasNext())
+        try
         {
-          SelectionKey localSelectionKey = (SelectionKey)localIterator.next();
-          if (((NioSelectorThread.NioHandler)localSelectionKey.attachment()).handle(localSelectionKey)) {
+          this.selector.select();
+          Iterator localIterator = this.selector.selectedKeys().iterator();
+          if (localIterator.hasNext())
+          {
+            SelectionKey localSelectionKey = (SelectionKey)localIterator.next();
+            if (!((NioSelectorThread.NioHandler)localSelectionKey.attachment()).handle(localSelectionKey)) {
+              continue;
+            }
             localIterator.remove();
+            continue;
           }
         }
-        if (!this.registerSpin) {}
+        catch (IOException localIOException)
+        {
+          continue;
+        }
+        if (!this.registerSpin) {
+          break;
+        }
       }
-      catch (IOException localIOException) {}
     }
-    for (;;) {}
   }
   
   public void registerChannel(SelectableChannel paramSelectableChannel, int paramInt, NioSelectorThread.NioHandler paramNioHandler)
@@ -74,7 +79,7 @@ public class NioSelectorThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.utils.NioSelectorThread
  * JD-Core Version:    0.7.0.1
  */

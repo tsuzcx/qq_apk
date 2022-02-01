@@ -6,9 +6,9 @@ import android.content.res.Resources;
 import android.os.SystemClock;
 import android.view.KeyEvent;
 import android.view.View;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.av.utils.UITools;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.AudioHelper;
 
 public abstract class VideoInviteUIBase
 {
@@ -108,7 +108,7 @@ public abstract class VideoInviteUIBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoInviteUIBase
  * JD-Core Version:    0.7.0.1
  */

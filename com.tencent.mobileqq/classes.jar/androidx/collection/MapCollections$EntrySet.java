@@ -34,14 +34,14 @@ final class MapCollections$EntrySet
   
   public boolean contains(Object paramObject)
   {
-    if (!(paramObject instanceof Map.Entry)) {}
-    int i;
-    do
-    {
+    if (!(paramObject instanceof Map.Entry)) {
       return false;
-      paramObject = (Map.Entry)paramObject;
-      i = this.this$0.colIndexOfKey(paramObject.getKey());
-    } while (i < 0);
+    }
+    paramObject = (Map.Entry)paramObject;
+    int i = this.this$0.colIndexOfKey(paramObject.getKey());
+    if (i < 0) {
+      return false;
+    }
     return ContainerHelpers.equal(this.this$0.colGetEntry(i, 1), paramObject.getValue());
   }
   
@@ -63,32 +63,28 @@ final class MapCollections$EntrySet
   
   public int hashCode()
   {
-    int j = this.this$0.colGetSize() - 1;
-    int i = 0;
-    if (j >= 0)
+    int i = this.this$0.colGetSize() - 1;
+    int j = 0;
+    while (i >= 0)
     {
-      Object localObject1 = this.this$0.colGetEntry(j, 0);
-      Object localObject2 = this.this$0.colGetEntry(j, 1);
+      Object localObject1 = this.this$0.colGetEntry(i, 0);
+      Object localObject2 = this.this$0.colGetEntry(i, 1);
       int k;
-      if (localObject1 == null)
-      {
+      if (localObject1 == null) {
         k = 0;
-        label45:
-        if (localObject2 != null) {
-          break label76;
-        }
-      }
-      label76:
-      for (int m = 0;; m = localObject2.hashCode())
-      {
-        j -= 1;
-        i += (m ^ k);
-        break;
+      } else {
         k = localObject1.hashCode();
-        break label45;
       }
+      int m;
+      if (localObject2 == null) {
+        m = 0;
+      } else {
+        m = localObject2.hashCode();
+      }
+      j += (k ^ m);
+      i -= 1;
     }
-    return i;
+    return j;
   }
   
   public boolean isEmpty()
@@ -133,7 +129,7 @@ final class MapCollections$EntrySet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.collection.MapCollections.EntrySet
  * JD-Core Version:    0.7.0.1
  */

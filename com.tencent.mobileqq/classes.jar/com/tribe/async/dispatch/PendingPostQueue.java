@@ -10,29 +10,34 @@ final class PendingPostQueue
   
   public void enqueue(PendingPost paramPendingPost)
   {
-    if (paramPendingPost == null) {
-      try
+    if (paramPendingPost != null) {}
+    try
+    {
+      if (this.mTail != null)
       {
-        throw new NullPointerException("null cannot be enqueued");
+        this.mTail.next = paramPendingPost;
+        this.mTail = paramPendingPost;
       }
-      finally {}
-    }
-    if (this.mTail != null)
-    {
-      this.mTail.next = paramPendingPost;
-      this.mTail = paramPendingPost;
-    }
-    for (;;)
-    {
+      else
+      {
+        if (this.mHead != null) {
+          break label53;
+        }
+        this.mTail = paramPendingPost;
+        this.mHead = paramPendingPost;
+      }
       notifyAll();
       return;
-      if (this.mHead != null) {
-        break;
-      }
-      this.mTail = paramPendingPost;
-      this.mHead = paramPendingPost;
+      label53:
+      throw new IllegalStateException("Head present, but no tail");
     }
-    throw new IllegalStateException("Head present, but no tail");
+    finally
+    {
+      label73:
+      break label73;
+    }
+    throw new NullPointerException("null cannot be enqueued");
+    throw paramPendingPost;
   }
   
   public PendingPost poll()
@@ -71,7 +76,7 @@ final class PendingPostQueue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tribe.async.dispatch.PendingPostQueue
  * JD-Core Version:    0.7.0.1
  */

@@ -14,12 +14,22 @@ public class AppInfo
   public static final Parcelable.Creator<AppInfo> CREATOR = new AppInfo.1();
   private int jdField_a_of_type_Int = -1;
   private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = -1;
   private String jdField_b_of_type_JavaLangString = "";
   
+  public AppInfo(int paramInt, String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+  }
+  
   protected AppInfo(Parcel paramParcel)
   {
+    boolean bool = false;
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_b_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
@@ -32,6 +42,7 @@ public class AppInfo
   
   public AppInfo(qqconnect.Appinfo paramAppinfo)
   {
+    this.jdField_a_of_type_Boolean = false;
     if (paramAppinfo.appid.has()) {
       this.jdField_a_of_type_Int = paramAppinfo.appid.get();
     }
@@ -53,30 +64,27 @@ public class AppInfo
   
   public String a()
   {
-    switch (this.jdField_b_of_type_Int)
+    int i = this.jdField_b_of_type_Int;
+    if (i != 100)
     {
-    default: 
-      return HardCodeUtil.a(2131700694);
-    case 0: 
-      return HardCodeUtil.a(2131700693);
-    case 1: 
-      return HardCodeUtil.a(2131700695);
-    case 2: 
-      return "ARK应用";
-    case 3: 
-      return "";
-    case 4: 
-      return "";
-    case 5: 
-      return "";
-    case 6: 
-      return "";
-    case 7: 
-      return "";
-    case 8: 
-      return "";
-    case 9: 
-      return "";
+      switch (i)
+      {
+      default: 
+        return HardCodeUtil.a(2131700835);
+      case 3: 
+      case 4: 
+      case 5: 
+      case 6: 
+      case 7: 
+      case 8: 
+      case 9: 
+        return "";
+      case 2: 
+        return HardCodeUtil.a(2131700836);
+      case 1: 
+        return HardCodeUtil.a(2131700837);
+      }
+      return HardCodeUtil.a(2131700834);
     }
     return "";
   }
@@ -109,9 +117,14 @@ public class AppInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("AppInfo{");
-    localStringBuilder.append("mId=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", mName='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", type='").append(a()).append('\'');
+    localStringBuilder.append("mId=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", mName='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", type='");
+    localStringBuilder.append(a());
+    localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
@@ -122,17 +135,12 @@ public class AppInfo
     paramParcel.writeInt(this.jdField_b_of_type_Int);
     paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
     paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      return;
-    }
+    paramParcel.writeByte((byte)this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.model.AppInfo
  * JD-Core Version:    0.7.0.1
  */

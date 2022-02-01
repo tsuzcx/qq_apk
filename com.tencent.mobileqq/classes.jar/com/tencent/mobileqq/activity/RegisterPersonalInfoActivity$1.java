@@ -13,19 +13,16 @@ class RegisterPersonalInfoActivity$1
   
   public void afterTextChanged(Editable paramEditable)
   {
-    if (paramEditable == null) {}
-    for (;;)
-    {
+    if (paramEditable == null) {
       return;
-      if (TextUtils.isEmpty(paramEditable.toString())) {
-        RegisterPersonalInfoActivity.a(this.a).setEnabled(false);
-      }
-      while (RegisterPersonalInfoActivity.a(this.a) != null)
-      {
-        RegisterPersonalInfoActivity.a(this.a).b(RegisterPersonalInfoActivity.a(this.a).isEnabled());
-        return;
-        RegisterPersonalInfoActivity.a(this.a).setEnabled(true);
-      }
+    }
+    if (TextUtils.isEmpty(paramEditable.toString())) {
+      RegisterPersonalInfoActivity.a(this.a).setEnabled(false);
+    } else {
+      RegisterPersonalInfoActivity.a(this.a).setEnabled(true);
+    }
+    if (RegisterPersonalInfoActivity.a(this.a) != null) {
+      RegisterPersonalInfoActivity.a(this.a).b(RegisterPersonalInfoActivity.a(this.a).isEnabled());
     }
   }
   
@@ -35,7 +32,7 @@ class RegisterPersonalInfoActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterPersonalInfoActivity.1
  * JD-Core Version:    0.7.0.1
  */

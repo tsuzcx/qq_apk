@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.activity;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -13,9 +12,11 @@ import android.widget.TextView;
 import com.tencent.av.utils.UITools;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import com.tencent.mobileqq.webview.swift.utils.WebViewKernelCallBack;
 import com.tencent.mobileqq.widget.WebViewProgressBar;
 
 public class QQH5BrowserActivity$QQH5BrowserFragment
@@ -23,62 +24,60 @@ public class QQH5BrowserActivity$QQH5BrowserFragment
 {
   private void a(Bundle paramBundle)
   {
-    super.getActivity().getWindow().setFlags(1024, 1024);
+    super.getQBaseActivity().getWindow().setFlags(1024, 1024);
     this.webView.setVerticalScrollBarEnabled(false);
-    this.mUIStyleHandler.a.setVisibility(8);
-    if ((this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams() instanceof RelativeLayout.LayoutParams))
+    getUIStyleHandler().a.setVisibility(8);
+    if ((getSwiftTitleUI().jdField_a_of_type_AndroidViewViewGroup.getLayoutParams() instanceof RelativeLayout.LayoutParams))
     {
-      paramBundle = (RelativeLayout.LayoutParams)this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+      paramBundle = (RelativeLayout.LayoutParams)getSwiftTitleUI().jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
       paramBundle.height = ((int)UITools.a(BaseApplicationImpl.getApplication(), 60.0F));
-      this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramBundle);
+      getSwiftTitleUI().jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramBundle);
     }
-    this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup.setPadding(0, 0, 0, 0);
+    getSwiftTitleUI().jdField_a_of_type_AndroidViewViewGroup.setPadding(0, 0, 0, 0);
     int i = (int)UITools.a(BaseApplicationImpl.getApplication(), 12.0F);
     paramBundle = new RelativeLayout.LayoutParams(-2, -2);
     paramBundle.width = ((int)UITools.a(BaseApplicationImpl.getApplication(), 15.0F));
     paramBundle.height = ((int)UITools.a(BaseApplicationImpl.getApplication(), 15.0F));
-    this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(paramBundle);
-    this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130848161);
-    this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView.setText("");
-    paramBundle = this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView.getParent();
+    getSwiftTitleUI().jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(paramBundle);
+    getSwiftTitleUI().jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130848032);
+    getSwiftTitleUI().jdField_a_of_type_AndroidWidgetTextView.setText("");
+    paramBundle = getSwiftTitleUI().jdField_a_of_type_AndroidWidgetTextView.getParent();
     if ((paramBundle instanceof RelativeLayout))
     {
       ((RelativeLayout)paramBundle).setPadding(0, 0, 0, 0);
       paramBundle.requestLayout();
     }
-    paramBundle = super.getActivity().findViewById(2131377300);
+    paramBundle = super.getQBaseActivity().findViewById(2131376755);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(9);
     localLayoutParams.setMargins(i, i, 0, 0);
     paramBundle.setLayoutParams(localLayoutParams);
-    paramBundle = this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    paramBundle = getSwiftTitleUI().jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
     paramBundle.width = ((int)UITools.a(BaseApplicationImpl.getApplication(), 22.0F));
     paramBundle.height = ((int)UITools.a(BaseApplicationImpl.getApplication(), 15.0F));
-    this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramBundle);
-    this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848793);
-    paramBundle = this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.getParent();
+    getSwiftTitleUI().jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramBundle);
+    getSwiftTitleUI().jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848673);
+    paramBundle = getSwiftTitleUI().jdField_a_of_type_AndroidWidgetImageView.getParent();
     if ((paramBundle instanceof RelativeLayout))
     {
       ((RelativeLayout)paramBundle).setPadding(0, 0, 0, 0);
       paramBundle.requestLayout();
     }
-    paramBundle = super.getActivity().findViewById(2131377301);
+    paramBundle = super.getQBaseActivity().findViewById(2131376756);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(11);
     localLayoutParams.setMargins(0, i, i, 0);
     paramBundle.setLayoutParams(localLayoutParams);
   }
   
-  public int doCreateLoopStep_Final(Bundle paramBundle)
+  public WebViewKernelCallBack getWebViewKernelCallBack()
   {
-    int i = super.doCreateLoopStep_Final(paramBundle);
-    a(paramBundle);
-    return i;
+    return new QQH5BrowserActivity.QQH5BrowserFragment.1(this, this.webViewSurface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQH5BrowserActivity.QQH5BrowserFragment
  * JD-Core Version:    0.7.0.1
  */

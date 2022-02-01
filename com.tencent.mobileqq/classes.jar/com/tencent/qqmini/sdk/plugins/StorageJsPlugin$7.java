@@ -17,14 +17,18 @@ class StorageJsPlugin$7
     if (!TextUtils.isEmpty(str)) {
       try
       {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("data", str);
-        str = this.val$req.ok(localJSONObject);
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("data", str);
+        str = this.val$req.ok((JSONObject)localObject);
         return str;
       }
       catch (Exception localException)
       {
-        QMLog.e("StorageJsPlugin", this.val$req.event + " result error." + localException);
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.val$req.event);
+        ((StringBuilder)localObject).append(" result error.");
+        ((StringBuilder)localObject).append(localException);
+        QMLog.e("StorageJsPlugin", ((StringBuilder)localObject).toString());
         return this.val$req.fail("json error");
       }
     }
@@ -33,7 +37,7 @@ class StorageJsPlugin$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.StorageJsPlugin.7
  * JD-Core Version:    0.7.0.1
  */

@@ -17,13 +17,14 @@ public class Option
   public static final int LOAD_FROM_CACHE = 0;
   public static final int LOAD_FROM_NET = 2;
   public static final int LOAD_FROM_SDCARD = 1;
+  public static final int MAX_RETRY_COUNT = 3;
   public static final int NINE_PATCH_PIC_TYPE = 2;
   public static final int PIC_TYPE_AVATAR = 3;
   public static final int PRIORITY_DEFAULT = 0;
   public static final int PRIORITY_PRELOAD = 1;
   public static final int SHARE_P_PIC_TYPE = 1;
-  public static final Drawable sDefaultFailedDrawable = MobileQQ.sMobileQQ.getResources().getDrawable(2130844223);
-  public static final Drawable sDefaultLoadingDrawable = MobileQQ.sMobileQQ.getResources().getDrawable(2130846965);
+  public static final Drawable sDefaultFailedDrawable = MobileQQ.sMobileQQ.getResources().getDrawable(2130844125);
+  public static final Drawable sDefaultLoadingDrawable = MobileQQ.sMobileQQ.getResources().getDrawable(2130846843);
   private String mCacheKey;
   public Long mDecodeStartTime;
   public Long mDownLoadStartTime;
@@ -39,6 +40,7 @@ public class Option
   private int mRequestHeight;
   private int mRequestWidth;
   private Bitmap mResultBitMap;
+  private int mRetryCount;
   private int mSeq;
   public Long mStartTime;
   private ImageView mTargetView;
@@ -47,14 +49,19 @@ public class Option
   public static Option getDefaultOptions(ImageView paramImageView)
   {
     Option localOption = new Option();
-    localOption.mLoadingDrawable = MobileQQ.sMobileQQ.getResources().getDrawable(2130841812);
-    localOption.mFailedDrawable = MobileQQ.sMobileQQ.getResources().getDrawable(2130844223);
+    localOption.mLoadingDrawable = MobileQQ.sMobileQQ.getResources().getDrawable(2130841698);
+    localOption.mFailedDrawable = MobileQQ.sMobileQQ.getResources().getDrawable(2130844125);
     if ((paramImageView != null) && (paramImageView.getLayoutParams() != null))
     {
       localOption.mRequestWidth = paramImageView.getLayoutParams().width;
       localOption.mRequestHeight = paramImageView.getLayoutParams().height;
     }
     return localOption;
+  }
+  
+  public boolean continueRetry()
+  {
+    return this.mRetryCount < 3;
   }
   
   public String getCacheKey()
@@ -110,6 +117,11 @@ public class Option
     return this.mResultBitMap;
   }
   
+  public int getRetryCount()
+  {
+    return this.mRetryCount;
+  }
+  
   public int getSeq()
   {
     return this.mSeq;
@@ -137,18 +149,39 @@ public class Option
   
   public boolean isValid()
   {
-    if ((this.mTargetView != null) && ((this.mTargetView.getTag(2131374369) instanceof String)))
+    Object localObject = this.mTargetView;
+    if ((localObject != null) && ((((ImageView)localObject).getTag(2131373921) instanceof String)))
     {
-      String str = (String)this.mTargetView.getTag(2131374369);
-      if (((IQCircleRFWApi)QRoute.api(IQCircleRFWApi.class)).getUniKeyFromUrl(str).equals(((IQCircleRFWApi)QRoute.api(IQCircleRFWApi.class)).getUniKeyFromUrl(this.mUrl)))
+      localObject = (String)this.mTargetView.getTag(2131373921);
+      if (((IQCircleRFWApi)QRoute.api(IQCircleRFWApi.class)).getUniKeyFromUrl((String)localObject).equals(((IQCircleRFWApi)QRoute.api(IQCircleRFWApi.class)).getUniKeyFromUrl(this.mUrl)))
       {
-        RFLog.i("QCircleFeedPicLoader", RFLog.USR, "seq = " + this.mSeq + " is valid, url:" + this.mUrl);
+        i = RFLog.USR;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("seq = ");
+        ((StringBuilder)localObject).append(this.mSeq);
+        ((StringBuilder)localObject).append(" is valid, url:");
+        ((StringBuilder)localObject).append(this.mUrl);
+        RFLog.i("QCircleFeedPicLoader", i, ((StringBuilder)localObject).toString());
         return true;
       }
-      RFLog.i("QCircleFeedPicLoader", RFLog.USR, "seq = " + this.mSeq + " is unValid, tagUrl:" + str + "-----original url:" + this.mUrl);
+      i = RFLog.USR;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("seq = ");
+      localStringBuilder.append(this.mSeq);
+      localStringBuilder.append(" is unValid, tagUrl:");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("-----original url:");
+      localStringBuilder.append(this.mUrl);
+      RFLog.i("QCircleFeedPicLoader", i, localStringBuilder.toString());
       return false;
     }
-    RFLog.i("QCircleFeedPicLoader", RFLog.USR, "seq = " + this.mSeq + " unValid mTargetView is empty,isFromPreload:" + this.mIsFromPreLoad);
+    int i = RFLog.USR;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("seq = ");
+    ((StringBuilder)localObject).append(this.mSeq);
+    ((StringBuilder)localObject).append(" unValid mTargetView is empty,isFromPreload:");
+    ((StringBuilder)localObject).append(this.mIsFromPreLoad);
+    RFLog.i("QCircleFeedPicLoader", i, ((StringBuilder)localObject).toString());
     return false;
   }
   
@@ -236,7 +269,7 @@ public class Option
     {
       this.mTargetView = paramImageView;
       if (!TextUtils.isEmpty(this.mUrl)) {
-        paramImageView.setTag(2131374369, this.mUrl);
+        paramImageView.setTag(2131373921, this.mUrl);
       }
     }
     return this;
@@ -245,17 +278,27 @@ public class Option
   public Option setUrl(String paramString)
   {
     this.mUrl = paramString;
-    if ((this.mTargetView == null) || (TextUtils.isEmpty(paramString))) {}
-    while (((!(this.mTargetView.getTag(2131374369) instanceof String)) || (this.mTargetView.getTag(2131374369).equals(this.mUrl))) && (this.mTargetView.getTag(2131374369) != null)) {
-      return this;
+    if (this.mTargetView != null)
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return this;
+      }
+      if ((((this.mTargetView.getTag(2131373921) instanceof String)) && (!this.mTargetView.getTag(2131373921).equals(this.mUrl))) || (this.mTargetView.getTag(2131373921) == null)) {
+        this.mTargetView.setTag(2131373921, this.mUrl);
+      }
     }
-    this.mTargetView.setTag(2131374369, this.mUrl);
+    return this;
+  }
+  
+  public Option updateRetryCount()
+  {
+    this.mRetryCount += 1;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.data.Option
  * JD-Core Version:    0.7.0.1
  */

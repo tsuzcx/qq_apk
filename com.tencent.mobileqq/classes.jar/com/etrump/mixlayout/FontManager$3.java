@@ -8,6 +8,7 @@ import com.Vas.ColorFont.FastColorFontHelper;
 import com.tencent.mobileqq.hiboom.HiBoomFont;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.VasUtils;
+import com.tencent.mobileqq.vas.font.api.FontManagerConstants;
 import com.tencent.mobileqq.vas.font.api.IFontSoLoaderAdapter;
 import com.tencent.mobileqq.vas.util.VasSoUtils;
 import com.tencent.mobileqq.vip.IPCDownloadListener;
@@ -22,68 +23,84 @@ class FontManager$3
   
   public void run()
   {
+    int i = this.a;
     Object localObject1;
     Object localObject2;
-    switch (this.a)
+    if (i != 1)
     {
-    case 2: 
-    case 3: 
-    default: 
-      localObject1 = null;
-      localObject2 = null;
-      if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty((CharSequence)localObject1)))
+      if (i != 4)
       {
-        if (!VasSoUtils.a((String)localObject2, VasSoUtils.a() + File.separator, (String)localObject1)) {
-          break label397;
-        }
-        if (VasSoUtils.a(VasSoUtils.a(), (String)localObject1) != 0) {
-          break label384;
-        }
-        VasFontIPCModule.a().a(this.a, 0);
-        switch (this.a)
+        localObject1 = null;
+        localObject2 = localObject1;
+      }
+      else
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(FontManagerConstants.FONT_DOWN_LOAD_PATH);
+        ((StringBuilder)localObject1).append(File.separator);
+        ((StringBuilder)localObject1).append("libColorFont.zip");
+        localObject1 = ((StringBuilder)localObject1).toString();
+        localObject2 = "libFounderColorFont_818.so";
+      }
+    }
+    else
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(FontManagerConstants.FONT_DOWN_LOAD_PATH);
+      ((StringBuilder)localObject1).append(File.separator);
+      ((StringBuilder)localObject1).append("libvipfont8417.so.zip");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      localObject2 = "libvipfont8417.so";
+    }
+    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(VasSoUtils.a());
+      localStringBuilder.append(File.separator);
+      if (VasSoUtils.a((String)localObject1, localStringBuilder.toString(), (String)localObject2))
+      {
+        if (VasSoUtils.a(VasSoUtils.a(), (String)localObject2) == 0)
         {
+          VasFontIPCModule.a().a(this.a, 0);
+          i = this.a;
+          if (i != 1)
+          {
+            if (i == 4)
+            {
+              FastColorFontHelper.a().b.set(true);
+              HiBoomFont.a().a();
+            }
+          }
+          else
+          {
+            if ((!TextUtils.isEmpty(this.this$0.b)) && (FontManager.a(this.this$0) != null))
+            {
+              localObject1 = new Bundle();
+              ((Bundle)localObject1).putString("callbackId", this.this$0.b);
+              ((Bundle)localObject1).putInt("srcType", 9);
+              FontManager.a(this.this$0).a(0L, 0, (Bundle)localObject1);
+              this.this$0.b = null;
+            }
+            ETEngine.isSOLoaded.set(true);
+            BaseApplication.getContext().getSharedPreferences("early_qq.android.native.vipfont.v5", 0).edit().putBoolean("vip_font_so_downloaded", true).commit();
+            HiBoomFont.a().a();
+            ((IFontSoLoaderAdapter)QRoute.api(IFontSoLoaderAdapter.class)).setVipFontSoLoad(true);
+            FontManager.a(this.this$0, false);
+          }
+          VasUtils.a(FontManager.a(this.this$0));
+          FontManager.a(this.this$0);
+          return;
         }
+        VasFontIPCModule.a().a(this.a, -102);
+        return;
       }
-      break;
+      VasFontIPCModule.a().a(this.a, -102);
     }
-    for (;;)
-    {
-      VasUtils.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      FontManager.a(this.this$0);
-      return;
-      localObject2 = FontManager.jdField_a_of_type_JavaLangString + File.separator + "libColorFont.zip";
-      localObject1 = "libFounderColorFont_818.so";
-      break;
-      localObject2 = FontManager.jdField_a_of_type_JavaLangString + File.separator + "libvipfont8417.so.zip";
-      localObject1 = "libvipfont8417.so";
-      break;
-      FastColorFontHelper.a().b.set(true);
-      HiBoomFont.a().a();
-      continue;
-      if ((!TextUtils.isEmpty(this.this$0.e)) && (this.this$0.jdField_a_of_type_ComTencentMobileqqVipIPCDownloadListener != null))
-      {
-        localObject1 = new Bundle();
-        ((Bundle)localObject1).putString("callbackId", this.this$0.e);
-        ((Bundle)localObject1).putInt("srcType", 9);
-        this.this$0.jdField_a_of_type_ComTencentMobileqqVipIPCDownloadListener.a(0L, 0, (Bundle)localObject1);
-        this.this$0.e = null;
-      }
-      ETEngine.isSOLoaded.set(true);
-      BaseApplication.getContext().getSharedPreferences("early_qq.android.native.vipfont.v5", 0).edit().putBoolean("vip_font_so_downloaded", true).commit();
-      HiBoomFont.a().a();
-      ((IFontSoLoaderAdapter)QRoute.api(IFontSoLoaderAdapter.class)).setVipFontSoLoad(true);
-      this.this$0.a(false);
-    }
-    label384:
-    VasFontIPCModule.a().a(this.a, -102);
-    return;
-    label397:
-    VasFontIPCModule.a().a(this.a, -102);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.FontManager.3
  * JD-Core Version:    0.7.0.1
  */

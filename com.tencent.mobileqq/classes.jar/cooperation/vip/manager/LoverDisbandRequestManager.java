@@ -38,42 +38,40 @@ public class LoverDisbandRequestManager
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
     Object localObject = a();
-    int i;
     if (localObject != null)
     {
       localObject = (IntimateInfoHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.INTIMATE_INFO_HANDLER);
       paramIntent = String.valueOf(paramIntent.getLongExtra("friendUin", -1L));
-      if (paramFromServiceMsg == null) {
-        break label98;
+      int i;
+      if (paramFromServiceMsg != null) {
+        i = paramFromServiceMsg.getResultCode();
+      } else {
+        i = -1;
       }
-      i = paramFromServiceMsg.getResultCode();
-    }
-    while (i == 1000)
-    {
-      paramFromServiceMsg = (sweet_pair_byebye_rsp)ProtocolUtils.decode(paramFromServiceMsg.getWupBuffer(), "sweet_pair_byebye");
-      if (paramFromServiceMsg != null)
+      if (i == 1000)
       {
-        paramFromServiceMsg = paramFromServiceMsg.rsp_comm;
-        if (paramFromServiceMsg.retcode == 0) {
-          ((IntimateInfoHandler)localObject).a(true, paramFromServiceMsg.retcode, paramFromServiceMsg.errmsg, paramIntent);
+        paramFromServiceMsg = (sweet_pair_byebye_rsp)ProtocolUtils.decode(paramFromServiceMsg.getWupBuffer(), "sweet_pair_byebye");
+        if (paramFromServiceMsg != null)
+        {
+          paramFromServiceMsg = paramFromServiceMsg.rsp_comm;
+          if (paramFromServiceMsg.retcode == 0)
+          {
+            ((IntimateInfoHandler)localObject).a(true, paramFromServiceMsg.retcode, paramFromServiceMsg.errmsg, paramIntent);
+            return;
+          }
+          ((IntimateInfoHandler)localObject).a(false, paramFromServiceMsg.retcode, paramFromServiceMsg.errmsg, paramIntent);
         }
       }
       else
       {
-        return;
-        label98:
-        i = -1;
-        continue;
+        ((IntimateInfoHandler)localObject).a(false, -1, null, null);
       }
-      ((IntimateInfoHandler)localObject).a(false, paramFromServiceMsg.retcode, paramFromServiceMsg.errmsg, paramIntent);
-      return;
     }
-    ((IntimateInfoHandler)localObject).a(false, -1, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.manager.LoverDisbandRequestManager
  * JD-Core Version:    0.7.0.1
  */

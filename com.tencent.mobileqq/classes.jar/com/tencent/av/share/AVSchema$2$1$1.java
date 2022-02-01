@@ -2,7 +2,6 @@ package com.tencent.av.share;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.DataReport.ShareChat;
 
 class AVSchema$2$1$1
   implements DialogInterface.OnClickListener
@@ -11,13 +10,13 @@ class AVSchema$2$1$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    DataReport.ShareChat.i();
+    ShareChatReport.i();
     this.a.jdField_a_of_type_ComTencentAvShareAVSchema$2.a.b(this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentAvShareAVSchema$2.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.share.AVSchema.2.1.1
  * JD-Core Version:    0.7.0.1
  */

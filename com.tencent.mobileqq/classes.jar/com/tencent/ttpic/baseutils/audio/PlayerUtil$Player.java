@@ -1,9 +1,10 @@
 package com.tencent.ttpic.baseutils.audio;
 
 import android.media.MediaPlayer;
+import com.tencent.qqlive.module.videoreport.dtreport.audio.playback.ReportMediaPlayer;
 
 public class PlayerUtil$Player
-  extends MediaPlayer
+  extends ReportMediaPlayer
 {
   private boolean isPlaying;
   
@@ -85,7 +86,7 @@ public class PlayerUtil$Player
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.baseutils.audio.PlayerUtil.Player
  * JD-Core Version:    0.7.0.1
  */

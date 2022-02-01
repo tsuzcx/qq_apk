@@ -5,11 +5,12 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
-import com.tencent.mobileqq.teamwork.TeamWorkUtils;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.teamwork.api.ITeamWorkUtils;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -20,24 +21,29 @@ import mqq.manager.Manager;
 public class GroupTeamWorkManager
   implements Manager
 {
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
   private ConcurrentHashMap<String, Entity> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private volatile boolean jdField_a_of_type_Boolean = false;
   private ConcurrentHashMap<String, Entity> b = new ConcurrentHashMap();
   
-  public GroupTeamWorkManager(QQAppInterface paramQQAppInterface)
+  public GroupTeamWorkManager(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramAppInterface.getEntityManagerFactory().createEntityManager();
   }
   
   public static String a(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
     SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(paramContext);
     paramContext = paramString2;
-    if (!TextUtils.isEmpty(paramString1)) {
-      paramContext = paramString2 + "_" + paramString1;
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      paramContext = new StringBuilder();
+      paramContext.append(paramString2);
+      paramContext.append("_");
+      paramContext.append(paramString1);
+      paramContext = paramContext.toString();
     }
     return localSharedPreferences.getString(paramContext, paramString3);
   }
@@ -46,8 +52,13 @@ public class GroupTeamWorkManager
   {
     SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
     paramContext = paramString2;
-    if (!TextUtils.isEmpty(paramString1)) {
-      paramContext = paramString2 + "_" + paramString1;
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      paramContext = new StringBuilder();
+      paramContext.append(paramString2);
+      paramContext.append("_");
+      paramContext.append(paramString1);
+      paramContext = paramContext.toString();
     }
     localEditor.putString(paramContext, paramString3);
     localEditor.commit();
@@ -66,7 +77,7 @@ public class GroupTeamWorkManager
     //   16: astore_1
     //   17: aload_1
     //   18: invokeinterface 117 1 0
-    //   23: ifeq +64 -> 87
+    //   23: ifeq +24 -> 47
     //   26: aload_1
     //   27: invokeinterface 121 1 0
     //   32: checkcast 123	com/tencent/mobileqq/teamworkforgroup/GPadInfo
@@ -76,54 +87,59 @@ public class GroupTeamWorkManager
     //   40: aload_2
     //   41: invokevirtual 127	com/tencent/mobileqq/persistence/EntityManager:persist	(Lcom/tencent/mobileqq/persistence/Entity;)V
     //   44: goto -27 -> 17
-    //   47: astore_1
-    //   48: ldc 129
-    //   50: iconst_1
-    //   51: new 59	java/lang/StringBuilder
-    //   54: dup
-    //   55: invokespecial 60	java/lang/StringBuilder:<init>	()V
-    //   58: ldc 131
-    //   60: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   63: aload_1
-    //   64: invokevirtual 132	java/lang/Exception:toString	()Ljava/lang/String;
-    //   67: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   70: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   73: invokestatic 138	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   76: aload_0
-    //   77: getfield 43	com/tencent/mobileqq/teamworkforgroup/GroupTeamWorkManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   80: invokevirtual 101	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   83: invokevirtual 141	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   86: return
-    //   87: aload_0
-    //   88: getfield 43	com/tencent/mobileqq/teamworkforgroup/GroupTeamWorkManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   91: invokevirtual 101	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   94: invokevirtual 143	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
-    //   97: aload_0
-    //   98: getfield 43	com/tencent/mobileqq/teamworkforgroup/GroupTeamWorkManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   101: invokevirtual 101	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   104: invokevirtual 141	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   107: return
-    //   108: astore_1
-    //   109: aload_0
-    //   110: getfield 43	com/tencent/mobileqq/teamworkforgroup/GroupTeamWorkManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   113: invokevirtual 101	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   116: invokevirtual 141	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   119: aload_1
-    //   120: athrow
+    //   47: aload_0
+    //   48: getfield 43	com/tencent/mobileqq/teamworkforgroup/GroupTeamWorkManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   51: invokevirtual 101	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   54: invokevirtual 129	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   57: aload_0
+    //   58: getfield 43	com/tencent/mobileqq/teamworkforgroup/GroupTeamWorkManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   61: invokevirtual 101	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   64: invokevirtual 132	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   67: return
+    //   68: astore_1
+    //   69: goto +41 -> 110
+    //   72: astore_1
+    //   73: new 59	java/lang/StringBuilder
+    //   76: dup
+    //   77: invokespecial 60	java/lang/StringBuilder:<init>	()V
+    //   80: astore_2
+    //   81: aload_2
+    //   82: ldc 134
+    //   84: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   87: pop
+    //   88: aload_2
+    //   89: aload_1
+    //   90: invokevirtual 135	java/lang/Exception:toString	()Ljava/lang/String;
+    //   93: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   96: pop
+    //   97: ldc 137
+    //   99: iconst_1
+    //   100: aload_2
+    //   101: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   104: invokestatic 143	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   107: goto -50 -> 57
+    //   110: aload_0
+    //   111: getfield 43	com/tencent/mobileqq/teamworkforgroup/GroupTeamWorkManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   114: invokevirtual 101	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   117: invokevirtual 132	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   120: goto +5 -> 125
+    //   123: aload_1
+    //   124: athrow
+    //   125: goto -2 -> 123
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	121	0	this	GroupTeamWorkManager
-    //   0	121	1	paramList	List<GPadInfo>
-    //   35	6	2	localGPadInfo	GPadInfo
+    //   0	128	0	this	GroupTeamWorkManager
+    //   0	128	1	paramList	List<GPadInfo>
+    //   35	66	2	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   0	17	47	java/lang/Exception
-    //   17	44	47	java/lang/Exception
-    //   87	97	47	java/lang/Exception
-    //   0	17	108	finally
-    //   17	44	108	finally
-    //   48	76	108	finally
-    //   87	97	108	finally
+    //   0	17	68	finally
+    //   17	44	68	finally
+    //   47	57	68	finally
+    //   73	107	68	finally
+    //   0	17	72	java/lang/Exception
+    //   17	44	72	java/lang/Exception
+    //   47	57	72	java/lang/Exception
   }
   
   /* Error */
@@ -139,7 +155,7 @@ public class GroupTeamWorkManager
     //   16: astore_1
     //   17: aload_1
     //   18: invokeinterface 117 1 0
-    //   23: ifeq +64 -> 87
+    //   23: ifeq +24 -> 47
     //   26: aload_1
     //   27: invokeinterface 121 1 0
     //   32: checkcast 148	com/tencent/mobileqq/teamworkforgroup/GroupPadTemplateInfo
@@ -149,64 +165,70 @@ public class GroupTeamWorkManager
     //   40: aload_2
     //   41: invokevirtual 127	com/tencent/mobileqq/persistence/EntityManager:persist	(Lcom/tencent/mobileqq/persistence/Entity;)V
     //   44: goto -27 -> 17
-    //   47: astore_1
-    //   48: ldc 129
-    //   50: iconst_1
-    //   51: new 59	java/lang/StringBuilder
-    //   54: dup
-    //   55: invokespecial 60	java/lang/StringBuilder:<init>	()V
-    //   58: ldc 150
-    //   60: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   63: aload_1
-    //   64: invokevirtual 132	java/lang/Exception:toString	()Ljava/lang/String;
-    //   67: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   70: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   73: invokestatic 138	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   76: aload_0
-    //   77: getfield 43	com/tencent/mobileqq/teamworkforgroup/GroupTeamWorkManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   80: invokevirtual 101	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   83: invokevirtual 141	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   86: return
-    //   87: aload_0
-    //   88: getfield 43	com/tencent/mobileqq/teamworkforgroup/GroupTeamWorkManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   91: invokevirtual 101	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   94: invokevirtual 143	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
-    //   97: aload_0
-    //   98: getfield 43	com/tencent/mobileqq/teamworkforgroup/GroupTeamWorkManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   101: invokevirtual 101	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   104: invokevirtual 141	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   107: return
-    //   108: astore_1
-    //   109: aload_0
-    //   110: getfield 43	com/tencent/mobileqq/teamworkforgroup/GroupTeamWorkManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   113: invokevirtual 101	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   116: invokevirtual 141	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   119: aload_1
-    //   120: athrow
+    //   47: aload_0
+    //   48: getfield 43	com/tencent/mobileqq/teamworkforgroup/GroupTeamWorkManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   51: invokevirtual 101	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   54: invokevirtual 129	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   57: aload_0
+    //   58: getfield 43	com/tencent/mobileqq/teamworkforgroup/GroupTeamWorkManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   61: invokevirtual 101	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   64: invokevirtual 132	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   67: return
+    //   68: astore_1
+    //   69: goto +41 -> 110
+    //   72: astore_1
+    //   73: new 59	java/lang/StringBuilder
+    //   76: dup
+    //   77: invokespecial 60	java/lang/StringBuilder:<init>	()V
+    //   80: astore_2
+    //   81: aload_2
+    //   82: ldc 150
+    //   84: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   87: pop
+    //   88: aload_2
+    //   89: aload_1
+    //   90: invokevirtual 135	java/lang/Exception:toString	()Ljava/lang/String;
+    //   93: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   96: pop
+    //   97: ldc 137
+    //   99: iconst_1
+    //   100: aload_2
+    //   101: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   104: invokestatic 143	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   107: goto -50 -> 57
+    //   110: aload_0
+    //   111: getfield 43	com/tencent/mobileqq/teamworkforgroup/GroupTeamWorkManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   114: invokevirtual 101	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   117: invokevirtual 132	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   120: goto +5 -> 125
+    //   123: aload_1
+    //   124: athrow
+    //   125: goto -2 -> 123
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	121	0	this	GroupTeamWorkManager
-    //   0	121	1	paramList	List<GroupPadTemplateInfo>
-    //   35	6	2	localGroupPadTemplateInfo	GroupPadTemplateInfo
+    //   0	128	0	this	GroupTeamWorkManager
+    //   0	128	1	paramList	List<GroupPadTemplateInfo>
+    //   35	66	2	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   0	17	47	java/lang/Exception
-    //   17	44	47	java/lang/Exception
-    //   87	97	47	java/lang/Exception
-    //   0	17	108	finally
-    //   17	44	108	finally
-    //   48	76	108	finally
-    //   87	97	108	finally
+    //   0	17	68	finally
+    //   17	44	68	finally
+    //   47	57	68	finally
+    //   73	107	68	finally
+    //   0	17	72	java/lang/Exception
+    //   17	44	72	java/lang/Exception
+    //   47	57	72	java/lang/Exception
   }
   
   public List<GPadInfo> a()
   {
     ArrayList localArrayList = new ArrayList();
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
+    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    if (localObject != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-      while (localIterator.hasNext()) {
-        localArrayList.add((GPadInfo)localIterator.next());
+      localObject = ((ConcurrentHashMap)localObject).values().iterator();
+      while (((Iterator)localObject).hasNext()) {
+        localArrayList.add((GPadInfo)((Iterator)localObject).next());
       }
     }
     return localArrayList;
@@ -234,7 +256,7 @@ public class GroupTeamWorkManager
       while (localIterator.hasNext())
       {
         GPadInfo localGPadInfo = (GPadInfo)localIterator.next();
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(TeamWorkUtils.c(localGPadInfo.pad_url), localGPadInfo);
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).getNoParamUrl(localGPadInfo.pad_url), localGPadInfo);
       }
       c(paramList);
     }
@@ -242,7 +264,6 @@ public class GroupTeamWorkManager
   
   public void a(long paramLong)
   {
-    Object localObject4;
     try
     {
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
@@ -252,32 +273,44 @@ public class GroupTeamWorkManager
         localObject1 = ((List)localObject1).iterator();
         while (((Iterator)localObject1).hasNext())
         {
-          localObject4 = (GPadInfo)((Iterator)localObject1).next();
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(TeamWorkUtils.c(((GPadInfo)localObject4).pad_url), localObject4);
+          localObject3 = (GPadInfo)((Iterator)localObject1).next();
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).getNoParamUrl(((GPadInfo)localObject3).pad_url), localObject3);
         }
       }
       this.b.clear();
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("");
+      ((StringBuilder)localObject3).append(paramLong);
+      localObject1 = ((EntityManager)localObject1).query(GroupPadTemplateInfo.class, false, "groupCode=?", new String[] { ((StringBuilder)localObject3).toString() }, null, null, null, null);
+      if ((localObject1 != null) && (((List)localObject1).size() > 0))
+      {
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject3 = (GroupPadTemplateInfo)((Iterator)localObject1).next();
+          this.b.put(((GroupPadTemplateInfo)localObject3).templateUrl, localObject3);
+        }
+      }
+      return;
     }
     finally {}
-    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(GroupPadTemplateInfo.class, false, "groupCode=?", new String[] { "" + paramLong }, null, null, null, null);
-    if ((localObject3 != null) && (((List)localObject3).size() > 0))
+    for (;;)
     {
-      localObject3 = ((List)localObject3).iterator();
-      while (((Iterator)localObject3).hasNext())
-      {
-        localObject4 = (GroupPadTemplateInfo)((Iterator)localObject3).next();
-        this.b.put(((GroupPadTemplateInfo)localObject4).templateUrl, localObject4);
-      }
+      throw localObject2;
     }
   }
   
   public void a(GroupPadTemplateInfo paramGroupPadTemplateInfo)
   {
-    if ((paramGroupPadTemplateInfo == null) || (TextUtils.isEmpty(paramGroupPadTemplateInfo.templateUrl))) {
-      return;
+    if (paramGroupPadTemplateInfo != null)
+    {
+      if (TextUtils.isEmpty(paramGroupPadTemplateInfo.templateUrl)) {
+        return;
+      }
+      this.b.put(paramGroupPadTemplateInfo.templateUrl, paramGroupPadTemplateInfo);
+      a(paramGroupPadTemplateInfo);
     }
-    this.b.put(paramGroupPadTemplateInfo.templateUrl, paramGroupPadTemplateInfo);
-    a(paramGroupPadTemplateInfo);
   }
   
   public void a(List<GroupPadTemplateInfo> paramList)
@@ -300,16 +333,18 @@ public class GroupTeamWorkManager
   
   public boolean a(Entity paramEntity)
   {
+    int i = paramEntity.getStatus();
     boolean bool = false;
-    if (paramEntity.getStatus() == 1000)
+    if (i == 1000)
     {
       this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramEntity);
       if (paramEntity.getStatus() == 1001) {
         bool = true;
       }
-    }
-    while ((paramEntity.getStatus() != 1001) && (paramEntity.getStatus() != 1002)) {
       return bool;
+    }
+    if ((paramEntity.getStatus() != 1001) && (paramEntity.getStatus() != 1002)) {
+      return false;
     }
     return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramEntity);
   }
@@ -317,11 +352,12 @@ public class GroupTeamWorkManager
   public List<GroupPadTemplateInfo> b()
   {
     ArrayList localArrayList = new ArrayList();
-    if (this.b != null)
+    Object localObject = this.b;
+    if (localObject != null)
     {
-      Iterator localIterator = this.b.values().iterator();
-      while (localIterator.hasNext()) {
-        localArrayList.add((GroupPadTemplateInfo)localIterator.next());
+      localObject = ((ConcurrentHashMap)localObject).values().iterator();
+      while (((Iterator)localObject).hasNext()) {
+        localArrayList.add((GroupPadTemplateInfo)((Iterator)localObject).next());
       }
     }
     return localArrayList;
@@ -338,7 +374,7 @@ public class GroupTeamWorkManager
   {
     // Byte code:
     //   0: aload_1
-    //   1: ifnull +80 -> 81
+    //   1: ifnull +100 -> 101
     //   4: aload_0
     //   5: getfield 43	com/tencent/mobileqq/teamworkforgroup/GroupTeamWorkManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   8: invokevirtual 101	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
@@ -350,54 +386,62 @@ public class GroupTeamWorkManager
     //   22: astore_1
     //   23: aload_1
     //   24: invokeinterface 117 1 0
-    //   29: ifeq +53 -> 82
+    //   29: ifeq +19 -> 48
     //   32: aload_0
     //   33: aload_1
     //   34: invokeinterface 121 1 0
     //   39: checkcast 148	com/tencent/mobileqq/teamworkforgroup/GroupPadTemplateInfo
-    //   42: invokevirtual 244	com/tencent/mobileqq/teamworkforgroup/GroupTeamWorkManager:a	(Lcom/tencent/mobileqq/teamworkforgroup/GroupPadTemplateInfo;)V
+    //   42: invokevirtual 251	com/tencent/mobileqq/teamworkforgroup/GroupTeamWorkManager:a	(Lcom/tencent/mobileqq/teamworkforgroup/GroupPadTemplateInfo;)V
     //   45: goto -22 -> 23
-    //   48: astore_1
-    //   49: ldc 129
-    //   51: iconst_1
-    //   52: new 59	java/lang/StringBuilder
-    //   55: dup
-    //   56: invokespecial 60	java/lang/StringBuilder:<init>	()V
-    //   59: ldc 246
-    //   61: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   64: aload_1
-    //   65: invokevirtual 132	java/lang/Exception:toString	()Ljava/lang/String;
-    //   68: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   71: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   74: invokestatic 138	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   77: aload_2
-    //   78: invokevirtual 141	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   81: return
-    //   82: aload_2
-    //   83: invokevirtual 141	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   86: return
-    //   87: astore_1
-    //   88: aload_2
-    //   89: invokevirtual 141	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   92: aload_1
-    //   93: athrow
+    //   48: aload_2
+    //   49: invokevirtual 132	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   52: return
+    //   53: astore_1
+    //   54: goto +41 -> 95
+    //   57: astore_1
+    //   58: new 59	java/lang/StringBuilder
+    //   61: dup
+    //   62: invokespecial 60	java/lang/StringBuilder:<init>	()V
+    //   65: astore_3
+    //   66: aload_3
+    //   67: ldc 253
+    //   69: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   72: pop
+    //   73: aload_3
+    //   74: aload_1
+    //   75: invokevirtual 135	java/lang/Exception:toString	()Ljava/lang/String;
+    //   78: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   81: pop
+    //   82: ldc 137
+    //   84: iconst_1
+    //   85: aload_3
+    //   86: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   89: invokestatic 143	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   92: goto -44 -> 48
+    //   95: aload_2
+    //   96: invokevirtual 132	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   99: aload_1
+    //   100: athrow
+    //   101: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	94	0	this	GroupTeamWorkManager
-    //   0	94	1	paramList	List<GroupPadTemplateInfo>
-    //   11	78	2	localEntityTransaction	com.tencent.mobileqq.persistence.EntityTransaction
+    //   0	102	0	this	GroupTeamWorkManager
+    //   0	102	1	paramList	List<GroupPadTemplateInfo>
+    //   11	85	2	localEntityTransaction	com.tencent.mobileqq.persistence.EntityTransaction
+    //   65	21	3	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   16	23	48	java/lang/Exception
-    //   23	45	48	java/lang/Exception
-    //   16	23	87	finally
-    //   23	45	87	finally
-    //   49	77	87	finally
+    //   16	23	53	finally
+    //   23	45	53	finally
+    //   58	92	53	finally
+    //   16	23	57	java/lang/Exception
+    //   23	45	57	java/lang/Exception
   }
   
   public void onDestroy()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null) && (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())) {
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+    if ((localEntityManager != null) && (localEntityManager.isOpen())) {
       this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
     }
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
@@ -405,7 +449,7 @@ public class GroupTeamWorkManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkManager
  * JD-Core Version:    0.7.0.1
  */

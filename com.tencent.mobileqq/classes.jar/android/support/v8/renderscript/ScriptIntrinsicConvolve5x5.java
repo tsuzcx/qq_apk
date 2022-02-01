@@ -40,10 +40,14 @@ public class ScriptIntrinsicConvolve5x5
   {
     FieldPacker localFieldPacker = new FieldPacker(100);
     int i = 0;
-    while (i < this.mValues.length)
+    for (;;)
     {
-      this.mValues[i] = paramArrayOfFloat[i];
-      localFieldPacker.addF32(this.mValues[i]);
+      float[] arrayOfFloat = this.mValues;
+      if (i >= arrayOfFloat.length) {
+        break;
+      }
+      arrayOfFloat[i] = paramArrayOfFloat[i];
+      localFieldPacker.addF32(arrayOfFloat[i]);
       i += 1;
     }
     setVar(0, localFieldPacker);
@@ -57,7 +61,7 @@ public class ScriptIntrinsicConvolve5x5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.support.v8.renderscript.ScriptIntrinsicConvolve5x5
  * JD-Core Version:    0.7.0.1
  */

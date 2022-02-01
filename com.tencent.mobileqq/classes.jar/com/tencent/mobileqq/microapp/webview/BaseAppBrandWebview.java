@@ -3,17 +3,17 @@ package com.tencent.mobileqq.microapp.webview;
 import android.content.Context;
 import android.os.Build.VERSION;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.webview.dtwebview.DtX5WebView;
 import com.tencent.smtt.export.external.extension.interfaces.IX5WebSettingsExtension;
 import com.tencent.smtt.sdk.ValueCallback;
 import com.tencent.smtt.sdk.WebSettings;
-import com.tencent.smtt.sdk.WebView;
 
 public class BaseAppBrandWebview
-  extends WebView
+  extends DtX5WebView
 {
   protected static final String JS_INTERFACE_NAME = "WeixinJSCore";
   public static int PAGE_WEBVIEW_ID_FACTORY = 0;
-  private static final String TAG = BaseAppBrandWebview.class.getSimpleName();
+  private static final String TAG = "BaseAppBrandWebview";
   public com.tencent.mobileqq.microapp.a.c apkgInfo$5475ea27;
   public int htmlId;
   public int pageWebviewId;
@@ -32,7 +32,10 @@ public class BaseAppBrandWebview
     paramContext.setSupportZoom(false);
     paramContext.setJavaScriptEnabled(true);
     paramContext.setCacheMode(2);
-    paramContext.setUserAgent(paramContext.getUserAgentString() + "QQ/MicroApp");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext.getUserAgentString());
+    localStringBuilder.append("QQ/MicroApp");
+    paramContext.setUserAgent(localStringBuilder.toString());
     if (Build.VERSION.SDK_INT >= 11)
     {
       removeJavascriptInterface("searchBoxJavaBridge_");
@@ -65,8 +68,13 @@ public class BaseAppBrandWebview
   public void evaluateCallbackJs(int paramInt, String paramString, ValueCallback paramValueCallback)
   {
     paramString = String.format("WeixinJSBridge.invokeCallbackHandler(%d, %s)", new Object[] { Integer.valueOf(paramInt), paramString });
-    if (QLog.isColorLevel()) {
-      QLog.d(TAG, 2, "[evaluateCallbackJs] callbackStr=" + paramString);
+    if (QLog.isColorLevel())
+    {
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[evaluateCallbackJs] callbackStr=");
+      localStringBuilder.append(paramString);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
     evaluteJs(paramString, paramValueCallback);
   }
@@ -98,7 +106,7 @@ public class BaseAppBrandWebview
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.webview.BaseAppBrandWebview
  * JD-Core Version:    0.7.0.1
  */

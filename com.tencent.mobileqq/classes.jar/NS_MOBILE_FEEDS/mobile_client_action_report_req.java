@@ -9,9 +9,9 @@ import java.util.Map;
 public final class mobile_client_action_report_req
   extends JceStruct
 {
-  static Map<String, String> cache_extendinfo;
+  static Map<String, String> cache_extendinfo = new HashMap();
   static int cache_report_feed_type = 0;
-  static int cache_user_action = 0;
+  static int cache_user_action;
   public long action_subtype = 0L;
   public Map<String, String> extendinfo = null;
   public int report_feed_type = 0;
@@ -19,7 +19,6 @@ public final class mobile_client_action_report_req
   
   static
   {
-    cache_extendinfo = new HashMap();
     cache_extendinfo.put("", "");
   }
   
@@ -45,15 +44,16 @@ public final class mobile_client_action_report_req
   {
     paramJceOutputStream.write(this.user_action, 0);
     paramJceOutputStream.write(this.action_subtype, 1);
-    if (this.extendinfo != null) {
-      paramJceOutputStream.write(this.extendinfo, 2);
+    Map localMap = this.extendinfo;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 2);
     }
     paramJceOutputStream.write(this.report_feed_type, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_client_action_report_req
  * JD-Core Version:    0.7.0.1
  */

@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
@@ -17,18 +18,13 @@ public class PanoramaLoadingLayout
   public static final int ANIMATION_TIME = 300;
   public static final int HEIGHT = ViewUtils.b(55.0F);
   private static final String TAG = "PanoramaLoadingLayout";
-  public static final int WIDTH;
+  public static final int WIDTH = ViewUtils.b(55.0F);
   public static boolean isPanoramaLoading = false;
   private Context context;
   private PanoramaLoadingBall horizontalPanoramaLoadingBall;
   private PanoramaLoadingBackground panoramaLoadingBackground;
   private TextView tvToast;
   private PanoramaLoadingBall verticalPanoramaLoadingBall;
-  
-  static
-  {
-    WIDTH = ViewUtils.b(55.0F);
-  }
   
   public PanoramaLoadingLayout(@NonNull Context paramContext)
   {
@@ -44,18 +40,21 @@ public class PanoramaLoadingLayout
   
   public void onRecycled()
   {
-    if (this.horizontalPanoramaLoadingBall != null)
+    Object localObject = this.horizontalPanoramaLoadingBall;
+    if (localObject != null)
     {
-      this.horizontalPanoramaLoadingBall.stopTimer();
+      ((PanoramaLoadingBall)localObject).stopTimer();
       removeView(this.horizontalPanoramaLoadingBall);
     }
-    if (this.verticalPanoramaLoadingBall != null)
+    localObject = this.verticalPanoramaLoadingBall;
+    if (localObject != null)
     {
-      this.verticalPanoramaLoadingBall.stopTimer();
+      ((PanoramaLoadingBall)localObject).stopTimer();
       removeView(this.verticalPanoramaLoadingBall);
     }
-    if (this.panoramaLoadingBackground != null) {
-      removeView(this.panoramaLoadingBackground);
+    localObject = this.panoramaLoadingBackground;
+    if (localObject != null) {
+      removeView((View)localObject);
     }
     this.panoramaLoadingBackground = null;
     this.horizontalPanoramaLoadingBall = null;
@@ -88,7 +87,7 @@ public class PanoramaLoadingLayout
     if (this.tvToast == null)
     {
       this.tvToast = new TextView(this.context);
-      this.tvToast.setText(this.context.getResources().getString(2131717759));
+      this.tvToast.setText(this.context.getResources().getString(2131717418));
       this.tvToast.setTextColor(-1);
       this.tvToast.setTextSize(14.0F);
       this.tvToast.setShadowLayer(2.0F, 2.0F, 2.0F, -16777216);
@@ -111,30 +110,37 @@ public class PanoramaLoadingLayout
   
   public void startRotateAnimate()
   {
-    if ((this.horizontalPanoramaLoadingBall != null) && (this.verticalPanoramaLoadingBall != null) && (this.panoramaLoadingBackground != null))
+    PanoramaLoadingBall localPanoramaLoadingBall = this.horizontalPanoramaLoadingBall;
+    if ((localPanoramaLoadingBall != null) && (this.verticalPanoramaLoadingBall != null))
     {
-      this.horizontalPanoramaLoadingBall.startRotate(60.0F, 0, this.panoramaLoadingBackground);
-      this.verticalPanoramaLoadingBall.startRotate(60.0F, 1, this.panoramaLoadingBackground);
+      PanoramaLoadingBackground localPanoramaLoadingBackground = this.panoramaLoadingBackground;
+      if (localPanoramaLoadingBackground != null)
+      {
+        localPanoramaLoadingBall.startRotate(60.0F, 0, localPanoramaLoadingBackground);
+        this.verticalPanoramaLoadingBall.startRotate(60.0F, 1, this.panoramaLoadingBackground);
+      }
     }
   }
   
   public void stopRotateAnimate()
   {
-    if (this.horizontalPanoramaLoadingBall != null)
+    PanoramaLoadingBall localPanoramaLoadingBall = this.horizontalPanoramaLoadingBall;
+    if (localPanoramaLoadingBall != null)
     {
-      this.horizontalPanoramaLoadingBall.stopTimer();
+      localPanoramaLoadingBall.stopTimer();
       this.horizontalPanoramaLoadingBall.setRotationX(60.0F);
     }
-    if (this.verticalPanoramaLoadingBall != null)
+    localPanoramaLoadingBall = this.verticalPanoramaLoadingBall;
+    if (localPanoramaLoadingBall != null)
     {
-      this.verticalPanoramaLoadingBall.stopTimer();
+      localPanoramaLoadingBall.stopTimer();
       this.verticalPanoramaLoadingBall.setRotationY(60.0F);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.panorama.widget.PanoramaLoadingLayout
  * JD-Core Version:    0.7.0.1
  */

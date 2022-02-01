@@ -81,145 +81,177 @@ public class ARRecognition
   public static ARRecognition.RecognitionResult a(ArrayList<ARRecognition> paramArrayList, ARCloudRecogResult paramARCloudRecogResult)
   {
     ARRecognition.RecognitionResult localRecognitionResult = new ARRecognition.RecognitionResult(0L, false);
-    if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
-      return localRecognitionResult;
-    }
-    boolean bool1 = ARCloudMarkerRecogResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudMarkerRecogResult);
-    boolean bool2 = ARCloudObjectClassifyResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudObjectClassifyResult);
-    boolean bool3 = ARCloudRecogRspFaceResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogRspFaceResult);
-    boolean bool4 = ARMIGObjectClassifyResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult);
-    boolean bool5 = ARCloudSceneRecogResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudSceneRecogResult);
-    if ((!bool1) && (!bool2) && (!bool3) && (!bool4) && (!bool5)) {
-      return localRecognitionResult;
-    }
-    paramARCloudRecogResult = new ArrayList();
-    if (bool1) {
-      paramARCloudRecogResult.add(new ARRecognition.RecoglistionPriorityStore(1L, a(paramArrayList, 1L)));
-    }
-    if (bool3) {
-      paramARCloudRecogResult.add(new ARRecognition.RecoglistionPriorityStore(4L, a(paramArrayList, 4L)));
-    }
-    if (bool2) {
-      paramARCloudRecogResult.add(new ARRecognition.RecoglistionPriorityStore(2L, a(paramArrayList, 2L)));
-    }
-    if (bool4) {
-      paramARCloudRecogResult.add(new ARRecognition.RecoglistionPriorityStore(128L, a(paramArrayList, 128L)));
-    }
-    if (bool5) {
-      paramARCloudRecogResult.add(new ARRecognition.RecoglistionPriorityStore(2048L, a(paramArrayList, 2048L)));
-    }
-    paramArrayList = new StringBuilder();
-    int i = 0;
-    while (i < paramARCloudRecogResult.size())
+    if (paramArrayList != null)
     {
-      paramArrayList.append("(index:").append(i).append(",prority=" + ((ARRecognition.RecoglistionPriorityStore)paramARCloudRecogResult.get(i)).jdField_a_of_type_Long + ")\n");
-      i += 1;
-    }
-    QLog.i("AREngine_CommonConfigInfo", 1, "getCurrentPriorityHighestResult print result " + paramArrayList.toString());
-    Collections.sort(paramARCloudRecogResult, new ARRecognition.2());
-    localRecognitionResult.jdField_a_of_type_Long = ((ARRecognition.RecoglistionPriorityStore)paramARCloudRecogResult.get(0)).jdField_a_of_type_Long;
-    if (paramARCloudRecogResult.size() == 1) {}
-    for (bool1 = true;; bool1 = false)
-    {
+      if (paramArrayList.size() <= 0) {
+        return localRecognitionResult;
+      }
+      boolean bool1 = ARCloudMarkerRecogResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudMarkerRecogResult);
+      boolean bool2 = ARCloudObjectClassifyResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudObjectClassifyResult);
+      boolean bool3 = ARCloudRecogRspFaceResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogRspFaceResult);
+      boolean bool4 = ARMIGObjectClassifyResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult);
+      boolean bool5 = ARCloudSceneRecogResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudSceneRecogResult);
+      if ((!bool1) && (!bool2) && (!bool3) && (!bool4) && (!bool5)) {
+        return localRecognitionResult;
+      }
+      paramARCloudRecogResult = new ArrayList();
+      if (bool1) {
+        paramARCloudRecogResult.add(new ARRecognition.RecoglistionPriorityStore(1L, a(paramArrayList, 1L)));
+      }
+      if (bool3) {
+        paramARCloudRecogResult.add(new ARRecognition.RecoglistionPriorityStore(4L, a(paramArrayList, 4L)));
+      }
+      if (bool2) {
+        paramARCloudRecogResult.add(new ARRecognition.RecoglistionPriorityStore(2L, a(paramArrayList, 2L)));
+      }
+      if (bool4) {
+        paramARCloudRecogResult.add(new ARRecognition.RecoglistionPriorityStore(128L, a(paramArrayList, 128L)));
+      }
+      if (bool5) {
+        paramARCloudRecogResult.add(new ARRecognition.RecoglistionPriorityStore(2048L, a(paramArrayList, 2048L)));
+      }
+      paramArrayList = new StringBuilder();
+      int i = 0;
+      while (i < paramARCloudRecogResult.size())
+      {
+        paramArrayList.append("(index:");
+        paramArrayList.append(i);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(",prority=");
+        localStringBuilder.append(((ARRecognition.RecoglistionPriorityStore)paramARCloudRecogResult.get(i)).jdField_a_of_type_Long);
+        localStringBuilder.append(")\n");
+        paramArrayList.append(localStringBuilder.toString());
+        i += 1;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getCurrentPriorityHighestResult print result ");
+      localStringBuilder.append(paramArrayList.toString());
+      paramArrayList = localStringBuilder.toString();
+      bool1 = true;
+      QLog.i("AREngine_CommonConfigInfo", 1, paramArrayList);
+      Collections.sort(paramARCloudRecogResult, new ARRecognition.2());
+      localRecognitionResult.jdField_a_of_type_Long = ((ARRecognition.RecoglistionPriorityStore)paramARCloudRecogResult.get(0)).jdField_a_of_type_Long;
+      if (paramARCloudRecogResult.size() != 1) {
+        bool1 = false;
+      }
       localRecognitionResult.jdField_a_of_type_Boolean = bool1;
-      return localRecognitionResult;
     }
+    return localRecognitionResult;
   }
   
   public static boolean a(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
   {
-    if (paramInt1 != paramInt2) {
-      if (paramInt1 >= paramInt2) {}
-    }
-    do
+    boolean bool2 = false;
+    boolean bool3 = false;
+    boolean bool4 = false;
+    boolean bool5 = false;
+    boolean bool6 = false;
+    boolean bool7 = false;
+    boolean bool1 = false;
+    if (paramInt1 != paramInt2)
     {
-      do
+      if (paramInt1 < paramInt2) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    if ((paramLong1 != 1L) && (paramLong2 != 1L))
+    {
+      if ((paramLong1 != 2L) && (paramLong2 != 2L))
       {
-        do
+        if ((paramLong1 != 128L) && (paramLong2 != 128L))
         {
-          do
+          if ((paramLong1 != 4L) && (paramLong2 != 4L))
           {
-            do
+            if ((paramLong1 != 64L) && (paramLong2 != 64L))
             {
-              do
-              {
+              if ((paramLong1 != 2048L) && (paramLong2 != 2048L)) {
                 return true;
-                return false;
-                if ((paramLong1 != 1L) && (paramLong2 != 1L)) {
-                  break;
-                }
-              } while (paramLong1 == 1L);
-              return false;
-              if ((paramLong1 != 2L) && (paramLong2 != 2L)) {
-                break;
               }
-            } while (paramLong1 == 2L);
-            return false;
-            if ((paramLong1 != 128L) && (paramLong2 != 128L)) {
-              break;
+              bool1 = bool2;
+              if (paramLong1 == 2048L) {
+                bool1 = true;
+              }
+              return bool1;
             }
-          } while (paramLong1 == 128L);
-          return false;
-          if ((paramLong1 != 4L) && (paramLong2 != 4L)) {
-            break;
+            bool1 = bool3;
+            if (paramLong1 == 64L) {
+              bool1 = true;
+            }
+            return bool1;
           }
-        } while (paramLong1 == 4L);
-        return false;
-        if ((paramLong1 != 64L) && (paramLong2 != 64L)) {
-          break;
+          bool1 = bool4;
+          if (paramLong1 == 4L) {
+            bool1 = true;
+          }
+          return bool1;
         }
-      } while (paramLong1 == 64L);
-      return false;
-    } while (((paramLong1 != 2048L) && (paramLong2 != 2048L)) || (paramLong1 == 2048L));
-    return false;
+        bool1 = bool5;
+        if (paramLong1 == 128L) {
+          bool1 = true;
+        }
+        return bool1;
+      }
+      bool1 = bool6;
+      if (paramLong1 == 2L) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    bool1 = bool7;
+    if (paramLong1 == 1L) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   public static boolean a(ARCloudRecogResult paramARCloudRecogResult, long paramLong)
   {
-    if (paramARCloudRecogResult == null) {}
-    do
-    {
+    if (paramARCloudRecogResult == null) {
       return false;
-      if (paramLong == 1L) {
-        return ARCloudMarkerRecogResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudMarkerRecogResult);
-      }
-      if (paramLong == 2L) {
-        return ARCloudObjectClassifyResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudObjectClassifyResult);
-      }
-      if (paramLong == 128L) {
-        return ARMIGObjectClassifyResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult);
-      }
-      if (paramLong == 4L) {
-        return ARCloudRecogRspFaceResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogRspFaceResult);
-      }
-      if (paramLong == 64L) {
-        return ARCloudPreOcrResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudPreOcrResult);
-      }
-    } while (paramLong != 2048L);
-    return ARCloudSceneRecogResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudSceneRecogResult);
+    }
+    if (paramLong == 1L) {
+      return ARCloudMarkerRecogResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudMarkerRecogResult);
+    }
+    if (paramLong == 2L) {
+      return ARCloudObjectClassifyResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudObjectClassifyResult);
+    }
+    if (paramLong == 128L) {
+      return ARMIGObjectClassifyResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult);
+    }
+    if (paramLong == 4L) {
+      return ARCloudRecogRspFaceResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogRspFaceResult);
+    }
+    if (paramLong == 64L) {
+      return ARCloudPreOcrResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudPreOcrResult);
+    }
+    if (paramLong == 2048L) {
+      return ARCloudSceneRecogResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudSceneRecogResult);
+    }
+    return false;
   }
   
   public static boolean a(ARCloudRecogResult paramARCloudRecogResult, ArrayList<ARRecognition> paramArrayList, long paramLong)
   {
-    if ((paramARCloudRecogResult == null) || (paramArrayList == null) || (!a(paramARCloudRecogResult, paramLong))) {
-      return false;
-    }
-    int j = a(paramArrayList, paramLong);
-    int i = 0;
-    for (;;)
+    if ((paramARCloudRecogResult != null) && (paramArrayList != null))
     {
-      if (i >= paramArrayList.size()) {
-        break label107;
+      if (!a(paramARCloudRecogResult, paramLong)) {
+        return false;
       }
-      long l = 1 << (int)((ARRecognition)paramArrayList.get(i)).jdField_a_of_type_Long;
-      int k = ((ARRecognition)paramArrayList.get(i)).c;
-      if ((paramLong != l) && (a(paramARCloudRecogResult, l)) && (!a(paramLong, l, j, k))) {
-        break;
+      int j = a(paramArrayList, paramLong);
+      int i = 0;
+      while (i < paramArrayList.size())
+      {
+        long l = 1 << (int)((ARRecognition)paramArrayList.get(i)).jdField_a_of_type_Long;
+        int k = ((ARRecognition)paramArrayList.get(i)).c;
+        if ((paramLong != l) && (a(paramARCloudRecogResult, l)) && (!a(paramLong, l, j, k))) {
+          return false;
+        }
+        i += 1;
       }
-      i += 1;
+      return true;
     }
-    label107:
-    return true;
+    return false;
   }
   
   public static boolean a(ArrayList<ARRecognition> paramArrayList, long paramLong)
@@ -241,25 +273,21 @@ public class ARRecognition
   
   public static boolean a(ArrayList<ARRecognition> paramArrayList, long paramLong1, long paramLong2)
   {
-    int j;
+    int j = 5;
     int i;
     if (paramArrayList != null)
     {
-      j = 5;
-      i = 5;
       int k = 0;
-      if (k < paramArrayList.size())
+      int m;
+      for (i = 5; k < paramArrayList.size(); i = m)
       {
         long l = 1 << (int)((ARRecognition)paramArrayList.get(k)).jdField_a_of_type_Long;
-        int m;
-        if (paramLong1 == l) {
+        if (paramLong1 == l)
+        {
           m = ((ARRecognition)paramArrayList.get(k)).c;
         }
-        for (;;)
+        else
         {
-          k += 1;
-          i = m;
-          break;
           m = i;
           if (paramLong2 == l)
           {
@@ -267,14 +295,15 @@ public class ARRecognition
             m = i;
           }
         }
+        k += 1;
       }
     }
-    for (;;)
+    else
     {
-      return a(paramLong1, paramLong2, i, j);
-      j = 5;
       i = 5;
+      j = 5;
     }
+    return a(paramLong1, paramLong2, i, j);
   }
   
   public static long b(ArrayList<ARRecognition> paramArrayList)
@@ -309,12 +338,20 @@ public class ARRecognition
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("Recognition{");
-    localStringBuffer.append("type=").append(this.jdField_a_of_type_Long);
-    localStringBuffer.append("CloudRecogOpen =").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append("LocalRecogOpen =").append(this.jdField_b_of_type_Int);
-    localStringBuffer.append(", priority='").append(this.c).append('\'');
-    localStringBuffer.append(", wait_ms='").append(this.jdField_b_of_type_Long).append('\'');
-    localStringBuffer.append("ImagePreprocess_open =").append(this.d);
+    localStringBuffer.append("type=");
+    localStringBuffer.append(this.jdField_a_of_type_Long);
+    localStringBuffer.append("CloudRecogOpen =");
+    localStringBuffer.append(this.jdField_a_of_type_Int);
+    localStringBuffer.append("LocalRecogOpen =");
+    localStringBuffer.append(this.jdField_b_of_type_Int);
+    localStringBuffer.append(", priority='");
+    localStringBuffer.append(this.c);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", wait_ms='");
+    localStringBuffer.append(this.jdField_b_of_type_Long);
+    localStringBuffer.append('\'');
+    localStringBuffer.append("ImagePreprocess_open =");
+    localStringBuffer.append(this.d);
     localStringBuffer.append('}');
     return localStringBuffer.toString();
   }
@@ -331,7 +368,7 @@ public class ARRecognition
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecognition
  * JD-Core Version:    0.7.0.1
  */

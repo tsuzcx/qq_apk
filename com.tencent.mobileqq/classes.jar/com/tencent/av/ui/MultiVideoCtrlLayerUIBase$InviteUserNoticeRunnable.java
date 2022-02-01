@@ -20,18 +20,19 @@ class MultiVideoCtrlLayerUIBase$InviteUserNoticeRunnable
   public void run()
   {
     AVActivity localAVActivity = (AVActivity)this.this$0.a.get();
-    if (localAVActivity != null) {
+    if (localAVActivity != null)
+    {
       localAVActivity.runOnUiThread(new MultiVideoCtrlLayerUIBase.InviteUserNoticeRunnable.1(this));
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.e(this.this$0.d, 2, "onInviteUserNotice-->Can not get AVActivity");
+    if (QLog.isColorLevel()) {
+      QLog.e(this.this$0.d, 2, "onInviteUserNotice-->Can not get AVActivity");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUIBase.InviteUserNoticeRunnable
  * JD-Core Version:    0.7.0.1
  */

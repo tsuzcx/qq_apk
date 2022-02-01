@@ -15,38 +15,48 @@ public class SimpleUIObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    }
-    do
-    {
-      do
+      if (paramInt != 2)
       {
-        do
+        if (paramInt != 3)
         {
-          do
-          {
+          if (paramInt != 4) {
             return;
-            paramObject = (Object[])paramObject;
-          } while ((paramObject == null) || (paramObject.length != 4));
-          a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Boolean)paramObject[1]).booleanValue(), ((Integer)paramObject[2]).intValue(), (String)paramObject[3]);
-          return;
+          }
           paramObject = (Object[])paramObject;
-        } while ((paramObject == null) || (paramObject.length != 5));
-        a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), ((Boolean)paramObject[2]).booleanValue(), (String)paramObject[3], ((Long)paramObject[4]).longValue());
-        return;
+          if ((paramObject != null) && (paramObject.length == 3)) {
+            a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
+          }
+        }
+        else
+        {
+          paramObject = (Object[])paramObject;
+          if ((paramObject != null) && (paramObject.length == 3)) {
+            a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Boolean)paramObject[1]).booleanValue(), ((Integer)paramObject[2]).intValue());
+          }
+        }
+      }
+      else
+      {
         paramObject = (Object[])paramObject;
-      } while ((paramObject == null) || (paramObject.length != 3));
-      a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Boolean)paramObject[1]).booleanValue(), ((Integer)paramObject[2]).intValue());
-      return;
+        if ((paramObject != null) && (paramObject.length == 5)) {
+          a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), ((Boolean)paramObject[2]).booleanValue(), (String)paramObject[3], ((Long)paramObject[4]).longValue());
+        }
+      }
+    }
+    else
+    {
       paramObject = (Object[])paramObject;
-    } while ((paramObject == null) || (paramObject.length != 3));
-    a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
+      if ((paramObject != null) && (paramObject.length == 4)) {
+        a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Boolean)paramObject[1]).booleanValue(), ((Integer)paramObject[2]).intValue(), (String)paramObject[3]);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.simpleui.SimpleUIObserver
  * JD-Core Version:    0.7.0.1
  */

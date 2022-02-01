@@ -16,39 +16,47 @@ final class StoryBasicShareUtils$1
     if (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction)) {
       return;
     }
-    switch (paramBaseResp.errCode)
+    int i = paramBaseResp.errCode;
+    if (i != -4)
     {
-    case -3: 
-    case -1: 
-    default: 
-      if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback.b(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData);
-      }
-      break;
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
-      return;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback != null)
+      if (i != -2)
       {
-        this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData);
-        continue;
-        if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback != null)
+        if (i != 0)
         {
-          this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback.c(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData);
-          continue;
-          if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback != null) {
-            this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback.b(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData);
+          paramBaseResp = this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback;
+          if (paramBaseResp != null) {
+            paramBaseResp.b(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData);
+          }
+        }
+        else
+        {
+          paramBaseResp = this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback;
+          if (paramBaseResp != null) {
+            paramBaseResp.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData);
           }
         }
       }
+      else
+      {
+        paramBaseResp = this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback;
+        if (paramBaseResp != null) {
+          paramBaseResp.c(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData);
+        }
+      }
     }
+    else
+    {
+      paramBaseResp = this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback;
+      if (paramBaseResp != null) {
+        paramBaseResp.b(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData);
+      }
+    }
+    WXShareHelper.a().b(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.util.StoryBasicShareUtils.1
  * JD-Core Version:    0.7.0.1
  */

@@ -29,16 +29,20 @@ public class RC4EncryptedFileSystem
     VFSUtils.checkFileSystemVersion(paramParcel, RC4EncryptedFileSystem.class, 2);
     this.mKeyGen = FileSystemManager.getKeyGenerator();
     this.mId = paramParcel.readString();
-    if (this.mKeyGen == null) {
-      throw new RuntimeException("Set global generator by calling setGlobalKeyGenerator(...) before initializing FileSystem objects.");
-    }
-    this.mKey = this.mKeyGen.generate(this.mId, FileSystemManager.instance().staticEnvironment());
-    if (this.mKey != null) {}
-    for (boolean bool = true;; bool = false)
+    paramParcel = this.mKeyGen;
+    if (paramParcel != null)
     {
+      this.mKey = paramParcel.generate(this.mId, FileSystemManager.instance().staticEnvironment());
+      boolean bool;
+      if (this.mKey != null) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       this.mRegenerateFree = bool;
       return;
     }
+    throw new RuntimeException("Set global generator by calling setGlobalKeyGenerator(...) before initializing FileSystem objects.");
   }
   
   public RC4EncryptedFileSystem(FileSystem paramFileSystem, String paramString)
@@ -46,16 +50,20 @@ public class RC4EncryptedFileSystem
     super(paramFileSystem);
     this.mKeyGen = FileSystemManager.getKeyGenerator();
     this.mId = paramString;
-    if (this.mKeyGen == null) {
-      throw new RuntimeException("Set global generator by calling setKeyGenerator(...) before initializing FileSystem objects.");
-    }
-    this.mKey = this.mKeyGen.generate(this.mId, FileSystemManager.instance().staticEnvironment());
-    if (this.mKey != null) {}
-    for (boolean bool = true;; bool = false)
+    paramFileSystem = this.mKeyGen;
+    if (paramFileSystem != null)
     {
+      this.mKey = paramFileSystem.generate(this.mId, FileSystemManager.instance().staticEnvironment());
+      boolean bool;
+      if (this.mKey != null) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       this.mRegenerateFree = bool;
       return;
     }
+    throw new RuntimeException("Set global generator by calling setKeyGenerator(...) before initializing FileSystem objects.");
   }
   
   public RC4EncryptedFileSystem(String paramString1, String paramString2)
@@ -102,48 +110,59 @@ public class RC4EncryptedFileSystem
   
   public InputStream openRead(String paramString)
   {
-    Key localKey = this.mKey;
-    if (localKey == null) {
-      throw new FileNotFoundException("Key is not initialized.");
+    Object localObject = this.mKey;
+    if (localObject != null) {
+      try
+      {
+        Cipher localCipher = Cipher.getInstance("RC4");
+        localCipher.init(2, (Key)localObject);
+        paramString = new CipherInputStream(this.mFS.openRead(paramString), localCipher);
+        return paramString;
+      }
+      catch (GeneralSecurityException paramString)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Failed to initialize cipher: ");
+        ((StringBuilder)localObject).append(paramString.getMessage());
+        throw ((FileNotFoundException)new FileNotFoundException(((StringBuilder)localObject).toString()).initCause(paramString));
+      }
     }
-    try
-    {
-      Cipher localCipher = Cipher.getInstance("RC4");
-      localCipher.init(2, localKey);
-      paramString = new CipherInputStream(this.mFS.openRead(paramString), localCipher);
-      return paramString;
-    }
-    catch (GeneralSecurityException paramString)
-    {
-      throw ((FileNotFoundException)new FileNotFoundException("Failed to initialize cipher: " + paramString.getMessage()).initCause(paramString));
-    }
+    throw new FileNotFoundException("Key is not initialized.");
   }
   
   public OutputStream openWrite(String paramString, boolean paramBoolean)
   {
-    Key localKey = this.mKey;
-    if (localKey == null) {
-      throw new FileNotFoundException("Key is not initialized.");
-    }
-    if (paramBoolean) {
+    Object localObject = this.mKey;
+    if (localObject != null)
+    {
+      if (!paramBoolean) {
+        try
+        {
+          Cipher localCipher = Cipher.getInstance("RC4");
+          localCipher.init(1, (Key)localObject);
+          paramString = new CipherOutputStream(this.mFS.openWrite(paramString, false), localCipher);
+          return paramString;
+        }
+        catch (GeneralSecurityException paramString)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("Failed to initialize cipher: ");
+          ((StringBuilder)localObject).append(paramString.getMessage());
+          throw ((FileNotFoundException)new FileNotFoundException(((StringBuilder)localObject).toString()).initCause(paramString));
+        }
+      }
       throw new FileNotFoundException("Appending encrypted files is not supported.");
     }
-    try
-    {
-      Cipher localCipher = Cipher.getInstance("RC4");
-      localCipher.init(1, localKey);
-      paramString = new CipherOutputStream(this.mFS.openWrite(paramString, false), localCipher);
-      return paramString;
-    }
-    catch (GeneralSecurityException paramString)
-    {
-      throw ((FileNotFoundException)new FileNotFoundException("Failed to initialize cipher: " + paramString.getMessage()).initCause(paramString));
-    }
+    throw new FileNotFoundException("Key is not initialized.");
   }
   
   public String toString()
   {
-    return "RC4 [" + this.mFS.toString() + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RC4 [");
+    localStringBuilder.append(this.mFS.toString());
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -155,7 +174,7 @@ public class RC4EncryptedFileSystem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.vfs.RC4EncryptedFileSystem
  * JD-Core Version:    0.7.0.1
  */

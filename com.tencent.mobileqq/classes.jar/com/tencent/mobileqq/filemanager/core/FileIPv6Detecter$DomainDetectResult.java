@@ -11,7 +11,7 @@ class FileIPv6Detecter$DomainDetectResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.FileIPv6Detecter.DomainDetectResult
  * JD-Core Version:    0.7.0.1
  */

@@ -2,27 +2,26 @@ package com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodu
 
 import android.support.annotation.Nullable;
 import androidx.lifecycle.Observer;
-import com.tencent.ilive.litepages.room.webmodule.event.ContentLoadedEvent;
+import com.tencent.ilive.litepages.room.webmodule.event.ScrollByWebEvent;
+import com.tencent.qphone.base.util.QLog;
 
 class CustomWebModule$5
-  implements Observer<ContentLoadedEvent>
+  implements Observer<ScrollByWebEvent>
 {
   CustomWebModule$5(CustomWebModule paramCustomWebModule) {}
   
-  public void a(@Nullable ContentLoadedEvent paramContentLoadedEvent)
+  public void a(@Nullable ScrollByWebEvent paramScrollByWebEvent)
   {
-    if ((paramContentLoadedEvent != null) && (paramContentLoadedEvent.mContentLoaded))
-    {
-      CustomWebModule.c(this.a, paramContentLoadedEvent.mContentLoaded);
-      if (CustomWebModule.a(this.a)) {
-        CustomWebModule.a(this.a, 1);
-      }
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ontouch ScrollByWebEvent scroll by web");
+    localStringBuilder.append(paramScrollByWebEvent.scrollByWeb);
+    QLog.d("IliveCustomWebModule", 1, localStringBuilder.toString());
+    CustomWebModule.b(this.a, paramScrollByWebEvent.scrollByWeb);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.CustomWebModule.5
  * JD-Core Version:    0.7.0.1
  */

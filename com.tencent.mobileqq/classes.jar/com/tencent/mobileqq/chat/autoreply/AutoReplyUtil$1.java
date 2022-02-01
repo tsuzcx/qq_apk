@@ -15,21 +15,21 @@ final class AutoReplyUtil$1
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_JavaLangString, 0);
-    if (localObject == null) {}
-    do
-    {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, 0);
+    if (localObject == null) {
       return;
-      while (!((Iterator)localObject).hasNext()) {
-        localObject = ((List)localObject).iterator();
+    }
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      if (((MessageRecord)((Iterator)localObject).next() instanceof MessageForAutoReply)) {
+        ReportHelperKt.a("0X800B0AD");
       }
-    } while (!((MessageRecord)((Iterator)localObject).next() instanceof MessageForAutoReply));
-    ReportHelperKt.a("0X800B0AD");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.chat.autoreply.AutoReplyUtil.1
  * JD-Core Version:    0.7.0.1
  */

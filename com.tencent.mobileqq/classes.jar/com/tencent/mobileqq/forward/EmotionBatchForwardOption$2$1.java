@@ -3,7 +3,7 @@ package com.tencent.mobileqq.forward;
 import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.model.QueryCallback;
+import com.tencent.mobileqq.emoticonview.QueryCallback;
 
 class EmotionBatchForwardOption$2$1
   implements QueryCallback<Emoticon>
@@ -17,7 +17,7 @@ class EmotionBatchForwardOption$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.EmotionBatchForwardOption.2.1
  * JD-Core Version:    0.7.0.1
  */

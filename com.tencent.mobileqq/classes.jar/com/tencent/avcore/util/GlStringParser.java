@@ -76,16 +76,24 @@ public class GlStringParser
   public int getInt(String paramString, int paramInt)
   {
     String str = (String)this.mMap.get(paramString);
-    int i = paramInt;
-    if (str != null) {}
-    try
-    {
-      i = Integer.parseInt(str);
-      return i;
-    }
-    catch (Exception localException)
-    {
-      AVCoreLog.e("GlStringParser", "getInt, key[" + paramString + "], value[" + str + "], def[" + paramInt + "]", localException);
+    if (str != null) {
+      try
+      {
+        int i = Integer.parseInt(str);
+        return i;
+      }
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getInt, key[");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("], value[");
+        localStringBuilder.append(str);
+        localStringBuilder.append("], def[");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append("]");
+        AVCoreLog.e("GlStringParser", localStringBuilder.toString(), localException);
+      }
     }
     return paramInt;
   }
@@ -93,16 +101,24 @@ public class GlStringParser
   public long getLong(String paramString, long paramLong)
   {
     String str = (String)this.mMap.get(paramString);
-    long l = paramLong;
-    if (str != null) {}
-    try
-    {
-      l = Long.parseLong(str);
-      return l;
-    }
-    catch (Exception localException)
-    {
-      AVCoreLog.e("GlStringParser", "getLong, key[" + paramString + "], value[" + str + "], def[" + paramLong + "]", localException);
+    if (str != null) {
+      try
+      {
+        long l = Long.parseLong(str);
+        return l;
+      }
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getLong, key[");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("], value[");
+        localStringBuilder.append(str);
+        localStringBuilder.append("], def[");
+        localStringBuilder.append(paramLong);
+        localStringBuilder.append("]");
+        AVCoreLog.e("GlStringParser", localStringBuilder.toString(), localException);
+      }
     }
     return paramLong;
   }
@@ -129,40 +145,46 @@ public class GlStringParser
   
   public void set(String paramString1, String paramString2)
   {
-    if ((paramString1 == null) || (paramString1.indexOf(this.mend) != -1) || (paramString1.indexOf(this.mkey) != -1)) {}
-    while ((paramString2 == null) || (paramString2.indexOf(this.mkey) != -1) || (paramString2.indexOf(this.mend) != -1)) {
-      return;
+    if ((paramString1 != null) && (paramString1.indexOf(this.mend) == -1))
+    {
+      if (paramString1.indexOf(this.mkey) != -1) {
+        return;
+      }
+      if ((paramString2 != null) && (paramString2.indexOf(this.mkey) == -1))
+      {
+        if (paramString2.indexOf(this.mend) != -1) {
+          return;
+        }
+        this.mMap.put(paramString1, paramString2);
+      }
     }
-    this.mMap.put(paramString1, paramString2);
   }
   
   public void unflatten(String paramString)
   {
-    if (paramString == null) {}
-    for (;;)
-    {
+    if (paramString == null) {
       return;
-      this.mMap.clear();
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.mend);
-      paramString = new StringTokenizer(paramString, ((StringBuilder)localObject).toString());
-      while (paramString.hasMoreElements())
+    }
+    this.mMap.clear();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.mend);
+    paramString = new StringTokenizer(paramString, ((StringBuilder)localObject).toString());
+    while (paramString.hasMoreElements())
+    {
+      String str = paramString.nextToken();
+      int i = str.indexOf(this.mkey);
+      if (i != -1)
       {
-        String str = paramString.nextToken();
-        int i = str.indexOf(this.mkey);
-        if (i != -1)
-        {
-          localObject = str.substring(0, i);
-          str = str.substring(i + 1);
-          this.mMap.put(localObject, str);
-        }
+        localObject = str.substring(0, i);
+        str = str.substring(i + 1);
+        this.mMap.put(localObject, str);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avcore.util.GlStringParser
  * JD-Core Version:    0.7.0.1
  */

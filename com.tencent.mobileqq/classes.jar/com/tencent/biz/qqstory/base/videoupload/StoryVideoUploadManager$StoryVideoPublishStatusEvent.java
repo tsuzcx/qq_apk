@@ -35,10 +35,11 @@ public final class StoryVideoUploadManager$StoryVideoPublishStatusEvent
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
+    StoryVideoItem localStoryVideoItem = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
+    if (localStoryVideoItem == null) {
       return false;
     }
-    return this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isTroopLocalVideoOnly();
+    return localStoryVideoItem.isTroopLocalVideoOnly();
   }
   
   public boolean b()
@@ -48,17 +49,28 @@ public final class StoryVideoUploadManager$StoryVideoPublishStatusEvent
   
   public boolean c()
   {
-    return (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0);
+    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    return (localArrayList != null) && (localArrayList.size() > 0);
   }
   
   public String toString()
   {
-    return "StoryVideoPublishStatusEvent{mFakeStoryVideoItem=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem + ", mSucStoryVideoItem=" + this.jdField_b_of_type_ComTencentBizQqstoryModelItemStoryVideoItem + ", mCommentLikeFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem + ", mShareGroupFakeItems=" + this.jdField_a_of_type_JavaUtilArrayList + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("StoryVideoPublishStatusEvent{mFakeStoryVideoItem=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    localStringBuilder.append(", mSucStoryVideoItem=");
+    localStringBuilder.append(this.jdField_b_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    localStringBuilder.append(", mCommentLikeFeedItem=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem);
+    localStringBuilder.append(", mShareGroupFakeItems=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.StoryVideoPublishStatusEvent
  * JD-Core Version:    0.7.0.1
  */

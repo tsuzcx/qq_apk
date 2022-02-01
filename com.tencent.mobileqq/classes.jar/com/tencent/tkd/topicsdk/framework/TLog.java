@@ -39,7 +39,7 @@ public final class TLog
     if (localILogger == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mLogger");
     }
-    localILogger.a(paramString1, paramString2, paramThrowable);
+    localILogger.d(paramString1, paramString2, paramThrowable);
   }
   
   @JvmStatic
@@ -51,7 +51,7 @@ public final class TLog
     if (localILogger == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mLogger");
     }
-    localILogger.b(paramString, "", paramThrowable);
+    localILogger.a(paramString, "", paramThrowable);
   }
   
   @JvmStatic
@@ -75,7 +75,19 @@ public final class TLog
     if (localILogger == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mLogger");
     }
-    localILogger.d(paramString1, paramString2, paramThrowable);
+    localILogger.b(paramString1, paramString2, paramThrowable);
+  }
+  
+  @JvmStatic
+  public static final void b(@NotNull String paramString, @NotNull Throwable paramThrowable)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "tag");
+    Intrinsics.checkParameterIsNotNull(paramThrowable, "throwable");
+    ILogger localILogger = jdField_a_of_type_ComTencentTkdTopicsdkInterfacesILogger;
+    if (localILogger == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mLogger");
+    }
+    localILogger.b(paramString, "", paramThrowable);
   }
   
   @JvmStatic
@@ -88,18 +100,6 @@ public final class TLog
       Intrinsics.throwUninitializedPropertyAccessException("mLogger");
     }
     localILogger.d(paramString1, paramString2, null);
-  }
-  
-  @JvmStatic
-  public static final void c(@NotNull String paramString1, @NotNull String paramString2, @Nullable Throwable paramThrowable)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString1, "tag");
-    Intrinsics.checkParameterIsNotNull(paramString2, "msg");
-    ILogger localILogger = jdField_a_of_type_ComTencentTkdTopicsdkInterfacesILogger;
-    if (localILogger == null) {
-      Intrinsics.throwUninitializedPropertyAccessException("mLogger");
-    }
-    localILogger.b(paramString1, paramString2, paramThrowable);
   }
   
   @JvmStatic
@@ -122,7 +122,7 @@ public final class TLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.framework.TLog
  * JD-Core Version:    0.7.0.1
  */

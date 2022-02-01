@@ -22,10 +22,11 @@ public class SonicFileUtils
   
   private static long calcCacheSize(String paramString, Map<String, List<String>> paramMap)
   {
-    long l1 = 0L;
     paramString = new File(paramString);
+    boolean bool = paramString.exists();
+    long l1 = 0L;
     long l2 = l1;
-    if (paramString.exists())
+    if (bool)
     {
       l2 = l1;
       if (paramString.isDirectory())
@@ -46,7 +47,7 @@ public class SonicFileUtils
                 break;
               }
               File localFile = arrayOfFile[i];
-              l2 = localFile.length();
+              l1 += localFile.length();
               String str = localFile.getName();
               List localList = (List)paramMap.get(str);
               paramString = localList;
@@ -56,7 +57,6 @@ public class SonicFileUtils
               paramString.add(localFile.getAbsolutePath());
               paramMap.put(str, paramString);
               i += 1;
-              l1 = l2 + l1;
             }
           }
         }
@@ -67,122 +67,138 @@ public class SonicFileUtils
   
   static void checkAndTrimCache()
   {
-    HashMap localHashMap = new HashMap();
+    Object localObject1 = new HashMap();
     long l3 = System.currentTimeMillis();
-    long l1 = calcCacheSize(getSonicCacheDirPath(), localHashMap);
-    long l4 = SonicEngine.getInstance().getConfig().SONIC_CACHE_MAX_SIZE;
-    List localList;
-    int i;
-    if (l1 > l4 * 0.8D)
+    long l1 = calcCacheSize(getSonicCacheDirPath(), (Map)localObject1);
+    long l2 = SonicEngine.getInstance().getConfig().SONIC_CACHE_MAX_SIZE;
+    double d2 = l1;
+    double d1 = l2;
+    Double.isNaN(d1);
+    if (d2 > 0.8D * d1)
     {
-      SonicUtils.log("SonicSdk_SonicFileUtils", 4, "now try clear cache, current cache size: " + l1 / 1024L / 1024L + "m");
-      localList = SonicDataHelper.getAllSessionByHitCount();
-      i = 0;
-    }
-    for (;;)
-    {
-      long l2;
-      if (i < localList.size())
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("now try clear cache, current cache size: ");
+      ((StringBuilder)localObject2).append(l1 / 1024L / 1024L);
+      ((StringBuilder)localObject2).append("m");
+      SonicUtils.log("SonicSdk_SonicFileUtils", 4, ((StringBuilder)localObject2).toString());
+      localObject2 = SonicDataHelper.getAllSessionByHitCount();
+      int i = 0;
+      while (i < ((List)localObject2).size())
       {
-        Object localObject = (List)localHashMap.get(((SonicDataHelper.SessionData)localList.get(i)).sessionId);
+        Object localObject3 = (List)((HashMap)localObject1).get(((SonicDataHelper.SessionData)((List)localObject2).get(i)).sessionId);
         l2 = l1;
-        if (localObject != null)
+        if (localObject3 != null)
         {
           l2 = l1;
-          if (((List)localObject).size() > 0)
+          if (((List)localObject3).size() > 0)
           {
-            localObject = ((List)localObject).iterator();
+            localObject3 = ((List)localObject3).iterator();
             for (;;)
             {
               l2 = l1;
-              if (!((Iterator)localObject).hasNext()) {
+              if (!((Iterator)localObject3).hasNext()) {
                 break;
               }
-              File localFile = new File((String)((Iterator)localObject).next());
+              File localFile = new File((String)((Iterator)localObject3).next());
               if ((localFile.isFile()) && (localFile.exists()))
               {
-                String str = localFile.getName();
+                Object localObject4 = localFile.getName();
                 l2 = localFile.length();
                 if (localFile.delete())
                 {
                   l1 -= l2;
-                  SonicDataHelper.removeSessionData(str);
-                  SonicChunkDataHelper.removeChunkData(str);
-                  SonicUtils.log("SonicSdk_SonicFileUtils", 4, "delete " + localFile.getAbsolutePath());
+                  SonicDataHelper.removeSessionData((String)localObject4);
+                  SonicChunkDataHelper.removeChunkData((String)localObject4);
+                  localObject4 = new StringBuilder();
+                  ((StringBuilder)localObject4).append("delete ");
+                  ((StringBuilder)localObject4).append(localFile.getAbsolutePath());
+                  SonicUtils.log("SonicSdk_SonicFileUtils", 4, ((StringBuilder)localObject4).toString());
                 }
               }
             }
           }
         }
-        if (l2 > l4 * 0.25D) {}
+        d2 = l2;
+        Double.isNaN(d1);
+        if (d2 <= 0.25D * d1) {
+          break;
+        }
+        i += 1;
+        l1 = l2;
       }
-      else
-      {
-        SonicUtils.log("SonicSdk_SonicFileUtils", 4, "checkAndTrimCache: finish , cost " + (System.currentTimeMillis() - l3) + "ms.");
-        return;
-      }
-      i += 1;
-      l1 = l2;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("checkAndTrimCache: finish , cost ");
+      ((StringBuilder)localObject1).append(System.currentTimeMillis() - l3);
+      ((StringBuilder)localObject1).append("ms.");
+      SonicUtils.log("SonicSdk_SonicFileUtils", 4, ((StringBuilder)localObject1).toString());
     }
   }
   
   static void checkAndTrimResourceCache()
   {
-    HashMap localHashMap = new HashMap();
+    Object localObject1 = new HashMap();
     long l3 = System.currentTimeMillis();
-    long l1 = calcCacheSize(getSonicResourceCachePath(), localHashMap);
-    long l4 = SonicEngine.getInstance().getConfig().SONIC_RESOURCE_CACHE_MAX_SIZE;
-    List localList;
-    int i;
-    if (l1 > l4 * 0.8D)
+    long l1 = calcCacheSize(getSonicResourceCachePath(), (Map)localObject1);
+    long l2 = SonicEngine.getInstance().getConfig().SONIC_RESOURCE_CACHE_MAX_SIZE;
+    double d2 = l1;
+    double d1 = l2;
+    Double.isNaN(d1);
+    if (d2 > 0.8D * d1)
     {
-      SonicUtils.log("SonicSdk_SonicFileUtils", 4, "now try clear cache, current cache size: " + l1 / 1024L / 1024L + "m");
-      localList = SonicResourceDataHelper.getAllResourceData();
-      i = 0;
-    }
-    for (;;)
-    {
-      long l2;
-      if (i < localList.size())
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("now try clear cache, current cache size: ");
+      ((StringBuilder)localObject2).append(l1 / 1024L / 1024L);
+      ((StringBuilder)localObject2).append("m");
+      SonicUtils.log("SonicSdk_SonicFileUtils", 4, ((StringBuilder)localObject2).toString());
+      localObject2 = SonicResourceDataHelper.getAllResourceData();
+      int i = 0;
+      while (i < ((List)localObject2).size())
       {
-        Object localObject = (List)localHashMap.get(((SonicResourceDataHelper.ResourceData)localList.get(i)).resourceId);
+        Object localObject3 = (List)((HashMap)localObject1).get(((SonicResourceDataHelper.ResourceData)((List)localObject2).get(i)).resourceId);
         l2 = l1;
-        if (localObject != null)
+        if (localObject3 != null)
         {
           l2 = l1;
-          if (((List)localObject).size() > 0)
+          if (((List)localObject3).size() > 0)
           {
-            localObject = ((List)localObject).iterator();
+            localObject3 = ((List)localObject3).iterator();
             for (;;)
             {
               l2 = l1;
-              if (!((Iterator)localObject).hasNext()) {
+              if (!((Iterator)localObject3).hasNext()) {
                 break;
               }
-              File localFile = new File((String)((Iterator)localObject).next());
+              File localFile = new File((String)((Iterator)localObject3).next());
               if ((localFile.isFile()) && (localFile.exists()))
               {
-                String str = localFile.getName();
+                Object localObject4 = localFile.getName();
                 l2 = localFile.length();
                 if (localFile.delete())
                 {
                   l1 -= l2;
-                  SonicResourceDataHelper.removeResourceData(str);
-                  SonicUtils.log("SonicSdk_SonicFileUtils", 4, "delete " + localFile.getAbsolutePath());
+                  SonicResourceDataHelper.removeResourceData((String)localObject4);
+                  localObject4 = new StringBuilder();
+                  ((StringBuilder)localObject4).append("delete ");
+                  ((StringBuilder)localObject4).append(localFile.getAbsolutePath());
+                  SonicUtils.log("SonicSdk_SonicFileUtils", 4, ((StringBuilder)localObject4).toString());
                 }
               }
             }
           }
         }
-        if (l2 > l4 * 0.25D) {}
+        d2 = l2;
+        Double.isNaN(d1);
+        if (d2 <= 0.25D * d1) {
+          break;
+        }
+        i += 1;
+        l1 = l2;
       }
-      else
-      {
-        SonicUtils.log("SonicSdk_SonicFileUtils", 4, "checkAndTrimCache: finish , cost " + (System.currentTimeMillis() - l3) + "ms.");
-        return;
-      }
-      i += 1;
-      l1 = l2;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("checkAndTrimCache: finish , cost ");
+      ((StringBuilder)localObject1).append(System.currentTimeMillis() - l3);
+      ((StringBuilder)localObject1).append("ms.");
+      SonicUtils.log("SonicSdk_SonicFileUtils", 4, ((StringBuilder)localObject1).toString());
     }
   }
   
@@ -204,8 +220,10 @@ public class SonicFileUtils
             String str2 = (String)((Iterator)localObject).next();
             if (!TextUtils.isEmpty(str2))
             {
-              localStringBuilder.append(str1).append(" : ");
-              localStringBuilder.append(str2).append("\r\n");
+              localStringBuilder.append(str1);
+              localStringBuilder.append(" : ");
+              localStringBuilder.append(str2);
+              localStringBuilder.append("\r\n");
             }
           }
         }
@@ -218,49 +236,49 @@ public class SonicFileUtils
   static boolean deleteAllChildFiles(File paramFile)
   {
     boolean bool3 = true;
-    boolean bool2 = true;
-    boolean bool1 = bool2;
+    boolean bool1 = true;
+    boolean bool2 = bool3;
     if (paramFile != null)
     {
-      bool1 = bool2;
+      bool2 = bool3;
       if (paramFile.exists())
       {
-        if (!paramFile.isFile()) {
-          break label37;
+        if (paramFile.isFile()) {
+          return paramFile.delete();
         }
-        bool1 = paramFile.delete();
+        bool2 = bool3;
+        if (paramFile.isDirectory())
+        {
+          paramFile = paramFile.listFiles();
+          bool2 = bool3;
+          if (paramFile != null)
+          {
+            int j = paramFile.length;
+            int i = 0;
+            for (;;)
+            {
+              bool2 = bool1;
+              if (i >= j) {
+                break;
+              }
+              bool1 &= deleteAllChildFiles(paramFile[i]);
+              i += 1;
+            }
+          }
+        }
       }
     }
-    label37:
-    do
-    {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (!paramFile.isDirectory());
-      paramFile = paramFile.listFiles();
-      bool1 = bool2;
-    } while (paramFile == null);
-    int j = paramFile.length;
-    int i = 0;
-    for (bool2 = bool3;; bool2 = bool1 & bool2)
-    {
-      bool1 = bool2;
-      if (i >= j) {
-        break;
-      }
-      bool1 = deleteAllChildFiles(paramFile[i]);
-      i += 1;
-    }
+    return bool2;
   }
   
   static boolean deleteResourceFiles(String paramString)
   {
-    boolean bool1 = true;
     File localFile = new File(getSonicResourcePath(paramString));
+    boolean bool1;
     if (localFile.exists()) {
       bool1 = localFile.delete();
+    } else {
+      bool1 = true;
     }
     paramString = new File(getSonicHeaderPath(paramString));
     boolean bool2 = bool1;
@@ -272,10 +290,11 @@ public class SonicFileUtils
   
   static boolean deleteSonicFiles(String paramString)
   {
-    boolean bool2 = true;
     File localFile = new File(getSonicHtmlPath(paramString));
     if (localFile.exists()) {
       bool2 = localFile.delete();
+    } else {
+      bool2 = true;
     }
     localFile = new File(getSonicTemplatePath(paramString));
     boolean bool1 = bool2;
@@ -283,7 +302,7 @@ public class SonicFileUtils
       bool1 = bool2 & localFile.delete();
     }
     localFile = new File(getSonicDataPath(paramString));
-    bool2 = bool1;
+    boolean bool2 = bool1;
     if (localFile.exists()) {
       bool2 = bool1 & localFile.delete();
     }
@@ -334,52 +353,83 @@ public class SonicFileUtils
   
   static String getSonicCacheDirPath()
   {
-    String str2 = SonicEngine.getInstance().getRuntime().getSonicCacheDir().getAbsolutePath();
-    String str1 = str2;
-    if (!str2.endsWith(File.separator)) {
-      str1 = str2 + File.separator;
+    String str = SonicEngine.getInstance().getRuntime().getSonicCacheDir().getAbsolutePath();
+    Object localObject = str;
+    if (!str.endsWith(File.separator))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(File.separator);
+      localObject = ((StringBuilder)localObject).toString();
     }
-    return str1;
+    return localObject;
   }
   
   static String getSonicDataPath(String paramString)
   {
-    return getSonicCacheDirPath() + paramString + ".data";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getSonicCacheDirPath());
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".data");
+    return localStringBuilder.toString();
   }
   
   static String getSonicHeaderPath(String paramString)
   {
-    return getSonicCacheDirPath() + paramString + ".header";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getSonicCacheDirPath());
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".header");
+    return localStringBuilder.toString();
   }
   
   static String getSonicHtmlPath(String paramString)
   {
-    return getSonicCacheDirPath() + paramString + ".html";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getSonicCacheDirPath());
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".html");
+    return localStringBuilder.toString();
   }
   
   static String getSonicResourceCachePath()
   {
-    String str2 = SonicEngine.getInstance().getRuntime().getSonicResourceCacheDir().getAbsolutePath();
-    String str1 = str2;
-    if (!str2.endsWith(File.separator)) {
-      str1 = str2 + File.separator;
+    String str = SonicEngine.getInstance().getRuntime().getSonicResourceCacheDir().getAbsolutePath();
+    Object localObject = str;
+    if (!str.endsWith(File.separator))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(File.separator);
+      localObject = ((StringBuilder)localObject).toString();
     }
-    return str1;
+    return localObject;
   }
   
   public static String getSonicResourceHeaderPath(String paramString)
   {
-    return getSonicResourceCachePath() + paramString + ".header";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getSonicResourceCachePath());
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".header");
+    return localStringBuilder.toString();
   }
   
   public static String getSonicResourcePath(String paramString)
   {
-    return getSonicResourceCachePath() + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getSonicResourceCachePath());
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   static String getSonicTemplatePath(String paramString)
   {
-    return getSonicCacheDirPath() + paramString + ".tpl";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getSonicCacheDirPath());
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".tpl");
+    return localStringBuilder.toString();
   }
   
   /* Error */
@@ -388,368 +438,444 @@ public class SonicFileUtils
     // Byte code:
     //   0: aconst_null
     //   1: astore 7
-    //   3: aload 7
-    //   5: astore_3
-    //   6: aload_0
-    //   7: ifnull +23 -> 30
-    //   10: aload 7
-    //   12: astore_3
-    //   13: aload_0
-    //   14: invokevirtual 43	java/io/File:exists	()Z
-    //   17: ifeq +13 -> 30
-    //   20: aload_0
-    //   21: invokevirtual 312	java/io/File:canRead	()Z
-    //   24: ifne +8 -> 32
-    //   27: aload 7
-    //   29: astore_3
-    //   30: aload_3
-    //   31: areturn
-    //   32: new 314	java/io/BufferedInputStream
-    //   35: dup
-    //   36: new 316	java/io/FileInputStream
-    //   39: dup
-    //   40: aload_0
-    //   41: invokespecial 319	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   44: invokespecial 322	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   47: astore_3
-    //   48: new 324	java/io/InputStreamReader
-    //   51: dup
-    //   52: aload_3
-    //   53: invokespecial 325	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   56: astore 6
-    //   58: aload 6
-    //   60: astore 5
-    //   62: aload_3
-    //   63: astore 4
-    //   65: aload_0
-    //   66: invokevirtual 54	java/io/File:length	()J
-    //   69: l2i
-    //   70: istore_1
-    //   71: iload_1
-    //   72: sipush 12288
-    //   75: if_icmple +280 -> 355
-    //   78: aload 6
-    //   80: astore 5
-    //   82: aload_3
-    //   83: astore 4
-    //   85: sipush 4096
-    //   88: newarray char
-    //   90: astore_2
-    //   91: aload 6
-    //   93: astore 5
-    //   95: aload_3
-    //   96: astore 4
-    //   98: new 114	java/lang/StringBuilder
-    //   101: dup
-    //   102: sipush 12288
-    //   105: invokespecial 326	java/lang/StringBuilder:<init>	(I)V
-    //   108: astore 8
-    //   110: aload 6
-    //   112: astore 5
-    //   114: aload_3
-    //   115: astore 4
-    //   117: aload 6
-    //   119: aload_2
-    //   120: invokevirtual 330	java/io/InputStreamReader:read	([C)I
-    //   123: istore_1
-    //   124: iconst_m1
-    //   125: iload_1
-    //   126: if_icmpeq +148 -> 274
-    //   129: aload 6
-    //   131: astore 5
-    //   133: aload_3
-    //   134: astore 4
-    //   136: aload 8
-    //   138: aload_2
-    //   139: iconst_0
-    //   140: iload_1
-    //   141: invokevirtual 333	java/lang/StringBuilder:append	([CII)Ljava/lang/StringBuilder;
-    //   144: pop
-    //   145: goto -35 -> 110
-    //   148: astore 4
-    //   150: aload 6
-    //   152: astore_2
-    //   153: aload 4
-    //   155: astore 6
-    //   157: aload_2
-    //   158: astore 5
-    //   160: aload_3
-    //   161: astore 4
-    //   163: ldc 17
-    //   165: bipush 6
-    //   167: new 114	java/lang/StringBuilder
-    //   170: dup
-    //   171: invokespecial 115	java/lang/StringBuilder:<init>	()V
-    //   174: ldc_w 335
-    //   177: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   180: aload_0
-    //   181: invokevirtual 58	java/io/File:getName	()Ljava/lang/String;
-    //   184: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   187: ldc_w 337
-    //   190: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   193: aload 6
-    //   195: invokevirtual 340	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   198: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   201: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   204: invokestatic 137	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   207: aload_3
-    //   208: ifnull +7 -> 215
-    //   211: aload_3
-    //   212: invokevirtual 343	java/io/BufferedInputStream:close	()V
-    //   215: aload 7
-    //   217: astore_3
-    //   218: aload_2
-    //   219: ifnull -189 -> 30
-    //   222: aload_2
-    //   223: invokevirtual 344	java/io/InputStreamReader:close	()V
-    //   226: aconst_null
-    //   227: areturn
-    //   228: astore_2
-    //   229: ldc 17
-    //   231: bipush 6
-    //   233: new 114	java/lang/StringBuilder
-    //   236: dup
-    //   237: invokespecial 115	java/lang/StringBuilder:<init>	()V
-    //   240: ldc_w 346
-    //   243: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   246: aload_0
-    //   247: invokevirtual 58	java/io/File:getName	()Ljava/lang/String;
-    //   250: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   253: ldc_w 337
-    //   256: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   259: aload_2
-    //   260: invokevirtual 347	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   263: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   266: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   269: invokestatic 137	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   272: aconst_null
-    //   273: areturn
-    //   274: aload 6
-    //   276: astore 5
-    //   278: aload_3
-    //   279: astore 4
-    //   281: aload 8
-    //   283: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   286: astore_2
-    //   287: aload_3
-    //   288: ifnull +7 -> 295
-    //   291: aload_3
-    //   292: invokevirtual 343	java/io/BufferedInputStream:close	()V
-    //   295: aload_2
-    //   296: astore_3
-    //   297: aload 6
-    //   299: ifnull -269 -> 30
-    //   302: aload 6
-    //   304: invokevirtual 344	java/io/InputStreamReader:close	()V
-    //   307: aload_2
-    //   308: areturn
-    //   309: astore_3
-    //   310: ldc 17
-    //   312: bipush 6
-    //   314: new 114	java/lang/StringBuilder
-    //   317: dup
-    //   318: invokespecial 115	java/lang/StringBuilder:<init>	()V
-    //   321: ldc_w 346
-    //   324: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   327: aload_0
-    //   328: invokevirtual 58	java/io/File:getName	()Ljava/lang/String;
-    //   331: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   334: ldc_w 337
-    //   337: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   340: aload_3
-    //   341: invokevirtual 347	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   344: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   347: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   350: invokestatic 137	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   353: aload_2
-    //   354: areturn
-    //   355: aload 6
-    //   357: astore 5
-    //   359: aload_3
-    //   360: astore 4
-    //   362: iload_1
-    //   363: newarray char
-    //   365: astore_2
-    //   366: aload 6
-    //   368: astore 5
-    //   370: aload_3
-    //   371: astore 4
-    //   373: new 171	java/lang/String
-    //   376: dup
-    //   377: aload_2
-    //   378: iconst_0
-    //   379: aload 6
-    //   381: aload_2
-    //   382: invokevirtual 330	java/io/InputStreamReader:read	([C)I
-    //   385: invokespecial 350	java/lang/String:<init>	([CII)V
-    //   388: astore_2
-    //   389: goto -102 -> 287
-    //   392: astore_3
-    //   393: ldc 17
-    //   395: bipush 6
-    //   397: new 114	java/lang/StringBuilder
-    //   400: dup
-    //   401: invokespecial 115	java/lang/StringBuilder:<init>	()V
-    //   404: ldc_w 346
-    //   407: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   410: aload_0
-    //   411: invokevirtual 58	java/io/File:getName	()Ljava/lang/String;
-    //   414: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   417: ldc_w 337
-    //   420: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   423: aload_3
-    //   424: invokevirtual 347	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   427: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   430: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   433: invokestatic 137	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   436: goto -141 -> 295
-    //   439: astore_3
-    //   440: ldc 17
-    //   442: bipush 6
-    //   444: new 114	java/lang/StringBuilder
-    //   447: dup
-    //   448: invokespecial 115	java/lang/StringBuilder:<init>	()V
-    //   451: ldc_w 346
-    //   454: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   457: aload_0
-    //   458: invokevirtual 58	java/io/File:getName	()Ljava/lang/String;
-    //   461: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   464: ldc_w 337
-    //   467: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   470: aload_3
-    //   471: invokevirtual 347	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   474: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   477: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   480: invokestatic 137	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   483: goto -268 -> 215
-    //   486: astore_2
-    //   487: aconst_null
-    //   488: astore 5
-    //   490: aconst_null
-    //   491: astore_3
-    //   492: aload_3
-    //   493: ifnull +7 -> 500
-    //   496: aload_3
-    //   497: invokevirtual 343	java/io/BufferedInputStream:close	()V
-    //   500: aload 5
-    //   502: ifnull +8 -> 510
-    //   505: aload 5
-    //   507: invokevirtual 344	java/io/InputStreamReader:close	()V
-    //   510: aload_2
-    //   511: athrow
-    //   512: astore_3
-    //   513: ldc 17
-    //   515: bipush 6
-    //   517: new 114	java/lang/StringBuilder
-    //   520: dup
-    //   521: invokespecial 115	java/lang/StringBuilder:<init>	()V
-    //   524: ldc_w 346
-    //   527: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   530: aload_0
-    //   531: invokevirtual 58	java/io/File:getName	()Ljava/lang/String;
-    //   534: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   537: ldc_w 337
-    //   540: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   543: aload_3
-    //   544: invokevirtual 347	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   547: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   550: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   553: invokestatic 137	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   556: goto -56 -> 500
-    //   559: astore_3
-    //   560: ldc 17
-    //   562: bipush 6
-    //   564: new 114	java/lang/StringBuilder
-    //   567: dup
-    //   568: invokespecial 115	java/lang/StringBuilder:<init>	()V
-    //   571: ldc_w 346
-    //   574: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   577: aload_0
-    //   578: invokevirtual 58	java/io/File:getName	()Ljava/lang/String;
-    //   581: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   584: ldc_w 337
-    //   587: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   590: aload_3
-    //   591: invokevirtual 347	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   594: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   597: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   600: invokestatic 137	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   603: goto -93 -> 510
-    //   606: astore_2
-    //   607: aconst_null
-    //   608: astore 5
-    //   610: goto -118 -> 492
-    //   613: astore_2
-    //   614: aload 4
-    //   616: astore_3
-    //   617: goto -125 -> 492
-    //   620: astore 6
-    //   622: aconst_null
-    //   623: astore_2
-    //   624: aconst_null
-    //   625: astore_3
-    //   626: goto -469 -> 157
-    //   629: astore 6
-    //   631: aconst_null
-    //   632: astore_2
-    //   633: goto -476 -> 157
+    //   3: aload_0
+    //   4: ifnull +727 -> 731
+    //   7: aload_0
+    //   8: invokevirtual 43	java/io/File:exists	()Z
+    //   11: ifeq +720 -> 731
+    //   14: aload_0
+    //   15: invokevirtual 318	java/io/File:canRead	()Z
+    //   18: ifne +5 -> 23
+    //   21: aconst_null
+    //   22: areturn
+    //   23: new 320	java/io/BufferedInputStream
+    //   26: dup
+    //   27: new 322	java/io/FileInputStream
+    //   30: dup
+    //   31: aload_0
+    //   32: invokespecial 325	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   35: invokespecial 328	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   38: astore_2
+    //   39: new 330	java/io/InputStreamReader
+    //   42: dup
+    //   43: aload_2
+    //   44: invokespecial 331	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   47: astore 6
+    //   49: aload_2
+    //   50: astore_3
+    //   51: aload 6
+    //   53: astore 4
+    //   55: aload_0
+    //   56: invokevirtual 54	java/io/File:length	()J
+    //   59: l2i
+    //   60: istore_1
+    //   61: iload_1
+    //   62: sipush 12288
+    //   65: if_icmple +91 -> 156
+    //   68: aload_2
+    //   69: astore_3
+    //   70: aload 6
+    //   72: astore 4
+    //   74: sipush 4096
+    //   77: newarray char
+    //   79: astore 5
+    //   81: aload_2
+    //   82: astore_3
+    //   83: aload 6
+    //   85: astore 4
+    //   87: new 120	java/lang/StringBuilder
+    //   90: dup
+    //   91: sipush 12288
+    //   94: invokespecial 332	java/lang/StringBuilder:<init>	(I)V
+    //   97: astore 8
+    //   99: aload_2
+    //   100: astore_3
+    //   101: aload 6
+    //   103: astore 4
+    //   105: aload 6
+    //   107: aload 5
+    //   109: invokevirtual 336	java/io/InputStreamReader:read	([C)I
+    //   112: istore_1
+    //   113: iconst_m1
+    //   114: iload_1
+    //   115: if_icmpeq +22 -> 137
+    //   118: aload_2
+    //   119: astore_3
+    //   120: aload 6
+    //   122: astore 4
+    //   124: aload 8
+    //   126: aload 5
+    //   128: iconst_0
+    //   129: iload_1
+    //   130: invokevirtual 339	java/lang/StringBuilder:append	([CII)Ljava/lang/StringBuilder;
+    //   133: pop
+    //   134: goto -35 -> 99
+    //   137: aload_2
+    //   138: astore_3
+    //   139: aload 6
+    //   141: astore 4
+    //   143: aload 8
+    //   145: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   148: astore 5
+    //   150: aload 5
+    //   152: astore_3
+    //   153: goto +42 -> 195
+    //   156: aload_2
+    //   157: astore_3
+    //   158: aload 6
+    //   160: astore 4
+    //   162: iload_1
+    //   163: newarray char
+    //   165: astore 5
+    //   167: aload_2
+    //   168: astore_3
+    //   169: aload 6
+    //   171: astore 4
+    //   173: new 177	java/lang/String
+    //   176: dup
+    //   177: aload 5
+    //   179: iconst_0
+    //   180: aload 6
+    //   182: aload 5
+    //   184: invokevirtual 336	java/io/InputStreamReader:read	([C)I
+    //   187: invokespecial 342	java/lang/String:<init>	([CII)V
+    //   190: astore 5
+    //   192: aload 5
+    //   194: astore_3
+    //   195: aload_2
+    //   196: invokevirtual 345	java/io/BufferedInputStream:close	()V
+    //   199: goto +63 -> 262
+    //   202: astore_2
+    //   203: new 120	java/lang/StringBuilder
+    //   206: dup
+    //   207: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   210: astore 4
+    //   212: aload 4
+    //   214: ldc_w 347
+    //   217: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   220: pop
+    //   221: aload 4
+    //   223: aload_0
+    //   224: invokevirtual 58	java/io/File:getName	()Ljava/lang/String;
+    //   227: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   230: pop
+    //   231: aload 4
+    //   233: ldc_w 349
+    //   236: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   239: pop
+    //   240: aload 4
+    //   242: aload_2
+    //   243: invokevirtual 352	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   246: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   249: pop
+    //   250: ldc 17
+    //   252: bipush 6
+    //   254: aload 4
+    //   256: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   259: invokestatic 143	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
+    //   262: aload 6
+    //   264: invokevirtual 353	java/io/InputStreamReader:close	()V
+    //   267: aload_3
+    //   268: areturn
+    //   269: astore_2
+    //   270: new 120	java/lang/StringBuilder
+    //   273: dup
+    //   274: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   277: astore 4
+    //   279: aload 4
+    //   281: ldc_w 347
+    //   284: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   287: pop
+    //   288: aload 4
+    //   290: aload_0
+    //   291: invokevirtual 58	java/io/File:getName	()Ljava/lang/String;
+    //   294: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   297: pop
+    //   298: aload 4
+    //   300: ldc_w 349
+    //   303: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   306: pop
+    //   307: aload 4
+    //   309: aload_2
+    //   310: invokevirtual 352	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   313: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   316: pop
+    //   317: ldc 17
+    //   319: bipush 6
+    //   321: aload 4
+    //   323: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   326: invokestatic 143	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
+    //   329: aload_3
+    //   330: areturn
+    //   331: astore_3
+    //   332: aload_2
+    //   333: astore 5
+    //   335: aload 6
+    //   337: astore_2
+    //   338: aload_3
+    //   339: astore 6
+    //   341: goto +40 -> 381
+    //   344: astore_3
+    //   345: aconst_null
+    //   346: astore 4
+    //   348: goto +237 -> 585
+    //   351: astore 6
+    //   353: aconst_null
+    //   354: astore_3
+    //   355: aload_2
+    //   356: astore 5
+    //   358: aload_3
+    //   359: astore_2
+    //   360: goto +21 -> 381
+    //   363: astore_3
+    //   364: aconst_null
+    //   365: astore 4
+    //   367: aload 4
+    //   369: astore_2
+    //   370: goto +215 -> 585
+    //   373: astore 6
+    //   375: aconst_null
+    //   376: astore 5
+    //   378: aload 5
+    //   380: astore_2
+    //   381: aload 5
+    //   383: astore_3
+    //   384: aload_2
+    //   385: astore 4
+    //   387: new 120	java/lang/StringBuilder
+    //   390: dup
+    //   391: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   394: astore 8
+    //   396: aload 5
+    //   398: astore_3
+    //   399: aload_2
+    //   400: astore 4
+    //   402: aload 8
+    //   404: ldc_w 355
+    //   407: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   410: pop
+    //   411: aload 5
+    //   413: astore_3
+    //   414: aload_2
+    //   415: astore 4
+    //   417: aload 8
+    //   419: aload_0
+    //   420: invokevirtual 58	java/io/File:getName	()Ljava/lang/String;
+    //   423: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   426: pop
+    //   427: aload 5
+    //   429: astore_3
+    //   430: aload_2
+    //   431: astore 4
+    //   433: aload 8
+    //   435: ldc_w 349
+    //   438: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   441: pop
+    //   442: aload 5
+    //   444: astore_3
+    //   445: aload_2
+    //   446: astore 4
+    //   448: aload 8
+    //   450: aload 6
+    //   452: invokevirtual 356	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   455: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   458: pop
+    //   459: aload 5
+    //   461: astore_3
+    //   462: aload_2
+    //   463: astore 4
+    //   465: ldc 17
+    //   467: bipush 6
+    //   469: aload 8
+    //   471: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   474: invokestatic 143	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
+    //   477: aload 5
+    //   479: ifnull +71 -> 550
+    //   482: aload 5
+    //   484: invokevirtual 345	java/io/BufferedInputStream:close	()V
+    //   487: goto +63 -> 550
+    //   490: astore_3
+    //   491: new 120	java/lang/StringBuilder
+    //   494: dup
+    //   495: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   498: astore 4
+    //   500: aload 4
+    //   502: ldc_w 347
+    //   505: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   508: pop
+    //   509: aload 4
+    //   511: aload_0
+    //   512: invokevirtual 58	java/io/File:getName	()Ljava/lang/String;
+    //   515: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   518: pop
+    //   519: aload 4
+    //   521: ldc_w 349
+    //   524: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   527: pop
+    //   528: aload 4
+    //   530: aload_3
+    //   531: invokevirtual 352	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   534: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   537: pop
+    //   538: ldc 17
+    //   540: bipush 6
+    //   542: aload 4
+    //   544: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   547: invokestatic 143	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
+    //   550: aload_2
+    //   551: ifnull +25 -> 576
+    //   554: aload_2
+    //   555: invokevirtual 353	java/io/InputStreamReader:close	()V
+    //   558: aconst_null
+    //   559: areturn
+    //   560: astore_2
+    //   561: new 120	java/lang/StringBuilder
+    //   564: dup
+    //   565: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   568: astore 4
+    //   570: aload 7
+    //   572: astore_3
+    //   573: goto -294 -> 279
+    //   576: aconst_null
+    //   577: areturn
+    //   578: astore 5
+    //   580: aload_3
+    //   581: astore_2
+    //   582: aload 5
+    //   584: astore_3
+    //   585: aload_2
+    //   586: ifnull +70 -> 656
+    //   589: aload_2
+    //   590: invokevirtual 345	java/io/BufferedInputStream:close	()V
+    //   593: goto +63 -> 656
+    //   596: astore_2
+    //   597: new 120	java/lang/StringBuilder
+    //   600: dup
+    //   601: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   604: astore 5
+    //   606: aload 5
+    //   608: ldc_w 347
+    //   611: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   614: pop
+    //   615: aload 5
+    //   617: aload_0
+    //   618: invokevirtual 58	java/io/File:getName	()Ljava/lang/String;
+    //   621: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   624: pop
+    //   625: aload 5
+    //   627: ldc_w 349
+    //   630: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   633: pop
+    //   634: aload 5
+    //   636: aload_2
+    //   637: invokevirtual 352	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   640: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   643: pop
+    //   644: ldc 17
+    //   646: bipush 6
+    //   648: aload 5
+    //   650: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   653: invokestatic 143	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
+    //   656: aload 4
+    //   658: ifnull +71 -> 729
+    //   661: aload 4
+    //   663: invokevirtual 353	java/io/InputStreamReader:close	()V
+    //   666: goto +63 -> 729
+    //   669: astore_2
+    //   670: new 120	java/lang/StringBuilder
+    //   673: dup
+    //   674: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   677: astore 4
+    //   679: aload 4
+    //   681: ldc_w 347
+    //   684: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   687: pop
+    //   688: aload 4
+    //   690: aload_0
+    //   691: invokevirtual 58	java/io/File:getName	()Ljava/lang/String;
+    //   694: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   697: pop
+    //   698: aload 4
+    //   700: ldc_w 349
+    //   703: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   706: pop
+    //   707: aload 4
+    //   709: aload_2
+    //   710: invokevirtual 352	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   713: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   716: pop
+    //   717: ldc 17
+    //   719: bipush 6
+    //   721: aload 4
+    //   723: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   726: invokestatic 143	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
+    //   729: aload_3
+    //   730: athrow
+    //   731: aconst_null
+    //   732: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	636	0	paramFile	File
-    //   70	293	1	i	int
-    //   90	133	2	localObject1	Object
-    //   228	32	2	localException1	java.lang.Exception
-    //   286	103	2	localObject2	Object
-    //   486	25	2	localObject3	Object
-    //   606	1	2	localObject4	Object
-    //   613	1	2	localObject5	Object
-    //   623	10	2	localObject6	Object
-    //   5	292	3	localObject7	Object
-    //   309	62	3	localException2	java.lang.Exception
-    //   392	32	3	localException3	java.lang.Exception
-    //   439	32	3	localException4	java.lang.Exception
-    //   491	6	3	localObject8	Object
-    //   512	32	3	localException5	java.lang.Exception
-    //   559	32	3	localException6	java.lang.Exception
-    //   616	10	3	localObject9	Object
-    //   63	72	4	localObject10	Object
-    //   148	6	4	localThrowable1	java.lang.Throwable
-    //   161	454	4	localObject11	Object
-    //   60	549	5	localObject12	Object
-    //   56	324	6	localObject13	Object
-    //   620	1	6	localThrowable2	java.lang.Throwable
-    //   629	1	6	localThrowable3	java.lang.Throwable
-    //   1	215	7	localObject14	Object
-    //   108	174	8	localStringBuilder	StringBuilder
+    //   0	733	0	paramFile	File
+    //   60	103	1	i	int
+    //   38	158	2	localBufferedInputStream	java.io.BufferedInputStream
+    //   202	41	2	localException1	java.lang.Exception
+    //   269	64	2	localException2	java.lang.Exception
+    //   337	218	2	localObject1	Object
+    //   560	1	2	localException3	java.lang.Exception
+    //   581	9	2	localObject2	Object
+    //   596	41	2	localException4	java.lang.Exception
+    //   669	41	2	localException5	java.lang.Exception
+    //   50	280	3	localObject3	Object
+    //   331	8	3	localThrowable1	java.lang.Throwable
+    //   344	1	3	localObject4	Object
+    //   354	5	3	localObject5	Object
+    //   363	1	3	localObject6	Object
+    //   383	79	3	localObject7	Object
+    //   490	41	3	localException6	java.lang.Exception
+    //   572	158	3	localObject8	Object
+    //   53	669	4	localObject9	Object
+    //   79	404	5	localObject10	Object
+    //   578	5	5	localObject11	Object
+    //   604	45	5	localStringBuilder1	StringBuilder
+    //   47	293	6	localObject12	Object
+    //   351	1	6	localThrowable2	java.lang.Throwable
+    //   373	78	6	localThrowable3	java.lang.Throwable
+    //   1	570	7	localObject13	Object
+    //   97	373	8	localStringBuilder2	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   65	71	148	java/lang/Throwable
-    //   85	91	148	java/lang/Throwable
-    //   98	110	148	java/lang/Throwable
-    //   117	124	148	java/lang/Throwable
-    //   136	145	148	java/lang/Throwable
-    //   281	287	148	java/lang/Throwable
-    //   362	366	148	java/lang/Throwable
-    //   373	389	148	java/lang/Throwable
-    //   222	226	228	java/lang/Exception
-    //   302	307	309	java/lang/Exception
-    //   291	295	392	java/lang/Exception
-    //   211	215	439	java/lang/Exception
-    //   32	48	486	finally
-    //   496	500	512	java/lang/Exception
-    //   505	510	559	java/lang/Exception
-    //   48	58	606	finally
-    //   65	71	613	finally
-    //   85	91	613	finally
-    //   98	110	613	finally
-    //   117	124	613	finally
-    //   136	145	613	finally
-    //   163	207	613	finally
-    //   281	287	613	finally
-    //   362	366	613	finally
-    //   373	389	613	finally
-    //   32	48	620	java/lang/Throwable
-    //   48	58	629	java/lang/Throwable
+    //   195	199	202	java/lang/Exception
+    //   262	267	269	java/lang/Exception
+    //   55	61	331	java/lang/Throwable
+    //   74	81	331	java/lang/Throwable
+    //   87	99	331	java/lang/Throwable
+    //   105	113	331	java/lang/Throwable
+    //   124	134	331	java/lang/Throwable
+    //   143	150	331	java/lang/Throwable
+    //   162	167	331	java/lang/Throwable
+    //   173	192	331	java/lang/Throwable
+    //   39	49	344	finally
+    //   39	49	351	java/lang/Throwable
+    //   23	39	363	finally
+    //   23	39	373	java/lang/Throwable
+    //   482	487	490	java/lang/Exception
+    //   554	558	560	java/lang/Exception
+    //   55	61	578	finally
+    //   74	81	578	finally
+    //   87	99	578	finally
+    //   105	113	578	finally
+    //   124	134	578	finally
+    //   143	150	578	finally
+    //   162	167	578	finally
+    //   173	192	578	finally
+    //   387	396	578	finally
+    //   402	411	578	finally
+    //   417	427	578	finally
+    //   433	442	578	finally
+    //   448	459	578	finally
+    //   465	477	578	finally
+    //   589	593	596	java/lang/Exception
+    //   661	666	669	java/lang/Exception
   }
   
   /* Error */
@@ -757,247 +883,297 @@ public class SonicFileUtils
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 6
-    //   3: aconst_null
-    //   4: astore_3
-    //   5: aload_3
-    //   6: astore_2
-    //   7: aload_0
-    //   8: ifnull +21 -> 29
-    //   11: aload_3
-    //   12: astore_2
-    //   13: aload_0
-    //   14: invokevirtual 43	java/io/File:exists	()Z
-    //   17: ifeq +12 -> 29
-    //   20: aload_0
-    //   21: invokevirtual 312	java/io/File:canRead	()Z
-    //   24: ifne +7 -> 31
-    //   27: aload_3
-    //   28: astore_2
-    //   29: aload_2
-    //   30: areturn
-    //   31: new 314	java/io/BufferedInputStream
-    //   34: dup
-    //   35: new 316	java/io/FileInputStream
-    //   38: dup
-    //   39: aload_0
-    //   40: invokespecial 319	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   43: invokespecial 322	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   46: astore 5
-    //   48: aload 5
-    //   50: astore_2
-    //   51: aload_0
-    //   52: invokevirtual 54	java/io/File:length	()J
-    //   55: l2i
-    //   56: istore_1
-    //   57: iload_1
-    //   58: sipush 12288
-    //   61: if_icmple +234 -> 295
-    //   64: aload 5
-    //   66: astore_2
-    //   67: new 354	java/io/ByteArrayOutputStream
-    //   70: dup
-    //   71: invokespecial 355	java/io/ByteArrayOutputStream:<init>	()V
-    //   74: astore_3
-    //   75: aload 5
-    //   77: astore_2
-    //   78: sipush 4096
-    //   81: newarray byte
-    //   83: astore 4
-    //   85: aload 5
-    //   87: astore_2
-    //   88: aload 5
-    //   90: aload 4
-    //   92: invokevirtual 358	java/io/BufferedInputStream:read	([B)I
-    //   95: istore_1
-    //   96: iload_1
-    //   97: iconst_m1
-    //   98: if_icmpeq +129 -> 227
-    //   101: aload 5
-    //   103: astore_2
-    //   104: aload_3
-    //   105: aload 4
-    //   107: iconst_0
-    //   108: iload_1
-    //   109: invokevirtual 362	java/io/ByteArrayOutputStream:write	([BII)V
-    //   112: goto -27 -> 85
-    //   115: astore 4
-    //   117: aload 6
-    //   119: astore_3
-    //   120: aload 5
-    //   122: astore_2
-    //   123: ldc 17
-    //   125: bipush 6
-    //   127: new 114	java/lang/StringBuilder
-    //   130: dup
-    //   131: invokespecial 115	java/lang/StringBuilder:<init>	()V
-    //   134: ldc_w 335
-    //   137: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   140: aload_0
-    //   141: invokevirtual 58	java/io/File:getName	()Ljava/lang/String;
-    //   144: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   147: ldc_w 337
-    //   150: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   153: aload 4
-    //   155: invokevirtual 340	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   158: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   161: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   164: invokestatic 137	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   167: aload_3
-    //   168: astore_2
-    //   169: aload 5
-    //   171: ifnull -142 -> 29
-    //   174: aload 5
-    //   176: invokevirtual 343	java/io/BufferedInputStream:close	()V
-    //   179: aload_3
-    //   180: areturn
-    //   181: astore_2
-    //   182: ldc 17
-    //   184: bipush 6
-    //   186: new 114	java/lang/StringBuilder
-    //   189: dup
-    //   190: invokespecial 115	java/lang/StringBuilder:<init>	()V
-    //   193: ldc_w 346
-    //   196: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   199: aload_0
-    //   200: invokevirtual 58	java/io/File:getName	()Ljava/lang/String;
-    //   203: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   206: ldc_w 337
-    //   209: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   212: aload_2
-    //   213: invokevirtual 347	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   216: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   219: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   222: invokestatic 137	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   225: aload_3
-    //   226: areturn
-    //   227: aload 5
-    //   229: astore_2
-    //   230: aload_3
-    //   231: invokevirtual 366	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   234: astore_3
-    //   235: aload_3
-    //   236: astore_2
-    //   237: aload 5
-    //   239: ifnull -210 -> 29
-    //   242: aload 5
-    //   244: invokevirtual 343	java/io/BufferedInputStream:close	()V
+    //   1: astore_2
+    //   2: aconst_null
+    //   3: astore 6
+    //   5: aconst_null
+    //   6: astore 4
+    //   8: aload_0
+    //   9: ifnull +451 -> 460
+    //   12: aload_0
+    //   13: invokevirtual 43	java/io/File:exists	()Z
+    //   16: ifeq +444 -> 460
+    //   19: aload_0
+    //   20: invokevirtual 318	java/io/File:canRead	()Z
+    //   23: ifne +5 -> 28
+    //   26: aconst_null
+    //   27: areturn
+    //   28: new 320	java/io/BufferedInputStream
+    //   31: dup
+    //   32: new 322	java/io/FileInputStream
+    //   35: dup
+    //   36: aload_0
+    //   37: invokespecial 325	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   40: invokespecial 328	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   43: astore_3
+    //   44: aload 4
+    //   46: astore_2
+    //   47: aload_0
+    //   48: invokevirtual 54	java/io/File:length	()J
+    //   51: l2i
+    //   52: istore_1
+    //   53: iload_1
+    //   54: sipush 12288
+    //   57: if_icmple +71 -> 128
+    //   60: aload 4
+    //   62: astore_2
+    //   63: new 360	java/io/ByteArrayOutputStream
+    //   66: dup
+    //   67: invokespecial 361	java/io/ByteArrayOutputStream:<init>	()V
+    //   70: astore 5
+    //   72: aload 4
+    //   74: astore_2
+    //   75: sipush 4096
+    //   78: newarray byte
+    //   80: astore 6
+    //   82: aload 4
+    //   84: astore_2
+    //   85: aload_3
+    //   86: aload 6
+    //   88: invokevirtual 364	java/io/BufferedInputStream:read	([B)I
+    //   91: istore_1
+    //   92: iload_1
+    //   93: iconst_m1
+    //   94: if_icmpeq +18 -> 112
+    //   97: aload 4
+    //   99: astore_2
+    //   100: aload 5
+    //   102: aload 6
+    //   104: iconst_0
+    //   105: iload_1
+    //   106: invokevirtual 368	java/io/ByteArrayOutputStream:write	([BII)V
+    //   109: goto -27 -> 82
+    //   112: aload 4
+    //   114: astore_2
+    //   115: aload 5
+    //   117: invokevirtual 372	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   120: astore 4
+    //   122: aload 4
+    //   124: astore_2
+    //   125: goto +24 -> 149
+    //   128: aload 4
+    //   130: astore_2
+    //   131: iload_1
+    //   132: newarray byte
+    //   134: astore 4
+    //   136: aload 4
+    //   138: astore_2
+    //   139: aload_3
+    //   140: aload 4
+    //   142: invokevirtual 364	java/io/BufferedInputStream:read	([B)I
+    //   145: pop
+    //   146: aload 4
+    //   148: astore_2
+    //   149: aload_3
+    //   150: invokevirtual 345	java/io/BufferedInputStream:close	()V
+    //   153: aload_2
+    //   154: areturn
+    //   155: astore_3
+    //   156: new 120	java/lang/StringBuilder
+    //   159: dup
+    //   160: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   163: astore 4
+    //   165: aload 4
+    //   167: ldc_w 347
+    //   170: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   173: pop
+    //   174: aload 4
+    //   176: aload_0
+    //   177: invokevirtual 58	java/io/File:getName	()Ljava/lang/String;
+    //   180: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   183: pop
+    //   184: aload 4
+    //   186: ldc_w 349
+    //   189: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   192: pop
+    //   193: aload 4
+    //   195: aload_3
+    //   196: invokevirtual 352	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   199: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   202: pop
+    //   203: ldc 17
+    //   205: bipush 6
+    //   207: aload 4
+    //   209: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   212: invokestatic 143	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
+    //   215: aload_2
+    //   216: areturn
+    //   217: astore_2
+    //   218: goto +169 -> 387
+    //   221: astore 5
+    //   223: aload_2
+    //   224: astore 4
+    //   226: goto +21 -> 247
+    //   229: astore 4
+    //   231: aload_2
+    //   232: astore_3
+    //   233: aload 4
+    //   235: astore_2
+    //   236: goto +151 -> 387
+    //   239: astore 5
+    //   241: aconst_null
+    //   242: astore 4
+    //   244: aload 6
+    //   246: astore_3
     //   247: aload_3
-    //   248: areturn
-    //   249: astore_2
-    //   250: ldc 17
-    //   252: bipush 6
-    //   254: new 114	java/lang/StringBuilder
-    //   257: dup
-    //   258: invokespecial 115	java/lang/StringBuilder:<init>	()V
-    //   261: ldc_w 346
-    //   264: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   267: aload_0
-    //   268: invokevirtual 58	java/io/File:getName	()Ljava/lang/String;
-    //   271: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   274: ldc_w 337
-    //   277: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   280: aload_2
-    //   281: invokevirtual 347	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   284: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   287: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   290: invokestatic 137	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   293: aload_3
-    //   294: areturn
-    //   295: aload 5
-    //   297: astore_2
-    //   298: iload_1
-    //   299: newarray byte
-    //   301: astore_3
-    //   302: aload 5
-    //   304: astore_2
-    //   305: aload 5
-    //   307: aload_3
-    //   308: invokevirtual 358	java/io/BufferedInputStream:read	([B)I
-    //   311: pop
-    //   312: goto -77 -> 235
-    //   315: astore_3
-    //   316: aconst_null
-    //   317: astore_2
-    //   318: aload_2
-    //   319: ifnull +7 -> 326
-    //   322: aload_2
-    //   323: invokevirtual 343	java/io/BufferedInputStream:close	()V
-    //   326: aload_3
-    //   327: athrow
-    //   328: astore_2
-    //   329: ldc 17
-    //   331: bipush 6
-    //   333: new 114	java/lang/StringBuilder
-    //   336: dup
-    //   337: invokespecial 115	java/lang/StringBuilder:<init>	()V
-    //   340: ldc_w 346
-    //   343: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   346: aload_0
-    //   347: invokevirtual 58	java/io/File:getName	()Ljava/lang/String;
-    //   350: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   353: ldc_w 337
-    //   356: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   359: aload_2
-    //   360: invokevirtual 347	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   363: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   366: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   369: invokestatic 137	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   372: goto -46 -> 326
-    //   375: astore_3
-    //   376: goto -58 -> 318
-    //   379: astore 4
-    //   381: aconst_null
-    //   382: astore 5
-    //   384: aload 6
-    //   386: astore_3
-    //   387: goto -267 -> 120
-    //   390: astore 4
-    //   392: goto -272 -> 120
+    //   248: astore_2
+    //   249: new 120	java/lang/StringBuilder
+    //   252: dup
+    //   253: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   256: astore 6
+    //   258: aload_3
+    //   259: astore_2
+    //   260: aload 6
+    //   262: ldc_w 355
+    //   265: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   268: pop
+    //   269: aload_3
+    //   270: astore_2
+    //   271: aload 6
+    //   273: aload_0
+    //   274: invokevirtual 58	java/io/File:getName	()Ljava/lang/String;
+    //   277: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   280: pop
+    //   281: aload_3
+    //   282: astore_2
+    //   283: aload 6
+    //   285: ldc_w 349
+    //   288: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   291: pop
+    //   292: aload_3
+    //   293: astore_2
+    //   294: aload 6
+    //   296: aload 5
+    //   298: invokevirtual 356	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   301: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   304: pop
+    //   305: aload_3
+    //   306: astore_2
+    //   307: ldc 17
+    //   309: bipush 6
+    //   311: aload 6
+    //   313: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   316: invokestatic 143	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
+    //   319: aload_3
+    //   320: ifnull +64 -> 384
+    //   323: aload_3
+    //   324: invokevirtual 345	java/io/BufferedInputStream:close	()V
+    //   327: goto +57 -> 384
+    //   330: astore_2
+    //   331: new 120	java/lang/StringBuilder
+    //   334: dup
+    //   335: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   338: astore_3
+    //   339: aload_3
+    //   340: ldc_w 347
+    //   343: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   346: pop
+    //   347: aload_3
+    //   348: aload_0
+    //   349: invokevirtual 58	java/io/File:getName	()Ljava/lang/String;
+    //   352: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   355: pop
+    //   356: aload_3
+    //   357: ldc_w 349
+    //   360: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   363: pop
+    //   364: aload_3
+    //   365: aload_2
+    //   366: invokevirtual 352	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   369: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   372: pop
+    //   373: ldc 17
+    //   375: bipush 6
+    //   377: aload_3
+    //   378: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   381: invokestatic 143	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
+    //   384: aload 4
+    //   386: areturn
+    //   387: aload_3
+    //   388: ifnull +70 -> 458
+    //   391: aload_3
+    //   392: invokevirtual 345	java/io/BufferedInputStream:close	()V
+    //   395: goto +63 -> 458
+    //   398: astore_3
+    //   399: new 120	java/lang/StringBuilder
+    //   402: dup
+    //   403: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   406: astore 4
+    //   408: aload 4
+    //   410: ldc_w 347
+    //   413: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   416: pop
+    //   417: aload 4
+    //   419: aload_0
+    //   420: invokevirtual 58	java/io/File:getName	()Ljava/lang/String;
+    //   423: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   426: pop
+    //   427: aload 4
+    //   429: ldc_w 349
+    //   432: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   435: pop
+    //   436: aload 4
+    //   438: aload_3
+    //   439: invokevirtual 352	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   442: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   445: pop
+    //   446: ldc 17
+    //   448: bipush 6
+    //   450: aload 4
+    //   452: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   455: invokestatic 143	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
+    //   458: aload_2
+    //   459: athrow
+    //   460: aconst_null
+    //   461: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	395	0	paramFile	File
-    //   56	243	1	i	int
-    //   6	163	2	localObject1	Object
-    //   181	32	2	localException1	java.lang.Exception
-    //   229	8	2	localObject2	Object
-    //   249	32	2	localException2	java.lang.Exception
-    //   297	26	2	localObject3	Object
-    //   328	32	2	localException3	java.lang.Exception
-    //   4	304	3	localObject4	Object
-    //   315	12	3	localObject5	Object
-    //   375	1	3	localObject6	Object
-    //   386	1	3	localObject7	Object
-    //   83	23	4	arrayOfByte	byte[]
-    //   115	39	4	localThrowable1	java.lang.Throwable
-    //   379	1	4	localThrowable2	java.lang.Throwable
-    //   390	1	4	localThrowable3	java.lang.Throwable
-    //   46	337	5	localBufferedInputStream	java.io.BufferedInputStream
-    //   1	384	6	localObject8	Object
+    //   0	462	0	paramFile	File
+    //   52	80	1	i	int
+    //   1	215	2	localObject1	Object
+    //   217	15	2	localObject2	Object
+    //   235	72	2	localObject3	Object
+    //   330	129	2	localException1	java.lang.Exception
+    //   43	107	3	localBufferedInputStream	java.io.BufferedInputStream
+    //   155	41	3	localException2	java.lang.Exception
+    //   232	160	3	localObject4	Object
+    //   398	41	3	localException3	java.lang.Exception
+    //   6	219	4	localObject5	Object
+    //   229	5	4	localObject6	Object
+    //   242	209	4	localObject7	Object
+    //   70	46	5	localByteArrayOutputStream	java.io.ByteArrayOutputStream
+    //   221	1	5	localThrowable1	java.lang.Throwable
+    //   239	58	5	localThrowable2	java.lang.Throwable
+    //   3	309	6	localObject8	Object
     // Exception table:
     //   from	to	target	type
-    //   51	57	115	java/lang/Throwable
-    //   67	75	115	java/lang/Throwable
-    //   78	85	115	java/lang/Throwable
-    //   88	96	115	java/lang/Throwable
-    //   104	112	115	java/lang/Throwable
-    //   230	235	115	java/lang/Throwable
-    //   298	302	115	java/lang/Throwable
-    //   174	179	181	java/lang/Exception
-    //   242	247	249	java/lang/Exception
-    //   31	48	315	finally
-    //   322	326	328	java/lang/Exception
-    //   51	57	375	finally
-    //   67	75	375	finally
-    //   78	85	375	finally
-    //   88	96	375	finally
-    //   104	112	375	finally
-    //   123	167	375	finally
-    //   230	235	375	finally
-    //   298	302	375	finally
-    //   305	312	375	finally
-    //   31	48	379	java/lang/Throwable
-    //   305	312	390	java/lang/Throwable
+    //   149	153	155	java/lang/Exception
+    //   47	53	217	finally
+    //   63	72	217	finally
+    //   75	82	217	finally
+    //   85	92	217	finally
+    //   100	109	217	finally
+    //   115	122	217	finally
+    //   131	136	217	finally
+    //   139	146	217	finally
+    //   47	53	221	java/lang/Throwable
+    //   63	72	221	java/lang/Throwable
+    //   75	82	221	java/lang/Throwable
+    //   85	92	221	java/lang/Throwable
+    //   100	109	221	java/lang/Throwable
+    //   115	122	221	java/lang/Throwable
+    //   131	136	221	java/lang/Throwable
+    //   139	146	221	java/lang/Throwable
+    //   28	44	229	finally
+    //   249	258	229	finally
+    //   260	269	229	finally
+    //   271	281	229	finally
+    //   283	292	229	finally
+    //   294	305	229	finally
+    //   307	319	229	finally
+    //   28	44	239	java/lang/Throwable
+    //   323	327	330	java/lang/Exception
+    //   391	395	398	java/lang/Exception
   }
   
   static boolean verifyData(String paramString1, String paramString2)
@@ -1019,211 +1195,231 @@ public class SonicFileUtils
   static boolean writeFile(byte[] paramArrayOfByte, String paramString)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore_2
-    //   2: new 36	java/io/File
-    //   5: dup
-    //   6: aload_1
-    //   7: invokespecial 39	java/io/File:<init>	(Ljava/lang/String;)V
-    //   10: astore 7
-    //   12: aconst_null
-    //   13: astore 5
-    //   15: aconst_null
-    //   16: astore 6
-    //   18: aload 5
-    //   20: astore 4
-    //   22: aload 7
-    //   24: invokevirtual 43	java/io/File:exists	()Z
-    //   27: ifne +74 -> 101
-    //   30: aload 5
-    //   32: astore 4
-    //   34: aload 7
-    //   36: invokevirtual 387	java/io/File:createNewFile	()Z
-    //   39: istore_3
-    //   40: iload_3
-    //   41: ifne +60 -> 101
-    //   44: iconst_0
-    //   45: ifeq +11 -> 56
-    //   48: new 389	java/lang/NullPointerException
-    //   51: dup
-    //   52: invokespecial 390	java/lang/NullPointerException:<init>	()V
-    //   55: athrow
-    //   56: iload_2
-    //   57: ireturn
-    //   58: astore_0
-    //   59: ldc 17
-    //   61: bipush 6
-    //   63: new 114	java/lang/StringBuilder
-    //   66: dup
-    //   67: invokespecial 115	java/lang/StringBuilder:<init>	()V
-    //   70: ldc_w 392
-    //   73: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   76: aload_1
-    //   77: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   80: ldc_w 337
-    //   83: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   86: aload_0
-    //   87: invokevirtual 340	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   90: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   93: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   96: invokestatic 137	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   99: iconst_0
-    //   100: ireturn
-    //   101: aload 5
-    //   103: astore 4
-    //   105: new 394	java/io/FileOutputStream
-    //   108: dup
-    //   109: aload 7
-    //   111: invokespecial 395	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   114: astore 5
-    //   116: aload 5
-    //   118: aload_0
-    //   119: invokevirtual 398	java/io/FileOutputStream:write	([B)V
-    //   122: aload 5
-    //   124: invokevirtual 401	java/io/FileOutputStream:flush	()V
-    //   127: iconst_1
-    //   128: istore_2
-    //   129: aload 5
-    //   131: ifnull -75 -> 56
-    //   134: aload 5
-    //   136: invokevirtual 402	java/io/FileOutputStream:close	()V
-    //   139: iconst_1
-    //   140: ireturn
-    //   141: astore_0
-    //   142: ldc 17
-    //   144: bipush 6
-    //   146: new 114	java/lang/StringBuilder
-    //   149: dup
-    //   150: invokespecial 115	java/lang/StringBuilder:<init>	()V
-    //   153: ldc_w 392
-    //   156: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   159: aload_1
-    //   160: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   163: ldc_w 337
-    //   166: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   169: aload_0
-    //   170: invokevirtual 340	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   173: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   176: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   179: invokestatic 137	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   182: iconst_1
-    //   183: ireturn
-    //   184: astore 5
-    //   186: aload 6
-    //   188: astore_0
-    //   189: aload_0
-    //   190: astore 4
-    //   192: ldc 17
-    //   194: bipush 6
-    //   196: new 114	java/lang/StringBuilder
-    //   199: dup
-    //   200: invokespecial 115	java/lang/StringBuilder:<init>	()V
-    //   203: ldc_w 404
-    //   206: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   209: aload_1
-    //   210: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   213: ldc_w 337
-    //   216: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   219: aload 5
-    //   221: invokevirtual 340	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   224: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   227: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   230: invokestatic 137	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   233: aload_0
-    //   234: ifnull -178 -> 56
-    //   237: aload_0
-    //   238: invokevirtual 402	java/io/FileOutputStream:close	()V
-    //   241: iconst_0
-    //   242: ireturn
-    //   243: astore_0
-    //   244: ldc 17
-    //   246: bipush 6
-    //   248: new 114	java/lang/StringBuilder
-    //   251: dup
-    //   252: invokespecial 115	java/lang/StringBuilder:<init>	()V
-    //   255: ldc_w 392
-    //   258: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   261: aload_1
-    //   262: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   265: ldc_w 337
-    //   268: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   271: aload_0
-    //   272: invokevirtual 340	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   275: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   278: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   281: invokestatic 137	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   284: iconst_0
-    //   285: ireturn
-    //   286: astore_0
-    //   287: aload 4
-    //   289: ifnull +8 -> 297
-    //   292: aload 4
-    //   294: invokevirtual 402	java/io/FileOutputStream:close	()V
-    //   297: aload_0
-    //   298: athrow
-    //   299: astore 4
-    //   301: ldc 17
-    //   303: bipush 6
-    //   305: new 114	java/lang/StringBuilder
-    //   308: dup
-    //   309: invokespecial 115	java/lang/StringBuilder:<init>	()V
-    //   312: ldc_w 392
-    //   315: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   318: aload_1
-    //   319: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   322: ldc_w 337
-    //   325: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   328: aload 4
-    //   330: invokevirtual 340	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   333: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   336: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   339: invokestatic 137	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   342: goto -45 -> 297
-    //   345: astore_0
-    //   346: aload 5
-    //   348: astore 4
-    //   350: goto -63 -> 287
-    //   353: astore 4
-    //   355: aload 5
-    //   357: astore_0
-    //   358: aload 4
-    //   360: astore 5
-    //   362: goto -173 -> 189
+    //   0: new 36	java/io/File
+    //   3: dup
+    //   4: aload_1
+    //   5: invokespecial 39	java/io/File:<init>	(Ljava/lang/String;)V
+    //   8: astore 5
+    //   10: aconst_null
+    //   11: astore 4
+    //   13: aconst_null
+    //   14: astore_3
+    //   15: aload_3
+    //   16: astore_2
+    //   17: aload 5
+    //   19: invokevirtual 43	java/io/File:exists	()Z
+    //   22: ifne +15 -> 37
+    //   25: aload_3
+    //   26: astore_2
+    //   27: aload 5
+    //   29: invokevirtual 393	java/io/File:createNewFile	()Z
+    //   32: ifne +5 -> 37
+    //   35: iconst_0
+    //   36: ireturn
+    //   37: aload_3
+    //   38: astore_2
+    //   39: new 395	java/io/FileOutputStream
+    //   42: dup
+    //   43: aload 5
+    //   45: invokespecial 396	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   48: astore_3
+    //   49: aload_3
+    //   50: aload_0
+    //   51: invokevirtual 399	java/io/FileOutputStream:write	([B)V
+    //   54: aload_3
+    //   55: invokevirtual 402	java/io/FileOutputStream:flush	()V
+    //   58: aload_3
+    //   59: invokevirtual 403	java/io/FileOutputStream:close	()V
+    //   62: iconst_1
+    //   63: ireturn
+    //   64: astore_0
+    //   65: new 120	java/lang/StringBuilder
+    //   68: dup
+    //   69: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   72: astore_2
+    //   73: aload_2
+    //   74: ldc_w 405
+    //   77: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   80: pop
+    //   81: aload_2
+    //   82: aload_1
+    //   83: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   86: pop
+    //   87: aload_2
+    //   88: ldc_w 349
+    //   91: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   94: pop
+    //   95: aload_2
+    //   96: aload_0
+    //   97: invokevirtual 356	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   100: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   103: pop
+    //   104: ldc 17
+    //   106: bipush 6
+    //   108: aload_2
+    //   109: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   112: invokestatic 143	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
+    //   115: iconst_1
+    //   116: ireturn
+    //   117: astore_0
+    //   118: aload_3
+    //   119: astore_2
+    //   120: goto +150 -> 270
+    //   123: astore_2
+    //   124: aload_3
+    //   125: astore_0
+    //   126: aload_2
+    //   127: astore_3
+    //   128: goto +11 -> 139
+    //   131: astore_0
+    //   132: goto +138 -> 270
+    //   135: astore_3
+    //   136: aload 4
+    //   138: astore_0
+    //   139: aload_0
+    //   140: astore_2
+    //   141: new 120	java/lang/StringBuilder
+    //   144: dup
+    //   145: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   148: astore 4
+    //   150: aload_0
+    //   151: astore_2
+    //   152: aload 4
+    //   154: ldc_w 407
+    //   157: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   160: pop
+    //   161: aload_0
+    //   162: astore_2
+    //   163: aload 4
+    //   165: aload_1
+    //   166: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   169: pop
+    //   170: aload_0
+    //   171: astore_2
+    //   172: aload 4
+    //   174: ldc_w 349
+    //   177: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   180: pop
+    //   181: aload_0
+    //   182: astore_2
+    //   183: aload 4
+    //   185: aload_3
+    //   186: invokevirtual 356	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   189: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   192: pop
+    //   193: aload_0
+    //   194: astore_2
+    //   195: ldc 17
+    //   197: bipush 6
+    //   199: aload 4
+    //   201: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   204: invokestatic 143	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
+    //   207: aload_0
+    //   208: ifnull +60 -> 268
+    //   211: aload_0
+    //   212: invokevirtual 403	java/io/FileOutputStream:close	()V
+    //   215: iconst_0
+    //   216: ireturn
+    //   217: astore_0
+    //   218: new 120	java/lang/StringBuilder
+    //   221: dup
+    //   222: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   225: astore_2
+    //   226: aload_2
+    //   227: ldc_w 405
+    //   230: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   233: pop
+    //   234: aload_2
+    //   235: aload_1
+    //   236: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   239: pop
+    //   240: aload_2
+    //   241: ldc_w 349
+    //   244: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   247: pop
+    //   248: aload_2
+    //   249: aload_0
+    //   250: invokevirtual 356	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   253: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   256: pop
+    //   257: ldc 17
+    //   259: bipush 6
+    //   261: aload_2
+    //   262: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   265: invokestatic 143	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
+    //   268: iconst_0
+    //   269: ireturn
+    //   270: aload_2
+    //   271: ifnull +61 -> 332
+    //   274: aload_2
+    //   275: invokevirtual 403	java/io/FileOutputStream:close	()V
+    //   278: goto +54 -> 332
+    //   281: astore_2
+    //   282: new 120	java/lang/StringBuilder
+    //   285: dup
+    //   286: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   289: astore_3
+    //   290: aload_3
+    //   291: ldc_w 405
+    //   294: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   297: pop
+    //   298: aload_3
+    //   299: aload_1
+    //   300: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   303: pop
+    //   304: aload_3
+    //   305: ldc_w 349
+    //   308: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   311: pop
+    //   312: aload_3
+    //   313: aload_2
+    //   314: invokevirtual 356	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   317: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   320: pop
+    //   321: ldc 17
+    //   323: bipush 6
+    //   325: aload_3
+    //   326: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   329: invokestatic 143	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
+    //   332: aload_0
+    //   333: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	365	0	paramArrayOfByte	byte[]
-    //   0	365	1	paramString	String
-    //   1	128	2	bool1	boolean
-    //   39	2	3	bool2	boolean
-    //   20	273	4	localObject1	Object
-    //   299	30	4	localThrowable1	java.lang.Throwable
-    //   348	1	4	localThrowable2	java.lang.Throwable
-    //   353	6	4	localThrowable3	java.lang.Throwable
-    //   13	122	5	localFileOutputStream	java.io.FileOutputStream
-    //   184	172	5	localThrowable4	java.lang.Throwable
-    //   360	1	5	localObject2	Object
-    //   16	171	6	localObject3	Object
-    //   10	100	7	localFile	File
+    //   0	334	0	paramArrayOfByte	byte[]
+    //   0	334	1	paramString	String
+    //   16	104	2	localObject1	Object
+    //   123	4	2	localThrowable1	java.lang.Throwable
+    //   140	135	2	localObject2	Object
+    //   281	33	2	localThrowable2	java.lang.Throwable
+    //   14	114	3	localObject3	Object
+    //   135	51	3	localThrowable3	java.lang.Throwable
+    //   289	37	3	localStringBuilder1	StringBuilder
+    //   11	189	4	localStringBuilder2	StringBuilder
+    //   8	36	5	localFile	File
     // Exception table:
     //   from	to	target	type
-    //   48	56	58	java/lang/Throwable
-    //   134	139	141	java/lang/Throwable
-    //   22	30	184	java/lang/Throwable
-    //   34	40	184	java/lang/Throwable
-    //   105	116	184	java/lang/Throwable
-    //   237	241	243	java/lang/Throwable
-    //   22	30	286	finally
-    //   34	40	286	finally
-    //   105	116	286	finally
-    //   192	233	286	finally
-    //   292	297	299	java/lang/Throwable
-    //   116	127	345	finally
-    //   116	127	353	java/lang/Throwable
+    //   58	62	64	java/lang/Throwable
+    //   49	58	117	finally
+    //   49	58	123	java/lang/Throwable
+    //   17	25	131	finally
+    //   27	35	131	finally
+    //   39	49	131	finally
+    //   141	150	131	finally
+    //   152	161	131	finally
+    //   163	170	131	finally
+    //   172	181	131	finally
+    //   183	193	131	finally
+    //   195	207	131	finally
+    //   17	25	135	java/lang/Throwable
+    //   27	35	135	java/lang/Throwable
+    //   39	49	135	java/lang/Throwable
+    //   211	215	217	java/lang/Throwable
+    //   274	278	281	java/lang/Throwable
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.sonic.sdk.SonicFileUtils
  * JD-Core Version:    0.7.0.1
  */

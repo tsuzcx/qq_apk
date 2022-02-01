@@ -2,16 +2,17 @@ package com.tencent.mobileqq.minigame.publicaccount.adapter;
 
 import android.app.Activity;
 import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import androidx.viewpager.widget.PagerAdapter;
 import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.qwallet.utils.ArkPubicEventWrap;
 import com.tencent.mobileqq.minigame.publicaccount.model.QQGameMsgInfo;
 import com.tencent.mobileqq.minigame.publicaccount.view.GameArkView;
 import com.tencent.mobileqq.minigame.publicaccount.view.IHeaderView;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qwallet.utils.IArkPubicEventWrap;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -49,7 +50,10 @@ public abstract class BaseHeaderAdapter
         }
         catch (Throwable paramQQGameMsgInfo)
         {
-          QLog.d("BaseHeaderAdapter", 4, "decode header(web) faile:" + paramQQGameMsgInfo.getMessage());
+          paramActivity = new StringBuilder();
+          paramActivity.append("decode header(web) faile:");
+          paramActivity.append(paramQQGameMsgInfo.getMessage());
+          QLog.d("BaseHeaderAdapter", 4, paramActivity.toString());
         }
       }
       return null;
@@ -60,17 +64,21 @@ public abstract class BaseHeaderAdapter
   
   protected View createEmptyView()
   {
-    View localView = LayoutInflater.from(this.mActivity).inflate(2131559275, null, false);
-    ((ImageView)localView.findViewById(2131366332)).setImageDrawable(URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_no_message@2x.png"));
+    View localView = LayoutInflater.from(this.mActivity).inflate(2131559147, null, false);
+    ((ImageView)localView.findViewById(2131366220)).setImageDrawable(URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_no_message@2x.png"));
     return localView;
   }
   
   public int getCount()
   {
-    if (this.mMsgInfoList == null) {}
-    for (int i = 0;; i = this.mMsgInfoList.size()) {
-      return Math.min(i, this.mHeaderRecords.size());
+    List localList = this.mMsgInfoList;
+    int i;
+    if (localList == null) {
+      i = 0;
+    } else {
+      i = localList.size();
     }
+    return Math.min(i, this.mHeaderRecords.size());
   }
   
   public IHeaderView getHeaderView(int paramInt)
@@ -83,20 +91,25 @@ public abstract class BaseHeaderAdapter
   
   public void initArk(int paramInt)
   {
-    if ((paramInt >= this.mMsgInfoList.size()) || (paramInt < 0) || (paramInt >= this.mArkInited.size()) || (paramInt >= this.mHeaderRecords.size())) {}
-    while (((Boolean)this.mArkInited.get(paramInt)).booleanValue()) {
-      return;
+    if ((paramInt < this.mMsgInfoList.size()) && (paramInt >= 0) && (paramInt < this.mArkInited.size()))
+    {
+      if (paramInt >= this.mHeaderRecords.size()) {
+        return;
+      }
+      if (((Boolean)this.mArkInited.get(paramInt)).booleanValue()) {
+        return;
+      }
+      QQGameMsgInfo localQQGameMsgInfo2 = (QQGameMsgInfo)this.mMsgInfoList.get(paramInt);
+      IHeaderView localIHeaderView = (IHeaderView)this.mHeaderRecords.get(paramInt);
+      QQGameMsgInfo localQQGameMsgInfo1 = localQQGameMsgInfo2;
+      if (localQQGameMsgInfo2 == null) {
+        localQQGameMsgInfo1 = new QQGameMsgInfo();
+      }
+      if (localIHeaderView != null) {
+        localIHeaderView.init(localQQGameMsgInfo1, this.mActivity, paramInt, "");
+      }
+      this.mArkInited.set(paramInt, Boolean.valueOf(true));
     }
-    QQGameMsgInfo localQQGameMsgInfo2 = (QQGameMsgInfo)this.mMsgInfoList.get(paramInt);
-    IHeaderView localIHeaderView = (IHeaderView)this.mHeaderRecords.get(paramInt);
-    QQGameMsgInfo localQQGameMsgInfo1 = localQQGameMsgInfo2;
-    if (localQQGameMsgInfo2 == null) {
-      localQQGameMsgInfo1 = new QQGameMsgInfo();
-    }
-    if (localIHeaderView != null) {
-      localIHeaderView.init(localQQGameMsgInfo1, this.mActivity, paramInt, "");
-    }
-    this.mArkInited.set(paramInt, Boolean.valueOf(true));
   }
   
   public void onDestroy()
@@ -104,48 +117,49 @@ public abstract class BaseHeaderAdapter
     int i = 0;
     for (;;)
     {
+      Object localObject;
       try
       {
         if (i < this.mHeaderRecords.size())
         {
           if (!(this.mHeaderRecords.get(i) instanceof GameArkView)) {
-            break label172;
+            break label198;
           }
           ((GameArkView)this.mHeaderRecords.get(i)).destory();
           if (!QLog.isColorLevel()) {
-            break label172;
+            break label198;
           }
-          QLog.d("BaseHeaderAdapter", 2, "header destroy i=" + i);
-          break label172;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("header destroy i=");
+          localStringBuilder.append(i);
+          QLog.d("BaseHeaderAdapter", 2, localStringBuilder.toString());
+          break label198;
         }
         this.mHeaderRecords.clear();
       }
       catch (Throwable localThrowable)
       {
-        Iterator localIterator;
-        String str;
-        QLog.e("BaseHeaderAdapter", 1, "header destroy error=" + localThrowable.toString());
-        continue;
-        ArkPubicEventWrap.a().a(new String[0]);
-        return;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("header destroy error=");
+        ((StringBuilder)localObject).append(localThrowable.toString());
+        QLog.e("BaseHeaderAdapter", 1, ((StringBuilder)localObject).toString());
       }
-      localIterator = this.mArkAppNameList.iterator();
-      if (localIterator.hasNext())
+      Iterator localIterator = this.mArkAppNameList.iterator();
+      while (localIterator.hasNext())
       {
-        str = (String)localIterator.next();
-        ArkPubicEventWrap.a().b(str);
+        localObject = (String)localIterator.next();
+        ((IArkPubicEventWrap)QRoute.api(IArkPubicEventWrap.class)).removeNotify((String)localObject);
       }
-      else
-      {
-        label172:
-        i += 1;
-      }
+      ((IArkPubicEventWrap)QRoute.api(IArkPubicEventWrap.class)).unRegistVolumnReceiver(new String[0]);
+      return;
+      label198:
+      i += 1;
     }
   }
   
   public void onDestroyView()
   {
-    ArkPubicEventWrap.a().b(this.mArkAppNameList);
+    ((IArkPubicEventWrap)QRoute.api(IArkPubicEventWrap.class)).unRegistVolumnReceiver(this.mArkAppNameList);
   }
   
   public void onPause()
@@ -178,18 +192,18 @@ public abstract class BaseHeaderAdapter
         this.mHeaderRecords.add(localIHeaderView);
         if (!TextUtils.isEmpty(localQQGameMsgInfo.arkAppName))
         {
-          ArkPubicEventWrap.a().a(localQQGameMsgInfo.arkAppName);
+          ((IArkPubicEventWrap)QRoute.api(IArkPubicEventWrap.class)).addNotify(localQQGameMsgInfo.arkAppName);
           this.mArkAppNameList.add(localQQGameMsgInfo.arkAppName);
         }
       }
     }
-    ArkPubicEventWrap.a().a(this.mArkAppNameList);
+    ((IArkPubicEventWrap)QRoute.api(IArkPubicEventWrap.class)).registVolumnReceiver(this.mArkAppNameList);
     notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.adapter.BaseHeaderAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -16,8 +16,10 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
-import com.tencent.mobileqq.vip.JceProtocol;
+import com.tencent.mobileqq.vas.api.IJce;
+import com.tencent.mobileqq.vas.api.IJce.Util;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -39,7 +41,11 @@ public class StickyNoteShopLayout
   
   static
   {
-    jdField_a_of_type_JavaLangString = BaseApplicationImpl.getContext().getFilesDir().getAbsolutePath() + File.separator + "sticky_list_cache";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseApplicationImpl.getContext().getFilesDir().getAbsolutePath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("sticky_list_cache");
+    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
   }
   
   public StickyNoteShopLayout(@NonNull Context paramContext)
@@ -65,30 +71,26 @@ public class StickyNoteShopLayout
   
   private int a(int[] paramArrayOfInt)
   {
-    int i = paramArrayOfInt[0];
-    int m = paramArrayOfInt.length;
-    int j = 0;
-    if (j < m)
+    int i = 0;
+    int j = paramArrayOfInt[0];
+    int n = paramArrayOfInt.length;
+    while (i < n)
     {
-      int k = paramArrayOfInt[j];
-      if (k <= i) {
-        break label39;
+      int m = paramArrayOfInt[i];
+      int k = j;
+      if (m > j) {
+        k = m;
       }
-      i = k;
+      i += 1;
+      j = k;
     }
-    label39:
-    for (;;)
-    {
-      j += 1;
-      break;
-      return i;
-    }
+    return j;
   }
   
   private void c()
   {
-    View.inflate(getContext(), 2131561547, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131378497));
+    View.inflate(getContext(), 2131561388, this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131377908));
     StaggeredGridLayoutManager localStaggeredGridLayoutManager = new StaggeredGridLayoutManager(3, 1);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localStaggeredGridLayoutManager);
     this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter = new StickyNoteVasAdapter(getContext(), null);
@@ -96,23 +98,21 @@ public class StickyNoteShopLayout
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOnScrollListener(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setBackgroundColor(-1);
-    findViewById(2131380328).setOnClickListener(this);
-    findViewById(2131368807).setOnClickListener(this);
+    findViewById(2131379649).setOnClickListener(this);
+    findViewById(2131368536).setOnClickListener(this);
     a();
   }
   
   public int a(int paramInt)
   {
-    if (paramInt > ScreenUtil.SCREEN_HIGHT / 4) {}
-    for (;;)
-    {
-      ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
-      localLayoutParams.height = paramInt;
-      setMinimumHeight(localLayoutParams.height);
-      setLayoutParams(localLayoutParams);
-      return paramInt;
+    if (paramInt <= ScreenUtil.SCREEN_HIGHT / 4) {
       paramInt = ScreenUtil.SCREEN_HIGHT / 3;
     }
+    ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
+    localLayoutParams.height = paramInt;
+    setMinimumHeight(localLayoutParams.height);
+    setLayoutParams(localLayoutParams);
+    return paramInt;
   }
   
   public StickyNoteVasAdapter a()
@@ -140,25 +140,32 @@ public class StickyNoteShopLayout
   
   public void a(boolean paramBoolean)
   {
-    QLog.d("StickyNoteShopLayout", 2, " appId:" + this.jdField_b_of_type_Int + " mIsLoadLast:" + this.jdField_a_of_type_Boolean + " isLoadMore:" + paramBoolean + " mStrAttachInfo:" + this.jdField_b_of_type_JavaLangString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(" appId:");
+    ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+    ((StringBuilder)localObject).append(" mIsLoadLast:");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+    ((StringBuilder)localObject).append(" isLoadMore:");
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append(" mStrAttachInfo:");
+    ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+    QLog.d("StickyNoteShopLayout", 2, ((StringBuilder)localObject).toString());
     if (this.jdField_a_of_type_Boolean) {
-      break label68;
-    }
-    label68:
-    while ((this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter.a() >= 30) && (paramBoolean)) {
       return;
     }
-    JceProtocol localJceProtocol = new JceProtocol("QC.HomepageLogicServer.HomepageLogicObj", "QcHomePageLogic.GetSuixintieSigFontReq");
-    GetSuixintieSigFontReq localGetSuixintieSigFontReq = new GetSuixintieSigFontReq(JceProtocol.a(), this.jdField_b_of_type_Int, this.c, "", this.jdField_b_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Int == 1) {}
-    for (String str = "getSuixintieSigFont";; str = "getExtendFriendSigFont")
-    {
-      localJceProtocol.a(str, localGetSuixintieSigFontReq, new GetSuixintieSigFontRsp(), new StickyNoteShopLayout.1(this, paramBoolean), false);
-      if (paramBoolean) {
-        break;
-      }
+    if ((this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter.a() >= 30) && (paramBoolean)) {
+      return;
+    }
+    IJce localIJce = ((IJce)QRoute.api(IJce.class)).build("QC.HomepageLogicServer.HomepageLogicObj", "QcHomePageLogic.GetSuixintieSigFontReq");
+    GetSuixintieSigFontReq localGetSuixintieSigFontReq = new GetSuixintieSigFontReq(IJce.Util.a(), this.jdField_b_of_type_Int, this.c, "", this.jdField_b_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Int == 1) {
+      localObject = "getSuixintieSigFont";
+    } else {
+      localObject = "getExtendFriendSigFont";
+    }
+    localIJce.request((String)localObject, localGetSuixintieSigFontReq, new GetSuixintieSigFontRsp(), new StickyNoteShopLayout.1(this, paramBoolean), false);
+    if (!paramBoolean) {
       ThreadManagerV2.executeOnFileThread(new StickyNoteShopLayout.2(this));
-      return;
     }
   }
   
@@ -170,24 +177,25 @@ public class StickyNoteShopLayout
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i != 2131368536)
     {
+      if (i == 2131379649) {
+        a(false);
+      }
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      a(false);
-      continue;
+    else {
       a(false);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void setAppId(int paramInt)
   {
     this.jdField_b_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter.a(paramInt);
+    StickyNoteVasAdapter localStickyNoteVasAdapter = this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter;
+    if (localStickyNoteVasAdapter != null) {
+      localStickyNoteVasAdapter.a(paramInt);
     }
   }
   
@@ -213,7 +221,7 @@ public class StickyNoteShopLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout
  * JD-Core Version:    0.7.0.1
  */

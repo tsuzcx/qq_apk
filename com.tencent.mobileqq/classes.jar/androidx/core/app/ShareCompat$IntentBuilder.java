@@ -44,34 +44,36 @@ public class ShareCompat$IntentBuilder
   private void combineArrayExtra(String paramString, ArrayList<String> paramArrayList)
   {
     String[] arrayOfString1 = this.mIntent.getStringArrayExtra(paramString);
-    if (arrayOfString1 != null) {}
-    for (int i = arrayOfString1.length;; i = 0)
-    {
-      String[] arrayOfString2 = new String[paramArrayList.size() + i];
-      paramArrayList.toArray(arrayOfString2);
-      if (arrayOfString1 != null) {
-        System.arraycopy(arrayOfString1, 0, arrayOfString2, paramArrayList.size(), i);
-      }
-      this.mIntent.putExtra(paramString, arrayOfString2);
-      return;
+    int i;
+    if (arrayOfString1 != null) {
+      i = arrayOfString1.length;
+    } else {
+      i = 0;
     }
+    String[] arrayOfString2 = new String[paramArrayList.size() + i];
+    paramArrayList.toArray(arrayOfString2);
+    if (arrayOfString1 != null) {
+      System.arraycopy(arrayOfString1, 0, arrayOfString2, paramArrayList.size(), i);
+    }
+    this.mIntent.putExtra(paramString, arrayOfString2);
   }
   
   private void combineArrayExtra(@Nullable String paramString, @NonNull String[] paramArrayOfString)
   {
     Intent localIntent = getIntent();
     String[] arrayOfString1 = localIntent.getStringArrayExtra(paramString);
-    if (arrayOfString1 != null) {}
-    for (int i = arrayOfString1.length;; i = 0)
-    {
-      String[] arrayOfString2 = new String[paramArrayOfString.length + i];
-      if (arrayOfString1 != null) {
-        System.arraycopy(arrayOfString1, 0, arrayOfString2, 0, i);
-      }
-      System.arraycopy(paramArrayOfString, 0, arrayOfString2, i, paramArrayOfString.length);
-      localIntent.putExtra(paramString, arrayOfString2);
-      return;
+    int i;
+    if (arrayOfString1 != null) {
+      i = arrayOfString1.length;
+    } else {
+      i = 0;
     }
+    String[] arrayOfString2 = new String[paramArrayOfString.length + i];
+    if (arrayOfString1 != null) {
+      System.arraycopy(arrayOfString1, 0, arrayOfString2, 0, i);
+    }
+    System.arraycopy(paramArrayOfString, 0, arrayOfString2, i, paramArrayOfString.length);
+    localIntent.putExtra(paramString, arrayOfString2);
   }
   
   @NonNull
@@ -171,56 +173,52 @@ public class ShareCompat$IntentBuilder
   @NonNull
   public Intent getIntent()
   {
-    if (this.mToAddresses != null)
+    ArrayList localArrayList = this.mToAddresses;
+    if (localArrayList != null)
     {
-      combineArrayExtra("android.intent.extra.EMAIL", this.mToAddresses);
+      combineArrayExtra("android.intent.extra.EMAIL", localArrayList);
       this.mToAddresses = null;
     }
-    if (this.mCcAddresses != null)
+    localArrayList = this.mCcAddresses;
+    if (localArrayList != null)
     {
-      combineArrayExtra("android.intent.extra.CC", this.mCcAddresses);
+      combineArrayExtra("android.intent.extra.CC", localArrayList);
       this.mCcAddresses = null;
     }
-    if (this.mBccAddresses != null)
+    localArrayList = this.mBccAddresses;
+    if (localArrayList != null)
     {
-      combineArrayExtra("android.intent.extra.BCC", this.mBccAddresses);
+      combineArrayExtra("android.intent.extra.BCC", localArrayList);
       this.mBccAddresses = null;
     }
-    int i;
-    if ((this.mStreams != null) && (this.mStreams.size() > 1))
-    {
-      i = 1;
-      boolean bool = "android.intent.action.SEND_MULTIPLE".equals(this.mIntent.getAction());
-      if ((i == 0) && (bool))
-      {
-        this.mIntent.setAction("android.intent.action.SEND");
-        if ((this.mStreams == null) || (this.mStreams.isEmpty())) {
-          break label219;
-        }
-        this.mIntent.putExtra("android.intent.extra.STREAM", (Parcelable)this.mStreams.get(0));
-        label155:
-        this.mStreams = null;
-      }
-      if ((i != 0) && (!bool))
-      {
-        this.mIntent.setAction("android.intent.action.SEND_MULTIPLE");
-        if ((this.mStreams == null) || (this.mStreams.isEmpty())) {
-          break label231;
-        }
-        this.mIntent.putParcelableArrayListExtra("android.intent.extra.STREAM", this.mStreams);
-      }
-    }
-    for (;;)
-    {
-      return this.mIntent;
+    localArrayList = this.mStreams;
+    int i = 1;
+    if ((localArrayList == null) || (localArrayList.size() <= 1)) {
       i = 0;
-      break;
-      label219:
-      this.mIntent.removeExtra("android.intent.extra.STREAM");
-      break label155;
-      label231:
-      this.mIntent.removeExtra("android.intent.extra.STREAM");
     }
+    boolean bool = "android.intent.action.SEND_MULTIPLE".equals(this.mIntent.getAction());
+    if ((i == 0) && (bool))
+    {
+      this.mIntent.setAction("android.intent.action.SEND");
+      localArrayList = this.mStreams;
+      if ((localArrayList != null) && (!localArrayList.isEmpty())) {
+        this.mIntent.putExtra("android.intent.extra.STREAM", (Parcelable)this.mStreams.get(0));
+      } else {
+        this.mIntent.removeExtra("android.intent.extra.STREAM");
+      }
+      this.mStreams = null;
+    }
+    if ((i != 0) && (!bool))
+    {
+      this.mIntent.setAction("android.intent.action.SEND_MULTIPLE");
+      localArrayList = this.mStreams;
+      if ((localArrayList != null) && (!localArrayList.isEmpty())) {
+        this.mIntent.putParcelableArrayListExtra("android.intent.extra.STREAM", this.mStreams);
+      } else {
+        this.mIntent.removeExtra("android.intent.extra.STREAM");
+      }
+    }
+    return this.mIntent;
   }
   
   @NonNull
@@ -309,7 +307,7 @@ public class ShareCompat$IntentBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.ShareCompat.IntentBuilder
  * JD-Core Version:    0.7.0.1
  */

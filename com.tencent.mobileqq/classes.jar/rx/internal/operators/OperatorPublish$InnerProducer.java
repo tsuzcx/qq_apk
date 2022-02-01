@@ -29,26 +29,40 @@ final class OperatorPublish$InnerProducer<T>
   
   public long produced(long paramLong)
   {
-    if (paramLong <= 0L) {
-      throw new IllegalArgumentException("Cant produce zero or less");
-    }
-    long l1;
-    long l2;
-    do
+    if (paramLong > 0L)
     {
-      l1 = get();
-      if (l1 == -4611686018427387904L) {
-        throw new IllegalStateException("Produced without request");
-      }
-      if (l1 == -9223372036854775808L) {
-        return -9223372036854775808L;
-      }
-      l2 = l1 - paramLong;
-      if (l2 < 0L) {
-        throw new IllegalStateException("More produced (" + paramLong + ") than requested (" + l1 + ")");
-      }
-    } while (!compareAndSet(l1, l2));
-    return l2;
+      long l1;
+      long l2;
+      do
+      {
+        l1 = get();
+        if (l1 == -4611686018427387904L) {
+          break label116;
+        }
+        if (l1 == -9223372036854775808L) {
+          return -9223372036854775808L;
+        }
+        l2 = l1 - paramLong;
+        if (l2 < 0L) {
+          break;
+        }
+      } while (!compareAndSet(l1, l2));
+      return l2;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("More produced (");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(") than requested (");
+      ((StringBuilder)localObject).append(l1);
+      ((StringBuilder)localObject).append(")");
+      throw new IllegalStateException(((StringBuilder)localObject).toString());
+      label116:
+      throw new IllegalStateException("Produced without request");
+    }
+    Object localObject = new IllegalArgumentException("Cant produce zero or less");
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
   }
   
   public void request(long paramLong)
@@ -56,27 +70,31 @@ final class OperatorPublish$InnerProducer<T>
     if (paramLong < 0L) {
       return;
     }
-    for (;;)
+    long l3;
+    long l1;
+    do
     {
-      long l3 = get();
-      if ((l3 == -9223372036854775808L) || ((l3 >= 0L) && (paramLong == 0L))) {
-        break;
+      l3 = get();
+      if (l3 == -9223372036854775808L) {
+        return;
       }
-      long l1;
-      if (l3 == -4611686018427387904L) {
+      if ((l3 >= 0L) && (paramLong == 0L)) {
+        return;
+      }
+      if (l3 == -4611686018427387904L)
+      {
         l1 = paramLong;
       }
-      while (compareAndSet(l3, l1))
+      else
       {
-        this.parent.dispatch();
-        return;
         long l2 = l3 + paramLong;
         l1 = l2;
         if (l2 < 0L) {
           l1 = 9223372036854775807L;
         }
       }
-    }
+    } while (!compareAndSet(l3, l1));
+    this.parent.dispatch();
   }
   
   public void unsubscribe()
@@ -90,7 +108,7 @@ final class OperatorPublish$InnerProducer<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorPublish.InnerProducer
  * JD-Core Version:    0.7.0.1
  */

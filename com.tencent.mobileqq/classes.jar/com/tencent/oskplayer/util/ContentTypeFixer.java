@@ -31,7 +31,13 @@ public class ContentTypeFixer
       str = paramString;
       if (!TextUtils.isEmpty(this.mPreferredContentType))
       {
-        PlayerUtils.log(5, this.mLogTag, "modify contentType from " + paramString + " to " + this.mPreferredContentType);
+        str = this.mLogTag;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("modify contentType from ");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" to ");
+        localStringBuilder.append(this.mPreferredContentType);
+        PlayerUtils.log(5, str, localStringBuilder.toString());
         str = this.mPreferredContentType;
       }
     }
@@ -67,7 +73,13 @@ public class ContentTypeFixer
                   localObject3 = new ArrayList();
                   ((ArrayList)localObject3).add(this.mPreferredContentType);
                   ((HashMap)localObject1).put("Content-Type", localObject3);
-                  PlayerUtils.log(5, this.mLogTag, "fix Content-Type from " + (String)localObject2 + " to " + this.mPreferredContentType);
+                  localObject3 = this.mLogTag;
+                  StringBuilder localStringBuilder = new StringBuilder();
+                  localStringBuilder.append("fix Content-Type from ");
+                  localStringBuilder.append((String)localObject2);
+                  localStringBuilder.append(" to ");
+                  localStringBuilder.append(this.mPreferredContentType);
+                  PlayerUtils.log(5, (String)localObject3, localStringBuilder.toString());
                 }
                 else
                 {
@@ -85,7 +97,7 @@ public class ContentTypeFixer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.util.ContentTypeFixer
  * JD-Core Version:    0.7.0.1
  */

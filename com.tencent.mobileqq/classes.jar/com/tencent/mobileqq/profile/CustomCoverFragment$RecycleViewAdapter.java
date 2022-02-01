@@ -2,7 +2,6 @@ package com.tencent.mobileqq.profile;
 
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
@@ -13,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -27,39 +27,46 @@ public class CustomCoverFragment$RecycleViewAdapter
   {
     if (CustomCoverFragment.c(this.a))
     {
-      paramItemViewHolder.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130850453);
+      paramItemViewHolder.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130850380);
       paramItemViewHolder.jdField_a_of_type_AndroidWidgetButton.setTextColor(-8947849);
-      paramItemViewHolder.jdField_a_of_type_AndroidWidgetButton.setText(2131694962);
+      paramItemViewHolder.jdField_a_of_type_AndroidWidgetButton.setText(2131694952);
       return;
     }
     if ((paramItemViewHolder.jdField_a_of_type_Int == CustomCoverFragment.a(this.a)) && (CustomCoverFragment.a(this.a)))
     {
-      paramItemViewHolder.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130850453);
+      paramItemViewHolder.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130850380);
       paramItemViewHolder.jdField_a_of_type_AndroidWidgetButton.setTextColor(-8947849);
-      paramItemViewHolder.jdField_a_of_type_AndroidWidgetButton.setText(2131719099);
+      paramItemViewHolder.jdField_a_of_type_AndroidWidgetButton.setText(2131718817);
       return;
     }
-    paramItemViewHolder.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130850473);
+    paramItemViewHolder.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130850400);
     paramItemViewHolder.jdField_a_of_type_AndroidWidgetButton.setTextColor(-16777216);
-    paramItemViewHolder.jdField_a_of_type_AndroidWidgetButton.setText(2131694962);
+    paramItemViewHolder.jdField_a_of_type_AndroidWidgetButton.setText(2131694952);
   }
   
   public ProfileCardManager.DefaultCardItem a(int paramInt)
   {
-    if ((CustomCoverFragment.a(this.a) != null) && (paramInt > 0) && (paramInt - 1 < CustomCoverFragment.a(this.a).size()) && (CustomCoverFragment.a(this.a) != null))
+    if ((CustomCoverFragment.a(this.a) != null) && (paramInt > 0))
     {
-      paramInt = ((Integer)CustomCoverFragment.a(this.a).get(paramInt - 1)).intValue();
-      return CustomCoverFragment.a(this.a).a(paramInt, false);
+      paramInt -= 1;
+      if ((paramInt < CustomCoverFragment.a(this.a).size()) && (CustomCoverFragment.a(this.a) != null))
+      {
+        paramInt = ((Integer)CustomCoverFragment.a(this.a).get(paramInt)).intValue();
+        return CustomCoverFragment.a(this.a).a(paramInt, false);
+      }
     }
     return null;
   }
   
   public int getItemCount()
   {
-    if (CustomCoverFragment.a(this.a) == null) {}
-    for (int i = 0;; i = CustomCoverFragment.a(this.a).size()) {
-      return i + 2;
+    int i;
+    if (CustomCoverFragment.a(this.a) == null) {
+      i = 0;
+    } else {
+      i = CustomCoverFragment.a(this.a).size();
     }
+    return i + 2;
   }
   
   public int getItemViewType(int paramInt)
@@ -75,12 +82,13 @@ public class CustomCoverFragment$RecycleViewAdapter
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
+    boolean bool = paramViewHolder instanceof CustomCoverFragment.ItemViewHolder;
+    Object localObject2 = Integer.valueOf(0);
     Object localObject1;
-    ProfileCardManager.DefaultCardItem localDefaultCardItem;
-    if ((paramViewHolder instanceof CustomCoverFragment.ItemViewHolder))
+    if (bool)
     {
       localObject1 = (CustomCoverFragment.ItemViewHolder)paramViewHolder;
-      localDefaultCardItem = a(paramInt);
+      ProfileCardManager.DefaultCardItem localDefaultCardItem = a(paramInt);
       if (localDefaultCardItem != null)
       {
         ((CustomCoverFragment.ItemViewHolder)localObject1).jdField_a_of_type_Int = localDefaultCardItem.jdField_a_of_type_Int;
@@ -88,105 +96,98 @@ public class CustomCoverFragment$RecycleViewAdapter
         if (TextUtils.isEmpty(localDefaultCardItem.b))
         {
           ((CustomCoverFragment.ItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(CustomCoverFragment.a(this.a));
-          ((CustomCoverFragment.ItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetButton.setTag(Integer.valueOf(localDefaultCardItem.jdField_a_of_type_Int));
-          ((CustomCoverFragment.ItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(localDefaultCardItem.jdField_a_of_type_Int));
-          label100:
-          a((CustomCoverFragment.ItemViewHolder)localObject1);
         }
+        else
+        {
+          localObject2 = URLDrawable.URLDrawableOptions.obtain();
+          ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = CustomCoverFragment.f(this.a);
+          ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = CustomCoverFragment.e(this.a);
+          ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = CustomCoverFragment.a(this.a);
+          ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = CustomCoverFragment.a(this.a);
+          localObject2 = URLDrawable.getDrawable(localDefaultCardItem.b, (URLDrawable.URLDrawableOptions)localObject2);
+          ((CustomCoverFragment.ItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
+        }
+        ((CustomCoverFragment.ItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetButton.setTag(Integer.valueOf(localDefaultCardItem.jdField_a_of_type_Int));
+        ((CustomCoverFragment.ItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(localDefaultCardItem.jdField_a_of_type_Int));
       }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-      return;
-      Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = CustomCoverFragment.f(this.a);
-      ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = CustomCoverFragment.e(this.a);
-      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = CustomCoverFragment.a(this.a);
-      ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = CustomCoverFragment.a(this.a);
-      localObject2 = URLDrawable.getDrawable(localDefaultCardItem.b, (URLDrawable.URLDrawableOptions)localObject2);
-      ((CustomCoverFragment.ItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
-      break;
-      ((CustomCoverFragment.ItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetButton.setTag(Integer.valueOf(0));
-      ((CustomCoverFragment.ItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(0));
-      break label100;
-      if ((paramViewHolder instanceof CustomCoverFragment.MoreViewHolder))
+      else
       {
-        localObject1 = (CustomCoverFragment.MoreViewHolder)paramViewHolder;
-        if (CustomCoverFragment.c(this.a) == 0)
-        {
-          CustomCoverFragment.c(this.a, 3);
-          CustomCoverFragment.a(this.a);
-        }
-        if (CustomCoverFragment.c(this.a) == 3)
-        {
-          ((CustomCoverFragment.MoreViewHolder)localObject1).itemView.setVisibility(0);
-          ((CustomCoverFragment.MoreViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-          ((CustomCoverFragment.MoreViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(2131689503);
-          ((CustomCoverFragment.MoreViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        }
-        else if (CustomCoverFragment.c(this.a) == 1)
-        {
-          ((CustomCoverFragment.MoreViewHolder)localObject1).itemView.setVisibility(0);
-          ((CustomCoverFragment.MoreViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131165707));
-          ((CustomCoverFragment.MoreViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(2131690819);
-          ((CustomCoverFragment.MoreViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        }
-        else if (CustomCoverFragment.c(this.a) == 2)
-        {
-          ((CustomCoverFragment.MoreViewHolder)localObject1).itemView.setVisibility(8);
-        }
+        ((CustomCoverFragment.ItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetButton.setTag(localObject2);
+        ((CustomCoverFragment.ItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setTag(localObject2);
+      }
+      a((CustomCoverFragment.ItemViewHolder)localObject1);
+    }
+    else if ((paramViewHolder instanceof CustomCoverFragment.MoreViewHolder))
+    {
+      localObject1 = (CustomCoverFragment.MoreViewHolder)paramViewHolder;
+      if (CustomCoverFragment.c(this.a) == 0)
+      {
+        CustomCoverFragment.c(this.a, 3);
+        CustomCoverFragment.a(this.a);
+      }
+      if (CustomCoverFragment.c(this.a) == 3)
+      {
+        ((CustomCoverFragment.MoreViewHolder)localObject1).itemView.setVisibility(0);
+        ((CustomCoverFragment.MoreViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+        ((CustomCoverFragment.MoreViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(2131689530);
+        ((CustomCoverFragment.MoreViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      }
+      else if (CustomCoverFragment.c(this.a) == 1)
+      {
+        ((CustomCoverFragment.MoreViewHolder)localObject1).itemView.setVisibility(0);
+        ((CustomCoverFragment.MoreViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131165695));
+        ((CustomCoverFragment.MoreViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(2131690747);
+        ((CustomCoverFragment.MoreViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      }
+      else if (CustomCoverFragment.c(this.a) == 2)
+      {
+        ((CustomCoverFragment.MoreViewHolder)localObject1).itemView.setVisibility(8);
       }
     }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    CustomCoverFragment.HeaderViewHolder localHeaderViewHolder = null;
     if (paramInt == 0)
     {
-      paramViewGroup = this.a.getActivity().getLayoutInflater().inflate(2131562171, paramViewGroup, false);
-      localHeaderViewHolder = new CustomCoverFragment.HeaderViewHolder(this.a, paramViewGroup);
+      paramViewGroup = this.a.getActivity().getLayoutInflater().inflate(2131562008, paramViewGroup, false);
+      return new CustomCoverFragment.HeaderViewHolder(this.a, paramViewGroup);
     }
-    do
+    if (paramInt == 1)
     {
-      return localHeaderViewHolder;
-      if (paramInt == 1)
-      {
-        paramViewGroup = this.a.getActivity().getLayoutInflater().inflate(2131562172, paramViewGroup, false);
-        paramViewGroup = new CustomCoverFragment.ItemViewHolder(this.a, paramViewGroup);
-        ((CustomCoverFragment.ItemViewHolder)paramViewGroup).jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = CustomCoverFragment.e(this.a);
-        return paramViewGroup;
-      }
-    } while (paramInt != 2);
-    paramViewGroup = this.a.getActivity().getLayoutInflater().inflate(2131562051, paramViewGroup, false);
-    return new CustomCoverFragment.MoreViewHolder(this.a, paramViewGroup);
+      paramViewGroup = this.a.getActivity().getLayoutInflater().inflate(2131562009, paramViewGroup, false);
+      paramViewGroup = new CustomCoverFragment.ItemViewHolder(this.a, paramViewGroup);
+      ((CustomCoverFragment.ItemViewHolder)paramViewGroup).jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = CustomCoverFragment.e(this.a);
+      return paramViewGroup;
+    }
+    if (paramInt == 2)
+    {
+      paramViewGroup = this.a.getActivity().getLayoutInflater().inflate(2131561884, paramViewGroup, false);
+      return new CustomCoverFragment.MoreViewHolder(this.a, paramViewGroup);
+    }
+    return null;
   }
   
   public void onViewAttachedToWindow(RecyclerView.ViewHolder paramViewHolder)
   {
-    boolean bool = true;
     super.onViewAttachedToWindow(paramViewHolder);
     Object localObject = paramViewHolder.itemView.getLayoutParams();
     if ((localObject != null) && ((localObject instanceof StaggeredGridLayoutManager.LayoutParams)))
     {
       localObject = (StaggeredGridLayoutManager.LayoutParams)localObject;
-      if (getItemViewType(paramViewHolder.getLayoutPosition()) == 1) {
-        break label49;
+      int i = getItemViewType(paramViewHolder.getLayoutPosition());
+      boolean bool = true;
+      if (i == 1) {
+        bool = false;
       }
-    }
-    for (;;)
-    {
       ((StaggeredGridLayoutManager.LayoutParams)localObject).setFullSpan(bool);
-      return;
-      label49:
-      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.CustomCoverFragment.RecycleViewAdapter
  * JD-Core Version:    0.7.0.1
  */

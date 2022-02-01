@@ -29,16 +29,19 @@ import com.tencent.qqlive.module.videoreport.constants.EndExposurePolicy;
 import com.tencent.qqlive.module.videoreport.constants.ExposurePolicy;
 import com.tencent.qqlive.module.videoreport.constants.ReportPolicy;
 import com.tencent.qqlive.module.videoreport.data.DataRWProxy;
+import com.tencent.qqlive.module.videoreport.data.IDynamicParams;
 import com.tencent.qqlive.module.videoreport.data.IElementDynamicParams;
 import com.tencent.qqlive.module.videoreport.detection.DetectionInterceptors;
 import com.tencent.qqlive.module.videoreport.detection.DetectionPolicy;
 import com.tencent.qqlive.module.videoreport.dtreport.api.DTConfig;
 import com.tencent.qqlive.module.videoreport.dtreport.audio.AudioEventReporter;
+import com.tencent.qqlive.module.videoreport.dtreport.constants.DTConfigConstants;
 import com.tencent.qqlive.module.videoreport.dtreport.stdevent.IEventParamsBuilder;
 import com.tencent.qqlive.module.videoreport.dtreport.stdevent.StdEventCode;
 import com.tencent.qqlive.module.videoreport.dtreport.stdevent.StdEventParamChecker;
 import com.tencent.qqlive.module.videoreport.dtreport.video.data.VideoBaseEntity;
 import com.tencent.qqlive.module.videoreport.dtreport.video.data.VideoEntity;
+import com.tencent.qqlive.module.videoreport.dtreport.video.logic.VideoPageReporter;
 import com.tencent.qqlive.module.videoreport.dtreport.video.logic.VideoReportManager;
 import com.tencent.qqlive.module.videoreport.lazy.LazyInitObserver;
 import com.tencent.qqlive.module.videoreport.page.IScrollReader;
@@ -67,8 +70,10 @@ import com.tencent.qqlive.module.videoreport.reportdata.DataBuilderFactory;
 import com.tencent.qqlive.module.videoreport.reportdata.FinalData;
 import com.tencent.qqlive.module.videoreport.reportdata.IDataBuilder;
 import com.tencent.qqlive.module.videoreport.reportdata.PathData;
+import com.tencent.qqlive.module.videoreport.staging.CustomEventStagingManager;
 import com.tencent.qqlive.module.videoreport.task.ThreadUtils;
 import com.tencent.qqlive.module.videoreport.trace.SimpleTracer;
+import com.tencent.qqlive.module.videoreport.traversal.ViewGroupDrawingCompat;
 import com.tencent.qqlive.module.videoreport.utils.IDetectionInterceptor;
 import com.tencent.qqlive.module.videoreport.utils.ListenerMgr;
 import com.tencent.qqlive.module.videoreport.utils.ReportUtils;
@@ -87,6 +92,7 @@ public class VideoReportInner
   implements IVideoReport
 {
   private static final String TAG = "VideoReportInner";
+  private volatile boolean isInit;
   private Configuration mConfiguration;
   private boolean mDebugMode;
   private IEventDynamicParams mEventDynamicParams;
@@ -109,42 +115,42 @@ public class VideoReportInner
   
   private void clearElementExposureInner(View paramView, boolean paramBoolean)
   {
-    if (paramView == null) {}
-    for (;;)
-    {
+    if (paramView == null) {
       return;
-      long l = ReportUtils.calcElementUniqueId(paramView);
-      IExposureRecorder.Factory.getInstance().markUnexposed(l);
-      if ((paramBoolean) && ((paramView instanceof ViewGroup)))
+    }
+    long l = ReportUtils.calcElementUniqueId(paramView);
+    IExposureRecorder.Factory.getInstance().markUnexposed(l);
+    if ((paramBoolean) && ((paramView instanceof ViewGroup)))
+    {
+      paramView = (ViewGroup)paramView;
+      int i = paramView.getChildCount() - 1;
+      while (i >= 0)
       {
-        int i = ((ViewGroup)paramView).getChildCount() - 1;
-        while (i >= 0)
-        {
-          clearElementExposureInner(((ViewGroup)paramView).getChildAt(i), true);
-          i -= 1;
-        }
+        clearElementExposureInner(paramView.getChildAt(i), true);
+        i -= 1;
       }
     }
   }
   
-  private void elementReport(String paramString, View paramView, Map<String, ?> paramMap)
+  private boolean elementReport(String paramString, View paramView, Map<String, ?> paramMap)
   {
     PathData localPathData = ReversedDataCollector.collect(paramView);
-    if (localPathData == null) {}
-    FinalData localFinalData;
-    do
-    {
-      return;
-      localFinalData = DataBuilderFactory.obtain().build(localPathData);
-    } while (localFinalData == null);
+    if (localPathData == null) {
+      return false;
+    }
+    FinalData localFinalData = DataBuilderFactory.obtain().build(paramString, localPathData);
+    if (localFinalData == null) {
+      return false;
+    }
     localFinalData.setEventKey(paramString);
     if (paramMap != null) {
       localFinalData.putAll(paramMap);
     }
     if ("imp".equals(paramString)) {
-      IExposureRecorder.Factory.getInstance().markExposed(new ExposureElementInfo(paramView, localPathData.getPage(), localFinalData));
+      IExposureRecorder.Factory.getInstance().markExposed(new ExposureElementInfo(paramView, localPathData.getPage(), localFinalData, localPathData));
     }
     FinalDataTarget.handle(paramView, localFinalData);
+    return true;
   }
   
   public static VideoReportInner getInstance()
@@ -154,44 +160,44 @@ public class VideoReportInner
   
   private Map<String, Object> getTotalPageParams(PageParams paramPageParams)
   {
-    Object localObject;
     if (paramPageParams == null) {
-      localObject = null;
+      return null;
     }
-    HashMap localHashMap;
-    do
-    {
-      return localObject;
-      localHashMap = new HashMap(1);
-      if (paramPageParams.getBasicParams() != null) {
-        localHashMap.putAll(paramPageParams.getBasicParams());
-      }
-      if (paramPageParams.getRefElementParams() != null) {
-        localHashMap.put("ref_elmt", paramPageParams.getRefElementParams());
-      }
-      localObject = localHashMap;
-    } while (paramPageParams.getRootRefElementParams() == null);
-    localHashMap.put("root_ref_elmt", paramPageParams.getRootRefElementParams());
+    HashMap localHashMap = new HashMap(1);
+    if (paramPageParams.getBasicParams() != null) {
+      localHashMap.putAll(paramPageParams.getBasicParams());
+    }
+    if (paramPageParams.getRefElementParams() != null) {
+      localHashMap.put("ref_elmt", paramPageParams.getRefElementParams());
+    }
+    if (paramPageParams.getRootRefElementParams() != null) {
+      localHashMap.put("root_ref_elmt", paramPageParams.getRootRefElementParams());
+    }
     return localHashMap;
   }
   
   private void initiateComponent()
   {
+    ViewGroupDrawingCompat.preload();
     AppEventReporter.getInstance();
+    ElementClickReporter.getInstance();
     ViewContainerBinder.getInstance();
     PageSwitchObserver.getInstance();
+    PageManager.getInstance();
     PageReporter.getInstance();
-    AudioEventReporter.getInstance();
     ElementExposureReporter.getInstance();
     ScrollableViewObserver.getInstance();
     ElementExposureEndReporter.getInstance();
-    PageManager.getInstance();
-    ElementClickReporter.getInstance();
+    AudioEventReporter.getInstance();
+    VideoPageReporter.getInstance();
   }
   
   public void addInnerReporter(IInnerReporter paramIInnerReporter)
   {
-    Log.i("VideoReportInner", "addInnerReporter: reporter=" + paramIInnerReporter);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("addInnerReporter: reporter=");
+    localStringBuilder.append(paramIInnerReporter);
+    Log.i("VideoReportInner", localStringBuilder.toString());
     if (paramIInnerReporter != null) {
       this.mInnerReporters.add(paramIInnerReporter);
     }
@@ -199,8 +205,12 @@ public class VideoReportInner
   
   public void addReporter(IReporter paramIReporter)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "addReporter: reporter=" + paramIReporter);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("addReporter: reporter=");
+      localStringBuilder.append(paramIReporter);
+      Log.i("VideoReportInner", localStringBuilder.toString());
     }
     if (paramIReporter != null) {
       this.mReporters.add(paramIReporter);
@@ -229,8 +239,14 @@ public class VideoReportInner
   
   public void clearElementExposure(View paramView, boolean paramBoolean)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "clearElementExposure: view=" + paramView + ", clearChildren=" + paramBoolean);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("clearElementExposure: view=");
+      localStringBuilder.append(paramView);
+      localStringBuilder.append(", clearChildren=");
+      localStringBuilder.append(paramBoolean);
+      Log.i("VideoReportInner", localStringBuilder.toString());
     }
     clearElementExposureInner(paramView, paramBoolean);
   }
@@ -240,8 +256,9 @@ public class VideoReportInner
     if (isDebugMode()) {
       Log.i("VideoReportInner", "clearPublicParams: ");
     }
-    if (this.mPublicParam != null) {
-      this.mPublicParam.clear();
+    Map localMap = this.mPublicParam;
+    if (localMap != null) {
+      localMap.clear();
     }
   }
   
@@ -260,10 +277,12 @@ public class VideoReportInner
   
   public Configuration getConfiguration()
   {
-    if (this.mConfiguration == null) {
-      return Configuration.getDefault();
+    Configuration localConfiguration2 = this.mConfiguration;
+    Configuration localConfiguration1 = localConfiguration2;
+    if (localConfiguration2 == null) {
+      localConfiguration1 = Configuration.getDefault();
     }
-    return this.mConfiguration;
+    return localConfiguration1;
   }
   
   public ClickPolicy getElementClickPolicy(Object paramObject)
@@ -319,6 +338,14 @@ public class VideoReportInner
     return this.mPageInfoCacheCtrl.getPageStore(paramContext);
   }
   
+  public PageInfo getPageInfo(View paramView)
+  {
+    if (paramView == null) {
+      return PageManager.getInstance().getCurrentPageInfo();
+    }
+    return findOwnerPage(paramView);
+  }
+  
   public Integer getPageSearchMode(Object paramObject)
   {
     paramObject = DataRWProxy.getInnerParam(paramObject, "page_launch_mode");
@@ -342,8 +369,14 @@ public class VideoReportInner
   
   public void ignorePageInOutEvent(Object paramObject, boolean paramBoolean)
   {
-    if (isDebugMode()) {
-      Log.d("VideoReportInner", "ignorePageInOutEvent: object=" + paramObject + ", ignore=" + paramBoolean);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ignorePageInOutEvent: object=");
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append(", ignore=");
+      localStringBuilder.append(paramBoolean);
+      Log.d("VideoReportInner", localStringBuilder.toString());
     }
     if (checkPageObjectArgument(paramObject)) {
       DataRWProxy.setInnerParam(paramObject, "page_report_ignore", Boolean.valueOf(paramBoolean));
@@ -360,6 +393,20 @@ public class VideoReportInner
     return this.mDebugMode;
   }
   
+  public boolean isInit()
+  {
+    try
+    {
+      boolean bool = this.isInit;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
   public boolean isReportEnable()
   {
     return true;
@@ -372,54 +419,78 @@ public class VideoReportInner
   
   public void markAsPageBodyView(View paramView)
   {
-    if (isDebugMode()) {
-      Log.d("VideoReportInner", "markAsPageBodyView: view=" + paramView);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("markAsPageBodyView: view=");
+      localStringBuilder.append(paramView);
+      Log.d("VideoReportInner", localStringBuilder.toString());
     }
     PageBodyStatistician.getInstance().markAsPageBodyView(paramView, null);
   }
   
   public void markAsPageBodyView(View paramView, IScrollReader paramIScrollReader)
   {
-    if (isDebugMode()) {
-      Log.d("VideoReportInner", "markAsPageBodyView: view=" + paramView);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("markAsPageBodyView: view=");
+      localStringBuilder.append(paramView);
+      Log.d("VideoReportInner", localStringBuilder.toString());
     }
     PageBodyStatistician.getInstance().markAsPageBodyView(paramView, paramIScrollReader);
   }
   
   public void notifyViewDetach(View paramView1, View paramView2)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "notifyViewDetach: parentView=" + paramView1 + ",view=" + paramView2);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("notifyViewDetach: parentView=");
+      localStringBuilder.append(paramView1);
+      localStringBuilder.append(",view=");
+      localStringBuilder.append(paramView2);
+      Log.i("VideoReportInner", localStringBuilder.toString());
     }
-    if (paramView2 == null) {}
-    while (!PageFinder.isPage(paramView2)) {
+    if (paramView2 == null) {
       return;
     }
-    PageSwitchObserver.getInstance().onPageViewInvisible(paramView2);
-    PageSwitchObserver.getInstance().onPageViewVisible(paramView1);
+    if (PageFinder.isPage(paramView2))
+    {
+      PageSwitchObserver.getInstance().onPageViewInvisible(paramView2);
+      PageSwitchObserver.getInstance().onPageViewVisible(paramView1);
+    }
   }
   
   @Nullable
-  public Map<String, Object> pageInfoForView(View paramView)
+  public Map<String, Object> pageInfoForView(String paramString, View paramView)
   {
     PageInfo localPageInfo = findOwnerPage(paramView);
-    if (localPageInfo == null) {}
-    for (paramView = null; paramView == null; paramView = localPageInfo.getPage()) {
+    if (localPageInfo == null) {
+      paramView = null;
+    } else {
+      paramView = localPageInfo.getPage();
+    }
+    if (paramView == null) {
       return null;
     }
-    return PageUtils.getPageInfo(localPageInfo.getPageHashCode());
+    return PageUtils.getPageInfo(paramString, paramView, localPageInfo.getPageHashCode());
   }
   
   public void pageLogicDestroy(Object paramObject)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "clearPageCreRefPageParams: object = " + paramObject);
+    if (isDebugMode())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("clearPageCreRefPageParams: object = ");
+      ((StringBuilder)localObject).append(paramObject);
+      Log.i("VideoReportInner", ((StringBuilder)localObject).toString());
     }
     if (!PageFinder.isPage(paramObject)) {
       return;
     }
-    View localView = PageFinder.getPageView(paramObject);
-    PageSwitchObserver.getInstance().onPageViewInvisible(localView);
+    Object localObject = PageFinder.getPageView(paramObject);
+    PageSwitchObserver.getInstance().onPageViewInvisible((View)localObject);
     PageManager.getInstance().clearPageContext(paramObject);
     setPageId(paramObject, null);
     setPageContentId(paramObject, null, true);
@@ -428,25 +499,30 @@ public class VideoReportInner
   }
   
   @Nullable
-  public Map<String, Object> paramsForView(View paramView)
+  public Map<String, Object> paramsForView(String paramString, View paramView)
   {
     paramView = ReversedDataCollector.collect(paramView);
-    if (paramView == null) {}
-    do
-    {
+    if (paramView == null) {
       return null;
-      paramView = DataBuilderFactory.obtain().build(paramView);
-    } while (paramView == null);
-    HashMap localHashMap = new HashMap(paramView.getEventParams());
-    paramView.reset();
-    ReusablePool.recycle(paramView, 6);
-    return localHashMap;
+    }
+    paramString = DataBuilderFactory.obtain().build(paramString, paramView);
+    if (paramString == null) {
+      return null;
+    }
+    paramView = new HashMap(paramString.getEventParams());
+    paramString.reset();
+    ReusablePool.recycle(paramString, 6);
+    return paramView;
   }
   
   public void registerEventDynamicParams(IEventDynamicParams paramIEventDynamicParams)
   {
-    if (getInstance().isDebugMode()) {
-      Log.d("VideoReportInner", "registerEventDynamicParams: dynamicParams=" + paramIEventDynamicParams);
+    if (getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("registerEventDynamicParams: dynamicParams=");
+      localStringBuilder.append(paramIEventDynamicParams);
+      Log.d("VideoReportInner", localStringBuilder.toString());
     }
     this.mEventDynamicParams = paramIEventDynamicParams;
   }
@@ -458,8 +534,12 @@ public class VideoReportInner
   
   public void removeAllElementParams(Object paramObject)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "removeAllElementParams: object=" + paramObject);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("removeAllElementParams: object=");
+      localStringBuilder.append(paramObject);
+      Log.i("VideoReportInner", localStringBuilder.toString());
     }
     if (checkElementObjectArgument(paramObject)) {
       DataRWProxy.removeAllElementParams(paramObject);
@@ -468,8 +548,12 @@ public class VideoReportInner
   
   public void removeAllPageParams(Object paramObject)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "removeAllPageParams: object=" + paramObject);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("removeAllPageParams: object=");
+      localStringBuilder.append(paramObject);
+      Log.i("VideoReportInner", localStringBuilder.toString());
     }
     if (checkPageObjectArgument(paramObject)) {
       DataRWProxy.removeAllPageParams(paramObject);
@@ -478,8 +562,14 @@ public class VideoReportInner
   
   public void removeElementParam(Object paramObject, String paramString)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "removeElementParam: object=" + paramObject + ", key=" + paramString);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("removeElementParam: object=");
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append(", key=");
+      localStringBuilder.append(paramString);
+      Log.i("VideoReportInner", localStringBuilder.toString());
     }
     if (checkElementObjectArgument(paramObject)) {
       DataRWProxy.removeElementParam(paramObject, paramString);
@@ -488,8 +578,14 @@ public class VideoReportInner
   
   public void removePageParam(Object paramObject, String paramString)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "removePageParam: object=" + paramObject + ", key=" + paramString);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("removePageParam: object=");
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append(", key=");
+      localStringBuilder.append(paramString);
+      Log.i("VideoReportInner", localStringBuilder.toString());
     }
     if (checkPageObjectArgument(paramObject)) {
       DataRWProxy.removePageParam(paramObject, paramString);
@@ -498,103 +594,150 @@ public class VideoReportInner
   
   public void removePublicParam(String paramString)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "removePublicParam: key=" + paramString);
+    Object localObject;
+    if (isDebugMode())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("removePublicParam: key=");
+      ((StringBuilder)localObject).append(paramString);
+      Log.i("VideoReportInner", ((StringBuilder)localObject).toString());
     }
-    if ((!TextUtils.isEmpty(paramString)) && (this.mPublicParam != null)) {
-      this.mPublicParam.remove(paramString);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      localObject = this.mPublicParam;
+      if (localObject != null) {
+        ((Map)localObject).remove(paramString);
+      }
     }
   }
   
-  public void reportEvent(String paramString, Object paramObject, Map<String, ?> paramMap)
+  public void reportCustomEvent(String paramString, Object paramObject, Map<String, ?> paramMap)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "reportEvent: eventId=" + paramString + ", object=" + paramObject + ", map=" + paramMap);
+    if (isInit())
+    {
+      reportEvent(paramString, paramObject, paramMap);
+      return;
+    }
+    try
+    {
+      if (isInit()) {
+        reportEvent(paramString, paramObject, paramMap);
+      } else {
+        CustomEventStagingManager.getInstance().save(paramString, paramObject, paramMap);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public boolean reportEvent(String paramString, Object paramObject, Map<String, ?> paramMap)
+  {
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportEvent: eventId=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", object=");
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append(", map=");
+      localStringBuilder.append(paramMap);
+      Log.i("VideoReportInner", localStringBuilder.toString());
     }
     if (TextUtils.isEmpty(paramString))
     {
-      if (isDebugMode()) {
-        throw new IllegalArgumentException("reportEvent, eventId is empty");
+      if (!isDebugMode()) {
+        return false;
       }
+      throw new IllegalArgumentException("reportEvent, eventId is empty");
     }
-    else
+    if (paramObject == null)
     {
-      if (paramObject != null) {
-        break label110;
-      }
       paramObject = (FinalData)ReusablePool.obtain(6);
       paramObject.setEventKey(paramString);
       if (paramMap != null) {
         paramObject.putAll(paramMap);
       }
       FinalDataTarget.handle(null, paramObject);
+      return true;
     }
-    label109:
-    label110:
-    do
+    if (!checkTrackObjectArgument(paramObject)) {
+      return false;
+    }
+    if (PageFinder.isPage(paramObject))
     {
-      do
-      {
-        do
-        {
-          break label109;
-          do
-          {
-            return;
-          } while (!checkTrackObjectArgument(paramObject));
-          if (PageFinder.isPage(paramObject))
-          {
-            paramString = PageUtils.createTrackData(paramString, paramObject);
-            if ((paramString != null) && (paramMap != null)) {
-              paramString.putAll(paramMap);
-            }
-            FinalDataTarget.handle(paramObject, paramString);
-            return;
-          }
-        } while (TextUtils.isEmpty(DataRWProxy.getElementId(paramObject)));
-        if (!(paramObject instanceof Dialog)) {
-          break;
-        }
-        paramObject = (Dialog)paramObject;
-      } while (paramObject.getWindow() == null);
-      elementReport(paramString, paramObject.getWindow().getDecorView(), paramMap);
-      return;
-    } while (!(paramObject instanceof View));
-    elementReport(paramString, (View)paramObject, paramMap);
-  }
-  
-  public void reportEvent(String paramString, Map<String, ?> paramMap)
-  {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "reportEvent: eventId=" + paramString + ", map=" + paramMap);
+      paramString = PageUtils.createTrackData(paramString, paramObject);
+      if ((paramString != null) && (paramMap != null)) {
+        paramString.putAll(paramMap);
+      }
+      FinalDataTarget.handle(paramObject, paramString);
+      return true;
     }
-    reportEvent(paramString, null, paramMap);
+    if (!TextUtils.isEmpty(DataRWProxy.getElementId(paramObject))) {
+      if ((paramObject instanceof Dialog))
+      {
+        paramObject = (Dialog)paramObject;
+        if (paramObject.getWindow() != null) {
+          return elementReport(paramString, paramObject.getWindow().getDecorView(), paramMap);
+        }
+      }
+      else if ((paramObject instanceof View))
+      {
+        return elementReport(paramString, (View)paramObject, paramMap);
+      }
+    }
+    return false;
   }
   
-  public void reportEventWithoutFormat(String paramString1, Map<String, Object> paramMap, String paramString2)
+  public boolean reportEvent(String paramString, Map<String, ?> paramMap)
   {
-    Log.i("VideoReportInner", "reportEvent: eventId=" + paramString1 + ", appKey=" + paramString2 + ", map=" + paramMap);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportEvent: eventId=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", map=");
+      localStringBuilder.append(paramMap);
+      Log.i("VideoReportInner", localStringBuilder.toString());
+    }
+    return reportEvent(paramString, null, paramMap);
+  }
+  
+  public boolean reportEventWithoutFormat(String paramString1, Map<String, Object> paramMap, String paramString2)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("reportEvent: eventId=");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(", appKey=");
+    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append(", map=");
+    ((StringBuilder)localObject).append(paramMap);
+    Log.i("VideoReportInner", ((StringBuilder)localObject).toString());
     if (TextUtils.isEmpty(paramString1))
     {
-      if (isDebugMode()) {
-        throw new IllegalArgumentException("reportEvent, eventId is empty");
+      if (!isDebugMode()) {
+        return false;
       }
+      throw new IllegalArgumentException("reportEvent, eventId is empty");
     }
-    else
-    {
-      FinalData localFinalData = (FinalData)ReusablePool.obtain(6);
-      localFinalData.setEventKey(paramString1);
-      if (paramMap != null) {
-        localFinalData.putAll(paramMap);
-      }
-      FinalDataTarget.handleWithoutFormat(null, localFinalData, paramString2);
+    localObject = (FinalData)ReusablePool.obtain(6);
+    ((FinalData)localObject).setEventKey(paramString1);
+    if (paramMap != null) {
+      ((FinalData)localObject).putAll(paramMap);
     }
+    FinalDataTarget.handleWithoutFormat(null, (FinalData)localObject, paramString2);
+    return true;
   }
   
   public void reportStdEvent(StdEventCode paramStdEventCode, IEventParamsBuilder paramIEventParamsBuilder)
   {
-    if (isDebugMode()) {
-      Log.d("VideoReportInner", "reportStdEvent: eventCode = " + paramStdEventCode + ", builder = " + paramIEventParamsBuilder);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportStdEvent: eventCode = ");
+      localStringBuilder.append(paramStdEventCode);
+      localStringBuilder.append(", builder = ");
+      localStringBuilder.append(paramIEventParamsBuilder);
+      Log.d("VideoReportInner", localStringBuilder.toString());
     }
     if (!StdEventParamChecker.checkParamBuilder(paramStdEventCode, paramIEventParamsBuilder)) {
       return;
@@ -605,8 +748,12 @@ public class VideoReportInner
   
   public void resetElementParams(Object paramObject)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "resetElementParams: object=" + paramObject);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("resetElementParams: object=");
+      localStringBuilder.append(paramObject);
+      Log.i("VideoReportInner", localStringBuilder.toString());
     }
     if (checkElementObjectArgument(paramObject)) {
       DataRWProxy.removeAllElementParams(paramObject);
@@ -615,8 +762,12 @@ public class VideoReportInner
   
   public void resetPageParams(Object paramObject)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "resetPageParams: object=" + paramObject);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("resetPageParams: object=");
+      localStringBuilder.append(paramObject);
+      Log.i("VideoReportInner", localStringBuilder.toString());
     }
     if (checkPageObjectArgument(paramObject)) {
       DataRWProxy.removeAllPageParams(paramObject);
@@ -630,8 +781,14 @@ public class VideoReportInner
   
   public void setClickReportInterval(View paramView, long paramLong)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "setClickReportInterval: view = " + paramView + ", interval = " + paramLong);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setClickReportInterval: view = ");
+      localStringBuilder.append(paramView);
+      localStringBuilder.append(", interval = ");
+      localStringBuilder.append(paramLong);
+      Log.i("VideoReportInner", localStringBuilder.toString());
     }
     if (paramView == null) {
       return;
@@ -641,23 +798,32 @@ public class VideoReportInner
   
   public void setDataCollectEnable(boolean paramBoolean)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "setDataCollectEnable: enable=" + paramBoolean);
+    if (isDebugMode())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setDataCollectEnable: enable=");
+      ((StringBuilder)localObject).append(paramBoolean);
+      Log.i("VideoReportInner", ((StringBuilder)localObject).toString());
     }
-    if (this.mConfiguration == null)
+    Object localObject = this.mConfiguration;
+    if (localObject == null)
     {
       this.mConfiguration = Configuration.builder().defaultDataCollectEnable(paramBoolean).build();
       return;
     }
-    this.mConfiguration.setDefaultDataCollectEnable(paramBoolean);
+    ((Configuration)localObject).setDefaultDataCollectEnable(paramBoolean);
   }
   
   public void setDebugMode(boolean paramBoolean)
   {
     this.mDebugMode = paramBoolean;
     ListenerMgr.setDebug(paramBoolean);
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "setDebugMode: debugMode=" + paramBoolean);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setDebugMode: debugMode=");
+      localStringBuilder.append(paramBoolean);
+      Log.i("VideoReportInner", localStringBuilder.toString());
     }
   }
   
@@ -678,8 +844,14 @@ public class VideoReportInner
   
   public void setElementDynamicParams(Object paramObject, IElementDynamicParams paramIElementDynamicParams)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "setElementDynamicParams: object=" + paramObject + ", provider=" + paramIElementDynamicParams);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setElementDynamicParams: object=");
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append(", provider=");
+      localStringBuilder.append(paramIElementDynamicParams);
+      Log.i("VideoReportInner", localStringBuilder.toString());
     }
     if (checkElementObjectArgument(paramObject)) {
       DataRWProxy.setElementDynamicParam(paramObject, paramIElementDynamicParams);
@@ -698,8 +870,14 @@ public class VideoReportInner
   
   public void setElementExposureDetectionEnabled(Object paramObject, boolean paramBoolean)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "setElementExposureDetectionEnabled: element = " + paramObject + ", enabled = " + paramBoolean);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setElementExposureDetectionEnabled: element = ");
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append(", enabled = ");
+      localStringBuilder.append(paramBoolean);
+      Log.i("VideoReportInner", localStringBuilder.toString());
     }
     if (checkElementObjectArgument(paramObject)) {
       DataRWProxy.setInnerParam(paramObject, "element_detection_enable", Boolean.valueOf(paramBoolean));
@@ -708,8 +886,14 @@ public class VideoReportInner
   
   public void setElementExposureMinRate(Object paramObject, double paramDouble)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "setElementExposureMinRate: object=" + paramObject + ", rate=" + paramDouble);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setElementExposureMinRate: object=");
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append(", rate=");
+      localStringBuilder.append(paramDouble);
+      Log.i("VideoReportInner", localStringBuilder.toString());
     }
     if (checkElementObjectArgument(paramObject)) {
       DataRWProxy.setInnerParam(paramObject, "element_exposure_min_rate", Double.valueOf(paramDouble));
@@ -718,8 +902,14 @@ public class VideoReportInner
   
   public void setElementExposureMinTime(Object paramObject, long paramLong)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "setElementExposureMinTime: object=" + paramObject + ", timeMills=" + paramLong);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setElementExposureMinTime: object=");
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append(", timeMills=");
+      localStringBuilder.append(paramLong);
+      Log.i("VideoReportInner", localStringBuilder.toString());
     }
     if (checkElementObjectArgument(paramObject)) {
       DataRWProxy.setInnerParam(paramObject, "element_exposure_min_time", Long.valueOf(paramLong));
@@ -728,8 +918,14 @@ public class VideoReportInner
   
   public void setElementId(Object paramObject, String paramString)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "setElementId: object=" + paramObject + ", elementId=" + paramString);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setElementId: object=");
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append(", elementId=");
+      localStringBuilder.append(paramString);
+      Log.i("VideoReportInner", localStringBuilder.toString());
     }
     if (checkElementObjectArgument(paramObject)) {
       DataRWProxy.setElementId(paramObject, paramString);
@@ -738,8 +934,16 @@ public class VideoReportInner
   
   public void setElementParam(Object paramObject1, String paramString, Object paramObject2)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "setElementParam: object=" + paramObject1 + ", key=" + paramString + ", value=" + paramObject2);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setElementParam: object=");
+      localStringBuilder.append(paramObject1);
+      localStringBuilder.append(", key=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", value=");
+      localStringBuilder.append(paramObject2);
+      Log.i("VideoReportInner", localStringBuilder.toString());
     }
     if (checkElementObjectArgument(paramObject1)) {
       DataRWProxy.setElementParam(paramObject1, paramString, paramObject2);
@@ -748,8 +952,14 @@ public class VideoReportInner
   
   public void setElementParams(Object paramObject, Map<String, ?> paramMap)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "setElementParams: object=" + paramObject + ", map=" + paramMap);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setElementParams: object=");
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append(", map=");
+      localStringBuilder.append(paramMap);
+      Log.i("VideoReportInner", localStringBuilder.toString());
     }
     if (checkElementObjectArgument(paramObject)) {
       DataRWProxy.setElementParams(paramObject, paramMap);
@@ -759,45 +969,50 @@ public class VideoReportInner
   @Deprecated
   public void setElementReportPolicy(Object paramObject, ReportPolicy paramReportPolicy)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "setElementReportPolicy: object=" + paramObject + ", policy=" + paramReportPolicy.name());
+    Object localObject;
+    if (isDebugMode())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setElementReportPolicy: object=");
+      ((StringBuilder)localObject).append(paramObject);
+      ((StringBuilder)localObject).append(", policy=");
+      ((StringBuilder)localObject).append(paramReportPolicy.name());
+      Log.i("VideoReportInner", ((StringBuilder)localObject).toString());
     }
     if (checkElementObjectArgument(paramObject))
     {
-      if (!paramReportPolicy.reportClick) {
-        break label113;
+      if (paramReportPolicy.reportClick) {
+        localObject = ClickPolicy.REPORT_ALL;
+      } else {
+        localObject = ClickPolicy.REPORT_NONE;
       }
-      localObject = ClickPolicy.REPORT_ALL;
       setElementClickPolicy(paramObject, (ClickPolicy)localObject);
-      if (!paramReportPolicy.reportExposure) {
-        break label120;
+      if (paramReportPolicy.reportExposure) {
+        localObject = ExposurePolicy.REPORT_ALL;
+      } else {
+        localObject = ExposurePolicy.REPORT_NONE;
       }
-      localObject = ExposurePolicy.REPORT_ALL;
-      label81:
       setElementExposePolicy(paramObject, (ExposurePolicy)localObject);
-      if (!paramReportPolicy.reportExposure) {
-        break label127;
+      if (paramReportPolicy.reportExposure) {
+        localObject = EndExposurePolicy.REPORT_ALL;
+      } else {
+        localObject = EndExposurePolicy.REPORT_NONE;
       }
-    }
-    label113:
-    label120:
-    label127:
-    for (Object localObject = EndExposurePolicy.REPORT_ALL;; localObject = EndExposurePolicy.REPORT_NONE)
-    {
       setElementEndExposePolicy(paramObject, (EndExposurePolicy)localObject);
       DataRWProxy.setInnerParam(paramObject, "element_report_policy", paramReportPolicy);
-      return;
-      localObject = ClickPolicy.REPORT_NONE;
-      break;
-      localObject = ExposurePolicy.REPORT_NONE;
-      break label81;
     }
   }
   
   public void setElementReuseIdentifier(Object paramObject, String paramString)
   {
-    if (VideoReport.isDebugMode()) {
-      Log.i("VideoReportInner", "setElementReuseIdentifier: element = " + paramObject + ", identifier = " + paramString);
+    if (VideoReport.isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setElementReuseIdentifier: element = ");
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append(", identifier = ");
+      localStringBuilder.append(paramString);
+      Log.i("VideoReportInner", localStringBuilder.toString());
     }
     if (paramObject == null) {
       return;
@@ -807,8 +1022,13 @@ public class VideoReportInner
   
   public void setElementVirtualParentParams(Object paramObject, int paramInt, String paramString, Map<String, Object> paramMap)
   {
-    if (isDebugMode()) {
-      Log.d("VideoReportInner", "setElementParentParams: " + paramInt + paramMap);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setElementParentParams: ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(paramMap);
+      Log.d("VideoReportInner", localStringBuilder.toString());
     }
     if (checkElementObjectArgument(paramObject)) {
       DataRWProxy.setElementVirtualParentParams(paramObject, paramInt, paramString, paramMap);
@@ -820,10 +1040,32 @@ public class VideoReportInner
     AppEventReporter.getInstance().setEventAdditionalReport(paramIAdditionalReportListener);
   }
   
+  public void setEventDynamicParams(Object paramObject, @Nullable IDynamicParams paramIDynamicParams)
+  {
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setElementDynamicParams: object=");
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append(", provider=");
+      localStringBuilder.append(paramIDynamicParams);
+      Log.i("VideoReportInner", localStringBuilder.toString());
+    }
+    if ((checkElementObjectArgument(paramObject)) || (checkPageObjectArgument(paramObject))) {
+      DataRWProxy.setEventDynamicParam(paramObject, paramIDynamicParams);
+    }
+  }
+  
   public void setLogicParent(View paramView1, View paramView2)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "setLogicParent: child = " + paramView1 + ", logicParent = " + paramView2);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setLogicParent: child = ");
+      localStringBuilder.append(paramView1);
+      localStringBuilder.append(", logicParent = ");
+      localStringBuilder.append(paramView2);
+      Log.i("VideoReportInner", localStringBuilder.toString());
     }
     if (paramView1 == null) {
       return;
@@ -838,8 +1080,16 @@ public class VideoReportInner
   
   public void setPageBodyContentRange(View paramView, int paramInt1, int paramInt2)
   {
-    if (isDebugMode()) {
-      Log.d("VideoReportInner", "setPageBodyContentRange: view=" + paramView + ", rangeStart=" + paramInt1 + ", rangeEnd=" + paramInt2);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setPageBodyContentRange: view=");
+      localStringBuilder.append(paramView);
+      localStringBuilder.append(", rangeStart=");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(", rangeEnd=");
+      localStringBuilder.append(paramInt2);
+      Log.d("VideoReportInner", localStringBuilder.toString());
     }
     PageBodyStatistician.getInstance().setPageBodyContentRange(paramView, paramInt1, paramInt2);
   }
@@ -851,8 +1101,14 @@ public class VideoReportInner
   
   public void setPageContentId(Object paramObject, String paramString, boolean paramBoolean)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "setPageId: object=" + paramObject + ", pageContentId=" + paramString);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setPageId: object=");
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append(", pageContentId=");
+      localStringBuilder.append(paramString);
+      Log.i("VideoReportInner", localStringBuilder.toString());
     }
     if (checkPageObjectArgument(paramObject))
     {
@@ -865,8 +1121,14 @@ public class VideoReportInner
   
   public void setPageId(Object paramObject, String paramString)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "setPageId: object=" + paramObject + ", pageId=" + paramString);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setPageId: object=");
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append(", pageId=");
+      localStringBuilder.append(paramString);
+      Log.i("VideoReportInner", localStringBuilder.toString());
     }
     if (checkPageObjectArgument(paramObject))
     {
@@ -880,26 +1142,38 @@ public class VideoReportInner
   
   public void setPageParams(Object paramObject, PageParams paramPageParams)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "setPageParams: object=" + paramObject + ", pageParams=" + paramPageParams);
-    }
-    if (checkPageObjectArgument(paramObject)) {
-      if (paramPageParams != null) {
-        break label62;
-      }
-    }
-    label62:
-    for (paramPageParams = null;; paramPageParams = getTotalPageParams(paramPageParams))
+    if (isDebugMode())
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setPageParams: object=");
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append(", pageParams=");
+      localStringBuilder.append(paramPageParams);
+      Log.i("VideoReportInner", localStringBuilder.toString());
+    }
+    if (checkPageObjectArgument(paramObject))
+    {
+      if (paramPageParams == null) {
+        paramPageParams = null;
+      } else {
+        paramPageParams = getTotalPageParams(paramPageParams);
+      }
       DataRWProxy.setPageParams(paramObject, paramPageParams);
-      return;
     }
   }
   
   public void setPageParams(Object paramObject1, String paramString, Object paramObject2)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "setPageParams: object=" + paramObject1 + ", key=" + paramString + ", value=" + paramObject2);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setPageParams: object=");
+      localStringBuilder.append(paramObject1);
+      localStringBuilder.append(", key=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", value=");
+      localStringBuilder.append(paramObject2);
+      Log.i("VideoReportInner", localStringBuilder.toString());
     }
     if (checkPageObjectArgument(paramObject1)) {
       DataRWProxy.setPageParams(paramObject1, paramString, paramObject2);
@@ -913,8 +1187,14 @@ public class VideoReportInner
   
   public void setPublicParam(String paramString, Object paramObject)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "setPublicParam: key=" + paramString + ", value=" + paramObject);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setPublicParam: key=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", value=");
+      localStringBuilder.append(paramObject);
+      Log.i("VideoReportInner", localStringBuilder.toString());
     }
     if (!TextUtils.isEmpty(paramString))
     {
@@ -927,15 +1207,19 @@ public class VideoReportInner
   
   public void setTestMode(boolean paramBoolean)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "setTestMode: testMode=" + paramBoolean);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setTestMode: testMode=");
+      localStringBuilder.append(paramBoolean);
+      Log.i("VideoReportInner", localStringBuilder.toString());
     }
     this.mTestMode = paramBoolean;
   }
   
   public void setVideoReportConfig(@NonNull DTConfig paramDTConfig)
   {
-    com.tencent.qqlive.module.videoreport.dtreport.constants.DTConfigConstants.config = paramDTConfig;
+    supportPlayerReport(paramDTConfig.videoReportSupport());
   }
   
   public void startNewSession(SessionChangeReason paramSessionChangeReason)
@@ -954,23 +1238,58 @@ public class VideoReportInner
   
   public void startWithConfiguration(Application paramApplication, Configuration paramConfiguration)
   {
-    this.mConfiguration = paramConfiguration;
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "startWithConfiguration: application =" + paramApplication + ", configuration =" + paramConfiguration);
-    }
-    if (paramApplication != null)
+    try
     {
-      paramApplication.registerActivityLifecycleCallbacks(EventCollector.getInstance());
-      ReportUtils.setContext(paramApplication);
-      ThreadUtils.injectTaskInterceptor(LazyInitObserver.getInstance());
-      ReportUtils.initCrashReport(paramApplication);
-      initiateComponent();
-      LazyInitObserver.getInstance().onInitialized();
-    }
-    while (!isDebugMode()) {
+      if (isInit())
+      {
+        Log.w("VideoReportInner", "startWithConfiguration already initialized");
+        return;
+      }
+      if (!ThreadUtils.isMainThread()) {
+        Log.e("VideoReportInner", "We recommend initializing the 大同 SDK in the main thread");
+      }
+      this.mConfiguration = paramConfiguration;
+      if (isDebugMode())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("startWithConfiguration: application =");
+        localStringBuilder.append(paramApplication);
+        localStringBuilder.append(", configuration =");
+        localStringBuilder.append(paramConfiguration);
+        Log.i("VideoReportInner", localStringBuilder.toString());
+      }
+      if (paramApplication != null)
+      {
+        paramApplication.registerActivityLifecycleCallbacks(EventCollector.getInstance());
+        ReportUtils.setContext(paramApplication);
+        ThreadUtils.injectTaskInterceptor(LazyInitObserver.getInstance());
+        ReportUtils.initCrashReport(paramApplication);
+        initiateComponent();
+        LazyInitObserver.getInstance().onInitialized();
+      }
+      else
+      {
+        if (isDebugMode()) {
+          break label150;
+        }
+      }
+      CustomEventStagingManager.getInstance().supplementReportsEvent();
+      this.isInit = true;
       return;
+      label150:
+      throw new NullPointerException("Application = null");
     }
-    throw new NullPointerException("Application = null");
+    finally {}
+  }
+  
+  public void supportPlayerReport(boolean paramBoolean)
+  {
+    DTConfigConstants.config.videoReportSupport(paramBoolean);
+  }
+  
+  public void supportWebViewReport(boolean paramBoolean)
+  {
+    DTConfigConstants.config.webViewReportSupport(paramBoolean);
   }
   
   public void traverseExposure()
@@ -983,8 +1302,12 @@ public class VideoReportInner
   
   public void traversePage(View paramView)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "traversePage: view = " + paramView);
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("traversePage: view = ");
+      localStringBuilder.append(paramView);
+      Log.i("VideoReportInner", localStringBuilder.toString());
     }
     if (paramView == null) {
       return;
@@ -1002,39 +1325,39 @@ public class VideoReportInner
   
   public void triggerEventInCurrentPage(String paramString, Map<String, Object> paramMap)
   {
-    if (isDebugMode()) {
-      Log.i("VideoReportInner", "triggerEventInCurrentPage: eventKey = " + paramString);
+    if (isDebugMode())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("triggerEventInCurrentPage: eventKey = ");
+      ((StringBuilder)localObject).append(paramString);
+      Log.i("VideoReportInner", ((StringBuilder)localObject).toString());
     }
     if (TextUtils.isEmpty(paramString))
     {
-      if (isDebugMode()) {
-        throw new IllegalArgumentException("triggerEventInCurrentPage, eventKey is empty");
+      if (!isDebugMode()) {
+        return;
       }
+      throw new IllegalArgumentException("triggerEventInCurrentPage, eventKey is empty");
     }
-    else
-    {
-      FinalData localFinalData = (FinalData)ReusablePool.obtain(6);
-      localFinalData.setEventKey(paramString);
-      localFinalData.put("cur_pg", PageReporter.getInstance().getCurPageReportInfo());
-      localFinalData.putAll(paramMap);
-      FinalDataTarget.handle(null, localFinalData);
-    }
+    Object localObject = (FinalData)ReusablePool.obtain(6);
+    ((FinalData)localObject).setEventKey(paramString);
+    ((FinalData)localObject).put("cur_pg", PageReporter.getInstance().getCurPageReportInfo(paramString));
+    ((FinalData)localObject).putAll(paramMap);
+    FinalDataTarget.handle(null, (FinalData)localObject);
   }
   
   public void triggerExposureInCurrentPage(List<Map<String, Object>> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      if (isDebugMode()) {
-        Log.i("VideoReportInner", "triggerExposureInCurrentPage: paramsList is empty.");
-      }
-    }
-    for (;;)
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      return;
       paramList = paramList.iterator();
       while (paramList.hasNext()) {
         triggerEventInCurrentPage("imp", (Map)paramList.next());
       }
+      return;
+    }
+    if (isDebugMode()) {
+      Log.i("VideoReportInner", "triggerExposureInCurrentPage: paramsList is empty.");
     }
   }
   
@@ -1043,24 +1366,39 @@ public class VideoReportInner
     VideoReportManager.getInstance().unbindVideoInfo(paramObject);
   }
   
+  public void updateConfiguration(Configuration paramConfiguration)
+  {
+    try
+    {
+      if ((this.mConfiguration != null) && (paramConfiguration != null))
+      {
+        this.mConfiguration.update(paramConfiguration);
+        return;
+      }
+      this.mConfiguration = paramConfiguration;
+      return;
+    }
+    finally {}
+  }
+  
   public void updateVideoPlayerInfo(@NonNull Object paramObject, @NonNull VideoBaseEntity paramVideoBaseEntity)
   {
     VideoReportManager.getInstance().updateVideoInfo(paramObject, paramVideoBaseEntity);
   }
   
   @Nullable
-  public Map<String, Object> viewTreeParamsForView(View paramView)
+  public Map<String, Object> viewTreeParamsForView(String paramString, View paramView)
   {
-    paramView = paramsForView(paramView);
-    if (paramView != null) {
-      paramView.remove("cur_pg");
+    paramString = paramsForView(paramString, paramView);
+    if (paramString != null) {
+      paramString.remove("cur_pg");
     }
-    return paramView;
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.inner.VideoReportInner
  * JD-Core Version:    0.7.0.1
  */

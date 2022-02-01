@@ -24,8 +24,8 @@ public class d
   public static final int TYPE_PUSH = 2;
   public static final int TYPE_QUERY = 3;
   public static final int TYPE_WORK = 4;
-  private static Object[] ectx = null;
-  private static byte[] edata = null;
+  private static Object[] ectx;
+  private static byte[] edata;
   private static int etype = -1;
   
   public static void e(int paramInt, Object[] paramArrayOfObject, byte[] paramArrayOfByte)
@@ -55,7 +55,6 @@ public class d
     }
     catch (Throwable localThrowable)
     {
-      while (localThrowable == null) {}
       localThrowable.printStackTrace();
     }
   }
@@ -63,70 +62,67 @@ public class d
   public static Object[] x()
   {
     BaseApplication localBaseApplication = BaseApplication.getContext();
-    String str1 = "";
+    Object localObject7 = "";
     if (localBaseApplication != null) {
-      str1 = Settings.System.getString(localBaseApplication.getContentResolver(), "android_id");
+      localObject1 = Settings.System.getString(localBaseApplication.getContentResolver(), "android_id");
+    } else {
+      localObject1 = "";
     }
-    if (TextUtils.isEmpty(str1)) {
-      str1 = "";
+    Object localObject2 = localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      localObject2 = "";
     }
-    for (;;)
+    Object localObject3 = QPMiscUtils.b(2);
+    Object localObject1 = localObject3;
+    if (localObject3 == null) {
+      localObject1 = "";
+    }
+    if (AppNetConnInfo.isNetSupport())
     {
-      String str2 = QPMiscUtils.b(2);
-      if (str2 == null) {
-        str2 = "";
-      }
-      for (;;)
+      if (AppNetConnInfo.isWifiConn())
       {
-        int i;
-        if (AppNetConnInfo.isNetSupport()) {
-          if (AppNetConnInfo.isWifiConn()) {
-            i = 1;
-          }
-        }
-        for (;;)
-        {
-          Object localObject1 = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-          if (localObject1 != null) {}
-          for (localObject1 = ((QQAppInterface)localObject1).getCurrentAccountUin();; localObject1 = "")
-          {
-            Object localObject3 = QPMiscUtils.b(1);
-            Object localObject2 = localObject3;
-            if (localObject3 == null) {
-              localObject2 = "";
-            }
-            Object localObject4 = QPMiscUtils.b(3);
-            localObject3 = localObject4;
-            if (localObject4 == null) {
-              localObject3 = "";
-            }
-            Object localObject5 = Build.CPU_ABI;
-            localObject4 = localObject5;
-            if (localObject5 == null) {
-              localObject4 = "";
-            }
-            String str3 = Build.MODEL;
-            localObject5 = str3;
-            if (str3 == null) {
-              localObject5 = "";
-            }
-            return new Object[] { localBaseApplication, d.class, Build.VERSION.RELEASE, Integer.valueOf(AppSetting.a()), NetConnInfoCenter.GUID, ((String)localObject2).getBytes(), str1.getBytes(), Integer.valueOf(i), "mobileqq.service", localObject1, "req_pb_protocol_flag", ((String)localObject3).getBytes(), str2, localObject4, localObject5 };
-            if (!AppNetConnInfo.isMobileConn()) {
-              break label279;
-            }
-            i = AppNetConnInfo.getMobileInfo() + 1;
-            break;
-          }
-          label279:
-          i = 0;
-        }
+        i = 1;
+        break label91;
+      }
+      if (AppNetConnInfo.isMobileConn())
+      {
+        i = AppNetConnInfo.getMobileInfo() + 1;
+        break label91;
       }
     }
+    int i = 0;
+    label91:
+    localObject3 = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if (localObject3 != null) {
+      localObject3 = ((QQAppInterface)localObject3).getCurrentAccountUin();
+    } else {
+      localObject3 = "";
+    }
+    Object localObject5 = QPMiscUtils.b(1);
+    Object localObject4 = localObject5;
+    if (localObject5 == null) {
+      localObject4 = "";
+    }
+    Object localObject6 = QPMiscUtils.b(3);
+    localObject5 = localObject6;
+    if (localObject6 == null) {
+      localObject5 = "";
+    }
+    String str = Build.CPU_ABI;
+    localObject6 = str;
+    if (str == null) {
+      localObject6 = "";
+    }
+    str = Build.MODEL;
+    if (str != null) {
+      localObject7 = str;
+    }
+    return new Object[] { localBaseApplication, d.class, Build.VERSION.RELEASE, Integer.valueOf(AppSetting.a()), NetConnInfoCenter.GUID, ((String)localObject4).getBytes(), ((String)localObject2).getBytes(), Integer.valueOf(i), "mobileqq.service", localObject3, "req_pb_protocol_flag", ((String)localObject5).getBytes(), localObject1, localObject6, localObject7 };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mqp.app.sec.d
  * JD-Core Version:    0.7.0.1
  */

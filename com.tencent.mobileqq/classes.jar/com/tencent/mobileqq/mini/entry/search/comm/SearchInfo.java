@@ -58,13 +58,25 @@ public class SearchInfo
   
   public String getUseNumberDesc()
   {
-    if (this.userNum < 10000) {
-      return this.userNum + HardCodeUtil.a(2131694207);
+    int i = this.userNum;
+    if (i < 10000)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.userNum);
+      localStringBuilder.append(HardCodeUtil.a(2131694171));
+      return localStringBuilder.toString();
     }
-    if (this.userNum >= 100000000) {
-      return this.userNum / 100000000 + HardCodeUtil.a(2131694206);
+    if (i >= 100000000)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.userNum / 100000000);
+      localStringBuilder.append(HardCodeUtil.a(2131694170));
+      return localStringBuilder.toString();
     }
-    return this.userNum / 10000 + HardCodeUtil.a(2131694208);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.userNum / 10000);
+    localStringBuilder.append(HardCodeUtil.a(2131694172));
+    return localStringBuilder.toString();
   }
   
   public void setPosition(int paramInt)
@@ -79,7 +91,7 @@ public class SearchInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.comm.SearchInfo
  * JD-Core Version:    0.7.0.1
  */

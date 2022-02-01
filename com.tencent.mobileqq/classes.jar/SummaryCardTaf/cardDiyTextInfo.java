@@ -39,11 +39,13 @@ public final class cardDiyTextInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iFontId, 1);
-    if (this.strText != null) {
-      paramJceOutputStream.write(this.strText, 2);
+    String str = this.strText;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.strPoint != null) {
-      paramJceOutputStream.write(this.strPoint, 3);
+    str = this.strPoint;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.fRotationAngle, 4);
     paramJceOutputStream.write(this.fScaling, 5);

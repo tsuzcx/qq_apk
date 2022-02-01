@@ -141,154 +141,156 @@ public class DefaultRenderersFactory
     //   124: ldc 127
     //   126: invokestatic 133	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
     //   129: pop
-    //   130: ldc 135
-    //   132: invokestatic 104	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   135: iconst_3
-    //   136: anewarray 100	java/lang/Class
-    //   139: dup
-    //   140: iconst_0
-    //   141: ldc 106
-    //   143: aastore
-    //   144: dup
-    //   145: iconst_1
-    //   146: ldc 108
-    //   148: aastore
-    //   149: dup
-    //   150: iconst_2
-    //   151: ldc 110
-    //   153: aastore
-    //   154: invokevirtual 114	java/lang/Class:getConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
-    //   157: iconst_3
-    //   158: anewarray 4	java/lang/Object
-    //   161: dup
-    //   162: iconst_0
-    //   163: aload 4
-    //   165: aastore
-    //   166: dup
-    //   167: iconst_1
-    //   168: aload 5
-    //   170: aastore
-    //   171: dup
-    //   172: iconst_2
-    //   173: aload_3
-    //   174: aastore
-    //   175: invokevirtual 120	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
-    //   178: checkcast 122	com/google/android/exoplayer2/Renderer
-    //   181: astore_1
-    //   182: iload 6
-    //   184: iconst_1
-    //   185: iadd
-    //   186: istore 8
-    //   188: aload 7
-    //   190: iload 6
-    //   192: aload_1
-    //   193: invokevirtual 125	java/util/ArrayList:add	(ILjava/lang/Object;)V
-    //   196: ldc 23
-    //   198: ldc 137
-    //   200: invokestatic 133	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
-    //   203: pop
-    //   204: aload 7
-    //   206: iload 8
-    //   208: ldc 139
-    //   210: invokestatic 104	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   213: iconst_3
-    //   214: anewarray 100	java/lang/Class
-    //   217: dup
-    //   218: iconst_0
-    //   219: ldc 106
-    //   221: aastore
-    //   222: dup
-    //   223: iconst_1
-    //   224: ldc 108
-    //   226: aastore
-    //   227: dup
-    //   228: iconst_2
-    //   229: ldc 110
-    //   231: aastore
-    //   232: invokevirtual 114	java/lang/Class:getConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
-    //   235: iconst_3
-    //   236: anewarray 4	java/lang/Object
-    //   239: dup
-    //   240: iconst_0
-    //   241: aload 4
-    //   243: aastore
-    //   244: dup
-    //   245: iconst_1
-    //   246: aload 5
-    //   248: aastore
-    //   249: dup
-    //   250: iconst_2
-    //   251: aload_3
-    //   252: aastore
-    //   253: invokevirtual 120	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
-    //   256: checkcast 122	com/google/android/exoplayer2/Renderer
-    //   259: invokevirtual 125	java/util/ArrayList:add	(ILjava/lang/Object;)V
-    //   262: ldc 23
-    //   264: ldc 141
-    //   266: invokestatic 133	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
-    //   269: pop
-    //   270: return
-    //   271: astore_1
-    //   272: return
-    //   273: astore_1
-    //   274: iload 8
-    //   276: istore 6
-    //   278: goto -148 -> 130
-    //   281: astore_1
-    //   282: new 143	java/lang/RuntimeException
-    //   285: dup
-    //   286: ldc 145
-    //   288: aload_1
-    //   289: invokespecial 148	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   292: athrow
-    //   293: astore_1
-    //   294: iload 6
-    //   296: istore 8
-    //   298: goto -94 -> 204
-    //   301: astore_1
-    //   302: new 143	java/lang/RuntimeException
-    //   305: dup
-    //   306: ldc 150
-    //   308: aload_1
-    //   309: invokespecial 148	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   312: athrow
-    //   313: astore_1
-    //   314: new 143	java/lang/RuntimeException
-    //   317: dup
-    //   318: ldc 152
-    //   320: aload_1
-    //   321: invokespecial 148	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   324: athrow
+    //   130: goto +19 -> 149
+    //   133: astore_1
+    //   134: new 135	java/lang/RuntimeException
+    //   137: dup
+    //   138: ldc 137
+    //   140: aload_1
+    //   141: invokespecial 140	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   144: athrow
+    //   145: iload 8
+    //   147: istore 6
+    //   149: ldc 142
+    //   151: invokestatic 104	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   154: iconst_3
+    //   155: anewarray 100	java/lang/Class
+    //   158: dup
+    //   159: iconst_0
+    //   160: ldc 106
+    //   162: aastore
+    //   163: dup
+    //   164: iconst_1
+    //   165: ldc 108
+    //   167: aastore
+    //   168: dup
+    //   169: iconst_2
+    //   170: ldc 110
+    //   172: aastore
+    //   173: invokevirtual 114	java/lang/Class:getConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+    //   176: iconst_3
+    //   177: anewarray 4	java/lang/Object
+    //   180: dup
+    //   181: iconst_0
+    //   182: aload 4
+    //   184: aastore
+    //   185: dup
+    //   186: iconst_1
+    //   187: aload 5
+    //   189: aastore
+    //   190: dup
+    //   191: iconst_2
+    //   192: aload_3
+    //   193: aastore
+    //   194: invokevirtual 120	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
+    //   197: checkcast 122	com/google/android/exoplayer2/Renderer
+    //   200: astore_1
+    //   201: iload 6
+    //   203: iconst_1
+    //   204: iadd
+    //   205: istore 8
+    //   207: aload 7
+    //   209: iload 6
+    //   211: aload_1
+    //   212: invokevirtual 125	java/util/ArrayList:add	(ILjava/lang/Object;)V
+    //   215: ldc 23
+    //   217: ldc 144
+    //   219: invokestatic 133	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
+    //   222: pop
+    //   223: iload 8
+    //   225: istore 6
+    //   227: goto +15 -> 242
+    //   230: astore_1
+    //   231: new 135	java/lang/RuntimeException
+    //   234: dup
+    //   235: ldc 146
+    //   237: aload_1
+    //   238: invokespecial 140	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   241: athrow
+    //   242: aload 7
+    //   244: iload 6
+    //   246: ldc 148
+    //   248: invokestatic 104	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   251: iconst_3
+    //   252: anewarray 100	java/lang/Class
+    //   255: dup
+    //   256: iconst_0
+    //   257: ldc 106
+    //   259: aastore
+    //   260: dup
+    //   261: iconst_1
+    //   262: ldc 108
+    //   264: aastore
+    //   265: dup
+    //   266: iconst_2
+    //   267: ldc 110
+    //   269: aastore
+    //   270: invokevirtual 114	java/lang/Class:getConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+    //   273: iconst_3
+    //   274: anewarray 4	java/lang/Object
+    //   277: dup
+    //   278: iconst_0
+    //   279: aload 4
+    //   281: aastore
+    //   282: dup
+    //   283: iconst_1
+    //   284: aload 5
+    //   286: aastore
+    //   287: dup
+    //   288: iconst_2
+    //   289: aload_3
+    //   290: aastore
+    //   291: invokevirtual 120	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
+    //   294: checkcast 122	com/google/android/exoplayer2/Renderer
+    //   297: invokevirtual 125	java/util/ArrayList:add	(ILjava/lang/Object;)V
+    //   300: ldc 23
+    //   302: ldc 150
+    //   304: invokestatic 133	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
+    //   307: pop
+    //   308: return
+    //   309: astore_1
+    //   310: new 135	java/lang/RuntimeException
+    //   313: dup
+    //   314: ldc 152
+    //   316: aload_1
+    //   317: invokespecial 140	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   320: athrow
+    //   321: astore_1
+    //   322: goto -177 -> 145
     //   325: astore_1
-    //   326: iload 8
-    //   328: istore 6
-    //   330: goto -36 -> 294
+    //   326: goto -177 -> 149
+    //   329: astore_1
+    //   330: goto -88 -> 242
     //   333: astore_1
-    //   334: goto -56 -> 278
+    //   334: iload 8
+    //   336: istore 6
+    //   338: goto -96 -> 242
+    //   341: astore_1
+    //   342: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	337	0	this	DefaultRenderersFactory
-    //   0	337	1	paramContext	Context
-    //   0	337	2	paramDrmSessionManager	DrmSessionManager<FrameworkMediaCrypto>
-    //   0	337	3	paramArrayOfAudioProcessor	AudioProcessor[]
-    //   0	337	4	paramHandler	Handler
-    //   0	337	5	paramAudioRendererEventListener	AudioRendererEventListener
-    //   0	337	6	paramInt	int
-    //   0	337	7	paramArrayList	ArrayList<Renderer>
-    //   42	285	8	i	int
+    //   0	343	0	this	DefaultRenderersFactory
+    //   0	343	1	paramContext	Context
+    //   0	343	2	paramDrmSessionManager	DrmSessionManager<FrameworkMediaCrypto>
+    //   0	343	3	paramArrayOfAudioProcessor	AudioProcessor[]
+    //   0	343	4	paramHandler	Handler
+    //   0	343	5	paramAudioRendererEventListener	AudioRendererEventListener
+    //   0	343	6	paramInt	int
+    //   0	343	7	paramArrayList	ArrayList<Renderer>
+    //   42	293	8	i	int
     //   38	16	9	j	int
     // Exception table:
     //   from	to	target	type
-    //   204	270	271	java/lang/ClassNotFoundException
-    //   56	108	273	java/lang/ClassNotFoundException
-    //   56	108	281	java/lang/Exception
-    //   114	130	281	java/lang/Exception
-    //   130	182	293	java/lang/ClassNotFoundException
-    //   130	182	301	java/lang/Exception
-    //   188	204	301	java/lang/Exception
-    //   204	270	313	java/lang/Exception
-    //   188	204	325	java/lang/ClassNotFoundException
-    //   114	130	333	java/lang/ClassNotFoundException
+    //   56	108	133	java/lang/Exception
+    //   114	130	133	java/lang/Exception
+    //   149	201	230	java/lang/Exception
+    //   207	223	230	java/lang/Exception
+    //   242	308	309	java/lang/Exception
+    //   56	108	321	java/lang/ClassNotFoundException
+    //   114	130	325	java/lang/ClassNotFoundException
+    //   149	201	329	java/lang/ClassNotFoundException
+    //   207	223	333	java/lang/ClassNotFoundException
+    //   242	308	341	java/lang/ClassNotFoundException
   }
   
   protected void buildMetadataRenderers(Context paramContext, MetadataOutput paramMetadataOutput, Looper paramLooper, int paramInt, ArrayList<Renderer> paramArrayList)
@@ -309,24 +311,22 @@ public class DefaultRenderersFactory
     if (paramInt == 0) {
       return;
     }
-    int i = paramArrayList.size();
-    if (paramInt == 2) {}
-    for (paramInt = i - 1;; paramInt = i) {
-      try
-      {
-        paramArrayList.add(paramInt, (Renderer)Class.forName("com.google.android.exoplayer2.ext.vp9.LibvpxVideoRenderer").getConstructor(new Class[] { Boolean.TYPE, Long.TYPE, Handler.class, VideoRendererEventListener.class, Integer.TYPE }).newInstance(new Object[] { Boolean.valueOf(true), Long.valueOf(paramLong), paramHandler, paramVideoRendererEventListener, Integer.valueOf(50) }));
-        Log.i("DefaultRenderersFactory", "Loaded LibvpxVideoRenderer.");
-        return;
-      }
-      catch (ClassNotFoundException paramContext)
-      {
-        return;
-      }
-      catch (Exception paramContext)
-      {
-        throw new RuntimeException("Error instantiating VP9 extension", paramContext);
-      }
+    int j = paramArrayList.size();
+    int i = j;
+    if (paramInt == 2) {
+      i = j - 1;
     }
+    try
+    {
+      paramArrayList.add(i, (Renderer)Class.forName("com.google.android.exoplayer2.ext.vp9.LibvpxVideoRenderer").getConstructor(new Class[] { Boolean.TYPE, Long.TYPE, Handler.class, VideoRendererEventListener.class, Integer.TYPE }).newInstance(new Object[] { Boolean.valueOf(true), Long.valueOf(paramLong), paramHandler, paramVideoRendererEventListener, Integer.valueOf(50) }));
+      Log.i("DefaultRenderersFactory", "Loaded LibvpxVideoRenderer.");
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      throw new RuntimeException("Error instantiating VP9 extension", paramContext);
+    }
+    catch (ClassNotFoundException paramContext) {}
   }
   
   public Renderer[] createRenderers(Handler paramHandler, VideoRendererEventListener paramVideoRendererEventListener, AudioRendererEventListener paramAudioRendererEventListener, TextOutput paramTextOutput, MetadataOutput paramMetadataOutput)
@@ -342,7 +342,7 @@ public class DefaultRenderersFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.DefaultRenderersFactory
  * JD-Core Version:    0.7.0.1
  */

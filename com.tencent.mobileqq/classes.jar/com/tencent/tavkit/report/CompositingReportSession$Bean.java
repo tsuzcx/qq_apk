@@ -19,7 +19,7 @@ final class CompositingReportSession$Bean
   
   public CompositingReportSession$Bean()
   {
-    super("TAVKit_Android", "android_tavkit_compositing", "1.5.0.14-beta");
+    super("TAVKit_Android", "android_tavkit_compositing", "1.5.2.3-beta");
   }
   
   public Map<String, Long> toMap()
@@ -31,12 +31,22 @@ final class CompositingReportSession$Bean
   
   public String toString()
   {
-    return "Bean{avg_render_time_us=" + this.avg_render_time_us + ", render_count=" + this.render_count + ", render_width=" + this.render_width + ", render_height=" + this.render_height + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Bean{avg_render_time_us=");
+    localStringBuilder.append(this.avg_render_time_us);
+    localStringBuilder.append(", render_count=");
+    localStringBuilder.append(this.render_count);
+    localStringBuilder.append(", render_width=");
+    localStringBuilder.append(this.render_width);
+    localStringBuilder.append(", render_height=");
+    localStringBuilder.append(this.render_height);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavkit.report.CompositingReportSession.Bean
  * JD-Core Version:    0.7.0.1
  */

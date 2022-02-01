@@ -17,23 +17,23 @@ public class AdvertisementFilter
   
   public boolean a(BaseQQAppInterface paramBaseQQAppInterface, RecentUser paramRecentUser)
   {
-    if (!(paramBaseQQAppInterface instanceof QQAppInterface)) {}
-    do
-    {
+    if (!(paramBaseQQAppInterface instanceof QQAppInterface)) {
       return false;
-      if (paramRecentUser.lFlag == 16L)
-      {
-        AdvertisementRecentUserManager.a().a((QQAppInterface)paramBaseQQAppInterface, paramRecentUser);
-        return false;
-      }
-    } while (paramRecentUser.getType() != 10005);
-    ImaxAdRecentUserManager.a().a((QQAppInterface)paramBaseQQAppInterface, paramRecentUser);
+    }
+    if (paramRecentUser.lFlag == 16L)
+    {
+      AdvertisementRecentUserManager.a().a((QQAppInterface)paramBaseQQAppInterface, paramRecentUser);
+      return false;
+    }
+    if (paramRecentUser.getType() == 10005) {
+      ImaxAdRecentUserManager.a().a((QQAppInterface)paramBaseQQAppInterface, paramRecentUser);
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.recentlist.recentcheckfilter.AdvertisementFilter
  * JD-Core Version:    0.7.0.1
  */

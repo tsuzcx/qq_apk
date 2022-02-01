@@ -35,11 +35,21 @@ public class JsWebWorker
       int i;
       try
       {
-        LogUtility.c("JsWebWorker", "initClass " + paramString1 + " | " + paramString2 + " | " + paramString3);
-        Object localObject1 = new File(paramString2);
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("initClass ");
+        ((StringBuilder)localObject1).append(paramString1);
+        ((StringBuilder)localObject1).append(" | ");
+        ((StringBuilder)localObject1).append(paramString2);
+        ((StringBuilder)localObject1).append(" | ");
+        ((StringBuilder)localObject1).append(paramString3);
+        LogUtility.c("JsWebWorker", ((StringBuilder)localObject1).toString());
+        localObject1 = new File(paramString2);
         if (!((File)localObject1).exists())
         {
-          LogUtility.c("JsWebWorker", "cant find file " + paramString2);
+          paramString1 = new StringBuilder();
+          paramString1.append("cant find file ");
+          paramString1.append(paramString2);
+          LogUtility.c("JsWebWorker", paramString1.toString());
           return null;
         }
         paramString1 = new DexClassLoader(((File)localObject1).toString(), paramString1, null, this.jdField_a_of_type_AndroidContentContext.getClassLoader());
@@ -76,87 +86,93 @@ public class JsWebWorker
   
   protected Object a(JsWebWorker.ReflectClass paramReflectClass, Context paramContext, WebView paramWebView)
   {
+    int i = -1000;
     if (paramWebView != null) {}
-    for (;;)
+    try
     {
-      try
+      i = paramWebView.hashCode();
+      Object localObject2 = paramReflectClass.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
-        i = paramWebView.hashCode();
-        Object localObject2 = paramReflectClass.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
-        Object localObject1 = localObject2;
-        if (localObject2 == null)
+        Constructor localConstructor = paramReflectClass.jdField_a_of_type_JavaLangClass.getConstructor(new Class[] { Context.class, WebView.class, Handler.class });
+        localObject1 = localObject2;
+        if (localConstructor != null)
         {
-          Constructor localConstructor = paramReflectClass.jdField_a_of_type_JavaLangClass.getConstructor(new Class[] { Context.class, WebView.class, Handler.class });
-          localObject1 = localObject2;
-          if (localConstructor != null)
-          {
-            localObject1 = localConstructor.newInstance(new Object[] { paramContext, paramWebView, this.jdField_a_of_type_AndroidOsHandler });
-            paramReflectClass.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), localObject1);
-          }
+          localObject1 = localConstructor.newInstance(new Object[] { paramContext, paramWebView, this.jdField_a_of_type_AndroidOsHandler });
+          paramReflectClass.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), localObject1);
         }
-        return localObject1;
       }
-      catch (Exception paramReflectClass)
-      {
-        return null;
-      }
-      int i = -1000;
+      return localObject1;
     }
+    catch (Exception paramReflectClass)
+    {
+      label123:
+      break label123;
+    }
+    return null;
   }
   
   protected String a(String paramString1, String paramString2, String paramString3, String[] paramArrayOfString)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        LogUtility.c("JsWebWorker", "invoke>>" + paramString1 + ">>>" + paramString2 + ">>>" + paramString3);
-        JsWebWorker.ReflectClass localReflectClass = (JsWebWorker.ReflectClass)jdField_a_of_type_JavaUtilMap.get(paramString2);
-        if (localReflectClass == null)
-        {
-          localReflectClass = a(this.jdField_a_of_type_AndroidContentContext.getFilesDir().getAbsolutePath(), paramString1, paramString2);
-          if (localReflectClass == null)
-          {
-            LogUtility.c("JsWebWorker", "refC == NULL return");
-            return null;
-          }
-          LogUtility.c("JsWebWorker", "got refC");
-          if ((Method)localReflectClass.b.get(paramString3) == null)
-          {
-            localReflectClass.a();
-            if (a(this.jdField_a_of_type_AndroidContentContext.getFilesDir().getAbsolutePath(), paramString1, paramString2) != null) {
-              break;
-            }
-            LogUtility.c("JsWebWorker", "cant find method and refC == NULL return");
-            break;
-          }
-          LogUtility.c("JsWebWorker", "get method");
-          paramString1 = (Method)localReflectClass.b.get(paramString3);
-          if (paramString1 == null) {
-            return null;
-          }
-          LogUtility.c("JsWebWorker", "got method");
-          paramString2 = a(localReflectClass, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentSmttSdkWebView);
-          if (paramString2 == null) {
-            return null;
-          }
-          LogUtility.c("JsWebWorker", "method invoke");
-          paramString1 = (String)paramString1.invoke(paramString2, new Object[] { paramArrayOfString });
-          return paramString1;
-        }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("invoke>>");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(">>>");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(">>>");
+      ((StringBuilder)localObject).append(paramString3);
+      LogUtility.c("JsWebWorker", ((StringBuilder)localObject).toString());
+      JsWebWorker.ReflectClass localReflectClass = (JsWebWorker.ReflectClass)jdField_a_of_type_JavaUtilMap.get(paramString2);
+      localObject = localReflectClass;
+      if (localReflectClass == null) {
+        localObject = a(this.jdField_a_of_type_AndroidContentContext.getFilesDir().getAbsolutePath(), paramString1, paramString2);
       }
-      catch (Exception paramString1)
+      if (localObject == null)
       {
-        LogUtility.c("JsWebWorker", "invoke error", paramString1);
+        LogUtility.c("JsWebWorker", "refC == NULL return");
         return null;
       }
+      LogUtility.c("JsWebWorker", "got refC");
+      if ((Method)((JsWebWorker.ReflectClass)localObject).b.get(paramString3) == null)
+      {
+        ((JsWebWorker.ReflectClass)localObject).a();
+        if (a(this.jdField_a_of_type_AndroidContentContext.getFilesDir().getAbsolutePath(), paramString1, paramString2) == null)
+        {
+          LogUtility.c("JsWebWorker", "cant find method and refC == NULL return");
+          return null;
+        }
+      }
+      else
+      {
+        LogUtility.c("JsWebWorker", "get method");
+        paramString1 = (Method)((JsWebWorker.ReflectClass)localObject).b.get(paramString3);
+        if (paramString1 == null) {
+          return null;
+        }
+        LogUtility.c("JsWebWorker", "got method");
+        paramString2 = a((JsWebWorker.ReflectClass)localObject, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentSmttSdkWebView);
+        if (paramString2 == null) {
+          return null;
+        }
+        LogUtility.c("JsWebWorker", "method invoke");
+        paramString1 = (String)paramString1.invoke(paramString2, new Object[] { paramArrayOfString });
+        return paramString1;
+      }
+    }
+    catch (Exception paramString1)
+    {
+      LogUtility.c("JsWebWorker", "invoke error", paramString1);
+      return null;
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appcommon.JsWebWorker
  * JD-Core Version:    0.7.0.1
  */

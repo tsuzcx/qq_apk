@@ -13,7 +13,7 @@ public class SonicDBHelper
   private static final int SONIC_DATABASE_VERSION = 3;
   private static final String TAG = "SonicSdk_SonicDBHelper";
   private static AtomicBoolean isDBUpgrading = new AtomicBoolean(false);
-  private static SonicDBHelper sInstance = null;
+  private static SonicDBHelper sInstance;
   
   private SonicDBHelper(Context paramContext)
   {
@@ -35,11 +35,11 @@ public class SonicDBHelper
   
   private void doUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
-    switch (paramInt1)
+    if (paramInt1 != 1)
     {
-    default: 
-      return;
-    case 1: 
+      if (paramInt1 == 2) {}
+    }
+    else {
       upgradeToVersion_2(paramSQLiteDatabase);
     }
     upgradeToVersion_3(paramSQLiteDatabase);
@@ -49,13 +49,14 @@ public class SonicDBHelper
   {
     try
     {
-      if (sInstance == null) {
-        throw new IllegalStateException("SonicDBHelper::createInstance() needs to be called before SonicDBHelper::getInstance()!");
+      if (sInstance != null)
+      {
+        SonicDBHelper localSonicDBHelper = sInstance;
+        return localSonicDBHelper;
       }
+      throw new IllegalStateException("SonicDBHelper::createInstance() needs to be called before SonicDBHelper::getInstance()!");
     }
     finally {}
-    SonicDBHelper localSonicDBHelper = sInstance;
-    return localSonicDBHelper;
   }
   
   private void upgradeToVersion_2(SQLiteDatabase paramSQLiteDatabase)
@@ -83,29 +84,36 @@ public class SonicDBHelper
   
   public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
-    long l;
     if (isDBUpgrading.compareAndSet(false, true))
     {
-      l = System.currentTimeMillis();
-      SonicUtils.log("SonicSdk_SonicDBHelper", 4, "onUpgrade start, from " + paramInt1 + " to " + paramInt2 + ".");
-      if (-1 != paramInt1) {
-        break label114;
+      long l = System.currentTimeMillis();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpgrade start, from ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" to ");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(".");
+      SonicUtils.log("SonicSdk_SonicDBHelper", 4, localStringBuilder.toString());
+      if (-1 == paramInt1)
+      {
+        SonicEngine.getInstance().getRuntime().postTaskToThread(new SonicDBHelper.1(this), 0L);
       }
-      SonicEngine.getInstance().getRuntime().postTaskToThread(new SonicDBHelper.1(this), 0L);
-    }
-    for (;;)
-    {
-      SonicUtils.log("SonicSdk_SonicDBHelper", 4, "onUpgrade finish, cost " + (System.currentTimeMillis() - l) + "ms.");
-      return;
-      label114:
-      doUpgrade(paramSQLiteDatabase, paramInt1, paramInt2);
-      isDBUpgrading.set(false);
+      else
+      {
+        doUpgrade(paramSQLiteDatabase, paramInt1, paramInt2);
+        isDBUpgrading.set(false);
+      }
+      paramSQLiteDatabase = new StringBuilder();
+      paramSQLiteDatabase.append("onUpgrade finish, cost ");
+      paramSQLiteDatabase.append(System.currentTimeMillis() - l);
+      paramSQLiteDatabase.append("ms.");
+      SonicUtils.log("SonicSdk_SonicDBHelper", 4, paramSQLiteDatabase.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.sonic.sdk.SonicDBHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -21,9 +21,7 @@ public class QQGameImagePlayHelper
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1) {
       return false;
     }
     try
@@ -58,14 +56,16 @@ public class QQGameImagePlayHelper
     }
     catch (Exception paramMessage)
     {
-      QLog.e("QQGameImagePlayHelper", 1, "[handleMessage] ");
+      label208:
+      break label208;
     }
+    QLog.e("QQGameImagePlayHelper", 1, "[handleMessage] ");
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.view.QQGameImagePlayHelper
  * JD-Core Version:    0.7.0.1
  */

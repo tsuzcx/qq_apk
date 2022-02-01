@@ -10,9 +10,10 @@ class StructMsgItemTimer$1
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer.jdField_d_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(StructMsgItemTimer.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer, 0L));
+    StructMsgItemTimer localStructMsgItemTimer = this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer;
+    localStructMsgItemTimer.jdField_d_of_type_Long = 0L;
+    localStructMsgItemTimer.jdField_d_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(StructMsgItemTimer.a(localStructMsgItemTimer, 0L));
   }
   
   public void a(long paramLong)
@@ -24,7 +25,7 @@ class StructMsgItemTimer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemTimer.1
  * JD-Core Version:    0.7.0.1
  */

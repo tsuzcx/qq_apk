@@ -33,12 +33,23 @@ public class IPreloadService$PathResult
   
   public String toString()
   {
-    return "PathResult{file='" + this.filePath + '\'' + ", folder='" + this.folderPath + '\'' + ", url='" + this.url + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PathResult{file='");
+    localStringBuilder.append(this.filePath);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", folder='");
+    localStringBuilder.append(this.folderPath);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", url='");
+    localStringBuilder.append(this.url);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.IPreloadService.PathResult
  * JD-Core Version:    0.7.0.1
  */

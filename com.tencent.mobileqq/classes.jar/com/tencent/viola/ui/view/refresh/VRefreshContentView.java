@@ -8,30 +8,20 @@ public class VRefreshContentView
   
   private boolean hasChildOnBottom()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.mContentViewProvider != null)
-    {
-      bool1 = bool2;
-      if (!this.mContentViewProvider.canChildPullUp()) {
-        bool1 = true;
-      }
+    VRefreshContentView.ContentViewProvider localContentViewProvider = this.mContentViewProvider;
+    if (localContentViewProvider != null) {
+      return localContentViewProvider.canChildPullUp() ^ true;
     }
-    return bool1;
+    return false;
   }
   
   private boolean hasChildOnTop()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.mContentViewProvider != null)
-    {
-      bool1 = bool2;
-      if (!this.mContentViewProvider.canChildPullDown()) {
-        bool1 = true;
-      }
+    VRefreshContentView.ContentViewProvider localContentViewProvider = this.mContentViewProvider;
+    if (localContentViewProvider != null) {
+      return localContentViewProvider.canChildPullDown() ^ true;
     }
-    return bool1;
+    return false;
   }
   
   public VRefreshContentView.ContentViewProvider getContentViewProvider()
@@ -51,15 +41,17 @@ public class VRefreshContentView
   
   public void offsetTopAndBottom(int paramInt)
   {
-    if ((this.mContentViewProvider != null) && (this.mContentViewProvider.getContentView() != null)) {
+    VRefreshContentView.ContentViewProvider localContentViewProvider = this.mContentViewProvider;
+    if ((localContentViewProvider != null) && (localContentViewProvider.getContentView() != null)) {
       this.mContentViewProvider.getContentView().offsetTopAndBottom(paramInt);
     }
   }
   
   public void scrollToTop(boolean paramBoolean)
   {
-    if (this.mContentViewProvider != null) {
-      this.mContentViewProvider.scrollToTop(paramBoolean);
+    VRefreshContentView.ContentViewProvider localContentViewProvider = this.mContentViewProvider;
+    if (localContentViewProvider != null) {
+      localContentViewProvider.scrollToTop(paramBoolean);
     }
   }
   
@@ -73,7 +65,7 @@ public class VRefreshContentView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.view.refresh.VRefreshContentView
  * JD-Core Version:    0.7.0.1
  */

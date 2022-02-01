@@ -33,77 +33,88 @@ public class ApolloBoxData
   
   public static String a(int paramInt)
   {
-    if (paramInt > 999999) {
-      return String.valueOf(999999) + "+";
+    if (paramInt > 999999)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(String.valueOf(999999));
+      localStringBuilder.append("+");
+      return localStringBuilder.toString();
     }
     return String.valueOf(paramInt);
   }
   
   public static String b(int paramInt)
   {
-    if (paramInt > 99999) {
-      return String.valueOf(99999) + "+";
+    if (paramInt > 99999)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(String.valueOf(99999));
+      localStringBuilder.append("+");
+      return localStringBuilder.toString();
     }
     return String.valueOf(paramInt);
   }
   
   public static String c(int paramInt)
   {
-    if (paramInt > 9999) {
-      return String.valueOf(9999) + "+";
+    if (paramInt > 9999)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(String.valueOf(9999));
+      localStringBuilder.append("+");
+      return localStringBuilder.toString();
     }
     return String.valueOf(paramInt);
   }
   
   public void a()
   {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (this.jdField_b_of_type_JavaUtilList == null) || (this.jdField_b_of_type_JavaUtilList.isEmpty())) {
-      return;
-    }
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-    label40:
-    ApolloBoxData.ApolloBoxDataItem localApolloBoxDataItem;
-    ApolloBoxData.BoxCardListSummary localBoxCardListSummary;
-    for (;;)
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      if (localIterator.hasNext())
+      Object localObject = this.jdField_b_of_type_JavaUtilList;
+      if (localObject != null)
       {
-        localApolloBoxDataItem = (ApolloBoxData.ApolloBoxDataItem)localIterator.next();
-        if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(String.valueOf(localApolloBoxDataItem.jdField_a_of_type_Long))))
+        if (((List)localObject).isEmpty()) {
+          return;
+        }
+        localObject = this.jdField_b_of_type_JavaUtilList.iterator();
+        while (((Iterator)localObject).hasNext())
         {
-          if (localApolloBoxDataItem.jdField_a_of_type_Short > 4) {
-            break label165;
-          }
-          localBoxCardListSummary = (ApolloBoxData.BoxCardListSummary)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(3));
-          if (localBoxCardListSummary != null)
+          ApolloBoxData.ApolloBoxDataItem localApolloBoxDataItem = (ApolloBoxData.ApolloBoxDataItem)((Iterator)localObject).next();
+          if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(String.valueOf(localApolloBoxDataItem.jdField_a_of_type_Long))))
           {
-            localBoxCardListSummary.c += 1;
-            this.jdField_b_of_type_Int += 1;
+            ApolloBoxData.BoxCardListSummary localBoxCardListSummary;
+            if (localApolloBoxDataItem.jdField_a_of_type_Short <= 4)
+            {
+              localBoxCardListSummary = (ApolloBoxData.BoxCardListSummary)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(3));
+              if (localBoxCardListSummary != null)
+              {
+                localBoxCardListSummary.c += 1;
+                this.jdField_b_of_type_Int += 1;
+              }
+            }
+            else
+            {
+              localBoxCardListSummary = (ApolloBoxData.BoxCardListSummary)this.jdField_a_of_type_JavaUtilHashMap.get(Short.valueOf(localApolloBoxDataItem.jdField_a_of_type_Short));
+              if (localBoxCardListSummary != null)
+              {
+                localBoxCardListSummary.c += localApolloBoxDataItem.f;
+                this.jdField_b_of_type_Int += localApolloBoxDataItem.f;
+              }
+            }
+            if (this.c == null) {
+              this.c = new ArrayList();
+            }
+            this.c.add(localApolloBoxDataItem);
           }
         }
-      }
-    }
-    for (;;)
-    {
-      if (this.c == null) {
-        this.c = new ArrayList();
-      }
-      this.c.add(localApolloBoxDataItem);
-      break label40;
-      break;
-      label165:
-      localBoxCardListSummary = (ApolloBoxData.BoxCardListSummary)this.jdField_a_of_type_JavaUtilHashMap.get(Short.valueOf(localApolloBoxDataItem.jdField_a_of_type_Short));
-      if (localBoxCardListSummary != null)
-      {
-        localBoxCardListSummary.c += localApolloBoxDataItem.f;
-        this.jdField_b_of_type_Int += localApolloBoxDataItem.f;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.openbox.ApolloBoxData
  * JD-Core Version:    0.7.0.1
  */

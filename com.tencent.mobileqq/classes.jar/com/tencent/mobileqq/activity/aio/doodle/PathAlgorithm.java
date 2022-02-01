@@ -49,44 +49,46 @@ public abstract class PathAlgorithm
   
   public void a(List<PathDrawer.PathSegment> paramList, int paramInt)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    int i;
-    do
+    if (paramList != null)
     {
-      return;
-      i = paramInt;
+      if (paramList.size() == 0) {
+        return;
+      }
+      int i = paramInt;
       if (paramInt < 0) {
         i = 0;
       }
-    } while (paramList.size() <= i);
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = (PathDrawer.PathSegment)paramList.get(i);
-    paramInt = i + 1;
-    while (paramInt < paramList.size())
-    {
-      PathDrawer.PathSegment localPathSegment = (PathDrawer.PathSegment)paramList.get(paramInt);
-      if ((localPathSegment.a() - ((PathDrawer.PathSegment)localObject).a() < this.b) && (Math.abs(localPathSegment.a() - ((PathDrawer.PathSegment)localObject).a()) < this.jdField_a_of_type_Float))
-      {
-        ((PathDrawer.PathSegment)localObject).a(localPathSegment);
-        paramInt += 1;
+      if (paramList.size() <= i) {
+        return;
       }
-      else
+      ArrayList localArrayList = new ArrayList();
+      Object localObject = (PathDrawer.PathSegment)paramList.get(i);
+      for (;;)
       {
-        localArrayList.add(localObject);
-        if (((PathDrawer.PathSegment)localObject).a() != localPathSegment.a()) {
-          localPathSegment.a(0);
-        }
-        for (;;)
-        {
-          localObject = localPathSegment;
+        i += 1;
+        if (i >= paramList.size()) {
           break;
-          localPathSegment.a(((PathDrawer.PathSegment)localObject).a() + 1);
+        }
+        PathDrawer.PathSegment localPathSegment = (PathDrawer.PathSegment)paramList.get(i);
+        if ((localPathSegment.a() - ((PathDrawer.PathSegment)localObject).a() < this.b) && (Math.abs(localPathSegment.a() - ((PathDrawer.PathSegment)localObject).a()) < this.jdField_a_of_type_Float))
+        {
+          ((PathDrawer.PathSegment)localObject).a(localPathSegment);
+        }
+        else
+        {
+          localArrayList.add(localObject);
+          if (((PathDrawer.PathSegment)localObject).a() != localPathSegment.a()) {
+            localPathSegment.a(0);
+          } else {
+            localPathSegment.a(((PathDrawer.PathSegment)localObject).a() + 1);
+          }
+          localObject = localPathSegment;
         }
       }
+      localArrayList.add(localObject);
+      paramList.clear();
+      paramList.addAll(localArrayList);
     }
-    localArrayList.add(localObject);
-    paramList.clear();
-    paramList.addAll(localArrayList);
   }
   
   public abstract void a(List<PathData.PointData> paramList, Path paramPath, List<PathDrawer.PathSegment> paramList1);
@@ -95,28 +97,32 @@ public abstract class PathAlgorithm
   
   protected boolean a(List<PathDrawer.PathSegment> paramList, Path paramPath)
   {
-    if ((paramList == null) || (paramPath == null) || (paramList.size() == 0)) {
-      return false;
-    }
-    PathMeasure localPathMeasure = new PathMeasure(paramPath, false);
-    float f3 = localPathMeasure.getLength();
     int i = 0;
-    float f1;
-    for (float f2 = 0.0F; i < paramList.size(); f2 = f1)
+    if ((paramList != null) && (paramPath != null))
     {
-      Path localPath = new Path();
-      float f4 = ((PathDrawer.PathSegment)paramList.get(i)).b() + f2;
-      f1 = f4;
-      if (f4 > f3) {
-        f1 = f3;
+      if (paramList.size() == 0) {
+        return false;
       }
-      localPathMeasure.getSegment(f2, f1, localPath, true);
-      localPath.rLineTo(0.0F, 0.0F);
-      paramPath.addPath(localPath);
-      ((PathDrawer.PathSegment)paramList.get(i)).a(localPath);
-      i += 1;
+      PathMeasure localPathMeasure = new PathMeasure(paramPath, false);
+      float f3 = localPathMeasure.getLength();
+      float f1;
+      for (float f2 = 0.0F; i < paramList.size(); f2 = f1)
+      {
+        Path localPath = new Path();
+        float f4 = ((PathDrawer.PathSegment)paramList.get(i)).b() + f2;
+        f1 = f4;
+        if (f4 > f3) {
+          f1 = f3;
+        }
+        localPathMeasure.getSegment(f2, f1, localPath, true);
+        localPath.rLineTo(0.0F, 0.0F);
+        paramPath.addPath(localPath);
+        ((PathDrawer.PathSegment)paramList.get(i)).a(localPath);
+        i += 1;
+      }
+      return true;
     }
-    return true;
+    return false;
   }
   
   protected boolean a(List<PathDrawer.PathSegment> paramList, Path paramPath, float paramFloat1, float paramFloat2, long paramLong1, long paramLong2)
@@ -126,37 +132,33 @@ public abstract class PathAlgorithm
     }
     PathMeasure localPathMeasure = new PathMeasure(paramPath, false);
     float f2 = localPathMeasure.getLength();
-    int j = (int)Math.ceil(f2 / this.jdField_a_of_type_Int);
-    if (j == 0) {
+    int k = (int)Math.ceil(f2 / this.jdField_a_of_type_Int);
+    if (k == 0) {
       return false;
     }
-    int i = 0;
     paramPath = null;
-    if (i < j)
+    int j;
+    for (int i = 0; i < k; i = j)
     {
       Object localObject = new Path();
-      float f3 = (i + 1) * this.jdField_a_of_type_Int;
-      float f1 = f3;
-      if (f3 > f2) {
+      j = i + 1;
+      float f1 = this.jdField_a_of_type_Int * j;
+      if (f1 > f2) {
         f1 = f2;
       }
       localPathMeasure.getSegment(this.jdField_a_of_type_Int * i, f1, (Path)localObject, true);
       ((Path)localObject).rLineTo(0.0F, 0.0F);
       localObject = new PathDrawer.PathSegment((Path)localObject);
-      ((PathDrawer.PathSegment)localObject).a(a(paramFloat1, paramFloat2, j, i));
-      ((PathDrawer.PathSegment)localObject).a(a(paramLong1, paramLong2, j, i));
-      ((PathDrawer.PathSegment)localObject).b(f1 - this.jdField_a_of_type_Int * i);
+      ((PathDrawer.PathSegment)localObject).a(a(paramFloat1, paramFloat2, k, i));
+      ((PathDrawer.PathSegment)localObject).a(a(paramLong1, paramLong2, k, i));
+      ((PathDrawer.PathSegment)localObject).b(f1 - i * this.jdField_a_of_type_Int);
       if ((paramPath != null) && (paramPath.a() == ((PathDrawer.PathSegment)localObject).a())) {
         ((PathDrawer.PathSegment)localObject).a(paramPath.a() + 1);
-      }
-      for (;;)
-      {
-        paramList.add(localObject);
-        i += 1;
-        paramPath = (Path)localObject;
-        break;
+      } else {
         ((PathDrawer.PathSegment)localObject).a(0);
       }
+      paramList.add(localObject);
+      paramPath = (Path)localObject;
     }
     return true;
   }
@@ -165,7 +167,7 @@ public abstract class PathAlgorithm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.PathAlgorithm
  * JD-Core Version:    0.7.0.1
  */

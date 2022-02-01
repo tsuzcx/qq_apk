@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
+import com.tencent.biz.pubaccount.weishi_new.WSHomeLaunchParams;
 import com.tencent.biz.pubaccount.weishi_new.net.WeishiBusinessLooper;
 import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
 import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
@@ -46,12 +47,21 @@ public class WSWeSeeClientBiz
   public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
   {
     boolean bool3 = WeishiGuideUtils.a(paramContext);
-    WSLog.d("WSPushLog", "WSWeSeeClientBiz strategyInfo.scheme = " + paramWSPushStrategyInfo.mScheme + ", isInstallWeishi = " + bool3);
-    boolean bool1 = false;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WSWeSeeClientBiz strategyInfo.scheme = ");
+    localStringBuilder.append(paramWSPushStrategyInfo.mScheme);
+    localStringBuilder.append(", isInstallWeishi = ");
+    localStringBuilder.append(bool3);
+    WSLog.d("WSPushLog", localStringBuilder.toString());
+    boolean bool1;
     if (this.jdField_a_of_type_Int == 2)
     {
-      WSHomeFragment.a(paramContext);
+      WSHomeFragment.a(new WSHomeLaunchParams(paramContext, 1, "from_home_page"));
       bool1 = true;
+    }
+    else
+    {
+      bool1 = false;
     }
     boolean bool2 = bool1;
     if (!TextUtils.isEmpty(paramWSPushStrategyInfo.mScheme))
@@ -68,7 +78,7 @@ public class WSWeSeeClientBiz
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.push.biz.WSWeSeeClientBiz
  * JD-Core Version:    0.7.0.1
  */

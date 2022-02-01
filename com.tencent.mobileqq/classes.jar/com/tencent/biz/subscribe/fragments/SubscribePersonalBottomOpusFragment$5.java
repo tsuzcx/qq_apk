@@ -22,25 +22,23 @@ class SubscribePersonalBottomOpusFragment$5
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("postUin", this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribeBaseBottomPersonalFragment$BottomData.a.poster.id.get());
-    if (this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribeBaseBottomPersonalFragment$BottomData.a.poster.youZhan.size() > 0) {
-      if (((CertifiedAccountMeta.StYouZanShop)this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribeBaseBottomPersonalFragment$BottomData.a.poster.youZhan.get(0)).type.get() <= 1) {
-        break label139;
-      }
-    }
-    label139:
-    for (boolean bool = true;; bool = false)
+    if (this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribeBaseBottomPersonalFragment$BottomData.a.poster.youZhan.size() > 0)
     {
+      int i = ((CertifiedAccountMeta.StYouZanShop)this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribeBaseBottomPersonalFragment$BottomData.a.poster.youZhan.get(0)).type.get();
+      boolean bool = true;
+      if (i <= 1) {
+        bool = false;
+      }
       localIntent.putExtra("has_shop", bool);
-      QZoneHelper.forwardToQQPublicAccountPublishPage(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomOpusFragment.getActivity(), localIntent, 0);
-      VSReporter.b(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribeBaseBottomPersonalFragment$BottomData.a.poster.id.get(), "auth_person", "blank_post", 0, 0, new String[0]);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
     }
+    QZoneHelper.forwardToQQPublicAccountPublishPage(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomOpusFragment.getBaseActivity(), localIntent, 0);
+    VSReporter.b(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribeBaseBottomPersonalFragment$BottomData.a.poster.id.get(), "auth_person", "blank_post", 0, 0, new String[0]);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment.5
  * JD-Core Version:    0.7.0.1
  */

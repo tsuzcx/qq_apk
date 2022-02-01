@@ -12,36 +12,44 @@ public class TencentDocAIOShowGuideDialogBean
   
   public static TencentDocAIOShowGuideDialogBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length <= 0)) {
-      return null;
-    }
-    TencentDocAIOShowGuideDialogBean localTencentDocAIOShowGuideDialogBean = new TencentDocAIOShowGuideDialogBean();
-    try
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      a(localTencentDocAIOShowGuideDialogBean, new JSONObject(paramArrayOfQConfItem[0].a));
-      return localTencentDocAIOShowGuideDialogBean;
+      TencentDocAIOShowGuideDialogBean localTencentDocAIOShowGuideDialogBean = new TencentDocAIOShowGuideDialogBean();
+      try
+      {
+        a(localTencentDocAIOShowGuideDialogBean, new JSONObject(paramArrayOfQConfItem[0].a));
+        return localTencentDocAIOShowGuideDialogBean;
+      }
+      catch (JSONException paramArrayOfQConfItem)
+      {
+        paramArrayOfQConfItem.printStackTrace();
+        return localTencentDocAIOShowGuideDialogBean;
+      }
     }
-    catch (JSONException paramArrayOfQConfItem)
-    {
-      paramArrayOfQConfItem.printStackTrace();
-    }
-    return localTencentDocAIOShowGuideDialogBean;
+    return null;
   }
   
   public static void a(TencentDocAIOShowGuideDialogBean paramTencentDocAIOShowGuideDialogBean, JSONObject paramJSONObject)
   {
-    if ((paramJSONObject == null) || (paramTencentDocAIOShowGuideDialogBean == null)) {}
-    do
+    if (paramJSONObject != null)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("TencentDocAIOShowGuideDialogBean", 2, "handleTencentDocUniversalEntry call after " + paramJSONObject.toString());
+      if (paramTencentDocAIOShowGuideDialogBean == null) {
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handleTencentDocUniversalEntry call after ");
+        localStringBuilder.append(paramJSONObject.toString());
+        QLog.d("TencentDocAIOShowGuideDialogBean", 2, localStringBuilder.toString());
       }
       if (paramJSONObject.has("aioGuiderDialogEnable")) {
         paramTencentDocAIOShowGuideDialogBean.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("aioGuiderDialogEnable");
       }
-    } while (!paramJSONObject.has("dialogShowMaxTimes"));
-    paramTencentDocAIOShowGuideDialogBean.jdField_a_of_type_Int = paramJSONObject.optInt("dialogShowMaxTimes");
+      if (paramJSONObject.has("dialogShowMaxTimes")) {
+        paramTencentDocAIOShowGuideDialogBean.jdField_a_of_type_Int = paramJSONObject.optInt("dialogShowMaxTimes");
+      }
+    }
   }
   
   public int a()
@@ -56,7 +64,7 @@ public class TencentDocAIOShowGuideDialogBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocAIOShowGuideDialogBean
  * JD-Core Version:    0.7.0.1
  */

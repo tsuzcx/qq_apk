@@ -10,13 +10,13 @@ class NotificationActivity$38
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    NotificationActivity.access$1800(this.a, 0);
+    NotificationActivity.access$1900(this.a, 0);
     this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotificationActivity.38
  * JD-Core Version:    0.7.0.1
  */

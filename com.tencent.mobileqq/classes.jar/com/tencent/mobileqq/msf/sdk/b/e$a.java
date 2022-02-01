@@ -12,8 +12,9 @@ public class e$a
   
   public void a()
   {
-    if (this.a != null) {
-      this.a.clear();
+    HashMap localHashMap = this.a;
+    if (localHashMap != null) {
+      localHashMap.clear();
     }
   }
   
@@ -60,7 +61,7 @@ public class e$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.b.e.a
  * JD-Core Version:    0.7.0.1
  */

@@ -31,7 +31,7 @@ public class ImageLoader
   static final String LOG_DESTROY = "Destroy ImageLoader";
   static final String LOG_INIT_CONFIG = "Initialize ImageLoader with configuration";
   static final String LOG_LOAD_IMAGE_FROM_MEMORY_CACHE = "Load image from memory cache [%s]";
-  public static final String TAG = ImageLoader.class.getSimpleName();
+  public static final String TAG = "ImageLoader";
   private static final String WARNING_RE_INIT_CONFIG = "Try to initialize ImageLoader which had already been initialized before. To re-init ImageLoader with new configuration call ImageLoader.destroy() at first.";
   private static volatile ImageLoader instance;
   private ImageLoaderConfiguration configuration;
@@ -41,40 +41,41 @@ public class ImageLoader
   
   private void checkConfiguration()
   {
-    if (this.configuration == null) {
-      throw new IllegalStateException("ImageLoader must be init with configuration before using");
+    if (this.configuration != null) {
+      return;
     }
+    throw new IllegalStateException("ImageLoader must be init with configuration before using");
   }
   
   private static Handler defineHandler(DisplayImageOptions paramDisplayImageOptions)
   {
     Handler localHandler = paramDisplayImageOptions.getHandler();
     if (paramDisplayImageOptions.isSyncLoading()) {
-      paramDisplayImageOptions = null;
+      return null;
     }
-    do
+    paramDisplayImageOptions = localHandler;
+    if (localHandler == null)
     {
-      do
-      {
-        return paramDisplayImageOptions;
-        paramDisplayImageOptions = localHandler;
-      } while (localHandler != null);
       paramDisplayImageOptions = localHandler;
-    } while (Looper.myLooper() != Looper.getMainLooper());
-    return new Handler();
+      if (Looper.myLooper() == Looper.getMainLooper()) {
+        paramDisplayImageOptions = new Handler();
+      }
+    }
+    return paramDisplayImageOptions;
   }
   
   public static ImageLoader getInstance()
   {
-    if (instance == null) {}
-    try
-    {
-      if (instance == null) {
-        instance = new ImageLoader();
+    if (instance == null) {
+      try
+      {
+        if (instance == null) {
+          instance = new ImageLoader();
+        }
       }
-      return instance;
+      finally {}
     }
-    finally {}
+    return instance;
   }
   
   public void cancelDisplayTask(ImageView paramImageView)
@@ -164,81 +165,72 @@ public class ImageLoader
   public void displayImage(String paramString, ImageAware paramImageAware, DisplayImageOptions paramDisplayImageOptions, ImageSize paramImageSize, ImageLoadingListener paramImageLoadingListener, ImageLoadingProgressListener paramImageLoadingProgressListener)
   {
     checkConfiguration();
-    if (paramImageAware == null) {
-      throw new IllegalArgumentException("Wrong arguments were passed to displayImage() method (ImageView reference must not be null)");
-    }
-    Object localObject = paramImageLoadingListener;
-    if (paramImageLoadingListener == null) {
-      localObject = this.defaultListener;
-    }
-    paramImageLoadingListener = new ImageLoadingListenerWrapper((ImageLoadingListener)localObject, this.mImageOnLoadingLogListener);
-    if (paramDisplayImageOptions == null) {
-      paramDisplayImageOptions = this.configuration.defaultDisplayImageOptions;
-    }
-    for (;;)
+    if (paramImageAware != null)
     {
+      Object localObject = paramImageLoadingListener;
+      if (paramImageLoadingListener == null) {
+        localObject = this.defaultListener;
+      }
+      localObject = new ImageLoadingListenerWrapper((ImageLoadingListener)localObject, this.mImageOnLoadingLogListener);
+      paramImageLoadingListener = paramDisplayImageOptions;
+      if (paramDisplayImageOptions == null) {
+        paramImageLoadingListener = this.configuration.defaultDisplayImageOptions;
+      }
       if (TextUtils.isEmpty(paramString))
       {
         this.engine.cancelDisplayTaskFor(paramImageAware);
-        paramImageLoadingListener.onLoadingStarted(paramString, paramImageAware.getWrappedView());
-        if (paramDisplayImageOptions.shouldShowImageForEmptyUri()) {
-          paramImageAware.setImageDrawable(paramDisplayImageOptions.getImageForEmptyUri(this.configuration.resources));
-        }
-        for (;;)
-        {
-          paramImageLoadingListener.onLoadingComplete(paramString, paramImageAware.getWrappedView(), null, LoadedFrom.ERROR_URI);
-          return;
+        ((ImageLoadingListenerWrapper)localObject).onLoadingStarted(paramString, paramImageAware.getWrappedView());
+        if (paramImageLoadingListener.shouldShowImageForEmptyUri()) {
+          paramImageAware.setImageDrawable(paramImageLoadingListener.getImageForEmptyUri(this.configuration.resources));
+        } else {
           paramImageAware.setImageDrawable(null);
         }
-      }
-      if (paramImageSize == null) {
-        paramImageSize = ImageSizeUtils.defineTargetSizeForView(paramImageAware, this.configuration.getMaxImageSize());
-      }
-      for (;;)
-      {
-        String str = MemoryCacheUtils.generateKey(paramString, paramImageSize);
-        this.engine.prepareDisplayTaskFor(paramImageAware, str);
-        paramImageLoadingListener.onLoadingStarted(paramString, paramImageAware.getWrappedView());
-        localObject = this.configuration.memoryCache.get(str);
-        if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
-        {
-          L.d("Load image from memory cache [%s]", new Object[] { str });
-          if (paramDisplayImageOptions.shouldPostProcess())
-          {
-            paramString = new ImageLoadingInfo(paramString, paramImageAware, paramImageSize, str, paramDisplayImageOptions, paramImageLoadingListener, paramImageLoadingProgressListener, this.engine.getLockForUri(paramString));
-            paramString = new ProcessAndDisplayImageTask(this.engine, (Bitmap)localObject, paramString, defineHandler(paramDisplayImageOptions));
-            if (paramDisplayImageOptions.isSyncLoading())
-            {
-              paramString.run();
-              return;
-            }
-            this.engine.submit(paramString);
-            return;
-          }
-          paramDisplayImageOptions.getDisplayer().display((Bitmap)localObject, paramImageAware, LoadedFrom.MEMORY_CACHE);
-          paramImageLoadingListener.onLoadingComplete(paramString, paramImageAware.getWrappedView(), (Bitmap)localObject, LoadedFrom.MEMORY_CACHE);
-          return;
-        }
-        if (paramDisplayImageOptions.shouldShowImageOnLoading()) {
-          paramImageAware.setImageDrawable(paramDisplayImageOptions.getImageOnLoading(this.configuration.resources));
-        }
-        for (;;)
-        {
-          paramString = new ImageLoadingInfo(paramString, paramImageAware, paramImageSize, str, paramDisplayImageOptions, paramImageLoadingListener, paramImageLoadingProgressListener, this.engine.getLockForUri(paramString));
-          paramString = new LoadAndDisplayImageTask(this.engine, paramString, defineHandler(paramDisplayImageOptions));
-          if (!paramDisplayImageOptions.isSyncLoading()) {
-            break;
-          }
-          paramString.run();
-          return;
-          if (paramDisplayImageOptions.isResetViewBeforeLoading()) {
-            paramImageAware.setImageDrawable(null);
-          }
-        }
-        this.engine.submit(paramString);
+        ((ImageLoadingListenerWrapper)localObject).onLoadingComplete(paramString, paramImageAware.getWrappedView(), null, LoadedFrom.ERROR_URI);
         return;
       }
+      paramDisplayImageOptions = paramImageSize;
+      if (paramImageSize == null) {
+        paramDisplayImageOptions = ImageSizeUtils.defineTargetSizeForView(paramImageAware, this.configuration.getMaxImageSize());
+      }
+      String str = MemoryCacheUtils.generateKey(paramString, paramDisplayImageOptions);
+      this.engine.prepareDisplayTaskFor(paramImageAware, str);
+      ((ImageLoadingListenerWrapper)localObject).onLoadingStarted(paramString, paramImageAware.getWrappedView());
+      paramImageSize = this.configuration.memoryCache.get(str);
+      if ((paramImageSize != null) && (!paramImageSize.isRecycled()))
+      {
+        L.d("Load image from memory cache [%s]", new Object[] { str });
+        if (paramImageLoadingListener.shouldPostProcess())
+        {
+          paramString = new ImageLoadingInfo(paramString, paramImageAware, paramDisplayImageOptions, str, paramImageLoadingListener, (ImageLoadingListenerWrapper)localObject, paramImageLoadingProgressListener, this.engine.getLockForUri(paramString));
+          paramString = new ProcessAndDisplayImageTask(this.engine, paramImageSize, paramString, defineHandler(paramImageLoadingListener));
+          if (paramImageLoadingListener.isSyncLoading())
+          {
+            paramString.run();
+            return;
+          }
+          this.engine.submit(paramString);
+          return;
+        }
+        paramImageLoadingListener.getDisplayer().display(paramImageSize, paramImageAware, LoadedFrom.MEMORY_CACHE);
+        ((ImageLoadingListenerWrapper)localObject).onLoadingComplete(paramString, paramImageAware.getWrappedView(), paramImageSize, LoadedFrom.MEMORY_CACHE);
+        return;
+      }
+      if (paramImageLoadingListener.shouldShowImageOnLoading()) {
+        paramImageAware.setImageDrawable(paramImageLoadingListener.getImageOnLoading(this.configuration.resources));
+      } else if (paramImageLoadingListener.isResetViewBeforeLoading()) {
+        paramImageAware.setImageDrawable(null);
+      }
+      paramString = new ImageLoadingInfo(paramString, paramImageAware, paramDisplayImageOptions, str, paramImageLoadingListener, (ImageLoadingListenerWrapper)localObject, paramImageLoadingProgressListener, this.engine.getLockForUri(paramString));
+      paramString = new LoadAndDisplayImageTask(this.engine, paramString, defineHandler(paramImageLoadingListener));
+      if (paramImageLoadingListener.isSyncLoading())
+      {
+        paramString.run();
+        return;
+      }
+      this.engine.submit(paramString);
+      return;
     }
+    throw new IllegalArgumentException("Wrong arguments were passed to displayImage() method (ImageView reference must not be null)");
   }
   
   public void displayImage(String paramString, ImageAware paramImageAware, DisplayImageOptions paramDisplayImageOptions, ImageLoadingListener paramImageLoadingListener)
@@ -291,24 +283,29 @@ public class ImageLoader
   
   public void init(ImageLoaderConfiguration paramImageLoaderConfiguration)
   {
-    if (paramImageLoaderConfiguration == null) {
+    if (paramImageLoaderConfiguration != null) {
       try
       {
-        throw new IllegalArgumentException("ImageLoader configuration can not be initialized with null");
+        if (this.configuration == null)
+        {
+          L.d("Initialize ImageLoader with configuration", new Object[0]);
+          this.engine = new ImageLoaderEngine(paramImageLoaderConfiguration);
+          this.configuration = paramImageLoaderConfiguration;
+        }
+        else
+        {
+          L.w("Try to initialize ImageLoader which had already been initialized before. To re-init ImageLoader with new configuration call ImageLoader.destroy() at first.", new Object[0]);
+        }
+        return;
       }
-      finally {}
+      finally
+      {
+        break label68;
+      }
     }
-    if (this.configuration == null)
-    {
-      L.d("Initialize ImageLoader with configuration", new Object[0]);
-      this.engine = new ImageLoaderEngine(paramImageLoaderConfiguration);
-      this.configuration = paramImageLoaderConfiguration;
-    }
-    for (;;)
-    {
-      return;
-      L.w("Try to initialize ImageLoader which had already been initialized before. To re-init ImageLoader with new configuration call ImageLoader.destroy() at first.", new Object[0]);
-    }
+    throw new IllegalArgumentException("ImageLoader configuration can not be initialized with null");
+    label68:
+    throw paramImageLoaderConfiguration;
   }
   
   public boolean isInited()
@@ -333,12 +330,11 @@ public class ImageLoader
     if (paramImageSize == null) {
       localImageSize = this.configuration.getMaxImageSize();
     }
-    if (paramDisplayImageOptions == null) {}
-    for (paramImageSize = this.configuration.defaultDisplayImageOptions;; paramImageSize = paramDisplayImageOptions)
-    {
-      displayImage(paramString, new NonViewAware(paramString, localImageSize, ViewScaleType.CROP), paramImageSize, paramImageLoadingListener, paramImageLoadingProgressListener);
-      return;
+    paramImageSize = paramDisplayImageOptions;
+    if (paramDisplayImageOptions == null) {
+      paramImageSize = this.configuration.defaultDisplayImageOptions;
     }
+    displayImage(paramString, new NonViewAware(paramString, localImageSize, ViewScaleType.CROP), paramImageSize, paramImageLoadingListener, paramImageLoadingProgressListener);
   }
   
   public void loadImage(String paramString, ImageSize paramImageSize, ImageLoadingListener paramImageLoadingListener)
@@ -409,7 +405,7 @@ public class ImageLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nostra13.universalimageloader.core.ImageLoader
  * JD-Core Version:    0.7.0.1
  */

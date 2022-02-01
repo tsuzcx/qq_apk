@@ -2,100 +2,100 @@ package com.gyailib.library;
 
 public class SegmentSmoothConfig
 {
-  public float blur_radius = 9.0F;
-  public boolean enable_blur_threshold;
-  public boolean enable_frames;
-  public boolean enable_guide_smooth;
-  public boolean enable_line_smooth;
-  public boolean enable_sigmod;
-  public boolean enable_smooth;
-  public boolean enable_threshold;
-  public String face_feature_key;
-  public int mask_resize_height = 480;
-  public int mask_resize_width = 480;
-  public float post_process_max_threshold = 0.6F;
-  public float post_process_min_threshold = 0.4F;
-  public float pre_process_max_threshold = 0.6F;
-  public float pre_process_min_threshold = 0.4F;
+  public float blurRadius = 9.0F;
+  public boolean enableBlurThreshold;
+  public boolean enableFrames;
+  public boolean enableGuideSmooth;
+  public boolean enableLineSmooth;
+  public boolean enableSigmod;
+  public boolean enableSmooth;
+  public boolean enableThreshold;
+  public String faceFeatureKey;
+  public int maskResizeHeight = 480;
+  public int maskResizeWidth = 480;
+  public float postProcessMaxThreshold = 0.6F;
+  public float postProcessMinThreshold = 0.4F;
+  public float preProcessMaxThreshold = 0.6F;
+  public float preProcessMinThreshold = 0.4F;
   
   public float getBlurRadius()
   {
-    return this.blur_radius;
+    return this.blurRadius;
   }
   
   public boolean getEnableBlurThreshold()
   {
-    return this.enable_blur_threshold;
+    return this.enableBlurThreshold;
   }
   
   public boolean getEnableFrames()
   {
-    return this.enable_frames;
+    return this.enableFrames;
   }
   
   public boolean getEnableGuideSmooth()
   {
-    return this.enable_guide_smooth;
+    return this.enableGuideSmooth;
   }
   
   public boolean getEnableLineSmooth()
   {
-    return this.enable_line_smooth;
+    return this.enableLineSmooth;
   }
   
   public boolean getEnableSigmod()
   {
-    return this.enable_sigmod;
+    return this.enableSigmod;
   }
   
   public boolean getEnableSmooth()
   {
-    return this.enable_smooth;
+    return this.enableSmooth;
   }
   
   public boolean getEnableThreshold()
   {
-    return this.enable_threshold;
+    return this.enableThreshold;
   }
   
   public String getFaceFeatureKey()
   {
-    return this.face_feature_key;
+    return this.faceFeatureKey;
   }
   
   public int getMaskResizeHeight()
   {
-    return this.mask_resize_height;
+    return this.maskResizeHeight;
   }
   
   public int getMaskResizeWidth()
   {
-    return this.mask_resize_width;
+    return this.maskResizeWidth;
   }
   
   public float getPostProcessMaxThreshold()
   {
-    return this.post_process_max_threshold;
+    return this.postProcessMaxThreshold;
   }
   
   public float getPostProcessMinThreshold()
   {
-    return this.post_process_min_threshold;
+    return this.postProcessMinThreshold;
   }
   
   public float getPreProcessMaxThreshold()
   {
-    return this.pre_process_max_threshold;
+    return this.preProcessMaxThreshold;
   }
   
   public float getPreProcessMinThreshold()
   {
-    return this.pre_process_min_threshold;
+    return this.preProcessMinThreshold;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.gyailib.library.SegmentSmoothConfig
  * JD-Core Version:    0.7.0.1
  */

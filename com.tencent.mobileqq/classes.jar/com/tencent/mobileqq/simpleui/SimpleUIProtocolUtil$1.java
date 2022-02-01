@@ -24,8 +24,14 @@ final class SimpleUIProtocolUtil$1
       while (paramInt < paramObject.vItems.size())
       {
         ItemDisDetail localItemDisDetail = (ItemDisDetail)paramObject.vItems.get(paramInt);
-        localList.add(localItemDisDetail.itemId + "");
-        if (TextUtils.equals("2920", localItemDisDetail.itemId + "")) {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localItemDisDetail.itemId);
+        localStringBuilder.append("");
+        localList.add(localStringBuilder.toString());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localItemDisDetail.itemId);
+        localStringBuilder.append("");
+        if (TextUtils.equals("2920", localStringBuilder.toString())) {
           SimpleUIUtil.e(paramInt);
         }
         paramInt += 1;
@@ -38,7 +44,7 @@ final class SimpleUIProtocolUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.simpleui.SimpleUIProtocolUtil.1
  * JD-Core Version:    0.7.0.1
  */

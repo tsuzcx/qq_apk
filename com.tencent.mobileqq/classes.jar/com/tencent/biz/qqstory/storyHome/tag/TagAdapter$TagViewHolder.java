@@ -11,7 +11,7 @@ class TagAdapter$TagViewHolder
   
   public TagAdapter$TagViewHolder(View paramView)
   {
-    this.a = ((TextView)paramView.findViewById(2131378870));
+    this.a = ((TextView)paramView.findViewById(2131378259));
   }
   
   public void a(TagItem.TagInfoBase paramTagInfoBase, TagAdapter.OnItemClickListener paramOnItemClickListener)
@@ -29,7 +29,7 @@ class TagAdapter$TagViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.tag.TagAdapter.TagViewHolder
  * JD-Core Version:    0.7.0.1
  */

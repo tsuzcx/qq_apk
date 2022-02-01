@@ -30,117 +30,129 @@ public class ListenTogetherPlugin
   
   public void a(JSONObject paramJSONObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogetherPlugin", 2, "statusChanged isDestroy:" + this.isDestroy + " data:" + paramJSONObject + " mCheckJoinCallback:" + this.jdField_a_of_type_JavaLangString + " mJoinListenCallback:" + this.jdField_b_of_type_JavaLangString);
-    }
-    if ((paramJSONObject != null) && (TextUtils.equals(paramJSONObject.optString("type"), "checkJoin"))) {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        localJSONObject = new JSONObject();
-      }
-    }
-    do
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      try
-      {
-        localJSONObject.put("canJoin", paramJSONObject.optInt("canJoin"));
-        localJSONObject.put("isOpener", paramJSONObject.optInt("isOpener"));
-        localJSONObject.put("uinType", paramJSONObject.optInt("uinType"));
-        callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        return;
-      }
-      catch (Throwable paramJSONObject)
-      {
-        QLog.e("ListenTogetherPlugin", 1, "statusChanged error:" + paramJSONObject.getMessage());
-        return;
-      }
-      if ((paramJSONObject == null) || (!TextUtils.equals(paramJSONObject.optString("type"), "joinListen"))) {
-        break;
-      }
-    } while (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString));
-    JSONObject localJSONObject = new JSONObject();
-    try
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("statusChanged isDestroy:");
+      ((StringBuilder)localObject).append(this.isDestroy);
+      ((StringBuilder)localObject).append(" data:");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      ((StringBuilder)localObject).append(" mCheckJoinCallback:");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(" mJoinListenCallback:");
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+      QLog.d("ListenTogetherPlugin", 2, ((StringBuilder)localObject).toString());
+    }
+    if ((paramJSONObject != null) && (TextUtils.equals(paramJSONObject.optString("type"), "checkJoin")))
     {
-      localJSONObject.put("retCode", paramJSONObject.optInt("retCode"));
-      callJs(this.jdField_b_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-      this.jdField_b_of_type_JavaLangString = null;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      {
+        localObject = new JSONObject();
+        try
+        {
+          ((JSONObject)localObject).put("canJoin", paramJSONObject.optInt("canJoin"));
+          ((JSONObject)localObject).put("isOpener", paramJSONObject.optInt("isOpener"));
+          ((JSONObject)localObject).put("uinType", paramJSONObject.optInt("uinType"));
+          callJs(this.jdField_a_of_type_JavaLangString, new String[] { ((JSONObject)localObject).toString() });
+          return;
+        }
+        catch (Throwable paramJSONObject)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("statusChanged error:");
+          ((StringBuilder)localObject).append(paramJSONObject.getMessage());
+          QLog.e("ListenTogetherPlugin", 1, ((StringBuilder)localObject).toString());
+        }
+      }
       return;
     }
-    catch (Throwable paramJSONObject)
+    if ((paramJSONObject != null) && (TextUtils.equals(paramJSONObject.optString("type"), "joinListen")))
     {
-      for (;;)
+      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
       {
-        QLog.e("ListenTogetherPlugin", 1, "statusChanged error:" + paramJSONObject.getMessage());
+        localObject = new JSONObject();
+        try
+        {
+          ((JSONObject)localObject).put("retCode", paramJSONObject.optInt("retCode"));
+          callJs(this.jdField_b_of_type_JavaLangString, new String[] { ((JSONObject)localObject).toString() });
+        }
+        catch (Throwable paramJSONObject)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("statusChanged error:");
+          ((StringBuilder)localObject).append(paramJSONObject.getMessage());
+          QLog.e("ListenTogetherPlugin", 1, ((StringBuilder)localObject).toString());
+        }
+        this.jdField_b_of_type_JavaLangString = null;
       }
+      return;
     }
     dispatchJsEvent("musicStatusChange", paramJSONObject, null);
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
+    boolean bool2 = QLog.isColorLevel();
+    boolean bool1 = true;
+    if (bool2) {
       QLog.d("ListenTogetherPlugin", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
     }
     if ("listenTogether".equals(paramString2))
     {
       paramJsBridgeListener = WebViewPlugin.getJsonFromJSBridge(paramString1);
-      if (paramJsBridgeListener == null) {}
-      do
+      if (paramJsBridgeListener == null) {
+        return true;
+      }
+      if (QLog.isColorLevel())
       {
-        do
+        paramString1 = new StringBuilder();
+        paramString1.append("handleJsRequest JSON = ");
+        paramString1.append(paramJsBridgeListener.toString());
+        QLog.d("ListenTogetherPlugin", 2, paramString1.toString());
+      }
+      this.c = paramJsBridgeListener.optString("callback");
+      if ("awakePlugin".equals(paramString3)) {
+        return true;
+      }
+      if ("statusChanged".equals(paramString3)) {
+        try
         {
-          do
+          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+          ListenTogetherIPCModuleWebClient.a(paramJsBridgeListener);
+          if ("checkJoin".equals(paramJsBridgeListener.opt("type")))
           {
-            do
-            {
-              return true;
-              if (QLog.isColorLevel()) {
-                QLog.d("ListenTogetherPlugin", 2, "handleJsRequest JSON = " + paramJsBridgeListener.toString());
-              }
-              this.c = paramJsBridgeListener.optString("callback");
-            } while ("awakePlugin".equals(paramString3));
-            if (!"statusChanged".equals(paramString3)) {
-              break;
-            }
-            try
-            {
-              paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-              ListenTogetherIPCModuleWebClient.a(paramJsBridgeListener);
-              if (!"checkJoin".equals(paramJsBridgeListener.opt("type"))) {
-                continue;
-              }
-              if (paramJsBridgeListener != null)
-              {
-                this.jdField_a_of_type_JavaLangString = paramJsBridgeListener.optString("callback");
-                return true;
-              }
-            }
-            catch (Exception paramJsBridgeListener)
-            {
-              QLog.e("ListenTogetherPlugin", 1, "METHOD_STATUS_CHANGED exception e = ", paramJsBridgeListener);
-              return true;
-            }
-            this.jdField_a_of_type_JavaLangString = null;
-            return true;
-          } while (!"joinListen".equals(paramJsBridgeListener.opt("type")));
-          if (paramJsBridgeListener != null)
-          {
-            this.jdField_b_of_type_JavaLangString = paramJsBridgeListener.optString("callback");
+            this.jdField_a_of_type_JavaLangString = paramJsBridgeListener.optString("callback");
             return true;
           }
-          this.jdField_b_of_type_JavaLangString = null;
+          if (!"joinListen".equals(paramJsBridgeListener.opt("type"))) {
+            break label330;
+          }
+          this.jdField_b_of_type_JavaLangString = paramJsBridgeListener.optString("callback");
           return true;
-          if (!"isOpener".equals(paramString3)) {
-            break;
-          }
-        } while (TextUtils.isEmpty(this.c));
+        }
+        catch (Exception paramJsBridgeListener)
+        {
+          QLog.e("ListenTogetherPlugin", 1, "METHOD_STATUS_CHANGED exception e = ", paramJsBridgeListener);
+          return true;
+        }
+      }
+      if ("isOpener".equals(paramString3))
+      {
+        if (TextUtils.isEmpty(this.c)) {
+          return true;
+        }
         ListenTogetherIPCModuleWebClient.a(paramJsBridgeListener, "isOpener", this.jdField_b_of_type_EipcEIPCResultCallback);
         return true;
-        if (!"isShowAtmosphere".equals(paramString3)) {
-          break;
+      }
+      if ("isShowAtmosphere".equals(paramString3))
+      {
+        if (TextUtils.isEmpty(this.c)) {
+          return true;
         }
-      } while (TextUtils.isEmpty(this.c));
-      ListenTogetherIPCModuleWebClient.a(paramJsBridgeListener, "isShowAtmosphere", this.jdField_a_of_type_EipcEIPCResultCallback);
-      return true;
+        ListenTogetherIPCModuleWebClient.a(paramJsBridgeListener, "isShowAtmosphere", this.jdField_a_of_type_EipcEIPCResultCallback);
+        return true;
+      }
       if ("setPlayerId".equals(paramString3))
       {
         ListenTogetherIPCModuleWebClient.a(paramJsBridgeListener, "setPlayerId", null);
@@ -152,18 +164,26 @@ public class ListenTogetherPlugin
         return true;
       }
     }
-    return false;
+    bool1 = false;
+    label330:
+    return bool1;
   }
   
   public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
   {
     super.onActivityResult(paramIntent, paramByte, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogetherPlugin", 2, "onActivityResult requestCode=" + paramByte + "  resultCode=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("onActivityResult requestCode=");
+      paramIntent.append(paramByte);
+      paramIntent.append("  resultCode=");
+      paramIntent.append(paramInt);
+      QLog.d("ListenTogetherPlugin", 2, paramIntent.toString());
     }
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
     if (QLog.isColorLevel()) {
@@ -172,7 +192,7 @@ public class ListenTogetherPlugin
     ListenTogetherIPCModuleWebClient.a().a(this);
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
     if (QLog.isColorLevel()) {
@@ -183,7 +203,7 @@ public class ListenTogetherPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherPlugin
  * JD-Core Version:    0.7.0.1
  */

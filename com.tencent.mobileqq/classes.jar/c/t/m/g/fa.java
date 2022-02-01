@@ -43,13 +43,27 @@ final class fa
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("AddressData{");
-    localStringBuilder.append("name=").append(this.a).append(",");
-    localStringBuilder.append("dtype=").append(this.b).append(",");
-    localStringBuilder.append("pointx=").append(this.d).append(",");
-    localStringBuilder.append("pointy=").append(this.e).append(",");
-    localStringBuilder.append("dist=").append(this.f).append(",");
-    localStringBuilder.append("direction=").append(this.g).append(",");
-    localStringBuilder.append("tag=").append(this.h).append(",");
+    localStringBuilder.append("name=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(",");
+    localStringBuilder.append("dtype=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",");
+    localStringBuilder.append("pointx=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(",");
+    localStringBuilder.append("pointy=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(",");
+    localStringBuilder.append("dist=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(",");
+    localStringBuilder.append("direction=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(",");
+    localStringBuilder.append("tag=");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(",");
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
@@ -68,7 +82,7 @@ final class fa
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.fa
  * JD-Core Version:    0.7.0.1
  */

@@ -24,89 +24,97 @@ class WsStickerEditView$OnBtnTouchListener
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((!this.this$0.getSticker().isEditable()) || (!this.this$0.isStickerSelected)) {}
-    do
+    if (this.this$0.getSticker().isEditable())
     {
-      do
+      if (!this.this$0.isStickerSelected) {
+        return false;
+      }
+      int i = (int)paramMotionEvent.getX();
+      int j = (int)paramMotionEvent.getY();
+      if (TAVStickerMode.ACTIVE == this.this$0.getMode())
       {
-        int i;
-        int j;
-        do
+        int k = paramMotionEvent.getAction();
+        if (k != 0)
         {
-          do
+          if (k != 1)
           {
-            return false;
-            i = (int)paramMotionEvent.getX();
-            j = (int)paramMotionEvent.getY();
-          } while ((WsStickerEditView.access$400(this.this$0)) || (TAVStickerMode.ACTIVE != this.this$0.getMode()));
-          switch (paramMotionEvent.getAction())
-          {
-          default: 
-            return false;
-          case 0: 
+            if (k != 2) {
+              return false;
+            }
+            if ((Math.abs(i - this.downPoint.x) <= this.this$0.TOUCH_SLOP) && (Math.abs(j - this.downPoint.y) <= this.this$0.TOUCH_SLOP)) {
+              return true;
+            }
             this.isClickAdjustTime = false;
             this.isClickDelete = false;
-            this.downPoint.set(i, j);
-            if ((WsStickerEditView.access$500(this.this$0, i, j)) && (StickerDrawingOperationMask.isDrawLeftBottom(WsStickerEditView.access$600(this.this$0))))
-            {
-              this.isClickAdjustTime = true;
-              return true;
-            }
-            if ((WsStickerEditView.access$700(this.this$0, i, j)) && (StickerDrawingOperationMask.isDrawLeftTop(WsStickerEditView.access$600(this.this$0))))
-            {
-              this.isClickDelete = true;
-              return true;
-            }
-            break;
+            this.isClickEdit = false;
+            return false;
           }
-        } while ((!WsStickerEditView.access$800(this.this$0, paramMotionEvent.getX(), paramMotionEvent.getY())) || (!StickerDrawingOperationMask.isDrawRightTop(WsStickerEditView.access$600(this.this$0))));
-        this.isClickEdit = true;
-        return true;
-        if ((Math.abs(i - this.downPoint.x) > this.this$0.TOUCH_SLOP) || (Math.abs(j - this.downPoint.y) > this.this$0.TOUCH_SLOP))
+          if (Math.abs(paramMotionEvent.getEventTime() - paramMotionEvent.getDownTime()) < this.this$0.CLICK_DURATION)
+          {
+            if (this.isClickAdjustTime)
+            {
+              if (this.this$0.stickerEditButtonClickListener != null) {
+                this.this$0.stickerEditButtonClickListener.onAdjustTimeClick(this.this$0.getSticker());
+              }
+              return true;
+            }
+            if (this.isClickDelete)
+            {
+              if (this.this$0.stickerEditButtonClickListener != null) {
+                this.this$0.stickerEditButtonClickListener.onDeleteClick(this.this$0.getSticker());
+              }
+              return true;
+            }
+            if (this.isClickEdit)
+            {
+              paramView = new ArrayList();
+              if (this.this$0.getSticker().getStickerTextItems() != null)
+              {
+                paramMotionEvent = this.this$0.getSticker().getStickerTextItems().iterator();
+                while (paramMotionEvent.hasNext())
+                {
+                  TAVStickerTextItem localTAVStickerTextItem = (TAVStickerTextItem)paramMotionEvent.next();
+                  if (localTAVStickerTextItem.getLayerType() == 3) {
+                    paramView.add(localTAVStickerTextItem);
+                  }
+                }
+              }
+              if (this.this$0.stickerEditButtonClickListener != null) {
+                this.this$0.stickerEditButtonClickListener.onEditClick(this.this$0.getSticker(), paramView);
+              }
+              return true;
+            }
+          }
+        }
+        else
         {
           this.isClickAdjustTime = false;
           this.isClickDelete = false;
-          this.isClickEdit = false;
-          return false;
-        }
-        return true;
-      } while (Math.abs(paramMotionEvent.getEventTime() - paramMotionEvent.getDownTime()) >= this.this$0.CLICK_DURATION);
-      if (this.isClickAdjustTime)
-      {
-        if (WsStickerEditView.access$200(this.this$0) != null) {
-          WsStickerEditView.access$200(this.this$0).onAdjustTimeClick(this.this$0.getSticker());
-        }
-        return true;
-      }
-      if (this.isClickDelete)
-      {
-        if (WsStickerEditView.access$200(this.this$0) != null) {
-          WsStickerEditView.access$200(this.this$0).onDeleteClick(this.this$0.getSticker());
-        }
-        return true;
-      }
-    } while (!this.isClickEdit);
-    paramView = new ArrayList();
-    if (this.this$0.getSticker().getStickerTextItems() != null)
-    {
-      paramMotionEvent = this.this$0.getSticker().getStickerTextItems().iterator();
-      while (paramMotionEvent.hasNext())
-      {
-        TAVStickerTextItem localTAVStickerTextItem = (TAVStickerTextItem)paramMotionEvent.next();
-        if (localTAVStickerTextItem.getLayerType() == 3) {
-          paramView.add(localTAVStickerTextItem);
+          this.downPoint.set(i, j);
+          if ((WsStickerEditView.access$300(this.this$0, i, j)) && (StickerDrawingOperationMask.isDrawLeftBottom(this.this$0.drawMask)))
+          {
+            this.isClickAdjustTime = true;
+            return true;
+          }
+          if ((this.this$0.isTouchDeleteBtn(i, j)) && (StickerDrawingOperationMask.isDrawLeftTop(this.this$0.drawMask)))
+          {
+            this.isClickDelete = true;
+            return true;
+          }
+          if ((WsStickerEditView.access$400(this.this$0, paramMotionEvent.getX(), paramMotionEvent.getY())) && (StickerDrawingOperationMask.isDrawRightTop(this.this$0.drawMask)))
+          {
+            this.isClickEdit = true;
+            return true;
+          }
         }
       }
     }
-    if (WsStickerEditView.access$200(this.this$0) != null) {
-      WsStickerEditView.access$200(this.this$0).onEditClick(this.this$0.getSticker(), paramView);
-    }
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.view.WsStickerEditView.OnBtnTouchListener
  * JD-Core Version:    0.7.0.1
  */

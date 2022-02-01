@@ -14,24 +14,23 @@ public class HiddenChatTroopInfoProcessor
 {
   public void a(@NonNull AppInterface paramAppInterface, TroopInfo paramTroopInfo, oidb_0x88d.GroupInfo paramGroupInfo)
   {
-    if (((paramAppInterface instanceof QQAppInterface)) && (paramGroupInfo.uint32_cmduin_flag_ex2.has()) && (paramGroupInfo.uint32_cmduin_flag_ex2.get() != paramTroopInfo.cmdUinFlagEx2)) {
-      if (TroopInfo.isCmdUinFlagEx2Open(paramTroopInfo.cmdUinFlagEx2, 512) == TroopInfo.isCmdUinFlagEx2Open(paramGroupInfo.uint32_cmduin_flag_ex2.get(), 512)) {
-        break label77;
-      }
-    }
-    label77:
-    for (int i = 1;; i = 0)
+    if (((paramAppInterface instanceof QQAppInterface)) && (paramGroupInfo.uint32_cmduin_flag_ex2.has()) && (paramGroupInfo.uint32_cmduin_flag_ex2.get() != paramTroopInfo.cmdUinFlagEx2))
     {
+      int i;
+      if (TroopInfo.isCmdUinFlagEx2Open(paramTroopInfo.cmdUinFlagEx2, 512) != TroopInfo.isCmdUinFlagEx2Open(paramGroupInfo.uint32_cmduin_flag_ex2.get(), 512)) {
+        i = 1;
+      } else {
+        i = 0;
+      }
       if (i != 0) {
         TroopStatusUtil.a((QQAppInterface)paramAppInterface, paramTroopInfo);
       }
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.troop.config.HiddenChatTroopInfoProcessor
  * JD-Core Version:    0.7.0.1
  */

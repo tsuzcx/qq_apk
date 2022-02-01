@@ -12,6 +12,7 @@ import com.huawei.hms.support.api.entity.core.ConnectInfo;
 import com.huawei.hms.support.api.entity.core.ConnectResp;
 import com.huawei.hms.support.api.entity.core.DisconnectInfo;
 import com.huawei.hms.support.api.entity.core.DisconnectResp;
+import com.huawei.hms.support.api.entity.core.JosBaseReq;
 import com.huawei.hms.support.api.entity.core.JosGetNoticeReq;
 import com.huawei.hms.support.api.entity.core.JosGetNoticeResp;
 
@@ -24,7 +25,7 @@ public final class ConnectService
   
   public static PendingResult<ResolveResult<ConnectResp>> connect(ApiClient paramApiClient, ConnectInfo paramConnectInfo)
   {
-    return new ConnectService.1(paramApiClient, "core.connect", paramConnectInfo);
+    return new ConnectService.a(paramApiClient, "core.connect", paramConnectInfo);
   }
   
   public static ResolvePendingResult<DisconnectResp> disconnect(ApiClient paramApiClient, DisconnectInfo paramDisconnectInfo)
@@ -34,7 +35,7 @@ public final class ConnectService
   
   public static PendingResult<ResolveResult<ConnectResp>> forceConnect(ApiClient paramApiClient, ConnectInfo paramConnectInfo)
   {
-    return new ConnectService.2(paramApiClient, "core.foreconnect", paramConnectInfo);
+    return new ConnectService.b(paramApiClient, "core.foreconnect", paramConnectInfo);
   }
   
   public static PendingResult<ResolveResult<JosGetNoticeResp>> getNotice(ApiClient paramApiClient, int paramInt, String paramString)
@@ -45,12 +46,12 @@ public final class ConnectService
     if (!TextUtils.isEmpty(paramApiClient.getCpID())) {
       localJosGetNoticeReq.setCpID(paramApiClient.getCpID());
     }
-    return new ConnectService.3(paramApiClient, "core.getNoticeIntent", localJosGetNoticeReq);
+    return new ConnectService.c(paramApiClient, "core.getNoticeIntent", localJosGetNoticeReq);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.support.api.core.ConnectService
  * JD-Core Version:    0.7.0.1
  */

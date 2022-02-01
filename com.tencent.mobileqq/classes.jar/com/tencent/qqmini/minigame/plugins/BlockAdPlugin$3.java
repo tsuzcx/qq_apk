@@ -21,29 +21,31 @@ class BlockAdPlugin$3
       {
         localJSONObject.put("state", "show");
         if (!bool) {
-          continue;
+          break label149;
         }
-        str = "ok";
+        String str = "ok";
         localJSONObject.put("status", str);
         localJSONObject.put("compId", this.val$compId);
         BlockAdPlugin.access$200(this.this$0, this.val$req, localJSONObject, "onBlockAdShowDone");
       }
       catch (JSONException localJSONException)
       {
-        String str;
         BlockAdPlugin.access$100(this.this$0, this.val$req, 1003, (String)BlockAdPlugin.access$400().get(Integer.valueOf(1003)), this.val$compId, 0);
         QMLog.i("BlockAdPlugin", "handle operateBannerAd show error", localJSONException);
-        continue;
       }
-      QMLog.i("BlockAdPlugin", "showBlockAd " + bool);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("showBlockAd ");
+      ((StringBuilder)localObject).append(bool);
+      QMLog.i("BlockAdPlugin", ((StringBuilder)localObject).toString());
       return;
-      str = "error";
+      label149:
+      localObject = "error";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.BlockAdPlugin.3
  * JD-Core Version:    0.7.0.1
  */

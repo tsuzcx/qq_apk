@@ -8,17 +8,21 @@ final class AnimationTools$1
 {
   private int a(String paramString)
   {
+    int i;
     try
     {
-      int i = paramString.lastIndexOf('.');
+      i = paramString.lastIndexOf('.');
       if (i == -1) {
-        return Integer.parseInt(paramString);
+        i = Integer.parseInt(paramString);
+      } else {
+        i = Integer.parseInt(paramString.substring(0, i));
       }
-      i = Integer.parseInt(paramString.substring(0, i));
-      return i;
     }
-    catch (Exception paramString) {}
-    return 0;
+    catch (Exception paramString)
+    {
+      return 0;
+    }
+    return i;
   }
   
   public int a(File paramFile1, File paramFile2)
@@ -28,7 +32,7 @@ final class AnimationTools$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.AnimationTools.1
  * JD-Core Version:    0.7.0.1
  */

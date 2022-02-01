@@ -43,38 +43,35 @@ public class TableQueryViewer$TableQueryAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     View localView;
-    Object localObject;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.a.getContext()).inflate(2131563081, paramViewGroup, false);
+      localView = LayoutInflater.from(this.a.getContext()).inflate(2131562908, paramViewGroup, false);
       paramView = new TableQueryViewer.QueryViewHolder(this.a, localView);
       localView.setTag(paramView);
-      localObject = (QueryData)a().get(paramInt);
-      paramView.a.setText(((QueryData)localObject).b);
-      paramView.d.setText(((QueryData)localObject).k);
-      paramView.b.setText(((QueryData)localObject).c);
-      paramView.c.setText(((QueryData)localObject).f);
-      if (paramInt % 2 != 0) {
-        break label168;
-      }
-      localView.setBackgroundColor(this.a.getContext().getResources().getColor(2131166602));
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
       localObject = (TableQueryViewer.QueryViewHolder)paramView.getTag();
       localView = paramView;
       paramView = (View)localObject;
-      break;
-      label168:
-      localView.setBackgroundColor(this.a.getContext().getResources().getColor(2131167374));
     }
+    Object localObject = (QueryData)a().get(paramInt);
+    paramView.a.setText(((QueryData)localObject).b);
+    paramView.d.setText(((QueryData)localObject).k);
+    paramView.b.setText(((QueryData)localObject).c);
+    paramView.c.setText(((QueryData)localObject).f);
+    if (paramInt % 2 == 0) {
+      localView.setBackgroundColor(this.a.getContext().getResources().getColor(2131166617));
+    } else {
+      localView.setBackgroundColor(this.a.getContext().getResources().getColor(2131167394));
+    }
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tablequery.TableQueryViewer.TableQueryAdapter
  * JD-Core Version:    0.7.0.1
  */

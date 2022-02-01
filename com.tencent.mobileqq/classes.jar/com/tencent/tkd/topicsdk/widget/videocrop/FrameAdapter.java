@@ -56,7 +56,10 @@ public final class FrameAdapter
   public final void a(@NotNull FramesProcessor.Frame paramFrame)
   {
     Intrinsics.checkParameterIsNotNull(paramFrame, "frame");
-    TLog.b("FrameAdapter", "addFrame, index=" + paramFrame.a());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("addFrame, index=");
+    localStringBuilder.append(paramFrame.a());
+    TLog.b("FrameAdapter", localStringBuilder.toString());
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(Integer.valueOf(paramFrame.a()), paramFrame);
     paramFrame = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFrameAdapter$DataSetChangeListener;
     if (paramFrame != null) {
@@ -76,7 +79,7 @@ public final class FrameAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocrop.FrameAdapter
  * JD-Core Version:    0.7.0.1
  */

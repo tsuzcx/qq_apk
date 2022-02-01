@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.richmedia.ordersend;
 
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.FileTransferManager.Callback;
+import com.tencent.mobileqq.activity.aio.Callback;
 import com.tencent.mobileqq.transfile.FileMsg;
 import java.lang.ref.WeakReference;
 
 class OrderMediaMsgStatusCallback$CallbackWrapper
 {
   WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  WeakReference<FileTransferManager.Callback> b;
+  WeakReference<Callback> b;
   WeakReference<FileMsg> c;
   
-  public OrderMediaMsgStatusCallback$CallbackWrapper(OrderMediaMsgStatusCallback paramOrderMediaMsgStatusCallback, View paramView, FileTransferManager.Callback paramCallback)
+  public OrderMediaMsgStatusCallback$CallbackWrapper(OrderMediaMsgStatusCallback paramOrderMediaMsgStatusCallback, View paramView, Callback paramCallback)
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
     this.b = new WeakReference(paramCallback);
@@ -22,17 +22,18 @@ class OrderMediaMsgStatusCallback$CallbackWrapper
     return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
   }
   
-  public FileTransferManager.Callback a()
+  public Callback a()
   {
-    return (FileTransferManager.Callback)this.b.get();
+    return (Callback)this.b.get();
   }
   
   public FileMsg a()
   {
-    if (this.c == null) {
+    WeakReference localWeakReference = this.c;
+    if (localWeakReference == null) {
       return null;
     }
-    return (FileMsg)this.c.get();
+    return (FileMsg)localWeakReference.get();
   }
   
   public void a(FileMsg paramFileMsg)
@@ -42,7 +43,7 @@ class OrderMediaMsgStatusCallback$CallbackWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.ordersend.OrderMediaMsgStatusCallback.CallbackWrapper
  * JD-Core Version:    0.7.0.1
  */

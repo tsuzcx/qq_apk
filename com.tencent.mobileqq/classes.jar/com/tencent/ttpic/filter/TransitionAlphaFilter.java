@@ -22,19 +22,21 @@ public class TransitionAlphaFilter
   
   private double getDuration(double paramDouble1, double paramDouble2, double paramDouble3)
   {
-    paramDouble3 = (paramDouble3 - paramDouble1) / (paramDouble2 - paramDouble1);
-    switch (this.easeCurve)
+    double d = paramDouble2 - paramDouble1;
+    paramDouble3 = (paramDouble3 - paramDouble1) / d;
+    int i = this.easeCurve;
+    if (i != 1)
     {
-    default: 
-      return paramDouble3 * (paramDouble2 - paramDouble1) + paramDouble1;
-    case 1: 
-      paramDouble1 = -(paramDouble2 - paramDouble1);
-      return Math.cos(paramDouble3 * 1.570796326794897D) * paramDouble1 + paramDouble2;
-    case 2: 
-      return Math.sin(paramDouble3 * 1.570796326794897D) * (paramDouble2 - paramDouble1) + paramDouble1;
+      if (i != 2) {
+        if (i == 3) {}
+      }
+      for (paramDouble2 = d * paramDouble3;; paramDouble2 = d * Math.sin(paramDouble3 * 1.570796326794897D))
+      {
+        return paramDouble2 + paramDouble1;
+        return -d / 2.0D * (Math.cos(paramDouble3 * 3.141592653589793D) - 1.0D) + paramDouble1;
+      }
     }
-    paramDouble2 = -(paramDouble2 - paramDouble1) / 2.0D;
-    return (Math.cos(paramDouble3 * 3.141592653589793D) - 1.0D) * paramDouble2 + paramDouble1;
+    return -d * Math.cos(paramDouble3 * 1.570796326794897D) + paramDouble2;
   }
   
   private void initParams()
@@ -45,15 +47,13 @@ public class TransitionAlphaFilter
   
   private void updateTextureParam(long paramLong)
   {
-    float f1 = 1.0F;
-    float f2 = (float)(getDuration(this.transitionStartTime, this.transitionStartTime + this.transitionDuration, paramLong) - this.transitionStartTime) / (float)this.transitionDuration;
-    if (f2 > 1.0F) {}
-    for (;;)
-    {
-      addParam(new UniformParam.FloatParam("alpha", f1));
-      return;
-      f1 = f2;
+    long l = this.transitionStartTime;
+    float f2 = (float)(getDuration(l, l + this.transitionDuration, paramLong) - this.transitionStartTime) / (float)this.transitionDuration;
+    float f1 = f2;
+    if (f2 > 1.0F) {
+      f1 = 1.0F;
     }
+    addParam(new UniformParam.FloatParam("alpha", f1));
   }
   
   public void reset()
@@ -89,7 +89,7 @@ public class TransitionAlphaFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.TransitionAlphaFilter
  * JD-Core Version:    0.7.0.1
  */

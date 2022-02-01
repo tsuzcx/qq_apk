@@ -33,7 +33,7 @@ public class HardCoderManager
   private static Bundle jdField_a_of_type_AndroidOsBundle;
   private static HardCoderManager jdField_a_of_type_ComTencentMmHardcoderHardCoderManager;
   private static final String jdField_a_of_type_JavaLangString;
-  private static Random jdField_a_of_type_JavaUtilRandom;
+  private static Random jdField_a_of_type_JavaUtilRandom = new Random();
   public static final boolean a;
   private static Bundle jdField_b_of_type_AndroidOsBundle;
   private int jdField_a_of_type_Int = 0;
@@ -45,60 +45,39 @@ public class HardCoderManager
   
   static
   {
-    if ((QLog.isColorLevel()) && (new File("/sdcard/debug_hc").exists())) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      jdField_a_of_type_JavaLangString = AppSetting.g() + "key_crash_cnt";
-      jdField_a_of_type_AndroidOsBundle = new Bundle(8);
-      jdField_b_of_type_AndroidOsBundle = new Bundle(2);
-      jdField_a_of_type_JavaUtilRandom = new Random();
-      return;
+    boolean bool;
+    if ((QLog.isColorLevel()) && (new File("/sdcard/debug_hc").exists())) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    jdField_a_of_type_Boolean = bool;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppSetting.g());
+    localStringBuilder.append("key_crash_cnt");
+    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    jdField_a_of_type_AndroidOsBundle = new Bundle(8);
+    jdField_b_of_type_AndroidOsBundle = new Bundle(2);
   }
   
-  /* Error */
   public static HardCoderManager a()
   {
-    // Byte code:
-    //   0: getstatic 113	com/tencent/mm/hardcoder/HardCoderManager:jdField_a_of_type_ComTencentMmHardcoderHardCoderManager	Lcom/tencent/mm/hardcoder/HardCoderManager;
-    //   3: ifnonnull +42 -> 45
-    //   6: ldc 2
-    //   8: monitorenter
-    //   9: getstatic 113	com/tencent/mm/hardcoder/HardCoderManager:jdField_a_of_type_ComTencentMmHardcoderHardCoderManager	Lcom/tencent/mm/hardcoder/HardCoderManager;
-    //   12: ifnonnull +30 -> 42
-    //   15: new 2	com/tencent/mm/hardcoder/HardCoderManager
-    //   18: dup
-    //   19: invokespecial 114	com/tencent/mm/hardcoder/HardCoderManager:<init>	()V
-    //   22: putstatic 113	com/tencent/mm/hardcoder/HardCoderManager:jdField_a_of_type_ComTencentMmHardcoderHardCoderManager	Lcom/tencent/mm/hardcoder/HardCoderManager;
-    //   25: getstatic 117	mqq/app/MobileQQ:sProcessId	I
-    //   28: iconst_1
-    //   29: if_icmpne +20 -> 49
-    //   32: new 119	com/tencent/mm/hardcoder/HardCoderManager$1
-    //   35: dup
-    //   36: invokespecial 120	com/tencent/mm/hardcoder/HardCoderManager$1:<init>	()V
-    //   39: invokevirtual 123	com/tencent/mm/hardcoder/HardCoderManager$1:start	()V
-    //   42: ldc 2
-    //   44: monitorexit
-    //   45: getstatic 113	com/tencent/mm/hardcoder/HardCoderManager:jdField_a_of_type_ComTencentMmHardcoderHardCoderManager	Lcom/tencent/mm/hardcoder/HardCoderManager;
-    //   48: areturn
-    //   49: getstatic 113	com/tencent/mm/hardcoder/HardCoderManager:jdField_a_of_type_ComTencentMmHardcoderHardCoderManager	Lcom/tencent/mm/hardcoder/HardCoderManager;
-    //   52: invokespecial 126	com/tencent/mm/hardcoder/HardCoderManager:d	()V
-    //   55: goto -13 -> 42
-    //   58: astore_0
-    //   59: ldc 2
-    //   61: monitorexit
-    //   62: aload_0
-    //   63: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   58	5	0	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   9	42	58	finally
-    //   42	45	58	finally
-    //   49	55	58	finally
-    //   59	62	58	finally
+    if (jdField_a_of_type_ComTencentMmHardcoderHardCoderManager == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMmHardcoderHardCoderManager == null)
+        {
+          jdField_a_of_type_ComTencentMmHardcoderHardCoderManager = new HardCoderManager();
+          if (MobileQQ.sProcessId == 1) {
+            new HardCoderManager.1().start();
+          } else {
+            jdField_a_of_type_ComTencentMmHardcoderHardCoderManager.d();
+          }
+        }
+      }
+      finally {}
+    }
+    return jdField_a_of_type_ComTencentMmHardcoderHardCoderManager;
   }
   
   private void d()
@@ -123,44 +102,47 @@ public class HardCoderManager
       this.jdField_a_of_type_Int = 3;
       return;
     }
-    int j;
     if (MobileQQ.sProcessId == 1)
     {
-      j = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt(jdField_a_of_type_JavaLangString, 0);
+      int j = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt(jdField_a_of_type_JavaLangString, 0);
       if (j > 2)
       {
         this.jdField_a_of_type_Int = 9;
-        localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-        ((SharedPreferences.Editor)localObject).putInt("key_state", this.jdField_a_of_type_Int);
-        if (this.jdField_a_of_type_Int != 10) {
-          break label307;
+      }
+      else
+      {
+        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(jdField_a_of_type_JavaLangString, j + 1).commit();
+        this.jdField_a_of_type_Int = HCPerfManager.a().a();
+        if ((this.jdField_a_of_type_Int == 10) && (i == 1) && (Math.random() < 0.5D))
+        {
+          this.jdField_a_of_type_Int = 8;
+          HCPerfManager.a().a();
         }
+      }
+      localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+      ((SharedPreferences.Editor)localObject).putInt("key_state", this.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_Int == 10)
+      {
         ((SharedPreferences.Editor)localObject).putInt(jdField_a_of_type_JavaLangString, j + 1);
         ThreadManager.getSubThreadHandler().postDelayed(new HardCoderManager.2(this), 10000L);
-        label196:
-        ((SharedPreferences.Editor)localObject).commit();
       }
+      else
+      {
+        ((SharedPreferences.Editor)localObject).putInt(jdField_a_of_type_JavaLangString, j);
+      }
+      ((SharedPreferences.Editor)localObject).commit();
     }
-    for (;;)
+    else
     {
-      QLog.d("HardCoder.QQManager", 1, "hc init " + this.jdField_a_of_type_Int);
-      return;
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(jdField_a_of_type_JavaLangString, j + 1).commit();
-      this.jdField_a_of_type_Int = HCPerfManager.a().a();
-      if ((this.jdField_a_of_type_Int != 10) || (i != 1) || (Math.random() >= 0.5D)) {
-        break;
-      }
-      this.jdField_a_of_type_Int = 8;
-      HCPerfManager.a().a();
-      break;
-      label307:
-      ((SharedPreferences.Editor)localObject).putInt(jdField_a_of_type_JavaLangString, j);
-      break label196;
       this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("key_state", 1);
       if (this.jdField_a_of_type_Int == 10) {
         this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
       }
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("hc init ");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    QLog.d("HardCoder.QQManager", 1, ((StringBuilder)localObject).toString());
   }
   
   public int a()
@@ -199,11 +181,11 @@ public class HardCoderManager
       localMessage.arg1 = paramInt1;
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt1), Integer.valueOf(0));
     }
-    for (;;)
+    else
     {
-      return localMessage.arg1;
       localMessage.arg1 = 0;
     }
+    return localMessage.arg1;
   }
   
   void a()
@@ -224,18 +206,17 @@ public class HardCoderManager
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if (paramInt == 0) {}
-    do
+    if (paramInt == 0) {
+      return;
+    }
+    if (MobileQQ.sProcessId == 1)
     {
-      do
-      {
-        return;
-        if (MobileQQ.sProcessId == 1)
-        {
-          HCPerfManager.a().a(paramInt);
-          return;
-        }
-      } while (this.jdField_a_of_type_AndroidOsHandler == null);
+      HCPerfManager.a().a(paramInt);
+      return;
+    }
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      Message localMessage;
       if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt)))
       {
         localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
@@ -243,68 +224,75 @@ public class HardCoderManager
         localMessage.sendToTarget();
         return;
       }
-    } while (!paramBoolean);
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-    localMessage.arg1 = paramInt;
-    localMessage.sendToTarget();
+      if (paramBoolean)
+      {
+        localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+        localMessage.arg1 = paramInt;
+        localMessage.sendToTarget();
+      }
+    }
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Int == 10) || (this.jdField_a_of_type_Int == 8);
+    int i = this.jdField_a_of_type_Int;
+    return (i == 10) || (i == 8);
   }
   
   public void b()
   {
-    QLog.d("HardCoder.QQManager", 1, "crash count = " + this.jdField_a_of_type_AndroidContentSharedPreferences.getInt(jdField_a_of_type_JavaLangString, 0));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("crash count = ");
+    localStringBuilder.append(this.jdField_a_of_type_AndroidContentSharedPreferences.getInt(jdField_a_of_type_JavaLangString, 0));
+    QLog.d("HardCoder.QQManager", 1, localStringBuilder.toString());
     this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(jdField_a_of_type_JavaLangString, 0).commit();
   }
   
   public void c()
   {
-    if (this.jdField_b_of_type_Boolean) {}
-    for (;;)
-    {
+    if (this.jdField_b_of_type_Boolean) {
       return;
-      this.jdField_b_of_type_Boolean = true;
-      Object localObject;
-      if (this.jdField_a_of_type_Int != 1)
+    }
+    this.jdField_b_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Int != 1)
+    {
+      Object localObject = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.batteryCfg.name());
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        localObject = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.batteryCfg.name());
-        if (!TextUtils.isEmpty((CharSequence)localObject))
+        localObject = ((String)localObject).split("#");
+        if (localObject.length >= 4)
         {
-          localObject = ((String)localObject).split("#");
-          if (localObject.length >= 4)
+          localObject = localObject[3];
+          StringBuilder localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append("hcConfig = ");
+          localStringBuilder1.append((String)localObject);
+          QLog.d("HardCoder.QQManager", 1, localStringBuilder1.toString());
+          if (!TextUtils.isEmpty((CharSequence)localObject))
           {
-            localObject = localObject[3];
-            QLog.d("HardCoder.QQManager", 1, "hcConfig = " + (String)localObject);
-            if (!TextUtils.isEmpty((CharSequence)localObject)) {
-              localObject = localObject.split("\\|")[0];
+            localObject = localObject.split("\\|")[0];
+            try
+            {
+              this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("key_cfg_flag", Integer.valueOf((String)localObject).intValue()).commit();
             }
+            catch (Exception localException)
+            {
+              QLog.e("HardCoder.QQManager", 1, "", localException);
+            }
+            StringBuilder localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append("svc flag = ");
+            localStringBuilder2.append((String)localObject);
+            QLog.d("HardCoder.QQManager", 1, localStringBuilder2.toString());
           }
         }
       }
-      try
+    }
+    if (this.jdField_a_of_type_Int == 4)
+    {
+      long l = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_last_down_time", 0L);
+      if ((Math.abs(System.currentTimeMillis() - l) > 86400000L) && (NetworkUtil.isWifiConnected(MobileQQ.getContext())))
       {
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("key_cfg_flag", Integer.valueOf((String)localObject).intValue()).commit();
-        QLog.d("HardCoder.QQManager", 1, "svc flag = " + (String)localObject);
-        if (this.jdField_a_of_type_Int != 4) {
-          continue;
-        }
-        long l = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_last_down_time", 0L);
-        if ((Math.abs(System.currentTimeMillis() - l) <= 86400000L) || (!NetworkUtil.h(MobileQQ.getContext()))) {
-          continue;
-        }
         this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("key_last_down_time", System.currentTimeMillis()).apply();
         ThreadManager.executeOnNetWorkThread(new HardCoderManager.3(this));
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.e("HardCoder.QQManager", 1, "", localException);
-        }
       }
     }
   }
@@ -327,20 +315,17 @@ public class HardCoderManager
         this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramMessage.arg1), Integer.valueOf(((EIPCResult)localObject).code));
       }
     }
-    for (;;)
+    else if (paramMessage.what == 1)
     {
-      return false;
-      if (paramMessage.what == 1)
-      {
-        jdField_b_of_type_AndroidOsBundle.putInt("key_code", paramMessage.arg1);
-        QIPCClientHelper.getInstance().getClient().callServer("HardCoderModule", "stop", jdField_b_of_type_AndroidOsBundle);
-      }
+      jdField_b_of_type_AndroidOsBundle.putInt("key_code", paramMessage.arg1);
+      QIPCClientHelper.getInstance().getClient().callServer("HardCoderModule", "stop", jdField_b_of_type_AndroidOsBundle);
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.hardcoder.HardCoderManager
  * JD-Core Version:    0.7.0.1
  */

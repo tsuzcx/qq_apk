@@ -16,7 +16,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"checkCountOverflow", "", "count", "checkIndexOverflow", "index", "copyToArrayImpl", "", "", "collection", "", "(Ljava/util/Collection;)[Ljava/lang/Object;", "T", "array", "(Ljava/util/Collection;[Ljava/lang/Object;)[Ljava/lang/Object;", "listOf", "", "element", "(Ljava/lang/Object;)Ljava/util/List;", "copyToArrayOfAny", "isVarargs", "", "([Ljava/lang/Object;Z)[Ljava/lang/Object;", "toList", "Ljava/util/Enumeration;", "kotlin-stdlib"}, k=5, mv={1, 1, 16}, xi=1, xs="kotlin/collections/CollectionsKt")
-public class CollectionsKt__CollectionsJVMKt
+class CollectionsKt__CollectionsJVMKt
 {
   @PublishedApi
   @SinceKotlin(version="1.3")
@@ -25,14 +25,14 @@ public class CollectionsKt__CollectionsJVMKt
   {
     if (paramInt < 0)
     {
-      if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0)) {
+      if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0))
+      {
         CollectionsKt.throwCountOverflow();
+        return paramInt;
       }
+      throw ((Throwable)new ArithmeticException("Count overflow has happened."));
     }
-    else {
-      return paramInt;
-    }
-    throw ((Throwable)new ArithmeticException("Count overflow has happened."));
+    return paramInt;
   }
   
   @PublishedApi
@@ -42,14 +42,14 @@ public class CollectionsKt__CollectionsJVMKt
   {
     if (paramInt < 0)
     {
-      if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0)) {
+      if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0))
+      {
         CollectionsKt.throwIndexOverflow();
+        return paramInt;
       }
+      throw ((Throwable)new ArithmeticException("Index overflow has happened."));
     }
-    else {
-      return paramInt;
-    }
-    throw ((Throwable)new ArithmeticException("Index overflow has happened."));
+    return paramInt;
   }
   
   @InlineOnly
@@ -61,14 +61,15 @@ public class CollectionsKt__CollectionsJVMKt
   @InlineOnly
   private static final <T> T[] copyToArrayImpl(Collection<?> paramCollection, T[] paramArrayOfT)
   {
-    if (paramArrayOfT == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<kotlin.Any?>");
-    }
-    paramCollection = CollectionToArray.toArray(paramCollection, paramArrayOfT);
-    if (paramCollection == null) {
+    if (paramArrayOfT != null)
+    {
+      paramCollection = CollectionToArray.toArray(paramCollection, paramArrayOfT);
+      if (paramCollection != null) {
+        return paramCollection;
+      }
       throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<T>");
     }
-    return paramCollection;
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<kotlin.Any?>");
   }
   
   @NotNull
@@ -101,7 +102,7 @@ public class CollectionsKt__CollectionsJVMKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.collections.CollectionsKt__CollectionsJVMKt
  * JD-Core Version:    0.7.0.1
  */

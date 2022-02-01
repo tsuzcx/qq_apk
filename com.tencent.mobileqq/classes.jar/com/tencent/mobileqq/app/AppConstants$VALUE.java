@@ -75,7 +75,6 @@ public abstract interface AppConstants$VALUE
   public static final int UIN_TYPE_KANDIAN_MERGE = 7220;
   public static final int UIN_TYPE_LBS_FRIEND = 1001;
   public static final int UIN_TYPE_LIGHT_TALK = 22;
-  public static final int UIN_TYPE_LIMIT_CHAT = 1037;
   public static final int UIN_TYPE_MATCH_CAMPUS_CHAT = 1045;
   public static final int UIN_TYPE_MATCH_CHAT = 1044;
   public static final int UIN_TYPE_MINI_PROGRAM_NOTICE = 1038;
@@ -140,10 +139,16 @@ public abstract interface AppConstants$VALUE
   public static final int UIN_TYPE_WIFI_HOT_CHAT_SHELL = 8999;
   public static final int UIN_TYPE_WPA_3PARTY = 1005;
   public static final int UIN_TYPE_XINGQU_BULUO_PUSH = 3001;
+  public static final String UNREAD_GRAY_DOT_WITHOUT_NUM = "4";
+  public static final String UNREAD_GRAY_DOT_WITH_NUM = "3";
+  public static final String UNREAD_NO_DOT = "5";
+  public static final String UNREAD_OTHER = "6";
+  public static final String UNREAD_RED_DOT_WITHOUT_NUM = "2";
+  public static final String UNREAD_RED_DOT_WITH_NUM = "1";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.AppConstants.VALUE
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.matchchat;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.avatar.listener.DecodeTaskCompletionListener;
 
 class MatchChatMsgListFragment$3
-  implements View.OnClickListener
+  implements DecodeTaskCompletionListener
 {
-  MatchChatMsgListFragment$3(MatchChatMsgListFragment paramMatchChatMsgListFragment) {}
+  MatchChatMsgListFragment$3(MatchChatMsgListFragment paramMatchChatMsgListFragment, String paramString, ImageView paramImageView) {}
   
-  public void onClick(View paramView)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    ReportController.b(this.a.a, "dc00898", "", "", "0X800A698", "0X800A698", 0, 0, "", "", "", "");
-    Intent localIntent = new Intent();
-    PublicFragmentActivity.a(this.a.getActivity(), localIntent, MatchChatSettingFragment.class);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString))
+    {
+      paramString = new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqMatchchatMatchChatMsgListFragment.getResources(), paramBitmap);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.matchchat.MatchChatMsgListFragment.3
  * JD-Core Version:    0.7.0.1
  */

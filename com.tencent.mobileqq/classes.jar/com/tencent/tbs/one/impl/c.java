@@ -120,29 +120,31 @@ public final class c
   public final TBSOneComponent loadComponentSync(String paramString, Bundle paramBundle, long paramLong)
   {
     f.a("[%s] Loading component %s synchronously", new Object[] { this.b, paramString });
-    if (m.b()) {
-      throw new RuntimeException("TBSOneManager.loadComponentSync must not be called on TBSOne thread.");
-    }
-    a();
-    b localb = new b();
-    m.a(new c.4(this, paramString, paramBundle, localb));
-    localb.a(paramLong);
-    if (localb.b != 0) {
+    if (!m.b())
+    {
+      a();
+      b localb = new b();
+      m.a(new c.4(this, paramString, paramBundle, localb));
+      localb.a(paramLong);
+      if (localb.b == 0) {
+        return (TBSOneComponent)localb.a;
+      }
       throw new TBSOneException(localb.b, localb.c);
     }
-    return (TBSOneComponent)localb.a;
+    throw new RuntimeException("TBSOneManager.loadComponentSync must not be called on TBSOne thread.");
   }
   
   public final void setAutoUpdateEnabled(boolean paramBoolean)
   {
     String str2 = this.b;
-    if (paramBoolean) {}
-    for (String str1 = "Enabling";; str1 = "Disabling")
-    {
-      f.a("[%s] %s auto update", new Object[] { str2, str1 });
-      this.c.a(paramBoolean);
-      return;
+    String str1;
+    if (paramBoolean) {
+      str1 = "Enabling";
+    } else {
+      str1 = "Disabling";
     }
+    f.a("[%s] %s auto update", new Object[] { str2, str1 });
+    this.c.a(paramBoolean);
   }
   
   public final void setDelegate(TBSOneDelegate paramTBSOneDelegate)
@@ -168,7 +170,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.c
  * JD-Core Version:    0.7.0.1
  */

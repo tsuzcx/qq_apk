@@ -22,86 +22,88 @@ public final class a
 {
   public static boolean a(Context paramContext, Intent paramIntent)
   {
-    if (paramContext == null) {}
-    for (;;)
-    {
+    if (paramContext == null) {
       return false;
-      paramContext = paramContext.getPackageManager();
+    }
+    paramContext = paramContext.getPackageManager();
+    if (paramContext == null) {
+      return false;
+    }
+    paramIntent = paramContext.resolveActivity(paramIntent, 0);
+    if (paramIntent == null) {
+      return false;
+    }
+    paramIntent = paramIntent.activityInfo.packageName;
+    try
+    {
+      paramContext = paramContext.getPackageInfo(paramIntent, 64).signatures;
       if (paramContext == null) {
-        continue;
-      }
-      paramIntent = paramContext.resolveActivity(paramIntent, 0);
-      if (paramIntent == null) {
-        continue;
-      }
-      paramIntent = paramIntent.activityInfo.packageName;
-      try
-      {
-        paramContext = paramContext.getPackageInfo(paramIntent, 64).signatures;
-        if (paramContext == null) {
-          continue;
-        }
-        int j = paramContext.length;
-        int i = 0;
-        while (i < j)
-        {
-          boolean bool = "18da2bf10352443a00a5e046d9fca6bd".equals(d.a(paramContext[i].toByteArray()));
-          if (bool) {
-            return true;
-          }
-          i += 1;
-        }
         return false;
       }
-      catch (PackageManager.NameNotFoundException paramContext)
+      int j = paramContext.length;
+      int i = 0;
+      while (i < j)
       {
-        paramContext.printStackTrace();
+        boolean bool = "18da2bf10352443a00a5e046d9fca6bd".equals(d.a(paramContext[i].toByteArray()));
+        if (bool) {
+          return true;
+        }
+        i += 1;
       }
+      return false;
     }
+    catch (PackageManager.NameNotFoundException paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return false;
   }
   
   public static a.a c(Context paramContext)
   {
-    Object localObject3 = new Intent("com.sina.weibo.action.sdkidentity");
-    ((Intent)localObject3).addCategory("android.intent.category.DEFAULT");
-    Iterator localIterator = null;
-    Object localObject1 = null;
-    Object localObject2 = localIterator;
+    Object localObject4 = new Intent("com.sina.weibo.action.sdkidentity");
+    ((Intent)localObject4).addCategory("android.intent.category.DEFAULT");
+    Object localObject3 = null;
+    Object localObject2 = null;
+    Object localObject1 = localObject3;
     if (paramContext != null)
     {
-      localObject3 = paramContext.getPackageManager().queryIntentServices((Intent)localObject3, 0);
-      localObject2 = localIterator;
-      if (localObject3 != null)
+      localObject4 = paramContext.getPackageManager().queryIntentServices((Intent)localObject4, 0);
+      localObject1 = localObject3;
+      if (localObject4 != null)
       {
-        localObject2 = localIterator;
-        if (!((List)localObject3).isEmpty()) {
-          localIterator = ((List)localObject3).iterator();
+        localObject1 = localObject3;
+        if (!((List)localObject4).isEmpty())
+        {
+          localObject4 = ((List)localObject4).iterator();
+          String str;
+          do
+          {
+            do
+            {
+              localObject1 = localObject2;
+              if (!((Iterator)localObject4).hasNext()) {
+                break;
+              }
+              localObject1 = (ResolveInfo)((Iterator)localObject4).next();
+            } while ((((ResolveInfo)localObject1).serviceInfo == null) || (((ResolveInfo)localObject1).serviceInfo.applicationInfo == null) || (TextUtils.isEmpty(((ResolveInfo)localObject1).serviceInfo.packageName)));
+            str = ((ResolveInfo)localObject1).serviceInfo.packageName;
+            localObject1 = d(paramContext, str);
+            localObject3 = localObject2;
+            if (localObject1 != null) {
+              localObject3 = localObject1;
+            }
+            localObject1 = localObject3;
+            if ("com.sina.weibo".equals(str)) {
+              break;
+            }
+            localObject2 = localObject3;
+          } while (!"com.sina.weibog3".equals(str));
+          localObject1 = localObject3;
         }
       }
     }
-    for (;;)
-    {
-      localObject2 = localObject1;
-      if (localIterator.hasNext())
-      {
-        localObject2 = (ResolveInfo)localIterator.next();
-        if ((((ResolveInfo)localObject2).serviceInfo == null) || (((ResolveInfo)localObject2).serviceInfo.applicationInfo == null) || (TextUtils.isEmpty(((ResolveInfo)localObject2).serviceInfo.packageName))) {
-          continue;
-        }
-        localObject3 = ((ResolveInfo)localObject2).serviceInfo.packageName;
-        localObject2 = d(paramContext, (String)localObject3);
-        if (localObject2 == null) {
-          break label165;
-        }
-        localObject1 = localObject2;
-      }
-      label165:
-      while (("com.sina.weibo".equals(localObject3)) || ("com.sina.weibog3".equals(localObject3)))
-      {
-        localObject2 = localObject1;
-        return localObject2;
-      }
-    }
+    return localObject1;
   }
   
   private static a.a d(Context paramContext, String paramString)
@@ -122,12 +124,6 @@ public final class a
         }
         ((StringBuilder)localObject).append(new String(arrayOfByte, 0, i));
       }
-      return null;
-    }
-    catch (PackageManager.NameNotFoundException paramContext)
-    {
-      paramContext.printStackTrace();
-      return null;
       paramContext = new JSONObject(((StringBuilder)localObject).toString());
       localObject = new a.a();
       ((a.a)localObject).an = paramContext.optInt("support_api", -1);
@@ -135,15 +131,21 @@ public final class a
       ((a.a)localObject).packageName = paramString;
       return localObject;
     }
+    catch (JSONException paramContext)
+    {
+      paramContext.printStackTrace();
+      return null;
+    }
     catch (IOException paramContext)
     {
       paramContext.printStackTrace();
       return null;
     }
-    catch (JSONException paramContext)
+    catch (PackageManager.NameNotFoundException paramContext)
     {
       paramContext.printStackTrace();
     }
+    return null;
   }
 }
 

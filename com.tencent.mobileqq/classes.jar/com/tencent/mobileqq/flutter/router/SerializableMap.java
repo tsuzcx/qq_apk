@@ -19,29 +19,21 @@ public class SerializableMap
   
   private static Object a(Object paramObject)
   {
-    Object localObject1;
     if (paramObject == null) {
-      localObject1 = JSONObject.NULL;
+      return JSONObject.NULL;
     }
-    do
+    Object localObject1 = paramObject;
+    if (!(paramObject instanceof JSONObject))
     {
-      do
-      {
-        do
-        {
-          return localObject1;
-          localObject1 = paramObject;
-        } while ((paramObject instanceof JSONObject));
-        localObject1 = paramObject;
-      } while ((paramObject instanceof JSONArray));
-      localObject1 = paramObject;
-    } while (paramObject.equals(JSONObject.NULL));
-    label156:
-    do
-    {
-      Object localObject2;
+      if ((paramObject instanceof JSONArray)) {
+        return paramObject;
+      }
+      if (paramObject.equals(JSONObject.NULL)) {
+        return paramObject;
+      }
       try
       {
+        Object localObject2;
         if ((paramObject instanceof Collection))
         {
           localObject1 = new JSONArray();
@@ -50,72 +42,79 @@ public class SerializableMap
             ((JSONArray)localObject1).put(a(((Iterator)localObject2).next()));
           }
         }
-        if (!paramObject.getClass().isArray()) {
-          break label156;
+        if (paramObject.getClass().isArray())
+        {
+          localObject1 = new JSONArray();
+          int j = Array.getLength(paramObject);
+          int i = 0;
+          while (i < j)
+          {
+            ((JSONArray)localObject1).put(a(Array.get(paramObject, i)));
+            i += 1;
+          }
         }
+        if ((paramObject instanceof Map))
+        {
+          localObject1 = new JSONObject();
+          paramObject = ((Map)paramObject).entrySet().iterator();
+          while (paramObject.hasNext())
+          {
+            localObject2 = (Map.Entry)paramObject.next();
+            ((JSONObject)localObject1).put((String)((Map.Entry)localObject2).getKey(), a(((Map.Entry)localObject2).getValue()));
+          }
+        }
+        localObject1 = paramObject;
+        if (!(paramObject instanceof Boolean))
+        {
+          localObject1 = paramObject;
+          if (!(paramObject instanceof Byte))
+          {
+            localObject1 = paramObject;
+            if (!(paramObject instanceof Character))
+            {
+              localObject1 = paramObject;
+              if (!(paramObject instanceof Double))
+              {
+                localObject1 = paramObject;
+                if (!(paramObject instanceof Float))
+                {
+                  localObject1 = paramObject;
+                  if (!(paramObject instanceof Integer))
+                  {
+                    localObject1 = paramObject;
+                    if (!(paramObject instanceof Long))
+                    {
+                      localObject1 = paramObject;
+                      if (!(paramObject instanceof Short))
+                      {
+                        if ((paramObject instanceof String)) {
+                          return paramObject;
+                        }
+                        if (!paramObject.getClass().getPackage().getName().startsWith("java.")) {
+                          break label336;
+                        }
+                        localObject1 = paramObject.toString();
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        return localObject1;
       }
       catch (Exception paramObject)
       {
         QLog.d("SerializableMap", 2, "SerializableMap wrap", paramObject);
-        return null;
+        label336:
+        localObject1 = null;
       }
-      localObject1 = new JSONArray();
-      int j = Array.getLength(paramObject);
-      int i = 0;
-      while (i < j)
-      {
-        ((JSONArray)localObject1).put(a(Array.get(paramObject, i)));
-        i += 1;
-      }
-      if ((paramObject instanceof Map))
-      {
-        localObject1 = new JSONObject();
-        paramObject = ((Map)paramObject).entrySet().iterator();
-        while (paramObject.hasNext())
-        {
-          localObject2 = (Map.Entry)paramObject.next();
-          ((JSONObject)localObject1).put((String)((Map.Entry)localObject2).getKey(), a(((Map.Entry)localObject2).getValue()));
-        }
-      }
-      localObject1 = paramObject;
-      if ((paramObject instanceof Boolean)) {
-        break;
-      }
-      localObject1 = paramObject;
-      if ((paramObject instanceof Byte)) {
-        break;
-      }
-      localObject1 = paramObject;
-      if ((paramObject instanceof Character)) {
-        break;
-      }
-      localObject1 = paramObject;
-      if ((paramObject instanceof Double)) {
-        break;
-      }
-      localObject1 = paramObject;
-      if ((paramObject instanceof Float)) {
-        break;
-      }
-      localObject1 = paramObject;
-      if ((paramObject instanceof Integer)) {
-        break;
-      }
-      localObject1 = paramObject;
-      if ((paramObject instanceof Long)) {
-        break;
-      }
-      localObject1 = paramObject;
-      if ((paramObject instanceof Short)) {
-        break;
-      }
-      localObject1 = paramObject;
-      if ((paramObject instanceof String)) {
-        break;
-      }
-    } while (!paramObject.getClass().getPackage().getName().startsWith("java."));
-    paramObject = paramObject.toString();
-    return paramObject;
+    }
+    else
+    {
+      return localObject1;
+    }
     return localObject1;
     return localObject1;
   }
@@ -154,7 +153,7 @@ public class SerializableMap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.router.SerializableMap
  * JD-Core Version:    0.7.0.1
  */

@@ -30,59 +30,60 @@ class ArkVsync
   
   void addFrameCallback(String paramString, ArkVsync.ArkFrameCallback paramArkFrameCallback)
   {
-    if ((paramArkFrameCallback == null) || (!ArkStateCenter.getInstance().isForeground()))
-    {
-      ENV.logE("ArkApp.ArkVsync", "add frame callback fail. callback:" + paramArkFrameCallback + ",isForeground:" + ArkStateCenter.getInstance().isForeground());
-      return;
-    }
-    synchronized (this.mCallbacks)
-    {
-      Iterator localIterator = this.mCallbacks.iterator();
-      while (localIterator.hasNext())
+    if ((paramArkFrameCallback != null) && (ArkStateCenter.getInstance().isForeground())) {
+      synchronized (this.mCallbacks)
       {
-        ArkVsync.CallbackItem localCallbackItem = (ArkVsync.CallbackItem)localIterator.next();
-        if (localCallbackItem.callback == paramArkFrameCallback) {
-          this.mCallbacks.remove(localCallbackItem);
+        Iterator localIterator = this.mCallbacks.iterator();
+        while (localIterator.hasNext())
+        {
+          ArkVsync.CallbackItem localCallbackItem = (ArkVsync.CallbackItem)localIterator.next();
+          if (localCallbackItem.callback == paramArkFrameCallback) {
+            this.mCallbacks.remove(localCallbackItem);
+          }
         }
+        this.mCallbacks.add(new ArkVsync.CallbackItem(paramString, paramArkFrameCallback));
+        this.mCallbackArrays = null;
+        if ((this.mCallbacks.size() == 1) && (this.mImpl != null)) {
+          ArkDispatchTask.getInstance().postToArkThread(new ArkVsync.1(this, this));
+        }
+        return;
       }
-      this.mCallbacks.add(new ArkVsync.CallbackItem(paramString, paramArkFrameCallback));
-      this.mCallbackArrays = null;
-      if ((this.mCallbacks.size() == 1) && (this.mImpl != null)) {
-        ArkDispatchTask.getInstance().postToArkThread(new ArkVsync.1(this, this));
-      }
-      return;
     }
+    paramString = new StringBuilder();
+    paramString.append("add frame callback fail. callback:");
+    paramString.append(paramArkFrameCallback);
+    paramString.append(",isForeground:");
+    paramString.append(ArkStateCenter.getInstance().isForeground());
+    Logger.logE("ArkApp.ArkVsync", paramString.toString());
   }
   
   void frameCallback()
   {
-    for (;;)
+    int i;
+    synchronized (this.mCallbacks)
     {
-      int i;
-      synchronized (this.mCallbacks)
+      if (this.mCallbacks.size() <= 0) {
+        return;
+      }
+      if (this.mCallbackArrays == null) {
+        this.mCallbackArrays = ((ArkVsync.CallbackItem[])this.mCallbacks.toArray(new ArkVsync.CallbackItem[this.mCallbacks.size()]));
+      }
+      ArkVsync.CallbackItem[] arrayOfCallbackItem = this.mCallbackArrays;
+      int j = arrayOfCallbackItem.length;
+      i = 0;
+      if (i < j)
       {
-        if (this.mCallbacks.size() <= 0) {
-          return;
-        }
-        if (this.mCallbackArrays == null) {
-          this.mCallbackArrays = ((ArkVsync.CallbackItem[])this.mCallbacks.toArray(new ArkVsync.CallbackItem[this.mCallbacks.size()]));
-        }
-        ArkVsync.CallbackItem[] arrayOfCallbackItem = this.mCallbackArrays;
-        int j = arrayOfCallbackItem.length;
-        i = 0;
-        if (i < j)
+        ArkVsync.CallbackItem localCallbackItem = arrayOfCallbackItem[i];
+        if (!localCallbackItem.isCallbacking)
         {
-          ArkVsync.CallbackItem localCallbackItem = arrayOfCallbackItem[i];
-          if (localCallbackItem.isCallbacking) {
-            break label122;
-          }
           localCallbackItem.isCallbacking = true;
           ArkDispatchQueue.asyncRun(localCallbackItem.queueKey, new ArkVsync.3(this, localCallbackItem));
         }
       }
-      return;
-      label122:
-      i += 1;
+      else
+      {
+        return;
+      }
     }
   }
   
@@ -108,6 +109,10 @@ class ArkVsync
         ArkDispatchTask.getInstance().postToArkThread(new ArkVsync.2(this));
       }
       return;
+    }
+    for (;;)
+    {
+      throw paramArkFrameCallback;
     }
   }
 }

@@ -34,10 +34,8 @@ public class ShiShangSHFilter
       localBaseFilter2.addParam(new TextureResParam("inputImageTexture2", "sh/shishang_sh_blend.jpg", 33986));
       localBaseFilter1.setNextFilter(localBaseFilter2, null);
     }
-    for (;;)
+    else
     {
-      super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
-      return;
       localBaseFilter1 = new BaseFilter(BaseFilter.getFragmentShader(62));
       localBaseFilter1.addParam(new TextureResParam("inputImageTexture2", "sh/fugu_sh_blend.jpg", 33986));
       setNextFilter(localBaseFilter1, null);
@@ -45,11 +43,12 @@ public class ShiShangSHFilter
       localBaseFilter2.addParam(new UniformParam.FloatParam("filterAdjustParam", 0.3F));
       localBaseFilter1.setNextFilter(localBaseFilter2, new int[] { this.srcTextureIndex });
     }
+    super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.filter.ttpic.ShiShangSHFilter
  * JD-Core Version:    0.7.0.1
  */

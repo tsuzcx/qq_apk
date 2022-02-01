@@ -37,6 +37,7 @@ public class CMShowSetPetStatusServlet
       {
         int i = localObject.length - 4;
         paramFromServiceMsg = new byte[i];
+        boolean bool = false;
         PkgTools.copyData(paramFromServiceMsg, 0, (byte[])localObject, 4, i);
         try
         {
@@ -44,13 +45,11 @@ public class CMShowSetPetStatusServlet
           ((WebSSOAgent.UniSsoServerRsp)localObject).mergeFrom(paramFromServiceMsg);
           localBundle.putLong("retCode", ((WebSSOAgent.UniSsoServerRsp)localObject).ret.get());
           localBundle.putString("errMsg", ((WebSSOAgent.UniSsoServerRsp)localObject).errmsg.get());
-          if (((WebSSOAgent.UniSsoServerRsp)localObject).ret.get() == 0L) {}
-          for (boolean bool = true;; bool = false)
-          {
-            notifyObserver(paramIntent, 1087, bool, localBundle, MiniAppObserver.class);
-            return;
+          if (((WebSSOAgent.UniSsoServerRsp)localObject).ret.get() == 0L) {
+            bool = true;
           }
-          notifyObserver(paramIntent, 1087, false, localBundle, MiniAppObserver.class);
+          notifyObserver(paramIntent, 1087, bool, localBundle, MiniAppObserver.class);
+          return;
         }
         catch (Throwable paramFromServiceMsg)
         {
@@ -58,6 +57,7 @@ public class CMShowSetPetStatusServlet
         }
       }
     }
+    notifyObserver(paramIntent, 1087, false, localBundle, MiniAppObserver.class);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -67,7 +67,7 @@ public class CMShowSetPetStatusServlet
     Object localObject = new WebSSOAgent.UniSsoServerReqComm();
     ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
     ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-    ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.5.5");
+    ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.7.0");
     paramIntent = new WebSSOAgent.UniSsoServerReq();
     paramIntent.comm.set((MessageMicro)localObject);
     localObject = new JSONObject();
@@ -75,27 +75,23 @@ public class CMShowSetPetStatusServlet
     {
       ((JSONObject)localObject).put("id", i);
       ((JSONObject)localObject).put("status", j);
-      paramIntent.reqdata.set(((JSONObject)localObject).toString());
-      paramIntent = paramIntent.toByteArray();
-      localObject = new byte[paramIntent.length + 4];
-      PkgTools.DWord2Byte((byte[])localObject, 0, paramIntent.length + 4);
-      PkgTools.copyData((byte[])localObject, 4, paramIntent, paramIntent.length);
-      paramPacket.setSSOCommand("apollo_router_weight.pet_core_linkcmd_set_status");
-      paramPacket.putSendData((byte[])localObject);
-      return;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        QLog.e("MSFServlet", 1, "[onSend] params error!", localJSONException);
-      }
+      QLog.e("MSFServlet", 1, "[onSend] params error!", localJSONException);
     }
+    paramIntent.reqdata.set(((JSONObject)localObject).toString());
+    paramIntent = paramIntent.toByteArray();
+    localObject = new byte[paramIntent.length + 4];
+    PkgTools.dWord2Byte((byte[])localObject, 0, paramIntent.length + 4);
+    PkgTools.copyData((byte[])localObject, 4, paramIntent, paramIntent.length);
+    paramPacket.setSSOCommand("apollo_router_weight.pet_core_linkcmd_set_status");
+    paramPacket.putSendData((byte[])localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.CMShowSetPetStatusServlet
  * JD-Core Version:    0.7.0.1
  */

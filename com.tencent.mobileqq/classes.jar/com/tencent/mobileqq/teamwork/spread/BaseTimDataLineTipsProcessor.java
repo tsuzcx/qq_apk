@@ -31,35 +31,33 @@ public abstract class BaseTimDataLineTipsProcessor
   protected boolean a()
   {
     Object localObject = TencentDocDataLineTipsConfigProcessor.a().a();
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
+    if (TextUtils.isEmpty((CharSequence)localObject))
+    {
       if (QLog.isColorLevel()) {
         QLog.i("BaseTimDataLineTipsProcessor", 1, "config filetype is null, or maybe has not recv");
       }
+      return false;
     }
-    String str;
-    do
+    String str = FileUtil.a(a());
+    localObject = new StringTokenizer((String)localObject, "|");
+    if (!((StringTokenizer)localObject).hasMoreTokens())
     {
-      while (!((StringTokenizer)localObject).hasMoreTokens())
-      {
-        do
-        {
-          return false;
-          str = FileUtil.a(a());
-          localObject = new StringTokenizer((String)localObject, "|");
-          if (((StringTokenizer)localObject).hasMoreTokens()) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
+      if (QLog.isColorLevel()) {
         QLog.i("BaseTimDataLineTipsProcessor", 1, "config filetype is null");
-        return false;
       }
-    } while (!str.equalsIgnoreCase(((StringTokenizer)localObject).nextToken()));
-    return true;
+      return false;
+    }
+    while (((StringTokenizer)localObject).hasMoreTokens()) {
+      if (str.equalsIgnoreCase(((StringTokenizer)localObject).nextToken())) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.BaseTimDataLineTipsProcessor
  * JD-Core Version:    0.7.0.1
  */

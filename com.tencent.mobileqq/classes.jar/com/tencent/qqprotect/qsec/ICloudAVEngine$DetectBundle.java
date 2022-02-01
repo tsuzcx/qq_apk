@@ -28,12 +28,30 @@ public class ICloudAVEngine$DetectBundle
   
   public String toString()
   {
-    return "[ft:" + this.jdField_a_of_type_Int + ",st:" + this.jdField_b_of_type_Int + ",fs:" + this.jdField_c_of_type_Int + ",fn:" + this.jdField_a_of_type_JavaLangString + ",fm:" + this.jdField_b_of_type_JavaLangString + ",a1:" + this.jdField_c_of_type_JavaLangString + ",a2:" + this.d + ",a3:" + this.e + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[ft:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",st:");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(",fs:");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(",fn:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",fm:");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(",a1:");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(",a2:");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(",a3:");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.ICloudAVEngine.DetectBundle
  * JD-Core Version:    0.7.0.1
  */

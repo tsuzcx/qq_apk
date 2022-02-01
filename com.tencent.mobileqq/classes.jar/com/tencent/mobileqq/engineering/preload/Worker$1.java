@@ -8,13 +8,16 @@ final class Worker$1
   public Thread newThread(Runnable paramRunnable)
   {
     paramRunnable = new Thread(paramRunnable);
-    paramRunnable.setName("pre-loader-pool-" + paramRunnable.getId());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pre-loader-pool-");
+    localStringBuilder.append(paramRunnable.getId());
+    paramRunnable.setName(localStringBuilder.toString());
     return paramRunnable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.engineering.preload.Worker.1
  * JD-Core Version:    0.7.0.1
  */

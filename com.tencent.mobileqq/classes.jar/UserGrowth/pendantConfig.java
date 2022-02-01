@@ -56,27 +56,32 @@ public final class pendantConfig
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.enable, 0);
-    if (this.weak_stage != null) {
-      paramJceOutputStream.write(this.weak_stage, 1);
+    Object localObject = this.weak_stage;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.medium_stage != null) {
-      paramJceOutputStream.write(this.medium_stage, 2);
+    localObject = this.medium_stage;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.strong_stage != null) {
-      paramJceOutputStream.write(this.strong_stage, 3);
+    localObject = this.strong_stage;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
     paramJceOutputStream.write(this.cid, 4);
-    if (this.ext != null) {
-      paramJceOutputStream.write(this.ext, 5);
+    localObject = this.ext;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 5);
     }
-    if (this.trace_id != null) {
-      paramJceOutputStream.write(this.trace_id, 6);
+    localObject = this.trace_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.pendantConfig
  * JD-Core Version:    0.7.0.1
  */

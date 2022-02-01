@@ -25,8 +25,9 @@ public class TTPencilFilterGroup
     this.mTTMaximumFilter.apply();
     this.mTTGrayPencilFilter.apply();
     this.mTTColorPencilFilter.apply();
-    if (this.mLookupFilter != null) {
-      this.mLookupFilter.apply();
+    GPUImageLookupFilter localGPUImageLookupFilter = this.mLookupFilter;
+    if (localGPUImageLookupFilter != null) {
+      localGPUImageLookupFilter.apply();
     }
     this.mIsApplied = true;
   }
@@ -36,8 +37,9 @@ public class TTPencilFilterGroup
     this.mTTMaximumFilter.clearGLSLSelf();
     this.mTTGrayPencilFilter.clearGLSLSelf();
     this.mTTColorPencilFilter.clearGLSLSelf();
-    if (this.mLookupFilter != null) {
-      this.mLookupFilter.clearGLSLSelf();
+    GPUImageLookupFilter localGPUImageLookupFilter = this.mLookupFilter;
+    if (localGPUImageLookupFilter != null) {
+      localGPUImageLookupFilter.clearGLSLSelf();
     }
     this.mIsApplied = false;
   }
@@ -64,25 +66,17 @@ public class TTPencilFilterGroup
   {
     int j = 1;
     int i;
-    if (paramMap == null)
-    {
+    if (paramMap == null) {
       i = 1;
-      if (paramMap.size() > 0) {
-        break label29;
-      }
-    }
-    for (;;)
-    {
-      if ((i | j) == 0) {
-        break label34;
-      }
-      return;
+    } else {
       i = 0;
-      break;
-      label29:
+    }
+    if (paramMap.size() > 0) {
       j = 0;
     }
-    label34:
+    if ((j | i) != 0) {
+      return;
+    }
     this.mLookupFilter = new GPUImageLookupFilter((String)paramMap.get("lut1"));
   }
   
@@ -97,7 +91,7 @@ public class TTPencilFilterGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.stylizefilter.TTPencilFilterGroup
  * JD-Core Version:    0.7.0.1
  */

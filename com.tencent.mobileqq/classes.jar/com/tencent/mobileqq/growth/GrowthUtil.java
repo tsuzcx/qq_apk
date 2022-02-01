@@ -17,21 +17,21 @@ public final class GrowthUtil
     {
     default: 
       return -1;
-    case 1001: 
-      return 2130848501;
-    case 1002: 
-      return 2130848502;
-    case 1003: 
-      return 2130848503;
+    case 1005: 
+      return 2130848384;
     case 1004: 
-      return 2130848504;
+      return 2130848383;
+    case 1003: 
+      return 2130848382;
+    case 1002: 
+      return 2130848381;
     }
-    return 2130848505;
+    return 2130848380;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.growth.GrowthUtil
  * JD-Core Version:    0.7.0.1
  */

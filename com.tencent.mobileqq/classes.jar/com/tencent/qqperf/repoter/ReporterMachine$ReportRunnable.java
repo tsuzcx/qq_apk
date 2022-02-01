@@ -22,11 +22,17 @@ class ReporterMachine$ReportRunnable
   
   public void run()
   {
-    int i = 0;
+    Object localObject1;
     if (ReportedStatus.jdField_a_of_type_Int > Config.MAX_REPORT_NUM)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Magnifier_ReporterMachine", 2, "[YunYingReport]:End, reported " + ReportedStatus.jdField_a_of_type_Int + " max_report_num " + Config.MAX_REPORT_NUM);
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("[YunYingReport]:End, reported ");
+        ((StringBuilder)localObject1).append(ReportedStatus.jdField_a_of_type_Int);
+        ((StringBuilder)localObject1).append(" max_report_num ");
+        ((StringBuilder)localObject1).append(Config.MAX_REPORT_NUM);
+        QLog.i("Magnifier_ReporterMachine", 2, ((StringBuilder)localObject1).toString());
       }
       if (MagnifierSDK.jdField_a_of_type_ComTencentQqperfRepoterDBHandler != null) {
         MagnifierSDK.jdField_a_of_type_ComTencentQqperfRepoterDBHandler.a();
@@ -34,42 +40,35 @@ class ReporterMachine$ReportRunnable
       if (MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor != null) {
         MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("count_today_reported", ReportedStatus.jdField_a_of_type_Int).apply();
       }
-    }
-    int j;
-    do
-    {
       return;
-      if ((MagnifierSDK.jdField_a_of_type_ComTencentQqperfRepoterDBHandler == null) || (1 != NetworkCenter.getInstance().getNetType()))
+    }
+    Object localObject5;
+    Object localObject4;
+    if ((MagnifierSDK.jdField_a_of_type_ComTencentQqperfRepoterDBHandler != null) && (1 == NetworkCenter.getInstance().getNetType()))
+    {
+      localObject1 = this.jdField_a_of_type_JavaUtilList;
+      int i = 0;
+      if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("Magnifier_ReporterMachine", 2, "[YunYingReport]:Next try, because MagnifierSDK.dbHandler == null || NetType.WIFI != NetworkCenter.getInstance().getNetType()");
+        try
+        {
+          ReporterMachine.b((ResultObject)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int));
         }
-        ReporterMachine.a().postDelayed(this, 1800000L);
-        return;
-      }
-      if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty())) {
-        break;
-      }
-      try
-      {
-        ReporterMachine.b((ResultObject)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int));
+        catch (Exception localException1)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("Magnifier_ReporterMachine", 2, localException1, new Object[0]);
+          }
+        }
         this.jdField_a_of_type_Int += 1;
         if (this.jdField_a_of_type_Int < this.jdField_a_of_type_JavaUtilList.size())
         {
           ReporterMachine.a().postDelayed(this, 500L);
           return;
         }
-      }
-      catch (Exception localException1)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("Magnifier_ReporterMachine", 2, localException1, new Object[0]);
-          }
-        }
         MagnifierSDK.jdField_a_of_type_ComTencentQqperfRepoterDBHandler.a("result_objects", true);
-        if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+        Object localObject2 = this.jdField_a_of_type_JavaUtilList;
+        if ((localObject2 != null) && (((List)localObject2).size() > 0))
         {
           if (QLog.isColorLevel()) {
             QLog.d("Magnifier_ReporterMachine", 2, "clear all data from roList");
@@ -81,71 +80,83 @@ class ReporterMachine$ReportRunnable
         }
         this.jdField_a_of_type_Int = 0;
         ReporterMachine.a().postDelayed(this, 1800000L);
-        j = ReportedStatus.jdField_a_of_type_AndroidUtilSparseArray.size();
-      }
-    } while (MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor == null);
-    Object localObject1;
-    if (i < j)
-    {
-      int k = ReportedStatus.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i);
-      if (k > 100)
-      {
-        localObject1 = (ReportedStatus.CurrentRecord)ReportedStatus.jdField_a_of_type_AndroidUtilSparseArray.get(k);
-        if (localObject1 != null) {
-          break label372;
+        int j = ReportedStatus.jdField_a_of_type_AndroidUtilSparseArray.size();
+        if (MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor == null) {
+          break label671;
         }
+        while (i < j)
+        {
+          int k = ReportedStatus.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i);
+          if (k > 100)
+          {
+            localObject2 = (ReportedStatus.CurrentRecord)ReportedStatus.jdField_a_of_type_AndroidUtilSparseArray.get(k);
+            if (localObject2 != null)
+            {
+              localObject5 = MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor;
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("count_plugin_");
+              localStringBuilder.append(String.valueOf(k));
+              ((SharedPreferences.Editor)localObject5).putInt(localStringBuilder.toString(), ((ReportedStatus.CurrentRecord)localObject2).jdField_a_of_type_Int);
+            }
+          }
+          i += 1;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("Magnifier_ReporterMachine", 2, "MagnifierSDKApply 22 ");
+        }
+        MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.apply();
+        return;
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        label372:
-        MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("count_plugin_" + String.valueOf(k), ((ReportedStatus.CurrentRecord)localObject1).jdField_a_of_type_Int);
+      this.jdField_a_of_type_JavaUtilList = MagnifierSDK.jdField_a_of_type_ComTencentQqperfRepoterDBHandler.a(true);
+      if ((ReporterMachine.a() != null) && (!ReporterMachine.a().isEmpty())) {
+        try
+        {
+          this.jdField_a_of_type_JavaUtilList.addAll(ReporterMachine.a());
+          ReporterMachine.a().clear();
+        }
+        finally {}
       }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Magnifier_ReporterMachine", 2, "MagnifierSDKApply 22 ");
-    }
-    MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.apply();
-    return;
-    this.jdField_a_of_type_JavaUtilList = MagnifierSDK.jdField_a_of_type_ComTencentQqperfRepoterDBHandler.a(true);
-    if ((ReporterMachine.a() != null) && (!ReporterMachine.a().isEmpty())) {}
-    try
-    {
-      this.jdField_a_of_type_JavaUtilList.addAll(ReporterMachine.a());
-      ReporterMachine.a().clear();
       if (QLog.isColorLevel()) {
         QLog.d("Magnifier_ReporterMachine", 2, "getAllResultObjects and set listIndex = 0");
       }
       this.jdField_a_of_type_Int = 0;
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty())) {
-        break label625;
-      }
-      localObject1 = ReporterMachine.a().iterator();
-      while (((Iterator)localObject1).hasNext())
+      localObject4 = this.jdField_a_of_type_JavaUtilList;
+      if ((localObject4 != null) && (!((List)localObject4).isEmpty()))
       {
-        Object localObject3 = (String)((Iterator)localObject1).next();
-        try
-        {
-          localObject3 = new File((String)localObject3);
-          if ((localObject3 != null) && (((File)localObject3).isFile())) {
-            ((File)localObject3).delete();
-          }
-        }
-        catch (Exception localException2) {}
+        ReporterMachine.a().postDelayed(this, 500L);
+        return;
       }
-      ReporterMachine.a().clear();
+      localObject4 = ReporterMachine.a().iterator();
     }
-    finally {}
-    ReporterMachine.a().postDelayed(this, 1800000L);
-    return;
-    label625:
-    ReporterMachine.a().postDelayed(this, 500L);
+    for (;;)
+    {
+      if (((Iterator)localObject4).hasNext()) {
+        localObject5 = (String)((Iterator)localObject4).next();
+      }
+      try
+      {
+        localObject5 = new File((String)localObject5);
+        if (!((File)localObject5).isFile()) {
+          continue;
+        }
+        ((File)localObject5).delete();
+      }
+      catch (Exception localException2) {}
+      ReporterMachine.a().clear();
+      ReporterMachine.a().postDelayed(this, 1800000L);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("Magnifier_ReporterMachine", 2, "[YunYingReport]:Next try, because MagnifierSDK.dbHandler == null || NetType.WIFI != NetworkCenter.getInstance().getNetType()");
+      }
+      ReporterMachine.a().postDelayed(this, 1800000L);
+      label671:
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.repoter.ReporterMachine.ReportRunnable
  * JD-Core Version:    0.7.0.1
  */

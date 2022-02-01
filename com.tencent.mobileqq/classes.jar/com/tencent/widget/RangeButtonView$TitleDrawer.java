@@ -9,46 +9,43 @@ import java.util.List;
 
 class RangeButtonView$TitleDrawer
 {
-  private List<RangeButtonView.Title> jdField_a_of_type_JavaUtilList;
+  private List<RangeButtonView.Title> titles;
   
   public RangeButtonView$TitleDrawer(List<RangeButtonView.Title> paramList)
   {
     Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
+    this.titles = localObject;
   }
   
-  public void a(Canvas paramCanvas, Paint paramPaint)
+  public void drawTitles(Canvas paramCanvas, Paint paramPaint)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (;;)
-    {
+    Object localObject = this.titles;
+    if (localObject == null) {
       return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        ((RangeButtonView.Title)localIterator.next()).a(paramCanvas, paramPaint, this.jdField_a_of_type_ComTencentWidgetRangeButtonView.a);
-      }
+    }
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((RangeButtonView.Title)((Iterator)localObject).next()).draw(paramCanvas, paramPaint, this.this$0.params);
     }
   }
   
-  public void a(ArrayList<Integer> paramArrayList, int paramInt)
+  public void setTitlePoints(ArrayList<Integer> paramArrayList, int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (;;)
-    {
+    if (this.titles == null) {
       return;
-      int i = 0;
-      while (i < paramArrayList.size())
-      {
-        RangeButtonView.Title localTitle = (RangeButtonView.Title)this.jdField_a_of_type_JavaUtilList.get(i);
-        localTitle.a = new Point(((Integer)paramArrayList.get(i)).intValue() - (localTitle.a() >> 1), paramInt);
-        i += 1;
-      }
+    }
+    int i = 0;
+    while (i < paramArrayList.size())
+    {
+      RangeButtonView.Title localTitle = (RangeButtonView.Title)this.titles.get(i);
+      localTitle.point = new Point(((Integer)paramArrayList.get(i)).intValue() - (localTitle.getTextWidth() >> 1), paramInt);
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.RangeButtonView.TitleDrawer
  * JD-Core Version:    0.7.0.1
  */

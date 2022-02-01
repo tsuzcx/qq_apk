@@ -15,24 +15,30 @@ public enum FileExtension
   
   public static FileExtension forFile(String paramString)
   {
-    FileExtension[] arrayOfFileExtension = values();
-    int j = arrayOfFileExtension.length;
+    Object localObject = values();
+    int j = localObject.length;
     int i = 0;
     while (i < j)
     {
-      FileExtension localFileExtension = arrayOfFileExtension[i];
+      FileExtension localFileExtension = localObject[i];
       if (paramString.endsWith(localFileExtension.extension)) {
         return localFileExtension;
       }
       i += 1;
     }
-    L.warn("Unable to find correct extension for " + paramString);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Unable to find correct extension for ");
+    ((StringBuilder)localObject).append(paramString);
+    L.warn(((StringBuilder)localObject).toString());
     return JSON;
   }
   
   public String tempExtension()
   {
-    return ".temp" + this.extension;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(".temp");
+    localStringBuilder.append(this.extension);
+    return localStringBuilder.toString();
   }
   
   public String toString()
@@ -42,7 +48,7 @@ public enum FileExtension
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.network.FileExtension
  * JD-Core Version:    0.7.0.1
  */

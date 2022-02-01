@@ -18,22 +18,25 @@ public class NetInfoHandler
   
   public void onNetMobile2Wifi(String paramString)
   {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((ResNetChangeInterface)this.a.get()).e();
+    paramString = this.a;
+    if ((paramString != null) && (paramString.get() != null)) {
+      ((ResNetChangeInterface)this.a.get()).d();
     }
   }
   
   public void onNetNone2Mobile(String paramString)
   {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((ResNetChangeInterface)this.a.get()).c();
+    paramString = this.a;
+    if ((paramString != null) && (paramString.get() != null)) {
+      ((ResNetChangeInterface)this.a.get()).b();
     }
   }
   
   public void onNetNone2Wifi(String paramString)
   {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((ResNetChangeInterface)this.a.get()).d();
+    paramString = this.a;
+    if ((paramString != null) && (paramString.get() != null)) {
+      ((ResNetChangeInterface)this.a.get()).c();
     }
   }
   
@@ -43,7 +46,7 @@ public class NetInfoHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload.NetInfoHandler
  * JD-Core Version:    0.7.0.1
  */

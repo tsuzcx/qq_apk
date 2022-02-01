@@ -14,26 +14,27 @@ final class AdDownloadStateHandler$doCallBack$1
   
   public final void run()
   {
-    String str = null;
     Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView;
+    String str = null;
     if (localObject != null)
     {
       localObject = ((RIJDownloadView)localObject).a();
       if (localObject != null)
       {
         localObject = ((ADVideoAppDownloadData)localObject).d;
-        if (localObject != null)
-        {
-          localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadDataAdDownloadInfo;
-          if (localObject == null) {
-            break label96;
-          }
-        }
+        break label30;
       }
     }
-    label96:
-    for (localObject = ((AdDownloadInfo)localObject).a();; localObject = null)
+    localObject = null;
+    label30:
+    if (localObject != null)
     {
+      localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadDataAdDownloadInfo;
+      if (localObject != null) {
+        localObject = ((AdDownloadInfo)localObject).a();
+      } else {
+        localObject = null;
+      }
       ADVideoAppDownloadData localADVideoAppDownloadData = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.a();
       if (localADVideoAppDownloadData != null) {
         str = localADVideoAppDownloadData.d;
@@ -43,15 +44,12 @@ final class AdDownloadStateHandler$doCallBack$1
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.f();
         this.this$0.onCallBack(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadDataAdDownloadInfo);
       }
-      return;
-      localObject = null;
-      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.event.AdDownloadStateHandler.doCallBack.1
  * JD-Core Version:    0.7.0.1
  */

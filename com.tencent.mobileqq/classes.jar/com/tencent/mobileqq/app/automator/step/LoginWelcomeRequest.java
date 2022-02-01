@@ -6,7 +6,7 @@ import com.tencent.mobileqq.app.automator.AsyncStep;
 public class LoginWelcomeRequest
   extends AsyncStep
 {
-  public int a()
+  protected int doStep()
   {
     ThreadManager.postImmediately(new LoginWelcomeRequest.1(this), null, false);
     return 7;
@@ -14,7 +14,7 @@ public class LoginWelcomeRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.LoginWelcomeRequest
  * JD-Core Version:    0.7.0.1
  */

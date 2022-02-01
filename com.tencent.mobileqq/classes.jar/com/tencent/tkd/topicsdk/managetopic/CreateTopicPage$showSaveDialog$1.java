@@ -20,16 +20,16 @@ public final class CreateTopicPage$showSaveDialog$1
   
   public void a()
   {
-    String str = this.jdField_a_of_type_ComTencentTkdTopicsdkManagetopicCreateTopicPage.b();
-    this.jdField_a_of_type_ComTencentTkdTopicsdkManagetopicCreateTopicPage.a().a(new TopicPublishInfo(str, this.jdField_a_of_type_ComTencentTkdTopicsdkManagetopicCreateTopicPage.a().a(), this.jdField_a_of_type_ComTencentTkdTopicsdkManagetopicCreateTopicPage.b().a(), this.jdField_a_of_type_ComTencentTkdTopicsdkManagetopicCreateTopicPage.f()));
+    String str = this.jdField_a_of_type_ComTencentTkdTopicsdkManagetopicCreateTopicPage.a();
+    this.jdField_a_of_type_ComTencentTkdTopicsdkManagetopicCreateTopicPage.a().a(new TopicPublishInfo(str, this.jdField_a_of_type_ComTencentTkdTopicsdkManagetopicCreateTopicPage.a().a(), this.jdField_a_of_type_ComTencentTkdTopicsdkManagetopicCreateTopicPage.b().a(), this.jdField_a_of_type_ComTencentTkdTopicsdkManagetopicCreateTopicPage.a()));
     this.jdField_a_of_type_AndroidAppActivity.finish();
     TopicEventDispatcher.a.b();
-    DispatchManager.a.a((IEvent)new UserActionEvent(ReportEventKey.EVENT_CLICK, ReportEventPage.PAGE_CREATE_COLUMN_DRAFT_DIALOG, ReportEventElement.BUTTON_CONFIRM, this.jdField_a_of_type_ComTencentTkdTopicsdkManagetopicCreateTopicPage.a(), this.jdField_a_of_type_ComTencentTkdTopicsdkManagetopicCreateTopicPage.a()));
+    DispatchManager.a.a((IEvent)new UserActionEvent(null, ReportEventKey.EVENT_CLICK, ReportEventPage.PAGE_CREATE_COLUMN_DRAFT_DIALOG, ReportEventElement.BUTTON_CONFIRM, this.jdField_a_of_type_ComTencentTkdTopicsdkManagetopicCreateTopicPage.a(), this.jdField_a_of_type_ComTencentTkdTopicsdkManagetopicCreateTopicPage.a(), null, 65, null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.managetopic.CreateTopicPage.showSaveDialog.1
  * JD-Core Version:    0.7.0.1
  */

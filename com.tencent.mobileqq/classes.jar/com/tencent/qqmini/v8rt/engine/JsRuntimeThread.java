@@ -19,7 +19,10 @@ public class JsRuntimeThread
   public JsRuntimeThread(int paramInt)
   {
     this.mHandlerThread.start();
-    this.sTAG = ("JsRT-" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("JsRT-");
+    localStringBuilder.append(paramInt);
+    this.sTAG = localStringBuilder.toString();
     this.mHandler = new Handler(this.mHandlerThread.getLooper(), this);
   }
   
@@ -31,14 +34,11 @@ public class JsRuntimeThread
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
+    int i = paramMessage.what;
+    if ((i != 2) && (i == 3)) {
       releaseInternal();
     }
+    return false;
   }
   
   public boolean isReleased()
@@ -60,7 +60,7 @@ public class JsRuntimeThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.v8rt.engine.JsRuntimeThread
  * JD-Core Version:    0.7.0.1
  */

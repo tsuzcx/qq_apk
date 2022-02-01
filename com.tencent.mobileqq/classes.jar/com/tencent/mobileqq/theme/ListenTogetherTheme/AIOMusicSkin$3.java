@@ -10,8 +10,12 @@ class AIOMusicSkin$3
   
   public void onCompleted(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AIOMusicSkin", 2, "onCompleted, scid:" + paramString1);
+    if (QLog.isColorLevel())
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("onCompleted, scid:");
+      paramString2.append(paramString1);
+      QLog.i("AIOMusicSkin", 2, paramString2.toString());
     }
     this.a.a();
   }
@@ -20,7 +24,7 @@ class AIOMusicSkin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.theme.ListenTogetherTheme.AIOMusicSkin.3
  * JD-Core Version:    0.7.0.1
  */

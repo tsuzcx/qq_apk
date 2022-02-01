@@ -6,7 +6,10 @@ public class NeverCalled
 {
   private void fake(int paramInt)
   {
-    Log.i(getClass().getSimpleName(), paramInt + "Do not inline me!!");
+    String str = getClass().getSimpleName();
+    StringBuilder localStringBuilder = new StringBuilder(String.valueOf(paramInt));
+    localStringBuilder.append("Do not inline me!!");
+    Log.i(str, localStringBuilder.toString());
   }
 }
 

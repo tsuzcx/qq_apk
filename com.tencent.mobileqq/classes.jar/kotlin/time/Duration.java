@@ -47,7 +47,9 @@ public final class Duration
   
   public static final double div-impl(double paramDouble, int paramInt)
   {
-    return constructor-impl(paramDouble / paramInt);
+    double d = paramInt;
+    Double.isNaN(d);
+    return constructor-impl(paramDouble / d);
   }
   
   public static boolean equals-impl(double paramDouble, @Nullable Object paramObject)
@@ -71,7 +73,10 @@ public final class Duration
   
   public static final int getHoursComponent-impl(double paramDouble)
   {
-    return (int)(getInHours-impl(paramDouble) % 24);
+    paramDouble = getInHours-impl(paramDouble);
+    double d = 24;
+    Double.isNaN(d);
+    return (int)(paramDouble % d);
   }
   
   public static final double getInDays-impl(double paramDouble)
@@ -111,7 +116,10 @@ public final class Duration
   
   public static final int getMinutesComponent-impl(double paramDouble)
   {
-    return (int)(getInMinutes-impl(paramDouble) % 60);
+    paramDouble = getInMinutes-impl(paramDouble);
+    double d = 60;
+    Double.isNaN(d);
+    return (int)(paramDouble % d);
   }
   
   public static final int getNanosecondsComponent-impl(double paramDouble)
@@ -121,7 +129,10 @@ public final class Duration
   
   public static final int getSecondsComponent-impl(double paramDouble)
   {
-    return (int)(getInSeconds-impl(paramDouble) % 60);
+    paramDouble = getInSeconds-impl(paramDouble);
+    double d = 60;
+    Double.isNaN(d);
+    return (int)(paramDouble % d);
   }
   
   public static int hashCode-impl(double paramDouble)
@@ -170,17 +181,15 @@ public final class Duration
   
   private static final int precision-impl(double paramDouble1, double paramDouble2)
   {
-    int i = 1;
     if (paramDouble2 < 1) {
-      i = 3;
+      return 3;
     }
-    do
-    {
-      return i;
-      if (paramDouble2 < 10) {
-        return 2;
-      }
-    } while (paramDouble2 < 100);
+    if (paramDouble2 < 10) {
+      return 2;
+    }
+    if (paramDouble2 < 100) {
+      return 1;
+    }
     return 0;
   }
   
@@ -191,7 +200,9 @@ public final class Duration
   
   public static final double times-impl(double paramDouble, int paramInt)
   {
-    return constructor-impl(paramInt * paramDouble);
+    double d = paramInt;
+    Double.isNaN(d);
+    return constructor-impl(paramDouble * d);
   }
   
   public static final <T> T toComponents-impl(double paramDouble, @NotNull Function2<? super Long, ? super Integer, ? extends T> paramFunction2)
@@ -233,7 +244,6 @@ public final class Duration
   @NotNull
   public static final String toIsoString-impl(double paramDouble)
   {
-    int m = 1;
     Object localObject = new StringBuilder();
     if (isNegative-impl(paramDouble)) {
       ((StringBuilder)localObject).append('-');
@@ -244,68 +254,64 @@ public final class Duration
     int i1 = getMinutesComponent-impl(paramDouble);
     int i2 = getSecondsComponent-impl(paramDouble);
     int i3 = getNanosecondsComponent-impl(paramDouble);
+    int m = 1;
     int i;
-    int j;
-    label85:
-    int k;
-    label106:
-    String str;
-    if (n != 0)
-    {
+    if (n != 0) {
       i = 1;
-      if ((i2 == 0) && (i3 == 0)) {
-        break label247;
-      }
-      j = 1;
-      k = m;
-      if (i1 == 0)
-      {
-        if ((j == 0) || (i == 0)) {
-          break label252;
-        }
-        k = m;
-      }
-      if (i != 0) {
-        ((StringBuilder)localObject).append(n).append('H');
-      }
-      if (k != 0) {
-        ((StringBuilder)localObject).append(i1).append('M');
-      }
-      if ((j != 0) || ((i == 0) && (k == 0)))
-      {
-        ((StringBuilder)localObject).append(i2);
-        if (i3 != 0)
-        {
-          ((StringBuilder)localObject).append('.');
-          str = StringsKt.padStart(String.valueOf(i3), 9, '0');
-          if (i3 % 1000000 != 0) {
-            break label258;
-          }
-          Intrinsics.checkExpressionValueIsNotNull(((StringBuilder)localObject).append((CharSequence)str, 0, 3), "this.append(value, startIndex, endIndex)");
-        }
-      }
-    }
-    for (;;)
-    {
-      ((StringBuilder)localObject).append('S');
-      localObject = ((StringBuilder)localObject).toString();
-      Intrinsics.checkExpressionValueIsNotNull(localObject, "StringBuilder().apply(builderAction).toString()");
-      return localObject;
+    } else {
       i = 0;
-      break;
-      label247:
+    }
+    int j;
+    if ((i2 == 0) && (i3 == 0)) {
       j = 0;
-      break label85;
-      label252:
-      k = 0;
-      break label106;
-      label258:
-      if (i3 % 1000 == 0) {
-        Intrinsics.checkExpressionValueIsNotNull(((StringBuilder)localObject).append((CharSequence)str, 0, 6), "this.append(value, startIndex, endIndex)");
+    } else {
+      j = 1;
+    }
+    int k = m;
+    if (i1 == 0) {
+      if ((j != 0) && (i != 0)) {
+        k = m;
       } else {
-        ((StringBuilder)localObject).append(str);
+        k = 0;
       }
     }
+    if (i != 0)
+    {
+      ((StringBuilder)localObject).append(n);
+      ((StringBuilder)localObject).append('H');
+    }
+    if (k != 0)
+    {
+      ((StringBuilder)localObject).append(i1);
+      ((StringBuilder)localObject).append('M');
+    }
+    if ((j != 0) || ((i == 0) && (k == 0)))
+    {
+      ((StringBuilder)localObject).append(i2);
+      if (i3 != 0)
+      {
+        ((StringBuilder)localObject).append('.');
+        String str = StringsKt.padStart(String.valueOf(i3), 9, '0');
+        if (i3 % 1000000 == 0)
+        {
+          ((StringBuilder)localObject).append((CharSequence)str, 0, 3);
+          Intrinsics.checkExpressionValueIsNotNull(localObject, "this.append(value, startIndex, endIndex)");
+        }
+        else if (i3 % 1000 == 0)
+        {
+          ((StringBuilder)localObject).append((CharSequence)str, 0, 6);
+          Intrinsics.checkExpressionValueIsNotNull(localObject, "this.append(value, startIndex, endIndex)");
+        }
+        else
+        {
+          ((StringBuilder)localObject).append(str);
+        }
+      }
+      ((StringBuilder)localObject).append('S');
+    }
+    localObject = ((StringBuilder)localObject).toString();
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "StringBuilder().apply(builderAction).toString()");
+    return localObject;
   }
   
   public static final long toLong-impl(double paramDouble, @NotNull TimeUnit paramTimeUnit)
@@ -327,8 +333,6 @@ public final class Duration
   @NotNull
   public static String toString-impl(double paramDouble)
   {
-    int j = 0;
-    int i = 1;
     if (isInfinite-impl(paramDouble)) {
       return String.valueOf(paramDouble);
     }
@@ -336,99 +340,103 @@ public final class Duration
       return "0s";
     }
     double d = getInNanoseconds-impl(getAbsoluteValue-impl(paramDouble));
-    TimeUnit localTimeUnit;
-    StringBuilder localStringBuilder;
-    String str;
-    if (d < 1.0E-006D)
+    int j = 0;
+    if (d < 1.0E-006D) {}
+    int i;
+    for (TimeUnit localTimeUnit = TimeUnit.SECONDS;; localTimeUnit = TimeUnit.DAYS)
     {
-      localTimeUnit = TimeUnit.SECONDS;
-      d = toDouble-impl(paramDouble, localTimeUnit);
-      localStringBuilder = new StringBuilder();
-      if (i == 0) {
-        break label258;
-      }
-      str = FormatToDecimalsKt.formatScientific(d);
-    }
-    for (;;)
-    {
-      return str + DurationUnitKt.shortName(localTimeUnit);
+      i = 0;
+      j = 1;
+      break;
       if (d < 1)
       {
         localTimeUnit = TimeUnit.NANOSECONDS;
-        i = 0;
-        j = 7;
+        i = 7;
         break;
       }
-      if (d < 1000.0D)
-      {
+      if (d < 1000.0D) {
         localTimeUnit = TimeUnit.NANOSECONDS;
-        i = 0;
-        break;
       }
-      if (d < 1000000.0D)
+      for (;;)
       {
-        localTimeUnit = TimeUnit.MICROSECONDS;
         i = 0;
-        break;
-      }
-      if (d < 1000000000.0D)
-      {
-        localTimeUnit = TimeUnit.MILLISECONDS;
-        i = 0;
-        break;
-      }
-      if (d < 1000000000000.0D)
-      {
-        localTimeUnit = TimeUnit.SECONDS;
-        i = 0;
-        break;
-      }
-      if (d < 60000000000000.0D)
-      {
-        localTimeUnit = TimeUnit.MINUTES;
-        i = 0;
-        break;
-      }
-      if (d < 3600000000000000.0D)
-      {
-        localTimeUnit = TimeUnit.HOURS;
-        i = 0;
-        break;
-      }
-      if (d < 8.64E+020D)
-      {
-        localTimeUnit = TimeUnit.DAYS;
-        i = 0;
-        break;
-      }
-      localTimeUnit = TimeUnit.DAYS;
-      break;
-      label258:
-      if (j > 0) {
-        str = FormatToDecimalsKt.formatUpToDecimals(d, j);
-      } else {
-        str = FormatToDecimalsKt.formatToExactDecimals(d, precision-impl(paramDouble, Math.abs(d)));
+        break label197;
+        if (d < 1000000.0D)
+        {
+          localTimeUnit = TimeUnit.MICROSECONDS;
+        }
+        else if (d < 1000000000.0D)
+        {
+          localTimeUnit = TimeUnit.MILLISECONDS;
+        }
+        else if (d < 1000000000000.0D)
+        {
+          localTimeUnit = TimeUnit.SECONDS;
+        }
+        else if (d < 60000000000000.0D)
+        {
+          localTimeUnit = TimeUnit.MINUTES;
+        }
+        else if (d < 3600000000000000.0D)
+        {
+          localTimeUnit = TimeUnit.HOURS;
+        }
+        else
+        {
+          if (d >= 8.64E+020D) {
+            break;
+          }
+          localTimeUnit = TimeUnit.DAYS;
+        }
       }
     }
+    label197:
+    d = toDouble-impl(paramDouble, localTimeUnit);
+    StringBuilder localStringBuilder = new StringBuilder();
+    String str;
+    if (j != 0) {
+      str = FormatToDecimalsKt.formatScientific(d);
+    } else if (i > 0) {
+      str = FormatToDecimalsKt.formatUpToDecimals(d, i);
+    } else {
+      str = FormatToDecimalsKt.formatToExactDecimals(d, precision-impl(paramDouble, Math.abs(d)));
+    }
+    localStringBuilder.append(str);
+    localStringBuilder.append(DurationUnitKt.shortName(localTimeUnit));
+    return localStringBuilder.toString();
   }
   
   @NotNull
   public static final String toString-impl(double paramDouble, @NotNull TimeUnit paramTimeUnit, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramTimeUnit, "unit");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("decimals must be not negative, but was " + paramInt).toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (isInfinite-impl(paramDouble)) {
-      return String.valueOf(paramDouble);
+    if (i != 0)
+    {
+      if (isInfinite-impl(paramDouble)) {
+        return String.valueOf(paramDouble);
+      }
+      paramDouble = toDouble-impl(paramDouble, paramTimeUnit);
+      StringBuilder localStringBuilder = new StringBuilder();
+      String str;
+      if (Math.abs(paramDouble) < 100000000000000.0D) {
+        str = FormatToDecimalsKt.formatToExactDecimals(paramDouble, RangesKt.coerceAtMost(paramInt, 12));
+      } else {
+        str = FormatToDecimalsKt.formatScientific(paramDouble);
+      }
+      localStringBuilder.append(str);
+      localStringBuilder.append(DurationUnitKt.shortName(paramTimeUnit));
+      return localStringBuilder.toString();
     }
-    paramDouble = toDouble-impl(paramDouble, paramTimeUnit);
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (Math.abs(paramDouble) < 100000000000000.0D) {}
-    for (String str = FormatToDecimalsKt.formatToExactDecimals(paramDouble, RangesKt.coerceAtMost(paramInt, 12));; str = FormatToDecimalsKt.formatScientific(paramDouble)) {
-      return str + DurationUnitKt.shortName(paramTimeUnit);
-    }
+    paramTimeUnit = new StringBuilder();
+    paramTimeUnit.append("decimals must be not negative, but was ");
+    paramTimeUnit.append(paramInt);
+    throw ((Throwable)new IllegalArgumentException(paramTimeUnit.toString().toString()));
   }
   
   public static final double unaryMinus-impl(double paramDouble)
@@ -459,7 +467,7 @@ public final class Duration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.time.Duration
  * JD-Core Version:    0.7.0.1
  */

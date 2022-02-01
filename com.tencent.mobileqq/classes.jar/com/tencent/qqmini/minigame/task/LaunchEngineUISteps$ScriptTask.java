@@ -27,7 +27,7 @@ class LaunchEngineUISteps$ScriptTask
     super(localObject.getContext(), localObject.getRuntimeLoader());
   }
   
-  public void execute() {}
+  protected void execute() {}
   
   public long getRunDurationMs()
   {
@@ -41,7 +41,7 @@ class LaunchEngineUISteps$ScriptTask
   }
   
   @NotNull
-  public List<TaskExecutionStatics> getSubTaskExecutionStatics()
+  protected List<TaskExecutionStatics> getSubTaskExecutionStatics()
   {
     return this.steps;
   }
@@ -59,19 +59,19 @@ class LaunchEngineUISteps$ScriptTask
     paramList = (Iterable)paramList;
     Collection localCollection = (Collection)new ArrayList(CollectionsKt.collectionSizeOrDefault(paramList, 10));
     Iterator localIterator = paramList.iterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       ScriptLoadStatistic localScriptLoadStatistic = (ScriptLoadStatistic)localIterator.next();
       this.scriptDurationMs += localScriptLoadStatistic.getCompileTimeMs() + localScriptLoadStatistic.getExecuteTimeMs();
       String str = localScriptLoadStatistic.getScriptName();
       paramLong = localScriptLoadStatistic.getCompileTimeMs();
       long l = localScriptLoadStatistic.getExecuteTimeMs();
-      if (localScriptLoadStatistic.getLoadResult() == ScriptLoadResult.SUCCESS_WITH_CACHE) {}
-      for (paramList = "cc";; paramList = "")
-      {
-        localCollection.add(new TaskExecutionStatics(str, 0L, paramLong + l, null, paramList, CollectionsKt.listOf(new TaskExecutionStatics[] { new TaskExecutionStatics("compile", localScriptLoadStatistic.getCompileTimeMs(), 0L, null, null, null, 60, null), new TaskExecutionStatics("execute", localScriptLoadStatistic.getExecuteTimeMs(), 0L, null, null, null, 60, null) }), 8, null));
-        break;
+      if (localScriptLoadStatistic.getLoadResult() == ScriptLoadResult.SUCCESS_WITH_CACHE) {
+        paramList = "cc";
+      } else {
+        paramList = "";
       }
+      localCollection.add(new TaskExecutionStatics(str, 0L, l + paramLong, null, paramList, CollectionsKt.listOf(new TaskExecutionStatics[] { new TaskExecutionStatics("compile", localScriptLoadStatistic.getCompileTimeMs(), 0L, null, null, null, 60, null), new TaskExecutionStatics("execute", localScriptLoadStatistic.getExecuteTimeMs(), 0L, null, null, null, 60, null) }), 8, null));
     }
     this.steps = ((List)localCollection);
   }
@@ -84,7 +84,7 @@ class LaunchEngineUISteps$ScriptTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.task.LaunchEngineUISteps.ScriptTask
  * JD-Core Version:    0.7.0.1
  */

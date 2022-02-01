@@ -1,21 +1,25 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import com.tencent.mobileqq.statistics.ReportController;
+import android.app.Dialog;
+import android.view.View;
+import com.tencent.mobileqq.nearby.widget.MenuItem;
+import com.tencent.mobileqq.nearby.widget.NearbyPublishMenu.OnItemClickListener;
+import com.tencent.mobileqq.nearby.widget.NearbyPublishMenuHelper;
 
 class NearbyProfileDisplayPanel$33
-  implements Runnable
+  implements NearbyPublishMenu.OnItemClickListener
 {
-  NearbyProfileDisplayPanel$33(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel, int paramInt) {}
+  NearbyProfileDisplayPanel$33(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
   
-  public void run()
+  public void a(Dialog paramDialog, View paramView, MenuItem paramMenuItem)
   {
-    ReportController.b(this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "CliOper", "", "", NearbyProfileDisplayPanel.jdField_a_of_type_ArrayOfJavaLangString[(this.a - 1)], NearbyProfileDisplayPanel.jdField_a_of_type_ArrayOfJavaLangString[(this.a - 1)], 0, 0, "", "", "", "");
-    ReportController.b(this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "dc00898", "", "", "0X800698A", "0X800698A", 0, 0, "", "", "", "");
+    NearbyPublishMenuHelper.a(this.a.a, paramMenuItem, "data_card");
+    paramDialog.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel.33
  * JD-Core Version:    0.7.0.1
  */

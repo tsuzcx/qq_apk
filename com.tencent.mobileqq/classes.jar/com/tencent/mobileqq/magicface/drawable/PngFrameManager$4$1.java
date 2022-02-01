@@ -4,8 +4,8 @@ import android.os.Handler;
 import android.os.Message;
 import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
 import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emoticonview.EmoticonUtils;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import com.tencent.mobileqq.emoticonview.EmotionPanelConstans;
+import com.tencent.mobileqq.emoticonview.IPicEmoticonInfo;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.vip.DownloadListener;
 import com.tencent.mobileqq.vip.DownloadTask;
@@ -23,43 +23,35 @@ class PngFrameManager$4$1
     if (QLog.isColorLevel()) {
       QLog.d("PngFrameManager", 2, "func onDone.【pngZip】");
     }
-    for (;;)
+    synchronized (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.this$0)
     {
-      synchronized (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.this$0)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.this$0.a != null)
+      if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.this$0.a != null) {
+        if (paramDownloadTask.a() != 3)
         {
-          if (paramDownloadTask.a() != 3) {
-            this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.this$0.a.obtainMessage(226, this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.a).sendToTarget();
+          this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.this$0.a.obtainMessage(226, this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.a).sendToTarget();
+        }
+        else
+        {
+          try
+          {
+            FileUtils.uncompressZip(this.jdField_a_of_type_JavaLangString, EmotionPanelConstans.pngFramePath.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.a.jdField_a_of_type_JavaLangString), false);
           }
-        }
-        else {
-          return;
-        }
-      }
-      try
-      {
-        FileUtils.a(this.jdField_a_of_type_JavaLangString, EmoticonUtils.pngFramePath.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.a.jdField_a_of_type_JavaLangString), false);
-        new File(this.jdField_a_of_type_JavaLangString).delete();
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.this$0.b(this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a.emoticon.epId);
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.this$0.a.obtainMessage(225, this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.a).sendToTarget();
-        continue;
-        paramDownloadTask = finally;
-        throw paramDownloadTask;
-      }
-      catch (IOException paramDownloadTask)
-      {
-        for (;;)
-        {
-          paramDownloadTask.printStackTrace();
+          catch (IOException paramDownloadTask)
+          {
+            paramDownloadTask.printStackTrace();
+          }
+          new File(this.jdField_a_of_type_JavaLangString).delete();
+          this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.this$0.b(this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a.getEmoticon().epId);
+          this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.this$0.a.obtainMessage(225, this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.a).sendToTarget();
         }
       }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.drawable.PngFrameManager.4.1
  * JD-Core Version:    0.7.0.1
  */

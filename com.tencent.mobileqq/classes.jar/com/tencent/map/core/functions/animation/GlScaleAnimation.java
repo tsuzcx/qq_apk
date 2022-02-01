@@ -20,30 +20,24 @@ public class GlScaleAnimation
   
   protected void performAnimation(float paramFloat, Interpolator paramInterpolator)
   {
-    if (paramFloat < 0.0F) {}
-    float f1;
-    float f2;
-    float f3;
-    float f4;
-    float f5;
-    float f6;
-    do
-    {
+    if (paramFloat < 0.0F) {
       return;
-      f1 = this.b;
-      f2 = this.a;
-      f3 = this.d;
-      f4 = this.c;
-      paramFloat = paramInterpolator.getInterpolation(paramFloat);
-      f5 = this.a;
-      f6 = this.c;
-    } while (this.animationProperty == null);
-    this.animationProperty.setScale((f1 - f2) * paramFloat + f5, (f3 - f4) * paramFloat + f6);
+    }
+    float f1 = this.b;
+    float f2 = this.a;
+    float f3 = this.d;
+    float f4 = this.c;
+    paramFloat = paramInterpolator.getInterpolation(paramFloat);
+    float f5 = this.a;
+    float f6 = this.c;
+    if (this.animationProperty != null) {
+      this.animationProperty.setScale(f5 + (f1 - f2) * paramFloat, f6 + (f3 - f4) * paramFloat);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.core.functions.animation.GlScaleAnimation
  * JD-Core Version:    0.7.0.1
  */

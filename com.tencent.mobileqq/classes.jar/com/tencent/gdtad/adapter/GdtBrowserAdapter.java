@@ -21,32 +21,32 @@ public final class GdtBrowserAdapter
 {
   public AdError show(AdBrowserAdapter.Params paramParams)
   {
-    if ((paramParams == null) || (!paramParams.isValid()) || (paramParams.ad == null) || (!(paramParams.ad instanceof GdtAd)))
+    if ((paramParams != null) && (paramParams.isValid()) && (paramParams.ad != null) && ((paramParams.ad instanceof GdtAd)))
     {
-      GdtLog.d("GdtBrowserAdapter", "show error");
-      return new AdError(4);
-    }
-    GdtLog.b("GdtBrowserAdapter", String.format("show %s", new Object[] { paramParams.url }));
-    Object localObject = (GdtAd)GdtAd.class.cast(paramParams.ad);
-    Intent localIntent = new Intent((Context)paramParams.activity.get(), QQBrowserActivity.class);
-    localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-    localIntent.putExtra("url", paramParams.url);
-    if ((paramParams.extrasForIntent != null) && (!paramParams.extrasForIntent.isEmpty())) {
-      localIntent.putExtras(paramParams.extrasForIntent);
-    }
-    if ((paramParams.ad != null) && (paramParams.ad.isValid()))
-    {
-      if (((GdtAd)localObject).getNocoId() != 0L) {
-        localIntent.putExtra("GdtNocoId", ((GdtAd)localObject).getNocoId());
+      GdtLog.b("GdtBrowserAdapter", String.format("show %s", new Object[] { paramParams.url }));
+      Object localObject = (GdtAd)GdtAd.class.cast(paramParams.ad);
+      Intent localIntent = new Intent((Context)paramParams.activity.get(), QQBrowserActivity.class);
+      localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
+      localIntent.putExtra("url", paramParams.url);
+      if ((paramParams.extrasForIntent != null) && (!paramParams.extrasForIntent.isEmpty())) {
+        localIntent.putExtras(paramParams.extrasForIntent);
       }
-      localIntent.putExtra("GdtWebReportQQ_TRACE_ID", paramParams.ad.getTraceId());
-      localIntent.putExtra("GdtNocoId", ((GdtAd)localObject).getNocoId());
-      localIntent.putExtra("GdtWebReportQQ_ACTION_URL", ((GdtAd)localObject).getUrlForAction());
-      localIntent.putExtra("GdtWebReportQQ_CLICK_TIME", System.currentTimeMillis());
-    }
-    if (localObject == null) {}
-    for (;;)
-    {
+      if ((paramParams.ad != null) && (paramParams.ad.isValid()))
+      {
+        if (((GdtAd)localObject).getNocoId() != 0L) {
+          localIntent.putExtra("GdtNocoId", ((GdtAd)localObject).getNocoId());
+        }
+        localIntent.putExtra("GdtWebReportQQ_TRACE_ID", paramParams.ad.getTraceId());
+        localIntent.putExtra("GdtNocoId", ((GdtAd)localObject).getNocoId());
+        localIntent.putExtra("GdtWebReportQQ_ACTION_URL", ((GdtAd)localObject).getUrlForAction());
+        localIntent.putExtra("GdtWebReportQQ_CLICK_TIME", System.currentTimeMillis());
+      }
+      if ((localObject != null) && (((GdtAd)localObject).isValid()) && ((paramParams.ad.isAppXiJingOffline()) || (paramParams.ad.isWebXiJingOffline())) && (!TextUtils.isEmpty(paramParams.ad.getCanvasForXiJingOffline())))
+      {
+        Bundle localBundle = new Bundle();
+        localBundle.putParcelable("gdt_ad", (Parcelable)localObject);
+        localIntent.putExtras(localBundle);
+      }
       if ((paramParams.ad != null) && (paramParams.ad.getProductType() == 25))
       {
         localObject = paramParams.ad.getUrlForClick();
@@ -65,44 +65,40 @@ public final class GdtBrowserAdapter
         GdtLog.d("GdtBrowserAdapter", "show", paramParams);
         return new AdError(202, paramParams);
       }
-      if ((((GdtAd)localObject).isValid()) && ((paramParams.ad.isAppXiJingOffline()) || (paramParams.ad.isWebXiJingOffline())) && (!TextUtils.isEmpty(paramParams.ad.getCanvasForXiJingOffline())))
-      {
-        Bundle localBundle = new Bundle();
-        localBundle.putParcelable("gdt_ad", (Parcelable)localObject);
-        localIntent.putExtras(localBundle);
-      }
     }
+    GdtLog.d("GdtBrowserAdapter", "show error");
+    return new AdError(4);
   }
   
   public AdError showWithoutAd(AdBrowserAdapter.Params paramParams)
   {
-    if ((paramParams == null) || (!paramParams.isValid()))
+    if ((paramParams != null) && (paramParams.isValid()))
     {
-      GdtLog.d("GdtBrowserAdapter", "showWithoutAd error");
-      return new AdError(4);
+      Intent localIntent = new Intent((Context)paramParams.activity.get(), QQBrowserActivity.class);
+      localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
+      localIntent.putExtra("url", paramParams.url);
+      if ((paramParams.extrasForIntent != null) && (!paramParams.extrasForIntent.isEmpty())) {
+        localIntent.putExtras(paramParams.extrasForIntent);
+      }
+      try
+      {
+        ((Activity)paramParams.activity.get()).startActivity(localIntent);
+        paramParams = new AdError(0);
+        return paramParams;
+      }
+      catch (Throwable paramParams)
+      {
+        GdtLog.d("GdtBrowserAdapter", "showWithoutAd", paramParams);
+        return new AdError(202, paramParams);
+      }
     }
-    Intent localIntent = new Intent((Context)paramParams.activity.get(), QQBrowserActivity.class);
-    localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-    localIntent.putExtra("url", paramParams.url);
-    if ((paramParams.extrasForIntent != null) && (!paramParams.extrasForIntent.isEmpty())) {
-      localIntent.putExtras(paramParams.extrasForIntent);
-    }
-    try
-    {
-      ((Activity)paramParams.activity.get()).startActivity(localIntent);
-      paramParams = new AdError(0);
-      return paramParams;
-    }
-    catch (Throwable paramParams)
-    {
-      GdtLog.d("GdtBrowserAdapter", "showWithoutAd", paramParams);
-    }
-    return new AdError(202, paramParams);
+    GdtLog.d("GdtBrowserAdapter", "showWithoutAd error");
+    return new AdError(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.adapter.GdtBrowserAdapter
  * JD-Core Version:    0.7.0.1
  */

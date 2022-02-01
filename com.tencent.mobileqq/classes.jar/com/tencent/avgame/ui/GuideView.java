@@ -89,31 +89,35 @@ public class GuideView
     setVisibility(0);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
       this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(this.jdField_a_of_type_AndroidGraphicsPorterDuffXfermode);
       this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
+      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        HoleBean localHoleBean = (HoleBean)localIterator.next();
+        HoleBean localHoleBean = (HoleBean)((Iterator)localObject).next();
         RectF localRectF = localHoleBean.a();
         localRectF.offset(-this.jdField_a_of_type_AndroidGraphicsRectF.left, -this.jdField_a_of_type_AndroidGraphicsRectF.top);
-        switch (localHoleBean.b())
+        int i = localHoleBean.b();
+        if (i != 0)
         {
-        default: 
-          break;
-        case 0: 
+          if (i != 1)
+          {
+            if (i == 2) {
+              this.jdField_a_of_type_AndroidGraphicsCanvas.drawOval(localRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+            }
+          }
+          else {
+            this.jdField_a_of_type_AndroidGraphicsCanvas.drawRect(localRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+          }
+        }
+        else {
           this.jdField_a_of_type_AndroidGraphicsCanvas.drawCircle(localRectF.centerX(), localRectF.centerY(), localHoleBean.a(), this.jdField_a_of_type_AndroidGraphicsPaint);
-          break;
-        case 1: 
-          this.jdField_a_of_type_AndroidGraphicsCanvas.drawRect(localRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-          break;
-        case 2: 
-          this.jdField_a_of_type_AndroidGraphicsCanvas.drawOval(localRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
         }
       }
       paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRectF.left, this.jdField_a_of_type_AndroidGraphicsRectF.top, null);
@@ -132,7 +136,8 @@ public class GuideView
   public void setHoleList(List<HoleBean> paramList)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
+    paramList = this.jdField_a_of_type_JavaUtilList;
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
       paramList = this.jdField_a_of_type_JavaUtilList.iterator();
       while (paramList.hasNext())
@@ -142,32 +147,33 @@ public class GuideView
       }
     }
     this.jdField_a_of_type_Float = Math.max(Math.max(this.jdField_a_of_type_AndroidGraphicsRectF.left, this.jdField_a_of_type_AndroidGraphicsRectF.top), Math.max(a(getContext()) - this.jdField_a_of_type_AndroidGraphicsRectF.right, b(getContext()) - this.jdField_a_of_type_AndroidGraphicsRectF.bottom));
-    if ((this.jdField_a_of_type_AndroidGraphicsRectF.width() > 0.0F) && (this.jdField_a_of_type_AndroidGraphicsRectF.height() > 0.0F)) {}
-    for (this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap((int)this.jdField_a_of_type_AndroidGraphicsRectF.width(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.height(), Bitmap.Config.ARGB_8888);; this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(10, 10, Bitmap.Config.ARGB_8888))
-    {
-      this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      this.jdField_a_of_type_AndroidGraphicsCanvas.drawColor(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidWidgetButton = new Button(getContext());
-      this.jdField_a_of_type_AndroidWidgetButton.setX(this.jdField_a_of_type_AndroidGraphicsRectF.left);
-      this.jdField_a_of_type_AndroidWidgetButton.setY(this.jdField_a_of_type_AndroidGraphicsRectF.top);
-      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getContext().getString(2131690458));
-      this.jdField_a_of_type_AndroidWidgetButton.setLayoutParams(new FrameLayout.LayoutParams((int)this.jdField_a_of_type_AndroidGraphicsRectF.width(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.height()));
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundColor(0);
-      addView(this.jdField_a_of_type_AndroidWidgetButton);
-      return;
+    if ((this.jdField_a_of_type_AndroidGraphicsRectF.width() > 0.0F) && (this.jdField_a_of_type_AndroidGraphicsRectF.height() > 0.0F)) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap((int)this.jdField_a_of_type_AndroidGraphicsRectF.width(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.height(), Bitmap.Config.ARGB_8888);
+    } else {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(10, 10, Bitmap.Config.ARGB_8888);
     }
+    this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_AndroidGraphicsCanvas.drawColor(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidWidgetButton = new Button(getContext());
+    this.jdField_a_of_type_AndroidWidgetButton.setX(this.jdField_a_of_type_AndroidGraphicsRectF.left);
+    this.jdField_a_of_type_AndroidWidgetButton.setY(this.jdField_a_of_type_AndroidGraphicsRectF.top);
+    this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getContext().getString(2131690382));
+    this.jdField_a_of_type_AndroidWidgetButton.setLayoutParams(new FrameLayout.LayoutParams((int)this.jdField_a_of_type_AndroidGraphicsRectF.width(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.height()));
+    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundColor(0);
+    addView(this.jdField_a_of_type_AndroidWidgetButton);
   }
   
   public void setHoleOnClick(View.OnClickListener paramOnClickListener)
   {
-    if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramOnClickListener);
+    Button localButton = this.jdField_a_of_type_AndroidWidgetButton;
+    if (localButton != null) {
+      localButton.setOnClickListener(paramOnClickListener);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.ui.GuideView
  * JD-Core Version:    0.7.0.1
  */

@@ -12,8 +12,12 @@ public class IceBreakConfBean
   public static IceBreakConfBean a(String paramString)
   {
     IceBreakConfBean localIceBreakConfBean = new IceBreakConfBean();
-    if (QLog.isColorLevel()) {
-      QLog.d("IceBreakConfBean", 2, "parse content = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parse content = ");
+      localStringBuilder.append(paramString);
+      QLog.d("IceBreakConfBean", 2, localStringBuilder.toString());
     }
     try
     {
@@ -22,15 +26,16 @@ public class IceBreakConfBean
     }
     catch (JSONException paramString)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("IceBreakConfBean", 2, "parse JSONException", paramString);
+      if (QLog.isColorLevel()) {
+        QLog.d("IceBreakConfBean", 2, "parse JSONException", paramString);
+      }
     }
     return localIceBreakConfBean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.IceBreakConfBean
  * JD-Core Version:    0.7.0.1
  */

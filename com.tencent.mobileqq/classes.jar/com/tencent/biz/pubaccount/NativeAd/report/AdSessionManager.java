@@ -1,12 +1,14 @@
 package com.tencent.biz.pubaccount.NativeAd.report;
 
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.util.ReadinjoyReportUtils;
+import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
+import com.tencent.mobileqq.kandian.glue.report.api.IReadInJoySessionManager;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.util.SharePreferenceUtils;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class AdSessionManager
 {
@@ -19,39 +21,35 @@ public class AdSessionManager
   {
     try
     {
-      this.jdField_a_of_type_Int = Integer.parseInt(SharePreferenceUtils.a(ReadInJoyUtils.a().getApplication(), a("sceneSeriesNum")));
-      try
-      {
-        label35:
-        this.b = Integer.parseInt(SharePreferenceUtils.a(ReadInJoyUtils.a().getApplication(), a("refreshSeriesNum")));
-        return;
-      }
-      catch (Throwable localThrowable1) {}
+      this.b = Integer.parseInt(SharePreferenceUtils.a(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getApplication(), a("refreshSeriesNum")));
+      return;
     }
-    catch (Throwable localThrowable2)
-    {
-      break label35;
-    }
+    catch (Throwable localThrowable) {}
   }
   
   public static AdSessionManager a()
   {
-    if (jdField_a_of_type_ComTencentBizPubaccountNativeAdReportAdSessionManager == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentBizPubaccountNativeAdReportAdSessionManager == null) {
-        jdField_a_of_type_ComTencentBizPubaccountNativeAdReportAdSessionManager = new AdSessionManager();
+    if (jdField_a_of_type_ComTencentBizPubaccountNativeAdReportAdSessionManager == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentBizPubaccountNativeAdReportAdSessionManager == null) {
+          jdField_a_of_type_ComTencentBizPubaccountNativeAdReportAdSessionManager = new AdSessionManager();
+        }
       }
-      return jdField_a_of_type_ComTencentBizPubaccountNativeAdReportAdSessionManager;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentBizPubaccountNativeAdReportAdSessionManager;
   }
   
   private static String a(String paramString)
   {
-    String str1 = ReadInJoyUtils.a().getAccount();
+    String str1 = ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getAccount();
     String str2 = jdField_a_of_type_JavaTextSimpleDateFormat.format(new Date());
-    return str1 + str2 + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str1);
+    localStringBuilder.append(str2);
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   public int a()
@@ -61,29 +59,33 @@ public class AdSessionManager
   
   public String a()
   {
-    return ReadinjoyReportUtils.a;
+    String str2 = ((IReadInJoySessionManager)QRoute.api(IReadInJoySessionManager.class)).getSceneTraceID();
+    String str1 = str2;
+    if (str2.isEmpty()) {
+      str1 = "";
+    }
+    return str1;
   }
   
   public void a()
   {
     this.b += 1;
-    SharePreferenceUtils.a(ReadInJoyUtils.a().getApplication(), a("refreshSeriesNum"), "" + this.b);
+    MobileQQ localMobileQQ = ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getApplication();
+    String str = a("refreshSeriesNum");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(this.b);
+    SharePreferenceUtils.a(localMobileQQ, str, localStringBuilder.toString());
   }
   
   public int b()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Int += 1;
-    SharePreferenceUtils.a(ReadInJoyUtils.a().getApplication(), a("sceneSeriesNum"), "" + this.jdField_a_of_type_Int);
+    return ((IReadInJoySessionManager)QRoute.api(IReadInJoySessionManager.class)).getSceneSeriesNum();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.report.AdSessionManager
  * JD-Core Version:    0.7.0.1
  */

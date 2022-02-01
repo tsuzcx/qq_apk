@@ -17,7 +17,7 @@ import com.tencent.mobileqq.mini.util.DisplayUtil;
 import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.mobileqq.mini.utils.MiniAppGlobal;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.vip.CUKingCardHelper;
+import com.tencent.mobileqq.vip.CUKingCardUtils;
 import com.tencent.mobileqq.vip.diy.common.DIYLottieLoader;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.annotation.ProxyService;
@@ -40,96 +40,112 @@ public class KingCardProxyImpl
   
   private void a()
   {
-    String str = this.b + BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    StorageUtil.getPreference().edit().putBoolean(str, true).apply();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.b);
+    ((StringBuilder)localObject).append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    localObject = ((StringBuilder)localObject).toString();
+    StorageUtil.getPreference().edit().putBoolean((String)localObject, true).apply();
   }
   
   private boolean a()
   {
-    String str = this.b + BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    return StorageUtil.getPreference().getBoolean(str, false);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.b);
+    ((StringBuilder)localObject).append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    localObject = ((StringBuilder)localObject).toString();
+    return StorageUtil.getPreference().getBoolean((String)localObject, false);
   }
   
   private boolean a(MiniAppInfo paramMiniAppInfo)
   {
-    boolean bool = true;
-    if (!AppNetConnInfo.isMobileConn())
+    boolean bool2 = AppNetConnInfo.isMobileConn();
+    boolean bool1 = false;
+    if (!bool2)
     {
-      QLog.i("KingCardProxyImpl", 1, "shouldShowKingCardTip network type is wifi + " + AppNetConnInfo.isWifiConn());
+      paramMiniAppInfo = new StringBuilder();
+      paramMiniAppInfo.append("shouldShowKingCardTip network type is wifi + ");
+      paramMiniAppInfo.append(AppNetConnInfo.isWifiConn());
+      QLog.i("KingCardProxyImpl", 1, paramMiniAppInfo.toString());
       return false;
     }
-    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.appMode != null) && (paramMiniAppInfo.appMode.isWangKa)) {}
-    for (int i = 1; i == 0; i = 0)
+    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.appMode != null) && (paramMiniAppInfo.appMode.isWangKa)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i == 0)
     {
       QLog.i("KingCardProxyImpl", 1, "shouldShowKingCardTip， not wangka app");
       return false;
     }
-    i = CUKingCardHelper.a();
-    QLog.i("KingCardProxyImpl", 1, "shouldShowKingCardTip， king card status = " + i);
-    if (i == 1) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
+    int i = CUKingCardUtils.a();
+    paramMiniAppInfo = new StringBuilder();
+    paramMiniAppInfo.append("shouldShowKingCardTip， king card status = ");
+    paramMiniAppInfo.append(i);
+    QLog.i("KingCardProxyImpl", 1, paramMiniAppInfo.toString());
+    if (i == 1) {
+      bool1 = true;
     }
+    return bool1;
   }
   
   public ImageView getCapsuleButtonMoreView(Context paramContext)
   {
-    if (!TextUtils.isEmpty(MiniAppGlobal.KINGCARD_GUIDE_TEXT)) {}
-    for (Object localObject = MiniAppGlobal.KINGCARD_GUIDE_TEXT;; localObject = paramContext.getResources().getString(2131694174))
-    {
-      this.c = ((String)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqVipDiyCommonDIYLottieLoader = new DIYLottieLoader(paramContext);
-      int i = (int)(MemoryManager.a() / 2L);
-      this.jdField_a_of_type_ComTencentMobileqqVipDiyCommonDIYLottieLoader.setMemoryCacheSize(i);
-      localObject = new DiniFlyAnimationView(paramContext);
-      ((DiniFlyAnimationView)localObject).setVisibility(0);
-      ((DiniFlyAnimationView)localObject).setContentDescription(HardCodeUtil.a(2131701426));
-      paramContext = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(paramContext, 40.0F), -1);
-      paramContext.addRule(9, -1);
-      ((DiniFlyAnimationView)localObject).setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-      ((DiniFlyAnimationView)localObject).setLayoutParams(paramContext);
-      return localObject;
+    if (!TextUtils.isEmpty(MiniAppGlobal.KINGCARD_GUIDE_TEXT)) {
+      localObject = MiniAppGlobal.KINGCARD_GUIDE_TEXT;
+    } else {
+      localObject = paramContext.getResources().getString(2131694133);
     }
+    this.c = ((String)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqVipDiyCommonDIYLottieLoader = new DIYLottieLoader(paramContext);
+    int i = (int)(MemoryManager.a() / 2L);
+    this.jdField_a_of_type_ComTencentMobileqqVipDiyCommonDIYLottieLoader.setMemoryCacheSize(i);
+    Object localObject = new DiniFlyAnimationView(paramContext);
+    ((DiniFlyAnimationView)localObject).setVisibility(0);
+    ((DiniFlyAnimationView)localObject).setContentDescription(HardCodeUtil.a(2131701566));
+    paramContext = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(paramContext, 40.0F), -1);
+    paramContext.addRule(9, -1);
+    ((DiniFlyAnimationView)localObject).setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+    ((DiniFlyAnimationView)localObject).setLayoutParams(paramContext);
+    return localObject;
   }
   
   public boolean showKingCardTips(IMiniAppContext paramIMiniAppContext, ImageView paramImageView)
   {
     QLog.i("KingCardProxyImpl", 1, "showKingCardTips trigger");
     Activity localActivity = paramIMiniAppContext.getAttachedActivity();
-    if ((localActivity == null) || (localActivity.isFinishing()))
+    if ((localActivity != null) && (!localActivity.isFinishing()))
     {
-      QLog.i("KingCardProxyImpl", 1, "activity is null");
-      return false;
+      if (!(paramImageView instanceof DiniFlyAnimationView)) {
+        return false;
+      }
+      MiniAppInfo localMiniAppInfo = paramIMiniAppContext.getMiniAppInfo();
+      if (localMiniAppInfo == null) {
+        return false;
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqVipDiyCommonDIYLottieLoader == null)
+      {
+        QMLog.w("KingCardProxyImpl", "lottie loader is null");
+        return false;
+      }
+      DiniFlyAnimationView localDiniFlyAnimationView = (DiniFlyAnimationView)paramImageView;
+      if (localDiniFlyAnimationView.getVisibility() != 0)
+      {
+        QLog.i("KingCardProxyImpl", 1, "showKingCardTips 小程序官方模式下是 GONE状态，不需要展示");
+        return false;
+      }
+      if ((paramImageView != null) && (localActivity != null) && (!localActivity.isFinishing()) && (a(localMiniAppInfo))) {
+        AppBrandTask.runTaskOnUiThreadIfNot(new KingCardProxyImpl.1(this, localActivity, localDiniFlyAnimationView, paramIMiniAppContext));
+      }
+      return true;
     }
-    if (!(paramImageView instanceof DiniFlyAnimationView)) {
-      return false;
-    }
-    MiniAppInfo localMiniAppInfo = paramIMiniAppContext.getMiniAppInfo();
-    if (localMiniAppInfo == null) {
-      return false;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqVipDiyCommonDIYLottieLoader == null)
-    {
-      QMLog.w("KingCardProxyImpl", "lottie loader is null");
-      return false;
-    }
-    DiniFlyAnimationView localDiniFlyAnimationView = (DiniFlyAnimationView)paramImageView;
-    if (localDiniFlyAnimationView.getVisibility() != 0)
-    {
-      QLog.i("KingCardProxyImpl", 1, "showKingCardTips 小程序官方模式下是 GONE状态，不需要展示");
-      return false;
-    }
-    if ((paramImageView != null) && (localActivity != null) && (!localActivity.isFinishing()) && (a(localMiniAppInfo))) {
-      AppBrandTask.runTaskOnUiThreadIfNot(new KingCardProxyImpl.1(this, localActivity, localDiniFlyAnimationView, paramIMiniAppContext));
-    }
-    return true;
+    QLog.i("KingCardProxyImpl", 1, "activity is null");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.KingCardProxyImpl
  * JD-Core Version:    0.7.0.1
  */

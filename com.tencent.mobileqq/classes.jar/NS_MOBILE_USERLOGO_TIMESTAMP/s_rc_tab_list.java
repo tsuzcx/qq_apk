@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class s_rc_tab_list
   extends JceStruct
@@ -43,22 +44,25 @@ public final class s_rc_tab_list
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.rapid_comment_url != null) {
-      paramJceOutputStream.write(this.rapid_comment_url, 0);
+    Object localObject = this.rapid_comment_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.rc_commit_pic_size, 1);
-    if (this.rc_tab_list != null) {
-      paramJceOutputStream.write(this.rc_tab_list, 2);
+    localObject = this.rc_tab_list;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
-    if (this.rc_zip_name != null) {
-      paramJceOutputStream.write(this.rc_zip_name, 3);
+    localObject = this.rc_zip_name;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.start_id, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_USERLOGO_TIMESTAMP.s_rc_tab_list
  * JD-Core Version:    0.7.0.1
  */

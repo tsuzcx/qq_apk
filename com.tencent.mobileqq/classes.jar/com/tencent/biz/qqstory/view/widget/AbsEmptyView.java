@@ -40,66 +40,69 @@ public abstract class AbsEmptyView
   
   private void a(int paramInt, boolean paramBoolean)
   {
-    if (!paramBoolean) {
-      if (this.jdField_c_of_type_Int != paramInt) {}
-    }
-    do
+    if (!paramBoolean)
     {
-      do
-      {
-        return;
-      } while ((this.jdField_c_of_type_Int == 0) && (paramInt == 3));
-      this.jdField_c_of_type_Int = paramInt;
-      this.d.setVisibility(8);
-      if (paramInt == 0)
-      {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_c_of_type_AndroidViewView.setVisibility(8);
+      int i = this.jdField_c_of_type_Int;
+      if (i == paramInt) {
         return;
       }
-      if (paramInt == 3)
-      {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_c_of_type_AndroidViewView.setVisibility(8);
+      if ((i == 0) && (paramInt == 3)) {
         return;
       }
-      if (paramInt == 1)
-      {
-        this.jdField_c_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131381933));
-        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131381918));
-        return;
-      }
-      if (paramInt == 2)
-      {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379394));
-        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363741));
-        return;
-      }
-    } while (paramInt != 4);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-    this.d.setVisibility(0);
+    }
+    this.jdField_c_of_type_Int = paramInt;
+    this.d.setVisibility(8);
+    if (paramInt == 0)
+    {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_c_of_type_AndroidViewView.setVisibility(8);
+      return;
+    }
+    if (paramInt == 3)
+    {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_c_of_type_AndroidViewView.setVisibility(8);
+      return;
+    }
+    if (paramInt == 1)
+    {
+      this.jdField_c_of_type_AndroidViewView.setVisibility(0);
+      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131381136));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131381121));
+      return;
+    }
+    if (paramInt == 2)
+    {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      this.jdField_c_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131378745));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363671));
+      return;
+    }
+    if (paramInt == 4)
+    {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_c_of_type_AndroidViewView.setVisibility(8);
+      this.d.setVisibility(0);
+    }
   }
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131561909, this);
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131370745);
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131379387);
-    this.jdField_c_of_type_AndroidViewView = super.findViewById(2131379386);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131377014));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379394));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363741));
-    this.d = super.findViewById(2131379871);
+    LayoutInflater.from(paramContext).inflate(2131561756, this);
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131370381);
+    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131378738);
+    this.jdField_c_of_type_AndroidViewView = super.findViewById(2131378737);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131376496));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131378745));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363671));
+    this.d = super.findViewById(2131379200);
     this.jdField_a_of_type_Int = UIUtils.a(getContext());
     this.jdField_b_of_type_Int = a();
     a(0, true);
@@ -113,7 +116,7 @@ public abstract class AbsEmptyView
     a(paramInt, false);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(View.MeasureSpec.makeMeasureSpec(this.jdField_a_of_type_Int, 1073741824), View.MeasureSpec.makeMeasureSpec(this.jdField_b_of_type_Int, 1073741824));
   }
@@ -130,7 +133,7 @@ public abstract class AbsEmptyView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.AbsEmptyView
  * JD-Core Version:    0.7.0.1
  */

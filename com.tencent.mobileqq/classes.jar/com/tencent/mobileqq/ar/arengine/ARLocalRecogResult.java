@@ -15,12 +15,20 @@ public class ARLocalRecogResult
   
   public String toString()
   {
-    return "ARLocalRecogResult{frameIdx = " + this.jdField_a_of_type_Long + ", markerResult = " + this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult + ", faceResult = " + this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ARLocalRecogResult{frameIdx = ");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", markerResult = ");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult);
+    localStringBuilder.append(", faceResult = ");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARLocalRecogResult
  * JD-Core Version:    0.7.0.1
  */

@@ -14,12 +14,12 @@ import com.tencent.avgame.gameroom.IGameRoomPresenter;
 import com.tencent.avgame.gameroom.stage.IGameStagePresenter;
 import com.tencent.avgame.gameroom.stage.IGameStageView;
 import com.tencent.avgame.gameroom.stage.IStagePresenter;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
+import mqq.app.MobileQQ;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -42,36 +42,41 @@ public class GuessTextClickStagePresenter
   
   public String a(Context paramContext, EngineData paramEngineData)
   {
-    paramContext = "";
-    Object localObject = paramEngineData.a();
-    if (localObject == null)
+    paramContext = paramEngineData.a();
+    if (paramContext == null)
     {
       QLog.e("GuessTextClickStagePresenter", 1, "getGamePrepareBottomTip null gameItem");
-      localObject = paramContext;
-      if (TextUtils.isEmpty(paramContext))
-      {
-        localObject = BaseApplicationImpl.getContext().getResources().getString(2131690422);
-        QLog.e("GuessTextClickStagePresenter", 1, "getGamePrepareBottomTip tips isEmpty");
-      }
-      paramContext = paramEngineData.c();
-      if (TextUtils.isEmpty(paramContext)) {
-        break label98;
-      }
-      paramContext = paramContext + "\n";
+      paramContext = "";
     }
-    for (;;)
+    else
     {
-      if (!TextUtils.isEmpty(paramContext)) {
-        break label109;
-      }
-      return localObject;
-      paramContext = ((GameItem)localObject).n;
-      break;
-      label98:
+      paramContext = paramContext.n;
+    }
+    Object localObject = paramContext;
+    if (TextUtils.isEmpty(paramContext))
+    {
+      localObject = MobileQQ.getContext().getResources().getString(2131690346);
+      QLog.e("GuessTextClickStagePresenter", 1, "getGamePrepareBottomTip tips isEmpty");
+    }
+    paramContext = paramEngineData.c();
+    if (!TextUtils.isEmpty(paramContext))
+    {
+      paramEngineData = new StringBuilder();
+      paramEngineData.append(paramContext);
+      paramEngineData.append("\n");
+      paramContext = paramEngineData.toString();
+    }
+    else
+    {
       QLog.e("GuessTextClickStagePresenter", 1, "textTypeString tips isEmpty");
     }
-    label109:
-    return paramContext + (String)localObject;
+    if (TextUtils.isEmpty(paramContext)) {
+      return localObject;
+    }
+    paramEngineData = new StringBuilder();
+    paramEngineData.append(paramContext);
+    paramEngineData.append((String)localObject);
+    return paramEngineData.toString();
   }
   
   public String a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
@@ -89,7 +94,7 @@ public class GuessTextClickStagePresenter
       return "";
     }
     if ((localEngineData.f()) && (localEngineData.p() == 0)) {
-      return paramContext.getResources().getString(2131690415);
+      return paramContext.getResources().getString(2131690339);
     }
     return "";
   }
@@ -136,8 +141,12 @@ public class GuessTextClickStagePresenter
     a(GameEngine.a(paramEngineData), true);
     a(localITopic);
     this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter.a().e(false);
-    String str = paramEngineData.e() + 1 + "/" + paramEngineData.f();
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStageView.setTitleRight(str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramEngineData.e() + 1);
+    ((StringBuilder)localObject).append("/");
+    ((StringBuilder)localObject).append(paramEngineData.f());
+    localObject = ((StringBuilder)localObject).toString();
+    this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStageView.setTitleRight((String)localObject);
     this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter.a(this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStageView.a(), paramEngineData.a().f(), paramEngineData.a().d());
     if (localITopic != null) {
       this.jdField_a_of_type_JavaUtilArrayList.add(new Pair(new GuessTextClickStagePresenter.MixGraphicContent(localITopic.c(), localITopic.a()), Boolean.valueOf(false)));
@@ -149,8 +158,12 @@ public class GuessTextClickStagePresenter
     ITopic localITopic = paramEngineData.a();
     a(GameEngine.a(paramEngineData), true);
     a(localITopic);
-    String str = paramEngineData.e() + 1 + "/" + paramEngineData.f();
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStageView.setTitleRight(str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramEngineData.e() + 1);
+    ((StringBuilder)localObject).append("/");
+    ((StringBuilder)localObject).append(paramEngineData.f());
+    localObject = ((StringBuilder)localObject).toString();
+    this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStageView.setTitleRight((String)localObject);
     this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter.a(this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStageView.a(), paramEngineData.a().f(), paramEngineData.a().d());
     if (localITopic != null) {
       this.jdField_a_of_type_JavaUtilArrayList.add(new Pair(new GuessTextClickStagePresenter.MixGraphicContent(localITopic.c(), localITopic.a()), Boolean.valueOf(false)));
@@ -159,13 +172,17 @@ public class GuessTextClickStagePresenter
   
   public void d(EngineData paramEngineData)
   {
-    paramEngineData = paramEngineData.a();
-    if ((paramEngineData != null) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
+    Object localObject = paramEngineData.a();
+    if ((localObject != null) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
     {
-      String str = paramEngineData.c();
-      this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-      this.jdField_a_of_type_JavaUtilArrayList.add(new Pair(new GuessTextClickStagePresenter.MixGraphicContent(paramEngineData.c(), paramEngineData.a()), Boolean.valueOf(true)));
-      QLog.d("GuessTextClickStagePresenter", 2, "onAnswerRight " + str);
+      paramEngineData = ((ITopic)localObject).c();
+      ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+      localArrayList.remove(localArrayList.size() - 1);
+      this.jdField_a_of_type_JavaUtilArrayList.add(new Pair(new GuessTextClickStagePresenter.MixGraphicContent(((ITopic)localObject).c(), ((ITopic)localObject).a()), Boolean.valueOf(true)));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onAnswerRight ");
+      ((StringBuilder)localObject).append(paramEngineData);
+      QLog.d("GuessTextClickStagePresenter", 2, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -173,97 +190,93 @@ public class GuessTextClickStagePresenter
   
   public void f(EngineData paramEngineData)
   {
-    Object localObject2 = null;
+    boolean bool = this.jdField_a_of_type_JavaUtilArrayList.isEmpty();
+    paramEngineData = null;
+    if (!bool)
+    {
+      localObject1 = new ArrayList(this.jdField_a_of_type_JavaUtilArrayList.size());
+      localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject3 = (Pair)((Iterator)localObject2).next();
+        if (!((Boolean)((Pair)localObject3).second).booleanValue()) {
+          ((ArrayList)localObject1).add(((Pair)localObject3).first);
+        }
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("onGameOver all:");
+        ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaUtilArrayList.size());
+        ((StringBuilder)localObject2).append(" notAnswer:");
+        ((StringBuilder)localObject2).append(((ArrayList)localObject1).size());
+        QLog.d("GuessTextClickStagePresenter", 2, ((StringBuilder)localObject2).toString());
+      }
+      localObject2 = new Random();
+      int i;
+      if (((ArrayList)localObject1).isEmpty())
+      {
+        i = ((Random)localObject2).nextInt(this.jdField_a_of_type_JavaUtilArrayList.size());
+        if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+        {
+          localObject1 = (Pair)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+          paramEngineData = ((GuessTextClickStagePresenter.MixGraphicContent)((Pair)localObject1).first).a;
+          localObject1 = ((GuessTextClickStagePresenter.MixGraphicContent)((Pair)localObject1).first).b;
+          break label329;
+        }
+      }
+      else
+      {
+        if (((ArrayList)localObject1).size() == 1)
+        {
+          paramEngineData = ((GuessTextClickStagePresenter.MixGraphicContent)((ArrayList)localObject1).get(0)).a;
+          localObject1 = ((GuessTextClickStagePresenter.MixGraphicContent)((ArrayList)localObject1).get(0)).b;
+          break label329;
+        }
+        i = ((Random)localObject2).nextInt(((ArrayList)localObject1).size());
+        if (i < ((ArrayList)localObject1).size())
+        {
+          paramEngineData = ((GuessTextClickStagePresenter.MixGraphicContent)((ArrayList)localObject1).get(i)).a;
+          localObject1 = ((GuessTextClickStagePresenter.MixGraphicContent)((ArrayList)localObject1).get(i)).b;
+          break label329;
+        }
+      }
+    }
     Object localObject1 = null;
-    Object localObject3;
-    int i;
-    if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+    label329:
+    Object localObject3 = a().a().b();
+    Object localObject2 = new JSONObject();
+    try
     {
-      localObject3 = new ArrayList(this.jdField_a_of_type_JavaUtilArrayList.size());
-      paramEngineData = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (paramEngineData.hasNext())
-      {
-        Pair localPair = (Pair)paramEngineData.next();
-        if (!((Boolean)localPair.second).booleanValue()) {
-          ((ArrayList)localObject3).add(localPair.first);
-        }
+      if (!TextUtils.isEmpty(paramEngineData)) {
+        ((JSONObject)localObject2).putOpt("textContent", paramEngineData);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("GuessTextClickStagePresenter", 2, "onGameOver all:" + this.jdField_a_of_type_JavaUtilArrayList.size() + " notAnswer:" + ((ArrayList)localObject3).size());
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        ((JSONObject)localObject2).putOpt("imageUrl", localObject1);
       }
-      paramEngineData = new Random();
-      if (((ArrayList)localObject3).isEmpty())
-      {
-        i = paramEngineData.nextInt(this.jdField_a_of_type_JavaUtilArrayList.size());
-        if (i >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
-          break label461;
-        }
-        paramEngineData = (Pair)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        localObject1 = ((GuessTextClickStagePresenter.MixGraphicContent)paramEngineData.first).a;
+      if (!TextUtils.isEmpty((CharSequence)localObject3)) {
+        ((JSONObject)localObject2).putOpt("bgUrl", localObject3);
       }
     }
-    label461:
-    for (paramEngineData = ((GuessTextClickStagePresenter.MixGraphicContent)paramEngineData.first).b;; paramEngineData = null)
+    catch (JSONException paramEngineData)
     {
-      localObject2 = localObject1;
-      localObject1 = paramEngineData;
-      paramEngineData = (EngineData)localObject2;
-      for (;;)
-      {
-        localObject3 = a().a().b();
-        localObject2 = new JSONObject();
-        try
-        {
-          if (!TextUtils.isEmpty(paramEngineData)) {
-            ((JSONObject)localObject2).putOpt("textContent", paramEngineData);
-          }
-          if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-            ((JSONObject)localObject2).putOpt("imageUrl", localObject1);
-          }
-          if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-            ((JSONObject)localObject2).putOpt("bgUrl", localObject3);
-          }
-        }
-        catch (JSONException paramEngineData)
-        {
-          for (;;)
-          {
-            QLog.d("GuessTextClickStagePresenter", 2, paramEngineData, new Object[0]);
-          }
-        }
-        paramEngineData = ((JSONObject)localObject2).toString();
-        if (QLog.isColorLevel()) {
-          QLog.d("GuessTextClickStagePresenter", 2, "onGameOver str:" + paramEngineData);
-        }
-        GameEngine.a().a().a(paramEngineData);
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
-        return;
-        if (((ArrayList)localObject3).size() == 1)
-        {
-          paramEngineData = ((GuessTextClickStagePresenter.MixGraphicContent)((ArrayList)localObject3).get(0)).a;
-          localObject1 = ((GuessTextClickStagePresenter.MixGraphicContent)((ArrayList)localObject3).get(0)).b;
-        }
-        else
-        {
-          i = paramEngineData.nextInt(((ArrayList)localObject3).size());
-          if (i < ((ArrayList)localObject3).size())
-          {
-            paramEngineData = ((GuessTextClickStagePresenter.MixGraphicContent)((ArrayList)localObject3).get(i)).a;
-            localObject1 = ((GuessTextClickStagePresenter.MixGraphicContent)((ArrayList)localObject3).get(i)).b;
-          }
-          else
-          {
-            paramEngineData = null;
-            localObject1 = localObject2;
-          }
-        }
-      }
+      QLog.d("GuessTextClickStagePresenter", 2, paramEngineData, new Object[0]);
     }
+    paramEngineData = ((JSONObject)localObject2).toString();
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onGameOver str:");
+      ((StringBuilder)localObject1).append(paramEngineData);
+      QLog.d("GuessTextClickStagePresenter", 2, ((StringBuilder)localObject1).toString());
+    }
+    GameEngine.a().a().a(paramEngineData);
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.stage.guesstext.GuessTextClickStagePresenter
  * JD-Core Version:    0.7.0.1
  */

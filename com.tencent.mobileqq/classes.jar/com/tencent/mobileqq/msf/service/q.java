@@ -19,84 +19,99 @@ final class q
 {
   public void run()
   {
-    boolean bool = false;
-    for (;;)
+    try
     {
-      int i;
-      try
+      Thread.sleep(3000L);
+      localHashMap = new HashMap();
+      localObject1 = ((ActivityManager)BaseApplication.getContext().getSystemService("activity")).getRunningAppProcesses();
+      int k = Process.myPid();
+      int j = 2147483647;
+      localObject1 = ((List)localObject1).iterator();
+      do
       {
-        Thread.sleep(3000L);
-        HashMap localHashMap = new HashMap();
-        Object localObject1 = ((ActivityManager)BaseApplication.getContext().getSystemService("activity")).getRunningAppProcesses();
-        int j = Process.myPid();
-        localObject1 = ((List)localObject1).iterator();
+        i = j;
         if (!((Iterator)localObject1).hasNext()) {
-          break label417;
+          break;
         }
-        Object localObject2 = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject1).next();
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.S.MsfService", 1, "process info: " + ((ActivityManager.RunningAppProcessInfo)localObject2).processName + " " + ((ActivityManager.RunningAppProcessInfo)localObject2).pid + " " + ((ActivityManager.RunningAppProcessInfo)localObject2).uid);
-        }
-        if (!((ActivityManager.RunningAppProcessInfo)localObject2).processName.equals("com.tencent.mobileqq")) {
-          continue;
-        }
-        i = ((ActivityManager.RunningAppProcessInfo)localObject2).pid;
-        localHashMap.clear();
-        localHashMap.put("DEVICE", Build.DEVICE);
-        localHashMap.put("PRODUCT", Build.PRODUCT);
-        localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
-        localHashMap.put("MODEL", Build.MODEL);
-        localHashMap.put("RELEASE", Build.VERSION.RELEASE);
-        localHashMap.put("FROM", MsfService.access$000());
-        if (j < i)
+        localObject2 = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject1).next();
+        if (QLog.isColorLevel())
         {
-          localHashMap.put("WAY", "Daemon");
-          if (MsfService.core.statReporter == null) {
-            break label389;
-          }
-          localObject1 = MsfService.core.statReporter;
-          if (j < i) {
-            bool = true;
-          }
-          ((j)localObject1).a("msfstartway", bool, 0L, 0L, localHashMap, false, false);
-          if (!QLog.isColorLevel()) {
-            break label406;
-          }
-          localObject1 = localHashMap.keySet().iterator();
-          if (!((Iterator)localObject1).hasNext()) {
-            break label406;
-          }
-          localObject2 = (String)((Iterator)localObject1).next();
-          QLog.d("MSF.S.MsfService", 1, "upload map: " + (String)localObject2 + ":" + (String)localHashMap.get(localObject2));
-          continue;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("process info: ");
+          localStringBuilder.append(((ActivityManager.RunningAppProcessInfo)localObject2).processName);
+          localStringBuilder.append(" ");
+          localStringBuilder.append(((ActivityManager.RunningAppProcessInfo)localObject2).pid);
+          localStringBuilder.append(" ");
+          localStringBuilder.append(((ActivityManager.RunningAppProcessInfo)localObject2).uid);
+          QLog.d("MSF.S.MsfService", 1, localStringBuilder.toString());
         }
-        localThrowable.put("WAY", "QQ");
+      } while (!((ActivityManager.RunningAppProcessInfo)localObject2).processName.equals("com.tencent.mobileqq"));
+      int i = ((ActivityManager.RunningAppProcessInfo)localObject2).pid;
+      localHashMap.clear();
+      localHashMap.put("DEVICE", Build.DEVICE);
+      localHashMap.put("PRODUCT", Build.PRODUCT);
+      localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
+      localHashMap.put("MODEL", Build.MODEL);
+      localHashMap.put("RELEASE", Build.VERSION.RELEASE);
+      localHashMap.put("FROM", MsfService.access$000());
+      if (k < i) {
+        localHashMap.put("WAY", "Daemon");
+      } else {
+        localHashMap.put("WAY", "QQ");
       }
-      catch (Throwable localThrowable)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.S.MsfService", 1, "upload start way fail : InterruptedException!");
-        }
-        return;
+      if (MsfService.core.statReporter == null) {
+        break label318;
       }
-      continue;
-      label389:
-      if (QLog.isColorLevel())
+      localObject1 = MsfService.core.statReporter;
+      if (k >= i) {
+        break label466;
+      }
+      bool = true;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
       {
-        QLog.d("MSF.S.MsfService", 1, "upload start way fail: RDM NULL!");
+        HashMap localHashMap;
+        Object localObject1;
+        Object localObject2;
+        StringBuilder localStringBuilder;
+        label318:
+        label332:
         continue;
-        label406:
-        k.a(MsfService.core.statReporter, false);
-        return;
-        label417:
-        i = 2147483647;
+        label466:
+        boolean bool = false;
       }
+    }
+    ((j)localObject1).a("msfstartway", bool, 0L, 0L, localHashMap, false, false);
+    break label332;
+    if (QLog.isColorLevel()) {
+      QLog.d("MSF.S.MsfService", 1, "upload start way fail: RDM NULL!");
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = localHashMap.keySet().iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (String)((Iterator)localObject1).next();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("upload map: ");
+        localStringBuilder.append((String)localObject2);
+        localStringBuilder.append(":");
+        localStringBuilder.append((String)localHashMap.get(localObject2));
+        QLog.d("MSF.S.MsfService", 1, localStringBuilder.toString());
+      }
+    }
+    k.a(MsfService.core.statReporter, false);
+    return;
+    if (QLog.isColorLevel()) {
+      QLog.d("MSF.S.MsfService", 1, "upload start way fail : InterruptedException!");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.service.q
  * JD-Core Version:    0.7.0.1
  */

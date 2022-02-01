@@ -14,18 +14,21 @@ class MultiAIOFragment$14
   {
     float f1 = paramValueAnimator.getAnimatedFraction();
     paramValueAnimator = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    paramValueAnimator.leftMargin = (this.jdField_a_of_type_Int + Math.round((0.0F - this.jdField_a_of_type_Int) * f1));
-    paramValueAnimator.topMargin = (this.b + Math.round((this.c - this.b) * f1));
-    paramValueAnimator.width = (this.d + Math.round((this.e - this.d) * f1));
-    int i = this.f;
-    paramValueAnimator.height = (Math.round(f1 * (this.g - this.f)) + i);
+    int i = this.jdField_a_of_type_Int;
+    paramValueAnimator.leftMargin = (i + Math.round((0.0F - i) * f1));
+    i = this.b;
+    paramValueAnimator.topMargin = (i + Math.round((this.c - i) * f1));
+    i = this.d;
+    paramValueAnimator.width = (i + Math.round((this.e - i) * f1));
+    i = this.f;
+    paramValueAnimator.height = (i + Math.round((this.g - i) * f1));
     this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramValueAnimator);
     this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.MultiAIOFragment.14
  * JD-Core Version:    0.7.0.1
  */

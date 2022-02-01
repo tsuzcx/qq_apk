@@ -14,7 +14,11 @@ public class AVPreloadUtils
       localObject = a(((MessageDigest)localObject).digest());
       return localObject;
     }
-    catch (NoSuchAlgorithmException localNoSuchAlgorithmException) {}
+    catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
+    {
+      label24:
+      break label24;
+    }
     return String.valueOf(paramString.hashCode());
   }
   
@@ -54,7 +58,6 @@ public class AVPreloadUtils
     try
     {
       Object localObject = paramString.split("\\?")[0].split("/");
-      localObject = localObject[(localObject.length - 1)].split("_");
       localObject = localObject[(localObject.length - 1)].split("\\.")[0];
       return localObject;
     }
@@ -67,7 +70,7 @@ public class AVPreloadUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadservice.AVPreloadUtils
  * JD-Core Version:    0.7.0.1
  */

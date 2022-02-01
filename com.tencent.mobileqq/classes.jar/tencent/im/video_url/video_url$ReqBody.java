@@ -26,15 +26,16 @@ public final class video_url$ReqBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 40, 50 }, new String[] { "bytes_share_url", "uint32_platform_type", "bytes_machine_info", "uint32_network_type", "uint32_cur_play_time", "bytes_mobileQ_ver" }, new Object[] { localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro3 }, ReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 40, 50 }, new String[] { "bytes_share_url", "uint32_platform_type", "bytes_machine_info", "uint32_network_type", "uint32_cur_play_time", "bytes_mobileQ_ver" }, new Object[] { localByteStringMicro1, localInteger, localByteStringMicro2, localInteger, localInteger, localByteStringMicro3 }, ReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.video_url.video_url.ReqBody
  * JD-Core Version:    0.7.0.1
  */

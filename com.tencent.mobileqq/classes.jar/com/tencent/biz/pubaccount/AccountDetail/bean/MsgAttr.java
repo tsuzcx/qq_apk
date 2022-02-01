@@ -1,4 +1,4 @@
-package com.tencent.biz.pubaccount.AccountDetail.bean;
+package com.tencent.biz.pubaccount.accountdetail.bean;
 
 public class MsgAttr
 {
@@ -13,7 +13,7 @@ public class MsgAttr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.bean.MsgAttr
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.bean.MsgAttr
  * JD-Core Version:    0.7.0.1
  */

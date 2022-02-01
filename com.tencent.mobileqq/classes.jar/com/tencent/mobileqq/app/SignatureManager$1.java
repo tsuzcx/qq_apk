@@ -28,25 +28,22 @@ class SignatureManager$1
         }
       }
     }
-    for (;;)
+    else if ((3 == paramMessage.what) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
     {
-      return true;
-      if ((3 == paramMessage.what) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
-      {
-        paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(EditActivity.class);
-        if (paramMessage != null) {
-          paramMessage.sendEmptyMessageDelayed(7, 50L);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Signature", 2, "update sign tpl animation ...");
-        }
+      paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(EditActivity.class);
+      if (paramMessage != null) {
+        paramMessage.sendEmptyMessageDelayed(7, 50L);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Signature", 2, "update sign tpl animation ...");
       }
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.SignatureManager.1
  * JD-Core Version:    0.7.0.1
  */

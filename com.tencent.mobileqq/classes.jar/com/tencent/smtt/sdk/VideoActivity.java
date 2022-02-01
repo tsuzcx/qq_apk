@@ -39,15 +39,15 @@ public class VideoActivity
     super.requestWindowFeature(1);
     super.getWindow().setFormat(-3);
     paramBundle = super.getIntent();
-    if (paramBundle != null) {}
-    for (paramBundle = paramBundle.getBundleExtra("extraData");; paramBundle = null)
+    if (paramBundle != null) {
+      paramBundle = paramBundle.getBundleExtra("extraData");
+    } else {
+      paramBundle = null;
+    }
+    if (paramBundle != null)
     {
-      if (paramBundle != null)
-      {
-        paramBundle.putInt("callMode", 1);
-        s.a(super.getApplicationContext()).a(null, paramBundle, null);
-      }
-      return;
+      paramBundle.putInt("callMode", 1);
+      s.a(super.getApplicationContext()).a(null, paramBundle, null);
     }
   }
   
@@ -77,7 +77,7 @@ public class VideoActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.VideoActivity
  * JD-Core Version:    0.7.0.1
  */

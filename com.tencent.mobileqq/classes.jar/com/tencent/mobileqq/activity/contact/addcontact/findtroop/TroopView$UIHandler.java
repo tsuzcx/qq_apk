@@ -19,15 +19,15 @@ class TroopView$UIHandler
   public void a()
   {
     TroopView localTroopView = (TroopView)this.a.get();
-    if (localTroopView == null) {}
-    do
-    {
+    if (localTroopView == null) {
       return;
-      if (TroopView.a(localTroopView) != null) {
-        TroopView.a(localTroopView).setRefreshing(false);
-      }
-    } while (TroopView.a(localTroopView) == null);
-    TroopView.a(localTroopView).setRefresh(false);
+    }
+    if (TroopView.a(localTroopView) != null) {
+      TroopView.a(localTroopView).setRefreshing(false);
+    }
+    if (TroopView.a(localTroopView) != null) {
+      TroopView.a(localTroopView).setRefresh(false);
+    }
   }
   
   public void handleMessage(Message paramMessage)
@@ -37,51 +37,62 @@ class TroopView$UIHandler
       return;
     }
     super.handleMessage(paramMessage);
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      TroopView.c(localTroopView);
-      TroopView.a(localTroopView, 1, 2131694459);
-      return;
-    case 4: 
-      TroopView.a(localTroopView, true);
-      return;
-    case 5: 
-      TroopView.a(localTroopView, false);
-      return;
-    case 13: 
-      TroopView.a(localTroopView, 1, 2131694459);
-      a();
-      return;
-    case 14: 
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 == 1) {}
-      for (i = 1;; i = 0)
+      if (i != 4)
       {
-        if (i == 0) {
-          break label178;
+        if (i != 5) {
+          switch (i)
+          {
+          default: 
+            return;
+          case 15: 
+            a();
+            return;
+          case 14: 
+            i = paramMessage.arg1;
+            if (paramMessage.arg2 == 1) {
+              i = 1;
+            } else {
+              i = 0;
+            }
+            if (i != 0)
+            {
+              TroopView.d(localTroopView);
+              if (TroopView.a(localTroopView) == null) {
+                break;
+              }
+              TroopView.a(localTroopView).a(0);
+              TroopView.a(localTroopView).sendEmptyMessageDelayed(15, 800L);
+              return;
+            }
+            a();
+            TroopView.a(localTroopView, 1, 2131719247);
+            return;
+          case 13: 
+            TroopView.a(localTroopView, 1, 2131694424);
+            a();
+            return;
+          }
+        } else {
+          TroopView.a(localTroopView, false);
         }
-        TroopView.d(localTroopView);
-        if (TroopView.a(localTroopView) == null) {
-          break;
-        }
-        TroopView.a(localTroopView).a(0);
-        TroopView.a(localTroopView).sendEmptyMessageDelayed(15, 800L);
-        return;
       }
-      label178:
-      a();
-      TroopView.a(localTroopView, 1, 2131719529);
-      return;
+      else {
+        TroopView.a(localTroopView, true);
+      }
     }
-    a();
+    else
+    {
+      TroopView.c(localTroopView);
+      TroopView.a(localTroopView, 1, 2131694424);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView.UIHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -87,52 +87,54 @@ public class RecentDynamicAvatarView
   
   protected static Bitmap a(long paramLong)
   {
-    Bitmap localBitmap2 = null;
-    Bitmap localBitmap1 = null;
     long l = System.currentTimeMillis();
-    int i = -1;
-    Object localObject = "";
+    int i;
+    Object localObject;
     if (paramLong == 1L)
     {
-      i = 2130850878;
+      i = 2130850815;
       localObject = "StatusIcon_TroopPermanentBlockStatusBigIconKey";
-      if (i >= 0) {
-        break label58;
-      }
-      localObject = localBitmap1;
     }
-    label58:
-    do
+    else if (paramLong == 2L)
     {
-      return localObject;
-      if (paramLong != 2L) {
-        break;
-      }
-      i = 2130850880;
+      i = 2130850817;
       localObject = "StatusIcon_TroopTmpBlockStatusBigIcon";
-      break;
-      if (GlobalImageCache.a != null) {
-        localBitmap2 = (Bitmap)GlobalImageCache.a.get(localObject);
-      }
-      localBitmap1 = localBitmap2;
-      if (localBitmap2 == null)
+    }
+    else
+    {
+      i = -1;
+      localObject = "";
+    }
+    Bitmap localBitmap1 = null;
+    if (i < 0) {
+      return null;
+    }
+    if (GlobalImageCache.a != null) {
+      localBitmap1 = (Bitmap)GlobalImageCache.a.get(localObject);
+    }
+    Bitmap localBitmap2 = localBitmap1;
+    if (localBitmap1 == null)
+    {
+      localBitmap1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), i);
+      localBitmap2 = localBitmap1;
+      if (localBitmap1 != null)
       {
-        localBitmap2 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), i);
-        localBitmap1 = localBitmap2;
-        if (localBitmap2 != null)
+        localBitmap2 = localBitmap1;
+        if (GlobalImageCache.a != null)
         {
-          localBitmap1 = localBitmap2;
-          if (GlobalImageCache.a != null)
-          {
-            GlobalImageCache.a.put(localObject, localBitmap2);
-            localBitmap1 = localBitmap2;
-          }
+          GlobalImageCache.a.put(localObject, localBitmap1);
+          localBitmap2 = localBitmap1;
         }
       }
-      localObject = localBitmap1;
-    } while (!QLog.isColorLevel());
-    QLog.i("FixSizeImageView", 2, "getTroopCreditStatusIcon:" + (System.currentTimeMillis() - l));
-    return localBitmap1;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getTroopCreditStatusIcon:");
+      ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
+      QLog.i("FixSizeImageView", 2, ((StringBuilder)localObject).toString());
+    }
+    return localBitmap2;
   }
   
   public static void setNeedRequestLayout(boolean paramBoolean)
@@ -140,30 +142,7 @@ public class RecentDynamicAvatarView
     e = paramBoolean;
   }
   
-  public void a(long paramLong)
-  {
-    if (this.jdField_a_of_type_Long == paramLong) {
-      return;
-    }
-    this.jdField_a_of_type_Long = paramLong;
-    if (QLog.isColorLevel()) {
-      QLog.i("FixSizeImageView", 2, "showTroopCreditStatus:" + paramLong);
-    }
-    if ((paramLong == 2L) || (paramLong == 1L))
-    {
-      this.jdField_c_of_type_Boolean = true;
-      this.jdField_d_of_type_Boolean = true;
-    }
-    for (this.jdField_a_of_type_AndroidGraphicsBitmap = a(paramLong);; this.jdField_a_of_type_AndroidGraphicsBitmap = null)
-    {
-      invalidate();
-      return;
-      this.jdField_c_of_type_Boolean = false;
-      this.jdField_d_of_type_Boolean = false;
-    }
-  }
-  
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
     int i;
@@ -213,10 +192,38 @@ public class RecentDynamicAvatarView
       super.requestLayout();
     }
   }
+  
+  public void showTroopCreditStatus(long paramLong)
+  {
+    if (this.jdField_a_of_type_Long == paramLong) {
+      return;
+    }
+    this.jdField_a_of_type_Long = paramLong;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("showTroopCreditStatus:");
+      localStringBuilder.append(paramLong);
+      QLog.i("FixSizeImageView", 2, localStringBuilder.toString());
+    }
+    if ((paramLong != 2L) && (paramLong != 1L))
+    {
+      this.jdField_c_of_type_Boolean = false;
+      this.jdField_d_of_type_Boolean = false;
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    }
+    else
+    {
+      this.jdField_c_of_type_Boolean = true;
+      this.jdField_d_of_type_Boolean = true;
+      this.jdField_a_of_type_AndroidGraphicsBitmap = a(paramLong);
+    }
+    invalidate();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.RecentDynamicAvatarView
  * JD-Core Version:    0.7.0.1
  */

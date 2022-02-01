@@ -15,29 +15,39 @@ class PageSwitchObserver$DetectionTask
   
   Activity getActivity()
   {
-    if (this.mActivityRef != null) {
-      return (Activity)this.mActivityRef.get();
+    WeakReference localWeakReference = this.mActivityRef;
+    if (localWeakReference != null) {
+      return (Activity)localWeakReference.get();
     }
     return null;
   }
   
   public void run(int paramInt)
   {
-    if (this.mActivityRef != null) {}
-    for (Activity localActivity = (Activity)this.mActivityRef.get();; localActivity = null)
-    {
-      if (VideoReportInner.getInstance().isDebugMode())
-      {
-        Log.d("PageSwitchObserver", "PendingTask.run: -------------------------------------------------------------------");
-        Log.d("PageSwitchObserver", "PendingTask.run: activity = " + localActivity + ", mIsAppForeground = " + PageSwitchObserver.access$400(this.this$0));
-      }
-      if ((PageSwitchObserver.access$400(this.this$0)) && (localActivity != null) && (!localActivity.isFinishing())) {
-        break;
-      }
-      return;
+    Object localObject = this.mActivityRef;
+    if (localObject != null) {
+      localObject = (Activity)((WeakReference)localObject).get();
+    } else {
+      localObject = null;
     }
-    PageSwitchObserver.access$500(this.this$0, localActivity, paramInt);
-    this.mActivityRef = null;
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      Log.d("PageSwitchObserver", "PendingTask.run: -------------------------------------------------------------------");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PendingTask.run: activity = ");
+      localStringBuilder.append(localObject);
+      localStringBuilder.append(", mIsAppForeground = ");
+      localStringBuilder.append(PageSwitchObserver.access$400(this.this$0));
+      Log.d("PageSwitchObserver", localStringBuilder.toString());
+    }
+    if ((PageSwitchObserver.access$400(this.this$0)) && (localObject != null))
+    {
+      if (((Activity)localObject).isFinishing()) {
+        return;
+      }
+      PageSwitchObserver.access$500(this.this$0, (Activity)localObject, paramInt);
+      this.mActivityRef = null;
+    }
   }
   
   void setActivity(Activity paramActivity)
@@ -47,7 +57,7 @@ class PageSwitchObserver$DetectionTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.page.PageSwitchObserver.DetectionTask
  * JD-Core Version:    0.7.0.1
  */

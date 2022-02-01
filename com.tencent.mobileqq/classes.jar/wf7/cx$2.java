@@ -13,21 +13,25 @@ class cx$2
   
   public void handleMessage(Message paramMessage)
   {
-    if (paramMessage != null) {}
-    switch (paramMessage.what)
+    if (paramMessage != null)
     {
-    default: 
-      return;
-    case 0: 
-      cx.a(this.jn, this.jn.jc, this.jn.jd, this.jn.je);
-      return;
+      int i = paramMessage.what;
+      if (i != 0)
+      {
+        if (i != 1) {
+          return;
+        }
+        this.jn.iZ = false;
+        return;
+      }
+      paramMessage = this.jn;
+      cx.a(paramMessage, paramMessage.jc, this.jn.jd, this.jn.je);
     }
-    this.jn.iZ = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.cx.2
  * JD-Core Version:    0.7.0.1
  */

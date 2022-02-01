@@ -2,7 +2,7 @@
 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:orientation="vertical" android:id="@id/ju4" android:background="@color/al3" android:visibility="gone" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layerType="software">
-        <com.tencent.biz.pubaccount.readinjoy.view.widget.banner.RollViewPager android:id="@id/kwk" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="42.0dip" android:layout_marginTop="1.0dip" android:layout_marginBottom="10.0dip" />
+        <com.tencent.mobileqq.kandian.biz.channel.banner.RollViewPager android:id="@id/kwk" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="42.0dip" android:layout_marginTop="1.0dip" android:layout_marginBottom="10.0dip" />
         <View android:id="@id/d4a" android:background="@color/aai" android:layout_width="fill_parent" android:layout_height="5.0dip" />
     </LinearLayout>
     <FrameLayout android:id="@id/m_4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />

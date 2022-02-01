@@ -20,14 +20,10 @@ public class WSVerticalForAioRedPresenter
     return true;
   }
   
-  protected boolean b()
+  public void g()
   {
-    return true;
-  }
-  
-  protected boolean f()
-  {
-    return true;
+    super.g();
+    k();
   }
   
   protected boolean g()
@@ -35,15 +31,19 @@ public class WSVerticalForAioRedPresenter
     return true;
   }
   
-  public void h()
+  protected boolean k()
   {
-    super.h();
-    a();
+    return true;
+  }
+  
+  protected boolean l()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.presenter.WSVerticalForAioRedPresenter
  * JD-Core Version:    0.7.0.1
  */

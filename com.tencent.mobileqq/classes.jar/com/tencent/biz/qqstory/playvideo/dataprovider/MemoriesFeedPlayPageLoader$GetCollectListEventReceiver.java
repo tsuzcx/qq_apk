@@ -18,17 +18,20 @@ class MemoriesFeedPlayPageLoader$GetCollectListEventReceiver
   
   public void a(@NonNull MemoriesFeedPlayPageLoader paramMemoriesFeedPlayPageLoader, @NonNull DateCollectionListPageLoader.GetCollectionListEvent paramGetCollectionListEvent)
   {
-    if ((!TextUtils.equals(MemoriesFeedPlayPageLoader.a(paramMemoriesFeedPlayPageLoader).mContext, paramGetCollectionListEvent.jdField_a_of_type_JavaLangString)) || (MemoriesFeedPlayPageLoader.a(paramMemoriesFeedPlayPageLoader) == null)) {
-      return;
-    }
-    if (paramGetCollectionListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
+    if (TextUtils.equals(MemoriesFeedPlayPageLoader.a(paramMemoriesFeedPlayPageLoader).mContext, paramGetCollectionListEvent.jdField_a_of_type_JavaLangString))
     {
-      SLog.a(this.TAG, "pull feedId list fail %s", paramGetCollectionListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg);
-      MemoriesFeedPlayPageLoader.a(paramMemoriesFeedPlayPageLoader).a(new ErrorMessage(paramGetCollectionListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode, paramGetCollectionListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg), null, false);
-      return;
+      if (MemoriesFeedPlayPageLoader.a(paramMemoriesFeedPlayPageLoader) == null) {
+        return;
+      }
+      if (paramGetCollectionListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
+      {
+        SLog.a(this.TAG, "pull feedId list fail %s", paramGetCollectionListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg);
+        MemoriesFeedPlayPageLoader.a(paramMemoriesFeedPlayPageLoader).a(new ErrorMessage(paramGetCollectionListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode, paramGetCollectionListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg), null, false);
+        return;
+      }
+      MemoriesFeedPlayPageLoader.a(paramMemoriesFeedPlayPageLoader).mIsEnd = paramGetCollectionListEvent.jdField_a_of_type_Boolean;
+      MemoriesFeedPlayPageLoader.a(paramMemoriesFeedPlayPageLoader).b(new ErrorMessage(), MemoriesFeedPlayPageLoader.b(paramGetCollectionListEvent.jdField_a_of_type_JavaUtilList), paramGetCollectionListEvent.jdField_a_of_type_Boolean);
     }
-    MemoriesFeedPlayPageLoader.a(paramMemoriesFeedPlayPageLoader).mIsEnd = paramGetCollectionListEvent.jdField_a_of_type_Boolean;
-    MemoriesFeedPlayPageLoader.a(paramMemoriesFeedPlayPageLoader).b(new ErrorMessage(), MemoriesFeedPlayPageLoader.b(paramGetCollectionListEvent.jdField_a_of_type_JavaUtilList), paramGetCollectionListEvent.jdField_a_of_type_Boolean);
   }
   
   public Class acceptEventClass()
@@ -38,7 +41,7 @@ class MemoriesFeedPlayPageLoader$GetCollectListEventReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.MemoriesFeedPlayPageLoader.GetCollectListEventReceiver
  * JD-Core Version:    0.7.0.1
  */

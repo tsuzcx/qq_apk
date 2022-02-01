@@ -22,12 +22,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class CommonUtil
 {
-  public static final String a;
+  public static final String a = "CommonUtil";
   private static AtomicInteger a;
   
   static
   {
-    jdField_a_of_type_JavaLangString = CommonUtil.class.getSimpleName();
     jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1000);
   }
   
@@ -36,12 +35,16 @@ public class CommonUtil
     if (SuperPlayerSDKMgr.getPlatform() <= 0) {
       return 0;
     }
-    String str2 = String.valueOf(SuperPlayerSDKMgr.getPlatform());
-    String str1 = str2;
-    if (paramInt >= 0) {
-      str1 = str2 + String.valueOf(paramInt);
+    String str = String.valueOf(SuperPlayerSDKMgr.getPlatform());
+    Object localObject = str;
+    if (paramInt >= 0)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(String.valueOf(paramInt));
+      localObject = ((StringBuilder)localObject).toString();
     }
-    return Integer.valueOf(str1).intValue();
+    return Integer.valueOf((String)localObject).intValue();
   }
   
   public static int a(String paramString, int paramInt)
@@ -65,8 +68,12 @@ public class CommonUtil
     if (!TextUtils.isEmpty(paramSuperPlayerVideoInfo.getFileId())) {
       return paramSuperPlayerVideoInfo.getFileId();
     }
-    if ((!TextUtils.isEmpty(paramSuperPlayerVideoInfo.getVid())) && (paramSuperPlayerVideoInfo.getTVideoNetInfo() != null) && (paramSuperPlayerVideoInfo.getTVideoNetInfo().getCurrentDefinition() != null)) {
-      return paramSuperPlayerVideoInfo.getVid() + paramSuperPlayerVideoInfo.getTVideoNetInfo().getCurrentDefinition().getDefn();
+    if ((!TextUtils.isEmpty(paramSuperPlayerVideoInfo.getVid())) && (paramSuperPlayerVideoInfo.getTVideoNetInfo() != null) && (paramSuperPlayerVideoInfo.getTVideoNetInfo().getCurrentDefinition() != null))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramSuperPlayerVideoInfo.getVid());
+      localStringBuilder.append(paramSuperPlayerVideoInfo.getTVideoNetInfo().getCurrentDefinition().getDefn());
+      return localStringBuilder.toString();
     }
     if (!TextUtils.isEmpty(paramSuperPlayerVideoInfo.getPlayUrl())) {
       return a(paramSuperPlayerVideoInfo.getPlayUrl());
@@ -76,60 +83,67 @@ public class CommonUtil
   
   public static String a(String paramString)
   {
-    Object localObject2 = null;
     Object localObject3 = null;
+    Object localObject2 = null;
     Object localObject1 = localObject3;
+    String str;
     if (paramString != null)
     {
       localObject1 = localObject3;
-      if ("".equals(paramString)) {}
-    }
-    try
-    {
-      localObject1 = MessageDigest.getInstance("MD5");
-      ((MessageDigest)localObject1).update(paramString.getBytes());
-      paramString = new BigInteger(1, ((MessageDigest)localObject1).digest()).toString(16);
-    }
-    catch (NoSuchAlgorithmException localNoSuchAlgorithmException1)
-    {
-      try
+      if (!"".equals(paramString))
       {
-        while (paramString.length() < 32)
+        try
         {
-          localObject1 = "0" + paramString;
-          paramString = (String)localObject1;
+          localObject1 = MessageDigest.getInstance("MD5");
+          ((MessageDigest)localObject1).update(paramString.getBytes());
+          paramString = new BigInteger(1, ((MessageDigest)localObject1).digest()).toString(16);
+          try
+          {
+            while (paramString.length() < 32)
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("0");
+              ((StringBuilder)localObject1).append(paramString);
+              localObject1 = ((StringBuilder)localObject1).toString();
+              paramString = (String)localObject1;
+            }
+            localObject1 = paramString.toUpperCase();
+            return localObject1;
+          }
+          catch (NoSuchAlgorithmException localNoSuchAlgorithmException1) {}
+          LogUtil.e(jdField_a_of_type_JavaLangString, "calculateMD5ForInput error", localNoSuchAlgorithmException2);
         }
-        localObject1 = paramString.toUpperCase();
-        return localObject1;
+        catch (NoSuchAlgorithmException localNoSuchAlgorithmException2)
+        {
+          paramString = localObject2;
+        }
+        str = paramString;
       }
-      catch (NoSuchAlgorithmException localNoSuchAlgorithmException2)
-      {
-        break label97;
-      }
-      localNoSuchAlgorithmException1 = localNoSuchAlgorithmException1;
-      paramString = localObject2;
     }
-    label97:
-    LogUtil.e(jdField_a_of_type_JavaLangString, "calculateMD5ForInput error", localNoSuchAlgorithmException1);
-    return paramString;
+    return str;
   }
   
   private static void a(String paramString)
   {
     paramString = new File(paramString, ".nomedia");
-    if (!paramString.exists()) {
-      try
-      {
-        boolean bool = paramString.createNewFile();
-        LogUtil.d(jdField_a_of_type_JavaLangString, ".nomedia file create result:" + bool);
-        return;
-      }
-      catch (IOException paramString)
-      {
-        LogUtil.w(jdField_a_of_type_JavaLangString, ".nomedia file create failed.");
-        return;
-      }
+    if (!paramString.exists()) {}
+    try
+    {
+      boolean bool = paramString.createNewFile();
+      paramString = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(".nomedia file create result:");
+      localStringBuilder.append(bool);
+      LogUtil.d(paramString, localStringBuilder.toString());
+      return;
     }
+    catch (IOException paramString)
+    {
+      label57:
+      break label57;
+    }
+    LogUtil.w(jdField_a_of_type_JavaLangString, ".nomedia file create failed.");
+    return;
     LogUtil.d(jdField_a_of_type_JavaLangString, ".nomedia file exists");
   }
   
@@ -152,59 +166,74 @@ public class CommonUtil
     if (TextUtils.isEmpty(SuperPlayerSDKMgr.getDataCacheFolder())) {
       return false;
     }
-    String str = SuperPlayerSDKMgr.getDataCacheFolder() + File.separator + paramInt;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(SuperPlayerSDKMgr.getDataCacheFolder());
+    ((StringBuilder)localObject1).append(File.separator);
+    ((StringBuilder)localObject1).append(paramInt);
+    localObject1 = ((StringBuilder)localObject1).toString();
     try
     {
-      File localFile = new File(str);
-      if (!localFile.exists())
+      Object localObject2 = new File((String)localObject1);
+      if (!((File)localObject2).exists())
       {
-        localFile.mkdirs();
-        LogUtil.d(jdField_a_of_type_JavaLangString, "业务缓存目录创建成功，path = " + str);
+        ((File)localObject2).mkdirs();
+        localObject2 = jdField_a_of_type_JavaLangString;
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("业务缓存目录创建成功，path = ");
+        ((StringBuilder)localObject3).append((String)localObject1);
+        LogUtil.d((String)localObject2, ((StringBuilder)localObject3).toString());
       }
-      for (;;)
+      else
       {
-        a(SuperPlayerSDKMgr.getDataCacheFolder());
-        TPPlayerMgr.setProxyConfigsWithServiceType(paramInt, str, str, TPPlayerConfig.getProxyConfigStr());
-        return true;
-        LogUtil.d(jdField_a_of_type_JavaLangString, "业务缓存目录已存在，path = " + str);
+        localObject2 = jdField_a_of_type_JavaLangString;
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("业务缓存目录已存在，path = ");
+        ((StringBuilder)localObject3).append((String)localObject1);
+        LogUtil.d((String)localObject2, ((StringBuilder)localObject3).toString());
       }
-      return false;
+      a(SuperPlayerSDKMgr.getDataCacheFolder());
+      TPPlayerMgr.setProxyConfigsWithServiceType(paramInt, (String)localObject1, (String)localObject1, TPPlayerConfig.getProxyConfigStr());
+      return true;
     }
     catch (Exception localException)
     {
-      LogUtil.d(jdField_a_of_type_JavaLangString, "业务缓存目录创建失败，path = " + str + ", error = " + localException.getMessage());
+      Object localObject3 = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("业务缓存目录创建失败，path = ");
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append(", error = ");
+      localStringBuilder.append(localException.getMessage());
+      LogUtil.d((String)localObject3, localStringBuilder.toString());
     }
+    return false;
   }
   
   public static String b()
   {
     if (SuperPlayerSDKMgr.getContext() == null) {
-      localObject = "unknown";
+      return "unknown";
     }
-    int i;
-    String str;
-    Iterator localIterator;
-    do
+    int i = Process.myPid();
+    Iterator localIterator = ((ActivityManager)SuperPlayerSDKMgr.getContext().getSystemService("activity")).getRunningAppProcesses().iterator();
+    String str = "";
+    while (localIterator.hasNext())
     {
-      return localObject;
-      i = Process.myPid();
-      str = "";
-      localIterator = ((ActivityManager)SuperPlayerSDKMgr.getContext().getSystemService("activity")).getRunningAppProcesses().iterator();
-      localObject = str;
-    } while (!localIterator.hasNext());
-    Object localObject = (ActivityManager.RunningAppProcessInfo)localIterator.next();
-    if (((ActivityManager.RunningAppProcessInfo)localObject).pid == i) {
-      str = ((ActivityManager.RunningAppProcessInfo)localObject).processName;
+      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)localIterator.next();
+      if (localRunningAppProcessInfo.pid == i) {
+        str = localRunningAppProcessInfo.processName;
+      }
     }
-    for (;;)
-    {
-      break;
-    }
+    return str;
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    return (paramInt == 401) || (paramInt == 402) || (paramInt == 403) || (paramInt == 201) || (paramInt == 202) || (paramInt == 203);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.utils.CommonUtil
  * JD-Core Version:    0.7.0.1
  */

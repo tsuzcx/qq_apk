@@ -16,21 +16,20 @@ final class PwdSetUtil$1
     try
     {
       paramDialogInterface.dismiss();
-      PwdSetUtil.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-      return;
     }
     catch (Exception paramDialogInterface)
     {
-      for (;;)
-      {
-        QLog.e("PwdSetUtil", 1, "gotoPwdSetWebsite: dismiss exception. " + paramDialogInterface.getMessage());
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("gotoPwdSetWebsite: dismiss exception. ");
+      localStringBuilder.append(paramDialogInterface.getMessage());
+      QLog.e("PwdSetUtil", 1, localStringBuilder.toString());
     }
+    PwdSetUtil.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.login.PwdSetUtil.1
  * JD-Core Version:    0.7.0.1
  */

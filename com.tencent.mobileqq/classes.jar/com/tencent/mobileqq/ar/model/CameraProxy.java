@@ -9,7 +9,8 @@ import android.os.HandlerThread;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.ar.arengine.ARCamera;
 import com.tencent.mobileqq.ar.arengine.ARCamera.AutoFocusListener;
-import com.tencent.mobileqq.ocr.OcrImageUtil;
+import com.tencent.mobileqq.ocr.api.IOCR;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -45,12 +46,12 @@ public class CameraProxy
       this.jdField_a_of_type_AndroidOsHandler = new Handler(jdField_a_of_type_AndroidOsHandlerThread.getLooper());
     }
     this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera = new ARCamera();
-    if (Build.MODEL.equalsIgnoreCase("Redmi Note 3")) {}
-    for (this.jdField_a_of_type_Long = 500L;; this.jdField_a_of_type_Long = 300L)
-    {
-      this.f = 0;
-      return;
+    if (Build.MODEL.equalsIgnoreCase("Redmi Note 3")) {
+      this.jdField_a_of_type_Long = 500L;
+    } else {
+      this.jdField_a_of_type_Long = 300L;
     }
+    this.f = 0;
   }
   
   public static CameraProxy a()
@@ -60,18 +61,14 @@ public class CameraProxy
   
   private void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    for (;;)
+    int i;
+    synchronized (this.jdField_b_of_type_JavaUtilArrayList)
     {
-      int i;
-      synchronized (this.jdField_b_of_type_JavaUtilArrayList)
+      i = this.jdField_b_of_type_JavaUtilArrayList.size() - 1;
+      if (i >= 0)
       {
-        i = this.jdField_b_of_type_JavaUtilArrayList.size() - 1;
-        if (i >= 0)
-        {
-          WeakReference localWeakReference = (WeakReference)this.jdField_b_of_type_JavaUtilArrayList.get(i);
-          if ((localWeakReference == null) || (localWeakReference.get() == null)) {
-            break label102;
-          }
+        WeakReference localWeakReference = (WeakReference)this.jdField_b_of_type_JavaUtilArrayList.get(i);
+        if ((localWeakReference != null) && (localWeakReference.get() != null)) {
           if (paramBoolean) {
             ((CameraProxy.CameraOperationStatusCallBack)localWeakReference.get()).b();
           } else {
@@ -79,9 +76,10 @@ public class CameraProxy
           }
         }
       }
-      return;
-      label102:
-      i -= 1;
+      else
+      {
+        return;
+      }
     }
   }
   
@@ -92,13 +90,15 @@ public class CameraProxy
   
   public String a()
   {
-    String str = null;
     int i = this.g;
     if (Build.MODEL.equalsIgnoreCase("M1 E")) {
       i = 90;
     }
+    String str;
     if (this.jdField_a_of_type_ArrayOfByte != null) {
-      str = OcrImageUtil.a(this.jdField_a_of_type_ArrayOfByte, this.jdField_c_of_type_Int, this.d, this.e, i);
+      str = ((IOCR)QRoute.api(IOCR.class)).savePreviewImage(this.jdField_a_of_type_ArrayOfByte, this.jdField_c_of_type_Int, this.d, this.e, i);
+    } else {
+      str = null;
     }
     if (QLog.isColorLevel()) {
       QLog.d("CameraProxy", 2, String.format("getLastPreviewFrame, path: %s, rotation: %s", new Object[] { str, Integer.valueOf(i) }));
@@ -108,8 +108,9 @@ public class CameraProxy
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera.c();
+    ARCamera localARCamera = this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera;
+    if (localARCamera != null) {
+      localARCamera.c();
     }
   }
   
@@ -117,7 +118,10 @@ public class CameraProxy
   {
     if (this.jdField_a_of_type_Int == 2)
     {
-      QLog.i("CameraProxy", 2, "openCamera mCurCameraState = " + this.jdField_a_of_type_Int);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("openCamera mCurCameraState = ");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      QLog.i("CameraProxy", 2, localStringBuilder.toString());
       return;
     }
     this.jdField_a_of_type_Int = 1;
@@ -127,15 +131,17 @@ public class CameraProxy
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera.a(paramInt1, paramInt2);
+    ARCamera localARCamera = this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera;
+    if (localARCamera != null) {
+      localARCamera.a(paramInt1, paramInt2);
     }
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera.a(paramInt1, paramInt2, paramInt3, paramInt4);
+    ARCamera localARCamera = this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera;
+    if (localARCamera != null) {
+      localARCamera.a(paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
@@ -172,6 +178,10 @@ public class CameraProxy
       }
       this.jdField_b_of_type_JavaUtilArrayList.add(new WeakReference(paramCameraOperationStatusCallBack));
       return;
+    }
+    for (;;)
+    {
+      throw paramCameraOperationStatusCallBack;
     }
   }
   
@@ -215,8 +225,9 @@ public class CameraProxy
   
   public boolean a(float paramFloat, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera.a(paramFloat, paramBoolean);
+    ARCamera localARCamera = this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera;
+    if (localARCamera != null) {
+      return localARCamera.a(paramFloat, paramBoolean);
     }
     return false;
   }
@@ -233,8 +244,9 @@ public class CameraProxy
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera.d();
+    ARCamera localARCamera = this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera;
+    if (localARCamera != null) {
+      localARCamera.d();
     }
   }
   
@@ -242,44 +254,36 @@ public class CameraProxy
   {
     int j = this.jdField_a_of_type_JavaUtilArrayList.size();
     int i = 0;
-    if (i < j) {
-      if (((WeakReference)this.jdField_a_of_type_JavaUtilArrayList.get(i)).get() != paramAutoFocusListener) {}
-    }
-    for (;;)
+    while (i < j)
     {
-      if (i != -1) {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(i);
+      if (((WeakReference)this.jdField_a_of_type_JavaUtilArrayList.get(i)).get() == paramAutoFocusListener) {
+        break label45;
       }
-      return;
       i += 1;
-      break;
-      i = -1;
+    }
+    i = -1;
+    label45:
+    if (i != -1) {
+      this.jdField_a_of_type_JavaUtilArrayList.remove(i);
     }
   }
   
   public void b(CameraProxy.CameraOperationStatusCallBack paramCameraOperationStatusCallBack)
   {
-    for (;;)
+    int i;
+    synchronized (this.jdField_b_of_type_JavaUtilArrayList)
     {
-      synchronized (this.jdField_b_of_type_JavaUtilArrayList)
-      {
-        int j = this.jdField_b_of_type_JavaUtilArrayList.size();
-        i = 0;
-        if (i < j)
+      int j = this.jdField_b_of_type_JavaUtilArrayList.size();
+      i = 0;
+      if (i < j) {
+        if (((WeakReference)this.jdField_b_of_type_JavaUtilArrayList.get(i)).get() == paramCameraOperationStatusCallBack)
         {
-          if (((WeakReference)this.jdField_b_of_type_JavaUtilArrayList.get(i)).get() != paramCameraOperationStatusCallBack) {
-            break label71;
-          }
           if (i != -1) {
             this.jdField_b_of_type_JavaUtilArrayList.remove(i);
           }
           return;
         }
       }
-      int i = -1;
-      continue;
-      label71:
-      i += 1;
     }
   }
   
@@ -296,6 +300,10 @@ public class CameraProxy
       this.jdField_c_of_type_JavaUtilArrayList.add(new WeakReference(paramOnCameraPreviewCallback));
       return;
     }
+    for (;;)
+    {
+      throw paramOnCameraPreviewCallback;
+    }
   }
   
   public boolean b()
@@ -310,41 +318,36 @@ public class CameraProxy
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera.b();
+    ARCamera localARCamera = this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera;
+    if (localARCamera != null) {
+      localARCamera.b();
     }
   }
   
   public void c(CameraProxy.OnCameraPreviewCallback paramOnCameraPreviewCallback)
   {
-    for (;;)
+    int i;
+    synchronized (this.jdField_c_of_type_JavaUtilArrayList)
     {
-      synchronized (this.jdField_c_of_type_JavaUtilArrayList)
-      {
-        int j = this.jdField_c_of_type_JavaUtilArrayList.size();
-        i = 0;
-        if (i < j)
+      int j = this.jdField_c_of_type_JavaUtilArrayList.size();
+      i = 0;
+      if (i < j) {
+        if (((WeakReference)this.jdField_c_of_type_JavaUtilArrayList.get(i)).get() == paramOnCameraPreviewCallback)
         {
-          if (((WeakReference)this.jdField_c_of_type_JavaUtilArrayList.get(i)).get() != paramOnCameraPreviewCallback) {
-            break label71;
-          }
           if (i != -1) {
             this.jdField_c_of_type_JavaUtilArrayList.remove(i);
           }
           return;
         }
       }
-      int i = -1;
-      continue;
-      label71:
-      i += 1;
     }
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera.e();
+    ARCamera localARCamera = this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera;
+    if (localARCamera != null) {
+      localARCamera.e();
     }
   }
   
@@ -352,7 +355,10 @@ public class CameraProxy
   {
     if (this.jdField_a_of_type_Int == 0)
     {
-      QLog.i("CameraProxy", 2, "closeCamera mCurCameraState = " + this.jdField_a_of_type_Int);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("closeCamera mCurCameraState = ");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      QLog.i("CameraProxy", 2, localStringBuilder.toString());
       return;
     }
     this.jdField_a_of_type_Int = 3;
@@ -364,65 +370,72 @@ public class CameraProxy
     synchronized (this.jdField_c_of_type_JavaUtilArrayList)
     {
       this.jdField_c_of_type_JavaUtilArrayList.clear();
-    }
-    synchronized (this.jdField_b_of_type_JavaUtilArrayList)
-    {
-      this.jdField_b_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      return;
-      localObject1 = finally;
-      throw localObject1;
+      synchronized (this.jdField_b_of_type_JavaUtilArrayList)
+      {
+        this.jdField_b_of_type_JavaUtilArrayList.clear();
+        this.jdField_a_of_type_JavaUtilArrayList.clear();
+        return;
+      }
     }
   }
   
   public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    ArrayList localArrayList = this.jdField_c_of_type_JavaUtilArrayList;
+    Object localObject = this.jdField_c_of_type_JavaUtilArrayList;
     boolean bool1 = false;
-    for (;;)
+    try
     {
-      try
+      i = this.jdField_c_of_type_JavaUtilArrayList.size() - 1;
+      bool2 = bool1;
+      if (i >= 0)
       {
-        int i = this.jdField_c_of_type_JavaUtilArrayList.size() - 1;
-        if (i < 0) {
-          break label172;
-        }
         WeakReference localWeakReference = (WeakReference)this.jdField_c_of_type_JavaUtilArrayList.get(i);
-        if (localWeakReference.get() != null)
-        {
-          bool2 = ((CameraProxy.OnCameraPreviewCallback)localWeakReference.get()).a(paramArrayOfByte);
-          bool1 = bool2;
-          if (bool2)
-          {
-            if ((!bool2) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-              ((CameraProxy.OnCameraPreviewCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramArrayOfByte);
-            }
-            if (this.jdField_a_of_type_Int != 2) {
-              break label164;
-            }
-            this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-            if (this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera != null) {
-              this.g = this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera.d();
-            }
-            paramCamera.addCallbackBuffer(paramArrayOfByte);
-            return;
-          }
+        bool2 = bool1;
+        if (localWeakReference.get() == null) {
+          break label188;
         }
-        i -= 1;
-        continue;
+        bool1 = ((CameraProxy.OnCameraPreviewCallback)localWeakReference.get()).a(paramArrayOfByte);
+        bool2 = bool1;
+        if (!bool1) {
+          break label188;
+        }
+        bool2 = bool1;
+      }
+      if ((!bool2) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+        ((CameraProxy.OnCameraPreviewCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramArrayOfByte);
+      }
+      if (this.jdField_a_of_type_Int == 2) {
+        this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+      } else {
         this.jdField_a_of_type_ArrayOfByte = null;
       }
-      finally {}
-      label164:
-      continue;
-      label172:
-      boolean bool2 = bool1;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera;
+      if (localObject != null) {
+        this.g = ((ARCamera)localObject).d();
+      }
+      paramCamera.addCallbackBuffer(paramArrayOfByte);
+      return;
+    }
+    finally
+    {
+      for (;;)
+      {
+        int i;
+        boolean bool2;
+        for (;;)
+        {
+          throw paramArrayOfByte;
+        }
+        label188:
+        i -= 1;
+        bool1 = bool2;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.CameraProxy
  * JD-Core Version:    0.7.0.1
  */

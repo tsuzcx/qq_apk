@@ -1,11 +1,10 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.app.EmoticonHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.model.QueryCallback;
+import com.tencent.mobileqq.emosm.api.IEmoticonManagerService;
+import com.tencent.mobileqq.emoticonview.QueryCallback;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -23,93 +22,90 @@ class EmosmActivity$11
     }
     int j = paramList.size();
     int i = 0;
-    label14:
-    if (i < j) {
-      if (((EmoticonPackage)paramList.get(i)).jobType != 3) {}
-    }
-    for (;;)
+    while (i < j)
     {
-      ArrayList localArrayList = new ArrayList();
-      Object localObject1;
-      Object localObject2;
-      if (1 == this.a.b)
+      if (((EmoticonPackage)paramList.get(i)).jobType == 3) {
+        break label48;
+      }
+      i += 1;
+    }
+    i = -1;
+    label48:
+    ArrayList localArrayList = new ArrayList();
+    Object localObject1;
+    Object localObject2;
+    int k;
+    if (1 == this.a.mLaunchMode)
+    {
+      if (i == -1)
       {
-        if (i == -1)
-        {
-          paramList = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-          while (paramList.hasNext()) {
-            localArrayList.add(((EmoticonPackage)paramList.next()).epId);
-          }
-          i += 1;
-          break label14;
-        }
-        localObject1 = new ArrayList();
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          localObject2 = (EmoticonPackage)paramList.next();
-          if (((EmoticonPackage)localObject2).jobType == 3) {
-            ((ArrayList)localObject1).add(((EmoticonPackage)localObject2).epId);
-          }
-        }
-        if (i >= this.a.jdField_a_of_type_JavaUtilArrayList.size())
-        {
-          paramList = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-          while (paramList.hasNext()) {
-            localArrayList.add(((EmoticonPackage)paramList.next()).epId);
-          }
-          localArrayList.addAll((Collection)localObject1);
+        paramList = this.a.mEPDatas.iterator();
+        while (paramList.hasNext()) {
+          localArrayList.add(((EmoticonPackage)paramList.next()).epId);
         }
       }
-      for (;;)
+      localObject1 = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a(localArrayList, 0);
-        paramList = (EmoticonHandler)this.a.app.getBusinessHandler(BusinessHandlerFactory.HANDLER_EMOSM);
-        if (paramList == null) {
-          break;
+        localObject2 = (EmoticonPackage)paramList.next();
+        if (((EmoticonPackage)localObject2).jobType == 3) {
+          ((ArrayList)localObject1).add(((EmoticonPackage)localObject2).epId);
         }
-        paramList.a(localArrayList, true, 0);
-        return;
-        int k = this.a.jdField_a_of_type_JavaUtilArrayList.size();
+      }
+      if (i >= this.a.mEPDatas.size())
+      {
+        paramList = this.a.mEPDatas.iterator();
+        while (paramList.hasNext()) {
+          localArrayList.add(((EmoticonPackage)paramList.next()).epId);
+        }
+        localArrayList.addAll((Collection)localObject1);
+      }
+      else
+      {
+        k = this.a.mEPDatas.size();
         j = 0;
         while (j < k)
         {
-          paramList = (EmoticonPackage)this.a.jdField_a_of_type_JavaUtilArrayList.get(j);
+          paramList = (EmoticonPackage)this.a.mEPDatas.get(j);
           if (j == i) {
             localArrayList.addAll((Collection)localObject1);
           }
           localArrayList.add(paramList.epId);
           j += 1;
         }
-        continue;
-        if (2 == this.a.b)
+      }
+    }
+    else if (2 == this.a.mLaunchMode)
+    {
+      k = paramList.size();
+      j = 0;
+      while (j < k)
+      {
+        localObject1 = (EmoticonPackage)paramList.get(j);
+        if (j == i)
         {
-          k = paramList.size();
-          j = 0;
-          while (j < k)
-          {
-            localObject1 = (EmoticonPackage)paramList.get(j);
-            if (j == i)
-            {
-              localObject2 = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-              while (((Iterator)localObject2).hasNext()) {
-                localArrayList.add(((EmoticonPackage)((Iterator)localObject2).next()).epId);
-              }
-            }
-            if (((EmoticonPackage)localObject1).jobType != 3) {
-              localArrayList.add(((EmoticonPackage)localObject1).epId);
-            }
-            j += 1;
+          localObject2 = this.a.mEPDatas.iterator();
+          while (((Iterator)localObject2).hasNext()) {
+            localArrayList.add(((EmoticonPackage)((Iterator)localObject2).next()).epId);
           }
         }
+        if (((EmoticonPackage)localObject1).jobType != 3) {
+          localArrayList.add(((EmoticonPackage)localObject1).epId);
+        }
+        j += 1;
       }
-      i = -1;
+    }
+    this.a.mDBManager.reconstructAllTabEmoticonPackage(localArrayList, 0);
+    paramList = (EmoticonHandler)this.a.app.getBusinessHandler(EmoticonHandler.a);
+    if (paramList != null) {
+      paramList.a(localArrayList, true, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.EmosmActivity.11
  * JD-Core Version:    0.7.0.1
  */

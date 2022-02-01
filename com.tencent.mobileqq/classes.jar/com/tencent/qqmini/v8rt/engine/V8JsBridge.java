@@ -11,25 +11,25 @@ public class V8JsBridge
   
   private static IJsEngine getJsEngine(String paramString)
   {
-    Object localObject = null;
     Iterator localIterator = JsEngineProvider.getInstance().iterator();
-    if (localIterator.hasNext())
+    Object localObject1 = null;
+    Object localObject2;
+    while (localIterator.hasNext())
     {
-      IJsEngine localIJsEngine = (IJsEngine)localIterator.next();
-      if (!localIJsEngine.canHandleEvent(paramString)) {
-        break label78;
+      localObject2 = (IJsEngine)localIterator.next();
+      if (((IJsEngine)localObject2).canHandleEvent(paramString)) {
+        localObject1 = localObject2;
       }
-      localObject = localIJsEngine;
     }
-    label78:
-    for (;;)
+    if (localObject1 != null)
     {
-      break;
-      if (localObject != null) {
-        Logger.i("API-Java", paramString + " handled by " + localObject);
-      }
-      return localObject;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append(" handled by ");
+      ((StringBuilder)localObject2).append(localObject1);
+      Logger.i("API-Java", ((StringBuilder)localObject2).toString());
     }
+    return localObject1;
   }
   
   public static void jniEvalJs(int paramInt1, int paramInt2, String paramString)
@@ -66,8 +66,9 @@ public class V8JsBridge
   
   public static int[] jsStringToJavaIntArray(String paramString)
   {
+    boolean bool = TextUtils.isEmpty(paramString);
     int i = 0;
-    if (TextUtils.isEmpty(paramString)) {
+    if (bool) {
       return new int[0];
     }
     paramString = paramString.replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
@@ -78,14 +79,14 @@ public class V8JsBridge
       try
       {
         arrayOfInt[i] = Integer.parseInt(paramString[i]);
-        label61:
+        label63:
         i += 1;
         continue;
         return arrayOfInt;
       }
       catch (NumberFormatException localNumberFormatException)
       {
-        break label61;
+        break label63;
       }
     }
   }
@@ -109,11 +110,24 @@ public class V8JsBridge
   @CallByNative
   public static String onScriptCall(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    Logger.i("API-Java", "onScriptCall event:" + paramString1 + ", params:" + paramString2 + ", callbackId:" + paramInt1 + ",contextType:" + paramInt2);
-    Object localObject = Engine.getInstance().getJsRuntime(paramInt2);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onScriptCall event:");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(", params:");
+    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append(", callbackId:");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(",contextType:");
+    ((StringBuilder)localObject).append(paramInt2);
+    Logger.i("API-Java", ((StringBuilder)localObject).toString());
+    localObject = Engine.getInstance().getJsRuntime(paramInt2);
     if (localObject == null)
     {
-      Logger.e("API-Java", "onScriptCall contextType is invalid " + paramInt2 + ", is runtime released?");
+      paramString1 = new StringBuilder();
+      paramString1.append("onScriptCall contextType is invalid ");
+      paramString1.append(paramInt2);
+      paramString1.append(", is runtime released?");
+      Logger.e("API-Java", paramString1.toString());
       return "{}";
     }
     IServiceEventHandler localIServiceEventHandler = ServiceEventHandlerProvider.getInstance().getServiceEventHandler((V8JsRuntime)localObject);
@@ -123,40 +137,64 @@ public class V8JsBridge
     }
     if (localObject != null)
     {
-      Logger.i("API-Java", paramString1 + " handled by " + localIServiceEventHandler);
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString1);
+      paramString2.append(" handled by ");
+      paramString2.append(localIServiceEventHandler);
+      Logger.i("API-Java", paramString2.toString());
       return localObject;
     }
     localObject = getJsEngine(paramString1);
     if (localObject != null) {
       return ((IJsEngine)localObject).onScriptCall(paramString1, paramString2, paramInt1, paramInt2);
     }
-    Logger.e("API-Java", "!!! API [" + paramString1 + "] 未实现  - (invoke) !!!");
+    paramString2 = new StringBuilder();
+    paramString2.append("!!! API [");
+    paramString2.append(paramString1);
+    paramString2.append("] 未实现  - (invoke) !!!");
+    Logger.e("API-Java", paramString2.toString());
     return "{}";
   }
   
   @CallByNative
   public static String onScriptPublish(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    Logger.i("API-Java", "onScriptPublish event:" + paramString1 + ", params:" + paramString2 + ", contextIds:" + paramString3 + ",contextType:" + paramInt);
-    String str = paramString3;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onScriptPublish event:");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(", params:");
+    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append(", contextIds:");
+    ((StringBuilder)localObject).append(paramString3);
+    ((StringBuilder)localObject).append(",contextType:");
+    ((StringBuilder)localObject).append(paramInt);
+    Logger.i("API-Java", ((StringBuilder)localObject).toString());
+    localObject = paramString3;
     if ("[]".equals(paramString3)) {
-      str = "[1]";
+      localObject = "[1]";
     }
     paramString3 = Engine.getInstance().getJsRuntime(paramInt);
     if (paramString3 == null)
     {
-      Logger.e("API-Java", "onScriptPublish contextType is invalid " + paramInt + ", is runtime released?");
+      paramString1 = new StringBuilder();
+      paramString1.append("onScriptPublish contextType is invalid ");
+      paramString1.append(paramInt);
+      paramString1.append(", is runtime released?");
+      Logger.e("API-Java", paramString1.toString());
       return "{}";
     }
     paramString3 = ServiceEventHandlerProvider.getInstance().getServiceEventHandler(paramString3);
-    if (paramString3 != null) {
-      paramString3.onServiceEvent(paramString1, paramString2, jsStringToJavaIntArray(str));
-    }
-    for (;;)
+    if (paramString3 != null)
     {
+      paramString3.onServiceEvent(paramString1, paramString2, jsStringToJavaIntArray((String)localObject));
       return "{}";
-      Logger.e("API-Java", "!!! API [" + paramString1 + "] 未实现 - (publish) !!!");
     }
+    paramString2 = new StringBuilder();
+    paramString2.append("!!! API [");
+    paramString2.append(paramString1);
+    paramString2.append("] 未实现 - (publish) !!!");
+    Logger.e("API-Java", paramString2.toString());
+    return "{}";
   }
   
   @CallByNative
@@ -165,46 +203,57 @@ public class V8JsBridge
     Object localObject = Engine.getInstance().getJsRuntime(paramInt);
     if (localObject == null)
     {
-      Logger.e("API-Java", "onScriptCall contextType is invalid " + paramInt + ", is runtime released?");
-      paramInt = -1;
+      paramString = new StringBuilder();
+      paramString.append("onScriptCall contextType is invalid ");
+      paramString.append(paramInt);
+      paramString.append(", is runtime released?");
+      Logger.e("API-Java", paramString.toString());
+      return -1;
     }
-    do
-    {
-      return paramInt;
-      localObject = WorkerHandlerProvider.getInstance().getWorkerHandler((V8JsRuntime)localObject);
-      paramInt = 0;
-    } while (localObject == null);
-    return ((IWorkerEventHandler)localObject).create(paramString);
+    localObject = WorkerHandlerProvider.getInstance().getWorkerHandler((V8JsRuntime)localObject);
+    paramInt = 0;
+    if (localObject != null) {
+      paramInt = ((IWorkerEventHandler)localObject).create(paramString);
+    }
+    return paramInt;
   }
   
   @CallByNative
   public static void onWorkerPostMsgToAppService(String paramString, int paramInt)
   {
     Object localObject = Engine.getInstance().getJsRuntime(paramInt);
-    if (localObject == null) {
-      Logger.e("API-Java", "onScriptCall contextType is invalid " + paramInt + ", is runtime released?");
-    }
-    do
+    if (localObject == null)
     {
+      paramString = new StringBuilder();
+      paramString.append("onScriptCall contextType is invalid ");
+      paramString.append(paramInt);
+      paramString.append(", is runtime released?");
+      Logger.e("API-Java", paramString.toString());
       return;
-      localObject = WorkerHandlerProvider.getInstance().getWorkerHandler((V8JsRuntime)localObject);
-    } while (localObject == null);
-    ((IWorkerEventHandler)localObject).postMsgToAppService(paramString);
+    }
+    localObject = WorkerHandlerProvider.getInstance().getWorkerHandler((V8JsRuntime)localObject);
+    if (localObject != null) {
+      ((IWorkerEventHandler)localObject).postMsgToAppService(paramString);
+    }
   }
   
   @CallByNative
   public static void onWorkerPostMsgToWorker(int paramInt1, String paramString, int paramInt2)
   {
     Object localObject = Engine.getInstance().getJsRuntime(paramInt2);
-    if (localObject == null) {
-      Logger.e("API-Java", "onScriptCall contextType is invalid " + paramInt2 + ", is runtime released?");
-    }
-    do
+    if (localObject == null)
     {
+      paramString = new StringBuilder();
+      paramString.append("onScriptCall contextType is invalid ");
+      paramString.append(paramInt2);
+      paramString.append(", is runtime released?");
+      Logger.e("API-Java", paramString.toString());
       return;
-      localObject = WorkerHandlerProvider.getInstance().getWorkerHandler((V8JsRuntime)localObject);
-    } while (localObject == null);
-    ((IWorkerEventHandler)localObject).postMsgToWorker(paramInt1, paramString);
+    }
+    localObject = WorkerHandlerProvider.getInstance().getWorkerHandler((V8JsRuntime)localObject);
+    if (localObject != null) {
+      ((IWorkerEventHandler)localObject).postMsgToWorker(paramInt1, paramString);
+    }
   }
   
   @CallByNative
@@ -213,7 +262,11 @@ public class V8JsBridge
     Object localObject = Engine.getInstance().getJsRuntime(paramInt2);
     if (localObject == null)
     {
-      Logger.e("API-Java", "onScriptCall contextType is invalid " + paramInt2 + ", is runtime released?");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onScriptCall contextType is invalid ");
+      ((StringBuilder)localObject).append(paramInt2);
+      ((StringBuilder)localObject).append(", is runtime released?");
+      Logger.e("API-Java", ((StringBuilder)localObject).toString());
       return "{}";
     }
     localObject = WorkerHandlerProvider.getInstance().getWorkerHandler((V8JsRuntime)localObject);
@@ -235,7 +288,7 @@ public class V8JsBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.v8rt.engine.V8JsBridge
  * JD-Core Version:    0.7.0.1
  */

@@ -14,47 +14,42 @@ public class EmojiJsPlugin$JSONWrapper
   
   public boolean getBoolean(String paramString, boolean paramBoolean)
   {
-    boolean bool = paramBoolean;
-    if (this.json != null)
-    {
-      bool = paramBoolean;
-      if (this.json.isNull(paramString)) {}
-    }
-    try
-    {
-      bool = this.json.getBoolean(paramString);
-      return bool;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
+    JSONObject localJSONObject = this.json;
+    if ((localJSONObject != null) && (!localJSONObject.isNull(paramString))) {
+      try
+      {
+        boolean bool = this.json.getBoolean(paramString);
+        return bool;
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
     return paramBoolean;
   }
   
   public int getInt(String paramString, int paramInt)
   {
-    int i = paramInt;
-    if (this.json != null)
-    {
-      i = paramInt;
-      if (this.json.isNull(paramString)) {}
-    }
-    try
-    {
-      i = this.json.getInt(paramString);
-      return i;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
+    JSONObject localJSONObject = this.json;
+    if ((localJSONObject != null) && (!localJSONObject.isNull(paramString))) {
+      try
+      {
+        int i = this.json.getInt(paramString);
+        return i;
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
     return paramInt;
   }
   
   public String getString(String paramString)
   {
-    if ((this.json != null) && (!this.json.isNull(paramString))) {
+    JSONObject localJSONObject = this.json;
+    if ((localJSONObject != null) && (!localJSONObject.isNull(paramString))) {
       try
       {
         paramString = this.json.getString(paramString);
@@ -70,7 +65,7 @@ public class EmojiJsPlugin$JSONWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.EmojiJsPlugin.JSONWrapper
  * JD-Core Version:    0.7.0.1
  */

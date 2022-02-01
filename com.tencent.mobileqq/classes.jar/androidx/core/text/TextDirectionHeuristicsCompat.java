@@ -20,33 +20,36 @@ public final class TextDirectionHeuristicsCompat
   
   static int isRtlText(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return 2;
-    case 0: 
-      return 1;
+      if ((paramInt != 1) && (paramInt != 2)) {
+        return 2;
+      }
+      return 0;
     }
-    return 0;
+    return 1;
   }
   
   static int isRtlTextOrFormat(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return 2;
-    case 0: 
-    case 14: 
-    case 15: 
-      return 1;
+      if ((paramInt != 1) && (paramInt != 2)) {}
+      switch (paramInt)
+      {
+      default: 
+        return 2;
+      case 16: 
+      case 17: 
+        return 0;
+      }
     }
-    return 0;
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.text.TextDirectionHeuristicsCompat
  * JD-Core Version:    0.7.0.1
  */

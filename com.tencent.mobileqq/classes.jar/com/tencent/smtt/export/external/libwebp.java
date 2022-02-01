@@ -16,7 +16,7 @@ public class libwebp
   private static final int BITMAP_RGB_565 = 2;
   private static final String LOGTAG = "[image]";
   private static boolean isMultiCore = false;
-  private static libwebp mInstance = null;
+  private static libwebp mInstance;
   private static boolean mIsLoadLibSuccess = false;
   private int mBitmapType = 4;
   
@@ -24,57 +24,60 @@ public class libwebp
   {
     String str1 = Build.BRAND.trim().toLowerCase();
     String str2 = Build.MODEL.trim().toLowerCase();
-    int j = 0;
-    int i = j;
-    if (str1 != null)
+    int i;
+    if ((str1 != null) && (str1.length() > 0) && (str1.contains("huawei"))) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    int j = i;
+    if (str2 != null)
     {
-      i = j;
-      if (str1.length() > 0)
+      j = i;
+      if (str2.length() > 0)
       {
-        i = j;
-        if (str1.contains("huawei")) {
-          i = 1;
+        j = i;
+        if (str2.contains("huawei")) {
+          j = 1;
         }
       }
     }
-    if ((str2 != null) && (str2.length() > 0) && (str2.contains("huawei"))) {
-      return 1;
-    }
-    return i;
+    return j;
   }
   
   private String getCPUinfo()
   {
+    String str1 = "";
+    String str2 = str1;
     try
     {
       InputStream localInputStream = new ProcessBuilder(new String[] { "/system/bin/cat", "/proc/cpuinfo" }).start().getInputStream();
+      str2 = str1;
       byte[] arrayOfByte = new byte[1024];
-      localObject = "";
-      String str;
-      localIOException1.printStackTrace();
-    }
-    catch (IOException localIOException1)
-    {
-      try
+      for (;;)
       {
-        while (localInputStream.read(arrayOfByte) != -1)
-        {
-          str = (String)localObject + new String(arrayOfByte);
-          localObject = str;
+        str2 = str1;
+        if (localInputStream.read(arrayOfByte) == -1) {
+          break;
         }
-        localInputStream.close();
-        return localObject;
+        str2 = str1;
+        StringBuilder localStringBuilder = new StringBuilder();
+        str2 = str1;
+        localStringBuilder.append(str1);
+        str2 = str1;
+        localStringBuilder.append(new String(arrayOfByte));
+        str2 = str1;
+        str1 = localStringBuilder.toString();
       }
-      catch (IOException localIOException2)
-      {
-        Object localObject;
-        break label90;
-      }
-      localIOException1 = localIOException1;
-      localObject = "";
+      str2 = str1;
+      localInputStream.close();
+      return str1;
     }
-    label90:
-    return localObject;
+    catch (IOException localIOException)
+    {
+      localIOException.printStackTrace();
+    }
+    return str2;
   }
   
   public static libwebp getInstance(Context paramContext)
@@ -103,8 +106,10 @@ public class libwebp
     }
     catch (UnsatisfiedLinkError paramContext)
     {
-      Log.e("[image]", "Load WebP Library Error...: libwebp.java - loadWepLibraryIfNeed()");
+      label17:
+      break label17;
     }
+    Log.e("[image]", "Load WebP Library Error...: libwebp.java - loadWepLibraryIfNeed()");
   }
   
   public static void loadWepLibraryIfNeed(Context paramContext, String paramString)
@@ -112,14 +117,20 @@ public class libwebp
     if (!mIsLoadLibSuccess) {}
     try
     {
-      System.load(paramString + File.separator + "libwebp_base.so");
+      paramContext = new StringBuilder();
+      paramContext.append(paramString);
+      paramContext.append(File.separator);
+      paramContext.append("libwebp_base.so");
+      System.load(paramContext.toString());
       mIsLoadLibSuccess = true;
       return;
     }
     catch (UnsatisfiedLinkError paramContext)
     {
-      Log.e("[image]", "Load WebP Library Error...: libwebp.java - loadWepLibraryIfNeed()");
+      label47:
+      break label47;
     }
+    Log.e("[image]", "Load WebP Library Error...: libwebp.java - loadWepLibraryIfNeed()");
   }
   
   public int[] decodeBase(byte[] paramArrayOfByte, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
@@ -139,18 +150,12 @@ public class libwebp
       Log.e("[image]", "Load WebP Library Error...");
       return null;
     }
-    switch (libwebp.1.$SwitchMap$android$graphics$Bitmap$Config[paramConfig.ordinal()])
-    {
-    default: 
+    if (libwebp.1.$SwitchMap$android$graphics$Bitmap$Config[paramConfig.ordinal()] != 1) {
       this.mBitmapType = 2;
-    }
-    for (;;)
-    {
-      return nativeDecode_16bit(paramArrayOfByte, isMultiCore, this.mBitmapType);
+    } else {
       this.mBitmapType = 3;
-      continue;
-      this.mBitmapType = 2;
     }
+    return nativeDecode_16bit(paramArrayOfByte, isMultiCore, this.mBitmapType);
   }
   
   public int[] decodeInto(byte[] paramArrayOfByte, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
@@ -193,7 +198,7 @@ public class libwebp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.export.external.libwebp
  * JD-Core Version:    0.7.0.1
  */

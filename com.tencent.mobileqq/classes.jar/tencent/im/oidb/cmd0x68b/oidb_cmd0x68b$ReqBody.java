@@ -35,15 +35,17 @@ public final class oidb_cmd0x68b$ReqBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 90, 96, 104, 112, 120, 128, 138, 144, 154, 162, 170, 178, 184, 194, 1602 }, new String[] { "uint64_uin", "uint32_network_type", "reqChannelPara", "uint32_req_topic_list", "rpt_curr_topicid_list", "uint32_req_dislike_type", "enum_req_feeds_style", "uint64_client_swithes", "req_advertise_para", "enum_refresh_type", "msg_refresh_history", "msg_get_follow_tab_feeds_para", "location_info", "bytes_nearby_cookie", "uint32_req_sim_type", "bytes_sso_client_version", "bytes_style_version" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), null, Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), null, Integer.valueOf(1), null, null, null, localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3 }, ReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 90, 96, 104, 112, 120, 128, 138, 144, 154, 162, 170, 178, 184, 194, 1602 }, new String[] { "uint64_uin", "uint32_network_type", "reqChannelPara", "uint32_req_topic_list", "rpt_curr_topicid_list", "uint32_req_dislike_type", "enum_req_feeds_style", "uint64_client_swithes", "req_advertise_para", "enum_refresh_type", "msg_refresh_history", "msg_get_follow_tab_feeds_para", "location_info", "bytes_nearby_cookie", "uint32_req_sim_type", "bytes_sso_client_version", "bytes_style_version" }, new Object[] { localLong, localInteger, null, localInteger, localLong, localInteger, localInteger, localLong, null, Integer.valueOf(1), null, null, null, localByteStringMicro1, localInteger, localByteStringMicro2, localByteStringMicro3 }, ReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.ReqBody
  * JD-Core Version:    0.7.0.1
  */

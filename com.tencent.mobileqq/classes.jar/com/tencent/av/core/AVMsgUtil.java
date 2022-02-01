@@ -9,10 +9,10 @@ public class AVMsgUtil
 {
   public static byte a(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 3)) {
-      return -1;
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length >= 3)) {
+      return paramArrayOfByte[2];
     }
-    return paramArrayOfByte[2];
+    return -1;
   }
   
   public static boolean a(byte[] paramArrayOfByte)
@@ -43,7 +43,7 @@ public class AVMsgUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.core.AVMsgUtil
  * JD-Core Version:    0.7.0.1
  */

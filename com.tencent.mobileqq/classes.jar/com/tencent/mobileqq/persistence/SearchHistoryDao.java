@@ -28,74 +28,53 @@ public class SearchHistoryDao
       return paramEntity;
     }
     int i = paramCursor.getColumnIndex("key");
-    if (i == -1)
-    {
+    if (i == -1) {
       paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("key", String.class));
-      i = paramCursor.getColumnIndex("type");
-      if (i != -1) {
-        break label448;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("type", Integer.TYPE));
-      label225:
-      i = paramCursor.getColumnIndex("uin");
-      if (i != -1) {
-        break label463;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("uin", String.class));
-      label259:
-      i = paramCursor.getColumnIndex("troopUin");
-      if (i != -1) {
-        break label478;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("troopUin", String.class));
-      label293:
-      i = paramCursor.getColumnIndex("displayName");
-      if (i != -1) {
-        break label493;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("displayName", String.class));
-      label327:
-      i = paramCursor.getColumnIndex("extralInfo");
-      if (i != -1) {
-        break label508;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("extralInfo", String.class));
-      label361:
-      i = paramCursor.getColumnIndex("count");
-      if (i != -1) {
-        break label523;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("count", Integer.TYPE));
-    }
-    for (;;)
-    {
-      i = paramCursor.getColumnIndex("time");
-      if (i != -1) {
-        break label538;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("time", Long.TYPE));
-      return paramEntity;
+    } else {
       paramEntity.key = paramCursor.getString(i);
-      break;
-      label448:
+    }
+    i = paramCursor.getColumnIndex("type");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("type", Integer.TYPE));
+    } else {
       paramEntity.type = paramCursor.getInt(i);
-      break label225;
-      label463:
+    }
+    i = paramCursor.getColumnIndex("uin");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("uin", String.class));
+    } else {
       paramEntity.uin = paramCursor.getString(i);
-      break label259;
-      label478:
+    }
+    i = paramCursor.getColumnIndex("troopUin");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("troopUin", String.class));
+    } else {
       paramEntity.troopUin = paramCursor.getString(i);
-      break label293;
-      label493:
+    }
+    i = paramCursor.getColumnIndex("displayName");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("displayName", String.class));
+    } else {
       paramEntity.displayName = paramCursor.getString(i);
-      break label327;
-      label508:
+    }
+    i = paramCursor.getColumnIndex("extralInfo");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("extralInfo", String.class));
+    } else {
       paramEntity.extralInfo = paramCursor.getString(i);
-      break label361;
-      label523:
+    }
+    i = paramCursor.getColumnIndex("count");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("count", Integer.TYPE));
+    } else {
       paramEntity.count = paramCursor.getInt(i);
     }
-    label538:
+    i = paramCursor.getColumnIndex("time");
+    if (i == -1)
+    {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("time", Long.TYPE));
+      return paramEntity;
+    }
     paramEntity.time = paramCursor.getLong(i);
     return paramEntity;
   }
@@ -123,7 +102,7 @@ public class SearchHistoryDao
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.SearchHistoryDao
  * JD-Core Version:    0.7.0.1
  */

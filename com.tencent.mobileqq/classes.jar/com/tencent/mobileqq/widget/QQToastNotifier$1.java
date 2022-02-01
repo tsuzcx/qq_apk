@@ -22,50 +22,55 @@ class QQToastNotifier$1
   public void handleMessage(Message paramMessage)
   {
     QQToastNotifier.ToastData localToastData = (QQToastNotifier.ToastData)paramMessage.obj;
-    paramMessage = localToastData.jdField_a_of_type_JavaLangString;
-    if ((paramMessage == null) || (paramMessage.length() == 0)) {}
-    for (;;)
+    Object localObject = localToastData.jdField_a_of_type_JavaLangString;
+    if (localObject != null)
+    {
+      paramMessage = (Message)localObject;
+      if (((String)localObject).length() != 0) {}
+    }
+    else
     {
       try
       {
-        String str = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(localToastData.b);
-        paramMessage = str;
-        if (this.a.jdField_a_of_type_AndroidWidgetToast != null) {
-          break label116;
-        }
-        this.a.jdField_a_of_type_AndroidWidgetToast = QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, localToastData.jdField_a_of_type_Int, paramMessage, localToastData.c).a(localToastData.d);
-        if (this.a.jdField_a_of_type_AndroidWidgetToast != null) {
-          this.a.jdField_a_of_type_AndroidWidgetToast.show();
-        }
-        return;
+        paramMessage = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(localToastData.b);
       }
-      catch (Exception localException)
+      catch (Exception paramMessage)
       {
-        localException.printStackTrace();
+        paramMessage.printStackTrace();
+        paramMessage = (Message)localObject;
       }
-      continue;
+    }
+    if (this.a.jdField_a_of_type_AndroidWidgetToast == null)
+    {
+      localObject = this.a;
+      ((QQToastNotifier)localObject).jdField_a_of_type_AndroidWidgetToast = QQToast.a(((QQToastNotifier)localObject).jdField_a_of_type_AndroidContentContext, localToastData.jdField_a_of_type_Int, paramMessage, localToastData.c).a(localToastData.d);
+    }
+    else
+    {
       try
       {
-        label116:
-        View localView = this.a.jdField_a_of_type_AndroidWidgetToast.getView();
-        ((TextView)localView.findViewById(2131379617)).setText(paramMessage);
-        ((ImageView)localView.findViewById(2131379614)).setImageResource(QQToast.a(localToastData.jdField_a_of_type_Int));
+        localObject = this.a.jdField_a_of_type_AndroidWidgetToast.getView();
+        ((TextView)((View)localObject).findViewById(2131378963)).setText(paramMessage);
+        ((ImageView)((View)localObject).findViewById(2131378961)).setImageResource(QQToast.a(localToastData.jdField_a_of_type_Int));
         this.a.jdField_a_of_type_AndroidWidgetToast.setDuration(localToastData.c);
       }
       catch (Throwable paramMessage)
       {
         paramMessage.printStackTrace();
         this.a.jdField_a_of_type_AndroidWidgetToast = null;
+        if (QLog.isColorLevel()) {
+          QLog.i("QQToastNotifier", 2, paramMessage.toString());
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("QQToastNotifier", 2, paramMessage.toString());
-      }
+    }
+    if (this.a.jdField_a_of_type_AndroidWidgetToast != null) {
+      this.a.jdField_a_of_type_AndroidWidgetToast.show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQToastNotifier.1
  * JD-Core Version:    0.7.0.1
  */

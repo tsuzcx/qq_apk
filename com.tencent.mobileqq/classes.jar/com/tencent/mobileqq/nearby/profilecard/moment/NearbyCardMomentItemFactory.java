@@ -52,57 +52,63 @@ public class NearbyCardMomentItemFactory
   
   public BaseMomentItemBuilder a(int paramInt)
   {
-    Object localObject = null;
-    if (paramInt == 0) {
-      if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder != null) {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder;
-      }
-    }
-    do
+    Object localObject;
+    if (paramInt == 0)
     {
-      return localObject;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder;
+      if (localObject != null) {
+        return localObject;
+      }
       localObject = new LiveMomentItemBuilder(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder = ((BaseMomentItemBuilder)localObject);
       return localObject;
-      if (paramInt == 1)
-      {
-        if (this.b != null) {
-          return this.b;
-        }
-        localObject = new ShortVideoMomentItemBuilder(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        this.b = ((BaseMomentItemBuilder)localObject);
-        return localObject;
-      }
-      if (paramInt == 2)
-      {
-        if (this.c != null) {
-          return this.c;
-        }
-        localObject = new PicMomentItemBuilder(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        this.c = ((BaseMomentItemBuilder)localObject);
-        return localObject;
-      }
-      if (paramInt == 3)
-      {
-        if (this.d != null) {
-          return this.d;
-        }
-        localObject = new ChangMomentItemBuilder(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        this.d = ((BaseMomentItemBuilder)localObject);
-        return localObject;
-      }
-    } while (paramInt != 4);
-    if (this.e != null) {
-      return this.e;
     }
-    localObject = new TextMomentItemBuilder(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.e = ((BaseMomentItemBuilder)localObject);
-    return localObject;
+    if (paramInt == 1)
+    {
+      localObject = this.b;
+      if (localObject != null) {
+        return localObject;
+      }
+      localObject = new ShortVideoMomentItemBuilder(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.b = ((BaseMomentItemBuilder)localObject);
+      return localObject;
+    }
+    if (paramInt == 2)
+    {
+      localObject = this.c;
+      if (localObject != null) {
+        return localObject;
+      }
+      localObject = new PicMomentItemBuilder(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.c = ((BaseMomentItemBuilder)localObject);
+      return localObject;
+    }
+    if (paramInt == 3)
+    {
+      localObject = this.d;
+      if (localObject != null) {
+        return localObject;
+      }
+      localObject = new ChangMomentItemBuilder(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.d = ((BaseMomentItemBuilder)localObject);
+      return localObject;
+    }
+    if (paramInt == 4)
+    {
+      localObject = this.e;
+      if (localObject != null) {
+        return localObject;
+      }
+      localObject = new TextMomentItemBuilder(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.e = ((BaseMomentItemBuilder)localObject);
+      return localObject;
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.NearbyCardMomentItemFactory
  * JD-Core Version:    0.7.0.1
  */

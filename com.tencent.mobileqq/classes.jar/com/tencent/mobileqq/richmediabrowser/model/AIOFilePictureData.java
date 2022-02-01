@@ -1,12 +1,15 @@
 package com.tencent.mobileqq.richmediabrowser.model;
 
 import android.os.Parcel;
+import android.os.Parcelable.Creator;
 import com.tencent.mobileqq.richmediabrowser.AIOBrowserBaseData;
+import com.tencent.richmediabrowser.model.RichMediaBaseData;
 
 public class AIOFilePictureData
   extends AIOBrowserBaseData
 {
-  public String a;
+  public static final Parcelable.Creator<RichMediaBaseData> CREATOR = new AIOFilePictureData.1();
+  public String a = "I:N";
   public String b = "I:N";
   public int c;
   public String c;
@@ -18,28 +21,21 @@ public class AIOFilePictureData
   public String e;
   public boolean e;
   public int f;
-  public long f;
   public String f;
   public boolean f;
   public int g;
-  public String g;
   public boolean g;
-  public String h;
-  public boolean h;
-  public String i;
+  public boolean h = false;
   
   public AIOFilePictureData()
   {
     this.jdField_c_of_type_JavaLangString = "I:N";
     this.jdField_d_of_type_JavaLangString = "I:N";
-    this.jdField_e_of_type_JavaLangString = "I:N";
     this.jdField_d_of_type_Boolean = false;
     this.jdField_e_of_type_Boolean = false;
     this.jdField_f_of_type_Boolean = false;
     this.jdField_g_of_type_Boolean = false;
     this.jdField_e_of_type_Long = 0L;
-    this.jdField_f_of_type_Long = 0L;
-    this.jdField_h_of_type_Boolean = false;
   }
   
   public int getType()
@@ -50,21 +46,21 @@ public class AIOFilePictureData
   public void readFromParcel(Parcel paramParcel)
   {
     super.readFromParcel(paramParcel);
-    this.a = paramParcel.readString();
     this.jdField_c_of_type_Int = paramParcel.readInt();
+    this.a = paramParcel.readString();
     this.b = paramParcel.readString();
     this.jdField_c_of_type_JavaLangString = paramParcel.readString();
     this.jdField_d_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_d_of_type_Int = paramParcel.readInt();
+    this.jdField_g_of_type_Boolean = Boolean.valueOf(paramParcel.readString()).booleanValue();
+    String str = paramParcel.readString();
+    if (str == null) {
+      str = "0";
+    }
+    this.jdField_e_of_type_Long = Long.valueOf(str).longValue();
+    this.h = Boolean.valueOf(paramParcel.readString()).booleanValue();
     this.jdField_e_of_type_JavaLangString = paramParcel.readString();
     this.jdField_f_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_d_of_type_Int = paramParcel.readInt();
-    this.jdField_g_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_g_of_type_Boolean = Boolean.valueOf(paramParcel.readString()).booleanValue();
-    this.jdField_e_of_type_Long = Long.valueOf(paramParcel.readString()).longValue();
-    this.jdField_f_of_type_Long = Long.valueOf(paramParcel.readString()).longValue();
-    this.jdField_h_of_type_Boolean = Boolean.valueOf(paramParcel.readString()).booleanValue();
-    this.jdField_h_of_type_JavaLangString = paramParcel.readString();
-    this.i = paramParcel.readString();
     this.jdField_e_of_type_Int = paramParcel.readInt();
     this.jdField_f_of_type_Int = paramParcel.readInt();
     this.jdField_g_of_type_Int = paramParcel.readInt();
@@ -83,21 +79,17 @@ public class AIOFilePictureData
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.a);
     paramParcel.writeInt(this.jdField_c_of_type_Int);
+    paramParcel.writeString(this.a);
     paramParcel.writeString(this.b);
     paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
     paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_f_of_type_JavaLangString);
     paramParcel.writeInt(this.jdField_d_of_type_Int);
-    paramParcel.writeString(this.jdField_g_of_type_JavaLangString);
     paramParcel.writeString(String.valueOf(this.jdField_g_of_type_Boolean));
     paramParcel.writeString(String.valueOf(this.jdField_e_of_type_Long));
-    paramParcel.writeString(String.valueOf(this.jdField_f_of_type_Long));
-    paramParcel.writeString(String.valueOf(this.jdField_h_of_type_Boolean));
-    paramParcel.writeString(this.jdField_h_of_type_JavaLangString);
-    paramParcel.writeString(this.i);
+    paramParcel.writeString(String.valueOf(this.h));
+    paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
+    paramParcel.writeString(this.jdField_f_of_type_JavaLangString);
     paramParcel.writeInt(this.jdField_e_of_type_Int);
     paramParcel.writeInt(this.jdField_f_of_type_Int);
     paramParcel.writeInt(this.jdField_g_of_type_Int);
@@ -105,7 +97,7 @@ public class AIOFilePictureData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.model.AIOFilePictureData
  * JD-Core Version:    0.7.0.1
  */

@@ -29,58 +29,87 @@ public class WSPlayerForNetInfoHandler
   
   private void b()
   {
-    WSLog.e("WSPlayerForNetInfoHandler", "[handleConnectNetWorkChange] thread:" + Thread.currentThread());
-    WSPlayerManager localWSPlayerManager = (WSPlayerManager)this.a.get();
-    if ((localWSPlayerManager != null) && (localWSPlayerManager.a() != null))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[handleConnectNetWorkChange] thread:");
+    ((StringBuilder)localObject).append(Thread.currentThread());
+    WSLog.e("WSPlayerForNetInfoHandler", ((StringBuilder)localObject).toString());
+    localObject = (WSPlayerManager)this.a.get();
+    if ((localObject != null) && (((WSPlayerManager)localObject).a() != null))
     {
-      WSPlayerParam localWSPlayerParam = localWSPlayerManager.a();
-      if ((!localWSPlayerManager.f()) && (!localWSPlayerManager.e())) {
-        break label74;
+      WSPlayerParam localWSPlayerParam = ((WSPlayerManager)localObject).a();
+      if ((!((WSPlayerManager)localObject).f()) && (!((WSPlayerManager)localObject).e()))
+      {
+        if (((WSPlayerManager)localObject).g()) {
+          ((WSPlayerManager)localObject).a();
+        }
       }
-      localWSPlayerManager.b(localWSPlayerParam, false);
+      else {
+        ((WSPlayerManager)localObject).b(localWSPlayerParam, false);
+      }
     }
-    label74:
-    while (!localWSPlayerManager.g()) {
-      return;
-    }
-    localWSPlayerManager.a();
   }
   
   public void onNetMobile2None()
   {
-    WSLog.b("WSPlayerForNetInfoHandler", "[onNetMobile2None] thread:" + Thread.currentThread());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[onNetMobile2None] thread:");
+    localStringBuilder.append(Thread.currentThread());
+    WSLog.b("WSPlayerForNetInfoHandler", localStringBuilder.toString());
   }
   
   public void onNetMobile2Wifi(String paramString)
   {
-    WSLog.b("WSPlayerForNetInfoHandler", "[onNetMobile2Wifi] s:" + paramString + ", thread:" + Thread.currentThread());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[onNetMobile2Wifi] s:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", thread:");
+    localStringBuilder.append(Thread.currentThread());
+    WSLog.b("WSPlayerForNetInfoHandler", localStringBuilder.toString());
   }
   
   public void onNetNone2Mobile(String paramString)
   {
-    WSLog.b("WSPlayerForNetInfoHandler", "[onNetNone2Mobile] s:" + paramString + ", thread:" + Thread.currentThread());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[onNetNone2Mobile] s:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", thread:");
+    localStringBuilder.append(Thread.currentThread());
+    WSLog.b("WSPlayerForNetInfoHandler", localStringBuilder.toString());
     a();
   }
   
   public void onNetNone2Wifi(String paramString)
   {
-    WSLog.b("WSPlayerForNetInfoHandler", "[onNetNone2Wifi] s:" + paramString + ", thread:" + Thread.currentThread());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[onNetNone2Wifi] s:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", thread:");
+    localStringBuilder.append(Thread.currentThread());
+    WSLog.b("WSPlayerForNetInfoHandler", localStringBuilder.toString());
     a();
   }
   
   public void onNetWifi2Mobile(String paramString)
   {
-    WSLog.b("WSPlayerForNetInfoHandler", "[onNetWifi2Mobile] s:" + paramString + ", thread:" + Thread.currentThread());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[onNetWifi2Mobile] s:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", thread:");
+    localStringBuilder.append(Thread.currentThread());
+    WSLog.b("WSPlayerForNetInfoHandler", localStringBuilder.toString());
   }
   
   public void onNetWifi2None()
   {
-    WSLog.b("WSPlayerForNetInfoHandler", "[onNetWifi2None] thread:" + Thread.currentThread());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[onNetWifi2None] thread:");
+    localStringBuilder.append(Thread.currentThread());
+    WSLog.b("WSPlayerForNetInfoHandler", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerForNetInfoHandler
  * JD-Core Version:    0.7.0.1
  */

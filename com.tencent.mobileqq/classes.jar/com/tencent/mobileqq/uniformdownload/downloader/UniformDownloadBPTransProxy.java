@@ -15,7 +15,7 @@ import mqq.app.AppRuntime;
 public class UniformDownloadBPTransProxy
   extends BaseProxyManager
 {
-  private static UniformDownloadBPTransProxy jdField_a_of_type_ComTencentMobileqqUniformdownloadDownloaderUniformDownloadBPTransProxy = null;
+  private static UniformDownloadBPTransProxy jdField_a_of_type_ComTencentMobileqqUniformdownloadDownloaderUniformDownloadBPTransProxy;
   private List<UniformDownloadBPTransEntity> jdField_a_of_type_JavaUtilList = null;
   private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
   
@@ -43,19 +43,29 @@ public class UniformDownloadBPTransProxy
     if (this.jdField_a_of_type_JavaUtilList != null) {
       return;
     }
-    Object localObject = "select * from ( select * from " + UniformDownloadBPTransEntity.tableName() + " order by _id desc limit " + 30 + ") order by _id desc";
-    EntityManager localEntityManager = this.jdField_a_of_type_MqqAppAppRuntime.getEntityManagerFactory().createEntityManager();
-    this.jdField_a_of_type_JavaUtilList = localEntityManager.rawQuery(UniformDownloadBPTransEntity.class, (String)localObject, null);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("select * from ( select * from ");
+    ((StringBuilder)localObject1).append(UniformDownloadBPTransEntity.tableName());
+    ((StringBuilder)localObject1).append(" order by _id desc limit ");
+    ((StringBuilder)localObject1).append(30);
+    ((StringBuilder)localObject1).append(") order by _id desc");
+    Object localObject2 = ((StringBuilder)localObject1).toString();
+    localObject1 = this.jdField_a_of_type_MqqAppAppRuntime.getEntityManagerFactory().createEntityManager();
+    this.jdField_a_of_type_JavaUtilList = ((EntityManager)localObject1).rawQuery(UniformDownloadBPTransEntity.class, (String)localObject2, null);
     if (this.jdField_a_of_type_JavaUtilList == null) {
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
     }
-    localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject).hasNext())
+    localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      UniformDownloadBPTransEntity localUniformDownloadBPTransEntity = (UniformDownloadBPTransEntity)((Iterator)localObject).next();
-      QLog.i("UniformDownloadBPTransProxy", 1, "[UniformDL]. >>>init cache:[ " + localUniformDownloadBPTransEntity.toString() + " ]");
+      UniformDownloadBPTransEntity localUniformDownloadBPTransEntity = (UniformDownloadBPTransEntity)((Iterator)localObject2).next();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[UniformDL]. >>>init cache:[ ");
+      localStringBuilder.append(localUniformDownloadBPTransEntity.toString());
+      localStringBuilder.append(" ]");
+      QLog.i("UniformDownloadBPTransProxy", 1, localStringBuilder.toString());
     }
-    localEntityManager.close();
+    ((EntityManager)localObject1).close();
   }
   
   private void a(UniformDownloadBPTransEntity paramUniformDownloadBPTransEntity, ProxyListener paramProxyListener)
@@ -70,42 +80,52 @@ public class UniformDownloadBPTransProxy
     localUniformDownloadBPTransEntity.copyFrom(paramUniformDownloadBPTransEntity);
     if (localUniformDownloadBPTransEntity.getStatus() == 1000) {
       paramProxyListener.persist(localUniformDownloadBPTransEntity);
+    } else if (localUniformDownloadBPTransEntity.getStatus() == 1001) {
+      paramProxyListener.update(localUniformDownloadBPTransEntity);
+    } else {
+      QLog.e("UniformDownloadBPTransProxy", 1, "[UniformDL]. addEntityToDB. error status of entity");
     }
-    for (;;)
-    {
-      paramProxyListener.close();
-      return;
-      if (localUniformDownloadBPTransEntity.getStatus() == 1001) {
-        paramProxyListener.update(localUniformDownloadBPTransEntity);
-      } else {
-        QLog.e("UniformDownloadBPTransProxy", 1, "[UniformDL]. addEntityToDB. error status of entity");
-      }
-    }
+    paramProxyListener.close();
   }
   
   private boolean a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null)
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if (localObject == null)
     {
       QLog.e("UniformDownloadBPTransProxy", 1, "[UniformDL].>>>getMore. no cache");
       return false;
     }
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {}
-    for (long l = 9223372036854775807L;; l = ((UniformDownloadBPTransEntity)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1)).getId())
+    long l;
+    if (((List)localObject).size() == 0)
     {
-      localObject = "select * from ( select * from " + UniformDownloadBPTransEntity.tableName() + " where _id < " + String.valueOf(l) + " order by _id desc limit " + paramInt + ") order by _id desc";
-      localObject = this.jdField_a_of_type_MqqAppAppRuntime.getEntityManagerFactory().createEntityManager().rawQuery(UniformDownloadBPTransEntity.class, (String)localObject, null);
-      if ((localObject != null) && ((localObject == null) || (((List)localObject).size() != 0))) {
-        break;
+      l = 9223372036854775807L;
+    }
+    else
+    {
+      localObject = this.jdField_a_of_type_JavaUtilList;
+      l = ((UniformDownloadBPTransEntity)((List)localObject).get(((List)localObject).size() - 1)).getId();
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("select * from ( select * from ");
+    ((StringBuilder)localObject).append(UniformDownloadBPTransEntity.tableName());
+    ((StringBuilder)localObject).append(" where _id < ");
+    ((StringBuilder)localObject).append(String.valueOf(l));
+    ((StringBuilder)localObject).append(" order by _id desc limit ");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(") order by _id desc");
+    localObject = ((StringBuilder)localObject).toString();
+    localObject = this.jdField_a_of_type_MqqAppAppRuntime.getEntityManagerFactory().createEntityManager().rawQuery(UniformDownloadBPTransEntity.class, (String)localObject, null);
+    if ((localObject != null) && ((localObject == null) || (((List)localObject).size() != 0)))
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        b((UniformDownloadBPTransEntity)((Iterator)localObject).next());
       }
-      QLog.i("UniformDownloadBPTransProxy", 1, "[UniformDL].>>>getMore. no more. ");
-      return false;
+      return true;
     }
-    Object localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      b((UniformDownloadBPTransEntity)((Iterator)localObject).next());
-    }
-    return true;
+    QLog.i("UniformDownloadBPTransProxy", 1, "[UniformDL].>>>getMore. no more. ");
+    return false;
   }
   
   private boolean a(String paramString, boolean paramBoolean)
@@ -126,63 +146,83 @@ public class UniformDownloadBPTransProxy
   
   private UniformDownloadBPTransEntity b(String paramString)
   {
-    Object localObject = "select * from " + UniformDownloadBPTransEntity.tableName() + " where mUrl = " + paramString;
-    EntityManager localEntityManager = this.jdField_a_of_type_MqqAppAppRuntime.getEntityManagerFactory().createEntityManager();
-    if (localEntityManager == null)
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("select * from ");
+    ((StringBuilder)localObject1).append(UniformDownloadBPTransEntity.tableName());
+    ((StringBuilder)localObject1).append(" where mUrl = ");
+    ((StringBuilder)localObject1).append(paramString);
+    Object localObject2 = ((StringBuilder)localObject1).toString();
+    localObject1 = this.jdField_a_of_type_MqqAppAppRuntime.getEntityManagerFactory().createEntityManager();
+    if (localObject1 == null)
     {
       QLog.e("UniformDownloadBPTransProxy", 1, "[UniformDL]. queryEntityFromDByUrl. EntityManager. create failed!!");
       return null;
     }
-    localObject = localEntityManager.rawQuery(UniformDownloadBPTransEntity.class, (String)localObject, null);
-    if (localObject == null)
+    localObject2 = ((EntityManager)localObject1).rawQuery(UniformDownloadBPTransEntity.class, (String)localObject2, null);
+    if (localObject2 == null)
     {
-      localEntityManager.close();
+      ((EntityManager)localObject1).close();
       return null;
     }
-    if (((List)localObject).size() > 1) {
-      QLog.w("UniformDownloadBPTransProxy", 1, "[UniformDL]. count of DB  is over 1 when query url:" + paramString);
+    if (((List)localObject2).size() > 1)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[UniformDL]. count of DB  is over 1 when query url:");
+      localStringBuilder.append(paramString);
+      QLog.w("UniformDownloadBPTransProxy", 1, localStringBuilder.toString());
     }
-    paramString = (UniformDownloadBPTransEntity)((List)localObject).get(0);
-    localEntityManager.close();
+    paramString = (UniformDownloadBPTransEntity)((List)localObject2).get(0);
+    ((EntityManager)localObject1).close();
     return paramString;
   }
   
   private void b(UniformDownloadBPTransEntity paramUniformDownloadBPTransEntity)
   {
     if (paramUniformDownloadBPTransEntity == null) {}
-    for (;;)
+    try
     {
-      try
+      QLog.e("UniformDownloadBPTransProxy", 1, "[UniformDL]. addToCacheEntityList. entiy=null");
+      return;
+    }
+    finally
+    {
+      Object localObject;
+      break label242;
+    }
+    if (this.jdField_a_of_type_JavaUtilList.contains(paramUniformDownloadBPTransEntity))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[UniformDL]. addToCacheEntityList. entiy is existed 1. url:");
+      ((StringBuilder)localObject).append(paramUniformDownloadBPTransEntity.mUrl);
+      QLog.i("UniformDownloadBPTransProxy", 1, ((StringBuilder)localObject).toString());
+      return;
+    }
+    localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      UniformDownloadBPTransEntity localUniformDownloadBPTransEntity = (UniformDownloadBPTransEntity)((Iterator)localObject).next();
+      if ((localUniformDownloadBPTransEntity != null) && (localUniformDownloadBPTransEntity.mUrl.equalsIgnoreCase(paramUniformDownloadBPTransEntity.mUrl)))
       {
-        QLog.e("UniformDownloadBPTransProxy", 1, "[UniformDL]. addToCacheEntityList. entiy=null");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[UniformDL]. addToCacheEntityList. entiy is existed 2. url:");
+        ((StringBuilder)localObject).append(paramUniformDownloadBPTransEntity.mUrl);
+        QLog.i("UniformDownloadBPTransProxy", 1, ((StringBuilder)localObject).toString());
         return;
       }
-      finally {}
-      if (this.jdField_a_of_type_JavaUtilList.contains(paramUniformDownloadBPTransEntity))
-      {
-        QLog.i("UniformDownloadBPTransProxy", 1, "[UniformDL]. addToCacheEntityList. entiy is existed 1. url:" + paramUniformDownloadBPTransEntity.mUrl);
-      }
-      else
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        for (;;)
-        {
-          if (localIterator.hasNext())
-          {
-            UniformDownloadBPTransEntity localUniformDownloadBPTransEntity = (UniformDownloadBPTransEntity)localIterator.next();
-            if ((localUniformDownloadBPTransEntity != null) && (localUniformDownloadBPTransEntity.mUrl.equalsIgnoreCase(paramUniformDownloadBPTransEntity.mUrl)))
-            {
-              QLog.i("UniformDownloadBPTransProxy", 1, "[UniformDL]. addToCacheEntityList. entiy is existed 2. url:" + paramUniformDownloadBPTransEntity.mUrl);
-              break;
-            }
-          }
-        }
-        QLog.i("UniformDownloadBPTransProxy", 1, "[UniformDL].>>>addToCacheEntityList. add it. url:" + paramUniformDownloadBPTransEntity.mUrl);
-        this.jdField_a_of_type_JavaUtilList.add(0, paramUniformDownloadBPTransEntity);
-        if (this.jdField_a_of_type_JavaUtilList.size() > 30) {
-          this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
-        }
-      }
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[UniformDL].>>>addToCacheEntityList. add it. url:");
+    ((StringBuilder)localObject).append(paramUniformDownloadBPTransEntity.mUrl);
+    QLog.i("UniformDownloadBPTransProxy", 1, ((StringBuilder)localObject).toString());
+    this.jdField_a_of_type_JavaUtilList.add(0, paramUniformDownloadBPTransEntity);
+    if (this.jdField_a_of_type_JavaUtilList.size() > 30) {
+      this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
+    }
+    return;
+    label242:
+    for (;;)
+    {
+      throw paramUniformDownloadBPTransEntity;
     }
   }
   
@@ -192,63 +232,66 @@ public class UniformDownloadBPTransProxy
       return;
     }
     StringBuilder localStringBuilder = null;
-    for (;;)
+    try
     {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       Object localObject;
-      try
+      do
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
         localObject = localStringBuilder;
-        if (localIterator.hasNext())
-        {
-          localObject = (UniformDownloadBPTransEntity)localIterator.next();
-          if ((localObject == null) || (!paramString.equalsIgnoreCase(((UniformDownloadBPTransEntity)localObject).mUrl))) {
-            continue;
-          }
-        }
-        localStringBuilder = new StringBuilder().append("[UniformDL].>>>removFromCacheEntityList. remove it. url:");
-        if (localObject == null)
-        {
-          paramString = "null";
-          QLog.i("UniformDownloadBPTransProxy", 1, paramString);
-          this.jdField_a_of_type_JavaUtilList.remove(localObject);
+        if (!localIterator.hasNext()) {
           break;
         }
+        localObject = (UniformDownloadBPTransEntity)localIterator.next();
+      } while ((localObject == null) || (!paramString.equalsIgnoreCase(((UniformDownloadBPTransEntity)localObject).mUrl)));
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[UniformDL].>>>removFromCacheEntityList. remove it. url:");
+      if (localObject == null) {
+        paramString = "null";
+      } else {
+        paramString = ((UniformDownloadBPTransEntity)localObject).mUrl;
       }
-      finally {}
-      paramString = ((UniformDownloadBPTransEntity)localObject).mUrl;
+      localStringBuilder.append(paramString);
+      QLog.i("UniformDownloadBPTransProxy", 1, localStringBuilder.toString());
+      this.jdField_a_of_type_JavaUtilList.remove(localObject);
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
   private UniformDownloadBPTransEntity c(String paramString)
   {
-    UniformDownloadBPTransEntity localUniformDownloadBPTransEntity = null;
-    if (paramString == null)
-    {
-      paramString = localUniformDownloadBPTransEntity;
-      return paramString;
+    Object localObject2 = null;
+    if (paramString == null) {
+      return null;
     }
+    try
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Object localObject1;
+      boolean bool;
+      do
+      {
+        do
+        {
+          localObject1 = localObject2;
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localObject1 = (UniformDownloadBPTransEntity)localIterator.next();
+        } while (localObject1 == null);
+        bool = paramString.equalsIgnoreCase(((UniformDownloadBPTransEntity)localObject1).mUrl);
+      } while (!bool);
+      return localObject1;
+    }
+    finally {}
     for (;;)
     {
-      try
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        if (localIterator.hasNext())
-        {
-          localUniformDownloadBPTransEntity = (UniformDownloadBPTransEntity)localIterator.next();
-          if (localUniformDownloadBPTransEntity == null) {
-            continue;
-          }
-          boolean bool = paramString.equalsIgnoreCase(localUniformDownloadBPTransEntity.mUrl);
-          if (!bool) {
-            continue;
-          }
-          paramString = localUniformDownloadBPTransEntity;
-          break;
-        }
-      }
-      finally {}
-      paramString = null;
+      throw paramString;
     }
   }
   
@@ -264,7 +307,11 @@ public class UniformDownloadBPTransProxy
   
   public void a(UniformDownloadBPTransEntity paramUniformDownloadBPTransEntity)
   {
-    QLog.i("UniformDownloadBPTransProxy", 1, "[UniformDL]. >>>addEntity. url[" + paramUniformDownloadBPTransEntity.mUrl + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[UniformDL]. >>>addEntity. url[");
+    localStringBuilder.append(paramUniformDownloadBPTransEntity.mUrl);
+    localStringBuilder.append("]");
+    QLog.i("UniformDownloadBPTransProxy", 1, localStringBuilder.toString());
     a();
     b(paramUniformDownloadBPTransEntity);
     ThreadManager.executeOnSubThread(new UniformDownloadBPTransProxy.1(this, paramUniformDownloadBPTransEntity));
@@ -272,7 +319,11 @@ public class UniformDownloadBPTransProxy
   
   public void a(String paramString)
   {
-    QLog.i("UniformDownloadBPTransProxy", 1, "[UniformDL]. >>>deleteEntity. url[" + paramString + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[UniformDL]. >>>deleteEntity. url[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("]");
+    QLog.i("UniformDownloadBPTransProxy", 1, localStringBuilder.toString());
     a();
     b(paramString);
     a(paramString, false);
@@ -284,11 +335,11 @@ public class UniformDownloadBPTransProxy
     addMsgQueue(String.valueOf(0), 0, paramString1, paramString2, paramArrayOfString, 2, paramProxyListener);
   }
   
-  public void init() {}
+  protected void init() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.downloader.UniformDownloadBPTransProxy
  * JD-Core Version:    0.7.0.1
  */

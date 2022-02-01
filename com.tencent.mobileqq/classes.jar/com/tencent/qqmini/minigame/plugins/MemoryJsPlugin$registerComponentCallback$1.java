@@ -27,13 +27,25 @@ public final class MemoryJsPlugin$registerComponentCallback$1
   public void onLowMemory()
   {
     Object localObject = MemoryJsPlugin.access$getMContext$p(this.this$0).getSystemService("activity");
-    if (localObject == null) {
-      throw new TypeCastException("null cannot be cast to non-null type android.app.ActivityManager");
+    if (localObject != null)
+    {
+      localObject = ((android.app.ActivityManager)localObject).getProcessMemoryInfo(new int[] { android.os.Process.myPid() })[0];
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onLowMemory!!!!!! Meminfo:dalvikPss[");
+      localStringBuilder.append(((Debug.MemoryInfo)localObject).dalvikPss);
+      localStringBuilder.append("],nativePss[");
+      localStringBuilder.append(((Debug.MemoryInfo)localObject).nativePss);
+      localStringBuilder.append("],otherPss[");
+      localStringBuilder.append(((Debug.MemoryInfo)localObject).otherPss);
+      localStringBuilder.append(']');
+      localStringBuilder.append(",total[");
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "mem");
+      localStringBuilder.append(((Debug.MemoryInfo)localObject).getTotalPss());
+      localStringBuilder.append(']');
+      QMLog.e("MemoryJsPlugin", localStringBuilder.toString());
+      return;
     }
-    localObject = ((android.app.ActivityManager)localObject).getProcessMemoryInfo(new int[] { android.os.Process.myPid() })[0];
-    StringBuilder localStringBuilder = new StringBuilder().append("onLowMemory!!!!!! Meminfo:dalvikPss[").append(((Debug.MemoryInfo)localObject).dalvikPss).append("],nativePss[").append(((Debug.MemoryInfo)localObject).nativePss).append("],otherPss[").append(((Debug.MemoryInfo)localObject).otherPss).append(']').append(",total[");
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "mem");
-    QMLog.e("MemoryJsPlugin", ((Debug.MemoryInfo)localObject).getTotalPss() + ']');
+    throw new TypeCastException("null cannot be cast to non-null type android.app.ActivityManager");
   }
   
   public void onTrimMemory(int paramInt)
@@ -45,7 +57,7 @@ public final class MemoryJsPlugin$registerComponentCallback$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.MemoryJsPlugin.registerComponentCallback.1
  * JD-Core Version:    0.7.0.1
  */

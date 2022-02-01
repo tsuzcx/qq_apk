@@ -12,14 +12,18 @@ public class TroopPicEffectsEditActivity$ItemData
   {
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_JavaLangString = ("https://pub.idqqimg.com/pc/misc/groupgift/troop_pic_effects_item_" + paramInt1 + ".png");
+    paramString = new StringBuilder();
+    paramString.append("https://pub.idqqimg.com/pc/misc/groupgift/troop_pic_effects_item_");
+    paramString.append(paramInt1);
+    paramString.append(".png");
+    this.jdField_b_of_type_JavaLangString = paramString.toString();
     this.jdField_b_of_type_Int = paramInt2;
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity.ItemData
  * JD-Core Version:    0.7.0.1
  */

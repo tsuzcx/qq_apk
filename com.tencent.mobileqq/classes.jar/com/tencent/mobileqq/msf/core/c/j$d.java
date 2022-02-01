@@ -13,27 +13,26 @@ public class j$d
   
   public boolean a(String paramString, int paramInt1, int paramInt2)
   {
-    if (this.a == 0) {
+    paramInt2 = this.a;
+    if (paramInt2 == 0)
+    {
       if (paramInt1 >= 20) {
         this.a = paramInt1;
       }
     }
-    for (;;)
+    else if (paramInt1 >= paramInt2)
     {
-      return false;
-      if (paramInt1 >= this.a)
-      {
-        this.a = paramInt1;
-        this.b += 1;
-        if (this.b >= 20) {
-          return true;
-        }
-      }
-      else
-      {
-        a();
+      this.a = paramInt1;
+      this.b += 1;
+      if (this.b >= 20) {
+        return true;
       }
     }
+    else
+    {
+      a();
+    }
+    return false;
   }
   
   public int b()
@@ -43,7 +42,7 @@ public class j$d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.c.j.d
  * JD-Core Version:    0.7.0.1
  */

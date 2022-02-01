@@ -9,21 +9,21 @@ import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 public class KingCardActivationFragment
   extends IphoneTitleBarFragment
 {
-  public int getContentLayoutId()
+  protected int getContentLayoutId()
   {
-    return 2131562088;
+    return 2131561924;
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    setTitle(HardCodeUtil.a(2131705977));
-    TMSManager.a().a((ViewGroup)paramView.findViewById(2131365292));
+    setTitle(HardCodeUtil.a(2131706029));
+    TMSManager.a().a((ViewGroup)paramView.findViewById(2131365167));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.KingCardActivationFragment
  * JD-Core Version:    0.7.0.1
  */

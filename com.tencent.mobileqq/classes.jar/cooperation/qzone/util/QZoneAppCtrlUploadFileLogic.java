@@ -8,18 +8,24 @@ import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.QLog;
 import common.qzone.component.util.SecurityUtil;
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FilenameFilter;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 public class QZoneAppCtrlUploadFileLogic
 {
   public static final String ANR_LOG_DIRECTORY = "anr";
-  public static final String ANR_LOG_PATH = "anr" + File.separator + "traces.txt";
+  public static final String ANR_LOG_PATH;
   public static final String ANR_PATH = "ANR";
   public static final String AVSDK_LOG_DIRECTORY = "avsdk";
   private static final String CHARSET = "utf-8";
@@ -39,34 +45,53 @@ public class QZoneAppCtrlUploadFileLogic
   public static final String TRACE_PATH = "TRACE";
   static final int UPLOAD_PID = 3;
   public static final int WARNING_SIZE_LEVLE = 26214400;
-  public static final String ZIP_DIR = "tencent" + File.separator + "zip";
+  public static final String ZIP_DIR;
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("anr");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("traces.txt");
+    ANR_LOG_PATH = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("tencent");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("zip");
+    ZIP_DIR = localStringBuilder.toString();
+  }
   
   public static long getAvsdkTimeFromServer(String paramString)
   {
-    if ((paramString == null) || (TextUtils.isEmpty(paramString))) {}
-    for (;;)
+    long l = -1L;
+    if (paramString != null)
     {
-      return -1L;
-      if (paramString.length() == 10) {
-        try
-        {
-          Date localDate = new SimpleDateFormat("yyyyMMddHH").parse(paramString.trim());
-          if (localDate != null)
-          {
-            long l = localDate.getTime();
-            return l;
-          }
-        }
-        catch (Exception localException)
-        {
-          localException = localException;
-          QLog.e("QZoneAppCtrlUploadFileLogic", 1, "error time = " + paramString);
-          localException.printStackTrace();
-          return -1L;
-        }
-        finally {}
+      if (TextUtils.isEmpty(paramString)) {
+        return -1L;
+      }
+      if (paramString.length() != 10) {
+        return -1L;
       }
     }
+    try
+    {
+      Date localDate = new SimpleDateFormat("yyyyMMddHH").parse(paramString.trim());
+      if (localDate != null) {
+        l = localDate.getTime();
+      }
+      return l;
+    }
+    catch (Exception localException)
+    {
+      localException = localException;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("error time = ");
+      localStringBuilder.append(paramString);
+      QLog.e("QZoneAppCtrlUploadFileLogic", 1, localStringBuilder.toString());
+      localException.printStackTrace();
+      return -1L;
+    }
+    finally {}
     return -1L;
   }
   
@@ -78,257 +103,334 @@ public class QZoneAppCtrlUploadFileLogic
     //   3: ldc 154
     //   5: invokevirtual 158	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
     //   8: invokevirtual 164	java/lang/Process:getInputStream	()Ljava/io/InputStream;
-    //   11: astore 9
+    //   11: astore 13
     //   13: invokestatic 169	android/os/Environment:getExternalStorageState	()Ljava/lang/String;
     //   16: ldc 171
     //   18: invokevirtual 175	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   21: ifeq +471 -> 492
-    //   24: new 76	java/io/File
-    //   27: dup
-    //   28: new 67	java/lang/StringBuilder
-    //   31: dup
-    //   32: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   35: invokestatic 179	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
-    //   38: invokevirtual 182	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   41: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   44: getstatic 79	java/io/File:separator	Ljava/lang/String;
-    //   47: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   50: getstatic 93	cooperation/qzone/util/QZoneAppCtrlUploadFileLogic:ZIP_DIR	Ljava/lang/String;
-    //   53: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   56: getstatic 79	java/io/File:separator	Ljava/lang/String;
-    //   59: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   62: ldc 44
-    //   64: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   67: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   70: invokestatic 188	com/tencent/mobileqq/vfs/VFSAssistantUtils:getSDKPrivatePath	(Ljava/lang/String;)Ljava/lang/String;
-    //   73: invokespecial 189	java/io/File:<init>	(Ljava/lang/String;)V
-    //   76: astore 8
-    //   78: aload 8
-    //   80: invokevirtual 193	java/io/File:exists	()Z
-    //   83: ifne +44 -> 127
-    //   86: invokestatic 196	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   89: ifeq +32 -> 121
-    //   92: ldc 53
-    //   94: iconst_4
-    //   95: new 67	java/lang/StringBuilder
-    //   98: dup
-    //   99: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   102: ldc 198
-    //   104: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   107: aload 8
-    //   109: invokevirtual 182	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   112: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   115: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   118: invokestatic 201	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   121: aload 8
-    //   123: invokevirtual 204	java/io/File:mkdirs	()Z
-    //   126: pop
-    //   127: new 76	java/io/File
-    //   130: dup
-    //   131: new 67	java/lang/StringBuilder
-    //   134: dup
-    //   135: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   138: invokestatic 179	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
-    //   141: invokevirtual 182	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   144: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   147: getstatic 79	java/io/File:separator	Ljava/lang/String;
-    //   150: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   153: getstatic 93	cooperation/qzone/util/QZoneAppCtrlUploadFileLogic:ZIP_DIR	Ljava/lang/String;
-    //   156: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   159: getstatic 79	java/io/File:separator	Ljava/lang/String;
-    //   162: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   165: ldc 44
-    //   167: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   170: getstatic 79	java/io/File:separator	Ljava/lang/String;
-    //   173: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   176: aload_1
-    //   177: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   180: ldc 206
-    //   182: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   185: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   188: invokestatic 188	com/tencent/mobileqq/vfs/VFSAssistantUtils:getSDKPrivatePath	(Ljava/lang/String;)Ljava/lang/String;
-    //   191: invokespecial 189	java/io/File:<init>	(Ljava/lang/String;)V
-    //   194: astore 8
-    //   196: aload 8
-    //   198: invokevirtual 193	java/io/File:exists	()Z
-    //   201: ifne +297 -> 498
-    //   204: invokestatic 196	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   207: ifeq +32 -> 239
-    //   210: ldc 53
-    //   212: iconst_4
-    //   213: new 67	java/lang/StringBuilder
-    //   216: dup
-    //   217: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   220: ldc 208
-    //   222: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   225: aload 8
-    //   227: invokevirtual 182	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   230: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   233: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   236: invokestatic 201	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   239: aload 8
-    //   241: invokevirtual 211	java/io/File:createNewFile	()Z
-    //   244: pop
-    //   245: goto +253 -> 498
-    //   248: sipush 1024
-    //   251: newarray byte
-    //   253: astore 10
-    //   255: ldc 212
-    //   257: istore_2
-    //   258: invokestatic 196	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   261: ifeq +11 -> 272
-    //   264: ldc 53
-    //   266: iconst_4
-    //   267: ldc 214
-    //   269: invokestatic 201	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   272: new 216	java/io/FileOutputStream
-    //   275: dup
-    //   276: aload 8
-    //   278: invokespecial 219	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   281: astore 8
-    //   283: invokestatic 224	java/lang/System:currentTimeMillis	()J
-    //   286: lstore 4
-    //   288: iload_2
-    //   289: ifle +75 -> 364
-    //   292: invokestatic 224	java/lang/System:currentTimeMillis	()J
-    //   295: lstore 6
-    //   297: lload 6
-    //   299: lload 4
-    //   301: lsub
-    //   302: ldc2_w 225
-    //   305: lcmp
-    //   306: ifle +74 -> 380
-    //   309: invokestatic 196	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   312: ifeq +52 -> 364
-    //   315: ldc 53
-    //   317: iconst_4
-    //   318: new 67	java/lang/StringBuilder
-    //   321: dup
-    //   322: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   325: ldc 228
-    //   327: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   330: lload 6
-    //   332: invokevirtual 231	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   335: ldc 233
-    //   337: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   340: lload 4
-    //   342: invokevirtual 231	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   345: ldc 235
-    //   347: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   350: lload 6
-    //   352: lload 4
-    //   354: lsub
-    //   355: invokevirtual 231	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   358: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   361: invokestatic 201	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   364: aload 8
-    //   366: invokevirtual 238	java/io/FileOutputStream:close	()V
-    //   369: aload_0
-    //   370: aload_1
-    //   371: invokestatic 241	cooperation/qzone/util/QZoneAppCtrlUploadFileLogic:uploadLogcat	(Landroid/content/Context;Ljava/lang/String;)V
-    //   374: aload 9
-    //   376: invokevirtual 244	java/io/InputStream:close	()V
-    //   379: return
-    //   380: aload 9
-    //   382: aload 10
-    //   384: iconst_0
-    //   385: iload_2
-    //   386: aload 10
-    //   388: arraylength
-    //   389: invokestatic 250	java/lang/Math:min	(II)I
-    //   392: invokevirtual 254	java/io/InputStream:read	([BII)I
-    //   395: istore_3
-    //   396: iload_3
-    //   397: iconst_m1
-    //   398: if_icmpne +78 -> 476
-    //   401: new 256	java/io/EOFException
+    //   21: istore 4
+    //   23: aconst_null
+    //   24: astore 11
+    //   26: iload 4
+    //   28: ifeq +577 -> 605
+    //   31: new 67	java/lang/StringBuilder
+    //   34: dup
+    //   35: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   38: astore 11
+    //   40: aload 11
+    //   42: invokestatic 179	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
+    //   45: invokevirtual 182	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   48: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   51: pop
+    //   52: aload 11
+    //   54: getstatic 79	java/io/File:separator	Ljava/lang/String;
+    //   57: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   60: pop
+    //   61: aload 11
+    //   63: getstatic 93	cooperation/qzone/util/QZoneAppCtrlUploadFileLogic:ZIP_DIR	Ljava/lang/String;
+    //   66: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   69: pop
+    //   70: aload 11
+    //   72: getstatic 79	java/io/File:separator	Ljava/lang/String;
+    //   75: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   78: pop
+    //   79: aload 11
+    //   81: ldc 44
+    //   83: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   86: pop
+    //   87: new 76	java/io/File
+    //   90: dup
+    //   91: aload 11
+    //   93: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   96: invokestatic 188	com/tencent/mobileqq/vfs/VFSAssistantUtils:getSDKPrivatePath	(Ljava/lang/String;)Ljava/lang/String;
+    //   99: invokespecial 189	java/io/File:<init>	(Ljava/lang/String;)V
+    //   102: astore 11
+    //   104: aload 11
+    //   106: invokevirtual 193	java/io/File:exists	()Z
+    //   109: ifne +54 -> 163
+    //   112: invokestatic 196	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   115: ifeq +42 -> 157
+    //   118: new 67	java/lang/StringBuilder
+    //   121: dup
+    //   122: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   125: astore 12
+    //   127: aload 12
+    //   129: ldc 198
+    //   131: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   134: pop
+    //   135: aload 12
+    //   137: aload 11
+    //   139: invokevirtual 182	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   142: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   145: pop
+    //   146: ldc 53
+    //   148: iconst_4
+    //   149: aload 12
+    //   151: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   154: invokestatic 201	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   157: aload 11
+    //   159: invokevirtual 204	java/io/File:mkdirs	()Z
+    //   162: pop
+    //   163: new 67	java/lang/StringBuilder
+    //   166: dup
+    //   167: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   170: astore 11
+    //   172: aload 11
+    //   174: invokestatic 179	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
+    //   177: invokevirtual 182	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   180: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   183: pop
+    //   184: aload 11
+    //   186: getstatic 79	java/io/File:separator	Ljava/lang/String;
+    //   189: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   192: pop
+    //   193: aload 11
+    //   195: getstatic 93	cooperation/qzone/util/QZoneAppCtrlUploadFileLogic:ZIP_DIR	Ljava/lang/String;
+    //   198: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   201: pop
+    //   202: aload 11
+    //   204: getstatic 79	java/io/File:separator	Ljava/lang/String;
+    //   207: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   210: pop
+    //   211: aload 11
+    //   213: ldc 44
+    //   215: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   218: pop
+    //   219: aload 11
+    //   221: getstatic 79	java/io/File:separator	Ljava/lang/String;
+    //   224: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   227: pop
+    //   228: aload 11
+    //   230: aload_1
+    //   231: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   234: pop
+    //   235: aload 11
+    //   237: ldc 206
+    //   239: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   242: pop
+    //   243: new 76	java/io/File
+    //   246: dup
+    //   247: aload 11
+    //   249: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   252: invokestatic 188	com/tencent/mobileqq/vfs/VFSAssistantUtils:getSDKPrivatePath	(Ljava/lang/String;)Ljava/lang/String;
+    //   255: invokespecial 189	java/io/File:<init>	(Ljava/lang/String;)V
+    //   258: astore 12
+    //   260: aload 12
+    //   262: astore 11
+    //   264: aload 12
+    //   266: invokevirtual 193	java/io/File:exists	()Z
+    //   269: ifne +61 -> 330
+    //   272: invokestatic 196	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   275: ifeq +42 -> 317
+    //   278: new 67	java/lang/StringBuilder
+    //   281: dup
+    //   282: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   285: astore 11
+    //   287: aload 11
+    //   289: ldc 208
+    //   291: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   294: pop
+    //   295: aload 11
+    //   297: aload 12
+    //   299: invokevirtual 182	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   302: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   305: pop
+    //   306: ldc 53
+    //   308: iconst_4
+    //   309: aload 11
+    //   311: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   314: invokestatic 201	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   317: aload 12
+    //   319: invokevirtual 211	java/io/File:createNewFile	()Z
+    //   322: pop
+    //   323: aload 12
+    //   325: astore 11
+    //   327: goto +3 -> 330
+    //   330: sipush 1024
+    //   333: newarray byte
+    //   335: astore 12
+    //   337: ldc 212
+    //   339: istore_2
+    //   340: invokestatic 196	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   343: ifeq +11 -> 354
+    //   346: ldc 53
+    //   348: iconst_4
+    //   349: ldc 214
+    //   351: invokestatic 201	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   354: new 216	java/io/FileOutputStream
+    //   357: dup
+    //   358: aload 11
+    //   360: invokespecial 219	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   363: astore 11
+    //   365: invokestatic 224	java/lang/System:currentTimeMillis	()J
+    //   368: lstore 5
+    //   370: iload_2
+    //   371: ifle +148 -> 519
+    //   374: invokestatic 224	java/lang/System:currentTimeMillis	()J
+    //   377: lstore 7
+    //   379: lload 7
+    //   381: lload 5
+    //   383: lsub
+    //   384: lstore 9
+    //   386: lload 9
+    //   388: ldc2_w 225
+    //   391: lcmp
+    //   392: ifle +80 -> 472
+    //   395: invokestatic 196	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   398: ifeq +121 -> 519
+    //   401: new 67	java/lang/StringBuilder
     //   404: dup
-    //   405: ldc_w 258
-    //   408: invokespecial 259	java/io/EOFException:<init>	(Ljava/lang/String;)V
-    //   411: athrow
-    //   412: astore 10
-    //   414: aload 8
-    //   416: invokevirtual 238	java/io/FileOutputStream:close	()V
-    //   419: aload_0
-    //   420: aload_1
-    //   421: invokestatic 241	cooperation/qzone/util/QZoneAppCtrlUploadFileLogic:uploadLogcat	(Landroid/content/Context;Ljava/lang/String;)V
-    //   424: aload 10
-    //   426: athrow
-    //   427: astore_0
-    //   428: aload 9
-    //   430: invokevirtual 244	java/io/InputStream:close	()V
-    //   433: aload_0
-    //   434: athrow
-    //   435: astore_0
-    //   436: aload_0
-    //   437: invokevirtual 260	java/io/IOException:printStackTrace	()V
-    //   440: invokestatic 196	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   443: ifeq -64 -> 379
-    //   446: ldc 53
-    //   448: iconst_4
-    //   449: new 67	java/lang/StringBuilder
-    //   452: dup
-    //   453: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   456: ldc_w 262
-    //   459: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   462: aload_0
-    //   463: invokevirtual 263	java/io/IOException:toString	()Ljava/lang/String;
-    //   466: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   469: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   472: invokestatic 201	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   475: return
-    //   476: aload 8
-    //   478: aload 10
-    //   480: iconst_0
-    //   481: iload_3
-    //   482: invokevirtual 267	java/io/FileOutputStream:write	([BII)V
-    //   485: iload_2
-    //   486: iload_3
-    //   487: isub
-    //   488: istore_2
-    //   489: goto -201 -> 288
-    //   492: aconst_null
-    //   493: astore 8
-    //   495: goto -247 -> 248
-    //   498: goto -250 -> 248
+    //   405: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   408: astore 12
+    //   410: aload 12
+    //   412: ldc 228
+    //   414: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   417: pop
+    //   418: aload 12
+    //   420: lload 7
+    //   422: invokevirtual 231	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   425: pop
+    //   426: aload 12
+    //   428: ldc 233
+    //   430: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   433: pop
+    //   434: aload 12
+    //   436: lload 5
+    //   438: invokevirtual 231	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   441: pop
+    //   442: aload 12
+    //   444: ldc 235
+    //   446: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   449: pop
+    //   450: aload 12
+    //   452: lload 9
+    //   454: invokevirtual 231	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   457: pop
+    //   458: ldc 53
+    //   460: iconst_4
+    //   461: aload 12
+    //   463: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   466: invokestatic 201	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   469: goto +50 -> 519
+    //   472: aload 13
+    //   474: aload 12
+    //   476: iconst_0
+    //   477: iload_2
+    //   478: aload 12
+    //   480: arraylength
+    //   481: invokestatic 241	java/lang/Math:min	(II)I
+    //   484: invokevirtual 247	java/io/InputStream:read	([BII)I
+    //   487: istore_3
+    //   488: iload_3
+    //   489: iconst_m1
+    //   490: if_icmpeq +19 -> 509
+    //   493: aload 11
+    //   495: aload 12
+    //   497: iconst_0
+    //   498: iload_3
+    //   499: invokevirtual 251	java/io/FileOutputStream:write	([BII)V
+    //   502: iload_2
+    //   503: iload_3
+    //   504: isub
+    //   505: istore_2
+    //   506: goto -136 -> 370
+    //   509: new 253	java/io/EOFException
+    //   512: dup
+    //   513: ldc 255
+    //   515: invokespecial 256	java/io/EOFException:<init>	(Ljava/lang/String;)V
+    //   518: athrow
+    //   519: aload 11
+    //   521: invokevirtual 259	java/io/FileOutputStream:close	()V
+    //   524: aload_0
+    //   525: aload_1
+    //   526: invokestatic 262	cooperation/qzone/util/QZoneAppCtrlUploadFileLogic:uploadLogcat	(Landroid/content/Context;Ljava/lang/String;)V
+    //   529: aload 13
+    //   531: invokevirtual 263	java/io/InputStream:close	()V
+    //   534: return
+    //   535: astore 12
+    //   537: aload 11
+    //   539: invokevirtual 259	java/io/FileOutputStream:close	()V
+    //   542: aload_0
+    //   543: aload_1
+    //   544: invokestatic 262	cooperation/qzone/util/QZoneAppCtrlUploadFileLogic:uploadLogcat	(Landroid/content/Context;Ljava/lang/String;)V
+    //   547: aload 12
+    //   549: athrow
+    //   550: astore_0
+    //   551: aload 13
+    //   553: invokevirtual 263	java/io/InputStream:close	()V
+    //   556: aload_0
+    //   557: athrow
+    //   558: astore_0
+    //   559: aload_0
+    //   560: invokevirtual 264	java/io/IOException:printStackTrace	()V
+    //   563: invokestatic 196	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   566: ifeq +38 -> 604
+    //   569: new 67	java/lang/StringBuilder
+    //   572: dup
+    //   573: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   576: astore_1
+    //   577: aload_1
+    //   578: ldc_w 266
+    //   581: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   584: pop
+    //   585: aload_1
+    //   586: aload_0
+    //   587: invokevirtual 267	java/io/IOException:toString	()Ljava/lang/String;
+    //   590: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   593: pop
+    //   594: ldc 53
+    //   596: iconst_4
+    //   597: aload_1
+    //   598: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   601: invokestatic 201	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   604: return
+    //   605: goto -275 -> 330
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	501	0	paramContext	Context
-    //   0	501	1	paramString	String
-    //   257	232	2	i	int
-    //   395	93	3	j	int
-    //   286	67	4	l1	long
-    //   295	56	6	l2	long
-    //   76	418	8	localObject	Object
-    //   11	418	9	localInputStream	java.io.InputStream
-    //   253	134	10	arrayOfByte1	byte[]
-    //   412	67	10	arrayOfByte2	byte[]
+    //   0	608	0	paramContext	Context
+    //   0	608	1	paramString	String
+    //   339	167	2	i	int
+    //   487	18	3	j	int
+    //   21	6	4	bool	boolean
+    //   368	69	5	l1	long
+    //   377	44	7	l2	long
+    //   384	69	9	l3	long
+    //   24	514	11	localObject1	Object
+    //   125	371	12	localObject2	Object
+    //   535	13	12	localObject3	Object
+    //   11	541	13	localInputStream	InputStream
     // Exception table:
     //   from	to	target	type
-    //   283	288	412	finally
-    //   292	297	412	finally
-    //   309	364	412	finally
-    //   380	396	412	finally
-    //   401	412	412	finally
-    //   476	485	412	finally
-    //   272	283	427	finally
-    //   364	374	427	finally
-    //   414	427	427	finally
-    //   0	121	435	java/io/IOException
-    //   121	127	435	java/io/IOException
-    //   127	239	435	java/io/IOException
-    //   239	245	435	java/io/IOException
-    //   248	255	435	java/io/IOException
-    //   258	272	435	java/io/IOException
-    //   374	379	435	java/io/IOException
-    //   428	435	435	java/io/IOException
+    //   365	370	535	finally
+    //   374	379	535	finally
+    //   395	469	535	finally
+    //   472	488	535	finally
+    //   493	502	535	finally
+    //   509	519	535	finally
+    //   354	365	550	finally
+    //   519	529	550	finally
+    //   537	550	550	finally
+    //   0	23	558	java/io/IOException
+    //   31	157	558	java/io/IOException
+    //   157	163	558	java/io/IOException
+    //   163	260	558	java/io/IOException
+    //   264	317	558	java/io/IOException
+    //   317	323	558	java/io/IOException
+    //   330	337	558	java/io/IOException
+    //   340	354	558	java/io/IOException
+    //   529	534	558	java/io/IOException
+    //   551	558	558	java/io/IOException
   }
   
   public static void showDirFileList(Context paramContext, String paramString)
   {
     paramContext = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      paramContext = VFSAssistantUtils.getSDKPrivatePath(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "tencent");
+    if (TextUtils.isEmpty(paramString))
+    {
+      paramContext = new StringBuilder();
+      paramContext.append(Environment.getExternalStorageDirectory().getAbsolutePath());
+      paramContext.append(File.separator);
+      paramContext.append("tencent");
+      paramContext = VFSAssistantUtils.getSDKPrivatePath(paramContext.toString());
     }
     for (;;)
     {
@@ -336,453 +438,423 @@ public class QZoneAppCtrlUploadFileLogic
       try
       {
         paramContext = new File(paramContext);
-        if (paramContext.isDirectory())
+        boolean bool = paramContext.isDirectory();
+        if (bool)
         {
-          QLog.e("QZoneAppCtrlUploadFileLogic", 1, "showDirFileList dirPath:" + paramContext.getAbsolutePath());
+          paramString = new StringBuilder();
+          paramString.append("showDirFileList dirPath:");
+          paramString.append(paramContext.getAbsolutePath());
+          QLog.e("QZoneAppCtrlUploadFileLogic", 1, paramString.toString());
           paramContext = paramContext.listFiles();
           if (paramContext != null)
           {
             i = 0;
             if (i < paramContext.length)
             {
-              if (paramContext[i].isDirectory()) {
-                QLog.e("QZoneAppCtrlUploadFileLogic", 1, "dir:" + paramContext[i].getAbsolutePath());
+              if (paramContext[i].isDirectory())
+              {
+                paramString = new StringBuilder();
+                paramString.append("dir:");
+                paramString.append(paramContext[i].getAbsolutePath());
+                QLog.e("QZoneAppCtrlUploadFileLogic", 1, paramString.toString());
               }
               if (!paramContext[i].isFile()) {
-                break label246;
+                break label284;
               }
-              QLog.e("QZoneAppCtrlUploadFileLogic", 1, "file:" + paramContext[i].getAbsolutePath() + ",size:" + paramContext[i].length());
-              break label246;
+              paramString = new StringBuilder();
+              paramString.append("file:");
+              paramString.append(paramContext[i].getAbsolutePath());
+              paramString.append(",size:");
+              paramString.append(paramContext[i].length());
+              QLog.e("QZoneAppCtrlUploadFileLogic", 1, paramString.toString());
+              break label284;
             }
           }
         }
         else if (paramContext.isFile())
         {
-          QLog.e("QZoneAppCtrlUploadFileLogic", 1, "showDirFileList filePath:" + paramContext.getAbsolutePath());
+          paramString = new StringBuilder();
+          paramString.append("showDirFileList filePath:");
+          paramString.append(paramContext.getAbsolutePath());
+          QLog.e("QZoneAppCtrlUploadFileLogic", 1, paramString.toString());
+          return;
         }
-        return;
       }
       catch (Exception paramContext)
       {
         paramContext.printStackTrace();
-        return;
       }
-      label246:
+      return;
+      label284:
       i += 1;
     }
   }
   
-  /* Error */
   private static int stepZipLogFile(String paramString, File paramFile)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: new 76	java/io/File
-    //   6: dup
-    //   7: aload_0
-    //   8: invokespecial 189	java/io/File:<init>	(Ljava/lang/String;)V
-    //   11: astore_0
-    //   12: new 294	java/util/zip/ZipOutputStream
-    //   15: dup
-    //   16: new 216	java/io/FileOutputStream
-    //   19: dup
-    //   20: aload_0
-    //   21: invokespecial 219	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   24: invokespecial 297	java/util/zip/ZipOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   27: astore_3
-    //   28: aload_3
-    //   29: ifnonnull +14 -> 43
-    //   32: aload_3
-    //   33: ifnull +7 -> 40
-    //   36: aload_3
-    //   37: invokevirtual 298	java/util/zip/ZipOutputStream:close	()V
-    //   40: bipush 253
-    //   42: ireturn
-    //   43: sipush 1024
-    //   46: newarray byte
-    //   48: astore 4
-    //   50: new 300	java/util/zip/ZipEntry
-    //   53: dup
-    //   54: aload_1
-    //   55: invokevirtual 303	java/io/File:getName	()Ljava/lang/String;
-    //   58: invokespecial 304	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
-    //   61: astore 5
-    //   63: aload 5
-    //   65: aload_1
-    //   66: invokevirtual 288	java/io/File:length	()J
-    //   69: invokevirtual 308	java/util/zip/ZipEntry:setSize	(J)V
-    //   72: aload 5
-    //   74: aload_1
-    //   75: invokevirtual 311	java/io/File:lastModified	()J
-    //   78: invokevirtual 314	java/util/zip/ZipEntry:setTime	(J)V
-    //   81: aload_3
-    //   82: aload 5
-    //   84: invokevirtual 318	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
-    //   87: new 320	java/io/BufferedInputStream
-    //   90: dup
-    //   91: new 322	java/io/FileInputStream
-    //   94: dup
-    //   95: aload_1
-    //   96: invokespecial 323	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   99: invokespecial 326	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   102: astore_1
-    //   103: aload_1
-    //   104: aload 4
-    //   106: iconst_0
-    //   107: sipush 1024
-    //   110: invokevirtual 254	java/io/InputStream:read	([BII)I
-    //   113: istore_2
-    //   114: iload_2
-    //   115: iconst_m1
-    //   116: if_icmpeq +61 -> 177
-    //   119: aload_3
-    //   120: aload 4
-    //   122: iconst_0
-    //   123: iload_2
-    //   124: invokevirtual 327	java/util/zip/ZipOutputStream:write	([BII)V
-    //   127: goto -24 -> 103
-    //   130: astore_0
-    //   131: aload_1
-    //   132: ifnull +7 -> 139
-    //   135: aload_1
-    //   136: invokevirtual 244	java/io/InputStream:close	()V
-    //   139: aload_0
-    //   140: athrow
-    //   141: astore_0
-    //   142: aload_3
-    //   143: astore_1
-    //   144: aload_1
-    //   145: ifnull +7 -> 152
-    //   148: aload_1
-    //   149: invokevirtual 298	java/util/zip/ZipOutputStream:close	()V
-    //   152: aload_0
-    //   153: athrow
-    //   154: astore_0
-    //   155: aload_0
-    //   156: invokevirtual 142	java/lang/Exception:printStackTrace	()V
-    //   159: invokestatic 196	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   162: ifeq -122 -> 40
-    //   165: ldc 53
-    //   167: iconst_4
-    //   168: ldc_w 329
-    //   171: invokestatic 201	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   174: bipush 253
-    //   176: ireturn
-    //   177: aload_1
-    //   178: ifnull +7 -> 185
-    //   181: aload_1
-    //   182: invokevirtual 244	java/io/InputStream:close	()V
-    //   185: aload_3
-    //   186: invokevirtual 298	java/util/zip/ZipOutputStream:close	()V
-    //   189: aload_0
-    //   190: invokevirtual 288	java/io/File:length	()J
-    //   193: ldc2_w 330
-    //   196: lcmp
-    //   197: iflt +28 -> 225
-    //   200: invokestatic 196	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   203: ifeq +12 -> 215
-    //   206: ldc 53
-    //   208: iconst_4
-    //   209: ldc_w 333
-    //   212: invokestatic 201	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   215: aload_3
-    //   216: ifnull +7 -> 223
-    //   219: aload_3
-    //   220: invokevirtual 298	java/util/zip/ZipOutputStream:close	()V
-    //   223: iconst_1
-    //   224: ireturn
-    //   225: invokestatic 196	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   228: ifeq +12 -> 240
-    //   231: ldc 53
-    //   233: iconst_4
-    //   234: ldc_w 335
-    //   237: invokestatic 201	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   240: aload_3
-    //   241: ifnull +7 -> 248
-    //   244: aload_3
-    //   245: invokevirtual 298	java/util/zip/ZipOutputStream:close	()V
-    //   248: iconst_0
-    //   249: ireturn
-    //   250: astore_0
-    //   251: aload 4
-    //   253: astore_1
-    //   254: goto -110 -> 144
-    //   257: astore_0
-    //   258: aconst_null
-    //   259: astore_1
-    //   260: goto -129 -> 131
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	263	0	paramString	String
-    //   0	263	1	paramFile	File
-    //   113	11	2	i	int
-    //   27	218	3	localZipOutputStream	java.util.zip.ZipOutputStream
-    //   1	251	4	arrayOfByte	byte[]
-    //   61	22	5	localZipEntry	java.util.zip.ZipEntry
-    // Exception table:
-    //   from	to	target	type
-    //   103	114	130	finally
-    //   119	127	130	finally
-    //   43	87	141	finally
-    //   135	139	141	finally
-    //   139	141	141	finally
-    //   181	185	141	finally
-    //   185	215	141	finally
-    //   225	240	141	finally
-    //   3	12	154	java/lang/Exception
-    //   36	40	154	java/lang/Exception
-    //   148	152	154	java/lang/Exception
-    //   152	154	154	java/lang/Exception
-    //   219	223	154	java/lang/Exception
-    //   244	248	154	java/lang/Exception
-    //   12	28	250	finally
-    //   87	103	257	finally
+    try
+    {
+      paramString = new File(paramString);
+      Object localObject = null;
+      ZipOutputStream localZipOutputStream;
+      byte[] arrayOfByte;
+      ZipEntry localZipEntry;
+      int i;
+      return -3;
+    }
+    catch (Exception paramFile)
+    {
+      try
+      {
+        localZipOutputStream = new ZipOutputStream(new FileOutputStream(paramString));
+        try
+        {
+          arrayOfByte = new byte[1024];
+          localZipEntry = new ZipEntry(paramFile.getName());
+          localZipEntry.setSize(paramFile.length());
+          localZipEntry.setTime(paramFile.lastModified());
+          localZipOutputStream.putNextEntry(localZipEntry);
+          paramString = null;
+        }
+        finally
+        {
+          try
+          {
+            paramFile = new BufferedInputStream(new FileInputStream(paramFile));
+            try
+            {
+              for (;;)
+              {
+                i = paramFile.read(arrayOfByte, 0, 1024);
+                if (i == -1) {
+                  break;
+                }
+                localZipOutputStream.write(arrayOfByte, 0, i);
+              }
+              paramFile.close();
+              localZipOutputStream.close();
+              if (paramString.length() >= 26214400L)
+              {
+                if (QLog.isDevelopLevel()) {
+                  QLog.d("QZoneAppCtrlUploadFileLogic", 4, "stepZipLogFile result: 26214400");
+                }
+                localZipOutputStream.close();
+                return 1;
+              }
+              if (QLog.isDevelopLevel()) {
+                QLog.d("QZoneAppCtrlUploadFileLogic", 4, "stepZipLogFile result: 0");
+              }
+              localZipOutputStream.close();
+              return 0;
+            }
+            finally {}
+            paramFile = finally;
+          }
+          finally
+          {
+            paramFile = localObject;
+            if (paramFile != null) {
+              paramFile.close();
+            }
+          }
+        }
+        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "stepZipLogFile result: -3");
+      }
+      finally
+      {
+        if (paramString != null) {
+          paramString.close();
+        }
+        throw paramFile;
+        paramString = paramString;
+        paramString.printStackTrace();
+        if (!QLog.isDevelopLevel()) {}
+      }
+    }
   }
   
   /* Error */
   private static int stepZipLogFiles(String paramString, ArrayList<File> paramArrayList)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 6
-    //   3: new 76	java/io/File
-    //   6: dup
-    //   7: aload_0
-    //   8: invokespecial 189	java/io/File:<init>	(Ljava/lang/String;)V
+    //   0: new 76	java/io/File
+    //   3: dup
+    //   4: aload_0
+    //   5: invokespecial 189	java/io/File:<init>	(Ljava/lang/String;)V
+    //   8: astore 7
+    //   10: aconst_null
     //   11: astore_0
     //   12: new 294	java/util/zip/ZipOutputStream
     //   15: dup
     //   16: new 216	java/io/FileOutputStream
     //   19: dup
-    //   20: aload_0
-    //   21: invokespecial 219	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   24: invokespecial 297	java/util/zip/ZipOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   27: astore 5
-    //   29: aload 5
-    //   31: ifnonnull +18 -> 49
-    //   34: aload 5
-    //   36: ifnull +8 -> 44
-    //   39: aload 5
-    //   41: invokevirtual 298	java/util/zip/ZipOutputStream:close	()V
-    //   44: bipush 253
-    //   46: istore_2
-    //   47: iload_2
-    //   48: ireturn
-    //   49: sipush 1024
-    //   52: newarray byte
-    //   54: astore 6
-    //   56: aload_1
-    //   57: invokevirtual 343	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   60: astore 7
-    //   62: aload 7
-    //   64: invokeinterface 348 1 0
-    //   69: ifeq +155 -> 224
-    //   72: aload 7
-    //   74: invokeinterface 352 1 0
-    //   79: checkcast 76	java/io/File
-    //   82: astore_1
-    //   83: new 300	java/util/zip/ZipEntry
-    //   86: dup
-    //   87: aload_1
-    //   88: invokevirtual 303	java/io/File:getName	()Ljava/lang/String;
-    //   91: invokespecial 304	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
-    //   94: astore 8
-    //   96: aload 8
-    //   98: aload_1
-    //   99: invokevirtual 288	java/io/File:length	()J
-    //   102: invokevirtual 308	java/util/zip/ZipEntry:setSize	(J)V
-    //   105: aload 8
-    //   107: aload_1
-    //   108: invokevirtual 311	java/io/File:lastModified	()J
-    //   111: invokevirtual 314	java/util/zip/ZipEntry:setTime	(J)V
-    //   114: aload 5
-    //   116: aload 8
-    //   118: invokevirtual 318	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
-    //   121: new 320	java/io/BufferedInputStream
-    //   124: dup
-    //   125: new 322	java/io/FileInputStream
-    //   128: dup
-    //   129: aload_1
-    //   130: invokespecial 323	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   133: invokespecial 326	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   136: astore_1
-    //   137: aload_1
-    //   138: aload 6
-    //   140: iconst_0
-    //   141: sipush 1024
-    //   144: invokevirtual 254	java/io/InputStream:read	([BII)I
-    //   147: istore_2
-    //   148: iload_2
-    //   149: iconst_m1
-    //   150: if_icmpeq +63 -> 213
-    //   153: aload 5
-    //   155: aload 6
-    //   157: iconst_0
-    //   158: iload_2
-    //   159: invokevirtual 327	java/util/zip/ZipOutputStream:write	([BII)V
-    //   162: goto -25 -> 137
-    //   165: astore_0
+    //   20: aload 7
+    //   22: invokespecial 219	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   25: invokespecial 297	java/util/zip/ZipOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   28: astore 5
+    //   30: sipush 1024
+    //   33: newarray byte
+    //   35: astore 8
+    //   37: aload_1
+    //   38: invokevirtual 343	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   41: astore_1
+    //   42: aload_1
+    //   43: invokeinterface 348 1 0
+    //   48: ifeq +120 -> 168
+    //   51: aload_1
+    //   52: invokeinterface 352 1 0
+    //   57: checkcast 76	java/io/File
+    //   60: astore 6
+    //   62: new 299	java/util/zip/ZipEntry
+    //   65: dup
+    //   66: aload 6
+    //   68: invokevirtual 302	java/io/File:getName	()Ljava/lang/String;
+    //   71: invokespecial 303	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
+    //   74: astore 9
+    //   76: aload 9
+    //   78: aload 6
+    //   80: invokevirtual 288	java/io/File:length	()J
+    //   83: invokevirtual 307	java/util/zip/ZipEntry:setSize	(J)V
+    //   86: aload 9
+    //   88: aload 6
+    //   90: invokevirtual 310	java/io/File:lastModified	()J
+    //   93: invokevirtual 313	java/util/zip/ZipEntry:setTime	(J)V
+    //   96: aload 5
+    //   98: aload 9
+    //   100: invokevirtual 317	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
+    //   103: new 319	java/io/BufferedInputStream
+    //   106: dup
+    //   107: new 321	java/io/FileInputStream
+    //   110: dup
+    //   111: aload 6
+    //   113: invokespecial 322	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   116: invokespecial 325	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   119: astore 6
+    //   121: aload 6
+    //   123: aload 8
+    //   125: iconst_0
+    //   126: sipush 1024
+    //   129: invokevirtual 247	java/io/InputStream:read	([BII)I
+    //   132: istore_2
+    //   133: iload_2
+    //   134: iconst_m1
+    //   135: if_icmpeq +15 -> 150
+    //   138: aload 5
+    //   140: aload 8
+    //   142: iconst_0
+    //   143: iload_2
+    //   144: invokevirtual 326	java/util/zip/ZipOutputStream:write	([BII)V
+    //   147: goto -26 -> 121
+    //   150: aload 6
+    //   152: invokevirtual 263	java/io/InputStream:close	()V
+    //   155: goto -113 -> 42
+    //   158: aload_0
+    //   159: ifnull +7 -> 166
+    //   162: aload_0
+    //   163: invokevirtual 263	java/io/InputStream:close	()V
     //   166: aload_1
-    //   167: ifnull +7 -> 174
-    //   170: aload_1
-    //   171: invokevirtual 244	java/io/InputStream:close	()V
-    //   174: aload_0
-    //   175: athrow
-    //   176: astore_0
-    //   177: aload 5
-    //   179: astore_1
-    //   180: aload_1
-    //   181: ifnull +7 -> 188
-    //   184: aload_1
-    //   185: invokevirtual 298	java/util/zip/ZipOutputStream:close	()V
-    //   188: aload_0
-    //   189: athrow
-    //   190: astore_0
-    //   191: aload_0
-    //   192: invokevirtual 142	java/lang/Exception:printStackTrace	()V
-    //   195: invokestatic 196	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   198: ifeq +12 -> 210
-    //   201: ldc 53
-    //   203: iconst_4
-    //   204: ldc_w 354
-    //   207: invokestatic 201	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   210: bipush 253
-    //   212: ireturn
-    //   213: aload_1
-    //   214: ifnull -152 -> 62
-    //   217: aload_1
-    //   218: invokevirtual 244	java/io/InputStream:close	()V
-    //   221: goto -159 -> 62
-    //   224: aload 5
-    //   226: invokevirtual 298	java/util/zip/ZipOutputStream:close	()V
-    //   229: aload_0
-    //   230: invokevirtual 288	java/io/File:length	()J
-    //   233: lstore_3
-    //   234: lload_3
-    //   235: ldc2_w 330
-    //   238: lcmp
-    //   239: iflt +17 -> 256
-    //   242: iconst_1
-    //   243: istore_2
-    //   244: aload 5
-    //   246: ifnull -199 -> 47
-    //   249: aload 5
-    //   251: invokevirtual 298	java/util/zip/ZipOutputStream:close	()V
-    //   254: iconst_1
-    //   255: ireturn
-    //   256: aload 5
-    //   258: ifnull +8 -> 266
-    //   261: aload 5
-    //   263: invokevirtual 298	java/util/zip/ZipOutputStream:close	()V
-    //   266: iconst_0
-    //   267: ireturn
-    //   268: astore_0
-    //   269: aload 6
-    //   271: astore_1
-    //   272: goto -92 -> 180
-    //   275: astore_0
-    //   276: aconst_null
-    //   277: astore_1
-    //   278: goto -112 -> 166
+    //   167: athrow
+    //   168: aload 5
+    //   170: invokevirtual 327	java/util/zip/ZipOutputStream:close	()V
+    //   173: aload 7
+    //   175: invokevirtual 288	java/io/File:length	()J
+    //   178: lstore_3
+    //   179: lload_3
+    //   180: ldc2_w 328
+    //   183: lcmp
+    //   184: iflt +10 -> 194
+    //   187: aload 5
+    //   189: invokevirtual 327	java/util/zip/ZipOutputStream:close	()V
+    //   192: iconst_1
+    //   193: ireturn
+    //   194: aload 5
+    //   196: invokevirtual 327	java/util/zip/ZipOutputStream:close	()V
+    //   199: iconst_0
+    //   200: ireturn
+    //   201: aload_0
+    //   202: ifnull +7 -> 209
+    //   205: aload_0
+    //   206: invokevirtual 327	java/util/zip/ZipOutputStream:close	()V
+    //   209: aload_1
+    //   210: athrow
+    //   211: astore_0
+    //   212: aload_0
+    //   213: invokevirtual 142	java/lang/Exception:printStackTrace	()V
+    //   216: invokestatic 196	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   219: ifeq +12 -> 231
+    //   222: ldc 53
+    //   224: iconst_4
+    //   225: ldc_w 354
+    //   228: invokestatic 201	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   231: bipush 253
+    //   233: ireturn
+    //   234: astore_1
+    //   235: aload 6
+    //   237: astore_0
+    //   238: goto -80 -> 158
+    //   241: astore_1
+    //   242: goto -84 -> 158
+    //   245: astore_1
+    //   246: aload 5
+    //   248: astore_0
+    //   249: goto -48 -> 201
+    //   252: astore_1
+    //   253: aconst_null
+    //   254: astore_0
+    //   255: goto -54 -> 201
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	281	0	paramString	String
-    //   0	281	1	paramArrayList	ArrayList<File>
-    //   46	198	2	i	int
-    //   233	2	3	l	long
-    //   27	235	5	localZipOutputStream	java.util.zip.ZipOutputStream
-    //   1	269	6	arrayOfByte	byte[]
-    //   60	13	7	localIterator	java.util.Iterator
-    //   94	23	8	localZipEntry	java.util.zip.ZipEntry
+    //   0	258	0	paramString	String
+    //   0	258	1	paramArrayList	ArrayList<File>
+    //   132	12	2	i	int
+    //   178	2	3	l	long
+    //   28	219	5	localZipOutputStream	ZipOutputStream
+    //   60	176	6	localObject	Object
+    //   8	166	7	localFile	File
+    //   35	106	8	arrayOfByte	byte[]
+    //   74	25	9	localZipEntry	ZipEntry
     // Exception table:
     //   from	to	target	type
-    //   137	148	165	finally
-    //   153	162	165	finally
-    //   49	62	176	finally
-    //   62	121	176	finally
-    //   170	174	176	finally
-    //   174	176	176	finally
-    //   217	221	176	finally
-    //   224	234	176	finally
-    //   3	12	190	java/lang/Exception
-    //   39	44	190	java/lang/Exception
-    //   184	188	190	java/lang/Exception
-    //   188	190	190	java/lang/Exception
-    //   249	254	190	java/lang/Exception
-    //   261	266	190	java/lang/Exception
-    //   12	29	268	finally
-    //   121	137	275	finally
+    //   0	10	211	java/lang/Exception
+    //   187	192	211	java/lang/Exception
+    //   194	199	211	java/lang/Exception
+    //   205	209	211	java/lang/Exception
+    //   209	211	211	java/lang/Exception
+    //   121	133	234	finally
+    //   138	147	234	finally
+    //   103	121	241	finally
+    //   30	42	245	finally
+    //   42	103	245	finally
+    //   150	155	245	finally
+    //   162	166	245	finally
+    //   166	168	245	finally
+    //   168	179	245	finally
+    //   12	30	252	finally
   }
   
   public static void uploadANR(Context paramContext, String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      paramContext = new File(VFSAssistantUtils.getSDKPrivatePath(Environment.getDataDirectory().getAbsolutePath() + File.separator + "anr"));
-    } while ((!paramContext.isDirectory()) || (paramContext.listFiles() == null));
-    Object localObject = VFSAssistantUtils.getSDKPrivatePath(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + ZIP_DIR + File.separator + "ANR");
-    String str = (String)localObject + File.separator + "upload.log.zip";
-    localObject = new File((String)localObject);
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
     }
-    uploadFile(paramContext, str, paramString);
+    paramContext = new StringBuilder();
+    paramContext.append(Environment.getDataDirectory().getAbsolutePath());
+    paramContext.append(File.separator);
+    paramContext.append("anr");
+    paramContext = new File(VFSAssistantUtils.getSDKPrivatePath(paramContext.toString()));
+    if ((paramContext.isDirectory()) && (paramContext.listFiles() != null))
+    {
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(Environment.getExternalStorageDirectory().getAbsolutePath());
+      ((StringBuilder)localObject1).append(File.separator);
+      ((StringBuilder)localObject1).append(ZIP_DIR);
+      ((StringBuilder)localObject1).append(File.separator);
+      ((StringBuilder)localObject1).append("ANR");
+      localObject1 = VFSAssistantUtils.getSDKPrivatePath(((StringBuilder)localObject1).toString());
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(File.separator);
+      ((StringBuilder)localObject2).append("upload.log.zip");
+      localObject2 = ((StringBuilder)localObject2).toString();
+      localObject1 = new File((String)localObject1);
+      if (!((File)localObject1).exists()) {
+        ((File)localObject1).mkdirs();
+      }
+      uploadFile(paramContext, (String)localObject2, paramString);
+    }
   }
   
   public static void uploadAvsdk(Context paramContext, String paramString, long paramLong1, long paramLong2)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    QZoneAppCtrlUploadFileLogic.3 local3;
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      paramContext = new File(VFSAssistantUtils.getSDKPrivatePath(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "tencent" + File.separator + "mobileqq" + File.separator + "log" + File.separator + "avsdk"));
-      local3 = new QZoneAppCtrlUploadFileLogic.3(paramLong1, paramLong2);
-    } while ((!paramContext.isDirectory()) || (paramContext.listFiles() == null));
-    Object localObject = VFSAssistantUtils.getSDKPrivatePath(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + ZIP_DIR + File.separator + "avsdk");
-    String str = (String)localObject + File.separator + "upload.log.zip";
-    localObject = new File((String)localObject);
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
     }
-    uploadFile(paramContext, local3, str, paramString);
+    paramContext = new StringBuilder();
+    paramContext.append(Environment.getExternalStorageDirectory().getAbsolutePath());
+    paramContext.append(File.separator);
+    paramContext.append("tencent");
+    paramContext.append(File.separator);
+    paramContext.append("mobileqq");
+    paramContext.append(File.separator);
+    paramContext.append("log");
+    paramContext.append(File.separator);
+    paramContext.append("avsdk");
+    paramContext = new File(VFSAssistantUtils.getSDKPrivatePath(paramContext.toString()));
+    QZoneAppCtrlUploadFileLogic.3 local3 = new QZoneAppCtrlUploadFileLogic.3(paramLong1, paramLong2);
+    if ((paramContext.isDirectory()) && (paramContext.listFiles() != null))
+    {
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(Environment.getExternalStorageDirectory().getAbsolutePath());
+      ((StringBuilder)localObject1).append(File.separator);
+      ((StringBuilder)localObject1).append(ZIP_DIR);
+      ((StringBuilder)localObject1).append(File.separator);
+      ((StringBuilder)localObject1).append("avsdk");
+      localObject1 = VFSAssistantUtils.getSDKPrivatePath(((StringBuilder)localObject1).toString());
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(File.separator);
+      ((StringBuilder)localObject2).append("upload.log.zip");
+      localObject2 = ((StringBuilder)localObject2).toString();
+      localObject1 = new File((String)localObject1);
+      if (!((File)localObject1).exists()) {
+        ((File)localObject1).mkdirs();
+      }
+      uploadFile(paramContext, local3, (String)localObject2, paramString);
+    }
   }
   
   public static void uploadByCustom(Context paramContext, String paramString1, String paramString2, long paramLong, boolean paramBoolean)
   {
-    if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString1)) || (paramContext == null)) {}
-    label252:
-    for (;;)
+    if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString1)))
     {
-      return;
-      String str = null;
-      if (paramBoolean) {
-        if (paramContext.getFilesDir() == null) {}
-      }
-      for (str = paramContext.getFilesDir().getParent();; str = VFSAssistantUtils.getSDKPrivatePath(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "tencent"))
-      {
-        if (TextUtils.isEmpty(str)) {
-          break label252;
-        }
-        paramContext = VFSAssistantUtils.getSDKPrivatePath(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + ZIP_DIR + File.separator + "custom");
-        File localFile = new File(paramContext);
-        if (!localFile.exists()) {
-          localFile.mkdirs();
-        }
-        paramContext = paramContext + File.separator + "upload.log.zip";
-        paramString1 = new File(str, paramString1);
-        if ((!paramString1.isFile()) || (paramString1.length() >= paramLong)) {
-          break;
-        }
-        uploadFile(paramString1, paramContext, paramString2);
-        if (!QLog.isDevelopLevel()) {
-          break;
-        }
-        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "uploadByCustom filename: " + paramContext);
+      if (paramContext == null) {
         return;
+      }
+      String str = null;
+      if (paramBoolean)
+      {
+        if (paramContext.getFilesDir() != null) {
+          str = paramContext.getFilesDir().getParent();
+        }
+      }
+      else
+      {
+        paramContext = new StringBuilder();
+        paramContext.append(Environment.getExternalStorageDirectory().getAbsolutePath());
+        paramContext.append(File.separator);
+        paramContext.append("tencent");
+        str = VFSAssistantUtils.getSDKPrivatePath(paramContext.toString());
+      }
+      if (TextUtils.isEmpty(str)) {
+        return;
+      }
+      paramContext = new StringBuilder();
+      paramContext.append(Environment.getExternalStorageDirectory().getAbsolutePath());
+      paramContext.append(File.separator);
+      paramContext.append(ZIP_DIR);
+      paramContext.append(File.separator);
+      paramContext.append("custom");
+      paramContext = VFSAssistantUtils.getSDKPrivatePath(paramContext.toString());
+      Object localObject = new File(paramContext);
+      if (!((File)localObject).exists()) {
+        ((File)localObject).mkdirs();
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramContext);
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append("upload.log.zip");
+      paramContext = ((StringBuilder)localObject).toString();
+      paramString1 = new File(str, paramString1);
+      if ((paramString1.isFile()) && (paramString1.length() < paramLong))
+      {
+        uploadFile(paramString1, paramContext, paramString2);
+        if (QLog.isDevelopLevel())
+        {
+          paramString1 = new StringBuilder();
+          paramString1.append("uploadByCustom filename: ");
+          paramString1.append(paramContext);
+          QLog.d("QZoneAppCtrlUploadFileLogic", 4, paramString1.toString());
+        }
       }
     }
   }
@@ -796,464 +868,546 @@ public class QZoneAppCtrlUploadFileLogic
     if (TextUtils.isEmpty(paramString2)) {
       localObject = SecurityUtil.a(paramString1);
     }
-    paramContext = paramContext.getFilesDir().getParent() + File.separator + "databases" + File.separator + (String)localObject;
-    paramString2 = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + ZIP_DIR + File.separator + "DB";
+    paramString2 = new StringBuilder();
+    paramString2.append(paramContext.getFilesDir().getParent());
+    paramString2.append(File.separator);
+    paramString2.append("databases");
+    paramString2.append(File.separator);
+    paramString2.append((String)localObject);
+    paramContext = paramString2.toString();
+    paramString2 = new StringBuilder();
+    paramString2.append(Environment.getExternalStorageDirectory().getAbsolutePath());
+    paramString2.append(File.separator);
+    paramString2.append(ZIP_DIR);
+    paramString2.append(File.separator);
+    paramString2.append("DB");
+    paramString2 = paramString2.toString();
     localObject = new File(VFSAssistantUtils.getSDKPrivatePath(paramString2));
     if (!((File)localObject).exists()) {
       ((File)localObject).mkdirs();
     }
-    paramString2 = VFSAssistantUtils.getSDKPrivatePath(paramString2 + File.separator + "upload.log.zip");
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append("upload.log.zip");
+    paramString2 = VFSAssistantUtils.getSDKPrivatePath(((StringBuilder)localObject).toString());
     uploadFile(new File(paramContext), paramString2, paramString1);
   }
   
   public static boolean uploadFile(File paramFile, FilenameFilter paramFilenameFilter, String paramString1, String paramString2)
   {
-    if ((paramFile == null) || (!paramFile.exists())) {
-      return false;
-    }
-    if (paramFile.exists())
+    if (paramFile != null)
     {
-      int j = -3;
-      int i = j;
-      if (paramFile.getName().contains("avsdk"))
-      {
-        i = j;
-        if (paramFile.isDirectory())
-        {
-          ArrayList localArrayList = new ArrayList();
-          paramFilenameFilter = paramFile.listFiles(paramFilenameFilter);
-          if ((paramFilenameFilter == null) || (paramFilenameFilter.length == 0))
-          {
-            QLog.w("QZoneAppCtrlUploadFileLogic", 2, "files is empty");
-            return false;
-          }
-          j = paramFilenameFilter.length;
-          i = 0;
-          while (i < j)
-          {
-            localArrayList.add(paramFilenameFilter[i]);
-            i += 1;
-          }
-          i = stepZipLogFiles(paramString1, localArrayList);
-        }
-      }
-      if (i != 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("QZoneAppCtrlUploadFileLogic", 2, "uploadFile zip file error code" + i);
-        }
-        FileUtils.e(paramString1);
+      if (!paramFile.exists()) {
         return false;
       }
+      if (paramFile.exists())
+      {
+        int j = -3;
+        int i = j;
+        if (paramFile.getName().contains("avsdk"))
+        {
+          i = j;
+          if (paramFile.isDirectory())
+          {
+            ArrayList localArrayList = new ArrayList();
+            paramFilenameFilter = paramFile.listFiles(paramFilenameFilter);
+            if ((paramFilenameFilter != null) && (paramFilenameFilter.length != 0))
+            {
+              j = paramFilenameFilter.length;
+              i = 0;
+              while (i < j)
+              {
+                localArrayList.add(paramFilenameFilter[i]);
+                i += 1;
+              }
+              i = stepZipLogFiles(paramString1, localArrayList);
+            }
+            else
+            {
+              QLog.w("QZoneAppCtrlUploadFileLogic", 2, "files is empty");
+              return false;
+            }
+          }
+        }
+        if (i != 0)
+        {
+          if (QLog.isColorLevel())
+          {
+            paramFile = new StringBuilder();
+            paramFile.append("uploadFile zip file error code");
+            paramFile.append(i);
+            QLog.w("QZoneAppCtrlUploadFileLogic", 2, paramFile.toString());
+          }
+          FileUtils.deleteFile(paramString1);
+          return false;
+        }
+      }
+      return uploadFileToServer(paramFile, paramString1, paramString2);
     }
-    return uploadFileToServer(paramFile, paramString1, paramString2);
+    return false;
   }
   
   public static boolean uploadFile(File paramFile, String paramString1, String paramString2)
   {
-    if ((paramFile == null) || (!paramFile.exists())) {
-      return false;
-    }
-    if (paramFile.exists())
+    if (paramFile != null)
     {
-      ArrayList localArrayList;
-      if ((paramFile.getName().contains("anr")) && (paramFile.isDirectory()))
-      {
-        localArrayList = new ArrayList();
-        File[] arrayOfFile = paramFile.listFiles();
-        int j = arrayOfFile.length;
-        i = 0;
-        while (i < j)
-        {
-          localArrayList.add(arrayOfFile[i]);
-          i += 1;
-        }
-      }
-      for (int i = stepZipLogFiles(paramString1, localArrayList);; i = stepZipLogFile(paramString1, paramFile))
-      {
-        if (i == 0) {
-          break label150;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.w("QZoneAppCtrlUploadFileLogic", 2, "uploadFile zip file error code" + i);
-        }
-        FileUtils.e(paramString1);
+      if (!paramFile.exists()) {
         return false;
-        if (!paramFile.isFile()) {
-          break;
+      }
+      if (paramFile.exists())
+      {
+        int i;
+        if ((paramFile.getName().contains("anr")) && (paramFile.isDirectory()))
+        {
+          ArrayList localArrayList = new ArrayList();
+          File[] arrayOfFile = paramFile.listFiles();
+          int j = arrayOfFile.length;
+          i = 0;
+          while (i < j)
+          {
+            localArrayList.add(arrayOfFile[i]);
+            i += 1;
+          }
+          i = stepZipLogFiles(paramString1, localArrayList);
+        }
+        else
+        {
+          if (!paramFile.isFile()) {
+            return false;
+          }
+          i = stepZipLogFile(paramString1, paramFile);
+        }
+        if (i != 0)
+        {
+          if (QLog.isColorLevel())
+          {
+            paramFile = new StringBuilder();
+            paramFile.append("uploadFile zip file error code");
+            paramFile.append(i);
+            QLog.w("QZoneAppCtrlUploadFileLogic", 2, paramFile.toString());
+          }
+          FileUtils.deleteFile(paramString1);
+          return false;
         }
       }
+      return uploadFileToServer(paramFile, paramString1, paramString2);
     }
-    label150:
-    return uploadFileToServer(paramFile, paramString1, paramString2);
+    return false;
   }
   
   /* Error */
   public static boolean uploadFileToServer(File paramFile, String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 5
-    //   3: new 76	java/io/File
-    //   6: dup
-    //   7: aload_1
-    //   8: invokespecial 189	java/io/File:<init>	(Ljava/lang/String;)V
-    //   11: astore 7
-    //   13: aload 7
-    //   15: invokevirtual 193	java/io/File:exists	()Z
-    //   18: ifne +5 -> 23
-    //   21: iconst_0
-    //   22: ireturn
-    //   23: invokestatic 196	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   26: ifeq +58 -> 84
-    //   29: ldc 53
-    //   31: iconst_4
-    //   32: new 67	java/lang/StringBuilder
-    //   35: dup
-    //   36: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   39: ldc_w 443
-    //   42: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   45: aload_1
-    //   46: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   49: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   52: invokestatic 201	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   55: ldc 53
-    //   57: iconst_4
-    //   58: new 67	java/lang/StringBuilder
-    //   61: dup
-    //   62: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   65: ldc_w 445
-    //   68: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   71: aload_0
-    //   72: invokevirtual 182	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   75: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   78: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   81: invokestatic 201	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   84: invokestatic 451	java/util/UUID:randomUUID	()Ljava/util/UUID;
-    //   87: invokevirtual 452	java/util/UUID:toString	()Ljava/lang/String;
-    //   90: astore_0
-    //   91: new 454	java/net/URL
-    //   94: dup
-    //   95: ldc 50
-    //   97: invokespecial 455	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   100: invokevirtual 459	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   103: checkcast 461	java/net/HttpURLConnection
-    //   106: astore 6
-    //   108: aload 6
-    //   110: ldc 55
-    //   112: invokevirtual 465	java/net/HttpURLConnection:setReadTimeout	(I)V
-    //   115: aload 6
-    //   117: ldc 55
-    //   119: invokevirtual 468	java/net/HttpURLConnection:setConnectTimeout	(I)V
-    //   122: aload 6
-    //   124: iconst_1
-    //   125: invokevirtual 472	java/net/HttpURLConnection:setDoInput	(Z)V
-    //   128: aload 6
-    //   130: iconst_1
-    //   131: invokevirtual 475	java/net/HttpURLConnection:setDoOutput	(Z)V
-    //   134: aload 6
-    //   136: iconst_0
-    //   137: invokevirtual 478	java/net/HttpURLConnection:setUseCaches	(Z)V
-    //   140: aload 6
-    //   142: ldc_w 480
-    //   145: invokevirtual 483	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
-    //   148: aload 6
-    //   150: ldc_w 485
-    //   153: ldc 18
-    //   155: invokevirtual 488	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   158: aload 6
-    //   160: ldc_w 490
-    //   163: ldc_w 492
-    //   166: invokevirtual 488	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   169: aload 6
-    //   171: ldc_w 494
-    //   174: new 67	java/lang/StringBuilder
-    //   177: dup
-    //   178: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   181: ldc_w 496
-    //   184: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   187: aload_0
-    //   188: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   191: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   194: invokevirtual 488	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   197: aload 7
-    //   199: ifnull +185 -> 384
-    //   202: aload 6
-    //   204: invokevirtual 500	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
-    //   207: astore_1
-    //   208: new 502	java/io/DataOutputStream
-    //   211: dup
-    //   212: aload_1
-    //   213: invokespecial 503	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   216: astore 4
-    //   218: new 505	java/lang/StringBuffer
-    //   221: dup
-    //   222: invokespecial 506	java/lang/StringBuffer:<init>	()V
-    //   225: astore_1
-    //   226: aload_1
-    //   227: ldc 47
-    //   229: invokevirtual 509	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   232: pop
-    //   233: aload_1
-    //   234: aload_0
-    //   235: invokevirtual 509	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   238: pop
-    //   239: aload_1
-    //   240: ldc 41
-    //   242: invokevirtual 509	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   245: pop
-    //   246: aload_1
-    //   247: new 67	java/lang/StringBuilder
-    //   250: dup
-    //   251: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   254: ldc_w 511
-    //   257: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   260: aload 7
-    //   262: invokevirtual 303	java/io/File:getName	()Ljava/lang/String;
-    //   265: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   268: ldc_w 513
-    //   271: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   274: ldc 41
-    //   276: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   279: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   282: invokevirtual 509	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   285: pop
-    //   286: aload_1
-    //   287: ldc_w 515
-    //   290: invokevirtual 509	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   293: pop
-    //   294: aload_1
-    //   295: ldc 41
-    //   297: invokevirtual 509	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   300: pop
-    //   301: aload 4
-    //   303: aload_1
-    //   304: invokevirtual 516	java/lang/StringBuffer:toString	()Ljava/lang/String;
-    //   307: invokevirtual 520	java/lang/String:getBytes	()[B
-    //   310: invokevirtual 523	java/io/DataOutputStream:write	([B)V
-    //   313: new 322	java/io/FileInputStream
-    //   316: dup
-    //   317: aload 7
-    //   319: invokespecial 323	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   322: astore_1
-    //   323: sipush 1024
-    //   326: newarray byte
-    //   328: astore 5
-    //   330: aload_1
-    //   331: aload 5
-    //   333: invokevirtual 526	java/io/InputStream:read	([B)I
-    //   336: istore_3
-    //   337: iload_3
-    //   338: iconst_m1
-    //   339: if_icmpeq +47 -> 386
-    //   342: aload 4
-    //   344: aload 5
-    //   346: iconst_0
-    //   347: iload_3
-    //   348: invokevirtual 527	java/io/DataOutputStream:write	([BII)V
-    //   351: goto -21 -> 330
-    //   354: astore_0
-    //   355: aload_1
-    //   356: ifnull +7 -> 363
-    //   359: aload_1
-    //   360: invokevirtual 244	java/io/InputStream:close	()V
-    //   363: aload_0
-    //   364: athrow
-    //   365: astore_0
-    //   366: aload 4
-    //   368: astore_1
-    //   369: aload_1
-    //   370: ifnull +7 -> 377
-    //   373: aload_1
-    //   374: invokevirtual 528	java/io/DataOutputStream:close	()V
-    //   377: aload_0
-    //   378: athrow
-    //   379: astore_0
-    //   380: aload_0
-    //   381: invokevirtual 529	java/net/MalformedURLException:printStackTrace	()V
-    //   384: iconst_0
-    //   385: ireturn
-    //   386: aload_1
-    //   387: ifnull +7 -> 394
-    //   390: aload_1
-    //   391: invokevirtual 244	java/io/InputStream:close	()V
-    //   394: aload 4
-    //   396: ldc 41
-    //   398: invokevirtual 520	java/lang/String:getBytes	()[B
-    //   401: invokevirtual 523	java/io/DataOutputStream:write	([B)V
-    //   404: aload 4
-    //   406: new 67	java/lang/StringBuilder
-    //   409: dup
-    //   410: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   413: ldc 47
+    //   0: new 76	java/io/File
+    //   3: dup
+    //   4: aload_1
+    //   5: invokespecial 189	java/io/File:<init>	(Ljava/lang/String;)V
+    //   8: astore 6
+    //   10: aload 6
+    //   12: invokevirtual 193	java/io/File:exists	()Z
+    //   15: ifne +5 -> 20
+    //   18: iconst_0
+    //   19: ireturn
+    //   20: invokestatic 196	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   23: ifeq +74 -> 97
+    //   26: new 67	java/lang/StringBuilder
+    //   29: dup
+    //   30: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   33: astore 4
+    //   35: aload 4
+    //   37: ldc_w 444
+    //   40: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   43: pop
+    //   44: aload 4
+    //   46: aload_1
+    //   47: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   50: pop
+    //   51: ldc 53
+    //   53: iconst_4
+    //   54: aload 4
+    //   56: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   59: invokestatic 201	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   62: new 67	java/lang/StringBuilder
+    //   65: dup
+    //   66: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   69: astore_1
+    //   70: aload_1
+    //   71: ldc_w 446
+    //   74: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   77: pop
+    //   78: aload_1
+    //   79: aload_0
+    //   80: invokevirtual 182	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   83: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   86: pop
+    //   87: ldc 53
+    //   89: iconst_4
+    //   90: aload_1
+    //   91: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   94: invokestatic 201	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   97: invokestatic 452	java/util/UUID:randomUUID	()Ljava/util/UUID;
+    //   100: invokevirtual 453	java/util/UUID:toString	()Ljava/lang/String;
+    //   103: astore_1
+    //   104: new 455	java/net/URL
+    //   107: dup
+    //   108: ldc 50
+    //   110: invokespecial 456	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   113: invokevirtual 460	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   116: checkcast 462	java/net/HttpURLConnection
+    //   119: astore 5
+    //   121: aload 5
+    //   123: ldc 55
+    //   125: invokevirtual 466	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   128: aload 5
+    //   130: ldc 55
+    //   132: invokevirtual 469	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   135: aload 5
+    //   137: iconst_1
+    //   138: invokevirtual 473	java/net/HttpURLConnection:setDoInput	(Z)V
+    //   141: aload 5
+    //   143: iconst_1
+    //   144: invokevirtual 476	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   147: aload 5
+    //   149: iconst_0
+    //   150: invokevirtual 479	java/net/HttpURLConnection:setUseCaches	(Z)V
+    //   153: aload 5
+    //   155: ldc_w 481
+    //   158: invokevirtual 484	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   161: aload 5
+    //   163: ldc_w 486
+    //   166: ldc 18
+    //   168: invokevirtual 489	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   171: aload 5
+    //   173: ldc_w 491
+    //   176: ldc_w 493
+    //   179: invokevirtual 489	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   182: new 67	java/lang/StringBuilder
+    //   185: dup
+    //   186: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   189: astore_0
+    //   190: aload_0
+    //   191: ldc_w 495
+    //   194: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   197: pop
+    //   198: aload_0
+    //   199: aload_1
+    //   200: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   203: pop
+    //   204: aload 5
+    //   206: ldc_w 497
+    //   209: aload_0
+    //   210: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   213: invokevirtual 489	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   216: aload 5
+    //   218: invokevirtual 501	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   221: astore_0
+    //   222: new 503	java/io/DataOutputStream
+    //   225: dup
+    //   226: aload_0
+    //   227: invokespecial 504	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   230: astore 4
+    //   232: new 506	java/lang/StringBuffer
+    //   235: dup
+    //   236: invokespecial 507	java/lang/StringBuffer:<init>	()V
+    //   239: astore_0
+    //   240: aload_0
+    //   241: ldc 47
+    //   243: invokevirtual 510	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   246: pop
+    //   247: aload_0
+    //   248: aload_1
+    //   249: invokevirtual 510	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   252: pop
+    //   253: aload_0
+    //   254: ldc 41
+    //   256: invokevirtual 510	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   259: pop
+    //   260: new 67	java/lang/StringBuilder
+    //   263: dup
+    //   264: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   267: astore 7
+    //   269: aload 7
+    //   271: ldc_w 512
+    //   274: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   277: pop
+    //   278: aload 7
+    //   280: aload 6
+    //   282: invokevirtual 302	java/io/File:getName	()Ljava/lang/String;
+    //   285: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   288: pop
+    //   289: aload 7
+    //   291: ldc_w 514
+    //   294: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   297: pop
+    //   298: aload 7
+    //   300: ldc 41
+    //   302: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   305: pop
+    //   306: aload_0
+    //   307: aload 7
+    //   309: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   312: invokevirtual 510	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   315: pop
+    //   316: aload_0
+    //   317: ldc_w 516
+    //   320: invokevirtual 510	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   323: pop
+    //   324: aload_0
+    //   325: ldc 41
+    //   327: invokevirtual 510	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   330: pop
+    //   331: aload 4
+    //   333: aload_0
+    //   334: invokevirtual 517	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   337: invokevirtual 521	java/lang/String:getBytes	()[B
+    //   340: invokevirtual 524	java/io/DataOutputStream:write	([B)V
+    //   343: new 321	java/io/FileInputStream
+    //   346: dup
+    //   347: aload 6
+    //   349: invokespecial 322	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   352: astore_0
+    //   353: sipush 1024
+    //   356: newarray byte
+    //   358: astore 6
+    //   360: aload_0
+    //   361: aload 6
+    //   363: invokevirtual 527	java/io/InputStream:read	([B)I
+    //   366: istore_3
+    //   367: iload_3
+    //   368: iconst_m1
+    //   369: if_icmpeq +15 -> 384
+    //   372: aload 4
+    //   374: aload 6
+    //   376: iconst_0
+    //   377: iload_3
+    //   378: invokevirtual 528	java/io/DataOutputStream:write	([BII)V
+    //   381: goto -21 -> 360
+    //   384: aload_0
+    //   385: invokevirtual 263	java/io/InputStream:close	()V
+    //   388: aload 4
+    //   390: ldc 41
+    //   392: invokevirtual 521	java/lang/String:getBytes	()[B
+    //   395: invokevirtual 524	java/io/DataOutputStream:write	([B)V
+    //   398: new 67	java/lang/StringBuilder
+    //   401: dup
+    //   402: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   405: astore_0
+    //   406: aload_0
+    //   407: ldc 47
+    //   409: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   412: pop
+    //   413: aload_0
+    //   414: aload_1
     //   415: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   418: aload_0
-    //   419: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   422: ldc 41
-    //   424: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   427: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   430: invokevirtual 520	java/lang/String:getBytes	()[B
-    //   433: invokevirtual 523	java/io/DataOutputStream:write	([B)V
-    //   436: new 67	java/lang/StringBuilder
-    //   439: dup
-    //   440: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   443: astore_1
-    //   444: aload_1
-    //   445: ldc_w 531
-    //   448: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   451: pop
-    //   452: aload_1
-    //   453: ldc 41
-    //   455: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   458: pop
-    //   459: aload_1
-    //   460: new 67	java/lang/StringBuilder
-    //   463: dup
-    //   464: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   467: aload_2
-    //   468: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   471: ldc 41
+    //   418: pop
+    //   419: aload_0
+    //   420: ldc 41
+    //   422: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   425: pop
+    //   426: aload 4
+    //   428: aload_0
+    //   429: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   432: invokevirtual 521	java/lang/String:getBytes	()[B
+    //   435: invokevirtual 524	java/io/DataOutputStream:write	([B)V
+    //   438: new 67	java/lang/StringBuilder
+    //   441: dup
+    //   442: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   445: astore_0
+    //   446: aload_0
+    //   447: ldc_w 530
+    //   450: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   453: pop
+    //   454: aload_0
+    //   455: ldc 41
+    //   457: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   460: pop
+    //   461: new 67	java/lang/StringBuilder
+    //   464: dup
+    //   465: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   468: astore 6
+    //   470: aload 6
+    //   472: aload_2
     //   473: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   476: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   479: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   482: pop
-    //   483: aload_1
-    //   484: new 67	java/lang/StringBuilder
-    //   487: dup
-    //   488: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   491: ldc 47
-    //   493: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   496: aload_0
-    //   497: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   500: ldc 41
-    //   502: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   505: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   508: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   511: pop
-    //   512: aload_1
-    //   513: ldc_w 533
-    //   516: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   519: pop
-    //   520: aload_1
-    //   521: ldc 41
-    //   523: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   526: pop
-    //   527: aload_1
-    //   528: ldc_w 535
-    //   531: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   534: pop
-    //   535: aload_1
-    //   536: new 67	java/lang/StringBuilder
-    //   539: dup
-    //   540: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   543: ldc 47
-    //   545: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   548: aload_0
-    //   549: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   552: ldc 41
-    //   554: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   557: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   560: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   563: pop
-    //   564: aload 4
-    //   566: aload_1
-    //   567: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   570: invokevirtual 520	java/lang/String:getBytes	()[B
-    //   573: invokevirtual 523	java/io/DataOutputStream:write	([B)V
-    //   576: aload 4
-    //   578: invokevirtual 538	java/io/DataOutputStream:flush	()V
-    //   581: aload 4
-    //   583: ifnull +8 -> 591
-    //   586: aload 4
-    //   588: invokevirtual 528	java/io/DataOutputStream:close	()V
-    //   591: aload 6
-    //   593: invokevirtual 541	java/net/HttpURLConnection:getResponseCode	()I
-    //   596: istore_3
-    //   597: new 543	java/io/BufferedReader
-    //   600: dup
-    //   601: new 545	java/io/InputStreamReader
-    //   604: dup
-    //   605: aload 6
-    //   607: invokevirtual 546	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   610: ldc_w 548
-    //   613: invokespecial 551	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
-    //   616: invokespecial 554	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   619: astore_0
-    //   620: aload_0
-    //   621: invokevirtual 557	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   624: astore_1
-    //   625: aload_1
-    //   626: ifnull +27 -> 653
-    //   629: invokestatic 196	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   632: ifeq -12 -> 620
-    //   635: ldc 53
-    //   637: iconst_4
-    //   638: aload_1
-    //   639: invokestatic 201	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   642: goto -22 -> 620
-    //   645: astore_0
-    //   646: aload_0
-    //   647: invokevirtual 260	java/io/IOException:printStackTrace	()V
-    //   650: goto -266 -> 384
-    //   653: iload_3
-    //   654: sipush 200
-    //   657: if_icmpne -273 -> 384
-    //   660: invokestatic 196	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   663: ifeq +12 -> 675
-    //   666: ldc 53
-    //   668: iconst_4
-    //   669: ldc_w 559
-    //   672: invokestatic 201	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   675: iconst_1
-    //   676: ireturn
-    //   677: astore_0
-    //   678: aload 5
-    //   680: astore_1
-    //   681: goto -312 -> 369
-    //   684: astore_0
-    //   685: aconst_null
-    //   686: astore_1
-    //   687: goto -332 -> 355
+    //   476: pop
+    //   477: aload 6
+    //   479: ldc 41
+    //   481: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   484: pop
+    //   485: aload_0
+    //   486: aload 6
+    //   488: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   491: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   494: pop
+    //   495: new 67	java/lang/StringBuilder
+    //   498: dup
+    //   499: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   502: astore_2
+    //   503: aload_2
+    //   504: ldc 47
+    //   506: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   509: pop
+    //   510: aload_2
+    //   511: aload_1
+    //   512: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   515: pop
+    //   516: aload_2
+    //   517: ldc 41
+    //   519: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   522: pop
+    //   523: aload_0
+    //   524: aload_2
+    //   525: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   528: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   531: pop
+    //   532: aload_0
+    //   533: ldc_w 532
+    //   536: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   539: pop
+    //   540: aload_0
+    //   541: ldc 41
+    //   543: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   546: pop
+    //   547: aload_0
+    //   548: ldc_w 534
+    //   551: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   554: pop
+    //   555: new 67	java/lang/StringBuilder
+    //   558: dup
+    //   559: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   562: astore_2
+    //   563: aload_2
+    //   564: ldc 47
+    //   566: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   569: pop
+    //   570: aload_2
+    //   571: aload_1
+    //   572: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   575: pop
+    //   576: aload_2
+    //   577: ldc 41
+    //   579: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   582: pop
+    //   583: aload_0
+    //   584: aload_2
+    //   585: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   588: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   591: pop
+    //   592: aload 4
+    //   594: aload_0
+    //   595: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   598: invokevirtual 521	java/lang/String:getBytes	()[B
+    //   601: invokevirtual 524	java/io/DataOutputStream:write	([B)V
+    //   604: aload 4
+    //   606: invokevirtual 537	java/io/DataOutputStream:flush	()V
+    //   609: aload 4
+    //   611: invokevirtual 538	java/io/DataOutputStream:close	()V
+    //   614: aload 5
+    //   616: invokevirtual 541	java/net/HttpURLConnection:getResponseCode	()I
+    //   619: istore_3
+    //   620: new 543	java/io/BufferedReader
+    //   623: dup
+    //   624: new 545	java/io/InputStreamReader
+    //   627: dup
+    //   628: aload 5
+    //   630: invokevirtual 546	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   633: ldc_w 548
+    //   636: invokespecial 551	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   639: invokespecial 554	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   642: astore_0
+    //   643: aload_0
+    //   644: invokevirtual 557	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   647: astore_1
+    //   648: aload_1
+    //   649: ifnull +19 -> 668
+    //   652: invokestatic 196	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   655: ifeq -12 -> 643
+    //   658: ldc 53
+    //   660: iconst_4
+    //   661: aload_1
+    //   662: invokestatic 201	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   665: goto -22 -> 643
+    //   668: iload_3
+    //   669: sipush 200
+    //   672: if_icmpne +69 -> 741
+    //   675: invokestatic 196	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   678: ifeq +12 -> 690
+    //   681: ldc 53
+    //   683: iconst_4
+    //   684: ldc_w 559
+    //   687: invokestatic 201	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   690: iconst_1
+    //   691: ireturn
+    //   692: astore_1
+    //   693: goto +6 -> 699
+    //   696: astore_1
+    //   697: aconst_null
+    //   698: astore_0
+    //   699: aload_0
+    //   700: ifnull +7 -> 707
+    //   703: aload_0
+    //   704: invokevirtual 263	java/io/InputStream:close	()V
+    //   707: aload_1
+    //   708: athrow
+    //   709: astore_1
+    //   710: aload 4
+    //   712: astore_0
+    //   713: goto +6 -> 719
+    //   716: astore_1
+    //   717: aconst_null
+    //   718: astore_0
+    //   719: aload_0
+    //   720: ifnull +7 -> 727
+    //   723: aload_0
+    //   724: invokevirtual 538	java/io/DataOutputStream:close	()V
+    //   727: aload_1
+    //   728: athrow
+    //   729: astore_0
+    //   730: aload_0
+    //   731: invokevirtual 264	java/io/IOException:printStackTrace	()V
+    //   734: iconst_0
+    //   735: ireturn
+    //   736: astore_0
+    //   737: aload_0
+    //   738: invokevirtual 560	java/net/MalformedURLException:printStackTrace	()V
+    //   741: iconst_0
+    //   742: ireturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	690	0	paramFile	File
-    //   0	690	1	paramString1	String
-    //   0	690	2	paramString2	String
-    //   336	322	3	i	int
-    //   216	371	4	localDataOutputStream	java.io.DataOutputStream
-    //   1	678	5	arrayOfByte	byte[]
-    //   106	500	6	localHttpURLConnection	java.net.HttpURLConnection
-    //   11	307	7	localFile	File
+    //   0	743	0	paramFile	File
+    //   0	743	1	paramString1	String
+    //   0	743	2	paramString2	String
+    //   366	307	3	i	int
+    //   33	678	4	localObject1	Object
+    //   119	510	5	localHttpURLConnection	java.net.HttpURLConnection
+    //   8	479	6	localObject2	Object
+    //   267	41	7	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   323	330	354	finally
-    //   330	337	354	finally
-    //   342	351	354	finally
-    //   218	313	365	finally
-    //   359	363	365	finally
-    //   363	365	365	finally
-    //   390	394	365	finally
-    //   394	581	365	finally
-    //   91	197	379	java/net/MalformedURLException
-    //   202	208	379	java/net/MalformedURLException
-    //   373	377	379	java/net/MalformedURLException
-    //   377	379	379	java/net/MalformedURLException
-    //   586	591	379	java/net/MalformedURLException
-    //   591	620	379	java/net/MalformedURLException
-    //   620	625	379	java/net/MalformedURLException
-    //   629	642	379	java/net/MalformedURLException
-    //   660	675	379	java/net/MalformedURLException
-    //   91	197	645	java/io/IOException
-    //   202	208	645	java/io/IOException
-    //   373	377	645	java/io/IOException
-    //   377	379	645	java/io/IOException
-    //   586	591	645	java/io/IOException
-    //   591	620	645	java/io/IOException
-    //   620	625	645	java/io/IOException
-    //   629	642	645	java/io/IOException
-    //   660	675	645	java/io/IOException
-    //   208	218	677	finally
-    //   313	323	684	finally
+    //   353	360	692	finally
+    //   360	367	692	finally
+    //   372	381	692	finally
+    //   343	353	696	finally
+    //   232	343	709	finally
+    //   384	609	709	finally
+    //   703	707	709	finally
+    //   707	709	709	finally
+    //   222	232	716	finally
+    //   104	222	729	java/io/IOException
+    //   609	643	729	java/io/IOException
+    //   643	648	729	java/io/IOException
+    //   652	665	729	java/io/IOException
+    //   675	690	729	java/io/IOException
+    //   723	727	729	java/io/IOException
+    //   727	729	729	java/io/IOException
+    //   104	222	736	java/net/MalformedURLException
+    //   609	643	736	java/net/MalformedURLException
+    //   643	648	736	java/net/MalformedURLException
+    //   652	665	736	java/net/MalformedURLException
+    //   675	690	736	java/net/MalformedURLException
+    //   723	727	736	java/net/MalformedURLException
+    //   727	729	736	java/net/MalformedURLException
   }
   
   public static void uploadLogcat(Context paramContext, String paramString)
@@ -1261,35 +1415,67 @@ public class QZoneAppCtrlUploadFileLogic
     if (QLog.isDevelopLevel()) {
       QLog.d("QZoneAppCtrlUploadFileLogic", 4, "uploadLogcat start zip");
     }
-    paramContext = new File(VFSAssistantUtils.getSDKPrivatePath(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + ZIP_DIR + File.separator + "LOGCAT" + File.separator + paramString + "logcatwyx.txt"));
+    paramContext = new StringBuilder();
+    paramContext.append(Environment.getExternalStorageDirectory().getAbsolutePath());
+    paramContext.append(File.separator);
+    paramContext.append(ZIP_DIR);
+    paramContext.append(File.separator);
+    paramContext.append("LOGCAT");
+    paramContext.append(File.separator);
+    paramContext.append(paramString);
+    paramContext.append("logcatwyx.txt");
+    paramContext = new File(VFSAssistantUtils.getSDKPrivatePath(paramContext.toString()));
     if (!paramContext.exists()) {
       return;
     }
-    Object localObject = VFSAssistantUtils.getSDKPrivatePath(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + ZIP_DIR + File.separator + "LOGCAT");
-    String str = (String)localObject + File.separator + "upload.log.zip";
-    localObject = new File((String)localObject);
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(Environment.getExternalStorageDirectory().getAbsolutePath());
+    ((StringBuilder)localObject1).append(File.separator);
+    ((StringBuilder)localObject1).append(ZIP_DIR);
+    ((StringBuilder)localObject1).append(File.separator);
+    ((StringBuilder)localObject1).append("LOGCAT");
+    localObject1 = VFSAssistantUtils.getSDKPrivatePath(((StringBuilder)localObject1).toString());
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(File.separator);
+    ((StringBuilder)localObject2).append("upload.log.zip");
+    localObject2 = ((StringBuilder)localObject2).toString();
+    localObject1 = new File((String)localObject1);
+    if (!((File)localObject1).exists()) {
+      ((File)localObject1).mkdirs();
     }
-    uploadFile(paramContext, str, paramString);
+    uploadFile(paramContext, (String)localObject2, paramString);
   }
   
   public static void uploadTrace(Context paramContext, String paramString, long paramLong1, long paramLong2)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    if (paramLong1 > 0L)
     {
-      do
-      {
+      if (paramLong2 <= paramLong1) {
         return;
-      } while ((paramLong1 <= 0L) || (paramLong2 <= paramLong1));
-      localObject1 = new File(VFSAssistantUtils.getSDKPrivatePath(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "tencent" + File.separator + "MobileQQ" + File.separator + "trace")).listFiles(new QZoneAppCtrlUploadFileLogic.1(paramLong1, paramLong2));
-      localObject2 = new QZoneAppCtrlUploadFileLogic.2();
+      }
+      paramContext = new StringBuilder();
+      paramContext.append(Environment.getExternalStorageDirectory().getAbsolutePath());
+      paramContext.append(File.separator);
+      paramContext.append("tencent");
+      paramContext.append(File.separator);
+      paramContext.append("MobileQQ");
+      paramContext.append(File.separator);
+      paramContext.append("trace");
+      Object localObject1 = new File(VFSAssistantUtils.getSDKPrivatePath(paramContext.toString())).listFiles(new QZoneAppCtrlUploadFileLogic.1(paramLong1, paramLong2));
+      Object localObject2 = new QZoneAppCtrlUploadFileLogic.2();
       paramContext = new ArrayList();
       if ((localObject1 != null) && (localObject1.length > 0))
       {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("QZoneAppCtrlUploadFileLogic", 4, "logFiles length" + localObject1.length);
+        if (QLog.isDevelopLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("logFiles length");
+          localStringBuilder.append(localObject1.length);
+          QLog.d("QZoneAppCtrlUploadFileLogic", 4, localStringBuilder.toString());
         }
         int j = localObject1.length;
         int i = 0;
@@ -1300,22 +1486,39 @@ public class QZoneAppCtrlUploadFileLogic
           i += 1;
         }
       }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "find file: " + paramContext.size());
+      if (QLog.isDevelopLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("find file: ");
+        ((StringBuilder)localObject1).append(paramContext.size());
+        QLog.d("QZoneAppCtrlUploadFileLogic", 4, ((StringBuilder)localObject1).toString());
       }
-    } while (paramContext.size() == 0);
-    Object localObject2 = VFSAssistantUtils.getSDKPrivatePath(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + ZIP_DIR + File.separator + "TRACE");
-    Object localObject1 = (String)localObject2 + File.separator + "upload.log.zip";
-    localObject2 = new File((String)localObject2);
-    if (!((File)localObject2).exists()) {
-      ((File)localObject2).mkdirs();
+      if (paramContext.size() == 0) {
+        return;
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(Environment.getExternalStorageDirectory().getAbsolutePath());
+      ((StringBuilder)localObject1).append(File.separator);
+      ((StringBuilder)localObject1).append(ZIP_DIR);
+      ((StringBuilder)localObject1).append(File.separator);
+      ((StringBuilder)localObject1).append("TRACE");
+      localObject1 = VFSAssistantUtils.getSDKPrivatePath(((StringBuilder)localObject1).toString());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(File.separator);
+      ((StringBuilder)localObject2).append("upload.log.zip");
+      localObject2 = ((StringBuilder)localObject2).toString();
+      localObject1 = new File((String)localObject1);
+      if (!((File)localObject1).exists()) {
+        ((File)localObject1).mkdirs();
+      }
+      uploadFile((File)paramContext.get(paramContext.size() - 1), (String)localObject2, paramString);
     }
-    uploadFile((File)paramContext.get(paramContext.size() - 1), (String)localObject1, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.util.QZoneAppCtrlUploadFileLogic
  * JD-Core Version:    0.7.0.1
  */

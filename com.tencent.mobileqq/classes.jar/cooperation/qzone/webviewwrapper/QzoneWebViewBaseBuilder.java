@@ -10,13 +10,14 @@ import android.widget.ProgressBar;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.AbsWebView;
-import com.tencent.mobileqq.webview.build.IWebViewBuilder;
 import com.tencent.mobileqq.webview.swift.CommonJsPluginFactory;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.util.IWebViewBuilder;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
 import cooperation.qzone.webviewplugin.QZoneWebViewPlugin;
 import java.util.ArrayList;
+import mqq.app.AppRuntime;
 
 public class QzoneWebViewBaseBuilder
   extends AbsWebView
@@ -53,9 +54,9 @@ public class QzoneWebViewBaseBuilder
   
   public void buildTitleBar() {}
   
-  public final void buildWebView(AppInterface paramAppInterface)
+  public final void buildWebView(AppRuntime paramAppRuntime)
   {
-    super.buildBaseWebView(paramAppInterface);
+    super.buildBaseWebView(paramAppRuntime);
     onWebViewReady();
   }
   
@@ -73,7 +74,7 @@ public class QzoneWebViewBaseBuilder
     return false;
   }
   
-  public CommonJsPluginFactory myCommonJsPlugins()
+  protected CommonJsPluginFactory myCommonJsPlugins()
   {
     if (this.mIsSmallWebview) {
       return QZONE_SHOW_COMMON_JS;
@@ -110,10 +111,11 @@ public class QzoneWebViewBaseBuilder
   
   public void onPageFinished(WebView paramWebView, String paramString)
   {
-    if (this.mWebviewStatusListener != null) {}
+    paramWebView = this.mWebviewStatusListener;
+    if (paramWebView != null) {}
     try
     {
-      this.mWebviewStatusListener.onPageFinished();
+      paramWebView.onPageFinished();
       return;
     }
     catch (Exception paramWebView) {}
@@ -126,10 +128,11 @@ public class QzoneWebViewBaseBuilder
   
   public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
-    if (this.mWebviewStatusListener != null) {}
+    paramWebView = this.mWebviewStatusListener;
+    if (paramWebView != null) {}
     try
     {
-      this.mWebviewStatusListener.onReceiveError(paramInt, paramString1, paramString2);
+      paramWebView.onReceiveError(paramInt, paramString1, paramString2);
       return;
     }
     catch (Exception paramWebView) {}
@@ -175,8 +178,12 @@ public class QzoneWebViewBaseBuilder
   
   public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneWebViewBaseBuilder", 2, "loadUrl in shouldOverrideUrlLoading url=" + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("loadUrl in shouldOverrideUrlLoading url=");
+      localStringBuilder.append(paramString);
+      QLog.d("QzoneWebViewBaseBuilder", 2, localStringBuilder.toString());
     }
     if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {
       return true;
@@ -187,7 +194,7 @@ public class QzoneWebViewBaseBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewwrapper.QzoneWebViewBaseBuilder
  * JD-Core Version:    0.7.0.1
  */

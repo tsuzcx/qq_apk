@@ -36,21 +36,19 @@ public class VideoImageExtractor
   
   public List<Bitmap> extractImages()
   {
-    if (this.mCoverProvider != null) {
+    if (this.mCoverProvider != null)
+    {
       HandlerUtils.getMainHandler().postDelayed(new VideoImageExtractor.2(this), 300L);
-    }
-    try
-    {
-      this.mCountDownLatch.await();
-      return this.mBitMapList;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      try
+      {
+        this.mCountDownLatch.await();
+      }
+      catch (Exception localException)
       {
         localException.printStackTrace();
       }
     }
+    return this.mBitMapList;
   }
   
   public void initCoverProvider(List<Long> paramList, @NonNull TAVSource paramTAVSource, CGSize paramCGSize, int paramInt)
@@ -59,40 +57,47 @@ public class VideoImageExtractor
     this.mTimeInfo = getCMTimeInfos(paramList);
     this.mCoverHeight = ((int)paramCGSize.height);
     this.mCoverWidth = ((int)paramCGSize.width);
-    Logger.i("VideoImageExtractor", "width = " + this.mCoverWidth + "height = " + this.mCoverHeight);
-    float f;
+    paramCGSize = new StringBuilder();
+    paramCGSize.append("width = ");
+    paramCGSize.append(this.mCoverWidth);
+    paramCGSize.append("height = ");
+    paramCGSize.append(this.mCoverHeight);
+    Logger.i("VideoImageExtractor", paramCGSize.toString());
     if (paramInt > 0)
     {
-      f = this.mCoverWidth * 1.0F / this.mCoverHeight;
-      if (this.mCoverHeight <= this.mCoverWidth) {
-        break label255;
-      }
-      if (this.mCoverHeight > paramInt)
+      int i = this.mCoverWidth;
+      float f = i;
+      int j = this.mCoverHeight;
+      f = f * 1.0F / j;
+      if (j > i)
       {
-        this.mCoverHeight = paramInt;
-        this.mCoverWidth = ((int)(f * this.mCoverHeight));
+        if (j > paramInt)
+        {
+          this.mCoverHeight = paramInt;
+          this.mCoverWidth = ((int)(this.mCoverHeight * f));
+        }
       }
-    }
-    for (;;)
-    {
-      Logger.i("VideoImageExtractor", "scaled width = " + this.mCoverWidth + "height = " + this.mCoverHeight);
-      this.mTavSource = paramTAVSource;
-      if (this.mCoverProvider == null)
-      {
-        this.mCoverProvider = new CoverProvider();
-        paramTAVSource = new RenderContextParams();
-        paramTAVSource.putParam("video_cover", "video_cover_param");
-        this.mCoverProvider.setRenderContextParams(paramTAVSource);
-        this.mCountDownLatch = new CountDownLatch(paramList.size());
-        this.mCoverProvider.setCoverListener(new VideoImageExtractor.1(this));
-      }
-      return;
-      label255:
-      if (this.mCoverWidth > paramInt)
+      else if (i > paramInt)
       {
         this.mCoverWidth = paramInt;
         this.mCoverHeight = ((int)(this.mCoverWidth / f));
       }
+    }
+    paramCGSize = new StringBuilder();
+    paramCGSize.append("scaled width = ");
+    paramCGSize.append(this.mCoverWidth);
+    paramCGSize.append("height = ");
+    paramCGSize.append(this.mCoverHeight);
+    Logger.i("VideoImageExtractor", paramCGSize.toString());
+    this.mTavSource = paramTAVSource;
+    if (this.mCoverProvider == null)
+    {
+      this.mCoverProvider = new CoverProvider();
+      paramTAVSource = new RenderContextParams();
+      paramTAVSource.putParam("video_cover", "video_cover_param");
+      this.mCoverProvider.setRenderContextParams(paramTAVSource);
+      this.mCountDownLatch = new CountDownLatch(paramList.size());
+      this.mCoverProvider.setCoverListener(new VideoImageExtractor.1(this));
     }
   }
   
@@ -103,7 +108,7 @@ public class VideoImageExtractor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.cover.VideoImageExtractor
  * JD-Core Version:    0.7.0.1
  */

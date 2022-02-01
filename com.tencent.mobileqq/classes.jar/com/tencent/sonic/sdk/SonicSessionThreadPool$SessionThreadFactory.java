@@ -14,17 +14,21 @@ class SonicSessionThreadPool$SessionThreadFactory
   SonicSessionThreadPool$SessionThreadFactory()
   {
     Object localObject = System.getSecurityManager();
-    if (localObject != null) {}
-    for (localObject = ((SecurityManager)localObject).getThreadGroup();; localObject = Thread.currentThread().getThreadGroup())
-    {
-      this.group = ((ThreadGroup)localObject);
-      return;
+    if (localObject != null) {
+      localObject = ((SecurityManager)localObject).getThreadGroup();
+    } else {
+      localObject = Thread.currentThread().getThreadGroup();
     }
+    this.group = ((ThreadGroup)localObject);
   }
   
   public Thread newThread(@NonNull Runnable paramRunnable)
   {
-    paramRunnable = new Thread(this.group, paramRunnable, "pool-sonic-session-thread-" + this.threadNumber.getAndIncrement(), 0L);
+    ThreadGroup localThreadGroup = this.group;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pool-sonic-session-thread-");
+    localStringBuilder.append(this.threadNumber.getAndIncrement());
+    paramRunnable = new Thread(localThreadGroup, paramRunnable, localStringBuilder.toString(), 0L);
     if (paramRunnable.isDaemon()) {
       paramRunnable.setDaemon(false);
     }
@@ -36,7 +40,7 @@ class SonicSessionThreadPool$SessionThreadFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.sonic.sdk.SonicSessionThreadPool.SessionThreadFactory
  * JD-Core Version:    0.7.0.1
  */

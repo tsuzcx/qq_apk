@@ -33,17 +33,28 @@ public class QGRenderer
   
   public QGRenderer(Context paramContext, int paramInt1, int paramInt2, String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (dataBundle = "/data/data/" + paramContext.getPackageName() + "/cache";; dataBundle = paramString)
+    if (TextUtils.isEmpty(paramString))
     {
-      assetManager = paramContext.getResources().getAssets();
-      this.mContext = paramContext;
-      this.screen_width = paramInt1;
-      this.screen_height = paramInt2;
-      if ((Debugger.isJsDebugMode(this.mContext)) && ((this.mContext instanceof Activity))) {
-        this.mDebugger = new Debugger((Activity)this.mContext);
+      paramString = new StringBuilder();
+      paramString.append("/data/data/");
+      paramString.append(paramContext.getPackageName());
+      paramString.append("/cache");
+      dataBundle = paramString.toString();
+    }
+    else
+    {
+      dataBundle = paramString;
+    }
+    assetManager = paramContext.getResources().getAssets();
+    this.mContext = paramContext;
+    this.screen_width = paramInt1;
+    this.screen_height = paramInt2;
+    if (Debugger.isJsDebugMode(this.mContext))
+    {
+      paramContext = this.mContext;
+      if ((paramContext instanceof Activity)) {
+        this.mDebugger = new Debugger((Activity)paramContext);
       }
-      return;
     }
   }
   
@@ -59,8 +70,9 @@ public class QGRenderer
   
   private void onCanvasCreated()
   {
-    if (this.QGEventListener != null) {
-      this.QGEventListener.onCanvasCreated();
+    QGRenderer.QGEventListener localQGEventListener = this.QGEventListener;
+    if (localQGEventListener != null) {
+      localQGEventListener.onCanvasCreated();
     }
   }
   
@@ -130,8 +142,9 @@ public class QGRenderer
   public void onDrawFrame(GL10 paramGL10)
   {
     nativeRender();
-    if (this.QGEventListener != null) {
-      this.QGEventListener.onDrawFrame();
+    paramGL10 = this.QGEventListener;
+    if (paramGL10 != null) {
+      paramGL10.onDrawFrame();
     }
   }
   
@@ -146,8 +159,9 @@ public class QGRenderer
   {
     nativeCreated(this.mContext, assetManager, dataBundle, this.screen_width, this.screen_height);
     onCanvasCreated();
-    if (this.mDebugger != null) {
-      this.mDebugger.init();
+    paramGL10 = this.mDebugger;
+    if (paramGL10 != null) {
+      paramGL10.init();
     }
   }
   
@@ -191,7 +205,7 @@ public class QGRenderer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qg.sdk.QGRenderer
  * JD-Core Version:    0.7.0.1
  */

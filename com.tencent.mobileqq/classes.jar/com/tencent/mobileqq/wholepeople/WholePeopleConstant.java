@@ -6,6 +6,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.nearby.redtouch.LocalRedTouchManager;
 import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -23,33 +24,37 @@ public class WholePeopleConstant
   public static BusinessInfoCheckUpdate.AppInfo a(int paramInt1, int paramInt2)
   {
     BusinessInfoCheckUpdate.AppInfo localAppInfo = new BusinessInfoCheckUpdate.AppInfo();
-    if (QLog.isColorLevel()) {
-      QLog.i("WholePeopleConstant", 2, "getMsgRedTouch redNum:" + paramInt1 + " redPoint:" + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getMsgRedTouch redNum:");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(" redPoint:");
+      ((StringBuilder)localObject).append(paramInt2);
+      QLog.i("WholePeopleConstant", 2, ((StringBuilder)localObject).toString());
     }
     if ((paramInt1 <= 0) && (paramInt2 <= 0)) {
       return localAppInfo;
     }
     if (paramInt1 > 0)
     {
-      localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
+      localObject = new BusinessInfoCheckUpdate.RedTypeInfo();
       if (paramInt1 > 99) {
-        localRedTypeInfo.red_content.set("99+");
+        ((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_content.set("99+");
+      } else {
+        ((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_content.set(String.valueOf(paramInt1));
       }
-      for (;;)
-      {
-        localRedTypeInfo.red_type.set(5);
-        localRedTypeInfo.red_desc.set("{'cn':'#FF0000'}");
-        localAppInfo.red_display_info.red_type_info.add(localRedTypeInfo);
-        localAppInfo.iNewFlag.set(1);
-        return localAppInfo;
-        localRedTypeInfo.red_content.set(String.valueOf(paramInt1));
-      }
+      ((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_type.set(5);
+      ((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_desc.set("{'cn':'#FF0000'}");
+      localAppInfo.red_display_info.red_type_info.add((MessageMicro)localObject);
+      localAppInfo.iNewFlag.set(1);
+      return localAppInfo;
     }
-    BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
-    localRedTypeInfo.red_type.set(0);
-    localRedTypeInfo.red_desc.set("");
-    localRedTypeInfo.red_content.set("");
-    localAppInfo.red_display_info.red_type_info.add(localRedTypeInfo);
+    Object localObject = new BusinessInfoCheckUpdate.RedTypeInfo();
+    ((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_type.set(0);
+    ((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_desc.set("");
+    ((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_content.set("");
+    localAppInfo.red_display_info.red_type_info.add((MessageMicro)localObject);
     localAppInfo.iNewFlag.set(1);
     return localAppInfo;
   }
@@ -85,9 +90,9 @@ public class WholePeopleConstant
       QLog.i("WholePeopleConstant", 2, "getMsgRedPoint");
     }
     paramString = null;
-    paramBundle = new Bundle();
-    EIPCResult localEIPCResult = new EIPCResult();
-    localEIPCResult.data = paramBundle;
+    Bundle localBundle = new Bundle();
+    paramBundle = new EIPCResult();
+    paramBundle.data = localBundle;
     if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
       paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     }
@@ -96,39 +101,47 @@ public class WholePeopleConstant
       if (QLog.isColorLevel()) {
         QLog.d("WholePeopleConstant", 2, "getMsgRedPoint, app is null");
       }
-      localEIPCResult.code = -1;
-      return localEIPCResult;
+      paramBundle.code = -1;
+      return paramBundle;
     }
     paramString = (LocalRedTouchManager)paramString.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
     RedTouchItem localRedTouchItem = paramString.a(10014);
-    int i;
-    if (paramString.a(localRedTouchItem, false)) {
+    if (paramString.a(localRedTouchItem, false))
+    {
       if (localRedTouchItem.redtouchType == 2)
       {
-        i = localRedTouchItem.count + 0;
-        paramInt = 0;
+        paramInt = localRedTouchItem.count + 0;
+        i = 0;
+        break label153;
       }
-    }
-    for (;;)
-    {
-      paramBundle.putInt("redPointCount", paramInt);
-      paramBundle.putInt("redNumCount", i);
-      if (QLog.isColorLevel()) {
-        QLog.i("WholePeopleConstant", 2, "getMsgRedPoint redPointCount:" + paramInt + " redNumCount:" + i);
-      }
-      localEIPCResult.code = 0;
-      return localEIPCResult;
       paramInt = 1;
-      i = 0;
-      continue;
-      paramInt = 0;
-      i = 0;
     }
+    else
+    {
+      paramInt = 0;
+    }
+    int j = 0;
+    int i = paramInt;
+    paramInt = j;
+    label153:
+    localBundle.putInt("redPointCount", i);
+    localBundle.putInt("redNumCount", paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("getMsgRedPoint redPointCount:");
+      paramString.append(i);
+      paramString.append(" redNumCount:");
+      paramString.append(paramInt);
+      QLog.i("WholePeopleConstant", 2, paramString.toString());
+    }
+    paramBundle.code = 0;
+    return paramBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.wholepeople.WholePeopleConstant
  * JD-Core Version:    0.7.0.1
  */

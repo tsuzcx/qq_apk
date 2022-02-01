@@ -1,34 +1,30 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.imcore.message.QQMessageFacade;
 
 class TroopAssistantActivity$17
-  implements ThreadExcutor.IThreadListener
+  implements Runnable
 {
-  TroopAssistantActivity$17(TroopAssistantActivity paramTroopAssistantActivity) {}
+  TroopAssistantActivity$17(TroopAssistantActivity paramTroopAssistantActivity, QQMessageFacade paramQQMessageFacade, TextView paramTextView) {}
   
-  public void onAdded()
+  public void run()
   {
-    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onAdded:" + TroopAssistantActivity.a(this.a));
-    TroopAssistantActivity.a(this.a, true);
-  }
-  
-  public void onPostRun()
-  {
-    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onPostRun:" + TroopAssistantActivity.a(this.a));
-    TroopAssistantActivity.a(this.a, false);
-  }
-  
-  public void onPreRun()
-  {
-    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onPreRun:" + TroopAssistantActivity.a(this.a));
-    TroopAssistantActivity.a(this.a, true);
+    int i = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.b();
+    String str;
+    if (i > 99) {
+      str = "99+";
+    } else if (i <= 0) {
+      str = "";
+    } else {
+      str = String.valueOf(i);
+    }
+    this.this$0.runOnUiThread(new TroopAssistantActivity.17.1(this, i, str));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.17
  * JD-Core Version:    0.7.0.1
  */

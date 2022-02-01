@@ -13,8 +13,9 @@ final class ms$1
   
   public final void setAlpha(float paramFloat)
   {
-    this.a.x = paramFloat;
-    if (ms.a(this.a) != null)
+    ms localms = this.a;
+    localms.x = paramFloat;
+    if (ms.a(localms) != null)
     {
       ms.a(this.a).a(this.a.x);
       this.a.s.alpha(this.a.x);
@@ -29,22 +30,24 @@ final class ms$1
     if ((ms.b(this.a) != null) && (this.a.u != null))
     {
       Object localObject = new GeoPoint();
-      if ((!ms.c(this.a)) || (ms.d(this.a) == null) || (ms.b(this.a).az == null)) {
-        break label316;
+      if ((ms.c(this.a)) && (ms.d(this.a) != null) && (ms.b(this.a).az != null))
+      {
+        GeoPoint localGeoPoint = ms.b(this.a).az.b.h.a(new DoublePoint(ms.e(this.a), ms.f(this.a)));
+        int i = localGeoPoint.getLatitudeE6();
+        int j = ms.d(this.a).getLatitudeE6();
+        int k = localGeoPoint.getLongitudeE6();
+        int m = ms.d(this.a).getLongitudeE6();
+        ((GeoPoint)localObject).setLatitudeE6(paramInt1 + (i - j));
+        ((GeoPoint)localObject).setLongitudeE6(paramInt2 + (k - m));
+        localObject = ms.b(this.a).az.b.h.a((GeoPoint)localObject);
+        this.a.u.setLatitudeE6((int)((DoublePoint)localObject).y);
+        this.a.u.setLongitudeE6((int)((DoublePoint)localObject).x);
       }
-      GeoPoint localGeoPoint = ms.b(this.a).az.b.h.a(new DoublePoint(ms.e(this.a), ms.f(this.a)));
-      int i = localGeoPoint.getLatitudeE6();
-      int j = ms.d(this.a).getLatitudeE6();
-      int k = localGeoPoint.getLongitudeE6();
-      int m = ms.d(this.a).getLongitudeE6();
-      ((GeoPoint)localObject).setLatitudeE6(i - j + paramInt1);
-      ((GeoPoint)localObject).setLongitudeE6(k - m + paramInt2);
-      localObject = ms.b(this.a).az.b.h.a((GeoPoint)localObject);
-      this.a.u.setLatitudeE6((int)((DoublePoint)localObject).y);
-      this.a.u.setLongitudeE6((int)((DoublePoint)localObject).x);
-    }
-    for (;;)
-    {
+      else
+      {
+        this.a.u.setLatitudeE6(paramInt1 + 0);
+        this.a.u.setLongitudeE6(paramInt2 + 0);
+      }
       if (this.a.s != null) {
         this.a.s.position(fz.a(this.a.u));
       }
@@ -54,10 +57,6 @@ final class ms$1
       if (this.a.J != null) {
         this.a.J.a(fz.a(this.a.u));
       }
-      return;
-      label316:
-      this.a.u.setLatitudeE6(paramInt1 + 0);
-      this.a.u.setLongitudeE6(paramInt2 + 0);
     }
   }
   
@@ -65,21 +64,23 @@ final class ms$1
   
   public final void setRotate(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    this.a.n = paramFloat1;
-    this.a.p = paramFloat2;
-    this.a.q = paramFloat3;
-    this.a.r = paramFloat4;
-    this.a.o = true;
-    if (ms.a(this.a) != null) {
+    ms localms = this.a;
+    localms.n = paramFloat1;
+    localms.p = paramFloat2;
+    localms.q = paramFloat3;
+    localms.r = paramFloat4;
+    localms.o = true;
+    if (ms.a(localms) != null) {
       ms.a(this.a).b((int)this.a.n);
     }
   }
   
   public final void setScale(float paramFloat1, float paramFloat2)
   {
-    this.a.y = paramFloat1;
-    this.a.z = paramFloat2;
-    if (ms.a(this.a) != null) {
+    ms localms = this.a;
+    localms.y = paramFloat1;
+    localms.z = paramFloat2;
+    if (ms.a(localms) != null) {
       ms.a(this.a).c(this.a.y, this.a.z);
     }
     if (this.a.J != null) {
@@ -89,7 +90,7 @@ final class ms$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.ms.1
  * JD-Core Version:    0.7.0.1
  */

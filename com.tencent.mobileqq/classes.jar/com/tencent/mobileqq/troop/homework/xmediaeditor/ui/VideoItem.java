@@ -7,8 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.app.utils.RouteUtils;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.model.EditItemInfoBase;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo;
@@ -36,7 +36,7 @@ public class VideoItem
   
   public VideoItem.VideoViewHolder a(ViewGroup paramViewGroup)
   {
-    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560776, paramViewGroup, false);
+    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560662, paramViewGroup, false);
     VideoItem.VideoViewHolder localVideoViewHolder = new VideoItem.VideoViewHolder(paramViewGroup);
     if (QLog.isColorLevel()) {
       QLog.d("VideoItem", 2, new Object[] { "Video onCreateViewHolder. vh hash=", Integer.valueOf(localVideoViewHolder.hashCode()) });
@@ -64,15 +64,16 @@ public class VideoItem
   public void a()
   {
     super.a();
-    if ((this.jdField_b_of_type_JavaUtilMap != null) && (!this.jdField_b_of_type_JavaUtilMap.isEmpty()))
+    Object localObject1 = this.jdField_b_of_type_JavaUtilMap;
+    if ((localObject1 != null) && (!((Map)localObject1).isEmpty()))
     {
-      Iterator localIterator = this.jdField_b_of_type_JavaUtilMap.keySet().iterator();
-      while (localIterator.hasNext())
+      localObject1 = this.jdField_b_of_type_JavaUtilMap.keySet().iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        Object localObject = (VideoInfo)localIterator.next();
-        localObject = (Stream)this.jdField_b_of_type_JavaUtilMap.get(localObject);
-        if (localObject != null) {
-          ((Stream)localObject).cancel();
+        Object localObject2 = (VideoInfo)((Iterator)localObject1).next();
+        localObject2 = (Stream)this.jdField_b_of_type_JavaUtilMap.get(localObject2);
+        if (localObject2 != null) {
+          ((Stream)localObject2).cancel();
         }
       }
       this.jdField_b_of_type_JavaUtilMap.clear();
@@ -81,71 +82,72 @@ public class VideoItem
   
   protected void a(int paramInt, boolean paramBoolean)
   {
-    if (paramInt == 0) {
-      super.a(paramInt, paramBoolean);
-    }
-    do
+    if (paramInt == 0)
     {
-      Object localObject;
-      Stream localStream;
-      do
+      super.a(paramInt, paramBoolean);
+      return;
+    }
+    if (paramInt == 1)
+    {
+      Object localObject = this.jdField_b_of_type_JavaUtilMap.keySet().iterator();
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoItem", 2, new Object[] { "scheduleStream for poster. hasNext=", Boolean.valueOf(((Iterator)localObject).hasNext()) });
+      }
+      if (((Iterator)localObject).hasNext())
       {
-        do
-        {
-          return;
-        } while (paramInt != 1);
-        localObject = this.jdField_b_of_type_JavaUtilMap.keySet().iterator();
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoItem", 2, new Object[] { "scheduleStream for poster. hasNext=", Boolean.valueOf(((Iterator)localObject).hasNext()) });
-        }
-        if (!((Iterator)localObject).hasNext()) {
-          break;
-        }
         localObject = (VideoInfo)((Iterator)localObject).next();
         if (QLog.isColorLevel()) {
           QLog.d("VideoItem", 2, new Object[] { "scheduleStream for poster. next info position=", Integer.valueOf(((VideoInfo)localObject).c), ", type=", Integer.valueOf(((VideoInfo)localObject).b()), ", hash=", Integer.valueOf(localObject.hashCode()) });
         }
-        localStream = (Stream)this.jdField_b_of_type_JavaUtilMap.get(localObject);
-      } while (localStream == null);
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoItem", 2, new Object[] { "scheduleStream for poster. fire stream. info hash=", Integer.valueOf(localObject.hashCode()) });
+        Stream localStream = (Stream)this.jdField_b_of_type_JavaUtilMap.get(localObject);
+        if (localStream != null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("VideoItem", 2, new Object[] { "scheduleStream for poster. fire stream. info hash=", Integer.valueOf(localObject.hashCode()) });
+          }
+          this.jdField_b_of_type_JavaLangString = ((VideoInfo)localObject).d;
+          ((VideoInfo)localObject).a = System.currentTimeMillis();
+          localStream.subscribe(a((VideoInfo)localObject));
+        }
       }
-      this.jdField_b_of_type_JavaLangString = ((VideoInfo)localObject).d;
-      ((VideoInfo)localObject).a = System.currentTimeMillis();
-      localStream.subscribe(a((VideoInfo)localObject));
-      return;
-      this.jdField_b_of_type_JavaLangString = null;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoItem", 2, new Object[] { "scheduleStream for poster. no poster stream. mHasStartUploading=", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+      else
+      {
+        this.jdField_b_of_type_JavaLangString = null;
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoItem", 2, new Object[] { "scheduleStream for poster. no poster stream. mHasStartUploading=", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+        }
+        if (!this.jdField_a_of_type_Boolean) {
+          a(0, true);
+        }
       }
-    } while (this.jdField_a_of_type_Boolean);
-    a(0, true);
+    }
   }
   
   public void a(View paramView, ImageItem.ImageViewHolder paramImageViewHolder)
   {
     VideoInfo localVideoInfo = (VideoInfo)paramImageViewHolder.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelEditItemInfoBase;
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i == 2131368227)
     {
-    case 2131368482: 
-    default: 
-    case 2131368479: 
-    case 2131368483: 
-      do
-      {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiEditItemBase$OnEditItemListener.a(paramImageViewHolder);
-        return;
-      } while (localVideoInfo.g != 2);
-      paramImageViewHolder.b.setVisibility(4);
-      a(localVideoInfo);
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiEditItemBase$OnEditItemListener.a(paramImageViewHolder);
       return;
     }
-    InputMethodUtil.a((Activity)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getContext());
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoItem", 2, new Object[] { "onItemViewClick preview. info position=", Integer.valueOf(localVideoInfo.c), ", path=", localVideoInfo.f });
+    if (i == 2131368231)
+    {
+      if (localVideoInfo.jdField_f_of_type_Int == 2)
+      {
+        paramImageViewHolder.b.setVisibility(4);
+        a(localVideoInfo);
+      }
     }
-    a(localVideoInfo);
+    else if ((i == 2131368229) || (i == 2131368228))
+    {
+      InputMethodUtil.a((Activity)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getContext());
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoItem", 2, new Object[] { "onItemViewClick preview. info position=", Integer.valueOf(localVideoInfo.c), ", path=", localVideoInfo.jdField_f_of_type_JavaLangString });
+      }
+      a(localVideoInfo);
+    }
   }
   
   protected void a(ImageInfo paramImageInfo)
@@ -165,7 +167,8 @@ public class VideoItem
     if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramImageInfo)) {
       this.jdField_a_of_type_JavaUtilMap.put(paramImageInfo, localStream2);
     }
-    if (localStream1 != null) {
+    if (localStream1 != null)
+    {
       if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
       {
         this.jdField_b_of_type_JavaLangString = paramImageInfo.d;
@@ -173,13 +176,13 @@ public class VideoItem
         localStream1.subscribe(a(paramImageInfo));
       }
     }
-    while (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return;
+    else if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      this.jdField_a_of_type_JavaLangString = paramImageInfo.d;
+      this.jdField_a_of_type_Boolean = true;
+      paramImageInfo.a = System.currentTimeMillis();
+      localStream2.subscribe(a(paramImageInfo));
     }
-    this.jdField_a_of_type_JavaLangString = paramImageInfo.d;
-    this.jdField_a_of_type_Boolean = true;
-    paramImageInfo.a = System.currentTimeMillis();
-    localStream2.subscribe(a(paramImageInfo));
   }
   
   public void a(VideoInfo paramVideoInfo)
@@ -187,40 +190,39 @@ public class VideoItem
     if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.d() == 0) {
       this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.requestFocus();
     }
-    BaseActivity localBaseActivity = (BaseActivity)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getContext();
-    Intent localIntent = new Intent(localBaseActivity, ShortVideoPlayActivity.class);
+    QBaseActivity localQBaseActivity = (QBaseActivity)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getContext();
+    Intent localIntent = new Intent();
     localIntent.putExtra("file_send_path", paramVideoInfo.c());
     localIntent.putExtra("video_play_caller", 4);
     localIntent.putExtra("message_click_start", System.currentTimeMillis());
-    localBaseActivity.startActivity(localIntent);
+    RouteUtils.a(localQBaseActivity, localIntent, "/business/shortvideoplay");
     paramVideoInfo = new Intent();
     paramVideoInfo.setAction("com.tencent.mobileqq.troop.homework.xmediaeditor.ui.action_play_video");
-    paramVideoInfo.setPackage(localBaseActivity.getPackageName());
-    localBaseActivity.sendBroadcast(paramVideoInfo);
+    paramVideoInfo.setPackage(localQBaseActivity.getPackageName());
+    localQBaseActivity.sendBroadcast(paramVideoInfo);
   }
   
   protected void a(ImageItem.ImageViewHolder paramImageViewHolder, ImageInfo paramImageInfo, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
       paramImageViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
       paramImageViewHolder.c.setVisibility(0);
       paramImageViewHolder.b.setVisibility(4);
       paramImageViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(4);
-    }
-    do
-    {
       return;
-      paramImageViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      switch (paramImageInfo.g)
+    }
+    paramImageViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    paramInt = paramImageInfo.jdField_f_of_type_Int;
+    if (paramInt != 2)
+    {
+      if (paramInt != 3)
       {
-      default: 
-        return;
-      case -2147483648: 
-      case -2147483647: 
-      case -2147483646: 
-      case -2147483645: 
+        switch (paramInt)
+        {
+        default: 
+          return;
+        }
         paramImageViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(0);
         paramImageViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
         paramImageViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(paramImageInfo.e, paramImageInfo.d);
@@ -228,19 +230,24 @@ public class VideoItem
         paramImageViewHolder.c.setVisibility(4);
         return;
       }
-    } while (paramImageInfo.e != 100);
-    paramImageViewHolder.a();
-    return;
-    paramImageViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(4);
-    paramImageViewHolder.b.setVisibility(0);
-    paramImageViewHolder.c.setVisibility(4);
+      if (paramImageInfo.e == 100) {
+        paramImageViewHolder.a();
+      }
+    }
+    else
+    {
+      paramImageViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(4);
+      paramImageViewHolder.b.setVisibility(0);
+      paramImageViewHolder.c.setVisibility(4);
+    }
   }
   
   public void d(EditItemInfoBase paramEditItemInfoBase)
   {
     super.d(paramEditItemInfoBase);
     paramEditItemInfoBase = (VideoInfo)paramEditItemInfoBase;
-    if ((this.jdField_b_of_type_JavaUtilMap != null) && (!this.jdField_b_of_type_JavaUtilMap.isEmpty()))
+    Map localMap = this.jdField_b_of_type_JavaUtilMap;
+    if ((localMap != null) && (!localMap.isEmpty()))
     {
       paramEditItemInfoBase = (Stream)this.jdField_b_of_type_JavaUtilMap.get(paramEditItemInfoBase);
       if (paramEditItemInfoBase != null) {
@@ -251,7 +258,7 @@ public class VideoItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.VideoItem
  * JD-Core Version:    0.7.0.1
  */

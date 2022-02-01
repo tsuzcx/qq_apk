@@ -12,14 +12,9 @@ public class LightSdkInitializer
 {
   private static final SharedLibraryInfo CPP_SHARED = new SharedLibraryInfo("c++_shared");
   private static final SharedLibraryInfo OPENCV_WORLD = new SharedLibraryInfo("opencv_world");
-  private static final SharedLibraryInfo[] SHARED_LIBRARIES;
-  private static final String TAG = LightSdkInitializer.class.getSimpleName();
+  private static final SharedLibraryInfo[] SHARED_LIBRARIES = { new SharedLibraryInfo("thread"), new SharedLibraryInfo("miniz"), new SharedLibraryInfo("logging"), new SharedLibraryInfo("libpag"), new SharedLibraryInfo("light-sdk") };
+  private static final String TAG = "LightSdkInitializer";
   private static final SharedLibraryInfo V8_JNI = new SharedLibraryInfo("v8jni");
-  
-  static
-  {
-    SHARED_LIBRARIES = new SharedLibraryInfo[] { new SharedLibraryInfo("thread"), new SharedLibraryInfo("miniz"), new SharedLibraryInfo("logging"), new SharedLibraryInfo("libpag"), new SharedLibraryInfo("light-sdk") };
-  }
   
   protected boolean destroyImpl()
   {
@@ -44,14 +39,9 @@ public class LightSdkInitializer
   protected boolean initImpl()
   {
     if (!isExternalSoLoad()) {
-      if ((!systemLoadLibrarySafely(CPP_SHARED.fileName)) || (!systemLoadLibrarySafely(V8_JNI.fileName)) || (!loadAllSoFiles())) {}
+      return (systemLoadLibrarySafely(CPP_SHARED.fileName)) && (systemLoadLibrarySafely(V8_JNI.fileName)) && (loadAllSoFiles());
     }
-    while ((systemLoadSafely(FileUtils.genSeperateFileDir(FeatureManager.getSoDir()), CPP_SHARED)) && (systemLoadLibrarySafely(V8_JNI.fileName)) && (loadAllSoFiles()))
-    {
-      return true;
-      return false;
-    }
-    return false;
+    return (systemLoadSafely(FileUtils.genSeperateFileDir(FeatureManager.getSoDir()), CPP_SHARED)) && (systemLoadLibrarySafely(V8_JNI.fileName)) && (loadAllSoFiles());
   }
   
   public boolean supportAceEngine()
@@ -61,7 +51,7 @@ public class LightSdkInitializer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.initializer.LightSdkInitializer
  * JD-Core Version:    0.7.0.1
  */

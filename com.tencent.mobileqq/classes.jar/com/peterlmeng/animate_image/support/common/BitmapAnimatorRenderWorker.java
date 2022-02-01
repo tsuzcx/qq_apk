@@ -93,22 +93,24 @@ public class BitmapAnimatorRenderWorker
   
   public void updateFile(String paramString)
   {
-    if (this.mAnimator != null)
+    Object localObject = this.mAnimator;
+    if (localObject != null)
     {
-      this.mAnimator.stop();
+      ((IBitmapAnimator)localObject).stop();
       this.mAnimator.setLoadResultCallback(null);
       this.mAnimator.setInvalidateCallback(null);
       this.mAnimator = null;
     }
-    this.mImageParams.url = paramString;
-    this.mAnimator = this.mAnimatorFactory.create(new BitmapAnimatorParams(this.mImageParams.url, this.mImageParams.size));
+    localObject = this.mImageParams;
+    ((RenderWorkerFactory.CreateRenderWorkerParams)localObject).url = paramString;
+    this.mAnimator = this.mAnimatorFactory.create(new BitmapAnimatorParams(((RenderWorkerFactory.CreateRenderWorkerParams)localObject).url, this.mImageParams.size));
     this.mAnimator.setInvalidateCallback(this);
     this.mAnimator.setLoadResultCallback(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.peterlmeng.animate_image.support.common.BitmapAnimatorRenderWorker
  * JD-Core Version:    0.7.0.1
  */

@@ -1,146 +1,143 @@
 package com.tencent.mobileqq.mvvm;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Lifecycle;
-import androidx.lifecycle.Lifecycle.Event;
-import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.LifecycleRegistry;
 import androidx.lifecycle.ViewModelStore;
-import androidx.lifecycle.ViewModelStoreOwner;
+import com.tencent.mobileqq.app.BaseFragment;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
-import java.util.HashMap;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/mvvm/LifeCycleFragment;", "Landroid/support/v4/app/Fragment;", "Landroidx/lifecycle/LifecycleOwner;", "Landroidx/lifecycle/ViewModelStoreOwner;", "()V", "mLifecycleRegistry", "Landroidx/lifecycle/LifecycleRegistry;", "mViewModelStore", "Landroidx/lifecycle/ViewModelStore;", "dispatchLifeCycleEvent", "", "event", "Landroidx/lifecycle/Lifecycle$Event;", "getLifecycle", "Landroidx/lifecycle/Lifecycle;", "getViewModelStore", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "onStart", "onStop", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public class LifeCycleFragment
-  extends ReportV4Fragment
-  implements LifecycleOwner, ViewModelStoreOwner
+  extends BaseFragment
+  implements LifeCycleAndViewModelStoreOwner
 {
-  private LifecycleRegistry jdField_a_of_type_AndroidxLifecycleLifecycleRegistry;
-  private final ViewModelStore jdField_a_of_type_AndroidxLifecycleViewModelStore = new ViewModelStore();
-  private HashMap jdField_a_of_type_JavaUtilHashMap;
+  private LifeCycleDispatcher a = new LifeCycleDispatcher();
   
-  public void a()
+  public static LifeCycleAndViewModelStoreOwner a(QBaseActivity paramQBaseActivity)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
+    Object localObject = paramQBaseActivity.getSupportFragmentManager().findFragmentByTag("fragment_tag_life_cycle_Fragment");
+    if ((localObject instanceof LifeCycleFragment)) {
+      return (LifeCycleFragment)localObject;
     }
+    paramQBaseActivity = paramQBaseActivity.getSupportFragmentManager().beginTransaction();
+    if (localObject != null) {
+      paramQBaseActivity.remove((Fragment)localObject);
+    }
+    localObject = new LifeCycleFragment();
+    paramQBaseActivity.add((Fragment)localObject, "fragment_tag_life_cycle_Fragment");
+    paramQBaseActivity.commitAllowingStateLoss();
+    return localObject;
   }
   
-  public final void a(@NotNull Lifecycle.Event paramEvent)
-  {
-    Intrinsics.checkParameterIsNotNull(paramEvent, "event");
-    try
-    {
-      if (this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry == null) {
-        this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry = new LifecycleRegistry((LifecycleOwner)this);
-      }
-      LifecycleRegistry localLifecycleRegistry = this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry;
-      if (localLifecycleRegistry != null) {
-        localLifecycleRegistry.handleLifecycleEvent(paramEvent);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("LifeCycleFragment", 2, "dispatchLifeCycleEvent event -> " + paramEvent);
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("LifeCycleFragment", 1, "handleLifecycleEvent fail : event -> " + paramEvent);
-    }
-  }
-  
-  @NotNull
+  @NonNull
   public Lifecycle getLifecycle()
   {
-    if (this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry == null) {
-      this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry = new LifecycleRegistry((LifecycleOwner)this);
-    }
-    LifecycleRegistry localLifecycleRegistry = this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry;
-    if (localLifecycleRegistry == null) {
-      Intrinsics.throwNpe();
-    }
-    return (Lifecycle)localLifecycleRegistry;
+    return this.a.getLifecycle();
   }
   
-  @NotNull
+  @NonNull
   public ViewModelStore getViewModelStore()
   {
-    return this.jdField_a_of_type_AndroidxLifecycleViewModelStore;
+    return this.a.getViewModelStore();
   }
   
-  public void onCreate(@Nullable Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    if (QLog.isColorLevel()) {
-      QLog.d("LifeCycleFragment", 2, "onCreate() " + getClass().getSimpleName() + " " + hashCode());
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("onCreate() ");
+      paramBundle.append(getClass().getSimpleName());
+      paramBundle.append(" ");
+      paramBundle.append(hashCode());
+      QLog.d("LifeCycleFragment", 2, paramBundle.toString());
     }
-    a(Lifecycle.Event.ON_CREATE);
+    this.a.a();
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if (QLog.isColorLevel()) {
-      QLog.d("LifeCycleFragment", 2, "onDestroy() " + getClass().getSimpleName() + " " + hashCode());
-    }
-    a(Lifecycle.Event.ON_DESTROY);
-    Activity localActivity = (Activity)getActivity();
-    if ((localActivity != null) && (localActivity.isChangingConfigurations())) {}
-    for (int i = 1;; i = 0)
+    if (QLog.isColorLevel())
     {
-      if (i == 0) {
-        this.jdField_a_of_type_AndroidxLifecycleViewModelStore.clear();
-      }
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDestroy() ");
+      localStringBuilder.append(getClass().getSimpleName());
+      localStringBuilder.append(" ");
+      localStringBuilder.append(hashCode());
+      QLog.d("LifeCycleFragment", 2, localStringBuilder.toString());
     }
+    this.a.f();
   }
   
   public void onPause()
   {
     super.onPause();
-    if (QLog.isColorLevel()) {
-      QLog.d("LifeCycleFragment", 2, "onPause() " + getClass().getSimpleName() + " " + hashCode());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPause() ");
+      localStringBuilder.append(getClass().getSimpleName());
+      localStringBuilder.append(" ");
+      localStringBuilder.append(hashCode());
+      QLog.d("LifeCycleFragment", 2, localStringBuilder.toString());
     }
-    a(Lifecycle.Event.ON_PAUSE);
+    this.a.d();
   }
   
   public void onResume()
   {
     super.onResume();
-    if (QLog.isColorLevel()) {
-      QLog.d("LifeCycleFragment", 2, "onResume() " + getClass().getSimpleName() + " " + hashCode());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onResume() ");
+      localStringBuilder.append(getClass().getSimpleName());
+      localStringBuilder.append(" ");
+      localStringBuilder.append(hashCode());
+      QLog.d("LifeCycleFragment", 2, localStringBuilder.toString());
     }
-    a(Lifecycle.Event.ON_RESUME);
+    this.a.c();
   }
   
   public void onStart()
   {
     super.onStart();
-    if (QLog.isColorLevel()) {
-      QLog.d("LifeCycleFragment", 2, "onStart() " + getClass().getSimpleName() + " " + hashCode());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onStart() ");
+      localStringBuilder.append(getClass().getSimpleName());
+      localStringBuilder.append(" ");
+      localStringBuilder.append(hashCode());
+      QLog.d("LifeCycleFragment", 2, localStringBuilder.toString());
     }
-    a(Lifecycle.Event.ON_START);
+    this.a.b();
   }
   
   public void onStop()
   {
     super.onStop();
-    if (QLog.isColorLevel()) {
-      QLog.d("LifeCycleFragment", 2, "onStop() " + getClass().getSimpleName() + " " + hashCode());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onStop() ");
+      localStringBuilder.append(getClass().getSimpleName());
+      localStringBuilder.append(" ");
+      localStringBuilder.append(hashCode());
+      QLog.d("LifeCycleFragment", 2, localStringBuilder.toString());
     }
-    a(Lifecycle.Event.ON_STOP);
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mvvm.LifeCycleFragment
  * JD-Core Version:    0.7.0.1
  */

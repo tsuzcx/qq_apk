@@ -21,8 +21,12 @@ public class BackgroundService
   {
     super.onCreate();
     this.a = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i("BackgroundService", 2, "onCreate: invoked.  mCreateTimeMs: " + this.a);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCreate: invoked.  mCreateTimeMs: ");
+      localStringBuilder.append(this.a);
+      QLog.i("BackgroundService", 2, localStringBuilder.toString());
     }
   }
   
@@ -30,14 +34,18 @@ public class BackgroundService
   {
     super.onDestroy();
     long l = (System.currentTimeMillis() - this.a) / 1000L;
-    if (QLog.isColorLevel()) {
-      QLog.i("BackgroundService", 2, "onDestroy: invoked.  durationSecond: " + l);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDestroy: invoked.  durationSecond: ");
+      localStringBuilder.append(l);
+      QLog.i("BackgroundService", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.bgprobe.BackgroundService
  * JD-Core Version:    0.7.0.1
  */

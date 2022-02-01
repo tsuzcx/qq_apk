@@ -22,31 +22,29 @@ public class AvatarPendantActivity$AnimationScrollListener
   {
     if (paramInt == 0) {
       ((AvatarPendantManager)this.b.app.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER)).a(this.b.jdField_a_of_type_Long).a(false);
-    }
-    for (;;)
-    {
-      this.b.u = paramInt;
-      if (paramInt != 0) {
-        break label129;
-      }
-      if (!this.b.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.a) {
-        break;
-      }
-      this.b.jdField_a_of_type_ComTencentWidgetXListView.postDelayed(new AvatarPendantActivity.AnimationScrollListener.1(this), 80L);
-      return;
+    } else {
       ((AvatarPendantManager)this.b.app.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER)).a(this.b.jdField_a_of_type_Long).a(true);
     }
-    URLDrawable.resume();
-    this.b.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.notifyDataSetChanged();
-    return;
-    label129:
+    paramAbsListView = this.b;
+    paramAbsListView.u = paramInt;
+    if (paramInt == 0)
+    {
+      if (paramAbsListView.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.a)
+      {
+        this.b.jdField_a_of_type_ComTencentWidgetXListView.postDelayed(new AvatarPendantActivity.AnimationScrollListener.1(this), 80L);
+        return;
+      }
+      URLDrawable.resume();
+      this.b.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.notifyDataSetChanged();
+      return;
+    }
     URLDrawable.pause();
     this.b.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.a = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.AnimationScrollListener
  * JD-Core Version:    0.7.0.1
  */

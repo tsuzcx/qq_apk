@@ -1,16 +1,20 @@
 package dov.com.qq.im.ae.download.old;
 
-final class AEOldShortVideoResManager$6
+import java.util.List;
+
+class AEOldShortVideoResManager$6
   implements Runnable
 {
+  AEOldShortVideoResManager$6(AEOldShortVideoResManager paramAEOldShortVideoResManager, List paramList) {}
+  
   public void run()
   {
-    AEOldShortVideoResManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_DovComQqImAeDownloadOldAEOldShortVideoResManager$INet_ShortVideoResource, "new_qq_android_native_portrait_filter_");
+    AEOldShortVideoResManager.a(this.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.download.old.AEOldShortVideoResManager.6
  * JD-Core Version:    0.7.0.1
  */

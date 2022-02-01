@@ -13,7 +13,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class VacAdvGetAccess$GoodsInfo
   extends MessageMicro<GoodsInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 50, 58, 66, 72, 80, 88, 98, 106, 112, 122, 130, 138, 146, 152, 160, 169, 176, 184, 192, 202, 208, 218, 226, 234 }, new String[] { "goods_id", "ware_house_id", "source", "source_str", "source_product_id", "main_img_url", "goods_name", "goods_desc", "cur_price", "org_price", "inventory", "sale_tip", "sell_points", "category_id", "category_name", "ext_img_urls", "shop_name", "qq_mini_program_url", "state", "audit_state", "share", "commission", "update_time", "is_bind", "production_token", "living_stream_state", "wx_mini_program_url", "h5_url", "mini_program_username" }, new Object[] { "", Integer.valueOf(0), Integer.valueOf(0), "", "", "", "", "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0), "", "", "", "", Integer.valueOf(0), Integer.valueOf(0), Double.valueOf(0.0D), Integer.valueOf(0), Long.valueOf(0L), Boolean.valueOf(false), "", Integer.valueOf(0), "", "", "" }, GoodsInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field audit_state = PBField.initInt32(0);
   public final PBInt32Field category_id = PBField.initInt32(0);
   public final PBStringField category_name = PBField.initString("");
@@ -43,10 +43,16 @@ public final class VacAdvGetAccess$GoodsInfo
   public final PBUInt64Field update_time = PBField.initUInt64(0L);
   public final PBInt32Field ware_house_id = PBField.initInt32(0);
   public final PBStringField wx_mini_program_url = PBField.initString("");
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 50, 58, 66, 72, 80, 88, 98, 106, 112, 122, 130, 138, 146, 152, 160, 169, 176, 184, 192, 202, 208, 218, 226, 234 }, new String[] { "goods_id", "ware_house_id", "source", "source_str", "source_product_id", "main_img_url", "goods_name", "goods_desc", "cur_price", "org_price", "inventory", "sale_tip", "sell_points", "category_id", "category_name", "ext_img_urls", "shop_name", "qq_mini_program_url", "state", "audit_state", "share", "commission", "update_time", "is_bind", "production_token", "living_stream_state", "wx_mini_program_url", "h5_url", "mini_program_username" }, new Object[] { "", localInteger, localInteger, "", "", "", "", "", localInteger, localInteger, localInteger, "", "", localInteger, "", "", "", "", localInteger, localInteger, Double.valueOf(0.0D), localInteger, Long.valueOf(0L), Boolean.valueOf(false), "", localInteger, "", "", "" }, GoodsInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VAC_ADV_GET_ACCESS.VacAdvGetAccess.GoodsInfo
  * JD-Core Version:    0.7.0.1
  */

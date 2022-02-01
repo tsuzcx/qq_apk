@@ -1,18 +1,25 @@
 package com.tencent.tavcut.exporter;
 
+import android.opengl.EGLContext;
 import com.google.gson.Gson;
+import com.tencent.aekit.api.standard.filter.AEFilterManager;
 import com.tencent.tav.coremedia.CGSize;
+import com.tencent.tav.decoder.RenderContext;
 import com.tencent.tavcut.bean.Size;
 import com.tencent.tavcut.util.BitmapUtil;
+import com.tencent.tavcut.util.Logger;
 import com.tencent.tavcut.util.Util;
 import com.tencent.weseevideo.composition.VideoRenderChainConfigure;
 import com.tencent.weseevideo.composition.builder.MediaBuilderFactory;
+import com.tencent.weseevideo.composition.image.AssetImageGenerator.ImageGeneratorThread;
 import com.tencent.weseevideo.editor.sticker.StickerController;
 import com.tencent.weseevideo.model.MediaModel;
+import com.tencent.weseevideo.model.effect.MediaEffectModel;
 import com.tencent.weseevideo.model.resource.MediaClipModel;
 import com.tencent.weseevideo.model.resource.MediaResourceModel;
 import com.tencent.weseevideo.model.resource.VideoResourceModel;
 import com.tencent.weseevideo.model.template.MediaTemplateModel;
+import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -22,100 +29,127 @@ import java.util.concurrent.atomic.AtomicInteger;
 class ImageExporter$1
   implements Runnable
 {
-  ImageExporter$1(ImageExporter paramImageExporter, ImageExporter.ImageExportCallback paramImageExportCallback, ExecutorService paramExecutorService) {}
+  ImageExporter$1(ImageExporter paramImageExporter, ImageExporter.ImageExportCallback paramImageExportCallback, ExecutorService paramExecutorService, AEFilterManager paramAEFilterManager, EGLContext paramEGLContext, AssetImageGenerator.ImageGeneratorThread paramImageGeneratorThread, RenderContext paramRenderContext) {}
   
   public void run()
   {
-    AtomicInteger localAtomicInteger = new AtomicInteger(0);
-    LinkedBlockingDeque localLinkedBlockingDeque = new LinkedBlockingDeque();
+    1 local1 = this;
+    Object localObject2 = new AtomicInteger(0);
+    Object localObject1 = new LinkedBlockingDeque();
     long l = System.currentTimeMillis();
     int i = 0;
-    for (;;)
+    while (i < ImageExporter.access$000(local1.this$0).size())
     {
-      if (i < ImageExporter.access$000(this.this$0).size())
+      if (ImageExporter.access$100(local1.this$0))
       {
-        if (ImageExporter.access$100(this.this$0))
-        {
-          if (this.val$callback != null) {
-            this.val$callback.onCancelled();
-          }
-          this.val$executorService.shutdown();
+        localObject1 = local1.val$callback;
+        if (localObject1 != null) {
+          ((ImageExporter.ImageExportCallback)localObject1).onCancelled();
         }
-      }
-      else {
+        local1.val$executorService.shutdown();
         return;
       }
-      MediaModel localMediaModel = (MediaModel)new Gson().fromJson(((MediaModel)ImageExporter.access$000(this.this$0).get(i)).toString(), MediaModel.class);
-      VideoRenderChainConfigure localVideoRenderChainConfigure = new VideoRenderChainConfigure(true);
-      Object localObject1 = localMediaModel.getMediaTemplateModel();
-      label145:
-      int j;
-      if (!((MediaTemplateModel)localObject1).isAutoTemplateEmpty())
+      MediaModel localMediaModel = (MediaModel)new Gson().fromJson(((MediaModel)ImageExporter.access$000(local1.this$0).get(i)).toString(), MediaModel.class);
+      Object localObject4;
+      Object localObject3;
+      if (((String)ImageExporter.access$200(local1.this$0).get(i)).equals(Util.md5(((MediaModel)ImageExporter.access$000(local1.this$0).get(i)).toString())))
       {
-        localVideoRenderChainConfigure.setSceneType(2);
-        localObject1 = ((MediaClipModel)localMediaModel.getMediaResourceModel().getVideos().get(0)).getResource().getPath();
-        Object localObject2 = BitmapUtil.getImageSize((String)localObject1, false);
-        if (ImageExporter.access$200(this.this$0) == null) {
-          break label488;
+        if (local1.val$callback != null)
+        {
+          localObject4 = ((MediaClipModel)localMediaModel.getMediaResourceModel().getVideos().get(0)).getResource().getPath();
+          localObject3 = localObject4;
+          if (ImageExporter.access$300(local1.this$0, (String)localObject4)) {
+            localObject3 = ImageExporter.access$400(local1.this$0, (LinkedBlockingDeque)localObject1, i, localMediaModel, (String)localObject4);
+          }
+          local1.val$callback.onImageExport((String)localObject3);
         }
-        j = ImageExporter.access$200(this.this$0).getMaxExportSize();
-        label199:
+        if (((AtomicInteger)localObject2).incrementAndGet() == ImageExporter.access$000(local1.this$0).size())
+        {
+          localObject2 = ImageExporter.access$500(local1.this$0);
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("cost time: =========== ");
+          ((StringBuilder)localObject3).append(System.currentTimeMillis() - l);
+          Logger.d((String)localObject2, ((StringBuilder)localObject3).toString());
+          if (local1.val$callback != null) {
+            if (((LinkedBlockingDeque)localObject1).isEmpty()) {
+              local1.val$callback.onExportComplete();
+            } else {
+              local1.val$callback.onFailed((Collection)localObject1);
+            }
+          }
+          local1.val$executorService.shutdown();
+          return;
+        }
+      }
+      else
+      {
+        localObject3 = new VideoRenderChainConfigure(true);
+        localObject4 = localMediaModel.getMediaTemplateModel();
+        if (!((MediaTemplateModel)localObject4).isAutoTemplateEmpty())
+        {
+          ((VideoRenderChainConfigure)localObject3).setSceneType(2);
+          localMediaModel.getMediaEffectModel().putParam("FRAME_PARAMS_KEY_IS_ON", "1");
+        }
+        else if (!((MediaTemplateModel)localObject4).isMovieTemplateEmpty())
+        {
+          ((VideoRenderChainConfigure)localObject3).setSceneType(1);
+        }
+        else
+        {
+          ((VideoRenderChainConfigure)localObject3).setSceneType(0);
+        }
+        ((VideoRenderChainConfigure)localObject3).setImageMode(true);
+        localObject4 = ((MediaClipModel)localMediaModel.getMediaResourceModel().getVideos().get(0)).getResource().getPath();
+        Object localObject5 = BitmapUtil.getImageSize((String)localObject4, false);
+        int j;
+        if (ImageExporter.access$600(local1.this$0) != null) {
+          j = ImageExporter.access$600(local1.this$0).getMaxExportSize();
+        } else {
+          j = -1;
+        }
         if (j != -1)
         {
-          localObject3 = Util.constrainMaxSize((Size)localObject2, j);
-          int k = ((Size)localObject2).getWidth() / ((Size)localObject3).getWidth();
-          if (((Size)localObject2).getWidth() % ((Size)localObject3).getWidth() != 0) {
-            break label493;
+          localObject6 = Util.constrainMaxSize((Size)localObject5, j);
+          int k = ((Size)localObject5).getWidth() / ((Size)localObject6).getWidth();
+          if (((Size)localObject5).getWidth() % ((Size)localObject6).getWidth() == 0) {
+            j = 0;
+          } else {
+            j = 1;
           }
-          j = 0;
           k = j + k;
           j = k;
           if (k <= 0) {
             j = 1;
           }
-          ((Size)localObject2).setWidth(((Size)localObject2).getWidth() / j);
-          ((Size)localObject2).setHeight(((Size)localObject2).getHeight() / j);
+          ((Size)localObject5).setWidth(((Size)localObject5).getWidth() / j);
+          ((Size)localObject5).setHeight(((Size)localObject5).getHeight() / j);
         }
-        ((MediaClipModel)localMediaModel.getMediaResourceModel().getVideos().get(0)).getResource().setWidth(((Size)localObject2).getWidth());
-        ((MediaClipModel)localMediaModel.getMediaResourceModel().getVideos().get(0)).getResource().setHeight(((Size)localObject2).getHeight());
-        localObject2 = ImageExporter.access$300(this.this$0, localMediaModel, (String)localObject1);
-        localVideoRenderChainConfigure.setRenderSize((CGSize)localObject2);
-        Object localObject3 = (String)ImageExporter.access$200(this.this$0).getOutputPaths().get(i);
-        StickerController localStickerController = new StickerController(ImageExporter.access$400(this.this$0));
-        ImageExporter.access$502(this.this$0, new CountDownLatch(1));
-        MediaBuilderFactory.mediaBuilderAsync(localMediaModel, ImageExporter.access$400(this.this$0), localStickerController, localVideoRenderChainConfigure, new ImageExporter.1.1(this, localStickerController, localMediaModel, (CGSize)localObject2, localLinkedBlockingDeque, (String)localObject3, (String)localObject1, localAtomicInteger, l));
-      }
-      try
-      {
-        ImageExporter.access$500(this.this$0).await();
-        i += 1;
-        continue;
-        if (!((MediaTemplateModel)localObject1).isMovieTemplateEmpty())
+        ((MediaClipModel)localMediaModel.getMediaResourceModel().getVideos().get(0)).getResource().setWidth(((Size)localObject5).getWidth());
+        ((MediaClipModel)localMediaModel.getMediaResourceModel().getVideos().get(0)).getResource().setHeight(((Size)localObject5).getHeight());
+        localObject5 = ImageExporter.access$700(local1.this$0, localMediaModel, (String)localObject4);
+        ((VideoRenderChainConfigure)localObject3).setRenderSize((CGSize)localObject5);
+        ((VideoRenderChainConfigure)localObject3).setScreenSize(ImageExporter.access$600(local1.this$0).getScreenSize());
+        Object localObject6 = (String)ImageExporter.access$600(local1.this$0).getOutputPaths().get(i);
+        StickerController localStickerController = new StickerController(ImageExporter.access$800(local1.this$0));
+        ImageExporter.access$902(local1.this$0, new CountDownLatch(1));
+        MediaBuilderFactory.mediaBuilderSync(localMediaModel, ImageExporter.access$800(local1.this$0), localStickerController, (VideoRenderChainConfigure)localObject3, new ImageExporter.1.1(this, localStickerController, localMediaModel, (CGSize)localObject5, (LinkedBlockingDeque)localObject1, (String)localObject6, (String)localObject4, (AtomicInteger)localObject2, l));
+        local1 = this;
+        try
         {
-          localVideoRenderChainConfigure.setSceneType(1);
-          break label145;
+          ImageExporter.access$900(local1.this$0).await();
         }
-        localVideoRenderChainConfigure.setSceneType(0);
-        break label145;
-        label488:
-        j = -1;
-        break label199;
-        label493:
-        j = 1;
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        for (;;)
+        catch (InterruptedException localInterruptedException)
         {
           localInterruptedException.printStackTrace();
         }
       }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.exporter.ImageExporter.1
  * JD-Core Version:    0.7.0.1
  */

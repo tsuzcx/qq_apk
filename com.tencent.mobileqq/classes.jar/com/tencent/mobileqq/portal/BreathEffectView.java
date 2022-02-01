@@ -38,7 +38,7 @@ public class BreathEffectView
       QLog.d("BreathEffectView", 2, "yure yellow");
     }
     g();
-    setImageResource(2130845402);
+    setImageResource(2130845275);
     d();
     this.jdField_a_of_type_Int = 1;
   }
@@ -49,7 +49,7 @@ public class BreathEffectView
       QLog.d("BreathEffectView", 2, "formal red");
     }
     g();
-    setImageResource(2130845403);
+    setImageResource(2130845276);
     d();
     this.jdField_a_of_type_Int = 2;
   }
@@ -57,7 +57,7 @@ public class BreathEffectView
   public void c()
   {
     g();
-    setImageResource(2130846982);
+    setImageResource(2130846860);
     e();
   }
   
@@ -85,9 +85,10 @@ public class BreathEffectView
   
   public void f()
   {
-    if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null)
+    ObjectAnimator localObjectAnimator = this.jdField_a_of_type_AndroidAnimationObjectAnimator;
+    if (localObjectAnimator != null)
     {
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator.end();
+      localObjectAnimator.end();
       this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
       this.jdField_a_of_type_AndroidAnimationObjectAnimator = null;
     }
@@ -117,7 +118,7 @@ public class BreathEffectView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.portal.BreathEffectView
  * JD-Core Version:    0.7.0.1
  */

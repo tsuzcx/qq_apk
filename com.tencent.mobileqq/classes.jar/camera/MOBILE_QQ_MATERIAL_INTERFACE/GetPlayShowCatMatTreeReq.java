@@ -26,17 +26,19 @@ public final class GetPlayShowCatMatTreeReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.ETag != null) {
-      paramJceOutputStream.write(this.ETag, 0);
+    String str = this.ETag;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.MqVersion != null) {
-      paramJceOutputStream.write(this.MqVersion, 1);
+    str = this.MqVersion;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     camera.MOBILE_QQ_MATERIAL_INTERFACE.GetPlayShowCatMatTreeReq
  * JD-Core Version:    0.7.0.1
  */

@@ -29,9 +29,9 @@ public class GeneralSharePagerView
   
   private void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559642, this);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramContext.findViewById(2131365329));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131370524));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559519, this);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramContext.findViewById(2131365203));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131370183));
   }
   
   public void a(View paramView)
@@ -41,7 +41,7 @@ public class GeneralSharePagerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.message.GeneralSharePagerView
  * JD-Core Version:    0.7.0.1
  */

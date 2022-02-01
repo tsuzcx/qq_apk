@@ -53,30 +53,35 @@ public final class UniBusiItemDetail
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.itemid, 0);
-    if (this.itemname != null) {
-      paramJceOutputStream.write(this.itemname, 1);
+    Object localObject = this.itemname;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.feetype, 2);
     paramJceOutputStream.write(this.validts, 3);
     paramJceOutputStream.write(this.validlast, 4);
-    if (this.extrainfo != null) {
-      paramJceOutputStream.write(this.extrainfo, 5);
+    localObject = this.extrainfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
-    if (this.image != null) {
-      paramJceOutputStream.write(this.image, 6);
+    localObject = this.image;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.itemBgColor != null) {
-      paramJceOutputStream.write(this.itemBgColor, 7);
+    localObject = this.itemBgColor;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
     paramJceOutputStream.write(this.appid, 8);
-    if (this.extraappinfo != null) {
-      paramJceOutputStream.write(this.extraappinfo, 9);
+    localObject = this.extraappinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.UniBusiItemDetail
  * JD-Core Version:    0.7.0.1
  */

@@ -17,59 +17,96 @@ class TroopQZoneUploadAlbumHandler$1
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1001: 
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadPhoto", 2, "Get Message Progress. clientKey= " + paramMessage.arg1 + " progress=" + paramMessage.arg2);
+      if (i != 1000)
+      {
+        if (i != 1001)
+        {
+          switch (i)
+          {
+          default: 
+            return;
+          case 1005: 
+            if (QLog.isColorLevel())
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("Get Message task removed. clientKey= ");
+              ((StringBuilder)localObject).append(paramMessage.arg1);
+              ((StringBuilder)localObject).append(" arg2=");
+              ((StringBuilder)localObject).append(paramMessage.arg2);
+              QLog.d("UploadPhoto", 2, ((StringBuilder)localObject).toString());
+            }
+            i = paramMessage.arg1;
+            this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(paramMessage.what, i, paramMessage.arg2);
+            this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a.remove(i);
+            return;
+          case 1004: 
+            if (QLog.isColorLevel())
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("Get Message no task. clientKey= ");
+              ((StringBuilder)localObject).append(paramMessage.arg1);
+              ((StringBuilder)localObject).append(" arg2=");
+              ((StringBuilder)localObject).append(paramMessage.arg2);
+              QLog.d("UploadPhoto", 2, ((StringBuilder)localObject).toString());
+            }
+            this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(paramMessage.what, paramMessage.arg1, paramMessage.arg2);
+            this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a.clear();
+            return;
+          }
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("Get Message failed. clientKey= ");
+            ((StringBuilder)localObject).append(paramMessage.arg1);
+            ((StringBuilder)localObject).append(" arg2=");
+            ((StringBuilder)localObject).append(paramMessage.arg2);
+            QLog.d("UploadPhoto", 2, ((StringBuilder)localObject).toString());
+          }
+          i = paramMessage.arg1;
+          this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(paramMessage.what, i, paramMessage.arg2);
+          return;
+        }
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("Get Message Progress. clientKey= ");
+          ((StringBuilder)localObject).append(paramMessage.arg1);
+          ((StringBuilder)localObject).append(" progress=");
+          ((StringBuilder)localObject).append(paramMessage.arg2);
+          QLog.d("UploadPhoto", 2, ((StringBuilder)localObject).toString());
+        }
+        i = paramMessage.arg1;
+        this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(paramMessage.what, i, paramMessage.arg2);
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Get Message Finished. clientKey= ");
+        ((StringBuilder)localObject).append(paramMessage.arg1);
+        ((StringBuilder)localObject).append(" arg2=");
+        ((StringBuilder)localObject).append(paramMessage.arg2);
+        QLog.d("UploadPhoto", 2, ((StringBuilder)localObject).toString());
       }
       i = paramMessage.arg1;
       this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(paramMessage.what, i, paramMessage.arg2);
-      return;
-    case 1000: 
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadPhoto", 2, "Get Message Finished. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
-      }
-      i = paramMessage.arg1;
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(paramMessage.what, i, paramMessage.arg2);
-      return;
-    case 1003: 
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadPhoto", 2, "Get Message failed. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
-      }
-      i = paramMessage.arg1;
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(paramMessage.what, i, paramMessage.arg2);
-      return;
-    case 1005: 
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadPhoto", 2, "Get Message task removed. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
-      }
-      i = paramMessage.arg1;
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(paramMessage.what, i, paramMessage.arg2);
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a.remove(i);
-      return;
-    case 1004: 
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadPhoto", 2, "Get Message no task. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(paramMessage.what, paramMessage.arg1, paramMessage.arg2);
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a.clear();
       return;
     }
     paramMessage = (Object[])paramMessage.obj;
-    int i = ((Integer)paramMessage[0]).intValue();
-    TroopQZoneUploadAlbumHandler.MonitorInfo localMonitorInfo = (TroopQZoneUploadAlbumHandler.MonitorInfo)paramMessage[1];
+    i = ((Integer)paramMessage[0]).intValue();
+    Object localObject = (TroopQZoneUploadAlbumHandler.MonitorInfo)paramMessage[1];
     int j = ((Integer)paramMessage[2]).intValue();
     int k = ((Integer)paramMessage[3]).intValue();
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(localMonitorInfo.jdField_a_of_type_Long, j, k);
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, localMonitorInfo.jdField_a_of_type_JavaLangString, localMonitorInfo.jdField_a_of_type_Long, j, k);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(((TroopQZoneUploadAlbumHandler.MonitorInfo)localObject).jdField_a_of_type_Long, j, k);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, ((TroopQZoneUploadAlbumHandler.MonitorInfo)localObject).jdField_a_of_type_JavaLangString, ((TroopQZoneUploadAlbumHandler.MonitorInfo)localObject).jdField_a_of_type_Long, j, k);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.TroopQZoneUploadAlbumHandler.1
  * JD-Core Version:    0.7.0.1
  */

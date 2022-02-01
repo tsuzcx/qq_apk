@@ -33,20 +33,23 @@ public final class yy_icon
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iEntranceId, 0);
-    if (this.sIconUrl != null) {
-      paramJceOutputStream.write(this.sIconUrl, 1);
+    String str = this.sIconUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.sIconName != null) {
-      paramJceOutputStream.write(this.sIconName, 2);
+    str = this.sIconName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.sIconTraceInfo != null) {
-      paramJceOutputStream.write(this.sIconTraceInfo, 3);
+    str = this.sIconTraceInfo;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_UNDEAL_COUNT.yy_icon
  * JD-Core Version:    0.7.0.1
  */

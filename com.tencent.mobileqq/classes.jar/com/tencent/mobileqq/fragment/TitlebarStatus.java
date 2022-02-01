@@ -6,7 +6,7 @@ public class TitlebarStatus
 {
   public int a;
   public View.OnClickListener a;
-  public BaseFragment a;
+  public TitlebarBaseFragment a;
   public String a;
   public boolean a;
   public String b;
@@ -16,9 +16,9 @@ public class TitlebarStatus
   public String d;
   public String e;
   
-  public TitlebarStatus(BaseFragment paramBaseFragment)
+  public TitlebarStatus(TitlebarBaseFragment paramTitlebarBaseFragment)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment = paramBaseFragment;
+    this.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarBaseFragment = paramTitlebarBaseFragment;
   }
   
   public TitlebarStatus a(View.OnClickListener paramOnClickListener)
@@ -41,8 +41,9 @@ public class TitlebarStatus
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment.c();
+    TitlebarBaseFragment localTitlebarBaseFragment = this.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarBaseFragment;
+    if (localTitlebarBaseFragment != null) {
+      localTitlebarBaseFragment.t();
     }
   }
   
@@ -65,7 +66,7 @@ public class TitlebarStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.TitlebarStatus
  * JD-Core Version:    0.7.0.1
  */

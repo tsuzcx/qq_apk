@@ -1,28 +1,18 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-
 class BaseChatPie$9
   implements Runnable
 {
-  BaseChatPie$9(BaseChatPie paramBaseChatPie, String paramString, boolean paramBoolean) {}
+  BaseChatPie$9(BaseChatPie paramBaseChatPie) {}
   
   public void run()
   {
-    if (ChatActivityUtils.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e)) {
-      this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new BaseChatPie.9.1(this));
-    }
-    while (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new BaseChatPie.9.2(this));
+    this.this$0.C();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.9
  * JD-Core Version:    0.7.0.1
  */

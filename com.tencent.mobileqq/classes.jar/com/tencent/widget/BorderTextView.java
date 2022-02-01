@@ -30,7 +30,7 @@ public class BorderTextView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.jdField_a_of_type_AndroidGraphicsPaint == null) {
@@ -39,7 +39,10 @@ public class BorderTextView
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.b);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Int);
-    paramCanvas.drawRoundRect(new RectF(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, getMeasuredWidth() - this.jdField_a_of_type_Int, getMeasuredHeight() - this.jdField_a_of_type_Int), this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+    int i = this.jdField_a_of_type_Int;
+    RectF localRectF = new RectF(i, i, getMeasuredWidth() - this.jdField_a_of_type_Int, getMeasuredHeight() - this.jdField_a_of_type_Int);
+    float f = this.jdField_a_of_type_Float;
+    paramCanvas.drawRoundRect(localRectF, f, f, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
   public void setBorderColor(int paramInt)
@@ -60,7 +63,7 @@ public class BorderTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.BorderTextView
  * JD-Core Version:    0.7.0.1
  */

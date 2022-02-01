@@ -16,33 +16,31 @@ class QQARSession$24
       if (QQARSession.a(this.this$0).j()) {
         QQARSession.c(this.this$0);
       }
-      if (QQARSession.a(this.this$0) != 1L) {
-        break label132;
-      }
-      this.this$0.b(1L);
-      QQARSession.b(this.this$0);
-    }
-    for (;;)
-    {
-      this.this$0.m();
-      if ((QQARSession.b(this.this$0)) && (this.this$0.a == 2) && (QQARSession.a(this.this$0) != null))
+      if (QQARSession.a(this.this$0) == 1L)
       {
-        ARTarget localARTarget = new ARTarget(QQARSession.a(this.this$0));
-        QQARSession.a(this.this$0).a(3, localARTarget, this.a);
+        this.this$0.b(1L);
+        QQARSession.b(this.this$0);
       }
-      return;
-      label132:
-      if (QQARSession.a(this.this$0) == 2L) {
+      else if (QQARSession.a(this.this$0) == 2L)
+      {
         this.this$0.o();
-      } else if (QQARSession.a(this.this$0) == 2048L) {
+      }
+      else if (QQARSession.a(this.this$0) == 2048L)
+      {
         this.this$0.q();
       }
+      this.this$0.m();
+    }
+    if ((QQARSession.b(this.this$0)) && (this.this$0.a == 2) && (QQARSession.a(this.this$0) != null))
+    {
+      ARTarget localARTarget = new ARTarget(QQARSession.a(this.this$0));
+      QQARSession.a(this.this$0).a(3, localARTarget, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.QQARSession.24
  * JD-Core Version:    0.7.0.1
  */

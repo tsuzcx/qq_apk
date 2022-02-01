@@ -78,21 +78,24 @@ public final class ReqUserInfo
     paramJceOutputStream.write(this.stGps, 0);
     paramJceOutputStream.write(this.vMacs, 1);
     paramJceOutputStream.write(this.vCells, 2);
-    if (this.strAuthName != null) {
-      paramJceOutputStream.write(this.strAuthName, 3);
+    Object localObject = this.strAuthName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.strAuthPassword != null) {
-      paramJceOutputStream.write(this.strAuthPassword, 4);
+    localObject = this.strAuthPassword;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.cType, 5);
-    if (this.vLBSKeyData != null) {
-      paramJceOutputStream.write(this.vLBSKeyData, 6);
+    localObject = this.vLBSKeyData;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     protocol.KQQConfig.ReqUserInfo
  * JD-Core Version:    0.7.0.1
  */

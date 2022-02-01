@@ -25,78 +25,81 @@ public class BatteryLog
   private static final String TAG = "QAPM_battery_BatteryLog";
   private static String commonFileName;
   private static long logInitTimestamp;
-  private static String logPath = FileUtil.getRootPath() + "/battery/";
+  private static String logPath;
   private static String processName;
   private static String reportFileName;
   @Nullable
   private static Handler writeHandler;
   
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(FileUtil.getRootPath());
+    localStringBuilder.append("/battery/");
+    logPath = localStringBuilder.toString();
+  }
+  
   static void cleanStorage(long paramLong)
   {
-    if (writeHandler != null) {
-      writeHandler.obtainMessage(1, Long.valueOf(paramLong)).sendToTarget();
+    Handler localHandler = writeHandler;
+    if (localHandler != null) {
+      localHandler.obtainMessage(1, Long.valueOf(paramLong)).sendToTarget();
     }
   }
   
   static File getCommonLogFileForReport(long paramLong1, long paramLong2, int paramInt, long paramLong3)
   {
-    Object localObject2 = FileUtil.getFiles(logPath, ".*(.log)$");
-    if (localObject2 == null) {
+    Object localObject = FileUtil.getFiles(logPath, ".*(.log)$");
+    if (localObject == null) {
       return null;
     }
-    Object localObject1 = new ArrayList();
-    long l1 = 0L;
+    ArrayList localArrayList = new ArrayList();
     for (;;)
     {
-      long l2;
-      int i;
+      long l3;
       try
       {
-        localObject2 = ((List)localObject2).iterator();
-        if (((Iterator)localObject2).hasNext())
+        localObject = ((List)localObject).iterator();
+        l1 = 0L;
+        if (((Iterator)localObject).hasNext())
         {
-          File localFile = (File)((Iterator)localObject2).next();
-          l2 = FileUtil.getLastModifiedTime(localFile);
-          if ((l2 == -1L) || (l2 >= paramLong2) || (l2 <= paramLong1) || (localFile.length() <= paramLong3)) {
-            break label234;
+          File localFile = (File)((Iterator)localObject).next();
+          l3 = FileUtil.getLastModifiedTime(localFile);
+          if ((l3 == -1L) || (l3 >= paramLong2) || (l3 <= paramLong1) || (localFile.length() <= paramLong3)) {
+            continue;
           }
-          i = paramInt - 1;
           if (paramInt <= 0) {
-            break label237;
+            break label229;
           }
-          ((List)localObject1).add(localFile.getAbsolutePath());
-          break label237;
+          localArrayList.add(localFile.getAbsolutePath());
+          break label229;
         }
-        if (((List)localObject1).size() > 0)
+        if (localArrayList.size() > 0)
         {
-          localObject2 = logPath + paramLong2 + ".zip";
-          if (!FileUtil.zipFiles((List)localObject1, (String)localObject2, false)) {
-            break label204;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(logPath);
+          ((StringBuilder)localObject).append(paramLong2);
+          ((StringBuilder)localObject).append(".zip");
+          localObject = ((StringBuilder)localObject).toString();
+          if (FileUtil.zipFiles(localArrayList, (String)localObject, false)) {
+            return new File((String)localObject);
           }
-          localObject1 = new File((String)localObject2);
-          return localObject1;
+          Logger.INSTANCE.e(new String[] { "QAPM_battery_BatteryLog", "zip fail" });
+          return null;
         }
       }
       catch (Throwable localThrowable)
       {
         Logger.INSTANCE.exception("QAPM_battery_BatteryLog", localThrowable);
       }
-      for (;;)
-      {
-        return null;
-        label204:
-        Logger.INSTANCE.e(new String[] { "QAPM_battery_BatteryLog", "zip fail" });
+      return null;
+      label229:
+      long l2 = l1;
+      if (l3 > l1) {
+        l2 = l3;
       }
-      label234:
-      label237:
-      do
-      {
-        paramInt = i;
-        break;
-        break;
-      } while (l2 <= l1);
-      paramInt = i;
-      l1 = l2;
+      paramInt -= 1;
+      long l1 = l2;
     }
   }
   
@@ -121,19 +124,20 @@ public class BatteryLog
   
   private static String getRevision()
   {
-    if (("0".equals(BatteryConstants.REVERSION)) || (TextUtils.isEmpty(BaseInfo.userMeta.version))) {
-      return BatteryConstants.REVERSION;
-    }
-    Matcher localMatcher = Pattern.compile("(\\d+\\.\\d+\\.\\d+)[\\.\\d-]*\\.r?(\\d+)").matcher(BaseInfo.userMeta.version);
-    int i = 0;
-    while (localMatcher.find(i))
+    if ((!"0".equals(BatteryConstants.REVERSION)) && (!TextUtils.isEmpty(BaseInfo.userMeta.version)))
     {
-      if (i == 2)
+      Matcher localMatcher = Pattern.compile("(\\d+\\.\\d+\\.\\d+)[\\.\\d-]*\\.r?(\\d+)").matcher(BaseInfo.userMeta.version);
+      int i = 0;
+      while (localMatcher.find(i))
       {
-        BatteryConstants.REVERSION = localMatcher.group(i);
-        return BatteryConstants.REVERSION;
+        if (i == 2)
+        {
+          BatteryConstants.REVERSION = localMatcher.group(i);
+          return BatteryConstants.REVERSION;
+        }
+        i += 1;
       }
-      i += 1;
+      return BatteryConstants.REVERSION;
     }
     return BatteryConstants.REVERSION;
   }
@@ -148,8 +152,9 @@ public class BatteryLog
   
   static void writeCommonLog(Object... paramVarArgs)
   {
-    if (writeHandler != null) {
-      writeHandler.obtainMessage(2, 0, 0, paramVarArgs).sendToTarget();
+    Handler localHandler = writeHandler;
+    if (localHandler != null) {
+      localHandler.obtainMessage(2, 0, 0, paramVarArgs).sendToTarget();
     }
   }
   
@@ -161,8 +166,9 @@ public class BatteryLog
   
   static void writeReportLog(Object... paramVarArgs)
   {
-    if (writeHandler != null) {
-      writeHandler.obtainMessage(2, 1, 0, paramVarArgs).sendToTarget();
+    Handler localHandler = writeHandler;
+    if (localHandler != null) {
+      localHandler.obtainMessage(2, 1, 0, paramVarArgs).sendToTarget();
     }
   }
   
@@ -173,7 +179,7 @@ public class BatteryLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.qqbattery.BatteryLog
  * JD-Core Version:    0.7.0.1
  */

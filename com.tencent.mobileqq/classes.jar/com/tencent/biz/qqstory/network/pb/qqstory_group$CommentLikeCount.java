@@ -21,13 +21,14 @@ public final class qqstory_group$CommentLikeCount
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 50 }, new String[] { "error", "story_id", "like_count", "comment_count", "is_has_like", "newly_three_like" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null }, CommentLikeCount.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 50 }, new String[] { "error", "story_id", "like_count", "comment_count", "is_has_like", "newly_three_like" }, new Object[] { localInteger, localByteStringMicro, localInteger, localInteger, localInteger, null }, CommentLikeCount.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_group.CommentLikeCount
  * JD-Core Version:    0.7.0.1
  */

@@ -25,22 +25,23 @@ class ReceiptMessageDetailFragment$PttDownloadCallBack
     if (localReceiptMessageDetailFragment == null) {
       return;
     }
-    switch (paramDownResult.a)
+    int i = paramDownResult.a;
+    if (i != -1)
     {
-    default: 
-      return;
-    case -1: 
+      if (i != 0) {
+        return;
+      }
       ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).getMultiMessageProxy().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), null);
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(7);
+      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(6);
       return;
     }
     ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).getMultiMessageProxy().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), null);
-    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(6);
+    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment.PttDownloadCallBack
  * JD-Core Version:    0.7.0.1
  */

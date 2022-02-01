@@ -7,32 +7,38 @@ class ConnectionPool$1
   
   public void run()
   {
-    long l1;
-    do
+    for (;;)
     {
-      l1 = this.this$0.cleanup(System.nanoTime());
+      long l1 = this.this$0.cleanup(System.nanoTime());
       if (l1 == -1L) {
         return;
       }
-    } while (l1 <= 0L);
-    long l2 = l1 / 1000000L;
-    try
-    {
-      label57:
-      synchronized (this.this$0)
+      long l2;
+      if (l1 > 0L) {
+        l2 = l1 / 1000000L;
+      }
+      try
       {
-        this.this$0.wait(l2, (int)(l1 - l2 * 1000000L));
+        synchronized (this.this$0)
+        {
+          this.this$0.wait(l2, (int)(l1 - 1000000L * l2));
+        }
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        label65:
+        break label65;
       }
     }
-    catch (InterruptedException localInterruptedException)
+    for (;;)
     {
-      break label57;
+      throw localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.ConnectionPool.1
  * JD-Core Version:    0.7.0.1
  */

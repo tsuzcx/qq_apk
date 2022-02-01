@@ -15,109 +15,100 @@ public class JoinTroopSecurityTipsConfig
   
   public static JoinTroopSecurityTipsConfig a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("JoinTroopSecurityTipsConfig.config", 2, "content : " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("content : ");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.d("JoinTroopSecurityTipsConfig.config", 2, ((StringBuilder)localObject1).toString());
     }
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    HashMap localHashMap = new HashMap();
+    Object localObject1 = new HashMap();
+    label320:
     for (;;)
     {
-      int i;
-      JoinTroopSecurityTipsItem localJoinTroopSecurityTipsItem;
-      int j;
       try
       {
         paramString = new JSONObject(paramString).getJSONArray("ui");
+        int j;
         if ((paramString != null) && (paramString.length() > 0))
         {
-          i = 0;
+          int i = 0;
           if (i < paramString.length())
           {
-            Object localObject = paramString.getJSONObject(i);
-            if (localObject == null) {
-              break label307;
+            Object localObject2 = paramString.getJSONObject(i);
+            if (localObject2 != null)
+            {
+              JoinTroopSecurityTipsItem localJoinTroopSecurityTipsItem = new JoinTroopSecurityTipsItem();
+              localJoinTroopSecurityTipsItem.jdField_a_of_type_Int = ((JSONObject)localObject2).optInt("id", 0);
+              localJoinTroopSecurityTipsItem.jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("title", "");
+              localJoinTroopSecurityTipsItem.b = ((JSONObject)localObject2).optString("text", "");
+              localObject2 = ((JSONObject)localObject2).getJSONArray("btns");
+              if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0))
+              {
+                j = 0;
+                if (j < ((JSONArray)localObject2).length())
+                {
+                  JSONObject localJSONObject = ((JSONArray)localObject2).getJSONObject(j);
+                  if (localJSONObject == null) {
+                    break label320;
+                  }
+                  localJoinTroopSecurityTipsItem.getClass();
+                  JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn localJoinTroopSecurityTipsBtn = new JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn(localJoinTroopSecurityTipsItem);
+                  localJoinTroopSecurityTipsBtn.jdField_a_of_type_JavaLangString = localJSONObject.optString("text", "");
+                  localJoinTroopSecurityTipsBtn.b = localJSONObject.optString("action", "");
+                  localJoinTroopSecurityTipsBtn.c = localJSONObject.optString("url", "");
+                  localJoinTroopSecurityTipsItem.jdField_a_of_type_JavaUtilList.add(localJoinTroopSecurityTipsBtn);
+                  break label320;
+                }
+              }
+              ((HashMap)localObject1).put(Integer.valueOf(localJoinTroopSecurityTipsItem.jdField_a_of_type_Int), localJoinTroopSecurityTipsItem);
             }
-            localJoinTroopSecurityTipsItem = new JoinTroopSecurityTipsItem();
-            localJoinTroopSecurityTipsItem.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("id", 0);
-            localJoinTroopSecurityTipsItem.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("title", "");
-            localJoinTroopSecurityTipsItem.b = ((JSONObject)localObject).optString("text", "");
-            localObject = ((JSONObject)localObject).getJSONArray("btns");
-            if ((localObject == null) || (((JSONArray)localObject).length() <= 0)) {
-              break label292;
-            }
-            j = 0;
-            if (j >= ((JSONArray)localObject).length()) {
-              break label292;
-            }
-            JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(j);
-            if (localJSONObject == null) {
-              break label314;
-            }
-            localJoinTroopSecurityTipsItem.getClass();
-            JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn localJoinTroopSecurityTipsBtn = new JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn(localJoinTroopSecurityTipsItem);
-            localJoinTroopSecurityTipsBtn.jdField_a_of_type_JavaLangString = localJSONObject.optString("text", "");
-            localJoinTroopSecurityTipsBtn.b = localJSONObject.optString("action", "");
-            localJoinTroopSecurityTipsBtn.c = localJSONObject.optString("url", "");
-            localJoinTroopSecurityTipsItem.jdField_a_of_type_JavaUtilList.add(localJoinTroopSecurityTipsBtn);
+            i += 1;
+            continue;
           }
         }
+        j += 1;
       }
       catch (JSONException paramString)
       {
         paramString.printStackTrace();
         paramString = new JoinTroopSecurityTipsConfig();
-        paramString.a = localHashMap;
+        paramString.a = ((HashMap)localObject1);
         return paramString;
       }
-      label292:
-      localHashMap.put(Integer.valueOf(localJoinTroopSecurityTipsItem.jdField_a_of_type_Int), localJoinTroopSecurityTipsItem);
-      label307:
-      i += 1;
-      continue;
-      label314:
-      j += 1;
     }
   }
   
   private boolean a(JoinTroopSecurityTipsItem paramJoinTroopSecurityTipsItem)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((paramJoinTroopSecurityTipsItem == null) || (TextUtils.isEmpty(paramJoinTroopSecurityTipsItem.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(paramJoinTroopSecurityTipsItem.b)))
+    if ((paramJoinTroopSecurityTipsItem != null) && (!TextUtils.isEmpty(paramJoinTroopSecurityTipsItem.jdField_a_of_type_JavaLangString)))
     {
-      bool1 = true;
-      return bool1;
-    }
-    if ((paramJoinTroopSecurityTipsItem.jdField_a_of_type_JavaUtilList == null) || (paramJoinTroopSecurityTipsItem.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      return true;
-    }
-    int i = 0;
-    for (;;)
-    {
-      if (i >= paramJoinTroopSecurityTipsItem.jdField_a_of_type_JavaUtilList.size()) {
-        break label139;
-      }
-      JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn localJoinTroopSecurityTipsBtn = (JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn)paramJoinTroopSecurityTipsItem.jdField_a_of_type_JavaUtilList.get(i);
-      if (localJoinTroopSecurityTipsBtn != null)
-      {
-        if (TextUtils.isEmpty(localJoinTroopSecurityTipsBtn.jdField_a_of_type_JavaLangString)) {
-          return true;
-        }
-        bool1 = bool2;
-        if (!"web".equals(localJoinTroopSecurityTipsBtn.b)) {
-          break;
-        }
-        bool1 = bool2;
-        if (!TextUtils.isEmpty(localJoinTroopSecurityTipsBtn.c)) {
-          break;
-        }
+      if (TextUtils.isEmpty(paramJoinTroopSecurityTipsItem.b)) {
         return true;
       }
-      i += 1;
+      if (paramJoinTroopSecurityTipsItem.jdField_a_of_type_JavaUtilList != null)
+      {
+        if (paramJoinTroopSecurityTipsItem.jdField_a_of_type_JavaUtilList.size() == 0) {
+          return true;
+        }
+        int i = 0;
+        while (i < paramJoinTroopSecurityTipsItem.jdField_a_of_type_JavaUtilList.size())
+        {
+          JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn localJoinTroopSecurityTipsBtn = (JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn)paramJoinTroopSecurityTipsItem.jdField_a_of_type_JavaUtilList.get(i);
+          if (localJoinTroopSecurityTipsBtn != null)
+          {
+            if (TextUtils.isEmpty(localJoinTroopSecurityTipsBtn.jdField_a_of_type_JavaLangString)) {
+              return true;
+            }
+            return ("web".equals(localJoinTroopSecurityTipsBtn.b)) && (TextUtils.isEmpty(localJoinTroopSecurityTipsBtn.c));
+          }
+          i += 1;
+        }
+      }
     }
-    label139:
     return true;
   }
   
@@ -139,18 +130,18 @@ public class JoinTroopSecurityTipsConfig
   {
     JoinTroopSecurityTipsItem localJoinTroopSecurityTipsItem = new JoinTroopSecurityTipsItem();
     localJoinTroopSecurityTipsItem.jdField_a_of_type_Int = 0;
-    localJoinTroopSecurityTipsItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131693561);
-    localJoinTroopSecurityTipsItem.b = paramContext.getString(2131693560);
+    localJoinTroopSecurityTipsItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131693516);
+    localJoinTroopSecurityTipsItem.b = paramContext.getString(2131693515);
     localJoinTroopSecurityTipsItem.getClass();
     JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn localJoinTroopSecurityTipsBtn = new JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn(localJoinTroopSecurityTipsItem);
-    localJoinTroopSecurityTipsBtn.jdField_a_of_type_JavaLangString = paramContext.getString(2131693559);
+    localJoinTroopSecurityTipsBtn.jdField_a_of_type_JavaLangString = paramContext.getString(2131693514);
     localJoinTroopSecurityTipsItem.jdField_a_of_type_JavaUtilList.add(localJoinTroopSecurityTipsBtn);
     return localJoinTroopSecurityTipsItem;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.troop.jointroopsecuritytips.JoinTroopSecurityTipsConfig
  * JD-Core Version:    0.7.0.1
  */

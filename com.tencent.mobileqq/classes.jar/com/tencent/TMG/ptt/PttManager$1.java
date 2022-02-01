@@ -10,15 +10,16 @@ class PttManager$1
   
   public void onCompleted(int paramInt, String paramString, TokenFetcher.UploadInfo paramUploadInfo)
   {
-    if ((paramInt == 0) && (paramUploadInfo != null)) {
-      CosFileTransfer.uploadFile(this.val$srcPath, paramUploadInfo.upload_url, paramUploadInfo.token, 20971520, null, new PttManager.1.1(this));
-    }
-    do
+    if ((paramInt == 0) && (paramUploadInfo != null))
     {
+      CosFileTransfer.uploadFile(this.val$srcPath, paramUploadInfo.upload_url, paramUploadInfo.token, 20971520, null, new PttManager.1.1(this));
       return;
-      Log.e("PTTManager", "uploadFile|get upload file token failed");
-    } while (this.val$monitor == null);
-    this.val$monitor.onCompleted(paramInt, this.val$srcPath, null);
+    }
+    Log.e("PTTManager", "uploadFile|get upload file token failed");
+    paramString = this.val$monitor;
+    if (paramString != null) {
+      paramString.onCompleted(paramInt, this.val$srcPath, null);
+    }
   }
 }
 

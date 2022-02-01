@@ -2,7 +2,7 @@ package com.tencent.av.ui;
 
 import android.os.Handler;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.vipav.VipFunCallMediaListener;
+import com.tencent.mobileqq.vas.vipav.VipFunCallMediaListener;
 
 class AVActivity$11
   extends VipFunCallMediaListener
@@ -25,7 +25,7 @@ class AVActivity$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.AVActivity.11
  * JD-Core Version:    0.7.0.1
  */

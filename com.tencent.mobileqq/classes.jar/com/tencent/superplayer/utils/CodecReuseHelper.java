@@ -17,15 +17,16 @@ public class CodecReuseHelper
   
   public static CodecReuseHelper get()
   {
-    if (mInstance == null) {}
-    try
-    {
-      if (mInstance == null) {
-        mInstance = new CodecReuseHelper();
+    if (mInstance == null) {
+      try
+      {
+        if (mInstance == null) {
+          mInstance = new CodecReuseHelper();
+        }
       }
-      return mInstance;
+      finally {}
     }
-    finally {}
+    return mInstance;
   }
   
   public ReusePolicy.EraseType getEraseType()
@@ -36,40 +37,36 @@ public class CodecReuseHelper
   
   public boolean isDeviceSupport()
   {
-    Object localObject;
-    if (!this.hasLoadHardwareList) {
-      localObject = ConfigManager.get().getConfig("codecReuse").getString("white_hardware_list", "");
-    }
-    for (;;)
+    if (!this.hasLoadHardwareList)
     {
+      Object localObject = ConfigManager.get().getConfig("codecReuse").getString("white_hardware_list", "");
       try
       {
         localObject = new JSONArray((String)localObject);
-        i = 0;
-        if (i < ((JSONArray)localObject).length())
+        int i = 0;
+        while (i < ((JSONArray)localObject).length())
         {
           String str = ((JSONArray)localObject).getString(i);
-          if ((TextUtils.isEmpty(str)) || (!TextUtils.equals(str, Build.MODEL))) {
-            continue;
+          if ((!TextUtils.isEmpty(str)) && (TextUtils.equals(str, Build.MODEL)))
+          {
+            this.isDeviceSupport = true;
+            break;
           }
-          this.isDeviceSupport = true;
+          i += 1;
         }
+        this.hasLoadHardwareList = true;
       }
       catch (JSONException localJSONException)
       {
-        int i;
         LogUtil.e("CodecReuseHelper", "isDeviceSupport error,", localJSONException);
-        continue;
       }
-      this.hasLoadHardwareList = true;
-      return this.isDeviceSupport;
-      i += 1;
     }
+    return this.isDeviceSupport;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.utils.CodecReuseHelper
  * JD-Core Version:    0.7.0.1
  */

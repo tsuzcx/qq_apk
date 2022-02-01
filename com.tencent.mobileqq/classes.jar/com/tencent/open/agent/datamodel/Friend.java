@@ -53,25 +53,28 @@ public class Friend
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
-      do
-      {
-        return false;
-        if (paramObject == this) {
-          return true;
-        }
-      } while (paramObject.getClass() != getClass());
-      paramObject = (Friend)paramObject;
-    } while (this.jdField_a_of_type_JavaLangString == null);
-    return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
+    if (paramObject == null) {
+      return false;
+    }
+    if (paramObject == this) {
+      return true;
+    }
+    if (paramObject.getClass() != getClass()) {
+      return false;
+    }
+    paramObject = (Friend)paramObject;
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (str != null) {
+      return str.equals(paramObject.jdField_a_of_type_JavaLangString);
+    }
+    return false;
   }
   
   public int hashCode()
   {
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      return this.jdField_a_of_type_JavaLangString.hashCode();
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (str != null) {
+      return str.hashCode();
     }
     return 0;
   }
@@ -88,7 +91,7 @@ public class Friend
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.datamodel.Friend
  * JD-Core Version:    0.7.0.1
  */

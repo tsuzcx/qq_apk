@@ -20,7 +20,7 @@ public class QAPMDropFrameWrapper
   
   public void a(String paramString)
   {
-    if (n_()) {
+    if (o_()) {
       QAPM.beginScene(paramString, QAPM.ModeDropFrame);
     }
   }
@@ -32,7 +32,7 @@ public class QAPMDropFrameWrapper
   
   public void b(String paramString)
   {
-    if (n_()) {
+    if (o_()) {
       QAPM.endScene(paramString, QAPM.ModeDropFrame);
     }
   }
@@ -43,18 +43,31 @@ public class QAPMDropFrameWrapper
     if (QLog.isColorLevel())
     {
       double d1 = paramDropFrameResultMeta.dropIntervals[0];
+      Double.isNaN(d1);
       double d2 = paramDropFrameResultMeta.dropIntervals[1];
+      Double.isNaN(d2);
       double d3 = paramDropFrameResultMeta.dropIntervals[2];
+      Double.isNaN(d3);
       double d4 = paramDropFrameResultMeta.dropIntervals[3];
+      Double.isNaN(d4);
       long l = (paramDropFrameResultMeta.duration / 1000000.0F);
-      d1 = (16.699999999999999D * d1 + 25.049999999999997D * d2 + 50.099999999999994D * d3 + 100.19999999999999D * d4) / l;
-      QLog.i("MagnifierSDK.QAPM", 2, "DropFrameQAPM " + d1 + " 时间 " + l + " 分布 " + Arrays.toString(paramDropFrameResultMeta.dropIntervals));
+      double d5 = l;
+      Double.isNaN(d5);
+      d1 = (d1 * 16.699999999999999D + d2 * 25.049999999999997D + d3 * 50.099999999999994D + d4 * 100.19999999999999D) / d5;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("DropFrameQAPM ");
+      localStringBuilder.append(d1);
+      localStringBuilder.append(" 时间 ");
+      localStringBuilder.append(l);
+      localStringBuilder.append(" 分布 ");
+      localStringBuilder.append(Arrays.toString(paramDropFrameResultMeta.dropIntervals));
+      QLog.i("MagnifierSDK.QAPM", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.monitor.dropframe.QAPMDropFrameWrapper
  * JD-Core Version:    0.7.0.1
  */

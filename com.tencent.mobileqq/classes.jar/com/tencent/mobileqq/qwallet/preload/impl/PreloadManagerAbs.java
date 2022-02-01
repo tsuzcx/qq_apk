@@ -14,24 +14,25 @@ public abstract class PreloadManagerAbs
   
   private int transType2Int(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return 0;
-      if (paramString.equalsIgnoreCase("WiFi")) {
-        return 1;
-      }
-      if (paramString.equalsIgnoreCase("4G")) {
-        return 4;
-      }
-      if (paramString.equalsIgnoreCase("3G")) {
-        return 3;
-      }
-      if (paramString.equalsIgnoreCase("2G")) {
-        return 2;
-      }
-    } while (!paramString.equalsIgnoreCase("5G"));
-    return 6;
+    }
+    if (paramString.equalsIgnoreCase("WiFi")) {
+      return 1;
+    }
+    if (paramString.equalsIgnoreCase("4G")) {
+      return 4;
+    }
+    if (paramString.equalsIgnoreCase("3G")) {
+      return 3;
+    }
+    if (paramString.equalsIgnoreCase("2G")) {
+      return 2;
+    }
+    if (paramString.equalsIgnoreCase("5G")) {
+      return 6;
+    }
+    return 0;
   }
   
   public void getResPath(String paramString, IPreloadService.OnGetPathListener paramOnGetPathListener)
@@ -52,20 +53,16 @@ public abstract class PreloadManagerAbs
       return true;
     }
     paramString = paramString.split("\\|");
-    int j = NetworkUtil.a(this.mApp.getApplication());
+    int j = NetworkUtil.getSystemNetwork(this.mApp.getApplication());
     int k = paramString.length;
     int i = 0;
-    for (;;)
+    while (i < k)
     {
-      if (i >= k) {
-        break label57;
-      }
       if (transType2Int(paramString[i]) == j) {
-        break;
+        return true;
       }
       i += 1;
     }
-    label57:
     return false;
   }
   
@@ -76,7 +73,7 @@ public abstract class PreloadManagerAbs
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadManagerAbs
  * JD-Core Version:    0.7.0.1
  */

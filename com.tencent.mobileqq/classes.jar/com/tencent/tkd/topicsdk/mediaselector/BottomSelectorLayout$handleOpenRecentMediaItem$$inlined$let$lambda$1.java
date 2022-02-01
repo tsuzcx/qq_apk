@@ -28,7 +28,7 @@ final class BottomSelectorLayout$handleOpenRecentMediaItem$$inlined$let$lambda$1
     Intrinsics.checkParameterIsNotNull(paramString2, "dirPath");
     Intrinsics.checkParameterIsNotNull(paramArrayList, "mediaList");
     BottomSelectorLayout.a(this.this$0).a(paramString1);
-    paramString1 = (TextView)this.this$0.a(R.id.aV);
+    paramString1 = (TextView)this.this$0.a(R.id.av);
     Intrinsics.checkExpressionValueIsNotNull(paramString1, "recentMediaItem");
     paramString1.setText((CharSequence)BottomSelectorLayout.a(this.this$0).a());
     ((MediaSelectorPanel)this.$mediaPanel$inlined).a(paramString2, paramArrayList);
@@ -37,7 +37,7 @@ final class BottomSelectorLayout$handleOpenRecentMediaItem$$inlined$let$lambda$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.BottomSelectorLayout.handleOpenRecentMediaItem..inlined.let.lambda.1
  * JD-Core Version:    0.7.0.1
  */

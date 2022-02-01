@@ -28,19 +28,21 @@ public class QzoneSelectMoodPictureJsPlugin
     this.mPluginNameSpace = "QzMoodSelectPicture";
   }
   
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  protected boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
     return super.handleEvent(paramString, paramLong, paramMap);
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if (!paramString2.equals("QzMoodSelectPicture")) {}
-    while ((!paramString3.equals("selectPicture")) || (paramVarArgs == null) || (paramVarArgs.length <= 0)) {
+    if (!paramString2.equals("QzMoodSelectPicture")) {
       return false;
     }
-    paramJsBridgeListener = new Intent();
-    paramString1 = new Bundle();
+    if ((paramString3.equals("selectPicture")) && (paramVarArgs != null) && (paramVarArgs.length > 0))
+    {
+      paramJsBridgeListener = new Intent();
+      paramString1 = new Bundle();
+    }
     try
     {
       paramString2 = new JSONObject(paramVarArgs[0]);
@@ -50,26 +52,26 @@ public class QzoneSelectMoodPictureJsPlugin
       paramString1.putInt("mood_web_pic_height", paramString2.getInt("height"));
       paramString1.putInt("mood_web_pic_sourceid", paramString2.optInt("sourceid"));
       paramString1.putString("mood_web_pic_attachinfo", paramString2.getString("quickselect"));
-      paramJsBridgeListener.putExtras(paramString1);
-      if (this.mRuntime.a() != null)
-      {
-        this.mRuntime.a().setResult(-1, paramJsBridgeListener);
-        this.mRuntime.a().finish();
-      }
-      return true;
     }
     catch (Exception paramString2)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w(this.TAG, 2, "select mood picture,decode param error");
-        }
-      }
+      label135:
+      break label135;
     }
+    if (QLog.isColorLevel()) {
+      QLog.w(this.TAG, 2, "select mood picture,decode param error");
+    }
+    paramJsBridgeListener.putExtras(paramString1);
+    if (this.mRuntime.a() != null)
+    {
+      this.mRuntime.a().setResult(-1, paramJsBridgeListener);
+      this.mRuntime.a().finish();
+    }
+    return true;
+    return false;
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
     Intent localIntent = new Intent();
@@ -79,11 +81,11 @@ public class QzoneSelectMoodPictureJsPlugin
     this.mRuntime.a().setResult(50, localIntent);
   }
   
-  public void onDestroy() {}
+  protected void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.mood.QzoneSelectMoodPictureJsPlugin
  * JD-Core Version:    0.7.0.1
  */

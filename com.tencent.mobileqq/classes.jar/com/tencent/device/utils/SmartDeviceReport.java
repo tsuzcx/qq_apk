@@ -36,65 +36,115 @@ public final class SmartDeviceReport
   
   public static void a(AppRuntime paramAppRuntime, long paramLong, String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDReport", 2, "action:" + paramString + " fromType:" + paramInt1 + " result:" + paramInt2 + " din:" + paramLong + " ext2:" + paramInt3);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("action:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" fromType:");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" result:");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(" din:");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(" ext2:");
+      localStringBuilder.append(paramInt3);
+      QLog.d("SDReport", 2, localStringBuilder.toString());
     }
-    a(paramAppRuntime, paramString, "" + paramLong, paramInt1, paramInt2, paramInt3, 0, "", "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramLong);
+    a(paramAppRuntime, paramString, localStringBuilder.toString(), paramInt1, paramInt2, paramInt3, 0, "", "");
   }
   
   public static void a(AppRuntime paramAppRuntime, String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDReport", 2, "action:" + paramString + " fromType:" + paramInt1 + " result:" + paramInt2 + " ext2:" + paramInt3);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("action:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" fromType:");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" result:");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(" ext2:");
+      localStringBuilder.append(paramInt3);
+      QLog.d("SDReport", 2, localStringBuilder.toString());
     }
     a(paramAppRuntime, paramString, "", paramInt1, paramInt2, paramInt3, 0, "", "");
   }
   
   public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString3, String paramString4)
   {
-    QQAppInterface localQQAppInterface = null;
     if ((paramAppRuntime instanceof QQAppInterface)) {
-      localQQAppInterface = (QQAppInterface)paramAppRuntime;
+      paramAppRuntime = (QQAppInterface)paramAppRuntime;
+    } else {
+      paramAppRuntime = null;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(b, 2, "smartdevice datareport, actionname:" + paramString1 + ", fromType:" + paramInt1 + ", actionResult = " + paramInt2 + ", ext2:" + paramInt3 + ", ext3:" + paramInt4 + ", ext4:" + paramString3 + ", ext5:" + paramString4);
-    }
-    String str1 = "" + paramInt3;
-    String str2 = "" + paramInt4;
-    if (paramString3 == null)
+    if (QLog.isColorLevel())
     {
-      paramAppRuntime = "";
-      if (paramString4 != null) {
-        break label198;
-      }
+      localObject1 = b;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("smartdevice datareport, actionname:");
+      ((StringBuilder)localObject2).append(paramString1);
+      ((StringBuilder)localObject2).append(", fromType:");
+      ((StringBuilder)localObject2).append(paramInt1);
+      ((StringBuilder)localObject2).append(", actionResult = ");
+      ((StringBuilder)localObject2).append(paramInt2);
+      ((StringBuilder)localObject2).append(", ext2:");
+      ((StringBuilder)localObject2).append(paramInt3);
+      ((StringBuilder)localObject2).append(", ext3:");
+      ((StringBuilder)localObject2).append(paramInt4);
+      ((StringBuilder)localObject2).append(", ext4:");
+      ((StringBuilder)localObject2).append(paramString3);
+      ((StringBuilder)localObject2).append(", ext5:");
+      ((StringBuilder)localObject2).append(paramString4);
+      QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
-    label198:
-    for (paramString3 = "";; paramString3 = paramString4)
-    {
-      ReportController.b(localQQAppInterface, "CliOper", "", paramString2, "SmartDevice", paramString1, paramInt1, paramInt2, str1, str2, paramAppRuntime, paramString3);
-      return;
-      paramAppRuntime = paramString3;
-      break;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("");
+    ((StringBuilder)localObject1).append(paramInt3);
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("");
+    ((StringBuilder)localObject2).append(paramInt4);
+    localObject2 = ((StringBuilder)localObject2).toString();
+    if (paramString3 == null) {
+      paramString3 = "";
     }
+    if (paramString4 == null) {
+      paramString4 = "";
+    }
+    ReportController.b(paramAppRuntime, "CliOper", "", paramString2, "SmartDevice", paramString1, paramInt1, paramInt2, (String)localObject1, (String)localObject2, paramString3, paramString4);
   }
   
   public void a(int paramInt)
   {
-    if (0L == this.jdField_a_of_type_Long) {}
-    for (this.jdField_a_of_type_Long = (new Random().nextInt() & 0xFFFFFFFF);; this.jdField_a_of_type_Long += 1L) {
-      switch (paramInt)
+    long l = this.jdField_a_of_type_Long;
+    if (0L == l) {
+      this.jdField_a_of_type_Long = (new Random().nextInt() & 0xFFFFFFFF);
+    } else {
+      this.jdField_a_of_type_Long = (l + 1L);
+    }
+    if (paramInt != 2)
+    {
+      if (paramInt != 3)
       {
-      default: 
         this.jdField_a_of_type_Long %= 1431655765L;
-        if (0L == this.jdField_a_of_type_Long) {
-          this.jdField_a_of_type_Long += 1L;
+        l = this.jdField_a_of_type_Long;
+        if (0L == l) {
+          this.jdField_a_of_type_Long = (l + 1L);
         }
-        return;
+      }
+      else
+      {
+        this.jdField_a_of_type_Long = (this.jdField_a_of_type_Long % 1431655765L + 2863311530L);
       }
     }
-    this.jdField_a_of_type_Long = (this.jdField_a_of_type_Long % 1431655765L + 1431655765L);
-    return;
-    this.jdField_a_of_type_Long = (this.jdField_a_of_type_Long % 1431655765L + 2863311530L);
+    else {
+      this.jdField_a_of_type_Long = (this.jdField_a_of_type_Long % 1431655765L + 1431655765L);
+    }
   }
   
   public void a(AppRuntime paramAppRuntime, String paramString, int paramInt)
@@ -104,46 +154,74 @@ public final class SmartDeviceReport
   
   public void a(AppRuntime paramAppRuntime, String paramString1, int paramInt1, int paramInt2, String paramString2, long paramLong)
   {
-    QQAppInterface localQQAppInterface = null;
     if ((paramAppRuntime instanceof QQAppInterface)) {
-      localQQAppInterface = (QQAppInterface)paramAppRuntime;
+      paramAppRuntime = (QQAppInterface)paramAppRuntime;
+    } else {
+      paramAppRuntime = null;
     }
-    if (paramString2 == null) {}
-    for (paramAppRuntime = "";; paramAppRuntime = paramString2)
+    if (paramString2 == null) {
+      paramString2 = "";
+    }
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(b, 2, "smartdevice datareport2, actionname:" + paramString1 + ",result:" + paramInt1 + ", pid:" + paramInt2 + ",sn:" + paramAppRuntime);
-      }
-      ReportController.b(localQQAppInterface, "CliOper", "", "" + paramLong, "SmartDevice", paramString1, paramInt1, 0, Long.toString(paramInt2), "", paramAppRuntime, "");
-      return;
+      localObject = b;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("smartdevice datareport2, actionname:");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(",result:");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(", pid:");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(",sn:");
+      localStringBuilder.append(paramString2);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(paramLong);
+    ReportController.b(paramAppRuntime, "CliOper", "", ((StringBuilder)localObject).toString(), "SmartDevice", paramString1, paramInt1, 0, Long.toString(paramInt2), "", paramString2, "");
   }
   
   public void b(AppRuntime paramAppRuntime, String paramString, int paramInt)
   {
-    QQAppInterface localQQAppInterface = null;
     if ((paramAppRuntime instanceof QQAppInterface)) {
-      localQQAppInterface = (QQAppInterface)paramAppRuntime;
+      paramAppRuntime = (QQAppInterface)paramAppRuntime;
+    } else {
+      paramAppRuntime = null;
     }
     long l = this.jdField_a_of_type_Long & 0xFFFFFFFF;
-    if (this.jdField_a_of_type_JavaLangString == null) {}
-    for (paramAppRuntime = "";; paramAppRuntime = this.jdField_a_of_type_JavaLangString)
+    String str2 = this.jdField_a_of_type_JavaLangString;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(b, 2, "smartdevice datareport, actionname:" + paramString + ",result:" + paramInt + ", pid:" + Long.toString(this.jdField_a_of_type_Int) + ",sn:" + paramAppRuntime + ",seq:" + Long.toString(l));
-      }
-      if ((!"Net_Wifi_Config_Time_Used".equals(paramString)) && (!"Net_Wifi_Config_Ack_Time_Used".equals(paramString))) {
-        break;
-      }
-      ReportController.b(localQQAppInterface, "CliOper", "", "0", "SmartDevice", paramString, 0, paramInt, Long.toString(this.jdField_a_of_type_Int), Long.toString(l), paramAppRuntime, "");
+      str2 = b;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("smartdevice datareport, actionname:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",result:");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", pid:");
+      localStringBuilder.append(Long.toString(this.jdField_a_of_type_Int));
+      localStringBuilder.append(",sn:");
+      localStringBuilder.append(str1);
+      localStringBuilder.append(",seq:");
+      localStringBuilder.append(Long.toString(l));
+      QLog.d(str2, 2, localStringBuilder.toString());
+    }
+    if ((!"Net_Wifi_Config_Time_Used".equals(paramString)) && (!"Net_Wifi_Config_Ack_Time_Used".equals(paramString)))
+    {
+      ReportController.b(paramAppRuntime, "CliOper", "", "0", "SmartDevice", paramString, paramInt, 0, Long.toString(this.jdField_a_of_type_Int), Long.toString(l), str1, "");
       return;
     }
-    ReportController.b(localQQAppInterface, "CliOper", "", "0", "SmartDevice", paramString, paramInt, 0, Long.toString(this.jdField_a_of_type_Int), Long.toString(l), paramAppRuntime, "");
+    ReportController.b(paramAppRuntime, "CliOper", "", "0", "SmartDevice", paramString, 0, paramInt, Long.toString(this.jdField_a_of_type_Int), Long.toString(l), str1, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.utils.SmartDeviceReport
  * JD-Core Version:    0.7.0.1
  */

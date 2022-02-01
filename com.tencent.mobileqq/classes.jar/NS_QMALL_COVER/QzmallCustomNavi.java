@@ -48,11 +48,13 @@ public final class QzmallCustomNavi
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iItemId, 0);
-    if (this.strActiveFeedNaviUrl != null) {
-      paramJceOutputStream.write(this.strActiveFeedNaviUrl, 1);
+    String str = this.strActiveFeedNaviUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strProfileNaviUrl != null) {
-      paramJceOutputStream.write(this.strProfileNaviUrl, 2);
+    str = this.strProfileNaviUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.lSeparatorColor, 3);
     paramJceOutputStream.write(this.lBtnTextColor, 4);
@@ -64,7 +66,7 @@ public final class QzmallCustomNavi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.QzmallCustomNavi
  * JD-Core Version:    0.7.0.1
  */

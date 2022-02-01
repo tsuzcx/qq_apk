@@ -63,18 +63,18 @@ public class MessageCache$AsyncEditor
           QLog.d(MessageCache.a(), 2, "AsyncEditor commit fail!");
           return;
         }
-        catch (OutOfMemoryError localOutOfMemoryError)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w(MessageCache.a(), 2, "commit OutOfMemoryError ! ", localOutOfMemoryError);
-          }
-          this.jdField_a_of_type_Boolean = true;
-          return;
-        }
         catch (Exception localException)
         {
           if (QLog.isColorLevel()) {
             QLog.w(MessageCache.a(), 2, "commit Exception ! ", localException);
+          }
+          this.jdField_a_of_type_Boolean = true;
+          return;
+        }
+        catch (OutOfMemoryError localOutOfMemoryError)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.w(MessageCache.a(), 2, "commit OutOfMemoryError ! ", localOutOfMemoryError);
           }
           this.jdField_a_of_type_Boolean = true;
           return;
@@ -94,33 +94,22 @@ public class MessageCache$AsyncEditor
   
   public boolean commit()
   {
-    boolean bool1;
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = false;
       try
       {
         a();
-        boolean bool2 = this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
-        if (bool2)
+        boolean bool = this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
+        if (bool)
         {
           MessageCache.a(this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache).clear();
-          return bool2;
+          return bool;
         }
-        bool1 = bool2;
-        if (!QLog.isColorLevel()) {
-          return bool1;
-        }
-        QLog.d(MessageCache.a(), 2, "AsyncEditor commit fail!");
-        return bool2;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
         if (QLog.isColorLevel()) {
-          QLog.w(MessageCache.a(), 2, "commit OutOfMemoryError ! ", localOutOfMemoryError);
+          QLog.d(MessageCache.a(), 2, "AsyncEditor commit fail!");
         }
-        this.jdField_a_of_type_Boolean = true;
-        return false;
+        return bool;
       }
       catch (Exception localException)
       {
@@ -130,12 +119,15 @@ public class MessageCache$AsyncEditor
         this.jdField_a_of_type_Boolean = true;
         return false;
       }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w(MessageCache.a(), 2, "commit OutOfMemoryError ! ", localOutOfMemoryError);
+        }
+        this.jdField_a_of_type_Boolean = true;
+      }
     }
-    else
-    {
-      bool1 = false;
-    }
-    return bool1;
+    return false;
   }
   
   public SharedPreferences.Editor putBoolean(String paramString, boolean paramBoolean)
@@ -188,7 +180,7 @@ public class MessageCache$AsyncEditor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.MessageCache.AsyncEditor
  * JD-Core Version:    0.7.0.1
  */

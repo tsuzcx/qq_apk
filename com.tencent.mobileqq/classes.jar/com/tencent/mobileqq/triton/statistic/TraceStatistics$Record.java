@@ -38,18 +38,18 @@ public final class TraceStatistics$Record
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof Record))
       {
         paramObject = (Record)paramObject;
-        if ((!Intrinsics.areEqual(this.name, paramObject.name)) || (this.timeUs != paramObject.timeUs)) {}
+        if ((Intrinsics.areEqual(this.name, paramObject.name)) && (this.timeUs == paramObject.timeUs)) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   @NotNull
@@ -66,23 +66,31 @@ public final class TraceStatistics$Record
   public int hashCode()
   {
     String str = this.name;
-    if (str != null) {}
-    for (int i = str.hashCode();; i = 0)
-    {
-      long l = this.timeUs;
-      return i * 31 + (int)(l ^ l >>> 32);
+    int i;
+    if (str != null) {
+      i = str.hashCode();
+    } else {
+      i = 0;
     }
+    long l = this.timeUs;
+    return i * 31 + (int)(l ^ l >>> 32);
   }
   
   @NotNull
   public String toString()
   {
-    return "Record(name=" + this.name + ", timeUs=" + this.timeUs + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Record(name=");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append(", timeUs=");
+    localStringBuilder.append(this.timeUs);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.statistic.TraceStatistics.Record
  * JD-Core Version:    0.7.0.1
  */

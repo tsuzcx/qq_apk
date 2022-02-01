@@ -8,28 +8,26 @@ class ContainerHelpers
   
   static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
+    paramInt1 -= 1;
     int i = 0;
-    int j = paramInt1 - 1;
-    paramInt1 = i;
-    i = j;
-    while (paramInt1 <= i)
+    while (i <= paramInt1)
     {
-      j = paramInt1 + i >>> 1;
+      int j = i + paramInt1 >>> 1;
       int k = paramArrayOfInt[j];
       if (k < paramInt2) {
-        paramInt1 = j + 1;
+        i = j + 1;
       } else if (k > paramInt2) {
-        i = j - 1;
+        paramInt1 = j - 1;
       } else {
         return j;
       }
     }
-    return paramInt1 ^ 0xFFFFFFFF;
+    return i ^ 0xFFFFFFFF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.palette.ContainerHelpers
  * JD-Core Version:    0.7.0.1
  */

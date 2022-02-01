@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
 import android.graphics.Bitmap;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.activity.photo.AlbumThumbManager;
@@ -10,9 +9,11 @@ import com.tencent.mobileqq.activity.photo.FlowThumbDecoder;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.photo.ThumbDecoder;
 import com.tencent.mobileqq.activity.photo.VideoDecoder;
+import com.tencent.qphone.base.util.BaseApplication;
 import java.io.File;
 import java.io.OutputStream;
 import java.net.URL;
+import mqq.app.MobileQQ;
 
 public class AlbumPreviewThumbDownloader
   extends AbsDownloader
@@ -24,45 +25,35 @@ public class AlbumPreviewThumbDownloader
   
   public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
-    if (!LocalMediaInfo.class.isInstance(paramDownloadParams.tag)) {
-      throw new RuntimeException("Decode info is invalide");
+    BaseApplication localBaseApplication = MobileQQ.getContext();
+    if (LocalMediaInfo.class.isInstance(paramDownloadParams.tag)) {
+      paramURLDrawableHandler = (LocalMediaInfo)paramDownloadParams.tag;
     }
-    paramURLDrawableHandler = (LocalMediaInfo)paramDownloadParams.tag;
-    for (;;)
+    try
     {
-      try
-      {
-        paramFile = paramDownloadParams.url.getRef();
-        if ("VIDEO".equals(paramFile))
-        {
-          paramFile = new VideoDecoder(localBaseApplicationImpl, paramURLDrawableHandler);
-          paramFile = AlbumThumbManager.getInstance(localBaseApplicationImpl).getThumb(paramDownloadParams.url, paramFile, paramDownloadParams);
-          if ((paramFile == null) || (paramURLDrawableHandler == null)) {
-            break;
-          }
-          paramURLDrawableHandler.thumbSize = paramFile.getByteCount();
-          return paramFile;
-        }
-        if ("FLOW_THUMB".equals(paramFile))
-        {
-          paramFile = new FlowThumbDecoder(localBaseApplicationImpl, paramURLDrawableHandler);
-          continue;
-        }
-        if (!"APP_VIDEO".equals(paramFile)) {
-          break label153;
-        }
+      paramFile = paramDownloadParams.url.getRef();
+      if ("VIDEO".equals(paramFile)) {
+        paramFile = new VideoDecoder(localBaseApplication, paramURLDrawableHandler);
+      } else if ("FLOW_THUMB".equals(paramFile)) {
+        paramFile = new FlowThumbDecoder(localBaseApplication, paramURLDrawableHandler);
+      } else if ("APP_VIDEO".equals(paramFile)) {
+        paramFile = new AppVideoDecoder(localBaseApplication, paramURLDrawableHandler);
+      } else {
+        paramFile = new ThumbDecoder(localBaseApplication, paramURLDrawableHandler);
       }
-      catch (NumberFormatException paramFile)
-      {
-        throw new RuntimeException("Decode type is invalid");
+      paramFile = AlbumThumbManager.getInstance(localBaseApplication).getThumb(paramDownloadParams.url, paramFile, paramDownloadParams);
+      if ((paramFile != null) && (paramURLDrawableHandler != null)) {
+        paramURLDrawableHandler.thumbSize = paramFile.getByteCount();
       }
-      paramFile = new AppVideoDecoder(localBaseApplicationImpl, paramURLDrawableHandler);
-      continue;
-      label153:
-      paramFile = new ThumbDecoder(localBaseApplicationImpl, paramURLDrawableHandler);
+      return paramFile;
     }
-    return paramFile;
+    catch (NumberFormatException paramFile)
+    {
+      label146:
+      break label146;
+    }
+    throw new RuntimeException("Decode type is invalid");
+    throw new RuntimeException("Decode info is invalide");
   }
   
   public File downloadImage(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
@@ -72,7 +63,7 @@ public class AlbumPreviewThumbDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.AlbumPreviewThumbDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -33,9 +33,10 @@ public class ARLocalGestureCircleRecogResult$ARCircleResult
   {
     this.jdField_a_of_type_Int = -2;
     this.jdField_b_of_type_Int = -2;
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircle.b = 0.0F;
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircle.c = 0.0F;
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircle.jdField_a_of_type_Float = 0.0F;
+    ARLocalGestureCircleRecogResult.ARCircle localARCircle = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircle;
+    localARCircle.b = 0.0F;
+    localARCircle.c = 0.0F;
+    localARCircle.jdField_a_of_type_Float = 0.0F;
     this.c = 0;
     this.d = 0;
     this.f = 10;
@@ -47,12 +48,39 @@ public class ARLocalGestureCircleRecogResult$ARCircleResult
   
   public String toString()
   {
-    return "ARCircleResult{, state = " + this.jdField_a_of_type_Int + ", lastState = " + this.jdField_b_of_type_Int + ", pointCnt = " + this.c + ", lastPointCnt = " + this.d + ", genIdx = " + this.g + ", gesturePointCnt = " + this.h + ", stillPointCnt = " + this.i + ", goodPointCnt = " + this.j + ", circle(r,x,y,c) = (" + (int)this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircle.jdField_a_of_type_Float + "," + (int)this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircle.b + "," + (int)this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircle.c + "," + this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircle.jdField_a_of_type_Boolean + ")" + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ARCircleResult{, state = ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", lastState = ");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", pointCnt = ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", lastPointCnt = ");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", genIdx = ");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", gesturePointCnt = ");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(", stillPointCnt = ");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(", goodPointCnt = ");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append(", circle(r,x,y,c) = (");
+    localStringBuilder.append((int)this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircle.jdField_a_of_type_Float);
+    localStringBuilder.append(",");
+    localStringBuilder.append((int)this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircle.b);
+    localStringBuilder.append(",");
+    localStringBuilder.append((int)this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircle.c);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircle.jdField_a_of_type_Boolean);
+    localStringBuilder.append(")");
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARLocalGestureCircleRecogResult.ARCircleResult
  * JD-Core Version:    0.7.0.1
  */

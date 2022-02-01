@@ -2,15 +2,15 @@ package com.tencent.widget;
 
 class Gallery$ScaleViewHolder
 {
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean;
+  int defaultRotate;
+  float defaultScale;
+  int gravity;
+  boolean hasTransformed;
+  boolean isHighPic;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.Gallery.ScaleViewHolder
  * JD-Core Version:    0.7.0.1
  */

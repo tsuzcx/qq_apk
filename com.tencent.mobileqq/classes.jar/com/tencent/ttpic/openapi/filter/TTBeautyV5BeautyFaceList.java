@@ -21,7 +21,6 @@ import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.List<Landroid.graphics.PointF;>;
 
 public class TTBeautyV5BeautyFaceList
 {
@@ -66,38 +65,37 @@ public class TTBeautyV5BeautyFaceList
   
   private List<PointF> getFullCoords(List<PointF> paramList)
   {
-    int j = 0;
     if (paramList.size() < 90) {
       return paramList;
     }
+    int i = paramList.size();
+    int j = 0;
     Object localObject = paramList;
-    if (paramList.size() > 90) {
+    if (i > 90) {
       localObject = paramList.subList(0, 90);
     }
-    float[] arrayOfFloat = new float[262];
-    paramList = new float[((List)localObject).size() * 2];
-    int i = 0;
+    paramList = new float[262];
+    float[] arrayOfFloat = new float[((List)localObject).size() * 2];
+    i = 0;
     while (i < ((List)localObject).size())
     {
-      paramList[(i * 2)] = ((PointF)((List)localObject).get(i)).x;
-      paramList[(i * 2 + 1)] = ((PointF)((List)localObject).get(i)).y;
+      int k = i * 2;
+      arrayOfFloat[k] = ((PointF)((List)localObject).get(i)).x;
+      arrayOfFloat[(k + 1)] = ((PointF)((List)localObject).get(i)).y;
       i += 1;
     }
     this.srcByteBuffer.rewind();
-    this.srcByteBuffer.put(paramList).position(0);
+    this.srcByteBuffer.put(arrayOfFloat).position(0);
     FaceOffUtil.getFullCoords(this.srcByteBuffer, ((List)localObject).size(), 5.0F, this.dstByteBuffer);
-    this.dstByteBuffer.asFloatBuffer().get(arrayOfFloat);
+    this.dstByteBuffer.asFloatBuffer().get(paramList);
     localObject = new ArrayList();
     i = j;
-    for (;;)
+    while (i < paramList.length)
     {
-      paramList = (List<PointF>)localObject;
-      if (i >= arrayOfFloat.length) {
-        break;
-      }
-      ((List)localObject).add(new PointF(arrayOfFloat[i], arrayOfFloat[(i + 1)]));
+      ((List)localObject).add(new PointF(paramList[i], paramList[(i + 1)]));
       i += 2;
     }
+    return localObject;
   }
   
   private void initData(int paramInt1, int paramInt2)
@@ -129,12 +127,16 @@ public class TTBeautyV5BeautyFaceList
   
   private void updateSmoothOpacity()
   {
-    if ((this.mSmoothOpacity > 0.01F) && (this.mSmoothOpacity2 > 0.01F))
+    if (this.mSmoothOpacity > 0.01F)
     {
-      this.mWrinklesRemoveFilter2.setSmoothOpacity(this.mSmoothOpacity2);
-      this.mBeautyEffectCombineFilter.setSmoothOpacity2(0.0F);
-      this.mBeautyEffectCombineFilter.setSmoothOpacity(this.mSmoothOpacity);
-      return;
+      float f = this.mSmoothOpacity2;
+      if (f > 0.01F)
+      {
+        this.mWrinklesRemoveFilter2.setSmoothOpacity(f);
+        this.mBeautyEffectCombineFilter.setSmoothOpacity2(0.0F);
+        this.mBeautyEffectCombineFilter.setSmoothOpacity(this.mSmoothOpacity);
+        return;
+      }
     }
     if (this.mSmoothOpacity > 0.01F)
     {
@@ -155,6 +157,19 @@ public class TTBeautyV5BeautyFaceList
     this.mBeautyEffectCombineFilter.setSmoothOpacity(0.0F);
   }
   
+  public void apply()
+  {
+    this.mBeautyEffectCombineFilter.ApplyGLSLFilter();
+    this.mFaceFeatureAndTeethWhitenFilter.ApplyGLSLFilter();
+    this.mFaceFeatureFilter.ApplyGLSLFilter();
+    this.mWrinklesRemoveFilter2.ApplyGLSLFilter();
+    this.mBlurFilter1.ApplyGLSLFilter();
+    this.mContrastFilter.apply();
+    this.mCopyFilter.apply();
+    this.mDeepBlurFilter.applyFilterChain(true, 0.0F, 0.0F);
+    this.lastLutPath = null;
+  }
+  
   public void clear()
   {
     this.isFemale = true;
@@ -170,24 +185,24 @@ public class TTBeautyV5BeautyFaceList
     this.mContrastFilter.clearGLSL();
     this.mBlurFrame1.clear();
     this.mBlurFrame2.clear();
-    GLES20.glDeleteTextures(this.mTextures.length, this.mTextures, 0);
+    int[] arrayOfInt = this.mTextures;
+    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
   }
   
   public void forceAvgEyeBag() {}
   
   public void initial()
   {
-    this.mBeautyEffectCombineFilter.ApplyGLSLFilter();
-    this.mFaceFeatureAndTeethWhitenFilter.ApplyGLSLFilter();
-    this.mFaceFeatureFilter.ApplyGLSLFilter();
-    this.mWrinklesRemoveFilter2.ApplyGLSLFilter();
-    this.mBlurFilter1.ApplyGLSLFilter();
-    this.mContrastFilter.apply();
-    this.mCopyFilter.apply();
-    this.mDeepBlurFilter.applyFilterChain(true, 0.0F, 0.0F);
+    apply();
+    loadBitmaps();
+  }
+  
+  public void loadBitmaps()
+  {
     Bitmap localBitmap1 = VideoMemoryManager.getInstance().getBeautyCacheBitmap("color_tone_hongrun.png");
     Bitmap localBitmap2 = VideoMemoryManager.getInstance().getBeautyCacheBitmap("color_tone_baixi.png");
-    GLES20.glGenTextures(this.mTextures.length, this.mTextures, 0);
+    int[] arrayOfInt = this.mTextures;
+    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
     if (loadLut(localBitmap1, this.mTextures[0])) {
       this.isLUT1LoadSuccess = true;
     }
@@ -196,228 +211,199 @@ public class TTBeautyV5BeautyFaceList
     }
     this.mFaceFeatureFilter.setFaceFeatureParam(new FaceFeatureParam(0.8F, 0.8F, 0.8F, "female_beauty_normal.png", "female_beauty_multiply.png", "female_beauty_softlight.png"));
     this.mFaceFeatureAndTeethWhitenFilter.setFaceFeatureParam(new FaceFeatureParam(0.8F, 0.8F, 0.8F, "female_beauty_normal.png", "female_beauty_multiply.png", "female_beauty_softlight.png"));
-    this.lastLutPath = null;
   }
   
   public float[] pointsVis(Float[] paramArrayOfFloat)
   {
-    if ((paramArrayOfFloat == null) || (paramArrayOfFloat.length == 0)) {
-      return null;
-    }
-    float[] arrayOfFloat = new float[paramArrayOfFloat.length];
-    int i = 0;
-    while (i < paramArrayOfFloat.length)
+    if ((paramArrayOfFloat != null) && (paramArrayOfFloat.length != 0))
     {
-      arrayOfFloat[i] = paramArrayOfFloat[i].floatValue();
-      i += 1;
+      float[] arrayOfFloat = new float[paramArrayOfFloat.length];
+      int i = 0;
+      while (i < paramArrayOfFloat.length)
+      {
+        arrayOfFloat[i] = paramArrayOfFloat[i].floatValue();
+        i += 1;
+      }
+      return arrayOfFloat;
     }
-    return arrayOfFloat;
+    return null;
   }
   
   public Frame render2(Frame paramFrame, List<List<PointF>> paramList, List<Float[]> paramList1, List<FaceStatus> paramList2, boolean paramBoolean1, boolean paramBoolean2)
   {
     int i = 0;
-    Frame localFrame1 = paramFrame;
-    List localList;
-    if (i < paramList.size())
+    while (i < paramList.size())
     {
-      localList = VideoMaterial.copyList((List)paramList.get(i));
-      FaceOffUtil.initFacePositions(FaceOffUtil.getFullCoords(localList, 5.0F), (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices);
-      if (paramList1.size() <= i) {
-        break label1515;
+      List localList = VideoMaterial.copyList((List)paramList.get(i));
+      Object localObject = FaceOffUtil.getFullCoords(localList, 5.0F);
+      double d2 = this.width;
+      double d1 = this.mFaceDetScale;
+      Double.isNaN(d2);
+      int j = (int)(d2 * d1);
+      d2 = this.height;
+      Double.isNaN(d2);
+      FaceOffUtil.initFacePositions((List)localObject, j, (int)(d2 * d1), this.faceVertices);
+      localObject = new float[0];
+      if (paramList1.size() > i) {
+        localObject = FaceOffUtil.initPointVis(FaceOffUtil.getFullPointsVisForFaceOffFilter(pointsVis((Float[])paramList1.get(i))), this.pointVisVertices);
       }
-    }
-    label147:
-    label159:
-    label194:
-    label1239:
-    label1515:
-    for (Object localObject = FaceOffUtil.initPointVis(FaceOffUtil.getFullPointsVisForFaceOffFilter(pointsVis((Float[])paramList1.get(i))), this.pointVisVertices);; localObject = new float[0])
-    {
-      boolean bool1;
-      boolean bool2;
-      int j;
       if ((paramList2 != null) && (paramList2.size() > i))
       {
-        if (((FaceStatus)paramList2.get(i)).gender == 1)
-        {
+        boolean bool1;
+        if (((FaceStatus)paramList2.get(i)).gender == 1) {
           bool1 = true;
-          if (this.isFemale == bool1) {
-            break label1066;
-          }
-          bool2 = true;
-          this.isGenderGhanged = bool2;
-          this.isFemale = bool1;
-          if (!BeautyAIParam.needAIBeautyValid()) {
-            break label1072;
-          }
-          j = ((FaceStatus)paramList2.get(i)).age;
-          this.age = j;
+        } else {
+          bool1 = false;
         }
+        boolean bool2;
+        if (this.isFemale != bool1) {
+          bool2 = true;
+        } else {
+          bool2 = false;
+        }
+        this.isGenderGhanged = bool2;
+        this.isFemale = bool1;
+        if (BeautyAIParam.needAIBeautyValid()) {
+          j = ((FaceStatus)paramList2.get(i)).age;
+        } else {
+          j = 0;
+        }
+        this.age = j;
       }
-      else
-      {
-        this.mBeautyAIParam.setBeautyParam(this.isFemale, this.age, paramBoolean2);
-        this.mSmoothOpacity = (this.smoothLevel + this.mBeautyAIParam.getRealValue(BeautyAIParam.AI_TYPE.WRINKLES, this.beautyLevel));
-        this.mSmoothOpacity2 = (this.smoothLevel2 + this.mBeautyAIParam.getRealValue(BeautyAIParam.AI_TYPE.FLW, this.beautyLevel));
-        updateSmoothOpacity();
-        this.mBeautyEffectCombineFilter.setEyePouchOpacity((this.eyepouchLevel + this.mBeautyAIParam.getRealValue(BeautyAIParam.AI_TYPE.POUCH, this.beautyLevel)) * 1.2F);
-        if (this.isGenderGhanged)
+      this.mBeautyAIParam.setBeautyParam(this.isFemale, this.age, paramBoolean2);
+      this.mSmoothOpacity = (this.smoothLevel + this.mBeautyAIParam.getRealValue(BeautyAIParam.AI_TYPE.WRINKLES, this.beautyLevel));
+      this.mSmoothOpacity2 = (this.smoothLevel2 + this.mBeautyAIParam.getRealValue(BeautyAIParam.AI_TYPE.FLW, this.beautyLevel));
+      updateSmoothOpacity();
+      this.mBeautyEffectCombineFilter.setEyePouchOpacity((this.eyepouchLevel + this.mBeautyAIParam.getRealValue(BeautyAIParam.AI_TYPE.POUCH, this.beautyLevel)) * 1.2F);
+      if (this.isGenderGhanged) {
+        if (this.isFemale)
         {
-          if (!this.isFemale) {
-            break label1078;
-          }
           this.mFaceFeatureFilter.setFaceFeatureParam(new FaceFeatureParam(0.8F, 0.8F, 0.8F, "female_beauty_normal.png", "female_beauty_multiply.png", "female_beauty_softlight.png"));
           this.mFaceFeatureAndTeethWhitenFilter.setFaceFeatureParam(new FaceFeatureParam(0.8F, 0.8F, 0.8F, "female_beauty_normal.png", "female_beauty_multiply.png", "female_beauty_softlight.png"));
         }
-        label375:
-        if ((((FaceStatus)paramList2.get(i)).gender == 2) || (this.openFaceFeture != true)) {
-          break label1239;
-        }
-        if ((this.mToothWhiten <= 0.01F) && (!this.mRenderLipsLut)) {
-          break label1145;
-        }
-        paramFrame = localFrame1;
-        if (this.mFaceFeatureAndTeethWhitenFilter.needRender())
+        else
         {
-          paramFrame = this.mCopyFilter.RenderProcess(localFrame1.getTextureId(), localFrame1.width, localFrame1.height);
-          this.mFaceFeatureAndTeethWhitenFilter.updateParam(localList, this.faceVertices, (float[])localObject);
-          this.mFaceFeatureAndTeethWhitenFilter.OnDrawFrameGLSL();
-          this.mFaceFeatureAndTeethWhitenFilter.renderTexture(localFrame1.getTextureId(), localFrame1.width, localFrame1.height);
-          localFrame1.unlock();
+          this.mFaceFeatureFilter.setFaceFeatureParam(new FaceFeatureParam(0.8F, 0.8F, 0.8F, "male_beauty_normal.png", "male_beauty_multiply.png", "beauty_softlight.png"));
+          this.mFaceFeatureAndTeethWhitenFilter.setFaceFeatureParam(new FaceFeatureParam(0.8F, 0.8F, 0.8F, "male_beauty_normal.png", "male_beauty_multiply.png", "beauty_softlight.png"));
         }
       }
-      for (;;)
+      Frame localFrame1;
+      if ((((FaceStatus)paramList2.get(i)).gender != 2) && (this.openFaceFeture == true))
       {
-        localFrame1 = paramFrame;
-        float f;
-        int k;
-        Frame localFrame2;
-        if (this.mWrinklesRemoveFilter2.needRender())
+        if ((this.mToothWhiten <= 0.01F) && (!this.mRenderLipsLut))
         {
-          f = Math.min(1.0F, 360.0F / Math.min(paramFrame.width, paramFrame.height));
-          j = Math.round(paramFrame.width * f);
-          k = Math.round(f * paramFrame.height);
-          this.mDeepBlurFilter.updateSize(j, k);
-          localObject = this.mDeepBlurFilter.RenderProcess(paramFrame.getTextureId(), j, k);
-          localFrame2 = this.mCopyFilter.RenderProcess(paramFrame.getTextureId(), j, k);
-          this.mWrinklesRemoveFilter2.setSmallTexture(localFrame2.getTextureId());
-          this.mWrinklesRemoveFilter2.setBlurTexture(((Frame)localObject).getTextureId());
-          localFrame1 = this.mCopyFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
-          this.mWrinklesRemoveFilter2.updateParam(localList, this.faceVertices);
-          this.mWrinklesRemoveFilter2.OnDrawFrameGLSL();
-          this.mWrinklesRemoveFilter2.renderTexture(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
-          paramFrame.unlock();
-          ((Frame)localObject).unlock();
-          localFrame2.unlock();
-        }
-        paramFrame = localFrame1;
-        if (this.mBeautyEffectCombineFilter.needRender())
-        {
-          j = Math.min(localFrame1.width, localFrame1.height);
-          localObject = null;
-          paramFrame = null;
-          if ((this.mBeautyEffectCombineFilter.getEyePouchOpacity() > 0.0F) || (this.mBeautyEffectCombineFilter.getSmoothOpacity() > 0.0F) || (this.mBeautyEffectCombineFilter.getSmoothOpacity2() > 0.0F))
+          if ((!paramBoolean1) && (this.mFaceFeatureFilter.needRender()))
           {
-            f = Math.min(1.0F, 360.0F / j);
-            k = Math.round(localFrame1.width * f);
-            int m = Math.round(f * localFrame1.height);
-            this.mDeepBlurFilter.updateSize(k, m);
-            localObject = this.mDeepBlurFilter.RenderProcess(localFrame1.getTextureId(), k, m);
-            paramFrame = this.mCopyFilter.RenderProcess(localFrame1.getTextureId(), k, m);
-            this.mBeautyEffectCombineFilter.setSmallTexture(paramFrame.getTextureId());
-            this.mBeautyEffectCombineFilter.setBlurTexture(((Frame)localObject).getTextureId());
-          }
-          f = Math.min(1.0F, 480.0F / j);
-          j = Math.round(localFrame1.width * f);
-          k = Math.round(f * localFrame1.height);
-          this.mBeautyEffectCombineFilter.setLightenSize(j, k);
-          localFrame2 = this.mCopyFilter.RenderProcess(localFrame1.getTextureId(), localFrame1.width, localFrame1.height);
-          this.mBeautyEffectCombineFilter.updateParam(localList, this.faceVertices);
-          this.mBeautyEffectCombineFilter.OnDrawFrameGLSL();
-          this.mBeautyEffectCombineFilter.renderTexture(localFrame1.getTextureId(), localFrame1.width, localFrame1.height);
-          localFrame1.unlock();
-          if (localObject != null) {
-            ((Frame)localObject).unlock();
-          }
-          if (paramFrame != null) {
-            paramFrame.unlock();
-          }
-          paramFrame = localFrame2;
-        }
-        i += 1;
-        localFrame1 = paramFrame;
-        break;
-        bool1 = false;
-        break label147;
-        bool2 = false;
-        break label159;
-        j = 0;
-        break label194;
-        this.mFaceFeatureFilter.setFaceFeatureParam(new FaceFeatureParam(0.8F, 0.8F, 0.8F, "male_beauty_normal.png", "male_beauty_multiply.png", "beauty_softlight.png"));
-        this.mFaceFeatureAndTeethWhitenFilter.setFaceFeatureParam(new FaceFeatureParam(0.8F, 0.8F, 0.8F, "male_beauty_normal.png", "male_beauty_multiply.png", "beauty_softlight.png"));
-        break label375;
-        label1145:
-        paramFrame = localFrame1;
-        if (!paramBoolean1)
-        {
-          paramFrame = localFrame1;
-          if (this.mFaceFeatureFilter.needRender())
-          {
-            paramFrame = this.mCopyFilter.RenderProcess(localFrame1.getTextureId(), localFrame1.width, localFrame1.height);
+            localObject = this.mCopyFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
             this.mFaceFeatureFilter.updateParam(this.faceVertices);
             this.mFaceFeatureFilter.OnDrawFrameGLSL();
-            this.mFaceFeatureFilter.renderTexture(localFrame1.getTextureId(), localFrame1.width, localFrame1.height);
-            localFrame1.unlock();
-            continue;
-            if ((this.mToothWhiten > 0.01F) || (this.mRenderLipsLut))
-            {
-              paramFrame = localFrame1;
-              if (this.mFaceFeatureAndTeethWhitenFilter.needRender())
-              {
-                paramFrame = this.mCopyFilter.RenderProcess(localFrame1.getTextureId(), localFrame1.width, localFrame1.height);
-                this.mFaceFeatureAndTeethWhitenFilter.updateParam(localList, this.faceVertices, (float[])localObject);
-                this.mFaceFeatureAndTeethWhitenFilter.OnDrawFrameGLSL();
-                this.mFaceFeatureAndTeethWhitenFilter.renderTexture(localFrame1.getTextureId(), localFrame1.width, localFrame1.height);
-                localFrame1.unlock();
-              }
-            }
-            else
-            {
-              paramFrame = localFrame1;
-              if (!paramBoolean1)
-              {
-                paramFrame = localFrame1;
-                if (this.mFaceFeatureFilter.needRender())
-                {
-                  paramFrame = this.mCopyFilter.RenderProcess(localFrame1.getTextureId(), localFrame1.width, localFrame1.height);
-                  this.mFaceFeatureFilter.updateParam(this.faceVertices);
-                  this.mFaceFeatureFilter.OnDrawFrameGLSL();
-                  this.mFaceFeatureFilter.renderTexture(localFrame1.getTextureId(), localFrame1.width, localFrame1.height);
-                  localFrame1.unlock();
-                }
-              }
-            }
+            this.mFaceFeatureFilter.renderTexture(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
+            paramFrame.unlock();
+            paramFrame = (Frame)localObject;
           }
         }
-      }
-      paramFrame = localFrame1;
-      if (this.mContrastFilter.needRender())
-      {
-        paramFrame = localFrame1;
-        if (this.isLUT1LoadSuccess)
+        else if (this.mFaceFeatureAndTeethWhitenFilter.needRender())
         {
+          localFrame1 = this.mCopyFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
+          this.mFaceFeatureAndTeethWhitenFilter.updateParam(localList, this.faceVertices, (float[])localObject);
+          this.mFaceFeatureAndTeethWhitenFilter.OnDrawFrameGLSL();
+          this.mFaceFeatureAndTeethWhitenFilter.renderTexture(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
+          paramFrame.unlock();
           paramFrame = localFrame1;
-          if (this.isLUT2LoadSuccess)
-          {
-            paramFrame = this.mContrastFilter.RenderProcess(localFrame1.getTextureId(), localFrame1.width, localFrame1.height);
-            localFrame1.unlock();
-          }
         }
       }
-      this.mRenderIndex += 1;
-      return paramFrame;
+      else if ((this.mToothWhiten <= 0.01F) && (!this.mRenderLipsLut))
+      {
+        if ((!paramBoolean1) && (this.mFaceFeatureFilter.needRender()))
+        {
+          localObject = this.mCopyFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
+          this.mFaceFeatureFilter.updateParam(this.faceVertices);
+          this.mFaceFeatureFilter.OnDrawFrameGLSL();
+          this.mFaceFeatureFilter.renderTexture(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
+          paramFrame.unlock();
+          paramFrame = (Frame)localObject;
+        }
+      }
+      else if (this.mFaceFeatureAndTeethWhitenFilter.needRender())
+      {
+        localFrame1 = this.mCopyFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
+        this.mFaceFeatureAndTeethWhitenFilter.updateParam(localList, this.faceVertices, (float[])localObject);
+        this.mFaceFeatureAndTeethWhitenFilter.OnDrawFrameGLSL();
+        this.mFaceFeatureAndTeethWhitenFilter.renderTexture(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
+        paramFrame.unlock();
+        paramFrame = localFrame1;
+      }
+      float f;
+      int k;
+      Frame localFrame2;
+      if (this.mWrinklesRemoveFilter2.needRender())
+      {
+        f = Math.min(1.0F, 360.0F / Math.min(paramFrame.width, paramFrame.height));
+        j = Math.round(paramFrame.width * f);
+        k = Math.round(paramFrame.height * f);
+        this.mDeepBlurFilter.updateSize(j, k);
+        localFrame1 = this.mDeepBlurFilter.RenderProcess(paramFrame.getTextureId(), j, k);
+        localFrame2 = this.mCopyFilter.RenderProcess(paramFrame.getTextureId(), j, k);
+        this.mWrinklesRemoveFilter2.setSmallTexture(localFrame2.getTextureId());
+        this.mWrinklesRemoveFilter2.setBlurTexture(localFrame1.getTextureId());
+        localObject = this.mCopyFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
+        this.mWrinklesRemoveFilter2.updateParam(localList, this.faceVertices);
+        this.mWrinklesRemoveFilter2.OnDrawFrameGLSL();
+        this.mWrinklesRemoveFilter2.renderTexture(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
+        paramFrame.unlock();
+        localFrame1.unlock();
+        localFrame2.unlock();
+        paramFrame = (Frame)localObject;
+      }
+      if (this.mBeautyEffectCombineFilter.needRender())
+      {
+        j = Math.min(paramFrame.width, paramFrame.height);
+        f = this.mBeautyEffectCombineFilter.getEyePouchOpacity();
+        localFrame1 = null;
+        if ((f <= 0.0F) && (this.mBeautyEffectCombineFilter.getSmoothOpacity() <= 0.0F) && (this.mBeautyEffectCombineFilter.getSmoothOpacity2() <= 0.0F))
+        {
+          localObject = null;
+        }
+        else
+        {
+          f = Math.min(1.0F, 360.0F / j);
+          k = Math.round(paramFrame.width * f);
+          int m = Math.round(paramFrame.height * f);
+          this.mDeepBlurFilter.updateSize(k, m);
+          localFrame1 = this.mDeepBlurFilter.RenderProcess(paramFrame.getTextureId(), k, m);
+          localObject = this.mCopyFilter.RenderProcess(paramFrame.getTextureId(), k, m);
+          this.mBeautyEffectCombineFilter.setSmallTexture(((Frame)localObject).getTextureId());
+          this.mBeautyEffectCombineFilter.setBlurTexture(localFrame1.getTextureId());
+        }
+        f = Math.min(1.0F, 480.0F / j);
+        j = Math.round(paramFrame.width * f);
+        k = Math.round(paramFrame.height * f);
+        this.mBeautyEffectCombineFilter.setLightenSize(j, k);
+        localFrame2 = this.mCopyFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
+        this.mBeautyEffectCombineFilter.updateParam(localList, this.faceVertices);
+        this.mBeautyEffectCombineFilter.OnDrawFrameGLSL();
+        this.mBeautyEffectCombineFilter.renderTexture(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
+        paramFrame.unlock();
+        if (localFrame1 != null) {
+          localFrame1.unlock();
+        }
+        paramFrame = localFrame2;
+        if (localObject != null)
+        {
+          ((Frame)localObject).unlock();
+          paramFrame = localFrame2;
+        }
+      }
+      i += 1;
     }
+    if ((this.mContrastFilter.needRender()) && (this.isLUT1LoadSuccess) && (this.isLUT2LoadSuccess))
+    {
+      paramList = this.mContrastFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
+      paramFrame.unlock();
+      paramFrame = paramList;
+    }
+    this.mRenderIndex += 1;
+    return paramFrame;
   }
   
   public void resetCosDefaultEffect()
@@ -449,7 +435,7 @@ public class TTBeautyV5BeautyFaceList
   public void setEyePouchOpacity(float paramFloat)
   {
     this.eyepouchLevel = paramFloat;
-    this.mBeautyEffectCombineFilter.setEyePouchOpacity(1.2F * paramFloat);
+    this.mBeautyEffectCombineFilter.setEyePouchOpacity(paramFloat * 1.2F);
   }
   
   public void setFaceFeatureMultiplyAlpha(float paramFloat)
@@ -478,21 +464,23 @@ public class TTBeautyV5BeautyFaceList
   
   public void setLipsLut(String paramString)
   {
-    if ((this.lastLutPath != null) && (this.lastLutPath.equals(paramString))) {
+    Object localObject = this.lastLutPath;
+    if ((localObject != null) && (((String)localObject).equals(paramString))) {
       return;
     }
     this.lastLutPath = paramString;
-    Bitmap localBitmap = null;
+    localObject = null;
     if (!TextUtils.isEmpty(paramString)) {
-      if (paramString.startsWith("assets://")) {
-        break label85;
+      if (!paramString.startsWith("assets://")) {
+        localObject = BitmapUtils.decodeSampledBitmapFromFile(paramString, 1);
+      } else {
+        localObject = BitmapUtils.decodeSampleBitmapFromAssets(AEModule.getContext(), FileUtils.getRealPath(paramString), 1);
       }
     }
-    label85:
-    for (localBitmap = BitmapUtils.decodeSampledBitmapFromFile(paramString, 1); BitmapUtils.isLegal(localBitmap); localBitmap = BitmapUtils.decodeSampleBitmapFromAssets(AEModule.getContext(), FileUtils.getRealPath(paramString), 1))
+    if (BitmapUtils.isLegal((Bitmap)localObject))
     {
       this.mRenderLipsLut = true;
-      GlUtil.loadTexture(this.mTextures[3], localBitmap);
+      GlUtil.loadTexture(this.mTextures[3], (Bitmap)localObject);
       this.mFaceFeatureAndTeethWhitenFilter.setLipsLutTexture(this.mTextures[3]);
       return;
     }
@@ -512,20 +500,22 @@ public class TTBeautyV5BeautyFaceList
   
   public void setLipsStyleMaskPath(String paramString)
   {
-    if ((this.lastLutStyleMaskPath != null) && (this.lastLutStyleMaskPath.equals(paramString))) {
+    Object localObject = this.lastLutStyleMaskPath;
+    if ((localObject != null) && (((String)localObject).equals(paramString))) {
       return;
     }
     this.lastLutStyleMaskPath = paramString;
-    Bitmap localBitmap = null;
+    localObject = null;
     if (!TextUtils.isEmpty(paramString)) {
-      if (paramString.startsWith("assets://")) {
-        break label80;
+      if (!paramString.startsWith("assets://")) {
+        localObject = BitmapUtils.decodeSampledBitmapFromFile(paramString, 1);
+      } else {
+        localObject = BitmapUtils.decodeSampleBitmapFromAssets(AEModule.getContext(), FileUtils.getRealPath(paramString), 1);
       }
     }
-    label80:
-    for (localBitmap = BitmapUtils.decodeSampledBitmapFromFile(paramString, 1); BitmapUtils.isLegal(localBitmap); localBitmap = BitmapUtils.decodeSampleBitmapFromAssets(AEModule.getContext(), FileUtils.getRealPath(paramString), 1))
+    if (BitmapUtils.isLegal((Bitmap)localObject))
     {
-      GlUtil.loadTexture(this.mTextures[4], localBitmap);
+      GlUtil.loadTexture(this.mTextures[4], (Bitmap)localObject);
       this.mFaceFeatureAndTeethWhitenFilter.setLipsStyleMaskPath(this.mTextures[4]);
       return;
     }
@@ -556,13 +546,15 @@ public class TTBeautyV5BeautyFaceList
   public void setSkinColorAlpha(float paramFloat)
   {
     Bitmap localBitmap;
+    boolean bool;
     if (!this.isLUT1LoadSuccess)
     {
       localBitmap = VideoMemoryManager.getInstance().getBeautyCacheBitmap("color_tone_hongrun.png");
-      if (localBitmap == null) {
-        break label122;
+      if (localBitmap != null) {
+        bool = true;
+      } else {
+        bool = false;
       }
-      bool = true;
       AEOpenRenderConfig.checkStrictMode(bool, "color_tone_hongrun.png is null");
       if (loadLut(localBitmap, this.mTextures[0])) {
         this.isLUT1LoadSuccess = true;
@@ -571,27 +563,21 @@ public class TTBeautyV5BeautyFaceList
     if (!this.isLUT2LoadSuccess)
     {
       localBitmap = VideoMemoryManager.getInstance().getBeautyCacheBitmap("color_tone_baixi.png");
-      if (localBitmap == null) {
-        break label127;
+      if (localBitmap != null) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label122:
-    label127:
-    for (boolean bool = true;; bool = false)
-    {
       AEOpenRenderConfig.checkStrictMode(bool, "color_tone_baixi.png is null");
       if (loadLut(localBitmap, this.mTextures[1])) {
         this.isLUT2LoadSuccess = true;
       }
-      if (paramFloat >= 0.0F) {
-        break label132;
-      }
+    }
+    if (paramFloat < 0.0F)
+    {
       this.mContrastFilter.updateSkinColorValue(Math.abs(paramFloat), this.mTextures[0]);
       return;
-      bool = false;
-      break;
     }
-    label132:
     this.mContrastFilter.updateSkinColorValue(Math.abs(paramFloat), this.mTextures[1]);
   }
   
@@ -643,7 +629,7 @@ public class TTBeautyV5BeautyFaceList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.TTBeautyV5BeautyFaceList
  * JD-Core Version:    0.7.0.1
  */

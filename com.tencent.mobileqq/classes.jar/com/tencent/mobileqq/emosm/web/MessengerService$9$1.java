@@ -14,12 +14,12 @@ class MessengerService$9$1
   public void run()
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)MessengerService.i(this.a.a);
-    QQToast.a(localQQAppInterface.getApplication(), HardCodeUtil.a(2131706687), 0).b(localQQAppInterface.getApp().getResources().getDimensionPixelSize(2131299166));
+    QQToast.a(localQQAppInterface.getApplication(), HardCodeUtil.a(2131706709), 0).b(localQQAppInterface.getApp().getResources().getDimensionPixelSize(2131299168));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.9.1
  * JD-Core Version:    0.7.0.1
  */

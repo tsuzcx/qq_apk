@@ -28,25 +28,25 @@ public final class Settings
   
   boolean getEnablePush(boolean paramBoolean)
   {
-    int i;
-    if ((0x4 & this.set) != 0) {
+    int i = this.set;
+    boolean bool = false;
+    if ((i & 0x4) != 0) {
       i = this.values[2];
+    } else if (paramBoolean) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    while (i == 1)
-    {
-      return true;
-      if (paramBoolean) {
-        i = 1;
-      } else {
-        i = 0;
-      }
+    paramBoolean = bool;
+    if (i == 1) {
+      paramBoolean = true;
     }
-    return false;
+    return paramBoolean;
   }
   
   int getHeaderTableSize()
   {
-    if ((0x2 & this.set) != 0) {
+    if ((this.set & 0x2) != 0) {
       return this.values[1];
     }
     return -1;
@@ -54,7 +54,7 @@ public final class Settings
   
   int getInitialWindowSize()
   {
-    if ((0x80 & this.set) != 0) {
+    if ((this.set & 0x80) != 0) {
       return this.values[7];
     }
     return 65535;
@@ -62,7 +62,7 @@ public final class Settings
   
   int getMaxConcurrentStreams(int paramInt)
   {
-    if ((0x10 & this.set) != 0) {
+    if ((this.set & 0x10) != 0) {
       paramInt = this.values[4];
     }
     return paramInt;
@@ -70,7 +70,7 @@ public final class Settings
   
   int getMaxFrameSize(int paramInt)
   {
-    if ((0x20 & this.set) != 0) {
+    if ((this.set & 0x20) != 0) {
       paramInt = this.values[5];
     }
     return paramInt;
@@ -78,7 +78,7 @@ public final class Settings
   
   int getMaxHeaderListSize(int paramInt)
   {
-    if ((0x40 & this.set) != 0) {
+    if ((this.set & 0x40) != 0) {
       paramInt = this.values[6];
     }
     return paramInt;
@@ -92,25 +92,26 @@ public final class Settings
   void merge(Settings paramSettings)
   {
     int i = 0;
-    if (i < 10)
+    while (i < 10)
     {
-      if (!paramSettings.isSet(i)) {}
-      for (;;)
-      {
-        i += 1;
-        break;
+      if (paramSettings.isSet(i)) {
         set(i, paramSettings.get(i));
       }
+      i += 1;
     }
   }
   
   Settings set(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 < 0) || (paramInt1 >= this.values.length)) {
-      return this;
+    if (paramInt1 >= 0)
+    {
+      int[] arrayOfInt = this.values;
+      if (paramInt1 >= arrayOfInt.length) {
+        return this;
+      }
+      this.set = (1 << paramInt1 | this.set);
+      arrayOfInt[paramInt1] = paramInt2;
     }
-    this.set = (1 << paramInt1 | this.set);
-    this.values[paramInt1] = paramInt2;
     return this;
   }
   
@@ -121,7 +122,7 @@ public final class Settings
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.internal.http2.Settings
  * JD-Core Version:    0.7.0.1
  */

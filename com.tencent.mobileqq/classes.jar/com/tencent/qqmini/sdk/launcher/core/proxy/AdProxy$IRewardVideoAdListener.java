@@ -1,5 +1,7 @@
 package com.tencent.qqmini.sdk.launcher.core.proxy;
 
+import java.util.List;
+
 public abstract interface AdProxy$IRewardVideoAdListener
 {
   public abstract void onADClick();
@@ -8,7 +10,7 @@ public abstract interface AdProxy$IRewardVideoAdListener
   
   public abstract void onADExpose();
   
-  public abstract void onADLoad();
+  public abstract void onADLoad(List<AdProxy.ExpParam> paramList);
   
   public abstract void onADShow();
   
@@ -22,7 +24,7 @@ public abstract interface AdProxy$IRewardVideoAdListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.IRewardVideoAdListener
  * JD-Core Version:    0.7.0.1
  */

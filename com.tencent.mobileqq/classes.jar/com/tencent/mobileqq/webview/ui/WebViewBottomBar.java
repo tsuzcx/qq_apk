@@ -20,12 +20,13 @@ public class WebViewBottomBar
   
   WebViewBottomBar.ViewHolder a(int paramInt)
   {
-    if ((this.a != null) && (this.a.size() > 0))
+    Object localObject = this.a;
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
+      localObject = this.a.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        WebViewBottomBar.ViewHolder localViewHolder = (WebViewBottomBar.ViewHolder)localIterator.next();
+        WebViewBottomBar.ViewHolder localViewHolder = (WebViewBottomBar.ViewHolder)((Iterator)localObject).next();
         if (paramInt == localViewHolder.a) {
           return localViewHolder;
         }
@@ -36,7 +37,7 @@ public class WebViewBottomBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.ui.WebViewBottomBar
  * JD-Core Version:    0.7.0.1
  */

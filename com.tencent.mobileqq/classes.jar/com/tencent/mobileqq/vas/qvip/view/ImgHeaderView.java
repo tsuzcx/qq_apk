@@ -40,19 +40,23 @@ public class ImgHeaderView
       paramString1.putExtra("url", this.jdField_a_of_type_JavaLangString);
       paramActivity.startActivity(paramString1);
     }
-    for (;;)
+    else
     {
-      MobileReportManager.getInstance().reportAction("QQVipAccount", "1", "1", paramInt + 1 + "", "", "1", 102, 1);
-      try
-      {
-        QQVipHelper.a(118, paramQQVipMsgInfo, paramInt);
-        return;
-      }
-      catch (Throwable paramActivity)
-      {
-        paramActivity.printStackTrace();
-      }
       QQVipHelper.a(paramActivity);
+    }
+    paramActivity = MobileReportManager.getInstance();
+    paramString1 = new StringBuilder();
+    paramString1.append(paramInt + 1);
+    paramString1.append("");
+    paramActivity.reportAction("QQVipAccount", "1", "1", paramString1.toString(), "", "1", 102, 1);
+    try
+    {
+      QQVipHelper.a(118, paramQQVipMsgInfo, paramInt);
+      return;
+    }
+    catch (Throwable paramActivity)
+    {
+      paramActivity.printStackTrace();
     }
   }
   
@@ -60,16 +64,16 @@ public class ImgHeaderView
   {
     try
     {
-      this.jdField_a_of_type_JavaLangString = paramQQVipMsgInfo.url;
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131562013, this, false));
+      this.jdField_a_of_type_JavaLangString = paramQQVipMsgInfo.mUrl;
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561846, this, false));
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(0);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368905));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368631));
       this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setmRadius(UIUtils.a(getContext(), 6.0F), true);
-      URLDrawable localURLDrawable = URLDrawable.getDrawable(paramQQVipMsgInfo.coverUrl);
+      URLDrawable localURLDrawable = URLDrawable.getDrawable(paramQQVipMsgInfo.mCoverUrl);
       this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageDrawable(localURLDrawable);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379091));
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramQQVipMsgInfo.title);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365710));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378460));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramQQVipMsgInfo.mTitle);
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365547));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ImgHeaderView.1(this, paramActivity, paramQQVipMsgInfo, paramInt));
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new ImgHeaderView.2(this, paramActivity, paramQQVipMsgInfo, paramInt));
       addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
@@ -84,7 +88,7 @@ public class ImgHeaderView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.view.ImgHeaderView
  * JD-Core Version:    0.7.0.1
  */

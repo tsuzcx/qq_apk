@@ -12,7 +12,7 @@ public class StaticMethods$QQStoryAutoPlayView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.boundaries.implement.staticmethods.StaticMethods.QQStoryAutoPlayView
  * JD-Core Version:    0.7.0.1
  */

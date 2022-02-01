@@ -21,19 +21,17 @@ public class GLAnimScale
   
   protected void performDraw(GL10 paramGL10, long paramLong)
   {
-    float f4 = this.mXScaleEnd;
-    float f5 = this.mXScaleStart;
-    float f1 = this.mYScaleEnd;
-    float f2 = this.mYScaleStart;
-    float f3 = this.mXScaleStart;
-    f4 = (f4 - f5) * (float)paramLong / (float)this.duration;
-    f5 = this.mYScaleStart;
-    paramGL10.glScalef(f4 + f3, (f1 - f2) * (float)paramLong / (float)this.duration + f5, 1.0F);
+    float f1 = this.mXScaleEnd;
+    float f2 = this.mXScaleStart;
+    float f3 = this.mYScaleEnd;
+    float f4 = this.mYScaleStart;
+    float f5 = (float)paramLong;
+    paramGL10.glScalef(f2 + (f1 - f2) * f5 / (float)this.duration, this.mYScaleStart + (f3 - f4) * f5 / (float)this.duration, 1.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.core.functions.animation.GLAnimScale
  * JD-Core Version:    0.7.0.1
  */

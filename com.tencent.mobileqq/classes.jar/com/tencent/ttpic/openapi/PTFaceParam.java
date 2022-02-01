@@ -31,11 +31,14 @@ public class PTFaceParam
   public static PointF calcfacePoint2DCenter(List<List<PointF>> paramList)
   {
     PointF localPointF = new PointF();
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return localPointF;
+    if (paramList != null)
+    {
+      if (paramList.isEmpty()) {
+        return localPointF;
+      }
+      localPointF.x = ((PointF)((List)paramList.get(0)).get(63)).x;
+      localPointF.y = ((PointF)((List)paramList.get(0)).get(63)).y;
     }
-    localPointF.x = ((PointF)((List)paramList.get(0)).get(63)).x;
-    localPointF.y = ((PointF)((List)paramList.get(0)).get(63)).y;
     return localPointF;
   }
   
@@ -65,7 +68,7 @@ public class PTFaceParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.PTFaceParam
  * JD-Core Version:    0.7.0.1
  */

@@ -29,91 +29,101 @@ public class DarkModeChecker
   
   public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, DarkModeChecker.DarkModeListener paramDarkModeListener)
   {
-    if ((paramDarkModeListener == null) || (paramArrayOfByte == null)) {}
-    int[] arrayOfInt;
-    do
+    if (paramDarkModeListener != null)
     {
-      do
-      {
+      if (paramArrayOfByte == null) {
         return;
-        arrayOfInt = ShortVideoUtils.getDarkModeDPCValues();
-      } while (arrayOfInt[0] != 1);
-      this.jdField_a_of_type_Int += 1;
-    } while (this.jdField_a_of_type_Int % 8 != 0);
-    this.jdField_b_of_type_Int = (paramInt1 * paramInt2 * (100 - arrayOfInt[1]) / 100);
-    this.c = arrayOfInt[2];
-    Arrays.fill(this.jdField_a_of_type_ArrayOfInt, 0);
-    int i = 1;
-    while (i < paramInt2)
-    {
-      int j = 1;
-      while (j < paramInt1)
+      }
+      int[] arrayOfInt = ShortVideoUtils.getDarkModeDPCValues();
+      if (arrayOfInt[0] == 1)
       {
-        if (i * paramInt1 + j < paramArrayOfByte.length)
+        this.jdField_a_of_type_Int += 1;
+        if (this.jdField_a_of_type_Int % 8 == 0)
         {
-          arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-          int k = paramArrayOfByte[(i * paramInt1 + j)] & 0xFF;
-          arrayOfInt[k] += 64;
+          this.jdField_b_of_type_Int = (paramInt1 * paramInt2 * (100 - arrayOfInt[1]) / 100);
+          this.c = arrayOfInt[2];
+          Arrays.fill(this.jdField_a_of_type_ArrayOfInt, 0);
+          int i = 1;
+          int j;
+          for (;;)
+          {
+            j = 255;
+            if (i >= paramInt2) {
+              break;
+            }
+            j = 1;
+            while (j < paramInt1)
+            {
+              int k = i * paramInt1 + j;
+              if (k < paramArrayOfByte.length)
+              {
+                arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+                k = paramArrayOfByte[k] & 0xFF;
+                arrayOfInt[k] += 64;
+              }
+              j += 8;
+            }
+            i += 8;
+          }
+          i = 0;
+          paramInt1 = 255;
+          for (paramInt2 = j; paramInt2 >= 51; paramInt2 = j)
+          {
+            i += this.jdField_a_of_type_ArrayOfInt[paramInt2];
+            if (i >= this.jdField_b_of_type_Int)
+            {
+              paramInt1 = paramInt2;
+              break;
+            }
+            j = paramInt2 - 1;
+            paramInt1 = paramInt2;
+          }
+          long l;
+          if (paramInt1 <= this.c)
+          {
+            QLog.w("DarkModeChecker", 1, "darkmode = true!");
+            this.jdField_b_of_type_Long = 0L;
+            l = this.jdField_a_of_type_Long;
+            if (l == 0L)
+            {
+              this.jdField_a_of_type_Long = System.currentTimeMillis();
+              return;
+            }
+            if ((l > 0L) && (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 1500L))
+            {
+              this.jdField_a_of_type_Long = -1L;
+              QLog.w("DarkModeChecker", 1, "ACTION_NIGHT_MODE on!");
+              this.jdField_b_of_type_Long = 0L;
+              paramDarkModeListener.e(true);
+            }
+          }
+          else
+          {
+            if (this.jdField_a_of_type_Long > 0L) {
+              this.jdField_a_of_type_Long = 0L;
+            }
+            l = this.jdField_b_of_type_Long;
+            if (l == 0L)
+            {
+              this.jdField_b_of_type_Long = System.currentTimeMillis();
+              return;
+            }
+            if ((l > 0L) && (System.currentTimeMillis() - this.jdField_b_of_type_Long >= 2000L))
+            {
+              this.jdField_b_of_type_Long = -1L;
+              QLog.w("DarkModeChecker", 1, "ACTION_NIGHT_MODE off!");
+              this.jdField_a_of_type_Long = 0L;
+              paramDarkModeListener.e(false);
+            }
+          }
         }
-        j += 8;
       }
-      i += 8;
-    }
-    i = 0;
-    paramInt2 = 255;
-    paramInt1 = 255;
-    label172:
-    if (paramInt1 >= 51)
-    {
-      i += this.jdField_a_of_type_ArrayOfInt[paramInt1];
-      if (i < this.jdField_b_of_type_Int) {}
-    }
-    for (;;)
-    {
-      if (paramInt1 <= this.c)
-      {
-        QLog.w("DarkModeChecker", 1, "darkmode = true!");
-        this.jdField_b_of_type_Long = 0L;
-        if (this.jdField_a_of_type_Long == 0L)
-        {
-          this.jdField_a_of_type_Long = System.currentTimeMillis();
-          return;
-          paramInt2 = paramInt1;
-          paramInt1 -= 1;
-          break label172;
-        }
-        if ((this.jdField_a_of_type_Long <= 0L) || (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1500L)) {
-          break;
-        }
-        this.jdField_a_of_type_Long = -1L;
-        QLog.w("DarkModeChecker", 1, "ACTION_NIGHT_MODE on!");
-        this.jdField_b_of_type_Long = 0L;
-        paramDarkModeListener.a(true);
-        return;
-      }
-      if (this.jdField_a_of_type_Long > 0L) {
-        this.jdField_a_of_type_Long = 0L;
-      }
-      if (this.jdField_b_of_type_Long == 0L)
-      {
-        this.jdField_b_of_type_Long = System.currentTimeMillis();
-        return;
-      }
-      if ((this.jdField_b_of_type_Long <= 0L) || (System.currentTimeMillis() - this.jdField_b_of_type_Long < 2000L)) {
-        break;
-      }
-      this.jdField_b_of_type_Long = -1L;
-      QLog.w("DarkModeChecker", 1, "ACTION_NIGHT_MODE off!");
-      this.jdField_a_of_type_Long = 0L;
-      paramDarkModeListener.a(false);
-      return;
-      paramInt1 = paramInt2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.util.DarkModeChecker
  * JD-Core Version:    0.7.0.1
  */

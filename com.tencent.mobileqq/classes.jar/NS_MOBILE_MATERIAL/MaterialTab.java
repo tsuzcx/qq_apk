@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -68,33 +69,40 @@ public final class MaterialTab
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iTabId, 0);
-    if (this.strTabKey != null) {
-      paramJceOutputStream.write(this.strTabKey, 1);
+    Object localObject = this.strTabKey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.strTabName != null) {
-      paramJceOutputStream.write(this.strTabName, 2);
+    localObject = this.strTabName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.vecBanner != null) {
-      paramJceOutputStream.write(this.vecBanner, 3);
+    localObject = this.vecBanner;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
-    if (this.vecCate != null) {
-      paramJceOutputStream.write(this.vecCate, 4);
+    localObject = this.vecCate;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
     paramJceOutputStream.write(this.uiSettleTime, 5);
-    if (this.strTraceInfo != null) {
-      paramJceOutputStream.write(this.strTraceInfo, 6);
+    localObject = this.strTraceInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.strExtFields != null) {
-      paramJceOutputStream.write(this.strExtFields, 7);
+    localObject = this.strExtFields;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 7);
     }
-    if (this.mapExtInfo != null) {
-      paramJceOutputStream.write(this.mapExtInfo, 8);
+    localObject = this.mapExtInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.MaterialTab
  * JD-Core Version:    0.7.0.1
  */

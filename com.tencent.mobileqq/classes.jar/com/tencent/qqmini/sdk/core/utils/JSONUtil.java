@@ -38,8 +38,8 @@ public class JSONUtil
   
   public static JSONArray concatArray(JSONArray paramJSONArray1, JSONArray paramJSONArray2)
   {
-    int k = 0;
     JSONArray localJSONArray = new JSONArray();
+    int k = 0;
     int i = 0;
     int j;
     for (;;)
@@ -71,40 +71,42 @@ public class JSONUtil
   {
     JSONObject localJSONObject = new JSONObject();
     Iterator localIterator = paramMap.keySet().iterator();
-    while (localIterator.hasNext())
+    for (;;)
     {
-      String str = (String)localIterator.next();
+      String str;
+      if (localIterator.hasNext()) {
+        str = (String)localIterator.next();
+      }
       try
       {
         localJSONObject.put(str, headerValueToString((List)paramMap.get(str)));
       }
       catch (JSONException localJSONException) {}
+      return localJSONObject;
     }
-    return localJSONObject;
   }
   
   private static String headerValueToString(List<String> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    if (i < paramList.size())
+    if ((paramList != null) && (paramList.size() != 0))
     {
-      String str = (String)paramList.get(i);
-      if (TextUtils.isEmpty(str)) {}
-      for (;;)
+      StringBuilder localStringBuilder = new StringBuilder();
+      int i = 0;
+      while (i < paramList.size())
       {
-        i += 1;
-        break;
-        if (i > 0) {
-          localStringBuilder.append(";");
+        String str = (String)paramList.get(i);
+        if (!TextUtils.isEmpty(str))
+        {
+          if (i > 0) {
+            localStringBuilder.append(";");
+          }
+          localStringBuilder.append(str);
         }
-        localStringBuilder.append(str);
+        i += 1;
       }
+      return localStringBuilder.toString();
     }
-    return localStringBuilder.toString();
+    return "";
   }
   
   public static boolean isJson(String paramString)
@@ -114,7 +116,11 @@ public class JSONUtil
       new JSONObject(paramString);
       return true;
     }
-    catch (Throwable paramString) {}
+    catch (Throwable paramString)
+    {
+      label11:
+      break label11;
+    }
     return false;
   }
   
@@ -128,19 +134,22 @@ public class JSONUtil
       {
         String str1 = (String)localIterator.next();
         String str2 = paramJSONObject.getString(str1);
-        localStringBuilder.append(str1).append("=").append(str2).append("&");
+        localStringBuilder.append(str1);
+        localStringBuilder.append("=");
+        localStringBuilder.append(str2);
+        localStringBuilder.append("&");
       }
-      if (localStringBuilder.length() <= 0) {
-        break label84;
+      if (localStringBuilder.length() > 0) {
+        localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
       }
+      return localStringBuilder.toString();
     }
     catch (Exception paramJSONObject)
     {
-      return null;
+      label92:
+      break label92;
     }
-    localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
-    label84:
-    return localStringBuilder.toString();
+    return null;
   }
   
   public static int[] jsonArrayToIntArray(JSONArray paramJSONArray)
@@ -230,16 +239,19 @@ public class JSONUtil
   {
     JSONObject localJSONObject = new JSONObject();
     Iterator localIterator = paramMap.keySet().iterator();
-    while (localIterator.hasNext())
+    for (;;)
     {
-      String str = (String)localIterator.next();
+      String str;
+      if (localIterator.hasNext()) {
+        str = (String)localIterator.next();
+      }
       try
       {
         localJSONObject.put(str, (String)paramMap.get(str));
       }
       catch (JSONException localJSONException) {}
+      return localJSONObject;
     }
-    return localJSONObject;
   }
   
   public static JSONObject parse(String paramString)
@@ -249,22 +261,24 @@ public class JSONUtil
       paramString = new JSONObject(paramString);
       return paramString;
     }
-    catch (Throwable paramString) {}
+    catch (Throwable paramString)
+    {
+      label11:
+      break label11;
+    }
     return null;
   }
   
   private static Object toJavaObj(Object paramObject)
   {
-    Object localObject;
     if ((paramObject instanceof JSONObject)) {
-      localObject = toMap((JSONObject)paramObject);
+      return toMap((JSONObject)paramObject);
     }
-    do
-    {
-      return localObject;
-      localObject = paramObject;
-    } while (!(paramObject instanceof JSONArray));
-    return toList((JSONArray)paramObject);
+    Object localObject = paramObject;
+    if ((paramObject instanceof JSONArray)) {
+      localObject = toList((JSONArray)paramObject);
+    }
+    return localObject;
   }
   
   public static JSONArray toJson(List<Object> paramList)
@@ -289,16 +303,19 @@ public class JSONUtil
   {
     JSONObject localJSONObject = new JSONObject();
     Iterator localIterator = paramMap.keySet().iterator();
-    while (localIterator.hasNext())
+    for (;;)
     {
-      String str = (String)localIterator.next();
+      String str;
+      if (localIterator.hasNext()) {
+        str = (String)localIterator.next();
+      }
       try
       {
         localJSONObject.put(str, toJson((List)paramMap.get(str)));
       }
       catch (JSONException localJSONException) {}
+      return localJSONObject;
     }
-    return localJSONObject;
   }
   
   public static List toList(JSONArray paramJSONArray)
@@ -338,7 +355,7 @@ public class JSONUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.JSONUtil
  * JD-Core Version:    0.7.0.1
  */

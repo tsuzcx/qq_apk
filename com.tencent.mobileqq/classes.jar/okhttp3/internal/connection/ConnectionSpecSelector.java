@@ -44,42 +44,76 @@ public final class ConnectionSpecSelector
   {
     int i = this.nextModeIndex;
     int j = this.connectionSpecs.size();
-    ConnectionSpec localConnectionSpec;
-    if (i < j)
+    while (i < j)
     {
-      localConnectionSpec = (ConnectionSpec)this.connectionSpecs.get(i);
-      if (localConnectionSpec.isCompatible(paramSSLSocket)) {
+      localObject = (ConnectionSpec)this.connectionSpecs.get(i);
+      if (((ConnectionSpec)localObject).isCompatible(paramSSLSocket))
+      {
         this.nextModeIndex = (i + 1);
+        break label64;
       }
+      i += 1;
     }
+    Object localObject = null;
+    label64:
+    if (localObject != null)
+    {
+      this.isFallbackPossible = isFallbackPossible(paramSSLSocket);
+      Internal.instance.apply((ConnectionSpec)localObject, paramSSLSocket, this.isFallback);
+      return localObject;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Unable to find acceptable protocols. isFallback=");
+    ((StringBuilder)localObject).append(this.isFallback);
+    ((StringBuilder)localObject).append(", modes=");
+    ((StringBuilder)localObject).append(this.connectionSpecs);
+    ((StringBuilder)localObject).append(", supported protocols=");
+    ((StringBuilder)localObject).append(Arrays.toString(paramSSLSocket.getEnabledProtocols()));
+    paramSSLSocket = new UnknownServiceException(((StringBuilder)localObject).toString());
     for (;;)
     {
-      if (localConnectionSpec == null)
-      {
-        throw new UnknownServiceException("Unable to find acceptable protocols. isFallback=" + this.isFallback + ", modes=" + this.connectionSpecs + ", supported protocols=" + Arrays.toString(paramSSLSocket.getEnabledProtocols()));
-        i += 1;
-        break;
-      }
-      this.isFallbackPossible = isFallbackPossible(paramSSLSocket);
-      Internal.instance.apply(localConnectionSpec, paramSSLSocket, this.isFallback);
-      return localConnectionSpec;
-      localConnectionSpec = null;
+      throw paramSSLSocket;
     }
   }
   
   public boolean connectionFailed(IOException paramIOException)
   {
+    boolean bool2 = true;
     this.isFallback = true;
-    if (!this.isFallbackPossible) {}
-    while (((paramIOException instanceof ProtocolException)) || ((paramIOException instanceof InterruptedIOException)) || (((paramIOException instanceof SSLHandshakeException)) && ((paramIOException.getCause() instanceof CertificateException))) || ((paramIOException instanceof SSLPeerUnverifiedException)) || ((!(paramIOException instanceof SSLHandshakeException)) && (!(paramIOException instanceof SSLProtocolException)) && (!(paramIOException instanceof SSLException)))) {
+    if (!this.isFallbackPossible) {
       return false;
     }
-    return true;
+    if ((paramIOException instanceof ProtocolException)) {
+      return false;
+    }
+    if ((paramIOException instanceof InterruptedIOException)) {
+      return false;
+    }
+    boolean bool3 = paramIOException instanceof SSLHandshakeException;
+    if ((bool3) && ((paramIOException.getCause() instanceof CertificateException))) {
+      return false;
+    }
+    if ((paramIOException instanceof SSLPeerUnverifiedException)) {
+      return false;
+    }
+    boolean bool1 = bool2;
+    if (!bool3)
+    {
+      bool1 = bool2;
+      if (!(paramIOException instanceof SSLProtocolException))
+      {
+        if ((paramIOException instanceof SSLException)) {
+          return true;
+        }
+        bool1 = false;
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.internal.connection.ConnectionSpecSelector
  * JD-Core Version:    0.7.0.1
  */

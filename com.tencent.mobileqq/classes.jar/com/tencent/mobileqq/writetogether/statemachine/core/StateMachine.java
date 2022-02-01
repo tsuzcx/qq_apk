@@ -15,7 +15,11 @@ public class StateMachine<E extends Enum>
   public StateMachine(E paramE, String paramString)
   {
     this.jdField_a_of_type_JavaLangEnum = paramE;
-    this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "." + paramString);
+    paramE = new StringBuilder();
+    paramE.append(this.jdField_a_of_type_JavaLangString);
+    paramE.append(".");
+    paramE.append(paramString);
+    this.jdField_a_of_type_JavaLangString = paramE.toString();
   }
   
   private void a(E paramE, List<E> paramList)
@@ -71,10 +75,11 @@ public class StateMachine<E extends Enum>
   
   public void a(E paramE, String paramString)
   {
+    Object localObject;
     if (a(paramE))
     {
-      localStateProcessor = a(paramE);
-      if ((localStateProcessor == null) || (!localStateProcessor.a())) {
+      localObject = a(paramE);
+      if ((localObject == null) || (!((StateProcessor)localObject).a())) {
         this.jdField_b_of_type_JavaLangEnum = this.jdField_a_of_type_JavaLangEnum;
       }
       this.jdField_a_of_type_JavaLangEnum = paramE;
@@ -82,21 +87,32 @@ public class StateMachine<E extends Enum>
       if (paramE != null) {
         paramE.a();
       }
-      if (localStateProcessor != null)
+      if (localObject != null)
       {
-        localStateProcessor.jdField_a_of_type_JavaLangString = paramString;
-        localStateProcessor.a(this.jdField_b_of_type_JavaLangEnum);
+        ((StateProcessor)localObject).jdField_a_of_type_JavaLangString = paramString;
+        ((StateProcessor)localObject).a(this.jdField_b_of_type_JavaLangEnum);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[setState] from: " + this.jdField_b_of_type_JavaLangEnum + " -> to: " + this.jdField_a_of_type_JavaLangEnum);
+      if (QLog.isColorLevel())
+      {
+        paramE = this.jdField_a_of_type_JavaLangString;
+        paramString = new StringBuilder();
+        paramString.append("[setState] from: ");
+        paramString.append(this.jdField_b_of_type_JavaLangEnum);
+        paramString.append(" -> to: ");
+        paramString.append(this.jdField_a_of_type_JavaLangEnum);
+        QLog.d(paramE, 2, paramString.toString());
       }
     }
-    while (!QLog.isColorLevel())
+    else if (QLog.isColorLevel())
     {
-      StateProcessor localStateProcessor;
-      return;
+      paramString = this.jdField_a_of_type_JavaLangString;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[setState] not allowed state trans: from: ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangEnum);
+      ((StringBuilder)localObject).append(" -> to: ");
+      ((StringBuilder)localObject).append(paramE);
+      QLog.d(paramString, 2, ((StringBuilder)localObject).toString());
     }
-    QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[setState] not allowed state trans: from: " + this.jdField_a_of_type_JavaLangEnum + " -> to: " + paramE);
   }
   
   public E b()
@@ -106,7 +122,7 @@ public class StateMachine<E extends Enum>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.statemachine.core.StateMachine
  * JD-Core Version:    0.7.0.1
  */

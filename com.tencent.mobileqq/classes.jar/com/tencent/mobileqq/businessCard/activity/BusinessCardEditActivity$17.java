@@ -6,26 +6,28 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.utils.ContactUtils;
+import mqq.app.AppRuntime;
 
 class BusinessCardEditActivity$17
   extends FriendListObserver
 {
   BusinessCardEditActivity$17(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
     if ((paramBoolean) && (paramString != null))
     {
-      String str = ContactUtils.d(this.a.app, paramString, false);
+      Object localObject1 = this.a.app;
       int i = 0;
+      localObject1 = ContactUtils.b((AppRuntime)localObject1, paramString, false);
       while (i < this.a.c.getChildCount())
       {
-        Object localObject = this.a.c.getChildAt(i);
-        if (((localObject instanceof ViewGroup)) && ((((View)localObject).getTag() instanceof BusinessCardEditActivity.ItemHolder)) && (paramString.equals(((BusinessCardEditActivity.ItemHolder)((View)localObject).getTag()).a)))
+        Object localObject2 = this.a.c.getChildAt(i);
+        if (((localObject2 instanceof ViewGroup)) && ((((View)localObject2).getTag() instanceof BusinessCardEditActivity.ItemHolder)) && (paramString.equals(((BusinessCardEditActivity.ItemHolder)((View)localObject2).getTag()).a)))
         {
-          localObject = (TextView)((View)localObject).findViewById(2131372273);
-          if (localObject != null) {
-            ((TextView)localObject).setText(str);
+          localObject2 = (TextView)((View)localObject2).findViewById(2131371862);
+          if (localObject2 != null) {
+            ((TextView)localObject2).setText((CharSequence)localObject1);
           }
         }
         i += 1;
@@ -35,7 +37,7 @@ class BusinessCardEditActivity$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity.17
  * JD-Core Version:    0.7.0.1
  */

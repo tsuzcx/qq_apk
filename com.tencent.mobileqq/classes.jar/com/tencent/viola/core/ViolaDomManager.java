@@ -38,7 +38,7 @@ public class ViolaDomManager
   
   private void throwIfNotDomThread()
   {
-    if (!isDomThread()) {}
+    isDomThread();
   }
   
   void batch()
@@ -61,11 +61,13 @@ public class ViolaDomManager
   
   public void destroy()
   {
-    if ((this.mDomThread != null) && (this.mDomThread.isThreadAlive())) {
+    Object localObject = this.mDomThread;
+    if ((localObject != null) && (((ViolaThread)localObject).isThreadAlive())) {
       this.mDomThread.quit();
     }
-    if (this.mDomContextImpMap != null) {
-      this.mDomContextImpMap.clear();
+    localObject = this.mDomContextImpMap;
+    if (localObject != null) {
+      ((ConcurrentHashMap)localObject).clear();
     }
     this.mDomHandler = null;
     this.mDomThread = null;
@@ -83,22 +85,21 @@ public class ViolaDomManager
   {
     DOMActionContext localDOMActionContext = (DOMActionContext)this.mDomContextImpMap.get(paramString);
     Object localObject = localDOMActionContext;
-    if (localDOMActionContext == null)
-    {
+    if (localDOMActionContext == null) {
       if (paramBoolean)
       {
         localObject = new DOMActionContextImpl(paramString, this.mRenderManager);
         this.mDomContextImpMap.put(paramString, localObject);
       }
+      else
+      {
+        ViolaSDKManager.getInstance().getViolaInstance(paramString);
+        return;
+      }
     }
-    else
-    {
-      System.currentTimeMillis();
-      System.nanoTime();
-      paramDOMAction.executeDom((DOMActionContext)localObject);
-      return;
-    }
-    ViolaSDKManager.getInstance().getViolaInstance(paramString);
+    System.currentTimeMillis();
+    System.nanoTime();
+    paramDOMAction.executeDom((DOMActionContext)localObject);
   }
   
   public void forceBatch()
@@ -147,18 +148,29 @@ public class ViolaDomManager
   
   public boolean hasMessages(int paramInt)
   {
-    if ((this.mDomHandler == null) || (this.mDomThread == null) || (!this.mDomThread.isThreadAlive()) || (this.mDomThread.getLooper() == null)) {
-      return true;
+    if (this.mDomHandler != null)
+    {
+      ViolaThread localViolaThread = this.mDomThread;
+      if ((localViolaThread != null) && (localViolaThread.isThreadAlive()) && (this.mDomThread.getLooper() != null)) {
+        return this.mDomHandler.hasMessages(paramInt);
+      }
     }
-    return this.mDomHandler.hasMessages(paramInt);
+    return true;
   }
   
   public void post(Runnable paramRunnable)
   {
-    if ((this.mDomHandler == null) || (paramRunnable == null) || (this.mDomThread == null) || (!this.mDomThread.isThreadAlive()) || (this.mDomThread.getLooper() == null)) {
-      return;
+    if ((this.mDomHandler != null) && (paramRunnable != null))
+    {
+      ViolaThread localViolaThread = this.mDomThread;
+      if ((localViolaThread != null) && (localViolaThread.isThreadAlive()))
+      {
+        if (this.mDomThread.getLooper() == null) {
+          return;
+        }
+        this.mDomHandler.post(ViolaThread.secure(paramRunnable));
+      }
     }
-    this.mDomHandler.post(ViolaThread.secure(paramRunnable));
   }
   
   public void postAction(String paramString, DOMAction paramDOMAction, boolean paramBoolean)
@@ -210,18 +222,32 @@ public class ViolaDomManager
   
   public void removeMessages(int paramInt)
   {
-    if ((this.mDomHandler == null) || (this.mDomThread == null) || (!this.mDomThread.isThreadAlive()) || (this.mDomThread.getLooper() == null)) {
-      return;
+    if (this.mDomHandler != null)
+    {
+      ViolaThread localViolaThread = this.mDomThread;
+      if ((localViolaThread != null) && (localViolaThread.isThreadAlive()))
+      {
+        if (this.mDomThread.getLooper() == null) {
+          return;
+        }
+        this.mDomHandler.removeMessages(paramInt);
+      }
     }
-    this.mDomHandler.removeMessages(paramInt);
   }
   
   public void sendEmptyMessageDelayed(int paramInt, long paramLong)
   {
-    if ((this.mDomHandler == null) || (this.mDomThread == null) || (!this.mDomThread.isThreadAlive()) || (this.mDomThread.getLooper() == null)) {
-      return;
+    if (this.mDomHandler != null)
+    {
+      ViolaThread localViolaThread = this.mDomThread;
+      if ((localViolaThread != null) && (localViolaThread.isThreadAlive()))
+      {
+        if (this.mDomThread.getLooper() == null) {
+          return;
+        }
+        this.mDomHandler.sendEmptyMessageDelayed(paramInt, paramLong);
+      }
     }
-    this.mDomHandler.sendEmptyMessageDelayed(paramInt, paramLong);
   }
   
   public void sendMessage(Message paramMessage)
@@ -231,10 +257,17 @@ public class ViolaDomManager
   
   public void sendMessageDelayed(Message paramMessage, long paramLong)
   {
-    if ((paramMessage == null) || (this.mDomHandler == null) || (this.mDomThread == null) || (!this.mDomThread.isThreadAlive()) || (this.mDomThread.getLooper() == null)) {
-      return;
+    if ((paramMessage != null) && (this.mDomHandler != null))
+    {
+      ViolaThread localViolaThread = this.mDomThread;
+      if ((localViolaThread != null) && (localViolaThread.isThreadAlive()))
+      {
+        if (this.mDomThread.getLooper() == null) {
+          return;
+        }
+        this.mDomHandler.sendMessageDelayed(paramMessage, paramLong);
+      }
     }
-    this.mDomHandler.sendMessageDelayed(paramMessage, paramLong);
   }
   
   public DomObject unRegisterDomboject(String paramString1, String paramString2)
@@ -248,7 +281,7 @@ public class ViolaDomManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.core.ViolaDomManager
  * JD-Core Version:    0.7.0.1
  */

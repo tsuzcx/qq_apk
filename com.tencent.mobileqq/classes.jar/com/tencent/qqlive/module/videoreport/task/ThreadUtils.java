@@ -43,6 +43,11 @@ public class ThreadUtils
     sTaskInterceptor = paramIThreadTaskInterceptor;
   }
   
+  public static boolean isMainThread()
+  {
+    return Looper.myLooper() == Looper.getMainLooper();
+  }
+  
   public static void removeOnUiThread(Runnable paramRunnable)
   {
     if (paramRunnable != null) {
@@ -52,8 +57,10 @@ public class ThreadUtils
   
   public static void runOnUiThread(Runnable paramRunnable)
   {
-    if (paramRunnable == null) {}
-    while (shouldIntercept(paramRunnable)) {
+    if (paramRunnable == null) {
+      return;
+    }
+    if (shouldIntercept(paramRunnable)) {
       return;
     }
     HANDLER.post(paramRunnable);
@@ -68,17 +75,19 @@ public class ThreadUtils
   
   private static boolean shouldIntercept(Runnable paramRunnable)
   {
-    return (sTaskInterceptor != null) && (sTaskInterceptor.shouldInterceptTask(paramRunnable));
+    IThreadTaskInterceptor localIThreadTaskInterceptor = sTaskInterceptor;
+    return (localIThreadTaskInterceptor != null) && (localIThreadTaskInterceptor.shouldInterceptTask(paramRunnable));
   }
   
   private static boolean tryToRemoveInPendingTask(Runnable paramRunnable)
   {
-    return (sTaskInterceptor != null) && (sTaskInterceptor.removePendingTask(paramRunnable));
+    IThreadTaskInterceptor localIThreadTaskInterceptor = sTaskInterceptor;
+    return (localIThreadTaskInterceptor != null) && (localIThreadTaskInterceptor.removePendingTask(paramRunnable));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.task.ThreadUtils
  * JD-Core Version:    0.7.0.1
  */

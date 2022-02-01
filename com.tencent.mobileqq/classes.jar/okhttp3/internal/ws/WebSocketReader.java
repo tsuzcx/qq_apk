@@ -25,38 +25,39 @@ final class WebSocketReader
   
   WebSocketReader(boolean paramBoolean, BufferedSource paramBufferedSource, WebSocketReader.FrameCallback paramFrameCallback)
   {
-    if (paramBufferedSource == null) {
-      throw new NullPointerException("source == null");
-    }
-    if (paramFrameCallback == null) {
+    if (paramBufferedSource != null)
+    {
+      if (paramFrameCallback != null)
+      {
+        this.isClient = paramBoolean;
+        this.source = paramBufferedSource;
+        this.frameCallback = paramFrameCallback;
+        paramFrameCallback = null;
+        if (paramBoolean) {
+          paramBufferedSource = null;
+        } else {
+          paramBufferedSource = new byte[4];
+        }
+        this.maskKey = paramBufferedSource;
+        if (paramBoolean) {
+          paramBufferedSource = paramFrameCallback;
+        } else {
+          paramBufferedSource = new Buffer.UnsafeCursor();
+        }
+        this.maskCursor = paramBufferedSource;
+        return;
+      }
       throw new NullPointerException("frameCallback == null");
     }
-    this.isClient = paramBoolean;
-    this.source = paramBufferedSource;
-    this.frameCallback = paramFrameCallback;
-    if (paramBoolean)
-    {
-      paramBufferedSource = null;
-      this.maskKey = paramBufferedSource;
-      if (!paramBoolean) {
-        break label103;
-      }
-    }
-    label103:
-    for (paramBufferedSource = localObject;; paramBufferedSource = new Buffer.UnsafeCursor())
-    {
-      this.maskCursor = paramBufferedSource;
-      return;
-      paramBufferedSource = new byte[4];
-      break;
-    }
+    throw new NullPointerException("source == null");
   }
   
   private void readControlFrame()
   {
-    if (this.frameLength > 0L)
+    long l = this.frameLength;
+    if (l > 0L)
     {
-      this.source.readFully(this.controlFrameBuffer, this.frameLength);
+      this.source.readFully(this.controlFrameBuffer, l);
       if (!this.isClient)
       {
         this.controlFrameBuffer.readAndWriteUnsafe(this.maskCursor);
@@ -65,153 +66,153 @@ final class WebSocketReader
         this.maskCursor.close();
       }
     }
+    Object localObject;
     switch (this.opcode)
     {
     default: 
-      throw new ProtocolException("Unknown control opcode: " + Integer.toHexString(this.opcode));
-    case 9: 
-      this.frameCallback.onReadPing(this.controlFrameBuffer.readByteString());
-      return;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Unknown control opcode: ");
+      ((StringBuilder)localObject).append(Integer.toHexString(this.opcode));
+      throw new ProtocolException(((StringBuilder)localObject).toString());
     case 10: 
       this.frameCallback.onReadPong(this.controlFrameBuffer.readByteString());
       return;
+    case 9: 
+      this.frameCallback.onReadPing(this.controlFrameBuffer.readByteString());
+      return;
     }
     int i = 1005;
-    String str1 = "";
-    long l = this.controlFrameBuffer.size();
-    if (l == 1L) {
-      throw new ProtocolException("Malformed close payload length of 1.");
-    }
-    if (l != 0L)
+    l = this.controlFrameBuffer.size();
+    if (l != 1L)
     {
-      i = this.controlFrameBuffer.readShort();
-      str1 = this.controlFrameBuffer.readUtf8();
-      String str2 = WebSocketProtocol.closeCodeExceptionMessage(i);
-      if (str2 != null) {
-        throw new ProtocolException(str2);
+      if (l != 0L)
+      {
+        i = this.controlFrameBuffer.readShort();
+        localObject = this.controlFrameBuffer.readUtf8();
+        String str = WebSocketProtocol.closeCodeExceptionMessage(i);
+        if (str != null) {
+          throw new ProtocolException(str);
+        }
       }
+      else
+      {
+        localObject = "";
+      }
+      this.frameCallback.onReadClose(i, (String)localObject);
+      this.closed = true;
+      return;
     }
-    this.frameCallback.onReadClose(i, str1);
-    this.closed = true;
+    throw new ProtocolException("Malformed close payload length of 1.");
   }
   
   private void readHeader()
   {
-    boolean bool2 = true;
-    if (this.closed) {
-      throw new IOException("closed");
-    }
-    long l = this.source.timeout().timeoutNanos();
-    this.source.timeout().clearTimeout();
-    boolean bool1;
-    for (;;)
+    if (!this.closed)
     {
+      long l = this.source.timeout().timeoutNanos();
+      this.source.timeout().clearTimeout();
       try
       {
-        i = this.source.readByte();
-        k = i & 0xFF;
+        int i = this.source.readByte();
+        int k = i & 0xFF;
         this.source.timeout().timeout(l, TimeUnit.NANOSECONDS);
         this.opcode = (k & 0xF);
-        if ((k & 0x80) != 0)
-        {
+        boolean bool2 = true;
+        boolean bool1;
+        if ((k & 0x80) != 0) {
           bool1 = true;
-          this.isFinalFrame = bool1;
-          if ((k & 0x8) == 0) {
-            break label175;
-          }
+        } else {
+          bool1 = false;
+        }
+        this.isFinalFrame = bool1;
+        if ((k & 0x8) != 0) {
           bool1 = true;
-          this.isControlFrame = bool1;
-          if ((!this.isControlFrame) || (this.isFinalFrame)) {
-            break;
-          }
+        } else {
+          bool1 = false;
+        }
+        this.isControlFrame = bool1;
+        if ((this.isControlFrame) && (!this.isFinalFrame)) {
           throw new ProtocolException("Control frames must be final.");
         }
+        if ((k & 0x40) != 0) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        int j;
+        if ((k & 0x20) != 0) {
+          j = 1;
+        } else {
+          j = 0;
+        }
+        if ((k & 0x10) != 0) {
+          k = 1;
+        } else {
+          k = 0;
+        }
+        if ((i == 0) && (j == 0) && (k == 0))
+        {
+          i = this.source.readByte() & 0xFF;
+          if ((i & 0x80) != 0) {
+            bool1 = bool2;
+          } else {
+            bool1 = false;
+          }
+          bool2 = this.isClient;
+          Object localObject1;
+          if (bool1 == bool2)
+          {
+            if (bool2) {
+              localObject1 = "Server-sent frames must not be masked.";
+            } else {
+              localObject1 = "Client-sent frames must be masked.";
+            }
+            throw new ProtocolException((String)localObject1);
+          }
+          this.frameLength = (i & 0x7F);
+          l = this.frameLength;
+          if (l == 126L)
+          {
+            this.frameLength = (this.source.readShort() & 0xFFFF);
+          }
+          else if (l == 127L)
+          {
+            this.frameLength = this.source.readLong();
+            if (this.frameLength < 0L)
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("Frame length 0x");
+              ((StringBuilder)localObject1).append(Long.toHexString(this.frameLength));
+              ((StringBuilder)localObject1).append(" > 0x7FFFFFFFFFFFFFFF");
+              throw new ProtocolException(((StringBuilder)localObject1).toString());
+            }
+          }
+          if ((this.isControlFrame) && (this.frameLength > 125L)) {
+            throw new ProtocolException("Control frame must be less than 125B.");
+          }
+          if (bool1) {
+            this.source.readFully(this.maskKey);
+          }
+          return;
+        }
+        throw new ProtocolException("Reserved flags are unsupported.");
       }
       finally
       {
         this.source.timeout().timeout(l, TimeUnit.NANOSECONDS);
       }
-      bool1 = false;
-      continue;
-      label175:
-      bool1 = false;
     }
-    int j;
-    if ((k & 0x40) != 0)
-    {
-      i = 1;
-      if ((k & 0x20) == 0) {
-        break label235;
-      }
-      j = 1;
-      label199:
-      if ((k & 0x10) == 0) {
-        break label240;
-      }
-    }
-    label235:
-    label240:
-    for (int k = 1;; k = 0)
-    {
-      if ((i == 0) && (j == 0) && (k == 0)) {
-        break label245;
-      }
-      throw new ProtocolException("Reserved flags are unsupported.");
-      i = 0;
-      break;
-      j = 0;
-      break label199;
-    }
-    label245:
-    int i = this.source.readByte() & 0xFF;
-    if ((i & 0x80) != 0)
-    {
-      bool1 = bool2;
-      if (bool1 != this.isClient) {
-        break label314;
-      }
-      if (!this.isClient) {
-        break label307;
-      }
-    }
-    label307:
-    for (String str = "Server-sent frames must not be masked.";; str = "Client-sent frames must be masked.")
-    {
-      throw new ProtocolException(str);
-      bool1 = false;
-      break;
-    }
-    label314:
-    this.frameLength = (i & 0x7F);
-    if (this.frameLength == 126L) {
-      this.frameLength = (this.source.readShort() & 0xFFFF);
-    }
-    while ((this.isControlFrame) && (this.frameLength > 125L))
-    {
-      throw new ProtocolException("Control frame must be less than 125B.");
-      if (this.frameLength == 127L)
-      {
-        this.frameLength = this.source.readLong();
-        if (this.frameLength < 0L) {
-          throw new ProtocolException("Frame length 0x" + Long.toHexString(this.frameLength) + " > 0x7FFFFFFFFFFFFFFF");
-        }
-      }
-    }
-    if (bool1) {
-      this.source.readFully(this.maskKey);
-    }
+    throw new IOException("closed");
   }
   
   private void readMessage()
   {
-    do
+    while (!this.closed)
     {
-      if (this.closed) {
-        throw new IOException("closed");
-      }
-      if (this.frameLength > 0L)
+      long l = this.frameLength;
+      if (l > 0L)
       {
-        this.source.readFully(this.messageFrameBuffer, this.frameLength);
+        this.source.readFully(this.messageFrameBuffer, l);
         if (!this.isClient)
         {
           this.messageFrameBuffer.readAndWriteUnsafe(this.maskCursor);
@@ -224,15 +225,30 @@ final class WebSocketReader
         return;
       }
       readUntilNonControlFrame();
-    } while (this.opcode == 0);
-    throw new ProtocolException("Expected continuation opcode. Got: " + Integer.toHexString(this.opcode));
+      if (this.opcode != 0)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Expected continuation opcode. Got: ");
+        ((StringBuilder)localObject).append(Integer.toHexString(this.opcode));
+        throw new ProtocolException(((StringBuilder)localObject).toString());
+      }
+    }
+    Object localObject = new IOException("closed");
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
   }
   
   private void readMessageFrame()
   {
     int i = this.opcode;
-    if ((i != 1) && (i != 2)) {
-      throw new ProtocolException("Unknown opcode: " + Integer.toHexString(i));
+    if ((i != 1) && (i != 2))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Unknown opcode: ");
+      localStringBuilder.append(Integer.toHexString(i));
+      throw new ProtocolException(localStringBuilder.toString());
     }
     readMessage();
     if (i == 1)
@@ -245,15 +261,10 @@ final class WebSocketReader
   
   private void readUntilNonControlFrame()
   {
-    for (;;)
+    while (!this.closed)
     {
-      if (!this.closed)
-      {
-        readHeader();
-        if (this.isControlFrame) {}
-      }
-      else
-      {
+      readHeader();
+      if (!this.isControlFrame) {
         return;
       }
       readControlFrame();
@@ -273,7 +284,7 @@ final class WebSocketReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.internal.ws.WebSocketReader
  * JD-Core Version:    0.7.0.1
  */

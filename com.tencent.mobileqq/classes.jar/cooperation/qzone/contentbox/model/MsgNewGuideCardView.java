@@ -9,6 +9,7 @@ import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
@@ -19,8 +20,8 @@ import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import cooperation.qzone.contentbox.RoundCornerImageView;
 import cooperation.qzone.contentbox.UserListItemView;
 import java.text.SimpleDateFormat;
@@ -74,60 +75,60 @@ public class MsgNewGuideCardView
     super(paramContext);
     this.mContext = paramContext;
     this.app = paramQQAppInterface;
-    LayoutInflater.from(this.mContext).inflate(2131562566, this);
-    this.dateCom = ((TextView)findViewById(2131365571));
-    this.backgroundCom = ((RoundCornerImageView)findViewById(2131363428));
-    this.leftImageCom = ((RoundCornerImageView)findViewById(2131370286));
-    this.singleAvatarCom = ((FrameLayout)findViewById(2131378205));
-    this.doubleAvatarCom = ((RelativeLayout)findViewById(2131365978));
-    this.firstLineCom = ((RelativeLayout)findViewById(2131367023));
-    this.secondLineCom = ((TextView)findViewById(2131377670));
-    this.avatarLayoutLeft = ((FrameLayout)findViewById(2131367014));
-    this.avatarLayoutRight = ((FrameLayout)findViewById(2131377661));
-    this.firstLineIcon = ((FrameLayout)findViewById(2131367024));
-    this.firstLineAvatar = ((FrameLayout)findViewById(2131367022));
-    this.firstLineText = ((TextView)findViewById(2131367025));
-    this.firstAvatarText = ((TextView)findViewById(2131367009));
-    this.pubBtnCom = ((RelativeLayout)findViewById(2131373666));
-    this.pubBtnText = ((TextView)findViewById(2131373667));
-    this.closeBtn = ((ImageView)findViewById(2131364829));
+    LayoutInflater.from(this.mContext).inflate(2131562388, this);
+    this.dateCom = ((TextView)findViewById(2131365414));
+    this.backgroundCom = ((RoundCornerImageView)findViewById(2131363355));
+    this.leftImageCom = ((RoundCornerImageView)findViewById(2131369954));
+    this.singleAvatarCom = ((FrameLayout)findViewById(2131377620));
+    this.doubleAvatarCom = ((RelativeLayout)findViewById(2131365815));
+    this.firstLineCom = ((RelativeLayout)findViewById(2131366874));
+    this.secondLineCom = ((TextView)findViewById(2131377107));
+    this.avatarLayoutLeft = ((FrameLayout)findViewById(2131366867));
+    this.avatarLayoutRight = ((FrameLayout)findViewById(2131377101));
+    this.firstLineIcon = ((FrameLayout)findViewById(2131366875));
+    this.firstLineAvatar = ((FrameLayout)findViewById(2131366873));
+    this.firstLineText = ((TextView)findViewById(2131366876));
+    this.firstAvatarText = ((TextView)findViewById(2131366862));
+    this.pubBtnCom = ((RelativeLayout)findViewById(2131373239));
+    this.pubBtnText = ((TextView)findViewById(2131373240));
+    this.closeBtn = ((ImageView)findViewById(2131364716));
     this.isNightMode = false;
   }
   
   private void initAvatarListArea(List<String> paramList, FrameLayout paramFrameLayout)
   {
-    if ((paramList == null) || (paramList.size() == 0) || (paramFrameLayout == null)) {
-      return;
-    }
-    paramFrameLayout.removeAllViews();
-    int j = paramList.size();
-    int k = Math.min(3, j);
-    int i = 0;
-    label40:
-    UserListItemView localUserListItemView;
-    if (i < k)
+    if ((paramList != null) && (paramList.size() != 0))
     {
-      localUserListItemView = new UserListItemView(this.mContext, 2, this.isNightMode, true);
-      localUserListItemView.setUin((String)paramList.get(i));
-      localUserListItemView.setTranslationX(AVATAR_GAP * i);
-      if ((i != 2) || (j <= 3)) {
-        break label126;
+      if (paramFrameLayout == null) {
+        return;
       }
-    }
-    label126:
-    for (boolean bool = true;; bool = false)
-    {
-      localUserListItemView.showCover(bool);
-      paramFrameLayout.addView(localUserListItemView, i);
-      i += 1;
-      break label40;
-      break;
+      paramFrameLayout.removeAllViews();
+      int j = paramList.size();
+      int k = Math.min(3, j);
+      int i = 0;
+      while (i < k)
+      {
+        Object localObject = this.mContext;
+        boolean bool2 = this.isNightMode;
+        boolean bool1 = true;
+        localObject = new UserListItemView((Context)localObject, 2, bool2, true);
+        ((UserListItemView)localObject).setUin((String)paramList.get(i));
+        ((UserListItemView)localObject).setTranslationX(AVATAR_GAP * i);
+        if ((i != 2) || (j <= 3)) {
+          bool1 = false;
+        }
+        ((UserListItemView)localObject).showCover(bool1);
+        paramFrameLayout.addView((View)localObject, i);
+        i += 1;
+      }
     }
   }
   
   private void initBkgRegion(MQMsg paramMQMsg)
   {
-    this.backgroundCom.setCorner(CARD_RADIUS, CARD_RADIUS, CARD_RADIUS, CARD_RADIUS);
+    paramMQMsg = this.backgroundCom;
+    int i = CARD_RADIUS;
+    paramMQMsg.setCorner(i, i, i, i);
     this.backgroundCom.setVisibility(0);
     if (!this.isNightMode)
     {
@@ -139,84 +140,102 @@ public class MsgNewGuideCardView
   
   private void initCardLeftRegion(MQMsg paramMQMsg)
   {
-    if ((paramMQMsg == null) || (paramMQMsg.postGuide == null)) {
-      return;
-    }
-    paramMQMsg = paramMQMsg.postGuide;
-    UserListItemView localUserListItemView1;
-    if ((paramMQMsg.vecImage != null) && (paramMQMsg.vecImage.size() > 0))
+    if (paramMQMsg != null)
     {
-      this.leftImageCom.setImageDrawable(getUrlDrawable(((PhotoCell)paramMQMsg.vecImage.get(0)).coverUrl));
-      this.leftImageCom.setCorner(CARD_RADIUS, CARD_RADIUS, CARD_RADIUS, CARD_RADIUS);
-      this.leftImageCom.setVisibility(0);
-      if ((paramMQMsg.userAvatar == null) || (paramMQMsg.userAvatar.size() != 1)) {
-        break label301;
+      if (paramMQMsg.postGuide == null) {
+        return;
       }
-      localUserListItemView1 = new UserListItemView(this.mContext, 0, false, true);
-      localUserListItemView1.setUin((String)paramMQMsg.userAvatar.get(0));
-      localUserListItemView1.showCover(false);
-      this.singleAvatarCom.removeAllViews();
-      this.singleAvatarCom.addView(localUserListItemView1);
-      this.singleAvatarCom.setVisibility(0);
-    }
-    for (;;)
-    {
-      if ((paramMQMsg.userAvatar == null) || (paramMQMsg.userAvatar.size() != 2)) {
-        break label313;
+      paramMQMsg = paramMQMsg.postGuide;
+      Object localObject;
+      if ((paramMQMsg.vecImage != null) && (paramMQMsg.vecImage.size() > 0))
+      {
+        this.leftImageCom.setImageDrawable(getUrlDrawable(((PhotoCell)paramMQMsg.vecImage.get(0)).coverUrl));
+        localObject = this.leftImageCom;
+        int i = CARD_RADIUS;
+        ((RoundCornerImageView)localObject).setCorner(i, i, i, i);
+        this.leftImageCom.setVisibility(0);
       }
-      localUserListItemView1 = new UserListItemView(this.mContext, 1, false, true);
-      localUserListItemView1.setUin((String)paramMQMsg.userAvatar.get(0));
-      localUserListItemView1.showCover(false);
-      UserListItemView localUserListItemView2 = new UserListItemView(this.mContext, 1, false, true);
-      localUserListItemView2.setUin((String)paramMQMsg.userAvatar.get(1));
-      localUserListItemView2.showCover(false);
-      this.avatarLayoutLeft.removeAllViews();
-      this.avatarLayoutRight.removeAllViews();
-      this.avatarLayoutLeft.addView(localUserListItemView1);
-      this.avatarLayoutRight.addView(localUserListItemView2);
-      this.doubleAvatarCom.setVisibility(0);
-      return;
-      this.leftImageCom.setVisibility(8);
-      break;
-      label301:
-      this.singleAvatarCom.setVisibility(8);
+      else
+      {
+        this.leftImageCom.setVisibility(8);
+      }
+      if ((paramMQMsg.userAvatar != null) && (paramMQMsg.userAvatar.size() == 1))
+      {
+        localObject = new UserListItemView(this.mContext, 0, false, true);
+        ((UserListItemView)localObject).setUin((String)paramMQMsg.userAvatar.get(0));
+        ((UserListItemView)localObject).showCover(false);
+        this.singleAvatarCom.removeAllViews();
+        this.singleAvatarCom.addView((View)localObject);
+        this.singleAvatarCom.setVisibility(0);
+      }
+      else
+      {
+        this.singleAvatarCom.setVisibility(8);
+      }
+      if ((paramMQMsg.userAvatar != null) && (paramMQMsg.userAvatar.size() == 2))
+      {
+        localObject = new UserListItemView(this.mContext, 1, false, true);
+        ((UserListItemView)localObject).setUin((String)paramMQMsg.userAvatar.get(0));
+        ((UserListItemView)localObject).showCover(false);
+        UserListItemView localUserListItemView = new UserListItemView(this.mContext, 1, false, true);
+        localUserListItemView.setUin((String)paramMQMsg.userAvatar.get(1));
+        localUserListItemView.showCover(false);
+        this.avatarLayoutLeft.removeAllViews();
+        this.avatarLayoutRight.removeAllViews();
+        this.avatarLayoutLeft.addView((View)localObject);
+        this.avatarLayoutRight.addView(localUserListItemView);
+        this.doubleAvatarCom.setVisibility(0);
+        return;
+      }
+      this.doubleAvatarCom.setVisibility(8);
     }
-    label313:
-    this.doubleAvatarCom.setVisibility(8);
   }
   
   private void initCardRightRegion(MQMsg paramMQMsg)
   {
-    int j = 1;
-    if ((paramMQMsg == null) || (paramMQMsg.postGuide == null)) {
-      return;
-    }
-    paramMQMsg = paramMQMsg.postGuide;
-    int i;
-    if (!TextUtils.isEmpty(paramMQMsg.title)) {
-      if (!TextUtils.isEmpty(paramMQMsg.icon))
+    if (paramMQMsg != null)
+    {
+      if (paramMQMsg.postGuide == null) {
+        return;
+      }
+      paramMQMsg = paramMQMsg.postGuide;
+      if (!TextUtils.isEmpty(paramMQMsg.title))
       {
-        i = ViewUtils.b(20.0F);
-        URLImageView localURLImageView = new URLImageView(this.mContext);
-        localURLImageView.setImageDrawable(getUrlDrawable(paramMQMsg.icon));
-        FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(i, i);
-        this.firstLineIcon.removeAllViews();
-        this.firstLineIcon.addView(localURLImageView, localLayoutParams);
-        this.firstLineIcon.setVisibility(0);
-        this.firstLineText.setText(paramMQMsg.title);
-        setTextColor(this.firstLineText);
-        this.firstLineText.setVisibility(0);
-        i = 1;
-        if ((i != 0) || (paramMQMsg.userAvatar == null) || (paramMQMsg.userAvatar.size() <= 2)) {
-          break label408;
+        int i;
+        if (!TextUtils.isEmpty(paramMQMsg.icon))
+        {
+          i = ViewUtils.b(20.0F);
+          URLImageView localURLImageView = new URLImageView(this.mContext);
+          localURLImageView.setImageDrawable(getUrlDrawable(paramMQMsg.icon));
+          FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(i, i);
+          this.firstLineIcon.removeAllViews();
+          this.firstLineIcon.addView(localURLImageView, localLayoutParams);
+          this.firstLineIcon.setVisibility(0);
+          this.firstLineText.setText(paramMQMsg.title);
+          setTextColor(this.firstLineText);
+          this.firstLineText.setVisibility(0);
+          i = 1;
         }
-        initAvatarListArea(paramMQMsg.userAvatar, this.firstLineAvatar);
-        this.firstLineAvatar.setVisibility(0);
-        this.firstAvatarText.setText(paramMQMsg.title);
-        setTextColor(this.firstAvatarText);
-        this.firstAvatarText.setVisibility(0);
-        i = j;
-        label209:
+        else
+        {
+          this.firstLineIcon.setVisibility(8);
+          this.firstLineText.setVisibility(8);
+          i = 0;
+        }
+        if ((i == 0) && (paramMQMsg.userAvatar != null) && (paramMQMsg.userAvatar.size() > 2))
+        {
+          initAvatarListArea(paramMQMsg.userAvatar, this.firstLineAvatar);
+          this.firstLineAvatar.setVisibility(0);
+          this.firstAvatarText.setText(paramMQMsg.title);
+          setTextColor(this.firstAvatarText);
+          this.firstAvatarText.setVisibility(0);
+          i = 1;
+        }
+        else
+        {
+          this.firstLineAvatar.setVisibility(8);
+          this.firstAvatarText.setVisibility(8);
+        }
         if (i == 0)
         {
           this.firstLineText.setText(paramMQMsg.title);
@@ -224,59 +243,46 @@ public class MsgNewGuideCardView
           this.firstLineText.setVisibility(0);
         }
         this.firstLineCom.setVisibility(0);
-        label248:
-        if (TextUtils.isEmpty(paramMQMsg.summary)) {
-          break label441;
-        }
+      }
+      else
+      {
+        this.firstLineCom.setVisibility(8);
+      }
+      if (!TextUtils.isEmpty(paramMQMsg.summary))
+      {
         this.secondLineCom.setText(paramMQMsg.summary);
         setTextColor(this.secondLineCom);
         this.secondLineCom.setVisibility(0);
-        label285:
-        if ((paramMQMsg.bottom == null) || (TextUtils.isEmpty(paramMQMsg.bottom.content))) {
-          break label466;
-        }
+      }
+      else
+      {
+        this.secondLineCom.setVisibility(8);
+      }
+      if ((paramMQMsg.bottom != null) && (!TextUtils.isEmpty(paramMQMsg.bottom.content)))
+      {
         this.pubBtnText.setText(paramMQMsg.bottom.content);
-        paramMQMsg = ContextCompat.getDrawable(this.mContext, 2130848871);
-        if (paramMQMsg != null)
-        {
-          if (this.isNightMode) {
-            break label453;
+        paramMQMsg = ContextCompat.getDrawable(this.mContext, 2130848751);
+        if (paramMQMsg != null) {
+          if (!this.isNightMode) {
+            paramMQMsg.setColorFilter(PUBLISH_BUTTON_COLOR, PorterDuff.Mode.SRC_ATOP);
+          } else {
+            paramMQMsg.setColorFilter(PUBLISH_BUTTON_COLOR_DARKMODE, PorterDuff.Mode.SRC_ATOP);
           }
-          paramMQMsg.setColorFilter(PUBLISH_BUTTON_COLOR, PorterDuff.Mode.SRC_ATOP);
         }
-        label351:
         this.pubBtnCom.setBackgroundDrawable(paramMQMsg);
         this.pubBtnCom.setVisibility(0);
       }
-    }
-    for (;;)
-    {
-      if (this.isNightMode) {
-        break label478;
+      else
+      {
+        this.pubBtnCom.setVisibility(8);
       }
-      this.closeBtn.setBackgroundResource(2130848879);
-      return;
-      this.firstLineIcon.setVisibility(8);
-      this.firstLineText.setVisibility(8);
-      i = 0;
-      break;
-      label408:
-      this.firstLineAvatar.setVisibility(8);
-      this.firstAvatarText.setVisibility(8);
-      break label209;
-      this.firstLineCom.setVisibility(8);
-      break label248;
-      label441:
-      this.secondLineCom.setVisibility(8);
-      break label285;
-      label453:
-      paramMQMsg.setColorFilter(PUBLISH_BUTTON_COLOR_DARKMODE, PorterDuff.Mode.SRC_ATOP);
-      break label351;
-      label466:
-      this.pubBtnCom.setVisibility(8);
+      if (!this.isNightMode)
+      {
+        this.closeBtn.setBackgroundResource(2130848759);
+        return;
+      }
+      this.closeBtn.setBackgroundResource(2130848760);
     }
-    label478:
-    this.closeBtn.setBackgroundResource(2130848880);
   }
   
   private void setTextColor(TextView paramTextView)
@@ -336,7 +342,7 @@ public class MsgNewGuideCardView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.contentbox.model.MsgNewGuideCardView
  * JD-Core Version:    0.7.0.1
  */

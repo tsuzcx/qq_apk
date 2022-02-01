@@ -16,41 +16,39 @@ class NotificationActivity$26
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    NotificationActivity.access$1100(this.a, "0X800B654");
-    ReportController.a(this.a.app, "dc00898", "", "", "0X800AA17", "0X800AA17", 0, 0, "", "", NotificationActivity.access$1200(this.a), "");
+    NotificationActivity.access$1200(this.a, "0X800B654");
+    ReportController.a(this.a.getAppRuntime(), "dc00898", "", "", "0X800AA17", "0X800AA17", 0, 0, "", "", NotificationActivity.access$1300(this.a), "");
     paramDialogInterface = this.a.getIntent();
     if (paramDialogInterface != null) {
       if (paramDialogInterface.getBooleanExtra("keyFromLoginView", false))
       {
-        ReportController.a(this.a.app, "dc00898", "", "", "0X800B293", "0X800B293", 0, 0, "", "", NotificationActivity.access$200(this.a), "");
-        paramInt = 2098;
+        ReportController.a(this.a.getAppRuntime(), "dc00898", "", "", "0X800B293", "0X800B293", 0, 0, "", "", NotificationActivity.access$300(this.a), "");
       }
-    }
-    for (;;)
-    {
-      if (MiniAppSecurityUtil.checkMiniAppForLogin(NotificationActivity.access$700(this.a))) {
-        ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(this.a, NotificationActivity.access$700(this.a), paramInt, null);
-      }
-      for (;;)
+      else if (paramDialogInterface.getBooleanExtra("keyFromAddAccount", false))
       {
-        this.a.finish();
-        return;
-        if (!paramDialogInterface.getBooleanExtra("keyFromAddAccount", false)) {
-          break label216;
-        }
-        ReportController.a(this.a.app, "dc00898", "", "", "0X800B295", "0X800B295", 0, 0, "", "", NotificationActivity.access$200(this.a), "");
+        ReportController.a(this.a.getAppRuntime(), "dc00898", "", "", "0X800B295", "0X800B295", 0, 0, "", "", NotificationActivity.access$300(this.a), "");
         paramInt = 2119;
-        break;
-        QLog.e("NotificationActivity", 1, "MiniAppLauncher.startMiniApp error: fake app!");
+        break label160;
       }
-      label216:
-      paramInt = 2098;
     }
+    paramInt = 2098;
+    label160:
+    if (MiniAppSecurityUtil.checkMiniAppForLogin(NotificationActivity.access$800(this.a)))
+    {
+      paramDialogInterface = (IMiniAppService)QRoute.api(IMiniAppService.class);
+      NotificationActivity localNotificationActivity = this.a;
+      paramDialogInterface.startMiniApp(localNotificationActivity, NotificationActivity.access$800(localNotificationActivity), paramInt, null);
+    }
+    else
+    {
+      QLog.e("NotificationActivity", 1, "MiniAppLauncher.startMiniApp error: fake app!");
+    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotificationActivity.26
  * JD-Core Version:    0.7.0.1
  */

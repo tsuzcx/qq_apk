@@ -19,7 +19,8 @@ import android.widget.TextView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
+import com.tencent.mobileqq.filemanager.api.IQQFileSelectorUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -64,22 +65,23 @@ public class RecommendBrowserAdapter
   
   private static Drawable a(Context paramContext, String paramString)
   {
-    paramString = FileCategoryUtil.a(paramContext, paramContext.getPackageManager().getApplicationInfo(paramString, 128).publicSourceDir);
+    paramString = paramContext.getPackageManager().getApplicationInfo(paramString, 128);
+    paramString = ((IQQFileSelectorUtil)QRoute.api(IQQFileSelectorUtil.class)).getApkIcon(paramContext, paramString.publicSourceDir);
     if (paramString != null) {
       return paramString;
     }
-    return paramContext.getResources().getDrawable(2130844419);
+    return paramContext.getResources().getDrawable(2130844325);
   }
   
   @NotNull
   private RecommendBrowserAdapter.EntryHolder a(View paramView)
   {
     RecommendBrowserAdapter.EntryHolder localEntryHolder = new RecommendBrowserAdapter.EntryHolder(null);
-    localEntryHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369435));
-    localEntryHolder.b = ((TextView)paramView.findViewById(2131378646));
-    localEntryHolder.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131369351));
-    localEntryHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369277));
-    localEntryHolder.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131379124));
+    localEntryHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369163));
+    localEntryHolder.b = ((TextView)paramView.findViewById(2131378039));
+    localEntryHolder.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131369083));
+    localEntryHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369006));
+    localEntryHolder.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131378494));
     return localEntryHolder;
   }
   
@@ -115,33 +117,36 @@ public class RecommendBrowserAdapter
       paramEntryHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(new ColorDrawable(0));
       return;
     }
-    for (;;)
+    try
     {
-      try
+      localObject = paramBrowserItem.e();
+      if (this.jdField_a_of_type_JavaUtilMap.containsKey(localObject))
       {
-        localObject = paramBrowserItem.e();
-        if (this.jdField_a_of_type_JavaUtilMap.containsKey(localObject))
-        {
-          paramBrowserItem = (Drawable)this.jdField_a_of_type_JavaUtilMap.get(localObject);
-          paramEntryHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramBrowserItem);
-          return;
-        }
+        paramBrowserItem = (Drawable)this.jdField_a_of_type_JavaUtilMap.get(localObject);
       }
-      catch (Exception paramEntryHolder)
+      else
       {
-        QLog.e("[BrowserOpt] RecommendBrowserAdapter", 1, "bindIconView: failed. ", paramEntryHolder);
-        return;
+        paramBrowserItem = a(this.jdField_a_of_type_AndroidContentContext, (String)localObject);
+        this.jdField_a_of_type_JavaUtilMap.put(localObject, paramBrowserItem);
       }
-      paramBrowserItem = a(this.jdField_a_of_type_AndroidContentContext, (String)localObject);
-      this.jdField_a_of_type_JavaUtilMap.put(localObject, paramBrowserItem);
+      paramEntryHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramBrowserItem);
+      return;
+    }
+    catch (Exception paramEntryHolder)
+    {
+      QLog.e("[BrowserOpt] RecommendBrowserAdapter", 1, "bindIconView: failed. ", paramEntryHolder);
     }
   }
   
   private static void a(String paramString, long paramLong)
   {
     long l = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("[BrowserOpt] RecommendBrowserAdapter", 2, new Object[] { paramString + " [cost] countTime: invoked. ", " ms: ", Long.valueOf(l - paramLong) });
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" [cost] countTime: invoked. ");
+      QLog.d("[BrowserOpt] RecommendBrowserAdapter", 2, new Object[] { localStringBuilder.toString(), " ms: ", Long.valueOf(l - paramLong) });
     }
   }
   
@@ -171,7 +176,7 @@ public class RecommendBrowserAdapter
     paramEntryHolder.b.setVisibility(0);
     paramEntryHolder.jdField_a_of_type_AndroidWidgetLinearLayout.setGravity(0);
     paramBrowserItem = (LinearLayout.LayoutParams)paramEntryHolder.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-    float f = this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131298354);
+    float f = this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131298349);
     paramBrowserItem.setMargins(paramBrowserItem.leftMargin, (int)f, paramBrowserItem.rightMargin, paramBrowserItem.bottomMargin);
     paramEntryHolder.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(paramBrowserItem);
   }
@@ -179,8 +184,10 @@ public class RecommendBrowserAdapter
   @Nullable
   BrowserItem a()
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList.size() > this.jdField_a_of_type_Int) && (this.jdField_a_of_type_Int >= 0)) {
-      return (BrowserItem)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
+    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int j = this.jdField_a_of_type_Int;
+    if ((i > j) && (j >= 0)) {
+      return (BrowserItem)this.jdField_a_of_type_JavaUtilArrayList.get(j);
     }
     return null;
   }
@@ -217,25 +224,25 @@ public class RecommendBrowserAdapter
     View localView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(BaseApplication.context).inflate(2131561457, paramViewGroup, false);
+      localView = LayoutInflater.from(BaseApplication.context).inflate(2131561300, paramViewGroup, false);
       paramView = a(localView);
       localView.setTag(paramView);
     }
-    for (;;)
+    else
     {
-      a(paramInt, paramView);
-      a(paramInt, localView, paramViewGroup);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
       RecommendBrowserAdapter.EntryHolder localEntryHolder = (RecommendBrowserAdapter.EntryHolder)paramView.getTag();
       localView = paramView;
       paramView = localEntryHolder;
     }
+    a(paramInt, paramView);
+    a(paramInt, localView, paramViewGroup);
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.browser.RecommendBrowserAdapter
  * JD-Core Version:    0.7.0.1
  */

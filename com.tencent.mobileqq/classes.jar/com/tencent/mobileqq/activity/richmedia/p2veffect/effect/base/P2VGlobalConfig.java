@@ -31,7 +31,7 @@ public class P2VGlobalConfig
   public static final String KEY_VIDEO_WIDTH = "videoWidth";
   public static final int MAX_P2V_RECOMMEND_INT;
   public static final int MAX_P2V_RECOMMEND_VIDEO = QzoneConfig.getInstance().getConfig("p2v_config_main_key", "p2v_max_recommend_video_int", 3);
-  public static String NO_AUDIO_MP4 = P2V_VIDEO_CACHE_ROOT + "no_audio.mp4";
+  public static String NO_AUDIO_MP4;
   public static final int OUTPUT_VIDEO_BIT_RATE = 960000;
   public static final int OUTPUT_VIDEO_FPS = 25;
   public static final int OUTPUT_VIDEO_HEIGHT = 1280;
@@ -70,18 +70,48 @@ public class P2VGlobalConfig
   {
     MAX_P2V_RECOMMEND_INT = QzoneConfig.getInstance().getConfig("p2v_config_main_key", "p2v_max_recommend_int", 30);
     VIDEO_CAN_UPLOAD_LIMIT_MS = QzoneConfig.getInstance().getConfig("p2v_config_main_key", "p2v_can_upload_limit_ms_secondary_key", 15000L);
-    P2V_VIDEO_CACHE_ROOT = PathUtils.a + "/tencent" + File.separator + "dynamic_video_cache" + File.separator;
-    P2V_VIDEO_ROOT = PathUtils.a + "/qzone_dynamic_video" + File.separator;
-    CONCAT_FINAL_M4A = P2V_VIDEO_CACHE_ROOT + "concat_final.m4a";
-    CONCAT_FINAL_MP3 = P2V_VIDEO_CACHE_ROOT + "concat_final.mp3";
-    P2V_MATERIAL_ROOT = P2V_VIDEO_CACHE_ROOT + "p2v_material" + File.separator;
-    P2V_MATERIAL_WATER_MARKER_PNG_NAME = P2V_MATERIAL_ROOT + "qzone_p2v_watermark.png";
-    P2V_MATERIAL_DUMMY_VIDEO_NAME = P2V_MATERIAL_ROOT + "resizeddummy.mp4";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(PathUtils.a);
+    localStringBuilder.append("/tencent");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("dynamic_video_cache");
+    localStringBuilder.append(File.separator);
+    P2V_VIDEO_CACHE_ROOT = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(PathUtils.a);
+    localStringBuilder.append("/qzone_dynamic_video");
+    localStringBuilder.append(File.separator);
+    P2V_VIDEO_ROOT = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(P2V_VIDEO_CACHE_ROOT);
+    localStringBuilder.append("concat_final.m4a");
+    CONCAT_FINAL_M4A = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(P2V_VIDEO_CACHE_ROOT);
+    localStringBuilder.append("concat_final.mp3");
+    CONCAT_FINAL_MP3 = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(P2V_VIDEO_CACHE_ROOT);
+    localStringBuilder.append("p2v_material");
+    localStringBuilder.append(File.separator);
+    P2V_MATERIAL_ROOT = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(P2V_MATERIAL_ROOT);
+    localStringBuilder.append("qzone_p2v_watermark.png");
+    P2V_MATERIAL_WATER_MARKER_PNG_NAME = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(P2V_MATERIAL_ROOT);
+    localStringBuilder.append("resizeddummy.mp4");
+    P2V_MATERIAL_DUMMY_VIDEO_NAME = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(P2V_VIDEO_CACHE_ROOT);
+    localStringBuilder.append("no_audio.mp4");
+    NO_AUDIO_MP4 = localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.p2veffect.effect.base.P2VGlobalConfig
  * JD-Core Version:    0.7.0.1
  */

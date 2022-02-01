@@ -67,18 +67,18 @@ public final class BrowserItem
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof BrowserItem))
       {
         paramObject = (BrowserItem)paramObject;
-        if ((!Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) || (!Intrinsics.areEqual(this.b, paramObject.b)) || (!Intrinsics.areEqual(this.c, paramObject.c)) || (!Intrinsics.areEqual(this.d, paramObject.d)) || (!Intrinsics.areEqual(this.e, paramObject.e)) || (this.jdField_a_of_type_Boolean != paramObject.jdField_a_of_type_Boolean)) {}
+        if ((Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) && (Intrinsics.areEqual(this.b, paramObject.b)) && (Intrinsics.areEqual(this.c, paramObject.c)) && (Intrinsics.areEqual(this.d, paramObject.d)) && (Intrinsics.areEqual(this.e, paramObject.e)) && (this.jdField_a_of_type_Boolean == paramObject.jdField_a_of_type_Boolean)) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public int hashCode()
@@ -89,12 +89,26 @@ public final class BrowserItem
   @NotNull
   public String toString()
   {
-    return "BrowserItem(name=" + this.jdField_a_of_type_JavaLangString + ", title=" + this.b + ", icon=" + this.c + ", jumpUrl=" + this.d + ", packageName=" + this.e + ", isLocalApp=" + this.jdField_a_of_type_Boolean + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BrowserItem(name=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", title=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", icon=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", jumpUrl=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", packageName=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", isLocalApp=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.browser.BrowserItem
  * JD-Core Version:    0.7.0.1
  */

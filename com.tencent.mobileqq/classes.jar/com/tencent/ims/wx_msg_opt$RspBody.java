@@ -16,17 +16,23 @@ public final class wx_msg_opt$RspBody
   public static final int UINT32_RET_FIELD_NUMBER = 4;
   public static final int UINT32_SEQ_FIELD_NUMBER = 3;
   public static final int UINT64_UIN_FIELD_NUMBER = 1;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50 }, new String[] { "uint64_uin", "uint32_cmd", "uint32_seq", "uint32_ret", "uint32_opt", "str_wording" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "" }, RspBody.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField str_wording = PBField.initString("");
   public final PBUInt32Field uint32_cmd = PBField.initUInt32(0);
   public final PBUInt32Field uint32_opt = PBField.initUInt32(0);
   public final PBUInt32Field uint32_ret = PBField.initUInt32(0);
   public final PBUInt32Field uint32_seq = PBField.initUInt32(0);
   public final PBUInt64Field uint64_uin = PBField.initUInt64(0L);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50 }, new String[] { "uint64_uin", "uint32_cmd", "uint32_seq", "uint32_ret", "uint32_opt", "str_wording" }, new Object[] { Long.valueOf(0L), localInteger, localInteger, localInteger, localInteger, "" }, RspBody.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ims.wx_msg_opt.RspBody
  * JD-Core Version:    0.7.0.1
  */

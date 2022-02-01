@@ -18,89 +18,78 @@ public final class CeaUtil
   
   public static void consume(long paramLong, ParsableByteArray paramParsableByteArray, TrackOutput[] paramArrayOfTrackOutput)
   {
-    int i;
-    int k;
-    int m;
-    int n;
-    int j;
-    int i1;
-    for (;;)
+    while (paramParsableByteArray.bytesLeft() > 1)
     {
-      if (paramParsableByteArray.bytesLeft() > 1)
+      int j = readNon255TerminatedValue(paramParsableByteArray);
+      int k = readNon255TerminatedValue(paramParsableByteArray);
+      int m = paramParsableByteArray.getPosition() + k;
+      int i;
+      if ((k != -1) && (k <= paramParsableByteArray.bytesLeft()))
       {
-        i = readNon255TerminatedValue(paramParsableByteArray);
-        k = readNon255TerminatedValue(paramParsableByteArray);
-        m = paramParsableByteArray.getPosition();
-        if ((k == -1) || (k > paramParsableByteArray.bytesLeft()))
+        i = m;
+        if (j == 4)
         {
-          Log.w("CeaUtil", "Skipping remainder of malformed SEI NAL unit.");
-          i = paramParsableByteArray.limit();
-          paramParsableByteArray.setPosition(i);
-        }
-        else
-        {
-          if ((i != 4) || (k < 8)) {
-            break label289;
-          }
-          i = paramParsableByteArray.readUnsignedByte();
-          n = paramParsableByteArray.readUnsignedShort();
-          j = 0;
-          if (n == 49) {
-            j = paramParsableByteArray.readInt();
-          }
-          i1 = paramParsableByteArray.readUnsignedByte();
-          if (n == 47) {
-            paramParsableByteArray.skipBytes(1);
-          }
-          if ((i == 181) && ((n == 49) || (n == 47)) && (i1 == 3))
+          i = m;
+          if (k >= 8)
           {
-            i = 1;
-            if (n != 49) {
-              break label299;
+            i = paramParsableByteArray.readUnsignedByte();
+            int i1 = paramParsableByteArray.readUnsignedShort();
+            int n = 0;
+            if (i1 == 49) {
+              j = paramParsableByteArray.readInt();
+            } else {
+              j = 0;
             }
-            if ((j != USER_ID_GA94) && (j != USER_ID_DTG1)) {
-              break label282;
+            k = paramParsableByteArray.readUnsignedByte();
+            if (i1 == 47) {
+              paramParsableByteArray.skipBytes(1);
             }
-            j = 1;
-            label180:
-            i = j & i;
+            if ((i == 181) && ((i1 == 49) || (i1 == 47)) && (k == 3)) {
+              i = 1;
+            } else {
+              i = 0;
+            }
+            k = i;
+            if (i1 == 49)
+            {
+              if ((j != USER_ID_GA94) && (j != USER_ID_DTG1)) {
+                j = 0;
+              } else {
+                j = 1;
+              }
+              k = i & j;
+            }
+            i = m;
+            if (k != 0)
+            {
+              i = paramParsableByteArray.readUnsignedByte();
+              paramParsableByteArray.skipBytes(1);
+              k = (i & 0x1F) * 3;
+              i1 = paramParsableByteArray.getPosition();
+              int i2 = paramArrayOfTrackOutput.length;
+              j = n;
+              for (;;)
+              {
+                i = m;
+                if (j >= i2) {
+                  break;
+                }
+                TrackOutput localTrackOutput = paramArrayOfTrackOutput[j];
+                paramParsableByteArray.setPosition(i1);
+                localTrackOutput.sampleData(paramParsableByteArray, k);
+                localTrackOutput.sampleMetadata(paramLong, 1, k, 0, null);
+                j += 1;
+              }
+            }
           }
         }
       }
-    }
-    label282:
-    label289:
-    label299:
-    for (;;)
-    {
-      if (i != 0)
+      else
       {
-        i = paramParsableByteArray.readUnsignedByte();
-        paramParsableByteArray.skipBytes(1);
-        j = (i & 0x1F) * 3;
-        n = paramParsableByteArray.getPosition();
-        i1 = paramArrayOfTrackOutput.length;
-        i = 0;
-        for (;;)
-        {
-          if (i < i1)
-          {
-            TrackOutput localTrackOutput = paramArrayOfTrackOutput[i];
-            paramParsableByteArray.setPosition(n);
-            localTrackOutput.sampleData(paramParsableByteArray, j);
-            localTrackOutput.sampleMetadata(paramLong, 1, j, 0, null);
-            i += 1;
-            continue;
-            i = 0;
-            break;
-            j = 0;
-            break label180;
-            return;
-          }
-        }
+        Log.w("CeaUtil", "Skipping remainder of malformed SEI NAL unit.");
+        i = paramParsableByteArray.limit();
       }
-      i = m + k;
-      break;
+      paramParsableByteArray.setPosition(i);
     }
   }
   
@@ -123,7 +112,7 @@ public final class CeaUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.text.cea.CeaUtil
  * JD-Core Version:    0.7.0.1
  */

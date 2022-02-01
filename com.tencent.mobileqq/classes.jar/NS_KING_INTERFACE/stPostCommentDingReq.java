@@ -14,16 +14,6 @@ public final class stPostCommentDingReq
   public int dingAction = 0;
   public String feed_id = "";
   
-  static
-  {
-    if (!stPostCommentDingReq.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public stPostCommentDingReq() {}
   
   public stPostCommentDingReq(String paramString1, String paramString2, int paramInt)
@@ -40,18 +30,17 @@ public final class stPostCommentDingReq
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -72,13 +61,24 @@ public final class stPostCommentDingReq
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (stPostCommentDingReq)paramObject;
-    } while ((!JceUtil.equals(this.feed_id, paramObject.feed_id)) || (!JceUtil.equals(this.commentId, paramObject.commentId)) || (!JceUtil.equals(this.dingAction, paramObject.dingAction)));
-    return true;
+    }
+    paramObject = (stPostCommentDingReq)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.feed_id, paramObject.feed_id))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.commentId, paramObject.commentId))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.dingAction, paramObject.dingAction)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -138,18 +138,20 @@ public final class stPostCommentDingReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.feed_id != null) {
-      paramJceOutputStream.write(this.feed_id, 0);
+    String str = this.feed_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.commentId != null) {
-      paramJceOutputStream.write(this.commentId, 1);
+    str = this.commentId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.dingAction, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_INTERFACE.stPostCommentDingReq
  * JD-Core Version:    0.7.0.1
  */

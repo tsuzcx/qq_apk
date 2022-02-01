@@ -11,7 +11,8 @@ public class Plugin
   
   public Context a(Context paramContext)
   {
-    if ((this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin != null) && (this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin.a())) {
+    IPlugin localIPlugin = this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin;
+    if ((localIPlugin != null) && (localIPlugin.a())) {
       return this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin.a(paramContext);
     }
     return super.a(paramContext);
@@ -37,7 +38,8 @@ public class Plugin
   
   public <T> T a(Class<T> paramClass, String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin != null) && (this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin.a())) {
+    IPlugin localIPlugin = this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin;
+    if ((localIPlugin != null) && (localIPlugin.a())) {
       return this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin.a(paramClass, paramString);
     }
     return super.a(paramClass, paramString);
@@ -52,7 +54,8 @@ public class Plugin
   
   public boolean a()
   {
-    return ((this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin != null) && (this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin.a())) || (this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPluginClassLoader != null);
+    IPlugin localIPlugin = this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin;
+    return ((localIPlugin != null) && (localIPlugin.a())) || (this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPluginClassLoader != null);
   }
   
   public boolean b()
@@ -72,7 +75,7 @@ public class Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.pluginloaderservice.Plugin
  * JD-Core Version:    0.7.0.1
  */

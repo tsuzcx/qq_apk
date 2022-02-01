@@ -8,10 +8,10 @@ import android.os.Message;
 import com.huawei.hms.support.log.HMSLog;
 
 @SuppressLint({"HandlerLeak"})
-class HmsMessageService$a
+public class HmsMessageService$a
   extends Handler
 {
-  private HmsMessageService$a(HmsMessageService paramHmsMessageService) {}
+  public HmsMessageService$a(HmsMessageService paramHmsMessageService) {}
   
   public void handleMessage(Message paramMessage)
   {
@@ -25,14 +25,9 @@ class HmsMessageService$a
     if (localBundle != null)
     {
       Intent localIntent = new Intent();
-      localIntent.putExtra("message_id", localBundle.getString("message_id"));
-      localIntent.putExtra("message_type", localBundle.getString("message_type"));
-      localIntent.putExtra("message_body", localBundle.getByteArray("message_body"));
-      localIntent.putExtra("device_token", localBundle.getString("device_token"));
-      localIntent.putExtra("error", localBundle.getInt("error"));
-      localIntent.putExtra("transaction_id", localBundle.getString("transaction_id"));
+      localIntent.putExtras(localBundle);
       localIntent.putExtra("inputType", localBundle.getInt("inputType", -1));
-      HmsMessageService.a(this.a, localIntent);
+      this.a.handleIntentMessage(localIntent);
     }
     super.handleMessage(paramMessage);
   }

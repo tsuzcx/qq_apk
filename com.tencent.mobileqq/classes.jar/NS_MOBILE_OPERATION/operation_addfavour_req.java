@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -66,29 +67,35 @@ public final class operation_addfavour_req
     paramJceOutputStream.write(this.owner_uin, 0);
     paramJceOutputStream.write(this.appid, 1);
     paramJceOutputStream.write(this.subid, 2);
-    if (this.cellid != null) {
-      paramJceOutputStream.write(this.cellid, 3);
+    Object localObject = this.cellid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.sid != null) {
-      paramJceOutputStream.write(this.sid, 4);
+    localObject = this.sid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.ugc_key != null) {
-      paramJceOutputStream.write(this.ugc_key, 5);
+    localObject = this.ugc_key;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.photo_url != null) {
-      paramJceOutputStream.write(this.photo_url, 6);
+    localObject = this.photo_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 6);
     }
-    if (this.text != null) {
-      paramJceOutputStream.write(this.text, 7);
+    localObject = this.text;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.busi_params != null) {
-      paramJceOutputStream.write(this.busi_params, 8);
+    localObject = this.busi_params;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.operation_addfavour_req
  * JD-Core Version:    0.7.0.1
  */

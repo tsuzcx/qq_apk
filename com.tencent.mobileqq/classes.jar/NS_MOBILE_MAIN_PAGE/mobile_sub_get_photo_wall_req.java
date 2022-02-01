@@ -27,14 +27,15 @@ public final class mobile_sub_get_photo_wall_req
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.attachInfo != null) {
-      paramJceOutputStream.write(this.attachInfo, 1);
+    String str = this.attachInfo;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_req
  * JD-Core Version:    0.7.0.1
  */

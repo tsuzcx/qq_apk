@@ -13,7 +13,7 @@ class PlayingListPreloader$3
     super(paramString);
   }
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
   {
     this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader.b(this.jdField_a_of_type_Boolean);
     return null;
@@ -21,7 +21,7 @@ class PlayingListPreloader$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.PlayingListPreloader.3
  * JD-Core Version:    0.7.0.1
  */

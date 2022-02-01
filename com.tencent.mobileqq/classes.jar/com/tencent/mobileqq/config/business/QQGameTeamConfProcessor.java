@@ -12,20 +12,18 @@ public class QQGameTeamConfProcessor
 {
   public static QQGameTeamConfBean a()
   {
+    QQGameTeamConfBean localQQGameTeamConfBean2;
     try
     {
-      QQGameTeamConfBean localQQGameTeamConfBean = (QQGameTeamConfBean)QConfigManager.a().a(720);
-      if (localQQGameTeamConfBean != null) {
-        return localQQGameTeamConfBean;
-      }
+      QQGameTeamConfBean localQQGameTeamConfBean1 = (QQGameTeamConfBean)QConfigManager.a().a(720);
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        QLog.e("QQGameTeamConfProcessor", 1, localThrowable, new Object[0]);
-        Object localObject = null;
-      }
+      QLog.e("QQGameTeamConfProcessor", 1, localThrowable, new Object[0]);
+      localQQGameTeamConfBean2 = null;
+    }
+    if (localQQGameTeamConfBean2 != null) {
+      return localQQGameTeamConfBean2;
     }
     return new QQGameTeamConfBean();
   }
@@ -39,25 +37,29 @@ public class QQGameTeamConfProcessor
   @Nullable
   public QQGameTeamConfBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfQConfItem != null)
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
+      paramArrayOfQConfItem = QQGameTeamConfBean.a(paramArrayOfQConfItem);
+    } else {
+      paramArrayOfQConfItem = null;
+    }
+    if (QLog.isColorLevel())
     {
-      localObject1 = localObject2;
-      if (paramArrayOfQConfItem.length > 0) {
-        localObject1 = QQGameTeamConfBean.a(paramArrayOfQConfItem);
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onParsed:");
+      localStringBuilder.append(paramArrayOfQConfItem);
+      QLog.d("QQGameTeamConfProcessor", 2, localStringBuilder.toString());
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGameTeamConfProcessor", 2, "onParsed:" + localObject1);
-    }
-    return localObject1;
+    return paramArrayOfQConfItem;
   }
   
   public void a(QQGameTeamConfBean paramQQGameTeamConfBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGameTeamConfProcessor", 2, "onUpdate " + paramQQGameTeamConfBean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      localStringBuilder.append(paramQQGameTeamConfBean);
+      QLog.d("QQGameTeamConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -88,8 +90,12 @@ public class QQGameTeamConfProcessor
   
   public void onReqFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGameTeamConfProcessor", 2, "onReqFailed " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqFailed ");
+      localStringBuilder.append(paramInt);
+      QLog.d("QQGameTeamConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -102,7 +108,7 @@ public class QQGameTeamConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.QQGameTeamConfProcessor
  * JD-Core Version:    0.7.0.1
  */

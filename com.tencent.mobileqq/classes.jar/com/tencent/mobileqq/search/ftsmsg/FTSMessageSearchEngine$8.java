@@ -25,25 +25,32 @@ class FTSMessageSearchEngine$8
         Object localObject = (String)paramArrayList.next();
         if (((String)localObject).charAt(0) < '')
         {
-          localObject = SQLiteFTSUtils.b((String)localObject);
+          localObject = SQLiteFTSUtils.a((String)localObject);
           if ((localObject != null) && (localObject.length > 0))
           {
             int j = localObject.length;
             int i = 0;
             while (i < j)
             {
-              localStringBuilder.append(localObject[i]).append(" ");
+              localStringBuilder.append(localObject[i]);
+              localStringBuilder.append(" ");
               i += 1;
             }
           }
         }
         else
         {
-          localStringBuilder.append((String)localObject).append(" ");
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append(" ");
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("FTSMessageSearchEngine", 2, "svcSeg result = [" + localStringBuilder.toString().trim() + "]");
+      if (QLog.isColorLevel())
+      {
+        paramArrayList = new StringBuilder();
+        paramArrayList.append("svcSeg result = [");
+        paramArrayList.append(localStringBuilder.toString().trim());
+        paramArrayList.append("]");
+        QLog.d("FTSMessageSearchEngine", 2, paramArrayList.toString());
       }
     }
     FTSMessageSearchEngine.a(this.a).put(paramArrayList1, localStringBuilder);
@@ -60,7 +67,7 @@ class FTSMessageSearchEngine$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine.8
  * JD-Core Version:    0.7.0.1
  */

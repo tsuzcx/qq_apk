@@ -32,26 +32,23 @@ class DragSortListView$HeightCache
     int i = this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt1, -1);
     if (i != paramInt2)
     {
-      if (i != -1) {
-        break label77;
+      if (i == -1)
+      {
+        if (this.jdField_a_of_type_AndroidUtilSparseIntArray.size() == this.jdField_a_of_type_Int) {
+          this.jdField_a_of_type_AndroidUtilSparseIntArray.delete(((Integer)this.jdField_a_of_type_JavaUtilArrayList.remove(0)).intValue());
+        }
       }
-      if (this.jdField_a_of_type_AndroidUtilSparseIntArray.size() == this.jdField_a_of_type_Int) {
-        this.jdField_a_of_type_AndroidUtilSparseIntArray.delete(((Integer)this.jdField_a_of_type_JavaUtilArrayList.remove(0)).intValue());
+      else {
+        this.jdField_a_of_type_JavaUtilArrayList.remove(Integer.valueOf(paramInt1));
       }
-    }
-    for (;;)
-    {
       this.jdField_a_of_type_AndroidUtilSparseIntArray.put(paramInt1, paramInt2);
       this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(paramInt1));
-      return;
-      label77:
-      this.jdField_a_of_type_JavaUtilArrayList.remove(Integer.valueOf(paramInt1));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.view.DragSortListView.HeightCache
  * JD-Core Version:    0.7.0.1
  */

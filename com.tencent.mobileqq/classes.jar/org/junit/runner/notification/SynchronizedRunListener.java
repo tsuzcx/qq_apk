@@ -98,12 +98,15 @@ final class SynchronizedRunListener
   
   public String toString()
   {
-    return this.listener.toString() + " (with synchronization wrapper)";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.listener.toString());
+    localStringBuilder.append(" (with synchronization wrapper)");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.runner.notification.SynchronizedRunListener
  * JD-Core Version:    0.7.0.1
  */

@@ -28,12 +28,20 @@ public class QavListItemBase$ItemInfo
   
   public String toString()
   {
-    return "id[" + this.jdField_a_of_type_JavaLangString + "], name[" + this.jdField_c_of_type_JavaLangString + "], desc[" + this.jdField_d_of_type_JavaLangString + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("id[");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("], name[");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append("], desc[");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.QavListItemBase.ItemInfo
  * JD-Core Version:    0.7.0.1
  */

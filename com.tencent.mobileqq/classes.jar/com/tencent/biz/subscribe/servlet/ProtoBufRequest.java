@@ -19,26 +19,27 @@ public abstract class ProtoBufRequest
   
   public byte[] a(Intent paramIntent, int paramInt, String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      throw new RuntimeException("req traceId is null!");
+    if (!TextUtils.isEmpty(paramString))
+    {
+      PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
+      localStQWebReq.Seq.set(paramInt);
+      localStQWebReq.qua.set(QUA.getQUA3());
+      localStQWebReq.deviceInfo.set(PlatformInfor.g().getDeviceInfor());
+      localStQWebReq.busiBuff.set(ByteStringMicro.copyFrom(a()));
+      if (!TextUtils.isEmpty(paramString)) {
+        localStQWebReq.traceid.set(paramString);
+      }
+      if (paramIntent != null) {
+        paramIntent.putExtra("traceid", paramString);
+      }
+      return localStQWebReq.toByteArray();
     }
-    PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
-    localStQWebReq.Seq.set(paramInt);
-    localStQWebReq.qua.set(QUA.getQUA3());
-    localStQWebReq.deviceInfo.set(PlatformInfor.g().getDeviceInfor());
-    localStQWebReq.busiBuff.set(ByteStringMicro.copyFrom(a()));
-    if (!TextUtils.isEmpty(paramString)) {
-      localStQWebReq.traceid.set(paramString);
-    }
-    if (paramIntent != null) {
-      paramIntent.putExtra("traceid", paramString);
-    }
-    return localStQWebReq.toByteArray();
+    throw new RuntimeException("req traceId is null!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.servlet.ProtoBufRequest
  * JD-Core Version:    0.7.0.1
  */

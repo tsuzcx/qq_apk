@@ -22,13 +22,14 @@ class QfavRemoteProxyForQQ$2
   
   public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    this.a.jdField_a_of_type_CooperationQqfavIpcIQfavRemoteProxyInterface = null;
-    this.a.jdField_a_of_type_Boolean = false;
+    paramComponentName = this.a;
+    paramComponentName.jdField_a_of_type_CooperationQqfavIpcIQfavRemoteProxyInterface = null;
+    paramComponentName.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     cooperation.qqfav.ipc.QfavRemoteProxyForQQ.2
  * JD-Core Version:    0.7.0.1
  */

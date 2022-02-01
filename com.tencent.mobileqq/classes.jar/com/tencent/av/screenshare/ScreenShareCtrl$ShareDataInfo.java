@@ -19,31 +19,45 @@ class ScreenShareCtrl$ShareDataInfo
   public void a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, RecordParam paramRecordParam)
   {
     this.d += 1;
-    StringBuilder localStringBuilder;
-    if ((this.jdField_a_of_type_Int != paramInt1) || (this.b != paramInt2) || (!this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.equals(paramRecordParam)) || (this.c != paramInt3)) {
+    if ((this.jdField_a_of_type_Int != paramInt1) || (this.b != paramInt2) || (!this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.equals(paramRecordParam)) || (this.c != paramInt3))
+    {
       if (QLog.isColorLevel())
       {
-        localStringBuilder = new StringBuilder().append("updateFrame, frameIndex[").append(this.d).append("], data[");
-        if (paramArrayOfByte != null) {
-          break label198;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("updateFrame, frameIndex[");
+        localStringBuilder.append(this.d);
+        localStringBuilder.append("], data[");
+        if (paramArrayOfByte == null) {
+          paramArrayOfByte = "null";
+        } else {
+          paramArrayOfByte = Integer.valueOf(paramArrayOfByte.length);
         }
+        localStringBuilder.append(paramArrayOfByte);
+        localStringBuilder.append("], imgFormat[");
+        localStringBuilder.append(this.b);
+        localStringBuilder.append("-->");
+        localStringBuilder.append(paramInt2);
+        localStringBuilder.append("], recordParam[");
+        localStringBuilder.append(this.jdField_a_of_type_ComTencentAvcoreDataRecordParam);
+        localStringBuilder.append("--->");
+        localStringBuilder.append(paramRecordParam);
+        localStringBuilder.append("], angle[");
+        localStringBuilder.append(this.c);
+        localStringBuilder.append("-->");
+        localStringBuilder.append(paramInt3);
+        localStringBuilder.append("]");
+        QLog.i("AVShare", 2, localStringBuilder.toString());
       }
-    }
-    label198:
-    for (paramArrayOfByte = "null";; paramArrayOfByte = Integer.valueOf(paramArrayOfByte.length))
-    {
-      QLog.i("AVShare", 2, paramArrayOfByte + "], imgFormat[" + this.b + "-->" + paramInt2 + "], recordParam[" + this.jdField_a_of_type_ComTencentAvcoreDataRecordParam + "--->" + paramRecordParam + "], angle[" + this.c + "-->" + paramInt3 + "]");
       this.jdField_a_of_type_Int = paramInt1;
       this.b = paramInt2;
       this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.update(paramRecordParam);
       this.c = paramInt3;
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.screenshare.ScreenShareCtrl.ShareDataInfo
  * JD-Core Version:    0.7.0.1
  */

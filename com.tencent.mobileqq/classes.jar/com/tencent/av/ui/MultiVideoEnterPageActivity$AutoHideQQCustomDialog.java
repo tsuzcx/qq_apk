@@ -15,8 +15,8 @@ class MultiVideoEnterPageActivity$AutoHideQQCustomDialog
   
   public static QQCustomDialog a(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    paramContext = new AutoHideQQCustomDialog(paramContext, 2131755842);
-    paramContext.setContentView(2131559084);
+    paramContext = new AutoHideQQCustomDialog(paramContext, 2131756189);
+    paramContext.setContentView(2131558978);
     paramContext.setTitle(paramString1);
     paramContext.setMessage(paramString2);
     paramContext.setNegativeButton(paramInt2, paramOnClickListener2);
@@ -28,7 +28,11 @@ class MultiVideoEnterPageActivity$AutoHideQQCustomDialog
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    QLog.w("MultiVideoEnterPageActivity", 1, "onWindowFocusChanged, hasFocus[" + paramBoolean + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onWindowFocusChanged, hasFocus[");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("]");
+    QLog.w("MultiVideoEnterPageActivity", 1, localStringBuilder.toString());
     if (!paramBoolean) {
       dismiss();
     }
@@ -36,7 +40,7 @@ class MultiVideoEnterPageActivity$AutoHideQQCustomDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoEnterPageActivity.AutoHideQQCustomDialog
  * JD-Core Version:    0.7.0.1
  */

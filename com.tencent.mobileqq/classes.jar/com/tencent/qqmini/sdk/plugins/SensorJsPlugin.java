@@ -47,10 +47,11 @@ public class SensorJsPlugin
   {
     try
     {
-      if (this.vibrator != null) {
+      if (this.vibrator != null)
+      {
         this.vibrator.vibrate(paramLong);
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -111,25 +112,27 @@ public class SensorJsPlugin
   {
     String str = paramJSONObject.optString("interval");
     int i = paramJSONObject.optInt("interval", -1);
-    if (i == -1) {
-      if (!"game".equals(str)) {}
-    }
-    while (i == 20)
+    if (i == -1)
     {
-      return 1;
+      if ("game".equals(str)) {
+        return 1;
+      }
       if ("ui".equals(str)) {
         return 2;
       }
-      if (!"normal".equals(str)) {
-        break;
+      if ("normal".equals(str)) {
+        return 3;
       }
-      return 3;
     }
-    if (i == 60) {
-      return 2;
-    }
-    if (i == 200) {
-      return 3;
+    else
+    {
+      if (i == 20) {
+        return 1;
+      }
+      if (i == 60) {
+        return 2;
+      }
+      if (i != 200) {}
     }
     return 3;
   }
@@ -162,87 +165,126 @@ public class SensorJsPlugin
   
   public final boolean startAccelerometer(IJsService paramIJsService, int paramInt)
   {
-    if ((this.senSensorManager == null) || (this.accelerometerSensor == null)) {
-      return false;
+    if ((this.senSensorManager != null) && (this.accelerometerSensor != null))
+    {
+      if (this.accelerometerSensorJsPlugin != null) {
+        stopAccelerometer();
+      }
+      this.accelerometerSensorJsPlugin = new SensorJsPlugin.AccelerometerSensorJsPlugin(this, paramIJsService);
+      return this.senSensorManager.registerListener(this.accelerometerSensorJsPlugin, this.accelerometerSensor, paramInt);
     }
-    if (this.accelerometerSensorJsPlugin != null) {
-      stopAccelerometer();
-    }
-    this.accelerometerSensorJsPlugin = new SensorJsPlugin.AccelerometerSensorJsPlugin(this, paramIJsService);
-    return this.senSensorManager.registerListener(this.accelerometerSensorJsPlugin, this.accelerometerSensor, paramInt);
+    return false;
   }
   
   public final boolean startCompass(IJsService paramIJsService, int paramInt)
   {
-    if ((this.senSensorManager == null) || (this.accelerometerSensor == null) || (this.magneticSensor == null)) {}
-    do
+    SensorManager localSensorManager = this.senSensorManager;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localSensorManager != null)
     {
-      return false;
-      if (this.compassSensorJsPlugin != null) {
-        stopAccelerometer();
+      bool1 = bool2;
+      if (this.accelerometerSensor != null)
+      {
+        if (this.magneticSensor == null) {
+          return false;
+        }
+        if (this.compassSensorJsPlugin != null) {
+          stopAccelerometer();
+        }
+        this.compassSensorJsPlugin = new SensorJsPlugin.CompassSensorJsPlugin(this, paramIJsService);
+        bool1 = bool2;
+        if (this.senSensorManager.registerListener(this.compassSensorJsPlugin, this.accelerometerSensor, paramInt))
+        {
+          bool1 = bool2;
+          if (this.senSensorManager.registerListener(this.compassSensorJsPlugin, this.magneticSensor, paramInt)) {
+            bool1 = true;
+          }
+        }
       }
-      this.compassSensorJsPlugin = new SensorJsPlugin.CompassSensorJsPlugin(this, paramIJsService);
-    } while ((!this.senSensorManager.registerListener(this.compassSensorJsPlugin, this.accelerometerSensor, paramInt)) || (!this.senSensorManager.registerListener(this.compassSensorJsPlugin, this.magneticSensor, paramInt)));
-    return true;
+    }
+    return bool1;
   }
   
   public final boolean startGyroscope(IJsService paramIJsService, int paramInt)
   {
-    if ((this.senSensorManager == null) || (this.gyroscopeSensor == null)) {
-      return false;
+    if ((this.senSensorManager != null) && (this.gyroscopeSensor != null))
+    {
+      if (this.gyroscopeSensorJsPlugin != null) {
+        stopGyroscope();
+      }
+      this.gyroscopeSensorJsPlugin = new SensorJsPlugin.GyroscopeSensorJsPlugin(this, paramIJsService);
+      return this.senSensorManager.registerListener(this.gyroscopeSensorJsPlugin, this.gyroscopeSensor, paramInt);
     }
-    if (this.gyroscopeSensorJsPlugin != null) {
-      stopGyroscope();
-    }
-    this.gyroscopeSensorJsPlugin = new SensorJsPlugin.GyroscopeSensorJsPlugin(this, paramIJsService);
-    return this.senSensorManager.registerListener(this.gyroscopeSensorJsPlugin, this.gyroscopeSensor, paramInt);
+    return false;
   }
   
   public final boolean startRotationListening(IJsService paramIJsService, int paramInt)
   {
-    if ((this.senSensorManager == null) || (this.orientationSensor == null)) {
-      return false;
+    if ((this.senSensorManager != null) && (this.orientationSensor != null))
+    {
+      if (this.orientationSensorJsPlugin != null) {
+        stopRotationListening();
+      }
+      this.orientationSensorJsPlugin = new SensorJsPlugin.RotationSensorJsPlugin(this, paramIJsService);
+      return this.senSensorManager.registerListener(this.orientationSensorJsPlugin, this.orientationSensor, paramInt);
     }
-    if (this.orientationSensorJsPlugin != null) {
-      stopRotationListening();
-    }
-    this.orientationSensorJsPlugin = new SensorJsPlugin.RotationSensorJsPlugin(this, paramIJsService);
-    return this.senSensorManager.registerListener(this.orientationSensorJsPlugin, this.orientationSensor, paramInt);
+    return false;
   }
   
   public final void stopAccelerometer()
   {
-    if ((this.senSensorManager != null) && (this.accelerometerSensorJsPlugin != null))
+    SensorManager localSensorManager = this.senSensorManager;
+    if (localSensorManager != null)
     {
-      this.senSensorManager.unregisterListener(this.accelerometerSensorJsPlugin);
-      this.accelerometerSensorJsPlugin = null;
+      SensorJsPlugin.AccelerometerSensorJsPlugin localAccelerometerSensorJsPlugin = this.accelerometerSensorJsPlugin;
+      if (localAccelerometerSensorJsPlugin != null)
+      {
+        localSensorManager.unregisterListener(localAccelerometerSensorJsPlugin);
+        this.accelerometerSensorJsPlugin = null;
+      }
     }
   }
   
   public final void stopCompass()
   {
-    if ((this.senSensorManager != null) && (this.compassSensorJsPlugin != null))
+    SensorManager localSensorManager = this.senSensorManager;
+    if (localSensorManager != null)
     {
-      this.senSensorManager.unregisterListener(this.compassSensorJsPlugin);
-      this.compassSensorJsPlugin = null;
+      SensorJsPlugin.CompassSensorJsPlugin localCompassSensorJsPlugin = this.compassSensorJsPlugin;
+      if (localCompassSensorJsPlugin != null)
+      {
+        localSensorManager.unregisterListener(localCompassSensorJsPlugin);
+        this.compassSensorJsPlugin = null;
+      }
     }
   }
   
   public final void stopGyroscope()
   {
-    if ((this.senSensorManager != null) && (this.gyroscopeSensorJsPlugin != null))
+    SensorManager localSensorManager = this.senSensorManager;
+    if (localSensorManager != null)
     {
-      this.senSensorManager.unregisterListener(this.gyroscopeSensorJsPlugin);
-      this.gyroscopeSensorJsPlugin = null;
+      SensorJsPlugin.GyroscopeSensorJsPlugin localGyroscopeSensorJsPlugin = this.gyroscopeSensorJsPlugin;
+      if (localGyroscopeSensorJsPlugin != null)
+      {
+        localSensorManager.unregisterListener(localGyroscopeSensorJsPlugin);
+        this.gyroscopeSensorJsPlugin = null;
+      }
     }
   }
   
   public final void stopRotationListening()
   {
-    if ((this.senSensorManager != null) && (this.orientationSensorJsPlugin != null))
+    SensorManager localSensorManager = this.senSensorManager;
+    if (localSensorManager != null)
     {
-      this.senSensorManager.unregisterListener(this.orientationSensorJsPlugin);
-      this.orientationSensorJsPlugin = null;
+      SensorJsPlugin.RotationSensorJsPlugin localRotationSensorJsPlugin = this.orientationSensorJsPlugin;
+      if (localRotationSensorJsPlugin != null)
+      {
+        localSensorManager.unregisterListener(localRotationSensorJsPlugin);
+        this.orientationSensorJsPlugin = null;
+      }
     }
   }
   
@@ -266,7 +308,7 @@ public class SensorJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.SensorJsPlugin
  * JD-Core Version:    0.7.0.1
  */

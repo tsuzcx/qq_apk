@@ -14,28 +14,25 @@ class TeamWorkShareActionSheetBuilder$2
   
   public void onClick(View paramView)
   {
-    if ((TeamWorkShareActionSheetBuilder.a(this.a) instanceof CustomWebView))
-    {
-      if (2 != TeamWorkShareActionSheetBuilder.a(this.a).c) {
-        break label57;
+    if ((TeamWorkShareActionSheetBuilder.a(this.a) instanceof CustomWebView)) {
+      if (2 == TeamWorkShareActionSheetBuilder.a(this.a).c)
+      {
+        ((CustomWebView)TeamWorkShareActionSheetBuilder.a(this.a)).callJs("openAdvPermissionsMobile()");
+        this.a.dismiss();
       }
-      ((CustomWebView)TeamWorkShareActionSheetBuilder.a(this.a)).callJs("openAdvPermissionsMobile()");
-      this.a.dismiss();
+      else
+      {
+        ((CustomWebView)TeamWorkShareActionSheetBuilder.a(this.a)).callJs("openCooperationMobile()");
+        this.a.dismiss();
+        ReportController.b(TeamWorkShareActionSheetBuilder.a(this.a).getAppRuntime(), "dc00898", "", "", "0x8009412", "0x8009412", 0, 0, "", "", "", "");
+      }
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label57:
-      ((CustomWebView)TeamWorkShareActionSheetBuilder.a(this.a)).callJs("openCooperationMobile()");
-      this.a.dismiss();
-      ReportController.b(TeamWorkShareActionSheetBuilder.a(this.a).app, "dc00898", "", "", "0x8009412", "0x8009412", 0, 0, "", "", "", "");
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkShareActionSheetBuilder.2
  * JD-Core Version:    0.7.0.1
  */

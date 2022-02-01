@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.homework.entry.ui;
 
 import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.util.InputMethodUtil;
 import cooperation.troop_homework.jsp.TroopHWJsPlugin;
@@ -27,7 +27,7 @@ class PublishHomeWorkFragment$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment.10
  * JD-Core Version:    0.7.0.1
  */

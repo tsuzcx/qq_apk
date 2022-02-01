@@ -11,30 +11,34 @@ public class IDataProvider$GroupId
   public IDataProvider$GroupId(@NonNull String paramString)
   {
     this.a = paramString;
-    AssertUtils.a(paramString);
+    AssertUtils.checkNotEmpty(paramString);
   }
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (GroupId)paramObject;
-      if (this.a != null) {
-        return this.a.equals(paramObject.a);
+      String str = this.a;
+      if (str != null) {
+        return str.equals(paramObject.a);
       }
-    } while (paramObject.a == null);
+      return paramObject.a == null;
+    }
     return false;
   }
   
   public int hashCode()
   {
-    if (this.a != null) {
-      return this.a.hashCode();
+    String str = this.a;
+    if (str != null) {
+      return str.hashCode();
     }
     return 0;
   }
@@ -42,15 +46,19 @@ public class IDataProvider$GroupId
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    if (this.b == null) {}
-    for (String str = "";; str = this.b) {
-      return str + this.a;
+    String str2 = this.b;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
+    localStringBuilder.append(str1);
+    localStringBuilder.append(this.a);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.IDataProvider.GroupId
  * JD-Core Version:    0.7.0.1
  */

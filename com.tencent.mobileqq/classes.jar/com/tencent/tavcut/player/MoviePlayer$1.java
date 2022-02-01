@@ -16,8 +16,10 @@ class MoviePlayer$1
     MoviePlayer.access$002(this.this$0, paramInt1);
     MoviePlayer.access$102(this.this$0, paramInt2);
     MoviePlayer.access$202(this.this$0, new Surface(paramSurfaceTexture));
-    if (!MoviePlayer.access$300(this.this$0)) {
-      this.this$0.updateComposition(MoviePlayer.access$400(this.this$0), MoviePlayer.access$500(this.this$0), MoviePlayer.access$600(this.this$0));
+    if (!MoviePlayer.access$300(this.this$0))
+    {
+      paramSurfaceTexture = this.this$0;
+      paramSurfaceTexture.updateComposition(MoviePlayer.access$400(paramSurfaceTexture), MoviePlayer.access$500(this.this$0), MoviePlayer.access$600(this.this$0));
     }
     MoviePlayer.access$702(this.this$0, true);
     MoviePlayer.access$800(this.this$0);
@@ -27,7 +29,8 @@ class MoviePlayer$1
   {
     if ((MoviePlayer.access$900(this.this$0) != null) && (!MoviePlayer.access$900(this.this$0).isReleased()))
     {
-      MoviePlayer.access$502(this.this$0, MoviePlayer.access$900(this.this$0).position());
+      MoviePlayer localMoviePlayer = this.this$0;
+      MoviePlayer.access$502(localMoviePlayer, MoviePlayer.access$900(localMoviePlayer).position());
       MoviePlayer.access$900(this.this$0).release();
     }
     paramSurfaceTexture.release();
@@ -56,7 +59,7 @@ class MoviePlayer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.player.MoviePlayer.1
  * JD-Core Version:    0.7.0.1
  */

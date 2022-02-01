@@ -13,7 +13,8 @@ public class GdtProgressDialogAdapter
   
   public void dismiss()
   {
-    if ((this.a != null) && (this.a.isShowing()))
+    QQProgressDialog localQQProgressDialog = this.a;
+    if ((localQQProgressDialog != null) && (localQQProgressDialog.isShowing()))
     {
       this.a.dismiss();
       this.a = null;
@@ -22,18 +23,14 @@ public class GdtProgressDialogAdapter
   
   public boolean isShowing(Context paramContext)
   {
-    return (this.a != null) && (this.a.isShowing());
+    paramContext = this.a;
+    return (paramContext != null) && (paramContext.isShowing());
   }
   
   public void show(Context paramContext, AdProgressDialog.Params paramParams)
   {
-    if (paramContext == null) {}
-    for (;;)
+    if (paramContext != null)
     {
-      if (this.a != null) {
-        this.a.show();
-      }
-      return;
       if (this.a == null) {
         this.a = new QQProgressDialog(paramContext);
       }
@@ -46,11 +43,15 @@ public class GdtProgressDialogAdapter
         }
       }
     }
+    paramContext = this.a;
+    if (paramContext != null) {
+      paramContext.show();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.adapter.GdtProgressDialogAdapter
  * JD-Core Version:    0.7.0.1
  */

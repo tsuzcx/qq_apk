@@ -15,25 +15,24 @@ class TroopAlbumPlugin$2
     if ("cmd.troop.download.photo".equals(paramString))
     {
       paramString = paramBundle.getBundle("data");
-      if (paramString.getBoolean("isOpenVip")) {
+      if (paramString.getBoolean("isOpenVip"))
+      {
         TroopAlbumPlugin.a(this.jdField_a_of_type_ComTencentQqminiNativePluginsTroopAlbumPlugin).post(new TroopAlbumPlugin.2.1(this));
+        return;
       }
+      paramString.getInt("totalNum");
+      int i = paramString.getInt("successNum");
+      int j = paramString.getInt("failNum");
+      boolean bool = paramString.getBoolean("isDownloadCanceled");
+      paramString = paramString.getString("path");
+      paramBundle = this.jdField_a_of_type_ComTencentQqminiNativePluginsTroopAlbumPlugin;
+      TroopAlbumPlugin.a(paramBundle, TroopAlbumPlugin.h(paramBundle).getAttachedActivity(), i, j, paramString, bool);
     }
-    else
-    {
-      return;
-    }
-    paramString.getInt("totalNum");
-    int i = paramString.getInt("successNum");
-    int j = paramString.getInt("failNum");
-    boolean bool = paramString.getBoolean("isDownloadCanceled");
-    paramString = paramString.getString("path");
-    TroopAlbumPlugin.a(this.jdField_a_of_type_ComTencentQqminiNativePluginsTroopAlbumPlugin, TroopAlbumPlugin.h(this.jdField_a_of_type_ComTencentQqminiNativePluginsTroopAlbumPlugin).getAttachedActivity(), i, j, paramString, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.TroopAlbumPlugin.2
  * JD-Core Version:    0.7.0.1
  */

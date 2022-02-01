@@ -8,6 +8,10 @@ import java.nio.FloatBuffer;
 
 public abstract class ShapeModel
 {
+  public static final String A_POSITION = "aPosition";
+  public static final String A_TEXTURE_COORD = "aTextureCoord";
+  public static final String U_COLOR = "uColor";
+  public static final String U_PROJECT_MATRIX = "uProjectMatrix";
   protected int imageHeight;
   protected int imageWidth;
   protected boolean isPieceLoad;
@@ -172,14 +176,13 @@ public abstract class ShapeModel
     this.screenRatio = paramFloat;
     if (this.showType == 1)
     {
-      if ((this instanceof CylinderModel)) {
+      if ((this instanceof CylinderModel))
+      {
         this.mScale = 0.5228754F;
+        return;
       }
+      this.mScale = 0.4142652F;
     }
-    else {
-      return;
-    }
-    this.mScale = 0.4142652F;
   }
   
   public void setShowType(int paramInt)
@@ -196,7 +199,7 @@ public abstract class ShapeModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.panorama.model.ShapeModel
  * JD-Core Version:    0.7.0.1
  */

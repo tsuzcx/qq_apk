@@ -29,37 +29,64 @@ final class a$5
     String str1 = locala.c;
     String str2 = locala.e;
     int i = locala.f;
-    File localFile = locala.g;
+    File localFile1 = locala.g;
     if (locala.h != null)
     {
       if (!locala.h.exists()) {
         locala.h.mkdirs();
       }
-      new File(locala.h, locala.o.a + ".tbs");
+      File localFile2 = locala.h;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(locala.o.a);
+      localStringBuilder.append(".tbs");
+      new File(localFile2, localStringBuilder.toString());
     }
     com.tencent.tbs.one.impl.a.f.a("[%s] {%s} Receiving component download response: [%d] %s", new Object[] { str1, str2, Integer.valueOf(paramInt), paramMap });
-    if ((paramInt != 200) || (paramInputStream == null))
+    if ((paramInt == 200) && (paramInputStream != null))
     {
-      locala.a(220, "Invalid component download stream, url: " + (String)localObject + ", statusCode: " + paramInt, null);
-      return;
-    }
-    if (locala.l == 1)
-    {
-      com.tencent.tbs.one.impl.a.f.a("[%s] {%s} Asking runtime extension to intercept download stream", new Object[] { str1, str2 });
-      try
+      if (locala.l == 1)
       {
-        paramMap = com.tencent.tbs.one.impl.common.a.a(localContext, str1);
-        localObject = new HashMap();
-        ((Map)localObject).put("localVersion", Integer.valueOf(j));
-        ((Map)localObject).put("localVersionDirectory", new File(com.tencent.tbs.one.impl.common.f.b(com.tencent.tbs.one.impl.common.f.a(localContext.getDir("tbs", 0), str1), str2), String.valueOf(j)).getAbsolutePath());
-        ((Map)localObject).put("controlMessage", locala.k);
-        paramInt = paramMap.shouldInterceptComponentResponse(str1, str2, i, (Map)localObject, paramInputStream, localFile, new a.7(locala, str1, str2, localFile, localContext, i));
-        if (paramInt != 0)
+        com.tencent.tbs.one.impl.a.f.a("[%s] {%s} Asking runtime extension to intercept download stream", new Object[] { str1, str2 });
+        try
         {
-          com.tencent.tbs.one.impl.a.f.a("[%s] {%s} Intercepted component download stream by runtime extension", new Object[] { str1, str2 });
-          locala.j = paramInt;
+          paramMap = com.tencent.tbs.one.impl.common.a.a(localContext, str1);
+          localObject = new HashMap();
+          ((Map)localObject).put("localVersion", Integer.valueOf(j));
+          ((Map)localObject).put("localVersionDirectory", new File(com.tencent.tbs.one.impl.common.f.b(com.tencent.tbs.one.impl.common.f.a(localContext.getDir("tbs", 0), str1), str2), String.valueOf(j)).getAbsolutePath());
+          ((Map)localObject).put("controlMessage", locala.k);
+          paramInt = paramMap.shouldInterceptComponentResponse(str1, str2, i, (Map)localObject, paramInputStream, localFile1, new a.7(locala, str1, str2, localFile1, localContext, i));
+          if (paramInt != 0)
+          {
+            com.tencent.tbs.one.impl.a.f.a("[%s] {%s} Intercepted component download stream by runtime extension", new Object[] { str1, str2 });
+            locala.j = paramInt;
+            return;
+          }
+        }
+        catch (TBSOneException paramMap)
+        {
+          locala.a(paramMap.getErrorCode(), paramMap.getMessage(), paramMap.getCause());
           return;
         }
+      }
+      try
+      {
+        try
+        {
+          com.tencent.tbs.one.impl.e.f.a(paramInputStream, locala.m, locala.n, localFile1, null, new a.8(locala));
+          com.tencent.tbs.one.impl.e.f.a(localFile1, localFile1);
+          com.tencent.tbs.one.impl.e.f.a(localFile1, i);
+          com.tencent.tbs.one.impl.e.f.a(locala.b.getDir("tbs", 0));
+          com.tencent.tbs.one.impl.e.f.b(localFile1);
+          h.a("TBSOneAction", 1018, null);
+        }
+        catch (Exception paramMap)
+        {
+          com.tencent.tbs.one.impl.a.f.c("null pointer occured,e=%s", new Object[] { Log.getStackTraceString(paramMap) });
+        }
+        paramMap = e.a(e.a.d, localFile1);
+        paramMap.c = locala.k;
+        locala.a(paramMap);
+        return;
       }
       catch (TBSOneException paramMap)
       {
@@ -67,36 +94,16 @@ final class a$5
         return;
       }
     }
-    try
-    {
-      com.tencent.tbs.one.impl.e.f.a(paramInputStream, locala.m, locala.n, localFile, null, new a.8(locala));
-      com.tencent.tbs.one.impl.e.f.a(localFile, localFile);
-      com.tencent.tbs.one.impl.e.f.a(localFile, i);
-      com.tencent.tbs.one.impl.e.f.a(locala.b.getDir("tbs", 0));
-      com.tencent.tbs.one.impl.e.f.b(localFile);
-      h.a("TBSOneAction", 1018, null);
-      paramMap = e.a(e.a.d, localFile);
-      paramMap.c = locala.k;
-      locala.a(paramMap);
-      return;
-    }
-    catch (TBSOneException paramMap)
-    {
-      locala.a(paramMap.getErrorCode(), paramMap.getMessage(), paramMap.getCause());
-      return;
-    }
-    catch (Exception paramMap)
-    {
-      for (;;)
-      {
-        com.tencent.tbs.one.impl.a.f.c("null pointer occured,e=%s", new Object[] { Log.getStackTraceString(paramMap) });
-      }
-    }
+    paramMap = new StringBuilder("Invalid component download stream, url: ");
+    paramMap.append((String)localObject);
+    paramMap.append(", statusCode: ");
+    paramMap.append(paramInt);
+    locala.a(220, paramMap.toString(), null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.e.a.a.5
  * JD-Core Version:    0.7.0.1
  */

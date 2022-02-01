@@ -43,9 +43,10 @@ public class SpriteVideoView
   protected void a(boolean paramBoolean)
   {
     this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite = new SpriteVideoView.1(this, this, getContext(), paramBoolean);
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.b = true;
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.c = true;
-    a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite);
+    VideoSprite localVideoSprite = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite;
+    localVideoSprite.b = true;
+    localVideoSprite.c = true;
+    a(localVideoSprite);
   }
   
   public void setCenterCrop(boolean paramBoolean)
@@ -75,7 +76,7 @@ public class SpriteVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView
  * JD-Core Version:    0.7.0.1
  */

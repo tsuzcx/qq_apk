@@ -7,12 +7,17 @@ class ReflectLivenessState$2
 {
   ReflectLivenessState$2(ReflectLivenessState paramReflectLivenessState)
   {
-    put("version_tips", "反光库版本异常！目标版本：" + ReflectLivenessState.access$000(this.this$0) + " 当前版本：" + "3.6.8");
+    paramReflectLivenessState = new StringBuilder();
+    paramReflectLivenessState.append("反光库版本异常！目标版本：");
+    paramReflectLivenessState.append(ReflectLivenessState.access$000(this.this$0));
+    paramReflectLivenessState.append(" 当前版本：");
+    paramReflectLivenessState.append("3.6.8");
+    put("version_tips", paramReflectLivenessState.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.liveness.ReflectLivenessState.2
  * JD-Core Version:    0.7.0.1
  */

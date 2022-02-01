@@ -17,13 +17,13 @@ class StoryDetailPresenter$3
   
   public void a(int paramInt, Bundle paramBundle)
   {
-    a(-1, HardCodeUtil.a(2131714287));
+    a(-1, HardCodeUtil.a(2131714208));
   }
   
   public void a(int paramInt, String paramString)
   {
     this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
-    QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131714284), 0).a();
+    QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131714205), 0).a();
     SLog.e("Q.qqstory.detail.StoryDetailPresenter", "delete comment failed. errorCode = %d, errorMsg=%s.", new Object[] { Integer.valueOf(paramInt), paramString });
   }
   
@@ -38,7 +38,7 @@ class StoryDetailPresenter$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailPresenter.3
  * JD-Core Version:    0.7.0.1
  */

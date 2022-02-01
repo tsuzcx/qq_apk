@@ -38,7 +38,11 @@ public final class RecentUserCacheConfig
     Object localObject = localRecentUser;
     if (QLog.isColorLevel())
     {
-      QLog.d("RecentUserCacheConfig", 2, "observer." + localISaveRecentUserObserver.getClass().getName() + " ");
+      paramBaseQQAppInterface = new StringBuilder();
+      paramBaseQQAppInterface.append("observer.");
+      paramBaseQQAppInterface.append(localISaveRecentUserObserver.getClass().getName());
+      paramBaseQQAppInterface.append(" ");
+      QLog.d("RecentUserCacheConfig", 2, paramBaseQQAppInterface.toString());
       localObject = localRecentUser;
     }
     return localObject;
@@ -121,7 +125,7 @@ public final class RecentUserCacheConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.cache.RecentUserCacheConfig
  * JD-Core Version:    0.7.0.1
  */

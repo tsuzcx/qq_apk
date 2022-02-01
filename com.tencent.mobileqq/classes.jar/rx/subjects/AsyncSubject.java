@@ -87,19 +87,19 @@ public final class AsyncSubject<T>
       localObject2 = this.state.terminate(localObject1);
       int j = localObject2.length;
       int i = 0;
-      if (i < j)
+      while (i < j)
       {
         Object localObject3 = localObject2[i];
-        if (localObject1 == this.nl.completed()) {
+        if (localObject1 == this.nl.completed())
+        {
           localObject3.onCompleted();
         }
-        for (;;)
+        else
         {
-          i += 1;
-          break;
           localObject3.onNext(this.nl.getValue(localObject1));
           localObject3.onCompleted();
         }
+        i += 1;
       }
     }
   }
@@ -108,34 +108,28 @@ public final class AsyncSubject<T>
   {
     if (this.state.active)
     {
-      Object localObject1 = this.nl.error(paramThrowable);
-      SubjectSubscriptionManager.SubjectObserver[] arrayOfSubjectObserver = this.state.terminate(localObject1);
+      Object localObject2 = this.nl.error(paramThrowable);
+      Object localObject1 = null;
+      SubjectSubscriptionManager.SubjectObserver[] arrayOfSubjectObserver = this.state.terminate(localObject2);
       int j = arrayOfSubjectObserver.length;
-      localObject1 = null;
       int i = 0;
-      for (;;)
+      while (i < j)
       {
-        if (i < j)
+        localObject2 = arrayOfSubjectObserver[i];
+        try
         {
-          Object localObject2 = arrayOfSubjectObserver[i];
-          try
-          {
-            ((SubjectSubscriptionManager.SubjectObserver)localObject2).onError(paramThrowable);
-            i += 1;
-          }
-          catch (Throwable localThrowable)
-          {
-            for (;;)
-            {
-              localObject2 = localObject1;
-              if (localObject1 == null) {
-                localObject2 = new ArrayList();
-              }
-              ((List)localObject2).add(localThrowable);
-              localObject1 = localObject2;
-            }
-          }
+          ((SubjectSubscriptionManager.SubjectObserver)localObject2).onError(paramThrowable);
         }
+        catch (Throwable localThrowable)
+        {
+          localObject2 = localObject1;
+          if (localObject1 == null) {
+            localObject2 = new ArrayList();
+          }
+          ((List)localObject2).add(localThrowable);
+          localObject1 = localObject2;
+        }
+        i += 1;
       }
       Exceptions.throwIfAny(localObject1);
     }
@@ -148,7 +142,7 @@ public final class AsyncSubject<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.subjects.AsyncSubject
  * JD-Core Version:    0.7.0.1
  */

@@ -31,57 +31,72 @@ class GroupIconHelper$GenerateIconRunner
   
   private void a(QQAppInterface paramQQAppInterface)
   {
-    boolean bool = true;
     GroupIconHelper.GroupIconInfo localGroupIconInfo = new GroupIconHelper.GroupIconInfo(this.this$0, null);
-    localGroupIconInfo = GroupIconHelper.a(this.this$0, this.jdField_a_of_type_JavaLangString, true, localGroupIconInfo, true);
-    if (localGroupIconInfo.jdField_a_of_type_Boolean) {
+    localGroupIconInfo = GroupIconHelper.a(this.this$0, this.jdField_a_of_type_JavaLangString, true, localGroupIconInfo, true, false);
+    boolean bool1 = localGroupIconInfo.jdField_a_of_type_Boolean;
+    boolean bool2 = false;
+    if (bool1)
+    {
       if (GroupIconHelper.a(this.this$0).containsKey(this.jdField_a_of_type_JavaLangString))
       {
         this.this$0.d(this.jdField_a_of_type_JavaLangString);
         this.this$0.a(this.jdField_a_of_type_JavaLangString);
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqhead.dih", 2, "refreshDisIcon: " + this.jdField_a_of_type_JavaLangString + ", isChanged=" + localGroupIconInfo.jdField_a_of_type_Boolean + ", isCreated=" + bool);
-      }
-      return;
-      if (paramQQAppInterface != null)
-      {
-        File localFile = new File(paramQQAppInterface.getCustomFaceFilePath(this.this$0.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 0));
-        if ((localFile != null) && (localFile.exists())) {
-          localFile.delete();
-        }
-        paramQQAppInterface.removeFaceIconCache(this.this$0.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 0);
-        GroupIconHelper.a(this.this$0).remove(this.jdField_a_of_type_JavaLangString);
-        bool = false;
-        continue;
-        GroupIconHelper.a(this.this$0).remove(this.jdField_a_of_type_JavaLangString);
+        bool1 = true;
       }
       else
       {
-        bool = false;
+        bool1 = bool2;
+        if (paramQQAppInterface != null)
+        {
+          File localFile = new File(paramQQAppInterface.getCustomFaceFilePath(this.this$0.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 0));
+          if (localFile.exists()) {
+            localFile.delete();
+          }
+          paramQQAppInterface.removeFaceIconCache(this.this$0.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 0);
+          GroupIconHelper.a(this.this$0).remove(this.jdField_a_of_type_JavaLangString);
+          bool1 = bool2;
+        }
       }
+    }
+    else
+    {
+      GroupIconHelper.a(this.this$0).remove(this.jdField_a_of_type_JavaLangString);
+      bool1 = bool2;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("refreshDisIcon: ");
+      paramQQAppInterface.append(this.jdField_a_of_type_JavaLangString);
+      paramQQAppInterface.append(", isChanged=");
+      paramQQAppInterface.append(localGroupIconInfo.jdField_a_of_type_Boolean);
+      paramQQAppInterface.append(", isCreated=");
+      paramQQAppInterface.append(bool1);
+      QLog.d("Q.qqhead.dih", 2, paramQQAppInterface.toString());
     }
   }
   
   private void a(GroupIconHelper.GroupIconInfo paramGroupIconInfo)
   {
     paramGroupIconInfo = GroupIconHelper.a(this.this$0, this.jdField_a_of_type_JavaLangString, true, paramGroupIconInfo, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqhead.dih", 2, "CheckAndCreateDisIcon Done: " + this.jdField_a_of_type_JavaLangString + ", isChanged=" + paramGroupIconInfo.jdField_a_of_type_Boolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("CheckAndCreateDisIcon Done: ");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(", isChanged=");
+      localStringBuilder.append(paramGroupIconInfo.jdField_a_of_type_Boolean);
+      QLog.d("Q.qqhead.dih", 2, localStringBuilder.toString());
     }
     if (paramGroupIconInfo.jdField_a_of_type_Boolean)
     {
-      if (paramGroupIconInfo.c) {
+      if (paramGroupIconInfo.c)
+      {
         GroupIconHelper.a(this.this$0, GroupIconHelper.a(this.jdField_a_of_type_JavaLangString));
+        return;
       }
+      GroupIconHelper.a(this.this$0, this.jdField_a_of_type_JavaLangString);
     }
-    else {
-      return;
-    }
-    GroupIconHelper.a(this.this$0, this.jdField_a_of_type_JavaLangString);
   }
   
   private void a(GroupIconHelper.GroupIconInfo arg1, int paramInt)
@@ -120,92 +135,112 @@ class GroupIconHelper$GenerateIconRunner
         {
           int j = arrayOfString.length;
           int i = 0;
-          if (i < j)
+          while (i < j)
           {
             String str = arrayOfString[i];
-            if ((str == null) || (str.length() == 0)) {}
-            for (;;)
-            {
-              i += 1;
-              break;
+            if ((str != null) && (str.length() != 0)) {
               if (!paramQQAppInterface.isFaceFileExist(1, str, 0, 0)) {
                 ((IQQAvatarHandlerService)paramQQAppInterface.getRuntimeService(IQQAvatarHandlerService.class, "")).getCustomHead(str, (byte)0, (byte)2);
               } else {
                 paramGroupIconInfo.jdField_a_of_type_JavaUtilArrayList.add(str);
               }
             }
+            i += 1;
           }
         }
       }
     }
     try
     {
-      QLog.d("Q.qqhead.dih", 1, "TYPE_CREAT. disUin=" + this.jdField_a_of_type_JavaLangString + paramGroupIconInfo.toString());
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("TYPE_CREAT. disUin=");
+      paramQQAppInterface.append(this.jdField_a_of_type_JavaLangString);
+      paramQQAppInterface.append(paramGroupIconInfo.toString());
+      QLog.d("Q.qqhead.dih", 1, paramQQAppInterface.toString());
       return;
     }
     catch (Exception paramGroupIconInfo)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("Q.qqhead.dih", 2, "TYPE_CREAT", paramGroupIconInfo);
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.qqhead.dih", 2, "TYPE_CREAT", paramGroupIconInfo);
+      }
     }
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {}
-    for (;;)
-    {
+    if (this.jdField_a_of_type_JavaLangString == null) {
       return;
-      GroupIconHelper.GroupIconInfo localGroupIconInfo1 = (GroupIconHelper.GroupIconInfo)GroupIconHelper.a(this.this$0).get(this.jdField_a_of_type_JavaLangString);
-      if (this.jdField_a_of_type_Boolean) {
-        localGroupIconInfo1 = (GroupIconHelper.GroupIconInfo)GroupIconHelper.a(this.this$0).get(GroupIconHelper.a(this.jdField_a_of_type_JavaLangString));
-      }
-      while ((localGroupIconInfo1 != null) || (this.jdField_a_of_type_Int == 3))
+    }
+    Object localObject1 = (GroupIconHelper.GroupIconInfo)GroupIconHelper.a(this.this$0).get(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Boolean) {
+      localObject1 = (GroupIconHelper.GroupIconInfo)GroupIconHelper.a(this.this$0).get(GroupIconHelper.a(this.jdField_a_of_type_JavaLangString));
+    }
+    if ((localObject1 == null) && (this.jdField_a_of_type_Int != 3)) {
+      return;
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    int i = this.jdField_a_of_type_Int;
+    String str;
+    Object localObject3;
+    if (i != 1)
+    {
+      if (i != 2)
       {
-        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        switch (this.jdField_a_of_type_Int)
-        {
-        default: 
-          return;
-        case 1: 
-          a(localGroupIconInfo1);
-          return;
-        case 2: 
-          String str2 = this.jdField_a_of_type_JavaLangString;
-          GroupIconHelper.GroupIconInfo localGroupIconInfo2 = localGroupIconInfo1;
-          if (localGroupIconInfo1 != null) {
-            localGroupIconInfo2 = localGroupIconInfo1;
-          }
-          try
-          {
-            if (localGroupIconInfo1.jdField_a_of_type_JavaLangString == null) {
-              localGroupIconInfo2 = GroupIconHelper.a(this.this$0, this.jdField_a_of_type_JavaLangString, false, localGroupIconInfo1, true);
-            }
-            if (localGroupIconInfo2 == null)
-            {
-              QLog.d("Q.qqhead.dih", 2, "TYPE_CREAT. iconinfo is null, disUin=" + this.jdField_a_of_type_JavaLangString);
-              return;
-            }
-          }
-          finally {}
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.qqhead.dih", 2, "TYPE_CREAT. disUin=" + this.jdField_a_of_type_JavaLangString + " ,isSyncFace=" + localGroupIconInfo2.jdField_b_of_type_Boolean + ", faceUinSet=" + localGroupIconInfo2.jdField_a_of_type_JavaLangString);
-          }
-          a(localGroupIconInfo2, localQQAppInterface);
-          if ((localGroupIconInfo2.jdField_a_of_type_Byte == 2) && (localGroupIconInfo2.jdField_b_of_type_JavaLangString != null))
-          {
-            String str1 = GroupIconHelper.a(localGroupIconInfo2.jdField_a_of_type_JavaUtilArrayList, false);
-            if (localGroupIconInfo2.jdField_b_of_type_JavaLangString.equals(str1)) {
-              return;
-            }
-          }
-          a(localGroupIconInfo2, localGroupIconInfo2.jdField_a_of_type_JavaUtilArrayList.size());
+        if (i != 3) {
           return;
         }
         a(localQQAppInterface);
         return;
       }
+      str = this.jdField_a_of_type_JavaLangString;
+      localObject3 = localObject1;
+      if (localObject1 != null) {
+        localObject3 = localObject1;
+      }
     }
+    try
+    {
+      if (((GroupIconHelper.GroupIconInfo)localObject1).jdField_a_of_type_JavaLangString == null) {
+        localObject3 = GroupIconHelper.a(this.this$0, this.jdField_a_of_type_JavaLangString, false, (GroupIconHelper.GroupIconInfo)localObject1, true);
+      }
+      if (localObject3 == null)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("TYPE_CREAT. iconinfo is null, disUin=");
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+        QLog.d("Q.qqhead.dih", 2, ((StringBuilder)localObject1).toString());
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("TYPE_CREAT. disUin=");
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(" ,isSyncFace=");
+        ((StringBuilder)localObject1).append(((GroupIconHelper.GroupIconInfo)localObject3).jdField_b_of_type_Boolean);
+        ((StringBuilder)localObject1).append(", faceUinSet=");
+        ((StringBuilder)localObject1).append(((GroupIconHelper.GroupIconInfo)localObject3).jdField_a_of_type_JavaLangString);
+        QLog.d("Q.qqhead.dih", 2, ((StringBuilder)localObject1).toString());
+      }
+      a((GroupIconHelper.GroupIconInfo)localObject3, localQQAppInterface);
+      if ((((GroupIconHelper.GroupIconInfo)localObject3).jdField_a_of_type_Byte == 2) && (((GroupIconHelper.GroupIconInfo)localObject3).jdField_b_of_type_JavaLangString != null))
+      {
+        localObject1 = GroupIconHelper.a(((GroupIconHelper.GroupIconInfo)localObject3).jdField_a_of_type_JavaUtilArrayList, false);
+        if (((GroupIconHelper.GroupIconInfo)localObject3).jdField_b_of_type_JavaLangString.equals(localObject1)) {
+          return;
+        }
+      }
+      a((GroupIconHelper.GroupIconInfo)localObject3, ((GroupIconHelper.GroupIconInfo)localObject3).jdField_a_of_type_JavaUtilArrayList.size());
+      return;
+    }
+    finally
+    {
+      label324:
+      break label324;
+    }
+    throw ((Throwable)localObject1);
+    a((GroupIconHelper.GroupIconInfo)localObject1);
   }
   
   public void run()
@@ -217,7 +252,7 @@ class GroupIconHelper$GenerateIconRunner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.GroupIconHelper.GenerateIconRunner
  * JD-Core Version:    0.7.0.1
  */

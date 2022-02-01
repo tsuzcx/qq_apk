@@ -7,7 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.ConstantState;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.StateListDrawable;
-import com.tencent.widget.ThemeImageWrapper;
+import com.tencent.mobileqq.utils.QQTheme;
 
 class ShareActionSheetV2$ActionSheetItemAdapter$IconFactory
 {
@@ -17,12 +17,14 @@ class ShareActionSheetV2$ActionSheetItemAdapter$IconFactory
   ShareActionSheetV2$ActionSheetItemAdapter$IconFactory(Context paramContext)
   {
     paramContext = paramContext.getResources();
-    int i = 2130837561;
-    if (ThemeImageWrapper.isNightMode()) {
-      i = 2130837560;
+    int i;
+    if (QQTheme.a()) {
+      i = 2130837647;
+    } else {
+      i = 2130837648;
     }
     this.a = paramContext.getDrawable(i);
-    this.b = paramContext.getDrawable(2130837565);
+    this.b = paramContext.getDrawable(2130837652);
   }
   
   private Drawable a(Drawable paramDrawable)
@@ -54,7 +56,7 @@ class ShareActionSheetV2$ActionSheetItemAdapter$IconFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.share.ShareActionSheetV2.ActionSheetItemAdapter.IconFactory
  * JD-Core Version:    0.7.0.1
  */

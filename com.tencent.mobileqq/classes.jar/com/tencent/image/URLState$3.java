@@ -15,7 +15,11 @@ class URLState$3
   {
     super.onFileDownloadFailed(paramInt);
     this.val$handler.onFileDownloadFailed(paramInt);
-    URLState.access$000(this.this$0, new HttpException(" http error code " + paramInt));
+    URLState localURLState = this.this$0;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" http error code ");
+    localStringBuilder.append(paramInt);
+    URLState.access$000(localURLState, new HttpException(localStringBuilder.toString()));
   }
   
   public void onFileDownloadSucceed(long paramLong)
@@ -47,7 +51,7 @@ class URLState$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.image.URLState.3
  * JD-Core Version:    0.7.0.1
  */

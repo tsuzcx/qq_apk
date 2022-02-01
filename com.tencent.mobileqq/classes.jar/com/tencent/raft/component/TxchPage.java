@@ -39,31 +39,28 @@ public class TxchPage
     Field[] arrayOfField = getClass().getFields();
     int j = arrayOfField.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i < j)
+      Field localField = arrayOfField[i];
+      try
       {
-        Field localField = arrayOfField[i];
-        try
-        {
-          localStringBuffer.append(localField.getName()).append("=").append(localField.get(this)).append(",");
-          i += 1;
-        }
-        catch (IllegalAccessException localIllegalAccessException)
-        {
-          for (;;)
-          {
-            localIllegalAccessException.printStackTrace();
-          }
-        }
+        localStringBuffer.append(localField.getName());
+        localStringBuffer.append("=");
+        localStringBuffer.append(localField.get(this));
+        localStringBuffer.append(",");
       }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        localIllegalAccessException.printStackTrace();
+      }
+      i += 1;
     }
     return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.raft.component.TxchPage
  * JD-Core Version:    0.7.0.1
  */

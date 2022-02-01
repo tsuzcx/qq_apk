@@ -14,11 +14,12 @@ public class HealthUiPlugin
   
   protected boolean excuteEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (paramLong != 16L) {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    ThreadManager.post(new HealthUiPlugin.1(this, paramString), 5, null, false);
+    if (paramLong == 16L) {
+      ThreadManager.post(new HealthUiPlugin.1(this, paramString), 5, null, false);
+    }
     return false;
   }
   
@@ -34,7 +35,7 @@ public class HealthUiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.HealthUiPlugin
  * JD-Core Version:    0.7.0.1
  */

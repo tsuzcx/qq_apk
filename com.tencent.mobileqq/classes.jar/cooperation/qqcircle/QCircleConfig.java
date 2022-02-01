@@ -12,9 +12,9 @@ import com.tencent.biz.richframework.download.RFWDownloader.RFWDownloadListener;
 import com.tencent.biz.richframework.download.RFWDownloaderFactory;
 import com.tencent.biz.richframework.network.VSNetworkHelper;
 import com.tencent.biz.richframework.network.request.BaseRequest;
+import com.tencent.common.config.provider.QZConfigProviderUtil;
 import com.tencent.mobileqq.qcircle.api.impl.QCircleServiceImpl;
 import com.tencent.mobileqq.qcircle.api.requests.QCircleSetCircleSwitchRequest;
-import com.tencent.mobileqq.qcircle.tempapi.api.IQZoneService;
 import com.tencent.mobileqq.studymode.api.IStudyModeManager;
 import com.tencent.qcircle.cooperation.config.download.QCircleDownloadConfig;
 import com.tencent.qphone.base.util.QLog;
@@ -25,7 +25,7 @@ import mqq.app.MobileQQ;
 public class QCircleConfig
 {
   private static final String TAG = "QCircleConfig";
-  private static volatile Uri mSplashVideoPath = null;
+  private static volatile Uri mSplashVideoPath;
   private static volatile QCircleConfig sInstance;
   private final QCircleConfigImpl mConfigImpl = new QCircleConfigImpl();
   private int mFuelCount = -1;
@@ -37,39 +37,41 @@ public class QCircleConfig
   
   public static QCircleConfig getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new QCircleConfig();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new QCircleConfig();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public static SharedPreferences getQCircleMultiProcessSp()
   {
     String str = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
-    str = "sp_qqcirlce_business" + str;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("sp_qqcirlce_business");
+    localStringBuilder.append(str);
+    str = localStringBuilder.toString();
     return MobileQQ.sMobileQQ.getSharedPreferences(str, 4);
   }
   
   public static SharedPreferences getQCircleSp()
   {
     String str = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
-    str = "sp_qqcirlce_business" + str;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("sp_qqcirlce_business");
+    localStringBuilder.append(str);
+    str = localStringBuilder.toString();
     return MobileQQ.sMobileQQ.getSharedPreferences(str, 0);
   }
   
   public static long getQQCircleFollowTabUpdateNotificationShowInterval()
   {
     return getInstance().getConfigValue("qqcircle", "qqcircle_follow_tab_reddot_show_interval", Integer.valueOf(15)).intValue();
-  }
-  
-  public static long getQQCircleGetFollowUserInternal()
-  {
-    return getInstance().getConfigValue("qqcircle", "qqcircle_getfollowuser_internal", Long.valueOf(43200000L)).longValue();
   }
   
   public static int getQQCircleQualityReportBufferLength()
@@ -99,8 +101,9 @@ public class QCircleConfig
   
   public static boolean getQQCircleReportOutboxSwitchOpen()
   {
+    QCircleConfig localQCircleConfig = getInstance();
     boolean bool = false;
-    if (getInstance().getConfigValue("qqcircle", "qqcircle_report_outbox_switch", Integer.valueOf(0)).intValue() == 0) {
+    if (localQCircleConfig.getConfigValue("qqcircle", "qqcircle_report_outbox_switch", Integer.valueOf(0)).intValue() == 0) {
       bool = true;
     }
     return bool;
@@ -131,8 +134,9 @@ public class QCircleConfig
   
   private int getWidthPixels()
   {
-    if (this.mWidthPixels > 0) {
-      return this.mWidthPixels;
+    int i = this.mWidthPixels;
+    if (i > 0) {
+      return i;
     }
     this.mWidthPixels = MobileQQ.sMobileQQ.waitAppRuntime(null).getApplication().getResources().getDisplayMetrics().widthPixels;
     return this.mWidthPixels;
@@ -140,61 +144,57 @@ public class QCircleConfig
   
   public static boolean isQCirclePluginDisable()
   {
-    int i = getInstance().getConfigValue("qqcircle", "qqcircle_disable_qcircle_plugin", Integer.valueOf(0)).intValue();
+    Object localObject = getInstance();
+    boolean bool = false;
+    int i = ((QCircleConfig)localObject).getConfigValue("qqcircle", "qqcircle_disable_qcircle_plugin", Integer.valueOf(0)).intValue();
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QCircleConfig", 1, "SECONDARY_QQCIRCLE_DISABLE_PLUGIN:" + i);
-      }
-      if (i == 1) {
-        return true;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("SECONDARY_QQCIRCLE_DISABLE_PLUGIN:");
+        ((StringBuilder)localObject).append(i);
+        QLog.e("QCircleConfig", 1, ((StringBuilder)localObject).toString());
       }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
-    return false;
+    if (i == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean isQQCircleUseEeveeRedPoint()
   {
-    IQZoneService localIQZoneService = QCircleServiceImpl.getQZoneService();
-    if (localIQZoneService == null) {
-      return true;
-    }
-    return "1".equals(localIQZoneService.getHighPriorityConfig("qqcircle", "qqcircle_use_eevee_red_point", "1"));
+    return "1".equals(QZConfigProviderUtil.a("qqcircle", "qqcircle_use_eevee_red_point", "1"));
   }
   
   public static boolean isShowQQCircleMainTabEntrance()
   {
+    boolean bool = QCircleServiceImpl.getStudyModeMgr().getStudyModeSwitch();
+    Object localObject = Integer.valueOf(0);
     int i;
-    if (QCircleServiceImpl.getStudyModeMgr().getStudyModeSwitch()) {
-      i = getInstance().getConfigValue("qqcircle", "qqcircle_show_entrance_on_main_tab_on_children_mode", Integer.valueOf(0)).intValue();
+    if (bool) {
+      i = getInstance().getConfigValue("qqcircle", "qqcircle_show_entrance_on_main_tab_on_children_mode", (Integer)localObject).intValue();
+    } else {
+      i = getInstance().getConfigValue("qqcircle", "qqcircle_show_entrance_on_main_tab", (Integer)localObject).intValue();
     }
     try
     {
-      for (;;)
-      {
-        RFLog.e("QCircleConfig", RFLog.USR, "initQCircleTab isQQCircleMainTabEntrance:" + i);
-        if (i != 1) {
-          break;
-        }
-        return true;
-        i = getInstance().getConfigValue("qqcircle", "qqcircle_show_entrance_on_main_tab", Integer.valueOf(0)).intValue();
-      }
+      int j = RFLog.USR;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("initQCircleTab isQQCircleMainTabEntrance:");
+      ((StringBuilder)localObject).append(i);
+      RFLog.e("QCircleConfig", j, ((StringBuilder)localObject).toString());
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
-    return false;
+    return i == 1;
   }
   
   public static void release()
@@ -208,51 +208,47 @@ public class QCircleConfig
     int i = getInstance().getConfigValue("qqcircle", "qqcircle_use_okhppt_download_pic", Integer.valueOf(1)).intValue();
     try
     {
-      if (RFLog.isColorLevel()) {
-        RFLog.e("QCircleConfig", RFLog.USR, "useOkHttp downloadpic:" + i);
-      }
-      if (i == 1) {
-        return true;
+      if (RFLog.isColorLevel())
+      {
+        int j = RFLog.USR;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("useOkHttp downloadpic:");
+        localStringBuilder.append(i);
+        RFLog.e("QCircleConfig", j, localStringBuilder.toString());
       }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
-    return false;
+    return i == 1;
   }
   
   public boolean checkNeedShowDetailKuolieStickGuideBubble()
   {
-    boolean bool = true;
     SharedPreferences localSharedPreferences = getQCircleSp();
     if (localSharedPreferences != null) {
-      bool = localSharedPreferences.getBoolean("qcircle_detail_kuolie_stick_guide_bubble", true);
+      return localSharedPreferences.getBoolean("qcircle_detail_kuolie_stick_guide_bubble", true);
     }
-    return bool;
+    return true;
   }
   
   public boolean checkNeedShowKuolieStickGuideBubble()
   {
-    boolean bool = true;
     SharedPreferences localSharedPreferences = getQCircleSp();
     if (localSharedPreferences != null) {
-      bool = localSharedPreferences.getBoolean("qcircle_show_kuolie_stick_bubble", true);
+      return localSharedPreferences.getBoolean("qcircle_show_kuolie_stick_bubble", true);
     }
-    return bool;
+    return true;
   }
   
   public boolean checkNeedShowSplash()
   {
-    boolean bool = true;
     SharedPreferences localSharedPreferences = getQCircleSp();
     if (localSharedPreferences != null) {
-      bool = localSharedPreferences.getBoolean("show_splash_switch", true);
+      return localSharedPreferences.getBoolean("show_splash_switch", true);
     }
-    return bool;
+    return true;
   }
   
   public Boolean getConfigValue(String paramString1, String paramString2, Boolean paramBoolean)
@@ -287,24 +283,15 @@ public class QCircleConfig
   
   public int getFuleCount()
   {
-    if (this.mFuelCount != -1) {
-      return this.mFuelCount;
+    int i = this.mFuelCount;
+    if (i != -1) {
+      return i;
     }
     SharedPreferences localSharedPreferences = getQCircleSp();
     if (localSharedPreferences != null) {
       return localSharedPreferences.getInt("qcircle_fuel_count", 2147483647);
     }
     return 0;
-  }
-  
-  public String getNeedClientReportSuccessRateCmd()
-  {
-    String str = null;
-    SharedPreferences localSharedPreferences = getQCircleSp();
-    if (localSharedPreferences != null) {
-      str = localSharedPreferences.getString("qcircle_need_client_report_success_rate_cmd", null);
-    }
-    return str;
   }
   
   public boolean getNeedShowSplash()
@@ -334,80 +321,101 @@ public class QCircleConfig
   
   public boolean isEeveeSysTemPolling()
   {
-    if (QCircleServiceImpl.getQZoneService() == null) {
-      return false;
-    }
-    String str = QCircleServiceImpl.getQZoneService().getHighPriorityConfig("qqcircle", "qqcircle_enable_eevee_polling", "1");
+    String str = QZConfigProviderUtil.a("qqcircle", "qqcircle_enable_eevee_polling", "1");
     try
     {
-      if (RFLog.isColorLevel()) {
-        RFLog.e("QCircleConfig", RFLog.USR, "isEeveeSysTemPolling:" + str);
+      if (RFLog.isColorLevel())
+      {
+        int i = RFLog.USR;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isEeveeSysTemPolling:");
+        localStringBuilder.append(str);
+        RFLog.e("QCircleConfig", i, localStringBuilder.toString());
       }
-      return "1".equals(str);
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
+    return "1".equals(str);
   }
   
   public boolean isNeedShowPublishGuideBubble()
   {
-    boolean bool = false;
-    SharedPreferences localSharedPreferences = getQCircleMultiProcessSp();
-    if (localSharedPreferences != null) {
-      bool = localSharedPreferences.getBoolean("qcircle_show_publish_feed_guide_bubble_v2", true);
+    Object localObject = getQCircleMultiProcessSp();
+    boolean bool;
+    if (localObject != null) {
+      bool = ((SharedPreferences)localObject).getBoolean("qcircle_show_publish_feed_guide_bubble_v2", true);
+    } else {
+      bool = false;
     }
-    if (RFLog.isColorLevel()) {
-      RFLog.d("QCircleConfig", RFLog.USR, "isNeedShowPublishGuideBubble: " + bool);
+    if (RFLog.isColorLevel())
+    {
+      int i = RFLog.USR;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isNeedShowPublishGuideBubble: ");
+      ((StringBuilder)localObject).append(bool);
+      RFLog.d("QCircleConfig", i, ((StringBuilder)localObject).toString());
     }
     return bool;
   }
   
   public boolean isNeedShowPublishLabelGuideBubble()
   {
-    boolean bool = false;
-    SharedPreferences localSharedPreferences = getQCircleMultiProcessSp();
-    if (localSharedPreferences != null) {
-      bool = localSharedPreferences.getBoolean("qcircle_show_publish_label_guide_bubble", true);
+    Object localObject = getQCircleMultiProcessSp();
+    boolean bool;
+    if (localObject != null) {
+      bool = ((SharedPreferences)localObject).getBoolean("qcircle_show_publish_label_guide_bubble", true);
+    } else {
+      bool = false;
     }
-    if (RFLog.isColorLevel()) {
-      RFLog.d("QCircleConfig", RFLog.USR, "isNeedShowPublishLabelGuideBubble: " + bool);
+    if (RFLog.isColorLevel())
+    {
+      int i = RFLog.USR;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isNeedShowPublishLabelGuideBubble: ");
+      ((StringBuilder)localObject).append(bool);
+      RFLog.d("QCircleConfig", i, ((StringBuilder)localObject).toString());
     }
     return bool;
   }
   
   public boolean isQQCircleShowLebaEntrance()
   {
+    boolean bool2 = false;
     int i = getConfigValue("qqcircle", "qqcircle_show_entrance_on_recommend_tab", Integer.valueOf(0)).intValue();
     try
     {
-      RFLog.e("QCircleConfig", RFLog.USR, "isQQCircleShowLebaEntrance:" + i);
-      if ((i == 1) && (!isShowQQCircleMainTabEntrance())) {
-        return true;
-      }
+      int j = RFLog.USR;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isQQCircleShowLebaEntrance:");
+      localStringBuilder.append(i);
+      RFLog.e("QCircleConfig", j, localStringBuilder.toString());
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
+      localException.printStackTrace();
+    }
+    boolean bool1 = bool2;
+    if (i == 1)
+    {
+      bool1 = bool2;
+      if (!isShowQQCircleMainTabEntrance()) {
+        bool1 = true;
       }
     }
-    return false;
+    return bool1;
   }
   
   public void preloadSplash()
   {
-    if ((checkNeedShowSplash()) && ("1".equals(getInstance().getConfigValue("qqcircle", "qqcircle_splash_enable", "1")))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.mNeedShowSplash = bool;
-      return;
+    boolean bool;
+    if ((checkNeedShowSplash()) && ("1".equals(getInstance().getConfigValue("qqcircle", "qqcircle_splash_enable", "1")))) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.mNeedShowSplash = bool;
   }
   
   public void saveFuleCount(int paramInt)
@@ -445,23 +453,33 @@ public class QCircleConfig
   
   public void setNeedShowPublishGuideBubble(boolean paramBoolean)
   {
-    SharedPreferences localSharedPreferences = getQCircleMultiProcessSp();
-    if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putBoolean("qcircle_show_publish_feed_guide_bubble_v2", paramBoolean).apply();
+    Object localObject = getQCircleMultiProcessSp();
+    if (localObject != null) {
+      ((SharedPreferences)localObject).edit().putBoolean("qcircle_show_publish_feed_guide_bubble_v2", paramBoolean).apply();
     }
-    if (RFLog.isColorLevel()) {
-      RFLog.d("QCircleConfig", RFLog.USR, "setNeedShowPublishGuideBubble: " + paramBoolean);
+    if (RFLog.isColorLevel())
+    {
+      int i = RFLog.USR;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setNeedShowPublishGuideBubble: ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      RFLog.d("QCircleConfig", i, ((StringBuilder)localObject).toString());
     }
   }
   
   public void setNeedShowPublishLabelGuideBubble(boolean paramBoolean)
   {
-    SharedPreferences localSharedPreferences = getQCircleMultiProcessSp();
-    if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putBoolean("qcircle_show_publish_label_guide_bubble", paramBoolean).apply();
+    Object localObject = getQCircleMultiProcessSp();
+    if (localObject != null) {
+      ((SharedPreferences)localObject).edit().putBoolean("qcircle_show_publish_label_guide_bubble", paramBoolean).apply();
     }
-    if (RFLog.isColorLevel()) {
-      RFLog.d("QCircleConfig", RFLog.USR, "setNeedShowPublishLabelGuideBubble: " + paramBoolean);
+    if (RFLog.isColorLevel())
+    {
+      int i = RFLog.USR;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setNeedShowPublishLabelGuideBubble: ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      RFLog.d("QCircleConfig", i, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -479,21 +497,25 @@ public class QCircleConfig
   public void tryGetSplashVideoAsync()
   {
     int i = RFLog.USR;
-    StringBuilder localStringBuilder = new StringBuilder().append("tryGetSplashVideoAsync ");
-    if (mSplashVideoPath != null) {}
-    for (boolean bool = true;; bool = false)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("tryGetSplashVideoAsync ");
+    boolean bool;
+    if (mSplashVideoPath != null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localStringBuilder.append(bool);
+    RFLog.d("QCircleConfig", i, localStringBuilder.toString());
+    try
     {
-      RFLog.d("QCircleConfig", i, bool);
-      try
-      {
-        this.mGetFileListener = new QCircleConfig.1(this);
-        RFWDownloaderFactory.getDownloader(QCircleDownloadConfig.a()).download(getSlashVideoUrl(), this.mGetFileListener);
-        return;
-      }
-      catch (Exception localException)
-      {
-        RFLog.e("QCircleConfig", RFLog.USR, new Object[] { "tryGetSplashVideoAsync error:", localException });
-      }
+      this.mGetFileListener = new QCircleConfig.1(this);
+      RFWDownloaderFactory.getDownloader(QCircleDownloadConfig.a()).download(getSlashVideoUrl(), this.mGetFileListener);
+      return;
+    }
+    catch (Exception localException)
+    {
+      RFLog.e("QCircleConfig", RFLog.USR, new Object[] { "tryGetSplashVideoAsync error:", localException });
     }
   }
   
@@ -504,7 +526,7 @@ public class QCircleConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.QCircleConfig
  * JD-Core Version:    0.7.0.1
  */

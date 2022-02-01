@@ -13,7 +13,14 @@ class SettingsJsPlugin$2
   
   public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    QMLog.d("SettingsJsPlugin", "doOnActivityResult requestCode=" + paramInt1 + ",resultCode=" + paramInt2 + ",data=" + paramIntent);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("doOnActivityResult requestCode=");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(",resultCode=");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(",data=");
+    localStringBuilder.append(paramIntent);
+    QMLog.d("SettingsJsPlugin", localStringBuilder.toString());
     if (paramInt1 == 5)
     {
       SettingsJsPlugin.access$200(this.this$0, this.val$req);
@@ -25,7 +32,7 @@ class SettingsJsPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.SettingsJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

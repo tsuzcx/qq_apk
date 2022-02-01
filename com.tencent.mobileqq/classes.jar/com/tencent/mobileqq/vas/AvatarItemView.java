@@ -14,14 +14,14 @@ public class AvatarItemView
   {
     super(paramContext);
     paramContext = new VasAvatar(paramContext);
-    paramContext.setLoader(null, new VasAvatarLoader(Login.a, -1, "small", 0L));
+    paramContext.setLoader(null, new VasAvatarLoader(Login.gAccount, -1, "small", 0L));
     paramContext.setScaleType(ImageView.ScaleType.CENTER_CROP);
     paramContext.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.AvatarItemView
  * JD-Core Version:    0.7.0.1
  */

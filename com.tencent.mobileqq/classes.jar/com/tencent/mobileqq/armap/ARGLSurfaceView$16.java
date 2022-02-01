@@ -7,12 +7,13 @@ class ARGLSurfaceView$16
   
   public void run()
   {
-    this.this$0.native_updateAzimuth(this.this$0.mEngineHandler, this.val$azimuth);
+    ARGLSurfaceView localARGLSurfaceView = this.this$0;
+    localARGLSurfaceView.native_updateAzimuth(localARGLSurfaceView.mEngineHandler, this.val$azimuth);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ARGLSurfaceView.16
  * JD-Core Version:    0.7.0.1
  */

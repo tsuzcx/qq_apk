@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
 import android.app.Activity;
-import android.content.Intent;
 import com.dataline.core.DirectForwarder;
 import com.dataline.util.DataLineReportUtil;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -23,7 +22,6 @@ import com.tencent.mobileqq.filemanager.fileviewer.controller.IUploadController;
 import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.filemanager.util.QFileUtils;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
@@ -45,7 +43,7 @@ public class DatalineFileModel
     a(paramList, paramInt);
   }
   
-  private void o()
+  private void p()
   {
     FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
     DataLineHandler localDataLineHandler = (DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
@@ -57,21 +55,18 @@ public class DatalineFileModel
     if (localDataLineMsgRecord.strMoloKey != null)
     {
       localDataLineHandler.b(111);
-      if (localDataLineMsgRecord.fileMsgStatus == 1L)
-      {
-        if (!DataLineMsgSet.isSingle(localDataLineMsgRecord)) {
-          break label188;
+      if (localDataLineMsgRecord.fileMsgStatus == 1L) {
+        if (DataLineMsgSet.isSingle(localDataLineMsgRecord)) {
+          DataLineReportUtil.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        } else {
+          DataLineReportUtil.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
         }
-        DataLineReportUtil.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       }
     }
-    for (;;)
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(Long.valueOf(localDataLineMsgRecord.sessionid));
+    if (localDataLineHandler.a(localArrayList))
     {
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(localDataLineMsgRecord.sessionid));
-      if (!localDataLineHandler.a(localArrayList)) {
-        break;
-      }
       localFileManagerEntity.status = 2;
       localDataLineMsgRecord.fileMsgStatus = 0L;
       if (Float.compare(localDataLineMsgRecord.progress, 1.0F) == 0) {
@@ -79,22 +74,18 @@ public class DatalineFileModel
       }
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).d(localDataLineMsgRecord.msgId);
       return;
-      label188:
-      DataLineReportUtil.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
-    FMToastUtil.a(2131693807);
+    FMToastUtil.a(2131693760);
   }
   
-  private void p()
+  private void q()
   {
     FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
-    DataLineHandler localDataLineHandler;
-    DataLineMsgRecord localDataLineMsgRecord;
     if ((localFileManagerEntity.getCloudType() == 6) && (localFileManagerEntity.peerDin == 0L))
     {
-      localDataLineHandler = (DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+      DataLineHandler localDataLineHandler = (DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
       int i = DataLineMsgRecord.getDevTypeBySeId(localFileManagerEntity.uniseq);
-      localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).a(localFileManagerEntity.uniseq);
+      DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).a(localFileManagerEntity.uniseq);
       if (localDataLineMsgRecord == null)
       {
         if (QLog.isColorLevel()) {
@@ -102,81 +93,65 @@ public class DatalineFileModel
         }
         return;
       }
-      if ((localDataLineMsgRecord.strMoloKey == null) || (!DataLineMsgSet.isSingle(localDataLineMsgRecord))) {
-        break label148;
-      }
-      if (!localDataLineMsgRecord.isReportPause)
+      if ((localDataLineMsgRecord.strMoloKey != null) && (DataLineMsgSet.isSingle(localDataLineMsgRecord)))
       {
-        localDataLineMsgRecord.isReportPause = true;
-        DataLineReportUtil.k(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        if (!localDataLineMsgRecord.isReportPause)
+        {
+          localDataLineMsgRecord.isReportPause = true;
+          DataLineReportUtil.k(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        }
       }
-    }
-    for (;;)
-    {
-      localDataLineHandler.a(localDataLineMsgRecord.groupId, localDataLineMsgRecord.sessionid, false);
-      localFileManagerEntity.status = 3;
-      return;
-      label148:
-      if ((!localDataLineMsgRecord.isReportPause) && (localDataLineMsgRecord.msgtype == -2335))
+      else if ((!localDataLineMsgRecord.isReportPause) && (localDataLineMsgRecord.msgtype == -2335))
       {
         localDataLineMsgRecord.isReportPause = true;
         DataLineReportUtil.m(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       }
+      localDataLineHandler.a(localDataLineMsgRecord.groupId, localDataLineMsgRecord.sessionid, false);
     }
+    localFileManagerEntity.status = 3;
   }
   
-  private void q()
+  private void r()
   {
-    if (!NetworkUtil.d(this.jdField_a_of_type_AndroidAppActivity)) {
-      FMToastUtil.a(2131692602);
+    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_AndroidAppActivity))
+    {
+      FMToastUtil.a(2131692554);
+      return;
     }
-    Object localObject;
-    DataLineHandler localDataLineHandler;
-    int i;
-    do
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    DataLineHandler localDataLineHandler = (DataLineHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+    int i = DataLineMsgRecord.getDevTypeBySeId(((FileManagerEntity)localObject).uniseq);
+    localObject = localQQAppInterface.getMessageFacade().a(i).a(((FileManagerEntity)localObject).uniseq);
+    if (localObject != null)
     {
-      return;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
-      localDataLineHandler = (DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
-      i = DataLineMsgRecord.getDevTypeBySeId(((FileManagerEntity)localObject).uniseq);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().getMessageFacade().a(i).a(((FileManagerEntity)localObject).uniseq);
-    } while ((localObject == null) || (f() != 6000));
-    ((DataLineMsgRecord)localObject).bIsResendOrRecvFile = true;
-    switch (e())
-    {
-    default: 
-      return;
-    case -1: 
-    case 1: 
-    case 3: 
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-    case 8: 
-    case 9: 
-    case 10: 
-    case 11: 
-    case 12: 
-      if (FileUtils.a(d()))
+      if (f() != 6000) {
+        return;
+      }
+      ((DataLineMsgRecord)localObject).bIsResendOrRecvFile = true;
+      switch (e())
+      {
+      default: 
+        return;
+      case 2: 
+        localDataLineHandler.a(d(), ((DataLineMsgRecord)localObject).thumbPath, 2, ((DataLineMsgRecord)localObject).sessionid, ((DataLineMsgRecord)localObject).groupId, ((DataLineMsgRecord)localObject).groupSize, ((DataLineMsgRecord)localObject).groupIndex, true);
+        return;
+      case 0: 
+        localDataLineHandler.a(d(), ((DataLineMsgRecord)localObject).thumbPath, 1, ((DataLineMsgRecord)localObject).sessionid, ((DataLineMsgRecord)localObject).groupId, ((DataLineMsgRecord)localObject).groupSize, ((DataLineMsgRecord)localObject).groupIndex, true);
+        return;
+      }
+      if (FileUtils.fileExists(d()))
       {
         localDataLineHandler.a(d(), ((DataLineMsgRecord)localObject).thumbPath, 0, ((DataLineMsgRecord)localObject).sessionid, ((DataLineMsgRecord)localObject).groupId, ((DataLineMsgRecord)localObject).groupSize, ((DataLineMsgRecord)localObject).groupIndex, true);
         return;
       }
-      break;
-    case 0: 
-      localDataLineHandler.a(d(), ((DataLineMsgRecord)localObject).thumbPath, 1, ((DataLineMsgRecord)localObject).sessionid, ((DataLineMsgRecord)localObject).groupId, ((DataLineMsgRecord)localObject).groupSize, ((DataLineMsgRecord)localObject).groupIndex, true);
-      return;
-    case 2: 
-      localDataLineHandler.a(d(), ((DataLineMsgRecord)localObject).thumbPath, 2, ((DataLineMsgRecord)localObject).sessionid, ((DataLineMsgRecord)localObject).groupId, ((DataLineMsgRecord)localObject).groupSize, ((DataLineMsgRecord)localObject).groupIndex, true);
-      return;
+      if (((DataLineMsgRecord)localObject).nOpType == 35)
+      {
+        localDataLineHandler.b((DataLineMsgRecord)localObject);
+        return;
+      }
+      localDataLineHandler.a().a((DataLineMsgRecord)localObject, i, 2);
     }
-    if (((DataLineMsgRecord)localObject).nOpType == 35)
-    {
-      localDataLineHandler.b((DataLineMsgRecord)localObject);
-      return;
-    }
-    localDataLineHandler.a().a((DataLineMsgRecord)localObject, i, 2);
   }
   
   public int a()
@@ -186,28 +161,17 @@ public class DatalineFileModel
     if (j != 0) {
       return j;
     }
-    switch (i)
-    {
-    default: 
+    if (i != 0) {
       return 1;
     }
     return 6;
-  }
-  
-  public Intent a()
-  {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
-    if (localFileManagerEntity == null) {
-      return null;
-    }
-    return QFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, localFileManagerEntity);
   }
   
   public IServiceInfo a()
   {
     FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
     int i = DataLineMsgRecord.getDevTypeBySeId(localFileManagerEntity.uniseq);
-    return new DatalineFileColorNoteServiceInfo(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().getMessageFacade().a(i).a(localFileManagerEntity.uniseq));
+    return new DatalineFileColorNoteServiceInfo(((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getMessageFacade().a(i).a(localFileManagerEntity.uniseq));
   }
   
   public IDownloadController a()
@@ -246,7 +210,7 @@ public class DatalineFileModel
   public ArrayList<ShareActionSheetBuilder.ActionSheetItem>[] a()
   {
     ArrayList[] arrayOfArrayList = super.a();
-    if (!FileUtil.b(d())) {
+    if (!FileUtil.a(d())) {
       arrayOfArrayList = null;
     }
     return arrayOfArrayList;
@@ -266,47 +230,52 @@ public class DatalineFileModel
   
   public int d()
   {
-    if (FileManagerUtil.b(d())) {
+    if (FileManagerUtil.a(d())) {
       return 3;
     }
     return super.d();
   }
   
+  public void d()
+  {
+    int i = g();
+    if (f() == 6000)
+    {
+      if (i == 0)
+      {
+        if (h() == 2) {
+          p();
+        } else {
+          r();
+        }
+      }
+      else {
+        p();
+      }
+    }
+    else if (QLog.isColorLevel()) {
+      QLog.i("DatalineFileModel<FileAssistant>", 2, "DatalineFileModel doStartDownload : error, this file is not from dataline");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener.d();
+    }
+  }
+  
   public String h()
   {
-    String str2 = super.h();
+    String str = super.h();
     int i = i();
-    String str1;
     if (i == 5) {
-      str1 = "";
+      return "";
     }
-    FileManagerEntity localFileManagerEntity;
-    do
+    if (((i == 0) || (i == 6)) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter != null))
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return str1;
-              if (i == 0) {
-                break;
-              }
-              str1 = str2;
-            } while (i != 6);
-            str1 = str2;
-          } while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter == null);
-          localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
-          str1 = str2;
-        } while (localFileManagerEntity == null);
-        str1 = str2;
-      } while (FileManagerUtil.c(localFileManagerEntity.getFilePath()));
-      str1 = str2;
-    } while (!FileManagerUtil.b(localFileManagerEntity));
-    return "";
+      FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
+      if ((localFileManagerEntity != null) && (!FileManagerUtil.b(localFileManagerEntity.getFilePath())) && (FileManagerUtil.b(localFileManagerEntity))) {
+        return "";
+      }
+    }
+    return str;
   }
   
   public int i()
@@ -328,7 +297,7 @@ public class DatalineFileModel
         if (localFileManagerEntity != null)
         {
           i = j;
-          if (!FileManagerUtil.c(localFileManagerEntity.getFilePath()))
+          if (!FileManagerUtil.b(localFileManagerEntity.getFilePath()))
           {
             i = j;
             if (FileManagerUtil.b(localFileManagerEntity)) {
@@ -351,35 +320,31 @@ public class DatalineFileModel
   
   public int j()
   {
-    int j = 2;
     int i = e();
-    if ((i != 0) && (i != 2) && (i != 13)) {}
-    for (i = 1;; i = 0)
+    if ((i != 0) && (i != 2) && (i != 13)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i == 0) {
+      return 0;
+    }
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
+    if ((localFileManagerEntity != null) && (localFileManagerEntity.uniseq != 0L))
     {
-      if (i == 0) {
-        return 0;
+      if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser != null) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.e())) {
+        return 2;
       }
-      FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
-      if ((localFileManagerEntity != null) && (localFileManagerEntity.uniseq != 0L)) {
-        if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser != null) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.e())) {
-          i = j;
-        }
-      }
-      for (;;)
-      {
-        return i;
-        if (i != 0) {
-          i = 1;
-        } else {
-          i = 0;
-        }
+      if (i != 0) {
+        return 1;
       }
     }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.DatalineFileModel
  * JD-Core Version:    0.7.0.1
  */

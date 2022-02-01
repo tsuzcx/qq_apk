@@ -34,25 +34,26 @@ public final class GsonBuilder
   
   private void addTypeAdaptersForDate(String paramString, int paramInt1, int paramInt2, List<TypeAdapterFactory> paramList)
   {
-    DefaultDateTypeAdapter localDefaultDateTypeAdapter2;
     DefaultDateTypeAdapter localDefaultDateTypeAdapter1;
+    DefaultDateTypeAdapter localDefaultDateTypeAdapter2;
     if ((paramString != null) && (!"".equals(paramString.trim())))
     {
-      localDefaultDateTypeAdapter2 = new DefaultDateTypeAdapter(java.util.Date.class, paramString);
-      localDefaultDateTypeAdapter1 = new DefaultDateTypeAdapter(Timestamp.class, paramString);
+      localDefaultDateTypeAdapter1 = new DefaultDateTypeAdapter(java.util.Date.class, paramString);
+      localDefaultDateTypeAdapter2 = new DefaultDateTypeAdapter(Timestamp.class, paramString);
+      paramString = new DefaultDateTypeAdapter(java.sql.Date.class, paramString);
     }
-    for (paramString = new DefaultDateTypeAdapter(java.sql.Date.class, paramString);; paramString = new DefaultDateTypeAdapter(java.sql.Date.class, paramInt1, paramInt2))
+    else
     {
-      paramList.add(TypeAdapters.newFactory(java.util.Date.class, localDefaultDateTypeAdapter2));
-      paramList.add(TypeAdapters.newFactory(Timestamp.class, localDefaultDateTypeAdapter1));
-      paramList.add(TypeAdapters.newFactory(java.sql.Date.class, paramString));
-      do
-      {
+      if ((paramInt1 == 2) || (paramInt2 == 2)) {
         return;
-      } while ((paramInt1 == 2) || (paramInt2 == 2));
-      localDefaultDateTypeAdapter2 = new DefaultDateTypeAdapter(java.util.Date.class, paramInt1, paramInt2);
-      localDefaultDateTypeAdapter1 = new DefaultDateTypeAdapter(Timestamp.class, paramInt1, paramInt2);
+      }
+      localDefaultDateTypeAdapter1 = new DefaultDateTypeAdapter(java.util.Date.class, paramInt1, paramInt2);
+      localDefaultDateTypeAdapter2 = new DefaultDateTypeAdapter(Timestamp.class, paramInt1, paramInt2);
+      paramString = new DefaultDateTypeAdapter(java.sql.Date.class, paramInt1, paramInt2);
     }
+    paramList.add(TypeAdapters.newFactory(java.util.Date.class, localDefaultDateTypeAdapter1));
+    paramList.add(TypeAdapters.newFactory(Timestamp.class, localDefaultDateTypeAdapter2));
+    paramList.add(TypeAdapters.newFactory(java.sql.Date.class, paramString));
   }
   
   public GsonBuilder addDeserializationExclusionStrategy(ExclusionStrategy paramExclusionStrategy)
@@ -117,23 +118,26 @@ public final class GsonBuilder
   
   public GsonBuilder registerTypeAdapter(Type paramType, Object paramObject)
   {
-    if (((paramObject instanceof JsonSerializer)) || ((paramObject instanceof JsonDeserializer)) || ((paramObject instanceof InstanceCreator)) || ((paramObject instanceof TypeAdapter))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      .Gson.Preconditions.checkArgument(bool);
-      if ((paramObject instanceof InstanceCreator)) {
-        this.instanceCreators.put(paramType, (InstanceCreator)paramObject);
-      }
-      if (((paramObject instanceof JsonSerializer)) || ((paramObject instanceof JsonDeserializer)))
-      {
-        TypeToken localTypeToken = TypeToken.get(paramType);
-        this.factories.add(TreeTypeAdapter.newFactoryWithMatchRawType(localTypeToken, paramObject));
-      }
-      if ((paramObject instanceof TypeAdapter)) {
-        this.factories.add(TypeAdapters.newFactory(TypeToken.get(paramType), (TypeAdapter)paramObject));
-      }
-      return this;
+    boolean bool2 = paramObject instanceof JsonSerializer;
+    boolean bool1;
+    if ((!bool2) && (!(paramObject instanceof JsonDeserializer)) && (!(paramObject instanceof InstanceCreator)) && (!(paramObject instanceof TypeAdapter))) {
+      bool1 = false;
+    } else {
+      bool1 = true;
     }
+    .Gson.Preconditions.checkArgument(bool1);
+    if ((paramObject instanceof InstanceCreator)) {
+      this.instanceCreators.put(paramType, (InstanceCreator)paramObject);
+    }
+    if ((bool2) || ((paramObject instanceof JsonDeserializer)))
+    {
+      TypeToken localTypeToken = TypeToken.get(paramType);
+      this.factories.add(TreeTypeAdapter.newFactoryWithMatchRawType(localTypeToken, paramObject));
+    }
+    if ((paramObject instanceof TypeAdapter)) {
+      this.factories.add(TypeAdapters.newFactory(TypeToken.get(paramType), (TypeAdapter)paramObject));
+    }
+    return this;
   }
   
   public GsonBuilder registerTypeAdapterFactory(TypeAdapterFactory paramTypeAdapterFactory)
@@ -144,18 +148,21 @@ public final class GsonBuilder
   
   public GsonBuilder registerTypeHierarchyAdapter(Class<?> paramClass, Object paramObject)
   {
-    if (((paramObject instanceof JsonSerializer)) || ((paramObject instanceof JsonDeserializer)) || ((paramObject instanceof TypeAdapter))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      .Gson.Preconditions.checkArgument(bool);
-      if (((paramObject instanceof JsonDeserializer)) || ((paramObject instanceof JsonSerializer))) {
-        this.hierarchyFactories.add(TreeTypeAdapter.newTypeHierarchyFactory(paramClass, paramObject));
-      }
-      if ((paramObject instanceof TypeAdapter)) {
-        this.factories.add(TypeAdapters.newTypeHierarchyFactory(paramClass, (TypeAdapter)paramObject));
-      }
-      return this;
+    boolean bool2 = paramObject instanceof JsonSerializer;
+    boolean bool1;
+    if ((!bool2) && (!(paramObject instanceof JsonDeserializer)) && (!(paramObject instanceof TypeAdapter))) {
+      bool1 = false;
+    } else {
+      bool1 = true;
     }
+    .Gson.Preconditions.checkArgument(bool1);
+    if (((paramObject instanceof JsonDeserializer)) || (bool2)) {
+      this.hierarchyFactories.add(TreeTypeAdapter.newTypeHierarchyFactory(paramClass, paramObject));
+    }
+    if ((paramObject instanceof TypeAdapter)) {
+      this.factories.add(TypeAdapters.newTypeHierarchyFactory(paramClass, (TypeAdapter)paramObject));
+    }
+    return this;
   }
   
   public GsonBuilder serializeNulls()
@@ -242,7 +249,7 @@ public final class GsonBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.GsonBuilder
  * JD-Core Version:    0.7.0.1
  */

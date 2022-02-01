@@ -16,17 +16,26 @@ public class LSRecordAnimations$TrackAlphaAnimation
   public void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
     super.applyTransformation(paramFloat, paramTransformation);
-    if ((this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener != null) && ((this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener instanceof LSRecordAnimations.LSRecordAnimationCallback))) {
-      ((LSRecordAnimations.LSRecordAnimationCallback)this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener).a(this, paramFloat);
+    paramTransformation = this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener;
+    if ((paramTransformation != null) && ((paramTransformation instanceof LSRecordAnimations.LSRecordAnimationCallback))) {
+      ((LSRecordAnimations.LSRecordAnimationCallback)paramTransformation).a(this, paramFloat);
     }
     float f = 0.0F;
-    if (this.jdField_a_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo != null)
+    paramTransformation = this.jdField_a_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo;
+    if (paramTransformation != null)
     {
-      f = this.jdField_a_of_type_Float + (this.b - this.jdField_a_of_type_Float) * paramFloat;
-      this.jdField_a_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo.b = f;
+      f = this.jdField_a_of_type_Float;
+      f += (this.b - f) * paramFloat;
+      paramTransformation.b = f;
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS applyTransformation: " + paramFloat + " Alpha: " + f);
+    if (QLog.isDevelopLevel())
+    {
+      paramTransformation = new StringBuilder();
+      paramTransformation.append("LS applyTransformation: ");
+      paramTransformation.append(paramFloat);
+      paramTransformation.append(" Alpha: ");
+      paramTransformation.append(f);
+      QLog.d("LsRecord", 4, paramTransformation.toString());
     }
   }
   
@@ -38,7 +47,7 @@ public class LSRecordAnimations$TrackAlphaAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.LSRecordAnimations.TrackAlphaAnimation
  * JD-Core Version:    0.7.0.1
  */

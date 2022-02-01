@@ -27,16 +27,17 @@ public class Common
   public static int calculateVolumn(int paramInt)
   {
     double d = 64.0D;
-    if (paramInt < 30) {
+    if (paramInt < 30)
+    {
       d = 0.0D;
     }
-    for (;;)
+    else if (paramInt <= 16383)
     {
-      return (int)d;
-      if (paramInt <= 16383) {
-        d = 64.0D * ((paramInt - 30.0D) / 12737.0D);
-      }
+      d = paramInt;
+      Double.isNaN(d);
+      d = 64.0D * ((d - 30.0D) / 12737.0D);
     }
+    return (int)d;
   }
   
   public static int calculateVolumn(byte[] paramArrayOfByte, int paramInt)
@@ -46,64 +47,59 @@ public class Common
   
   public static void saveFile(byte[] paramArrayOfByte, String paramString, boolean paramBoolean)
   {
-    if (paramArrayOfByte == null) {}
-    for (;;)
-    {
+    if (paramArrayOfByte == null) {
       return;
-      String str = Environment.getExternalStorageDirectory().getPath() + "/wxvoicerecord/";
-      Object localObject = new File(str);
-      if (!((File)localObject).exists()) {
-        ((File)localObject).mkdirs();
-      }
-      localObject = new Date();
-      StringBuilder localStringBuilder = new StringBuilder(String.valueOf(new SimpleDateFormat("yyyyMMddHHmmss").format((Date)localObject)));
-      if (paramBoolean)
-      {
-        localObject = "_success";
-        label93:
-        paramString = new File(str, (String)localObject + "." + paramString);
-        if (paramString.exists()) {}
-      }
+    }
+    Object localObject = new StringBuilder(String.valueOf(Environment.getExternalStorageDirectory().getPath()));
+    ((StringBuilder)localObject).append("/wxvoicerecord/");
+    String str = ((StringBuilder)localObject).toString();
+    localObject = new File(str);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdirs();
+    }
+    localObject = new Date();
+    StringBuilder localStringBuilder = new StringBuilder(String.valueOf(new SimpleDateFormat("yyyyMMddHHmmss").format((Date)localObject)));
+    if (paramBoolean) {
+      localObject = "_success";
+    } else {
+      localObject = "_fail";
+    }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramString);
+    localObject = new File(str, localStringBuilder.toString());
+    if (!((File)localObject).exists()) {
       try
       {
-        paramString.createNewFile();
+        ((File)localObject).createNewFile();
       }
-      catch (IOException localIOException)
+      catch (IOException paramString)
       {
-        try
-        {
-          for (;;)
-          {
-            paramString = new FileOutputStream(paramString);
-            if (paramString == null) {
-              break;
-            }
-            try
-            {
-              paramString.write(paramArrayOfByte, 0, paramArrayOfByte.length);
-              paramString.close();
-              return;
-            }
-            catch (IOException paramArrayOfByte)
-            {
-              paramArrayOfByte.printStackTrace();
-              return;
-            }
-            localObject = "_fail";
-            break label93;
-            localIOException = localIOException;
-            localIOException.printStackTrace();
-          }
-        }
-        catch (FileNotFoundException paramString)
-        {
-          for (;;)
-          {
-            paramString.printStackTrace();
-            paramString = null;
-          }
-        }
+        paramString.printStackTrace();
       }
+    }
+    paramString = null;
+    try
+    {
+      localObject = new FileOutputStream((File)localObject);
+      paramString = (String)localObject;
+    }
+    catch (FileNotFoundException localFileNotFoundException)
+    {
+      localFileNotFoundException.printStackTrace();
+    }
+    if (paramString == null) {
+      return;
+    }
+    try
+    {
+      paramString.write(paramArrayOfByte, 0, paramArrayOfByte.length);
+      paramString.close();
+      return;
+    }
+    catch (IOException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
     }
   }
 }

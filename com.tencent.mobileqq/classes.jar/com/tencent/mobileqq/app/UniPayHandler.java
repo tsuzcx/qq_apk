@@ -36,19 +36,24 @@ public class UniPayHandler
   
   public void a(UniPayHandler.UniPayUpdateListener paramUniPayUpdateListener)
   {
-    if (paramUniPayUpdateListener == null) {}
-    while (this.a.contains(paramUniPayUpdateListener)) {
+    if (paramUniPayUpdateListener == null) {
       return;
     }
-    this.a.add(paramUniPayUpdateListener);
+    if (!this.a.contains(paramUniPayUpdateListener)) {
+      this.a.add(paramUniPayUpdateListener);
+    }
   }
   
   public void a(String paramString)
   {
-    paramString = new UniPayRequest(this.appRuntime.getAccount(), "android" + paramString);
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.appRuntime.getAccount(), "VipSTCheckServer.UinPay");
-    localToServiceMsg.extraData.putSerializable("UniPayRequest", paramString);
-    super.send(localToServiceMsg);
+    Object localObject = this.appRuntime.getAccount();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("android");
+    localStringBuilder.append(paramString);
+    paramString = new UniPayRequest((String)localObject, localStringBuilder.toString());
+    localObject = new ToServiceMsg("mobileqq.service", this.appRuntime.getAccount(), "VipSTCheckServer.UinPay");
+    ((ToServiceMsg)localObject).extraData.putSerializable("UniPayRequest", paramString);
+    super.send((ToServiceMsg)localObject);
   }
   
   public void b(UniPayHandler.UniPayUpdateListener paramUniPayUpdateListener)
@@ -65,54 +70,79 @@ public class UniPayHandler
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null)) {}
-    do
+    if ((paramToServiceMsg != null) && (paramFromServiceMsg != null))
     {
-      do
-      {
+      if (paramObject == null) {
         return;
-        str1 = paramToServiceMsg.getServiceCmd();
-      } while (TextUtils.isEmpty(str1));
-      if ((str1.compareTo("VipSTCheckServer.UinPay") == 0) && (QLog.isColorLevel())) {
-        QLog.i("UniPayHandler", 2, "req---" + paramToServiceMsg + ",res----" + paramFromServiceMsg + ",data-----" + paramObject);
       }
-    } while (str1.compareTo("VipSTCheckServer.UinPay") != 0);
-    paramFromServiceMsg = (UniPayResponse)paramObject;
-    paramToServiceMsg = paramFromServiceMsg.getSUin();
-    int i = paramFromServiceMsg.getIShowOpen();
-    int j = paramFromServiceMsg.getIUniPayType();
-    new HashMap();
-    Object localObject = paramFromServiceMsg.getMapResponse();
-    paramFromServiceMsg = (String)((Map)localObject).get("cur_st");
-    paramObject = (String)((Map)localObject).get("net_mobile_club");
-    String str1 = (String)((Map)localObject).get("open_month");
-    String str2 = (String)((Map)localObject).get("platform");
-    String str3 = (String)((Map)localObject).get("ret");
-    String str4 = (String)((Map)localObject).get("show_open");
-    String str5 = (String)((Map)localObject).get("uin");
-    localObject = (String)((Map)localObject).get("uin_pay_type");
-    if (QLog.isColorLevel()) {
-      QLog.d("UniPayHandler", 2, "sUin==" + paramToServiceMsg + ",isShowOpen==" + i + ",iUniPayType==" + j);
+      String str1 = paramToServiceMsg.getServiceCmd();
+      if (TextUtils.isEmpty(str1)) {
+        return;
+      }
+      Object localObject1;
+      if ((str1.compareTo("VipSTCheckServer.UinPay") == 0) && (QLog.isColorLevel()))
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("req---");
+        ((StringBuilder)localObject1).append(paramToServiceMsg);
+        ((StringBuilder)localObject1).append(",res----");
+        ((StringBuilder)localObject1).append(paramFromServiceMsg);
+        ((StringBuilder)localObject1).append(",data-----");
+        ((StringBuilder)localObject1).append(paramObject);
+        QLog.i("UniPayHandler", 2, ((StringBuilder)localObject1).toString());
+      }
+      if (str1.compareTo("VipSTCheckServer.UinPay") == 0)
+      {
+        paramFromServiceMsg = (UniPayResponse)paramObject;
+        paramToServiceMsg = paramFromServiceMsg.getSUin();
+        int i = paramFromServiceMsg.getIShowOpen();
+        int j = paramFromServiceMsg.getIUniPayType();
+        new HashMap();
+        Object localObject2 = paramFromServiceMsg.getMapResponse();
+        paramFromServiceMsg = (String)((Map)localObject2).get("cur_st");
+        paramObject = (String)((Map)localObject2).get("net_mobile_club");
+        str1 = (String)((Map)localObject2).get("open_month");
+        localObject1 = (String)((Map)localObject2).get("platform");
+        String str2 = (String)((Map)localObject2).get("ret");
+        String str3 = (String)((Map)localObject2).get("show_open");
+        String str4 = (String)((Map)localObject2).get("uin");
+        localObject2 = (String)((Map)localObject2).get("uin_pay_type");
+        if (QLog.isColorLevel())
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("sUin==");
+          ((StringBuilder)localObject3).append(paramToServiceMsg);
+          ((StringBuilder)localObject3).append(",isShowOpen==");
+          ((StringBuilder)localObject3).append(i);
+          ((StringBuilder)localObject3).append(",iUniPayType==");
+          ((StringBuilder)localObject3).append(j);
+          QLog.d("UniPayHandler", 2, ((StringBuilder)localObject3).toString());
+        }
+        Object localObject3 = this.appRuntime.getApp();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("uniPaySp_");
+        localStringBuilder.append(paramToServiceMsg);
+        localObject3 = ((BaseApplication)localObject3).getSharedPreferences(localStringBuilder.toString(), 4).edit();
+        ((SharedPreferences.Editor)localObject3).putString("sUin", paramToServiceMsg);
+        ((SharedPreferences.Editor)localObject3).putInt("isShowOpen", i);
+        ((SharedPreferences.Editor)localObject3).putInt("iUinpPayType", j);
+        ((SharedPreferences.Editor)localObject3).putString("cur_st", paramFromServiceMsg);
+        ((SharedPreferences.Editor)localObject3).putString("net_mobile_club", paramObject);
+        ((SharedPreferences.Editor)localObject3).putString("open_month", str1);
+        ((SharedPreferences.Editor)localObject3).putString("platform", (String)localObject1);
+        ((SharedPreferences.Editor)localObject3).putString("ret", str2);
+        ((SharedPreferences.Editor)localObject3).putString("show_open", str3);
+        ((SharedPreferences.Editor)localObject3).putString("uin", str4);
+        ((SharedPreferences.Editor)localObject3).putString("uin_pay_type", (String)localObject2);
+        ((SharedPreferences.Editor)localObject3).commit();
+        a();
+      }
     }
-    SharedPreferences.Editor localEditor = this.appRuntime.getApp().getSharedPreferences("uniPaySp_" + paramToServiceMsg, 4).edit();
-    localEditor.putString("sUin", paramToServiceMsg);
-    localEditor.putInt("isShowOpen", i);
-    localEditor.putInt("iUinpPayType", j);
-    localEditor.putString("cur_st", paramFromServiceMsg);
-    localEditor.putString("net_mobile_club", paramObject);
-    localEditor.putString("open_month", str1);
-    localEditor.putString("platform", str2);
-    localEditor.putString("ret", str3);
-    localEditor.putString("show_open", str4);
-    localEditor.putString("uin", str5);
-    localEditor.putString("uin_pay_type", (String)localObject);
-    localEditor.commit();
-    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.UniPayHandler
  * JD-Core Version:    0.7.0.1
  */

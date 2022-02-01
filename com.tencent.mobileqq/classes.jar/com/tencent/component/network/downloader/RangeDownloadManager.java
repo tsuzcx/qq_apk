@@ -9,13 +9,13 @@ import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.List<Lcom.tencent.component.network.downloader.RangeDownloadManager.RangeDownloadResult;>;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
-import okhttp3.Protocol;
 import okhttp3.Request;
 import okhttp3.Request.Builder;
 import okhttp3.Response;
@@ -38,94 +38,81 @@ public class RangeDownloadManager
   public RangeDownloadManager(OkHttpClient paramOkHttpClient, int paramInt)
   {
     this.okHttpClient = paramOkHttpClient;
-    if (paramInt > 0) {}
-    for (;;)
-    {
-      this.numberOfRangeTasks = paramInt;
-      return;
+    if (paramInt <= 0) {
       paramInt = 4;
     }
+    this.numberOfRangeTasks = paramInt;
   }
   
   private Response buildResponse(List<RangeDownloadManager.RangeDownloadResult> paramList)
   {
-    Object localObject3 = null;
+    Object localObject6 = null;
     if (paramList == null) {
       return null;
     }
     this.totalFileSize = 0L;
     Iterator localIterator = paramList.iterator();
-    paramList = null;
-    Object localObject1 = null;
-    Object localObject2 = null;
+    Object localObject3 = null;
+    paramList = localObject3;
+    Object localObject1 = paramList;
     while (localIterator.hasNext())
     {
       RangeDownloadManager.RangeDownloadResult localRangeDownloadResult = (RangeDownloadManager.RangeDownloadResult)localIterator.next();
-      Object localObject6 = localObject3;
-      List<RangeDownloadManager.RangeDownloadResult> localList = paramList;
-      Object localObject4 = localObject1;
-      Object localObject5 = localObject2;
       if (localRangeDownloadResult != null)
       {
         this.rangeDownloadReports.add(localRangeDownloadResult.getRangeDownloadReport());
-        localObject6 = localObject3;
-        localList = paramList;
-        localObject4 = localObject1;
-        localObject5 = localObject2;
         if (RangeDownloadManager.RangeDownloadResult.access$000(localRangeDownloadResult) != null)
         {
+          Object localObject2 = localObject6;
           if (RangeDownloadManager.RangeDownloadResult.access$000(localRangeDownloadResult).request() != null) {
             localObject2 = RangeDownloadManager.RangeDownloadResult.access$000(localRangeDownloadResult).request();
           }
+          Object localObject4 = localObject3;
           if (RangeDownloadManager.RangeDownloadResult.access$000(localRangeDownloadResult).protocol() != null) {
-            localObject1 = RangeDownloadManager.RangeDownloadResult.access$000(localRangeDownloadResult).protocol();
+            localObject4 = RangeDownloadManager.RangeDownloadResult.access$000(localRangeDownloadResult).protocol();
           }
+          Object localObject5 = paramList;
           if (RangeDownloadManager.RangeDownloadResult.access$000(localRangeDownloadResult).message() != null) {
-            paramList = RangeDownloadManager.RangeDownloadResult.access$000(localRangeDownloadResult).message();
+            localObject5 = RangeDownloadManager.RangeDownloadResult.access$000(localRangeDownloadResult).message();
           }
+          Object localObject7 = localObject1;
           if (RangeDownloadManager.RangeDownloadResult.access$000(localRangeDownloadResult).priorResponse() != null) {
-            localObject3 = RangeDownloadManager.RangeDownloadResult.access$000(localRangeDownloadResult).priorResponse();
+            localObject7 = RangeDownloadManager.RangeDownloadResult.access$000(localRangeDownloadResult).priorResponse();
           }
-          localObject6 = localObject3;
-          localList = paramList;
-          localObject4 = localObject1;
-          localObject5 = localObject2;
+          localObject6 = localObject2;
+          localObject3 = localObject4;
+          paramList = (List<RangeDownloadManager.RangeDownloadResult>)localObject5;
+          localObject1 = localObject7;
           if (RangeDownloadManager.RangeDownloadResult.access$100(localRangeDownloadResult) > 0L)
           {
             this.totalFileSize += RangeDownloadManager.RangeDownloadResult.access$100(localRangeDownloadResult);
-            localObject5 = localObject2;
-            localObject4 = localObject1;
-            localList = paramList;
-            localObject6 = localObject3;
+            localObject6 = localObject2;
+            localObject3 = localObject4;
+            paramList = (List<RangeDownloadManager.RangeDownloadResult>)localObject5;
+            localObject1 = localObject7;
           }
         }
       }
-      localObject2 = localObject5;
-      localObject1 = localObject4;
-      paramList = localList;
-      localObject3 = localObject6;
     }
-    return new Response.Builder().request((Request)localObject2).protocol((Protocol)localObject1).message(paramList).priorResponse((Response)localObject3).code(200).build();
+    return new Response.Builder().request(localObject6).protocol(localObject3).message(paramList).priorResponse((Response)localObject1).code(200).build();
   }
   
   private List<RangeDownloadManager.RangeDownloadResult> executeAsync()
   {
-    int i = 4;
     ArrayList localArrayList = new ArrayList();
-    if (this.numberOfRangeTasks > 4) {}
-    ExecutorService localExecutorService;
-    for (;;)
+    int j = this.numberOfRangeTasks;
+    int i = j;
+    if (j > 4) {
+      i = 4;
+    }
+    ExecutorService localExecutorService = Executors.newFixedThreadPool(i);
+    Iterator localIterator = localExecutorService.invokeAll(this.allRangeRequests).iterator();
+    while (localIterator.hasNext())
     {
-      localExecutorService = Executors.newFixedThreadPool(i);
-      Iterator localIterator = localExecutorService.invokeAll(this.allRangeRequests).iterator();
-      while (localIterator.hasNext())
-      {
-        Future localFuture = (Future)localIterator.next();
-        if (localFuture != null) {
-          localArrayList.add((RangeDownloadManager.RangeDownloadResult)localFuture.get());
-        }
+      Future localFuture = (Future)localIterator.next();
+      if (localFuture != null) {
+        localArrayList.add((RangeDownloadManager.RangeDownloadResult)localFuture.get());
       }
-      i = this.numberOfRangeTasks;
     }
     localExecutorService.shutdown();
     localExecutorService.awaitTermination(1L, TimeUnit.SECONDS);
@@ -170,7 +157,14 @@ public class RangeDownloadManager
           }
         }
       }
-      QDLog.i("downloader_RANGE", "getContentLength header costTime:" + (System.currentTimeMillis() - l3) + ", contentLength:" + l1 + ", rangeTaskNum:" + this.numberOfRangeTasks);
+      paramBuilder = new StringBuilder();
+      paramBuilder.append("getContentLength header costTime:");
+      paramBuilder.append(System.currentTimeMillis() - l3);
+      paramBuilder.append(", contentLength:");
+      paramBuilder.append(l1);
+      paramBuilder.append(", rangeTaskNum:");
+      paramBuilder.append(this.numberOfRangeTasks);
+      QDLog.i("downloader_RANGE", paramBuilder.toString());
     }
     return l1;
   }
@@ -186,14 +180,19 @@ public class RangeDownloadManager
   private Request getRequest(Request.Builder paramBuilder, String paramString, long paramLong1, long paramLong2)
   {
     paramString = paramBuilder.get().url(paramString);
-    StringBuilder localStringBuilder = new StringBuilder().append("bytes=").append(paramLong1).append('-');
-    if (paramLong2 == -1L) {}
-    for (paramBuilder = "";; paramBuilder = Long.valueOf(paramLong2))
-    {
-      paramString.header("Range", paramBuilder);
-      paramString.header("Connection", "keep-alive");
-      return paramString.build();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("bytes=");
+    localStringBuilder.append(paramLong1);
+    localStringBuilder.append('-');
+    if (paramLong2 == -1L) {
+      paramBuilder = "";
+    } else {
+      paramBuilder = Long.valueOf(paramLong2);
     }
+    localStringBuilder.append(paramBuilder);
+    paramString.header("Range", localStringBuilder.toString());
+    paramString.header("Connection", "keep-alive");
+    return paramString.build();
   }
   
   private Response requestHeader(Request.Builder paramBuilder, String paramString)
@@ -227,10 +226,15 @@ public class RangeDownloadManager
         paramString.delete();
       }
       paramString.createNewFile();
-      RandomAccessFile localRandomAccessFile = new RandomAccessFile(paramString, "rw");
-      localRandomAccessFile.setLength(l2);
-      localRandomAccessFile.close();
-      QDLog.e("downloader_RANGE", "createFileWithSize fileSize: " + paramString.length() + ", cost time: " + (SystemClock.uptimeMillis() - l1));
+      Object localObject = new RandomAccessFile(paramString, "rw");
+      ((RandomAccessFile)localObject).setLength(l2);
+      ((RandomAccessFile)localObject).close();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("createFileWithSize fileSize: ");
+      ((StringBuilder)localObject).append(paramString.length());
+      ((StringBuilder)localObject).append(", cost time: ");
+      ((StringBuilder)localObject).append(SystemClock.uptimeMillis() - l1);
+      QDLog.e("downloader_RANGE", ((StringBuilder)localObject).toString());
       return true;
     }
     catch (Exception paramString)
@@ -243,19 +247,17 @@ public class RangeDownloadManager
   public Response execute()
   {
     long l = SystemClock.uptimeMillis();
-    Object localObject = null;
-    if (this.numberOfRangeTasks == 1) {
+    int i = this.numberOfRangeTasks;
+    if (i == 1) {
       localObject = executeSingle();
+    } else if (i > 1) {
+      localObject = executeAsync();
+    } else {
+      localObject = null;
     }
-    for (;;)
-    {
-      localObject = buildResponse((List)localObject);
-      this.durationMillisForRangeReceivePhase = (SystemClock.uptimeMillis() - l);
-      return localObject;
-      if (this.numberOfRangeTasks > 1) {
-        localObject = executeAsync();
-      }
-    }
+    Object localObject = buildResponse((List)localObject);
+    this.durationMillisForRangeReceivePhase = (SystemClock.uptimeMillis() - l);
+    return localObject;
   }
   
   public long getContentLength()
@@ -298,44 +300,45 @@ public class RangeDownloadManager
     if (paramBuilder == null) {
       paramBuilder = new Request.Builder();
     }
-    for (;;)
+    long l2 = System.currentTimeMillis();
+    long l3 = getContentLength(paramBuilder, paramString2);
+    if (l3 > 0L)
     {
-      long l3 = System.currentTimeMillis();
-      long l4 = getContentLength(paramBuilder, paramString2);
-      if (l4 > 0L)
+      long l4 = l3 / this.numberOfRangeTasks + 1L;
+      int i = 0;
+      while (i < this.numberOfRangeTasks)
       {
-        long l5 = l4 / this.numberOfRangeTasks + 1L;
-        int i = 0;
-        if (i < this.numberOfRangeTasks)
-        {
-          long l6 = i * l5;
-          long l2 = l6 + (l5 - 1L);
-          long l1 = l2;
-          if (l2 >= l4) {
-            l1 = -1L;
-          }
-          paramString2 = this.allRangeRequests;
-          OkHttpClient localOkHttpClient = this.okHttpClient;
-          Request localRequest = getRequest(paramBuilder, paramString1, l6, l1);
-          if (l1 == -1L) {}
-          for (l1 = l4 - l6;; l1 = l1 - l6 + 1L)
-          {
-            paramString2.add(new RangeDownloadManager.RangeDownloadCallable(localOkHttpClient, localRequest, paramString3, l6, l1, i, getProgressHandler(paramProgressListener, l4)));
-            i += 1;
-            break;
-          }
+        long l5 = i * l4;
+        long l1 = l5 + (l4 - 1L);
+        if (l1 >= l3) {
+          l1 = -1L;
         }
-        this.durationMillisForHeadPhase = (System.currentTimeMillis() - l3);
-        return true;
+        paramString2 = this.allRangeRequests;
+        OkHttpClient localOkHttpClient = this.okHttpClient;
+        Request localRequest = getRequest(paramBuilder, paramString1, l5, l1);
+        if (l1 == -1L) {
+          l1 = l3 - l5;
+        } else {
+          l1 = l1 - l5 + 1L;
+        }
+        paramString2.add(new RangeDownloadManager.RangeDownloadCallable(localOkHttpClient, localRequest, paramString3, l5, l1, i, getProgressHandler(paramProgressListener, l3)));
+        i += 1;
       }
-      QDLog.e("downloader_RANGE", "tryBuildAllRangeRequests fail, url:" + paramString1 + ", requestUrl:" + paramString2);
-      return false;
+      this.durationMillisForHeadPhase = (System.currentTimeMillis() - l2);
+      return true;
     }
+    paramBuilder = new StringBuilder();
+    paramBuilder.append("tryBuildAllRangeRequests fail, url:");
+    paramBuilder.append(paramString1);
+    paramBuilder.append(", requestUrl:");
+    paramBuilder.append(paramString2);
+    QDLog.e("downloader_RANGE", paramBuilder.toString());
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.downloader.RangeDownloadManager
  * JD-Core Version:    0.7.0.1
  */

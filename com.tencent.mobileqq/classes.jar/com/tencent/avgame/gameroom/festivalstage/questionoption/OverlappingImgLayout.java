@@ -13,8 +13,8 @@ import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.avgame.business.handler.UserInfoHandler;
 import com.tencent.mobileqq.app.face.IFaceDecoder;
 import com.tencent.mobileqq.avatar.listener.DecodeTaskCompletionListener;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.utils.DisplayUtils;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ThemeImageView;
 import java.util.ArrayList;
@@ -52,21 +52,18 @@ public class OverlappingImgLayout
   
   private Bitmap a(String paramString)
   {
-    Object localObject;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder == null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+    if (localObject == null)
     {
       if (QLog.isColorLevel()) {
         QLog.i("OverlappingImgLayout", 2, "mFaceDecoder null");
       }
-      localObject = null;
+      return null;
     }
-    Bitmap localBitmap;
-    do
-    {
+    localObject = ((IFaceDecoder)localObject).getBitmapFromCache(1, paramString, 0, (byte)4);
+    if (localObject != null) {
       return localObject;
-      localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCache(1, paramString, 0, (byte)4);
-      localObject = localBitmap;
-    } while (localBitmap != null);
+    }
     if (!this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing()) {
       this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(paramString, 200, false, 1, true, (byte)0, 4);
     }
@@ -75,47 +72,54 @@ public class OverlappingImgLayout
   
   private Bitmap a(String paramString, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return null;
-    case 1: 
-      return a(paramString);
+      if (paramInt != 2) {
+        return null;
+      }
+      return b(paramString);
     }
-    return b(paramString);
+    return a(paramString);
   }
   
   private void a(int paramInt)
   {
     this.jdField_a_of_type_JavaUtilList.clear();
-    if ((this.jdField_a_of_type_ArrayOfJavaLangString == null) || (this.jdField_a_of_type_ArrayOfJavaLangString.length == 0)) {
-      return;
-    }
-    int i = 0;
-    label27:
-    if ((i < this.jdField_a_of_type_ArrayOfJavaLangString.length) && (i < 2)) {
-      if (!this.jdField_a_of_type_Boolean) {
-        break label93;
-      }
-    }
-    label93:
-    for (Object localObject = new ThemeImageView(getContext());; localObject = new ImageView(getContext()))
+    Object localObject = this.jdField_a_of_type_ArrayOfJavaLangString;
+    if (localObject != null)
     {
-      ((ImageView)localObject).setImageBitmap(a(this.jdField_a_of_type_ArrayOfJavaLangString[i], paramInt));
-      this.jdField_a_of_type_JavaUtilList.add(localObject);
-      i += 1;
-      break label27;
-      break;
+      if (localObject.length == 0) {
+        return;
+      }
+      int i = 0;
+      while (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
+      {
+        if (i >= 2) {
+          return;
+        }
+        if (this.jdField_a_of_type_Boolean) {
+          localObject = new ThemeImageView(getContext());
+        } else {
+          localObject = new ImageView(getContext());
+        }
+        ((ImageView)localObject).setImageBitmap(a(this.jdField_a_of_type_ArrayOfJavaLangString[i], paramInt));
+        this.jdField_a_of_type_JavaUtilList.add(localObject);
+        i += 1;
+      }
     }
   }
   
   private boolean a()
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-    while ((!"1103".equals(ThemeUtil.curThemeId)) && (!"2920".equals(ThemeUtil.curThemeId))) {
+    boolean bool2 = this.jdField_a_of_type_Boolean;
+    boolean bool1 = false;
+    if (!bool2) {
       return false;
     }
-    return true;
+    if (("1103".equals(ThemeUtil.curThemeId)) || ("2920".equals(ThemeUtil.curThemeId))) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   private Bitmap b(String paramString)
@@ -139,30 +143,22 @@ public class OverlappingImgLayout
     }
     int i = 0;
     int j = 0;
-    label21:
-    ImageView localImageView;
-    if (i < this.jdField_a_of_type_JavaUtilList.size())
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      localImageView = (ImageView)this.jdField_a_of_type_JavaUtilList.get(i);
+      ImageView localImageView = (ImageView)this.jdField_a_of_type_JavaUtilList.get(i);
       int k = (int)DisplayUtils.a(getContext(), 1.0F);
       localImageView.setPadding(k, k, k, k);
-      if (a()) {
-        break label135;
+      if (!a()) {
+        localImageView.setBackgroundResource(2130837689);
+      } else {
+        localImageView.setBackgroundResource(2130837690);
       }
-      localImageView.setBackgroundResource(2130837601);
-    }
-    for (;;)
-    {
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(this.b, this.jdField_a_of_type_Int);
       localLayoutParams.setMargins(j * -1, 0, 0, 0);
       localImageView.setLayoutParams(localLayoutParams);
       addView(localImageView);
       j = this.c;
       i += 1;
-      break label21;
-      break;
-      label135:
-      localImageView.setBackgroundResource(2130837602);
     }
   }
   
@@ -185,28 +181,34 @@ public class OverlappingImgLayout
   
   public void a(String paramString)
   {
-    int i = 0;
-    if ((paramString == null) || (TextUtils.isEmpty(paramString))) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("OverlappingImgLayout", 2, "addUin: " + paramString);
-    }
-    Object localObject;
-    if (this.jdField_a_of_type_Boolean)
+    if (paramString != null)
     {
-      localObject = new ThemeImageView(getContext());
-      ((ImageView)localObject).setImageBitmap(a(paramString, 2));
-      int j = (int)DisplayUtils.a(getContext(), 1.0F);
-      ((ImageView)localObject).setPadding(j, j, j, j);
-      if (a()) {
-        break label248;
+      if (TextUtils.isEmpty(paramString)) {
+        return;
       }
-      ((ImageView)localObject).setBackgroundResource(2130837601);
-    }
-    for (;;)
-    {
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("addUin: ");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("OverlappingImgLayout", 2, ((StringBuilder)localObject).toString());
+      }
+      if (this.jdField_a_of_type_Boolean) {
+        localObject = new ThemeImageView(getContext());
+      } else {
+        localObject = new ImageView(getContext());
+      }
+      ((ImageView)localObject).setImageBitmap(a(paramString, 2));
+      int i = (int)DisplayUtils.a(getContext(), 1.0F);
+      ((ImageView)localObject).setPadding(i, i, i, i);
+      if (!a()) {
+        ((ImageView)localObject).setBackgroundResource(2130837689);
+      } else {
+        ((ImageView)localObject).setBackgroundResource(2130837690);
+      }
       paramString = new RelativeLayout.LayoutParams(this.b, this.jdField_a_of_type_Int);
+      i = 0;
       paramString.setMargins(0, 0, 0, 0);
       ((ImageView)localObject).setLayoutParams(paramString);
       addView((View)localObject);
@@ -218,12 +220,8 @@ public class OverlappingImgLayout
         paramString.animate().translationX(-this.d).setDuration(200L).start();
         i += 1;
       }
-      localObject = new ImageView(getContext());
-      break;
-      label248:
-      ((ImageView)localObject).setBackgroundResource(2130837602);
+      this.jdField_a_of_type_JavaUtilList.add(localObject);
     }
-    this.jdField_a_of_type_JavaUtilList.add(localObject);
   }
   
   public void a(String[] paramArrayOfString)
@@ -240,7 +238,7 @@ public class OverlappingImgLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.festivalstage.questionoption.OverlappingImgLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -20,38 +20,39 @@ class LebaListController$1
   {
     int i = ((Integer)paramView.getTag(-1)).intValue();
     LebaViewItem localLebaViewItem = (LebaViewItem)LebaListController.a(this.a).getItem(i);
-    if (localLebaViewItem == null) {
+    if (localLebaViewItem == null)
+    {
       QLog.i("Q.lebatab.LebaListController", 1, "item == null ");
     }
-    Map localMap;
-    do
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localMap = LebaListController.a(this.a).a();
-    } while (LebaListController.a(this.a) == null);
-    LebaClickReportInfo localLebaClickReportInfo = new LebaClickReportInfo();
-    localLebaClickReportInfo.jdField_a_of_type_Boolean = false;
-    localLebaClickReportInfo.jdField_a_of_type_Long = localLebaViewItem.jdField_a_of_type_Long;
-    Integer localInteger = null;
-    if (localMap != null) {
-      localInteger = (Integer)localMap.get(Long.valueOf(localLebaViewItem.jdField_a_of_type_Long));
-    }
-    if (localInteger == null) {}
-    for (i = 0;; i = localInteger.intValue())
-    {
-      localLebaClickReportInfo.jdField_a_of_type_Int = i;
-      if ((paramView instanceof RedTouch)) {
-        localLebaClickReportInfo.b = LebaConstant.a((RedTouch)paramView);
+      Map localMap = LebaListController.a(this.a).a();
+      if (LebaListController.a(this.a) != null)
+      {
+        LebaClickReportInfo localLebaClickReportInfo = new LebaClickReportInfo();
+        i = 0;
+        localLebaClickReportInfo.jdField_a_of_type_Boolean = false;
+        localLebaClickReportInfo.jdField_a_of_type_Long = localLebaViewItem.jdField_a_of_type_Long;
+        Integer localInteger = null;
+        if (localMap != null) {
+          localInteger = (Integer)localMap.get(Long.valueOf(localLebaViewItem.jdField_a_of_type_Long));
+        }
+        if (localInteger != null) {
+          i = localInteger.intValue();
+        }
+        localLebaClickReportInfo.jdField_a_of_type_Int = i;
+        if ((paramView instanceof RedTouch)) {
+          localLebaClickReportInfo.b = LebaConstant.a((RedTouch)paramView);
+        }
+        LebaListController.a(this.a).a(paramView, localLebaViewItem, localLebaClickReportInfo);
       }
-      LebaListController.a(this.a).a(paramView, localLebaViewItem, localLebaClickReportInfo);
-      break;
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.controller.list.LebaListController.1
  * JD-Core Version:    0.7.0.1
  */

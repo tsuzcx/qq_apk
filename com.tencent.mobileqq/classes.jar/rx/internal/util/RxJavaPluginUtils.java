@@ -21,13 +21,17 @@ public final class RxJavaPluginUtils
   
   private static void handlePluginException(Throwable paramThrowable)
   {
-    System.err.println("RxJavaErrorHandler threw an Exception. It shouldn't. => " + paramThrowable.getMessage());
+    PrintStream localPrintStream = System.err;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RxJavaErrorHandler threw an Exception. It shouldn't. => ");
+    localStringBuilder.append(paramThrowable.getMessage());
+    localPrintStream.println(localStringBuilder.toString());
     paramThrowable.printStackTrace();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.util.RxJavaPluginUtils
  * JD-Core Version:    0.7.0.1
  */

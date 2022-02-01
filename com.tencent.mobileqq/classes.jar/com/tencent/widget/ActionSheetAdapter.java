@@ -30,94 +30,88 @@ public class ActionSheetAdapter
   
   public static ActionSheet a(Context paramContext, ActionSheetAdapter paramActionSheetAdapter, AdapterView.OnItemClickListener paramOnItemClickListener, DialogInterface.OnDismissListener paramOnDismissListener, ActionSheet.OnButtonClickListener paramOnButtonClickListener, boolean paramBoolean)
   {
+    ActionSheet localActionSheet = null;
     if (paramContext != null)
     {
       if (paramActionSheetAdapter == null) {
         return null;
       }
-      ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(paramContext, null);
-      paramContext = (GridView)View.inflate(paramContext, 2131563177, null);
-      paramContext.setBackgroundResource(2130837588);
+      localActionSheet = (ActionSheet)ActionSheetHelper.a(paramContext, null);
+      paramContext = (GridView)View.inflate(paramContext, 2131563001, null);
+      paramContext.setBackgroundResource(2130837675);
       paramContext.setAdapter(paramActionSheetAdapter);
       paramContext.setOnItemClickListener(paramOnItemClickListener);
       localActionSheet.addView(paramContext);
-      localActionSheet.addCancelButton(2131690800);
+      localActionSheet.addCancelButton(2131690728);
       if (paramBoolean) {
         localActionSheet.setOnDismissListener(new ActionSheetAdapter.CustomDismissListener(paramOnDismissListener));
-      }
-      for (;;)
-      {
-        localActionSheet.setOnButtonClickListener(paramOnButtonClickListener);
-        return localActionSheet;
+      } else {
         localActionSheet.setOnDismissListener(paramOnDismissListener);
       }
+      localActionSheet.setOnButtonClickListener(paramOnButtonClickListener);
     }
-    return null;
+    return localActionSheet;
   }
   
   public static ActionSheetAdapter.ShareChanelInfo a(int paramInt)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramInt >= 0)
+    if ((paramInt >= 0) && (paramInt <= 7))
     {
-      localObject1 = localObject2;
-      if (paramInt <= 7) {
-        localObject1 = new ActionSheetAdapter.ShareChanelInfo();
+      ActionSheetAdapter.ShareChanelInfo localShareChanelInfo = new ActionSheetAdapter.ShareChanelInfo();
+      switch (paramInt)
+      {
+      default: 
+        return localShareChanelInfo;
+      case 7: 
+        localShareChanelInfo.a = 7;
+        localShareChanelInfo.c = 2130839064;
+        localShareChanelInfo.b = 2131719008;
+        localShareChanelInfo.d = 2131719462;
+        return localShareChanelInfo;
+      case 6: 
+        localShareChanelInfo.a = 4;
+        localShareChanelInfo.c = 2130839063;
+        localShareChanelInfo.b = 2131719018;
+        localShareChanelInfo.d = 2131719465;
+        return localShareChanelInfo;
+      case 5: 
+        localShareChanelInfo.a = 5;
+        localShareChanelInfo.b = 2131716658;
+        localShareChanelInfo.c = 2130842548;
+        localShareChanelInfo.d = 2131692105;
+        return localShareChanelInfo;
+      case 4: 
+        localShareChanelInfo.a = 4;
+        localShareChanelInfo.c = 2130839063;
+        localShareChanelInfo.b = 2131719020;
+        localShareChanelInfo.d = 2131719459;
+        return localShareChanelInfo;
+      case 3: 
+        localShareChanelInfo.a = 3;
+        localShareChanelInfo.b = 2131719032;
+        localShareChanelInfo.c = 2130839065;
+        localShareChanelInfo.d = 2131719466;
+        return localShareChanelInfo;
+      case 2: 
+        localShareChanelInfo.a = 2;
+        localShareChanelInfo.b = 2131719041;
+        localShareChanelInfo.c = 2130839071;
+        localShareChanelInfo.d = 2131719484;
+        return localShareChanelInfo;
+      case 1: 
+        localShareChanelInfo.a = 1;
+        localShareChanelInfo.b = 2131719036;
+        localShareChanelInfo.c = 2130839068;
+        localShareChanelInfo.d = 2131719477;
+        return localShareChanelInfo;
       }
+      localShareChanelInfo.a = 0;
+      localShareChanelInfo.b = 2131692663;
+      localShareChanelInfo.c = 2130839067;
+      localShareChanelInfo.d = 2131719476;
+      return localShareChanelInfo;
     }
-    switch (paramInt)
-    {
-    default: 
-      return localObject1;
-    case 3: 
-      ((ActionSheetAdapter.ShareChanelInfo)localObject1).a = 3;
-      ((ActionSheetAdapter.ShareChanelInfo)localObject1).b = 2131719314;
-      ((ActionSheetAdapter.ShareChanelInfo)localObject1).c = 2130839212;
-      ((ActionSheetAdapter.ShareChanelInfo)localObject1).d = 2131719742;
-      return localObject1;
-    case 2: 
-      ((ActionSheetAdapter.ShareChanelInfo)localObject1).a = 2;
-      ((ActionSheetAdapter.ShareChanelInfo)localObject1).b = 2131719323;
-      ((ActionSheetAdapter.ShareChanelInfo)localObject1).c = 2130839218;
-      ((ActionSheetAdapter.ShareChanelInfo)localObject1).d = 2131719760;
-      return localObject1;
-    case 0: 
-      ((ActionSheetAdapter.ShareChanelInfo)localObject1).a = 0;
-      ((ActionSheetAdapter.ShareChanelInfo)localObject1).b = 2131692706;
-      ((ActionSheetAdapter.ShareChanelInfo)localObject1).c = 2130839214;
-      ((ActionSheetAdapter.ShareChanelInfo)localObject1).d = 2131719752;
-      return localObject1;
-    case 1: 
-      ((ActionSheetAdapter.ShareChanelInfo)localObject1).a = 1;
-      ((ActionSheetAdapter.ShareChanelInfo)localObject1).b = 2131719318;
-      ((ActionSheetAdapter.ShareChanelInfo)localObject1).c = 2130839215;
-      ((ActionSheetAdapter.ShareChanelInfo)localObject1).d = 2131719753;
-      return localObject1;
-    case 5: 
-      ((ActionSheetAdapter.ShareChanelInfo)localObject1).a = 5;
-      ((ActionSheetAdapter.ShareChanelInfo)localObject1).b = 2131717005;
-      ((ActionSheetAdapter.ShareChanelInfo)localObject1).c = 2130842649;
-      ((ActionSheetAdapter.ShareChanelInfo)localObject1).d = 2131692179;
-      return localObject1;
-    case 4: 
-      ((ActionSheetAdapter.ShareChanelInfo)localObject1).a = 4;
-      ((ActionSheetAdapter.ShareChanelInfo)localObject1).c = 2130839210;
-      ((ActionSheetAdapter.ShareChanelInfo)localObject1).b = 2131719302;
-      ((ActionSheetAdapter.ShareChanelInfo)localObject1).d = 2131719735;
-      return localObject1;
-    case 6: 
-      ((ActionSheetAdapter.ShareChanelInfo)localObject1).a = 4;
-      ((ActionSheetAdapter.ShareChanelInfo)localObject1).c = 2130839210;
-      ((ActionSheetAdapter.ShareChanelInfo)localObject1).b = 2131719300;
-      ((ActionSheetAdapter.ShareChanelInfo)localObject1).d = 2131719741;
-      return localObject1;
-    }
-    ((ActionSheetAdapter.ShareChanelInfo)localObject1).a = 7;
-    ((ActionSheetAdapter.ShareChanelInfo)localObject1).c = 2130839211;
-    ((ActionSheetAdapter.ShareChanelInfo)localObject1).b = 2131719290;
-    ((ActionSheetAdapter.ShareChanelInfo)localObject1).d = 2131719738;
-    return localObject1;
+    return null;
   }
   
   public void a(List<ActionSheetAdapter.ShareChanelInfo> paramList)
@@ -162,41 +156,36 @@ public class ActionSheetAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     ActionSheetAdapter.ShareChanelInfo localShareChanelInfo = (ActionSheetAdapter.ShareChanelInfo)getItem(paramInt);
+    View localView = paramView;
     if (paramView == null) {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131563141, null);
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562964, null);
     }
-    for (;;)
+    paramView = (ImageView)localView.findViewById(2131362839);
+    TextView localTextView = (TextView)localView.findViewById(2131362851);
+    if (localShareChanelInfo != null)
     {
-      ImageView localImageView = (ImageView)paramView.findViewById(2131362887);
-      TextView localTextView = (TextView)paramView.findViewById(2131362899);
-      if (localShareChanelInfo != null)
-      {
-        localImageView.setImageResource(localShareChanelInfo.c);
-        localTextView.setText(localShareChanelInfo.b);
-        if (AppSetting.d)
-        {
-          if (localShareChanelInfo == null) {
-            break label135;
-          }
-          paramView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(localShareChanelInfo.d));
-        }
-      }
-      for (;;)
-      {
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        localImageView.setImageResource(2130848581);
-        localTextView.setText("");
-        break;
-        label135:
-        paramView.setContentDescription("");
+      paramView.setImageResource(localShareChanelInfo.c);
+      localTextView.setText(localShareChanelInfo.b);
+    }
+    else
+    {
+      paramView.setImageResource(2130848460);
+      localTextView.setText("");
+    }
+    if (AppSetting.d) {
+      if (localShareChanelInfo != null) {
+        localView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(localShareChanelInfo.d));
+      } else {
+        localView.setContentDescription("");
       }
     }
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.ActionSheetAdapter
  * JD-Core Version:    0.7.0.1
  */

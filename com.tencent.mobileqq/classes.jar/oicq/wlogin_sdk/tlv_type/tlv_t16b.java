@@ -17,59 +17,59 @@ public class tlv_t16b
     int i;
     if (paramList != null)
     {
-      k = paramList.size();
+      int n = paramList.size();
+      k = 0;
       i = 0;
-      j = 0;
-      while (j < k)
+      for (;;)
       {
-        i += 2;
-        if (paramList.get(j) == null) {
-          break label198;
+        j = n;
+        m = i;
+        if (k >= n) {
+          break;
         }
-        i = ((String)paramList.get(j)).length() + i;
-        j += 1;
+        j = i + 2;
+        i = j;
+        if (paramList.get(k) != null) {
+          i = j + ((String)paramList.get(k)).length();
+        }
+        k += 1;
       }
     }
-    for (int j = k;; j = 0)
+    int j = 0;
+    int m = 0;
+    byte[] arrayOfByte1 = new byte[m + 2];
+    util.int16_to_buf(arrayOfByte1, 0, j);
+    if (paramList != null)
     {
-      byte[] arrayOfByte1 = new byte[i + 2];
-      util.int16_to_buf(arrayOfByte1, 0, j);
-      if (paramList != null)
+      k = 0;
+      i = 2;
+      while (k < j)
       {
-        i = 2;
-        k = 0;
-        if (k < j)
+        if (paramList.get(k) != null)
         {
-          if (paramList.get(k) != null)
-          {
-            byte[] arrayOfByte2 = ((String)paramList.get(k)).getBytes();
-            util.int16_to_buf(arrayOfByte1, i, arrayOfByte2.length);
-            i += 2;
-            System.arraycopy(arrayOfByte2, 0, arrayOfByte1, i, arrayOfByte2.length);
-            i = arrayOfByte2.length + i;
-          }
-          for (;;)
-          {
-            k += 1;
-            break;
-            util.int16_to_buf(arrayOfByte1, i, 0);
-            i += 2;
-          }
+          byte[] arrayOfByte2 = ((String)paramList.get(k)).getBytes();
+          util.int16_to_buf(arrayOfByte1, i, arrayOfByte2.length);
+          i += 2;
+          System.arraycopy(arrayOfByte2, 0, arrayOfByte1, i, arrayOfByte2.length);
+          i += arrayOfByte2.length;
         }
+        else
+        {
+          util.int16_to_buf(arrayOfByte1, i, 0);
+          i += 2;
+        }
+        k += 1;
       }
-      fill_head(this._cmd);
-      fill_body(arrayOfByte1, arrayOfByte1.length);
-      set_length();
-      return get_buf();
-      label198:
-      break;
-      i = 0;
     }
+    fill_head(this._cmd);
+    fill_body(arrayOfByte1, arrayOfByte1.length);
+    set_length();
+    return get_buf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.tlv_type.tlv_t16b
  * JD-Core Version:    0.7.0.1
  */

@@ -16,14 +16,15 @@ class LivePusherJsPlugin$2
   public void run()
   {
     Object localObject1 = CoverViewAction.obtain(LivePusherJsPlugin.access$700(this.this$0)).get(this.val$livePusherId);
-    if (!(localObject1 instanceof CoverPusherView)) {}
-    do
-    {
+    if (!(localObject1 instanceof CoverPusherView)) {
       return;
-      localObject1 = (CoverPusherView)localObject1;
-      ((CoverPusherView)localObject1).updateLivePusherSettings(this.val$jsonObject);
-      localObject2 = this.val$jsonObject.optJSONObject("position");
-    } while (localObject2 == null);
+    }
+    localObject1 = (CoverPusherView)localObject1;
+    ((CoverPusherView)localObject1).updateLivePusherSettings(this.val$jsonObject);
+    Object localObject2 = this.val$jsonObject.optJSONObject("position");
+    if (localObject2 == null) {
+      return;
+    }
     float f = DisplayUtil.getDensity(LivePusherJsPlugin.access$800(this.this$0));
     int k = ((JSONObject)localObject2).optInt("left");
     int i = ((JSONObject)localObject2).optInt("top");
@@ -32,8 +33,8 @@ class LivePusherJsPlugin$2
     j = (int)(j * f + 0.5F);
     m = (int)(m * f + 0.5F);
     k = (int)(k * f + 0.5F);
-    i = (int)(i * f + 0.5F);
-    Object localObject2 = (FrameLayout.LayoutParams)((CoverPusherView)localObject1).getLayoutParams();
+    i = (int)(f * i + 0.5F);
+    localObject2 = (FrameLayout.LayoutParams)((CoverPusherView)localObject1).getLayoutParams();
     ((FrameLayout.LayoutParams)localObject2).width = j;
     ((FrameLayout.LayoutParams)localObject2).height = m;
     ((FrameLayout.LayoutParams)localObject2).leftMargin = k;
@@ -44,7 +45,7 @@ class LivePusherJsPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.LivePusherJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

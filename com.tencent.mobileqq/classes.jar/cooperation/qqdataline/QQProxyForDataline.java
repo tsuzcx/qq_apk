@@ -17,7 +17,7 @@ public class QQProxyForDataline
       if (QLog.isColorLevel()) {
         QLog.e("QQProxyForQlink", 2, "[QLINK] QQ - startQlink failed context=null!");
       }
-      Toast.makeText(BaseApplication.getContext(), HardCodeUtil.a(2131710670), 0).show();
+      Toast.makeText(BaseApplication.getContext(), HardCodeUtil.a(2131710647), 0).show();
       return;
     }
     Intent localIntent = new Intent(paramContext, DatalineBridgeActivity.class);
@@ -30,7 +30,7 @@ public class QQProxyForDataline
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqdataline.QQProxyForDataline
  * JD-Core Version:    0.7.0.1
  */

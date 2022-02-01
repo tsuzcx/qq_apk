@@ -13,8 +13,14 @@ class MiniAppCamera$5
   
   public void onInfo(MediaRecorder paramMediaRecorder, int paramInt1, int paramInt2)
   {
-    Log.i("MiniAppCamera", "onInfo: " + paramInt1);
-    QMLog.i("MiniAppCamera", "setOnInfoListener|reson: " + paramInt1);
+    paramMediaRecorder = new StringBuilder();
+    paramMediaRecorder.append("onInfo: ");
+    paramMediaRecorder.append(paramInt1);
+    Log.i("MiniAppCamera", paramMediaRecorder.toString());
+    paramMediaRecorder = new StringBuilder();
+    paramMediaRecorder.append("setOnInfoListener|reson: ");
+    paramMediaRecorder.append(paramInt1);
+    QMLog.i("MiniAppCamera", paramMediaRecorder.toString());
     if (paramInt1 == 800) {
       this.this$0.stopRecord(this.val$req);
     }
@@ -22,7 +28,7 @@ class MiniAppCamera$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.camera.MiniAppCamera.5
  * JD-Core Version:    0.7.0.1
  */

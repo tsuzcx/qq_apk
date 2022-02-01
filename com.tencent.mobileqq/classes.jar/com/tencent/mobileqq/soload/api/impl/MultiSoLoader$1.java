@@ -14,28 +14,36 @@ class MultiSoLoader$1
   {
     paramLoadExtResult = LoadExtResult.mergeExtResult(paramLoadExtResult, MultiSoLoader.a(this.jdField_a_of_type_ComTencentMobileqqSoloadApiImplMultiSoLoader));
     MultiSoLoader.a(this.jdField_a_of_type_ComTencentMobileqqSoloadApiImplMultiSoLoader, paramLoadExtResult);
-    if (paramInt == 0) {
-      if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam.mLoadItems.size() - 1) {
-        if (this.jdField_a_of_type_ComTencentMobileqqSoloadBizOnLoadListener != null) {
-          this.jdField_a_of_type_ComTencentMobileqqSoloadBizOnLoadListener.onLoadResult(paramInt, paramLoadExtResult);
+    OnLoadListener localOnLoadListener;
+    if (paramInt == 0)
+    {
+      if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam.mLoadItems.size() - 1)
+      {
+        localOnLoadListener = this.jdField_a_of_type_ComTencentMobileqqSoloadBizOnLoadListener;
+        if (localOnLoadListener != null) {
+          localOnLoadListener.onLoadResult(paramInt, paramLoadExtResult);
         }
       }
+      else
+      {
+        MultiSoLoader.a(this.jdField_a_of_type_ComTencentMobileqqSoloadApiImplMultiSoLoader, this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam, this.jdField_a_of_type_ComTencentMobileqqSoloadBizOnLoadListener, this.jdField_a_of_type_Int + 1);
+      }
     }
-    do
+    else
     {
-      return;
-      MultiSoLoader.a(this.jdField_a_of_type_ComTencentMobileqqSoloadApiImplMultiSoLoader, this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam, this.jdField_a_of_type_ComTencentMobileqqSoloadBizOnLoadListener, this.jdField_a_of_type_Int + 1);
-      return;
       if (paramLoadExtResult != null) {
         paramLoadExtResult.setFailIndex(this.jdField_a_of_type_Int + 1);
       }
-    } while (this.jdField_a_of_type_ComTencentMobileqqSoloadBizOnLoadListener == null);
-    this.jdField_a_of_type_ComTencentMobileqqSoloadBizOnLoadListener.onLoadResult(paramInt, paramLoadExtResult);
+      localOnLoadListener = this.jdField_a_of_type_ComTencentMobileqqSoloadBizOnLoadListener;
+      if (localOnLoadListener != null) {
+        localOnLoadListener.onLoadResult(paramInt, paramLoadExtResult);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soload.api.impl.MultiSoLoader.1
  * JD-Core Version:    0.7.0.1
  */

@@ -35,10 +35,20 @@ public class MiscUtils
   
   private static int floorDiv(int paramInt1, int paramInt2)
   {
-    int j = paramInt1 / paramInt2;
-    if ((paramInt1 ^ paramInt2) >= 0) {}
-    for (int i = 1; (i == 0) && (paramInt1 % paramInt2 != 0); i = 0) {
-      return j - 1;
+    int k = paramInt1 / paramInt2;
+    int i;
+    if ((paramInt1 ^ paramInt2) >= 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    int j = k;
+    if (i == 0)
+    {
+      j = k;
+      if (paramInt1 % paramInt2 != 0) {
+        j = k - 1;
+      }
     }
     return j;
   }
@@ -50,7 +60,7 @@ public class MiscUtils
   
   private static int floorMod(int paramInt1, int paramInt2)
   {
-    return paramInt1 - floorDiv(paramInt1, paramInt2) * paramInt2;
+    return paramInt1 - paramInt2 * floorDiv(paramInt1, paramInt2);
   }
   
   public static void getPathFromData(ShapeData paramShapeData, Path paramPath)
@@ -60,7 +70,7 @@ public class MiscUtils
     paramPath.moveTo(localPointF1.x, localPointF1.y);
     pathFromDataCurrentPoint.set(localPointF1.x, localPointF1.y);
     int i = 0;
-    if (i < paramShapeData.getCurves().size())
+    while (i < paramShapeData.getCurves().size())
     {
       Object localObject = (CubicCurveData)paramShapeData.getCurves().get(i);
       localPointF1 = ((CubicCurveData)localObject).getControlPoint1();
@@ -68,14 +78,11 @@ public class MiscUtils
       localObject = ((CubicCurveData)localObject).getVertex();
       if ((localPointF1.equals(pathFromDataCurrentPoint)) && (localPointF2.equals(localObject))) {
         paramPath.lineTo(((PointF)localObject).x, ((PointF)localObject).y);
-      }
-      for (;;)
-      {
-        pathFromDataCurrentPoint.set(((PointF)localObject).x, ((PointF)localObject).y);
-        i += 1;
-        break;
+      } else {
         paramPath.cubicTo(localPointF1.x, localPointF1.y, localPointF2.x, localPointF2.y, ((PointF)localObject).x, ((PointF)localObject).y);
       }
+      pathFromDataCurrentPoint.set(((PointF)localObject).x, ((PointF)localObject).y);
+      i += 1;
     }
     if (paramShapeData.isClosed()) {
       paramPath.close();
@@ -84,17 +91,17 @@ public class MiscUtils
   
   public static double lerp(double paramDouble1, double paramDouble2, @FloatRange(from=0.0D, to=1.0D) double paramDouble3)
   {
-    return (paramDouble2 - paramDouble1) * paramDouble3 + paramDouble1;
+    return paramDouble1 + paramDouble3 * (paramDouble2 - paramDouble1);
   }
   
   public static float lerp(float paramFloat1, float paramFloat2, @FloatRange(from=0.0D, to=1.0D) float paramFloat3)
   {
-    return (paramFloat2 - paramFloat1) * paramFloat3 + paramFloat1;
+    return paramFloat1 + paramFloat3 * (paramFloat2 - paramFloat1);
   }
   
   public static int lerp(int paramInt1, int paramInt2, @FloatRange(from=0.0D, to=1.0D) float paramFloat)
   {
-    return (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
+    return (int)(paramInt1 + paramFloat * (paramInt2 - paramInt1));
   }
   
   public static void resolveKeyPath(KeyPath paramKeyPath1, int paramInt, List<KeyPath> paramList, KeyPath paramKeyPath2, KeyPathElementContent paramKeyPathElementContent)
@@ -106,7 +113,7 @@ public class MiscUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.utils.MiscUtils
  * JD-Core Version:    0.7.0.1
  */

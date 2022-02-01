@@ -20,15 +20,17 @@ public class d
   public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
     Log.d("OnKeyListenerProxy", "---------------OnKeyListenerProxy-------------");
-    if (this.b != null) {
-      this.b.a(paramView, paramInt, paramKeyEvent);
+    Object localObject = this.b;
+    if (localObject != null) {
+      ((b.a)localObject).a(paramView, paramInt, paramKeyEvent);
     }
-    return (this.a != null) && (this.a.onKey(paramView, paramInt, paramKeyEvent));
+    localObject = this.a;
+    return (localObject != null) && (((View.OnKeyListener)localObject).onKey(paramView, paramInt, paramKeyEvent));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trackrecordlib.f.d
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/util/BaseAnimAdapter;", "Lcom/google/gson/JsonSerializer;", "Lcom/tencent/xaction/api/base/BaseAnim;", "Lcom/google/gson/JsonDeserializer;", "()V", "deserialize", "json", "Lcom/google/gson/JsonElement;", "typeOfT", "Ljava/lang/reflect/Type;", "context", "Lcom/google/gson/JsonDeserializationContext;", "serialize", "src", "typeOfSrc", "Lcom/google/gson/JsonSerializationContext;", "XActionEngine_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/util/BaseAnimAdapter;", "Lcom/google/gson/JsonSerializer;", "Lcom/tencent/xaction/api/base/BaseAnim;", "Lcom/google/gson/JsonDeserializer;", "()V", "deserialize", "json", "Lcom/google/gson/JsonElement;", "typeOfT", "Ljava/lang/reflect/Type;", "context", "Lcom/google/gson/JsonDeserializationContext;", "serialize", "src", "typeOfSrc", "Lcom/google/gson/JsonSerializationContext;", "XActionCore_release"}, k=1, mv={1, 1, 16})
 public final class BaseAnimAdapter
   implements JsonDeserializer<BaseAnim>, JsonSerializer<BaseAnim>
 {
@@ -41,12 +41,12 @@ public final class BaseAnimAdapter
     if (paramType != null) {
       return (BaseAnim)paramJsonDeserializationContext.deserialize(paramJsonElement, (Type)paramType);
     }
-    return null;
+    return (BaseAnim)new BaseAnimAdapter.deserialize.1();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.xaction.api.util.BaseAnimAdapter
  * JD-Core Version:    0.7.0.1
  */

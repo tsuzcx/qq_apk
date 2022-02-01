@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.EmotionKeywordLayout;
+import com.tencent.mobileqq.emotionintegrate.EmotionKeywordLayout;
 import com.tencent.widget.HorizontalListView;
 
 public class EmotionKeywordHorizonListView
@@ -27,8 +27,9 @@ public class EmotionKeywordHorizonListView
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.touchListener != null) {
-      this.touchListener.touchEventActionChanged(paramMotionEvent.getAction());
+    EmotionKeywordHorizonListView.HorizonListViewTouchListener localHorizonListViewTouchListener = this.touchListener;
+    if (localHorizonListViewTouchListener != null) {
+      localHorizonListViewTouchListener.touchEventActionChanged(paramMotionEvent.getAction());
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
@@ -40,7 +41,7 @@ public class EmotionKeywordHorizonListView
     while (i < j)
     {
       View localView = getChildAt(i);
-      if (((localView instanceof EmojiStickerManager.EmotionKeywordLayout)) && (((EmojiStickerManager.EmotionKeywordLayout)localView).a)) {
+      if (((localView instanceof EmotionKeywordLayout)) && (((EmotionKeywordLayout)localView).a)) {
         return localView.onTouchEvent(paramMotionEvent);
       }
       i += 1;
@@ -66,7 +67,7 @@ public class EmotionKeywordHorizonListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionKeywordHorizonListView
  * JD-Core Version:    0.7.0.1
  */

@@ -31,64 +31,68 @@ public class MiniAppTextArea$KeyboardHiddenObserver
     {
       try
       {
-        if (MiniAppTextArea.access$100(this.this$0) != null)
+        if (MiniAppTextArea.access$100(this.this$0) == null) {
+          break label359;
+        }
+        PageWebviewContainer localPageWebviewContainer = MiniAppTextArea.access$100(this.this$0).getPageWebviewContainer();
+        MiniAppTextArea.access$100(this.this$0).setCurInputId(MiniAppTextArea.access$900(this.this$0));
+        MiniAppTextArea.access$302(this.this$0, paramInt);
+        Object localObject2 = MiniAppTextArea.access$1000(this.this$0);
+        if (localObject2 != null)
         {
-          PageWebviewContainer localPageWebviewContainer = MiniAppTextArea.access$100(this.this$0).getPageWebviewContainer();
-          MiniAppTextArea.access$100(this.this$0).setCurInputId(MiniAppTextArea.access$900(this.this$0));
-          MiniAppTextArea.access$302(this.this$0, paramInt);
-          Object localObject2 = MiniAppTextArea.access$1000(this.this$0);
           boolean bool;
-          if (localObject2 != null)
-          {
-            if (!Build.MANUFACTURER.equalsIgnoreCase("HUAWEI")) {
-              continue;
-            }
+          if (Build.MANUFACTURER.equalsIgnoreCase("HUAWEI")) {
             bool = DisplayUtil.checkNavigationBarShow((Context)localObject2);
-            QMLog.d("MiniAppTextArea", " hasNavBar : " + bool + "; " + Build.BRAND);
-            if (bool) {
-              MiniAppTextArea.access$302(this.this$0, MiniAppTextArea.access$300(this.this$0) + DisplayUtil.getNavigationBarHeight(MiniAppTextArea.access$100(this.this$0).getPageWebviewContainer().getAttachActivity()));
-            }
+          } else {
+            bool = MiniAppTextArea.access$1100(this.this$0, (Activity)localObject2);
           }
-          if (this.this$0.isFocused())
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(" hasNavBar : ");
+          ((StringBuilder)localObject2).append(bool);
+          ((StringBuilder)localObject2).append("; ");
+          ((StringBuilder)localObject2).append(Build.BRAND);
+          QMLog.d("MiniAppTextArea", ((StringBuilder)localObject2).toString());
+          if (bool) {
+            MiniAppTextArea.access$302(this.this$0, MiniAppTextArea.access$300(this.this$0) + DisplayUtil.getNavigationBarHeight(MiniAppTextArea.access$100(this.this$0).getPageWebviewContainer().getAttachActivity()));
+          }
+        }
+        if (this.this$0.isFocused())
+        {
+          localObject2 = new JSONObject();
+          ((JSONObject)localObject2).put("inputId", MiniAppTextArea.access$900(this.this$0));
+          int i = MiniAppTextArea.access$300(this.this$0);
+          if (!MiniAppTextArea.access$1200(this.this$0)) {
+            break label365;
+          }
+          paramInt = MiniAppTextArea.access$1300(this.this$0);
+          ((JSONObject)localObject2).put("height", (int)((i + paramInt) / DisplayUtil.getDensity(this.this$0.getContext()) + 0.5F));
+          localPageWebviewContainer.evaluateSubscribeJS("onKeyboardShow", ((JSONObject)localObject2).toString());
+          if (MiniAppTextArea.access$1200(this.this$0))
           {
-            localObject2 = new JSONObject();
-            ((JSONObject)localObject2).put("inputId", MiniAppTextArea.access$900(this.this$0));
-            int i = MiniAppTextArea.access$300(this.this$0);
-            if (MiniAppTextArea.access$1200(this.this$0))
-            {
-              paramInt = MiniAppTextArea.access$1300(this.this$0);
-              ((JSONObject)localObject2).put("height", (int)((paramInt + i) / DisplayUtil.getDensity(this.this$0.getContext()) + 0.5F));
-              localPageWebviewContainer.evaluateSubscribeJS("onKeyboardShow", ((JSONObject)localObject2).toString());
-              if (MiniAppTextArea.access$1200(this.this$0))
-              {
-                paramInt = MiniAppTextArea.access$1400(this.this$0);
-                i = MiniAppTextArea.access$300(this.this$0);
-                int j = MiniAppTextArea.access$1300(this.this$0);
-                MiniAppTextArea.access$1500(this.this$0, paramInt - i - j);
-                return;
-                bool = MiniAppTextArea.access$1100(this.this$0, (Activity)localObject2);
-              }
-            }
-            else
-            {
-              paramInt = 0;
-              continue;
-            }
+            paramInt = MiniAppTextArea.access$1400(this.this$0);
+            i = MiniAppTextArea.access$300(this.this$0);
+            int j = MiniAppTextArea.access$1300(this.this$0);
+            MiniAppTextArea.access$1500(this.this$0, paramInt - i - j);
+            return;
           }
-          return;
         }
       }
       catch (JSONException localJSONException)
       {
         localJSONException.printStackTrace();
       }
+      return;
+      label359:
       Object localObject1 = null;
+      continue;
+      label365:
+      paramInt = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.widget.MiniAppTextArea.KeyboardHiddenObserver
  * JD-Core Version:    0.7.0.1
  */

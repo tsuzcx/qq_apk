@@ -13,12 +13,12 @@ public final class PBBoolField
   
   public void clear(Object paramObject)
   {
-    if ((paramObject instanceof Boolean)) {}
-    for (this.value = ((Boolean)paramObject).booleanValue();; this.value = false)
-    {
-      setHasFlag(false);
-      return;
+    if ((paramObject instanceof Boolean)) {
+      this.value = ((Boolean)paramObject).booleanValue();
+    } else {
+      this.value = false;
     }
+    setHasFlag(false);
   }
   
   public int computeSize(int paramInt)
@@ -81,7 +81,7 @@ public final class PBBoolField
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pb.PBBoolField
  * JD-Core Version:    0.7.0.1
  */

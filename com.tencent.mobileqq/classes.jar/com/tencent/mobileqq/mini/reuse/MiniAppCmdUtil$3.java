@@ -11,9 +11,10 @@ class MiniAppCmdUtil$3
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if (this.val$listener != null)
+    MiniAppCmdInterface localMiniAppCmdInterface = this.val$listener;
+    if (localMiniAppCmdInterface != null)
     {
-      this.val$listener.onCmdListener(paramBoolean, paramJSONObject);
+      localMiniAppCmdInterface.onCmdListener(paramBoolean, paramJSONObject);
       return;
     }
     QLog.e(MiniAppCmdUtil.TAG, 1, "getAppInfoByLink, listener is null.");
@@ -21,7 +22,7 @@ class MiniAppCmdUtil$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil.3
  * JD-Core Version:    0.7.0.1
  */

@@ -11,6 +11,7 @@ import com.tencent.mobileqq.richstatus.ActionInfo;
 import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.mobileqq.richstatus.StatusManager;
 import com.tencent.mobileqq.richstatus.TipsInfo;
+import com.tencent.mobileqq.vas.font.api.IFontManagerService;
 import com.tencent.mobileqq.vas.gldrawable.GLDrawableDownloadHelper;
 import com.tencent.mobileqq.vas.qqvaluecard.QqValueGetValueHandler;
 import com.tencent.mobileqq.vas.updatesystem.api.IVasQuickUpdateService;
@@ -29,9 +30,9 @@ public class VasFontIPCModule
   extends QIPCModule
 {
   private static VasFontIPCModule jdField_a_of_type_ComEtrumpMixlayoutVasFontIPCModule;
-  public static String a;
-  public static String b;
-  public static String c;
+  public static String a = "action_download_hy_so";
+  public static String b = "action_download_fz_so";
+  public static String c = "action_download_font";
   public static String d = "action_download_signature_config";
   public static String e = "action_get_my_signature";
   public static String f = "action_change_status";
@@ -51,13 +52,6 @@ public class VasFontIPCModule
   private AtomicBoolean jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   private AtomicInteger jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   private AtomicInteger c;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "action_download_hy_so";
-    jdField_b_of_type_JavaLangString = "action_download_fz_so";
-    jdField_c_of_type_JavaLangString = "action_download_font";
-  }
   
   private VasFontIPCModule(String paramString)
   {
@@ -82,15 +76,13 @@ public class VasFontIPCModule
   {
     Integer localInteger;
     Object localObject;
-    switch (paramInt1)
+    if (paramInt1 != 1)
     {
-    case 2: 
-    case 3: 
-    default: 
-      return;
-    case 1: 
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      localVector = new Vector(this.jdField_a_of_type_JavaUtilVector);
+      if (paramInt1 != 4) {
+        return;
+      }
+      this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+      localVector = new Vector(this.jdField_b_of_type_JavaUtilVector);
       localIterator = localVector.iterator();
       while (localIterator.hasNext())
       {
@@ -100,11 +92,11 @@ public class VasFontIPCModule
         localObject = EIPCResult.createResult(paramInt2, (Bundle)localObject);
         callbackResult(localInteger.intValue(), (EIPCResult)localObject);
       }
-      this.jdField_a_of_type_JavaUtilVector.removeAll(localVector);
+      this.jdField_b_of_type_JavaUtilVector.removeAll(localVector);
       return;
     }
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    Vector localVector = new Vector(this.jdField_b_of_type_JavaUtilVector);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    Vector localVector = new Vector(this.jdField_a_of_type_JavaUtilVector);
     Iterator localIterator = localVector.iterator();
     while (localIterator.hasNext())
     {
@@ -114,13 +106,17 @@ public class VasFontIPCModule
       localObject = EIPCResult.createResult(paramInt2, (Bundle)localObject);
       callbackResult(localInteger.intValue(), (EIPCResult)localObject);
     }
-    this.jdField_b_of_type_JavaUtilVector.removeAll(localVector);
+    this.jdField_a_of_type_JavaUtilVector.removeAll(localVector);
   }
   
   public void a(int paramInt1, RichStatus paramRichStatus, TipsInfo paramTipsInfo, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Signature", 2, "onChangeStatus result = " + paramInt1);
+    if (QLog.isColorLevel())
+    {
+      paramRichStatus = new StringBuilder();
+      paramRichStatus.append("onChangeStatus result = ");
+      paramRichStatus.append(paramInt1);
+      QLog.d("Signature", 2, paramRichStatus.toString());
     }
     if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0)
     {
@@ -157,12 +153,17 @@ public class VasFontIPCModule
   
   public void b(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Signature", 2, "onGetHistorySigNum result = " + paramInt1);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onGetHistorySigNum result = ");
+      ((StringBuilder)localObject).append(paramInt1);
+      QLog.d("Signature", 2, ((StringBuilder)localObject).toString());
     }
     if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0)
     {
-      Object localObject = new Bundle();
+      localObject = new Bundle();
       ((Bundle)localObject).putInt("notify_type", 9);
       ((Bundle)localObject).putInt("result", paramInt1);
       ((Bundle)localObject).putInt("key_history_signature_num", paramInt2);
@@ -187,8 +188,14 @@ public class VasFontIPCModule
         callbackResult(this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get(), (EIPCResult)localObject);
         this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
         this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-        if (QLog.isColorLevel()) {
-          QLog.d("Signature", 2, "IPC get action callback id = " + this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + " url = " + localActionInfo.jdField_b_of_type_JavaLangString);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("IPC get action callback id = ");
+          ((StringBuilder)localObject).append(this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+          ((StringBuilder)localObject).append(" url = ");
+          ((StringBuilder)localObject).append(localActionInfo.jdField_b_of_type_JavaLangString);
+          QLog.d("Signature", 2, ((StringBuilder)localObject).toString());
         }
       }
     }
@@ -196,70 +203,74 @@ public class VasFontIPCModule
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasFontIPCModule", 2, "onCall action = " + paramString);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onCall action = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("VasFontIPCModule", 2, ((StringBuilder)localObject).toString());
     }
-    QQAppInterface localQQAppInterface;
     if ((BaseApplicationImpl.getApplication() != null) && ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)))
     {
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (!jdField_a_of_type_JavaLangString.equals(paramString)) {
-        break label88;
-      }
-      ThreadManagerV2.executeOnSubThread(new VasFontIPCModule.1(this, paramInt, localQQAppInterface), true);
-    }
-    label88:
-    do
-    {
-      int m;
-      do
+      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (jdField_a_of_type_JavaLangString.equals(paramString))
       {
-        do
+        ThreadManagerV2.executeOnSubThread(new VasFontIPCModule.1(this, paramInt, (QQAppInterface)localObject), true);
+      }
+      else
+      {
+        int m;
+        if (jdField_c_of_type_JavaLangString.equals(paramString))
         {
-          do
+          m = paramBundle.getInt("id");
+          int n = paramBundle.getInt("font_type");
+          ((IFontManagerService)((QQAppInterface)localObject).getRuntimeService(IFontManagerService.class, "")).startDownload(m, Integer.toString(paramInt), n);
+        }
+        else if (jdField_b_of_type_JavaLangString.equals(paramString))
+        {
+          paramString = new StringBuilder();
+          paramString.append(VasSoUtils.a());
+          paramString.append("libFounderColorFont_818.so");
+          if (new File(paramString.toString()).exists())
           {
-            do
-            {
-              return null;
-              if (jdField_c_of_type_JavaLangString.equals(paramString))
-              {
-                m = paramBundle.getInt("id");
-                int n = paramBundle.getInt("font_type");
-                ((FontManager)localQQAppInterface.getManager(QQManagerFactory.CHAT_FONT_MANAGER)).a(m, Integer.toString(paramInt), n);
-                return null;
-              }
-              if (!jdField_b_of_type_JavaLangString.equals(paramString)) {
-                break;
-              }
-              if (new File(VasSoUtils.a() + "libFounderColorFont_818.so").exists())
-              {
-                callbackResult(paramInt, EIPCResult.createResult(0, null));
-                return null;
-              }
-              this.jdField_b_of_type_JavaUtilVector.add(Integer.valueOf(paramInt));
-            } while (!this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true));
-            ((IVasQuickUpdateService)localQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(1004L, "libColorFont_818", "VasFontIPCModule");
-            return null;
-            if (!d.equals(paramString)) {
-              break;
-            }
-            m = paramBundle.getInt("id");
-          } while ((m <= 0) || (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(m))));
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(m), Integer.valueOf(paramInt));
-          paramString = "signature.item." + m + ".json";
-          paramBundle = (IVasQuickUpdateService)localQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "");
-          paramBundle.addCallBacker(this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackCallBacker);
-          paramBundle.downloadItem(1000L, paramString, "VasFontIPCModule");
-          return null;
-          if (e.equals(paramString))
-          {
-            paramString = ((StatusManager)localQQAppInterface.getManager(QQManagerFactory.STATUS_MANAGER)).a(true);
-            paramBundle = new Bundle();
-            paramBundle.putInt("notify_type", 4);
-            paramBundle.putSerializable("my_signature", paramString);
-            callbackResult(paramInt, EIPCResult.createResult(0, paramBundle));
-            return null;
+            callbackResult(paramInt, EIPCResult.createResult(0, null));
           }
+          else
+          {
+            this.jdField_b_of_type_JavaUtilVector.add(Integer.valueOf(paramInt));
+            if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
+              ((IVasQuickUpdateService)((QQAppInterface)localObject).getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(1004L, "libColorFont_818", "VasFontIPCModule");
+            }
+          }
+        }
+        else if (d.equals(paramString))
+        {
+          m = paramBundle.getInt("id");
+          if ((m > 0) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(m))))
+          {
+            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(m), Integer.valueOf(paramInt));
+            paramString = new StringBuilder();
+            paramString.append("signature.item.");
+            paramString.append(m);
+            paramString.append(".json");
+            paramString = paramString.toString();
+            paramBundle = (IVasQuickUpdateService)((QQAppInterface)localObject).getRuntimeService(IVasQuickUpdateService.class, "");
+            paramBundle.addCallBacker(this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackCallBacker);
+            paramBundle.downloadItem(1000L, paramString, "VasFontIPCModule");
+          }
+        }
+        else if (e.equals(paramString))
+        {
+          paramString = ((StatusManager)((QQAppInterface)localObject).getManager(QQManagerFactory.STATUS_MANAGER)).a(true);
+          paramBundle = new Bundle();
+          paramBundle.putInt("notify_type", 4);
+          paramBundle.putSerializable("my_signature", paramString);
+          callbackResult(paramInt, EIPCResult.createResult(0, paramBundle));
+        }
+        else
+        {
+          long l1;
           if (f.equals(paramString))
           {
             if (QLog.isColorLevel()) {
@@ -270,94 +281,118 @@ public class VasFontIPCModule
             if ((paramString instanceof RichStatus))
             {
               paramString = (RichStatus)paramString;
-              ((StatusManager)localQQAppInterface.getManager(QQManagerFactory.STATUS_MANAGER)).a(paramString, 0);
-              return null;
+              ((StatusManager)((QQAppInterface)localObject).getManager(QQManagerFactory.STATUS_MANAGER)).a(paramString, 0);
             }
-            QLog.e("VasFontIPCModule", 1, "change status error, status is null");
-            new Bundle().putInt("notify_type", 5);
-            callbackResult(paramInt, EIPCResult.createResult(-102, null));
+            else
+            {
+              QLog.e("VasFontIPCModule", 1, "change status error, status is null");
+              new Bundle().putInt("notify_type", 5);
+              callbackResult(paramInt, EIPCResult.createResult(-102, null));
+            }
+          }
+          else if (g.equals(paramString))
+          {
+            m = paramBundle.getInt("id");
+            paramString = ((StatusManager)((QQAppInterface)localObject).getManager(QQManagerFactory.STATUS_MANAGER)).a(m);
+            if (paramString == null)
+            {
+              this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
+              this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(m);
+              if (QLog.isColorLevel())
+              {
+                paramString = new StringBuilder();
+                paramString.append("IPC get action fail, wait for callback id = ");
+                paramString.append(m);
+                QLog.d("Signature", 2, paramString.toString());
+              }
+            }
+            else
+            {
+              paramBundle = new Bundle();
+              paramBundle.putInt("notify_type", 6);
+              paramBundle.putString("url", paramString.jdField_b_of_type_JavaLangString);
+              paramBundle.putInt("id", m);
+              callbackResult(paramInt, EIPCResult.createResult(0, paramBundle));
+              if (QLog.isColorLevel())
+              {
+                paramBundle = new StringBuilder();
+                paramBundle.append("IPC get action success id = ");
+                paramBundle.append(m);
+                paramBundle.append(" url = ");
+                paramBundle.append(paramString.jdField_b_of_type_JavaLangString);
+                QLog.d("Signature", 2, paramBundle.toString());
+              }
+            }
+          }
+          else if (h.equals(paramString))
+          {
+            l1 = paramBundle.getLong("bid");
+            paramString = paramBundle.getString("scid");
+            if (TextUtils.isEmpty(paramString))
+            {
+              callbackResult(paramInt, EIPCResult.createResult(-102, null));
+            }
+            else if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
+            {
+              paramBundle = new Bundle();
+              paramBundle.putInt("notify_type", 8);
+              paramBundle.putLong("bid", l1);
+              paramBundle.putString("scid", paramString);
+              paramBundle.putInt("download_result", 1);
+              callbackResult(paramInt, EIPCResult.createResult(0, paramBundle));
+            }
+            else
+            {
+              this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Integer.valueOf(paramInt));
+              paramBundle = (IVasQuickUpdateService)((QQAppInterface)localObject).getRuntimeService(IVasQuickUpdateService.class, "");
+              paramBundle.addCallBacker(this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackCallBacker);
+              paramBundle.downloadItem(l1, paramString, "VasFontIPCModule");
+            }
+          }
+          else
+          {
+            if (!i.equals(paramString)) {
+              break label986;
+            }
+            paramString = new Bundle();
+            paramString.putInt("key_shield_font", VasShieldFont.a);
+            callbackResult(paramInt, EIPCResult.createResult(0, paramString));
+          }
+          for (;;)
+          {
             return null;
+            label986:
+            if (j.equals(paramString))
+            {
+              l1 = paramBundle.getLong("key_current_uin");
+              this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
+              ((StatusManager)((QQAppInterface)localObject).getManager(QQManagerFactory.STATUS_MANAGER)).a(l1);
+            }
+            else if (k.equals(paramString))
+            {
+              GLDrawableDownloadHelper.a(true);
+            }
+            else if (l.equals(paramString))
+            {
+              QqValueGetValueHandler.a();
+            }
+            else if (QLog.isColorLevel())
+            {
+              paramBundle = new StringBuilder();
+              paramBundle.append("onCall action = ");
+              paramBundle.append(paramString);
+              QLog.d("VasFontIPCModule", 2, paramBundle.toString());
+            }
           }
-          if (!g.equals(paramString)) {
-            break label726;
-          }
-          m = paramBundle.getInt("id");
-          paramString = ((StatusManager)localQQAppInterface.getManager(QQManagerFactory.STATUS_MANAGER)).a(m);
-          if (paramString != null) {
-            break;
-          }
-          this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
-          this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(m);
-        } while (!QLog.isColorLevel());
-        QLog.d("Signature", 2, "IPC get action fail, wait for callback id = " + m);
-        return null;
-        paramBundle = new Bundle();
-        paramBundle.putInt("notify_type", 6);
-        paramBundle.putString("url", paramString.jdField_b_of_type_JavaLangString);
-        paramBundle.putInt("id", m);
-        callbackResult(paramInt, EIPCResult.createResult(0, paramBundle));
-      } while (!QLog.isColorLevel());
-      QLog.d("Signature", 2, "IPC get action success id = " + m + " url = " + paramString.jdField_b_of_type_JavaLangString);
-      return null;
-      long l1;
-      if (h.equals(paramString))
-      {
-        l1 = paramBundle.getLong("bid");
-        paramString = paramBundle.getString("scid");
-        if (TextUtils.isEmpty(paramString))
-        {
-          callbackResult(paramInt, EIPCResult.createResult(-102, null));
-          return null;
         }
-        if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
-        {
-          paramBundle = new Bundle();
-          paramBundle.putInt("notify_type", 8);
-          paramBundle.putLong("bid", l1);
-          paramBundle.putString("scid", paramString);
-          paramBundle.putInt("download_result", 1);
-          callbackResult(paramInt, EIPCResult.createResult(0, paramBundle));
-          return null;
-        }
-        this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Integer.valueOf(paramInt));
-        paramBundle = (IVasQuickUpdateService)localQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "");
-        paramBundle.addCallBacker(this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackCallBacker);
-        paramBundle.downloadItem(l1, paramString, "VasFontIPCModule");
-        return null;
       }
-      if (i.equals(paramString))
-      {
-        paramString = new Bundle();
-        paramString.putInt("key_shield_font", VasShieldFont.a);
-        callbackResult(paramInt, EIPCResult.createResult(0, paramString));
-        return null;
-      }
-      if (j.equals(paramString))
-      {
-        l1 = paramBundle.getLong("key_current_uin");
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
-        ((StatusManager)localQQAppInterface.getManager(QQManagerFactory.STATUS_MANAGER)).a(l1);
-        return null;
-      }
-      if (k.equals(paramString))
-      {
-        GLDrawableDownloadHelper.a(true);
-        return null;
-      }
-      if (l.equals(paramString))
-      {
-        QqValueGetValueHandler.a();
-        return null;
-      }
-    } while (!QLog.isColorLevel());
-    label726:
-    QLog.d("VasFontIPCModule", 2, "onCall action = " + paramString);
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.VasFontIPCModule
  * JD-Core Version:    0.7.0.1
  */

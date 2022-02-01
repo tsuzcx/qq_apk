@@ -17,30 +17,37 @@ class StoryInputBarView$1
     if (paramInt == 4)
     {
       paramTextView = paramTextView.getText().toString();
-      if (paramTextView.length() <= 0) {
-        break label140;
+      if (paramTextView.length() > 0)
+      {
+        this.a.setKeyBoardState(false);
+        if (this.a.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego != null) {
+          this.a.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.a(paramTextView, this.a.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+        }
+        this.a.c();
+        this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
+        if (StoryInputBarView.a(this.a) != null) {
+          StoryInputBarView.a(this.a).a(paramTextView, this.a.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+        }
+        if (QLog.isColorLevel())
+        {
+          paramKeyEvent = new StringBuilder();
+          paramKeyEvent.append("onEditorAction vaule=");
+          paramKeyEvent.append(paramTextView);
+          QLog.d("Q.qqstory:StoryInputBarView", 2, paramKeyEvent.toString());
+          return false;
+        }
       }
-      this.a.setKeyBoardState(false);
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego != null) {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.a(paramTextView, this.a.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-      }
-      this.a.c();
-      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
-      if (StoryInputBarView.a(this.a) != null) {
-        StoryInputBarView.a(this.a).a(paramTextView, this.a.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory:StoryInputBarView", 2, "onEditorAction vaule=" + paramTextView);
+      else
+      {
+        return true;
       }
     }
     return false;
-    label140:
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.StoryInputBarView.1
  * JD-Core Version:    0.7.0.1
  */

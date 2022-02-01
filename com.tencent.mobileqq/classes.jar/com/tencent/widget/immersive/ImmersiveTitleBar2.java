@@ -36,36 +36,30 @@ public class ImmersiveTitleBar2
   
   public void initUI(Context paramContext)
   {
-    boolean bool = true;
     if (QLog.isColorLevel()) {
       QLog.d("status", 2, "ImmersiveTitleBar initUI");
     }
-    if ((TRANSLUCENT_STATUS_BAR) && (ImmersiveUtils.isSupporImmersive() == 1))
-    {
-      mNeedDrawStatus = bool;
-      this.mStatusBarHeight = ImmersiveUtils.getStatusBarHeight(paramContext);
-      if (!mNeedDrawStatus) {
-        break label73;
-      }
-      setCustomHeight(this.mStatusBarHeight);
+    boolean bool2 = TRANSLUCENT_STATUS_BAR;
+    boolean bool1 = true;
+    if ((!bool2) || (ImmersiveUtils.isSupporImmersive() != 1)) {
+      bool1 = false;
     }
-    for (;;)
-    {
-      if (!QQTheme.b()) {
-        break label81;
-      }
-      setBackgroundResource(2130850507);
-      return;
-      bool = false;
-      break;
-      label73:
+    mNeedDrawStatus = bool1;
+    this.mStatusBarHeight = ImmersiveUtils.getStatusBarHeight(paramContext);
+    if (mNeedDrawStatus) {
+      setCustomHeight(this.mStatusBarHeight);
+    } else {
       setCustomHeight(0);
     }
-    label81:
-    setBackgroundColor(getResources().getColor(2131167091));
+    if (QQTheme.b())
+    {
+      setBackgroundResource(2130850433);
+      return;
+    }
+    setBackgroundColor(getResources().getColor(2131167114));
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(this.mViewHeight, 1073741824));
     setMeasuredDimension(getMeasuredWidth(), this.mViewHeight);
@@ -84,7 +78,7 @@ public class ImmersiveTitleBar2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.immersive.ImmersiveTitleBar2
  * JD-Core Version:    0.7.0.1
  */

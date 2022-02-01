@@ -10,7 +10,7 @@ import com.tencent.mobileqq.reminder.biz.entity.IReminderEntity;
 import java.util.List;
 import mqq.app.api.IRuntimeService;
 
-@Service(process={""})
+@Service(process={"", "tool"})
 public abstract interface IQQReminderDataService
   extends IRuntimeService
 {
@@ -36,7 +36,7 @@ public abstract interface IQQReminderDataService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.reminder.api.IQQReminderDataService
  * JD-Core Version:    0.7.0.1
  */

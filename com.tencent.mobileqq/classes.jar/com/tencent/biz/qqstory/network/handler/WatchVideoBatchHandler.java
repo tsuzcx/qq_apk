@@ -41,15 +41,8 @@ public class WatchVideoBatchHandler
   public void a(@NonNull WatchVideoBatchRequest paramWatchVideoBatchRequest, @Nullable WatchVideoBatchResponse paramWatchVideoBatchResponse, @NonNull ErrorMessage paramErrorMessage)
   {
     ReportWatchVideoManager localReportWatchVideoManager = (ReportWatchVideoManager)SuperManager.a(13);
-    if ((paramWatchVideoBatchResponse == null) || (paramErrorMessage.isFail()))
+    if ((paramWatchVideoBatchResponse != null) && (!paramErrorMessage.isFail()))
     {
-      SLog.d("Q.qqstory:WatchVideoBatchHandler", "WatchVideoBatchHandler onCmdRespond. errorInfo=%s", new Object[] { paramErrorMessage.toString() });
-      paramWatchVideoBatchResponse = paramWatchVideoBatchRequest.a.iterator();
-    }
-    while (paramWatchVideoBatchResponse.hasNext())
-    {
-      localReportWatchVideoManager.a((ReportWatchVideoManager.InnerVideoItem)paramWatchVideoBatchResponse.next(), false);
-      continue;
       localReportWatchVideoManager.a(paramWatchVideoBatchResponse.a);
       SLog.d("Q.qqstory:WatchVideoBatchHandler", "WatchVideoBatchHandler onCmdRespond. succList.size=%d. requestList.size=%d", new Object[] { Integer.valueOf(paramWatchVideoBatchResponse.a.size()), Integer.valueOf(paramWatchVideoBatchRequest.a.size()) });
       paramErrorMessage = paramWatchVideoBatchRequest.a.iterator();
@@ -64,12 +57,20 @@ public class WatchVideoBatchHandler
         StoryReportor.b("home_page", "batch_watch_video", 0, paramWatchVideoBatchRequest.a.size() - paramWatchVideoBatchResponse.a.size(), new String[] { "", String.valueOf(System.currentTimeMillis() - this.c), StoryReportor.a(BaseApplication.getContext()) });
       }
     }
+    else
+    {
+      SLog.d("Q.qqstory:WatchVideoBatchHandler", "WatchVideoBatchHandler onCmdRespond. errorInfo=%s", new Object[] { paramErrorMessage.toString() });
+      paramWatchVideoBatchResponse = paramWatchVideoBatchRequest.a.iterator();
+      while (paramWatchVideoBatchResponse.hasNext()) {
+        localReportWatchVideoManager.a((ReportWatchVideoManager.InnerVideoItem)paramWatchVideoBatchResponse.next(), false);
+      }
+    }
     localReportWatchVideoManager.a(paramWatchVideoBatchRequest);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.WatchVideoBatchHandler
  * JD-Core Version:    0.7.0.1
  */

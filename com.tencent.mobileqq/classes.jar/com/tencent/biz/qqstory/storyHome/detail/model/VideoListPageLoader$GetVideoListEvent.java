@@ -24,12 +24,21 @@ public class VideoListPageLoader$GetVideoListEvent
   
   public String toString()
   {
-    return "GetVideoListEvent{mVideoItems=" + this.jdField_a_of_type_JavaUtilList.size() + ", feedId=" + this.jdField_a_of_type_JavaLangString + ", mUnionId=" + this.b + '}' + super.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetVideoListEvent{mVideoItems=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.size());
+    localStringBuilder.append(", feedId=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", mUnionId=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('}');
+    localStringBuilder.append(super.toString());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.model.VideoListPageLoader.GetVideoListEvent
  * JD-Core Version:    0.7.0.1
  */

@@ -11,19 +11,28 @@ class SyncLoadTask$1$1
   public void run()
   {
     Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
+    boolean bool1;
+    for (;;)
+    {
+      boolean bool2 = localIterator.hasNext();
+      bool1 = true;
+      if (!bool2) {
+        break;
+      }
       ((SyncLoadTask)localIterator.next()).setComplete(true);
     }
     localIterator = this.b.iterator();
-    for (boolean bool = true; localIterator.hasNext(); bool = false) {
+    while (localIterator.hasNext())
+    {
       ((SyncLoadTask)localIterator.next()).setComplete(false);
+      bool1 = false;
     }
-    this.this$0.a.a(bool, this.this$0.b);
+    this.this$0.a.a(bool1, this.this$0.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.SyncLoadTask.1.1
  * JD-Core Version:    0.7.0.1
  */

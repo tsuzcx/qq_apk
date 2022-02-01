@@ -17,13 +17,14 @@ public final class QTimedMessage$C2CMessage$RichText
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "bytes_template_1", "uint32_service_id", "uint32_gift_id" }, new Object[] { localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, RichText.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "bytes_template_1", "uint32_service_id", "uint32_gift_id" }, new Object[] { localByteStringMicro, localInteger, localInteger }, RichText.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QTimedMessage.QTimedMessage.C2CMessage.RichText
  * JD-Core Version:    0.7.0.1
  */

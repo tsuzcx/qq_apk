@@ -23,15 +23,17 @@ class AddPhoneNumberFragment$5
       AddPhoneNumberFragment.access$000(this.this$0).setClickable(true);
       AddPhoneNumberFragment.access$000(this.this$0).setTextColor(Color.parseColor("#181819"));
     }
-    for (;;)
+    else
     {
-      QMLog.i("AddPhoneNumberFragment", "mPhoneNumber : " + AddPhoneNumberFragment.access$200(this.this$0));
-      return;
       AddPhoneNumberFragment.access$202(this.this$0, null);
       AddPhoneNumberFragment.access$000(this.this$0).setEnabled(false);
       AddPhoneNumberFragment.access$000(this.this$0).setClickable(false);
       AddPhoneNumberFragment.access$000(this.this$0).setTextColor(Color.parseColor("#B0B3BF"));
     }
+    paramEditable = new StringBuilder();
+    paramEditable.append("mPhoneNumber : ");
+    paramEditable.append(AddPhoneNumberFragment.access$200(this.this$0));
+    QMLog.i("AddPhoneNumberFragment", paramEditable.toString());
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -40,7 +42,7 @@ class AddPhoneNumberFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.AddPhoneNumberFragment.5
  * JD-Core Version:    0.7.0.1
  */

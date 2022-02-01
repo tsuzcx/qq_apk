@@ -9,9 +9,9 @@ import android.widget.TextView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.face.IFaceDecoder;
+import com.tencent.mobileqq.search.base.presenter.SearchResultPresenter;
+import com.tencent.mobileqq.search.base.view.ISearchResultView;
 import com.tencent.mobileqq.search.model.ISearchResultModel;
-import com.tencent.mobileqq.search.presenter.SearchResultPresenter;
-import com.tencent.mobileqq.search.view.ISearchResultView;
 import com.tencent.qphone.base.util.QLog;
 
 public class FavoriteSearchResultPresenter
@@ -24,84 +24,94 @@ public class FavoriteSearchResultPresenter
     super(paramIFaceDecoder);
   }
   
-  public void a(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView)
+  public void b(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView)
   {
     paramISearchResultView.a().setMaxWidth(800);
     FavoriteSearchResultModel localFavoriteSearchResultModel = (FavoriteSearchResultModel)paramISearchResultModel;
     ImageView localImageView = paramISearchResultView.b();
     localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    if ((5 == localFavoriteSearchResultModel.f) || (localFavoriteSearchResultModel.jdField_a_of_type_Boolean))
+    if ((5 != localFavoriteSearchResultModel.f) && (!localFavoriteSearchResultModel.jdField_a_of_type_Boolean))
     {
-      localImageView.setImageResource(2130844312);
-      if (localFavoriteSearchResultModel.jdField_d_of_type_JavaLangString == null) {
-        break label186;
-      }
+      localImageView.setImageDrawable(null);
+      localImageView.setBackgroundDrawable(null);
+    }
+    else
+    {
+      localImageView.setImageResource(2130844218);
+    }
+    if (localFavoriteSearchResultModel.jdField_d_of_type_JavaLangString != null)
+    {
       paramISearchResultModel = URLDrawable.URLDrawableOptions.obtain();
       paramISearchResultModel.mRequestHeight = paramISearchResultView.b().getHeight();
       paramISearchResultModel.mRequestWidth = paramISearchResultView.b().getWidth();
-      if ((5 != localFavoriteSearchResultModel.f) && (!localFavoriteSearchResultModel.jdField_a_of_type_Boolean)) {
-        break label136;
+      if ((5 != localFavoriteSearchResultModel.f) && (!localFavoriteSearchResultModel.jdField_a_of_type_Boolean))
+      {
+        try
+        {
+          localImageView.setImageDrawable(URLDrawable.getDrawable(localFavoriteSearchResultModel.jdField_d_of_type_JavaLangString, paramISearchResultModel));
+          return;
+        }
+        catch (Exception paramISearchResultModel)
+        {
+          if (!QLog.isColorLevel()) {
+            break label373;
+          }
+        }
+        paramISearchResultView = new StringBuilder();
+        paramISearchResultView.append("bindFace exception = ");
+        paramISearchResultView.append(paramISearchResultModel.toString());
+        QLog.d("FavoriteSearchResultPresenter", 2, paramISearchResultView.toString());
       }
-      localImageView.setBackgroundDrawable(URLDrawable.getDrawable(localFavoriteSearchResultModel.jdField_d_of_type_JavaLangString, paramISearchResultModel));
+      else
+      {
+        localImageView.setBackgroundDrawable(URLDrawable.getDrawable(localFavoriteSearchResultModel.jdField_d_of_type_JavaLangString, paramISearchResultModel));
+      }
     }
-    label136:
-    do
+    else
     {
-      return;
-      localImageView.setImageDrawable(null);
-      localImageView.setBackgroundDrawable(null);
-      break;
-      try
+      if (localFavoriteSearchResultModel.jdField_d_of_type_Int != 0)
       {
-        localImageView.setImageDrawable(URLDrawable.getDrawable(localFavoriteSearchResultModel.jdField_d_of_type_JavaLangString, paramISearchResultModel));
-        return;
-      }
-      catch (Exception paramISearchResultModel) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("FavoriteSearchResultPresenter", 2, "bindFace exception = " + paramISearchResultModel.toString());
-    return;
-    label186:
-    if (localFavoriteSearchResultModel.jdField_d_of_type_Int != 0)
-    {
-      if ((5 == localFavoriteSearchResultModel.f) || (localFavoriteSearchResultModel.jdField_a_of_type_Boolean))
-      {
+        if ((5 != localFavoriteSearchResultModel.f) && (!localFavoriteSearchResultModel.jdField_a_of_type_Boolean))
+        {
+          localImageView.setImageResource(localFavoriteSearchResultModel.jdField_d_of_type_Int);
+          return;
+        }
         localImageView.setBackgroundResource(localFavoriteSearchResultModel.jdField_d_of_type_Int);
         return;
       }
-      localImageView.setImageResource(localFavoriteSearchResultModel.jdField_d_of_type_Int);
+      if (localFavoriteSearchResultModel.jdField_a_of_type_ArrayOfByte != null)
+      {
+        this.a.inJustDecodeBounds = true;
+        BitmapFactory.decodeByteArray(localFavoriteSearchResultModel.jdField_a_of_type_ArrayOfByte, 0, localFavoriteSearchResultModel.jdField_a_of_type_ArrayOfByte.length, this.a);
+        paramISearchResultModel = this.a;
+        paramISearchResultModel.inJustDecodeBounds = false;
+        paramISearchResultModel.inSampleSize = (paramISearchResultModel.outWidth / paramISearchResultView.b().getMeasuredWidth());
+      }
+    }
+    try
+    {
+      paramISearchResultModel = new BitmapDrawable(null, BitmapFactory.decodeByteArray(localFavoriteSearchResultModel.jdField_a_of_type_ArrayOfByte, 0, localFavoriteSearchResultModel.jdField_a_of_type_ArrayOfByte.length, this.a));
+    }
+    catch (OutOfMemoryError paramISearchResultModel)
+    {
+      label333:
+      label373:
+      break label333;
+    }
+    paramISearchResultModel = null;
+    if ((5 != localFavoriteSearchResultModel.f) && (!localFavoriteSearchResultModel.jdField_a_of_type_Boolean))
+    {
+      localImageView.setImageDrawable(paramISearchResultModel);
       return;
     }
-    if (localFavoriteSearchResultModel.jdField_a_of_type_ArrayOfByte != null)
-    {
-      this.a.inJustDecodeBounds = true;
-      BitmapFactory.decodeByteArray(localFavoriteSearchResultModel.jdField_a_of_type_ArrayOfByte, 0, localFavoriteSearchResultModel.jdField_a_of_type_ArrayOfByte.length, this.a);
-      this.a.inJustDecodeBounds = false;
-      this.a.inSampleSize = (this.a.outWidth / paramISearchResultView.b().getMeasuredWidth());
-      try
-      {
-        paramISearchResultModel = new BitmapDrawable(null, BitmapFactory.decodeByteArray(localFavoriteSearchResultModel.jdField_a_of_type_ArrayOfByte, 0, localFavoriteSearchResultModel.jdField_a_of_type_ArrayOfByte.length, this.a));
-        if ((5 == localFavoriteSearchResultModel.f) || (localFavoriteSearchResultModel.jdField_a_of_type_Boolean))
-        {
-          localImageView.setBackgroundDrawable(paramISearchResultModel);
-          return;
-        }
-      }
-      catch (OutOfMemoryError paramISearchResultModel)
-      {
-        for (;;)
-        {
-          paramISearchResultModel = null;
-        }
-        localImageView.setImageDrawable(paramISearchResultModel);
-        return;
-      }
-    }
-    super.a(paramISearchResultModel, paramISearchResultView);
+    localImageView.setBackgroundDrawable(paramISearchResultModel);
+    return;
+    super.b(paramISearchResultModel, paramISearchResultView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqfav.globalsearch.FavoriteSearchResultPresenter
  * JD-Core Version:    0.7.0.1
  */

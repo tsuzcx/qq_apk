@@ -23,15 +23,17 @@ public class CustomCoverFragment$SpaceItemDecoration
       paramRect.left = 0;
       return;
     }
-    int i = paramRecyclerView.getChildLayoutPosition(paramView) - 1;
-    float f = this.jdField_a_of_type_Int * 2 * 1.0F / 3.0F;
-    paramRect.left = ((int)(i % 3 * (this.jdField_a_of_type_Int - f)));
-    paramRect.right = ((int)(f - i % 3 * (this.jdField_a_of_type_Int - f)));
+    int i = paramRecyclerView.getChildLayoutPosition(paramView);
+    int j = this.jdField_a_of_type_Int;
+    float f1 = j * 2 * 1.0F / 3.0F;
+    float f2 = (i - 1) % 3;
+    paramRect.left = ((int)((j - f1) * f2));
+    paramRect.right = ((int)(f1 - f2 * (j - f1)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.CustomCoverFragment.SpaceItemDecoration
  * JD-Core Version:    0.7.0.1
  */

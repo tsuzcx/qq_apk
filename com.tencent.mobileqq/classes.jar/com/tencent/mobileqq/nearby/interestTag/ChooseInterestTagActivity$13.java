@@ -18,86 +18,78 @@ class ChooseInterestTagActivity$13
   
   public void afterTextChanged(Editable paramEditable)
   {
-    ChooseInterestTagActivity.a(this.a).removeMessages(4097);
-    ChooseInterestTagActivity.b(this.a, 0);
-    String str;
-    if (ChooseInterestTagActivity.a(this.a).getText() == null)
+    ChooseInterestTagActivity.access$400(this.a).removeMessages(4097);
+    ChooseInterestTagActivity.access$802(this.a, 0);
+    if (ChooseInterestTagActivity.access$2700(this.a).getText() == null) {
+      paramEditable = "";
+    } else {
+      paramEditable = ChooseInterestTagActivity.access$2700(this.a).getText().toString();
+    }
+    String str = NearbyUtils.a(paramEditable);
+    if (ChooseInterestTagActivity.access$2700(this.a).getText() == null) {
+      paramEditable = "";
+    } else {
+      paramEditable = ChooseInterestTagActivity.access$2700(this.a).getText().toString();
+    }
+    boolean bool2 = TextUtils.isEmpty(paramEditable);
+    boolean bool1 = true;
+    if (bool2)
     {
-      paramEditable = "";
-      str = NearbyUtils.a(paramEditable);
-      if (ChooseInterestTagActivity.a(this.a).getText() != null) {
-        break label163;
+      if (ChooseInterestTagActivity.access$1900(this.a).getVisibility() != 8) {
+        ChooseInterestTagActivity.access$1900(this.a).setVisibility(8);
       }
-      paramEditable = "";
-      label59:
-      if (!TextUtils.isEmpty(paramEditable)) {
-        break label185;
-      }
-      if (ChooseInterestTagActivity.b(this.a).getVisibility() != 8) {
-        ChooseInterestTagActivity.b(this.a).setVisibility(8);
-      }
-      ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), true);
+      ChooseInterestTagActivity.access$1100(this.a).a(ChooseInterestTagActivity.access$1000(this.a), true);
       paramEditable = this.a;
-      if (ChooseInterestTagActivity.b(this.a) == -1) {
-        break label180;
+      if (ChooseInterestTagActivity.access$200(paramEditable) == -1) {
+        bool1 = false;
       }
-    }
-    label163:
-    label180:
-    for (boolean bool = true;; bool = false)
-    {
-      ChooseInterestTagActivity.a(paramEditable, false, bool);
-      ChooseInterestTagActivity.a(this.a, "");
+      ChooseInterestTagActivity.access$1400(paramEditable, false, bool1);
+      ChooseInterestTagActivity.access$702(this.a, "");
       return;
-      paramEditable = ChooseInterestTagActivity.a(this.a).getText().toString();
-      break;
-      paramEditable = ChooseInterestTagActivity.a(this.a).getText().toString();
-      break label59;
     }
-    label185:
     if (TextUtils.isEmpty(str))
     {
-      if (ChooseInterestTagActivity.b(this.a).getVisibility() != 0) {
-        ChooseInterestTagActivity.b(this.a).setVisibility(0);
+      if (ChooseInterestTagActivity.access$1900(this.a).getVisibility() != 0) {
+        ChooseInterestTagActivity.access$1900(this.a).setVisibility(0);
       }
-      ChooseInterestTagActivity.b(this.a).setText(HardCodeUtil.a(2131701888));
-      ChooseInterestTagActivity.c(this.a).setVisibility(8);
-      ChooseInterestTagActivity.a(this.a, "");
+      ChooseInterestTagActivity.access$2000(this.a).setText(HardCodeUtil.a(2131702028));
+      ChooseInterestTagActivity.access$2100(this.a).setVisibility(8);
+      ChooseInterestTagActivity.access$702(this.a, "");
       return;
     }
-    if (ChooseInterestTagActivity.b(this.a).getVisibility() != 0) {
-      ChooseInterestTagActivity.b(this.a).setVisibility(0);
+    if (ChooseInterestTagActivity.access$1900(this.a).getVisibility() != 0) {
+      ChooseInterestTagActivity.access$1900(this.a).setVisibility(0);
     }
-    if (NetworkUtil.d(this.a))
+    if (NetworkUtil.isNetSupport(this.a))
     {
-      ChooseInterestTagActivity.b(this.a).setText(HardCodeUtil.a(2131701893));
-      ChooseInterestTagActivity.c(this.a).setVisibility(8);
-      ChooseInterestTagActivity.a(this.a, str);
-      ChooseInterestTagActivity.a(this.a).sendEmptyMessageDelayed(4097, 400L);
+      ChooseInterestTagActivity.access$2000(this.a).setText(HardCodeUtil.a(2131702033));
+      ChooseInterestTagActivity.access$2100(this.a).setVisibility(8);
+      ChooseInterestTagActivity.access$702(this.a, str);
+      ChooseInterestTagActivity.access$400(this.a).sendEmptyMessageDelayed(4097, 400L);
       return;
     }
-    if (!ChooseInterestTagActivity.c(this.a))
+    if (!ChooseInterestTagActivity.access$1500(this.a))
     {
-      ChooseInterestTagActivity.a(this.a, HardCodeUtil.a(2131701868));
-      ChooseInterestTagActivity.a(this.a, true);
-      ChooseInterestTagActivity.a(this.a).sendEmptyMessageDelayed(4100, 3000L);
+      ChooseInterestTagActivity.access$1600(this.a, HardCodeUtil.a(2131702008));
+      ChooseInterestTagActivity.access$1502(this.a, true);
+      ChooseInterestTagActivity.access$400(this.a).sendEmptyMessageDelayed(4100, 3000L);
     }
-    ChooseInterestTagActivity.b(this.a).setText("");
-    ChooseInterestTagActivity.b(this.a).setOnClickListener(null);
-    ChooseInterestTagActivity.c(this.a).setVisibility(8);
-    ChooseInterestTagActivity.a(this.a, "");
+    ChooseInterestTagActivity.access$2000(this.a).setText("");
+    ChooseInterestTagActivity.access$2000(this.a).setOnClickListener(null);
+    ChooseInterestTagActivity.access$2100(this.a).setVisibility(8);
+    ChooseInterestTagActivity.access$702(this.a, "");
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    ChooseInterestTagActivity.a(this.a, 0);
+    ChooseInterestTagActivity.access$2900(this.a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.13
  * JD-Core Version:    0.7.0.1
  */

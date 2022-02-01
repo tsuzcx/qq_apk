@@ -45,25 +45,26 @@ public class TAVMovieFilterProxyWithTimeRange
     {
     default: 
       return new RGBEffect();
-    case 0: 
-      if (this.bitmap == null) {
-        return null;
-      }
-      return new LookupFilter(this.bitmap);
-    case 1: 
-      return new RGBEffect();
-    case 2: 
-      return new CanyingEffect();
-    case 3: 
-      return new ChongdieEffect();
-    case 4: 
-      return new GanraoEffect();
-    case 5: 
-      return new HuanjueEffect();
+    case 7: 
+      return new ShanbaiEffect();
     case 6: 
       return new LvdongEffect();
+    case 5: 
+      return new HuanjueEffect();
+    case 4: 
+      return new GanraoEffect();
+    case 3: 
+      return new ChongdieEffect();
+    case 2: 
+      return new CanyingEffect();
+    case 1: 
+      return new RGBEffect();
     }
-    return new ShanbaiEffect();
+    Bitmap localBitmap = this.bitmap;
+    if (localBitmap == null) {
+      return null;
+    }
+    return new LookupFilter(localBitmap);
   }
   
   @NonNull
@@ -85,7 +86,8 @@ public class TAVMovieFilterProxyWithTimeRange
   
   public void release()
   {
-    if ((this.bitmap != null) && (!this.bitmap.isRecycled()))
+    Bitmap localBitmap = this.bitmap;
+    if ((localBitmap != null) && (!localBitmap.isRecycled()))
     {
       this.bitmap.recycle();
       this.bitmap = null;

@@ -25,14 +25,15 @@ public class PreloadResource
   
   public static PreloadResource g()
   {
-    if (instance == null) {}
-    synchronized (lock)
-    {
-      if (instance == null) {
-        instance = new PreloadResource();
+    if (instance == null) {
+      synchronized (lock)
+      {
+        if (instance == null) {
+          instance = new PreloadResource();
+        }
       }
-      return instance;
     }
+    return instance;
   }
   
   private String getCurrProcessName()
@@ -51,58 +52,68 @@ public class PreloadResource
   
   public AppUIProxy.DebugLayout getAppDebugUI(Context paramContext)
   {
-    if (this.mAppDebugLayout == null) {}
-    try
-    {
-      if (this.mAppDebugLayout == null)
+    if (this.mAppDebugLayout == null) {
+      try
       {
-        QMLog.w("minisdk-start_PreloadResource", "preload getAppDebugUI");
-        this.mAppDebugLayout = new AppUIProxy.DebugLayout(paramContext);
-        this.mAppDebugLayout.setBackgroundColor(-822083584);
-        paramContext = new TextView(paramContext);
-        paramContext.setTextColor(-1);
-        paramContext.setTextSize(30.0F);
-        paramContext.setText("调试断点中...");
-        FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
-        localLayoutParams.gravity = 17;
-        this.mAppDebugLayout.addView(paramContext, localLayoutParams);
-        this.mAppDebugLayout.setVisibility(4);
+        if (this.mAppDebugLayout == null)
+        {
+          QMLog.w("minisdk-start_PreloadResource", "preload getAppDebugUI");
+          this.mAppDebugLayout = new AppUIProxy.DebugLayout(paramContext);
+          this.mAppDebugLayout.setBackgroundColor(-822083584);
+          paramContext = new TextView(paramContext);
+          paramContext.setTextColor(-1);
+          paramContext.setTextSize(30.0F);
+          paramContext.setText("调试断点中...");
+          FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
+          localLayoutParams.gravity = 17;
+          this.mAppDebugLayout.addView(paramContext, localLayoutParams);
+          this.mAppDebugLayout.setVisibility(4);
+        }
       }
-      return this.mAppDebugLayout;
+      finally {}
     }
-    finally {}
+    return this.mAppDebugLayout;
   }
   
   public AppUIProxy.LoadingUI getAppLoadingUI(Context paramContext)
   {
-    if (this.mAppLadingUI == null) {}
-    try
-    {
-      if (this.mAppLadingUI == null)
+    if (this.mAppLadingUI == null) {
+      try
       {
-        QMLog.w("minisdk-start_PreloadResource", "preload getAppLoadingUI");
-        this.mAppLadingUI = new AppUIProxy.LoadingUI(paramContext);
+        if (this.mAppLadingUI == null)
+        {
+          QMLog.w("minisdk-start_PreloadResource", "preload getAppLoadingUI");
+          this.mAppLadingUI = new AppUIProxy.LoadingUI(paramContext);
+        }
       }
-      return this.mAppLadingUI;
+      finally {}
     }
-    finally {}
+    return this.mAppLadingUI;
   }
   
   public boolean isMiniAppProcess(Context paramContext, Configuration paramConfiguration)
   {
-    if ((paramConfiguration == null) || (paramConfiguration.processInfoList == null)) {
-      return false;
-    }
-    paramContext = getCurrProcessName();
-    paramConfiguration = paramConfiguration.processInfoList.iterator();
-    while (paramConfiguration.hasNext())
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramConfiguration != null)
     {
-      Configuration.ProcessInfo localProcessInfo = (Configuration.ProcessInfo)paramConfiguration.next();
-      if ((localProcessInfo.processType == ProcessType.MINI_APP) && (!TextUtils.isEmpty(paramContext)) && (paramContext.equals(localProcessInfo.name))) {
-        return true;
+      if (paramConfiguration.processInfoList == null) {
+        return false;
       }
+      paramContext = getCurrProcessName();
+      paramConfiguration = paramConfiguration.processInfoList.iterator();
+      Configuration.ProcessInfo localProcessInfo;
+      do
+      {
+        bool1 = bool2;
+        if (!paramConfiguration.hasNext()) {
+          break;
+        }
+        localProcessInfo = (Configuration.ProcessInfo)paramConfiguration.next();
+      } while ((localProcessInfo.processType != ProcessType.MINI_APP) || (TextUtils.isEmpty(paramContext)) || (!paramContext.equals(localProcessInfo.name)));
+      bool1 = true;
     }
-    return false;
+    return bool1;
   }
   
   public void preload(Context paramContext, Configuration paramConfiguration)
@@ -118,7 +129,7 @@ public class PreloadResource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.PreloadResource
  * JD-Core Version:    0.7.0.1
  */

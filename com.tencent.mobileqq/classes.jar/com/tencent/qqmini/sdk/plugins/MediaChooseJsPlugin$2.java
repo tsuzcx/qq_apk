@@ -13,15 +13,19 @@ class MediaChooseJsPlugin$2
     if (MediaChooseJsPlugin.access$100(this.this$0) == null) {
       return;
     }
-    if (QMLog.isColorLevel()) {
-      QMLog.d("MediaJsPlugin", "updateToastMsg toastView=" + MediaChooseJsPlugin.access$100(this.this$0));
+    if (QMLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateToastMsg toastView=");
+      localStringBuilder.append(MediaChooseJsPlugin.access$100(this.this$0));
+      QMLog.d("MediaJsPlugin", localStringBuilder.toString());
     }
     MediaChooseJsPlugin.access$100(this.this$0).updateMsg(this.val$title);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.MediaChooseJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

@@ -25,13 +25,17 @@ public class FavoriteDownloader
       paramString1 = new URL(localStringBuilder.toString());
       return paramString1;
     }
-    catch (MalformedURLException paramString1) {}
+    catch (MalformedURLException paramString1)
+    {
+      label54:
+      break label54;
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.FavoriteDownloader
  * JD-Core Version:    0.7.0.1
  */

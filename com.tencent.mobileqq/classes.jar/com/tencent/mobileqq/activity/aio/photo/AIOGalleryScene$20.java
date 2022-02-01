@@ -16,20 +16,26 @@ class AIOGalleryScene$20
     {
       if (this.jdField_a_of_type_JavaIoFile != null)
       {
-        Uri localUri = Uri.parse("file://" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-        AIOGalleryScene.a(this.this$0, localUri, this.jdField_a_of_type_JavaUtilArrayList);
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("file://");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+        localObject = Uri.parse(((StringBuilder)localObject).toString());
+        AIOGalleryScene.a(this.this$0, (Uri)localObject, this.jdField_a_of_type_JavaUtilArrayList);
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
-      QLog.i("AIOGalleryScene", 1, "add qr action sheet error: " + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("add qr action sheet error: ");
+      localStringBuilder.append(localException.getMessage());
+      QLog.i("AIOGalleryScene", 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.20
  * JD-Core Version:    0.7.0.1
  */

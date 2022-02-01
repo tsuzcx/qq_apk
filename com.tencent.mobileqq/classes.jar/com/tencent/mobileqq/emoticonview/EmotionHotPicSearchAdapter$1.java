@@ -12,31 +12,44 @@ class EmotionHotPicSearchAdapter$1
   
   public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    QLog.e("EmotionHotPicSearchAdapter", 1, "onLoadFailed: " + this.val$emotionInfo.toString());
+    paramView = new StringBuilder();
+    paramView.append("onLoadFailed: ");
+    paramView.append(this.val$emotionInfo.toString());
+    QLog.e("EmotionHotPicSearchAdapter", 1, paramView.toString());
   }
   
   public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    QLog.e("EmotionHotPicSearchAdapter", 1, "onLoadFailed: " + this.val$emotionInfo.toString());
+    paramView = new StringBuilder();
+    paramView.append("onLoadFailed: ");
+    paramView.append(this.val$emotionInfo.toString());
+    QLog.e("EmotionHotPicSearchAdapter", 1, paramView.toString());
   }
   
   public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
   {
-    QLog.e("EmotionHotPicSearchAdapter", 1, "onLoadInterrupted: " + this.val$emotionInfo.toString());
+    paramView = new StringBuilder();
+    paramView.append("onLoadInterrupted: ");
+    paramView.append(this.val$emotionInfo.toString());
+    QLog.e("EmotionHotPicSearchAdapter", 1, paramView.toString());
   }
   
   public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
   
   public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EmotionHotPicSearchAdapter", 2, "onLoadSuccessed: " + this.val$emotionInfo.toString());
+    if (QLog.isColorLevel())
+    {
+      paramView = new StringBuilder();
+      paramView.append("onLoadSuccessed: ");
+      paramView.append(this.val$emotionInfo.toString());
+      QLog.i("EmotionHotPicSearchAdapter", 2, paramView.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionHotPicSearchAdapter.1
  * JD-Core Version:    0.7.0.1
  */

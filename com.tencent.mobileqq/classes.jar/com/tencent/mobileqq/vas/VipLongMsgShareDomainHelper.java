@@ -21,33 +21,36 @@ public class VipLongMsgShareDomainHelper
   
   public static VipLongMsgShareDomainHelper a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqVasVipLongMsgShareDomainHelper == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqVasVipLongMsgShareDomainHelper == null) {
-        jdField_a_of_type_ComTencentMobileqqVasVipLongMsgShareDomainHelper = new VipLongMsgShareDomainHelper();
+    if (jdField_a_of_type_ComTencentMobileqqVasVipLongMsgShareDomainHelper == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqVasVipLongMsgShareDomainHelper == null) {
+          jdField_a_of_type_ComTencentMobileqqVasVipLongMsgShareDomainHelper = new VipLongMsgShareDomainHelper();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqVasVipLongMsgShareDomainHelper;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqVasVipLongMsgShareDomainHelper;
   }
   
   public void a(JSONArray paramJSONArray)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipLongMsgShareDomainHelper", 2, "setConfigData data = " + paramJSONArray);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setConfigData data = ");
+      ((StringBuilder)localObject).append(paramJSONArray);
+      QLog.d("VipLongMsgShareDomainHelper", 2, ((StringBuilder)localObject).toString());
     }
     if ((paramJSONArray != null) && (paramJSONArray.length() > 0))
     {
       int i = 0;
-      for (;;)
+      while (i < paramJSONArray.length())
       {
-        if (i >= paramJSONArray.length()) {
-          return;
-        }
         try
         {
-          Object localObject = paramJSONArray.getJSONObject(i);
+          localObject = paramJSONArray.getJSONObject(i);
           if (localObject != null)
           {
             localObject = ((JSONObject)localObject).optString("domain", "");
@@ -56,10 +59,7 @@ public class VipLongMsgShareDomainHelper
         }
         catch (Exception localException)
         {
-          for (;;)
-          {
-            QLog.e("VipLongMsgShareDomainHelper", 1, "setConfigData exception ", localException);
-          }
+          QLog.e("VipLongMsgShareDomainHelper", 1, "setConfigData exception ", localException);
         }
         i += 1;
       }
@@ -89,7 +89,7 @@ public class VipLongMsgShareDomainHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VipLongMsgShareDomainHelper
  * JD-Core Version:    0.7.0.1
  */

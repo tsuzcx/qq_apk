@@ -4,7 +4,7 @@ import android.text.SpannableStringBuilder;
 import android.text.style.ClickableSpan;
 import android.view.View;
 import android.view.View.AccessibilityDelegate;
-import com.tencent.mobileqq.data.MessageForGrayTips.HighlightItem;
+import com.tencent.mobileqq.data.GrayTipsMessageConstants.HighlightItem;
 import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -26,10 +26,10 @@ class UniteGrayTipItemBuilder$4
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
-        Object localObject = (MessageForGrayTips.HighlightItem)localIterator.next();
+        Object localObject = (GrayTipsMessageConstants.HighlightItem)localIterator.next();
         if (localObject != null)
         {
-          localObject = (ClickableSpan[])this.jdField_a_of_type_AndroidTextSpannableStringBuilder.getSpans(((MessageForGrayTips.HighlightItem)localObject).start, ((MessageForGrayTips.HighlightItem)localObject).end, MessageForGrayTips.HightlightClickableSpan.class);
+          localObject = (ClickableSpan[])this.jdField_a_of_type_AndroidTextSpannableStringBuilder.getSpans(((GrayTipsMessageConstants.HighlightItem)localObject).start, ((GrayTipsMessageConstants.HighlightItem)localObject).end, MessageForGrayTips.HightlightClickableSpan.class);
           if (localObject.length > 0) {
             localObject[0].onClick(paramView);
           }
@@ -40,7 +40,7 @@ class UniteGrayTipItemBuilder$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.graytip.UniteGrayTipItemBuilder.4
  * JD-Core Version:    0.7.0.1
  */

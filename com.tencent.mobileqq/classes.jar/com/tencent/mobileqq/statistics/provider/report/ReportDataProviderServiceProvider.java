@@ -17,20 +17,21 @@ public class ReportDataProviderServiceProvider
   
   public IReportDataProviderService a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqBridgeReportServiceIReportDataProviderService == null) {}
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqBridgeReportServiceIReportDataProviderService == null) {
-        this.jdField_a_of_type_ComTencentMobileqqBridgeReportServiceIReportDataProviderService = b();
+    if (this.jdField_a_of_type_ComTencentMobileqqBridgeReportServiceIReportDataProviderService == null) {
+      try
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqBridgeReportServiceIReportDataProviderService == null) {
+          this.jdField_a_of_type_ComTencentMobileqqBridgeReportServiceIReportDataProviderService = b();
+        }
       }
-      return this.jdField_a_of_type_ComTencentMobileqqBridgeReportServiceIReportDataProviderService;
+      finally {}
     }
-    finally {}
+    return this.jdField_a_of_type_ComTencentMobileqqBridgeReportServiceIReportDataProviderService;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.provider.report.ReportDataProviderServiceProvider
  * JD-Core Version:    0.7.0.1
  */

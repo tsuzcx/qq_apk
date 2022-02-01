@@ -41,180 +41,222 @@ public class FriendShieldReceiver
   
   private void a(ToServiceMsg paramToServiceMsg, Oidb_0x5d1.RspBody paramRspBody)
   {
-    Object localObject2 = (FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Object localObject1 = (FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
     int i = paramRspBody.uint32_cmd.get();
     long l1 = paramToServiceMsg.extraData.getLong("friendUin");
-    Object localObject1 = "";
+    Boolean localBoolean = Boolean.valueOf(false);
+    paramToServiceMsg = "";
     long l2;
     int j;
+    Object localObject2;
     boolean bool1;
-    label262:
     boolean bool2;
     if ((i == 1) && (paramRspBody.msg_set_friend_id.has()))
     {
-      paramToServiceMsg = (Oidb_0x5d1.SetFriendIdRsp)paramRspBody.msg_set_friend_id.get();
-      l2 = paramToServiceMsg.uint64_seq.get();
-      j = paramToServiceMsg.uint32_result.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "FriendShield : handleSetFriendShieldFlagResp : uin : " + l1 + " cmd:" + i + "result : " + j + " newSeq:" + l2);
+      paramRspBody = (Oidb_0x5d1.SetFriendIdRsp)paramRspBody.msg_set_friend_id.get();
+      l2 = paramRspBody.uint64_seq.get();
+      j = paramRspBody.uint32_result.get();
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("FriendShield : handleSetFriendShieldFlagResp : uin : ");
+        ((StringBuilder)localObject2).append(l1);
+        ((StringBuilder)localObject2).append(" cmd:");
+        ((StringBuilder)localObject2).append(i);
+        ((StringBuilder)localObject2).append("result : ");
+        ((StringBuilder)localObject2).append(j);
+        ((StringBuilder)localObject2).append(" newSeq:");
+        ((StringBuilder)localObject2).append(l2);
+        QLog.d("FriendListHandler.BaseHandlerReceiver", 2, ((StringBuilder)localObject2).toString());
       }
       if (j == 0)
       {
-        paramRspBody = ((FriendsManager)localObject2).e(String.valueOf(l1));
-        paramToServiceMsg = (ToServiceMsg)localObject1;
-        if (paramRspBody != null)
+        localObject2 = ((FriendsManager)localObject1).e(String.valueOf(l1));
+        paramRspBody = paramToServiceMsg;
+        if (localObject2 != null)
         {
-          paramRspBody.setShieldFlag(true);
-          ((FriendsManager)localObject2).a(paramRspBody);
-          paramToServiceMsg = this.a.getCurrentAccountUin();
-          paramRspBody = HardCodeUtil.a(2131704899);
+          ((Friends)localObject2).setShieldFlag(true);
+          ((FriendsManager)localObject1).a((Friends)localObject2);
+          paramRspBody = this.a.getCurrentAccountUin();
+          localObject1 = HardCodeUtil.a(2131704975);
           l2 = MessageCache.a();
           localObject2 = MessageRecordFactory.a(-2012);
-          ((MessageRecord)localObject2).init(paramToServiceMsg, String.valueOf(l1), paramToServiceMsg, paramRspBody, l2, 0, 0, l2);
+          ((MessageRecord)localObject2).init(paramRspBody, String.valueOf(l1), paramRspBody, (String)localObject1, l2, 0, 0, l2);
           ((MessageRecord)localObject2).msgtype = -2012;
           ((MessageRecord)localObject2).isread = true;
-          this.a.getMessageFacade().a((MessageRecord)localObject2, paramToServiceMsg);
-          paramToServiceMsg = (ToServiceMsg)localObject1;
+          this.a.getMessageFacade().a((MessageRecord)localObject2, paramRspBody);
+          paramRspBody = paramToServiceMsg;
         }
-        if (j != 0) {
-          break label331;
-        }
-        bool1 = true;
-        if (j != 0) {
-          break label337;
-        }
-        bool2 = true;
-        label270:
-        a(56, bool1, new Object[] { Long.valueOf(l1), Boolean.valueOf(true), Boolean.valueOf(bool2), Boolean.valueOf(false), paramToServiceMsg });
       }
-    }
-    label331:
-    label337:
-    label633:
-    label639:
-    do
-    {
-      return;
-      paramToServiceMsg = paramToServiceMsg.bytes_error_msg.get().toStringUtf8();
-      break;
-      bool1 = false;
-      break label262;
-      bool2 = false;
-      break label270;
-      if ((i == 2) && (paramRspBody.msg_clear_friend_id.has()))
+      else
       {
-        paramToServiceMsg = (Oidb_0x5d1.ClearFriendIdRsp)paramRspBody.msg_clear_friend_id.get();
-        l2 = paramToServiceMsg.uint64_seq.get();
-        j = paramToServiceMsg.uint32_result.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "FriendShield : handleSetFriendShieldFlagResp : uin : " + l1 + " cmd:" + i + "result : " + j + " newSeq:" + l2);
-        }
-        if (j == 0)
+        paramRspBody = paramRspBody.bytes_error_msg.get().toStringUtf8();
+      }
+      if (j == 0) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      if (j == 0) {
+        bool2 = true;
+      } else {
+        bool2 = false;
+      }
+      a(55, bool1, new Object[] { Long.valueOf(l1), Boolean.valueOf(true), Boolean.valueOf(bool2), localBoolean, paramRspBody });
+      return;
+    }
+    if ((i == 2) && (paramRspBody.msg_clear_friend_id.has()))
+    {
+      paramRspBody = (Oidb_0x5d1.ClearFriendIdRsp)paramRspBody.msg_clear_friend_id.get();
+      l2 = paramRspBody.uint64_seq.get();
+      j = paramRspBody.uint32_result.get();
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("FriendShield : handleSetFriendShieldFlagResp : uin : ");
+        ((StringBuilder)localObject2).append(l1);
+        ((StringBuilder)localObject2).append(" cmd:");
+        ((StringBuilder)localObject2).append(i);
+        ((StringBuilder)localObject2).append("result : ");
+        ((StringBuilder)localObject2).append(j);
+        ((StringBuilder)localObject2).append(" newSeq:");
+        ((StringBuilder)localObject2).append(l2);
+        QLog.d("FriendListHandler.BaseHandlerReceiver", 2, ((StringBuilder)localObject2).toString());
+      }
+      if (j == 0)
+      {
+        localObject2 = ((FriendsManager)localObject1).e(String.valueOf(l1));
+        paramRspBody = paramToServiceMsg;
+        if (localObject2 != null)
         {
-          paramToServiceMsg = ((FriendsManager)localObject2).e(String.valueOf(l1));
-          if (paramToServiceMsg != null)
-          {
-            paramToServiceMsg.setShieldFlag(false);
-            ((FriendsManager)localObject2).a(paramToServiceMsg);
-            paramToServiceMsg = this.a.getCurrentAccountUin();
-            paramRspBody = HardCodeUtil.a(2131704902);
-            l2 = MessageCache.a();
-            localObject1 = MessageRecordFactory.a(-2012);
-            ((MessageRecord)localObject1).init(paramToServiceMsg, String.valueOf(l1), paramToServiceMsg, paramRspBody, l2, 0, 0, l2);
-            ((MessageRecord)localObject1).msgtype = -2012;
-            ((MessageRecord)localObject1).isread = true;
-            this.a.getMessageFacade().a((MessageRecord)localObject1, paramToServiceMsg);
-          }
-          paramToServiceMsg = "";
-          if (j != 0) {
-            break label633;
-          }
-          bool1 = true;
-          if (j != 0) {
-            break label639;
-          }
-        }
-        for (bool2 = true;; bool2 = false)
-        {
-          a(56, bool1, new Object[] { Long.valueOf(l1), Boolean.valueOf(false), Boolean.valueOf(bool2), Boolean.valueOf(false), paramToServiceMsg });
-          return;
-          paramToServiceMsg = paramToServiceMsg.bytes_error_msg.get().toStringUtf8();
-          break;
-          bool1 = false;
-          break label564;
+          ((Friends)localObject2).setShieldFlag(false);
+          ((FriendsManager)localObject1).a((Friends)localObject2);
+          paramRspBody = this.a.getCurrentAccountUin();
+          localObject1 = HardCodeUtil.a(2131704978);
+          l2 = MessageCache.a();
+          localObject2 = MessageRecordFactory.a(-2012);
+          ((MessageRecord)localObject2).init(paramRspBody, String.valueOf(l1), paramRspBody, (String)localObject1, l2, 0, 0, l2);
+          ((MessageRecord)localObject2).msgtype = -2012;
+          ((MessageRecord)localObject2).isread = true;
+          this.a.getMessageFacade().a((MessageRecord)localObject2, paramRspBody);
+          paramRspBody = paramToServiceMsg;
         }
       }
-    } while (!QLog.isColorLevel());
-    label564:
-    QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "<---handleSetFriendShieldFlagResp : cmd:" + i);
+      else
+      {
+        paramRspBody = paramRspBody.bytes_error_msg.get().toStringUtf8();
+      }
+      if (j == 0) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      bool2 = true;
+      if (j != 0) {
+        bool2 = false;
+      }
+      a(55, bool1, new Object[] { Long.valueOf(l1), localBoolean, Boolean.valueOf(bool2), localBoolean, paramRspBody });
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("<---handleSetFriendShieldFlagResp : cmd:");
+      paramToServiceMsg.append(i);
+      QLog.d("FriendListHandler.BaseHandlerReceiver", 2, paramToServiceMsg.toString());
+    }
   }
   
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
     long l = paramToServiceMsg.extraData.getLong("friendUin");
     boolean bool = paramToServiceMsg.extraData.getBoolean("isSet");
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "FriendShield : handleSetFriendShieldFlagError : uin : " + l + " isSet:" + bool);
+    if (QLog.isColorLevel())
+    {
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("FriendShield : handleSetFriendShieldFlagError : uin : ");
+      paramToServiceMsg.append(l);
+      paramToServiceMsg.append(" isSet:");
+      paramToServiceMsg.append(bool);
+      QLog.d("FriendListHandler.BaseHandlerReceiver", 2, paramToServiceMsg.toString());
     }
-    a(56, false, new Object[] { Long.valueOf(l), Boolean.valueOf(bool), Boolean.valueOf(false), Boolean.valueOf(false), "" });
+    a(55, false, new Object[] { Long.valueOf(l), Boolean.valueOf(bool), Boolean.valueOf(false), Boolean.valueOf(false), "" });
   }
   
   private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     Oidb_0x5d1.RspBody localRspBody = new Oidb_0x5d1.RspBody();
-    if ((paramFromServiceMsg.getResultCode() == 1002) || (paramFromServiceMsg.getResultCode() == 1013) || (paramFromServiceMsg.getResultCode() != 1000))
+    if ((paramFromServiceMsg.getResultCode() != 1002) && (paramFromServiceMsg.getResultCode() != 1013) && (paramFromServiceMsg.getResultCode() == 1000))
     {
-      a(paramToServiceMsg, paramFromServiceMsg);
-      return;
-    }
-    for (paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();; paramFromServiceMsg = localRspBody)
-    {
-      label174:
+      paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
       try
       {
-        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)paramFromServiceMsg.mergeFrom((byte[])paramObject);
-        if ((paramFromServiceMsg != null) && (paramFromServiceMsg.uint32_result.has()))
+        paramObject = (oidb_sso.OIDBSSOPkg)paramFromServiceMsg.mergeFrom((byte[])paramObject);
+        if ((paramObject != null) && (paramObject.uint32_result.has()))
         {
-          i = paramFromServiceMsg.uint32_result.get();
-          if (QLog.isColorLevel()) {
-            QLog.i("Q.troopgetnews.", 2, "handle_oidb_0x5d1_0|oidb_sso.OIDBSSOPkg.result = " + i);
+          i = paramObject.uint32_result.get();
+          if (QLog.isColorLevel())
+          {
+            paramFromServiceMsg = new StringBuilder();
+            paramFromServiceMsg.append("handle_oidb_0x5d1_0|oidb_sso.OIDBSSOPkg.result = ");
+            paramFromServiceMsg.append(i);
+            QLog.i("Q.troopgetnews.", 2, paramFromServiceMsg.toString());
           }
         }
-        if ((paramFromServiceMsg == null) || (!paramFromServiceMsg.bytes_bodybuffer.has()) || (paramFromServiceMsg.bytes_bodybuffer.get() == null)) {
-          continue;
-        }
-        paramFromServiceMsg = paramFromServiceMsg.bytes_bodybuffer.get().toByteArray();
-      }
-      catch (InvalidProtocolBufferMicroException paramToServiceMsg) {}
-      try
-      {
-        localRspBody.mergeFrom((byte[])paramFromServiceMsg);
         paramFromServiceMsg = localRspBody;
+        if (paramObject != null)
+        {
+          paramFromServiceMsg = localRspBody;
+          if (paramObject.bytes_bodybuffer.has())
+          {
+            paramFromServiceMsg = localRspBody;
+            if (paramObject.bytes_bodybuffer.get() != null)
+            {
+              paramFromServiceMsg = paramObject.bytes_bodybuffer.get().toByteArray();
+              try
+              {
+                localRspBody.mergeFrom((byte[])paramFromServiceMsg);
+                paramFromServiceMsg = localRspBody;
+              }
+              catch (Exception paramObject)
+              {
+                paramFromServiceMsg = null;
+                paramObject.printStackTrace();
+              }
+            }
+          }
+        }
+        if (paramFromServiceMsg == null) {
+          return;
+        }
+        int i = paramFromServiceMsg.uint32_id.get();
+        if (QLog.isColorLevel())
+        {
+          paramObject = new StringBuilder();
+          paramObject.append("FriendShield : setId:");
+          paramObject.append(i);
+          paramObject.append("hex:");
+          paramObject.append("");
+          QLog.d("FriendListHandler.BaseHandlerReceiver", 2, paramObject.toString());
+        }
+        if (i == 4051) {
+          a(paramToServiceMsg, paramFromServiceMsg);
+        }
+        return;
       }
-      catch (Exception paramFromServiceMsg)
+      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
       {
-        paramFromServiceMsg.printStackTrace();
-        paramFromServiceMsg = null;
-        break label174;
+        if (QLog.isColorLevel())
+        {
+          paramFromServiceMsg = new StringBuilder();
+          paramFromServiceMsg.append("handle_oidb_0x5d1_0| oidb_sso parseFrom byte ");
+          paramFromServiceMsg.append(paramToServiceMsg.toString());
+          QLog.d("Q.troopgetnews.", 2, paramFromServiceMsg.toString());
+        }
+        return;
       }
-      if (paramFromServiceMsg == null) {
-        break;
-      }
-      int i = paramFromServiceMsg.uint32_id.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "FriendShield : setId:" + i + "hex:" + "");
-      }
-      if (i != 4051) {
-        break;
-      }
-      a(paramToServiceMsg, paramFromServiceMsg);
-      return;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("Q.troopgetnews.", 2, "handle_oidb_0x5d1_0| oidb_sso parseFrom byte " + paramToServiceMsg.toString());
-      return;
     }
+    a(paramToServiceMsg, paramFromServiceMsg);
   }
   
   public boolean a(String paramString)
@@ -231,7 +273,7 @@ public class FriendShieldReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.friendlist.receiver.FriendShieldReceiver
  * JD-Core Version:    0.7.0.1
  */

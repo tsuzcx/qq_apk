@@ -32,19 +32,21 @@ public final class s_audio
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.audiokey != null) {
-      paramJceOutputStream.write(this.audiokey, 0);
+    String str = this.audiokey;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.audiotime, 1);
-    if (this.errormessge != null) {
-      paramJceOutputStream.write(this.errormessge, 2);
+    str = this.errormessge;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.isplay, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_audio
  * JD-Core Version:    0.7.0.1
  */

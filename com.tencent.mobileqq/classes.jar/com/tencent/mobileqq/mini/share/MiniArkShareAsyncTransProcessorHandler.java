@@ -31,11 +31,34 @@ public class MiniArkShareAsyncTransProcessorHandler
   {
     super.handleMessage(paramMessage);
     Object localObject1 = (FileMsg)paramMessage.obj;
-    if ((localObject1 == null) || (((FileMsg)localObject1).commandId != 62) || (((FileMsg)localObject1).fileType != 24)) {}
-    for (;;)
+    if ((localObject1 != null) && (((FileMsg)localObject1).commandId == 62))
     {
-      return;
-      if ((paramMessage.what == 1007) || (paramMessage.what == 1003))
+      if (((FileMsg)localObject1).fileType != 24) {
+        return;
+      }
+      if ((paramMessage.what != 1007) && (paramMessage.what != 1003))
+      {
+        if (paramMessage.what == 1005)
+        {
+          QLog.e("MiniArkShareImageTransP", 2, "handleMessage send error");
+          paramMessage = this.cmdCallback;
+          if (paramMessage != null) {
+            try
+            {
+              paramMessage.onCallbackResult(false, new Bundle());
+            }
+            catch (Throwable paramMessage)
+            {
+              paramMessage.printStackTrace();
+            }
+          }
+          paramMessage = BaseApplicationImpl.getApplication().getRuntime();
+          if ((paramMessage instanceof QQAppInterface)) {
+            ((ITransFileController)((QQAppInterface)paramMessage).getRuntimeService(ITransFileController.class)).removeHandle(this);
+          }
+        }
+      }
+      else
       {
         Object localObject2 = new Bdh_extinfo.UploadPicExtInfo();
         try
@@ -44,70 +67,48 @@ public class MiniArkShareAsyncTransProcessorHandler
           paramMessage = ((Bdh_extinfo.UploadPicExtInfo)localObject2).bytes_file_resid.get().toStringUtf8();
           localObject1 = ((Bdh_extinfo.UploadPicExtInfo)localObject2).bytes_download_url.get().toStringUtf8();
           localObject2 = ((Bdh_extinfo.UploadPicExtInfo)localObject2).bytes_thumb_download_url.get().toStringUtf8();
-          QLog.d("MiniArkShareImageTransP", 2, "handleMessage " + paramMessage + " " + (String)localObject1 + " " + (String)localObject2);
+          Object localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("handleMessage ");
+          ((StringBuilder)localObject3).append(paramMessage);
+          ((StringBuilder)localObject3).append(" ");
+          ((StringBuilder)localObject3).append((String)localObject1);
+          ((StringBuilder)localObject3).append(" ");
+          ((StringBuilder)localObject3).append((String)localObject2);
+          QLog.d("MiniArkShareImageTransP", 2, ((StringBuilder)localObject3).toString());
           if (this.cmdCallback != null)
           {
-            localBundle = new Bundle();
-            localBundle.putString("imageUUID", paramMessage);
-            localBundle.putString("imageUrl", (String)localObject1);
-            localBundle.putString("imageThumbUrl", (String)localObject2);
+            localObject3 = new Bundle();
+            ((Bundle)localObject3).putString("imageUUID", paramMessage);
+            ((Bundle)localObject3).putString("imageUrl", (String)localObject1);
+            ((Bundle)localObject3).putString("imageThumbUrl", (String)localObject2);
+            try
+            {
+              this.cmdCallback.onCallbackResult(true, (Bundle)localObject3);
+            }
+            catch (Throwable paramMessage)
+            {
+              paramMessage.printStackTrace();
+            }
           }
+          paramMessage = BaseApplicationImpl.getApplication().getRuntime();
         }
         catch (InvalidProtocolBufferMicroException paramMessage)
         {
-          for (;;)
-          {
-            Bundle localBundle;
-            label201:
-            QLog.d("MiniArkShareImageTransP", 2, "handleMessage ", paramMessage);
-            if (this.cmdCallback != null) {
-              try
-              {
-                this.cmdCallback.onCallbackResult(false, new Bundle());
-              }
-              catch (Throwable paramMessage)
-              {
-                QLog.d("MiniArkShareImageTransP", 2, "handleMessage ", paramMessage);
-              }
+          QLog.d("MiniArkShareImageTransP", 2, "handleMessage ", paramMessage);
+          paramMessage = this.cmdCallback;
+          if (paramMessage != null) {
+            try
+            {
+              paramMessage.onCallbackResult(false, new Bundle());
+            }
+            catch (Throwable paramMessage)
+            {
+              QLog.d("MiniArkShareImageTransP", 2, "handleMessage ", paramMessage);
             }
           }
         }
-        try
-        {
-          this.cmdCallback.onCallbackResult(true, localBundle);
-          paramMessage = BaseApplicationImpl.getApplication().getRuntime();
-          if (!(paramMessage instanceof QQAppInterface)) {
-            continue;
-          }
+        if ((paramMessage instanceof QQAppInterface)) {
           ((ITransFileController)((QQAppInterface)paramMessage).getRuntimeService(ITransFileController.class)).removeHandle(this);
-          return;
-        }
-        catch (Throwable paramMessage)
-        {
-          paramMessage.printStackTrace();
-          break label201;
-        }
-      }
-      if (paramMessage.what != 1005) {
-        continue;
-      }
-      QLog.e("MiniArkShareImageTransP", 2, "handleMessage send error");
-      if (this.cmdCallback != null) {}
-      try
-      {
-        this.cmdCallback.onCallbackResult(false, new Bundle());
-        paramMessage = BaseApplicationImpl.getApplication().getRuntime();
-        if (!(paramMessage instanceof QQAppInterface)) {
-          continue;
-        }
-        ((ITransFileController)((QQAppInterface)paramMessage).getRuntimeService(ITransFileController.class)).removeHandle(this);
-        return;
-      }
-      catch (Throwable paramMessage)
-      {
-        for (;;)
-        {
-          paramMessage.printStackTrace();
         }
       }
     }
@@ -115,7 +116,7 @@ public class MiniArkShareAsyncTransProcessorHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniArkShareAsyncTransProcessorHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -14,52 +14,50 @@ import com.tencent.qphone.base.util.QLog;
 import tencent.im.s2c.msgtype0x210.submsgtype0x87.SubMsgType0x87.MsgBody;
 
 public class SubType0x87
-  implements Msg0X210SubTypeDecoder
+  implements Msg0X210SubTypeDecoder<OnLinePushMessageProcessor>
 {
   private static void a(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler, MsgType0x210 paramMsgType0x210)
   {
     SubMsgType0x87.MsgBody localMsgBody = new SubMsgType0x87.MsgBody();
-    for (;;)
+    try
     {
-      try
+      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+      if (localMsgBody.uint64_friend_msg_type_flag.has())
       {
-        localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-        if (localMsgBody.uint64_friend_msg_type_flag.has())
-        {
-          if (localMsgBody.uint64_friend_msg_type_flag.get() != 1L) {
-            break label100;
-          }
+        int i;
+        if (localMsgBody.uint64_friend_msg_type_flag.get() == 1L) {
           i = 1;
-          if (i != 0) {
-            paramMessageHandler.a().a(2);
-          }
+        } else {
+          i = 0;
         }
-        if (localMsgBody.rpt_msg_msg_notify.has()) {
-          CloneFriendPushHelper.a(paramQQAppInterface, localMsgBody);
+        if (i != 0) {
+          paramMessageHandler.a().a(2);
         }
-        return;
       }
-      catch (Throwable paramQQAppInterface)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PortalManager", 2, "", paramQQAppInterface);
-        }
-        throw new RuntimeException(paramQQAppInterface);
+      if (localMsgBody.rpt_msg_msg_notify.has()) {
+        CloneFriendPushHelper.a(paramQQAppInterface, localMsgBody);
       }
-      label100:
-      int i = 0;
+      return;
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PortalManager", 2, "", paramQQAppInterface);
+      }
+      throw new RuntimeException(paramQQAppInterface);
     }
   }
   
   public MessageRecord a(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    a(paramOnLinePushMessageProcessor.a(), paramOnLinePushMessageProcessor.a().getMsgHandler(), paramMsgType0x210);
+    paramOnLinePushMessageProcessor = (QQAppInterface)paramOnLinePushMessageProcessor.a();
+    a(paramOnLinePushMessageProcessor, paramOnLinePushMessageProcessor.getMsgHandler(), paramMsgType0x210);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x87
  * JD-Core Version:    0.7.0.1
  */

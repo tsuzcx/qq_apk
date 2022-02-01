@@ -55,14 +55,14 @@ public class FloatMapServiceImpl
   private void createMapWidget(LocationRoom.RoomKey paramRoomKey)
   {
     Object localObject = TencentLocationManager.getInstance(BaseApplication.getContext()).getLastKnownLocation();
-    if (localObject != null) {}
-    for (localObject = new LatLng(((TencentLocation)localObject).getLatitude(), ((TencentLocation)localObject).getLongitude());; localObject = null)
-    {
-      localObject = CameraPosition.fromLatLngZoom((LatLng)localObject, 15.0F);
-      this.floatMapWidget = ((FloatMapWidget)LayoutInflater.from(BaseApplication.getContext()).inflate(2131559415, null).findViewById(2131370796));
-      this.floatWindowController.a(paramRoomKey, (CameraPosition)localObject, this.floatMapWidget, null);
-      return;
+    if (localObject != null) {
+      localObject = new LatLng(((TencentLocation)localObject).getLatitude(), ((TencentLocation)localObject).getLongitude());
+    } else {
+      localObject = null;
     }
+    localObject = CameraPosition.fromLatLngZoom((LatLng)localObject, 15.0F);
+    this.floatMapWidget = ((FloatMapWidget)LayoutInflater.from(BaseApplication.getContext()).inflate(2131559290, null).findViewById(2131370428));
+    this.floatWindowController.a(paramRoomKey, (CameraPosition)localObject, this.floatMapWidget);
   }
   
   private void initMapWidgetSettings()
@@ -78,23 +78,9 @@ public class FloatMapServiceImpl
     try
     {
       Iterator localIterator = getFloatMapCallbacks().iterator();
-      while (localIterator.hasNext())
-      {
+      while (localIterator.hasNext()) {
         ((IFloatMapCallback)localIterator.next()).a();
-        continue;
-        this.floatWindowController.destroy();
       }
-    }
-    catch (Exception localException)
-    {
-      QLog.e("FloatMapServiceImpl", 1, "quitFloat: failed. ", localException);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("FloatMapServiceImpl", 2, new Object[] { "quitFloat: invoked. ", " fromType: ", Integer.valueOf(paramInt) });
-      }
-      return;
       this.eventProvider.a();
       if (this.floatMapWidget != null)
       {
@@ -106,14 +92,27 @@ public class FloatMapServiceImpl
         this.floatMapWidget = null;
       }
     }
+    catch (Exception localException)
+    {
+      QLog.e("FloatMapServiceImpl", 1, "quitFloat: failed. ", localException);
+    }
+    this.floatWindowController.destroy();
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatMapServiceImpl", 2, new Object[] { "quitFloat: invoked. ", " fromType: ", Integer.valueOf(paramInt) });
+    }
   }
   
   public void addFloatMapCallback(IFloatMapCallback paramIFloatMapCallback)
   {
-    synchronized (this.floatMapCallbacks)
+    try
     {
       this.floatMapCallbacks.add(paramIFloatMapCallback);
       return;
+    }
+    finally
+    {
+      paramIFloatMapCallback = finally;
+      throw paramIFloatMapCallback;
     }
   }
   
@@ -131,7 +130,7 @@ public class FloatMapServiceImpl
   {
     if (!AppNetConnInfo.isNetSupport())
     {
-      QQToast.a(BaseApplication.getContext(), 2131694459, 0).a();
+      QQToast.a(BaseApplication.getContext(), 2131694424, 0).a();
       return false;
     }
     createMapWidget(paramRoomKey);
@@ -143,7 +142,7 @@ public class FloatMapServiceImpl
       }
     }
     this.eventProvider.a(paramRoomKey);
-    LocationHandler.a().c(paramRoomKey.a(), paramRoomKey.a());
+    LocationHandler.a().a(paramRoomKey.a(), paramRoomKey.a());
     int i = LocationReportUtil.a(paramRoomKey);
     if (i != 0) {
       ReportController.b(null, "CliOper", "", "", "0X800A974", "0X800A974", i, 0, "0", "0", "0", "");
@@ -177,16 +176,22 @@ public class FloatMapServiceImpl
   
   public void onDestroy()
   {
-    synchronized (this.floatMapCallbacks)
+    this.themeChangedReceiver.a();
+    this.floatWindowController.destroy();
+    quitFloat(2);
+    Iterator localIterator = this.floatMapCallbacks.iterator();
+    while (localIterator.hasNext()) {
+      ((IFloatMapCallback)localIterator.next()).b();
+    }
+    try
     {
       this.floatMapCallbacks.clear();
-      this.themeChangedReceiver.a();
-      this.floatWindowController.destroy();
-      quitFloat(2);
-      ??? = getFloatMapCallbacks().iterator();
-      if (((Iterator)???).hasNext()) {
-        ((IFloatMapCallback)((Iterator)???).next()).b();
-      }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
@@ -199,10 +204,15 @@ public class FloatMapServiceImpl
   
   public void removeFloatMapCallback(IFloatMapCallback paramIFloatMapCallback)
   {
-    synchronized (this.floatMapCallbacks)
+    try
     {
       this.floatMapCallbacks.remove(paramIFloatMapCallback);
       return;
+    }
+    finally
+    {
+      paramIFloatMapCallback = finally;
+      throw paramIFloatMapCallback;
     }
   }
   
@@ -220,9 +230,9 @@ public class FloatMapServiceImpl
   {
     BaseApplication localBaseApplication = BaseApplication.getContext();
     GlobalFloatDialog localGlobalFloatDialog = new GlobalFloatDialog();
-    localGlobalFloatDialog.a(localBaseApplication.getString(2131719404));
-    localGlobalFloatDialog.b(localBaseApplication.getString(2131690946));
-    localGlobalFloatDialog.c(localBaseApplication.getString(2131691327));
+    localGlobalFloatDialog.a(localBaseApplication.getString(2131719122));
+    localGlobalFloatDialog.b(localBaseApplication.getString(2131690874));
+    localGlobalFloatDialog.c(localBaseApplication.getString(2131691248));
     localGlobalFloatDialog.a(new FloatMapServiceImpl.1(this, paramRoomKey));
     localGlobalFloatDialog.b(new FloatMapServiceImpl.2(this));
     localGlobalFloatDialog.c(new FloatMapServiceImpl.3(this, localGlobalFloatDialog));
@@ -231,7 +241,7 @@ public class FloatMapServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.api.impl.FloatMapServiceImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,9 @@ import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewConfiguration;
 import com.tencent.mtt.hippy.HippyEngineContext;
+import com.tencent.mtt.hippy.HippyGlobalConfigs;
 import com.tencent.mtt.hippy.HippyInstanceContext;
+import com.tencent.mtt.hippy.adapter.monitor.HippyEngineMonitorAdapter;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.modules.HippyModuleManager;
 import com.tencent.mtt.hippy.modules.javascriptmodules.EventDispatcher;
@@ -81,15 +83,19 @@ public class NativeGestureDispatcher
     ((EventDispatcher)paramHippyEngineContext.getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveUIComponentEvent(paramInt, "onAttachedToWindow", null);
   }
   
-  public static void handleClick(HippyEngineContext paramHippyEngineContext, int paramInt)
+  public static void handleClick(View paramView, HippyEngineContext paramHippyEngineContext, int paramInt, boolean paramBoolean)
   {
     if (paramHippyEngineContext == null) {
       return;
     }
-    HippyMap localHippyMap = new HippyMap();
-    localHippyMap.pushString("name", "onClick");
-    localHippyMap.pushInt("id", paramInt);
-    ((EventDispatcher)paramHippyEngineContext.getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveNativeGesture(localHippyMap);
+    HippyEngineMonitorAdapter localHippyEngineMonitorAdapter = paramHippyEngineContext.getGlobalConfigs().getEngineMonitorAdapter();
+    if ((localHippyEngineMonitorAdapter != null) && (paramView != null)) {
+      localHippyEngineMonitorAdapter.reportClickEvent(paramView, paramBoolean);
+    }
+    paramView = new HippyMap();
+    paramView.pushString("name", "onClick");
+    paramView.pushInt("id", paramInt);
+    ((EventDispatcher)paramHippyEngineContext.getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveNativeGesture(paramView);
     LogUtils.d("NativeGestureDispatcher", "send msg: onClick");
   }
   
@@ -194,39 +200,39 @@ public class NativeGestureDispatcher
   
   public void handle(String paramString, float paramFloat1, float paramFloat2)
   {
-    if (this.mTargetView == null) {
-      LogUtils.e("NativeGestureDispatcher", "handle!!! but view is null!!!!");
-    }
-    do
+    if (this.mTargetView == null)
     {
+      LogUtils.e("NativeGestureDispatcher", "handle!!! but view is null!!!!");
       return;
-      if (TextUtils.equals(paramString, "onPressIn"))
-      {
-        handlePressIn(this.mEngineContext, this.mTargetView.getId());
-        return;
-      }
-      if (TextUtils.equals(paramString, "onPressOut"))
-      {
-        handlePressOut(this.mEngineContext, this.mTargetView.getId());
-        return;
-      }
-      if (TextUtils.equals(paramString, "onTouchDown"))
-      {
-        handleTouchDown(this.mEngineContext, this.mTargetView.getId(), paramFloat1, paramFloat2, this.mTargetView.getId());
-        return;
-      }
-      if (TextUtils.equals(paramString, "onTouchMove"))
-      {
-        handleTouchMove(this.mEngineContext, this.mTargetView.getId(), paramFloat1, paramFloat2, this.mTargetView.getId());
-        return;
-      }
-      if (TextUtils.equals(paramString, "onTouchEnd"))
-      {
-        handleTouchEnd(this.mEngineContext, this.mTargetView.getId(), paramFloat1, paramFloat2, this.mTargetView.getId());
-        return;
-      }
-    } while (!TextUtils.equals(paramString, "onTouchCancel"));
-    handleTouchCancel(this.mEngineContext, this.mTargetView.getId(), paramFloat1, paramFloat2, this.mTargetView.getId());
+    }
+    if (TextUtils.equals(paramString, "onPressIn"))
+    {
+      handlePressIn(this.mEngineContext, this.mTargetView.getId());
+      return;
+    }
+    if (TextUtils.equals(paramString, "onPressOut"))
+    {
+      handlePressOut(this.mEngineContext, this.mTargetView.getId());
+      return;
+    }
+    if (TextUtils.equals(paramString, "onTouchDown"))
+    {
+      handleTouchDown(this.mEngineContext, this.mTargetView.getId(), paramFloat1, paramFloat2, this.mTargetView.getId());
+      return;
+    }
+    if (TextUtils.equals(paramString, "onTouchMove"))
+    {
+      handleTouchMove(this.mEngineContext, this.mTargetView.getId(), paramFloat1, paramFloat2, this.mTargetView.getId());
+      return;
+    }
+    if (TextUtils.equals(paramString, "onTouchEnd"))
+    {
+      handleTouchEnd(this.mEngineContext, this.mTargetView.getId(), paramFloat1, paramFloat2, this.mTargetView.getId());
+      return;
+    }
+    if (TextUtils.equals(paramString, "onTouchCancel")) {
+      handleTouchCancel(this.mEngineContext, this.mTargetView.getId(), paramFloat1, paramFloat2, this.mTargetView.getId());
+    }
   }
   
   public boolean handleTouchEvent(MotionEvent paramMotionEvent)
@@ -239,44 +245,29 @@ public class NativeGestureDispatcher
   
   public boolean needHandle(String paramString)
   {
-    if (this.mGestureTypes != null)
+    HashSet localHashSet = this.mGestureTypes;
+    if (localHashSet != null)
     {
-      boolean bool2 = this.mGestureTypes.contains(paramString);
-      boolean bool1 = bool2;
-      if (!bool2)
-      {
-        bool1 = bool2;
-        if (!TextUtils.equals(paramString, "onInterceptTouchEvent"))
-        {
-          bool1 = bool2;
-          if (!TextUtils.equals(paramString, "onInterceptPullUpEvent")) {
-            if (!needHandle("onInterceptTouchEvent"))
-            {
-              bool1 = bool2;
-              if (!needHandle("onInterceptPullUpEvent")) {}
-            }
-            else
-            {
-              bool1 = true;
-            }
-          }
-        }
+      boolean bool = localHashSet.contains(paramString);
+      if ((!bool) && (!TextUtils.equals(paramString, "onInterceptTouchEvent")) && (!TextUtils.equals(paramString, "onInterceptPullUpEvent")) && ((needHandle("onInterceptTouchEvent")) || (needHandle("onInterceptPullUpEvent")))) {
+        return true;
       }
-      return bool1;
+      return bool;
     }
     return false;
   }
   
   public void removeGestureType(String paramString)
   {
-    if (this.mGestureTypes != null) {
-      this.mGestureTypes.remove(paramString);
+    HashSet localHashSet = this.mGestureTypes;
+    if (localHashSet != null) {
+      localHashSet.remove(paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.NativeGestureDispatcher
  * JD-Core Version:    0.7.0.1
  */

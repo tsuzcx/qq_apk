@@ -4,10 +4,11 @@ import android.text.TextUtils;
 import android.widget.ImageView;
 import com.tencent.mobileqq.activity.springfestival.entry.IPreloadRes.OnDownloadCallback;
 import com.tencent.mobileqq.activity.springfestival.entry.SpringFestivalEntryManager;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vas.apng.api.VasApngFactory;
-import com.tencent.mobileqq.vas.apng.api.VasApngFactory.Options;
+import com.tencent.mobileqq.vas.apng.api.ApngOptions;
+import com.tencent.mobileqq.vas.apng.api.IVasApngFactory;
 import com.tencent.qphone.base.util.QLog;
 
 class HBEntryBannerView$1
@@ -20,16 +21,22 @@ class HBEntryBannerView$1
     if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_JavaLangString)) && ((paramObject instanceof String)))
     {
       paramString = (String)paramObject;
-      paramBoolean = FileUtils.a(paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("HBEntryBannerView", 2, "playFireWorkAnimation onDownloadCallback exist = " + paramBoolean + ",apngFilePath = " + paramString);
+      paramBoolean = FileUtils.fileExists(paramString);
+      if (QLog.isColorLevel())
+      {
+        paramObject = new StringBuilder();
+        paramObject.append("playFireWorkAnimation onDownloadCallback exist = ");
+        paramObject.append(paramBoolean);
+        paramObject.append(",apngFilePath = ");
+        paramObject.append(paramString);
+        QLog.d("HBEntryBannerView", 2, paramObject.toString());
       }
       if (paramBoolean)
       {
-        paramObject = new VasApngFactory.Options();
+        paramObject = new ApngOptions();
         paramObject.a(URLDrawableHelper.TRANSPARENT);
         paramObject.a(this.jdField_a_of_type_Int);
-        paramString = VasApngFactory.a("", paramObject, paramString);
+        paramString = ((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable("", paramObject, paramString);
         HBEntryBannerView.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerView).setImageDrawable(paramString);
       }
       this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntrySpringFestivalEntryManager.b(this);
@@ -38,7 +45,7 @@ class HBEntryBannerView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.HBEntryBannerView.1
  * JD-Core Version:    0.7.0.1
  */

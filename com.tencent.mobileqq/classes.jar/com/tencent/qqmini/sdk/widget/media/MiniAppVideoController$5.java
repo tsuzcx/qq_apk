@@ -14,21 +14,23 @@ class MiniAppVideoController$5
   public void onBackClick(AbsVideoPlayer paramAbsVideoPlayer)
   {
     QMLog.d("MiniAppVideoController", "video player onBackClick");
-    if (MiniAppVideoController.access$1200(this.this$0) == null) {}
-    while (!MiniAppVideoController.access$000(this.this$0).isFullScreen) {
+    if (MiniAppVideoController.access$1200(this.this$0) == null) {
       return;
     }
-    this.this$0.smallScreen();
+    if (MiniAppVideoController.access$000(this.this$0).isFullScreen) {
+      this.this$0.smallScreen();
+    }
   }
   
   public void onBackOnFullScreenClick(AbsVideoPlayer paramAbsVideoPlayer)
   {
     QMLog.d("MiniAppVideoController", "video player onBackOnFullScreenClick");
-    if (MiniAppVideoController.access$1200(this.this$0) == null) {}
-    while (!MiniAppVideoController.access$000(this.this$0).isFullScreen) {
+    if (MiniAppVideoController.access$1200(this.this$0) == null) {
       return;
     }
-    this.this$0.smallScreen();
+    if (MiniAppVideoController.access$000(this.this$0).isFullScreen) {
+      this.this$0.smallScreen();
+    }
   }
   
   public void onCacheClick(AbsVideoPlayer paramAbsVideoPlayer) {}
@@ -42,7 +44,7 @@ class MiniAppVideoController$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.media.MiniAppVideoController.5
  * JD-Core Version:    0.7.0.1
  */

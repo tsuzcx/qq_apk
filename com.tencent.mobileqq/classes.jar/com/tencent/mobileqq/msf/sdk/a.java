@@ -87,42 +87,47 @@ public class a
   
   private static String a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return "UNKNOWN";
-    case 0: 
-      return "NONE";
-    case 1: 
+      if (paramInt != 1)
+      {
+        if ((paramInt != 2) && (paramInt != 3)) {
+          return "UNKNOWN";
+        }
+        return "WiFi";
+      }
       return "MOBILE";
-    case 2: 
-      return "WiFi";
     }
-    return "WiFi";
+    return "NONE";
   }
   
   public static void a()
   {
-    Object localObject = (HttpURLConnection)new URL("https://3gimg.qq.com/ping.html").openConnection();
-    ((HttpURLConnection)localObject).setDoOutput(true);
-    ((HttpURLConnection)localObject).setDoInput(true);
-    ((HttpURLConnection)localObject).setRequestMethod("GET");
-    ((HttpURLConnection)localObject).setUseCaches(false);
-    ((HttpURLConnection)localObject).setInstanceFollowRedirects(false);
-    ((HttpURLConnection)localObject).setReadTimeout(60000);
-    ((HttpURLConnection)localObject).connect();
-    byte[] arrayOfByte = new byte[8];
-    ((HttpURLConnection)localObject).getInputStream().read(arrayOfByte);
-    ((HttpURLConnection)localObject).getInputStream().close();
-    ((HttpURLConnection)localObject).disconnect();
-    localObject = new String(arrayOfByte);
-    if ("Poduct3G".equals(localObject))
+    Object localObject1 = (HttpURLConnection)new URL("https://3gimg.qq.com/ping.html").openConnection();
+    ((HttpURLConnection)localObject1).setDoOutput(true);
+    ((HttpURLConnection)localObject1).setDoInput(true);
+    ((HttpURLConnection)localObject1).setRequestMethod("GET");
+    ((HttpURLConnection)localObject1).setUseCaches(false);
+    ((HttpURLConnection)localObject1).setInstanceFollowRedirects(false);
+    ((HttpURLConnection)localObject1).setReadTimeout(60000);
+    ((HttpURLConnection)localObject1).connect();
+    Object localObject2 = new byte[8];
+    ((HttpURLConnection)localObject1).getInputStream().read((byte[])localObject2);
+    ((HttpURLConnection)localObject1).getInputStream().close();
+    ((HttpURLConnection)localObject1).disconnect();
+    localObject1 = new String((byte[])localObject2);
+    if ("Poduct3G".equals(localObject1))
     {
       b(true);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(n, 2, "wifi ping resp content is " + (String)localObject);
+    if (QLog.isColorLevel())
+    {
+      localObject2 = n;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("wifi ping resp content is ");
+      localStringBuilder.append((String)localObject1);
+      QLog.d((String)localObject2, 2, localStringBuilder.toString());
     }
     h = true;
   }
@@ -131,177 +136,215 @@ public class a
   {
     paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
     NetworkInfo localNetworkInfo = paramContext.getNetworkInfo(0);
-    if (localNetworkInfo != null) {}
-    try
-    {
-      j = localNetworkInfo.getExtraInfo();
-      f = paramContext.getActiveNetworkInfo();
-      a(f, paramNetworkInfo);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+    if (localNetworkInfo != null) {
+      try
       {
-        QLog.d(n, 1, "get currentAPN error " + localException);
+        j = localNetworkInfo.getExtraInfo();
+      }
+      catch (Exception localException)
+      {
+        String str = n;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("get currentAPN error ");
+        localStringBuilder.append(localException);
+        QLog.d(str, 1, localStringBuilder.toString());
       }
     }
+    f = paramContext.getActiveNetworkInfo();
+    a(f, paramNetworkInfo);
   }
   
   public static void a(Context paramContext, INetEventHandler paramINetEventHandler)
   {
-    if (paramINetEventHandler == null) {
-      QLog.w(n, 1, Thread.currentThread().getName() + " registerNetChangeReceiver null");
+    if (paramINetEventHandler == null)
+    {
+      paramContext = n;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(Thread.currentThread().getName());
+      localStringBuilder.append(" registerNetChangeReceiver null");
+      QLog.w(paramContext, 1, localStringBuilder.toString());
     }
     h();
-    if ((!c) || (e == null)) {
-      return;
+    if (c)
+    {
+      paramContext = e;
+      if (paramContext == null) {
+        return;
+      }
+      paramContext = paramContext.obtainMessage();
+      paramContext.what = 2;
+      paramContext.obj = paramINetEventHandler;
+      e.sendMessage(paramContext);
     }
-    paramContext = e.obtainMessage();
-    paramContext.what = 2;
-    paramContext.obj = paramINetEventHandler;
-    e.sendMessage(paramContext);
   }
   
   public static void a(Context paramContext, INetInfoHandler paramINetInfoHandler)
   {
-    if (paramINetInfoHandler == null) {
-      QLog.w(n, 1, Thread.currentThread().getName() + " registerConnectionChangeReceiver null");
+    if (paramINetInfoHandler == null)
+    {
+      paramContext = n;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(Thread.currentThread().getName());
+      localStringBuilder.append(" registerConnectionChangeReceiver null");
+      QLog.w(paramContext, 1, localStringBuilder.toString());
     }
     h();
-    if ((!c) || (e == null)) {
-      return;
+    if (c)
+    {
+      paramContext = e;
+      if (paramContext == null) {
+        return;
+      }
+      paramContext = paramContext.obtainMessage();
+      paramContext.what = 1;
+      paramContext.obj = paramINetInfoHandler;
+      e.sendMessage(paramContext);
     }
-    paramContext = e.obtainMessage();
-    paramContext.what = 1;
-    paramContext.obj = paramINetInfoHandler;
-    e.sendMessage(paramContext);
   }
   
   public static void a(NetworkInfo paramNetworkInfo1, NetworkInfo paramNetworkInfo2)
   {
-    String str;
-    if (paramNetworkInfo1 != null) {
-      str = paramNetworkInfo1.getTypeName();
-    }
-    do
+    Object localObject;
+    StringBuilder localStringBuilder1;
+    if (paramNetworkInfo1 != null)
     {
-      do
+      localObject = paramNetworkInfo1.getTypeName();
+      try
       {
-        try
+        k = paramNetworkInfo1.getSubtypeName();
+      }
+      catch (Exception localException)
+      {
+        String str = n;
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("get subtypeName error ");
+        localStringBuilder2.append(localException);
+        QLog.d(str, 1, localStringBuilder2.toString());
+      }
+      if (((String)localObject).toLowerCase().contains("mobile_mms"))
+      {
+        QLog.d(n, 1, "checkConnInfo current typeName: mobile_mms ignore.");
+        return;
+      }
+      localObject = n;
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("currentAPN:");
+      localStringBuilder1.append(j);
+      localStringBuilder1.append(". received networkInfo: ");
+      localStringBuilder1.append(paramNetworkInfo1.getDetailedState());
+      localStringBuilder1.append(" :");
+      localStringBuilder1.append(paramNetworkInfo1);
+      localStringBuilder1.append(". ExtraNetInfo: ");
+      localStringBuilder1.append(paramNetworkInfo2);
+      QLog.d((String)localObject, 1, localStringBuilder1.toString());
+      if (paramNetworkInfo1.getDetailedState() == NetworkInfo.DetailedState.CONNECTED)
+      {
+        if (1 == paramNetworkInfo1.getType())
         {
-          k = paramNetworkInfo1.getSubtypeName();
-          if (str.toLowerCase().contains("mobile_mms"))
-          {
-            QLog.d(n, 1, "checkConnInfo current typeName: mobile_mms ignore.");
-            return;
-          }
-        }
-        catch (Exception localException)
-        {
-          do
-          {
-            for (;;)
-            {
-              QLog.d(n, 1, "get subtypeName error " + localException);
-            }
-            QLog.d(n, 1, "currentAPN:" + j + ". received networkInfo: " + paramNetworkInfo1.getDetailedState() + " :" + paramNetworkInfo1 + ". ExtraNetInfo: " + paramNetworkInfo2);
-            if (paramNetworkInfo1.getDetailedState() == NetworkInfo.DetailedState.CONNECTED)
-            {
-              if (1 == paramNetworkInfo1.getType())
-              {
-                u();
-                q();
-                return;
-              }
-              if (a(paramNetworkInfo1))
-              {
-                u();
-                t();
-                p();
-                return;
-              }
-              r();
-              QLog.d(n, 1, "Unexcepted activeNetInfo type:" + paramNetworkInfo1.getType());
-              return;
-            }
-          } while ((paramNetworkInfo1.getDetailedState() != NetworkInfo.DetailedState.DISCONNECTED) && (paramNetworkInfo1.getDetailedState() != NetworkInfo.DetailedState.FAILED) && (paramNetworkInfo1.getDetailedState() != NetworkInfo.DetailedState.IDLE) && (paramNetworkInfo1.getDetailedState() != NetworkInfo.DetailedState.SUSPENDED));
-          if (1 == paramNetworkInfo1.getType())
-          {
-            t();
-            return;
-          }
-          if (a(paramNetworkInfo1))
-          {
-            s();
-            return;
-          }
           u();
+          q();
           return;
         }
-      } while (paramNetworkInfo2 == null);
-      QLog.d(n, 1, "currentAPN:" + j + ". ActiveNetInfo: " + paramNetworkInfo1 + ". ExtraNetInfo: " + paramNetworkInfo2);
-    } while ((paramNetworkInfo2.getDetailedState() != NetworkInfo.DetailedState.DISCONNECTED) && (paramNetworkInfo2.getDetailedState() != NetworkInfo.DetailedState.FAILED) && (paramNetworkInfo2.getDetailedState() != NetworkInfo.DetailedState.IDLE) && (paramNetworkInfo2.getDetailedState() != NetworkInfo.DetailedState.SUSPENDED));
-    if (1 == paramNetworkInfo2.getType())
-    {
-      s();
-      t();
-      return;
+        if (a(paramNetworkInfo1))
+        {
+          u();
+          t();
+          p();
+          return;
+        }
+        r();
+        paramNetworkInfo2 = n;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Unexcepted activeNetInfo type:");
+        ((StringBuilder)localObject).append(paramNetworkInfo1.getType());
+        QLog.d(paramNetworkInfo2, 1, ((StringBuilder)localObject).toString());
+        return;
+      }
+      if ((paramNetworkInfo1.getDetailedState() == NetworkInfo.DetailedState.DISCONNECTED) || (paramNetworkInfo1.getDetailedState() == NetworkInfo.DetailedState.FAILED) || (paramNetworkInfo1.getDetailedState() == NetworkInfo.DetailedState.IDLE) || (paramNetworkInfo1.getDetailedState() == NetworkInfo.DetailedState.SUSPENDED))
+      {
+        if (1 == paramNetworkInfo1.getType())
+        {
+          t();
+          return;
+        }
+        if (a(paramNetworkInfo1))
+        {
+          s();
+          return;
+        }
+        u();
+      }
     }
-    if (a(paramNetworkInfo2))
+    else if (paramNetworkInfo2 != null)
     {
-      s();
-      return;
+      localObject = n;
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("currentAPN:");
+      localStringBuilder1.append(j);
+      localStringBuilder1.append(". ActiveNetInfo: ");
+      localStringBuilder1.append(paramNetworkInfo1);
+      localStringBuilder1.append(". ExtraNetInfo: ");
+      localStringBuilder1.append(paramNetworkInfo2);
+      QLog.d((String)localObject, 1, localStringBuilder1.toString());
+      if ((paramNetworkInfo2.getDetailedState() == NetworkInfo.DetailedState.DISCONNECTED) || (paramNetworkInfo2.getDetailedState() == NetworkInfo.DetailedState.FAILED) || (paramNetworkInfo2.getDetailedState() == NetworkInfo.DetailedState.IDLE) || (paramNetworkInfo2.getDetailedState() == NetworkInfo.DetailedState.SUSPENDED))
+      {
+        if (1 == paramNetworkInfo2.getType())
+        {
+          s();
+          t();
+          return;
+        }
+        if (a(paramNetworkInfo2))
+        {
+          s();
+          return;
+        }
+        s();
+        t();
+        u();
+      }
     }
-    s();
-    t();
-    u();
   }
   
   public static void a(boolean paramBoolean)
   {
-    for (;;)
+    try
     {
-      try
+      long l1 = System.currentTimeMillis();
+      f = ((ConnectivityManager)BaseApplication.getContext().getSystemService("connectivity")).getActiveNetworkInfo();
+      a(f, null);
+      if ((e != null) && ((!c) || (f != null))) {
+        e.sendEmptyMessage(3);
+      }
+      if ((paramBoolean) && (f != null) && (f.getDetailedState() == NetworkInfo.DetailedState.CONNECTED))
       {
-        long l1 = System.currentTimeMillis();
-        f = ((ConnectivityManager)BaseApplication.getContext().getSystemService("connectivity")).getActiveNetworkInfo();
-        a(f, null);
-        if ((e != null) && ((!c) || (f != null))) {
-          e.sendEmptyMessage(3);
-        }
-        if ((paramBoolean) && (f != null) && (f.getDetailedState() == NetworkInfo.DetailedState.CONNECTED))
+        Object localObject = new HashMap();
+        ((HashMap)localObject).put("processName", MsfServiceSdk.get().processName);
+        ((HashMap)localObject).put("netType", String.valueOf(f.getType()));
+        RdmReq localRdmReq = new RdmReq();
+        localRdmReq.eventName = "CheckNetIsValid";
+        localRdmReq.elapse = (System.currentTimeMillis() - l1);
+        localRdmReq.isSucceed = true;
+        localRdmReq.isRealTime = true;
+        localRdmReq.params = ((Map)localObject);
+        try
         {
-          localObject = new HashMap();
-          ((HashMap)localObject).put("processName", MsfServiceSdk.get().processName);
-          ((HashMap)localObject).put("netType", String.valueOf(f.getType()));
-          localRdmReq = new RdmReq();
-          localRdmReq.eventName = "CheckNetIsValid";
-          localRdmReq.elapse = (System.currentTimeMillis() - l1);
-          localRdmReq.isSucceed = true;
-          localRdmReq.isRealTime = true;
-          localRdmReq.params = ((Map)localObject);
+          localObject = MsfMsgUtil.getRdmReportMsg(MsfServiceSdk.get().getMsfServiceName(), localRdmReq);
+          MsfServiceSdk.get().sendMsg((ToServiceMsg)localObject);
+          return;
+        }
+        catch (Exception localException1)
+        {
+          localException1.printStackTrace();
+          return;
         }
       }
-      catch (Exception localException2)
-      {
-        Object localObject;
-        RdmReq localRdmReq;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
+      return;
+    }
+    catch (Exception localException2)
+    {
+      if (QLog.isColorLevel()) {
         QLog.d(n, 2, localException2.toString(), localException2);
-      }
-      try
-      {
-        localObject = MsfMsgUtil.getRdmReportMsg(MsfServiceSdk.get().getMsfServiceName(), localRdmReq);
-        MsfServiceSdk.get().sendMsg((ToServiceMsg)localObject);
-        return;
-      }
-      catch (Exception localException1)
-      {
-        localException1.printStackTrace();
-        return;
       }
     }
   }
@@ -313,39 +356,65 @@ public class a
   
   public static boolean a(INetEventHandler paramINetEventHandler)
   {
-    if (paramINetEventHandler == null) {
-      QLog.w(n, 1, Thread.currentThread().getName() + " unregisterNetEventHandler null");
-    }
-    do
+    Object localObject;
+    if (paramINetEventHandler == null)
     {
+      paramINetEventHandler = n;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(Thread.currentThread().getName());
+      ((StringBuilder)localObject).append(" unregisterNetEventHandler null");
+      QLog.w(paramINetEventHandler, 1, ((StringBuilder)localObject).toString());
       return false;
-      h();
-    } while ((!c) || (e == null));
-    Message localMessage = e.obtainMessage();
-    localMessage.what = 5;
-    localMessage.obj = paramINetEventHandler;
-    e.sendMessage(localMessage);
-    return true;
+    }
+    h();
+    if (c)
+    {
+      localObject = e;
+      if (localObject == null) {
+        return false;
+      }
+      localObject = ((Handler)localObject).obtainMessage();
+      ((Message)localObject).what = 5;
+      ((Message)localObject).obj = paramINetEventHandler;
+      e.sendMessage((Message)localObject);
+      return true;
+    }
+    return false;
   }
   
   public static boolean a(INetInfoHandler paramINetInfoHandler)
   {
     if (paramINetInfoHandler == null)
     {
-      QLog.w(n, 1, Thread.currentThread().getName() + " unregisterNetInfoHandler null");
+      paramINetInfoHandler = n;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(Thread.currentThread().getName());
+      ((StringBuilder)localObject).append(" unregisterNetInfoHandler null");
+      QLog.w(paramINetInfoHandler, 1, ((StringBuilder)localObject).toString());
       return false;
     }
     h();
-    if ((!c) || (e == null))
+    if (c)
     {
-      QLog.w(n, 1, Thread.currentThread().getName() + " unregisterNetInfoHandler initHandler=" + c + " handler=" + e);
-      return false;
+      localObject = e;
+      if (localObject != null)
+      {
+        localObject = ((Handler)localObject).obtainMessage();
+        ((Message)localObject).what = 4;
+        ((Message)localObject).obj = paramINetInfoHandler;
+        e.sendMessage((Message)localObject);
+        return true;
+      }
     }
-    Message localMessage = e.obtainMessage();
-    localMessage.what = 4;
-    localMessage.obj = paramINetInfoHandler;
-    e.sendMessage(localMessage);
-    return true;
+    paramINetInfoHandler = n;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(Thread.currentThread().getName());
+    ((StringBuilder)localObject).append(" unregisterNetInfoHandler initHandler=");
+    ((StringBuilder)localObject).append(c);
+    ((StringBuilder)localObject).append(" handler=");
+    ((StringBuilder)localObject).append(e);
+    QLog.w(paramINetInfoHandler, 1, ((StringBuilder)localObject).toString());
+    return false;
   }
   
   public static boolean a(Runnable paramRunnable)
@@ -365,94 +434,100 @@ public class a
       {
         if (p == paramInt)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d(n, 2, "found repeat net event , now is " + b() + " now:" + paramInt + " last:" + p);
+          if (QLog.isColorLevel())
+          {
+            str = n;
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("found repeat net event , now is ");
+            localStringBuilder.append(b());
+            localStringBuilder.append(" now:");
+            localStringBuilder.append(paramInt);
+            localStringBuilder.append(" last:");
+            localStringBuilder.append(p);
+            QLog.d(str, 2, localStringBuilder.toString());
           }
           return;
         }
-        if (paramInt > 0)
-        {
+        if (paramInt > 0) {
           b(true);
-          QLog.d(n, 1, "netchange " + a(p) + " to " + a(paramInt));
-          F = -1;
-          if (paramInt != 1) {
-            break;
-          }
-          if ((p != 0) && (p != -2)) {
-            break label171;
-          }
-          F = 0;
-          p = paramInt;
-          continue;
+        } else {
+          b(false);
         }
-        b(false);
+        String str = n;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("netchange ");
+        localStringBuilder.append(a(p));
+        localStringBuilder.append(" to ");
+        localStringBuilder.append(a(paramInt));
+        QLog.d(str, 1, localStringBuilder.toString());
+        F = -1;
+        if (paramInt == 1)
+        {
+          if ((p != 0) && (p != -2))
+          {
+            if ((p != 2) && (p != 3))
+            {
+              if (p <= 7) {
+                F = 6;
+              }
+            }
+            else {
+              F = 1;
+            }
+          }
+          else
+          {
+            F = 0;
+            continue;
+            if ((paramInt > 3) && (paramInt <= 7))
+            {
+              if ((p != 0) && (p != -2))
+              {
+                if (p == 1) {
+                  F = 9;
+                } else if ((p == 2) || (paramInt == 3)) {
+                  F = 10;
+                }
+              }
+              else {
+                F = 8;
+              }
+            }
+            else if (p == 1)
+            {
+              F = 4;
+            }
+            else if ((p != 2) && (p != 3))
+            {
+              if (p <= 7) {
+                F = 11;
+              }
+            }
+            else
+            {
+              F = 5;
+              continue;
+              if ((p != 0) && (p != -2))
+              {
+                if (p == 1) {
+                  F = 3;
+                } else if (p <= 7) {
+                  F = 7;
+                }
+              }
+              else {
+                F = 2;
+              }
+            }
+          }
+          p = paramInt;
+          return;
+        }
       }
       finally {}
-      continue;
-      label171:
-      if ((p == 2) || (p == 3)) {
-        F = 1;
-      } else if (p <= 7) {
-        F = 6;
+      if (paramInt != 2) {
+        if (paramInt != 3) {}
       }
-    }
-    for (;;)
-    {
-      label208:
-      if ((p == 0) || (p == -2))
-      {
-        F = 2;
-        break;
-      }
-      if (p == 1)
-      {
-        F = 3;
-        break;
-      }
-      if (p > 7) {
-        break;
-      }
-      F = 7;
-      break;
-      do
-      {
-        if ((paramInt > 3) && (paramInt <= 7))
-        {
-          if ((p == 0) || (p == -2))
-          {
-            F = 8;
-            break;
-          }
-          if (p == 1)
-          {
-            F = 9;
-            break;
-          }
-          if ((p != 2) && (paramInt != 3)) {
-            break;
-          }
-          F = 10;
-          break;
-        }
-        if (p == 1)
-        {
-          F = 4;
-          break;
-        }
-        if ((p == 2) || (p == 3))
-        {
-          F = 5;
-          break;
-        }
-        if (p > 7) {
-          break;
-        }
-        F = 11;
-        break;
-        if (paramInt == 2) {
-          break label208;
-        }
-      } while (paramInt != 3);
     }
   }
   
@@ -488,7 +563,8 @@ public class a
   
   public static boolean e()
   {
-    return (p == 2) || (p == 3);
+    int i1 = p;
+    return (i1 == 2) || (i1 == 3);
   }
   
   public static boolean f()
@@ -515,23 +591,28 @@ public class a
           a(false);
           c = true;
         }
-        long l1;
-        do
+        else if ((c) && (!b()))
         {
-          do
+          long l1 = System.currentTimeMillis();
+          if (l1 - H >= 5000L)
           {
-            return;
-          } while ((!c) || (b()));
-          l1 = System.currentTimeMillis();
-        } while (l1 - H < 5000L);
-        H = l1;
-        a(true);
+            H = l1;
+            a(true);
+          }
+        }
+        return;
       }
+      String str;
+      StringBuilder localStringBuilder;
       return;
     }
     catch (Exception localException)
     {
-      QLog.d(n, 1, "failed to check init ops " + localException.toString());
+      str = n;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("failed to check init ops ");
+      localStringBuilder.append(localException.toString());
+      QLog.d(str, 1, localStringBuilder.toString());
     }
   }
   
@@ -539,112 +620,120 @@ public class a
   private static void n()
   {
     // Byte code:
-    //   0: invokestatic 398	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   3: ldc 244
-    //   5: invokevirtual 399	com/tencent/qphone/base/util/BaseApplication:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   8: checkcast 252	android/net/ConnectivityManager
+    //   0: invokestatic 396	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   3: ldc 242
+    //   5: invokevirtual 397	com/tencent/qphone/base/util/BaseApplication:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   8: checkcast 250	android/net/ConnectivityManager
     //   11: iconst_0
-    //   12: invokevirtual 256	android/net/ConnectivityManager:getNetworkInfo	(I)Landroid/net/NetworkInfo;
+    //   12: invokevirtual 254	android/net/ConnectivityManager:getNetworkInfo	(I)Landroid/net/NetworkInfo;
     //   15: astore_0
     //   16: aload_0
-    //   17: ifnull +11 -> 28
+    //   17: ifnull +15 -> 32
     //   20: aload_0
-    //   21: invokevirtual 261	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
-    //   24: putstatic 122	com/tencent/mobileqq/msf/sdk/a:j	Ljava/lang/String;
+    //   21: invokevirtual 259	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
+    //   24: putstatic 118	com/tencent/mobileqq/msf/sdk/a:j	Ljava/lang/String;
     //   27: return
-    //   28: invokestatic 398	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   31: invokevirtual 533	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
-    //   34: getstatic 136	com/tencent/mobileqq/msf/sdk/a:I	Landroid/net/Uri;
-    //   37: aconst_null
-    //   38: aconst_null
-    //   39: aconst_null
-    //   40: aconst_null
-    //   41: invokevirtual 539	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   44: astore_1
-    //   45: aload_1
-    //   46: ifnull +99 -> 145
-    //   49: aload_1
-    //   50: astore_0
-    //   51: aload_1
-    //   52: invokeinterface 544 1 0
-    //   57: ifeq +88 -> 145
-    //   60: aload_1
-    //   61: astore_0
-    //   62: aload_1
-    //   63: aload_1
-    //   64: ldc_w 546
-    //   67: invokeinterface 550 2 0
-    //   72: invokeinterface 553 2 0
-    //   77: putstatic 122	com/tencent/mobileqq/msf/sdk/a:j	Ljava/lang/String;
-    //   80: goto -35 -> 45
-    //   83: astore_2
-    //   84: aload_1
-    //   85: astore_0
-    //   86: aload_2
-    //   87: invokevirtual 554	java/lang/Throwable:printStackTrace	()V
-    //   90: aload_1
-    //   91: ifnull -64 -> 27
-    //   94: aload_1
-    //   95: invokeinterface 555 1 0
-    //   100: return
-    //   101: astore_0
-    //   102: getstatic 77	com/tencent/mobileqq/msf/sdk/a:n	Ljava/lang/String;
-    //   105: iconst_1
-    //   106: new 223	java/lang/StringBuilder
-    //   109: dup
-    //   110: invokespecial 224	java/lang/StringBuilder:<init>	()V
-    //   113: ldc_w 270
-    //   116: invokevirtual 230	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   28: astore_0
+    //   29: goto +109 -> 138
+    //   32: aconst_null
+    //   33: astore_0
+    //   34: aconst_null
+    //   35: astore_1
+    //   36: invokestatic 396	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   39: invokevirtual 533	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
+    //   42: getstatic 132	com/tencent/mobileqq/msf/sdk/a:I	Landroid/net/Uri;
+    //   45: aconst_null
+    //   46: aconst_null
+    //   47: aconst_null
+    //   48: aconst_null
+    //   49: invokevirtual 539	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   52: astore_2
+    //   53: aload_2
+    //   54: ifnull +41 -> 95
+    //   57: aload_2
+    //   58: astore_1
+    //   59: aload_2
+    //   60: astore_0
+    //   61: aload_2
+    //   62: invokeinterface 544 1 0
+    //   67: ifeq +28 -> 95
+    //   70: aload_2
+    //   71: astore_1
+    //   72: aload_2
+    //   73: astore_0
+    //   74: aload_2
+    //   75: aload_2
+    //   76: ldc_w 546
+    //   79: invokeinterface 550 2 0
+    //   84: invokeinterface 553 2 0
+    //   89: putstatic 118	com/tencent/mobileqq/msf/sdk/a:j	Ljava/lang/String;
+    //   92: goto -39 -> 53
+    //   95: aload_2
+    //   96: ifnull +77 -> 173
+    //   99: aload_2
+    //   100: astore_0
+    //   101: aload_0
+    //   102: invokeinterface 554 1 0
+    //   107: return
+    //   108: astore_0
+    //   109: goto +17 -> 126
+    //   112: astore_2
+    //   113: aload_0
+    //   114: astore_1
+    //   115: aload_2
+    //   116: invokevirtual 555	java/lang/Throwable:printStackTrace	()V
     //   119: aload_0
-    //   120: invokevirtual 273	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   123: invokevirtual 234	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   126: invokestatic 237	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   129: return
-    //   130: astore_1
-    //   131: aconst_null
-    //   132: astore_0
-    //   133: aload_0
-    //   134: ifnull +9 -> 143
-    //   137: aload_0
-    //   138: invokeinterface 555 1 0
-    //   143: aload_1
-    //   144: athrow
-    //   145: aload_1
-    //   146: ifnull -119 -> 27
-    //   149: aload_1
-    //   150: invokeinterface 555 1 0
-    //   155: return
-    //   156: astore_1
-    //   157: goto -24 -> 133
-    //   160: astore_2
-    //   161: aconst_null
-    //   162: astore_1
-    //   163: goto -79 -> 84
+    //   120: ifnull +53 -> 173
+    //   123: goto -22 -> 101
+    //   126: aload_1
+    //   127: ifnull +9 -> 136
+    //   130: aload_1
+    //   131: invokeinterface 554 1 0
+    //   136: aload_0
+    //   137: athrow
+    //   138: getstatic 219	com/tencent/mobileqq/msf/sdk/a:n	Ljava/lang/String;
+    //   141: astore_1
+    //   142: new 221	java/lang/StringBuilder
+    //   145: dup
+    //   146: invokespecial 222	java/lang/StringBuilder:<init>	()V
+    //   149: astore_2
+    //   150: aload_2
+    //   151: ldc_w 261
+    //   154: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   157: pop
+    //   158: aload_2
+    //   159: aload_0
+    //   160: invokevirtual 264	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   163: pop
+    //   164: aload_1
+    //   165: iconst_1
+    //   166: aload_2
+    //   167: invokevirtual 232	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   170: invokestatic 235	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   173: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   15	71	0	localObject1	Object
-    //   101	19	0	localException	Exception
-    //   132	6	0	localObject2	Object
-    //   44	51	1	localCursor	android.database.Cursor
-    //   130	20	1	localObject3	Object
-    //   156	1	1	localObject4	Object
-    //   162	1	1	localObject5	Object
-    //   83	4	2	localThrowable1	java.lang.Throwable
-    //   160	1	2	localThrowable2	java.lang.Throwable
+    //   15	6	0	localNetworkInfo	NetworkInfo
+    //   28	1	0	localException	Exception
+    //   33	69	0	localObject1	Object
+    //   108	52	0	localObject2	Object
+    //   35	130	1	localObject3	Object
+    //   52	48	2	localCursor	android.database.Cursor
+    //   112	4	2	localThrowable	java.lang.Throwable
+    //   149	18	2	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   51	60	83	java/lang/Throwable
-    //   62	80	83	java/lang/Throwable
-    //   20	27	101	java/lang/Exception
-    //   94	100	101	java/lang/Exception
-    //   137	143	101	java/lang/Exception
-    //   143	145	101	java/lang/Exception
-    //   149	155	101	java/lang/Exception
-    //   28	45	130	finally
-    //   51	60	156	finally
-    //   62	80	156	finally
-    //   86	90	156	finally
-    //   28	45	160	java/lang/Throwable
+    //   20	27	28	java/lang/Exception
+    //   101	107	28	java/lang/Exception
+    //   130	136	28	java/lang/Exception
+    //   136	138	28	java/lang/Exception
+    //   36	53	108	finally
+    //   61	70	108	finally
+    //   74	92	108	finally
+    //   115	119	108	finally
+    //   36	53	112	java/lang/Throwable
+    //   61	70	112	java/lang/Throwable
+    //   74	92	112	java/lang/Throwable
   }
   
   private static void o()
@@ -652,17 +741,24 @@ public class a
     try
     {
       WifiInfo localWifiInfo = ((WifiManager)BaseApplication.getContext().getSystemService("wifi")).getConnectionInfo();
-      if (localWifiInfo != null)
-      {
-        QLog.d(n, 1, "checknetinfo get wifi ssid " + localWifiInfo.getSSID());
-        l = localWifiInfo.getSSID();
+      if (localWifiInfo == null) {
+        break label76;
       }
+      String str = n;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checknetinfo get wifi ssid ");
+      localStringBuilder.append(localWifiInfo.getSSID());
+      QLog.d(str, 1, localStringBuilder.toString());
+      l = localWifiInfo.getSSID();
       return;
     }
     catch (Exception localException)
     {
-      QLog.d(n, 1, "failed to get wifi ssid");
+      label66:
+      label76:
+      break label66;
     }
+    QLog.d(n, 1, "failed to get wifi ssid");
   }
   
   private static void p()
@@ -699,6 +795,7 @@ public class a
   {
     try
     {
+      StringBuilder localStringBuilder;
       if (e == null) {
         synchronized (d)
         {
@@ -706,7 +803,15 @@ public class a
           {
             if (!d.isAlive())
             {
-              QLog.d(n, 1, "PID=" + Process.myPid() + " tid=" + Thread.currentThread().getId() + " AppNetInfoImpl checkInitHandler. looper=" + Looper.myLooper());
+              String str1 = n;
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("PID=");
+              localStringBuilder.append(Process.myPid());
+              localStringBuilder.append(" tid=");
+              localStringBuilder.append(Thread.currentThread().getId());
+              localStringBuilder.append(" AppNetInfoImpl checkInitHandler. looper=");
+              localStringBuilder.append(Looper.myLooper());
+              QLog.d(str1, 1, localStringBuilder.toString());
               d.start();
             }
             e = new Handler(d.getLooper(), d);
@@ -714,17 +819,22 @@ public class a
           return;
         }
       }
+      String str2;
       return;
     }
     catch (Exception localException)
     {
-      QLog.d(n, 1, "initHandler exception " + localException.toString());
+      str2 = n;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initHandler exception ");
+      localStringBuilder.append(localException.toString());
+      QLog.d(str2, 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.a
  * JD-Core Version:    0.7.0.1
  */

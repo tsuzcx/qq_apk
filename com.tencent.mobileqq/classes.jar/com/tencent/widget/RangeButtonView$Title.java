@@ -6,9 +6,9 @@ import android.graphics.Point;
 
 public class RangeButtonView$Title
 {
-  float jdField_a_of_type_Float;
-  Point jdField_a_of_type_AndroidGraphicsPoint;
-  String jdField_a_of_type_JavaLangString;
+  Point point;
+  String text;
+  float textSize;
   
   public RangeButtonView$Title(String paramString, float paramFloat)
   {
@@ -17,36 +17,36 @@ public class RangeButtonView$Title
   
   public RangeButtonView$Title(String paramString, float paramFloat, Point paramPoint)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
+    this.text = paramString;
+    this.textSize = paramFloat;
+    this.point = paramPoint;
   }
   
-  public float a()
+  public void draw(Canvas paramCanvas, Paint paramPaint, RangeButtonView.RangeButtonParams paramRangeButtonParams)
   {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return (int)RangeButtonView.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Float);
-  }
-  
-  public void a(Canvas paramCanvas, Paint paramPaint, RangeButtonView.RangeButtonParams paramRangeButtonParams)
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsPoint == null) {
+    if (this.point == null) {
       return;
     }
-    paramPaint.setTextSize(this.jdField_a_of_type_Float);
+    paramPaint.setTextSize(this.textSize);
     int i = paramPaint.getColor();
-    paramPaint.setColor(paramRangeButtonParams.a);
-    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y, paramPaint);
+    paramPaint.setColor(paramRangeButtonParams.titleColor);
+    paramCanvas.drawText(this.text, this.point.x, this.point.y, paramPaint);
     paramPaint.setColor(i);
+  }
+  
+  public float getTextSize()
+  {
+    return this.textSize;
+  }
+  
+  public int getTextWidth()
+  {
+    return (int)RangeButtonView.measureTextWidth(this.text, this.textSize);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.RangeButtonView.Title
  * JD-Core Version:    0.7.0.1
  */

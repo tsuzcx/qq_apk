@@ -20,13 +20,14 @@ public final class qqstory_service$RspGetFilterList
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40 }, new String[] { "result", "filter_list", "is_end", "next_cookie", "frequency" }, new Object[] { null, null, Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, RspGetFilterList.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40 }, new String[] { "result", "filter_list", "is_end", "next_cookie", "frequency" }, new Object[] { null, null, localInteger, localByteStringMicro, localInteger }, RspGetFilterList.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetFilterList
  * JD-Core Version:    0.7.0.1
  */

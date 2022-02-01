@@ -124,9 +124,9 @@ public class MavEngineProxy
     return this.mMavEngineJni.ignore(paramInt1, paramLong, paramInt2);
   }
   
-  public void init(Context paramContext, long paramLong, int paramInt, String paramString1, SDKConfigInfo paramSDKConfigInfo, String paramString2, String paramString3)
+  public void init(Context paramContext, long paramLong, int paramInt, String paramString1, SDKConfigInfo paramSDKConfigInfo, String paramString2, String paramString3, String paramString4)
   {
-    this.mMavEngineJni.init(paramContext, paramLong, paramInt, paramString1, paramSDKConfigInfo, paramString2, paramString3);
+    this.mMavEngineJni.init(paramContext, paramLong, paramInt, paramString1, paramSDKConfigInfo, paramString2, paramString3, paramString4);
   }
   
   protected void initEngine(AVCoreSystemInfo paramAVCoreSystemInfo, IMavAdapter paramIMavAdapter, String paramString)
@@ -166,9 +166,9 @@ public class MavEngineProxy
     return this.mMavEngineJni.postData(paramLong, paramArrayOfByte);
   }
   
-  public int quit(int paramInt)
+  public int quitRoom(int paramInt)
   {
-    return this.mMavEngineJni.quit(paramInt);
+    return this.mMavEngineJni.quitRoom(paramInt);
   }
   
   public int readDataFromTRAE(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
@@ -301,6 +301,11 @@ public class MavEngineProxy
     this.mMavEngineJni.setProcessDecoderFrameFunctionptr(paramLong);
   }
   
+  public void setQosParams(String paramString)
+  {
+    this.mMavEngineJni.setQosParams(paramString);
+  }
+  
   public int setShareEncParam(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
     return this.mMavEngineJni.setShareEncParam(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8);
@@ -413,7 +418,7 @@ public class MavEngineProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avcore.jni.mav.MavEngineProxy
  * JD-Core Version:    0.7.0.1
  */

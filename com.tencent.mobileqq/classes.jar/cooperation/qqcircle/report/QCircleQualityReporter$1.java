@@ -15,7 +15,8 @@ final class QCircleQualityReporter$1
     QQCircleReport.SingleDcData localSingleDcData = new QQCircleReport.SingleDcData();
     localSingleDcData.dcid.set(this.val$dcId);
     localSingleDcData.report_data.addAll(QCircleQualityReporter.createBaseEntries(this.val$eventId));
-    if ((this.val$reportData != null) && (!this.val$reportData.isEmpty())) {
+    List localList = this.val$reportData;
+    if ((localList != null) && (!localList.isEmpty())) {
       localSingleDcData.report_data.addAll(this.val$reportData);
     }
     QCircleReporter.getInstance().addQualityReportData(localSingleDcData);
@@ -23,7 +24,7 @@ final class QCircleQualityReporter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleQualityReporter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -45,16 +45,17 @@ public class TroopDisbandActivity$MemberGridAdapter
   
   public void a(List<String> paramList)
   {
-    if (paramList != null) {}
-    for (int i = paramList.size();; i = 0)
+    int i;
+    if (paramList != null) {
+      i = paramList.size();
+    } else {
+      i = 0;
+    }
+    if (i > 0)
     {
-      if (i > 0)
-      {
-        this.jdField_a_of_type_JavaUtilList.clear();
-        this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-        notifyDataSetChanged();
-      }
-      return;
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      notifyDataSetChanged();
     }
   }
   
@@ -65,47 +66,38 @@ public class TroopDisbandActivity$MemberGridAdapter
   
   public void b(List<oidb_0x899.memberlist> paramList)
   {
+    int j = 0;
     int i;
-    int j;
-    label26:
-    Object localObject;
-    if (paramList != null)
-    {
+    if (paramList != null) {
       i = paramList.size();
-      if (i <= 0) {
-        return;
-      }
-      this.jdField_a_of_type_JavaUtilList.clear();
-      j = 0;
-      if (j >= i) {
-        break label113;
-      }
-      localObject = (oidb_0x899.memberlist)paramList.get(j);
-      if ((localObject != null) && (((oidb_0x899.memberlist)localObject).uint64_member_uin.has())) {
-        break label71;
-      }
-    }
-    for (;;)
-    {
-      j += 1;
-      break label26;
+    } else {
       i = 0;
-      break;
-      label71:
-      localObject = String.valueOf(((oidb_0x899.memberlist)localObject).uint64_member_uin.get());
-      if (!this.jdField_a_of_type_JavaUtilList.contains(localObject)) {
-        this.jdField_a_of_type_JavaUtilList.add(localObject);
-      }
     }
-    label113:
-    notifyDataSetChanged();
+    if (i > 0)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      while (j < i)
+      {
+        Object localObject = (oidb_0x899.memberlist)paramList.get(j);
+        if ((localObject != null) && (((oidb_0x899.memberlist)localObject).uint64_member_uin.has()))
+        {
+          localObject = String.valueOf(((oidb_0x899.memberlist)localObject).uint64_member_uin.get());
+          if (!this.jdField_a_of_type_JavaUtilList.contains(localObject)) {
+            this.jdField_a_of_type_JavaUtilList.add(localObject);
+          }
+        }
+        j += 1;
+      }
+      notifyDataSetChanged();
+    }
   }
   
   public int getCount()
   {
-    int i = this.jdField_a_of_type_JavaUtilList.size();
-    if (i > 6) {
-      return 6;
+    int j = this.jdField_a_of_type_JavaUtilList.size();
+    int i = j;
+    if (j > 6) {
+      i = 6;
     }
     return i;
   }
@@ -125,44 +117,41 @@ public class TroopDisbandActivity$MemberGridAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Object localObject1;
-    Object localObject2;
+    ImageView localImageView;
+    int i;
     if (paramView == null)
     {
-      localObject1 = new ImageView(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity);
-      ((ImageView)localObject1).setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int));
-      ((ImageView)localObject1).setScaleType(ImageView.ScaleType.CENTER_CROP);
-      ((ImageView)localObject1).setAdjustViewBounds(true);
-      paramView = (View)localObject1;
-      localObject2 = (String)getItem(paramInt);
-      if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!((String)localObject2).equals("0"))) {
-        break label156;
-      }
-      paramView.setImageDrawable(ImageUtil.c());
+      localImageView = new ImageView(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity);
+      i = this.jdField_a_of_type_Int;
+      localImageView.setLayoutParams(new AbsListView.LayoutParams(i, i));
+      localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      localImageView.setAdjustViewBounds(true);
+      paramView = localImageView;
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-      return localObject1;
-      localObject1 = (ImageView)paramView;
-      localObject2 = ((ImageView)localObject1).getLayoutParams();
-      if (localObject2 != null)
+      localImageView = (ImageView)paramView;
+      localObject = localImageView.getLayoutParams();
+      if (localObject != null)
       {
-        ((ViewGroup.LayoutParams)localObject2).width = this.jdField_a_of_type_Int;
-        ((ViewGroup.LayoutParams)localObject2).height = this.jdField_a_of_type_Int;
+        i = this.jdField_a_of_type_Int;
+        ((ViewGroup.LayoutParams)localObject).width = i;
+        ((ViewGroup.LayoutParams)localObject).height = i;
       }
-      localObject2 = paramView;
-      paramView = (View)localObject1;
-      localObject1 = localObject2;
-      break;
-      label156:
-      paramView.setImageDrawable(FaceDrawable.getUserFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.app, (String)localObject2, (byte)3));
     }
+    Object localObject = (String)getItem(paramInt);
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!((String)localObject).equals("0"))) {
+      localImageView.setImageDrawable(FaceDrawable.getUserFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.app, (String)localObject, (byte)3));
+    } else {
+      localImageView.setImageDrawable(ImageUtil.e());
+    }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopDisbandActivity.MemberGridAdapter
  * JD-Core Version:    0.7.0.1
  */

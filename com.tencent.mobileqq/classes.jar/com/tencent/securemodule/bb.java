@@ -10,23 +10,19 @@ final class bb
     try
     {
       Thread.sleep(2000L);
-      Process.killProcess(Process.myPid());
-      ax.b("myPid", Integer.valueOf(Process.myPid()));
-      System.exit(0);
-      return;
     }
     catch (InterruptedException localInterruptedException)
     {
-      for (;;)
-      {
-        localInterruptedException.printStackTrace();
-      }
+      localInterruptedException.printStackTrace();
     }
+    Process.killProcess(Process.myPid());
+    ax.b("myPid", Integer.valueOf(Process.myPid()));
+    System.exit(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.securemodule.bb
  * JD-Core Version:    0.7.0.1
  */

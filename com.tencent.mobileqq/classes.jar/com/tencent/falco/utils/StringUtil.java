@@ -44,28 +44,27 @@ public final class StringUtil
     if (paramLong < 10000L) {
       return Long.toString(paramLong);
     }
-    return String.format("%.1fw", new Object[] { Double.valueOf(paramLong / 10000.0D) });
+    double d = paramLong;
+    Double.isNaN(d);
+    return String.format("%.1fw", new Object[] { Double.valueOf(d / 10000.0D) });
   }
   
   public static Boolean isChinese(String paramString)
   {
     Boolean localBoolean1 = Boolean.valueOf(true);
+    Boolean localBoolean2 = localBoolean1;
     if (!isEmpty(paramString))
     {
-      int i = 0;
-      for (;;)
+      int j;
+      for (int i = 0; i < paramString.length(); i = j)
       {
-        localBoolean2 = localBoolean1;
-        if (i >= paramString.length()) {
-          break;
-        }
-        if (!paramString.substring(i, i + 1).matches("[Α-￥]")) {
+        j = i + 1;
+        if (!paramString.substring(i, j).matches("[Α-￥]")) {
           localBoolean1 = Boolean.valueOf(false);
         }
-        i += 1;
       }
+      localBoolean2 = localBoolean1;
     }
-    Boolean localBoolean2 = localBoolean1;
     return localBoolean2;
   }
   
@@ -73,18 +72,20 @@ public final class StringUtil
   {
     Object localObject = chineseParam;
     int j = localObject.length;
+    boolean bool = false;
     int i = 0;
-    if (i < j) {
-      if (localObject[i] != paramChar) {}
-    }
-    do
+    while (i < j)
     {
-      return false;
+      if (localObject[i] == paramChar) {
+        return false;
+      }
       i += 1;
-      break;
-      localObject = Character.UnicodeBlock.of(paramChar);
-    } while ((localObject != Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS) && (localObject != Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS) && (localObject != Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A) && (localObject != Character.UnicodeBlock.GENERAL_PUNCTUATION) && (localObject != Character.UnicodeBlock.CJK_SYMBOLS_AND_PUNCTUATION) && (localObject != Character.UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS));
-    return true;
+    }
+    localObject = Character.UnicodeBlock.of(paramChar);
+    if ((localObject == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS) || (localObject == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS) || (localObject == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A) || (localObject == Character.UnicodeBlock.GENERAL_PUNCTUATION) || (localObject == Character.UnicodeBlock.CJK_SYMBOLS_AND_PUNCTUATION) || (localObject == Character.UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS)) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static Boolean isContainChinese(String paramString)
@@ -99,10 +100,11 @@ public final class StringUtil
         if (i >= paramString.length()) {
           break;
         }
-        if (paramString.substring(i, i + 1).matches("[Α-￥]")) {
+        int j = i + 1;
+        if (paramString.substring(i, j).matches("[Α-￥]")) {
           localBoolean1 = Boolean.valueOf(true);
         }
-        i += 1;
+        i = j;
       }
     }
     return localBoolean2;
@@ -131,6 +133,34 @@ public final class StringUtil
     return localBoolean;
   }
   
+  public static String secToTime(long paramLong)
+  {
+    if (paramLong <= 0L) {
+      return "00:00";
+    }
+    long l2 = paramLong / 60L;
+    if (l2 < 60L)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(unitFormat(l2));
+      localStringBuilder.append(":");
+      localStringBuilder.append(unitFormat(paramLong % 60L));
+      return localStringBuilder.toString();
+    }
+    long l1 = l2 / 60L;
+    if (l1 > 99L) {
+      return "99:59:59";
+    }
+    l2 %= 60L;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(unitFormat(l1));
+    localStringBuilder.append(":");
+    localStringBuilder.append(unitFormat(l2));
+    localStringBuilder.append(":");
+    localStringBuilder.append(unitFormat(paramLong - 3600L * l1 - 60L * l2));
+    return localStringBuilder.toString();
+  }
+  
   public static String tenTh2wan(long paramLong)
   {
     return tenTh2wan(String.valueOf(paramLong));
@@ -138,49 +168,59 @@ public final class StringUtil
   
   public static String tenTh2wan(String paramString)
   {
-    String str;
     if (paramString == null) {
-      str = "";
+      return "";
     }
-    int m;
-    do
-    {
-      return str;
-      m = paramString.length();
-      str = paramString;
-    } while (m < 5);
-    int j;
+    int m = paramString.length();
+    if (m < 5) {
+      return paramString;
+    }
     int i;
+    int j;
     if (m >= 5)
     {
-      j = 3;
       i = 1;
+      j = 3;
     }
-    for (;;)
+    else
     {
-      int k = i;
-      if (m >= 9)
-      {
-        j = 7;
-        k = i + 1;
-      }
-      paramString = new StringBuilder(paramString.substring(0, paramString.length() - j));
-      if (paramString.charAt(paramString.length() - 1) != '0') {
-        paramString.insert(paramString.length() - 1, ".");
-      }
-      for (;;)
-      {
-        return COMMENT_RATE[k];
-        paramString.deleteCharAt(paramString.length() - 1);
-      }
       i = 0;
       j = 0;
     }
+    int k = i;
+    if (m >= 9)
+    {
+      j = 7;
+      k = i + 1;
+    }
+    paramString = new StringBuilder(paramString.substring(0, paramString.length() - j));
+    if (paramString.charAt(paramString.length() - 1) != '0') {
+      paramString.insert(paramString.length() - 1, ".");
+    } else {
+      paramString.deleteCharAt(paramString.length() - 1);
+    }
+    paramString.append(COMMENT_RATE[k]);
+    return paramString.toString();
+  }
+  
+  public static String unitFormat(long paramLong)
+  {
+    if ((paramLong >= 0L) && (paramLong < 10L))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("0");
+      localStringBuilder.append(paramLong);
+      return localStringBuilder.toString();
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramLong);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.utils.StringUtil
  * JD-Core Version:    0.7.0.1
  */

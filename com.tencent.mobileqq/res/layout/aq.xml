@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.widget.BounceScrollView android:id="@id/kip" android:background="@drawable/bg_texture_theme_version2" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" tencent:skintype="contact_list_bg"
+<com.tencent.mobileqq.widget.BounceScrollView android:id="@id/ku3" android:background="@drawable/bg_texture_theme_version2" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" tencent:skintype="contact_list_bg"
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqq">
     <include layout="@layout/ar" />

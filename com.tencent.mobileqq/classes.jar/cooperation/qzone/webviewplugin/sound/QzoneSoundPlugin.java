@@ -28,6 +28,7 @@ public class QzoneSoundPlugin
   
   private String checkEnv()
   {
+    Object localObject;
     if (TextUtils.isEmpty(this.mFinalCacheRoot))
     {
       if (!Environment.getExternalStorageState().equals("mounted"))
@@ -37,8 +38,11 @@ public class QzoneSoundPlugin
         }
         return "";
       }
-      Object localObject = QZoneFilePath.ROOT_PATH;
-      this.mFinalCacheRoot = ((String)localObject + "tencent/Qzone/tinyprogram/");
+      localObject = QZoneFilePath.ROOT_PATH;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("tencent/Qzone/tinyprogram/");
+      this.mFinalCacheRoot = localStringBuilder.toString();
       localObject = new File(this.mFinalCacheRoot);
       if (!((File)localObject).exists())
       {
@@ -53,19 +57,19 @@ public class QzoneSoundPlugin
           QLog.i("QzoneSoundPlugin", 2, "make dir suc");
         }
       }
-    }
-    for (;;)
-    {
-      return this.mFinalCacheRoot;
-      if (QLog.isColorLevel())
+      else if (QLog.isColorLevel())
       {
         QLog.i("QzoneSoundPlugin", 2, "dir is exists");
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.i("QzoneSoundPlugin", 2, "cache root found use : " + this.mFinalCacheRoot);
-        }
       }
     }
+    else if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("cache root found use : ");
+      ((StringBuilder)localObject).append(this.mFinalCacheRoot);
+      QLog.i("QzoneSoundPlugin", 2, ((StringBuilder)localObject).toString());
+    }
+    return this.mFinalCacheRoot;
   }
   
   private void playLocalBackSound(String... paramVarArgs)
@@ -73,8 +77,15 @@ public class QzoneSoundPlugin
     try
     {
       paramVarArgs = MD5Utils.toMD5(new JSONObject(paramVarArgs[0]).optString("url"));
-      paramVarArgs = checkEnv() + paramVarArgs + ".mp3";
-      QLog.d("QzoneSoundPlugin", 2, "playLocalBackSound : " + paramVarArgs);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(checkEnv());
+      localStringBuilder.append(paramVarArgs);
+      localStringBuilder.append(".mp3");
+      paramVarArgs = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("playLocalBackSound : ");
+      localStringBuilder.append(paramVarArgs);
+      QLog.d("QzoneSoundPlugin", 2, localStringBuilder.toString());
       if (new File(paramVarArgs).exists())
       {
         this.mLocalBackSoundHelper.setDataSource(paramVarArgs);
@@ -90,8 +101,15 @@ public class QzoneSoundPlugin
     try
     {
       paramVarArgs = MD5Utils.toMD5(new JSONObject(paramVarArgs[0]).optString("url"));
-      paramVarArgs = checkEnv() + paramVarArgs + ".mp3";
-      QLog.d("QzoneSoundPlugin", 2, "playLocalSound : " + paramVarArgs);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(checkEnv());
+      localStringBuilder.append(paramVarArgs);
+      localStringBuilder.append(".mp3");
+      paramVarArgs = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("playLocalSound : ");
+      localStringBuilder.append(paramVarArgs);
+      QLog.d("QzoneSoundPlugin", 2, localStringBuilder.toString());
       if (new File(paramVarArgs).exists())
       {
         this.mLocalSoundHelper.setDataSource(paramVarArgs);
@@ -111,10 +129,23 @@ public class QzoneSoundPlugin
         paramVarArgs = ((JSONObject)localObject2).optString("callback");
         Object localObject1 = ((JSONObject)localObject2).optString("url");
         localObject2 = MD5Utils.toMD5(((JSONObject)localObject2).optString("url"));
-        QLog.d("QzoneSoundPlugin", 2, "downloadMusicUrl : " + (String)localObject1);
-        QLog.d("QzoneSoundPlugin", 2, "downloadMusicMD5 : " + (String)localObject2);
-        this.mDownloadMusicFinalCachePath = (checkEnv() + (String)localObject2 + ".mp3");
-        QLog.d("QzoneSoundPlugin", 2, "mDownloadMusicFinalCachePath : " + this.mDownloadMusicFinalCachePath);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("downloadMusicUrl : ");
+        localStringBuilder.append((String)localObject1);
+        QLog.d("QzoneSoundPlugin", 2, localStringBuilder.toString());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("downloadMusicMD5 : ");
+        localStringBuilder.append((String)localObject2);
+        QLog.d("QzoneSoundPlugin", 2, localStringBuilder.toString());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(checkEnv());
+        localStringBuilder.append((String)localObject2);
+        localStringBuilder.append(".mp3");
+        this.mDownloadMusicFinalCachePath = localStringBuilder.toString();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("mDownloadMusicFinalCachePath : ");
+        ((StringBuilder)localObject2).append(this.mDownloadMusicFinalCachePath);
+        QLog.d("QzoneSoundPlugin", 2, ((StringBuilder)localObject2).toString());
         if (!new File(this.mDownloadMusicFinalCachePath).exists())
         {
           DownloaderFactory.getInstance(this.parentPlugin.mRuntime.a()).getCommonDownloader().download((String)localObject1, this.mDownloadMusicFinalCachePath, new QzoneSoundPlugin.1(this, paramVarArgs));
@@ -137,7 +168,10 @@ public class QzoneSoundPlugin
             return;
           }
         }
-        QLog.i("QzoneSoundPlugin", 2, "DownloaderFactory onDownloadSucceed : " + paramVarArgs.getMessage());
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("DownloaderFactory onDownloadSucceed : ");
+        ((StringBuilder)localObject1).append(paramVarArgs.getMessage());
+        QLog.i("QzoneSoundPlugin", 2, ((StringBuilder)localObject1).toString());
         return;
       }
       catch (JSONException paramVarArgs)
@@ -151,62 +185,67 @@ public class QzoneSoundPlugin
   
   private void stopLocalBackSound(String... paramVarArgs)
   {
-    if (this.mLocalBackSoundHelper != null) {
-      this.mLocalBackSoundHelper.stop();
+    paramVarArgs = this.mLocalBackSoundHelper;
+    if (paramVarArgs != null) {
+      paramVarArgs.stop();
     }
   }
   
   private void stopLocalSound(String... paramVarArgs)
   {
-    if (this.mLocalSoundHelper != null) {
-      this.mLocalSoundHelper.stop();
+    paramVarArgs = this.mLocalSoundHelper;
+    if (paramVarArgs != null) {
+      paramVarArgs.stop();
     }
   }
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((!paramString2.equals("Qzone")) || (this.parentPlugin == null) || (this.parentPlugin.mRuntime == null)) {
-      return false;
-    }
-    if (paramString3.equalsIgnoreCase("playLocalSound"))
+    if ((paramString2.equals("Qzone")) && (this.parentPlugin != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("QzoneSoundPlugin", 2, "playLocalSound");
+      if (this.parentPlugin.mRuntime == null) {
+        return false;
       }
-      playLocalSound(paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("playLocalBackSound"))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QzoneSoundPlugin", 2, "playLocalBackSound");
+      if (paramString3.equalsIgnoreCase("playLocalSound"))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("QzoneSoundPlugin", 2, "playLocalSound");
+        }
+        playLocalSound(paramVarArgs);
+        return true;
       }
-      playLocalBackSound(paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("preloadSound"))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QzoneSoundPlugin", 2, "preloadSound");
+      if (paramString3.equalsIgnoreCase("playLocalBackSound"))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("QzoneSoundPlugin", 2, "playLocalBackSound");
+        }
+        playLocalBackSound(paramVarArgs);
+        return true;
       }
-      preloadSound(paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("stopLocalSound"))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QzoneSoundPlugin", 2, "stopLocalSound");
+      if (paramString3.equalsIgnoreCase("preloadSound"))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("QzoneSoundPlugin", 2, "preloadSound");
+        }
+        preloadSound(paramVarArgs);
+        return true;
       }
-      stopLocalSound(new String[0]);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("stopLocalBackSound"))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QzoneSoundPlugin", 2, "stopLocalBackSound");
+      if (paramString3.equalsIgnoreCase("stopLocalSound"))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("QzoneSoundPlugin", 2, "stopLocalSound");
+        }
+        stopLocalSound(new String[0]);
+        return true;
       }
-      stopLocalBackSound(new String[0]);
-      return true;
+      if (paramString3.equalsIgnoreCase("stopLocalBackSound"))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("QzoneSoundPlugin", 2, "stopLocalBackSound");
+        }
+        stopLocalBackSound(new String[0]);
+        return true;
+      }
     }
     return false;
   }
@@ -217,21 +256,23 @@ public class QzoneSoundPlugin
     if (QLog.isColorLevel()) {
       QLog.d("QzoneSoundPlugin", 2, "onDestroy");
     }
-    if (this.mLocalBackSoundHelper != null)
+    QzoneSoundPlayerHelper localQzoneSoundPlayerHelper = this.mLocalBackSoundHelper;
+    if (localQzoneSoundPlayerHelper != null)
     {
-      this.mLocalBackSoundHelper.release();
+      localQzoneSoundPlayerHelper.release();
       this.mLocalBackSoundHelper = null;
     }
-    if (this.mLocalSoundHelper != null)
+    localQzoneSoundPlayerHelper = this.mLocalSoundHelper;
+    if (localQzoneSoundPlayerHelper != null)
     {
-      this.mLocalSoundHelper.release();
+      localQzoneSoundPlayerHelper.release();
       this.mLocalSoundHelper = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.sound.QzoneSoundPlugin
  * JD-Core Version:    0.7.0.1
  */

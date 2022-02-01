@@ -37,16 +37,18 @@ public class VideoShelfPlayer
   
   public int getCurrentPosition()
   {
-    if (this.mMediaPlayer != null) {
-      return this.mMediaPlayer.getCurrentPosition();
+    MediaPlayer localMediaPlayer = this.mMediaPlayer;
+    if (localMediaPlayer != null) {
+      return localMediaPlayer.getCurrentPosition();
     }
     return 0;
   }
   
   public long getDuration()
   {
-    if (this.mMediaPlayer != null) {
-      return this.mMediaPlayer.getDuration();
+    MediaPlayer localMediaPlayer = this.mMediaPlayer;
+    if (localMediaPlayer != null) {
+      return localMediaPlayer.getDuration();
     }
     return 0L;
   }
@@ -63,104 +65,133 @@ public class VideoShelfPlayer
   
   public boolean isPlaying()
   {
-    if (this.mMediaPlayer != null) {
-      return this.mMediaPlayer.isPlaying();
+    MediaPlayer localMediaPlayer = this.mMediaPlayer;
+    if (localMediaPlayer != null) {
+      return localMediaPlayer.isPlaying();
     }
     return false;
   }
   
   public void pause()
   {
-    if (this.mMediaPlayer != null) {
-      this.mMediaPlayer.pause();
+    MediaPlayer localMediaPlayer = this.mMediaPlayer;
+    if (localMediaPlayer != null) {
+      localMediaPlayer.pause();
     }
   }
   
   public void prepare()
   {
-    if (this.mMediaPlayer != null) {}
-    try
+    MediaPlayer localMediaPlayer = this.mMediaPlayer;
+    if (localMediaPlayer != null)
     {
-      this.mMediaPlayer.prepare();
-      return;
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      localIllegalStateException.printStackTrace();
-      ReportUtil.report("[" + VideoShelfPlayer.class.getSimpleName() + "]mVideoPlayer.prepare, error msg = " + localIllegalStateException.toString());
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      label16:
-      break label16;
+      try
+      {
+        localMediaPlayer.prepare();
+        return;
+      }
+      catch (IllegalStateException localIllegalStateException) {}catch (IOException localIOException) {}
+      localIOException.printStackTrace();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[");
+      localStringBuilder.append(VideoShelfPlayer.class.getSimpleName());
+      localStringBuilder.append("]mVideoPlayer.prepare, error msg = ");
+      localStringBuilder.append(localIOException.toString());
+      ReportUtil.report(localStringBuilder.toString());
     }
   }
   
   public void reset()
   {
-    if (this.mMediaPlayer != null) {
-      this.mMediaPlayer.reset();
+    MediaPlayer localMediaPlayer = this.mMediaPlayer;
+    if (localMediaPlayer != null) {
+      localMediaPlayer.reset();
     }
   }
   
   public void seekTo(int paramInt)
   {
-    if (this.mMediaPlayer != null) {}
-    try
-    {
-      this.mMediaPlayer.seekTo(paramInt);
-      return;
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      localIllegalStateException.printStackTrace();
-      ReportUtil.report("[" + VideoShelfPlayer.class.getSimpleName() + "]mVideoPlayer.seekTo, error msg = " + localIllegalStateException.toString());
+    MediaPlayer localMediaPlayer = this.mMediaPlayer;
+    if (localMediaPlayer != null) {
+      try
+      {
+        localMediaPlayer.seekTo(paramInt);
+        return;
+      }
+      catch (IllegalStateException localIllegalStateException)
+      {
+        localIllegalStateException.printStackTrace();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[");
+        localStringBuilder.append(VideoShelfPlayer.class.getSimpleName());
+        localStringBuilder.append("]mVideoPlayer.seekTo, error msg = ");
+        localStringBuilder.append(localIllegalStateException.toString());
+        ReportUtil.report(localStringBuilder.toString());
+      }
     }
   }
   
   public void setDataSource(AssetManager paramAssetManager, String paramString)
   {
-    if ((this.mMediaPlayer != null) && (paramAssetManager != null) && (paramString != null)) {}
-    try
-    {
-      paramAssetManager = paramAssetManager.openFd(paramString);
-      this.mMediaPlayer.setDataSource(paramAssetManager.getFileDescriptor(), paramAssetManager.getStartOffset(), paramAssetManager.getLength());
-      return;
-    }
-    catch (IOException paramAssetManager)
-    {
-      paramAssetManager.printStackTrace();
-      ReportUtil.report("[" + VideoShelfPlayer.class.getSimpleName() + "] mVideoPlayer.setDataSource(assets file) path = " + paramString + ", error msg = " + paramAssetManager.toString());
+    if ((this.mMediaPlayer != null) && (paramAssetManager != null) && (paramString != null)) {
+      try
+      {
+        paramAssetManager = paramAssetManager.openFd(paramString);
+        this.mMediaPlayer.setDataSource(paramAssetManager.getFileDescriptor(), paramAssetManager.getStartOffset(), paramAssetManager.getLength());
+        return;
+      }
+      catch (IOException paramAssetManager)
+      {
+        paramAssetManager.printStackTrace();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[");
+        localStringBuilder.append(VideoShelfPlayer.class.getSimpleName());
+        localStringBuilder.append("] mVideoPlayer.setDataSource(assets file) path = ");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(", error msg = ");
+        localStringBuilder.append(paramAssetManager.toString());
+        ReportUtil.report(localStringBuilder.toString());
+      }
     }
   }
   
   public void setDataSource(String paramString)
   {
-    if ((this.mMediaPlayer != null) && (paramString != null)) {}
-    try
-    {
-      this.mMediaPlayer.setDataSource(paramString);
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      localIOException.printStackTrace();
-      ReportUtil.report("[" + VideoShelfPlayer.class.getSimpleName() + "] mVideoPlayer.setDataSource path = " + paramString + ", error msg = " + localIOException.toString());
+    MediaPlayer localMediaPlayer = this.mMediaPlayer;
+    if ((localMediaPlayer != null) && (paramString != null)) {
+      try
+      {
+        localMediaPlayer.setDataSource(paramString);
+        return;
+      }
+      catch (IOException localIOException)
+      {
+        localIOException.printStackTrace();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[");
+        localStringBuilder.append(VideoShelfPlayer.class.getSimpleName());
+        localStringBuilder.append("] mVideoPlayer.setDataSource path = ");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(", error msg = ");
+        localStringBuilder.append(localIOException.toString());
+        ReportUtil.report(localStringBuilder.toString());
+      }
     }
   }
   
   public void setDisplay(SurfaceHolder paramSurfaceHolder)
   {
-    if (this.mMediaPlayer != null) {
-      this.mMediaPlayer.setDisplay(paramSurfaceHolder);
+    MediaPlayer localMediaPlayer = this.mMediaPlayer;
+    if (localMediaPlayer != null) {
+      localMediaPlayer.setDisplay(paramSurfaceHolder);
     }
   }
   
   public void setLooping(boolean paramBoolean)
   {
-    if (this.mMediaPlayer != null) {
-      this.mMediaPlayer.setLooping(paramBoolean);
+    MediaPlayer localMediaPlayer = this.mMediaPlayer;
+    if (localMediaPlayer != null) {
+      localMediaPlayer.setLooping(paramBoolean);
     }
   }
   
@@ -168,8 +199,9 @@ public class VideoShelfPlayer
   
   public void setSurface(Surface paramSurface)
   {
-    if (this.mMediaPlayer != null) {
-      this.mMediaPlayer.setSurface(paramSurface);
+    MediaPlayer localMediaPlayer = this.mMediaPlayer;
+    if (localMediaPlayer != null) {
+      localMediaPlayer.setSurface(paramSurface);
     }
   }
   
@@ -180,16 +212,18 @@ public class VideoShelfPlayer
   
   public void start()
   {
-    if (this.mMediaPlayer != null) {
-      this.mMediaPlayer.start();
+    MediaPlayer localMediaPlayer = this.mMediaPlayer;
+    if (localMediaPlayer != null) {
+      localMediaPlayer.start();
     }
   }
   
   public void stop()
   {
-    if (this.mMediaPlayer != null)
+    MediaPlayer localMediaPlayer = this.mMediaPlayer;
+    if (localMediaPlayer != null)
     {
-      this.mMediaPlayer.stop();
+      localMediaPlayer.stop();
       this.mMediaPlayer.release();
       this.mMediaPlayer.setOnErrorListener(null);
       this.mMediaPlayer.setOnCompletionListener(null);
@@ -202,7 +236,7 @@ public class VideoShelfPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.videoshelf.model.player.VideoShelfPlayer
  * JD-Core Version:    0.7.0.1
  */

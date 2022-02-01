@@ -30,52 +30,51 @@ public final class LocalPermissionParser
   
   private void appendRequestPermission(EventInfo paramEventInfo, String paramString)
   {
-    if ((paramEventInfo == null) || (paramString == null)) {
-      return;
+    if (paramEventInfo != null)
+    {
+      if (paramString == null) {
+        return;
+      }
+      if (paramEventInfo.requestPermissions == null) {
+        paramEventInfo.requestPermissions = new ArrayList();
+      }
+      paramEventInfo.requestPermissions.add(paramString);
     }
-    if (paramEventInfo.requestPermissions == null) {
-      paramEventInfo.requestPermissions = new ArrayList();
-    }
-    paramEventInfo.requestPermissions.add(paramString);
   }
   
   private void doParse()
   {
-    Object localObject3 = null;
     clear();
     XmlResourceParser localXmlResourceParser = this.mContext.getResources().getXml(PERMISSION_XML);
+    Object localObject3 = null;
     Object localObject2 = null;
-    Object localObject1 = null;
-    if (localXmlResourceParser.getEventType() != 1)
+    Object localObject6;
+    for (Object localObject1 = localObject2; localXmlResourceParser.getEventType() != 1; localObject1 = localObject6)
     {
       String str = localXmlResourceParser.getName();
-      Object localObject6;
-      Object localObject5;
+      int i = localXmlResourceParser.getEventType();
       Object localObject4;
-      switch (localXmlResourceParser.getEventType())
+      Object localObject5;
+      if (i != 2)
       {
-      default: 
-        localObject6 = localObject1;
-        localObject5 = localObject2;
-        localObject4 = localObject3;
-      }
-      for (;;)
-      {
-        localXmlResourceParser.next();
-        localObject3 = localObject4;
-        localObject2 = localObject5;
-        localObject1 = localObject6;
-        break;
-        if ("permission".equals(str))
+        if (i != 3)
         {
-          localObject6 = parsePermission(localXmlResourceParser);
           localObject4 = localObject3;
           localObject5 = localObject2;
+          localObject6 = localObject1;
+        }
+        else if ("permission".equals(str))
+        {
+          addPermission((PermissionInfo)localObject3);
+          localObject4 = localObject3;
+          localObject5 = localObject2;
+          localObject6 = localObject1;
         }
         else if ("event".equals(str))
         {
-          localObject5 = parseEvent(localXmlResourceParser);
+          addEvent((EventInfo)localObject2);
           localObject4 = localObject3;
+          localObject5 = localObject2;
           localObject6 = localObject1;
         }
         else
@@ -85,40 +84,40 @@ public final class LocalPermissionParser
           localObject6 = localObject1;
           if ("request-permission".equals(str))
           {
-            localObject4 = parseRequestPermission(localXmlResourceParser);
+            appendRequestPermission((EventInfo)localObject2, localObject1);
+            localObject4 = localObject3;
             localObject5 = localObject2;
             localObject6 = localObject1;
-            continue;
-            if ("permission".equals(str))
-            {
-              addPermission(localObject1);
-              localObject4 = localObject3;
-              localObject5 = localObject2;
-              localObject6 = localObject1;
-            }
-            else if ("event".equals(str))
-            {
-              addEvent(localObject2);
-              localObject4 = localObject3;
-              localObject5 = localObject2;
-              localObject6 = localObject1;
-            }
-            else
-            {
-              localObject4 = localObject3;
-              localObject5 = localObject2;
-              localObject6 = localObject1;
-              if ("request-permission".equals(str))
-              {
-                appendRequestPermission(localObject2, localObject3);
-                localObject4 = localObject3;
-                localObject5 = localObject2;
-                localObject6 = localObject1;
-              }
-            }
           }
         }
       }
+      else if ("permission".equals(str))
+      {
+        localObject4 = parsePermission(localXmlResourceParser);
+        localObject5 = localObject2;
+        localObject6 = localObject1;
+      }
+      else if ("event".equals(str))
+      {
+        localObject5 = parseEvent(localXmlResourceParser);
+        localObject4 = localObject3;
+        localObject6 = localObject1;
+      }
+      else
+      {
+        localObject4 = localObject3;
+        localObject5 = localObject2;
+        localObject6 = localObject1;
+        if ("request-permission".equals(str))
+        {
+          localObject6 = parseRequestPermission(localXmlResourceParser);
+          localObject5 = localObject2;
+          localObject4 = localObject3;
+        }
+      }
+      localXmlResourceParser.next();
+      localObject3 = localObject4;
+      localObject2 = localObject5;
     }
   }
   
@@ -151,87 +150,105 @@ public final class LocalPermissionParser
     {
       EventInfo localEventInfo = new EventInfo();
       int i = 0;
-      Object localObject;
-      for (;;)
+      while (i < paramXmlPullParser.getAttributeCount())
       {
-        localObject = localEventInfo;
-        if (i >= paramXmlPullParser.getAttributeCount()) {
-          break;
-        }
-        localObject = paramXmlPullParser.getAttributeName(i);
-        String str = paramXmlPullParser.getAttributeValue(i);
-        if ("name".equals(localObject)) {
-          localEventInfo.name = str;
+        String str1 = paramXmlPullParser.getAttributeName(i);
+        String str2 = paramXmlPullParser.getAttributeValue(i);
+        if ("name".equals(str1)) {
+          localEventInfo.name = str2;
         }
         i += 1;
       }
-      return localObject;
+      return localEventInfo;
     }
     catch (Exception paramXmlPullParser)
     {
       QMLog.e("PermissionParser", paramXmlPullParser.getMessage(), paramXmlPullParser);
-      localObject = null;
     }
+    return null;
   }
   
   private PermissionInfo parsePermission(XmlPullParser paramXmlPullParser)
   {
-    PermissionInfo localPermissionInfo;
-    int i;
-    String str1;
-    String str2;
-    try
+    for (;;)
     {
-      localPermissionInfo = new PermissionInfo();
-      i = 0;
-      if (i >= paramXmlPullParser.getAttributeCount()) {
-        break label259;
-      }
-      str1 = paramXmlPullParser.getAttributeName(i);
-      str2 = paramXmlPullParser.getAttributeValue(i);
-      if ("id".equals(str1)) {
-        localPermissionInfo.id = str2;
-      } else if ("name".equals(str1)) {
-        localPermissionInfo.name = getStringByAttribute(str2);
-      }
-    }
-    catch (Exception paramXmlPullParser)
-    {
-      QMLog.e("PermissionParser", paramXmlPullParser.getMessage(), paramXmlPullParser);
-      return null;
-    }
-    if ("description".equals(str1)) {
-      localPermissionInfo.description = getStringByAttribute(str2);
-    } else if ("description-reject".equals(str1)) {
-      localPermissionInfo.rejectDescription = getStringByAttribute(str2);
-    } else if ("built-in".equals(str1)) {
-      localPermissionInfo.builtIn = Boolean.parseBoolean(str2);
-    } else if ("min-sdk-version".equals(str1)) {
-      if (!isNumeric(str2)) {
-        break label295;
-      }
-    }
-    label259:
-    label288:
-    label295:
-    for (int j = Integer.parseInt(str2);; j = 1)
-    {
-      if (Build.VERSION.SDK_INT < j)
+      int i;
+      try
       {
-        Log.i("PermissionParser", "Ignore permission " + localPermissionInfo + ". Required min-sdk-version is " + j);
-        return null;
-        if ("report_sub_action".endsWith(str1))
+        PermissionInfo localPermissionInfo = new PermissionInfo();
+        i = 0;
+        if (i < paramXmlPullParser.getAttributeCount())
         {
-          localPermissionInfo.reportSubAction = getStringByAttribute(str2);
-          break label288;
+          String str1 = paramXmlPullParser.getAttributeName(i);
+          String str2 = paramXmlPullParser.getAttributeValue(i);
+          if ("id".equals(str1))
+          {
+            localPermissionInfo.id = str2;
+            break label306;
+          }
+          if ("name".equals(str1))
+          {
+            localPermissionInfo.name = getStringByAttribute(str2);
+            break label306;
+          }
+          if ("description".equals(str1))
+          {
+            localPermissionInfo.description = getStringByAttribute(str2);
+            break label306;
+          }
+          if ("description-reject".equals(str1))
+          {
+            localPermissionInfo.rejectDescription = getStringByAttribute(str2);
+            break label306;
+          }
+          if ("built-in".equals(str1))
+          {
+            localPermissionInfo.builtIn = Boolean.parseBoolean(str2);
+            break label306;
+          }
+          if ("min-sdk-version".equals(str1))
+          {
+            if (isNumeric(str2))
+            {
+              j = Integer.parseInt(str2);
+              if (Build.VERSION.SDK_INT >= j) {
+                break label306;
+              }
+              paramXmlPullParser = new StringBuilder();
+              paramXmlPullParser.append("Ignore permission ");
+              paramXmlPullParser.append(localPermissionInfo);
+              paramXmlPullParser.append(". Required min-sdk-version is ");
+              paramXmlPullParser.append(j);
+              Log.i("PermissionParser", paramXmlPullParser.toString());
+              return null;
+            }
+          }
+          else
+          {
+            if (!"report_sub_action".endsWith(str1)) {
+              break label306;
+            }
+            localPermissionInfo.reportSubAction = getStringByAttribute(str2);
+            break label306;
+          }
+        }
+        else
+        {
           if (StringUtil.isEmpty(localPermissionInfo.rejectDescription)) {
             localPermissionInfo.rejectDescription = this.mContext.getString(R.string.mini_sdk_perm_desc_default_reject);
           }
           return localPermissionInfo;
         }
       }
+      catch (Exception paramXmlPullParser)
+      {
+        QMLog.e("PermissionParser", paramXmlPullParser.getMessage(), paramXmlPullParser);
+        return null;
+      }
+      int j = 1;
+      continue;
+      label306:
       i += 1;
-      break;
     }
   }
   
@@ -250,30 +267,24 @@ public final class LocalPermissionParser
       doParse();
       return true;
     }
-    catch (XmlPullParserException localXmlPullParserException)
+    catch (Exception localException)
     {
-      QMLog.e("PermissionParser", localXmlPullParserException.getMessage(), localXmlPullParserException);
-      return false;
+      QMLog.e("PermissionParser", localException.getMessage(), localException);
     }
     catch (IOException localIOException)
     {
-      for (;;)
-      {
-        QMLog.e("PermissionParser", localIOException.getMessage(), localIOException);
-      }
+      QMLog.e("PermissionParser", localIOException.getMessage(), localIOException);
     }
-    catch (Exception localException)
+    catch (XmlPullParserException localXmlPullParserException)
     {
-      for (;;)
-      {
-        QMLog.e("PermissionParser", localException.getMessage(), localException);
-      }
+      QMLog.e("PermissionParser", localXmlPullParserException.getMessage(), localXmlPullParserException);
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.auth.parser.LocalPermissionParser
  * JD-Core Version:    0.7.0.1
  */

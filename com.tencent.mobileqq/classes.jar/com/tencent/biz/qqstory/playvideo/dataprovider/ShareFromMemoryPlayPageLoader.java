@@ -30,13 +30,23 @@ public class ShareFromMemoryPlayPageLoader
     if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.videoListOrder == 0)
     {
       localObject = ((FeedVideoManager)SuperManager.a(12)).a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.feedId, 1);
-      if ((localObject == null) || (((FeedVideoInfo)localObject).mVideoItemList.size() <= 0)) {}
+      if ((localObject != null) && (((FeedVideoInfo)localObject).mVideoItemList.size() > 0))
+      {
+        localObject = ((StoryVideoItem)((FeedVideoInfo)localObject).mVideoItemList.get(0)).mVid;
+        break label68;
+      }
     }
-    for (Object localObject = ((StoryVideoItem)((FeedVideoInfo)localObject).mVideoItemList.get(0)).mVid;; localObject = null)
-    {
-      SLog.d("Q.qqstory.player.data.ShareFromMemoryPlayPageLoader", "getStartInfo GroupId=" + this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId + ",vid=" + (String)localObject + ",feedId=" + this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.feedId);
-      return new IDataProvider.StartInfo(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId, (String)localObject, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.feedId);
-    }
+    Object localObject = null;
+    label68:
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getStartInfo GroupId=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId);
+    localStringBuilder.append(",vid=");
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(",feedId=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.feedId);
+    SLog.d("Q.qqstory.player.data.ShareFromMemoryPlayPageLoader", localStringBuilder.toString());
+    return new IDataProvider.StartInfo(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId, (String)localObject, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.feedId);
   }
   
   public List<IGroupPageLoader.IVidFullSyncer> a(List<IDataProvider.GroupId> paramList)
@@ -60,7 +70,7 @@ public class ShareFromMemoryPlayPageLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.ShareFromMemoryPlayPageLoader
  * JD-Core Version:    0.7.0.1
  */

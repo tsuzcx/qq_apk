@@ -2,7 +2,7 @@ package com.tencent.mobileqq.location.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.location.net.LocationHandler;
+import com.tencent.mobileqq.location.net.LocationShareRoomManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
@@ -19,7 +19,7 @@ class LocationDialogUtil$5$1
     LocationShareFragment.a(BaseApplication.getContext(), this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString, this.a.b);
     try
     {
-      LocationHandler.a().b(true);
+      LocationShareRoomManager.a().a(true);
       label67:
       LocationDialogUtil.a(this.a.b, "0X800A769");
       return;
@@ -32,7 +32,7 @@ class LocationDialogUtil$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationDialogUtil.5.1
  * JD-Core Version:    0.7.0.1
  */

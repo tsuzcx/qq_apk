@@ -26,12 +26,25 @@ public class UniformParam$Float4fParam
       return;
     }
     GLES20.glUniform4f(this.handle, this.x, this.y, this.z, this.w);
-    GlUtil.checkGlError("Float4fParam setParams: " + toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Float4fParam setParams: ");
+    localStringBuilder.append(toString());
+    GlUtil.checkGlError(localStringBuilder.toString());
   }
   
   public String toString()
   {
-    return this.name + " = " + this.x + ", " + this.y + ", " + this.z + ", " + this.w;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.name);
+    localStringBuilder.append(" = ");
+    localStringBuilder.append(this.x);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.y);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.z);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.w);
+    return localStringBuilder.toString();
   }
 }
 

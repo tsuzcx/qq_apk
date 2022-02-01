@@ -38,7 +38,7 @@ public class EmotcationConstants
   public static final int[] SERVER_TO_LOCALE;
   public static final short[] SERVER_TO_LOCALE_OLD;
   public static final int[] STATIC_SYS_EMOTCATION_RESOURCE;
-  public static final int[] STATIC_SYS_EMO_GIF_RES = { 2130837760, 2130837761, 2130837762, 2130837763, 2130837764, 2130837765, 2130837766, 2130837767, 2130837768, 2130837769, 2130837770, 2130837771, 2130837772, 2130837773, 2130837774, 2130837775, 2130837776, 2130837777, 2130837778, 2130837779, 2130837780, 2130837781, 2130837782, 2130837783, 2130837784, 2130837785, 2130837786, 2130837787, 2130837788, 2130837789, 2130837790, 2130837791, 2130837792, 2130837793, 2130837794, 2130837795, 2130837796, 2130837797, 2130837798, 2130837799, 2130837800, 2130837801, 2130837802, 2130837803, 2130837804, 2130837805, 2130837806, 2130837807, 2130837808, 2130837809, 2130837810, 2130837811, 2130837812, 2130837813, 2130837814, 2130837815, 2130837816, 2130837817, 2130837818, 2130837819, 2130838235, 2130837821, 2130837822, 2130837823, 2130837824, 2130837825, 2130837826, 2130837827, 2130837828, 2130837829, 2130837830, 2130837831, 2130837832, 2130838236, 2130837834, 2130837835, 2130837836, 2130837837, 2130837838, 2130837839, 2130837840, 2130837841, 2130837842, 2130837843, 2130837844, 2130837845, 2130837846, 2130837847, 2130837848, 2130837849, 2130837850, 2130837851, 2130837852, 2130837853, 2130838237, 2130837855, 2130837856, 2130837857, 2130837858, 2130837859, 2130837860, 2130837861, 2130837862, 2130837863, 2130837864, 2130837865, 2130837866, 2130837867, 2130837868, 2130837869, 2130837870, 2130837871, 2130837872, 2130837873, 2130837874, 2130837875, 2130837876, 2130837877, 2130837878, 2130837879, 2130837880, 2130837881, 2130837882, 2130837883, 2130837884, 2130837885, 2130837886, 2130837887, 2130837888, 2130837889, 2130837890, 2130837891, 2130837892, 2130837893, 2130837894, 2130837895, 2130837896, 2130837897, 2130837898, 2130837899, 2130837900, 2130837901, 2130837902, 2130840060, 2130840061, 2130840062, 2130840063, 2130840064, 2130840065, 2130840066, 2130840067, 2130840068, 2130840069, 2130840070, 2130840071, 2130840072, 2130840073, 2130840074, 2130840075, 2130840076, 2130840077, 2130840078, 2130840079, 2130840080, 2130840081, 2130840082, 2130840083, 2130840084, 2130840085, 2130840086, 2130840087, 2130840088, 2130840089, 2130840090, 2130840091, 2130840092, 2130840093, 2130840094, 2130840095, 2130840096, 2130840097, 2130840098, 2130840099, 2130840100, 2130840101, 2130840102, 2130840103, 2130840104, 2130840105, 2130840106, 2130840107, 2130840108, 2130840109, 2130840110, 2130840111, 2130840112, 2130840113, 2130840114, 2130840115, 2130840116, 2130840117, 2130840118, 2130840119, 2130840120, 2130840121, 2130840122, 2130840123, 2130840124, 2130840125, 2130840126, 2130840127, 2130840128, 2130840129, 2130840130, 2130840131, 2130840132, 2130840133, 2130840134, 2130840135, 2130840136 };
+  public static final int[] STATIC_SYS_EMO_GIF_RES = { 2130837760, 2130837761, 2130837762, 2130837763, 2130837764, 2130837765, 2130837766, 2130837767, 2130837768, 2130837769, 2130837770, 2130837771, 2130837772, 2130837773, 2130837774, 2130837775, 2130837776, 2130837777, 2130837778, 2130837779, 2130837780, 2130837781, 2130837782, 2130837783, 2130837784, 2130837785, 2130837786, 2130837787, 2130837788, 2130837789, 2130837790, 2130837791, 2130837792, 2130837793, 2130837794, 2130837795, 2130837796, 2130837797, 2130837798, 2130837799, 2130837800, 2130837801, 2130837802, 2130837803, 2130837804, 2130837805, 2130837806, 2130837807, 2130837808, 2130837809, 2130837810, 2130837811, 2130837812, 2130837813, 2130837814, 2130837815, 2130837816, 2130837817, 2130837818, 2130837819, 2130838235, 2130837821, 2130837822, 2130837823, 2130837824, 2130837825, 2130837826, 2130837827, 2130837828, 2130837829, 2130837830, 2130837831, 2130837832, 2130838236, 2130837834, 2130837835, 2130837836, 2130837837, 2130837838, 2130837839, 2130837840, 2130837841, 2130837842, 2130837843, 2130837844, 2130837845, 2130837846, 2130837847, 2130837848, 2130837849, 2130837850, 2130837851, 2130837852, 2130837853, 2130838237, 2130837855, 2130837856, 2130837857, 2130837858, 2130837859, 2130837860, 2130837861, 2130837862, 2130837863, 2130837864, 2130837865, 2130837866, 2130837867, 2130837868, 2130837869, 2130837870, 2130837871, 2130837872, 2130837873, 2130837874, 2130837875, 2130837876, 2130837877, 2130837878, 2130837879, 2130837880, 2130837881, 2130837882, 2130837883, 2130837884, 2130837885, 2130837886, 2130837887, 2130837888, 2130837889, 2130837890, 2130837891, 2130837892, 2130837893, 2130837894, 2130837895, 2130837896, 2130837897, 2130837898, 2130837899, 2130837900, 2130837901, 2130837902, 2130839672, 2130839673, 2130839674, 2130839675, 2130839676, 2130839677, 2130839678, 2130839679, 2130839680, 2130839681, 2130839682, 2130839683, 2130839684, 2130839685, 2130839686, 2130839687, 2130839688, 2130839689, 2130839690, 2130839691, 2130839692, 2130839693, 2130839694, 2130839695, 2130839696, 2130839697, 2130839698, 2130839699, 2130839700, 2130839701, 2130839702, 2130839703, 2130839704, 2130839705, 2130839706, 2130839707, 2130839708, 2130839709, 2130839710, 2130839711, 2130839712, 2130839713, 2130839714, 2130839715, 2130839716, 2130839717, 2130839718, 2130839719, 2130839720, 2130839721, 2130839722, 2130839723, 2130839724, 2130839725, 2130839726, 2130839727, 2130839728, 2130839729, 2130839730, 2130839731, 2130839732, 2130839733, 2130839734, 2130839735, 2130839736, 2130839737, 2130839738, 2130839739, 2130839740, 2130839741, 2130839742, 2130839743, 2130839744, 2130839745, 2130839746, 2130839747, 2130839748 };
   public static final char SYS_EMOTCATION_HEAD = '\024';
   public static final char SYS_EMOTCATION_MODULO_OFFSET = 'A';
   public static final int SYS_EMOTCATION_MODULO_VALUE = 128;
@@ -48,7 +48,7 @@ public class EmotcationConstants
   
   static
   {
-    STATIC_SYS_EMOTCATION_RESOURCE = new int[] { 2130838784, 2130838785, 2130838786, 2130838787, 2130838788, 2130838789, 2130838790, 2130837767, 2130837768, 2130838793, 2130838794, 2130838795, 2130838796, 2130838797, 2130838798, 2130838799, 2130837776, 2130838801, 2130838802, 2130838803, 2130838804, 2130838805, 2130838806, 2130838807, 2130838808, 2130838809, 2130838810, 2130838811, 2130837788, 2130838813, 2130838814, 2130838815, 2130837792, 2130838817, 2130838818, 2130838819, 2130838820, 2130838821, 2130838822, 2130837799, 2130838824, 2130838825, 2130838826, 2130838827, 2130838828, 2130838829, 2130838830, 2130837807, 2130838832, 2130838833, 2130838834, 2130838835, 2130838836, 2130838837, 2130838838, 2130838839, 2130838840, 2130837817, 2130837818, 2130838843, 2130838235, 2130838845, 2130838846, 2130838847, 2130837824, 2130838849, 2130838850, 2130837827, 2130837828, 2130837829, 2130838854, 2130837831, 2130838856, 2130838240, 2130838858, 2130837835, 2130837836, 2130838239, 2130837838, 2130838863, 2130837840, 2130838865, 2130838866, 2130838867, 2130838868, 2130838869, 2130838870, 2130838871, 2130838872, 2130838873, 2130838874, 2130838875, 2130838876, 2130838877, 2130838241, 2130838879, 2130838880, 2130838881, 2130838882, 2130838883, 2130838884, 2130838885, 2130838886, 2130838887, 2130838888, 2130838889, 2130838890, 2130837867, 2130837868, 2130837869, 2130837870, 2130837871, 2130837872, 2130837873, 2130837874, 2130837875, 2130837876, 2130837877, 2130837878, 2130837879, 2130837880, 2130837881, 2130837882, 2130837883, 2130837884, 2130837885, 2130837886, 2130837887, 2130837888, 2130837889, 2130837890, 2130837891, 2130837892, 2130837893, 2130837894, 2130837895, 2130837896, 2130837897, 2130837898, 2130837899, 2130837900, 2130837901, 2130837902, 2130840138, 2130840139, 2130840140, 2130840141, 2130840142, 2130840143, 2130840144, 2130840145, 2130840146, 2130840147, 2130840148, 2130840149, 2130840150, 2130840151, 2130840152, 2130840153, 2130840154, 2130840155, 2130840156, 2130840157, 2130840158, 2130840159, 2130840160, 2130840161, 2130840162, 2130840163, 2130840164, 2130840165, 2130840166, 2130840167, 2130840168, 2130840169, 2130840170, 2130840171, 2130840172, 2130840173, 2130840174, 2130840175, 2130840176, 2130840177, 2130840178, 2130840179, 2130840180, 2130840181, 2130840182, 2130840183, 2130840184, 2130840185, 2130840186, 2130840187, 2130840188, 2130840189, 2130840190, 2130840191, 2130840192, 2130840193, 2130840194, 2130840195, 2130840196, 2130840197, 2130840198, 2130840199, 2130840200, 2130840201, 2130840202, 2130840203, 2130840204, 2130840205, 2130840206, 2130840207, 2130840208, 2130840209, 2130840210, 2130840211, 2130840212, 2130840213, 2130840214 };
+    STATIC_SYS_EMOTCATION_RESOURCE = new int[] { 2130838784, 2130838785, 2130838786, 2130838787, 2130838788, 2130838789, 2130838790, 2130837767, 2130837768, 2130838793, 2130838794, 2130838795, 2130838796, 2130838797, 2130838798, 2130838799, 2130837776, 2130838801, 2130838802, 2130838803, 2130838804, 2130838805, 2130838806, 2130838807, 2130838808, 2130838809, 2130838810, 2130838811, 2130837788, 2130838813, 2130838814, 2130838815, 2130837792, 2130838817, 2130838818, 2130838819, 2130838820, 2130838821, 2130838822, 2130837799, 2130838824, 2130838825, 2130838826, 2130838827, 2130838828, 2130838829, 2130838830, 2130837807, 2130838832, 2130838833, 2130838834, 2130838835, 2130838836, 2130838837, 2130838838, 2130838839, 2130838840, 2130837817, 2130837818, 2130838843, 2130838235, 2130838845, 2130838846, 2130838847, 2130837824, 2130838849, 2130838850, 2130837827, 2130837828, 2130837829, 2130838854, 2130837831, 2130838856, 2130838240, 2130838858, 2130837835, 2130837836, 2130838239, 2130837838, 2130838863, 2130837840, 2130838865, 2130838866, 2130838867, 2130838868, 2130838869, 2130838870, 2130838871, 2130838872, 2130838873, 2130838874, 2130838875, 2130838876, 2130838877, 2130838241, 2130838879, 2130838880, 2130838881, 2130838882, 2130838883, 2130838884, 2130838885, 2130838886, 2130838887, 2130838888, 2130838889, 2130838890, 2130837867, 2130837868, 2130837869, 2130837870, 2130837871, 2130837872, 2130837873, 2130837874, 2130837875, 2130837876, 2130837877, 2130837878, 2130837879, 2130837880, 2130837881, 2130837882, 2130837883, 2130837884, 2130837885, 2130837886, 2130837887, 2130837888, 2130837889, 2130837890, 2130837891, 2130837892, 2130837893, 2130837894, 2130837895, 2130837896, 2130837897, 2130837898, 2130837899, 2130837900, 2130837901, 2130837902, 2130839750, 2130839751, 2130839752, 2130839753, 2130839754, 2130839755, 2130839756, 2130839757, 2130839758, 2130839759, 2130839760, 2130839761, 2130839762, 2130839763, 2130839764, 2130839765, 2130839766, 2130839767, 2130839768, 2130839769, 2130839770, 2130839771, 2130839772, 2130839773, 2130839774, 2130839775, 2130839776, 2130839777, 2130839778, 2130839779, 2130839780, 2130839781, 2130839782, 2130839783, 2130839784, 2130839785, 2130839786, 2130839787, 2130839788, 2130839789, 2130839790, 2130839791, 2130839792, 2130839793, 2130839794, 2130839795, 2130839796, 2130839797, 2130839798, 2130839799, 2130839800, 2130839801, 2130839802, 2130839803, 2130839804, 2130839805, 2130839806, 2130839807, 2130840055, 2130840056, 2130840057, 2130840058, 2130840059, 2130840060, 2130840061, 2130840062, 2130840063, 2130840064, 2130840065, 2130840066, 2130840067, 2130840068, 2130840069, 2130840070, 2130840071, 2130840072, 2130840073 };
     REPLACE_EMOJIS = new int[] { 133, 121, 142, 136, 131, 125, 122, 129, 139, 124, 111, 135, 115, 137, 134, 132, 138, 128, 113, 114, 126, 127, 107 };
     VALID_SYS_EMOTCATION_COUNT = STATIC_SYS_EMOTCATION_RESOURCE.length;
     SYS_EMOTICON_SYMBOL = new String[] { "/呲牙", "/调皮", "/流汗", "/偷笑", "/再见", "/敲打", "/擦汗", "/猪头", "/玫瑰", "/流泪", "/大哭", "/嘘...", "/酷", "/抓狂", "/委屈", "/便便", "/炸弹", "/菜刀", "/可爱", "/色", "/害羞", "/得意", "/吐", "/微笑", "/发怒", "/尴尬", "/惊恐", "/冷汗", "/爱心", "/示爱", "/白眼", "/傲慢", "/难过", "/惊讶", "/疑问", "/睡", "/亲亲", "/憨笑", "/爱情", "/衰", "/撇嘴", "/阴险", "/奋斗", "/发呆", "/右哼哼", "/拥抱", "/坏笑", "/飞吻", "/鄙视", "/晕", "/悠闲", "/可怜", "/赞", "/踩", "/握手", "/胜利", "/抱拳", "/凋谢", "/饭", "/蛋糕", "/西瓜", "/啤酒", "/瓢虫", "/勾引", "/OK", "/爱你", "/咖啡", "/钱", "/月亮", "/美女", "/刀", "/发抖", "/差劲", "/拳头", "/心碎", "/太阳", "/礼物", "/足球", "/骷髅", "/挥手", "/闪电", "/饥饿", "/困", "/咒骂", "/折磨", "/抠鼻", "/鼓掌", "/糗大了", "/左哼哼", "/哈欠", "/快哭了", "/吓", "/篮球", "/乒乓", "/NO", "/跳跳", "/怄火", "/转圈", "/磕头", "/回头", "/跳绳", "/激动", "/街舞", "/献吻", "/左太极", "/右太极", "/闭嘴", "/招财进宝", "/双喜", "/鞭炮", "/灯笼", "/发财", "/K歌", "/购物", "/邮件", "/帅", "/喝彩", "/祈祷", "/爆筋", "/棒棒糖", "/喝奶", "/下面", "/香蕉", "/飞机", "/开车", "/高铁左车头", "/车厢", "/高铁右车头", "/多云", "/下雨", "/钞票", "/熊猫", "/灯泡", "/风车", "/闹钟", "/打伞", "/彩球", "/钻戒", "/沙发", "/纸巾", "/药", "/手枪", "/青蛙", "/不开心", "/啊", "/惶恐", "/冷漠", "/呃", "/好棒", "/拜托", "/点赞", "/无聊", "/托脸", "/吃", "/送花", "/害怕", "/花痴", "/小样儿", "/脸红", "/飙泪", "/我不看", "/托腮", "/哇哦", "/茶", "/眨眼睛", "/泪奔", "/无奈", "/卖萌", "/小纠结", "/喷血", "/斜眼笑", "/doge", "/惊喜", "/骚扰", "/笑哭", "/我最美", "/河蟹", "/羊驼", "/栗子", "/幽灵", "/蛋", "/马赛克", "/菊花", "/肥皂", "/红包", "/大笑", "/啵啵", "/糊脸", "/拍头", "/扯一扯", "/舔一舔", "/蹭一蹭", "/拽炸天", "/顶呱呱", "/抱抱", "/暴击", "/开枪", "/撩一撩", "/拍桌", "/拍手", "/恭喜", "/干杯", "/嘲讽", "/哼", "/佛系", "/掐一掐", "/惊呆", "/颤抖", "/啃头", "/偷看", "/扇脸", "/原谅", "/喷脸", "/生日快乐", "/头撞击", "/甩头", "/扔狗", "/加油必胜", "/加油抱抱", "/口罩护体" };
@@ -67,8 +67,14 @@ public class EmotcationConstants
       EMOJI_MAP.put(j, i);
       i += 1;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("AppleEmojiManager", 2, "old init cost:" + (SystemClock.uptimeMillis() - l) + "EMOJI_CODES.length=" + EMOJI_CODES.length);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("old init cost:");
+      localStringBuilder.append(SystemClock.uptimeMillis() - l);
+      localStringBuilder.append("EMOJI_CODES.length=");
+      localStringBuilder.append(EMOJI_CODES.length);
+      QLog.d("AppleEmojiManager", 2, localStringBuilder.toString());
     }
     loadEmojiMapFormDisk();
     LOCALE_TO_SERVER = new int[] { 13, 12, 27, 20, 39, 38, 97, 46, 63, 5, 9, 33, 16, 18, 106, 59, 55, 112, 21, 2, 6, 4, 19, 14, 11, 10, 26, 96, 66, 116, 22, 23, 15, 0, 32, 8, 109, 28, 42, 36, 1, 108, 30, 3, 103, 49, 101, 85, 105, 34, 29, 111, 76, 77, 78, 79, 118, 64, 61, 53, 89, 113, 117, 119, 124, 122, 60, 50, 75, 81, 56, 41, 121, 120, 67, 74, 69, 57, 37, 129, 54, 24, 25, 31, 35, 98, 99, 100, 102, 104, 107, 110, 114, 115, 123, 43, 86, 125, 126, 127, 128, 130, 131, 132, 133, 134, 7, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170 };
@@ -79,106 +85,121 @@ public class EmotcationConstants
   
   public static String afterXml(String paramString1, String paramString2, boolean paramBoolean)
   {
+    Object localObject2 = paramString1;
     if (!TextUtils.isEmpty(paramString1))
     {
-      j = paramString1.length();
-      if (paramString2 != null) {
-        break label30;
+      int j = paramString1.length();
+      if (paramString2 == null) {
+        i = 0;
+      } else {
+        i = paramString2.length();
       }
-    }
-    label30:
-    for (int i = 0; j < i + 15; i = paramString2.length()) {
-      return paramString1;
-    }
-    Object localObject1 = new StringBuilder("\\[emoji:0x[a-fA-F0-9]{5}");
-    Object localObject2 = new StringBuilder("\\[sysEmo:[0-9]{3}-[0-9]{3}");
-    int j = 0;
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      ((StringBuilder)localObject1).append(paramString2);
-      ((StringBuilder)localObject2).append(paramString2);
-      j = paramString2.length();
-    }
-    ((StringBuilder)localObject1).append("\\]");
-    ((StringBuilder)localObject2).append("\\]");
-    Object localObject3 = Pattern.compile(((StringBuilder)localObject1).toString()).matcher(paramString1);
-    localObject1 = new StringBuffer();
-    paramString2 = null;
-    if (QLog.isColorLevel()) {
-      paramString2 = new StringBuilder(1024).append("afterXml src:").append(paramString1).append(" start");
-    }
-    i = 0;
-    int k;
-    int m;
-    while (((Matcher)localObject3).find())
-    {
-      k = 1;
-      m = Integer.valueOf(paramString1.substring(((Matcher)localObject3).start() + 9, ((Matcher)localObject3).end() - 1 - j), 16).intValue();
-      if (m > 65535) {
-        ((Matcher)localObject3).appendReplacement((StringBuffer)localObject1, new String(new int[] { m }, 0, 1));
+      if (j < i + 15) {
+        return paramString1;
       }
-      i = k;
+      Object localObject1 = new StringBuilder("\\[emoji:0x[a-fA-F0-9]{5}");
+      Object localObject3 = new StringBuilder("\\[sysEmo:[0-9]{3}-[0-9]{3}");
+      if (!TextUtils.isEmpty(paramString2))
+      {
+        ((StringBuilder)localObject1).append(paramString2);
+        ((StringBuilder)localObject3).append(paramString2);
+        j = paramString2.length();
+      }
+      else
+      {
+        j = 0;
+      }
+      ((StringBuilder)localObject1).append("\\]");
+      ((StringBuilder)localObject3).append("\\]");
+      localObject1 = Pattern.compile(((StringBuilder)localObject1).toString()).matcher(paramString1);
+      localObject2 = new StringBuffer();
+      paramString2 = null;
       if (QLog.isColorLevel())
       {
-        paramString2.append("\n").append("unicode").append(":").append(m);
-        i = k;
+        paramString2 = new StringBuilder(1024);
+        paramString2.append("afterXml src:");
+        paramString2.append(paramString1);
+        paramString2.append(" start");
       }
-    }
-    ((Matcher)localObject3).appendTail((StringBuffer)localObject1);
-    if (paramBoolean)
-    {
-      localObject3 = ((StringBuffer)localObject1).toString();
-      localObject2 = Pattern.compile(((StringBuilder)localObject2).toString()).matcher((CharSequence)localObject3);
-      localObject1 = new StringBuffer();
-      if (((Matcher)localObject2).find())
+      for (int i = 0; ((Matcher)localObject1).find(); i = 1)
       {
-        k = 1;
-        String[] arrayOfString = ((String)localObject3).substring(((Matcher)localObject2).start() + 8, ((Matcher)localObject2).end() - 1 - j).split("-");
-        m = Integer.valueOf(arrayOfString[0], 10).intValue();
-        int n = Integer.valueOf(arrayOfString[1], 10).intValue();
-        if (m != 92) {
-          ((Matcher)localObject2).appendReplacement((StringBuffer)localObject1, new String(new char[] { '\024', (char)m }));
+        i = Integer.valueOf(paramString1.substring(((Matcher)localObject1).start() + 9, ((Matcher)localObject1).end() - 1 - j), 16).intValue();
+        if (i > 65535) {
+          ((Matcher)localObject1).appendReplacement((StringBuffer)localObject2, new String(new int[] { i }, 0, 1));
         }
-        for (;;)
+        if (QLog.isColorLevel())
         {
-          ((StringBuffer)localObject1).append((char)n);
-          i = k;
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          paramString2.append("\n").append("sysEmo").append(":").append(m).append("|").append(n);
-          i = k;
-          break;
-          ((Matcher)localObject2).appendReplacement((StringBuffer)localObject1, new String(new char[] { '\024' }));
-          ((StringBuffer)localObject1).append((char)m);
+          paramString2.append("\n");
+          paramString2.append("unicode");
+          paramString2.append(":");
+          paramString2.append(i);
         }
       }
-      ((Matcher)localObject2).appendTail((StringBuffer)localObject1);
-    }
-    for (;;)
-    {
+      ((Matcher)localObject1).appendTail((StringBuffer)localObject2);
+      localObject1 = localObject2;
+      int k = i;
+      if (paramBoolean)
+      {
+        localObject2 = ((StringBuffer)localObject2).toString();
+        localObject3 = Pattern.compile(((StringBuilder)localObject3).toString()).matcher((CharSequence)localObject2);
+        localObject1 = new StringBuffer();
+        while (((Matcher)localObject3).find())
+        {
+          String[] arrayOfString = ((String)localObject2).substring(((Matcher)localObject3).start() + 8, ((Matcher)localObject3).end() - 1 - j).split("-");
+          i = Integer.valueOf(arrayOfString[0], 10).intValue();
+          k = Integer.valueOf(arrayOfString[1], 10).intValue();
+          if (i != 92)
+          {
+            ((Matcher)localObject3).appendReplacement((StringBuffer)localObject1, new String(new char[] { '\024', (char)i }));
+          }
+          else
+          {
+            ((Matcher)localObject3).appendReplacement((StringBuffer)localObject1, new String(new char[] { '\024' }));
+            ((StringBuffer)localObject1).append((char)i);
+          }
+          ((StringBuffer)localObject1).append((char)k);
+          if (QLog.isColorLevel())
+          {
+            paramString2.append("\n");
+            paramString2.append("sysEmo");
+            paramString2.append(":");
+            paramString2.append(i);
+            paramString2.append("|");
+            paramString2.append(k);
+          }
+          i = 1;
+        }
+        ((Matcher)localObject3).appendTail((StringBuffer)localObject1);
+        k = i;
+      }
       if (QLog.isColorLevel()) {
         QLog.i("EmotcationConstants", 2, paramString2.toString());
       }
-      if (i == 0) {
-        break;
+      localObject2 = paramString1;
+      if (k != 0) {
+        localObject2 = ((StringBuffer)localObject1).toString();
       }
-      return ((StringBuffer)localObject1).toString();
     }
+    return localObject2;
   }
   
   public static String beforXml(String paramString1, String paramString2, boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(paramString1)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString1)) {
       return paramString1;
-      if (Character.codePointCount(paramString1, 0, paramString1.length()) != paramString1.length()) {
-        break;
+    }
+    if (Character.codePointCount(paramString1, 0, paramString1.length()) == paramString1.length()) {
+      if (!paramString1.contains(new String(new char[] { '\024' }))) {
+        return paramString1;
       }
-    } while (!paramString1.contains(new String(new char[] { '\024' })));
-    if (QLog.isColorLevel()) {
-      QLog.i(EmotcationConstants.class.getSimpleName(), 2, "beforeXml:" + paramString1);
+    }
+    if (QLog.isColorLevel())
+    {
+      str1 = EmotcationConstants.class.getSimpleName();
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("beforeXml:");
+      localStringBuilder1.append(paramString1);
+      QLog.i(str1, 2, localStringBuilder1.toString());
     }
     StringBuilder localStringBuilder1 = new StringBuilder("[emoji:0x%05x");
     StringBuilder localStringBuilder2 = new StringBuilder("[sysEmo:%03d-%03d");
@@ -190,78 +211,74 @@ public class EmotcationConstants
     localStringBuilder1.append(']');
     localStringBuilder2.append(']');
     paramString2 = null;
-    if (QLog.isColorLevel()) {
-      paramString2 = new StringBuilder(1024).append("beforXml start");
+    if (QLog.isColorLevel())
+    {
+      paramString2 = new StringBuilder(1024);
+      paramString2.append("beforXml start");
     }
     int m = paramString1.length();
-    int k = 0;
-    String str1 = paramString1;
-    if (k < m)
+    int i = 0;
+    for (String str1 = paramString1; i < m; str1 = paramString1)
     {
-      int n = str1.codePointAt(k);
+      int n = str1.codePointAt(i);
       String str2;
+      int k;
       int j;
-      int i;
       if (n > 65535)
       {
-        str2 = str1.substring(k, k + 2);
-        paramString1 = String.format(localStringBuilder1.toString(), new Object[] { Integer.valueOf(n) });
-        str1 = str1.replace(str2, paramString1);
-        k += paramString1.length() - 1;
-        m = str1.length();
-        j = k;
-        i = m;
-        paramString1 = str1;
+        paramString1 = str1.substring(i, i + 2);
+        str2 = String.format(localStringBuilder1.toString(), new Object[] { Integer.valueOf(n) });
+        paramString1 = str1.replace(paramString1, str2);
+        k = i + (str2.length() - 1);
+        j = paramString1.length();
         if (QLog.isColorLevel())
         {
-          paramString2.append("\n").append("unicode").append(":").append(n);
-          paramString1 = str1;
-          i = m;
-          j = k;
+          paramString2.append("\n");
+          paramString2.append("unicode");
+          paramString2.append(":");
+          paramString2.append(n);
         }
       }
-      for (;;)
+      else
       {
-        k = j + 1;
-        m = i;
-        str1 = paramString1;
-        break;
-        j = k;
-        i = m;
+        k = i;
+        j = m;
         paramString1 = str1;
         if (n == 20)
         {
-          j = k;
-          i = m;
+          n = i + 2;
+          k = i;
+          j = m;
           paramString1 = str1;
-          if (k + 2 < m)
+          if (n < m)
           {
-            j = k;
-            i = m;
+            k = i;
+            j = m;
             paramString1 = str1;
             if (paramBoolean)
             {
-              n = str1.codePointAt(k + 1);
-              int i1 = str1.codePointAt(k + 2);
-              str2 = str1.substring(k, k + 3);
-              paramString1 = String.format(localStringBuilder2.toString(), new Object[] { Integer.valueOf(n), Integer.valueOf(i1) });
-              str1 = str1.replace(str2, paramString1);
-              k += paramString1.length() - 1;
-              m = str1.length();
-              j = k;
-              i = m;
-              paramString1 = str1;
+              m = str1.codePointAt(i + 1);
+              n = str1.codePointAt(n);
+              paramString1 = str1.substring(i, i + 3);
+              str2 = String.format(localStringBuilder2.toString(), new Object[] { Integer.valueOf(m), Integer.valueOf(n) });
+              paramString1 = str1.replace(paramString1, str2);
+              k = i + (str2.length() - 1);
+              j = paramString1.length();
               if (QLog.isColorLevel())
               {
-                paramString2.append("\n").append("sysEmo").append(":").append(n).append("|").append(i1);
-                j = k;
-                i = m;
-                paramString1 = str1;
+                paramString2.append("\n");
+                paramString2.append("sysEmo");
+                paramString2.append(":");
+                paramString2.append(m);
+                paramString2.append("|");
+                paramString2.append(n);
               }
             }
           }
         }
       }
+      i = k + 1;
+      m = j;
     }
     if (QLog.isColorLevel()) {
       QLog.i("EmotcationConstants", 2, paramString2.toString());
@@ -271,63 +288,88 @@ public class EmotcationConstants
   
   public static int getDoubleEmoji(int paramInt1, int paramInt2)
   {
-    if (((paramInt2 > 127994) && (paramInt2 < 128000)) || ((paramInt1 > 127461) && (paramInt1 < 127488)) || ((paramInt1 <= 34) || (paramInt1 >= 64) || (DOUBLE_EMOJI_MAP == null))) {
-      return -1;
+    int j = -1;
+    int i;
+    if (((paramInt2 <= 127994) || (paramInt2 >= 128000)) && ((paramInt1 <= 127461) || (paramInt1 >= 127488)))
+    {
+      i = j;
+      if (paramInt1 > 34)
+      {
+        i = j;
+        if (paramInt1 >= 64) {}
+      }
     }
-    Integer localInteger = (Integer)DOUBLE_EMOJI_MAP.get(paramInt1 + "|" + paramInt2);
-    if (localInteger != null) {}
-    for (paramInt1 = localInteger.intValue();; paramInt1 = -1) {
-      return paramInt1;
+    else
+    {
+      Object localObject = DOUBLE_EMOJI_MAP;
+      if (localObject == null) {
+        return -1;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append("|");
+      localStringBuilder.append(paramInt2);
+      localObject = (Integer)((Map)localObject).get(localStringBuilder.toString());
+      i = j;
+      if (localObject != null) {
+        i = ((Integer)localObject).intValue();
+      }
     }
+    return i;
   }
   
   public static String getEmojiDesc(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= EMOJI_CONTENT_DESC.length)) {
-      return " 未知 ";
+    if ((paramInt >= 0) && (paramInt < EMOJI_CONTENT_DESC.length))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(EMOJI_CONTENT_DESC[paramInt]);
+      localStringBuilder.append(" ");
+      return localStringBuilder.toString();
     }
-    return EMOJI_CONTENT_DESC[paramInt] + " ";
+    return " 未知 ";
   }
   
   public static int getSingleEmoji(int paramInt)
   {
-    int m = 0;
-    int j = -1;
-    int k = 1;
-    if ((paramInt > 8251) && (paramInt < 13056)) {}
-    for (int i = 1;; i = 0)
-    {
-      if ((i == 0) && (paramInt > 126979) && (paramInt < 129473)) {
-        if (paramInt > 127461)
-        {
-          i = m;
-          if (paramInt < 127488) {}
-        }
-        else
-        {
-          if ((paramInt <= 41) || (paramInt >= 64)) {
-            break label107;
-          }
-          i = m;
-        }
-      }
-      for (;;)
+    int j = 0;
+    int i;
+    if ((paramInt > 8251) && (paramInt < 13056)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if ((i == 0) && (paramInt > 126979) && (paramInt < 129473)) {
+      if (paramInt > 127461)
       {
-        if ((i == 0) && (paramInt > 65) && (paramInt < 175)) {
-          i = k;
-        }
-        for (;;)
-        {
-          if (i != 0) {
-            j = EMOJI_MAP.get(paramInt, -1);
-          }
-          return j;
-          label107:
-          i = 1;
-          break;
+        i = j;
+        if (paramInt < 127488) {}
+      }
+      else if ((paramInt > 41) && (paramInt < 64))
+      {
+        i = j;
+      }
+      else
+      {
+        i = 1;
+      }
+    }
+    j = i;
+    if (i == 0)
+    {
+      j = i;
+      if (paramInt > 65)
+      {
+        j = i;
+        if (paramInt < 175) {
+          j = 1;
         }
       }
     }
+    if (j != 0) {
+      return EMOJI_MAP.get(paramInt, -1);
+    }
+    return -1;
   }
   
   public static boolean isSkinEmoji(int paramInt)
@@ -343,65 +385,78 @@ public class EmotcationConstants
   private static void loadEmojiMapFormDisk()
   {
     long l = SystemClock.uptimeMillis();
-    File localFile1 = new File(AppleEmojiManager.INDEX_FILE);
-    File localFile2 = new File(AppleEmojiManager.EMOJI_FILE);
-    Object localObject2 = BaseApplication.getContext();
-    Object localObject1;
+    Object localObject2 = new File(AppleEmojiManager.INDEX_FILE);
+    File localFile = new File(AppleEmojiManager.EMOJI_FILE);
+    Object localObject3 = BaseApplication.getContext();
     if (Build.VERSION.SDK_INT >= 24)
     {
-      localObject1 = PreferenceManager.getDefaultSharedPreferencesName((Context)localObject2);
-      localObject1 = ((Context)localObject2).getSharedPreferences((String)localObject1, 4);
-      boolean bool = ((SharedPreferences)localObject1).getBoolean("build_emoji_file", false);
-      if (QLog.isColorLevel()) {
-        QLog.d("AppleEmojiManager", 2, "loadEmojiMapFormDisk buildSuccess=" + bool);
-      }
-      if ((!bool) || (!localFile1.exists()) || (!localFile2.exists())) {
-        break label189;
-      }
-      setEmojiMap(localFile1, localFile2);
+      localObject1 = PreferenceManager.getDefaultSharedPreferencesName((Context)localObject3);
     }
-    label411:
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AppleEmojiManager", 2, new Object[] { "init full emoji index cost:", Long.valueOf(SystemClock.uptimeMillis() - l) });
-      }
-      return;
-      localObject1 = ((Context)localObject2).getPackageName() + "_preferences";
-      break;
-      label189:
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(((Context)localObject3).getPackageName());
+      ((StringBuilder)localObject1).append("_preferences");
+      localObject1 = ((StringBuilder)localObject1).toString();
+    }
+    Object localObject1 = ((Context)localObject3).getSharedPreferences((String)localObject1, 4);
+    boolean bool = ((SharedPreferences)localObject1).getBoolean("build_emoji_file", false);
+    if (QLog.isColorLevel())
+    {
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("loadEmojiMapFormDisk buildSuccess=");
+      ((StringBuilder)localObject3).append(bool);
+      QLog.d("AppleEmojiManager", 2, ((StringBuilder)localObject3).toString());
+    }
+    if ((bool) && (((File)localObject2).exists()) && (localFile.exists()))
+    {
+      setEmojiMap((File)localObject2, localFile);
+    }
+    else
+    {
       localObject1 = ((SharedPreferences)localObject1).getString("apple_emoji_file", "");
-      if (QLog.isColorLevel()) {
-        QLog.d("AppleEmojiManager", 2, "loadEmojiMapFormDisk filepath=" + (String)localObject1);
+      if (QLog.isColorLevel())
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("loadEmojiMapFormDisk filepath=");
+        ((StringBuilder)localObject3).append((String)localObject1);
+        QLog.d("AppleEmojiManager", 2, ((StringBuilder)localObject3).toString());
       }
       if ((localObject1 != null) && (!((String)localObject1).equals("")))
       {
-        localObject2 = new File((String)localObject1);
-        if (((File)localObject2).exists())
+        localObject3 = new File((String)localObject1);
+        if (((File)localObject3).exists())
         {
-          ThreadManager.post(new EmotcationConstants.1(localFile1, localFile2, (File)localObject2), 5, null, false);
-          if (QLog.isColorLevel()) {
-            QLog.d("MF", 2, "zipfile path=" + (String)localObject1);
+          ThreadManager.post(new EmotcationConstants.1((File)localObject2, localFile, (File)localObject3), 5, null, false);
+          if (QLog.isColorLevel())
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("zipfile path=");
+            ((StringBuilder)localObject2).append((String)localObject1);
+            QLog.d("MF", 2, ((StringBuilder)localObject2).toString());
           }
         }
-      }
-      for (;;)
-      {
-        if (!QLog.isColorLevel()) {
-          break label411;
+        else
+        {
+          localObject1 = ((IAppleEmojiManager)QRoute.api(IAppleEmojiManager.class)).getAppleEmojiSpName();
+          BaseApplication.getContext().getSharedPreferences((String)localObject1, 4).edit().clear().commit();
+          DOUBLE_EMOJI_MAP.clear();
+          reDownloadAppleEmoji();
         }
-        QLog.d("AppleEmojiManager", 2, "emoji index file not exist,load fail");
-        break;
-        localObject1 = ((IAppleEmojiManager)QRoute.api(IAppleEmojiManager.class)).getAppleEmojiSpName();
-        BaseApplication.getContext().getSharedPreferences((String)localObject1, 4).edit().clear().commit();
-        DOUBLE_EMOJI_MAP.clear();
-        reDownloadAppleEmoji();
-        continue;
+      }
+      else
+      {
         if (QLog.isColorLevel()) {
           QLog.d("AppleEmojiManager", 2, "apple_emoji_file sp is null reload");
         }
         reDownloadAppleEmoji();
       }
+      if (QLog.isColorLevel()) {
+        QLog.d("AppleEmojiManager", 2, "emoji index file not exist,load fail");
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AppleEmojiManager", 2, new Object[] { "init full emoji index cost:", Long.valueOf(SystemClock.uptimeMillis() - l) });
     }
   }
   
@@ -415,256 +470,246 @@ public class EmotcationConstants
   {
     // Byte code:
     //   0: aload_0
-    //   1: ifnull +7 -> 8
+    //   1: ifnull +410 -> 411
     //   4: aload_1
-    //   5: ifnonnull +20 -> 25
-    //   8: invokestatic 1954	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   11: ifeq +13 -> 24
-    //   14: ldc_w 1956
-    //   17: iconst_2
-    //   18: ldc_w 2507
-    //   21: invokestatic 1982	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   24: return
-    //   25: invokestatic 1931	android/os/SystemClock:uptimeMillis	()J
-    //   28: lstore 5
-    //   30: invokestatic 2388	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   33: astore 8
-    //   35: getstatic 2393	android/os/Build$VERSION:SDK_INT	I
-    //   38: bipush 24
-    //   40: if_icmplt +215 -> 255
-    //   43: aload 8
-    //   45: invokestatic 2399	android/preference/PreferenceManager:getDefaultSharedPreferencesName	(Landroid/content/Context;)Ljava/lang/String;
-    //   48: astore 7
+    //   5: ifnonnull +6 -> 11
+    //   8: goto +403 -> 411
+    //   11: invokestatic 1929	android/os/SystemClock:uptimeMillis	()J
+    //   14: lstore 5
+    //   16: invokestatic 2386	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   19: astore 8
+    //   21: getstatic 2391	android/os/Build$VERSION:SDK_INT	I
+    //   24: bipush 24
+    //   26: if_icmplt +13 -> 39
+    //   29: aload 8
+    //   31: invokestatic 2397	android/preference/PreferenceManager:getDefaultSharedPreferencesName	(Landroid/content/Context;)Ljava/lang/String;
+    //   34: astore 7
+    //   36: goto +39 -> 75
+    //   39: new 1954	java/lang/StringBuilder
+    //   42: dup
+    //   43: invokespecial 1956	java/lang/StringBuilder:<init>	()V
+    //   46: astore 7
+    //   48: aload 7
     //   50: aload 8
-    //   52: aload 7
-    //   54: iconst_4
-    //   55: invokevirtual 2405	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   58: ldc_w 2407
-    //   61: iconst_0
-    //   62: invokeinterface 2413 3 0
-    //   67: ifeq -43 -> 24
-    //   70: aload_0
-    //   71: invokevirtual 2421	java/io/File:exists	()Z
-    //   74: ifeq -50 -> 24
-    //   77: aload_1
-    //   78: invokevirtual 2421	java/io/File:exists	()Z
-    //   81: ifeq -57 -> 24
-    //   84: getstatic 1944	com/tencent/mobileqq/text/EmotcationConstants:DOUBLE_EMOJI_MAP	Ljava/util/Map;
-    //   87: invokeinterface 2497 1 0
-    //   92: new 2509	java/io/BufferedInputStream
-    //   95: dup
-    //   96: new 2511	java/io/FileInputStream
-    //   99: dup
-    //   100: aload_0
-    //   101: invokespecial 2514	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   104: invokespecial 2517	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   107: astore_1
-    //   108: aload_1
-    //   109: astore_0
-    //   110: aload_1
-    //   111: invokevirtual 2520	java/io/BufferedInputStream:read	()I
-    //   114: istore_2
-    //   115: iload_2
-    //   116: iconst_m1
-    //   117: if_icmpeq +253 -> 370
-    //   120: iload_2
-    //   121: iconst_1
-    //   122: if_icmpne +162 -> 284
-    //   125: aload_1
-    //   126: astore_0
-    //   127: aload_1
-    //   128: invokestatic 2524	com/tencent/mobileqq/text/AppleEmojiManager:readIntFromStream	(Ljava/io/InputStream;)I
-    //   131: istore_2
-    //   132: aload_1
-    //   133: astore_0
-    //   134: aload_1
-    //   135: invokestatic 2524	com/tencent/mobileqq/text/AppleEmojiManager:readIntFromStream	(Ljava/io/InputStream;)I
-    //   138: istore_3
-    //   139: aload_1
-    //   140: astore_0
-    //   141: getstatic 1939	com/tencent/mobileqq/text/EmotcationConstants:EMOJI_MAP	Landroid/util/SparseIntArray;
-    //   144: iload_2
-    //   145: iload_3
-    //   146: sipush 1000
-    //   149: iadd
-    //   150: invokevirtual 1948	android/util/SparseIntArray:put	(II)V
-    //   153: goto -45 -> 108
-    //   156: astore 7
-    //   158: aload_1
-    //   159: astore_0
-    //   160: ldc_w 1956
-    //   163: iconst_1
-    //   164: ldc_w 2444
-    //   167: aload 7
-    //   169: invokestatic 2528	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   172: aload_1
-    //   173: ifnull +7 -> 180
-    //   176: aload_1
-    //   177: invokevirtual 2531	java/io/BufferedInputStream:close	()V
-    //   180: invokestatic 1954	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   183: ifeq -159 -> 24
-    //   186: ldc_w 1956
-    //   189: iconst_2
-    //   190: bipush 6
-    //   192: anewarray 4	java/lang/Object
-    //   195: dup
-    //   196: iconst_0
-    //   197: ldc_w 2533
-    //   200: aastore
+    //   52: invokevirtual 2402	android/content/Context:getPackageName	()Ljava/lang/String;
+    //   55: invokevirtual 1962	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   58: pop
+    //   59: aload 7
+    //   61: ldc_w 2404
+    //   64: invokevirtual 1962	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   67: pop
+    //   68: aload 7
+    //   70: invokevirtual 1976	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   73: astore 7
+    //   75: aload 8
+    //   77: aload 7
+    //   79: iconst_4
+    //   80: invokevirtual 2408	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   83: ldc_w 2410
+    //   86: iconst_0
+    //   87: invokeinterface 2416 3 0
+    //   92: ifeq +318 -> 410
+    //   95: aload_0
+    //   96: invokevirtual 2424	java/io/File:exists	()Z
+    //   99: ifeq +311 -> 410
+    //   102: aload_1
+    //   103: invokevirtual 2424	java/io/File:exists	()Z
+    //   106: ifeq +304 -> 410
+    //   109: aconst_null
+    //   110: astore 7
+    //   112: aconst_null
+    //   113: astore_1
+    //   114: getstatic 1942	com/tencent/mobileqq/text/EmotcationConstants:DOUBLE_EMOJI_MAP	Ljava/util/Map;
+    //   117: invokeinterface 2483 1 0
+    //   122: new 2505	java/io/BufferedInputStream
+    //   125: dup
+    //   126: new 2507	java/io/FileInputStream
+    //   129: dup
+    //   130: aload_0
+    //   131: invokespecial 2510	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   134: invokespecial 2513	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   137: astore_0
+    //   138: aload_0
+    //   139: invokevirtual 2516	java/io/BufferedInputStream:read	()I
+    //   142: istore_2
+    //   143: iload_2
+    //   144: iconst_m1
+    //   145: if_icmpeq +109 -> 254
+    //   148: iload_2
+    //   149: iconst_1
+    //   150: if_icmpne +28 -> 178
+    //   153: aload_0
+    //   154: invokestatic 2520	com/tencent/mobileqq/text/AppleEmojiManager:readIntFromStream	(Ljava/io/InputStream;)I
+    //   157: istore_2
+    //   158: aload_0
+    //   159: invokestatic 2520	com/tencent/mobileqq/text/AppleEmojiManager:readIntFromStream	(Ljava/io/InputStream;)I
+    //   162: istore_3
+    //   163: getstatic 1937	com/tencent/mobileqq/text/EmotcationConstants:EMOJI_MAP	Landroid/util/SparseIntArray;
+    //   166: iload_2
+    //   167: iload_3
+    //   168: sipush 1000
+    //   171: iadd
+    //   172: invokevirtual 1946	android/util/SparseIntArray:put	(II)V
+    //   175: goto -37 -> 138
+    //   178: aload_0
+    //   179: invokestatic 2520	com/tencent/mobileqq/text/AppleEmojiManager:readIntFromStream	(Ljava/io/InputStream;)I
+    //   182: istore_2
+    //   183: aload_0
+    //   184: invokestatic 2520	com/tencent/mobileqq/text/AppleEmojiManager:readIntFromStream	(Ljava/io/InputStream;)I
+    //   187: istore_3
+    //   188: aload_0
+    //   189: invokestatic 2520	com/tencent/mobileqq/text/AppleEmojiManager:readIntFromStream	(Ljava/io/InputStream;)I
+    //   192: istore 4
+    //   194: getstatic 1942	com/tencent/mobileqq/text/EmotcationConstants:DOUBLE_EMOJI_MAP	Ljava/util/Map;
+    //   197: astore_1
+    //   198: new 1954	java/lang/StringBuilder
     //   201: dup
-    //   202: iconst_1
-    //   203: invokestatic 1931	android/os/SystemClock:uptimeMillis	()J
-    //   206: lload 5
-    //   208: lsub
-    //   209: invokestatic 2432	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   212: aastore
-    //   213: dup
-    //   214: iconst_2
-    //   215: ldc_w 2535
-    //   218: aastore
-    //   219: dup
-    //   220: iconst_3
-    //   221: getstatic 1939	com/tencent/mobileqq/text/EmotcationConstants:EMOJI_MAP	Landroid/util/SparseIntArray;
-    //   224: invokevirtual 2538	android/util/SparseIntArray:size	()I
-    //   227: invokestatic 2339	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   230: aastore
-    //   231: dup
-    //   232: iconst_4
-    //   233: ldc_w 2540
-    //   236: aastore
-    //   237: dup
-    //   238: iconst_5
-    //   239: getstatic 1944	com/tencent/mobileqq/text/EmotcationConstants:DOUBLE_EMOJI_MAP	Ljava/util/Map;
-    //   242: invokeinterface 2541 1 0
-    //   247: invokestatic 2339	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   250: aastore
-    //   251: invokestatic 2435	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   254: return
-    //   255: new 1958	java/lang/StringBuilder
-    //   258: dup
-    //   259: invokespecial 1960	java/lang/StringBuilder:<init>	()V
-    //   262: aload 8
-    //   264: invokevirtual 2438	android/content/Context:getPackageName	()Ljava/lang/String;
-    //   267: invokevirtual 1966	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   270: ldc_w 2440
-    //   273: invokevirtual 1966	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   276: invokevirtual 1978	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   279: astore 7
-    //   281: goto -231 -> 50
+    //   202: invokespecial 1956	java/lang/StringBuilder:<init>	()V
+    //   205: astore 7
+    //   207: aload 7
+    //   209: iload_2
+    //   210: invokevirtual 1970	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   213: pop
+    //   214: aload 7
+    //   216: ldc_w 2299
+    //   219: invokevirtual 1962	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   222: pop
+    //   223: aload 7
+    //   225: iload_3
+    //   226: invokevirtual 1970	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   229: pop
+    //   230: aload_1
+    //   231: aload 7
+    //   233: invokevirtual 1976	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   236: iload 4
+    //   238: sipush 1000
+    //   241: iadd
+    //   242: invokestatic 2337	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   245: invokeinterface 2523 3 0
+    //   250: pop
+    //   251: goto -113 -> 138
+    //   254: aload_0
+    //   255: invokevirtual 2526	java/io/BufferedInputStream:close	()V
+    //   258: goto +59 -> 317
+    //   261: astore_1
+    //   262: goto +130 -> 392
+    //   265: astore 7
+    //   267: goto +20 -> 287
+    //   270: astore 7
+    //   272: aload_1
+    //   273: astore_0
+    //   274: aload 7
+    //   276: astore_1
+    //   277: goto +115 -> 392
+    //   280: astore_1
+    //   281: aload 7
+    //   283: astore_0
     //   284: aload_1
-    //   285: astore_0
-    //   286: aload_1
-    //   287: invokestatic 2524	com/tencent/mobileqq/text/AppleEmojiManager:readIntFromStream	(Ljava/io/InputStream;)I
-    //   290: istore_2
-    //   291: aload_1
-    //   292: astore_0
-    //   293: aload_1
-    //   294: invokestatic 2524	com/tencent/mobileqq/text/AppleEmojiManager:readIntFromStream	(Ljava/io/InputStream;)I
-    //   297: istore_3
-    //   298: aload_1
-    //   299: astore_0
-    //   300: aload_1
-    //   301: invokestatic 2524	com/tencent/mobileqq/text/AppleEmojiManager:readIntFromStream	(Ljava/io/InputStream;)I
-    //   304: istore 4
-    //   306: aload_1
-    //   307: astore_0
-    //   308: getstatic 1944	com/tencent/mobileqq/text/EmotcationConstants:DOUBLE_EMOJI_MAP	Ljava/util/Map;
-    //   311: new 1958	java/lang/StringBuilder
-    //   314: dup
-    //   315: invokespecial 1960	java/lang/StringBuilder:<init>	()V
-    //   318: iload_2
-    //   319: invokevirtual 1974	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   322: ldc_w 2301
-    //   325: invokevirtual 1966	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   328: iload_3
-    //   329: invokevirtual 1974	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   332: invokevirtual 1978	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   335: iload 4
-    //   337: sipush 1000
-    //   340: iadd
-    //   341: invokestatic 2339	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   344: invokeinterface 2544 3 0
-    //   349: pop
-    //   350: goto -242 -> 108
-    //   353: astore 7
-    //   355: aload_0
-    //   356: astore_1
-    //   357: aload 7
-    //   359: astore_0
-    //   360: aload_1
-    //   361: ifnull +7 -> 368
-    //   364: aload_1
-    //   365: invokevirtual 2531	java/io/BufferedInputStream:close	()V
-    //   368: aload_0
-    //   369: athrow
-    //   370: aload_1
-    //   371: ifnull -191 -> 180
-    //   374: aload_1
-    //   375: invokevirtual 2531	java/io/BufferedInputStream:close	()V
-    //   378: goto -198 -> 180
-    //   381: astore_0
-    //   382: aload_0
-    //   383: invokevirtual 2547	java/io/IOException:printStackTrace	()V
-    //   386: goto -206 -> 180
-    //   389: astore_0
-    //   390: aload_0
-    //   391: invokevirtual 2547	java/io/IOException:printStackTrace	()V
-    //   394: goto -214 -> 180
-    //   397: astore_1
-    //   398: aload_1
-    //   399: invokevirtual 2547	java/io/IOException:printStackTrace	()V
-    //   402: goto -34 -> 368
-    //   405: astore_0
-    //   406: aconst_null
-    //   407: astore_1
-    //   408: goto -48 -> 360
-    //   411: astore 7
-    //   413: aconst_null
-    //   414: astore_1
-    //   415: goto -257 -> 158
+    //   285: astore 7
+    //   287: aload_0
+    //   288: astore_1
+    //   289: ldc_w 1972
+    //   292: iconst_1
+    //   293: ldc_w 2432
+    //   296: aload 7
+    //   298: invokestatic 2530	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   301: aload_0
+    //   302: ifnull +15 -> 317
+    //   305: aload_0
+    //   306: invokevirtual 2526	java/io/BufferedInputStream:close	()V
+    //   309: goto +8 -> 317
+    //   312: astore_0
+    //   313: aload_0
+    //   314: invokevirtual 2533	java/io/IOException:printStackTrace	()V
+    //   317: invokestatic 1952	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   320: ifeq +90 -> 410
+    //   323: ldc_w 1972
+    //   326: iconst_2
+    //   327: bipush 6
+    //   329: anewarray 4	java/lang/Object
+    //   332: dup
+    //   333: iconst_0
+    //   334: ldc_w 2535
+    //   337: aastore
+    //   338: dup
+    //   339: iconst_1
+    //   340: invokestatic 1929	android/os/SystemClock:uptimeMillis	()J
+    //   343: lload 5
+    //   345: lsub
+    //   346: invokestatic 2497	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   349: aastore
+    //   350: dup
+    //   351: iconst_2
+    //   352: ldc_w 2537
+    //   355: aastore
+    //   356: dup
+    //   357: iconst_3
+    //   358: getstatic 1937	com/tencent/mobileqq/text/EmotcationConstants:EMOJI_MAP	Landroid/util/SparseIntArray;
+    //   361: invokevirtual 2540	android/util/SparseIntArray:size	()I
+    //   364: invokestatic 2337	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   367: aastore
+    //   368: dup
+    //   369: iconst_4
+    //   370: ldc_w 2542
+    //   373: aastore
+    //   374: dup
+    //   375: iconst_5
+    //   376: getstatic 1942	com/tencent/mobileqq/text/EmotcationConstants:DOUBLE_EMOJI_MAP	Ljava/util/Map;
+    //   379: invokeinterface 2543 1 0
+    //   384: invokestatic 2337	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   387: aastore
+    //   388: invokestatic 2500	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   391: return
+    //   392: aload_0
+    //   393: ifnull +15 -> 408
+    //   396: aload_0
+    //   397: invokevirtual 2526	java/io/BufferedInputStream:close	()V
+    //   400: goto +8 -> 408
+    //   403: astore_0
+    //   404: aload_0
+    //   405: invokevirtual 2533	java/io/IOException:printStackTrace	()V
+    //   408: aload_1
+    //   409: athrow
+    //   410: return
+    //   411: invokestatic 1952	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   414: ifeq +13 -> 427
+    //   417: ldc_w 1972
+    //   420: iconst_2
+    //   421: ldc_w 2545
+    //   424: invokestatic 1980	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   427: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	418	0	paramFile1	File
-    //   0	418	1	paramFile2	File
-    //   114	205	2	i	int
-    //   138	191	3	j	int
-    //   304	37	4	k	int
-    //   28	179	5	l	long
-    //   48	5	7	str1	String
-    //   156	12	7	localIOException1	java.io.IOException
-    //   279	1	7	str2	String
-    //   353	5	7	localObject	Object
-    //   411	1	7	localIOException2	java.io.IOException
-    //   33	230	8	localBaseApplication	BaseApplication
+    //   0	428	0	paramFile1	File
+    //   0	428	1	paramFile2	File
+    //   142	68	2	i	int
+    //   162	64	3	j	int
+    //   192	50	4	k	int
+    //   14	330	5	l	long
+    //   34	198	7	localObject1	Object
+    //   265	1	7	localIOException	java.io.IOException
+    //   270	12	7	localObject2	Object
+    //   285	12	7	localFile	File
+    //   19	57	8	localBaseApplication	BaseApplication
     // Exception table:
     //   from	to	target	type
-    //   110	115	156	java/io/IOException
-    //   127	132	156	java/io/IOException
-    //   134	139	156	java/io/IOException
-    //   141	153	156	java/io/IOException
-    //   286	291	156	java/io/IOException
-    //   293	298	156	java/io/IOException
-    //   300	306	156	java/io/IOException
-    //   308	350	156	java/io/IOException
-    //   110	115	353	finally
-    //   127	132	353	finally
-    //   134	139	353	finally
-    //   141	153	353	finally
-    //   160	172	353	finally
-    //   286	291	353	finally
-    //   293	298	353	finally
-    //   300	306	353	finally
-    //   308	350	353	finally
-    //   374	378	381	java/io/IOException
-    //   176	180	389	java/io/IOException
-    //   364	368	397	java/io/IOException
-    //   92	108	405	finally
-    //   92	108	411	java/io/IOException
+    //   138	143	261	finally
+    //   153	175	261	finally
+    //   178	251	261	finally
+    //   138	143	265	java/io/IOException
+    //   153	175	265	java/io/IOException
+    //   178	251	265	java/io/IOException
+    //   122	138	270	finally
+    //   289	301	270	finally
+    //   122	138	280	java/io/IOException
+    //   254	258	312	java/io/IOException
+    //   305	309	312	java/io/IOException
+    //   396	400	403	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.text.EmotcationConstants
  * JD-Core Version:    0.7.0.1
  */

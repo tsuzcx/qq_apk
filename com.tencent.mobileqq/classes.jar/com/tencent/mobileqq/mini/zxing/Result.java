@@ -29,21 +29,26 @@ public final class Result
     this(paramString, paramArrayOfByte, paramArrayOfResultPoint, paramBarcodeFormat, System.currentTimeMillis());
   }
   
-  public Result(String paramString, byte[] paramArrayOfByte, ResultPoint[] paramArrayOfResultPoint, BarcodeFormat paramBarcodeFormat, long paramLong) {}
+  public Result(String paramString, byte[] paramArrayOfByte, ResultPoint[] paramArrayOfResultPoint, BarcodeFormat paramBarcodeFormat, long paramLong)
+  {
+    this(paramString, paramArrayOfByte, i, paramArrayOfResultPoint, paramBarcodeFormat, paramLong);
+  }
   
   public void addResultPoints(ResultPoint[] paramArrayOfResultPoint)
   {
     ResultPoint[] arrayOfResultPoint1 = this.resultPoints;
-    if (arrayOfResultPoint1 == null) {
+    if (arrayOfResultPoint1 == null)
+    {
       this.resultPoints = paramArrayOfResultPoint;
-    }
-    while ((paramArrayOfResultPoint == null) || (paramArrayOfResultPoint.length <= 0)) {
       return;
     }
-    ResultPoint[] arrayOfResultPoint2 = new ResultPoint[arrayOfResultPoint1.length + paramArrayOfResultPoint.length];
-    System.arraycopy(arrayOfResultPoint1, 0, arrayOfResultPoint2, 0, arrayOfResultPoint1.length);
-    System.arraycopy(paramArrayOfResultPoint, 0, arrayOfResultPoint2, arrayOfResultPoint1.length, paramArrayOfResultPoint.length);
-    this.resultPoints = arrayOfResultPoint2;
+    if ((paramArrayOfResultPoint != null) && (paramArrayOfResultPoint.length > 0))
+    {
+      ResultPoint[] arrayOfResultPoint2 = new ResultPoint[arrayOfResultPoint1.length + paramArrayOfResultPoint.length];
+      System.arraycopy(arrayOfResultPoint1, 0, arrayOfResultPoint2, 0, arrayOfResultPoint1.length);
+      System.arraycopy(paramArrayOfResultPoint, 0, arrayOfResultPoint2, arrayOfResultPoint1.length, paramArrayOfResultPoint.length);
+      this.resultPoints = arrayOfResultPoint2;
+    }
   }
   
   public BarcodeFormat getBarcodeFormat()
@@ -85,14 +90,14 @@ public final class Result
   {
     if (paramMap != null)
     {
-      if (this.resultMetadata == null) {
+      Map localMap = this.resultMetadata;
+      if (localMap == null)
+      {
         this.resultMetadata = paramMap;
+        return;
       }
+      localMap.putAll(paramMap);
     }
-    else {
-      return;
-    }
-    this.resultMetadata.putAll(paramMap);
   }
   
   public void putMetadata(ResultMetadataType paramResultMetadataType, Object paramObject)
@@ -110,7 +115,7 @@ public final class Result
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.zxing.Result
  * JD-Core Version:    0.7.0.1
  */

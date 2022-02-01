@@ -3,10 +3,10 @@ package com.tencent.mobileqq.apollo.statistics.trace.sdk.component;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.api.statistics.trace.data.AnnotationData;
-import com.tencent.mobileqq.apollo.api.statistics.trace.data.ResultData;
-import com.tencent.mobileqq.apollo.api.statistics.trace.data.SpanData;
-import com.tencent.mobileqq.apollo.api.statistics.trace.data.TraceData;
+import com.tencent.mobileqq.apollo.statistics.trace.data.AnnotationData;
+import com.tencent.mobileqq.apollo.statistics.trace.data.ResultData;
+import com.tencent.mobileqq.apollo.statistics.trace.data.SpanData;
+import com.tencent.mobileqq.apollo.statistics.trace.data.TraceData;
 import com.tencent.mobileqq.apollo.statistics.trace.sdk.TraceConfig;
 import com.tencent.mobileqq.apollo.statistics.trace.sdk.TraceReportInstance;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -51,7 +51,7 @@ public class DefaultTraceNetwork
     localReportHead.platform.set(109);
     paramTraceConfig = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      paramTraceConfig = "8.5.5";
+      paramTraceConfig = "8.7.0";
     }
     localReportHead.ver.set(paramTraceConfig);
     paramTraceConfig = DeviceInfoUtil.e();
@@ -74,8 +74,8 @@ public class DefaultTraceNetwork
     ReportTrace.SpanEntry localSpanEntry = new ReportTrace.SpanEntry();
     localSpanEntry.span_id.set(paramSpanData.jdField_a_of_type_Int);
     localSpanEntry.time_stamp.set(paramSpanData.jdField_a_of_type_Long);
-    if (paramSpanData.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataResultData != null) {
-      localSpanEntry.result.set(a(paramSpanData.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataResultData));
+    if (paramSpanData.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataResultData != null) {
+      localSpanEntry.result.set(a(paramSpanData.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataResultData));
     }
     if ((paramSpanData.jdField_a_of_type_JavaUtilMap != null) && (paramSpanData.jdField_a_of_type_JavaUtilMap.size() > 0))
     {
@@ -136,66 +136,73 @@ public class DefaultTraceNetwork
   
   private List<ReportTrace.SpanAnnoEntry> a(BlockingQueue<SpanData> paramBlockingQueue)
   {
-    if ((paramBlockingQueue == null) || (paramBlockingQueue.size() == 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramBlockingQueue = paramBlockingQueue.iterator();
-    while (paramBlockingQueue.hasNext())
+    if ((paramBlockingQueue != null) && (paramBlockingQueue.size() != 0))
     {
-      SpanData localSpanData = (SpanData)paramBlockingQueue.next();
-      if ((localSpanData.jdField_a_of_type_JavaUtilConcurrentBlockingQueue != null) && (localSpanData.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.size() > 0))
+      ArrayList localArrayList = new ArrayList();
+      paramBlockingQueue = paramBlockingQueue.iterator();
+      while (paramBlockingQueue.hasNext())
       {
-        Iterator localIterator = localSpanData.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.iterator();
-        while (localIterator.hasNext())
+        SpanData localSpanData = (SpanData)paramBlockingQueue.next();
+        if ((localSpanData.jdField_a_of_type_JavaUtilConcurrentBlockingQueue != null) && (localSpanData.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.size() > 0))
         {
-          AnnotationData localAnnotationData = (AnnotationData)localIterator.next();
-          ReportTrace.SpanAnnoEntry localSpanAnnoEntry = new ReportTrace.SpanAnnoEntry();
-          localSpanAnnoEntry.span_id.set(localSpanData.jdField_a_of_type_Int);
-          if (!TextUtils.isEmpty(localAnnotationData.jdField_a_of_type_JavaLangString)) {
-            localSpanAnnoEntry.anno_msg.set(localAnnotationData.jdField_a_of_type_JavaLangString);
+          Iterator localIterator = localSpanData.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.iterator();
+          while (localIterator.hasNext())
+          {
+            AnnotationData localAnnotationData = (AnnotationData)localIterator.next();
+            ReportTrace.SpanAnnoEntry localSpanAnnoEntry = new ReportTrace.SpanAnnoEntry();
+            localSpanAnnoEntry.span_id.set(localSpanData.jdField_a_of_type_Int);
+            if (!TextUtils.isEmpty(localAnnotationData.jdField_a_of_type_JavaLangString)) {
+              localSpanAnnoEntry.anno_msg.set(localAnnotationData.jdField_a_of_type_JavaLangString);
+            }
+            if (localSpanData.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataResultData != null) {
+              localSpanAnnoEntry.errCode.set(localSpanData.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataResultData.jdField_a_of_type_Int);
+            }
+            localSpanAnnoEntry.time_stamp.set(localAnnotationData.jdField_a_of_type_Long);
+            localArrayList.add(localSpanAnnoEntry);
           }
-          if (localSpanData.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataResultData != null) {
-            localSpanAnnoEntry.errCode.set(localSpanData.jdField_a_of_type_ComTencentMobileqqApolloApiStatisticsTraceDataResultData.jdField_a_of_type_Int);
-          }
-          localSpanAnnoEntry.time_stamp.set(localAnnotationData.jdField_a_of_type_Long);
-          localArrayList.add(localSpanAnnoEntry);
         }
       }
+      return localArrayList;
     }
-    return localArrayList;
+    return null;
   }
   
   private void a(AppRuntime paramAppRuntime, TraceConfig paramTraceConfig, String paramString, List<ReportTrace.TraceEntry> paramList)
   {
-    if ((paramAppRuntime == null) || (paramTraceConfig == null) || (paramList == null) || (paramList.size() == 0)) {
-      return;
+    if ((paramAppRuntime != null) && (paramTraceConfig != null) && (paramList != null))
+    {
+      if (paramList.size() == 0) {
+        return;
+      }
+      ReportTrace.ReportTraceReq localReportTraceReq = new ReportTrace.ReportTraceReq();
+      localReportTraceReq.head.set(a(paramTraceConfig, paramString));
+      localReportTraceReq.trace_list.set(paramList);
+      paramTraceConfig = new NewIntent(paramAppRuntime.getApplication(), TraceServlet.class);
+      paramTraceConfig.putExtra("cmd", "apollo_monitor.report_trace");
+      paramTraceConfig.putExtra("data", localReportTraceReq.toByteArray());
+      paramTraceConfig.putExtra("timeout", 30000);
+      paramTraceConfig.setObserver(this);
+      paramAppRuntime.startServlet(paramTraceConfig);
     }
-    ReportTrace.ReportTraceReq localReportTraceReq = new ReportTrace.ReportTraceReq();
-    localReportTraceReq.head.set(a(paramTraceConfig, paramString));
-    localReportTraceReq.trace_list.set(paramList);
-    paramTraceConfig = new NewIntent(paramAppRuntime.getApplication(), TraceServlet.class);
-    paramTraceConfig.putExtra("cmd", "apollo_monitor.report_trace");
-    paramTraceConfig.putExtra("data", localReportTraceReq.toByteArray());
-    paramTraceConfig.putExtra("timeout", 30000);
-    paramTraceConfig.setObserver(this);
-    paramAppRuntime.startServlet(paramTraceConfig);
   }
   
   private void b(AppRuntime paramAppRuntime, TraceConfig paramTraceConfig, String paramString, List<ReportTrace.TraceAnnoEntry> paramList)
   {
-    if ((paramAppRuntime == null) || (paramTraceConfig == null) || (paramList == null) || (paramList.size() == 0)) {
-      return;
+    if ((paramAppRuntime != null) && (paramTraceConfig != null) && (paramList != null))
+    {
+      if (paramList.size() == 0) {
+        return;
+      }
+      ReportTrace.ReportAnnoReq localReportAnnoReq = new ReportTrace.ReportAnnoReq();
+      localReportAnnoReq.head.set(a(paramTraceConfig, paramString));
+      localReportAnnoReq.anno_list.set(paramList);
+      paramTraceConfig = new NewIntent(paramAppRuntime.getApplication(), TraceServlet.class);
+      paramTraceConfig.putExtra("cmd", "apollo_monitor.report_anno");
+      paramTraceConfig.putExtra("data", localReportAnnoReq.toByteArray());
+      paramTraceConfig.putExtra("timeout", 30000);
+      paramTraceConfig.setObserver(this);
+      paramAppRuntime.startServlet(paramTraceConfig);
     }
-    ReportTrace.ReportAnnoReq localReportAnnoReq = new ReportTrace.ReportAnnoReq();
-    localReportAnnoReq.head.set(a(paramTraceConfig, paramString));
-    localReportAnnoReq.anno_list.set(paramList);
-    paramTraceConfig = new NewIntent(paramAppRuntime.getApplication(), TraceServlet.class);
-    paramTraceConfig.putExtra("cmd", "apollo_monitor.report_anno");
-    paramTraceConfig.putExtra("data", localReportAnnoReq.toByteArray());
-    paramTraceConfig.putExtra("timeout", 30000);
-    paramTraceConfig.setObserver(this);
-    paramAppRuntime.startServlet(paramTraceConfig);
   }
   
   public void a(ITraceReportStrategyListener paramITraceReportStrategyListener)
@@ -215,7 +222,7 @@ public class DefaultTraceNetwork
       {
         TraceData localTraceData = (TraceData)paramList.next();
         ReportTrace.TraceEntry localTraceEntry = a(localTraceData, localTraceConfig);
-        if ((!TextUtils.isEmpty(localTraceData.version)) && (!localTraceData.version.equals("8.5.5")))
+        if ((!TextUtils.isEmpty(localTraceData.version)) && (!localTraceData.version.equals("8.7.0")))
         {
           ArrayList localArrayList2 = new ArrayList();
           localArrayList2.add(localTraceEntry);
@@ -236,9 +243,9 @@ public class DefaultTraceNetwork
     TraceConfig localTraceConfig = TraceReportInstance.a().a();
     if ((localAppRuntime != null) && (paramList != null) && (localTraceConfig != null) && (!TextUtils.isEmpty(localTraceConfig.a())))
     {
+      int i = 0;
       ArrayList localArrayList = new ArrayList();
       paramList = paramList.iterator();
-      int i = 0;
       while (paramList.hasNext())
       {
         TraceData localTraceData = (TraceData)paramList.next();
@@ -247,29 +254,25 @@ public class DefaultTraceNetwork
         localTraceAnnoEntry.trace_id.set(localTraceData.traceId);
         localTraceAnnoEntry.feature_id.set(localTraceData.featureId);
         localTraceAnnoEntry.server_timestamp.set(localTraceData.serverTime);
-        int j = i;
-        if (localTraceData.result != null)
+        if ((localTraceData.result != null) && (localTraceData.result.jdField_a_of_type_Int != 0))
         {
-          j = i;
-          if (localTraceData.result.jdField_a_of_type_Int != 0)
+          localTraceAnnoEntry.ret.set(localTraceData.result.jdField_a_of_type_Int);
+          Object localObject = a(localTraceData.mSpanQueue);
+          if (localObject != null) {
+            localTraceAnnoEntry.span_anno_list.addAll((Collection)localObject);
+          }
+          if ((!TextUtils.isEmpty(localTraceData.version)) && (!localTraceData.version.equals("8.7.0")))
           {
-            localTraceAnnoEntry.ret.set(localTraceData.result.jdField_a_of_type_Int);
-            Object localObject = a(localTraceData.mSpanQueue);
-            if (localObject != null) {
-              localTraceAnnoEntry.span_anno_list.addAll((Collection)localObject);
-            }
-            if ((!TextUtils.isEmpty(localTraceData.version)) && (!localTraceData.version.equals("8.5.5")))
-            {
-              localObject = new ArrayList();
-              ((List)localObject).add(localTraceAnnoEntry);
-              b(localAppRuntime, localTraceConfig, localTraceData.version, (List)localObject);
-              continue;
-            }
-            j = 1;
+            localObject = new ArrayList();
+            ((List)localObject).add(localTraceAnnoEntry);
+            b(localAppRuntime, localTraceConfig, localTraceData.version, (List)localObject);
+          }
+          else
+          {
+            i = 1;
             localArrayList.add(localTraceAnnoEntry);
           }
         }
-        i = j;
       }
       if (i != 0) {
         b(localAppRuntime, localTraceConfig, null, localArrayList);
@@ -280,66 +283,69 @@ public class DefaultTraceNetwork
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     String str = paramBundle.getString("cmd");
+    Object localObject1;
     if (("apollo_monitor.report_trace".equals(str)) || ("apollo_monitor.report_anno".equals(str)))
     {
-      if (paramBoolean) {
-        break label318;
+      if (!paramBoolean)
+      {
+        paramInt = paramBundle.getInt("retryTime");
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("cmd:");
+        ((StringBuilder)localObject1).append(str);
+        ((StringBuilder)localObject1).append(",retryTime:");
+        ((StringBuilder)localObject1).append(paramInt);
+        QLog.w("[cmshow][TraceReport]", 1, ((StringBuilder)localObject1).toString());
       }
-      paramInt = paramBundle.getInt("retryTime");
-      QLog.w("TraceReport", 1, "cmd:" + str + ",retryTime:" + paramInt);
-    }
-    for (;;)
-    {
-      Object localObject1;
+      else
+      {
+        paramInt = 0;
+      }
       if (("apollo_monitor.report_trace".equals(str)) && (paramBoolean) && (this.a != null)) {
         localObject1 = new ReportTrace.ReportTraceRsp();
       }
-      for (;;)
+    }
+    for (;;)
+    {
+      Object localObject2;
+      try
       {
-        try
+        localObject2 = (ITraceReportStrategyListener)this.a.get();
+        if (localObject2 != null)
         {
-          localObject2 = (ITraceReportStrategyListener)this.a.get();
-          if (localObject2 != null)
-          {
-            ((ReportTrace.ReportTraceRsp)localObject1).mergeFrom(paramBundle.getByteArray("data"));
-            int i = ((ReportTrace.ReportTraceRsp)localObject1).report_interval.get();
-            int j = ((ReportTrace.ReportTraceRsp)localObject1).report_num.get();
-            if (((ReportTrace.ReportTraceRsp)localObject1).report_fail.get() != 1) {
-              continue;
-            }
-            bool = true;
-            ((ITraceReportStrategyListener)localObject2).a(i, j, bool);
+          ((ReportTrace.ReportTraceRsp)localObject1).mergeFrom(paramBundle.getByteArray("data"));
+          int i = ((ReportTrace.ReportTraceRsp)localObject1).report_interval.get();
+          int j = ((ReportTrace.ReportTraceRsp)localObject1).report_num.get();
+          if (((ReportTrace.ReportTraceRsp)localObject1).report_fail.get() != 1) {
+            break label336;
           }
+          bool = true;
+          ((ITraceReportStrategyListener)localObject2).a(i, j, bool);
         }
-        catch (Exception localException)
-        {
-          Object localObject2;
-          boolean bool;
-          QLog.e("TraceReport", 1, localException, new Object[0]);
-          continue;
-        }
-        localObject1 = BaseApplicationImpl.getApplication().peekAppRuntime();
-        if ((!paramBoolean) && (paramInt < 1) && (localObject1 != null))
-        {
-          localObject2 = new NewIntent(((AppRuntime)localObject1).getApplication(), TraceServlet.class);
-          ((NewIntent)localObject2).putExtra("retryTime", paramInt + 1);
-          ((NewIntent)localObject2).putExtra("cmd", str);
-          ((NewIntent)localObject2).putExtra("data", paramBundle.getByteArray("request_data"));
-          ((NewIntent)localObject2).putExtra("timeout", 30000);
-          ((NewIntent)localObject2).setObserver(this);
-          ((AppRuntime)localObject1).startServlet((NewIntent)localObject2);
-        }
-        return;
-        bool = false;
       }
-      label318:
-      paramInt = 0;
+      catch (Exception localException)
+      {
+        QLog.e("[cmshow][TraceReport]", 1, localException, new Object[0]);
+      }
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
+      if ((!paramBoolean) && (paramInt < 1) && (localAppRuntime != null))
+      {
+        localObject2 = new NewIntent(localAppRuntime.getApplication(), TraceServlet.class);
+        ((NewIntent)localObject2).putExtra("retryTime", paramInt + 1);
+        ((NewIntent)localObject2).putExtra("cmd", str);
+        ((NewIntent)localObject2).putExtra("data", paramBundle.getByteArray("request_data"));
+        ((NewIntent)localObject2).putExtra("timeout", 30000);
+        ((NewIntent)localObject2).setObserver(this);
+        localAppRuntime.startServlet((NewIntent)localObject2);
+      }
+      return;
+      label336:
+      boolean bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.statistics.trace.sdk.component.DefaultTraceNetwork
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.app;
 
+import com.tencent.mobileqq.hotchat.api.IHotChatStateWrapper;
 import java.io.Serializable;
 
 public class HotChatManager$HotChatStateWrapper
-  implements Serializable
+  implements IHotChatStateWrapper, Serializable
 {
   public static final int ACTION_DELETE_SHELL = 3;
   public static final int ACTION_KEEP_RECENT_USER = 2;
@@ -46,12 +47,18 @@ public class HotChatManager$HotChatStateWrapper
   
   public String toString()
   {
-    return "HotChatStateWrapper{targetState=" + this.targetState + ", action=" + this.action + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("HotChatStateWrapper{targetState=");
+    localStringBuilder.append(this.targetState);
+    localStringBuilder.append(", action=");
+    localStringBuilder.append(this.action);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.HotChatManager.HotChatStateWrapper
  * JD-Core Version:    0.7.0.1
  */

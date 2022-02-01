@@ -12,13 +12,10 @@ class AdAppPreOrderManager$3
   public void run()
   {
     int i = 0;
-    if (i < this.val$urlAndPkgName.size())
+    while (i < this.val$urlAndPkgName.size())
     {
-      if (this.val$urlAndPkgName.get(i) == null) {}
-      for (;;)
+      if (this.val$urlAndPkgName.get(i) != null)
       {
-        i += 1;
-        break;
         Object localObject = AdAppPreOrderManager.access$1400(this.this$0, (String)((Pair)this.val$urlAndPkgName.get(i)).first);
         if ((localObject != null) && (!((List)localObject).isEmpty()))
         {
@@ -32,6 +29,7 @@ class AdAppPreOrderManager$3
           }
         }
       }
+      i += 1;
     }
   }
 }

@@ -22,31 +22,33 @@ public class PanelInputDialogFragment
   
   private void performChangeState(int paramInt1, int paramInt2)
   {
-    switch (paramInt2)
+    if (paramInt2 != 0)
     {
-    default: 
-      return;
-    case 2: 
-      this.vPanel.setShowing(true);
-      if (paramInt1 == 0)
+      if (paramInt2 != 1)
       {
-        this.vPanel.requestLayout();
+        if (paramInt2 != 2) {
+          return;
+        }
+        this.vPanel.setShowing(true);
+        if (paramInt1 == 0)
+        {
+          this.vPanel.requestLayout();
+          return;
+        }
+        CommonUtil.hideInputMethod(getActivity(), this.vEdit);
         return;
       }
-      CommonUtil.hideInputMethod(getActivity(), this.vEdit);
-      return;
-    case 0: 
       this.vPanel.setShowing(false);
-      CommonUtil.hideInputMethod(getActivity(), this.vEdit);
+      CommonUtil.showInputMethod(getActivity(), this.vEdit);
       return;
     }
     this.vPanel.setShowing(false);
-    CommonUtil.showInputMethod(getActivity(), this.vEdit);
+    CommonUtil.hideInputMethod(getActivity(), this.vEdit);
   }
   
   protected void beforeStateChange(int paramInt1, int paramInt2) {}
   
-  public void changeState(int paramInt)
+  protected void changeState(int paramInt)
   {
     int i = this.state;
     this.state = paramInt;
@@ -56,7 +58,7 @@ public class PanelInputDialogFragment
     }
   }
   
-  public int getState()
+  protected int getState()
   {
     return this.state;
   }
@@ -90,14 +92,15 @@ public class PanelInputDialogFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.keyboardObserver != null) {
-      this.keyboardObserver.setTarget(null, null);
+    KeyboardObserver localKeyboardObserver = this.keyboardObserver;
+    if (localKeyboardObserver != null) {
+      localKeyboardObserver.setTarget(null, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.comment.adapt.PanelInputDialogFragment
  * JD-Core Version:    0.7.0.1
  */

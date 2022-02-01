@@ -3,39 +3,35 @@ package com.tencent.mobileqq.ar;
 class FramePerformanceMonitor$CurrentRunnable
   implements Runnable
 {
-  private boolean a = false;
-  
-  private FramePerformanceMonitor$CurrentRunnable(FramePerformanceMonitor paramFramePerformanceMonitor) {}
+  private boolean a;
   
   public void run()
   {
-    for (;;)
+    try
     {
-      try
-      {
-        if (this.a)
+      while (this.a) {
+        if (FramePerformanceMonitor.a(this.this$0).a() == 0)
         {
-          if (FramePerformanceMonitor.a(this.this$0).a() == 0) {
-            Thread.sleep(FramePerformanceMonitor.a(this.this$0));
-          }
+          Thread.sleep(FramePerformanceMonitor.a(this.this$0));
         }
-        else {
-          return;
+        else
+        {
+          GapDataCollector.RefreshData localRefreshData = FramePerformanceMonitor.a(this.this$0).a();
+          FramePerformanceMonitor.a(this.this$0).a(localRefreshData);
+          Thread.sleep(FramePerformanceMonitor.a(this.this$0));
         }
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-      GapDataCollector.RefreshData localRefreshData = FramePerformanceMonitor.a(this.this$0).a();
-      FramePerformanceMonitor.a(this.this$0).a(localRefreshData);
-      Thread.sleep(FramePerformanceMonitor.a(this.this$0));
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.FramePerformanceMonitor.CurrentRunnable
  * JD-Core Version:    0.7.0.1
  */

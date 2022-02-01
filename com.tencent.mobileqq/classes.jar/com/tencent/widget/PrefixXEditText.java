@@ -35,21 +35,22 @@ public class PrefixXEditText
   protected void onSelectionChanged(int paramInt1, int paramInt2)
   {
     super.onSelectionChanged(paramInt1, paramInt2);
-    if ((!TextUtils.isEmpty(this.a)) && (getText().length() >= this.a.length())) {
-      if (paramInt1 >= this.a.length()) {
-        break label87;
-      }
-    }
-    label87:
-    for (int i = this.a.length();; i = paramInt1)
+    if ((!TextUtils.isEmpty(this.a)) && (getText().length() >= this.a.length()))
     {
-      if (paramInt2 < i) {}
-      for (int j = i;; j = paramInt2)
-      {
-        if ((i != paramInt1) || (j != paramInt2)) {
-          setSelection(i, j);
-        }
-        return;
+      int i;
+      if (paramInt1 < this.a.length()) {
+        i = this.a.length();
+      } else {
+        i = paramInt1;
+      }
+      int j;
+      if (paramInt2 < i) {
+        j = i;
+      } else {
+        j = paramInt2;
+      }
+      if ((i != paramInt1) || (j != paramInt2)) {
+        setSelection(i, j);
       }
     }
   }
@@ -72,7 +73,7 @@ public class PrefixXEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.PrefixXEditText
  * JD-Core Version:    0.7.0.1
  */

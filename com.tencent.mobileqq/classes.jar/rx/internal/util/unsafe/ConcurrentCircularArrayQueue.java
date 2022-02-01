@@ -16,15 +16,20 @@ public abstract class ConcurrentCircularArrayQueue<E>
   static
   {
     int i = UnsafeAccess.UNSAFE.arrayIndexScale([Ljava.lang.Object.class);
-    if (4 == i) {}
-    for (REF_ELEMENT_SHIFT = SPARSE_SHIFT + 2;; REF_ELEMENT_SHIFT = SPARSE_SHIFT + 3)
+    if (4 == i)
     {
-      REF_ARRAY_BASE = UnsafeAccess.UNSAFE.arrayBaseOffset([Ljava.lang.Object.class) + (32 << REF_ELEMENT_SHIFT - SPARSE_SHIFT);
-      return;
-      if (8 != i) {
-        break;
-      }
+      REF_ELEMENT_SHIFT = SPARSE_SHIFT + 2;
     }
+    else
+    {
+      if (8 != i) {
+        break label75;
+      }
+      REF_ELEMENT_SHIFT = SPARSE_SHIFT + 3;
+    }
+    REF_ARRAY_BASE = UnsafeAccess.UNSAFE.arrayBaseOffset([Ljava.lang.Object.class) + (32 << REF_ELEMENT_SHIFT - SPARSE_SHIFT);
+    return;
+    label75:
     throw new IllegalStateException("Unknown pointer size");
   }
   
@@ -97,7 +102,7 @@ public abstract class ConcurrentCircularArrayQueue<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.util.unsafe.ConcurrentCircularArrayQueue
  * JD-Core Version:    0.7.0.1
  */

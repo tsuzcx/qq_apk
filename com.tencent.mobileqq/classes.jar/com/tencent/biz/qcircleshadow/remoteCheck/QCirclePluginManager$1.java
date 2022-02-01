@@ -17,7 +17,12 @@ class QCirclePluginManager$1
   
   public void a(BaseRequest paramBaseRequest, boolean paramBoolean, long paramLong, String paramString, QQCircleConfig.GetRainbowTableConfigRsp paramGetRainbowTableConfigRsp)
   {
-    QLog.i("QCirclePluginManager", 1, "traceId:" + this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCircleGetRainBowRequest.getTraceId() + " retcode:" + paramLong);
+    paramBaseRequest = new StringBuilder();
+    paramBaseRequest.append("traceId:");
+    paramBaseRequest.append(this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCircleGetRainBowRequest.getTraceId());
+    paramBaseRequest.append(" retcode:");
+    paramBaseRequest.append(paramLong);
+    QLog.i("QCirclePluginManager", 1, paramBaseRequest.toString());
     if (paramBoolean)
     {
       if (Looper.myLooper().equals(Looper.getMainLooper()))
@@ -29,12 +34,17 @@ class QCirclePluginManager$1
       return;
     }
     QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_plugin_cmd_rsp").setRetCode(paramLong));
-    QLog.e("QCirclePluginManager", 1, " retcode= " + paramLong + " errMsg=" + paramString);
+    paramBaseRequest = new StringBuilder();
+    paramBaseRequest.append(" retcode= ");
+    paramBaseRequest.append(paramLong);
+    paramBaseRequest.append(" errMsg=");
+    paramBaseRequest.append(paramString);
+    QLog.e("QCirclePluginManager", 1, paramBaseRequest.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.remoteCheck.QCirclePluginManager.1
  * JD-Core Version:    0.7.0.1
  */

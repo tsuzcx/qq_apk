@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.inputmethod.InputMethodManager;
@@ -161,17 +162,20 @@ public class MiniCustomDialog
   
   public void addPreviewView(View paramView)
   {
-    if (paramView == null) {}
-    while (this.rootView == null) {
+    if (paramView == null) {
+      return;
+    }
+    Object localObject = this.rootView;
+    if (localObject == null) {
       return;
     }
     int i = 0;
-    int j = this.rootView.getChildCount();
+    int j = ((ViewGroup)localObject).getChildCount();
     while (i < j)
     {
-      View localView = this.rootView.getChildAt(i);
-      if ((localView != null) && (localView.getVisibility() == 0)) {
-        localView.setVisibility(4);
+      localObject = this.rootView.getChildAt(i);
+      if ((localObject != null) && (((View)localObject).getVisibility() == 0)) {
+        ((View)localObject).setVisibility(4);
       }
       i += 1;
     }
@@ -198,11 +202,12 @@ public class MiniCustomDialog
   
   public void adjustMessageBottomMargin(float paramFloat)
   {
-    if (this.bodyLayout != null)
+    Object localObject = this.bodyLayout;
+    if (localObject != null)
     {
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.bodyLayout.getLayoutParams();
-      localLayoutParams.bottomMargin = DisplayUtil.dip2px(getContext(), paramFloat);
-      this.bodyLayout.setLayoutParams(localLayoutParams);
+      localObject = (RelativeLayout.LayoutParams)((LinearLayout)localObject).getLayoutParams();
+      ((RelativeLayout.LayoutParams)localObject).bottomMargin = DisplayUtil.dip2px(getContext(), paramFloat);
+      this.bodyLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
   }
   
@@ -223,12 +228,13 @@ public class MiniCustomDialog
   
   public void adjustMessageTopBottomMargin(float paramFloat1, float paramFloat2)
   {
-    if (this.bodyLayout != null)
+    Object localObject = this.bodyLayout;
+    if (localObject != null)
     {
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.bodyLayout.getLayoutParams();
-      localLayoutParams.bottomMargin = DisplayUtil.dip2px(getContext(), paramFloat2);
-      localLayoutParams.topMargin = DisplayUtil.dip2px(getContext(), paramFloat1);
-      this.bodyLayout.setLayoutParams(localLayoutParams);
+      localObject = (RelativeLayout.LayoutParams)((LinearLayout)localObject).getLayoutParams();
+      ((RelativeLayout.LayoutParams)localObject).bottomMargin = DisplayUtil.dip2px(getContext(), paramFloat2);
+      ((RelativeLayout.LayoutParams)localObject).topMargin = DisplayUtil.dip2px(getContext(), paramFloat1);
+      this.bodyLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
   }
   
@@ -287,7 +293,8 @@ public class MiniCustomDialog
   
   public boolean getCheckBoxState()
   {
-    if ((this.checkBox != null) && (this.checkBox.getVisibility() == 0)) {
+    CheckBox localCheckBox = this.checkBox;
+    if ((localCheckBox != null) && (localCheckBox.getVisibility() == 0)) {
       return this.checkBox.isChecked();
     }
     return false;
@@ -305,19 +312,20 @@ public class MiniCustomDialog
   
   public String getEditString()
   {
+    Object localObject = this.dialogEdit;
     String str = null;
-    Object localObject = null;
-    if (this.dialogEdit == null) {}
-    do
-    {
-      return localObject;
-      localObject = this.dialogEdit.getText();
-      if (localObject != null) {
-        str = localObject.toString();
-      }
-      localObject = str;
-    } while (!TextUtils.isEmpty(str));
-    return this.dialogEdit.getHint().toString();
+    if (localObject == null) {
+      return null;
+    }
+    localObject = ((EditText)localObject).getText();
+    if (localObject != null) {
+      str = localObject.toString();
+    }
+    localObject = str;
+    if (TextUtils.isEmpty(str)) {
+      localObject = this.dialogEdit.getHint().toString();
+    }
+    return localObject;
   }
   
   public EditText getEditText()
@@ -342,10 +350,11 @@ public class MiniCustomDialog
   
   public int getRootViewHeight()
   {
-    if (this.rootView == null) {
+    ViewGroup localViewGroup = this.rootView;
+    if (localViewGroup == null) {
       return -1;
     }
-    return this.rootView.getMeasuredHeight();
+    return localViewGroup.getMeasuredHeight();
   }
   
   public Object getTag()
@@ -360,18 +369,19 @@ public class MiniCustomDialog
   
   public boolean hasPreViewInDialog()
   {
-    if (this.rootView == null) {
+    Object localObject = this.rootView;
+    if (localObject == null) {
       return false;
     }
-    int i = this.rootView.getChildCount() - 1;
+    int i = ((ViewGroup)localObject).getChildCount() - 1;
     if (i < 0) {
       return false;
     }
-    View localView = this.rootView.getChildAt(i);
-    if (localView == null) {
+    localObject = this.rootView.getChildAt(i);
+    if (localObject == null) {
       return false;
     }
-    return ((localView.getTag() instanceof Integer)) && (((Integer)localView.getTag()).intValue() == 1001);
+    return ((((View)localObject).getTag() instanceof Integer)) && (((Integer)((View)localObject).getTag()).intValue() == 1001);
   }
   
   public void hideSoftInputFromWindow()
@@ -383,35 +393,28 @@ public class MiniCustomDialog
   
   public void removePreviewView()
   {
-    if (this.rootView == null) {
+    Object localObject = this.rootView;
+    if (localObject == null) {
       return;
     }
-    int i = this.rootView.getChildCount() - 1;
+    int i = ((ViewGroup)localObject).getChildCount() - 1;
     if (i >= 0) {
       this.rootView.removeViewAt(i);
     }
     i -= 1;
-    label34:
-    View localView;
-    if (i >= 0)
+    while (i >= 0)
     {
-      localView = this.rootView.getChildAt(i);
-      if (localView != null) {
-        break label58;
-      }
-    }
-    for (;;)
-    {
-      i -= 1;
-      break label34;
-      break;
-      label58:
-      if (((localView.getTag() instanceof Integer)) && (((Integer)localView.getTag()).intValue() == 1001))
+      localObject = this.rootView.getChildAt(i);
+      if (localObject != null)
       {
-        localView.setVisibility(0);
-        return;
+        if (((((View)localObject).getTag() instanceof Integer)) && (((Integer)((View)localObject).getTag()).intValue() == 1001))
+        {
+          ((View)localObject).setVisibility(0);
+          return;
+        }
+        ((View)localObject).setVisibility(0);
       }
-      localView.setVisibility(0);
+      i -= 1;
     }
   }
   
@@ -426,8 +429,9 @@ public class MiniCustomDialog
   {
     findViewById(R.id.layout_check).setVisibility(0);
     this.checkTxt.setText(paramString);
-    if (this.checkBox != null) {
-      this.checkBox.setOnCheckedChangeListener(new MiniCustomDialog.3(this, paramOnClickListener));
+    paramString = this.checkBox;
+    if (paramString != null) {
+      paramString.setOnCheckedChangeListener(new MiniCustomDialog.3(this, paramOnClickListener));
     }
     setSeperatorState();
     return this;
@@ -494,30 +498,31 @@ public class MiniCustomDialog
   
   public MiniCustomDialog setImageOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    if ((paramOnClickListener != null) && (this.framePreviewImage != null))
+    if (paramOnClickListener != null)
     {
-      this.framePreviewImage.setOnClickListener(paramOnClickListener);
-      this.countText.setVisibility(8);
+      ImageView localImageView = this.framePreviewImage;
+      if (localImageView != null)
+      {
+        localImageView.setOnClickListener(paramOnClickListener);
+        this.countText.setVisibility(8);
+      }
     }
     return this;
   }
   
   public MiniCustomDialog setItems(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
   {
-    Object localObject = null;
+    String[] arrayOfString2;
     try
     {
-      String[] arrayOfString = getContext().getResources().getStringArray(paramInt);
-      localObject = arrayOfString;
+      String[] arrayOfString1 = getContext().getResources().getStringArray(paramInt);
     }
     catch (Resources.NotFoundException localNotFoundException)
     {
-      for (;;)
-      {
-        localNotFoundException.printStackTrace();
-      }
+      localNotFoundException.printStackTrace();
+      arrayOfString2 = null;
     }
-    return setItems(localObject, paramOnClickListener);
+    return setItems(arrayOfString2, paramOnClickListener);
   }
   
   public MiniCustomDialog setItems(String[] paramArrayOfString, DialogInterface.OnClickListener paramOnClickListener)
@@ -572,9 +577,10 @@ public class MiniCustomDialog
   
   public MiniCustomDialog setMessageMaxLine(int paramInt)
   {
-    if (this.text != null)
+    TextView localTextView = this.text;
+    if (localTextView != null)
     {
-      this.text.setMaxLines(paramInt);
+      localTextView.setMaxLines(paramInt);
       this.text.setEllipsize(TextUtils.TruncateAt.END);
     }
     return this;
@@ -583,14 +589,16 @@ public class MiniCustomDialog
   public void setMessageTextColor(int paramInt)
   {
     ColorStateList localColorStateList = getContext().getResources().getColorStateList(paramInt);
-    if ((this.text != null) && (this.text.getVisibility() == 0)) {
+    TextView localTextView = this.text;
+    if ((localTextView != null) && (localTextView.getVisibility() == 0)) {
       this.text.setTextColor(localColorStateList);
     }
   }
   
   public void setMessageTextSize(float paramFloat)
   {
-    if ((this.text != null) && (this.text.getVisibility() == 0)) {
+    TextView localTextView = this.text;
+    if ((localTextView != null) && (localTextView.getVisibility() == 0)) {
       this.text.setTextSize(paramFloat);
     }
   }
@@ -633,7 +641,11 @@ public class MiniCustomDialog
       return this;
     }
     this.lBtn.setText(paramInt);
-    this.lBtn.setContentDescription(getContext().getString(paramInt) + getContext().getString(R.string.mini_sdk_content_desc_button));
+    TextView localTextView = this.lBtn;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getContext().getString(paramInt));
+    localStringBuilder.append(getContext().getString(R.string.mini_sdk_content_desc_button));
+    localTextView.setContentDescription(localStringBuilder.toString());
     this.lBtn.setVisibility(0);
     this.lBtn.setOnClickListener(new MiniCustomDialog.7(this, paramOnClickListener));
     setSeperatorState();
@@ -659,7 +671,11 @@ public class MiniCustomDialog
       return this;
     }
     this.lBtn.setText(paramString);
-    this.lBtn.setContentDescription(paramString + getContext().getString(R.string.mini_sdk_content_desc_button));
+    TextView localTextView = this.lBtn;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(getContext().getString(R.string.mini_sdk_content_desc_button));
+    localTextView.setContentDescription(localStringBuilder.toString());
     this.lBtn.setVisibility(0);
     this.lBtn.setOnClickListener(new MiniCustomDialog.4(this, paramOnClickListener));
     setSeperatorState();
@@ -673,18 +689,17 @@ public class MiniCustomDialog
   
   public MiniCustomDialog setOperateImage(Drawable paramDrawable)
   {
-    if (this.operateImage != null)
+    ImageView localImageView = this.operateImage;
+    if (localImageView != null)
     {
-      this.operateImage.setImageDrawable(paramDrawable);
-      if (paramDrawable != null) {
+      localImageView.setImageDrawable(paramDrawable);
+      if (paramDrawable != null)
+      {
         this.operateImage.setVisibility(8);
+        return this;
       }
+      this.operateImage.setVisibility(0);
     }
-    else
-    {
-      return this;
-    }
-    this.operateImage.setVisibility(0);
     return this;
   }
   
@@ -711,7 +726,11 @@ public class MiniCustomDialog
       return this;
     }
     this.rBtn.setText(paramInt);
-    this.rBtn.setContentDescription(getContext().getString(paramInt) + getContext().getString(R.string.mini_sdk_content_desc_button));
+    TextView localTextView = this.rBtn;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getContext().getString(paramInt));
+    localStringBuilder.append(getContext().getString(R.string.mini_sdk_content_desc_button));
+    localTextView.setContentDescription(localStringBuilder.toString());
     this.rBtn.setVisibility(0);
     this.rBtn.setOnClickListener(new MiniCustomDialog.6(this, paramOnClickListener, paramBoolean));
     setSeperatorState();
@@ -737,7 +756,11 @@ public class MiniCustomDialog
       return this;
     }
     this.rBtn.setText(paramString);
-    this.rBtn.setContentDescription(paramString + getContext().getString(R.string.mini_sdk_content_desc_button));
+    TextView localTextView = this.rBtn;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(getContext().getString(R.string.mini_sdk_content_desc_button));
+    localTextView.setContentDescription(localStringBuilder.toString());
     this.rBtn.setVisibility(0);
     this.rBtn.setOnClickListener(new MiniCustomDialog.5(this, paramOnClickListener));
     setSeperatorState();
@@ -774,16 +797,16 @@ public class MiniCustomDialog
         localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
         this.framePreviewImage.setLayoutParams(localLayoutParams);
       }
-      for (;;)
+      else
       {
-        this.framePreviewImage.setImageDrawable(paramDrawable);
-        if (paramInt >= 2) {
-          break;
-        }
-        this.framePreview.setBackgroundDrawable(null);
-        return this;
         localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
         this.framePreviewImage.setLayoutParams(localLayoutParams);
+      }
+      this.framePreviewImage.setImageDrawable(paramDrawable);
+      if (paramInt < 2)
+      {
+        this.framePreview.setBackgroundDrawable(null);
+        return this;
       }
       if (paramInt == 2)
       {
@@ -809,25 +832,29 @@ public class MiniCustomDialog
   public MiniCustomDialog setPreviewImageScaleType(boolean paramBoolean)
   {
     ImageView localImageView = this.framePreviewImage;
-    if (paramBoolean) {}
-    for (ImageView.ScaleType localScaleType = ImageView.ScaleType.CENTER_INSIDE;; localScaleType = ImageView.ScaleType.CENTER_CROP)
-    {
-      localImageView.setScaleType(localScaleType);
-      return this;
+    ImageView.ScaleType localScaleType;
+    if (paramBoolean) {
+      localScaleType = ImageView.ScaleType.CENTER_INSIDE;
+    } else {
+      localScaleType = ImageView.ScaleType.CENTER_CROP;
     }
+    localImageView.setScaleType(localScaleType);
+    return this;
   }
   
   public void setProgress(int paramInt)
   {
-    if (this.progressBar != null) {
-      this.progressBar.setProgress(paramInt);
+    ProgressBar localProgressBar = this.progressBar;
+    if (localProgressBar != null) {
+      localProgressBar.setProgress(paramInt);
     }
   }
   
   public void setProgressBarVisibility(int paramInt)
   {
-    if (this.progressBar != null) {
-      this.progressBar.setVisibility(paramInt);
+    ProgressBar localProgressBar = this.progressBar;
+    if (localProgressBar != null) {
+      localProgressBar.setVisibility(paramInt);
     }
   }
   
@@ -864,7 +891,7 @@ public class MiniCustomDialog
       this.title.setText(paramString);
       this.text.setContentDescription(paramString);
       this.title.setVisibility(0);
-      if (this.items == null) {}
+      paramString = this.items;
       return this;
     }
     this.title.setVisibility(8);
@@ -898,63 +925,45 @@ public class MiniCustomDialog
   
   public MiniCustomDialog setVideoFormat(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
   {
-    if (this.mVideoIcon != null)
-    {
+    Object localObject = this.mVideoIcon;
+    if (localObject != null) {
       if (paramBoolean1) {
-        this.mVideoIcon.setVisibility(0);
+        ((ImageView)localObject).setVisibility(0);
+      } else if (!paramBoolean1) {
+        ((ImageView)localObject).setVisibility(8);
       }
     }
-    else
-    {
-      if (this.editPicTag != null)
-      {
-        if (!paramBoolean2) {
-          break label118;
-        }
-        this.editPicTag.setVisibility(0);
+    localObject = this.editPicTag;
+    if (localObject != null) {
+      if (paramBoolean2) {
+        ((TextView)localObject).setVisibility(0);
+      } else if (!paramBoolean2) {
+        ((TextView)localObject).setVisibility(8);
       }
-      label38:
-      if (this.mVideoSize != null)
+    }
+    if (this.mVideoSize != null) {
+      if (!TextUtils.isEmpty(paramString1))
       {
-        if (TextUtils.isEmpty(paramString1)) {
-          break label134;
-        }
         this.mVideoSize.setVisibility(0);
         this.mVideoSize.setText(paramString1);
       }
-      label68:
-      if (this.mVideoTime != null)
+      else if (TextUtils.isEmpty(paramString1))
       {
-        if (TextUtils.isEmpty(paramString2)) {
-          break label153;
-        }
+        this.mVideoSize.setVisibility(8);
+      }
+    }
+    if (this.mVideoTime != null)
+    {
+      if (!TextUtils.isEmpty(paramString2))
+      {
         this.mVideoTime.setVisibility(0);
         this.mVideoTime.setText(paramString2);
+        return this;
+      }
+      if (TextUtils.isEmpty(paramString2)) {
+        this.mVideoTime.setVisibility(8);
       }
     }
-    label118:
-    while (!TextUtils.isEmpty(paramString2))
-    {
-      return this;
-      if (paramBoolean1) {
-        break;
-      }
-      this.mVideoIcon.setVisibility(8);
-      break;
-      if (paramBoolean2) {
-        break label38;
-      }
-      this.editPicTag.setVisibility(8);
-      break label38;
-      if (!TextUtils.isEmpty(paramString1)) {
-        break label68;
-      }
-      this.mVideoSize.setVisibility(8);
-      break label68;
-    }
-    label134:
-    label153:
-    this.mVideoTime.setVisibility(8);
     return this;
   }
   
@@ -967,7 +976,7 @@ public class MiniCustomDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.MiniCustomDialog
  * JD-Core Version:    0.7.0.1
  */

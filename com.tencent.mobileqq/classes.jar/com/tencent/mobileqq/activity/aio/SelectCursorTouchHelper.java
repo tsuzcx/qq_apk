@@ -63,8 +63,10 @@ public class SelectCursorTouchHelper
     }
     if (paramInt1 == 1) {
       localObject = TextUtils.getNeoTextAfter(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(), i, paramInt2, true);
+    } else {
+      localObject = TextUtils.getNeoTextBefore(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(), i, paramInt2);
     }
-    while (((String)localObject).length() < paramInt2)
+    if (((String)localObject).length() < paramInt2)
     {
       if (QLog.isColorLevel()) {
         QLog.d("BaseChatItemLayout", 2, new Object[] { "cutString is small than request cutString=", localObject });
@@ -73,15 +75,10 @@ public class SelectCursorTouchHelper
       ((MotionEvent)localObject).setSource(-1);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioSelectCursorTouchHelper$SelectCursorTouchHelperListener.onTouchEvent((MotionEvent)localObject);
       this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(true);
-      if (paramInt1 == 1)
-      {
-        return a(a() + paramFloat1, paramFloat2, 2, paramInt2);
-        localObject = TextUtils.getNeoTextBefore(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(), i, paramInt2);
+      if (paramInt1 == 1) {
+        return a(paramFloat1 + a(), paramFloat2, 2, paramInt2);
       }
-      else
-      {
-        return -1;
-      }
+      return -1;
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSelectCursorTouchHelper$SelectCursorTouchHelperListener.a(i, ((String)localObject).length(), paramInt1);
     localObject = a(2, paramFloat1, paramFloat2);
@@ -96,7 +93,7 @@ public class SelectCursorTouchHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.SelectCursorTouchHelper
  * JD-Core Version:    0.7.0.1
  */

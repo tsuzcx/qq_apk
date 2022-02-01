@@ -61,20 +61,20 @@ public class VoteEventMgr
     Object localObject1;
     if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackgroundPause) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackgroundStop) || (bool))
     {
-      Object localObject2 = BitmapManager.a(localBaseApplication.getResources(), 2130845626);
+      Object localObject2 = BitmapManager.a(localBaseApplication.getResources(), 2130845499);
       localObject1 = new NotificationCompat.Builder(localBaseApplication).setContentTitle(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.mTitleName).setAutoCancel(true).setSmallIcon(BaseApplicationImpl.appnewmsgicon).setTicker(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.mTitleName).setWhen(System.currentTimeMillis());
       if (localObject2 != null) {
         ((NotificationCompat.Builder)localObject1).setLargeIcon((Bitmap)localObject2);
       }
       if (Build.VERSION.SDK_INT < 11) {
-        ((NotificationCompat.Builder)localObject1).setSmallIcon(2130845626);
+        ((NotificationCompat.Builder)localObject1).setSmallIcon(2130845499);
       }
       if (Build.VERSION.SDK_INT >= 16)
       {
-        localObject2 = new RemoteViews(localBaseApplication.getPackageName(), 2131561178);
+        localObject2 = new RemoteViews(localBaseApplication.getPackageName(), 2131561041);
         ((NotificationCompat.Builder)localObject1).setContent((RemoteViews)localObject2);
-        ((RemoteViews)localObject2).setCharSequence(2131379432, "setText", this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.mTitleName);
-        ((RemoteViews)localObject2).setCharSequence(2131379336, "setText", TimeFormatterUtils.a(System.currentTimeMillis(), true, "yyyy-MM-dd"));
+        ((RemoteViews)localObject2).setCharSequence(2131378784, "setText", this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.mTitleName);
+        ((RemoteViews)localObject2).setCharSequence(2131378688, "setText", TimeFormatterUtils.a(System.currentTimeMillis(), true, "yyyy-MM-dd"));
       }
       localObject2 = a(localBaseApplication);
       ((Intent)localObject2).putExtra("param_notifyid", 240);
@@ -83,7 +83,7 @@ public class VoteEventMgr
       ((Notification)localObject1).flags |= 0x10;
       ((Notification)localObject1).defaults |= 0x1;
       ((Notification)localObject1).defaults |= 0x4;
-      ((Notification)localObject1).icon = 2130845626;
+      ((Notification)localObject1).icon = 2130845499;
       localObject2 = QQNotificationManager.getInstance();
       if (localObject2 != null)
       {
@@ -95,7 +95,7 @@ public class VoteEventMgr
     if (bool)
     {
       localObject1 = (QQLSRecentManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QQLS_DATA_MANAGER);
-      if (SettingCloneUtil.readValue(localBaseApplication, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), localBaseApplication.getString(2131693883), "qqsetting_lock_screen_whenexit_key", true))
+      if (SettingCloneUtil.readValue(localBaseApplication, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), localBaseApplication.getString(2131693837), "qqsetting_lock_screen_whenexit_key", true))
       {
         if (QLog.isColorLevel()) {
           QLog.d("QQLSActivity", 2, "videochatting start lsActivity from appinterface VoteEventMgr.notifyVoteEvent");
@@ -125,10 +125,11 @@ public class VoteEventMgr
     if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForText == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForText = ((MessageForText)MessageRecordFactory.a(-1000));
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msgtype = -1000;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.istroop = 1012;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.isread = false;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      MessageForText localMessageForText = this.jdField_a_of_type_ComTencentMobileqqDataMessageForText;
+      localMessageForText.msgtype = -1000;
+      localMessageForText.istroop = 1012;
+      localMessageForText.isread = false;
+      localMessageForText.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.senderuin = AppConstants.DATE_UIN;
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.frienduin = AppConstants.DATE_UIN;
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg = paramRecentBaseData.mTitleName;
@@ -152,33 +153,30 @@ public class VoteEventMgr
   
   public void a(SubMsgType0x6f.MCardNotificationLike paramMCardNotificationLike)
   {
-    String str2 = "";
-    String str1 = str2;
-    if (paramMCardNotificationLike != null)
-    {
-      str1 = str2;
-      if (paramMCardNotificationLike.str_wording.has()) {
-        str1 = paramMCardNotificationLike.str_wording.get();
-      }
+    if ((paramMCardNotificationLike != null) && (paramMCardNotificationLike.str_wording.has())) {
+      paramMCardNotificationLike = paramMCardNotificationLike.str_wording.get();
+    } else {
+      paramMCardNotificationLike = "";
     }
-    if (TextUtils.isEmpty(str1)) {}
-    long l;
-    do
-    {
+    if (TextUtils.isEmpty(paramMCardNotificationLike)) {
       return;
-      l = MessageCache.a();
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData == null)
-      {
-        paramMCardNotificationLike = new RecentUser(AppConstants.VOTE_UIN, 1012);
-        paramMCardNotificationLike.msgType = 1012;
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData = new RecentItemVoteData(paramMCardNotificationLike);
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.a(str1, l);
-        c();
-        return;
-      }
-    } while ((this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.mTitleName.equals(str1)) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.time == l));
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.a(str1, l);
-    c();
+    }
+    long l = MessageCache.a();
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData;
+    if (localObject == null)
+    {
+      localObject = new RecentUser(AppConstants.VOTE_UIN, 1012);
+      ((RecentUser)localObject).msgType = 1012;
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData = new RecentItemVoteData((RecentUser)localObject);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.a(paramMCardNotificationLike, l);
+      c();
+      return;
+    }
+    if ((!((RecentItemVoteData)localObject).mTitleName.equals(paramMCardNotificationLike)) || (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.time != l))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.a(paramMCardNotificationLike, l);
+      c();
+    }
   }
   
   public void b()
@@ -192,7 +190,7 @@ public class VoteEventMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dating.widget.VoteEventMgr
  * JD-Core Version:    0.7.0.1
  */

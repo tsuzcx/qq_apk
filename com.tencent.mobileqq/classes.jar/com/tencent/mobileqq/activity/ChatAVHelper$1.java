@@ -11,8 +11,9 @@ final class ChatAVHelper$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener.a();
+    ChatActivityUtils.StartVideoListener localStartVideoListener = this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener;
+    if (localStartVideoListener != null) {
+      localStartVideoListener.a();
     }
     DataReport.e(true, false);
     if (paramDialogInterface != null) {
@@ -23,7 +24,7 @@ final class ChatAVHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatAVHelper.1
  * JD-Core Version:    0.7.0.1
  */

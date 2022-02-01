@@ -1,59 +1,32 @@
 package com.tencent.av.ui;
 
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.utils.MultiVideoMembersClickListener;
-import com.tencent.av.utils.VideoMsgTools;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class MultiVideoCtrlLayerUIBase$5
-  implements MultiVideoMembersClickListener
+  implements View.OnTouchListener
 {
-  MultiVideoCtrlLayerUIBase$5(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
+  MultiVideoCtrlLayerUIBase$5(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase, View paramView) {}
   
-  private void b()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AVActivity localAVActivity = (AVActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localAVActivity != null) {
-      if ((this.a.jdField_a_of_type_ComTencentAvVideoController.a().ad) || (this.a.jdField_a_of_type_ComTencentAvVideoController.a().ae))
-      {
-        bool = true;
-        VideoMsgTools.a(localAVActivity, String.valueOf(this.a.jdField_a_of_type_ComTencentAvVideoController.a().g), bool, true);
-        ReportController.b(null, "CliOper", "", "", "0X8009E27", "0X8009E27", 0, 0, "", "", "", "");
-      }
+    if (paramMotionEvent.getAction() == 0)
+    {
+      paramView.setAlpha(0.5F);
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.5F);
     }
-    while (!QLog.isColorLevel()) {
-      for (;;)
-      {
-        return;
-        boolean bool = false;
-      }
+    else if (paramMotionEvent.getAction() == 1)
+    {
+      paramView.setAlpha(1.0F);
+      this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
     }
-    QLog.e(this.a.d, 2, "startMembersListViewPage-->can not get activity");
-  }
-  
-  public void a()
-  {
-    long l = AudioHelper.b();
-    this.a.D(l);
-  }
-  
-  public void a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.d, 2, "MultiVideoMembersClickListener , Uin = " + paramLong + " , videoScr = " + paramInt1 + " , isNeedRequest " + paramBoolean + " , positon = " + paramInt2);
-    }
-    if ((paramInt2 == 7) && (paramBoolean)) {
-      b();
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUIBase.5
  * JD-Core Version:    0.7.0.1
  */

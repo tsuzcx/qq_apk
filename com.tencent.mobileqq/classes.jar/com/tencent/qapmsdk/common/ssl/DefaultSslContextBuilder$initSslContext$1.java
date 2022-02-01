@@ -20,39 +20,39 @@ public final class DefaultSslContextBuilder$initSslContext$1
   
   public void checkServerTrusted(@Nullable X509Certificate[] paramArrayOfX509Certificate, @Nullable String paramString)
   {
-    int j = 1;
     if (paramArrayOfX509Certificate != null) {}
-    for (;;)
+    int i;
+    label83:
+    do
     {
-      try
+      for (;;)
       {
-        if (paramArrayOfX509Certificate.length == 0)
+        try
         {
-          i = 1;
-          if ((i == 0) && (paramString != null))
+          i = paramArrayOfX509Certificate.length;
+          int j = 1;
+          if (i == 0)
           {
-            if (((CharSequence)paramString).length() != 0) {
-              break label76;
+            i = 1;
+            if ((i == 0) && (paramString != null))
+            {
+              if (((CharSequence)paramString).length() != 0) {
+                break;
+              }
+              i = j;
+              break label83;
             }
-            i = j;
-            break label82;
+            throw ((Throwable)new IllegalArgumentException("null or zero-length parameter"));
           }
-          throw ((Throwable)new IllegalArgumentException("null or zero-length parameter"));
         }
+        catch (Exception paramArrayOfX509Certificate)
+        {
+          throw ((Throwable)new CertificateException("error in validating certificate", (Throwable)paramArrayOfX509Certificate));
+        }
+        i = 0;
       }
-      catch (Exception paramArrayOfX509Certificate)
-      {
-        throw ((Throwable)new CertificateException("error in validating certificate", (Throwable)paramArrayOfX509Certificate));
-      }
-      int i = 0;
-      continue;
-      label76:
       i = 0;
-      label82:
-      while (i == 0) {
-        return;
-      }
-    }
+    } while (i != 0);
   }
   
   @NotNull
@@ -63,7 +63,7 @@ public final class DefaultSslContextBuilder$initSslContext$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.common.ssl.DefaultSslContextBuilder.initSslContext.1
  * JD-Core Version:    0.7.0.1
  */

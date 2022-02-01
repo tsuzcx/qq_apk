@@ -17,16 +17,17 @@ class PhotoView$InterpolatorProxy
   
   public float getInterpolation(float paramFloat)
   {
+    Interpolator localInterpolator = this.jdField_a_of_type_AndroidViewAnimationInterpolator;
     float f = paramFloat;
-    if (this.jdField_a_of_type_AndroidViewAnimationInterpolator != null) {
-      f = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(paramFloat);
+    if (localInterpolator != null) {
+      f = localInterpolator.getInterpolation(paramFloat);
     }
     return f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.bm.library.PhotoView.InterpolatorProxy
  * JD-Core Version:    0.7.0.1
  */

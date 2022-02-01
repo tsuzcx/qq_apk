@@ -6,7 +6,6 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +15,7 @@ import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.download.unite.config.DownloadConfigBean;
 import com.tencent.mobileqq.download.unite.config.DownloadConfigProcessor;
 import com.tencent.mobileqq.download.unite.util.UniteDownloadUtil;
@@ -27,7 +27,7 @@ import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import com.tencent.util.QQDeviceInfo;
 
 public class DownloadDialogFragment
@@ -35,25 +35,25 @@ public class DownloadDialogFragment
 {
   private void a(int paramInt)
   {
-    FragmentActivity localFragmentActivity = getActivity();
-    if (localFragmentActivity == null) {
+    BaseActivity localBaseActivity = getBaseActivity();
+    if (localBaseActivity == null) {
       return;
     }
     Handler localHandler = UniteDownloadUtil.a();
     if (localHandler != null)
     {
       Message localMessage = localHandler.obtainMessage(1);
-      localMessage.obj = Long.valueOf(localFragmentActivity.getIntent().getLongExtra("listener_flag", -1L));
+      localMessage.obj = Long.valueOf(localBaseActivity.getIntent().getLongExtra("listener_flag", -1L));
       localMessage.arg1 = paramInt;
       localHandler.sendMessage(localMessage);
     }
-    localFragmentActivity.finish();
+    localBaseActivity.finish();
     if (paramInt != 1)
     {
-      localFragmentActivity.overridePendingTransition(2130771996, 2130771997);
+      localBaseActivity.overridePendingTransition(2130772008, 2130772009);
       return;
     }
-    localFragmentActivity.overridePendingTransition(0, 2130771995);
+    localBaseActivity.overridePendingTransition(0, 2130772007);
   }
   
   public static void a(DownloadInfo paramDownloadInfo, long paramLong)
@@ -70,42 +70,62 @@ public class DownloadDialogFragment
   
   private static void b(Activity paramActivity)
   {
-    String str1 = AppSetting.f();
-    String str2 = AppSetting.f();
+    Object localObject1 = AppSetting.f();
+    Object localObject2 = AppSetting.f();
     int i = Build.VERSION.SDK_INT;
-    int j = NetworkUtil.b(paramActivity);
-    String str3 = QQDeviceInfo.getIMEI("0");
-    String str4 = paramActivity.getIntent().getStringExtra("big_brother_source_key");
-    String str5 = paramActivity.getIntent().getStringExtra("key_url");
-    Object localObject = paramActivity.getIntent().getStringExtra("key_appid");
-    str5 = StringUtil.a(str5, 0, 50);
-    str4 = "source=" + str4 + ",url=" + str5 + ",appid=" + (String)localObject;
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("clientInfo=").append(str1).append("&clientVersion=").append(str2).append("&osVersion=").append(String.valueOf(i)).append("&os=").append("android").append("&netType=").append(String.valueOf(j)).append("&imei=").append(str3).append("&customInfo=").append(str4);
+    int j = NetworkUtil.getNetworkType(paramActivity);
+    String str1 = QQDeviceInfo.getIMEI("0");
+    Object localObject3 = paramActivity.getIntent().getStringExtra("big_brother_source_key");
+    String str3 = paramActivity.getIntent().getStringExtra("key_url");
+    String str2 = paramActivity.getIntent().getStringExtra("key_appid");
+    str3 = StringUtil.a(str3, 0, 50);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("source=");
+    localStringBuilder.append((String)localObject3);
+    localStringBuilder.append(",url=");
+    localStringBuilder.append(str3);
+    localStringBuilder.append(",appid=");
+    localStringBuilder.append(str2);
+    str2 = localStringBuilder.toString();
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("clientInfo=");
+    ((StringBuilder)localObject3).append((String)localObject1);
+    ((StringBuilder)localObject3).append("&clientVersion=");
+    ((StringBuilder)localObject3).append((String)localObject2);
+    ((StringBuilder)localObject3).append("&osVersion=");
+    ((StringBuilder)localObject3).append(String.valueOf(i));
+    ((StringBuilder)localObject3).append("&os=");
+    ((StringBuilder)localObject3).append("android");
+    ((StringBuilder)localObject3).append("&netType=");
+    ((StringBuilder)localObject3).append(String.valueOf(j));
+    ((StringBuilder)localObject3).append("&imei=");
+    ((StringBuilder)localObject3).append(str1);
+    ((StringBuilder)localObject3).append("&customInfo=");
+    ((StringBuilder)localObject3).append(str2);
     if (QLog.isColorLevel()) {
-      QLog.d("[UniteDownload] DownloadDialogFragment", 1, new Object[] { "url argument: ", ((StringBuilder)localObject).toString() });
+      QLog.d("[UniteDownload] DownloadDialogFragment", 1, new Object[] { "url argument: ", ((StringBuilder)localObject3).toString() });
     }
-    paramActivity.startActivity(new Intent(paramActivity, QQBrowserActivity.class).putExtra("url", "https://support.qq.com/product/275620?" + ((StringBuilder)localObject).toString()));
+    localObject1 = new Intent(paramActivity, QQBrowserActivity.class);
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("https://support.qq.com/product/275620?");
+    ((StringBuilder)localObject2).append(((StringBuilder)localObject3).toString());
+    paramActivity.startActivity(((Intent)localObject1).putExtra("url", ((StringBuilder)localObject2).toString()));
   }
   
   public void a()
   {
     Object localObject = DownloadConfigProcessor.a();
-    localObject = DialogUtil.a(getActivity(), 0, ((DownloadConfigBean)localObject).a, ((DownloadConfigBean)localObject).b, ((DownloadConfigBean)localObject).d, ((DownloadConfigBean)localObject).c, ((DownloadConfigBean)localObject).e, new DownloadDialogFragment.1(this), new DownloadDialogFragment.2(this), new DownloadDialogFragment.3(this));
+    localObject = DialogUtil.a(getBaseActivity(), 0, ((DownloadConfigBean)localObject).a, ((DownloadConfigBean)localObject).b, ((DownloadConfigBean)localObject).d, ((DownloadConfigBean)localObject).c, ((DownloadConfigBean)localObject).e, new DownloadDialogFragment.1(this), new DownloadDialogFragment.2(this), new DownloadDialogFragment.3(this));
     ((QQCustomDialog)localObject).setOnCancelListener(new DownloadDialogFragment.4(this));
     try
     {
       ((QQCustomDialog)localObject).show();
-      ReportHelperKt.a("0X800B53B");
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        QLog.e("[UniteDownload] DownloadDialogFragment", 1, "show dialog error: ", localThrowable);
-      }
+      QLog.e("[UniteDownload] DownloadDialogFragment", 1, "show dialog error: ", localThrowable);
     }
+    ReportHelperKt.a("0X800B53B");
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -132,10 +152,10 @@ public class DownloadDialogFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559423, null);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559298, null);
     paramLayoutInflater.setAlpha(0.5F);
-    getActivity().overridePendingTransition(2130771996, 2130771997);
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    getBaseActivity().overridePendingTransition(2130772008, 2130772009);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
@@ -147,7 +167,7 @@ public class DownloadDialogFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.download.unite.DownloadDialogFragment
  * JD-Core Version:    0.7.0.1
  */

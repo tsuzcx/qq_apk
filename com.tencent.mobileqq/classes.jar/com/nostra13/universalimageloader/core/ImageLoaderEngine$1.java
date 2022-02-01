@@ -12,13 +12,15 @@ class ImageLoaderEngine$1
   public void run()
   {
     File localFile = this.this$0.configuration.diskCache.get(this.val$task.getLoadingUri());
-    if ((localFile != null) && (localFile.exists())) {}
-    for (int i = 1;; i = 0)
+    int i;
+    if ((localFile != null) && (localFile.exists())) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    ImageLoaderEngine.access$000(this.this$0);
+    if (i != 0)
     {
-      ImageLoaderEngine.access$000(this.this$0);
-      if (i == 0) {
-        break;
-      }
       ImageLoaderEngine.access$100(this.this$0).execute(this.val$task);
       return;
     }
@@ -27,7 +29,7 @@ class ImageLoaderEngine$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nostra13.universalimageloader.core.ImageLoaderEngine.1
  * JD-Core Version:    0.7.0.1
  */

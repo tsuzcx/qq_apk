@@ -2,37 +2,25 @@ package com.tencent.mtt.hippy;
 
 import com.tencent.mtt.hippy.bridge.bundleloader.HippyBundleLoader;
 import com.tencent.mtt.hippy.common.ThreadExecutor;
+import com.tencent.mtt.hippy.common.ThreadExecutorManager;
+import com.tencent.mtt.hippy.utils.LogUtils;
 
 public class HippySingleThreadEngineManager
   extends HippyEngineManagerImpl
 {
-  private static volatile int sEngineNum = 0;
-  private static Object sLock = new Object();
-  private static volatile ThreadExecutor sThreadExecutor = null;
+  private boolean mIsDestroyed = false;
+  private Object mLock = new Object();
+  private ThreadExecutor mThreadExecutor = null;
   
-  HippySingleThreadEngineManager(HippyEngine.EngineInitParams arg1, HippyBundleLoader paramHippyBundleLoader)
+  HippySingleThreadEngineManager(HippyEngine.EngineInitParams paramEngineInitParams, HippyBundleLoader paramHippyBundleLoader)
   {
-    super(???, paramHippyBundleLoader);
-    synchronized (sLock)
-    {
-      sEngineNum += 1;
-      return;
-    }
+    super(paramEngineInitParams, paramHippyBundleLoader);
+    ThreadExecutorManager.getInstance().add(this);
   }
   
   public void destroyEngine()
   {
     super.destroyEngine();
-    synchronized (sLock)
-    {
-      sEngineNum -= 1;
-      if ((sEngineNum == 0) && (sThreadExecutor != null))
-      {
-        sThreadExecutor.destroy();
-        sThreadExecutor = null;
-      }
-      return;
-    }
   }
   
   public int getBridgeType()
@@ -42,35 +30,61 @@ public class HippySingleThreadEngineManager
   
   public ThreadExecutor getThreadExecutor()
   {
-    synchronized (sLock)
-    {
-      if (sThreadExecutor == null) {
-        sThreadExecutor = new ThreadExecutor();
+    ??? = ThreadExecutorManager.getInstance().getThreadExecutor(this.mGroupId);
+    if (??? == null) {
+      synchronized (this.mLock)
+      {
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("SingleThreadEngineManager group threadExecutor == null, isDestroyed=");
+        ((StringBuilder)localObject2).append(this.mIsDestroyed);
+        LogUtils.e("Hippy", ((StringBuilder)localObject2).toString());
+        if (this.mThreadExecutor == null)
+        {
+          this.mThreadExecutor = new ThreadExecutor(-1);
+          this.mThreadExecutor.setUncaughtExceptionHandler(this);
+        }
+        localObject2 = this.mThreadExecutor;
+        return localObject2;
       }
-      ThreadExecutor localThreadExecutor = sThreadExecutor;
-      return localThreadExecutor;
     }
+    return ???;
   }
   
-  public void handleThreadUncaughtException(Thread arg1, Throwable paramThrowable)
+  public void handleThreadUncaughtException(Thread arg1, Throwable paramThrowable, Integer paramInteger)
   {
-    super.handleThreadUncaughtException(???, paramThrowable);
+    super.handleThreadUncaughtException(???, paramThrowable, paramInteger);
     if ((this.mDebugMode) && (this.mDevSupportManager != null)) {
-      synchronized (sLock)
+      synchronized (this.mLock)
       {
-        if (sThreadExecutor != null)
+        if (this.mThreadExecutor != null)
         {
-          sThreadExecutor.destroy();
-          sThreadExecutor = null;
+          this.mThreadExecutor.destroy();
+          this.mThreadExecutor = null;
         }
         return;
       }
     }
   }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    ThreadExecutorManager.getInstance().remove(this);
+    synchronized (this.mLock)
+    {
+      this.mIsDestroyed = true;
+      if (this.mThreadExecutor != null)
+      {
+        this.mThreadExecutor.destroy();
+        this.mThreadExecutor = null;
+      }
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.HippySingleThreadEngineManager
  * JD-Core Version:    0.7.0.1
  */

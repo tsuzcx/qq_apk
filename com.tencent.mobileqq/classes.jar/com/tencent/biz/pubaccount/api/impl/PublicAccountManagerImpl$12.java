@@ -21,8 +21,9 @@ class PublicAccountManagerImpl$12
     {
       paramContext.unregisterReceiver(this.a.picResultReceiver);
       label50:
-      this.a.picResultReceiver = null;
-      this.a.mPicSource = 0;
+      paramContext = this.a;
+      paramContext.picResultReceiver = null;
+      paramContext.mPicSource = 0;
       return;
     }
     catch (Exception paramContext)
@@ -33,7 +34,7 @@ class PublicAccountManagerImpl$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountManagerImpl.12
  * JD-Core Version:    0.7.0.1
  */

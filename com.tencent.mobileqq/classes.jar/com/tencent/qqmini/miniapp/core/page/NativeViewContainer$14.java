@@ -30,20 +30,23 @@ class NativeViewContainer$14
         this.val$req.fail("create webview failed.");
         return;
       }
+      this.val$req.fail();
+      QMLog.e("NativeViewContainer", "posObj is null");
+      return;
     }
     catch (Exception localException)
     {
-      QMLog.e("NativeViewContainer", this.val$req.event + " error.", localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.val$req.event);
+      localStringBuilder.append(" error.");
+      QMLog.e("NativeViewContainer", localStringBuilder.toString(), localException);
       this.val$req.fail();
-      return;
     }
-    this.val$req.fail();
-    QMLog.e("NativeViewContainer", "posObj is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.NativeViewContainer.14
  * JD-Core Version:    0.7.0.1
  */

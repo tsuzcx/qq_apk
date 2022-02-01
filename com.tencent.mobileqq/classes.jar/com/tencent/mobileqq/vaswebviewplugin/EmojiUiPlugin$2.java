@@ -3,7 +3,7 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.emoticonview.EmoStoreWebViewFragment;
+import com.tencent.mobileqq.emoticonview.IEmoStoreWebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -14,25 +14,25 @@ class EmojiUiPlugin$2
   
   public void onClick(View paramView)
   {
-    this.this$0.closeBtnClick = true;
-    if ((this.this$0.mRuntime.a() instanceof EmoStoreWebViewFragment))
+    Object localObject = this.this$0;
+    ((EmojiUiPlugin)localObject).closeBtnClick = true;
+    if ((((EmojiUiPlugin)localObject).mRuntime.a() instanceof IEmoStoreWebViewFragment))
     {
-      EmoStoreWebViewFragment localEmoStoreWebViewFragment = (EmoStoreWebViewFragment)this.this$0.mRuntime.a();
-      localEmoStoreWebViewFragment.reportEmoStorePageCloseClickEvent();
+      localObject = (IEmoStoreWebViewFragment)this.this$0.mRuntime.a();
+      ((IEmoStoreWebViewFragment)localObject).reportEmoStorePageCloseClickEvent();
       this.this$0.activity.finish();
-      localEmoStoreWebViewFragment.doOnEmoStorePageFinshed(this.this$0.activity);
+      ((IEmoStoreWebViewFragment)localObject).doOnEmoStorePageFinshed(this.this$0.activity);
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       this.this$0.activity.finish();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.EmojiUiPlugin.2
  * JD-Core Version:    0.7.0.1
  */

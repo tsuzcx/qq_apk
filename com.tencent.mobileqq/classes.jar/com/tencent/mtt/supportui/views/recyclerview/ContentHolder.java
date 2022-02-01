@@ -16,14 +16,15 @@ public class ContentHolder
   
   public void setEnable(boolean paramBoolean)
   {
-    if ((this.mContentView != null) && (this.mContentView.getParent() != null)) {
+    View localView = this.mContentView;
+    if ((localView != null) && (localView.getParent() != null)) {
       ((View)this.mContentView.getParent()).setEnabled(paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.supportui.views.recyclerview.ContentHolder
  * JD-Core Version:    0.7.0.1
  */

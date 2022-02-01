@@ -20,19 +20,21 @@ final class pv$c
     arrayOfInt[1] = pv.a(this.a);
     arrayOfInt[2] = 12344;
     EGLContext localEGLContext = EGL10.EGL_NO_CONTEXT;
-    if (pv.a(this.a) != 0) {}
-    for (;;)
-    {
-      return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, arrayOfInt);
+    if (pv.a(this.a) == 0) {
       arrayOfInt = null;
     }
+    return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, arrayOfInt);
   }
   
   public final void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
   {
     if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext))
     {
-      Log.e("DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext);
+      StringBuilder localStringBuilder = new StringBuilder("display:");
+      localStringBuilder.append(paramEGLDisplay);
+      localStringBuilder.append(" context: ");
+      localStringBuilder.append(paramEGLContext);
+      Log.e("DefaultContextFactory", localStringBuilder.toString());
       paramEGL10.eglGetError();
       pv.h.a("eglDestroyContex");
     }
@@ -40,7 +42,7 @@ final class pv$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.pv.c
  * JD-Core Version:    0.7.0.1
  */

@@ -29,13 +29,18 @@ class f$a
       }
       i += 1;
     }
-    throw new Exception("Couldn't initialize");
+    localObject = new Exception("Couldn't initialize");
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
   }
   
   public void checkClientTrusted(X509Certificate[] paramArrayOfX509Certificate, String paramString)
   {
-    if (this.a != null) {
-      this.a.checkClientTrusted(paramArrayOfX509Certificate, paramString);
+    X509TrustManager localX509TrustManager = this.a;
+    if (localX509TrustManager != null) {
+      localX509TrustManager.checkClientTrusted(paramArrayOfX509Certificate, paramString);
     }
     if (QLog.isColorLevel()) {
       QLog.d("MSF.C.QualityTestManager", 2, "checkClientTrusted");
@@ -44,8 +49,9 @@ class f$a
   
   public void checkServerTrusted(X509Certificate[] paramArrayOfX509Certificate, String paramString)
   {
-    if (this.a != null) {
-      this.a.checkServerTrusted(paramArrayOfX509Certificate, paramString);
+    X509TrustManager localX509TrustManager = this.a;
+    if (localX509TrustManager != null) {
+      localX509TrustManager.checkServerTrusted(paramArrayOfX509Certificate, paramString);
     }
     if (QLog.isColorLevel()) {
       QLog.d("MSF.C.QualityTestManager", 2, "checkServerTrusted");
@@ -54,15 +60,16 @@ class f$a
   
   public X509Certificate[] getAcceptedIssuers()
   {
-    if (this.a != null) {
-      return this.a.getAcceptedIssuers();
+    X509TrustManager localX509TrustManager = this.a;
+    if (localX509TrustManager != null) {
+      return localX509TrustManager.getAcceptedIssuers();
     }
     return new X509Certificate[0];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.c.f.a
  * JD-Core Version:    0.7.0.1
  */

@@ -23,17 +23,21 @@ class WSPlayerManager$PlayerHandler
   public void dispatchMessage(Message paramMessage)
   {
     WSPlayerManager localWSPlayerManager = (WSPlayerManager)this.a.get();
-    if ((localWSPlayerManager == null) || (WSPlayerManager.f(localWSPlayerManager))) {}
-    do
+    if (localWSPlayerManager != null)
     {
-      return;
-      if (!(paramMessage.obj instanceof WSPlayerParam)) {
-        break;
+      if (WSPlayerManager.f(localWSPlayerManager)) {
+        return;
       }
-    } while (!WSPlayerManager.a(localWSPlayerManager, (WSPlayerParam)paramMessage.obj));
-    super.dispatchMessage(paramMessage);
-    return;
-    super.dispatchMessage(paramMessage);
+      if ((paramMessage.obj instanceof WSPlayerParam))
+      {
+        if (WSPlayerManager.a(localWSPlayerManager, (WSPlayerParam)paramMessage.obj)) {
+          super.dispatchMessage(paramMessage);
+        }
+      }
+      else {
+        super.dispatchMessage(paramMessage);
+      }
+    }
   }
   
   public void handleMessage(Message paramMessage)
@@ -42,125 +46,135 @@ class WSPlayerManager$PlayerHandler
     if (localWSPlayerManager == null) {
       return;
     }
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    boolean bool2 = true;
+    if (i != -4)
     {
-    default: 
-      return;
-    case -4: 
-      localObject = new StringBuilder().append("[WSPlayerManager.java][handleMessage] MSG_PLAY_BY_URL_FAILED. playerStartByUrl failed, retry again. RetryVideoUrl:");
-      if (WSPlayerManager.b(localWSPlayerManager).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo == null) {
-        break;
-      }
-    case -3: 
-      for (paramMessage = WSPlayerManager.b(localWSPlayerManager).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.b;; paramMessage = "videoInfo is null.")
+      if (i != -3)
       {
-        WSLog.d("WS_VIDEO_PLAYER", paramMessage);
-        if (WSPlayerManager.d(localWSPlayerManager) == 1) {
-          break;
-        }
-        WSPlayerManager.b(localWSPlayerManager).jdField_a_of_type_Boolean = false;
-        WSPlayerManager.a(localWSPlayerManager, WSPlayerManager.b(localWSPlayerManager));
-        WSPlayerManager.a(localWSPlayerManager, WSPlayerManager.b(localWSPlayerManager), false);
-        WSPlayerManager.e(localWSPlayerManager);
-        return;
-        WSLog.e("WS_VIDEO_PRE_PLAY", "[WSPlayerManager.java][handleMessage] MSG_PRE_PLAY_TIME_OUT. prePlay timeout, try rePlay");
-        paramMessage = WSPlayerManager.a(localWSPlayerManager, WSPlayerManager.b(localWSPlayerManager));
-        if ((paramMessage != null) && (paramMessage.e()) && (paramMessage.a() == WSPlayerManager.b(localWSPlayerManager).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo))
-        {
-          WSLog.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][handleMessage] MSG_PRE_PLAY_TIME_OUT. startVideoAfterPrepared!");
-          WSPlayerManager.a(localWSPlayerManager).a();
+        if (i != -2) {
           return;
         }
-        WSPlayerManager.b(localWSPlayerManager).jdField_a_of_type_Boolean = false;
-        WSPlayerManager.a(localWSPlayerManager, WSPlayerManager.b(localWSPlayerManager));
-        WSPlayerManager.a(localWSPlayerManager, WSPlayerManager.b(localWSPlayerManager), false);
+        paramMessage = WSPlayerManager.a(localWSPlayerManager);
+        localObject = WSPlayerManager.b(localWSPlayerManager);
+        if ((paramMessage != null) && (paramMessage.b()) && ((((WSPlayerParam)localObject).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate == null) || (!((WSPlayerParam)localObject).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate.a((WSPlayerParam)localObject))) && (!paramMessage.f()))
+        {
+          long l2 = paramMessage.a();
+          long l1 = paramMessage.b();
+          if (((WSPlayerParam)localObject).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate != null) {
+            ((WSPlayerParam)localObject).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate.a((WSPlayerParam)localObject, l2, l1);
+          }
+          if (l2 >= l1 - 300L)
+          {
+            WSPlayerManager.e(localWSPlayerManager, true);
+            i = (int)(l1 - l2);
+            paramMessage = new StringBuilder();
+            paramMessage.append("[WSPlayerManager.java][handleMessage] MSG_FOR_UPDATE_VIDEO_PLAY_POSITION onVideoEndSoon pos:");
+            paramMessage.append(l2);
+            paramMessage.append(", duration:");
+            paramMessage.append(l1);
+            paramMessage.append(", remainDuration:");
+            paramMessage.append(i);
+            paramMessage.append(", mHasCallEndingSoon:");
+            paramMessage.append(WSPlayerManager.g(localWSPlayerManager));
+            WSLog.e("WS_VIDEO_PLAYER", paramMessage.toString());
+            if ((!WSPlayerManager.g(localWSPlayerManager)) && (WSPlayerManager.a(localWSPlayerManager) != null))
+            {
+              WSPlayerManager.f(localWSPlayerManager, true);
+              if ((((WSPlayerParam)localObject).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate != null) && (!WSPlayerManager.h(localWSPlayerManager)))
+              {
+                boolean bool1 = bool2;
+                if (!WSPlayerManager.e(localWSPlayerManager)) {
+                  if (WSPlayerManager.i(localWSPlayerManager)) {
+                    bool1 = bool2;
+                  } else {
+                    bool1 = false;
+                  }
+                }
+                ((WSPlayerParam)localObject).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate.a(WSPlayerManager.b(localWSPlayerManager), i, bool1);
+              }
+            }
+          }
+          else if ((l2 <= 500L) && (l2 >= 0L) && (WSPlayerManager.j(localWSPlayerManager)))
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("[WSPlayerManager.java][handleMessage] MSG_FOR_UPDATE_VIDEO_PLAY_POSITION onVideoReplayOnLoop pos:");
+            ((StringBuilder)localObject).append(l2);
+            WSLog.e("WS_VIDEO_PLAYER", ((StringBuilder)localObject).toString());
+            WSPlayerManager.g(localWSPlayerManager, false);
+            WSPlayerManager.f(localWSPlayerManager, false);
+            WSPlayerManager.e(localWSPlayerManager, false);
+            WSPlayerManager.b(localWSPlayerManager);
+            paramMessage.i();
+            paramMessage.j();
+            if (WSPlayerManager.a(localWSPlayerManager) != null)
+            {
+              paramMessage = WSPlayerManager.a(localWSPlayerManager).iterator();
+              while (paramMessage.hasNext()) {
+                ((WSPlayerStatusListener)paramMessage.next()).a(WSPlayerManager.b(localWSPlayerManager), WSPlayerManager.c(localWSPlayerManager));
+              }
+            }
+          }
+        }
+        WSPlayerManager.a(localWSPlayerManager).sendEmptyMessageDelayed(-2, 100L);
         return;
       }
-    }
-    paramMessage = WSPlayerManager.a(localWSPlayerManager);
-    Object localObject = WSPlayerManager.b(localWSPlayerManager);
-    long l1;
-    boolean bool;
-    if ((paramMessage != null) && (paramMessage.b()) && ((((WSPlayerParam)localObject).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate == null) || (!((WSPlayerParam)localObject).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate.a((WSPlayerParam)localObject))) && (!paramMessage.f()))
-    {
-      l1 = paramMessage.a();
-      long l2 = paramMessage.b();
-      if (((WSPlayerParam)localObject).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate != null) {
-        ((WSPlayerParam)localObject).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate.a((WSPlayerParam)localObject, l1, l2);
-      }
-      if (l1 < l2 - 300L) {
-        break label508;
-      }
-      WSPlayerManager.e(localWSPlayerManager, true);
-      int i = (int)(l2 - l1);
-      WSLog.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][handleMessage] MSG_FOR_UPDATE_VIDEO_PLAY_POSITION onVideoEndSoon pos:" + l1 + ", duration:" + l2 + ", remainDuration:" + i + ", mHasCallEndingSoon:" + WSPlayerManager.g(localWSPlayerManager));
-      if ((!WSPlayerManager.g(localWSPlayerManager)) && (WSPlayerManager.a(localWSPlayerManager) != null))
+      WSLog.e("WS_VIDEO_PRE_PLAY", "[WSPlayerManager.java][handleMessage] MSG_PRE_PLAY_TIME_OUT. prePlay timeout, try rePlay");
+      paramMessage = WSPlayerManager.a(localWSPlayerManager, WSPlayerManager.b(localWSPlayerManager));
+      if ((paramMessage != null) && (paramMessage.e()) && (paramMessage.a() == WSPlayerManager.b(localWSPlayerManager).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo))
       {
-        WSPlayerManager.f(localWSPlayerManager, true);
-        if ((((WSPlayerParam)localObject).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate != null) && (!WSPlayerManager.h(localWSPlayerManager)))
-        {
-          if ((!WSPlayerManager.e(localWSPlayerManager)) && (!WSPlayerManager.i(localWSPlayerManager))) {
-            break label502;
-          }
-          bool = true;
-          ((WSPlayerParam)localObject).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate.a(WSPlayerManager.b(localWSPlayerManager), i, bool);
-        }
+        WSLog.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][handleMessage] MSG_PRE_PLAY_TIME_OUT. startVideoAfterPrepared!");
+        WSPlayerManager.a(localWSPlayerManager).a();
+        return;
       }
-    }
-    for (;;)
-    {
-      WSPlayerManager.a(localWSPlayerManager).sendEmptyMessageDelayed(-2, 100L);
+      WSPlayerManager.b(localWSPlayerManager).jdField_a_of_type_Boolean = false;
+      WSPlayerManager.a(localWSPlayerManager, WSPlayerManager.b(localWSPlayerManager));
+      WSPlayerManager.a(localWSPlayerManager, WSPlayerManager.b(localWSPlayerManager), false);
       return;
-      label502:
-      bool = false;
-      break;
-      label508:
-      if ((l1 <= 500L) && (l1 >= 0L) && (WSPlayerManager.j(localWSPlayerManager)))
-      {
-        WSLog.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][handleMessage] MSG_FOR_UPDATE_VIDEO_PLAY_POSITION onVideoReplayOnLoop pos:" + l1);
-        WSPlayerManager.g(localWSPlayerManager, false);
-        WSPlayerManager.f(localWSPlayerManager, false);
-        WSPlayerManager.e(localWSPlayerManager, false);
-        WSPlayerManager.b(localWSPlayerManager);
-        paramMessage.i();
-        paramMessage.j();
-        if (WSPlayerManager.a(localWSPlayerManager) != null)
-        {
-          paramMessage = WSPlayerManager.a(localWSPlayerManager).iterator();
-          while (paramMessage.hasNext()) {
-            ((WSPlayerStatusListener)paramMessage.next()).a(WSPlayerManager.b(localWSPlayerManager), WSPlayerManager.c(localWSPlayerManager));
-          }
-        }
-      }
     }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[WSPlayerManager.java][handleMessage] MSG_PLAY_BY_URL_FAILED. playerStartByUrl failed, retry again. RetryVideoUrl:");
+    if (WSPlayerManager.b(localWSPlayerManager).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo != null) {
+      paramMessage = WSPlayerManager.b(localWSPlayerManager).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.b;
+    } else {
+      paramMessage = "videoInfo is null.";
+    }
+    ((StringBuilder)localObject).append(paramMessage);
+    WSLog.d("WS_VIDEO_PLAYER", ((StringBuilder)localObject).toString());
+    if (WSPlayerManager.d(localWSPlayerManager) == 1) {
+      return;
+    }
+    WSPlayerManager.b(localWSPlayerManager).jdField_a_of_type_Boolean = false;
+    WSPlayerManager.a(localWSPlayerManager, WSPlayerManager.b(localWSPlayerManager));
+    WSPlayerManager.a(localWSPlayerManager, WSPlayerManager.b(localWSPlayerManager), false);
+    WSPlayerManager.e(localWSPlayerManager);
   }
   
   public boolean sendMessageAtTime(Message paramMessage, long paramLong)
   {
     WSPlayerManager localWSPlayerManager = (WSPlayerManager)this.a.get();
-    if ((localWSPlayerManager == null) || (WSPlayerManager.f(localWSPlayerManager))) {
-      return false;
-    }
-    if ((Looper.myLooper() == Looper.getMainLooper()) && (paramLong <= SystemClock.uptimeMillis()))
+    if ((localWSPlayerManager != null) && (!WSPlayerManager.f(localWSPlayerManager)))
     {
-      if (paramMessage.getCallback() != null) {
-        paramMessage.getCallback().run();
-      }
-      for (;;)
+      if ((Looper.myLooper() == Looper.getMainLooper()) && (paramLong <= SystemClock.uptimeMillis()))
       {
+        if (paramMessage.getCallback() != null) {
+          paramMessage.getCallback().run();
+        } else {
+          handleMessage(paramMessage);
+        }
         return true;
-        handleMessage(paramMessage);
       }
+      if (paramMessage.obj == null) {
+        paramMessage.obj = WSPlayerManager.b(localWSPlayerManager);
+      }
+      return super.sendMessageAtTime(paramMessage, paramLong);
     }
-    if (paramMessage.obj == null) {
-      paramMessage.obj = WSPlayerManager.b(localWSPlayerManager);
-    }
-    return super.sendMessageAtTime(paramMessage, paramLong);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager.PlayerHandler
  * JD-Core Version:    0.7.0.1
  */

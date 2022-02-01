@@ -6,15 +6,10 @@ import mqq.app.MobileQQ;
 
 class GAudioMessageMonitor
 {
-  public static String a;
+  public static String a = "GAudioMsgReceiver";
   GAudioMessageMonitor.GAudioMsgReceiver jdField_a_of_type_ComTencentAvAppGAudioMessageMonitor$GAudioMsgReceiver;
   VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
   boolean jdField_a_of_type_Boolean = false;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "GAudioMsgReceiver";
-  }
   
   public GAudioMessageMonitor(VideoAppInterface paramVideoAppInterface)
   {
@@ -59,7 +54,7 @@ class GAudioMessageMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.app.GAudioMessageMonitor
  * JD-Core Version:    0.7.0.1
  */

@@ -20,12 +20,13 @@ public final class SosoAttribute
     this.mImsi = paramParcel.readString();
     this.mPhoneNum = paramParcel.readString();
     this.mQQNum = paramParcel.readString();
-    if (paramParcel.readByte() != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.roaming = bool;
-      return;
+    boolean bool;
+    if (paramParcel.readByte() != 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.roaming = bool;
   }
   
   public SosoAttribute(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
@@ -53,17 +54,12 @@ public final class SosoAttribute
     paramParcel.writeString(this.mImsi);
     paramParcel.writeString(this.mPhoneNum);
     paramParcel.writeString(this.mQQNum);
-    if (this.roaming) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      return;
-    }
+    paramParcel.writeByte((byte)this.roaming);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soso.location.data.SosoAttribute
  * JD-Core Version:    0.7.0.1
  */

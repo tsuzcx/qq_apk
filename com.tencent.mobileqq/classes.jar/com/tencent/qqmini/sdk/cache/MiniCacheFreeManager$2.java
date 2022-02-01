@@ -17,14 +17,15 @@ final class MiniCacheFreeManager$2
     if (this.val$killSelf) {
       MiniCacheFreeManager.access$500(this.val$miniAppInfo);
     }
-    if (this.val$onPostRun != null) {
-      this.val$onPostRun.run();
+    Runnable localRunnable = this.val$onPostRun;
+    if (localRunnable != null) {
+      localRunnable.run();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.cache.MiniCacheFreeManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -15,10 +15,10 @@ class MediaScanner$1
     try
     {
       LocalMediaInfo localLocalMediaInfo = (LocalMediaInfo)this.val$infoReference.get();
-      MediaScanner.OnMediaScannerListener localOnMediaScannerListener = (MediaScanner.OnMediaScannerListener)this.val$listenerReference.get();
+      localObject = (MediaScanner.OnMediaScannerListener)this.val$listenerReference.get();
       if (localLocalMediaInfo != null)
       {
-        if (localOnMediaScannerListener == null) {
+        if (localObject == null) {
           return;
         }
         MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
@@ -26,22 +26,28 @@ class MediaScanner$1
         String str = localMediaMetadataRetriever.extractMetadata(9);
         localMediaMetadataRetriever.release();
         localLocalMediaInfo.mDuration = Long.parseLong(str);
-        localOnMediaScannerListener.onPhotoListDatasetDurationChanged(this.val$position, localLocalMediaInfo);
+        ((MediaScanner.OnMediaScannerListener)localObject).onPhotoListDatasetDurationChanged(this.val$position, localLocalMediaInfo);
         MediaScanner.access$000(MediaScanner.getInstance(BaseApplication.getContext())).updateMediaScnnerInfoDuration(localLocalMediaInfo.path, localLocalMediaInfo.mDuration);
         return;
       }
+      return;
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MediaScanner", 2, "queryMediaInfoDuration() error=" + localException.getMessage());
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("queryMediaInfoDuration() error=");
+        ((StringBuilder)localObject).append(localException.getMessage());
+        QLog.d("QQAlbum", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.MediaScanner.1
  * JD-Core Version:    0.7.0.1
  */

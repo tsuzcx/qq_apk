@@ -52,7 +52,7 @@ public class GetShareGroupDateListRequest
     return this.jdField_c_of_type_JavaLangString;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqGroupDateVideoList localReqGroupDateVideoList = new qqstory_service.ReqGroupDateVideoList();
     localReqGroupDateVideoList.from.set(this.e);
@@ -69,7 +69,7 @@ public class GetShareGroupDateListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetShareGroupDateListRequest
  * JD-Core Version:    0.7.0.1
  */

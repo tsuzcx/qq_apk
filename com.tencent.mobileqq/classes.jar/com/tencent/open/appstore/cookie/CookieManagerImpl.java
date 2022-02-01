@@ -7,27 +7,31 @@ public class CookieManagerImpl
   
   public void a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_ComTencentSmttSdkCookieManager != null) {
-      this.jdField_a_of_type_ComTencentSmttSdkCookieManager.setCookie(paramString1, paramString2);
+    Object localObject = this.jdField_a_of_type_ComTencentSmttSdkCookieManager;
+    if (localObject != null) {
+      ((com.tencent.smtt.sdk.CookieManager)localObject).setCookie(paramString1, paramString2);
     }
-    if (this.jdField_a_of_type_AndroidWebkitCookieManager != null) {
-      this.jdField_a_of_type_AndroidWebkitCookieManager.setCookie(paramString1, paramString2);
+    localObject = this.jdField_a_of_type_AndroidWebkitCookieManager;
+    if (localObject != null) {
+      ((android.webkit.CookieManager)localObject).setCookie(paramString1, paramString2);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentSmttSdkCookieManager != null) {
-      this.jdField_a_of_type_ComTencentSmttSdkCookieManager.setAcceptCookie(paramBoolean);
+    Object localObject = this.jdField_a_of_type_ComTencentSmttSdkCookieManager;
+    if (localObject != null) {
+      ((com.tencent.smtt.sdk.CookieManager)localObject).setAcceptCookie(paramBoolean);
     }
-    if (this.jdField_a_of_type_AndroidWebkitCookieManager != null) {
-      this.jdField_a_of_type_AndroidWebkitCookieManager.setAcceptCookie(paramBoolean);
+    localObject = this.jdField_a_of_type_AndroidWebkitCookieManager;
+    if (localObject != null) {
+      ((android.webkit.CookieManager)localObject).setAcceptCookie(paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appstore.cookie.CookieManagerImpl
  * JD-Core Version:    0.7.0.1
  */

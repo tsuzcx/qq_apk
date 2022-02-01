@@ -16,19 +16,34 @@ class PreCacheManager$2
   {
     if (paramBoolean)
     {
-      QMLog.d("minisdk-start_PreCacheManager", this.val$logPrefix + "call API_LOGIN  code:" + paramJSONObject.toString());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.val$logPrefix);
+      ((StringBuilder)localObject).append("call API_LOGIN  code:");
+      ((StringBuilder)localObject).append(paramJSONObject.toString());
+      QMLog.d("minisdk-start_PreCacheManager", ((StringBuilder)localObject).toString());
       paramJSONObject = paramJSONObject.optString("code");
-      if (!TextUtils.isEmpty(paramJSONObject)) {
-        PreCacheManager.access$100(this.this$0, this.val$miniAppConfig, this.val$preCacheInfo, this.val$cacheType, this.val$queryParam + "&code=" + paramJSONObject, this.val$listener);
+      if (!TextUtils.isEmpty(paramJSONObject))
+      {
+        localObject = this.this$0;
+        MiniAppInfo localMiniAppInfo = this.val$miniAppConfig;
+        PreCacheInfo localPreCacheInfo = this.val$preCacheInfo;
+        String str = this.val$cacheType;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.val$queryParam);
+        localStringBuilder.append("&code=");
+        localStringBuilder.append(paramJSONObject);
+        PreCacheManager.access$100((PreCacheManager)localObject, localMiniAppInfo, localPreCacheInfo, str, localStringBuilder.toString(), this.val$listener);
       }
-      return;
     }
-    QMLog.e("minisdk-start_PreCacheManager", "call API_LOGIN failed ");
+    else
+    {
+      QMLog.e("minisdk-start_PreCacheManager", "call API_LOGIN failed ");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.manager.PreCacheManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,22 @@
 package com.huawei.hms.framework.network.grs.c;
 
-import com.huawei.hms.framework.common.Logger;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.huawei.hms.framework.network.grs.a.c;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
 
-public class d
+class d
+  implements Callable<f>
 {
-  private static Map<String, d.a> a = new ConcurrentHashMap(16);
+  d(e parame, ExecutorService paramExecutorService, String paramString, c paramc) {}
   
-  public static d.a a(String paramString)
+  public f call()
   {
-    Logger.v("RequestUtil", "map size of get is before:" + a.size());
-    paramString = (d.a)a.get(paramString);
-    Logger.v("RequestUtil", "map size of get is after:" + a.size());
-    return paramString;
-  }
-  
-  public static void a(String paramString, d.a parama)
-  {
-    Logger.v("RequestUtil", "map size of put is before:" + a.size());
-    a.put(paramString, parama);
-    Logger.v("RequestUtil", "map size of put is after:" + a.size());
+    return e.a(this.d, this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.framework.network.grs.c.d
  * JD-Core Version:    0.7.0.1
  */

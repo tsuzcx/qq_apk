@@ -40,7 +40,7 @@ public class DittoAreaView
   implements DittoHost
 {
   private static final Map<Class<? extends DittoAreaView>, DittoIdFuncPolyInf> REFLECT_FUNC_POLY_MAP = new ConcurrentHashMap();
-  public static volatile Map<Class<? extends DittoAreaView>, DittoIdFuncPolyInf> sAptIdFuncPolyMap;
+  protected static volatile Map<Class<? extends DittoAreaView>, DittoIdFuncPolyInf> sAptIdFuncPolyMap;
   protected final Set<DittoArea> exposureReportingAreas = new HashSet();
   private boolean hardwareAccelerationTurned = false;
   protected DittoArea mDittoArea;
@@ -114,9 +114,10 @@ public class DittoAreaView
     if (paramDittoArea == null) {
       return new int[] { 0, 0 };
     }
-    Object localObject = paramDittoArea;
     int i = 0;
     int j = 0;
+    Object localObject = paramDittoArea;
+    int m;
     int k;
     while (localObject != null)
     {
@@ -133,20 +134,17 @@ public class DittoAreaView
         localObject = localDittoArea;
       }
     }
-    if (paramDittoArea.getHost() == null)
-    {
+    if (paramDittoArea.getHost() == null) {
       k = 0;
-      if (paramDittoArea.getHost() != null) {
-        break label139;
-      }
-    }
-    label139:
-    for (int m = 0;; m = paramDittoArea.getHost().getPaddingLeft())
-    {
-      return new int[] { m + j, i + k };
+    } else {
       k = paramDittoArea.getHost().getPaddingTop();
-      break;
     }
+    if (paramDittoArea.getHost() == null) {
+      m = 0;
+    } else {
+      m = paramDittoArea.getHost().getPaddingLeft();
+    }
+    return new int[] { j + m, i + k };
   }
   
   public static ArrayMap<String, Method>[] getMethods(Class paramClass)
@@ -157,48 +155,39 @@ public class DittoAreaView
     Object localObject1 = new ArrayList();
     classMethodList(paramClass, (ArrayList)localObject1);
     paramClass = ((ArrayList)localObject1).iterator();
-    if (paramClass.hasNext())
+    while (paramClass.hasNext())
     {
       localObject1 = (Method)paramClass.next();
       Annotation[] arrayOfAnnotation = ((Method)localObject1).getAnnotations();
       int k = arrayOfAnnotation.length;
       int i = 0;
-      label82:
-      Object localObject2;
-      String[] arrayOfString;
-      int m;
-      int j;
-      String str;
-      if (i < k)
+      while (i < k)
       {
-        localObject2 = arrayOfAnnotation[i];
-        if (!(localObject2 instanceof DittoOnClick)) {
-          break label222;
-        }
-        localObject2 = (DittoOnClick)localObject2;
-        if (((DittoOnClick)localObject2).values().length != 0)
+        Object localObject2 = arrayOfAnnotation[i];
+        String[] arrayOfString;
+        int m;
+        int j;
+        String str;
+        if ((localObject2 instanceof DittoOnClick))
         {
-          arrayOfString = ((DittoOnClick)localObject2).values();
-          m = arrayOfString.length;
-          j = 0;
-          while (j < m)
+          localObject2 = (DittoOnClick)localObject2;
+          if (((DittoOnClick)localObject2).values().length != 0)
           {
-            str = arrayOfString[j];
-            arrayOfArrayMap[0].put(str, localObject1);
-            j += 1;
+            arrayOfString = ((DittoOnClick)localObject2).values();
+            m = arrayOfString.length;
+            j = 0;
+            while (j < m)
+            {
+              str = arrayOfString[j];
+              arrayOfArrayMap[0].put(str, localObject1);
+              j += 1;
+            }
+          }
+          if ((!((DittoOnClick)localObject2).value().equals("0")) && (!arrayOfArrayMap[0].containsKey(((DittoOnClick)localObject2).value()))) {
+            arrayOfArrayMap[0].put(((DittoOnClick)localObject2).value(), localObject1);
           }
         }
-        if ((!((DittoOnClick)localObject2).value().equals("0")) && (!arrayOfArrayMap[0].containsKey(((DittoOnClick)localObject2).value()))) {
-          arrayOfArrayMap[0].put(((DittoOnClick)localObject2).value(), localObject1);
-        }
-      }
-      for (;;)
-      {
-        i += 1;
-        break label82;
-        break;
-        label222:
-        if ((localObject2 instanceof DittoOnLongClick))
+        else if ((localObject2 instanceof DittoOnLongClick))
         {
           localObject2 = (DittoOnLongClick)localObject2;
           if (((DittoOnLongClick)localObject2).values().length != 0)
@@ -217,6 +206,7 @@ public class DittoAreaView
             arrayOfArrayMap[1].put(((DittoOnLongClick)localObject2).value(), localObject1);
           }
         }
+        i += 1;
       }
     }
     return arrayOfArrayMap;
@@ -230,7 +220,8 @@ public class DittoAreaView
     int i = getPaddingLeft();
     int j = getPaddingTop();
     paramMotionEvent.offsetLocation(i * -1, j * -1);
-    if ((this.mDittoArea != null) && (this.mDittoArea.dispatchTouchEvent(paramMotionEvent))) {
+    DittoArea localDittoArea = this.mDittoArea;
+    if ((localDittoArea != null) && (localDittoArea.dispatchTouchEvent(paramMotionEvent))) {
       return true;
     }
     paramMotionEvent.offsetLocation(i, j);
@@ -244,8 +235,9 @@ public class DittoAreaView
       if (paramString.equals(this.mDittoArea.getId())) {
         return this.mDittoArea;
       }
-      if ((this.mDittoArea instanceof DittoAreaGroup)) {
-        return ((DittoAreaGroup)this.mDittoArea).findChildById(paramString);
+      DittoArea localDittoArea = this.mDittoArea;
+      if ((localDittoArea instanceof DittoAreaGroup)) {
+        return ((DittoAreaGroup)localDittoArea).findChildById(paramString);
       }
     }
     return null;
@@ -253,8 +245,9 @@ public class DittoAreaView
   
   public DittoArea findAreaByPosition(float paramFloat1, float paramFloat2)
   {
-    if (this.mDittoArea != null) {
-      return this.mDittoArea.findTarget(paramFloat1, paramFloat2);
+    DittoArea localDittoArea = this.mDittoArea;
+    if (localDittoArea != null) {
+      return localDittoArea.findTarget(paramFloat1, paramFloat2);
     }
     return null;
   }
@@ -282,25 +275,28 @@ public class DittoAreaView
   
   public void invalidate()
   {
-    if (this.mHost != null) {
-      this.mHost.invalidate();
+    DittoHost localDittoHost = this.mHost;
+    if (localDittoHost != null) {
+      localDittoHost.invalidate();
     }
     super.invalidate();
   }
   
   public void invalidate(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.mHost != null) {
-      this.mHost.invalidate(paramInt1, paramInt2, paramInt3, paramInt4);
+    DittoHost localDittoHost = this.mHost;
+    if (localDittoHost != null) {
+      localDittoHost.invalidate(paramInt1, paramInt2, paramInt3, paramInt4);
     }
     super.invalidate(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void invokeAreaClick(String paramString, MotionEvent paramMotionEvent)
   {
-    if ((this.mDittoArea instanceof DittoAreaGroup))
+    DittoArea localDittoArea = this.mDittoArea;
+    if ((localDittoArea instanceof DittoAreaGroup))
     {
-      paramString = ((DittoAreaGroup)this.mDittoArea).findChildById(paramString);
+      paramString = ((DittoAreaGroup)localDittoArea).findChildById(paramString);
       if (paramString != null) {
         paramString.performClick(paramMotionEvent);
       }
@@ -309,24 +305,26 @@ public class DittoAreaView
   
   public void onContentDescriptionChanged(DittoArea paramDittoArea)
   {
-    if (this.mHost != null) {
-      this.mHost.onContentDescriptionChanged(paramDittoArea);
+    DittoHost localDittoHost = this.mHost;
+    if (localDittoHost != null) {
+      localDittoHost.onContentDescriptionChanged(paramDittoArea);
     }
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int i = paramCanvas.getSaveCount();
     paramCanvas.save();
     paramCanvas.translate(getPaddingLeft(), getPaddingTop());
-    if (this.mDittoArea != null) {
-      this.mDittoArea.draw(paramCanvas);
+    DittoArea localDittoArea = this.mDittoArea;
+    if (localDittoArea != null) {
+      localDittoArea.draw(paramCanvas);
     }
     paramCanvas.restoreToCount(i);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     try
     {
@@ -338,8 +336,8 @@ public class DittoAreaView
         int m = getPaddingBottom();
         this.mDittoArea.layout(i, j, paramInt3 - paramInt1 - k, paramInt4 - paramInt2 - m);
         super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -347,7 +345,7 @@ public class DittoAreaView
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     for (;;)
     {
@@ -362,9 +360,9 @@ public class DittoAreaView
           paramInt1 = DittoAreaGroup.getChildMeasureSpec(paramInt1, k + m, this.mDittoArea.getLayoutAttr().width);
           paramInt2 = DittoAreaGroup.getChildMeasureSpec(paramInt2, i + j, this.mDittoArea.getLayoutAttr().height);
           this.mDittoArea.measure(paramInt1, paramInt2);
-          paramInt2 = m + (k + this.mDittoArea.getMeasuredWidth());
-          paramInt1 = this.mDittoArea.getMeasuredHeight() + i + j;
-          setMeasuredDimension(Math.max(paramInt2, getSuggestedMinimumWidth()), Math.max(paramInt1, getSuggestedMinimumHeight()));
+          paramInt1 = this.mDittoArea.getMeasuredWidth() + k + m;
+          paramInt2 = this.mDittoArea.getMeasuredHeight() + i + j;
+          setMeasuredDimension(Math.max(paramInt1, getSuggestedMinimumWidth()), Math.max(paramInt2, getSuggestedMinimumHeight()));
           return;
         }
       }
@@ -381,24 +379,27 @@ public class DittoAreaView
   
   public void postInvalidate()
   {
-    if (this.mHost != null) {
-      this.mHost.postInvalidate();
+    DittoHost localDittoHost = this.mHost;
+    if (localDittoHost != null) {
+      localDittoHost.postInvalidate();
     }
     super.postInvalidate();
   }
   
   public void postInvalidateDelayed(long paramLong)
   {
-    if (this.mHost != null) {
-      this.mHost.postInvalidateDelayed(paramLong);
+    DittoHost localDittoHost = this.mHost;
+    if (localDittoHost != null) {
+      localDittoHost.postInvalidateDelayed(paramLong);
     }
     super.postInvalidateDelayed(paramLong);
   }
   
   public void removeAccessibilityArea(List<DittoArea> paramList)
   {
-    if (this.mHost != null) {
-      this.mHost.removeAccessibilityArea(paramList);
+    DittoHost localDittoHost = this.mHost;
+    if (localDittoHost != null) {
+      localDittoHost.removeAccessibilityArea(paramList);
     }
   }
   
@@ -406,8 +407,9 @@ public class DittoAreaView
   
   public void requestLayout()
   {
-    if (this.mHost != null) {
-      this.mHost.requestLayout();
+    DittoHost localDittoHost = this.mHost;
+    if (localDittoHost != null) {
+      localDittoHost.requestLayout();
     }
     super.requestLayout();
   }
@@ -421,9 +423,11 @@ public class DittoAreaView
   {
     this.needKVCAreas.clear();
     Class localClass = getClass();
-    DittoIdFuncPolyInf localDittoIdFuncPolyInf = null;
+    DittoIdFuncPolyInf localDittoIdFuncPolyInf;
     if (sAptIdFuncPolyMap != null) {
       localDittoIdFuncPolyInf = (DittoIdFuncPolyInf)sAptIdFuncPolyMap.get(localClass);
+    } else {
+      localDittoIdFuncPolyInf = null;
     }
     Object localObject = localDittoIdFuncPolyInf;
     if (localDittoIdFuncPolyInf == null)
@@ -454,8 +458,9 @@ public class DittoAreaView
     {
       setLayerType(1, null);
       this.hardwareAccelerationTurned = true;
-      if (this.mHost != null) {
-        this.mHost.turnOffHardwareAcceleration();
+      DittoHost localDittoHost = this.mHost;
+      if (localDittoHost != null) {
+        localDittoHost.turnOffHardwareAcceleration();
       }
     }
   }
@@ -465,50 +470,40 @@ public class DittoAreaView
     this.viewModel = paramObject;
     Iterator localIterator1 = this.needKVCAreas.iterator();
     int i = 0;
-    if (localIterator1.hasNext())
+    while (localIterator1.hasNext())
     {
       DittoAreaView.KVCNode localKVCNode = (DittoAreaView.KVCNode)localIterator1.next();
-      if (localKVCNode.area == null) {
-        break label172;
-      }
-      LayoutAttrSet localLayoutAttrSet = localKVCNode.area.getLayoutAttr();
-      Iterator localIterator2 = localKVCNode.kvcSet.keySet().iterator();
-      label144:
-      while (localIterator2.hasNext())
+      if (localKVCNode.area != null)
       {
-        String str = (String)localIterator2.next();
-        Object localObject = (DittoValue)localKVCNode.kvcSet.get(str);
-        if (localObject == null) {
-          break label169;
+        LayoutAttrSet localLayoutAttrSet = localKVCNode.area.getLayoutAttr();
+        Iterator localIterator2 = localKVCNode.kvcSet.keySet().iterator();
+        while (localIterator2.hasNext())
+        {
+          String str = (String)localIterator2.next();
+          Object localObject = (DittoValue)localKVCNode.kvcSet.get(str);
+          if (localObject != null)
+          {
+            localObject = ((DittoValue)localObject).getValue(paramObject);
+            if (localObject != null)
+            {
+              localLayoutAttrSet.addLayoutAttr(str, localObject);
+              if (i == 0) {
+                i = 1;
+              }
+            }
+          }
         }
-        localObject = ((DittoValue)localObject).getValue(paramObject);
-        if (localObject == null) {
-          break label169;
-        }
-        localLayoutAttrSet.addLayoutAttr(str, localObject);
-        if (i != 0) {
-          break label169;
-        }
-        i = 1;
+        localKVCNode.area.setLayoutAttr(localLayoutAttrSet);
       }
-      localKVCNode.area.setLayoutAttr(localLayoutAttrSet);
     }
-    label169:
-    label172:
-    for (;;)
-    {
-      break;
-      if (i != 0) {
-        requestLayout();
-      }
-      return;
-      break label144;
+    if (i != 0) {
+      requestLayout();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ditto.DittoAreaView
  * JD-Core Version:    0.7.0.1
  */

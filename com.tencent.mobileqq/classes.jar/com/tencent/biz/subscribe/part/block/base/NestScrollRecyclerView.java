@@ -60,20 +60,30 @@ public class NestScrollRecyclerView
   
   private void a(RecyclerView paramRecyclerView)
   {
-    if (((paramRecyclerView instanceof NestScrollRecyclerView)) && ((getAdapter() instanceof PullLoadMoreAdapter)) && (((PullLoadMoreAdapter)getAdapter()).b()) && (((NestScrollRecyclerView)paramRecyclerView).a() == null)) {
-      ((NestScrollRecyclerView)paramRecyclerView).a(((PullLoadMoreAdapter)getAdapter()).a());
+    if (((paramRecyclerView instanceof NestScrollRecyclerView)) && ((getAdapter() instanceof PullLoadMoreAdapter)) && (((PullLoadMoreAdapter)getAdapter()).b()))
+    {
+      paramRecyclerView = (NestScrollRecyclerView)paramRecyclerView;
+      if (paramRecyclerView.a() == null) {
+        paramRecyclerView.a(((PullLoadMoreAdapter)getAdapter()).a());
+      }
     }
   }
   
   private void a(MotionEvent paramMotionEvent, View paramView)
   {
-    Rect localRect1 = new Rect();
-    Rect localRect2 = new Rect();
-    paramView.getGlobalVisibleRect(localRect2);
-    getGlobalVisibleRect(localRect1);
-    float f1 = localRect1.left - localRect2.left;
-    float f2 = localRect1.top - localRect2.top;
-    QLog.d(jdField_a_of_type_JavaLangString, 4, "modifyEventPos offsetX:" + f1 + " offsetY:" + f2);
+    Object localObject = new Rect();
+    Rect localRect = new Rect();
+    paramView.getGlobalVisibleRect(localRect);
+    getGlobalVisibleRect((Rect)localObject);
+    float f1 = ((Rect)localObject).left - localRect.left;
+    float f2 = ((Rect)localObject).top - localRect.top;
+    paramView = jdField_a_of_type_JavaLangString;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("modifyEventPos offsetX:");
+    ((StringBuilder)localObject).append(f1);
+    ((StringBuilder)localObject).append(" offsetY:");
+    ((StringBuilder)localObject).append(f2);
+    QLog.d(paramView, 4, ((StringBuilder)localObject).toString());
     paramMotionEvent.offsetLocation(f1, f2);
   }
   
@@ -96,19 +106,29 @@ public class NestScrollRecyclerView
   
   private boolean a(RecyclerView paramRecyclerView)
   {
-    if (((paramRecyclerView instanceof NestScrollRecyclerView)) && (((NestScrollRecyclerView)paramRecyclerView).a() != null)) {
-      return ((NestScrollRecyclerView)paramRecyclerView).a().a(paramRecyclerView);
+    if ((paramRecyclerView instanceof NestScrollRecyclerView))
+    {
+      localObject = (NestScrollRecyclerView)paramRecyclerView;
+      if (((NestScrollRecyclerView)localObject).a() != null) {
+        return ((NestScrollRecyclerView)localObject).a().a(paramRecyclerView);
+      }
     }
-    if (this.jdField_b_of_type_AndroidViewView == null)
+    paramRecyclerView = this.jdField_b_of_type_AndroidViewView;
+    boolean bool = false;
+    if (paramRecyclerView == null)
     {
       QLog.d(jdField_a_of_type_JavaLangString, 1, "isNestViewNotReachTop mNestTargetViewWrapper is null");
       return false;
     }
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "isNestViewNotReachTop mNestTargetViewWrapper.getTop()" + this.jdField_b_of_type_AndroidViewView.getTop());
-    if (this.jdField_b_of_type_AndroidViewView.getTop() > 0) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    paramRecyclerView = jdField_a_of_type_JavaLangString;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("isNestViewNotReachTop mNestTargetViewWrapper.getTop()");
+    ((StringBuilder)localObject).append(this.jdField_b_of_type_AndroidViewView.getTop());
+    QLog.d(paramRecyclerView, 1, ((StringBuilder)localObject).toString());
+    if (this.jdField_b_of_type_AndroidViewView.getTop() > 0) {
+      bool = true;
     }
+    return bool;
   }
   
   private boolean a(MotionEvent paramMotionEvent)
@@ -134,17 +154,27 @@ public class NestScrollRecyclerView
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseNestScrollRecyclerView$TransDispatchDelegate != null) && (this.jdField_a_of_type_AndroidViewView != null) && (!a((RecyclerView)this.jdField_a_of_type_AndroidViewView)) && (ViewUtils.a(this.jdField_a_of_type_AndroidViewView, paramMotionEvent.getRawX(), paramMotionEvent.getRawY())) && (this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseNestScrollRecyclerView$TransDispatchDelegate.a(paramMotionEvent, (RecyclerView)this.jdField_a_of_type_AndroidViewView)))
+    if (this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseNestScrollRecyclerView$TransDispatchDelegate != null)
     {
-      a(paramMotionEvent, this.jdField_a_of_type_AndroidViewView);
-      return this.jdField_a_of_type_AndroidViewView.dispatchTouchEvent(paramMotionEvent);
+      View localView = this.jdField_a_of_type_AndroidViewView;
+      if ((localView != null) && (!a((RecyclerView)localView)) && (ViewUtils.a(this.jdField_a_of_type_AndroidViewView, paramMotionEvent.getRawX(), paramMotionEvent.getRawY())) && (this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseNestScrollRecyclerView$TransDispatchDelegate.a(paramMotionEvent, (RecyclerView)this.jdField_a_of_type_AndroidViewView)))
+      {
+        a(paramMotionEvent, this.jdField_a_of_type_AndroidViewView);
+        return this.jdField_a_of_type_AndroidViewView.dispatchTouchEvent(paramMotionEvent);
+      }
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   public boolean fling(int paramInt1, int paramInt2)
   {
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "velocityX" + paramInt1 + "   velocityY:" + paramInt2);
+    String str = jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("velocityX");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("   velocityY:");
+    localStringBuilder.append(paramInt2);
+    QLog.d(str, 1, localStringBuilder.toString());
     return super.fling(paramInt1, paramInt2);
   }
   
@@ -155,41 +185,59 @@ public class NestScrollRecyclerView
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    QLog.d(jdField_a_of_type_JavaLangString, 4, "onInterceptTouchEvent hashCode" + hashCode());
+    String str = jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onInterceptTouchEvent hashCode");
+    localStringBuilder.append(hashCode());
+    QLog.d(str, 4, localStringBuilder.toString());
     int i = paramMotionEvent.getAction();
     int j = paramMotionEvent.getActionIndex();
-    switch (i)
+    if (i != 0)
     {
-    case 1: 
-    default: 
-      return super.onInterceptTouchEvent(paramMotionEvent);
-    case 0: 
+      if (i != 2) {
+        return super.onInterceptTouchEvent(paramMotionEvent);
+      }
+      str = jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onInterceptTouchEvent:  X:");
+      localStringBuilder.append(paramMotionEvent.getX());
+      localStringBuilder.append(" Y:");
+      localStringBuilder.append(paramMotionEvent.getY());
+      QLog.d(str, 4, localStringBuilder.toString());
+      j = (int)(paramMotionEvent.getX() + 0.5F);
+      i = (int)(paramMotionEvent.getY() + 0.5F);
+      j -= this.jdField_a_of_type_Int;
+      i = (int)((i - this.jdField_b_of_type_Int) * 0.6F);
+      str = jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ACTION_MOVE dx:");
+      localStringBuilder.append(j);
+      localStringBuilder.append("    dy:");
+      localStringBuilder.append(i);
+      QLog.d(str, 1, localStringBuilder.toString());
+      if ((Math.abs(j) > this.d) && (Math.abs(j) >= Math.abs(i)))
+      {
+        QLog.d(jdField_a_of_type_JavaLangString, 4, "move axis x");
+        return false;
+      }
+      if ((this.jdField_a_of_type_AndroidViewView instanceof NestScrollRecyclerView))
+      {
+        QLog.d(jdField_a_of_type_JavaLangString, 4, "NestScrollRecyclerView");
+        return false;
+      }
+    }
+    else
+    {
       this.jdField_a_of_type_Int = ((int)(paramMotionEvent.getX() + 0.5F));
       this.jdField_b_of_type_Int = ((int)(paramMotionEvent.getY() + 0.5F));
       this.c = MotionEventCompat.findPointerIndex(paramMotionEvent, j);
       this.jdField_a_of_type_AndroidViewView = null;
       this.jdField_b_of_type_AndroidViewView = null;
     }
-    do
-    {
-      return super.onInterceptTouchEvent(paramMotionEvent);
-      QLog.d(jdField_a_of_type_JavaLangString, 4, "onInterceptTouchEvent:  X:" + paramMotionEvent.getX() + " Y:" + paramMotionEvent.getY());
-      j = (int)(paramMotionEvent.getX() + 0.5F);
-      i = (int)(paramMotionEvent.getY() + 0.5F);
-      j -= this.jdField_a_of_type_Int;
-      i = (int)((i - this.jdField_b_of_type_Int) * 0.6F);
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "ACTION_MOVE dx:" + j + "    dy:" + i);
-      if ((Math.abs(j) > this.d) && (Math.abs(j) >= Math.abs(i)))
-      {
-        QLog.d(jdField_a_of_type_JavaLangString, 4, "move axis x");
-        return false;
-      }
-    } while (!(this.jdField_a_of_type_AndroidViewView instanceof NestScrollRecyclerView));
-    QLog.d(jdField_a_of_type_JavaLangString, 4, "NestScrollRecyclerView");
-    return false;
+    return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     if (this.jdField_a_of_type_Boolean)
@@ -214,14 +262,20 @@ public class NestScrollRecyclerView
   
   public boolean onNestedPreFling(View paramView, float paramFloat1, float paramFloat2)
   {
-    if (((paramView instanceof NestScrollRecyclerView)) && (a((int)paramFloat2, (NestScrollRecyclerView)paramView))) {
-      fling((int)paramFloat1, (int)paramFloat2);
-    }
-    for (boolean bool = true;; bool = false)
+    if ((paramView instanceof NestScrollRecyclerView))
     {
-      Log.d(jdField_a_of_type_JavaLangString, String.format("----onNestedPreFling---------------- ret:%s, velocityY:%s", new Object[] { Boolean.valueOf(bool), Float.valueOf(paramFloat2) }));
-      return bool;
+      int i = (int)paramFloat2;
+      if (a(i, (NestScrollRecyclerView)paramView))
+      {
+        fling((int)paramFloat1, i);
+        bool = true;
+        break label42;
+      }
     }
+    boolean bool = false;
+    label42:
+    Log.d(jdField_a_of_type_JavaLangString, String.format("----onNestedPreFling---------------- ret:%s, velocityY:%s", new Object[] { Boolean.valueOf(bool), Float.valueOf(paramFloat2) }));
+    return bool;
   }
   
   public void onNestedPreScroll(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt)
@@ -230,14 +284,30 @@ public class NestScrollRecyclerView
     if (((paramView instanceof RecyclerView)) && (a(paramInt2, (RecyclerView)paramView)))
     {
       scrollBy(0, paramInt2);
-      Log.d(jdField_a_of_type_JavaLangString, "scrollBy" + paramInt2);
+      paramView = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("scrollBy");
+      localStringBuilder.append(paramInt2);
+      Log.d(paramView, localStringBuilder.toString());
       paramArrayOfInt[1] = paramInt2;
     }
   }
   
   public void onNestedScroll(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    Log.d(jdField_a_of_type_JavaLangString, "onNestedScroll: targetView:" + paramView.hashCode() + " dxConsumed:" + paramInt1 + "   dyConsumed:" + paramInt2 + "   dxUnconsumed:" + paramInt3 + "   dyUnconsumed:" + paramInt4);
+    String str = jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onNestedScroll: targetView:");
+    localStringBuilder.append(paramView.hashCode());
+    localStringBuilder.append(" dxConsumed:");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("   dyConsumed:");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("   dxUnconsumed:");
+    localStringBuilder.append(paramInt3);
+    localStringBuilder.append("   dyUnconsumed:");
+    localStringBuilder.append(paramInt4);
+    Log.d(str, localStringBuilder.toString());
   }
   
   @SuppressLint({"NewApi"})
@@ -297,7 +367,7 @@ public class NestScrollRecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.part.block.base.NestScrollRecyclerView
  * JD-Core Version:    0.7.0.1
  */

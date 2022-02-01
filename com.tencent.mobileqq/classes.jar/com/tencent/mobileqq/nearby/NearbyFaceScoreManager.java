@@ -16,7 +16,7 @@ import tencent.im.oidb.oidb_0x8da.oidb_0x8da.ReqBody;
 import tencent.im.oidb.oidb_0x8da.oidb_0x8da.UserInfo;
 
 public class NearbyFaceScoreManager
-  implements Manager
+  implements INearbyFaceScoreManager, Manager
 {
   AppInterface a;
   
@@ -28,13 +28,17 @@ public class NearbyFaceScoreManager
   public void a(long paramLong, FaceScoreCallBack paramFaceScoreCallBack)
   {
     oidb_0x8da.ReqBody localReqBody = new oidb_0x8da.ReqBody();
-    oidb_0x8da.UserInfo localUserInfo = new oidb_0x8da.UserInfo();
-    localUserInfo.uint64_uin.set(paramLong);
+    Object localObject = new oidb_0x8da.UserInfo();
+    ((oidb_0x8da.UserInfo)localObject).uint64_uin.set(paramLong);
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(localUserInfo);
+    localArrayList.add(localObject);
     localReqBody.rpt_msg_user_info.set(localArrayList);
-    if (QLog.isColorLevel()) {
-      QLog.e("Q..troop.faceScore", 2, "getTinyIdByUin, uin=" + paramLong);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getTinyIdByUin, uin=");
+      ((StringBuilder)localObject).append(paramLong);
+      QLog.e("Q..troop.faceScore", 2, ((StringBuilder)localObject).toString());
     }
     ProtoUtils.a(this.a, new NearbyFaceScoreManager.3(this, paramFaceScoreCallBack, paramLong), localReqBody.toByteArray(), "OidbSvc.0x8da_1", 2266, 0, null, 0L);
   }
@@ -43,7 +47,7 @@ public class NearbyFaceScoreManager
   {
     cmd0x938.ReqBody localReqBody = new cmd0x938.ReqBody();
     cmd0x938.CommParamReq localCommParamReq = new cmd0x938.CommParamReq();
-    localCommParamReq.bytes_version.set(ByteStringMicro.copyFromUtf8("8.5.5"));
+    localCommParamReq.bytes_version.set(ByteStringMicro.copyFromUtf8("8.7.0"));
     localCommParamReq.uint32_platform.set(1);
     localReqBody.msg_comm_param.set(localCommParamReq);
     if (QLog.isColorLevel()) {
@@ -56,7 +60,7 @@ public class NearbyFaceScoreManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyFaceScoreManager
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class RespGetFavoriteList
   extends JceStruct
@@ -59,20 +60,23 @@ public final class RespGetFavoriteList
   {
     paramJceOutputStream.write(this.stHeader, 0);
     paramJceOutputStream.write(this.RespTime, 1);
-    if (this.vFavoriteInfos != null) {
-      paramJceOutputStream.write(this.vFavoriteInfos, 2);
+    Object localObject = this.vFavoriteInfos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
-    if (this.stUserData != null) {
-      paramJceOutputStream.write(this.stUserData, 3);
+    localObject = this.stUserData;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.vNotice != null) {
-      paramJceOutputStream.write(this.vNotice, 4);
+    localObject = this.vNotice;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.RespGetFavoriteList
  * JD-Core Version:    0.7.0.1
  */

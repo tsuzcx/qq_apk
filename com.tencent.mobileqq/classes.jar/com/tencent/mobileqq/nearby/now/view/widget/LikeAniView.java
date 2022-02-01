@@ -14,7 +14,9 @@ import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import com.tencent.av.utils.UITools;
+import com.tencent.av.utils.api.IUIToolsApi;
+import com.tencent.mobileqq.nearby.now.IResourceUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.util.Random;
 
 public class LikeAniView
@@ -45,12 +47,12 @@ public class LikeAniView
   
   private void a()
   {
-    this.jdField_a_of_type_Int = ((int)UITools.a(getContext(), 90.0F));
-    this.jdField_b_of_type_Int = ((int)UITools.a(getContext(), 90.0F));
+    this.jdField_a_of_type_Int = ((int)((IUIToolsApi)QRoute.api(IUIToolsApi.class)).dp2px(getContext(), 90.0F));
+    this.jdField_b_of_type_Int = ((int)((IUIToolsApi)QRoute.api(IUIToolsApi.class)).dp2px(getContext(), 90.0F));
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
     addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841515);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(((IResourceUtil)QRoute.api(IResourceUtil.class)).getNearbyNowliveShortvideoLike());
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
   }
   
@@ -108,7 +110,7 @@ public class LikeAniView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.widget.LikeAniView
  * JD-Core Version:    0.7.0.1
  */

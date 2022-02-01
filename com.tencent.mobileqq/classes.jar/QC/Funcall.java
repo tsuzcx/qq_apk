@@ -38,14 +38,15 @@ public final class Funcall
   {
     paramJceOutputStream.write(this.funcallId, 0);
     paramJceOutputStream.write(this.ringId, 1);
-    if (this.rptUins != null) {
-      paramJceOutputStream.write(this.rptUins, 2);
+    ArrayList localArrayList = this.rptUins;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.Funcall
  * JD-Core Version:    0.7.0.1
  */

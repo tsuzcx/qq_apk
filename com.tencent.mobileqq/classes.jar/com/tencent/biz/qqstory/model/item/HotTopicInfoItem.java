@@ -24,19 +24,20 @@ public class HotTopicInfoItem
   public HotTopicInfoItem(long paramLong, qqstory_service.RspGetHotTopicInfo paramRspGetHotTopicInfo)
   {
     this.mTopicId = paramLong;
-    if (paramRspGetHotTopicInfo.result.error_code.get() == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.mIsValid = bool;
-      this.mBackgroundUrl = paramRspGetHotTopicInfo.pic_url.get().toStringUtf8();
-      this.mSubjectName = paramRspGetHotTopicInfo.subject.get().toStringUtf8();
-      this.mJoinCount = paramRspGetHotTopicInfo.join_count.get();
-      this.mJoinDesc = paramRspGetHotTopicInfo.guide_word.get().toStringUtf8();
-      this.mMaskColor = paramRspGetHotTopicInfo.bkg_color.get();
-      this.mLabel = paramRspGetHotTopicInfo.topic_label.get().toStringUtf8();
-      this.mCoverUrl = paramRspGetHotTopicInfo.cover_url.get().toStringUtf8();
-      return;
+    boolean bool;
+    if (paramRspGetHotTopicInfo.result.error_code.get() == 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.mIsValid = bool;
+    this.mBackgroundUrl = paramRspGetHotTopicInfo.pic_url.get().toStringUtf8();
+    this.mSubjectName = paramRspGetHotTopicInfo.subject.get().toStringUtf8();
+    this.mJoinCount = paramRspGetHotTopicInfo.join_count.get();
+    this.mJoinDesc = paramRspGetHotTopicInfo.guide_word.get().toStringUtf8();
+    this.mMaskColor = paramRspGetHotTopicInfo.bkg_color.get();
+    this.mLabel = paramRspGetHotTopicInfo.topic_label.get().toStringUtf8();
+    this.mCoverUrl = paramRspGetHotTopicInfo.cover_url.get().toStringUtf8();
   }
   
   public HotTopicInfoItem(CardItem.ActivityCardInfo paramActivityCardInfo)
@@ -54,12 +55,29 @@ public class HotTopicInfoItem
   
   public String toString()
   {
-    return "HotTopicInfoItem{mIsValid=" + this.mIsValid + ", mJoinCount=" + this.mJoinCount + ", mBackgroundUrl='" + this.mBackgroundUrl + '\'' + ", mSubjectName='" + this.mSubjectName + '\'' + ", mJoinDesc='" + this.mJoinDesc + '\'' + ", mMaskColor=" + this.mMaskColor + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("HotTopicInfoItem{mIsValid=");
+    localStringBuilder.append(this.mIsValid);
+    localStringBuilder.append(", mJoinCount=");
+    localStringBuilder.append(this.mJoinCount);
+    localStringBuilder.append(", mBackgroundUrl='");
+    localStringBuilder.append(this.mBackgroundUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mSubjectName='");
+    localStringBuilder.append(this.mSubjectName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mJoinDesc='");
+    localStringBuilder.append(this.mJoinDesc);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mMaskColor=");
+    localStringBuilder.append(this.mMaskColor);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.item.HotTopicInfoItem
  * JD-Core Version:    0.7.0.1
  */

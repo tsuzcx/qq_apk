@@ -23,25 +23,30 @@ public class TabJumpHelper$WebActivityPlugin
   {
     int i = paramIntent.getIntExtra("uintype", -1);
     paramIntent = paramIntent.getStringExtra("url");
-    Intent localIntent = new Intent(paramFrameFragment.getActivity(), QQBrowserActivity.class);
+    Intent localIntent = new Intent(paramFrameFragment.a(), QQBrowserActivity.class);
+    Object localObject;
     if (i != -1)
     {
       localIntent.putExtra("uintype", i);
       if ((i == 1030) && (((QQAppInterface)paramFrameFragment.a).isCreateManager(QQManagerFactory.CAMPUS_NOTICE_MANAGER)))
       {
-        PushReportController.PushReportItem localPushReportItem = new PushReportController.PushReportItem();
-        localPushReportItem.e = "0X8009241";
-        localPushReportItem.d = "点击业务Push";
-        PushReportController.a(paramIntent, localPushReportItem);
-        PushReportController.a((QQAppInterface)paramFrameFragment.a, localPushReportItem);
+        localObject = new PushReportController.PushReportItem();
+        ((PushReportController.PushReportItem)localObject).e = "0X8009241";
+        ((PushReportController.PushReportItem)localObject).d = "点击业务Push";
+        PushReportController.a(paramIntent, (PushReportController.PushReportItem)localObject);
+        PushReportController.a((QQAppInterface)paramFrameFragment.a, (PushReportController.PushReportItem)localObject);
         ((CampusNoticeManager)paramFrameFragment.a.getManager(QQManagerFactory.CAMPUS_NOTICE_MANAGER)).a(null);
         if (QLog.isColorLevel()) {
           QLog.d("CampusNoticeManager", 2, "remove campus notice");
         }
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("CampusNoticeManager", 1, "doOnNewIntent : url" + paramIntent);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("doOnNewIntent : url");
+      ((StringBuilder)localObject).append(paramIntent);
+      QLog.d("CampusNoticeManager", 1, ((StringBuilder)localObject).toString());
     }
     localIntent.putExtra("url", paramIntent);
     paramFrameFragment.startActivity(localIntent);
@@ -49,7 +54,7 @@ public class TabJumpHelper$WebActivityPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.framejumpentry.TabJumpHelper.WebActivityPlugin
  * JD-Core Version:    0.7.0.1
  */

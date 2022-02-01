@@ -16,36 +16,87 @@ public class PoiCache
   {
     if (QLog.isColorLevel())
     {
-      if ((paramPoiItem != null) && (paramPoiItem.jdField_a_of_type_JavaUtilList != null) && (paramPoiItem.jdField_a_of_type_JavaUtilList.size() != 0)) {
-        break label98;
+      if ((paramPoiItem != null) && (paramPoiItem.jdField_a_of_type_JavaUtilList != null) && (paramPoiItem.jdField_a_of_type_JavaUtilList.size() != 0))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[status][poiCache][");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append("] from: ");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(" result: ");
+        ((StringBuilder)localObject).append(paramPoiItem.jdField_a_of_type_JavaUtilList);
+        ((StringBuilder)localObject).append(" size: ");
+        ((StringBuilder)localObject).append(paramPoiItem.jdField_a_of_type_JavaUtilList.size());
+        QLog.d("PoiCache", 2, ((StringBuilder)localObject).toString());
+        localObject = (Poi)paramPoiItem.jdField_a_of_type_JavaUtilList.get(0);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[status][poiCache][");
+        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append("] from: ");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" first poi: ");
+        localStringBuilder.append(((Poi)localObject).title);
+        localStringBuilder.append("-");
+        localStringBuilder.append(((Poi)localObject).category);
+        localStringBuilder.append("-");
+        localStringBuilder.append(((Poi)localObject)._distance);
+        QLog.d("PoiCache", 2, localStringBuilder.toString());
+        if (paramPoiItem.jdField_a_of_type_JavaUtilList.size() >= 2)
+        {
+          localObject = (Poi)paramPoiItem.jdField_a_of_type_JavaUtilList.get(1);
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[status][poiCache][");
+          localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append("] from: ");
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(" second poi: ");
+          localStringBuilder.append(((Poi)localObject).title);
+          localStringBuilder.append("-");
+          localStringBuilder.append(((Poi)localObject).category);
+          localStringBuilder.append("-");
+          localStringBuilder.append(((Poi)localObject)._distance);
+          QLog.d("PoiCache", 2, localStringBuilder.toString());
+        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[status][poiCache][");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append("] from: ");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(" result: ");
+        ((StringBuilder)localObject).append(paramPoiItem.jdField_a_of_type_JavaUtilList);
+        ((StringBuilder)localObject).append(" adInfoCity: ");
+        ((StringBuilder)localObject).append(paramPoiItem.jdField_a_of_type_ComTencentLbssearchHttpresponseAdInfo.city);
+        ((StringBuilder)localObject).append(" adInfoDistrict: ");
+        ((StringBuilder)localObject).append(paramPoiItem.jdField_a_of_type_ComTencentLbssearchHttpresponseAdInfo.district);
+        QLog.d("PoiCache", 2, ((StringBuilder)localObject).toString());
+        return;
       }
-      localObject = new StringBuilder().append("[status][poiCache][").append(this.jdField_a_of_type_JavaLangString).append("] from: ").append(paramString).append(" result: ");
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[status][poiCache][");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append("] from: ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" result: ");
       if ((paramPoiItem != null) && (paramPoiItem.jdField_a_of_type_JavaUtilList != null)) {
-        break label92;
+        paramString = "0";
+      } else {
+        paramString = "null";
       }
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("PoiCache", 2, ((StringBuilder)localObject).toString());
     }
-    label92:
-    for (paramString = "null";; paramString = "0")
-    {
-      QLog.d("PoiCache", 2, paramString);
-      return;
-    }
-    label98:
-    QLog.d("PoiCache", 2, "[status][poiCache][" + this.jdField_a_of_type_JavaLangString + "] from: " + paramString + " result: " + paramPoiItem.jdField_a_of_type_JavaUtilList + " size: " + paramPoiItem.jdField_a_of_type_JavaUtilList.size());
-    Object localObject = (Poi)paramPoiItem.jdField_a_of_type_JavaUtilList.get(0);
-    QLog.d("PoiCache", 2, "[status][poiCache][" + this.jdField_a_of_type_JavaLangString + "] from: " + paramString + " first poi: " + ((Poi)localObject).title + "-" + ((Poi)localObject).category + "-" + ((Poi)localObject)._distance);
-    if (paramPoiItem.jdField_a_of_type_JavaUtilList.size() >= 2)
-    {
-      localObject = (Poi)paramPoiItem.jdField_a_of_type_JavaUtilList.get(1);
-      QLog.d("PoiCache", 2, "[status][poiCache][" + this.jdField_a_of_type_JavaLangString + "] from: " + paramString + " second poi: " + ((Poi)localObject).title + "-" + ((Poi)localObject).category + "-" + ((Poi)localObject)._distance);
-    }
-    QLog.d("PoiCache", 2, "[status][poiCache][" + this.jdField_a_of_type_JavaLangString + "] from: " + paramString + " result: " + paramPoiItem.jdField_a_of_type_JavaUtilList + " adInfoCity: " + paramPoiItem.jdField_a_of_type_ComTencentLbssearchHttpresponseAdInfo.city + " adInfoDistrict: " + paramPoiItem.jdField_a_of_type_ComTencentLbssearchHttpresponseAdInfo.district);
   }
   
   public void a(PoiCache.PoiItem paramPoiItem)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PoiCache", 2, "[status][poiCache][" + this.jdField_a_of_type_JavaLangString + "] put poiItem: " + paramPoiItem);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[status][poiCache][");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append("] put poiItem: ");
+      localStringBuilder.append(paramPoiItem);
+      QLog.d("PoiCache", 2, localStringBuilder.toString());
     }
     a("putPoiList", paramPoiItem);
     this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(new PoiCache.PoiKey(this, paramPoiItem.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng), paramPoiItem);
@@ -53,7 +104,7 @@ public class PoiCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.auto.location.PoiCache
  * JD-Core Version:    0.7.0.1
  */

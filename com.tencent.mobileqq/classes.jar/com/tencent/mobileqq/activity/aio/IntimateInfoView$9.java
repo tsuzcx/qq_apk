@@ -13,18 +13,27 @@ class IntimateInfoView$9
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {}
-    do
+    if (!TextUtils.isEmpty(paramString))
     {
-      return;
+      if (paramBitmap == null) {
+        return;
+      }
       IntimateInfoView.a(this.a).a(paramBitmap, paramString);
-    } while (!QLog.isColorLevel());
-    QLog.d("intimate_relationship", 2, "onDecodeTaskCompleted, uin: " + paramString + ", type: " + paramInt2);
+      if (QLog.isColorLevel())
+      {
+        paramBitmap = new StringBuilder();
+        paramBitmap.append("onDecodeTaskCompleted, uin: ");
+        paramBitmap.append(paramString);
+        paramBitmap.append(", type: ");
+        paramBitmap.append(paramInt2);
+        QLog.d("intimate_relationship", 2, paramBitmap.toString());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoView.9
  * JD-Core Version:    0.7.0.1
  */

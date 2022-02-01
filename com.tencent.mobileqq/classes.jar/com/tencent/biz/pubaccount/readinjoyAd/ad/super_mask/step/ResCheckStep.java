@@ -13,7 +13,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/ResCheckStep;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/api/SuperMaskStep;", "adData", "Lorg/json/JSONObject;", "resInfo", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/ResCheckStep$AdResCheckInfo;", "needReport", "", "scene", "", "(Lorg/json/JSONObject;Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/ResCheckStep$AdResCheckInfo;ZI)V", "getAdData", "()Lorg/json/JSONObject;", "adId", "", "configFile", "Ljava/io/File;", "manifestJson", "getNeedReport", "()Z", "getResInfo", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/ResCheckStep$AdResCheckInfo;", "resPath", "resVersion", "getScene", "()I", "checkManifest", "checkMaskType", "checkResFile", "checkVersion", "doStep", "AdResCheckInfo", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/ResCheckStep;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/api/SuperMaskStep;", "adData", "Lorg/json/JSONObject;", "resInfo", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/ResCheckStep$AdResCheckInfo;", "needReport", "", "scene", "", "(Lorg/json/JSONObject;Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/ResCheckStep$AdResCheckInfo;ZI)V", "getAdData", "()Lorg/json/JSONObject;", "adId", "", "bidMask", "configFile", "Ljava/io/File;", "manifestJson", "getNeedReport", "()Z", "getResInfo", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/ResCheckStep$AdResCheckInfo;", "resPath", "resVersion", "getScene", "()I", "checkManifest", "checkMaskType", "checkResFile", "checkVersion", "doStep", "isBidMask", "AdResCheckInfo", "Companion", "kandian_ad_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class ResCheckStep
   extends SuperMaskStep
 {
@@ -29,6 +29,7 @@ public final class ResCheckStep
   private final String jdField_b_of_type_JavaLangString;
   @Nullable
   private final JSONObject jdField_b_of_type_OrgJsonJSONObject;
+  private final String c;
   
   static
   {
@@ -45,51 +46,62 @@ public final class ResCheckStep
     if (paramJSONObject != null)
     {
       paramJSONObject = paramJSONObject.optString("res_path");
+      if (paramJSONObject != null) {}
+    }
+    else
+    {
+      paramJSONObject = "";
+    }
+    this.jdField_a_of_type_JavaLangString = paramJSONObject;
+    this.jdField_a_of_type_JavaIoFile = new File(this.jdField_a_of_type_JavaLangString, "manifest.json");
+    paramJSONObject = this.jdField_b_of_type_OrgJsonJSONObject;
+    if (paramJSONObject != null)
+    {
+      paramJSONObject = paramJSONObject.optString("adid");
+      if (paramJSONObject != null) {}
+    }
+    else
+    {
+      paramJSONObject = "";
+    }
+    this.jdField_b_of_type_JavaLangString = paramJSONObject;
+    paramJSONObject = this.jdField_b_of_type_OrgJsonJSONObject;
+    int i = 1;
+    if (paramJSONObject != null) {
+      paramInt = paramJSONObject.optInt("res_version");
+    } else {
+      paramInt = 1;
+    }
+    this.jdField_a_of_type_Int = paramInt;
+    paramJSONObject = this.jdField_b_of_type_OrgJsonJSONObject;
+    if (paramJSONObject != null)
+    {
+      paramJSONObject = paramJSONObject.optString("bid_mask");
+      if (paramJSONObject != null) {}
+    }
+    else
+    {
+      paramJSONObject = "0";
+    }
+    this.c = paramJSONObject;
+    if (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaLangString))
+    {
+      paramJSONObject = this.jdField_b_of_type_OrgJsonJSONObject;
       if (paramJSONObject != null)
       {
-        this.jdField_a_of_type_JavaLangString = paramJSONObject;
-        this.jdField_a_of_type_JavaIoFile = new File(this.jdField_a_of_type_JavaLangString, "manifest.json");
-        paramJSONObject = this.jdField_b_of_type_OrgJsonJSONObject;
-        if (paramJSONObject == null) {
-          break label217;
-        }
-        paramJSONObject = paramJSONObject.optString("adid");
-        if (paramJSONObject == null) {
-          break label217;
-        }
-        label90:
-        this.jdField_b_of_type_JavaLangString = paramJSONObject;
-        paramJSONObject = this.jdField_b_of_type_OrgJsonJSONObject;
-        if (paramJSONObject == null) {
-          break label223;
-        }
-        paramInt = paramJSONObject.optInt("res_version");
-        label112:
-        this.jdField_a_of_type_Int = paramInt;
-        if (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaLangString))
-        {
-          paramJSONObject = this.jdField_b_of_type_OrgJsonJSONObject;
-          if (paramJSONObject == null) {
-            break label229;
-          }
-          paramJSONObject = paramJSONObject.optString("ad_source");
-          if (paramJSONObject == null) {
-            break label229;
-          }
-          label151:
-          paramAdResCheckInfo = this.jdField_b_of_type_OrgJsonJSONObject;
-          if (paramAdResCheckInfo == null) {
-            break label235;
-          }
-        }
+        paramJSONObject = paramJSONObject.optString("ad_source");
+        if (paramJSONObject != null) {}
       }
-    }
-    label217:
-    label223:
-    label229:
-    label235:
-    for (paramAdResCheckInfo = paramAdResCheckInfo.optString("adid");; paramAdResCheckInfo = null)
-    {
+      else
+      {
+        paramJSONObject = "";
+      }
+      paramAdResCheckInfo = this.jdField_b_of_type_OrgJsonJSONObject;
+      if (paramAdResCheckInfo != null) {
+        paramAdResCheckInfo = paramAdResCheckInfo.optString("adid");
+      } else {
+        paramAdResCheckInfo = null;
+      }
       JSONObject localJSONObject = this.jdField_b_of_type_OrgJsonJSONObject;
       paramInt = i;
       if (localJSONObject != null) {
@@ -98,46 +110,38 @@ public final class ResCheckStep
       paramJSONObject = AdMaterialResManager.a(paramJSONObject, paramAdResCheckInfo, paramInt);
       Intrinsics.checkExpressionValueIsNotNull(paramJSONObject, "AdMaterialResManager.obt…kConfig.resVersion) ?: 1)");
       this.jdField_a_of_type_JavaLangString = paramJSONObject;
-      return;
-      paramJSONObject = "";
-      break;
-      paramJSONObject = "";
-      break label90;
-      paramInt = 1;
-      break label112;
-      paramJSONObject = "";
-      break label151;
     }
   }
   
   private final boolean b()
   {
-    boolean bool2 = false;
     b("checkVersion");
     if (this.jdField_b_of_type_OrgJsonJSONObject == null)
     {
-      ReadInJoyAdLog.a("ReadInJoySuperMaskAd", a() + " : ResCheckStep : checkVersion : adData is empty");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(a());
+      ((StringBuilder)localObject).append(" : ResCheckStep : checkVersion : adData is empty");
+      ReadInJoyAdLog.a("ReadInJoySuperMaskAd", ((StringBuilder)localObject).toString());
       return false;
     }
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdSuper_maskStepResCheckStep$AdResCheckInfo == null)
     {
-      ReadInJoyAdLog.a("ReadInJoySuperMaskAd", a() + " : ResCheckStep : checkVersion : resInfo is empty");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(a());
+      ((StringBuilder)localObject).append(" : ResCheckStep : checkVersion : resInfo is empty");
+      ReadInJoyAdLog.a("ReadInJoySuperMaskAd", ((StringBuilder)localObject).toString());
       return false;
     }
-    String str1 = this.jdField_b_of_type_OrgJsonJSONObject.optString("adid");
-    String str2 = this.jdField_b_of_type_OrgJsonJSONObject.optString("ad_source");
+    boolean bool2 = f();
+    boolean bool1 = true;
+    if (bool2) {
+      return true;
+    }
+    Object localObject = this.jdField_b_of_type_OrgJsonJSONObject.optString("adid");
+    String str = this.jdField_b_of_type_OrgJsonJSONObject.optString("ad_source");
     int i = this.jdField_b_of_type_OrgJsonJSONObject.optInt("res_version", -1);
-    boolean bool1 = bool2;
-    if (Intrinsics.areEqual(str1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdSuper_maskStepResCheckStep$AdResCheckInfo.a()))
-    {
-      bool1 = bool2;
-      if (Intrinsics.areEqual(str2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdSuper_maskStepResCheckStep$AdResCheckInfo.b()))
-      {
-        bool1 = bool2;
-        if (i == this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdSuper_maskStepResCheckStep$AdResCheckInfo.a()) {
-          bool1 = true;
-        }
-      }
+    if ((!Intrinsics.areEqual(localObject, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdSuper_maskStepResCheckStep$AdResCheckInfo.a())) || (!Intrinsics.areEqual(str, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdSuper_maskStepResCheckStep$AdResCheckInfo.b())) || (i != this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdSuper_maskStepResCheckStep$AdResCheckInfo.a())) {
+      bool1 = false;
     }
     if ((!bool1) && (this.jdField_b_of_type_Int == 2)) {
       SuperMaskReportMgr.a(SuperMaskReportMgr.a, "versionNoMatch", null, 2, null);
@@ -147,12 +151,19 @@ public final class ResCheckStep
   
   private final boolean c()
   {
-    boolean bool2 = false;
     b("checkManifest");
-    if (this.jdField_b_of_type_OrgJsonJSONObject == null)
+    Object localObject = this.jdField_b_of_type_OrgJsonJSONObject;
+    boolean bool2 = false;
+    if (localObject == null)
     {
-      ReadInJoyAdLog.a("ReadInJoySuperMaskAd", a() + " : ResCheckStep : checkManifest : adData is empty");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(a());
+      ((StringBuilder)localObject).append(" : ResCheckStep : checkManifest : adData is empty");
+      ReadInJoyAdLog.a("ReadInJoySuperMaskAd", ((StringBuilder)localObject).toString());
       return false;
+    }
+    if (f()) {
+      return true;
     }
     boolean bool1 = bool2;
     if (this.jdField_a_of_type_JavaIoFile.exists())
@@ -180,144 +191,172 @@ public final class ResCheckStep
   
   private final boolean d()
   {
-    boolean bool2 = false;
     b("checkResFile");
-    if (this.jdField_b_of_type_OrgJsonJSONObject == null)
+    Object localObject1 = this.jdField_b_of_type_OrgJsonJSONObject;
+    boolean bool2 = false;
+    if (localObject1 == null)
     {
-      ReadInJoyAdLog.a("ReadInJoySuperMaskAd", a() + " : ResCheckStep : checkResFile : adData is empty");
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(a());
+      ((StringBuilder)localObject1).append(" : ResCheckStep : checkResFile : adData is empty");
+      ReadInJoyAdLog.a("ReadInJoySuperMaskAd", ((StringBuilder)localObject1).toString());
       return false;
     }
-    String str = this.jdField_b_of_type_OrgJsonJSONObject.optString("animFileName");
-    Object localObject;
+    if (f()) {
+      return true;
+    }
+    Object localObject2 = this.jdField_b_of_type_OrgJsonJSONObject.optString("animFileName");
     if (this.jdField_b_of_type_Int != 1)
     {
-      localObject = str;
-      if (!TextUtils.isEmpty((CharSequence)str)) {}
+      localObject1 = localObject2;
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {}
     }
     else
     {
       long l1 = System.currentTimeMillis();
-      localObject = new StringBuffer();
-      FileUtil.a((StringBuffer)localObject, this.jdField_a_of_type_JavaIoFile.getPath());
-      localObject = ((StringBuffer)localObject).toString();
-      Intrinsics.checkExpressionValueIsNotNull(localObject, "buffer.toString()");
+      localObject1 = new StringBuffer();
+      FileUtil.a((StringBuffer)localObject1, this.jdField_a_of_type_JavaIoFile.getPath());
+      localObject1 = ((StringBuffer)localObject1).toString();
+      Intrinsics.checkExpressionValueIsNotNull(localObject1, "buffer.toString()");
       long l2 = System.currentTimeMillis();
-      ReadInJoyAdLog.a("ReadInJoySuperMaskAd", a() + " : ResCheckStep : checkResFile : readTime = " + (l2 - l1));
-      this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject((String)localObject);
-      localObject = this.jdField_a_of_type_OrgJsonJSONObject;
-      if (localObject == null) {
-        break label289;
-      }
-      localObject = ((JSONObject)localObject).optString("animFileName");
-      if (localObject == null) {
-        break label289;
-      }
-    }
-    try
-    {
-      for (;;)
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(a());
+      ((StringBuilder)localObject2).append(" : ResCheckStep : checkResFile : readTime = ");
+      ((StringBuilder)localObject2).append(l2 - l1);
+      ReadInJoyAdLog.a("ReadInJoySuperMaskAd", ((StringBuilder)localObject2).toString());
+      this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject((String)localObject1);
+      localObject1 = this.jdField_a_of_type_OrgJsonJSONObject;
+      if (localObject1 != null)
       {
-        this.jdField_b_of_type_OrgJsonJSONObject.put("animFileName", localObject);
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          break;
-        }
-        ReadInJoyAdLog.a("ReadInJoySuperMaskAd", a() + " : ResCheckStep : checkResFile : animFileName is empty");
-        if (this.jdField_b_of_type_Int == 2) {
-          SuperMaskReportMgr.a(SuperMaskReportMgr.a, "noFileName", null, 2, null);
-        }
-        if (this.jdField_b_of_type_Int == 1) {
-          SuperMaskReportMgr.a.a(this.jdField_b_of_type_JavaLangString, "noFileName", this.jdField_a_of_type_Int);
-        }
-        return false;
-        label289:
-        localObject = "";
+        localObject1 = ((JSONObject)localObject1).optString("animFileName");
+        if (localObject1 != null) {}
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      else
       {
-        StringBuilder localStringBuilder = new StringBuilder().append(a()).append(" : checkResFile, adData put animFileName fail been catch : ");
+        localObject1 = "";
+      }
+      try
+      {
+        this.jdField_b_of_type_OrgJsonJSONObject.put("animFileName", localObject1);
+      }
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(a());
+        localStringBuilder.append(" : checkResFile, adData put animFileName fail been catch : ");
         localException.printStackTrace();
-        ReadInJoyAdLog.a("ReadInJoySuperMaskAd", Unit.INSTANCE);
+        localStringBuilder.append(Unit.INSTANCE);
+        ReadInJoyAdLog.a("ReadInJoySuperMaskAd", localStringBuilder.toString());
       }
-      localObject = new File(this.jdField_a_of_type_JavaLangString, (String)localObject);
-      boolean bool1 = bool2;
-      if (((File)localObject).exists())
+    }
+    if (TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(a());
+      ((StringBuilder)localObject1).append(" : ResCheckStep : checkResFile : animFileName is empty");
+      ReadInJoyAdLog.a("ReadInJoySuperMaskAd", ((StringBuilder)localObject1).toString());
+      if (this.jdField_b_of_type_Int == 2) {
+        SuperMaskReportMgr.a(SuperMaskReportMgr.a, "noFileName", null, 2, null);
+      }
+      if (this.jdField_b_of_type_Int == 1) {
+        SuperMaskReportMgr.a.a(this.jdField_b_of_type_JavaLangString, "noFileName", this.jdField_a_of_type_Int);
+      }
+      return false;
+    }
+    localObject1 = new File(this.jdField_a_of_type_JavaLangString, (String)localObject1);
+    boolean bool1 = bool2;
+    if (((File)localObject1).exists())
+    {
+      bool1 = bool2;
+      if (((File)localObject1).isFile())
       {
         bool1 = bool2;
-        if (((File)localObject).isFile())
-        {
-          bool1 = bool2;
-          if (((File)localObject).canRead()) {
-            bool1 = true;
-          }
+        if (((File)localObject1).canRead()) {
+          bool1 = true;
         }
       }
-      if (!bool1)
-      {
-        if (this.jdField_b_of_type_Int == 2) {
-          SuperMaskReportMgr.a(SuperMaskReportMgr.a, "noVideoFile", null, 2, null);
-        }
-        if (this.jdField_b_of_type_Int == 1) {
-          SuperMaskReportMgr.a.a(this.jdField_b_of_type_JavaLangString, "noVideoFile", this.jdField_a_of_type_Int);
-        }
-      }
-      return SuperMaskStepUtil.a.a(bool1, (SuperMaskStep)this);
     }
+    if (!bool1)
+    {
+      if (this.jdField_b_of_type_Int == 2) {
+        SuperMaskReportMgr.a(SuperMaskReportMgr.a, "noVideoFile", null, 2, null);
+      }
+      if (this.jdField_b_of_type_Int == 1) {
+        SuperMaskReportMgr.a.a(this.jdField_b_of_type_JavaLangString, "noVideoFile", this.jdField_a_of_type_Int);
+      }
+    }
+    return SuperMaskStepUtil.a.a(bool1, (SuperMaskStep)this);
   }
   
   private final boolean e()
   {
-    boolean bool = false;
     b("checkMaskType");
-    if (this.jdField_b_of_type_OrgJsonJSONObject == null)
+    Object localObject = this.jdField_b_of_type_OrgJsonJSONObject;
+    boolean bool = false;
+    if (localObject == null)
     {
-      ReadInJoyAdLog.a("ReadInJoySuperMaskAd", a() + " : ResCheckStep : checkMaskType : adData is empty");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(a());
+      ((StringBuilder)localObject).append(" : ResCheckStep : checkMaskType : adData is empty");
+      ReadInJoyAdLog.a("ReadInJoySuperMaskAd", ((StringBuilder)localObject).toString());
       return false;
     }
-    int i;
-    if (this.jdField_b_of_type_Int == 1)
+    int i = this.jdField_b_of_type_Int;
+    if (i == 1)
     {
-      JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
-      if (localJSONObject != null) {
-        i = localJSONObject.optInt("superMaskType", 1);
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        this.jdField_b_of_type_OrgJsonJSONObject.put("superMaskType", i);
-        if (i != 1) {
-          bool = true;
-        }
-        if (!bool)
-        {
-          if (this.jdField_b_of_type_Int == 2) {
-            SuperMaskReportMgr.a(SuperMaskReportMgr.a, "invalidType", null, 2, null);
-          }
-          if (this.jdField_b_of_type_Int == 1) {
-            SuperMaskReportMgr.a.a(this.jdField_b_of_type_JavaLangString, "invalidType", this.jdField_a_of_type_Int);
-          }
-        }
-        return SuperMaskStepUtil.a.a(bool, (SuperMaskStep)this);
-        i = 1;
-        continue;
-      }
-      catch (Exception localException)
-      {
-        StringBuilder localStringBuilder = new StringBuilder().append(a()).append(" : checkResFile, adData put animFileName fail been catch : ");
-        localException.printStackTrace();
-        ReadInJoyAdLog.a("ReadInJoySuperMaskAd", Unit.INSTANCE);
-        continue;
-      }
-      if (this.jdField_b_of_type_Int == 2) {
-        i = this.jdField_b_of_type_OrgJsonJSONObject.optInt("superMaskType", 1);
+      localObject = this.jdField_a_of_type_OrgJsonJSONObject;
+      if (localObject != null) {
+        i = ((JSONObject)localObject).optInt("superMaskType", 1);
       } else {
         i = 1;
       }
+      try
+      {
+        this.jdField_b_of_type_OrgJsonJSONObject.put("superMaskType", i);
+      }
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(a());
+        localStringBuilder.append(" : checkResFile, adData put animFileName fail been catch : ");
+        localException.printStackTrace();
+        localStringBuilder.append(Unit.INSTANCE);
+        ReadInJoyAdLog.a("ReadInJoySuperMaskAd", localStringBuilder.toString());
+      }
     }
+    else if (i == 2)
+    {
+      i = localException.optInt("superMaskType", 1);
+    }
+    else
+    {
+      i = 1;
+    }
+    if (i != 1) {
+      bool = true;
+    }
+    if (!bool)
+    {
+      if (this.jdField_b_of_type_Int == 2) {
+        SuperMaskReportMgr.a(SuperMaskReportMgr.a, "invalidType", null, 2, null);
+      }
+      if (this.jdField_b_of_type_Int == 1) {
+        SuperMaskReportMgr.a.a(this.jdField_b_of_type_JavaLangString, "invalidType", this.jdField_a_of_type_Int);
+      }
+    }
+    return SuperMaskStepUtil.a.a(bool, (SuperMaskStep)this);
+  }
+  
+  private final boolean f()
+  {
+    if (this.jdField_b_of_type_OrgJsonJSONObject != null)
+    {
+      String str = this.c;
+      if ((str != null) && (str.equals("1"))) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public boolean a()
@@ -350,7 +389,7 @@ public final class ResCheckStep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.step.ResCheckStep
  * JD-Core Version:    0.7.0.1
  */

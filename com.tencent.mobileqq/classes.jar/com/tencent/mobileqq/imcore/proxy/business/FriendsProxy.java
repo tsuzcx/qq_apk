@@ -11,15 +11,16 @@ public class FriendsProxy
   
   public static boolean a(String paramString)
   {
-    if (a == null) {
+    FriendsProxy.Proxy localProxy = a;
+    if (localProxy == null) {
       return false;
     }
-    return a.a(paramString);
+    return localProxy.a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.imcore.proxy.business.FriendsProxy
  * JD-Core Version:    0.7.0.1
  */

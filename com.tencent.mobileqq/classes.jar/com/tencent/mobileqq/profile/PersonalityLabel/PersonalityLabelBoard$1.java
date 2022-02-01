@@ -7,12 +7,13 @@ class PersonalityLabelBoard$1
   
   public void run()
   {
-    PersonalityLabelBoard.a(this.this$0, this.this$0.a, false);
+    PersonalityLabelBoard localPersonalityLabelBoard = this.this$0;
+    PersonalityLabelBoard.a(localPersonalityLabelBoard, localPersonalityLabelBoard.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelBoard.1
  * JD-Core Version:    0.7.0.1
  */

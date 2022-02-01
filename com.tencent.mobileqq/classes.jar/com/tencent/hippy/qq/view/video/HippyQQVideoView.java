@@ -49,58 +49,52 @@ public class HippyQQVideoView
   
   private void forceViewMeasure(View paramView)
   {
-    if ((paramView == null) || (this.mIsDoingFullscreen)) {
-      return;
-    }
-    int i;
-    label24:
-    label43:
-    int k;
-    int m;
-    if (this.mOriginalWidth == 0)
+    if (paramView != null)
     {
-      i = paramView.getWidth();
-      j = View.MeasureSpec.makeMeasureSpec(i, 1073741824);
-      if (this.mOriginalHeight != 0) {
-        break label144;
+      if (this.mIsDoingFullscreen) {
+        return;
       }
-      i = paramView.getHeight();
-      paramView.measure(j, View.MeasureSpec.makeMeasureSpec(i, 1073741824));
+      int j = this.mOriginalWidth;
+      int i = j;
+      if (j == 0) {
+        i = paramView.getWidth();
+      }
+      int k = View.MeasureSpec.makeMeasureSpec(i, 1073741824);
+      j = this.mOriginalHeight;
+      i = j;
+      if (j == 0) {
+        i = paramView.getHeight();
+      }
+      paramView.measure(k, View.MeasureSpec.makeMeasureSpec(i, 1073741824));
       k = paramView.getLeft();
-      m = paramView.getTop();
-      if (this.mOriginalWidth != 0) {
-        break label152;
+      int m = paramView.getTop();
+      if (this.mOriginalWidth == 0) {
+        i = paramView.getRight();
+      } else {
+        i = paramView.getLeft() + this.mOriginalWidth;
       }
-      i = paramView.getRight();
-      label78:
-      if (this.mOriginalHeight != 0) {
-        break label165;
+      if (this.mOriginalHeight == 0) {
+        j = paramView.getBottom();
+      } else {
+        j = paramView.getTop() + this.mOriginalHeight;
       }
-    }
-    label144:
-    label152:
-    label165:
-    for (int j = paramView.getBottom();; j = paramView.getTop() + this.mOriginalHeight)
-    {
       paramView.layout(k, m, i, j);
-      if (!QLog.isColorLevel()) {
-        break;
+      if (QLog.isColorLevel())
+      {
+        paramView = TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("forceViewMeasure mIsDoingFullscreen:");
+        localStringBuilder.append(this.mIsDoingFullscreen);
+        QLog.d(paramView, 2, localStringBuilder.toString());
       }
-      QLog.d(TAG, 2, "forceViewMeasure mIsDoingFullscreen:" + this.mIsDoingFullscreen);
-      return;
-      i = this.mOriginalWidth;
-      break label24;
-      i = this.mOriginalHeight;
-      break label43;
-      i = paramView.getLeft() + this.mOriginalWidth;
-      break label78;
     }
   }
   
   public void endHotSwap()
   {
-    if (this.mVideoViewControlListener != null) {
-      this.mVideoViewControlListener.afterChangeFullScreen(this);
+    HippyQQVideoView.OnVideoViewControlListener localOnVideoViewControlListener = this.mVideoViewControlListener;
+    if (localOnVideoViewControlListener != null) {
+      localOnVideoViewControlListener.afterChangeFullScreen(this);
     }
   }
   
@@ -115,9 +109,10 @@ public class HippyQQVideoView
       this.mOriginalWidth = getWidth();
       this.mOriginalHeight = getHeight();
     }
-    if (this.mActivity != null)
+    Object localObject = this.mActivity;
+    if (localObject != null)
     {
-      Window localWindow = this.mActivity.getWindow();
+      localObject = ((Activity)localObject).getWindow();
       if ((getParent() instanceof ViewGroup))
       {
         this.mOriginalIndex = ((ViewGroup)getParent()).indexOfChild(this);
@@ -125,7 +120,7 @@ public class HippyQQVideoView
         ((ViewGroup)getParent()).removeView(this);
         endHotSwap();
       }
-      localWindow.addContentView(this, new ViewGroup.LayoutParams(-1, -1));
+      ((Window)localObject).addContentView(this, new ViewGroup.LayoutParams(-1, -1));
     }
   }
   
@@ -140,8 +135,9 @@ public class HippyQQVideoView
     }
     if (!this.mHasExictlySize)
     {
-      this.mOriginalLayoutParams.height = this.mOriginalHeight;
-      this.mOriginalLayoutParams.width = this.mOriginalWidth;
+      ViewGroup.LayoutParams localLayoutParams = this.mOriginalLayoutParams;
+      localLayoutParams.height = this.mOriginalHeight;
+      localLayoutParams.width = this.mOriginalWidth;
     }
     this.mOriginalParent.addView(this, this.mOriginalIndex, this.mOriginalLayoutParams);
   }
@@ -158,25 +154,33 @@ public class HippyQQVideoView
   
   public void initView()
   {
-    if (this.mActivity != null) {
-      setVideoViewControlListener(new HVideoDelegate(this.mActivity, this, 102));
+    Activity localActivity = this.mActivity;
+    if (localActivity != null) {
+      setVideoViewControlListener(new HVideoDelegate(localActivity, this, 102));
     }
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if ((paramBoolean) && (getChildAt(0) != null))
     {
       getChildAt(0).layout(paramInt1, paramInt2, paramInt3, paramInt4);
       getChildAt(0).setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-      if (QLog.isColorLevel()) {
-        QLog.d(TAG, 2, "onLayout mIsDoingFullscreen:" + this.mIsDoingFullscreen + ",changed:" + paramBoolean);
+      if (QLog.isColorLevel())
+      {
+        String str = TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onLayout mIsDoingFullscreen:");
+        localStringBuilder.append(this.mIsDoingFullscreen);
+        localStringBuilder.append(",changed:");
+        localStringBuilder.append(paramBoolean);
+        QLog.d(str, 2, localStringBuilder.toString());
       }
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     if (getChildAt(0) != null) {
@@ -199,8 +203,9 @@ public class HippyQQVideoView
   
   public void startHotSwap()
   {
-    if (this.mVideoViewControlListener != null) {
-      this.mVideoViewControlListener.beforeChangeFullScreen(this);
+    HippyQQVideoView.OnVideoViewControlListener localOnVideoViewControlListener = this.mVideoViewControlListener;
+    if (localOnVideoViewControlListener != null) {
+      localOnVideoViewControlListener.beforeChangeFullScreen(this);
     }
   }
   
@@ -211,7 +216,7 @@ public class HippyQQVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.video.HippyQQVideoView
  * JD-Core Version:    0.7.0.1
  */

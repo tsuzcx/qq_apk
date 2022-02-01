@@ -32,11 +32,6 @@ public class DBFixDialogUI
   String jdField_a_of_type_JavaLangString;
   private String h = "";
   
-  static
-  {
-    jdField_a_of_type_AndroidAppDialog = null;
-  }
-  
   public DBFixDialogUI(Context paramContext, QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
@@ -47,7 +42,11 @@ public class DBFixDialogUI
   
   private void a(Dialog paramDialog, String paramString)
   {
-    QLog.d(g, 1, "DBFixDialogUI showDialog, " + paramString);
+    String str = g;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DBFixDialogUI showDialog, ");
+    localStringBuilder.append(paramString);
+    QLog.d(str, 1, localStringBuilder.toString());
     this.h = paramString;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new DBFixDialogUI.2(this, paramDialog));
   }
@@ -62,23 +61,33 @@ public class DBFixDialogUI
   
   private void d()
   {
-    jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage(HardCodeUtil.a(2131702904)).setPositiveButton(HardCodeUtil.a(2131702910), new DBFixDialogUI.5(this));
+    jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage(HardCodeUtil.a(2131703034)).setPositiveButton(HardCodeUtil.a(2131703040), new DBFixDialogUI.5(this));
     jdField_a_of_type_AndroidAppDialog.setOnKeyListener(new DBFixDialogUI.6(this));
     jdField_a_of_type_AndroidAppDialog.setOnCancelListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener);
     a(jdField_a_of_type_AndroidAppDialog, "fix succ");
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_JavaLangString, e, e, 0, 0, "", "", "", "");
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    String str1 = this.jdField_a_of_type_JavaLangString;
+    String str2 = e;
+    ReportController.b(localQQAppInterface, "CliOper", "", str1, str2, str2, 0, 0, "", "", "", "");
   }
   
   private void e()
   {
-    jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage(HardCodeUtil.a(2131702905)).setPositiveButton("重启QQ", new DBFixDialogUI.7(this));
+    jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage(HardCodeUtil.a(2131703035)).setPositiveButton("重启QQ", new DBFixDialogUI.7(this));
     jdField_a_of_type_AndroidAppDialog.setOnCancelListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener);
     a(jdField_a_of_type_AndroidAppDialog, "fix fail");
   }
   
   private void f()
   {
-    jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage(HardCodeUtil.a(2131702907)).setPositiveButton(HardCodeUtil.a(2131702903), new DBFixDialogUI.10(this)).setNegativeButton(HardCodeUtil.a(2131702909), new DBFixDialogUI.9(this));
+    jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage(HardCodeUtil.a(2131703042)).setPositiveButton(HardCodeUtil.a(2131703041), new DBFixDialogUI.9(this));
+    jdField_a_of_type_AndroidAppDialog.setOnCancelListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener);
+    a(jdField_a_of_type_AndroidAppDialog, "unable to fix");
+  }
+  
+  private void g()
+  {
+    jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage(HardCodeUtil.a(2131703037)).setPositiveButton(HardCodeUtil.a(2131703033), new DBFixDialogUI.11(this)).setNegativeButton(HardCodeUtil.a(2131703039), new DBFixDialogUI.10(this));
     jdField_a_of_type_AndroidAppDialog.setOnCancelListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener);
     a(jdField_a_of_type_AndroidAppDialog, "memory alert");
   }
@@ -86,23 +95,33 @@ public class DBFixDialogUI
   public void a()
   {
     jdField_a_of_type_AndroidAppDialog = null;
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof DBFixDialogActivity)) {
-      ((DBFixDialogActivity)this.jdField_a_of_type_AndroidContentContext).finish();
+    Object localObject1 = this.jdField_a_of_type_AndroidContentContext;
+    if ((localObject1 instanceof DBFixDialogActivity)) {
+      ((DBFixDialogActivity)localObject1).finish();
     }
     this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixManager.a(false);
     if (this.jdField_a_of_type_Int != DBFixLoadingDialog.d)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0);
-      String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      if (((SharedPreferences)localObject).getInt(str + DBFixManager.e, 0) == DBFixManager.jdField_a_of_type_Int)
+      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0);
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append(DBFixManager.e);
+      if (((SharedPreferences)localObject2).getInt(localStringBuilder.toString(), 0) == DBFixManager.jdField_a_of_type_Int)
       {
         QLog.d(g, 1, "DBFixDialogUI 2, max count, delete db");
         this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixManager.b(false);
         this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixManager.c();
-        localObject = ((SharedPreferences)localObject).edit();
-        ((SharedPreferences.Editor)localObject).remove(str + DBFixManager.d);
-        ((SharedPreferences.Editor)localObject).remove(str + DBFixManager.e);
-        ((SharedPreferences.Editor)localObject).commit();
+        localObject2 = ((SharedPreferences)localObject2).edit();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject1);
+        localStringBuilder.append(DBFixManager.d);
+        ((SharedPreferences.Editor)localObject2).remove(localStringBuilder.toString());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject1);
+        localStringBuilder.append(DBFixManager.e);
+        ((SharedPreferences.Editor)localObject2).remove(localStringBuilder.toString());
+        ((SharedPreferences.Editor)localObject2).commit();
       }
     }
   }
@@ -115,15 +134,18 @@ public class DBFixDialogUI
   
   public void b()
   {
-    jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage(HardCodeUtil.a(2131702906)).setPositiveButton(HardCodeUtil.a(2131702908), new DBFixDialogUI.4(this)).setNegativeButton("取消", new DBFixDialogUI.3(this));
+    jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage(HardCodeUtil.a(2131703036)).setPositiveButton(HardCodeUtil.a(2131703038), new DBFixDialogUI.4(this)).setNegativeButton("取消", new DBFixDialogUI.3(this));
     jdField_a_of_type_AndroidAppDialog.setOnCancelListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener);
     a(jdField_a_of_type_AndroidAppDialog, "checked corrupt");
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_JavaLangString, b, b, 0, 0, "", "", "", "");
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    String str1 = this.jdField_a_of_type_JavaLangString;
+    String str2 = b;
+    ReportController.b(localQQAppInterface, "CliOper", "", str1, str2, str2, 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.database.corrupt.DBFixDialogUI
  * JD-Core Version:    0.7.0.1
  */

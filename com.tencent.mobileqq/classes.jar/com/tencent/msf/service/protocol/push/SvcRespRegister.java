@@ -96,15 +96,17 @@ public final class SvcRespRegister
     paramJceOutputStream.write(this.bUpdateFlag, 7);
     paramJceOutputStream.write(this.timeStamp, 8);
     paramJceOutputStream.write(this.bCrashFlag, 9);
-    if (this.strClientIP != null) {
-      paramJceOutputStream.write(this.strClientIP, 10);
+    Object localObject = this.strClientIP;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
     paramJceOutputStream.write(this.iClientPort, 11);
     paramJceOutputStream.write(this.iHelloInterval, 12);
     paramJceOutputStream.write(this.iLargeSeq, 13);
     paramJceOutputStream.write(this.bLargeSeqUpdate, 14);
-    if (this.bytes_0x769_rspbody != null) {
-      paramJceOutputStream.write(this.bytes_0x769_rspbody, 15);
+    localObject = this.bytes_0x769_rspbody;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 15);
     }
     paramJceOutputStream.write(this.iStatus, 16);
     paramJceOutputStream.write(this.uExtOnlineStatus, 17);
@@ -114,7 +116,7 @@ public final class SvcRespRegister
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.msf.service.protocol.push.SvcRespRegister
  * JD-Core Version:    0.7.0.1
  */

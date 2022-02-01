@@ -25,7 +25,25 @@ public final class EditObject
   @NotNull
   private String wording;
   
-  public EditObject(@NotNull Parcel paramParcel) {}
+  public EditObject(@NotNull Parcel paramParcel)
+  {
+    this(str, localEditObjectType);
+    str = paramParcel.readString();
+    if (str == null) {
+      str = "";
+    }
+    this.key = str;
+    str = paramParcel.readString();
+    if (str == null) {
+      str = "";
+    }
+    this.href = str;
+    paramParcel = paramParcel.readString();
+    if (paramParcel == null) {
+      paramParcel = "";
+    }
+    this.avatarUrl = paramParcel;
+  }
   
   public EditObject(@NotNull String paramString, @NotNull EditObject.EditObjectType paramEditObjectType)
   {
@@ -124,7 +142,27 @@ public final class EditObject
   @NotNull
   public String toString()
   {
-    return "EditObject: [" + "id = " + getId() + ", " + "wording = " + this.wording + ", " + "type = " + this.type + ", " + "key = " + this.key + ", " + "href = " + this.href + ", " + "avatarUrl = " + this.avatarUrl + "]\n";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EditObject: [");
+    localStringBuilder.append("id = ");
+    localStringBuilder.append(getId());
+    localStringBuilder.append(", ");
+    localStringBuilder.append("wording = ");
+    localStringBuilder.append(this.wording);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("type = ");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("key = ");
+    localStringBuilder.append(this.key);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("href = ");
+    localStringBuilder.append(this.href);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("avatarUrl = ");
+    localStringBuilder.append(this.avatarUrl);
+    localStringBuilder.append("]\n");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(@NotNull Parcel paramParcel, int paramInt)
@@ -139,7 +177,7 @@ public final class EditObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.weibo.bean.EditObject
  * JD-Core Version:    0.7.0.1
  */

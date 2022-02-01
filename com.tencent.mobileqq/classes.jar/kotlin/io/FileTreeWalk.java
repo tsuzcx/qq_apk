@@ -46,10 +46,14 @@ public final class FileTreeWalk
   @NotNull
   public final FileTreeWalk maxDepth(int paramInt)
   {
-    if (paramInt <= 0) {
-      throw ((Throwable)new IllegalArgumentException("depth must be positive, but was " + paramInt + '.'));
+    if (paramInt > 0) {
+      return new FileTreeWalk(this.start, this.direction, this.onEnter, this.onLeave, this.onFail, paramInt);
     }
-    return new FileTreeWalk(this.start, this.direction, this.onEnter, this.onLeave, this.onFail, paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("depth must be positive, but was ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append('.');
+    throw ((Throwable)new IllegalArgumentException(localStringBuilder.toString()));
   }
   
   @NotNull
@@ -75,7 +79,7 @@ public final class FileTreeWalk
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.io.FileTreeWalk
  * JD-Core Version:    0.7.0.1
  */

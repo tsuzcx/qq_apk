@@ -31,43 +31,46 @@ public class DebugPromoteTaskCode
   {
     super.a(paramBundle1, paramBundle2);
     this.jdField_a_of_type_ComTencentBizQqstoryModelStoryPromoteTaskManager = ((StoryPromoteTaskManager)SuperManager.a(29));
-    a(2131558448);
-    a(2131364009).setOnClickListener(this);
-    a(2131364060).setOnClickListener(this);
-    a(2131363959).setOnClickListener(this);
-    a(2131364095).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)a(2131366179));
-    this.b = ((EditText)a(2131366144));
+    a(2131558476);
+    a(2131363936).setOnClickListener(this);
+    a(2131363981).setOnClickListener(this);
+    a(2131363885).setOnClickListener(this);
+    a(2131364017).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)a(2131366080));
+    this.b = ((EditText)a(2131366048));
   }
   
   public void onClick(View paramView)
   {
     switch (paramView.getId())
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.1(this), true);
-      continue;
+    default: 
+      break;
+    case 2131364017: 
+      ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.4(this, this.b.getText().toString(), this.jdField_a_of_type_AndroidWidgetEditText.getText().toString()));
+      break;
+    case 2131363981: 
       ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.2(this), true);
-      continue;
-      ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.3(this));
-      continue;
+      break;
+    case 2131363936: 
+      ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.1(this), true);
+      break;
+    case 2131363889: 
       this.b.getText().toString();
       this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
       this.b.getText().clear();
       this.jdField_a_of_type_AndroidWidgetEditText.getText().clear();
       new QQStoryEntityManagerFactory(BaseApplicationImpl.getApplication().getRuntime().getAccount()).a();
-      continue;
-      ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.4(this, this.b.getText().toString(), this.jdField_a_of_type_AndroidWidgetEditText.getText().toString()));
+      break;
+    case 2131363885: 
+      ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.3(this));
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.debug.activities.DebugPromoteTaskCode
  * JD-Core Version:    0.7.0.1
  */

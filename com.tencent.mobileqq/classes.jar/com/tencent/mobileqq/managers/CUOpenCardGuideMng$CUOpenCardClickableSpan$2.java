@@ -16,23 +16,23 @@ class CUOpenCardGuideMng$CUOpenCardClickableSpan$2
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(str)) {
-        ReportController.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
-      }
-      return;
+      break;
       if (this.this$0.a == 2) {
         str = "0X8008125";
-      } else if ((this.this$0.a == 3) || (this.this$0.a == 4)) {
-        str = "0X800813F";
-      } else {
+      } else if ((this.this$0.a != 3) && (this.this$0.a != 4)) {
         str = null;
+      } else {
+        str = "0X800813F";
       }
+    }
+    if (!TextUtils.isEmpty(str)) {
+      ReportController.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.managers.CUOpenCardGuideMng.CUOpenCardClickableSpan.2
  * JD-Core Version:    0.7.0.1
  */

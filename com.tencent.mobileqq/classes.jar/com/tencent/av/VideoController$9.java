@@ -15,11 +15,18 @@ class VideoController$9
   
   public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    QLog.w(VideoController.jdField_a_of_type_JavaLangString, 1, "onCompletion, request, mainSession[" + this.jdField_a_of_type_ComTencentAvVideoController.a() + "], seq[" + this.jdField_a_of_type_Long + "]");
+    String str = VideoController.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onCompletion, request, mainSession[");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvVideoController.a());
+    localStringBuilder.append("], seq[");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("]");
+    QLog.w(str, 1, localStringBuilder.toString());
     if (paramMediaPlayer != null) {
       paramMediaPlayer.release();
     }
-    if (!this.jdField_a_of_type_ComTencentAvVideoController.a().o())
+    if (!this.jdField_a_of_type_ComTencentAvVideoController.a().m())
     {
       this.jdField_a_of_type_Long = 0L;
       return;
@@ -27,19 +34,20 @@ class VideoController$9
     this.jdField_a_of_type_ComTencentAvVideoController.a().a("OnCompletionListener", 6);
     paramMediaPlayer = this.jdField_a_of_type_ComTencentAvVideoController;
     long l = this.jdField_a_of_type_Long;
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_Long == 2L) {}
-    for (int i = 4;; i = 1)
-    {
-      paramMediaPlayer.a(l, 2131230741, i, VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, this.jdField_a_of_type_Long));
-      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(14), Integer.valueOf(this.jdField_a_of_type_ComTencentAvVideoController.a().z), this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long) });
-      this.jdField_a_of_type_Long = 0L;
-      return;
+    int i;
+    if (this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_c_of_type_Long == 2L) {
+      i = 4;
+    } else {
+      i = 1;
     }
+    paramMediaPlayer.a(l, 2131230745, i, VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, this.jdField_a_of_type_Long));
+    this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(14), Integer.valueOf(this.jdField_a_of_type_ComTencentAvVideoController.a().z), this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_c_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long) });
+    this.jdField_a_of_type_Long = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoController.9
  * JD-Core Version:    0.7.0.1
  */

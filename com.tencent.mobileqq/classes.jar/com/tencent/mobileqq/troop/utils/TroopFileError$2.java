@@ -10,22 +10,21 @@ final class TroopFileError$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
+      if (paramInt == 1) {
+        TroopFileTransferManager.a(this.a);
+      }
     }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      return;
+    else {
       TroopFileTransferManager.i();
-      continue;
-      TroopFileTransferManager.a(this.a);
     }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileError.2
  * JD-Core Version:    0.7.0.1
  */

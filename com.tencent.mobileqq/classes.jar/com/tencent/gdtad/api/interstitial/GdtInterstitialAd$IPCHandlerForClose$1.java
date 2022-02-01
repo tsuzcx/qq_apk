@@ -11,16 +11,19 @@ class GdtInterstitialAd$IPCHandlerForClose$1
   public void run()
   {
     WeakReference localWeakReference = GdtInterstitialManager.a().a(this.a);
-    if ((localWeakReference == null) || (localWeakReference.get() == null)) {
-      return;
+    if (localWeakReference != null)
+    {
+      if (localWeakReference.get() == null) {
+        return;
+      }
+      GdtLog.d("GdtInterstitialAd", "IPCHandlerForClose.handle timeout");
+      ((GdtInterstitialFragment)localWeakReference.get()).a(4, 13, -2147483648, -2147483648);
     }
-    GdtLog.d("GdtInterstitialAd", "IPCHandlerForClose.handle timeout");
-    ((GdtInterstitialFragment)localWeakReference.get()).a(4, 13, -2147483648, -2147483648);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtInterstitialAd.IPCHandlerForClose.1
  * JD-Core Version:    0.7.0.1
  */

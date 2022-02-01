@@ -14,26 +14,31 @@ class CdnPmUpdater$1
     try
     {
       boolean bool = CdnPmUpdater.a(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.i("studyroom.CdnPmUpdater", 2, "isNeedDownload:" + bool);
-      }
-      if (!bool)
+      if (QLog.isColorLevel())
       {
-        localFile = this.a.getLatest();
-        return localFile;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("isNeedDownload:");
+        ((StringBuilder)localObject1).append(bool);
+        QLog.i("studyroom.CdnPmUpdater", 2, ((StringBuilder)localObject1).toString());
       }
-      File localFile = this.a.a();
-      return localFile;
+      if (!bool) {}
+      for (Object localObject1 = this.a.getLatest();; localObject1 = this.a.a())
+      {
+        CdnPmUpdater.a(this.a, false);
+        return localObject1;
+      }
+      throw localObject2;
     }
     finally
     {
       CdnPmUpdater.a(this.a, false);
     }
+    for (;;) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.updater.CdnPmUpdater.1
  * JD-Core Version:    0.7.0.1
  */

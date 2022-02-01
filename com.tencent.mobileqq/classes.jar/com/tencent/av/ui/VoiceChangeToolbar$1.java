@@ -20,41 +20,50 @@ class VoiceChangeToolbar$1
   
   public void a(long paramLong, QavListItemBase.ItemInfo paramItemInfo)
   {
-    AVLog.printAllUserLog(VoiceChangeToolbar.TAG, "onEffectClick| voiceType=" + paramItemInfo.jdField_a_of_type_JavaLangString);
-    SessionInfo localSessionInfo = this.a.mApp.a().a();
+    Object localObject = VoiceChangeToolbar.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onEffectClick| voiceType=");
+    localStringBuilder.append(paramItemInfo.jdField_a_of_type_JavaLangString);
+    AVLog.printAllUserLog((String)localObject, localStringBuilder.toString());
+    localObject = this.a.mApp.a().a();
     int i = Integer.parseInt(paramItemInfo.jdField_a_of_type_JavaLangString);
     if (i == 0) {
       AVVoiceRecog.a().b(64);
-    }
-    while (i == 0)
-    {
-      localSessionInfo.v = null;
-      localSessionInfo.U = i;
-      localSessionInfo.V = 0;
-      paramItemInfo = this.a.getAVActivity();
-      if ((paramItemInfo != null) && (paramItemInfo.a != null)) {
-        paramItemInfo.a.i(paramLong, 8);
-      }
-      this.a.mApp.a().y();
-      VoiceChangeDataReport.a(localSessionInfo, i);
-      EffectSettingUi.a(this.a.mApp, paramLong);
-      if (localSessionInfo.d == 4) {
-        MultiVideoRichActionReportCollection.e(String.valueOf(i));
-      }
-      return;
+    } else {
       AVVoiceRecog.a().a(64);
     }
-    if ((paramItemInfo.jdField_a_of_type_JavaLangObject instanceof VoiceChangeData.VoiceInfo)) {}
-    for (localSessionInfo.v = ((VoiceChangeData.VoiceInfo)paramItemInfo.jdField_a_of_type_JavaLangObject).b;; localSessionInfo.v = paramItemInfo.b)
+    if (i == 0)
     {
+      ((SessionInfo)localObject).u = null;
+    }
+    else
+    {
+      if ((paramItemInfo.jdField_a_of_type_JavaLangObject instanceof VoiceChangeData.VoiceInfo)) {
+        ((SessionInfo)localObject).u = ((VoiceChangeData.VoiceInfo)paramItemInfo.jdField_a_of_type_JavaLangObject).b;
+      } else {
+        ((SessionInfo)localObject).u = paramItemInfo.b;
+      }
       DataReport.a(paramItemInfo.jdField_a_of_type_JavaLangString);
-      break;
+    }
+    ((SessionInfo)localObject).ad = i;
+    ((SessionInfo)localObject).ae = 0;
+    paramItemInfo = this.a.getAVActivity();
+    if ((paramItemInfo != null) && (paramItemInfo.a != null)) {
+      paramItemInfo.a.i(paramLong, 8);
+    }
+    this.a.mApp.a().z();
+    VoiceChangeDataReport.a((SessionInfo)localObject, i);
+    EffectSettingUi.a(this.a.mApp, paramLong);
+    if (((SessionInfo)localObject).d == 4) {
+      MultiVideoRichActionReportCollection.d(String.valueOf(i));
     }
   }
+  
+  public void a(QavListItemBase.ItemInfo paramItemInfo) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VoiceChangeToolbar.1
  * JD-Core Version:    0.7.0.1
  */

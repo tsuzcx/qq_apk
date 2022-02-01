@@ -15,8 +15,9 @@ public class QQActivateFriendServiceImpl
   
   public boolean getSwitchValue(boolean paramBoolean)
   {
-    if ((this.mApp instanceof QQAppInterface)) {
-      return ((ActivateFriendsManager)((QQAppInterface)this.mApp).getManager(QQManagerFactory.MGR_ACTVATE_FRIENDS)).a(paramBoolean);
+    AppRuntime localAppRuntime = this.mApp;
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return ((ActivateFriendsManager)((QQAppInterface)localAppRuntime).getManager(QQManagerFactory.MGR_ACTVATE_FRIENDS)).a(paramBoolean);
     }
     if (QLog.isColorLevel()) {
       QLog.d("QQActivateFriendServiceImpl", 2, "getSwitchValue app not QQAppInterface");
@@ -30,10 +31,18 @@ public class QQActivateFriendServiceImpl
   }
   
   public void onDestroy() {}
+  
+  public void setSwtichValue(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppRuntime localAppRuntime = this.mApp;
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      ((ActivateFriendsManager)((QQAppInterface)localAppRuntime).getManager(QQManagerFactory.MGR_ACTVATE_FRIENDS)).a(paramBoolean1, paramBoolean2);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.reminder.api.impl.QQActivateFriendServiceImpl
  * JD-Core Version:    0.7.0.1
  */

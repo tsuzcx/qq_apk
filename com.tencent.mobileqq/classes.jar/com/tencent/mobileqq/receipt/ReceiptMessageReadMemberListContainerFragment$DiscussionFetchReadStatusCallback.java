@@ -16,50 +16,59 @@ class ReceiptMessageReadMemberListContainerFragment$DiscussionFetchReadStatusCal
     super(paramReceiptMessageReadMemberListContainerFragment);
   }
   
-  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReceiptMessageReadMemberListContainerFragment", 2, "mGetMemberList request error on code: " + paramInt);
-      }
-    }
-    do
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
     {
-      return;
-      try
+      paramBundle = new oidb_0x985.RspBody();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramInt = paramBundle.uint32_code.get();
+      if (paramInt == 0)
       {
-        paramBundle = new oidb_0x985.RspBody();
-        paramBundle.mergeFrom(paramArrayOfByte);
-        paramInt = paramBundle.uint32_code.get();
-        if (paramInt == 0)
-        {
-          paramBundle = (oidb_0x985.GetReadListRsp)paramBundle.msg_get_read_list_rsp.get();
-          paramArrayOfByte = paramBundle.rpt_msg_read_list.get();
-          paramBundle = paramBundle.rpt_msg_unread_list.get();
-          ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a, ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a, paramArrayOfByte));
-          ReceiptMessageReadMemberListContainerFragment.b((ReceiptMessageReadMemberListContainerFragment)this.a, ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a, paramBundle));
-          ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(2);
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        QLog.d("ReceiptMessageReadMemberListContainerFragment", 2, "fetch read member fail on invalid data");
+        paramBundle = (oidb_0x985.GetReadListRsp)paramBundle.msg_get_read_list_rsp.get();
+        paramArrayOfByte = paramBundle.rpt_msg_read_list.get();
+        paramBundle = paramBundle.rpt_msg_unread_list.get();
+        ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a, ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a, paramArrayOfByte));
+        ReceiptMessageReadMemberListContainerFragment.b((ReceiptMessageReadMemberListContainerFragment)this.a, ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a, paramBundle));
+        ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(2);
         return;
       }
-      QLog.d("ReceiptMessageReadMemberListContainerFragment", 1, "mGetMemberList fail on code: " + paramInt);
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("mGetMemberList fail on code: ");
+      paramArrayOfByte.append(paramInt);
+      QLog.d("ReceiptMessageReadMemberListContainerFragment", 1, paramArrayOfByte.toString());
       if (paramInt == 5)
       {
         ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(-1);
         return;
       }
-    } while (paramInt != 20);
-    ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(-1);
+      if (paramInt != 20) {
+        break label206;
+      }
+      ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(-1);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      label198:
+      break label198;
+    }
+    QLog.d("ReceiptMessageReadMemberListContainerFragment", 2, "fetch read member fail on invalid data");
+    label206:
+    return;
+    if (QLog.isColorLevel())
+    {
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("mGetMemberList request error on code: ");
+      paramArrayOfByte.append(paramInt);
+      QLog.d("ReceiptMessageReadMemberListContainerFragment", 2, paramArrayOfByte.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment.DiscussionFetchReadStatusCallback
  * JD-Core Version:    0.7.0.1
  */

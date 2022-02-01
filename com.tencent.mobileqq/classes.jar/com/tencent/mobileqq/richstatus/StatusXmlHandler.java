@@ -82,8 +82,12 @@ public class StatusXmlHandler
           ActionInfo localActionInfo = (ActionInfo)this.jdField_a_of_type_AndroidUtilSparseArray.get(j);
           if ((localActionInfo != null) && (localActionInfo.jdField_b_of_type_Int == 2))
           {
-            if (QLog.isColorLevel()) {
-              QLog.d("RichStatus", 2, "filter xml name = " + localActionInfo.c);
+            if (QLog.isColorLevel())
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("filter xml name = ");
+              localStringBuilder.append(localActionInfo.c);
+              QLog.d("RichStatus", 2, localStringBuilder.toString());
             }
             ((Iterator)localObject).remove();
           }
@@ -98,98 +102,122 @@ public class StatusXmlHandler
     this.jdField_a_of_type_Boolean = false;
     paramString1 = this.jdField_a_of_type_JavaLangStringBuilder.toString();
     paramString2 = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString2);
-    if (paramString2 == null) {}
-    do
+    if (paramString2 == null) {
+      return;
+    }
+    int i = paramString2.intValue();
+    if (i != 20)
     {
-      do
-      {
-        do
+      if (i != 22) {
+        switch (i)
         {
-          do
+        default: 
+          return;
+        case 17: 
+          this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.k = paramString1;
+          return;
+        case 16: 
+          this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.j = paramString1;
+          return;
+        case 15: 
+          this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.i = paramString1;
+          return;
+        case 14: 
+          this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.h = paramString1;
+          return;
+        case 13: 
+          this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.g = paramString1;
+          return;
+        case 12: 
+          this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.f = paramString1;
+          return;
+        case 11: 
+          this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.e = paramString1;
+          return;
+        case 10: 
+          if ("0".equals(paramString1))
           {
+            this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.jdField_b_of_type_Int = 4;
             return;
-            switch (paramString2.intValue())
-            {
-            case 18: 
-            case 19: 
-            case 21: 
-            default: 
-              return;
-            case 1: 
-            case 2: 
-              this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo = ((ActionInfo)this.jdField_a_of_type_JavaUtilStack.pop());
-              if (this.c.size() == 0) {
-                this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.jdField_a_of_type_JavaUtilArrayList = null;
-              }
+          }
+          if ("1".equals(paramString1))
+          {
+            this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.jdField_b_of_type_Int = 3;
+            return;
+          }
+          if ("2".equals(paramString1))
+          {
+            this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.jdField_b_of_type_Int = 2;
+            return;
+          }
+          if (!"4".equals(paramString1)) {
+            break;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.jdField_b_of_type_Int = 5;
+          return;
+        case 9: 
+          this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.jdField_b_of_type_JavaLangString = paramString1;
+          return;
+        case 8: 
+          this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.jdField_a_of_type_JavaLangString = paramString1;
+          return;
+        case 7: 
+          this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.c = paramString1;
+          return;
+        case 6: 
+          this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.d = paramString1;
+          return;
+        case 5: 
+          this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.jdField_a_of_type_Boolean = Boolean.parseBoolean(paramString1);
+          return;
+        case 4: 
+          try
+          {
+            this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.jdField_a_of_type_Int = Integer.parseInt(paramString1);
+            return;
+          }
+          catch (Exception paramString1)
+          {
+            paramString1.printStackTrace();
+            if (!QLog.isColorLevel()) {
               break;
             }
-          } while (this.jdField_a_of_type_JavaUtilStack.size() <= 0);
+          }
+          paramString2 = new StringBuilder();
+          paramString2.append(paramString1.toString());
+          paramString2.append(", ");
+          paramString2.append(paramString1.getStackTrace().toString());
+          QLog.d("Q.richstatus.xml", 2, paramString2.toString());
+          return;
+        case 3: 
+          if (this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.jdField_a_of_type_Int == 0) {
+            break;
+          }
+          this.jdField_a_of_type_AndroidUtilSparseArray.put(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo);
+          if (this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.jdField_a_of_type_Boolean) {
+            this.c.add(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo);
+          }
+          this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo = null;
+          return;
+        case 1: 
+        case 2: 
+          this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo = ((ActionInfo)this.jdField_a_of_type_JavaUtilStack.pop());
+          if (this.c.size() == 0) {
+            this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.jdField_a_of_type_JavaUtilArrayList = null;
+          }
+          if (this.jdField_a_of_type_JavaUtilStack.size() <= 0) {
+            break;
+          }
           this.c = ((ActionInfo)this.jdField_a_of_type_JavaUtilStack.lastElement()).jdField_a_of_type_JavaUtilArrayList;
           return;
-        } while (this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.jdField_a_of_type_Int == 0);
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo);
-        if (this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.jdField_a_of_type_Boolean) {
-          this.c.add(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo);
         }
-        this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo = null;
-        return;
-        try
-        {
-          this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.jdField_a_of_type_Int = Integer.parseInt(paramString1);
-          return;
-        }
-        catch (Exception paramString1)
-        {
-          paramString1.printStackTrace();
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("Q.richstatus.xml", 2, paramString1.toString() + ", " + paramString1.getStackTrace().toString());
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.jdField_a_of_type_Boolean = Boolean.parseBoolean(paramString1);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.c = paramString1;
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.jdField_a_of_type_JavaLangString = paramString1;
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.jdField_b_of_type_JavaLangString = paramString1;
-      return;
-      if ("0".equals(paramString1))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.jdField_b_of_type_Int = 4;
-        return;
+      } else {
+        this.b.add(Integer.valueOf(Integer.parseInt(paramString1)));
       }
-      if ("1".equals(paramString1))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.jdField_b_of_type_Int = 3;
-        return;
-      }
-      if ("2".equals(paramString1))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.jdField_b_of_type_Int = 2;
-        return;
-      }
-    } while (!"4".equals(paramString1));
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.jdField_b_of_type_Int = 5;
-    return;
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.d = paramString1;
-    return;
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.e = paramString1;
-    return;
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.f = paramString1;
-    return;
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.g = paramString1;
-    return;
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.h = paramString1;
-    return;
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.i = paramString1;
-    return;
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.j = paramString1;
-    return;
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.k = paramString1;
-    return;
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusStateTag.jdField_a_of_type_JavaLangString = paramString1;
-    return;
-    this.b.add(Integer.valueOf(Integer.parseInt(paramString1)));
+    }
+    else {
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusStateTag.jdField_a_of_type_JavaLangString = paramString1;
+    }
   }
   
   public void startDocument()
@@ -205,16 +233,10 @@ public class StatusXmlHandler
   public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
   {
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangStringBuilder.replace(0, this.jdField_a_of_type_JavaLangStringBuilder.length(), "");
-    if (("StateList".equals(paramString2)) || ("SubStateList".equals(paramString2)))
+    paramString1 = this.jdField_a_of_type_JavaLangStringBuilder;
+    paramString1.replace(0, paramString1.length(), "");
+    if ((!"StateList".equals(paramString2)) && (!"SubStateList".equals(paramString2)))
     {
-      this.c = new ArrayList();
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.jdField_a_of_type_JavaUtilArrayList = this.c;
-      this.jdField_a_of_type_JavaUtilStack.push(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo);
-    }
-    do
-    {
-      return;
       if ("RichState".equals(paramString2))
       {
         this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo = new ActionInfo(-1);
@@ -226,14 +248,24 @@ public class StatusXmlHandler
         this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqRichstatusStateTag);
         return;
       }
-    } while (!"IdList".equals(paramString2));
-    this.b = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusStateTag.jdField_a_of_type_JavaUtilArrayList = this.b;
+      if ("IdList".equals(paramString2))
+      {
+        this.b = new ArrayList();
+        this.jdField_a_of_type_ComTencentMobileqqRichstatusStateTag.jdField_a_of_type_JavaUtilArrayList = this.b;
+      }
+    }
+    else
+    {
+      this.c = new ArrayList();
+      paramString1 = this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo;
+      paramString1.jdField_a_of_type_JavaUtilArrayList = this.c;
+      this.jdField_a_of_type_JavaUtilStack.push(paramString1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.StatusXmlHandler
  * JD-Core Version:    0.7.0.1
  */

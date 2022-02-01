@@ -12,12 +12,26 @@ public class ICloudAVEngine$ResultBundle
   
   public String toString()
   {
-    return "[type:" + this.jdField_a_of_type_Int + ",cate:" + this.b + ",subcate:" + this.c + ",expire:" + this.jdField_a_of_type_Long + ",act:" + this.d + ",iscache:" + this.jdField_a_of_type_Boolean + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[type:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",cate:");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",subcate:");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(",expire:");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(",act:");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(",iscache:");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.ICloudAVEngine.ResultBundle
  * JD-Core Version:    0.7.0.1
  */

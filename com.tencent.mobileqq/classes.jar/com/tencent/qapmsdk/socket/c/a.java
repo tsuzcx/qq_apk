@@ -119,12 +119,13 @@ public class a
   
   public void b(long paramLong)
   {
-    if (paramLong <= this.v)
+    long l1 = this.v;
+    if (paramLong <= l1)
     {
       Logger.INSTANCE.d(new String[] { "QAPM_Socket_SocketInfo", "get first package", ", firstReadTime:", String.valueOf(paramLong), ", lastWriteStamp:", String.valueOf(this.v), ", hostName:", this.d });
       return;
     }
-    if (paramLong - this.v >= 20000L)
+    if (paramLong - l1 >= 20000L)
     {
       Logger.INSTANCE.d(new String[] { "QAPM_Socket_SocketInfo", "first package is too big", ", firstReadTime:", String.valueOf(paramLong), ", lastWriteStamp:", String.valueOf(this.v), ", hostName:", this.d });
       return;
@@ -132,14 +133,14 @@ public class a
     if (!this.F)
     {
       this.F = true;
-      this.t = ((int)(paramLong - this.v));
+      this.t = ((int)(paramLong - l1));
     }
     this.u = (paramLong - this.v);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.socket.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -68,35 +68,42 @@ public final class ItemDisDetail
   {
     paramJceOutputStream.write(this.appId, 0);
     paramJceOutputStream.write(this.itemId, 1);
-    if (this.name != null) {
-      paramJceOutputStream.write(this.name, 2);
+    Object localObject = this.name;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.feeType, 3);
-    if (this.image != null) {
-      paramJceOutputStream.write(this.image, 4);
+    localObject = this.image;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.itemBgColor != null) {
-      paramJceOutputStream.write(this.itemBgColor, 5);
+    localObject = this.itemBgColor;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.extrainfo != null) {
-      paramJceOutputStream.write(this.extrainfo, 6);
+    localObject = this.extrainfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
     paramJceOutputStream.write(this.validlast, 7);
     paramJceOutputStream.write(this.isSetup, 8);
-    if (this.extraimage != null) {
-      paramJceOutputStream.write(this.extraimage, 9);
+    localObject = this.extraimage;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 9);
     }
-    if (this.extraappinfo != null) {
-      paramJceOutputStream.write(this.extraappinfo, 10);
+    localObject = this.extraappinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 10);
     }
-    if (this.authResult != null) {
-      paramJceOutputStream.write(this.authResult, 11);
+    localObject = this.authResult;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 11);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.ItemDisDetail
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,12 @@ class GMEAVEngineWalper$8
   
   public void a(int paramInt, String paramString)
   {
-    QLog.e("AVEngineWalper", 1, "onRoomDisconnect   result=" + paramInt + ", errinfo=" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onRoomDisconnect   result=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", errinfo=");
+    localStringBuilder.append(paramString);
+    QLog.e("AVEngineWalper", 1, localStringBuilder.toString());
     if (this.a.jdField_a_of_type_ComTencentQqavopensdkAVEngineEventHandler != null) {
       this.a.jdField_a_of_type_ComTencentQqavopensdkAVEngineEventHandler.c(paramInt, paramString);
     }
@@ -29,47 +34,46 @@ class GMEAVEngineWalper$8
   {
     int k = paramArrayOfString.length;
     int j = 0;
-    String str;
-    if (j < k)
+    while (j < k)
     {
-      str = paramArrayOfString[j];
+      String str = paramArrayOfString[j];
       QLog.i("AVEngineWalper", 1, String.format("onEndpointsUpdateInfo|eventid=%d, id=%s", new Object[] { Integer.valueOf(paramInt), str }));
-      if (!this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
-        break label237;
+      int i;
+      if (this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
+        i = ((Integer)this.a.jdField_a_of_type_JavaUtilMap.get(str)).intValue();
+      } else {
+        i = 0;
       }
-    }
-    label237:
-    for (int i = ((Integer)this.a.jdField_a_of_type_JavaUtilMap.get(str)).intValue();; i = 0)
-    {
-      switch (paramInt)
+      if (paramInt != 3)
       {
-      default: 
-        label116:
-        if (i != 0) {
-          this.a.jdField_a_of_type_JavaUtilMap.put(str, Integer.valueOf(i));
+        if (paramInt != 4)
+        {
+          if (paramInt != 5)
+          {
+            if (paramInt == 6) {
+              i &= 0xFFFFFFFE;
+            }
+          }
+          else {
+            i |= 0x1;
+          }
         }
-        break;
+        else {
+          i &= 0xFFFFFFDF;
+        }
       }
-      for (;;)
-      {
-        j += 1;
-        break;
+      else {
         i |= 0x20;
-        break label116;
-        i &= 0xFFFFFFDF;
-        break label116;
-        i |= 0x1;
-        break label116;
-        i &= 0xFFFFFFFE;
-        break label116;
-        if (this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
-          this.a.jdField_a_of_type_JavaUtilMap.remove(str);
-        }
       }
-      if (this.a.jdField_a_of_type_ComTencentQqavopensdkAVEngineEventHandler != null) {
-        this.a.jdField_a_of_type_ComTencentQqavopensdkAVEngineEventHandler.a(paramInt, paramArrayOfString);
+      if (i != 0) {
+        this.a.jdField_a_of_type_JavaUtilMap.put(str, Integer.valueOf(i));
+      } else if (this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
+        this.a.jdField_a_of_type_JavaUtilMap.remove(str);
       }
-      return;
+      j += 1;
+    }
+    if (this.a.jdField_a_of_type_ComTencentQqavopensdkAVEngineEventHandler != null) {
+      this.a.jdField_a_of_type_ComTencentQqavopensdkAVEngineEventHandler.a(paramInt, paramArrayOfString);
     }
   }
   
@@ -83,7 +87,7 @@ class GMEAVEngineWalper$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.gmersdk_warper.GMEAVEngineWalper.8
  * JD-Core Version:    0.7.0.1
  */

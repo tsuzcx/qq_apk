@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.filemanager.bubble;
 
 import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.wifi.FreeWifiDialogListener;
+import com.tencent.mobileqq.wifi.FreeWifiHelper.FreeWifiDialogListener;
 
 class DatalineFileBubbleModel$1
-  implements FreeWifiDialogListener
+  implements FreeWifiHelper.FreeWifiDialogListener
 {
   DatalineFileBubbleModel$1(DatalineFileBubbleModel paramDatalineFileBubbleModel) {}
   
@@ -19,7 +19,7 @@ class DatalineFileBubbleModel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.bubble.DatalineFileBubbleModel.1
  * JD-Core Version:    0.7.0.1
  */

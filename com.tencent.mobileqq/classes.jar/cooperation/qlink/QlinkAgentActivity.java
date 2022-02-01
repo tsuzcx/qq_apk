@@ -24,20 +24,17 @@ public class QlinkAgentActivity
     return bool;
   }
   
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if (10 == paramInt2) {
       setResult(10, paramIntent);
     }
     if (((paramIntent != null) && (paramIntent.getExtras() != null) && ((paramIntent.getBooleanExtra("foward_editbar", false) == true) || (paramIntent.getBooleanExtra("destroy_last_activity", false) == true))) || (paramInt2 == 4)) {
       this.app.getQQProxyForQlink().a(new QlAndQQInterface.DailogClickInfo(8));
-    }
-    for (;;)
-    {
-      super.finish();
-      return;
+    } else {
       super.onActivityResult(paramInt1, paramInt2, paramIntent);
     }
+    super.finish();
   }
   
   @Override
@@ -91,14 +88,14 @@ public class QlinkAgentActivity
     super.finish();
   }
   
-  public void requestWindowFeature(Intent paramIntent)
+  protected void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qlink.QlinkAgentActivity
  * JD-Core Version:    0.7.0.1
  */

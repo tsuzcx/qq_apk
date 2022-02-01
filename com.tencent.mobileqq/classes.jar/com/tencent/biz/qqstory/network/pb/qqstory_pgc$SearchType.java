@@ -17,13 +17,14 @@ public final class qqstory_pgc$SearchType
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "search_type", "start_cookie", "search_count" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, SearchType.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "search_type", "start_cookie", "search_count" }, new Object[] { localInteger, localByteStringMicro, localInteger }, SearchType.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_pgc.SearchType
  * JD-Core Version:    0.7.0.1
  */

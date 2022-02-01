@@ -53,13 +53,20 @@ public class AuthState
   
   private SharedPreferences getSharedPreferences()
   {
-    return this.mContext.getSharedPreferences(this.mAppId + "_" + this.mUin, 4);
+    Context localContext = this.mContext;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mAppId);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.mUin);
+    return localContext.getSharedPreferences(localStringBuilder.toString(), 4);
   }
   
   private static void initDefaultAskEveryTimeMap()
   {
-    scopeAuthTypeMap.put("scope.getPhoneNumber", Integer.valueOf(1));
-    scopeAuthTypeMap.put("scope.uploadAvatar", Integer.valueOf(1));
+    HashMap localHashMap = scopeAuthTypeMap;
+    Integer localInteger = Integer.valueOf(1);
+    localHashMap.put("scope.getPhoneNumber", localInteger);
+    scopeAuthTypeMap.put("scope.uploadAvatar", localInteger);
   }
   
   public static void setAllowPluginScopeName(String paramString)
@@ -158,57 +165,49 @@ public class AuthState
   
   public void setAuthState(String paramString, boolean paramBoolean, AsyncResult paramAsyncResult)
   {
-    int j = 1;
-    int i = 1;
-    ChannelProxy localChannelProxy;
     if (!TextUtils.isEmpty(paramString))
     {
-      if (!paramBoolean) {
-        break label125;
+      if (paramBoolean) {
+        grantPermission(paramString);
+      } else {
+        revokePermission(paramString);
       }
-      grantPermission(paramString);
-      localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
-      if (!paramString.startsWith("setting")) {
-        break label139;
+      ChannelProxy localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
+      boolean bool = paramString.startsWith("setting");
+      int j = 1;
+      int i = 1;
+      if (bool)
+      {
+        paramAsyncResult = new INTERFACE.StUserSettingInfo();
+        paramAsyncResult.settingItem.set(paramString);
+        localPermissionInfo = PermissionManager.g().getScopePermission(paramString);
+        localObject = paramAsyncResult.desc;
+        if (localPermissionInfo != null) {
+          paramString = localPermissionInfo.description;
+        }
+        ((PBStringField)localObject).set(paramString);
+        paramString = paramAsyncResult.authState;
+        if (!paramBoolean) {
+          i = 2;
+        }
+        paramString.set(i);
+        localChannelProxy.updateUserSetting(this.mAppId, paramAsyncResult, new AuthState.3(this));
+        return;
       }
-      paramAsyncResult = new INTERFACE.StUserSettingInfo();
-      paramAsyncResult.settingItem.set(paramString);
-      localPermissionInfo = PermissionManager.g().getScopePermission(paramString);
-      localObject = paramAsyncResult.desc;
+      Object localObject = new UserAuthInfo();
+      ((UserAuthInfo)localObject).scope = paramString;
+      PermissionInfo localPermissionInfo = PermissionManager.g().getScopePermission(paramString);
       if (localPermissionInfo != null) {
         paramString = localPermissionInfo.description;
       }
-      ((PBStringField)localObject).set(paramString);
-      paramString = paramAsyncResult.authState;
-      if (!paramBoolean) {
-        break label133;
+      ((UserAuthInfo)localObject).desc = paramString;
+      if (paramBoolean) {
+        i = j;
+      } else {
+        i = 2;
       }
-    }
-    for (;;)
-    {
-      paramString.set(i);
-      localChannelProxy.updateUserSetting(this.mAppId, paramAsyncResult, new AuthState.3(this));
-      return;
-      label125:
-      revokePermission(paramString);
-      break;
-      label133:
-      i = 2;
-    }
-    label139:
-    Object localObject = new UserAuthInfo();
-    ((UserAuthInfo)localObject).scope = paramString;
-    PermissionInfo localPermissionInfo = PermissionManager.g().getScopePermission(paramString);
-    if (localPermissionInfo != null) {
-      paramString = localPermissionInfo.description;
-    }
-    ((UserAuthInfo)localObject).desc = paramString;
-    if (paramBoolean) {}
-    for (i = j;; i = 2)
-    {
       ((UserAuthInfo)localObject).authState = i;
       localChannelProxy.setAuth(this.mAppId, (UserAuthInfo)localObject, paramAsyncResult);
-      return;
     }
   }
   
@@ -231,43 +230,33 @@ public class AuthState
     if (paramList != null)
     {
       i = 0;
-      if (i < paramList.size())
+      while (i < paramList.size())
       {
         localObject = (UserAuthInfo)paramList.get(i);
         String str = ((UserAuthInfo)localObject).scope;
         int k = ((UserAuthInfo)localObject).authState;
         if (k == 1) {
           getSharedPreferences().edit().putInt(str, 2).commit();
+        } else if (k == 2) {
+          getSharedPreferences().edit().putInt(str, 4).commit();
         }
-        for (;;)
-        {
-          i += 1;
-          break;
-          if (k == 2) {
-            getSharedPreferences().edit().putInt(str, 4).commit();
-          }
-        }
+        i += 1;
       }
     }
     if (paramList1 != null)
     {
       i = j;
-      if (i < paramList1.size())
+      while (i < paramList1.size())
       {
         paramList = (UserSettingInfo)paramList1.get(i);
         localObject = paramList.settingItem;
         j = paramList.authState;
         if (j == 1) {
           getSharedPreferences().edit().putInt((String)localObject, 2).commit();
+        } else if (j == 2) {
+          getSharedPreferences().edit().putInt((String)localObject, 4).commit();
         }
-        for (;;)
-        {
-          i += 1;
-          break;
-          if (j == 2) {
-            getSharedPreferences().edit().putInt((String)localObject, 4).commit();
-          }
-        }
+        i += 1;
       }
     }
   }
@@ -289,21 +278,22 @@ public class AuthState
       localStUserSettingInfo.settingItem.set(paramString);
     }
     paramString = localStUserSettingInfo.authState;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      paramString.set(i);
-      if (paramList != null) {
-        localStUserSettingInfo.subItems.set(paramList);
-      }
-      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).updateUserSetting(this.mAppId, localStUserSettingInfo, new AuthState.1(this, paramAsyncResult));
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 1;
+    } else {
+      i = 2;
     }
+    paramString.set(i);
+    if (paramList != null) {
+      localStUserSettingInfo.subItems.set(paramList);
+    }
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).updateUserSetting(this.mAppId, localStUserSettingInfo, new AuthState.1(this, paramAsyncResult));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.auth.AuthState
  * JD-Core Version:    0.7.0.1
  */

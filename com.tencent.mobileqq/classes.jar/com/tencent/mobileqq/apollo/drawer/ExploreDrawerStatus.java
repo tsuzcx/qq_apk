@@ -3,9 +3,11 @@ package com.tencent.mobileqq.apollo.drawer;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.apollo.api.uitls.impl.ApolloUtilImpl;
+import com.tencent.mobileqq.activity.qqsettingme.QQSettingMeApolloProcessor;
+import com.tencent.mobileqq.activity.qqsettingme.QQSettingMeViewModel;
 import com.tencent.mobileqq.apollo.script.SpriteUtil;
-import com.tencent.mobileqq.apollo.script.drawerInfo.SpriteDrawerInfoManager;
+import com.tencent.mobileqq.apollo.script.drawerinfo.SpriteDrawerInfoManager;
+import com.tencent.mobileqq.apollo.utils.api.impl.ApolloUtilImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -26,10 +28,9 @@ public class ExploreDrawerStatus
   public String d;
   public int e;
   public int f;
-  int g = 7;
+  private int g = 0;
   private int h = 0;
-  private int i = 0;
-  private int j;
+  private int i;
   
   public ExploreDrawerStatus(QQAppInterface paramQQAppInterface, JSONObject paramJSONObject, QQSettingMe paramQQSettingMe)
   {
@@ -47,56 +48,84 @@ public class ExploreDrawerStatus
     this.e = paramJSONObject.optInt("bubble_id", 0);
     this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("scheme");
     this.f = paramJSONObject.optInt("show_sum", 1);
-    this.i = paramJSONObject.optInt("msg_id", 0);
-    this.j = paramJSONObject.optInt("cmshow_module", 1);
+    this.h = paramJSONObject.optInt("msg_id", 0);
+    this.i = paramJSONObject.optInt("cmshow_module", 1);
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQSettingMe);
   }
   
   public void a(SpriteDrawerInfoManager paramSpriteDrawerInfoManager, Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    QLog.d("ExploreDrawerStatus", 1, "[onBubbleClick] " + this.jdField_d_of_type_JavaLangString + "|" + this.jdField_b_of_type_JavaLangString);
-    if (2 == this.j) {}
-    for (int k = 1;; k = 0)
-    {
-      VipUtils.a(null, "cmshow", "Apollo", "DrawerBubble_clk", 0, k, new String[] { this.e + "", String.valueOf(this.i) });
-      ApolloUtilImpl.openStoreByTabScheme(paramQQAppInterface, paramContext, this.jdField_d_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, "drawer");
-      return;
+    paramSpriteDrawerInfoManager = new StringBuilder();
+    paramSpriteDrawerInfoManager.append("[onBubbleClick] ");
+    paramSpriteDrawerInfoManager.append(this.jdField_d_of_type_JavaLangString);
+    paramSpriteDrawerInfoManager.append("|");
+    paramSpriteDrawerInfoManager.append(this.jdField_b_of_type_JavaLangString);
+    QLog.d("[cmshow]ExploreDrawerStatus", 1, paramSpriteDrawerInfoManager.toString());
+    int j;
+    if (2 == this.i) {
+      j = 1;
+    } else {
+      j = 0;
     }
+    paramSpriteDrawerInfoManager = new StringBuilder();
+    paramSpriteDrawerInfoManager.append(this.e);
+    paramSpriteDrawerInfoManager.append("");
+    VipUtils.a(null, "cmshow", "Apollo", "DrawerBubble_clk", 0, j, new String[] { paramSpriteDrawerInfoManager.toString(), String.valueOf(this.h) });
+    ApolloUtilImpl.openStoreByTabScheme(paramQQAppInterface, paramContext, this.jdField_d_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, "drawer");
   }
   
   public void a(SpriteDrawerInfoManager paramSpriteDrawerInfoManager, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    QLog.d("ExploreDrawerStatus", 1, "[onBubbleShow] showCount： " + this.h + ", showSum: " + this.f + ", content: " + this.jdField_a_of_type_JavaLangString);
-    if (this.h >= this.f) {
+    paramContext = new StringBuilder();
+    paramContext.append("[onBubbleShow] showCount： ");
+    paramContext.append(this.g);
+    paramContext.append(", showSum: ");
+    paramContext.append(this.f);
+    paramContext.append(", content: ");
+    paramContext.append(this.jdField_a_of_type_JavaLangString);
+    QLog.d("[cmshow]ExploreDrawerStatus", 1, paramContext.toString());
+    paramInt = this.g;
+    if (paramInt >= this.f) {
       return;
     }
-    this.h += 1;
+    this.g = (paramInt + 1);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
       SpriteUtil.a(paramSpriteDrawerInfoManager, this.jdField_a_of_type_JavaLangString, 9, this.e);
-      if (2 != this.j) {
-        break label202;
+      if (2 == this.i) {
+        paramInt = 1;
+      } else {
+        paramInt = 0;
       }
+      paramSpriteDrawerInfoManager = new StringBuilder();
+      paramSpriteDrawerInfoManager.append(this.e);
+      paramSpriteDrawerInfoManager.append("");
+      VipUtils.a(null, "cmshow", "Apollo", "DrawerBubble_show", 0, paramInt, new String[] { paramSpriteDrawerInfoManager.toString(), String.valueOf(this.h) });
     }
-    label202:
-    for (paramInt = 1;; paramInt = 0)
+    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))
     {
-      VipUtils.a(null, "cmshow", "Apollo", "DrawerBubble_show", 0, paramInt, new String[] { this.e + "", String.valueOf(this.i) });
-      if ((TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) || (this.jdField_a_of_type_JavaLangRefWeakReference == null)) {
-        break;
+      paramSpriteDrawerInfoManager = this.jdField_a_of_type_JavaLangRefWeakReference;
+      if (paramSpriteDrawerInfoManager != null)
+      {
+        paramSpriteDrawerInfoManager = (QQSettingMe)paramSpriteDrawerInfoManager.get();
+        if (paramSpriteDrawerInfoManager != null)
+        {
+          if (QLog.isColorLevel())
+          {
+            paramContext = new StringBuilder();
+            paramContext.append("[showExploreBox] url:");
+            paramContext.append(this.jdField_c_of_type_JavaLangString);
+            QLog.d("QQSettingRedesign", 2, paramContext.toString());
+          }
+          ((QQSettingMeApolloProcessor)paramSpriteDrawerInfoManager.a().a("d_apollo")).b(this.jdField_c_of_type_JavaLangString);
+        }
       }
-      paramSpriteDrawerInfoManager = (QQSettingMe)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (paramSpriteDrawerInfoManager == null) {
-        break;
-      }
-      paramSpriteDrawerInfoManager.a(this.jdField_c_of_type_JavaLangString);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.drawer.ExploreDrawerStatus
  * JD-Core Version:    0.7.0.1
  */

@@ -12,34 +12,34 @@ class PluginJumpManager$2
   
   public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
   {
-    this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager = paramPluginManagerClient;
-    paramPluginManagerClient = this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager.queryPlugin(this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$BidInfo.b);
-    int i;
-    if (paramPluginManagerClient != null) {
+    PluginJumpManager localPluginJumpManager = this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager;
+    localPluginJumpManager.mPluginManager = paramPluginManagerClient;
+    paramPluginManagerClient = localPluginJumpManager.mPluginManager.queryPlugin(this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$BidInfo.b);
+    if (paramPluginManagerClient != null)
+    {
       if (paramPluginManagerClient.mState == 4)
       {
         i = 1;
         this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.launchPlugin(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$BidInfo.b, this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$BidInfo.c, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$UrlMappingInfo.b, this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$UrlMappingInfo.a);
+        break label165;
       }
-    }
-    for (;;)
-    {
-      if (i == 0) {
-        this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.openLinkInNewWebView(this.jdField_a_of_type_AndroidAppActivity, this.b, this.d);
-      }
-      return;
       PluginJumpManager.report("BizTechReport", "native_plugin", "open_with_noapk", 0, this.b, this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$UrlMappingInfo.b, null, null);
       this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager.installPlugin(this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$BidInfo.b);
-      i = 0;
-      continue;
+    }
+    else
+    {
       PluginJumpManager.report("BizTechReport", "native_plugin", "open_with_noapk", 1, this.b, this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$UrlMappingInfo.b, null, null);
-      i = 0;
+    }
+    int i = 0;
+    label165:
+    if (i == 0) {
+      this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.openLinkInNewWebView(this.jdField_a_of_type_AndroidAppActivity, this.b, this.d);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troopplugin.PluginJumpManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -46,18 +46,19 @@ public class ColorSelectView
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     int i = getMeasuredWidth();
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    paramCanvas.drawCircle(i / 2, i / 2, (i - this.b) / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
+    float f = i / 2;
+    paramCanvas.drawCircle(f, f, (i - this.b) / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-15550475);
       this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
       this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Float);
-      paramCanvas.drawCircle(i / 2, i / 2, i / 2 - this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawCircle(f, f, f - this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
   }
   
@@ -75,7 +76,7 @@ public class ColorSelectView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ColorSelectView
  * JD-Core Version:    0.7.0.1
  */

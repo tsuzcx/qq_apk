@@ -19,27 +19,33 @@ public class AppRuntimeEventCenter$MiniAppStateMessage
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("{RuntimeLoader(");
-    if (this.appRuntimeLoader != null)
-    {
-      localObject = this.appRuntimeLoader.getClass().getSimpleName();
-      localStringBuilder = localStringBuilder.append((String)localObject).append(")@");
-      if (this.appRuntimeLoader == null) {
-        break label99;
-      }
-    }
-    label99:
-    for (Object localObject = Integer.valueOf(this.appRuntimeLoader.hashCode());; localObject = "nil")
-    {
-      return localObject + this.appRuntimeLoader + " what=" + this.what + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{RuntimeLoader(");
+    Object localObject = this.appRuntimeLoader;
+    String str = "nil";
+    if (localObject != null) {
+      localObject = localObject.getClass().getSimpleName();
+    } else {
       localObject = "nil";
-      break;
     }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(")@");
+    BaseRuntimeLoader localBaseRuntimeLoader = this.appRuntimeLoader;
+    localObject = str;
+    if (localBaseRuntimeLoader != null) {
+      localObject = Integer.valueOf(localBaseRuntimeLoader.hashCode());
+    }
+    localStringBuilder.append(localObject);
+    localStringBuilder.append(this.appRuntimeLoader);
+    localStringBuilder.append(" what=");
+    localStringBuilder.append(this.what);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.AppRuntimeEventCenter.MiniAppStateMessage
  * JD-Core Version:    0.7.0.1
  */

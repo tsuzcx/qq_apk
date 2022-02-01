@@ -27,38 +27,37 @@ public final class CompletableOnSubscribeMergeDelayErrorArray
     Completable[] arrayOfCompletable = this.sources;
     int j = arrayOfCompletable.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
-      localCompletable = arrayOfCompletable[i];
-      if (!localCompositeSubscription.isUnsubscribed()) {}
-    }
-    while (localAtomicInteger.decrementAndGet() != 0)
-    {
-      Completable localCompletable;
-      return;
+      Completable localCompletable = arrayOfCompletable[i];
+      if (localCompositeSubscription.isUnsubscribed()) {
+        return;
+      }
       if (localCompletable == null)
       {
         localConcurrentLinkedQueue.offer(new NullPointerException("A completable source is null"));
         localAtomicInteger.decrementAndGet();
       }
-      for (;;)
+      else
       {
-        i += 1;
-        break;
         localCompletable.subscribe(new CompletableOnSubscribeMergeDelayErrorArray.1(this, localCompositeSubscription, localConcurrentLinkedQueue, localAtomicInteger, paramCompletableSubscriber));
       }
+      i += 1;
     }
-    if (localConcurrentLinkedQueue.isEmpty())
+    if (localAtomicInteger.decrementAndGet() == 0)
     {
-      paramCompletableSubscriber.onCompleted();
-      return;
+      if (localConcurrentLinkedQueue.isEmpty())
+      {
+        paramCompletableSubscriber.onCompleted();
+        return;
+      }
+      paramCompletableSubscriber.onError(CompletableOnSubscribeMerge.collectErrors(localConcurrentLinkedQueue));
     }
-    paramCompletableSubscriber.onError(CompletableOnSubscribeMerge.collectErrors(localConcurrentLinkedQueue));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.CompletableOnSubscribeMergeDelayErrorArray
  * JD-Core Version:    0.7.0.1
  */

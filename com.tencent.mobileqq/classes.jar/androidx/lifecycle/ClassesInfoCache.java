@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-class ClassesInfoCache
+final class ClassesInfoCache
 {
   private static final int CALL_TYPE_NO_ARG = 0;
   private static final int CALL_TYPE_PROVIDER = 1;
@@ -31,6 +31,7 @@ class ClassesInfoCache
     localObject1 = paramClass.getInterfaces();
     int j = localObject1.length;
     int i = 0;
+    Object localObject2;
     Object localObject3;
     while (i < j)
     {
@@ -42,58 +43,61 @@ class ClassesInfoCache
       }
       i += 1;
     }
-    if (paramArrayOfMethod != null) {}
-    boolean bool;
-    for (;;)
-    {
-      int k = paramArrayOfMethod.length;
-      j = 0;
-      bool = false;
-      for (;;)
-      {
-        if (j >= k) {
-          break label345;
-        }
-        localObject1 = paramArrayOfMethod[j];
-        localObject3 = (OnLifecycleEvent)((Method)localObject1).getAnnotation(OnLifecycleEvent.class);
-        if (localObject3 != null) {
-          break;
-        }
-        j += 1;
-      }
+    if (paramArrayOfMethod == null) {
       paramArrayOfMethod = getDeclaredMethods(paramClass);
     }
-    Object localObject2 = ((Method)localObject1).getParameterTypes();
-    if (localObject2.length > 0) {
-      if (!localObject2[0].isAssignableFrom(LifecycleOwner.class)) {
-        throw new IllegalArgumentException("invalid parameter type. Must be one and instanceof LifecycleOwner");
-      }
-    }
-    for (i = 1;; i = 0)
+    int k = paramArrayOfMethod.length;
+    j = 0;
+    boolean bool = false;
+    while (j < k)
     {
-      localObject3 = ((OnLifecycleEvent)localObject3).value();
-      if (localObject2.length > 1)
+      localObject1 = paramArrayOfMethod[j];
+      localObject3 = (OnLifecycleEvent)((Method)localObject1).getAnnotation(OnLifecycleEvent.class);
+      if (localObject3 != null)
       {
-        if (!localObject2[1].isAssignableFrom(Lifecycle.Event.class)) {
-          throw new IllegalArgumentException("invalid parameter type. second arg must be an event");
+        localObject2 = ((Method)localObject1).getParameterTypes();
+        if (localObject2.length > 0)
+        {
+          if (localObject2[0].isAssignableFrom(LifecycleOwner.class)) {
+            i = 1;
+          } else {
+            throw new IllegalArgumentException("invalid parameter type. Must be one and instanceof LifecycleOwner");
+          }
         }
-        if (localObject3 != Lifecycle.Event.ON_ANY) {
-          throw new IllegalArgumentException("Second arg is supported only for ON_ANY value");
+        else {
+          i = 0;
         }
-        i = 2;
+        localObject3 = ((OnLifecycleEvent)localObject3).value();
+        if (localObject2.length > 1) {
+          if (localObject2[1].isAssignableFrom(Lifecycle.Event.class))
+          {
+            if (localObject3 == Lifecycle.Event.ON_ANY) {
+              i = 2;
+            } else {
+              throw new IllegalArgumentException("Second arg is supported only for ON_ANY value");
+            }
+          }
+          else {
+            throw new IllegalArgumentException("invalid parameter type. second arg must be an event");
+          }
+        }
+        if (localObject2.length <= 2)
+        {
+          verifyAndPutHandler(localHashMap, new ClassesInfoCache.MethodReference(i, (Method)localObject1), (Lifecycle.Event)localObject3, paramClass);
+          bool = true;
+        }
       }
-      if (localObject2.length > 2) {
-        throw new IllegalArgumentException("cannot have more than 2 params");
+      else
+      {
+        j += 1;
+        continue;
       }
-      verifyAndPutHandler(localHashMap, new ClassesInfoCache.MethodReference(i, (Method)localObject1), (Lifecycle.Event)localObject3, paramClass);
-      bool = true;
-      break;
-      label345:
-      paramArrayOfMethod = new ClassesInfoCache.CallbackInfo(localHashMap);
-      this.mCallbackMap.put(paramClass, paramArrayOfMethod);
-      this.mHasLifecycleMethods.put(paramClass, Boolean.valueOf(bool));
-      return paramArrayOfMethod;
+      throw new IllegalArgumentException("cannot have more than 2 params");
     }
+    paramArrayOfMethod = new ClassesInfoCache.CallbackInfo(localHashMap);
+    this.mCallbackMap.put(paramClass, paramArrayOfMethod);
+    this.mHasLifecycleMethods.put(paramClass, Boolean.valueOf(bool));
+    return paramArrayOfMethod;
   }
   
   private Method[] getDeclaredMethods(Class<?> paramClass)
@@ -115,7 +119,16 @@ class ClassesInfoCache
     if ((localEvent != null) && (paramEvent != localEvent))
     {
       paramMap = paramMethodReference.mMethod;
-      throw new IllegalArgumentException("Method " + paramMap.getName() + " in " + paramClass.getName() + " already declared with different @OnLifecycleEvent value: previous value " + localEvent + ", new value " + paramEvent);
+      paramMethodReference = new StringBuilder();
+      paramMethodReference.append("Method ");
+      paramMethodReference.append(paramMap.getName());
+      paramMethodReference.append(" in ");
+      paramMethodReference.append(paramClass.getName());
+      paramMethodReference.append(" already declared with different @OnLifecycleEvent value: previous value ");
+      paramMethodReference.append(localEvent);
+      paramMethodReference.append(", new value ");
+      paramMethodReference.append(paramEvent);
+      throw new IllegalArgumentException(paramMethodReference.toString());
     }
     if (localEvent == null) {
       paramMap.put(paramMethodReference, paramEvent);
@@ -155,7 +168,7 @@ class ClassesInfoCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.lifecycle.ClassesInfoCache
  * JD-Core Version:    0.7.0.1
  */

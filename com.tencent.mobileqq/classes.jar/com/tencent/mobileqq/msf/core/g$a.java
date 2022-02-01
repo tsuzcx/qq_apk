@@ -14,18 +14,27 @@ class g$a
   g$a(String paramString)
   {
     Object localObject = System.getSecurityManager();
-    if (localObject != null) {}
-    for (localObject = ((SecurityManager)localObject).getThreadGroup();; localObject = Thread.currentThread().getThreadGroup())
-    {
-      this.b = ((ThreadGroup)localObject);
-      this.d = (paramString + "-pool-" + a.getAndIncrement() + "-thread-");
-      return;
+    if (localObject != null) {
+      localObject = ((SecurityManager)localObject).getThreadGroup();
+    } else {
+      localObject = Thread.currentThread().getThreadGroup();
     }
+    this.b = ((ThreadGroup)localObject);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("-pool-");
+    ((StringBuilder)localObject).append(a.getAndIncrement());
+    ((StringBuilder)localObject).append("-thread-");
+    this.d = ((StringBuilder)localObject).toString();
   }
   
   public Thread newThread(Runnable paramRunnable)
   {
-    paramRunnable = new Thread(this.b, paramRunnable, this.d + this.c.getAndIncrement(), 0L);
+    ThreadGroup localThreadGroup = this.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.c.getAndIncrement());
+    paramRunnable = new Thread(localThreadGroup, paramRunnable, localStringBuilder.toString(), 0L);
     if (paramRunnable.isDaemon()) {
       paramRunnable.setDaemon(false);
     }
@@ -37,7 +46,7 @@ class g$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.g.a
  * JD-Core Version:    0.7.0.1
  */

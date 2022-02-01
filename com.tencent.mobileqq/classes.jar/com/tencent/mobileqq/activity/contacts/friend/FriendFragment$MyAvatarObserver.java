@@ -7,7 +7,7 @@ class FriendFragment$MyAvatarObserver
 {
   private FriendFragment$MyAvatarObserver(FriendFragment paramFriendFragment) {}
   
-  public void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
     if (paramBoolean) {
       FriendFragment.a(this.a, 5000L, false);
@@ -16,7 +16,7 @@ class FriendFragment$MyAvatarObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.friend.FriendFragment.MyAvatarObserver
  * JD-Core Version:    0.7.0.1
  */

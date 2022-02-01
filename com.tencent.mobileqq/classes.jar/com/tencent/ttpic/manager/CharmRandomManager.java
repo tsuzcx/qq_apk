@@ -70,81 +70,72 @@ public class CharmRandomManager
   
   public void updateCharmValue(List<Integer> paramList, boolean paramBoolean)
   {
-    double d2 = -1.0D;
-    double d1;
-    if (((!CollectionUtils.isEmpty(paramList)) && (!this.mCharmValueMap.containsKey(paramList.get(0)))) || ((paramBoolean) && (!this.mHandsValueMap.containsKey(Integer.valueOf(0))))) {
-      if (this.isUpdateHandCharm) {
-        if ((paramBoolean) && (!this.mHandsValueMap.containsKey(Integer.valueOf(0))))
+    boolean bool = CollectionUtils.isEmpty(paramList);
+    Integer localInteger = Integer.valueOf(0);
+    if (((!bool) && (!this.mCharmValueMap.containsKey(paramList.get(0)))) || ((paramBoolean) && (!this.mHandsValueMap.containsKey(localInteger))))
+    {
+      if (this.isUpdateHandCharm)
+      {
+        if ((paramBoolean) && (!this.mHandsValueMap.containsKey(localInteger)))
         {
           d1 = mRandom.nextDouble();
-          if (d1 >= 0.0D) {
-            break label485;
-          }
+          break label310;
+        }
+        if (this.mHandsValueMap.containsKey(localInteger))
+        {
+          d1 = ((Double)this.mHandsValueMap.get(localInteger)).doubleValue();
+          break label310;
+        }
+      }
+      else if (this.isUpdateFaceCharm)
+      {
+        if ((!CollectionUtils.isEmpty(paramList)) && (!this.mCharmValueMap.containsKey(paramList.get(0))))
+        {
           d1 = mRandom.nextDouble();
+          break label310;
+        }
+        if ((!CollectionUtils.isEmpty(paramList)) && (this.mCharmValueMap.containsKey(paramList.get(0))))
+        {
+          d1 = ((Double)this.mCharmValueMap.get(paramList.get(0))).doubleValue();
+          break label310;
         }
       }
     }
-    label485:
-    for (;;)
+    else
     {
-      if (!CollectionUtils.isEmpty(paramList))
+      if ((!CollectionUtils.isEmpty(paramList)) && (this.mCharmValueMap.containsKey(paramList.get(0))))
       {
-        int i = ((Integer)paramList.get(0)).intValue();
-        this.mCharmValueMap.put(Integer.valueOf(i), Double.valueOf(d1));
-        i = 1;
-        for (;;)
-        {
-          if (i < paramList.size())
-          {
-            int j = ((Integer)paramList.get(i)).intValue();
-            if (!this.mCharmValueMap.containsKey(Integer.valueOf(j))) {
-              this.mCharmValueMap.put(paramList.get(i), Double.valueOf(mRandom.nextDouble()));
-            }
-            i += 1;
-            continue;
-            d1 = d2;
-            if (!this.mHandsValueMap.containsKey(Integer.valueOf(0))) {
-              break;
-            }
-            d1 = ((Double)this.mHandsValueMap.get(Integer.valueOf(0))).doubleValue();
-            break;
-            d1 = d2;
-            if (!this.isUpdateFaceCharm) {
-              break;
-            }
-            if ((!CollectionUtils.isEmpty(paramList)) && (!this.mCharmValueMap.containsKey(paramList.get(0))))
-            {
-              d1 = mRandom.nextDouble();
-              break;
-            }
-            d1 = d2;
-            if (CollectionUtils.isEmpty(paramList)) {
-              break;
-            }
-            d1 = d2;
-            if (!this.mCharmValueMap.containsKey(paramList.get(0))) {
-              break;
-            }
-            d1 = ((Double)this.mCharmValueMap.get(paramList.get(0))).doubleValue();
-            break;
-            if ((!CollectionUtils.isEmpty(paramList)) && (this.mCharmValueMap.containsKey(paramList.get(0))))
-            {
-              d1 = ((Double)this.mCharmValueMap.get(paramList.get(0))).doubleValue();
-              break;
-            }
-            d1 = d2;
-            if (!this.mHandsValueMap.containsKey(Integer.valueOf(0))) {
-              break;
-            }
-            d1 = ((Double)this.mHandsValueMap.get(Integer.valueOf(0))).doubleValue();
-            break;
-          }
+        d1 = ((Double)this.mCharmValueMap.get(paramList.get(0))).doubleValue();
+        break label310;
+      }
+      if (this.mHandsValueMap.containsKey(localInteger))
+      {
+        d1 = ((Double)this.mHandsValueMap.get(localInteger)).doubleValue();
+        break label310;
+      }
+    }
+    double d1 = -1.0D;
+    label310:
+    double d2 = d1;
+    if (d1 < 0.0D) {
+      d2 = mRandom.nextDouble();
+    }
+    if (!CollectionUtils.isEmpty(paramList))
+    {
+      int i = ((Integer)paramList.get(0)).intValue();
+      this.mCharmValueMap.put(Integer.valueOf(i), Double.valueOf(d2));
+      i = 1;
+      while (i < paramList.size())
+      {
+        int j = ((Integer)paramList.get(i)).intValue();
+        if (!this.mCharmValueMap.containsKey(Integer.valueOf(j))) {
+          this.mCharmValueMap.put(paramList.get(i), Double.valueOf(mRandom.nextDouble()));
         }
+        i += 1;
       }
-      if (paramBoolean) {
-        this.mHandsValueMap.put(Integer.valueOf(0), Double.valueOf(d1));
-      }
-      return;
+    }
+    if (paramBoolean) {
+      this.mHandsValueMap.put(localInteger, Double.valueOf(d2));
     }
   }
   
@@ -177,7 +168,7 @@ public class CharmRandomManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.manager.CharmRandomManager
  * JD-Core Version:    0.7.0.1
  */

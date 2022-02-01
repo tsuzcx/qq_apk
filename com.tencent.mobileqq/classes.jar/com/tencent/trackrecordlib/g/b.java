@@ -9,7 +9,7 @@ import com.tencent.trackrecordlib.core.a.a;
 
 public class b
 {
-  private static final String a = b.class.getSimpleName();
+  private static final String a = "b";
   private static a.a b;
   private static Application.ActivityLifecycleCallbacks c = new b.1();
   
@@ -57,7 +57,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trackrecordlib.g.b
  * JD-Core Version:    0.7.0.1
  */

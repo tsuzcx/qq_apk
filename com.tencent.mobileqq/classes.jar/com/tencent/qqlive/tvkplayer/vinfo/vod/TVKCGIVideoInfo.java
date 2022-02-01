@@ -529,12 +529,13 @@ public class TVKCGIVideoInfo
     this.selectedFormat = paramParcel.readString();
     this.selectedFormatID = paramParcel.readInt();
     this.selectedFilesize = paramParcel.readLong();
-    if (paramParcel.readInt() > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.localVideo = bool;
-      return;
+    boolean bool;
+    if (paramParcel.readInt() > 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.localVideo = bool;
   }
   
   public void setAction(String paramString)
@@ -834,80 +835,12 @@ public class TVKCGIVideoInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.s);
-    paramParcel.writeInt(this.em);
-    paramParcel.writeInt(this.exem);
-    paramParcel.writeInt(this.preview);
-    paramParcel.writeInt(this.dltype);
-    paramParcel.writeLong(this.tm);
-    paramParcel.writeInt(this.fp2p);
-    paramParcel.writeInt(this.tstid);
-    paramParcel.writeString(this.ip);
-    paramParcel.writeString(this.base);
-    paramParcel.writeInt(this.ch);
-    paramParcel.writeString(this.ckc);
-    paramParcel.writeInt(this.ct);
-    paramParcel.writeInt(this.dm);
-    paramParcel.writeInt(this.drm);
-    paramParcel.writeInt(this.enc);
-    paramParcel.writeString(this.fmd5);
-    paramParcel.writeString(this.fn);
-    paramParcel.writeString(this.fps);
-    paramParcel.writeString(this.keyid);
-    paramParcel.writeLong(this.fs);
-    paramParcel.writeInt(this.fst);
-    paramParcel.writeInt(this.head);
-    paramParcel.writeInt(this.hevc);
-    paramParcel.writeInt(this.iflag);
-    paramParcel.writeString(this.lnk);
-    paramParcel.writeInt(this.mst);
-    paramParcel.writeInt(this.st);
-    paramParcel.writeInt(this.tail);
-    paramParcel.writeLong(this.targetid);
-    paramParcel.writeFloat(this.td);
-    paramParcel.writeString(this.ti);
-    paramParcel.writeInt(this.tie);
-    paramParcel.writeInt(this.type);
-    paramParcel.writeInt(this.vh);
-    paramParcel.writeInt(this.vw);
-    paramParcel.writeFloat(this.wh);
-    paramParcel.writeString(this.vid);
-    paramParcel.writeInt(this.videotype);
-    paramParcel.writeInt(this.vr);
-    paramParcel.writeInt(this.vst);
-    paramParcel.writeInt(this.swhdcp);
-    paramParcel.writeInt(this.br);
-    paramParcel.writeInt(this.fc);
-    paramParcel.writeString(this.fvkey);
-    paramParcel.writeDouble(this.duration);
-    paramParcel.writeString(this.action);
-    paramParcel.writeString(this.adsid);
-    paramParcel.writeList(this.formatInfos);
-    paramParcel.writeList(this.audioTrackInfos);
-    paramParcel.writeList(this.subtitleInfos);
-    paramParcel.writeList(this.pictureInfos);
-    paramParcel.writeList(this.urlInfos);
-    paramParcel.writeList(this.watermarkInfos);
-    paramParcel.writeList(this.mp4ClipInfos);
-    paramParcel.writeList(this.tvLogoInfos);
-    paramParcel.writeString(this.url);
-    paramParcel.writeString(this.vinfoXml);
-    paramParcel.writeString(this.actualFormat);
-    paramParcel.writeString(this.plInfoXml);
-    paramParcel.writeString(this.selectedFormat);
-    paramParcel.writeInt(this.selectedFormatID);
-    paramParcel.writeLong(this.selectedFilesize);
-    if (this.localVideo) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramParcel.writeInt(paramInt);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.vod.TVKCGIVideoInfo
  * JD-Core Version:    0.7.0.1
  */

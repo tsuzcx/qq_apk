@@ -22,7 +22,10 @@ public class MemoriesProfilePresenter$GetYearNodeListReceiver
     if (paramGetYearNodeListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
       paramGetYearNodeListEvent = paramGetYearNodeListEvent.jdField_a_of_type_JavaUtilList.iterator();
-      for (int i = 0; paramGetYearNodeListEvent.hasNext(); i = ((MomeriesYearNode)paramGetYearNodeListEvent.next()).videoCount + i) {}
+      int i = 0;
+      while (paramGetYearNodeListEvent.hasNext()) {
+        i += ((MomeriesYearNode)paramGetYearNodeListEvent.next()).videoCount;
+      }
       if (i >= 0)
       {
         SLog.b("Q.qqstory.memories.MemoriesProfilePresenter", "update video total count. %d.", Integer.valueOf(i));
@@ -43,7 +46,7 @@ public class MemoriesProfilePresenter$GetYearNodeListReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetYearNodeListReceiver
  * JD-Core Version:    0.7.0.1
  */

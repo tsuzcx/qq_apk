@@ -1,10 +1,10 @@
 package com.tencent.biz.qqstory.playvideo.lrtbwidget;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class XViewPager$5
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   XViewPager$5(XViewPager paramXViewPager) {}
   
@@ -28,7 +28,7 @@ class XViewPager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager.5
  * JD-Core Version:    0.7.0.1
  */

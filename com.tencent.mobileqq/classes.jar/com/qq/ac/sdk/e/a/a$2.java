@@ -13,7 +13,9 @@ final class a$2
   
   public final void a(t paramt)
   {
-    Log.d("VolleyEngine", "onErrorResponse " + paramt.getMessage());
+    StringBuilder localStringBuilder = new StringBuilder("onErrorResponse ");
+    localStringBuilder.append(paramt.getMessage());
+    Log.d("VolleyEngine", localStringBuilder.toString());
     paramt = this.a.d();
     if (paramt != null) {
       paramt.onFailure(-60001);
@@ -22,7 +24,7 @@ final class a$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.qq.ac.sdk.e.a.a.2
  * JD-Core Version:    0.7.0.1
  */

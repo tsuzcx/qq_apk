@@ -1,5 +1,6 @@
 package com.tencent.mtt.hippy.dom;
 
+import com.tencent.mtt.hippy.utils.LogUtils;
 import java.util.ArrayDeque;
 
 public class d
@@ -24,15 +25,22 @@ public class d
     {
       this.a.addLast(parama);
       this.b += 1;
-      if (this.c) {}
+      if (!this.c) {
+        try
+        {
+          a.a().a(this.e);
+          this.c = true;
+          return;
+        }
+        catch (Exception parama)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("postFrameCallback: ");
+          localStringBuilder.append(parama.getMessage());
+          LogUtils.d("HippyChoreographer", localStringBuilder.toString());
+        }
+      }
     }
-    try
-    {
-      a.a().a(this.e);
-      this.c = true;
-      return;
-    }
-    catch (Exception parama) {}
   }
   
   void b()
@@ -55,7 +63,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.dom.d
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,11 @@ public class ScoreItemSetting
     int i = 0;
     while (i < 10)
     {
-      this.scores[i] = ("score" + i);
+      String[] arrayOfString = this.scores;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("score");
+      localStringBuilder.append(i);
+      arrayOfString[i] = localStringBuilder.toString();
       i += 1;
     }
   }
@@ -25,7 +29,7 @@ public class ScoreItemSetting
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.juyoujinggame.ScoreItemSetting
  * JD-Core Version:    0.7.0.1
  */

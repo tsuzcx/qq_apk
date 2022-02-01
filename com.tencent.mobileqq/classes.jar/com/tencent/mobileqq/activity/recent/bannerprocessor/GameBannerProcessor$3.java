@@ -14,13 +14,13 @@ class GameBannerProcessor$3
   public void a(String paramString1, Bitmap paramBitmap, String paramString2)
   {
     this.jdField_a_of_type_AndroidOsBundle.putParcelable("iconURLBitmap", paramBitmap);
-    BannerManager.a().a(36, 2, this.jdField_a_of_type_AndroidOsMessage);
+    BannerManager.a().a(GameBannerProcessor.a, 2, this.jdField_a_of_type_AndroidOsMessage);
     this.jdField_a_of_type_AndroidOsMessage.recycle();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.GameBannerProcessor.3
  * JD-Core Version:    0.7.0.1
  */

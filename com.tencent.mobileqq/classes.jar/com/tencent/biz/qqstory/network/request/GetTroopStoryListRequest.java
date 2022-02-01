@@ -41,7 +41,7 @@ public class GetTroopStoryListRequest
     return StoryApi.a("StoryGroupSvc.get_video_list");
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_group.ReqGetGroupVideoList localReqGetGroupVideoList = new qqstory_group.ReqGetGroupVideoList();
     localReqGetGroupVideoList.group_id.set(this.b);
@@ -56,12 +56,25 @@ public class GetTroopStoryListRequest
   
   public String toString()
   {
-    return "GetTroopStoryListRequest{groupId='" + this.b + "startCookie='" + this.c + " pageSize='" + this.d + " seq='" + this.f + " timeZone=" + this.e + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetTroopStoryListRequest{groupId='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("startCookie='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(" pageSize='");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(" seq='");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(" timeZone=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetTroopStoryListRequest
  * JD-Core Version:    0.7.0.1
  */

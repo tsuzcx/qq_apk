@@ -45,76 +45,75 @@ public abstract class AsynLoadDrawable
   
   public Drawable getCurrDrawable()
   {
-    switch (this.mCurState)
+    int i = this.mCurState;
+    if (i != 0)
     {
-    default: 
-      return null;
-    case 0: 
-      return this.mLoadingDrawable;
-    case 1: 
+      if (i != 1)
+      {
+        if (i != 2) {
+          return null;
+        }
+        return this.mFailureDrawable;
+      }
       return this.mLoadedDrawable;
     }
-    return this.mFailureDrawable;
+    return this.mLoadingDrawable;
   }
   
   public abstract Drawable getDefaultDrawable();
   
   public int getIntrinsicHeight()
   {
-    int i = 0;
     Drawable localDrawable = getCurrDrawable();
     if (localDrawable != null) {
-      i = localDrawable.getIntrinsicHeight();
+      return localDrawable.getIntrinsicHeight();
     }
-    return i;
+    return 0;
   }
   
   public int getIntrinsicWidth()
   {
-    int i = 0;
     Drawable localDrawable = getCurrDrawable();
     if (localDrawable != null) {
-      i = localDrawable.getIntrinsicWidth();
+      return localDrawable.getIntrinsicWidth();
     }
-    return i;
+    return 0;
   }
   
   public Bitmap getLoadedBitmap()
   {
-    if ((this.mLoadedDrawable != null) && ((this.mLoadedDrawable instanceof BitmapDrawable))) {
-      return ((BitmapDrawable)this.mLoadedDrawable).getBitmap();
+    Drawable localDrawable = this.mLoadedDrawable;
+    if ((localDrawable != null) && ((localDrawable instanceof BitmapDrawable))) {
+      return ((BitmapDrawable)localDrawable).getBitmap();
     }
     return null;
   }
   
   public int getMinimumHeight()
   {
-    int i = 0;
     Drawable localDrawable = getCurrDrawable();
     if (localDrawable != null) {
-      i = localDrawable.getMinimumHeight();
+      return localDrawable.getMinimumHeight();
     }
-    return i;
+    return 0;
   }
   
   public int getMinimumWidth()
   {
-    int i = 0;
     Drawable localDrawable = getCurrDrawable();
     if (localDrawable != null) {
-      i = localDrawable.getMinimumWidth();
+      return localDrawable.getMinimumWidth();
     }
-    return i;
+    return 0;
   }
   
   public int getOpacity()
   {
-    int i = 0;
     Drawable localDrawable = getCurrDrawable();
     if (localDrawable != null) {
-      i = localDrawable.getOpacity();
+      return localDrawable.getOpacity();
     }
-    return i;
+    return 0;
   }
   
   protected void onBoundsChange(Rect paramRect)
@@ -123,18 +122,17 @@ public abstract class AsynLoadDrawable
     {
       this.mLoadedDrawable = new BitmapDrawable(BaseApplication.getContext().getResources(), ((IQQAvatarUtilApi)QRoute.api(IQQAvatarUtilApi.class)).getDrawableBitmap(this.mLoadedDrawable));
       this.mLoadedDrawable.setBounds(paramRect);
-      if (this.mAlpha != -1) {
-        this.mLoadedDrawable.setAlpha(this.mAlpha);
+      int i = this.mAlpha;
+      if (i != -1) {
+        this.mLoadedDrawable.setAlpha(i);
       }
       invalidateSelf();
-    }
-    Drawable localDrawable;
-    do
-    {
       return;
-      localDrawable = getCurrDrawable();
-    } while (localDrawable == null);
-    localDrawable.setBounds(paramRect);
+    }
+    Drawable localDrawable = getCurrDrawable();
+    if (localDrawable != null) {
+      localDrawable.setBounds(paramRect);
+    }
   }
   
   public void setAlpha(int paramInt)
@@ -166,7 +164,7 @@ public abstract class AsynLoadDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.AsynLoadDrawable
  * JD-Core Version:    0.7.0.1
  */

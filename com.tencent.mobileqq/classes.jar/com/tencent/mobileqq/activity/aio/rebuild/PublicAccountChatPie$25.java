@@ -1,32 +1,42 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
-import com.tencent.mobileqq.troop.utils.TroopBindPublicAccountMgr;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 class PublicAccountChatPie$25
-  implements HttpWebCgiAsyncTask.Callback
+  implements ActionSheet.OnButtonClickListener
 {
   PublicAccountChatPie$25(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramJSONObject == null) {}
-    while (paramJSONObject.optInt("retcode", -1) != 0) {
+    if (this.a.R) {
       return;
     }
-    paramJSONObject = (TroopBindPublicAccountMgr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER);
-    paramInt = paramJSONObject.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    paramJSONObject.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 0, paramInt & 0xF);
+    paramView = this.a;
+    paramView.R = true;
+    if ((paramView.jdField_a_of_type_ArrayOfInt != null) && (this.a.jdField_a_of_type_ArrayOfInt.length > 0))
+    {
+      this.a.l(2131695275);
+      paramInt = this.a.jdField_a_of_type_ArrayOfInt[0];
+      if (paramInt == 0) {
+        this.a.a(true, 0);
+      } else {
+        this.a.a(false, paramInt);
+      }
+    }
+    else
+    {
+      this.a.l(2131695275);
+      this.a.a(true, 0);
+    }
+    this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.25
  * JD-Core Version:    0.7.0.1
  */

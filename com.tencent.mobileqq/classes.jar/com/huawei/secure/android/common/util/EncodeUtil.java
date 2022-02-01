@@ -6,31 +6,23 @@ import java.util.Locale;
 
 public class EncodeUtil
 {
-  private static final String TAG = EncodeUtil.class.getSimpleName();
-  private static final char[] f = { 44, 46, 95 };
+  private static final String TAG = "EncodeUtil";
+  private static final char[] f = { 44, 46, 45 };
   private static final String[] g = new String[256];
   
   static
   {
-    char c = '\000';
-    if (c < 'ÿ')
-    {
-      if (((c < '0') || (c > '9')) && ((c < 'A') || (c > 'Z')) && ((c < 'a') || (c > 'z'))) {
-        g[c] = b(c).intern();
-      }
-      for (;;)
-      {
-        c = (char)(c + '\001');
-        break;
+    for (char c = '\000'; c < 'ÿ'; c = (char)(c + '\001')) {
+      if (((c >= '0') && (c <= '9')) || ((c >= 'A') && (c <= 'Z')) || ((c >= 'a') && (c <= 'z'))) {
         g[c] = null;
+      } else {
+        g[c] = b(c).intern();
       }
     }
   }
   
   private static Character a(a parama)
   {
-    int j = 0;
-    int i = 0;
     parama.f();
     Character localCharacter1 = parama.b();
     if (localCharacter1 == null)
@@ -76,10 +68,12 @@ public class EncodeUtil
     if (localCharacter1.charValue() == '\\') {
       return Character.valueOf('\\');
     }
+    int k = Character.toLowerCase(localCharacter1.charValue());
+    int j = 0;
+    int i = 0;
     StringBuilder localStringBuilder;
     Character localCharacter2;
-    char c;
-    if (Character.toLowerCase(localCharacter1.charValue()) == 'x')
+    if (k == 120)
     {
       localStringBuilder = new StringBuilder();
       while (i < 2)
@@ -96,22 +90,25 @@ public class EncodeUtil
           return null;
         }
       }
-      try
-      {
-        i = Integer.parseInt(localStringBuilder.toString(), 16);
-        if (!Character.isValidCodePoint(i)) {
-          break label511;
-        }
-        c = (char)i;
-        return Character.valueOf(c);
-      }
-      catch (NumberFormatException localNumberFormatException1)
-      {
-        parama.reset();
-        return null;
-      }
     }
-    else if (Character.toLowerCase(localNumberFormatException1.charValue()) == 'u')
+    try
+    {
+      i = Integer.parseInt(localStringBuilder.toString(), 16);
+      if (!Character.isValidCodePoint(i)) {
+        break label509;
+      }
+      c = (char)i;
+      return Character.valueOf(c);
+    }
+    catch (NumberFormatException localNumberFormatException1)
+    {
+      char c;
+      label291:
+      break label291;
+    }
+    parama.reset();
+    return null;
+    if (Character.toLowerCase(localCharacter1.charValue()) == 'u')
     {
       localStringBuilder = new StringBuilder();
       i = j;
@@ -129,45 +126,34 @@ public class EncodeUtil
           return null;
         }
       }
-      try
-      {
-        i = Integer.parseInt(localStringBuilder.toString(), 16);
-        if (!Character.isValidCodePoint(i)) {
-          break label511;
-        }
-        c = (char)i;
-        return Character.valueOf(c);
-      }
-      catch (NumberFormatException localNumberFormatException2)
-      {
-        parama.reset();
-        return null;
-      }
     }
-    else if (a.c(localNumberFormatException2))
+    try
+    {
+      i = Integer.parseInt(localStringBuilder.toString(), 16);
+      if (!Character.isValidCodePoint(i)) {
+        break label509;
+      }
+      c = (char)i;
+      return Character.valueOf(c);
+    }
+    catch (NumberFormatException localNumberFormatException2)
+    {
+      label384:
+      break label384;
+    }
+    parama.reset();
+    return null;
+    if (a.c(localCharacter1))
     {
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(localNumberFormatException2);
+      localStringBuilder.append(localCharacter1);
       localCharacter2 = parama.b();
-      if (!a.c(localCharacter2)) {
+      if (!a.c(localCharacter2))
+      {
         parama.a(localCharacter2);
       }
-      for (;;)
+      else
       {
-        try
-        {
-          i = Integer.parseInt(localStringBuilder.toString(), 8);
-          if (!Character.isValidCodePoint(i)) {
-            break;
-          }
-          c = (char)i;
-          return Character.valueOf(c);
-        }
-        catch (NumberFormatException localNumberFormatException3)
-        {
-          parama.reset();
-          return null;
-        }
         localStringBuilder.append(localCharacter2);
         localCharacter2 = parama.b();
         if (!a.c(localCharacter2)) {
@@ -177,8 +163,24 @@ public class EncodeUtil
         }
       }
     }
-    label511:
-    return localNumberFormatException3;
+    try
+    {
+      i = Integer.parseInt(localStringBuilder.toString(), 8);
+      if (!Character.isValidCodePoint(i)) {
+        break label509;
+      }
+      c = (char)i;
+      return Character.valueOf(c);
+    }
+    catch (NumberFormatException localNumberFormatException3)
+    {
+      label503:
+      break label503;
+    }
+    parama.reset();
+    return null;
+    label509:
+    return localCharacter1;
   }
   
   private static String a(char paramChar)
@@ -191,17 +193,34 @@ public class EncodeUtil
   
   private static String a(char[] paramArrayOfChar, Character paramCharacter)
   {
-    if (a(paramCharacter.charValue(), paramArrayOfChar)) {
-      return "" + paramCharacter;
+    if (a(paramCharacter.charValue(), paramArrayOfChar))
+    {
+      paramArrayOfChar = new StringBuilder();
+      paramArrayOfChar.append("");
+      paramArrayOfChar.append(paramCharacter);
+      return paramArrayOfChar.toString();
     }
-    if (a(paramCharacter.charValue()) == null) {
-      return "" + paramCharacter;
+    if (a(paramCharacter.charValue()) == null)
+    {
+      paramArrayOfChar = new StringBuilder();
+      paramArrayOfChar.append("");
+      paramArrayOfChar.append(paramCharacter);
+      return paramArrayOfChar.toString();
     }
     paramArrayOfChar = Integer.toHexString(paramCharacter.charValue());
-    if (paramCharacter.charValue() < 'Ā') {
-      return "\\x" + "00".substring(paramArrayOfChar.length()) + paramArrayOfChar.toUpperCase(Locale.ENGLISH);
+    if (paramCharacter.charValue() < 'Ā')
+    {
+      paramCharacter = new StringBuilder();
+      paramCharacter.append("\\x");
+      paramCharacter.append("00".substring(paramArrayOfChar.length()));
+      paramCharacter.append(paramArrayOfChar.toUpperCase(Locale.ENGLISH));
+      return paramCharacter.toString();
     }
-    return "\\u" + "0000".substring(paramArrayOfChar.length()) + paramArrayOfChar.toUpperCase(Locale.ENGLISH);
+    paramCharacter = new StringBuilder();
+    paramCharacter.append("\\u");
+    paramCharacter.append("0000".substring(paramArrayOfChar.length()));
+    paramCharacter.append(paramArrayOfChar.toUpperCase(Locale.ENGLISH));
+    return paramCharacter.toString();
   }
   
   private static String a(char[] paramArrayOfChar, String paramString)
@@ -218,23 +237,16 @@ public class EncodeUtil
   
   private static boolean a(char paramChar, char[] paramArrayOfChar)
   {
-    boolean bool2 = false;
     int j = paramArrayOfChar.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (paramChar == paramArrayOfChar[i]) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
+      if (paramChar == paramArrayOfChar[i]) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   private static String b(char paramChar)
@@ -247,53 +259,62 @@ public class EncodeUtil
     if (TextUtils.isEmpty(paramString)) {
       return "";
     }
-    StringBuilder localStringBuilder;
-    for (;;)
+    try
     {
-      try
+      localObject1 = new StringBuilder();
+      paramString = new a(paramString);
+      while (paramString.hasNext())
       {
-        localStringBuilder = new StringBuilder();
-        paramString = new a(paramString);
-        if (!paramString.hasNext()) {
-          break;
-        }
-        Character localCharacter = a(paramString);
-        if (localCharacter != null) {
-          localStringBuilder.append(localCharacter);
+        localObject2 = a(paramString);
+        if (localObject2 != null) {
+          ((StringBuilder)localObject1).append(localObject2);
         } else {
-          localStringBuilder.append(paramString.b());
+          ((StringBuilder)localObject1).append(paramString.b());
         }
       }
-      catch (Exception paramString)
-      {
-        Log.e(TAG, "decode js: " + paramString.getMessage());
-        return "";
-      }
+      paramString = ((StringBuilder)localObject1).toString();
+      return paramString;
     }
-    paramString = localStringBuilder.toString();
-    return paramString;
+    catch (Exception paramString)
+    {
+      Object localObject1 = TAG;
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("decode js: ");
+      ((StringBuilder)localObject2).append(paramString.getMessage());
+      Log.e((String)localObject1, ((StringBuilder)localObject2).toString());
+    }
+    return "";
   }
   
   public static String encodeForJavaScript(String paramString)
+  {
+    return encodeForJavaScript(paramString, f);
+  }
+  
+  public static String encodeForJavaScript(String paramString, char[] paramArrayOfChar)
   {
     if (TextUtils.isEmpty(paramString)) {
       return "";
     }
     try
     {
-      paramString = a(f, paramString);
+      paramString = a(paramArrayOfChar, paramString);
       return paramString;
     }
     catch (Exception paramString)
     {
-      Log.e(TAG, "encode js: " + paramString.getMessage());
+      paramArrayOfChar = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("encode js: ");
+      localStringBuilder.append(paramString.getMessage());
+      Log.e(paramArrayOfChar, localStringBuilder.toString());
     }
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.secure.android.common.util.EncodeUtil
  * JD-Core Version:    0.7.0.1
  */

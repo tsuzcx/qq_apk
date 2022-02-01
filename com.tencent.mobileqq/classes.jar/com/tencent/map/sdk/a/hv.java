@@ -36,22 +36,19 @@ public final class hv
     this.d = paramln.e;
     this.e = paramln.b.o;
     this.f = new ArrayList();
-    String str3 = "";
-    String str4 = "";
-    String str2 = str4;
-    String str1 = str3;
-    if (paramln.b != null)
+    Object localObject = paramln.b;
+    String str = "";
+    if ((localObject != null) && (paramln.b.aG != null))
     {
-      str2 = str4;
-      str1 = str3;
-      if (paramln.b.aG != null)
-      {
-        str1 = paramln.b.aG.getSubKey();
-        str2 = paramln.b.aG.getSubId();
-      }
+      str = paramln.b.aG.getSubKey();
+      localObject = paramln.b.aG.getSubId();
     }
-    this.g = new hz(this.a, paramln, str1);
-    this.f.add(new hw(this.b.h, this, str1, str2));
+    else
+    {
+      localObject = "";
+    }
+    this.g = new hz(this.a, paramln, str);
+    this.f.add(new hw(this.b.h, this, str, (String)localObject));
     this.f.add(new hx(this.a, this));
   }
   
@@ -78,10 +75,10 @@ public final class hv
   
   public final void a(JSONArray paramJSONArray, hh paramhh)
   {
-    if (this.d == null) {
+    Object localObject1 = this.d;
+    if (localObject1 == null) {
       return;
     }
-    Object localObject1 = this.d;
     Object localObject2 = ((jj)localObject1).c.a("mapStyleList");
     Object localObject3;
     if (paramJSONArray != null)
@@ -103,41 +100,36 @@ public final class hv
     if (paramJSONArray.b == null)
     {
       paramJSONArray.a.a(new String[] { "AIEnabled", "AIType", "AIBuildingList" });
-      paramJSONArray.f.post(new kj.1(paramJSONArray));
-      localObject1 = this.g;
-      localObject2 = this.d;
-      if (((jj)localObject2).b != null) {
-        break label330;
-      }
     }
-    for (paramJSONArray = null;; paramJSONArray = paramJSONArray.toString())
+    else
     {
-      localObject2 = ((hz)localObject1).a();
-      if (!hz.b.containsKey(localObject2)) {
-        break label460;
-      }
-      ((hz)localObject1).a((String)localObject2, ((hz)localObject1).c);
-      return;
       paramJSONArray.a.a("AIEnabled", paramJSONArray.b.a);
       paramJSONArray.a.a("AIType", paramJSONArray.b.b);
       if (paramJSONArray.b.c != null) {
         paramJSONArray.a.a("AIBuildingList", paramJSONArray.b.c.toString());
       }
-      if (paramJSONArray.g == null) {
-        break;
-      }
-      if ((paramJSONArray.b != null) && (paramJSONArray.b.a == 1)) {}
-      for (int i = 1;; i = 0)
+      if (paramJSONArray.g != null)
       {
-        if (i != 1) {
-          break label328;
+        int i;
+        if ((paramJSONArray.b != null) && (paramJSONArray.b.a == 1)) {
+          i = 1;
+        } else {
+          i = 0;
         }
-        paramJSONArray.g.a(paramJSONArray.a());
-        break;
+        if (i == 1) {
+          paramJSONArray.g.a(paramJSONArray.a());
+        }
       }
-      label328:
-      break;
-      label330:
+    }
+    paramJSONArray.f.post(new kj.1(paramJSONArray));
+    localObject1 = this.g;
+    localObject2 = this.d;
+    if (((jj)localObject2).b == null)
+    {
+      paramJSONArray = null;
+    }
+    else
+    {
       paramJSONArray = new StringBuilder(128);
       localObject2 = ((jj)localObject2).b.iterator();
       while (((Iterator)localObject2).hasNext())
@@ -161,62 +153,68 @@ public final class hv
           paramJSONArray.append(",");
         }
       }
+      paramJSONArray = paramJSONArray.toString();
     }
-    label460:
+    localObject2 = ((hz)localObject1).a();
+    if (hz.b.containsKey(localObject2))
+    {
+      ((hz)localObject1).a((String)localObject2, ((hz)localObject1).c);
+      return;
+    }
     ((hz)localObject1).a((String)localObject2, ((hz)localObject1).c);
     new hz.a((hz)localObject1, paramJSONArray, paramhh).start();
   }
   
   public final void a(boolean paramBoolean)
   {
-    if (this.b == null) {
-      return;
-    }
     lu locallu = this.b;
-    if ((locallu.d == null) || (locallu.b == null) || (locallu.b.az == null))
-    {
-      if (paramBoolean) {
-        this.c.a();
-      }
-      this.c.e = true;
+    if (locallu == null) {
       return;
     }
     jr localjr;
-    if (paramBoolean)
-    {
-      localjr = locallu.d;
-      jr.f.writeLock().lock();
-      jr.e.clear();
+    if ((locallu.d != null) && (locallu.b != null) && (locallu.b.az != null)) {
+      if (paramBoolean)
+      {
+        localjr = locallu.d;
+        jr.f.writeLock().lock();
+        jr.e.clear();
+      }
     }
-    for (;;)
+    try
     {
       try
       {
-        localFile1 = new File(localjr.c());
-        if (localFile1.exists())
+        File localFile = new File(localjr.c());
+        if (localFile.exists())
         {
-          File localFile2 = new File(localjr.a.getFilesDir().getAbsolutePath() + "/tencentMapSdk/oldLogos");
-          if (!localFile1.renameTo(localFile2)) {
-            continue;
+          Object localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(localjr.a.getFilesDir().getAbsolutePath());
+          ((StringBuilder)localObject2).append("/tencentMapSdk/oldLogos");
+          localObject2 = new File(((StringBuilder)localObject2).toString());
+          if (localFile.renameTo((File)localObject2)) {
+            new jr.4(localjr, (File)localObject2).start();
+          } else {
+            on.c(localFile.getAbsolutePath());
           }
-          new jr.4(localjr, localFile2).start();
         }
-      }
-      catch (Throwable localThrowable)
-      {
-        File localFile1;
-        jr.f.writeLock().unlock();
-        continue;
       }
       finally
       {
         jr.f.writeLock().unlock();
       }
-      jr.a(jx.g());
-      locallu.d.a(locallu.b.p(), locallu.b.az.a());
-      break;
-      on.c(localFile1.getAbsolutePath());
     }
+    catch (Throwable localThrowable)
+    {
+      label180:
+      break label180;
+    }
+    jr.f.writeLock().unlock();
+    jr.a(jx.g());
+    localObject1.d.a(localObject1.b.p(), localObject1.b.az.a());
+    if (paramBoolean) {
+      this.c.a();
+    }
+    this.c.e = true;
   }
   
   public final void b()
@@ -236,7 +234,7 @@ public final class hv
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.hv
  * JD-Core Version:    0.7.0.1
  */

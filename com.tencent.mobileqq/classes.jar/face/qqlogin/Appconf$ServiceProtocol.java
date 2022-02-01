@@ -14,7 +14,7 @@ public final class Appconf$ServiceProtocol
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     face.qqlogin.Appconf.ServiceProtocol
  * JD-Core Version:    0.7.0.1
  */

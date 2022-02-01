@@ -13,23 +13,25 @@ public class SubAccountBindObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 0: 
-      b(paramBoolean, (SubAccountBackProtocData)paramObject);
-      return;
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          return;
+        }
+        a(paramBoolean, (SubAccountBackProtocData)paramObject);
+        return;
+      }
       c(paramBoolean, (SubAccountBackProtocData)paramObject);
       return;
     }
-    a(paramBoolean, (SubAccountBackProtocData)paramObject);
+    b(paramBoolean, (SubAccountBackProtocData)paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.SubAccountBindObserver
  * JD-Core Version:    0.7.0.1
  */

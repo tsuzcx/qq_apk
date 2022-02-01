@@ -13,59 +13,68 @@ class GameBuddyPlugin$1
   
   public void onCallback(EIPCResult paramEIPCResult)
   {
-    try
+    for (;;)
     {
-      localJSONObject = new JSONObject();
-      if (paramEIPCResult == null)
-      {
-        if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent == null) {
-          return;
-        }
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail("result is null");
-        return;
-      }
-      if (paramEIPCResult.code != 0) {
-        break label123;
-      }
-      j = paramEIPCResult.data.getInt("uin_type");
-      i = -1;
-      if (j != 10009) {
-        break label114;
-      }
-      i = 1;
-    }
-    catch (Throwable paramEIPCResult)
-    {
-      JSONObject localJSONObject;
       int j;
       int i;
-      while (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent != null)
+      try
       {
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail("exceptions!");
-        return;
-        label114:
-        if (j == 0) {
-          i = 2;
+        Object localObject = new JSONObject();
+        if (paramEIPCResult == null)
+        {
+          if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent == null) {
+            break label171;
+          }
+          this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail("result is null");
+          return;
         }
-      }
-      label123:
-      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent == null) {
+        if (paramEIPCResult.code == 0)
+        {
+          j = paramEIPCResult.data.getInt("uin_type");
+          i = -1;
+          if (j != 10009) {
+            break label172;
+          }
+          i = 1;
+          ((JSONObject)localObject).put("code", 0);
+          ((JSONObject)localObject).put("type", i);
+          if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent == null) {
+            continue;
+          }
+          this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok((JSONObject)localObject);
+          return;
+        }
+        if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent == null) {
+          continue;
+        }
+        localObject = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("result code:");
+        localStringBuilder.append(paramEIPCResult.code);
+        ((RequestEvent)localObject).fail(localStringBuilder.toString());
         return;
       }
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail("result code:" + paramEIPCResult.code);
-    }
-    localJSONObject.put("code", 0);
-    localJSONObject.put("type", i);
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent != null)
-    {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok(localJSONObject);
+      catch (Throwable paramEIPCResult)
+      {
+        continue;
+      }
+      paramEIPCResult = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent;
+      if (paramEIPCResult != null) {
+        paramEIPCResult.fail("exceptions!");
+      }
       return;
+      label171:
+      return;
+      label172:
+      if (j == 0) {
+        i = 2;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.GameBuddyPlugin.1
  * JD-Core Version:    0.7.0.1
  */

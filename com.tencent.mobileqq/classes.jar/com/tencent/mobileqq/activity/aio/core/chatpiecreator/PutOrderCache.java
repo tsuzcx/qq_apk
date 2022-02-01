@@ -23,14 +23,15 @@ public class PutOrderCache<K, V>
     this.removed = null;
     Object localObject = get(paramK);
     put(paramK, paramV);
-    if (this.removed == null)
+    paramK = this.removed;
+    if (paramK == null)
     {
       if (localObject == paramV) {
         return null;
       }
       return localObject;
     }
-    return this.removed.getValue();
+    return paramK.getValue();
   }
   
   protected boolean removeEldestEntry(Map.Entry<K, V> paramEntry)
@@ -51,7 +52,7 @@ public class PutOrderCache<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.chatpiecreator.PutOrderCache
  * JD-Core Version:    0.7.0.1
  */

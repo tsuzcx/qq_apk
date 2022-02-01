@@ -21,24 +21,13 @@ import okhttp3.internal.platform.Platform;
 
 public final class ConnectionPool
 {
-  private static final Executor executor;
+  private static final Executor executor = new ThreadPoolExecutor(0, 2147483647, 60L, TimeUnit.SECONDS, new SynchronousQueue(), Util.threadFactory("OkHttp ConnectionPool", true));
   private final Runnable cleanupRunnable = new ConnectionPool.1(this);
   boolean cleanupRunning;
   private final Deque<RealConnection> connections = new ArrayDeque();
   private final long keepAliveDurationNs;
   private final int maxIdleConnections;
   final RouteDatabase routeDatabase = new RouteDatabase();
-  
-  static
-  {
-    if (!ConnectionPool.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      executor = new ThreadPoolExecutor(0, 2147483647, 60L, TimeUnit.SECONDS, new SynchronousQueue(), Util.threadFactory("OkHttp ConnectionPool", true));
-      return;
-    }
-  }
   
   public ConnectionPool()
   {
@@ -49,9 +38,13 @@ public final class ConnectionPool
   {
     this.maxIdleConnections = paramInt;
     this.keepAliveDurationNs = paramTimeUnit.toNanos(paramLong);
-    if (paramLong <= 0L) {
-      throw new IllegalArgumentException("keepAliveDuration <= 0: " + paramLong);
+    if (paramLong > 0L) {
+      return;
     }
+    paramTimeUnit = new StringBuilder();
+    paramTimeUnit.append("keepAliveDuration <= 0: ");
+    paramTimeUnit.append(paramLong);
+    throw new IllegalArgumentException(paramTimeUnit.toString());
   }
   
   private int pruneAndGetAllocationCount(RealConnection paramRealConnection, long paramLong)
@@ -60,16 +53,20 @@ public final class ConnectionPool
     int i = 0;
     while (i < localList.size())
     {
-      Object localObject = (Reference)localList.get(i);
-      if (((Reference)localObject).get() != null)
+      Object localObject1 = (Reference)localList.get(i);
+      if (((Reference)localObject1).get() != null)
       {
         i += 1;
       }
       else
       {
-        localObject = (StreamAllocation.StreamAllocationReference)localObject;
-        String str = "A connection to " + paramRealConnection.route().address().url() + " was leaked. Did you forget to close a response body?";
-        Platform.get().logCloseableLeak(str, ((StreamAllocation.StreamAllocationReference)localObject).callStackTrace);
+        localObject1 = (StreamAllocation.StreamAllocationReference)localObject1;
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("A connection to ");
+        ((StringBuilder)localObject2).append(paramRealConnection.route().address().url());
+        ((StringBuilder)localObject2).append(" was leaked. Did you forget to close a response body?");
+        localObject2 = ((StringBuilder)localObject2).toString();
+        Platform.get().logCloseableLeak((String)localObject2, ((StreamAllocation.StreamAllocationReference)localObject1).callStackTrace);
         localList.remove(i);
         paramRealConnection.noNewStreams = true;
         if (localList.isEmpty())
@@ -84,68 +81,68 @@ public final class ConnectionPool
   
   long cleanup(long paramLong)
   {
-    Object localObject1 = null;
-    long l1 = -9223372036854775808L;
-    for (;;)
+    try
     {
-      int j;
-      int i;
-      try
+      Iterator localIterator = this.connections.iterator();
+      long l1 = -9223372036854775808L;
+      Object localObject1 = null;
+      int i = 0;
+      int j = 0;
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = this.connections.iterator();
-        j = 0;
-        i = 0;
-        if (localIterator.hasNext())
+        RealConnection localRealConnection = (RealConnection)localIterator.next();
+        if (pruneAndGetAllocationCount(localRealConnection, paramLong) > 0)
         {
-          RealConnection localRealConnection = (RealConnection)localIterator.next();
-          if (pruneAndGetAllocationCount(localRealConnection, paramLong) > 0)
-          {
-            i += 1;
-            continue;
-          }
+          j += 1;
+        }
+        else
+        {
+          int k = i + 1;
           long l2 = paramLong - localRealConnection.idleAtNanos;
-          if (l2 <= l1) {
-            break label184;
+          i = k;
+          if (l2 > l1)
+          {
+            localObject1 = localRealConnection;
+            l1 = l2;
+            i = k;
           }
-          localObject1 = localRealConnection;
-          l1 = l2;
-          break label184;
         }
-        if ((l1 >= this.keepAliveDurationNs) || (j > this.maxIdleConnections))
-        {
-          this.connections.remove(localObject1);
-          Util.closeQuietly(localObject1.socket());
-          return 0L;
-        }
-        if (j > 0)
+      }
+      if ((l1 < this.keepAliveDurationNs) && (i <= this.maxIdleConnections))
+      {
+        if (i > 0)
         {
           paramLong = this.keepAliveDurationNs;
           return paramLong - l1;
         }
+        if (j > 0)
+        {
+          paramLong = this.keepAliveDurationNs;
+          return paramLong;
+        }
+        this.cleanupRunning = false;
+        return -1L;
       }
-      finally {}
-      if (i > 0)
-      {
-        paramLong = this.keepAliveDurationNs;
-        return paramLong;
-      }
-      this.cleanupRunning = false;
-      return -1L;
-      label184:
-      j += 1;
+      this.connections.remove(localObject1);
+      Util.closeQuietly(localObject1.socket());
+      return 0L;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
   boolean connectionBecameIdle(RealConnection paramRealConnection)
   {
-    assert (Thread.holdsLock(this));
-    if ((paramRealConnection.noNewStreams) || (this.maxIdleConnections == 0))
+    if ((!paramRealConnection.noNewStreams) && (this.maxIdleConnections != 0))
     {
-      this.connections.remove(paramRealConnection);
-      return true;
+      notifyAll();
+      return false;
     }
-    notifyAll();
-    return false;
+    this.connections.remove(paramRealConnection);
+    return true;
   }
   
   public int connectionCount()
@@ -165,7 +162,6 @@ public final class ConnectionPool
   @Nullable
   Socket deduplicate(Address paramAddress, StreamAllocation paramStreamAllocation)
   {
-    assert (Thread.holdsLock(this));
     Iterator localIterator = this.connections.iterator();
     while (localIterator.hasNext())
     {
@@ -179,32 +175,36 @@ public final class ConnectionPool
   
   public void evictAll()
   {
-    ArrayList localArrayList = new ArrayList();
+    Object localObject1 = new ArrayList();
     try
     {
-      Iterator localIterator2 = this.connections.iterator();
-      while (localIterator2.hasNext())
+      Iterator localIterator = this.connections.iterator();
+      while (localIterator.hasNext())
       {
-        RealConnection localRealConnection = (RealConnection)localIterator2.next();
+        RealConnection localRealConnection = (RealConnection)localIterator.next();
         if (localRealConnection.allocations.isEmpty())
         {
           localRealConnection.noNewStreams = true;
-          localArrayList.add(localRealConnection);
-          localIterator2.remove();
+          ((List)localObject1).add(localRealConnection);
+          localIterator.remove();
         }
       }
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext()) {
+        Util.closeQuietly(((RealConnection)((Iterator)localObject1).next()).socket());
+      }
+      return;
     }
     finally {}
-    Iterator localIterator1 = localObject.iterator();
-    while (localIterator1.hasNext()) {
-      Util.closeQuietly(((RealConnection)localIterator1.next()).socket());
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
   @Nullable
   RealConnection get(Address paramAddress, StreamAllocation paramStreamAllocation, Route paramRoute)
   {
-    assert (Thread.holdsLock(this));
     Iterator localIterator = this.connections.iterator();
     while (localIterator.hasNext())
     {
@@ -221,30 +221,27 @@ public final class ConnectionPool
   public int idleConnectionCount()
   {
     int i = 0;
-    for (;;)
+    try
     {
-      try
+      Iterator localIterator = this.connections.iterator();
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = this.connections.iterator();
-        if (localIterator.hasNext())
-        {
-          boolean bool = ((RealConnection)localIterator.next()).allocations.isEmpty();
-          if (bool) {
-            i += 1;
-          }
-        }
-        else
-        {
-          return i;
+        boolean bool = ((RealConnection)localIterator.next()).allocations.isEmpty();
+        if (bool) {
+          i += 1;
         }
       }
-      finally {}
+      return i;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
   void put(RealConnection paramRealConnection)
   {
-    assert (Thread.holdsLock(this));
     if (!this.cleanupRunning)
     {
       this.cleanupRunning = true;
@@ -255,7 +252,7 @@ public final class ConnectionPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.ConnectionPool
  * JD-Core Version:    0.7.0.1
  */

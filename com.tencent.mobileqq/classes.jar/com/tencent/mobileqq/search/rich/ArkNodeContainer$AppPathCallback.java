@@ -15,7 +15,7 @@ final class ArkNodeContainer$AppPathCallback
     this.a = new WeakReference(paramArkNodeContainer);
   }
   
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo)
   {
     ArkNodeContainer localArkNodeContainer = (ArkNodeContainer)this.a.get();
     if (localArkNodeContainer == null)
@@ -25,12 +25,12 @@ final class ArkNodeContainer$AppPathCallback
       }
       return;
     }
-    localArkNodeContainer.onGetAppPathByName(paramInt, paramString, paramAppPathInfo, paramObject);
+    localArkNodeContainer.onGetAppPathByName(paramInt, paramString, paramAppPathInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.rich.ArkNodeContainer.AppPathCallback
  * JD-Core Version:    0.7.0.1
  */

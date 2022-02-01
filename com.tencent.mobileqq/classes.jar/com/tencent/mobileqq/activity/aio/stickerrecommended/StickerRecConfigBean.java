@@ -12,21 +12,23 @@ public class StickerRecConfigBean
   public static StickerRecConfigBean a(String paramString)
   {
     StickerRecConfigBean localStickerRecConfigBean = new StickerRecConfigBean();
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      paramString = new JSONObject(paramString);
-      if ((paramString.has("useRecommendedSticker")) && (paramString.has("maxMatchLength")))
+    if (!TextUtils.isEmpty(paramString)) {
+      try
       {
-        localStickerRecConfigBean.a(paramString.getBoolean("useRecommendedSticker"));
-        localStickerRecConfigBean.a(paramString.getInt("maxMatchLength"));
+        paramString = new JSONObject(paramString);
+        if ((paramString.has("useRecommendedSticker")) && (paramString.has("maxMatchLength")))
+        {
+          localStickerRecConfigBean.a(paramString.getBoolean("useRecommendedSticker"));
+          localStickerRecConfigBean.a(paramString.getInt("maxMatchLength"));
+          return localStickerRecConfigBean;
+        }
       }
-      return localStickerRecConfigBean;
-    }
-    catch (Exception paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("StickerRecConfigBean", 2, paramString.getMessage());
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("StickerRecConfigBean", 2, paramString.getMessage());
+        }
+      }
     }
     return localStickerRecConfigBean;
   }
@@ -53,7 +55,7 @@ public class StickerRecConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecConfigBean
  * JD-Core Version:    0.7.0.1
  */

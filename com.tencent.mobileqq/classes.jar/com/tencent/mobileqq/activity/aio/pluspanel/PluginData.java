@@ -19,12 +19,37 @@ public class PluginData
   @NotNull
   public String toString()
   {
-    return "PluginData{drawable=" + this.jdField_a_of_type_AndroidGraphicsDrawableDrawable + ", actionId=" + this.jdField_a_of_type_Int + ", text='" + this.jdField_a_of_type_JavaLangString + '\'' + ", contentDescription='" + this.jdField_b_of_type_JavaLangString + '\'' + ", isShowNew=" + this.jdField_a_of_type_Boolean + ", appid=" + this.jdField_b_of_type_Int + ", redDotId='" + this.c + '\'' + ", action='" + this.d + '\'' + ", actionType='" + this.e + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PluginData{drawable=");
+    localStringBuilder.append(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    localStringBuilder.append(", actionId=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", text='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", contentDescription='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", isShowNew=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", appid=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", redDotId='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", action='");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", actionType='");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.PluginData
  * JD-Core Version:    0.7.0.1
  */

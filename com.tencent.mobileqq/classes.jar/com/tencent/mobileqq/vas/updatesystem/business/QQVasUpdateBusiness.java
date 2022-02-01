@@ -11,7 +11,16 @@ import mqq.app.MobileQQ;
 public abstract class QQVasUpdateBusiness<T extends BaseUpdateBusiness>
   extends BaseUpdateBusiness
 {
-  private static final String a = MobileQQ.getContext().getFilesDir() + File.separator + "vas_material_folder";
+  private static final String a;
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(MobileQQ.getContext().getFilesDir());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("vas_material_folder");
+    a = localStringBuilder.toString();
+  }
   
   public static <T extends QQVasUpdateBusiness> T a(Class<T> paramClass)
   {
@@ -22,12 +31,18 @@ public abstract class QQVasUpdateBusiness<T extends BaseUpdateBusiness>
   
   public String a(int paramInt)
   {
-    return b() + paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(b());
+    localStringBuilder.append(paramInt);
+    return localStringBuilder.toString();
   }
   
   public String a(String paramString)
   {
-    return new File(a + a(), paramString).getAbsolutePath();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a);
+    localStringBuilder.append(a());
+    return new File(localStringBuilder.toString(), paramString).getAbsolutePath();
   }
   
   public void a(int paramInt)
@@ -65,7 +80,7 @@ public abstract class QQVasUpdateBusiness<T extends BaseUpdateBusiness>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.updatesystem.business.QQVasUpdateBusiness
  * JD-Core Version:    0.7.0.1
  */

@@ -30,7 +30,7 @@ public final class RecentMediaListView$adapter$1
   public View a(@NotNull Context paramContext, @Nullable ViewGroup paramViewGroup)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    paramContext = LayoutInflater.from(paramContext).inflate(R.layout.u, paramViewGroup, false);
+    paramContext = LayoutInflater.from(paramContext).inflate(R.layout.t, paramViewGroup, false);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "LayoutInflater.from(cont…      false\n            )");
     return paramContext;
   }
@@ -53,19 +53,21 @@ public final class RecentMediaListView$adapter$1
     Intrinsics.checkExpressionValueIsNotNull(paramView, "bean.medias[0]");
     if (((Media)paramView).getType() == MediaType.PHOTO) {
       paramRecentMediaListHolder.a().a(((Media)paramAlbum.a().get(0)).getFilePath());
-    }
-    for (;;)
-    {
-      paramRecentMediaListHolder.a().setText((CharSequence)paramAlbum.a());
-      paramRecentMediaListHolder.b().setText((CharSequence)('(' + paramAlbum.a().size() + ')'));
-      return;
+    } else {
       paramRecentMediaListHolder.a().a(((Media)paramAlbum.a().get(0)).getFilePath());
     }
+    paramRecentMediaListHolder.a().setText((CharSequence)paramAlbum.a());
+    paramRecentMediaListHolder = paramRecentMediaListHolder.b();
+    paramView = new StringBuilder();
+    paramView.append('(');
+    paramView.append(paramAlbum.a().size());
+    paramView.append(')');
+    paramRecentMediaListHolder.setText((CharSequence)paramView.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.RecentMediaListView.adapter.1
  * JD-Core Version:    0.7.0.1
  */

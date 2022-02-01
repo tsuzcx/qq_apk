@@ -2,6 +2,7 @@ package com.huawei.hms.support.api;
 
 import com.huawei.hms.core.aidl.IMessageEntity;
 import com.huawei.hms.support.api.client.ApiClient;
+import com.huawei.hms.support.api.client.Result;
 import com.huawei.hms.support.api.client.Status;
 
 public class ResolvePendingResult<T extends IMessageEntity>
@@ -31,7 +32,7 @@ public class ResolvePendingResult<T extends IMessageEntity>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.support.api.ResolvePendingResult
  * JD-Core Version:    0.7.0.1
  */

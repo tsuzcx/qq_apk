@@ -21,18 +21,19 @@ final class MiniProgramLpReportDC04239$11
     localBundle.putString("reserves", this.val$reserves);
     localBundle.putString("reserves2", this.val$reserves2);
     localBundle.putString("app_type", this.val$appType);
-    if (this.val$miniAppConfig != null) {}
-    for (MiniAppInfo localMiniAppInfo = this.val$miniAppConfig.config;; localMiniAppInfo = null)
-    {
-      localBundle.putBoolean("x5_enable", EnvUtils.isX5Enabled(localMiniAppInfo));
-      QIPCClientHelper.getInstance().callServer("MiniAppTransferModule", "launch_report", localBundle);
-      return;
+    Object localObject = this.val$miniAppConfig;
+    if (localObject != null) {
+      localObject = ((MiniAppConfig)localObject).config;
+    } else {
+      localObject = null;
     }
+    localBundle.putBoolean("x5_enable", EnvUtils.isX5Enabled((MiniAppInfo)localObject));
+    QIPCClientHelper.getInstance().callServer("MiniAppTransferModule", "launch_report", localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239.11
  * JD-Core Version:    0.7.0.1
  */

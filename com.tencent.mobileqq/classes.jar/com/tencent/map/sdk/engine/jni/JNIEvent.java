@@ -11,12 +11,22 @@ public class JNIEvent
   
   public String toString()
   {
-    return "JNIEvent{id=" + this.id + ", name='" + this.name + '\'' + ", data=" + Arrays.toString(this.data) + ", extra=" + this.extra + '}';
+    StringBuilder localStringBuilder = new StringBuilder("JNIEvent{id=");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append(", name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", data=");
+    localStringBuilder.append(Arrays.toString(this.data));
+    localStringBuilder.append(", extra=");
+    localStringBuilder.append(this.extra);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.engine.jni.JNIEvent
  * JD-Core Version:    0.7.0.1
  */

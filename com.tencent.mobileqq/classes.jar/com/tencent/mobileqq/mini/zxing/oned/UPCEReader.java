@@ -24,26 +24,29 @@ public final class UPCEReader
       localStringBuilder.append(arrayOfChar, 0, 5);
       localStringBuilder.append("0000");
       localStringBuilder.append(c);
-    }
-    for (;;)
-    {
-      if (paramString.length() >= 8) {
-        localStringBuilder.append(paramString.charAt(7));
-      }
-      return localStringBuilder.toString();
+      break;
+    case '4': 
+      localStringBuilder.append(arrayOfChar, 0, 4);
+      localStringBuilder.append("00000");
+      localStringBuilder.append(arrayOfChar[4]);
+      break;
+    case '3': 
+      localStringBuilder.append(arrayOfChar, 0, 3);
+      localStringBuilder.append("00000");
+      localStringBuilder.append(arrayOfChar, 3, 2);
+      break;
+    case '0': 
+    case '1': 
+    case '2': 
       localStringBuilder.append(arrayOfChar, 0, 2);
       localStringBuilder.append(c);
       localStringBuilder.append("0000");
       localStringBuilder.append(arrayOfChar, 2, 3);
-      continue;
-      localStringBuilder.append(arrayOfChar, 0, 3);
-      localStringBuilder.append("00000");
-      localStringBuilder.append(arrayOfChar, 3, 2);
-      continue;
-      localStringBuilder.append(arrayOfChar, 0, 4);
-      localStringBuilder.append("00000");
-      localStringBuilder.append(arrayOfChar[4]);
     }
+    if (paramString.length() >= 8) {
+      localStringBuilder.append(paramString.charAt(7));
+    }
+    return localStringBuilder.toString();
   }
   
   private static void determineNumSysAndCheckDigit(StringBuilder paramStringBuilder, int paramInt)
@@ -64,7 +67,11 @@ public final class UPCEReader
       }
       i += 1;
     }
-    throw NotFoundException.getNotFoundInstance();
+    paramStringBuilder = NotFoundException.getNotFoundInstance();
+    for (;;)
+    {
+      throw paramStringBuilder;
+    }
   }
   
   protected boolean checkChecksum(String paramString)
@@ -101,7 +108,7 @@ public final class UPCEReader
       }
       m = k;
       if (i1 >= 10) {
-        m = k | 1 << 5 - j;
+        m = 1 << 5 - j | k;
       }
       j += 1;
     }
@@ -116,7 +123,7 @@ public final class UPCEReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.zxing.oned.UPCEReader
  * JD-Core Version:    0.7.0.1
  */

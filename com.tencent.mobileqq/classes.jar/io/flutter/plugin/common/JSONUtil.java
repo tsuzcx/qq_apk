@@ -16,47 +16,18 @@ public class JSONUtil
 {
   public static Object unwrap(Object paramObject)
   {
-    Object localObject;
-    if ((JSONObject.NULL.equals(paramObject)) || (paramObject == null)) {
-      localObject = null;
-    }
-    do
+    if (!JSONObject.NULL.equals(paramObject))
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      return localObject;
-                      localObject = paramObject;
-                    } while ((paramObject instanceof Boolean));
-                    localObject = paramObject;
-                  } while ((paramObject instanceof Byte));
-                  localObject = paramObject;
-                } while ((paramObject instanceof Character));
-                localObject = paramObject;
-              } while ((paramObject instanceof Double));
-              localObject = paramObject;
-            } while ((paramObject instanceof Float));
-            localObject = paramObject;
-          } while ((paramObject instanceof Integer));
-          localObject = paramObject;
-        } while ((paramObject instanceof Long));
-        localObject = paramObject;
-      } while ((paramObject instanceof Short));
-      localObject = paramObject;
-    } while ((paramObject instanceof String));
+      if (paramObject == null) {
+        return null;
+      }
+      if ((!(paramObject instanceof Boolean)) && (!(paramObject instanceof Byte)) && (!(paramObject instanceof Character)) && (!(paramObject instanceof Double)) && (!(paramObject instanceof Float)) && (!(paramObject instanceof Integer)) && (!(paramObject instanceof Long)) && (!(paramObject instanceof Short))) {
+        if ((paramObject instanceof String)) {
+          return paramObject;
+        }
+      }
+    }
+    Object localObject;
     try
     {
       if ((paramObject instanceof JSONArray))
@@ -80,109 +51,113 @@ public class JSONUtil
           String str = (String)localIterator.next();
           ((Map)localObject).put(str, unwrap(paramObject.get(str)));
         }
+        return localObject;
       }
       return null;
     }
-    catch (Exception paramObject) {}
-    return localObject;
+    catch (Exception paramObject)
+    {
+      return null;
+    }
+    return paramObject;
+    return null;
     return localObject;
   }
   
   public static Object wrap(Object paramObject)
   {
-    Object localObject;
     if (paramObject == null) {
-      localObject = JSONObject.NULL;
+      return JSONObject.NULL;
     }
-    for (;;)
+    Object localObject = paramObject;
+    if (!(paramObject instanceof JSONArray))
     {
-      return localObject;
+      if ((paramObject instanceof JSONObject)) {
+        return paramObject;
+      }
+      if (paramObject.equals(JSONObject.NULL)) {
+        return paramObject;
+      }
+    }
+    try
+    {
+      if ((paramObject instanceof Collection))
+      {
+        localObject = new JSONArray();
+        paramObject = ((Collection)paramObject).iterator();
+        while (paramObject.hasNext()) {
+          ((JSONArray)localObject).put(wrap(paramObject.next()));
+        }
+      }
+      if (paramObject.getClass().isArray())
+      {
+        localObject = new JSONArray();
+        int j = Array.getLength(paramObject);
+        int i = 0;
+        while (i < j)
+        {
+          ((JSONArray)localObject).put(wrap(Array.get(paramObject, i)));
+          i += 1;
+        }
+      }
+      if ((paramObject instanceof Map))
+      {
+        localObject = new JSONObject();
+        paramObject = ((Map)paramObject).entrySet().iterator();
+        while (paramObject.hasNext())
+        {
+          Map.Entry localEntry = (Map.Entry)paramObject.next();
+          ((JSONObject)localObject).put((String)localEntry.getKey(), wrap(localEntry.getValue()));
+        }
+      }
       localObject = paramObject;
-      if (!(paramObject instanceof JSONArray))
+      if (!(paramObject instanceof Boolean))
       {
         localObject = paramObject;
-        if (!(paramObject instanceof JSONObject))
+        if (!(paramObject instanceof Byte))
         {
           localObject = paramObject;
-          if (!paramObject.equals(JSONObject.NULL)) {
-            try
+          if (!(paramObject instanceof Character))
+          {
+            localObject = paramObject;
+            if (!(paramObject instanceof Double))
             {
-              if ((paramObject instanceof Collection))
-              {
-                localObject = new JSONArray();
-                paramObject = ((Collection)paramObject).iterator();
-                while (paramObject.hasNext()) {
-                  ((JSONArray)localObject).put(wrap(paramObject.next()));
-                }
-              }
-              if (paramObject.getClass().isArray())
-              {
-                localObject = new JSONArray();
-                int j = Array.getLength(paramObject);
-                int i = 0;
-                while (i < j)
-                {
-                  ((JSONArray)localObject).put(wrap(Array.get(paramObject, i)));
-                  i += 1;
-                }
-              }
-              if ((paramObject instanceof Map))
-              {
-                localObject = new JSONObject();
-                paramObject = ((Map)paramObject).entrySet().iterator();
-                while (paramObject.hasNext())
-                {
-                  Map.Entry localEntry = (Map.Entry)paramObject.next();
-                  ((JSONObject)localObject).put((String)localEntry.getKey(), wrap(localEntry.getValue()));
-                }
-              }
               localObject = paramObject;
-              if (!(paramObject instanceof Boolean))
+              if (!(paramObject instanceof Float))
               {
                 localObject = paramObject;
-                if (!(paramObject instanceof Byte))
+                if (!(paramObject instanceof Integer))
                 {
                   localObject = paramObject;
-                  if (!(paramObject instanceof Character))
+                  if (!(paramObject instanceof Long))
                   {
                     localObject = paramObject;
-                    if (!(paramObject instanceof Double))
+                    if (!(paramObject instanceof Short))
                     {
-                      localObject = paramObject;
-                      if (!(paramObject instanceof Float))
-                      {
-                        localObject = paramObject;
-                        if (!(paramObject instanceof Integer))
-                        {
-                          localObject = paramObject;
-                          if (!(paramObject instanceof Long))
-                          {
-                            localObject = paramObject;
-                            if (!(paramObject instanceof Short))
-                            {
-                              localObject = paramObject;
-                              if (!(paramObject instanceof String)) {
-                                if (paramObject.getClass().getPackage().getName().startsWith("java."))
-                                {
-                                  paramObject = paramObject.toString();
-                                  return paramObject;
-                                }
-                              }
-                            }
-                          }
-                        }
+                      if ((paramObject instanceof String)) {
+                        return paramObject;
                       }
+                      if (!paramObject.getClass().getPackage().getName().startsWith("java.")) {
+                        break label323;
+                      }
+                      localObject = paramObject.toString();
                     }
                   }
                 }
               }
             }
-            catch (Exception paramObject) {}
           }
         }
       }
+      return localObject;
     }
-    return null;
+    catch (Exception paramObject)
+    {
+      label323:
+      break label323;
+    }
+    localObject = null;
+    return localObject;
     return localObject;
     return localObject;
     return localObject;
@@ -190,7 +165,7 @@ public class JSONUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.common.JSONUtil
  * JD-Core Version:    0.7.0.1
  */

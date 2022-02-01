@@ -31,6 +31,7 @@ class ClassesInfoCache
     localObject1 = paramClass.getInterfaces();
     int j = localObject1.length;
     int i = 0;
+    Object localObject2;
     Object localObject3;
     while (i < j)
     {
@@ -42,59 +43,57 @@ class ClassesInfoCache
       }
       i += 1;
     }
-    if (paramArrayOfMethod != null) {}
-    boolean bool;
-    for (;;)
-    {
-      int k = paramArrayOfMethod.length;
-      bool = false;
-      j = 0;
-      for (;;)
-      {
-        if (j >= k) {
-          break label350;
-        }
-        localObject1 = paramArrayOfMethod[j];
-        localObject3 = (OnLifecycleEvent)((Method)localObject1).getAnnotation(OnLifecycleEvent.class);
-        if (localObject3 != null) {
-          break;
-        }
-        j += 1;
-      }
+    if (paramArrayOfMethod == null) {
       paramArrayOfMethod = getDeclaredMethods(paramClass);
     }
-    Object localObject2 = ((Method)localObject1).getParameterTypes();
-    if (localObject2.length > 0) {
-      if (!localObject2[0].isAssignableFrom(LifecycleOwner.class)) {}
-    }
-    for (i = 1;; i = 0)
+    int k = paramArrayOfMethod.length;
+    j = 0;
+    boolean bool = false;
+    while (j < k)
     {
-      localObject3 = ((OnLifecycleEvent)localObject3).value();
-      if (localObject2.length > 1)
+      localObject1 = paramArrayOfMethod[j];
+      localObject3 = (OnLifecycleEvent)((Method)localObject1).getAnnotation(OnLifecycleEvent.class);
+      if (localObject3 != null)
       {
-        if (!localObject2[1].isAssignableFrom(Lifecycle.Event.class)) {
-          break label330;
+        localObject2 = ((Method)localObject1).getParameterTypes();
+        if (localObject2.length > 0)
+        {
+          if (localObject2[0].isAssignableFrom(LifecycleOwner.class)) {
+            i = 1;
+          } else {
+            throw new IllegalArgumentException("invalid parameter type. Must be one and instanceof LifecycleOwner");
+          }
         }
-        if (localObject3 != Lifecycle.Event.ON_ANY) {
-          break label320;
+        else {
+          i = 0;
         }
-        i = 2;
+        localObject3 = ((OnLifecycleEvent)localObject3).value();
+        if (localObject2.length > 1) {
+          if (localObject2[1].isAssignableFrom(Lifecycle.Event.class))
+          {
+            if (localObject3 == Lifecycle.Event.ON_ANY) {
+              i = 2;
+            } else {
+              throw new IllegalArgumentException("Second arg is supported only for ON_ANY value");
+            }
+          }
+          else {
+            throw new IllegalArgumentException("invalid parameter type. second arg must be an event");
+          }
+        }
+        if (localObject2.length <= 2)
+        {
+          verifyAndPutHandler(localHashMap, new ClassesInfoCache.MethodReference(i, (Method)localObject1), (Lifecycle.Event)localObject3, paramClass);
+          bool = true;
+        }
       }
-      if (localObject2.length > 2) {
-        break label340;
+      else
+      {
+        j += 1;
+        continue;
       }
-      verifyAndPutHandler(localHashMap, new ClassesInfoCache.MethodReference(i, (Method)localObject1), (Lifecycle.Event)localObject3, paramClass);
-      bool = true;
-      break;
-      throw new IllegalArgumentException("invalid parameter type. Must be one and instanceof LifecycleOwner");
+      throw new IllegalArgumentException("cannot have more than 2 params");
     }
-    label320:
-    throw new IllegalArgumentException("Second arg is supported only for ON_ANY value");
-    label330:
-    throw new IllegalArgumentException("invalid parameter type. second arg must be an event");
-    label340:
-    throw new IllegalArgumentException("cannot have more than 2 params");
-    label350:
     paramArrayOfMethod = new ClassesInfoCache.CallbackInfo(localHashMap);
     this.mCallbackMap.put(paramClass, paramArrayOfMethod);
     this.mHasLifecycleMethods.put(paramClass, Boolean.valueOf(bool));
@@ -117,24 +116,23 @@ class ClassesInfoCache
   private void verifyAndPutHandler(Map<ClassesInfoCache.MethodReference, Lifecycle.Event> paramMap, ClassesInfoCache.MethodReference paramMethodReference, Lifecycle.Event paramEvent, Class paramClass)
   {
     Lifecycle.Event localEvent = (Lifecycle.Event)paramMap.get(paramMethodReference);
-    if ((localEvent == null) || (paramEvent == localEvent))
+    if ((localEvent != null) && (paramEvent != localEvent))
     {
-      if (localEvent == null) {
-        paramMap.put(paramMethodReference, paramEvent);
-      }
-      return;
+      paramMap = paramMethodReference.mMethod;
+      paramMethodReference = new StringBuilder();
+      paramMethodReference.append("Method ");
+      paramMethodReference.append(paramMap.getName());
+      paramMethodReference.append(" in ");
+      paramMethodReference.append(paramClass.getName());
+      paramMethodReference.append(" already declared with different @OnLifecycleEvent value: previous value ");
+      paramMethodReference.append(localEvent);
+      paramMethodReference.append(", new value ");
+      paramMethodReference.append(paramEvent);
+      throw new IllegalArgumentException(paramMethodReference.toString());
     }
-    paramMap = paramMethodReference.mMethod;
-    paramMethodReference = new StringBuilder();
-    paramMethodReference.append("Method ");
-    paramMethodReference.append(paramMap.getName());
-    paramMethodReference.append(" in ");
-    paramMethodReference.append(paramClass.getName());
-    paramMethodReference.append(" already declared with different @OnLifecycleEvent value: previous value ");
-    paramMethodReference.append(localEvent);
-    paramMethodReference.append(", new value ");
-    paramMethodReference.append(paramEvent);
-    throw new IllegalArgumentException(paramMethodReference.toString());
+    if (localEvent == null) {
+      paramMap.put(paramMethodReference, paramEvent);
+    }
   }
   
   ClassesInfoCache.CallbackInfo getInfo(Class paramClass)
@@ -169,7 +167,7 @@ class ClassesInfoCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.arch.lifecycle.ClassesInfoCache
  * JD-Core Version:    0.7.0.1
  */

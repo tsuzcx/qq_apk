@@ -1,8 +1,5 @@
 package cooperation.qzone.zipanimate;
 
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.Lifecycle.Event;
-import android.arch.lifecycle.LifecycleOwner;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Rect;
@@ -11,6 +8,9 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.Lifecycle.Event;
+import androidx.lifecycle.LifecycleOwner;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.QZLog;
 import cooperation.qzone.zipanimate.life.PageLifeCycle;
@@ -26,7 +26,7 @@ public class ZipAnimationDrawable
   private boolean mIsPagePause = false;
   private boolean mIsShowFirstFrame = false;
   private Lifecycle mLifecycle;
-  ZipAnimationDrawable.OnAnimationListener mListener;
+  OnAnimationListener mListener;
   private boolean mRepeatAnimation = false;
   private volatile boolean mRunning;
   private float mScale = 1.0F;
@@ -60,16 +60,16 @@ public class ZipAnimationDrawable
   
   public void draw(Canvas paramCanvas)
   {
-    if ((!this.mRunning) && (!this.mShowLastFrameWhenStop) && (!this.mIsShowFirstFrame)) {}
-    Drawable localDrawable;
-    do
-    {
-      do
-      {
-        return;
-      } while (!this.mAnimationState.aniResLoaded);
-      localDrawable = this.mAnimationState.animationResLoader.getCurrentDrawable();
-    } while (localDrawable == null);
+    if ((!this.mRunning) && (!this.mShowLastFrameWhenStop) && (!this.mIsShowFirstFrame)) {
+      return;
+    }
+    if (!this.mAnimationState.aniResLoaded) {
+      return;
+    }
+    Drawable localDrawable = this.mAnimationState.animationResLoader.getCurrentDrawable();
+    if (localDrawable == null) {
+      return;
+    }
     localDrawable.setBounds(getBounds());
     localDrawable.draw(paramCanvas);
   }
@@ -86,32 +86,32 @@ public class ZipAnimationDrawable
   
   public int getIntrinsicHeight()
   {
-    Drawable localDrawable;
-    if (this.mAnimationState.animationResLoader != null)
+    Object localObject = this.mAnimationState.animationResLoader;
+    int i = -1;
+    if (localObject != null)
     {
-      localDrawable = this.mAnimationState.animationResLoader.getCurrentDrawable();
-      if (localDrawable != null) {}
+      localObject = this.mAnimationState.animationResLoader.getCurrentDrawable();
+      if (localObject == null) {
+        return -1;
+      }
+      i = (int)(((Drawable)localObject).getIntrinsicHeight() * this.mScale);
     }
-    else
-    {
-      return -1;
-    }
-    return (int)(localDrawable.getIntrinsicHeight() * this.mScale);
+    return i;
   }
   
   public int getIntrinsicWidth()
   {
-    Drawable localDrawable;
-    if (this.mAnimationState.animationResLoader != null)
+    Object localObject = this.mAnimationState.animationResLoader;
+    int i = -1;
+    if (localObject != null)
     {
-      localDrawable = this.mAnimationState.animationResLoader.getCurrentDrawable();
-      if (localDrawable != null) {}
+      localObject = this.mAnimationState.animationResLoader.getCurrentDrawable();
+      if (localObject == null) {
+        return -1;
+      }
+      i = (int)(((Drawable)localObject).getIntrinsicWidth() * this.mScale);
     }
-    else
-    {
-      return -1;
-    }
-    return (int)(localDrawable.getIntrinsicWidth() * this.mScale);
+    return i;
   }
   
   public int getNumberOfFrames()
@@ -126,7 +126,8 @@ public class ZipAnimationDrawable
   
   public boolean hasDownloadComplete()
   {
-    return (this.mAnimationState != null) && (this.mAnimationState.aniResLoaded);
+    ZipAnimationDrawable.ZipAnimationState localZipAnimationState = this.mAnimationState;
+    return (localZipAnimationState != null) && (localZipAnimationState.aniResLoaded);
   }
   
   public boolean isOneShot()
@@ -141,11 +142,20 @@ public class ZipAnimationDrawable
   
   public boolean isZipDrawableShow()
   {
-    if ((this.mAnimationState == null) || (this.mAnimationState.animationResLoader == null)) {}
-    while (this.mAnimationState.animationResLoader.getCurrentDrawable() == null) {
-      return false;
+    ZipAnimationDrawable.ZipAnimationState localZipAnimationState = this.mAnimationState;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localZipAnimationState != null)
+    {
+      if (localZipAnimationState.animationResLoader == null) {
+        return false;
+      }
+      bool1 = bool2;
+      if (this.mAnimationState.animationResLoader.getCurrentDrawable() != null) {
+        bool1 = true;
+      }
     }
-    return true;
+    return bool1;
   }
   
   public void loadAndShowFirstFrame()
@@ -195,29 +205,38 @@ public class ZipAnimationDrawable
   
   public void preLoadFrame(int paramInt)
   {
-    if ((this.mAnimationState != null) && (this.mAnimationState.animationResLoader != null)) {
+    ZipAnimationDrawable.ZipAnimationState localZipAnimationState = this.mAnimationState;
+    if ((localZipAnimationState != null) && (localZipAnimationState.animationResLoader != null)) {
       this.mAnimationState.animationResLoader.loadFrame(paramInt, null);
     }
   }
   
   public void release()
   {
-    if ((this.mAnimationState != null) && (this.mAnimationState.animationResLoader != null)) {
+    ZipAnimationDrawable.ZipAnimationState localZipAnimationState = this.mAnimationState;
+    if ((localZipAnimationState != null) && (localZipAnimationState.animationResLoader != null)) {
       this.mAnimationState.animationResLoader.release();
     }
   }
   
   public void restartAnimation()
   {
-    QLog.e("zip_drawable", 1, "restartAnimation " + hashCode());
-    if (this.mIsPagePause) {
-      QLog.e("zip_drawable", 1, "restartAnimation stop , page is pause" + hashCode());
-    }
-    do
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("restartAnimation ");
+    localStringBuilder.append(hashCode());
+    QLog.e("zip_drawable", 1, localStringBuilder.toString());
+    if (this.mIsPagePause)
     {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("restartAnimation stop , page is pause");
+      localStringBuilder.append(hashCode());
+      QLog.e("zip_drawable", 1, localStringBuilder.toString());
       return;
-      this.mRunning = true;
-    } while (!this.mAnimationState.aniResLoaded);
+    }
+    this.mRunning = true;
+    if (!this.mAnimationState.aniResLoaded) {
+      return;
+    }
     PageLiveCycleProxy.addPageLifeCycle(this);
     this.mAnimationState.animationResLoader.loadFrame(0, null);
     this.mRunning = true;
@@ -228,7 +247,7 @@ public class ZipAnimationDrawable
   
   public void setAlpha(int paramInt) {}
   
-  public void setAnimationListener(ZipAnimationDrawable.OnAnimationListener paramOnAnimationListener)
+  public void setAnimationListener(OnAnimationListener paramOnAnimationListener)
   {
     this.mListener = paramOnAnimationListener;
   }
@@ -259,7 +278,8 @@ public class ZipAnimationDrawable
   
   public void setPreloadNum(int paramInt)
   {
-    if ((this.mAnimationState != null) && (this.mAnimationState.animationResLoader != null)) {
+    ZipAnimationDrawable.ZipAnimationState localZipAnimationState = this.mAnimationState;
+    if ((localZipAnimationState != null) && (localZipAnimationState.animationResLoader != null)) {
       this.mAnimationState.animationResLoader.setPreloadNum(paramInt);
     }
   }
@@ -285,27 +305,23 @@ public class ZipAnimationDrawable
   public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
   {
     int i;
-    if (isVisible() != paramBoolean1)
-    {
+    if (isVisible() != paramBoolean1) {
       i = 1;
-      if (i != 0)
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
+      if (paramBoolean1)
       {
-        if (!paramBoolean1) {
-          break label48;
-        }
         if (this.mRunning) {
           this.uiHandler.sendEmptyMessage(1000);
         }
       }
+      else {
+        this.uiHandler.removeMessages(1000);
+      }
     }
-    for (;;)
-    {
-      return super.setVisible(paramBoolean1, paramBoolean2);
-      i = 0;
-      break;
-      label48:
-      this.uiHandler.removeMessages(1000);
-    }
+    return super.setVisible(paramBoolean1, paramBoolean2);
   }
   
   public void setZipFirstFrameLoadedListener(ZipFirstFrameLoadedListener paramZipFirstFrameLoadedListener)
@@ -322,22 +338,33 @@ public class ZipAnimationDrawable
   
   public void start()
   {
-    QLog.e("zip_drawable", 1, "start " + hashCode());
-    if (this.mIsPagePause) {
-      QLog.e("zip_drawable", 1, "start stop , page is pause" + hashCode());
-    }
-    do
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("start ");
+    localStringBuilder.append(hashCode());
+    QLog.e("zip_drawable", 1, localStringBuilder.toString());
+    if (this.mIsPagePause)
     {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("start stop , page is pause");
+      localStringBuilder.append(hashCode());
+      QLog.e("zip_drawable", 1, localStringBuilder.toString());
       return;
-      this.mRunning = true;
-    } while (!this.mAnimationState.aniResLoaded);
+    }
+    this.mRunning = true;
+    if (!this.mAnimationState.aniResLoaded) {
+      return;
+    }
     restartAnimation();
   }
   
   public void stop()
   {
-    if (QZLog.isColorLevel()) {
-      QZLog.i("zip_drawable", 2, "stop " + hashCode());
+    if (QZLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("stop ");
+      localStringBuilder.append(hashCode());
+      QZLog.i("zip_drawable", 2, localStringBuilder.toString());
     }
     this.uiHandler.removeMessages(1000);
     this.mRunning = false;
@@ -351,7 +378,7 @@ public class ZipAnimationDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.zipanimate.ZipAnimationDrawable
  * JD-Core Version:    0.7.0.1
  */

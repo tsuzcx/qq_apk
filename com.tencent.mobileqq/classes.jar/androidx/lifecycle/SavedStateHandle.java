@@ -28,6 +28,7 @@ public final class SavedStateHandle
   private final Map<String, SavedStateHandle.SavingStateLiveData<?>> mLiveDatas = new HashMap();
   final Map<String, Object> mRegular;
   private final SavedStateRegistry.SavedStateProvider mSavedStateProvider = new SavedStateHandle.1(this);
+  final Map<String, SavedStateRegistry.SavedStateProvider> mSavedStateProviders = new HashMap();
   
   static
   {
@@ -40,21 +41,18 @@ public final class SavedStateHandle
     Class localClass7 = Float.TYPE;
     Class localClass8 = Short.TYPE;
     Object localObject1;
-    if (Build.VERSION.SDK_INT >= 21)
-    {
+    if (Build.VERSION.SDK_INT >= 21) {
       localObject1 = Size.class;
-      if (Build.VERSION.SDK_INT < 21) {
-        break label240;
-      }
-    }
-    label240:
-    for (Object localObject2 = SizeF.class;; localObject2 = Integer.TYPE)
-    {
-      ACCEPTABLE_CLASSES = new Class[] { localClass1, [Z.class, localClass2, [D.class, localClass3, [I.class, localClass4, [J.class, String.class, [Ljava.lang.String.class, Binder.class, Bundle.class, localClass5, [B.class, localClass6, [C.class, CharSequence.class, [Ljava.lang.CharSequence.class, ArrayList.class, localClass7, [F.class, Parcelable.class, [Landroid.os.Parcelable.class, Serializable.class, localClass8, [S.class, SparseArray.class, localObject1, localObject2 };
-      return;
+    } else {
       localObject1 = Integer.TYPE;
-      break;
     }
+    Object localObject2;
+    if (Build.VERSION.SDK_INT >= 21) {
+      localObject2 = SizeF.class;
+    } else {
+      localObject2 = Integer.TYPE;
+    }
+    ACCEPTABLE_CLASSES = new Class[] { localClass1, [Z.class, localClass2, [D.class, localClass3, [I.class, localClass4, [J.class, String.class, [Ljava.lang.String.class, Binder.class, Bundle.class, localClass5, [B.class, localClass6, [C.class, CharSequence.class, [Ljava.lang.CharSequence.class, ArrayList.class, localClass7, [F.class, Parcelable.class, [Landroid.os.Parcelable.class, Serializable.class, localClass8, [S.class, SparseArray.class, localObject1, localObject2 };
   }
   
   public SavedStateHandle()
@@ -87,16 +85,21 @@ public final class SavedStateHandle
     }
     paramBundle2 = paramBundle1.getParcelableArrayList("keys");
     paramBundle1 = paramBundle1.getParcelableArrayList("values");
-    if ((paramBundle2 == null) || (paramBundle1 == null) || (paramBundle2.size() != paramBundle1.size())) {
-      throw new IllegalStateException("Invalid bundle passed as restored state");
-    }
-    int i = 0;
-    while (i < paramBundle2.size())
+    if ((paramBundle2 != null) && (paramBundle1 != null) && (paramBundle2.size() == paramBundle1.size()))
     {
-      localHashMap.put((String)paramBundle2.get(i), paramBundle1.get(i));
-      i += 1;
+      int i = 0;
+      while (i < paramBundle2.size())
+      {
+        localHashMap.put((String)paramBundle2.get(i), paramBundle1.get(i));
+        i += 1;
+      }
+      return new SavedStateHandle(localHashMap);
     }
-    return new SavedStateHandle(localHashMap);
+    paramBundle1 = new IllegalStateException("Invalid bundle passed as restored state");
+    for (;;)
+    {
+      throw paramBundle1;
+    }
   }
   
   @NonNull
@@ -108,17 +111,13 @@ public final class SavedStateHandle
     }
     if (this.mRegular.containsKey(paramString)) {
       paramT = new SavedStateHandle.SavingStateLiveData(this, paramString, this.mRegular.get(paramString));
+    } else if (paramBoolean) {
+      paramT = new SavedStateHandle.SavingStateLiveData(this, paramString, paramT);
+    } else {
+      paramT = new SavedStateHandle.SavingStateLiveData(this, paramString);
     }
-    for (;;)
-    {
-      this.mLiveDatas.put(paramString, paramT);
-      return paramT;
-      if (paramBoolean) {
-        paramT = new SavedStateHandle.SavingStateLiveData(this, paramString, paramT);
-      } else {
-        paramT = new SavedStateHandle.SavingStateLiveData(this, paramString);
-      }
-    }
+    this.mLiveDatas.put(paramString, paramT);
+    return paramT;
   }
   
   private static void validateValue(Object paramObject)
@@ -126,21 +125,31 @@ public final class SavedStateHandle
     if (paramObject == null) {
       return;
     }
-    Class[] arrayOfClass = ACCEPTABLE_CLASSES;
-    int j = arrayOfClass.length;
+    Object localObject = ACCEPTABLE_CLASSES;
+    int j = localObject.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i >= j) {
-        break label36;
-      }
-      if (arrayOfClass[i].isInstance(paramObject)) {
-        break;
+      if (localObject[i].isInstance(paramObject)) {
+        return;
       }
       i += 1;
     }
-    label36:
-    throw new IllegalArgumentException("Can't put value with type " + paramObject.getClass() + " into saved state");
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Can't put value with type ");
+    ((StringBuilder)localObject).append(paramObject.getClass());
+    ((StringBuilder)localObject).append(" into saved state");
+    paramObject = new IllegalArgumentException(((StringBuilder)localObject).toString());
+    for (;;)
+    {
+      throw paramObject;
+    }
+  }
+  
+  @MainThread
+  public void clearSavedStateProvider(@NonNull String paramString)
+  {
+    this.mSavedStateProviders.remove(paramString);
   }
   
   @MainThread
@@ -207,10 +216,16 @@ public final class SavedStateHandle
     }
     this.mRegular.put(paramString, paramT);
   }
+  
+  @MainThread
+  public void setSavedStateProvider(@NonNull String paramString, @NonNull SavedStateRegistry.SavedStateProvider paramSavedStateProvider)
+  {
+    this.mSavedStateProviders.put(paramString, paramSavedStateProvider);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.lifecycle.SavedStateHandle
  * JD-Core Version:    0.7.0.1
  */

@@ -121,12 +121,26 @@ public class TAVVideoCompositionLayerInstruction
   
   public String toString()
   {
-    return "TAVVideoCompositionLayerInstruction{trackID=" + this.trackID + ", timeRange=" + this.timeRange.toSimpleString() + ", preferredTransform=" + this.preferredTransform + ", imageSource=" + this.imageSource + ", transition=" + this.transition + ", videoConfiguration=" + this.videoConfiguration + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TAVVideoCompositionLayerInstruction{trackID=");
+    localStringBuilder.append(this.trackID);
+    localStringBuilder.append(", timeRange=");
+    localStringBuilder.append(this.timeRange.toSimpleString());
+    localStringBuilder.append(", preferredTransform=");
+    localStringBuilder.append(this.preferredTransform);
+    localStringBuilder.append(", imageSource=");
+    localStringBuilder.append(this.imageSource);
+    localStringBuilder.append(", transition=");
+    localStringBuilder.append(this.transition);
+    localStringBuilder.append(", videoConfiguration=");
+    localStringBuilder.append(this.videoConfiguration);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavkit.composition.video.TAVVideoCompositionLayerInstruction
  * JD-Core Version:    0.7.0.1
  */

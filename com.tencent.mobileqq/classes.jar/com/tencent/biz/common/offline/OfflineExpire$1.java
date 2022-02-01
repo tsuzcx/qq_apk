@@ -1,14 +1,12 @@
 package com.tencent.biz.common.offline;
 
 import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import com.tencent.mobileqq.transfile.predownload.IPreDownloadController;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import mqq.app.AppRuntime;
 
 final class OfflineExpire$1
   implements AsyncBack
@@ -17,35 +15,38 @@ final class OfflineExpire$1
   
   public void loaded(String paramString, int paramInt)
   {
-    paramString = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Object localObject;
+    paramString = (AppRuntime)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (paramString != null)
     {
-      paramString = (PreDownloadController)paramString.getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2);
+      paramString = (IPreDownloadController)paramString.getRuntimeService(IPreDownloadController.class, "");
       localObject = this.jdField_a_of_type_JavaLangString;
-      if (!BidDownloader.a(paramInt)) {
-        break label172;
+      long l;
+      if (BidDownloader.a(paramInt)) {
+        l = this.jdField_a_of_type_Int;
+      } else {
+        l = -1L;
       }
-    }
-    label172:
-    for (long l = this.jdField_a_of_type_Int;; l = -1L)
-    {
       paramString.preDownloadSuccess((String)localObject, l);
-      QLog.i(OfflineExpire.jdField_a_of_type_JavaLangString, 1, "finish predown bid=" + this.b + ", code=" + paramInt);
-      OfflineExpire.a();
-      if (OfflineExpire.b() == 0)
-      {
-        paramString = new Intent("com.tencent.process.tmdownloader.exit");
-        localObject = new ArrayList();
-        ((ArrayList)localObject).add("com.tencent.mobileqq:TMAssistantDownloadSDKService");
-        paramString.putStringArrayListExtra("procNameList", (ArrayList)localObject);
-        paramString.putExtra("verify", OfflineExpire.a((ArrayList)localObject, false));
-        if (QLog.isColorLevel()) {
-          QLog.d(OfflineExpire.jdField_a_of_type_JavaLangString, 2, "sendBroadcast to close TMAssistant sdk process");
-        }
-        BaseApplicationImpl.getContext().sendBroadcast(paramString);
+    }
+    paramString = OfflineExpire.jdField_a_of_type_JavaLangString;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("finish predown bid=");
+    ((StringBuilder)localObject).append(this.b);
+    ((StringBuilder)localObject).append(", code=");
+    ((StringBuilder)localObject).append(paramInt);
+    QLog.i(paramString, 1, ((StringBuilder)localObject).toString());
+    OfflineExpire.a();
+    if (OfflineExpire.b() == 0)
+    {
+      paramString = new Intent("com.tencent.process.tmdownloader.exit");
+      localObject = new ArrayList();
+      ((ArrayList)localObject).add("com.tencent.mobileqq:TMAssistantDownloadSDKService");
+      paramString.putStringArrayListExtra("procNameList", (ArrayList)localObject);
+      paramString.putExtra("verify", OfflineExpire.a((ArrayList)localObject, false));
+      if (QLog.isColorLevel()) {
+        QLog.d(OfflineExpire.jdField_a_of_type_JavaLangString, 2, "sendBroadcast to close TMAssistant sdk process");
       }
-      return;
+      BaseApplication.getContext().sendBroadcast(paramString);
     }
   }
   
@@ -53,7 +54,7 @@ final class OfflineExpire$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.common.offline.OfflineExpire.1
  * JD-Core Version:    0.7.0.1
  */

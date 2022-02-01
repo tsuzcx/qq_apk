@@ -37,41 +37,29 @@ public class AVMonitorReport
   
   public void prepareData()
   {
+    String str2 = "";
     this.reportData.put("attaid", getReportId());
     this.reportData.put("token", getToken());
     this.reportData.put("machineAbstract", Build.MODEL);
     Object localObject1 = AVReportUtils.getAppContext().getPackageManager();
-    String str2 = "";
-    for (;;)
+    try
     {
+      Object localObject2 = ((PackageManager)localObject1).getPackageInfo(AVReportUtils.getAppContext().getPackageName(), 0);
+      localObject1 = ((PackageInfo)localObject2).versionName;
       try
       {
-        Object localObject2 = ((PackageManager)localObject1).getPackageInfo(AVReportUtils.getAppContext().getPackageName(), 0);
-        localObject1 = ((PackageInfo)localObject2).versionName;
-        int i;
-        localNameNotFoundException1.printStackTrace();
+        localObject2 = String.valueOf(((PackageInfo)localObject2).versionCode);
       }
-      catch (PackageManager.NameNotFoundException localNameNotFoundException1)
-      {
-        try
-        {
-          i = ((PackageInfo)localObject2).versionCode;
-          localObject2 = String.valueOf(i);
-          this.reportData.put("clientVersion", localObject1);
-          this.reportData.put("sdkVersion", localObject2);
-          return;
-        }
-        catch (PackageManager.NameNotFoundException localNameNotFoundException2)
-        {
-          String str1;
-          break label116;
-        }
-        localNameNotFoundException1 = localNameNotFoundException1;
-        localObject1 = "";
-      }
-      label116:
-      str1 = str2;
+      catch (PackageManager.NameNotFoundException localNameNotFoundException1) {}
+      localNameNotFoundException2.printStackTrace();
     }
+    catch (PackageManager.NameNotFoundException localNameNotFoundException2)
+    {
+      localObject1 = "";
+    }
+    String str1 = str2;
+    this.reportData.put("clientVersion", localObject1);
+    this.reportData.put("sdkVersion", str1);
   }
   
   public void send()
@@ -84,7 +72,7 @@ public class AVMonitorReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.report.impl.AVMonitorReport
  * JD-Core Version:    0.7.0.1
  */

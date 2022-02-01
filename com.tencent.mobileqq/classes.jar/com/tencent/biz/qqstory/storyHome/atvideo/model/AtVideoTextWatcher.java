@@ -45,35 +45,41 @@ public class AtVideoTextWatcher
   
   public static void a(EditText paramEditText, Intent paramIntent)
   {
-    if (paramIntent == null) {}
-    do
-    {
+    if (paramIntent == null) {
       return;
-      paramIntent = paramIntent.getStringExtra("at_video_text");
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.atvideo.AtVideoTextWatcher", 2, "on activity result, at video text=" + paramIntent);
-      }
-    } while ((paramEditText == null) || (TextUtils.isEmpty(paramIntent)));
-    paramEditText.getText().insert(paramEditText.getSelectionStart(), paramIntent);
+    }
+    paramIntent = paramIntent.getStringExtra("at_video_text");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("on activity result, at video text=");
+      localStringBuilder.append(paramIntent);
+      QLog.d("Q.qqstory.atvideo.AtVideoTextWatcher", 2, localStringBuilder.toString());
+    }
+    if ((paramEditText != null) && (!TextUtils.isEmpty(paramIntent))) {
+      paramEditText.getText().insert(paramEditText.getSelectionStart(), paramIntent);
+    }
   }
   
   public void afterTextChanged(Editable paramEditable)
   {
     if (this.c > 0)
     {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView != null)
+      Object localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView;
+      Object localObject2;
+      if (localObject1 != null)
       {
-        ViewParent localViewParent2 = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView.getParent();
-        ViewParent localViewParent1 = localViewParent2;
-        if (localViewParent2 != null)
+        localObject2 = ((BubbleTextView)localObject1).getParent();
+        localObject1 = localObject2;
+        if (localObject2 != null)
         {
-          localViewParent1 = localViewParent2;
-          if (!(localViewParent2 instanceof RelativeLayout)) {
-            localViewParent1 = localViewParent2.getParent();
+          localObject1 = localObject2;
+          if (!(localObject2 instanceof RelativeLayout)) {
+            localObject1 = ((ViewParent)localObject2).getParent();
           }
         }
-        if ((localViewParent1 != null) && ((localViewParent1 instanceof RelativeLayout))) {
-          ((RelativeLayout)localViewParent1).removeView(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView);
+        if ((localObject1 != null) && ((localObject1 instanceof RelativeLayout))) {
+          ((RelativeLayout)localObject1).removeView(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView);
         }
         this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = null;
       }
@@ -83,8 +89,16 @@ public class AtVideoTextWatcher
         if (QLog.isColorLevel()) {
           QLog.d("Q.qqstory.atvideo.AtVideoTextWatcher", 2, "trigger at video process");
         }
-        if (((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (this.jdField_a_of_type_Boolean)) {
-          StoryAtVideoFragment.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_JavaLangString, (String)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager.a.get(this.jdField_a_of_type_JavaLangString + this.jdField_b_of_type_JavaLangString), this.jdField_a_of_type_Int);
+        paramEditable = this.jdField_a_of_type_AndroidContentContext;
+        if (((paramEditable instanceof Activity)) && (this.jdField_a_of_type_Boolean))
+        {
+          paramEditable = (Activity)paramEditable;
+          localObject1 = this.jdField_b_of_type_JavaLangString;
+          localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager.a;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+          StoryAtVideoFragment.a(paramEditable, (String)localObject1, (String)((Map)localObject2).get(localStringBuilder.toString()), this.jdField_a_of_type_Int);
         }
       }
     }
@@ -100,7 +114,7 @@ public class AtVideoTextWatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.atvideo.model.AtVideoTextWatcher
  * JD-Core Version:    0.7.0.1
  */

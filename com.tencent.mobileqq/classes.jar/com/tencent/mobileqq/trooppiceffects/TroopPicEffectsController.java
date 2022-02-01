@@ -6,9 +6,10 @@ import android.os.Looper;
 import android.view.ViewGroup;
 import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
 import com.tencent.mobileqq.data.MessageForTroopEffectPic;
-import com.tencent.mobileqq.pic.PicBusiManager;
 import com.tencent.mobileqq.pic.PicDownloadInfo;
 import com.tencent.mobileqq.pic.PicReq;
+import com.tencent.mobileqq.pic.api.IPicBus;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.trooppiceffects.view.IPicView;
 import com.tencent.mobileqq.trooppiceffects.view.NormalPicView;
@@ -36,9 +37,10 @@ public class TroopPicEffectsController
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView != null) && (this.jdField_a_of_type_AndroidViewViewGroup != null))
+    IPicView localIPicView = this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView;
+    if ((localIPicView != null) && (this.jdField_a_of_type_AndroidViewViewGroup != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView.b();
+      localIPicView.b();
       this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView.a());
       this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView = null;
     }
@@ -50,36 +52,43 @@ public class TroopPicEffectsController
     if (QLog.isColorLevel()) {
       QLog.d("TroopPicEffectsController", 2, "showPicEffect");
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView == null) && (this.jdField_a_of_type_AndroidViewViewGroup != null)) {
-      switch (paramInt1)
-      {
-      default: 
-        this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView = new NormalPicView(this.jdField_a_of_type_AndroidViewViewGroup.getContext());
-      }
-    }
-    for (;;)
+    if (this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView == null)
     {
-      this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView.a(), -1, paramInt2);
-      this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView.setBitmap(paramBitmap);
-      this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView.a();
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopPicEffectsController.2(this, paramOnAnimationEndListener), 6000L);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView = new PhantomPicView(this.jdField_a_of_type_AndroidViewViewGroup.getContext());
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView = new ShakePicView(this.jdField_a_of_type_AndroidViewViewGroup.getContext());
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView = new VideoPicView(this.jdField_a_of_type_AndroidViewViewGroup.getContext(), paramInt1);
+      ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
+      if (localViewGroup != null)
+      {
+        switch (paramInt1)
+        {
+        default: 
+          this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView = new NormalPicView(localViewGroup.getContext());
+          break;
+        case 40003: 
+        case 40004: 
+        case 40005: 
+          this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView = new VideoPicView(localViewGroup.getContext(), paramInt1);
+          break;
+        case 40002: 
+          this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView = new ShakePicView(localViewGroup.getContext());
+          break;
+        case 40001: 
+          this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView = new PhantomPicView(localViewGroup.getContext());
+        }
+        this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
+        this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView.a(), -1, paramInt2);
+        this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView.setBitmap(paramBitmap);
+        this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView.a();
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopPicEffectsController.2(this, paramOnAnimationEndListener), 6000L);
+      }
     }
   }
   
   public void a(TroopChatPie paramTroopChatPie, MessageForTroopEffectPic paramMessageForTroopEffectPic, boolean paramBoolean)
   {
-    PicReq localPicReq = PicBusiManager.a(6, 1536, 1);
+    PicReq localPicReq = ((IPicBus)QRoute.api(IPicBus.class)).createPicReq(6, 1536, 1);
     PicDownloadInfo localPicDownloadInfo = paramMessageForTroopEffectPic.getPicDownloadInfo();
     localPicReq.a(paramMessageForTroopEffectPic, localPicDownloadInfo);
     localPicReq.a(new TroopPicEffectsController.1(this, localPicDownloadInfo, paramTroopChatPie, paramMessageForTroopEffectPic, paramBoolean));
-    PicBusiManager.a(localPicReq);
+    ((IPicBus)QRoute.api(IPicBus.class)).launch(localPicReq);
   }
   
   public void b()
@@ -89,7 +98,7 @@ public class TroopPicEffectsController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.TroopPicEffectsController
  * JD-Core Version:    0.7.0.1
  */

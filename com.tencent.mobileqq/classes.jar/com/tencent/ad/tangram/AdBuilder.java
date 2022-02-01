@@ -1,7 +1,6 @@
 package com.tencent.ad.tangram;
 
 import android.support.annotation.Keep;
-import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo;
 import java.lang.ref.WeakReference;
 
@@ -18,18 +17,21 @@ public enum AdBuilder
   public Ad build(qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
   {
     AdBuilderAdapter localAdBuilderAdapter = getAdapter();
-    if (localAdBuilderAdapter == null)
-    {
-      AdLog.e("AdBuilder", "build error, adapter is null");
+    Ad localAd = null;
+    if (localAdBuilderAdapter == null) {
       return null;
     }
-    return localAdBuilderAdapter.build(paramAdInfo);
+    if (localAdBuilderAdapter != null) {
+      localAd = localAdBuilderAdapter.build(paramAdInfo);
+    }
+    return localAd;
   }
   
   public AdBuilderAdapter getAdapter()
   {
-    if (this.adapter != null) {
-      return (AdBuilderAdapter)this.adapter.get();
+    WeakReference localWeakReference = this.adapter;
+    if (localWeakReference != null) {
+      return (AdBuilderAdapter)localWeakReference.get();
     }
     return null;
   }

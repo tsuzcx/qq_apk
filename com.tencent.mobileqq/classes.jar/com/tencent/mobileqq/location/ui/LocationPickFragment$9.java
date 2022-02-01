@@ -18,17 +18,17 @@ class LocationPickFragment$9
       this.b.setVisibility(0);
       this.c.setVisibility(0);
     }
-    for (;;)
+    else
     {
-      paramEditable = paramEditable.toString().trim();
-      if (TextUtils.isEmpty(paramEditable)) {
-        break;
-      }
-      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a(paramEditable);
-      return;
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       this.b.setVisibility(8);
       this.c.setVisibility(8);
+    }
+    paramEditable = paramEditable.toString().trim();
+    if (!TextUtils.isEmpty(paramEditable))
+    {
+      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a(paramEditable);
+      return;
     }
     LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a("");
   }
@@ -39,7 +39,7 @@ class LocationPickFragment$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationPickFragment.9
  * JD-Core Version:    0.7.0.1
  */

@@ -17,30 +17,31 @@ class PublicAccountManagerImpl$7
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountManagerImpl.reportEventTypeMenuEvent(str, i, 12, -1, null);
-      if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
-        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(19);
+      paramIntent = this.jdField_a_of_type_MqqOsMqqHandler;
+      if (paramIntent != null) {
+        paramIntent.sendEmptyMessage(19);
       }
+    }
+    else
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountManagerImpl.reportEventTypeMenuEvent(str, i, 11, -1, null);
     }
     try
     {
-      for (;;)
-      {
-        paramContext.unregisterReceiver(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountManagerImpl.scanResultReceiver);
-        label65:
-        this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountManagerImpl.scanResultReceiver = null;
-        return;
-        this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountManagerImpl.reportEventTypeMenuEvent(str, i, 11, -1, null);
-      }
+      paramContext.unregisterReceiver(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountManagerImpl.scanResultReceiver);
+      label81:
+      this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountManagerImpl.scanResultReceiver = null;
+      return;
     }
     catch (Exception paramContext)
     {
-      break label65;
+      break label81;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountManagerImpl.7
  * JD-Core Version:    0.7.0.1
  */

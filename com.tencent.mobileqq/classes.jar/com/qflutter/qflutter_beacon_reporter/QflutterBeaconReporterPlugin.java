@@ -52,30 +52,29 @@ public final class QflutterBeaconReporterPlugin
     Intrinsics.checkParameterIsNotNull(paramMethodCall, "call");
     Intrinsics.checkParameterIsNotNull(paramResult, "result");
     String str1 = paramMethodCall.method;
-    if (str1 == null) {}
-    while ((str1.hashCode() != 360348063) || (!str1.equals("doReport")))
+    if ((str1 != null) && (str1.hashCode() == 360348063) && (str1.equals("doReport")))
     {
-      paramResult.notImplemented();
+      str1 = (String)paramMethodCall.argument("appkey");
+      String str2 = (String)paramMethodCall.argument("channelId");
+      String str3 = (String)paramMethodCall.argument("eventName");
+      Boolean localBoolean = (Boolean)paramMethodCall.argument("isSucceed");
+      Integer localInteger1 = (Integer)paramMethodCall.argument("elapse");
+      Integer localInteger2 = (Integer)paramMethodCall.argument("size");
+      Map localMap = (Map)paramMethodCall.argument("params");
+      paramMethodCall = (Boolean)paramMethodCall.argument("reportImmediately");
+      QflutterBeaconReporterPlugin.QFlutterReporter localQFlutterReporter = sReporter;
+      if (localQFlutterReporter != null) {
+        localQFlutterReporter.doReport(str1, str2, str3, localBoolean, localInteger1, localInteger2, localMap, paramMethodCall);
+      }
+      paramResult.success(Integer.valueOf(0));
       return;
     }
-    str1 = (String)paramMethodCall.argument("appkey");
-    String str2 = (String)paramMethodCall.argument("channelId");
-    String str3 = (String)paramMethodCall.argument("eventName");
-    Boolean localBoolean = (Boolean)paramMethodCall.argument("isSucceed");
-    Integer localInteger1 = (Integer)paramMethodCall.argument("elapse");
-    Integer localInteger2 = (Integer)paramMethodCall.argument("size");
-    Map localMap = (Map)paramMethodCall.argument("params");
-    paramMethodCall = (Boolean)paramMethodCall.argument("reportImmediately");
-    QflutterBeaconReporterPlugin.QFlutterReporter localQFlutterReporter = sReporter;
-    if (localQFlutterReporter != null) {
-      localQFlutterReporter.doReport(str1, str2, str3, localBoolean, localInteger1, localInteger2, localMap, paramMethodCall);
-    }
-    paramResult.success(Integer.valueOf(0));
+    paramResult.notImplemented();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.qflutter.qflutter_beacon_reporter.QflutterBeaconReporterPlugin
  * JD-Core Version:    0.7.0.1
  */

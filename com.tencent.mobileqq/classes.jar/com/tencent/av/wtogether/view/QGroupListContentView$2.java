@@ -9,24 +9,26 @@ class QGroupListContentView$2
 {
   QGroupListContentView$2(QGroupListContentView paramQGroupListContentView) {}
   
-  public void a(int paramInt)
+  protected void a(int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
+    if (paramInt != 2) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QGroupListContentView", 2, "onCacheInited " + paramInt);
-      }
-    } while (this.a.a == null);
-    this.a.a.a();
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCacheInited ");
+      localStringBuilder.append(paramInt);
+      QLog.d("QGroupListContentView", 2, localStringBuilder.toString());
+    }
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.wtogether.view.QGroupListContentView.2
  * JD-Core Version:    0.7.0.1
  */

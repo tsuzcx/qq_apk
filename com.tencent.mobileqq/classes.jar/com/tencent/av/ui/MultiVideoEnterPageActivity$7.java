@@ -18,8 +18,14 @@ class MultiVideoEnterPageActivity$7
       return;
     }
     this.jdField_a_of_type_AndroidViewView.setEnabled(false);
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.b = this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.c, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.f, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_Long);
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_JavaLangString, 1, "kickOutUsers begin, mGAudioRoomId[" + this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.b + "]");
+    Object localObject = this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity;
+    ((MultiVideoEnterPageActivity)localObject).b = ((MultiVideoEnterPageActivity)localObject).jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.c, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.f, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_Long);
+    localObject = this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("kickOutUsers begin, mGAudioRoomId[");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.b);
+    localStringBuilder.append("]");
+    QLog.w((String)localObject, 1, localStringBuilder.toString());
     this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvVideoController.a(1, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.c, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.f, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_Long);
     ReportController.b(null, "CliOper", "", "", "0X8009E2A", "0X8009E2A", 0, 0, "", "", "", "");
     paramDialogInterface.dismiss();
@@ -27,7 +33,7 @@ class MultiVideoEnterPageActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoEnterPageActivity.7
  * JD-Core Version:    0.7.0.1
  */

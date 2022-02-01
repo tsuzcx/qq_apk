@@ -27,29 +27,26 @@ public abstract class LocalPhoneGatewayCallback
   
   public void a(Exception paramException)
   {
-    for (;;)
+    try
     {
-      try
+      boolean bool = a();
+      QLog.e("LocalPhoneGatewayCallback", 1, new Object[] { "onChangeNetworkError : ", paramException.getMessage() });
+      if (!bool)
       {
-        boolean bool = a();
-        QLog.e("LocalPhoneGatewayCallback", 1, new Object[] { "onChangeNetworkError : ", paramException.getMessage() });
-        if (!bool)
-        {
-          QLog.d("LocalPhoneGatewayCallback", 1, "not finish request");
-          return;
-        }
-        if (!this.jdField_a_of_type_Boolean)
-        {
-          QLog.e("LocalPhoneGatewayCallback", 1, "no success request");
-          a(-100002, paramException);
-        }
-        else
-        {
-          a(this.jdField_a_of_type_JavaUtilList);
-        }
+        QLog.d("LocalPhoneGatewayCallback", 1, "not finish request");
+        return;
       }
-      finally {}
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        QLog.e("LocalPhoneGatewayCallback", 1, "no success request");
+        a(-100002, paramException);
+        return;
+      }
+      QLog.e("LocalPhoneGatewayCallback", 1, "onChangeNetworkError getTokenFinish");
+      a(this.jdField_a_of_type_JavaUtilList);
+      return;
     }
+    finally {}
   }
   
   public abstract void a(List<GetLocalPhone.LocalPhoneCodeData> paramList);
@@ -70,25 +67,22 @@ public abstract class LocalPhoneGatewayCallback
   public void a(GatewayVerify.SelfPhoneUrl paramSelfPhoneUrl, String paramString)
   {
     if (paramSelfPhoneUrl == null) {}
-    for (;;)
+    try
     {
-      try
-      {
-        QLog.e("LocalPhoneGatewayCallback", 1, "onResponse, but urlBean is null");
-        b(-100001, new Exception("urlBean is null"));
-        return;
-      }
-      finally {}
-      this.jdField_a_of_type_Boolean = true;
-      GetLocalPhone.LocalPhoneCodeData localLocalPhoneCodeData = new GetLocalPhone.LocalPhoneCodeData();
-      localLocalPhoneCodeData.str_code_data.set(paramString);
-      localLocalPhoneCodeData.int32_channel_id.set(paramSelfPhoneUrl.int32_channel_id.get());
-      this.jdField_a_of_type_JavaUtilList.add(localLocalPhoneCodeData);
-      boolean bool = a();
-      QLog.d("LocalPhoneGatewayCallback", 1, new Object[] { "onResponse, current success request count: ", Integer.valueOf(this.b), " totalCount : ", Integer.valueOf(this.jdField_a_of_type_Int), " request channelId : ", Integer.valueOf(paramSelfPhoneUrl.int32_channel_id.get()) });
-      if (bool) {
-        a(this.jdField_a_of_type_JavaUtilList);
-      }
+      QLog.e("LocalPhoneGatewayCallback", 1, "onResponse, but urlBean is null");
+      b(-100001, new Exception("urlBean is null"));
+      return;
+    }
+    finally {}
+    this.jdField_a_of_type_Boolean = true;
+    GetLocalPhone.LocalPhoneCodeData localLocalPhoneCodeData = new GetLocalPhone.LocalPhoneCodeData();
+    localLocalPhoneCodeData.str_code_data.set(paramString);
+    localLocalPhoneCodeData.int32_channel_id.set(paramSelfPhoneUrl.int32_channel_id.get());
+    this.jdField_a_of_type_JavaUtilList.add(localLocalPhoneCodeData);
+    boolean bool = a();
+    QLog.d("LocalPhoneGatewayCallback", 1, new Object[] { "onResponse, current success request count: ", Integer.valueOf(this.b), " totalCount : ", Integer.valueOf(this.jdField_a_of_type_Int), " request channelId : ", Integer.valueOf(paramSelfPhoneUrl.int32_channel_id.get()) });
+    if (bool) {
+      a(this.jdField_a_of_type_JavaUtilList);
     }
   }
   
@@ -100,34 +94,31 @@ public abstract class LocalPhoneGatewayCallback
   
   public void b(int paramInt, Exception paramException)
   {
-    for (;;)
+    try
     {
-      try
+      boolean bool = a();
+      QLog.e("LocalPhoneGatewayCallback", 1, new Object[] { "onGetTokenError : ", paramException.getMessage() });
+      if (!bool)
       {
-        boolean bool = a();
-        QLog.e("LocalPhoneGatewayCallback", 1, new Object[] { "onGetTokenError : ", paramException.getMessage() });
-        if (!bool)
-        {
-          QLog.e("LocalPhoneGatewayCallback", 1, "not finish request");
-          return;
-        }
-        if (!this.jdField_a_of_type_Boolean)
-        {
-          QLog.e("LocalPhoneGatewayCallback", 1, "no success request");
-          a(paramInt, paramException);
-        }
-        else
-        {
-          a(this.jdField_a_of_type_JavaUtilList);
-        }
+        QLog.e("LocalPhoneGatewayCallback", 1, "not finish request");
+        return;
       }
-      finally {}
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        QLog.e("LocalPhoneGatewayCallback", 1, "no success request");
+        a(paramInt, paramException);
+        return;
+      }
+      QLog.e("LocalPhoneGatewayCallback", 1, "onGetTokenError getTokenFinish");
+      a(this.jdField_a_of_type_JavaUtilList);
+      return;
     }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.loginwelcome.LocalPhoneGatewayCallback
  * JD-Core Version:    0.7.0.1
  */

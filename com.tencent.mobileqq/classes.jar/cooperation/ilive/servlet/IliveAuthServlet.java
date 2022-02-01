@@ -16,29 +16,41 @@ public class IliveAuthServlet
 {
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IliveAuthServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
-    }
-    if ((paramIntent == null) || (paramFromServiceMsg == null)) {}
     Object localObject;
-    do
-    {
-      return;
-      localObject = paramFromServiceMsg.getServiceCmd();
-    } while (localObject == null);
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      boolean bool = paramFromServiceMsg.isSuccess();
-      localStringBuilder = new StringBuilder().append("resp:").append((String)localObject).append(" is ");
-      if (!bool) {
-        break label265;
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onReceive cmd=");
+      ((StringBuilder)localObject).append(paramIntent.getStringExtra("cmd"));
+      ((StringBuilder)localObject).append(",success=");
+      ((StringBuilder)localObject).append(paramFromServiceMsg.isSuccess());
+      QLog.d("IliveAuthServlet", 2, ((StringBuilder)localObject).toString());
     }
-    label265:
-    for (paramIntent = "";; paramIntent = "not")
+    if (paramIntent != null)
     {
-      QLog.d("IliveAuthServlet", 2, paramIntent + " success");
+      if (paramFromServiceMsg == null) {
+        return;
+      }
+      localObject = paramFromServiceMsg.getServiceCmd();
+      if (localObject == null) {
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        boolean bool = paramFromServiceMsg.isSuccess();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("resp:");
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append(" is ");
+        if (bool) {
+          paramIntent = "";
+        } else {
+          paramIntent = "not";
+        }
+        localStringBuilder.append(paramIntent);
+        localStringBuilder.append(" success");
+        QLog.d("IliveAuthServlet", 2, localStringBuilder.toString());
+      }
       paramIntent = null;
       if (paramFromServiceMsg.isSuccess())
       {
@@ -46,32 +58,30 @@ public class IliveAuthServlet
         paramIntent = new byte[i];
         PkgTools.copyData(paramIntent, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
       }
-      if (!((String)localObject).equals("qqvalivelogin.GetOpenInfo")) {
-        break;
-      }
-      localObject = new QQALive.GetOpenInfoRsp();
-      if (paramFromServiceMsg.getResultCode() != 1000) {
-        break label283;
-      }
-      try
+      if (((String)localObject).equals("qqvalivelogin.GetOpenInfo"))
       {
-        ((QQALive.GetOpenInfoRsp)localObject).mergeFrom(paramIntent);
-        if ((TextUtils.isEmpty(((QQALive.GetOpenInfoRsp)localObject).sOpenId.get())) || (TextUtils.isEmpty(((QQALive.GetOpenInfoRsp)localObject).sAccessToken.get()))) {
-          break label271;
-        }
+        localObject = new QQALive.GetOpenInfoRsp();
+        if ((paramFromServiceMsg.getResultCode() != 1000) || (paramIntent == null)) {}
+      }
+    }
+    try
+    {
+      ((QQALive.GetOpenInfoRsp)localObject).mergeFrom(paramIntent);
+      if ((!TextUtils.isEmpty(((QQALive.GetOpenInfoRsp)localObject).sOpenId.get())) && (!TextUtils.isEmpty(((QQALive.GetOpenInfoRsp)localObject).sAccessToken.get())))
+      {
         IliveAuthManager.getInstance().onGetStCallback(true, ((QQALive.GetOpenInfoRsp)localObject).sOpenId.get(), ((QQALive.GetOpenInfoRsp)localObject).sAccessToken.get());
         return;
       }
-      catch (Exception paramIntent)
-      {
-        IliveAuthManager.getInstance().onGetStCallback(false, "", "");
-        return;
-      }
+      IliveAuthManager.getInstance().onGetStCallback(false, "", "");
+      return;
     }
-    label271:
+    catch (Exception paramIntent)
+    {
+      label306:
+      break label306;
+    }
     IliveAuthManager.getInstance().onGetStCallback(false, "", "");
     return;
-    label283:
     IliveAuthManager.getInstance().onGetStCallback(false, "", "");
   }
   
@@ -83,14 +93,18 @@ public class IliveAuthServlet
     paramPacket.setSSOCommand(str);
     paramPacket.setTimeout(l);
     paramPacket.putSendData(arrayOfByte);
-    if (QLog.isColorLevel()) {
-      QLog.d("IliveAuthServlet", 2, "onSend exit cmd=" + str);
+    if (QLog.isColorLevel())
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("onSend exit cmd=");
+      paramIntent.append(str);
+      QLog.d("IliveAuthServlet", 2, paramIntent.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.servlet.IliveAuthServlet
  * JD-Core Version:    0.7.0.1
  */

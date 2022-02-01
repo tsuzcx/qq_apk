@@ -44,10 +44,11 @@ public final class PoiManager
   
   private void performFetchPoi(List<PoiItem> paramList, PoiManager.IFetchPoiListener paramIFetchPoiListener)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {}
-    for (;;)
+    if (paramList != null)
     {
-      return;
+      if (paramList.isEmpty()) {
+        return;
+      }
       Object localObject1 = paramList.iterator();
       Object localObject2;
       while (((Iterator)localObject1).hasNext())
@@ -62,37 +63,36 @@ public final class PoiManager
         if (paramIFetchPoiListener != null) {
           paramIFetchPoiListener.onSuccess(new ArrayList(0), true);
         }
+        return;
       }
-      else
+      paramList = new ArrayList(paramList);
+      Collections.sort(paramList, this.mComparator);
+      if (paramIFetchPoiListener != null)
       {
-        paramList = new ArrayList(paramList);
-        Collections.sort(paramList, this.mComparator);
-        if (paramIFetchPoiListener != null)
-        {
-          localObject1 = PoiHelper.queryPoi(paramList);
-          if ((localObject1 != null) && (!((List)localObject1).isEmpty())) {
-            paramIFetchPoiListener.onSuccess((List)localObject1, paramList.isEmpty());
-          }
+        localObject1 = PoiHelper.queryPoi(paramList);
+        if ((localObject1 != null) && (!((List)localObject1).isEmpty())) {
+          paramIFetchPoiListener.onSuccess((List)localObject1, paramList.isEmpty());
         }
-        boolean bool = paramList.isEmpty();
-        while (!bool)
-        {
-          if (paramList.size() < 50) {}
-          for (int i = paramList.size();; i = 50)
-          {
-            localObject1 = new PoiItem[i];
-            localObject2 = paramList.iterator();
-            int j = 0;
-            while ((j < i) && (((Iterator)localObject2).hasNext()))
-            {
-              localObject1[j] = ((PoiItem)((Iterator)localObject2).next());
-              ((Iterator)localObject2).remove();
-              j += 1;
-            }
-          }
-          bool = paramList.isEmpty();
-          WeiyunLiteGlobal.getInstance().getCommandManager().fetchPOI(Arrays.asList((Object[])localObject1), new PoiManager.3(this, (PoiItem[])localObject1, paramIFetchPoiListener, bool));
+      }
+      boolean bool = paramList.isEmpty();
+      while (!bool)
+      {
+        int j = paramList.size();
+        int i = 50;
+        if (j < 50) {
+          i = paramList.size();
         }
+        localObject1 = new PoiItem[i];
+        localObject2 = paramList.iterator();
+        j = 0;
+        while ((j < i) && (((Iterator)localObject2).hasNext()))
+        {
+          localObject1[j] = ((PoiItem)((Iterator)localObject2).next());
+          ((Iterator)localObject2).remove();
+          j += 1;
+        }
+        bool = paramList.isEmpty();
+        WeiyunLiteGlobal.getInstance().getCommandManager().fetchPOI(Arrays.asList((Object[])localObject1), new PoiManager.3(this, (PoiItem[])localObject1, paramIFetchPoiListener, bool));
       }
     }
   }
@@ -104,10 +104,13 @@ public final class PoiManager
   
   public void fetchPoi(List<PoiItem> paramList, PoiManager.IFetchPoiListener paramIFetchPoiListener)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return;
+    if (paramList != null)
+    {
+      if (paramList.isEmpty()) {
+        return;
+      }
+      Message.obtain(this.mHandler, 2, new Object[] { paramList, paramIFetchPoiListener }).sendToTarget();
     }
-    Message.obtain(this.mHandler, 2, new Object[] { paramList, paramIFetchPoiListener }).sendToTarget();
   }
   
   public boolean handleMessage(Message arg1)
@@ -147,7 +150,7 @@ public final class PoiManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weiyun.poi.PoiManager
  * JD-Core Version:    0.7.0.1
  */

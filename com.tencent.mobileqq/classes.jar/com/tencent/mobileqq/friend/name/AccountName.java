@@ -12,20 +12,22 @@ public class AccountName
   public String a(String paramString, Friends paramFriends, AppInterface paramAppInterface)
   {
     if (TextUtils.isEmpty(paramString)) {
-      paramString = "";
+      return "";
     }
-    do
-    {
+    paramFriends = MobileQQ.sMobileQQ;
+    paramAppInterface = new StringBuilder();
+    paramAppInterface.append(Constants.PropertiesKey.nickName.toString());
+    paramAppInterface.append(paramString);
+    paramString = paramFriends.getProperty(paramAppInterface.toString());
+    if (!TextUtils.isEmpty(paramString)) {
       return paramString;
-      paramFriends = MobileQQ.sMobileQQ.getProperty(Constants.PropertiesKey.nickName.toString() + paramString);
-      paramString = paramFriends;
-    } while (!TextUtils.isEmpty(paramFriends));
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.friend.name.AccountName
  * JD-Core Version:    0.7.0.1
  */

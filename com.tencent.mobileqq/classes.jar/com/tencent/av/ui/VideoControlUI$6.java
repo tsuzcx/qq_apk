@@ -11,12 +11,17 @@ class VideoControlUI$6
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d, 1, "showPermissionNormalDialog.Cancel, seq[" + this.jdField_a_of_type_Long + "]");
+    paramDialogInterface = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("showPermissionNormalDialog.Cancel, seq[");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("]");
+    QLog.w(paramDialogInterface, 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoControlUI.6
  * JD-Core Version:    0.7.0.1
  */

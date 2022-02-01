@@ -10,7 +10,7 @@ import java.util.TreeMap;
 
 public class QQDtReportHelper
 {
-  private static long a = 0L;
+  private static long a;
   public static boolean a;
   private static boolean b;
   
@@ -34,7 +34,12 @@ public class QQDtReportHelper
   public static void a(int paramInt)
   {
     b = true;
-    QLog.d("QQDtReportHelper", 1, "848QQDT [setIsMainProcess] process: " + Process.myPid() + ", from: " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("848QQDT [setIsMainProcess] process: ");
+    localStringBuilder.append(Process.myPid());
+    localStringBuilder.append(", from: ");
+    localStringBuilder.append(paramInt);
+    QLog.d("QQDtReportHelper", 1, localStringBuilder.toString());
   }
   
   private static void a(Long paramLong, String paramString, Map<String, String> paramMap)
@@ -44,20 +49,24 @@ public class QQDtReportHelper
       VideoReport.reportEvent("qqin", null);
       QLog.d("QQDtReportHelper", 1, "848QQDT [doSupplementReport] qqin");
       c();
-    }
-    while (!"dt_appout".equals(paramString)) {
       return;
     }
-    if (a == 0L)
+    if ("dt_appout".equals(paramString))
     {
-      QLog.d("QQDtReportHelper", 1, "848QQDT [doSupplementReport] startTimestamp is 0");
-      return;
+      if (a == 0L)
+      {
+        QLog.d("QQDtReportHelper", 1, "848QQDT [doSupplementReport] startTimestamp is 0");
+        return;
+      }
+      paramString = new TreeMap();
+      a(paramString, paramMap);
+      paramString.put("qq_lvtm", paramLong.toString());
+      VideoReport.reportEvent("qqout", paramString);
+      paramString = new StringBuilder();
+      paramString.append("848QQDT [doSupplementReport] qqout, timeInterval: ");
+      paramString.append(paramLong);
+      QLog.d("QQDtReportHelper", 1, paramString.toString());
     }
-    paramString = new TreeMap();
-    a(paramString, paramMap);
-    paramString.put("qq_lvtm", paramLong.toString());
-    VideoReport.reportEvent("qqout", paramString);
-    QLog.d("QQDtReportHelper", 1, "848QQDT [doSupplementReport] qqout, timeInterval: " + paramLong);
   }
   
   public static void a(String paramString, Map<String, String> paramMap)
@@ -104,14 +113,18 @@ public class QQDtReportHelper
   public static void c()
   {
     a = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("QQDtReportHelper", 2, "848QQDT [updateStartTime] timeStamp: " + a);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("848QQDT [updateStartTime] timeStamp: ");
+      localStringBuilder.append(a);
+      QLog.d("QQDtReportHelper", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dt.QQDtReportHelper
  * JD-Core Version:    0.7.0.1
  */

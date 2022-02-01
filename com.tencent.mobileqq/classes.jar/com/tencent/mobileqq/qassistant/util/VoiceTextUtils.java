@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.qassistant.util;
 
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.qassistant.data.CommandInfo;
 import com.tencent.mobileqq.qassistant.data.FriendItemInfo;
 import com.tencent.mobileqq.qassistant.data.VoiceItemInfo;
-import com.tencent.qphone.base.util.BaseApplication;
 import java.util.Iterator;
 import java.util.List;
+import mqq.app.MobileQQ;
 
 public class VoiceTextUtils
 {
@@ -29,21 +28,15 @@ public class VoiceTextUtils
   
   public static boolean a(String paramString)
   {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(BaseApplicationImpl.getContext().getString(2131720612)));
+    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(MobileQQ.sMobileQQ.getString(2131720327)));
   }
   
   public static boolean a(String paramString1, String paramString2)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      bool1 = bool2;
-      if (!TextUtils.isEmpty(paramString2)) {
-        bool1 = paramString1.equals(String.format(BaseApplicationImpl.getContext().getString(2131720604), new Object[] { paramString2 }));
-      }
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
+      return paramString1.equals(String.format(MobileQQ.sMobileQQ.getString(2131720319), new Object[] { paramString2 }));
     }
-    return bool1;
+    return false;
   }
   
   public static boolean a(List<VoiceItemInfo> paramList)
@@ -54,7 +47,7 @@ public class VoiceTextUtils
       while (paramList.hasNext())
       {
         VoiceItemInfo localVoiceItemInfo = (VoiceItemInfo)paramList.next();
-        if ((localVoiceItemInfo.jdField_a_of_type_Int == 0) && (!TextUtils.isEmpty(localVoiceItemInfo.jdField_a_of_type_JavaLangString)) && (localVoiceItemInfo.jdField_a_of_type_JavaLangString.equals(BaseApplicationImpl.getContext().getString(2131719034)))) {
+        if ((localVoiceItemInfo.jdField_a_of_type_Int == 0) && (!TextUtils.isEmpty(localVoiceItemInfo.jdField_a_of_type_JavaLangString)) && (localVoiceItemInfo.jdField_a_of_type_JavaLangString.equals(MobileQQ.sMobileQQ.getString(2131718750)))) {
           return true;
         }
       }
@@ -64,32 +57,32 @@ public class VoiceTextUtils
   
   public static boolean b(String paramString)
   {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(BaseApplicationImpl.getContext().getString(2131720613)));
+    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(MobileQQ.sMobileQQ.getString(2131720328)));
   }
   
   public static boolean c(String paramString)
   {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(BaseApplicationImpl.getContext().getString(2131720616)));
+    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(MobileQQ.sMobileQQ.getString(2131720331)));
   }
   
   public static boolean d(String paramString)
   {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(BaseApplicationImpl.getContext().getString(2131720610)));
+    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(MobileQQ.sMobileQQ.getString(2131720325)));
   }
   
   public static boolean e(String paramString)
   {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(BaseApplicationImpl.getContext().getString(2131720609)));
+    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(MobileQQ.sMobileQQ.getString(2131720324)));
   }
   
   public static boolean f(String paramString)
   {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(BaseApplicationImpl.getContext().getString(2131719034)));
+    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(MobileQQ.sMobileQQ.getString(2131718750)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.util.VoiceTextUtils
  * JD-Core Version:    0.7.0.1
  */

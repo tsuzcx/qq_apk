@@ -21,106 +21,102 @@ public final class ReverseLinearLayout
   private final void a(int paramInt1, int paramInt2)
   {
     int m = getPaddingLeft();
-    int i = getPaddingTop();
+    int j = getPaddingTop();
     int i1 = getPaddingRight();
-    int j = getChildCount() - 1;
-    int i2;
-    Object localObject;
-    int k;
-    if (j >= 0)
+    int i = getChildCount() - 1;
+    while (i >= 0)
     {
-      View localView = getChildAt(j);
-      if ((localView == null) || (localView.getVisibility() == 8)) {
-        break label234;
-      }
-      i2 = localView.getMeasuredWidth();
-      int i3 = localView.getMeasuredHeight();
-      if ((localView.getLayoutParams() instanceof LinearLayout.LayoutParams))
+      View localView = getChildAt(i);
+      int k = j;
+      if (localView != null)
       {
-        localObject = localView.getLayoutParams();
-        if (localObject == null) {
-          throw new TypeCastException("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
-        }
-        localObject = (LinearLayout.LayoutParams)localObject;
-        int n = ((LinearLayout.LayoutParams)localObject).gravity;
-        k = n;
-        if (n < 0) {
-          k = 1;
-        }
-        switch (k & 0x7)
+        k = j;
+        if (localView.getVisibility() != 8)
         {
-        default: 
-          k = m;
-          label152:
-          i += ((LinearLayout.LayoutParams)localObject).topMargin;
-          localView.layout(k, i, i2 + k, i + i3);
-          i = ((LinearLayout.LayoutParams)localObject).bottomMargin + i3 + 0 + i;
+          int i2 = localView.getMeasuredWidth();
+          int i3 = localView.getMeasuredHeight();
+          if (!(localView.getLayoutParams() instanceof LinearLayout.LayoutParams)) {
+            break;
+          }
+          Object localObject = localView.getLayoutParams();
+          if (localObject != null)
+          {
+            localObject = (LinearLayout.LayoutParams)localObject;
+            int n = ((LinearLayout.LayoutParams)localObject).gravity;
+            k = n;
+            if (n < 0) {
+              k = 1;
+            }
+            if ((k & 0x7) != 1) {
+              k = m;
+            } else {
+              k = (paramInt2 - paramInt1 - m - i1 - i2) / 2 + m + ((LinearLayout.LayoutParams)localObject).leftMargin - ((LinearLayout.LayoutParams)localObject).rightMargin;
+            }
+            j += ((LinearLayout.LayoutParams)localObject).topMargin;
+            localView.layout(k, j, i2 + k, j + i3);
+            k = j + (i3 + ((LinearLayout.LayoutParams)localObject).bottomMargin + 0);
+          }
+          else
+          {
+            throw new TypeCastException("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
+          }
         }
       }
-    }
-    label234:
-    for (;;)
-    {
-      j -= 1;
-      break;
-      k = (paramInt2 - paramInt1 - m - i1 - i2) / 2 + m + ((LinearLayout.LayoutParams)localObject).leftMargin - ((LinearLayout.LayoutParams)localObject).rightMargin;
-      break label152;
-      return;
+      i -= 1;
+      j = k;
     }
   }
   
   private final void b(int paramInt1, int paramInt2)
   {
     int m = getPaddingTop();
-    int i = getPaddingLeft();
+    int j = getPaddingLeft();
     int i1 = getPaddingBottom();
-    int j = getChildCount() - 1;
-    int i3;
-    Object localObject;
-    int k;
-    if (j >= 0)
+    int i = getChildCount() - 1;
+    while (i >= 0)
     {
-      View localView = getChildAt(j);
-      if ((localView == null) || (localView.getVisibility() == 8)) {
-        break label238;
-      }
-      int i2 = localView.getMeasuredWidth();
-      i3 = localView.getMeasuredHeight();
-      if ((localView.getLayoutParams() instanceof LinearLayout.LayoutParams))
+      View localView = getChildAt(i);
+      int k = j;
+      if (localView != null)
       {
-        localObject = localView.getLayoutParams();
-        if (localObject == null) {
-          throw new TypeCastException("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
-        }
-        localObject = (LinearLayout.LayoutParams)localObject;
-        int n = ((LinearLayout.LayoutParams)localObject).gravity;
-        k = n;
-        if (n < 0) {
-          k = 16;
-        }
-        switch (k & 0x70)
+        k = j;
+        if (localView.getVisibility() != 8)
         {
-        default: 
-          k = m;
-          label156:
-          i += ((LinearLayout.LayoutParams)localObject).leftMargin;
-          localView.layout(i, k, i + i2, i3 + k);
-          i = ((LinearLayout.LayoutParams)localObject).rightMargin + i2 + 0 + i;
+          int i2 = localView.getMeasuredWidth();
+          int i3 = localView.getMeasuredHeight();
+          if (!(localView.getLayoutParams() instanceof LinearLayout.LayoutParams)) {
+            break;
+          }
+          Object localObject = localView.getLayoutParams();
+          if (localObject != null)
+          {
+            localObject = (LinearLayout.LayoutParams)localObject;
+            int n = ((LinearLayout.LayoutParams)localObject).gravity;
+            k = n;
+            if (n < 0) {
+              k = 16;
+            }
+            if ((k & 0x70) != 16) {
+              k = m;
+            } else {
+              k = (paramInt2 - paramInt1 - m - i1 - i3) / 2 + m + ((LinearLayout.LayoutParams)localObject).topMargin - ((LinearLayout.LayoutParams)localObject).bottomMargin;
+            }
+            j += ((LinearLayout.LayoutParams)localObject).leftMargin;
+            localView.layout(j, k, j + i2, i3 + k);
+            k = j + (i2 + ((LinearLayout.LayoutParams)localObject).rightMargin + 0);
+          }
+          else
+          {
+            throw new TypeCastException("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
+          }
         }
       }
-    }
-    label238:
-    for (;;)
-    {
-      j -= 1;
-      break;
-      k = (paramInt2 - paramInt1 - m - i1 - i3) / 2 + m + ((LinearLayout.LayoutParams)localObject).topMargin - ((LinearLayout.LayoutParams)localObject).bottomMargin;
-      break label156;
-      return;
+      i -= 1;
+      j = k;
     }
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (getOrientation() == 1)
     {
@@ -132,7 +128,7 @@ public final class ReverseLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.ReverseLinearLayout
  * JD-Core Version:    0.7.0.1
  */

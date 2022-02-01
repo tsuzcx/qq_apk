@@ -48,22 +48,34 @@ public final class stPostFeedCommentV2Req
   
   public String toString()
   {
-    return "stPostFeedCommentV2Req{feed_id='" + this.feed_id + '\'' + ", comment=" + this.comment + ", data=" + this.data + ", hadMancheked=" + this.hadMancheked + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("stPostFeedCommentV2Req{feed_id='");
+    localStringBuilder.append(this.feed_id);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", comment=");
+    localStringBuilder.append(this.comment);
+    localStringBuilder.append(", data=");
+    localStringBuilder.append(this.data);
+    localStringBuilder.append(", hadMancheked=");
+    localStringBuilder.append(this.hadMancheked);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.feed_id, 0);
     paramJceOutputStream.write(this.comment, 1);
-    if (this.data != null) {
-      paramJceOutputStream.write(this.data, 2);
+    ArrayList localArrayList = this.data;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
     paramJceOutputStream.write(this.hadMancheked, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stPostFeedCommentV2Req
  * JD-Core Version:    0.7.0.1
  */

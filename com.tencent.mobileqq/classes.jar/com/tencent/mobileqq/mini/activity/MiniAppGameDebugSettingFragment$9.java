@@ -14,12 +14,16 @@ class MiniAppGameDebugSettingFragment$9
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount() + "_loadingad_select_use_nulllist_", 4).edit().putBoolean("_loadingad_select_use_nulllist_", paramBoolean).commit();
+    paramCompoundButton = BaseApplicationImpl.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    localStringBuilder.append("_loadingad_select_use_nulllist_");
+    paramCompoundButton.getSharedPreferences(localStringBuilder.toString(), 4).edit().putBoolean("_loadingad_select_use_nulllist_", paramBoolean).commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.activity.MiniAppGameDebugSettingFragment.9
  * JD-Core Version:    0.7.0.1
  */

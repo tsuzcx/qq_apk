@@ -26,7 +26,10 @@ public class ArkAppInfo$ArkWhiteUrlItem
   
   public String toString()
   {
-    return this.ruleDomain + this.rulePath;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.ruleDomain);
+    localStringBuilder.append(this.rulePath);
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

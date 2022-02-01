@@ -8,36 +8,42 @@ public class JceEncoder
 {
   public static <T extends JceStruct> T decode(T paramT, byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return null;
-    }
-    try
+    if (paramArrayOfByte != null)
     {
-      paramArrayOfByte = new JceInputStream(paramArrayOfByte);
-      paramArrayOfByte.setServerEncoding("utf8");
-      paramT.readFrom(paramArrayOfByte);
-      return paramT;
-    }
-    catch (Exception paramT)
-    {
-      paramT.printStackTrace();
+      if (paramArrayOfByte.length == 0) {
+        return null;
+      }
+      try
+      {
+        paramArrayOfByte = new JceInputStream(paramArrayOfByte);
+        paramArrayOfByte.setServerEncoding("utf8");
+        paramT.readFrom(paramArrayOfByte);
+        return paramT;
+      }
+      catch (Exception paramT)
+      {
+        paramT.printStackTrace();
+      }
     }
     return null;
   }
   
   public static <T extends JceStruct> T decode(Class<T> paramClass, byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return null;
-    }
-    try
+    if (paramArrayOfByte != null)
     {
-      paramClass = decode((JceStruct)paramClass.newInstance(), paramArrayOfByte);
-      return paramClass;
-    }
-    catch (Exception paramClass)
-    {
-      paramClass.printStackTrace();
+      if (paramArrayOfByte.length == 0) {
+        return null;
+      }
+      try
+      {
+        paramClass = decode((JceStruct)paramClass.newInstance(), paramArrayOfByte);
+        return paramClass;
+      }
+      catch (Exception paramClass)
+      {
+        paramClass.printStackTrace();
+      }
     }
     return null;
   }
@@ -52,7 +58,7 @@ public class JceEncoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.utils.JceEncoder
  * JD-Core Version:    0.7.0.1
  */

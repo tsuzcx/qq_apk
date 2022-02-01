@@ -23,21 +23,27 @@ public class QQDBErrorHandler
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("QQDatabaseErrorHandler", 2, "[SQLiteDatabaseCorruptException]Corruption reported by sqlite on database: " + paramSQLiteDatabase.getPath());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[SQLiteDatabaseCorruptException]Corruption reported by sqlite on database: ");
+        localStringBuilder.append(paramSQLiteDatabase.getPath());
+        QLog.i("QQDatabaseErrorHandler", 2, localStringBuilder.toString());
       }
       new CorruptionInterceptorChain(0, this.mCorruptionInterceptors, paramSQLiteDatabase, this.mDefaultErrorHandler).proceed();
       return;
     }
     catch (StackOverflowError localStackOverflowError)
     {
-      this.mDefaultErrorHandler.onCorruption(paramSQLiteDatabase);
+      label62:
+      break label62;
     }
+    this.mDefaultErrorHandler.onCorruption(paramSQLiteDatabase);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.entitymanager.QQDBErrorHandler
  * JD-Core Version:    0.7.0.1
  */

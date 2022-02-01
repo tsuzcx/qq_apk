@@ -26,13 +26,14 @@ public final class SwitchAndEnterRoom$GetRoomListReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50 }, new String[] { "room_id", "sex", "next_room_id", "direction", "source", "ext" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, GetRoomListReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50 }, new String[] { "room_id", "sex", "next_room_id", "direction", "source", "ext" }, new Object[] { localInteger, localInteger, localInteger, localInteger, localInteger, localByteStringMicro }, GetRoomListReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.service.pb.SwitchAndEnterRoom.GetRoomListReq
  * JD-Core Version:    0.7.0.1
  */

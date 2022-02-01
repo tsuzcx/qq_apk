@@ -28,14 +28,19 @@ public class AppShareIDUtil
   public static long a(String paramString)
   {
     long l = Long.parseLong(paramString.substring(2), 16);
-    ByteBuffer localByteBuffer = ByteBuffer.allocate(8);
-    localByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
-    localByteBuffer.putLong(l);
-    localByteBuffer.flip();
-    localByteBuffer.order(ByteOrder.BIG_ENDIAN);
-    l = localByteBuffer.getLong();
-    if (QLog.isColorLevel()) {
-      QLog.d("share_appid", 2, paramString + " change to ShareID =" + (l >>> 32));
+    Object localObject = ByteBuffer.allocate(8);
+    ((ByteBuffer)localObject).order(ByteOrder.LITTLE_ENDIAN);
+    ((ByteBuffer)localObject).putLong(l);
+    ((ByteBuffer)localObject).flip();
+    ((ByteBuffer)localObject).order(ByteOrder.BIG_ENDIAN);
+    l = ((ByteBuffer)localObject).getLong();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" change to ShareID =");
+      ((StringBuilder)localObject).append(l >>> 32);
+      QLog.d("share_appid", 2, ((StringBuilder)localObject).toString());
     }
     return l >>> 32;
   }
@@ -94,55 +99,55 @@ public class AppShareIDUtil
   
   public static AppShareIDConfigInfo a(String paramString)
   {
-    Object localObject;
-    if ((paramString == null) || ("".equals(paramString)))
-    {
-      localObject = null;
-      return localObject;
-    }
-    for (;;)
-    {
-      AppShareIDConfigInfo localAppShareIDConfigInfo;
-      int i;
-      Node localNode;
-      try
-      {
-        NodeList localNodeList = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>" + paramString).getBytes())).getDocumentElement().getChildNodes();
-        localAppShareIDConfigInfo = new AppShareIDConfigInfo();
-        i = 0;
-        localObject = localAppShareIDConfigInfo;
-        if (i >= localNodeList.getLength()) {
-          break;
-        }
-        if (localNodeList.item(i).getNodeType() != 1) {
-          break label300;
-        }
-        localObject = localNodeList.item(i);
-        localNode = ((Node)localObject).getFirstChild();
-        if (localNode == null) {
-          break label300;
-        }
-        if ("officalwebsite".equals(((Node)localObject).getNodeName())) {
-          localAppShareIDConfigInfo.officalwebsite = localNode.getNodeValue();
-        } else if ("androidlink".equals(((Node)localObject).getNodeName())) {
-          localAppShareIDConfigInfo.appstorelink = localNode.getNodeValue();
-        }
-      }
-      catch (Exception localException)
-      {
-        QLog.w("share_appid", 2, "parser from xml is error,xmlStr:" + paramString);
+    if (paramString != null) {
+      if ("".equals(paramString)) {
         return null;
       }
-      if ("messagetail".equals(localException.getNodeName())) {
-        localAppShareIDConfigInfo.messagetail = localNode.getNodeValue();
-      } else if ("bundleid".equals(localException.getNodeName())) {
-        localAppShareIDConfigInfo.bundleid = localNode.getNodeValue();
-      } else if ("sourceUrl".equals(localException.getNodeName())) {
-        localAppShareIDConfigInfo.sourceUrl = localNode.getNodeValue();
-      }
-      label300:
-      i += 1;
     }
+    try
+    {
+      localObject1 = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>");
+      ((StringBuilder)localObject2).append(paramString);
+      localObject1 = ((DocumentBuilder)localObject1).parse(new ByteArrayInputStream(((StringBuilder)localObject2).toString().getBytes())).getDocumentElement().getChildNodes();
+      localObject2 = new AppShareIDConfigInfo();
+      int i = 0;
+      while (i < ((NodeList)localObject1).getLength())
+      {
+        if (((NodeList)localObject1).item(i).getNodeType() == 1)
+        {
+          Node localNode1 = ((NodeList)localObject1).item(i);
+          Node localNode2 = localNode1.getFirstChild();
+          if (localNode2 != null) {
+            if ("officalwebsite".equals(localNode1.getNodeName())) {
+              ((AppShareIDConfigInfo)localObject2).officalwebsite = localNode2.getNodeValue();
+            } else if ("androidlink".equals(localNode1.getNodeName())) {
+              ((AppShareIDConfigInfo)localObject2).appstorelink = localNode2.getNodeValue();
+            } else if ("messagetail".equals(localNode1.getNodeName())) {
+              ((AppShareIDConfigInfo)localObject2).messagetail = localNode2.getNodeValue();
+            } else if ("bundleid".equals(localNode1.getNodeName())) {
+              ((AppShareIDConfigInfo)localObject2).bundleid = localNode2.getNodeValue();
+            } else if ("sourceUrl".equals(localNode1.getNodeName())) {
+              ((AppShareIDConfigInfo)localObject2).sourceUrl = localNode2.getNodeValue();
+            }
+          }
+        }
+        i += 1;
+      }
+      return localObject2;
+    }
+    catch (Exception localException)
+    {
+      Object localObject1;
+      label287:
+      break label287;
+    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("parser from xml is error,xmlStr:");
+    ((StringBuilder)localObject1).append(paramString);
+    QLog.w("share_appid", 2, ((StringBuilder)localObject1).toString());
+    return null;
   }
   
   public static String a(long paramLong)
@@ -174,7 +179,7 @@ public class AppShareIDUtil
     long l1 = Long.parseLong(paramString.substring(2), 16);
     long l2 = AppidConvert.b(l1);
     if (l2 != 0L) {
-      return l2;
+      l1 = l2;
     }
     return l1;
   }
@@ -199,7 +204,7 @@ public class AppShareIDUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.AppShareIDUtil
  * JD-Core Version:    0.7.0.1
  */

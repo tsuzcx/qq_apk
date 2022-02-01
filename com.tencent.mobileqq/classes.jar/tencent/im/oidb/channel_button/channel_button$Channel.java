@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class channel_button$Channel
   extends MessageMicro<Channel>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 50, 58, 64, 72, 80, 88, 96, 106, 114, 122, 128, 136, 144, 152, 160, 170, 178, 800 }, new String[] { "uint64_channel_id", "str_channel_name", "enum_reason", "uint64_start_time", "uint64_end_time", "str_icon_url", "str_cover_url", "uint32_bold_font", "uint32_show_icon", "uint32_show_cover", "uint32_frame_color", "uint32_fonts_color", "str_web_url", "msg_red_point", "str_proxy", "uint32_only_cover", "uint32_channel_type", "uint64_section_id", "uint64_bid", "uint32_dynamic_sort", "str_square_icon_url", "str_channel_version", "uint32_pos" }, new Object[] { Long.valueOf(0L), "", Integer.valueOf(1), Long.valueOf(0L), Long.valueOf(0L), "", "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", null, "", Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), "", "", Integer.valueOf(0) }, Channel.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBEnumField enum_reason = PBField.initEnum(1);
   public channel_button.RedPoint msg_red_point = new channel_button.RedPoint();
   public final PBStringField str_channel_name = PBField.initString("");
@@ -35,10 +35,17 @@ public final class channel_button$Channel
   public final PBUInt64Field uint64_end_time = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_section_id = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_start_time = PBField.initUInt64(0L);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 50, 58, 64, 72, 80, 88, 96, 106, 114, 122, 128, 136, 144, 152, 160, 170, 178, 800 }, new String[] { "uint64_channel_id", "str_channel_name", "enum_reason", "uint64_start_time", "uint64_end_time", "str_icon_url", "str_cover_url", "uint32_bold_font", "uint32_show_icon", "uint32_show_cover", "uint32_frame_color", "uint32_fonts_color", "str_web_url", "msg_red_point", "str_proxy", "uint32_only_cover", "uint32_channel_type", "uint64_section_id", "uint64_bid", "uint32_dynamic_sort", "str_square_icon_url", "str_channel_version", "uint32_pos" }, new Object[] { localLong, "", Integer.valueOf(1), localLong, localLong, "", "", localInteger, localInteger, localInteger, localInteger, localInteger, "", null, "", localInteger, localInteger, localLong, localLong, localInteger, "", "", localInteger }, Channel.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.channel_button.channel_button.Channel
  * JD-Core Version:    0.7.0.1
  */

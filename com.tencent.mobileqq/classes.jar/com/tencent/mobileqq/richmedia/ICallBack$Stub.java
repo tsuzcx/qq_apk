@@ -39,32 +39,27 @@ public abstract class ICallBack$Stub
     Object localObject2 = null;
     Object localObject3 = null;
     Object localObject1 = null;
-    switch (paramInt1)
+    if (paramInt1 != 1)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.richmedia.ICallBack");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.richmedia.ICallBack");
-      paramInt1 = paramParcel1.readInt();
-      if (paramParcel1.readInt() != 0) {
-        localObject1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
-      }
-      paramParcel1 = a(paramInt1, (Bundle)localObject1);
-      paramParcel2.writeNoException();
-      if (paramParcel1 != null)
+      if (paramInt1 != 2)
       {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
-      }
-      for (;;)
-      {
+        if (paramInt1 != 3)
+        {
+          if (paramInt1 != 1598968902) {
+            return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+          }
+          paramParcel2.writeString("com.tencent.mobileqq.richmedia.ICallBack");
+          return true;
+        }
+        paramParcel1.enforceInterface("com.tencent.mobileqq.richmedia.ICallBack");
+        paramInt1 = paramParcel1.readInt();
+        if (paramParcel1.readInt() != 0) {
+          localObject1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
+        }
+        a(paramInt1, (Bundle)localObject1);
+        paramParcel2.writeNoException();
         return true;
-        paramParcel2.writeInt(0);
       }
-    case 2: 
       paramParcel1.enforceInterface("com.tencent.mobileqq.richmedia.ICallBack");
       localObject1 = localObject2;
       if (paramParcel1.readInt() != 0) {
@@ -76,12 +71,10 @@ public abstract class ICallBack$Stub
       {
         paramParcel2.writeInt(1);
         ((CompressInfo)localObject1).writeToParcel(paramParcel2, 1);
-      }
-      for (;;)
-      {
         return true;
-        paramParcel2.writeInt(0);
       }
+      paramParcel2.writeInt(0);
+      return true;
     }
     paramParcel1.enforceInterface("com.tencent.mobileqq.richmedia.ICallBack");
     paramInt1 = paramParcel1.readInt();
@@ -89,14 +82,21 @@ public abstract class ICallBack$Stub
     if (paramParcel1.readInt() != 0) {
       localObject1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
     }
-    a(paramInt1, (Bundle)localObject1);
+    paramParcel1 = a(paramInt1, (Bundle)localObject1);
     paramParcel2.writeNoException();
+    if (paramParcel1 != null)
+    {
+      paramParcel2.writeInt(1);
+      paramParcel1.writeToParcel(paramParcel2, 1);
+      return true;
+    }
+    paramParcel2.writeInt(0);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.ICallBack.Stub
  * JD-Core Version:    0.7.0.1
  */

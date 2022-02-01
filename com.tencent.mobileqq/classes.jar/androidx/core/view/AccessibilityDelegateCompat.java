@@ -37,7 +37,7 @@ public class AccessibilityDelegateCompat
   
   static List<AccessibilityNodeInfoCompat.AccessibilityActionCompat> getActionList(View paramView)
   {
-    List localList = (List)paramView.getTag(2131378878);
+    List localList = (List)paramView.getTag(2131378267);
     paramView = localList;
     if (localList == null) {
       paramView = Collections.emptyList();
@@ -47,37 +47,24 @@ public class AccessibilityDelegateCompat
   
   private boolean isSpanStillValid(ClickableSpan paramClickableSpan, View paramView)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    int i;
     if (paramClickableSpan != null)
     {
       paramView = AccessibilityNodeInfoCompat.getClickableSpans(paramView.createAccessibilityNodeInfo().getText());
-      i = 0;
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (paramView != null)
+      int i = 0;
+      while ((paramView != null) && (i < paramView.length))
       {
-        bool1 = bool2;
-        if (i < paramView.length)
-        {
-          if (!paramClickableSpan.equals(paramView[i])) {
-            break label58;
-          }
-          bool1 = true;
+        if (paramClickableSpan.equals(paramView[i])) {
+          return true;
         }
+        i += 1;
       }
-      return bool1;
-      label58:
-      i += 1;
     }
+    return false;
   }
   
   private boolean performClickableSpanAction(int paramInt, View paramView)
   {
-    Object localObject = (SparseArray)paramView.getTag(2131378879);
+    Object localObject = (SparseArray)paramView.getTag(2131378268);
     if (localObject != null)
     {
       localObject = (WeakReference)((SparseArray)localObject).get(paramInt);
@@ -139,35 +126,39 @@ public class AccessibilityDelegateCompat
   public boolean performAccessibilityAction(View paramView, int paramInt, Bundle paramBundle)
   {
     List localList = getActionList(paramView);
+    boolean bool2 = false;
     int i = 0;
-    AccessibilityNodeInfoCompat.AccessibilityActionCompat localAccessibilityActionCompat;
-    if (i < localList.size())
+    for (;;)
     {
-      localAccessibilityActionCompat = (AccessibilityNodeInfoCompat.AccessibilityActionCompat)localList.get(i);
-      if (localAccessibilityActionCompat.getId() != paramInt) {}
-    }
-    for (boolean bool2 = localAccessibilityActionCompat.perform(paramView, paramBundle);; bool2 = false)
-    {
-      boolean bool1 = bool2;
-      if (!bool2)
-      {
-        bool1 = bool2;
-        if (Build.VERSION.SDK_INT >= 16) {
-          bool1 = this.mOriginalDelegate.performAccessibilityAction(paramView, paramInt, paramBundle);
-        }
+      bool1 = bool2;
+      if (i >= localList.size()) {
+        break;
       }
-      bool2 = bool1;
-      if (!bool1)
+      AccessibilityNodeInfoCompat.AccessibilityActionCompat localAccessibilityActionCompat = (AccessibilityNodeInfoCompat.AccessibilityActionCompat)localList.get(i);
+      if (localAccessibilityActionCompat.getId() == paramInt)
       {
-        bool2 = bool1;
-        if (paramInt == 2131361823) {
-          bool2 = performClickableSpanAction(paramBundle.getInt("ACCESSIBILITY_CLICKABLE_SPAN_ID", -1), paramView);
-        }
+        bool1 = localAccessibilityActionCompat.perform(paramView, paramBundle);
+        break;
       }
-      return bool2;
       i += 1;
-      break;
     }
+    bool2 = bool1;
+    if (!bool1)
+    {
+      bool2 = bool1;
+      if (Build.VERSION.SDK_INT >= 16) {
+        bool2 = this.mOriginalDelegate.performAccessibilityAction(paramView, paramInt, paramBundle);
+      }
+    }
+    boolean bool1 = bool2;
+    if (!bool2)
+    {
+      bool1 = bool2;
+      if (paramInt == 2131361829) {
+        bool1 = performClickableSpanAction(paramBundle.getInt("ACCESSIBILITY_CLICKABLE_SPAN_ID", -1), paramView);
+      }
+    }
+    return bool1;
   }
   
   public void sendAccessibilityEvent(View paramView, int paramInt)
@@ -182,7 +173,7 @@ public class AccessibilityDelegateCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.view.AccessibilityDelegateCompat
  * JD-Core Version:    0.7.0.1
  */

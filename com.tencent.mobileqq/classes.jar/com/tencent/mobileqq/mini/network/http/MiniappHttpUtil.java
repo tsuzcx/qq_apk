@@ -66,21 +66,20 @@ public class MiniappHttpUtil
   
   private static Request buildRequest(String paramString1, String[] paramArrayOfString, String paramString2, MediaType paramMediaType, byte[] paramArrayOfByte)
   {
-    Object localObject = null;
     Request.Builder localBuilder = new Request.Builder();
+    Object localObject = null;
     if (paramArrayOfString != null)
     {
-      int i = 0;
       String str1 = null;
-      if (i < paramArrayOfString.length)
+      int i = 0;
+      while (i < paramArrayOfString.length)
       {
-        if (i % 2 == 0) {
+        if (i % 2 == 0)
+        {
           str1 = paramArrayOfString[i];
         }
-        for (;;)
+        else
         {
-          i += 1;
-          break;
           String str2 = paramArrayOfString[i];
           try
           {
@@ -88,18 +87,22 @@ public class MiniappHttpUtil
           }
           catch (Throwable localThrowable)
           {
-            QLog.e("MiniappHttpUtil", 1, "areqBuilder.addHeader.error: " + localThrowable);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("areqBuilder.addHeader.error: ");
+            localStringBuilder.append(localThrowable);
+            QLog.e("MiniappHttpUtil", 1, localStringBuilder.toString());
           }
         }
+        i += 1;
       }
     }
     localBuilder.url(paramString1);
-    if ("GET".equals(paramString2)) {
+    if ("GET".equals(paramString2))
+    {
       localBuilder.get();
     }
-    for (;;)
+    else
     {
-      return localBuilder.build();
       paramString1 = localObject;
       if (HttpMethod.requiresRequestBody(paramString2))
       {
@@ -111,48 +114,56 @@ public class MiniappHttpUtil
       }
       localBuilder.method(paramString2, paramString1);
     }
+    return localBuilder.build();
   }
   
   public static void fillErrMsg(String paramString, JSONObject paramJSONObject, int paramInt)
   {
-    switch (paramInt)
+    if ((paramInt == -5) || ((paramInt != -3) && (paramInt != -2))) {}
+    try
     {
-    case -4: 
-    default: 
-    case -5: 
-      try
-      {
-        paramJSONObject.put("errMsg", "unknown reason");
-        return;
-      }
-      catch (Throwable paramString)
-      {
-        QLog.e("MiniappHttpUtil", 1, "fillErrMsg", paramString);
-        return;
-      }
-      if (TextUtils.isEmpty(paramString)) {}
-      for (paramString = "abort";; paramString = paramString + ":fail abort")
-      {
-        paramJSONObject.put("errMsg", paramString);
-        return;
-      }
+      paramJSONObject.put("errMsg", "unknown reason");
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      StringBuilder localStringBuilder;
+      break label86;
     }
     paramJSONObject.put("errMsg", "request protocol error");
+    return;
+    if (TextUtils.isEmpty(paramString))
+    {
+      paramString = "abort";
+    }
+    else
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(":fail abort");
+      paramString = localStringBuilder.toString();
+    }
+    paramJSONObject.put("errMsg", paramString);
+    return;
+    label86:
+    QLog.e("MiniappHttpUtil", 1, "fillErrMsg", paramString);
   }
   
   private static String getContentType(String paramString)
   {
-    if ((paramString.endsWith(".jpg")) || (paramString.endsWith(".jpeg"))) {
-      return "image/jpg";
+    if ((!paramString.endsWith(".jpg")) && (!paramString.endsWith(".jpeg")))
+    {
+      if (paramString.endsWith(".png")) {
+        return "image/png";
+      }
+      return "application/octet-stream";
     }
-    if (paramString.endsWith(".png")) {
-      return "image/png";
-    }
-    return "application/octet-stream";
+    return "image/jpg";
   }
   
   public static int getRetCodeFrom(Throwable paramThrowable, int paramInt)
   {
+    int i = paramInt;
     if (paramThrowable != null)
     {
       if ((paramThrowable instanceof SSLPeerUnverifiedException)) {
@@ -201,24 +212,28 @@ public class MiniappHttpUtil
       if ((paramThrowable instanceof Exception)) {
         return 4;
       }
+      i = paramInt;
       if ((paramThrowable instanceof OutOfMemoryError)) {
-        return 3;
+        i = 3;
       }
     }
-    return paramInt;
+    return i;
   }
   
   private static Call httpConnect(String paramString1, String paramString2, String[] paramArrayOfString, byte[] paramArrayOfByte, HttpCallBack paramHttpCallBack, RequestConfig paramRequestConfig)
   {
-    if ((TextUtils.isEmpty(paramString2)) || ((!paramString2.startsWith("https://")) && (!paramString2.startsWith("http://"))))
+    if ((!TextUtils.isEmpty(paramString2)) && ((paramString2.startsWith("https://")) || (paramString2.startsWith("http://"))))
     {
-      paramHttpCallBack.httpCallBack(-4, null, null);
-      QLog.e("MiniappHttpUtil", 1, "httpConnect error! url invalid. url:" + paramString2);
-      return null;
+      paramString1 = MiniOkHttpClientFactory.getRequestClient().newCall(buildRequest(paramString2, paramArrayOfString, paramString1, null, paramArrayOfByte));
+      paramString1.enqueue(new MiniappHttpUtil.1(paramString2, paramHttpCallBack));
+      return paramString1;
     }
-    paramString1 = MiniOkHttpClientFactory.getRequestClient().newCall(buildRequest(paramString2, paramArrayOfString, paramString1, null, paramArrayOfByte));
-    paramString1.enqueue(new MiniappHttpUtil.1(paramString2, paramHttpCallBack));
-    return paramString1;
+    paramHttpCallBack.httpCallBack(-4, null, null);
+    paramString1 = new StringBuilder();
+    paramString1.append("httpConnect error! url invalid. url:");
+    paramString1.append(paramString2);
+    QLog.e("MiniappHttpUtil", 1, paramString1.toString());
+    return null;
   }
   
   public static Call httpGetV2(String paramString, String[] paramArrayOfString, HttpCallBack paramHttpCallBack, RequestConfig paramRequestConfig)
@@ -259,11 +274,12 @@ public class MiniappHttpUtil
       return null;
     }
     String[] arrayOfString = new String[paramMap.size() * 2];
-    Iterator localIterator = paramMap.keySet().iterator();
+    Object localObject = paramMap.keySet();
     int i = 0;
-    while (localIterator.hasNext())
+    localObject = ((Set)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      String str = (String)localIterator.next();
+      String str = (String)((Iterator)localObject).next();
       arrayOfString[i] = str;
       i += 1;
       arrayOfString[i] = ((String)paramMap.get(str));
@@ -274,7 +290,7 @@ public class MiniappHttpUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.network.http.MiniappHttpUtil
  * JD-Core Version:    0.7.0.1
  */

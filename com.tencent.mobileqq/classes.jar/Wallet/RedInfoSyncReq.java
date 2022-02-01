@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class RedInfoSyncReq
   extends JceStruct
@@ -45,23 +46,27 @@ public final class RedInfoSyncReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.platId, 0);
-    if (this.qVersion != null) {
-      paramJceOutputStream.write(this.qVersion, 1);
+    Object localObject = this.qVersion;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.OSVersion != null) {
-      paramJceOutputStream.write(this.OSVersion, 2);
+    localObject = this.OSVersion;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.deviceModel != null) {
-      paramJceOutputStream.write(this.deviceModel, 3);
+    localObject = this.deviceModel;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.vecRedInfo != null) {
-      paramJceOutputStream.write(this.vecRedInfo, 4);
+    localObject = this.vecRedInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.RedInfoSyncReq
  * JD-Core Version:    0.7.0.1
  */

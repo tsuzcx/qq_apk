@@ -13,12 +13,13 @@ import com.tencent.beacon.event.UserAction;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.UUID;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,16 +53,9 @@ public class SensorReport
   
   private void a(int paramInt, ArrayList<SensorReport.ScreenInfo> paramArrayList)
   {
-    if ((this.jdField_a_of_type_Long == 0L) || (this.jdField_e_of_type_Long == 0L)) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 4, "report Ignore, mRoomID[" + this.jdField_e_of_type_Long + "], guid[" + this.jdField_c_of_type_JavaLangString);
-      }
-    }
-    for (;;)
+    if ((this.jdField_a_of_type_Long == 0L) || (this.jdField_e_of_type_Long == 0L) || (paramArrayList.size() > 0)) {}
+    try
     {
-      return;
-      Object localObject1 = "";
-      if (paramArrayList.size() > 0) {}
       try
       {
         localObject1 = new JSONObject();
@@ -70,77 +64,109 @@ public class SensorReport
         paramArrayList = paramArrayList.iterator();
         while (paramArrayList.hasNext())
         {
-          SensorReport.ScreenInfo localScreenInfo = (SensorReport.ScreenInfo)paramArrayList.next();
+          localObject3 = (SensorReport.ScreenInfo)paramArrayList.next();
           JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("i", localScreenInfo.jdField_a_of_type_Int);
-          localJSONObject.put("off", localScreenInfo.jdField_a_of_type_Long);
-          localJSONObject.put("on", localScreenInfo.jdField_b_of_type_Long);
-          localJSONObject.put("why", localScreenInfo.jdField_c_of_type_Long);
+          localJSONObject.put("i", ((SensorReport.ScreenInfo)localObject3).jdField_a_of_type_Int);
+          localJSONObject.put("off", ((SensorReport.ScreenInfo)localObject3).jdField_a_of_type_Long);
+          localJSONObject.put("on", ((SensorReport.ScreenInfo)localObject3).jdField_b_of_type_Long);
+          localJSONObject.put("why", ((SensorReport.ScreenInfo)localObject3).jdField_c_of_type_Long);
           ((JSONArray)localObject2).put(localJSONObject);
         }
-      }
-      catch (JSONException paramArrayList)
-      {
-        Object localObject2;
-        for (localObject1 = "JSONException. ";; localObject1 = ((JSONObject)localObject1).toString())
-        {
-          paramArrayList = new HashMap();
-          paramArrayList.put("guid", this.jdField_c_of_type_JavaLangString);
-          paramArrayList.put("RoomID", String.valueOf(this.jdField_e_of_type_Long));
-          paramArrayList.put("EnterRoomTime", String.valueOf(this.jdField_f_of_type_Long));
-          paramArrayList.put("screenInfo", localObject1);
-          paramArrayList.put("StartSensorTime", String.valueOf(this.jdField_a_of_type_Long));
-          paramArrayList.put("EndSensorTime", String.valueOf(this.jdField_b_of_type_Long));
-          paramArrayList.put("SetIgnore", String.valueOf(this.jdField_c_of_type_Long));
-          paramArrayList.put("ClearIgnore", String.valueOf(this.jdField_d_of_type_Long));
-          paramArrayList.put("reportType", String.valueOf(paramInt));
-          paramArrayList.put("Log", this.jdField_b_of_type_JavaLangString);
-          paramArrayList.put("ScreenInfoCount", String.valueOf(this.h));
-          if (this.jdField_c_of_type_Long != 0L)
-          {
-            paramArrayList.put("sdkVersion", String.valueOf(Build.VERSION.SDK_INT));
-            paramArrayList.put("devicesInfo", AppSetting.jdField_c_of_type_JavaLangString);
-          }
-          if (QLog.isDevelopLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 4, "mRoomID[" + this.jdField_e_of_type_Long + "], guid[" + this.jdField_c_of_type_JavaLangString + "], [" + (String)localObject1);
-          }
-          if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-            QLog.d(jdField_a_of_type_JavaLangString, 1, this.jdField_c_of_type_JavaLangString + this.jdField_b_of_type_JavaLangString);
-          }
-          if (paramInt != 0) {
-            break label634;
-          }
-          localObject1 = (VideoAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-          if (localObject1 != null)
-          {
-            localObject2 = new Intent(jdField_a_of_type_JavaLangString);
-            ((Intent)localObject2).putExtra("params", paramArrayList);
-            ((Intent)localObject2).setPackage(((VideoAppInterface)localObject1).getApp().getPackageName());
-            ((VideoAppInterface)localObject1).getApp().sendBroadcast((Intent)localObject2);
-          }
-          this.jdField_b_of_type_JavaLangString = "";
-          this.jdField_a_of_type_ComTencentAvUtilsSensorReport$ScreenInfo = null;
-          if (paramInt == 1) {
-            break;
-          }
-          this.jdField_a_of_type_Long = 0L;
-          this.jdField_b_of_type_Long = 0L;
-          this.jdField_c_of_type_Long = 0L;
-          this.jdField_d_of_type_Long = 0L;
-          return;
-          ((JSONObject)localObject1).put("infos", localObject2);
-        }
+        ((JSONObject)localObject1).put("infos", localObject2);
+        paramArrayList = ((JSONObject)localObject1).toString();
       }
       catch (Exception paramArrayList)
       {
-        for (;;)
-        {
-          localObject1 = "json_" + paramArrayList.getClass().getName() + ". ";
-          continue;
-          label634:
-          UserAction.onUserAction(jdField_a_of_type_JavaLangString, true, -1L, -1L, paramArrayList, true);
-        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("json_");
+        ((StringBuilder)localObject1).append(paramArrayList.getClass().getName());
+        ((StringBuilder)localObject1).append(". ");
+        paramArrayList = ((StringBuilder)localObject1).toString();
       }
+    }
+    catch (JSONException paramArrayList)
+    {
+      Object localObject1;
+      Object localObject2;
+      Object localObject3;
+      label213:
+      break label213;
+    }
+    paramArrayList = "JSONException. ";
+    break label222;
+    paramArrayList = "";
+    label222:
+    localObject1 = new HashMap();
+    ((HashMap)localObject1).put("guid", this.jdField_c_of_type_JavaLangString);
+    ((HashMap)localObject1).put("RoomID", String.valueOf(this.jdField_e_of_type_Long));
+    ((HashMap)localObject1).put("EnterRoomTime", String.valueOf(this.jdField_f_of_type_Long));
+    ((HashMap)localObject1).put("screenInfo", paramArrayList);
+    ((HashMap)localObject1).put("StartSensorTime", String.valueOf(this.jdField_a_of_type_Long));
+    ((HashMap)localObject1).put("EndSensorTime", String.valueOf(this.jdField_b_of_type_Long));
+    ((HashMap)localObject1).put("SetIgnore", String.valueOf(this.jdField_c_of_type_Long));
+    ((HashMap)localObject1).put("ClearIgnore", String.valueOf(this.jdField_d_of_type_Long));
+    ((HashMap)localObject1).put("reportType", String.valueOf(paramInt));
+    ((HashMap)localObject1).put("Log", this.jdField_b_of_type_JavaLangString);
+    ((HashMap)localObject1).put("ScreenInfoCount", String.valueOf(this.h));
+    if (this.jdField_c_of_type_Long != 0L)
+    {
+      ((HashMap)localObject1).put("sdkVersion", String.valueOf(Build.VERSION.SDK_INT));
+      ((HashMap)localObject1).put("devicesInfo", AppSetting.jdField_c_of_type_JavaLangString);
+    }
+    if (QLog.isDevelopLevel())
+    {
+      localObject2 = jdField_a_of_type_JavaLangString;
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("mRoomID[");
+      ((StringBuilder)localObject3).append(this.jdField_e_of_type_Long);
+      ((StringBuilder)localObject3).append("], guid[");
+      ((StringBuilder)localObject3).append(this.jdField_c_of_type_JavaLangString);
+      ((StringBuilder)localObject3).append("], [");
+      ((StringBuilder)localObject3).append(paramArrayList);
+      QLog.d((String)localObject2, 4, ((StringBuilder)localObject3).toString());
+    }
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+    {
+      paramArrayList = jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.jdField_c_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(this.jdField_b_of_type_JavaLangString);
+      QLog.d(paramArrayList, 1, ((StringBuilder)localObject2).toString());
+    }
+    if (paramInt == 0)
+    {
+      paramArrayList = (VideoAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+      if (paramArrayList != null)
+      {
+        localObject2 = new Intent(jdField_a_of_type_JavaLangString);
+        ((Intent)localObject2).putExtra("params", (Serializable)localObject1);
+        ((Intent)localObject2).setPackage(paramArrayList.getApp().getPackageName());
+        paramArrayList.getApp().sendBroadcast((Intent)localObject2);
+      }
+    }
+    else
+    {
+      UserAction.onUserAction(jdField_a_of_type_JavaLangString, true, -1L, -1L, (Map)localObject1, true);
+    }
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ComTencentAvUtilsSensorReport$ScreenInfo = null;
+    if (paramInt != 1)
+    {
+      this.jdField_a_of_type_Long = 0L;
+      this.jdField_b_of_type_Long = 0L;
+      this.jdField_c_of_type_Long = 0L;
+      this.jdField_d_of_type_Long = 0L;
+    }
+    return;
+    if (QLog.isDevelopLevel())
+    {
+      paramArrayList = jdField_a_of_type_JavaLangString;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("report Ignore, mRoomID[");
+      ((StringBuilder)localObject1).append(this.jdField_e_of_type_Long);
+      ((StringBuilder)localObject1).append("], guid[");
+      ((StringBuilder)localObject1).append(this.jdField_c_of_type_JavaLangString);
+      QLog.d(paramArrayList, 4, ((StringBuilder)localObject1).toString());
     }
   }
   
@@ -161,8 +187,13 @@ public class SensorReport
     }
     catch (Exception paramContext)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("SensorReport", 2, "unregistonUserActionReceiver e = " + paramContext);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("unregistonUserActionReceiver e = ");
+        localStringBuilder.append(paramContext);
+        QLog.d("SensorReport", 2, localStringBuilder.toString());
+      }
     }
   }
   
@@ -172,13 +203,24 @@ public class SensorReport
     String str = UUID.randomUUID().toString();
     if (this.jdField_a_of_type_Long != 0L)
     {
-      this.jdField_b_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + "[" + this.jdField_c_of_type_JavaLangString + "->" + str + "]begin had came[" + this.jdField_a_of_type_Long + "->" + l + "]");
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject).append("[");
+      ((StringBuilder)localObject).append(this.jdField_c_of_type_JavaLangString);
+      ((StringBuilder)localObject).append("->");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append("]begin had came[");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append("->");
+      ((StringBuilder)localObject).append(l);
+      ((StringBuilder)localObject).append("]");
+      this.jdField_b_of_type_JavaLangString = ((StringBuilder)localObject).toString();
       if (this.jdField_b_of_type_Long == 0L) {
         this.jdField_b_of_type_Long = l;
       }
-      ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+      localObject = this.jdField_a_of_type_JavaUtilArrayList;
       this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      a(2, localArrayList);
+      a(2, (ArrayList)localObject);
     }
     this.jdField_a_of_type_Long = l;
     this.jdField_c_of_type_JavaLangString = str;
@@ -195,8 +237,15 @@ public class SensorReport
         if ((m == 3) || (m == 4)) {
           this.jdField_f_of_type_Long = paramVideoController.e();
         }
-        if (QLog.isDevelopLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 4, "setRoomID[" + this.jdField_e_of_type_Long + "], EnterRoomTime[" + this.jdField_f_of_type_Long);
+        if (QLog.isDevelopLevel())
+        {
+          paramVideoController = jdField_a_of_type_JavaLangString;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("setRoomID[");
+          localStringBuilder.append(this.jdField_e_of_type_Long);
+          localStringBuilder.append("], EnterRoomTime[");
+          localStringBuilder.append(this.jdField_f_of_type_Long);
+          QLog.d(paramVideoController, 4, localStringBuilder.toString());
         }
       }
     }
@@ -240,44 +289,66 @@ public class SensorReport
       paramVideoController.jdField_b_of_type_Long = l;
       paramVideoController.jdField_c_of_type_Long = paramInt;
     }
-    for (;;)
+    else
     {
-      if ((!paramBoolean4) && (this.jdField_a_of_type_JavaUtilArrayList.size() >= 6))
-      {
-        paramVideoController = this.jdField_a_of_type_JavaUtilArrayList;
-        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-        a(1, paramVideoController);
-      }
-      return;
-      this.jdField_b_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + "setScreenOn_LastScreenInfo_null[" + l + "], why[" + paramInt + "]。");
+      paramVideoController = new StringBuilder();
+      paramVideoController.append(this.jdField_b_of_type_JavaLangString);
+      paramVideoController.append("setScreenOn_LastScreenInfo_null[");
+      paramVideoController.append(l);
+      paramVideoController.append("], why[");
+      paramVideoController.append(paramInt);
+      paramVideoController.append("]。");
+      this.jdField_b_of_type_JavaLangString = paramVideoController.toString();
+    }
+    if ((!paramBoolean4) && (this.jdField_a_of_type_JavaUtilArrayList.size() >= 6))
+    {
+      paramVideoController = this.jdField_a_of_type_JavaUtilArrayList;
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      a(1, paramVideoController);
     }
   }
   
   void b()
   {
-    if (this.jdField_b_of_type_Long != 0L) {
-      this.jdField_b_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + "end_came[" + this.jdField_b_of_type_Long + "]。");
+    if (this.jdField_b_of_type_Long != 0L)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject).append("end_came[");
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_Long);
+      ((StringBuilder)localObject).append("]。");
+      this.jdField_b_of_type_JavaLangString = ((StringBuilder)localObject).toString();
     }
     this.jdField_b_of_type_Long = System.currentTimeMillis();
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    a(0, localArrayList);
+    a(0, (ArrayList)localObject);
   }
   
   void c()
   {
     this.jdField_a_of_type_ComTencentAvUtilsSensorReport$ScreenInfo = new SensorReport.ScreenInfo(this);
-    this.jdField_a_of_type_ComTencentAvUtilsSensorReport$ScreenInfo.jdField_a_of_type_Int = this.h;
-    this.h += 1;
-    this.jdField_a_of_type_ComTencentAvUtilsSensorReport$ScreenInfo.jdField_a_of_type_Long = System.currentTimeMillis();
+    SensorReport.ScreenInfo localScreenInfo = this.jdField_a_of_type_ComTencentAvUtilsSensorReport$ScreenInfo;
+    int m = this.h;
+    localScreenInfo.jdField_a_of_type_Int = m;
+    this.h = (m + 1);
+    localScreenInfo.jdField_a_of_type_Long = System.currentTimeMillis();
     this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentAvUtilsSensorReport$ScreenInfo);
   }
   
   void d()
   {
     long l = System.currentTimeMillis();
-    if (this.jdField_c_of_type_Long != 0L) {
-      this.jdField_b_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + "setIgnore[" + this.jdField_c_of_type_Long + "->" + l + "]。");
+    if (this.jdField_c_of_type_Long != 0L)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append("setIgnore[");
+      localStringBuilder.append(this.jdField_c_of_type_Long);
+      localStringBuilder.append("->");
+      localStringBuilder.append(l);
+      localStringBuilder.append("]。");
+      this.jdField_b_of_type_JavaLangString = localStringBuilder.toString();
     }
     this.jdField_c_of_type_Long = l;
   }
@@ -285,15 +356,23 @@ public class SensorReport
   void e()
   {
     long l = System.currentTimeMillis();
-    if (this.jdField_d_of_type_Long != 0L) {
-      this.jdField_b_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + "clearIgnoreFlag[" + this.jdField_d_of_type_Long + "->" + l + "]。");
+    if (this.jdField_d_of_type_Long != 0L)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append("clearIgnoreFlag[");
+      localStringBuilder.append(this.jdField_d_of_type_Long);
+      localStringBuilder.append("->");
+      localStringBuilder.append(l);
+      localStringBuilder.append("]。");
+      this.jdField_b_of_type_JavaLangString = localStringBuilder.toString();
     }
     this.jdField_d_of_type_Long = l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.SensorReport
  * JD-Core Version:    0.7.0.1
  */

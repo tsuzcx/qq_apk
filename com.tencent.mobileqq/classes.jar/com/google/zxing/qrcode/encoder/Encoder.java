@@ -22,8 +22,9 @@ public final class Encoder
   
   static int a(int paramInt)
   {
-    if (paramInt < a.length) {
-      return a[paramInt];
+    int[] arrayOfInt = a;
+    if (paramInt < arrayOfInt.length) {
+      return arrayOfInt[paramInt];
     }
     return -1;
   }
@@ -33,23 +34,20 @@ public final class Encoder
     int j = 2147483647;
     int k = -1;
     int i = 0;
-    if (i < 8)
+    while (i < 8)
     {
       MatrixUtil.a(paramBitArray, paramErrorCorrectionLevel, paramVersion, i, paramByteMatrix);
-      int m = a(paramByteMatrix);
-      if (m >= j) {
-        break label59;
+      int n = a(paramByteMatrix);
+      int m = j;
+      if (n < j)
+      {
+        k = i;
+        m = n;
       }
-      k = i;
+      i += 1;
       j = m;
     }
-    label59:
-    for (;;)
-    {
-      i += 1;
-      break;
-      return k;
-    }
+    return k;
   }
   
   private static int a(ByteMatrix paramByteMatrix)
@@ -59,70 +57,85 @@ public final class Encoder
   
   static BitArray a(BitArray paramBitArray, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramBitArray.b() != paramInt2) {
-      throw new WriterException("Number of bits and data bytes does not match");
-    }
-    ArrayList localArrayList = new ArrayList(paramInt3);
-    int k = 0;
-    int i = 0;
-    int m = 0;
-    Object localObject1;
-    int n;
-    byte[] arrayOfByte;
-    for (int j = 0; k < paramInt3; j = n + j)
+    if (paramBitArray.b() == paramInt2)
     {
-      localObject1 = new int[1];
-      Object localObject2 = new int[1];
-      a(paramInt1, paramInt2, paramInt3, k, (int[])localObject1, (int[])localObject2);
-      n = localObject1[0];
-      arrayOfByte = new byte[n];
-      paramBitArray.a(j * 8, arrayOfByte, 0, n);
-      localObject2 = a(arrayOfByte, localObject2[0]);
-      localArrayList.add(new BlockPair(arrayOfByte, (byte[])localObject2));
-      m = Math.max(m, n);
-      i = Math.max(i, localObject2.length);
-      n = localObject1[0];
-      k += 1;
-    }
-    if (paramInt2 != j) {
+      Object localObject1 = new ArrayList(paramInt3);
+      int n = 0;
+      int k = 0;
+      int m = 0;
+      int j = 0;
+      int i = 0;
+      Object localObject2;
+      byte[] arrayOfByte;
+      while (k < paramInt3)
+      {
+        localObject2 = new int[1];
+        Object localObject3 = new int[1];
+        a(paramInt1, paramInt2, paramInt3, k, (int[])localObject2, (int[])localObject3);
+        int i1 = localObject2[0];
+        arrayOfByte = new byte[i1];
+        paramBitArray.a(m * 8, arrayOfByte, 0, i1);
+        localObject3 = a(arrayOfByte, localObject3[0]);
+        ((Collection)localObject1).add(new BlockPair(arrayOfByte, (byte[])localObject3));
+        j = Math.max(j, i1);
+        i = Math.max(i, localObject3.length);
+        m += localObject2[0];
+        k += 1;
+      }
+      if (paramInt2 == m)
+      {
+        paramBitArray = new BitArray();
+        paramInt2 = 0;
+        for (;;)
+        {
+          paramInt3 = n;
+          if (paramInt2 >= j) {
+            break;
+          }
+          localObject2 = ((Collection)localObject1).iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            arrayOfByte = ((BlockPair)((Iterator)localObject2).next()).a();
+            if (paramInt2 < arrayOfByte.length) {
+              paramBitArray.a(arrayOfByte[paramInt2], 8);
+            }
+          }
+          paramInt2 += 1;
+        }
+        while (paramInt3 < i)
+        {
+          localObject2 = ((Collection)localObject1).iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            arrayOfByte = ((BlockPair)((Iterator)localObject2).next()).b();
+            if (paramInt3 < arrayOfByte.length) {
+              paramBitArray.a(arrayOfByte[paramInt3], 8);
+            }
+          }
+          paramInt3 += 1;
+        }
+        if (paramInt1 == paramBitArray.b()) {
+          return paramBitArray;
+        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("Interleaving error: ");
+        ((StringBuilder)localObject1).append(paramInt1);
+        ((StringBuilder)localObject1).append(" and ");
+        ((StringBuilder)localObject1).append(paramBitArray.b());
+        ((StringBuilder)localObject1).append(" differ.");
+        throw new WriterException(((StringBuilder)localObject1).toString());
+      }
       throw new WriterException("Data bytes does not match offset");
     }
-    paramBitArray = new BitArray();
-    paramInt2 = 0;
-    while (paramInt2 < m)
+    paramBitArray = new WriterException("Number of bits and data bytes does not match");
+    for (;;)
     {
-      localObject1 = localArrayList.iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        arrayOfByte = ((BlockPair)((Iterator)localObject1).next()).a();
-        if (paramInt2 < arrayOfByte.length) {
-          paramBitArray.a(arrayOfByte[paramInt2], 8);
-        }
-      }
-      paramInt2 += 1;
+      throw paramBitArray;
     }
-    paramInt2 = 0;
-    while (paramInt2 < i)
-    {
-      localObject1 = localArrayList.iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        arrayOfByte = ((BlockPair)((Iterator)localObject1).next()).b();
-        if (paramInt2 < arrayOfByte.length) {
-          paramBitArray.a(arrayOfByte[paramInt2], 8);
-        }
-      }
-      paramInt2 += 1;
-    }
-    if (paramInt1 != paramBitArray.b()) {
-      throw new WriterException("Interleaving error: " + paramInt1 + " and " + paramBitArray.b() + " differ.");
-    }
-    return paramBitArray;
   }
   
   private static Mode a(String paramString1, String paramString2)
   {
-    int i = 0;
     if ("Shift_JIS".equals(paramString2))
     {
       if (a(paramString1)) {
@@ -130,30 +143,32 @@ public final class Encoder
       }
       return Mode.BYTE;
     }
-    int k = 0;
+    int i = 0;
     int j = 0;
-    if (i < paramString1.length())
+    int k = 0;
+    while (i < paramString1.length())
     {
       int m = paramString1.charAt(i);
-      if ((m >= 48) && (m <= 57)) {
-        j = 1;
-      }
-      for (;;)
+      if ((m >= 48) && (m <= 57))
       {
-        i += 1;
-        break;
+        k = 1;
+      }
+      else
+      {
         if (a(m) == -1) {
           break label84;
         }
-        k = 1;
+        j = 1;
       }
+      i += 1;
+      continue;
       label84:
       return Mode.BYTE;
     }
-    if (k != 0) {
+    if (j != 0) {
       return Mode.ALPHANUMERIC;
     }
-    if (j != 0) {
+    if (k != 0) {
       return Mode.NUMERIC;
     }
     return Mode.BYTE;
@@ -170,63 +185,67 @@ public final class Encoder
       }
       i += 1;
     }
-    throw new WriterException("Data too big");
+    paramErrorCorrectionLevel = new WriterException("Data too big");
+    for (;;)
+    {
+      throw paramErrorCorrectionLevel;
+    }
   }
   
   public static QRCode a(String paramString, ErrorCorrectionLevel paramErrorCorrectionLevel, Map<EncodeHintType, ?> paramMap)
   {
-    Object localObject1;
-    Object localObject2;
-    Object localObject3;
-    int j;
-    if (paramMap == null)
-    {
+    if (paramMap == null) {
       localObject1 = null;
-      localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = "ISO-8859-1";
-      }
-      localObject1 = a(paramString, (String)localObject2);
-      BitArray localBitArray = new BitArray();
-      if ((localObject1 == Mode.BYTE) && (!"ISO-8859-1".equals(localObject2)))
-      {
-        localObject3 = CharacterSetECI.getCharacterSetECIByName((String)localObject2);
-        if (localObject3 != null) {
-          a((CharacterSetECI)localObject3, localBitArray);
-        }
-      }
-      a((Mode)localObject1, localBitArray);
-      localObject3 = new BitArray();
-      a(paramString, (Mode)localObject1, (BitArray)localObject3, (String)localObject2);
-      j = 0;
-      i = j;
-      if (paramMap != null)
-      {
-        i = j;
-        if (paramMap.containsKey(EncodeHintType.QRCODE_VERSION)) {
-          i = ((Integer)paramMap.get(EncodeHintType.QRCODE_VERSION)).intValue();
-        }
-      }
-      int k = localBitArray.a();
-      if (i != 0) {
-        break label362;
-      }
-      j = 40;
-      label156:
-      paramMap = a(((Mode)localObject1).getCharacterCountBits(Version.a(j)) + k + ((BitArray)localObject3).a(), paramErrorCorrectionLevel);
-      if (i != 0) {
-        break label368;
-      }
-      label184:
-      localObject2 = new BitArray();
-      ((BitArray)localObject2).a(localBitArray);
-      if (localObject1 != Mode.BYTE) {
-        break label412;
+    } else {
+      localObject1 = (String)paramMap.get(EncodeHintType.CHARACTER_SET);
+    }
+    Object localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = "ISO-8859-1";
+    }
+    Object localObject1 = a(paramString, (String)localObject2);
+    BitArray localBitArray = new BitArray();
+    if ((localObject1 == Mode.BYTE) && (!"ISO-8859-1".equals(localObject2)))
+    {
+      localObject3 = CharacterSetECI.getCharacterSetECIByName((String)localObject2);
+      if (localObject3 != null) {
+        a((CharacterSetECI)localObject3, localBitArray);
       }
     }
-    label412:
-    for (int i = ((BitArray)localObject3).b();; i = paramString.length())
+    a((Mode)localObject1, localBitArray);
+    Object localObject3 = new BitArray();
+    a(paramString, (Mode)localObject1, (BitArray)localObject3, (String)localObject2);
+    int j = 0;
+    int i = j;
+    if (paramMap != null)
     {
+      i = j;
+      if (paramMap.containsKey(EncodeHintType.QRCODE_VERSION)) {
+        i = ((Integer)paramMap.get(EncodeHintType.QRCODE_VERSION)).intValue();
+      }
+    }
+    int k = localBitArray.a();
+    if (i == 0) {
+      j = 40;
+    } else {
+      j = i;
+    }
+    paramMap = a(k + ((Mode)localObject1).getCharacterCountBits(Version.a(j)) + ((BitArray)localObject3).a(), paramErrorCorrectionLevel);
+    if (i != 0)
+    {
+      if (i >= paramMap.a()) {
+        paramMap = Version.a(i);
+      }
+    }
+    else
+    {
+      localObject2 = new BitArray();
+      ((BitArray)localObject2).a(localBitArray);
+      if (localObject1 == Mode.BYTE) {
+        i = ((BitArray)localObject3).b();
+      } else {
+        i = paramString.length();
+      }
       a(i, paramMap, (Mode)localObject1, (BitArray)localObject2);
       ((BitArray)localObject2).a((BitArray)localObject3);
       paramString = paramMap.a(paramErrorCorrectionLevel);
@@ -244,96 +263,112 @@ public final class Encoder
       MatrixUtil.a(paramString, paramErrorCorrectionLevel, paramMap, i, (ByteMatrix)localObject1);
       ((QRCode)localObject2).a((ByteMatrix)localObject1);
       return localObject2;
-      localObject1 = (String)paramMap.get(EncodeHintType.CHARACTER_SET);
-      break;
-      label362:
-      j = i;
-      break label156;
-      label368:
-      if (i >= paramMap.a())
-      {
-        paramMap = Version.a(i);
-        break label184;
-      }
-      throw new WriterException("Requested version is too small: " + i);
     }
+    paramString = new StringBuilder();
+    paramString.append("Requested version is too small: ");
+    paramString.append(i);
+    throw new WriterException(paramString.toString());
   }
   
   static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
-    if (paramInt4 >= paramInt3) {
-      throw new WriterException("Block ID too large");
-    }
-    int i = paramInt1 % paramInt3;
-    int j = paramInt3 - i;
-    int k = paramInt1 / paramInt3;
-    paramInt2 /= paramInt3;
-    int m = paramInt2 + 1;
-    int n = k - paramInt2;
-    k = k + 1 - m;
-    if (n != k) {
+    if (paramInt4 < paramInt3)
+    {
+      int i = paramInt1 % paramInt3;
+      int j = paramInt3 - i;
+      int k = paramInt1 / paramInt3;
+      paramInt2 /= paramInt3;
+      int m = paramInt2 + 1;
+      int n = k - paramInt2;
+      k = k + 1 - m;
+      if (n == k)
+      {
+        if (paramInt3 == j + i)
+        {
+          if (paramInt1 == (paramInt2 + n) * j + (m + k) * i)
+          {
+            if (paramInt4 < j)
+            {
+              paramArrayOfInt1[0] = paramInt2;
+              paramArrayOfInt2[0] = n;
+              return;
+            }
+            paramArrayOfInt1[0] = m;
+            paramArrayOfInt2[0] = k;
+            return;
+          }
+          throw new WriterException("Total bytes mismatch");
+        }
+        throw new WriterException("RS blocks mismatch");
+      }
       throw new WriterException("EC bytes mismatch");
     }
-    if (paramInt3 != j + i) {
-      throw new WriterException("RS blocks mismatch");
-    }
-    if (paramInt1 != i * (m + k) + (paramInt2 + n) * j) {
-      throw new WriterException("Total bytes mismatch");
-    }
-    if (paramInt4 < j)
-    {
-      paramArrayOfInt1[0] = paramInt2;
-      paramArrayOfInt2[0] = n;
-      return;
-    }
-    paramArrayOfInt1[0] = m;
-    paramArrayOfInt2[0] = k;
+    throw new WriterException("Block ID too large");
   }
   
   static void a(int paramInt, BitArray paramBitArray)
   {
     int k = paramInt << 3;
-    if (paramBitArray.a() > k) {
-      throw new WriterException("data bits cannot fit in the QR Code" + paramBitArray.a() + " > " + k);
-    }
-    int i = 0;
-    while ((i < 4) && (paramBitArray.a() < k))
+    if (paramBitArray.a() <= k)
     {
-      paramBitArray.a(false);
-      i += 1;
-    }
-    i = paramBitArray.a() & 0x7;
-    if (i > 0) {
-      while (i < 8)
+      int j = 0;
+      int i = 0;
+      while ((i < 4) && (paramBitArray.a() < k))
       {
         paramBitArray.a(false);
         i += 1;
       }
-    }
-    int m = paramBitArray.b();
-    i = 0;
-    if (i < paramInt - m)
-    {
-      if ((i & 0x1) == 0) {}
-      for (int j = 236;; j = 17)
+      i = paramBitArray.a() & 0x7;
+      if (i > 0) {
+        while (i < 8)
+        {
+          paramBitArray.a(false);
+          i += 1;
+        }
+      }
+      int m = paramBitArray.b();
+      i = j;
+      while (i < paramInt - m)
       {
+        if ((i & 0x1) == 0) {
+          j = 236;
+        } else {
+          j = 17;
+        }
         paramBitArray.a(j, 8);
         i += 1;
-        break;
       }
-    }
-    if (paramBitArray.a() != k) {
+      if (paramBitArray.a() == k) {
+        return;
+      }
       throw new WriterException("Bits size does not equal capacity");
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("data bits cannot fit in the QR Code");
+    localStringBuilder.append(paramBitArray.a());
+    localStringBuilder.append(" > ");
+    localStringBuilder.append(k);
+    paramBitArray = new WriterException(localStringBuilder.toString());
+    for (;;)
+    {
+      throw paramBitArray;
     }
   }
   
   static void a(int paramInt, Version paramVersion, Mode paramMode, BitArray paramBitArray)
   {
     int i = paramMode.getCharacterCountBits(paramVersion);
-    if (paramInt >= 1 << i) {
-      throw new WriterException(paramInt + " is bigger than " + ((1 << i) - 1));
+    int j = 1 << i;
+    if (paramInt < j)
+    {
+      paramBitArray.a(paramInt, i);
+      return;
     }
-    paramBitArray.a(paramInt, i);
+    paramVersion = new StringBuilder();
+    paramVersion.append(paramInt);
+    paramVersion.append(" is bigger than ");
+    paramVersion.append(j - 1);
+    throw new WriterException(paramVersion.toString());
   }
   
   private static void a(CharacterSetECI paramCharacterSetECI, BitArray paramBitArray)
@@ -349,70 +384,75 @@ public final class Encoder
   
   static void a(CharSequence paramCharSequence, BitArray paramBitArray)
   {
-    int j = paramCharSequence.length();
+    int k = paramCharSequence.length();
     int i = 0;
-    while (i < j)
+    while (i < k)
     {
-      int k = paramCharSequence.charAt(i) - '0';
-      if (i + 2 < j)
+      int m = paramCharSequence.charAt(i) - '0';
+      int j = i + 2;
+      if (j < k)
       {
-        paramBitArray.a(k * 100 + (paramCharSequence.charAt(i + 1) - '0') * 10 + (paramCharSequence.charAt(i + 2) - '0'), 10);
+        paramBitArray.a(m * 100 + (paramCharSequence.charAt(i + 1) - '0') * 10 + (paramCharSequence.charAt(j) - '0'), 10);
         i += 3;
-      }
-      else if (i + 1 < j)
-      {
-        paramBitArray.a(k * 10 + (paramCharSequence.charAt(i + 1) - '0'), 7);
-        i += 2;
       }
       else
       {
-        paramBitArray.a(k, 4);
         i += 1;
+        if (i < k)
+        {
+          paramBitArray.a(m * 10 + (paramCharSequence.charAt(i) - '0'), 7);
+          i = j;
+        }
+        else
+        {
+          paramBitArray.a(m, 4);
+        }
       }
     }
   }
   
   static void a(String paramString, BitArray paramBitArray)
   {
-    for (;;)
+    try
     {
-      int j;
-      int i;
-      try
+      paramString = paramString.getBytes("Shift_JIS");
+      int k = paramString.length;
+      int i = 0;
+      while (i < k)
       {
-        paramString = paramString.getBytes("Shift_JIS");
-        int k = paramString.length;
-        j = 0;
-        if (j >= k) {
-          break label136;
-        }
-        i = (paramString[j] & 0xFF) << 8 | paramString[(j + 1)] & 0xFF;
-        if ((i >= 33088) && (i <= 40956))
+        int m = (paramString[i] & 0xFF) << 8 | paramString[(i + 1)] & 0xFF;
+        int j = 33088;
+        if ((m >= 33088) && (m <= 40956)) {}
+        for (;;)
         {
-          i -= 33088;
-          if (i != -1) {
-            break label109;
+          j = m - j;
+          break label94;
+          if ((m < 57408) || (m > 60351)) {
+            break;
           }
+          j = 49472;
+        }
+        j = -1;
+        label94:
+        if (j != -1)
+        {
+          paramBitArray.a((j >> 8) * 192 + (j & 0xFF), 13);
+          i += 2;
+        }
+        else
+        {
           throw new WriterException("Invalid byte sequence");
         }
       }
-      catch (UnsupportedEncodingException paramString)
-      {
-        throw new WriterException(paramString);
-      }
-      if ((i >= 57408) && (i <= 60351))
-      {
-        i -= 49472;
-        continue;
-        label109:
-        paramBitArray.a((i & 0xFF) + (i >> 8) * 192, 13);
-        j += 2;
-      }
-      else
-      {
-        label136:
-        i = -1;
-      }
+      return;
+    }
+    catch (UnsupportedEncodingException paramString)
+    {
+      paramString = new WriterException(paramString);
+    }
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
@@ -432,24 +472,37 @@ public final class Encoder
     }
     catch (UnsupportedEncodingException paramString1)
     {
-      throw new WriterException(paramString1);
+      paramString1 = new WriterException(paramString1);
+    }
+    for (;;)
+    {
+      throw paramString1;
     }
   }
   
   static void a(String paramString1, Mode paramMode, BitArray paramBitArray, String paramString2)
   {
-    switch (Encoder.1.a[paramMode.ordinal()])
+    int i = Encoder.1.a[paramMode.ordinal()];
+    if (i != 1)
     {
-    default: 
-      throw new WriterException("Invalid mode: " + paramMode);
-    case 1: 
-      a(paramString1, paramBitArray);
-      return;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i == 4)
+          {
+            a(paramString1, paramBitArray);
+            return;
+          }
+          paramString1 = new StringBuilder();
+          paramString1.append("Invalid mode: ");
+          paramString1.append(paramMode);
+          throw new WriterException(paramString1.toString());
+        }
+        a(paramString1, paramBitArray, paramString2);
+        return;
+      }
       b(paramString1, paramBitArray);
-      return;
-    case 3: 
-      a(paramString1, paramBitArray, paramString2);
       return;
     }
     a(paramString1, paramBitArray);
@@ -465,18 +518,23 @@ public final class Encoder
         return false;
       }
       int i = 0;
-      for (;;)
+      while (i < j)
       {
-        if (i >= j) {
-          break label68;
-        }
         int k = paramString[i] & 0xFF;
-        if (((k < 129) || (k > 159)) && ((k < 224) || (k > 235))) {
-          break;
+        if ((k < 129) || (k > 159))
+        {
+          if (k < 224) {
+            break label70;
+          }
+          if (k > 235) {
+            return false;
+          }
         }
         i += 2;
+        continue;
+        label70:
+        return false;
       }
-      label68:
       return true;
     }
     catch (UnsupportedEncodingException paramString) {}
@@ -485,9 +543,9 @@ public final class Encoder
   
   static byte[] a(byte[] paramArrayOfByte, int paramInt)
   {
-    int j = 0;
     int k = paramArrayOfByte.length;
     int[] arrayOfInt = new int[k + paramInt];
+    int j = 0;
     int i = 0;
     while (i < k)
     {
@@ -507,27 +565,36 @@ public final class Encoder
   
   static void b(CharSequence paramCharSequence, BitArray paramBitArray)
   {
-    int j = paramCharSequence.length();
+    int k = paramCharSequence.length();
     int i = 0;
-    while (i < j)
+    while (i < k)
     {
-      int k = a(paramCharSequence.charAt(i));
-      if (k == -1) {
-        throw new WriterException();
-      }
-      if (i + 1 < j)
+      int m = a(paramCharSequence.charAt(i));
+      if (m != -1)
       {
-        int m = a(paramCharSequence.charAt(i + 1));
-        if (m == -1) {
-          throw new WriterException();
+        int j = i + 1;
+        if (j < k)
+        {
+          j = a(paramCharSequence.charAt(j));
+          if (j != -1)
+          {
+            paramBitArray.a(m * 45 + j, 11);
+            i += 2;
+          }
+          else
+          {
+            throw new WriterException();
+          }
         }
-        paramBitArray.a(k * 45 + m, 11);
-        i += 2;
+        else
+        {
+          paramBitArray.a(m, 6);
+          i = j;
+        }
       }
       else
       {
-        paramBitArray.a(k, 6);
-        i += 1;
+        throw new WriterException();
       }
     }
   }

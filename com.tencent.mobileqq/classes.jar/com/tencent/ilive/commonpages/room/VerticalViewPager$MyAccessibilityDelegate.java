@@ -53,21 +53,23 @@ class VerticalViewPager$MyAccessibilityDelegate
     if (super.performAccessibilityAction(paramView, paramInt, paramBundle)) {
       return true;
     }
-    switch (paramInt)
+    if (paramInt != 4096)
     {
-    default: 
-      return false;
-    case 4096: 
-      if (this.this$0.internalCanScrollVertically(1))
+      if (paramInt != 8192) {
+        return false;
+      }
+      if (this.this$0.internalCanScrollVertically(-1))
       {
-        this.this$0.setCurrentItem(VerticalViewPager.access$300(this.this$0) + 1);
+        paramView = this.this$0;
+        paramView.setCurrentItem(VerticalViewPager.access$300(paramView) - 1);
         return true;
       }
       return false;
     }
-    if (this.this$0.internalCanScrollVertically(-1))
+    if (this.this$0.internalCanScrollVertically(1))
     {
-      this.this$0.setCurrentItem(VerticalViewPager.access$300(this.this$0) - 1);
+      paramView = this.this$0;
+      paramView.setCurrentItem(VerticalViewPager.access$300(paramView) + 1);
       return true;
     }
     return false;
@@ -75,7 +77,7 @@ class VerticalViewPager$MyAccessibilityDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.commonpages.room.VerticalViewPager.MyAccessibilityDelegate
  * JD-Core Version:    0.7.0.1
  */

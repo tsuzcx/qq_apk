@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.widget.MyLinearLayout;
+import com.tencent.mobileqq.qwallet.widget.MyLinearLayout;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.SoftReference;
 
@@ -22,62 +22,66 @@ class QQCustomDialogWtihInputAndChoose$6$1
   
   public void run()
   {
-    int j = 0;
-    int k = this.a.this$0.a(this.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout);
+    int k = this.a.this$0.a(this.a.this$0.jdField_a_of_type_ComTencentMobileqqQwalletWidgetMyLinearLayout);
     int m = this.a.this$0.a(this.a.this$0.jdField_a_of_type_AndroidWidgetRelativeLayout);
     int n = this.a.this$0.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
     Object localObject1 = this.a.this$0.getWindow().getAttributes();
     int i;
+    if (k - n > 0) {
+      i = this.a.this$0.jdField_a_of_type_ComTencentMobileqqQwalletWidgetMyLinearLayout.getHeight() / 2;
+    } else {
+      i = m + n - k;
+    }
+    ((WindowManager.LayoutParams)localObject1).y = (-i);
+    this.a.this$0.getWindow().setAttributes((WindowManager.LayoutParams)localObject1);
+    boolean bool = this.a.this$0.c;
+    int j = 0;
     Object localObject2;
-    if (k - n > 0)
+    if ((bool) && (this.a.this$0.jdField_a_of_type_AndroidWidgetEditText.getText() != null) && (TextUtils.isEmpty(this.a.this$0.jdField_a_of_type_AndroidWidgetEditText.getText().toString())))
     {
-      i = this.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout.getHeight() / 2;
-      ((WindowManager.LayoutParams)localObject1).y = (-i);
-      this.a.this$0.getWindow().setAttributes((WindowManager.LayoutParams)localObject1);
-      if ((this.a.this$0.c) && (this.a.this$0.jdField_a_of_type_AndroidWidgetEditText.getText() != null) && (TextUtils.isEmpty(this.a.this$0.jdField_a_of_type_AndroidWidgetEditText.getText().toString())))
+      localObject1 = (LinearLayout)this.a.this$0.jdField_a_of_type_ComTencentMobileqqQwalletWidgetMyLinearLayout.findViewById(2131370113);
+      if ((localObject1 != null) && (((LinearLayout)localObject1).getChildCount() > 0))
       {
-        localObject1 = (LinearLayout)this.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout.findViewById(2131370455);
-        if ((localObject1 != null) && (((LinearLayout)localObject1).getChildCount() > 0))
-        {
-          localObject1 = ((LinearLayout)localObject1).getChildAt(0);
-          localObject2 = (TextView)((View)localObject1).findViewById(2131370454);
-          if (((TextView)localObject2).getText() != null) {
-            this.a.this$0.a(((TextView)localObject2).getText().toString());
-          }
-          localObject1 = ((View)localObject1).findViewById(2131370453);
-          ((View)localObject1).setVisibility(0);
-          this.a.this$0.jdField_a_of_type_AndroidViewView = ((View)localObject1);
-          this.a.this$0.c = false;
+        localObject1 = ((LinearLayout)localObject1).getChildAt(0);
+        localObject2 = (TextView)((View)localObject1).findViewById(2131370112);
+        if (((TextView)localObject2).getText() != null) {
+          this.a.this$0.a(((TextView)localObject2).getText().toString());
         }
-      }
-      if (QLog.isColorLevel())
-      {
-        localObject1 = (Context)this.a.this$0.jdField_a_of_type_JavaLangRefSoftReference.get();
-        if (localObject1 != null) {
-          j = ((Context)localObject1).getResources().getDisplayMetrics().heightPixels;
-        }
-        localObject2 = new StringBuilder(128);
-        if (localObject1 != null) {
-          break label429;
-        }
-        ((StringBuilder)localObject2).append("|context is null");
+        localObject1 = ((View)localObject1).findViewById(2131370111);
+        ((View)localObject1).setVisibility(0);
+        this.a.this$0.jdField_a_of_type_AndroidViewView = ((View)localObject1);
+        this.a.this$0.c = false;
       }
     }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      ((StringBuilder)localObject2).append("|screenHeight=").append(j).append("|emoSpaceY=").append(k).append("|dialogY=").append(m).append("|dialogHeight=").append(n).append("|moveY=").append(i);
+      localObject1 = (Context)this.a.this$0.jdField_a_of_type_JavaLangRefSoftReference.get();
+      if (localObject1 != null) {
+        j = ((Context)localObject1).getResources().getDisplayMetrics().heightPixels;
+      }
+      localObject2 = new StringBuilder(128);
+      if (localObject1 == null) {
+        ((StringBuilder)localObject2).append("|context is null");
+      } else {
+        ((StringBuilder)localObject2).append("|context is not null");
+      }
+      ((StringBuilder)localObject2).append("|screenHeight=");
+      ((StringBuilder)localObject2).append(j);
+      ((StringBuilder)localObject2).append("|emoSpaceY=");
+      ((StringBuilder)localObject2).append(k);
+      ((StringBuilder)localObject2).append("|dialogY=");
+      ((StringBuilder)localObject2).append(m);
+      ((StringBuilder)localObject2).append("|dialogHeight=");
+      ((StringBuilder)localObject2).append(n);
+      ((StringBuilder)localObject2).append("|moveY=");
+      ((StringBuilder)localObject2).append(i);
       QLog.d("QQCustomDialogWtihInputAndChoose.meassure", 2, ((StringBuilder)localObject2).toString());
-      return;
-      i = m + n - k;
-      break;
-      label429:
-      ((StringBuilder)localObject2).append("|context is not null");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose.6.1
  * JD-Core Version:    0.7.0.1
  */

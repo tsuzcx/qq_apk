@@ -17,26 +17,26 @@ final class d
   
   private void onReceivePackageAddedInternal(Context paramContext, Intent paramIntent)
   {
-    if ((paramContext == null) || (paramIntent == null) || (!TextUtils.equals(paramIntent.getAction(), "android.intent.action.PACKAGE_ADDED")) || (paramIntent.getData() == null) || (TextUtils.isEmpty(paramIntent.getData().getSchemeSpecificPart())))
+    if ((paramContext != null) && (paramIntent != null) && (TextUtils.equals(paramIntent.getAction(), "android.intent.action.PACKAGE_ADDED")) && (paramIntent.getData() != null) && (!TextUtils.isEmpty(paramIntent.getData().getSchemeSpecificPart())))
     {
+      paramContext = paramIntent.getData().getSchemeSpecificPart();
+      AdLog.i("AdAppPreOrderReceiver", String.format("onReceivePackageAdded %s", new Object[] { paramContext }));
+      paramContext = getParams(paramContext);
+      if ((paramContext != null) && (paramContext.extrasForIntent != null) && (paramContext.extrasForIntent.containsKey("APP_PREORDER_TASK_ID")))
+      {
+        paramIntent = paramContext.extrasForIntent.getString("APP_PREORDER_TASK_ID");
+        paramContext.extrasForIntent.remove("APP_PREORDER_TASK_ID");
+        AdLog.i("AdAppPreOrderReceiver", String.format("onReceivePackageAdded taskId:%s", new Object[] { paramIntent }));
+        AdAppPreOrderManager.INSTANCE.setTaskStatusAndCommit(paramIntent, 33);
+        return;
+      }
       AdLog.e("AdAppPreOrderReceiver", "onReceivePackageAdded error");
       return;
     }
-    paramContext = paramIntent.getData().getSchemeSpecificPart();
-    AdLog.i("AdAppPreOrderReceiver", String.format("onReceivePackageAdded %s", new Object[] { paramContext }));
-    paramContext = getParams(paramContext);
-    if ((paramContext == null) || (paramContext.extrasForIntent == null) || (!paramContext.extrasForIntent.containsKey("APP_PREORDER_TASK_ID")))
-    {
-      AdLog.e("AdAppPreOrderReceiver", "onReceivePackageAdded error");
-      return;
-    }
-    paramIntent = paramContext.extrasForIntent.getString("APP_PREORDER_TASK_ID");
-    paramContext.extrasForIntent.remove("APP_PREORDER_TASK_ID");
-    AdLog.i("AdAppPreOrderReceiver", String.format("onReceivePackageAdded taskId:%s", new Object[] { paramIntent }));
-    AdAppPreOrderManager.INSTANCE.setTaskStatusAndCommit(paramIntent, 33);
+    AdLog.e("AdAppPreOrderReceiver", "onReceivePackageAdded error");
   }
   
-  public void onReceivePackageAdded(Context paramContext, Intent paramIntent)
+  protected void onReceivePackageAdded(Context paramContext, Intent paramIntent)
   {
     onReceivePackageAddedInternal(paramContext, paramIntent);
     super.onReceivePackageAdded(paramContext, paramIntent);

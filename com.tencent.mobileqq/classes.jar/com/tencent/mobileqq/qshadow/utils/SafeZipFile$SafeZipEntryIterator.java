@@ -23,9 +23,16 @@ class SafeZipFile$SafeZipEntryIterator
     ZipEntry localZipEntry = (ZipEntry)this.delegate.nextElement();
     if (localZipEntry != null)
     {
-      String str = localZipEntry.getName();
-      if ((str != null) && ((str.contains("../")) || (str.contains("..\\")))) {
-        throw new SecurityException("非法entry路径:" + localZipEntry.getName());
+      Object localObject = localZipEntry.getName();
+      if (localObject != null)
+      {
+        if ((!((String)localObject).contains("../")) && (!((String)localObject).contains("..\\"))) {
+          return localZipEntry;
+        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("非法entry路径:");
+        ((StringBuilder)localObject).append(localZipEntry.getName());
+        throw new SecurityException(((StringBuilder)localObject).toString());
       }
     }
     return localZipEntry;
@@ -33,7 +40,7 @@ class SafeZipFile$SafeZipEntryIterator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qshadow.utils.SafeZipFile.SafeZipEntryIterator
  * JD-Core Version:    0.7.0.1
  */

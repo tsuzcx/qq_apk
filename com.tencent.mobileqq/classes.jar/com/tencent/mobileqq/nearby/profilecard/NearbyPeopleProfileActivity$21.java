@@ -1,26 +1,28 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarDownloadManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
 
 class NearbyPeopleProfileActivity$21
-  implements Runnable
+  implements ConditionSearchManager.IConfigListener
 {
-  NearbyPeopleProfileActivity$21(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, String paramString) {}
+  NearbyPeopleProfileActivity$21(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void run()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if (NearbyPeopleProfileActivity.a(this.this$0) != null)
+    if ((paramBoolean) && (paramInt == 2))
     {
-      NearbyPeopleProfileActivity.a(this.this$0).a(this.a);
-      return;
+      if ((NearbyPeopleProfileActivity.access$400(this.a) != null) && (this.a.mMode == 1))
+      {
+        NearbyPeopleProfileActivity.access$400(this.a).d();
+        return;
+      }
+      NearbyPeopleProfileActivity.access$500(this.a);
     }
-    QLog.i("Q.nearby_people_card.", 1, "mDynamicAvatarDownloadManager is NULL!!!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.21
  * JD-Core Version:    0.7.0.1
  */

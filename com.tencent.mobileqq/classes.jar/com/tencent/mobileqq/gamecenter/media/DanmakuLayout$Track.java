@@ -39,38 +39,55 @@ class DanmakuLayout$Track
   
   boolean a(DanmakuLayout.DrawItem paramDrawItem)
   {
-    boolean bool;
-    if (!a()) {
-      bool = true;
-    }
-    for (;;)
+    boolean bool1 = a();
+    boolean bool2 = true;
+    if (!bool1)
     {
-      if (bool)
-      {
-        this.a.add(paramDrawItem);
-        if (paramDrawItem.jdField_a_of_type_AndroidWidgetTextView.getParent() == null) {
-          this.jdField_b_of_type_ComTencentMobileqqGamecenterMediaDanmakuLayout.addView(paramDrawItem.jdField_a_of_type_AndroidWidgetTextView);
-        }
-      }
-      return bool;
-      DanmakuLayout.DrawItem localDrawItem = (DanmakuLayout.DrawItem)this.a.get(this.a.size() - 1);
-      if (localDrawItem.jdField_a_of_type_Float > localDrawItem.jdField_b_of_type_Int + 40 + Math.random() * 40.0D)
+      bool1 = bool2;
+    }
+    else
+    {
+      Object localObject = this.a;
+      localObject = (DanmakuLayout.DrawItem)((List)localObject).get(((List)localObject).size() - 1);
+      double d1 = ((DanmakuLayout.DrawItem)localObject).jdField_a_of_type_Float;
+      double d2 = ((DanmakuLayout.DrawItem)localObject).jdField_b_of_type_Int + 40;
+      double d3 = Math.random();
+      Double.isNaN(d2);
+      if (d1 > d2 + d3 * 40.0D)
       {
         DanmakuLayout.DrawItem.a(paramDrawItem);
-        if ((paramDrawItem.jdField_b_of_type_Float < localDrawItem.jdField_b_of_type_Float) || ((localDrawItem.jdField_a_of_type_Float - localDrawItem.jdField_b_of_type_Int) / (paramDrawItem.jdField_b_of_type_Float - localDrawItem.jdField_b_of_type_Float) > (DanmakuLayout.a(this.jdField_b_of_type_ComTencentMobileqqGamecenterMediaDanmakuLayout) + localDrawItem.jdField_b_of_type_Int - localDrawItem.jdField_a_of_type_Float) / localDrawItem.jdField_b_of_type_Float))
+        bool1 = bool2;
+        if (paramDrawItem.jdField_b_of_type_Float < ((DanmakuLayout.DrawItem)localObject).jdField_b_of_type_Float) {
+          break label175;
+        }
+        if ((((DanmakuLayout.DrawItem)localObject).jdField_a_of_type_Float - ((DanmakuLayout.DrawItem)localObject).jdField_b_of_type_Int) / (paramDrawItem.jdField_b_of_type_Float - ((DanmakuLayout.DrawItem)localObject).jdField_b_of_type_Float) > (DanmakuLayout.a(this.jdField_b_of_type_ComTencentMobileqqGamecenterMediaDanmakuLayout) + ((DanmakuLayout.DrawItem)localObject).jdField_b_of_type_Int - ((DanmakuLayout.DrawItem)localObject).jdField_a_of_type_Float) / ((DanmakuLayout.DrawItem)localObject).jdField_b_of_type_Float)
         {
-          bool = true;
-          continue;
+          bool1 = bool2;
+          break label175;
         }
       }
-      bool = false;
+      bool1 = false;
     }
+    label175:
+    if (bool1)
+    {
+      this.a.add(paramDrawItem);
+      if (paramDrawItem.jdField_a_of_type_AndroidWidgetTextView.getParent() == null) {
+        this.jdField_b_of_type_ComTencentMobileqqGamecenterMediaDanmakuLayout.addView(paramDrawItem.jdField_a_of_type_AndroidWidgetTextView);
+      }
+    }
+    return bool1;
   }
   
   boolean b()
   {
-    if (this.a.size() > 0) {}
-    for (boolean bool = true; bool; bool = false)
+    boolean bool;
+    if (this.a.size() > 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if (bool)
     {
       Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext())
@@ -84,7 +101,7 @@ class DanmakuLayout$Track
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.media.DanmakuLayout.Track
  * JD-Core Version:    0.7.0.1
  */

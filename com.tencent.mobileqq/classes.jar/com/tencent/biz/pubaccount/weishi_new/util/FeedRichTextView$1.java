@@ -16,21 +16,23 @@ class FeedRichTextView$1
     if (localInnerSpannableBuilder == null) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView$OnElementClickListener != null) {
-      this.this$0.setMovementMethod(this.this$0.getDefaultMovementMethod());
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView$OnElementClickListener != null)
+    {
+      localObject = this.this$0;
+      ((FeedRichTextView)localObject).setMovementMethod(((FeedRichTextView)localObject).getDefaultMovementMethod());
     }
     if (FeedRichTextView.a(this.this$0) == null) {
       FeedRichTextView.a(this.this$0, new Handler(Looper.getMainLooper(), this.this$0));
     }
-    Message localMessage = FeedRichTextView.a(this.this$0).obtainMessage();
-    localMessage.what = 1001;
-    localMessage.obj = localInnerSpannableBuilder;
-    FeedRichTextView.a(this.this$0).sendMessage(localMessage);
+    Object localObject = FeedRichTextView.a(this.this$0).obtainMessage();
+    ((Message)localObject).what = 1001;
+    ((Message)localObject).obj = localInnerSpannableBuilder;
+    FeedRichTextView.a(this.this$0).sendMessage((Message)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.FeedRichTextView.1
  * JD-Core Version:    0.7.0.1
  */

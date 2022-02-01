@@ -31,24 +31,51 @@ class SensorJsPlugin$CompassSensorJsPlugin
   
   public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    if (SensorJsPlugin.access$200(this.this$0)) {}
-    do
-    {
+    if (SensorJsPlugin.access$200(this.this$0)) {
       return;
-      if (paramSensorEvent.sensor.getType() == 2) {
-        this.mMagneticFieldValues = paramSensorEvent.values;
-      }
-    } while (paramSensorEvent.sensor.getType() != 1);
-    this.mAccelerometerValues = paramSensorEvent.values;
-    SensorManager.getRotationMatrix(this.mMatrix, null, this.mAccelerometerValues, this.mMagneticFieldValues);
-    SensorManager.getOrientation(this.mMatrix, this.mValues);
-    float f = (float)Math.toDegrees(this.mValues[0]);
-    paramSensorEvent = "unknow ${" + this.accuracy + "}";
-    switch (this.accuracy)
-    {
     }
-    for (;;)
+    if (paramSensorEvent.sensor.getType() == 2) {
+      this.mMagneticFieldValues = paramSensorEvent.values;
+    }
+    if (paramSensorEvent.sensor.getType() == 1)
     {
+      this.mAccelerometerValues = paramSensorEvent.values;
+      SensorManager.getRotationMatrix(this.mMatrix, null, this.mAccelerometerValues, this.mMagneticFieldValues);
+      SensorManager.getOrientation(this.mMatrix, this.mValues);
+      float f = (float)Math.toDegrees(this.mValues[0]);
+      paramSensorEvent = new StringBuilder();
+      paramSensorEvent.append("unknow ${");
+      paramSensorEvent.append(this.accuracy);
+      paramSensorEvent.append("}");
+      paramSensorEvent = paramSensorEvent.toString();
+      int i = this.accuracy;
+      if (i != -1)
+      {
+        if (i != 0)
+        {
+          if (i != 1)
+          {
+            if (i != 2)
+            {
+              if (i == 3) {
+                paramSensorEvent = "high";
+              }
+            }
+            else {
+              paramSensorEvent = "medium";
+            }
+          }
+          else {
+            paramSensorEvent = "low";
+          }
+        }
+        else {
+          paramSensorEvent = "unreliable";
+        }
+      }
+      else {
+        paramSensorEvent = "no-contact";
+      }
       try
       {
         JSONObject localJSONObject = new JSONObject();
@@ -60,23 +87,13 @@ class SensorJsPlugin$CompassSensorJsPlugin
       catch (JSONException paramSensorEvent)
       {
         paramSensorEvent.printStackTrace();
-        return;
       }
-      paramSensorEvent = "high";
-      continue;
-      paramSensorEvent = "low";
-      continue;
-      paramSensorEvent = "medium";
-      continue;
-      paramSensorEvent = "no-contact";
-      continue;
-      paramSensorEvent = "unreliable";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.SensorJsPlugin.CompassSensorJsPlugin
  * JD-Core Version:    0.7.0.1
  */

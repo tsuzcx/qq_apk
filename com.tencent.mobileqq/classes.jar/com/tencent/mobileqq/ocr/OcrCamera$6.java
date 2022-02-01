@@ -15,8 +15,9 @@ class OcrCamera$6
     }
     if (((this.a.jdField_a_of_type_Boolean) || (this.a.e == 1)) && (!OcrCamera.a(this.a)))
     {
-      this.a.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-      if ((this.a.e != 1) && (System.currentTimeMillis() - OcrCamera.a(this.a) > this.a.c))
+      paramCamera = this.a;
+      paramCamera.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+      if ((paramCamera.e != 1) && (System.currentTimeMillis() - OcrCamera.a(this.a) > this.a.c))
       {
         OcrCamera.a(this.a, System.currentTimeMillis());
         OcrCamera.a(this.a, paramArrayOfByte);
@@ -27,7 +28,7 @@ class OcrCamera$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OcrCamera.6
  * JD-Core Version:    0.7.0.1
  */

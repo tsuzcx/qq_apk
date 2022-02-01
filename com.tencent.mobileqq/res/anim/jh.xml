@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <set
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <alpha android:duration="300" android:fromAlpha="1.0" android:toAlpha="0.5" />
-    <scale android:duration="300" android:pivotX="50.0%" android:pivotY="50.0%" android:fromXScale="1.0" android:toXScale="0.95" android:fromYScale="1.0" android:toYScale="0.97"
-      xmlns:android="http://schemas.android.com/apk/res/android" />
+    <set android:ordering="sequentially">
+        <objectAnimator android:interpolator="@interpolator/k" android:duration="166" android:valueFrom="0.0" android:valueTo="0.0" android:valueType="floatType" android:propertyName="scaleX" />
+        <objectAnimator android:interpolator="@interpolator/k" android:duration="16" android:valueFrom="0.0" android:valueTo="1.5" android:valueType="floatType" android:propertyName="scaleX" />
+        <objectAnimator android:interpolator="@interpolator/k" android:duration="316" android:valueFrom="1.5" android:valueTo="1.0" android:valueType="floatType" android:propertyName="scaleX" />
+    </set>
+    <set android:ordering="sequentially">
+        <objectAnimator android:interpolator="@interpolator/k" android:duration="166" android:valueFrom="0.0" android:valueTo="0.0" android:valueType="floatType" android:propertyName="scaleY" />
+        <objectAnimator android:interpolator="@interpolator/k" android:duration="16" android:valueFrom="0.0" android:valueTo="1.5" android:valueType="floatType" android:propertyName="scaleY" />
+        <objectAnimator android:interpolator="@interpolator/k" android:duration="316" android:valueFrom="1.5" android:valueTo="1.0" android:valueType="floatType" android:propertyName="scaleY" />
+    </set>
 </set>

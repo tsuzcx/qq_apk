@@ -10,9 +10,11 @@ import android.view.View;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.simpleui.SimpleUIUtil;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vip.JceProtocol;
+import com.tencent.mobileqq.vas.api.IJce;
+import com.tencent.mobileqq.vas.api.IJce.Util;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.mobilereport.MobileReportManager;
 import java.util.ArrayList;
@@ -21,13 +23,18 @@ import java.util.List;
 public class SimpleUIChoiceView
 {
   private static List<SimpleUIChoiceView.ColorItemInfo> jdField_a_of_type_JavaUtilList;
+  public static final String[] a;
   private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   private View jdField_a_of_type_AndroidViewView;
   private GeneralSettingActivity jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity;
   private SimpleUIChoiceView.ColorListAdapter jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView$ColorListAdapter;
   private boolean jdField_a_of_type_Boolean = true;
-  private final String[] jdField_a_of_type_ArrayOfJavaLangString = { "素雅灰", "极简白", "浅葱绿", "盛夏黄", "桃桃粉", "星辰紫", "经典蓝", "元气红", "极致黑" };
+  
+  static
+  {
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "素雅灰", "极简白", "浅葱绿", "盛夏黄", "桃桃粉", "星辰紫", "经典蓝", "元气红", "极致黑" };
+  }
   
   private void a(URLImageView paramURLImageView, SimpleUIChoiceView.ColorItemInfo paramColorItemInfo)
   {
@@ -39,8 +46,16 @@ public class SimpleUIChoiceView
       paramURLImageView.setImageDrawable(null);
       paramURLImageView.setImageDrawable((Drawable)localObject);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("SimpleUIChoiceView", 2, "onBindViewHolder loadPic colorDrawable=" + localObject + " bReady=" + bool + " checked=" + paramColorItemInfo.jdField_a_of_type_Boolean);
+    if (QLog.isColorLevel())
+    {
+      paramURLImageView = new StringBuilder();
+      paramURLImageView.append("onBindViewHolder loadPic colorDrawable=");
+      paramURLImageView.append(localObject);
+      paramURLImageView.append(" bReady=");
+      paramURLImageView.append(bool);
+      paramURLImageView.append(" checked=");
+      paramURLImageView.append(paramColorItemInfo.jdField_a_of_type_Boolean);
+      QLog.d("SimpleUIChoiceView", 2, paramURLImageView.toString());
     }
     paramColorItemInfo.jdField_a_of_type_ComTencentImageURLDrawable = ((URLDrawable)localObject);
     if (!bool)
@@ -57,31 +72,42 @@ public class SimpleUIChoiceView
   
   public void a()
   {
-    new JceProtocol("QC.HomepageLogicServer.HomepageLogicObj", "QcHomePageLogic.GetConciseThemeReq", "stReq", "stRsp").a("GetConciseTheme", new GetConciseThemeReq(JceProtocol.a()), new GetConciseThemeRsp(), new SimpleUIChoiceView.1(this), false);
+    ((IJce)QRoute.api(IJce.class)).build("QC.HomepageLogicServer.HomepageLogicObj", "QcHomePageLogic.GetConciseThemeReq", "stReq", "stRsp").request("GetConciseTheme", new GetConciseThemeReq(IJce.Util.a()), new GetConciseThemeRsp(), new SimpleUIChoiceView.1(this), false);
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SimpleUIChoiceView", 2, "updateSimpleUIChoice bpref=" + paramInt + " needChangeTheme=" + paramBoolean);
-    }
-    if ((paramInt >= 0) && (this.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView$ColorListAdapter != null))
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      SimpleUIChoiceView.ColorItemInfo localColorItemInfo = this.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView$ColorListAdapter.a(paramInt);
-      if (localColorItemInfo != null)
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateSimpleUIChoice bpref=");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" needChangeTheme=");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.d("SimpleUIChoiceView", 2, ((StringBuilder)localObject).toString());
+    }
+    if (paramInt >= 0)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView$ColorListAdapter;
+      if (localObject != null)
       {
-        localColorItemInfo.jdField_b_of_type_Boolean = paramBoolean;
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView$ColorListAdapter.a(localColorItemInfo, paramInt, true)) && (paramBoolean)) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity.c(localColorItemInfo.jdField_a_of_type_Int);
+        localObject = ((SimpleUIChoiceView.ColorListAdapter)localObject).a(paramInt);
+        if (localObject != null)
+        {
+          ((SimpleUIChoiceView.ColorItemInfo)localObject).jdField_b_of_type_Boolean = paramBoolean;
+          if ((this.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView$ColorListAdapter.a((SimpleUIChoiceView.ColorItemInfo)localObject, paramInt, true)) && (paramBoolean)) {
+            this.jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity.c(((SimpleUIChoiceView.ColorItemInfo)localObject).jdField_a_of_type_Int);
+          }
+          this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.scrollToPosition(paramInt);
         }
-        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.scrollToPosition(paramInt);
       }
     }
   }
   
   public void a(View paramView, GeneralSettingActivity paramGeneralSettingActivity)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131364930));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131364814));
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setItemViewCacheSize(7);
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(paramGeneralSettingActivity);
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.setOrientation(0);
@@ -118,52 +144,72 @@ public class SimpleUIChoiceView
   
   public boolean a(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView == null) {}
-    float f;
-    do
-    {
+    RecyclerView localRecyclerView = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+    boolean bool = true;
+    if (localRecyclerView == null) {
       return true;
-      f = paramMotionEvent.getY();
-      paramMotionEvent = new int[2];
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLocationOnScreen(paramMotionEvent);
-    } while ((f <= paramMotionEvent[1]) || (f >= paramMotionEvent[1] + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getHeight()));
-    return false;
+    }
+    float f = paramMotionEvent.getY();
+    paramMotionEvent = new int[2];
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLocationOnScreen(paramMotionEvent);
+    if (f > paramMotionEvent[1])
+    {
+      if (f >= paramMotionEvent[1] + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getHeight()) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   public void b()
   {
-    if (jdField_a_of_type_JavaUtilList != null) {}
-    synchronized (jdField_a_of_type_JavaUtilList)
-    {
-      jdField_a_of_type_JavaUtilList.clear();
-      jdField_a_of_type_JavaUtilList = null;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView$ColorListAdapter != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView$ColorListAdapter.a();
+    Object localObject1 = jdField_a_of_type_JavaUtilList;
+    if (localObject1 != null) {
+      try
+      {
+        jdField_a_of_type_JavaUtilList.clear();
+        jdField_a_of_type_JavaUtilList = null;
       }
-      return;
+      finally {}
+    }
+    localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView$ColorListAdapter;
+    if (localObject1 != null) {
+      ((SimpleUIChoiceView.ColorListAdapter)localObject1).a();
     }
   }
   
   public void b(int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SimpleUIChoiceView", 2, "selectSimpleUIChoice bpref=" + paramInt + " isLoading=" + paramBoolean);
-    }
-    if ((paramInt >= 0) && (this.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView$ColorListAdapter != null))
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      SimpleUIChoiceView.ColorItemInfo localColorItemInfo = this.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView$ColorListAdapter.a(paramInt);
-      if (localColorItemInfo != null)
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("selectSimpleUIChoice bpref=");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" isLoading=");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.d("SimpleUIChoiceView", 2, ((StringBuilder)localObject).toString());
+    }
+    if (paramInt >= 0)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView$ColorListAdapter;
+      if (localObject != null)
       {
-        localColorItemInfo.jdField_b_of_type_Boolean = paramBoolean;
-        this.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView$ColorListAdapter.a(localColorItemInfo, paramInt, true);
-        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.scrollToPosition(paramInt);
+        localObject = ((SimpleUIChoiceView.ColorListAdapter)localObject).a(paramInt);
+        if (localObject != null)
+        {
+          ((SimpleUIChoiceView.ColorItemInfo)localObject).jdField_b_of_type_Boolean = paramBoolean;
+          this.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView$ColorListAdapter.a((SimpleUIChoiceView.ColorItemInfo)localObject, paramInt, true);
+          this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.scrollToPosition(paramInt);
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SimpleUIChoiceView
  * JD-Core Version:    0.7.0.1
  */

@@ -38,7 +38,12 @@ public abstract class ProtoBufRequest
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("MMddHHmmss");
     Random localRandom = new Random();
     localRandom.setSeed(System.currentTimeMillis());
-    localStringBuilder.append(str).append("_").append(localSimpleDateFormat.format(new Date())).append(System.currentTimeMillis() % 1000L).append("_").append(localRandom.nextInt(90000) + 10000);
+    localStringBuilder.append(str);
+    localStringBuilder.append("_");
+    localStringBuilder.append(localSimpleDateFormat.format(new Date()));
+    localStringBuilder.append(System.currentTimeMillis() % 1000L);
+    localStringBuilder.append("_");
+    localStringBuilder.append(localRandom.nextInt(90000) + 10000);
     return localStringBuilder.toString();
   }
   
@@ -96,7 +101,12 @@ public abstract class ProtoBufRequest
     }
     localStQWebReq.loginSig.set((MessageMicro)localObject);
     localStQWebReq.contentType.set(getContentType());
-    QMLog.d("ProtoBufRequest", "cmd : " + localStQWebReq.Cmdname.get() + "  traceId:" + localStQWebReq.traceid.get());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("cmd : ");
+    ((StringBuilder)localObject).append(localStQWebReq.Cmdname.get());
+    ((StringBuilder)localObject).append("  traceId:");
+    ((StringBuilder)localObject).append(localStQWebReq.traceid.get());
+    QMLog.d("ProtoBufRequest", ((StringBuilder)localObject).toString());
     return localStQWebReq.toByteArray();
   }
   
@@ -143,12 +153,18 @@ public abstract class ProtoBufRequest
   
   public String toString()
   {
-    return "ProtoBufRequest{seqNo=" + this.seqNo + ",CmdName=" + getCmdName() + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ProtoBufRequest{seqNo=");
+    localStringBuilder.append(this.seqNo);
+    localStringBuilder.append(",CmdName=");
+    localStringBuilder.append(getCmdName());
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.ProtoBufRequest
  * JD-Core Version:    0.7.0.1
  */

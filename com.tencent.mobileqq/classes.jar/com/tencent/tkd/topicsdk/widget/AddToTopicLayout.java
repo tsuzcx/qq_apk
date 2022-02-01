@@ -10,14 +10,14 @@ import android.widget.TextView;
 import com.tencent.tkd.R.id;
 import com.tencent.tkd.R.layout;
 import com.tencent.tkd.R.string;
-import com.tencent.tkd.topicsdk.bean.AddToTopicConfig;
 import com.tencent.tkd.topicsdk.bean.TopicInfo;
+import com.tencent.tkd.topicsdk.bean.globalconfig.AddToTopicConfig;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/widget/AddToTopicLayout;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "attr", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "value", "Lcom/tencent/tkd/topicsdk/bean/TopicInfo;", "selectedTopic", "getSelectedTopic", "()Lcom/tencent/tkd/topicsdk/bean/TopicInfo;", "setSelectedTopic", "(Lcom/tencent/tkd/topicsdk/bean/TopicInfo;)V", "topicTextView", "Landroid/widget/TextView;", "initFromConfig", "", "addToTopicConfig", "Lcom/tencent/tkd/topicsdk/bean/AddToTopicConfig;", "updateTextView", "topicsdk_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/widget/AddToTopicLayout;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "attr", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "value", "Lcom/tencent/tkd/topicsdk/bean/TopicInfo;", "selectedTopic", "getSelectedTopic", "()Lcom/tencent/tkd/topicsdk/bean/TopicInfo;", "setSelectedTopic", "(Lcom/tencent/tkd/topicsdk/bean/TopicInfo;)V", "topicTextView", "Landroid/widget/TextView;", "initFromConfig", "", "addToTopicConfig", "Lcom/tencent/tkd/topicsdk/bean/globalconfig/AddToTopicConfig;", "updateTextView", "topicsdk_release"}, k=1, mv={1, 1, 16})
 public final class AddToTopicLayout
   extends LinearLayout
 {
@@ -28,8 +28,8 @@ public final class AddToTopicLayout
   public AddToTopicLayout(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    LayoutInflater.from(paramContext).inflate(R.layout.x, (ViewGroup)this, true);
-    paramContext = findViewById(R.id.bs);
+    LayoutInflater.from(paramContext).inflate(R.layout.w, (ViewGroup)this, true);
+    paramContext = findViewById(R.id.aP);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.tvTopic)");
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext);
   }
@@ -41,7 +41,7 @@ public final class AddToTopicLayout
       paramTopicInfo = this.jdField_a_of_type_AndroidWidgetTextView;
       Context localContext = getContext();
       Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
-      paramTopicInfo.setText((CharSequence)localContext.getResources().getString(R.string.ad));
+      paramTopicInfo.setText((CharSequence)localContext.getResources().getString(R.string.Y));
       return;
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)paramTopicInfo.getTitle());
@@ -70,7 +70,7 @@ public final class AddToTopicLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.AddToTopicLayout
  * JD-Core Version:    0.7.0.1
  */

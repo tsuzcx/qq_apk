@@ -10,26 +10,40 @@ class DetailInteractSegment$3
 {
   DetailInteractSegment$3(DetailInteractSegment paramDetailInteractSegment) {}
   
-  public void a()
-  {
-    super.a();
-    DetailInteractSegment.a(this.a, null);
-  }
-  
   public void a(int paramInt)
   {
-    super.a(paramInt);
-    StoryReportor.a("home_page", "suc_share", 2, paramInt, new String[] { StoryReportor.b(DetailInteractSegment.a(this.a).a) + "", StoryReportor.a(DetailInteractSegment.a(this.a).a) + "", DetailInteractSegment.a(this.a).a.feedId });
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(StoryReportor.b(DetailInteractSegment.a(this.a).a));
+    ((StringBuilder)localObject).append("");
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(StoryReportor.a(DetailInteractSegment.a(this.a).a));
+    localStringBuilder.append("");
+    StoryReportor.a("home_page", "share_chanel", 2, paramInt, new String[] { localObject, localStringBuilder.toString(), DetailInteractSegment.a(this.a).a.feedId });
   }
   
   public void b(int paramInt)
   {
-    StoryReportor.a("home_page", "share_chanel", 2, paramInt, new String[] { StoryReportor.b(DetailInteractSegment.a(this.a).a) + "", StoryReportor.a(DetailInteractSegment.a(this.a).a) + "", DetailInteractSegment.a(this.a).a.feedId });
+    super.b(paramInt);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(StoryReportor.b(DetailInteractSegment.a(this.a).a));
+    ((StringBuilder)localObject).append("");
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(StoryReportor.a(DetailInteractSegment.a(this.a).a));
+    localStringBuilder.append("");
+    StoryReportor.a("home_page", "suc_share", 2, paramInt, new String[] { localObject, localStringBuilder.toString(), DetailInteractSegment.a(this.a).a.feedId });
+  }
+  
+  public void d()
+  {
+    super.d();
+    DetailInteractSegment.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.view.segment.DetailInteractSegment.3
  * JD-Core Version:    0.7.0.1
  */

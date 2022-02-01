@@ -19,70 +19,71 @@ class BindGroupConfirmActivity$2
   
   public void handleMessage(Message paramMessage)
   {
-    if (paramMessage == null) {}
-    do
-    {
+    if (paramMessage == null) {
       return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 3: 
-        paramMessage = (GetAppInfoProto.GetAppinfoResponse)paramMessage.obj;
-      }
-    } while (!paramMessage.iconsURL.has());
-    int i = 0;
-    int j = 0;
-    int m = 0;
-    label58:
-    GetAppInfoProto.MsgIconsurl localMsgIconsurl;
-    if (i < paramMessage.iconsURL.get().size()) {
-      localMsgIconsurl = (GetAppInfoProto.MsgIconsurl)paramMessage.iconsURL.get(i);
     }
-    for (;;)
+    int i = paramMessage.what;
+    Object localObject;
+    if (i != 3)
     {
-      try
-      {
-        k = Integer.parseInt(localMsgIconsurl.size.get());
-        if (k >= 100)
-        {
-          paramMessage = (GetAppInfoProto.MsgIconsurl)paramMessage.iconsURL.get(i);
-          if (paramMessage == null) {
-            break;
-          }
-          ThreadManager.executeOnNetWorkThread(new BindGroupConfirmActivity.2.1(this, paramMessage));
-          return;
-        }
+      if (i != 4) {
+        return;
       }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        int k = 0;
-        continue;
-        int n = m;
-        if (k > m)
-        {
-          j = i;
-          n = k;
-        }
-        i += 1;
-        m = n;
-      }
-      break label58;
       paramMessage = (Bitmap)paramMessage.obj;
-      Bitmap localBitmap = AuthorityUtil.a(this.a, paramMessage, 50, 50);
+      localObject = AuthorityUtil.a(this.a, paramMessage, 50, 50);
       paramMessage.recycle();
-      if (localBitmap == null) {
-        break;
+      if (localObject != null) {
+        this.a.b.setImageBitmap((Bitmap)localObject);
       }
-      this.a.b.setImageBitmap(localBitmap);
-      return;
-      i = j;
+    }
+    else
+    {
+      paramMessage = (GetAppInfoProto.GetAppinfoResponse)paramMessage.obj;
+      if (paramMessage.iconsURL.has())
+      {
+        i = 0;
+        int m = 0;
+        int j = 0;
+        while (i < paramMessage.iconsURL.get().size())
+        {
+          localObject = (GetAppInfoProto.MsgIconsurl)paramMessage.iconsURL.get(i);
+          try
+          {
+            k = Integer.parseInt(((GetAppInfoProto.MsgIconsurl)localObject).size.get());
+          }
+          catch (NumberFormatException localNumberFormatException)
+          {
+            int k;
+            label135:
+            int n;
+            break label135;
+          }
+          k = 0;
+          if (k >= 100) {
+            break label178;
+          }
+          n = m;
+          if (k > m)
+          {
+            j = i;
+            n = k;
+          }
+          i += 1;
+          m = n;
+        }
+        i = j;
+        label178:
+        paramMessage = (GetAppInfoProto.MsgIconsurl)paramMessage.iconsURL.get(i);
+        if (paramMessage != null) {
+          ThreadManager.executeOnNetWorkThread(new BindGroupConfirmActivity.2.1(this, paramMessage));
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.BindGroupConfirmActivity.2
  * JD-Core Version:    0.7.0.1
  */

@@ -21,22 +21,29 @@ public class LyricViewController
   protected Lyric a;
   protected LyricScrollHelper a;
   protected LyricViewInternal a;
-  private LyricViewScroll.LyricViewScrollListener jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll$LyricViewScrollListener = new LyricViewController.1(this);
+  private LyricViewScroll.LyricViewScrollListener jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll$LyricViewScrollListener;
   private LyricViewScroll jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll;
   protected final String a;
   protected volatile boolean a;
   protected int b;
   protected volatile boolean b;
-  private volatile int jdField_c_of_type_Int = 0;
-  private boolean jdField_c_of_type_Boolean = false;
-  private boolean d = false;
+  private volatile int jdField_c_of_type_Int;
+  private boolean jdField_c_of_type_Boolean;
+  private boolean d;
   
   public LyricViewController(LyricView paramLyricView)
   {
-    this.jdField_a_of_type_JavaLangString = ("task_name_lyric_draw_" + System.currentTimeMillis());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("task_name_lyric_draw_");
+    localStringBuilder.append(System.currentTimeMillis());
+    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
     this.jdField_a_of_type_Boolean = false;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_c_of_type_Boolean = false;
+    this.d = false;
     this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager = LyricContext.a();
     this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricScrollHelper = new LyricScrollHelper();
+    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll$LyricViewScrollListener = new LyricViewController.1(this);
     this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable = new LyricViewController.2(this);
     this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll = paramLyricView.a();
     this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal = paramLyricView.a();
@@ -47,24 +54,23 @@ public class LyricViewController
   {
     this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric = this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal.a();
     Lyric localLyric = this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric;
-    if ((localLyric == null) || (localLyric.a()) || (this.jdField_a_of_type_Boolean))
+    if ((localLyric != null) && (!localLyric.a()) && (!this.jdField_a_of_type_Boolean))
     {
-      if (this.jdField_a_of_type_Boolean) {
-        Log.d("ModuleController", "onRefresh -> is scrolling");
+      int i = (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long);
+      if (this.jdField_b_of_type_Boolean)
+      {
+        int j = this.jdField_b_of_type_Int;
+        if (i >= j) {
+          i = j;
+        }
       }
+      this.jdField_c_of_type_Int = i;
+      a(localLyric.a(i), i);
       return;
     }
-    int j = (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long);
-    int i = j;
-    if (this.jdField_b_of_type_Boolean)
-    {
-      i = j;
-      if (j >= this.jdField_b_of_type_Int) {
-        i = this.jdField_b_of_type_Int;
-      }
+    if (this.jdField_a_of_type_Boolean) {
+      Log.d("ModuleController", "onRefresh -> is scrolling");
     }
-    this.jdField_c_of_type_Int = i;
-    a(localLyric.a(i), i);
   }
   
   public void a()
@@ -77,16 +83,21 @@ public class LyricViewController
   
   public void a(int paramInt)
   {
-    Log.d("ModuleController", "seek " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("seek ");
+    localStringBuilder.append(paramInt);
+    Log.d("ModuleController", localStringBuilder.toString());
     LyricContext.a().post(new LyricViewController.5(this, paramInt));
   }
   
   protected void a(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal != null) && (this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal.getWindowToken() != null)) {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal;
+    if ((localObject != null) && (((LyricViewInternal)localObject).getWindowToken() != null)) {
       ThreadManager.getUIHandler().post(new LyricViewController.9(this, paramInt1, paramInt2));
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll != null) && (this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll.getWindowToken() != null)) {
+    localObject = this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll;
+    if ((localObject != null) && (((LyricViewScroll)localObject).getWindowToken() != null)) {
       ThreadManager.getUIHandler().post(new LyricViewController.10(this));
     }
   }
@@ -123,59 +134,69 @@ public class LyricViewController
     if ((this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric != null) || (this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal != null))
     {
       paramInt = this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal.b(paramInt);
-      if ((this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric == null) || (this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric.a())) {
-        Log.w("ModuleController", "onScrollStop -> scroll without measured lyric");
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric;
+      if ((localObject == null) || (((Lyric)localObject).a())) {
+        break label373;
       }
-    }
-    else
-    {
-      return;
-    }
-    Log.d("ModuleController", "onScrollStop -> scroll to lineNo：" + paramInt);
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric.a.size()))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric.a.get(paramInt) == null)
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onScrollStop -> scroll to lineNo：");
+      ((StringBuilder)localObject).append(paramInt);
+      Log.d("ModuleController", ((StringBuilder)localObject).toString());
+      if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric.a.size()))
       {
-        Log.w("ModuleController", "onScrollStop -> current sentence is null");
-        return;
-      }
-      long l2 = ((Sentence)this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric.a.get(paramInt)).jdField_a_of_type_Long;
-      Log.d("ModuleController", "onScrollStop -> start time of current sentence：" + l2);
-      long l1 = l2;
-      if (this.jdField_b_of_type_Boolean)
-      {
-        if ((this.jdField_a_of_type_Int < 0) || (l2 >= this.jdField_a_of_type_Int)) {
-          break label303;
+        if (this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric.a.get(paramInt) == null)
+        {
+          Log.w("ModuleController", "onScrollStop -> current sentence is null");
+          return;
         }
-        l1 = this.jdField_a_of_type_Int;
-      }
-      for (;;)
-      {
-        Log.d("ModuleController", "onScrollStop -> correct start time：" + l1);
+        long l2 = ((Sentence)this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric.a.get(paramInt)).jdField_a_of_type_Long;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onScrollStop -> start time of current sentence：");
+        ((StringBuilder)localObject).append(l2);
+        Log.d("ModuleController", ((StringBuilder)localObject).toString());
+        long l1 = l2;
+        if (this.jdField_b_of_type_Boolean)
+        {
+          paramInt = this.jdField_a_of_type_Int;
+          if ((paramInt >= 0) && (l2 < paramInt)) {}
+          do
+          {
+            l1 = paramInt;
+            break;
+            paramInt = this.jdField_b_of_type_Int;
+            l1 = l2;
+            if (paramInt < 0) {
+              break;
+            }
+            l1 = l2;
+          } while (l2 > paramInt);
+        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onScrollStop -> correct start time：");
+        ((StringBuilder)localObject).append(l1);
+        Log.d("ModuleController", ((StringBuilder)localObject).toString());
         l2 = l1;
         if (l1 < 0L) {
           l2 = 0L;
         }
         l1 = (l2 / 10L + 1L) * 10L;
-        Log.d("ModuleController", "onScrollStop -> output time：" + l1);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onScrollStop -> output time：");
+        ((StringBuilder)localObject).append(l1);
+        Log.d("ModuleController", ((StringBuilder)localObject).toString());
         this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricScrollHelper.a(l1);
-        if ((this.jdField_c_of_type_Boolean) || (!this.d)) {
-          break;
-        }
-        a((int)l1);
-        return;
-        label303:
-        l1 = l2;
-        if (this.jdField_b_of_type_Int >= 0)
-        {
-          l1 = l2;
-          if (l2 > this.jdField_b_of_type_Int) {
-            l1 = this.jdField_b_of_type_Int;
-          }
+        if ((!this.jdField_c_of_type_Boolean) && (this.d)) {
+          a((int)l1);
         }
       }
+      else
+      {
+        Log.w("ModuleController", "onScrollStop -> scroll out of lyric scope");
+      }
     }
-    Log.w("ModuleController", "onScrollStop -> scroll out of lyric scope");
+    return;
+    label373:
+    Log.w("ModuleController", "onScrollStop -> scroll without measured lyric");
   }
   
   public void c()
@@ -189,56 +210,55 @@ public class LyricViewController
     if ((this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric != null) || (this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal != null))
     {
       paramInt = this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal.a(paramInt);
-      if ((this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric == null) || (this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric.a())) {
-        Log.w("ModuleController", "onScrolling -> scroll without measured lyric");
+      Lyric localLyric = this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric;
+      if ((localLyric != null) && (!localLyric.a()))
+      {
+        if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric.a.size()))
+        {
+          if (this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric.a.get(paramInt) == null)
+          {
+            Log.w("ModuleController", "onScrollStop -> current sentence is null");
+            return;
+          }
+          long l2 = ((Sentence)this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric.a.get(paramInt)).jdField_a_of_type_Long;
+          long l1 = l2;
+          if (this.jdField_b_of_type_Boolean)
+          {
+            paramInt = this.jdField_a_of_type_Int;
+            if ((paramInt >= 0) && (l2 < paramInt)) {}
+            do
+            {
+              l1 = paramInt;
+              break;
+              paramInt = this.jdField_b_of_type_Int;
+              l1 = l2;
+              if (paramInt < 0) {
+                break;
+              }
+              l1 = l2;
+            } while (l2 > paramInt);
+          }
+          l2 = l1;
+          if (l1 < 0L) {
+            l2 = 0L;
+          }
+          l1 = l2 / 10L;
+          this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricScrollHelper.b((l1 + 1L) * 10L);
+          return;
+        }
+        Log.w("ModuleController", "onScrollStop -> scroll out of lyric scope");
       }
     }
     else
     {
       return;
     }
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric.a.size()))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric.a.get(paramInt) == null)
-      {
-        Log.w("ModuleController", "onScrollStop -> current sentence is null");
-        return;
-      }
-      long l2 = ((Sentence)this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric.a.get(paramInt)).jdField_a_of_type_Long;
-      long l1 = l2;
-      if (this.jdField_b_of_type_Boolean)
-      {
-        if ((this.jdField_a_of_type_Int < 0) || (l2 >= this.jdField_a_of_type_Int)) {
-          break label178;
-        }
-        l1 = this.jdField_a_of_type_Int;
-      }
-      for (;;)
-      {
-        l2 = l1;
-        if (l1 < 0L) {
-          l2 = 0L;
-        }
-        l1 = l2 / 10L;
-        this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricScrollHelper.b((l1 + 1L) * 10L);
-        return;
-        label178:
-        l1 = l2;
-        if (this.jdField_b_of_type_Int >= 0)
-        {
-          l1 = l2;
-          if (l2 > this.jdField_b_of_type_Int) {
-            l1 = this.jdField_b_of_type_Int;
-          }
-        }
-      }
-    }
-    Log.w("ModuleController", "onScrollStop -> scroll out of lyric scope");
+    Log.w("ModuleController", "onScrolling -> scroll without measured lyric");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.lyric.widget.LyricViewController
  * JD-Core Version:    0.7.0.1
  */

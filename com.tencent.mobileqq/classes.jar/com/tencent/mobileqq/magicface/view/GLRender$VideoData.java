@@ -21,48 +21,42 @@ class GLRender$VideoData
   {
     if (paramArrayOfByte1 != null)
     {
-      if (this.jdField_a_of_type_ArrayOfByte != null) {
-        break label28;
+      byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+      if (arrayOfByte == null) {
+        this.jdField_a_of_type_ArrayOfByte = new byte[paramArrayOfByte1.length];
+      } else if (arrayOfByte.length != paramArrayOfByte1.length) {
+        this.jdField_a_of_type_ArrayOfByte = new byte[paramArrayOfByte1.length];
       }
-      this.jdField_a_of_type_ArrayOfByte = new byte[paramArrayOfByte1.length];
-      if (this.jdField_a_of_type_ArrayOfByte != null) {
-        break label49;
+      arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+      if (arrayOfByte == null) {
+        return false;
       }
-    }
-    for (;;)
-    {
-      return false;
-      label28:
-      if (this.jdField_a_of_type_ArrayOfByte.length == paramArrayOfByte1.length) {
-        break;
-      }
-      this.jdField_a_of_type_ArrayOfByte = new byte[paramArrayOfByte1.length];
-      break;
-      label49:
-      System.arraycopy(paramArrayOfByte1, 0, this.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte1.length);
-      if (this.jdField_b_of_type_ArrayOfByte == null) {
+      System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 0, paramArrayOfByte1.length);
+      paramArrayOfByte1 = this.jdField_b_of_type_ArrayOfByte;
+      if (paramArrayOfByte1 == null) {
+        this.jdField_b_of_type_ArrayOfByte = new byte[paramArrayOfByte2.length];
+      } else if (paramArrayOfByte1.length != paramArrayOfByte2.length) {
         this.jdField_b_of_type_ArrayOfByte = new byte[paramArrayOfByte2.length];
       }
-      while (this.jdField_b_of_type_ArrayOfByte != null)
-      {
-        System.arraycopy(paramArrayOfByte2, 0, this.jdField_b_of_type_ArrayOfByte, 0, paramArrayOfByte2.length);
-        this.jdField_a_of_type_Int = paramInt3;
-        this.jdField_b_of_type_Int = paramInt4;
-        this.c = paramInt1;
-        this.d = paramInt2;
-        this.jdField_a_of_type_Float = paramFloat;
-        this.jdField_a_of_type_Boolean = paramBoolean;
-        return true;
-        if (this.jdField_b_of_type_ArrayOfByte.length != paramArrayOfByte2.length) {
-          this.jdField_b_of_type_ArrayOfByte = new byte[paramArrayOfByte2.length];
-        }
+      paramArrayOfByte1 = this.jdField_b_of_type_ArrayOfByte;
+      if (paramArrayOfByte1 == null) {
+        return false;
       }
+      System.arraycopy(paramArrayOfByte2, 0, paramArrayOfByte1, 0, paramArrayOfByte2.length);
+      this.jdField_a_of_type_Int = paramInt3;
+      this.jdField_b_of_type_Int = paramInt4;
+      this.c = paramInt1;
+      this.d = paramInt2;
+      this.jdField_a_of_type_Float = paramFloat;
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      return true;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.view.GLRender.VideoData
  * JD-Core Version:    0.7.0.1
  */

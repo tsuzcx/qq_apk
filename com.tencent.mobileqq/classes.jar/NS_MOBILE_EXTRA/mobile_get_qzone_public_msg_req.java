@@ -35,14 +35,15 @@ public final class mobile_get_qzone_public_msg_req
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.map_ext != null) {
-      paramJceOutputStream.write(this.map_ext, 1);
+    Map localMap = this.map_ext;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_EXTRA.mobile_get_qzone_public_msg_req
  * JD-Core Version:    0.7.0.1
  */

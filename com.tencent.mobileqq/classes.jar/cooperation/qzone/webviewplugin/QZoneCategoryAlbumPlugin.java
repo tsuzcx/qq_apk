@@ -27,27 +27,32 @@ public class QZoneCategoryAlbumPlugin
         QZoneHelper.forwardToCategoryAlbum(localActivity, this.parentPlugin.mRuntime.a().getCurrentAccountUin(), i, paramString, -1);
         return true;
       }
+      return false;
     }
     catch (Exception paramString)
     {
       QLog.e("QZoneCategoryAlbumPlugin", 1, paramString.getMessage());
-      return false;
     }
     return false;
   }
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((!paramString2.equals("Qzone")) || (this.parentPlugin == null) || (this.parentPlugin.mRuntime == null)) {}
-    while ((!paramString3.equalsIgnoreCase("jumpCategoryAlbum")) || (paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-      return false;
+    if ((paramString2.equals("Qzone")) && (this.parentPlugin != null))
+    {
+      if (this.parentPlugin.mRuntime == null) {
+        return false;
+      }
+      if ((paramString3.equalsIgnoreCase("jumpCategoryAlbum")) && (paramVarArgs != null) && (paramVarArgs.length > 0)) {
+        return jumpCategoryAlbum(paramVarArgs[0]);
+      }
     }
-    return jumpCategoryAlbum(paramVarArgs[0]);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneCategoryAlbumPlugin
  * JD-Core Version:    0.7.0.1
  */

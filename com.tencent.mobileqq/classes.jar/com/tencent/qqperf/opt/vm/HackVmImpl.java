@@ -24,10 +24,6 @@ public class HackVmImpl
   
   static
   {
-    jdField_a_of_type_Int = 0;
-    jdField_b_of_type_Int = 0;
-    c = 0;
-    d = 0;
     jdField_a_of_type_Long = Runtime.getRuntime().maxMemory();
     jdField_b_of_type_Long = 0L;
   }
@@ -38,50 +34,59 @@ public class HackVmImpl
     try
     {
       String str = System.getProperty("java.vm.version");
-      if ((str != null) && (str.startsWith("2"))) {
+      if ((str != null) && (str.startsWith("2")))
+      {
         a(134217728L);
+        return;
+        if (Build.VERSION.SDK_INT < 23)
+        {
+          a(134217728L);
+          return;
+        }
+        b();
       }
       return;
     }
     catch (Throwable localThrowable) {}
-    if (Build.VERSION.SDK_INT < 23)
-    {
-      a(134217728L);
-      return;
-    }
-    b();
-    return;
   }
   
   public static void a(long paramLong)
   {
     long l = ((ActivityManager)MobileQQ.getContext().getSystemService("activity")).getLargeMemoryClass() * 1024 * 1024;
-    if (jdField_a_of_type_Long <= paramLong) {
-      if (QLog.isColorLevel()) {
-        QLog.d("HACK_ART_MEM", 2, "openLargeHeap|curMaxSize= " + jdField_a_of_type_Long + ",largeHeapSize=" + l);
-      }
-    }
-    try
+    if (jdField_a_of_type_Long <= paramLong)
     {
-      Object localObject2 = Class.forName("dalvik.system.VMRuntime");
-      Object localObject1 = ((Class)localObject2).getMethod("getRuntime", new Class[0]).invoke(null, (Object[])null);
-      localObject2 = ((Class)localObject2).getDeclaredMethod("clearGrowthLimit", new Class[0]);
-      ((Method)localObject2).setAccessible(true);
-      ((Method)localObject2).invoke(localObject1, new Object[0]);
-      jdField_b_of_type_Long = Runtime.getRuntime().maxMemory();
-      d = 21;
-      paramLong = Runtime.getRuntime().maxMemory();
-      if (QLog.isColorLevel()) {
-        QLog.d("HACK_ART_MEM", 2, "openLargeHeap|newMaxMemory= " + paramLong);
+      Object localObject1;
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("openLargeHeap|curMaxSize= ");
+        ((StringBuilder)localObject1).append(jdField_a_of_type_Long);
+        ((StringBuilder)localObject1).append(",largeHeapSize=");
+        ((StringBuilder)localObject1).append(l);
+        QLog.d("HACK_ART_MEM", 2, ((StringBuilder)localObject1).toString());
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      try
+      {
+        Object localObject2 = Class.forName("dalvik.system.VMRuntime");
+        localObject1 = ((Class)localObject2).getMethod("getRuntime", new Class[0]).invoke(null, (Object[])null);
+        localObject2 = ((Class)localObject2).getDeclaredMethod("clearGrowthLimit", new Class[0]);
+        ((Method)localObject2).setAccessible(true);
+        ((Method)localObject2).invoke(localObject1, new Object[0]);
+        jdField_b_of_type_Long = Runtime.getRuntime().maxMemory();
+        d = 21;
+      }
+      catch (Exception localException)
       {
         d = -1;
         localException.printStackTrace();
+      }
+      paramLong = Runtime.getRuntime().maxMemory();
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("openLargeHeap|newMaxMemory= ");
+        localStringBuilder.append(paramLong);
+        QLog.d("HACK_ART_MEM", 2, localStringBuilder.toString());
       }
     }
   }
@@ -105,9 +110,10 @@ public class HackVmImpl
         }
       }
     }
-    boolean bool1;
     if (i < 4) {
       bool1 = true;
+    } else {
+      bool1 = false;
     }
     try
     {
@@ -121,111 +127,115 @@ public class HackVmImpl
           bool2 = false;
         }
       }
-      if ((bool2) && (MobileQQ.sProcessId == 1)) {
-        localSharedPreferences.edit().putLong("key_last_hack_time", System.currentTimeMillis()).commit();
-      }
-      if (bool2)
-      {
-        long l = ((ActivityManager)MobileQQ.getContext().getSystemService("activity")).getLargeMemoryClass() * 1024 * 1024;
-        jdField_b_of_type_Long = Math.min(Runtime.getRuntime().maxMemory() * 2L, l);
-        jdField_b_of_type_Long = Math.min(jdField_b_of_type_Long, 201326592L);
-      }
     }
     catch (Throwable localThrowable2)
     {
-      try
+      for (;;)
       {
-        for (;;)
-        {
-          DalvikReplacer.dvmHack(MobileQQ.getContext(), 26214400, bool2, jdField_b_of_type_Long);
-          QLog.e("QQAppInterface", 1, new Object[] { "laResult: ", Integer.valueOf(DalvikReplacer.sLaResult), ", verifyResult: ", Integer.valueOf(DalvikReplacer.sVerifyResult), ", heapResult = ", Integer.valueOf(DalvikReplacer.sHeapResult), ", modHeap = " + jdField_b_of_type_Long });
-          jdField_a_of_type_Int = DalvikReplacer.sLaResult;
-          if (bool2)
-          {
-            jdField_b_of_type_Int = DalvikReplacer.sVerifyResult;
-            c = DalvikReplacer.sHeapResult;
-          }
-          if ((bool2) && (MobileQQ.sProcessId == 1)) {
-            ThreadManager.getSubThreadHandler().postDelayed(new HackVmImpl.1(), 5000L);
-          }
-          return true;
-          bool1 = false;
-        }
-        localThrowable2 = localThrowable2;
+        long l;
+        int k;
+        StringBuilder localStringBuilder;
         boolean bool2 = bool1;
       }
-      catch (Throwable localThrowable1)
-      {
-        for (;;)
-        {
-          QLog.e("AutoMonitor", 1, "dvmHack error", localThrowable1);
-        }
-      }
     }
+    if ((bool2) && (MobileQQ.sProcessId == 1)) {
+      localSharedPreferences.edit().putLong("key_last_hack_time", System.currentTimeMillis()).commit();
+    }
+    if (bool2)
+    {
+      l = ((ActivityManager)MobileQQ.getContext().getSystemService("activity")).getLargeMemoryClass() * 1024 * 1024;
+      jdField_b_of_type_Long = Math.min(Runtime.getRuntime().maxMemory() * 2L, l);
+      jdField_b_of_type_Long = Math.min(jdField_b_of_type_Long, 201326592L);
+    }
+    try
+    {
+      DalvikReplacer.dvmHack(MobileQQ.getContext(), 26214400, bool2, jdField_b_of_type_Long);
+    }
+    catch (Throwable localThrowable1)
+    {
+      QLog.e("AutoMonitor", 1, "dvmHack error", localThrowable1);
+    }
+    i = DalvikReplacer.sLaResult;
+    j = DalvikReplacer.sVerifyResult;
+    k = DalvikReplacer.sHeapResult;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(", modHeap = ");
+    localStringBuilder.append(jdField_b_of_type_Long);
+    QLog.e("QQAppInterface", 1, new Object[] { "laResult: ", Integer.valueOf(i), ", verifyResult: ", Integer.valueOf(j), ", heapResult = ", Integer.valueOf(k), localStringBuilder.toString() });
+    jdField_a_of_type_Int = DalvikReplacer.sLaResult;
+    if (bool2)
+    {
+      jdField_b_of_type_Int = DalvikReplacer.sVerifyResult;
+      c = DalvikReplacer.sHeapResult;
+    }
+    if ((bool2) && (MobileQQ.sProcessId == 1)) {
+      ThreadManager.getSubThreadHandler().postDelayed(new HackVmImpl.1(), 5000L);
+    }
+    return true;
   }
   
   public static void b()
   {
-    if ((MobileQQ.sProcessId != 1) && (MobileQQ.sProcessId != 2)) {}
-    for (;;)
-    {
+    if ((MobileQQ.sProcessId != 1) && (MobileQQ.sProcessId != 2)) {
       return;
-      SharedPreferences localSharedPreferences = MobileQQ.getContext().getSharedPreferences("sp_hack_dvm", 4);
-      int j = localSharedPreferences.getInt("key_art_continuous_crash_count", 0);
-      int i = j;
-      if (j < 4)
+    }
+    SharedPreferences localSharedPreferences = MobileQQ.getContext().getSharedPreferences("sp_hack_dvm", 4);
+    int j = localSharedPreferences.getInt("key_art_continuous_crash_count", 0);
+    int i = j;
+    if (j < 4)
+    {
+      i = j;
+      if (MobileQQ.sProcessId == 1)
       {
         i = j;
-        if (MobileQQ.sProcessId == 1)
+        if (localSharedPreferences.getLong("key_last_hack_art_time", 0L) > 0L)
         {
-          i = j;
-          if (localSharedPreferences.getLong("key_last_hack_art_time", 0L) > 0L)
-          {
-            i = j + 1;
-            localSharedPreferences.edit().putInt("key_art_continuous_crash_count", i).commit();
-          }
+          i = j + 1;
+          localSharedPreferences.edit().putInt("key_art_continuous_crash_count", i).commit();
         }
       }
-      if (i < 4)
-      {
-        i = 1;
-        if ((i == 0) || (jdField_a_of_type_Long >= 201326592L)) {
-          continue;
-        }
-        long l = ((ActivityManager)MobileQQ.getContext().getSystemService("activity")).getLargeMemoryClass() * 1024 * 1024;
-        jdField_b_of_type_Long = Math.min(jdField_a_of_type_Long * 2L, l);
-        if (jdField_b_of_type_Long <= jdField_a_of_type_Long) {
-          continue;
-        }
-        if (MobileQQ.sProcessId == 1) {
-          localSharedPreferences.edit().putLong("key_last_hack_art_time", System.currentTimeMillis()).commit();
-        }
+    }
+    if (i < 4) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i == 0) {
+      return;
+    }
+    if (jdField_a_of_type_Long >= 201326592L) {
+      return;
+    }
+    long l = ((ActivityManager)MobileQQ.getContext().getSystemService("activity")).getLargeMemoryClass() * 1024 * 1024;
+    jdField_b_of_type_Long = Math.min(jdField_a_of_type_Long * 2L, l);
+    if (jdField_b_of_type_Long > jdField_a_of_type_Long)
+    {
+      if (MobileQQ.sProcessId == 1) {
+        localSharedPreferences.edit().putLong("key_last_hack_art_time", System.currentTimeMillis()).commit();
       }
       try
       {
         DalvikReplacer.artHack(MobileQQ.getContext(), jdField_a_of_type_Long, jdField_b_of_type_Long);
-        QLog.e("HACK_ART_MEM", 1, new Object[] { "hackArtResult = ", Integer.valueOf(DalvikReplacer.sArtHackResult), ", modHeap = " + jdField_b_of_type_Long });
-        d = DalvikReplacer.sArtHackResult;
-        if (MobileQQ.sProcessId != 1) {
-          continue;
-        }
-        ThreadManager.getSubThreadHandler().postDelayed(new HackVmImpl.2(), 5000L);
-        return;
-        i = 0;
       }
       catch (Throwable localThrowable)
       {
-        for (;;)
-        {
-          QLog.e("HACK_ART_MEM", 1, "ArtHack error", localThrowable);
-        }
+        QLog.e("HACK_ART_MEM", 1, "ArtHack error", localThrowable);
+      }
+      i = DalvikReplacer.sArtHackResult;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(", modHeap = ");
+      localStringBuilder.append(jdField_b_of_type_Long);
+      QLog.e("HACK_ART_MEM", 1, new Object[] { "hackArtResult = ", Integer.valueOf(i), localStringBuilder.toString() });
+      d = DalvikReplacer.sArtHackResult;
+      if (MobileQQ.sProcessId == 1) {
+        ThreadManager.getSubThreadHandler().postDelayed(new HackVmImpl.2(), 5000L);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.opt.vm.HackVmImpl
  * JD-Core Version:    0.7.0.1
  */

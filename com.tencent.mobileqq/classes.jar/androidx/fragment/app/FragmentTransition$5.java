@@ -12,14 +12,15 @@ final class FragmentTransition$5
   public void run()
   {
     FragmentTransition.callSharedElementStartEnd(this.val$inFragment, this.val$outFragment, this.val$inIsPop, this.val$inSharedElements, false);
-    if (this.val$epicenterView != null) {
-      this.val$impl.getBoundsOnScreen(this.val$epicenterView, this.val$epicenter);
+    View localView = this.val$epicenterView;
+    if (localView != null) {
+      this.val$impl.getBoundsOnScreen(localView, this.val$epicenter);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.fragment.app.FragmentTransition.5
  * JD-Core Version:    0.7.0.1
  */

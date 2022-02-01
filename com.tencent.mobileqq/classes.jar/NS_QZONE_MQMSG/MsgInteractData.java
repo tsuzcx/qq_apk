@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class MsgInteractData
   extends JceStruct
@@ -58,29 +59,35 @@ public final class MsgInteractData
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.type, 0);
-    if (this.likInfo != null) {
-      paramJceOutputStream.write(this.likInfo, 1);
+    Object localObject = this.likInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.commentInfo != null) {
-      paramJceOutputStream.write(this.commentInfo, 2);
+    localObject = this.commentInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.shareInfo != null) {
-      paramJceOutputStream.write(this.shareInfo, 3);
+    localObject = this.shareInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.vecButtonInfo != null) {
-      paramJceOutputStream.write(this.vecButtonInfo, 4);
+    localObject = this.vecButtonInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
-    if (this.pushInfo != null) {
-      paramJceOutputStream.write(this.pushInfo, 5);
+    localObject = this.pushInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
-    if (this.viewInfo != null) {
-      paramJceOutputStream.write(this.viewInfo, 6);
+    localObject = this.viewInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QZONE_MQMSG.MsgInteractData
  * JD-Core Version:    0.7.0.1
  */

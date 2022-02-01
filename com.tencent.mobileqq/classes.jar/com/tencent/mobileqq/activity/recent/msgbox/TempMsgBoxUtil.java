@@ -1,57 +1,67 @@
 package com.tencent.mobileqq.activity.recent.msgbox;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.ConversationFacade;
-import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
-import com.tencent.mobileqq.activity.recent.RecentUtil;
-import com.tencent.mobileqq.activity.recent.data.RecentItemPublicAccountChatMsgData;
+import com.tencent.mobileqq.activity.recent.msgbox.api.ITempChatPluginManager;
+import com.tencent.mobileqq.activity.recent.msgbox.api.ITempMsgBoxManager;
+import com.tencent.mobileqq.activity.recent.msgbox.businesshandler.ITempMsgBoxBusinessHandler;
+import com.tencent.mobileqq.activity.recent.msgbox.data.RecentItemTempMsgBoxData;
+import com.tencent.mobileqq.activity.recent.msgbox.inject.TempMsgBoxBusinessInjectUtil;
 import com.tencent.mobileqq.activity.recent.msgbox.tempchat.AbstractTempChatPlugin;
-import com.tencent.mobileqq.activity.recent.msgbox.tempchat.TempChatPluginManager;
 import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.data.ConversationInfo;
 import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.mobileqq.data.PublicAccountInfo;
 import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.gamecenter.message.GameMsgUtil;
-import com.tencent.mobileqq.model.PhoneContactManager;
+import com.tencent.mobileqq.msg.api.IConversationFacade;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
+import com.tencent.mobileqq.proxy.api.IRecentUserProxyService;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.relation.api.IContactUtilsApi;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.troop.api.ITroopInfoService;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import mqq.app.MobileQQ;
 
 public class TempMsgBoxUtil
 {
-  private static Map<Integer, Integer> a;
-  public static boolean a;
-  private static Map<Integer, Integer> b;
+  public static ITempMsgBoxCallback a;
+  private static HashMap<String, ITempMsgBoxBusinessHandler> jdField_a_of_type_JavaUtilHashMap;
+  private static Map<Integer, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private static Map<Integer, Integer> b = new HashMap();
+  private static Map<Integer, String> c = new HashMap();
   
   static
   {
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-    b = new HashMap();
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1000), Integer.valueOf(2131699289));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1004), Integer.valueOf(2131699289));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1006), Integer.valueOf(2131699291));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1023), Integer.valueOf(2131699292));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1022), Integer.valueOf(2131699296));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(10010), Integer.valueOf(2131699284));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1024), Integer.valueOf(2131699285));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1005), Integer.valueOf(2131699297));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(10009), Integer.valueOf(2131699288));
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    try
+    {
+      jdField_a_of_type_ComTencentMobileqqActivityRecentMsgboxITempMsgBoxCallback = (ITempMsgBoxCallback)((Class)TempMsgBoxBusinessInjectUtil.jdField_a_of_type_JavaUtilArrayList.get(0)).newInstance();
+    }
+    catch (Exception localException)
+    {
+      QLog.e("TempMsgBoxUtil", 1, "registerCallback error: ", localException);
+    }
+    c.put(Integer.valueOf(10007), "tempGameMsg");
+    c.put(Integer.valueOf(1024), "publicAccount");
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1000), Integer.valueOf(2131699394));
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1004), Integer.valueOf(2131699394));
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1006), Integer.valueOf(2131699396));
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1023), Integer.valueOf(2131699397));
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1022), Integer.valueOf(2131699401));
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(10010), Integer.valueOf(2131699389));
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1024), Integer.valueOf(2131699390));
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1005), Integer.valueOf(2131699402));
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(10009), Integer.valueOf(2131699393));
     b.put(Integer.valueOf(1000), Integer.valueOf(0));
     b.put(Integer.valueOf(1004), Integer.valueOf(1));
     b.put(Integer.valueOf(1006), Integer.valueOf(130));
@@ -60,25 +70,25 @@ public class TempMsgBoxUtil
     b.put(Integer.valueOf(10010), Integer.valueOf(167));
   }
   
-  private static int a(int paramInt, ConversationFacade paramConversationFacade)
+  private static int a(int paramInt, IConversationFacade paramIConversationFacade)
   {
-    int i = paramConversationFacade.d(AppConstants.TEMP_MSG_BOX_UIN, 10011);
+    int i = paramIConversationFacade.getReadUnreadMark(AppConstants.TEMP_MSG_BOX_UIN, 10011);
     if (i > 0) {
       paramInt = i;
     }
     return paramInt;
   }
   
-  public static int a(QQAppInterface paramQQAppInterface)
+  public static int a(AppInterface paramAppInterface)
   {
-    ConversationFacade localConversationFacade = paramQQAppInterface.getConversationFacade();
-    TempMsgBoxManager localTempMsgBoxManager;
-    List localList;
-    int i;
-    if (localConversationFacade.b(AppConstants.TEMP_MSG_BOX_UIN, 10011))
+    IConversationFacade localIConversationFacade = (IConversationFacade)paramAppInterface.getRuntimeService(IConversationFacade.class, "");
+    boolean bool = localIConversationFacade.isUinInRecentList(AppConstants.TEMP_MSG_BOX_UIN, 10011);
+    int i = 0;
+    int j = 0;
+    if (bool)
     {
-      localTempMsgBoxManager = (TempMsgBoxManager)paramQQAppInterface.getManager(QQManagerFactory.TEMP_MSG_BOX);
-      localList = localTempMsgBoxManager.a(paramQQAppInterface);
+      ITempMsgBoxManager localITempMsgBoxManager = (ITempMsgBoxManager)paramAppInterface.getRuntimeService(ITempMsgBoxManager.class, "");
+      List localList = localITempMsgBoxManager.getMsgBoxRecentUsers();
       if (localList.isEmpty())
       {
         QLog.e("TempMsgBoxUtil", 1, "onGetUnreadMsgNum: msgBoxRecentUsers.isEmpty()");
@@ -89,55 +99,61 @@ public class TempMsgBoxUtil
       while (localIterator.hasNext())
       {
         RecentUser localRecentUser = (RecentUser)localIterator.next();
-        if (Math.max(localRecentUser.lastmsgtime, localRecentUser.lastmsgdrafttime) <= Math.max(((RecentUser)localObject).lastmsgtime, ((RecentUser)localObject).lastmsgdrafttime)) {
-          break label222;
+        if (Math.max(localRecentUser.lastmsgtime, localRecentUser.lastmsgdrafttime) > Math.max(((RecentUser)localObject).lastmsgtime, ((RecentUser)localObject).lastmsgdrafttime)) {
+          localObject = localRecentUser;
         }
-        localObject = localRecentUser;
       }
-      if (TextUtils.equals(((RecentUser)localObject).uin, AppConstants.FILTER_MSG_UIN))
-      {
-        i = 0;
-        label152:
-        j = i;
-        if (i != 0) {}
+      if ((!TextUtils.equals(((RecentUser)localObject).uin, AppConstants.FILTER_MSG_UIN)) && (!localITempMsgBoxManager.isMsgBoxRead())) {
+        j = RecentItemTempMsgBoxData.a(paramAppInterface, localList, localIConversationFacade);
+      }
+      i = j;
+      if (j == 0) {
+        i = a(j, localIConversationFacade);
       }
     }
-    for (int j = a(i, localConversationFacade);; j = 0)
-    {
-      QLog.d("TempMsgBoxUtil", 2, "getTempMsgBoxUnread() called with: msgBoxUnread = [" + j + "]");
-      return j;
-      if (localTempMsgBoxManager.a())
-      {
-        i = 0;
-        break label152;
-      }
-      i = RecentItemTempMsgBoxData.a(paramQQAppInterface, localList, localConversationFacade);
-      break label152;
-      label222:
-      break;
+    paramAppInterface = new StringBuilder();
+    paramAppInterface.append("getTempMsgBoxUnread() called with: msgBoxUnread = [");
+    paramAppInterface.append(i);
+    paramAppInterface.append("]");
+    QLog.d("TempMsgBoxUtil", 2, paramAppInterface.toString());
+    return i;
+  }
+  
+  public static int a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!paramBoolean1) {
+      return 2;
     }
+    if (paramBoolean2) {
+      return 1;
+    }
+    return 0;
   }
   
   public static ConversationInfo a(ConversationInfo paramConversationInfo)
   {
-    Object localObject = paramConversationInfo;
+    if (paramConversationInfo == null) {
+      return new ConversationInfo();
+    }
+    ConversationInfo localConversationInfo1 = paramConversationInfo;
     if (TextUtils.equals(paramConversationInfo.uin, AppConstants.FILTER_MSG_UIN))
     {
-      paramConversationInfo = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      localObject = a(paramConversationInfo.getConversationFacade().a(), paramConversationInfo);
-      paramConversationInfo = new ConversationInfo();
-      Iterator localIterator = ((List)localObject).iterator();
-      for (;;)
+      paramConversationInfo = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+      paramConversationInfo = a(((IConversationFacade)paramConversationInfo.getRuntimeService(IConversationFacade.class, "")).getConversationInfoSet(), paramConversationInfo);
+      localConversationInfo1 = new ConversationInfo();
+      paramConversationInfo = paramConversationInfo.iterator();
+      while (paramConversationInfo.hasNext())
       {
-        localObject = paramConversationInfo;
-        if (!localIterator.hasNext()) {
-          break;
+        ConversationInfo localConversationInfo2 = (ConversationInfo)paramConversationInfo.next();
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onGetUnreadCount() called with: info = [");
+          localStringBuilder.append(localConversationInfo2);
+          localStringBuilder.append("]");
+          QLog.d("TempMsgBoxUtil", 2, localStringBuilder.toString());
         }
-        localObject = (ConversationInfo)localIterator.next();
-        if (QLog.isColorLevel()) {
-          QLog.d("TempMsgBoxUtil", 2, "onGetUnreadCount() called with: info = [" + localObject + "]");
-        }
-        if (((ConversationInfo)localObject).type == 7000)
+        if (localConversationInfo2.type == 7000)
         {
           if (QLog.isColorLevel()) {
             QLog.d("TempMsgBoxUtil", 2, "onGetUnreadCount() called skip UIN_TYPE_SUBACCOUNT_ASSISTANT ");
@@ -145,75 +161,78 @@ public class TempMsgBoxUtil
         }
         else
         {
-          paramConversationInfo.setUnread(paramConversationInfo.unreadCount + ((ConversationInfo)localObject).unreadCount);
-          int i = paramConversationInfo.unreadMark;
-          paramConversationInfo.setUnreadMark(((ConversationInfo)localObject).unreadMark + i);
+          localConversationInfo1.setUnread(localConversationInfo1.unreadCount + localConversationInfo2.unreadCount);
+          localConversationInfo1.setUnreadMark(localConversationInfo1.unreadMark + localConversationInfo2.unreadMark);
         }
       }
     }
-    return localObject;
+    return localConversationInfo1;
   }
   
-  public static String a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser)
+  public static String a(AppInterface paramAppInterface, RecentUser paramRecentUser)
   {
-    Object localObject1 = "";
-    Object localObject2 = ((TempChatPluginManager)paramQQAppInterface.getManager(QQManagerFactory.TEMP_CHAT_PLUGIN_MANAGER)).a(paramRecentUser.type);
-    if (localObject2 != null) {
-      localObject1 = ((AbstractTempChatPlugin)localObject2).b(paramRecentUser.uin);
+    int i = paramRecentUser.getType();
+    Object localObject = ((ITempChatPluginManager)paramAppInterface.getRuntimeService(ITempChatPluginManager.class, "")).getTempChatPlugin(i);
+    if (localObject != null) {
+      return ((AbstractTempChatPlugin)localObject).b(paramRecentUser.uin);
     }
-    do
+    localObject = (String)c.get(Integer.valueOf(i));
+    if (localObject != null)
     {
-      do
+      localObject = (ITempMsgBoxBusinessHandler)jdField_a_of_type_JavaUtilHashMap.get(localObject);
+      if (localObject != null)
       {
-        return localObject1;
-        if (paramRecentUser.getType() == 1024)
-        {
-          paramQQAppInterface = RecentItemPublicAccountChatMsgData.a(paramQQAppInterface, (PublicAccountDataManager)paramQQAppInterface.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER), paramRecentUser.uin);
-          if (paramQQAppInterface == null) {
-            break label223;
-          }
-          return paramQQAppInterface.name;
-        }
-        if (paramRecentUser.getType() == 1000)
-        {
-          localObject2 = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-          if (localObject2 != null)
-          {
-            localObject1 = ((TroopManager)localObject2).b(paramRecentUser.troopUin);
-            localObject1 = ContactUtils.a(paramQQAppInterface, paramRecentUser.uin, (String)localObject1, paramRecentUser.troopUin, true, null);
-          }
-          return localObject1;
-        }
-        if (paramRecentUser.getType() != 1004) {
-          break;
-        }
-        localObject2 = ContactUtils.c(paramQQAppInterface, paramRecentUser.troopUin, paramRecentUser.uin);
-        localObject1 = localObject2;
-      } while (localObject2 == null);
-      localObject1 = localObject2;
-    } while (!((String)localObject2).equals(paramRecentUser.uin));
-    return ContactUtils.c(paramQQAppInterface, paramRecentUser.uin, true);
-    if (paramRecentUser.getType() == 10007) {
-      return GameMsgUtil.a(paramRecentUser.uin, paramQQAppInterface);
+        localObject = ((ITempMsgBoxBusinessHandler)localObject).a(paramAppInterface, paramRecentUser.uin);
+        break label90;
+      }
     }
-    if (paramRecentUser.getType() == 1006) {
-      return b(paramQQAppInterface, paramRecentUser);
+    localObject = "";
+    label90:
+    if (i == 1000)
+    {
+      paramAppInterface = ((ITroopInfoService)paramAppInterface.getRuntimeService(ITroopInfoService.class, "")).getTroopUin(paramRecentUser.troopUin);
+      return ((IContactUtilsApi)QRoute.api(IContactUtilsApi.class)).getTroopNickName(paramRecentUser.uin, paramAppInterface, paramRecentUser.troopUin, true, null);
     }
-    return ContactUtils.c(paramQQAppInterface, paramRecentUser.uin, true);
-    label223:
-    return "";
+    if (i == 1004)
+    {
+      localObject = ((IContactUtilsApi)QRoute.api(IContactUtilsApi.class)).getDiscussionMemberShowName(paramRecentUser.troopUin, paramRecentUser.uin);
+      paramAppInterface = (AppInterface)localObject;
+      if (localObject != null)
+      {
+        paramAppInterface = (AppInterface)localObject;
+        if (((String)localObject).equals(paramRecentUser.uin)) {
+          return ((IContactUtilsApi)QRoute.api(IContactUtilsApi.class)).getBuddyName(paramRecentUser.uin, true);
+        }
+      }
+    }
+    else
+    {
+      if (i == 1006) {
+        return b(paramAppInterface, paramRecentUser);
+      }
+      paramAppInterface = (AppInterface)localObject;
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        paramAppInterface = ((IContactUtilsApi)QRoute.api(IContactUtilsApi.class)).getBuddyName(paramRecentUser.uin, true);
+      }
+    }
+    return paramAppInterface;
+  }
+  
+  public static HashMap<String, ITempMsgBoxBusinessHandler> a()
+  {
+    return jdField_a_of_type_JavaUtilHashMap;
   }
   
   @NonNull
-  private static List<ConversationInfo> a(Set<ConversationInfo> paramSet, QQAppInterface paramQQAppInterface)
+  private static List<ConversationInfo> a(Set<ConversationInfo> paramSet, AppInterface paramAppInterface)
   {
     ArrayList localArrayList = new ArrayList();
-    paramQQAppInterface = (TempMsgBoxManager)paramQQAppInterface.getManager(QQManagerFactory.TEMP_MSG_BOX);
+    paramAppInterface = (ITempMsgBoxManager)paramAppInterface.getRuntimeService(ITempMsgBoxManager.class, "");
     paramSet = paramSet.iterator();
     while (paramSet.hasNext())
     {
       ConversationInfo localConversationInfo = (ConversationInfo)paramSet.next();
-      if (paramQQAppInterface.a(localConversationInfo.uin, localConversationInfo.type)) {
+      if (paramAppInterface.isBelongToFilterBox(localConversationInfo.uin, localConversationInfo.type)) {
         localArrayList.add(localConversationInfo);
       }
     }
@@ -225,6 +244,27 @@ public class TempMsgBoxUtil
     return jdField_a_of_type_JavaUtilMap;
   }
   
+  public static void a()
+  {
+    HashMap localHashMap = TempMsgBoxBusinessInjectUtil.jdField_a_of_type_JavaUtilHashMap;
+    Iterator localIterator = localHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      Class localClass = (Class)localHashMap.get(str);
+      if (localClass != null) {
+        try
+        {
+          jdField_a_of_type_JavaUtilHashMap.put(str, localClass.newInstance());
+        }
+        catch (Exception localException)
+        {
+          QLog.e("TempMsgBoxUtil", 1, "registerBusinessHandler error: ", localException);
+        }
+      }
+    }
+  }
+  
   public static void a(int paramInt, String paramString, MsgSummary paramMsgSummary)
   {
     if ((paramInt == 10011) && (!TextUtils.isEmpty(paramString))) {
@@ -232,51 +272,48 @@ public class TempMsgBoxUtil
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface)
+  public static void a(AppInterface paramAppInterface, Object paramObject)
   {
-    Iterator localIterator = ((TempMsgBoxManager)paramQQAppInterface.getManager(QQManagerFactory.TEMP_MSG_BOX)).a(paramQQAppInterface).iterator();
-    while (localIterator.hasNext())
+    boolean bool = paramObject instanceof RecentItemTempMsgBoxData;
+    if ((bool) && (!TempMsgBoxConstants.a))
     {
-      RecentUser localRecentUser = (RecentUser)localIterator.next();
-      if (localRecentUser.getType() == 10012)
-      {
-        b(paramQQAppInterface);
-      }
-      else
-      {
-        RecentUtil.b(paramQQAppInterface, localRecentUser.uin, localRecentUser.type);
-        paramQQAppInterface.getMessageFacade().c(localRecentUser.uin, localRecentUser.type);
+      TempMsgBoxConstants.a = true;
+      ReportController.b(paramAppInterface, "dc00898", "", "", "0X800B1BE", "0X800B1BE", 0, 0, "", "", "", "");
+    }
+    if (bool)
+    {
+      Iterator localIterator = jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      while (localIterator.hasNext()) {
+        ((ITempMsgBoxBusinessHandler)localIterator.next()).a(paramAppInterface, paramObject);
       }
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, Object paramObject)
+  public static void a(AppInterface paramAppInterface, boolean paramBoolean)
   {
-    if (((paramObject instanceof RecentItemTempMsgBoxData)) && (!jdField_a_of_type_Boolean))
+    if (((ITempMsgBoxManager)paramAppInterface.getRuntimeService(ITempMsgBoxManager.class, "")).getMsgBoxRecentUsers().isEmpty())
     {
-      jdField_a_of_type_Boolean = true;
-      ReportController.b(((BaseActivity)paramContext).app, "dc00898", "", "", "0X800B1BE", "0X800B1BE", 0, 0, "", "", "", "");
-    }
-    if ((paramObject instanceof RecentItemTempMsgBoxData)) {
-      GameMsgUtil.a(paramQQAppInterface, paramObject);
+      paramAppInterface = ((IRecentUserProxyService)paramAppInterface.getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache();
+      paramAppInterface.a(paramAppInterface.a(AppConstants.TEMP_MSG_BOX_UIN, 10011), paramBoolean);
     }
   }
   
-  private static String b(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser)
+  private static String b(AppInterface paramAppInterface, RecentUser paramRecentUser)
   {
-    String str = ContactUtils.e(paramQQAppInterface, paramRecentUser.uin);
-    Object localObject = (PhoneContactManager)paramQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
-    if (localObject != null) {}
-    for (localObject = ((PhoneContactManager)localObject).c(paramRecentUser.uin);; localObject = null)
-    {
-      if (localObject != null) {
-        return ((PhoneContact)localObject).name;
-      }
-      if (str != null) {
-        return ContactUtils.c(paramQQAppInterface, str, true);
-      }
-      return paramRecentUser.uin;
+    paramAppInterface = (IPhoneContactService)paramAppInterface.getRuntimeService(IPhoneContactService.class, "");
+    String str = paramAppInterface.getUinByPhoneNum(paramRecentUser.uin);
+    if (paramAppInterface != null) {
+      paramAppInterface = paramAppInterface.queryContactByCodeNumber(paramRecentUser.uin);
+    } else {
+      paramAppInterface = null;
     }
+    if (paramAppInterface != null) {
+      return paramAppInterface.name;
+    }
+    if (str != null) {
+      return ((IContactUtilsApi)QRoute.api(IContactUtilsApi.class)).getBuddyName(str, true);
+    }
+    return paramRecentUser.uin;
   }
   
   public static Map<Integer, Integer> b()
@@ -284,20 +321,14 @@ public class TempMsgBoxUtil
     return b;
   }
   
-  public static void b(QQAppInterface paramQQAppInterface)
+  public static Map<Integer, String> c()
   {
-    Iterator localIterator = FilterMsgBoxRecentUserUtil.a(paramQQAppInterface).iterator();
-    while (localIterator.hasNext())
-    {
-      RecentUser localRecentUser = (RecentUser)localIterator.next();
-      RecentUtil.b(paramQQAppInterface, localRecentUser.uin, localRecentUser.type);
-      paramQQAppInterface.getMessageFacade().c(localRecentUser.uin, localRecentUser.type);
-    }
+    return c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msgbox.TempMsgBoxUtil
  * JD-Core Version:    0.7.0.1
  */

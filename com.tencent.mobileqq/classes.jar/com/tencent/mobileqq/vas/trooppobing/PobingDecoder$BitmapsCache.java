@@ -28,13 +28,16 @@ public class PobingDecoder$BitmapsCache
   public int getByteSize()
   {
     Iterator localIterator = this.a.values().iterator();
-    for (int i = 0; localIterator.hasNext(); i = Utils.getBitmapSize((Bitmap)localIterator.next()) + i) {}
+    int i = 0;
+    while (localIterator.hasNext()) {
+      i += Utils.getBitmapSize((Bitmap)localIterator.next());
+    }
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.trooppobing.PobingDecoder.BitmapsCache
  * JD-Core Version:    0.7.0.1
  */

@@ -78,21 +78,21 @@ public class VideoShelfPlayView
     if (this.mVideoSehlfPlayer == null) {
       try
       {
-        if (this.mIsVideoFile) {}
-        for (Object localObject = new VideoShelfPlayer();; localObject = new PagShelfPlayer())
-        {
-          this.mVideoSehlfPlayer = ((IVideoShelfPlayer)localObject);
-          if (this.mPreparedlistener != null) {
-            this.mVideoSehlfPlayer.setVideoShelfPlayerListener(this.mPreparedlistener);
-          }
-          if (this.mPlaySurface != null) {
-            this.mVideoSehlfPlayer.setSurface(this.mPlaySurface);
-          }
-          this.mVideoSehlfPlayer.reset();
-          this.mVideoSehlfPlayer.setVideoShelfPlayerListener(this);
-          break;
+        Object localObject;
+        if (this.mIsVideoFile) {
+          localObject = new VideoShelfPlayer();
+        } else {
+          localObject = new PagShelfPlayer();
         }
-        return true;
+        this.mVideoSehlfPlayer = ((IVideoShelfPlayer)localObject);
+        if (this.mPreparedlistener != null) {
+          this.mVideoSehlfPlayer.setVideoShelfPlayerListener(this.mPreparedlistener);
+        }
+        if (this.mPlaySurface != null) {
+          this.mVideoSehlfPlayer.setSurface(this.mPlaySurface);
+        }
+        this.mVideoSehlfPlayer.reset();
+        this.mVideoSehlfPlayer.setVideoShelfPlayerListener(this);
       }
       catch (PagNotSupportSystemException localPagNotSupportSystemException)
       {
@@ -101,6 +101,7 @@ public class VideoShelfPlayView
         return false;
       }
     }
+    return true;
   }
   
   private void initView()
@@ -111,7 +112,14 @@ public class VideoShelfPlayView
   
   private boolean isInPlaybackState()
   {
-    return (this.mVideoSehlfPlayer != null) && (this.mCurrentState != -1) && (this.mCurrentState != 0) && (this.mCurrentState != 1);
+    if (this.mVideoSehlfPlayer != null)
+    {
+      int i = this.mCurrentState;
+      if ((i != -1) && (i != 0) && (i != 1)) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public void flush()
@@ -124,13 +132,19 @@ public class VideoShelfPlayView
   
   public double getAspectRatio()
   {
+    boolean bool = initVideoShelfPlayer();
     double d2 = 0.0D;
     double d1 = d2;
-    if (initVideoShelfPlayer())
+    if (bool)
     {
       d1 = d2;
-      if (getVideoHeight() != 0) {
-        d1 = getVideoWidth() * 1.0D / getVideoHeight();
+      if (getVideoHeight() != 0)
+      {
+        d1 = getVideoWidth();
+        Double.isNaN(d1);
+        d2 = getVideoHeight();
+        Double.isNaN(d2);
+        d1 = d1 * 1.0D / d2;
       }
     }
     return d1;
@@ -167,9 +181,10 @@ public class VideoShelfPlayView
   
   public boolean isHorizontalVideo()
   {
+    boolean bool3 = initVideoShelfPlayer();
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (initVideoShelfPlayer())
+    if (bool3)
     {
       bool1 = bool2;
       if (getVideoWidth() > getVideoHeight()) {
@@ -182,32 +197,36 @@ public class VideoShelfPlayView
   public void onChangVideoSize(int paramInt1, int paramInt2)
   {
     updateVideoSize(paramInt1, paramInt2);
-    if (this.mPreparedlistener != null) {
-      this.mPreparedlistener.onChangVideoSize(paramInt1, paramInt2);
+    IVideoShelfPlayerListener localIVideoShelfPlayerListener = this.mPreparedlistener;
+    if (localIVideoShelfPlayerListener != null) {
+      localIVideoShelfPlayerListener.onChangVideoSize(paramInt1, paramInt2);
     }
   }
   
   public void onCompletion()
   {
     this.mCurrentState = 5;
-    if (this.mPreparedlistener != null) {
-      this.mPreparedlistener.onCompletion();
+    IVideoShelfPlayerListener localIVideoShelfPlayerListener = this.mPreparedlistener;
+    if (localIVideoShelfPlayerListener != null) {
+      localIVideoShelfPlayerListener.onCompletion();
     }
   }
   
   public boolean onError(int paramInt, String paramString, Object paramObject)
   {
     this.mCurrentState = -1;
-    if (this.mPreparedlistener != null) {
-      this.mPreparedlistener.onError(paramInt, paramString, paramObject);
+    IVideoShelfPlayerListener localIVideoShelfPlayerListener = this.mPreparedlistener;
+    if (localIVideoShelfPlayerListener != null) {
+      localIVideoShelfPlayerListener.onError(paramInt, paramString, paramObject);
     }
     return false;
   }
   
   public void onPrepared(IVideoShelfPlayer paramIVideoShelfPlayer)
   {
-    if (this.mPreparedlistener != null) {
-      this.mPreparedlistener.onPrepared(paramIVideoShelfPlayer);
+    IVideoShelfPlayerListener localIVideoShelfPlayerListener = this.mPreparedlistener;
+    if (localIVideoShelfPlayerListener != null) {
+      localIVideoShelfPlayerListener.onPrepared(paramIVideoShelfPlayer);
     }
     this.mCurrentState = 2;
   }
@@ -248,8 +267,9 @@ public class VideoShelfPlayView
   
   public void onUpdateRate(long paramLong)
   {
-    if (this.mPreparedlistener != null) {
-      this.mPreparedlistener.onUpdateRate(paramLong);
+    IVideoShelfPlayerListener localIVideoShelfPlayerListener = this.mPreparedlistener;
+    if (localIVideoShelfPlayerListener != null) {
+      localIVideoShelfPlayerListener.onUpdateRate(paramLong);
     }
   }
   
@@ -326,7 +346,8 @@ public class VideoShelfPlayView
   {
     if ((isInPlaybackState()) && (this.mPlaySurface != null) && (initVideoShelfPlayer()))
     {
-      this.mVideoSehlfPlayer.seekTo(this.mVideoSehlfPlayer.getCurrentPosition());
+      IVideoShelfPlayer localIVideoShelfPlayer = this.mVideoSehlfPlayer;
+      localIVideoShelfPlayer.seekTo(localIVideoShelfPlayer.getCurrentPosition());
       this.mVideoSehlfPlayer.start();
       this.mIsNotCalledStart = false;
       this.mCurrentState = 3;
@@ -350,29 +371,40 @@ public class VideoShelfPlayView
   {
     this.mWidthVideo = paramInt1;
     this.mHeightVideo = paramInt2;
-    Log.i("VideoShelfPlayer", "call onGlobalLayout.w:" + paramInt1 + ",h:" + paramInt2);
-    double d = getAspectRatio();
-    if (isHorizontalVideo()) {
-      if (d < 3.0D)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("call onGlobalLayout.w:");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(",h:");
+    ((StringBuilder)localObject).append(paramInt2);
+    Log.i("VideoShelfPlayer", ((StringBuilder)localObject).toString());
+    double d1 = getAspectRatio();
+    double d2;
+    if (isHorizontalVideo())
+    {
+      if (d1 < 3.0D)
       {
-        paramInt1 = (int)(getWidth() / d);
+        d2 = getWidth();
+        Double.isNaN(d2);
+        paramInt1 = (int)(d2 / d1);
         localObject = (ViewGroup.MarginLayoutParams)getLayoutParams();
         ((ViewGroup.MarginLayoutParams)localObject).height = paramInt1;
         setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
     }
-    while (d <= 0.3333333333333333D) {
-      return;
+    else if (d1 > 0.3333333333333333D)
+    {
+      d2 = getHeight();
+      Double.isNaN(d2);
+      paramInt1 = (int)(d2 * d1);
+      localObject = getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject).width = paramInt1;
+      setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    paramInt1 = (int)(d * getHeight());
-    Object localObject = getLayoutParams();
-    ((ViewGroup.LayoutParams)localObject).width = paramInt1;
-    setLayoutParams((ViewGroup.LayoutParams)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.videoshelf.ui.VideoShelfPlayView
  * JD-Core Version:    0.7.0.1
  */

@@ -19,15 +19,15 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.NativeAd.util.ADBaseAppDownloadManager;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdService;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdUIService;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdUtilService;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.PackageUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -87,7 +87,7 @@ public class ReadInJoyAdVideoGuide
       if (PackageUtil.a(getContext(), this.jdField_a_of_type_JavaLangString)) {
         return 3;
       }
-      if (ADBaseAppDownloadManager.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString)) {
+      if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isPkgExistSyn(((IRIJAdService)QRoute.api(IRIJAdService.class)).getContext(), this.jdField_a_of_type_JavaLangString)) {
         return 5;
       }
       return 2;
@@ -97,28 +97,36 @@ public class ReadInJoyAdVideoGuide
   
   private String a()
   {
-    switch (a())
+    int i = a();
+    if ((i != 0) && (i != 1))
     {
-    default: 
-      return "";
-    case 4: 
-      return getResources().getText(2131718255).toString();
-    case 2: 
-      return getResources().getText(2131718252).toString();
-    case 3: 
-      return getResources().getText(2131718253).toString();
-    case 5: 
-      return "立即安装";
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4)
+          {
+            if (i != 5) {
+              return "";
+            }
+            return "立即安装";
+          }
+          return getResources().getText(2131717920).toString();
+        }
+        return getResources().getText(2131717918).toString();
+      }
+      return getResources().getText(2131717917).toString();
     }
-    return getResources().getText(2131718304).toString();
+    return getResources().getText(2131717969).toString();
   }
   
   private void a(float paramFloat)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdStarBar == null) {
+    ReadInJoyAdStarBar localReadInJoyAdStarBar = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdStarBar;
+    if (localReadInJoyAdStarBar == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdStarBar.setGrade(Float.valueOf(paramFloat));
+    localReadInJoyAdStarBar.setGrade(Float.valueOf(paramFloat));
     if (paramFloat > 0.0F)
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdStarBar.setVisibility(0);
@@ -129,7 +137,7 @@ public class ReadInJoyAdVideoGuide
   
   private void a(Context paramContext)
   {
-    inflate(paramContext, 2131560185, this);
+    inflate(paramContext, 2131560072, this);
     setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
     d();
   }
@@ -142,14 +150,14 @@ public class ReadInJoyAdVideoGuide
     {
       localResources = getResources();
       localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mRequestWidth = AIOUtils.a(60.0F, localResources);
-      localURLDrawableOptions.mRequestHeight = AIOUtils.a(60.0F, localResources);
+      localURLDrawableOptions.mRequestWidth = ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(60.0F, localResources);
+      localURLDrawableOptions.mRequestHeight = ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(60.0F, localResources);
     }
     try
     {
       paramString = URLDrawable.getDrawable(new URL(paramString), localURLDrawableOptions);
-      paramString.setTag(URLDrawableDecodeHandler.b(AIOUtils.a(60.0F, localResources), AIOUtils.a(60.0F, localResources), AIOUtils.a(12.0F, localResources)));
-      paramString.setDecodeHandler(URLDrawableDecodeHandler.j);
+      paramString.setTag(((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).builderDecoderParams(((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(60.0F, localResources), ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(60.0F, localResources), ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(12.0F, localResources)));
+      paramString.setDecodeHandler(((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).getRoundCornerDecoder());
       this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramString);
       return;
     }
@@ -160,11 +168,15 @@ public class ReadInJoyAdVideoGuide
   {
     if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_AndroidWidgetTextView != null))
     {
-      String str = paramString;
-      if (paramString.length() > 12) {
-        str = paramString.substring(0, 11) + "…";
+      Object localObject = paramString;
+      if (paramString.length() > 12)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString.substring(0, 11));
+        ((StringBuilder)localObject).append("…");
+        localObject = ((StringBuilder)localObject).toString();
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
     }
   }
   
@@ -179,13 +191,13 @@ public class ReadInJoyAdVideoGuide
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131377364));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365255));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131362887));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362899));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363985));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131362129);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdStarBar = ((ReadInJoyAdStarBar)findViewById(2131362135));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376816));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365132));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131362839));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362851));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363912));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131362158);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdStarBar = ((ReadInJoyAdStarBar)findViewById(2131362164));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentImageURLImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
@@ -197,20 +209,20 @@ public class ReadInJoyAdVideoGuide
   private void e()
   {
     Object localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
-    ((LinearLayout.LayoutParams)localObject).width = AIOUtils.a(48.0F, getContext().getResources());
-    ((LinearLayout.LayoutParams)localObject).height = AIOUtils.a(48.0F, getContext().getResources());
+    ((LinearLayout.LayoutParams)localObject).width = ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(48.0F, getContext().getResources());
+    ((LinearLayout.LayoutParams)localObject).height = ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(48.0F, getContext().getResources());
     this.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-    ((LinearLayout.LayoutParams)localObject).topMargin = AIOUtils.a(4.0F, getContext().getResources());
+    ((LinearLayout.LayoutParams)localObject).topMargin = ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(4.0F, getContext().getResources());
     this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     localObject = (LinearLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams();
-    ((LinearLayout.LayoutParams)localObject).width = AIOUtils.a(62.0F, getContext().getResources());
-    ((LinearLayout.LayoutParams)localObject).height = AIOUtils.a(22.0F, getContext().getResources());
+    ((LinearLayout.LayoutParams)localObject).width = ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(62.0F, getContext().getResources());
+    ((LinearLayout.LayoutParams)localObject).height = ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(22.0F, getContext().getResources());
     this.jdField_b_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(11.0F);
     localObject = new GradientDrawable();
     ((GradientDrawable)localObject).setColor(Color.parseColor("#00CAFC"));
-    ((GradientDrawable)localObject).setCornerRadius(AIOUtils.a(12.0F, getContext().getResources()));
+    ((GradientDrawable)localObject).setCornerRadius(((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(12.0F, getContext().getResources()));
     this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundDrawable((Drawable)localObject);
   }
   
@@ -219,7 +231,7 @@ public class ReadInJoyAdVideoGuide
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     Object localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
     ((RelativeLayout.LayoutParams)localObject).addRule(11);
-    ((RelativeLayout.LayoutParams)localObject).width = AIOUtils.a(130.0F, getContext().getResources());
+    ((RelativeLayout.LayoutParams)localObject).width = ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(130.0F, getContext().getResources());
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
     localObject = new GradientDrawable();
     ((GradientDrawable)localObject).setGradientType(0);
@@ -245,13 +257,10 @@ public class ReadInJoyAdVideoGuide
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
     if (Build.VERSION.SDK_INT >= 16) {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackground(null);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(Color.parseColor("#80000000"));
-      return;
+    } else {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundColor(Color.parseColor("#00000000"));
     }
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(Color.parseColor("#80000000"));
   }
   
   public void c()
@@ -261,61 +270,66 @@ public class ReadInJoyAdVideoGuide
   
   public void onClick(View paramView)
   {
-    int i = 1000;
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i == 2131362839)
     {
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdVideoGuide$AdGuideClickListener != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdVideoGuide$AdGuideClickListener.a(paramView, i);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyAdVideoGuide", 2, "onClick:" + i);
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.jdField_a_of_type_Boolean)
-      {
+      if (this.jdField_a_of_type_Boolean) {
         i = 23;
-      }
-      else
-      {
+      } else {
         i = 15;
-        continue;
-        if (this.jdField_a_of_type_Boolean)
-        {
-          i = 24;
-        }
-        else
-        {
-          i = 16;
-          continue;
-          if (this.jdField_a_of_type_Boolean)
-          {
-            i = 26;
-          }
-          else
-          {
-            i = 17;
-            continue;
-            i = 21;
-            continue;
-            if (this.jdField_a_of_type_Boolean) {
-              i = 25;
-            } else {
-              i = 27;
-            }
-          }
-        }
       }
     }
+    else if (i == 2131362851)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        i = 24;
+      } else {
+        i = 16;
+      }
+    }
+    else if (i == 2131363912)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        i = 26;
+      } else {
+        i = 17;
+      }
+    }
+    else if (i == 2131362158) {
+      i = 21;
+    } else if (i == 2131362164)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        i = 25;
+      } else {
+        i = 27;
+      }
+    }
+    else {
+      i = 1000;
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdVideoGuide$AdGuideClickListener;
+    if (localObject != null) {
+      ((ReadInJoyAdVideoGuide.AdGuideClickListener)localObject).a(paramView, i);
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onClick:");
+      ((StringBuilder)localObject).append(i);
+      QLog.d("ReadInJoyAdVideoGuide", 2, ((StringBuilder)localObject).toString());
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public void onVisibilityChanged(@NonNull View paramView, int paramInt)
+  protected void onVisibilityChanged(@NonNull View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdVideoGuide", 2, "onVisibilityChanged:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onVisibilityChanged:");
+      localStringBuilder.append(paramInt);
+      QLog.d("ReadInJoyAdVideoGuide", 2, localStringBuilder.toString());
     }
     super.onVisibilityChanged(paramView, paramInt);
     c();
@@ -335,10 +349,18 @@ public class ReadInJoyAdVideoGuide
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder("setAppInfo:\n");
-      localStringBuilder.append("type:").append(this.jdField_a_of_type_Int).append("\n");
-      localStringBuilder.append("icon:").append(paramString1).append("\n");
-      localStringBuilder.append("name:").append(paramString2).append("\n");
-      localStringBuilder.append("pkgname:").append(paramString3).append("\n");
+      localStringBuilder.append("type:");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append("\n");
+      localStringBuilder.append("icon:");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("\n");
+      localStringBuilder.append("name:");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append("\n");
+      localStringBuilder.append("pkgname:");
+      localStringBuilder.append(paramString3);
+      localStringBuilder.append("\n");
       QLog.d("ReadInJoyAdVideoGuide", 2, localStringBuilder.toString());
     }
   }
@@ -350,18 +372,16 @@ public class ReadInJoyAdVideoGuide
     a(paramString1);
     b(paramString2);
     c(paramString3);
-    if ((paramAdvertisementInfo != null) && (paramAdvertisementInfo.mAdExtInfo != null)) {}
-    try
-    {
-      paramAdvertisementInfo = new JSONObject(paramAdvertisementInfo.mAdExtInfo);
-      if (paramAdvertisementInfo.has("video_guide")) {
-        e();
+    if ((paramAdvertisementInfo != null) && (paramAdvertisementInfo.mAdExtInfo != null)) {
+      try
+      {
+        paramAdvertisementInfo = new JSONObject(paramAdvertisementInfo.mAdExtInfo);
+        if (paramAdvertisementInfo.has("video_guide")) {
+          e();
+        }
+        a((float)paramAdvertisementInfo.optDouble("app_score_num"));
       }
-      a((float)paramAdvertisementInfo.optDouble("app_score_num"));
-    }
-    catch (Exception paramAdvertisementInfo)
-    {
-      for (;;)
+      catch (Exception paramAdvertisementInfo)
       {
         paramAdvertisementInfo.printStackTrace();
       }
@@ -369,11 +389,21 @@ public class ReadInJoyAdVideoGuide
     if (QLog.isColorLevel())
     {
       paramAdvertisementInfo = new StringBuilder("setAppInfo:\n");
-      paramAdvertisementInfo.append("type:").append(this.jdField_a_of_type_Int).append("\n");
-      paramAdvertisementInfo.append("icon:").append(paramString1).append("\n");
-      paramAdvertisementInfo.append("name:").append(paramString2).append("\n");
-      paramAdvertisementInfo.append("pkgname:").append(paramString3).append("\n");
-      paramAdvertisementInfo.append("isAmsSubscribeAd:").append(paramBoolean).append("\n");
+      paramAdvertisementInfo.append("type:");
+      paramAdvertisementInfo.append(this.jdField_a_of_type_Int);
+      paramAdvertisementInfo.append("\n");
+      paramAdvertisementInfo.append("icon:");
+      paramAdvertisementInfo.append(paramString1);
+      paramAdvertisementInfo.append("\n");
+      paramAdvertisementInfo.append("name:");
+      paramAdvertisementInfo.append(paramString2);
+      paramAdvertisementInfo.append("\n");
+      paramAdvertisementInfo.append("pkgname:");
+      paramAdvertisementInfo.append(paramString3);
+      paramAdvertisementInfo.append("\n");
+      paramAdvertisementInfo.append("isAmsSubscribeAd:");
+      paramAdvertisementInfo.append(paramBoolean);
+      paramAdvertisementInfo.append("\n");
       QLog.d("ReadInJoyAdVideoGuide", 2, paramAdvertisementInfo.toString());
     }
   }
@@ -385,7 +415,7 @@ public class ReadInJoyAdVideoGuide
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdVideoGuide
  * JD-Core Version:    0.7.0.1
  */

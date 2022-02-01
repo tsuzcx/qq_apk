@@ -19,56 +19,55 @@ public class GdtWebReportNoco
   
   private String a()
   {
-    Object localObject2 = null;
-    if (this.a != null) {}
-    for (Activity localActivity = this.a.a();; localActivity = null)
-    {
-      Object localObject1 = localObject2;
-      if (localActivity != null)
-      {
-        localObject1 = localObject2;
-        if (localActivity.getIntent() != null)
-        {
-          long l = localActivity.getIntent().getLongExtra("GdtNocoId", -1L);
-          localObject1 = localObject2;
-          if (l != -1L) {
-            localObject1 = String.valueOf(l);
-          }
-        }
-      }
-      return localObject1;
+    Object localObject = this.a;
+    if (localObject != null) {
+      localObject = ((GdtWebReportPlugin)localObject).a();
+    } else {
+      localObject = null;
     }
+    if ((localObject != null) && (((Activity)localObject).getIntent() != null))
+    {
+      long l = ((Activity)localObject).getIntent().getLongExtra("GdtNocoId", -1L);
+      if (l != -1L) {
+        return String.valueOf(l);
+      }
+    }
+    return null;
   }
-  
-  public void a() {}
-  
-  public void a(CustomWebView paramCustomWebView) {}
   
   public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
   {
-    if (paramLong == 8589934594L) {}
-    try
-    {
-      paramString = a();
-      if (!TextUtils.isEmpty(paramString))
+    if (paramLong == 8589934594L) {
+      try
       {
-        this.a.callJs("!function(g,d,t,e,v,n,s){if(g.gdt)return;v=g.gdt=function(){v.tk?v.tk.apply(v,arguments):v.queue.push(arguments)};v.sv=\"1.0\";v.bt=2;v.queue=[];n=d.createElement(t);n.async=!0;n.src=e;s=d.getElementsByTagName(t)[0];s.parentNode.insertBefore(n,s);}(window,document,\"script\",\"//qzonestyle.gtimg.cn/qzone/biz/gdt/dmp/user-action/gdtevent.min.js\");gdt(\"init\",\"userActionSetId\");gdt(\"track\",\"PAGE_VIEW\");".replace("userActionSetId", paramString));
-        GdtLog.a("GdtWebReportNoco", "GdtWebReportPlugin Report nocoId :" + paramString);
+        paramString = a();
+        if (!TextUtils.isEmpty(paramString))
+        {
+          this.a.callJs("!function(g,d,t,e,v,n,s){if(g.gdt)return;v=g.gdt=function(){v.tk?v.tk.apply(v,arguments):v.queue.push(arguments)};v.sv=\"1.0\";v.bt=2;v.queue=[];n=d.createElement(t);n.async=!0;n.src=e;s=d.getElementsByTagName(t)[0];s.parentNode.insertBefore(n,s);}(window,document,\"script\",\"//qzonestyle.gtimg.cn/qzone/biz/gdt/dmp/user-action/gdtevent.min.js\");gdt(\"init\",\"userActionSetId\");gdt(\"track\",\"PAGE_VIEW\");".replace("userActionSetId", paramString));
+          paramMap = new StringBuilder();
+          paramMap.append("GdtWebReportPlugin Report nocoId :");
+          paramMap.append(paramString);
+          GdtLog.a("GdtWebReportNoco", paramMap.toString());
+          return false;
+        }
       }
-      return false;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
     return false;
   }
   
   public void b() {}
+  
+  public void b(CustomWebView paramCustomWebView) {}
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.web.GdtWebReportNoco
  * JD-Core Version:    0.7.0.1
  */

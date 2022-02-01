@@ -1,7 +1,7 @@
 package com.tencent.av.doodle;
 
 import android.graphics.Canvas;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class PathParticleDoodleItem
   extends PathDoodleItem
@@ -16,7 +16,7 @@ public class PathParticleDoodleItem
   
   private void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvDoodlePathParticleEffect.a(BaseApplicationImpl.getApplication(), 2131230735, paramInt);
+    this.jdField_a_of_type_ComTencentAvDoodlePathParticleEffect.a(BaseApplication.getContext(), 2131230739, paramInt);
     this.jdField_a_of_type_ComTencentAvDoodlePathParticleEffect.a(this.jdField_a_of_type_AndroidGraphicsPathMeasure);
   }
   
@@ -40,7 +40,7 @@ public class PathParticleDoodleItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.doodle.PathParticleDoodleItem
  * JD-Core Version:    0.7.0.1
  */

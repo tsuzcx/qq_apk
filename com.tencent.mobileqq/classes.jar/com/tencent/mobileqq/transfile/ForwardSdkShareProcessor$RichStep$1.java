@@ -11,8 +11,12 @@ class ForwardSdkShareProcessor$RichStep$1
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "RichStep|run|retry=" + this.this$1.retryCount);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("RichStep|run|retry=");
+      ((StringBuilder)localObject).append(this.this$1.retryCount);
+      QLog.d("Q.share.ForwardSdkShareProcessor", 2, ((StringBuilder)localObject).toString());
     }
     if (this.this$1.isCancelled.get())
     {
@@ -28,15 +32,19 @@ class ForwardSdkShareProcessor$RichStep$1
         return;
       }
       this.this$1.needRich.set(false);
-      QLog.d("Q.share.ForwardSdkShareProcessor", 1, "RichStep|rich fail,lack=" + ForwardSdkShareProcessor.access$000(this.this$1.this$0));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("RichStep|rich fail,lack=");
+      ((StringBuilder)localObject).append(ForwardSdkShareProcessor.access$000(this.this$1.this$0));
+      QLog.d("Q.share.ForwardSdkShareProcessor", 1, ((StringBuilder)localObject).toString());
     }
-    this.this$1.isDidRich = true;
-    this.this$1.doNextStep();
+    Object localObject = this.this$1;
+    ((ForwardSdkShareProcessor.RichStep)localObject).isDidRich = true;
+    ((ForwardSdkShareProcessor.RichStep)localObject).doNextStep();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ForwardSdkShareProcessor.RichStep.1
  * JD-Core Version:    0.7.0.1
  */

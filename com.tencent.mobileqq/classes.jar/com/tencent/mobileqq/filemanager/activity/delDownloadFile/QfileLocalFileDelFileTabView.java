@@ -48,43 +48,47 @@ public class QfileLocalFileDelFileTabView
   
   private int b()
   {
-    switch (this.jdField_a_of_type_Int)
+    int i = this.jdField_a_of_type_Int;
+    if (i != 3)
     {
-    default: 
-      return -1;
-    case 3: 
-      return 1;
-    case 5: 
+      if (i != 5)
+      {
+        if (i != 11) {
+          return -1;
+        }
+        return 5;
+      }
       return 4;
     }
-    return 5;
+    return 1;
   }
   
   private boolean c(FileInfo paramFileInfo)
   {
-    boolean bool2 = false;
     Object localObject = this.jdField_c_of_type_JavaUtilLinkedHashMap.keySet().iterator();
     String str;
     List localList;
-    do
+    while (((Iterator)localObject).hasNext())
     {
-      bool1 = bool2;
-      if (!((Iterator)localObject).hasNext()) {
-        break;
-      }
       str = (String)((Iterator)localObject).next();
       localList = (List)this.jdField_c_of_type_JavaUtilLinkedHashMap.get(str);
-    } while ((localList == null) || (!localList.contains(paramFileInfo)));
-    localList.remove(paramFileInfo);
-    if (localList.size() == 0) {
-      this.jdField_c_of_type_JavaUtilLinkedHashMap.remove(str);
+      if ((localList != null) && (localList.contains(paramFileInfo)))
+      {
+        localList.remove(paramFileInfo);
+        if (localList.size() == 0) {
+          this.jdField_c_of_type_JavaUtilLinkedHashMap.remove(str);
+        }
+        bool2 = true;
+        break label102;
+      }
     }
-    boolean bool1 = true;
+    boolean bool2 = false;
+    label102:
     this.jdField_a_of_type_JavaUtilList.remove(paramFileInfo);
     localObject = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
     do
     {
-      bool2 = bool1;
+      bool1 = bool2;
       if (!((Iterator)localObject).hasNext()) {
         break;
       }
@@ -95,49 +99,54 @@ public class QfileLocalFileDelFileTabView
     if (localList.size() == 0) {
       this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(str);
     }
-    bool2 = true;
+    boolean bool1 = true;
     localObject = this.jdField_b_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    for (;;)
+    do
     {
-      if (((Iterator)localObject).hasNext())
-      {
-        str = (String)((Iterator)localObject).next();
-        localList = (List)this.jdField_b_of_type_JavaUtilLinkedHashMap.get(str);
-        if ((localList != null) && (localList.contains(paramFileInfo)))
-        {
-          localList.remove(paramFileInfo);
-          if (localList.size() == 0) {
-            this.jdField_b_of_type_JavaUtilLinkedHashMap.remove(str);
-          }
-        }
+      bool2 = bool1;
+      if (!((Iterator)localObject).hasNext()) {
+        break;
       }
+      str = (String)((Iterator)localObject).next();
+      localList = (List)this.jdField_b_of_type_JavaUtilLinkedHashMap.get(str);
+    } while ((localList == null) || (!localList.contains(paramFileInfo)));
+    localList.remove(paramFileInfo);
+    if (localList.size() == 0) {
+      this.jdField_b_of_type_JavaUtilLinkedHashMap.remove(str);
     }
-    for (bool1 = true;; bool1 = bool2) {
-      try
+    bool2 = true;
+    try
+    {
+      localObject = a(paramFileInfo);
+      paramFileInfo = new File((String)localObject);
+      if (!paramFileInfo.exists())
       {
-        localObject = a(paramFileInfo);
-        paramFileInfo = new File((String)localObject);
-        if (!paramFileInfo.exists())
+        paramFileInfo = "file not exists";
+        if (QLog.isColorLevel())
         {
-          paramFileInfo = "file not exists";
-          if (QLog.isColorLevel()) {
-            paramFileInfo = "file not exists" + " : " + (String)localObject;
-          }
-          QLog.w("delDownloadFiles<FileAssistant>", 1, paramFileInfo);
-          return bool1;
+          paramFileInfo = new StringBuilder();
+          paramFileInfo.append("file not exists");
+          paramFileInfo.append(" : ");
+          paramFileInfo.append((String)localObject);
+          paramFileInfo = paramFileInfo.toString();
         }
-        paramFileInfo.delete();
-        return bool1;
+        QLog.w("delDownloadFiles<FileAssistant>", 1, paramFileInfo);
+        return bool2;
       }
-      catch (Exception paramFileInfo)
-      {
-        QLog.e("delDownloadFiles<FileAssistant>", 1, "del file error:" + paramFileInfo.toString());
-        return bool1;
-      }
+      paramFileInfo.delete();
+      return bool2;
     }
+    catch (Exception paramFileInfo)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("del file error:");
+      ((StringBuilder)localObject).append(paramFileInfo.toString());
+      QLog.e("delDownloadFiles<FileAssistant>", 1, ((StringBuilder)localObject).toString());
+    }
+    return bool2;
   }
   
-  public QfileBaseExpandableListAdapter a()
+  protected QfileBaseExpandableListAdapter a()
   {
     QfileLocalFileBaseExpandableListAdapter localQfileLocalFileBaseExpandableListAdapter = new QfileLocalFileBaseExpandableListAdapter(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_d_of_type_AndroidViewView$OnClickListener);
     localQfileLocalFileBaseExpandableListAdapter.a(this);
@@ -150,19 +159,22 @@ public class QfileLocalFileDelFileTabView
       return "";
     }
     String str = paramFileInfo.c();
-    if (paramFileInfo.b()) {
-      try
-      {
-        int i = Integer.parseInt(str);
-        paramFileInfo = (String)this.jdField_b_of_type_JavaUtilList.get(i) + paramFileInfo.d();
-        return paramFileInfo;
-      }
-      catch (Exception paramFileInfo) {}
+    if (paramFileInfo.c()) {}
+    try
+    {
+      int i = Integer.parseInt(str);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)this.jdField_b_of_type_JavaUtilList.get(i));
+      localStringBuilder.append(paramFileInfo.d());
+      paramFileInfo = localStringBuilder.toString();
+      return paramFileInfo;
     }
+    catch (Exception paramFileInfo) {}
+    return str;
     return str;
   }
   
-  public void a()
+  protected void a()
   {
     setEditbarButton(false, false, false, false, true);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this);
@@ -172,24 +184,28 @@ public class QfileLocalFileDelFileTabView
   
   public void a(FileInfo paramFileInfo, boolean paramBoolean)
   {
+    boolean bool = true;
     if (paramBoolean)
     {
       this.jdField_b_of_type_Int += 1;
       this.jdField_c_of_type_JavaUtilList.add(paramFileInfo);
-      paramFileInfo = a();
-      if ((this.jdField_b_of_type_Int != 0) && (this.jdField_b_of_type_Int >= this.jdField_a_of_type_JavaUtilList.size())) {
-        break label85;
-      }
     }
-    label85:
-    for (paramBoolean = true;; paramBoolean = false)
+    else
     {
-      paramFileInfo.e(paramBoolean);
-      return;
       this.jdField_b_of_type_Int -= 1;
       this.jdField_c_of_type_JavaUtilList.remove(paramFileInfo);
-      break;
     }
+    paramFileInfo = a();
+    int i = this.jdField_b_of_type_Int;
+    paramBoolean = bool;
+    if (i != 0) {
+      if (i < this.jdField_a_of_type_JavaUtilList.size()) {
+        paramBoolean = bool;
+      } else {
+        paramBoolean = false;
+      }
+    }
+    paramFileInfo.e(paramBoolean);
   }
   
   public void a(Set<FileInfo> paramSet)
@@ -197,29 +213,31 @@ public class QfileLocalFileDelFileTabView
     if (this.jdField_c_of_type_JavaUtilList.size() == 0) {
       return;
     }
-    Iterator localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
-    long l1 = 0L;
+    Object localObject = this.jdField_c_of_type_JavaUtilList.iterator();
     long l2 = 0L;
-    if (localIterator.hasNext())
+    long l1 = 0L;
+    while (((Iterator)localObject).hasNext())
     {
-      FileInfo localFileInfo = (FileInfo)localIterator.next();
-      if (!c(localFileInfo)) {
-        break label173;
+      FileInfo localFileInfo = (FileInfo)((Iterator)localObject).next();
+      if (c(localFileInfo))
+      {
+        paramSet.remove(localFileInfo);
+        l2 += localFileInfo.a();
+        l1 += 1L;
       }
-      paramSet.remove(localFileInfo);
-      l2 += localFileInfo.a();
-      l1 = 1L + l1;
     }
-    label173:
-    for (;;)
-    {
-      break;
-      this.jdField_c_of_type_JavaUtilList.clear();
-      i();
-      l2 /= 1048576L;
-      ReportController.b(null, "dc00898", "", "", "0X800A0CC", "0X800A0CC", b(), 0, "" + l1, "" + l2, "", "");
-      return;
-    }
+    this.jdField_c_of_type_JavaUtilList.clear();
+    i();
+    l2 /= 1048576L;
+    int i = b();
+    paramSet = new StringBuilder();
+    paramSet.append("");
+    paramSet.append(l1);
+    paramSet = paramSet.toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(l2);
+    ReportController.b(null, "dc00898", "", "", "0X800A0CC", "0X800A0CC", i, 0, paramSet, ((StringBuilder)localObject).toString(), "", "");
   }
   
   public int[] a()
@@ -230,7 +248,7 @@ public class QfileLocalFileDelFileTabView
     return new int[] { 1, 0, 2 };
   }
   
-  public void b(FileInfo paramFileInfo, boolean paramBoolean)
+  protected void b(FileInfo paramFileInfo, boolean paramBoolean)
   {
     super.b(paramFileInfo, paramBoolean);
     a(paramFileInfo, paramBoolean);
@@ -241,7 +259,15 @@ public class QfileLocalFileDelFileTabView
     this.jdField_b_of_type_Int = this.jdField_a_of_type_JavaUtilList.size();
     this.jdField_c_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
     long l = FMDataCache.d() / 1048576L;
-    ReportController.b(null, "dc00898", "", "", "0X800A0CB", "0X800A0CB", b(), 0, "" + this.jdField_b_of_type_Int, "" + l, "", "");
+    int i = b();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(l);
+    ReportController.b(null, "dc00898", "", "", "0X800A0CB", "0X800A0CB", i, 0, (String)localObject, localStringBuilder.toString(), "", "");
     super.d();
   }
   
@@ -254,20 +280,22 @@ public class QfileLocalFileDelFileTabView
   
   public void j()
   {
-    boolean bool = false;
     super.j();
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setOnGroupClickListener(null);
-    if (this.jdField_a_of_type_JavaUtilList != null) {}
-    for (int i = this.jdField_a_of_type_JavaUtilList.size();; i = 0)
-    {
-      BaseFileAssistantActivity localBaseFileAssistantActivity = a();
-      if ((i == 0) || (this.jdField_b_of_type_Int < i)) {
-        bool = true;
-      }
-      localBaseFileAssistantActivity.e(bool);
-      return;
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    boolean bool = false;
+    int i;
+    if (localObject != null) {
+      i = ((List)localObject).size();
+    } else {
+      i = 0;
     }
+    localObject = a();
+    if ((i == 0) || (this.jdField_b_of_type_Int < i)) {
+      bool = true;
+    }
+    ((BaseFileAssistantActivity)localObject).e(bool);
   }
   
   public void n()
@@ -281,31 +309,37 @@ public class QfileLocalFileDelFileTabView
   {
     super.setSortType(paramInt);
     this.jdField_c_of_type_JavaUtilLinkedHashMap.clear();
-    switch (this.jdField_d_of_type_Int)
+    paramInt = this.jdField_d_of_type_Int;
+    if (paramInt != 0)
     {
-    }
-    for (;;)
-    {
-      i();
-      setSelect(0);
-      return;
-      ReportController.b(null, "dc00898", "", "", "0X800A0C8", "0X800A0C8", b(), 0, "", "", "", "");
-      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+      if (paramInt != 1)
       {
-        this.jdField_c_of_type_JavaUtilLinkedHashMap.put(this.jdField_a_of_type_ComTencentUtilPair.first, this.jdField_a_of_type_JavaUtilList);
-        continue;
-        ReportController.b(null, "dc00898", "", "", "0X800A0C9", "0X800A0C9", b(), 0, "", "", "", "");
-        this.jdField_c_of_type_JavaUtilLinkedHashMap.putAll(this.jdField_a_of_type_JavaUtilLinkedHashMap);
-        continue;
-        ReportController.b(null, "dc00898", "", "", "0X800A0CA", "0X800A0CA", b(), 0, "", "", "", "");
-        this.jdField_c_of_type_JavaUtilLinkedHashMap.putAll(this.jdField_b_of_type_JavaUtilLinkedHashMap);
+        if (paramInt == 2)
+        {
+          ReportController.b(null, "dc00898", "", "", "0X800A0CA", "0X800A0CA", b(), 0, "", "", "", "");
+          this.jdField_c_of_type_JavaUtilLinkedHashMap.putAll(this.jdField_b_of_type_JavaUtilLinkedHashMap);
+        }
+      }
+      else
+      {
+        ReportController.b(null, "dc00898", "", "", "0X800A0C8", "0X800A0C8", b(), 0, "", "", "", "");
+        if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
+          this.jdField_c_of_type_JavaUtilLinkedHashMap.put(this.jdField_a_of_type_ComTencentUtilPair.first, this.jdField_a_of_type_JavaUtilList);
+        }
       }
     }
+    else
+    {
+      ReportController.b(null, "dc00898", "", "", "0X800A0C9", "0X800A0C9", b(), 0, "", "", "", "");
+      this.jdField_c_of_type_JavaUtilLinkedHashMap.putAll(this.jdField_a_of_type_JavaUtilLinkedHashMap);
+    }
+    i();
+    setSelect(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelFileTabView
  * JD-Core Version:    0.7.0.1
  */

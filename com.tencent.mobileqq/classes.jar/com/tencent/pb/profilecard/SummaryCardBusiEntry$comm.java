@@ -35,13 +35,14 @@ public final class SummaryCardBusiEntry$comm
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 58, 64, 74, 80, 90, 96, 106, 112, 122, 136, 146, 154 }, new String[] { "ver", "seq", "fromuin", "touin", "service", "session_type", "session_key", "client_ip", "display", "result", "err_msg", "platform", "qqver", "build", "msg_login_sig", "uint32_version", "msg_uin_info", "msg_rich_display" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), null, Integer.valueOf(0), "", Integer.valueOf(0), "", Integer.valueOf(0), null, Integer.valueOf(0), null, null }, comm.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 58, 64, 74, 80, 90, 96, 106, 112, 122, 136, 146, 154 }, new String[] { "ver", "seq", "fromuin", "touin", "service", "session_type", "session_key", "client_ip", "display", "result", "err_msg", "platform", "qqver", "build", "msg_login_sig", "uint32_version", "msg_uin_info", "msg_rich_display" }, new Object[] { localInteger, localInteger, Long.valueOf(0L), Long.valueOf(0L), localInteger, localInteger, localByteStringMicro, localInteger, null, localInteger, "", localInteger, "", localInteger, null, localInteger, null, null }, comm.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.profilecard.SummaryCardBusiEntry.comm
  * JD-Core Version:    0.7.0.1
  */

@@ -60,217 +60,266 @@ public class AnimationView
   
   private void createBackAnimation(Canvas paramCanvas)
   {
-    switch (this.backState)
+    int i = this.backState;
+    if (i != 1)
     {
-    default: 
-    case 1: 
-      do
+      if (i != 2)
       {
-        return;
-        if ((this.startDstRect != null) && (this.endDstRect != null) && (this.drawable != null)) {
-          break;
+        if (i != 3) {
+          return;
         }
-        this.backState = 3;
+        paramCanvas = this.animationListener;
+        if (paramCanvas != null) {
+          paramCanvas.onExitAnimationEnd();
+        }
         this.isBackAnimationing = false;
-        super.draw(paramCanvas);
-      } while (this.animationListener == null);
-      this.animationListener.onExitAnimationEnd();
+        this.drawable.setBounds(this.drawableRect);
+        return;
+      }
+      doBackAniRun(paramCanvas);
       return;
+    }
+    if ((this.startDstRect != null) && (this.endDstRect != null) && (this.drawable != null))
+    {
       this.mAnimationStartTime = SystemClock.uptimeMillis();
       this.backState = 2;
-    case 2: 
-      float f1 = (float)(SystemClock.uptimeMillis() - this.mAnimationStartTime) / (float)this.mAnimationDuringTime;
-      if (f1 >= 1.0F) {
-        this.backState = 3;
-      }
-      f1 = Math.min(f1, 1.0F);
-      f1 = this.viscousFluidInterpolator.getInterpolation(f1);
-      Rect localRect1 = this.startDstRect;
-      Rect localRect2 = this.endDstRect;
-      int[] arrayOfInt = new int[2];
-      getLocationInWindow(arrayOfInt);
-      localRect2 = new Rect(localRect2.left + arrayOfInt[0], localRect2.top + arrayOfInt[1], localRect2.right + arrayOfInt[0], localRect2.bottom + arrayOfInt[1]);
-      int i = localRect2.right - localRect2.left;
-      int j = localRect2.bottom - localRect2.top;
-      float f2 = localRect1.right - localRect1.left + this.startX;
-      float f3 = localRect1.bottom - localRect1.top + this.startY;
-      float f4 = f2 / i;
-      float f5 = f3 / j;
-      paramCanvas.save();
-      if (this.cutValue == 1)
-      {
-        paramCanvas.translate((localRect1.left - arrayOfInt[0] - this.startX - (localRect2.left - arrayOfInt[0]) * f5) * f1, (localRect1.top - arrayOfInt[1] - this.startY - (localRect2.top - arrayOfInt[1]) * f5) * f1);
-        paramCanvas.scale(1.0F - (1.0F - f5) * f1, 1.0F - (1.0F - f5) * f1);
-        if (this.isImgCenterCropMode)
-        {
-          f2 = (i - j) / 2.0F;
-          paramCanvas.translate(-f2 * f1, 0.0F);
-          paramCanvas.clipRect(localRect2.left - arrayOfInt[0] + f2 * f1, localRect2.top - arrayOfInt[1], localRect2.right - arrayOfInt[0] - f1 * f2, localRect2.bottom - arrayOfInt[1]);
-        }
-      }
-      for (;;)
-      {
-        this.drawable.setBounds(this.endDstRect);
-        this.drawable.draw(paramCanvas);
-        paramCanvas.restore();
-        invalidate();
-        return;
-        paramCanvas.clipRect(localRect2.left - arrayOfInt[0] + this.startX / (1.0F - (1.0F - f5) * f1) * f1, localRect2.top - arrayOfInt[1] + this.startY / (1.0F - (1.0F - f5) * f1) * f1, localRect2.right - arrayOfInt[0] - f1 * (i - f2 / f5), localRect2.bottom - arrayOfInt[1]);
-        continue;
-        if (this.cutValue == 2)
-        {
-          paramCanvas.translate((localRect1.left - arrayOfInt[0] - this.startX - (localRect2.left - arrayOfInt[0]) * f4) * f1, (localRect1.top - arrayOfInt[1] - this.startY - (localRect2.top - arrayOfInt[1]) * f4) * f1);
-          paramCanvas.scale(1.0F - (1.0F - f4) * f1, 1.0F - (1.0F - f4) * f1);
-          if (this.isImgCenterCropMode)
-          {
-            f2 = (j - i) / 2.0F;
-            paramCanvas.translate(0.0F, -f2 * f1);
-            paramCanvas.clipRect(localRect2.left - arrayOfInt[0], localRect2.top - arrayOfInt[1] + f2 * f1, localRect2.right - arrayOfInt[0], localRect2.bottom - arrayOfInt[1] - f1 * f2);
-          }
-          else
-          {
-            paramCanvas.clipRect(localRect2.left - arrayOfInt[0] + this.startX / (1.0F - (1.0F - f4) * f1) * f1, localRect2.top - arrayOfInt[1] + this.startY / (1.0F - (1.0F - f4) * f1) * f1, localRect2.right - arrayOfInt[0], localRect2.bottom - arrayOfInt[1] - f1 * (j - f3 / f4));
-          }
-        }
-        else
-        {
-          paramCanvas.translate((localRect1.left - arrayOfInt[0] - (localRect2.left - arrayOfInt[0]) * f4) * f1, (localRect1.top - arrayOfInt[1] - (localRect2.top - arrayOfInt[1]) * f5) * f1);
-          paramCanvas.scale(1.0F - (1.0F - f4) * f1, 1.0F - f1 * (1.0F - f5));
-        }
-      }
+      doBackAniRun(paramCanvas);
+      return;
     }
-    if (this.animationListener != null) {
-      this.animationListener.onExitAnimationEnd();
-    }
+    this.backState = 3;
     this.isBackAnimationing = false;
-    this.drawable.setBounds(this.drawableRect);
+    super.draw(paramCanvas);
+    paramCanvas = this.animationListener;
+    if (paramCanvas != null) {
+      paramCanvas.onExitAnimationEnd();
+    }
   }
   
   private void createEnterAnimation(Canvas paramCanvas)
   {
-    switch (this.startState)
+    int i = this.startState;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      if ((this.startDstRect == null) || (this.endDstRect == null) || (this.drawable == null))
+      if (i != 2)
       {
-        this.startState = 3;
+        if (i != 3) {
+          return;
+        }
         this.isEnterAnimationing = false;
-        if (this.animationListener != null) {
-          this.animationListener.onEnterAnimationEnd();
+        localAnimationLister = this.animationListener;
+        if (localAnimationLister != null) {
+          localAnimationLister.onEnterAnimationEnd();
         }
-        super.draw(paramCanvas);
-        return;
-      }
-      this.mAnimationStartTime = SystemClock.uptimeMillis();
-      this.startState = 2;
-      paramCanvas.save();
-    case 2: 
-      float f1 = (float)(SystemClock.uptimeMillis() - this.mAnimationStartTime) / (float)this.mAnimationDuringTime;
-      if (f1 >= 1.0F) {
-        this.startState = 3;
-      }
-      f1 = Math.min(f1, 1.0F);
-      f1 = 1.0F - this.accelerateDecelerateInterpolator.getInterpolation(f1);
-      Rect localRect1 = this.startDstRect;
-      Rect localRect2 = this.endDstRect;
-      int[] arrayOfInt = new int[2];
-      getLocationInWindow(arrayOfInt);
-      localRect2 = new Rect(localRect2.left + arrayOfInt[0], localRect2.top + arrayOfInt[1], localRect2.right + arrayOfInt[0], localRect2.bottom + arrayOfInt[1]);
-      int i = localRect2.width();
-      int j = localRect2.height();
-      float f2 = localRect1.width();
-      float f3 = localRect1.height();
-      float f4 = f2 / i;
-      float f5 = f3 / j;
-      paramCanvas.save();
-      if (this.cutValue == 1)
-      {
-        paramCanvas.translate((localRect1.left - arrayOfInt[0] - (localRect2.left - arrayOfInt[0]) * f5) * f1, (localRect1.top - arrayOfInt[1] - (localRect2.top - arrayOfInt[1]) * f5) * f1);
-        paramCanvas.scale(1.0F - (1.0F - f5) * f1, 1.0F - (1.0F - f5) * f1);
-        if (this.isImgCenterCropMode)
-        {
-          f2 = (i - j) / 2.0F;
-          paramCanvas.translate(-f2 * f1, 0.0F);
-          paramCanvas.clipRect(localRect2.left - arrayOfInt[0] + f2 * f1, localRect2.top - arrayOfInt[1], localRect2.right - arrayOfInt[0] - f1 * f2, localRect2.bottom - arrayOfInt[1]);
-        }
-      }
-      for (;;)
-      {
+        paramCanvas.save();
         this.drawable.setBounds(this.endDstRect);
         this.drawable.draw(paramCanvas);
         paramCanvas.restore();
-        invalidate();
+        this.drawable.setBounds(this.drawableRect);
         return;
-        paramCanvas.clipRect(localRect2.left - arrayOfInt[0], localRect2.top - arrayOfInt[1], localRect2.right - arrayOfInt[0] - f1 * (i - f2 / f5), localRect2.bottom - arrayOfInt[1]);
-        continue;
-        if (this.cutValue == 2)
-        {
-          paramCanvas.translate((localRect1.left - arrayOfInt[0] - (localRect2.left - arrayOfInt[0]) * f4) * f1, (localRect1.top - arrayOfInt[1] - (localRect2.top - arrayOfInt[1]) * f4) * f1);
-          paramCanvas.scale(1.0F - (1.0F - f4) * f1, 1.0F - (1.0F - f4) * f1);
-          if (this.isImgCenterCropMode)
-          {
-            f2 = (j - i) / 2.0F;
-            paramCanvas.translate(0.0F, -f2 * f1);
-            paramCanvas.clipRect(localRect2.left - arrayOfInt[0], localRect2.top - arrayOfInt[1] + f2 * f1, localRect2.right - arrayOfInt[0], localRect2.bottom - arrayOfInt[1] - f1 * f2);
-          }
-          else
-          {
-            paramCanvas.clipRect(localRect2.left - arrayOfInt[0], localRect2.top - arrayOfInt[1], localRect2.right - arrayOfInt[0], localRect2.bottom - arrayOfInt[1] - f1 * (j - f3 / f4));
-          }
-        }
-        else
-        {
-          paramCanvas.translate((localRect1.left - arrayOfInt[0] - (localRect2.left - arrayOfInt[0]) * f4) * f1, (localRect1.top - arrayOfInt[1] - (localRect2.top - arrayOfInt[1]) * f5) * f1);
-          paramCanvas.scale(1.0F - (1.0F - f4) * f1, 1.0F - f1 * (1.0F - f5));
-        }
+      }
+      doEnterAniRun(paramCanvas);
+      return;
+    }
+    if ((this.startDstRect != null) && (this.endDstRect != null) && (this.drawable != null))
+    {
+      this.mAnimationStartTime = SystemClock.uptimeMillis();
+      this.startState = 2;
+      paramCanvas.save();
+      doEnterAniRun(paramCanvas);
+      return;
+    }
+    this.startState = 3;
+    this.isEnterAnimationing = false;
+    AnimationLister localAnimationLister = this.animationListener;
+    if (localAnimationLister != null) {
+      localAnimationLister.onEnterAnimationEnd();
+    }
+    super.draw(paramCanvas);
+  }
+  
+  private void doBackAniRun(Canvas paramCanvas)
+  {
+    float f1 = (float)(SystemClock.uptimeMillis() - this.mAnimationStartTime) / (float)this.mAnimationDuringTime;
+    if (f1 >= 1.0F) {
+      this.backState = 3;
+    }
+    f1 = Math.min(f1, 1.0F);
+    f1 = this.viscousFluidInterpolator.getInterpolation(f1);
+    Rect localRect1 = this.startDstRect;
+    Rect localRect2 = this.endDstRect;
+    int[] arrayOfInt = new int[2];
+    getLocationInWindow(arrayOfInt);
+    localRect2 = new Rect(localRect2.left + arrayOfInt[0], localRect2.top + arrayOfInt[1], localRect2.right + arrayOfInt[0], localRect2.bottom + arrayOfInt[1]);
+    int i = localRect2.right - localRect2.left;
+    int j = localRect2.bottom - localRect2.top;
+    float f2 = localRect1.right - localRect1.left + this.startX;
+    float f3 = localRect1.bottom - localRect1.top + this.startY;
+    float f4 = i;
+    float f5 = f2 / f4;
+    float f6 = j;
+    float f7 = f3 / f6;
+    paramCanvas.save();
+    int k = this.cutValue;
+    if (k == 1)
+    {
+      paramCanvas.translate((localRect1.left - arrayOfInt[0] - this.startX - (localRect2.left - arrayOfInt[0]) * f7) * f1, (localRect1.top - arrayOfInt[1] - this.startY - (localRect2.top - arrayOfInt[1]) * f7) * f1);
+      f3 = 1.0F - (1.0F - f7) * f1;
+      paramCanvas.scale(f3, f3);
+      if (this.isImgCenterCropMode)
+      {
+        f3 = (i - j) / 2.0F;
+        paramCanvas.translate(-f3 * f1, 0.0F);
+        f2 = localRect2.left - arrayOfInt[0];
+        f1 = f3 * f1;
+        paramCanvas.clipRect(f2 + f1, localRect2.top - arrayOfInt[1], localRect2.right - arrayOfInt[0] - f1, localRect2.bottom - arrayOfInt[1]);
+      }
+      else
+      {
+        paramCanvas.clipRect(localRect2.left - arrayOfInt[0] + this.startX / f3 * f1, localRect2.top - arrayOfInt[1] + this.startY / f3 * f1, localRect2.right - arrayOfInt[0] - (f4 - f2 / f7) * f1, localRect2.bottom - arrayOfInt[1]);
       }
     }
-    this.isEnterAnimationing = false;
-    if (this.animationListener != null) {
-      this.animationListener.onEnterAnimationEnd();
+    else if (k == 2)
+    {
+      paramCanvas.translate((localRect1.left - arrayOfInt[0] - this.startX - (localRect2.left - arrayOfInt[0]) * f5) * f1, (localRect1.top - arrayOfInt[1] - this.startY - (localRect2.top - arrayOfInt[1]) * f5) * f1);
+      f2 = 1.0F - (1.0F - f5) * f1;
+      paramCanvas.scale(f2, f2);
+      if (this.isImgCenterCropMode)
+      {
+        f4 = (j - i) / 2.0F;
+        paramCanvas.translate(0.0F, -f4 * f1);
+        f2 = localRect2.left - arrayOfInt[0];
+        f3 = localRect2.top - arrayOfInt[1];
+        f1 = f4 * f1;
+        paramCanvas.clipRect(f2, f3 + f1, localRect2.right - arrayOfInt[0], localRect2.bottom - arrayOfInt[1] - f1);
+      }
+      else
+      {
+        paramCanvas.clipRect(localRect2.left - arrayOfInt[0] + this.startX / f2 * f1, localRect2.top - arrayOfInt[1] + this.startY / f2 * f1, localRect2.right - arrayOfInt[0], localRect2.bottom - arrayOfInt[1] - (f6 - f3 / f5) * f1);
+      }
     }
-    paramCanvas.save();
+    else
+    {
+      paramCanvas.translate((localRect1.left - arrayOfInt[0] - (localRect2.left - arrayOfInt[0]) * f5) * f1, (localRect1.top - arrayOfInt[1] - (localRect2.top - arrayOfInt[1]) * f7) * f1);
+      paramCanvas.scale(1.0F - (1.0F - f5) * f1, 1.0F - (1.0F - f7) * f1);
+    }
     this.drawable.setBounds(this.endDstRect);
     this.drawable.draw(paramCanvas);
     paramCanvas.restore();
-    this.drawable.setBounds(this.drawableRect);
+    invalidate();
+  }
+  
+  private void doEnterAniRun(Canvas paramCanvas)
+  {
+    float f1 = (float)(SystemClock.uptimeMillis() - this.mAnimationStartTime) / (float)this.mAnimationDuringTime;
+    if (f1 >= 1.0F) {
+      this.startState = 3;
+    }
+    f1 = Math.min(f1, 1.0F);
+    f1 = 1.0F - this.accelerateDecelerateInterpolator.getInterpolation(f1);
+    Rect localRect1 = this.startDstRect;
+    Rect localRect2 = this.endDstRect;
+    int[] arrayOfInt = new int[2];
+    getLocationInWindow(arrayOfInt);
+    localRect2 = new Rect(localRect2.left + arrayOfInt[0], localRect2.top + arrayOfInt[1], localRect2.right + arrayOfInt[0], localRect2.bottom + arrayOfInt[1]);
+    int i = localRect2.width();
+    int j = localRect2.height();
+    float f2 = localRect1.width();
+    float f3 = localRect1.height();
+    float f4 = i;
+    float f5 = f2 / f4;
+    float f6 = j;
+    float f7 = f3 / f6;
+    paramCanvas.save();
+    int k = this.cutValue;
+    if (k == 1)
+    {
+      paramCanvas.translate((localRect1.left - arrayOfInt[0] - (localRect2.left - arrayOfInt[0]) * f7) * f1, (localRect1.top - arrayOfInt[1] - (localRect2.top - arrayOfInt[1]) * f7) * f1);
+      f3 = 1.0F - (1.0F - f7) * f1;
+      paramCanvas.scale(f3, f3);
+      if (this.isImgCenterCropMode)
+      {
+        f3 = (i - j) / 2.0F;
+        paramCanvas.translate(-f3 * f1, 0.0F);
+        f2 = localRect2.left - arrayOfInt[0];
+        f1 = f3 * f1;
+        paramCanvas.clipRect(f2 + f1, localRect2.top - arrayOfInt[1], localRect2.right - arrayOfInt[0] - f1, localRect2.bottom - arrayOfInt[1]);
+      }
+      else
+      {
+        paramCanvas.clipRect(localRect2.left - arrayOfInt[0], localRect2.top - arrayOfInt[1], localRect2.right - arrayOfInt[0] - (f4 - f2 / f7) * f1, localRect2.bottom - arrayOfInt[1]);
+      }
+    }
+    else if (k == 2)
+    {
+      paramCanvas.translate((localRect1.left - arrayOfInt[0] - (localRect2.left - arrayOfInt[0]) * f5) * f1, (localRect1.top - arrayOfInt[1] - (localRect2.top - arrayOfInt[1]) * f5) * f1);
+      f2 = 1.0F - (1.0F - f5) * f1;
+      paramCanvas.scale(f2, f2);
+      if (this.isImgCenterCropMode)
+      {
+        f4 = (j - i) / 2.0F;
+        paramCanvas.translate(0.0F, -f4 * f1);
+        f2 = localRect2.left - arrayOfInt[0];
+        f3 = localRect2.top - arrayOfInt[1];
+        f1 = f4 * f1;
+        paramCanvas.clipRect(f2, f3 + f1, localRect2.right - arrayOfInt[0], localRect2.bottom - arrayOfInt[1] - f1);
+      }
+      else
+      {
+        paramCanvas.clipRect(localRect2.left - arrayOfInt[0], localRect2.top - arrayOfInt[1], localRect2.right - arrayOfInt[0], localRect2.bottom - arrayOfInt[1] - (f6 - f3 / f5) * f1);
+      }
+    }
+    else
+    {
+      paramCanvas.translate((localRect1.left - arrayOfInt[0] - (localRect2.left - arrayOfInt[0]) * f5) * f1, (localRect1.top - arrayOfInt[1] - (localRect2.top - arrayOfInt[1]) * f7) * f1);
+      paramCanvas.scale(1.0F - (1.0F - f5) * f1, 1.0F - (1.0F - f7) * f1);
+    }
+    this.drawable.setBounds(this.endDstRect);
+    this.drawable.draw(paramCanvas);
+    paramCanvas.restore();
+    invalidate();
   }
   
   private void onDrawFreeMode(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
     paramCanvas.save();
-    float f1;
     if (this.startTime > 0L)
     {
       long l = System.currentTimeMillis() - this.startTime;
       this.input = ((float)l / (float)this.mAnimationDuringTime);
-      if (!this.isEnter) {
-        break label468;
+      if (this.isEnter) {
+        this.input = this.accelerateDecelerateInterpolator.getInterpolation(this.input);
+      } else {
+        this.input = this.viscousFluidInterpolator.getInterpolation(this.input);
       }
-      this.input = this.accelerateDecelerateInterpolator.getInterpolation(this.input);
-      f1 = 1.0F - this.input;
-      if (this.isInAnimation)
-      {
-        if (l > this.mAnimationDuringTime) {
-          break label486;
+      float f1 = 1.0F - this.input;
+      if (this.isInAnimation) {
+        if (l <= this.mAnimationDuringTime)
+        {
+          this.top = (this.startSrcRect.top * f1 + this.endSrcRect.top * this.input);
+          this.bottom = (this.startSrcRect.bottom * f1 + this.endSrcRect.bottom * this.input);
+          this.left = (this.startSrcRect.left * f1 + this.endSrcRect.left * this.input);
+          this.right = (this.startSrcRect.right * f1 + this.endSrcRect.right * this.input);
+          this.src.set((int)this.left, (int)this.top, (int)this.right, (int)this.bottom);
+          this.top = (this.startDstRect.top * f1 + this.endDstRect.top * this.input);
+          this.bottom = (this.startDstRect.bottom * f1 + this.endDstRect.bottom * this.input);
+          this.left = (this.startDstRect.left * f1 + this.endDstRect.left * this.input);
+          this.right = (this.startDstRect.right * f1 + this.endDstRect.right * this.input);
+          this.dst.set(this.left, this.top, this.right, this.bottom);
         }
-        this.top = (this.startSrcRect.top * f1 + this.endSrcRect.top * this.input);
-        this.bottom = (this.startSrcRect.bottom * f1 + this.endSrcRect.bottom * this.input);
-        this.left = (this.startSrcRect.left * f1 + this.endSrcRect.left * this.input);
-        this.right = (this.startSrcRect.right * f1 + this.endSrcRect.right * this.input);
-        this.src.set((int)this.left, (int)this.top, (int)this.right, (int)this.bottom);
-        this.top = (this.startDstRect.top * f1 + this.endDstRect.top * this.input);
-        this.bottom = (this.startDstRect.bottom * f1 + this.endDstRect.bottom * this.input);
-        this.left = (this.startDstRect.left * f1 + this.endDstRect.left * this.input);
-        this.right = (this.startDstRect.right * f1 + this.endDstRect.right * this.input);
-        this.dst.set(this.left, this.top, this.right, this.bottom);
+        else
+        {
+          this.isInAnimation = false;
+          AnimationLister localAnimationLister = this.animationListener;
+          if (localAnimationLister != null) {
+            if (this.isEnter) {
+              localAnimationLister.onEnterAnimationEnd();
+            } else {
+              localAnimationLister.onExitAnimationEnd();
+            }
+          }
+        }
       }
-    }
-    for (;;)
-    {
       f1 = this.dst.width() / this.src.width();
       float f2 = this.dst.height() / this.src.height();
       paramCanvas.translate(this.dst.left - this.src.left * f1, this.dst.top - this.src.top * f2);
@@ -278,21 +327,8 @@ public class AnimationView
       paramCanvas.clipRect(this.src);
       this.drawable.draw(paramCanvas);
       invalidate();
-      paramCanvas.restore();
-      return;
-      label468:
-      this.input = this.viscousFluidInterpolator.getInterpolation(this.input);
-      break;
-      label486:
-      this.isInAnimation = false;
-      if (this.animationListener != null) {
-        if (this.isEnter) {
-          this.animationListener.onEnterAnimationEnd();
-        } else {
-          this.animationListener.onExitAnimationEnd();
-        }
-      }
     }
+    paramCanvas.restore();
   }
   
   private void startAnimation()
@@ -310,7 +346,7 @@ public class AnimationView
     this.isInAnimation = false;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     if (this.freeMode)
     {
@@ -347,8 +383,9 @@ public class AnimationView
     this.startX = paramInt2;
     this.startY = paramInt3;
     this.mAnimationDuringTime = paramLong;
-    if (this.animationListener != null) {
-      this.animationListener.onExitAnimationStart();
+    paramDrawable = this.animationListener;
+    if (paramDrawable != null) {
+      paramDrawable.onExitAnimationStart();
     }
     invalidate();
   }
@@ -368,8 +405,9 @@ public class AnimationView
     this.drawable = paramDrawable;
     this.mAnimationDuringTime = paramLong;
     startAnimation();
-    if (this.animationListener != null) {
-      this.animationListener.onExitAnimationStart();
+    paramDrawable = this.animationListener;
+    if (paramDrawable != null) {
+      paramDrawable.onExitAnimationStart();
     }
   }
   
@@ -383,8 +421,9 @@ public class AnimationView
     this.endDstRect = paramRect2;
     this.cutValue = paramInt;
     this.mAnimationDuringTime = paramLong;
-    if (this.animationListener != null) {
-      this.animationListener.onEnterAnimationStart();
+    paramDrawable = this.animationListener;
+    if (paramDrawable != null) {
+      paramDrawable.onEnterAnimationStart();
     }
     invalidate();
   }
@@ -404,14 +443,15 @@ public class AnimationView
     this.drawable = paramDrawable;
     this.mAnimationDuringTime = paramLong;
     startAnimation();
-    if (this.animationListener != null) {
-      this.animationListener.onEnterAnimationStart();
+    paramDrawable = this.animationListener;
+    if (paramDrawable != null) {
+      paramDrawable.onEnterAnimationStart();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmediabrowser.animation.AnimationView
  * JD-Core Version:    0.7.0.1
  */

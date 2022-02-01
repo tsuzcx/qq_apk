@@ -1,40 +1,35 @@
 package com.tencent.mobileqq.apollo.game;
 
-import com.tencent.mobileqq.apollo.process.sso.CmGameObserver;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class ApolloGameInterfaceProxy$1
-  extends CmGameObserver
+  implements EIPCResultCallback
 {
   ApolloGameInterfaceProxy$1(ApolloGameInterfaceProxy paramApolloGameInterfaceProxy) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while (paramObject == null);
     try
     {
-      paramObject = new JSONObject(paramObject.toString());
-      paramInt = paramObject.optInt("errCode");
-      paramObject.remove("errCode");
-      ApolloGameInterfaceProxy.a(this.a, paramInt, "cs.ssoMessage.local", paramObject.toString());
+      if (QLog.isColorLevel()) {
+        QLog.d("[cmshow]ApolloGameInterfaceProxy", 2, "get_open_key_back");
+      }
+      paramEIPCResult = paramEIPCResult.data.getString("respData");
+      ApolloGameInterfaceProxy.a(this.a, "cs.on_get_open_key.local", paramEIPCResult);
       return;
     }
-    catch (Throwable paramObject)
+    catch (Throwable paramEIPCResult)
     {
-      QLog.e("cmgame_process.CmGameObserver", 1, paramObject, new Object[0]);
+      QLog.e("[cmshow]ApolloGameInterfaceProxy", 1, paramEIPCResult, new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy.1
  * JD-Core Version:    0.7.0.1
  */

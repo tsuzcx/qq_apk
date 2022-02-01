@@ -39,50 +39,63 @@ public class j
   
   private static String b(a parama)
   {
-    Object localObject = h.a();
-    if (parama.g != null) {
-      if (parama.a)
-      {
-        str = "https";
-        parama.c = str;
-        StringBuilder localStringBuilder = new StringBuilder().append(parama.d).append("/").append(parama.e).append(":").append(parama.f).append(", ");
-        if (localObject == null) {
-          break label237;
-        }
-        localObject = ((c)localObject).a(parama.i);
-        label85:
-        localObject = localStringBuilder.append((String)localObject).append(", ").append(parama.g).append(", ").append(parama.h).append(", ").append(str).append(", ").append(parama.m);
-        if (!parama.y) {
-          break label245;
-        }
-        str = ", gzip";
-        label146:
-        localObject = ((StringBuilder)localObject).append(str);
-        if (!parama.z) {
-          break label251;
-        }
-      }
-    }
-    label237:
-    label245:
-    label251:
-    for (String str = ", chunked";; str = "")
+    Object localObject2 = h.a();
+    if (parama.g != null)
     {
-      return str + ", " + parama.j + ", impl[@" + parama.k + "], tid[" + parama.l + "]";
-      str = "http";
-      break;
-      if (parama.a)
-      {
-        str = "ssl";
-        break;
+      if (parama.a) {
+        localObject1 = "https";
+      } else {
+        localObject1 = "http";
       }
-      str = "tcp";
-      break;
-      localObject = parama.i;
-      break label85;
-      str = "";
-      break label146;
     }
+    else if (parama.a) {
+      localObject1 = "ssl";
+    } else {
+      localObject1 = "tcp";
+    }
+    parama.c = ((String)localObject1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(parama.d);
+    localStringBuilder.append("/");
+    localStringBuilder.append(parama.e);
+    localStringBuilder.append(":");
+    localStringBuilder.append(parama.f);
+    localStringBuilder.append(", ");
+    if (localObject2 != null) {
+      localObject2 = ((c)localObject2).a(parama.i);
+    } else {
+      localObject2 = parama.i;
+    }
+    localStringBuilder.append((String)localObject2);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(parama.g);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(parama.h);
+    localStringBuilder.append(", ");
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(parama.m);
+    boolean bool = parama.y;
+    localObject2 = "";
+    if (bool) {
+      localObject1 = ", gzip";
+    } else {
+      localObject1 = "";
+    }
+    localStringBuilder.append((String)localObject1);
+    Object localObject1 = localObject2;
+    if (parama.z) {
+      localObject1 = ", chunked";
+    }
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(parama.j);
+    localStringBuilder.append(", impl[@");
+    localStringBuilder.append(parama.k);
+    localStringBuilder.append("], tid[");
+    localStringBuilder.append(parama.l);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public static Set<g> b()
@@ -92,7 +105,7 @@ public class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.socket.a.j
  * JD-Core Version:    0.7.0.1
  */

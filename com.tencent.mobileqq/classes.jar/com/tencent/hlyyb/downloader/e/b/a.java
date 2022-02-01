@@ -43,17 +43,40 @@ public final class a
   
   public final String a()
   {
-    return this.b + j + this.c + j + this.d + j + this.e + j + this.g;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(j);
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(j);
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(j);
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(j);
+    localStringBuilder.append(this.g);
+    return localStringBuilder.toString();
   }
   
   public final String toString()
   {
-    return "[" + this.b + j + this.c + j + this.d + j + this.e + j + this.f + j + this.g + "]";
+    StringBuilder localStringBuilder = new StringBuilder("[");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(j);
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(j);
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(j);
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(j);
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(j);
+    localStringBuilder.append(this.g);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hlyyb.downloader.e.b.a
  * JD-Core Version:    0.7.0.1
  */

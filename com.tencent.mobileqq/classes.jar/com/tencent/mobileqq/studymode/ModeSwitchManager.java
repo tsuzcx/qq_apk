@@ -13,16 +13,16 @@ import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.onlinestatus.OnlineStatusManager;
+import com.tencent.mobileqq.onlinestatus.api.IOnlineStatusManagerService;
+import com.tencent.mobileqq.onlinestatus.manager.IOnlineStatusDataManager;
 import com.tencent.mobileqq.simpleui.SimpleUIHandler;
 import com.tencent.mobileqq.simpleui.SimpleUIObserver;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -76,46 +76,45 @@ public final class ModeSwitchManager
     boolean bool2 = true;
     this.jdField_a_of_type_Boolean = true;
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SIMPLE_UI_HANDLER);
-    if (localObject == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.simpleui.SimpleUIHandler");
-    }
-    localObject = (SimpleUIHandler)localObject;
-    boolean bool1;
-    if (paramInt2 == 1)
+    if (localObject != null)
     {
-      bool1 = true;
-      if (paramInt2 != 2) {
-        break label159;
+      localObject = (SimpleUIHandler)localObject;
+      boolean bool1;
+      if (paramInt2 == 1) {
+        bool1 = true;
+      } else {
+        bool1 = false;
       }
-    }
-    for (;;)
-    {
-      if (((SimpleUIHandler)localObject).a(bool1, paramInt1, paramBoolean, bool2)) {
-        break label165;
+      if (paramInt2 != 2) {
+        bool2 = false;
+      }
+      if (!((SimpleUIHandler)localObject).a(bool1, paramInt1, paramBoolean, bool2))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "doChangeMode switching");
+        }
+        QQToast.a((Context)BaseApplication.getContext(), 0, 2131718856, 0).a();
+        localObject = ((Iterable)this.jdField_a_of_type_JavaUtilList).iterator();
+        while (((Iterator)localObject).hasNext()) {
+          ((ModeSwitchManager.OnModeChangeResultCallback)((Iterator)localObject).next()).d(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        }
       }
       if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "doChangeMode switching");
+        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "doChangeMode switch start");
       }
-      QQToast.a((Context)BaseApplication.getContext(), 0, 2131719138, 0).a();
+      this.jdField_a_of_type_Int = paramInt2;
+      this.jdField_b_of_type_Int = paramInt3;
+      this.c = paramInt1;
       localObject = ((Iterable)this.jdField_a_of_type_JavaUtilList).iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((ModeSwitchManager.OnModeChangeResultCallback)((Iterator)localObject).next()).d(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        ((ModeSwitchManager.OnModeChangeResultCallback)((Iterator)localObject).next()).b(paramInt2, paramInt3);
       }
-      bool1 = false;
-      break;
-      label159:
-      bool2 = false;
+      return;
     }
-    label165:
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "doChangeMode switch start");
-    }
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Int = paramInt3;
-    this.c = paramInt1;
-    localObject = ((Iterable)this.jdField_a_of_type_JavaUtilList).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((ModeSwitchManager.OnModeChangeResultCallback)((Iterator)localObject).next()).b(paramInt2, paramInt3);
+    localObject = new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.simpleui.SimpleUIHandler");
+    for (;;)
+    {
+      throw ((Throwable)localObject);
     }
   }
   
@@ -132,32 +131,52 @@ public final class ModeSwitchManager
   
   private final void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "checkAndReportStockStudyMode -> studyModePullStatus : " + this.d + ", studentFlagPullStatus : " + this.e);
+    Object localObject;
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localObject = this.jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkAndReportStockStudyMode -> studyModePullStatus : ");
+      localStringBuilder.append(this.d);
+      localStringBuilder.append(", studentFlagPullStatus : ");
+      localStringBuilder.append(this.e);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
     if ((this.d == 1) && (this.e != 0))
     {
       boolean bool1 = StudyModeManager.b();
       boolean bool2 = b();
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "checkAndReportStockStudyMode -> configSwitch : " + bool1 + ", isSameDay ： " + bool2);
+      if (QLog.isColorLevel())
+      {
+        localObject = this.jdField_a_of_type_JavaLangString;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("checkAndReportStockStudyMode -> configSwitch : ");
+        localStringBuilder.append(bool1);
+        localStringBuilder.append(", isSameDay ： ");
+        localStringBuilder.append(bool2);
+        QLog.d((String)localObject, 2, localStringBuilder.toString());
       }
-      if ((bool1) && (!bool2)) {
-        if (this.e != 1) {
-          break label256;
+      if ((bool1) && (!bool2))
+      {
+        int i;
+        if (this.e == 1) {
+          i = 1;
+        } else {
+          i = 2;
         }
+        if (QLog.isColorLevel())
+        {
+          localObject = this.jdField_a_of_type_JavaLangString;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("checkAndReportStockStudyMode ReportController 0X800AD6C ， identity ： ");
+          localStringBuilder.append(i);
+          QLog.d((String)localObject, 2, localStringBuilder.toString());
+        }
+        localObject = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINESE);
+        SharedPreUtils.a((Context)BaseApplicationImpl.context, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true, "study_mode_last_report_time", ((SimpleDateFormat)localObject).format(new Date()));
+        ReportController.b((AppRuntime)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD6C", "0X800AD6C", 0, i, "", "", "", "");
       }
-    }
-    label256:
-    for (int i = 1;; i = 2)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "checkAndReportStockStudyMode ReportController 0X800AD6C ， identity ： " + i);
-      }
-      SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINESE);
-      SharedPreUtils.a((Context)BaseApplicationImpl.context, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true, "study_mode_last_report_time", localSimpleDateFormat.format(new Date()));
-      ReportController.b((AppRuntime)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD6C", "0X800AD6C", 0, i, "", "", "", "");
-      return;
     }
   }
   
@@ -182,33 +201,33 @@ public final class ModeSwitchManager
   
   private final void d(boolean paramBoolean)
   {
-    int i;
-    switch (this.jdField_a_of_type_Int)
+    int i = this.jdField_a_of_type_Int;
+    if (i != 1)
     {
-    default: 
-      i = 2131692913;
-      str = HardCodeUtil.a(i);
-      if (!paramBoolean) {
-        break;
+      if (i != 2) {
+        i = 2131692873;
+      } else {
+        i = 2131692880;
       }
     }
-    for (String str = BaseApplicationImpl.getContext().getString(2131694227, new Object[] { str });; str = BaseApplicationImpl.getContext().getString(2131694229, new Object[] { str }))
-    {
-      Intrinsics.checkExpressionValueIsNotNull(str, "message");
-      a(paramBoolean, str);
-      return;
-      i = 2131692917;
-      break;
-      i = 2131692920;
-      break;
+    else {
+      i = 2131692877;
     }
+    String str = HardCodeUtil.a(i);
+    if (paramBoolean) {
+      str = BaseApplicationImpl.getContext().getString(2131694192, new Object[] { str });
+    } else {
+      str = BaseApplicationImpl.getContext().getString(2131694194, new Object[] { str });
+    }
+    Intrinsics.checkExpressionValueIsNotNull(str, "message");
+    a(paramBoolean, str);
   }
   
   private final void e(boolean paramBoolean)
   {
     if (!paramBoolean)
     {
-      String str = BaseApplicationImpl.getContext().getString(2131694228);
+      String str = BaseApplicationImpl.getContext().getString(2131694193);
       Intrinsics.checkExpressionValueIsNotNull(str, "BaseApplicationImpl.getC…mode_operation_open_fail)");
       a(false, str);
       return;
@@ -225,15 +244,24 @@ public final class ModeSwitchManager
   public final ModeSwitchManager.SwitchingStatus a(@NotNull Activity paramActivity, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "changeMode targetType: " + paramInt1 + ", bPref : " + paramInt2);
+    Object localObject1;
+    Object localObject2;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = this.jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("changeMode targetType: ");
+      ((StringBuilder)localObject2).append(paramInt1);
+      ((StringBuilder)localObject2).append(", bPref : ");
+      ((StringBuilder)localObject2).append(paramInt2);
+      QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
     int i = ModeConstantsKt.a();
     if ((!this.jdField_a_of_type_Boolean) && ((i != paramInt1) || (paramInt2 != this.c)))
     {
       if (!AppNetConnInfo.isNetSupport())
       {
-        QQToast.a((Context)BaseApplication.getContext(), 1, 2131694510, 0).a();
+        QQToast.a((Context)BaseApplication.getContext(), 1, 2131694475, 0).a();
         paramActivity = ((Iterable)this.jdField_a_of_type_JavaUtilList).iterator();
         while (paramActivity.hasNext()) {
           ((ModeSwitchManager.OnModeChangeResultCallback)paramActivity.next()).c(paramInt1, i);
@@ -242,16 +270,16 @@ public final class ModeSwitchManager
       }
       if (paramInt1 == 1)
       {
-        Object localObject = ThemeUtil.getUinThemePreferences((AppRuntime)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        if (((SharedPreferences)localObject).getBoolean("key_simple_should_show_switch_dialog", true))
+        localObject1 = ThemeUtil.getUinThemePreferences((AppRuntime)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        if (((SharedPreferences)localObject1).getBoolean("key_simple_should_show_switch_dialog", true))
         {
-          ((SharedPreferences)localObject).edit().putBoolean("key_simple_should_show_switch_dialog", false).apply();
-          localObject = (DialogInterface.OnClickListener)new ModeSwitchManager.changeMode.doSwitchLis.1(this, paramInt2, paramInt1, i, paramBoolean);
-          QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-          if (localQQCustomDialog != null) {
-            localQQCustomDialog.dismiss();
+          ((SharedPreferences)localObject1).edit().putBoolean("key_simple_should_show_switch_dialog", false).apply();
+          localObject1 = (DialogInterface.OnClickListener)new ModeSwitchManager.changeMode.doSwitchLis.1(this, paramInt2, paramInt1, i, paramBoolean);
+          localObject2 = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+          if (localObject2 != null) {
+            ((QQCustomDialog)localObject2).dismiss();
           }
-          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(paramActivity, BaseApplicationImpl.getContext().getString(2131719133), 0, 2131719131, (DialogInterface.OnClickListener)localObject, null);
+          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(paramActivity, BaseApplicationImpl.getContext().getString(2131718851), 0, 2131718849, (DialogInterface.OnClickListener)localObject1, null);
           paramActivity = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
           if (paramActivity == null) {
             Intrinsics.throwNpe();
@@ -263,14 +291,16 @@ public final class ModeSwitchManager
           }
           paramActivity.show();
         }
+        else
+        {
+          a(paramInt2, paramInt1, i, paramBoolean);
+        }
       }
-      for (;;)
+      else
       {
-        return new ModeSwitchManager.SwitchingStatus(true, paramInt1, i);
-        a(paramInt2, paramInt1, i, paramBoolean);
-        continue;
         a(paramInt2, paramInt1, i, paramBoolean);
       }
+      return new ModeSwitchManager.SwitchingStatus(true, paramInt1, i);
     }
     return new ModeSwitchManager.SwitchingStatus(this.jdField_a_of_type_Boolean, paramInt1, i);
   }
@@ -298,24 +328,35 @@ public final class ModeSwitchManager
   public final void a(@NotNull BaseActivity paramBaseActivity)
   {
     Intrinsics.checkParameterIsNotNull(paramBaseActivity, "activity");
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "showModeSwitchDialog studyModePullStatus : " + this.d + " , studentFlagPullStatus : " + this.e);
-    }
-    if (this.jdField_b_of_type_Boolean) {
-      if ((this.d != 0) && (this.e != 0)) {
-        break label202;
-      }
-    }
-    label202:
-    for (boolean bool = true;; bool = false)
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      this.jdField_b_of_type_Boolean = bool;
-      if ((this.d == 2) && (this.e == 1) && (StudyModeManager.c()) && (!((Boolean)SharedPreUtils.b((Context)paramBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "study_mode_has_change", Boolean.valueOf(false))).booleanValue()) && (!((Boolean)SharedPreUtils.b((Context)paramBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "study_mode_change_dialog_has_show", Boolean.valueOf(false))).booleanValue()))
-      {
-        new StudyModeSwitchDialog(paramBaseActivity).show();
-        SharedPreUtils.a((Context)BaseApplicationImpl.context, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true, "study_mode_change_dialog_has_show", Boolean.valueOf(true));
+      localObject = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("showModeSwitchDialog studyModePullStatus : ");
+      localStringBuilder.append(this.d);
+      localStringBuilder.append(" , studentFlagPullStatus : ");
+      localStringBuilder.append(this.e);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
+    }
+    if (this.jdField_b_of_type_Boolean)
+    {
+      boolean bool;
+      if ((this.d != 0) && (this.e != 0)) {
+        bool = false;
+      } else {
+        bool = true;
       }
-      return;
+      this.jdField_b_of_type_Boolean = bool;
+      if ((this.d == 2) && (this.e == 1) && (StudyModeManager.c()))
+      {
+        localObject = (Context)paramBaseActivity;
+        if ((!((Boolean)SharedPreUtils.b((Context)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "study_mode_has_change", Boolean.valueOf(false))).booleanValue()) && (!((Boolean)SharedPreUtils.b((Context)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "study_mode_change_dialog_has_show", Boolean.valueOf(false))).booleanValue()))
+        {
+          new StudyModeSwitchDialog(paramBaseActivity).show();
+          SharedPreUtils.a((Context)BaseApplicationImpl.context, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true, "study_mode_change_dialog_has_show", Boolean.valueOf(true));
+        }
+      }
     }
   }
   
@@ -333,8 +374,21 @@ public final class ModeSwitchManager
   
   public final void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "onSwitchUICallBack targetType : " + this.jdField_a_of_type_Int + ", isSuc : " + paramBoolean1 + " , bChangeTheme : " + paramBoolean2 + ", bSwitchElsePref : " + paramBoolean3 + " , statusCode : " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      String str = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onSwitchUICallBack targetType : ");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(", isSuc : ");
+      localStringBuilder.append(paramBoolean1);
+      localStringBuilder.append(" , bChangeTheme : ");
+      localStringBuilder.append(paramBoolean2);
+      localStringBuilder.append(", bSwitchElsePref : ");
+      localStringBuilder.append(paramBoolean3);
+      localStringBuilder.append(" , statusCode : ");
+      localStringBuilder.append(paramInt);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
     if (paramBoolean3)
     {
@@ -363,9 +417,15 @@ public final class ModeSwitchManager
   
   public final void b(boolean paramBoolean)
   {
+    boolean bool = QLog.isColorLevel();
     int i = 2;
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "onStudyModePullComplete isStudy : " + paramBoolean);
+    if (bool)
+    {
+      localObject = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onStudyModePullComplete isStudy : ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
     KidModeUtils.a("INIT", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     if (paramBoolean) {
@@ -374,18 +434,26 @@ public final class ModeSwitchManager
     this.d = i;
     b();
     StudyModeManager.b();
-    Manager localManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.ONLINE_STATUS_MANAGER);
-    if (localManager == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.onlinestatus.OnlineStatusManager");
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IOnlineStatusManagerService.class, "");
+    if (localObject != null)
+    {
+      ((IOnlineStatusDataManager)((IOnlineStatusManagerService)localObject).getManager(IOnlineStatusDataManager.class)).b(paramBoolean);
+      return;
     }
-    ((OnlineStatusManager)localManager).a(paramBoolean);
+    throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.onlinestatus.api.IOnlineStatusManagerService");
   }
   
   public final void c(boolean paramBoolean)
   {
+    boolean bool = QLog.isColorLevel();
     int i = 2;
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "onStudentFlagPullComplete isStudent : " + paramBoolean);
+    if (bool)
+    {
+      String str = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onStudentFlagPullComplete isStudent : ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
     if (paramBoolean) {
       i = 1;
@@ -412,7 +480,7 @@ public final class ModeSwitchManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.ModeSwitchManager
  * JD-Core Version:    0.7.0.1
  */

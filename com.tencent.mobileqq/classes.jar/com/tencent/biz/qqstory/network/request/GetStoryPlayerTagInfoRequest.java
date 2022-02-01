@@ -30,15 +30,12 @@ public class GetStoryPlayerTagInfoRequest
     try
     {
       localRspStoryPlayerTagInfo.mergeFrom(paramArrayOfByte);
-      return new GetStoryPlayerTagInfoResponse(localRspStoryPlayerTagInfo);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        SLog.e("Q.qqstory.net:GetStoryPlayerTagInfoRequest", paramArrayOfByte.toString());
-      }
+      SLog.e("Q.qqstory.net:GetStoryPlayerTagInfoRequest", paramArrayOfByte.toString());
     }
+    return new GetStoryPlayerTagInfoResponse(localRspStoryPlayerTagInfo);
   }
   
   public String a()
@@ -46,7 +43,7 @@ public class GetStoryPlayerTagInfoRequest
     return "StorySvc.get_video_tag_778";
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqStoryPlayerTagInfo localReqStoryPlayerTagInfo = new qqstory_service.ReqStoryPlayerTagInfo();
     Iterator localIterator = this.a.iterator();
@@ -56,13 +53,13 @@ public class GetStoryPlayerTagInfoRequest
       localReqStoryPlayerTagInfo.vid_list.add(ByteStringMicro.copyFromUtf8(str));
     }
     localReqStoryPlayerTagInfo.client.set(2);
-    localReqStoryPlayerTagInfo.version.set(ByteStringMicro.copyFromUtf8("8.5.5"));
+    localReqStoryPlayerTagInfo.version.set(ByteStringMicro.copyFromUtf8("8.7.0"));
     return localReqStoryPlayerTagInfo.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetStoryPlayerTagInfoRequest
  * JD-Core Version:    0.7.0.1
  */

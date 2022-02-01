@@ -20,14 +20,15 @@ public final class VideoReq
   
   public static VideoReq[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new VideoReq[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new VideoReq[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static VideoReq parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -48,16 +49,17 @@ public final class VideoReq
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
     int i = j;
     if (!this.lgeId.equals("")) {
       i = j + CodedOutputByteBufferNano.computeStringSize(1, this.lgeId);
     }
+    int k = this.level;
     j = i;
-    if (this.level != 0) {
-      j = i + CodedOutputByteBufferNano.computeUInt32Size(2, this.level);
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeUInt32Size(2, k);
     }
     return j;
   }
@@ -67,20 +69,26 @@ public final class VideoReq
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 10: 
-        this.lgeId = paramCodedInputByteBufferNano.readString();
+      if (i == 0) {
         break;
       }
-      this.level = paramCodedInputByteBufferNano.readUInt32();
+      if (i != 10)
+      {
+        if (i != 16)
+        {
+          if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+            return this;
+          }
+        }
+        else {
+          this.level = paramCodedInputByteBufferNano.readUInt32();
+        }
+      }
+      else {
+        this.lgeId = paramCodedInputByteBufferNano.readString();
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
@@ -88,15 +96,16 @@ public final class VideoReq
     if (!this.lgeId.equals("")) {
       paramCodedOutputByteBufferNano.writeString(1, this.lgeId);
     }
-    if (this.level != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(2, this.level);
+    int i = this.level;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(2, i);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.iliveLuxuryGiftVideoSvr.nano.VideoReq
  * JD-Core Version:    0.7.0.1
  */

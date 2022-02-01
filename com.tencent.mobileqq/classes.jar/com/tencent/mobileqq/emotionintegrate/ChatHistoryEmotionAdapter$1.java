@@ -13,25 +13,27 @@ class ChatHistoryEmotionAdapter$1
   
   public void onClick(View paramView)
   {
-    if (ChatHistoryEmotionAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter).a(this.jdField_a_of_type_JavaLangString) == null)
+    if (ChatHistoryEmotionAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter).a(this.jdField_a_of_type_JavaLangString) != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    boolean bool = ChatHistoryEmotionAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter.jdField_a_of_type_JavaUtilList);
-    String str2 = ChatHistoryEmotionAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter) + "";
-    if (bool) {}
-    for (String str1 = "1";; str1 = "2")
-    {
-      ReportController.b(null, "dc00898", "", "", "0X800AC87", "0X800AC87", 2, 0, str2, str1, "", "");
+      boolean bool = ChatHistoryEmotionAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter.jdField_a_of_type_JavaUtilList);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(ChatHistoryEmotionAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter));
+      ((StringBuilder)localObject).append("");
+      String str = ((StringBuilder)localObject).toString();
+      if (bool) {
+        localObject = "1";
+      } else {
+        localObject = "2";
+      }
+      ReportController.b(null, "dc00898", "", "", "0X800AC87", "0X800AC87", 2, 0, str, (String)localObject, "", "");
       this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter.notifyDataSetChanged();
-      break;
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.ChatHistoryEmotionAdapter.1
  * JD-Core Version:    0.7.0.1
  */

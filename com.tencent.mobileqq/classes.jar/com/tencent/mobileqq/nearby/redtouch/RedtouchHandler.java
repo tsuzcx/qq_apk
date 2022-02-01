@@ -44,14 +44,22 @@ public class RedtouchHandler
     }
     paramToServiceMsg = new cmd0x6f5.RspBody();
     int i = parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg);
-    if (QLog.isColorLevel()) {
-      QLog.i("RedtouchHandler", 2, "handleGetRedPointConfigs, errCode=" + i);
+    if (QLog.isColorLevel())
+    {
+      paramFromServiceMsg = new StringBuilder();
+      paramFromServiceMsg.append("handleGetRedPointConfigs, errCode=");
+      paramFromServiceMsg.append(i);
+      QLog.i("RedtouchHandler", 2, paramFromServiceMsg.toString());
     }
     if ((i == 0) && (paramToServiceMsg.str_config_version.has()))
     {
       paramFromServiceMsg = paramToServiceMsg.str_config_version.get();
-      if (QLog.isColorLevel()) {
-        QLog.i("RedtouchHandler", 2, "handleGetRedPointConfigs, server configVersion=" + paramFromServiceMsg);
+      if (QLog.isColorLevel())
+      {
+        paramObject = new StringBuilder();
+        paramObject.append("handleGetRedPointConfigs, server configVersion=");
+        paramObject.append(paramFromServiceMsg);
+        QLog.i("RedtouchHandler", 2, paramObject.toString());
       }
       if (!TextUtils.isEmpty(paramFromServiceMsg))
       {
@@ -68,90 +76,90 @@ public class RedtouchHandler
   
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    RedTouchItem localRedTouchItem = null;
-    Object localObject = null;
-    boolean bool3 = false;
-    boolean bool2 = false;
     if (QLog.isColorLevel()) {
       QLog.i("RedtouchHandler", 2, "handlePullRedTouch");
     }
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {
-      return;
-    }
-    boolean bool4 = paramToServiceMsg.extraData.getBoolean("is_single_task", false);
-    if (bool4) {}
-    label164:
-    label345:
-    for (int i = paramToServiceMsg.extraData.getInt("task_id");; i = 0)
+    if (paramToServiceMsg != null)
     {
+      if (paramFromServiceMsg == null) {
+        return;
+      }
+      Object localObject = paramToServiceMsg.extraData;
+      boolean bool2 = false;
+      boolean bool3 = ((Bundle)localObject).getBoolean("is_single_task", false);
+      int i;
+      if (bool3) {
+        i = paramToServiceMsg.extraData.getInt("task_id");
+      } else {
+        i = 0;
+      }
       cmd0x6cd.RspBody localRspBody = new cmd0x6cd.RspBody();
       int j = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
-      paramObject = (LocalRedTouchManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
-      if (paramObject == null) {
-        break;
+      LocalRedTouchManager localLocalRedTouchManager = (LocalRedTouchManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
+      if (localLocalRedTouchManager == null) {
+        return;
       }
+      paramObject = null;
+      boolean bool1;
       if (j == 0)
       {
         if (QLog.isColorLevel()) {
           QLog.i("RedtouchHandler", 2, "handlePullRedTouch success.");
         }
-        if (localRspBody.rpt_msg_redpoint.has())
+        if (localRspBody.rpt_msg_redpoint.has()) {
+          paramFromServiceMsg = localRspBody.rpt_msg_redpoint.get();
+        } else {
+          paramFromServiceMsg = null;
+        }
+        if (paramFromServiceMsg != null)
         {
-          paramToServiceMsg = localRspBody.rpt_msg_redpoint.get();
-          if (paramToServiceMsg == null) {
-            break label345;
-          }
-          paramFromServiceMsg = new ArrayList(paramToServiceMsg.size());
+          localObject = new ArrayList(paramFromServiceMsg.size());
           j = 0;
-          if (j >= paramToServiceMsg.size()) {
-            break label232;
-          }
-          localRedTouchItem = RedTouchItem.getRedTouchItem((cmd0x6cd.RedpointInfo)paramToServiceMsg.get(j));
-          if ((!bool4) || (localRedTouchItem.taskId == i)) {
-            break label220;
+          for (;;)
+          {
+            paramToServiceMsg = (ToServiceMsg)localObject;
+            if (j >= paramFromServiceMsg.size()) {
+              break;
+            }
+            paramToServiceMsg = RedTouchItem.getRedTouchItem((cmd0x6cd.RedpointInfo)paramFromServiceMsg.get(j));
+            if ((!bool3) || (paramToServiceMsg.taskId == i)) {
+              ((List)localObject).add(paramToServiceMsg);
+            }
+            j += 1;
           }
         }
-        for (;;)
-        {
-          j += 1;
-          break label164;
-          paramToServiceMsg = null;
-          break;
-          label220:
-          paramFromServiceMsg.add(localRedTouchItem);
-        }
-      }
-      label232:
-      for (paramToServiceMsg = paramFromServiceMsg;; paramToServiceMsg = null)
-      {
-        paramFromServiceMsg = localObject;
+        paramToServiceMsg = null;
+        paramFromServiceMsg = paramObject;
         if (localRspBody.rpt_unfinished_redpoint.has()) {
           paramFromServiceMsg = localRspBody.rpt_unfinished_redpoint.get();
         }
-        boolean bool1 = bool2;
+        paramObject = paramToServiceMsg;
+        bool1 = bool2;
         if (paramFromServiceMsg != null)
         {
+          paramObject = paramToServiceMsg;
           bool1 = bool2;
           if (paramFromServiceMsg.size() > 0)
           {
+            a(paramFromServiceMsg, bool3);
             bool1 = true;
-            a(paramFromServiceMsg, bool4);
-          }
-        }
-        for (;;)
-        {
-          paramObject.a(paramToServiceMsg, bool1);
-          return;
-          bool1 = bool3;
-          paramToServiceMsg = localRedTouchItem;
-          if (QLog.isColorLevel())
-          {
-            QLog.i("RedtouchHandler", 2, "handlePullRedTouch failed:" + j);
-            bool1 = bool3;
-            paramToServiceMsg = localRedTouchItem;
+            paramObject = paramToServiceMsg;
           }
         }
       }
+      else
+      {
+        if (QLog.isColorLevel())
+        {
+          paramToServiceMsg = new StringBuilder();
+          paramToServiceMsg.append("handlePullRedTouch failed:");
+          paramToServiceMsg.append(j);
+          QLog.i("RedtouchHandler", 2, paramToServiceMsg.toString());
+        }
+        paramObject = null;
+        bool1 = bool2;
+      }
+      localLocalRedTouchManager.a(paramObject, bool1);
     }
   }
   
@@ -160,39 +168,51 @@ public class RedtouchHandler
     if (QLog.isColorLevel()) {
       QLog.i("RedtouchHandler", 2, "handleReportTouchClick");
     }
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {}
-    int i;
-    do
+    if (paramToServiceMsg != null)
     {
-      do
-      {
+      if (paramFromServiceMsg == null) {
         return;
-        i = paramToServiceMsg.extraData.getInt("redPointId", 0);
-        if (parseOIDBPkg(paramFromServiceMsg, paramObject, new cmd0x6ce.RspBody()) != 0) {
-          break;
+      }
+      int i = paramToServiceMsg.extraData.getInt("redPointId", 0);
+      if (parseOIDBPkg(paramFromServiceMsg, paramObject, new cmd0x6ce.RspBody()) == 0)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramToServiceMsg = new StringBuilder();
+          paramToServiceMsg.append("handleReportTouchClick success. taskId:");
+          paramToServiceMsg.append(i);
+          QLog.i("RedtouchHandler", 2, paramToServiceMsg.toString());
         }
-      } while (!QLog.isColorLevel());
-      QLog.i("RedtouchHandler", 2, "handleReportTouchClick success. taskId:" + i);
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.i("RedtouchHandler", 2, "handleReportTouchClick faild. taskId:" + i);
+      }
+      else if (QLog.isColorLevel())
+      {
+        paramToServiceMsg = new StringBuilder();
+        paramToServiceMsg.append("handleReportTouchClick faild. taskId:");
+        paramToServiceMsg.append(i);
+        QLog.i("RedtouchHandler", 2, paramToServiceMsg.toString());
+      }
+    }
   }
   
   public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("RedtouchHandler", 2, "getRedPointConfigs(), client version : 8.5.5");
+      QLog.i("RedtouchHandler", 2, "getRedPointConfigs(), client version : 8.7.0");
     }
     cmd0x6f5.ReqBody localReqBody = new cmd0x6f5.ReqBody();
     localReqBody.uint32_qq_platform.set(1);
-    localReqBody.str_qq_version.set("8.5.5");
+    localReqBody.str_qq_version.set("8.7.0");
     sendPbReq(makeOIDBPkg("OidbSvc.cmd0x6f5", 1781, 0, localReqBody.toByteArray()));
   }
   
   public void a(List<cmd0x6ce.ReadRedpointReq> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("RedtouchHandler", 2, "reportRedTouchClick, redPointId=" + ((cmd0x6ce.ReadRedpointReq)paramList.get(0)).uint32_appid.get());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reportRedTouchClick, redPointId=");
+      ((StringBuilder)localObject).append(((cmd0x6ce.ReadRedpointReq)paramList.get(0)).uint32_appid.get());
+      QLog.i("RedtouchHandler", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = new cmd0x6ce.ReqBody();
     ((cmd0x6ce.ReqBody)localObject).rpt_msg_read_req.set(paramList);
@@ -203,29 +223,32 @@ public class RedtouchHandler
   
   public void a(List<cmd0x6cd.PullRedpointReq> paramList, boolean paramBoolean)
   {
-    StringBuilder localStringBuilder;
+    Object localObject;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("pullRedTouch, list size=");
-      if (paramList != null) {
-        break label68;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("pullRedTouch, list size=");
+      if (paramList == null) {
+        localObject = "";
+      } else {
+        localObject = Integer.valueOf(paramList.size());
       }
+      localStringBuilder.append(localObject);
+      localStringBuilder.append(", isSingleTask=");
+      localStringBuilder.append(paramBoolean);
+      QLog.i("RedtouchHandler", 2, localStringBuilder.toString());
     }
-    label68:
-    for (Object localObject = "";; localObject = Integer.valueOf(paramList.size()))
+    if (paramList != null)
     {
-      QLog.i("RedtouchHandler", 2, localObject + ", isSingleTask=" + paramBoolean);
-      if ((paramList != null) && (paramList.size() != 0)) {
-        break;
+      if (paramList.size() == 0) {
+        return;
       }
-      return;
-    }
-    localObject = new cmd0x6cd.ReqBody();
-    if (paramBoolean) {
-      ((cmd0x6cd.ReqBody)localObject).msg_pull_single_task.set((MessageMicro)paramList.get(0));
-    }
-    for (;;)
-    {
+      localObject = new cmd0x6cd.ReqBody();
+      if (paramBoolean) {
+        ((cmd0x6cd.ReqBody)localObject).msg_pull_single_task.set((MessageMicro)paramList.get(0));
+      } else {
+        ((cmd0x6cd.ReqBody)localObject).rpt_last_pull_redpoint.set(paramList);
+      }
       ((cmd0x6cd.ReqBody)localObject).uint32_ret_msg_rec.set(1);
       localObject = makeOIDBPkg("OidbSvc.cmd0x6cd", 1741, 0, ((cmd0x6cd.ReqBody)localObject).toByteArray());
       ((ToServiceMsg)localObject).extraData.putBoolean("is_single_task", paramBoolean);
@@ -233,8 +256,6 @@ public class RedtouchHandler
         ((ToServiceMsg)localObject).extraData.putInt("task_id", ((cmd0x6cd.PullRedpointReq)paramList.get(0)).uint32_taskid.get());
       }
       super.sendPbReq((ToServiceMsg)localObject);
-      return;
-      ((cmd0x6cd.ReqBody)localObject).rpt_last_pull_redpoint.set(paramList);
     }
   }
   
@@ -250,7 +271,7 @@ public class RedtouchHandler
     return this.allowCmdSet;
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return null;
   }
@@ -258,24 +279,24 @@ public class RedtouchHandler
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     String str = paramFromServiceMsg.getServiceCmd();
-    if ("OidbSvc.cmd0x6cd".equals(str)) {
-      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
-    }
-    do
+    if ("OidbSvc.cmd0x6cd".equals(str))
     {
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
       return;
-      if ("OidbSvc.cmd0x6ce".equals(str))
-      {
-        c(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-    } while (!"OidbSvc.cmd0x6f5".equals(str));
-    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
+    if ("OidbSvc.cmd0x6ce".equals(str))
+    {
+      c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if ("OidbSvc.cmd0x6f5".equals(str)) {
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.redtouch.RedtouchHandler
  * JD-Core Version:    0.7.0.1
  */

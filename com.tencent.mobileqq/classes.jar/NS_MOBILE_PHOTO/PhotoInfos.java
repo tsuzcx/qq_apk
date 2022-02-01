@@ -4,19 +4,19 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class PhotoInfos
   extends JceStruct
 {
-  static ArrayList<Float> cache_feature;
-  static int cache_mode = 0;
+  static ArrayList<Float> cache_feature = new ArrayList();
+  static int cache_mode;
   public ArrayList<Float> feature = null;
   public String img = "";
   public int mode = 0;
   
   static
   {
-    cache_feature = new ArrayList();
     cache_feature.add(Float.valueOf(0.0F));
   }
   
@@ -39,17 +39,19 @@ public final class PhotoInfos
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.mode, 0);
-    if (this.feature != null) {
-      paramJceOutputStream.write(this.feature, 1);
+    Object localObject = this.feature;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.img != null) {
-      paramJceOutputStream.write(this.img, 2);
+    localObject = this.img;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.PhotoInfos
  * JD-Core Version:    0.7.0.1
  */

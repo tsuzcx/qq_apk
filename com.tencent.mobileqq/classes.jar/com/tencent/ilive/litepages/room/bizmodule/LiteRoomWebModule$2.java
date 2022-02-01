@@ -11,12 +11,18 @@ class LiteRoomWebModule$2
   
   public void onChanged(@Nullable Long paramLong)
   {
-    this.this$0.getLog().i("CustomWebModule", "this=" + this.this$0.hashCode() + ";time position = " + paramLong, new Object[0]);
+    LogInterface localLogInterface = this.this$0.getLog();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("this=");
+    localStringBuilder.append(this.this$0.hashCode());
+    localStringBuilder.append(";time position = ");
+    localStringBuilder.append(paramLong);
+    localLogInterface.i("CustomWebModule", localStringBuilder.toString(), new Object[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.litepages.room.bizmodule.LiteRoomWebModule.2
  * JD-Core Version:    0.7.0.1
  */

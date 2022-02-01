@@ -20,7 +20,10 @@ public class PTSThreadUtil
         if (sSubThreadHandler == null)
         {
           sSubThreadHandler = new Handler(paramHandlerThread.getLooper());
-          PTSLog.i("PTSThreadUtil", "[registerSubHandlerThread], thread name = " + paramHandlerThread.getName());
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[registerSubHandlerThread], thread name = ");
+          localStringBuilder.append(paramHandlerThread.getName());
+          PTSLog.i("PTSThreadUtil", localStringBuilder.toString());
         }
         return;
       }
@@ -30,11 +33,10 @@ public class PTSThreadUtil
   
   public static void runOnSubThread(Runnable paramRunnable)
   {
-    if (paramRunnable == null) {}
-    for (;;)
-    {
+    if (paramRunnable == null) {
       return;
-      if (sSubThreadHandler == null) {}
+    }
+    if (sSubThreadHandler == null) {
       try
       {
         if (sSubThreadHandler == null)
@@ -43,14 +45,16 @@ public class PTSThreadUtil
           localHandlerThread.start();
           sSubThreadHandler = new Handler(localHandlerThread.getLooper());
         }
-        sSubThreadHandler.post(paramRunnable);
-        if ((!PTSLog.isDebug()) && (!PTSLog.isColorLevel())) {
-          continue;
-        }
-        PTSLog.i("PTSThreadUtil", "[runOnSubThread], callStack = " + Log.getStackTraceString(new Throwable()));
-        return;
       }
       finally {}
+    }
+    sSubThreadHandler.post(paramRunnable);
+    if ((PTSLog.isDebug()) || (PTSLog.isColorLevel()))
+    {
+      paramRunnable = new StringBuilder();
+      paramRunnable.append("[runOnSubThread], callStack = ");
+      paramRunnable.append(Log.getStackTraceString(new Throwable()));
+      PTSLog.i("PTSThreadUtil", paramRunnable.toString());
     }
   }
   
@@ -69,7 +73,7 @@ public class PTSThreadUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.core.PTSThreadUtil
  * JD-Core Version:    0.7.0.1
  */

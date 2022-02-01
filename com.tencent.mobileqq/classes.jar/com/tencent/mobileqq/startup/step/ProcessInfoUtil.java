@@ -38,46 +38,43 @@ public class ProcessInfoUtil
   
   public static int a(String paramString)
   {
-    int i = -1;
     SharedPreferences localSharedPreferences = b();
-    if (localSharedPreferences != null) {
-      i = localSharedPreferences.getInt("pid" + paramString, -1);
+    if (localSharedPreferences != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("pid");
+      localStringBuilder.append(paramString);
+      return localSharedPreferences.getInt(localStringBuilder.toString(), -1);
     }
-    return i;
+    return -1;
   }
   
   public static long a(String paramString)
   {
-    long l2 = 0L;
     int i = a(BaseApplicationImpl.getContext(), paramString);
-    long l1;
     if (i == -1) {
-      l1 = l2;
+      return 0L;
     }
-    do
+    int j = a(paramString);
+    if ((j != -1) && (i == j))
     {
-      long l3;
-      do
+      long l = b(paramString);
+      if (l != -1L)
       {
-        int j;
-        do
+        l = System.currentTimeMillis() - l;
+        if (QLog.isColorLevel())
         {
-          do
-          {
-            return l1;
-            j = a(paramString);
-            l1 = l2;
-          } while (j == -1);
-          l1 = l2;
-        } while (i != j);
-        l3 = b(paramString);
-        l1 = l2;
-      } while (l3 == -1L);
-      l2 = System.currentTimeMillis() - l3;
-      l1 = l2;
-    } while (!QLog.isColorLevel());
-    QLog.d("ProcessUtils", 2, "getProcessRunningTime - " + paramString + ":" + l2);
-    return l2;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getProcessRunningTime - ");
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(":");
+          localStringBuilder.append(l);
+          QLog.d("ProcessUtils", 2, localStringBuilder.toString());
+        }
+        return l;
+      }
+    }
+    return 0L;
   }
   
   public static void a(String paramString)
@@ -87,12 +84,15 @@ public class ProcessInfoUtil
   
   public static long b(String paramString)
   {
-    long l = -1L;
     SharedPreferences localSharedPreferences = b();
-    if (localSharedPreferences != null) {
-      l = localSharedPreferences.getLong("start_time" + paramString, -1L);
+    if (localSharedPreferences != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("start_time");
+      localStringBuilder.append(paramString);
+      return localSharedPreferences.getLong(localStringBuilder.toString(), -1L);
     }
-    return l;
+    return -1L;
   }
   
   private static SharedPreferences b()
@@ -106,7 +106,7 @@ public class ProcessInfoUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.ProcessInfoUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -24,13 +24,14 @@ final class Streams$AppendableWriter
   
   public void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
   {
-    this.currentWrite.chars = paramArrayOfChar;
-    this.appendable.append(this.currentWrite, paramInt1, paramInt1 + paramInt2);
+    Streams.AppendableWriter.CurrentWrite localCurrentWrite = this.currentWrite;
+    localCurrentWrite.chars = paramArrayOfChar;
+    this.appendable.append(localCurrentWrite, paramInt1, paramInt2 + paramInt1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.internal.Streams.AppendableWriter
  * JD-Core Version:    0.7.0.1
  */

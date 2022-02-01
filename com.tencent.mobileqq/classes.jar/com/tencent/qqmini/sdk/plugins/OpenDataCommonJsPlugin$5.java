@@ -13,7 +13,14 @@ class OpenDataCommonJsPlugin$5
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QMLog.i("OpenDataCommonJsPlugin", "removeUserCloudStorage callback appid:" + OpenDataCommonJsPlugin.access$400(this.this$0).appId + ", isSuc" + paramBoolean + ", ret:" + String.valueOf(paramJSONObject));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("removeUserCloudStorage callback appid:");
+    localStringBuilder.append(OpenDataCommonJsPlugin.access$400(this.this$0).appId);
+    localStringBuilder.append(", isSuc");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(", ret:");
+    localStringBuilder.append(String.valueOf(paramJSONObject));
+    QMLog.i("OpenDataCommonJsPlugin", localStringBuilder.toString());
     paramJSONObject = new JSONObject();
     if (paramBoolean) {}
     try
@@ -24,7 +31,10 @@ class OpenDataCommonJsPlugin$5
     }
     catch (Throwable paramJSONObject)
     {
-      QMLog.e("OpenDataCommonJsPlugin", "removeUserCloudStorage error " + paramJSONObject.getMessage());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("removeUserCloudStorage error ");
+      localStringBuilder.append(paramJSONObject.getMessage());
+      QMLog.e("OpenDataCommonJsPlugin", localStringBuilder.toString());
       this.val$req.fail();
     }
     paramJSONObject.put("state", "fail");
@@ -34,7 +44,7 @@ class OpenDataCommonJsPlugin$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.OpenDataCommonJsPlugin.5
  * JD-Core Version:    0.7.0.1
  */

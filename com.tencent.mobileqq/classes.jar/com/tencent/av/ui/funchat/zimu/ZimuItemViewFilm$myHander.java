@@ -20,19 +20,19 @@ class ZimuItemViewFilm$myHander
   public void handleMessage(Message paramMessage)
   {
     ZimuItemViewFilm localZimuItemViewFilm = (ZimuItemViewFilm)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localZimuItemViewFilm != null) {}
-    switch (paramMessage.what)
+    if (localZimuItemViewFilm != null)
     {
-    default: 
-      return;
+      if (paramMessage.what != 0) {
+        return;
+      }
+      ZimuItemViewFilm.a(localZimuItemViewFilm);
+      AVLog.printColorLog(this.jdField_a_of_type_JavaLangString, "ITEM_DISPEAR");
     }
-    ZimuItemViewFilm.a(localZimuItemViewFilm);
-    AVLog.printColorLog(this.jdField_a_of_type_JavaLangString, "ITEM_DISPEAR");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.funchat.zimu.ZimuItemViewFilm.myHander
  * JD-Core Version:    0.7.0.1
  */

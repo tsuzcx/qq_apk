@@ -23,9 +23,9 @@ public final class Version$ECBlocks
   
   public int b()
   {
-    int i = 0;
     Version.ECB[] arrayOfECB = this.jdField_a_of_type_ArrayOfComGoogleZxingQrcodeDecoderVersion$ECB;
     int k = arrayOfECB.length;
+    int i = 0;
     int j = 0;
     while (i < k)
     {

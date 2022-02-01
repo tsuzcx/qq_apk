@@ -25,7 +25,7 @@ public class GdtAppPreOrderDecoder
 {
   private void a(msg_comm.Msg paramMsg, MessageHandler paramMessageHandler)
   {
-    MessageProtoCodec.a(paramMessageHandler, paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get());
+    MessageProtoCodec.a(paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get(), paramMessageHandler.a());
   }
   
   public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, DecodeProtoPkgContext paramDecodeProtoPkgContext, MessageHandler paramMessageHandler)
@@ -36,34 +36,34 @@ public class GdtAppPreOrderDecoder
     {
       paramList.mergeFrom(paramMsgType0x210.msg_content.get().toByteArray());
       paramMsgType0x210 = paramList.str_msg_id.get();
-      GdtLog.a("GdtAppPreOrderDecoder", "msg_id:" + paramMsgType0x210);
+      paramList = new StringBuilder();
+      paramList.append("msg_id:");
+      paramList.append(paramMsgType0x210);
+      GdtLog.a("GdtAppPreOrderDecoder", paramList.toString());
       if (TextUtils.isEmpty(paramMsgType0x210)) {
         return;
       }
       long l = paramMsg.msg_head.to_uin.get();
-      GdtLog.a("GdtAppPreOrderDecoder", "lToUin:" + l);
+      paramList = new StringBuilder();
+      paramList.append("lToUin:");
+      paramList.append(l);
+      GdtLog.a("GdtAppPreOrderDecoder", paramList.toString());
       AdAppPreOrderManager.INSTANCE.processPublishMessage(paramMsgType0x210, String.valueOf(l), System.currentTimeMillis());
-    }
-    catch (InvalidProtocolBufferMicroException paramMsgType0x210)
-    {
-      for (;;)
-      {
-        paramMsgType0x210.printStackTrace();
-      }
     }
     catch (Exception paramMsgType0x210)
     {
-      for (;;)
-      {
-        paramMsgType0x210.printStackTrace();
-      }
+      paramMsgType0x210.printStackTrace();
+    }
+    catch (InvalidProtocolBufferMicroException paramMsgType0x210)
+    {
+      paramMsgType0x210.printStackTrace();
     }
     a(paramMsg, paramMessageHandler);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.qqproxy.GdtAppPreOrderDecoder
  * JD-Core Version:    0.7.0.1
  */

@@ -27,16 +27,18 @@ public class Const
   
   public static String a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return "";
-    case 1: 
-      return "PRE_GRAB";
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3) {
+          return "";
+        }
+        return "MINI_GAME";
+      }
       return "ON_GRAB";
     }
-    return "MINI_GAME";
+    return "PRE_GRAB";
   }
   
   public static boolean a(TimeInfo paramTimeInfo)
@@ -46,41 +48,33 @@ public class Const
   
   public static boolean a(TimeInfo paramTimeInfo, long paramLong)
   {
-    boolean bool = true;
-    if (paramTimeInfo == null) {
+    if (paramTimeInfo == null)
+    {
       QLog.w("shua2021_", 1, "isInTime --> timeInfo is null");
-    }
-    while (!a(paramTimeInfo)) {
       return false;
     }
-    if ((paramTimeInfo.begin <= paramLong) && (paramLong <= paramTimeInfo.end)) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
+    if (!a(paramTimeInfo)) {
+      return false;
     }
+    return (paramTimeInfo.begin <= paramLong) && (paramLong <= paramTimeInfo.end);
   }
   
   public static boolean b(TimeInfo paramTimeInfo, long paramLong)
   {
-    boolean bool = true;
-    if (paramTimeInfo == null) {
+    if (paramTimeInfo == null)
+    {
       QLog.w("shua2021_", 1, "isInTimeButNotEnd --> timeInfo is null");
-    }
-    while (!a(paramTimeInfo)) {
       return false;
     }
-    if ((paramTimeInfo.begin <= paramLong) && (paramLong < paramTimeInfo.end)) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
+    if (!a(paramTimeInfo)) {
+      return false;
     }
+    return (paramTimeInfo.begin <= paramLong) && (paramLong < paramTimeInfo.end);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.Const
  * JD-Core Version:    0.7.0.1
  */

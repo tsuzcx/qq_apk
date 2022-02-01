@@ -17,68 +17,79 @@ class ActivityChatItemBuilder$1
   {
     paramString = paramString.toCharArray();
     int i = 0;
-    if (i < paramString.length)
+    while (i < paramString.length)
     {
       if (paramString[i] == '　') {
         paramString[i] = 32;
+      } else if ((paramString[i] > 65280) && (paramString[i] < 65375)) {
+        paramString[i] = ((char)(paramString[i] - 65248));
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if ((paramString[i] > 65280) && (paramString[i] < 65375)) {
-          paramString[i] = ((char)(paramString[i] - 65248));
-        }
-      }
+      i += 1;
     }
     return new String(paramString);
   }
   
   public boolean onPreDraw()
   {
-    int j = 0;
-    int k = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth() * 2;
+    int i = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth();
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
     TextPaint localTextPaint = this.jdField_a_of_type_AndroidWidgetTextView.getPaint();
-    String str2 = a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemActivityChatItemBuilder.a.getString(2131697198) + ">");
-    String str3 = a(this.jdField_a_of_type_JavaLangString);
-    String str1 = "  " + str2;
-    Object localObject = str3 + str1;
-    if (localTextPaint.measureText((String)localObject + "      ") < k) {}
-    label329:
-    for (;;)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemActivityChatItemBuilder.a.getString(2131697217));
+    ((StringBuilder)localObject).append(">");
+    String str1 = a(((StringBuilder)localObject).toString());
+    String str2 = a(this.jdField_a_of_type_JavaLangString);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("  ");
+    ((StringBuilder)localObject).append(str1);
+    String str3 = ((StringBuilder)localObject).toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(str2);
+    ((StringBuilder)localObject).append(str3);
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("      ");
+    float f1 = localTextPaint.measureText(localStringBuilder.toString());
+    float f2 = i * 2;
+    int j = 0;
+    if (f1 >= f2)
     {
-      k = ((String)localObject).length();
-      int i = j;
-      if (k > str2.length()) {
-        i = k - str2.length();
-      }
-      localObject = new SpannableString((CharSequence)localObject);
-      ((SpannableString)localObject).setSpan(new ForegroundColorSpan(-12541697), i, k, 33);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      return true;
-      String str4 = "..." + str1;
-      int m = str3.length();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("...");
+      localStringBuilder.append(str3);
+      str3 = localStringBuilder.toString();
+      k = str2.length();
       i = 0;
-      for (;;)
+      while (i < k)
       {
-        if (i >= m) {
-          break label329;
-        }
-        str1 = str3.substring(0, m - i) + str4;
-        localObject = str1;
-        if (localTextPaint.measureText(str1 + "      ") < k) {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(str2.substring(0, k - i));
+        ((StringBuilder)localObject).append(str3);
+        localObject = ((StringBuilder)localObject).toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("      ");
+        if (localTextPaint.measureText(localStringBuilder.toString()) < f2) {
           break;
         }
         i += 1;
-        localObject = str1;
       }
     }
+    int k = ((String)localObject).length();
+    i = j;
+    if (k > str1.length()) {
+      i = k - str1.length();
+    }
+    localObject = new SpannableString((CharSequence)localObject);
+    ((SpannableString)localObject).setSpan(new ForegroundColorSpan(-12541697), i, k, 33);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ActivityChatItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

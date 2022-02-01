@@ -2,17 +2,15 @@ package com.tencent.mobileqq.transfile.chatpic;
 
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.CustomError;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.FlashPicHelper;
-import com.tencent.mobileqq.app.HotChatHelper;
 import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.pic.PicResult;
 import com.tencent.mobileqq.transfile.TransferRequest;
 import com.tencent.mobileqq.transfile.TransferResult;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.utils.CommonImageCacheHelper;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,9 +31,9 @@ public class PicDownloadExplicitError
   
   static
   {
-    M_MAP.put(Integer.valueOf(1), new PicDownloadExplicitError.ExplicitError(2130838182, 2131690005));
-    M_MAP.put(Integer.valueOf(2), new PicDownloadExplicitError.ExplicitError(-1, 2131690006));
-    M_MAP.put(Integer.valueOf(3), new PicDownloadExplicitError.ExplicitError(-1, 2131690007));
+    M_MAP.put(Integer.valueOf(1), new PicDownloadExplicitError.ExplicitError(2130838023, 2131689920));
+    M_MAP.put(Integer.valueOf(2), new PicDownloadExplicitError.ExplicitError(-1, 2131689921));
+    M_MAP.put(Integer.valueOf(3), new PicDownloadExplicitError.ExplicitError(-1, 2131689922));
   }
   
   private PicDownloadExplicitError(int paramInt)
@@ -51,71 +49,67 @@ public class PicDownloadExplicitError
   private static PicDownloadExplicitError getError(TransferResult paramTransferResult)
   {
     Object localObject = paramTransferResult.mOrigReq;
-    long l;
-    String str;
     if (localObject != null)
     {
-      l = paramTransferResult.mErrCode;
-      str = paramTransferResult.mErrDesc;
+      long l = paramTransferResult.mErrCode;
+      String str = paramTransferResult.mErrDesc;
       int i = ((TransferRequest)localObject).mUinType;
       localObject = ((TransferRequest)localObject).mRec;
-      if ((localObject instanceof MessageForPic))
+      if (((localObject instanceof MessageForPic)) && (FlashPicHelper.a((MessageForPic)localObject))) {
+        return null;
+      }
+      if (QLog.isColorLevel())
       {
-        localObject = (MessageForPic)localObject;
-        if ((HotChatHelper.a((MessageRecord)localObject)) || (FlashPicHelper.a((MessageRecord)localObject))) {
-          return null;
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getError,errCode:");
+        ((StringBuilder)localObject).append(l);
+        ((StringBuilder)localObject).append(" errDesc:");
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append(" uinType:");
+        ((StringBuilder)localObject).append(i);
+        QLog.d("PicDownloadExplicitError", 2, ((StringBuilder)localObject).toString());
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("PicDownloadExplicitError", 2, "getError,errCode:" + l + " errDesc:" + str + " uinType:" + i);
-      }
-      if ((i == 1) || (i == 3000)) {
+      if ((i != 1) && (i != 3000))
+      {
         if (l == -9527L)
         {
-          if ((!"H_404_-6101".equals(str)) && (!"T_203".equals(str)) && (!"T_206".equals(str))) {
-            break label311;
+          if (!"T_208".equals(str)) {
+            break label312;
           }
           paramTransferResult = new PicDownloadExplicitError(1);
         }
-      }
-    }
-    for (;;)
-    {
-      return paramTransferResult;
-      if (paramTransferResult.mErrCode == 9302L)
-      {
-        paramTransferResult = new PicDownloadExplicitError(2);
+        else
+        {
+          if (paramTransferResult.mErrCode == 9302L) {
+            return new PicDownloadExplicitError(2);
+          }
+          if ((l != 9039L) && (l != 9040L)) {
+            break label312;
+          }
+          return new PicDownloadExplicitError(3);
+        }
       }
       else
       {
-        if ((l == 9039L) || (l == 9040L))
-        {
-          paramTransferResult = new PicDownloadExplicitError(3);
-          continue;
-          if (l == -9527L)
-          {
-            if ("T_208".equals(str)) {
-              paramTransferResult = new PicDownloadExplicitError(1);
-            }
-          }
-          else
-          {
-            if (paramTransferResult.mErrCode == 9302L)
-            {
-              paramTransferResult = new PicDownloadExplicitError(2);
-              continue;
-            }
-            if ((l == 9039L) || (l == 9040L))
-            {
-              paramTransferResult = new PicDownloadExplicitError(3);
-              continue;
-            }
-          }
+        if (l != -9527L) {
+          break label267;
         }
-        label311:
-        paramTransferResult = null;
+        if ((!"H_404_-6101".equals(str)) && (!"T_203".equals(str)) && (!"T_206".equals(str))) {
+          break label312;
+        }
+        paramTransferResult = new PicDownloadExplicitError(1);
+      }
+      return paramTransferResult;
+      label267:
+      if (paramTransferResult.mErrCode == 9302L) {
+        return new PicDownloadExplicitError(2);
+      }
+      if ((l == 9039L) || (l == 9040L)) {
+        return new PicDownloadExplicitError(3);
       }
     }
+    label312:
+    return null;
   }
   
   private String getFailedTip()
@@ -125,10 +119,10 @@ public class PicDownloadExplicitError
     {
       int i = localExplicitError.getTipResId();
       if (i > 0) {
-        return BaseApplicationImpl.getApplication().getResources().getString(i);
+        return BaseApplication.getContext().getResources().getString(i);
       }
     }
-    return BaseApplicationImpl.getApplication().getResources().getString(2131690005);
+    return BaseApplication.getContext().getResources().getString(2131689920);
   }
   
   public static String getFailedTip(URLDrawable paramURLDrawable)
@@ -150,22 +144,22 @@ public class PicDownloadExplicitError
     return null;
   }
   
-  public Drawable getFailedDrawable()
+  protected Drawable getFailedDrawable()
   {
     PicDownloadExplicitError.ExplicitError localExplicitError = (PicDownloadExplicitError.ExplicitError)M_MAP.get(Integer.valueOf(this.mErrCode));
     if (localExplicitError != null)
     {
       int i = localExplicitError.getDrawableResId();
       if (i > 0) {
-        return URLDrawableHelper.getResourceDrawable(i);
+        return CommonImageCacheHelper.a(null, i);
       }
     }
-    return URLDrawableHelper.getFailedDrawable();
+    return CommonImageCacheHelper.a("static://CommonFailedDrawable", 2130838025);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.chatpic.PicDownloadExplicitError
  * JD-Core Version:    0.7.0.1
  */

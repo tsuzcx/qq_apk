@@ -10,36 +10,37 @@ public class JumpForwardPkgUtil
 {
   public static final boolean a(Activity paramActivity, boolean paramBoolean)
   {
-    if ((paramActivity == null) || (paramActivity.isFinishing())) {}
-    for (;;)
+    if (paramActivity != null) {
+      if (paramActivity.isFinishing()) {
+        return true;
+      }
+    }
+    try
     {
-      return true;
-      try
+      if (JumpForwardPkgManager.a().a())
       {
-        if (JumpForwardPkgManager.a().a())
+        String str = JumpForwardPkgManager.a(paramActivity);
+        if (!TextUtils.isEmpty(str))
         {
-          String str = JumpForwardPkgManager.a(paramActivity);
-          if (!TextUtils.isEmpty(str))
-          {
-            if (paramBoolean) {
-              QQToast.a(paramActivity, 1, str, 1000).b(paramActivity.getResources().getDimensionPixelSize(2131299166));
-            }
-            paramActivity.moveTaskToBack(true);
-            if (QLog.isColorLevel()) {
-              QLog.d("JumpForwardPkgManager", 2, "checkAllowShare false");
-            }
-            return false;
+          if (paramBoolean) {
+            QQToast.a(paramActivity, 1, str, 1000).b(paramActivity.getResources().getDimensionPixelSize(2131299168));
           }
+          paramActivity.moveTaskToBack(true);
+          if (QLog.isColorLevel()) {
+            QLog.d("JumpForwardPkgManager", 2, "checkAllowShare false");
+          }
+          return false;
         }
       }
-      catch (Throwable paramActivity) {}
+      return true;
     }
+    catch (Throwable paramActivity) {}
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.JumpForwardPkgUtil
  * JD-Core Version:    0.7.0.1
  */

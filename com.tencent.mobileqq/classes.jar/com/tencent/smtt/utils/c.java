@@ -77,7 +77,14 @@ public class c
     if (this.d)
     {
       this.a.readFully(this.c, 0, 8);
-      return this.c[7] << 56 | (this.c[6] & 0xFF) << 48 | (this.c[5] & 0xFF) << 40 | (this.c[4] & 0xFF) << 32 | (this.c[3] & 0xFF) << 24 | (this.c[2] & 0xFF) << 16 | (this.c[1] & 0xFF) << 8 | this.c[0] & 0xFF;
+      byte[] arrayOfByte = this.c;
+      long l1 = arrayOfByte[7];
+      long l2 = arrayOfByte[6] & 0xFF;
+      long l3 = arrayOfByte[5] & 0xFF;
+      long l4 = arrayOfByte[4] & 0xFF;
+      long l5 = arrayOfByte[3] & 0xFF;
+      long l6 = arrayOfByte[2] & 0xFF;
+      return (arrayOfByte[1] & 0xFF) << 8 | l1 << 56 | l2 << 48 | l3 << 40 | l4 << 32 | l5 << 24 | l6 << 16 | arrayOfByte[0] & 0xFF;
     }
     return this.a.readLong();
   }
@@ -97,7 +104,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.utils.c
  * JD-Core Version:    0.7.0.1
  */

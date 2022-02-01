@@ -57,76 +57,73 @@ public class LpReport_ShuoshuoBehavior_dc02478
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    if (this.uin <= 1000L)
-    {
+    long l = this.uin;
+    String str;
+    if (l <= 1000L) {
       str = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount();
-      localHashMap.put("uin", str);
-      if (!TextUtils.isEmpty(this.version)) {
-        break label212;
-      }
-      str = "8.5.5";
-      label56:
-      LpReportUtils.safePut(localHashMap, "version", str);
-      LpReportUtils.safePut(localHashMap, "qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
-      if (!TextUtils.isEmpty(this.client_time)) {
-        break label220;
-      }
+    } else {
+      str = String.valueOf(l);
     }
-    label212:
-    label220:
-    for (String str = String.valueOf(System.currentTimeMillis());; str = this.client_time)
-    {
-      localHashMap.put("client_time", str);
-      LpReportUtils.safePut(localHashMap, "behavior_type", this.behavior_type);
-      LpReportUtils.safePut(localHashMap, "shuoshuo_type", this.shuoshuo_type);
-      LpReportUtils.safePut(localHashMap, "font_length", this.font_length);
-      LpReportUtils.safePut(localHashMap, "pic_size", this.pic_size);
-      LpReportUtils.safePut(localHashMap, "exif_pic_size", this.exif_pic_size);
-      LpReportUtils.safePut(localHashMap, "video_size", this.video_size);
-      LpReportUtils.safePut(localHashMap, "stay_time", this.stay_time);
-      LpReportUtils.safePut(localHashMap, "left_time", this.left_time);
-      LpReportUtils.safePut(localHashMap, "guess_expose_time", this.guess_expose_time);
-      return localHashMap;
-      str = String.valueOf(this.uin);
-      break;
+    localHashMap.put("uin", str);
+    if (TextUtils.isEmpty(this.version)) {
+      str = "8.7.0";
+    } else {
       str = this.version;
-      break label56;
     }
+    LpReportUtils.safePut(localHashMap, "version", str);
+    LpReportUtils.safePut(localHashMap, "qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
+    if (TextUtils.isEmpty(this.client_time)) {
+      str = String.valueOf(System.currentTimeMillis());
+    } else {
+      str = this.client_time;
+    }
+    localHashMap.put("client_time", str);
+    LpReportUtils.safePut(localHashMap, "behavior_type", this.behavior_type);
+    LpReportUtils.safePut(localHashMap, "shuoshuo_type", this.shuoshuo_type);
+    LpReportUtils.safePut(localHashMap, "font_length", this.font_length);
+    LpReportUtils.safePut(localHashMap, "pic_size", this.pic_size);
+    LpReportUtils.safePut(localHashMap, "exif_pic_size", this.exif_pic_size);
+    LpReportUtils.safePut(localHashMap, "video_size", this.video_size);
+    LpReportUtils.safePut(localHashMap, "stay_time", this.stay_time);
+    LpReportUtils.safePut(localHashMap, "left_time", this.left_time);
+    LpReportUtils.safePut(localHashMap, "guess_expose_time", this.guess_expose_time);
+    return localHashMap;
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    for (;;)
+    localStringBuilder = new StringBuilder();
+    try
     {
-      int i;
-      try
+      Field[] arrayOfField = getClass().getDeclaredFields();
+      int i = 0;
+      while (i < arrayOfField.length)
       {
-        Field[] arrayOfField = getClass().getDeclaredFields();
-        i = 0;
-        if (i < arrayOfField.length)
+        localStringBuilder.append(arrayOfField[i].getName());
+        Object localObject = arrayOfField[i].get(this);
+        if (localObject != null)
         {
-          localStringBuilder.append(arrayOfField[i].getName());
-          Object localObject = arrayOfField[i].get(this);
-          if (localObject != null) {
-            localStringBuilder.append(":").append(localObject).append("\n");
-          } else {
-            localStringBuilder.append(":null \n");
-          }
+          localStringBuilder.append(":");
+          localStringBuilder.append(localObject);
+          localStringBuilder.append("\n");
         }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
+        else
+        {
+          localStringBuilder.append(":null \n");
+        }
+        i += 1;
       }
       return localStringBuilder.toString();
-      i += 1;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReport_ShuoshuoBehavior_dc02478
  * JD-Core Version:    0.7.0.1
  */

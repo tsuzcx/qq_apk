@@ -2,11 +2,12 @@ package com.tencent.biz.pubaccount;
 
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.api.IPublicAccountManager;
+import com.tencent.common.app.AppInterface;
 import com.tencent.imcore.message.C2CMessageProcessor;
-import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msg.api.IMessageFacade;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.message.DecodeProtoPkgContext;
 import com.tencent.qphone.base.util.QLog;
@@ -70,7 +71,7 @@ public class DynamicMsgProcessor
           l1 = l2;
         }
         catch (Exception localException) {}
-        this.a.getMessageFacade().a(paramList, this.a.getCurrentAccountUin(), true);
+        ((IMessageFacade)this.a.getRuntimeService(IMessageFacade.class, "")).addMessage(paramList, this.a.getCurrentAccountUin(), true);
         return;
       }
     }
@@ -105,7 +106,7 @@ public class DynamicMsgProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.DynamicMsgProcessor
  * JD-Core Version:    0.7.0.1
  */

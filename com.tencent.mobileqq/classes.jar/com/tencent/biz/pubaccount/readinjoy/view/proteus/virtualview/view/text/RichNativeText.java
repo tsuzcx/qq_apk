@@ -29,7 +29,7 @@ public class RichNativeText
     }
   }
   
-  public boolean onClick()
+  protected boolean onClick()
   {
     if (this.mNative.isHyperLinkClick())
     {
@@ -45,7 +45,7 @@ public class RichNativeText
     setRichText();
   }
   
-  public boolean setAttribute(int paramInt, Object paramObject)
+  protected boolean setAttribute(int paramInt, Object paramObject)
   {
     if (paramInt == 66)
     {
@@ -59,7 +59,7 @@ public class RichNativeText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.RichNativeText
  * JD-Core Version:    0.7.0.1
  */

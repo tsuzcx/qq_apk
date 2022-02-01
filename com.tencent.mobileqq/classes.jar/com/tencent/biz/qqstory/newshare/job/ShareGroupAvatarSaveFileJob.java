@@ -25,7 +25,6 @@ public class ShareGroupAvatarSaveFileJob
   
   private boolean a(RestrictedBitmap paramRestrictedBitmap)
   {
-    boolean bool = false;
     try
     {
       Bitmap localBitmap = Bitmap.createBitmap(paramRestrictedBitmap.a(), paramRestrictedBitmap.b(), Bitmap.Config.ARGB_8888);
@@ -33,20 +32,22 @@ public class ShareGroupAvatarSaveFileJob
       localCanvas.drawColor(-1);
       localCanvas.drawBitmap(paramRestrictedBitmap.a(), 0.0F, 0.0F, null);
       ImageUtil.a(ImageUtil.a(localBitmap, 100), new File(this.c));
-      bool = true;
-    }
-    catch (IOException paramRestrictedBitmap)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramRestrictedBitmap, new Object[0]);
-      return false;
+      return true;
     }
     catch (OutOfMemoryError paramRestrictedBitmap)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramRestrictedBitmap, new Object[0]);
+      if (QLog.isColorLevel())
+      {
+        QLog.e("ShareGroupAvatarSaveFileJob", 2, paramRestrictedBitmap, new Object[0]);
+        return false;
+      }
     }
-    return bool;
+    catch (IOException paramRestrictedBitmap)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ShareGroupAvatarSaveFileJob", 2, paramRestrictedBitmap, new Object[0]);
+      }
+    }
     return false;
   }
   
@@ -63,7 +64,7 @@ public class ShareGroupAvatarSaveFileJob
     b(false);
   }
   
-  public void a(Map<String, Object> paramMap)
+  protected void a(Map<String, Object> paramMap)
   {
     if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("ShareGroupAvatarSaveFileJob_sgi"))) {
       this.a = ((String)a("ShareGroupAvatarSaveFileJob_sgi"));
@@ -72,7 +73,7 @@ public class ShareGroupAvatarSaveFileJob
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.job.ShareGroupAvatarSaveFileJob
  * JD-Core Version:    0.7.0.1
  */

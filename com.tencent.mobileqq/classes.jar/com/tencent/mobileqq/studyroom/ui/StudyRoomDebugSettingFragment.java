@@ -1,89 +1,152 @@
 package com.tencent.mobileqq.studyroom.ui;
 
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.app.Application;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.os.Process;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.fragment.QIphoneTitleBarFragment;
 import com.tencent.mobileqq.studyroom.utils.StudyRoomUtils;
 import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.PluginInfo;
+import cooperation.plugin.PluginUpdater;
+import java.util.Iterator;
+import java.util.List;
 
 public class StudyRoomDebugSettingFragment
-  extends IphoneTitleBarFragment
+  extends QIphoneTitleBarFragment
 {
   private String a(String paramString1, String paramString2)
   {
-    return getActivity().app.getApp().getSharedPreferences("studyroom_config_", 0).getString(paramString1, paramString2);
+    return getQBaseActivity().getApplication().getSharedPreferences("studyroom_config_", 0).getString(paramString1, paramString2);
   }
   
   private void a()
   {
-    FormSwitchItem localFormSwitchItem = (FormSwitchItem)this.mContentView.findViewById(2131378619);
-    localFormSwitchItem.setOnCheckedChangeListener(null);
-    localFormSwitchItem.setChecked(StudyRoomUtils.a());
-    localFormSwitchItem.setOnCheckedChangeListener(new StudyRoomDebugSettingFragment.1(this));
-  }
-  
-  private void a(String paramString)
-  {
-    File localFile = new File(paramString);
-    if (localFile.exists())
+    Iterator localIterator = ((ActivityManager)getQBaseActivity().getSystemService("activity")).getRunningAppProcesses().iterator();
+    while (localIterator.hasNext())
     {
-      boolean bool = localFile.delete();
-      QLog.i("StudyRoomDebugSettingFragment", 1, "removePlugin: remove result[" + bool + "].");
-      return;
+      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)localIterator.next();
+      if (localRunningAppProcessInfo.processName.equals("com.tencent.mobileqq:live")) {
+        Process.killProcess(localRunningAppProcessInfo.pid);
+      }
     }
-    QLog.i("StudyRoomDebugSettingFragment", 1, "removePlugin: path[" + paramString + "] is not exist.");
   }
   
   private void a(String paramString1, String paramString2)
   {
-    SharedPreferences.Editor localEditor = getActivity().app.getApp().getSharedPreferences("studyroom_config_", 0).edit();
+    SharedPreferences.Editor localEditor = getQBaseActivity().getApplication().getSharedPreferences("studyroom_config_", 0).edit();
     localEditor.putString(paramString1, paramString2);
     localEditor.apply();
   }
   
-  private void b()
+  private void c()
   {
-    EditText localEditText = (EditText)this.mContentView.findViewById(2131378621);
-    Button localButton1 = (Button)this.mContentView.findViewById(2131378622);
-    Button localButton2 = (Button)this.mContentView.findViewById(2131378620);
+    FormSwitchItem localFormSwitchItem = (FormSwitchItem)this.b.findViewById(2131378011);
+    localFormSwitchItem.setChecked(StudyRoomUtils.a());
+    localFormSwitchItem.setOnCheckedChangeListener(new StudyRoomDebugSettingFragment.1(this));
+  }
+  
+  private void d()
+  {
+    boolean bool = PluginUpdater.a(getQBaseActivity());
+    FormSwitchItem localFormSwitchItem = (FormSwitchItem)this.b.findViewById(2131378015);
+    EditText localEditText = (EditText)this.b.findViewById(2131378013);
+    Button localButton = (Button)this.b.findViewById(2131378014);
+    localFormSwitchItem.setChecked(bool);
+    localEditText.setEnabled(bool);
+    localButton.setEnabled(bool);
+    localFormSwitchItem.setOnCheckedChangeListener(new StudyRoomDebugSettingFragment.2(this, localEditText, localButton));
+  }
+  
+  private void e()
+  {
+    EditText localEditText = (EditText)this.b.findViewById(2131378013);
+    Button localButton1 = (Button)this.b.findViewById(2131378014);
+    Button localButton2 = (Button)this.b.findViewById(2131378012);
     localEditText.setText(a("studyroom_plugin_name", ""));
-    localButton1.setOnClickListener(new StudyRoomDebugSettingFragment.2(this));
-    localButton2.setOnClickListener(new StudyRoomDebugSettingFragment.3(this));
+    localButton1.setOnClickListener(new StudyRoomDebugSettingFragment.3(this));
+    localButton2.setOnClickListener(new StudyRoomDebugSettingFragment.4(this));
   }
   
-  public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
+  private void f()
   {
-    super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    String str = ((EditText)this.b.findViewById(2131378013)).getText().toString();
+    PluginInfo localPluginInfo = new PluginInfo();
+    localPluginInfo.mID = "StudyRoom";
+    localPluginInfo.mURL = StudyRoomUtils.a(str);
+    localPluginInfo.mMD5 = "";
+    localPluginInfo.mSubType = 1;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("installDebugPlugin: branch=");
+    ((StringBuilder)localObject).append(str);
+    QLog.d("StudyRoomDebugSettingFragment", 1, ((StringBuilder)localObject).toString());
+    localObject = new QQProgressDialog(getActivity());
+    ((QQProgressDialog)localObject).show();
+    try
+    {
+      QQAppInterface localQQAppInterface = (QQAppInterface)getQBaseActivity().getAppRuntime();
+      if (localQQAppInterface == null) {
+        return;
+      }
+      a();
+      ((IPluginManager)localQQAppInterface.getManager(QQManagerFactory.MGR_PLUGIN)).a(localPluginInfo, new StudyRoomDebugSettingFragment.5(this, (QQProgressDialog)localObject, str));
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
   
-  public int getContentLayoutId()
+  private void g()
   {
-    return 2131563049;
+    ((EditText)this.b.findViewById(2131378013)).setText("");
+    a("studyroom_plugin_name", "");
+    QQAppInterface localQQAppInterface = (QQAppInterface)getQBaseActivity().getAppRuntime();
+    if (localQQAppInterface != null)
+    {
+      a();
+      ((IPluginManager)localQQAppInterface.getManager(QQManagerFactory.MGR_PLUGIN)).b();
+    }
+  }
+  
+  protected int a()
+  {
+    return 2131562872;
+  }
+  
+  protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
+  {
+    super.a(paramLayoutInflater, paramViewGroup, paramBundle);
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    setTitle("自习室测试配置");
-    a();
-    b();
+    a("自习室测试配置");
+    c();
+    d();
+    e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.ui.StudyRoomDebugSettingFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -36,32 +36,56 @@ public class ZhituImgResponse
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (ZhituImgResponse)paramObject;
-      if (this.url != null) {
-        return this.url.equals(paramObject.url);
+      String str = this.url;
+      if (str != null) {
+        return str.equals(paramObject.url);
       }
-    } while (paramObject.url == null);
+      return paramObject.url == null;
+    }
     return false;
   }
   
   public int hashCode()
   {
-    if (this.url != null) {
-      return this.url.hashCode();
+    String str = this.url;
+    if (str != null) {
+      return str.hashCode();
     }
     return 0;
   }
   
   public String toString()
   {
-    return "ZhituImgResponse{url='" + this.url + '\'' + ", textColor='" + this.textColor + '\'' + ", md5='" + this.md5 + '\'' + ", style='" + this.style + '\'' + ", coord='" + this.coord + '\'' + ", pass='" + this.pass + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ZhituImgResponse{url='");
+    localStringBuilder.append(this.url);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", textColor='");
+    localStringBuilder.append(this.textColor);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", md5='");
+    localStringBuilder.append(this.md5);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", style='");
+    localStringBuilder.append(this.style);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", coord='");
+    localStringBuilder.append(this.coord);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", pass='");
+    localStringBuilder.append(this.pass);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -76,7 +100,7 @@ public class ZhituImgResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituImgResponse
  * JD-Core Version:    0.7.0.1
  */

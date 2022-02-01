@@ -22,51 +22,57 @@ public class TroopHonorServiceImpl
   
   public void asyncGetTroopHonorListByDirect(String paramString1, String paramString2, ITroopHonorService.IGetTroopHonorListCallback paramIGetTroopHonorListCallback)
   {
-    if (this.manager != null) {
-      this.manager.a(paramString1, paramString2, paramIGetTroopHonorListCallback);
+    TroopHonorManager localTroopHonorManager = this.manager;
+    if (localTroopHonorManager != null) {
+      localTroopHonorManager.a(paramString1, paramString2, paramIGetTroopHonorListCallback);
     }
   }
   
   public List<TroopHonor> convertToHonorList(String paramString, Byte paramByte)
   {
-    if (this.manager != null) {
-      return this.manager.a(paramString, paramByte);
+    TroopHonorManager localTroopHonorManager = this.manager;
+    if (localTroopHonorManager != null) {
+      return localTroopHonorManager.a(paramString, paramByte);
     }
     return new ArrayList();
   }
   
   public List<TroopHonor> getTroopHonorList(String paramString1, String paramString2)
   {
-    if (this.manager != null) {
-      return this.manager.a(paramString1, paramString2);
+    TroopHonorManager localTroopHonorManager = this.manager;
+    if (localTroopHonorManager != null) {
+      return localTroopHonorManager.a(paramString1, paramString2);
     }
     return new ArrayList();
   }
   
   public TroopHonorManager getTroopHonorManager()
   {
-    if (this.mAppRuntime == null)
+    AppRuntime localAppRuntime = this.mAppRuntime;
+    if (localAppRuntime == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("TroopHonorServiceImpl", 1, "mAppRuntime == null");
       }
       return null;
     }
-    return (TroopHonorManager)((IManagerFactoryService)this.mAppRuntime.getRuntimeService(IManagerFactoryService.class, "")).getManager(TroopHonorManager.class);
+    return (TroopHonorManager)((IManagerFactoryService)localAppRuntime.getRuntimeService(IManagerFactoryService.class, "")).getManager(TroopHonorManager.class);
   }
   
   public boolean isGrayTroopHonor(String paramString)
   {
-    if (this.manager != null) {
-      return this.manager.a(paramString);
+    TroopHonorManager localTroopHonorManager = this.manager;
+    if (localTroopHonorManager != null) {
+      return localTroopHonorManager.a(paramString);
     }
     return false;
   }
   
   public boolean isSupportTroopHonor(String paramString)
   {
-    if (this.manager != null) {
-      return this.manager.b(paramString);
+    TroopHonorManager localTroopHonorManager = this.manager;
+    if (localTroopHonorManager != null) {
+      return localTroopHonorManager.b(paramString);
     }
     return false;
   }
@@ -81,64 +87,72 @@ public class TroopHonorServiceImpl
   
   public void saveHostHonorListRichTag(short paramShort)
   {
-    if (this.manager != null) {
-      this.manager.a(paramShort);
+    TroopHonorManager localTroopHonorManager = this.manager;
+    if (localTroopHonorManager != null) {
+      localTroopHonorManager.a(paramShort);
     }
   }
   
   public void updateConfig(TroopHonorConfig paramTroopHonorConfig, boolean paramBoolean)
   {
-    if (this.manager != null) {
-      this.manager.a(paramTroopHonorConfig, paramBoolean);
+    TroopHonorManager localTroopHonorManager = this.manager;
+    if (localTroopHonorManager != null) {
+      localTroopHonorManager.a(paramTroopHonorConfig, paramBoolean);
     }
   }
   
   public boolean updateEntity(Entity paramEntity)
   {
-    if (this.manager != null) {
-      return this.manager.a(paramEntity);
+    TroopHonorManager localTroopHonorManager = this.manager;
+    if (localTroopHonorManager != null) {
+      return localTroopHonorManager.a(paramEntity);
     }
     return false;
   }
   
   public void updateHostHonorList(List<oidb_0xdc9.HonorList> paramList, boolean paramBoolean)
   {
-    if (this.manager != null) {
-      this.manager.a(paramList, paramBoolean);
+    TroopHonorManager localTroopHonorManager = this.manager;
+    if (localTroopHonorManager != null) {
+      localTroopHonorManager.a(paramList, paramBoolean);
     }
   }
   
   public void updateHostHonorList(boolean paramBoolean)
   {
-    if (this.manager != null) {
-      this.manager.a(paramBoolean);
+    TroopHonorManager localTroopHonorManager = this.manager;
+    if (localTroopHonorManager != null) {
+      localTroopHonorManager.a(paramBoolean);
     }
   }
   
   public void updatePushTroopHonor(String paramString, byte[] paramArrayOfByte, int paramInt)
   {
-    if (this.manager != null) {
-      this.manager.a(paramString, paramArrayOfByte, paramInt);
+    TroopHonorManager localTroopHonorManager = this.manager;
+    if (localTroopHonorManager != null) {
+      localTroopHonorManager.a(paramString, paramArrayOfByte, paramInt);
     }
   }
   
   public void updateTroopHonorAIOSwitch(String paramString, boolean paramBoolean)
   {
-    if (this.manager != null) {
-      this.manager.a(paramString, paramBoolean);
+    TroopHonorManager localTroopHonorManager = this.manager;
+    if (localTroopHonorManager != null) {
+      localTroopHonorManager.a(paramString, paramBoolean);
     }
   }
   
   public void updateTroopMemberHonor(String paramString1, String paramString2, String paramString3, byte paramByte, long paramLong)
   {
-    if (this.manager != null) {
-      this.manager.a(paramString1, paramString2, paramString3, paramByte, paramLong);
+    TroopHonorManager localTroopHonorManager = this.manager;
+    if (localTroopHonorManager != null) {
+      localTroopHonorManager.a(paramString1, paramString2, paramString3, paramByte, paramLong);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.honor.api.impl.TroopHonorServiceImpl
  * JD-Core Version:    0.7.0.1
  */

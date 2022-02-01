@@ -68,21 +68,37 @@ public class CountDownClockNumLottieView
     if (paramLong2 > paramLong1) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+    Object localObject = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    if (localObject != null) {
+      ((ValueAnimator)localObject).cancel();
     }
-    long l = paramLong1 - paramLong2;
+    long l1 = paramLong1 - paramLong2;
     this.jdField_b_of_type_Long = (paramLong1 / 1000L);
-    this.jdField_b_of_type_Float = (1.0F / ((float)this.jdField_b_of_type_Long + 0.5F));
-    this.jdField_a_of_type_Float = (360.0F / (float)this.jdField_b_of_type_Long);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { (int)(360L * paramLong2 * 1.0D / paramLong1), 360.0F }).setDuration(l);
+    long l2 = this.jdField_b_of_type_Long;
+    this.jdField_b_of_type_Float = (1.0F / ((float)l2 + 0.5F));
+    this.jdField_a_of_type_Float = (360.0F / (float)l2);
+    double d1 = 360L * paramLong2;
+    Double.isNaN(d1);
+    double d2 = paramLong1;
+    Double.isNaN(d2);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { (int)(d1 * 1.0D / d2), 360.0F }).setDuration(l1);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
     this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new CountDownClockNumLottieView.2(this));
     ValueAnimatorUtil.a();
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
     float f = (float)paramLong2 * 1.0F / (float)paramLong1;
-    if (QLog.isColorLevel()) {
-      QLog.d("CountDownClockNumLottieView", 2, "start-> mLottieSpeed = " + this.jdField_b_of_type_Float + ",duration=" + l + "passProgress=" + f + " totalTime" + paramLong1);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("start-> mLottieSpeed = ");
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_Float);
+      ((StringBuilder)localObject).append(",duration=");
+      ((StringBuilder)localObject).append(l1);
+      ((StringBuilder)localObject).append("passProgress=");
+      ((StringBuilder)localObject).append(f);
+      ((StringBuilder)localObject).append(" totalTime");
+      ((StringBuilder)localObject).append(paramLong1);
+      QLog.d("CountDownClockNumLottieView", 2, ((StringBuilder)localObject).toString());
     }
     a(this.jdField_b_of_type_Float, true, f);
     setVisibility(0);
@@ -98,8 +114,9 @@ public class CountDownClockNumLottieView
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    if (localValueAnimator != null) {
+      localValueAnimator.cancel();
     }
     this.c = 0;
     this.jdField_a_of_type_Long = 0L;
@@ -114,14 +131,15 @@ public class CountDownClockNumLottieView
     if (QLog.isColorLevel()) {
       QLog.d("CountDownClockNumLottieView", 2, "playSongPlayingLottieDrawable run");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable == null)
+    LottieDrawable localLottieDrawable = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+    if (localLottieDrawable == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("CountDownClockNumLottieView", 2, "playSongPlayingLottieDrawable lottieDrawable = null");
       }
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.isRunning()) {
+    if (localLottieDrawable.isRunning()) {
       this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.stop();
     }
     this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.setSpeed(paramFloat1);
@@ -161,9 +179,10 @@ public class CountDownClockNumLottieView
     a(paramCanvas);
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int != paramInt1))
+    paramInt3 = this.jdField_a_of_type_Int;
+    if ((paramInt3 == 0) || (paramInt3 != paramInt1))
     {
       this.jdField_a_of_type_Int = paramInt1;
       this.jdField_b_of_type_Int = paramInt2;
@@ -191,7 +210,7 @@ public class CountDownClockNumLottieView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.stage.util.CountDownClockNumLottieView
  * JD-Core Version:    0.7.0.1
  */

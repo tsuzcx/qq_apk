@@ -50,111 +50,97 @@ public class d
   
   private static Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    Bitmap localBitmap = null;
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
+    Object localObject1 = null;
     if (paramBitmap != null)
     {
       if (paramBitmap.isRecycled()) {
-        localObject1 = localObject2;
+        return null;
       }
-    }
-    else {
-      return localObject1;
-    }
-    float f1 = paramBitmap.getWidth();
-    float f2 = paramBitmap.getHeight();
-    float f3 = f1 / f2;
-    float f4 = paramInt1 / paramInt2;
-    localObject2 = new Matrix();
-    if (f3 > f4)
-    {
-      f1 = paramInt2 / f2;
-      if (f1 >= 0.9F)
+      float f1 = paramBitmap.getWidth();
+      float f2 = paramBitmap.getHeight();
+      float f3 = f1 / f2;
+      float f4 = paramInt1;
+      float f5 = paramInt2;
+      float f6 = f4 / f5;
+      Object localObject2 = new Matrix();
+      if (f3 > f6)
       {
-        localObject1 = localBitmap;
-        if (f1 <= 1.0F) {}
+        f1 = f5 / f2;
+        if ((f1 < 0.9F) || (f1 > 1.0F))
+        {
+          ((Matrix)localObject2).setScale(f1, f1);
+          localObject1 = localObject2;
+        }
       }
       else
       {
-        ((Matrix)localObject2).setScale(f1, f1);
-        localObject1 = localObject2;
-      }
-      label112:
-      if (localObject1 == null) {
-        break label286;
-      }
-    }
-    label286:
-    for (localObject2 = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), (Matrix)localObject1, true);; localObject2 = paramBitmap)
-    {
-      if ((paramBoolean) && (localObject2 != paramBitmap) && (!GlobalUtil.isMIUI())) {
-        paramBitmap.recycle();
-      }
-      int i = Math.max(0, ((Bitmap)localObject2).getWidth() - paramInt1);
-      int j = Math.max(0, ((Bitmap)localObject2).getHeight() - paramInt2);
-      localBitmap = Bitmap.createBitmap((Bitmap)localObject2, i / 2, j / 2, paramInt1, paramInt2);
-      localObject1 = localBitmap;
-      if (localBitmap == localObject2) {
-        break;
-      }
-      if (!paramBoolean)
-      {
-        localObject1 = localBitmap;
-        if (localObject2 == paramBitmap) {
-          break;
+        f1 = f4 / f1;
+        if ((f1 < 0.9F) || (f1 > 1.0F)) {
+          break label135;
         }
       }
-      localObject1 = localBitmap;
-      if (GlobalUtil.isMIUI()) {
-        break;
+      break label148;
+      label135:
+      ((Matrix)localObject2).setScale(f1, f1);
+      localObject1 = localObject2;
+      label148:
+      if (localObject1 != null) {
+        localObject1 = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), (Matrix)localObject1, true);
+      } else {
+        localObject1 = paramBitmap;
       }
-      ((Bitmap)localObject2).recycle();
-      return localBitmap;
-      f1 = paramInt1 / f1;
-      if ((f1 < 0.9F) || (f1 > 1.0F))
-      {
-        ((Matrix)localObject2).setScale(f1, f1);
-        localObject1 = localObject2;
-        break label112;
+      if ((paramBoolean) && (localObject1 != paramBitmap) && (!GlobalUtil.isMIUI())) {
+        paramBitmap.recycle();
       }
-      localObject1 = null;
-      break label112;
+      int i = Math.max(0, ((Bitmap)localObject1).getWidth() - paramInt1);
+      int j = Math.max(0, ((Bitmap)localObject1).getHeight() - paramInt2);
+      localObject2 = Bitmap.createBitmap((Bitmap)localObject1, i / 2, j / 2, paramInt1, paramInt2);
+      if ((localObject2 != localObject1) && ((paramBoolean) || (localObject1 != paramBitmap)) && (!GlobalUtil.isMIUI())) {
+        ((Bitmap)localObject1).recycle();
+      }
+      return localObject2;
     }
+    return null;
   }
   
   private Bitmap a(String paramString)
   {
+    Object localObject2 = null;
     try
     {
-      Object localObject1 = GlobalUtil.getInstance().getContext().getPackageManager().getPackageArchiveInfo(paramString, 1);
-      if (localObject1 != null)
-      {
-        localObject1 = ((PackageInfo)localObject1).applicationInfo;
-        if (Build.VERSION.SDK_INT >= 8)
-        {
-          ((ApplicationInfo)localObject1).sourceDir = paramString;
-          ((ApplicationInfo)localObject1).publicSourceDir = paramString;
-        }
-        paramString = ((ApplicationInfo)localObject1).loadIcon(GlobalUtil.getInstance().getContext().getPackageManager());
-        if (paramString != null) {
-          if ((paramString instanceof BitmapDrawable)) {
-            return ((BitmapDrawable)paramString).getBitmap();
-          }
-        }
-      }
+      localPackageInfo = GlobalUtil.getInstance().getContext().getPackageManager().getPackageArchiveInfo(paramString, 1);
     }
     catch (Exception localException)
     {
-      for (;;)
+      PackageInfo localPackageInfo;
+      label21:
+      Object localObject1;
+      break label21;
+    }
+    localPackageInfo = null;
+    localObject1 = localObject2;
+    if (localPackageInfo != null)
+    {
+      localObject1 = localPackageInfo.applicationInfo;
+      if (Build.VERSION.SDK_INT >= 8)
       {
-        Object localObject2 = null;
+        ((ApplicationInfo)localObject1).sourceDir = paramString;
+        ((ApplicationInfo)localObject1).publicSourceDir = paramString;
       }
-      if ((paramString instanceof StateListDrawable)) {
-        return ((BitmapDrawable)((StateListDrawable)paramString).getCurrent()).getBitmap();
+      paramString = ((ApplicationInfo)localObject1).loadIcon(GlobalUtil.getInstance().getContext().getPackageManager());
+      localObject1 = localObject2;
+      if (paramString != null)
+      {
+        if ((paramString instanceof BitmapDrawable)) {
+          return ((BitmapDrawable)paramString).getBitmap();
+        }
+        localObject1 = localObject2;
+        if ((paramString instanceof StateListDrawable)) {
+          localObject1 = ((BitmapDrawable)((StateListDrawable)paramString).getCurrent()).getBitmap();
+        }
       }
     }
-    return null;
+    return localObject1;
   }
   
   private void a()
@@ -210,158 +196,192 @@ public class d
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    Object localObject = paramMessage.getData();
-    c localc = ApkDownloadManager.getInstance().queryDownloadInfo(((Bundle)localObject).getString("url"));
+    Object localObject1 = paramMessage.getData();
+    c localc = ApkDownloadManager.getInstance().queryDownloadInfo(((Bundle)localObject1).getString("url"));
     if (localc != null)
     {
       this.a.url = localc.b;
       this.a.title = localc.E;
       this.a.nKey = String.valueOf(localc.q);
-    }
-    try
-    {
+      try
+      {
+        if (this.b == null)
+        {
+          this.b = a.a().a(this.a);
+        }
+        else
+        {
+          localObject1 = new RemoteViews(this.d.getPackageName(), this.c.c("qapp_center_notification"));
+          a.a().a((RemoteViews)localObject1);
+          ((RemoteViews)localObject1).setInt(this.c.d("notification_root"), "setBackgroundColor", -1);
+          ((RemoteViews)localObject1).setInt(this.c.d("notification_title"), "setTextColor", -16777216);
+          ((RemoteViews)localObject1).setInt(this.c.d("notification_progress"), "setTextColor", -12303292);
+          ((RemoteViews)localObject1).setInt(this.c.d("notification_content"), "setTextColor", -12303292);
+          this.b.contentView = ((RemoteViews)localObject1);
+        }
+      }
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("init Notification ");
+        localStringBuilder.append(localException);
+        ab.c("SDK_NotificationHandler", localStringBuilder.toString());
+      }
       if (this.b == null) {
-        this.b = a.a().a(this.a);
-      }
-      while (this.b == null)
-      {
         return;
-        localObject = new RemoteViews(this.d.getPackageName(), this.c.c("qapp_center_notification"));
-        a.a().a((RemoteViews)localObject);
-        ((RemoteViews)localObject).setInt(this.c.d("notification_root"), "setBackgroundColor", -1);
-        ((RemoteViews)localObject).setInt(this.c.d("notification_title"), "setTextColor", -16777216);
-        ((RemoteViews)localObject).setInt(this.c.d("notification_progress"), "setTextColor", -12303292);
-        ((RemoteViews)localObject).setInt(this.c.d("notification_content"), "setTextColor", -12303292);
-        this.b.contentView = ((RemoteViews)localObject);
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        ab.c("SDK_NotificationHandler", "init Notification " + localException);
-      }
-      ab.c("SDK_NotificationHandler", "<handleMessage> msg.what = " + paramMessage.what);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("<handleMessage> msg.what = ");
+      ((StringBuilder)localObject2).append(paramMessage.what);
+      ab.c("SDK_NotificationHandler", ((StringBuilder)localObject2).toString());
       switch (paramMessage.what)
       {
-      }
-    }
-    for (;;)
-    {
-      int i = a.a().a(this.a.nKey, this.a.url);
-      ab.c("SDK_NotificationHandler", "notification id = " + i);
-      this.b.when = a.a().b(this.a.nKey, this.a.url);
-      a.a().a(i, this.b);
-      return;
-      this.b.tickerText = a(this.c.a("notification_tickerText_download_prefix"), new Object[] { localc.E });
-      this.b.contentView.setViewVisibility(this.c.d("notification_content"), 0);
-      this.b.contentView.setViewVisibility(this.c.d("notif_pro_bar_layout"), 8);
-      this.b.contentView.setViewVisibility(this.c.d("notification_progress"), 8);
-      this.b.contentView.setTextViewText(this.c.d("notification_title"), g.a(a(this.c.a("notification_title_download_prefix"), new Object[] { localc.E }), 18, true));
-      this.b.contentView.setTextViewText(this.c.d("notification_content"), a(this.c.a("download_wait")));
-      this.b.contentView.setImageViewResource(this.c.d("notification_icon"), this.c.b("qfile_file_ufdownload"));
-      this.a.notificationTypeId = 101;
-      a(this.b, e.a(this.a), true);
-      this.b.flags = 32;
-      paramMessage = this.b;
-      paramMessage.flags |= 0x2;
-      a.a().c(this.a.nKey);
-      continue;
-      this.b.tickerText = a(this.c.a("notification_tickerText_download_prefix"), new Object[] { localc.E });
-      this.b.contentView.setViewVisibility(this.c.d("notification_content"), 8);
-      this.b.contentView.setViewVisibility(this.c.d("notif_pro_bar_layout"), 0);
-      this.b.contentView.setViewVisibility(this.c.d("notification_progress"), 0);
-      if (localc.i > 0L)
-      {
-        this.b.contentView.setProgressBar(this.c.d("notif_pro_bar"), 100, a(localc.h, localc.i), false);
-        this.b.contentView.setTextViewText(this.c.d("notification_progress"), a(localc.h, localc.i) * 100 / 100 + "%");
-      }
-      this.b.contentView.setImageViewResource(this.c.d("notification_icon"), this.c.b("qfile_file_ufdownload"));
-      this.b.contentView.setTextViewText(this.c.d("notification_title"), g.a(a(this.c.a("notification_title_download_prefix"), new Object[] { localc.E }), 18, true));
-      this.a.notificationTypeId = 102;
-      a(this.b, e.a(this.a), true);
-      if (!TextUtils.isEmpty(""))
-      {
+      default: 
+        break;
+      case 6: 
+        a.a().b(this.a.nKey);
+        break;
+      case 5: 
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(">>error:");
+        ((StringBuilder)localObject2).append(this.a.url);
+        ab.c("SDK_NotificationHandler", ((StringBuilder)localObject2).toString());
         this.b.contentView.setViewVisibility(this.c.d("notification_content"), 0);
-        this.b.contentView.setTextViewText(this.c.d("notification_content"), Html.fromHtml(""));
-      }
-      for (;;)
-      {
-        this.b.flags = 32;
+        this.b.contentView.setViewVisibility(this.c.d("notif_pro_bar_layout"), 8);
+        this.b.contentView.setViewVisibility(this.c.d("notification_progress"), 8);
+        this.b.contentView.setImageViewResource(this.c.d("notification_icon"), this.c.b("qfile_file_ufdownload_error"));
+        localObject2 = (String)paramMessage.obj;
+        paramMessage = (Message)localObject2;
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          paramMessage = a(this.c.a("download_err_unknown"));
+        }
+        this.b.tickerText = a(this.c.a("notification_tickerText_download_err"), new Object[] { paramMessage });
+        this.b.contentView.setTextViewText(this.c.d("notification_content"), a(this.c.a("notification_content_download_err_suffix"), new Object[] { paramMessage }));
+        this.b.contentView.setTextViewText(this.c.d("notification_title"), g.a(localc.E, 18, true));
+        paramMessage = this.a;
+        paramMessage.notificationTypeId = 105;
+        a(this.b, e.a(paramMessage), true);
         paramMessage = this.b;
-        paramMessage.flags |= 0x2;
-        break;
-        this.b.contentView.setViewVisibility(this.c.d("notification_content"), 8);
-      }
-      ab.c("SDK_NotificationHandler", ">>pause:" + this.a.url);
-      this.b.tickerText = a(this.c.a("notification_content_download_pause"));
-      this.b.contentView.setViewVisibility(this.c.d("notification_content"), 0);
-      this.b.contentView.setViewVisibility(this.c.d("notif_pro_bar_layout"), 8);
-      this.b.contentView.setViewVisibility(this.c.d("notification_progress"), 8);
-      this.b.contentView.setImageViewResource(this.c.d("notification_icon"), this.c.b("qfile_file_ufdownload_pause"));
-      this.b.contentView.setTextViewText(this.c.d("notification_title"), g.a(localc.E, 18, true));
-      this.b.contentView.setTextViewText(this.c.d("notification_content"), a(this.c.a("notification_content_download_pause")));
-      this.a.notificationTypeId = 103;
-      a(this.b, e.a(this.a), true);
-      this.b.flags = 16;
-      paramMessage = this.b;
-      paramMessage.flags &= 0xFFFFFFFD;
-      a.a().c(this.a.nKey);
-      continue;
-      ab.c("SDK_NotificationHandler", ">>complete:" + this.a.url);
-      this.b = a.a().a(this.a);
-      if (this.b == null) {
-        break;
-      }
-      this.b.tickerText = a(this.c.a("notification_tickerText_download_complete"));
-      this.b.contentView.setViewVisibility(this.c.d("notification_content"), 0);
-      this.b.contentView.setViewVisibility(this.c.d("notif_pro_bar_layout"), 8);
-      this.b.contentView.setViewVisibility(this.c.d("notification_progress"), 8);
-      this.b.contentView.setTextViewText(this.c.d("notification_content"), a(this.c.a("notification_content_download_complete")));
-      this.b.contentView.setTextViewText(this.c.d("notification_title"), g.a(localc.E, 18, true));
-      this.a.notificationTypeId = 104;
-      a(this.b, e.a(this.a), true);
-      paramMessage = a(a(com.tencent.tmdownloader.internal.storage.d.a(localc.j)), 72, 72, true);
-      if ((paramMessage != null) && (!paramMessage.isRecycled())) {
-        this.b.contentView.setImageViewBitmap(this.c.d("notification_icon"), paramMessage);
-      }
-      for (;;)
-      {
-        this.b.flags = 16;
-        paramMessage = this.b;
+        paramMessage.flags = 16;
         paramMessage.flags &= 0xFFFFFFFD;
         a.a().c(this.a.nKey);
         break;
-        ab.c("SDK_NotificationHandler", ">>download icon fail,so we use default notification icon");
+      case 4: 
+        paramMessage = new StringBuilder();
+        paramMessage.append(">>complete:");
+        paramMessage.append(this.a.url);
+        ab.c("SDK_NotificationHandler", paramMessage.toString());
+        this.b = a.a().a(this.a);
+        paramMessage = this.b;
+        if (paramMessage == null) {
+          return;
+        }
+        paramMessage.tickerText = a(this.c.a("notification_tickerText_download_complete"));
+        this.b.contentView.setViewVisibility(this.c.d("notification_content"), 0);
+        this.b.contentView.setViewVisibility(this.c.d("notif_pro_bar_layout"), 8);
+        this.b.contentView.setViewVisibility(this.c.d("notification_progress"), 8);
+        this.b.contentView.setTextViewText(this.c.d("notification_content"), a(this.c.a("notification_content_download_complete")));
+        this.b.contentView.setTextViewText(this.c.d("notification_title"), g.a(localc.E, 18, true));
+        paramMessage = this.a;
+        paramMessage.notificationTypeId = 104;
+        a(this.b, e.a(paramMessage), true);
+        paramMessage = a(a(com.tencent.tmdownloader.internal.storage.d.a(localc.j)), 72, 72, true);
+        if ((paramMessage != null) && (!paramMessage.isRecycled()))
+        {
+          this.b.contentView.setImageViewBitmap(this.c.d("notification_icon"), paramMessage);
+        }
+        else
+        {
+          ab.c("SDK_NotificationHandler", ">>download icon fail,so we use default notification icon");
+          this.b.contentView.setImageViewResource(this.c.d("notification_icon"), this.c.b("qfile_file_ufdownload"));
+        }
+        paramMessage = this.b;
+        paramMessage.flags = 16;
+        paramMessage.flags &= 0xFFFFFFFD;
+        a.a().c(this.a.nKey);
+        break;
+      case 3: 
+        paramMessage = new StringBuilder();
+        paramMessage.append(">>pause:");
+        paramMessage.append(this.a.url);
+        ab.c("SDK_NotificationHandler", paramMessage.toString());
+        this.b.tickerText = a(this.c.a("notification_content_download_pause"));
+        this.b.contentView.setViewVisibility(this.c.d("notification_content"), 0);
+        this.b.contentView.setViewVisibility(this.c.d("notif_pro_bar_layout"), 8);
+        this.b.contentView.setViewVisibility(this.c.d("notification_progress"), 8);
+        this.b.contentView.setImageViewResource(this.c.d("notification_icon"), this.c.b("qfile_file_ufdownload_pause"));
+        this.b.contentView.setTextViewText(this.c.d("notification_title"), g.a(localc.E, 18, true));
+        this.b.contentView.setTextViewText(this.c.d("notification_content"), a(this.c.a("notification_content_download_pause")));
+        paramMessage = this.a;
+        paramMessage.notificationTypeId = 103;
+        a(this.b, e.a(paramMessage), true);
+        paramMessage = this.b;
+        paramMessage.flags = 16;
+        paramMessage.flags &= 0xFFFFFFFD;
+        a.a().c(this.a.nKey);
+        break;
+      case 2: 
+        this.b.tickerText = a(this.c.a("notification_tickerText_download_prefix"), new Object[] { localc.E });
+        this.b.contentView.setViewVisibility(this.c.d("notification_content"), 8);
+        this.b.contentView.setViewVisibility(this.c.d("notif_pro_bar_layout"), 0);
+        this.b.contentView.setViewVisibility(this.c.d("notification_progress"), 0);
+        if (localc.i > 0L)
+        {
+          this.b.contentView.setProgressBar(this.c.d("notif_pro_bar"), 100, a(localc.h, localc.i), false);
+          paramMessage = this.b.contentView;
+          i = this.c.d("notification_progress");
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(a(localc.h, localc.i) * 100 / 100);
+          ((StringBuilder)localObject2).append("%");
+          paramMessage.setTextViewText(i, ((StringBuilder)localObject2).toString());
+        }
         this.b.contentView.setImageViewResource(this.c.d("notification_icon"), this.c.b("qfile_file_ufdownload"));
+        this.b.contentView.setTextViewText(this.c.d("notification_title"), g.a(a(this.c.a("notification_title_download_prefix"), new Object[] { localc.E }), 18, true));
+        paramMessage = this.a;
+        paramMessage.notificationTypeId = 102;
+        a(this.b, e.a(paramMessage), true);
+        if (!TextUtils.isEmpty(""))
+        {
+          this.b.contentView.setViewVisibility(this.c.d("notification_content"), 0);
+          this.b.contentView.setTextViewText(this.c.d("notification_content"), Html.fromHtml(""));
+        }
+        else
+        {
+          this.b.contentView.setViewVisibility(this.c.d("notification_content"), 8);
+        }
+        paramMessage = this.b;
+        paramMessage.flags = 32;
+        paramMessage.flags |= 0x2;
+        break;
+      case 1: 
+        this.b.tickerText = a(this.c.a("notification_tickerText_download_prefix"), new Object[] { localc.E });
+        this.b.contentView.setViewVisibility(this.c.d("notification_content"), 0);
+        this.b.contentView.setViewVisibility(this.c.d("notif_pro_bar_layout"), 8);
+        this.b.contentView.setViewVisibility(this.c.d("notification_progress"), 8);
+        this.b.contentView.setTextViewText(this.c.d("notification_title"), g.a(a(this.c.a("notification_title_download_prefix"), new Object[] { localc.E }), 18, true));
+        this.b.contentView.setTextViewText(this.c.d("notification_content"), a(this.c.a("download_wait")));
+        this.b.contentView.setImageViewResource(this.c.d("notification_icon"), this.c.b("qfile_file_ufdownload"));
+        paramMessage = this.a;
+        paramMessage.notificationTypeId = 101;
+        a(this.b, e.a(paramMessage), true);
+        paramMessage = this.b;
+        paramMessage.flags = 32;
+        paramMessage.flags |= 0x2;
+        a.a().c(this.a.nKey);
       }
-      ab.c("SDK_NotificationHandler", ">>error:" + this.a.url);
-      this.b.contentView.setViewVisibility(this.c.d("notification_content"), 0);
-      this.b.contentView.setViewVisibility(this.c.d("notif_pro_bar_layout"), 8);
-      this.b.contentView.setViewVisibility(this.c.d("notification_progress"), 8);
-      this.b.contentView.setImageViewResource(this.c.d("notification_icon"), this.c.b("qfile_file_ufdownload_error"));
-      String str = (String)paramMessage.obj;
-      paramMessage = str;
-      if (TextUtils.isEmpty(str)) {
-        paramMessage = a(this.c.a("download_err_unknown"));
-      }
-      this.b.tickerText = a(this.c.a("notification_tickerText_download_err"), new Object[] { paramMessage });
-      this.b.contentView.setTextViewText(this.c.d("notification_content"), a(this.c.a("notification_content_download_err_suffix"), new Object[] { paramMessage }));
-      this.b.contentView.setTextViewText(this.c.d("notification_title"), g.a(localc.E, 18, true));
-      this.a.notificationTypeId = 105;
-      a(this.b, e.a(this.a), true);
-      this.b.flags = 16;
-      paramMessage = this.b;
-      paramMessage.flags &= 0xFFFFFFFD;
-      a.a().c(this.a.nKey);
-      continue;
-      a.a().b(this.a.nKey);
+      int i = a.a().a(this.a.nKey, this.a.url);
+      paramMessage = new StringBuilder();
+      paramMessage.append("notification id = ");
+      paramMessage.append(i);
+      ab.c("SDK_NotificationHandler", paramMessage.toString());
+      this.b.when = a.a().b(this.a.nKey, this.a.url);
+      a.a().a(i, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.notification.d
  * JD-Core Version:    0.7.0.1
  */

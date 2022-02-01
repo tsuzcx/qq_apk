@@ -10,12 +10,9 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mqpsdk.MQPSecServiceManager;
-import com.tencent.mqpsdk.secsrv.MQPAPPScanService;
 import com.tencent.mqpsdk.secsrv.MQPIntChkService;
 import com.tencent.msfmqpsdkbridge.MSFIntChkStrike;
 import com.tencent.msfmqpsdkbridge.MSFNetTransportProvider;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqprotect.qsec.QSecFramework;
@@ -23,115 +20,102 @@ import com.tencent.qqprotect.sfcfg.QPTxVerifyApkTimerTask;
 import tencent.im.s2c.msgtype0x210.submsgtype0x4a.MsgBody;
 
 public class SafeCenterPushHandler
-  extends BusinessHandler
 {
   public static int a;
   private QQAppInterface a;
   
-  static
+  public SafeCenterPushHandler(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_Int = 0;
-  }
-  
-  SafeCenterPushHandler(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
   }
   
   public void a(byte[] paramArrayOfByte)
   {
-    Object localObject = new MsgBody();
-    do
+    Object localObject1 = new MsgBody();
+    try
     {
-      try
-      {
-        ((MsgBody)localObject).mergeFrom(paramArrayOfByte);
-        if ((!((MsgBody)localObject).has()) || (!((MsgBody)localObject).uint32_sec_cmd.has())) {
-          return;
-        }
+      ((MsgBody)localObject1).mergeFrom(paramArrayOfByte);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SafeCenterPushHandler", 2, "onReceive: onReceive push package: msgbody parse fail");
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                for (;;)
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.d("SafeCenterPushHandler", 2, "onReceive: onReceive push package: msgbody parse fail");
-                  }
-                  paramArrayOfByte.printStackTrace();
-                }
-                switch (((MsgBody)localObject).uint32_sec_cmd.get())
-                {
-                case 5: 
-                default: 
-                  return;
-                case 1: 
-                  new m(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a();
-                  return;
-                case 2: 
-                  paramArrayOfByte = (MSFNetTransportProvider)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.MSF_NET_TRANSPORT_PROVIDER_HANDLER);
-                  paramArrayOfByte = new MQPSecServiceManager(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), paramArrayOfByte);
-                }
-              } while (paramArrayOfByte == null);
-              paramArrayOfByte = (MQPIntChkService)paramArrayOfByte.a("intchk");
-            } while (paramArrayOfByte == null);
-            paramArrayOfByte.a(1, new MSFIntChkStrike(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1));
-            paramArrayOfByte.a(2, new MSFIntChkStrike(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2));
-            paramArrayOfByte.a(3, new MSFIntChkStrike(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 3));
-            paramArrayOfByte.b("8.5.5." + AppSetting.g());
-            return;
-            paramArrayOfByte = (MSFNetTransportProvider)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.MSF_NET_TRANSPORT_PROVIDER_HANDLER);
-            paramArrayOfByte = new MQPSecServiceManager(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), paramArrayOfByte);
-          } while (paramArrayOfByte == null);
-          paramArrayOfByte = (MQPAPPScanService)paramArrayOfByte.a("app_scan");
-        } while (paramArrayOfByte == null);
-        paramArrayOfByte.a(((MsgBody)localObject).bytes_data.get().toByteArray());
+      paramArrayOfByte.printStackTrace();
+    }
+    if (((MsgBody)localObject1).has())
+    {
+      if (!((MsgBody)localObject1).uint32_sec_cmd.has()) {
         return;
-        localObject = ((MsgBody)localObject).bytes_data.get().toByteArray();
-        paramArrayOfByte = new AccountSecurityInfo.SecCheckBanner();
-        try
+      }
+      int i = ((MsgBody)localObject1).uint32_sec_cmd.get();
+      if (i != 1)
+      {
+        Object localObject2;
+        if (i != 2)
         {
-          paramArrayOfByte.mergeFrom((byte[])localObject);
-          localObject = paramArrayOfByte.str_wording.get();
-          int i = paramArrayOfByte.u32_timeToShow.get();
-          paramArrayOfByte = new Intent();
-          paramArrayOfByte.putExtra("wording", (String)localObject);
-          paramArrayOfByte.putExtra("timetowait", i);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.setSecDetBannerIntent(paramArrayOfByte);
-          return;
-        }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-        {
-          for (;;)
+          if (i != 4)
           {
-            localInvalidProtocolBufferMicroException.printStackTrace();
+            if (i != 6)
+            {
+              if (i != 7) {
+                return;
+              }
+              if (((MsgBody)localObject1).bytes_data.get() != null) {
+                QSecFramework.a().a(((MsgBody)localObject1).bytes_data.get().toByteArray());
+              }
+            }
+            else
+            {
+              new QPTxVerifyApkTimerTask(this.a, true).a();
+            }
+          }
+          else
+          {
+            localObject1 = ((MsgBody)localObject1).bytes_data.get().toByteArray();
+            paramArrayOfByte = new AccountSecurityInfo.SecCheckBanner();
+            try
+            {
+              paramArrayOfByte.mergeFrom((byte[])localObject1);
+            }
+            catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+            {
+              localInvalidProtocolBufferMicroException.printStackTrace();
+            }
+            localObject2 = paramArrayOfByte.str_wording.get();
+            i = paramArrayOfByte.u32_timeToShow.get();
+            paramArrayOfByte = new Intent();
+            paramArrayOfByte.putExtra("wording", (String)localObject2);
+            paramArrayOfByte.putExtra("timetowait", i);
+            this.a.setSecDetBannerIntent(paramArrayOfByte);
           }
         }
-        new QPTxVerifyApkTimerTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true).a();
-        return;
+        else
+        {
+          paramArrayOfByte = (MSFNetTransportProvider)this.a.getBusinessHandler(BusinessHandlerFactory.MSF_NET_TRANSPORT_PROVIDER_HANDLER);
+          paramArrayOfByte = (MQPIntChkService)new MQPSecServiceManager(this.a.getApp().getApplicationContext(), paramArrayOfByte).a("intchk");
+          if (paramArrayOfByte != null)
+          {
+            paramArrayOfByte.a(1, new MSFIntChkStrike(this.a, 1));
+            paramArrayOfByte.a(2, new MSFIntChkStrike(this.a, 2));
+            paramArrayOfByte.a(3, new MSFIntChkStrike(this.a, 3));
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("8.7.0.");
+            ((StringBuilder)localObject2).append(AppSetting.g());
+            paramArrayOfByte.b(((StringBuilder)localObject2).toString());
+          }
+        }
       }
-    } while (localInvalidProtocolBufferMicroException.bytes_data.get() == null);
-    QSecFramework.a().a(localInvalidProtocolBufferMicroException.bytes_data.get().toByteArray());
+      else
+      {
+        new m(this.a).a();
+      }
+    }
   }
-  
-  protected Class<? extends BusinessObserver> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.SafeCenterPushHandler
  * JD-Core Version:    0.7.0.1
  */

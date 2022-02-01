@@ -37,7 +37,7 @@ public class VideoShelfEngine
   private static final int REQUEST_CANCEL_SAVE = 108;
   private static final int START_SAVE = 101;
   private static final int STOP = 105;
-  private static final String TAG = VideoShelfEngine.class.getSimpleName();
+  private static final String TAG = "VideoShelfEngine";
   public static final int VIDEO_SHELF_VERSION_PAG = 1;
   public static final int VIDEO_SHELF_VERSION_WESEE = 0;
   private int canvasH;
@@ -72,15 +72,15 @@ public class VideoShelfEngine
   
   public VideoShelfEngine(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 0: 
-      this.mVideoShelfProcessor = new WeSeeVideoShelfProcessor();
+      if (paramInt != 1) {
+        return;
+      }
+      this.mVideoShelfProcessor = new PagVideoShelfProcessor();
       return;
     }
-    this.mVideoShelfProcessor = new PagVideoShelfProcessor();
+    this.mVideoShelfProcessor = new WeSeeVideoShelfProcessor();
   }
   
   public VideoShelfEngine(boolean paramBoolean)
@@ -96,128 +96,140 @@ public class VideoShelfEngine
       Log.e(TAG, "watermark bitmap illeagal.");
       return this.watermarkPosition;
     }
-    float f5 = 0.0F;
-    float f4 = 0.0F;
     float f8 = this.watermarkBmp.getWidth();
     float f7 = this.watermarkBmp.getHeight();
+    float f4 = 0.0F;
     if (((paramArrayOfFloat != null) && (paramArrayOfFloat.length == 0)) || (paramArrayOfFloat == null))
     {
-      f5 = paramInt1 / 2 - this.watermarkBmp.getWidth() / 2;
-      f4 = paramInt2 - 30.0F - this.watermarkBmp.getHeight();
+      f4 = paramInt1 / 2 - this.watermarkBmp.getWidth() / 2;
+      f5 = paramInt2 - 30.0F - this.watermarkBmp.getHeight();
     }
-    float f6 = f7;
+    else
+    {
+      f5 = 0.0F;
+    }
     float f3 = f8;
+    float f6 = f7;
     float f1 = f4;
     float f2 = f5;
-    if (paramArrayOfFloat != null)
-    {
-      if (paramArrayOfFloat.length != 1) {
-        break label289;
-      }
-      f2 = paramInt1 / 2 - this.watermarkBmp.getWidth() / 2;
-      f1 = paramArrayOfFloat[0];
-      f3 = f8;
-      f6 = f7;
-    }
-    for (;;)
-    {
-      this.watermarkPosition[0] = (f2 / paramInt1 * 2.0F - 1.0F);
-      this.watermarkPosition[1] = (f1 / paramInt2 * 2.0F - 1.0F);
-      this.watermarkPosition[2] = (f2 / paramInt1 * 2.0F - 1.0F);
-      this.watermarkPosition[3] = ((f1 + f6) / paramInt2 * 2.0F - 1.0F);
-      this.watermarkPosition[4] = ((f2 + f3) / paramInt1 * 2.0F - 1.0F);
-      this.watermarkPosition[5] = ((f6 + f1) / paramInt2 * 2.0F - 1.0F);
-      this.watermarkPosition[6] = ((f3 + f2) / paramInt1 * 2.0F - 1.0F);
-      this.watermarkPosition[7] = (f1 / paramInt2 * 2.0F - 1.0F);
-      return this.watermarkPosition;
-      label289:
-      if (paramArrayOfFloat.length == 2)
+    if (paramArrayOfFloat != null) {
+      if (paramArrayOfFloat.length == 1)
       {
+        f1 = paramInt1 / 2 - this.watermarkBmp.getWidth() / 2;
         f2 = paramArrayOfFloat[0];
-        f1 = paramArrayOfFloat[1];
-        f6 = f7;
         f3 = f8;
+        f6 = f7;
+      }
+      else if (paramArrayOfFloat.length == 2)
+      {
+        f1 = paramArrayOfFloat[0];
+        f2 = paramArrayOfFloat[1];
+        f3 = f8;
+        f6 = f7;
       }
       else if (paramArrayOfFloat.length == 3)
       {
-        f2 = paramArrayOfFloat[0];
-        f1 = paramArrayOfFloat[1];
+        f1 = paramArrayOfFloat[0];
+        f2 = paramArrayOfFloat[1];
         f3 = paramArrayOfFloat[2];
         f6 = f7;
       }
       else
       {
-        f6 = f7;
         f3 = f8;
+        f6 = f7;
         f1 = f4;
         f2 = f5;
         if (paramArrayOfFloat.length >= 4)
         {
-          f2 = paramArrayOfFloat[0];
-          f1 = paramArrayOfFloat[1];
+          f1 = paramArrayOfFloat[0];
+          f2 = paramArrayOfFloat[1];
           f3 = paramArrayOfFloat[2];
           f6 = paramArrayOfFloat[3];
         }
       }
     }
+    paramArrayOfFloat = this.watermarkPosition;
+    float f5 = paramInt1;
+    f7 = f1 / f5 * 2.0F - 1.0F;
+    paramArrayOfFloat[0] = f7;
+    f8 = paramInt2;
+    f4 = f2 / f8 * 2.0F - 1.0F;
+    paramArrayOfFloat[1] = f4;
+    paramArrayOfFloat[2] = f7;
+    f2 = (f2 + f6) / f8 * 2.0F - 1.0F;
+    paramArrayOfFloat[3] = f2;
+    f1 = (f1 + f3) / f5 * 2.0F - 1.0F;
+    paramArrayOfFloat[4] = f1;
+    paramArrayOfFloat[5] = f2;
+    paramArrayOfFloat[6] = f1;
+    paramArrayOfFloat[7] = f4;
+    return paramArrayOfFloat;
   }
   
   private int decodeFrame()
   {
-    if (this.mVideoShelfProcessor != null) {
-      return this.mVideoShelfProcessor.parseFrame();
+    IVideoShelfProcessor localIVideoShelfProcessor = this.mVideoShelfProcessor;
+    if (localIVideoShelfProcessor != null) {
+      return localIVideoShelfProcessor.parseFrame();
     }
     return -3;
   }
   
   private void draw()
   {
-    if (this.mVideoShelfProcessor != null) {}
-    for (Frame localFrame = this.mVideoShelfProcessor.draw();; localFrame = null)
+    Object localObject1 = this.mVideoShelfProcessor;
+    if (localObject1 != null) {
+      localObject1 = ((IVideoShelfProcessor)localObject1).draw();
+    } else {
+      localObject1 = null;
+    }
+    this.encodeFrame = ((Frame)localObject1);
+    this.lock.lock();
+    try
     {
-      this.encodeFrame = localFrame;
-      this.lock.lock();
-      try
+      if ((this.encodeFrame != null) && (this.watermarkFilter != null) && (this.enableWatermark))
       {
-        if ((this.encodeFrame != null) && (this.watermarkFilter != null) && (this.enableWatermark))
-        {
-          int i = RendererUtils.createTexture(this.watermarkBmp);
-          GlUtil.setBlendMode(true);
-          this.watermarkFilter.setPositions(this.watermarkPosition);
-          this.watermarkFilter.RenderProcess(i, this.encodeFrame.width, this.encodeFrame.height, -1, 0.0D, this.encodeFrame);
-          GlUtil.setBlendMode(false);
-        }
-        return;
+        int i = RendererUtils.createTexture(this.watermarkBmp);
+        GlUtil.setBlendMode(true);
+        this.watermarkFilter.setPositions(this.watermarkPosition);
+        this.watermarkFilter.RenderProcess(i, this.encodeFrame.width, this.encodeFrame.height, -1, 0.0D, this.encodeFrame);
+        GlUtil.setBlendMode(false);
       }
-      finally
-      {
-        this.lock.unlock();
-      }
+      return;
+    }
+    finally
+    {
+      this.lock.unlock();
     }
   }
   
   private void encodeFrame()
   {
-    if (this.encodeFrame == null) {}
-    do
+    Frame localFrame = this.encodeFrame;
+    if (localFrame == null) {
+      return;
+    }
+    if (this.mVideoShelfProcessor != null)
     {
-      do
+      this.mVideoEncoder.writeFrame(localFrame.getTextureId(), this.mVideoShelfProcessor.getCurFrameTimeStamp());
+      if (this.mCallback != null)
       {
-        return;
-      } while (this.mVideoShelfProcessor == null);
-      this.mVideoEncoder.writeFrame(this.encodeFrame.getTextureId(), this.mVideoShelfProcessor.getCurFrameTimeStamp());
-    } while (this.mCallback == null);
-    int i = this.mVideoShelfProcessor.getProgress();
-    this.mCallback.onProgress(i);
+        int i = this.mVideoShelfProcessor.getProgress();
+        this.mCallback.onProgress(i);
+      }
+    }
   }
   
   private void stop()
   {
-    if (this.mVideoShelfProcessor != null) {
-      this.mVideoShelfProcessor.clear();
+    Object localObject1 = this.mVideoShelfProcessor;
+    if (localObject1 != null) {
+      ((IVideoShelfProcessor)localObject1).clear();
     }
-    if (this.mVideoEncoder != null) {
-      this.mVideoEncoder.release();
+    localObject1 = this.mVideoEncoder;
+    if (localObject1 != null) {
+      ((AEEncoder)localObject1).release();
     }
     this.lock.lock();
     try
@@ -229,13 +241,14 @@ public class VideoShelfEngine
       }
       this.lock.unlock();
       BitmapUtils.recycle(this.watermarkBmp);
-      int[] arrayOfInt = new int[2];
-      arrayOfInt[0] = this.decodeTexture;
-      arrayOfInt[1] = this.encodeTexture;
-      GLES20.glDeleteBuffers(arrayOfInt.length, arrayOfInt, 0);
-      if (this.mHandler != null)
+      localObject1 = new int[2];
+      localObject1[0] = this.decodeTexture;
+      localObject1[1] = this.encodeTexture;
+      GLES20.glDeleteBuffers(localObject1.length, (int[])localObject1, 0);
+      localObject1 = this.mHandler;
+      if (localObject1 != null)
       {
-        this.mHandler.sendEmptyMessage(106);
+        ((Handler)localObject1).sendEmptyMessage(106);
         this.mHandler.sendEmptyMessage(107);
       }
       return;
@@ -248,8 +261,9 @@ public class VideoShelfEngine
   
   public void cancelSave()
   {
-    if (this.mHandler != null) {
-      this.mHandler.sendEmptyMessage(108);
+    Handler localHandler = this.mHandler;
+    if (localHandler != null) {
+      localHandler.sendEmptyMessage(108);
     }
   }
   
@@ -264,8 +278,9 @@ public class VideoShelfEngine
     GlUtil.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
     this.decodeTexture = arrayOfInt[0];
     this.encodeTexture = arrayOfInt[1];
-    if (this.mVideoShelfProcessor != null) {
-      this.mVideoShelfProcessor.init(arrayOfInt, this.mVideoFrameItemList, this.mNodeGroupList);
+    IVideoShelfProcessor localIVideoShelfProcessor = this.mVideoShelfProcessor;
+    if (localIVideoShelfProcessor != null) {
+      localIVideoShelfProcessor.init(arrayOfInt, this.mVideoFrameItemList, this.mNodeGroupList);
     }
     this.mVideoEncoder = AECoderFactory.createEncoder(this.mOutputVideo, this.canvasW, this.canvasH);
     this.watermarkFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
@@ -277,8 +292,9 @@ public class VideoShelfEngine
     this.mHandler = new Handler(HandlerThreadManager.getInstance().getHandlerThread(HandlerThreadTag.VIDEO_SHELF_SAVE).getLooper(), this.mMessageCallback);
     this.canvasW = paramInt1;
     this.canvasH = paramInt2;
-    if (this.mVideoShelfProcessor != null) {
-      this.mVideoShelfProcessor.setParam("outVideoWidthHeight", new int[] { this.canvasW, this.canvasH });
+    IVideoShelfProcessor localIVideoShelfProcessor = this.mVideoShelfProcessor;
+    if (localIVideoShelfProcessor != null) {
+      localIVideoShelfProcessor.setParam("outVideoWidthHeight", new int[] { this.canvasW, this.canvasH });
     }
     this.mHandler.sendEmptyMessage(100);
     this.mHandler.sendEmptyMessage(101);
@@ -291,8 +307,9 @@ public class VideoShelfEngine
   
   public void setLutPath(String paramString)
   {
-    if ((this.mVideoShelfProcessor instanceof WeSeeVideoShelfProcessor)) {
-      this.mVideoShelfProcessor.setParam("WeSeeVideoShelfProcessor_2", paramString);
+    IVideoShelfProcessor localIVideoShelfProcessor = this.mVideoShelfProcessor;
+    if ((localIVideoShelfProcessor instanceof WeSeeVideoShelfProcessor)) {
+      localIVideoShelfProcessor.setParam("WeSeeVideoShelfProcessor_2", paramString);
     }
   }
   
@@ -308,16 +325,19 @@ public class VideoShelfEngine
   
   public void setParam(String paramString, Object paramObject)
   {
-    if (this.mVideoShelfProcessor != null) {
-      this.mVideoShelfProcessor.setParam(paramString, paramObject);
+    IVideoShelfProcessor localIVideoShelfProcessor = this.mVideoShelfProcessor;
+    if (localIVideoShelfProcessor != null) {
+      localIVideoShelfProcessor.setParam(paramString, paramObject);
     }
   }
   
   public void setSrcPath(String paramString)
   {
-    String str = "WeSeeVideoShelfProcessor_1";
+    String str;
     if ((this.mVideoShelfProcessor instanceof PagVideoShelfProcessor)) {
       str = "PagVideoShelfProcessor_0";
+    } else {
+      str = "WeSeeVideoShelfProcessor_1";
     }
     this.mVideoShelfProcessor.setParam(str, paramString);
   }
@@ -329,8 +349,9 @@ public class VideoShelfEngine
   
   public void setVideoTemplateType(int paramInt)
   {
-    if ((this.mVideoShelfProcessor instanceof WeSeeVideoShelfProcessor)) {
-      this.mVideoShelfProcessor.setParam("WeSeeVideoShelfProcessor_3", Integer.valueOf(paramInt));
+    IVideoShelfProcessor localIVideoShelfProcessor = this.mVideoShelfProcessor;
+    if ((localIVideoShelfProcessor instanceof WeSeeVideoShelfProcessor)) {
+      localIVideoShelfProcessor.setParam("WeSeeVideoShelfProcessor_3", Integer.valueOf(paramInt));
     }
   }
   
@@ -351,7 +372,7 @@ public class VideoShelfEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.videoshelf.model.VideoShelfEngine
  * JD-Core Version:    0.7.0.1
  */

@@ -7,16 +7,15 @@ import android.text.TextUtils;
 import com.tencent.qqmini.sdk.core.ReportConst;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.utils.FileUtils;
-import com.tencent.qqmini.sdk.core.utils.ZipUtil;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
-import com.tencent.qqmini.sdk.launcher.utils.StorageUtil;
 import com.tencent.qqmini.sdk.report.MiniReportManager;
 import com.tencent.qqmini.sdk.utils.DebugUtil;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
@@ -32,70 +31,27 @@ public class EngineInstaller
   private boolean isWorking = false;
   private List<EngineInstaller.Callback> mCallbacks = new ArrayList();
   
-  /* Error */
   private static String getInstallLibDir(File paramFile, EngineVersion paramEngineVersion)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: new 59	java/io/File
-    //   6: dup
-    //   7: aload_0
-    //   8: aload_1
-    //   9: invokevirtual 65	com/tencent/qqmini/sdk/manager/EngineVersion:toFolderName	()Ljava/lang/String;
-    //   12: invokespecial 68	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   15: astore_0
-    //   16: ldc 8
-    //   18: new 70	java/lang/StringBuilder
-    //   21: dup
-    //   22: invokespecial 71	java/lang/StringBuilder:<init>	()V
-    //   25: ldc 73
-    //   27: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: aload_0
-    //   31: invokevirtual 80	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   34: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   40: invokestatic 89	com/tencent/qqmini/sdk/launcher/log/QMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   43: aload_0
-    //   44: invokevirtual 93	java/io/File:exists	()Z
-    //   47: ifne +44 -> 91
-    //   50: aload_0
-    //   51: invokevirtual 96	java/io/File:mkdirs	()Z
-    //   54: ifne +37 -> 91
-    //   57: ldc 8
-    //   59: new 70	java/lang/StringBuilder
-    //   62: dup
-    //   63: invokespecial 71	java/lang/StringBuilder:<init>	()V
-    //   66: ldc 98
-    //   68: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   71: aload_0
-    //   72: invokevirtual 80	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   75: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   78: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   81: invokestatic 101	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   84: aconst_null
-    //   85: astore_0
-    //   86: ldc 2
-    //   88: monitorexit
-    //   89: aload_0
-    //   90: areturn
-    //   91: aload_0
-    //   92: invokevirtual 80	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   95: astore_0
-    //   96: goto -10 -> 86
-    //   99: astore_0
-    //   100: ldc 2
-    //   102: monitorexit
-    //   103: aload_0
-    //   104: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	105	0	paramFile	File
-    //   0	105	1	paramEngineVersion	EngineVersion
-    // Exception table:
-    //   from	to	target	type
-    //   3	84	99	finally
-    //   91	96	99	finally
+    try
+    {
+      paramFile = new File(paramFile, paramEngineVersion.toFolderName());
+      paramEngineVersion = new StringBuilder();
+      paramEngineVersion.append("[MiniEng]getInstallLibDir ");
+      paramEngineVersion.append(paramFile.getAbsolutePath());
+      QMLog.i("EngineInstaller", paramEngineVersion.toString());
+      if ((!paramFile.exists()) && (!paramFile.mkdirs()))
+      {
+        paramEngineVersion = new StringBuilder();
+        paramEngineVersion.append("[MiniEng] getInstallLibDir failed, is disk writable? ");
+        paramEngineVersion.append(paramFile.getAbsolutePath());
+        QMLog.e("EngineInstaller", paramEngineVersion.toString());
+        return null;
+      }
+      paramFile = paramFile.getAbsolutePath();
+      return paramFile;
+    }
+    finally {}
   }
   
   public static ArrayList<InstalledEngine> getInstalledEngine(int paramInt)
@@ -112,20 +68,31 @@ public class EngineInstaller
           localArrayList.add(localInstalledEngine);
         }
       }
+      return localArrayList;
     }
     finally {}
-    return localArrayList1;
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   private static File getRootDir()
   {
     if (sRootDir == null)
     {
-      File localFile = new File(AppLoaderFactory.g().getContext().getFilesDir().getPath() + "/xminilib/");
-      if ((!localFile.exists()) && (!localFile.mkdirs())) {
-        QMLog.e("EngineInstaller", "[MiniEng] dir mk failed " + localFile);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(AppLoaderFactory.g().getContext().getFilesDir().getPath());
+      ((StringBuilder)localObject).append("/xminilib/");
+      localObject = new File(((StringBuilder)localObject).toString());
+      if ((!((File)localObject).exists()) && (!((File)localObject).mkdirs()))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[MiniEng] dir mk failed ");
+        localStringBuilder.append(localObject);
+        QMLog.e("EngineInstaller", localStringBuilder.toString());
       }
-      sRootDir = localFile;
+      sRootDir = (File)localObject;
     }
     return sRootDir;
   }
@@ -135,7 +102,7 @@ public class EngineInstaller
     return AppLoaderFactory.g().getContext().getSharedPreferences(SP_NAME, 0);
   }
   
-  private boolean handleUnZipResult(String paramString1, EngineVersion paramEngineVersion, String paramString2, boolean paramBoolean1, String paramString3, int paramInt, boolean paramBoolean2)
+  private boolean handleUnZipResult(String paramString1, EngineVersion paramEngineVersion, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
   {
     if (paramInt == 0) {}
     try
@@ -143,37 +110,37 @@ public class EngineInstaller
       Thread.sleep(100L);
       updateMessage(1.0F, "正在校验引擎");
     }
-    catch (InterruptedException localInterruptedException1)
+    catch (InterruptedException paramString2)
     {
       try
       {
         Thread.sleep(100L);
         label24:
-        paramBoolean2 = verifyBaselib(paramString2, paramString3);
-        boolean bool;
-        if ((paramInt == 0) && (paramBoolean2))
-        {
-          QMLog.i("EngineInstaller", "[MiniEng]unZip succeed. url:" + paramString1 + ", version:" + paramEngineVersion + ",unzipPath:" + paramString3);
-          updateInstalledEngine();
-          bool = true;
-        }
-        do
-        {
-          return bool;
-          QMLog.i("EngineInstaller", "[MiniEng]unZip failed. url:" + paramString1 + ", version:" + paramEngineVersion + ",unzipPath:" + paramString3);
-          FileUtils.delete(paramString3, false);
-          if (paramInt != 0)
-          {
-            updateMessage(0.0F, "引擎解压缩失败");
-            return paramBoolean1;
-          }
-          bool = paramBoolean1;
-        } while (paramBoolean2);
-        updateMessage(0.0F, "引擎安装失败");
-        return paramBoolean1;
-        localInterruptedException1 = localInterruptedException1;
+        paramString2 = new StringBuilder();
+        paramString2.append("[MiniEng]unZip succeed. url:");
+        paramString2.append(paramString1);
+        paramString2.append(", version:");
+        paramString2.append(paramEngineVersion);
+        paramString2.append(",unzipPath:");
+        paramString2.append(paramString3);
+        QMLog.i("EngineInstaller", paramString2.toString());
+        getSp().edit().putBoolean(paramString3, true).commit();
+        updateInstalledEngine();
+        return true;
+        paramString2 = new StringBuilder();
+        paramString2.append("[MiniEng]unZip failed. url:");
+        paramString2.append(paramString1);
+        paramString2.append(", version:");
+        paramString2.append(paramEngineVersion);
+        paramString2.append(",unzipPath:");
+        paramString2.append(paramString3);
+        QMLog.i("EngineInstaller", paramString2.toString());
+        FileUtils.delete(paramString3, false);
+        updateMessage(0.0F, "引擎解压缩失败");
+        return paramBoolean;
+        paramString2 = paramString2;
       }
-      catch (InterruptedException localInterruptedException2)
+      catch (InterruptedException paramString2)
       {
         break label24;
       }
@@ -185,11 +152,19 @@ public class EngineInstaller
     try
     {
       updateMessage(0.0F, "正在解压缩本地引擎");
-      QMLog.i("EngineInstaller", "[MiniEng] installLocalEngine start url=" + paramString1 + ",installBasePath=" + paramString2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[MiniEng] installLocalEngine start url=");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(",installBasePath=");
+      localStringBuilder.append(paramString2);
+      QMLog.i("EngineInstaller", localStringBuilder.toString());
       if (TextUtils.isEmpty(paramString2))
       {
         updateMessage(0.0F, "本地引擎安装失败, 目录为空");
-        QMLog.e("EngineInstaller", "[MiniEng] installLocalEngine failed installBasePath=" + paramString2);
+        paramString1 = new StringBuilder();
+        paramString1.append("[MiniEng] installLocalEngine failed installBasePath=");
+        paramString1.append(paramString2);
+        QMLog.e("EngineInstaller", paramString1.toString());
         workFinish();
         return;
       }
@@ -197,32 +172,45 @@ public class EngineInstaller
       if ((!paramString1.exists()) && (!paramString1.mkdir()))
       {
         updateMessage(0.0F, "本地引擎安装失败, 创建目录失败");
-        QMLog.e("EngineInstaller", "[MiniEng] installLocalEngine failed targetPath=" + paramString1);
+        paramString2 = new StringBuilder();
+        paramString2.append("[MiniEng] installLocalEngine failed targetPath=");
+        paramString2.append(paramString1);
+        QMLog.e("EngineInstaller", paramString2.toString());
         workFinish();
         return;
       }
-    }
-    finally {}
-    BaseLibManager.g().installMiniGameInnerJsLib();
-    QMLog.i("EngineInstaller", "[MiniEng] installLocalEngine finish copied " + paramLong2 + "<>" + paramLong1);
-    if ((paramLong2 == paramLong1) || (paramLong1 < 0L))
-    {
-      getSp().edit().putBoolean(paramString2, true).commit();
-      updateInstalledEngine();
-      updateMessage(1.0F, "本地引擎安装完成");
-    }
-    for (;;)
-    {
+      BaseLibManager.g().installMiniGameInnerJsLib();
+      paramString1 = new StringBuilder();
+      paramString1.append("[MiniEng] installLocalEngine finish copied ");
+      paramString1.append(paramLong2);
+      paramString1.append("<>");
+      paramString1.append(paramLong1);
+      QMLog.i("EngineInstaller", paramString1.toString());
+      if ((paramLong2 != paramLong1) && (paramLong1 >= 0L))
+      {
+        updateMessage(0.0F, "本地引擎安装失败");
+      }
+      else
+      {
+        getSp().edit().putBoolean(paramString2, true).commit();
+        updateInstalledEngine();
+        updateMessage(1.0F, "本地引擎安装完成");
+      }
       workFinish();
       return;
-      updateMessage(0.0F, "本地引擎安装失败");
     }
+    finally {}
   }
   
   private void installedFromNetwork(BaseLibInfo paramBaseLibInfo, String paramString, long paramLong, File paramFile, EngineVersion paramEngineVersion, boolean paramBoolean)
   {
-    String str = AppLoaderFactory.g().getContext().getCacheDir() + File.separator + UUID.randomUUID() + ".zip";
-    ((DownloaderProxy)ProxyManager.get(DownloaderProxy.class)).download(paramString, null, str, 60, new EngineInstaller.2(this, paramString, paramBaseLibInfo, str, paramLong, paramFile, paramEngineVersion, paramBoolean));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(AppLoaderFactory.g().getContext().getCacheDir());
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(UUID.randomUUID());
+    ((StringBuilder)localObject).append(".zip");
+    localObject = ((StringBuilder)localObject).toString();
+    ((DownloaderProxy)ProxyManager.get(DownloaderProxy.class)).download(paramString, null, (String)localObject, 60, new EngineInstaller.2(this, paramString, paramBaseLibInfo, (String)localObject, paramLong, paramFile, paramEngineVersion, paramBoolean));
     if (paramBaseLibInfo.baseLibType == 2) {
       MiniReportManager.reportEventType(ReportConst.miniAppConfigForPreload(), 4, "1");
     }
@@ -268,23 +256,28 @@ public class EngineInstaller
   
   public static void removeEngine(InstalledEngine paramInstalledEngine)
   {
-    if (paramInstalledEngine == null) {}
-    for (;;)
-    {
+    if (paramInstalledEngine == null) {
       return;
-      try
-      {
-        QMLog.i("EngineInstaller", "[MiniEng] removeEngine " + paramInstalledEngine);
-        paramInstalledEngine.deleteFiles();
-        sInstalledEngine.remove(paramInstalledEngine);
-      }
-      finally {}
+    }
+    try
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[MiniEng] removeEngine ");
+      localStringBuilder.append(paramInstalledEngine);
+      QMLog.i("EngineInstaller", localStringBuilder.toString());
+      paramInstalledEngine.deleteFiles();
+      sInstalledEngine.remove(paramInstalledEngine);
+      return;
+    }
+    finally
+    {
+      paramInstalledEngine = finally;
+      throw paramInstalledEngine;
     }
   }
   
   public static void removeOldEngine(int paramInt)
   {
-    Object localObject2;
     try
     {
       if (sInstalledEngine == null)
@@ -293,492 +286,395 @@ public class EngineInstaller
         return;
       }
       ArrayList localArrayList = new ArrayList();
-      localObject2 = sInstalledEngine.iterator();
+      Object localObject2 = sInstalledEngine.iterator();
+      Object localObject3;
       while (((Iterator)localObject2).hasNext())
       {
-        InstalledEngine localInstalledEngine = (InstalledEngine)((Iterator)localObject2).next();
-        if (localInstalledEngine.engineType == paramInt) {
-          localArrayList.add(localInstalledEngine);
+        localObject3 = (InstalledEngine)((Iterator)localObject2).next();
+        if (((InstalledEngine)localObject3).engineType == paramInt) {
+          localArrayList.add(localObject3);
         }
       }
-      j = localObject1.size();
+      int j = localArrayList.size();
+      paramInt = 0;
+      int i = 1;
+      while ((j > 1) && (paramInt < j))
+      {
+        localObject2 = (InstalledEngine)localArrayList.get(paramInt);
+        if (((InstalledEngine)localObject2).isPersist)
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("[MiniEng] removeOldEngine ");
+          ((StringBuilder)localObject3).append(localObject2);
+          ((StringBuilder)localObject3).append(" isPersist, so not deleted");
+          QMLog.i("EngineInstaller", ((StringBuilder)localObject3).toString());
+        }
+        else
+        {
+          if (i == 0)
+          {
+            ((InstalledEngine)localObject2).deleteFiles();
+            sInstalledEngine.remove(localObject2);
+          }
+          else
+          {
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("[MiniEng] removeOldEngine ");
+            ((StringBuilder)localObject3).append(localObject2);
+            ((StringBuilder)localObject3).append("  is latest, so kept");
+            QMLog.i("EngineInstaller", ((StringBuilder)localObject3).toString());
+          }
+          i = 0;
+        }
+        paramInt += 1;
+      }
+      return;
     }
     finally {}
-    int j;
-    int i = 0;
-    paramInt = 1;
-    label99:
-    if ((j > 1) && (i < j))
-    {
-      localObject2 = (InstalledEngine)localObject1.get(i);
-      if (((InstalledEngine)localObject2).isPersist)
-      {
-        QMLog.i("EngineInstaller", "[MiniEng] removeOldEngine " + localObject2 + " isPersist, so not deleted");
-      }
-      else
-      {
-        if (paramInt == 0)
-        {
-          ((InstalledEngine)localObject2).deleteFiles();
-          sInstalledEngine.remove(localObject2);
-          break label229;
-        }
-        QMLog.i("EngineInstaller", "[MiniEng] removeOldEngine " + localObject2 + "  is latest, so kept");
-        break label229;
-      }
-    }
     for (;;)
     {
-      i += 1;
-      break label99;
-      break;
-      label229:
-      paramInt = 0;
+      throw localObject1;
     }
   }
   
   public static void removeOutDatedEngine(int paramInt)
   {
-    label286:
-    for (;;)
+    try
     {
-      Object localObject2;
-      InstalledEngine localInstalledEngine;
-      try
+      if (sInstalledEngine == null)
       {
-        if (sInstalledEngine == null)
-        {
-          QMLog.e("EngineInstaller", "[MiniEng]removeOutDatedEngine null");
-          return;
-        }
-        localObject2 = new ArrayList();
-        Iterator localIterator = sInstalledEngine.iterator();
-        if (localIterator.hasNext())
-        {
-          localInstalledEngine = (InstalledEngine)localIterator.next();
-          if (localInstalledEngine.engineType != paramInt) {
-            continue;
-          }
-          ((List)localObject2).add(localInstalledEngine);
-          continue;
-        }
-        if (paramInt != 2) {}
+        QMLog.e("EngineInstaller", "[MiniEng]removeOutDatedEngine null");
+        return;
       }
-      finally {}
-      for (EngineVersion localEngineVersion = LocalGameEngine.g().mLocalEngineVersion;; localEngineVersion = null)
+      Object localObject3 = new ArrayList();
+      Object localObject1 = sInstalledEngine.iterator();
+      InstalledEngine localInstalledEngine;
+      while (((Iterator)localObject1).hasNext())
       {
-        if (localEngineVersion == null) {
-          break label286;
+        localInstalledEngine = (InstalledEngine)((Iterator)localObject1).next();
+        if (localInstalledEngine.engineType == paramInt) {
+          ((List)localObject3).add(localInstalledEngine);
         }
-        localObject2 = ((List)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
+      }
+      localObject1 = null;
+      if (paramInt == 2) {
+        localObject1 = LocalGameEngine.g().mLocalEngineVersion;
+      }
+      if (localObject1 != null)
+      {
+        localObject3 = ((List)localObject3).iterator();
+        while (((Iterator)localObject3).hasNext())
         {
-          localInstalledEngine = (InstalledEngine)((Iterator)localObject2).next();
-          if (localInstalledEngine.engineVersion.compareTo(localEngineVersion) < 0)
+          localInstalledEngine = (InstalledEngine)((Iterator)localObject3).next();
+          StringBuilder localStringBuilder;
+          if (localInstalledEngine.engineVersion.compareTo((EngineVersion)localObject1) < 0)
           {
-            QMLog.i("EngineInstaller", "[MiniEng] removeOutDatedEngine " + localInstalledEngine + " localMinVer:" + localEngineVersion + ",engineType:" + paramInt);
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("[MiniEng] removeOutDatedEngine ");
+            localStringBuilder.append(localInstalledEngine);
+            localStringBuilder.append(" localMinVer:");
+            localStringBuilder.append(localObject1);
+            localStringBuilder.append(",engineType:");
+            localStringBuilder.append(paramInt);
+            QMLog.i("EngineInstaller", localStringBuilder.toString());
             localInstalledEngine.deleteFiles();
             sInstalledEngine.remove(localInstalledEngine);
           }
           else if ((localInstalledEngine.isPersist) && (!isCurrentPersistGameEngine(new File(localInstalledEngine.engineDir))))
           {
-            QMLog.i("EngineInstaller", "[MiniEng] removeOutDatedPersistEngine " + localInstalledEngine + " localMinVer:" + localEngineVersion + ",engineType:" + paramInt);
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("[MiniEng] removeOutDatedPersistEngine ");
+            localStringBuilder.append(localInstalledEngine);
+            localStringBuilder.append(" localMinVer:");
+            localStringBuilder.append(localObject1);
+            localStringBuilder.append(",engineType:");
+            localStringBuilder.append(paramInt);
+            QMLog.i("EngineInstaller", localStringBuilder.toString());
             localInstalledEngine.deleteFiles();
             sInstalledEngine.remove(localInstalledEngine);
           }
         }
-        break;
       }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
-  /* Error */
   private static List<InstalledEngine> scanInstalledEngine()
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: ldc 8
-    //   5: ldc_w 420
-    //   8: invokestatic 89	com/tencent/qqmini/sdk/launcher/log/QMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   11: invokestatic 426	java/lang/System:currentTimeMillis	()J
-    //   14: lstore 5
-    //   16: new 35	java/util/ArrayList
-    //   19: dup
-    //   20: invokespecial 36	java/util/ArrayList:<init>	()V
-    //   23: astore 7
-    //   25: invokestatic 428	com/tencent/qqmini/sdk/manager/EngineInstaller:getRootDir	()Ljava/io/File;
-    //   28: astore 8
-    //   30: aload 8
-    //   32: invokevirtual 93	java/io/File:exists	()Z
-    //   35: ifeq +344 -> 379
-    //   38: aload 8
-    //   40: invokevirtual 347	java/io/File:isDirectory	()Z
-    //   43: ifeq +336 -> 379
-    //   46: aload 8
-    //   48: invokevirtual 351	java/io/File:listFiles	()[Ljava/io/File;
-    //   51: ifnull +328 -> 379
-    //   54: aload 8
-    //   56: invokevirtual 351	java/io/File:listFiles	()[Ljava/io/File;
-    //   59: astore 8
-    //   61: aload 8
-    //   63: arraylength
-    //   64: istore_2
-    //   65: iconst_0
-    //   66: istore_0
-    //   67: iload_0
-    //   68: iload_2
-    //   69: if_icmpge +310 -> 379
-    //   72: aload 8
-    //   74: iload_0
-    //   75: aaload
-    //   76: astore 9
-    //   78: aload 9
-    //   80: invokevirtual 93	java/io/File:exists	()Z
-    //   83: ifeq +289 -> 372
-    //   86: aload 9
-    //   88: invokevirtual 347	java/io/File:isDirectory	()Z
-    //   91: ifeq +281 -> 372
-    //   94: aload 9
-    //   96: invokevirtual 351	java/io/File:listFiles	()[Ljava/io/File;
-    //   99: astore 10
-    //   101: aload 10
-    //   103: ifnull +269 -> 372
-    //   106: aload 9
-    //   108: invokevirtual 325	java/io/File:getName	()Ljava/lang/String;
-    //   111: invokestatic 434	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   114: istore_3
-    //   115: aload 9
-    //   117: invokevirtual 351	java/io/File:listFiles	()[Ljava/io/File;
-    //   120: astore 9
-    //   122: aload 9
-    //   124: arraylength
-    //   125: istore 4
-    //   127: iconst_0
-    //   128: istore_1
-    //   129: iload_1
-    //   130: iload 4
-    //   132: if_icmpge +240 -> 372
-    //   135: aload 9
-    //   137: iload_1
-    //   138: aaload
-    //   139: astore 10
-    //   141: new 125	com/tencent/qqmini/sdk/manager/InstalledEngine
-    //   144: dup
-    //   145: invokespecial 435	com/tencent/qqmini/sdk/manager/InstalledEngine:<init>	()V
-    //   148: astore 11
-    //   150: aload 11
-    //   152: iload_3
-    //   153: putfield 129	com/tencent/qqmini/sdk/manager/InstalledEngine:engineType	I
-    //   156: aload 11
-    //   158: aload 10
-    //   160: invokevirtual 325	java/io/File:getName	()Ljava/lang/String;
-    //   163: invokestatic 329	com/tencent/qqmini/sdk/manager/EngineVersion:fromFolderName	(Ljava/lang/String;)Lcom/tencent/qqmini/sdk/manager/EngineVersion;
-    //   166: putfield 394	com/tencent/qqmini/sdk/manager/InstalledEngine:engineVersion	Lcom/tencent/qqmini/sdk/manager/EngineVersion;
-    //   169: aload 11
-    //   171: getfield 394	com/tencent/qqmini/sdk/manager/InstalledEngine:engineVersion	Lcom/tencent/qqmini/sdk/manager/EngineVersion;
-    //   174: ifnonnull +91 -> 265
-    //   177: new 437	java/lang/IllegalStateException
-    //   180: dup
-    //   181: new 70	java/lang/StringBuilder
-    //   184: dup
-    //   185: invokespecial 71	java/lang/StringBuilder:<init>	()V
-    //   188: ldc_w 439
-    //   191: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   194: aload 10
-    //   196: invokevirtual 325	java/io/File:getName	()Ljava/lang/String;
-    //   199: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   202: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   205: invokespecial 440	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
-    //   208: athrow
-    //   209: astore 11
-    //   211: ldc 8
-    //   213: new 70	java/lang/StringBuilder
-    //   216: dup
-    //   217: invokespecial 71	java/lang/StringBuilder:<init>	()V
-    //   220: ldc_w 442
-    //   223: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   226: aload 10
-    //   228: invokevirtual 80	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   231: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   234: aload 11
-    //   236: invokestatic 448	com/tencent/qqmini/sdk/utils/DebugUtil:getPrintableStackTrace	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   239: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   242: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   245: invokestatic 89	com/tencent/qqmini/sdk/launcher/log/QMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   248: aload 10
-    //   250: invokevirtual 80	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   253: iconst_0
-    //   254: invokestatic 203	com/tencent/qqmini/sdk/core/utils/FileUtils:delete	(Ljava/lang/String;Z)J
-    //   257: pop2
-    //   258: iload_1
-    //   259: iconst_1
-    //   260: iadd
-    //   261: istore_1
-    //   262: goto -133 -> 129
-    //   265: aload 11
-    //   267: aload 10
-    //   269: invokevirtual 80	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   272: putfield 410	com/tencent/qqmini/sdk/manager/InstalledEngine:engineDir	Ljava/lang/String;
-    //   275: aload 11
-    //   277: aload 11
-    //   279: invokestatic 452	com/tencent/qqmini/sdk/manager/EngineInstaller:verifyEngine	(Lcom/tencent/qqmini/sdk/manager/InstalledEngine;)Z
-    //   282: putfield 455	com/tencent/qqmini/sdk/manager/InstalledEngine:isVerify	Z
-    //   285: aload 11
-    //   287: getfield 455	com/tencent/qqmini/sdk/manager/InstalledEngine:isVerify	Z
-    //   290: ifne +22 -> 312
-    //   293: new 437	java/lang/IllegalStateException
-    //   296: dup
-    //   297: ldc_w 457
-    //   300: invokespecial 440	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
-    //   303: athrow
-    //   304: astore 7
-    //   306: ldc 2
-    //   308: monitorexit
-    //   309: aload 7
-    //   311: athrow
-    //   312: aload 11
-    //   314: getfield 129	com/tencent/qqmini/sdk/manager/InstalledEngine:engineType	I
-    //   317: iconst_2
-    //   318: if_icmpne +32 -> 350
-    //   321: aload 11
-    //   323: ldc_w 459
-    //   326: putfield 462	com/tencent/qqmini/sdk/manager/InstalledEngine:engineName	Ljava/lang/String;
-    //   329: aload 11
-    //   331: aload 10
-    //   333: invokestatic 344	com/tencent/qqmini/sdk/manager/EngineInstaller:isPersistGameEngine	(Ljava/io/File;)Z
-    //   336: putfield 382	com/tencent/qqmini/sdk/manager/InstalledEngine:isPersist	Z
-    //   339: aload 7
-    //   341: aload 11
-    //   343: invokevirtual 133	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   346: pop
-    //   347: goto -89 -> 258
-    //   350: aload 11
-    //   352: getfield 129	com/tencent/qqmini/sdk/manager/InstalledEngine:engineType	I
-    //   355: iconst_3
-    //   356: if_icmpne -17 -> 339
-    //   359: aload 11
-    //   361: ldc_w 464
-    //   364: putfield 462	com/tencent/qqmini/sdk/manager/InstalledEngine:engineName	Ljava/lang/String;
-    //   367: goto -28 -> 339
-    //   370: astore 9
-    //   372: iload_0
-    //   373: iconst_1
-    //   374: iadd
-    //   375: istore_0
-    //   376: goto -309 -> 67
-    //   379: aload 7
-    //   381: invokestatic 470	java/util/Collections:reverseOrder	()Ljava/util/Comparator;
-    //   384: invokestatic 474	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
-    //   387: ldc 8
-    //   389: new 70	java/lang/StringBuilder
-    //   392: dup
-    //   393: invokespecial 71	java/lang/StringBuilder:<init>	()V
-    //   396: ldc_w 476
-    //   399: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   402: invokestatic 426	java/lang/System:currentTimeMillis	()J
-    //   405: lload 5
-    //   407: lsub
-    //   408: invokevirtual 245	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   411: ldc_w 478
-    //   414: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   417: aload 7
-    //   419: invokevirtual 479	java/util/ArrayList:size	()I
-    //   422: invokevirtual 407	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   425: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   428: invokestatic 89	com/tencent/qqmini/sdk/launcher/log/QMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   431: ldc 2
-    //   433: monitorexit
-    //   434: aload 7
-    //   436: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   66	310	0	i	int
-    //   128	134	1	j	int
-    //   64	6	2	k	int
-    //   114	39	3	m	int
-    //   125	8	4	n	int
-    //   14	392	5	l	long
-    //   23	1	7	localArrayList	ArrayList
-    //   304	131	7	localList	List
-    //   28	45	8	localObject1	Object
-    //   76	60	9	arrayOfFile	File[]
-    //   370	1	9	localException1	Exception
-    //   99	233	10	localObject2	Object
-    //   148	22	11	localInstalledEngine	InstalledEngine
-    //   209	151	11	localException2	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   141	209	209	java/lang/Exception
-    //   265	304	209	java/lang/Exception
-    //   312	339	209	java/lang/Exception
-    //   339	347	209	java/lang/Exception
-    //   350	367	209	java/lang/Exception
-    //   3	65	304	finally
-    //   78	101	304	finally
-    //   106	115	304	finally
-    //   115	127	304	finally
-    //   141	209	304	finally
-    //   211	258	304	finally
-    //   265	304	304	finally
-    //   312	339	304	finally
-    //   339	347	304	finally
-    //   350	367	304	finally
-    //   379	431	304	finally
-    //   106	115	370	java/lang/Exception
+    try
+    {
+      QMLog.i("EngineInstaller", "[MiniEng] scanInstalledEngine");
+      l = System.currentTimeMillis();
+      localArrayList = new ArrayList();
+      localObject2 = getRootDir();
+      if ((!((File)localObject2).exists()) || (!((File)localObject2).isDirectory()) || (((File)localObject2).listFiles() == null)) {
+        break label381;
+      }
+      localObject2 = ((File)localObject2).listFiles();
+      k = localObject2.length;
+      i = 0;
+    }
+    finally
+    {
+      for (;;)
+      {
+        int i;
+        int j;
+        try
+        {
+          long l;
+          ArrayList localArrayList;
+          int k;
+          int m = Integer.parseInt(arrayOfFile.getName());
+          File[] arrayOfFile = arrayOfFile.listFiles();
+          int n = arrayOfFile.length;
+          j = 0;
+          if (j >= n) {
+            break label481;
+          }
+          Object localObject3 = arrayOfFile[j];
+          try
+          {
+            Object localObject4 = new InstalledEngine();
+            ((InstalledEngine)localObject4).engineType = m;
+            ((InstalledEngine)localObject4).engineVersion = EngineVersion.fromFolderName(((File)localObject3).getName());
+            if (((InstalledEngine)localObject4).engineVersion != null)
+            {
+              ((InstalledEngine)localObject4).engineDir = ((File)localObject3).getAbsolutePath();
+              ((InstalledEngine)localObject4).isVerify = verifyEngine((InstalledEngine)localObject4);
+              if (((InstalledEngine)localObject4).isVerify)
+              {
+                if (((InstalledEngine)localObject4).engineType == 2)
+                {
+                  ((InstalledEngine)localObject4).engineName = "MiniGame";
+                  ((InstalledEngine)localObject4).isPersist = isPersistGameEngine((File)localObject3);
+                }
+                else if (((InstalledEngine)localObject4).engineType == 3)
+                {
+                  ((InstalledEngine)localObject4).engineName = "MiniApp";
+                }
+                localArrayList.add(localObject4);
+                break label474;
+              }
+              throw new IllegalStateException("engine verify failed");
+            }
+            localObject4 = new StringBuilder();
+            ((StringBuilder)localObject4).append("unrecognized engine ");
+            ((StringBuilder)localObject4).append(((File)localObject3).getName());
+            throw new IllegalStateException(((StringBuilder)localObject4).toString());
+          }
+          catch (Exception localException2)
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("[MiniEng]delete ");
+            localStringBuilder.append(((File)localObject3).getAbsolutePath());
+            localStringBuilder.append(DebugUtil.getPrintableStackTrace(localException2));
+            QMLog.i("EngineInstaller", localStringBuilder.toString());
+            FileUtils.delete(((File)localObject3).getAbsolutePath(), false);
+          }
+          label381:
+          Collections.sort(localArrayList, Collections.reverseOrder());
+          Object localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("[MiniEng] scanInstalledEngine finish timecost=");
+          ((StringBuilder)localObject2).append(System.currentTimeMillis() - l);
+          ((StringBuilder)localObject2).append(", found ");
+          ((StringBuilder)localObject2).append(localArrayList.size());
+          QMLog.i("EngineInstaller", ((StringBuilder)localObject2).toString());
+          return localArrayList;
+        }
+        catch (Exception localException1) {}
+        localObject1 = finally;
+        continue;
+        throw localObject1;
+        continue;
+        label474:
+        j += 1;
+        continue;
+        label481:
+        i += 1;
+      }
+    }
+    if (i < k)
+    {
+      arrayOfFile = localObject2[i];
+      if ((!arrayOfFile.exists()) || (!arrayOfFile.isDirectory())) {
+        break label481;
+      }
+      localObject3 = arrayOfFile.listFiles();
+      if (localObject3 == null) {
+        break label481;
+      }
+    }
   }
   
   /* Error */
   private boolean unzipEngine(File paramFile, String paramString1, EngineVersion paramEngineVersion, String paramString2, boolean paramBoolean)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore 6
-    //   3: aload_0
-    //   4: monitorenter
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: iconst_0
+    //   3: istore 6
     //   5: aload_1
     //   6: aload_3
-    //   7: invokestatic 482	com/tencent/qqmini/sdk/manager/EngineInstaller:getInstallLibDir	(Ljava/io/File;Lcom/tencent/qqmini/sdk/manager/EngineVersion;)Ljava/lang/String;
+    //   7: invokestatic 476	com/tencent/qqmini/sdk/manager/EngineInstaller:getInstallLibDir	(Ljava/io/File;Lcom/tencent/qqmini/sdk/manager/EngineVersion;)Ljava/lang/String;
     //   10: astore_1
     //   11: aload_1
-    //   12: ifnonnull +27 -> 39
+    //   12: ifnonnull +22 -> 34
     //   15: aload_0
-    //   16: invokespecial 43	com/tencent/qqmini/sdk/manager/EngineInstaller:workFinish	()V
+    //   16: invokespecial 41	com/tencent/qqmini/sdk/manager/EngineInstaller:workFinish	()V
     //   19: aload 4
     //   21: iconst_1
-    //   22: invokestatic 203	com/tencent/qqmini/sdk/core/utils/FileUtils:delete	(Ljava/lang/String;Z)J
+    //   22: invokestatic 216	com/tencent/qqmini/sdk/core/utils/FileUtils:delete	(Ljava/lang/String;Z)J
     //   25: pop2
     //   26: aload_0
-    //   27: invokespecial 43	com/tencent/qqmini/sdk/manager/EngineInstaller:workFinish	()V
-    //   30: iload 6
-    //   32: istore 5
-    //   34: aload_0
-    //   35: monitorexit
-    //   36: iload 5
-    //   38: ireturn
-    //   39: new 59	java/io/File
-    //   42: dup
-    //   43: aload_1
-    //   44: invokespecial 160	java/io/File:<init>	(Ljava/lang/String;)V
-    //   47: invokevirtual 93	java/io/File:exists	()Z
-    //   50: ifeq +9 -> 59
-    //   53: aload_1
-    //   54: iconst_0
-    //   55: invokestatic 203	com/tencent/qqmini/sdk/core/utils/FileUtils:delete	(Ljava/lang/String;Z)J
-    //   58: pop2
-    //   59: aload_0
-    //   60: fconst_1
-    //   61: ldc_w 484
-    //   64: invokespecial 49	com/tencent/qqmini/sdk/manager/EngineInstaller:updateMessage	(FLjava/lang/String;)V
-    //   67: aload_0
-    //   68: aload_2
-    //   69: aload_3
-    //   70: aload 4
-    //   72: iconst_0
-    //   73: aload_1
-    //   74: aload 4
-    //   76: aload_1
-    //   77: invokestatic 490	com/tencent/qqmini/sdk/core/utils/ZipUtil:unZipFolder	(Ljava/lang/String;Ljava/lang/String;)I
-    //   80: iconst_1
-    //   81: invokespecial 492	com/tencent/qqmini/sdk/manager/EngineInstaller:handleUnZipResult	(Ljava/lang/String;Lcom/tencent/qqmini/sdk/manager/EngineVersion;Ljava/lang/String;ZLjava/lang/String;IZ)Z
-    //   84: istore 6
-    //   86: aload 4
-    //   88: iconst_1
-    //   89: invokestatic 203	com/tencent/qqmini/sdk/core/utils/FileUtils:delete	(Ljava/lang/String;Z)J
-    //   92: pop2
-    //   93: iload 6
-    //   95: ifeq +22 -> 117
-    //   98: iload 5
-    //   100: ifeq +28 -> 128
-    //   103: aload_0
-    //   104: fconst_1
-    //   105: ldc_w 494
-    //   108: invokespecial 49	com/tencent/qqmini/sdk/manager/EngineInstaller:updateMessage	(FLjava/lang/String;)V
-    //   111: ldc2_w 176
-    //   114: invokestatic 183	java/lang/Thread:sleep	(J)V
-    //   117: aload_0
-    //   118: invokespecial 43	com/tencent/qqmini/sdk/manager/EngineInstaller:workFinish	()V
-    //   121: iload 6
-    //   123: istore 5
-    //   125: goto +95 -> 220
-    //   128: aload_0
-    //   129: fconst_1
-    //   130: ldc_w 496
-    //   133: invokespecial 49	com/tencent/qqmini/sdk/manager/EngineInstaller:updateMessage	(FLjava/lang/String;)V
-    //   136: goto -25 -> 111
-    //   139: astore_1
-    //   140: aload_0
-    //   141: monitorexit
-    //   142: aload_1
-    //   143: athrow
-    //   144: astore_1
-    //   145: ldc 8
-    //   147: new 70	java/lang/StringBuilder
-    //   150: dup
-    //   151: invokespecial 71	java/lang/StringBuilder:<init>	()V
-    //   154: ldc_w 498
-    //   157: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   160: aload_1
-    //   161: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   164: aload_1
-    //   165: invokestatic 448	com/tencent/qqmini/sdk/utils/DebugUtil:getPrintableStackTrace	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   168: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   171: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   174: invokestatic 101	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   177: aload_0
-    //   178: fconst_0
-    //   179: ldc_w 500
-    //   182: invokespecial 49	com/tencent/qqmini/sdk/manager/EngineInstaller:updateMessage	(FLjava/lang/String;)V
-    //   185: aload 4
-    //   187: iconst_1
-    //   188: invokestatic 203	com/tencent/qqmini/sdk/core/utils/FileUtils:delete	(Ljava/lang/String;Z)J
-    //   191: pop2
-    //   192: aload_0
-    //   193: invokespecial 43	com/tencent/qqmini/sdk/manager/EngineInstaller:workFinish	()V
-    //   196: iconst_0
-    //   197: istore 5
-    //   199: goto +21 -> 220
-    //   202: astore_1
-    //   203: aload 4
-    //   205: iconst_1
-    //   206: invokestatic 203	com/tencent/qqmini/sdk/core/utils/FileUtils:delete	(Ljava/lang/String;Z)J
-    //   209: pop2
-    //   210: aload_0
-    //   211: invokespecial 43	com/tencent/qqmini/sdk/manager/EngineInstaller:workFinish	()V
-    //   214: aload_1
-    //   215: athrow
-    //   216: astore_1
-    //   217: goto -100 -> 117
-    //   220: goto -186 -> 34
+    //   27: invokespecial 41	com/tencent/qqmini/sdk/manager/EngineInstaller:workFinish	()V
+    //   30: aload_0
+    //   31: monitorexit
+    //   32: iconst_0
+    //   33: ireturn
+    //   34: new 57	java/io/File
+    //   37: dup
+    //   38: aload_1
+    //   39: invokespecial 158	java/io/File:<init>	(Ljava/lang/String;)V
+    //   42: invokevirtual 91	java/io/File:exists	()Z
+    //   45: ifeq +9 -> 54
+    //   48: aload_1
+    //   49: iconst_0
+    //   50: invokestatic 216	com/tencent/qqmini/sdk/core/utils/FileUtils:delete	(Ljava/lang/String;Z)J
+    //   53: pop2
+    //   54: aload_0
+    //   55: fconst_1
+    //   56: ldc_w 478
+    //   59: invokespecial 47	com/tencent/qqmini/sdk/manager/EngineInstaller:updateMessage	(FLjava/lang/String;)V
+    //   62: aload_0
+    //   63: aload_2
+    //   64: aload_3
+    //   65: aload 4
+    //   67: iconst_0
+    //   68: aload_1
+    //   69: aload 4
+    //   71: aload_1
+    //   72: invokestatic 484	com/tencent/qqmini/sdk/core/utils/ZipUtil:unZipFolder	(Ljava/lang/String;Ljava/lang/String;)I
+    //   75: invokespecial 486	com/tencent/qqmini/sdk/manager/EngineInstaller:handleUnZipResult	(Ljava/lang/String;Lcom/tencent/qqmini/sdk/manager/EngineVersion;Ljava/lang/String;ZLjava/lang/String;I)Z
+    //   78: istore 7
+    //   80: aload 4
+    //   82: iconst_1
+    //   83: invokestatic 216	com/tencent/qqmini/sdk/core/utils/FileUtils:delete	(Ljava/lang/String;Z)J
+    //   86: pop2
+    //   87: iload 7
+    //   89: istore 6
+    //   91: iload 7
+    //   93: ifeq +37 -> 130
+    //   96: iload 5
+    //   98: ifeq +14 -> 112
+    //   101: aload_0
+    //   102: fconst_1
+    //   103: ldc_w 488
+    //   106: invokespecial 47	com/tencent/qqmini/sdk/manager/EngineInstaller:updateMessage	(FLjava/lang/String;)V
+    //   109: goto +11 -> 120
+    //   112: aload_0
+    //   113: fconst_1
+    //   114: ldc_w 490
+    //   117: invokespecial 47	com/tencent/qqmini/sdk/manager/EngineInstaller:updateMessage	(FLjava/lang/String;)V
+    //   120: ldc2_w 176
+    //   123: invokestatic 183	java/lang/Thread:sleep	(J)V
+    //   126: iload 7
+    //   128: istore 6
+    //   130: aload_0
+    //   131: invokespecial 41	com/tencent/qqmini/sdk/manager/EngineInstaller:workFinish	()V
+    //   134: goto +66 -> 200
+    //   137: astore_1
+    //   138: goto +67 -> 205
+    //   141: astore_1
+    //   142: new 68	java/lang/StringBuilder
+    //   145: dup
+    //   146: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   149: astore_2
+    //   150: aload_2
+    //   151: ldc_w 492
+    //   154: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   157: pop
+    //   158: aload_2
+    //   159: aload_1
+    //   160: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   163: pop
+    //   164: aload_2
+    //   165: aload_1
+    //   166: invokestatic 458	com/tencent/qqmini/sdk/utils/DebugUtil:getPrintableStackTrace	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   169: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   172: pop
+    //   173: ldc 8
+    //   175: aload_2
+    //   176: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   179: invokestatic 99	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   182: aload_0
+    //   183: fconst_0
+    //   184: ldc_w 494
+    //   187: invokespecial 47	com/tencent/qqmini/sdk/manager/EngineInstaller:updateMessage	(FLjava/lang/String;)V
+    //   190: aload 4
+    //   192: iconst_1
+    //   193: invokestatic 216	com/tencent/qqmini/sdk/core/utils/FileUtils:delete	(Ljava/lang/String;Z)J
+    //   196: pop2
+    //   197: goto -67 -> 130
+    //   200: aload_0
+    //   201: monitorexit
+    //   202: iload 6
+    //   204: ireturn
+    //   205: aload 4
+    //   207: iconst_1
+    //   208: invokestatic 216	com/tencent/qqmini/sdk/core/utils/FileUtils:delete	(Ljava/lang/String;Z)J
+    //   211: pop2
+    //   212: aload_0
+    //   213: invokespecial 41	com/tencent/qqmini/sdk/manager/EngineInstaller:workFinish	()V
+    //   216: aload_1
+    //   217: athrow
+    //   218: astore_1
+    //   219: aload_0
+    //   220: monitorexit
+    //   221: goto +5 -> 226
+    //   224: aload_1
+    //   225: athrow
+    //   226: goto -2 -> 224
+    //   229: astore_1
+    //   230: iload 7
+    //   232: istore 6
+    //   234: goto -104 -> 130
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	223	0	this	EngineInstaller
-    //   0	223	1	paramFile	File
-    //   0	223	2	paramString1	String
-    //   0	223	3	paramEngineVersion	EngineVersion
-    //   0	223	4	paramString2	String
-    //   0	223	5	paramBoolean	boolean
-    //   1	121	6	bool	boolean
+    //   0	237	0	this	EngineInstaller
+    //   0	237	1	paramFile	File
+    //   0	237	2	paramString1	String
+    //   0	237	3	paramEngineVersion	EngineVersion
+    //   0	237	4	paramString2	String
+    //   0	237	5	paramBoolean	boolean
+    //   3	230	6	bool1	boolean
+    //   78	153	7	bool2	boolean
     // Exception table:
     //   from	to	target	type
-    //   19	30	139	finally
-    //   86	93	139	finally
-    //   103	111	139	finally
-    //   111	117	139	finally
-    //   117	121	139	finally
-    //   128	136	139	finally
-    //   185	196	139	finally
-    //   203	216	139	finally
-    //   5	11	144	java/lang/Exception
-    //   15	19	144	java/lang/Exception
-    //   39	59	144	java/lang/Exception
-    //   59	86	144	java/lang/Exception
-    //   5	11	202	finally
-    //   15	19	202	finally
-    //   39	59	202	finally
-    //   59	86	202	finally
-    //   145	185	202	finally
-    //   111	117	216	java/lang/InterruptedException
+    //   5	11	137	finally
+    //   15	19	137	finally
+    //   34	54	137	finally
+    //   54	80	137	finally
+    //   142	190	137	finally
+    //   5	11	141	java/lang/Exception
+    //   15	19	141	java/lang/Exception
+    //   34	54	141	java/lang/Exception
+    //   54	80	141	java/lang/Exception
+    //   19	30	218	finally
+    //   80	87	218	finally
+    //   101	109	218	finally
+    //   112	120	218	finally
+    //   120	126	218	finally
+    //   130	134	218	finally
+    //   190	197	218	finally
+    //   205	218	218	finally
+    //   120	126	229	java/lang/InterruptedException
   }
   
   public static void updateInstalledEngine()
@@ -807,36 +703,19 @@ public class EngineInstaller
     }
   }
   
-  private boolean verifyBaselib(String paramString1, String paramString2)
-  {
-    long l1 = ZipUtil.getUncompressedFileSize(paramString1);
-    if (l1 <= 0L)
-    {
-      QMLog.e("EngineInstaller", "[MiniEng] getUncompressedFileSize error " + paramString1 + ", sz=" + l1);
-      return false;
-    }
-    long l2 = StorageUtil.getDirUsedSpace(paramString2);
-    if (l2 <= 0L)
-    {
-      QMLog.e("EngineInstaller", "[MiniEng] getDirUsedSpace error " + paramString2 + ", sz2=" + l2);
-      return false;
-    }
-    if (l1 == l2)
-    {
-      getSp().edit().putBoolean(paramString2, true).commit();
-      return true;
-    }
-    QMLog.e("EngineInstaller", "[MiniEng] verifyBaselib failed sz1=" + l1 + ", sz2=" + l2);
-    return false;
-  }
-  
   private static boolean verifyEngine(InstalledEngine paramInstalledEngine)
   {
+    Object localObject = getSp();
     boolean bool = false;
-    if (getSp() != null) {
+    if (localObject != null) {
       bool = getSp().getBoolean(paramInstalledEngine.engineDir, false);
     }
-    QMLog.i("EngineInstaller", "[MiniEng]verifyEngine " + paramInstalledEngine.engineDir + " " + bool);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[MiniEng]verifyEngine ");
+    ((StringBuilder)localObject).append(paramInstalledEngine.engineDir);
+    ((StringBuilder)localObject).append(" ");
+    ((StringBuilder)localObject).append(bool);
+    QMLog.i("EngineInstaller", ((StringBuilder)localObject).toString());
     return bool;
   }
   
@@ -852,8 +731,13 @@ public class EngineInstaller
           localCallback.onEngineWorkAbort();
         }
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   private void workBegin()
@@ -869,8 +753,13 @@ public class EngineInstaller
           localCallback.onEngineWorkBegin();
         }
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   private void workFinish()
@@ -886,8 +775,13 @@ public class EngineInstaller
           localCallback.onEngineWorkFinish();
         }
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public void addCallback(EngineInstaller.Callback paramCallback)
@@ -906,124 +800,171 @@ public class EngineInstaller
   
   public void installWithCallback(BaseLibInfo paramBaseLibInfo, EngineInstaller.Callback paramCallback)
   {
-    String str;
-    File localFile;
-    EngineVersion localEngineVersion;
-    long l;
-    label242:
-    boolean bool1;
     for (;;)
     {
       try
       {
-        str = paramBaseLibInfo.baseLibUrl;
+        String str = paramBaseLibInfo.baseLibUrl;
         if (paramCallback != null) {
           addCallback(paramCallback);
         }
-        if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramBaseLibInfo.baseLibVersion)) && (paramBaseLibInfo.baseLibType > 0)) {
-          continue;
-        }
-        QMLog.w("EngineInstaller", "[MiniEng] invalid BaseLibInfo " + paramBaseLibInfo);
-        workAbort();
-      }
-      finally
-      {
-        try
+        if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramBaseLibInfo.baseLibVersion)) && (paramBaseLibInfo.baseLibType > 0))
         {
-          JSONObject localJSONObject = new JSONObject(paramBaseLibInfo.baseLibDesc);
-          localEngineVersion = new EngineVersion(paramBaseLibInfo.baseLibVersion);
-          l = localJSONObject.optLong("file_length");
-          QMLog.w("EngineInstaller", "[MiniEng] installWithCallback " + paramBaseLibInfo);
-          if (getSp() != null) {
-            break label242;
-          }
-          QMLog.w("EngineInstaller", "[MiniEng] shared preference not supported");
-          workAbort();
-        }
-        catch (Exception paramCallback)
-        {
-          QMLog.w("EngineInstaller", "[MiniEng] refuse installEngine " + paramBaseLibInfo.baseLibDesc + ":" + paramBaseLibInfo.baseLibVersion + paramBaseLibInfo.baseLibUrl + DebugUtil.getPrintableStackTrace(paramCallback));
-          workAbort();
-        }
-        paramBaseLibInfo = finally;
-      }
-      return;
-      localFile = new File(getRootDir(), String.valueOf(paramBaseLibInfo.baseLibType));
-      continue;
-      if (TextUtils.isEmpty(str))
-      {
-        QMLog.e("EngineInstaller", "[MiniEng] empty engine url");
-        workAbort();
-      }
-      else if (isWorking())
-      {
-        QMLog.i("EngineInstaller", "[MiniEng] downloading already in progress");
-        workAbort();
-      }
-      else
-      {
-        bool1 = false;
-        QMLog.i("EngineInstaller", "[MiniEng] installWithCallback callback=" + paramCallback);
-        if ((paramBaseLibInfo.baseLibType == 2) && (!LocalGameEngine.g().isDisabled()) && (!paramBaseLibInfo.baseLibUrl.startsWith("assets://")))
-        {
-          paramCallback = LocalGameEngine.g().mLocalEngineVersion;
-          if (paramCallback.compareTo(localEngineVersion) >= 0)
+          Object localObject2 = new File(getRootDir(), String.valueOf(paramBaseLibInfo.baseLibType));
+          try
           {
-            QMLog.i("EngineInstaller", "[MiniEng] refuse install remote baselib:" + localEngineVersion + ",local:" + paramCallback);
+            Object localObject3 = new JSONObject(paramBaseLibInfo.baseLibDesc);
+            localObject1 = new EngineVersion(paramBaseLibInfo.baseLibVersion);
+            long l = ((JSONObject)localObject3).optLong("file_length");
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("[MiniEng] installWithCallback ");
+            ((StringBuilder)localObject3).append(paramBaseLibInfo);
+            QMLog.w("EngineInstaller", ((StringBuilder)localObject3).toString());
+            if (getSp() == null)
+            {
+              QMLog.w("EngineInstaller", "[MiniEng] shared preference not supported");
+              workAbort();
+              return;
+            }
+            if (TextUtils.isEmpty(str))
+            {
+              QMLog.e("EngineInstaller", "[MiniEng] empty engine url");
+              workAbort();
+              return;
+            }
+            if (isWorking())
+            {
+              QMLog.i("EngineInstaller", "[MiniEng] downloading already in progress");
+              workAbort();
+              return;
+            }
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("[MiniEng] installWithCallback callback=");
+            ((StringBuilder)localObject3).append(paramCallback);
+            QMLog.i("EngineInstaller", ((StringBuilder)localObject3).toString());
+            if ((paramBaseLibInfo.baseLibType == 2) && (!LocalGameEngine.g().isDisabled()) && (!paramBaseLibInfo.baseLibUrl.startsWith("assets://")))
+            {
+              paramCallback = LocalGameEngine.g().mLocalEngineVersion;
+              if (paramCallback.compareTo((EngineVersion)localObject1) >= 0)
+              {
+                paramBaseLibInfo = new StringBuilder();
+                paramBaseLibInfo.append("[MiniEng] refuse install remote baselib:");
+                paramBaseLibInfo.append(localObject1);
+                paramBaseLibInfo.append(",local:");
+                paramBaseLibInfo.append(paramCallback);
+                QMLog.i("EngineInstaller", paramBaseLibInfo.toString());
+                workAbort();
+                return;
+              }
+            }
+            paramCallback = getInstalledEngine(paramBaseLibInfo.baseLibType);
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("[MiniEng] engineForType ");
+            ((StringBuilder)localObject3).append(paramBaseLibInfo.baseLibType);
+            ((StringBuilder)localObject3).append(", size=");
+            ((StringBuilder)localObject3).append(paramCallback.size());
+            QMLog.i("EngineInstaller", ((StringBuilder)localObject3).toString());
+            boolean bool1;
+            if (paramCallback.size() > 0)
+            {
+              paramCallback = (InstalledEngine)paramCallback.get(0);
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append("[MiniEng]latest engine for type ");
+              ((StringBuilder)localObject3).append(paramBaseLibInfo.baseLibType);
+              ((StringBuilder)localObject3).append(",");
+              ((StringBuilder)localObject3).append(paramCallback);
+              QMLog.i("EngineInstaller", ((StringBuilder)localObject3).toString());
+              if (paramCallback.engineVersion.compareTo((EngineVersion)localObject1) >= 0)
+              {
+                localObject2 = new StringBuilder();
+                ((StringBuilder)localObject2).append("[MiniEng]engine type ");
+                ((StringBuilder)localObject2).append(paramBaseLibInfo.baseLibType);
+                ((StringBuilder)localObject2).append(" has no update, remote:");
+                ((StringBuilder)localObject2).append(localObject1);
+                ((StringBuilder)localObject2).append(",latest:");
+                ((StringBuilder)localObject2).append(paramCallback);
+                QMLog.i("EngineInstaller", ((StringBuilder)localObject2).toString());
+                workAbort();
+                return;
+              }
+              bool1 = true;
+            }
+            else
+            {
+              bool1 = false;
+            }
+            workBegin();
+            if (bool1)
+            {
+              paramCallback = new StringBuilder();
+              paramCallback.append("更新引擎(");
+              paramCallback.append(paramBaseLibInfo.baseLibVersion);
+              paramCallback.append(")");
+              updateMessage(0.0F, paramCallback.toString());
+            }
+            else
+            {
+              paramCallback = new StringBuilder();
+              paramCallback.append("下载引擎(");
+              paramCallback.append(paramBaseLibInfo.baseLibVersion);
+              paramCallback.append(")");
+              updateMessage(0.0F, paramCallback.toString());
+            }
+            paramCallback = new StringBuilder();
+            paramCallback.append("[MiniEng] installEngine ");
+            paramCallback.append(str);
+            QMLog.i("EngineInstaller", paramCallback.toString());
+            if ((!((File)localObject2).exists()) && (!((File)localObject2).mkdirs()))
+            {
+              paramBaseLibInfo = new StringBuilder();
+              paramBaseLibInfo.append("[MiniEng] mkdir failed, is disk writable? ");
+              paramBaseLibInfo.append(((File)localObject2).getAbsolutePath());
+              QMLog.i("EngineInstaller", paramBaseLibInfo.toString());
+              workFinish();
+              return;
+            }
+            paramCallback = null;
+            if (paramBaseLibInfo.baseLibType != 2) {
+              break label977;
+            }
+            bool2 = paramBaseLibInfo.baseLibUrl.startsWith("assets://");
+            paramBaseLibInfo.baseLibUrl.replace("assets://", "");
+            paramCallback = new long[1];
+            paramCallback[0] = 0L;
+            if (bool2) {
+              installFromAssets(str, getInstallLibDir((File)localObject2, (EngineVersion)localObject1), l, paramCallback[0]);
+            } else {
+              installedFromNetwork(paramBaseLibInfo, str, l, (File)localObject2, (EngineVersion)localObject1, bool1);
+            }
+            return;
+          }
+          catch (Exception paramCallback)
+          {
+            Object localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("[MiniEng] refuse installEngine ");
+            ((StringBuilder)localObject1).append(paramBaseLibInfo.baseLibDesc);
+            ((StringBuilder)localObject1).append(":");
+            ((StringBuilder)localObject1).append(paramBaseLibInfo.baseLibVersion);
+            ((StringBuilder)localObject1).append(paramBaseLibInfo.baseLibUrl);
+            ((StringBuilder)localObject1).append(DebugUtil.getPrintableStackTrace(paramCallback));
+            QMLog.w("EngineInstaller", ((StringBuilder)localObject1).toString());
             workAbort();
-            continue;
+            return;
           }
         }
-        paramCallback = getInstalledEngine(paramBaseLibInfo.baseLibType);
-        QMLog.i("EngineInstaller", "[MiniEng] engineForType " + paramBaseLibInfo.baseLibType + ", size=" + paramCallback.size());
-        if (paramCallback.size() <= 0) {
-          break;
+        else
+        {
+          paramCallback = new StringBuilder();
+          paramCallback.append("[MiniEng] invalid BaseLibInfo ");
+          paramCallback.append(paramBaseLibInfo);
+          QMLog.w("EngineInstaller", paramCallback.toString());
+          workAbort();
+          return;
         }
-        paramCallback = (InstalledEngine)paramCallback.get(0);
-        QMLog.i("EngineInstaller", "[MiniEng]latest engine for type " + paramBaseLibInfo.baseLibType + "," + paramCallback);
-        if (paramCallback.engineVersion.compareTo(localEngineVersion) < 0) {
-          break label828;
-        }
-        QMLog.i("EngineInstaller", "[MiniEng]engine type " + paramBaseLibInfo.baseLibType + " has no update, remote:" + localEngineVersion + ",latest:" + paramCallback);
-        workAbort();
       }
-    }
-    for (;;)
-    {
-      workBegin();
-      if (bool1) {
-        updateMessage(0.0F, "更新引擎(" + paramBaseLibInfo.baseLibVersion + ")");
-      }
-      for (;;)
-      {
-        QMLog.i("EngineInstaller", "[MiniEng] installEngine " + str);
-        if ((localFile.exists()) || (localFile.mkdirs())) {
-          break label739;
-        }
-        QMLog.i("EngineInstaller", "[MiniEng] mkdir failed, is disk writable? " + localFile.getAbsolutePath());
-        workFinish();
-        break;
-        updateMessage(0.0F, "下载引擎(" + paramBaseLibInfo.baseLibVersion + ")");
-      }
-      label739:
+      finally {}
+      label977:
       boolean bool2 = false;
-      paramCallback = null;
-      if (paramBaseLibInfo.baseLibType == 2)
-      {
-        bool2 = paramBaseLibInfo.baseLibUrl.startsWith("assets://");
-        paramBaseLibInfo.baseLibUrl.replace("assets://", "");
-        paramCallback = new long[1];
-        paramCallback[0] = 0L;
-      }
-      if (bool2)
-      {
-        installFromAssets(str, getInstallLibDir(localFile, localEngineVersion), l, paramCallback[0]);
-        break;
-      }
-      installedFromNetwork(paramBaseLibInfo, str, l, localFile, localEngineVersion, bool1);
-      break;
-      label828:
-      bool1 = true;
     }
   }
   
@@ -1057,7 +998,7 @@ public class EngineInstaller
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.EngineInstaller
  * JD-Core Version:    0.7.0.1
  */

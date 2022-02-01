@@ -26,10 +26,10 @@ class IntimateContentItemNewDnaView$FriendDnaViewHolder
   public IntimateContentItemNewDnaView$FriendDnaViewHolder(IntimateContentItemNewDnaView paramIntimateContentItemNewDnaView, @NonNull View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131369282));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367548));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367545));
-    this.jdField_a_of_type_ComTencentWidgetRoundRectImageView = ((RoundRectImageView)paramView.findViewById(2131369285));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131369011));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367306));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367303));
+    this.jdField_a_of_type_ComTencentWidgetRoundRectImageView = ((RoundRectImageView)paramView.findViewById(2131369014));
     paramView.setOnClickListener(this);
     paramView.setOnTouchListener(this);
   }
@@ -44,26 +44,22 @@ class IntimateContentItemNewDnaView$FriendDnaViewHolder
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return false;
-      if (Build.VERSION.SDK_INT >= 11)
-      {
-        paramView.setAlpha(0.5F);
-        continue;
-        if (Build.VERSION.SDK_INT >= 11) {
-          paramView.setAlpha(1.0F);
-        }
+      if (((i == 1) || (i == 3)) && (Build.VERSION.SDK_INT >= 11)) {
+        paramView.setAlpha(1.0F);
       }
     }
+    else if (Build.VERSION.SDK_INT >= 11) {
+      paramView.setAlpha(0.5F);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemNewDnaView.FriendDnaViewHolder
  * JD-Core Version:    0.7.0.1
  */

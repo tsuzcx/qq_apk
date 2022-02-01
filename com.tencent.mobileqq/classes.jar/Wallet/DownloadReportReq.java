@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class DownloadReportReq
   extends JceStruct
@@ -45,36 +46,55 @@ public final class DownloadReportReq
   
   public String toString()
   {
-    return "DownRep{iType=" + this.iType + "iScene =" + this.iScene + "vecResInfo = " + this.vecResInfo + "|" + this.sPhoneType + "|" + this.sOsVersion + "|" + this.sQQVersion + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DownRep{iType=");
+    localStringBuilder.append(this.iType);
+    localStringBuilder.append("iScene =");
+    localStringBuilder.append(this.iScene);
+    localStringBuilder.append("vecResInfo = ");
+    localStringBuilder.append(this.vecResInfo);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.sPhoneType);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.sOsVersion);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.sQQVersion);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iActId, 0);
     paramJceOutputStream.write(this.iType, 1);
-    if (this.vecResInfo != null) {
-      paramJceOutputStream.write(this.vecResInfo, 2);
+    Object localObject = this.vecResInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
     paramJceOutputStream.write(this.iUin, 3);
-    if (this.sSpeed != null) {
-      paramJceOutputStream.write(this.sSpeed, 4);
+    localObject = this.sSpeed;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.iPlatForm, 5);
     paramJceOutputStream.write(this.iScene, 6);
-    if (this.sPhoneType != null) {
-      paramJceOutputStream.write(this.sPhoneType, 7);
+    localObject = this.sPhoneType;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.sOsVersion != null) {
-      paramJceOutputStream.write(this.sOsVersion, 8);
+    localObject = this.sOsVersion;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.sQQVersion != null) {
-      paramJceOutputStream.write(this.sQQVersion, 9);
+    localObject = this.sQQVersion;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.DownloadReportReq
  * JD-Core Version:    0.7.0.1
  */

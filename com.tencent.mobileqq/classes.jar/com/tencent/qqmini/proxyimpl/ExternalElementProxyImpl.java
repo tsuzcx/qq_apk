@@ -21,37 +21,63 @@ public class ExternalElementProxyImpl
   
   public void handleInsertXWebExternalElement(JSONObject paramJSONObject, long paramLong)
   {
-    Log.d("ExternalElementProxyImp", "handleInsertXWebExternalElement() called with: jsonObject = [" + paramJSONObject + "], widgetId = [" + paramLong + "]");
-    ExternalElementProxy localExternalElementProxy = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
-    if (localExternalElementProxy != null) {
-      localExternalElementProxy.handleInsertXWebExternalElement(paramJSONObject, paramLong);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("handleInsertXWebExternalElement() called with: jsonObject = [");
+    ((StringBuilder)localObject).append(paramJSONObject);
+    ((StringBuilder)localObject).append("], widgetId = [");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append("]");
+    Log.d("ExternalElementProxyImp", ((StringBuilder)localObject).toString());
+    localObject = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
+    if (localObject != null) {
+      ((ExternalElementProxy)localObject).handleInsertXWebExternalElement(paramJSONObject, paramLong);
     }
   }
   
   public void handleOperateExternalElement(JSONObject paramJSONObject, int paramInt, IJsService paramIJsService, long paramLong)
   {
-    Log.d("ExternalElementProxyImp", "handleOperateExternalElement() called with: req = [" + paramJSONObject + "], callbackId = [" + paramInt + "], webview = [" + paramIJsService + "], widgetId = [" + paramLong + "]");
-    ExternalElementProxy localExternalElementProxy = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
-    if (localExternalElementProxy != null) {
-      localExternalElementProxy.handleOperateExternalElement(paramJSONObject, paramInt, paramIJsService, paramLong);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("handleOperateExternalElement() called with: req = [");
+    ((StringBuilder)localObject).append(paramJSONObject);
+    ((StringBuilder)localObject).append("], callbackId = [");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("], webview = [");
+    ((StringBuilder)localObject).append(paramIJsService);
+    ((StringBuilder)localObject).append("], widgetId = [");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append("]");
+    Log.d("ExternalElementProxyImp", ((StringBuilder)localObject).toString());
+    localObject = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
+    if (localObject != null) {
+      ((ExternalElementProxy)localObject).handleOperateExternalElement(paramJSONObject, paramInt, paramIJsService, paramLong);
     }
   }
   
   public void handleRemoveExternalElement(long paramLong)
   {
-    Log.d("ExternalElementProxyImp", "handleRemoveExternalElement() called with: widgetId = [" + paramLong + "]");
-    ExternalElementProxy localExternalElementProxy = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
-    if (localExternalElementProxy != null) {
-      localExternalElementProxy.handleRemoveExternalElement(paramLong);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("handleRemoveExternalElement() called with: widgetId = [");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append("]");
+    Log.d("ExternalElementProxyImp", ((StringBuilder)localObject).toString());
+    localObject = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
+    if (localObject != null) {
+      ((ExternalElementProxy)localObject).handleRemoveExternalElement(paramLong);
     }
   }
   
   public void handleUpdateExternalElement(JSONObject paramJSONObject, long paramLong)
   {
-    Log.d("ExternalElementProxyImp", "handleUpdateExternalElement() called with: jsonObject = [" + paramJSONObject + "], widgetId = [" + paramLong + "]");
-    ExternalElementProxy localExternalElementProxy = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
-    if (localExternalElementProxy != null) {
-      localExternalElementProxy.handleUpdateExternalElement(paramJSONObject, paramLong);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("handleUpdateExternalElement() called with: jsonObject = [");
+    ((StringBuilder)localObject).append(paramJSONObject);
+    ((StringBuilder)localObject).append("], widgetId = [");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append("]");
+    Log.d("ExternalElementProxyImp", ((StringBuilder)localObject).toString());
+    localObject = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
+    if (localObject != null) {
+      ((ExternalElementProxy)localObject).handleUpdateExternalElement(paramJSONObject, paramLong);
     }
   }
   
@@ -105,7 +131,15 @@ public class ExternalElementProxyImpl
   
   public void onInit(String paramString, Map<String, String> paramMap, long paramLong)
   {
-    Log.d("ExternalElementProxyImp", "onInit() called with: s = [" + paramString + "], map = [" + paramMap + "], widgetId = [" + paramLong + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onInit() called with: s = [");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("], map = [");
+    localStringBuilder.append(paramMap);
+    localStringBuilder.append("], widgetId = [");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("]");
+    Log.d("ExternalElementProxyImp", localStringBuilder.toString());
     this.a.put(Long.valueOf(paramLong), new TavVideoView());
   }
   
@@ -127,10 +161,16 @@ public class ExternalElementProxyImpl
   
   public void onSurfaceCreated(Surface paramSurface, long paramLong)
   {
-    Log.d("ExternalElementProxyImp", "onSurfaceCreated() called with: surface = [" + paramSurface + "], widgetId = [" + paramLong + "]");
-    ExternalElementProxy localExternalElementProxy = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
-    if (localExternalElementProxy != null) {
-      localExternalElementProxy.onSurfaceCreated(paramSurface, paramLong);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onSurfaceCreated() called with: surface = [");
+    ((StringBuilder)localObject).append(paramSurface);
+    ((StringBuilder)localObject).append("], widgetId = [");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append("]");
+    Log.d("ExternalElementProxyImp", ((StringBuilder)localObject).toString());
+    localObject = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
+    if (localObject != null) {
+      ((ExternalElementProxy)localObject).onSurfaceCreated(paramSurface, paramLong);
     }
   }
   
@@ -206,7 +246,7 @@ public class ExternalElementProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ExternalElementProxyImpl
  * JD-Core Version:    0.7.0.1
  */

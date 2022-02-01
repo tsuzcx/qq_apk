@@ -58,31 +58,40 @@ public class DownloadDependRes
   
   void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager != null) {}
-    do
-    {
+    IArConfigManager localIArConfigManager = this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager;
+    if (localIArConfigManager != null) {
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager.c();
+        localIArConfigManager.c();
         return;
       }
       catch (Exception localException)
       {
-        while (!QLog.isColorLevel()) {}
-        QLog.d(PromotionUtil.a, 2, "downloadArSo Exception", localException);
+        if (QLog.isColorLevel()) {
+          QLog.d(PromotionUtil.a, 2, "downloadArSo Exception", localException);
+        }
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqArAidlIArSoCallback = new DownloadDependRes.1(this);
-      this.jdField_a_of_type_AndroidContentServiceConnection = new DownloadDependRes.2(this);
-    } while (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null);
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), ArConfigService.class);
-    boolean bool = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().bindService(localIntent, this.jdField_a_of_type_AndroidContentServiceConnection, 1);
-    QLog.w(PromotionUtil.a, 1, "bindServer, ret[" + bool + "]");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqArAidlIArSoCallback = new DownloadDependRes.1(this);
+    this.jdField_a_of_type_AndroidContentServiceConnection = new DownloadDependRes.2(this);
+    Object localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    if (localObject == null) {
+      return;
+    }
+    localObject = new Intent(((AppInterface)localObject).getApp(), ArConfigService.class);
+    boolean bool = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().bindService((Intent)localObject, this.jdField_a_of_type_AndroidContentServiceConnection, 1);
+    localObject = PromotionUtil.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("bindServer, ret[");
+    localStringBuilder.append(bool);
+    localStringBuilder.append("]");
+    QLog.w((String)localObject, 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotionMgr.DownloadDependRes
  * JD-Core Version:    0.7.0.1
  */

@@ -34,14 +34,15 @@ public final class s_profile_timeline
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.map_timeline != null) {
-      paramJceOutputStream.write(this.map_timeline, 0);
+    Map localMap = this.map_timeline;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_profile_timeline
  * JD-Core Version:    0.7.0.1
  */

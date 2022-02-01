@@ -19,38 +19,43 @@ public class PanoramaSensorManager
   
   public static PanoramaSensorManager a()
   {
-    if (jdField_a_of_type_ComTencentAvBusinessManagerPanoramaPanoramaSensorManager == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentAvBusinessManagerPanoramaPanoramaSensorManager == null) {
-        jdField_a_of_type_ComTencentAvBusinessManagerPanoramaPanoramaSensorManager = new PanoramaSensorManager();
+    if (jdField_a_of_type_ComTencentAvBusinessManagerPanoramaPanoramaSensorManager == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentAvBusinessManagerPanoramaPanoramaSensorManager == null) {
+          jdField_a_of_type_ComTencentAvBusinessManagerPanoramaPanoramaSensorManager = new PanoramaSensorManager();
+        }
       }
-      return jdField_a_of_type_ComTencentAvBusinessManagerPanoramaPanoramaSensorManager;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentAvBusinessManagerPanoramaPanoramaSensorManager;
   }
   
   public void a(Activity paramActivity)
   {
-    if (paramActivity == null) {
+    if (paramActivity == null)
+    {
       this.jdField_a_of_type_AndroidHardwareSensorManager = null;
-    }
-    while (this.jdField_a_of_type_AndroidHardwareSensorManager != null) {
       return;
     }
-    this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)paramActivity.getSystemService("sensor"));
+    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {
+      this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)paramActivity.getSystemService("sensor"));
+    }
   }
   
   public void a(SensorEventListener paramSensorEventListener)
   {
-    if ((this.jdField_a_of_type_AndroidHardwareSensorManager == null) || (paramSensorEventListener == null)) {}
-    Sensor localSensor;
-    do
+    Object localObject = this.jdField_a_of_type_AndroidHardwareSensorManager;
+    if (localObject != null)
     {
-      return;
-      localSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(11);
-    } while (localSensor == null);
-    this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(paramSensorEventListener, localSensor, 1);
+      if (paramSensorEventListener == null) {
+        return;
+      }
+      localObject = ((SensorManager)localObject).getDefaultSensor(11);
+      if (localObject != null) {
+        this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(paramSensorEventListener, (Sensor)localObject, 1);
+      }
+    }
   }
   
   public void a(SensorEventHandler.CameraChangedCallBack paramCameraChangedCallBack)
@@ -64,42 +69,52 @@ public class PanoramaSensorManager
   public void a(boolean paramBoolean)
   {
     b(paramBoolean);
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    SensorEventHandler.CameraChangedCallBack localCameraChangedCallBack;
-    do
-    {
+    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localObject == null) {
       return;
-      localCameraChangedCallBack = (SensorEventHandler.CameraChangedCallBack)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localCameraChangedCallBack == null);
-    localCameraChangedCallBack.onCameraChanged(paramBoolean);
+    }
+    localObject = (SensorEventHandler.CameraChangedCallBack)((WeakReference)localObject).get();
+    if (localObject == null) {
+      return;
+    }
+    ((SensorEventHandler.CameraChangedCallBack)localObject).onCameraChanged(paramBoolean);
   }
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {}
-    while (this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(11) == null) {
+    SensorManager localSensorManager = this.jdField_a_of_type_AndroidHardwareSensorManager;
+    boolean bool = false;
+    if (localSensorManager == null) {
       return false;
     }
-    return true;
+    if (localSensorManager.getDefaultSensor(11) != null) {
+      bool = true;
+    }
+    return bool;
   }
   
   public void b(SensorEventListener paramSensorEventListener)
   {
-    if ((this.jdField_a_of_type_AndroidHardwareSensorManager == null) || (paramSensorEventListener == null)) {
-      return;
+    SensorManager localSensorManager = this.jdField_a_of_type_AndroidHardwareSensorManager;
+    if (localSensorManager != null)
+    {
+      if (paramSensorEventListener == null) {
+        return;
+      }
+      localSensorManager.unregisterListener(paramSensorEventListener);
     }
-    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(paramSensorEventListener);
   }
   
   public void b(boolean paramBoolean)
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      this.jdField_a_of_type_Int = i;
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 1;
+    } else {
+      i = 2;
     }
+    this.jdField_a_of_type_Int = i;
   }
   
   public boolean b()
@@ -114,7 +129,7 @@ public class PanoramaSensorManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.panorama.PanoramaSensorManager
  * JD-Core Version:    0.7.0.1
  */

@@ -24,37 +24,31 @@ class FilesKt__FilePathComponentsKt
   
   private static final int getRootLength$FilesKt__FilePathComponentsKt(@NotNull String paramString)
   {
-    int j = 0;
-    int k = StringsKt.indexOf$default((CharSequence)paramString, File.separatorChar, 0, false, 4, null);
-    int i;
-    if (k == 0) {
+    CharSequence localCharSequence = (CharSequence)paramString;
+    int i = StringsKt.indexOf$default(localCharSequence, File.separatorChar, 0, false, 4, null);
+    if (i == 0)
+    {
       if ((paramString.length() > 1) && (paramString.charAt(1) == File.separatorChar))
       {
-        i = StringsKt.indexOf$default((CharSequence)paramString, File.separatorChar, 2, false, 4, null);
+        i = StringsKt.indexOf$default(localCharSequence, File.separatorChar, 2, false, 4, null);
         if (i >= 0)
         {
-          i = StringsKt.indexOf$default((CharSequence)paramString, File.separatorChar, i + 1, false, 4, null);
+          i = StringsKt.indexOf$default(localCharSequence, File.separatorChar, i + 1, false, 4, null);
           if (i >= 0) {
-            i += 1;
+            return i + 1;
           }
+          return paramString.length();
         }
       }
+      return 1;
     }
-    do
-    {
-      do
-      {
-        return i;
-        return paramString.length();
-        return 1;
-        if ((k > 0) && (paramString.charAt(k - 1) == ':')) {
-          return k + 1;
-        }
-        i = j;
-      } while (k != -1);
-      i = j;
-    } while (!StringsKt.endsWith$default((CharSequence)paramString, ':', false, 2, null));
-    return paramString.length();
+    if ((i > 0) && (paramString.charAt(i - 1) == ':')) {
+      return i + 1;
+    }
+    if ((i == -1) && (StringsKt.endsWith$default(localCharSequence, ':', false, 2, null))) {
+      return paramString.length();
+    }
+    return 0;
   }
   
   @NotNull
@@ -66,12 +60,13 @@ class FilesKt__FilePathComponentsKt
     paramFile = paramFile.getPath();
     Intrinsics.checkExpressionValueIsNotNull(paramFile, "path");
     int i = getRootLength$FilesKt__FilePathComponentsKt(paramFile);
-    if (str == null) {
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+    if (str != null)
+    {
+      paramFile = str.substring(0, i);
+      Intrinsics.checkExpressionValueIsNotNull(paramFile, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+      return paramFile;
     }
-    paramFile = str.substring(0, i);
-    Intrinsics.checkExpressionValueIsNotNull(paramFile, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-    return paramFile;
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
   }
   
   public static final boolean isRooted(@NotNull File paramFile)
@@ -100,31 +95,32 @@ class FilesKt__FilePathComponentsKt
     Intrinsics.checkExpressionValueIsNotNull(str, "(this as java.lang.Strin…ing(startIndex, endIndex)");
     paramFile = paramFile.substring(i);
     Intrinsics.checkExpressionValueIsNotNull(paramFile, "(this as java.lang.String).substring(startIndex)");
-    if (((CharSequence)paramFile).length() == 0)
-    {
+    paramFile = (CharSequence)paramFile;
+    if (paramFile.length() == 0) {
       i = 1;
-      if (i == 0) {
-        break label91;
-      }
-    }
-    for (paramFile = CollectionsKt.emptyList();; paramFile = (List)paramFile)
-    {
-      return new FilePathComponents(new File(str), paramFile);
+    } else {
       i = 0;
-      break;
-      label91:
-      Object localObject = (Iterable)StringsKt.split$default((CharSequence)paramFile, new char[] { File.separatorChar }, false, 0, 6, null);
+    }
+    if (i != 0)
+    {
+      paramFile = CollectionsKt.emptyList();
+    }
+    else
+    {
+      Object localObject = (Iterable)StringsKt.split$default(paramFile, new char[] { File.separatorChar }, false, 0, 6, null);
       paramFile = (Collection)new ArrayList(CollectionsKt.collectionSizeOrDefault((Iterable)localObject, 10));
       localObject = ((Iterable)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
         paramFile.add(new File((String)((Iterator)localObject).next()));
       }
+      paramFile = (List)paramFile;
     }
+    return new FilePathComponents(new File(str), paramFile);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.io.FilesKt__FilePathComponentsKt
  * JD-Core Version:    0.7.0.1
  */

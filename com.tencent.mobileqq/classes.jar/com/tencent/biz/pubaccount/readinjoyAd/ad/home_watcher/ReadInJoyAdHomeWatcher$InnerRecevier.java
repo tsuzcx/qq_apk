@@ -16,22 +16,21 @@ class ReadInJoyAdHomeWatcher$InnerRecevier
       paramContext = paramIntent.getStringExtra("reason");
       if ((paramContext != null) && (ReadInJoyAdHomeWatcher.a(this.a) != null))
       {
-        if (!paramContext.equals("homekey")) {
-          break label55;
+        if (paramContext.equals("homekey"))
+        {
+          ReadInJoyAdHomeWatcher.a(this.a).a();
+          return;
         }
-        ReadInJoyAdHomeWatcher.a(this.a).a();
+        if (paramContext.equals("recentapps")) {
+          ReadInJoyAdHomeWatcher.a(this.a).b();
+        }
       }
     }
-    label55:
-    while (!paramContext.equals("recentapps")) {
-      return;
-    }
-    ReadInJoyAdHomeWatcher.a(this.a).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.home_watcher.ReadInJoyAdHomeWatcher.InnerRecevier
  * JD-Core Version:    0.7.0.1
  */

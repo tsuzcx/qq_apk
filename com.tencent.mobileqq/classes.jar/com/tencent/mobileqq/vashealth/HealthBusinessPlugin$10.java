@@ -1,38 +1,37 @@
 package com.tencent.mobileqq.vashealth;
 
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.superplayer.api.ISuperPlayer;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
 
 class HealthBusinessPlugin$10
-  implements SeekBar.OnSeekBarChangeListener
+  implements View.OnClickListener
 {
-  HealthBusinessPlugin$10(HealthBusinessPlugin paramHealthBusinessPlugin) {}
+  HealthBusinessPlugin$10(HealthBusinessPlugin paramHealthBusinessPlugin, String paramString, Context paramContext) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    int i = paramSeekBar.getMax();
-    paramSeekBar = this.a.e.keySet().iterator();
-    while (paramSeekBar.hasNext())
+    if (((ISuperPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).isOutputMute())
     {
-      Object localObject = (String)paramSeekBar.next();
-      localObject = (ISuperPlayer)this.a.d.get(localObject);
-      if ((localObject != null) && (paramBoolean) && (i != 0)) {
-        ((ISuperPlayer)localObject).seekTo((int)(((ISuperPlayer)localObject).getDurationMs() * paramInt / i));
-      }
+      ((ISuperPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).setOutputMute(false);
+      ((ImageView)paramView).setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846615));
     }
+    else
+    {
+      ((ISuperPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).setOutputMute(true);
+      ((ImageView)paramView).setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846614));
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.HealthBusinessPlugin.10
  * JD-Core Version:    0.7.0.1
  */

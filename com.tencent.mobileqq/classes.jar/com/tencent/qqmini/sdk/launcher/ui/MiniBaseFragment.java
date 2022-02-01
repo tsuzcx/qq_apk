@@ -1,10 +1,10 @@
 package com.tencent.qqmini.sdk.launcher.ui;
 
+import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
-import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
 
 public class MiniBaseFragment
-  extends ReportV4Fragment
+  extends Fragment
 {
   public void onBackPressed() {}
   
@@ -15,7 +15,7 @@ public class MiniBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.ui.MiniBaseFragment
  * JD-Core Version:    0.7.0.1
  */

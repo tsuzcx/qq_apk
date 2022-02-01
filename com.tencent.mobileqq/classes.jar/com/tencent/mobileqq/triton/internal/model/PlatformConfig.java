@@ -129,18 +129,18 @@ public final class PlatformConfig
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof PlatformConfig))
       {
         paramObject = (PlatformConfig)paramObject;
-        if ((!Intrinsics.areEqual(this.context, paramObject.context)) || (!Intrinsics.areEqual(this.logger, paramObject.logger)) || (!Intrinsics.areEqual(this.scriptPluginFactory, paramObject.scriptPluginFactory)) || (!Intrinsics.areEqual(this.debugConfig, paramObject.debugConfig)) || (!Intrinsics.areEqual(this.enginePackage, paramObject.enginePackage)) || (this.enableCodeCache != paramObject.enableCodeCache) || (this.enableOpenGlEs3 != paramObject.enableOpenGlEs3) || (this.enablePreloadEngine != paramObject.enablePreloadEngine) || (!Intrinsics.areEqual(this.workerExecutor, paramObject.workerExecutor)) || (!Intrinsics.areEqual(this.mainThreadExecutor, paramObject.mainThreadExecutor)) || (!Intrinsics.areEqual(this.downloader, paramObject.downloader))) {}
+        if ((Intrinsics.areEqual(this.context, paramObject.context)) && (Intrinsics.areEqual(this.logger, paramObject.logger)) && (Intrinsics.areEqual(this.scriptPluginFactory, paramObject.scriptPluginFactory)) && (Intrinsics.areEqual(this.debugConfig, paramObject.debugConfig)) && (Intrinsics.areEqual(this.enginePackage, paramObject.enginePackage)) && (this.enableCodeCache == paramObject.enableCodeCache) && (this.enableOpenGlEs3 == paramObject.enableOpenGlEs3) && (this.enablePreloadEngine == paramObject.enablePreloadEngine) && (Intrinsics.areEqual(this.workerExecutor, paramObject.workerExecutor)) && (Intrinsics.areEqual(this.mainThreadExecutor, paramObject.mainThreadExecutor)) && (Intrinsics.areEqual(this.downloader, paramObject.downloader))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   @NotNull
@@ -214,12 +214,36 @@ public final class PlatformConfig
   @NotNull
   public String toString()
   {
-    return "PlatformConfig(context=" + this.context + ", logger=" + this.logger + ", scriptPluginFactory=" + this.scriptPluginFactory + ", debugConfig=" + this.debugConfig + ", enginePackage=" + this.enginePackage + ", enableCodeCache=" + this.enableCodeCache + ", enableOpenGlEs3=" + this.enableOpenGlEs3 + ", enablePreloadEngine=" + this.enablePreloadEngine + ", workerExecutor=" + this.workerExecutor + ", mainThreadExecutor=" + this.mainThreadExecutor + ", downloader=" + this.downloader + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PlatformConfig(context=");
+    localStringBuilder.append(this.context);
+    localStringBuilder.append(", logger=");
+    localStringBuilder.append(this.logger);
+    localStringBuilder.append(", scriptPluginFactory=");
+    localStringBuilder.append(this.scriptPluginFactory);
+    localStringBuilder.append(", debugConfig=");
+    localStringBuilder.append(this.debugConfig);
+    localStringBuilder.append(", enginePackage=");
+    localStringBuilder.append(this.enginePackage);
+    localStringBuilder.append(", enableCodeCache=");
+    localStringBuilder.append(this.enableCodeCache);
+    localStringBuilder.append(", enableOpenGlEs3=");
+    localStringBuilder.append(this.enableOpenGlEs3);
+    localStringBuilder.append(", enablePreloadEngine=");
+    localStringBuilder.append(this.enablePreloadEngine);
+    localStringBuilder.append(", workerExecutor=");
+    localStringBuilder.append(this.workerExecutor);
+    localStringBuilder.append(", mainThreadExecutor=");
+    localStringBuilder.append(this.mainThreadExecutor);
+    localStringBuilder.append(", downloader=");
+    localStringBuilder.append(this.downloader);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.model.PlatformConfig
  * JD-Core Version:    0.7.0.1
  */

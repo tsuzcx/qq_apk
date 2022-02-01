@@ -12,12 +12,17 @@ class AlbumLibDownloaderUtil$1
   
   public void onDownloadCanceled(String paramString)
   {
-    File localFile = new File(AlbumLibDownloaderUtil.mAlbumDir.getAbsolutePath() + "/tmp" + this.val$libName);
-    if (localFile.exists()) {
-      localFile.delete();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(AlbumLibDownloaderUtil.mAlbumDir.getAbsolutePath());
+    ((StringBuilder)localObject).append("/tmp");
+    ((StringBuilder)localObject).append(this.val$libName);
+    localObject = new File(((StringBuilder)localObject).toString());
+    if (((File)localObject).exists()) {
+      ((File)localObject).delete();
     }
-    if (this.val$listener != null) {
-      this.val$listener.onDownloadCanceled(paramString);
+    localObject = this.val$listener;
+    if (localObject != null) {
+      ((Downloader.DownloadListener)localObject).onDownloadCanceled(paramString);
     }
     if (AlbumLibDownloaderUtil.GIF_SO_LIB_NAME.equals(this.val$libName)) {
       this.this$0.mDownloadState[AlbumLibDownloaderUtil.access$000(this.this$0)] = false;
@@ -26,12 +31,17 @@ class AlbumLibDownloaderUtil$1
   
   public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    File localFile = new File(AlbumLibDownloaderUtil.mAlbumDir.getAbsolutePath() + "/tmp" + this.val$libName);
-    if (localFile.exists()) {
-      localFile.delete();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(AlbumLibDownloaderUtil.mAlbumDir.getAbsolutePath());
+    ((StringBuilder)localObject).append("/tmp");
+    ((StringBuilder)localObject).append(this.val$libName);
+    localObject = new File(((StringBuilder)localObject).toString());
+    if (((File)localObject).exists()) {
+      ((File)localObject).delete();
     }
-    if (this.val$listener != null) {
-      this.val$listener.onDownloadFailed(paramString, paramDownloadResult);
+    localObject = this.val$listener;
+    if (localObject != null) {
+      ((Downloader.DownloadListener)localObject).onDownloadFailed(paramString, paramDownloadResult);
     }
     if (AlbumLibDownloaderUtil.GIF_SO_LIB_NAME.equals(this.val$libName)) {
       this.this$0.mDownloadState[AlbumLibDownloaderUtil.access$000(this.this$0)] = false;
@@ -42,17 +52,31 @@ class AlbumLibDownloaderUtil$1
   
   public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    File localFile = new File(AlbumLibDownloaderUtil.mAlbumDir.getAbsolutePath() + "/" + this.val$libName);
-    if (localFile.exists()) {
-      localFile.delete();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(AlbumLibDownloaderUtil.mAlbumDir.getAbsolutePath());
+    ((StringBuilder)localObject).append("/");
+    ((StringBuilder)localObject).append(this.val$libName);
+    localObject = new File(((StringBuilder)localObject).toString());
+    if (((File)localObject).exists()) {
+      ((File)localObject).delete();
     }
-    localFile = new File(AlbumLibDownloaderUtil.mAlbumDir.getAbsolutePath() + "/tmp" + this.val$libName);
-    if (localFile.exists()) {
-      localFile.renameTo(new File(AlbumLibDownloaderUtil.mAlbumDir.getAbsolutePath() + "/" + this.val$libName));
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(AlbumLibDownloaderUtil.mAlbumDir.getAbsolutePath());
+    ((StringBuilder)localObject).append("/tmp");
+    ((StringBuilder)localObject).append(this.val$libName);
+    localObject = new File(((StringBuilder)localObject).toString());
+    if (((File)localObject).exists())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(AlbumLibDownloaderUtil.mAlbumDir.getAbsolutePath());
+      localStringBuilder.append("/");
+      localStringBuilder.append(this.val$libName);
+      ((File)localObject).renameTo(new File(localStringBuilder.toString()));
     }
     LocalMultiProcConfig.putBool(this.val$url, true);
-    if (this.val$listener != null) {
-      this.val$listener.onDownloadSucceed(paramString, paramDownloadResult);
+    localObject = this.val$listener;
+    if (localObject != null) {
+      ((Downloader.DownloadListener)localObject).onDownloadSucceed(paramString, paramDownloadResult);
     }
     if (AlbumLibDownloaderUtil.GIF_SO_LIB_NAME.equals(this.val$libName)) {
       this.this$0.mDownloadState[AlbumLibDownloaderUtil.access$000(this.this$0)] = false;
@@ -61,7 +85,7 @@ class AlbumLibDownloaderUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.AlbumLibDownloaderUtil.1
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForMini;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.mini.MiniAppInterface;
@@ -39,7 +39,7 @@ public class PermissionSettingFragment
 {
   public static final String KEY_APPID = "key_appid";
   public static final String KEY_NAME = "key_name";
-  private static final String TAG = PermissionSettingFragment.class.getName();
+  private static final String TAG = "com.tencent.mobileqq.mini.out.activity.PermissionSettingFragment";
   public static boolean hasCancel = false;
   private PermissionListAdapter adapter;
   String appId;
@@ -55,73 +55,65 @@ public class PermissionSettingFragment
   
   private void initSettingUI(String paramString)
   {
-    Object localObject;
-    AuthorizeCenter.AuthorizeInfo localAuthorizeInfo;
-    if (this.authorizeCenter != null)
+    Object localObject1 = this.authorizeCenter;
+    Object localObject3 = null;
+    if (localObject1 != null) {
+      localObject1 = ((AuthorizeCenter)localObject1).getAuthorizeList(6);
+    } else {
+      localObject1 = null;
+    }
+    this.adapter = new PermissionListAdapter(getBaseActivity(), this, new PermissionSettingFragment.2(this));
+    if (localObject1 != null)
     {
-      localObject = this.authorizeCenter.getAuthorizeList(6);
-      this.adapter = new PermissionListAdapter(getActivity(), this, new PermissionSettingFragment.2(this));
-      if (localObject != null)
+      Iterator localIterator = ((List)localObject1).iterator();
+      Object localObject2;
+      do
       {
-        Iterator localIterator = ((List)localObject).iterator();
-        do
+        localObject2 = localObject3;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject2 = (AuthorizeCenter.AuthorizeInfo)localIterator.next();
+      } while (!"scope.getPhoneNumber".equals(((AuthorizeCenter.AuthorizeInfo)localObject2).scopeName));
+      if (localObject2 != null) {
+        ((List)localObject1).remove(localObject2);
+      }
+      localObject1 = new ArrayList((Collection)localObject1);
+      if (needShowSubMsgPermissionItem((List)localObject1))
+      {
+        int i = 0;
+        while (i < ((List)localObject1).size())
         {
-          if (!localIterator.hasNext()) {
+          localObject2 = (AuthorizeCenter.AuthorizeInfo)((List)localObject1).get(i);
+          if ("setting.appMsgSubscribed".equals(((AuthorizeCenter.AuthorizeInfo)localObject2).scopeName))
+          {
+            ((List)localObject1).remove(localObject2);
             break;
           }
-          localAuthorizeInfo = (AuthorizeCenter.AuthorizeInfo)localIterator.next();
-        } while (!"scope.getPhoneNumber".equals(localAuthorizeInfo.scopeName));
+          i += 1;
+        }
+        ((List)localObject1).add(new AuthorizeCenter.AuthorizeInfo("setting.appMsgSubscribed", 1));
       }
-    }
-    for (;;)
-    {
-      if (localAuthorizeInfo != null) {
-        ((List)localObject).remove(localAuthorizeInfo);
-      }
-      localObject = new ArrayList((Collection)localObject);
-      int i;
-      if (needShowSubMsgPermissionItem((List)localObject))
+      if (((List)localObject1).size() > 0)
       {
-        i = 0;
-        label121:
-        if (i < ((List)localObject).size())
-        {
-          localAuthorizeInfo = (AuthorizeCenter.AuthorizeInfo)((List)localObject).get(i);
-          if ("setting.appMsgSubscribed".equals(localAuthorizeInfo.scopeName)) {
-            ((List)localObject).remove(localAuthorizeInfo);
-          }
-        }
-        else
-        {
-          ((List)localObject).add(new AuthorizeCenter.AuthorizeInfo("setting.appMsgSubscribed", 1));
-        }
-      }
-      else
-      {
-        if (((List)localObject).size() <= 0) {
-          break label269;
-        }
         this.mPermissionListView.setVisibility(0);
         if (!TextUtils.isEmpty(paramString))
         {
           this.miniAppNameDesc.setVisibility(0);
-          this.miniAppNameDesc.setText(String.format(HardCodeUtil.a(2131694178), new Object[] { paramString }));
+          this.miniAppNameDesc.setText(String.format(HardCodeUtil.a(2131694137), new Object[] { paramString }));
         }
-        this.adapter.setScopeList((List)localObject);
+        this.adapter.setScopeList((List)localObject1);
       }
-      for (;;)
+      else
       {
-        this.mPermissionListView.setAdapter(this.adapter);
-        return;
-        localObject = null;
-        break;
-        i += 1;
-        break label121;
-        label269:
-        this.mPermissionNoneTextView.setText(paramString + HardCodeUtil.a(2131707919));
+        localObject1 = this.mPermissionNoneTextView;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(paramString);
+        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131707939));
+        ((TextView)localObject1).setText(((StringBuilder)localObject2).toString());
         this.mPermissionNoneTextView.setVisibility(0);
       }
-      localAuthorizeInfo = null;
+      this.mPermissionListView.setAdapter(this.adapter);
     }
   }
   
@@ -144,23 +136,35 @@ public class PermissionSettingFragment
   
   private boolean needShowSubMsgPermissionItem(List<AuthorizeCenter.AuthorizeInfo> paramList)
   {
-    boolean bool = false;
+    boolean bool2 = true;
     if (paramList != null)
     {
       i = 0;
-      if (i < paramList.size()) {
-        if (!"setting.appMsgSubscribed".equals(((AuthorizeCenter.AuthorizeInfo)paramList.get(i)).scopeName)) {}
+      while (i < paramList.size())
+      {
+        if ("setting.appMsgSubscribed".equals(((AuthorizeCenter.AuthorizeInfo)paramList.get(i)).scopeName))
+        {
+          i = 1;
+          break label54;
+        }
+        i += 1;
       }
     }
-    for (int i = 1;; i = 0)
+    int i = 0;
+    label54:
+    boolean bool1 = bool2;
+    if (!this.authorizeCenter.isOnceSubMaintain())
     {
-      if ((this.authorizeCenter.isOnceSubMaintain()) || (i != 0) || (this.authorizeCenter.isSystemSubscribeMaintain())) {
-        bool = true;
+      bool1 = bool2;
+      if (i == 0)
+      {
+        if (this.authorizeCenter.isSystemSubscribeMaintain()) {
+          return true;
+        }
+        bool1 = false;
       }
-      return bool;
-      i += 1;
-      break;
     }
+    return bool1;
   }
   
   public boolean needImmersive()
@@ -170,43 +174,43 @@ public class PermissionSettingFragment
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.autoReSet) {
+    if (this.autoReSet)
+    {
       this.autoReSet = false;
-    }
-    String str;
-    do
-    {
-      return;
-      str = (String)paramCompoundButton.getTag();
-    } while (TextUtils.isEmpty(str));
-    PermissionSettingFragment.3 local3 = new PermissionSettingFragment.3(this, str, paramBoolean, paramCompoundButton);
-    if ((!paramBoolean) && (!hasCancel))
-    {
-      hasCancel = true;
-      QQCustomDialog localQQCustomDialog = new QQCustomDialog(getActivity(), 2131755842);
-      localQQCustomDialog.setContentView(2131559084);
-      localQQCustomDialog.setTitle(HardCodeUtil.a(2131707917)).setMessage(HardCodeUtil.a(2131707910)).setPositiveButton(HardCodeUtil.a(2131707915), Color.parseColor("#5B6B92"), new PermissionSettingFragment.5(this, str, paramBoolean, local3)).setNegativeButton(HardCodeUtil.a(2131707912), Color.parseColor("#000000"), new PermissionSettingFragment.4(this, paramCompoundButton));
-      localQQCustomDialog.show();
       return;
     }
-    this.adapter.changeChecked(str, paramBoolean);
-    this.authorizeCenter.setAuthorize(str, paramBoolean, local3);
+    String str = (String)paramCompoundButton.getTag();
+    if (!TextUtils.isEmpty(str))
+    {
+      PermissionSettingFragment.3 local3 = new PermissionSettingFragment.3(this, str, paramBoolean, paramCompoundButton);
+      if ((!paramBoolean) && (!hasCancel))
+      {
+        hasCancel = true;
+        QQCustomDialog localQQCustomDialog = new QQCustomDialog(getBaseActivity(), 2131756189);
+        localQQCustomDialog.setContentView(2131558978);
+        localQQCustomDialog.setTitle(HardCodeUtil.a(2131707937)).setMessage(HardCodeUtil.a(2131707932)).setPositiveButton(HardCodeUtil.a(2131707936), Color.parseColor("#5B6B92"), new PermissionSettingFragment.5(this, str, paramBoolean, local3)).setNegativeButton(HardCodeUtil.a(2131707934), Color.parseColor("#000000"), new PermissionSettingFragment.4(this, paramCompoundButton));
+        localQQCustomDialog.show();
+        return;
+      }
+      this.adapter.changeChecked(str, paramBoolean);
+      this.authorizeCenter.setAuthorize(str, paramBoolean, local3);
+    }
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131369487) {
-      getActivity().finish();
+    if (paramView.getId() == 2131369202) {
+      getBaseActivity().finish();
     }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131559513, null);
+    paramLayoutInflater = LayoutInflater.from(getBaseActivity()).inflate(2131559387, null);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramLayoutInflater.setFitsSystemWindows(true);
-      paramLayoutInflater.setPadding(0, ImmersiveUtils.getStatusBarHeight(getActivity()), 0, 0);
+      paramLayoutInflater.setPadding(0, ImmersiveUtils.getStatusBarHeight(getBaseActivity()), 0, 0);
     }
     paramLayoutInflater.setBackgroundColor(Color.parseColor("#EFEFF4"));
     return paramLayoutInflater;
@@ -215,42 +219,42 @@ public class PermissionSettingFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    paramBundle = getActivity().getAppInterface();
+    paramBundle = getBaseActivity().getAppInterface();
     if ((paramBundle instanceof MiniAppInterface)) {
       this.miniAppInterface = ((MiniAppInterface)paramBundle);
     }
-    this.appId = getActivity().getIntent().getStringExtra("key_appid");
-    paramBundle = getActivity().getIntent().getStringExtra("key_name");
-    if ((TextUtils.isEmpty(this.appId)) || (this.miniAppInterface == null))
+    this.appId = getBaseActivity().getIntent().getStringExtra("key_appid");
+    paramBundle = getBaseActivity().getIntent().getStringExtra("key_name");
+    if ((!TextUtils.isEmpty(this.appId)) && (this.miniAppInterface != null))
     {
-      getActivity().finish();
+      this.leftBtnView = ((TextView)paramView.findViewById(2131369202));
+      this.titleView = ((TextView)paramView.findViewById(2131369249));
+      this.leftBtnView.setText(HardCodeUtil.a(2131707931));
+      this.titleView.setText(HardCodeUtil.a(2131707941));
+      this.leftBtnView.setOnClickListener(this);
+      this.mPermissionListView = ((ListView)paramView.findViewById(2131372451));
+      this.mPermissionNoneTextView = ((TextView)paramView.findViewById(2131372453));
+      this.miniAppNameDesc = ((TextView)paramView.findViewById(2131371392));
+      this.authorizeCenter = this.miniAppInterface.getAuthorizeCenter(this.appId);
+      if (this.authorizeCenter == null)
+      {
+        QLog.e(TAG, 1, "getAuthorizeCenter(appId), authorizeCenter is null?!");
+        return;
+      }
+      if (this.mProgress == null) {
+        this.mProgress = new QQProgressDialog(getBaseActivity());
+      }
+      this.mProgress.a(super.getResources().getString(2131694640));
+      this.mProgress.show();
+      MiniAppCmdUtil.getInstance().getAuthList(null, this.appId, new PermissionSettingFragment.1(this, paramBundle));
       return;
     }
-    this.leftBtnView = ((TextView)paramView.findViewById(2131369487));
-    this.titleView = ((TextView)paramView.findViewById(2131369534));
-    this.leftBtnView.setText(HardCodeUtil.a(2131707908));
-    this.titleView.setText(HardCodeUtil.a(2131707922));
-    this.leftBtnView.setOnClickListener(this);
-    this.mPermissionListView = ((ListView)paramView.findViewById(2131372874));
-    this.mPermissionNoneTextView = ((TextView)paramView.findViewById(2131372876));
-    this.miniAppNameDesc = ((TextView)paramView.findViewById(2131371766));
-    this.authorizeCenter = this.miniAppInterface.getAuthorizeCenter(this.appId);
-    if (this.authorizeCenter == null)
-    {
-      QLog.e(TAG, 1, "getAuthorizeCenter(appId), authorizeCenter is null?!");
-      return;
-    }
-    if (this.mProgress == null) {
-      this.mProgress = new QQProgressDialog(getActivity());
-    }
-    this.mProgress.a(super.getResources().getString(2131694671));
-    this.mProgress.show();
-    MiniAppCmdUtil.getInstance().getAuthList(null, this.appId, new PermissionSettingFragment.1(this, paramBundle));
+    getBaseActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.PermissionSettingFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -28,32 +28,30 @@ public final class SosoWifi
   
   public static long macToLong(String paramString)
   {
+    long l1 = 0L;
     try
     {
       paramString = paramString.split(":");
       if (paramString.length == 6)
       {
-        int j = 40;
         int i = 0;
-        long l1 = 0L;
+        l1 = 0L;
+        int j = 40;
         while (i < paramString.length)
         {
-          long l2 = Long.parseLong(paramString[i], 16);
-          long l3 = l2;
+          long l3 = Long.parseLong(paramString[i], 16);
+          long l2 = l3;
           if (j > 0) {
-            l3 = l2 << j;
+            l2 = l3 << j;
           }
-          l1 += l3;
+          l1 += l2;
           j -= 8;
           i += 1;
         }
-        return l1;
       }
+      return l1;
     }
-    catch (Exception paramString)
-    {
-      return 0L;
-    }
+    catch (Exception paramString) {}
     return 0L;
   }
   
@@ -71,7 +69,7 @@ public final class SosoWifi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soso.location.data.SosoWifi
  * JD-Core Version:    0.7.0.1
  */

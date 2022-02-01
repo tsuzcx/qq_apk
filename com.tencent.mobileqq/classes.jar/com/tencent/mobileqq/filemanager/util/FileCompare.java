@@ -8,13 +8,13 @@ public class FileCompare
 {
   public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
   {
-    if (paramFileInfo1.c())
+    if (paramFileInfo1.d())
     {
-      if (!paramFileInfo2.c()) {
+      if (!paramFileInfo2.d()) {
         return -1000;
       }
     }
-    else if (paramFileInfo2.c()) {
+    else if (paramFileInfo2.d()) {
       return 1000;
     }
     return paramFileInfo1.d().compareToIgnoreCase(paramFileInfo2.d());
@@ -22,7 +22,7 @@ public class FileCompare
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.FileCompare
  * JD-Core Version:    0.7.0.1
  */

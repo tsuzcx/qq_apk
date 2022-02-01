@@ -12,18 +12,17 @@ class c
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1) {
       return;
     }
     int i = paramMessage.arg1;
-    b.a(this.a, (ToServiceMsg)b.a(this.a).get(Integer.valueOf(i)));
+    paramMessage = this.a;
+    b.a(paramMessage, (ToServiceMsg)b.a(paramMessage).get(Integer.valueOf(i)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.quicksend.c
  * JD-Core Version:    0.7.0.1
  */

@@ -28,17 +28,28 @@ public class RankingModule
   
   static
   {
-    jdField_a_of_type_JavaLangString = "DoraemonOpenAPI." + RankingModule.class.getSimpleName();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DoraemonOpenAPI.");
+    localStringBuilder.append(RankingModule.class.getSimpleName());
+    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
   }
   
   private void a(JSONObject paramJSONObject, APICallback paramAPICallback)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString + ".getRankingList", 2, "params = " + paramJSONObject);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(".getRankingList");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("params = ");
+      ((StringBuilder)localObject2).append(paramJSONObject);
+      QLog.i((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
     int i = paramJSONObject.optInt("rankingID", 0);
     int j = paramJSONObject.optInt("topCount", 10);
-    String str = paramJSONObject.optString("rankKey", "");
+    Object localObject1 = paramJSONObject.optString("rankKey", "");
     int k = paramJSONObject.optInt("rankValueType", 0);
     int m = paramJSONObject.optInt("rankOrderType", 0);
     if (i <= 0)
@@ -46,114 +57,131 @@ public class RankingModule
       DoraemonUtil.a(paramAPICallback, -100, "rankingID must be bigger than 0");
       return;
     }
-    Object localObject = (UserInfoModule)this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a(UserInfoModule.class, false);
-    if (localObject == null)
+    Object localObject3 = (UserInfoModule)this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a(UserInfoModule.class, false);
+    if (localObject3 == null)
     {
       DoraemonUtil.a(paramAPICallback, -10, "internal error, try again.");
       return;
     }
-    Oidb_0xb85.ReqBody localReqBody = new Oidb_0xb85.ReqBody();
-    localObject = ((UserInfoModule)localObject).a();
-    localReqBody.appid.set(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.jdField_a_of_type_JavaLangString).intValue());
-    localReqBody.service_id.set(this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.jdField_a_of_type_Int);
-    localReqBody.openid.set(((UserInfoModule.LoginInfo)localObject).jdField_a_of_type_JavaLangString);
-    localReqBody.openkey.set(((UserInfoModule.LoginInfo)localObject).b);
+    Object localObject2 = new Oidb_0xb85.ReqBody();
+    localObject3 = ((UserInfoModule)localObject3).a();
+    ((Oidb_0xb85.ReqBody)localObject2).appid.set(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.jdField_a_of_type_JavaLangString).intValue());
+    ((Oidb_0xb85.ReqBody)localObject2).service_id.set(this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.jdField_a_of_type_Int);
+    ((Oidb_0xb85.ReqBody)localObject2).openid.set(((UserInfoModule.LoginInfo)localObject3).jdField_a_of_type_JavaLangString);
+    ((Oidb_0xb85.ReqBody)localObject2).openkey.set(((UserInfoModule.LoginInfo)localObject3).b);
     Oidb_0xb85.GetRankListReqBody localGetRankListReqBody = new Oidb_0xb85.GetRankListReqBody();
     localGetRankListReqBody.ranklist_id.set(i);
     localGetRankListReqBody.top_count.set(j);
-    if (!TextUtils.isEmpty(str)) {
-      localGetRankListReqBody.rank_key.set(str);
+    if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+      localGetRankListReqBody.rank_key.set((String)localObject1);
     }
     localGetRankListReqBody.rank_value_type.set(k);
     localGetRankListReqBody.rank_order_type.set(m);
-    localReqBody.get_ranklist_req.set(localGetRankListReqBody);
-    ProtoUtils.a(BaseApplicationImpl.getApplication().getRuntime(), new RankingModule.1(this, (UserInfoModule.LoginInfo)localObject, paramJSONObject, paramAPICallback), localReqBody.toByteArray(), "OidbSvc.0xb85", 2949, 2, null, 0L);
+    ((Oidb_0xb85.ReqBody)localObject2).get_ranklist_req.set(localGetRankListReqBody);
+    ProtoUtils.a(BaseApplicationImpl.getApplication().getRuntime(), new RankingModule.1(this, (UserInfoModule.LoginInfo)localObject3, paramJSONObject, paramAPICallback), ((Oidb_0xb85.ReqBody)localObject2).toByteArray(), "OidbSvc.0xb85", 2949, 2, null, 0L);
   }
   
   private void b(JSONObject paramJSONObject, APICallback paramAPICallback)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString + ".reportScore", 2, "params = " + paramJSONObject);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(".reportScore");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("params = ");
+      ((StringBuilder)localObject2).append(paramJSONObject);
+      QLog.i((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
     int i = paramJSONObject.optInt("rankingID", 0);
-    JSONArray localJSONArray = paramJSONObject.optJSONArray("scoreList");
+    Object localObject1 = paramJSONObject.optJSONArray("scoreList");
     if (i <= 0)
     {
       DoraemonUtil.a(paramAPICallback, -100, "rankingID 没有传或者值小于等于0");
       return;
     }
-    Object localObject1 = (UserInfoModule)this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a(UserInfoModule.class, false);
-    if (localObject1 == null)
+    Object localObject3 = (UserInfoModule)this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a(UserInfoModule.class, false);
+    if (localObject3 == null)
     {
       QLog.e(jdField_a_of_type_JavaLangString, 1, "reportScore, getAPIModule UserInfoModule return null");
       return;
     }
-    Oidb_0xb85.ReqBody localReqBody = new Oidb_0xb85.ReqBody();
-    localObject1 = ((UserInfoModule)localObject1).a();
-    localReqBody.appid.set(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.jdField_a_of_type_JavaLangString).intValue());
-    localReqBody.service_id.set(this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.jdField_a_of_type_Int);
-    localReqBody.openid.set(((UserInfoModule.LoginInfo)localObject1).jdField_a_of_type_JavaLangString);
-    localReqBody.openkey.set(((UserInfoModule.LoginInfo)localObject1).b);
+    Object localObject2 = new Oidb_0xb85.ReqBody();
+    localObject3 = ((UserInfoModule)localObject3).a();
+    ((Oidb_0xb85.ReqBody)localObject2).appid.set(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.jdField_a_of_type_JavaLangString).intValue());
+    ((Oidb_0xb85.ReqBody)localObject2).service_id.set(this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.jdField_a_of_type_Int);
+    ((Oidb_0xb85.ReqBody)localObject2).openid.set(((UserInfoModule.LoginInfo)localObject3).jdField_a_of_type_JavaLangString);
+    ((Oidb_0xb85.ReqBody)localObject2).openkey.set(((UserInfoModule.LoginInfo)localObject3).b);
     Oidb_0xb85.ReportScoreReqBody localReportScoreReqBody = new Oidb_0xb85.ReportScoreReqBody();
     localReportScoreReqBody.ranklist_id.set(i);
     try
     {
-      int k = localJSONArray.length();
-      i = 0;
-      while (i < k)
+      i = ((JSONArray)localObject1).length();
+      int k = 0;
+      while (k < i)
       {
-        Object localObject2 = localJSONArray.getJSONObject(i);
+        Object localObject4 = ((JSONArray)localObject1).getJSONObject(k);
         ranklist_comm.ReportItem localReportItem = new ranklist_comm.ReportItem();
-        localReportItem.openid.set(((JSONObject)localObject2).getString("openid"));
-        localReportItem.score.set(((JSONObject)localObject2).getInt("score"));
-        localObject2 = ((JSONObject)localObject2).optJSONArray("extraList");
-        if (localObject2 != null)
+        localReportItem.openid.set(((JSONObject)localObject4).getString("openid"));
+        localReportItem.score.set(((JSONObject)localObject4).getInt("score"));
+        localObject4 = ((JSONObject)localObject4).optJSONArray("extraList");
+        int j = i;
+        if (localObject4 != null)
         {
-          int j = 0;
-          int m = ((JSONArray)localObject2).length();
-          while (j < m)
+          int n = ((JSONArray)localObject4).length();
+          int m = 0;
+          for (;;)
           {
-            JSONObject localJSONObject = ((JSONArray)localObject2).getJSONObject(j);
+            j = i;
+            if (m >= n) {
+              break;
+            }
+            JSONObject localJSONObject = ((JSONArray)localObject4).getJSONObject(m);
             ranklist_comm.ExtraParam localExtraParam = new ranklist_comm.ExtraParam();
             localExtraParam.param_key.set(localJSONObject.getString("key"));
             localExtraParam.param_value.set(localJSONObject.getInt("value"));
             localExtraParam.param_type.set(localJSONObject.getInt("type"));
             localReportItem.rpt_extra_param.add(localExtraParam);
-            j += 1;
+            m += 1;
           }
         }
         localReportScoreReqBody.rpt_report_item.add(localReportItem);
-        i += 1;
+        k += 1;
+        i = j;
       }
-      localReqBody.report_score_req.set(localReportScoreReqBody);
+      ((Oidb_0xb85.ReqBody)localObject2).report_score_req.set(localReportScoreReqBody);
+      ProtoUtils.a(BaseApplicationImpl.getApplication().getRuntime(), new RankingModule.2(this, (UserInfoModule.LoginInfo)localObject3, paramJSONObject, paramAPICallback), ((Oidb_0xb85.ReqBody)localObject2).toByteArray(), "OidbSvc.0xb85", 2949, 1, null, 0L);
+      return;
     }
     catch (Exception paramJSONObject)
     {
-      DoraemonUtil.a(paramAPICallback, -101, "参数处理错误, 是否是类型不对? 查看一下文档吧. \nerrorMsg: " + paramJSONObject.getMessage());
-      return;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("参数处理错误, 是否是类型不对? 查看一下文档吧. \nerrorMsg: ");
+      ((StringBuilder)localObject1).append(paramJSONObject.getMessage());
+      DoraemonUtil.a(paramAPICallback, -101, ((StringBuilder)localObject1).toString());
     }
-    ProtoUtils.a(BaseApplicationImpl.getApplication().getRuntime(), new RankingModule.2(this, (UserInfoModule.LoginInfo)localObject1, paramJSONObject, paramAPICallback), localReqBody.toByteArray(), "OidbSvc.0xb85", 2949, 1, null, 0L);
   }
   
   public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull APICallback paramAPICallback)
   {
-    switch (paramInt)
+    if (paramInt != 8)
     {
-    default: 
-      return false;
-    case 8: 
-      a(paramJSONObject, paramAPICallback);
-    }
-    for (;;)
-    {
-      return true;
+      if (paramInt != 24) {
+        return false;
+      }
       b(paramJSONObject, paramAPICallback);
     }
+    else
+    {
+      a(paramJSONObject, paramAPICallback);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.commonModule.RankingModule
  * JD-Core Version:    0.7.0.1
  */

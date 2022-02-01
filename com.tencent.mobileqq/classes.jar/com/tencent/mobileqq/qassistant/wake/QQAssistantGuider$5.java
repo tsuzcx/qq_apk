@@ -4,7 +4,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.qassistant.core.AssistantUtils;
 import com.tencent.mobileqq.qassistant.setting.AssistantSwitchImpl;
-import com.tencent.mobileqq.qqfloatingwindow.impl.FloatingScreenPermission;
+import com.tencent.mobileqq.qqfloatingwindow.IQQFloatingPermission;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.app.AppActivity;
@@ -21,35 +22,35 @@ class QQAssistantGuider$5
     {
       AssistantSwitchImpl.a(AssistantUtils.a(), true);
       WakeManager.a().a(true);
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        ReportController.b(null, "dc00898", "", "", "0X800B44E", "0X800B44E", 1, 0, "", "", "", "");
-        this.jdField_a_of_type_ComTencentMobileqqQassistantWakeQQAssistantGuider.jdField_a_of_type_MqqAppAppActivity.requestPermissions(new QQAssistantGuider.5.1(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
-      }
-      if (!this.b)
-      {
-        ReportController.b(null, "dc00898", "", "", "0X800B44E", "0X800B44E", 2, 0, "", "", "", "");
-        FloatingScreenPermission.requestPermission(this.jdField_a_of_type_ComTencentMobileqqQassistantWakeQQAssistantGuider.jdField_a_of_type_MqqAppAppActivity);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqQassistantWakeQQAssistantGuider.jdField_a_of_type_Int = -1;
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentMobileqqQassistantWakeQQAssistantGuider.dismiss();
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        AssistantUtils.a("HelloQQWake", "QQAssistantGuider cardHandler.setQQAssistantSwitch:" + localException.getMessage());
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("QQAssistantGuider cardHandler.setQQAssistantSwitch:");
+      localStringBuilder.append(localException.getMessage());
+      AssistantUtils.a("HelloQQWake", localStringBuilder.toString());
     }
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      ReportController.b(null, "dc00898", "", "", "0X800B44E", "0X800B44E", 1, 0, "", "", "", "");
+      this.jdField_a_of_type_ComTencentMobileqqQassistantWakeQQAssistantGuider.jdField_a_of_type_MqqAppAppActivity.requestPermissions(new QQAssistantGuider.5.1(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
+    }
+    if (!this.b)
+    {
+      ReportController.b(null, "dc00898", "", "", "0X800B44E", "0X800B44E", 2, 0, "", "", "", "");
+      ((IQQFloatingPermission)QRoute.api(IQQFloatingPermission.class)).requestPermission(this.jdField_a_of_type_ComTencentMobileqqQassistantWakeQQAssistantGuider.jdField_a_of_type_MqqAppAppActivity);
+    }
+    QQAssistantGuider localQQAssistantGuider = this.jdField_a_of_type_ComTencentMobileqqQassistantWakeQQAssistantGuider;
+    localQQAssistantGuider.jdField_a_of_type_Int = -1;
+    if (!this.jdField_a_of_type_Boolean) {
+      localQQAssistantGuider.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.wake.QQAssistantGuider.5
  * JD-Core Version:    0.7.0.1
  */

@@ -88,62 +88,76 @@ public class ARCloudControl
   public static void a()
   {
     Object localObject2 = BaseApplicationImpl.sApplication;
-    Object localObject1;
     if (Build.VERSION.SDK_INT >= 9)
     {
-      localObject1 = ((Context)localObject2).getApplicationInfo().nativeLibraryDir + "/";
-      localObject1 = (String)localObject1 + "libARCloud.so";
-      localObject2 = ((Context)localObject2).getFilesDir() + "libARCloud.so";
-      if (!new File((String)localObject1).exists()) {
-        break label172;
-      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(((Context)localObject2).getApplicationInfo().nativeLibraryDir);
+      ((StringBuilder)localObject1).append("/");
+      localObject1 = ((StringBuilder)localObject1).toString();
     }
-    for (;;)
+    else
     {
-      if (!((String)localObject1).equals(""))
-      {
-        try
-        {
-          System.load((String)localObject1);
-          QLog.i("AREngine_ARCloudControl", 1, "load " + (String)localObject1 + " successfully!");
-          jdField_k_of_type_Boolean = true;
-          return;
-        }
-        catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-        {
-          label172:
-          QLog.i("AREngine_ARCloudControl", 1, "load " + (String)localObject1 + " failed! " + localUnsatisfiedLinkError.getMessage());
-        }
-        localObject1 = ((Context)localObject2).getApplicationInfo().dataDir + "/lib/";
-        break;
-        if (!new File((String)localObject2).exists()) {
-          break label248;
-        }
-        localObject1 = localObject2;
-        continue;
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.i("AREngine_ARCloudControl", 2, "loadSo suc");
-      }
-      jdField_k_of_type_Boolean = false;
-      return;
-      label248:
-      localObject1 = "";
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(((Context)localObject2).getApplicationInfo().dataDir);
+      ((StringBuilder)localObject1).append("/lib/");
+      localObject1 = ((StringBuilder)localObject1).toString();
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append("libARCloud.so");
+    Object localObject1 = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(((Context)localObject2).getFilesDir());
+    localStringBuilder.append("libARCloud.so");
+    localObject2 = localStringBuilder.toString();
+    if (!new File((String)localObject1).exists()) {
+      if (new File((String)localObject2).exists()) {
+        localObject1 = localObject2;
+      } else {
+        localObject1 = "";
+      }
+    }
+    if (!((String)localObject1).equals("")) {
+      try
+      {
+        System.load((String)localObject1);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("load ");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(" successfully!");
+        QLog.i("AREngine_ARCloudControl", 1, ((StringBuilder)localObject2).toString());
+        jdField_k_of_type_Boolean = true;
+        return;
+      }
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("load ");
+        localStringBuilder.append((String)localObject1);
+        localStringBuilder.append(" failed! ");
+        localStringBuilder.append(localUnsatisfiedLinkError.getMessage());
+        QLog.i("AREngine_ARCloudControl", 1, localStringBuilder.toString());
+      }
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.i("AREngine_ARCloudControl", 2, "loadSo suc");
+    }
+    jdField_k_of_type_Boolean = false;
   }
   
   private void a(int paramInt, ARCloudRecogResult paramARCloudRecogResult)
   {
     QLog.i("AREngine_ARCloudControl", 1, "requestToCheckLBSLocation.");
     this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogResult = paramARCloudRecogResult;
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    Object localObject = this.jdField_a_of_type_AndroidOsHandler;
+    if (localObject != null)
     {
-      if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(2)) {
+      if (((Handler)localObject).hasMessages(2)) {
         this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
       }
-      Message localMessage = Message.obtain(this.jdField_a_of_type_AndroidOsHandler, new ARCloudControl.8(this));
-      localMessage.what = 2;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.jdField_g_of_type_Int);
+      localObject = Message.obtain(this.jdField_a_of_type_AndroidOsHandler, new ARCloudControl.8(this));
+      ((Message)localObject).what = 2;
+      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject, this.jdField_g_of_type_Int);
     }
     this.jdField_a_of_type_ComTencentMobileqqArModelArLBSActivity = ARCloudRecogResult.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, paramARCloudRecogResult);
     if (Build.VERSION.SDK_INT >= 23)
@@ -169,20 +183,20 @@ public class ARCloudControl
     {
       this.jdField_d_of_type_Boolean = true;
       this.jdField_h_of_type_Int += 1;
-    }
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_AndroidOsHandler != null)
+      synchronized (jdField_a_of_type_JavaLangObject)
       {
-        if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
-          this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+        if (this.jdField_a_of_type_AndroidOsHandler != null)
+        {
+          if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
+            this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+          }
+          Message localMessage = Message.obtain(this.jdField_a_of_type_AndroidOsHandler, new ARCloudControl.5(this));
+          localMessage.what = 1;
+          this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.jdField_g_of_type_Int);
         }
-        Message localMessage = Message.obtain(this.jdField_a_of_type_AndroidOsHandler, new ARCloudControl.5(this));
-        localMessage.what = 1;
-        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.jdField_g_of_type_Int);
+        this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload.a(paramARCloudReqInfo, new ARCloudControl.6(this, l1, paramARCloudReqInfo));
+        return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload.a(paramARCloudReqInfo, new ARCloudControl.6(this, l1, paramARCloudReqInfo));
-      return;
     }
   }
   
@@ -209,14 +223,15 @@ public class ARCloudControl
     if (this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload != null)
     {
       this.jdField_j_of_type_Boolean = true;
-      if (this.jdField_a_of_type_AndroidOsHandler != null)
+      Object localObject = this.jdField_a_of_type_AndroidOsHandler;
+      if (localObject != null)
       {
-        if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(2)) {
+        if (((Handler)localObject).hasMessages(2)) {
           this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
         }
-        Message localMessage = Message.obtain(this.jdField_a_of_type_AndroidOsHandler, new ARCloudControl.10(this));
-        localMessage.what = 2;
-        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.jdField_g_of_type_Int);
+        localObject = Message.obtain(this.jdField_a_of_type_AndroidOsHandler, new ARCloudControl.10(this));
+        ((Message)localObject).what = 2;
+        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject, this.jdField_g_of_type_Int);
       }
       this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload.a(paramString, paramInt1, paramInt2, new ARCloudControl.11(this));
     }
@@ -233,13 +248,18 @@ public class ARCloudControl
   
   public static boolean a()
   {
-    boolean bool = true;
     for (;;)
     {
       try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("AREngine_ARCloudControl", 2, "loadNativeLibrary" + jdField_l_of_type_Boolean + ", loadSoSuccess=" + jdField_k_of_type_Boolean);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append("loadNativeLibrary");
+          localStringBuilder1.append(jdField_l_of_type_Boolean);
+          localStringBuilder1.append(", loadSoSuccess=");
+          localStringBuilder1.append(jdField_k_of_type_Boolean);
+          QLog.d("AREngine_ARCloudControl", 2, localStringBuilder1.toString());
         }
         if (jdField_l_of_type_Boolean)
         {
@@ -252,27 +272,33 @@ public class ARCloudControl
           try
           {
             if (ArCloudNativeSoLoader.a(ArCloudNativeSoLoader.a()) != 0) {
-              break label167;
+              break label190;
             }
+            bool = true;
             jdField_k_of_type_Boolean = bool;
           }
           catch (Throwable localThrowable)
           {
             jdField_k_of_type_Boolean = false;
-            QLog.i("AREngine_ARCloudControl", 1, "load ARCloud so failed. err msg = " + localThrowable.getMessage());
-            continue;
+            StringBuilder localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append("load ARCloud so failed. err msg = ");
+            localStringBuilder2.append(localThrowable.getMessage());
+            QLog.i("AREngine_ARCloudControl", 1, localStringBuilder2.toString());
           }
           QLog.d("AREngine_ARCloudControl", 1, "loadArNativeSo");
           bool = jdField_k_of_type_Boolean;
-          continue;
+          return bool;
         }
-        QLog.i("AREngine_ARCloudControl", 1, "load ARCloud so failed. ARCloud so is not exist!");
+        else
+        {
+          QLog.i("AREngine_ARCloudControl", 1, "load ARCloud so failed. ARCloud so is not exist!");
+          bool = jdField_k_of_type_Boolean;
+          return bool;
+        }
       }
       finally {}
-      bool = jdField_k_of_type_Boolean;
-      continue;
-      label167:
-      bool = false;
+      label190:
+      boolean bool = false;
     }
   }
   
@@ -281,7 +307,8 @@ public class ARCloudControl
     QLog.i("AREngine_ARCloudControl", 1, "saveTmpPreviewData should nerver be called ");
     if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
     {
-      if ((this.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfByte.length != paramArrayOfByte.length)) {
+      byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+      if ((arrayOfByte == null) || (arrayOfByte.length != paramArrayOfByte.length)) {
         this.jdField_a_of_type_ArrayOfByte = new byte[paramArrayOfByte.length];
       }
       System.arraycopy(paramArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte.length);
@@ -336,8 +363,9 @@ public class ARCloudControl
   private void l()
   {
     QLog.i("AREngine_ARCloudControl", 1, "stopUploadingImg.");
-    if (this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload.a();
+    ARCloudFileUpload localARCloudFileUpload = this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload;
+    if (localARCloudFileUpload != null) {
+      localARCloudFileUpload.a();
     }
   }
   
@@ -364,109 +392,138 @@ public class ARCloudControl
       this.jdField_k_of_type_Long = System.currentTimeMillis();
     }
     long l1;
+    boolean bool1;
+    Object localObject;
     if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudImageSelect != null))
     {
       l1 = System.currentTimeMillis();
       bool1 = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudImageSelect.a(paramArrayOfByte);
       this.jdField_b_of_type_Boolean = false;
       this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl$ARCloudControlCallback.c(bool1);
-      QLog.i("AREngine_ARCloudControl", 1, "isSameSceneWithBestImg = " + bool1 + " cost time:" + (System.currentTimeMillis() - l1) + "ms");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isSameSceneWithBestImg = ");
+      ((StringBuilder)localObject).append(bool1);
+      ((StringBuilder)localObject).append(" cost time:");
+      ((StringBuilder)localObject).append(System.currentTimeMillis() - l1);
+      ((StringBuilder)localObject).append("ms");
+      QLog.i("AREngine_ARCloudControl", 1, ((StringBuilder)localObject).toString());
     }
-    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudImageSelect == null)) {
-      return;
-    }
-    if (this.jdField_e_of_type_Boolean)
+    if (this.jdField_a_of_type_Boolean)
     {
-      QLog.i("AREngine_ARCloudControl", 1, "selectImage start");
-      QLog.i("AREngine_ARCloudControl", 1, String.format("selectImage total time cost:start Time is %s", new Object[] { "firstTimeStart" }));
-      this.jdField_e_of_type_Boolean = false;
-      if (this.jdField_l_of_type_Long == 0L) {
-        this.jdField_l_of_type_Long = System.currentTimeMillis();
-      }
-      if (this.jdField_i_of_type_Boolean) {
-        ThreadManager.getUIHandler().post(new ARCloudControl.1(this));
-      }
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl$ARCloudControlCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl$ARCloudControlCallback.b();
-    }
-    this.jdField_c_of_type_Long = System.currentTimeMillis();
-    boolean bool1 = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudImageSelect.a(paramArrayOfByte, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
-    if ((bool1) && (this.jdField_m_of_type_Long == 0L)) {
-      this.jdField_m_of_type_Long = System.currentTimeMillis();
-    }
-    int i1;
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl$ARCloudControlCallback != null)
-    {
-      boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl$ARCloudControlCallback.a();
-      l1 = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl$ARCloudControlCallback.a();
-      if ((bool1) && (!this.jdField_m_of_type_Boolean) && (bool2))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AREngine_ARCloudControl", 2, "selectImage save tmp preview data");
-        }
-        b(paramArrayOfByte);
-        i1 = 0;
-        bool1 = false;
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl$ARCloudControlCallback.a(bool1);
-      }
-    }
-    for (;;)
-    {
-      if (!bool1)
-      {
-        this.jdField_a_of_type_Boolean = true;
+      if (this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudImageSelect == null) {
         return;
-        if ((bool1) && (this.jdField_m_of_type_Boolean) && (System.currentTimeMillis() < this.n + l1))
+      }
+      if (this.jdField_e_of_type_Boolean)
+      {
+        QLog.i("AREngine_ARCloudControl", 1, "selectImage start");
+        QLog.i("AREngine_ARCloudControl", 1, String.format("selectImage total time cost:start Time is %s", new Object[] { "firstTimeStart" }));
+        this.jdField_e_of_type_Boolean = false;
+        if (this.jdField_l_of_type_Long == 0L) {
+          this.jdField_l_of_type_Long = System.currentTimeMillis();
+        }
+        if (this.jdField_i_of_type_Boolean) {
+          ThreadManager.getUIHandler().post(new ARCloudControl.1(this));
+        }
+      }
+      localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl$ARCloudControlCallback;
+      if (localObject != null) {
+        ((ARCloudControl.ARCloudControlCallback)localObject).b();
+      }
+      this.jdField_c_of_type_Long = System.currentTimeMillis();
+      boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudImageSelect.a(paramArrayOfByte, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
+      if ((bool2) && (this.jdField_m_of_type_Long == 0L)) {
+        this.jdField_m_of_type_Long = System.currentTimeMillis();
+      }
+      localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl$ARCloudControlCallback;
+      int i1;
+      if (localObject != null)
+      {
+        bool1 = ((ARCloudControl.ARCloudControlCallback)localObject).a();
+        l1 = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl$ARCloudControlCallback.a();
+        if ((bool2) && (!this.jdField_m_of_type_Boolean) && (bool1))
         {
+          if (QLog.isColorLevel()) {
+            QLog.d("AREngine_ARCloudControl", 2, "selectImage save tmp preview data");
+          }
+          b(paramArrayOfByte);
+        }
+        for (;;)
+        {
+          bool1 = false;
+          break label476;
+          if ((!bool2) || (!this.jdField_m_of_type_Boolean) || (System.currentTimeMillis() >= this.n + l1)) {
+            break;
+          }
           if (QLog.isColorLevel()) {
             QLog.d("AREngine_ARCloudControl", 2, "selectImage update tmp preview data");
           }
           b(paramArrayOfByte);
-          i1 = 0;
-          bool1 = false;
-          break;
         }
-        if ((bool1) || (!this.jdField_m_of_type_Boolean) || (System.currentTimeMillis() < l1 + this.n)) {
-          break label675;
+        bool1 = bool2;
+        if (!bool2)
+        {
+          bool1 = bool2;
+          if (this.jdField_m_of_type_Boolean)
+          {
+            bool1 = bool2;
+            if (System.currentTimeMillis() >= this.n + l1)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("AREngine_ARCloudControl", 2, "selectImage use tmp preview data");
+              }
+              paramArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+              k();
+              bool1 = true;
+              i1 = 1;
+              break label478;
+            }
+          }
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("AREngine_ARCloudControl", 2, "selectImage use tmp preview data");
-        }
-        paramArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-        k();
-        i1 = 1;
-        bool1 = true;
-        break;
+        label476:
+        i1 = 0;
+        label478:
+        this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl$ARCloudControlCallback.a(bool1);
+      }
+      else
+      {
+        i1 = 0;
+        bool1 = bool2;
+      }
+      if (!bool1)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        return;
       }
       this.jdField_d_of_type_Long = System.currentTimeMillis();
-      QLog.i("AREngine_ARCloudControl", 1, String.format("selectImage total time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - this.jdField_b_of_type_Long) }) + ":select result is " + bool1);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(String.format("selectImage total time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - this.jdField_b_of_type_Long) }));
+      ((StringBuilder)localObject).append(":select result is ");
+      ((StringBuilder)localObject).append(bool1);
+      QLog.i("AREngine_ARCloudControl", 1, ((StringBuilder)localObject).toString());
       this.jdField_f_of_type_Long = (System.currentTimeMillis() - this.jdField_k_of_type_Long);
       this.jdField_a_of_type_Boolean = false;
       if (this.jdField_i_of_type_Boolean) {
         ThreadManager.getUIHandler().post(new ARCloudControl.2(this));
       }
-      if (i1 != 0) {}
-      for (;;)
+      if (i1 == 0) {
+        paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudImageSelect.a();
+      }
+      localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl$ARCloudControlCallback;
+      if (localObject != null) {
+        ((ARCloudControl.ARCloudControlCallback)localObject).b(true);
+      }
+      if (!this.jdField_f_of_type_Boolean)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl$ARCloudControlCallback != null) {
-          this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl$ARCloudControlCallback.b(true);
-        }
-        if ((!this.jdField_f_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl$ARCloudControlCallback != null))
+        localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl$ARCloudControlCallback;
+        if (localObject != null)
         {
-          l1 = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl$ARCloudControlCallback.b();
+          l1 = ((ARCloudControl.ARCloudControlCallback)localObject).b();
           ScanEntranceReport.a().a(l1, this.jdField_l_of_type_Long, this.jdField_m_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudImageSelect.jdField_c_of_type_Int);
           ARDebugReport.a().a(l1, this.jdField_m_of_type_Long);
           this.jdField_f_of_type_Boolean = true;
         }
-        a(new ARCloudControl.3(this, paramArrayOfByte));
-        return;
-        paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudImageSelect.a();
       }
-      label675:
-      i1 = 0;
-      break;
-      i1 = 0;
+      a(new ARCloudControl.3(this, paramArrayOfByte));
     }
   }
   
@@ -491,18 +548,21 @@ public class ARCloudControl
     this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload = new ARCloudFileUpload(paramAppInterface, true);
     this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload.a();
     this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo = paramARCommonConfigInfo;
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo != null) {}
-    for (long l1 = ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions);; l1 = 0L)
-    {
-      this.jdField_a_of_type_Long = l1;
-      this.jdField_e_of_type_Boolean = true;
-      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      ARReport.a().c(System.currentTimeMillis() - l2, jdField_k_of_type_Boolean);
-      return true;
+    paramARCloudControlCallback = this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo;
+    long l1;
+    if (paramARCloudControlCallback != null) {
+      l1 = ARRecognition.a(paramARCloudControlCallback.recognitions);
+    } else {
+      l1 = 0L;
     }
+    this.jdField_a_of_type_Long = l1;
+    this.jdField_e_of_type_Boolean = true;
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    ARReport.a().c(System.currentTimeMillis() - l2, jdField_k_of_type_Boolean);
+    return true;
   }
   
   public void b()
@@ -567,24 +627,28 @@ public class ARCloudControl
   public void f()
   {
     QLog.i("AREngine_ARCloudControl", 1, "uninit");
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudImageSelect != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudImageSelect;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudImageSelect.a();
+      ((ARCloudImageSelect)localObject).a();
       this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudImageSelect = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudPretreatmentManager != null)
+    localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudPretreatmentManager;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudPretreatmentManager.b();
+      ((ARCloudPretreatmentManager)localObject).b();
       this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudPretreatmentManager = null;
     }
     this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl$ARCloudControlCallback = null;
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
+    localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    if ((localObject != null) && (!((ArrayList)localObject).isEmpty())) {
       this.jdField_a_of_type_JavaUtilArrayList.clear();
     }
     this.jdField_a_of_type_JavaUtilArrayList = null;
     this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogResult = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload.b();
+    localObject = this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload;
+    if (localObject != null) {
+      ((ARCloudFileUpload)localObject).b();
     }
     this.jdField_a_of_type_AndroidAppActivity = null;
   }
@@ -615,13 +679,16 @@ public class ARCloudControl
   
   public void h()
   {
-    QLog.d("AREngine_ARCloudControl", 2, "arCloudReport mResult:" + this.jdField_j_of_type_Int);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("arCloudReport mResult:");
+    localStringBuilder.append(this.jdField_j_of_type_Int);
+    QLog.d("AREngine_ARCloudControl", 2, localStringBuilder.toString());
     ARReport.a().a(this.jdField_f_of_type_Long, this.jdField_g_of_type_Long, this.jdField_h_of_type_Long, this.jdField_h_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_i_of_type_Int, this.jdField_i_of_type_Long, this.jdField_j_of_type_Long, this.jdField_e_of_type_Long - this.jdField_b_of_type_Long, this.jdField_j_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudControl
  * JD-Core Version:    0.7.0.1
  */

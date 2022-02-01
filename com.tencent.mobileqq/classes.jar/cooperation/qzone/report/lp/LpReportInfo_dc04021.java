@@ -19,7 +19,22 @@ public class LpReportInfo_dc04021
   
   public String getSimpleInfo()
   {
-    return "dc04021: total_duration=" + this.totalDuration + " intime_callback=" + this.intimeCallback + " delay_callback=" + this.delayCallback + " no_callback=" + this.noCallback + " idle_callback=" + this.idleCallback + " touch_scroll_callback=" + this.touchScrollCallback + " fling_callback=" + this.flingCallback;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("dc04021: total_duration=");
+    localStringBuilder.append(this.totalDuration);
+    localStringBuilder.append(" intime_callback=");
+    localStringBuilder.append(this.intimeCallback);
+    localStringBuilder.append(" delay_callback=");
+    localStringBuilder.append(this.delayCallback);
+    localStringBuilder.append(" no_callback=");
+    localStringBuilder.append(this.noCallback);
+    localStringBuilder.append(" idle_callback=");
+    localStringBuilder.append(this.idleCallback);
+    localStringBuilder.append(" touch_scroll_callback=");
+    localStringBuilder.append(this.touchScrollCallback);
+    localStringBuilder.append(" fling_callback=");
+    localStringBuilder.append(this.flingCallback);
+    return localStringBuilder.toString();
   }
   
   public Map<String, String> toMap()
@@ -38,7 +53,7 @@ public class LpReportInfo_dc04021
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc04021
  * JD-Core Version:    0.7.0.1
  */

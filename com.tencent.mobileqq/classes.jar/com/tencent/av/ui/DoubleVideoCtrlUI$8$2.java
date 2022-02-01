@@ -10,12 +10,17 @@ class DoubleVideoCtrlUI$8$2
   public void run()
   {
     boolean bool = this.a.this$0.a(0);
-    QLog.w(this.a.this$0.d, 1, "StartGlassCheck  取消, ret[" + bool + "]");
+    String str = this.a.this$0.d;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("StartGlassCheck  取消, ret[");
+    localStringBuilder.append(bool);
+    localStringBuilder.append("]");
+    QLog.w(str, 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoCtrlUI.8.2
  * JD-Core Version:    0.7.0.1
  */

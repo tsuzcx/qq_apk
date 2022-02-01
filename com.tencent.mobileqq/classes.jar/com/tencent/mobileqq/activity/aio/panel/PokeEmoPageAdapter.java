@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.panel;
 
 import android.content.Context;
-import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.viewpager.widget.PagerAdapter;
 import java.util.List;
 
 public class PokeEmoPageAdapter
@@ -30,8 +30,9 @@ public class PokeEmoPageAdapter
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList != null) {
+      return localList.size();
     }
     return 0;
   }
@@ -59,7 +60,7 @@ public class PokeEmoPageAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.PokeEmoPageAdapter
  * JD-Core Version:    0.7.0.1
  */

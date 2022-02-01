@@ -39,14 +39,14 @@ public class SubscribeGetFollowRcmdRequest
     return "CertifiedAccountSvc.certified_account_read.GetFollowRcmd";
   }
   
-  public byte[] getRequestByteData()
+  protected byte[] getRequestByteData()
   {
     return this.mReq.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.network.SubscribeGetFollowRcmdRequest
  * JD-Core Version:    0.7.0.1
  */

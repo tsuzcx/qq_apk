@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.emogroupstore;
 
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
 
 class PicSelectAdapter$1
@@ -24,7 +24,7 @@ class PicSelectAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.PicSelectAdapter.1
  * JD-Core Version:    0.7.0.1
  */

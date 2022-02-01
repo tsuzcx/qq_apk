@@ -26,8 +26,12 @@ public class SearchBusinessConfProcessor
     }
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchBusinessConfProcessor", 2, "onParsed " + paramArrayOfQConfItem.length);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed ");
+        localStringBuilder.append(paramArrayOfQConfItem.length);
+        QLog.d("SearchBusinessConfProcessor", 2, localStringBuilder.toString());
       }
       return SearchBusinessConfBean.a(paramArrayOfQConfItem[0]);
     }
@@ -36,19 +40,17 @@ public class SearchBusinessConfProcessor
   
   public void a(SearchBusinessConfBean paramSearchBusinessConfBean)
   {
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramSearchBusinessConfBean == null) {
-        break label43;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      if (paramSearchBusinessConfBean != null) {
+        paramSearchBusinessConfBean = paramSearchBusinessConfBean.toString();
+      } else {
+        paramSearchBusinessConfBean = " empty";
       }
-    }
-    label43:
-    for (paramSearchBusinessConfBean = paramSearchBusinessConfBean.toString();; paramSearchBusinessConfBean = " empty")
-    {
-      QLog.d("SearchBusinessConfProcessor", 2, paramSearchBusinessConfBean);
-      return;
+      localStringBuilder.append(paramSearchBusinessConfBean);
+      QLog.d("SearchBusinessConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -74,8 +76,12 @@ public class SearchBusinessConfProcessor
   
   public void onReqFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("SearchBusinessConfProcessor", 2, "onReqFailed " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqFailed ");
+      localStringBuilder.append(paramInt);
+      QLog.e("SearchBusinessConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -86,7 +92,7 @@ public class SearchBusinessConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.search.SearchBusinessConfProcessor
  * JD-Core Version:    0.7.0.1
  */

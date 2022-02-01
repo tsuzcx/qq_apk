@@ -7,7 +7,7 @@ public class TurtleReportHelper
 {
   public static int a(Context paramContext)
   {
-    int i = NetworkUtil.b(paramContext);
+    int i = NetworkUtil.getNetworkType(paramContext);
     if (i == 1) {
       return 2;
     }
@@ -22,7 +22,7 @@ public class TurtleReportHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.report.TurtleReportHelper
  * JD-Core Version:    0.7.0.1
  */

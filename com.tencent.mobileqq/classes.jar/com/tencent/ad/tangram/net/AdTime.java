@@ -14,8 +14,9 @@ public enum AdTime
   
   public AdTimeAdapter getAdapter()
   {
-    if (this.adapter != null) {
-      return (AdTimeAdapter)this.adapter.get();
+    WeakReference localWeakReference = this.adapter;
+    if (localWeakReference != null) {
+      return (AdTimeAdapter)localWeakReference.get();
     }
     return null;
   }

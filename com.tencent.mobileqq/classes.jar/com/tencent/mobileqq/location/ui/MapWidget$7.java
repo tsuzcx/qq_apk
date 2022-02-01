@@ -38,33 +38,37 @@ class MapWidget$7
   public void a(LocationRoom.Venue paramVenue)
   {
     Object localObject = (LocationEasterEggBean)QConfigManager.a().a(575);
-    if (localObject != null) {}
-    for (localObject = ((LocationEasterEggBean)localObject).a();; localObject = null)
+    if (localObject != null) {
+      localObject = ((LocationEasterEggBean)localObject).a();
+    } else {
+      localObject = null;
+    }
+    if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      if (TextUtils.isEmpty((CharSequence)localObject)) {}
-      for (localObject = this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.addMarker(new MarkerOptions(paramVenue.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng).anchor(0.5F, 0.8F).zIndex(2.147484E+009F).icon(BitmapDescriptorFactory.fromResource(2130840783)));; localObject = this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.addMarker(new MarkerOptions(paramVenue.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng).anchor(0.5F, 0.8F).zIndex(2.147484E+009F).icon(BitmapDescriptorFactory.fromBitmap((Bitmap)localObject))))
-      {
-        if (localObject != null)
-        {
-          paramVenue.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(localObject);
-          MapWidget.a(this.a, (Marker)localObject);
-          ((Marker)localObject).setClickable(false);
-          ((Marker)localObject).refreshInfoWindow();
-        }
-        if (MapWidget.a(this.a) != null) {
-          MapWidget.a(this.a).a(paramVenue);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("MapWidget", 2, new Object[] { "[map][venue]onNewVenue invoked. Result venue: ", paramVenue });
-        }
-        return;
-        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(0);
-        localURLDrawableOptions.mFailedDrawable = localURLDrawableOptions.mLoadingDrawable;
-        localObject = URLDrawable.getDrawable((String)localObject, localURLDrawableOptions);
-        ((URLDrawable)localObject).downloadImediatly();
-        localObject = BaseImageUtil.b((Drawable)localObject);
-      }
+      localObject = this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.addMarker(new MarkerOptions(paramVenue.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng).anchor(0.5F, 0.8F).zIndex(2.147484E+009F).icon(BitmapDescriptorFactory.fromResource(2130840658)));
+    }
+    else
+    {
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(0);
+      localURLDrawableOptions.mFailedDrawable = localURLDrawableOptions.mLoadingDrawable;
+      localObject = URLDrawable.getDrawable((String)localObject, localURLDrawableOptions);
+      ((URLDrawable)localObject).downloadImediatly();
+      localObject = BaseImageUtil.b((Drawable)localObject);
+      localObject = this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.addMarker(new MarkerOptions(paramVenue.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng).anchor(0.5F, 0.8F).zIndex(2.147484E+009F).icon(BitmapDescriptorFactory.fromBitmap((Bitmap)localObject)));
+    }
+    if (localObject != null)
+    {
+      paramVenue.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(localObject);
+      MapWidget.a(this.a, (Marker)localObject);
+      ((Marker)localObject).setClickable(false);
+      ((Marker)localObject).refreshInfoWindow();
+    }
+    if (MapWidget.a(this.a) != null) {
+      MapWidget.a(this.a).a(paramVenue);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("MapWidget", 2, new Object[] { "[map][venue]onNewVenue invoked. Result venue: ", paramVenue });
     }
   }
   
@@ -86,7 +90,7 @@ class MapWidget$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.MapWidget.7
  * JD-Core Version:    0.7.0.1
  */

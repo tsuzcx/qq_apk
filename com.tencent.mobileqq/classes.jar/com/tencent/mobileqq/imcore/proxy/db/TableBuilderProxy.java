@@ -8,16 +8,18 @@ public class TableBuilderProxy
   
   public static String createIndexSQLStatement(Entity paramEntity)
   {
-    if (proxy != null) {
-      return proxy.createIndexSQLStatement(paramEntity);
+    TableBuilderProxy.Proxy localProxy = proxy;
+    if (localProxy != null) {
+      return localProxy.createIndexSQLStatement(paramEntity);
     }
     return null;
   }
   
   public static Class[] getNeedPrivateFieldsClass()
   {
-    if (proxy != null) {
-      return proxy.getNeedPrivateFieldsClass();
+    TableBuilderProxy.Proxy localProxy = proxy;
+    if (localProxy != null) {
+      return localProxy.getNeedPrivateFieldsClass();
     }
     return new Class[0];
   }
@@ -29,7 +31,7 @@ public class TableBuilderProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.imcore.proxy.db.TableBuilderProxy
  * JD-Core Version:    0.7.0.1
  */

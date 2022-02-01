@@ -68,12 +68,10 @@ public class TagManager
   
   public List<TagItem.TagInfoBase> a(List<StoryVideoItem> paramList, List<TagItem.TagInfoBase> paramList1)
   {
-    ArrayList localArrayList;
-    HashSet localHashSet;
     try
     {
-      localArrayList = new ArrayList();
-      localHashSet = new HashSet();
+      ArrayList localArrayList = new ArrayList();
+      HashSet localHashSet = new HashSet();
       if (paramList != null)
       {
         paramList = paramList.iterator();
@@ -87,23 +85,26 @@ public class TagManager
           }
         }
       }
-      if (paramList1 == null) {
-        break label167;
+      if (paramList1 != null)
+      {
+        paramList = paramList1.iterator();
+        while (paramList.hasNext())
+        {
+          paramList1 = (TagItem.TagInfoBase)paramList.next();
+          if (!localHashSet.contains(paramList1))
+          {
+            localArrayList.add(paramList1);
+            localHashSet.add(paramList1);
+          }
+        }
       }
+      return localArrayList;
     }
     finally {}
-    paramList = paramList1.iterator();
-    while (paramList.hasNext())
+    for (;;)
     {
-      paramList1 = (TagItem.TagInfoBase)paramList.next();
-      if (!localHashSet.contains(paramList1))
-      {
-        localArrayList.add(paramList1);
-        localHashSet.add(paramList1);
-      }
+      throw paramList;
     }
-    label167:
-    return localArrayList;
   }
   
   public void a()
@@ -113,44 +114,49 @@ public class TagManager
   
   public void a(String paramString, List<TagItem.TagInfoBase> paramList)
   {
-    if (paramList == null) {}
-    for (;;)
-    {
+    if (paramList == null) {
       return;
+    }
+    try
+    {
+      Object localObject = a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, TagEntry.class, TagEntry.class.getSimpleName(), "feedId=?", new String[] { paramString });
+      if (localObject != null)
+      {
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          TagEntry localTagEntry = (TagEntry)((Iterator)localObject).next();
+          localTagEntry.setStatus(1001);
+          this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(localTagEntry);
+        }
+      }
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction().begin();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        localObject = ((TagItem.TagInfoBase)paramList.next()).a();
+        ((TagEntry)localObject).feedId = paramString;
+        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace((Entity)localObject);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction().commit();
+      throw paramString;
+    }
+    finally
+    {
       try
       {
-        Object localObject = a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, TagEntry.class, TagEntry.class.getSimpleName(), "feedId=?", new String[] { paramString });
-        if (localObject != null)
-        {
-          localObject = ((List)localObject).iterator();
-          while (((Iterator)localObject).hasNext())
-          {
-            TagEntry localTagEntry = (TagEntry)((Iterator)localObject).next();
-            localTagEntry.setStatus(1001);
-            this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(localTagEntry);
-          }
-        }
+        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction().end();
+        return;
       }
       finally
       {
-        try
-        {
-          this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction().end();
-          throw paramString;
-        }
-        finally {}
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction().begin();
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          localObject = ((TagItem.TagInfoBase)paramList.next()).a();
-          ((TagEntry)localObject).feedId = paramString;
-          this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace((Entity)localObject);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction().commit();
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction().end();
+        break label185;
       }
+      paramString = finally;
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction().end();
     }
+    label185:
+    for (;;) {}
   }
   
   public void a(List<String> paramList)
@@ -160,23 +166,12 @@ public class TagManager
     }
     Object localObject = new ArrayList();
     ArrayList localArrayList = new ArrayList();
-    if (Math.abs(this.jdField_a_of_type_Long - System.currentTimeMillis()) > 60000L) {
+    if (Math.abs(this.jdField_a_of_type_Long - System.currentTimeMillis()) > 60000L)
+    {
       this.jdField_a_of_type_JavaUtilSet.clear();
     }
-    for (;;)
+    else
     {
-      if (localArrayList.size() > 0) {
-        SLog.d("Q.qqstory:TagManager", "request still waiting , %s", new Object[] { localArrayList });
-      }
-      if (paramList.size() == 0) {
-        break;
-      }
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      localObject = new GetFeedTagInfoListRequest();
-      ((GetFeedTagInfoListRequest)localObject).a = paramList;
-      CmdTaskManger.a().a((NetworkRequest)localObject, new TagManager.1(this));
-      SLog.d("Q.qqstory:TagManager", "request tag list :%s", new Object[] { paramList });
-      return;
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
@@ -189,6 +184,17 @@ public class TagManager
       }
       paramList = (List<String>)localObject;
     }
+    if (localArrayList.size() > 0) {
+      SLog.d("Q.qqstory:TagManager", "request still waiting , %s", new Object[] { localArrayList });
+    }
+    if (paramList.size() == 0) {
+      return;
+    }
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    localObject = new GetFeedTagInfoListRequest();
+    ((GetFeedTagInfoListRequest)localObject).a = paramList;
+    CmdTaskManger.a().a((NetworkRequest)localObject, new TagManager.1(this));
+    SLog.d("Q.qqstory:TagManager", "request tag list :%s", new Object[] { paramList });
   }
   
   public void b()
@@ -198,7 +204,7 @@ public class TagManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.TagManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.emosm.web;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 import com.tencent.mobileqq.teamwork.TeamWorkFileImportObserver;
+import com.tencent.mobileqq.teamwork.bean.TeamWorkFileImportInfo;
 import com.tencent.qphone.base.util.QLog;
 
 class MessengerService$3
@@ -12,42 +12,33 @@ class MessengerService$3
   
   public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
   {
-    Bundle localBundle;
-    int i;
-    String str;
     if (this.a.a != null)
     {
-      localBundle = new Bundle();
+      Bundle localBundle = new Bundle();
       localBundle.putString("url", null);
-      if (paramTeamWorkFileImportInfo == null) {
-        break label115;
+      int i;
+      if (paramTeamWorkFileImportInfo != null) {
+        i = paramTeamWorkFileImportInfo.f;
+      } else {
+        i = 0;
       }
-      i = paramTeamWorkFileImportInfo.f;
       localBundle.putInt("retCode", i);
-      if (paramTeamWorkFileImportInfo == null) {
-        break label120;
+      String str2 = "";
+      if (paramTeamWorkFileImportInfo != null) {
+        str1 = paramTeamWorkFileImportInfo.h;
+      } else {
+        str1 = "";
       }
-      str = paramTeamWorkFileImportInfo.h;
-      label53:
-      localBundle.putString("errorStr", str);
-      if (paramTeamWorkFileImportInfo == null) {
-        break label126;
+      localBundle.putString("errorStr", str1);
+      String str1 = str2;
+      if (paramTeamWorkFileImportInfo != null) {
+        str1 = paramTeamWorkFileImportInfo.i;
       }
-    }
-    label115:
-    label120:
-    label126:
-    for (paramTeamWorkFileImportInfo = paramTeamWorkFileImportInfo.i;; paramTeamWorkFileImportInfo = "")
-    {
-      localBundle.putString("redirectUrl", paramTeamWorkFileImportInfo);
+      localBundle.putString("redirectUrl", str1);
       this.a.a.putBundle("response", localBundle);
-      this.a.a(this.a.a);
+      paramTeamWorkFileImportInfo = this.a;
+      paramTeamWorkFileImportInfo.a(paramTeamWorkFileImportInfo.a);
       this.a.a = null;
-      return;
-      i = 0;
-      break;
-      str = "";
-      break label53;
     }
   }
   
@@ -64,14 +55,15 @@ class MessengerService$3
         localBundle.putBoolean("needRefresh", true);
       }
       this.a.a.putBundle("response", localBundle);
-      this.a.a(this.a.a);
+      paramString = this.a;
+      paramString.a(paramString.a);
       this.a.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.3
  * JD-Core Version:    0.7.0.1
  */

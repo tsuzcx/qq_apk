@@ -24,7 +24,6 @@ public class ZipFilesListAdapter
 {
   public long a;
   Activity jdField_a_of_type_AndroidAppActivity;
-  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   public String a;
   List<ZipFilePresenter.FileData> jdField_a_of_type_JavaUtilList;
   private short jdField_a_of_type_Short = 0;
@@ -38,7 +37,6 @@ public class ZipFilesListAdapter
   
   public ZipFilesListAdapter(List<ZipFilePresenter.FileData> paramList, Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramActivity);
     this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
@@ -72,53 +70,50 @@ public class ZipFilesListAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    ZipFilesListAdapter.FilesViewHolder localFilesViewHolder;
+    View localView = paramView;
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560969, null);
-      localFilesViewHolder = new ZipFilesListAdapter.FilesViewHolder();
-      localFilesViewHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131366945));
-      localFilesViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366949));
-      localFilesViewHolder.b = ((TextView)paramView.findViewById(2131366952));
-      localFilesViewHolder.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131377069);
-      paramView.setTag(localFilesViewHolder);
-      paramView.setOnClickListener(new ZipFilesListAdapter.1(this));
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131560844, null);
+      paramView = new ZipFilesListAdapter.FilesViewHolder();
+      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)localView.findViewById(2131366807));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366811));
+      paramView.b = ((TextView)localView.findViewById(2131366814));
+      paramView.jdField_a_of_type_AndroidViewView = localView.findViewById(2131376547);
+      localView.setTag(paramView);
+      localView.setOnClickListener(new ZipFilesListAdapter.1(this));
     }
-    for (;;)
+    paramView = (ZipFilesListAdapter.FilesViewHolder)localView.getTag();
+    ZipFilePresenter.FileData localFileData = (ZipFilePresenter.FileData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (localFileData.jdField_a_of_type_Boolean)
     {
-      localFilesViewHolder = (ZipFilesListAdapter.FilesViewHolder)paramView.getTag();
-      ZipFilePresenter.FileData localFileData = (ZipFilePresenter.FileData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      if (localFileData.jdField_a_of_type_Boolean)
+      paramView.b.setText(HardCodeUtil.a(2131716516));
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(FileManagerUtil.c(localFileData.jdField_a_of_type_JavaLangString));
+      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setImageResource(2130844339);
+      paramView.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
+    else
+    {
+      paramView.b.setText(FileUtil.a(localFileData.jdField_a_of_type_Long));
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(FileManagerUtil.c(localFileData.jdField_a_of_type_JavaLangString));
+      FileManagerUtil.a(paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localFileData.jdField_a_of_type_JavaLangString);
+      paramView.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      if (FileManagerUtil.a(localFileData.jdField_a_of_type_JavaLangString) == 0)
       {
-        localFilesViewHolder.b.setText(HardCodeUtil.a(2131716866));
-        localFilesViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(FileManagerUtil.d(localFileData.jdField_a_of_type_JavaLangString));
-        localFilesViewHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setImageResource(2130844434);
-        localFilesViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      }
-      for (;;)
-      {
-        localFilesViewHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterZipFilePresenter$FileData = localFileData;
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        localFilesViewHolder.b.setText(FileUtil.a(localFileData.jdField_a_of_type_Long));
-        localFilesViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(FileManagerUtil.d(localFileData.jdField_a_of_type_JavaLangString));
-        FileManagerUtil.a(localFilesViewHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localFileData.jdField_a_of_type_JavaLangString);
-        localFilesViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        if (FileManagerUtil.a(localFileData.jdField_a_of_type_JavaLangString) == 0)
-        {
-          QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-          FileManagerEntity localFileManagerEntity = localQQAppInterface.getFileManagerDataCenter().b(localFileData.b);
-          localFileManagerEntity.isZipInnerFile = true;
-          FileManagerUtil.b(localFilesViewHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localFileManagerEntity);
-          localQQAppInterface.getFileManagerEngine().c(localFileManagerEntity);
-        }
+        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+        FileManagerEntity localFileManagerEntity = localQQAppInterface.getFileManagerDataCenter().b(localFileData.b);
+        localFileManagerEntity.isZipInnerFile = true;
+        FileManagerUtil.b(paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localFileManagerEntity);
+        localQQAppInterface.getFileManagerEngine().c(localFileManagerEntity);
       }
     }
+    paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterZipFilePresenter$FileData = localFileData;
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.file.ZipFilesListAdapter
  * JD-Core Version:    0.7.0.1
  */

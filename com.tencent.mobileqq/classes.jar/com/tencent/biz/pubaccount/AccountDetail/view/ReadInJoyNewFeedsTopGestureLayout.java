@@ -1,26 +1,33 @@
 package com.tencent.biz.pubaccount.AccountDetail.view;
 
 import android.content.Context;
-import com.tencent.mobileqq.activity.fling.StickerDismissGestureDetector;
+import android.view.View;
+import com.tencent.biz.pubaccount.api.IPublicAccountDetailTopGestureLayoutProxy;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout;
+import com.tencent.mobileqq.qroute.QRoute;
 
 public class ReadInJoyNewFeedsTopGestureLayout
-  extends AccountDetailTopGestureLayout
 {
+  private IPublicAccountDetailTopGestureLayoutProxy a = (IPublicAccountDetailTopGestureLayoutProxy)QRoute.api(IPublicAccountDetailTopGestureLayoutProxy.class);
+  
   public ReadInJoyNewFeedsTopGestureLayout(Context paramContext)
   {
-    super(paramContext);
+    this.a.init(paramContext);
   }
   
-  public void init(Context paramContext)
+  public TopGestureLayout a()
   {
-    this.gestureListener = new ReadInJoyNewFeedsTopGestureLayout.EdgeTopGestureDetector(this, paramContext);
-    this.mTopGestureDetector = new StickerDismissGestureDetector(this, paramContext, this.gestureListener);
-    this.defaultGestureDetector = this.mTopGestureDetector;
+    return this.a.getTopGestureLayout();
+  }
+  
+  public void a(View paramView)
+  {
+    this.a.addDisableView(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.view.ReadInJoyNewFeedsTopGestureLayout
  * JD-Core Version:    0.7.0.1
  */

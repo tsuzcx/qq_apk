@@ -1,60 +1,30 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalTbsViewManager;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewListener;
-import com.tencent.mobileqq.filemanager.fileviewer.QFileBrowserUtils;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.mobileqq.filemanageraux.fileviewer.FileView.LocalTdsViewManager.LocalTdsViewManagerCallback;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.QVipUtils;
+import com.tencent.mobileqq.vas.config.business.qvip.KingCardConfig;
+import com.tencent.mobileqq.vas.config.business.qvip.KingCardConfig.Item;
+import com.tencent.mobileqq.vas.config.business.qvip.KingCardProcessor;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AppRuntime;
 
 class SimpleFilePresenter$6
-  implements LocalTdsViewManager.LocalTdsViewManagerCallback
+  implements View.OnClickListener
 {
-  SimpleFilePresenter$6(SimpleFilePresenter paramSimpleFilePresenter) {}
+  SimpleFilePresenter$6(SimpleFilePresenter paramSimpleFilePresenter, String paramString) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewListener != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewListener.a();
-    }
-    if (paramBoolean)
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.e() == 10) {
-        QFileBrowserUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.c());
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.d(), this);
-      SimpleFilePresenter.c(this.a, true);
-      this.a.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(4);
-      SimpleFilePresenter.a(this.a);
-      return;
-    }
-    if (SimpleFilePresenter.b(this.a))
-    {
-      SimpleFilePresenter.c(this.a, false);
-      if (this.a.d) {
-        this.a.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(1);
-      }
-      SimpleFilePresenter.d(this.a, true);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.d();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a();
-      }
-    }
-    LocalTbsViewManager.a().a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.d(), SimpleFilePresenter.a(this.a), true);
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    SimpleFilePresenter.b(this.a, paramBoolean2);
-    SimpleFilePresenter.a(this.a, paramBoolean1);
+    QVipUtils.a(this.jdField_a_of_type_JavaLangString, BaseApplicationImpl.getApplication().getRuntime().getAccount(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterSimpleFilePresenter.a);
+    KingCardProcessor.c().c.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.SimpleFilePresenter.6
  * JD-Core Version:    0.7.0.1
  */

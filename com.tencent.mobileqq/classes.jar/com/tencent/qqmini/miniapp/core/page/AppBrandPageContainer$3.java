@@ -20,10 +20,13 @@ class AppBrandPageContainer$3
       localJSONObject.put("inputId", this.this$0.getCurShowingInputId());
       if (this.this$0.mEventListener != null)
       {
-        QMLog.d("minisdk-start-AppBrandPageContainer", "onKeyboardHeightChange : " + localJSONObject.toString());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onKeyboardHeightChange : ");
+        localStringBuilder.append(localJSONObject.toString());
+        QMLog.d("minisdk-start-AppBrandPageContainer", localStringBuilder.toString());
         this.this$0.mEventListener.onWebViewEvent("onKeyboardHeightChange", localJSONObject.toString(), this.this$0.getShowingPageWebViewId());
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -33,7 +36,7 @@ class AppBrandPageContainer$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.AppBrandPageContainer.3
  * JD-Core Version:    0.7.0.1
  */

@@ -10,9 +10,10 @@ import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.data.MessageForTroopFile;
 import com.tencent.mobileqq.filemanager.multisave.QFileMultiSaveReq;
-import com.tencent.mobileqq.pic.PicBusiManager;
 import com.tencent.mobileqq.pic.PicReq;
-import com.tencent.mobileqq.shortvideo.ShortVideoBusiManager;
+import com.tencent.mobileqq.pic.api.IPicBus;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.shortvideo.SVBusiUtil;
 import com.tencent.mobileqq.shortvideo.ShortVideoReq;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -43,19 +44,21 @@ public class FileSaveReq
   public static FileSaveReq a(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo)
   {
     FileSaveReq localFileSaveReq = new FileSaveReq();
-    localFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq = ShortVideoBusiManager.a(paramQQAppInterface, paramMessageForShortVideo, 1);
+    localFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq = SVBusiUtil.a(paramQQAppInterface, paramMessageForShortVideo, 1);
     localFileSaveReq.jdField_a_of_type_Int = 2;
     return localFileSaveReq;
   }
   
   public static FileSaveReq a(MessageForPic paramMessageForPic)
   {
-    int i = 6;
+    int i;
     if (paramMessageForPic.fileSizeFlag == 1) {
       i = 7;
+    } else {
+      i = 6;
     }
     FileSaveReq localFileSaveReq = new FileSaveReq();
-    PicReq localPicReq = PicBusiManager.a(i, 1);
+    PicReq localPicReq = ((IPicBus)QRoute.api(IPicBus.class)).createPicReq(i, 1);
     localPicReq.a(paramMessageForPic, paramMessageForPic.getPicDownloadInfo());
     localFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq = localPicReq;
     localFileSaveReq.jdField_a_of_type_Int = 1;
@@ -64,85 +67,101 @@ public class FileSaveReq
   
   public static List<FileSaveReq> a(QQAppInterface paramQQAppInterface, List<ChatMessage> paramList, ItemBuilderFactory paramItemBuilderFactory, ISingleFileSaveCallBack paramISingleFileSaveCallBack)
   {
-    if ((paramList == null) || (paramList.isEmpty()) || (paramItemBuilderFactory == null)) {
-      return null;
-    }
-    paramItemBuilderFactory = new ArrayList();
-    Iterator localIterator = paramList.iterator();
-    if (localIterator.hasNext())
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      paramList = (ChatMessage)localIterator.next();
-      switch (ItemBuilderFactory.a(paramQQAppInterface, paramList))
-      {
-      default: 
-        paramList = null;
+      if (paramItemBuilderFactory == null) {
+        return null;
       }
-    }
-    while (paramList != null)
-    {
-      paramList.a(paramISingleFileSaveCallBack);
-      paramItemBuilderFactory.add(paramList);
-      break;
-      if (((paramList instanceof MessageForPic)) && (!ZhituManager.a((MessageForPic)paramList)))
+      paramItemBuilderFactory = new ArrayList();
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
       {
-        paramList = a((MessageForPic)paramList);
-        continue;
-        if ((paramList instanceof MessageForShortVideo))
-        {
-          paramList = a(paramQQAppInterface, (MessageForShortVideo)paramList);
-          continue;
-          if ((paramList instanceof MessageForShortVideo))
-          {
-            paramList = b(paramQQAppInterface, (MessageForShortVideo)paramList);
-            continue;
-            if ((paramList instanceof MessageForFile))
-            {
-              paramList = a(paramQQAppInterface, paramList);
-              paramList.jdField_a_of_type_Int = 4;
-              continue;
-            }
-            if ((paramList instanceof MessageForTroopFile))
-            {
-              paramList = a(paramQQAppInterface, paramList);
-              paramList.jdField_a_of_type_Int = 6;
-              continue;
-              if ((paramList instanceof MessageForFile))
-              {
-                paramList = a(paramQQAppInterface, paramList);
-                paramList.jdField_a_of_type_Int = 5;
-                continue;
-              }
-              if ((paramList instanceof MessageForTroopFile))
-              {
-                paramList = a(paramQQAppInterface, paramList);
-                paramList.jdField_a_of_type_Int = 7;
-                continue;
-                if ((paramList instanceof MessageForDLFile))
-                {
-                  paramList = a(paramQQAppInterface, paramList);
-                  paramList.jdField_a_of_type_Int = 9;
-                  continue;
-                  if ((paramList instanceof MessageForDLFile))
-                  {
-                    paramList = a(paramQQAppInterface, paramList);
-                    paramList.jdField_a_of_type_Int = 8;
-                    continue;
-                    return paramItemBuilderFactory;
+        paramList = (ChatMessage)localIterator.next();
+        int i = ItemBuilderFactory.a(paramQQAppInterface, paramList);
+        if (i != 1) {
+          if (i != 29) {
+            if (i != 38) {
+              if (i != 61) {
+                if (i != 65) {
+                  if (i != 121) {
+                    if (i == 122) {}
                   }
                 }
               }
             }
           }
         }
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        paramList = null;
+                        break;
+                      } while (!(paramList instanceof MessageForDLFile));
+                      paramList = a(paramQQAppInterface, paramList);
+                      paramList.jdField_a_of_type_Int = 9;
+                      break;
+                    } while (!(paramList instanceof MessageForDLFile));
+                    paramList = a(paramQQAppInterface, paramList);
+                    paramList.jdField_a_of_type_Int = 8;
+                    break;
+                    if ((paramList instanceof MessageForFile))
+                    {
+                      paramList = a(paramQQAppInterface, paramList);
+                      paramList.jdField_a_of_type_Int = 5;
+                      break;
+                    }
+                  } while (!(paramList instanceof MessageForTroopFile));
+                  paramList = a(paramQQAppInterface, paramList);
+                  paramList.jdField_a_of_type_Int = 7;
+                  break;
+                  if ((paramList instanceof MessageForFile))
+                  {
+                    paramList = a(paramQQAppInterface, paramList);
+                    paramList.jdField_a_of_type_Int = 4;
+                    break;
+                  }
+                } while (!(paramList instanceof MessageForTroopFile));
+                paramList = a(paramQQAppInterface, paramList);
+                paramList.jdField_a_of_type_Int = 6;
+                break;
+              } while (!(paramList instanceof MessageForShortVideo));
+              paramList = a(paramQQAppInterface, (MessageForShortVideo)paramList);
+              break;
+            } while (!(paramList instanceof MessageForShortVideo));
+            paramList = b(paramQQAppInterface, (MessageForShortVideo)paramList);
+            break;
+          } while (!(paramList instanceof MessageForPic));
+          paramList = (MessageForPic)paramList;
+        } while (ZhituManager.a(paramList));
+        paramList = a(paramList);
+        if (paramList != null)
+        {
+          paramList.a(paramISingleFileSaveCallBack);
+          paramItemBuilderFactory.add(paramList);
+        }
       }
-      paramList = null;
+      return paramItemBuilderFactory;
     }
+    return null;
   }
   
   public static FileSaveReq b(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo)
   {
     FileSaveReq localFileSaveReq = new FileSaveReq();
-    localFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq = ShortVideoBusiManager.a(paramQQAppInterface, paramMessageForShortVideo, 1);
+    localFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq = SVBusiUtil.a(paramQQAppInterface, paramMessageForShortVideo, 1);
     localFileSaveReq.jdField_a_of_type_Int = 3;
     return localFileSaveReq;
   }
@@ -156,22 +175,28 @@ public class FileSaveReq
   
   public void b(ISingleFileSaveCallBack paramISingleFileSaveCallBack)
   {
-    if ((paramISingleFileSaveCallBack != null) && (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramISingleFileSaveCallBack))) {}
-    try
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramISingleFileSaveCallBack);
-      return;
-    }
-    catch (Exception paramISingleFileSaveCallBack)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("FileSaveReq", 2, "removeSaveCallBack exception = " + paramISingleFileSaveCallBack.getMessage());
+    if ((paramISingleFileSaveCallBack != null) && (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramISingleFileSaveCallBack))) {
+      try
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramISingleFileSaveCallBack);
+        return;
+      }
+      catch (Exception paramISingleFileSaveCallBack)
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("removeSaveCallBack exception = ");
+          localStringBuilder.append(paramISingleFileSaveCallBack.getMessage());
+          QLog.d("FileSaveReq", 2, localStringBuilder.toString());
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.save.FileSaveReq
  * JD-Core Version:    0.7.0.1
  */

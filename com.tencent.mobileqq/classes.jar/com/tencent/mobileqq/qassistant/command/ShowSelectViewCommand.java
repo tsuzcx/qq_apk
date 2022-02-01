@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.qassistant.command;
 
+import com.tencent.mobileqq.qassistant.api.IVoiceCommand;
 import com.tencent.mobileqq.qassistant.core.IBasePresenter;
 import com.tencent.mobileqq.qassistant.data.CommandInfo;
 
 public class ShowSelectViewCommand
-  implements ICommand
+  implements IVoiceCommand
 {
   private IBasePresenter a;
   
@@ -15,14 +16,15 @@ public class ShowSelectViewCommand
   
   public void a(CommandInfo paramCommandInfo)
   {
-    if (this.a != null) {
-      this.a.e(paramCommandInfo);
+    IBasePresenter localIBasePresenter = this.a;
+    if (localIBasePresenter != null) {
+      localIBasePresenter.e(paramCommandInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.command.ShowSelectViewCommand
  * JD-Core Version:    0.7.0.1
  */

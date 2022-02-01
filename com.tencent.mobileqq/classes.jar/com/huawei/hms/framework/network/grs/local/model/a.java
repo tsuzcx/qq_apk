@@ -9,9 +9,17 @@ public class a
   private long b;
   private Map<String, c> c = new HashMap(16);
   
-  public String a()
+  public c a(String paramString)
   {
-    return this.a;
+    return (c)this.c.get(paramString);
+  }
+  
+  public void a()
+  {
+    Map localMap = this.c;
+    if (localMap != null) {
+      localMap.clear();
+    }
   }
   
   public void a(long paramLong)
@@ -19,29 +27,24 @@ public class a
     this.b = paramLong;
   }
   
-  public void a(String paramString)
-  {
-    this.a = paramString;
-  }
-  
   public void a(String paramString, c paramc)
   {
     this.c.put(paramString, paramc);
   }
   
-  public c b(String paramString)
+  public String b()
   {
-    return (c)this.c.get(paramString);
+    return this.a;
   }
   
-  public Map<String, c> b()
+  public void b(String paramString)
   {
-    return this.c;
+    this.a = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.framework.network.grs.local.model.a
  * JD-Core Version:    0.7.0.1
  */

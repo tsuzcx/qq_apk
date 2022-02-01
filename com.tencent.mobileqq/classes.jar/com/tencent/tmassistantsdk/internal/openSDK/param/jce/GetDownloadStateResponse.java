@@ -39,14 +39,15 @@ public final class GetDownloadStateResponse
     paramJceOutputStream.write(this.requestParam, 0);
     paramJceOutputStream.write(this.state, 1);
     paramJceOutputStream.write(this.errorCode, 2);
-    if (this.errorMsg != null) {
-      paramJceOutputStream.write(this.errorMsg, 3);
+    String str = this.errorMsg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.param.jce.GetDownloadStateResponse
  * JD-Core Version:    0.7.0.1
  */

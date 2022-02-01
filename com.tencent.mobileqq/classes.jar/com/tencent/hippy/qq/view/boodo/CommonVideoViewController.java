@@ -11,6 +11,7 @@ import com.tencent.mtt.hippy.common.HippyArray;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.modules.Promise;
 import com.tencent.mtt.hippy.uimanager.HippyViewController;
+import com.tencent.qphone.base.util.QLog;
 
 @HippyController(name="VideoView")
 public class CommonVideoViewController
@@ -27,12 +28,12 @@ public class CommonVideoViewController
     return super.createView(paramHippyRootView, paramInt, paramHippyEngineContext, paramString, paramHippyMap);
   }
   
-  public View createViewImpl(Context paramContext)
+  protected View createViewImpl(Context paramContext)
   {
     return null;
   }
   
-  public View createViewImpl(Context paramContext, HippyMap paramHippyMap)
+  protected View createViewImpl(Context paramContext, HippyMap paramHippyMap)
   {
     return new GameCenterVideoView(paramContext, this.mHippyEngineId);
   }
@@ -52,6 +53,15 @@ public class CommonVideoViewController
     paramGameCenterVideoView.onAfterUpdateProps();
   }
   
+  public void onViewDestroy(GameCenterVideoView paramGameCenterVideoView)
+  {
+    QLog.d("VideoView", 1, "onViewDestroy");
+    super.onViewDestroy(paramGameCenterVideoView);
+    if (paramGameCenterVideoView != null) {
+      paramGameCenterVideoView.destory();
+    }
+  }
+  
   @HippyControllerProps(defaultType="boolean", name="autoPlay")
   public void setAutoPlay(GameCenterVideoView paramGameCenterVideoView, boolean paramBoolean)
   {
@@ -62,6 +72,18 @@ public class CommonVideoViewController
   public void setCoverUrl(GameCenterVideoView paramGameCenterVideoView, String paramString)
   {
     paramGameCenterVideoView.setCoverUrl(paramString);
+  }
+  
+  @HippyControllerProps(defaultType="boolean", name="fullLandscape")
+  public void setIsLandscapeWhenFullScreen(GameCenterVideoView paramGameCenterVideoView, boolean paramBoolean)
+  {
+    paramGameCenterVideoView.setIsLandscapeWhenFullScreen(paramBoolean);
+  }
+  
+  @HippyControllerProps(defaultType="number", name="loadingStyles")
+  public void setLoadingIconStyle(GameCenterVideoView paramGameCenterVideoView, int paramInt)
+  {
+    paramGameCenterVideoView.setLoadingIconStyle(paramInt);
   }
   
   @HippyControllerProps(defaultType="number", name="loop")
@@ -114,7 +136,7 @@ public class CommonVideoViewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.boodo.CommonVideoViewController
  * JD-Core Version:    0.7.0.1
  */

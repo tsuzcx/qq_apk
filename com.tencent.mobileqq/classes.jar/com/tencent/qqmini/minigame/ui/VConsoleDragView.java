@@ -52,13 +52,14 @@ public class VConsoleDragView
   {
     this.mScreenWidth = ViewUtils.getScreenWidth();
     int j = ViewUtils.getScreenHeight();
-    if (LiuHaiUtils.isLiuHaiUseValid()) {}
-    for (int i = LiuHaiUtils.getStatusBarHeight(getContext());; i = 0)
-    {
-      this.mScreenHeight = (i + j);
-      this.mDm = AppLoaderFactory.g().getContext().getResources().getDisplayMetrics();
-      return;
+    int i;
+    if (LiuHaiUtils.isLiuHaiUseValid()) {
+      i = LiuHaiUtils.getStatusBarHeight(getContext());
+    } else {
+      i = 0;
     }
+    this.mScreenHeight = (j + i);
+    this.mDm = AppLoaderFactory.g().getContext().getResources().getDisplayMetrics();
   }
   
   private void onTouchEventActionMove(FrameLayout.LayoutParams paramLayoutParams)
@@ -67,41 +68,45 @@ public class VConsoleDragView
     int j = this.startY - this.lastY;
     this.left = (getLeft() + i);
     this.top = (getTop() + j);
-    this.right = (i + getRight());
+    this.right = (getRight() + i);
     this.bottom = (getBottom() + j);
     if (this.left < 0)
     {
       this.left = 0;
       this.right = (this.left + this.width);
-      if (this.top >= 0) {
-        break label261;
+    }
+    else
+    {
+      i = this.right;
+      j = this.mScreenWidth;
+      if (i > j)
+      {
+        this.right = j;
+        this.left = (this.right - this.width);
       }
+    }
+    if (this.top < 0)
+    {
       this.top = 0;
       this.bottom = (this.top + this.height);
     }
-    for (;;)
+    else
     {
-      paramLayoutParams.setMargins(this.left, this.top, this.mScreenWidth - this.right, this.mScreenHeight - this.bottom);
-      setLayoutParams(paramLayoutParams);
-      if ((!this.isDrag) && ((Math.abs(this.startX - this.lastX) > this.mDm.density * 2.0F) || (Math.abs(this.startY - this.lastY) > this.mDm.density * 2.0F))) {
-        this.isDrag = true;
-      }
-      this.lastX = this.startX;
-      this.lastY = this.startY;
-      return;
-      if (this.right <= this.mScreenWidth) {
-        break;
-      }
-      this.right = this.mScreenWidth;
-      this.left = (this.right - this.width);
-      break;
-      label261:
-      if (this.bottom > this.mScreenHeight)
+      i = this.bottom;
+      j = this.mScreenHeight;
+      if (i > j)
       {
-        this.bottom = this.mScreenHeight;
-        this.top = (this.mScreenHeight - this.height);
+        this.bottom = j;
+        this.top = (j - this.height);
       }
     }
+    paramLayoutParams.setMargins(this.left, this.top, this.mScreenWidth - this.right, this.mScreenHeight - this.bottom);
+    setLayoutParams(paramLayoutParams);
+    if ((!this.isDrag) && ((Math.abs(this.startX - this.lastX) > this.mDm.density * 2.0F) || (Math.abs(this.startY - this.lastY) > this.mDm.density * 2.0F))) {
+      this.isDrag = true;
+    }
+    this.lastX = this.startX;
+    this.lastY = this.startY;
   }
   
   public int getStatusBarHeight()
@@ -115,7 +120,7 @@ public class VConsoleDragView
     return this.isDrag;
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     this.width = getMeasuredWidth();
@@ -128,22 +133,30 @@ public class VConsoleDragView
     FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)getLayoutParams();
     this.startX = ((int)paramMotionEvent.getRawX());
     this.startY = ((int)paramMotionEvent.getRawY());
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return true;
-      this.lastX = this.startX;
-      this.lastY = this.startY;
-      continue;
-      onTouchEventActionMove(localLayoutParams);
-      continue;
-      if ((!this.isDrag) && (this.mListener != null)) {
-        this.mListener.onVConsoleMoveUp();
+      if (i != 1)
+      {
+        if (i != 2) {
+          return true;
+        }
+        onTouchEventActionMove(localLayoutParams);
+        return true;
+      }
+      if (!this.isDrag)
+      {
+        paramMotionEvent = this.mListener;
+        if (paramMotionEvent != null) {
+          paramMotionEvent.onVConsoleMoveUp();
+        }
       }
       this.isDrag = false;
+      return true;
     }
+    this.lastX = this.startX;
+    this.lastY = this.startY;
+    return true;
   }
   
   public void requestLandscapeLayout()
@@ -153,21 +166,23 @@ public class VConsoleDragView
     if (i > k)
     {
       j = i;
-      this.mScreenWidth = j;
-      j = i;
-      if (i > k) {
-        j = k;
-      }
-      this.mScreenHeight = j;
-      this.mDm = AppLoaderFactory.g().getContext().getResources().getDisplayMetrics();
-      return;
     }
-    if (LiuHaiUtils.isLiuHaiUseValid()) {}
-    for (int j = LiuHaiUtils.getStatusBarHeight(getContext());; j = 0)
+    else
     {
+      if (LiuHaiUtils.isLiuHaiUseValid()) {
+        j = LiuHaiUtils.getStatusBarHeight(getContext());
+      } else {
+        j = 0;
+      }
       j += k;
-      break;
     }
+    this.mScreenWidth = j;
+    int j = i;
+    if (i > k) {
+      j = k;
+    }
+    this.mScreenHeight = j;
+    this.mDm = AppLoaderFactory.g().getContext().getResources().getDisplayMetrics();
   }
   
   public void setListener(VConsoleDragView.Listener paramListener)
@@ -177,7 +192,7 @@ public class VConsoleDragView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.ui.VConsoleDragView
  * JD-Core Version:    0.7.0.1
  */

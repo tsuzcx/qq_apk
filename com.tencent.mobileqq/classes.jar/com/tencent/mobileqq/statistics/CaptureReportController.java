@@ -31,18 +31,20 @@ public class CaptureReportController
   {
     if (paramCaptureBaseReportItem == null)
     {
-      ExceptionTracker.trackException("CaptureReportController", "Capture Report not runtime Tag(" + paramString + ") report item is null");
-      if (!QLog.isColorLevel()) {}
-    }
-    do
-    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("Capture Report not runtime Tag(");
+      paramQQAppInterface.append(paramString);
+      paramQQAppInterface.append(") report item is null");
+      ExceptionTracker.trackException("CaptureReportController", paramQQAppInterface.toString());
+      QLog.isColorLevel();
       return;
-      if (!TextUtils.isEmpty(paramCaptureBaseReportItem.c)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    return;
-    if (QLog.isColorLevel()) {}
+    }
+    if (TextUtils.isEmpty(paramCaptureBaseReportItem.c))
+    {
+      QLog.isColorLevel();
+      return;
+    }
+    QLog.isColorLevel();
     QQAppInterface localQQAppInterface = paramQQAppInterface;
     if (paramQQAppInterface == null)
     {
@@ -77,39 +79,48 @@ public class CaptureReportController
   
   public static void a(String paramString1, QQAppInterface paramQQAppInterface, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString2)) || (paramQQAppInterface == null))
+    if ((!TextUtils.isEmpty(paramString2)) && (paramQQAppInterface != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("CaptureReportController", 2, "app or detail invalid. app : " + paramQQAppInterface + "  detail : " + paramString2);
+      String str = paramString2;
+      if (paramString2.contains("${count_unknown}")) {
+        str = paramString2.replace("${count_unknown}", "1");
       }
+      paramString2 = new NewIntent(paramQQAppInterface.getApplication(), ReportServlet.class);
+      paramString2.putExtra("sendType", 2);
+      paramString2.putExtra("tag", paramString1);
+      paramString2.putExtra("content", str);
+      paramString2.setWithouLogin(true);
+      paramQQAppInterface.startServlet(paramString2);
       return;
     }
-    String str = paramString2;
-    if (paramString2.contains("${count_unknown}")) {
-      str = paramString2.replace("${count_unknown}", "1");
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("app or detail invalid. app : ");
+      paramString1.append(paramQQAppInterface);
+      paramString1.append("  detail : ");
+      paramString1.append(paramString2);
+      QLog.d("CaptureReportController", 2, paramString1.toString());
     }
-    paramString2 = new NewIntent(paramQQAppInterface.getApplication(), ReportServlet.class);
-    paramString2.putExtra("sendType", 2);
-    paramString2.putExtra("tag", paramString1);
-    paramString2.putExtra("content", str);
-    paramString2.setWithouLogin(true);
-    paramQQAppInterface.startServlet(paramString2);
   }
   
   public static void b(String paramString1, QQAppInterface paramQQAppInterface, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString2)) || (paramQQAppInterface == null)) {}
-    do
+    if (!TextUtils.isEmpty(paramString2))
     {
-      return;
+      if (paramQQAppInterface == null) {
+        return;
+      }
       paramQQAppInterface = paramQQAppInterface.getReportController();
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.a(paramString1, paramString2, 1);
+      if (paramQQAppInterface != null) {
+        paramQQAppInterface.a(paramString1, paramString2, 1);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.CaptureReportController
  * JD-Core Version:    0.7.0.1
  */

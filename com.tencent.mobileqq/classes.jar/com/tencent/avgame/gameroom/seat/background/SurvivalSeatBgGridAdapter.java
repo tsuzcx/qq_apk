@@ -5,11 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import com.tencent.avgame.app.AVGameAppInterface;
 import com.tencent.avgame.business.handler.HandlerFactory;
 import com.tencent.avgame.business.handler.UserInfoHandler;
-import com.tencent.avgame.gamelogic.GameEngine;
+import com.tencent.avgame.gamelogic.IGameEngine;
 import com.tencent.avgame.gameroom.GameRoomViewLayoutParamsDef;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -28,7 +28,7 @@ public class SurvivalSeatBgGridAdapter
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundISurvivalSeatBgPresenter = paramISurvivalSeatBgPresenter;
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler = ((UserInfoHandler)GameEngine.a().a().getBusinessHandler(HandlerFactory.b));
+    this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler = ((UserInfoHandler)((AppInterface)IGameEngine.a()).getBusinessHandler(HandlerFactory.b));
     this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource = new SurvivalMemberDataSource();
     this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundISurvivalSeatBgPresenter.a(this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource);
     this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundISurvivalSeatBgPresenter.a(this);
@@ -36,67 +36,79 @@ public class SurvivalSeatBgGridAdapter
   
   private View a(int paramInt, View paramView)
   {
+    Object localObject1;
     if (paramInt < 0)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("SurvivalSeatBgGridAdapter", 4, "getMemberView invalide position " + paramInt);
+      if (QLog.isDevelopLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getMemberView invalide position ");
+        ((StringBuilder)localObject1).append(paramInt);
+        QLog.d("SurvivalSeatBgGridAdapter", 4, ((StringBuilder)localObject1).toString());
       }
       return paramView;
     }
     SurvivalMemberInfo localSurvivalMemberInfo = this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource.a(paramInt);
-    View localView;
-    Object localObject;
+    Object localObject2;
     if (!(paramView instanceof SurvivalMemberItemView))
     {
-      paramView = (SurvivalMemberItemView)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558812, null);
+      paramView = (SurvivalMemberItemView)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558712, null);
       paramView.setAlpha(0.5F);
       paramView.a();
-      localView = paramView;
-      localObject = paramView;
+      localObject1 = paramView;
+      localObject2 = paramView;
     }
-    for (;;)
+    else
     {
-      ((SurvivalMemberItemView)localObject).a(this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler, localSurvivalMemberInfo, this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundISurvivalSeatBgPresenter);
-      return localView;
-      localObject = (SurvivalMemberItemView)paramView;
-      localView = paramView;
+      localObject2 = (SurvivalMemberItemView)paramView;
+      localObject1 = paramView;
     }
+    ((SurvivalMemberItemView)localObject2).a(this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler, localSurvivalMemberInfo, this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundISurvivalSeatBgPresenter);
+    return localObject1;
   }
   
   public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource == null) || (paramInt < 0) || (this.jdField_a_of_type_AndroidViewViewGroup == null)) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("SurvivalSeatBgGridAdapter", 4, "invalid params updateItemView at " + paramInt);
+    Object localObject;
+    if ((this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource != null) && (paramInt >= 0))
+    {
+      localObject = this.jdField_a_of_type_AndroidViewViewGroup;
+      if (localObject != null)
+      {
+        localObject = (SurvivalMemberItemView)((ViewGroup)localObject).getChildAt(paramInt);
+        SurvivalMemberInfo localSurvivalMemberInfo = this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource.a(paramInt);
+        if (localObject == null)
+        {
+          if (QLog.isDevelopLevel()) {
+            QLog.d("SurvivalSeatBgGridAdapter", 4, "updateItemView itemView is null or member is null");
+          }
+          return;
+        }
+        ((SurvivalMemberItemView)localObject).a(this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler, localSurvivalMemberInfo, this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundISurvivalSeatBgPresenter);
+        return;
       }
     }
-    SurvivalMemberItemView localSurvivalMemberItemView;
-    SurvivalMemberInfo localSurvivalMemberInfo;
-    do
+    if (QLog.isDevelopLevel())
     {
-      return;
-      localSurvivalMemberItemView = (SurvivalMemberItemView)this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(paramInt);
-      localSurvivalMemberInfo = this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource.a(paramInt);
-      if (localSurvivalMemberItemView != null) {
-        break;
-      }
-    } while (!QLog.isDevelopLevel());
-    QLog.d("SurvivalSeatBgGridAdapter", 4, "updateItemView itemView is null or member is null");
-    return;
-    localSurvivalMemberItemView.a(this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler, localSurvivalMemberInfo, this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundISurvivalSeatBgPresenter);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("invalid params updateItemView at ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("SurvivalSeatBgGridAdapter", 4, ((StringBuilder)localObject).toString());
+    }
   }
   
   public int getCount()
   {
-    return GameRoomViewLayoutParamsDef.C;
+    return GameRoomViewLayoutParamsDef.N;
   }
   
   public Object getItem(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource == null) {
+    SurvivalMemberDataSource localSurvivalMemberDataSource = this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource;
+    if (localSurvivalMemberDataSource == null) {
       return new SurvivalMemberInfo(0L);
     }
-    if (this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource.a(paramInt) == null) {
+    if (localSurvivalMemberDataSource.a(paramInt) == null) {
       return new Object();
     }
     return new SurvivalMemberInfo(0L);
@@ -132,7 +144,7 @@ public class SurvivalSeatBgGridAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.seat.background.SurvivalSeatBgGridAdapter
  * JD-Core Version:    0.7.0.1
  */

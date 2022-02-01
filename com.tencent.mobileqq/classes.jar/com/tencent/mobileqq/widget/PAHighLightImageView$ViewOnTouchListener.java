@@ -20,35 +20,44 @@ public class PAHighLightImageView$ViewOnTouchListener
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAHighLightImageView", 2, "onTouch is called,action is:" + paramMotionEvent.getAction());
-    }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView.getTag(2131373654);
-    if (paramView == null) {}
-    label100:
-    do
+    if (QLog.isColorLevel())
     {
+      paramView = new StringBuilder();
+      paramView.append("onTouch is called,action is:");
+      paramView.append(paramMotionEvent.getAction());
+      QLog.d("PAHighLightImageView", 2, paramView.toString());
+    }
+    paramView = this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView.getTag(2131373227);
+    if (paramView == null) {
       return false;
-      if (paramView.equals(Integer.valueOf(1))) {}
-      for (boolean bool = true;; bool = false)
-      {
-        if (paramMotionEvent.getAction() != 0) {
-          break label100;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView.a(this.jdField_a_of_type_AndroidContentContext, bool);
-        return false;
-        if (!paramView.equals(Integer.valueOf(2))) {
-          break;
-        }
+    }
+    boolean bool;
+    if (paramView.equals(Integer.valueOf(1)))
+    {
+      bool = true;
+    }
+    else
+    {
+      if (!paramView.equals(Integer.valueOf(2))) {
+        break label129;
       }
-    } while ((paramMotionEvent.getAction() != 3) && (paramMotionEvent.getAction() != 1));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView.a();
+      bool = false;
+    }
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView.a(this.jdField_a_of_type_AndroidContentContext, bool);
+      return false;
+    }
+    if ((paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 1)) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView.a();
+    }
+    label129:
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PAHighLightImageView.ViewOnTouchListener
  * JD-Core Version:    0.7.0.1
  */

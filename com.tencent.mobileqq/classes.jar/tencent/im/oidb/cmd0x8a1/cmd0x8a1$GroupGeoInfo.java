@@ -23,13 +23,14 @@ public final class cmd0x8a1$GroupGeoInfo
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "uint32_city_id", "uint64_longtitude", "uint64_latitude", "string_geo_content" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro }, GroupGeoInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "uint32_city_id", "uint64_longtitude", "uint64_latitude", "string_geo_content" }, new Object[] { Integer.valueOf(0), localLong, localLong, localByteStringMicro }, GroupGeoInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8a1.cmd0x8a1.GroupGeoInfo
  * JD-Core Version:    0.7.0.1
  */

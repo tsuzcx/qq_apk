@@ -23,13 +23,15 @@ public class FrameAnimationDrawable
   {
     this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
     this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-    if (paramArrayOfInt.length <= 0) {
-      throw new RuntimeException(" FrameAnimDrawable RES_IDS can not empty !!!");
+    if (paramArrayOfInt.length > 0)
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(paramArrayOfInt[paramInt2]);
+      this.jdField_a_of_type_Int = paramInt2;
+      this.b = paramInt2;
+      a();
+      return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(paramArrayOfInt[paramInt2]);
-    this.jdField_a_of_type_Int = paramInt2;
-    this.b = paramInt2;
-    a();
+    throw new RuntimeException(" FrameAnimDrawable RES_IDS can not empty !!!");
   }
   
   public FrameAnimationDrawable(int[] paramArrayOfInt, ImageView paramImageView, int paramInt)
@@ -58,15 +60,16 @@ public class FrameAnimationDrawable
   public void a(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.jdField_a_of_type_Boolean)
+    {
       paramInt %= this.jdField_a_of_type_ArrayOfInt.length;
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(this.jdField_a_of_type_ArrayOfInt[paramInt]);
-      return;
-      paramInt = this.jdField_a_of_type_ArrayOfInt.length - paramInt % this.jdField_a_of_type_ArrayOfInt.length - 1;
+      int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+      paramInt = arrayOfInt.length - paramInt % arrayOfInt.length - 1;
     }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(this.jdField_a_of_type_ArrayOfInt[paramInt]);
   }
   
   public void a(Animator.AnimatorListener paramAnimatorListener)
@@ -81,12 +84,12 @@ public class FrameAnimationDrawable
   {
     stop();
     this.jdField_a_of_type_Boolean = paramBoolean;
-    if (paramBoolean) {}
-    for (this.b = (this.jdField_a_of_type_ArrayOfInt.length - 1);; this.b = 0)
-    {
-      a(paramAnimatorListener);
-      return;
+    if (paramBoolean) {
+      this.b = (this.jdField_a_of_type_ArrayOfInt.length - 1);
+    } else {
+      this.b = 0;
     }
+    a(paramAnimatorListener);
   }
   
   public boolean isRunning()
@@ -101,12 +104,14 @@ public class FrameAnimationDrawable
   
   public void stop()
   {
-    if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (this.jdField_a_of_type_AndroidAnimationValueAnimator.isStarted())) {
+    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    if ((localValueAnimator != null) && (localValueAnimator.isStarted())) {
       this.jdField_a_of_type_AndroidAnimationValueAnimator.end();
     }
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
+    localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    if (localValueAnimator != null)
     {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
+      localValueAnimator.removeAllUpdateListeners();
       this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllListeners();
     }
     this.jdField_a_of_type_Int = this.b;
@@ -114,7 +119,7 @@ public class FrameAnimationDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.FrameAnimationDrawable
  * JD-Core Version:    0.7.0.1
  */

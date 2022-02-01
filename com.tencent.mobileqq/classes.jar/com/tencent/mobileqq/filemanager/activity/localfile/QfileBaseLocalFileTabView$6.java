@@ -16,22 +16,23 @@ class QfileBaseLocalFileTabView$6
   {
     QfileLocalFileBaseExpandableListAdapter.LocalItemHolder localLocalItemHolder = (QfileLocalFileBaseExpandableListAdapter.LocalItemHolder)paramView.getTag();
     FileInfo localFileInfo = (FileInfo)localLocalItemHolder.jdField_a_of_type_JavaLangObject;
-    switch (localLocalItemHolder.c)
+    int i = localLocalItemHolder.c;
+    if (i != 0)
     {
+      if ((i == 1) || (i == 2)) {}
     }
-    for (;;)
+    else
     {
-      this.a.i();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       this.a.a.a().Z();
       this.a.a(localFileInfo, localLocalItemHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, false);
     }
+    this.a.i();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.6
  * JD-Core Version:    0.7.0.1
  */

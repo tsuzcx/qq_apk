@@ -14,7 +14,10 @@ class AppStateManager$1$1
   {
     if (paramBitmap == null)
     {
-      QMLog.i("minisdk-start_RuntimeState", "--- getScreenshot failed, " + this.a.val$miniAppInfo.appId);
+      paramBitmap = new StringBuilder();
+      paramBitmap.append("--- getScreenshot failed, ");
+      paramBitmap.append(this.a.val$miniAppInfo.appId);
+      QMLog.i("minisdk-start_RuntimeState", paramBitmap.toString());
       return;
     }
     AppStateManager.access$100(this.a.this$0, paramBitmap, this.a.val$miniAppInfo);
@@ -22,7 +25,7 @@ class AppStateManager$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.AppStateManager.1.1
  * JD-Core Version:    0.7.0.1
  */

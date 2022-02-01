@@ -14,15 +14,13 @@ class AssociatedAccountManageActivity$SubAccountUnbindOnButtonClickListener
   
   public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a.dismiss();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.menuUnbindDialog != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.menuUnbindDialog.dismiss();
     }
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 0) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.b(this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.unbindAccount(this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo);
   }
   
   public void a(SubAccountInfo paramSubAccountInfo)
@@ -32,7 +30,7 @@ class AssociatedAccountManageActivity$SubAccountUnbindOnButtonClickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountManageActivity.SubAccountUnbindOnButtonClickListener
  * JD-Core Version:    0.7.0.1
  */

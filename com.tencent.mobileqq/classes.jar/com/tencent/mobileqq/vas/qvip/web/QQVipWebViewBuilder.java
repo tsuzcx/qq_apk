@@ -9,23 +9,24 @@ import com.tencent.biz.ui.TouchWebView;
 import com.tencent.biz.webviewplugin.PayJsPlugin;
 import com.tencent.biz.webviewplugin.SSOWebviewPlugin;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.gamecenter.web.QQGameWebViewJsPlugin;
+import com.tencent.gamecenter.wadl.biz.jsplugin.WadlWebViewJsPlugin;
 import com.tencent.mobileqq.jsp.DataApiPlugin;
 import com.tencent.mobileqq.jsp.MediaApiPlugin;
 import com.tencent.mobileqq.jsp.QQApiPlugin;
 import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.qqgamepub.web.QQGameWebViewJsPlugin;
 import com.tencent.mobileqq.vaswebviewplugin.QWalletBluetoothJsPlugin;
 import com.tencent.mobileqq.vaswebviewplugin.QWalletCommonHbJsPlugin;
 import com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin;
 import com.tencent.mobileqq.vaswebviewplugin.QWalletMixJsPlugin;
 import com.tencent.mobileqq.vaswebviewplugin.QWalletPayJsPlugin;
 import com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.WadlWebViewJsPlugin;
 import com.tencent.mobileqq.webview.AbsWebView;
-import com.tencent.mobileqq.webview.build.IWebViewBuilder;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.util.IWebViewBuilder;
 import com.tencent.smtt.sdk.WebView;
 import java.util.ArrayList;
+import mqq.app.AppRuntime;
 
 public class QQVipWebViewBuilder
   extends AbsWebView
@@ -72,9 +73,9 @@ public class QQVipWebViewBuilder
   
   public void buildTitleBar() {}
   
-  public void buildWebView(AppInterface paramAppInterface)
+  public void buildWebView(AppRuntime paramAppRuntime)
   {
-    super.buildBaseWebView(paramAppInterface);
+    super.buildBaseWebView(paramAppRuntime);
   }
   
   public void onPageFinished(WebView paramWebView, String paramString)
@@ -96,7 +97,7 @@ public class QQVipWebViewBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.web.QQVipWebViewBuilder
  * JD-Core Version:    0.7.0.1
  */

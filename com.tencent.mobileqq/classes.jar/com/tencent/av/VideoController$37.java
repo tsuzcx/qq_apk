@@ -14,9 +14,6 @@ class VideoController$37
   
   public void run()
   {
-    if (this.this$0.f) {
-      return;
-    }
     long l = this.this$0.a();
     if (l > 0L)
     {
@@ -24,9 +21,14 @@ class VideoController$37
       if (l % 30L == 0L)
       {
         String str = UITools.a(this.this$0.a());
-        QAVNotification.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(this.this$0.a().c, this.this$0.a().d, str);
-        if ((this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.isBackgroundStop) && (l % 10L == 0L)) {
-          QLog.w(VideoController.jdField_a_of_type_JavaLangString, 1, "chattingTimerRunnale -->updateNotification() sessionId = " + this.this$0.a().c);
+        QAVNotification.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(this.this$0.a().b, this.this$0.a().d, str);
+        if ((this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.isBackgroundStop) && (l % 10L == 0L))
+        {
+          str = VideoController.jdField_a_of_type_JavaLangString;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("chattingTimerRunnale -->updateNotification() sessionId = ");
+          localStringBuilder.append(this.this$0.a().b);
+          QLog.w(str, 1, localStringBuilder.toString());
         }
       }
     }
@@ -35,7 +37,7 @@ class VideoController$37
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoController.37
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import kotlin.Metadata;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/experiment/AdExperimentData$VideoGuide;", "", "secondStateTime", "", "thirdStateTime", "(II)V", "getSecondStateTime", "()I", "getThirdStateTime", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/experiment/AdExperimentData$VideoGuide;", "", "secondStateTime", "", "thirdStateTime", "(II)V", "getSecondStateTime", "()I", "getThirdStateTime", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "", "kandian-ad-api_release"}, k=1, mv={1, 1, 16})
 public final class AdExperimentData$VideoGuide
 {
   private final int a;
@@ -33,18 +33,18 @@ public final class AdExperimentData$VideoGuide
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof VideoGuide))
       {
         paramObject = (VideoGuide)paramObject;
-        if ((this.a != paramObject.a) || (this.b != paramObject.b)) {}
+        if ((this.a == paramObject.a) && (this.b == paramObject.b)) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public int hashCode()
@@ -55,12 +55,18 @@ public final class AdExperimentData$VideoGuide
   @NotNull
   public String toString()
   {
-    return "VideoGuide(secondStateTime=" + this.a + ", thirdStateTime=" + this.b + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VideoGuide(secondStateTime=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", thirdStateTime=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.experiment.AdExperimentData.VideoGuide
  * JD-Core Version:    0.7.0.1
  */

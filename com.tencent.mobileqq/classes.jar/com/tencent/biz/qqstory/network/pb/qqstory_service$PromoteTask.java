@@ -24,14 +24,15 @@ public final class qqstory_service$PromoteTask
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 48, 56 }, new String[] { "uint64_taskid", "uint32_promote_type", "bytes_union_id", "bytes_feed_id", "uint64_limit_count", "uint64_minimal_video_count", "uint64_expire_time" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L) }, PromoteTask.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 48, 56 }, new String[] { "uint64_taskid", "uint32_promote_type", "bytes_union_id", "bytes_feed_id", "uint64_limit_count", "uint64_minimal_video_count", "uint64_expire_time" }, new Object[] { localLong, Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localLong, localLong, localLong }, PromoteTask.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.PromoteTask
  * JD-Core Version:    0.7.0.1
  */

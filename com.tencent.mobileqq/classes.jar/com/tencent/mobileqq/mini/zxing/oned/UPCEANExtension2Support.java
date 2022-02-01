@@ -23,9 +23,9 @@ final class UPCEANExtension2Support
     arrayOfInt[3] = 0;
     int n = paramBitArray.getSize();
     int i = paramArrayOfInt[1];
-    int k = 0;
+    int j = 0;
     int m;
-    for (int j = 0; (k < 2) && (i < n); j = m)
+    for (int k = 0; (j < 2) && (i < n); k = m)
     {
       int i1 = UPCEANReader.decodeDigit(paramBitArray, arrayOfInt, i, UPCEANReader.L_AND_G_PATTERNS);
       paramStringBuilder.append((char)(i1 % 10 + 48));
@@ -33,28 +33,30 @@ final class UPCEANExtension2Support
       m = 0;
       while (m < i2)
       {
-        int i3 = arrayOfInt[m];
+        i += arrayOfInt[m];
         m += 1;
-        i = i3 + i;
       }
-      m = j;
+      m = k;
       if (i1 >= 10) {
-        m = j | 1 << 1 - k;
+        m = 1 << 1 - j | k;
       }
-      j = i;
-      if (k != 1) {
-        j = paramBitArray.getNextUnset(paramBitArray.getNextSet(i));
+      if (j != 1) {
+        i = paramBitArray.getNextUnset(paramBitArray.getNextSet(i));
       }
-      k += 1;
-      i = j;
+      j += 1;
     }
-    if (paramStringBuilder.length() != 2) {
+    if (paramStringBuilder.length() == 2)
+    {
+      if (Integer.parseInt(paramStringBuilder.toString()) % 4 == k) {
+        return i;
+      }
       throw NotFoundException.getNotFoundInstance();
     }
-    if (Integer.parseInt(paramStringBuilder.toString()) % 4 != j) {
-      throw NotFoundException.getNotFoundInstance();
+    paramBitArray = NotFoundException.getNotFoundInstance();
+    for (;;)
+    {
+      throw paramBitArray;
     }
-    return i;
   }
   
   private static Map<ResultMetadataType, Object> parseExtensionString(String paramString)
@@ -74,8 +76,10 @@ final class UPCEANExtension2Support
     int i = decodeMiddle(paramBitArray, paramArrayOfInt, (StringBuilder)localObject);
     localObject = ((StringBuilder)localObject).toString();
     paramBitArray = parseExtensionString((String)localObject);
-    paramArrayOfInt = new ResultPoint((paramArrayOfInt[0] + paramArrayOfInt[1]) / 2.0F, paramInt);
-    ResultPoint localResultPoint = new ResultPoint(i, paramInt);
+    float f1 = (paramArrayOfInt[0] + paramArrayOfInt[1]) / 2.0F;
+    float f2 = paramInt;
+    paramArrayOfInt = new ResultPoint(f1, f2);
+    ResultPoint localResultPoint = new ResultPoint(i, f2);
     BarcodeFormat localBarcodeFormat = BarcodeFormat.UPC_EAN_EXTENSION;
     paramArrayOfInt = new Result((String)localObject, null, new ResultPoint[] { paramArrayOfInt, localResultPoint }, localBarcodeFormat);
     if (paramBitArray != null) {
@@ -86,7 +90,7 @@ final class UPCEANExtension2Support
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.zxing.oned.UPCEANExtension2Support
  * JD-Core Version:    0.7.0.1
  */

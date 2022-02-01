@@ -7,17 +7,17 @@ class LoginPhoneNumActivity$2
   
   public void a()
   {
-    LoginPhoneNumActivity.access$200(this.a);
+    LoginPhoneNumActivity.access$100(this.a);
   }
   
   public void b()
   {
-    LoginPhoneNumActivity.access$200(this.a);
+    LoginPhoneNumActivity.access$100(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginPhoneNumActivity.2
  * JD-Core Version:    0.7.0.1
  */

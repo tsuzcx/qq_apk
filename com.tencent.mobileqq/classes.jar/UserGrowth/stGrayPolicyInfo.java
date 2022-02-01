@@ -29,23 +29,25 @@ public final class stGrayPolicyInfo
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (stGrayPolicyInfo)paramObject;
       if (!TextUtils.equals(this.grayPolicyId, paramObject.grayPolicyId)) {
         return false;
       }
-      if (this.params != null) {
-        break;
+      Map localMap = this.params;
+      if (localMap == null) {
+        return paramObject.params == null;
       }
-    } while (paramObject.params == null);
+      return localMap.equals(paramObject.params);
+    }
     return false;
-    return this.params.equals(paramObject.params);
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -56,22 +58,31 @@ public final class stGrayPolicyInfo
   
   public String toString()
   {
-    return "{grayPolicyId='" + this.grayPolicyId + '\'' + ", params=" + this.params + "}\n";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{grayPolicyId='");
+    localStringBuilder.append(this.grayPolicyId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", params=");
+    localStringBuilder.append(this.params);
+    localStringBuilder.append("}\n");
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.grayPolicyId != null) {
-      paramJceOutputStream.write(this.grayPolicyId, 0);
+    Object localObject = this.grayPolicyId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.params != null) {
-      paramJceOutputStream.write(this.params, 1);
+    localObject = this.params;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stGrayPolicyInfo
  * JD-Core Version:    0.7.0.1
  */

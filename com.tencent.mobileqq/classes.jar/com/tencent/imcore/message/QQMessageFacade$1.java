@@ -18,23 +18,28 @@ class QQMessageFacade$1
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.QQMessageFacade", 2, "before refreshCache");
     }
-    QQMessageFacade.a(this.this$0, DraftTextManager.a(QQMessageFacade.a(this.this$0)));
+    Object localObject = this.this$0;
+    QQMessageFacade.a((QQMessageFacade)localObject, DraftTextManager.a(QQMessageFacade.a((QQMessageFacade)localObject)));
     this.this$0.a().a();
-    this.this$0.d();
+    this.this$0.h();
     QQMessageFacade.a(this.this$0);
     this.this$0.notifyObservers(new RecentUser());
     if (QLog.isColorLevel())
     {
       QLog.d("Q.msg.QQMessageFacade", 2, "after refreshCache");
       long l2 = System.currentTimeMillis();
-      MsgAutoMonitorUtil.getInstance().printKeyAndValue("MSG_InitCostTime", l2 - l1 + "");
+      localObject = MsgAutoMonitorUtil.getInstance();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(l2 - l1);
+      localStringBuilder.append("");
+      ((MsgAutoMonitorUtil)localObject).printKeyAndValue("MSG_InitCostTime", localStringBuilder.toString());
     }
     TraceUtils.traceEnd();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.QQMessageFacade.1
  * JD-Core Version:    0.7.0.1
  */

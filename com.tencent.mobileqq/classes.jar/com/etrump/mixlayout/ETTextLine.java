@@ -21,17 +21,16 @@ public class ETTextLine
   
   public ETFragment a(int paramInt)
   {
-    int j = this.jdField_a_of_type_Int;
+    int i = this.jdField_a_of_type_Int;
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    int i = j;
     while (localIterator.hasNext())
     {
       ETFragment localETFragment = (ETFragment)localIterator.next();
-      i += localETFragment.c();
-      if ((j <= paramInt) && (paramInt < i)) {
+      int j = localETFragment.c() + i;
+      if ((i <= paramInt) && (paramInt < j)) {
         return localETFragment;
       }
-      j = i;
+      i = j;
     }
     return null;
   }
@@ -65,8 +64,7 @@ public class ETTextLine
       if (localETFragment.d() > this.d) {
         this.d = localETFragment.d();
       }
-      paramInt1 = this.c;
-      this.c = (localETFragment.c() + paramInt1);
+      this.c += localETFragment.c();
     }
     this.e = 0;
     localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
@@ -128,7 +126,7 @@ public class ETTextLine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.ETTextLine
  * JD-Core Version:    0.7.0.1
  */

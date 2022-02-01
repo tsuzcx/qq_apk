@@ -35,63 +35,58 @@ public class ListViewWrapper
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout = ((IndexBarTipsLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369040));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBar = ((IndexBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131369039));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout = ((IndexBarTipsLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368762));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBar = ((IndexBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131368761));
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBar.setOnIndexBarTouchListener(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout.setVisibility(8);
   }
   
   public void a(String paramString, int paramInt, float paramFloat)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout.setText(paramString, paramFloat);
+    IndexBarTipsLayout localIndexBarTipsLayout = this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout;
+    if (localIndexBarTipsLayout != null) {
+      localIndexBarTipsLayout.setText(paramString, paramFloat);
     }
     if (!this.jdField_a_of_type_JavaLangString.equals(paramString))
     {
       this.jdField_a_of_type_JavaLangString = paramString;
-      if (!"★".equals(paramString)) {
-        break label50;
+      if ("★".equals(paramString))
+      {
+        this.jdField_a_of_type_ComTencentWidgetXListView.setSelection(0);
+        return;
       }
-      this.jdField_a_of_type_ComTencentWidgetXListView.setSelection(0);
-    }
-    label50:
-    do
-    {
-      return;
       paramInt = this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiQuickAtListAdapter.a(paramString);
-    } while (paramInt == -1);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setSelection(paramInt + this.jdField_a_of_type_ComTencentWidgetXListView.getHeaderViewsCount());
+      if (paramInt != -1)
+      {
+        paramString = this.jdField_a_of_type_ComTencentWidgetXListView;
+        paramString.setSelection(paramInt + paramString.getHeaderViewsCount());
+      }
+    }
   }
   
   public void c(boolean paramBoolean)
   {
+    boolean bool = QLog.isColorLevel();
     int i = 0;
-    if (QLog.isColorLevel()) {
+    if (bool) {
       QLog.d("ListViewWrapper", 2, new Object[] { "onLetterTouching: invoked. ", " touching: ", Boolean.valueOf(paramBoolean) });
     }
     if (!paramBoolean) {
       this.jdField_a_of_type_JavaLangString = "";
     }
-    IndexBarTipsLayout localIndexBarTipsLayout;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout != null)
+    IndexBarTipsLayout localIndexBarTipsLayout = this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout;
+    if (localIndexBarTipsLayout != null)
     {
-      localIndexBarTipsLayout = this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout;
       if (!paramBoolean) {
-        break label67;
+        i = 8;
       }
-    }
-    for (;;)
-    {
       localIndexBarTipsLayout.setVisibility(i);
-      return;
-      label67:
-      i = 8;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.quickat.ui.ListViewWrapper
  * JD-Core Version:    0.7.0.1
  */

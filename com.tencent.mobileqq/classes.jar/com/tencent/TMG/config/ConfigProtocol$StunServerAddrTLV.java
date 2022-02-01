@@ -14,10 +14,10 @@ public class ConfigProtocol$StunServerAddrTLV
   
   public ConfigProtocol.stNetAddress GetStunSvrAddrByIndex(int paramInt)
   {
-    if ((paramInt >= this.addrList.size()) || (paramInt < 0)) {
-      return null;
+    if ((paramInt < this.addrList.size()) && (paramInt >= 0)) {
+      return (ConfigProtocol.stNetAddress)this.addrList.get(paramInt);
     }
-    return (ConfigProtocol.stNetAddress)this.addrList.get(paramInt);
+    return null;
   }
   
   public int GetStunSvrAddrCount()
@@ -33,16 +33,16 @@ public class ConfigProtocol$StunServerAddrTLV
   public boolean Unpack(ByteBuffer paramByteBuffer)
   {
     int i = 0;
-    if (paramByteBuffer == null) {}
-    int j;
-    do
-    {
-      do
-      {
-        return false;
-      } while (getLength() < 2);
-      j = paramByteBuffer.ReadUInt16();
-    } while (j != (getLength() - 2) / 6);
+    if (paramByteBuffer == null) {
+      return false;
+    }
+    if (getLength() < 2) {
+      return false;
+    }
+    int j = paramByteBuffer.ReadUInt16();
+    if (j != (getLength() - 2) / 6) {
+      return false;
+    }
     while (i < j)
     {
       int k = paramByteBuffer.ReadUInt32();

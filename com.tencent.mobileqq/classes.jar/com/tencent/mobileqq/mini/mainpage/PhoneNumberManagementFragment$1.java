@@ -13,35 +13,49 @@ class PhoneNumberManagementFragment$1
   
   public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    QLog.d("PhoneNumberManagementFragment", 2, "doOnActivityResult : " + paramInt1);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("doOnActivityResult : ");
+    ((StringBuilder)localObject).append(paramInt1);
+    QLog.d("PhoneNumberManagementFragment", 2, ((StringBuilder)localObject).toString());
     if (paramInt1 == 1090)
     {
       if (paramInt2 == -1)
       {
-        if (paramIntent != null) {}
-        try
-        {
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("phoneType", 1);
-          localJSONObject.put("purePhoneNumber", paramIntent.getStringExtra("phoneNumber"));
-          localJSONObject.put("countryCode", "+86");
-          localJSONObject.put("iv", paramIntent.getStringExtra("iv"));
-          localJSONObject.put("encryptedData", paramIntent.getStringExtra("encryptedData"));
-          if (PhoneNumberManagementFragment.access$000(this.this$0) != null)
+        if (paramIntent != null) {
+          try
           {
-            QLog.d("PhoneNumberManagementFragment", 1, "mPhoneNumberArray put : " + localJSONObject.toString());
-            PhoneNumberManagementFragment.access$000(this.this$0).put(localJSONObject);
+            localObject = new JSONObject();
+            ((JSONObject)localObject).put("phoneType", 1);
+            ((JSONObject)localObject).put("purePhoneNumber", paramIntent.getStringExtra("phoneNumber"));
+            ((JSONObject)localObject).put("countryCode", "+86");
+            ((JSONObject)localObject).put("iv", paramIntent.getStringExtra("iv"));
+            ((JSONObject)localObject).put("encryptedData", paramIntent.getStringExtra("encryptedData"));
+            if (PhoneNumberManagementFragment.access$000(this.this$0) == null) {
+              break label231;
+            }
+            paramIntent = new StringBuilder();
+            paramIntent.append("mPhoneNumberArray put : ");
+            paramIntent.append(((JSONObject)localObject).toString());
+            QLog.d("PhoneNumberManagementFragment", 1, paramIntent.toString());
+            PhoneNumberManagementFragment.access$000(this.this$0).put(localObject);
             PhoneNumberManagementFragment.access$100(this.this$0);
+            return true;
           }
-          return true;
-        }
-        catch (Throwable paramIntent)
-        {
-          QLog.e("PhoneNumberManagementFragment", 1, "REQUEST_CODE_ADD_PHONENUMBER error, ", paramIntent);
-          return true;
+          catch (Throwable paramIntent)
+          {
+            QLog.e("PhoneNumberManagementFragment", 1, "REQUEST_CODE_ADD_PHONENUMBER error, ", paramIntent);
+            return true;
+          }
         }
       }
-      QLog.e("PhoneNumberManagementFragment", 1, "REQUEST_CODE_ADD_PHONENUMBER " + paramInt2);
+      else
+      {
+        paramIntent = new StringBuilder();
+        paramIntent.append("REQUEST_CODE_ADD_PHONENUMBER ");
+        paramIntent.append(paramInt2);
+        QLog.e("PhoneNumberManagementFragment", 1, paramIntent.toString());
+      }
+      label231:
       return true;
     }
     return false;
@@ -49,7 +63,7 @@ class PhoneNumberManagementFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.mainpage.PhoneNumberManagementFragment.1
  * JD-Core Version:    0.7.0.1
  */

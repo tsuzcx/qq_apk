@@ -13,14 +13,18 @@ class AIOGalleryScene$29
   
   public void onProgressCompleted(ProgressPieDrawable paramProgressPieDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AIOGalleryScene", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + paramProgressPieDrawable);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[onProgressCompleted] hide ProgressPieDrawable ,ppd = ");
+      localStringBuilder.append(paramProgressPieDrawable);
+      QLog.i("AIOGalleryScene", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.29
  * JD-Core Version:    0.7.0.1
  */

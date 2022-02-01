@@ -11,19 +11,20 @@ class PositionActivatePage$1
   {
     if (paramInt > 0) {
       this.a.a.setEnabled(true);
-    }
-    while (paramInt > 1)
-    {
-      this.a.a.setText(2131689530);
-      return;
+    } else {
       this.a.a.setEnabled(false);
     }
-    this.a.a.setText(2131689531);
+    if (paramInt > 1)
+    {
+      this.a.a.setText(2131689557);
+      return;
+    }
+    this.a.a.setText(2131689558);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.PositionActivatePage.1
  * JD-Core Version:    0.7.0.1
  */

@@ -23,7 +23,8 @@ class WallpaperHelper$ConfigChangeListener
     if (paramString != null)
     {
       paramSharedPreferences = VipWallpaperService.a(paramSharedPreferences);
-      if ((this.jdField_a_of_type_ComTencentMobileqqVasWallpaperVipWallpaperService$WallpaperConfig == null) || (!this.jdField_a_of_type_ComTencentMobileqqVasWallpaperVipWallpaperService$WallpaperConfig.equals(paramSharedPreferences)))
+      VipWallpaperService.WallpaperConfig localWallpaperConfig = this.jdField_a_of_type_ComTencentMobileqqVasWallpaperVipWallpaperService$WallpaperConfig;
+      if ((localWallpaperConfig == null) || (!localWallpaperConfig.equals(paramSharedPreferences)))
       {
         this.jdField_a_of_type_ComTencentMobileqqVasWallpaperVipWallpaperService$WallpaperConfig = paramSharedPreferences;
         ThreadManagerV2.getUIHandlerV2().post(new WallpaperHelper.ConfigChangeListener.1(this, paramString, paramSharedPreferences));
@@ -33,7 +34,7 @@ class WallpaperHelper$ConfigChangeListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.wallpaper.WallpaperHelper.ConfigChangeListener
  * JD-Core Version:    0.7.0.1
  */

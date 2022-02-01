@@ -18,137 +18,134 @@ public class NotchUtil
   
   public static void adjustActivity(Activity paramActivity, View paramView, boolean paramBoolean)
   {
-    if ((!hasNotch(paramActivity)) || (paramActivity == null) || (paramActivity.getWindow() == null)) {}
-    label148:
-    for (;;)
+    if ((hasNotch(paramActivity)) && (paramActivity != null))
     {
-      return;
+      if (paramActivity.getWindow() == null) {
+        return;
+      }
       Window localWindow = paramActivity.getWindow();
       Object localObject;
-      int i;
       if (Build.VERSION.SDK_INT >= 21)
       {
         localObject = localWindow.getDecorView();
-        if (paramBoolean)
-        {
+        int i;
+        if (paramBoolean) {
           i = 8192;
-          ((View)localObject).setSystemUiVisibility(i | 0x500);
-          localWindow.clearFlags(67108864);
-          localWindow.clearFlags(1024);
-          localWindow.addFlags(-2147483648);
-          localWindow.setStatusBarColor(0);
+        } else {
+          i = 0;
         }
+        ((View)localObject).setSystemUiVisibility(i | 0x500);
+        localWindow.clearFlags(67108864);
+        localWindow.clearFlags(1024);
+        localWindow.addFlags(-2147483648);
+        localWindow.setStatusBarColor(0);
       }
-      for (;;)
+      else if (Build.VERSION.SDK_INT >= 19)
       {
-        if (paramView == null) {
-          break label148;
+        localObject = localWindow.getAttributes();
+        if (localObject != null) {
+          ((WindowManager.LayoutParams)localObject).flags |= 0x4000000;
         }
+        localWindow.setAttributes((WindowManager.LayoutParams)localObject);
+      }
+      if (paramView != null) {
         paramView.setPadding(0, getStatusBarHeight(paramActivity), 0, 0);
-        return;
-        i = 0;
-        break;
-        if (Build.VERSION.SDK_INT >= 19)
-        {
-          localObject = localWindow.getAttributes();
-          if (localObject != null) {
-            ((WindowManager.LayoutParams)localObject).flags |= 0x4000000;
-          }
-          localWindow.setAttributes((WindowManager.LayoutParams)localObject);
-        }
       }
     }
   }
   
   public static void adjustWindow(Window paramWindow, View paramView, boolean paramBoolean)
   {
-    if ((!hasNotch(paramView.getContext())) || (paramWindow == null)) {}
-    label127:
-    for (;;)
+    if (hasNotch(paramView.getContext()))
     {
-      return;
+      if (paramWindow == null) {
+        return;
+      }
       Object localObject;
-      int i;
       if (Build.VERSION.SDK_INT >= 21)
       {
         localObject = paramWindow.getDecorView();
-        if (paramBoolean)
-        {
+        int i;
+        if (paramBoolean) {
           i = 8192;
-          ((View)localObject).setSystemUiVisibility(i | 0x500);
-          paramWindow.clearFlags(67108864);
-          paramWindow.addFlags(-2147483648);
-          paramWindow.setStatusBarColor(0);
+        } else {
+          i = 0;
         }
+        ((View)localObject).setSystemUiVisibility(i | 0x500);
+        paramWindow.clearFlags(67108864);
+        paramWindow.addFlags(-2147483648);
+        paramWindow.setStatusBarColor(0);
       }
-      for (;;)
+      else if (Build.VERSION.SDK_INT >= 19)
       {
-        if (paramView == null) {
-          break label127;
+        localObject = paramWindow.getAttributes();
+        if (localObject != null) {
+          ((WindowManager.LayoutParams)localObject).flags |= 0x4000000;
         }
+        paramWindow.setAttributes((WindowManager.LayoutParams)localObject);
+      }
+      if (paramView != null) {
         paramView.setPadding(0, getStatusBarHeight(paramView.getContext()), 0, 0);
-        return;
-        i = 0;
-        break;
-        if (Build.VERSION.SDK_INT >= 19)
-        {
-          localObject = paramWindow.getAttributes();
-          if (localObject != null) {
-            ((WindowManager.LayoutParams)localObject).flags |= 0x4000000;
-          }
-          paramWindow.setAttributes((WindowManager.LayoutParams)localObject);
-        }
       }
     }
   }
   
   public static int getCurrentNavigationBarHeight(Activity paramActivity)
   {
-    if (paramActivity == null) {}
-    while (!isNavigationBarShown(paramActivity)) {
+    if (paramActivity == null) {
       return 0;
     }
-    return getNavigationBarHeight(paramActivity);
+    if (isNavigationBarShown(paramActivity)) {
+      return getNavigationBarHeight(paramActivity);
+    }
+    return 0;
   }
   
   public static int getNavigationBarHeight(Context paramContext)
   {
-    if (paramContext == null) {}
-    int i;
-    do
-    {
+    int i = 0;
+    if (paramContext == null) {
       return 0;
-      i = paramContext.getResources().getIdentifier("navigation_bar_height", "dimen", "android");
-    } while (i <= 0);
-    return paramContext.getResources().getDimensionPixelSize(i);
+    }
+    int j = paramContext.getResources().getIdentifier("navigation_bar_height", "dimen", "android");
+    if (j > 0) {
+      i = paramContext.getResources().getDimensionPixelSize(j);
+    }
+    return i;
   }
   
   public static int getStatusBarHeight(Context paramContext)
   {
-    if ((paramContext == null) || (paramContext.getResources() == null)) {}
-    int i;
-    do
+    int j = 0;
+    int i = j;
+    if (paramContext != null)
     {
-      return 0;
-      i = paramContext.getResources().getIdentifier("status_bar_height", "dimen", "android");
-    } while (i <= 0);
-    return paramContext.getResources().getDimensionPixelSize(i);
+      if (paramContext.getResources() == null) {
+        return 0;
+      }
+      int k = paramContext.getResources().getIdentifier("status_bar_height", "dimen", "android");
+      i = j;
+      if (k > 0) {
+        i = paramContext.getResources().getDimensionPixelSize(k);
+      }
+    }
+    return i;
   }
   
   public static boolean hasNotch(Context paramContext)
   {
-    if (!inited) {
-      if ((!oppoNotch(paramContext)) && (!vivoNotch(paramContext)) && (!huaweiNotch(paramContext))) {
-        break label41;
-      }
-    }
-    label41:
-    for (boolean bool = true;; bool = false)
+    if (!inited)
     {
+      boolean bool;
+      if ((!oppoNotch(paramContext)) && (!vivoNotch(paramContext)) && (!huaweiNotch(paramContext))) {
+        bool = false;
+      } else {
+        bool = true;
+      }
       hasNotch = bool;
       inited = true;
-      return hasNotch;
     }
+    return hasNotch;
   }
   
   public static boolean huaweiNotch(Context paramContext)
@@ -168,18 +165,18 @@ public class NotchUtil
   
   public static boolean isNavigationBarShown(Activity paramActivity)
   {
-    if (paramActivity == null) {}
-    int i;
-    do
-    {
-      do
-      {
-        return false;
-        paramActivity = paramActivity.findViewById(16908336);
-      } while (paramActivity == null);
-      i = paramActivity.getVisibility();
-    } while ((i == 8) || (i == 4));
-    return true;
+    if (paramActivity == null) {
+      return false;
+    }
+    paramActivity = paramActivity.findViewById(16908336);
+    if (paramActivity == null) {
+      return false;
+    }
+    int i = paramActivity.getVisibility();
+    if (i != 8) {
+      return i != 4;
+    }
+    return false;
   }
   
   public static boolean oppoNotch(Context paramContext)
@@ -189,10 +186,11 @@ public class NotchUtil
   
   public static void setFullScreenWithHideStatusBar(Activity paramActivity)
   {
-    if ((!hasNotch(paramActivity)) || (paramActivity == null) || (paramActivity.getWindow() == null)) {}
-    do
+    if ((hasNotch(paramActivity)) && (paramActivity != null))
     {
-      return;
+      if (paramActivity.getWindow() == null) {
+        return;
+      }
       paramActivity = paramActivity.getWindow();
       if (Build.VERSION.SDK_INT >= 21)
       {
@@ -200,22 +198,28 @@ public class NotchUtil
         paramActivity.getDecorView().setSystemUiVisibility(1284);
         return;
       }
-    } while (Build.VERSION.SDK_INT < 19);
-    paramActivity.setFlags(1024, 1024);
+      if (Build.VERSION.SDK_INT >= 19) {
+        paramActivity.setFlags(1024, 1024);
+      }
+    }
   }
   
   public static void setStatusBarColor(Activity paramActivity, int paramInt)
   {
-    if ((!hasNotch(paramActivity)) || (paramActivity == null) || (paramActivity.getWindow() == null)) {}
-    do
+    if ((hasNotch(paramActivity)) && (paramActivity != null))
     {
-      return;
+      if (paramActivity.getWindow() == null) {
+        return;
+      }
       paramActivity = paramActivity.getWindow();
-    } while (Build.VERSION.SDK_INT < 21);
-    paramActivity.getDecorView().setSystemUiVisibility(9472);
-    paramActivity.clearFlags(67108864);
-    paramActivity.addFlags(-2147483648);
-    paramActivity.setStatusBarColor(paramInt);
+      if (Build.VERSION.SDK_INT >= 21)
+      {
+        paramActivity.getDecorView().setSystemUiVisibility(9472);
+        paramActivity.clearFlags(67108864);
+        paramActivity.addFlags(-2147483648);
+        paramActivity.setStatusBarColor(paramInt);
+      }
+    }
   }
   
   public static boolean vivoNotch(Context paramContext)
@@ -235,7 +239,7 @@ public class NotchUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.livesdkplayer.utils.NotchUtil
  * JD-Core Version:    0.7.0.1
  */

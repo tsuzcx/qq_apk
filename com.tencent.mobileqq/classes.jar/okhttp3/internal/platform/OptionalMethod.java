@@ -18,16 +18,20 @@ class OptionalMethod<T>
   
   private Method getMethod(Class<?> paramClass)
   {
-    if (this.methodName != null)
+    String str = this.methodName;
+    Method localMethod = null;
+    if (str != null)
     {
-      paramClass = getPublicMethod(paramClass, this.methodName, this.methodParams);
-      if ((paramClass == null) || (this.returnType == null) || (this.returnType.isAssignableFrom(paramClass.getReturnType()))) {}
+      localMethod = getPublicMethod(paramClass, str, this.methodParams);
+      if (localMethod != null)
+      {
+        paramClass = this.returnType;
+        if ((paramClass != null) && (!paramClass.isAssignableFrom(localMethod.getReturnType()))) {
+          return null;
+        }
+      }
     }
-    else
-    {
-      return null;
-    }
-    return paramClass;
+    return localMethod;
   }
   
   private static Method getPublicMethod(Class<?> paramClass, String paramString, Class[] paramArrayOfClass)
@@ -40,40 +44,47 @@ class OptionalMethod<T>
     }
     catch (NoSuchMethodException paramClass)
     {
-      try
+      for (;;)
       {
-        i = paramClass.getModifiers();
-        if ((i & 0x1) != 0) {
+        try
+        {
+          i = paramClass.getModifiers();
+          if ((i & 0x1) == 0) {
+            paramClass = null;
+          }
           return paramClass;
         }
-        return null;
+        catch (NoSuchMethodException paramString) {}
+        paramClass = paramClass;
       }
-      catch (NoSuchMethodException paramString)
-      {
-        return paramClass;
-      }
-      paramClass = paramClass;
-      return null;
     }
   }
   
   public Object invoke(T paramT, Object... paramVarArgs)
   {
     Method localMethod = getMethod(paramT.getClass());
-    if (localMethod == null) {
-      throw new AssertionError("Method " + this.methodName + " not supported for object " + paramT);
+    if (localMethod != null) {
+      try
+      {
+        paramT = localMethod.invoke(paramT, paramVarArgs);
+        return paramT;
+      }
+      catch (IllegalAccessException paramT)
+      {
+        paramVarArgs = new StringBuilder();
+        paramVarArgs.append("Unexpectedly could not call: ");
+        paramVarArgs.append(localMethod);
+        paramVarArgs = new AssertionError(paramVarArgs.toString());
+        paramVarArgs.initCause(paramT);
+        throw paramVarArgs;
+      }
     }
-    try
-    {
-      paramT = localMethod.invoke(paramT, paramVarArgs);
-      return paramT;
-    }
-    catch (IllegalAccessException paramT)
-    {
-      paramVarArgs = new AssertionError("Unexpectedly could not call: " + localMethod);
-      paramVarArgs.initCause(paramT);
-      throw paramVarArgs;
-    }
+    paramVarArgs = new StringBuilder();
+    paramVarArgs.append("Method ");
+    paramVarArgs.append(this.methodName);
+    paramVarArgs.append(" not supported for object ");
+    paramVarArgs.append(paramT);
+    throw new AssertionError(paramVarArgs.toString());
   }
   
   public Object invokeOptional(T paramT, Object... paramVarArgs)
@@ -136,7 +147,7 @@ class OptionalMethod<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.internal.platform.OptionalMethod
  * JD-Core Version:    0.7.0.1
  */

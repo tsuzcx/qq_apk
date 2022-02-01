@@ -18,8 +18,13 @@ class VoicePrintUtils$VoicePrintView$DecodePngTask
     if (GlobalImageCache.a.get(paramVarArgs) == null)
     {
       Bitmap localBitmap = BubbleManager.a(paramVarArgs, this.a.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("VoicePrintUtils.DecodePngTask", 2, "decode " + paramVarArgs + "in background.");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("decode ");
+        localStringBuilder.append(paramVarArgs);
+        localStringBuilder.append("in background.");
+        QLog.d("VoicePrintUtils.DecodePngTask", 2, localStringBuilder.toString());
       }
       GlobalImageCache.a.put(paramVarArgs, localBitmap);
     }
@@ -29,13 +34,14 @@ class VoicePrintUtils$VoicePrintView$DecodePngTask
   protected void a(Bitmap paramBitmap)
   {
     VoicePrintUtils.VoicePrintView.a(this.a);
-    this.a.setImageDrawable(VoicePrintUtils.VoicePrintView.a(this.a));
+    paramBitmap = this.a;
+    paramBitmap.setImageDrawable(VoicePrintUtils.VoicePrintView.a(paramBitmap));
     this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.VoicePrintUtils.VoicePrintView.DecodePngTask
  * JD-Core Version:    0.7.0.1
  */

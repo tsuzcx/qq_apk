@@ -83,17 +83,18 @@ public class SkinnableNinePatchDrawable
     this.b = parama;
     this.c = parama.a;
     this.d = parama.b;
-    if (paramResources != null) {}
-    for (int i = paramResources.getDisplayMetrics().densityDpi;; i = parama.f)
-    {
-      this.f = i;
-      if (true != parama.d) {
-        setDither(parama.d);
-      }
-      if (this.c != null) {
-        a();
-      }
-      return;
+    int i;
+    if (paramResources != null) {
+      i = paramResources.getDisplayMetrics().densityDpi;
+    } else {
+      i = parama.f;
+    }
+    this.f = i;
+    if (true != parama.d) {
+      setDither(parama.d);
+    }
+    if (this.c != null) {
+      a();
     }
   }
   
@@ -109,34 +110,31 @@ public class SkinnableNinePatchDrawable
         this.g = BaseConstantState.scaleFromDensity(localObject[0], localObject[2], this.f);
         this.g = BaseConstantState.scaleFromDensity(localObject[1], localObject[2], this.f);
         this.d.set(0, 0, 0, 0);
+        return;
       }
+      int i = this.c.getDensity();
+      int j = this.f;
+      if (i == j)
+      {
+        this.g = this.c.getWidth();
+        this.h = this.c.getHeight();
+        return;
+      }
+      this.g = BaseConstantState.scaleFromDensity(this.c.getWidth(), i, j);
+      this.h = BaseConstantState.scaleFromDensity(this.c.getHeight(), i, j);
+      Rect localRect1 = this.d;
+      Rect localRect2 = this.b.b;
+      Object localObject = localRect1;
+      if (localRect1 == localRect2)
+      {
+        localObject = new Rect(localRect2);
+        this.d = ((Rect)localObject);
+      }
+      ((Rect)localObject).left = BaseConstantState.scaleFromDensity(localRect2.left, i, j);
+      ((Rect)localObject).top = BaseConstantState.scaleFromDensity(localRect2.top, i, j);
+      ((Rect)localObject).right = BaseConstantState.scaleFromDensity(localRect2.right, i, j);
+      ((Rect)localObject).bottom = BaseConstantState.scaleFromDensity(localRect2.bottom, i, j);
     }
-    else
-    {
-      return;
-    }
-    int i = this.c.getDensity();
-    int j = this.f;
-    if (i == j)
-    {
-      this.g = this.c.getWidth();
-      this.h = this.c.getHeight();
-      return;
-    }
-    this.g = BaseConstantState.scaleFromDensity(this.c.getWidth(), i, j);
-    this.h = BaseConstantState.scaleFromDensity(this.c.getHeight(), i, j);
-    Rect localRect1 = this.d;
-    Rect localRect2 = this.b.b;
-    Object localObject = localRect1;
-    if (localRect1 == localRect2)
-    {
-      localObject = new Rect(localRect2);
-      this.d = ((Rect)localObject);
-    }
-    ((Rect)localObject).left = BaseConstantState.scaleFromDensity(localRect2.left, i, j);
-    ((Rect)localObject).top = BaseConstantState.scaleFromDensity(localRect2.top, i, j);
-    ((Rect)localObject).right = BaseConstantState.scaleFromDensity(localRect2.right, i, j);
-    ((Rect)localObject).bottom = BaseConstantState.scaleFromDensity(localRect2.bottom, i, j);
   }
   
   boolean a(Rect paramRect)
@@ -151,29 +149,23 @@ public class SkinnableNinePatchDrawable
   public void draw(Canvas paramCanvas)
   {
     b();
-    if (this.b.mImageSizeWhenOOM != null) {}
-    for (;;)
-    {
+    if (this.b.mImageSizeWhenOOM != null) {
       return;
-      Rect localRect = getBounds();
-      try
-      {
-        this.c.draw(paramCanvas, localRect, this.b.h);
-        if (!this.b.hasProblem) {
-          continue;
-        }
-        paramCanvas.drawRect(localRect, BaseConstantState.sColorPaint);
-        paramCanvas.drawLine(localRect.left, localRect.top, localRect.right, localRect.bottom, BaseConstantState.sPaint);
-        paramCanvas.drawLine(localRect.right, localRect.top, localRect.left, localRect.bottom, BaseConstantState.sPaint);
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
-        }
-      }
+    }
+    Rect localRect = getBounds();
+    try
+    {
+      this.c.draw(paramCanvas, localRect, this.b.h);
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    if (this.b.hasProblem)
+    {
+      paramCanvas.drawRect(localRect, BaseConstantState.sColorPaint);
+      paramCanvas.drawLine(localRect.left, localRect.top, localRect.right, localRect.bottom, BaseConstantState.sPaint);
+      paramCanvas.drawLine(localRect.right, localRect.top, localRect.left, localRect.bottom, BaseConstantState.sPaint);
     }
   }
   
@@ -220,10 +212,11 @@ public class SkinnableNinePatchDrawable
   public int getOpacity()
   {
     b();
-    if ((this.c == null) || (this.c.hasAlpha()) || (this.b.h.getAlpha() < 255)) {
-      return -3;
+    NinePatch localNinePatch = this.c;
+    if ((localNinePatch != null) && (!localNinePatch.hasAlpha()) && (this.b.h.getAlpha() >= 255)) {
+      return -1;
     }
-    return -1;
+    return -3;
   }
   
   public boolean getPadding(Rect paramRect)
@@ -241,10 +234,11 @@ public class SkinnableNinePatchDrawable
   public Region getTransparentRegion()
   {
     b();
-    if (this.c == null) {
+    NinePatch localNinePatch = this.c;
+    if (localNinePatch == null) {
       return null;
     }
-    return this.c.getTransparentRegion(getBounds());
+    return localNinePatch.getTransparentRegion(getBounds());
   }
   
   public Drawable mutate()
@@ -296,7 +290,7 @@ public class SkinnableNinePatchDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.theme.SkinnableNinePatchDrawable
  * JD-Core Version:    0.7.0.1
  */

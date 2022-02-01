@@ -14,20 +14,23 @@ class ListenTogetherManager$ConnCallback
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaLangObject == null) {}
-    while (paramInt == 0) {
+    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
+    if (localObject1 == null) {
       return;
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaLangObject.notifyAll();
-      return;
+    if (paramInt != 0) {
+      try
+      {
+        this.jdField_a_of_type_JavaLangObject.notifyAll();
+        return;
+      }
+      finally {}
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherManager.ConnCallback
  * JD-Core Version:    0.7.0.1
  */

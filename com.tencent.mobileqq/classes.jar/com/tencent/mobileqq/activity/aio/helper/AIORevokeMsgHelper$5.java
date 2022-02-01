@@ -15,23 +15,23 @@ class AIORevokeMsgHelper$5
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
+      if (paramInt == 1) {
+        ReportController.b(AIORevokeMsgHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIORevokeMsgHelper), "dc00899", "Grp_chatRecord", "", "remove_file", "Clk_cel", 0, 0, AIORevokeMsgHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIORevokeMsgHelper).a, "", "", "");
+      }
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
       AIORevokeMsgHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIORevokeMsgHelper, (MessageForTroopFile)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
       ReportController.b(AIORevokeMsgHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIORevokeMsgHelper), "dc00899", "Grp_chatRecord", "", "remove_file", "tips_det", 0, 0, AIORevokeMsgHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIORevokeMsgHelper).a, "", "", "");
-      continue;
-      ReportController.b(AIORevokeMsgHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIORevokeMsgHelper), "dc00899", "Grp_chatRecord", "", "remove_file", "Clk_cel", 0, 0, AIORevokeMsgHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIORevokeMsgHelper).a, "", "", "");
     }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIORevokeMsgHelper.5
  * JD-Core Version:    0.7.0.1
  */

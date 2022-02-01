@@ -21,11 +21,13 @@ import com.tencent.qqlive.module.videoreport.dtreport.time.app.AppForegroundSess
 import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
 import com.tencent.qqlive.module.videoreport.page.PageManager;
 import com.tencent.qqlive.module.videoreport.reportdata.FinalData;
+import com.tencent.qqlive.module.videoreport.staging.CustomEventStagingManager;
 import com.tencent.qqlive.module.videoreport.task.ThreadUtils;
 import com.tencent.qqlive.module.videoreport.utils.ListenerMgr;
 import com.tencent.qqlive.module.videoreport.utils.ReportUtils;
 import com.tencent.qqlive.module.videoreport.utils.ReusablePool;
 import com.tencent.qqlive.module.videoreport.utils.SPUtils;
+import com.tencent.qqlive.module.videoreport.utils.UssnUtils;
 import java.util.HashSet;
 
 public class AppEventReporter
@@ -57,6 +59,7 @@ public class AppEventReporter
   private final ListenerMgr<ISessionChangeListener> mSessionChangeListener = new ListenerMgr();
   private String mUsId = "";
   private long mUsStamp = System.currentTimeMillis();
+  private long mUssn = 0L;
   
   private void appActivatedDataSender()
   {
@@ -91,53 +94,43 @@ public class AppEventReporter
       if (VideoReportInner.getInstance().isDebugMode()) {
         Log.i("AppEventReporter", "appOutDataSender: 后台上报");
       }
-      if (!paramBoolean) {
-        break label74;
+      long l;
+      if (paramBoolean) {
+        l = SystemClock.uptimeMillis() - this.mScheduleAppOutStamp;
+      } else {
+        l = 0L;
       }
-    }
-    label74:
-    for (long l = SystemClock.uptimeMillis() - this.mScheduleAppOutStamp;; l = 0L)
-    {
       stopAppForegroundSession(l);
       this.mListenerMgr.startNotify(new AppEventReporter.5(this));
-      return;
     }
   }
   
   private void appStartDataSender(Activity paramActivity)
   {
-    SessionChangeReason localSessionChangeReason;
-    if (this.mNoForegroundActivity)
-    {
-      if (!isExceedVisitBackgroundTime()) {
-        break label83;
-      }
-      if (this.mLastGenerateTime <= 0L) {
-        break label76;
-      }
-      localSessionChangeReason = SessionChangeReason.REENTER_FOREGROUND_AND_TIMEOUT;
-      updateAppEventParams(paramActivity);
-      onAppVisit(localSessionChangeReason);
-    }
-    for (;;)
-    {
-      this.mNoForegroundActivity = false;
-      if ((!this.mHasVstReport) && (!interceptAppEvent(paramActivity, "report visit")))
+    if (this.mNoForegroundActivity) {
+      if (isExceedVisitBackgroundTime())
       {
+        SessionChangeReason localSessionChangeReason;
+        if (this.mLastGenerateTime > 0L) {
+          localSessionChangeReason = SessionChangeReason.REENTER_FOREGROUND_AND_TIMEOUT;
+        } else {
+          localSessionChangeReason = SessionChangeReason.APP_START_UP;
+        }
         updateAppEventParams(paramActivity);
-        reportVst("vst");
-        this.mHasVstReport = true;
+        onAppVisit(localSessionChangeReason);
       }
-      return;
-      label76:
-      localSessionChangeReason = SessionChangeReason.APP_START_UP;
-      break;
-      label83:
-      if (isVstAdditionalReport())
+      else if (isVstAdditionalReport())
       {
         updateAppEventParams(paramActivity);
         onAppVisit(SessionChangeReason.ADDITIONAL_SESSION_REENTER_FOREGROUND);
       }
+    }
+    this.mNoForegroundActivity = false;
+    if ((!this.mHasVstReport) && (!interceptAppEvent(paramActivity, "report visit")))
+    {
+      updateAppEventParams(paramActivity);
+      reportVst("vst");
+      this.mHasVstReport = true;
     }
   }
   
@@ -146,58 +139,29 @@ public class AppEventReporter
     ThreadUtils.removeOnUiThread(this.mAppOutDelayCheckRunnable);
   }
   
-  /* Error */
   private void doActReport(Activity paramActivity)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 64	com/tencent/qqlive/module/videoreport/report/AppEventReporter:mFirstActivityResumed	Z
-    //   6: ifne +16 -> 22
-    //   9: aload_0
-    //   10: iconst_1
-    //   11: putfield 64	com/tencent/qqlive/module/videoreport/report/AppEventReporter:mFirstActivityResumed	Z
-    //   14: aload_0
-    //   15: aload_0
-    //   16: invokespecial 269	com/tencent/qqlive/module/videoreport/report/AppEventReporter:isDeviceActivated	()Z
-    //   19: putfield 271	com/tencent/qqlive/module/videoreport/report/AppEventReporter:mIsActive	Z
-    //   22: aload_0
-    //   23: getfield 271	com/tencent/qqlive/module/videoreport/report/AppEventReporter:mIsActive	Z
-    //   26: istore_2
-    //   27: iload_2
-    //   28: ifeq +6 -> 34
-    //   31: aload_0
-    //   32: monitorexit
-    //   33: return
-    //   34: aload_0
-    //   35: aload_1
-    //   36: ldc_w 273
-    //   39: invokespecial 246	com/tencent/qqlive/module/videoreport/report/AppEventReporter:interceptAppEvent	(Landroid/app/Activity;Ljava/lang/String;)Z
-    //   42: ifne -11 -> 31
-    //   45: aload_0
-    //   46: invokespecial 276	com/tencent/qqlive/module/videoreport/report/AppEventReporter:setDeviceActivated	()V
-    //   49: aload_0
-    //   50: invokespecial 278	com/tencent/qqlive/module/videoreport/report/AppEventReporter:appActivatedDataSender	()V
-    //   53: aload_0
-    //   54: iconst_1
-    //   55: putfield 271	com/tencent/qqlive/module/videoreport/report/AppEventReporter:mIsActive	Z
-    //   58: goto -27 -> 31
-    //   61: astore_1
-    //   62: aload_0
-    //   63: monitorexit
-    //   64: aload_1
-    //   65: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	66	0	this	AppEventReporter
-    //   0	66	1	paramActivity	Activity
-    //   26	2	2	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   2	22	61	finally
-    //   22	27	61	finally
-    //   34	58	61	finally
+    try
+    {
+      if (!this.mFirstActivityResumed)
+      {
+        this.mFirstActivityResumed = true;
+        this.mIsActive = isDeviceActivated();
+      }
+      boolean bool = this.mIsActive;
+      if (bool) {
+        return;
+      }
+      bool = interceptAppEvent(paramActivity, "report active");
+      if (bool) {
+        return;
+      }
+      setDeviceActivated();
+      appActivatedDataSender();
+      this.mIsActive = true;
+      return;
+    }
+    finally {}
   }
   
   private String getActivityName(Activity paramActivity)
@@ -230,22 +194,32 @@ public class AppEventReporter
   private boolean interceptAppEvent(Activity paramActivity, String paramString)
   {
     boolean bool = DetectionInterceptors.ignoreAppEvent(paramActivity);
-    if ((bool) && (VideoReportInner.getInstance().isDebugMode())) {
-      Log.d("AppEventReporter", "interceptAppEvent: activity intercepted, from = " + paramString + ", activity = " + paramActivity);
+    if ((bool) && (VideoReportInner.getInstance().isDebugMode()))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("interceptAppEvent: activity intercepted, from = ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", activity = ");
+      localStringBuilder.append(paramActivity);
+      Log.d("AppEventReporter", localStringBuilder.toString());
     }
     return bool;
   }
   
   private boolean isDeviceActivated()
   {
+    Object localObject = ReportUtils.getContext();
     boolean bool1 = false;
-    if (ReportUtils.getContext() != null)
+    if (localObject != null)
     {
       boolean bool2 = ((Boolean)SPUtils.get(ReportUtils.getContext(), "pref_device_activated", Boolean.valueOf(false))).booleanValue();
       bool1 = bool2;
       if (VideoReportInner.getInstance().isDebugMode())
       {
-        Log.i("AppEventReporter", "isDeviceActivated:" + this.mIsActive);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("isDeviceActivated:");
+        ((StringBuilder)localObject).append(this.mIsActive);
+        Log.i("AppEventReporter", ((StringBuilder)localObject).toString());
         bool1 = bool2;
       }
     }
@@ -259,7 +233,8 @@ public class AppEventReporter
   
   private boolean isVstAdditionalReport()
   {
-    return (this.mEventAdditionalReport != null) && (this.mEventAdditionalReport.shouldAdditionalReport("origin_vst"));
+    IAdditionalReportListener localIAdditionalReportListener = this.mEventAdditionalReport;
+    return (localIAdditionalReportListener != null) && (localIAdditionalReportListener.shouldAdditionalReport("origin_vst"));
   }
   
   private void onAppVisit(SessionChangeReason paramSessionChangeReason)
@@ -303,22 +278,21 @@ public class AppEventReporter
   
   private void startAppForegroundSession()
   {
-    if (this.mAppForegroundSession == null) {
+    AppForegroundSession localAppForegroundSession = this.mAppForegroundSession;
+    if (localAppForegroundSession == null) {
       this.mAppForegroundSession = new AppForegroundSession(this.mInterceptorMonitor);
+    } else {
+      localAppForegroundSession.reset();
     }
-    for (;;)
-    {
-      this.mAppForegroundSession.start();
-      return;
-      this.mAppForegroundSession.reset();
-    }
+    this.mAppForegroundSession.start();
   }
   
   private void stopAppForegroundSession(long paramLong)
   {
     ThreadUtils.removeOnUiThread(this.mAppInReportRunnable);
-    if (this.mAppForegroundSession != null) {
-      this.mAppForegroundSession.stopToReport(paramLong);
+    AppForegroundSession localAppForegroundSession = this.mAppForegroundSession;
+    if (localAppForegroundSession != null) {
+      localAppForegroundSession.stopToReport(paramLong);
     }
   }
   
@@ -355,9 +329,14 @@ public class AppEventReporter
     return this.mUsStamp;
   }
   
+  long getUssn()
+  {
+    return this.mUssn;
+  }
+  
   public boolean isAppInForeground()
   {
-    return !this.mNoForegroundActivity;
+    return this.mNoForegroundActivity ^ true;
   }
   
   boolean isColdStart()
@@ -368,24 +347,36 @@ public class AppEventReporter
   public void onActivityCreate(Activity paramActivity)
   {
     super.onActivityCreate(paramActivity);
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("AppEventReporter", "onActivityCreate: activity=" + paramActivity);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityCreate: activity=");
+      localStringBuilder.append(paramActivity);
+      Log.d("AppEventReporter", localStringBuilder.toString());
     }
   }
   
   public void onActivityDestroyed(Activity paramActivity)
   {
     super.onActivityDestroyed(paramActivity);
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("AppEventReporter", "onActivityDestroyed: activity=" + paramActivity);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityDestroyed: activity=");
+      localStringBuilder.append(paramActivity);
+      Log.d("AppEventReporter", localStringBuilder.toString());
     }
   }
   
   public void onActivityPause(Activity paramActivity)
   {
     super.onActivityPause(paramActivity);
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("AppEventReporter", "onActivityPause: activity=" + paramActivity);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityPause: activity=");
+      localStringBuilder.append(paramActivity);
+      Log.d("AppEventReporter", localStringBuilder.toString());
     }
     this.mResumedCount -= 1;
     scheduleDelayCheckAppOut();
@@ -393,12 +384,17 @@ public class AppEventReporter
   
   public void onActivityResume(Activity paramActivity)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("AppEventReporter", "onActivityResume: activity=" + paramActivity);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityResume: activity=");
+      localStringBuilder.append(paramActivity);
+      Log.i("AppEventReporter", localStringBuilder.toString());
     }
     this.mResumedCount += 1;
     appStartDataSender(paramActivity);
     appInDataSender();
+    CustomEventStagingManager.getInstance().supplementReportsEvent();
     if (!this.mLastHeartBeatReport)
     {
       this.mLastHeartBeatReport = true;
@@ -409,8 +405,12 @@ public class AppEventReporter
   
   public void onActivityStarted(Activity paramActivity)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("AppEventReporter", "onActivityStarted: activity=" + paramActivity);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityStarted: activity=");
+      localStringBuilder.append(paramActivity);
+      Log.i("AppEventReporter", localStringBuilder.toString());
     }
     this.mActivityCount += 1;
     this.mActivityHashCode.add(Integer.valueOf(paramActivity.hashCode()));
@@ -418,16 +418,21 @@ public class AppEventReporter
   
   public void onActivityStopped(Activity paramActivity)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("AppEventReporter", "onActivityStopped: activity=" + paramActivity);
+    Object localObject;
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onActivityStopped: activity=");
+      ((StringBuilder)localObject).append(paramActivity);
+      Log.i("AppEventReporter", ((StringBuilder)localObject).toString());
     }
     if (!this.mActivityHashCode.remove(Integer.valueOf(paramActivity.hashCode())))
     {
-      String str = paramActivity.getApplicationContext().getString(2131693673, new Object[] { paramActivity.toString() });
+      localObject = paramActivity.getApplicationContext().getString(2131693626, new Object[] { paramActivity.toString() });
       if (VideoReportInner.getInstance().isDebugMode()) {
-        Toast.makeText(paramActivity.getApplicationContext(), str, 1).show();
+        Toast.makeText(paramActivity.getApplicationContext(), (CharSequence)localObject, 1).show();
       }
-      Log.e("AppEventReporter", str);
+      Log.e("AppEventReporter", (String)localObject);
       return;
     }
     this.mActivityCount -= 1;
@@ -454,27 +459,27 @@ public class AppEventReporter
   
   public void startNewSession(SessionChangeReason paramSessionChangeReason)
   {
-    boolean bool = true;
-    if ((paramSessionChangeReason == SessionChangeReason.REENTER_FOREGROUND_AND_TIMEOUT) && (this.mIsNeedInterceptForegroundSession)) {
-      this.mIsNeedInterceptForegroundSession = false;
-    }
-    do
+    SessionChangeReason localSessionChangeReason = SessionChangeReason.REENTER_FOREGROUND_AND_TIMEOUT;
+    boolean bool = false;
+    if ((paramSessionChangeReason == localSessionChangeReason) && (this.mIsNeedInterceptForegroundSession))
     {
+      this.mIsNeedInterceptForegroundSession = false;
       return;
-      if ((paramSessionChangeReason == SessionChangeReason.CALL_UP_FROM_OUTER) && (this.mLastGenerateTime > 0L) && (isExceedVisitBackgroundTime())) {
-        this.mIsNeedInterceptForegroundSession = true;
-      }
-    } while ((paramSessionChangeReason == SessionChangeReason.APP_START_UP) && (!TextUtils.isEmpty(this.mUsId)));
+    }
+    if ((paramSessionChangeReason == SessionChangeReason.CALL_UP_FROM_OUTER) && (this.mLastGenerateTime > 0L) && (isExceedVisitBackgroundTime())) {
+      this.mIsNeedInterceptForegroundSession = true;
+    }
+    if ((paramSessionChangeReason == SessionChangeReason.APP_START_UP) && (!TextUtils.isEmpty(this.mUsId))) {
+      return;
+    }
     this.mUsId = ReportUtils.generateSessionId();
     this.mUsStamp = System.currentTimeMillis();
-    if (paramSessionChangeReason == SessionChangeReason.APP_START_UP) {}
-    for (;;)
-    {
-      this.mIsColdStart = bool;
-      this.mSessionChangeListener.startNotify(new AppEventReporter.6(this, paramSessionChangeReason));
-      return;
-      bool = false;
+    this.mUssn = UssnUtils.generateUssn();
+    if (paramSessionChangeReason == SessionChangeReason.APP_START_UP) {
+      bool = true;
     }
+    this.mIsColdStart = bool;
+    this.mSessionChangeListener.startNotify(new AppEventReporter.6(this, paramSessionChangeReason));
   }
   
   public void unregister(AppEventReporter.IAppEventListener paramIAppEventListener)
@@ -484,7 +489,7 @@ public class AppEventReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.report.AppEventReporter
  * JD-Core Version:    0.7.0.1
  */

@@ -19,13 +19,14 @@ public final class oidb_0x488$OneAddBlockData
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "uint32_account_type", "uint64_block_qcall_id", "uint32_result", "bytes_mobile" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro }, OneAddBlockData.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "uint32_account_type", "uint64_block_qcall_id", "uint32_result", "bytes_mobile" }, new Object[] { localInteger, Long.valueOf(0L), localInteger, localByteStringMicro }, OneAddBlockData.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x488.oidb_0x488.OneAddBlockData
  * JD-Core Version:    0.7.0.1
  */

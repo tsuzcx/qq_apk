@@ -33,20 +33,29 @@ public abstract class BaseDirector
   @Nullable
   public static IDirector a(@IntRange(from=0L, to=3L) int paramInt, Activity paramActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BaseDirector", 2, "makeDirector type = " + paramInt);
-    }
-    switch (paramInt)
+    if (QLog.isColorLevel())
     {
-    case 0: 
-    default: 
-      return null;
-    case 1: 
-      return new BoatAnimDirector(paramActivity);
-    case 2: 
-      return new FriendShipAnimDirector(paramActivity);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("makeDirector type = ");
+      localStringBuilder.append(paramInt);
+      QLog.d("BaseDirector", 2, localStringBuilder.toString());
     }
-    return new LottieAnimDirector(paramActivity);
+    if (paramInt != 0)
+    {
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3) {
+            return null;
+          }
+          return new LottieAnimDirector(paramActivity);
+        }
+        return new FriendShipAnimDirector(paramActivity);
+      }
+      return new BoatAnimDirector(paramActivity);
+    }
+    return null;
   }
   
   public Context a()
@@ -68,24 +77,23 @@ public abstract class BaseDirector
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout = new FriendShipLayout(this.jdField_a_of_type_AndroidContentContext);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout.setBackListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout$OnBackClickListener);
-      if (Build.VERSION.SDK_INT < 19) {
-        break label101;
+      int i;
+      if (Build.VERSION.SDK_INT >= 19) {
+        i = 67109888;
+      } else {
+        i = 1024;
       }
-    }
-    label101:
-    for (int i = 67109888;; i = 1024)
-    {
       WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(-1, -1, 2, i, -2);
       new FrameLayout.LayoutParams(-1, -1).gravity = 51;
       this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout, localLayoutParams);
-      return;
     }
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout.setVisibility(paramInt);
+    FriendShipLayout localFriendShipLayout = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout;
+    if (localFriendShipLayout != null) {
+      localFriendShipLayout.setVisibility(paramInt);
     }
   }
   
@@ -96,27 +104,26 @@ public abstract class BaseDirector
     if (QLog.isColorLevel()) {
       QLog.d("BaseDirector", 2, "BaseDirector cancel");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout.removeAllViews();
+    FriendShipLayout localFriendShipLayout = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout;
+    if (localFriendShipLayout != null) {
+      localFriendShipLayout.removeAllViews();
     }
     try
     {
       this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout = null;
-      return;
     }
     catch (IllegalArgumentException localIllegalArgumentException)
     {
-      for (;;)
-      {
-        QLog.e("BaseDirector", 1, "cancel anim error");
-      }
+      label43:
+      break label43;
     }
+    QLog.e("BaseDirector", 1, "cancel anim error");
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.friendship.impl.base.BaseDirector
  * JD-Core Version:    0.7.0.1
  */

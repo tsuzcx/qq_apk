@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class x
 {
-  private static x e = null;
+  private static x e;
   private Context a;
   private SecureEngine b;
   private List<e> c;
@@ -32,189 +32,191 @@ public class x
     return e;
   }
   
-  /* Error */
   private void a(e parame, boolean paramBoolean)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: invokevirtual 42	com/tencent/securemodule/e:c	()Ljava/util/ArrayList;
-    //   6: astore 4
-    //   8: aload 4
-    //   10: ifnonnull +6 -> 16
-    //   13: aload_0
-    //   14: monitorexit
-    //   15: return
-    //   16: iload_2
-    //   17: ifeq -4 -> 13
-    //   20: aload 4
-    //   22: invokeinterface 48 1 0
-    //   27: astore 4
-    //   29: aload 4
-    //   31: invokeinterface 54 1 0
-    //   36: ifeq -23 -> 13
-    //   39: aload_0
-    //   40: aload_1
-    //   41: aload 4
-    //   43: invokeinterface 58 1 0
-    //   48: checkcast 60	com/tencent/securemodule/c
-    //   51: invokevirtual 63	com/tencent/securemodule/x:a	(Lcom/tencent/securemodule/e;Lcom/tencent/securemodule/c;)I
-    //   54: istore_3
-    //   55: iload_3
-    //   56: ifeq -27 -> 29
-    //   59: goto -46 -> 13
-    //   62: astore_1
-    //   63: aload_0
-    //   64: monitorexit
-    //   65: aload_1
-    //   66: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	67	0	this	x
-    //   0	67	1	parame	e
-    //   0	67	2	paramBoolean	boolean
-    //   54	2	3	i	int
-    //   6	36	4	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	8	62	finally
-    //   20	29	62	finally
-    //   29	55	62	finally
+    try
+    {
+      Object localObject = parame.c();
+      if (localObject == null) {
+        return;
+      }
+      if (paramBoolean)
+      {
+        localObject = ((List)localObject).iterator();
+        int i;
+        do
+        {
+          if (!((Iterator)localObject).hasNext()) {
+            break;
+          }
+          i = a(parame, (c)((Iterator)localObject).next());
+        } while (i == 0);
+      }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw parame;
+    }
   }
   
   private static List<b> b(Context paramContext)
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new b(4, 21, SecureEngine.getEngineVersion(paramContext) + "&productid=" + at.a(paramContext, 30003, 0), ""));
-    ax.b("CloudServiceManager", "SecureEngine.getEngineVersion(context): " + SecureEngine.getEngineVersion(paramContext));
-    localArrayList.add(new b(8, 21, "buildno=" + at.a(paramContext, 30004, 0) + "&version=" + at.a(paramContext, 30001, "") + "&productid=" + at.a(paramContext, 30003, 0), ""));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(SecureEngine.getEngineVersion(paramContext));
+    localStringBuilder.append("&productid=");
+    localStringBuilder.append(at.a(paramContext, 30003, 0));
+    localArrayList.add(new b(4, 21, localStringBuilder.toString(), ""));
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SecureEngine.getEngineVersion(context): ");
+    localStringBuilder.append(SecureEngine.getEngineVersion(paramContext));
+    ax.b("CloudServiceManager", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("buildno=");
+    localStringBuilder.append(at.a(paramContext, 30004, 0));
+    localStringBuilder.append("&version=");
+    localStringBuilder.append(at.a(paramContext, 30001, ""));
+    localStringBuilder.append("&productid=");
+    localStringBuilder.append(at.a(paramContext, 30003, 0));
+    localArrayList.add(new b(8, 21, localStringBuilder.toString(), ""));
     return localArrayList;
   }
   
   private void b(e parame)
   {
-    if (!a(parame)) {}
-    do
-    {
-      return;
-      localObject = parame.b();
-    } while (localObject == null);
-    switch (((u)localObject).c())
-    {
-    case 8: 
-    default: 
-      return;
-    case 0: 
-      a(parame, true);
+    if (!a(parame)) {
       return;
     }
-    this.d = true;
-    Object localObject = new Intent();
-    ((Intent)localObject).setClass(this.a, TransparentActivity.class);
-    ((Intent)localObject).addFlags(268435456);
-    ((Intent)localObject).setAction("1000040");
-    ((Intent)localObject).putExtra("data", parame);
-    this.a.startActivity((Intent)localObject);
+    Object localObject = parame.b();
+    if (localObject != null)
+    {
+      int i = ((u)localObject).c();
+      if (i != 0)
+      {
+        if (i != 6) {
+          return;
+        }
+        this.d = true;
+        localObject = new Intent();
+        ((Intent)localObject).setClass(this.a, TransparentActivity.class);
+        ((Intent)localObject).addFlags(268435456);
+        ((Intent)localObject).setAction("1000040");
+        ((Intent)localObject).putExtra("data", parame);
+        this.a.startActivity((Intent)localObject);
+        return;
+      }
+      a(parame, true);
+    }
   }
   
   public int a(e parame, c paramc)
   {
-    boolean bool = false;
-    int j = 0;
-    int i = 1;
     Object localObject1 = new UniAttribute();
     ((UniAttribute)localObject1).setEncodeName("UTF-8");
     ((UniAttribute)localObject1).decode(paramc.b());
-    int k;
-    switch (paramc.a())
+    int i = paramc.a();
+    int m = 0;
+    boolean bool = false;
+    int k = -5;
+    int j;
+    if (i != 200)
     {
-    default: 
-      i = -5;
-      if (j == 0) {
-        i = this.b.scanThreatens(paramc.a(), paramc.b());
+      if (i != 301)
+      {
+        j = m;
+        i = k;
       }
-      return i;
-    case 200: 
+      else
+      {
+        localObject1 = (s)((UniAttribute)localObject1).getByClass("cloudcmd", new s());
+        j = m;
+        i = k;
+        if (localObject1 != null)
+        {
+          j = m;
+          i = k;
+          if (((s)localObject1).a == 56)
+          {
+            Object localObject2 = this.a;
+            if (((s)localObject1).b == 1) {
+              bool = true;
+            } else {
+              bool = false;
+            }
+            at.b((Context)localObject2, 30008, bool);
+            at.b(this.a, 30009, parame.b.c);
+            parame = new ArrayList();
+            localObject2 = new o();
+            if (((s)localObject1).b == 1) {
+              i = 235004;
+            } else {
+              i = 235005;
+            }
+            ((o)localObject2).a = i;
+            ((o)localObject2).c = "1";
+            ((o)localObject2).b = ((int)(System.currentTimeMillis() / 1000L));
+            parame.add(localObject2);
+            ah.a(this.a).a(parame);
+            j = m;
+            i = k;
+          }
+        }
+      }
+    }
+    else
+    {
       localObject1 = new UniAttribute();
       ((UniAttribute)localObject1).decode(paramc.b());
       localObject1 = (r)((UniAttribute)localObject1).getByClass("cloudcmd", new r());
+      j = m;
+      i = k;
       if (localObject1 != null)
       {
         if (parame.a().a() == 1) {
           bool = true;
         }
-        k = ba.a(this.a, ((r)localObject1).a(), bool);
-        j = i;
+        i = ba.a(this.a, ((r)localObject1).a(), bool);
+        j = 1;
       }
-      break;
     }
-    for (i = k;; i = -5)
-    {
-      break;
-      localObject1 = (s)((UniAttribute)localObject1).getByClass("cloudcmd", new s());
-      Object localObject2;
-      if ((localObject1 != null) && (((s)localObject1).a == 56))
-      {
-        localObject2 = this.a;
-        if (((s)localObject1).b != 1) {
-          break label330;
-        }
-        bool = true;
-        label223:
-        at.b((Context)localObject2, 30008, bool);
-        at.b(this.a, 30009, parame.b.c);
-        parame = new ArrayList();
-        localObject2 = new o();
-        if (((s)localObject1).b != 1) {
-          break label336;
-        }
-      }
-      label330:
-      label336:
-      for (i = 235004;; i = 235005)
-      {
-        ((o)localObject2).a = i;
-        ((o)localObject2).c = "1";
-        ((o)localObject2).b = ((int)(System.currentTimeMillis() / 1000L));
-        parame.add(localObject2);
-        ah.a(this.a).a(parame);
-        i = -5;
-        break;
-        bool = false;
-        break label223;
-      }
-      j = 0;
+    if (j == 0) {
+      i = this.b.scanThreatens(paramc.a(), paramc.b());
     }
+    return i;
   }
   
   public void a(int paramInt)
   {
-    Object localObject2;
     try
     {
-      ArrayList localArrayList = new ArrayList();
-      localObject2 = this.c.iterator();
-      while (((Iterator)localObject2).hasNext())
+      Object localObject1 = new ArrayList();
+      Object localObject3 = this.c.iterator();
+      while (((Iterator)localObject3).hasNext())
       {
-        e locale = (e)((Iterator)localObject2).next();
+        e locale = (e)((Iterator)localObject3).next();
         if ((locale != null) && (locale.a().a() == paramInt)) {
-          localArrayList.add(locale);
+          ((List)localObject1).add(locale);
         }
       }
-      if (localObject1.size() <= 0) {
-        break label128;
+      if (((List)localObject1).size() > 0)
+      {
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject3 = (e)((Iterator)localObject1).next();
+          b((e)localObject3);
+          this.c.remove(localObject3);
+        }
       }
+      return;
     }
     finally {}
-    Iterator localIterator = localObject1.iterator();
-    while (localIterator.hasNext())
+    for (;;)
     {
-      localObject2 = (e)localIterator.next();
-      b((e)localObject2);
-      this.c.remove(localObject2);
+      throw localObject2;
     }
-    label128:
   }
   
   public boolean a()
@@ -249,8 +251,9 @@ public class x
   
   public boolean c()
   {
+    Context localContext = this.a;
     boolean bool2 = false;
-    boolean bool3 = at.a(this.a, 30008, false);
+    boolean bool3 = at.a(localContext, 30008, false);
     long l = at.a(this.a, 30009, 0);
     boolean bool1 = bool2;
     if (bool3)
@@ -265,7 +268,7 @@ public class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.securemodule.x
  * JD-Core Version:    0.7.0.1
  */

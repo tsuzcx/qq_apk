@@ -9,8 +9,13 @@ class SmallScreenService$4
   
   public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("SmallScreenService", 4, "hideStateRunnable, sCanSendStateDelayFlag[" + SmallScreenService.g + "]");
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("hideStateRunnable, sCanSendStateDelayFlag[");
+      localStringBuilder.append(SmallScreenService.g);
+      localStringBuilder.append("]");
+      QLog.i("SmallScreenService", 4, localStringBuilder.toString());
     }
     if (SmallScreenService.g) {
       this.this$0.a(this.a, 2);
@@ -19,7 +24,7 @@ class SmallScreenService$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenService.4
  * JD-Core Version:    0.7.0.1
  */

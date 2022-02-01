@@ -29,21 +29,23 @@ final class ef
   
   private void b()
   {
-    if (!this.a) {}
-    for (;;)
-    {
+    if (!this.a) {
       return;
-      if (this.c != null)
-      {
-        long l = System.currentTimeMillis();
-        if (l - this.h > 2000L) {}
-        for (int i = 1; i != 0; i = 0)
-        {
-          this.h = l;
-          c();
-          return;
-        }
-      }
+    }
+    if (this.c == null) {
+      return;
+    }
+    long l = System.currentTimeMillis();
+    int i;
+    if (l - this.h > 2000L) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
+    {
+      this.h = l;
+      c();
     }
   }
   
@@ -118,19 +120,23 @@ final class ef
     }
     catch (ClassCastException localClassCastException)
     {
-      if (fj.a(paramCellLocation) < 0) {
-        return false;
-      }
-      if (fj.a(this.c, paramCellLocation)) {
-        return false;
-      }
-      paramCellLocation = et.a(this.b, paramCellLocation, null);
-      if (paramCellLocation == null) {}
-      for (boolean bool = true; bool; bool = fj.a(paramCellLocation)) {
-        return true;
-      }
+      label32:
+      boolean bool;
+      break label32;
     }
-    return false;
+    if (fj.a(paramCellLocation) < 0) {
+      return false;
+    }
+    if (fj.a(this.c, paramCellLocation)) {
+      return false;
+    }
+    paramCellLocation = et.a(this.b, paramCellLocation, null);
+    if (paramCellLocation == null) {
+      bool = true;
+    } else {
+      bool = fj.a(paramCellLocation);
+    }
+    return bool;
   }
   
   public final void onCellLocationChanged(CellLocation paramCellLocation)
@@ -152,103 +158,91 @@ final class ef
   
   public final void onServiceStateChanged(ServiceState paramServiceState)
   {
-    int j = 1;
-    int m = 0;
     super.onServiceStateChanged(paramServiceState);
-    if (paramServiceState == null) {}
+    if (paramServiceState == null) {
+      return;
+    }
     for (;;)
     {
-      return;
+      boolean bool;
       try
       {
         ServiceState localServiceState = this.g;
-        if ((localServiceState != null) && (localServiceState.getState() == paramServiceState.getState())) {
-          continue;
-        }
-        this.g = paramServiceState;
-        if (!this.a) {
-          continue;
-        }
-        int i;
-        boolean bool;
-        if (this.g != null) {
-          if (this.g.getState() == 0)
+        if ((localServiceState == null) || (localServiceState.getState() != paramServiceState.getState()))
+        {
+          this.g = paramServiceState;
+          if (this.a)
           {
-            i = 1;
+            paramServiceState = this.g;
+            j = 1;
+            if (paramServiceState == null) {
+              break label160;
+            }
+            if (this.g.getState() == 0)
+            {
+              i = 1;
+            }
+            else
+            {
+              if (this.g.getState() != 1) {
+                break label160;
+              }
+              i = 0;
+            }
             paramServiceState = this.b.f;
             bool = fj.a(this.b.a);
-            if (paramServiceState == null) {
-              break label175;
+            if ((paramServiceState == null) || (paramServiceState.getSimState() != 5)) {
+              break label165;
             }
-            if (paramServiceState.getSimState() != 5) {
-              break label164;
-            }
-            break label177;
+            break label167;
+            paramServiceState = new Message();
+            paramServiceState.what = 12999;
+            paramServiceState.arg1 = 12003;
+            paramServiceState.arg2 = i;
+            this.b.b(paramServiceState);
           }
-        }
-        for (;;)
-        {
-          paramServiceState = new Message();
-          paramServiceState.what = 12999;
-          paramServiceState.arg1 = 12003;
-          paramServiceState.arg2 = k;
-          this.b.b(paramServiceState);
-          return;
-          i = this.g.getState();
-          if (i == 1)
-          {
-            i = 0;
-            break;
-          }
-          i = -1;
-          break;
-          label164:
-          j = 0;
-          label175:
-          label177:
-          do
-          {
-            k = i;
-            break;
-            j = 0;
-            k = m;
-            if (bool) {
-              break;
-            }
-          } while (j != 0);
-          int k = m;
         }
         return;
       }
-      catch (Throwable paramServiceState) {}
+      catch (Throwable paramServiceState)
+      {
+        return;
+      }
+      label160:
+      int i = -1;
+      continue;
+      label165:
+      int j = 0;
+      label167:
+      if ((bool) || (j == 0)) {
+        i = 0;
+      }
     }
   }
   
   public final void onSignalStrengthsChanged(SignalStrength paramSignalStrength)
   {
     super.onSignalStrengthsChanged(paramSignalStrength);
-    if (paramSignalStrength == null) {}
-    for (;;)
-    {
+    if (paramSignalStrength == null) {
       return;
-      try
-      {
-        SignalStrength localSignalStrength = this.f;
-        int i = this.b.b.a;
-        if ((localSignalStrength == null) || (fj.a(i, localSignalStrength, paramSignalStrength)))
-        {
-          this.f = paramSignalStrength;
-          b();
-          return;
-        }
-      }
-      catch (Throwable paramSignalStrength) {}
     }
+    try
+    {
+      SignalStrength localSignalStrength = this.f;
+      int i = this.b.b.a;
+      if ((localSignalStrength == null) || (fj.a(i, localSignalStrength, paramSignalStrength)))
+      {
+        this.f = paramSignalStrength;
+        b();
+      }
+      return;
+    }
+    catch (Throwable paramSignalStrength) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.ef
  * JD-Core Version:    0.7.0.1
  */

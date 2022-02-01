@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.location.callback;
 
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
+import androidx.fragment.app.FragmentManager;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.ChatFragment;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
@@ -14,37 +13,38 @@ public class AioCallback
 {
   private void a()
   {
-    Object localObject;
-    if ((BaseActivity.sTopActivity instanceof FragmentActivity))
+    if ((BaseActivity.sTopActivity instanceof BaseActivity))
     {
-      localObject = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+      Object localObject = (ChatFragment)BaseActivity.sTopActivity.getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
       if (localObject != null)
       {
         localObject = ((ChatFragment)localObject).a();
-        if ((localObject == null) || (((BaseChatPie)localObject).h() < 2)) {}
+        if ((localObject != null) && (((BaseChatPie)localObject).d() >= 2)) {
+          try
+          {
+            ((BaseChatPie)localObject).e(131072);
+            return;
+          }
+          catch (Throwable localThrowable)
+          {
+            localThrowable.printStackTrace();
+          }
+        }
       }
-    }
-    try
-    {
-      ((BaseChatPie)localObject).g(131072);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
     }
   }
   
   public void a(int paramInt, long paramLong)
   {
     AppInterface localAppInterface = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if (paramInt == 0) {
+    if (paramInt == 0)
+    {
       LocationMessageUtil.a(localAppInterface, String.valueOf(paramLong));
-    }
-    while (paramInt != 1) {
       return;
     }
-    LocationMessageUtil.b(localAppInterface, String.valueOf(paramLong));
+    if (paramInt == 1) {
+      LocationMessageUtil.b(localAppInterface, String.valueOf(paramLong));
+    }
   }
   
   public void a(int paramInt, String paramString, boolean paramBoolean)
@@ -58,20 +58,15 @@ public class AioCallback
     AppInterface localAppInterface = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
     if (paramInt == 0) {
       LocationMessageUtil.a(localAppInterface, String.valueOf(paramLong));
+    } else if (paramInt == 1) {
+      LocationMessageUtil.b(localAppInterface, String.valueOf(paramLong));
     }
-    for (;;)
-    {
-      a();
-      return;
-      if (paramInt == 1) {
-        LocationMessageUtil.b(localAppInterface, String.valueOf(paramLong));
-      }
-    }
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.callback.AioCallback
  * JD-Core Version:    0.7.0.1
  */

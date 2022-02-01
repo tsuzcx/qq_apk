@@ -6,13 +6,11 @@ import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.biz.troopgift.TroopGiftAioPanelData;
 import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
 import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.mobileqq.config.business.qvip.QVipGiftConfig;
-import com.tencent.mobileqq.config.business.qvip.QVipGiftProcessor;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.vas.BrowserUtils;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.troop.utils.api.ITroopUtilsApi;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipGiftConfig;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipGiftProcessor;
 import com.tencent.mobileqq.vas.ipc.RemoteProxy;
 import com.tencent.mobileqq.vas.ipc.remote.AnonymousIPC;
 import com.tencent.mobileqq.vas.ipc.remote.IAnonymousIPC;
@@ -39,18 +37,7 @@ public class GiftJsPlugin
   
   public static void openGiftBrowser(Context paramContext, String paramString)
   {
-    if (paramString == null) {
-      return;
-    }
-    String str1 = QVipGiftProcessor.a().troopAioUrl;
-    if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {}
-    for (int i = 1;; i = 0)
-    {
-      String str2 = TroopGiftAioPanelData.b(paramString);
-      sTroopUin = paramString;
-      BrowserUtils.a(paramContext, str1.replace("{troopUin}", paramString).replace("{themeMode}", i + "").replace("{uin}", str2));
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   protected boolean excuteEvent(String paramString, long paramLong, Map<String, Object> paramMap)
@@ -69,16 +56,13 @@ public class GiftJsPlugin
       {
         ((JSONObject)localObject).put("uin", paramString);
         ((JSONObject)localObject).put("nick", paramMap);
-        super.callJs(sCallbackJs, new String[] { ((JSONObject)localObject).toString() });
-        return true;
       }
       catch (JSONException paramString)
       {
-        for (;;)
-        {
-          paramString.printStackTrace();
-        }
+        paramString.printStackTrace();
       }
+      super.callJs(sCallbackJs, new String[] { ((JSONObject)localObject).toString() });
+      return true;
     }
     return false;
   }
@@ -87,9 +71,9 @@ public class GiftJsPlugin
   public void openSelectMember(String paramString1, String paramString2)
   {
     sCallbackJs = paramString1;
-    paramString2 = TroopMemberListActivity.a(BaseApplication.getContext(), paramString2, 14);
+    paramString2 = ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).getTroopMemberListActivityLaunchIntent(BaseApplication.getContext(), paramString2, 14);
     paramString2.putExtra("param_is_pop_up_style", true);
-    paramString2.putExtra("custom_title_name", BaseApplication.getContext().getString(2131697741));
+    paramString2.putExtra("custom_title_name", BaseApplication.getContext().getString(2131697747));
     paramString2.setFlags(603979776);
     this.mRuntime.a().startActivityForResult(paramString2, 12006);
     AppInterface localAppInterface = this.mRuntime.a();
@@ -112,42 +96,57 @@ public class GiftJsPlugin
   public void transferAnonymousInfo(String paramString1, String paramString2, String paramString3)
   {
     sCallbackJs = paramString1;
-    IAnonymousIPC localIAnonymousIPC;
     if (paramString3.equals(this.mRuntime.a().getCurrentAccountUin()))
     {
-      localIAnonymousIPC = (IAnonymousIPC)RemoteProxy.getProxy(AnonymousIPC.class);
-      if (localIAnonymousIPC.isAnonymous(paramString2)) {
-        break label59;
+      Object localObject = (IAnonymousIPC)RemoteProxy.getProxy(AnonymousIPC.class);
+      if (!((IAnonymousIPC)localObject).isAnonymous(paramString2))
+      {
+        super.callJs(sCallbackJs, new String[] { "" });
+        return;
       }
-      super.callJs(sCallbackJs, new String[] { "" });
-    }
-    label59:
-    do
-    {
-      return;
-      paramString1 = localIAnonymousIPC.getNickname(paramString2);
-      paramString3 = localIAnonymousIPC.getAvatarID(paramString2);
-      paramString2 = localIAnonymousIPC.getRankColor(paramString2);
-    } while (paramString1 == null);
-    paramString1 = "name=" + paramString1 + "&id=" + paramString3 + "&color=" + paramString2;
-    try
-    {
-      paramString2 = MessageDigest.getInstance("MD5");
-      paramString3 = QVipGiftProcessor.a().anonymousFlag;
-      paramString2 = new String(Hex.encodeHex(paramString2.digest((paramString1 + "&key=" + paramString3).getBytes("utf-8"))));
-      paramString1 = "{anonymousInfo:\"" + paramString1 + "\",sign:\"" + paramString2 + "\"}";
-      super.callJs(sCallbackJs, new String[] { paramString1 });
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      super.callJsOnError(sCallbackJs, paramString1.getMessage());
+      paramString1 = ((IAnonymousIPC)localObject).getNickname(paramString2);
+      paramString3 = ((IAnonymousIPC)localObject).getAvatarID(paramString2);
+      paramString2 = ((IAnonymousIPC)localObject).getRankColor(paramString2);
+      if (paramString1 != null)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("name=");
+        ((StringBuilder)localObject).append(paramString1);
+        ((StringBuilder)localObject).append("&id=");
+        ((StringBuilder)localObject).append(paramString3);
+        ((StringBuilder)localObject).append("&color=");
+        ((StringBuilder)localObject).append(paramString2);
+        paramString1 = ((StringBuilder)localObject).toString();
+        try
+        {
+          paramString2 = MessageDigest.getInstance("MD5");
+          paramString3 = QVipGiftProcessor.a().anonymousFlag;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramString1);
+          ((StringBuilder)localObject).append("&key=");
+          ((StringBuilder)localObject).append(paramString3);
+          paramString2 = new String(Hex.encodeHex(paramString2.digest(((StringBuilder)localObject).toString().getBytes("utf-8"))));
+          paramString3 = new StringBuilder();
+          paramString3.append("{anonymousInfo:\"");
+          paramString3.append(paramString1);
+          paramString3.append("\",sign:\"");
+          paramString3.append(paramString2);
+          paramString3.append("\"}");
+          paramString1 = paramString3.toString();
+          super.callJs(sCallbackJs, new String[] { paramString1 });
+          return;
+        }
+        catch (Exception paramString1)
+        {
+          super.callJsOnError(sCallbackJs, paramString1.getMessage());
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.GiftJsPlugin
  * JD-Core Version:    0.7.0.1
  */

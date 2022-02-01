@@ -2,7 +2,7 @@ package c.t.m.g;
 
 public class ed
 {
-  private static ed g = null;
+  private static ed g;
   float a = 0.0F;
   float b = 0.0F;
   float c = 100.0F;
@@ -12,20 +12,21 @@ public class ed
   
   public static ed a()
   {
-    if (g == null) {}
-    try
-    {
-      if (g == null) {
-        g = new ed();
+    if (g == null) {
+      try
+      {
+        if (g == null) {
+          g = new ed();
+        }
       }
-      return g;
+      finally {}
     }
-    finally {}
+    return g;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.ed
  * JD-Core Version:    0.7.0.1
  */

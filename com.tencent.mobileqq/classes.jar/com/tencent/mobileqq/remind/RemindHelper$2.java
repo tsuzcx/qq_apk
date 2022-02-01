@@ -15,35 +15,36 @@ final class RemindHelper$2
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    long l1;
-    if ((this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener != null))
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker;
+    if ((paramDialogInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener != null))
     {
-      l1 = this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker.a() / 1000L;
-      if (!Build.MODEL.equals("Coolpad 5890")) {
-        break label126;
+      long l2 = paramDialogInterface.a() / 1000L;
+      long l1 = l2;
+      if (Build.MODEL.equals("Coolpad 5890"))
+      {
+        long l3 = new Date().getTime() / 1000L;
+        l1 = l2;
+        if (l2 < l3) {
+          l1 = l3;
+        }
       }
-      long l2 = new Date().getTime() / 1000L;
-      if (l1 >= l2) {
-        break label126;
-      }
-      l1 = l2;
-    }
-    label126:
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(RemindHelper.a(), 2, "onDismiss Time :" + TimeHelper.a(1000L * l1));
+      if (QLog.isColorLevel())
+      {
+        paramDialogInterface = RemindHelper.a();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onDismiss Time :");
+        localStringBuilder.append(TimeHelper.a(1000L * l1));
+        QLog.d(paramDialogInterface, 2, localStringBuilder.toString());
       }
       this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker.setOnTimePickerSelectListener(null);
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener.a(Long.valueOf(l1));
       RemindHelper.a = true;
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.remind.RemindHelper.2
  * JD-Core Version:    0.7.0.1
  */

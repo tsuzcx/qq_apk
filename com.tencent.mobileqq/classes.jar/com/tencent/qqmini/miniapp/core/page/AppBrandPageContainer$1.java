@@ -16,13 +16,16 @@ class AppBrandPageContainer$1
   
   public void onSoftKeyboardOpened(int paramInt)
   {
-    QMLog.e("minisdk-start-AppBrandPageContainer", "onSoftKeyboardOpened " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onSoftKeyboardOpened ");
+    localStringBuilder.append(paramInt);
+    QMLog.e("minisdk-start-AppBrandPageContainer", localStringBuilder.toString());
     AppBrandPageContainer.access$000(this.this$0, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.AppBrandPageContainer.1
  * JD-Core Version:    0.7.0.1
  */

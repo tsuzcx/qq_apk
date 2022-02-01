@@ -32,7 +32,11 @@ class LiteLiveSDKClientIPCModule$IPCConnectListenerImpl
   public void connectSuccess(EIPCConnection paramEIPCConnection)
   {
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
-    QLog.e("LiteLiveSDKClientIPCModule", 1, "ilive connectSuccess, server[" + paramEIPCConnection.procName + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ilive connectSuccess, server[");
+    localStringBuilder.append(paramEIPCConnection.procName);
+    localStringBuilder.append("]");
+    QLog.e("LiteLiveSDKClientIPCModule", 1, localStringBuilder.toString());
     if (BaseApplicationImpl.getApplication().getQQProcessName().equals("com.tencent.mobileqq:tool"))
     {
       paramEIPCConnection = new Bundle();
@@ -42,29 +46,37 @@ class LiteLiveSDKClientIPCModule$IPCConnectListenerImpl
   
   public void onConnectBind(EIPCConnection paramEIPCConnection)
   {
-    if (paramEIPCConnection == null) {}
-    do
-    {
+    if (paramEIPCConnection == null) {
       return;
-      QLog.e("LiteLiveSDKClientIPCModule", 1, "ilive onConnectBind, [" + paramEIPCConnection.procName + "]");
-    } while (!TextUtils.equals("com.tencent.mobileqq", paramEIPCConnection.procName));
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ilive onConnectBind, [");
+    localStringBuilder.append(paramEIPCConnection.procName);
+    localStringBuilder.append("]");
+    QLog.e("LiteLiveSDKClientIPCModule", 1, localStringBuilder.toString());
+    if (TextUtils.equals("com.tencent.mobileqq", paramEIPCConnection.procName)) {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
+    }
   }
   
   public void onConnectUnbind(EIPCConnection paramEIPCConnection)
   {
-    if (paramEIPCConnection == null) {}
-    do
-    {
+    if (paramEIPCConnection == null) {
       return;
-      QLog.e("LiteLiveSDKClientIPCModule", 1, "ilive onConnectUnbind, [" + paramEIPCConnection.procName + "]");
-    } while (!TextUtils.equals("com.tencent.mobileqq", paramEIPCConnection.procName));
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(4);
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ilive onConnectUnbind, [");
+    localStringBuilder.append(paramEIPCConnection.procName);
+    localStringBuilder.append("]");
+    QLog.e("LiteLiveSDKClientIPCModule", 1, localStringBuilder.toString());
+    if (TextUtils.equals("com.tencent.mobileqq", paramEIPCConnection.procName)) {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(4);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.sdkimpl.ipc.LiteLiveSDKClientIPCModule.IPCConnectListenerImpl
  * JD-Core Version:    0.7.0.1
  */

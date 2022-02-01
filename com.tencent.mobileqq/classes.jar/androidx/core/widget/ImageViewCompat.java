@@ -51,10 +51,10 @@ public class ImageViewCompat
         }
       }
     }
-    while (!(paramImageView instanceof TintableImageSourceView)) {
-      return;
+    else if ((paramImageView instanceof TintableImageSourceView))
+    {
+      ((TintableImageSourceView)paramImageView).setSupportImageTintList(paramColorStateList);
     }
-    ((TintableImageSourceView)paramImageView).setSupportImageTintList(paramColorStateList);
   }
   
   public static void setImageTintMode(@NonNull ImageView paramImageView, @Nullable PorterDuff.Mode paramMode)
@@ -74,15 +74,15 @@ public class ImageViewCompat
         }
       }
     }
-    while (!(paramImageView instanceof TintableImageSourceView)) {
-      return;
+    else if ((paramImageView instanceof TintableImageSourceView))
+    {
+      ((TintableImageSourceView)paramImageView).setSupportImageTintMode(paramMode);
     }
-    ((TintableImageSourceView)paramImageView).setSupportImageTintMode(paramMode);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.widget.ImageViewCompat
  * JD-Core Version:    0.7.0.1
  */

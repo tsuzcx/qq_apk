@@ -17,44 +17,11 @@ import java.util.List;
 
 public class SafeParcelReader
 {
-  private static void a(Parcel paramParcel, int paramInt)
-  {
-    if (paramInt > 65535) {
-      throw new SafeParcelReader.a("arraySize cannot be beyond 65535", paramParcel);
-    }
-  }
-  
-  private static void a(Parcel paramParcel, int paramInt1, int paramInt2)
-  {
-    paramInt1 = readSize(paramParcel, paramInt1);
-    if (paramInt1 != paramInt2)
-    {
-      String str = Integer.toHexString(paramInt1);
-      throw new SafeParcelReader.a(str.length() + 46 + "Expected size " + paramInt2 + " got " + paramInt1 + " (0x" + str + ")", paramParcel);
-    }
-  }
-  
-  private static void a(Parcel paramParcel, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (paramInt2 != paramInt3)
-    {
-      String str = Integer.toHexString(paramInt2);
-      throw new SafeParcelReader.a(str.length() + 46 + "Expected size " + paramInt3 + " got " + paramInt2 + " (0x" + str + ")", paramParcel);
-    }
-  }
-  
-  private static boolean a(int paramInt1, int paramInt2)
-  {
-    long l = paramInt1 + paramInt2;
-    return (l > 2147483647L) || (l < -2147483648L);
-  }
-  
-  private static void b(Parcel paramParcel, int paramInt1, int paramInt2)
-  {
-    if ((paramInt1 < 0) || (a(paramInt1, paramInt2))) {
-      throw new SafeParcelReader.a("dataPosition cannot be beyond integer scope", paramParcel);
-    }
-  }
+  private static final int BIT16_MARK = 65535;
+  private static final int FIELD_ID_CHECKER = 20293;
+  private static final int MAX_ARRAY_LENGTH = 1024;
+  private static final int NEGATIVE_MARK = -65536;
+  private static final int OFFSET16 = 16;
   
   public static BigDecimal createBigDecimal(Parcel paramParcel, int paramInt)
   {
@@ -63,7 +30,7 @@ public class SafeParcelReader
     if (paramInt == 0) {
       return null;
     }
-    b(paramParcel, paramInt, i);
+    ensureDataPositionValid(paramParcel, paramInt, i);
     byte[] arrayOfByte = paramParcel.createByteArray();
     int j = paramParcel.readInt();
     paramParcel.setDataPosition(paramInt + i);
@@ -72,23 +39,22 @@ public class SafeParcelReader
   
   public static BigDecimal[] createBigDecimalArray(Parcel paramParcel, int paramInt)
   {
-    int i = 0;
-    int j = readSize(paramParcel, paramInt);
-    int k = paramParcel.dataPosition();
-    if (j == 0) {
+    int i = readSize(paramParcel, paramInt);
+    int j = paramParcel.dataPosition();
+    paramInt = 0;
+    if (i == 0) {
       return new BigDecimal[0];
     }
-    b(paramParcel, j, k);
-    int m = paramParcel.readInt();
-    a(paramParcel, m);
-    BigDecimal[] arrayOfBigDecimal = new BigDecimal[m];
-    paramInt = i;
-    while (paramInt < m)
+    ensureDataPositionValid(paramParcel, i, j);
+    int k = paramParcel.readInt();
+    ensureArrayLengthValid(paramParcel, k);
+    BigDecimal[] arrayOfBigDecimal = new BigDecimal[k];
+    while (paramInt < k)
     {
       arrayOfBigDecimal[paramInt] = new BigDecimal(new BigInteger(paramParcel.createByteArray()), paramParcel.readInt());
       paramInt += 1;
     }
-    paramParcel.setDataPosition(k + j);
+    paramParcel.setDataPosition(j + i);
     return arrayOfBigDecimal;
   }
   
@@ -99,7 +65,7 @@ public class SafeParcelReader
     if (paramInt == 0) {
       return null;
     }
-    b(paramParcel, paramInt, i);
+    ensureDataPositionValid(paramParcel, paramInt, i);
     byte[] arrayOfByte = paramParcel.createByteArray();
     paramParcel.setDataPosition(paramInt + i);
     return new BigInteger(arrayOfByte);
@@ -107,23 +73,22 @@ public class SafeParcelReader
   
   public static BigInteger[] createBigIntegerArray(Parcel paramParcel, int paramInt)
   {
-    int i = 0;
-    int j = readSize(paramParcel, paramInt);
-    int k = paramParcel.dataPosition();
-    if (j == 0) {
+    int i = readSize(paramParcel, paramInt);
+    int j = paramParcel.dataPosition();
+    paramInt = 0;
+    if (i == 0) {
       return new BigInteger[0];
     }
-    b(paramParcel, j, k);
-    int m = paramParcel.readInt();
-    a(paramParcel, m);
-    BigInteger[] arrayOfBigInteger = new BigInteger[m];
-    paramInt = i;
-    while (paramInt < m)
+    ensureDataPositionValid(paramParcel, i, j);
+    int k = paramParcel.readInt();
+    ensureArrayLengthValid(paramParcel, k);
+    BigInteger[] arrayOfBigInteger = new BigInteger[k];
+    while (paramInt < k)
     {
       arrayOfBigInteger[paramInt] = new BigInteger(paramParcel.createByteArray());
       paramInt += 1;
     }
-    paramParcel.setDataPosition(k + j);
+    paramParcel.setDataPosition(j + i);
     return arrayOfBigInteger;
   }
   
@@ -134,7 +99,7 @@ public class SafeParcelReader
     if (paramInt == 0) {
       return new boolean[0];
     }
-    b(paramParcel, paramInt, i);
+    ensureDataPositionValid(paramParcel, paramInt, i);
     boolean[] arrayOfBoolean = paramParcel.createBooleanArray();
     paramParcel.setDataPosition(paramInt + i);
     return arrayOfBoolean;
@@ -147,19 +112,21 @@ public class SafeParcelReader
     if (i == 0) {
       return null;
     }
-    b(paramParcel, i, j);
+    ensureDataPositionValid(paramParcel, i, j);
     ArrayList localArrayList = new ArrayList();
     int k = paramParcel.readInt();
+    ensureArrayLengthValid(paramParcel, k);
     paramInt = 0;
-    if (paramInt < k)
+    while (paramInt < k)
     {
-      if (paramParcel.readInt() != 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        localArrayList.add(Boolean.valueOf(bool));
-        paramInt += 1;
-        break;
+      boolean bool;
+      if (paramParcel.readInt() != 0) {
+        bool = true;
+      } else {
+        bool = false;
       }
+      localArrayList.add(Boolean.valueOf(bool));
+      paramInt += 1;
     }
     paramParcel.setDataPosition(j + i);
     return localArrayList;
@@ -172,7 +139,7 @@ public class SafeParcelReader
     if (paramInt == 0) {
       return null;
     }
-    b(paramParcel, paramInt, i);
+    ensureDataPositionValid(paramParcel, paramInt, i);
     Bundle localBundle = paramParcel.readBundle();
     paramParcel.setDataPosition(paramInt + i);
     return localBundle;
@@ -185,7 +152,7 @@ public class SafeParcelReader
     if (paramInt == 0) {
       return new byte[0];
     }
-    b(paramParcel, paramInt, i);
+    ensureDataPositionValid(paramParcel, paramInt, i);
     byte[] arrayOfByte = paramParcel.createByteArray();
     paramParcel.setDataPosition(paramInt + i);
     return arrayOfByte;
@@ -196,11 +163,11 @@ public class SafeParcelReader
     int i = readSize(paramParcel, paramInt);
     int j = paramParcel.dataPosition();
     if (i == 0) {
-      return (byte[][])null;
+      return null;
     }
-    b(paramParcel, i, j);
+    ensureDataPositionValid(paramParcel, i, j);
     int k = paramParcel.readInt();
-    a(paramParcel, k);
+    ensureArrayLengthValid(paramParcel, k);
     byte[][] arrayOfByte = new byte[k][];
     paramInt = 0;
     while (paramInt < k)
@@ -219,9 +186,9 @@ public class SafeParcelReader
     if (i == 0) {
       return null;
     }
-    b(paramParcel, i, j);
+    ensureDataPositionValid(paramParcel, i, j);
     int k = paramParcel.readInt();
-    a(paramParcel, k);
+    ensureArrayLengthValid(paramParcel, k);
     SparseArray localSparseArray = new SparseArray(k);
     paramInt = 0;
     while (paramInt < k)
@@ -240,7 +207,7 @@ public class SafeParcelReader
     if (paramInt == 0) {
       return new char[0];
     }
-    b(paramParcel, paramInt, i);
+    ensureDataPositionValid(paramParcel, paramInt, i);
     char[] arrayOfChar = paramParcel.createCharArray();
     paramParcel.setDataPosition(paramInt + i);
     return arrayOfChar;
@@ -253,7 +220,7 @@ public class SafeParcelReader
     if (paramInt == 0) {
       return new double[0];
     }
-    b(paramParcel, paramInt, i);
+    ensureDataPositionValid(paramParcel, paramInt, i);
     double[] arrayOfDouble = paramParcel.createDoubleArray();
     paramParcel.setDataPosition(paramInt + i);
     return arrayOfDouble;
@@ -266,9 +233,10 @@ public class SafeParcelReader
     if (i == 0) {
       return null;
     }
-    b(paramParcel, i, j);
+    ensureDataPositionValid(paramParcel, i, j);
     ArrayList localArrayList = new ArrayList();
     int k = paramParcel.readInt();
+    ensureArrayLengthValid(paramParcel, k);
     paramInt = 0;
     while (paramInt < k)
     {
@@ -286,9 +254,10 @@ public class SafeParcelReader
     if (i == 0) {
       return null;
     }
-    b(paramParcel, i, j);
+    ensureDataPositionValid(paramParcel, i, j);
     SparseArray localSparseArray = new SparseArray();
     int k = paramParcel.readInt();
+    ensureArrayLengthValid(paramParcel, k);
     paramInt = 0;
     while (paramInt < k)
     {
@@ -306,7 +275,7 @@ public class SafeParcelReader
     if (paramInt == 0) {
       return new float[0];
     }
-    b(paramParcel, paramInt, i);
+    ensureDataPositionValid(paramParcel, paramInt, i);
     float[] arrayOfFloat = paramParcel.createFloatArray();
     paramParcel.setDataPosition(paramInt + i);
     return arrayOfFloat;
@@ -319,9 +288,10 @@ public class SafeParcelReader
     if (i == 0) {
       return null;
     }
-    b(paramParcel, i, j);
+    ensureDataPositionValid(paramParcel, i, j);
     ArrayList localArrayList = new ArrayList();
     int k = paramParcel.readInt();
+    ensureArrayLengthValid(paramParcel, k);
     paramInt = 0;
     while (paramInt < k)
     {
@@ -339,9 +309,10 @@ public class SafeParcelReader
     if (i == 0) {
       return null;
     }
-    b(paramParcel, i, j);
+    ensureDataPositionValid(paramParcel, i, j);
     SparseArray localSparseArray = new SparseArray();
     int k = paramParcel.readInt();
+    ensureArrayLengthValid(paramParcel, k);
     paramInt = 0;
     while (paramInt < k)
     {
@@ -359,7 +330,7 @@ public class SafeParcelReader
     if (paramInt == 0) {
       return new IBinder[0];
     }
-    b(paramParcel, paramInt, i);
+    ensureDataPositionValid(paramParcel, paramInt, i);
     IBinder[] arrayOfIBinder = paramParcel.createBinderArray();
     paramParcel.setDataPosition(paramInt + i);
     return arrayOfIBinder;
@@ -372,7 +343,7 @@ public class SafeParcelReader
     if (paramInt == 0) {
       return null;
     }
-    b(paramParcel, paramInt, i);
+    ensureDataPositionValid(paramParcel, paramInt, i);
     ArrayList localArrayList = paramParcel.createBinderArrayList();
     paramParcel.setDataPosition(paramInt + i);
     return localArrayList;
@@ -385,8 +356,9 @@ public class SafeParcelReader
     if (i == 0) {
       return null;
     }
-    b(paramParcel, i, j);
+    ensureDataPositionValid(paramParcel, i, j);
     int k = paramParcel.readInt();
+    ensureArrayLengthValid(paramParcel, k);
     SparseArray localSparseArray = new SparseArray(k);
     paramInt = 0;
     while (paramInt < k)
@@ -405,7 +377,7 @@ public class SafeParcelReader
     if (paramInt == 0) {
       return new int[0];
     }
-    b(paramParcel, paramInt, i);
+    ensureDataPositionValid(paramParcel, paramInt, i);
     int[] arrayOfInt = paramParcel.createIntArray();
     paramParcel.setDataPosition(paramInt + i);
     return arrayOfInt;
@@ -418,9 +390,10 @@ public class SafeParcelReader
     if (i == 0) {
       return null;
     }
-    b(paramParcel, i, j);
+    ensureDataPositionValid(paramParcel, i, j);
     ArrayList localArrayList = new ArrayList();
     int k = paramParcel.readInt();
+    ensureArrayLengthValid(paramParcel, k);
     paramInt = 0;
     while (paramInt < k)
     {
@@ -438,7 +411,7 @@ public class SafeParcelReader
     if (paramInt == 0) {
       return new long[0];
     }
-    b(paramParcel, paramInt, i);
+    ensureDataPositionValid(paramParcel, paramInt, i);
     long[] arrayOfLong = paramParcel.createLongArray();
     paramParcel.setDataPosition(paramInt + i);
     return arrayOfLong;
@@ -451,9 +424,10 @@ public class SafeParcelReader
     if (i == 0) {
       return null;
     }
-    b(paramParcel, i, j);
+    ensureDataPositionValid(paramParcel, i, j);
     ArrayList localArrayList = new ArrayList();
     int k = paramParcel.readInt();
+    ensureArrayLengthValid(paramParcel, k);
     paramInt = 0;
     while (paramInt < k)
     {
@@ -471,7 +445,7 @@ public class SafeParcelReader
     if (paramInt == 0) {
       return null;
     }
-    b(paramParcel, paramInt, i);
+    ensureDataPositionValid(paramParcel, paramInt, i);
     Parcel localParcel = Parcel.obtain();
     localParcel.appendFrom(paramParcel, i, paramInt);
     paramParcel.setDataPosition(paramInt + i);
@@ -480,36 +454,35 @@ public class SafeParcelReader
   
   public static Parcel[] createParcelArray(Parcel paramParcel, int paramInt)
   {
-    int i = 0;
-    int j = readSize(paramParcel, paramInt);
-    int k = paramParcel.dataPosition();
-    if (j == 0) {
+    int i = readSize(paramParcel, paramInt);
+    int j = paramParcel.dataPosition();
+    paramInt = 0;
+    if (i == 0) {
       return new Parcel[0];
     }
-    b(paramParcel, j, k);
-    int m = paramParcel.readInt();
-    a(paramParcel, m);
-    Parcel[] arrayOfParcel = new Parcel[m];
-    paramInt = i;
-    if (paramInt < m)
+    ensureDataPositionValid(paramParcel, i, j);
+    int k = paramParcel.readInt();
+    ensureArrayLengthValid(paramParcel, k);
+    Parcel[] arrayOfParcel = new Parcel[k];
+    while (paramInt < k)
     {
-      i = paramParcel.readInt();
-      if (i == 0) {
+      int m = paramParcel.readInt();
+      if (m == 0)
+      {
         arrayOfParcel[paramInt] = null;
       }
-      for (;;)
+      else
       {
-        paramInt += 1;
-        break;
         int n = paramParcel.dataPosition();
-        b(paramParcel, i, n);
+        ensureDataPositionValid(paramParcel, m, n);
         Parcel localParcel = Parcel.obtain();
-        localParcel.appendFrom(paramParcel, n, i);
+        localParcel.appendFrom(paramParcel, n, m);
         arrayOfParcel[paramInt] = localParcel;
-        paramParcel.setDataPosition(i + n);
+        paramParcel.setDataPosition(m + n);
       }
+      paramInt += 1;
     }
-    paramParcel.setDataPosition(k + j);
+    paramParcel.setDataPosition(j + i);
     return arrayOfParcel;
   }
   
@@ -520,27 +493,28 @@ public class SafeParcelReader
     if (i == 0) {
       return null;
     }
-    b(paramParcel, i, j);
+    ensureDataPositionValid(paramParcel, i, j);
     int k = paramParcel.readInt();
+    ensureArrayLengthValid(paramParcel, k);
     ArrayList localArrayList = new ArrayList();
     paramInt = 0;
-    if (paramInt < k)
+    while (paramInt < k)
     {
       int m = paramParcel.readInt();
-      if (m == 0) {
+      if (m == 0)
+      {
         localArrayList.add(null);
       }
-      for (;;)
+      else
       {
-        paramInt += 1;
-        break;
         int n = paramParcel.dataPosition();
-        b(paramParcel, m, n);
+        ensureDataPositionValid(paramParcel, m, n);
         Parcel localParcel = Parcel.obtain();
         localParcel.appendFrom(paramParcel, n, m);
         localArrayList.add(localParcel);
         paramParcel.setDataPosition(m + n);
       }
+      paramInt += 1;
     }
     paramParcel.setDataPosition(j + i);
     return localArrayList;
@@ -553,28 +527,29 @@ public class SafeParcelReader
     if (i == 0) {
       return null;
     }
-    b(paramParcel, i, j);
+    ensureDataPositionValid(paramParcel, i, j);
     int k = paramParcel.readInt();
+    ensureArrayLengthValid(paramParcel, k);
     SparseArray localSparseArray = new SparseArray();
     paramInt = 0;
-    if (paramInt < k)
+    while (paramInt < k)
     {
       int m = paramParcel.readInt();
       int n = paramParcel.readInt();
-      if (n == 0) {
+      if (n == 0)
+      {
         localSparseArray.append(m, null);
       }
-      for (;;)
+      else
       {
-        paramInt += 1;
-        break;
         int i1 = paramParcel.dataPosition();
-        b(paramParcel, n, i1);
+        ensureDataPositionValid(paramParcel, n, i1);
         Parcel localParcel = Parcel.obtain();
         localParcel.appendFrom(paramParcel, i1, n);
         localSparseArray.append(m, localParcel);
         paramParcel.setDataPosition(i1 + n);
       }
+      paramInt += 1;
     }
     paramParcel.setDataPosition(j + i);
     return localSparseArray;
@@ -587,7 +562,7 @@ public class SafeParcelReader
     if (paramInt == 0) {
       return null;
     }
-    b(paramParcel, paramInt, i);
+    ensureDataPositionValid(paramParcel, paramInt, i);
     paramCreator = (Parcelable)paramCreator.createFromParcel(paramParcel);
     paramParcel.setDataPosition(paramInt + i);
     return paramCreator;
@@ -600,7 +575,7 @@ public class SafeParcelReader
     if (paramInt == 0) {
       return null;
     }
-    b(paramParcel, paramInt, i);
+    ensureDataPositionValid(paramParcel, paramInt, i);
     SparseBooleanArray localSparseBooleanArray = paramParcel.readSparseBooleanArray();
     paramParcel.setDataPosition(paramInt + i);
     return localSparseBooleanArray;
@@ -613,9 +588,10 @@ public class SafeParcelReader
     if (i == 0) {
       return null;
     }
-    b(paramParcel, i, j);
+    ensureDataPositionValid(paramParcel, i, j);
     SparseIntArray localSparseIntArray = new SparseIntArray();
     int k = paramParcel.readInt();
+    ensureArrayLengthValid(paramParcel, k);
     paramInt = 0;
     while (paramInt < k)
     {
@@ -628,17 +604,18 @@ public class SafeParcelReader
   
   public static SparseLongArray createSparseLongArray(Parcel paramParcel, int paramInt)
   {
-    SparseLongArray localSparseLongArray = null;
     int i = readSize(paramParcel, paramInt);
     int j = paramParcel.dataPosition();
+    SparseLongArray localSparseLongArray = null;
     if (i == 0) {
       return null;
     }
-    b(paramParcel, i, j);
+    ensureDataPositionValid(paramParcel, i, j);
     if (Build.VERSION.SDK_INT >= 18) {
       localSparseLongArray = new SparseLongArray();
     }
     int k = paramParcel.readInt();
+    ensureArrayLengthValid(paramParcel, k);
     paramInt = 0;
     while (paramInt < k)
     {
@@ -658,7 +635,7 @@ public class SafeParcelReader
     if (paramInt == 0) {
       return null;
     }
-    b(paramParcel, paramInt, i);
+    ensureDataPositionValid(paramParcel, paramInt, i);
     String str = paramParcel.readString();
     paramParcel.setDataPosition(paramInt + i);
     return str;
@@ -671,7 +648,7 @@ public class SafeParcelReader
     if (paramInt == 0) {
       return new String[0];
     }
-    b(paramParcel, paramInt, i);
+    ensureDataPositionValid(paramParcel, paramInt, i);
     String[] arrayOfString = paramParcel.createStringArray();
     paramParcel.setDataPosition(paramInt + i);
     return arrayOfString;
@@ -684,7 +661,7 @@ public class SafeParcelReader
     if (paramInt == 0) {
       return null;
     }
-    b(paramParcel, paramInt, i);
+    ensureDataPositionValid(paramParcel, paramInt, i);
     ArrayList localArrayList = paramParcel.createStringArrayList();
     paramParcel.setDataPosition(paramInt + i);
     return localArrayList;
@@ -697,9 +674,10 @@ public class SafeParcelReader
     if (i == 0) {
       return null;
     }
-    b(paramParcel, i, j);
+    ensureDataPositionValid(paramParcel, i, j);
     SparseArray localSparseArray = new SparseArray();
     int k = paramParcel.readInt();
+    ensureArrayLengthValid(paramParcel, k);
     paramInt = 0;
     while (paramInt < k)
     {
@@ -717,7 +695,7 @@ public class SafeParcelReader
     if (paramInt == 0) {
       return paramCreator.newArray(0);
     }
-    b(paramParcel, paramInt, i);
+    ensureDataPositionValid(paramParcel, paramInt, i);
     paramCreator = paramParcel.createTypedArray(paramCreator);
     paramParcel.setDataPosition(paramInt + i);
     return paramCreator;
@@ -730,7 +708,7 @@ public class SafeParcelReader
     if (paramInt == 0) {
       return null;
     }
-    b(paramParcel, paramInt, i);
+    ensureDataPositionValid(paramParcel, paramInt, i);
     paramCreator = paramParcel.createTypedArrayList(paramCreator);
     paramParcel.setDataPosition(paramInt + i);
     return paramCreator;
@@ -743,51 +721,79 @@ public class SafeParcelReader
     if (i == 0) {
       return null;
     }
-    b(paramParcel, i, j);
+    ensureDataPositionValid(paramParcel, i, j);
     int k = paramParcel.readInt();
+    ensureArrayLengthValid(paramParcel, k);
     SparseArray localSparseArray = new SparseArray();
     paramInt = 0;
-    if (paramInt < k)
+    while (paramInt < k)
     {
       int m = paramParcel.readInt();
-      if (paramParcel.readInt() != 0) {}
-      for (Object localObject = paramCreator.createFromParcel(paramParcel);; localObject = null)
-      {
-        localSparseArray.append(m, localObject);
-        paramInt += 1;
-        break;
+      Object localObject;
+      if (paramParcel.readInt() != 0) {
+        localObject = paramCreator.createFromParcel(paramParcel);
+      } else {
+        localObject = null;
       }
+      localSparseArray.append(m, localObject);
+      paramInt += 1;
     }
     paramParcel.setDataPosition(j + i);
     return localSparseArray;
   }
   
+  private static void ensureArrayLengthValid(Parcel paramParcel, int paramInt)
+  {
+    if (paramInt <= 1024) {
+      return;
+    }
+    throw new SafeParcelReader.ParseException("arraySize cannot be beyond 65535", paramParcel);
+  }
+  
   public static void ensureAtEnd(Parcel paramParcel, int paramInt)
   {
-    if (paramParcel.dataPosition() != paramInt) {
-      throw new SafeParcelReader.a("Overread allowed size end=" + paramInt, paramParcel);
+    if (paramParcel.dataPosition() == paramInt) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Overread allowed size end=");
+    localStringBuilder.append(paramInt);
+    throw new SafeParcelReader.ParseException(localStringBuilder.toString(), paramParcel);
+  }
+  
+  private static void ensureDataPositionValid(Parcel paramParcel, int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 >= 0) && (!isOutOfIntBoundary(paramInt1, paramInt2))) {
+      return;
+    }
+    throw new SafeParcelReader.ParseException("dataPosition cannot be beyond integer scope", paramParcel);
   }
   
   public static int getFieldId(int paramInt)
   {
-    return 0xFFFF & paramInt;
+    return paramInt & 0xFFFF;
+  }
+  
+  private static boolean isOutOfIntBoundary(int paramInt1, int paramInt2)
+  {
+    long l = paramInt1 + paramInt2;
+    return (l > 2147483647L) || (l < -2147483648L);
   }
   
   public static boolean readBoolean(Parcel paramParcel, int paramInt)
   {
-    a(paramParcel, paramInt, 4);
+    sizeChecker(paramParcel, paramInt, 4);
     return paramParcel.readInt() != 0;
   }
   
   public static Boolean readBooleanObject(Parcel paramParcel, int paramInt)
   {
-    boolean bool = false;
     int i = readSize(paramParcel, paramInt);
+    boolean bool = false;
     if (i == 0) {
       return Boolean.valueOf(false);
     }
-    a(paramParcel, paramInt, i, 4);
+    sizeChecker(paramParcel, paramInt, i, 4);
     if (paramParcel.readInt() != 0) {
       bool = true;
     }
@@ -796,19 +802,19 @@ public class SafeParcelReader
   
   public static byte readByte(Parcel paramParcel, int paramInt)
   {
-    a(paramParcel, paramInt, 4);
+    sizeChecker(paramParcel, paramInt, 4);
     return (byte)paramParcel.readInt();
   }
   
   public static char readChar(Parcel paramParcel, int paramInt)
   {
-    a(paramParcel, paramInt, 4);
+    sizeChecker(paramParcel, paramInt, 4);
     return (char)paramParcel.readInt();
   }
   
   public static double readDouble(Parcel paramParcel, int paramInt)
   {
-    a(paramParcel, paramInt, 8);
+    sizeChecker(paramParcel, paramInt, 8);
     return paramParcel.readDouble();
   }
   
@@ -818,13 +824,13 @@ public class SafeParcelReader
     if (i == 0) {
       return null;
     }
-    a(paramParcel, paramInt, i, 8);
+    sizeChecker(paramParcel, paramInt, i, 8);
     return Double.valueOf(paramParcel.readDouble());
   }
   
   public static float readFloat(Parcel paramParcel, int paramInt)
   {
-    a(paramParcel, paramInt, 4);
+    sizeChecker(paramParcel, paramInt, 4);
     return paramParcel.readFloat();
   }
   
@@ -834,7 +840,7 @@ public class SafeParcelReader
     if (i == 0) {
       return null;
     }
-    a(paramParcel, paramInt, i, 4);
+    sizeChecker(paramParcel, paramInt, i, 4);
     return Float.valueOf(paramParcel.readFloat());
   }
   
@@ -850,7 +856,7 @@ public class SafeParcelReader
     if (paramInt == 0) {
       return null;
     }
-    b(paramParcel, paramInt, i);
+    ensureDataPositionValid(paramParcel, paramInt, i);
     IBinder localIBinder = paramParcel.readStrongBinder();
     paramParcel.setDataPosition(paramInt + i);
     return localIBinder;
@@ -858,7 +864,7 @@ public class SafeParcelReader
   
   public static int readInt(Parcel paramParcel, int paramInt)
   {
-    a(paramParcel, paramInt, 4);
+    sizeChecker(paramParcel, paramInt, 4);
     return paramParcel.readInt();
   }
   
@@ -868,7 +874,7 @@ public class SafeParcelReader
     if (i == 0) {
       return null;
     }
-    a(paramParcel, paramInt, i, 4);
+    sizeChecker(paramParcel, paramInt, i, 4);
     return Integer.valueOf(paramParcel.readInt());
   }
   
@@ -878,7 +884,7 @@ public class SafeParcelReader
     int i = paramParcel.dataPosition();
     if (paramInt != 0)
     {
-      b(paramParcel, paramInt, i);
+      ensureDataPositionValid(paramParcel, paramInt, i);
       paramParcel.readList(paramList, paramClassLoader);
       paramParcel.setDataPosition(paramInt + i);
     }
@@ -886,7 +892,7 @@ public class SafeParcelReader
   
   public static long readLong(Parcel paramParcel, int paramInt)
   {
-    a(paramParcel, paramInt, 8);
+    sizeChecker(paramParcel, paramInt, 8);
     return paramParcel.readLong();
   }
   
@@ -896,13 +902,13 @@ public class SafeParcelReader
     if (i == 0) {
       return null;
     }
-    a(paramParcel, paramInt, i, 8);
+    sizeChecker(paramParcel, paramInt, i, 8);
     return Long.valueOf(paramParcel.readLong());
   }
   
   public static short readShort(Parcel paramParcel, int paramInt)
   {
-    a(paramParcel, paramInt, 4);
+    sizeChecker(paramParcel, paramInt, 4);
     return (short)paramParcel.readInt();
   }
   
@@ -914,11 +920,46 @@ public class SafeParcelReader
     return paramParcel.readInt();
   }
   
+  private static void sizeChecker(Parcel paramParcel, int paramInt1, int paramInt2)
+  {
+    paramInt1 = readSize(paramParcel, paramInt1);
+    if (paramInt1 == paramInt2) {
+      return;
+    }
+    String str = Integer.toHexString(paramInt1);
+    StringBuilder localStringBuilder = new StringBuilder(str.length() + 46);
+    localStringBuilder.append("Expected size ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(" got ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(" (0x");
+    localStringBuilder.append(str);
+    localStringBuilder.append(")");
+    throw new SafeParcelReader.ParseException(localStringBuilder.toString(), paramParcel);
+  }
+  
+  private static void sizeChecker(Parcel paramParcel, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramInt2 == paramInt3) {
+      return;
+    }
+    String str = Integer.toHexString(paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder(str.length() + 46);
+    localStringBuilder.append("Expected size ");
+    localStringBuilder.append(paramInt3);
+    localStringBuilder.append(" got ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(" (0x");
+    localStringBuilder.append(str);
+    localStringBuilder.append(")");
+    throw new SafeParcelReader.ParseException(localStringBuilder.toString(), paramParcel);
+  }
+  
   public static void skipUnknownField(Parcel paramParcel, int paramInt)
   {
     paramInt = readSize(paramParcel, paramInt);
     int i = paramParcel.dataPosition();
-    b(paramParcel, paramInt, i);
+    ensureDataPositionValid(paramParcel, paramInt, i);
     paramParcel.setDataPosition(paramInt + i);
   }
   
@@ -929,23 +970,28 @@ public class SafeParcelReader
     int i = paramParcel.dataPosition();
     if (getFieldId(j) != 20293)
     {
-      String str1 = "Expected object header. Got 0x";
-      String str2 = Integer.toHexString(j);
-      if (str2.length() != 0) {
-        str1 = "Expected object header. Got 0x".concat(str2);
+      localObject = "Expected object header. Got 0x";
+      String str = Integer.toHexString(j);
+      if (str.length() != 0) {
+        localObject = "Expected object header. Got 0x".concat(str);
       }
-      throw new SafeParcelReader.a(str1, paramParcel);
+      throw new SafeParcelReader.ParseException((String)localObject, paramParcel);
     }
     j = k + i;
     if ((j >= i) && (j <= paramParcel.dataSize())) {
       return j;
     }
-    throw new SafeParcelReader.a("invalid start=" + i + " end=" + j, paramParcel);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("invalid start=");
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append(" end=");
+    ((StringBuilder)localObject).append(j);
+    throw new SafeParcelReader.ParseException(((StringBuilder)localObject).toString(), paramParcel);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.internal.safeparcel.SafeParcelReader
  * JD-Core Version:    0.7.0.1
  */

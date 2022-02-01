@@ -28,14 +28,15 @@ public final class SearchClientShowInfoRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iCode, 0);
-    if (this.stUserClientShowInfo != null) {
-      paramJceOutputStream.write(this.stUserClientShowInfo, 1);
+    UserClientShowInfo localUserClientShowInfo = this.stUserClientShowInfo;
+    if (localUserClientShowInfo != null) {
+      paramJceOutputStream.write(localUserClientShowInfo, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_COMM_VIP_GROWTH.SearchClientShowInfoRsp
  * JD-Core Version:    0.7.0.1
  */

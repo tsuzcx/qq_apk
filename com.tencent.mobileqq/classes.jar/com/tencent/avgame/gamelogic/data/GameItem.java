@@ -101,31 +101,87 @@ public class GameItem
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("type").append("=").append(this.jdField_a_of_type_Int).append("|");
-    localStringBuilder.append("name").append("=").append(this.jdField_a_of_type_JavaLangString).append("|");
-    localStringBuilder.append("desc").append("=").append(this.jdField_b_of_type_JavaLangString).append("|");
-    localStringBuilder.append("bgUrl").append("=").append(this.jdField_c_of_type_JavaLangString).append("|");
-    localStringBuilder.append("answerRightPicUrl").append("=").append(this.f).append("|");
-    localStringBuilder.append("gameOverPicUrl").append("=").append(this.h).append("|");
-    localStringBuilder.append("oneLineTipBgPicUrl").append("=").append(this.i).append("|");
-    localStringBuilder.append("twoLinesTipBgPicUrl").append("=").append(this.j).append("|");
-    localStringBuilder.append("preparePicUrl").append("=").append(this.d).append("|");
-    localStringBuilder.append("prepareAlphaPicUrl").append("=").append(this.e).append("|");
-    localStringBuilder.append("gameBgName").append("=").append(this.k).append("|");
-    localStringBuilder.append("onlineStatus").append("=").append(this.jdField_b_of_type_Int).append("|");
-    localStringBuilder.append("onlineTime").append("=").append(this.jdField_b_of_type_Long).append("|");
-    localStringBuilder.append("offlineTime").append("=").append(this.jdField_c_of_type_Long).append("|");
-    localStringBuilder.append("prepareWording").append("=").append(this.n).append("|");
-    localStringBuilder.append("gameNameUrl").append("=").append(this.m).append("|");
-    localStringBuilder.append("bgSmallUrl").append("=").append(this.l).append("|");
-    localStringBuilder.append("playerNum").append("=").append(this.jdField_a_of_type_Long).append("|");
-    localStringBuilder.append("collaboratorLogoUrl=").append(this.o).append("|");
+    localStringBuilder.append("type");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("|");
+    localStringBuilder.append("name");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("|");
+    localStringBuilder.append("desc");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("|");
+    localStringBuilder.append("bgUrl");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append("|");
+    localStringBuilder.append("answerRightPicUrl");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append("|");
+    localStringBuilder.append("gameOverPicUrl");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("|");
+    localStringBuilder.append("oneLineTipBgPicUrl");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append("|");
+    localStringBuilder.append("twoLinesTipBgPicUrl");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append("|");
+    localStringBuilder.append("preparePicUrl");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("|");
+    localStringBuilder.append("prepareAlphaPicUrl");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append("|");
+    localStringBuilder.append("gameBgName");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append("|");
+    localStringBuilder.append("onlineStatus");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("|");
+    localStringBuilder.append("onlineTime");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append("|");
+    localStringBuilder.append("offlineTime");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append("|");
+    localStringBuilder.append("prepareWording");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.n);
+    localStringBuilder.append("|");
+    localStringBuilder.append("gameNameUrl");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.m);
+    localStringBuilder.append("|");
+    localStringBuilder.append("bgSmallUrl");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append("|");
+    localStringBuilder.append("playerNum");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("|");
+    localStringBuilder.append("collaboratorLogoUrl=");
+    localStringBuilder.append(this.o);
+    localStringBuilder.append("|");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.data.GameItem
  * JD-Core Version:    0.7.0.1
  */

@@ -16,12 +16,12 @@ class QQVipFeedWedFragment$4
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidWidgetRadioButton.setBackgroundResource(2130847294);
+    this.jdField_a_of_type_AndroidWidgetRadioButton.setBackgroundResource(2130847163);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.fragment.QQVipFeedWedFragment.4
  * JD-Core Version:    0.7.0.1
  */

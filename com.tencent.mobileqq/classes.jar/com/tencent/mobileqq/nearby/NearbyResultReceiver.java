@@ -21,22 +21,19 @@ public class NearbyResultReceiver
   
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
-    switch (paramInt)
+    if (paramInt == 0)
     {
-    }
-    for (;;)
-    {
-      super.onReceiveResult(paramInt, paramBundle);
-      return;
-      if (this.a != null) {
-        this.a.a();
+      NearbyFakeActivity localNearbyFakeActivity = this.a;
+      if (localNearbyFakeActivity != null) {
+        localNearbyFakeActivity.a();
       }
     }
+    super.onReceiveResult(paramInt, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyResultReceiver
  * JD-Core Version:    0.7.0.1
  */

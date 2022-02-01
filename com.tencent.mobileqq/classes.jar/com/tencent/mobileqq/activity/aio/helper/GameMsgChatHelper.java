@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,12 +25,13 @@ import com.tencent.mobileqq.activity.aio.rebuild.GameMsgChatPie.StrangerRecomInf
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.business.GameCenterMsgBean;
-import com.tencent.mobileqq.config.business.GameCenterMsgConfigProcessor;
-import com.tencent.mobileqq.gamecenter.message.GameDetailInfo;
-import com.tencent.mobileqq.gamecenter.message.GameMsgUtil;
-import com.tencent.mobileqq.gamecenter.protocol.GameCenterUnissoHandler;
+import com.tencent.mobileqq.gamecenter.api.IGameMsgHelperApi;
+import com.tencent.mobileqq.gamecenter.api.IGameMsgManagerService;
+import com.tencent.mobileqq.gamecenter.config.GameCenterMsgBean;
+import com.tencent.mobileqq.gamecenter.config.GameCenterMsgConfigProcessor;
+import com.tencent.mobileqq.gamecenter.msgInfo.GameDetailInfo;
 import com.tencent.mobileqq.gamecenter.view.TriangleView;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.PatchedButton;
@@ -40,23 +40,18 @@ import com.tencent.widget.XEditTextEx;
 public class GameMsgChatHelper
   extends SimpleUIAIOHelper
 {
-  public static final String a;
   private GameMsgChatPie.StrangerRecomInfo jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie$StrangerRecomInfo;
-  private GameDetailInfo jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameDetailInfo;
+  private GameDetailInfo jdField_a_of_type_ComTencentMobileqqGamecenterMsgInfoGameDetailInfo;
   private ImageButton jdField_c_of_type_AndroidWidgetImageButton;
   private boolean jdField_c_of_type_Boolean;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = GameCenterUnissoHandler.jdField_a_of_type_JavaLangString + "GameMsgChatHelper";
-  }
   
   public GameMsgChatHelper(BaseChatPie paramBaseChatPie)
   {
     super(paramBaseChatPie);
-    if (!(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof GameMsgChatPie)) {
-      throw new IllegalArgumentException("A GameMsgChatPie is required");
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof GameMsgChatPie)) {
+      return;
     }
+    throw new IllegalArgumentException("A GameMsgChatPie is required");
   }
   
   private SessionInfo a()
@@ -73,45 +68,47 @@ public class GameMsgChatHelper
   {
     PopupWindow localPopupWindow = new PopupWindow(paramView.getContext());
     localPopupWindow.setBackgroundDrawable(null);
-    ViewGroup localViewGroup = (ViewGroup)LayoutInflater.from(paramView.getContext()).inflate(2131559267, null);
+    ViewGroup localViewGroup = (ViewGroup)LayoutInflater.from(paramView.getContext()).inflate(2131559141, null);
     localViewGroup.measure(0, 0);
     localPopupWindow.setContentView(localViewGroup);
     localPopupWindow.setOutsideTouchable(true);
     localPopupWindow.setFocusable(true);
-    Object localObject = (TriangleView)localViewGroup.findViewById(2131379795);
+    Object localObject = (TriangleView)localViewGroup.findViewById(2131379124);
     int i = ((TriangleView)localObject).getMeasuredWidth() / 2;
     int j = ((ViewGroup.MarginLayoutParams)((TriangleView)localObject).getLayoutParams()).rightMargin;
     localObject = new int[2];
     paramView.getLocationOnScreen((int[])localObject);
-    localPopupWindow.showAtLocation(paramView, 51, j + i + (localObject[0] + paramView.getMeasuredWidth() / 2 - localViewGroup.getMeasuredWidth()), localObject[1] - localViewGroup.getMeasuredHeight());
+    localPopupWindow.showAtLocation(paramView, 51, localObject[0] + paramView.getMeasuredWidth() / 2 - localViewGroup.getMeasuredWidth() + (i + j), localObject[1] - localViewGroup.getMeasuredHeight());
   }
   
   private void h()
   {
-    if (this.jdField_c_of_type_AndroidWidgetImageButton != null) {}
-    do
+    if (this.jdField_c_of_type_AndroidWidgetImageButton != null) {
+      return;
+    }
+    Object localObject = a();
+    if ((localObject != null) && ("1104466820".equals(((GameDetailInfo)localObject).c)))
     {
-      Object localObject;
-      do
+      localObject = GameCenterMsgConfigProcessor.a();
+      if (localObject != null)
       {
-        do
+        if (!((GameCenterMsgBean)localObject).a) {
+          return;
+        }
+        localObject = (ViewStub)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.findViewById(2131362487);
+        if (localObject != null)
         {
-          do
-          {
-            return;
-            localObject = a();
-          } while ((localObject == null) || (!"1104466820".equals(((GameDetailInfo)localObject).d)));
-          localObject = GameCenterMsgConfigProcessor.a();
-        } while ((localObject == null) || (!((GameCenterMsgBean)localObject).a));
-        localObject = (ViewStub)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.findViewById(2131362531);
-      } while (localObject == null);
-      this.jdField_c_of_type_AndroidWidgetImageButton = ((ImageButton)((ViewStub)localObject).inflate());
-      this.jdField_c_of_type_AndroidWidgetImageButton.setBackgroundResource(2130840325);
-      this.jdField_c_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-      this.jdField_c_of_type_AndroidWidgetImageButton.setVisibility(0);
-      j();
-    } while (GameMsgUtil.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().getAccount()));
-    this.jdField_c_of_type_AndroidWidgetImageButton.getViewTreeObserver().addOnPreDrawListener(new GameMsgChatHelper.1(this));
+          this.jdField_c_of_type_AndroidWidgetImageButton = ((ImageButton)((ViewStub)localObject).inflate());
+          this.jdField_c_of_type_AndroidWidgetImageButton.setBackgroundResource(2130840184);
+          this.jdField_c_of_type_AndroidWidgetImageButton.setOnClickListener(this);
+          this.jdField_c_of_type_AndroidWidgetImageButton.setVisibility(0);
+          j();
+          if (!((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).getAIOGameEntryShown(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().getAccount())) {
+            this.jdField_c_of_type_AndroidWidgetImageButton.getViewTreeObserver().addOnPreDrawListener(new GameMsgChatHelper.1(this));
+          }
+        }
+      }
+    }
   }
   
   private void i()
@@ -125,50 +122,50 @@ public class GameMsgChatHelper
   
   private void j()
   {
-    String str1;
     if ((!this.jdField_c_of_type_Boolean) && (this.jdField_c_of_type_AndroidWidgetImageButton != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie$StrangerRecomInfo != null))
     {
       this.jdField_c_of_type_Boolean = true;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie$StrangerRecomInfo.a != 0) {
-        break label97;
+      IGameMsgHelperApi localIGameMsgHelperApi = (IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class);
+      String str1;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie$StrangerRecomInfo.a == 0) {
+        str1 = "92015";
+      } else {
+        str1 = "92005";
       }
-      str1 = "92015";
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie$StrangerRecomInfo.a != 0) {
-        break label104;
+      String str2;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie$StrangerRecomInfo.a == 0) {
+        str2 = "207979";
+      } else {
+        str2 = "207977";
       }
-    }
-    label97:
-    label104:
-    for (String str2 = "207979";; str2 = "207977")
-    {
-      GameMsgUtil.a("1104466820", "1", "145", "920", str1, str2, "", "", "20", a().a(), a().b(), "");
-      return;
-      str1 = "92005";
-      break;
+      localIGameMsgHelperApi.reportForGameMsg("1104466820", "1", "145", "920", str1, str2, "", "", "20", a().a(), a().b(), "");
     }
   }
   
   private void k()
   {
-    String str1;
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie$StrangerRecomInfo != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie$StrangerRecomInfo.a != 0) {
-        break label78;
+      String str1;
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a() != null)) {
+        str1 = ((IGameMsgManagerService)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().getRuntimeService(IGameMsgManagerService.class, "all")).getAIORedDotStyleId();
+      } else {
+        str1 = "";
       }
-      str1 = "92015";
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie$StrangerRecomInfo.a != 0) {
-        break label85;
+      IGameMsgHelperApi localIGameMsgHelperApi = (IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class);
+      String str2;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie$StrangerRecomInfo.a == 0) {
+        str2 = "92015";
+      } else {
+        str2 = "92005";
       }
-    }
-    label78:
-    label85:
-    for (String str2 = "207980";; str2 = "207978")
-    {
-      GameMsgUtil.a("1104466820", "1", "145", "920", str1, str2, "", "", "20", a().a(), a().b(), "");
-      return;
-      str1 = "92005";
-      break;
+      String str3;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie$StrangerRecomInfo.a == 0) {
+        str3 = "207980";
+      } else {
+        str3 = "207978";
+      }
+      localIGameMsgHelperApi.reportForGameMsg865WithTianJi("1104466820", "1", "145", "920", str2, str3, "", "", "20", a().a(), a().b(), "", str1);
     }
   }
   
@@ -180,7 +177,7 @@ public class GameMsgChatHelper
     }
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetPatchedButton != null)
     {
-      Object localObject1 = (LinearLayout)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.c.findViewById(2131367664);
+      Object localObject1 = (LinearLayout)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.c.findViewById(2131367418);
       Object localObject2 = (LinearLayout.LayoutParams)((LinearLayout)localObject1).getLayoutParams();
       ((LinearLayout.LayoutParams)localObject2).bottomMargin = 0;
       ((LinearLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
@@ -195,15 +192,15 @@ public class GameMsgChatHelper
       if ((localObject2 instanceof LinearLayout.LayoutParams))
       {
         localObject2 = (LinearLayout.LayoutParams)localObject2;
-        ((LinearLayout.LayoutParams)localObject2).width = AIOUtils.a(60.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources());
-        ((LinearLayout.LayoutParams)localObject2).height = AIOUtils.a(34.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources());
+        ((LinearLayout.LayoutParams)localObject2).width = AIOUtils.b(60.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources());
+        ((LinearLayout.LayoutParams)localObject2).height = AIOUtils.b(34.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources());
         ((LinearLayout.LayoutParams)localObject2).gravity = 16;
         this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetPatchedButton.setVisibility(0);
         ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
         this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetPatchedButton.setBackgroundResource(a());
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetPatchedButton.setText(2131690891);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetPatchedButton.setText(2131690820);
         if (AppSetting.d) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetPatchedButton.setContentDescription(HardCodeUtil.a(2131714125));
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetPatchedButton.setContentDescription(HardCodeUtil.a(2131714054));
         }
       }
       this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetPatchedButton.setEnabled(false);
@@ -219,7 +216,7 @@ public class GameMsgChatHelper
   
   public void a(GameDetailInfo paramGameDetailInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameDetailInfo = paramGameDetailInfo;
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterMsgInfoGameDetailInfo = paramGameDetailInfo;
     h();
   }
   
@@ -247,51 +244,54 @@ public class GameMsgChatHelper
     try
     {
       super.c();
-      LinearLayout localLinearLayout = (LinearLayout)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.c.findViewById(2131367664);
+      LinearLayout localLinearLayout = (LinearLayout)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.c.findViewById(2131367418);
       LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localLinearLayout.getLayoutParams();
       localLayoutParams.bottomMargin = 0;
       localLinearLayout.setLayoutParams(localLayoutParams);
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString())) {
+      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString()))
+      {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetPatchedButton.setEnabled(false);
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, localThrowable.getMessage());
+      QLog.e("GameMsgChatHelper", 1, localThrowable.getMessage());
     }
   }
   
   public String getTag()
   {
-    return jdField_a_of_type_JavaLangString;
+    return "GameMsgChatHelper";
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i != 2131366114)
     {
-    default: 
-      super.onClick(paramView);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      GameDetailInfo localGameDetailInfo = a();
-      if (localGameDetailInfo == null) {
-        break;
+      if (i == 2131367455)
+      {
+        i();
+        k();
+        break label91;
       }
-      GameMsgUtil.a(localGameDetailInfo.d, "1", "145", "920", "92005", "206353", "", "", "20", "0");
-      break;
-      i();
-      k();
     }
+    else
+    {
+      GameDetailInfo localGameDetailInfo = a();
+      if (localGameDetailInfo != null) {
+        ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).reportForGameMsg(localGameDetailInfo.c, "1", "145", "920", "92005", "206353", "", "", "20", "0");
+      }
+    }
+    super.onClick(paramView);
+    label91:
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.GameMsgChatHelper
  * JD-Core Version:    0.7.0.1
  */

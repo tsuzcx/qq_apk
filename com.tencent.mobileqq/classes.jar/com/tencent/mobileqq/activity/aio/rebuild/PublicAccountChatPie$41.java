@@ -1,25 +1,21 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.face.FaceDrawable;
-import com.tencent.mobileqq.avatar.observer.AvatarObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class PublicAccountChatPie$41
-  extends AvatarObserver
+  implements DialogInterface.OnDismissListener
 {
-  PublicAccountChatPie$41(PublicAccountChatPie paramPublicAccountChatPie, ImageView paramImageView) {}
+  PublicAccountChatPie$41(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((paramBoolean) && (paramString.equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.a().a))) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(FaceDrawable.getUserFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.a, paramString, (byte)3));
-    }
+    this.a.b = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.41
  * JD-Core Version:    0.7.0.1
  */

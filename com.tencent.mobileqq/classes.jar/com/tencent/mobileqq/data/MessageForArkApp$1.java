@@ -32,7 +32,7 @@ class MessageForArkApp$1
       Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAioContainerWrapper.getContainerRect();
       float f = ArkAppCenterUtil.a();
       paramInt = (int)((((Rect)localObject).right - ((Rect)localObject).left) * f);
-      int i = (int)((((Rect)localObject).bottom - ((Rect)localObject).top) * f);
+      int i = (int)(f * (((Rect)localObject).bottom - ((Rect)localObject).top));
       this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
       if (ArkAppCenterUtil.a)
       {
@@ -45,7 +45,7 @@ class MessageForArkApp$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForArkApp.1
  * JD-Core Version:    0.7.0.1
  */

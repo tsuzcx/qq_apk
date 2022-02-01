@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.ViewTreeObserver;
 import android.widget.RelativeLayout;
@@ -14,8 +15,8 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
 public class BeautySeekView
@@ -57,44 +58,42 @@ public class BeautySeekView
   
   private void a()
   {
-    if (this.jdField_a_of_type_AndroidWidgetSeekBar == null) {}
-    int i;
-    int j;
-    int k;
-    int m;
-    do
-    {
+    Object localObject = this.jdField_a_of_type_AndroidWidgetSeekBar;
+    if (localObject == null) {
       return;
-      this.d = this.jdField_a_of_type_AndroidWidgetSeekBar.getMeasuredWidth();
-      i = this.jdField_a_of_type_AndroidWidgetSeekBar.getPaddingLeft();
-      j = this.jdField_a_of_type_AndroidWidgetSeekBar.getPaddingRight();
-      k = this.jdField_a_of_type_AndroidWidgetSeekBar.getLeft();
-      m = (int)(this.c / 100.0F * (this.d - i - j)) + (k + i);
-      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      localMarginLayoutParams.leftMargin = m;
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(localMarginLayoutParams);
-    } while (!QLog.isDevelopLevel());
-    QLog.i("BeautySeekView", 4, String.format("updateMarker, pl: %s, pr: %s, w: %s, ml: %s, m: %s, left: %s, flag: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(this.d), Integer.valueOf(k), Integer.valueOf(this.c), Integer.valueOf(m), Boolean.valueOf(this.jdField_b_of_type_Boolean) }));
+    }
+    this.d = ((SeekBar)localObject).getMeasuredWidth();
+    int i = this.jdField_a_of_type_AndroidWidgetSeekBar.getPaddingLeft();
+    int j = this.jdField_a_of_type_AndroidWidgetSeekBar.getPaddingRight();
+    int k = this.jdField_a_of_type_AndroidWidgetSeekBar.getLeft();
+    int m = k + i + (int)(this.c / 100.0F * (this.d - i - j));
+    localObject = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    ((ViewGroup.MarginLayoutParams)localObject).leftMargin = m;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("BeautySeekView", 4, String.format("updateMarker, pl: %s, pr: %s, w: %s, ml: %s, m: %s, left: %s, flag: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(this.d), Integer.valueOf(k), Integer.valueOf(this.c), Integer.valueOf(m), Boolean.valueOf(this.jdField_b_of_type_Boolean) }));
+    }
   }
   
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    paramContext = inflate(paramContext, 2131559871, this);
-    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131374037);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130842114);
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)paramContext.findViewById(2131373954));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131373953));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131373955));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842122);
+    paramContext = inflate(paramContext, 2131559747, this);
+    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131373594);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130842011);
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)paramContext.findViewById(2131373526));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131373525));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131373527));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842019);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-    if (this.jdField_a_of_type_AndroidWidgetSeekBar != null)
+    paramContext = this.jdField_a_of_type_AndroidWidgetSeekBar;
+    if (paramContext != null)
     {
-      this.jdField_a_of_type_AndroidWidgetSeekBar.setMax(100);
+      paramContext.setMax(100);
       this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener);
       this.jdField_a_of_type_AndroidWidgetSeekBar.getViewTreeObserver().addOnGlobalLayoutListener(new BeautySeekView.1(this));
     }
-    this.jdField_b_of_type_Int = AIOUtils.a(24.0F, getResources());
+    this.jdField_b_of_type_Int = AIOUtils.b(24.0F, getResources());
     if ((AudioHelper.a(0) == 1) && (this.jdField_a_of_type_AndroidWidgetSeekBar != null))
     {
       setBackgroundColor(-270080262);
@@ -109,24 +108,45 @@ public class BeautySeekView
     if (this.jdField_a_of_type_AndroidWidgetSeekBar == null) {
       return;
     }
-    if (this.c == 50) {}
-    for (String str = paramInt - 50 + "%";; str = paramInt + "%")
+    Object localObject;
+    if (this.c == 50)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(str);
-      int i = this.jdField_b_of_type_AndroidWidgetTextView.getWidth();
-      int j = this.jdField_a_of_type_AndroidWidgetSeekBar.getWidth() - this.jdField_a_of_type_AndroidWidgetSeekBar.getPaddingLeft() - this.jdField_a_of_type_AndroidWidgetSeekBar.getPaddingRight();
-      int k = ((RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetSeekBar.getLayoutParams()).leftMargin;
-      k = this.jdField_a_of_type_AndroidWidgetSeekBar.getPaddingLeft() + k;
-      float f1 = paramInt * 1.0F / Math.abs(this.jdField_a_of_type_AndroidWidgetSeekBar.getMax());
-      float f2 = j;
-      int m = (int)((0.5F - f1) * this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth() + f2 * f1 - i / 2.0F);
-      ((RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams()).leftMargin = (k + m);
-      if (QLog.isColorLevel()) {
-        QLog.w("BeautySeekView", 2, "updateTip, progress[" + paramInt + "], seekBarLeft[" + k + "], tipWidth[" + i + "], thumbWidth[" + this.jdField_b_of_type_Int + "], seekWidth[" + j + "]");
-      }
-      this.jdField_b_of_type_AndroidWidgetTextView.requestLayout();
-      return;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramInt - 50);
+      ((StringBuilder)localObject).append("%");
+      localObject = ((StringBuilder)localObject).toString();
     }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("%");
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+    int i = this.jdField_b_of_type_AndroidWidgetTextView.getWidth();
+    int j = this.jdField_a_of_type_AndroidWidgetSeekBar.getWidth() - this.jdField_a_of_type_AndroidWidgetSeekBar.getPaddingLeft() - this.jdField_a_of_type_AndroidWidgetSeekBar.getPaddingRight();
+    int k = ((RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetSeekBar.getLayoutParams()).leftMargin + this.jdField_a_of_type_AndroidWidgetSeekBar.getPaddingLeft();
+    float f = paramInt * 1.0F / Math.abs(this.jdField_a_of_type_AndroidWidgetSeekBar.getMax());
+    int m = (int)(j * f + (0.5F - f) * this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth() - i / 2.0F);
+    ((RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams()).leftMargin = (m + k);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateTip, progress[");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("], seekBarLeft[");
+      ((StringBuilder)localObject).append(k);
+      ((StringBuilder)localObject).append("], tipWidth[");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append("], thumbWidth[");
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+      ((StringBuilder)localObject).append("], seekWidth[");
+      ((StringBuilder)localObject).append(j);
+      ((StringBuilder)localObject).append("]");
+      QLog.w("BeautySeekView", 2, ((StringBuilder)localObject).toString());
+    }
+    this.jdField_b_of_type_AndroidWidgetTextView.requestLayout();
   }
   
   private void c(int paramInt)
@@ -134,44 +154,34 @@ public class BeautySeekView
     if (this.jdField_a_of_type_AndroidWidgetSeekBar == null) {
       return;
     }
-    int i;
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if (localView != null)
     {
-      View localView = this.jdField_a_of_type_AndroidViewView;
-      if (paramInt > this.c)
-      {
-        i = 2130842115;
-        localView.setBackgroundResource(i);
-      }
-    }
-    else
-    {
-      if (paramInt != 0) {
-        break label73;
-      }
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842118);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetSeekBar.setThumb(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      return;
-      i = 2130842114;
-      break;
-      label73:
-      if (paramInt <= 30) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842120);
-      } else if (paramInt <= 60) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842121);
+      int i;
+      if (paramInt > this.c) {
+        i = 2130842012;
       } else {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842119);
+        i = 2130842011;
       }
+      localView.setBackgroundResource(i);
     }
+    if (paramInt == 0) {
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842015);
+    } else if (paramInt <= 30) {
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842017);
+    } else if (paramInt <= 60) {
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842018);
+    } else {
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842016);
+    }
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setThumb(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidWidgetSeekBar != null) {
-      this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(paramInt);
+    SeekBar localSeekBar = this.jdField_a_of_type_AndroidWidgetSeekBar;
+    if (localSeekBar != null) {
+      localSeekBar.setProgress(paramInt);
     }
     c(paramInt);
   }
@@ -179,8 +189,9 @@ public class BeautySeekView
   public void a(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     this.jdField_a_of_type_JavaLangString = paramString2;
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString1);
+    paramString2 = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (paramString2 != null) {
+      paramString2.setText(paramString1);
     }
     if (this.c != paramInt2)
     {
@@ -191,13 +202,17 @@ public class BeautySeekView
     a(paramInt1);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidWidgetSeekBar != null) && (this.jdField_a_of_type_AndroidWidgetSeekBar.getMeasuredWidth() != this.d))
+    if (this.jdField_b_of_type_Boolean)
     {
-      this.jdField_b_of_type_Boolean = false;
-      a();
+      SeekBar localSeekBar = this.jdField_a_of_type_AndroidWidgetSeekBar;
+      if ((localSeekBar != null) && (localSeekBar.getMeasuredWidth() != this.d))
+      {
+        this.jdField_b_of_type_Boolean = false;
+        a();
+      }
     }
   }
   
@@ -208,21 +223,29 @@ public class BeautySeekView
   
   public void setMarginRight(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidWidgetSeekBar != null)
+    Object localObject = this.jdField_a_of_type_AndroidWidgetSeekBar;
+    if (localObject != null)
     {
-      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidWidgetSeekBar.getLayoutParams();
-      if (QLog.isDevelopLevel()) {
-        QLog.i("BeautySeekView", 4, "setMarginRight pre[" + localMarginLayoutParams.leftMargin + "], cur[" + paramInt + "]");
+      localObject = (ViewGroup.MarginLayoutParams)((SeekBar)localObject).getLayoutParams();
+      if (QLog.isDevelopLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setMarginRight pre[");
+        localStringBuilder.append(((ViewGroup.MarginLayoutParams)localObject).leftMargin);
+        localStringBuilder.append("], cur[");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append("]");
+        QLog.i("BeautySeekView", 4, localStringBuilder.toString());
       }
-      localMarginLayoutParams.rightMargin = paramInt;
-      this.jdField_a_of_type_AndroidWidgetSeekBar.setLayoutParams(localMarginLayoutParams);
+      ((ViewGroup.MarginLayoutParams)localObject).rightMargin = paramInt;
+      this.jdField_a_of_type_AndroidWidgetSeekBar.setLayoutParams((ViewGroup.LayoutParams)localObject);
       this.jdField_b_of_type_Boolean = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.beauty.BeautySeekView
  * JD-Core Version:    0.7.0.1
  */

@@ -8,19 +8,19 @@ public class ParserFactory
     {
     default: 
       return null;
-    case 80000000: 
-      return new ContactParser();
-    case 80000001: 
-      return new TroopParser();
+    case 80000003: 
+      return new ArticleParser();
     case 80000002: 
       return new PublicAcntParser();
+    case 80000001: 
+      return new TroopParser();
     }
-    return new ArticleParser();
+    return new ContactParser();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.net.parser.ParserFactory
  * JD-Core Version:    0.7.0.1
  */

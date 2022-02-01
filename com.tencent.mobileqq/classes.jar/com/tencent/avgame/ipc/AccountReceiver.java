@@ -16,8 +16,15 @@ public class AccountReceiver
   public AccountReceiver(AccountReceiver.AccountListener paramAccountListener, String paramString)
   {
     this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver$AccountListener = paramAccountListener;
-    this.jdField_a_of_type_JavaLangString = ("mqq.intent.action.EXIT_" + paramString);
-    QLog.i("AccountReceiver", 1, "AccountReceiver, packageName[" + paramString + "]");
+    paramAccountListener = new StringBuilder();
+    paramAccountListener.append("mqq.intent.action.EXIT_");
+    paramAccountListener.append(paramString);
+    this.jdField_a_of_type_JavaLangString = paramAccountListener.toString();
+    paramAccountListener = new StringBuilder();
+    paramAccountListener.append("AccountReceiver, packageName[");
+    paramAccountListener.append(paramString);
+    paramAccountListener.append("]");
+    QLog.i("AccountReceiver", 1, paramAccountListener.toString());
   }
   
   public String[] a()
@@ -27,40 +34,32 @@ public class AccountReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramIntent == null)
-    {
+    if (paramIntent == null) {
       paramContext = null;
-      if (!TextUtils.isEmpty(paramContext)) {
-        break label22;
-      }
+    } else {
+      paramContext = paramIntent.getAction();
     }
-    label22:
-    label110:
-    do
-    {
-      do
-      {
-        return;
-        paramContext = paramIntent.getAction();
-        break;
-        if (QLog.isColorLevel()) {
-          QLog.i("AccountReceiver", 2, "onReceive, mAction[" + paramContext + "]");
-        }
-        try
-        {
-          if (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext)) {
-            break label110;
-          }
-          if (this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver$AccountListener != null) {
-            this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver$AccountListener.b(1001);
-          }
-          Process.killProcess(Process.myPid());
-          return;
-        }
-        catch (RuntimeException paramContext) {}
-      } while (!QLog.isColorLevel());
-      QLog.e("AccountReceiver", 2, "RuntimeException", paramContext);
+    if (TextUtils.isEmpty(paramContext)) {
       return;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("onReceive, mAction[");
+      paramIntent.append(paramContext);
+      paramIntent.append("]");
+      QLog.i("AccountReceiver", 2, paramIntent.toString());
+    }
+    try
+    {
+      if ("mqq.intent.action.ACCOUNT_KICKED".equals(paramContext))
+      {
+        if (this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver$AccountListener != null) {
+          this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver$AccountListener.b(1001);
+        }
+        Process.killProcess(Process.myPid());
+        return;
+      }
       if ("mqq.intent.action.ACCOUNT_EXPIRED".equals(paramContext))
       {
         if (this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver$AccountListener != null) {
@@ -85,16 +84,26 @@ public class AccountReceiver
         Process.killProcess(Process.myPid());
         return;
       }
-    } while (!"mqq.intent.action.ACCOUNT_CHANGED".equals(paramContext));
-    if (this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver$AccountListener != null) {
-      this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver$AccountListener.b(1004);
+      if ("mqq.intent.action.ACCOUNT_CHANGED".equals(paramContext))
+      {
+        if (this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver$AccountListener != null) {
+          this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver$AccountListener.b(1004);
+        }
+        Process.killProcess(Process.myPid());
+        return;
+      }
     }
-    Process.killProcess(Process.myPid());
+    catch (RuntimeException paramContext)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("AccountReceiver", 2, "RuntimeException", paramContext);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.ipc.AccountReceiver
  * JD-Core Version:    0.7.0.1
  */

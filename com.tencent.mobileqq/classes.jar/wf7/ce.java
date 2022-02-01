@@ -17,23 +17,25 @@ public class ce
   
   public cd H(int paramInt)
   {
-    if (gX != null) {
-      return gX.H(paramInt);
+    cc localcc = gX;
+    if (localcc != null) {
+      return localcc.H(paramInt);
     }
     return new cd(paramInt, null);
   }
   
   public boolean a(int paramInt, cf paramcf)
   {
-    if (gX != null) {
-      return gX.a(paramInt, paramcf);
+    cc localcc = gX;
+    if (localcc != null) {
+      return localcc.a(paramInt, paramcf);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.ce
  * JD-Core Version:    0.7.0.1
  */

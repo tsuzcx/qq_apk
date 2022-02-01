@@ -24,60 +24,88 @@ public class GMemoryMonitor
   
   public void a()
   {
-    if (Build.VERSION.SDK_INT >= 14) {}
-    try
-    {
-      if (this.jdField_a_of_type_AndroidContentComponentCallbacks != null)
+    if (Build.VERSION.SDK_INT >= 14) {
+      try
       {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterComponentCallbacks(this.jdField_a_of_type_AndroidContentComponentCallbacks);
-        this.jdField_a_of_type_AndroidContentComponentCallbacks = null;
+        if (this.jdField_a_of_type_AndroidContentComponentCallbacks != null)
+        {
+          this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterComponentCallbacks(this.jdField_a_of_type_AndroidContentComponentCallbacks);
+          this.jdField_a_of_type_AndroidContentComponentCallbacks = null;
+          return;
+        }
       }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("GMemoryMonitor", 2, "onDestroy unregisterComponentCallbacks failed", localThrowable);
+      catch (Throwable localThrowable)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("GMemoryMonitor", 2, "onDestroy unregisterComponentCallbacks failed", localThrowable);
+        }
+      }
     }
   }
   
   void a(int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GMemoryMonitor", 2, "reportLowMemory  level = " + paramInt + ",isExit = " + paramBoolean);
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("reportLowMemory  level = ");
+      ((StringBuilder)localObject1).append(paramInt);
+      ((StringBuilder)localObject1).append(",isExit = ");
+      ((StringBuilder)localObject1).append(paramBoolean);
+      QLog.d("GMemoryMonitor", 2, ((StringBuilder)localObject1).toString());
     }
     try
     {
-      Object localObject1 = new HashMap();
+      localObject1 = new HashMap();
       ((HashMap)localObject1).put("lowMemoryLevel", String.valueOf(paramInt));
       ((HashMap)localObject1).put("isExit", String.valueOf(paramBoolean));
       StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "av_qua_low_memory", true, 0L, 0L, (HashMap)localObject1, "", true);
       localObject1 = Build.MODEL;
-      String str1 = String.valueOf(Build.VERSION.SDK_INT);
-      String str2 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
-      StringBuilder localStringBuilder = new StringBuilder();
-      Object localObject2 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a();
-      if (localObject2 != null)
+      Object localObject2 = String.valueOf(Build.VERSION.SDK_INT);
+      String str1 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      Object localObject3 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a();
+      if (localObject3 != null)
       {
-        String str3 = ((SessionInfo)localObject2).d;
-        localObject2 = ((SessionInfo)localObject2).c;
-        String str4 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a(str3) + "";
-        if (QLog.isColorLevel()) {
-          QLog.d("GMemoryMonitor", 2, "reportLowMemory  ,roomID = " + str4);
+        String str2 = ((SessionInfo)localObject3).c;
+        localObject3 = ((SessionInfo)localObject3).b;
+        Object localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a(str2));
+        ((StringBuilder)localObject4).append("");
+        localObject4 = ((StringBuilder)localObject4).toString();
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("reportLowMemory  ,roomID = ");
+          localStringBuilder2.append((String)localObject4);
+          QLog.d("GMemoryMonitor", 2, localStringBuilder2.toString());
         }
-        localStringBuilder.append("Android").append('|');
-        localStringBuilder.append((String)localObject1).append('|');
-        localStringBuilder.append(str1).append('|');
-        localStringBuilder.append(str1).append('|');
-        localStringBuilder.append(str2).append('|');
-        localStringBuilder.append(str3).append('|');
-        localStringBuilder.append(str4).append('|');
-        localStringBuilder.append((String)localObject2).append('|');
-        localStringBuilder.append(paramInt);
+        localStringBuilder1.append("Android");
+        localStringBuilder1.append('|');
+        localStringBuilder1.append((String)localObject1);
+        localStringBuilder1.append('|');
+        localStringBuilder1.append((String)localObject2);
+        localStringBuilder1.append('|');
+        localStringBuilder1.append((String)localObject2);
+        localStringBuilder1.append('|');
+        localStringBuilder1.append(str1);
+        localStringBuilder1.append('|');
+        localStringBuilder1.append(str2);
+        localStringBuilder1.append('|');
+        localStringBuilder1.append((String)localObject4);
+        localStringBuilder1.append('|');
+        localStringBuilder1.append((String)localObject3);
+        localStringBuilder1.append('|');
+        localStringBuilder1.append(paramInt);
       }
-      localObject1 = localStringBuilder.toString();
-      if (QLog.isColorLevel()) {
-        QLog.d("GMemoryMonitor", 2, "reportLowMemory  dcDetail = " + (String)localObject1);
+      localObject1 = localStringBuilder1.toString();
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("reportLowMemory  dcDetail = ");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        QLog.d("GMemoryMonitor", 2, ((StringBuilder)localObject2).toString());
       }
       DcReportUtil.a(null, "dc02660", (String)localObject1);
       return;
@@ -90,25 +118,26 @@ public class GMemoryMonitor
   
   public void b()
   {
-    if (Build.VERSION.SDK_INT >= 14) {}
-    try
-    {
-      if (this.jdField_a_of_type_AndroidContentComponentCallbacks == null)
+    if (Build.VERSION.SDK_INT >= 14) {
+      try
       {
-        this.jdField_a_of_type_AndroidContentComponentCallbacks = new GMemoryMonitor.1(this);
-        BaseApplicationImpl.getApplication().getApplicationContext().registerComponentCallbacks(this.jdField_a_of_type_AndroidContentComponentCallbacks);
+        if (this.jdField_a_of_type_AndroidContentComponentCallbacks == null)
+        {
+          this.jdField_a_of_type_AndroidContentComponentCallbacks = new GMemoryMonitor.1(this);
+          BaseApplicationImpl.getApplication().getApplicationContext().registerComponentCallbacks(this.jdField_a_of_type_AndroidContentComponentCallbacks);
+          return;
+        }
       }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.d("GMemoryMonitor", 1, "registerComponentCallbacks failed", localThrowable);
+      catch (Throwable localThrowable)
+      {
+        QLog.d("GMemoryMonitor", 1, "registerComponentCallbacks failed", localThrowable);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.app.GMemoryMonitor
  * JD-Core Version:    0.7.0.1
  */

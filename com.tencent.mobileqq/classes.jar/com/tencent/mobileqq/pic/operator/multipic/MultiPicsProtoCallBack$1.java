@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.pic.operator.multipic;
 
 import android.os.AsyncTask;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.pic.Logger;
 import com.tencent.mobileqq.pic.PicDownloadInfo;
@@ -25,105 +25,109 @@ class MultiPicsProtoCallBack$1
   protected Void a(Void... paramVarArgs)
   {
     Logger.a(this.a.b, this.a.jdField_a_of_type_JavaLangString, "uploadNotExistFiles start");
-    int i = 0;
     paramVarArgs = null;
-    Object localObject2;
-    Object localObject1;
-    for (;;)
+    int i = 0;
+    while (i < this.a.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      if (i < this.a.jdField_a_of_type_JavaUtilArrayList.size())
+      Object localObject1 = (PicFowardInfo)this.a.jdField_a_of_type_JavaUtilList.get(i);
+      Object localObject3 = (PicResult)this.a.jdField_a_of_type_JavaUtilArrayList.get(i);
+      Object localObject2 = paramVarArgs;
+      if (((PicResult)localObject3).jdField_a_of_type_Int == -2)
       {
-        PicFowardInfo localPicFowardInfo = (PicFowardInfo)this.a.jdField_a_of_type_JavaUtilList.get(i);
-        localObject2 = (PicResult)this.a.jdField_a_of_type_JavaUtilArrayList.get(i);
-        localObject1 = paramVarArgs;
-        Object localObject3;
-        if (((PicResult)localObject2).jdField_a_of_type_Int == -2)
+        localObject2 = MultiPicsProtoCallBack.a(this.a, (PicFowardInfo)localObject1);
+        boolean bool = true;
+        Object localObject4;
+        if (localObject2 != null)
         {
-          localObject1 = MultiPicsProtoCallBack.a(this.a, localPicFowardInfo);
-          if (localObject1 == null) {
-            break label465;
+          localObject3 = this.a.b;
+          localObject4 = this.a.jdField_a_of_type_JavaLangString;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Upload [");
+          localStringBuilder.append(i);
+          localStringBuilder.append("]mLocalPath ＝ ");
+          localStringBuilder.append((String)localObject2);
+          Logger.a((String)localObject3, (String)localObject4, "uploadForwardMultiMsgPics.uploadFiles", localStringBuilder.toString());
+          localObject3 = new TransferRequest();
+          ((TransferRequest)localObject3).needSendMsg = false;
+          ((TransferRequest)localObject3).mSelfUin = ((AppInterface)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).getAccount();
+          ((TransferRequest)localObject3).mPeerUin = this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin;
+          ((TransferRequest)localObject3).mSecondId = this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin;
+          ((TransferRequest)localObject3).mUinType = this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop;
+          ((TransferRequest)localObject3).mFileType = 1;
+          ((TransferRequest)localObject3).mUniseq = (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq + i);
+          localObject4 = (ITransFileController)((AppInterface)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).getRuntimeService(ITransFileController.class, "");
+          while (((ITransFileController)localObject4).containsProcessor(((TransferRequest)localObject3).mPeerUin, ((TransferRequest)localObject3).mUniseq)) {
+            ((TransferRequest)localObject3).mUniseq += 100L;
           }
-          Logger.a(this.a.b, this.a.jdField_a_of_type_JavaLangString, "uploadForwardMultiMsgPics.uploadFiles", "Upload [" + i + "]mLocalPath ＝ " + (String)localObject1);
-          localObject2 = new TransferRequest();
-          ((TransferRequest)localObject2).needSendMsg = false;
-          ((TransferRequest)localObject2).mSelfUin = ((QQAppInterface)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).getAccount();
-          ((TransferRequest)localObject2).mPeerUin = this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin;
-          ((TransferRequest)localObject2).mSecondId = this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin;
-          ((TransferRequest)localObject2).mUinType = this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop;
-          ((TransferRequest)localObject2).mFileType = 1;
-          ((TransferRequest)localObject2).mUniseq = (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq + i);
-          localObject3 = (ITransFileController)((QQAppInterface)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).getRuntimeService(ITransFileController.class);
-          while (((ITransFileController)localObject3).containsProcessor(((TransferRequest)localObject2).mPeerUin, ((TransferRequest)localObject2).mUniseq)) {
-            ((TransferRequest)localObject2).mUniseq += 100L;
-          }
-          ((TransferRequest)localObject2).mIsUp = true;
-          ((TransferRequest)localObject2).mBusiType = localPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_a_of_type_Int;
-          ((TransferRequest)localObject2).mLocalPath = ((String)localObject1);
-          localObject3 = new TransferRequest.PicUpExtraInfo();
-          if (localPicFowardInfo.jdField_a_of_type_Int < 0)
+          ((TransferRequest)localObject3).mIsUp = true;
+          ((TransferRequest)localObject3).mBusiType = ((PicFowardInfo)localObject1).jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_a_of_type_Int;
+          ((TransferRequest)localObject3).mLocalPath = ((String)localObject2);
+          localObject4 = new TransferRequest.PicUpExtraInfo();
+          if (((PicFowardInfo)localObject1).jdField_a_of_type_Int < 0)
           {
-            ((TransferRequest.PicUpExtraInfo)localObject3).mIsRaw = false;
-            ((TransferRequest)localObject2).mExtraObj = localObject3;
-            ((TransferRequest)localObject2).mUpCallBack = new MultiMsgPicsUpCallBack(this.a.jdField_a_of_type_ComTencentMobileqqPicOperatorMultipicMultiPicsOperator$MultiPicsUploadTask, this.a.jdField_a_of_type_JavaLangRefWeakReference, i, (String)localObject1);
-            ((ITransFileController)((QQAppInterface)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).getRuntimeService(ITransFileController.class)).transferAsync((TransferRequest)localObject2);
-            localObject1 = paramVarArgs;
+            ((TransferRequest.PicUpExtraInfo)localObject4).mIsRaw = false;
           }
+          else
+          {
+            if (((PicFowardInfo)localObject1).jdField_a_of_type_Int != 2) {
+              bool = false;
+            }
+            ((TransferRequest.PicUpExtraInfo)localObject4).mIsRaw = bool;
+          }
+          ((TransferRequest)localObject3).mExtraObj = localObject4;
+          ((TransferRequest)localObject3).mUpCallBack = new MultiMsgPicsUpCallBack(this.a.jdField_a_of_type_ComTencentMobileqqPicOperatorMultipicMultiPicsOperator$MultiPicsUploadTask, this.a.jdField_a_of_type_JavaLangRefWeakReference, i, (String)localObject2);
+          ((ITransFileController)((AppInterface)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).getRuntimeService(ITransFileController.class, "")).transferAsync((TransferRequest)localObject3);
+          localObject2 = paramVarArgs;
         }
         else
         {
-          i += 1;
-          paramVarArgs = (Void[])localObject1;
-          continue;
-        }
-        if (localPicFowardInfo.jdField_a_of_type_Int == 2) {}
-        for (boolean bool = true;; bool = false)
-        {
-          ((TransferRequest.PicUpExtraInfo)localObject3).mIsRaw = bool;
-          break;
-        }
-        label465:
-        ((PicResult)localObject2).jdField_a_of_type_Int = -1;
-        ((PicResult)localObject2).jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo = new PicInfoInterface.ErrInfo();
-        ((PicResult)localObject2).jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.b = ("Get target pic filepath of [" + i + "] failed");
-        if ((localPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.b == 1) || (localPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.b == 3000))
-        {
-          ((PicResult)localObject2).jdField_a_of_type_JavaLangObject = this.a.a(null, null, i);
-          label556:
-          if (!QLog.isColorLevel()) {
-            break label686;
+          ((PicResult)localObject3).jdField_a_of_type_Int = -1;
+          ((PicResult)localObject3).jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo = new PicInfoInterface.ErrInfo();
+          localObject2 = ((PicResult)localObject3).jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo;
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("Get target pic filepath of [");
+          ((StringBuilder)localObject4).append(i);
+          ((StringBuilder)localObject4).append("] failed");
+          ((PicInfoInterface.ErrInfo)localObject2).b = ((StringBuilder)localObject4).toString();
+          if ((((PicFowardInfo)localObject1).jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.b != 1) && (((PicFowardInfo)localObject1).jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.b != 3000)) {
+            ((PicResult)localObject3).jdField_a_of_type_JavaLangObject = this.a.a(null, null, i);
+          } else {
+            ((PicResult)localObject3).jdField_a_of_type_JavaLangObject = this.a.a(null, null, i);
           }
-          if (paramVarArgs != null) {
-            break label683;
+          localObject1 = paramVarArgs;
+          if (QLog.isColorLevel())
+          {
+            localObject1 = paramVarArgs;
+            if (paramVarArgs == null) {
+              localObject1 = new StringBuilder();
+            }
+            ((StringBuilder)localObject1).append("Upload [");
+            ((StringBuilder)localObject1).append(i);
+            ((StringBuilder)localObject1).append("] failed, errDec ＝ ");
+            ((StringBuilder)localObject1).append(((PicResult)localObject3).jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.b);
+            ((StringBuilder)localObject1).append("\n");
           }
-          paramVarArgs = new StringBuilder();
-          label574:
-          paramVarArgs.append("Upload [").append(i).append("] failed, errDec ＝ ").append(((PicResult)localObject2).jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.b).append("\n");
+          this.a.a();
+          localObject2 = localObject1;
+          if (this.a.a() == 0)
+          {
+            this.a.b();
+            localObject2 = localObject1;
+          }
         }
       }
+      i += 1;
+      paramVarArgs = (Void[])localObject2;
     }
-    label683:
-    label686:
-    for (;;)
-    {
-      this.a.a();
-      if (this.a.a() == 0) {
-        this.a.b();
-      }
-      localObject1 = paramVarArgs;
-      break;
-      ((PicResult)localObject2).jdField_a_of_type_JavaLangObject = this.a.a(null, null, i);
-      break label556;
-      if (paramVarArgs != null) {
-        Logger.b(this.a.b, this.a.jdField_a_of_type_JavaLangString, "uploadForwardMultiMsgPics.uploadFiles", paramVarArgs.toString());
-      }
-      return null;
-      break label574;
+    if (paramVarArgs != null) {
+      Logger.b(this.a.b, this.a.jdField_a_of_type_JavaLangString, "uploadForwardMultiMsgPics.uploadFiles", paramVarArgs.toString());
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.operator.multipic.MultiPicsProtoCallBack.1
  * JD-Core Version:    0.7.0.1
  */

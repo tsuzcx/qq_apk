@@ -16,25 +16,26 @@ class FrontBackReportManager$1
   {
     long l = paramRspBody.uint32_test_keep_silence_sec.get();
     paramToServiceMsg = this.a;
-    if (l <= 0L) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if (l <= 0L) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    FrontBackReportManager.a(paramToServiceMsg, bool);
+    if (l > 0L)
     {
-      FrontBackReportManager.a(paramToServiceMsg, bool);
-      if (l > 0L)
-      {
-        FrontBackReportManager.a(this.a).removeMessages(6);
-        FrontBackReportManager.a(this.a).sendEmptyMessageDelayed(6, l);
-        if (QLog.isColorLevel()) {
-          QLog.d("FrontBackReportManager", 2, "receive keep silence");
-        }
+      FrontBackReportManager.a(this.a).removeMessages(6);
+      FrontBackReportManager.a(this.a).sendEmptyMessageDelayed(6, l);
+      if (QLog.isColorLevel()) {
+        QLog.d("FrontBackReportManager", 2, "receive keep silence");
       }
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.qqdaily.FrontBackReportManager.1
  * JD-Core Version:    0.7.0.1
  */

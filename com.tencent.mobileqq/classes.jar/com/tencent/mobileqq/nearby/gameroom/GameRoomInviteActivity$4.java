@@ -15,26 +15,26 @@ class GameRoomInviteActivity$4
   {
     if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.b = paramRspBody.string_invite_id.get().toStringUtf8();
-      GameRoomInviteActivity.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.b;
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a(false);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.mInviteId = paramRspBody.string_invite_id.get().toStringUtf8();
+      GameRoomConstants.a = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.mInviteId;
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.init(false);
       return;
     }
     paramRspBody = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
-    GameRoomInviteActivity.jdField_a_of_type_JavaLangString = null;
-    paramRspBody.b = null;
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.jdField_a_of_type_Boolean = true;
+    GameRoomConstants.a = null;
+    paramRspBody.mInviteId = null;
+    paramRspBody.mIsOwner = true;
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.c();
+      paramRspBody.invite();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a();
+    paramRspBody.refreshUI();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.4
  * JD-Core Version:    0.7.0.1
  */

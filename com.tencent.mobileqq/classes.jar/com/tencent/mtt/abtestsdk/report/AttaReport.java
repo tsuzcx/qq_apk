@@ -3,49 +3,49 @@ package com.tencent.mtt.abtestsdk.report;
 import com.tencent.mtt.abtestsdk.entity.AttaEntity;
 import com.tencent.mtt.abtestsdk.utils.ABTestLog;
 import com.tencent.mtt.abtestsdk.utils.ThreadPoolUtil;
-import java.util.HashMap;
 import java.util.Map;
-import okhttp3.OkHttpClient.Builder;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class AttaReport
 {
-  private static final String TAG = "attaReport";
-  private String attId = "04800015034";
-  private String attToken = "6299336879";
-  private final OkHttpClient.Builder builder = new OkHttpClient.Builder();
+  private static final String ATTAID_KEY = "attaid";
+  public static final String ATTAID_VALUE = "04800015034";
+  private static final String ATTA_POST_URL = "https://h.trace.qq.com/kv";
+  private static final String TOKEN_KEY = "token";
+  public static final String TOKEN_VALUE = "6299336879";
   
   private Map<String, String> createReportData(AttaEntity paramAttaEntity)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("attaid", this.attId);
-    localHashMap.put("token", this.attToken);
+    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
     if (paramAttaEntity != null)
     {
-      localHashMap.put("eventcode", paramAttaEntity.eventcode);
-      localHashMap.put("guid", paramAttaEntity.guid);
-      localHashMap.put("grayid", paramAttaEntity.grayid);
-      localHashMap.put("platform", paramAttaEntity.platform);
-      localHashMap.put("bundleid", paramAttaEntity.bundleid);
-      localHashMap.put("bundlerversion", paramAttaEntity.bundlerversion);
-      localHashMap.put("eventtime", paramAttaEntity.eventtime);
-      localHashMap.put("eventpage", paramAttaEntity.eventpage);
-      localHashMap.put("osmodel", paramAttaEntity.osmodel);
-      localHashMap.put("osversion", paramAttaEntity.osversion);
-      localHashMap.put("devicebrand", paramAttaEntity.devicebrand);
-      localHashMap.put("resolution", paramAttaEntity.resolution);
-      localHashMap.put("language", paramAttaEntity.language);
-      localHashMap.put("sdkversion", paramAttaEntity.sdkversion);
-      localHashMap.put("channel", paramAttaEntity.channel);
-      localHashMap.put("appid", paramAttaEntity.appid);
-      localHashMap.put("isfirsthint", paramAttaEntity.isfirsthint);
-      localHashMap.put("devicemodel", paramAttaEntity.devicemodel);
+      localConcurrentHashMap.put("attaid", paramAttaEntity.getAttaId());
+      localConcurrentHashMap.put("token", paramAttaEntity.getAttaToken());
+      localConcurrentHashMap.put("eventcode", paramAttaEntity.getEventcode());
+      localConcurrentHashMap.put("guid", paramAttaEntity.getGuid());
+      localConcurrentHashMap.put("grayid", paramAttaEntity.getGrayid());
+      localConcurrentHashMap.put("platform", paramAttaEntity.getPlatform());
+      localConcurrentHashMap.put("bundleid", paramAttaEntity.getBundleid());
+      localConcurrentHashMap.put("bundlerversion", paramAttaEntity.getBundlerversion());
+      localConcurrentHashMap.put("eventtime", paramAttaEntity.getEventtime());
+      localConcurrentHashMap.put("eventpage", paramAttaEntity.getEventpage());
+      localConcurrentHashMap.put("osmodel", paramAttaEntity.getOsmodel());
+      localConcurrentHashMap.put("osversion", paramAttaEntity.getOsversion());
+      localConcurrentHashMap.put("devicebrand", paramAttaEntity.getDevicebrand());
+      localConcurrentHashMap.put("resolution", paramAttaEntity.getResolution());
+      localConcurrentHashMap.put("language", paramAttaEntity.getLanguage());
+      localConcurrentHashMap.put("sdkversion", paramAttaEntity.getSdkversion());
+      localConcurrentHashMap.put("channel", paramAttaEntity.getChannel());
+      localConcurrentHashMap.put("appid", paramAttaEntity.getAppid());
+      localConcurrentHashMap.put("isfirsthint", paramAttaEntity.getIsfirsthint());
+      localConcurrentHashMap.put("devicemodel", paramAttaEntity.getDevicemodel());
     }
-    return localHashMap;
+    return localConcurrentHashMap;
   }
   
   public static AttaReport getInstance()
   {
-    return AttaReport.AttaReportHolder.access$100();
+    return AttaReport.AttaReportHolder.access$000();
   }
   
   public void report(AttaEntity paramAttaEntity)
@@ -54,23 +54,16 @@ public class AttaReport
       return;
     }
     paramAttaEntity = createReportData(paramAttaEntity);
-    ABTestLog.debug("atta report params is:" + paramAttaEntity.toString(), new Object[0]);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("atta report params is:");
+    localStringBuilder.append(paramAttaEntity.toString());
+    ABTestLog.debug(localStringBuilder.toString(), new Object[0]);
     ThreadPoolUtil.execute(new AttaReport.1(this, paramAttaEntity));
-  }
-  
-  public void setAttId(String paramString)
-  {
-    this.attId = paramString;
-  }
-  
-  public void setAttToken(String paramString)
-  {
-    this.attToken = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.abtestsdk.report.AttaReport
  * JD-Core Version:    0.7.0.1
  */

@@ -3,19 +3,24 @@ package androidx.dynamicanimation.animation;
 class DynamicAnimation$15
   extends FloatPropertyCompat
 {
-  public float a(Object paramObject)
+  DynamicAnimation$15(DynamicAnimation paramDynamicAnimation, String paramString, FloatValueHolder paramFloatValueHolder)
   {
-    return this.a.a();
+    super(paramString);
   }
   
-  public void a(Object paramObject, float paramFloat)
+  public float getValue(Object paramObject)
   {
-    this.a.a(paramFloat);
+    return this.val$floatValueHolder.getValue();
+  }
+  
+  public void setValue(Object paramObject, float paramFloat)
+  {
+    this.val$floatValueHolder.setValue(paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.dynamicanimation.animation.DynamicAnimation.15
  * JD-Core Version:    0.7.0.1
  */

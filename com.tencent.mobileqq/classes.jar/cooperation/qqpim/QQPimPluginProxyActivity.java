@@ -39,8 +39,15 @@ public class QQPimPluginProxyActivity
     localPluginParams.g = null;
     localPluginParams.jdField_b_of_type_Boolean = false;
     IPluginManager.a(paramActivity, localPluginParams);
-    if (QLog.isColorLevel()) {
-      QLog.i(QQPimDefineList.jdField_a_of_type_JavaLangString, 2, "QQPimPluginProxyActivity.openPluginActivityForResult() " + paramString2 + " IPluginManager.SUPPORT_NETWORKING " + true);
+    if (QLog.isColorLevel())
+    {
+      paramActivity = QQPimDefineList.jdField_a_of_type_JavaLangString;
+      paramIntent = new StringBuilder();
+      paramIntent.append("QQPimPluginProxyActivity.openPluginActivityForResult() ");
+      paramIntent.append(paramString2);
+      paramIntent.append(" IPluginManager.SUPPORT_NETWORKING ");
+      paramIntent.append(true);
+      QLog.i(paramActivity, 2, paramIntent.toString());
     }
     return true;
   }
@@ -70,7 +77,7 @@ public class QQPimPluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqpim.QQPimPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

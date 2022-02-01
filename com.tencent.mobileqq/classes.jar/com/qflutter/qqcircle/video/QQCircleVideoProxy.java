@@ -22,8 +22,9 @@ public class QQCircleVideoProxy
     if (PLog.isColorLevel()) {
       PLog.d("QQCircleVideoProxy", "[clean]");
     }
-    if (this.apiImpl != null) {
-      this.apiImpl.cleanAll();
+    QCircleVideoPlayerApi localQCircleVideoPlayerApi = this.apiImpl;
+    if (localQCircleVideoPlayerApi != null) {
+      localQCircleVideoPlayerApi.cleanAll();
     }
     this.apiImpl = null;
     this.messenger = null;
@@ -35,15 +36,16 @@ public class QQCircleVideoProxy
     if (PLog.isColorLevel()) {
       PLog.d("QQCircleVideoProxy", "[create]");
     }
-    if (this.apiImpl != null)
+    Object localObject = this.apiImpl;
+    if (localObject != null)
     {
-      paramCreateMessage = this.apiImpl.create(paramCreateMessage, this.textureRegistry, this.messenger);
+      paramCreateMessage = ((QCircleVideoPlayerApi)localObject).create(paramCreateMessage, this.textureRegistry, this.messenger);
       if (PLog.isColorLevel())
       {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("[create] textureId=");
-        localStringBuilder.append(paramCreateMessage.getTextureId());
-        PLog.d("QQCircleVideoProxy", localStringBuilder.toString());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[create] textureId=");
+        ((StringBuilder)localObject).append(paramCreateMessage.getTextureId());
+        PLog.d("QQCircleVideoProxy", ((StringBuilder)localObject).toString());
       }
       return paramCreateMessage;
     }
@@ -54,13 +56,14 @@ public class QQCircleVideoProxy
   {
     if (PLog.isColorLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[dispose] textureId=");
-      localStringBuilder.append(paramTextureMessage.getTextureId());
-      PLog.d("QQCircleVideoProxy", localStringBuilder.toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[dispose] textureId=");
+      ((StringBuilder)localObject).append(paramTextureMessage.getTextureId());
+      PLog.d("QQCircleVideoProxy", ((StringBuilder)localObject).toString());
     }
-    if (this.apiImpl != null) {
-      this.apiImpl.dispose(paramTextureMessage);
+    Object localObject = this.apiImpl;
+    if (localObject != null) {
+      ((QCircleVideoPlayerApi)localObject).dispose(paramTextureMessage);
     }
   }
   
@@ -69,8 +72,9 @@ public class QQCircleVideoProxy
     if (PLog.isColorLevel()) {
       PLog.d("QQCircleVideoProxy", "[initialize]");
     }
-    if (this.apiImpl != null) {
-      this.apiImpl.initialize();
+    QCircleVideoPlayerApi localQCircleVideoPlayerApi = this.apiImpl;
+    if (localQCircleVideoPlayerApi != null) {
+      localQCircleVideoPlayerApi.initialize();
     }
   }
   
@@ -79,8 +83,9 @@ public class QQCircleVideoProxy
     if (PLog.isColorLevel()) {
       PLog.d("QQCircleVideoProxy", "[pause]");
     }
-    if (this.apiImpl != null) {
-      this.apiImpl.pause(paramTextureMessage);
+    QCircleVideoPlayerApi localQCircleVideoPlayerApi = this.apiImpl;
+    if (localQCircleVideoPlayerApi != null) {
+      localQCircleVideoPlayerApi.pause(paramTextureMessage);
     }
   }
   
@@ -89,15 +94,17 @@ public class QQCircleVideoProxy
     if (PLog.isColorLevel()) {
       PLog.d("QQCircleVideoProxy", "[play]");
     }
-    if (this.apiImpl != null) {
-      this.apiImpl.play(paramTextureMessage);
+    QCircleVideoPlayerApi localQCircleVideoPlayerApi = this.apiImpl;
+    if (localQCircleVideoPlayerApi != null) {
+      localQCircleVideoPlayerApi.play(paramTextureMessage);
     }
   }
   
   public Messages.PositionMessage position(Messages.TextureMessage paramTextureMessage)
   {
-    if (this.apiImpl != null) {
-      return this.apiImpl.position(paramTextureMessage);
+    QCircleVideoPlayerApi localQCircleVideoPlayerApi = this.apiImpl;
+    if (localQCircleVideoPlayerApi != null) {
+      return localQCircleVideoPlayerApi.position(paramTextureMessage);
     }
     return null;
   }
@@ -107,8 +114,9 @@ public class QQCircleVideoProxy
     if (PLog.isColorLevel()) {
       PLog.d("QQCircleVideoProxy", "[seekTo]");
     }
-    if (this.apiImpl != null) {
-      this.apiImpl.seekTo(paramPositionMessage);
+    QCircleVideoPlayerApi localQCircleVideoPlayerApi = this.apiImpl;
+    if (localQCircleVideoPlayerApi != null) {
+      localQCircleVideoPlayerApi.seekTo(paramPositionMessage);
     }
   }
   
@@ -117,8 +125,9 @@ public class QQCircleVideoProxy
     if (PLog.isColorLevel()) {
       PLog.d("QQCircleVideoProxy", "[setLooping]");
     }
-    if (this.apiImpl != null) {
-      this.apiImpl.setLooping(paramLoopingMessage);
+    QCircleVideoPlayerApi localQCircleVideoPlayerApi = this.apiImpl;
+    if (localQCircleVideoPlayerApi != null) {
+      localQCircleVideoPlayerApi.setLooping(paramLoopingMessage);
     }
   }
   
@@ -127,8 +136,9 @@ public class QQCircleVideoProxy
     if (PLog.isColorLevel()) {
       PLog.d("QQCircleVideoProxy", "[setPlaybackSpeed]");
     }
-    if (this.apiImpl != null) {
-      this.apiImpl.setPlaybackSpeed(paramPlaybackSpeedMessage);
+    QCircleVideoPlayerApi localQCircleVideoPlayerApi = this.apiImpl;
+    if (localQCircleVideoPlayerApi != null) {
+      localQCircleVideoPlayerApi.setPlaybackSpeed(paramPlaybackSpeedMessage);
     }
   }
   
@@ -149,14 +159,15 @@ public class QQCircleVideoProxy
     if (PLog.isColorLevel()) {
       PLog.d("QQCircleVideoProxy", "[setVolume]");
     }
-    if (this.apiImpl != null) {
-      this.apiImpl.setVolume(paramVolumeMessage);
+    QCircleVideoPlayerApi localQCircleVideoPlayerApi = this.apiImpl;
+    if (localQCircleVideoPlayerApi != null) {
+      localQCircleVideoPlayerApi.setVolume(paramVolumeMessage);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.qflutter.qqcircle.video.QQCircleVideoProxy
  * JD-Core Version:    0.7.0.1
  */

@@ -14,12 +14,13 @@ class ThreadDBPool
   
   static
   {
-    if (ThreadSetting.isPublicVersion) {}
-    for (int i = 128;; i = 64)
-    {
-      BLOCKING_QUEUE_SIZE = i;
-      return;
+    int i;
+    if (ThreadSetting.isPublicVersion) {
+      i = 128;
+    } else {
+      i = 64;
     }
+    BLOCKING_QUEUE_SIZE = i;
   }
   
   private ThreadDBPool(BlockingQueue<Runnable> paramBlockingQueue, PriorityThreadFactory paramPriorityThreadFactory)
@@ -49,7 +50,7 @@ class ThreadDBPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ThreadDBPool
  * JD-Core Version:    0.7.0.1
  */

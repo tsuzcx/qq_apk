@@ -26,7 +26,7 @@ import kotlin.ranges.RangesKt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/SystemCaptureProxy;", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/ICaptureProxy;", "Landroid/media/MediaPlayer$OnSeekCompleteListener;", "isForCapture", "", "(Z)V", "captureVideoInfo", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/VideoCaptureView$CaptureVideoInfo;", "duration", "", "height", "mediaPlayer", "Landroid/media/MediaPlayer;", "metadataRetriever", "Landroid/media/MediaMetadataRetriever;", "onPreparedListener", "Landroid/media/MediaPlayer$OnPreparedListener;", "preparedListenerSet", "", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/CapturePreparedListener;", "released", "seekCompleteListener", "useScaleAPI", "videoDuration", "", "getVideoDuration", "()J", "videoView", "Landroid/widget/VideoView;", "width", "addCapturePreparedListener", "", "listener", "capture", "captureTask", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/CaptureTask;", "captureCallback", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/CaptureTask$OnCaptureCallback;", "getFrameAtTime", "Landroid/graphics/Bitmap;", "getScaleFrameAtTime", "getVideoValue", "key", "init", "containerView", "Landroid/view/ViewGroup;", "notifyListeners", "onSeekComplete", "prepare", "release", "seek", "position", "Companion", "topicsdk_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/SystemCaptureProxy;", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/ICaptureProxy;", "Landroid/media/MediaPlayer$OnSeekCompleteListener;", "isForCapture", "", "(Z)V", "captureVideoInfo", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/VideoCaptureView$CaptureVideoInfo;", "duration", "", "height", "mediaPlayer", "Landroid/media/MediaPlayer;", "metadataRetriever", "Landroid/media/MediaMetadataRetriever;", "onPreparedListener", "Landroid/media/MediaPlayer$OnPreparedListener;", "preparedListenerSet", "", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/CapturePreparedListener;", "released", "seekCompleteListener", "useScaleAPI", "videoDuration", "", "getVideoDuration", "()J", "videoView", "Landroid/widget/VideoView;", "width", "addCapturePreparedListener", "", "listener", "capture", "captureTask", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/CaptureTask;", "captureCallback", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/CaptureTask$OnCaptureCallback;", "getFrameAtTime", "Landroid/graphics/Bitmap;", "option", "getScaleFrameAtTime", "getVideoValue", "key", "init", "containerView", "Landroid/view/ViewGroup;", "notifyListeners", "onSeekComplete", "prepare", "release", "seek", "position", "Companion", "topicsdk_release"}, k=1, mv={1, 1, 16})
 public final class SystemCaptureProxy
   implements MediaPlayer.OnSeekCompleteListener, ICaptureProxy
 {
@@ -72,46 +72,42 @@ public final class SystemCaptureProxy
   }
   
   @RequiresApi(27)
-  private final Bitmap a(MediaMetadataRetriever paramMediaMetadataRetriever, CaptureTask paramCaptureTask)
+  private final Bitmap a(int paramInt, CaptureTask paramCaptureTask)
   {
-    Bitmap localBitmap = null;
     try
     {
-      if (this.jdField_c_of_type_Boolean) {}
-      for (int i = 3;; i = 2)
-      {
-        if (paramMediaMetadataRetriever != null) {
-          localBitmap = paramMediaMetadataRetriever.getScaledFrameAtTime(paramCaptureTask.a() * 1000, i, paramCaptureTask.b(), paramCaptureTask.c());
-        }
-        return localBitmap;
-      }
-      return null;
+      Bitmap localBitmap = this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever.getScaledFrameAtTime(paramCaptureTask.a() * 1000, paramInt, paramCaptureTask.b(), paramCaptureTask.c());
+      return localBitmap;
     }
-    catch (Throwable paramMediaMetadataRetriever)
+    catch (Throwable localThrowable)
     {
-      TLog.d("SystemCaptureProxy", "getFrameAtTime failed for captureTask, " + paramCaptureTask + ", " + paramMediaMetadataRetriever);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getFrameAtTime failed for captureTask, ");
+      localStringBuilder.append(paramCaptureTask);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(localThrowable);
+      TLog.d("SystemCaptureProxy", localStringBuilder.toString());
     }
+    return null;
   }
   
-  private final Bitmap b(MediaMetadataRetriever paramMediaMetadataRetriever, CaptureTask paramCaptureTask)
+  private final Bitmap b(int paramInt, CaptureTask paramCaptureTask)
   {
-    Bitmap localBitmap = null;
     try
     {
-      if (this.jdField_c_of_type_Boolean) {}
-      for (int i = 3;; i = 2)
-      {
-        if (paramMediaMetadataRetriever != null) {
-          localBitmap = paramMediaMetadataRetriever.getFrameAtTime(paramCaptureTask.a() * 1000, i);
-        }
-        return localBitmap;
-      }
-      return null;
+      Bitmap localBitmap = this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever.getFrameAtTime(paramCaptureTask.a() * 1000, paramInt);
+      return localBitmap;
     }
-    catch (Throwable paramMediaMetadataRetriever)
+    catch (Throwable localThrowable)
     {
-      TLog.d("SystemCaptureProxy", "getFrameAtTime failed for captureTask, " + paramCaptureTask + ", " + paramMediaMetadataRetriever);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getFrameAtTime failed for captureTask, ");
+      localStringBuilder.append(paramCaptureTask);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(localThrowable);
+      TLog.d("SystemCaptureProxy", localStringBuilder.toString());
     }
+    return null;
   }
   
   private final void b()
@@ -131,11 +127,10 @@ public final class SystemCaptureProxy
         ThreadManagerKt.a((Function0)new SystemCaptureProxy.prepare..inlined.isNotNull.lambda.1(this));
         return;
       }
-      return;
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      TLog.a("SystemCaptureProxy", (Throwable)localNumberFormatException);
+      TLog.b("SystemCaptureProxy", (Throwable)localNumberFormatException);
     }
   }
   
@@ -221,12 +216,16 @@ public final class SystemCaptureProxy
       if (paramViewGroup != null)
       {
         Object localObject = paramViewGroup.getLayoutParams();
-        if (localObject == null) {
+        if (localObject != null)
+        {
+          localObject = (RelativeLayout.LayoutParams)localObject;
+          ((RelativeLayout.LayoutParams)localObject).addRule(13);
+          paramViewGroup.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        }
+        else
+        {
           throw new TypeCastException("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
         }
-        localObject = (RelativeLayout.LayoutParams)localObject;
-        ((RelativeLayout.LayoutParams)localObject).addRule(13);
-        paramViewGroup.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
       paramViewGroup = this.jdField_a_of_type_AndroidWidgetVideoView;
       if (paramViewGroup != null) {
@@ -247,7 +246,7 @@ public final class SystemCaptureProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.videocapture.SystemCaptureProxy
  * JD-Core Version:    0.7.0.1
  */

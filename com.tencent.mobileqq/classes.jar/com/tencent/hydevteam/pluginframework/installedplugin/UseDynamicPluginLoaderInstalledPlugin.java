@@ -48,50 +48,39 @@ public class UseDynamicPluginLoaderInstalledPlugin
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1;
     if (this == paramObject) {
-      bool1 = true;
+      return true;
     }
-    do
+    if (paramObject != null)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      return bool1;
-                      bool1 = bool2;
-                    } while (paramObject == null);
-                    bool1 = bool2;
-                  } while (getClass() != paramObject.getClass());
-                  bool1 = bool2;
-                } while (!super.equals(paramObject));
-                paramObject = (UseDynamicPluginLoaderInstalledPlugin)paramObject;
-                bool1 = bool2;
-              } while (!this.dynamicPluginLoaderVersion.equals(paramObject.dynamicPluginLoaderVersion));
-              bool1 = bool2;
-            } while (!this.dynamicPluginContainerVersion.equals(paramObject.dynamicPluginContainerVersion));
-            bool1 = bool2;
-          } while (!this.dynamicPluginLoaderFile.equals(paramObject.dynamicPluginLoaderFile));
-          bool1 = bool2;
-        } while (!this.dynamicPluginContainerFile.equals(paramObject.dynamicPluginContainerFile));
-        bool1 = bool2;
-      } while (!this.dynamicPluginLoaderClassname.equals(paramObject.dynamicPluginLoaderClassname));
-      bool1 = bool2;
-    } while (!Arrays.equals(this.dynamicPluginLoaderInterfacePackageNames, paramObject.dynamicPluginLoaderInterfacePackageNames));
-    return this.pluginUnpackDir.equals(paramObject.pluginUnpackDir);
+      if (getClass() != paramObject.getClass()) {
+        return false;
+      }
+      if (!super.equals(paramObject)) {
+        return false;
+      }
+      paramObject = (UseDynamicPluginLoaderInstalledPlugin)paramObject;
+      if (!this.dynamicPluginLoaderVersion.equals(paramObject.dynamicPluginLoaderVersion)) {
+        return false;
+      }
+      if (!this.dynamicPluginContainerVersion.equals(paramObject.dynamicPluginContainerVersion)) {
+        return false;
+      }
+      if (!this.dynamicPluginLoaderFile.equals(paramObject.dynamicPluginLoaderFile)) {
+        return false;
+      }
+      if (!this.dynamicPluginContainerFile.equals(paramObject.dynamicPluginContainerFile)) {
+        return false;
+      }
+      if (!this.dynamicPluginLoaderClassname.equals(paramObject.dynamicPluginLoaderClassname)) {
+        return false;
+      }
+      if (!Arrays.equals(this.dynamicPluginLoaderInterfacePackageNames, paramObject.dynamicPluginLoaderInterfacePackageNames)) {
+        return false;
+      }
+      return this.pluginUnpackDir.equals(paramObject.pluginUnpackDir);
+    }
+    return false;
   }
   
   public int hashCode()
@@ -101,12 +90,30 @@ public class UseDynamicPluginLoaderInstalledPlugin
   
   public String toString()
   {
-    return "UseDynamicPluginLoaderInstalledPlugin{dynamicPluginLoaderVersion='" + this.dynamicPluginLoaderVersion + '\'' + ", dynamicPluginContainerVersion='" + this.dynamicPluginContainerVersion + '\'' + ", dynamicPluginLoaderFile=" + this.dynamicPluginLoaderFile + ", dynamicPluginContainerFile=" + this.dynamicPluginContainerFile + ", dynamicPluginLoaderClassname='" + this.dynamicPluginLoaderClassname + '\'' + ", dynamicPluginLoaderInterfacePackageNames=" + Arrays.toString(this.dynamicPluginLoaderInterfacePackageNames) + ", pluginUnpackDir=" + this.pluginUnpackDir + '}';
+    StringBuilder localStringBuilder = new StringBuilder("UseDynamicPluginLoaderInstalledPlugin{dynamicPluginLoaderVersion='");
+    localStringBuilder.append(this.dynamicPluginLoaderVersion);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", dynamicPluginContainerVersion='");
+    localStringBuilder.append(this.dynamicPluginContainerVersion);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", dynamicPluginLoaderFile=");
+    localStringBuilder.append(this.dynamicPluginLoaderFile);
+    localStringBuilder.append(", dynamicPluginContainerFile=");
+    localStringBuilder.append(this.dynamicPluginContainerFile);
+    localStringBuilder.append(", dynamicPluginLoaderClassname='");
+    localStringBuilder.append(this.dynamicPluginLoaderClassname);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", dynamicPluginLoaderInterfacePackageNames=");
+    localStringBuilder.append(Arrays.toString(this.dynamicPluginLoaderInterfacePackageNames));
+    localStringBuilder.append(", pluginUnpackDir=");
+    localStringBuilder.append(this.pluginUnpackDir);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hydevteam.pluginframework.installedplugin.UseDynamicPluginLoaderInstalledPlugin
  * JD-Core Version:    0.7.0.1
  */

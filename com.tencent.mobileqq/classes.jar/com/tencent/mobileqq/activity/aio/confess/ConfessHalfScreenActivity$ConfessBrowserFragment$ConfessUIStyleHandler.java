@@ -16,13 +16,12 @@ class ConfessHalfScreenActivity$ConfessBrowserFragment$ConfessUIStyleHandler
 {
   ConfessHalfScreenActivity$ConfessBrowserFragment$ConfessUIStyleHandler(ConfessHalfScreenActivity.ConfessBrowserFragment paramConfessBrowserFragment) {}
   
-  public void a()
+  public void Y_()
   {
-    WebView localWebView;
     if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a() != null)
     {
-      localWebView = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a();
-      localWebView.setId(2131381863);
+      WebView localWebView = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a();
+      localWebView.setId(2131381075);
       if (this.b != -1) {
         localWebView.setBackgroundColor(this.b);
       }
@@ -32,28 +31,30 @@ class ConfessHalfScreenActivity$ConfessBrowserFragment$ConfessUIStyleHandler
         localObject = (ConfessHalfScreenActivity)localObject;
         ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessHalfScreenActivity$ConfessBrowserFragment, ConfessHalfScreenActivity.a((ConfessHalfScreenActivity)localObject));
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("SwiftBrowserUIStyleHandler", 2, "initWebViewInContentView height=" + ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessHalfScreenActivity$ConfessBrowserFragment));
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("initWebViewInContentView height=");
+        ((StringBuilder)localObject).append(ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessHalfScreenActivity$ConfessBrowserFragment));
+        QLog.i("SwiftBrowserUIStyleHandler", 2, ((StringBuilder)localObject).toString());
       }
-      if (!(this.c instanceof RelativeLayout)) {
-        break label171;
+      if ((this.c instanceof RelativeLayout))
+      {
+        localObject = new RelativeLayout.LayoutParams(-1, ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessHalfScreenActivity$ConfessBrowserFragment));
+        ((RelativeLayout.LayoutParams)localObject).addRule(12);
+        this.c.addView(localWebView, 0, (ViewGroup.LayoutParams)localObject);
       }
-      localObject = new RelativeLayout.LayoutParams(-1, ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessHalfScreenActivity$ConfessBrowserFragment));
-      ((RelativeLayout.LayoutParams)localObject).addRule(12);
-      this.c.addView(localWebView, 0, (ViewGroup.LayoutParams)localObject);
-    }
-    for (;;)
-    {
+      else
+      {
+        this.c.addView(localWebView, 0, new ViewGroup.LayoutParams(-1, ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessHalfScreenActivity$ConfessBrowserFragment)));
+      }
       this.c.setOnClickListener(new ConfessHalfScreenActivity.ConfessBrowserFragment.ConfessUIStyleHandler.1(this));
-      return;
-      label171:
-      this.c.addView(localWebView, 0, new ViewGroup.LayoutParams(-1, ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessHalfScreenActivity$ConfessBrowserFragment)));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity.ConfessBrowserFragment.ConfessUIStyleHandler
  * JD-Core Version:    0.7.0.1
  */

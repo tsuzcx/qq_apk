@@ -1,33 +1,36 @@
 package com.tencent.mobileqq.transfile;
 
-import com.tencent.biz.pubaccount.util.api.IPublicAccountH5AbilityPtt;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.ptt.temp.api.IPttTempApi;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.transfile.api.IHttpEngineService;
 import com.tencent.mobileqq.transfile.api.IProtoReqManager;
 import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoReq;
 import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoResp;
-import com.tencent.mobileqq.transfile.api.impl.TransFileControllerImpl;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq.C2CPttDownReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp.C2CPttDownResp;
 import com.tencent.mobileqq.transfile.protohandler.RichProtoProc;
+import com.tencent.mobileqq.transfile.report.ProcessorReport;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import mqq.manager.ProxyIpManager;
 import tencent.im.cs.cmd0x346.cmd0x346.DownloadSuccReq;
+import tencent.im.cs.cmd0x346.cmd0x346.DownloadSuccRsp;
 import tencent.im.cs.cmd0x346.cmd0x346.ReqBody;
+import tencent.im.cs.cmd0x346.cmd0x346.RspBody;
 
 public class JSPttDownloadProcessor
   extends BaseDownloadProcessor
@@ -35,65 +38,53 @@ public class JSPttDownloadProcessor
   String[] mProtoMsg = null;
   String mTempPath;
   
-  public JSPttDownloadProcessor(TransFileControllerImpl paramTransFileControllerImpl, TransferRequest paramTransferRequest)
+  public JSPttDownloadProcessor(BaseTransFileController paramBaseTransFileController, TransferRequest paramTransferRequest)
   {
-    super(paramTransFileControllerImpl, paramTransferRequest);
-    this.mProxyIpList = ((ProxyIpManager)this.app.getManager(3)).getProxyIp(4);
+    super(paramBaseTransFileController, paramTransferRequest);
   }
   
   private cmd0x346.ReqBody constructApplyDownSuccess()
   {
-    int j = 17;
     cmd0x346.DownloadSuccReq localDownloadSuccReq = new cmd0x346.DownloadSuccReq();
     localDownloadSuccReq.uint64_uin.set(Long.parseLong(this.mUiRequest.mSelfUin));
     localDownloadSuccReq.bytes_uuid.set(ByteStringMicro.copyFromUtf8(this.mUiRequest.mServerPath));
     cmd0x346.ReqBody localReqBody = new cmd0x346.ReqBody();
     localReqBody.uint32_cmd.set(1000);
     localReqBody.uint32_seq.set(0);
-    int i;
-    if ("ftn".equals(this.mStorageSource)) {
+    boolean bool = "ftn".equals(this.mStorageSource);
+    int i = 17;
+    if (bool) {
       i = 3;
+    } else {
+      "pttcenter".equals(this.mStorageSource);
     }
-    for (;;)
-    {
-      localReqBody.uint32_business_id.set(i);
-      localReqBody.uint32_client_type.set(104);
-      localReqBody.msg_download_succ_req.set(localDownloadSuccReq);
-      return localReqBody;
-      i = j;
-      if ("pttcenter".equals(this.mStorageSource)) {
-        i = j;
-      }
-    }
+    localReqBody.uint32_business_id.set(i);
+    localReqBody.uint32_client_type.set(104);
+    localReqBody.msg_download_succ_req.set(localDownloadSuccReq);
+    return localReqBody;
   }
   
   private void sendPttDownSuccess()
   {
     logRichMediaEvent("setSuccess", "req");
+    boolean bool = "pttcenter".equals(this.mStorageSource);
     String str = "PttCenterSvr.pb_pttCenter_CMD_REQ_DOWNLOAD_SUCC-1000";
-    if ("pttcenter".equals(this.mStorageSource)) {
-      str = "PttCenterSvr.pb_pttCenter_CMD_REQ_DOWNLOAD_SUCC-1000";
+    if ((!bool) && ("ftn".equals(this.mStorageSource))) {
+      str = "OfflineFilleHandleSvr.pb_ftnPtt_CMD_REQ_DOWNLOAD_SUCC-1000";
     }
-    ProtoReqManagerImpl.ProtoReq localProtoReq;
-    for (;;)
+    cmd0x346.ReqBody localReqBody = constructApplyDownSuccess();
+    ProtoReqManagerImpl.ProtoReq localProtoReq = new ProtoReqManagerImpl.ProtoReq();
+    localProtoReq.ssoCmd = str;
+    localProtoReq.reqBody = localReqBody.toByteArray();
+    localProtoReq.fixScheduleCount = 1;
+    localProtoReq.tryTime = 30000;
+    localProtoReq.tryCount = 1;
+    localProtoReq.callback = this;
+    if (!isAppValid())
     {
-      cmd0x346.ReqBody localReqBody = constructApplyDownSuccess();
-      localProtoReq = new ProtoReqManagerImpl.ProtoReq();
-      localProtoReq.ssoCmd = str;
-      localProtoReq.reqBody = localReqBody.toByteArray();
-      localProtoReq.fixScheduleCount = 1;
-      localProtoReq.tryTime = 30000;
-      localProtoReq.tryCount = 1;
-      localProtoReq.callback = this;
-      if (isAppValid()) {
-        break;
-      }
-      setError(9366, "illegal app", null, this.mStepUrl);
+      this.mProcessorReport.setError(9366, "illegal app", null, this.mProcessorReport.mStepUrl);
       onError();
       return;
-      if ("ftn".equals(this.mStorageSource)) {
-        str = "OfflineFilleHandleSvr.pb_ftnPtt_CMD_REQ_DOWNLOAD_SUCC-1000";
-      }
     }
     ((IProtoReqManager)this.app.getRuntimeService(IProtoReqManager.class, "")).sendProtoReq(localProtoReq);
   }
@@ -103,13 +94,16 @@ public class JSPttDownloadProcessor
     super.checkParam();
     logRichMediaEvent("uiParam", this.mUiRequest.toString());
     String str = this.mUiRequest.mServerPath;
-    if ((str == null) || (str.equals("")) || (str.equals("null")) || (FileUtils.c(str)) || (str.startsWith("http://")))
-    {
-      setError(9302, getExpStackString(new Exception("uuid illegal " + str)));
-      onError();
-      return -1;
+    if ((str != null) && (!str.equals("")) && (!str.equals("null")) && (!FileUtils.isLocalPath(str)) && (!str.startsWith("http://"))) {
+      return 0;
     }
-    return 0;
+    ProcessorReport localProcessorReport = this.mProcessorReport;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("uuid illegal ");
+    localStringBuilder.append(str);
+    localProcessorReport.setError(9302, getExpStackString(new Exception(localStringBuilder.toString())), null, null);
+    onError();
+    return -1;
   }
   
   public void onBusiProtoResp(RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp)
@@ -124,22 +118,19 @@ public class JSPttDownloadProcessor
         if (QLog.isColorLevel()) {
           logRichMediaEvent("procUrl", paramRichProtoReq.toString());
         }
-        this.mSendByQuickHttp = paramRichProtoReq.isSendByQuickHttp;
-        if (QLog.isColorLevel()) {
-          QLog.e("http_sideway", 2, "C2CPttDownProcessor.onBusiProtoResp:isSendByQuickHttp=" + this.mSendByQuickHttp);
+        this.mProcessorReport.mSendByQuickHttp = paramRichProtoReq.isSendByQuickHttp;
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("C2CPttDownProcessor.onBusiProtoResp:isSendByQuickHttp=");
+          localStringBuilder.append(this.mProcessorReport.mSendByQuickHttp);
+          QLog.e("http_sideway", 2, localStringBuilder.toString());
         }
-        copyRespCommon(this.mStepUrl, paramRichProtoReq);
+        this.mProcessorReport.copyRespCommon(this.mProcessorReport.mStepUrl, paramRichProtoReq);
         if (paramRichProtoReq.result == 0)
         {
           this.mRespUrl = paramRichProtoReq.downloadUrl;
           this.file.fileUrl = this.mRespUrl;
-          if ((this.mProxyIpList != null) && (!this.mProxyIpList.isEmpty()))
-          {
-            paramRichProtoReq = TransFileUtil.getIpAndPortFromUrl(this.mRespUrl);
-            if (paramRichProtoReq != null) {
-              this.mIpList.add(paramRichProtoReq);
-            }
-          }
           recieveFile();
           i += 1;
         }
@@ -157,102 +148,61 @@ public class JSPttDownloadProcessor
     sendMessageToUpdate(2005);
   }
   
-  /* Error */
-  protected void onJSPttSetSuccess(com.tencent.qphone.base.remote.ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte)
+  protected void onJSPttSetSuccess(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: ldc 129
-    //   3: ldc_w 342
-    //   6: invokevirtual 135	com/tencent/mobileqq/transfile/JSPttDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
-    //   9: aload_2
-    //   10: invokevirtual 347	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
-    //   13: sipush 1000
-    //   16: if_icmpeq +38 -> 54
-    //   19: aload_2
-    //   20: invokevirtual 347	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
-    //   23: istore 4
-    //   25: aload_0
-    //   26: ldc_w 349
-    //   29: new 225	java/lang/StringBuilder
-    //   32: dup
-    //   33: invokespecial 226	java/lang/StringBuilder:<init>	()V
-    //   36: ldc_w 351
-    //   39: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   42: iload 4
-    //   44: invokevirtual 354	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   47: invokevirtual 233	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   50: invokevirtual 135	com/tencent/mobileqq/transfile/JSPttDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
-    //   53: return
-    //   54: new 356	tencent/im/cs/cmd0x346/cmd0x346$RspBody
-    //   57: dup
-    //   58: invokespecial 357	tencent/im/cs/cmd0x346/cmd0x346$RspBody:<init>	()V
-    //   61: astore_1
-    //   62: aload_1
-    //   63: aload_3
-    //   64: invokevirtual 361	tencent/im/cs/cmd0x346/cmd0x346$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   67: pop
-    //   68: aload_1
-    //   69: getfield 362	tencent/im/cs/cmd0x346/cmd0x346$RspBody:uint32_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   72: invokevirtual 365	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   75: ifeq +91 -> 166
-    //   78: aload_1
-    //   79: getfield 362	tencent/im/cs/cmd0x346/cmd0x346$RspBody:uint32_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   82: invokevirtual 367	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   85: i2l
-    //   86: lstore 5
-    //   88: lload 5
-    //   90: ldc2_w 368
-    //   93: lcmp
-    //   94: ifne -41 -> 53
-    //   97: aload_1
-    //   98: getfield 373	tencent/im/cs/cmd0x346/cmd0x346$RspBody:msg_download_succ_rsp	Ltencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp;
-    //   101: invokevirtual 376	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp:has	()Z
-    //   104: ifeq -51 -> 53
-    //   107: aload_1
-    //   108: getfield 373	tencent/im/cs/cmd0x346/cmd0x346$RspBody:msg_download_succ_rsp	Ltencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp;
-    //   111: invokevirtual 379	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   114: checkcast 375	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp
-    //   117: getfield 383	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp:int32_ret_code	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   120: invokevirtual 386	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   123: istore 4
-    //   125: invokestatic 270	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   128: ifeq -75 -> 53
-    //   131: aload_0
-    //   132: ldc_w 349
-    //   135: new 225	java/lang/StringBuilder
-    //   138: dup
-    //   139: invokespecial 226	java/lang/StringBuilder:<init>	()V
-    //   142: ldc_w 388
-    //   145: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   148: iload 4
-    //   150: invokevirtual 354	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   153: invokevirtual 233	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   156: invokevirtual 135	com/tencent/mobileqq/transfile/JSPttDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
-    //   159: return
-    //   160: astore_1
-    //   161: aload_1
-    //   162: invokevirtual 391	java/lang/Exception:printStackTrace	()V
-    //   165: return
-    //   166: ldc2_w 392
-    //   169: lstore 5
-    //   171: goto -83 -> 88
-    //   174: astore_1
-    //   175: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	176	0	this	JSPttDownloadProcessor
-    //   0	176	1	paramToServiceMsg	com.tencent.qphone.base.remote.ToServiceMsg
-    //   0	176	2	paramFromServiceMsg	FromServiceMsg
-    //   0	176	3	paramArrayOfByte	byte[]
-    //   23	126	4	i	int
-    //   86	84	5	l	long
-    // Exception table:
-    //   from	to	target	type
-    //   54	62	160	java/lang/Exception
-    //   68	88	160	java/lang/Exception
-    //   97	159	160	java/lang/Exception
-    //   62	68	174	java/lang/Exception
+    logRichMediaEvent("setSuccess", "resp");
+    int i;
+    if (paramFromServiceMsg.getResultCode() != 1000)
+    {
+      i = paramFromServiceMsg.getResultCode();
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("error,code:");
+      paramToServiceMsg.append(i);
+      logRichMediaEvent("onC2CPttSetSuccess", paramToServiceMsg.toString());
+      return;
+    }
+    label184:
+    for (;;)
+    {
+      try
+      {
+        paramToServiceMsg = new cmd0x346.RspBody();
+        long l = -1L;
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        try
+        {
+          paramToServiceMsg.mergeFrom(paramArrayOfByte);
+          if (!paramToServiceMsg.uint32_cmd.has()) {
+            break label184;
+          }
+          l = paramToServiceMsg.uint32_cmd.get();
+          if (l == 1010L)
+          {
+            if (!paramToServiceMsg.msg_download_succ_rsp.has()) {
+              return;
+            }
+            i = ((cmd0x346.DownloadSuccRsp)paramToServiceMsg.msg_download_succ_rsp.get()).int32_ret_code.get();
+            if (QLog.isColorLevel())
+            {
+              paramToServiceMsg = new StringBuilder();
+              paramToServiceMsg.append("retcode:");
+              paramToServiceMsg.append(i);
+              logRichMediaEvent("onC2CPttSetSuccess", paramToServiceMsg.toString());
+            }
+          }
+          return;
+        }
+        catch (Exception paramToServiceMsg)
+        {
+          return;
+        }
+        paramToServiceMsg = paramToServiceMsg;
+        paramToServiceMsg.printStackTrace();
+        return;
+      }
+    }
   }
   
   public void onProtoResp(ProtoReqManagerImpl.ProtoResp paramProtoResp, ProtoReqManagerImpl.ProtoReq paramProtoReq)
@@ -262,39 +212,38 @@ public class JSPttDownloadProcessor
   
   public void onResp(NetResp paramNetResp)
   {
-    boolean bool2 = true;
     super.onResp(paramNetResp);
     this.mNetReq = null;
-    Object localObject = new StringBuilder().append(" result:");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(" result:");
+    int i = paramNetResp.mResult;
+    boolean bool2 = false;
+    if (i == 0) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    ((StringBuilder)localObject).append(bool1);
+    logRichMediaEvent("onHttpResp", ((StringBuilder)localObject).toString());
+    localObject = this.mProcessorReport;
+    StepInfo localStepInfo = this.mProcessorReport.mStepTrans;
+    boolean bool1 = bool2;
+    if (paramNetResp.mResult == 0) {
+      bool1 = true;
+    }
+    ((ProcessorReport)localObject).copyStaticsInfoFromNetResp(localStepInfo, paramNetResp, bool1);
+    this.mTotolLen = paramNetResp.mTotalFileLen;
+    if (this.mTotolLen <= 0L) {
+      this.mTotolLen = (paramNetResp.mTotalBlockLen + paramNetResp.mReq.mStartDownOffset);
+    }
+    this.mRecvLen += paramNetResp.mWrittenBlockLen;
     if (paramNetResp.mResult == 0)
     {
-      bool1 = true;
-      logRichMediaEvent("onHttpResp", bool1);
-      localObject = this.mStepTrans;
-      if (paramNetResp.mResult != 0) {
-        break label163;
-      }
-    }
-    label163:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      copyStatisInfoFromNetResp((BaseTransProcessor.StepInfo)localObject, paramNetResp, bool1);
-      this.mTotolLen = paramNetResp.mTotalFileLen;
-      if (this.mTotolLen <= 0L) {
-        this.mTotolLen = (paramNetResp.mTotalBlockLen + paramNetResp.mReq.mStartDownOffset);
-      }
-      this.mRecvLen += paramNetResp.mWrittenBlockLen;
-      if (paramNetResp.mResult != 0) {
-        break label168;
-      }
-      ((IPublicAccountH5AbilityPtt)QRoute.api(IPublicAccountH5AbilityPtt.class)).setLocalPathForPtt(this.mUiRequest.mOutFilePath);
+      ((IPttTempApi)QRoute.api(IPttTempApi.class)).setJsPttLocalPath(this.mUiRequest.mOutFilePath);
       sendPttDownSuccess();
       onSuccess();
       return;
-      bool1 = false;
-      break;
     }
-    label168:
     if ((paramNetResp.mErrCode == 9364) && (this.mNetworkChgRetryCount < 3))
     {
       logRichMediaEvent("[netChg]", "failed.but net change detect.so retry");
@@ -314,12 +263,11 @@ public class JSPttDownloadProcessor
   
   void recieveFile()
   {
-    this.mStepTrans.logStartTime();
-    String str3 = replaceUrlWithProxyIp(this.mRespUrl, this.mIpList);
-    BaseTransProcessor.addProxyIpToList(this.mProxyIpList, this.mIpList);
+    this.mProcessorReport.mStepTrans.logStartTime();
+    String str2 = this.mRespUrl;
     HttpNetReq localHttpNetReq = new HttpNetReq();
     localHttpNetReq.mCallback = this;
-    localHttpNetReq.mReqUrl = str3;
+    localHttpNetReq.mReqUrl = str2;
     localHttpNetReq.mHttpMethod = 0;
     localHttpNetReq.mServerList = this.mIpList;
     localHttpNetReq.mOutPath = this.mUiRequest.mOutFilePath;
@@ -332,17 +280,23 @@ public class JSPttDownloadProcessor
     localHttpNetReq.mCanPrintUrl = true;
     localHttpNetReq.mSupportBreakResume = true;
     localHttpNetReq.mTempPath = this.mTempPath;
-    String str2 = null;
-    String str1 = str2;
-    if (this.mIpList != null)
-    {
-      str1 = str2;
-      if (!this.mIpList.isEmpty()) {
-        str1 = Arrays.toString(this.mIpList.toArray());
-      }
+    String str1;
+    if ((this.mIpList != null) && (!this.mIpList.isEmpty())) {
+      str1 = Arrays.toString(this.mIpList.toArray());
+    } else {
+      str1 = null;
     }
-    str2 = TransFileUtil.getIpOrDomainFromURL(str3);
-    logRichMediaEvent("httpDown", "RespDomain: " + str2 + " ipList:" + str1 + " uuid:" + this.mUiRequest.mServerPath + " downOffset:" + localHttpNetReq.mStartDownOffset);
+    str2 = TransFileUtil.getIpOrDomainFromURL(str2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RespDomain: ");
+    localStringBuilder.append(str2);
+    localStringBuilder.append(" ipList:");
+    localStringBuilder.append(str1);
+    localStringBuilder.append(" uuid:");
+    localStringBuilder.append(this.mUiRequest.mServerPath);
+    localStringBuilder.append(" downOffset:");
+    localStringBuilder.append(localHttpNetReq.mStartDownOffset);
+    logRichMediaEvent("httpDown", localStringBuilder.toString());
     if (!canDoNextStep()) {
       return;
     }
@@ -353,7 +307,7 @@ public class JSPttDownloadProcessor
   
   void sendGetUrlReq()
   {
-    this.mStepUrl.logStartTime();
+    this.mProcessorReport.mStepUrl.logStartTime();
     this.mStorageSource = "pttcenter";
     logRichMediaEvent("findDbRec", "not found");
     RichProto.RichProtoReq localRichProtoReq = new RichProto.RichProtoReq();
@@ -373,16 +327,16 @@ public class JSPttDownloadProcessor
     localRichProtoReq.protoReqMgr = ((IProtoReqManager)this.app.getRuntimeService(IProtoReqManager.class, ""));
     if (!isAppValid())
     {
-      setError(9366, "illegal app", null, this.mStepUrl);
+      this.mProcessorReport.setError(9366, "illegal app", null, this.mProcessorReport.mStepUrl);
       onError();
-    }
-    do
-    {
       return;
-      if (QLog.isColorLevel()) {
-        logRichMediaEvent("requestStart", localRichProtoReq.toString());
-      }
-    } while (!canDoNextStep());
+    }
+    if (QLog.isColorLevel()) {
+      logRichMediaEvent("requestStart", localRichProtoReq.toString());
+    }
+    if (!canDoNextStep()) {
+      return;
+    }
     this.mRichProtoReq = localRichProtoReq;
     RichProtoProc.procRichProtoReq(localRichProtoReq);
   }
@@ -403,7 +357,7 @@ public class JSPttDownloadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.JSPttDownloadProcessor
  * JD-Core Version:    0.7.0.1
  */

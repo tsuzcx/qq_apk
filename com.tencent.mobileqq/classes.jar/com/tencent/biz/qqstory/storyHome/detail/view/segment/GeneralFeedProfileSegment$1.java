@@ -23,13 +23,17 @@ class GeneralFeedProfileSegment$1
       if (i < 0) {
         paramInt = 0;
       }
-      GeneralFeedProfileSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentGeneralFeedProfileSegment).a.put("2_" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentGeneralFeedProfileSegment.a.a.feedId, ((StoryVideoItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentFeedItemThumbAdapter.a.get(paramInt)).mVid);
+      Map localMap = GeneralFeedProfileSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentGeneralFeedProfileSegment).a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("2_");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentGeneralFeedProfileSegment.a.a.feedId);
+      localMap.put(localStringBuilder.toString(), ((StoryVideoItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentFeedItemThumbAdapter.a.get(paramInt)).mVid);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.view.segment.GeneralFeedProfileSegment.1
  * JD-Core Version:    0.7.0.1
  */

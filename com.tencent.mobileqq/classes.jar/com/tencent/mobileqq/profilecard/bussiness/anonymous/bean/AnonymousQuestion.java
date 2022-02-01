@@ -25,48 +25,91 @@ public class AnonymousQuestion
   
   public static AnonymousQuestion convertQuest(oidb_0xec4.Quest paramQuest, long paramLong)
   {
-    boolean bool2 = false;
-    try
+    for (;;)
     {
-      AnonymousQuestion localAnonymousQuestion = new AnonymousQuestion();
-      localAnonymousQuestion.mId = paramQuest.str_id.get();
-      localAnonymousQuestion.mQuest = paramQuest.str_quest.get();
-      localAnonymousQuestion.mQuestUin = paramQuest.uint64_quest_uin.get();
-      localAnonymousQuestion.mQuestTime = paramQuest.uint64_time.get();
-      localAnonymousQuestion.mOwnerUin = paramLong;
-      if (paramQuest.uint64_show_type.get() == 1L) {}
-      for (boolean bool1 = true;; bool1 = false)
+      try
       {
-        localAnonymousQuestion.mPrivate = bool1;
-        localAnonymousQuestion.mAnswer = paramQuest.str_ans.get();
-        localAnonymousQuestion.mAnswerTime = paramQuest.uint64_ans_time.get();
-        localAnonymousQuestion.mPraiseKey = paramQuest.str_like_key.get();
-        bool1 = bool2;
-        if (paramQuest.uint64_been_praised.get() == 1L) {
+        AnonymousQuestion localAnonymousQuestion = new AnonymousQuestion();
+        localAnonymousQuestion.mId = paramQuest.str_id.get();
+        localAnonymousQuestion.mQuest = paramQuest.str_quest.get();
+        localAnonymousQuestion.mQuestUin = paramQuest.uint64_quest_uin.get();
+        localAnonymousQuestion.mQuestTime = paramQuest.uint64_time.get();
+        localAnonymousQuestion.mOwnerUin = paramLong;
+        paramLong = paramQuest.uint64_show_type.get();
+        boolean bool2 = false;
+        if (paramLong == 1L)
+        {
           bool1 = true;
+          localAnonymousQuestion.mPrivate = bool1;
+          localAnonymousQuestion.mAnswer = paramQuest.str_ans.get();
+          localAnonymousQuestion.mAnswerTime = paramQuest.uint64_ans_time.get();
+          localAnonymousQuestion.mPraiseKey = paramQuest.str_like_key.get();
+          bool1 = bool2;
+          if (paramQuest.uint64_been_praised.get() == 1L) {
+            bool1 = true;
+          }
+          localAnonymousQuestion.mPraised = bool1;
+          localAnonymousQuestion.mTotalPraiseCount = paramQuest.uint64_praise_num.get();
+          localAnonymousQuestion.mTotalCommentCount = paramQuest.uint64_comment_num.get();
+          localAnonymousQuestion.mTotalViewCount = paramQuest.uint64_show_times.get();
+          return localAnonymousQuestion;
         }
-        localAnonymousQuestion.mPraised = bool1;
-        localAnonymousQuestion.mTotalPraiseCount = paramQuest.uint64_praise_num.get();
-        localAnonymousQuestion.mTotalCommentCount = paramQuest.uint64_comment_num.get();
-        localAnonymousQuestion.mTotalViewCount = paramQuest.uint64_show_times.get();
-        return localAnonymousQuestion;
       }
-      return null;
-    }
-    catch (Exception paramQuest)
-    {
-      QLog.e("AnonymousQuestion", 1, "convertQuest fail.", paramQuest);
+      catch (Exception paramQuest)
+      {
+        QLog.e("AnonymousQuestion", 1, "convertQuest fail.", paramQuest);
+        return null;
+      }
+      boolean bool1 = false;
     }
   }
   
   public String toString()
   {
-    return "AnonymousQuestion{mId='" + this.mId + '\'' + ", mQuestUin='" + this.mQuestUin + '\'' + ", mQuestTime='" + this.mQuestTime + '\'' + ", mOwnerUin='" + this.mOwnerUin + '\'' + ", mPrivate='" + this.mPrivate + '\'' + ", mAnswer='" + this.mAnswer + '\'' + ", mAnswerTime='" + this.mAnswerTime + '\'' + ", mPraiseKey='" + this.mPraiseKey + '\'' + ", mPraised='" + this.mPraised + '\'' + ", mTotalPraiseCount='" + this.mTotalPraiseCount + '\'' + ", mTotalCommentCount='" + this.mTotalCommentCount + '\'' + ", mTotalViewCount='" + this.mTotalViewCount + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AnonymousQuestion{mId='");
+    localStringBuilder.append(this.mId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mQuestUin='");
+    localStringBuilder.append(this.mQuestUin);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mQuestTime='");
+    localStringBuilder.append(this.mQuestTime);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mOwnerUin='");
+    localStringBuilder.append(this.mOwnerUin);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mPrivate='");
+    localStringBuilder.append(this.mPrivate);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mAnswer='");
+    localStringBuilder.append(this.mAnswer);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mAnswerTime='");
+    localStringBuilder.append(this.mAnswerTime);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mPraiseKey='");
+    localStringBuilder.append(this.mPraiseKey);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mPraised='");
+    localStringBuilder.append(this.mPraised);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mTotalPraiseCount='");
+    localStringBuilder.append(this.mTotalPraiseCount);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mTotalCommentCount='");
+    localStringBuilder.append(this.mTotalCommentCount);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mTotalViewCount='");
+    localStringBuilder.append(this.mTotalViewCount);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.anonymous.bean.AnonymousQuestion
  * JD-Core Version:    0.7.0.1
  */

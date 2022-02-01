@@ -13,85 +13,80 @@ class LebaPlugin$1
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 17)
     {
-    }
-    for (;;)
-    {
-      return;
+      if (paramInt != 18) {
+        return;
+      }
       paramObject = (Bundle)paramObject;
       if (paramObject == null) {
-        continue;
+        return;
       }
       paramInt = paramObject.getInt("reqCode");
+      String str1;
       if (paramInt == 10000)
       {
         str1 = paramObject.getString("name");
         String str2 = paramObject.getString("callback");
         String str3 = paramObject.getString("msg");
         long l = paramObject.getLong("uiResId");
-        this.a.a = str2;
-        LebaPlugin.a(this.a, 1, l, str1, str3);
+        paramObject = this.a;
+        paramObject.a = str2;
+        LebaPlugin.a(paramObject, 1, l, str1, str3);
         return;
       }
-      if (paramInt != 10002) {
-        continue;
-      }
-      paramBoolean = paramObject.getBoolean("isOpen");
-      String str1 = paramObject.getString("callback");
-      boolean bool = paramObject.getBoolean("has");
-      paramObject = new JSONObject();
-      if (bool) {
-        if (paramBoolean) {
-          paramInt = 1;
-        }
-      }
-      try
+      if (paramInt == 10002)
       {
-        label153:
-        paramObject.put("isOpen", paramInt);
-        while (!TextUtils.isEmpty(str1))
+        paramBoolean = paramObject.getBoolean("isOpen");
+        str1 = paramObject.getString("callback");
+        boolean bool = paramObject.getBoolean("has");
+        paramObject = new JSONObject();
+        if (bool) {
+          if (paramBoolean) {
+            paramInt = 1;
+          } else {
+            paramInt = 0;
+          }
+        }
+        try
         {
-          this.a.callJs(str1, new String[] { paramObject.toString() });
-          return;
-          paramInt = 0;
-          break label153;
-          paramObject.put("isOpen", 1);
+          paramObject.put("isOpen", paramInt);
         }
-      }
-      catch (JSONException localJSONException2)
-      {
-        for (;;)
+        catch (JSONException localJSONException2)
         {
           localJSONException2.printStackTrace();
         }
+        paramObject.put("isOpen", 1);
+        if (!TextUtils.isEmpty(str1)) {
+          this.a.callJs(str1, new String[] { paramObject.toString() });
+        }
       }
+    }
+    else
+    {
       paramObject = new JSONObject();
       if (paramBoolean) {}
       try
       {
         paramObject.put("userOption", 1);
-        while (!TextUtils.isEmpty(this.a.a))
-        {
-          this.a.callJs(this.a.a, new String[] { paramObject.toString() });
-          this.a.a = null;
-          return;
-          paramObject.put("userOption", 0);
-        }
       }
       catch (JSONException localJSONException1)
       {
-        for (;;)
-        {
-          localJSONException1.printStackTrace();
-        }
+        localJSONException1.printStackTrace();
+      }
+      paramObject.put("userOption", 0);
+      if (!TextUtils.isEmpty(this.a.a))
+      {
+        LebaPlugin localLebaPlugin = this.a;
+        localLebaPlugin.callJs(localLebaPlugin.a, new String[] { paramObject.toString() });
+        this.a.a = null;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.lebasearch.LebaPlugin.1
  * JD-Core Version:    0.7.0.1
  */

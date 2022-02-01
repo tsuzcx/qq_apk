@@ -63,10 +63,7 @@ public class PcmRecordController
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
     if (QLog.isColorLevel()) {
       QLog.d("PcmRecordController", 2, String.format("startAudioRecord, mIsRecording: %s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
@@ -77,9 +74,10 @@ public class PcmRecordController
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqArARRecordAudioGenerator != null)
+      AudioGenerator localAudioGenerator = this.jdField_a_of_type_ComTencentMobileqqArARRecordAudioGenerator;
+      if (localAudioGenerator != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordAudioGenerator.a();
+        localAudioGenerator.a();
         this.jdField_a_of_type_ComTencentMobileqqArARRecordAudioGenerator = null;
       }
       this.jdField_a_of_type_Boolean = false;
@@ -92,7 +90,7 @@ public class PcmRecordController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.PcmRecordController
  * JD-Core Version:    0.7.0.1
  */

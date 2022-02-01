@@ -34,94 +34,96 @@ public class DiySecureFileHelper$CustomBackground
     int i;
     Object localObject1;
     Object localObject2;
+    Object localObject3;
     if ((paramFile.exists()) && (paramFile.isDirectory()))
     {
       arrayOfFile = DiySecureFileHelper.a(paramFile);
       j = arrayOfFile.length;
       i = 0;
-      if (i < j)
+      while (i < j)
       {
         localObject1 = arrayOfFile[i];
-        if ((!((File)localObject1).isDirectory()) || (new File((File)localObject1, ".moveflag").exists())) {}
-        for (;;)
+        if ((((File)localObject1).isDirectory()) && (!new File((File)localObject1, ".moveflag").exists()))
         {
-          i += 1;
-          break;
           localObject2 = ((File)localObject1).getName();
           if ((((String)localObject2).length() > 4) && (((String)localObject2).matches("[0-9]{5,}")))
           {
-            localObject2 = paramFile.getAbsolutePath() + "/" + DiySecureFileHelper.a((String)localObject2);
-            FileUtils.c((String)localObject2 + "/.moveflag");
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append(paramFile.getAbsolutePath());
+            ((StringBuilder)localObject3).append("/");
+            ((StringBuilder)localObject3).append(DiySecureFileHelper.a((String)localObject2));
+            localObject2 = ((StringBuilder)localObject3).toString();
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append((String)localObject2);
+            ((StringBuilder)localObject3).append("/.moveflag");
+            FileUtils.createFileIfNotExits(((StringBuilder)localObject3).toString());
             DiySecureFileHelper.a(((File)localObject1).getAbsolutePath(), (String)localObject2);
           }
         }
+        i += 1;
       }
     }
     paramFile = new File(AppConstants.SDCARD_PATH);
     if ((paramFile.exists()) && (paramFile.isDirectory()))
     {
       paramFile = DiySecureFileHelper.a(paramFile);
-      int n = paramFile.length;
+      i = paramFile.length;
       int k = 0;
-      while (k < n)
+      while (k < i)
       {
         arrayOfFile = paramFile[k];
-        int m = 0;
-        i = 0;
         localObject1 = arrayOfFile.getName();
-        j = m;
-        if (arrayOfFile.isDirectory())
+        if ((arrayOfFile.isDirectory()) && (((String)localObject1).length() > 4) && (((String)localObject1).matches("[0-9]{5,}")))
         {
-          j = m;
-          if (((String)localObject1).length() > 4)
+          if (DiySecureFileHelper.a(arrayOfFile).length > 0)
           {
-            j = m;
-            if (((String)localObject1).matches("[0-9]{5,}"))
+            localObject2 = DiySecureFileHelper.a(arrayOfFile);
+            int n = localObject2.length;
+            int m = 0;
+            j = 0;
+            while (m < n)
             {
-              if (DiySecureFileHelper.a(arrayOfFile).length > 0)
+              localObject3 = localObject2[m];
+              if ((((File)localObject3).isDirectory()) && (((File)localObject3).getName().equals("custom_background")))
               {
-                localObject2 = DiySecureFileHelper.a(arrayOfFile);
-                int i1 = localObject2.length;
-                m = 0;
-                for (;;)
+                localObject3 = DiySecureFileHelper.a((File)localObject3);
+                int i1 = localObject3.length;
+                j = 0;
+                while (j < i1)
                 {
-                  j = i;
-                  if (m >= i1) {
-                    break;
-                  }
-                  Object localObject3 = localObject2[m];
-                  j = i;
-                  if (((File)localObject3).isDirectory())
+                  Object localObject4 = localObject3[j];
+                  if (localObject4.isFile())
                   {
-                    j = i;
-                    if (((File)localObject3).getName().equals("custom_background"))
-                    {
-                      localObject3 = DiySecureFileHelper.a((File)localObject3);
-                      j = localObject3.length;
-                      i = 0;
-                      while (i < j)
-                      {
-                        Object localObject4 = localObject3[i];
-                        if (localObject4.isFile())
-                        {
-                          FileUtils.c(DiySecureFileHelper.a() + DiySecureFileHelper.a((String)localObject1) + "/.moveflag");
-                          FileUtils.a(localObject4.getAbsolutePath(), DiySecureFileHelper.a() + DiySecureFileHelper.a((String)localObject1) + "/" + localObject4.getName());
-                        }
-                        i += 1;
-                      }
-                      j = 1;
-                    }
+                    Object localObject5 = new StringBuilder();
+                    ((StringBuilder)localObject5).append(DiySecureFileHelper.a());
+                    ((StringBuilder)localObject5).append(DiySecureFileHelper.a((String)localObject1));
+                    ((StringBuilder)localObject5).append("/.moveflag");
+                    FileUtils.createFileIfNotExits(((StringBuilder)localObject5).toString());
+                    localObject5 = localObject4.getAbsolutePath();
+                    StringBuilder localStringBuilder = new StringBuilder();
+                    localStringBuilder.append(DiySecureFileHelper.a());
+                    localStringBuilder.append(DiySecureFileHelper.a((String)localObject1));
+                    localStringBuilder.append("/");
+                    localStringBuilder.append(localObject4.getName());
+                    FileUtils.quickMove((String)localObject5, localStringBuilder.toString());
                   }
-                  m += 1;
-                  i = j;
+                  j += 1;
                 }
+                j = 1;
               }
-              j = 1;
+              m += 1;
             }
           }
+          else
+          {
+            j = 1;
+          }
+        }
+        else {
+          j = 0;
         }
         if (j != 0) {
-          FileUtils.a(arrayOfFile.getAbsolutePath());
+          FileUtils.deleteDirectory(arrayOfFile.getAbsolutePath());
         }
         k += 1;
       }
@@ -152,7 +154,7 @@ public class DiySecureFileHelper$CustomBackground
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.DiySecureFileHelper.CustomBackground
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,8 @@ class VideoJsProxyImpl$8
     if (paramInt2 != -1)
     {
       this.jdField_a_of_type_JavaIoFile.deleteOnExit();
-      VideoJsProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplVideoJsProxyImpl, VideoJsProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplVideoJsProxyImpl), "chooseVideo", null);
+      paramIntent = this.jdField_a_of_type_ComTencentQqminiProxyimplVideoJsProxyImpl;
+      VideoJsProxyImpl.a(paramIntent, VideoJsProxyImpl.a(paramIntent), "chooseVideo", null);
       this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellIActivityResultManager.removeActivityResultListener(this);
       return true;
     }
@@ -31,7 +32,7 @@ class VideoJsProxyImpl$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.VideoJsProxyImpl.8
  * JD-Core Version:    0.7.0.1
  */

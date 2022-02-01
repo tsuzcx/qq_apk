@@ -16,46 +16,45 @@ public class BaseBubbleBuilderUtil
     String str;
     if (paramChatMessage.isSend()) {
       str = paramChatMessage.selfuin;
+    } else if ((paramChatMessage.istroop != 1000) && (paramChatMessage.istroop != 1020) && (paramChatMessage.istroop != 1004)) {
+      str = paramChatMessage.senderuin;
+    } else {
+      str = paramChatMessage.frienduin;
     }
-    for (;;)
+    ExtensionInfo localExtensionInfo = paramQQAppInterface.getExtensionInfo(str, false);
+    if ((localExtensionInfo != null) && (localExtensionInfo.faceIdUpdateTime < paramChatMessage.time))
     {
-      ExtensionInfo localExtensionInfo = paramQQAppInterface.getExtensionInfo(str, false);
-      if ((localExtensionInfo != null) && (localExtensionInfo.faceIdUpdateTime < paramChatMessage.time))
+      paramChatMessage = paramChatMessage.getExtInfoFromExtStr("vip_face_id");
+      if (QLog.isColorLevel())
       {
-        paramChatMessage = paramChatMessage.getExtInfoFromExtStr("vip_face_id");
-        if (QLog.isColorLevel()) {
-          QLog.d("BaseBubbleBuilderUtil", 2, "handleHeadIcon: message id = " + paramChatMessage);
-        }
-        if ((!TextUtils.isEmpty(paramChatMessage)) && (Long.parseLong(paramChatMessage) != localExtensionInfo.faceId))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("BaseBubbleBuilderUtil", 2, "handleHeadIcon: message id not equals local");
-          }
-          AvatarPendantUtil.a(str);
-          AvatarPendantUtil.a(paramQQAppInterface);
-        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handleHeadIcon: message id = ");
+        localStringBuilder.append(paramChatMessage);
+        QLog.d("BaseBubbleBuilderUtil", 2, localStringBuilder.toString());
       }
-      return str;
-      if ((paramChatMessage.istroop == 1000) || (paramChatMessage.istroop == 1020) || (paramChatMessage.istroop == 1004)) {
-        str = paramChatMessage.frienduin;
-      } else {
-        str = paramChatMessage.senderuin;
+      if ((!TextUtils.isEmpty(paramChatMessage)) && (Long.parseLong(paramChatMessage) != localExtensionInfo.faceId))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("BaseBubbleBuilderUtil", 2, "handleHeadIcon: message id not equals local");
+        }
+        AvatarPendantUtil.a(str);
+        AvatarPendantUtil.a(paramQQAppInterface);
       }
     }
+    return str;
   }
   
   public static boolean a(ChatMessage paramChatMessage)
   {
-    if ((paramChatMessage instanceof MessageForPoke)) {}
-    while ((paramChatMessage instanceof MessageForPokeEmo)) {
+    if ((paramChatMessage instanceof MessageForPoke)) {
       return true;
     }
-    return false;
+    return (paramChatMessage instanceof MessageForPokeEmo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.BaseBubbleBuilderUtil
  * JD-Core Version:    0.7.0.1
  */

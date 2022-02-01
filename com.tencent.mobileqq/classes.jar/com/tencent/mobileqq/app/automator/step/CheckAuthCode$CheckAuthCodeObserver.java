@@ -9,12 +9,12 @@ class CheckAuthCode$CheckAuthCodeObserver
   
   public void b(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.a(7);
+    this.a.setResult(7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.CheckAuthCode.CheckAuthCodeObserver
  * JD-Core Version:    0.7.0.1
  */

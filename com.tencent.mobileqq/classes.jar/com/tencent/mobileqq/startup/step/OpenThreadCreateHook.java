@@ -15,7 +15,8 @@ public class OpenThreadCreateHook
     {
       com.tencent.mobileqq.app.ThreadManager.sThreadWrapContext = new ThreadManagerInitialler();
       NativeMonitorConfigHelper.a();
-      if ((Build.VERSION.SDK_INT <= 27) || (System.currentTimeMillis() % 10000L < SharedPreUtils.A(BaseApplicationImpl.getApplication()))) {
+      int i = Build.VERSION.SDK_INT;
+      if (System.currentTimeMillis() % 10000L < SharedPreUtils.A(BaseApplicationImpl.getApplication())) {
         NativeMonitorConfigHelper.b();
       }
     }
@@ -24,7 +25,7 @@ public class OpenThreadCreateHook
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.OpenThreadCreateHook
  * JD-Core Version:    0.7.0.1
  */

@@ -11,31 +11,32 @@ class DanmakuManager$1
   
   public void run()
   {
-    if (DanmakuManager.a(this.this$0) == null) {
+    if (this.this$0.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager$IDanmakuListener == null) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuDataBaseDanmaku == null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDanmakuDataBaseDanmaku;
+    if (localObject == null)
     {
-      DanmakuManager.a(this.this$0).a(false);
+      this.this$0.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager$IDanmakuListener.a(false);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqDanmakuToolTouchPoint.a(this.jdField_a_of_type_ComTencentMobileqqDanmakuDataBaseDanmaku.h(), this.jdField_a_of_type_ComTencentMobileqqDanmakuDataBaseDanmaku.i());
-    ClickResult localClickResult = this.jdField_a_of_type_ComTencentMobileqqDanmakuDataBaseDanmaku.a(this.jdField_a_of_type_ComTencentMobileqqDanmakuToolTouchPoint);
-    if (DanmakuManager.a(this.this$0, localClickResult))
+    this.jdField_a_of_type_ComTencentMobileqqDanmakuToolTouchPoint.a(((BaseDanmaku)localObject).j(), this.jdField_a_of_type_ComTencentMobileqqDanmakuDataBaseDanmaku.k());
+    localObject = this.jdField_a_of_type_ComTencentMobileqqDanmakuDataBaseDanmaku.a(this.jdField_a_of_type_ComTencentMobileqqDanmakuToolTouchPoint);
+    if (this.this$0.a((ClickResult)localObject))
     {
-      DanmakuManager.a(this.this$0).a(true);
-      if (localClickResult.a) {
-        DanmakuManager.a(this.this$0).b(this.jdField_a_of_type_ComTencentMobileqqDanmakuDataBaseDanmaku);
+      this.this$0.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager$IDanmakuListener.a(true);
+      if (((ClickResult)localObject).a) {
+        this.this$0.jdField_a_of_type_ComTencentMobileqqDanmakuCoreAbsWindow.b(this.jdField_a_of_type_ComTencentMobileqqDanmakuDataBaseDanmaku);
       }
-      DanmakuManager.a(this.this$0).a(this.jdField_a_of_type_ComTencentMobileqqDanmakuDataBaseDanmaku, this.jdField_a_of_type_ComTencentMobileqqDanmakuToolTouchPoint, localClickResult);
+      this.this$0.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager$IDanmakuListener.a(this.jdField_a_of_type_ComTencentMobileqqDanmakuDataBaseDanmaku, this.jdField_a_of_type_ComTencentMobileqqDanmakuToolTouchPoint, (ClickResult)localObject);
       return;
     }
-    DanmakuManager.a(this.this$0).a(false);
+    this.this$0.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager$IDanmakuListener.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.core.DanmakuManager.1
  * JD-Core Version:    0.7.0.1
  */

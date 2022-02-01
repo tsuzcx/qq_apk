@@ -10,12 +10,12 @@ class ForwardSDKB77Sender$2
   
   public void run()
   {
-    QQToast.a(MobileQQ.sMobileQQ.getApplicationContext(), 2131692693, 0).a();
+    QQToast.a(MobileQQ.sMobileQQ.getApplicationContext(), 2131692650, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSDKB77Sender.2
  * JD-Core Version:    0.7.0.1
  */

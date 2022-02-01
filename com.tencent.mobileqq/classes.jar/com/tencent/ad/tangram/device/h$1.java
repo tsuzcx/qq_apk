@@ -12,14 +12,15 @@ class h$1
   public void run()
   {
     h.a locala = h.access$000((Context)this.val$appContext.get());
-    if (locala != null) {}
-    for (String str = locala.toString();; str = null)
-    {
-      AdLog.i("AdDeviceInfoCache", String.format("init %s", new Object[] { str }));
-      h.access$100(this.this$0).fill(locala);
-      h.access$200(this.this$0, 2);
-      return;
+    String str;
+    if (locala != null) {
+      str = locala.toString();
+    } else {
+      str = null;
     }
+    AdLog.i("AdDeviceInfoCache", String.format("init %s", new Object[] { str }));
+    h.access$100(this.this$0).fill(locala);
+    h.access$200(this.this$0, 2);
   }
 }
 

@@ -11,11 +11,11 @@ class DoubleVideoCtrlUI$RecordInfo
   private AVActivity jdField_a_of_type_ComTencentAvUiAVActivity = null;
   Runnable jdField_a_of_type_JavaLangRunnable = new DoubleVideoCtrlUI.RecordInfo.1(this);
   private int b = 0;
-  private int c = 2130842373;
+  private int c = 2130842271;
   
   void a()
   {
-    this.c = 2130842373;
+    this.c = 2130842271;
     this.jdField_a_of_type_Int = 0;
     this.b = 0;
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
@@ -24,34 +24,44 @@ class DoubleVideoCtrlUI$RecordInfo
   
   void a(long paramLong)
   {
-    QLog.w("RecordInfo", 1, "onClick_Record, cancel, seq[" + paramLong + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onClick_Record, cancel, seq[");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("]");
+    QLog.w("RecordInfo", 1, localStringBuilder.toString());
     a();
   }
   
   void a(long paramLong, VideoAppInterface paramVideoAppInterface, AVActivity paramAVActivity)
   {
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    if (this.jdField_a_of_type_Int == 0) {
+    int i = this.jdField_a_of_type_Int;
+    if (i == 0)
+    {
       a(paramLong, paramAVActivity);
-    }
-    while (this.jdField_a_of_type_Int != 1) {
       return;
     }
-    a(paramLong);
+    if (i == 1) {
+      a(paramLong);
+    }
   }
   
   void a(long paramLong, AVActivity paramAVActivity)
   {
-    QLog.w("RecordInfo", 1, "onClick_Record, start, seq[" + paramLong + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onClick_Record, start, seq[");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("]");
+    QLog.w("RecordInfo", 1, localStringBuilder.toString());
     this.jdField_a_of_type_Int = 1;
-    this.c = 2130842376;
+    this.c = 2130842274;
     this.jdField_a_of_type_ComTencentAvUiAVActivity = paramAVActivity;
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoCtrlUI.RecordInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -181,18 +181,17 @@ class PlatformViewsController$1
     {
       localMotionEvent = this.this$0.toMotionEvent(f, paramPlatformViewTouch, true);
       ((VirtualDisplayController)this.this$0.vdControllers.get(Integer.valueOf(paramPlatformViewTouch.viewId))).dispatchTouchEvent(localMotionEvent);
-    }
-    do
-    {
       return;
-      if (PlatformViewsController.access$300(this.this$0).get(i) == null) {
-        break;
-      }
+    }
+    if (PlatformViewsController.access$300(this.this$0).get(i) != null)
+    {
       localMotionEvent = this.this$0.toMotionEvent(f, paramPlatformViewTouch, false);
       paramPlatformViewTouch = ((PlatformView)PlatformViewsController.access$300(this.this$0).get(paramPlatformViewTouch.viewId)).getView();
-    } while (paramPlatformViewTouch == null);
-    paramPlatformViewTouch.dispatchTouchEvent(localMotionEvent);
-    return;
+      if (paramPlatformViewTouch != null) {
+        paramPlatformViewTouch.dispatchTouchEvent(localMotionEvent);
+      }
+      return;
+    }
     paramPlatformViewTouch = new StringBuilder();
     paramPlatformViewTouch.append("Sending touch to an unknown view with id: ");
     paramPlatformViewTouch.append(i);
@@ -246,7 +245,7 @@ class PlatformViewsController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.platform.PlatformViewsController.1
  * JD-Core Version:    0.7.0.1
  */

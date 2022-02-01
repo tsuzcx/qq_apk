@@ -8,10 +8,7 @@ import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.ar.GapDataCollector;
 import com.tencent.mobileqq.camera.adapter.DeviceInstance;
-import com.tencent.mobileqq.camera.utils.CameraUtils;
-import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.BaseConstants;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -26,33 +23,33 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class NewFlowCameraReporter
 {
-  public static long a;
-  public static String a;
+  public static long a = 0L;
+  public static String a = "";
   public static Map<String, GapDataCollector> a;
   
   static
   {
-    jdField_a_of_type_Long = 0L;
-    jdField_a_of_type_JavaLangString = "";
     jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  }
-  
-  public static long a(Intent paramIntent)
-  {
-    return paramIntent.getLongExtra("start_intent_time", 0L);
   }
   
   public static void a()
   {
-    ReportController.b(null, "dc00898", "", "", "0X80072C1", "0X80072C1", 0, 0, "", "", "", "");
+    a("photo send from album", "sv_photo_send_from_album", null);
   }
   
   public static void a(int paramInt)
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("status", paramInt + "");
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFlowCameraReporter", 2, "reportQQFilterDownload :  " + localHashMap.toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("");
+    localHashMap.put("status", localStringBuilder.toString());
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportQQFilterDownload :  ");
+      localStringBuilder.append(localHashMap.toString());
+      QLog.d("NewFlowCameraReporter", 2, localStringBuilder.toString());
     }
     a(localHashMap, "DynamicAdjustment", "acQQFilterDownload");
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "acQQFilterDownload", true, 0L, 0L, localHashMap, null);
@@ -60,37 +57,32 @@ public class NewFlowCameraReporter
   
   public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-    localHashMap.put("param_FailCode", String.valueOf(paramInt1));
-    localHashMap.put("previewWidth", "" + paramInt4);
-    localHashMap.put("previewHeight", "" + paramInt5);
-    localHashMap.put("wantedWidth", "" + paramInt2);
-    localHashMap.put("wantedHeight", "" + paramInt3);
-    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actSetPreviewSizeWay", false, 0L, 0L, localHashMap, "");
-    if (QLog.isColorLevel()) {
-      QLog.e("NewFlowCameraReporter", 2, "[reportPreviewSizeWay] STEP=" + paramInt1);
-    }
-  }
-  
-  public static void a(int paramInt, long paramLong, String paramString, boolean paramBoolean)
-  {
-    if ((paramLong < 0L) || (paramInt < 0))
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put(BaseConstants.RDM_NoChangeFailCode, "");
+    ((HashMap)localObject).put("param_FailCode", String.valueOf(paramInt1));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramInt4);
+    ((HashMap)localObject).put("previewWidth", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramInt5);
+    ((HashMap)localObject).put("previewHeight", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramInt2);
+    ((HashMap)localObject).put("wantedWidth", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramInt3);
+    ((HashMap)localObject).put("wantedHeight", localStringBuilder.toString());
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actSetPreviewSizeWay", false, 0L, 0L, (HashMap)localObject, "");
+    if (QLog.isColorLevel())
     {
-      QLog.d("DynamicAdjustment", 2, "report data check failed, stratTime: " + paramLong + "   cameraType : " + paramInt);
-      return;
-    }
-    if (paramInt == 2) {}
-    for (String str = "back";; str = "front")
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("camera_type", str);
-      localHashMap.put("start_time_cost", paramLong + "");
-      localHashMap.put("activity_from", paramString);
-      localHashMap.put("first_launch", paramBoolean + "");
-      a(localHashMap, "DynamicAdjustment", "cameraStartTimeCost");
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "cameraStartTimeCost", true, 0L, 0L, localHashMap, null);
-      return;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[reportPreviewSizeWay] STEP=");
+      ((StringBuilder)localObject).append(paramInt1);
+      QLog.e("NewFlowCameraReporter", 2, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -101,51 +93,56 @@ public class NewFlowCameraReporter
   
   public static void a(Camera.Parameters paramParameters, String paramString)
   {
-    int j = 1;
     if (paramParameters == null) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("open_custom_camera", 2, paramString + "   model compatibility");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("   model compatibility");
+      QLog.d("open_custom_camera", 2, ((StringBuilder)localObject).toString());
     }
     HashMap localHashMap = new HashMap();
     localHashMap.put("camera_type", paramString);
-    paramString = "";
-    String str = paramString;
+    String str = "";
+    int j = 1;
+    List localList;
     int i;
     if (paramParameters != null)
     {
-      localObject = paramParameters.getSupportedFlashModes();
-      str = paramString;
-      if (localObject != null)
+      localList = paramParameters.getSupportedFlashModes();
+      if ((localList != null) && (localList.size() > 0))
       {
-        str = paramString;
-        if (((List)localObject).size() > 0)
+        paramString = (String)localList.get(0);
+        i = 1;
+        for (;;)
         {
-          paramString = (String)((List)localObject).get(0);
-          i = 1;
-          for (;;)
-          {
-            str = paramString;
-            if (i >= ((List)localObject).size()) {
-              break;
-            }
-            paramString = paramString + "#";
-            paramString = paramString + (String)((List)localObject).get(i);
-            i += 1;
+          localObject = paramString;
+          if (i >= localList.size()) {
+            break;
           }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramString);
+          ((StringBuilder)localObject).append("#");
+          paramString = ((StringBuilder)localObject).toString();
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramString);
+          ((StringBuilder)localObject).append((String)localList.get(i));
+          paramString = ((StringBuilder)localObject).toString();
+          i += 1;
         }
       }
     }
     Object localObject = "";
-    paramString = (String)localObject;
+    paramString = str;
     if (paramParameters != null)
     {
-      List localList = paramParameters.getSupportedFocusModes();
-      paramString = (String)localObject;
+      localList = paramParameters.getSupportedFocusModes();
+      paramString = str;
       if (localList != null)
       {
-        paramString = (String)localObject;
+        paramString = str;
         if (localList.size() > 0)
         {
           paramParameters = (String)localList.get(0);
@@ -156,15 +153,21 @@ public class NewFlowCameraReporter
             if (i >= localList.size()) {
               break;
             }
-            paramParameters = paramParameters + "#";
-            paramParameters = paramParameters + (String)localList.get(i);
+            paramString = new StringBuilder();
+            paramString.append(paramParameters);
+            paramString.append("#");
+            paramParameters = paramString.toString();
+            paramString = new StringBuilder();
+            paramString.append(paramParameters);
+            paramString.append((String)localList.get(i));
+            paramParameters = paramString.toString();
             i += 1;
           }
         }
       }
     }
     localHashMap.put("supported_focus_mode", paramString);
-    localHashMap.put("supported_flash_mode", str);
+    localHashMap.put("supported_flash_mode", localObject);
     a(null, "sv_model_compatibility", localHashMap);
   }
   
@@ -178,7 +181,11 @@ public class NewFlowCameraReporter
     if (QLog.isColorLevel())
     {
       long l = System.currentTimeMillis();
-      QLog.d("PTV.NewFlowCameraActivity.photo", 2, paramString + ";" + (l - paramLong));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(";");
+      localStringBuilder.append(l - paramLong);
+      QLog.d("PTV.NewFlowCameraActivity.photo", 2, localStringBuilder.toString());
       jdField_a_of_type_Long = l;
     }
   }
@@ -188,231 +195,197 @@ public class NewFlowCameraReporter
     if ((!TextUtils.isEmpty(paramString1)) && (QLog.isColorLevel())) {
       QLog.d("open_custom_camera", 2, paramString1);
     }
-    if (paramHashMap == null) {}
-    for (paramString1 = new HashMap();; paramString1 = paramHashMap)
-    {
-      paramString1.put("MANUFACTURER", Build.MANUFACTURER);
-      paramString1.put("MODEL", Build.MODEL);
-      paramString1.put("DEVICE_TYPE_NAME", DeviceInstance.a().a());
-      a(paramString1, "open_custom_camera", paramString2);
-      StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, paramString2, true, 0L, 0L, paramString1, null);
-      return;
+    paramString1 = paramHashMap;
+    if (paramHashMap == null) {
+      paramString1 = new HashMap();
     }
-  }
-  
-  public static void a(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    if (FlowCameraConstant.a == 2) {}
-    for (String str = "0"; (!StringUtil.a(paramString1)) || (!CameraUtils.a()); str = "1")
-    {
-      ReportController.b(null, "dc00898", "", "", "0X80072C3", "0X80072C3", 0, 0, str, paramString1, "", "");
-      if (paramBoolean) {
-        ReportController.b(null, "dc00898", "", "", "0X80083B0", "0X80083B0", 0, 0, str, paramString1, "", "");
-      }
-      if (!StringUtil.a(paramString2)) {
-        ReportController.b(null, "dc00898", "", "", "0X80083B6", "0X80083B6", 0, 0, paramString1, "", paramString2, "");
-      }
-      return;
-    }
-    ReportController.b(null, "dc00898", "", "", "0X80072C2", "0X80072C2", 0, 0, str, "", "", "");
+    paramString1.put("MANUFACTURER", Build.MANUFACTURER);
+    paramString1.put("MODEL", Build.MODEL);
+    paramString1.put("DEVICE_TYPE_NAME", DeviceInstance.a().a());
+    a(paramString1, "open_custom_camera", paramString2);
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, paramString2, true, 0L, 0L, paramString1, null);
   }
   
   public static void a(List<String> paramList)
   {
-    if ((paramList == null) || (paramList.size() != 1)) {}
-    long l;
-    do
+    if (paramList != null)
     {
-      do
+      if (paramList.size() != 1) {
+        return;
+      }
+      paramList = (String)paramList.get(0);
+      if (paramList == null) {
+        return;
+      }
+      if (!paramList.contains("DCIM/Camera"))
       {
-        do
+        if (QLog.isColorLevel())
         {
-          do
-          {
-            do
-            {
-              return;
-              paramList = (String)paramList.get(0);
-            } while (paramList == null);
-            if (paramList.contains("DCIM/Camera")) {
-              break;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.d("open_custom_camera", 2, "not a album path : " + paramList);
-          return;
-          paramList = new File(paramList);
-        } while (!paramList.exists());
-        f();
-        l = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getLong("sv_latest_taken_photo_time", -1L);
-      } while (l == -1L);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("not a album path : ");
+          localStringBuilder.append(paramList);
+          QLog.d("open_custom_camera", 2, localStringBuilder.toString());
+        }
+        return;
+      }
+      paramList = new File(paramList);
+      if (!paramList.exists()) {
+        return;
+      }
+      a();
+      long l = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getLong("sv_latest_taken_photo_time", -1L);
+      if (l == -1L) {
+        return;
+      }
       l = (paramList.lastModified() - l) / 1000L;
       if ((l > 0L) && (l < 60L)) {
-        g();
+        b();
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("open_custom_camera", 2, "album time diff : " + l);
+      if (QLog.isColorLevel())
+      {
+        paramList = new StringBuilder();
+        paramList.append("album time diff : ");
+        paramList.append(l);
+        QLog.d("open_custom_camera", 2, paramList.toString());
+      }
+    }
   }
   
   private static void a(Map<String, String> paramMap, String paramString1, String paramString2)
   {
     Iterator localIterator = paramMap.entrySet().iterator();
-    for (paramMap = "事件Code : " + paramString2 + "   上报内容 ----------  \n"; localIterator.hasNext(); paramMap = paramMap + "\n")
+    paramMap = new StringBuilder();
+    paramMap.append("事件Code : ");
+    paramMap.append(paramString2);
+    paramMap.append("   上报内容 ----------  \n");
+    for (paramMap = paramMap.toString(); localIterator.hasNext(); paramMap = paramString2.toString())
     {
       paramString2 = (Map.Entry)localIterator.next();
-      paramMap = paramMap + (String)paramString2.getKey();
-      paramMap = paramMap + "   :   ";
-      paramMap = paramMap + (String)paramString2.getValue();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramMap);
+      localStringBuilder.append((String)paramString2.getKey());
+      paramMap = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramMap);
+      localStringBuilder.append("   :   ");
+      paramMap = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramMap);
+      localStringBuilder.append((String)paramString2.getValue());
+      paramMap = localStringBuilder.toString();
+      paramString2 = new StringBuilder();
+      paramString2.append(paramMap);
+      paramString2.append("\n");
     }
     if (QLog.isColorLevel()) {
       QLog.d(paramString1, 2, paramMap);
     }
   }
   
-  public static void a(boolean paramBoolean)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("on_auto_focus_result", paramBoolean + "");
-    a(null, "sv_on_auto_focus", localHashMap);
-  }
-  
-  public static void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", String.valueOf(paramBoolean));
-    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-    localHashMap.put("cameraFrontBack", "" + paramInt1);
-    localHashMap.put("templateId", "" + paramInt2);
-    localHashMap.put("photoCaptureMethod", "" + paramInt3);
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "photo_shot_from_shortvideo", false, 0L, 0L, localHashMap, "");
-    if (QLog.isColorLevel()) {
-      QLog.e("NewFlowCameraReporter", 2, "[ShortVideoMergeReport] tag=photo_shot_from_shortvideo templateId=" + paramInt2 + " camera=" + paramInt1);
-    }
-  }
-  
   public static void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-    localHashMap.put("previewWidth", "" + paramInt1);
-    localHashMap.put("previewHeight", "" + paramInt2);
-    localHashMap.put("photoWidth", "" + paramInt3);
-    localHashMap.put("photoHeight", "" + paramInt4);
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actSetPhotoClipSize", paramBoolean, 0L, 0L, localHashMap, "");
-    if (QLog.isColorLevel()) {
-      QLog.e("NewFlowCameraReporter", 2, "[reportSetShootSizeClip] result=" + paramBoolean);
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put(BaseConstants.RDM_NoChangeFailCode, "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramInt1);
+    ((HashMap)localObject).put("previewWidth", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramInt2);
+    ((HashMap)localObject).put("previewHeight", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramInt3);
+    ((HashMap)localObject).put("photoWidth", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramInt4);
+    ((HashMap)localObject).put("photoHeight", localStringBuilder.toString());
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actSetPhotoClipSize", paramBoolean, 0L, 0L, (HashMap)localObject, "");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[reportSetShootSizeClip] result=");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.e("NewFlowCameraReporter", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   public static void a(boolean paramBoolean1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean2, int paramInt5, boolean paramBoolean3)
   {
-    HashMap localHashMap = new HashMap();
-    int j = 0;
-    int i = j;
-    StatisticCollector localStatisticCollector;
+    Object localObject = new HashMap();
     if (paramBoolean1)
     {
-      if (paramBoolean2) {
+      if (paramBoolean2)
+      {
         i = 10;
+        break label52;
       }
-    }
-    else
-    {
-      localHashMap.put("param_FailCode", String.valueOf(i));
-      localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-      localHashMap.put("previewWidth", "" + paramInt1);
-      localHashMap.put("previewHeight", "" + paramInt2);
-      localHashMap.put("photoWidth", "" + paramInt3);
-      localHashMap.put("photoHeight", "" + paramInt4);
-      localHashMap.put("rotation", "" + paramInt5);
-      localStatisticCollector = StatisticCollector.getInstance(BaseApplication.getContext());
-      if (paramBoolean1) {
-        break label319;
-      }
-    }
-    label319:
-    for (boolean bool = true;; bool = false)
-    {
-      localStatisticCollector.collectPerformance(null, "actShootPhotoClip", bool, 0L, 0L, localHashMap, "");
-      if (QLog.isColorLevel()) {
-        QLog.e("NewFlowCameraReporter", 2, "[reportShootPhotoClip] result=" + paramBoolean1 + "ratioNeedClip " + paramBoolean2 + " rotation" + paramInt5 + " needFlip" + paramBoolean3);
-      }
-      return;
       if (paramInt5 != 0)
       {
         i = 20;
-        break;
+        break label52;
       }
-      i = j;
-      if (!paramBoolean3) {
-        break;
+      if (paramBoolean3)
+      {
+        i = 30;
+        break label52;
       }
-      i = 30;
-      break;
+    }
+    int i = 0;
+    label52:
+    ((HashMap)localObject).put("param_FailCode", String.valueOf(i));
+    ((HashMap)localObject).put(BaseConstants.RDM_NoChangeFailCode, "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramInt1);
+    ((HashMap)localObject).put("previewWidth", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramInt2);
+    ((HashMap)localObject).put("previewHeight", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramInt3);
+    ((HashMap)localObject).put("photoWidth", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramInt4);
+    ((HashMap)localObject).put("photoHeight", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramInt5);
+    ((HashMap)localObject).put("rotation", localStringBuilder.toString());
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actShootPhotoClip", paramBoolean1 ^ true, 0L, 0L, (HashMap)localObject, "");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[reportShootPhotoClip] result=");
+      ((StringBuilder)localObject).append(paramBoolean1);
+      ((StringBuilder)localObject).append("ratioNeedClip ");
+      ((StringBuilder)localObject).append(paramBoolean2);
+      ((StringBuilder)localObject).append(" rotation");
+      ((StringBuilder)localObject).append(paramInt5);
+      ((StringBuilder)localObject).append(" needFlip");
+      ((StringBuilder)localObject).append(paramBoolean3);
+      QLog.e("NewFlowCameraReporter", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   public static void b()
   {
-    a("call request focus", "sv_call_request_focus", null);
+    a("album photo send in minute", "photo_send_from_album_in_minute", null);
   }
   
   public static void c()
   {
-    a("custom photo send", "sv_custom_photo_send", null);
-  }
-  
-  public static void d()
-  {
-    a("capture photo send", "sv_capture_photo_send", null);
-  }
-  
-  public static void e()
-  {
-    a("system photo send", "sv_system_photo_send", null);
-  }
-  
-  public static void f()
-  {
-    a("photo send from album", "sv_photo_send_from_album", null);
-  }
-  
-  public static void g()
-  {
-    a("album photo send in minute", "photo_send_from_album_in_minute", null);
-  }
-  
-  public static void h()
-  {
-    a("photo taken by custom", "sv_photo_taken_by_custom", null);
-  }
-  
-  public static void i()
-  {
-    a("photo taken by capture", "sv_photo_taken_by_capture", null);
-  }
-  
-  public static void j()
-  {
-    a("enter short video", "sv_enter_shortvideo", null);
-  }
-  
-  public static void k()
-  {
     a("enter system camera", "sv_enter_system_camera", null);
-  }
-  
-  public static void l()
-  {
-    Iterator localIterator = jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-    while (localIterator.hasNext()) {
-      ((GapDataCollector)((Map.Entry)localIterator.next()).getValue()).a();
-    }
-    jdField_a_of_type_JavaLangString = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.NewFlowCameraReporter
  * JD-Core Version:    0.7.0.1
  */

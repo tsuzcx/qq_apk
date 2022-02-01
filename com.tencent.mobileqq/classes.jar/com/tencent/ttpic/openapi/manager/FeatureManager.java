@@ -15,8 +15,8 @@ import java.io.File;
 public class FeatureManager
 {
   private static final String AEKIT_VERSION_FILE = "aekit_meta.txt";
-  private static final String TAG = FeatureManager.class.getSimpleName();
-  private static boolean enableResourceCheck;
+  private static final String TAG = "FeatureManager";
+  private static boolean enableResourceCheck = false;
   private static boolean enableSoLoadCheck = true;
   private static String resourceDir;
   private static String soDir;
@@ -25,17 +25,32 @@ public class FeatureManager
   {
     try
     {
-      Object localObject = AEModule.getContext();
-      localObject = FileUtils.genSeperateFileDir(((Context)localObject).getExternalFilesDir(null).getPath()) + "Tencent" + File.separator + "aekit";
-      File localFile = new File((String)localObject);
-      if ((!localFile.exists()) && (!localFile.mkdirs())) {
-        LogUtils.e(TAG, "FeatureManager create dir fail : " + (String)localObject);
+      Object localObject1 = AEModule.getContext();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(FileUtils.genSeperateFileDir(((Context)localObject1).getExternalFilesDir(null).getPath()));
+      ((StringBuilder)localObject2).append("Tencent");
+      ((StringBuilder)localObject2).append(File.separator);
+      ((StringBuilder)localObject2).append("aekit");
+      localObject1 = ((StringBuilder)localObject2).toString();
+      localObject2 = new File((String)localObject1);
+      if ((!((File)localObject2).exists()) && (!((File)localObject2).mkdirs()))
+      {
+        localObject2 = TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("FeatureManager create dir fail : ");
+        localStringBuilder.append((String)localObject1);
+        LogUtils.e((String)localObject2, localStringBuilder.toString());
       }
-      localObject = new File((String)localObject + File.separator + ".nomedia");
-      if (!((File)localObject).exists()) {
-        ((File)localObject).createNewFile();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(File.separator);
+      ((StringBuilder)localObject2).append(".nomedia");
+      localObject1 = new File(((StringBuilder)localObject2).toString());
+      if (!((File)localObject1).exists())
+      {
+        ((File)localObject1).createNewFile();
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -55,11 +70,14 @@ public class FeatureManager
   
   public static boolean ensureMaterialSoLoaded(VideoMaterial paramVideoMaterial)
   {
-    if (paramVideoMaterial == null) {}
-    while (FeatureManager.Features.LIGHT_SDK.isFunctionReady()) {
+    boolean bool = true;
+    if (paramVideoMaterial == null) {
       return true;
     }
-    return FeatureManager.Features.LIGHT_SDK.init();
+    if (!FeatureManager.Features.LIGHT_SDK.isFunctionReady()) {
+      bool = FeatureManager.Features.LIGHT_SDK.init();
+    }
+    return bool;
   }
   
   public static String getResourceDir()
@@ -79,7 +97,10 @@ public class FeatureManager
   
   public static boolean isBasicFeaturesReadyInDir(String paramString)
   {
-    return FeatureManager.Features.YT_COMMON.isSoReadyInDirectory(paramString) & FeatureManager.Features.PTU_ALGO.isSoReadyInDirectory(paramString) & FeatureManager.Features.PTU_TOOLS.isSoReadyInDirectory(paramString) & FeatureManager.Features.LIGHT_SDK.isSoReadyInDirectory(paramString);
+    boolean bool1 = FeatureManager.Features.YT_COMMON.isSoReadyInDirectory(paramString);
+    boolean bool2 = FeatureManager.Features.PTU_ALGO.isSoReadyInDirectory(paramString);
+    boolean bool3 = FeatureManager.Features.PTU_TOOLS.isSoReadyInDirectory(paramString);
+    return FeatureManager.Features.LIGHT_SDK.isSoReadyInDirectory(paramString) & bool1 & bool2 & bool3;
   }
   
   public static boolean isEnableResourceCheck()
@@ -106,7 +127,7 @@ public class FeatureManager
     if (paramBoolean) {
       bool = true & FeatureManager.Features.YT_COMMON.init();
     }
-    return bool & FeatureManager.Features.PTU_TOOLS.init() & FeatureManager.Features.PTU_ALGO.init() & FeatureManager.Features.LIGHT_SDK.init();
+    return FeatureManager.Features.PTU_TOOLS.init() & bool & FeatureManager.Features.PTU_ALGO.init() & FeatureManager.Features.LIGHT_SDK.init();
   }
   
   public static void setModelDir(String paramString)
@@ -131,7 +152,7 @@ public class FeatureManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.manager.FeatureManager
  * JD-Core Version:    0.7.0.1
  */

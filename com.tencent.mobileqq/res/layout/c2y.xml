@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/di" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:gravity="center" android:layout_gravity="center" android:id="@id/fie" android:background="@drawable/tips_popup_win_bg" android:layout_width="108.0dip" android:layout_height="108.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/n_t" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="28.0dip" android:layout_marginBottom="45.0dip" android:scaleType="centerCrop" />
-    <ImageView android:id="@id/n_u" android:layout_width="205.0dip" android:layout_height="79.0dip" android:layout_marginTop="79.0dip" android:scaleType="centerCrop" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center" android:id="@id/od_" android:background="@drawable/b7q" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="34.0dip" android:text="@string/wnw" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/nch" android:layout_width="35.0dip" android:layout_height="35.0dip" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="16.0sp" android:textColor="@color/al3" android:id="@id/k9x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/woo" android:layout_below="@id/nch" android:layout_centerHorizontal="true" />
 </RelativeLayout>

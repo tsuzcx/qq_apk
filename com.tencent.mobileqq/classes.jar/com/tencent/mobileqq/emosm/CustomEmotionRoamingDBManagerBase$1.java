@@ -11,224 +11,272 @@ class CustomEmotionRoamingDBManagerBase$1
   public void run()
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore_1
-    //   2: aload_0
-    //   3: getfield 15	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase$1:this$0	Lcom/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase;
-    //   6: getfield 31	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase:a	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   9: ifnonnull +4 -> 13
-    //   12: return
-    //   13: aload_0
-    //   14: getfield 15	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase$1:this$0	Lcom/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase;
-    //   17: getfield 31	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase:a	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   20: invokevirtual 37	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
-    //   23: invokevirtual 43	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   26: astore 7
-    //   28: aload 7
-    //   30: ifnull -18 -> 12
-    //   33: aload 7
-    //   35: invokevirtual 49	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   38: astore 5
-    //   40: aload 5
-    //   42: astore 4
-    //   44: aload 5
-    //   46: invokevirtual 54	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
-    //   49: iconst_0
-    //   50: istore_2
+    //   0: aload_0
+    //   1: getfield 15	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase$1:this$0	Lcom/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase;
+    //   4: getfield 32	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase:app	Lcom/tencent/common/app/business/BaseQQAppInterface;
+    //   7: ifnonnull +4 -> 11
+    //   10: return
+    //   11: aload_0
+    //   12: getfield 15	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase$1:this$0	Lcom/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase;
+    //   15: getfield 32	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase:app	Lcom/tencent/common/app/business/BaseQQAppInterface;
+    //   18: invokevirtual 38	com/tencent/common/app/business/BaseQQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
+    //   21: invokevirtual 44	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   24: astore 9
+    //   26: aload 9
+    //   28: ifnonnull +4 -> 32
+    //   31: return
+    //   32: aconst_null
+    //   33: astore 7
+    //   35: aconst_null
+    //   36: astore 6
+    //   38: iconst_0
+    //   39: istore_1
+    //   40: aload 9
+    //   42: invokevirtual 50	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   45: astore 5
+    //   47: aload 5
+    //   49: astore 6
     //   51: aload 5
-    //   53: astore 4
-    //   55: iload_1
-    //   56: aload_0
-    //   57: getfield 17	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase$1:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   60: invokeinterface 60 1 0
-    //   65: if_icmpge +164 -> 229
-    //   68: aload 5
-    //   70: astore 4
-    //   72: aload_0
-    //   73: getfield 17	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase$1:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   76: iload_1
-    //   77: invokeinterface 64 2 0
-    //   82: checkcast 66	com/tencent/mobileqq/data/CustomEmotionBase
-    //   85: astore 6
-    //   87: aload 5
-    //   89: astore 4
-    //   91: aload_0
-    //   92: getfield 19	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase$1:jdField_a_of_type_Int	I
-    //   95: tableswitch	default:+298 -> 393, 1:+74->169, 2:+100->195, 3:+29->124, 4:+117->212
-    //   125: iconst_2
-    //   126: astore 4
-    //   128: invokestatic 72	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   131: ifeq +265 -> 396
-    //   134: aload 5
-    //   136: astore 4
-    //   138: ldc 74
-    //   140: iconst_2
-    //   141: new 76	java/lang/StringBuilder
-    //   144: dup
-    //   145: invokespecial 77	java/lang/StringBuilder:<init>	()V
-    //   148: ldc 79
-    //   150: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   153: aload_0
-    //   154: getfield 19	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase$1:jdField_a_of_type_Int	I
-    //   157: invokevirtual 86	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   160: invokevirtual 90	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   163: invokestatic 94	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   166: goto +230 -> 396
-    //   169: aload 5
-    //   171: astore 4
-    //   173: aload 6
-    //   175: sipush 1000
-    //   178: invokevirtual 98	com/tencent/mobileqq/data/CustomEmotionBase:setStatus	(I)V
-    //   181: aload 5
-    //   183: astore 4
-    //   185: aload 7
-    //   187: aload 6
-    //   189: invokevirtual 102	com/tencent/mobileqq/persistence/EntityManager:persist	(Lcom/tencent/mobileqq/persistence/Entity;)V
-    //   192: goto +204 -> 396
+    //   53: astore 7
+    //   55: aload 5
+    //   57: invokevirtual 55	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   60: iconst_0
+    //   61: istore_3
+    //   62: aload 5
+    //   64: astore 6
+    //   66: iload_1
+    //   67: aload_0
+    //   68: getfield 17	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase$1:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   71: invokeinterface 61 1 0
+    //   76: if_icmpge +180 -> 256
+    //   79: aload 5
+    //   81: astore 6
+    //   83: aload_0
+    //   84: getfield 17	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase$1:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   87: iload_1
+    //   88: invokeinterface 65 2 0
+    //   93: checkcast 67	com/tencent/mobileqq/data/CustomEmotionBase
+    //   96: astore 7
+    //   98: aload 5
+    //   100: astore 6
+    //   102: aload_0
+    //   103: getfield 19	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase$1:jdField_a_of_type_Int	I
+    //   106: istore_2
+    //   107: iload_2
+    //   108: iconst_1
+    //   109: if_icmpeq +118 -> 227
+    //   112: iload_2
+    //   113: iconst_2
+    //   114: if_icmpeq +97 -> 211
+    //   117: iload_2
+    //   118: iconst_4
+    //   119: if_icmpeq +76 -> 195
+    //   122: aload 5
+    //   124: astore 6
+    //   126: iload_3
+    //   127: istore 4
+    //   129: invokestatic 73	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   132: ifeq +305 -> 437
+    //   135: aload 5
+    //   137: astore 6
+    //   139: new 75	java/lang/StringBuilder
+    //   142: dup
+    //   143: invokespecial 76	java/lang/StringBuilder:<init>	()V
+    //   146: astore 7
+    //   148: aload 5
+    //   150: astore 6
+    //   152: aload 7
+    //   154: ldc 78
+    //   156: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   159: pop
+    //   160: aload 5
+    //   162: astore 6
+    //   164: aload 7
+    //   166: aload_0
+    //   167: getfield 19	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase$1:jdField_a_of_type_Int	I
+    //   170: invokevirtual 85	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   173: pop
+    //   174: aload 5
+    //   176: astore 6
+    //   178: ldc 87
+    //   180: iconst_2
+    //   181: aload 7
+    //   183: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   186: invokestatic 95	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   189: iload_3
+    //   190: istore 4
+    //   192: goto +245 -> 437
     //   195: aload 5
-    //   197: astore 4
-    //   199: aload 7
-    //   201: aload 6
-    //   203: invokevirtual 106	com/tencent/mobileqq/persistence/EntityManager:update	(Lcom/tencent/mobileqq/persistence/Entity;)Z
-    //   206: istore_3
-    //   207: iload_3
-    //   208: istore_2
-    //   209: goto +187 -> 396
-    //   212: aload 5
-    //   214: astore 4
-    //   216: aload 7
-    //   218: aload 6
-    //   220: invokevirtual 109	com/tencent/mobileqq/persistence/EntityManager:remove	(Lcom/tencent/mobileqq/persistence/Entity;)Z
-    //   223: istore_3
-    //   224: iload_3
-    //   225: istore_2
-    //   226: goto +170 -> 396
-    //   229: aload 5
-    //   231: astore 4
-    //   233: aload 5
-    //   235: invokevirtual 112	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
-    //   238: aload 5
-    //   240: ifnull +8 -> 248
-    //   243: aload 5
-    //   245: invokevirtual 115	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   248: aload 7
-    //   250: invokevirtual 118	com/tencent/mobileqq/persistence/EntityManager:close	()V
-    //   253: invokestatic 72	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   256: ifeq -244 -> 12
-    //   259: ldc 74
-    //   261: iconst_2
-    //   262: new 76	java/lang/StringBuilder
-    //   265: dup
-    //   266: invokespecial 77	java/lang/StringBuilder:<init>	()V
-    //   269: ldc 120
-    //   271: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   274: aload_0
-    //   275: getfield 19	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase$1:jdField_a_of_type_Int	I
-    //   278: invokevirtual 86	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   281: ldc 122
-    //   283: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   286: aload_0
-    //   287: getfield 17	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase$1:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   290: invokeinterface 60 1 0
-    //   295: invokevirtual 86	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   298: ldc 124
-    //   300: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   303: iload_2
-    //   304: invokevirtual 127	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   307: invokevirtual 90	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   310: invokestatic 94	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   313: return
-    //   314: astore 6
-    //   316: aconst_null
-    //   317: astore 5
-    //   319: iconst_0
-    //   320: istore_2
-    //   321: aload 5
-    //   323: astore 4
-    //   325: ldc 74
-    //   327: iconst_1
-    //   328: ldc 129
-    //   330: aload 6
-    //   332: invokestatic 133	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   335: aload 5
-    //   337: ifnull +8 -> 345
-    //   340: aload 5
-    //   342: invokevirtual 115	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   345: aload 7
-    //   347: invokevirtual 118	com/tencent/mobileqq/persistence/EntityManager:close	()V
-    //   350: goto -97 -> 253
-    //   353: astore 5
-    //   355: aconst_null
-    //   356: astore 4
-    //   358: aload 4
-    //   360: ifnull +8 -> 368
-    //   363: aload 4
-    //   365: invokevirtual 115	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   368: aload 7
-    //   370: invokevirtual 118	com/tencent/mobileqq/persistence/EntityManager:close	()V
-    //   373: aload 5
-    //   375: athrow
-    //   376: astore 5
-    //   378: goto -20 -> 358
-    //   381: astore 6
-    //   383: iconst_0
-    //   384: istore_2
-    //   385: goto -64 -> 321
-    //   388: astore 6
-    //   390: goto -69 -> 321
-    //   393: goto -269 -> 124
-    //   396: iload_1
-    //   397: iconst_1
-    //   398: iadd
-    //   399: istore_1
-    //   400: goto -349 -> 51
+    //   197: astore 6
+    //   199: aload 9
+    //   201: aload 7
+    //   203: invokevirtual 99	com/tencent/mobileqq/persistence/EntityManager:remove	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   206: istore 4
+    //   208: goto +229 -> 437
+    //   211: aload 5
+    //   213: astore 6
+    //   215: aload 9
+    //   217: aload 7
+    //   219: invokevirtual 102	com/tencent/mobileqq/persistence/EntityManager:update	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   222: istore 4
+    //   224: goto +213 -> 437
+    //   227: aload 5
+    //   229: astore 6
+    //   231: aload 7
+    //   233: sipush 1000
+    //   236: invokevirtual 106	com/tencent/mobileqq/data/CustomEmotionBase:setStatus	(I)V
+    //   239: aload 5
+    //   241: astore 6
+    //   243: aload 9
+    //   245: aload 7
+    //   247: invokevirtual 110	com/tencent/mobileqq/persistence/EntityManager:persist	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   250: iload_3
+    //   251: istore 4
+    //   253: goto +184 -> 437
+    //   256: aload 5
+    //   258: astore 6
+    //   260: aload 5
+    //   262: invokevirtual 113	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   265: iload_3
+    //   266: istore 4
+    //   268: aload 5
+    //   270: ifnull +54 -> 324
+    //   273: goto +43 -> 316
+    //   276: astore 8
+    //   278: goto +16 -> 294
+    //   281: astore 5
+    //   283: goto +130 -> 413
+    //   286: astore 8
+    //   288: iconst_0
+    //   289: istore_3
+    //   290: aload 7
+    //   292: astore 5
+    //   294: aload 5
+    //   296: astore 6
+    //   298: ldc 87
+    //   300: iconst_1
+    //   301: ldc 115
+    //   303: aload 8
+    //   305: invokestatic 119	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   308: iload_3
+    //   309: istore 4
+    //   311: aload 5
+    //   313: ifnull +11 -> 324
+    //   316: aload 5
+    //   318: invokevirtual 122	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   321: iload_3
+    //   322: istore 4
+    //   324: aload 9
+    //   326: invokevirtual 125	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   329: invokestatic 73	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   332: ifeq +80 -> 412
+    //   335: new 75	java/lang/StringBuilder
+    //   338: dup
+    //   339: invokespecial 76	java/lang/StringBuilder:<init>	()V
+    //   342: astore 5
+    //   344: aload 5
+    //   346: ldc 127
+    //   348: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   351: pop
+    //   352: aload 5
+    //   354: aload_0
+    //   355: getfield 19	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase$1:jdField_a_of_type_Int	I
+    //   358: invokevirtual 85	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   361: pop
+    //   362: aload 5
+    //   364: ldc 129
+    //   366: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   369: pop
+    //   370: aload 5
+    //   372: aload_0
+    //   373: getfield 17	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase$1:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   376: invokeinterface 61 1 0
+    //   381: invokevirtual 85	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   384: pop
+    //   385: aload 5
+    //   387: ldc 131
+    //   389: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   392: pop
+    //   393: aload 5
+    //   395: iload 4
+    //   397: invokevirtual 134	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   400: pop
+    //   401: ldc 87
+    //   403: iconst_2
+    //   404: aload 5
+    //   406: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   409: invokestatic 95	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   412: return
+    //   413: aload 6
+    //   415: ifnull +8 -> 423
+    //   418: aload 6
+    //   420: invokevirtual 122	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   423: aload 9
+    //   425: invokevirtual 125	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   428: goto +6 -> 434
+    //   431: aload 5
+    //   433: athrow
+    //   434: goto -3 -> 431
+    //   437: iload_1
+    //   438: iconst_1
+    //   439: iadd
+    //   440: istore_1
+    //   441: iload 4
+    //   443: istore_3
+    //   444: goto -382 -> 62
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	403	0	this	1
-    //   1	399	1	i	int
-    //   50	335	2	bool1	boolean
-    //   206	19	3	bool2	boolean
-    //   42	322	4	localEntityTransaction1	com.tencent.mobileqq.persistence.EntityTransaction
-    //   38	303	5	localEntityTransaction2	com.tencent.mobileqq.persistence.EntityTransaction
-    //   353	21	5	localObject1	Object
-    //   376	1	5	localObject2	Object
-    //   85	134	6	localCustomEmotionBase	com.tencent.mobileqq.data.CustomEmotionBase
-    //   314	17	6	localException1	java.lang.Exception
-    //   381	1	6	localException2	java.lang.Exception
-    //   388	1	6	localException3	java.lang.Exception
-    //   26	343	7	localEntityManager	com.tencent.mobileqq.persistence.EntityManager
+    //   0	447	0	this	1
+    //   39	402	1	i	int
+    //   106	14	2	j	int
+    //   61	383	3	bool1	boolean
+    //   127	315	4	bool2	boolean
+    //   45	224	5	localEntityTransaction	com.tencent.mobileqq.persistence.EntityTransaction
+    //   281	1	5	localObject1	Object
+    //   292	140	5	localObject2	Object
+    //   36	383	6	localObject3	Object
+    //   33	258	7	localObject4	Object
+    //   276	1	8	localException1	java.lang.Exception
+    //   286	18	8	localException2	java.lang.Exception
+    //   24	400	9	localEntityManager	com.tencent.mobileqq.persistence.EntityManager
     // Exception table:
     //   from	to	target	type
-    //   33	40	314	java/lang/Exception
-    //   33	40	353	finally
-    //   44	49	376	finally
-    //   55	68	376	finally
-    //   72	87	376	finally
-    //   91	124	376	finally
-    //   128	134	376	finally
-    //   138	166	376	finally
-    //   173	181	376	finally
-    //   185	192	376	finally
-    //   199	207	376	finally
-    //   216	224	376	finally
-    //   233	238	376	finally
-    //   325	335	376	finally
-    //   44	49	381	java/lang/Exception
-    //   55	68	388	java/lang/Exception
-    //   72	87	388	java/lang/Exception
-    //   91	124	388	java/lang/Exception
-    //   128	134	388	java/lang/Exception
-    //   138	166	388	java/lang/Exception
-    //   173	181	388	java/lang/Exception
-    //   185	192	388	java/lang/Exception
-    //   199	207	388	java/lang/Exception
-    //   216	224	388	java/lang/Exception
-    //   233	238	388	java/lang/Exception
+    //   66	79	276	java/lang/Exception
+    //   83	98	276	java/lang/Exception
+    //   102	107	276	java/lang/Exception
+    //   129	135	276	java/lang/Exception
+    //   139	148	276	java/lang/Exception
+    //   152	160	276	java/lang/Exception
+    //   164	174	276	java/lang/Exception
+    //   178	189	276	java/lang/Exception
+    //   199	208	276	java/lang/Exception
+    //   215	224	276	java/lang/Exception
+    //   231	239	276	java/lang/Exception
+    //   243	250	276	java/lang/Exception
+    //   260	265	276	java/lang/Exception
+    //   40	47	281	finally
+    //   55	60	281	finally
+    //   66	79	281	finally
+    //   83	98	281	finally
+    //   102	107	281	finally
+    //   129	135	281	finally
+    //   139	148	281	finally
+    //   152	160	281	finally
+    //   164	174	281	finally
+    //   178	189	281	finally
+    //   199	208	281	finally
+    //   215	224	281	finally
+    //   231	239	281	finally
+    //   243	250	281	finally
+    //   260	265	281	finally
+    //   298	308	281	finally
+    //   40	47	286	java/lang/Exception
+    //   55	60	286	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.CustomEmotionRoamingDBManagerBase.1
  * JD-Core Version:    0.7.0.1
  */

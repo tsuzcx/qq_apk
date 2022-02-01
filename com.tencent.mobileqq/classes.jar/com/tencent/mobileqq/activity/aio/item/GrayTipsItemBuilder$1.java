@@ -7,12 +7,12 @@ import com.tencent.device.devicemgr.SmartDeviceProxyMgr;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtil.TipsClickedInterface;
 import cooperation.smartdevice.SmartDevicePluginLoader;
 import cooperation.smartdevice.SmartDevicePluginProxyActivity;
 
 class GrayTipsItemBuilder$1
-  implements FileManagerUtil.TipsClickedInterface
+  implements QQFileManagerUtil.TipsClickedInterface
 {
   GrayTipsItemBuilder$1(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
   
@@ -25,7 +25,7 @@ class GrayTipsItemBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

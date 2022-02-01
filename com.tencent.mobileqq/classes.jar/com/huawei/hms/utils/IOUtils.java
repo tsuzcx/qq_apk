@@ -22,8 +22,10 @@ public final class IOUtils
     }
     catch (IOException paramCloseable)
     {
-      HMSLog.e("IOUtils", "An exception occurred while closing the 'Closeable' object.");
+      label11:
+      break label11;
     }
+    HMSLog.e("IOUtils", "An exception occurred while closing the 'Closeable' object.");
   }
   
   public static void closeQuietly(InputStream paramInputStream)
@@ -79,7 +81,7 @@ public final class IOUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.utils.IOUtils
  * JD-Core Version:    0.7.0.1
  */

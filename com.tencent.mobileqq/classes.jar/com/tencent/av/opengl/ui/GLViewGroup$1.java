@@ -18,14 +18,15 @@ class GLViewGroup$1
     }
     catch (ConcurrentModificationException paramGLView)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("OnZOrderChanged", 2, "OnZOrderChanged FATAL EXCEPTION:", paramGLView);
+      if (QLog.isColorLevel()) {
+        QLog.d("OnZOrderChanged", 2, "OnZOrderChanged FATAL EXCEPTION:", paramGLView);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.ui.GLViewGroup.1
  * JD-Core Version:    0.7.0.1
  */

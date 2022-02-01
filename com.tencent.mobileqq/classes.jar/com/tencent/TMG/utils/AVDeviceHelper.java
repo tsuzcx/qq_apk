@@ -14,18 +14,19 @@ public class AVDeviceHelper
   
   private static String byteArrayToHexString(byte[] paramArrayOfByte)
   {
-    int j = 0;
-    char[] arrayOfChar = new char[paramArrayOfByte.length << 1];
+    char[] arrayOfChar1 = new char[paramArrayOfByte.length << 1];
     int i = 0;
+    int j = 0;
     while (i < paramArrayOfByte.length)
     {
       int k = j + 1;
-      arrayOfChar[j] = DIGITS_LOWER[((paramArrayOfByte[i] & 0xF0) >>> 4)];
+      char[] arrayOfChar2 = DIGITS_LOWER;
+      arrayOfChar1[j] = arrayOfChar2[((paramArrayOfByte[i] & 0xF0) >>> 4)];
       j = k + 1;
-      arrayOfChar[k] = DIGITS_LOWER[(paramArrayOfByte[i] & 0xF)];
+      arrayOfChar1[k] = arrayOfChar2[(paramArrayOfByte[i] & 0xF)];
       i += 1;
     }
-    return new String(arrayOfChar);
+    return new String(arrayOfChar1);
   }
   
   public static String doRead(Context paramContext)
@@ -35,62 +36,75 @@ public class AVDeviceHelper
   
   public static String getDeviceIdentifier(Context paramContext)
   {
-    return doRead(paramContext) + ";" + getOrigMacAddr(paramContext) + ";" + getOrigAndroidID(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(doRead(paramContext));
+    localStringBuilder.append(";");
+    localStringBuilder.append(getOrigMacAddr(paramContext));
+    localStringBuilder.append(";");
+    localStringBuilder.append(getOrigAndroidID(paramContext));
+    return localStringBuilder.toString();
   }
   
   public static String getOrigAndroidID(Context paramContext)
   {
-    String str = "";
     try
     {
       paramContext = Settings.Secure.getString(paramContext.getContentResolver(), "android_id");
-      return string2Md5(paramContext);
     }
     catch (Throwable paramContext)
     {
-      for (;;)
-      {
-        paramContext = str;
-      }
+      label13:
+      break label13;
     }
+    paramContext = "";
+    return string2Md5(paramContext);
   }
   
   public static String getOrigMacAddr(Context paramContext)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        paramContext = (WifiManager)paramContext.getSystemService("wifi");
-        if (paramContext == null) {
-          continue;
-        }
-        paramContext = paramContext.getConnectionInfo();
-        if (paramContext == null) {
-          continue;
-        }
-        paramContext = paramContext.getMacAddress();
-      }
-      catch (Exception paramContext)
-      {
-        paramContext = "";
-        continue;
-      }
+      paramContext = (WifiManager)paramContext.getSystemService("wifi");
       if (paramContext == null) {
-        break label64;
+        break label68;
       }
-      return string2Md5(paramContext.replaceAll(":", "").toUpperCase());
-      paramContext = null;
-      continue;
-      paramContext = null;
+      paramContext = paramContext.getConnectionInfo();
     }
-    label64:
+    catch (Exception paramContext)
+    {
+      for (;;)
+      {
+        label42:
+        continue;
+        label68:
+        paramContext = null;
+      }
+    }
+    if (paramContext != null)
+    {
+      paramContext = paramContext.getMacAddress();
+    }
+    else
+    {
+      paramContext = null;
+      break label42;
+      paramContext = "";
+    }
+    if (paramContext != null) {
+      return string2Md5(paramContext.replaceAll(":", "").toUpperCase());
+    }
     return "";
   }
   
   public static String getSimulateIDFA(Context paramContext)
   {
-    return doRead(paramContext) + ";" + getOrigMacAddr(paramContext) + ";" + getOrigAndroidID(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(doRead(paramContext));
+    localStringBuilder.append(";");
+    localStringBuilder.append(getOrigMacAddr(paramContext));
+    localStringBuilder.append(";");
+    localStringBuilder.append(getOrigAndroidID(paramContext));
+    return localStringBuilder.toString();
   }
   
   public static String string2Md5(String paramString)
@@ -103,12 +117,12 @@ public class AVDeviceHelper
       paramString = byteArrayToHexString(MessageDigest.getInstance("MD5").digest(paramString.getBytes("UTF-8")));
       return paramString;
     }
-    catch (NoSuchAlgorithmException paramString)
+    catch (UnsupportedEncodingException paramString)
     {
       paramString.printStackTrace();
       return "";
     }
-    catch (UnsupportedEncodingException paramString)
+    catch (NoSuchAlgorithmException paramString)
     {
       paramString.printStackTrace();
     }

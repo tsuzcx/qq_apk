@@ -6,12 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import com.tencent.ilive.audiencepages.room.AudienceRoomViewPager;
 import com.tencent.ilive.base.page.PageType;
+import com.tencent.ilivesdk.roomswitchservice_interface.SwitchRoomInfo;
 
 public class LiveAudience
 {
   public static AudienceRoomViewPager createAudienceRoomPager(Context paramContext, EnterRoomConfig paramEnterRoomConfig)
   {
-    paramContext = (AudienceRoomViewPager)LayoutInflater.from(paramContext).inflate(2131559370, null).findViewById(2131363083);
+    paramContext = (AudienceRoomViewPager)LayoutInflater.from(paramContext).inflate(2131559245, null).findViewById(2131363023);
     paramContext.setIntent(getEnterRoomIntent(paramEnterRoomConfig));
     return paramContext;
   }
@@ -30,16 +31,14 @@ public class LiveAudience
     localIntent.putExtra("screen_orientation_landscape", false);
     if (paramEnterRoomConfig.isLiteSdk) {
       localIntent.putExtra("page_type", PageType.LIVE_ROOM_AUDIENCE_LITE.value);
-    }
-    for (;;)
-    {
-      localIntent.putExtra("biz_ext_data", paramEnterRoomConfig.extData);
-      localIntent.putExtra("lite_sdk", paramEnterRoomConfig.isLiteSdk);
-      localIntent.putExtra("video_id", paramEnterRoomConfig.videoId);
-      localIntent.setFlags(335544320);
-      return localIntent;
+    } else {
       localIntent.putExtra("page_type", PageType.LIVE_ROOM_AUDIENCE.value);
     }
+    localIntent.putExtra("biz_ext_data", paramEnterRoomConfig.extData);
+    localIntent.putExtra("lite_sdk", paramEnterRoomConfig.isLiteSdk);
+    localIntent.putExtra("video_id", paramEnterRoomConfig.videoId);
+    localIntent.setFlags(335544320);
+    return localIntent;
   }
   
   public static int getPageType(EnterRoomConfig paramEnterRoomConfig)
@@ -50,24 +49,38 @@ public class LiveAudience
     return PageType.LIVE_ROOM_AUDIENCE.value;
   }
   
+  public static Intent switchToNewIntent(Intent paramIntent, SwitchRoomInfo paramSwitchRoomInfo)
+  {
+    paramIntent.putExtra("roomid", paramSwitchRoomInfo.roomId);
+    paramIntent.putExtra("cover_bitmap", paramSwitchRoomInfo.coverBitmapBytes);
+    paramIntent.putExtra("video_url", paramSwitchRoomInfo.videoUrl);
+    paramIntent.putExtra("video_level", paramSwitchRoomInfo.videoLevel);
+    paramIntent.putExtra("video_is_origin", paramSwitchRoomInfo.videoIsOrigin);
+    paramIntent.putExtra("biz_ext_data", paramSwitchRoomInfo.extData);
+    paramIntent.putExtra("video_id", paramSwitchRoomInfo.videoId);
+    paramIntent.setFlags(335544320);
+    return paramIntent;
+  }
+  
   private static String[] transferVideoFormat(EnterRoomConfig.VideoFormat[] paramArrayOfVideoFormat)
   {
-    if ((paramArrayOfVideoFormat == null) || (paramArrayOfVideoFormat.length == 0)) {
-      return null;
-    }
-    String[] arrayOfString = new String[paramArrayOfVideoFormat.length];
-    int i = 0;
-    while (i < paramArrayOfVideoFormat.length)
+    if ((paramArrayOfVideoFormat != null) && (paramArrayOfVideoFormat.length != 0))
     {
-      arrayOfString[i] = paramArrayOfVideoFormat[i].value;
-      i += 1;
+      String[] arrayOfString = new String[paramArrayOfVideoFormat.length];
+      int i = 0;
+      while (i < paramArrayOfVideoFormat.length)
+      {
+        arrayOfString[i] = paramArrayOfVideoFormat[i].value;
+        i += 1;
+      }
+      return arrayOfString;
     }
-    return arrayOfString;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.LiveAudience
  * JD-Core Version:    0.7.0.1
  */

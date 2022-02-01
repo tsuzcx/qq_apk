@@ -29,12 +29,20 @@ public class PolymericContainerHelper
         this.childs.add(paramBaseTemplateFactory);
         return;
       }
-      LogUtil.QLog.e(this.TAG, 1, "templateBean == null " + paramJSONObject);
+      paramBaseTemplateFactory = this.TAG;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("templateBean == null ");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      LogUtil.QLog.e(paramBaseTemplateFactory, 1, ((StringBuilder)localObject).toString());
       return;
     }
     catch (JSONException paramBaseTemplateFactory)
     {
-      LogUtil.QLog.e(this.TAG, 1, "addCell " + paramJSONObject, paramBaseTemplateFactory);
+      Object localObject = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("addCell ");
+      localStringBuilder.append(paramJSONObject);
+      LogUtil.QLog.e((String)localObject, 1, localStringBuilder.toString(), paramBaseTemplateFactory);
     }
   }
   
@@ -68,22 +76,17 @@ public class PolymericContainerHelper
     {
       this.childs.clear();
       int i = 0;
-      for (;;)
+      while (i < paramJSONArray.length())
       {
-        if (i < paramJSONArray.length()) {
-          try
-          {
-            addCell(paramBaseTemplateFactory, paramJSONArray.getJSONObject(i));
-            i += 1;
-          }
-          catch (JSONException localJSONException)
-          {
-            for (;;)
-            {
-              LogUtil.QLog.e(this.TAG, 1, "", localJSONException);
-            }
-          }
+        try
+        {
+          addCell(paramBaseTemplateFactory, paramJSONArray.getJSONObject(i));
         }
+        catch (JSONException localJSONException)
+        {
+          LogUtil.QLog.e(this.TAG, 1, "", localJSONException);
+        }
+        i += 1;
       }
     }
   }
@@ -92,7 +95,7 @@ public class PolymericContainerHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.polymeric.PolymericContainerHelper
  * JD-Core Version:    0.7.0.1
  */

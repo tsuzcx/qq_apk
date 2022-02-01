@@ -3,6 +3,7 @@ package com.tencent.mobileqq.activity.aio.helper;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.tips.TipsController;
 import com.tencent.mobileqq.activity.aio.tips.LocationShareTipsBar;
 import com.tencent.mobileqq.activity.aio.tips.TipsManager;
 import com.tencent.mobileqq.app.FriendsManager;
@@ -30,10 +31,11 @@ public class LocationShareHelper
 {
   private static Map<Pair<Integer, String>, Boolean> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   private volatile BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private LocationShareTipsBar jdField_a_of_type_ComTencentMobileqqActivityAioTipsLocationShareTipsBar;
+  protected LocationShareTipsBar a;
   private OnUpdateUserLocationListener jdField_a_of_type_ComTencentMobileqqLocationOnUpdateUserLocationListener = new LocationShareHelper.1(this);
   private IFloatMapCallback jdField_a_of_type_ComTencentMobileqqLocationCallbackIFloatMapCallback = new LocationShareHelper.2(this);
   private volatile LocationRoom.RoomKey jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey;
+  private LocationShareTipsBar b;
   
   LocationShareHelper(BaseChatPie paramBaseChatPie)
   {
@@ -44,12 +46,12 @@ public class LocationShareHelper
   {
     String str = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, 0);
     if (paramRoomKey.a() == 0) {
-      str = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(paramString).getFriendNickWithAlias();
+      return ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(paramString).getFriendNickWithAlias();
     }
-    while (paramRoomKey.a() != 1) {
-      return str;
+    if (paramRoomKey.a() == 1) {
+      str = ContactUtils.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRoomKey.a(), paramString);
     }
-    return ContactUtils.g(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRoomKey.a(), paramString);
+    return str;
   }
   
   public static void a()
@@ -59,37 +61,59 @@ public class LocationShareHelper
   
   private boolean a(int paramInt, String paramString)
   {
+    StringBuilder localStringBuilder;
     if (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationShareHelper", 2, "[queryLocationRoom] isSameSession: invoked. sessionType: " + paramInt + " sessionUin: " + paramString + " [mRoomKey] null ");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[queryLocationRoom] isSameSession: invoked. sessionType: ");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(" sessionUin: ");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" [mRoomKey] null ");
+        QLog.d("LocationShareHelper", 2, localStringBuilder.toString());
       }
       return false;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationShareHelper", 2, "[queryLocationRoom] isSameSession: invoked. sessionType: " + paramInt + " sessionUin: " + paramString + " [mRoomKey] sessionType: " + this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a() + " [mRoomKey] sessionUin: " + this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a());
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[queryLocationRoom] isSameSession: invoked. sessionType: ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" sessionUin: ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" [mRoomKey] sessionType: ");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a());
+      localStringBuilder.append(" [mRoomKey] sessionUin: ");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a());
+      QLog.d("LocationShareHelper", 2, localStringBuilder.toString());
     }
     return this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a(paramInt, paramString);
   }
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsLocationShareTipsBar = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a();
+    this.b = this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsLocationShareTipsBar;
     this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey = new LocationRoom.RoomKey(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
     ILocationShareService localILocationShareService = LocationShareServiceHolder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     if (localILocationShareService.isSessionSharingLocation(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationShareHelper", 2, "[queryLocationRoom] requestQueryRoom: invoked. sessionUin: " + this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[queryLocationRoom] requestQueryRoom: invoked. sessionUin: ");
+        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a());
+        QLog.d("LocationShareHelper", 2, localStringBuilder.toString());
       }
-      localILocationShareService.requestUpdateShareState(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      localILocationShareService.requestQueryRoom(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
     }
   }
   
   private void c()
   {
     ILocationShareService localILocationShareService = LocationShareServiceHolder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if ((this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey != null) && (!localILocationShareService.isSessionSharingLocation(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a(), this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a())) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsLocationShareTipsBar == this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().a())) {
+    if ((this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey != null) && (!localILocationShareService.isSessionSharingLocation(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a(), this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a())) && (this.b == this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().a())) {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().a();
     }
   }
@@ -98,35 +122,39 @@ public class LocationShareHelper
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null))
     {
-      i = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
-      str = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-      if (TextUtils.isEmpty(str)) {
+      int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
+      String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+      if (TextUtils.isEmpty(str))
+      {
         if (QLog.isColorLevel()) {
           QLog.d("LocationShareHelper", 2, new Object[] { "processRoamMessage: invoked. empty uin, ignored. ", " friendUin: ", str });
         }
+        return;
       }
-    }
-    while (!QLog.isColorLevel())
-    {
-      String str;
-      boolean bool;
-      do
+      Pair localPair = new Pair(Integer.valueOf(i), str);
+      if (!jdField_a_of_type_JavaUtilMap.containsKey(localPair))
       {
-        int i;
-        Pair localPair;
-        do
-        {
-          return;
-          localPair = new Pair(Integer.valueOf(i), str);
-        } while (jdField_a_of_type_JavaUtilMap.containsKey(localPair));
-        bool = LocationShareServiceHolder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).isSessionSharingLocation(i, str);
+        boolean bool = LocationShareServiceHolder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).isSessionSharingLocation(i, str);
         LocationMessageUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, str, bool);
         jdField_a_of_type_JavaUtilMap.put(localPair, Boolean.valueOf(true));
-      } while (!QLog.isColorLevel());
-      QLog.d("LocationShareHelper", 2, new Object[] { "processRoamMessage: invoked. ", "[处理漫游消息，登录后首次进该会话aio，用资料位刷新消息字段] sessionSharingLocation: ", Boolean.valueOf(bool), " friendUin: ", str });
-      return;
+        if (QLog.isColorLevel()) {
+          QLog.d("LocationShareHelper", 2, new Object[] { "processRoamMessage: invoked. ", "[处理漫游消息，登录后首次进该会话aio，用资料位刷新消息字段] sessionSharingLocation: ", Boolean.valueOf(bool), " friendUin: ", str });
+        }
+      }
     }
-    QLog.e("LocationShareHelper", 2, new Object[] { "processRoamMessage: failed. ", "empty session. " });
+    else if (QLog.isColorLevel())
+    {
+      QLog.e("LocationShareHelper", 2, new Object[] { "processRoamMessage: failed. ", "empty session. " });
+    }
+  }
+  
+  private void e()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsLocationShareTipsBar == null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b().a(25)))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsLocationShareTipsBar = new LocationShareTipsBar(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsLocationShareTipsBar);
+    }
   }
   
   public String getTag()
@@ -136,43 +164,54 @@ public class LocationShareHelper
   
   public int[] interestedIn()
   {
-    return new int[] { 4, 6, 9, 14 };
+    return new int[] { 4, 7, 10, 15 };
   }
   
   public void onMoveToState(int paramInt)
   {
-    for (;;)
+    try
     {
-      IFloatMapService localIFloatMapService;
-      try
+      Object localObject1 = LocationShareServiceHolder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      IFloatMapService localIFloatMapService = LocationShareServiceHolder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if (paramInt != 4)
       {
-        localObject1 = LocationShareServiceHolder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        localIFloatMapService = LocationShareServiceHolder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        switch (paramInt)
+        if (paramInt != 7)
         {
-        default: 
-          return;
+          if (paramInt != 10)
+          {
+            if (paramInt == 15)
+            {
+              ((ILocationShareService)localObject1).removeLocationUpdateListener(this.jdField_a_of_type_ComTencentMobileqqLocationOnUpdateUserLocationListener);
+              localIFloatMapService.removeFloatMapCallback(this.jdField_a_of_type_ComTencentMobileqqLocationCallbackIFloatMapCallback);
+              AutoReplyUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b());
+              this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsLocationShareTipsBar = null;
+            }
+          }
+          else
+          {
+            e();
+            b();
+          }
+        }
+        else {
+          c();
         }
       }
-      finally {}
-      ((ILocationShareService)localObject1).addLocationUpdateListener(this.jdField_a_of_type_ComTencentMobileqqLocationOnUpdateUserLocationListener);
-      localIFloatMapService.addFloatMapCallback(this.jdField_a_of_type_ComTencentMobileqqLocationCallbackIFloatMapCallback);
-      Object localObject1 = new LocationShareHelper.3(this);
-      ThreadManager.getSubThreadHandler().post((Runnable)localObject1);
-      continue;
-      c();
-      continue;
-      b();
-      continue;
-      localObject2.removeLocationUpdateListener(this.jdField_a_of_type_ComTencentMobileqqLocationOnUpdateUserLocationListener);
-      localIFloatMapService.removeFloatMapCallback(this.jdField_a_of_type_ComTencentMobileqqLocationCallbackIFloatMapCallback);
-      AutoReplyUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b());
+      else
+      {
+        ((ILocationShareService)localObject1).addLocationUpdateListener(this.jdField_a_of_type_ComTencentMobileqqLocationOnUpdateUserLocationListener);
+        localIFloatMapService.addFloatMapCallback(this.jdField_a_of_type_ComTencentMobileqqLocationCallbackIFloatMapCallback);
+        localObject1 = new LocationShareHelper.3(this);
+        ThreadManager.getSubThreadHandler().post((Runnable)localObject1);
+      }
+      return;
     }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.LocationShareHelper
  * JD-Core Version:    0.7.0.1
  */

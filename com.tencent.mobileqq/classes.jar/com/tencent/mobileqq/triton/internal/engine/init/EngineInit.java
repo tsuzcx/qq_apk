@@ -55,136 +55,99 @@ public final class EngineInit
     initEngine();
   }
   
-  /* Error */
   private final void doActionAfterInit(Function0<Unit> paramFunction0)
   {
-    // Byte code:
-    //   0: new 158	com/tencent/mobileqq/triton/internal/engine/init/EngineInit$doActionAfterInit$actionOnMainThread$1
-    //   3: dup
-    //   4: aload_0
-    //   5: aload_1
-    //   6: invokespecial 161	com/tencent/mobileqq/triton/internal/engine/init/EngineInit$doActionAfterInit$actionOnMainThread$1:<init>	(Lcom/tencent/mobileqq/triton/internal/engine/init/EngineInit;Lkotlin/jvm/functions/Function0;)V
-    //   9: checkcast 163	kotlin/jvm/functions/Function0
-    //   12: astore_2
-    //   13: aload_0
-    //   14: invokevirtual 165	com/tencent/mobileqq/triton/internal/engine/init/EngineInit:getEngineContext	()Lcom/tencent/mobileqq/triton/internal/engine/EngineContext;
-    //   17: invokeinterface 171 1 0
-    //   22: checkcast 173	java/util/concurrent/locks/Lock
-    //   25: astore_1
-    //   26: aload_1
-    //   27: invokeinterface 176 1 0
-    //   32: aload_0
-    //   33: getfield 146	com/tencent/mobileqq/triton/internal/engine/init/EngineInit:engineInitStatistics	Lcom/tencent/mobileqq/triton/statistic/EngineInitStatistic;
-    //   36: ifnonnull +19 -> 55
-    //   39: aload_0
-    //   40: aload_2
-    //   41: putfield 178	com/tencent/mobileqq/triton/internal/engine/init/EngineInit:afterInitAction	Lkotlin/jvm/functions/Function0;
-    //   44: getstatic 184	kotlin/Unit:INSTANCE	Lkotlin/Unit;
-    //   47: astore_2
-    //   48: aload_1
-    //   49: invokeinterface 187 1 0
-    //   54: return
-    //   55: aload_2
-    //   56: invokeinterface 191 1 0
-    //   61: pop
-    //   62: goto -18 -> 44
-    //   65: astore_2
-    //   66: aload_1
-    //   67: invokeinterface 187 1 0
-    //   72: aload_2
-    //   73: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	74	0	this	EngineInit
-    //   0	74	1	paramFunction0	Function0<Unit>
-    //   12	44	2	localObject1	Object
-    //   65	8	2	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   32	44	65	finally
-    //   44	48	65	finally
-    //   55	62	65	finally
+    Object localObject1 = (Function0)new EngineInit.doActionAfterInit.actionOnMainThread.1(this, paramFunction0);
+    paramFunction0 = (Lock)getEngineContext().getLock();
+    paramFunction0.lock();
+    try
+    {
+      if (this.engineInitStatistics == null) {
+        this.afterInitAction = ((Function0)localObject1);
+      } else {
+        ((Function0)localObject1).invoke();
+      }
+      localObject1 = Unit.INSTANCE;
+      return;
+    }
+    finally
+    {
+      paramFunction0.unlock();
+    }
   }
   
   private final void initEngine()
   {
-    long l = 0L;
     getEngineContext().getLifeCycleOwner().observeLifeCycle((LifeCycle)EngineLifeCycleLogger.INSTANCE);
-    Lock localLock = (Lock)getEngineContext().getLock();
+    localLock = (Lock)getEngineContext().getLock();
     localLock.lock();
-    for (;;)
+    Object localObject1 = null;
+    try
     {
-      boolean bool;
-      ErrorCodes localErrorCodes;
+      Throwable localThrowable1 = (Throwable)null;
       try
       {
-        Object localObject1 = (Throwable)null;
-        try
-        {
-          localObject3 = new AsyncResult();
-          getEngineContext().getWorkerExecutor().execute((Runnable)new EngineInit.initEngine..inlined.withLock.lambda.1((AsyncResult)localObject3, this));
-          this.engineContextImpl.setScriptSystem(new ScriptSystem((EngineContext)this.engineContextImpl, (ScriptPlugin)this.engineContextImpl.getScriptPluginWrapper()));
-          initTTApp();
-          Logger.i$default("EngineInit", "initEngine created scriptPlugin " + localObject3, null, 4, null);
-          this.engineContextImpl.getScriptPluginWrapper().init(getEngineContext(), (ScriptPlugin)((AsyncResult)localObject3).awaitResult());
-          this.engineContextImpl.setEngineState(EngineState.INITIALIZED);
-          if (localObject1 == null)
-          {
-            bool = true;
-            if (localObject1 == null) {
-              break label390;
-            }
-            localErrorCodes = ErrorCodes.UNKNOWN;
-            if (!(localObject1 instanceof TritonException)) {
-              break label290;
-            }
-            localObject1 = (TritonException)localObject1;
-            break label379;
-            localObject3 = ((Iterable)this.soLoadStatistics).iterator();
-            if (!((Iterator)localObject3).hasNext()) {
-              break label320;
-            }
-            l += ((NativeLibraryLoadStatistic)((Iterator)localObject3).next()).getLoadTimeMs();
-            continue;
-          }
-        }
-        catch (Throwable localThrowable1)
-        {
-          Logger.e("EngineInit", "initEngine failure", localThrowable1);
-          continue;
-        }
-        bool = false;
+        localObject3 = new AsyncResult();
+        getEngineContext().getWorkerExecutor().execute((Runnable)new EngineInit.initEngine..inlined.withLock.lambda.1((AsyncResult)localObject3, this));
+        this.engineContextImpl.setScriptSystem(new ScriptSystem((EngineContext)this.engineContextImpl, (ScriptPlugin)this.engineContextImpl.getScriptPluginWrapper()));
+        initTTApp();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("initEngine created scriptPlugin ");
+        localStringBuilder.append(localObject3);
+        Logger.i$default("EngineInit", localStringBuilder.toString(), null, 4, null);
+        this.engineContextImpl.getScriptPluginWrapper().init(getEngineContext(), (ScriptPlugin)((AsyncResult)localObject3).awaitResult());
       }
-      finally
+      catch (Throwable localThrowable2)
       {
-        localLock.unlock();
+        Logger.e("EngineInit", "initEngine failure", localThrowable2);
       }
-      continue;
-      label290:
-      Object localObject3 = localThrowable2.getMessage();
-      if (localObject3 != null) {}
+      this.engineContextImpl.setEngineState(EngineState.INITIALIZED);
+      if (localThrowable2 != null) {
+        break label393;
+      }
+      bool = true;
+    }
+    finally
+    {
       for (;;)
       {
-        localObject2 = new TritonException((String)localObject3, localErrorCodes, localThrowable2);
-        break label379;
-        label320:
-        this.engineInitStatistics = new EngineInitStatistic(bool, (TritonException)localObject2, l, 0L, 0L, 0L, CollectionsKt.emptyList(), this.soLoadStatistics);
-        localObject2 = this.afterInitAction;
-        if (localObject2 != null) {
-          localObject2 = (Unit)((Function0)localObject2).invoke();
-        }
+        Object localObject3;
+        Iterator localIterator;
+        long l;
+        localLock.unlock();
         for (;;)
         {
-          localLock.unlock();
-          return;
+          throw localObject2;
         }
-        label379:
-        break;
-        localObject3 = "";
+        boolean bool = false;
+        continue;
+        String str = "";
       }
-      label390:
-      Object localObject2 = null;
     }
+    if (localThrowable2 != null)
+    {
+      localObject3 = ErrorCodes.UNKNOWN;
+      if ((localThrowable2 instanceof TritonException))
+      {
+        localObject1 = (TritonException)localThrowable2;
+      }
+      else
+      {
+        localObject1 = localThrowable2.getMessage();
+        if (localObject1 == null) {
+          break label398;
+        }
+        localObject1 = new TritonException((String)localObject1, (ErrorCodes)localObject3, localThrowable2);
+      }
+    }
+    localIterator = ((Iterable)this.soLoadStatistics).iterator();
+    for (l = 0L; localIterator.hasNext(); l += ((NativeLibraryLoadStatistic)localIterator.next()).getLoadTimeMs()) {}
+    this.engineInitStatistics = new EngineInitStatistic(bool, (TritonException)localObject1, l, 0L, 0L, 0L, CollectionsKt.emptyList(), this.soLoadStatistics);
+    localObject1 = this.afterInitAction;
+    if (localObject1 != null) {
+      localObject1 = (Unit)((Function0)localObject1).invoke();
+    }
+    localLock.unlock();
   }
   
   private final void initTTApp()
@@ -258,7 +221,7 @@ public final class EngineInit
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.engine.init.EngineInit
  * JD-Core Version:    0.7.0.1
  */

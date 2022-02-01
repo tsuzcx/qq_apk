@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.magicface;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.soload.SoLoadManager;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.soload.api.ISoLoaderService;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.concurrent.CountDownLatch;
@@ -10,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 public class DecoderUtil
 {
   public static boolean IS_LOAD_SUCESS = false;
-  private static String nativeLibraryPath;
+  private static String nativeLibraryPath = "";
   
   static
   {
@@ -18,42 +19,41 @@ public class DecoderUtil
     {
       System.loadLibrary("magicfaceDec");
       IS_LOAD_SUCESS = true;
-      nativeLibraryPath = "";
-      return;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      for (;;)
-      {
-        IS_LOAD_SUCESS = false;
-        if (QLog.isColorLevel()) {
-          QLog.e("DecoderUtil", 2, "Fail to load libmagicfaceDec.so.");
-        }
-      }
+      label12:
+      break label12;
+    }
+    IS_LOAD_SUCESS = false;
+    if (QLog.isColorLevel()) {
+      QLog.e("DecoderUtil", 2, "Fail to load libmagicfaceDec.so.");
     }
   }
   
   public DecoderUtil()
   {
-    if (new File(nativeLibraryPath).exists()) {}
-    for (;;)
-    {
+    if (new File(nativeLibraryPath).exists()) {
       return;
-      CountDownLatch localCountDownLatch = new CountDownLatch(1);
-      SoLoadManager.a().a("TcVpxDec_old", new DecoderUtil.1(this, localCountDownLatch));
-      try
+    }
+    Object localObject = new CountDownLatch(1);
+    ((ISoLoaderService)QRoute.api(ISoLoaderService.class)).load("TcVpxDec_old", new DecoderUtil.1(this, (CountDownLatch)localObject));
+    try
+    {
+      ((CountDownLatch)localObject).await(3000L, TimeUnit.MILLISECONDS);
+      if (QLog.isColorLevel())
       {
-        localCountDownLatch.await(3000L, TimeUnit.MILLISECONDS);
-        if (QLog.isColorLevel())
-        {
-          QLog.i("DecoderUtil", 2, "nativeLibraryDir[" + nativeLibraryPath + "]");
-          return;
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("nativeLibraryDir[");
+        ((StringBuilder)localObject).append(nativeLibraryPath);
+        ((StringBuilder)localObject).append("]");
+        QLog.i("DecoderUtil", 2, ((StringBuilder)localObject).toString());
+        return;
       }
-      catch (InterruptedException localInterruptedException)
-      {
-        QLog.e("DecoderUtil", 1, localInterruptedException, new Object[0]);
-      }
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      QLog.e("DecoderUtil", 1, localInterruptedException, new Object[0]);
     }
   }
   
@@ -107,7 +107,7 @@ public class DecoderUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.DecoderUtil
  * JD-Core Version:    0.7.0.1
  */

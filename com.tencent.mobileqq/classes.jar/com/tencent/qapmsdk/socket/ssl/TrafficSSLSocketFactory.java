@@ -30,22 +30,21 @@ public class TrafficSSLSocketFactory
   public TrafficSSLSocketFactory(SSLSocketFactory paramSSLSocketFactory)
   {
     this.a = paramSSLSocketFactory;
-    for (;;)
+    SSLSocketFactory localSSLSocketFactory = paramSSLSocketFactory;
+    try
     {
-      try
-      {
-        if ((paramSSLSocketFactory instanceof SSLCertificateSocketFactory))
-        {
-          paramSSLSocketFactory = (SSLSocketFactory)d.a(SSLCertificateSocketFactory.class).a("getDelegate", new Class[0]).invoke(paramSSLSocketFactory, new Object[0]);
-          this.sslParameters = d.a(d.a() + ".OpenSSLSocketFactoryImpl").a("sslParameters").get(paramSSLSocketFactory);
-          return;
-        }
+      if ((paramSSLSocketFactory instanceof SSLCertificateSocketFactory)) {
+        localSSLSocketFactory = (SSLSocketFactory)d.a(SSLCertificateSocketFactory.class).a("getDelegate", new Class[0]).invoke(paramSSLSocketFactory, new Object[0]);
       }
-      catch (Exception paramSSLSocketFactory)
-      {
-        Logger.INSTANCE.w(new String[] { "QAPM_Socket_TrafficSSLSocketFactory", "set sslParameters failed: ", paramSSLSocketFactory.toString() });
-        return;
-      }
+      paramSSLSocketFactory = new StringBuilder();
+      paramSSLSocketFactory.append(d.a());
+      paramSSLSocketFactory.append(".OpenSSLSocketFactoryImpl");
+      this.sslParameters = d.a(paramSSLSocketFactory.toString()).a("sslParameters").get(localSSLSocketFactory);
+      return;
+    }
+    catch (Exception paramSSLSocketFactory)
+    {
+      Logger.INSTANCE.w(new String[] { "QAPM_Socket_TrafficSSLSocketFactory", "set sslParameters failed: ", paramSSLSocketFactory.toString() });
     }
   }
   
@@ -91,7 +90,7 @@ public class TrafficSSLSocketFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.socket.ssl.TrafficSSLSocketFactory
  * JD-Core Version:    0.7.0.1
  */

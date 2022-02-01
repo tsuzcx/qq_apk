@@ -23,10 +23,9 @@ public class AIOTipsController
   
   public void a(View paramView, TipsBarTask paramTipsBarTask1, TipsBarTask paramTipsBarTask2)
   {
-    int j;
     if (paramView != null)
     {
-      j = this.jdField_a_of_type_AndroidViewViewGroup.indexOfChild(paramView);
+      int j = this.jdField_a_of_type_AndroidViewViewGroup.indexOfChild(paramView);
       if (j == -1) {
         this.jdField_a_of_type_AndroidViewViewGroup.addView(paramView, new ViewGroup.LayoutParams(-1, -2));
       }
@@ -36,20 +35,24 @@ public class AIOTipsController
         this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i).setVisibility(8);
         i += 1;
       }
-      if (QLog.isColorLevel()) {
-        if (paramTipsBarTask2 != null) {
-          break label158;
+      if (QLog.isColorLevel())
+      {
+        String str;
+        if (paramTipsBarTask2 == null) {
+          str = "null";
+        } else {
+          str = Integer.toHexString(System.identityHashCode(paramTipsBarTask2));
         }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("showHearerTips called childIndex = ");
+        localStringBuilder.append(j);
+        localStringBuilder.append(" object=");
+        localStringBuilder.append(str);
+        QLog.d("AIOTipsController", 2, localStringBuilder.toString());
       }
-    }
-    label158:
-    for (String str = "null";; str = Integer.toHexString(System.identityHashCode(paramTipsBarTask2)))
-    {
-      QLog.d("AIOTipsController", 2, "showHearerTips called childIndex = " + j + " object=" + str);
       paramView.setVisibility(0);
       this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
       this.jdField_a_of_type_AndroidViewViewGroup.post(new AIOTipsController.1(this, paramTipsBarTask1, paramTipsBarTask2));
-      return;
     }
   }
   
@@ -60,24 +63,26 @@ public class AIOTipsController
   
   public void a(TipsBarTask paramTipsBarTask)
   {
-    if (QLog.isColorLevel()) {
-      if (paramTipsBarTask != null) {
-        break label65;
-      }
-    }
-    label65:
-    for (String str = "null";; str = Integer.toHexString(System.identityHashCode(paramTipsBarTask)))
+    if (QLog.isColorLevel())
     {
-      QLog.d("AIOTipsController", 2, "showHearerTips called object=" + str);
-      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-      this.jdField_a_of_type_AndroidViewViewGroup.post(new AIOTipsController.2(this, paramTipsBarTask));
-      return;
+      String str;
+      if (paramTipsBarTask == null) {
+        str = "null";
+      } else {
+        str = Integer.toHexString(System.identityHashCode(paramTipsBarTask));
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("showHearerTips called object=");
+      localStringBuilder.append(str);
+      QLog.d("AIOTipsController", 2, localStringBuilder.toString());
     }
+    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
+    this.jdField_a_of_type_AndroidViewViewGroup.post(new AIOTipsController.2(this, paramTipsBarTask));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AIOTipsController
  * JD-Core Version:    0.7.0.1
  */

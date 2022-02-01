@@ -9,12 +9,17 @@ class d$1$2
   
   public void run()
   {
-    this.b.e.setText("已下载" + this.a + "%");
+    TextView localTextView = this.b.e;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("已下载");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("%");
+    localTextView.setText(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.utils.d.1.2
  * JD-Core Version:    0.7.0.1
  */

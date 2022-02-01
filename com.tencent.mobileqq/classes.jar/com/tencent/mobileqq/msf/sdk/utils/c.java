@@ -19,6 +19,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.io.Writer;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -76,70 +77,67 @@ public class c
     }
     catch (Exception paramContext)
     {
-      for (;;)
-      {
-        try
-        {
-          a(paramClass, "wait", new Class[0]);
-          return;
-        }
-        catch (Exception paramClass)
-        {
-          paramClass.printStackTrace();
-        }
-        paramContext = paramContext;
-        paramContext.printStackTrace();
-      }
+      paramContext.printStackTrace();
+    }
+    try
+    {
+      a(paramClass, "wait", new Class[0]);
+      return;
+    }
+    catch (Exception paramClass)
+    {
+      paramClass.printStackTrace();
     }
   }
   
   public static Method a(Class paramClass, String paramString, Class... paramVarArgs)
   {
-    localObject = null;
     new StringBuilder();
     try
     {
       Method localMethod = paramClass.getDeclaredMethod(paramString, paramVarArgs);
-      paramClass = localMethod;
+      return localMethod;
     }
     catch (Exception localException)
     {
-      Class localClass;
-      do
-      {
-        localClass = paramClass.getSuperclass();
-        paramClass = localObject;
-      } while (localClass == null);
-      return a(localClass, paramString, paramVarArgs);
+      label17:
+      break label17;
     }
-    return paramClass;
+    paramClass = paramClass.getSuperclass();
+    if (paramClass == null) {
+      return null;
+    }
+    return a(paramClass, paramString, paramVarArgs);
   }
   
   private void a(b paramb)
   {
     if (QLog.isColorLevel()) {
       QLog.d("MSF.D.MonitorSocket", 2, paramb.toString());
+    } else if (paramb.f > 500000L) {
+      QLog.d("MSF.D.MonitorSocket", 1, paramb.toString());
     }
-    for (;;)
+    v += 1;
+    w += paramb.f;
+    y.addIfAbsent(paramb.h);
+    long l1 = System.currentTimeMillis();
+    if (l1 - x > 60000L)
     {
-      v += 1;
-      w += paramb.f;
-      y.addIfAbsent(paramb.h);
-      long l1 = System.currentTimeMillis();
-      if (l1 - x > 60000L)
+      if ((v > 1000) || (w > 100000000L))
       {
-        if ((v > 1000) || (w > 100000000L)) {
-          QLog.i("MSF.D.MonitorSocket", 1, "netflowSize:" + w + " ,netflowCount:" + v + " ,mType:" + y.toString());
-        }
-        v = 0;
-        w = 0L;
-        x = l1;
-        y.clear();
+        paramb = new StringBuilder();
+        paramb.append("netflowSize:");
+        paramb.append(w);
+        paramb.append(" ,netflowCount:");
+        paramb.append(v);
+        paramb.append(" ,mType:");
+        paramb.append(y.toString());
+        QLog.i("MSF.D.MonitorSocket", 1, paramb.toString());
       }
-      return;
-      if (paramb.f > 500000L) {
-        QLog.d("MSF.D.MonitorSocket", 1, paramb.toString());
-      }
+      v = 0;
+      w = 0L;
+      x = l1;
+      y.clear();
     }
   }
   
@@ -147,10 +145,17 @@ public class c
   {
     try
     {
-      Method localMethod = Socket.class.getClassLoader().loadClass("java.net.SocketImpl").getDeclaredMethod("getFileDescriptor", new Class[0]);
-      localMethod.setAccessible(true);
-      this.fd = ((FileDescriptor)localMethod.invoke(this.q, new Object[0]));
-      this.e = (this.b + ":" + this.c + "_" + this.fd.hashCode() + " ");
+      Object localObject = Socket.class.getClassLoader().loadClass("java.net.SocketImpl").getDeclaredMethod("getFileDescriptor", new Class[0]);
+      ((Method)localObject).setAccessible(true);
+      this.fd = ((FileDescriptor)((Method)localObject).invoke(this.q, new Object[0]));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.b);
+      ((StringBuilder)localObject).append(":");
+      ((StringBuilder)localObject).append(this.c);
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(this.fd.hashCode());
+      ((StringBuilder)localObject).append(" ");
+      this.e = ((StringBuilder)localObject).toString();
       return;
     }
     catch (Exception localException)
@@ -161,17 +166,18 @@ public class c
   
   private void f()
   {
-    if (Build.VERSION.SDK_INT >= 24) {}
-    try
-    {
-      Field localField = SocketImpl.class.getDeclaredField("fd");
-      localField.setAccessible(true);
-      localField.set(this.q, this.fd);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    if (Build.VERSION.SDK_INT >= 24) {
+      try
+      {
+        Field localField = SocketImpl.class.getDeclaredField("fd");
+        localField.setAccessible(true);
+        localField.set(this.q, this.fd);
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
     }
   }
   
@@ -201,9 +207,11 @@ public class c
     if (this.fd == null) {
       return false;
     }
-    Object localObject = "isSocket";
+    Object localObject;
     if (Build.VERSION.SDK_INT >= 23) {
       localObject = "isSocket$";
+    } else {
+      localObject = "isSocket";
     }
     try
     {
@@ -223,9 +231,12 @@ public class c
   
   private void i()
   {
-    StringWriter localStringWriter = new StringWriter();
-    new PrintWriter(localStringWriter);
-    this.f = (localStringWriter.toString() + "_");
+    Object localObject = new StringWriter();
+    new PrintWriter((Writer)localObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(((StringWriter)localObject).toString());
+    localStringBuilder.append("_");
+    this.f = localStringBuilder.toString();
     int i2 = this.f.lastIndexOf("com.tencent");
     int i1 = i2;
     if (i2 <= 0) {
@@ -238,17 +249,39 @@ public class c
     if (i2 > 0)
     {
       i1 = this.f.indexOf(")", i2);
-      if ((i1 <= 0) || (i1 <= i2)) {
-        break label212;
+      if ((i1 > 0) && (i1 > i2))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.f.substring(i2, i1 + 1));
+        ((StringBuilder)localObject).append("_");
+        this.f = ((StringBuilder)localObject).toString();
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.f.substring(i2));
+        ((StringBuilder)localObject).append("_");
+        this.f = ((StringBuilder)localObject).toString();
       }
     }
-    label212:
-    for (this.f = (this.f.substring(i2, i1 + 1) + "_"); this.fd != null; this.f = (this.f.substring(i2) + "_"))
+    if (this.fd != null)
     {
-      this.e = (this.b + ":" + this.c + "_" + this.fd.hashCode() + " ");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.b);
+      ((StringBuilder)localObject).append(":");
+      ((StringBuilder)localObject).append(this.c);
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(this.fd.hashCode());
+      ((StringBuilder)localObject).append(" ");
+      this.e = ((StringBuilder)localObject).toString();
       return;
     }
-    this.e = (this.b + ":" + this.c + "_ ");
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.b);
+    ((StringBuilder)localObject).append(":");
+    ((StringBuilder)localObject).append(this.c);
+    ((StringBuilder)localObject).append("_ ");
+    this.e = ((StringBuilder)localObject).toString();
   }
   
   private void j()
@@ -257,59 +290,56 @@ public class c
     {
       try
       {
-        if ((BaseApplication.httpMonitorBan) || (this.g == null)) {
-          break label231;
-        }
-        if (BaseApplication.networkMonitorCallback != null)
+        if ((!BaseApplication.httpMonitorBan) && (this.g != null))
         {
-          if ((this.g.getFileType() != 1) && (this.g.getFileType() != 2)) {
-            break label231;
+          String str1;
+          if (BaseApplication.networkMonitorCallback != null)
+          {
+            if ((this.g.getFileType() == 1) || (this.g.getFileType() == 2))
+            {
+              q.b().post(new d(this));
+              if (QLog.isColorLevel())
+              {
+                str3 = this.g.toString();
+                if (this.d == null) {
+                  break label228;
+                }
+                str1 = this.d;
+                QLog.d("MSF.D.MonitorSocket", 2, new Object[] { str3, " ProcessName=", str1 });
+              }
+            }
           }
-          q.b().post(new d(this));
-          if (!QLog.isColorLevel()) {
-            break label231;
+          else if (QLog.isColorLevel())
+          {
+            str3 = this.g.toString();
+            if (this.d == null) {
+              break label234;
+            }
+            str1 = this.d;
+            QLog.d("MSF.D.MonitorSocket", 2, new Object[] { "report failed ", str3, " ProcessName=", str1 });
+            return;
           }
-          str3 = this.g.toString();
-          if (this.d == null) {
-            break label232;
-          }
-          str1 = this.d;
-          QLog.d("MSF.D.MonitorSocket", 2, new Object[] { str3, " ProcessName=", str1 });
-          return;
         }
-        if (!QLog.isColorLevel()) {
-          break label231;
-        }
-        str3 = this.g.toString();
-        if (this.d == null) {
-          continue;
-        }
-        str1 = this.d;
       }
       catch (Throwable localThrowable)
       {
-        String str1;
-        if (!QLog.isColorLevel()) {
-          break label231;
+        String str3;
+        if (QLog.isColorLevel())
+        {
+          str3 = localThrowable.toString();
+          str2 = this.d;
+          if (str2 == null) {
+            str2 = "";
+          }
+          QLog.d("MSF.D.MonitorSocket", 2, new Object[] { "report failed ", str3, " ProcessName=", str2 });
         }
-        String str3 = localThrowable.toString();
-        if (this.d == null) {
-          continue;
-        }
-        str2 = this.d;
-        QLog.d("MSF.D.MonitorSocket", 2, new Object[] { "report failed ", str3, " ProcessName=", str2 });
-        return;
-        str2 = "";
-        continue;
-        str2 = "";
-        continue;
       }
-      QLog.d("MSF.D.MonitorSocket", 2, new Object[] { "report failed ", str3, " ProcessName=", str1 });
       return;
-      label231:
-      return;
-      label232:
+      label228:
       String str2 = "";
+      continue;
+      label234:
+      str2 = "";
     }
   }
   
@@ -330,28 +360,22 @@ public class c
     b localb;
     if (l == paramInt2) {
       localb = (b)o.get(Integer.valueOf(paramInt1));
-    }
-    for (;;)
-    {
-      if (localb == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.D.MonitorSocket", 2, "addSocketTimeoutCheck dataFlowItem is null.");
-        }
-        return null;
-        if (m == paramInt2) {
-          localb = (b)n.get(Integer.valueOf(paramInt1));
-        }
-      }
-      else
-      {
-        c.a locala = new c.a(this, paramInt1, paramInt2);
-        localb.l = locala;
-        u.postDelayed(locala, 30000L);
-        return locala;
-      }
+    } else if (m == paramInt2) {
+      localb = (b)n.get(Integer.valueOf(paramInt1));
+    } else {
       localb = null;
     }
+    if (localb == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MSF.D.MonitorSocket", 2, "addSocketTimeoutCheck dataFlowItem is null.");
+      }
+      return null;
+    }
+    c.a locala = new c.a(this, paramInt1, paramInt2);
+    localb.l = locala;
+    u.postDelayed(locala, 30000L);
+    return locala;
   }
   
   protected void accept(SocketImpl paramSocketImpl) {}
@@ -384,8 +408,14 @@ public class c
           {
             if (!t.isAlive())
             {
-              if (QLog.isColorLevel()) {
-                QLog.d("MSF.D.MonitorSocket", 2, "initSocketTimeoutChecker PID=" + Process.myPid() + " TID=" + t.getId());
+              if (QLog.isColorLevel())
+              {
+                StringBuilder localStringBuilder1 = new StringBuilder();
+                localStringBuilder1.append("initSocketTimeoutChecker PID=");
+                localStringBuilder1.append(Process.myPid());
+                localStringBuilder1.append(" TID=");
+                localStringBuilder1.append(t.getId());
+                QLog.d("MSF.D.MonitorSocket", 2, localStringBuilder1.toString());
               }
               t.start();
             }
@@ -394,11 +424,15 @@ public class c
           return;
         }
       }
+      StringBuilder localStringBuilder2;
       return;
     }
     catch (Exception localException)
     {
-      QLog.d("MSF.D.MonitorSocket", 1, "initHandler exception " + localException.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("initHandler exception ");
+      localStringBuilder2.append(localException.toString());
+      QLog.d("MSF.D.MonitorSocket", 1, localStringBuilder2.toString());
     }
   }
   
@@ -421,10 +455,11 @@ public class c
   {
     try
     {
-      if ((this.d != null) && (this.d.endsWith(":MSF")) && (MsfCore.sCore.statReporter != null)) {
+      if ((this.d != null) && (this.d.endsWith(":MSF")) && (MsfCore.sCore.statReporter != null))
+      {
         MsfCore.sCore.statReporter.b(this.r.getName());
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -434,32 +469,39 @@ public class c
   
   protected void close()
   {
+    Object localObject;
     try
     {
-      localMethod = a(this.r, "close", new Class[0]);
-      localMethod.setAccessible(true);
-      localMethod.invoke(this.q, new Object[0]);
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.D.MonitorSocket", 2, this.e + " close MonitorSocket succ.");
+      localObject = a(this.r, "close", new Class[0]);
+      ((Method)localObject).setAccessible(true);
+      ((Method)localObject).invoke(this.q, new Object[0]);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.e);
+        ((StringBuilder)localObject).append(" close MonitorSocket succ.");
+        QLog.d("MSF.D.MonitorSocket", 2, ((StringBuilder)localObject).toString());
       }
-      localMethod = null;
+      localObject = null;
     }
     catch (Exception localException)
     {
-      for (;;)
+      localObject = localException;
+      if (QLog.isColorLevel())
       {
-        Method localMethod;
-        b localb;
-        label318:
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.D.MonitorSocket", 2, this.e + "close MonitorSocket failed.", localException);
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.e);
+        ((StringBuilder)localObject).append("close MonitorSocket failed.");
+        QLog.d("MSF.D.MonitorSocket", 2, ((StringBuilder)localObject).toString(), localException);
+        localObject = localException;
       }
     }
     try
     {
       j();
-      if (!n.isEmpty())
+      boolean bool = n.isEmpty();
+      b localb;
+      if (!bool)
       {
         localb = (b)n.remove(Integer.valueOf(this.e.hashCode()));
         if ((localb != null) && (!TextUtils.isEmpty(this.f)))
@@ -496,34 +538,49 @@ public class c
     }
     catch (Throwable localThrowable)
     {
-      if (!QLog.isColorLevel()) {
-        break label318;
+      if (QLog.isColorLevel()) {
+        QLog.w("MSF.D.MonitorSocket", 2, localThrowable.getMessage(), localThrowable);
       }
-      QLog.w("MSF.D.MonitorSocket", 2, localThrowable.getMessage(), localThrowable);
-      break label318;
     }
-    if (localMethod != null) {
-      throw new IOException(localMethod.toString());
+    if (localObject == null) {
+      return;
     }
+    throw new IOException(((Exception)localObject).toString());
   }
   
   protected void connect(String paramString, int paramInt)
   {
     this.b = paramString;
     this.c = paramInt;
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.D.MonitorSocket", 2, this.e + "connect to host 1 " + paramString + " fd=" + g() + " isSocket=" + h());
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.e);
+      ((StringBuilder)localObject).append("connect to host 1 ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" fd=");
+      ((StringBuilder)localObject).append(g());
+      ((StringBuilder)localObject).append(" isSocket=");
+      ((StringBuilder)localObject).append(h());
+      QLog.d("MSF.D.MonitorSocket", 2, ((StringBuilder)localObject).toString());
     }
     try
     {
       e();
-      Method localMethod = a(this.r, "connect", new Class[] { String.class, Integer.TYPE });
-      localMethod.setAccessible(true);
-      localMethod.invoke(this.q, new Object[] { paramString, Integer.valueOf(paramInt) });
+      localObject = a(this.r, "connect", new Class[] { String.class, Integer.TYPE });
+      ((Method)localObject).setAccessible(true);
+      ((Method)localObject).invoke(this.q, new Object[] { paramString, Integer.valueOf(paramInt) });
       e();
       i();
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.D.MonitorSocket", 2, this.e + "connect to host 1 " + paramString + " succ.");
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.e);
+        ((StringBuilder)localObject).append("connect to host 1 ");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(" succ.");
+        QLog.d("MSF.D.MonitorSocket", 2, ((StringBuilder)localObject).toString());
       }
       return;
     }
@@ -542,17 +599,33 @@ public class c
     {
       this.b = paramInetAddress.getHostName();
       this.c = paramInt;
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.D.MonitorSocket", 2, this.e + "connect to host 2 " + this.b + " fd=" + g() + " isSocket=" + h());
+      boolean bool = QLog.isColorLevel();
+      if (bool)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.e);
+        ((StringBuilder)localObject).append("connect to host 2 ");
+        ((StringBuilder)localObject).append(this.b);
+        ((StringBuilder)localObject).append(" fd=");
+        ((StringBuilder)localObject).append(g());
+        ((StringBuilder)localObject).append(" isSocket=");
+        ((StringBuilder)localObject).append(h());
+        QLog.d("MSF.D.MonitorSocket", 2, ((StringBuilder)localObject).toString());
       }
       e();
-      Method localMethod = a(this.r, "connect", new Class[] { InetAddress.class, Integer.TYPE });
-      localMethod.setAccessible(true);
-      localMethod.invoke(this.q, new Object[] { paramInetAddress, Integer.valueOf(paramInt) });
+      Object localObject = a(this.r, "connect", new Class[] { InetAddress.class, Integer.TYPE });
+      ((Method)localObject).setAccessible(true);
+      ((Method)localObject).invoke(this.q, new Object[] { paramInetAddress, Integer.valueOf(paramInt) });
       e();
       i();
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.D.MonitorSocket", 2, this.e + "connect to host 2 " + this.b + " succ.");
+      if (QLog.isColorLevel())
+      {
+        paramInetAddress = new StringBuilder();
+        paramInetAddress.append(this.e);
+        paramInetAddress.append("connect to host 2 ");
+        paramInetAddress.append(this.b);
+        paramInetAddress.append(" succ.");
+        QLog.d("MSF.D.MonitorSocket", 2, paramInetAddress.toString());
       }
       return;
     }
@@ -571,52 +644,87 @@ public class c
     long l1 = l2;
     try
     {
-      Object localObject = ((InetSocketAddress)paramSocketAddress).getAddress();
-      if (localObject == null) {
-        l1 = l2;
-      }
-      for (this.b = ((InetSocketAddress)paramSocketAddress).getHostName();; this.b = ((InetAddress)localObject).getHostAddress())
+      localObject = ((InetSocketAddress)paramSocketAddress).getAddress();
+      if (localObject == null)
       {
         l1 = l2;
-        if (QLog.isColorLevel())
-        {
-          l1 = l2;
-          QLog.d("MSF.D.MonitorSocket", 1, this.e + "connect to host 3 " + this.b + " fd=" + g() + " isSocket=" + h());
-        }
+        this.b = ((InetSocketAddress)paramSocketAddress).getHostName();
+      }
+      else
+      {
         l1 = l2;
-        e();
+        this.b = ((InetAddress)localObject).getHostAddress();
+      }
+      l1 = l2;
+      boolean bool = QLog.isColorLevel();
+      if (bool)
+      {
         l1 = l2;
-        localObject = a(this.r, "connect", new Class[] { SocketAddress.class, Integer.TYPE });
+        localObject = new StringBuilder();
         l1 = l2;
-        ((Method)localObject).setAccessible(true);
+        ((StringBuilder)localObject).append(this.e);
         l1 = l2;
-        l2 = System.currentTimeMillis();
+        ((StringBuilder)localObject).append("connect to host 3 ");
         l1 = l2;
-        ((Method)localObject).invoke(this.q, new Object[] { paramSocketAddress, Integer.valueOf(paramInt) });
+        ((StringBuilder)localObject).append(this.b);
         l1 = l2;
-        e();
+        ((StringBuilder)localObject).append(" fd=");
         l1 = l2;
-        i();
+        ((StringBuilder)localObject).append(g());
         l1 = l2;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
+        ((StringBuilder)localObject).append(" isSocket=");
         l1 = l2;
-        QLog.d("MSF.D.MonitorSocket", 1, this.e + "connect to host 3 " + this.b + " succ. impl:" + toString());
-        return;
+        ((StringBuilder)localObject).append(h());
         l1 = l2;
+        QLog.d("MSF.D.MonitorSocket", 1, ((StringBuilder)localObject).toString());
+      }
+      l1 = l2;
+      e();
+      l1 = l2;
+      localObject = a(this.r, "connect", new Class[] { SocketAddress.class, Integer.TYPE });
+      l1 = l2;
+      ((Method)localObject).setAccessible(true);
+      l1 = l2;
+      l2 = System.currentTimeMillis();
+      l1 = l2;
+      ((Method)localObject).invoke(this.q, new Object[] { paramSocketAddress, Integer.valueOf(paramInt) });
+      l1 = l2;
+      e();
+      l1 = l2;
+      i();
+      l1 = l2;
+      if (QLog.isColorLevel())
+      {
+        l1 = l2;
+        paramSocketAddress = new StringBuilder();
+        l1 = l2;
+        paramSocketAddress.append(this.e);
+        l1 = l2;
+        paramSocketAddress.append("connect to host 3 ");
+        l1 = l2;
+        paramSocketAddress.append(this.b);
+        l1 = l2;
+        paramSocketAddress.append(" succ. impl:");
+        l1 = l2;
+        paramSocketAddress.append(toString());
+        l1 = l2;
+        QLog.d("MSF.D.MonitorSocket", 1, paramSocketAddress.toString());
       }
       return;
     }
     catch (Exception paramSocketAddress)
     {
-      if (System.currentTimeMillis() - l1 >= paramInt) {
-        throw new SocketTimeoutException("timeoutexception " + paramSocketAddress.toString());
+      if (System.currentTimeMillis() - l1 < paramInt)
+      {
+        if ((paramSocketAddress instanceof InvocationTargetException)) {
+          throw new IOException(((InvocationTargetException)paramSocketAddress).getTargetException().toString());
+        }
+        throw new IOException(paramSocketAddress.toString());
       }
-      if ((paramSocketAddress instanceof InvocationTargetException)) {
-        throw new IOException(((InvocationTargetException)paramSocketAddress).getTargetException().toString());
-      }
-      throw new IOException(paramSocketAddress.toString());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("timeoutexception ");
+      ((StringBuilder)localObject).append(paramSocketAddress.toString());
+      throw new SocketTimeoutException(((StringBuilder)localObject).toString());
     }
   }
   
@@ -722,14 +830,15 @@ public class c
   
   public void setOption(int paramInt, Object paramObject)
   {
-    if (this.q != null) {
-      this.q.setOption(paramInt, paramObject);
+    SocketImpl localSocketImpl = this.q;
+    if (localSocketImpl != null) {
+      localSocketImpl.setOption(paramInt, paramObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.utils.c
  * JD-Core Version:    0.7.0.1
  */

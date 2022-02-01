@@ -62,19 +62,20 @@ public class RuleMemberValidator
   
   public void validate(TestClass paramTestClass, List<Throwable> paramList)
   {
-    if (this.methods) {}
-    for (paramTestClass = paramTestClass.getAnnotatedMethods(this.annotation);; paramTestClass = paramTestClass.getAnnotatedFields(this.annotation))
-    {
-      paramTestClass = paramTestClass.iterator();
-      while (paramTestClass.hasNext()) {
-        validateMember((FrameworkMember)paramTestClass.next(), paramList);
-      }
+    if (this.methods) {
+      paramTestClass = paramTestClass.getAnnotatedMethods(this.annotation);
+    } else {
+      paramTestClass = paramTestClass.getAnnotatedFields(this.annotation);
+    }
+    paramTestClass = paramTestClass.iterator();
+    while (paramTestClass.hasNext()) {
+      validateMember((FrameworkMember)paramTestClass.next(), paramList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.internal.runners.rules.RuleMemberValidator
  * JD-Core Version:    0.7.0.1
  */

@@ -17,13 +17,14 @@ class MiniAppInfoLoadTask$4
       JSONObject localJSONObject = paramJSONObject.optJSONObject("mini_app_info_data_json");
       byte[] arrayOfByte = (byte[])paramJSONObject.opt("mini_app_info_data_pb");
       paramJSONObject = paramJSONObject.optString("shareTicket", "");
-      MiniAppInfoLoadTask.access$400(this.this$0, localJSONObject, arrayOfByte, paramJSONObject, this.val$cacheProxy, MiniAppInfoLoadTask.access$100(this.this$0).link, MiniAppInfoLoadTask.access$100(this.this$0).linkType);
+      MiniAppInfoLoadTask localMiniAppInfoLoadTask = this.this$0;
+      MiniAppInfoLoadTask.access$400(localMiniAppInfoLoadTask, localJSONObject, arrayOfByte, paramJSONObject, this.val$cacheProxy, MiniAppInfoLoadTask.access$100(localMiniAppInfoLoadTask).link, MiniAppInfoLoadTask.access$100(this.this$0).linkType);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.task.MiniAppInfoLoadTask.4
  * JD-Core Version:    0.7.0.1
  */

@@ -15,19 +15,23 @@ class IliveLaunchFragment$9
     }
     if (IliveLaunchFragment.access$600(this.this$0) != null)
     {
-      if (this.a == 100.0F) {
+      if (this.a == 100.0F)
+      {
         IliveLaunchFragment.access$600(this.this$0).setText("直播加载中...");
+        return;
       }
+      TextView localTextView = IliveLaunchFragment.access$600(this.this$0);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("直播加载中：");
+      localStringBuilder.append((int)this.a);
+      localStringBuilder.append("%");
+      localTextView.setText(localStringBuilder.toString());
     }
-    else {
-      return;
-    }
-    IliveLaunchFragment.access$600(this.this$0).setText("直播加载中：" + (int)this.a + "%");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.IliveLaunchFragment.9
  * JD-Core Version:    0.7.0.1
  */

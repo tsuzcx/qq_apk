@@ -7,10 +7,10 @@ import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.armap.ResDownloadManager;
 import com.tencent.mobileqq.armap.ResDownloadManager.IResDownloadListener;
 import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import com.tencent.mobileqq.transfile.predownload.IPreDownloadController;
 import com.tencent.mobileqq.transfile.predownload.RunnableTask;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.utils.BusinessCommonConfig;
+import com.tencent.mobileqq.utils.QQAudioHelper;
 import com.tencent.mobileqq.utils.configsp.ARPromotionConfigSP;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -28,25 +28,31 @@ public class PromotionResDownload
   
   public PromotionResDownload(long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = ("ARPromotionResDownload_" + paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ARPromotionResDownload_");
+    localStringBuilder.append(paramLong);
+    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
   }
   
   static PromotionConfigInfo.ZipItem a(boolean paramBoolean, PromotionConfigInfo paramPromotionConfigInfo)
   {
     Iterator localIterator = paramPromotionConfigInfo.operationInfos.entrySet().iterator();
-    PromotionConfigInfo.ZipItem localZipItem = null;
-    while (localIterator.hasNext())
+    Object localObject1 = null;
+    Object localObject2;
+    do
     {
-      PromotionConfigInfo.PromotionItem localPromotionItem = (PromotionConfigInfo.PromotionItem)((Map.Entry)localIterator.next()).getValue();
-      if (!PromotionUtil.a(localPromotionItem.jdField_b_of_type_Long))
+      do
       {
-        localZipItem = a(paramBoolean, paramPromotionConfigInfo.mUin, localPromotionItem);
-        if (localZipItem != null) {
-          return localZipItem;
+        localObject2 = localObject1;
+        if (!localIterator.hasNext()) {
+          break;
         }
-      }
-    }
-    return localZipItem;
+        localObject2 = (PromotionConfigInfo.PromotionItem)((Map.Entry)localIterator.next()).getValue();
+      } while (PromotionUtil.a(((PromotionConfigInfo.PromotionItem)localObject2).jdField_b_of_type_Long));
+      localObject2 = a(paramBoolean, paramPromotionConfigInfo.mUin, (PromotionConfigInfo.PromotionItem)localObject2);
+      localObject1 = localObject2;
+    } while (localObject2 == null);
+    return localObject2;
   }
   
   static PromotionConfigInfo.ZipItem a(boolean paramBoolean, PromotionConfigInfo paramPromotionConfigInfo, PromotionConfigInfo.PromotionItem paramPromotionItem)
@@ -69,16 +75,34 @@ public class PromotionResDownload
     while (paramPromotionItem.hasNext())
     {
       PromotionConfigInfo.ZipItem localZipItem = (PromotionConfigInfo.ZipItem)((Map.Entry)paramPromotionItem.next()).getValue();
+      String str;
+      StringBuilder localStringBuilder;
       if (localZipItem.jdField_c_of_type_Int == -1)
       {
-        if (QLog.isDevelopLevel()) {
-          QLog.w(PromotionUtil.jdField_a_of_type_JavaLangString, 1, "isPromotionResReady, 已经下载失败了, id[" + localZipItem.e + "], index[" + localZipItem.jdField_a_of_type_Int + "]");
+        if (QLog.isDevelopLevel())
+        {
+          str = PromotionUtil.jdField_a_of_type_JavaLangString;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("isPromotionResReady, 已经下载失败了, id[");
+          localStringBuilder.append(localZipItem.e);
+          localStringBuilder.append("], index[");
+          localStringBuilder.append(localZipItem.jdField_a_of_type_Int);
+          localStringBuilder.append("]");
+          QLog.w(str, 1, localStringBuilder.toString());
         }
       }
       else if ((paramBoolean) && (localZipItem.jdField_b_of_type_Int == 0))
       {
-        if (QLog.isDevelopLevel()) {
-          QLog.w(PromotionUtil.jdField_a_of_type_JavaLangString, 1, "isPromotionResReady, 无需预下载, id[" + localZipItem.e + "], index[" + localZipItem.jdField_a_of_type_Int + "]");
+        if (QLog.isDevelopLevel())
+        {
+          str = PromotionUtil.jdField_a_of_type_JavaLangString;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("isPromotionResReady, 无需预下载, id[");
+          localStringBuilder.append(localZipItem.e);
+          localStringBuilder.append("], index[");
+          localStringBuilder.append(localZipItem.jdField_a_of_type_Int);
+          localStringBuilder.append("]");
+          QLog.w(str, 1, localStringBuilder.toString());
         }
       }
       else if (!a(paramString, localZipItem)) {
@@ -100,86 +124,151 @@ public class PromotionResDownload
   
   private void a(String paramString1, boolean paramBoolean, AppInterface paramAppInterface, String paramString2, int paramInt, PromotionConfigInfo.ZipItem paramZipItem)
   {
-    if ((a() == null) || (paramZipItem == null)) {
-      a(paramString2, paramInt, -3);
-    }
-    do
+    if ((a() != null) && (paramZipItem != null))
     {
-      return;
       paramString2 = a(paramAppInterface, paramZipItem);
-    } while (paramString2 == null);
-    paramZipItem.jdField_b_of_type_Long = System.currentTimeMillis();
-    Object localObject1 = (PreDownloadController)paramAppInterface.getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2);
-    ((PreDownloadController)localObject1).cancelPreDownload(paramZipItem.jdField_a_of_type_JavaLangString);
-    ((PreDownloadController)localObject1).preDownloadSuccess(paramZipItem.jdField_a_of_type_JavaLangString, 0L);
-    localObject1 = paramZipItem.jdField_c_of_type_JavaLangString;
-    if (a(paramAppInterface.getAccount(), paramZipItem))
-    {
-      paramAppInterface = paramZipItem.jdField_a_of_type_JavaLangObject;
-      if (!paramBoolean) {}
-      try
-      {
-        paramZipItem.jdField_a_of_type_Boolean = false;
-        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "innerDownloadRes[" + paramString1 + "], 资源已经存在, callByPreDownload[" + paramBoolean + "], item[" + paramZipItem + "], zipPath[" + (String)localObject1 + "]");
-        paramZipItem.a(2);
-        paramString2.a(paramZipItem.jdField_a_of_type_JavaLangString, paramZipItem.jdField_b_of_type_JavaLangString, 100, (String)localObject1, paramZipItem);
+      if (paramString2 == null) {
         return;
       }
-      finally {}
-    }
-    Object localObject2 = paramZipItem.jdField_a_of_type_JavaLangObject;
-    if (!paramBoolean) {}
-    for (;;)
-    {
+      paramZipItem.jdField_b_of_type_Long = System.currentTimeMillis();
+      Object localObject1 = (IPreDownloadController)paramAppInterface.getRuntimeService(IPreDownloadController.class, "");
+      ((IPreDownloadController)localObject1).cancelPreDownload(paramZipItem.jdField_a_of_type_JavaLangString);
+      ((IPreDownloadController)localObject1).preDownloadSuccess(paramZipItem.jdField_a_of_type_JavaLangString, 0L);
+      localObject1 = paramZipItem.jdField_c_of_type_JavaLangString;
+      if (a(paramAppInterface.getAccount(), paramZipItem))
+      {
+        paramAppInterface = paramZipItem.jdField_a_of_type_JavaLangObject;
+        if (!paramBoolean) {}
+        try
+        {
+          paramZipItem.jdField_a_of_type_Boolean = false;
+          paramAppInterface = this.jdField_a_of_type_JavaLangString;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("innerDownloadRes[");
+          ((StringBuilder)localObject2).append(paramString1);
+          ((StringBuilder)localObject2).append("], 资源已经存在, callByPreDownload[");
+          ((StringBuilder)localObject2).append(paramBoolean);
+          ((StringBuilder)localObject2).append("], item[");
+          ((StringBuilder)localObject2).append(paramZipItem);
+          ((StringBuilder)localObject2).append("], zipPath[");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          ((StringBuilder)localObject2).append("]");
+          QLog.w(paramAppInterface, 1, ((StringBuilder)localObject2).toString());
+          paramZipItem.a(2);
+          paramString2.a(paramZipItem.jdField_a_of_type_JavaLangString, paramZipItem.jdField_b_of_type_JavaLangString, 100, (String)localObject1, paramZipItem);
+          return;
+        }
+        finally {}
+      }
+      Object localObject2 = paramZipItem.jdField_a_of_type_JavaLangObject;
+      if (!paramBoolean) {}
       try
       {
         paramZipItem.jdField_a_of_type_Boolean = false;
         if (paramZipItem.jdField_c_of_type_Int == 1)
         {
-          QLog.w(this.jdField_a_of_type_JavaLangString, 1, "innerDownloadRes[" + paramString1 + "], 已经在下载中, callByPreDownload[" + paramBoolean + "], item[" + paramZipItem + "], zipPath[" + (String)localObject1 + "]");
-          return;
+          paramAppInterface = this.jdField_a_of_type_JavaLangString;
+          paramString2 = new StringBuilder();
+          paramString2.append("innerDownloadRes[");
+          paramString2.append(paramString1);
+          paramString2.append("], 已经在下载中, callByPreDownload[");
+          paramString2.append(paramBoolean);
+          paramString2.append("], item[");
+          paramString2.append(paramZipItem);
+          paramString2.append("], zipPath[");
+          paramString2.append((String)localObject1);
+          paramString2.append("]");
+          QLog.w(paramAppInterface, 1, paramString2.toString());
         }
+        else
+        {
+          paramZipItem.a(1);
+          boolean bool = ((ResDownloadManager)paramAppInterface.getManager(QQManagerFactory.ARMAP_RES_DOWNLOAD)).a(paramZipItem.jdField_a_of_type_JavaLangString, paramZipItem.jdField_b_of_type_JavaLangString, ".zip", true, 5, paramZipItem, paramZipItem.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener);
+          paramAppInterface = this.jdField_a_of_type_JavaLangString;
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("innerDownloadRes[");
+          ((StringBuilder)localObject1).append(paramString1);
+          ((StringBuilder)localObject1).append("], 开始下载, callByPreDownload[");
+          ((StringBuilder)localObject1).append(paramBoolean);
+          ((StringBuilder)localObject1).append("], ret[");
+          ((StringBuilder)localObject1).append(bool);
+          ((StringBuilder)localObject1).append("], item[");
+          ((StringBuilder)localObject1).append(paramZipItem);
+          ((StringBuilder)localObject1).append("]");
+          QLog.w(paramAppInterface, 1, ((StringBuilder)localObject1).toString());
+          if ((!bool) && (paramString2 != null)) {
+            paramString2.a(paramZipItem.jdField_a_of_type_JavaLangString, paramZipItem.jdField_b_of_type_JavaLangString, -4, null, paramZipItem);
+          }
+        }
+        return;
       }
       finally {}
-      paramZipItem.a(1);
-      boolean bool = ((ResDownloadManager)paramAppInterface.getManager(QQManagerFactory.ARMAP_RES_DOWNLOAD)).a(paramZipItem.jdField_a_of_type_JavaLangString, paramZipItem.jdField_b_of_type_JavaLangString, ".zip", true, 5, paramZipItem, paramZipItem.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener);
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "innerDownloadRes[" + paramString1 + "], 开始下载, callByPreDownload[" + paramBoolean + "], ret[" + bool + "], item[" + paramZipItem + "]");
-      if ((!bool) && (paramString2 != null)) {
-        paramString2.a(paramZipItem.jdField_a_of_type_JavaLangString, paramZipItem.jdField_b_of_type_JavaLangString, -4, null, paramZipItem);
-      }
     }
+    a(paramString2, paramInt, -3);
   }
   
   static boolean a(PromotionConfigInfo.ZipItem paramZipItem)
   {
     if (paramZipItem.jdField_a_of_type_Int == 0)
     {
-      String str = PromotionPath.a(paramZipItem);
-      if (!new File(str + "entry.png").exists()) {
-        if (QLog.isDevelopLevel()) {
-          QLog.w("PromotionResDownload", 1, "文件不存在, path[" + str + "], name[" + "entry.png" + "]");
-        }
-      }
-      do
+      Object localObject = PromotionPath.a(paramZipItem);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("entry.png");
+      if (!new File(localStringBuilder.toString()).exists())
       {
-        do
+        if (QLog.isDevelopLevel())
         {
-          return false;
-          if (new File(str + "entry.json").exists()) {
-            break;
-          }
-        } while (!QLog.isDevelopLevel());
-        QLog.w("PromotionResDownload", 1, "文件不存在, path[" + str + "], name[" + "entry.json" + "]");
-        return false;
-        paramZipItem = PromotionPath.b(paramZipItem);
-        if (new File(paramZipItem + "guide.json").exists()) {
-          break;
+          paramZipItem = new StringBuilder();
+          paramZipItem.append("文件不存在, path[");
+          paramZipItem.append((String)localObject);
+          paramZipItem.append("], name[");
+          paramZipItem.append("entry.png");
+          paramZipItem.append("]");
+          QLog.w("PromotionResDownload", 1, paramZipItem.toString());
         }
-      } while (!QLog.isDevelopLevel());
-      QLog.w("PromotionResDownload", 1, "文件不存在, path[" + paramZipItem + "], name[" + "guide.json" + "]");
-      return false;
+        return false;
+      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("entry.json");
+      if (!new File(localStringBuilder.toString()).exists())
+      {
+        if (QLog.isDevelopLevel())
+        {
+          paramZipItem = new StringBuilder();
+          paramZipItem.append("文件不存在, path[");
+          paramZipItem.append((String)localObject);
+          paramZipItem.append("], name[");
+          paramZipItem.append("entry.json");
+          paramZipItem.append("]");
+          QLog.w("PromotionResDownload", 1, paramZipItem.toString());
+        }
+        return false;
+      }
+      paramZipItem = PromotionPath.b(paramZipItem);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramZipItem);
+      ((StringBuilder)localObject).append("guide.json");
+      if (!new File(((StringBuilder)localObject).toString()).exists())
+      {
+        if (QLog.isDevelopLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("文件不存在, path[");
+          ((StringBuilder)localObject).append(paramZipItem);
+          ((StringBuilder)localObject).append("], name[");
+          ((StringBuilder)localObject).append("guide.json");
+          ((StringBuilder)localObject).append("]");
+          QLog.w("PromotionResDownload", 1, ((StringBuilder)localObject).toString());
+        }
+        return false;
+      }
     }
-    if (paramZipItem.jdField_a_of_type_Int == 1) {}
+    else
+    {
+      int i = paramZipItem.jdField_a_of_type_Int;
+    }
     return true;
   }
   
@@ -197,54 +286,21 @@ public class PromotionResDownload
     return this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo;
   }
   
-  /* Error */
   ResDownloadManager.IResDownloadListener a(AppInterface paramAppInterface, PromotionConfigInfo.ZipItem paramZipItem)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_2
-    //   3: getfield 228	com/tencent/mobileqq/ar/ARPromotionMgr/PromotionConfigInfo$ZipItem:jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener	Lcom/tencent/mobileqq/armap/ResDownloadManager$IResDownloadListener;
-    //   6: ifnull +12 -> 18
-    //   9: aload_2
-    //   10: getfield 228	com/tencent/mobileqq/ar/ARPromotionMgr/PromotionConfigInfo$ZipItem:jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener	Lcom/tencent/mobileqq/armap/ResDownloadManager$IResDownloadListener;
-    //   13: astore_1
-    //   14: aload_0
-    //   15: monitorexit
-    //   16: aload_1
-    //   17: areturn
-    //   18: aload_2
-    //   19: getfield 116	com/tencent/mobileqq/ar/ARPromotionMgr/PromotionConfigInfo$ZipItem:jdField_a_of_type_Int	I
-    //   22: istore_3
-    //   23: aload_2
-    //   24: new 277	com/tencent/mobileqq/ar/ARPromotionMgr/PromotionResDownload$2
-    //   27: dup
-    //   28: aload_0
-    //   29: aload_1
-    //   30: aload_2
-    //   31: getfield 112	com/tencent/mobileqq/ar/ARPromotionMgr/PromotionConfigInfo$ZipItem:e	Ljava/lang/String;
-    //   34: iload_3
-    //   35: invokespecial 280	com/tencent/mobileqq/ar/ARPromotionMgr/PromotionResDownload$2:<init>	(Lcom/tencent/mobileqq/ar/ARPromotionMgr/PromotionResDownload;Lcom/tencent/common/app/AppInterface;Ljava/lang/String;I)V
-    //   38: putfield 228	com/tencent/mobileqq/ar/ARPromotionMgr/PromotionConfigInfo$ZipItem:jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener	Lcom/tencent/mobileqq/armap/ResDownloadManager$IResDownloadListener;
-    //   41: aload_2
-    //   42: getfield 228	com/tencent/mobileqq/ar/ARPromotionMgr/PromotionConfigInfo$ZipItem:jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener	Lcom/tencent/mobileqq/armap/ResDownloadManager$IResDownloadListener;
-    //   45: astore_1
-    //   46: goto -32 -> 14
-    //   49: astore_1
-    //   50: aload_0
-    //   51: monitorexit
-    //   52: aload_1
-    //   53: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	54	0	this	PromotionResDownload
-    //   0	54	1	paramAppInterface	AppInterface
-    //   0	54	2	paramZipItem	PromotionConfigInfo.ZipItem
-    //   22	13	3	i	int
-    // Exception table:
-    //   from	to	target	type
-    //   2	14	49	finally
-    //   18	46	49	finally
+    try
+    {
+      if (paramZipItem.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener != null)
+      {
+        paramAppInterface = paramZipItem.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener;
+        return paramAppInterface;
+      }
+      int i = paramZipItem.jdField_a_of_type_Int;
+      paramZipItem.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener = new PromotionResDownload.2(this, paramAppInterface, paramZipItem.e, i);
+      paramAppInterface = paramZipItem.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener;
+      return paramAppInterface;
+    }
+    finally {}
   }
   
   public void a()
@@ -255,52 +311,86 @@ public class PromotionResDownload
   void a(AppInterface paramAppInterface, boolean paramBoolean, String paramString, int paramInt)
   {
     Object localObject1 = a();
-    if (localObject1 == null) {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestPreDownload, ConfigInfo为空, callByPreDownload[" + paramBoolean + "], activatyid[" + paramString + "], index[" + paramInt + "]");
-    }
-    do
+    if (localObject1 == null)
     {
-      Object localObject2;
-      for (;;)
-      {
-        return;
-        if (!(paramAppInterface instanceof QQAppInterface))
-        {
-          QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestPreDownload, 不在主进程");
-          return;
-        }
-        localObject2 = ((PromotionConfigInfo)localObject1).getItem(paramString);
-        if (localObject2 == null)
-        {
-          a(paramString, paramInt, -3);
-          return;
-        }
-        localObject1 = a(paramBoolean, (PromotionConfigInfo)localObject1, (PromotionConfigInfo.PromotionItem)localObject2);
-        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestPreDownload, expectID[" + paramString + "], expectIndex[" + paramInt + "], callByPreDownload[" + paramBoolean + "], zipItem[" + localObject1 + "]");
-        if (localObject1 != null) {
-          break;
-        }
-        paramAppInterface = ((PromotionConfigInfo.PromotionItem)localObject2).a().entrySet().iterator();
-        while (paramAppInterface.hasNext()) {
-          a(paramString, ((PromotionConfigInfo.ZipItem)((Map.Entry)paramAppInterface.next()).getValue()).jdField_a_of_type_Int, 100);
-        }
+      paramAppInterface = this.jdField_a_of_type_JavaLangString;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("requestPreDownload, ConfigInfo为空, callByPreDownload[");
+      ((StringBuilder)localObject1).append(paramBoolean);
+      ((StringBuilder)localObject1).append("], activatyid[");
+      ((StringBuilder)localObject1).append(paramString);
+      ((StringBuilder)localObject1).append("], index[");
+      ((StringBuilder)localObject1).append(paramInt);
+      ((StringBuilder)localObject1).append("]");
+      QLog.w(paramAppInterface, 1, ((StringBuilder)localObject1).toString());
+      return;
+    }
+    if (!(paramAppInterface instanceof QQAppInterface))
+    {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestPreDownload, 不在主进程");
+      return;
+    }
+    Object localObject2 = ((PromotionConfigInfo)localObject1).getItem(paramString);
+    if (localObject2 == null)
+    {
+      a(paramString, paramInt, -3);
+      return;
+    }
+    localObject1 = a(paramBoolean, (PromotionConfigInfo)localObject1, (PromotionConfigInfo.PromotionItem)localObject2);
+    String str = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("requestPreDownload, expectID[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("], expectIndex[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("], callByPreDownload[");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("], zipItem[");
+    localStringBuilder.append(localObject1);
+    localStringBuilder.append("]");
+    QLog.w(str, 1, localStringBuilder.toString());
+    if (localObject1 == null)
+    {
+      paramAppInterface = ((PromotionConfigInfo.PromotionItem)localObject2).a().entrySet().iterator();
+      while (paramAppInterface.hasNext()) {
+        a(paramString, ((PromotionConfigInfo.ZipItem)((Map.Entry)paramAppInterface.next()).getValue()).jdField_a_of_type_Int, 100);
       }
-      paramString = ((PromotionConfigInfo.ZipItem)localObject1).jdField_b_of_type_JavaLangString;
-      if (!paramBoolean) {
-        break;
-      }
+      return;
+    }
+    paramString = ((PromotionConfigInfo.ZipItem)localObject1).jdField_b_of_type_JavaLangString;
+    if (paramBoolean)
+    {
       if (((PromotionConfigInfo.ZipItem)localObject1).jdField_b_of_type_Int != 0)
       {
         localObject2 = new RunnableTask((QQAppInterface)paramAppInterface, paramString, new PromotionResDownload.1(this, paramBoolean, paramAppInterface, (PromotionConfigInfo.ZipItem)localObject1), 0L);
-        paramBoolean = ((PreDownloadController)paramAppInterface.getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2)).requestPreDownload(10074, "prd", paramString, 0, ((PromotionConfigInfo.ZipItem)localObject1).jdField_a_of_type_JavaLangString, ((PromotionConfigInfo.ZipItem)localObject1).jdField_c_of_type_JavaLangString, ((PromotionConfigInfo.ZipItem)localObject1).jdField_b_of_type_Int, 0, true, (AbsPreDownloadTask)localObject2);
+        paramBoolean = ((IPreDownloadController)paramAppInterface.getRuntimeService(IPreDownloadController.class, "")).requestPreDownload(10074, "prd", paramString, 0, ((PromotionConfigInfo.ZipItem)localObject1).jdField_a_of_type_JavaLangString, ((PromotionConfigInfo.ZipItem)localObject1).jdField_c_of_type_JavaLangString, ((PromotionConfigInfo.ZipItem)localObject1).jdField_b_of_type_Int, 0, true, (AbsPreDownloadTask)localObject2);
         ((PromotionConfigInfo.ZipItem)localObject1).jdField_a_of_type_Long = System.currentTimeMillis();
-        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestPreDownload, 预下载申请调度, ret[" + paramBoolean + "], index[" + ((PromotionConfigInfo.ZipItem)localObject1).jdField_a_of_type_Int + "]");
+        paramAppInterface = this.jdField_a_of_type_JavaLangString;
+        paramString = new StringBuilder();
+        paramString.append("requestPreDownload, 预下载申请调度, ret[");
+        paramString.append(paramBoolean);
+        paramString.append("], index[");
+        paramString.append(((PromotionConfigInfo.ZipItem)localObject1).jdField_a_of_type_Int);
+        paramString.append("]");
+        QLog.w(paramAppInterface, 1, paramString.toString());
         return;
       }
-    } while (!AudioHelper.e());
-    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestPreDownload, 无需预下载，id[" + ((PromotionConfigInfo.ZipItem)localObject1).e + "], index[" + ((PromotionConfigInfo.ZipItem)localObject1).jdField_a_of_type_Int + "]");
-    return;
-    a(HardCodeUtil.a(2131708502), paramBoolean, paramAppInterface, ((PromotionConfigInfo.ZipItem)localObject1).e, ((PromotionConfigInfo.ZipItem)localObject1).jdField_a_of_type_Int, (PromotionConfigInfo.ZipItem)localObject1);
+      if (QQAudioHelper.c())
+      {
+        paramAppInterface = this.jdField_a_of_type_JavaLangString;
+        paramString = new StringBuilder();
+        paramString.append("requestPreDownload, 无需预下载，id[");
+        paramString.append(((PromotionConfigInfo.ZipItem)localObject1).e);
+        paramString.append("], index[");
+        paramString.append(((PromotionConfigInfo.ZipItem)localObject1).jdField_a_of_type_Int);
+        paramString.append("]");
+        QLog.w(paramAppInterface, 1, paramString.toString());
+      }
+    }
+    else
+    {
+      a(HardCodeUtil.a(2131708508), paramBoolean, paramAppInterface, ((PromotionConfigInfo.ZipItem)localObject1).e, ((PromotionConfigInfo.ZipItem)localObject1).jdField_a_of_type_Int, (PromotionConfigInfo.ZipItem)localObject1);
+    }
   }
   
   void a(PromotionConfigInfo paramPromotionConfigInfo)
@@ -361,7 +451,7 @@ public class PromotionResDownload
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotionMgr.PromotionResDownload
  * JD-Core Version:    0.7.0.1
  */

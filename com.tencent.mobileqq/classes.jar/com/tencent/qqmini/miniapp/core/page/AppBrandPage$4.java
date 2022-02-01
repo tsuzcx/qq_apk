@@ -18,34 +18,28 @@ class AppBrandPage$4
     boolean bool2 = "#000000".equals(this.val$frontColor);
     NavigationBar localNavigationBar = AppBrandPage.access$100(this.this$0);
     String str;
-    if (bool2)
-    {
+    if (bool2) {
       str = "black";
-      localNavigationBar.setTextStyle(str);
-      boolean bool1 = false;
-      if (AppBrandPage.access$200(this.this$0).getAttachedActivity() != null) {
-        bool1 = ImmersiveUtils.setStatusTextColor(bool2, AppBrandPage.access$200(this.this$0).getAttachedActivity().getWindow());
-      }
-      AppBrandPage.access$100(this.this$0).setUseCustomStatusBarStyle(bool1);
-      if (TextUtils.isEmpty(this.val$interpolator)) {
-        break label132;
-      }
-      AppBrandPage.access$100(this.this$0).setNavBackgroundColor(ColorUtils.parseColor(this.val$backgroundColor), this.val$delay, this.val$interpolator);
-    }
-    for (;;)
-    {
-      this.val$req.ok();
-      return;
+    } else {
       str = "white";
-      break;
-      label132:
+    }
+    localNavigationBar.setTextStyle(str);
+    boolean bool1 = false;
+    if (AppBrandPage.access$200(this.this$0).getAttachedActivity() != null) {
+      bool1 = ImmersiveUtils.setStatusTextColor(bool2, AppBrandPage.access$200(this.this$0).getAttachedActivity().getWindow());
+    }
+    AppBrandPage.access$100(this.this$0).setUseCustomStatusBarStyle(bool1);
+    if (!TextUtils.isEmpty(this.val$interpolator)) {
+      AppBrandPage.access$100(this.this$0).setNavBackgroundColor(ColorUtils.parseColor(this.val$backgroundColor), this.val$delay, this.val$interpolator);
+    } else {
       AppBrandPage.access$100(this.this$0).setNavBackgroundColor(ColorUtils.parseColor(this.val$backgroundColor));
     }
+    this.val$req.ok();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.AppBrandPage.4
  * JD-Core Version:    0.7.0.1
  */

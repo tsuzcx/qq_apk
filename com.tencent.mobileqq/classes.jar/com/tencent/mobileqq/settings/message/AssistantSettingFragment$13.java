@@ -14,7 +14,7 @@ class AssistantSettingFragment$13
   
   public void onClick(View paramView)
   {
-    Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+    Intent localIntent = new Intent(this.a.getBaseActivity(), QQBrowserActivity.class);
     localIntent.putExtra("url", "https://zb.vip.qq.com/v2/pages/nudgeMall?_wv=2");
     this.a.startActivity(localIntent);
     ReportController.b(null, "dc00898", "", "", "0X800B87B", "0X800B87B", 0, 0, "", "", "", "");
@@ -23,7 +23,7 @@ class AssistantSettingFragment$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.AssistantSettingFragment.13
  * JD-Core Version:    0.7.0.1
  */

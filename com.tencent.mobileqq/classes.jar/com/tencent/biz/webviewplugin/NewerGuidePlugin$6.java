@@ -15,24 +15,21 @@ class NewerGuidePlugin$6
     if (QLog.isColorLevel()) {
       QLog.d("NewerGuidePlugin", 2, String.format("onConfirmBtClicked mSelectedIndex=%s", new Object[] { Integer.valueOf(NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin)) }));
     }
-    if ((this.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())) {
+    Object localObject = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+    if ((localObject != null) && (((ActionSheet)localObject).isShowing())) {
       this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
     }
-    JSONObject localJSONObject = new JSONObject();
+    localObject = new JSONObject();
     try
     {
-      localJSONObject.put("result", 1);
-      localJSONObject.put("index", NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin));
-      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respSelector", new String[] { localJSONObject.toString() });
-      return;
+      ((JSONObject)localObject).put("result", 1);
+      ((JSONObject)localObject).put("index", NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin));
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.e("NewerGuidePlugin", 1, "sendSelectorResp fail", localException);
-      }
+      QLog.e("NewerGuidePlugin", 1, "sendSelectorResp fail", localException);
     }
+    this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respSelector", new String[] { ((JSONObject)localObject).toString() });
   }
   
   public void onItemSelected(int paramInt1, int paramInt2)
@@ -42,7 +39,7 @@ class NewerGuidePlugin$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewerGuidePlugin.6
  * JD-Core Version:    0.7.0.1
  */

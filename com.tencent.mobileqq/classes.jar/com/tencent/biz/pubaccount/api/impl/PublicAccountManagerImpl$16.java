@@ -15,27 +15,24 @@ final class PublicAccountManagerImpl$16
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     this.a.setObserver(null);
-    if (!paramBoolean) {}
-    for (;;)
-    {
+    if (!paramBoolean) {
       return;
-      try
-      {
-        mobileqq_mp.SendOrderPayEventResponse localSendOrderPayEventResponse = new mobileqq_mp.SendOrderPayEventResponse();
-        localSendOrderPayEventResponse.mergeFrom(paramBundle.getByteArray("data"));
-        if (localSendOrderPayEventResponse.ret_info.has())
-        {
-          localSendOrderPayEventResponse.ret_info.ret_code.get();
-          return;
-        }
-      }
-      catch (Exception paramBundle) {}
     }
+    try
+    {
+      mobileqq_mp.SendOrderPayEventResponse localSendOrderPayEventResponse = new mobileqq_mp.SendOrderPayEventResponse();
+      localSendOrderPayEventResponse.mergeFrom(paramBundle.getByteArray("data"));
+      if (localSendOrderPayEventResponse.ret_info.has()) {
+        localSendOrderPayEventResponse.ret_info.ret_code.get();
+      }
+      return;
+    }
+    catch (Exception paramBundle) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountManagerImpl.16
  * JD-Core Version:    0.7.0.1
  */

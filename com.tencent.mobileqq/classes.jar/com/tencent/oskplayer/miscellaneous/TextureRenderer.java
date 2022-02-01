@@ -15,7 +15,7 @@ public class TextureRenderer
 {
   private static final int FLOAT_SIZE_BYTES = 4;
   private static final String FRAGMENT_SHADER = "#extension GL_OES_EGL_image_external : require\nprecision mediump float;\nvarying vec2 vTextureCoord;\nuniform samplerExternalOES sTexture;\nvoid main() {\n    gl_FragColor = texture2D(sTexture, vTextureCoord);\n}\n";
-  public static final String TAG = TextureRenderer.class.getSimpleName();
+  public static final String TAG = "TextureRenderer";
   private static final int TRIANGLE_VERTICES_DATA_POS_OFFSET = 0;
   private static final int TRIANGLE_VERTICES_DATA_STRIDE_BYTES = 20;
   private static final int TRIANGLE_VERTICES_DATA_UV_OFFSET = 3;
@@ -42,7 +42,14 @@ public class TextureRenderer
     int i = GLES20.glGetError();
     if (i != 0)
     {
-      Logger.g().e(TAG, "[checkGlError] " + paramString + ", " + i);
+      ILogger localILogger = Logger.g();
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[checkGlError] ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(i);
+      localILogger.e(str, localStringBuilder.toString());
       return true;
     }
     return false;
@@ -52,7 +59,13 @@ public class TextureRenderer
   {
     if (paramInt < 0)
     {
-      Logger.g().e(TAG, "[checkLocationError] Unable to locate '" + paramString + "' in program");
+      ILogger localILogger = Logger.g();
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[checkLocationError] Unable to locate '");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("' in program");
+      localILogger.e(str, localStringBuilder.toString());
       return true;
     }
     return false;
@@ -60,69 +73,95 @@ public class TextureRenderer
   
   private int createProgram(String paramString1, String paramString2)
   {
-    int i = 0;
-    int j = loadShader(35633, paramString1);
-    if (j == 0)
+    int i = loadShader(35633, paramString1);
+    if (i == 0)
     {
       Logger.g().e(TAG, "[createProgram] load vertex failed");
-      i = 10012;
+      return 10012;
     }
-    do
+    int j = loadShader(35632, paramString2);
+    if (j == 0)
     {
-      return i;
-      int k = loadShader(35632, paramString2);
-      if (k == 0)
-      {
-        Logger.g().e(TAG, "[createProgram] load fragment failed");
-        return 10013;
-      }
-      this.mProgram = GLES20.glCreateProgram();
-      if (this.mProgram == 0)
-      {
-        Logger.g().e(TAG, "[createProgram] create program failed");
-        return 10011;
-      }
-      GLES20.glAttachShader(this.mProgram, j);
-      if (checkGlError("glAttachShader vertexShader"))
-      {
-        this.mProgram = 0;
-        return 10014;
-      }
-      GLES20.glAttachShader(this.mProgram, k);
-      if (checkGlError("glAttachShader pixelShader"))
-      {
-        this.mProgram = 0;
-        return 10015;
-      }
-      GLES20.glLinkProgram(this.mProgram);
-      paramString1 = new int[1];
-      GLES20.glGetProgramiv(this.mProgram, 35714, paramString1, 0);
-    } while (paramString1[0] == 1);
-    Logger.g().e(TAG, "[createProgram] Could not link program: ");
-    Logger.g().e(TAG, "[createProgram] " + GLES20.glGetProgramInfoLog(this.mProgram));
-    GLES20.glDeleteProgram(this.mProgram);
-    this.mProgram = 0;
-    return 10016;
+      Logger.g().e(TAG, "[createProgram] load fragment failed");
+      return 10013;
+    }
+    this.mProgram = GLES20.glCreateProgram();
+    int k = this.mProgram;
+    if (k == 0)
+    {
+      Logger.g().e(TAG, "[createProgram] create program failed");
+      return 10011;
+    }
+    GLES20.glAttachShader(k, i);
+    if (checkGlError("glAttachShader vertexShader"))
+    {
+      this.mProgram = 0;
+      return 10014;
+    }
+    GLES20.glAttachShader(this.mProgram, j);
+    if (checkGlError("glAttachShader pixelShader"))
+    {
+      this.mProgram = 0;
+      return 10015;
+    }
+    GLES20.glLinkProgram(this.mProgram);
+    paramString1 = new int[1];
+    GLES20.glGetProgramiv(this.mProgram, 35714, paramString1, 0);
+    if (paramString1[0] != 1)
+    {
+      Logger.g().e(TAG, "[createProgram] Could not link program: ");
+      paramString1 = Logger.g();
+      paramString2 = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[createProgram] ");
+      localStringBuilder.append(GLES20.glGetProgramInfoLog(this.mProgram));
+      paramString1.e(paramString2, localStringBuilder.toString());
+      GLES20.glDeleteProgram(this.mProgram);
+      this.mProgram = 0;
+      return 10016;
+    }
+    return 0;
   }
   
   private int loadShader(int paramInt, String paramString)
   {
-    int i = GLES20.glCreateShader(paramInt);
-    if (checkGlError("glCreateShader type=" + paramInt))
+    int j = GLES20.glCreateShader(paramInt);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("glCreateShader type=");
+    ((StringBuilder)localObject).append(paramInt);
+    StringBuilder localStringBuilder;
+    if (checkGlError(((StringBuilder)localObject).toString()))
     {
-      Logger.g().e(TAG, "[loadShader] glCreateShader failed, shader=" + i);
+      paramString = Logger.g();
+      localObject = TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[loadShader] glCreateShader failed, shader=");
+      localStringBuilder.append(j);
+      paramString.e((String)localObject, localStringBuilder.toString());
       return 0;
     }
-    GLES20.glShaderSource(i, paramString);
-    GLES20.glCompileShader(i);
+    GLES20.glShaderSource(j, paramString);
+    GLES20.glCompileShader(j);
     paramString = new int[1];
-    GLES20.glGetShaderiv(i, 35713, paramString, 0);
+    GLES20.glGetShaderiv(j, 35713, paramString, 0);
+    int i = j;
     if (paramString[0] == 0)
     {
-      Logger.g().e(TAG, "[loadShader] Could not compile shader " + paramInt + ":");
-      Logger.g().e(TAG, "[loadShader] " + GLES20.glGetShaderInfoLog(i));
-      GLES20.glDeleteShader(i);
-      return 0;
+      paramString = Logger.g();
+      localObject = TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[loadShader] Could not compile shader ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(":");
+      paramString.e((String)localObject, localStringBuilder.toString());
+      paramString = Logger.g();
+      localObject = TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[loadShader] ");
+      localStringBuilder.append(GLES20.glGetShaderInfoLog(j));
+      paramString.e((String)localObject, localStringBuilder.toString());
+      GLES20.glDeleteShader(j);
+      i = 0;
     }
     return i;
   }
@@ -182,8 +221,9 @@ public class TextureRenderer
     paramSurfaceTexture.getTransformMatrix(this.mSTMatrix);
     if (paramBoolean)
     {
-      this.mSTMatrix[5] = (-this.mSTMatrix[5]);
-      this.mSTMatrix[13] = (1.0F - this.mSTMatrix[13]);
+      paramSurfaceTexture = this.mSTMatrix;
+      paramSurfaceTexture[5] = (-paramSurfaceTexture[5]);
+      paramSurfaceTexture[13] = (1.0F - paramSurfaceTexture[13]);
     }
     GLES20.glClearColor(0.0F, 1.0F, 0.0F, 1.0F);
     GLES20.glClear(16384);
@@ -216,7 +256,7 @@ public class TextureRenderer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.miscellaneous.TextureRenderer
  * JD-Core Version:    0.7.0.1
  */

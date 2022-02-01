@@ -20,12 +20,18 @@ class VideoDecoder$SampleTime
   
   public String toString()
   {
-    return "SampleTime{sampleState=" + this.sampleState + ", timeUs=" + this.timeUs + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SampleTime{sampleState=");
+    localStringBuilder.append(this.sampleState);
+    localStringBuilder.append(", timeUs=");
+    localStringBuilder.append(this.timeUs);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tav.decoder.VideoDecoder.SampleTime
  * JD-Core Version:    0.7.0.1
  */

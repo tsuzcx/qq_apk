@@ -43,31 +43,53 @@ public final class stFeedOpInfo
   
   public String toString()
   {
-    return "stFeedOpInfo{feedId='" + this.feedId + '\'' + ", videoType=" + this.videoType + ", traceId='" + this.traceId + '\'' + ", iconType=" + this.iconType + ", shootIconInfo=" + this.shootIconInfo + ", businessAdInfo=" + this.businessAdInfo + ", isRequesting=" + this.isRequesting + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("stFeedOpInfo{feedId='");
+    localStringBuilder.append(this.feedId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", videoType=");
+    localStringBuilder.append(this.videoType);
+    localStringBuilder.append(", traceId='");
+    localStringBuilder.append(this.traceId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", iconType=");
+    localStringBuilder.append(this.iconType);
+    localStringBuilder.append(", shootIconInfo=");
+    localStringBuilder.append(this.shootIconInfo);
+    localStringBuilder.append(", businessAdInfo=");
+    localStringBuilder.append(this.businessAdInfo);
+    localStringBuilder.append(", isRequesting=");
+    localStringBuilder.append(this.isRequesting);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.feedId != null) {
-      paramJceOutputStream.write(this.feedId, 0);
+    Object localObject = this.feedId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.videoType, 1);
-    if (this.traceId != null) {
-      paramJceOutputStream.write(this.traceId, 2);
+    localObject = this.traceId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.iconType, 3);
-    if (this.shootIconInfo != null) {
-      paramJceOutputStream.write(this.shootIconInfo, 4);
+    localObject = this.shootIconInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
-    if (this.businessAdInfo != null) {
-      paramJceOutputStream.write(this.businessAdInfo, 5);
+    localObject = this.businessAdInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
     paramJceOutputStream.write(this.isRequesting, 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stFeedOpInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -29,11 +29,7 @@ public class UniPayService
       paramToServiceMsg = (UniPayResponse)paramToServiceMsg.getByClass("stResponse", new UniPayResponse());
       return paramToServiceMsg;
     }
-    catch (RuntimeException paramToServiceMsg)
-    {
-      return null;
-    }
-    catch (Exception paramToServiceMsg) {}
+    catch (RuntimeException|Exception paramToServiceMsg) {}
     return null;
   }
   
@@ -47,7 +43,7 @@ public class UniPayService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.qwallet.UniPayService
  * JD-Core Version:    0.7.0.1
  */

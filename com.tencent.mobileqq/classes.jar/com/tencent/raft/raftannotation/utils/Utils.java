@@ -16,14 +16,16 @@ public class Utils
   
   public static Object makeParamValue(Class<?> paramClass)
   {
-    if (paramClass == Integer.TYPE) {
-      return Integer.valueOf(0);
+    Class localClass = Integer.TYPE;
+    Integer localInteger = Integer.valueOf(0);
+    if (paramClass == localClass) {
+      return localInteger;
     }
     if (paramClass == Long.TYPE) {
       return Long.valueOf(0L);
     }
     if (paramClass == Double.TYPE) {
-      return Integer.valueOf(0);
+      return localInteger;
     }
     if (paramClass == Float.TYPE) {
       return Float.valueOf(0.0F);
@@ -36,7 +38,7 @@ public class Utils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.raft.raftannotation.utils.Utils
  * JD-Core Version:    0.7.0.1
  */

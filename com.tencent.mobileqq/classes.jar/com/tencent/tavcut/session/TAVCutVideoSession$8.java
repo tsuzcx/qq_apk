@@ -9,12 +9,13 @@ class TAVCutVideoSession$8
   
   public void run()
   {
-    this.this$0.addSticker(this.this$0.getStickerController(), this.val$stickerModel);
+    TAVCutVideoSession localTAVCutVideoSession = this.this$0;
+    localTAVCutVideoSession.addSticker(localTAVCutVideoSession.getStickerController(), this.val$stickerModel);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutVideoSession.8
  * JD-Core Version:    0.7.0.1
  */

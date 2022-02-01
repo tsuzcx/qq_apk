@@ -11,7 +11,7 @@ public final class gv_pstn_bill$GroupVideoS2CBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.groupvideo.s2c.gv_pstn_bill.GroupVideoS2CBody
  * JD-Core Version:    0.7.0.1
  */

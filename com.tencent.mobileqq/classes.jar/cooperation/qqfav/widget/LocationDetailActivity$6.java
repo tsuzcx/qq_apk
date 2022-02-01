@@ -1,12 +1,12 @@
 package cooperation.qqfav.widget;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.colornote.ColorNoteCurd.OnColorNoteCurdListener;
+import com.tencent.mobileqq.colornote.OnColorNoteCurdListener;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 
 class LocationDetailActivity$6
-  extends ColorNoteCurd.OnColorNoteCurdListener
+  extends OnColorNoteCurdListener
 {
   LocationDetailActivity$6(LocationDetailActivity paramLocationDetailActivity) {}
   
@@ -14,7 +14,7 @@ class LocationDetailActivity$6
   {
     super.onAddColorNote(paramBundle, paramBoolean);
     QLog.e("PoiMapActivity", 1, "[ColorNote exit]");
-    if (this.a.v)
+    if (this.a.k)
     {
       ReportController.b(null, "dc00898", "", "", "0X800A991", "0X800A991", 4, 0, "", "", "", "");
       return;
@@ -24,7 +24,7 @@ class LocationDetailActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqfav.widget.LocationDetailActivity.6
  * JD-Core Version:    0.7.0.1
  */

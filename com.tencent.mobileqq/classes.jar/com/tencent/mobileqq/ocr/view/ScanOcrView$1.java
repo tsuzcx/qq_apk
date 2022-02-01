@@ -14,20 +14,15 @@ class ScanOcrView$1
     if (QLog.isColorLevel()) {
       QLog.i("ScanOcrView", 2, "handleMessage, MSG_SCANLINE");
     }
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
+    if (paramMessage.what == 0) {
       this.a.a(paramMessage.arg1);
     }
+    super.handleMessage(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.ScanOcrView.1
  * JD-Core Version:    0.7.0.1
  */

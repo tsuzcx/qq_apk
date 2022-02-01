@@ -14,69 +14,80 @@ public class TroopFeedParserHelper$ShareFeedParser
     if (localTroopFeedItem == null) {
       return null;
     }
-    Object localObject;
     try
     {
       localObject = paramJSONObject.getJSONArray("content");
-      if (((JSONArray)localObject).length() <= 0) {
-        break label333;
-      }
-      localObject = ((JSONArray)localObject).getJSONObject(0);
-      int i = ((JSONObject)localObject).getInt("type");
-      if (i == 5)
+      if (((JSONArray)localObject).length() > 0)
       {
-        if (((JSONObject)localObject).has("file_path")) {
-          localTroopFeedItem.linkUrl = ((JSONObject)localObject).getString("file_path");
-        }
-        localTroopFeedItem.type = 131;
-        if (((JSONObject)localObject).has("sharesize")) {
-          localTroopFeedItem.ex_1 = ("" + ((JSONObject)localObject).getLong("sharesize"));
-        }
-        boolean bool = ((JSONObject)localObject).has("bus_id");
-        if (bool) {}
-        try
+        localObject = ((JSONArray)localObject).getJSONObject(0);
+        i = ((JSONObject)localObject).getInt("type");
+        if (i == 5)
         {
-          localTroopFeedItem.content = ("" + ((JSONObject)localObject).getLong("bus_id"));
-          if (((JSONObject)localObject).has("sharefile")) {
-            localTroopFeedItem.title = ((JSONObject)localObject).getString("sharefile");
+          if (((JSONObject)localObject).has("file_path")) {
+            localTroopFeedItem.linkUrl = ((JSONObject)localObject).getString("file_path");
           }
-          if (((JSONObject)localObject).has("shareexpire")) {
-            localTroopFeedItem.shareExpire = ((JSONObject)localObject).getLong("shareexpire");
-          }
-          if (!((JSONObject)localObject).has("sharefromuin")) {
-            break label333;
-          }
-          localTroopFeedItem.shareFromUin = ((JSONObject)localObject).getString("sharefromuin");
-        }
-        catch (JSONException paramJSONObject)
-        {
-          for (;;)
+          localTroopFeedItem.type = 131;
+          boolean bool = ((JSONObject)localObject).has("sharesize");
+          if (bool)
           {
-            localTroopFeedItem.content = ("" + ((JSONObject)localObject).getString("bus_id"));
+            paramJSONObject = new StringBuilder();
+            paramJSONObject.append("");
+            paramJSONObject.append(((JSONObject)localObject).getLong("sharesize"));
+            localTroopFeedItem.ex_1 = paramJSONObject.toString();
           }
+          bool = ((JSONObject)localObject).has("bus_id");
+          if (!bool) {}
         }
-      }
-      if (i != 4) {
-        break label333;
       }
     }
     catch (JSONException paramJSONObject)
     {
+      Object localObject;
+      int i;
+      label180:
       paramJSONObject.printStackTrace();
       return null;
     }
-    localTroopFeedItem.type = 132;
-    localTroopFeedItem.linkUrl = paramJSONObject.getString("open_url");
-    localTroopFeedItem.title = ((JSONObject)localObject).getString("musicname");
-    localTroopFeedItem.ex_1 = ((JSONObject)localObject).getString("musicid");
-    localTroopFeedItem.picPath = ((JSONObject)localObject).getString("pic_url");
-    label333:
+    try
+    {
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("");
+      paramJSONObject.append(((JSONObject)localObject).getLong("bus_id"));
+      localTroopFeedItem.content = paramJSONObject.toString();
+    }
+    catch (JSONException paramJSONObject)
+    {
+      break label180;
+    }
+    paramJSONObject = new StringBuilder();
+    paramJSONObject.append("");
+    paramJSONObject.append(((JSONObject)localObject).getString("bus_id"));
+    localTroopFeedItem.content = paramJSONObject.toString();
+    if (((JSONObject)localObject).has("sharefile")) {
+      localTroopFeedItem.title = ((JSONObject)localObject).getString("sharefile");
+    }
+    if (((JSONObject)localObject).has("shareexpire")) {
+      localTroopFeedItem.shareExpire = ((JSONObject)localObject).getLong("shareexpire");
+    }
+    if (((JSONObject)localObject).has("sharefromuin"))
+    {
+      localTroopFeedItem.shareFromUin = ((JSONObject)localObject).getString("sharefromuin");
+      return localTroopFeedItem;
+      if (i == 4)
+      {
+        localTroopFeedItem.type = 132;
+        localTroopFeedItem.linkUrl = paramJSONObject.getString("open_url");
+        localTroopFeedItem.title = ((JSONObject)localObject).getString("musicname");
+        localTroopFeedItem.ex_1 = ((JSONObject)localObject).getString("musicid");
+        localTroopFeedItem.picPath = ((JSONObject)localObject).getString("pic_url");
+      }
+    }
     return localTroopFeedItem;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFeedParserHelper.ShareFeedParser
  * JD-Core Version:    0.7.0.1
  */

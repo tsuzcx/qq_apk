@@ -27,30 +27,30 @@ final class ListPresenter$loadNextPage$1
     ListContract.IListView localIListView = ListPresenter.a(this.this$0);
     if (localIListView != null)
     {
-      if (!paramBoolean) {
-        break label74;
+      if (paramBoolean)
+      {
+        localIListView.setListData(paramList, true);
+        if (this.this$0.a().a())
+        {
+          localIListView.setFooterHasMore();
+          return;
+        }
+        localIListView.setFooterNoMore();
+        return;
       }
-      localIListView.setListData(paramList, true);
-      if (!this.this$0.a().a()) {
-        break label64;
-      }
-      localIListView.setFooterHasMore();
-    }
-    for (;;)
-    {
-      return;
-      label64:
-      localIListView.setFooterNoMore();
-      continue;
-      label74:
-      Log.i("ListPresenter", "loadNextPage error, errorCode=" + paramInt + ", errorMsg= " + paramString);
+      paramList = new StringBuilder();
+      paramList.append("loadNextPage error, errorCode=");
+      paramList.append(paramInt);
+      paramList.append(", errorMsg= ");
+      paramList.append(paramString);
+      Log.i("ListPresenter", paramList.toString());
       localIListView.setFooterError(paramInt, paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.weibo.framework.mvp.ListPresenter.loadNextPage.1
  * JD-Core Version:    0.7.0.1
  */

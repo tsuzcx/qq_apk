@@ -10,8 +10,8 @@ class UserStateMachineController$1$1
   
   public void run()
   {
-    if (!WriteTogetherUtils.a(UserStateMachineController.a(this.a.a))) {}
-    for (int i = 1; UserStateMachineController.a(this.a.a).a() == UserState.COMMIT_WHILE_ALERT; i = 0)
+    boolean bool = WriteTogetherUtils.a(UserStateMachineController.a(this.a.a));
+    if (UserStateMachineController.a(this.a.a).a() == UserState.COMMIT_WHILE_ALERT)
     {
       UserStateMachineController.a(this.a.a).a(UserState.SAVING);
       return;
@@ -22,17 +22,18 @@ class UserStateMachineController$1$1
       return;
     }
     StateMachine localStateMachine = UserStateMachineController.a(this.a.a);
-    if (i != 0) {}
-    for (UserState localUserState = UserState.LAST_EDIT;; localUserState = UserState.NEW_DOC)
-    {
-      localStateMachine.a(localUserState);
-      return;
+    UserState localUserState;
+    if ((bool ^ true)) {
+      localUserState = UserState.LAST_EDIT;
+    } else {
+      localUserState = UserState.NEW_DOC;
     }
+    localStateMachine.a(localUserState);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.statemachine.UserStateMachineController.1.1
  * JD-Core Version:    0.7.0.1
  */

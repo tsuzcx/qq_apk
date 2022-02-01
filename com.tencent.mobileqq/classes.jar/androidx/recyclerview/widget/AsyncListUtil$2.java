@@ -17,10 +17,10 @@ class AsyncListUtil$2
   
   private TileList.Tile<T> acquireTile()
   {
-    if (this.mRecycledRoot != null)
+    TileList.Tile localTile = this.mRecycledRoot;
+    if (localTile != null)
     {
-      TileList.Tile localTile = this.mRecycledRoot;
-      this.mRecycledRoot = this.mRecycledRoot.mNext;
+      this.mRecycledRoot = localTile.mNext;
       return localTile;
     }
     return new TileList.Tile(this.this$0.mTClass, this.this$0.mTileSize);
@@ -38,7 +38,8 @@ class AsyncListUtil$2
     while (this.mLoadedTiles.size() >= i)
     {
       int j = this.mLoadedTiles.keyAt(0);
-      int k = this.mLoadedTiles.keyAt(this.mLoadedTiles.size() - 1);
+      SparseBooleanArray localSparseBooleanArray = this.mLoadedTiles;
+      int k = localSparseBooleanArray.keyAt(localSparseBooleanArray.size() - 1);
       int m = this.mFirstRequiredTileStart - j;
       int n = k - this.mLastRequiredTileStart;
       if ((m > 0) && ((m >= n) || (paramInt == 2)))
@@ -67,7 +68,10 @@ class AsyncListUtil$2
   
   private void log(String paramString, Object... paramVarArgs)
   {
-    Log.d("AsyncListUtil", "[BKGR] " + String.format(paramString, paramVarArgs));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[BKGR] ");
+    localStringBuilder.append(String.format(paramString, paramVarArgs));
+    Log.d("AsyncListUtil", localStringBuilder.toString());
   }
   
   private void removeTile(int paramInt)
@@ -79,15 +83,16 @@ class AsyncListUtil$2
   private void requestTiles(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
     int i = paramInt1;
-    if (i <= paramInt2)
+    while (i <= paramInt2)
     {
-      if (paramBoolean) {}
-      for (int j = paramInt2 + paramInt1 - i;; j = i)
-      {
-        this.this$0.mBackgroundProxy.loadTile(j, paramInt3);
-        i += this.this$0.mTileSize;
-        break;
+      int j;
+      if (paramBoolean) {
+        j = paramInt2 + paramInt1 - i;
+      } else {
+        j = i;
       }
+      this.this$0.mBackgroundProxy.loadTile(j, paramInt3);
+      i += this.this$0.mTileSize;
     }
   }
   
@@ -131,7 +136,7 @@ class AsyncListUtil$2
     if (paramInt5 == 1)
     {
       requestTiles(this.mFirstRequiredTileStart, paramInt2, paramInt5, true);
-      requestTiles(this.this$0.mTileSize + paramInt2, this.mLastRequiredTileStart, paramInt5, false);
+      requestTiles(paramInt2 + this.this$0.mTileSize, this.mLastRequiredTileStart, paramInt5, false);
       return;
     }
     requestTiles(paramInt1, this.mLastRequiredTileStart, paramInt5, false);
@@ -140,7 +145,7 @@ class AsyncListUtil$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.AsyncListUtil.2
  * JD-Core Version:    0.7.0.1
  */

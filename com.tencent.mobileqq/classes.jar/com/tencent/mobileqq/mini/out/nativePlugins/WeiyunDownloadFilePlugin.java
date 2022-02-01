@@ -21,53 +21,57 @@ public class WeiyunDownloadFilePlugin
   
   public void onInvoke(JSONObject paramJSONObject, JSContext paramJSContext)
   {
-    JSONObject localJSONObject;
     try
     {
       this.mJSContext = paramJSContext;
-      localJSONObject = new JSONObject(paramJSONObject.optString("data"));
+      JSONObject localJSONObject = new JSONObject(paramJSONObject.optString("data"));
       paramJSONObject = localJSONObject.getString("action");
-      if ((TextUtils.isEmpty(paramJSONObject)) || ((!paramJSONObject.equals("createDownloadTask")) && (!paramJSONObject.equals("pauseDownloadTask")) && (!paramJSONObject.equals("cancelDownloadTask")))) {
-        return;
-      }
-      QLog.d("[mini] WeiyunDownloadFilePlugin", 2, "create weiyun Download");
-      if (this.mWeiyunDownloadBussiness == null) {
-        this.mWeiyunDownloadBussiness = new WeiyunNativeBusiness.WeiyunDownloadBussiness();
-      }
-      localJSONObject = new JSONObject(localJSONObject.getString("data"));
-      if (paramJSONObject.equals("createDownloadTask"))
+      if (!TextUtils.isEmpty(paramJSONObject))
       {
-        if (this.mWeiyunDownloadBussiness.isLegal(localJSONObject))
+        boolean bool = paramJSONObject.equals("createDownloadTask");
+        if ((bool) || (paramJSONObject.equals("pauseDownloadTask")) || (paramJSONObject.equals("cancelDownloadTask")))
         {
-          this.mWeiyunDownloadBussiness.doDownloadWeiyun(localJSONObject, localJSONObject.getString("file_id"), paramJSContext);
-          paramJSContext.evaluateCallback(true, null, "");
-          return;
+          QLog.d("[mini] WeiyunDownloadFilePlugin", 2, "create weiyun Download");
+          if (this.mWeiyunDownloadBussiness == null) {
+            this.mWeiyunDownloadBussiness = new WeiyunNativeBusiness.WeiyunDownloadBussiness();
+          }
+          localJSONObject = new JSONObject(localJSONObject.getString("data"));
+          bool = paramJSONObject.equals("createDownloadTask");
+          if (bool)
+          {
+            if (this.mWeiyunDownloadBussiness.isLegal(localJSONObject))
+            {
+              this.mWeiyunDownloadBussiness.doDownloadWeiyun(localJSONObject, localJSONObject.getString("file_id"), paramJSContext);
+              paramJSContext.evaluateCallback(true, null, "");
+              return;
+            }
+            paramJSContext.evaluateCallback(false, null, "download params illegal.");
+            return;
+          }
+          if (paramJSONObject.equals("pauseDownloadTask"))
+          {
+            QLog.d("[mini] WeiyunDownloadFilePlugin", 2, "pause weiyun Download");
+            this.mWeiyunDownloadBussiness.pause(localJSONObject.getString("file_id"), paramJSContext);
+            return;
+          }
+          if (paramJSONObject.equals("cancelDownloadTask"))
+          {
+            QLog.d("[mini] WeiyunDownloadFilePlugin", 2, "cacel weiyun Download");
+            this.mWeiyunDownloadBussiness.cancel(localJSONObject.getString("file_id"), paramJSContext);
+            return;
+          }
         }
-        paramJSContext.evaluateCallback(false, null, "download params illegal.");
-        return;
       }
     }
     catch (JSONException paramJSONObject)
     {
       paramJSONObject.printStackTrace();
-      return;
-    }
-    if (paramJSONObject.equals("pauseDownloadTask"))
-    {
-      QLog.d("[mini] WeiyunDownloadFilePlugin", 2, "pause weiyun Download");
-      this.mWeiyunDownloadBussiness.pause(localJSONObject.getString("file_id"), paramJSContext);
-      return;
-    }
-    if (paramJSONObject.equals("cancelDownloadTask"))
-    {
-      QLog.d("[mini] WeiyunDownloadFilePlugin", 2, "cacel weiyun Download");
-      this.mWeiyunDownloadBussiness.cancel(localJSONObject.getString("file_id"), paramJSContext);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.WeiyunDownloadFilePlugin
  * JD-Core Version:    0.7.0.1
  */

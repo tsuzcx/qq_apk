@@ -21,15 +21,16 @@ public final class qqstory_struct$FeedSeqInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 40, 48, 58 }, new String[] { "feed_id", "seq", "union_id", "date", "is_playable", "rcmd_more", "rcmd_word" }, new Object[] { localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro3 }, FeedSeqInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 40, 48, 58 }, new String[] { "feed_id", "seq", "union_id", "date", "is_playable", "rcmd_more", "rcmd_word" }, new Object[] { localByteStringMicro1, localInteger, localByteStringMicro2, localInteger, localInteger, localInteger, localByteStringMicro3 }, FeedSeqInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedSeqInfo
  * JD-Core Version:    0.7.0.1
  */

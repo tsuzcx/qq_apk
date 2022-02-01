@@ -21,15 +21,19 @@ class VideoGestureRelativeLayout$1
       VideoGestureRelativeLayout.access$002(this.this$0, false);
     }
     boolean bool = VideoGestureRelativeLayout.access$200(this.this$0).onTouchEvent(paramMotionEvent);
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 1)) {
-      QMLog.d("gesturetest", "mGestureDetector.onTouchEvent(event) return " + bool);
+    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 1))
+    {
+      paramView = new StringBuilder();
+      paramView.append("mGestureDetector.onTouchEvent(event) return ");
+      paramView.append(bool);
+      QMLog.d("gesturetest", paramView.toString());
     }
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.widget.VideoGestureRelativeLayout.1
  * JD-Core Version:    0.7.0.1
  */

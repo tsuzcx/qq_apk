@@ -10,45 +10,47 @@ public class ThemeLabelTextView
   extends TextView
   implements ThemeImageWrapper.DrawInterface
 {
-  ThemeImageWrapper a;
+  ThemeImageWrapper themeImageWrapper;
   
   public ThemeLabelTextView(Context paramContext)
   {
     super(paramContext);
-    a();
+    init();
   }
   
   public ThemeLabelTextView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a();
+    init();
   }
   
   public ThemeLabelTextView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a();
-  }
-  
-  protected void a()
-  {
-    setSupportMaskView(false);
+    init();
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.a != null)
+    ThemeImageWrapper localThemeImageWrapper = this.themeImageWrapper;
+    if (localThemeImageWrapper != null)
     {
-      this.a.onDraw(paramCanvas, this);
+      localThemeImageWrapper.onDraw(paramCanvas, this);
       return;
     }
     super.draw(paramCanvas);
   }
   
+  protected void init()
+  {
+    setSupportMaskView(false);
+  }
+  
   public void setMaskShape(int paramInt)
   {
-    if (this.a != null) {
-      this.a.setMaskShape(paramInt);
+    ThemeImageWrapper localThemeImageWrapper = this.themeImageWrapper;
+    if (localThemeImageWrapper != null) {
+      localThemeImageWrapper.setMaskShape(paramInt);
     }
   }
   
@@ -56,16 +58,17 @@ public class ThemeLabelTextView
   {
     if (paramBoolean)
     {
-      if (this.a == null) {
-        this.a = new ThemeImageWrapper();
+      if (this.themeImageWrapper == null) {
+        this.themeImageWrapper = new ThemeImageWrapper();
       }
-      this.a.setSupportMaskView(true);
+      this.themeImageWrapper.setSupportMaskView(true);
       setMaskShape(ThemeImageWrapper.MODE_OTHER);
-    }
-    while (this.a == null) {
       return;
     }
-    this.a.setSupportMaskView(false);
+    ThemeImageWrapper localThemeImageWrapper = this.themeImageWrapper;
+    if (localThemeImageWrapper != null) {
+      localThemeImageWrapper.setSupportMaskView(false);
+    }
   }
   
   public void superOnDraw(Canvas paramCanvas)
@@ -75,7 +78,7 @@ public class ThemeLabelTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.ThemeLabelTextView
  * JD-Core Version:    0.7.0.1
  */

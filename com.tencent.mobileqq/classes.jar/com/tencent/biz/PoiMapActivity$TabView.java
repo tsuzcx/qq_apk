@@ -30,9 +30,9 @@ public class PoiMapActivity$TabView
     addView(this.jdField_a_of_type_AndroidWidgetTextView, paramString);
     this.jdField_a_of_type_AndroidViewView = new View(paramContext);
     this.jdField_a_of_type_AndroidViewView.setBackgroundColor(paramPoiMapActivity.g);
-    paramString = new RelativeLayout.LayoutParams(-2, (int)(3.0F * paramPoiMapActivity.jdField_a_of_type_Float));
+    paramString = new RelativeLayout.LayoutParams(-2, (int)(paramPoiMapActivity.jdField_a_of_type_Float * 3.0F));
     paramString.addRule(12, -1);
-    paramInt = paramContext.getResources().getDimensionPixelSize(2131297577);
+    paramInt = paramContext.getResources().getDimensionPixelSize(2131297568);
     paramString.rightMargin = paramInt;
     paramString.leftMargin = paramInt;
     this.jdField_a_of_type_AndroidViewView.setVisibility(4);
@@ -40,7 +40,7 @@ public class PoiMapActivity$TabView
     this.b = new View(paramContext);
     this.b.setBackgroundDrawable(null);
     this.b.setBackgroundResource(paramPoiMapActivity.f);
-    paramContext = new RelativeLayout.LayoutParams((int)(2.0F * paramPoiMapActivity.jdField_a_of_type_Float), (int)(20.0F * paramPoiMapActivity.jdField_a_of_type_Float));
+    paramContext = new RelativeLayout.LayoutParams((int)(paramPoiMapActivity.jdField_a_of_type_Float * 2.0F), (int)(paramPoiMapActivity.jdField_a_of_type_Float * 20.0F));
     paramContext.addRule(15, -1);
     paramContext.addRule(11, -1);
     addView(this.b, paramContext);
@@ -66,7 +66,7 @@ public class PoiMapActivity$TabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.PoiMapActivity.TabView
  * JD-Core Version:    0.7.0.1
  */

@@ -12,27 +12,26 @@ class BindNumberActivity$10
   
   public void onGetFriendsHasBindPhone(boolean paramBoolean, int paramInt, List<String> paramList)
   {
-    if (QLog.isColorLevel()) {
-      if (paramList != null) {
-        break label95;
-      }
-    }
-    label95:
-    for (Object localObject = "null";; localObject = Integer.valueOf(paramList.size()))
+    if (QLog.isColorLevel())
     {
-      QLog.i("BindNumberActivity", 2, String.format("onGetFriendsHasBindPhone [%s, %s, %s]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), localObject }));
-      if (paramBoolean) {
-        this.a.runOnUiThread(new BindNumberActivity.10.1(this, paramInt, paramList));
+      Object localObject;
+      if (paramList == null) {
+        localObject = "null";
+      } else {
+        localObject = Integer.valueOf(paramList.size());
       }
-      this.a.app.removeObserver(this.a.a);
-      this.a.a = null;
-      return;
+      QLog.i("BindNumberActivity", 2, String.format("onGetFriendsHasBindPhone [%s, %s, %s]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), localObject }));
     }
+    if (paramBoolean) {
+      this.a.runOnUiThread(new BindNumberActivity.10.1(this, paramInt, paramList));
+    }
+    this.a.app.removeObserver(this.a.a);
+    this.a.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.BindNumberActivity.10
  * JD-Core Version:    0.7.0.1
  */

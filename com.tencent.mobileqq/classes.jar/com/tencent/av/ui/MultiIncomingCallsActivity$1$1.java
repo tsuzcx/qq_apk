@@ -15,24 +15,30 @@ class MultiIncomingCallsActivity$1$1
     if (this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity$1.a.a != null)
     {
       MultiIncomingCallsActivity.a(this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity$1.a).clear();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
+      Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Object localObject2;
+      while (((Iterator)localObject1).hasNext())
       {
-        Memberinfo localMemberinfo = (Memberinfo)localIterator.next();
-        if (localMemberinfo.a != this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity$1.a.jdField_b_of_type_Long) {
-          MultiIncomingCallsActivity.a(this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity$1.a).add(localMemberinfo);
+        localObject2 = (Memberinfo)((Iterator)localObject1).next();
+        if (((Memberinfo)localObject2).a != this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity$1.a.jdField_b_of_type_Long) {
+          MultiIncomingCallsActivity.a(this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity$1.a).add(localObject2);
         }
       }
       MultiIncomingCallsActivity.a(this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity$1.a);
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity$1.a.jdField_b_of_type_JavaLangString, 2, "InviteMemberObserverWithoutCache mMemberChangeEventReceiver size:" + MultiIncomingCallsActivity.a(this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity$1.a).size());
+      if (QLog.isColorLevel())
+      {
+        localObject1 = this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity$1.a.jdField_b_of_type_JavaLangString;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("InviteMemberObserverWithoutCache mMemberChangeEventReceiver size:");
+        ((StringBuilder)localObject2).append(MultiIncomingCallsActivity.a(this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity$1.a).size());
+        QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiIncomingCallsActivity.1.1
  * JD-Core Version:    0.7.0.1
  */

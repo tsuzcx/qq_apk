@@ -25,14 +25,14 @@ public class StoryQGSurfaceView
     GLog.init(new QGLoger());
     QGBitmapLoader.setBitmapLoader(new MqqQGBitmapLoader());
     QGReporter.setReporter(new QGReporterImpl());
-    this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine = new ModuleEngine();
-    this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine.registerJsModule(new MqqModule());
-    setModuleEngin(this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine);
+    this.a = new ModuleEngine();
+    this.a.registerJsModule(new MqqModule());
+    setModuleEngin(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qg.StoryQGSurfaceView
  * JD-Core Version:    0.7.0.1
  */

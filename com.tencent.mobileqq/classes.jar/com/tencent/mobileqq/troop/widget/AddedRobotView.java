@@ -19,7 +19,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.face.IFaceDecoder;
 import com.tencent.mobileqq.avatar.api.IQQAvatarService;
 import com.tencent.mobileqq.avatar.listener.DecodeTaskCompletionListener;
-import com.tencent.mobileqq.troop.utils.TroopRobotInfo;
+import com.tencent.mobileqq.troop.robot.TroopRobotInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -61,10 +61,10 @@ public class AddedRobotView
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     setOrientation(1);
     paramContext = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-    setBackgroundResource(2130850857);
-    paramContext = paramContext.inflate(2131561689, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131370257));
-    this.b = ((TextView)paramContext.findViewById(2131377058));
+    setBackgroundResource(2130850794);
+    paramContext = paramContext.inflate(2131561531, null);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131369925));
+    this.b = ((TextView)paramContext.findViewById(2131376536));
     addView(paramContext);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = new RecyclerView(this.jdField_a_of_type_AndroidContentContext);
     this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager = new GridLayoutManager(this.jdField_a_of_type_AndroidContentContext, 5);
@@ -74,21 +74,21 @@ public class AddedRobotView
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOverScrollMode(2);
     addView(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
     paramContext = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    paramContext.setText(getResources().getString(2131694498));
+    paramContext.setText(getResources().getString(2131694464));
     paramContext.setTextSize(2, 14.0F);
-    paramContext.setTextColor(getResources().getColor(2131167113));
-    paramContext.setContentDescription(getResources().getString(2131694498));
+    paramContext.setTextColor(getResources().getColor(2131167138));
+    paramContext.setContentDescription(getResources().getString(2131694464));
     paramContext.setLayoutParams(new RelativeLayout.LayoutParams(-2, -2));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130850857);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, getResources().getDimensionPixelSize(2131298930));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130850794);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, getResources().getDimensionPixelSize(2131298935));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setGravity(17);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramContext);
     addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
     paramContext = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-    paramContext.setBackgroundResource(2130838979);
-    paramContext.setLayoutParams(new RelativeLayout.LayoutParams(-1, getResources().getDimensionPixelSize(2131298931)));
+    paramContext.setBackgroundResource(2130838739);
+    paramContext.setLayoutParams(new RelativeLayout.LayoutParams(-1, getResources().getDimensionPixelSize(2131298936)));
     addView(paramContext);
     paramContext = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = ((IQQAvatarService)paramContext.getRuntimeService(IQQAvatarService.class, "")).getInstance(paramContext);
@@ -101,52 +101,60 @@ public class AddedRobotView
   public void a()
   {
     QLog.i("AddedRobotView", 1, "onDestroy.");
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.destory();
+    IFaceDecoder localIFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+    if (localIFaceDecoder != null) {
+      localIFaceDecoder.destory();
     }
     this.jdField_a_of_type_AndroidContentContext = null;
   }
   
   public void setAddList(ArrayList<TroopRobotInfo> paramArrayList, int paramInt, String paramString)
   {
-    if (this.b != null) {
-      if (paramArrayList == null) {
-        break label216;
-      }
-    }
-    label216:
-    for (int i = paramArrayList.size();; i = 0)
+    if (this.b != null)
     {
-      String str = i + "/" + paramInt;
-      this.b.setText(str);
+      int i;
+      if (paramArrayList != null) {
+        i = paramArrayList.size();
+      } else {
+        i = 0;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append("/");
+      ((StringBuilder)localObject).append(paramInt);
+      localObject = ((StringBuilder)localObject).toString();
+      this.b.setText((CharSequence)localObject);
       this.b.setVisibility(0);
-      this.b.setContentDescription(str);
-      if (this.jdField_a_of_type_AndroidWidgetTextView != null)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getText(2131689667));
-        this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getText(2131689667));
-      }
-      if ((paramArrayList == null) || (paramArrayList.size() == 0))
-      {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(8);
-        QLog.d("AddedRobotView", 2, "setAddList 0");
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_JavaLangString = paramString;
-        return;
-        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(0);
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAddedRobotView$RobotListAdapter.a(paramArrayList);
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-        QLog.d("AddedRobotView", 2, "setAddList " + paramArrayList.size());
-      }
+      this.b.setContentDescription((CharSequence)localObject);
     }
+    Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localObject != null)
+    {
+      ((TextView)localObject).setText(this.jdField_a_of_type_AndroidContentContext.getResources().getText(2131689699));
+      this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getText(2131689699));
+    }
+    if ((paramArrayList != null) && (paramArrayList.size() != 0))
+    {
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(0);
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAddedRobotView$RobotListAdapter.a(paramArrayList);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setAddList ");
+      ((StringBuilder)localObject).append(paramArrayList.size());
+      QLog.d("AddedRobotView", 2, ((StringBuilder)localObject).toString());
+    }
+    else
+    {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(8);
+      QLog.d("AddedRobotView", 2, "setAddList 0");
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.AddedRobotView
  * JD-Core Version:    0.7.0.1
  */

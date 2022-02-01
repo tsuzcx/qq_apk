@@ -10,7 +10,7 @@ import com.tencent.mtt.hippy.views.view.HippyViewGroupController;
 public class RefreshWrapperItemController
   extends HippyViewGroupController
 {
-  public View createViewImpl(Context paramContext)
+  protected View createViewImpl(Context paramContext)
   {
     return new RefreshWrapperItemView(paramContext);
   }
@@ -22,7 +22,7 @@ public class RefreshWrapperItemController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.refresh.RefreshWrapperItemController
  * JD-Core Version:    0.7.0.1
  */

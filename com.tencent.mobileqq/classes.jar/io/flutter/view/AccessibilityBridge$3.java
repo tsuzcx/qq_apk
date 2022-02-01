@@ -24,37 +24,34 @@ class AccessibilityBridge$3
     if (AccessibilityBridge.access$400(this.this$0)) {
       return;
     }
-    int i;
-    if (Build.VERSION.SDK_INT < 17)
-    {
+    if (Build.VERSION.SDK_INT < 17) {
       paramUri = null;
-      if ((paramUri == null) || (!paramUri.equals("0"))) {
-        break label86;
-      }
-      i = 1;
-      label36:
-      if (i == 0) {
-        break label91;
-      }
-      AccessibilityBridge.access$1002(this.this$0, AccessibilityBridge.access$1000(this.this$0) | AccessibilityBridge.AccessibilityFeature.DISABLE_ANIMATIONS.value);
-    }
-    for (;;)
-    {
-      AccessibilityBridge.access$1100(this.this$0);
-      return;
+    } else {
       paramUri = Settings.Global.getString(AccessibilityBridge.access$900(this.this$0), "transition_animation_scale");
-      break;
-      label86:
-      i = 0;
-      break label36;
-      label91:
-      AccessibilityBridge.access$1002(this.this$0, AccessibilityBridge.access$1000(this.this$0) & (AccessibilityBridge.AccessibilityFeature.DISABLE_ANIMATIONS.value ^ 0xFFFFFFFF));
     }
+    int i;
+    if ((paramUri != null) && (paramUri.equals("0"))) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
+    {
+      paramUri = this.this$0;
+      i = AccessibilityBridge.access$1000(paramUri) | AccessibilityBridge.AccessibilityFeature.DISABLE_ANIMATIONS.value;
+    }
+    else
+    {
+      paramUri = this.this$0;
+      i = AccessibilityBridge.access$1000(paramUri) & (AccessibilityBridge.AccessibilityFeature.DISABLE_ANIMATIONS.value ^ 0xFFFFFFFF);
+    }
+    AccessibilityBridge.access$1002(paramUri, i);
+    AccessibilityBridge.access$1100(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.view.AccessibilityBridge.3
  * JD-Core Version:    0.7.0.1
  */

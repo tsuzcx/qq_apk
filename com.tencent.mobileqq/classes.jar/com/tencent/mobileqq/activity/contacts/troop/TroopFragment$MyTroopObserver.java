@@ -13,36 +13,49 @@ public class TroopFragment$MyTroopObserver
 {
   protected TroopFragment$MyTroopObserver(TroopFragment paramTroopFragment) {}
   
-  public void onGetMutilTroopInfoResult(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
+  protected void onGenNewTroopName(String paramString1, String paramString2)
+  {
+    if (this.a.a != null) {
+      this.a.a.d();
+    }
+  }
+  
+  protected void onGetMutilTroopInfoResult(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
   {
     if (paramBoolean) {
       this.a.h();
     }
   }
   
-  public void onGetTroopInfoResult(boolean paramBoolean, String paramString)
+  protected void onGetTroopInfoResult(boolean paramBoolean, String paramString)
   {
     if (paramBoolean) {
       this.a.h();
     }
   }
   
-  public void onUpdateTroopList(boolean paramBoolean)
+  protected void onUpdateTroopList(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("contacts.fragment.TroopFragment", 2, "onUpdateTroopList " + paramBoolean);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onUpdateTroopList ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.d("contacts.fragment.TroopFragment", 2, ((StringBuilder)localObject).toString());
     }
     if (this.a.d)
     {
-      this.a.d = false;
-      if (TroopFragment.a(this.a) != null) {
+      localObject = this.a;
+      ((TroopFragment)localObject).d = false;
+      if (TroopFragment.a((TroopFragment)localObject) != null) {
         TroopFragment.b(this.a).a(this.a.b(), paramBoolean, null);
       }
     }
     ThreadManager.getUIHandler().postDelayed(new TroopFragment.MyTroopObserver.1(this), 500L);
   }
   
-  public void onUpdateTroopNickname(boolean paramBoolean)
+  protected void onUpdateTroopNickname(boolean paramBoolean)
   {
     if (paramBoolean) {
       this.a.h();
@@ -51,7 +64,7 @@ public class TroopFragment$MyTroopObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.troop.TroopFragment.MyTroopObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -47,79 +47,78 @@ public final class Utils
       L.endSection("applyTrimPathIfNeeded");
       return;
     }
-    if ((f2 < 1.0F) || (Math.abs(paramFloat2 - paramFloat1 - 1.0F) < 0.01D))
+    if ((f2 >= 1.0F) && (Math.abs(paramFloat2 - paramFloat1 - 1.0F) >= 0.01D))
     {
-      L.endSection("applyTrimPathIfNeeded");
-      return;
-    }
-    float f1 = f2 * paramFloat1;
-    paramFloat2 = f2 * paramFloat2;
-    paramFloat1 = Math.min(f1, paramFloat2);
-    f1 = Math.max(f1, paramFloat2);
-    paramFloat3 *= f2;
-    paramFloat2 = paramFloat1 + paramFloat3;
-    f1 += paramFloat3;
-    paramFloat3 = paramFloat2;
-    paramFloat1 = f1;
-    if (paramFloat2 >= f2)
-    {
+      float f1 = paramFloat1 * f2;
+      paramFloat2 *= f2;
+      paramFloat1 = Math.min(f1, paramFloat2);
+      f1 = Math.max(f1, paramFloat2);
+      paramFloat3 *= f2;
+      paramFloat2 = paramFloat1 + paramFloat3;
+      f1 += paramFloat3;
       paramFloat3 = paramFloat2;
       paramFloat1 = f1;
-      if (f1 >= f2)
+      if (paramFloat2 >= f2)
       {
-        paramFloat3 = MiscUtils.floorMod(paramFloat2, f2);
-        paramFloat1 = MiscUtils.floorMod(f1, f2);
+        paramFloat3 = paramFloat2;
+        paramFloat1 = f1;
+        if (f1 >= f2)
+        {
+          paramFloat3 = MiscUtils.floorMod(paramFloat2, f2);
+          paramFloat1 = MiscUtils.floorMod(f1, f2);
+        }
       }
-    }
-    paramFloat2 = paramFloat3;
-    if (paramFloat3 < 0.0F) {
-      paramFloat2 = MiscUtils.floorMod(paramFloat3, f2);
-    }
-    paramFloat3 = paramFloat1;
-    if (paramFloat1 < 0.0F) {
-      paramFloat3 = MiscUtils.floorMod(paramFloat1, f2);
-    }
-    if (paramFloat2 == paramFloat3)
-    {
-      paramPath.reset();
-      L.endSection("applyTrimPathIfNeeded");
-      return;
-    }
-    paramFloat1 = paramFloat2;
-    if (paramFloat2 >= paramFloat3) {
-      paramFloat1 = paramFloat2 - f2;
-    }
-    tempPath.reset();
-    pathMeasure.getSegment(paramFloat1, paramFloat3, tempPath, true);
-    if (paramFloat3 > f2)
-    {
-      tempPath2.reset();
-      pathMeasure.getSegment(0.0F, paramFloat3 % f2, tempPath2, true);
-      tempPath.addPath(tempPath2);
-    }
-    for (;;)
-    {
-      paramPath.set(tempPath);
-      L.endSection("applyTrimPathIfNeeded");
-      return;
-      if (paramFloat1 < 0.0F)
+      paramFloat2 = paramFloat3;
+      if (paramFloat3 < 0.0F) {
+        paramFloat2 = MiscUtils.floorMod(paramFloat3, f2);
+      }
+      paramFloat3 = paramFloat1;
+      if (paramFloat1 < 0.0F) {
+        paramFloat3 = MiscUtils.floorMod(paramFloat1, f2);
+      }
+      if (paramFloat2 == paramFloat3)
+      {
+        paramPath.reset();
+        L.endSection("applyTrimPathIfNeeded");
+        return;
+      }
+      paramFloat1 = paramFloat2;
+      if (paramFloat2 >= paramFloat3) {
+        paramFloat1 = paramFloat2 - f2;
+      }
+      tempPath.reset();
+      pathMeasure.getSegment(paramFloat1, paramFloat3, tempPath, true);
+      if (paramFloat3 > f2)
+      {
+        tempPath2.reset();
+        pathMeasure.getSegment(0.0F, paramFloat3 % f2, tempPath2, true);
+        tempPath.addPath(tempPath2);
+      }
+      else if (paramFloat1 < 0.0F)
       {
         tempPath2.reset();
         pathMeasure.getSegment(paramFloat1 + f2, f2, tempPath2, true);
         tempPath.addPath(tempPath2);
       }
+      paramPath.set(tempPath);
+      L.endSection("applyTrimPathIfNeeded");
+      return;
     }
+    L.endSection("applyTrimPathIfNeeded");
   }
   
   public static void applyTrimPathIfNeeded(Path paramPath, @Nullable TrimPathContent paramTrimPathContent)
   {
-    if ((paramTrimPathContent == null) || (paramTrimPathContent.isHidden())) {
-      return;
+    if (paramTrimPathContent != null)
+    {
+      if (paramTrimPathContent.isHidden()) {
+        return;
+      }
+      float f1 = ((FloatKeyframeAnimation)paramTrimPathContent.getStart()).getFloatValue();
+      float f2 = ((FloatKeyframeAnimation)paramTrimPathContent.getEnd()).getFloatValue();
+      float f3 = ((FloatKeyframeAnimation)paramTrimPathContent.getOffset()).getFloatValue();
+      applyTrimPathIfNeeded(paramPath, f1 / 100.0F, f2 / 100.0F, f3 / 360.0F);
     }
-    float f1 = ((FloatKeyframeAnimation)paramTrimPathContent.getStart()).getFloatValue();
-    float f2 = ((FloatKeyframeAnimation)paramTrimPathContent.getEnd()).getFloatValue();
-    float f3 = ((FloatKeyframeAnimation)paramTrimPathContent.getOffset()).getFloatValue();
-    applyTrimPathIfNeeded(paramPath, f1 / 100.0F, f2 / 100.0F, f3 / 360.0F);
   }
   
   public static void closeQuietly(Closeable paramCloseable)
@@ -133,6 +132,7 @@ public final class Utils
     catch (RuntimeException paramCloseable)
     {
       throw paramCloseable;
+      return;
     }
     catch (Exception paramCloseable) {}
   }
@@ -143,7 +143,8 @@ public final class Utils
     localPath.moveTo(paramPointF1.x, paramPointF1.y);
     if ((paramPointF3 != null) && (paramPointF4 != null) && ((paramPointF3.length() != 0.0F) || (paramPointF4.length() != 0.0F)))
     {
-      localPath.cubicTo(paramPointF1.x + paramPointF3.x, paramPointF1.y + paramPointF3.y, paramPointF2.x + paramPointF4.x, paramPointF2.y + paramPointF4.y, paramPointF2.x, paramPointF2.y);
+      float f = paramPointF1.x;
+      localPath.cubicTo(paramPointF3.x + f, paramPointF1.y + paramPointF3.y, paramPointF2.x + paramPointF4.x, paramPointF2.y + paramPointF4.y, paramPointF2.x, paramPointF2.y);
       return localPath;
     }
     localPath.lineTo(paramPointF2.x, paramPointF2.y);
@@ -160,15 +161,18 @@ public final class Utils
   
   public static float getScale(Matrix paramMatrix)
   {
-    points[0] = 0.0F;
-    points[1] = 0.0F;
-    points[2] = SQRT_2;
-    points[3] = SQRT_2;
-    paramMatrix.mapPoints(points);
-    float f1 = points[2];
-    float f2 = points[0];
-    float f3 = points[3];
-    float f4 = points[1];
+    float[] arrayOfFloat = points;
+    arrayOfFloat[0] = 0.0F;
+    arrayOfFloat[1] = 0.0F;
+    float f1 = SQRT_2;
+    arrayOfFloat[2] = f1;
+    arrayOfFloat[3] = f1;
+    paramMatrix.mapPoints(arrayOfFloat);
+    paramMatrix = points;
+    f1 = paramMatrix[2];
+    float f2 = paramMatrix[0];
+    float f3 = paramMatrix[3];
+    float f4 = paramMatrix[1];
     return (float)Math.hypot(f1 - f2, f3 - f4) / 2.0F;
   }
   
@@ -192,29 +196,31 @@ public final class Utils
   
   public static boolean hasZeroScaleAxis(Matrix paramMatrix)
   {
-    boolean bool = false;
-    points[0] = 0.0F;
-    points[1] = 0.0F;
-    points[2] = 37394.73F;
-    points[3] = 39575.234F;
-    paramMatrix.mapPoints(points);
-    if ((points[0] == points[2]) || (points[1] == points[3])) {
-      bool = true;
+    float[] arrayOfFloat = points;
+    arrayOfFloat[0] = 0.0F;
+    arrayOfFloat[1] = 0.0F;
+    arrayOfFloat[2] = 37394.73F;
+    arrayOfFloat[3] = 39575.234F;
+    paramMatrix.mapPoints(arrayOfFloat);
+    paramMatrix = points;
+    if (paramMatrix[0] != paramMatrix[2]) {
+      return paramMatrix[1] == paramMatrix[3];
     }
-    return bool;
+    return true;
   }
   
   public static int hashFor(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    int j = 17;
     if (paramFloat1 != 0.0F) {
       j = (int)(527 * paramFloat1);
+    } else {
+      j = 17;
     }
     int i = j;
     if (paramFloat2 != 0.0F) {
       i = (int)(j * 31 * paramFloat2);
     }
-    j = i;
+    int j = i;
     if (paramFloat3 != 0.0F) {
       j = (int)(i * 31 * paramFloat3);
     }
@@ -227,28 +233,23 @@ public final class Utils
   
   public static boolean isAtLeastVersion(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    boolean bool2 = true;
-    boolean bool1;
+    boolean bool = false;
     if (paramInt1 < paramInt4) {
-      bool1 = false;
+      return false;
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return bool1;
-          bool1 = bool2;
-        } while (paramInt1 > paramInt4);
-        if (paramInt2 < paramInt5) {
-          return false;
-        }
-        bool1 = bool2;
-      } while (paramInt2 > paramInt5);
-      bool1 = bool2;
-    } while (paramInt3 >= paramInt6);
-    return false;
+    if (paramInt1 > paramInt4) {
+      return true;
+    }
+    if (paramInt2 < paramInt5) {
+      return false;
+    }
+    if (paramInt2 > paramInt5) {
+      return true;
+    }
+    if (paramInt3 >= paramInt6) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static String printMatrix(Matrix paramMatrix)
@@ -259,7 +260,11 @@ public final class Utils
     int i = 0;
     while (i < 9)
     {
-      paramMatrix = paramMatrix + String.valueOf(arrayOfFloat[i]) + " ";
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramMatrix);
+      localStringBuilder.append(String.valueOf(arrayOfFloat[i]));
+      localStringBuilder.append(" ");
+      paramMatrix = localStringBuilder.toString();
       i += 1;
     }
     return paramMatrix;
@@ -280,7 +285,7 @@ public final class Utils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.utils.Utils
  * JD-Core Version:    0.7.0.1
  */

@@ -48,21 +48,24 @@ public final class GetSkinListRsp
   {
     paramJceOutputStream.write(this.skin_list, 0);
     paramJceOutputStream.write(this.selected_id, 1);
-    if (this.more_skin_url != null) {
-      paramJceOutputStream.write(this.more_skin_url, 2);
+    String str = this.more_skin_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.operate_url != null) {
-      paramJceOutputStream.write(this.operate_url, 3);
+    str = this.operate_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.operate_desc != null) {
-      paramJceOutputStream.write(this.operate_desc, 4);
+    str = this.operate_desc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
     paramJceOutputStream.write(this.is_hide_list, 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.GetSkinListRsp
  * JD-Core Version:    0.7.0.1
  */

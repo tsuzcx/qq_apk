@@ -27,52 +27,69 @@ public abstract class QQAVImageColorFilter
   {
     super(paramString1, paramString2);
     this.textureNum = paramInt;
-    this.coordinateAttributes = new int[this.textureNum];
-    this.inputTextureUniforms = new int[this.textureNum];
-    this.sourceTextures = new int[this.textureNum];
+    paramInt = this.textureNum;
+    this.coordinateAttributes = new int[paramInt];
+    this.inputTextureUniforms = new int[paramInt];
+    this.sourceTextures = new int[paramInt];
     paramInt = 0;
-    while (paramInt < this.textureNum)
+    int i;
+    for (;;)
     {
+      i = this.textureNum;
+      if (paramInt >= i) {
+        break;
+      }
       this.sourceTextures[paramInt] = -1;
       paramInt += 1;
     }
-    this.coordinatesBuffers = new FloatBuffer[this.textureNum];
-    this.bitmaps = new Bitmap[this.textureNum];
+    this.coordinatesBuffers = new FloatBuffer[i];
+    this.bitmaps = new Bitmap[i];
     setRotation(0, false, false);
   }
   
   private void loadBitmap(int paramInt, Bitmap paramBitmap)
   {
-    if ((paramBitmap != null) && (paramBitmap.isRecycled())) {}
-    while ((paramBitmap == null) || (paramBitmap == null) || (paramBitmap.isRecycled()) || (this.sourceTextures[paramInt] != -1)) {
+    if ((paramBitmap != null) && (paramBitmap.isRecycled())) {
       return;
     }
-    GLES20.glActiveTexture(this.GL_TEXTURES[paramInt]);
-    this.sourceTextures[paramInt] = OpenGlUtils.loadTexture(paramBitmap, -1, false);
+    if (paramBitmap == null) {
+      return;
+    }
+    if (paramBitmap != null)
+    {
+      if (paramBitmap.isRecycled()) {
+        return;
+      }
+      if (this.sourceTextures[paramInt] == -1)
+      {
+        GLES20.glActiveTexture(this.GL_TEXTURES[paramInt]);
+        this.sourceTextures[paramInt] = OpenGlUtils.loadTexture(paramBitmap, -1, false);
+      }
+    }
   }
   
   public void onDestroy()
   {
-    int i = 0;
     super.onDestroy();
-    if (this.textureNum > 0) {
-      try
+    if (this.textureNum > 0) {}
+    try
+    {
+      int[] arrayOfInt = this.sourceTextures;
+      int i = 0;
+      GLES20.glDeleteTextures(1, arrayOfInt, 0);
+      while (i < this.textureNum)
       {
-        GLES20.glDeleteTextures(1, this.sourceTextures, 0);
-        while (i < this.textureNum)
+        this.sourceTextures[i] = -1;
+        if ((this.bitmaps[i] != null) && (!this.bitmaps[i].isRecycled()))
         {
-          this.sourceTextures[i] = -1;
-          if ((this.bitmaps[i] != null) && (!this.bitmaps[i].isRecycled()))
-          {
-            this.bitmaps[i].recycle();
-            this.bitmaps[i] = null;
-          }
-          i += 1;
+          this.bitmaps[i].recycle();
+          this.bitmaps[i] = null;
         }
-        return;
+        i += 1;
       }
-      catch (Exception localException) {}
+      return;
     }
+    catch (Exception localException) {}
   }
   
   protected void onDrawArraysPre()
@@ -80,9 +97,10 @@ public abstract class QQAVImageColorFilter
     int i = 0;
     while (i < this.textureNum)
     {
-      if (this.coordinateAttributes[i] != -1)
+      int[] arrayOfInt = this.coordinateAttributes;
+      if (arrayOfInt[i] != -1)
       {
-        GLES20.glEnableVertexAttribArray(this.coordinateAttributes[i]);
+        GLES20.glEnableVertexAttribArray(arrayOfInt[i]);
         this.coordinatesBuffers[i].position(0);
         GLES20.glVertexAttribPointer(this.coordinateAttributes[i], 2, 5126, false, 0, this.coordinatesBuffers[i]);
       }
@@ -111,33 +129,35 @@ public abstract class QQAVImageColorFilter
   
   public void setBitmap(int paramInt, Bitmap paramBitmap)
   {
-    if ((paramBitmap != null) && (paramBitmap.isRecycled())) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (paramBitmap == null);
-      this.bitmaps[paramInt] = paramBitmap;
-    } while ((this.bitmaps[paramInt] == null) || (this.bitmaps[paramInt].isRecycled()));
-    loadBitmap(paramInt, this.bitmaps[paramInt]);
+    if ((paramBitmap != null) && (paramBitmap.isRecycled())) {
+      return;
+    }
+    if (paramBitmap == null) {
+      return;
+    }
+    Bitmap[] arrayOfBitmap = this.bitmaps;
+    arrayOfBitmap[paramInt] = paramBitmap;
+    if ((arrayOfBitmap[paramInt] != null) && (!arrayOfBitmap[paramInt].isRecycled())) {
+      loadBitmap(paramInt, this.bitmaps[paramInt]);
+    }
   }
   
   public void setRotation(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
+    FloatBuffer localFloatBuffer1 = ByteBuffer.allocateDirect(OpenGlUtils.CUBE8.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    FloatBuffer localFloatBuffer2 = localFloatBuffer1.put(OpenGlUtils.CUBE8);
     paramInt = 0;
-    FloatBuffer localFloatBuffer = ByteBuffer.allocateDirect(OpenGlUtils.CUBE8.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    localFloatBuffer.put(OpenGlUtils.CUBE8).position(0);
+    localFloatBuffer2.position(0);
     while (paramInt < this.textureNum)
     {
-      this.coordinatesBuffers[paramInt] = localFloatBuffer;
+      this.coordinatesBuffers[paramInt] = localFloatBuffer1;
       paramInt += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.video.effect.core.qqavimage.QQAVImageColorFilter
  * JD-Core Version:    0.7.0.1
  */

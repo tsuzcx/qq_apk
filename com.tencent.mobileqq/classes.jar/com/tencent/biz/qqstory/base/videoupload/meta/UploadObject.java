@@ -9,7 +9,7 @@ public abstract class UploadObject
   extends JobSegment<ErrorMessage, ErrorMessage>
 {
   public UploadObject.UploadFinishListener a;
-  public AtomicInteger a;
+  protected AtomicInteger a;
   
   public UploadObject()
   {
@@ -28,16 +28,17 @@ public abstract class UploadObject
     a();
   }
   
-  public void b()
+  protected void b()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadMetaUploadObject$UploadFinishListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadMetaUploadObject$UploadFinishListener.a(this);
+    UploadObject.UploadFinishListener localUploadFinishListener = this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadMetaUploadObject$UploadFinishListener;
+    if (localUploadFinishListener != null) {
+      localUploadFinishListener.a(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.meta.UploadObject
  * JD-Core Version:    0.7.0.1
  */

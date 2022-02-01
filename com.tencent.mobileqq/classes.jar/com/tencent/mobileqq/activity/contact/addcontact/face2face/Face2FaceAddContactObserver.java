@@ -14,23 +14,23 @@ public class Face2FaceAddContactObserver
       if (paramObject.length >= 8) {
         a(true, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2], ((Integer)paramObject[3]).intValue(), (String)paramObject[4], ((Integer)paramObject[5]).intValue(), ((Integer)paramObject[6]).intValue(), ((Boolean)paramObject[7]).booleanValue());
       }
-      return;
     }
-    if ((paramObject != null) && ((paramObject instanceof Object[])))
+    else
     {
-      Object[] arrayOfObject = (Object[])paramObject;
-      if (arrayOfObject.length >= 2)
+      if ((paramObject != null) && ((paramObject instanceof Object[])))
       {
-        paramObject = (String)arrayOfObject[0];
-        paramBoolean = ((Boolean)arrayOfObject[1]).booleanValue();
+        Object[] arrayOfObject = (Object[])paramObject;
+        if (arrayOfObject.length >= 2)
+        {
+          paramObject = (String)arrayOfObject[0];
+          paramBoolean = ((Boolean)arrayOfObject[1]).booleanValue();
+          break label150;
+        }
       }
-    }
-    for (;;)
-    {
-      a(false, paramObject, 0, null, 0, null, 60, 1200, paramBoolean);
-      return;
-      paramBoolean = false;
       paramObject = null;
+      paramBoolean = false;
+      label150:
+      a(false, paramObject, 0, null, 0, null, 60, 1200, paramBoolean);
     }
   }
   
@@ -42,17 +42,21 @@ public class Face2FaceAddContactObserver
       if (paramObject.length >= 3) {
         a(true, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
       }
-      return;
     }
-    if ((paramObject != null) && ((paramObject instanceof Object[])))
+    else
     {
-      paramObject = (Object[])paramObject;
-      if (paramObject.length <= 0) {}
-    }
-    for (paramObject = (String)paramObject[0];; paramObject = null)
-    {
+      if ((paramObject != null) && ((paramObject instanceof Object[])))
+      {
+        paramObject = (Object[])paramObject;
+        if (paramObject.length > 0)
+        {
+          paramObject = (String)paramObject[0];
+          break label92;
+        }
+      }
+      paramObject = null;
+      label92:
       a(false, paramObject, 0, null);
-      return;
     }
   }
   
@@ -64,17 +68,24 @@ public class Face2FaceAddContactObserver
       if (paramObject.length >= 4) {
         a(true, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2], (List)paramObject[3]);
       }
-      return;
     }
-    if ((paramObject != null) && ((paramObject instanceof Object[])))
+    else
     {
-      paramObject = (Object[])paramObject;
-      if (paramObject.length <= 0) {}
-    }
-    for (paramObject = (String)paramObject[0];; paramObject = null)
-    {
-      a(false, paramObject, 0, null, null);
-      return;
+      Object localObject2 = null;
+      Object localObject1 = localObject2;
+      if (paramObject != null)
+      {
+        localObject1 = localObject2;
+        if ((paramObject instanceof Object[]))
+        {
+          paramObject = (Object[])paramObject;
+          localObject1 = localObject2;
+          if (paramObject.length > 0) {
+            localObject1 = (String)paramObject[0];
+          }
+        }
+      }
+      a(false, (String)localObject1, 0, null, null);
     }
   }
   
@@ -99,26 +110,30 @@ public class Face2FaceAddContactObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, paramObject);
-      return;
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4) {
+            return;
+          }
+          d(paramBoolean, paramObject);
+          return;
+        }
+        c(paramBoolean, paramObject);
+        return;
+      }
       b(paramBoolean, paramObject);
       return;
-    case 3: 
-      c(paramBoolean, paramObject);
-      return;
     }
-    d(paramBoolean, paramObject);
+    a(paramBoolean, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactObserver
  * JD-Core Version:    0.7.0.1
  */

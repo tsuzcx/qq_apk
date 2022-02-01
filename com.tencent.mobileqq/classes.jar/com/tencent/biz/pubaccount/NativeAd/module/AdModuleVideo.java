@@ -17,59 +17,57 @@ public class AdModuleVideo
   
   public static AdModuleVideo a(JSONObject paramJSONObject)
   {
-    if (paramJSONObject == null) {}
-    AdModuleVideo localAdModuleVideo;
-    Object localObject;
-    for (;;)
-    {
+    if (paramJSONObject == null) {
       return null;
-      localAdModuleVideo = new AdModuleVideo();
-      try
+    }
+    AdModuleVideo localAdModuleVideo = new AdModuleVideo();
+    try
+    {
+      Object localObject = paramJSONObject.optJSONObject("video");
+      if (localObject != null)
       {
-        localObject = paramJSONObject.optJSONObject("video");
-        if (localObject != null)
+        localAdModuleVideo.e = ((JSONObject)localObject).optString("coverUrl");
+        localAdModuleVideo.jdField_d_of_type_JavaLangString = ((JSONObject)localObject).optString("videoUrl");
+        if (TextUtils.isEmpty(localAdModuleVideo.jdField_d_of_type_JavaLangString))
         {
-          localAdModuleVideo.e = ((JSONObject)localObject).optString("coverUrl");
-          localAdModuleVideo.jdField_d_of_type_JavaLangString = ((JSONObject)localObject).optString("videoUrl");
-          if (TextUtils.isEmpty(localAdModuleVideo.jdField_d_of_type_JavaLangString))
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("AdModuleVideo", 2, "video url is null");
-            return null;
+          if (!QLog.isColorLevel()) {
+            break label196;
           }
+          QLog.d("AdModuleVideo", 2, "video url is null");
+          return null;
         }
       }
-      catch (JSONException paramJSONObject)
+      localAdModuleVideo.jdField_a_of_type_Long = paramJSONObject.optLong("duration");
+      localAdModuleVideo.jdField_d_of_type_Int = paramJSONObject.optInt("mixType");
+      localAdModuleVideo.f = paramJSONObject.optString("linkUrl");
+      paramJSONObject = paramJSONObject.optString("appInfo");
+      if (!TextUtils.isEmpty(paramJSONObject))
       {
-        paramJSONObject.printStackTrace();
-        return null;
+        paramJSONObject = new JSONObject(paramJSONObject);
+        localObject = new AdModuleVideo.AdAppInfo();
+        ((AdModuleVideo.AdAppInfo)localObject).a = paramJSONObject.optString("appid");
+        ((AdModuleVideo.AdAppInfo)localObject).b = paramJSONObject.optString("scheme");
+        ((AdModuleVideo.AdAppInfo)localObject).c = paramJSONObject.optString("packageName");
+        ((AdModuleVideo.AdAppInfo)localObject).jdField_d_of_type_JavaLangString = paramJSONObject.optString("androidDownloadUrl");
+        ((AdModuleVideo.AdAppInfo)localObject).e = paramJSONObject.optString("appName");
+        localAdModuleVideo.jdField_a_of_type_ComTencentBizPubaccountNativeAdModuleAdModuleVideo$AdAppInfo = ((AdModuleVideo.AdAppInfo)localObject);
       }
+      return localAdModuleVideo;
     }
-    localAdModuleVideo.jdField_a_of_type_Long = paramJSONObject.optLong("duration");
-    localAdModuleVideo.jdField_d_of_type_Int = paramJSONObject.optInt("mixType");
-    localAdModuleVideo.f = paramJSONObject.optString("linkUrl");
-    paramJSONObject = paramJSONObject.optString("appInfo");
-    if (!TextUtils.isEmpty(paramJSONObject))
+    catch (JSONException paramJSONObject)
     {
-      paramJSONObject = new JSONObject(paramJSONObject);
-      localObject = new AdModuleVideo.AdAppInfo();
-      ((AdModuleVideo.AdAppInfo)localObject).a = paramJSONObject.optString("appid");
-      ((AdModuleVideo.AdAppInfo)localObject).b = paramJSONObject.optString("scheme");
-      ((AdModuleVideo.AdAppInfo)localObject).c = paramJSONObject.optString("packageName");
-      ((AdModuleVideo.AdAppInfo)localObject).jdField_d_of_type_JavaLangString = paramJSONObject.optString("androidDownloadUrl");
-      ((AdModuleVideo.AdAppInfo)localObject).e = paramJSONObject.optString("appName");
-      localAdModuleVideo.jdField_a_of_type_ComTencentBizPubaccountNativeAdModuleAdModuleVideo$AdAppInfo = ((AdModuleVideo.AdAppInfo)localObject);
+      paramJSONObject.printStackTrace();
+      return null;
     }
-    return localAdModuleVideo;
+    label196:
+    return null;
   }
   
   public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.module.AdModuleVideo
  * JD-Core Version:    0.7.0.1
  */

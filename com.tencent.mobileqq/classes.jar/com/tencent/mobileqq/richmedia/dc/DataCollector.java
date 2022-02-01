@@ -8,14 +8,13 @@ import android.os.Message;
 
 public class DataCollector
 {
-  private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("Colloector-Tasker");
   static String jdField_a_of_type_JavaLangString = "DataCollector";
   Handler jdField_a_of_type_AndroidOsHandler = new DataCollector.1(this, jdField_a_of_type_AndroidOsHandlerThread.getLooper());
   public boolean a;
   
   static
   {
-    jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("Colloector-Tasker");
     jdField_a_of_type_AndroidOsHandlerThread.start();
   }
   
@@ -34,7 +33,7 @@ public class DataCollector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.dc.DataCollector
  * JD-Core Version:    0.7.0.1
  */

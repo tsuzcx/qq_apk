@@ -17,13 +17,19 @@ class BaseEmotionPanel$1
     if ((this.a.a().size() > 0) && (paramInt < this.a.a().size()))
     {
       paramViewGroup.removeView((View)this.a.a().get(paramInt));
-      LogUtil.logD("EmotionPanelTAG", "destroyItem:" + paramInt);
+      paramViewGroup = new StringBuilder();
+      paramViewGroup.append("destroyItem:");
+      paramViewGroup.append(paramInt);
+      LogUtil.logD("EmotionPanelTAG", paramViewGroup.toString());
     }
   }
   
   public int getCount()
   {
-    LogUtil.logD("EmotionPanelTAG", "getCount:" + this.a.a().size());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getCount:");
+    localStringBuilder.append(this.a.a().size());
+    LogUtil.logD("EmotionPanelTAG", localStringBuilder.toString());
     return this.a.a().size();
   }
   
@@ -41,7 +47,7 @@ class BaseEmotionPanel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.comment.panel.base.BaseEmotionPanel.1
  * JD-Core Version:    0.7.0.1
  */

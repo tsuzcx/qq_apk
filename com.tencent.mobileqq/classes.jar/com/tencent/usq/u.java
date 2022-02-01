@@ -20,33 +20,35 @@ public final class u
       if (paramContext == null) {
         return "f2";
       }
-    }
-    catch (Exception paramContext)
-    {
-      return "f1";
-    }
-    if (paramContext.signatures == null) {
-      return "f3";
-    }
-    if (paramContext.signatures[0] == null) {
-      return "f4";
-    }
-    paramContext = paramContext.signatures[0].toByteArray();
-    if ((paramContext == null) || (paramContext.length == 0)) {
+      if (paramContext.signatures == null) {
+        return "f3";
+      }
+      if (paramContext.signatures[0] == null) {
+        return "f4";
+      }
+      paramContext = paramContext.signatures[0].toByteArray();
+      if ((paramContext != null) && (paramContext.length != 0)) {
+        try
+        {
+          localObject = MessageDigest.getInstance("MD5");
+          ((MessageDigest)localObject).update(paramContext);
+          paramContext = a(((MessageDigest)localObject).digest());
+          return paramContext;
+        }
+        catch (Exception paramContext)
+        {
+          paramContext.printStackTrace();
+          return "f6";
+        }
+      }
       return "f5";
     }
-    try
-    {
-      localObject = MessageDigest.getInstance("MD5");
-      ((MessageDigest)localObject).update(paramContext);
-      paramContext = a(((MessageDigest)localObject).digest());
-      return paramContext;
-    }
     catch (Exception paramContext)
     {
-      paramContext.printStackTrace();
+      label99:
+      break label99;
     }
-    return "f6";
+    return "f1";
   }
   
   public static String a(InputStream paramInputStream)
@@ -64,112 +66,102 @@ public final class u
         localMessageDigest.update(arrayOfByte, 0, i);
       }
       paramInputStream = a(localMessageDigest.digest());
+      return paramInputStream;
     }
     catch (Exception paramInputStream)
     {
       paramInputStream.printStackTrace();
-      return null;
     }
-    return paramInputStream;
+    return null;
   }
   
   /* Error */
   public static String a(String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: aload_0
-    //   3: invokestatic 111	com/tencent/mdm/m:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   6: astore_1
-    //   7: aload_1
-    //   8: ifnull +7 -> 15
-    //   11: aload_1
+    //   0: aload_0
+    //   1: invokestatic 111	com/tencent/mdm/m:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   4: astore_1
+    //   5: aload_1
+    //   6: ifnull +5 -> 11
+    //   9: aload_1
+    //   10: areturn
+    //   11: aconst_null
     //   12: astore_2
-    //   13: aload_2
-    //   14: areturn
-    //   15: new 113	java/io/BufferedInputStream
-    //   18: dup
-    //   19: new 115	java/io/FileInputStream
-    //   22: dup
-    //   23: aload_0
-    //   24: invokespecial 118	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   27: invokespecial 121	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   30: astore_1
+    //   13: new 113	java/io/BufferedInputStream
+    //   16: dup
+    //   17: new 115	java/io/FileInputStream
+    //   20: dup
+    //   21: aload_0
+    //   22: invokespecial 118	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   25: invokespecial 121	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   28: astore_1
+    //   29: aload_1
+    //   30: astore_0
     //   31: aload_1
-    //   32: astore_0
-    //   33: aload_1
-    //   34: invokestatic 123	com/tencent/usq/u:a	(Ljava/io/InputStream;)Ljava/lang/String;
-    //   37: astore_2
-    //   38: aload_2
-    //   39: astore_0
-    //   40: aload_0
-    //   41: astore_2
-    //   42: aload_1
-    //   43: ifnull -30 -> 13
-    //   46: aload_1
-    //   47: invokevirtual 126	java/io/BufferedInputStream:close	()V
-    //   50: aload_0
-    //   51: areturn
-    //   52: astore_1
-    //   53: aload_0
-    //   54: areturn
-    //   55: astore_2
-    //   56: aconst_null
-    //   57: astore_1
-    //   58: aload_1
-    //   59: astore_0
-    //   60: aload_2
-    //   61: invokevirtual 127	java/io/IOException:printStackTrace	()V
-    //   64: aload_1
-    //   65: ifnull +7 -> 72
-    //   68: aload_1
-    //   69: invokevirtual 126	java/io/BufferedInputStream:close	()V
-    //   72: aconst_null
-    //   73: areturn
-    //   74: astore_0
-    //   75: aload_2
-    //   76: astore_1
-    //   77: aload_1
-    //   78: ifnull +7 -> 85
-    //   81: aload_1
-    //   82: invokevirtual 126	java/io/BufferedInputStream:close	()V
-    //   85: aload_0
-    //   86: athrow
-    //   87: astore_0
-    //   88: goto -16 -> 72
-    //   91: astore_1
-    //   92: goto -7 -> 85
-    //   95: astore_2
-    //   96: aload_0
-    //   97: astore_1
-    //   98: aload_2
-    //   99: astore_0
-    //   100: goto -23 -> 77
-    //   103: astore_2
-    //   104: goto -46 -> 58
+    //   32: invokestatic 123	com/tencent/usq/u:a	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   35: astore_2
+    //   36: aload_1
+    //   37: invokevirtual 126	java/io/BufferedInputStream:close	()V
+    //   40: aload_2
+    //   41: areturn
+    //   42: astore_2
+    //   43: goto +12 -> 55
+    //   46: astore_0
+    //   47: aload_2
+    //   48: astore_1
+    //   49: goto +27 -> 76
+    //   52: astore_2
+    //   53: aconst_null
+    //   54: astore_1
+    //   55: aload_1
+    //   56: astore_0
+    //   57: aload_2
+    //   58: invokevirtual 127	java/io/IOException:printStackTrace	()V
+    //   61: aload_1
+    //   62: ifnull +7 -> 69
+    //   65: aload_1
+    //   66: invokevirtual 126	java/io/BufferedInputStream:close	()V
+    //   69: aconst_null
+    //   70: areturn
+    //   71: astore_2
+    //   72: aload_0
+    //   73: astore_1
+    //   74: aload_2
+    //   75: astore_0
+    //   76: aload_1
+    //   77: ifnull +7 -> 84
+    //   80: aload_1
+    //   81: invokevirtual 126	java/io/BufferedInputStream:close	()V
+    //   84: aload_0
+    //   85: athrow
+    //   86: astore_0
+    //   87: aload_2
+    //   88: areturn
+    //   89: astore_0
+    //   90: aconst_null
+    //   91: areturn
+    //   92: astore_1
+    //   93: goto -9 -> 84
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	107	0	paramString	String
-    //   6	41	1	localObject1	Object
-    //   52	1	1	localIOException1	java.io.IOException
-    //   57	25	1	localIOException2	java.io.IOException
-    //   91	1	1	localIOException3	java.io.IOException
-    //   97	1	1	str	String
-    //   1	41	2	localObject2	Object
-    //   55	21	2	localIOException4	java.io.IOException
-    //   95	4	2	localObject3	Object
-    //   103	1	2	localIOException5	java.io.IOException
+    //   0	96	0	paramString	String
+    //   4	77	1	localObject	Object
+    //   92	1	1	localIOException1	java.io.IOException
+    //   12	29	2	str1	String
+    //   42	6	2	localIOException2	java.io.IOException
+    //   52	6	2	localIOException3	java.io.IOException
+    //   71	17	2	str2	String
     // Exception table:
     //   from	to	target	type
-    //   46	50	52	java/io/IOException
-    //   15	31	55	java/io/IOException
-    //   15	31	74	finally
-    //   68	72	87	java/io/IOException
-    //   81	85	91	java/io/IOException
-    //   33	38	95	finally
-    //   60	64	95	finally
-    //   33	38	103	java/io/IOException
+    //   31	36	42	java/io/IOException
+    //   13	29	46	finally
+    //   13	29	52	java/io/IOException
+    //   31	36	71	finally
+    //   57	61	71	finally
+    //   36	40	86	java/io/IOException
+    //   65	69	89	java/io/IOException
+    //   80	84	92	java/io/IOException
   }
   
   public static String a(byte[] paramArrayOfByte)
@@ -187,7 +179,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.usq.u
  * JD-Core Version:    0.7.0.1
  */

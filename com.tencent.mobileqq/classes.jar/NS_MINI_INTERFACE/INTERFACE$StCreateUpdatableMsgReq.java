@@ -23,13 +23,14 @@ public final class INTERFACE$StCreateUpdatableMsgReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 48, 58 }, new String[] { "extInfo", "appid", "shareInfo", "templateId", "from", "serviceType", "sig" }, new Object[] { null, "", null, "", Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, StCreateUpdatableMsgReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 48, 58 }, new String[] { "extInfo", "appid", "shareInfo", "templateId", "from", "serviceType", "sig" }, new Object[] { null, "", null, "", localInteger, localInteger, localByteStringMicro }, StCreateUpdatableMsgReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MINI_INTERFACE.INTERFACE.StCreateUpdatableMsgReq
  * JD-Core Version:    0.7.0.1
  */

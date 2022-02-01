@@ -22,11 +22,7 @@ public class ARReport
       int i = new File("/sys/devices/system/cpu/").listFiles(jdField_a_of_type_JavaIoFileFilter).length;
       return i;
     }
-    catch (NullPointerException localNullPointerException)
-    {
-      return -1;
-    }
-    catch (SecurityException localSecurityException) {}
+    catch (SecurityException|NullPointerException localSecurityException) {}
     return -1;
   }
   
@@ -40,7 +36,10 @@ public class ARReport
   
   public static String a(Context paramContext)
   {
-    return 2 + "";
+    paramContext = new StringBuilder();
+    paramContext.append(2);
+    paramContext.append("");
+    return paramContext.toString();
   }
   
   private boolean a(long paramLong)
@@ -175,7 +174,7 @@ public class ARReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARReport
  * JD-Core Version:    0.7.0.1
  */

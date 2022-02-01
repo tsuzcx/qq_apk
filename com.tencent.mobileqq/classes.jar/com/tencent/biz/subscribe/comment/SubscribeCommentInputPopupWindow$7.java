@@ -11,10 +11,7 @@ class SubscribeCommentInputPopupWindow$7
   
   public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    switch (paramInt)
-    {
-    case 5: 
-    default: 
+    if ((paramInt != 4) && (paramInt != 6)) {
       return false;
     }
     if (SubscribeCommentInputPopupWindow.a(this.a) != null) {
@@ -25,7 +22,7 @@ class SubscribeCommentInputPopupWindow$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.SubscribeCommentInputPopupWindow.7
  * JD-Core Version:    0.7.0.1
  */

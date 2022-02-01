@@ -25,70 +25,75 @@ public class AddContactTroopHandler$InfoReqObserver
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    boolean bool2 = false;
     AddContactTroopHandler.IGetPopClassAndSearchCB localIGetPopClassAndSearchCB = (AddContactTroopHandler.IGetPopClassAndSearchCB)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     Object localObject1 = (QQAppInterface)this.b.get();
     Object localObject2;
     if (QLog.isColorLevel())
     {
-      localObject2 = new StringBuilder().append("InfoReqObserver: type=").append(paramInt).append(", reqType=").append(this.jdField_a_of_type_Int).append(", isSucc=").append(paramBoolean).append(", cbIsNull=");
-      if (localIGetPopClassAndSearchCB != null) {
-        break label271;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("InfoReqObserver: type=");
+      ((StringBuilder)localObject2).append(paramInt);
+      ((StringBuilder)localObject2).append(", reqType=");
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject2).append(", isSucc=");
+      ((StringBuilder)localObject2).append(paramBoolean);
+      ((StringBuilder)localObject2).append(", cbIsNull=");
+      boolean bool2 = false;
+      if (localIGetPopClassAndSearchCB == null) {
+        bool1 = true;
+      } else {
+        bool1 = false;
       }
-    }
-    label270:
-    label271:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      localObject2 = ((StringBuilder)localObject2).append(bool1).append(", appIsNull=");
-      bool1 = bool2;
+      ((StringBuilder)localObject2).append(bool1);
+      ((StringBuilder)localObject2).append(", appIsNull=");
+      boolean bool1 = bool2;
       if (localObject1 == null) {
         bool1 = true;
       }
-      QLog.d("AddContactTroopHandler", 2, bool1);
-      if ((localIGetPopClassAndSearchCB != null) && (localObject1 != null)) {
-        if ((paramBoolean) && (paramBundle != null)) {
-          try
+      ((StringBuilder)localObject2).append(bool1);
+      QLog.d("AddContactTroopHandler", 2, ((StringBuilder)localObject2).toString());
+    }
+    if ((localIGetPopClassAndSearchCB != null) && (localObject1 != null))
+    {
+      if ((paramBoolean) && (paramBundle != null)) {
+        try
+        {
+          paramBundle = paramBundle.getByteArray("data");
+          if (paramBundle != null)
           {
-            paramBundle = paramBundle.getByteArray("data");
-            if (paramBundle != null)
+            localObject1 = (AddContactTroopManage)((QQAppInterface)localObject1).getManager(QQManagerFactory.ADDCONTACT_TROOP_SEARCH_POP_MANAGE);
+            if (this.jdField_a_of_type_Int == 1)
             {
-              localObject1 = (AddContactTroopManage)((QQAppInterface)localObject1).getManager(QQManagerFactory.ADDCONTACT_TROOP_SEARCH_POP_MANAGE);
-              if (this.jdField_a_of_type_Int == 1)
-              {
-                localObject2 = new popclassifc.RspBody();
-                ((popclassifc.RspBody)localObject2).mergeFrom(paramBundle);
-                ((AddContactTroopManage)localObject1).a((popclassifc.RspBody)localObject2);
-                localIGetPopClassAndSearchCB.a();
-                return;
-              }
-              if (this.jdField_a_of_type_Int != 2) {
-                break label270;
-              }
+              localObject2 = new popclassifc.RspBody();
+              ((popclassifc.RspBody)localObject2).mergeFrom(paramBundle);
+              ((AddContactTroopManage)localObject1).a((popclassifc.RspBody)localObject2);
+              localIGetPopClassAndSearchCB.a();
+              return;
+            }
+            if (this.jdField_a_of_type_Int == 2)
+            {
               localObject2 = new searchtab.RspBody();
               ((searchtab.RspBody)localObject2).mergeFrom(paramBundle);
               ((AddContactTroopManage)localObject1).a((searchtab.RspBody)localObject2);
               localIGetPopClassAndSearchCB.a();
-              return;
             }
+            return;
           }
-          catch (Exception paramBundle)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("AddContactTroopHandler", 2, "InfoReqObserver exp:", paramBundle);
-            }
+        }
+        catch (Exception paramBundle)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("AddContactTroopHandler", 2, "InfoReqObserver exp:", paramBundle);
           }
-        } else {
-          localIGetPopClassAndSearchCB.b();
         }
       }
-      return;
+      localIGetPopClassAndSearchCB.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.addContactTroopView.AddContactTroopHandler.InfoReqObserver
  * JD-Core Version:    0.7.0.1
  */

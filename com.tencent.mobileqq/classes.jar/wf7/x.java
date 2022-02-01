@@ -45,35 +45,43 @@ public final class x
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.bH, 0);
-    if (this.bZ != 0) {
-      paramJceOutputStream.write(this.bZ, 1);
+    int i = this.bZ;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
     }
-    if (this.ca != 0) {
-      paramJceOutputStream.write(this.ca, 2);
+    i = this.ca;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 2);
     }
-    if (this.data != null) {
-      paramJceOutputStream.write(this.data, 3);
+    Object localObject = this.data;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 3);
     }
-    if (this.cb != 0L) {
-      paramJceOutputStream.write(this.cb, 4);
+    long l = this.cb;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 4);
     }
-    if (this.cc != 0) {
-      paramJceOutputStream.write(this.cc, 5);
+    i = this.cc;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 5);
     }
-    if (this.cd != 0) {
-      paramJceOutputStream.write(this.cd, 6);
+    i = this.cd;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 6);
     }
-    if (this.ce != null) {
-      paramJceOutputStream.write(this.ce, 7);
+    localObject = this.ce;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 7);
     }
-    if (this.cf != 0) {
-      paramJceOutputStream.write(this.cf, 8);
+    i = this.cf;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.x
  * JD-Core Version:    0.7.0.1
  */

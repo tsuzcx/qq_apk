@@ -31,14 +31,15 @@ public final class AllowJoinShareAlbumData
   {
     paramJceOutputStream.write(this.joiner, 0);
     paramJceOutputStream.write(this.owner, 1);
-    if (this.albumid != null) {
-      paramJceOutputStream.write(this.albumid, 2);
+    String str = this.albumid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.AllowJoinShareAlbumData
  * JD-Core Version:    0.7.0.1
  */

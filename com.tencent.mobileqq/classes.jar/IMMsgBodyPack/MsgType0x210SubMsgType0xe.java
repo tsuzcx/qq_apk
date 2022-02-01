@@ -59,14 +59,15 @@ public final class MsgType0x210SubMsgType0xe
     paramJceOutputStream.write(this.uint32_operate, 6);
     paramJceOutputStream.write(this.uint32_seq, 7);
     paramJceOutputStream.write(this.uint32_code, 8);
-    if (this.str_msg != null) {
-      paramJceOutputStream.write(this.str_msg, 9);
+    String str = this.str_msg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     IMMsgBodyPack.MsgType0x210SubMsgType0xe
  * JD-Core Version:    0.7.0.1
  */

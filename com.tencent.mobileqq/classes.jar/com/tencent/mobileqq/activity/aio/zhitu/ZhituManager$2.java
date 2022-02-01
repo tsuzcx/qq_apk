@@ -11,7 +11,8 @@ class ZhituManager$2
   public void run()
   {
     ZhituManager.a(this.this$0, this.jdField_a_of_type_Int);
-    ZhituManager.a(this.this$0, ZhituManager.a(this.this$0));
+    ZhituManager localZhituManager = this.this$0;
+    ZhituManager.a(localZhituManager, ZhituManager.a(localZhituManager));
     ZhituManager.a(this.this$0).clear();
     ZhituManager.a(this.this$0);
     this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b.trim(), null, 0);
@@ -19,7 +20,7 @@ class ZhituManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -24,24 +24,27 @@ class GaInviteLockActivity$HomeKeyReceiver
         this.a.c(-1038L);
       }
     }
-    boolean bool;
-    do
+    else if (paramContext.equals("android.intent.action.SCREEN_OFF"))
     {
-      do
-      {
-        return;
-      } while (!paramContext.equals("android.intent.action.SCREEN_OFF"));
-      bool = VideoController.a(this.a);
+      boolean bool = VideoController.a(this.a);
       if (bool) {
         ReportController.b(null, "CliOper", "", "", "0X800420C", "0X800420C", 0, 0, "", "", "", "");
       }
-    } while (!QLog.isColorLevel());
-    QLog.w(this.a.b, 1, "ACTION_SCREEN_OFF, isScreenLocked[" + bool + "]");
+      if (QLog.isColorLevel())
+      {
+        paramContext = this.a.b;
+        paramIntent = new StringBuilder();
+        paramIntent.append("ACTION_SCREEN_OFF, isScreenLocked[");
+        paramIntent.append(bool);
+        paramIntent.append("]");
+        QLog.w(paramContext, 1, paramIntent.toString());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.gaudio.GaInviteLockActivity.HomeKeyReceiver
  * JD-Core Version:    0.7.0.1
  */

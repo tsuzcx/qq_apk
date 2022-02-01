@@ -16,7 +16,7 @@ public final class enum_video_recomm_scene
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_VIDEO.enum_video_recomm_scene
  * JD-Core Version:    0.7.0.1
  */

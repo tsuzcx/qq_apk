@@ -36,21 +36,22 @@ public class AudioDataManager
   
   public boolean isForeground(Object paramObject)
   {
-    Object localObject = getAudioInfo(paramObject);
-    paramObject = null;
-    if (localObject != null) {
-      paramObject = ((AudioEntity)localObject).getPageObject();
+    paramObject = getAudioInfo(paramObject);
+    if (paramObject != null) {
+      paramObject = paramObject.getPageObject();
+    } else {
+      paramObject = null;
     }
-    localObject = PageManager.getInstance().getCurrentPageInfo();
-    if ((paramObject != null) && (localObject != null)) {
-      return paramObject.equals(((PageInfo)localObject).getPage());
+    PageInfo localPageInfo = PageManager.getInstance().getCurrentPageInfo();
+    if ((paramObject != null) && (localPageInfo != null)) {
+      return paramObject.equals(localPageInfo.getPage());
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.audio.data.AudioDataManager
  * JD-Core Version:    0.7.0.1
  */

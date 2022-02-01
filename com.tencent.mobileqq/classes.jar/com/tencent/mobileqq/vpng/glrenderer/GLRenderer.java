@@ -36,41 +36,63 @@ public abstract class GLRenderer
   {
     this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = ((EGL10)EGLContext.getEGL());
     this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
-    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay == EGL10.EGL_NO_DISPLAY) {
-      throw new RuntimeException("eglGetDisplay failed " + GLUtils.getEGLErrorString(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError()));
-    }
-    int[] arrayOfInt = new int[2];
-    if (!this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglInitialize(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, arrayOfInt)) {
-      throw new RuntimeException("EGL error " + this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError());
-    }
-    arrayOfInt = new int[1];
-    EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
-    EGL10 localEGL10 = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
-    EGLDisplay localEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
-    int i = arrayOfEGLConfig.length;
-    if (!localEGL10.eglChooseConfig(localEGLDisplay, new int[] { 12320, 32, 12321, 8, 12322, 8, 12323, 8, 12324, 8, 12352, 4, 12339, 4, 12344 }, arrayOfEGLConfig, i, arrayOfInt)) {
-      throw new RuntimeException("EGL error " + this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError());
-    }
-    arrayOfInt = arrayOfEGLConfig[0];
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglCreateContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, arrayOfInt, EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 });
-    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext == EGL10.EGL_NO_CONTEXT) {
-      throw new RuntimeException("EGL error " + this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError());
-    }
-    i = this.jdField_a_of_type_Int;
-    int j = this.b;
-    if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) {}
-    for (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglCreateWindowSurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, arrayOfInt, this.jdField_a_of_type_AndroidGraphicsSurfaceTexture, null);; this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglCreatePbufferSurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, arrayOfInt, new int[] { 12375, i, 12374, j, 12344 }))
+    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay != EGL10.EGL_NO_DISPLAY)
     {
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
-      return;
+      localObject1 = new int[2];
+      if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglInitialize(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, (int[])localObject1))
+      {
+        localObject1 = new int[1];
+        Object localObject2 = new EGLConfig[1];
+        Object localObject3 = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
+        EGLDisplay localEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
+        int i = localObject2.length;
+        if (((EGL10)localObject3).eglChooseConfig(localEGLDisplay, new int[] { 12320, 32, 12321, 8, 12322, 8, 12323, 8, 12324, 8, 12352, 4, 12339, 4, 12344 }, (EGLConfig[])localObject2, i, (int[])localObject1))
+        {
+          localObject1 = localObject2[0];
+          this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglCreateContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, (EGLConfig)localObject1, EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 });
+          if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext != EGL10.EGL_NO_CONTEXT)
+          {
+            i = this.jdField_a_of_type_Int;
+            int j = this.b;
+            localObject2 = this.jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+            if (localObject2 != null) {
+              this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglCreateWindowSurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, (EGLConfig)localObject1, localObject2, null);
+            } else {
+              this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglCreatePbufferSurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, (EGLConfig)localObject1, new int[] { 12375, i, 12374, j, 12344 });
+            }
+            localObject1 = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
+            localObject2 = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
+            localObject3 = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
+            ((EGL10)localObject1).eglMakeCurrent((EGLDisplay)localObject2, (EGLSurface)localObject3, (EGLSurface)localObject3, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
+            return;
+          }
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("EGL error ");
+          ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError());
+          throw new RuntimeException(((StringBuilder)localObject1).toString());
+        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("EGL error ");
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError());
+        throw new RuntimeException(((StringBuilder)localObject1).toString());
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("EGL error ");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError());
+      throw new RuntimeException(((StringBuilder)localObject1).toString());
     }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("eglGetDisplay failed ");
+    ((StringBuilder)localObject1).append(GLUtils.getEGLErrorString(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError()));
+    throw new RuntimeException(((StringBuilder)localObject1).toString());
   }
   
   private void i()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null)
+    SurfaceTexture localSurfaceTexture = this.jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+    if (localSurfaceTexture != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.release();
+      localSurfaceTexture.release();
       this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
     }
     this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroyContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
@@ -81,7 +103,10 @@ public abstract class GLRenderer
   
   private void j()
   {
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
+    EGL10 localEGL10 = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
+    EGLDisplay localEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
+    EGLSurface localEGLSurface = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
+    localEGL10.eglMakeCurrent(localEGLDisplay, localEGLSurface, localEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
     GLES20.glViewport(0, 0, this.jdField_a_of_type_Int, this.b);
     e();
     this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglSwapBuffers(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface);
@@ -90,7 +115,8 @@ public abstract class GLRenderer
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqVpngGlrendererGLRenderer$RenderThreadThread == null) || (!GLRenderer.RenderThreadThread.a(this.jdField_a_of_type_ComTencentMobileqqVpngGlrendererGLRenderer$RenderThreadThread)))
+    GLRenderer.RenderThreadThread localRenderThreadThread = this.jdField_a_of_type_ComTencentMobileqqVpngGlrendererGLRenderer$RenderThreadThread;
+    if ((localRenderThreadThread == null) || (!GLRenderer.RenderThreadThread.a(localRenderThreadThread)))
     {
       this.jdField_a_of_type_ComTencentMobileqqVpngGlrendererGLRenderer$RenderThreadThread = new GLRenderer.RenderThreadThread(this, null);
       this.jdField_a_of_type_ComTencentMobileqqVpngGlrendererGLRenderer$RenderThreadThread.start();
@@ -116,9 +142,10 @@ public abstract class GLRenderer
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqVpngGlrendererGLRenderer$RenderThreadThread != null)
+    GLRenderer.RenderThreadThread localRenderThreadThread = this.jdField_a_of_type_ComTencentMobileqqVpngGlrendererGLRenderer$RenderThreadThread;
+    if (localRenderThreadThread != null)
     {
-      GLRenderer.RenderThreadThread.a(this.jdField_a_of_type_ComTencentMobileqqVpngGlrendererGLRenderer$RenderThreadThread, false);
+      GLRenderer.RenderThreadThread.a(localRenderThreadThread, false);
       this.jdField_a_of_type_ComTencentMobileqqVpngGlrendererGLRenderer$RenderThreadThread = null;
     }
   }
@@ -138,7 +165,7 @@ public abstract class GLRenderer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vpng.glrenderer.GLRenderer
  * JD-Core Version:    0.7.0.1
  */

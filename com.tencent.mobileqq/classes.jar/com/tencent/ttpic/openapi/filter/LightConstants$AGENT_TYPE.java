@@ -18,12 +18,13 @@ public class LightConstants$AGENT_TYPE
   public static final String kHAIR_SEG_AGENT = "HAIR_SEG_AGENT";
   public static final String kHAND_AGENT = "HAND_AGENT";
   public static final String kHEAD_SEG_AGENT = "HEAD_SEG_AGENT";
+  public static final String kLIGHT_SCENE = "SCENE_AGENT";
   public static final String kSKY_SEG_AGENT = "SKY_SEG_AGENT";
   public static final String kSMILE_AGENT = "SMILE_AGENT";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.LightConstants.AGENT_TYPE
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -7,7 +8,6 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Parcelable;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
@@ -26,7 +26,6 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneUnityManager;
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneUnityManager.PhoneUnityData;
 import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
@@ -37,15 +36,18 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.SecSvcHandler;
 import com.tencent.mobileqq.app.SecSvcObserver;
+import com.tencent.mobileqq.banner.TipsBar;
 import com.tencent.mobileqq.equipmentlock.DevlockPhoneStatus;
 import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
+import com.tencent.mobileqq.phonecontact.observer.ContactBindObserver;
+import com.tencent.mobileqq.qroute.route.annotation.RoutePage;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.mobileqq.widget.QQProgressNotifier;
 import com.tencent.mobileqq.widget.QQToast;
@@ -58,350 +60,208 @@ import mqq.app.MobileQQ;
 import mqq.util.WeakReference;
 import oicq.wlogin_sdk.devicelock.DevlockInfo;
 
+@RoutePage(desc="绑定手机号信息Activity", path="/base/phoneUnityBindInfo")
 public class PhoneUnityBindInfoActivity
   extends DialogBaseActivity
   implements View.OnClickListener, CompoundButton.OnCheckedChangeListener
 {
-  public int a;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new PhoneUnityBindInfoActivity.1(this);
-  public Bundle a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  private Button jdField_a_of_type_AndroidWidgetButton = null;
-  private TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  private PhoneUnityManager.PhoneUnityData jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData = new PhoneUnityManager.PhoneUnityData();
-  public PhoneUnityManager a;
-  SecSvcObserver jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver = new PhoneUnityBindInfoActivity.2(this);
-  public ContactBindObserver a;
-  public QQCustomDialog a;
-  private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-  private QQProgressNotifier jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier;
-  public ActionSheet a;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private DevlockInfo jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo;
-  public boolean a;
-  private int jdField_b_of_type_Int = 0;
-  private TextView jdField_b_of_type_AndroidWidgetTextView = null;
-  public ContactBindObserver b;
-  public QQCustomDialog b;
-  private FormSwitchItem jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-  public boolean b;
-  public ContactBindObserver c;
-  private QQCustomDialog jdField_c_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-  private boolean jdField_c_of_type_Boolean = false;
-  private QQCustomDialog jdField_d_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-  private boolean jdField_d_of_type_Boolean = false;
-  private QQCustomDialog jdField_e_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-  private boolean jdField_e_of_type_Boolean = false;
+  public static final String FROM_SCHEMA = "from_schema";
+  public static final String KEY_FROM = "from";
+  private static final String REPORT_T_FROM_SHEMA = "0X800B6BF";
+  public static final int REQUEST_BIND_MIBAO = 1009;
+  public static final int REQUEST_BIND_MIBAO_UNDER_REVIEW = 1010;
+  public static final int REQUEST_CHANGE_BIND_MIBAO = 1011;
+  public static final int REQUEST_PROCEED = 1008;
+  public static final int REQUEST_VERIFY_PHONE = 1012;
+  public static final int RESULT_CONTACT_STOP = 4002;
+  public static final int RESULT_CONTACT_UNBIND = 4001;
+  public static final String TAG = "PhoneUnityBindInfoActivity";
+  public static final int WEB_CHANGE_PHONE_RESUEST = 1;
+  public static final int WEB_UNITY_CHANGE_PHONE_RESUEST = 2;
+  private final int STATE_UNKNOWN = 0;
+  private final int STATE_UNVERIFIED_PHONE = 1;
+  private final int STATE_VERIFIED_PHONE = 2;
+  public ContactBindObserver bindObserver;
+  public ContactBindObserver disableMatchObserver;
+  private boolean isReGetPhone = false;
+  public ActionSheet mActionSheet;
+  BroadcastReceiver mBindMiBaoReceiver = new PhoneUnityBindInfoActivity.1(this);
+  private TextView mBindPhoneTv = null;
+  private QQCustomDialog mBindPhoneVerifyDialog;
+  private TextView mBindPhoneVerifyTv = null;
+  private Button mChangeBindBtn = null;
+  private int mChangePhoneNum = 0;
+  public boolean mCloseThisActivity = true;
+  private QQCustomDialog mContactSecurityDialog;
+  private FormSwitchItem mContactSwitch;
+  private int mCurrentState = 0;
+  private DevlockInfo mDevlockInfo;
+  private boolean mFetchingDevlockInfo = false;
+  private Runnable mFinishRunnable;
+  private Handler mHandler = new Handler();
+  public boolean mInit = false;
+  private boolean mIsUnBindedUnity = false;
+  private FormSwitchItem mLoginSwitch;
+  public QQCustomDialog mMobileAlreadyBindDialog;
+  private QQCustomDialog mNoPwdUnbindLoginDialog;
+  public QQCustomDialog mNotSetPasswordDialog;
+  private PhoneUnityManager.PhoneUnityData mPhoneUnityData = new PhoneUnityManager.PhoneUnityData();
+  public Bundle mPhoneUnityInfoBundle;
+  public PhoneUnityManager mPhoneUnityManager;
+  private QQProgressNotifier mProgressNotifier;
+  SecSvcObserver mSecObserver = new PhoneUnityBindInfoActivity.2(this);
+  public int mUnBindedNum = -1;
+  private TipsBar mUnverifiedBar;
+  public ContactBindObserver unbindObserver;
   
-  public PhoneUnityBindInfoActivity()
+  private void countDownBindedNum()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -1;
+    if (this.mIsUnBindedUnity)
+    {
+      int i = this.mUnBindedNum;
+      if (i > -1)
+      {
+        this.mUnBindedNum = (i - 1);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("phone_unity_info, mUnBindedNum: ");
+        localStringBuilder.append(this.mUnBindedNum);
+        QLog.d("PhoneUnityBindInfoActivity", 1, localStringBuilder.toString());
+      }
+    }
   }
   
-  public static SpannableStringBuilder a(String paramString)
+  public static SpannableStringBuilder createBoldText(String paramString)
   {
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramString);
     localSpannableStringBuilder.setSpan(new StyleSpan(1), 0, paramString.length(), 18);
     return localSpannableStringBuilder;
   }
   
-  private String a(Bundle paramBundle)
+  private void fetchSecurePhoneNum()
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    if (this.mFetchingDevlockInfo)
     {
-      Button localButton = (Button)findViewById(2131364547);
-      paramBundle = paramBundle.getString("phone");
-      if (!TextUtils.isEmpty(paramBundle))
-      {
-        String str = getResources().getString(2131694790) + paramBundle;
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData.jdField_a_of_type_Int == 3)
-        {
-          this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-          localButton.setText(2131694795);
-          this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
-          this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
-          if (!this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData.jdField_a_of_type_Boolean) {
-            break label218;
-          }
-          this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(true);
-          label125:
-          if ((this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData.jdField_b_of_type_Boolean)) {
-            break label229;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(false);
-        }
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
-        this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
-        return paramBundle;
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-        localButton.setText(2131694754);
-        break;
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131694764);
-        localButton.setText(2131694743);
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp.a(true, false, 17);
-        break;
-        label218:
-        this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(false);
-        break label125;
-        label229:
-        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(true);
-      }
+      QLog.i("PhoneUnityBindInfoActivity", 1, "fetchSecurePhoneNum, in progress");
+      return;
     }
-    return "";
+    this.mFetchingDevlockInfo = true;
+    QLog.i("PhoneUnityBindInfoActivity", 1, "fetchSecurePhoneNum, start");
+    WeakReference localWeakReference = new WeakReference(this);
+    EquipmentLockImpl.a().a(this.app, this.app.getCurrentAccountUin(), new PhoneUnityBindInfoActivity.4(this, localWeakReference));
   }
   
-  private void a(DevlockInfo paramDevlockInfo)
+  private void hideLoading()
   {
-    this.jdField_c_of_type_Boolean = false;
+    this.mProgressNotifier.b();
+  }
+  
+  private void initViews(boolean paramBoolean, Bundle paramBundle)
+  {
+    if ((paramBoolean) && (paramBundle != null))
+    {
+      this.mChangeBindBtn.setVisibility(0);
+      this.mContactSwitch.setEnabled(true);
+      this.mLoginSwitch.setEnabled(true);
+      this.mPhoneUnityInfoBundle = paramBundle;
+      initPhoneUnityInfo(paramBundle);
+      int i;
+      if (paramBundle.getInt("need_unify", 0) == 1) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if ((this.mPhoneUnityData.jdField_a_of_type_Int == 3) && (i != 0))
+      {
+        ReportController.b(this.app, "dc00898", "", "", "0X800B313", "0X800B313", 0, 0, "", "", "", "");
+        if (!TextUtils.isEmpty(this.mPhoneUnityData.d)) {
+          PhoneUnityManager.a(this, this.app, this.mPhoneUnityData.d, 1010);
+        }
+        sendUnityBroadcast();
+        finish();
+        return;
+      }
+      if ((paramBundle.getInt("check_result") == 1) && (TextUtils.isEmpty(paramBundle.getString("phone_unverified_number"))))
+      {
+        paramBundle = paramBundle.getString("mibao_set_url");
+        if (!TextUtils.isEmpty(paramBundle)) {
+          PhoneUnityManager.a(this, this.app, paramBundle, 1009);
+        } else {
+          QLog.e("PhoneUnityBindInfoActivity", 4, "mb set url is null.");
+        }
+        sendUnityBroadcast();
+        finish();
+        return;
+      }
+      updatePhoneBindUI(paramBundle);
+      if (i != 0)
+      {
+        showUnityDialog(paramBundle);
+        ReportController.b(this.app, "dc00898", "", "", "0X800B322", "0X800B322", 0, 0, "", "", "", "");
+        return;
+      }
+      ReportController.b(this.app, "dc00898", "", "", "0X800B314", "0X800B314", 0, 0, "", "", "", "");
+      if (!((Boolean)SharedPreUtils.a(BaseApplicationImpl.getContext(), this.app.getAccount(), "phone_unity_banner_tips_need_show", Boolean.valueOf(false))).booleanValue()) {
+        return;
+      }
+      QQToast.a(this, 2, getResources().getString(2131694779), 0).a();
+      sendUnityBroadcast();
+      return;
+    }
+    this.mChangeBindBtn.setVisibility(4);
+    this.mContactSwitch.setEnabled(false);
+    this.mLoginSwitch.setEnabled(false);
+  }
+  
+  private boolean onClickChangeSecurePhone(String paramString)
+  {
+    return onClickWebView(paramString, 1011);
+  }
+  
+  private boolean onClickWebView(String paramString, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      QLog.e("PhoneUnityBindInfoActivity", 2, "url is null.");
+      return false;
+    }
+    PhoneUnityManager.a(this, this.app, paramString, paramInt);
+    return true;
+  }
+  
+  private void onGetDevlockInfo(DevlockInfo paramDevlockInfo)
+  {
+    this.mFetchingDevlockInfo = false;
     if (paramDevlockInfo == null)
     {
       QLog.i("PhoneUnityBindInfoActivity", 1, "onGetDevlockInfo, fail");
       return;
     }
     QLog.i("PhoneUnityBindInfoActivity", 1, "fetchSecurePhoneNum, success");
-    this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = paramDevlockInfo;
+    this.mDevlockInfo = paramDevlockInfo;
     DevlockPhoneStatus.a().a(paramDevlockInfo.TransferInfo);
   }
   
-  private void a(boolean paramBoolean, Bundle paramBundle)
+  private void phoneUnitySuc()
   {
-    if ((!paramBoolean) || (paramBundle == null))
+    if ((this.mIsUnBindedUnity) && (this.mUnBindedNum == 0))
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setEnabled(false);
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setEnabled(false);
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setEnabled(true);
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setEnabled(true);
-      this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-      a(paramBundle);
-      if (paramBundle.getInt("need_unify", 0) == 1) {}
-      for (int i = 1; (this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData.jdField_a_of_type_Int == 3) && (i != 0); i = 0)
+      this.mUnBindedNum = -1;
+      this.mIsUnBindedUnity = false;
+      dismissProgressDialog();
+      if ((!this.mLoginSwitch.a()) && (!this.mContactSwitch.a()))
       {
-        ReportController.b(this.app, "dc00898", "", "", "0X800B313", "0X800B313", 0, 0, "", "", "", "");
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData.d)) {
-          PhoneUnityManager.a(this, this.app, this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData.d, 1010);
-        }
-        o();
-        finish();
+        sendUnityBroadcast();
+        QQToast.a(this, 2, getResources().getString(2131694779), 0).b(getTitleBarHeight());
+        refreshServerData(1, null);
+        ReportController.b(this.app, "dc00898", "", "", "0X800B324", "0X800B324", 0, 0, "", "", "", "");
         return;
       }
-      if (paramBundle.getInt("check_result") == 1)
-      {
-        paramBundle = paramBundle.getString("mibao_set_url");
-        if (!TextUtils.isEmpty(paramBundle)) {
-          PhoneUnityManager.a(this, this.app, paramBundle, 1009);
-        }
-        for (;;)
-        {
-          o();
-          finish();
-          return;
-          QLog.e("PhoneUnityBindInfoActivity", 4, "mb set url is null.");
-        }
-      }
-      a(paramBundle);
-      if (i != 0)
-      {
-        b(paramBundle);
-        ReportController.b(this.app, "dc00898", "", "", "0X800B322", "0X800B322", 0, 0, "", "", "", "");
-        return;
-      }
-      ReportController.b(this.app, "dc00898", "", "", "0X800B314", "0X800B314", 0, 0, "", "", "", "");
-    } while (!((Boolean)SharedPreUtils.a(BaseApplicationImpl.getContext(), this.app.getAccount(), "phone_unity_banner_tips_need_show", Boolean.valueOf(false))).booleanValue());
-    QQToast.a(this, 2, getResources().getString(2131694793), 0).a();
-    o();
+      QQToast.a(this, 1, getResources().getString(2131694767), 0).b(getTitleBarHeight());
+      finish();
+    }
   }
   
-  private void b(Bundle paramBundle)
-  {
-    String str = "";
-    Object localObject1 = "";
-    Object localObject3 = "";
-    Object localObject2 = paramBundle.getString("phone");
-    Parcelable[] arrayOfParcelable = paramBundle.getParcelableArray("phone_info");
-    Object localObject4 = localObject2;
-    Object localObject6 = localObject3;
-    Object localObject5 = localObject1;
-    Object localObject7 = str;
-    if (arrayOfParcelable != null)
-    {
-      int i = 0;
-      paramBundle = str;
-      localObject4 = localObject2;
-      localObject6 = localObject3;
-      localObject5 = localObject1;
-      localObject7 = paramBundle;
-      if (i < arrayOfParcelable.length)
-      {
-        localObject4 = (Bundle)arrayOfParcelable[i];
-        if (localObject4 == null)
-        {
-          localObject4 = localObject2;
-          localObject5 = localObject3;
-          localObject3 = paramBundle;
-          localObject2 = localObject1;
-          localObject1 = localObject5;
-          paramBundle = (Bundle)localObject4;
-        }
-        for (;;)
-        {
-          i += 1;
-          localObject4 = localObject3;
-          localObject5 = localObject2;
-          localObject2 = paramBundle;
-          localObject3 = localObject1;
-          localObject1 = localObject5;
-          paramBundle = (Bundle)localObject4;
-          break;
-          switch (((Bundle)localObject4).getInt("phone_type", 0))
-          {
-          default: 
-            localObject4 = localObject1;
-            localObject5 = paramBundle;
-            paramBundle = (Bundle)localObject2;
-            localObject1 = localObject3;
-            localObject2 = localObject4;
-            localObject3 = localObject5;
-            break;
-          case 2: 
-            localObject5 = ((Bundle)localObject4).getString("phone");
-            localObject4 = localObject1;
-            paramBundle = (Bundle)localObject2;
-            localObject1 = localObject3;
-            localObject2 = localObject4;
-            localObject3 = localObject5;
-            break;
-          case 1: 
-            localObject5 = ((Bundle)localObject4).getString("phone");
-            localObject2 = localObject5;
-            localObject3 = localObject1;
-            localObject4 = paramBundle;
-            paramBundle = (Bundle)localObject5;
-            localObject1 = localObject2;
-            localObject2 = localObject3;
-            localObject3 = localObject4;
-            break;
-          case 3: 
-            localObject5 = ((Bundle)localObject4).getString("phone");
-            localObject4 = paramBundle;
-            paramBundle = (Bundle)localObject2;
-            localObject1 = localObject3;
-            localObject2 = localObject5;
-            localObject3 = localObject4;
-          }
-        }
-      }
-    }
-    paramBundle = this.jdField_a_of_type_ComTencentWidgetActionSheet;
-    if (paramBundle != null) {
-      paramBundle.dismiss();
-    }
-    this.jdField_a_of_type_Boolean = true;
-    localObject2 = (ActionSheet)ActionSheetHelper.a(this, null);
-    ((ActionSheet)localObject2).setSupportBottomRadius(true);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)localObject2);
-    paramBundle = LayoutInflater.from(this).inflate(2131559673, null);
-    if (paramBundle != null)
-    {
-      paramBundle.setOnClickListener(new PhoneUnityBindInfoActivity.5(this));
-      localObject1 = (LinearLayout)paramBundle.findViewById(2131372929);
-      if (localObject1 != null)
-      {
-        localObject3 = (TextView)((LinearLayout)localObject1).findViewById(2131372931);
-        if ((localObject3 != null) && (!TextUtils.isEmpty((CharSequence)localObject7)))
-        {
-          ((LinearLayout)localObject1).setVisibility(0);
-          ((TextView)localObject3).setText((CharSequence)localObject7);
-        }
-      }
-      localObject1 = (LinearLayout)paramBundle.findViewById(2131372919);
-      if (localObject1 != null)
-      {
-        localObject3 = (TextView)((LinearLayout)localObject1).findViewById(2131372921);
-        if ((localObject3 != null) && (!TextUtils.isEmpty(localObject6)))
-        {
-          ((LinearLayout)localObject1).setVisibility(0);
-          ((TextView)localObject3).setText(localObject6);
-        }
-      }
-      localObject1 = (LinearLayout)paramBundle.findViewById(2131372952);
-      if (localObject1 != null)
-      {
-        localObject3 = (TextView)paramBundle.findViewById(2131372960);
-        if ((localObject3 != null) && (!TextUtils.isEmpty((CharSequence)localObject5)))
-        {
-          ((LinearLayout)localObject1).setVisibility(0);
-          ((TextView)localObject3).setText((CharSequence)localObject5);
-        }
-      }
-      paramBundle.setBackgroundResource(2130851147);
-      ((ActionSheet)localObject2).addViewCustomeTitle(paramBundle);
-    }
-    ((ActionSheet)localObject2).addButton(a(String.format(super.getString(2131694746), new Object[] { localObject4 })), 9, "#03081A");
-    ((ActionSheet)localObject2).addButton(a(getString(2131694745)), 9, "#03081A");
-    ((ActionSheet)localObject2).addButton(a(getString(2131690800)), 9, "#03081A");
-    ((ActionSheet)localObject2).setOnCancelListener(new PhoneUnityBindInfoActivity.6(this));
-    ((ActionSheet)localObject2).setOnDismissListener(new PhoneUnityBindInfoActivity.7(this));
-    ((ActionSheet)localObject2).setOnButtonClickListener(new PhoneUnityBindInfoActivity.8(this, (ActionSheet)localObject2));
-    localObject3 = ((ActionSheet)localObject2).getActionContentView();
-    localObject1 = (RelativeLayout.LayoutParams)((RelativeLayout)localObject3).getLayoutParams();
-    paramBundle = (Bundle)localObject1;
-    if (localObject1 == null) {
-      paramBundle = new RelativeLayout.LayoutParams(-2, -2);
-    }
-    paramBundle.addRule(12, 0);
-    paramBundle.addRule(13, -1);
-    paramBundle.setMargins(80, 0, 80, 0);
-    ((RelativeLayout)localObject3).setLayoutParams(paramBundle);
-    ((ActionSheet)localObject2).setCanceledOnTouchOutside(false);
-    ((ActionSheet)localObject2).show();
-  }
-  
-  private void b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.e("PhoneUnityBindInfoActivity", 2, "mibaoChangeUrl is null.");
-      return;
-    }
-    PhoneUnityManager.a(this, this.app, paramString, 1011);
-  }
-  
-  private void l()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(0, getString(2131694784), 0, new PhoneUnityBindInfoActivity.3(this));
-  }
-  
-  private void m()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.b();
-  }
-  
-  private void n()
-  {
-    if (this.jdField_c_of_type_Boolean)
-    {
-      QLog.i("PhoneUnityBindInfoActivity", 1, "fetchSecurePhoneNum, in progress");
-      return;
-    }
-    this.jdField_c_of_type_Boolean = true;
-    QLog.i("PhoneUnityBindInfoActivity", 1, "fetchSecurePhoneNum, start");
-    WeakReference localWeakReference = new WeakReference(this);
-    EquipmentLockImpl.a().a(this.app, this.app.getCurrentAccountUin(), new PhoneUnityBindInfoActivity.4(this, localWeakReference));
-  }
-  
-  private void o()
+  private void sendUnityBroadcast()
   {
     Intent localIntent = new Intent();
     localIntent.setAction("com.tencent.mobileqq.InvitationWebViewPlugin.accountIdentityNotify");
@@ -409,252 +269,346 @@ public class PhoneUnityBindInfoActivity
     sendBroadcast(localIntent);
   }
   
-  private void p()
+  private void showBindContactPhoneDialog()
   {
-    if ((this.jdField_d_of_type_Boolean) && (this.jdField_a_of_type_Int == 0))
+    QLog.i("PhoneUnityBindInfoActivity", 1, "showBindContactPhoneDialog");
+    if (this.mPhoneUnityInfoBundle == null) {
+      return;
+    }
+    if (this.mContactSecurityDialog == null)
     {
-      this.jdField_a_of_type_Int = -1;
-      this.jdField_d_of_type_Boolean = false;
-      b();
-      if ((this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.a()) || (this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a()))
+      QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230);
+      localQQCustomDialog.setCancelable(true);
+      localQQCustomDialog.adjustMessageTopBottomMargin(8.0F, 40.0F);
+      localQQCustomDialog.setTitle(2131694731);
+      String str1 = this.mPhoneUnityInfoBundle.getString("phone");
+      String str2 = getString(2131694729);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("<font color=\"#FF8343\">");
+      localStringBuilder.append(str1);
+      localStringBuilder.append("</font>");
+      localQQCustomDialog.setMessage(Html.fromHtml(String.format(str2, new Object[] { localStringBuilder.toString() })));
+      localQQCustomDialog.setPositiveButton(2131694730, new PhoneUnityBindInfoActivity.16(this));
+      localQQCustomDialog.setNegativeButton(2131694728, new PhoneUnityBindInfoActivity.17(this));
+      this.mContactSecurityDialog = localQQCustomDialog;
+    }
+    if ((!this.mContactSecurityDialog.isShowing()) && (!isFinishing()))
+    {
+      this.mContactSecurityDialog.show();
+      ReportController.b(this.app, "dc00898", "", "", "0X800B31C", "0X800B31C", 0, 0, "", "", "", "");
+    }
+  }
+  
+  private void showLoading()
+  {
+    this.mProgressNotifier.a(0, getString(2131694770), 0, new PhoneUnityBindInfoActivity.3(this));
+  }
+  
+  private void showNoPwdUnbindLoginDialog()
+  {
+    QLog.i("PhoneUnityBindInfoActivity", 1, "showUnityUnderReviewDialog");
+    if (this.mNoPwdUnbindLoginDialog == null)
+    {
+      QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230);
+      localQQCustomDialog.setCancelable(true);
+      localQQCustomDialog.setTitle(2131694771);
+      localQQCustomDialog.adjustMessageTopBottomMargin(8.0F, 40.0F);
+      localQQCustomDialog.setMessage(2131694775);
+      localQQCustomDialog.setPositiveButton(2131694831, new PhoneUnityBindInfoActivity.14(this));
+      this.mNoPwdUnbindLoginDialog = localQQCustomDialog;
+    }
+    if ((!this.mNoPwdUnbindLoginDialog.isShowing()) && (!isFinishing())) {
+      this.mNoPwdUnbindLoginDialog.show();
+    }
+  }
+  
+  private void showUnityDialog(Bundle paramBundle)
+  {
+    String str = paramBundle.getString("phone");
+    Object localObject3 = paramBundle.getParcelableArray("phone_info");
+    Object localObject2 = "";
+    if (localObject3 != null)
+    {
+      localObject1 = "";
+      paramBundle = (Bundle)localObject1;
+      int i = 0;
+      while (i < localObject3.length)
       {
-        QQToast.a(this, 1, getResources().getString(2131694781), 0).b(getTitleBarHeight());
-        finish();
+        localObject4 = (Bundle)localObject3[i];
+        if (localObject4 != null)
+        {
+          int j = ((Bundle)localObject4).getInt("phone_type", 0);
+          if (j != 1)
+          {
+            if (j != 2)
+            {
+              if (j == 3) {
+                paramBundle = ((Bundle)localObject4).getString("phone");
+              }
+            }
+            else {
+              localObject2 = ((Bundle)localObject4).getString("phone");
+            }
+          }
+          else
+          {
+            str = ((Bundle)localObject4).getString("phone");
+            localObject1 = str;
+          }
+        }
+        i += 1;
       }
     }
     else
     {
-      return;
+      localObject1 = "";
+      paramBundle = (Bundle)localObject1;
     }
-    o();
-    QQToast.a(this, 2, getResources().getString(2131694793), 0).b(getTitleBarHeight());
-    a(1, null);
-    ReportController.b(this.app, "dc00898", "", "", "0X800B324", "0X800B324", 0, 0, "", "", "", "");
+    localObject3 = this.mActionSheet;
+    if (localObject3 != null) {
+      ((ActionSheet)localObject3).dismiss();
+    }
+    this.mCloseThisActivity = true;
+    localObject3 = (ActionSheet)ActionSheetHelper.a(this, null);
+    ((ActionSheet)localObject3).setSupportBottomRadius(true);
+    this.mActionSheet = ((ActionSheet)localObject3);
+    Object localObject4 = LayoutInflater.from(this).inflate(2131559551, null);
+    if (localObject4 != null)
+    {
+      ((View)localObject4).setOnClickListener(new PhoneUnityBindInfoActivity.6(this));
+      Object localObject5 = (LinearLayout)((View)localObject4).findViewById(2131372516);
+      if (localObject5 != null)
+      {
+        TextView localTextView = (TextView)((LinearLayout)localObject5).findViewById(2131372518);
+        if ((localTextView != null) && (!TextUtils.isEmpty((CharSequence)localObject2)))
+        {
+          ((LinearLayout)localObject5).setVisibility(0);
+          localTextView.setText((CharSequence)localObject2);
+        }
+      }
+      localObject2 = (LinearLayout)((View)localObject4).findViewById(2131372506);
+      if (localObject2 != null)
+      {
+        localObject5 = (TextView)((LinearLayout)localObject2).findViewById(2131372508);
+        if ((localObject5 != null) && (!TextUtils.isEmpty((CharSequence)localObject1)))
+        {
+          ((LinearLayout)localObject2).setVisibility(0);
+          ((TextView)localObject5).setText((CharSequence)localObject1);
+        }
+      }
+      localObject1 = (LinearLayout)((View)localObject4).findViewById(2131372539);
+      if (localObject1 != null)
+      {
+        localObject2 = (TextView)((View)localObject4).findViewById(2131372547);
+        if ((localObject2 != null) && (!TextUtils.isEmpty(paramBundle)))
+        {
+          ((LinearLayout)localObject1).setVisibility(0);
+          ((TextView)localObject2).setText(paramBundle);
+        }
+      }
+      ((View)localObject4).setBackgroundResource(2130851061);
+      ((ActionSheet)localObject3).addViewCustomeTitle((View)localObject4);
+    }
+    ((ActionSheet)localObject3).addButton(createBoldText(String.format(super.getString(2131694725), new Object[] { str })), 9, "#03081A");
+    ((ActionSheet)localObject3).addButton(createBoldText(getString(2131694724)), 9, "#03081A");
+    ((ActionSheet)localObject3).addButton(createBoldText(getString(2131690728)), 9, "#03081A");
+    ((ActionSheet)localObject3).setOnCancelListener(new PhoneUnityBindInfoActivity.7(this));
+    ((ActionSheet)localObject3).setOnDismissListener(new PhoneUnityBindInfoActivity.8(this));
+    ((ActionSheet)localObject3).setOnButtonClickListener(new PhoneUnityBindInfoActivity.9(this, (ActionSheet)localObject3));
+    localObject2 = ((ActionSheet)localObject3).getActionContentView();
+    Object localObject1 = (RelativeLayout.LayoutParams)((RelativeLayout)localObject2).getLayoutParams();
+    paramBundle = (Bundle)localObject1;
+    if (localObject1 == null) {
+      paramBundle = new RelativeLayout.LayoutParams(-2, -2);
+    }
+    paramBundle.addRule(12, 0);
+    paramBundle.addRule(13, -1);
+    paramBundle.setMargins(80, 0, 80, 0);
+    ((RelativeLayout)localObject2).setLayoutParams(paramBundle);
+    ((ActionSheet)localObject3).setCanceledOnTouchOutside(false);
+    ((ActionSheet)localObject3).show();
   }
   
-  private void q()
+  private void showUnityUnderReviewDialog()
   {
     QLog.i("PhoneUnityBindInfoActivity", 1, "showUnityUnderReviewDialog");
-    if (this.jdField_e_of_type_ComTencentMobileqqUtilsQQCustomDialog == null)
+    if (this.mBindPhoneVerifyDialog == null)
     {
       QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230);
       localQQCustomDialog.setCancelable(true);
-      localQQCustomDialog.setTitle(2131694785);
       localQQCustomDialog.adjustMessageTopBottomMargin(8.0F, 40.0F);
-      localQQCustomDialog.setMessage(2131694789);
-      localQQCustomDialog.setPositiveButton(2131694844, new PhoneUnityBindInfoActivity.13(this));
-      this.jdField_e_of_type_ComTencentMobileqqUtilsQQCustomDialog = localQQCustomDialog;
+      localQQCustomDialog.setMessage(2131694782);
+      localQQCustomDialog.setPositiveButton(2131694831, new PhoneUnityBindInfoActivity.15(this));
+      this.mBindPhoneVerifyDialog = localQQCustomDialog;
     }
-    if ((!this.jdField_e_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) && (!isFinishing())) {
-      this.jdField_e_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-    }
-  }
-  
-  private void r()
-  {
-    QLog.i("PhoneUnityBindInfoActivity", 1, "showUnityUnderReviewDialog");
-    if (this.jdField_d_of_type_ComTencentMobileqqUtilsQQCustomDialog == null)
+    if ((!this.mBindPhoneVerifyDialog.isShowing()) && (!isFinishing()))
     {
-      QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230);
-      localQQCustomDialog.setCancelable(true);
-      localQQCustomDialog.adjustMessageTopBottomMargin(8.0F, 40.0F);
-      localQQCustomDialog.setMessage(2131694796);
-      localQQCustomDialog.setPositiveButton(2131694844, new PhoneUnityBindInfoActivity.14(this));
-      this.jdField_d_of_type_ComTencentMobileqqUtilsQQCustomDialog = localQQCustomDialog;
-    }
-    if ((!this.jdField_d_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) && (!isFinishing()))
-    {
-      this.jdField_d_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+      this.mBindPhoneVerifyDialog.show();
       ReportController.b(this.app, "dc00898", "", "", "0X800B318", "0X800B318", 0, 0, "", "", "", "");
     }
   }
   
-  private void s()
+  private String updatePhoneBindUI(Bundle paramBundle)
   {
-    QLog.i("PhoneUnityBindInfoActivity", 1, "showBindContactPhoneDialog");
-    if (this.jdField_a_of_type_AndroidOsBundle == null) {}
-    do
+    if (this.mBindPhoneTv != null)
     {
-      return;
-      if (this.jdField_c_of_type_ComTencentMobileqqUtilsQQCustomDialog == null)
-      {
-        QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230);
-        localQQCustomDialog.setCancelable(true);
-        localQQCustomDialog.adjustMessageTopBottomMargin(8.0F, 40.0F);
-        localQQCustomDialog.setTitle(2131694752);
-        String str = this.jdField_a_of_type_AndroidOsBundle.getString("phone");
-        localQQCustomDialog.setMessage(Html.fromHtml(String.format(getString(2131694750), new Object[] { "<font color=\"#FF8343\">" + str + "</font>" })));
-        localQQCustomDialog.setPositiveButton(2131694751, new PhoneUnityBindInfoActivity.15(this));
-        localQQCustomDialog.setNegativeButton(2131694749, new PhoneUnityBindInfoActivity.16(this));
-        this.jdField_c_of_type_ComTencentMobileqqUtilsQQCustomDialog = localQQCustomDialog;
+      Button localButton = (Button)findViewById(2131364434);
+      String str = paramBundle.getString("phone");
+      View localView = findViewById(2131363600);
+      boolean bool = paramBundle.getBoolean("phone_verified", true);
+      if ((this.mCurrentState == 1) && (bool)) {
+        ReportController.b(this.app, "dc00898", "", "", "0X800BAEB", "0X800BAEB", 0, 0, "", "", "", "");
       }
-    } while ((this.jdField_c_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) || (isFinishing()));
-    this.jdField_c_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-    ReportController.b(this.app, "dc00898", "", "", "0X800B31C", "0X800B31C", 0, 0, "", "", "", "");
-  }
-  
-  private void t()
-  {
-    if ((this.jdField_d_of_type_Boolean) && (this.jdField_a_of_type_Int > -1))
-    {
-      this.jdField_a_of_type_Int -= 1;
-      QLog.d("PhoneUnityBindInfoActivity", 1, "phone_unity_info, mUnBindedNum: " + this.jdField_a_of_type_Int);
-    }
-  }
-  
-  protected void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData.jdField_c_of_type_Boolean = true;
-    b();
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    n();
-    if (paramBundle == null)
-    {
-      a(false, null);
-      paramBundle = (SecSvcHandler)this.app.getBusinessHandler(BusinessHandlerFactory.SEC_SVC_HANDLER);
-      if (paramBundle != null)
+      if (!bool)
       {
-        QLog.i("PhoneUnityBindInfoActivity", 1, "refreshServerData, getPhoneUnityInfo");
-        paramBundle.a(paramInt);
-        l();
+        updateUnverifiedPhoneUI(localButton, localView, paramBundle);
+        ReportController.b(this.app, "dc00898", "", "", "0X800BAE3", "0X800BAE3", 0, 0, "", "", "", "");
+        this.mCurrentState = 1;
+        return str;
       }
-      return;
+      updateVerifiedPhoneUI(localButton, localView, str);
+      this.mCurrentState = 2;
+      return str;
     }
-    QLog.i("PhoneUnityBindInfoActivity", 1, "init with prefetched bind phone data");
-    a(true, paramBundle);
+    return "";
   }
   
-  protected void a(Bundle paramBundle)
+  private void updateUnverifiedPhoneUI(Button paramButton, View paramView, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData.a();
-    if (paramBundle != null)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getResources().getString(2131694746));
+    localStringBuilder.append(paramBundle.getString("phone_unverified_number"));
+    paramBundle = localStringBuilder.toString();
+    this.mBindPhoneTv.setText(paramBundle);
+    paramButton.setText(2131694736);
+    this.mBindPhoneVerifyTv.setText(2131694762);
+    this.mBindPhoneVerifyTv.setVisibility(0);
+    this.mUnverifiedBar.setBarType(4);
+    this.mUnverifiedBar.setTipsIcon(getActivity().getResources().getDrawable(2130838218));
+    this.mUnverifiedBar.setTipsText(getString(2131694745));
+    this.mUnverifiedBar.setOnClickListener(this);
+    this.mUnverifiedBar.setVisibility(0);
+    paramView.setOnClickListener(this);
+    paramView.setVisibility(0);
+  }
+  
+  private void updateVerifiedPhoneUI(Button paramButton, View paramView, String paramString)
+  {
+    this.mUnverifiedBar.setVisibility(8);
+    this.mBindPhoneVerifyTv.setVisibility(8);
+    paramView.setVisibility(8);
+    if (!TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData.jdField_c_of_type_JavaLangString = paramBundle.getString("mibao_change_url");
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData.jdField_b_of_type_JavaLangString = paramBundle.getString("mibao_set_url");
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData.d = paramBundle.getString("mibao_verify_url");
-      paramBundle = paramBundle.getParcelableArray("phone_info");
-      if (paramBundle != null)
+      paramView = new StringBuilder();
+      paramView.append(getResources().getString(2131694776));
+      paramView.append(paramString);
+      paramView = paramView.toString();
+      this.mBindPhoneTv.setText(paramView);
+      this.mBindPhoneVerifyTv.setText(2131694763);
+      if (this.mPhoneUnityData.jdField_a_of_type_Int == 3)
       {
-        int i = 0;
-        if (i < paramBundle.length)
-        {
-          Bundle localBundle = (Bundle)paramBundle[i];
-          if (localBundle == null) {}
-          int j;
-          for (;;)
-          {
-            i += 1;
-            break;
-            j = localBundle.getInt("phone_type");
-            switch (j)
-            {
-            default: 
-              break;
-            case 1: 
-              this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData.jdField_a_of_type_JavaLangString = localBundle.getString("phone");
-              this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData.jdField_a_of_type_Int = localBundle.getInt("status");
-              this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData.jdField_a_of_type_AndroidUtilSparseArray.put(j, localBundle.getByteArray("vaskey"));
-            }
-          }
-          Object localObject = localBundle.getString("phone");
-          PhoneUnityManager.PhoneUnityData localPhoneUnityData = this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData;
-          if ((localBundle.getInt("status") == 1) && (!TextUtils.isEmpty((CharSequence)localObject))) {}
-          for (boolean bool = true;; bool = false)
-          {
-            localPhoneUnityData.jdField_a_of_type_Boolean = bool;
-            this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData.jdField_a_of_type_AndroidUtilSparseArray.put(j, localBundle.getByteArray("vaskey"));
-            break;
-          }
-          localObject = this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData;
-          if (!TextUtils.isEmpty(localBundle.getString("phone")))
-          {
-            bool = true;
-            label277:
-            ((PhoneUnityManager.PhoneUnityData)localObject).jdField_c_of_type_Boolean = bool;
-            localObject = this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData;
-            if ((!this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData.jdField_c_of_type_Boolean) || (localBundle.getInt("status") != 1)) {
-              break label350;
-            }
-          }
-          label350:
-          for (bool = true;; bool = false)
-          {
-            ((PhoneUnityManager.PhoneUnityData)localObject).jdField_b_of_type_Boolean = bool;
-            this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData.jdField_a_of_type_AndroidUtilSparseArray.put(j, localBundle.getByteArray("vaskey"));
-            break;
-            bool = false;
-            break label277;
-          }
-        }
+        this.mBindPhoneVerifyTv.setVisibility(0);
+        paramButton.setText(2131694781);
+      }
+      else
+      {
+        this.mBindPhoneVerifyTv.setVisibility(8);
+        paramButton.setText(2131694736);
       }
     }
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(paramBoolean);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
-  }
-  
-  protected byte[] a(int paramInt)
-  {
-    return (byte[])this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-  }
-  
-  public void b()
-  {
-    if (!NetworkUtil.d(this)) {
-      a(2131694510);
-    }
-    SecSvcHandler localSecSvcHandler;
-    do
+    else
     {
-      return;
-      localSecSvcHandler = (SecSvcHandler)this.app.getBusinessHandler(BusinessHandlerFactory.SEC_SVC_HANDLER);
-    } while (localSecSvcHandler == null);
-    localSecSvcHandler.d();
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(paramBoolean);
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
-  }
-  
-  public void c()
-  {
-    if (!NetworkUtil.d(this)) {
-      a(2131694510);
+      this.mBindPhoneTv.setText(2131694748);
+      paramButton.setText(2131694722);
+      this.mPhoneContactService.checkUpdateBindStateAndListIgnoreBindState(true, false, 17);
     }
-    SecSvcHandler localSecSvcHandler;
-    do
-    {
-      return;
-      localSecSvcHandler = (SecSvcHandler)this.app.getBusinessHandler(BusinessHandlerFactory.SEC_SVC_HANDLER);
-    } while (localSecSvcHandler == null);
-    localSecSvcHandler.e();
+    this.mContactSwitch.setOnCheckedChangeListener(null);
+    this.mLoginSwitch.setOnCheckedChangeListener(null);
+    if (this.mPhoneUnityData.jdField_a_of_type_Boolean) {
+      this.mLoginSwitch.setChecked(true);
+    } else {
+      this.mLoginSwitch.setChecked(false);
+    }
+    if ((this.mPhoneUnityData.jdField_c_of_type_Boolean) && (this.mPhoneUnityData.jdField_b_of_type_Boolean)) {
+      this.mContactSwitch.setChecked(true);
+    } else {
+      this.mContactSwitch.setChecked(false);
+    }
+    this.mContactSwitch.setOnCheckedChangeListener(this);
+    this.mLoginSwitch.setOnCheckedChangeListener(this);
   }
   
-  public void d()
+  private boolean verifyPhone()
   {
-    if (!NetworkUtil.d(this)) {
-      a(2131694510);
+    if (!this.mPhoneUnityInfoBundle.getBoolean("phone_verified")) {
+      return onClickWebView(this.mPhoneUnityInfoBundle.getString("verify_phone_url"), 1012);
     }
-    SecSvcHandler localSecSvcHandler;
-    do
-    {
+    return false;
+  }
+  
+  public void bindContactsMobile()
+  {
+    if (this.mPhoneUnityInfoBundle == null) {
       return;
-      localSecSvcHandler = (SecSvcHandler)this.app.getBusinessHandler(BusinessHandlerFactory.SEC_SVC_HANDLER);
-    } while (localSecSvcHandler == null);
+    }
+    if (!NetworkUtil.isNetSupport(this))
+    {
+      showToast(2131694475);
+      return;
+    }
+    if (this.bindObserver == null)
+    {
+      this.bindObserver = new PhoneUnityBindInfoActivity.11(this);
+      this.app.registObserver(this.bindObserver);
+    }
+    String str = this.mPhoneUnityInfoBundle.getString("country_code");
+    byte[] arrayOfByte = getPhoneVasKey(3);
+    if (arrayOfByte != null)
+    {
+      this.mPhoneContactService.sendBindMobileEncrypt(str, arrayOfByte, 0, true, false);
+      return;
+    }
+    resetContactSwitch(false);
+    QQToast.a(this, 1, getResources().getString(2131694767), 0).b(getTitleBarHeight());
     if (QLog.isColorLevel()) {
-      QLog.e("PhoneUnityBindInfoActivity", 2, "unbindPhoneNumLoginOnPhoneUnity contact.");
+      QLog.e("PhoneUnityBindInfoActivity", 2, "sendBindMobileEncrypt contact vaskey is null.");
     }
-    localSecSvcHandler.c();
+  }
+  
+  public void bindPhoneNumLogin()
+  {
+    if (!NetworkUtil.isNetSupport(this))
+    {
+      showToast(2131694475);
+      return;
+    }
+    SecSvcHandler localSecSvcHandler = (SecSvcHandler)this.app.getBusinessHandler(BusinessHandlerFactory.SEC_SVC_HANDLER);
+    if ((localSecSvcHandler != null) && (this.mPhoneUnityInfoBundle != null))
+    {
+      QLog.i("PhoneUnityBindInfoActivity", 1, "phone_unity_info_login, bindPhoneNumLogin");
+      byte[] arrayOfByte = getPhoneVasKey(2);
+      if (arrayOfByte != null)
+      {
+        localSecSvcHandler.a(arrayOfByte);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("PhoneUnityBindInfoActivity", 2, "bindPhoneNumLogin contact vaskey is null.");
+      }
+    }
+  }
+  
+  public void closeMobileMatch()
+  {
+    if (!NetworkUtil.isNetSupport(this))
+    {
+      showToast(2131694475);
+      return;
+    }
+    SecSvcHandler localSecSvcHandler = (SecSvcHandler)this.app.getBusinessHandler(BusinessHandlerFactory.SEC_SVC_HANDLER);
+    if (localSecSvcHandler != null) {
+      localSecSvcHandler.e();
+    }
   }
   
   @Override
@@ -666,397 +620,351 @@ public class PhoneUnityBindInfoActivity
     return bool;
   }
   
-  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneUnityBindInfoActivity", 2, "doOnActivityResult requestCode = " + paramInt1 + " resultCode = " + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("doOnActivityResult requestCode = ");
+      paramIntent.append(paramInt1);
+      paramIntent.append(" resultCode = ");
+      paramIntent.append(paramInt2);
+      QLog.d("PhoneUnityBindInfoActivity", 2, paramIntent.toString());
     }
     switch (paramInt1)
     {
     case 1010: 
     default: 
       return;
-    case 1008: 
-      if ((paramInt2 != 0) && (paramInt2 == -1))
-      {
-        a();
-        return;
-      }
-      a(false);
-      QQToast.a(this, 1, getResources().getString(2131694781), 0).b(getTitleBarHeight());
+    case 1009: 
+    case 1011: 
+    case 1012: 
+      refreshServerData(1, null);
       return;
     }
-    a(1, null);
+    if ((paramInt2 != 0) && (paramInt2 == -1))
+    {
+      onBindSuc();
+      return;
+    }
+    resetContactSwitch(false);
+    QQToast.a(this, 1, getResources().getString(2131694767), 0).b(getTitleBarHeight());
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_AndroidOsBundle = getIntent().getBundleExtra("kBindPhoneData");
-    super.setContentView(2131561436);
-    super.setTitle(getString(2131699149));
+    this.mPhoneUnityInfoBundle = getIntent().getBundleExtra("kBindPhoneData");
+    super.setContentView(2131561276);
     paramBundle = new IntentFilter();
     paramBundle.addAction("com.tencent.mobileqq.InvitationWebViewPlugin.accountIdentityNotify");
-    registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager = ((PhoneUnityManager)this.app.getManager(QQManagerFactory.PHONE_UNITY_MANAGER));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131371207));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131372949));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364547));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)super.findViewById(2131363666));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)super.findViewById(2131363668));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this);
-    paramBundle = super.findViewById(2131372918);
+    registerReceiver(this.mBindMiBaoReceiver, paramBundle);
+    this.mPhoneUnityManager = ((PhoneUnityManager)this.app.getManager(QQManagerFactory.PHONE_UNITY_MANAGER));
+    this.mBindPhoneTv = ((TextView)super.findViewById(2131370832));
+    this.mBindPhoneVerifyTv = ((TextView)super.findViewById(2131372536));
+    this.mChangeBindBtn = ((Button)super.findViewById(2131364434));
+    this.mContactSwitch = ((FormSwitchItem)super.findViewById(2131363594));
+    this.mLoginSwitch = ((FormSwitchItem)super.findViewById(2131363596));
+    this.mUnverifiedBar = ((TipsBar)super.findViewById(2131363601));
+    this.mProgressNotifier = new QQProgressNotifier(this);
+    paramBundle = super.findViewById(2131372505);
     if (ThemeUtil.isNowThemeIsNight(this.app, false, null)) {
       paramBundle.setBackgroundColor(0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager.jdField_a_of_type_Boolean = true;
-      }
-      super.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver);
-      a(1, this.jdField_a_of_type_AndroidOsBundle);
-      if ("from_schema".equals(getIntent().getStringExtra("from"))) {
-        ReportController.b(this.app, "dc00898", "", "", "0X800B6BF", "0X800B6BF", 0, 0, "", "", "", "");
-      }
-      return true;
+    } else {
       paramBundle.setBackgroundColor(-1);
     }
+    this.mChangeBindBtn.setOnClickListener(this);
+    this.mBindPhoneVerifyTv.setOnClickListener(this);
+    paramBundle = this.mPhoneUnityManager;
+    if (paramBundle != null) {
+      paramBundle.jdField_a_of_type_Boolean = true;
+    }
+    super.addObserver(this.mSecObserver);
+    refreshServerData(1, this.mPhoneUnityInfoBundle);
+    if ("from_schema".equals(getIntent().getStringExtra("from"))) {
+      ReportController.b(this.app, "dc00898", "", "", "0X800B6BF", "0X800B6BF", 0, 0, "", "", "", "");
+    }
+    return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
-    super.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver);
-    unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    super.removeObserver(this.mSecObserver);
+    unregisterReceiver(this.mBindMiBaoReceiver);
+    Object localObject = this.mFinishRunnable;
+    if (localObject != null) {
+      this.mHandler.removeCallbacks((Runnable)localObject);
     }
-    m();
-    if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver != null)
+    hideLoading();
+    if (this.unbindObserver != null)
     {
-      this.app.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = null;
+      this.app.unRegistObserver(this.unbindObserver);
+      this.unbindObserver = null;
     }
-    if (this.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver != null)
+    if (this.bindObserver != null)
     {
-      this.app.unRegistObserver(this.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
-      this.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver = null;
+      this.app.unRegistObserver(this.bindObserver);
+      this.bindObserver = null;
     }
-    if (this.jdField_c_of_type_ComTencentMobileqqPhonecontactContactBindObserver != null)
+    if (this.disableMatchObserver != null)
     {
-      this.app.unRegistObserver(this.jdField_c_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
-      this.jdField_c_of_type_ComTencentMobileqqPhonecontactContactBindObserver = null;
+      this.app.unRegistObserver(this.disableMatchObserver);
+      this.disableMatchObserver = null;
     }
-    if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null)
+    localObject = this.mActionSheet;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
-      this.jdField_a_of_type_ComTencentWidgetActionSheet = null;
+      ((ActionSheet)localObject).superDismiss();
+      this.mActionSheet = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
+    localObject = this.mMobileAlreadyBindDialog;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
+      ((QQCustomDialog)localObject).dismiss();
+      this.mMobileAlreadyBindDialog = null;
     }
-    if (this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
+    localObject = this.mNotSetPasswordDialog;
+    if (localObject != null)
     {
-      this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
+      ((QQCustomDialog)localObject).dismiss();
+      this.mNotSetPasswordDialog = null;
     }
-    if (this.jdField_c_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
+    localObject = this.mContactSecurityDialog;
+    if (localObject != null)
     {
-      this.jdField_c_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      this.jdField_c_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
+      ((QQCustomDialog)localObject).dismiss();
+      this.mContactSecurityDialog = null;
     }
-    if (this.jdField_d_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
+    localObject = this.mBindPhoneVerifyDialog;
+    if (localObject != null)
     {
-      this.jdField_d_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      this.jdField_d_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
+      ((QQCustomDialog)localObject).dismiss();
+      this.mBindPhoneVerifyDialog = null;
     }
-    if (this.jdField_e_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
+    localObject = this.mNoPwdUnbindLoginDialog;
+    if (localObject != null)
     {
-      this.jdField_e_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      this.jdField_e_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
+      ((QQCustomDialog)localObject).dismiss();
+      this.mNoPwdUnbindLoginDialog = null;
     }
   }
   
-  public void e()
+  protected byte[] getPhoneVasKey(int paramInt)
   {
-    if (!NetworkUtil.d(this)) {
-      a(2131694510);
-    }
-    do
-    {
-      SecSvcHandler localSecSvcHandler;
-      do
-      {
-        return;
-        localSecSvcHandler = (SecSvcHandler)this.app.getBusinessHandler(BusinessHandlerFactory.SEC_SVC_HANDLER);
-      } while ((localSecSvcHandler == null) || (this.jdField_a_of_type_AndroidOsBundle == null));
-      QLog.i("PhoneUnityBindInfoActivity", 1, "phone_unity_info_login, unbindPhoneNumLogin");
-      byte[] arrayOfByte = a(2);
-      if (arrayOfByte != null)
-      {
-        localSecSvcHandler.b(arrayOfByte);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("PhoneUnityBindInfoActivity", 2, "unbindPhoneNumLogin contact vaskey is null.");
+    return (byte[])this.mPhoneUnityData.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
   }
   
-  public void f()
+  protected void gotoBindVerify()
   {
-    if (!NetworkUtil.d(this)) {
-      a(2131694510);
-    }
-    do
-    {
-      SecSvcHandler localSecSvcHandler;
-      do
-      {
-        return;
-        localSecSvcHandler = (SecSvcHandler)this.app.getBusinessHandler(BusinessHandlerFactory.SEC_SVC_HANDLER);
-      } while ((localSecSvcHandler == null) || (this.jdField_a_of_type_AndroidOsBundle == null));
-      QLog.i("PhoneUnityBindInfoActivity", 1, "phone_unity_info_login, bindPhoneNumLogin");
-      byte[] arrayOfByte = a(2);
-      if (arrayOfByte != null)
-      {
-        localSecSvcHandler.a(arrayOfByte);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("PhoneUnityBindInfoActivity", 2, "bindPhoneNumLogin contact vaskey is null.");
-  }
-  
-  public void g()
-  {
-    if (this.jdField_a_of_type_AndroidOsBundle == null) {
-      if (QLog.isColorLevel()) {
-        QLog.e("PhoneUnityBindInfoActivity", 2, "InfoBundle is null.");
-      }
-    }
-    do
-    {
+    if (this.mPhoneUnityInfoBundle == null) {
       return;
-      if (!NetworkUtil.d(this))
-      {
-        a(2131694510);
-        return;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new PhoneUnityBindInfoActivity.9(this);
-        this.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
-      }
-      byte[] arrayOfByte = a(3);
-      if (arrayOfByte != null)
-      {
-        QLog.i("PhoneUnityBindInfoActivity", 1, "phone_unity_info, unbindMobileEncrypt");
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp.a(arrayOfByte, true, false);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("PhoneUnityBindInfoActivity", 2, "unbindMobileEncrypt contact vaskey is null.");
-  }
-  
-  public void h()
-  {
-    if (this.jdField_a_of_type_AndroidOsBundle == null) {}
-    do
+    }
+    byte[] arrayOfByte = getPhoneVasKey(3);
+    if (arrayOfByte == null)
     {
+      QLog.e("PhoneUnityBindInfoActivity", 2, "gotoBindVerify contact phoneVasKey is null.");
       return;
-      if (!NetworkUtil.d(this))
-      {
-        a(2131694510);
-        return;
-      }
-      if (this.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
-      {
-        this.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new PhoneUnityBindInfoActivity.10(this);
-        this.app.registObserver(this.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
-      }
-      String str = this.jdField_a_of_type_AndroidOsBundle.getString("country_code");
-      byte[] arrayOfByte = a(3);
-      if (arrayOfByte != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp.a(str, arrayOfByte, 0, true, false);
-        return;
-      }
-      a(false);
-      QQToast.a(this, 1, getResources().getString(2131694781), 0).b(getTitleBarHeight());
-    } while (!QLog.isColorLevel());
-    QLog.e("PhoneUnityBindInfoActivity", 2, "sendBindMobileEncrypt contact vaskey is null.");
+    }
+    resetContactSwitch(false);
+    String str1 = this.mPhoneUnityInfoBundle.getString("country_code");
+    String str2 = this.mPhoneUnityInfoBundle.getString("phone");
+    Intent localIntent = new Intent(this, BindVerifyActivity.class);
+    localIntent.putExtra("kSrouce", 23);
+    localIntent.putExtra("kBindType", 0);
+    localIntent.putExtra("keyReqBindMode", 0);
+    localIntent.putExtra("cmd_param_is_encrypt", true);
+    localIntent.putExtra("cmd_param_encrypt_mobile", arrayOfByte);
+    localIntent.putExtra("k_mask_number_forshow", str2);
+    localIntent.putExtra("k_country_code", str1);
+    localIntent.putExtra("k_is_block", getIntent().getBooleanExtra("k_is_block", false));
+    localIntent.putExtra("key_is_from_qqhotspot", getIntent().getBooleanExtra("key_is_from_qqhotspot", false));
+    localIntent.putExtra("cmd_param_is_from_uni", true);
+    localIntent.putExtra("key_is_from_qav_multi_call", getIntent().getBooleanExtra("key_is_from_qav_multi_call", false));
+    localIntent.putExtra("cmd_param_is_from_change_bind", false);
+    localIntent.addFlags(536870912);
+    localIntent.addFlags(67108864);
+    if (!isFinishing()) {
+      startActivityForResult(localIntent, 1008);
+    }
   }
   
-  protected void i()
+  protected void initPhoneUnityInfo(Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_AndroidOsBundle == null) {}
-    Intent localIntent;
-    do
+    this.mPhoneUnityData.a();
+    if (paramBundle != null)
     {
-      return;
-      byte[] arrayOfByte = a(3);
-      if (arrayOfByte == null)
+      this.mPhoneUnityData.jdField_c_of_type_JavaLangString = paramBundle.getString("mibao_change_url");
+      this.mPhoneUnityData.jdField_b_of_type_JavaLangString = paramBundle.getString("mibao_set_url");
+      this.mPhoneUnityData.d = paramBundle.getString("mibao_verify_url");
+      paramBundle = paramBundle.getParcelableArray("phone_info");
+      if (paramBundle != null)
       {
-        QLog.e("PhoneUnityBindInfoActivity", 2, "gotoBindVerify contact phoneVasKey is null.");
-        return;
+        int i = 0;
+        while (i < paramBundle.length)
+        {
+          Bundle localBundle = (Bundle)paramBundle[i];
+          if (localBundle != null)
+          {
+            int j = localBundle.getInt("phone_type");
+            boolean bool2 = true;
+            boolean bool1 = true;
+            if (j != 1)
+            {
+              Object localObject;
+              if (j != 2)
+              {
+                if (j == 3)
+                {
+                  this.mPhoneUnityData.jdField_c_of_type_Boolean = (TextUtils.isEmpty(localBundle.getString("phone")) ^ true);
+                  localObject = this.mPhoneUnityData;
+                  if ((!((PhoneUnityManager.PhoneUnityData)localObject).jdField_c_of_type_Boolean) || (localBundle.getInt("status") != 1)) {
+                    bool1 = false;
+                  }
+                  ((PhoneUnityManager.PhoneUnityData)localObject).jdField_b_of_type_Boolean = bool1;
+                  this.mPhoneUnityData.jdField_a_of_type_AndroidUtilSparseArray.put(j, localBundle.getByteArray("vaskey"));
+                }
+              }
+              else
+              {
+                localObject = localBundle.getString("phone");
+                PhoneUnityManager.PhoneUnityData localPhoneUnityData = this.mPhoneUnityData;
+                if ((localBundle.getInt("status") == 1) && (!TextUtils.isEmpty((CharSequence)localObject))) {
+                  bool1 = bool2;
+                } else {
+                  bool1 = false;
+                }
+                localPhoneUnityData.jdField_a_of_type_Boolean = bool1;
+                this.mPhoneUnityData.jdField_a_of_type_AndroidUtilSparseArray.put(j, localBundle.getByteArray("vaskey"));
+              }
+            }
+            else
+            {
+              this.mPhoneUnityData.jdField_a_of_type_JavaLangString = localBundle.getString("phone");
+              this.mPhoneUnityData.jdField_a_of_type_Int = localBundle.getInt("status");
+              this.mPhoneUnityData.jdField_a_of_type_AndroidUtilSparseArray.put(j, localBundle.getByteArray("vaskey"));
+            }
+          }
+          i += 1;
+        }
       }
-      a(false);
-      String str1 = this.jdField_a_of_type_AndroidOsBundle.getString("country_code");
-      String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("phone");
-      localIntent = new Intent(this, BindVerifyActivity.class);
-      localIntent.putExtra("kSrouce", 23);
-      localIntent.putExtra("kBindType", 0);
-      localIntent.putExtra("keyReqBindMode", 0);
-      localIntent.putExtra("cmd_param_is_encrypt", true);
-      localIntent.putExtra("cmd_param_encrypt_mobile", arrayOfByte);
-      localIntent.putExtra("k_mask_number_forshow", str2);
-      localIntent.putExtra("k_country_code", str1);
-      localIntent.putExtra("k_is_block", getIntent().getBooleanExtra("k_is_block", false));
-      localIntent.putExtra("key_is_from_qqhotspot", getIntent().getBooleanExtra("key_is_from_qqhotspot", false));
-      localIntent.putExtra("cmd_param_is_from_uni", true);
-      localIntent.putExtra("key_is_from_qav_multi_call", getIntent().getBooleanExtra("key_is_from_qav_multi_call", false));
-      localIntent.putExtra("cmd_param_is_from_change_bind", false);
-      localIntent.addFlags(536870912);
-      localIntent.addFlags(67108864);
-    } while (isFinishing());
-    startActivityForResult(localIntent, 1008);
-  }
-  
-  protected void j()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null)
-    {
-      String str = getString(2131694786);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230, getString(2131694785), str, null, HardCodeUtil.a(2131701205), new PhoneUnityBindInfoActivity.11(this), null);
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) && (!isFinishing())) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
     }
   }
   
-  protected void k()
+  protected void onBindSuc()
   {
-    if (this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
-      this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230, null, getString(2131694787), null, HardCodeUtil.a(2131701209), new PhoneUnityBindInfoActivity.12(this), null);
-    }
-    if ((this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (!this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) && (!isFinishing())) {
-      this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-    }
+    this.mPhoneUnityData.jdField_c_of_type_Boolean = true;
+    openMobileMatch();
   }
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    boolean bool3 = true;
-    boolean bool4 = true;
-    boolean bool1 = true;
-    boolean bool2 = false;
     ViewParent localViewParent = paramCompoundButton.getParent();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData.jdField_a_of_type_Int == 3)
+    if (this.mPhoneUnityData.jdField_a_of_type_Int == 3)
     {
-      r();
-      if (localViewParent == this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem)
+      showUnityUnderReviewDialog();
+      if (localViewParent == this.mContactSwitch)
       {
-        bool1 = bool2;
-        if (!paramBoolean) {
-          bool1 = true;
-        }
-        a(bool1);
+        resetContactSwitch(paramBoolean ^ true);
+        ReportController.b(this.app, "dc00898", "", "", "0X800BAE8", "0X800BAE8", 0, 0, "2", "", "", "");
+      }
+      else if (localViewParent == this.mLoginSwitch)
+      {
+        resetLoginSwitch(paramBoolean ^ true);
+        ReportController.b(this.app, "dc00898", "", "", "0X800BAE7", "0X800BAE7", 0, 0, "2", "", "", "");
       }
     }
-    for (;;)
+    else if (localViewParent == this.mContactSwitch)
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      if (localViewParent == this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem)
+      if (!NetworkUtil.isNetSupport(this))
       {
-        if (!paramBoolean) {}
-        for (;;)
+        QQToast.a(this, getString(2131692183), 0).b(getTitleBarHeight());
+        resetContactSwitch(paramBoolean ^ true);
+      }
+      else
+      {
+        if (!this.mPhoneUnityData.jdField_c_of_type_Boolean)
         {
-          b(bool1);
-          break;
-          bool1 = false;
+          ReportController.b(this.app, "dc00898", "", "", "0X800B319", "0X800B319", 0, 0, "2", "", "", "");
+          showBindContactPhoneDialog();
         }
-        if (localViewParent == this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem)
+        else if (!this.mPhoneUnityData.jdField_b_of_type_Boolean)
         {
-          if (!NetworkUtil.d(this))
-          {
-            QQToast.a(this, getString(2131692257), 0).b(getTitleBarHeight());
-            if (!paramBoolean) {}
-            for (bool1 = bool3;; bool1 = false)
-            {
-              a(bool1);
-              break;
-            }
-          }
-          if (!this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData.jdField_c_of_type_Boolean)
-          {
-            ReportController.b(this.app, "dc00898", "", "", "0X800B319", "0X800B319", 0, 0, "2", "", "", "");
-            s();
-          }
-          else if (!this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData.jdField_b_of_type_Boolean)
-          {
-            b();
-            ReportController.b(this.app, "dc00898", "", "", "0X800B319", "0X800B319", 0, 0, "1", "", "", "");
-          }
-          else
-          {
-            c();
-          }
+          openMobileMatch();
+          ReportController.b(this.app, "dc00898", "", "", "0X800B319", "0X800B319", 0, 0, "1", "", "", "");
         }
-        else if (localViewParent == this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem)
+        else
         {
-          if (!NetworkUtil.d(this))
-          {
-            QQToast.a(this, getString(2131692257), 0).b(getTitleBarHeight());
-            if (!paramBoolean) {}
-            for (bool1 = bool4;; bool1 = false)
-            {
-              b(bool1);
-              break;
-            }
-          }
-          if (!this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData.jdField_a_of_type_Boolean)
-          {
-            f();
-          }
-          else
-          {
-            e();
-            this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData.jdField_a_of_type_Boolean = false;
-          }
+          closeMobileMatch();
         }
+        ReportController.b(this.app, "dc00898", "", "", "0X800BAE8", "0X800BAE8", 0, 0, "2", "", "", "");
       }
     }
+    else if (localViewParent == this.mLoginSwitch)
+    {
+      if (!NetworkUtil.isNetSupport(this))
+      {
+        QQToast.a(this, getString(2131692183), 0).b(getTitleBarHeight());
+        resetLoginSwitch(paramBoolean ^ true);
+      }
+      else if (!this.mPhoneUnityData.jdField_a_of_type_Boolean)
+      {
+        bindPhoneNumLogin();
+      }
+      else
+      {
+        unbindPhoneNumLogin();
+        this.mPhoneUnityData.jdField_a_of_type_Boolean = false;
+      }
+      ReportController.b(this.app, "dc00898", "", "", "0X800BAE7", "0X800BAE7", 0, 0, "2", "", "", "");
+    }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
   
   public void onClick(View paramView)
   {
     switch (paramView.getId())
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData.jdField_a_of_type_Int == 3) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData.d)))
+    default: 
+      break;
+    case 2131372536: 
+      ReportController.b(this.app, "dc00898", "", "", "0X800BAE5", "0X800BAE5", 0, 0, "", "", "", "");
+      verifyPhone();
+      break;
+    case 2131364434: 
+      if ((this.mPhoneUnityData.jdField_a_of_type_Int == 3) && (!TextUtils.isEmpty(this.mPhoneUnityData.d)))
       {
         ReportController.b(this.app, "dc00898", "", "", "0X800B317", "0X800B317", 0, 0, "", "", "", "");
-        PhoneUnityManager.a(this, this.app, this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData.d, 1010);
+        PhoneUnityManager.a(this, this.app, this.mPhoneUnityData.d, 1010);
       }
-      else if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData.jdField_c_of_type_JavaLangString))
+      else if (!TextUtils.isEmpty(this.mPhoneUnityData.jdField_c_of_type_JavaLangString))
       {
         ReportController.b(this.app, "dc00898", "", "", "0X800B315", "0X800B315", 0, 0, "", "", "", "");
-        this.jdField_b_of_type_Int = 1;
-        b(this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityManager$PhoneUnityData.jdField_c_of_type_JavaLangString);
+        this.mChangePhoneNum = 1;
+        onClickChangeSecurePhone(this.mPhoneUnityData.jdField_c_of_type_JavaLangString);
       }
       else
       {
         QLog.e("PhoneUnityBindInfoActivity", 2, "change bind phone error.");
       }
+      ReportController.b(this.app, "dc00898", "", "", "0X800BAE6", "0X800BAE6", 0, 0, "", "", "", "");
+      break;
+    case 2131363601: 
+      ReportController.b(this.app, "dc00898", "", "", "0X800BAE4", "0X800BAE4", 0, 0, "", "", "", "");
+      verifyPhone();
+      break;
+    case 2131363600: 
+      QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230);
+      localQQCustomDialog.setTitle(getString(2131694735));
+      localQQCustomDialog.setMessage(getString(2131694733));
+      PhoneUnityBindInfoActivity.5 local5 = new PhoneUnityBindInfoActivity.5(this);
+      localQQCustomDialog.setPositiveButton(getString(2131694734), local5);
+      localQQCustomDialog.setNegativeButton(getString(2131690707), local5);
+      localQQCustomDialog.show();
+      ReportController.b(this.app, "dc00898", "", "", "0X800BAE9", "0X800BAE9", 0, 0, "", "", "", "");
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   @Override
@@ -1065,10 +973,153 @@ public class PhoneUnityBindInfoActivity
     super.onConfigurationChanged(paramConfiguration);
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
+  
+  protected void onMobileBindUinNotSetPasswordError()
+  {
+    if (this.mMobileAlreadyBindDialog == null)
+    {
+      localObject = getString(2131694772);
+      this.mMobileAlreadyBindDialog = DialogUtil.a(this, 230, getString(2131694771), (CharSequence)localObject, null, HardCodeUtil.a(2131701346), new PhoneUnityBindInfoActivity.12(this), null);
+    }
+    Object localObject = this.mMobileAlreadyBindDialog;
+    if ((localObject != null) && (!((QQCustomDialog)localObject).isShowing()) && (!isFinishing())) {
+      this.mMobileAlreadyBindDialog.show();
+    }
+  }
+  
+  protected void onUinNotSetPasswordError()
+  {
+    if (this.mNotSetPasswordDialog == null) {
+      this.mNotSetPasswordDialog = DialogUtil.a(this, 230, null, getString(2131694773), null, HardCodeUtil.a(2131701350), new PhoneUnityBindInfoActivity.13(this), null);
+    }
+    QQCustomDialog localQQCustomDialog = this.mNotSetPasswordDialog;
+    if ((localQQCustomDialog != null) && (!localQQCustomDialog.isShowing()) && (!isFinishing())) {
+      this.mNotSetPasswordDialog.show();
+    }
+  }
+  
+  public void openMobileMatch()
+  {
+    if (!NetworkUtil.isNetSupport(this))
+    {
+      showToast(2131694475);
+      return;
+    }
+    SecSvcHandler localSecSvcHandler = (SecSvcHandler)this.app.getBusinessHandler(BusinessHandlerFactory.SEC_SVC_HANDLER);
+    if (localSecSvcHandler != null) {
+      localSecSvcHandler.d();
+    }
+  }
+  
+  public void refreshServerData(int paramInt, Bundle paramBundle)
+  {
+    fetchSecurePhoneNum();
+    if (paramBundle == null)
+    {
+      initViews(false, null);
+      paramBundle = (SecSvcHandler)this.app.getBusinessHandler(BusinessHandlerFactory.SEC_SVC_HANDLER);
+      if (paramBundle != null)
+      {
+        QLog.i("PhoneUnityBindInfoActivity", 1, "refreshServerData, getPhoneUnityInfo");
+        paramBundle.a(paramInt);
+        showLoading();
+      }
+    }
+    else
+    {
+      QLog.i("PhoneUnityBindInfoActivity", 1, "init with prefetched bind phone data");
+      initViews(true, paramBundle);
+    }
+  }
+  
+  protected void resetContactSwitch(boolean paramBoolean)
+  {
+    this.mContactSwitch.setOnCheckedChangeListener(null);
+    this.mContactSwitch.setChecked(paramBoolean);
+    this.mContactSwitch.setOnCheckedChangeListener(this);
+  }
+  
+  protected void resetLoginSwitch(boolean paramBoolean)
+  {
+    this.mLoginSwitch.setOnCheckedChangeListener(null);
+    this.mLoginSwitch.setChecked(paramBoolean);
+    this.mLoginSwitch.setOnCheckedChangeListener(this);
+  }
+  
+  public void unBindContactsMobile()
+  {
+    if (this.mPhoneUnityInfoBundle == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("PhoneUnityBindInfoActivity", 2, "InfoBundle is null.");
+      }
+      return;
+    }
+    if (!NetworkUtil.isNetSupport(this))
+    {
+      showToast(2131694475);
+      return;
+    }
+    if (this.unbindObserver == null)
+    {
+      this.unbindObserver = new PhoneUnityBindInfoActivity.10(this);
+      this.app.registObserver(this.unbindObserver);
+    }
+    byte[] arrayOfByte = getPhoneVasKey(3);
+    if (arrayOfByte != null)
+    {
+      QLog.i("PhoneUnityBindInfoActivity", 1, "phone_unity_info, unbindMobileEncrypt");
+      this.mPhoneContactService.unbindMobileEncrypt(arrayOfByte, true, false);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("PhoneUnityBindInfoActivity", 2, "unbindMobileEncrypt contact vaskey is null.");
+    }
+  }
+  
+  public void unbindPhoneNumLogin()
+  {
+    if (!NetworkUtil.isNetSupport(this))
+    {
+      showToast(2131694475);
+      return;
+    }
+    SecSvcHandler localSecSvcHandler = (SecSvcHandler)this.app.getBusinessHandler(BusinessHandlerFactory.SEC_SVC_HANDLER);
+    if ((localSecSvcHandler != null) && (this.mPhoneUnityInfoBundle != null))
+    {
+      QLog.i("PhoneUnityBindInfoActivity", 1, "phone_unity_info_login, unbindPhoneNumLogin");
+      byte[] arrayOfByte = getPhoneVasKey(2);
+      if (arrayOfByte != null)
+      {
+        localSecSvcHandler.b(arrayOfByte);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("PhoneUnityBindInfoActivity", 2, "unbindPhoneNumLogin contact vaskey is null.");
+      }
+    }
+  }
+  
+  public void unbindPhoneNumLoginOnPhoneUnity()
+  {
+    if (!NetworkUtil.isNetSupport(this))
+    {
+      showToast(2131694475);
+      return;
+    }
+    SecSvcHandler localSecSvcHandler = (SecSvcHandler)this.app.getBusinessHandler(BusinessHandlerFactory.SEC_SVC_HANDLER);
+    if (localSecSvcHandler != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("PhoneUnityBindInfoActivity", 2, "unbindPhoneNumLoginOnPhoneUnity contact.");
+      }
+      localSecSvcHandler.c();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -16,39 +16,44 @@ class WebView$a
     {
       try
       {
-        int i;
-        long l;
         if ("android.net.conn.CONNECTIVITY_CHANGE".equals(paramIntent.getAction()))
         {
-          i = Apn.getApnType(???);
-          l = System.currentTimeMillis();
-        }
-        synchronized (QbSdk.h)
-        {
-          if (QbSdk.e) {
-            QbSdk.g += l - QbSdk.f;
-          }
-          QbSdk.f = l;
-          TbsLog.d("sdkreport", "pv report, SdkEngine.registerConnectivityChangedReceiver QbSdk.sWifiConnectTime=" + QbSdk.g + " apnType=" + i);
-          if (i == 3)
+          int i = Apn.getApnType(???);
+          long l = System.currentTimeMillis();
+          synchronized (QbSdk.h)
           {
+            if (QbSdk.e) {
+              QbSdk.g += l - QbSdk.f;
+            }
+            QbSdk.f = l;
+            ??? = new StringBuilder();
+            ???.append("pv report, SdkEngine.registerConnectivityChangedReceiver QbSdk.sWifiConnectTime=");
+            ???.append(QbSdk.g);
+            ???.append(" apnType=");
+            ???.append(i);
+            TbsLog.d("sdkreport", ???.toString());
+            if (i != 3) {
+              break label128;
+            }
             bool = true;
             QbSdk.e = bool;
             return;
           }
         }
-        boolean bool = false;
+        return;
       }
       catch (Throwable ???)
       {
         return;
       }
+      label128:
+      boolean bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebView.a
  * JD-Core Version:    0.7.0.1
  */

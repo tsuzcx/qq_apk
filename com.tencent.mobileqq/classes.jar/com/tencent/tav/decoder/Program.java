@@ -10,20 +10,30 @@ public class Program
   
   public static void checkEglError(String paramString)
   {
-    int i = 0;
-    StringBuilder localStringBuilder = new StringBuilder("");
-    for (;;)
+    StringBuilder localStringBuilder1 = new StringBuilder("");
+    for (int i = 0;; i = 1)
     {
       int j = EGL14.eglGetError();
       if (j == 12288) {
         break;
       }
-      Log.e("Program", paramString + ": EGL error: 0x" + Integer.toHexString(j));
-      localStringBuilder.append(paramString + ": EGL error: 0x" + Integer.toHexString(j));
-      i = 1;
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(paramString);
+      localStringBuilder2.append(": EGL error: 0x");
+      localStringBuilder2.append(Integer.toHexString(j));
+      Log.e("Program", localStringBuilder2.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(paramString);
+      localStringBuilder2.append(": EGL error: 0x");
+      localStringBuilder2.append(Integer.toHexString(j));
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    if (i != 0) {
-      new RuntimeException("EGL error encountered (see log): " + localStringBuilder.toString()).printStackTrace();
+    if (i != 0)
+    {
+      paramString = new StringBuilder();
+      paramString.append("EGL error encountered (see log): ");
+      paramString.append(localStringBuilder1.toString());
+      new RuntimeException(paramString.toString()).printStackTrace();
     }
   }
   
@@ -43,85 +53,85 @@ public class Program
   
   public static int createProgram(String paramString1, String paramString2, int[] paramArrayOfInt)
   {
-    int j = 0;
     try
     {
       GLES20.glEnable(3042);
       GLES20.glBlendEquationSeparate(32774, 32774);
       GLES20.glBlendFuncSeparate(770, 771, 1, 771);
-      int k = loadShader(35633, paramString1);
-      int i;
+      int i = loadShader(35633, paramString1);
+      if (i == 0) {
+        return 0;
+      }
+      int k = loadShader(35632, paramString2);
       if (k == 0) {
-        i = j;
+        return 0;
       }
-      for (;;)
+      if ((paramArrayOfInt != null) && (paramArrayOfInt.length >= 2))
       {
-        return i;
-        int m = loadShader(35632, paramString2);
-        i = j;
-        if (m != 0)
-        {
-          if ((paramArrayOfInt != null) && (paramArrayOfInt.length >= 2))
-          {
-            paramArrayOfInt[0] = k;
-            paramArrayOfInt[1] = m;
-          }
-          i = GLES20.glCreateProgram();
-          checkEglError("glCreateProgram");
-          if (i == 0) {
-            Log.e("Program", "Could not create program");
-          }
-          GLES20.glAttachShader(i, k);
-          checkEglError("glAttachShader");
-          GLES20.glAttachShader(i, m);
-          checkEglError("glAttachShader");
-          GLES20.glLinkProgram(i);
-          paramString1 = new int[1];
-          GLES20.glGetProgramiv(i, 35714, paramString1, 0);
-          if (paramString1[0] != 1)
-          {
-            Log.e("Program", "Could not link program: ");
-            Log.e("Program", GLES20.glGetProgramInfoLog(i));
-            GLES20.glDeleteProgram(i);
-            i = j;
-          }
-        }
+        paramArrayOfInt[0] = i;
+        paramArrayOfInt[1] = k;
       }
+      int j = GLES20.glCreateProgram();
+      checkEglError("glCreateProgram");
+      if (j == 0) {
+        Log.e("Program", "Could not create program");
+      }
+      GLES20.glAttachShader(j, i);
+      checkEglError("glAttachShader");
+      GLES20.glAttachShader(j, k);
+      checkEglError("glAttachShader");
+      GLES20.glLinkProgram(j);
+      paramString1 = new int[1];
+      GLES20.glGetProgramiv(j, 35714, paramString1, 0);
+      i = j;
+      if (paramString1[0] != 1)
+      {
+        Log.e("Program", "Could not link program: ");
+        Log.e("Program", GLES20.glGetProgramInfoLog(j));
+        GLES20.glDeleteProgram(j);
+        i = 0;
+      }
+      return i;
     }
     finally {}
   }
   
   private static int loadShader(int paramInt, String paramString)
   {
-    int i = 0;
-    for (;;)
+    try
     {
-      int j;
-      try
+      int j = GLES20.glCreateShader(paramInt);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("glCreateShader type=");
+      localStringBuilder.append(paramInt);
+      checkEglError(localStringBuilder.toString());
+      GLES20.glShaderSource(j, paramString);
+      GLES20.glCompileShader(j);
+      paramString = new int[1];
+      GLES20.glGetShaderiv(j, 35713, paramString, 0);
+      int i = j;
+      if (paramString[0] == 0)
       {
-        j = GLES20.glCreateShader(paramInt);
-        checkEglError("glCreateShader type=" + paramInt);
-        GLES20.glShaderSource(j, paramString);
-        GLES20.glCompileShader(j);
-        paramString = new int[1];
-        GLES20.glGetShaderiv(j, 35713, paramString, 0);
-        if (paramString[0] == 0)
-        {
-          Log.e("Program", "Could not compile shader " + paramInt + ":");
-          Log.e("Program", " " + GLES20.glGetShaderInfoLog(j));
-          GLES20.glDeleteShader(j);
-          paramInt = i;
-          return paramInt;
-        }
+        paramString = new StringBuilder();
+        paramString.append("Could not compile shader ");
+        paramString.append(paramInt);
+        paramString.append(":");
+        Log.e("Program", paramString.toString());
+        paramString = new StringBuilder();
+        paramString.append(" ");
+        paramString.append(GLES20.glGetShaderInfoLog(j));
+        Log.e("Program", paramString.toString());
+        GLES20.glDeleteShader(j);
+        i = 0;
       }
-      finally {}
-      paramInt = j;
+      return i;
     }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tav.decoder.Program
  * JD-Core Version:    0.7.0.1
  */

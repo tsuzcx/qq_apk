@@ -1,20 +1,14 @@
 package com.tencent.richmediabrowser.view.progress;
 
 import android.view.View;
-import com.tencent.richmediabrowser.model.BrowserBaseModel;
-import com.tencent.richmediabrowser.presenter.BasePresenter;
 
 public class ProgressViewHelper
 {
-  BasePresenter basePresenter;
   private AbstractProgressView progressView;
   
   private AbstractProgressView getProgressView(int paramInt)
   {
-    if ((this.basePresenter != null) && (this.basePresenter.baseModel != null) && (paramInt == this.basePresenter.baseModel.getSelectedIndex())) {
-      return this.progressView;
-    }
-    return null;
+    return this.progressView;
   }
   
   public void onLoadFinish(int paramInt, boolean paramBoolean)
@@ -50,7 +44,7 @@ public class ProgressViewHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmediabrowser.view.progress.ProgressViewHelper
  * JD-Core Version:    0.7.0.1
  */

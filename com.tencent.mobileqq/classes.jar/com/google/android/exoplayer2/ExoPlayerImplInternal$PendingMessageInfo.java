@@ -20,40 +20,34 @@ final class ExoPlayerImplInternal$PendingMessageInfo
   
   public int compareTo(@NonNull PendingMessageInfo paramPendingMessageInfo)
   {
+    Object localObject = this.resolvedPeriodUid;
     int k = 1;
-    int i;
-    int j;
-    if (this.resolvedPeriodUid == null)
-    {
+    if (localObject == null) {
       i = 1;
-      if (paramPendingMessageInfo.resolvedPeriodUid != null) {
-        break label45;
-      }
+    } else {
+      i = 0;
+    }
+    int j;
+    if (paramPendingMessageInfo.resolvedPeriodUid == null) {
       j = 1;
-      label21:
-      if (i == j) {
-        break label50;
-      }
+    } else {
+      j = 0;
+    }
+    if (i != j)
+    {
       i = k;
       if (this.resolvedPeriodUid != null) {
         i = -1;
       }
-    }
-    label45:
-    label50:
-    do
-    {
       return i;
-      i = 0;
-      break;
-      j = 0;
-      break label21;
-      if (this.resolvedPeriodUid == null) {
-        return 0;
-      }
-      j = this.resolvedPeriodIndex - paramPendingMessageInfo.resolvedPeriodIndex;
-      i = j;
-    } while (j != 0);
+    }
+    if (this.resolvedPeriodUid == null) {
+      return 0;
+    }
+    int i = this.resolvedPeriodIndex - paramPendingMessageInfo.resolvedPeriodIndex;
+    if (i != 0) {
+      return i;
+    }
     return Util.compareLong(this.resolvedPeriodTimeUs, paramPendingMessageInfo.resolvedPeriodTimeUs);
   }
   
@@ -66,7 +60,7 @@ final class ExoPlayerImplInternal$PendingMessageInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.ExoPlayerImplInternal.PendingMessageInfo
  * JD-Core Version:    0.7.0.1
  */

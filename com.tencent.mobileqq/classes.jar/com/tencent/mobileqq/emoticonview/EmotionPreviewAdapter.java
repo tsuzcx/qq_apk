@@ -17,8 +17,8 @@ import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.photo.ProGallery.OnProGalleryListener;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.activity.photo.OnProGalleryListener;
+import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.io.File;
@@ -29,7 +29,7 @@ import java.util.List;
 
 public class EmotionPreviewAdapter
   extends BaseAdapter
-  implements ProGallery.OnProGalleryListener
+  implements OnProGalleryListener
 {
   private static final String TAG = "EmotionPreviewAdapter";
   private List<EmotionPreviewInfo> dataList;
@@ -41,8 +41,8 @@ public class EmotionPreviewAdapter
   public EmotionPreviewAdapter(Context paramContext)
   {
     this.mContext = paramContext;
-    this.mDefaultPhotoDrawable = this.mContext.getResources().getDrawable(2130848203);
-    this.imageHeight = AIOUtils.a(207.0F, this.mContext.getResources());
+    this.mDefaultPhotoDrawable = this.mContext.getResources().getDrawable(2130848074);
+    this.imageHeight = AIOUtils.b(207.0F, this.mContext.getResources());
   }
   
   private URL getFileUrl(File paramFile)
@@ -80,15 +80,17 @@ public class EmotionPreviewAdapter
   
   public int getCount()
   {
-    if (this.dataList != null) {
-      return this.dataList.size();
+    List localList = this.dataList;
+    if (localList != null) {
+      return localList.size();
     }
     return 0;
   }
   
   public EmotionPreviewInfo getItem(int paramInt)
   {
-    if ((this.dataList != null) && (paramInt < this.dataList.size())) {
+    List localList = this.dataList;
+    if ((localList != null) && (paramInt < localList.size())) {
       return (EmotionPreviewInfo)this.dataList.get(paramInt);
     }
     return null;
@@ -102,111 +104,146 @@ public class EmotionPreviewAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     Object localObject1;
-    if (paramView != null) {
+    if (paramView != null)
+    {
       localObject1 = paramView;
     }
-    Object localObject2;
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localObject1;
-      localObject1 = new URLImageView(this.mContext);
-      localObject2 = getItem(paramInt);
-      if ((localObject2 != null) && (!TextUtils.isEmpty(((EmotionPreviewInfo)localObject2).path))) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("EmotionPreviewAdapter", 2, "getView Path is empty. position " + paramInt + ", size " + getCount());
-      }
-      ((URLImageView)localObject1).setImageDrawable(URLDrawableHelper.TRANSPARENT);
-    }
-    Object localObject3 = (URLDrawable)this.mActiveDrawable.get(paramInt);
-    if (localObject3 != null) {
-      ((URLImageView)localObject1).setImageDrawable((Drawable)localObject3);
-    }
-    for (;;)
-    {
-      ((URLImageView)localObject1).setContentDescription("照片" + paramInt);
-      break;
-      Object localObject4 = new File(((EmotionPreviewInfo)localObject2).path);
-      localObject2 = null;
-      if (((File)localObject4).exists())
+      URLImageView localURLImageView = new URLImageView(this.mContext);
+      localObject1 = getItem(paramInt);
+      if ((localObject1 != null) && (!TextUtils.isEmpty(((EmotionPreviewInfo)localObject1).path)))
       {
-        localObject3 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = this.imageHeight;
-        ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = this.imageHeight;
-        ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-        ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = this.mDefaultPhotoDrawable;
-        ((URLDrawable.URLDrawableOptions)localObject3).mPlayGifImage = true;
-        localObject4 = getFileUrl((File)localObject4);
-        if (localObject4 != null)
-        {
-          localObject3 = URLDrawable.getDrawable((URL)localObject4, (URLDrawable.URLDrawableOptions)localObject3);
-          localObject2 = localObject3;
-          if (localObject3 != null)
-          {
-            localObject2 = localObject3;
-            switch (((URLDrawable)localObject3).getStatus())
-            {
-            default: 
-              ((URLDrawable)localObject3).setTag(Integer.valueOf(1));
-              ((URLDrawable)localObject3).startDownload();
-              localObject2 = localObject3;
-            }
-          }
-        }
+        Object localObject2 = (URLDrawable)this.mActiveDrawable.get(paramInt);
         if (localObject2 != null)
         {
-          ((URLImageView)localObject1).setImageDrawable((Drawable)localObject2);
-          this.mActiveDrawable.put(paramInt, localObject2);
+          localURLImageView.setImageDrawable((Drawable)localObject2);
         }
         else
         {
-          ((URLImageView)localObject1).setImageDrawable(this.mDefaultPhotoDrawable);
+          Object localObject3 = new File(((EmotionPreviewInfo)localObject1).path);
+          localObject1 = null;
+          if (((File)localObject3).exists())
+          {
+            localObject2 = URLDrawable.URLDrawableOptions.obtain();
+            int i = this.imageHeight;
+            ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = i;
+            ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = i;
+            ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = URLDrawableHelperConstants.a;
+            ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.mDefaultPhotoDrawable;
+            ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = true;
+            localObject3 = getFileUrl((File)localObject3);
+            if (localObject3 != null)
+            {
+              localObject2 = URLDrawable.getDrawable((URL)localObject3, (URLDrawable.URLDrawableOptions)localObject2);
+              localObject1 = localObject2;
+              if (localObject2 != null)
+              {
+                i = ((URLDrawable)localObject2).getStatus();
+                localObject1 = localObject2;
+                if (i != 1)
+                {
+                  localObject1 = localObject2;
+                  if (i != 2)
+                  {
+                    localObject1 = localObject2;
+                    if (i != 3)
+                    {
+                      ((URLDrawable)localObject2).setTag(Integer.valueOf(1));
+                      ((URLDrawable)localObject2).startDownload();
+                      localObject1 = localObject2;
+                    }
+                  }
+                }
+              }
+            }
+            if (localObject1 != null)
+            {
+              localURLImageView.setImageDrawable((Drawable)localObject1);
+              this.mActiveDrawable.put(paramInt, localObject1);
+            }
+            else
+            {
+              localURLImageView.setImageDrawable(this.mDefaultPhotoDrawable);
+            }
+          }
+          else
+          {
+            localURLImageView.setImageDrawable(this.mDefaultPhotoDrawable);
+          }
         }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("照片");
+        ((StringBuilder)localObject1).append(paramInt);
+        localURLImageView.setContentDescription(((StringBuilder)localObject1).toString());
+        localObject1 = localURLImageView;
       }
       else
       {
-        ((URLImageView)localObject1).setImageDrawable(this.mDefaultPhotoDrawable);
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("getView Path is empty. position ");
+          ((StringBuilder)localObject1).append(paramInt);
+          ((StringBuilder)localObject1).append(", size ");
+          ((StringBuilder)localObject1).append(getCount());
+          QLog.i("EmotionPreviewAdapter", 2, ((StringBuilder)localObject1).toString());
+        }
+        localURLImageView.setImageDrawable(URLDrawableHelperConstants.a);
+        localObject1 = localURLImageView;
       }
     }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localObject1;
   }
   
   public View onCreateView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     paramView = (URLDrawable)this.mActiveDrawable.get(paramInt);
-    if (paramView != null) {
-      if (paramView.getStatus() == 3) {
+    if (paramView != null)
+    {
+      if (paramView.getStatus() == 3)
+      {
         paramView.restartDownload();
+        return null;
       }
     }
-    do
+    else
     {
-      do
+      paramView = getItem(paramInt);
+      if ((paramView == null) || (TextUtils.isEmpty(paramView.path))) {
+        break label145;
+      }
+      paramViewGroup = new File(paramView.path);
+      if (paramViewGroup.exists())
       {
-        do
+        paramView = URLDrawable.URLDrawableOptions.obtain();
+        int i = this.imageHeight;
+        paramView.mRequestWidth = i;
+        paramView.mRequestHeight = i;
+        paramView.mLoadingDrawable = URLDrawableHelperConstants.a;
+        paramView.mPlayGifImage = true;
+        paramViewGroup = getFileUrl(paramViewGroup);
+        if (paramViewGroup != null)
         {
-          return null;
-          paramView = getItem(paramInt);
-          if ((paramView != null) && (!TextUtils.isEmpty(paramView.path))) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.i("EmotionPreviewAdapter", 2, "onCreateView Path is empty. position " + paramInt + ", size " + getCount());
-        return null;
-        paramViewGroup = new File(paramView.path);
-      } while (!paramViewGroup.exists());
-      paramView = URLDrawable.URLDrawableOptions.obtain();
-      paramView.mRequestWidth = this.imageHeight;
-      paramView.mRequestHeight = this.imageHeight;
-      paramView.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-      paramView.mPlayGifImage = true;
-      paramViewGroup = getFileUrl(paramViewGroup);
-    } while (paramViewGroup == null);
-    paramView = URLDrawable.getDrawable(paramViewGroup, paramView);
-    paramView.setTag(Integer.valueOf(1));
-    paramView.startDownload();
-    this.mActiveDrawable.put(paramInt, paramView);
+          paramView = URLDrawable.getDrawable(paramViewGroup, paramView);
+          paramView.setTag(Integer.valueOf(1));
+          paramView.startDownload();
+          this.mActiveDrawable.put(paramInt, paramView);
+        }
+      }
+    }
+    return null;
+    label145:
+    if (QLog.isColorLevel())
+    {
+      paramView = new StringBuilder();
+      paramView.append("onCreateView Path is empty. position ");
+      paramView.append(paramInt);
+      paramView.append(", size ");
+      paramView.append(getCount());
+      QLog.i("EmotionPreviewAdapter", 2, paramView.toString());
+    }
     return null;
   }
   
@@ -238,7 +275,7 @@ public class EmotionPreviewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionPreviewAdapter
  * JD-Core Version:    0.7.0.1
  */

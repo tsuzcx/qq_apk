@@ -10,21 +10,20 @@ final class AtTroopMemberSpan$1
   
   public int a(AtTroopMemberSpan paramAtTroopMemberSpan1, AtTroopMemberSpan paramAtTroopMemberSpan2)
   {
-    int i = 0;
-    int j = this.a.getSpanStart(paramAtTroopMemberSpan1);
-    int k = this.a.getSpanStart(paramAtTroopMemberSpan2);
-    if (j < k) {
-      i = -1;
+    int i = this.a.getSpanStart(paramAtTroopMemberSpan1);
+    int j = this.a.getSpanStart(paramAtTroopMemberSpan2);
+    if (i < j) {
+      return -1;
     }
-    while (j <= k) {
-      return i;
+    if (i > j) {
+      return 1;
     }
-    return 1;
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.text.AtTroopMemberSpan.1
  * JD-Core Version:    0.7.0.1
  */

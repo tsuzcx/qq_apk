@@ -18,7 +18,7 @@ public final class WEISHI$stGetPersonalPageRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     WEISHI_USER_GROWTH.WEISHI.stGetPersonalPageRsp
  * JD-Core Version:    0.7.0.1
  */

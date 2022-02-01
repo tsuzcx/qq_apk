@@ -3,8 +3,8 @@ package cooperation.plugin;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.mobileqq.statistics.CaughtExceptionReport;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.monitor.crash.catchedexception.CaughtExceptionReport;
 import java.util.HashMap;
 
 public class BuiltinPluginManager
@@ -22,32 +22,36 @@ public class BuiltinPluginManager
   
   public static final BuiltinPluginManager a(Context paramContext)
   {
-    if (jdField_a_of_type_CooperationPluginBuiltinPluginManager == null) {}
-    try
-    {
-      if (jdField_a_of_type_CooperationPluginBuiltinPluginManager == null) {
-        jdField_a_of_type_CooperationPluginBuiltinPluginManager = new BuiltinPluginManager(paramContext);
+    if (jdField_a_of_type_CooperationPluginBuiltinPluginManager == null) {
+      try
+      {
+        if (jdField_a_of_type_CooperationPluginBuiltinPluginManager == null) {
+          jdField_a_of_type_CooperationPluginBuiltinPluginManager = new BuiltinPluginManager(paramContext);
+        }
       }
-      return jdField_a_of_type_CooperationPluginBuiltinPluginManager;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_CooperationPluginBuiltinPluginManager;
   }
   
   public static boolean b(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    int i = 0;
     for (;;)
     {
-      return false;
-      int i = 0;
-      while (i < jdField_a_of_type_ArrayOfJavaLangString.length)
-      {
-        if (paramString.equals(jdField_a_of_type_ArrayOfJavaLangString[i])) {
-          return true;
-        }
-        i += 1;
+      String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+      if (i >= arrayOfString.length) {
+        break;
       }
+      if (paramString.equals(arrayOfString[i])) {
+        return true;
+      }
+      i += 1;
     }
+    return false;
   }
   
   public PluginInfo a(String paramString)
@@ -58,8 +62,12 @@ public class BuiltinPluginManager
   public void a()
   {
     b();
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "init. built in plugin size:" + this.jdField_a_of_type_JavaUtilHashMap.size());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("init. built in plugin size:");
+      localStringBuilder.append(this.jdField_a_of_type_JavaUtilHashMap.size());
+      QLog.d("plugin_tag", 2, localStringBuilder.toString());
     }
   }
   
@@ -77,252 +85,280 @@ public class BuiltinPluginManager
       {
         if (paramPluginBaseInfo != null)
         {
-          boolean bool = TextUtils.equals(localPluginInfo.mMD5, paramPluginBaseInfo.mMD5);
-          QLog.i("plugin_tag", 1, "isUpToDayBuiltIn " + paramString + " isUpToDay " + bool);
-          if (!bool) {
-            CaughtExceptionReport.a(new RuntimeException(), "plugin_tagCreateClassLoaderNotUpToDay");
+          boolean bool2 = TextUtils.equals(localPluginInfo.mMD5, paramPluginBaseInfo.mMD5);
+          paramPluginBaseInfo = new StringBuilder();
+          paramPluginBaseInfo.append("isUpToDayBuiltIn ");
+          paramPluginBaseInfo.append(paramString);
+          paramPluginBaseInfo.append(" isUpToDay ");
+          paramPluginBaseInfo.append(bool2);
+          QLog.i("plugin_tag", 1, paramPluginBaseInfo.toString());
+          bool1 = bool2;
+          if (bool2) {
+            return bool1;
           }
-          return bool;
+          CaughtExceptionReport.a(new RuntimeException(), "plugin_tagCreateClassLoaderNotUpToDay");
+          return bool2;
         }
         QLog.i("plugin_tag", 1, "isUpToDayBuiltIn info");
       }
     }
-    return false;
+    boolean bool1 = false;
+    return bool1;
   }
   
   /* Error */
   void b()
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: new 138	java/io/BufferedReader
-    //   5: dup
-    //   6: new 140	java/io/InputStreamReader
-    //   9: dup
-    //   10: aload_0
-    //   11: getfield 36	cooperation/plugin/BuiltinPluginManager:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   14: invokevirtual 146	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   17: ldc 148
-    //   19: invokevirtual 154	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   22: invokespecial 157	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   25: invokespecial 160	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   28: astore_1
-    //   29: aload_1
-    //   30: invokevirtual 163	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   33: astore_2
-    //   34: aload_2
-    //   35: ifnull +139 -> 174
-    //   38: aload_2
-    //   39: invokevirtual 166	java/lang/String:trim	()Ljava/lang/String;
-    //   42: ldc 168
-    //   44: invokevirtual 172	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   47: astore 4
-    //   49: aload 4
-    //   51: iconst_0
-    //   52: aaload
-    //   53: astore_3
-    //   54: ldc 174
-    //   56: astore_2
-    //   57: aload 4
-    //   59: arraylength
-    //   60: iconst_1
-    //   61: if_icmple +8 -> 69
-    //   64: aload 4
-    //   66: iconst_1
-    //   67: aaload
-    //   68: astore_2
-    //   69: new 62	cooperation/plugin/PluginInfo
-    //   72: dup
-    //   73: invokespecial 175	cooperation/plugin/PluginInfo:<init>	()V
-    //   76: astore 4
-    //   78: aload 4
-    //   80: aload_3
-    //   81: putfield 178	cooperation/plugin/PluginInfo:mID	Ljava/lang/String;
-    //   84: aload 4
-    //   86: aload_2
-    //   87: putfield 104	cooperation/plugin/PluginInfo:mMD5	Ljava/lang/String;
-    //   90: aload 4
-    //   92: iconst_1
-    //   93: putfield 182	cooperation/plugin/PluginInfo:mUpdateType	I
-    //   96: aload 4
-    //   98: iconst_0
-    //   99: putfield 185	cooperation/plugin/PluginInfo:mInstallType	I
-    //   102: invokestatic 70	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   105: ifeq +45 -> 150
-    //   108: ldc 72
-    //   110: iconst_2
-    //   111: new 74	java/lang/StringBuilder
-    //   114: dup
-    //   115: invokespecial 75	java/lang/StringBuilder:<init>	()V
-    //   118: ldc 187
-    //   120: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   123: aload 4
-    //   125: getfield 178	cooperation/plugin/PluginInfo:mID	Ljava/lang/String;
-    //   128: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   131: ldc 189
-    //   133: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   136: aload 4
-    //   138: getfield 104	cooperation/plugin/PluginInfo:mMD5	Ljava/lang/String;
-    //   141: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   144: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   147: invokestatic 96	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   150: aload_0
-    //   151: getfield 34	cooperation/plugin/BuiltinPluginManager:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   154: aload_3
-    //   155: aload 4
-    //   157: invokevirtual 193	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   160: pop
-    //   161: goto -132 -> 29
-    //   164: astore_2
-    //   165: aload_1
-    //   166: ifnull +7 -> 173
-    //   169: aload_1
-    //   170: invokevirtual 196	java/io/BufferedReader:close	()V
-    //   173: return
-    //   174: invokestatic 202	com/tencent/mobileqq/qshadow/core/QShadow:getInstance	()Lcom/tencent/mobileqq/qshadow/core/QShadow;
-    //   177: invokevirtual 206	com/tencent/mobileqq/qshadow/core/QShadow:getQShadowBuildInPlugins	()Ljava/util/Map;
-    //   180: invokeinterface 212 1 0
-    //   185: invokeinterface 218 1 0
-    //   190: astore_2
-    //   191: aload_2
-    //   192: invokeinterface 223 1 0
-    //   197: ifeq +178 -> 375
-    //   200: aload_2
-    //   201: invokeinterface 227 1 0
-    //   206: checkcast 229	java/util/Map$Entry
-    //   209: astore_3
-    //   210: new 62	cooperation/plugin/PluginInfo
-    //   213: dup
-    //   214: invokespecial 175	cooperation/plugin/PluginInfo:<init>	()V
-    //   217: astore 4
-    //   219: aload 4
-    //   221: iconst_1
-    //   222: putfield 232	cooperation/plugin/PluginInfo:mSubType	I
-    //   225: aload 4
-    //   227: aload_3
-    //   228: invokeinterface 235 1 0
-    //   233: checkcast 106	com/tencent/mobileqq/pluginsdk/PluginBaseInfo
-    //   236: getfield 236	com/tencent/mobileqq/pluginsdk/PluginBaseInfo:mID	Ljava/lang/String;
-    //   239: putfield 178	cooperation/plugin/PluginInfo:mID	Ljava/lang/String;
-    //   242: aload 4
-    //   244: aload_3
-    //   245: invokeinterface 235 1 0
+    //   0: new 138	java/io/BufferedReader
+    //   3: dup
+    //   4: new 140	java/io/InputStreamReader
+    //   7: dup
+    //   8: aload_0
+    //   9: getfield 36	cooperation/plugin/BuiltinPluginManager:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   12: invokevirtual 146	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   15: ldc 148
+    //   17: invokevirtual 154	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   20: invokespecial 157	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   23: invokespecial 160	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   26: astore_1
+    //   27: aload_1
+    //   28: invokevirtual 163	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   31: astore_2
+    //   32: aload_2
+    //   33: ifnull +157 -> 190
+    //   36: aload_2
+    //   37: invokevirtual 166	java/lang/String:trim	()Ljava/lang/String;
+    //   40: ldc 168
+    //   42: invokevirtual 172	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   45: astore 4
+    //   47: aload 4
+    //   49: iconst_0
+    //   50: aaload
+    //   51: astore_3
+    //   52: ldc 174
+    //   54: astore_2
+    //   55: aload 4
+    //   57: arraylength
+    //   58: iconst_1
+    //   59: if_icmple +8 -> 67
+    //   62: aload 4
+    //   64: iconst_1
+    //   65: aaload
+    //   66: astore_2
+    //   67: new 62	cooperation/plugin/PluginInfo
+    //   70: dup
+    //   71: invokespecial 175	cooperation/plugin/PluginInfo:<init>	()V
+    //   74: astore 4
+    //   76: aload 4
+    //   78: aload_3
+    //   79: putfield 178	cooperation/plugin/PluginInfo:mID	Ljava/lang/String;
+    //   82: aload 4
+    //   84: aload_2
+    //   85: putfield 104	cooperation/plugin/PluginInfo:mMD5	Ljava/lang/String;
+    //   88: aload 4
+    //   90: iconst_1
+    //   91: putfield 182	cooperation/plugin/PluginInfo:mUpdateType	I
+    //   94: aload 4
+    //   96: iconst_0
+    //   97: putfield 185	cooperation/plugin/PluginInfo:mInstallType	I
+    //   100: getstatic 190	com/tencent/mobileqq/BuildConfig:a	Ljava/util/Set;
+    //   103: aload_3
+    //   104: invokeinterface 195 2 0
+    //   109: ifeq +9 -> 118
+    //   112: aload 4
+    //   114: iconst_2
+    //   115: putfield 198	cooperation/plugin/PluginInfo:mSubType	I
+    //   118: invokestatic 70	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   121: ifeq +55 -> 176
+    //   124: new 72	java/lang/StringBuilder
+    //   127: dup
+    //   128: invokespecial 73	java/lang/StringBuilder:<init>	()V
+    //   131: astore_2
+    //   132: aload_2
+    //   133: ldc 200
+    //   135: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   138: pop
+    //   139: aload_2
+    //   140: aload 4
+    //   142: getfield 178	cooperation/plugin/PluginInfo:mID	Ljava/lang/String;
+    //   145: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   148: pop
+    //   149: aload_2
+    //   150: ldc 202
+    //   152: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   155: pop
+    //   156: aload_2
+    //   157: aload 4
+    //   159: getfield 104	cooperation/plugin/PluginInfo:mMD5	Ljava/lang/String;
+    //   162: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   165: pop
+    //   166: ldc 88
+    //   168: iconst_2
+    //   169: aload_2
+    //   170: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   173: invokestatic 96	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   176: aload_0
+    //   177: getfield 34	cooperation/plugin/BuiltinPluginManager:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   180: aload_3
+    //   181: aload 4
+    //   183: invokevirtual 206	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   186: pop
+    //   187: goto -160 -> 27
+    //   190: invokestatic 212	com/tencent/mobileqq/qshadow/core/QShadow:getInstance	()Lcom/tencent/mobileqq/qshadow/core/QShadow;
+    //   193: invokevirtual 216	com/tencent/mobileqq/qshadow/core/QShadow:getQShadowBuildInPlugins	()Ljava/util/Map;
+    //   196: invokeinterface 222 1 0
+    //   201: invokeinterface 226 1 0
+    //   206: astore_3
+    //   207: aload_1
+    //   208: astore_2
+    //   209: aload_3
+    //   210: invokeinterface 231 1 0
+    //   215: ifeq +176 -> 391
+    //   218: aload_3
+    //   219: invokeinterface 235 1 0
+    //   224: checkcast 237	java/util/Map$Entry
+    //   227: astore 4
+    //   229: new 62	cooperation/plugin/PluginInfo
+    //   232: dup
+    //   233: invokespecial 175	cooperation/plugin/PluginInfo:<init>	()V
+    //   236: astore_2
+    //   237: aload_2
+    //   238: iconst_1
+    //   239: putfield 198	cooperation/plugin/PluginInfo:mSubType	I
+    //   242: aload_2
+    //   243: aload 4
+    //   245: invokeinterface 240 1 0
     //   250: checkcast 106	com/tencent/mobileqq/pluginsdk/PluginBaseInfo
-    //   253: getfield 107	com/tencent/mobileqq/pluginsdk/PluginBaseInfo:mMD5	Ljava/lang/String;
-    //   256: putfield 104	cooperation/plugin/PluginInfo:mMD5	Ljava/lang/String;
-    //   259: aload 4
-    //   261: aload_3
-    //   262: invokeinterface 235 1 0
+    //   253: getfield 241	com/tencent/mobileqq/pluginsdk/PluginBaseInfo:mID	Ljava/lang/String;
+    //   256: putfield 178	cooperation/plugin/PluginInfo:mID	Ljava/lang/String;
+    //   259: aload_2
+    //   260: aload 4
+    //   262: invokeinterface 240 1 0
     //   267: checkcast 106	com/tencent/mobileqq/pluginsdk/PluginBaseInfo
-    //   270: getfield 237	com/tencent/mobileqq/pluginsdk/PluginBaseInfo:mUpdateType	I
-    //   273: putfield 182	cooperation/plugin/PluginInfo:mUpdateType	I
-    //   276: aload 4
-    //   278: aload_3
-    //   279: invokeinterface 235 1 0
+    //   270: getfield 107	com/tencent/mobileqq/pluginsdk/PluginBaseInfo:mMD5	Ljava/lang/String;
+    //   273: putfield 104	cooperation/plugin/PluginInfo:mMD5	Ljava/lang/String;
+    //   276: aload_2
+    //   277: aload 4
+    //   279: invokeinterface 240 1 0
     //   284: checkcast 106	com/tencent/mobileqq/pluginsdk/PluginBaseInfo
-    //   287: getfield 238	com/tencent/mobileqq/pluginsdk/PluginBaseInfo:mInstallType	I
-    //   290: putfield 185	cooperation/plugin/PluginInfo:mInstallType	I
-    //   293: aload_0
-    //   294: getfield 34	cooperation/plugin/BuiltinPluginManager:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   297: aload_3
-    //   298: invokeinterface 241 1 0
-    //   303: aload 4
-    //   305: invokevirtual 193	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   308: pop
-    //   309: invokestatic 70	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   312: ifeq -121 -> 191
-    //   315: ldc 72
-    //   317: iconst_2
-    //   318: new 74	java/lang/StringBuilder
-    //   321: dup
-    //   322: invokespecial 75	java/lang/StringBuilder:<init>	()V
-    //   325: ldc 243
-    //   327: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   330: aload 4
-    //   332: getfield 178	cooperation/plugin/PluginInfo:mID	Ljava/lang/String;
-    //   335: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   338: ldc 189
-    //   340: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   343: aload 4
-    //   345: getfield 104	cooperation/plugin/PluginInfo:mMD5	Ljava/lang/String;
-    //   348: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   351: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   354: invokestatic 96	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   357: goto -166 -> 191
-    //   360: astore_3
-    //   361: aload_1
-    //   362: astore_2
-    //   363: aload_3
-    //   364: astore_1
-    //   365: aload_2
-    //   366: ifnull +7 -> 373
+    //   287: getfield 242	com/tencent/mobileqq/pluginsdk/PluginBaseInfo:mUpdateType	I
+    //   290: putfield 182	cooperation/plugin/PluginInfo:mUpdateType	I
+    //   293: aload_2
+    //   294: aload 4
+    //   296: invokeinterface 240 1 0
+    //   301: checkcast 106	com/tencent/mobileqq/pluginsdk/PluginBaseInfo
+    //   304: getfield 243	com/tencent/mobileqq/pluginsdk/PluginBaseInfo:mInstallType	I
+    //   307: putfield 185	cooperation/plugin/PluginInfo:mInstallType	I
+    //   310: aload_0
+    //   311: getfield 34	cooperation/plugin/BuiltinPluginManager:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   314: aload 4
+    //   316: invokeinterface 246 1 0
+    //   321: aload_2
+    //   322: invokevirtual 206	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   325: pop
+    //   326: invokestatic 70	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   329: ifeq -122 -> 207
+    //   332: new 72	java/lang/StringBuilder
+    //   335: dup
+    //   336: invokespecial 73	java/lang/StringBuilder:<init>	()V
+    //   339: astore 4
+    //   341: aload 4
+    //   343: ldc 248
+    //   345: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   348: pop
+    //   349: aload 4
+    //   351: aload_2
+    //   352: getfield 178	cooperation/plugin/PluginInfo:mID	Ljava/lang/String;
+    //   355: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   358: pop
+    //   359: aload 4
+    //   361: ldc 202
+    //   363: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   366: pop
+    //   367: aload 4
     //   369: aload_2
-    //   370: invokevirtual 196	java/io/BufferedReader:close	()V
-    //   373: aload_1
-    //   374: athrow
-    //   375: aload_1
-    //   376: ifnull -203 -> 173
-    //   379: aload_1
-    //   380: invokevirtual 196	java/io/BufferedReader:close	()V
-    //   383: return
-    //   384: astore_1
-    //   385: return
-    //   386: astore_1
-    //   387: return
-    //   388: astore_2
-    //   389: goto -16 -> 373
-    //   392: astore_1
-    //   393: aconst_null
-    //   394: astore_2
-    //   395: goto -30 -> 365
-    //   398: astore_1
-    //   399: aload_2
-    //   400: astore_1
-    //   401: goto -236 -> 165
+    //   370: getfield 104	cooperation/plugin/PluginInfo:mMD5	Ljava/lang/String;
+    //   373: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   376: pop
+    //   377: ldc 88
+    //   379: iconst_2
+    //   380: aload 4
+    //   382: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   385: invokestatic 96	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   388: goto -181 -> 207
+    //   391: aload_2
+    //   392: invokevirtual 251	java/io/BufferedReader:close	()V
+    //   395: return
+    //   396: astore_2
+    //   397: goto +9 -> 406
+    //   400: goto +18 -> 418
+    //   403: astore_2
+    //   404: aconst_null
+    //   405: astore_1
+    //   406: aload_1
+    //   407: ifnull +7 -> 414
+    //   410: aload_1
+    //   411: invokevirtual 251	java/io/BufferedReader:close	()V
+    //   414: aload_2
+    //   415: athrow
+    //   416: aconst_null
+    //   417: astore_1
+    //   418: aload_1
+    //   419: ifnull +8 -> 427
+    //   422: aload_1
+    //   423: astore_2
+    //   424: goto -33 -> 391
+    //   427: return
+    //   428: astore_1
+    //   429: goto -13 -> 416
+    //   432: astore_2
+    //   433: goto -33 -> 400
+    //   436: astore_1
+    //   437: return
+    //   438: astore_1
+    //   439: goto -25 -> 414
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	404	0	this	BuiltinPluginManager
-    //   28	352	1	localObject1	Object
-    //   384	1	1	localException1	java.lang.Exception
-    //   386	1	1	localException2	java.lang.Exception
-    //   392	1	1	localObject2	Object
-    //   398	1	1	localIOException1	java.io.IOException
-    //   400	1	1	localObject3	Object
-    //   1	86	2	str	String
-    //   164	1	2	localIOException2	java.io.IOException
-    //   190	180	2	localObject4	Object
-    //   388	1	2	localException3	java.lang.Exception
-    //   394	6	2	localObject5	Object
-    //   53	245	3	localObject6	Object
-    //   360	4	3	localObject7	Object
-    //   47	297	4	localObject8	Object
+    //   0	442	0	this	BuiltinPluginManager
+    //   26	397	1	localBufferedReader1	java.io.BufferedReader
+    //   428	1	1	localIOException1	java.io.IOException
+    //   436	1	1	localException1	java.lang.Exception
+    //   438	1	1	localException2	java.lang.Exception
+    //   31	361	2	localObject1	Object
+    //   396	1	2	localObject2	Object
+    //   403	12	2	localObject3	Object
+    //   423	1	2	localBufferedReader2	java.io.BufferedReader
+    //   432	1	2	localIOException2	java.io.IOException
+    //   51	168	3	localObject4	Object
+    //   45	336	4	localObject5	Object
     // Exception table:
     //   from	to	target	type
-    //   29	34	164	java/io/IOException
-    //   38	49	164	java/io/IOException
-    //   57	64	164	java/io/IOException
-    //   69	150	164	java/io/IOException
-    //   150	161	164	java/io/IOException
-    //   174	191	164	java/io/IOException
-    //   191	357	164	java/io/IOException
-    //   29	34	360	finally
-    //   38	49	360	finally
-    //   57	64	360	finally
-    //   69	150	360	finally
-    //   150	161	360	finally
-    //   174	191	360	finally
-    //   191	357	360	finally
-    //   379	383	384	java/lang/Exception
-    //   169	173	386	java/lang/Exception
-    //   369	373	388	java/lang/Exception
-    //   2	29	392	finally
-    //   2	29	398	java/io/IOException
+    //   27	32	396	finally
+    //   36	47	396	finally
+    //   55	62	396	finally
+    //   67	118	396	finally
+    //   118	176	396	finally
+    //   176	187	396	finally
+    //   190	207	396	finally
+    //   209	388	396	finally
+    //   0	27	403	finally
+    //   0	27	428	java/io/IOException
+    //   27	32	432	java/io/IOException
+    //   36	47	432	java/io/IOException
+    //   55	62	432	java/io/IOException
+    //   67	118	432	java/io/IOException
+    //   118	176	432	java/io/IOException
+    //   176	187	432	java/io/IOException
+    //   190	207	432	java/io/IOException
+    //   209	388	432	java/io/IOException
+    //   391	395	436	java/lang/Exception
+    //   410	414	438	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.plugin.BuiltinPluginManager
  * JD-Core Version:    0.7.0.1
  */

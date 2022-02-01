@@ -1,6 +1,7 @@
 package com.tencent.widget.pull2refresh;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,171 +9,186 @@ import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.biz.qqstory.boundaries.StoryApi;
 import com.tencent.mobileqq.app.HardCodeUtil;
 
 public class XLoadMoreLayout
   extends FrameLayout
   implements ILoadMoreLayout
 {
-  protected int a;
-  protected View a;
-  protected ProgressBar a;
-  protected TextView a;
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
-  protected String e;
+  public static final int CAN_MORE = 2;
+  public static final int HIDE = 0;
+  public static final int LOADING = 1;
+  public static final int LOAD_MORE_ERROR = 5;
+  public static final int LOAD_MORE_PENDING = 3;
+  public static final int NO_MORE_DATA = 4;
+  protected String mCanMoreText;
+  protected Context mContext;
+  protected View mLoadLayout;
+  protected String mLoadMoreError;
+  protected String mLoadingText;
+  protected String mNoMoreDataText;
+  protected ProgressBar mProgressBar;
+  protected int mState = -1;
+  protected TextView mTextView;
+  protected String mWillLoadMoreText;
   
   public XLoadMoreLayout(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = -1;
-    a();
+    init();
   }
   
   public XLoadMoreLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = -1;
-    a();
+    init();
   }
   
   public XLoadMoreLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Int = -1;
-    a();
+    init();
   }
   
-  private void a()
-  {
-    b();
-    c();
-  }
-  
-  private boolean a(int paramInt1, int paramInt2)
+  private boolean checkStateSwitch(int paramInt1, int paramInt2)
   {
     if (paramInt1 < 0) {
       return true;
     }
-    switch (paramInt1)
+    if (paramInt1 != 0)
     {
-    }
-    do
-    {
-      do
+      if (paramInt1 != 1)
       {
-        do
+        if (paramInt1 != 2)
         {
-          do
+          if (paramInt1 != 3)
           {
-            do
+            if (paramInt1 != 4)
             {
-              return false;
-              if ((paramInt2 == 0) || (paramInt2 == 3) || (paramInt2 == 4)) {
-                break;
+              if ((paramInt1 == 5) && ((paramInt2 == 0) || (paramInt2 == 1) || (paramInt2 == 2) || (paramInt2 == 3))) {
+                return true;
               }
-            } while (paramInt2 != 5);
-            return true;
-            if ((paramInt2 == 0) || (paramInt2 == 3) || (paramInt2 == 4)) {
-              break;
             }
-          } while (paramInt2 != 5);
-          return true;
-          if ((paramInt2 == 0) || (paramInt2 == 1) || (paramInt2 == 2) || (paramInt2 == 4)) {
-            break;
+            else if ((paramInt2 == 0) || (paramInt2 == 1) || (paramInt2 == 3)) {
+              return true;
+            }
           }
-        } while (paramInt2 != 5);
-        return true;
-        if ((paramInt2 == 0) || (paramInt2 == 1)) {
-          break;
+          else if ((paramInt2 == 0) || (paramInt2 == 1) || (paramInt2 == 2) || (paramInt2 == 4) || (paramInt2 == 5)) {
+            return true;
+          }
         }
-      } while (paramInt2 != 3);
-      return true;
-      if ((paramInt2 == 0) || (paramInt2 == 1) || (paramInt2 == 2)) {
-        break;
+        else if ((paramInt2 == 0) || (paramInt2 == 3) || (paramInt2 == 4) || (paramInt2 == 5)) {
+          return true;
+        }
       }
-    } while (paramInt2 != 3);
+      else
+      {
+        if ((paramInt2 == 0) || (paramInt2 == 3) || (paramInt2 == 4)) {
+          break label145;
+        }
+        if (paramInt2 == 5) {
+          return true;
+        }
+      }
+      return false;
+    }
+    label145:
     return true;
   }
   
-  private void b()
+  private void init()
   {
-    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131716848);
-    this.c = HardCodeUtil.a(2131716849);
-    this.d = HardCodeUtil.a(2131716850);
-    this.b = StoryApi.a(2131699774);
-    this.e = HardCodeUtil.a(2131716851);
+    initResources();
+    initView();
   }
   
-  private void c()
+  private void initResources()
   {
-    LayoutInflater.from(getContext()).inflate(2131560506, this, true);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131373697);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131373701));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373702));
-    c(0);
+    this.mWillLoadMoreText = HardCodeUtil.a(2131695286);
+    this.mCanMoreText = HardCodeUtil.a(2131695282);
+    this.mNoMoreDataText = HardCodeUtil.a(2131695285);
+    this.mLoadingText = getResources().getString(2131695284);
+    this.mLoadMoreError = HardCodeUtil.a(2131695283);
   }
   
-  private boolean c(int paramInt)
+  private void initView()
   {
-    if (!a(this.jdField_a_of_type_Int, paramInt)) {
+    LayoutInflater.from(getContext()).inflate(2131559641, this, true);
+    this.mLoadLayout = findViewById(2131373269);
+    this.mProgressBar = ((ProgressBar)this.mLoadLayout.findViewById(2131373273));
+    this.mTextView = ((TextView)this.mLoadLayout.findViewById(2131373274));
+    updateState(0);
+  }
+  
+  private boolean updateState(int paramInt)
+  {
+    if (!checkStateSwitch(this.mState, paramInt)) {
       return false;
     }
-    this.jdField_a_of_type_Int = paramInt;
-    switch (paramInt)
+    this.mState = paramInt;
+    if (paramInt != 0)
     {
-    }
-    for (;;)
-    {
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt != 4)
+            {
+              if (paramInt != 5) {
+                return true;
+              }
+              this.mProgressBar.setVisibility(8);
+              this.mTextView.setText(this.mLoadMoreError);
+              this.mLoadLayout.setVisibility(0);
+              return true;
+            }
+            this.mLoadLayout.setVisibility(8);
+            return true;
+          }
+          this.mProgressBar.setVisibility(8);
+          this.mTextView.setText(this.mWillLoadMoreText);
+          this.mLoadLayout.setVisibility(0);
+          return true;
+        }
+        this.mProgressBar.setVisibility(0);
+        this.mTextView.setText(this.mCanMoreText);
+        this.mLoadLayout.setVisibility(0);
+        return true;
+      }
+      this.mProgressBar.setVisibility(0);
+      this.mTextView.setText(this.mLoadingText);
+      this.mLoadLayout.setVisibility(0);
       return true;
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      continue;
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.c);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      continue;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      continue;
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.b);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      continue;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      continue;
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.e);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
+    this.mLoadLayout.setVisibility(8);
+    return true;
   }
   
-  public int a()
+  public boolean checkState(int paramInt)
   {
-    return this.jdField_a_of_type_Int;
+    return checkStateSwitch(this.mState, paramInt);
   }
   
-  public boolean a(int paramInt)
+  public int getState()
   {
-    return c(paramInt);
-  }
-  
-  public boolean b(int paramInt)
-  {
-    return a(this.jdField_a_of_type_Int, paramInt);
+    return this.mState;
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(paramOnClickListener);
+    this.mLoadLayout.setOnClickListener(paramOnClickListener);
+  }
+  
+  public boolean setState(int paramInt)
+  {
+    return updateState(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.pull2refresh.XLoadMoreLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -27,75 +27,83 @@ public class MiniAppGuessYouLikeServlet
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
     Bundle localBundle = new Bundle();
-    for (;;)
+    try
     {
-      try
+      localBundle.putInt("key_index", paramIntent.getIntExtra("key_index", -1));
+      if (paramFromServiceMsg != null)
       {
-        localBundle.putInt("key_index", paramIntent.getIntExtra("key_index", -1));
-        if (paramFromServiceMsg == null) {
-          continue;
+        boolean bool = paramFromServiceMsg.isSuccess();
+        if (bool)
+        {
+          localObject = new PROTOCAL.StQWebRsp();
+          ((PROTOCAL.StQWebRsp)localObject).mergeFrom(WupUtil.b(paramFromServiceMsg.getWupBuffer()));
+          localBundle.putInt("key_index", (int)((PROTOCAL.StQWebRsp)localObject).Seq.get());
+          localBundle.putLong("retCode", ((PROTOCAL.StQWebRsp)localObject).retCode.get());
+          localBundle.putString("errMsg", ((PROTOCAL.StQWebRsp)localObject).errMsg.get().toStringUtf8());
+          localBundle.putParcelable("searchGuessYouLike", paramFromServiceMsg);
+          notifyObserver(paramIntent, 1086, true, localBundle, MiniAppObserver.class);
         }
-        if (!paramFromServiceMsg.isSuccess()) {
-          continue;
+        else
+        {
+          localBundle.putLong("retCode", paramFromServiceMsg.getBusinessFailCode());
+          localBundle.putString("errMsg", paramFromServiceMsg.getBusinessFailMsg());
+          notifyObserver(paramIntent, 1086, false, localBundle, MiniAppObserver.class);
         }
-        PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(WupUtil.b(paramFromServiceMsg.getWupBuffer()));
-        localBundle.putInt("key_index", (int)localStQWebRsp.Seq.get());
-        localBundle.putLong("retCode", localStQWebRsp.retCode.get());
-        localBundle.putString("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
-        localBundle.putParcelable("searchGuessYouLike", paramFromServiceMsg);
-        notifyObserver(paramIntent, 1086, true, localBundle, MiniAppObserver.class);
       }
-      catch (Throwable localThrowable)
+      else
       {
-        QLog.e("MiniAppGuessYouLikeServlet", 1, localThrowable + ", onReceive exception: " + Log.getStackTraceString(localThrowable));
-        continue;
         QLog.e("MiniAppGuessYouLikeServlet", 1, "onReceive. inform MiniAppGuessYouLikeServlet response is null.");
-        continue;
       }
-      doReport(paramIntent, paramFromServiceMsg);
-      return;
-      localBundle.putLong("retCode", paramFromServiceMsg.getBusinessFailCode());
-      localBundle.putString("errMsg", paramFromServiceMsg.getBusinessFailMsg());
-      notifyObserver(paramIntent, 1086, false, localBundle, MiniAppObserver.class);
     }
+    catch (Throwable localThrowable)
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(localThrowable);
+      ((StringBuilder)localObject).append(", onReceive exception: ");
+      ((StringBuilder)localObject).append(Log.getStackTraceString(localThrowable));
+      QLog.e("MiniAppGuessYouLikeServlet", 1, ((StringBuilder)localObject).toString());
+    }
+    doReport(paramIntent, paramFromServiceMsg);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
     int i = paramIntent.getIntExtra("key_index", -1);
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("key_search_guess_you_like_ext_info");
+    byte[] arrayOfByte1 = paramIntent.getByteArrayExtra("key_search_guess_you_like_ext_info");
     int j = paramIntent.getIntExtra("searchGuessYouLikeCount", 8);
-    Object localObject = null;
-    if (arrayOfByte != null) {
+    if (arrayOfByte1 != null)
+    {
       localObject = new COMM.StCommonExt();
-    }
-    try
-    {
-      ((COMM.StCommonExt)localObject).mergeFrom(arrayOfByte);
-      arrayOfByte = new GuessYouLikeRequest((COMM.StCommonExt)localObject, j).encode(paramIntent, i, getTraceId());
-      localObject = arrayOfByte;
-      if (arrayOfByte == null) {
-        localObject = new byte[4];
-      }
-      paramPacket.setSSOCommand("LightAppSvc.store_app_search.GetGuessYouLike");
-      paramPacket.putSendData(WupUtil.a((byte[])localObject));
-      paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-      super.onSend(paramIntent, paramPacket);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      try
       {
-        QLog.e("MiniAppGuessYouLikeServlet", 2, "onSend. mergeFrom exception!" + Log.getStackTraceString(localException));
+        ((COMM.StCommonExt)localObject).mergeFrom(arrayOfByte1);
+      }
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onSend. mergeFrom exception!");
+        localStringBuilder.append(Log.getStackTraceString(localException));
+        QLog.e("MiniAppGuessYouLikeServlet", 2, localStringBuilder.toString());
       }
     }
+    else
+    {
+      localObject = null;
+    }
+    byte[] arrayOfByte2 = new GuessYouLikeRequest((COMM.StCommonExt)localObject, j).encode(paramIntent, i, getTraceId());
+    Object localObject = arrayOfByte2;
+    if (arrayOfByte2 == null) {
+      localObject = new byte[4];
+    }
+    paramPacket.setSSOCommand("LightAppSvc.store_app_search.GetGuessYouLike");
+    paramPacket.putSendData(WupUtil.a((byte[])localObject));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    super.onSend(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGuessYouLikeServlet
  * JD-Core Version:    0.7.0.1
  */

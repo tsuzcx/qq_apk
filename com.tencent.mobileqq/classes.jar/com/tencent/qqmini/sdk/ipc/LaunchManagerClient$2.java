@@ -14,7 +14,10 @@ class LaunchManagerClient$2
   public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
     LaunchManagerClient.access$202(this.this$0, ILaunchManager.Stub.asInterface(paramIBinder));
-    QMLog.w("minisdk-start_AppBrandProxy", "onServiceConnected:" + LaunchManagerClient.access$200(this.this$0));
+    paramComponentName = new StringBuilder();
+    paramComponentName.append("onServiceConnected:");
+    paramComponentName.append(LaunchManagerClient.access$200(this.this$0));
+    QMLog.w("minisdk-start_AppBrandProxy", paramComponentName.toString());
     LaunchManagerClient.access$302(this.this$0, false);
     LaunchManagerClient.access$400(this.this$0);
     LaunchManagerClient.access$500(this.this$0);
@@ -29,7 +32,7 @@ class LaunchManagerClient$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ipc.LaunchManagerClient.2
  * JD-Core Version:    0.7.0.1
  */

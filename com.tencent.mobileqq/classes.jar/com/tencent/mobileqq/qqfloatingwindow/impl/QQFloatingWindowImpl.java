@@ -5,11 +5,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.view.View;
+import com.tencent.mobileqq.qqfloatingwindow.FloatingBaseProxyWrapper;
 import com.tencent.mobileqq.qqfloatingwindow.FloatingScreenParams;
 import com.tencent.mobileqq.qqfloatingwindow.FloatingScreenParams.FloatingBuilder;
+import com.tencent.mobileqq.qqfloatingwindow.FloatingScreenReporter;
 import com.tencent.mobileqq.qqfloatingwindow.IQQFloatingWindow;
 import com.tencent.mobileqq.qqfloatingwindow.IQQFloatingWindowBroadcast;
-import com.tencent.mobileqq.qqfloatingwindow.impl.uiwrapper.FloatingBaseWrapper;
 import com.tencent.mobileqq.qqfloatingwindow.impl.uiwrapper.FloatingVideoWrapper;
 import com.tencent.mobileqq.qqfloatingwindow.impl.uiwrapper.FloatingWrapperFactory;
 import com.tencent.mobileqq.qqfloatingwindow.listener.IFullScreenEnterListener;
@@ -44,41 +45,39 @@ public class QQFloatingWindowImpl
   
   public int enterCustomFloatingScreen(Context paramContext, View paramView, FloatingScreenParams paramFloatingScreenParams, String paramString, int paramInt)
   {
-    int i = 1;
-    if ((paramContext == null) || (paramView == null)) {
-      i = 2;
+    if (paramContext != null)
+    {
+      if (paramView == null) {
+        return 2;
+      }
+      if (!FloatingScreenPermission.checkPermission(paramContext)) {
+        return 1;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("FloatingScreenManager", 2, new Object[] { "enterCustomFloatingScreen:", Integer.valueOf(paramInt), ", view:", paramView.toString() });
+      }
+      FloatingScreenParams localFloatingScreenParams = paramFloatingScreenParams;
+      if (paramFloatingScreenParams == null) {
+        localFloatingScreenParams = new FloatingScreenParams.FloatingBuilder().setShapeType(1).setCanZoom(false).build();
+      }
+      paramContext = this.mWrapperFactory.a(paramContext, paramString);
+      if (paramContext == null) {
+        return 3;
+      }
+      return paramContext.a(localFloatingScreenParams, paramView);
     }
-    while (!FloatingScreenPermission.checkPermission(paramContext)) {
-      return i;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatingScreenManager", 2, new Object[] { "enterCustomFloatingScreen:", Integer.valueOf(paramInt), ", view:", paramView.toString() });
-    }
-    FloatingScreenParams localFloatingScreenParams = paramFloatingScreenParams;
-    if (paramFloatingScreenParams == null) {
-      localFloatingScreenParams = new FloatingScreenParams.FloatingBuilder().setShapeType(1).setCanZoom(false).build();
-    }
-    paramContext = this.mWrapperFactory.a(paramContext, paramString);
-    if (paramContext == null) {
-      return 3;
-    }
-    return paramContext.a(localFloatingScreenParams, paramView);
+    return 2;
   }
   
   public int enterFloatingScreen(Context paramContext, View paramView, FloatingScreenParams paramFloatingScreenParams, int paramInt)
   {
-    int i = 1;
-    if ((paramContext == null) || (paramView == null)) {
-      i = 2;
-    }
-    for (;;)
-    {
-      return i;
+    if ((paramContext != null) && (paramView != null)) {
       try
       {
         FloatingScreenReporter.b(paramInt);
-        if (!FloatingScreenPermission.checkPermission(paramContext)) {
-          continue;
+        boolean bool = FloatingScreenPermission.checkPermission(paramContext);
+        if (!bool) {
+          return 1;
         }
         if (QLog.isColorLevel()) {
           QLog.d("FloatingScreenManager", 2, new Object[] { "enterFloatingScree:", paramView.toString() });
@@ -90,7 +89,7 @@ public class QQFloatingWindowImpl
           localFloatingScreenParams = new FloatingScreenParams.FloatingBuilder().setShapeType(2).setCanZoom(true).build();
         }
         paramFloatingScreenParams = MobileQQ.getContext().getSharedPreferences("qqfs_floating_sp", 4);
-        i = paramFloatingScreenParams.getInt("qqfs_floating_center_x", -2147483648);
+        int i = paramFloatingScreenParams.getInt("qqfs_floating_center_x", -2147483648);
         int j = paramFloatingScreenParams.getInt("qqfs_floating_center_y", -2147483648);
         if ((i != -2147483648) && (j != -2147483648))
         {
@@ -98,36 +97,28 @@ public class QQFloatingWindowImpl
           localFloatingScreenParams.setFloatingCenterY(j);
         }
         paramContext = this.mWrapperFactory.a(paramContext, FloatingVideoWrapper.CLASS_NAME);
-        if (paramContext == null)
-        {
-          i = 3;
-          continue;
+        if (paramContext == null) {
+          return 3;
         }
-        j = paramContext.a(localFloatingScreenParams, paramView);
-        i = j;
-        if (j != 0) {
-          continue;
+        i = paramContext.a(localFloatingScreenParams, paramView);
+        if (i == 0) {
+          FloatingScreenReporter.a(paramInt);
         }
-        FloatingScreenReporter.a(paramInt);
-        i = j;
+        return i;
       }
       finally {}
     }
+    return 2;
   }
   
   public int enterLocationFloatingScreen(Context paramContext, View paramView, FloatingScreenParams paramFloatingScreenParams, String paramString)
   {
-    int i = 1;
-    if ((paramContext == null) || (paramView == null)) {
-      i = 2;
-    }
-    for (;;)
-    {
-      return i;
+    if ((paramContext != null) && (paramView != null)) {
       try
       {
-        if (!FloatingScreenPermission.checkPermission(paramContext)) {
-          continue;
+        boolean bool = FloatingScreenPermission.checkPermission(paramContext);
+        if (!bool) {
+          return 1;
         }
         if (QLog.isColorLevel()) {
           QLog.d("FloatingScreenManager", 2, new Object[] { "enterLocationFloatingScreen:", paramView.toString() });
@@ -137,37 +128,31 @@ public class QQFloatingWindowImpl
           localFloatingScreenParams = new FloatingScreenParams.FloatingBuilder().setShapeType(1).setCanZoom(false).build();
         }
         paramContext = this.mWrapperFactory.a(paramContext, paramString);
-        if (paramContext == null)
-        {
-          i = 3;
-          continue;
+        if (paramContext == null) {
+          return 3;
         }
         paramContext.a(localFloatingScreenParams);
-        i = paramContext.a(localFloatingScreenParams, paramView);
+        int i = paramContext.a(localFloatingScreenParams, paramView);
+        return i;
       }
       finally {}
     }
+    return 2;
   }
   
   public int enterWatchTogetherFloatingScreen(Context paramContext, View paramView, FloatingScreenParams paramFloatingScreenParams, String paramString)
   {
-    int i = 1;
-    if ((paramContext == null) || (paramView == null)) {
-      i = 2;
-    }
-    for (;;)
-    {
-      return i;
+    if ((paramContext != null) && (paramView != null)) {
       try
       {
-        if (!FloatingScreenPermission.checkPermission(paramContext)) {
-          continue;
+        boolean bool = FloatingScreenPermission.checkPermission(paramContext);
+        if (!bool) {
+          return 1;
         }
         if (!MobileQQ.sMobileQQ.getQQProcessName().endsWith(":tool"))
         {
-          QQToast.a(paramContext, 2131699658, 0).a();
-          i = -1;
-          continue;
+          QQToast.a(paramContext, 2131699788, 0).a();
+          return -1;
         }
         if (QLog.isColorLevel()) {
           QLog.d("FloatingScreenManager", 2, new Object[] { "enterLocationFloatingScreen:", paramView.toString() });
@@ -177,28 +162,29 @@ public class QQFloatingWindowImpl
           localFloatingScreenParams = new FloatingScreenParams.FloatingBuilder().setShapeType(1).setCanZoom(false).build();
         }
         paramContext = this.mWrapperFactory.a(paramContext, paramString);
-        if (paramContext == null)
-        {
-          i = 3;
-          continue;
+        if (paramContext == null) {
+          return 3;
         }
         paramContext.a(localFloatingScreenParams);
-        i = paramContext.a(localFloatingScreenParams, paramView);
+        int i = paramContext.a(localFloatingScreenParams, paramView);
+        return i;
       }
       finally {}
     }
+    return 2;
   }
   
   public void quitFloatingScreen()
   {
-    FloatingBaseWrapper localFloatingBaseWrapper = this.mWrapperFactory.a(null, FloatingVideoWrapper.CLASS_NAME);
-    if (localFloatingBaseWrapper != null) {
-      localFloatingBaseWrapper.b(4);
-    }
-    while (!QLog.isColorLevel()) {
+    FloatingBaseProxyWrapper localFloatingBaseProxyWrapper = this.mWrapperFactory.a(null, FloatingVideoWrapper.CLASS_NAME);
+    if (localFloatingBaseProxyWrapper != null)
+    {
+      localFloatingBaseProxyWrapper.b(4);
       return;
     }
-    QLog.d("FloatingScreenManager", 2, "quitFloatingScreen Fail, wrapper is null");
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatingScreenManager", 2, "quitFloatingScreen Fail, wrapper is null");
+    }
   }
   
   public void quitFloatingScreen(String paramString)
@@ -219,39 +205,36 @@ public class QQFloatingWindowImpl
   
   public IVideoOuterStatusListener setFloatingVideoListener(IVideoInnerStatusListener paramIVideoInnerStatusListener)
   {
-    IVideoOuterStatusListener localIVideoOuterStatusListener = null;
-    FloatingBaseWrapper localFloatingBaseWrapper = this.mWrapperFactory.a(null, FloatingVideoWrapper.CLASS_NAME);
-    if (localFloatingBaseWrapper != null) {
-      localIVideoOuterStatusListener = localFloatingBaseWrapper.a(paramIVideoInnerStatusListener);
+    FloatingBaseProxyWrapper localFloatingBaseProxyWrapper = this.mWrapperFactory.a(null, FloatingVideoWrapper.CLASS_NAME);
+    if (localFloatingBaseProxyWrapper != null) {
+      return localFloatingBaseProxyWrapper.a(paramIVideoInnerStatusListener);
     }
-    return localIVideoOuterStatusListener;
+    return null;
   }
   
   public IVideoOuterStatusListener setFloatingVideoListener(IVideoInnerStatusListener paramIVideoInnerStatusListener, String paramString)
   {
-    Object localObject = null;
-    FloatingBaseWrapper localFloatingBaseWrapper = this.mWrapperFactory.a(null, paramString);
-    paramString = localObject;
-    if (localFloatingBaseWrapper != null) {
-      paramString = localFloatingBaseWrapper.a(paramIVideoInnerStatusListener);
+    paramString = this.mWrapperFactory.a(null, paramString);
+    if (paramString != null) {
+      return paramString.a(paramIVideoInnerStatusListener);
     }
-    return paramString;
+    return null;
   }
   
   @Deprecated
   public void setFullScreenListener(IFullScreenEnterListener paramIFullScreenEnterListener)
   {
-    FloatingBaseWrapper localFloatingBaseWrapper = this.mWrapperFactory.a(null, FloatingVideoWrapper.CLASS_NAME);
-    if (localFloatingBaseWrapper != null) {
-      localFloatingBaseWrapper.a(paramIFullScreenEnterListener);
+    FloatingBaseProxyWrapper localFloatingBaseProxyWrapper = this.mWrapperFactory.a(null, FloatingVideoWrapper.CLASS_NAME);
+    if (localFloatingBaseProxyWrapper != null) {
+      localFloatingBaseProxyWrapper.a(paramIFullScreenEnterListener);
     }
   }
   
   public void setFullScreenViewClickListener(IFullScreenViewClickListener paramIFullScreenViewClickListener)
   {
-    FloatingBaseWrapper localFloatingBaseWrapper = this.mWrapperFactory.a(null, FloatingVideoWrapper.CLASS_NAME);
-    if (localFloatingBaseWrapper != null) {
-      localFloatingBaseWrapper.a(paramIFullScreenViewClickListener);
+    FloatingBaseProxyWrapper localFloatingBaseProxyWrapper = this.mWrapperFactory.a(null, FloatingVideoWrapper.CLASS_NAME);
+    if (localFloatingBaseProxyWrapper != null) {
+      localFloatingBaseProxyWrapper.a(paramIFullScreenViewClickListener);
     }
   }
   
@@ -281,7 +264,7 @@ public class QQFloatingWindowImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qqfloatingwindow.impl.QQFloatingWindowImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -33,77 +33,65 @@ public class WindowInfo
   
   public WindowInfo clone()
   {
+    WindowInfo localWindowInfo;
     try
     {
       localWindowInfo = (WindowInfo)super.clone();
-      localThrowable1.printStackTrace();
-    }
-    catch (Throwable localThrowable1)
-    {
       try
       {
         localWindowInfo.navigationBarInfo = this.navigationBarInfo.clone();
         return localWindowInfo;
       }
-      catch (Throwable localThrowable2)
-      {
-        WindowInfo localWindowInfo;
-        break label24;
-      }
-      localThrowable1 = localThrowable1;
+      catch (Throwable localThrowable1) {}
+      localThrowable2.printStackTrace();
+    }
+    catch (Throwable localThrowable2)
+    {
       localWindowInfo = null;
     }
-    label24:
     return localWindowInfo;
   }
   
   public void updateInfo(JSONObject paramJSONObject)
   {
-    Object localObject2 = null;
-    int i;
     if (paramJSONObject != null)
     {
       this.navigationBarInfo.updateInfo(paramJSONObject);
-      localObject1 = paramJSONObject.optString("backgroundColor");
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label143;
+      Object localObject1 = paramJSONObject.optString("backgroundColor");
+      int i;
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        i = this.backgroundColor;
+      } else {
+        i = DisplayUtil.parseColor((String)localObject1);
       }
-      i = this.backgroundColor;
       this.backgroundColor = i;
       this.backgroundTextStyle = paramJSONObject.optString("backgroundTextStyle", this.backgroundTextStyle);
-      if (!paramJSONObject.has("enablePullDownRefresh")) {
-        break label151;
+      boolean bool = paramJSONObject.has("enablePullDownRefresh");
+      Object localObject2 = null;
+      if (bool) {
+        localObject1 = Boolean.valueOf(paramJSONObject.optBoolean("enablePullDownRefresh"));
+      } else {
+        localObject1 = null;
       }
-      localObject1 = Boolean.valueOf(paramJSONObject.optBoolean("enablePullDownRefresh"));
-      label72:
       this.enablePullDownRefresh = ((Boolean)localObject1);
       this.onReachBottomDistance = paramJSONObject.optInt("onReachBottomDistance", this.onReachBottomDistance);
-      if (!paramJSONObject.has("disableScroll")) {
-        break label156;
+      if (paramJSONObject.has("disableScroll")) {
+        localObject1 = Boolean.valueOf(paramJSONObject.optBoolean("disableScroll"));
+      } else {
+        localObject1 = null;
       }
-    }
-    label143:
-    label151:
-    label156:
-    for (Object localObject1 = Boolean.valueOf(paramJSONObject.optBoolean("disableScroll"));; localObject1 = null)
-    {
       this.disableScroll = ((Boolean)localObject1);
       localObject1 = localObject2;
       if (paramJSONObject.has("pageOrientation")) {
         localObject1 = paramJSONObject.optString("pageOrientation", ORIENTATION_PORTRAIT);
       }
       this.pageOrientation = ((String)localObject1);
-      return;
-      i = DisplayUtil.parseColor((String)localObject1);
-      break;
-      localObject1 = null;
-      break label72;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.WindowInfo
  * JD-Core Version:    0.7.0.1
  */

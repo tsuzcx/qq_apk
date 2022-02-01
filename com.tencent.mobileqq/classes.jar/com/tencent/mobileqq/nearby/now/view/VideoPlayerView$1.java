@@ -8,17 +8,31 @@ final class VideoPlayerView$1
 {
   public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    QLog.i("VideoPlayerView", 2, "onPreLoadFailed() called with: s = [" + paramString1 + "], i = [" + paramInt + "], s1 = [" + paramString2 + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onPreLoadFailed() called with: s = [");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("], i = [");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("], s1 = [");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("]");
+    QLog.i("VideoPlayerView", 2, localStringBuilder.toString());
   }
   
   public void onPreLoadSucess(String paramString1, String paramString2)
   {
-    QLog.i("VideoPlayerView", 2, "onPreLoadSucess() called with: s = [" + paramString1 + "], s1 = [" + paramString2 + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onPreLoadSucess() called with: s = [");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("], s1 = [");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("]");
+    QLog.i("VideoPlayerView", 2, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.VideoPlayerView.1
  * JD-Core Version:    0.7.0.1
  */

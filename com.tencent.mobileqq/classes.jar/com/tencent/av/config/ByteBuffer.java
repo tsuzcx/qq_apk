@@ -20,8 +20,10 @@ public class ByteBuffer
   
   public void a(byte paramByte)
   {
-    this.jdField_a_of_type_ArrayOfByte[this.jdField_a_of_type_Int] = paramByte;
-    this.jdField_a_of_type_Int += 1;
+    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    int i = this.jdField_a_of_type_Int;
+    arrayOfByte[i] = paramByte;
+    this.jdField_a_of_type_Int = (i + 1);
     this.b += 1;
   }
   
@@ -40,14 +42,15 @@ public class ByteBuffer
   
   public byte[] a()
   {
-    byte[] arrayOfByte = new byte[this.b];
-    System.arraycopy(this.jdField_a_of_type_ArrayOfByte, 0, arrayOfByte, 0, this.b);
+    int i = this.b;
+    byte[] arrayOfByte = new byte[i];
+    System.arraycopy(this.jdField_a_of_type_ArrayOfByte, 0, arrayOfByte, 0, i);
     return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.config.ByteBuffer
  * JD-Core Version:    0.7.0.1
  */

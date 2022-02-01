@@ -15,75 +15,95 @@ public class QzoneModuleCompat
   
   public static boolean isDeviceInBlackList()
   {
-    boolean bool = true;
     for (;;)
     {
       try
       {
-        int i;
-        if (sIsInBlackList != -1)
+        i = sIsInBlackList;
+        boolean bool = false;
+        if (i != -1)
         {
           i = sIsInBlackList;
           if (i == 1) {
-            return bool;
+            bool = true;
           }
-          bool = false;
-          continue;
+          return bool;
         }
-        Object localObject1 = QzoneConfig.getInstance().getConfig("QZoneSetting", "qzone_module_black_list", "");
-        if (!TextUtils.isEmpty((CharSequence)localObject1))
-        {
+        localObject1 = "";
+        str1 = QzoneConfig.getInstance().getConfig("QZoneSetting", "qzone_module_black_list", "");
+        if (!TextUtils.isEmpty(str1)) {
           if (TextUtils.isEmpty(""))
           {
-            if (TextUtils.isEmpty((CharSequence)localObject1))
-            {
-              sIsInBlackList = 0;
-              bool = false;
-            }
+            localObject1 = str1;
           }
           else
           {
-            localObject1 = "" + "," + (String)localObject1;
-            continue;
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("");
+            ((StringBuilder)localObject1).append(",");
+            ((StringBuilder)localObject1).append(str1);
+            localObject1 = ((StringBuilder)localObject1).toString();
           }
-          try
-          {
-            localObject1 = ((String)localObject1).split(",");
-            String str2 = Build.MODEL.toLowerCase();
-            String str3 = Build.MANUFACTURER.toLowerCase();
-            QLog.i("QzoneModuleCompat", 1, "Device info -- model: " + str2 + ", manufacturer: " + str3 + ", platform: " + System.getProperty("ro.board.platform"));
-            int j = localObject1.length;
-            i = 0;
-            if (i < j)
-            {
-              Object localObject3 = localObject1[i];
-              if ((!localObject3.contains(str2)) && (!localObject3.equals(str3))) {
-                continue;
-              }
-              sIsInBlackList = 1;
-            }
-          }
-          catch (Throwable localThrowable)
-          {
-            QLog.e("QzoneModuleCompat", 1, "catch an exception:", localThrowable);
-            sIsInBlackList = 0;
-            bool = false;
-          }
-          continue;
-          i += 1;
         }
-        else
+        if (TextUtils.isEmpty((CharSequence)localObject1))
         {
-          String str1 = "";
+          sIsInBlackList = 0;
+          return false;
         }
       }
-      finally {}
+      finally
+      {
+        int i;
+        Object localObject1;
+        String str1;
+        String str2;
+        StringBuilder localStringBuilder;
+        int j;
+        continue;
+        throw localObject2;
+        continue;
+        i += 1;
+        continue;
+      }
+      try
+      {
+        localObject1 = ((String)localObject1).split(",");
+        str1 = Build.MODEL.toLowerCase();
+        str2 = Build.MANUFACTURER.toLowerCase();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Device info -- model: ");
+        localStringBuilder.append(str1);
+        localStringBuilder.append(", manufacturer: ");
+        localStringBuilder.append(str2);
+        localStringBuilder.append(", platform: ");
+        localStringBuilder.append(System.getProperty("ro.board.platform"));
+        QLog.i("QzoneModuleCompat", 1, localStringBuilder.toString());
+        j = localObject1.length;
+        i = 0;
+        if (i < j)
+        {
+          localStringBuilder = localObject1[i];
+          if (!localStringBuilder.contains(str1)) {
+            if (!localStringBuilder.equals(str2)) {
+              continue;
+            }
+          }
+          sIsInBlackList = 1;
+          return true;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("QzoneModuleCompat", 1, "catch an exception:", localThrowable);
+        sIsInBlackList = 0;
+        return false;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.networkedmodule.QzoneModuleCompat
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,8 @@ package com.tencent.gamecenter.wadl.biz.receiver;
 
 import android.text.TextUtils;
 import com.tencent.gamecenter.wadl.api.IQQGameDownloadService;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 
 class GameCenterReceiver$1
@@ -15,29 +15,40 @@ class GameCenterReceiver$1
   {
     try
     {
-      if (TextUtils.equals(this.a, "android.intent.action.PACKAGE_REMOVED"))
+      boolean bool = TextUtils.equals(this.a, "android.intent.action.PACKAGE_REMOVED");
+      IQQGameDownloadService localIQQGameDownloadService;
+      if (bool)
       {
-        if (MobileQQ.sProcessId == 1) {
-          ((IQQGameDownloadService)QRoute.api(IQQGameDownloadService.class)).doAppSystemReceiver("doUninstallAppCompleted", this.b);
+        if (MobileQQ.sProcessId == 1)
+        {
+          localIQQGameDownloadService = (IQQGameDownloadService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IQQGameDownloadService.class, "multi");
+          if (localIQQGameDownloadService != null) {
+            localIQQGameDownloadService.doAppSystemReceiver("doUninstallAppCompleted", this.b);
+          }
         }
       }
       else if ((TextUtils.equals(this.a, "android.intent.action.PACKAGE_ADDED")) && (MobileQQ.sProcessId == 1))
       {
-        ((IQQGameDownloadService)QRoute.api(IQQGameDownloadService.class)).doAppSystemReceiver("doInstallAppCompleted", this.b);
-        return;
+        localIQQGameDownloadService = (IQQGameDownloadService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IQQGameDownloadService.class, "multi");
+        if (localIQQGameDownloadService != null)
+        {
+          localIQQGameDownloadService.doAppSystemReceiver("doInstallAppCompleted", this.b);
+          return;
+        }
       }
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("GameCenterReceiver", 2, "receiveSystemInstallAction exception:" + localException.getMessage());
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("receiveSystemInstallAction exception:");
+      localStringBuilder.append(localException.getMessage());
+      QLog.e("Wadl_GameCenterReceiver", 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.biz.receiver.GameCenterReceiver.1
  * JD-Core Version:    0.7.0.1
  */

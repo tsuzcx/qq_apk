@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class WeatherInfo_V2
   extends JceStruct
@@ -105,34 +106,40 @@ public final class WeatherInfo_V2
     paramJceOutputStream.write(this.iTempMax, 8);
     paramJceOutputStream.write(this.iTempMin, 9);
     paramJceOutputStream.write(this.iHumidity, 10);
-    if (this.strSunriseTime != null) {
-      paramJceOutputStream.write(this.strSunriseTime, 11);
+    Object localObject = this.strSunriseTime;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
-    if (this.strSunsetTime != null) {
-      paramJceOutputStream.write(this.strSunsetTime, 12);
+    localObject = this.strSunsetTime;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
-    if (this.strPressure != null) {
-      paramJceOutputStream.write(this.strPressure, 13);
+    localObject = this.strPressure;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
     paramJceOutputStream.write(this.iWindForce, 14);
-    if (this.strDeviceName != null) {
-      paramJceOutputStream.write(this.strDeviceName, 15);
+    localObject = this.strDeviceName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 15);
     }
     paramJceOutputStream.write(this.iPM2p5, 16);
     paramJceOutputStream.write(this.iDayTime, 17);
     paramJceOutputStream.write(this.iCacheTime, 18);
-    if (this.vecForecastInfo != null) {
-      paramJceOutputStream.write(this.vecForecastInfo, 19);
+    localObject = this.vecForecastInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 19);
     }
-    if (this.strUrl != null) {
-      paramJceOutputStream.write(this.strUrl, 20);
+    localObject = this.strUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 20);
     }
     paramJceOutputStream.write(this.iTimeUpdate, 21);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     LBS_V2_PROTOCOL.WeatherInfo_V2
  * JD-Core Version:    0.7.0.1
  */

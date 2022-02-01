@@ -19,15 +19,22 @@ class MsgProxyBannerProcessor$1
     Intent localIntent = new Intent(MsgProxyBannerProcessor.a(this.a), QQBrowserActivity.class);
     localIntent.putExtra("uin", ((QQAppInterface)MsgProxyBannerProcessor.b(this.a).getAppRuntime()).getCurrentAccountUin());
     Pair localPair = (Pair)paramView.getTag();
-    if (localPair != null) {
-      MsgProxyBannerProcessor.c(this.a).startActivity(localIntent.putExtra("url", "https://qzs.qq.com/iot/mobile/xiaowei-qq-proxy/index.html?din=" + ((Long)localPair.first).longValue() + "&deviceRemark=" + (String)localPair.second));
+    if (localPair != null)
+    {
+      QBaseActivity localQBaseActivity = MsgProxyBannerProcessor.c(this.a);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("https://qzs.qq.com/iot/mobile/xiaowei-qq-proxy/index.html?din=");
+      localStringBuilder.append(((Long)localPair.first).longValue());
+      localStringBuilder.append("&deviceRemark=");
+      localStringBuilder.append((String)localPair.second);
+      localQBaseActivity.startActivity(localIntent.putExtra("url", localStringBuilder.toString()));
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.MsgProxyBannerProcessor.1
  * JD-Core Version:    0.7.0.1
  */

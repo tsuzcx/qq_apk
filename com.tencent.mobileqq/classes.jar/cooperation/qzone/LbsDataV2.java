@@ -227,20 +227,19 @@ public class LbsDataV2
       localPoiInfo.gpsInfo.lat = ((int)(d1 * 1000000.0D));
       localPoiInfo.gpsInfo.lon = ((int)(d2 * 1000000.0D));
       localPoiInfo.gpsInfo.accuracy = -1;
-      localPoiInfo.poiTypeName = paramTencentPoi.getCatalog();
-      localPoiInfo.distance = ((int)paramTencentPoi.getDistance());
-      localPoiInfo.poiId = paramTencentPoi.getUid();
-      localPoiInfo.poiName = paramTencentPoi.getName();
-      localPoiInfo.poiDefaultName = paramTencentPoi.getName();
-      return localPoiInfo;
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      for (;;)
-      {
-        localPoiInfo.gpsInfo = null;
-      }
+      label90:
+      break label90;
     }
+    localPoiInfo.gpsInfo = null;
+    localPoiInfo.poiTypeName = paramTencentPoi.getCatalog();
+    localPoiInfo.distance = ((int)paramTencentPoi.getDistance());
+    localPoiInfo.poiId = paramTencentPoi.getUid();
+    localPoiInfo.poiName = paramTencentPoi.getName();
+    localPoiInfo.poiDefaultName = paramTencentPoi.getName();
+    return localPoiInfo;
   }
   
   public static LbsInfo parceToLbsInfo(LbsDataV2.PoiInfo paramPoiInfo)
@@ -251,8 +250,12 @@ public class LbsDataV2
     LbsInfo localLbsInfo = new LbsInfo();
     if (paramPoiInfo.gpsInfo != null)
     {
-      localLbsInfo.lbs_x = String.valueOf(paramPoiInfo.gpsInfo.lon / 1000000.0D);
-      localLbsInfo.lbs_y = String.valueOf(paramPoiInfo.gpsInfo.lat / 1000000.0D);
+      double d = paramPoiInfo.gpsInfo.lon;
+      Double.isNaN(d);
+      localLbsInfo.lbs_x = String.valueOf(d / 1000000.0D);
+      d = paramPoiInfo.gpsInfo.lat;
+      Double.isNaN(d);
+      localLbsInfo.lbs_y = String.valueOf(d / 1000000.0D);
     }
     localLbsInfo.lbs_idnm = paramPoiInfo.poiDefaultName;
     if (TextUtils.isEmpty(localLbsInfo.lbs_idnm)) {
@@ -277,25 +280,21 @@ public class LbsDataV2
   
   public static LbsInfo parceToLbsInfo(LocalImageShootInfo paramLocalImageShootInfo)
   {
-    Object localObject;
     if (paramLocalImageShootInfo == null) {
-      localObject = null;
+      return null;
     }
-    LbsInfo localLbsInfo;
-    do
+    LbsInfo localLbsInfo = new LbsInfo();
+    if (paramLocalImageShootInfo.gpsInfo != null)
     {
-      return localObject;
-      localLbsInfo = new LbsInfo();
-      localObject = localLbsInfo;
-    } while (paramLocalImageShootInfo.gpsInfo == null);
-    localLbsInfo.lbs_x = String.valueOf(paramLocalImageShootInfo.gpsInfo.longtitude);
-    localLbsInfo.lbs_y = String.valueOf(paramLocalImageShootInfo.gpsInfo.latitude);
+      localLbsInfo.lbs_x = String.valueOf(paramLocalImageShootInfo.gpsInfo.longtitude);
+      localLbsInfo.lbs_y = String.valueOf(paramLocalImageShootInfo.gpsInfo.latitude);
+    }
     return localLbsInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.LbsDataV2
  * JD-Core Version:    0.7.0.1
  */

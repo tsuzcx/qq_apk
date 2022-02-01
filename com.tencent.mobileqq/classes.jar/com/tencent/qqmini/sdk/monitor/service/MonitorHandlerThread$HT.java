@@ -12,17 +12,20 @@ class MonitorHandlerThread$HT
   
   public MonitorHandlerThread$HT(String paramString, HandlerThread paramHandlerThread)
   {
-    if (paramHandlerThread != null) {
+    if (paramHandlerThread != null)
+    {
       this.handlerThread = paramHandlerThread;
     }
-    for (;;)
+    else
     {
-      this.looper = this.handlerThread.getLooper();
-      this.handler = new Handler(this.looper);
-      return;
-      this.handlerThread = new HandlerThread("Tencent_PerformanceMonitorThread_" + paramString);
+      paramHandlerThread = new StringBuilder();
+      paramHandlerThread.append("Tencent_PerformanceMonitorThread_");
+      paramHandlerThread.append(paramString);
+      this.handlerThread = new HandlerThread(paramHandlerThread.toString());
       this.handlerThread.start();
     }
+    this.looper = this.handlerThread.getLooper();
+    this.handler = new Handler(this.looper);
   }
   
   public Handler getHandler()
@@ -37,7 +40,7 @@ class MonitorHandlerThread$HT
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.monitor.service.MonitorHandlerThread.HT
  * JD-Core Version:    0.7.0.1
  */

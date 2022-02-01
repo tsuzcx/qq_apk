@@ -21,8 +21,12 @@ public class DeviceManageConfProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null))
     {
       DeviceManageConfBean localDeviceManageConfBean = DeviceManageConfBean.a(paramArrayOfQConfItem[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("DeviceManageConfProcessor", 2, "onParsed " + paramArrayOfQConfItem[0].a);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed ");
+        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        QLog.d("DeviceManageConfProcessor", 2, localStringBuilder.toString());
       }
       return localDeviceManageConfBean;
     }
@@ -34,8 +38,12 @@ public class DeviceManageConfProcessor
   
   public void a(DeviceManageConfBean paramDeviceManageConfBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceManageConfProcessor", 2, "onUpdate " + paramDeviceManageConfBean.toString());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      localStringBuilder.append(paramDeviceManageConfBean.toString());
+      QLog.d("DeviceManageConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -76,7 +84,7 @@ public class DeviceManageConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.DeviceManageConfProcessor
  * JD-Core Version:    0.7.0.1
  */

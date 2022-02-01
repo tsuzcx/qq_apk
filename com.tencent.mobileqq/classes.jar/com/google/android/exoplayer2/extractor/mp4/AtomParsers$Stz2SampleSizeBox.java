@@ -31,13 +31,14 @@ final class AtomParsers$Stz2SampleSizeBox
   
   public int readNextSampleSize()
   {
-    if (this.fieldSize == 8) {
+    int i = this.fieldSize;
+    if (i == 8) {
       return this.data.readUnsignedByte();
     }
-    if (this.fieldSize == 16) {
+    if (i == 16) {
       return this.data.readUnsignedShort();
     }
-    int i = this.sampleIndex;
+    i = this.sampleIndex;
     this.sampleIndex = (i + 1);
     if (i % 2 == 0)
     {
@@ -49,7 +50,7 @@ final class AtomParsers$Stz2SampleSizeBox
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.mp4.AtomParsers.Stz2SampleSizeBox
  * JD-Core Version:    0.7.0.1
  */

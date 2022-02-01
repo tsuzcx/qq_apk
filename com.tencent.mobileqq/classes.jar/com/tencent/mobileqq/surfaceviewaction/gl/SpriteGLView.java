@@ -89,15 +89,14 @@ public class SpriteGLView
       ((GLSurfaceView)localObject).setRenderer(new SpriteGLView.SimpleRenderer(this, null));
       ((GLSurfaceView)localObject).setZOrderOnTop(true);
     }
-    for (;;)
+    else
     {
-      setFocusableInTouchMode(true);
-      return;
       localObject = a(getContext());
       this.jdField_a_of_type_AndroidViewView = ((View)localObject);
       addView((View)localObject, -1, -1);
       ((GLTextureView)localObject).setRenderer(new SpriteGLView.SimpleRenderer(this, null));
     }
+    setFocusableInTouchMode(true);
   }
   
   protected GLTextureView a(Context paramContext)
@@ -112,28 +111,37 @@ public class SpriteGLView
   
   public void a(int paramInt)
   {
+    LinkedList localLinkedList = this.jdField_a_of_type_JavaUtilLinkedList;
+    int k = -1;
     int i = 0;
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+      int j = k;
+      try
       {
         if (i < this.jdField_a_of_type_JavaUtilLinkedList.size())
         {
           if (paramInt != ((Integer)this.jdField_a_of_type_JavaUtilLinkedList.get(i)).intValue()) {
-            break label78;
+            break label94;
           }
-          if (i > 0)
-          {
-            this.jdField_a_of_type_JavaUtilLinkedList.remove(i);
-            GLES20.glDeleteTextures(1, new int[] { paramInt }, 0);
-          }
-          return;
+          j = i;
         }
+        if (j > 0)
+        {
+          this.jdField_a_of_type_JavaUtilLinkedList.remove(j);
+          GLES20.glDeleteTextures(1, new int[] { paramInt }, 0);
+        }
+        return;
       }
-      i = -1;
-      continue;
-      label78:
-      i += 1;
+      finally
+      {
+        for (;;)
+        {
+          throw localObject;
+        }
+        label94:
+        i += 1;
+      }
     }
   }
   
@@ -150,8 +158,9 @@ public class SpriteGLView
   
   public void a(GLTextureView.OnSurfaceChangedListener paramOnSurfaceChangedListener)
   {
-    if ((this.jdField_a_of_type_AndroidViewView instanceof GLTextureView)) {
-      ((GLTextureView)this.jdField_a_of_type_AndroidViewView).a(paramOnSurfaceChangedListener);
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if ((localView instanceof GLTextureView)) {
+      ((GLTextureView)localView).a(paramOnSurfaceChangedListener);
     }
   }
   
@@ -196,8 +205,9 @@ public class SpriteGLView
   
   public void b(GLTextureView.OnSurfaceChangedListener paramOnSurfaceChangedListener)
   {
-    if ((this.jdField_a_of_type_AndroidViewView instanceof GLTextureView)) {
-      ((GLTextureView)this.jdField_a_of_type_AndroidViewView).b(paramOnSurfaceChangedListener);
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if ((localView instanceof GLTextureView)) {
+      ((GLTextureView)localView).b(paramOnSurfaceChangedListener);
     }
   }
   
@@ -220,8 +230,9 @@ public class SpriteGLView
   
   public int c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView$IVideoTimeGetter != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView$IVideoTimeGetter.a();
+    SpriteGLView.IVideoTimeGetter localIVideoTimeGetter = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView$IVideoTimeGetter;
+    if (localIVideoTimeGetter != null) {
+      return localIVideoTimeGetter.a();
     }
     return (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long);
   }
@@ -277,26 +288,27 @@ public class SpriteGLView
       QLog.d("SpriteGLView", 2, "stopDraw");
     }
     SpriteGLView.1 local1 = new SpriteGLView.1(this);
-    if ((this.jdField_a_of_type_AndroidViewView instanceof GLSurfaceView))
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if ((localView instanceof GLSurfaceView))
     {
-      ((GLSurfaceView)this.jdField_a_of_type_AndroidViewView).onPause();
+      ((GLSurfaceView)localView).onPause();
       ((GLSurfaceView)this.jdField_a_of_type_AndroidViewView).queueEvent(local1);
-    }
-    while (!(this.jdField_a_of_type_AndroidViewView instanceof GLTextureView)) {
       return;
     }
-    ((GLTextureView)this.jdField_a_of_type_AndroidViewView).a(local1);
+    if ((localView instanceof GLTextureView)) {
+      ((GLTextureView)localView).a(local1);
+    }
   }
   
   public void o()
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((Node)localIterator.next()).aC_();
+      ((Node)localIterator.next()).aP_();
     }
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
   }
@@ -330,12 +342,17 @@ public class SpriteGLView
       GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
       return;
     }
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public void setFps(int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidViewView instanceof GLTextureView)) {
-      ((GLTextureView)this.jdField_a_of_type_AndroidViewView).setFps(paramInt);
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if ((localView instanceof GLTextureView)) {
+      ((GLTextureView)localView).setFps(paramInt);
     }
   }
   
@@ -351,7 +368,7 @@ public class SpriteGLView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView
  * JD-Core Version:    0.7.0.1
  */

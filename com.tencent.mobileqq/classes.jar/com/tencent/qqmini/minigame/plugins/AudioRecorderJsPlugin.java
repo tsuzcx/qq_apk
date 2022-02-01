@@ -23,7 +23,7 @@ public class AudioRecorderJsPlugin
   private static final String RECORD_RESUME = "resume";
   private static final String RECORD_START = "start";
   private static final String RECORD_STOP = "stop";
-  private static final String TAG = AudioRecorderJsPlugin.class.getSimpleName();
+  private static final String TAG = "AudioRecorderJsPlugin";
   private boolean hasLoadedSo = false;
   private volatile AudioRecorderJsPlugin.AudioManager mAudioManager;
   
@@ -91,44 +91,31 @@ public class AudioRecorderJsPlugin
   @JsEvent({"operateRecorder"})
   public void operateRecorder(RequestEvent paramRequestEvent)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        String str = new JSONObject(paramRequestEvent.jsonParams).optString("operationType");
-        if ("start".equals(str))
-        {
-          getAudioManager().startRecord(paramRequestEvent);
-          paramRequestEvent.ok();
-          return;
-        }
-        if ("resume".equals(str))
-        {
-          getAudioManager().resumeRecord(paramRequestEvent);
-          continue;
-        }
-        if (!"pause".equals(localException)) {
-          break label96;
-        }
-      }
-      catch (Exception localException)
-      {
-        paramRequestEvent.fail();
-        QMLog.e(TAG, "operateRecorder failed", localException);
-        return;
-      }
-      getAudioManager().pauseRecord(paramRequestEvent);
-      continue;
-      label96:
-      if ("stop".equals(localException)) {
+      String str = new JSONObject(paramRequestEvent.jsonParams).optString("operationType");
+      if ("start".equals(str)) {
+        getAudioManager().startRecord(paramRequestEvent);
+      } else if ("resume".equals(str)) {
+        getAudioManager().resumeRecord(paramRequestEvent);
+      } else if ("pause".equals(str)) {
+        getAudioManager().pauseRecord(paramRequestEvent);
+      } else if ("stop".equals(str)) {
         getAudioManager().stopRecord(paramRequestEvent);
       }
+      paramRequestEvent.ok();
+      return;
+    }
+    catch (Exception localException)
+    {
+      paramRequestEvent.fail();
+      QMLog.e(TAG, "operateRecorder failed", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.AudioRecorderJsPlugin
  * JD-Core Version:    0.7.0.1
  */

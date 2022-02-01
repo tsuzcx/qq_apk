@@ -39,22 +39,22 @@ class MsgTabNodePullVideoBasicInfoSegment$2
       localHashMap.put(((StoryVideoItem)localObject).mVid, localObject);
     }
     paramArrayList = new ArrayList();
-    int j = this.jdField_a_of_type_JavaUtilList.size();
     int i = 0;
-    if (i < j)
+    int j = this.jdField_a_of_type_JavaUtilList.size();
+    while (i < j)
     {
       localObject = (MsgTabVideoData)this.jdField_a_of_type_JavaUtilList.get(i);
       StoryVideoItem localStoryVideoItem = (StoryVideoItem)localHashMap.get(((MsgTabVideoData)localObject).b);
-      if (localStoryVideoItem == null) {
+      if (localStoryVideoItem == null)
+      {
         SLog.e("Q.qqstory.msgTab.jobPullBasicInfo", "not found video!");
       }
-      for (;;)
+      else
       {
-        i += 1;
-        break;
         ((MsgTabVideoData)localObject).a = localStoryVideoItem;
         paramArrayList.add(localObject);
       }
+      i += 1;
     }
     if (QLog.isColorLevel()) {
       QLog.d("Q.qqstory.msgTab.jobPullBasicInfo", 2, "pull video info succeed, info");
@@ -64,7 +64,7 @@ class MsgTabNodePullVideoBasicInfoSegment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodePullVideoBasicInfoSegment.2
  * JD-Core Version:    0.7.0.1
  */

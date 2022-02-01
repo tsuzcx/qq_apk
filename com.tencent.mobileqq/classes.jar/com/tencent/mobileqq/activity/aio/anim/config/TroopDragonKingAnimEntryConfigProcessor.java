@@ -12,7 +12,10 @@ public class TroopDragonKingAnimEntryConfigProcessor
   @NonNull
   public TroopDragonKingAnimEntryConfig a(int paramInt)
   {
-    QLog.d("TroopDragonKingAnimEntryConfig.config", 2, "migrateOldOrDefaultContent, type = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("migrateOldOrDefaultContent, type = ");
+    localStringBuilder.append(paramInt);
+    QLog.d("TroopDragonKingAnimEntryConfig.config", 2, localStringBuilder.toString());
     return new TroopDragonKingAnimEntryConfig();
   }
   
@@ -57,7 +60,10 @@ public class TroopDragonKingAnimEntryConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.d("TroopDragonKingAnimEntryConfig.config", 1, "onReqFailed, failCode = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReqFailed, failCode = ");
+    localStringBuilder.append(paramInt);
+    QLog.d("TroopDragonKingAnimEntryConfig.config", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -67,7 +73,7 @@ public class TroopDragonKingAnimEntryConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.config.TroopDragonKingAnimEntryConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

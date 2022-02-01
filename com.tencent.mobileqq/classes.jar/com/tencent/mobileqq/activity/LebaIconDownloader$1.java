@@ -15,11 +15,12 @@ final class LebaIconDownloader$1
   
   public void run()
   {
-    boolean bool = false;
     try
     {
       Object localObject = new File(this.jdField_a_of_type_AndroidContentContext.getFilesDir(), this.jdField_a_of_type_JavaLangString);
-      localObject = new DownloadInfo(this.jdField_a_of_type_JavaLangString, (File)localObject, 0);
+      String str = this.jdField_a_of_type_JavaLangString;
+      boolean bool = false;
+      localObject = new DownloadInfo(str, (File)localObject, 0);
       if (HttpDownloadUtil.downloadData(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (DownloadInfo)localObject, this.jdField_a_of_type_ComTencentMobileqqUtilsHttpDownloadUtil$HttpDownloadListener) == 0) {
         bool = true;
       }
@@ -31,7 +32,10 @@ final class LebaIconDownloader$1
       }
       else if (QLog.isColorLevel())
       {
-        QLog.i("LebaIconDownloader", 2, "download error,error code:" + bool);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("download error,error code:");
+        ((StringBuilder)localObject).append(bool);
+        QLog.i("LebaIconDownloader", 2, ((StringBuilder)localObject).toString());
         return;
       }
     }
@@ -45,7 +49,7 @@ final class LebaIconDownloader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LebaIconDownloader.1
  * JD-Core Version:    0.7.0.1
  */

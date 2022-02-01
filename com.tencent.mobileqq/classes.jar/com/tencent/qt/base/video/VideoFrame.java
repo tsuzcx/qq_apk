@@ -27,8 +27,10 @@ public class VideoFrame
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      System.gc();
+      label46:
+      break label46;
     }
+    System.gc();
   }
   
   public VideoFrame(VideoFrame paramVideoFrame)
@@ -54,7 +56,7 @@ public class VideoFrame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qt.base.video.VideoFrame
  * JD-Core Version:    0.7.0.1
  */

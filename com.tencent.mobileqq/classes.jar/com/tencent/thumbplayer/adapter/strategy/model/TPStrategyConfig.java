@@ -43,7 +43,11 @@ public class TPStrategyConfig
   
   private void checkParamsIllegal(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 == 3) && (paramInt2 == 3)) {
+    if (paramInt1 == 3)
+    {
+      if (paramInt2 != 3) {
+        return;
+      }
       throw new IllegalArgumentException("can not soft with systemplayer");
     }
   }
@@ -80,7 +84,7 @@ public class TPStrategyConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.strategy.model.TPStrategyConfig
  * JD-Core Version:    0.7.0.1
  */

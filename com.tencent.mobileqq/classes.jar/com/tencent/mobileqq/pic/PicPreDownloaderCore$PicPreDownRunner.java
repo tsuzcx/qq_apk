@@ -25,12 +25,15 @@ public class PicPreDownloaderCore$PicPreDownRunner
   @NonNull
   public String toString()
   {
-    return "PicPreDownloader ," + this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PicPreDownloader ,");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicPreDownloaderCore.PicPreDownRunner
  * JD-Core Version:    0.7.0.1
  */

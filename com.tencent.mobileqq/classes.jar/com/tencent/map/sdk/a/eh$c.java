@@ -12,39 +12,35 @@ final class eh$c
   
   public eh$c(Type[] paramArrayOfType1, Type[] paramArrayOfType2)
   {
-    if (paramArrayOfType2.length <= 1)
+    int i = paramArrayOfType2.length;
+    boolean bool2 = true;
+    boolean bool1;
+    if (i <= 1) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    eg.a(bool1);
+    if (paramArrayOfType1.length == 1) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    eg.a(bool1);
+    if (paramArrayOfType2.length == 1)
     {
-      bool1 = true;
-      eg.a(bool1);
-      if (paramArrayOfType1.length != 1) {
-        break label87;
-      }
-      bool1 = true;
-      label27:
-      eg.a(bool1);
-      if (paramArrayOfType2.length != 1) {
-        break label97;
-      }
       eg.a(paramArrayOfType2[0]);
       eh.e(paramArrayOfType2[0]);
-      if (paramArrayOfType1[0] != Object.class) {
-        break label92;
+      if (paramArrayOfType1[0] == Object.class) {
+        bool1 = bool2;
+      } else {
+        bool1 = false;
       }
-    }
-    label87:
-    label92:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
       eg.a(bool1);
       this.b = eh.a(paramArrayOfType2[0]);
       this.a = Object.class;
       return;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label27;
     }
-    label97:
     eg.a(paramArrayOfType1[0]);
     eh.e(paramArrayOfType1[0]);
     this.b = null;
@@ -58,8 +54,9 @@ final class eh$c
   
   public final Type[] getLowerBounds()
   {
-    if (this.b != null) {
-      return new Type[] { this.b };
+    Type localType = this.b;
+    if (localType != null) {
+      return new Type[] { localType };
     }
     return eh.a;
   }
@@ -71,26 +68,35 @@ final class eh$c
   
   public final int hashCode()
   {
-    if (this.b != null) {}
-    for (int i = this.b.hashCode() + 31;; i = 1) {
-      return i ^ this.a.hashCode() + 31;
+    Type localType = this.b;
+    int i;
+    if (localType != null) {
+      i = localType.hashCode() + 31;
+    } else {
+      i = 1;
     }
+    return i ^ this.a.hashCode() + 31;
   }
   
   public final String toString()
   {
-    if (this.b != null) {
-      return "? super " + eh.c(this.b);
+    if (this.b != null)
+    {
+      localStringBuilder = new StringBuilder("? super ");
+      localStringBuilder.append(eh.c(this.b));
+      return localStringBuilder.toString();
     }
     if (this.a == Object.class) {
       return "?";
     }
-    return "? extends " + eh.c(this.a);
+    StringBuilder localStringBuilder = new StringBuilder("? extends ");
+    localStringBuilder.append(eh.c(this.a));
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.eh.c
  * JD-Core Version:    0.7.0.1
  */

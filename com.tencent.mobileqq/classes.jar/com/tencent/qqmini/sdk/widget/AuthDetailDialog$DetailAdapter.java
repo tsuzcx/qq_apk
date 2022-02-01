@@ -20,8 +20,9 @@ class AuthDetailDialog$DetailAdapter
   
   public int getCount()
   {
-    if (this.detailList != null) {
-      return this.detailList.size();
+    ArrayList localArrayList = this.detailList;
+    if (localArrayList != null) {
+      return localArrayList.size();
     }
     return 0;
   }
@@ -45,23 +46,22 @@ class AuthDetailDialog$DetailAdapter
     Object localObject = paramView;
     if (localEntry != null)
     {
-      if (paramView == null) {
-        break label84;
+      if (paramView != null)
+      {
+        localObject = (AuthDetailDialog.DetailAdapter.DetailViewHolder)paramView.getTag();
       }
-      localObject = (AuthDetailDialog.DetailAdapter.DetailViewHolder)paramView.getTag();
-    }
-    for (;;)
-    {
+      else
+      {
+        paramView = LayoutInflater.from(AuthDetailDialog.access$000(this.this$0)).inflate(R.layout.mini_sdk_auth_detail_dialog_item_layout, null);
+        localObject = new AuthDetailDialog.DetailAdapter.DetailViewHolder(this, paramView);
+        paramView.setTag(localObject);
+      }
       ((AuthDetailDialog.DetailAdapter.DetailViewHolder)localObject).tvTitle.setText(localEntry.key.get());
       ((AuthDetailDialog.DetailAdapter.DetailViewHolder)localObject).tvDesc.setText(localEntry.value.get());
       localObject = paramView;
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
-      return localObject;
-      label84:
-      paramView = LayoutInflater.from(AuthDetailDialog.access$000(this.this$0)).inflate(R.layout.mini_sdk_auth_detail_dialog_item_layout, null);
-      localObject = new AuthDetailDialog.DetailAdapter.DetailViewHolder(this, paramView);
-      paramView.setTag(localObject);
     }
+    EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
+    return localObject;
   }
   
   public void setData(ArrayList<COMM.Entry> paramArrayList)
@@ -71,7 +71,7 @@ class AuthDetailDialog$DetailAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.AuthDetailDialog.DetailAdapter
  * JD-Core Version:    0.7.0.1
  */

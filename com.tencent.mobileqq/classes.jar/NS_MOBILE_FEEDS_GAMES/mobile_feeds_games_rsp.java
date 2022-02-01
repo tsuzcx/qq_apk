@@ -46,23 +46,27 @@ public final class mobile_feeds_games_rsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.orderData != null) {
-      paramJceOutputStream.write(this.orderData, 0);
+    Object localObject = this.orderData;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.opData != null) {
-      paramJceOutputStream.write(this.opData, 1);
+    localObject = this.opData;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.mkData != null) {
-      paramJceOutputStream.write(this.mkData, 2);
+    localObject = this.mkData;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.mapRsp != null) {
-      paramJceOutputStream.write(this.mapRsp, 3);
+    localObject = this.mapRsp;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS_GAMES.mobile_feeds_games_rsp
  * JD-Core Version:    0.7.0.1
  */

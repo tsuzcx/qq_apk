@@ -14,8 +14,13 @@ import java.io.Writer;
 
 public abstract class f
 {
-  private static final String TAG = "IOUtil";
-  private static final int al = 4096;
+  private static final String a = "IOUtil";
+  private static final int b = 4096;
+  
+  public static long a(InputStream paramInputStream, OutputStream paramOutputStream)
+  {
+    return a(paramInputStream, paramOutputStream, new byte[4096]);
+  }
   
   public static long a(InputStream paramInputStream, OutputStream paramOutputStream, byte[] paramArrayOfByte)
   {
@@ -53,15 +58,22 @@ public abstract class f
     }
     catch (IOException paramCloseable)
     {
-      g.e("IOUtil", "closeSecure IOException");
+      label11:
+      break label11;
     }
+    g.b("IOUtil", "closeSecure IOException");
   }
   
   public static void a(File paramFile)
   {
     if ((paramFile != null) && (paramFile.exists()) && (!paramFile.delete())) {
-      g.e("IOUtil", "deleteSecure exception");
+      g.b("IOUtil", "deleteSecure exception");
     }
+  }
+  
+  public static void a(InputStream paramInputStream)
+  {
+    a(paramInputStream);
   }
   
   public static void a(OutputStream paramOutputStream)
@@ -79,33 +91,23 @@ public abstract class f
     a(paramWriter);
   }
   
-  public static void c(InputStream paramInputStream)
-  {
-    a(paramInputStream);
-  }
-  
-  public static long copy(InputStream paramInputStream, OutputStream paramOutputStream)
-  {
-    return a(paramInputStream, paramOutputStream, new byte[4096]);
-  }
-  
-  public static byte[] d(InputStream paramInputStream)
-  {
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    copy(paramInputStream, localByteArrayOutputStream);
-    return localByteArrayOutputStream.toByteArray();
-  }
-  
-  public static void e(String paramString)
+  public static void a(String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {
       a(new File(paramString));
     }
   }
+  
+  public static byte[] b(InputStream paramInputStream)
+  {
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    a(paramInputStream, localByteArrayOutputStream);
+    return localByteArrayOutputStream.toByteArray();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.secure.android.common.ssl.util.f
  * JD-Core Version:    0.7.0.1
  */

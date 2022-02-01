@@ -16,30 +16,25 @@ class DeviceMsgThumbDownloader$DeviceVideoBitmapDecoder
   {
     paramURL = this.this$0.parseUrl(paramURL);
     if (paramURL == null) {
-      paramURL = null;
+      return null;
     }
-    for (;;)
+    String str = paramURL.path;
+    if (TextUtils.isEmpty(str)) {
+      return null;
+    }
+    try
     {
+      Bitmap localBitmap = this.this$0.createVideoThumbnail(str);
+      paramURL = localBitmap;
+      if (localBitmap == null) {
+        paramURL = this.this$0.queryVideoThumbnail(str);
+      }
       return paramURL;
-      String str = paramURL.path;
-      if (TextUtils.isEmpty(str)) {
-        return null;
-      }
-      try
-      {
-        Bitmap localBitmap = this.this$0.createVideoThumbnail(str);
-        paramURL = localBitmap;
-        if (localBitmap == null)
-        {
-          paramURL = this.this$0.queryVideoThumbnail(str);
-          return paramURL;
-        }
-      }
-      catch (Throwable paramURL)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("VIdeoThumbDownloader", 2, "getBitmap", paramURL);
-        }
+    }
+    catch (Throwable paramURL)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("VIdeoThumbDownloader", 2, "getBitmap", paramURL);
       }
     }
     return null;
@@ -47,7 +42,7 @@ class DeviceMsgThumbDownloader$DeviceVideoBitmapDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.DeviceMsgThumbDownloader.DeviceVideoBitmapDecoder
  * JD-Core Version:    0.7.0.1
  */

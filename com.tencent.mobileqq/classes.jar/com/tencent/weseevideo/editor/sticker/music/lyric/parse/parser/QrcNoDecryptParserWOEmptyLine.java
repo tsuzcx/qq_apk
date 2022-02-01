@@ -27,19 +27,14 @@ public class QrcNoDecryptParserWOEmptyLine
   
   private int parseOffset(String paramString)
   {
-    int j = 0;
     paramString = paramString.split("\\:");
-    int i = j;
     try
     {
-      if (paramString.length == 2)
+      if ((paramString.length == 2) && ("offset".equalsIgnoreCase(paramString[0])))
       {
-        i = j;
-        if ("offset".equalsIgnoreCase(paramString[0])) {
-          i = Integer.parseInt(paramString[1].trim());
-        }
+        int i = Integer.parseInt(paramString[1].trim());
+        return i;
       }
-      return i;
     }
     catch (Exception paramString)
     {
@@ -50,146 +45,141 @@ public class QrcNoDecryptParserWOEmptyLine
   
   private void parseQrcLine(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return;
-    }
-    Object localObject3 = mPattern.matcher(paramString);
-    Object localObject2 = new ArrayList();
-    int i = -1;
-    int j = -1;
-    label34:
-    Object localObject1;
-    if (((Matcher)localObject3).find())
+    if (paramString != null)
     {
-      localObject1 = ((Matcher)localObject3).group();
-      if (localObject1 != null) {
-        break label394;
+      if (paramString.length() == 0) {
+        return;
       }
-      localObject1 = "";
-    }
-    label394:
-    for (;;)
-    {
-      for (;;)
+      Matcher localMatcher = mPattern.matcher(paramString);
+      Object localObject3 = new ArrayList();
+      int i = -1;
+      Object localObject2;
+      Object localObject1;
+      int k;
+      for (int j = -1; localMatcher.find(); j = k)
       {
-        int k = paramString.indexOf("[" + (String)localObject1 + "]");
+        localObject2 = localMatcher.group();
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = "";
+        }
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("[");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append("]");
+        k = paramString.indexOf(((StringBuilder)localObject2).toString());
         if ((j != -1) && (k - j > i + 2))
         {
-          String str1 = paramString.substring(i + j + 2, k);
-          Iterator localIterator = ((ArrayList)localObject2).iterator();
+          localObject2 = paramString.substring(j + i + 2, k);
+          Iterator localIterator = ((ArrayList)localObject3).iterator();
           while (localIterator.hasNext())
           {
-            String str2 = (String)localIterator.next();
+            String str = (String)localIterator.next();
             Sentence localSentence = new Sentence();
-            if (parseTimeForQrc(str2, localSentence) != -1L)
+            if (parseTimeForQrc(str, localSentence) != -1L)
             {
-              parseQrcWord(str1, localSentence);
+              parseQrcWord((String)localObject2, localSentence);
               this.mLineLyricList.add(localSentence);
             }
           }
-          ((ArrayList)localObject2).clear();
+          ((ArrayList)localObject3).clear();
         }
-        ((ArrayList)localObject2).add(localObject1);
+        ((ArrayList)localObject3).add(localObject1);
         i = ((String)localObject1).length();
-        j = k;
-        break label34;
-        if (((ArrayList)localObject2).isEmpty()) {
-          break;
+      }
+      if (((ArrayList)localObject3).isEmpty()) {
+        return;
+      }
+      j = i + 2 + j;
+      i = j;
+      try
+      {
+        if (j > paramString.length()) {
+          i = paramString.length();
         }
-        j = i + 2 + j;
-        i = j;
-        try
+        paramString = paramString.substring(i).trim();
+        if ((paramString.length() == 0) && (this.mOffset == 0)) {
+          paramString = ((ArrayList)localObject3).iterator();
+        }
+        while (paramString.hasNext())
         {
-          if (j > paramString.length()) {
-            i = paramString.length();
-          }
-          paramString = paramString.substring(i).trim();
-          if ((paramString.length() == 0) && (this.mOffset == 0))
+          i = parseOffset((String)paramString.next());
+          if (i != 2147483647)
           {
-            paramString = ((ArrayList)localObject2).iterator();
-            do
-            {
-              if (!paramString.hasNext()) {
-                break;
-              }
-              i = parseOffset((String)paramString.next());
-            } while (i == 2147483647);
             this.mOffset = i;
+            return;
+            localObject1 = ((ArrayList)localObject3).iterator();
+            while (((Iterator)localObject1).hasNext())
+            {
+              localObject2 = (String)((Iterator)localObject1).next();
+              localObject3 = new Sentence();
+              if (parseTimeForQrc((String)localObject2, (Sentence)localObject3) != -1L)
+              {
+                parseQrcWord(paramString, (Sentence)localObject3);
+                this.mLineLyricList.add(localObject3);
+              }
+            }
             return;
           }
         }
-        catch (Exception paramString)
-        {
-          Log.e("QrcNoDecParWEmptyLine", paramString.toString());
-          return;
-        }
       }
-      localObject1 = ((ArrayList)localObject2).iterator();
-      while (((Iterator)localObject1).hasNext())
+      catch (Exception paramString)
       {
-        localObject2 = (String)((Iterator)localObject1).next();
-        localObject3 = new Sentence();
-        if (parseTimeForQrc((String)localObject2, (Sentence)localObject3) != -1L)
-        {
-          parseQrcWord(paramString, (Sentence)localObject3);
-          this.mLineLyricList.add(localObject3);
-        }
+        Log.e("QrcNoDecParWEmptyLine", paramString.toString());
       }
-      break;
     }
   }
   
   private void parseQrcWord(String paramString, Sentence paramSentence)
   {
-    label228:
-    for (;;)
+    try
     {
-      ArrayList localArrayList;
-      try
+      paramSentence.mText = "";
+      if (paramString != null)
       {
-        paramSentence.mText = "";
-        if (paramString == null) {
-          break;
-        }
         if (paramString.length() == 0) {
           return;
         }
         Matcher localMatcher = mPatternForQrc.matcher(paramString);
         StringBuilder localStringBuilder = new StringBuilder();
-        localArrayList = new ArrayList();
-        if (localMatcher.find())
+        ArrayList localArrayList = new ArrayList();
+        Object localObject1 = paramString;
+        while (localMatcher.find())
         {
-          Object localObject = localMatcher.group();
-          if (localObject != null) {
-            break label228;
+          Object localObject2 = localMatcher.group();
+          paramString = (String)localObject2;
+          if (localObject2 == null) {
+            paramString = "";
           }
-          localObject = "";
-          int i = paramString.indexOf("(" + (String)localObject + ")");
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("(");
+          ((StringBuilder)localObject2).append(paramString);
+          ((StringBuilder)localObject2).append(")");
+          int i = ((String)localObject1).indexOf(((StringBuilder)localObject2).toString());
           int j = localStringBuilder.length();
-          localStringBuilder.append(paramString.substring(0, i));
-          String str = paramString.substring(i + ((String)localObject).length() + 2, paramString.length());
-          paramString = null;
+          localStringBuilder.append(((String)localObject1).substring(0, i));
+          localObject2 = ((String)localObject1).substring(i + paramString.length() + 2, ((String)localObject1).length());
+          localObject1 = null;
           if (localArrayList.size() > 0) {
-            paramString = (LyricCharacter)localArrayList.get(localArrayList.size() - 1);
+            localObject1 = (LyricCharacter)localArrayList.get(localArrayList.size() - 1);
           }
-          localObject = parseWordTimeForQrc((String)localObject, j, localStringBuilder.length(), paramString);
-          paramString = str;
-          if (localObject == null) {
-            continue;
+          paramString = parseWordTimeForQrc(paramString, j, localStringBuilder.length(), (LyricCharacter)localObject1);
+          localObject1 = localObject2;
+          if (paramString != null)
+          {
+            localArrayList.add(paramString);
+            localObject1 = localObject2;
           }
-          localArrayList.add(localObject);
-          paramString = str;
-          continue;
         }
         paramSentence.mText = localStringBuilder.toString();
-      }
-      catch (Exception paramString)
-      {
-        Log.e("QrcNoDecParWEmptyLine", "", paramString);
+        paramSentence.mCharacters = localArrayList;
         return;
       }
-      paramSentence.mCharacters = localArrayList;
       return;
+    }
+    catch (Exception paramString)
+    {
+      Log.e("QrcNoDecParWEmptyLine", "", paramString);
     }
   }
   
@@ -202,10 +192,9 @@ public class QrcNoDecryptParserWOEmptyLine
       if ((this.mOffset == 0) && (paramString[0].equalsIgnoreCase("offset"))) {
         this.mOffset = Integer.parseInt(paramString[1]);
       }
-    }
-    while (arrayOfString.length != 2) {
       return -1L;
     }
+    if (arrayOfString.length == 2) {}
     try
     {
       long l1 = Long.parseLong(arrayOfString[1]);
@@ -216,28 +205,28 @@ public class QrcNoDecryptParserWOEmptyLine
     }
     catch (Exception paramString) {}
     return -1L;
+    return -1L;
   }
   
   private LyricCharacter parseWordTimeForQrc(String paramString, int paramInt1, int paramInt2, LyricCharacter paramLyricCharacter)
   {
-    long l2 = 0L;
     paramString = paramString.split("\\,");
-    if (paramString.length < 2) {}
-    while (paramString.length != 2) {
+    if (paramString.length < 2) {
       return null;
     }
-    long l4 = Long.parseLong(paramString[1]);
-    long l3 = Long.parseLong(paramString[0]);
-    long l1 = l4;
-    if (l4 < 0L) {
-      l1 = 0L;
-    }
-    if (l3 < 0L) {}
-    for (;;)
+    if (paramString.length == 2)
     {
+      long l1 = Long.parseLong(paramString[1]);
+      long l2 = Long.parseLong(paramString[0]);
+      if (l1 < 0L) {
+        l1 = 0L;
+      }
+      if (l2 < 0L) {
+        l2 = 0L;
+      }
       return new LyricCharacter(l2, l1, paramInt1, paramInt2);
-      l2 = l3;
     }
+    return null;
   }
   
   public void init(@NonNull String paramString)
@@ -251,242 +240,250 @@ public class QrcNoDecryptParserWOEmptyLine
     // Byte code:
     //   0: aload_0
     //   1: getfield 235	com/tencent/weseevideo/editor/sticker/music/lyric/parse/parser/QrcNoDecryptParserWOEmptyLine:mString	Ljava/lang/String;
-    //   4: astore_2
-    //   5: aload_2
-    //   6: ifnull +64 -> 70
-    //   9: aload_2
+    //   4: astore_3
+    //   5: aload_3
+    //   6: ifnull +371 -> 377
+    //   9: aload_3
     //   10: ldc 16
     //   12: invokevirtual 244	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   15: ifeq +57 -> 72
-    //   18: aload_2
+    //   15: ifeq +13 -> 28
+    //   18: aload_3
     //   19: ldc 16
     //   21: invokevirtual 138	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   24: istore_1
-    //   25: iload_1
-    //   26: iconst_m1
-    //   27: if_icmpeq +43 -> 70
-    //   30: aload_2
-    //   31: invokevirtual 108	java/lang/String:length	()I
-    //   34: ldc 16
+    //   25: goto +5 -> 30
+    //   28: iconst_m1
+    //   29: istore_1
+    //   30: iload_1
+    //   31: iconst_m1
+    //   32: if_icmpeq +345 -> 377
+    //   35: aload_3
     //   36: invokevirtual 108	java/lang/String:length	()I
-    //   39: iload_1
-    //   40: iadd
-    //   41: iconst_1
-    //   42: iadd
-    //   43: if_icmple +27 -> 70
-    //   46: aload_2
-    //   47: iload_1
-    //   48: ldc 16
-    //   50: invokevirtual 108	java/lang/String:length	()I
-    //   53: iadd
+    //   39: istore_2
+    //   40: iload_1
+    //   41: bipush 12
+    //   43: iadd
+    //   44: istore_1
+    //   45: iload_2
+    //   46: iload_1
+    //   47: iconst_1
+    //   48: iadd
+    //   49: if_icmple +328 -> 377
+    //   52: aload_3
+    //   53: iload_1
     //   54: invokevirtual 181	java/lang/String:substring	(I)Ljava/lang/String;
-    //   57: astore_2
-    //   58: aload_2
+    //   57: astore_3
+    //   58: aload_3
     //   59: invokevirtual 88	java/lang/String:trim	()Ljava/lang/String;
     //   62: ldc 19
     //   64: invokevirtual 247	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   67: ifne +10 -> 77
+    //   67: ifne +5 -> 72
     //   70: aconst_null
     //   71: areturn
-    //   72: iconst_m1
-    //   73: istore_1
-    //   74: goto -49 -> 25
-    //   77: aload_2
-    //   78: aload_2
-    //   79: ldc 19
-    //   81: invokevirtual 138	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   84: ldc 19
-    //   86: invokevirtual 108	java/lang/String:length	()I
-    //   89: iadd
-    //   90: invokevirtual 181	java/lang/String:substring	(I)Ljava/lang/String;
-    //   93: astore_2
-    //   94: aload_2
-    //   95: invokevirtual 88	java/lang/String:trim	()Ljava/lang/String;
-    //   98: ldc 22
-    //   100: invokevirtual 247	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   103: ifeq -33 -> 70
-    //   106: aload_2
-    //   107: aload_2
-    //   108: ldc 22
-    //   110: invokevirtual 138	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   113: ldc 22
-    //   115: invokevirtual 108	java/lang/String:length	()I
-    //   118: iadd
-    //   119: invokevirtual 181	java/lang/String:substring	(I)Ljava/lang/String;
-    //   122: astore_2
-    //   123: aload_2
-    //   124: ldc 13
-    //   126: invokevirtual 244	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   129: ifeq +131 -> 260
-    //   132: aload_2
-    //   133: ldc 13
-    //   135: invokevirtual 250	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
-    //   138: istore_1
-    //   139: iload_1
-    //   140: iconst_m1
-    //   141: if_icmpeq -71 -> 70
-    //   144: aload_2
-    //   145: iconst_0
-    //   146: iload_1
-    //   147: invokevirtual 142	java/lang/String:substring	(II)Ljava/lang/String;
-    //   150: astore_2
-    //   151: aload_2
-    //   152: ldc 22
-    //   154: invokevirtual 244	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   157: ifeq +108 -> 265
-    //   160: aload_2
-    //   161: ldc 22
-    //   163: invokevirtual 250	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
-    //   166: istore_1
-    //   167: iload_1
-    //   168: iconst_m1
-    //   169: if_icmpeq -99 -> 70
-    //   172: aload_2
-    //   173: iconst_0
-    //   174: iload_1
-    //   175: invokevirtual 142	java/lang/String:substring	(II)Ljava/lang/String;
-    //   178: astore_2
-    //   179: new 252	java/io/BufferedReader
-    //   182: dup
-    //   183: new 254	java/io/StringReader
-    //   186: dup
-    //   187: aload_2
-    //   188: invokespecial 256	java/io/StringReader:<init>	(Ljava/lang/String;)V
-    //   191: invokespecial 259	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   194: astore_3
-    //   195: aload_3
-    //   196: astore_2
-    //   197: aload_3
-    //   198: invokevirtual 262	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   201: astore 4
-    //   203: aload 4
-    //   205: ifnull +65 -> 270
-    //   208: aload_3
-    //   209: astore_2
-    //   210: aload_0
-    //   211: aload 4
-    //   213: invokevirtual 88	java/lang/String:trim	()Ljava/lang/String;
-    //   216: invokespecial 264	com/tencent/weseevideo/editor/sticker/music/lyric/parse/parser/QrcNoDecryptParserWOEmptyLine:parseQrcLine	(Ljava/lang/String;)V
-    //   219: goto -24 -> 195
-    //   222: astore 4
-    //   224: aload_3
-    //   225: astore_2
-    //   226: ldc 25
-    //   228: aload 4
-    //   230: invokevirtual 96	java/lang/Exception:toString	()Ljava/lang/String;
-    //   233: invokestatic 102	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   236: pop
-    //   237: aload_3
-    //   238: ifnull -168 -> 70
-    //   241: aload_3
-    //   242: invokevirtual 267	java/io/BufferedReader:close	()V
-    //   245: aconst_null
-    //   246: areturn
-    //   247: astore_2
-    //   248: ldc 25
-    //   250: aload_2
-    //   251: invokevirtual 268	java/io/IOException:toString	()Ljava/lang/String;
-    //   254: invokestatic 102	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   257: pop
-    //   258: aconst_null
-    //   259: areturn
-    //   260: iconst_m1
-    //   261: istore_1
-    //   262: goto -123 -> 139
-    //   265: iconst_m1
-    //   266: istore_1
-    //   267: goto -100 -> 167
-    //   270: aload_3
-    //   271: astore_2
-    //   272: aload_0
-    //   273: getfield 68	com/tencent/weseevideo/editor/sticker/music/lyric/parse/parser/QrcNoDecryptParserWOEmptyLine:mLineLyricList	Ljava/util/ArrayList;
-    //   276: getstatic 60	com/tencent/weseevideo/editor/sticker/music/lyric/parse/parser/QrcNoDecryptParserWOEmptyLine:mLineComparator	Lcom/tencent/weseevideo/editor/sticker/music/lyric/parse/parser/QrcNoDecryptParserWOEmptyLine$LyricComparator;
-    //   279: invokestatic 274	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
-    //   282: aload_3
-    //   283: astore_2
-    //   284: new 276	com/tencent/weseevideo/editor/sticker/music/lyric/data/Lyric
-    //   287: dup
-    //   288: iconst_2
-    //   289: aload_0
-    //   290: getfield 183	com/tencent/weseevideo/editor/sticker/music/lyric/parse/parser/QrcNoDecryptParserWOEmptyLine:mOffset	I
-    //   293: aload_0
-    //   294: getfield 68	com/tencent/weseevideo/editor/sticker/music/lyric/parse/parser/QrcNoDecryptParserWOEmptyLine:mLineLyricList	Ljava/util/ArrayList;
-    //   297: invokespecial 279	com/tencent/weseevideo/editor/sticker/music/lyric/data/Lyric:<init>	(IILjava/util/ArrayList;)V
+    //   72: aload_3
+    //   73: aload_3
+    //   74: ldc 19
+    //   76: invokevirtual 138	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   79: iconst_1
+    //   80: iadd
+    //   81: invokevirtual 181	java/lang/String:substring	(I)Ljava/lang/String;
+    //   84: astore_3
+    //   85: aload_3
+    //   86: invokevirtual 88	java/lang/String:trim	()Ljava/lang/String;
+    //   89: ldc 22
+    //   91: invokevirtual 247	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   94: ifne +5 -> 99
+    //   97: aconst_null
+    //   98: areturn
+    //   99: aload_3
+    //   100: aload_3
+    //   101: ldc 22
+    //   103: invokevirtual 138	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   106: iconst_1
+    //   107: iadd
+    //   108: invokevirtual 181	java/lang/String:substring	(I)Ljava/lang/String;
+    //   111: astore_3
+    //   112: aload_3
+    //   113: ldc 13
+    //   115: invokevirtual 244	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   118: ifeq +13 -> 131
+    //   121: aload_3
+    //   122: ldc 13
+    //   124: invokevirtual 250	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
+    //   127: istore_1
+    //   128: goto +5 -> 133
+    //   131: iconst_m1
+    //   132: istore_1
+    //   133: iload_1
+    //   134: iconst_m1
+    //   135: if_icmpne +5 -> 140
+    //   138: aconst_null
+    //   139: areturn
+    //   140: aload_3
+    //   141: iconst_0
+    //   142: iload_1
+    //   143: invokevirtual 142	java/lang/String:substring	(II)Ljava/lang/String;
+    //   146: astore_3
+    //   147: aload_3
+    //   148: ldc 22
+    //   150: invokevirtual 244	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   153: ifeq +13 -> 166
+    //   156: aload_3
+    //   157: ldc 22
+    //   159: invokevirtual 250	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
+    //   162: istore_1
+    //   163: goto +5 -> 168
+    //   166: iconst_m1
+    //   167: istore_1
+    //   168: iload_1
+    //   169: iconst_m1
+    //   170: if_icmpne +5 -> 175
+    //   173: aconst_null
+    //   174: areturn
+    //   175: aload_3
+    //   176: iconst_0
+    //   177: iload_1
+    //   178: invokevirtual 142	java/lang/String:substring	(II)Ljava/lang/String;
+    //   181: astore_3
+    //   182: new 252	java/io/BufferedReader
+    //   185: dup
+    //   186: new 254	java/io/StringReader
+    //   189: dup
+    //   190: aload_3
+    //   191: invokespecial 256	java/io/StringReader:<init>	(Ljava/lang/String;)V
+    //   194: invokespecial 259	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   197: astore 4
+    //   199: aload 4
+    //   201: astore_3
+    //   202: aload 4
+    //   204: invokevirtual 262	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   207: astore 5
+    //   209: aload 5
+    //   211: ifnull +18 -> 229
+    //   214: aload 4
+    //   216: astore_3
+    //   217: aload_0
+    //   218: aload 5
+    //   220: invokevirtual 88	java/lang/String:trim	()Ljava/lang/String;
+    //   223: invokespecial 264	com/tencent/weseevideo/editor/sticker/music/lyric/parse/parser/QrcNoDecryptParserWOEmptyLine:parseQrcLine	(Ljava/lang/String;)V
+    //   226: goto -27 -> 199
+    //   229: aload 4
+    //   231: astore_3
+    //   232: aload_0
+    //   233: getfield 68	com/tencent/weseevideo/editor/sticker/music/lyric/parse/parser/QrcNoDecryptParserWOEmptyLine:mLineLyricList	Ljava/util/ArrayList;
+    //   236: getstatic 60	com/tencent/weseevideo/editor/sticker/music/lyric/parse/parser/QrcNoDecryptParserWOEmptyLine:mLineComparator	Lcom/tencent/weseevideo/editor/sticker/music/lyric/parse/parser/QrcNoDecryptParserWOEmptyLine$LyricComparator;
+    //   239: invokestatic 270	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
+    //   242: aload 4
+    //   244: astore_3
+    //   245: new 272	com/tencent/weseevideo/editor/sticker/music/lyric/data/Lyric
+    //   248: dup
+    //   249: iconst_2
+    //   250: aload_0
+    //   251: getfield 183	com/tencent/weseevideo/editor/sticker/music/lyric/parse/parser/QrcNoDecryptParserWOEmptyLine:mOffset	I
+    //   254: aload_0
+    //   255: getfield 68	com/tencent/weseevideo/editor/sticker/music/lyric/parse/parser/QrcNoDecryptParserWOEmptyLine:mLineLyricList	Ljava/util/ArrayList;
+    //   258: invokespecial 275	com/tencent/weseevideo/editor/sticker/music/lyric/data/Lyric:<init>	(IILjava/util/ArrayList;)V
+    //   261: astore 5
+    //   263: aload 4
+    //   265: invokevirtual 278	java/io/BufferedReader:close	()V
+    //   268: aload 5
+    //   270: areturn
+    //   271: astore_3
+    //   272: ldc 25
+    //   274: aload_3
+    //   275: invokevirtual 279	java/io/IOException:toString	()Ljava/lang/String;
+    //   278: invokestatic 102	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
+    //   281: pop
+    //   282: aload 5
+    //   284: areturn
+    //   285: astore 5
+    //   287: goto +15 -> 302
+    //   290: astore_3
+    //   291: aconst_null
+    //   292: astore 4
+    //   294: goto +55 -> 349
+    //   297: astore 5
+    //   299: aconst_null
     //   300: astore 4
-    //   302: aload_3
-    //   303: ifnull +7 -> 310
-    //   306: aload_3
-    //   307: invokevirtual 267	java/io/BufferedReader:close	()V
-    //   310: aload 4
-    //   312: areturn
-    //   313: astore_2
-    //   314: ldc 25
-    //   316: aload_2
-    //   317: invokevirtual 268	java/io/IOException:toString	()Ljava/lang/String;
-    //   320: invokestatic 102	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   323: pop
-    //   324: goto -14 -> 310
-    //   327: astore_3
-    //   328: aconst_null
-    //   329: astore_2
-    //   330: aload_2
-    //   331: ifnull +7 -> 338
-    //   334: aload_2
-    //   335: invokevirtual 267	java/io/BufferedReader:close	()V
-    //   338: aload_3
-    //   339: athrow
-    //   340: astore_2
-    //   341: ldc 25
-    //   343: aload_2
-    //   344: invokevirtual 268	java/io/IOException:toString	()Ljava/lang/String;
-    //   347: invokestatic 102	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   350: pop
-    //   351: goto -13 -> 338
-    //   354: astore_3
-    //   355: goto -25 -> 330
-    //   358: astore 4
-    //   360: aconst_null
-    //   361: astore_3
-    //   362: goto -138 -> 224
+    //   302: aload 4
+    //   304: astore_3
+    //   305: ldc 25
+    //   307: aload 5
+    //   309: invokevirtual 96	java/lang/Exception:toString	()Ljava/lang/String;
+    //   312: invokestatic 102	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
+    //   315: pop
+    //   316: aload 4
+    //   318: ifnull +59 -> 377
+    //   321: aload 4
+    //   323: invokevirtual 278	java/io/BufferedReader:close	()V
+    //   326: aconst_null
+    //   327: areturn
+    //   328: astore_3
+    //   329: ldc 25
+    //   331: aload_3
+    //   332: invokevirtual 279	java/io/IOException:toString	()Ljava/lang/String;
+    //   335: invokestatic 102	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
+    //   338: pop
+    //   339: aconst_null
+    //   340: areturn
+    //   341: astore 5
+    //   343: aload_3
+    //   344: astore 4
+    //   346: aload 5
+    //   348: astore_3
+    //   349: aload 4
+    //   351: ifnull +24 -> 375
+    //   354: aload 4
+    //   356: invokevirtual 278	java/io/BufferedReader:close	()V
+    //   359: goto +16 -> 375
+    //   362: astore 4
+    //   364: ldc 25
+    //   366: aload 4
+    //   368: invokevirtual 279	java/io/IOException:toString	()Ljava/lang/String;
+    //   371: invokestatic 102	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
+    //   374: pop
+    //   375: aload_3
+    //   376: athrow
+    //   377: aconst_null
+    //   378: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	365	0	this	QrcNoDecryptParserWOEmptyLine
-    //   24	243	1	i	int
-    //   4	222	2	localObject1	Object
-    //   247	4	2	localIOException1	java.io.IOException
-    //   271	13	2	localObject2	Object
-    //   313	4	2	localIOException2	java.io.IOException
-    //   329	6	2	localObject3	Object
-    //   340	4	2	localIOException3	java.io.IOException
-    //   194	113	3	localBufferedReader	java.io.BufferedReader
-    //   327	12	3	localObject4	Object
-    //   354	1	3	localObject5	Object
-    //   361	1	3	localObject6	Object
-    //   201	11	4	str	String
-    //   222	7	4	localException1	Exception
-    //   300	11	4	localLyric	com.tencent.weseevideo.editor.sticker.music.lyric.data.Lyric
-    //   358	1	4	localException2	Exception
+    //   0	379	0	this	QrcNoDecryptParserWOEmptyLine
+    //   24	154	1	i	int
+    //   39	11	2	j	int
+    //   4	241	3	localObject1	Object
+    //   271	4	3	localIOException1	java.io.IOException
+    //   290	1	3	localObject2	Object
+    //   304	1	3	localObject3	Object
+    //   328	16	3	localIOException2	java.io.IOException
+    //   348	28	3	localObject4	Object
+    //   197	158	4	localObject5	Object
+    //   362	5	4	localIOException3	java.io.IOException
+    //   207	76	5	localObject6	Object
+    //   285	1	5	localException1	Exception
+    //   297	11	5	localException2	Exception
+    //   341	6	5	localObject7	Object
     // Exception table:
     //   from	to	target	type
-    //   197	203	222	java/lang/Exception
-    //   210	219	222	java/lang/Exception
-    //   272	282	222	java/lang/Exception
-    //   284	302	222	java/lang/Exception
-    //   241	245	247	java/io/IOException
-    //   306	310	313	java/io/IOException
-    //   179	195	327	finally
-    //   334	338	340	java/io/IOException
-    //   197	203	354	finally
-    //   210	219	354	finally
-    //   226	237	354	finally
-    //   272	282	354	finally
-    //   284	302	354	finally
-    //   179	195	358	java/lang/Exception
+    //   263	268	271	java/io/IOException
+    //   202	209	285	java/lang/Exception
+    //   217	226	285	java/lang/Exception
+    //   232	242	285	java/lang/Exception
+    //   245	263	285	java/lang/Exception
+    //   182	199	290	finally
+    //   182	199	297	java/lang/Exception
+    //   321	326	328	java/io/IOException
+    //   202	209	341	finally
+    //   217	226	341	finally
+    //   232	242	341	finally
+    //   245	263	341	finally
+    //   305	316	341	finally
+    //   354	359	362	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.music.lyric.parse.parser.QrcNoDecryptParserWOEmptyLine
  * JD-Core Version:    0.7.0.1
  */

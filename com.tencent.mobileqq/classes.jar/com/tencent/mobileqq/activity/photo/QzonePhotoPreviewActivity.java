@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.LinearGradient;
 import android.graphics.Shader.TileMode;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,10 +12,11 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.utils.AlbumUtil;
 import com.tencent.mobileqq.utils.ViewUtils;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import com.tencent.widget.ListView;
 import cooperation.qzone.widget.LocalPhotoLinearGradientView;
 import java.util.ArrayList;
@@ -38,19 +38,19 @@ public class QzonePhotoPreviewActivity
   
   private Intent a()
   {
-    return getActivity().getIntent();
+    return getBaseActivity().getIntent();
   }
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_CooperationQzoneWidgetLocalPhotoLinearGradientView = ((LocalPhotoLinearGradientView)paramView.findViewById(2131376398));
+    this.jdField_a_of_type_CooperationQzoneWidgetLocalPhotoLinearGradientView = ((LocalPhotoLinearGradientView)paramView.findViewById(2131375910));
     LinearGradient localLinearGradient = new LinearGradient(0.0F, ViewUtils.a(79.0F), 0.0F, 0.0F, -14869219, 0, Shader.TileMode.CLAMP);
     this.jdField_a_of_type_CooperationQzoneWidgetLocalPhotoLinearGradientView.setShader(localLinearGradient);
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramView.findViewById(2131376399));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376397));
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramView.findViewById(2131375911));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375909));
     this.jdField_a_of_type_ComTencentWidgetListView.setOnItemClickListener(new QzonePhotoPreviewActivity.1(this));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new QzonePhotoPreviewActivity.2(this));
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity$VerticalPictureAdapter = new QzonePhotoPreviewActivity.VerticalPictureAdapter(this, getActivity());
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity$VerticalPictureAdapter = new QzonePhotoPreviewActivity.VerticalPictureAdapter(this, getBaseActivity());
     this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity$VerticalPictureAdapter);
   }
   
@@ -68,42 +68,60 @@ public class QzonePhotoPreviewActivity
   {
     this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(1);
     int i = 0;
-    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      Object localObject;
-      if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.size() > 0) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(this.jdField_a_of_type_JavaUtilArrayList.get(i))))
+      Object localObject1 = this.jdField_a_of_type_JavaUtilHashMap;
+      Object localObject2;
+      double d1;
+      double d2;
+      if ((localObject1 != null) && (((HashMap)localObject1).size() > 0) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(this.jdField_a_of_type_JavaUtilArrayList.get(i))))
       {
-        localObject = (PicInfo)this.jdField_a_of_type_JavaUtilHashMap.get(this.jdField_a_of_type_JavaUtilArrayList.get(i));
-        if ((localObject != null) && (((PicInfo)localObject).picwidth > 0)) {
-          this.jdField_b_of_type_JavaUtilArrayList.add(new QzonePhotoPreviewActivity.PicInfoItem(this, (String)this.jdField_a_of_type_JavaUtilArrayList.get(i), (float)(((PicInfo)localObject).picheight * 1.0D / ((PicInfo)localObject).picwidth)));
+        localObject1 = (PicInfo)this.jdField_a_of_type_JavaUtilHashMap.get(this.jdField_a_of_type_JavaUtilArrayList.get(i));
+        if ((localObject1 != null) && (((PicInfo)localObject1).picwidth > 0))
+        {
+          localObject2 = this.jdField_b_of_type_JavaUtilArrayList;
+          String str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+          d1 = ((PicInfo)localObject1).picheight;
+          Double.isNaN(d1);
+          d2 = ((PicInfo)localObject1).picwidth;
+          Double.isNaN(d2);
+          ((ArrayList)localObject2).add(new QzonePhotoPreviewActivity.PicInfoItem(this, str, (float)(d1 * 1.0D / d2)));
         }
       }
-      int j;
-      if ((this.jdField_b_of_type_JavaUtilHashMap != null) && (this.jdField_b_of_type_JavaUtilHashMap.containsKey(this.jdField_a_of_type_JavaUtilArrayList.get(i))))
+      localObject1 = this.jdField_b_of_type_JavaUtilHashMap;
+      if ((localObject1 != null) && (((HashMap)localObject1).containsKey(this.jdField_a_of_type_JavaUtilArrayList.get(i))))
       {
-        localObject = (LocalMediaInfo)this.jdField_b_of_type_JavaUtilHashMap.get(this.jdField_a_of_type_JavaUtilArrayList.get(i));
-        if ((((LocalMediaInfo)localObject).orientation != 90) && (((LocalMediaInfo)localObject).orientation != 270)) {
-          break label256;
+        localObject1 = (LocalMediaInfo)this.jdField_b_of_type_JavaUtilHashMap.get(this.jdField_a_of_type_JavaUtilArrayList.get(i));
+        int k;
+        int j;
+        if ((((LocalMediaInfo)localObject1).orientation != 90) && (((LocalMediaInfo)localObject1).orientation != 270))
+        {
+          k = ((LocalMediaInfo)localObject1).mediaHeight;
+          j = ((LocalMediaInfo)localObject1).mediaWidth;
         }
-        j = ((LocalMediaInfo)localObject).mediaWidth;
+        else
+        {
+          k = ((LocalMediaInfo)localObject1).mediaWidth;
+          j = ((LocalMediaInfo)localObject1).mediaHeight;
+        }
+        localObject1 = this.jdField_b_of_type_JavaUtilArrayList;
+        localObject2 = (String)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        d1 = k;
+        Double.isNaN(d1);
+        d2 = j;
+        Double.isNaN(d2);
+        ((ArrayList)localObject1).add(new QzonePhotoPreviewActivity.PicInfoItem(this, (String)localObject2, (float)(d1 * 1.0D / d2)));
       }
-      for (int k = ((LocalMediaInfo)localObject).mediaHeight;; k = ((LocalMediaInfo)localObject).mediaWidth)
-      {
-        this.jdField_b_of_type_JavaUtilArrayList.add(new QzonePhotoPreviewActivity.PicInfoItem(this, (String)this.jdField_a_of_type_JavaUtilArrayList.get(i), (float)(j * 1.0D / k)));
-        i += 1;
-        break;
-        label256:
-        j = ((LocalMediaInfo)localObject).mediaHeight;
-      }
+      i += 1;
     }
   }
   
   public void a()
   {
     Intent localIntent = a();
-    localIntent.setClass(getActivity(), NewPhotoListActivity.class);
+    localIntent.setClass(getBaseActivity(), NewPhotoListActivity.class);
     startActivity(localIntent);
-    getActivity().finish();
+    getBaseActivity().finish();
   }
   
   public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
@@ -112,8 +130,8 @@ public class QzonePhotoPreviewActivity
     {
       if (this.jdField_a_of_type_Boolean)
       {
-        getActivity().finish();
-        AlbumUtil.anim(getActivity(), true, false);
+        getBaseActivity().finish();
+        AlbumUtil.anim(getBaseActivity(), true, false);
         return true;
       }
       a();
@@ -129,9 +147,9 @@ public class QzonePhotoPreviewActivity
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131562630, null);
-    getActivity().getWindow().addFlags(1024);
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    paramLayoutInflater = LayoutInflater.from(getBaseActivity()).inflate(2131562442, null);
+    getBaseActivity().getWindow().addFlags(1024);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
@@ -144,7 +162,7 @@ public class QzonePhotoPreviewActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity
  * JD-Core Version:    0.7.0.1
  */

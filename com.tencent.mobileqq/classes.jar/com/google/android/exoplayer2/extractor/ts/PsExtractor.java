@@ -53,13 +53,14 @@ public final class PsExtractor
   
   public int read(ExtractorInput paramExtractorInput, PositionHolder paramPositionHolder)
   {
-    if (!paramExtractorInput.peekFully(this.psPacketBuffer.data, 0, 4, true)) {}
-    do
-    {
+    if (!paramExtractorInput.peekFully(this.psPacketBuffer.data, 0, 4, true)) {
       return -1;
-      this.psPacketBuffer.setPosition(0);
-      i = this.psPacketBuffer.readInt();
-    } while (i == 441);
+    }
+    this.psPacketBuffer.setPosition(0);
+    int i = this.psPacketBuffer.readInt();
+    if (i == 441) {
+      return -1;
+    }
     if (i == 442)
     {
       paramExtractorInput.peekFully(this.psPacketBuffer.data, 0, 10);
@@ -82,18 +83,35 @@ public final class PsExtractor
     i &= 0xFF;
     PsExtractor.PesReader localPesReader = (PsExtractor.PesReader)this.psPayloadReaders.get(i);
     paramPositionHolder = localPesReader;
-    Object localObject;
     if (!this.foundAllTracks)
     {
-      localObject = localPesReader;
+      Object localObject = localPesReader;
       if (localPesReader == null)
       {
         localObject = null;
-        if ((this.foundAudioTrack) || (i != 189)) {
-          break label385;
+        if ((!this.foundAudioTrack) && (i == 189))
+        {
+          paramPositionHolder = new Ac3Reader();
+          this.foundAudioTrack = true;
         }
-        paramPositionHolder = new Ac3Reader();
-        this.foundAudioTrack = true;
+        else if ((!this.foundAudioTrack) && ((i & 0xE0) == 192))
+        {
+          paramPositionHolder = new MpegAudioReader();
+          this.foundAudioTrack = true;
+        }
+        else
+        {
+          paramPositionHolder = (PositionHolder)localObject;
+          if (!this.foundVideoTrack)
+          {
+            paramPositionHolder = (PositionHolder)localObject;
+            if ((i & 0xF0) == 224)
+            {
+              paramPositionHolder = new H262Reader();
+              this.foundVideoTrack = true;
+            }
+          }
+        }
         localObject = localPesReader;
         if (paramPositionHolder != null)
         {
@@ -117,37 +135,19 @@ public final class PsExtractor
     }
     paramExtractorInput.peekFully(this.psPacketBuffer.data, 0, 2);
     this.psPacketBuffer.setPosition(0);
-    int i = this.psPacketBuffer.readUnsignedShort() + 6;
-    if (paramPositionHolder == null) {
-      paramExtractorInput.skipFully(i);
-    }
-    for (;;)
+    i = this.psPacketBuffer.readUnsignedShort() + 6;
+    if (paramPositionHolder == null)
     {
+      paramExtractorInput.skipFully(i);
       return 0;
-      label385:
-      if ((!this.foundAudioTrack) && ((i & 0xE0) == 192))
-      {
-        paramPositionHolder = new MpegAudioReader();
-        this.foundAudioTrack = true;
-        break;
-      }
-      paramPositionHolder = (PositionHolder)localObject;
-      if (this.foundVideoTrack) {
-        break;
-      }
-      paramPositionHolder = (PositionHolder)localObject;
-      if ((i & 0xF0) != 224) {
-        break;
-      }
-      paramPositionHolder = new H262Reader();
-      this.foundVideoTrack = true;
-      break;
-      this.psPacketBuffer.reset(i);
-      paramExtractorInput.readFully(this.psPacketBuffer.data, 0, i);
-      this.psPacketBuffer.setPosition(6);
-      paramPositionHolder.consume(this.psPacketBuffer);
-      this.psPacketBuffer.setLimit(this.psPacketBuffer.capacity());
     }
+    this.psPacketBuffer.reset(i);
+    paramExtractorInput.readFully(this.psPacketBuffer.data, 0, i);
+    this.psPacketBuffer.setPosition(6);
+    paramPositionHolder.consume(this.psPacketBuffer);
+    paramExtractorInput = this.psPacketBuffer;
+    paramExtractorInput.setLimit(paramExtractorInput.capacity());
+    return 0;
   }
   
   public void release() {}
@@ -165,28 +165,38 @@ public final class PsExtractor
   
   public boolean sniff(ExtractorInput paramExtractorInput)
   {
-    boolean bool = true;
     byte[] arrayOfByte = new byte[14];
+    boolean bool = false;
     paramExtractorInput.peekFully(arrayOfByte, 0, 14);
-    if (442 != ((arrayOfByte[0] & 0xFF) << 24 | (arrayOfByte[1] & 0xFF) << 16 | (arrayOfByte[2] & 0xFF) << 8 | arrayOfByte[3] & 0xFF)) {}
-    while (((arrayOfByte[4] & 0xC4) != 68) || ((arrayOfByte[6] & 0x4) != 4) || ((arrayOfByte[8] & 0x4) != 4) || ((arrayOfByte[9] & 0x1) != 1) || ((arrayOfByte[12] & 0x3) != 3)) {
+    if (442 != ((arrayOfByte[0] & 0xFF) << 24 | (arrayOfByte[1] & 0xFF) << 16 | (arrayOfByte[2] & 0xFF) << 8 | arrayOfByte[3] & 0xFF)) {
+      return false;
+    }
+    if ((arrayOfByte[4] & 0xC4) != 68) {
+      return false;
+    }
+    if ((arrayOfByte[6] & 0x4) != 4) {
+      return false;
+    }
+    if ((arrayOfByte[8] & 0x4) != 4) {
+      return false;
+    }
+    if ((arrayOfByte[9] & 0x1) != 1) {
+      return false;
+    }
+    if ((arrayOfByte[12] & 0x3) != 3) {
       return false;
     }
     paramExtractorInput.advancePeekPosition(arrayOfByte[13] & 0x7);
     paramExtractorInput.peekFully(arrayOfByte, 0, 3);
-    int i = arrayOfByte[0];
-    int j = arrayOfByte[1];
-    if (1 == (arrayOfByte[2] & 0xFF | (i & 0xFF) << 16 | (j & 0xFF) << 8)) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
+    if (1 == ((arrayOfByte[0] & 0xFF) << 16 | (arrayOfByte[1] & 0xFF) << 8 | arrayOfByte[2] & 0xFF)) {
+      bool = true;
     }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ts.PsExtractor
  * JD-Core Version:    0.7.0.1
  */

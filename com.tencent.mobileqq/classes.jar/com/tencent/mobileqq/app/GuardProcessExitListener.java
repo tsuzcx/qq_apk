@@ -17,45 +17,64 @@ public abstract class GuardProcessExitListener
 {
   private String a(ArrayList<String> paramArrayList, boolean paramBoolean)
   {
-    Time localTime = new Time();
-    localTime.setToNow();
+    Object localObject = new Time();
+    ((Time)localObject).setToNow();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("com.tencent.process.exit");
-    localStringBuilder.append(localTime.year).append(localTime.month + 1).append(localTime.monthDay);
-    localStringBuilder.append(localTime.hour);
-    if (paramBoolean)
-    {
-      localStringBuilder.append(localTime.minute - 1);
-      if (paramArrayList != null) {
-        break label142;
-      }
+    localStringBuilder.append(((Time)localObject).year);
+    localStringBuilder.append(((Time)localObject).month + 1);
+    localStringBuilder.append(((Time)localObject).monthDay);
+    localStringBuilder.append(((Time)localObject).hour);
+    if (paramBoolean) {
+      localStringBuilder.append(((Time)localObject).minute - 1);
+    } else {
+      localStringBuilder.append(((Time)localObject).minute);
     }
-    label142:
-    for (paramArrayList = "null";; paramArrayList = paramArrayList.toString())
-    {
-      localStringBuilder.append(paramArrayList);
-      paramArrayList = MD5.toMD5(localStringBuilder.toString());
-      return MD5.toMD5(paramArrayList + localStringBuilder.toString());
-      localStringBuilder.append(localTime.minute);
-      break;
+    if (paramArrayList == null) {
+      paramArrayList = "null";
+    } else {
+      paramArrayList = paramArrayList.toString();
     }
+    localStringBuilder.append(paramArrayList);
+    paramArrayList = MD5.toMD5(localStringBuilder.toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramArrayList);
+    ((StringBuilder)localObject).append(localStringBuilder.toString());
+    return MD5.toMD5(((StringBuilder)localObject).toString());
   }
   
   private boolean a(String paramString, ArrayList<String> paramArrayList)
   {
-    if (Foreground.getActivityCount() > 0) {}
-    while ((paramString == null) || (paramString.length() == 0) || ((!paramString.equals(a(paramArrayList, false))) && (!paramString.equals(a(paramArrayList, true))))) {
+    int i = Foreground.getActivityCount();
+    boolean bool2 = false;
+    if (i > 0) {
       return false;
     }
-    return true;
+    boolean bool1 = bool2;
+    if (paramString != null)
+    {
+      if (paramString.length() == 0) {
+        return false;
+      }
+      if (!paramString.equals(a(paramArrayList, false)))
+      {
+        bool1 = bool2;
+        if (!paramString.equals(a(paramArrayList, true))) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   private boolean a(ArrayList<String> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return true;
+    if ((paramArrayList != null) && (paramArrayList.size() != 0)) {
+      return paramArrayList.contains(a());
     }
-    return paramArrayList.contains(a());
+    return true;
   }
   
   protected String a()
@@ -71,28 +90,33 @@ public abstract class GuardProcessExitListener
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (!"com.tencent.process.exit".equals(paramContext));
-        paramContext = paramIntent.getExtras();
-      } while (paramContext == null);
-      paramContext = paramContext.getStringArrayList("procNameList");
-    } while ((!a(paramIntent.getExtras().getString("verify"), paramContext)) || (!a(paramContext)));
-    if (QLog.isColorLevel()) {
-      QLog.e("GuardProcessExitListener", 2, "***exitProcexx*** receive broacast action=" + paramIntent.getAction());
+    if (paramContext == null) {
+      return;
     }
-    a(true);
+    if ("com.tencent.process.exit".equals(paramContext))
+    {
+      paramContext = paramIntent.getExtras();
+      if (paramContext != null)
+      {
+        paramContext = paramContext.getStringArrayList("procNameList");
+        if ((a(paramIntent.getExtras().getString("verify"), paramContext)) && (a(paramContext)))
+        {
+          if (QLog.isColorLevel())
+          {
+            paramContext = new StringBuilder();
+            paramContext.append("***exitProcexx*** receive broacast action=");
+            paramContext.append(paramIntent.getAction());
+            QLog.e("GuardProcessExitListener", 2, paramContext.toString());
+          }
+          a(true);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.GuardProcessExitListener
  * JD-Core Version:    0.7.0.1
  */

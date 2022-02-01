@@ -16,12 +16,17 @@ public final class ScriptPackage$Companion$create$1
   public ScriptFile.Path getScript(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "name");
-    return new ScriptFile.Path(paramString, new File(this.$baseDir, paramString), new File(this.$baseDir, paramString + ".cc"));
+    File localFile1 = new File(this.$baseDir, paramString);
+    File localFile2 = this.$baseDir;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".cc");
+    return new ScriptFile.Path(paramString, localFile1, new File(localFile2, localStringBuilder.toString()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.filesystem.ScriptPackage.Companion.create.1
  * JD-Core Version:    0.7.0.1
  */

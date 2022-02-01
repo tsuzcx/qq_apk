@@ -50,13 +50,12 @@ public class PTSRootNodeScrollViewDelegate
   public boolean animation(PTSNodeInfo paramPTSNodeInfo, PTSAnimationUtil.AnimationInfo paramAnimationInfo)
   {
     PTSNodeVirtual localPTSNodeVirtual = getNodeVirtualByID(paramPTSNodeInfo.getUniqueID());
-    boolean bool = false;
     if (localPTSNodeVirtual != null)
     {
       PTSAnimationUtil.playAnimation(paramAnimationInfo, localPTSNodeVirtual, localPTSNodeVirtual.getNodeInfo(), paramPTSNodeInfo);
-      bool = true;
+      return true;
     }
-    return bool;
+    return false;
   }
   
   public View getRootView()
@@ -66,45 +65,64 @@ public class PTSRootNodeScrollViewDelegate
   
   public boolean insert(PTSNodeInfo paramPTSNodeInfo, int paramInt)
   {
-    boolean bool = true;
-    PTSNodeVirtual localPTSNodeVirtual = PTSNodeFactory.buildVirtualNode(paramPTSNodeInfo, this.mAppInstance);
-    if (paramPTSNodeInfo.isRootNode())
+    Object localObject = PTSNodeFactory.buildVirtualNode(paramPTSNodeInfo, this.mAppInstance);
+    boolean bool2 = paramPTSNodeInfo.isRootNode();
+    boolean bool1 = true;
+    if (bool2)
     {
       clearNodeMap();
-      this.mScrollView.addView(localPTSNodeVirtual.getView());
+      this.mScrollView.addView(((PTSNodeVirtual)localObject).getView());
     }
-    for (;;)
+    else if (paramPTSNodeInfo.hasParent())
     {
-      putNodeIntoMap(paramPTSNodeInfo, localPTSNodeVirtual);
-      PTSLog.i("PTSRootNodeScrollViewDelegate", "insert node, opRes = " + bool + ", nodeInfo = \n" + paramPTSNodeInfo);
-      return bool;
-      if (paramPTSNodeInfo.hasParent())
-      {
-        getNodeVirtualByID(paramPTSNodeInfo.getParentID()).addChild(localPTSNodeVirtual);
-      }
-      else
-      {
-        if (PTSLog.isDebug())
-        {
-          PTSLog.e("PTSRootNodeScrollViewDelegate", "insert exception, nodeInfo = \n" + paramPTSNodeInfo);
-          throw new IllegalArgumentException("PTSRootNode insert exception, the node is not root node or has any parent node.");
-        }
-        bool = false;
-      }
+      getNodeVirtualByID(paramPTSNodeInfo.getParentID()).addChild((PTSNodeVirtual)localObject);
     }
+    else
+    {
+      if (PTSLog.isDebug()) {
+        break label131;
+      }
+      bool1 = false;
+    }
+    putNodeIntoMap(paramPTSNodeInfo, (PTSNodeVirtual)localObject);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("insert node, opRes = ");
+    ((StringBuilder)localObject).append(bool1);
+    ((StringBuilder)localObject).append(", nodeInfo = \n");
+    ((StringBuilder)localObject).append(paramPTSNodeInfo);
+    PTSLog.i("PTSRootNodeScrollViewDelegate", ((StringBuilder)localObject).toString());
+    return bool1;
+    label131:
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("insert exception, nodeInfo = \n");
+    ((StringBuilder)localObject).append(paramPTSNodeInfo);
+    PTSLog.e("PTSRootNodeScrollViewDelegate", ((StringBuilder)localObject).toString());
+    throw new IllegalArgumentException("PTSRootNode insert exception, the node is not root node or has any parent node.");
   }
   
   public boolean modify(PTSNodeInfo paramPTSNodeInfo)
   {
     PTSNodeVirtual localPTSNodeVirtual = getNodeVirtualByID(paramPTSNodeInfo.getUniqueID());
-    boolean bool = false;
+    boolean bool;
     if (localPTSNodeVirtual != null)
     {
-      PTSLog.i("PTSRootNodeScrollViewDelegate", "modify node, \n old nodeInfo = \n" + localPTSNodeVirtual.getNodeInfo() + "\n new nodeInfo = \n" + paramPTSNodeInfo);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("modify node, \n old nodeInfo = \n");
+      localStringBuilder.append(localPTSNodeVirtual.getNodeInfo());
+      localStringBuilder.append("\n new nodeInfo = \n");
+      localStringBuilder.append(paramPTSNodeInfo);
+      PTSLog.i("PTSRootNodeScrollViewDelegate", localStringBuilder.toString());
       localPTSNodeVirtual.bindNodeInfo(paramPTSNodeInfo);
       bool = true;
     }
-    PTSLog.i("PTSRootNodeScrollViewDelegate", "modify node, opRes = " + bool);
+    else
+    {
+      bool = false;
+    }
+    paramPTSNodeInfo = new StringBuilder();
+    paramPTSNodeInfo.append("modify node, opRes = ");
+    paramPTSNodeInfo.append(bool);
+    PTSLog.i("PTSRootNodeScrollViewDelegate", paramPTSNodeInfo.toString());
     return bool;
   }
   
@@ -123,38 +141,55 @@ public class PTSRootNodeScrollViewDelegate
   
   public boolean remove(int paramInt)
   {
-    boolean bool = true;
-    PTSNodeVirtual localPTSNodeVirtual1 = getNodeVirtualByID(String.valueOf(paramInt));
-    PTSNodeInfo localPTSNodeInfo = localPTSNodeVirtual1.getNodeInfo();
-    if (localPTSNodeInfo.isRootNode()) {
-      this.mScrollView.removeView(localPTSNodeVirtual1.getView());
-    }
-    for (;;)
+    Object localObject = getNodeVirtualByID(String.valueOf(paramInt));
+    PTSNodeInfo localPTSNodeInfo = ((PTSNodeVirtual)localObject).getNodeInfo();
+    boolean bool2 = localPTSNodeInfo.isRootNode();
+    boolean bool1 = true;
+    if (bool2)
     {
-      removeNodeFromMap(localPTSNodeInfo);
-      PTSLog.i("PTSRootNodeScrollViewDelegate", "remove node, opRes = " + bool + ", new nodeInfo = \n" + localPTSNodeInfo);
-      return bool;
+      this.mScrollView.removeView(((PTSNodeVirtual)localObject).getView());
+    }
+    else
+    {
       if (localPTSNodeInfo.hasParent())
       {
-        PTSNodeVirtual localPTSNodeVirtual2 = localPTSNodeVirtual1.getParent();
-        if (localPTSNodeVirtual2 != null) {
-          localPTSNodeVirtual2.removeChild(localPTSNodeVirtual1);
+        PTSNodeVirtual localPTSNodeVirtual = ((PTSNodeVirtual)localObject).getParent();
+        if (localPTSNodeVirtual != null)
+        {
+          localPTSNodeVirtual.removeChild((PTSNodeVirtual)localObject);
+          break label82;
         }
       }
-      else if (PTSLog.isDebug())
+      else
       {
-        PTSLog.e("PTSRootNodeScrollViewDelegate", "remove exception, nodeInfo = \n" + localPTSNodeInfo);
-        throw new IllegalArgumentException("PTSRootNode remove exception, the node is not root node or has any parent node.");
+        if (PTSLog.isDebug()) {
+          break label140;
+        }
       }
-      bool = false;
+      bool1 = false;
     }
+    label82:
+    removeNodeFromMap(localPTSNodeInfo);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("remove node, opRes = ");
+    ((StringBuilder)localObject).append(bool1);
+    ((StringBuilder)localObject).append(", new nodeInfo = \n");
+    ((StringBuilder)localObject).append(localPTSNodeInfo);
+    PTSLog.i("PTSRootNodeScrollViewDelegate", ((StringBuilder)localObject).toString());
+    return bool1;
+    label140:
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("remove exception, nodeInfo = \n");
+    ((StringBuilder)localObject).append(localPTSNodeInfo);
+    PTSLog.e("PTSRootNodeScrollViewDelegate", ((StringBuilder)localObject).toString());
+    throw new IllegalArgumentException("PTSRootNode remove exception, the node is not root node or has any parent node.");
   }
   
   public void setRootView(ViewGroup paramViewGroup) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.core.PTSRootNodeScrollViewDelegate
  * JD-Core Version:    0.7.0.1
  */

@@ -4,30 +4,34 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.common.RIJXTabFrameUtils;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
-import com.tencent.biz.pubaccount.readinjoy.viola.delegate.ViolaInitDelegate;
-import com.tencent.biz.pubaccount.readinjoy.viola.delegate.ViolaUiDelegate;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.ViolaCreactPageObject;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.hippy.TkdAdHippyEngine;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.hippy.TkdAdHippyViewCreator;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.hippy.qq.app.HippyQQEngine;
+import com.tencent.hippy.qq.utils.HippyCommonUtils;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.kandian.biz.common.api.IRIJXTabFrameUtils;
+import com.tencent.mobileqq.kandian.biz.common.fragment.ReadInJoyBaseFragment;
+import com.tencent.mobileqq.kandian.biz.viola.api.IViolaBaseView;
+import com.tencent.mobileqq.kandian.biz.viola.api.IViolaBaseView.ViolaCreactPageObject;
+import com.tencent.mobileqq.kandian.biz.viola.api.IViolaBaseViewFactory;
+import com.tencent.mobileqq.kandian.biz.viola.api.IViolaUiDelegate;
+import com.tencent.mobileqq.kandian.biz.viola.api.IViolaUiDelegateFactory;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mtt.hippy.HippyEngine;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.modules.HippyModuleManager;
 import com.tencent.mtt.hippy.modules.javascriptmodules.EventDispatcher;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
+import mqq.app.AppRuntime;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -37,14 +41,14 @@ public class ReadinjoyAdHippyFragment
   protected int a;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private ViolaUiDelegate jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaDelegateViolaUiDelegate;
-  protected ViolaBaseView a;
   public HippyQQEngine a;
+  protected IViolaBaseView a;
+  private IViolaUiDelegate jdField_a_of_type_ComTencentMobileqqKandianBizViolaApiIViolaUiDelegate;
   protected String a;
-  private boolean jdField_a_of_type_Boolean = false;
   private String b;
   private String c;
   private String d = "func_tab";
+  private boolean e = false;
   
   public ReadinjoyAdHippyFragment()
   {
@@ -70,36 +74,99 @@ public class ReadinjoyAdHippyFragment
     return localHippyMap;
   }
   
+  private String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    paramString = Uri.parse(paramString).getQueryParameter("_ckey");
+    if (!TextUtils.isEmpty(paramString))
+    {
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if (localAppRuntime == null) {
+        return null;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("viola_cache_file_");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("_");
+      localStringBuilder.append(localAppRuntime.getAccount());
+      paramString = FileUtils.readObject(localStringBuilder.toString());
+      if ((paramString instanceof String)) {
+        return (String)paramString;
+      }
+    }
+    return null;
+  }
+  
   private void a(Bundle paramBundle, ViewGroup paramViewGroup)
   {
-    paramViewGroup = new JSONObject();
-    if ((paramBundle != null) && (paramBundle.containsKey("param"))) {}
-    for (;;)
+    JSONObject localJSONObject = new JSONObject();
+    paramViewGroup = localJSONObject;
+    if (paramBundle != null)
     {
-      try
+      paramViewGroup = localJSONObject;
+      if (!paramBundle.containsKey("param")) {}
+    }
+    try
+    {
+      paramViewGroup = new JSONObject(paramBundle.getString("param"));
+      paramBundle = (ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131380915);
+      this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.initHippyInContainer(paramBundle, paramViewGroup, false, new ReadinjoyAdHippyFragment.3(this));
+      return;
+    }
+    catch (JSONException paramBundle)
+    {
+      for (;;)
       {
-        paramBundle = new JSONObject(paramBundle.getString("param"));
-        this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.initHippy(this.jdField_a_of_type_AndroidViewViewGroup, paramBundle, false, new ReadinjoyAdHippyFragment.3(this));
+        paramViewGroup = localJSONObject;
+      }
+    }
+  }
+  
+  private void b(Bundle paramBundle, ViewGroup paramViewGroup)
+  {
+    if ((!TextUtils.isEmpty(this.b)) && (this.b.contains("v_bundleName")))
+    {
+      String str1 = Uri.parse(this.b).getQueryParameter("v_bundleName");
+      String str2 = Uri.parse(this.b).getQueryParameter("component");
+      Object localObject = this.b;
+      if (!TextUtils.isEmpty(this.d))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.b);
+        ((StringBuilder)localObject).append("&h5GameSource=");
+        ((StringBuilder)localObject).append(this.d);
+        localObject = ((StringBuilder)localObject).toString();
+      }
+      int i = HippyCommonUtils.getModuleOnlineConfig(str1);
+      if ((!TextUtils.isEmpty(str1)) && (i == 1))
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Hippy: url=");
+          localStringBuilder.append((String)localObject);
+          QLog.d("ReadinjoyAdMiniGameFragment", 2, localStringBuilder.toString());
+        }
+        if (this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine == null)
+        {
+          this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine = new TkdAdHippyEngine(this, str1, (String)localObject);
+          this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.setJsBundleType("react");
+          this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.setPropsMap(a((String)localObject));
+          this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.setComponentName(str2);
+          this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.setViewCreator(new TkdAdHippyViewCreator());
+        }
+        a(paramBundle, paramViewGroup);
         return;
       }
-      catch (JSONException paramBundle)
-      {
-        paramBundle = paramViewGroup;
-        continue;
-      }
-      paramBundle = paramViewGroup;
+      j();
+      return;
     }
+    j();
   }
   
-  private void b()
-  {
-    String str = getActivity().getIntent().getStringExtra("url");
-    if (!TextUtils.isEmpty(str)) {
-      this.b = str;
-    }
-  }
-  
-  private void b(int paramInt)
+  private void c(int paramInt)
   {
     try
     {
@@ -108,135 +175,149 @@ public class ReadinjoyAdHippyFragment
         if (this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.getHippyEngine().getEngineContext().getModuleManager().getJavaScriptModule(EventDispatcher.class) == null) {
           return;
         }
-        HippyMap localHippyMap = new HippyMap();
-        localHippyMap.pushString("url", this.c);
-        localHippyMap.pushInt("type", paramInt);
-        ((EventDispatcher)this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.getHippyEngine().getEngineContext().getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveNativeEvent("onActive", localHippyMap);
-        QLog.e("ReadinjoyAdMiniGameFragment", 2, "send hippy url :" + this.c);
+        Object localObject = new HippyMap();
+        ((HippyMap)localObject).pushString("url", this.c);
+        ((HippyMap)localObject).pushInt("type", paramInt);
+        ((EventDispatcher)this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.getHippyEngine().getEngineContext().getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveNativeEvent("onActive", localObject);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("send hippy url :");
+        ((StringBuilder)localObject).append(this.c);
+        QLog.e("ReadinjoyAdMiniGameFragment", 2, ((StringBuilder)localObject).toString());
         return;
       }
+      return;
     }
     catch (Exception localException)
     {
-      QLog.d("ReadinjoyAdMiniGameFragment", 2, "send hippy event error:" + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("send hippy event error:");
+      localStringBuilder.append(localException.getMessage());
+      QLog.d("ReadinjoyAdMiniGameFragment", 2, localStringBuilder.toString());
     }
   }
   
-  private void b(Bundle paramBundle, ViewGroup paramViewGroup)
+  private void i()
   {
-    if ((!TextUtils.isEmpty(this.b)) && (this.b.contains("v_bundleName")))
+    String str = a().getIntent().getStringExtra("url");
+    if (!TextUtils.isEmpty(str)) {
+      this.b = str;
+    }
+  }
+  
+  private void j()
+  {
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null)
     {
-      String str2 = Uri.parse(this.b).getQueryParameter("v_bundleName");
-      String str3 = Uri.parse(this.b).getQueryParameter("component");
-      String str1 = this.b;
-      if (!TextUtils.isEmpty(this.d)) {
-        str1 = this.b + "&h5GameSource=" + this.d;
-      }
-      int i = HippyQQEngine.getModuleOnlineConfig(str2);
-      if ((!TextUtils.isEmpty(str2)) && (i == 1))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadinjoyAdMiniGameFragment", 2, "Hippy: url=" + str1);
-        }
-        if (this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine == null)
-        {
-          this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine = new TkdAdHippyEngine(this, str2, str1);
-          this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.setJsBundleType("react");
-          this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.setPropsMap(a(str1));
-          this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.setComponentName(str3);
-          this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.setViewCreator(new TkdAdHippyViewCreator());
-        }
-        a(paramBundle, paramViewGroup);
+      if (a() == null) {
         return;
       }
-      c();
-      return;
+      QLog.d("ReadinjoyAdMiniGameFragment", 2, "Hippy: initHippy error initViola ui");
+      this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaApiIViolaUiDelegate = ((IViolaUiDelegateFactory)QRoute.api(IViolaUiDelegateFactory.class)).create(this);
+      this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaApiIViolaBaseView = ((IViolaBaseViewFactory)QRoute.api(IViolaBaseViewFactory.class)).createViolaBaseView(a());
+      ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131380915)).addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaApiIViolaBaseView.a());
+      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaApiIViolaUiDelegate.b()) {
+        this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaApiIViolaUiDelegate.a();
+      }
+      k();
+      this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaApiIViolaUiDelegate.a(this.jdField_a_of_type_AndroidViewViewGroup, new ReadinjoyAdHippyFragment.1(this));
+      this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaApiIViolaBaseView.setListener(new ReadinjoyAdHippyFragment.2(this));
+      this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaApiIViolaBaseView.setPageStartTime(System.currentTimeMillis());
+      IViolaBaseView localIViolaBaseView = this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaApiIViolaBaseView;
+      String str = this.b;
+      localIViolaBaseView.a(str, this, new IViolaBaseView.ViolaCreactPageObject(str, new JSONObject(), a(this.b), 1, null));
     }
-    c();
   }
   
-  private void c()
+  private void k()
   {
-    if ((this.jdField_a_of_type_AndroidViewViewGroup == null) || (getActivity() == null)) {
-      return;
-    }
-    QLog.d("ReadinjoyAdMiniGameFragment", 2, "Hippy: initHippy error initViola ui");
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaDelegateViolaUiDelegate = new ViolaUiDelegate(this);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView = new ViolaBaseView(getActivity());
-    ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131381681)).addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaDelegateViolaUiDelegate.a()) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaDelegateViolaUiDelegate.d();
-    }
-    d();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaDelegateViolaUiDelegate.a(this.jdField_a_of_type_AndroidViewViewGroup, new ReadinjoyAdHippyFragment.1(this));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.setListener(new ReadinjoyAdHippyFragment.2(this));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.setPageStartTime(System.currentTimeMillis());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(this.b, this, new ViolaBaseView.ViolaCreactPageObject(this.b, new JSONObject(), ViolaInitDelegate.a(this.b), 1, null));
-  }
-  
-  private void d()
-  {
-    if ((this.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (this.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() == 8)) {
+    LinearLayout localLinearLayout = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    if ((localLinearLayout != null) && (localLinearLayout.getVisibility() == 8)) {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
     }
   }
   
-  private void h()
+  private void l()
   {
-    if ((this.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (this.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() == 0)) {
+    LinearLayout localLinearLayout = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    if ((localLinearLayout != null) && (localLinearLayout.getVisibility() == 0)) {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     }
   }
   
   private void m()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadinjoyAdMiniGameFragment", 2, "reload viola Page mChannelName :" + this.jdField_a_of_type_JavaLangString + "; mChannelId :" + this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reload viola Page mChannelName :");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append("; mChannelId :");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      QLog.d("ReadinjoyAdMiniGameFragment", 2, localStringBuilder.toString());
     }
-    d();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(new ReadinjoyAdHippyFragment.4(this));
+    k();
+    this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaApiIViolaBaseView.a(new ReadinjoyAdHippyFragment.4(this));
   }
   
   public int a()
   {
-    return 41708;
+    if ((this.e) && (a() != null)) {
+      return ImmersiveUtils.getStatusBarHeight(a());
+    }
+    return super.a();
   }
   
   public void a()
   {
-    if (BaseActivity.sTopActivity == null) {}
-    for (;;)
-    {
+    if (BaseActivity.sTopActivity == null) {
       return;
-      try
+    }
+    try
+    {
+      Object localObject1 = BaseActivity.sTopActivity.getIntent();
+      if (localObject1 == null) {
+        return;
+      }
+      localObject2 = ((Intent)localObject1).getStringExtra("key_channel_jump_scheme");
+      boolean bool = TextUtils.isEmpty((CharSequence)localObject2);
+      if ((!bool) && (((String)localObject2).contains("h5GameSource")))
       {
-        Intent localIntent = BaseActivity.sTopActivity.getIntent();
-        if (localIntent != null)
+        this.d = Uri.parse((String)localObject2).getQueryParameter("h5GameSource");
+        if (this.d != null)
         {
-          String str = localIntent.getStringExtra("key_channel_jump_scheme");
-          if ((!TextUtils.isEmpty(str)) && (str.contains("h5GameSource")))
-          {
-            this.d = Uri.parse(str).getQueryParameter("h5GameSource");
-            if (this.d == null) {
-              continue;
-            }
-            this.c = (this.b + "&h5GameSource=" + this.d);
-            localIntent.removeExtra("key_channel_jump_scheme");
-          }
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(this.b);
+          ((StringBuilder)localObject2).append("&h5GameSource=");
+          ((StringBuilder)localObject2).append(this.d);
+          this.c = ((StringBuilder)localObject2).toString();
+          ((Intent)localObject1).removeExtra("key_channel_jump_scheme");
         }
       }
-      catch (Exception localException)
+      else
       {
-        QLog.d("ReadinjoyAdMiniGameFragment", 2, "get hippy source error:" + localException.getMessage());
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(this.b);
+        ((StringBuilder)localObject1).append("&h5GameSource=");
+        ((StringBuilder)localObject1).append("func_tab");
+        this.c = ((StringBuilder)localObject1).toString();
         return;
       }
     }
-    this.c = (this.b + "&h5GameSource=" + "func_tab");
+    catch (Exception localException)
+    {
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("get hippy source error:");
+      ((StringBuilder)localObject2).append(localException.getMessage());
+      QLog.d("ReadinjoyAdMiniGameFragment", 2, ((StringBuilder)localObject2).toString());
+    }
   }
   
   public void a(String paramString)
   {
-    QLog.d("ReadinjoyAdMiniGameFragment", 2, "hippy url = " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("hippy url = ");
+    localStringBuilder.append(paramString);
+    QLog.d("ReadinjoyAdMiniGameFragment", 2, localStringBuilder.toString());
     this.b = paramString;
   }
   
@@ -244,20 +325,17 @@ public class ReadinjoyAdHippyFragment
   {
     super.a(paramBoolean, paramActivity, paramBundle);
     a();
-    b(2);
+    c(2);
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Boolean) || (super.a());
+    return (this.e) || (super.a());
   }
   
   public int b()
   {
-    if ((this.jdField_a_of_type_Boolean) && (getActivity() != null)) {
-      return ImmersiveUtils.getStatusBarHeight(getActivity());
-    }
-    return super.b();
+    return 41708;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -267,37 +345,37 @@ public class ReadinjoyAdHippyFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(getActivity());
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559253, paramViewGroup, false));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131374174));
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(a());
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559129, paramViewGroup, false));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131373730));
+    paramLayoutInflater = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    if (paramLayoutInflater != null) {
+      paramLayoutInflater.setOnClickListener(null);
     }
-    b();
+    i();
     b(getArguments(), paramViewGroup);
-    d();
-    paramLayoutInflater = this.jdField_a_of_type_AndroidViewViewGroup;
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
-    return paramLayoutInflater;
+    k();
+    return this.jdField_a_of_type_AndroidViewViewGroup;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine != null)
+    HippyQQEngine localHippyQQEngine = this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine;
+    if (localHippyQQEngine != null)
     {
-      this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.onDestroy();
+      localHippyQQEngine.onDestroy();
       this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine = null;
     }
     try
     {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.onActivityDestroy();
+      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaApiIViolaBaseView != null) {
+        this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaApiIViolaBaseView.onActivityDestroy();
       }
       if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
         this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView = null;
+      this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaApiIViolaBaseView = null;
       return;
     }
     catch (Exception localException) {}
@@ -306,12 +384,13 @@ public class ReadinjoyAdHippyFragment
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView != null)
+    IViolaBaseView localIViolaBaseView = this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaApiIViolaBaseView;
+    if (localIViolaBaseView != null)
     {
-      boolean bool = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.c();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.onActivityPause();
+      boolean bool = localIViolaBaseView.b();
+      this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaApiIViolaBaseView.onActivityPause();
       if (bool) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(false);
+        this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaApiIViolaBaseView.a(false);
       }
     }
   }
@@ -319,34 +398,37 @@ public class ReadinjoyAdHippyFragment
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView != null)
+    IViolaBaseView localIViolaBaseView = this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaApiIViolaBaseView;
+    if (localIViolaBaseView != null)
     {
-      boolean bool = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.c();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.onActivityResume();
-      if ((bool) && (RIJXTabFrameUtils.a.a()) && (c())) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(true);
+      boolean bool = localIViolaBaseView.b();
+      this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaApiIViolaBaseView.onActivityResume();
+      if ((bool) && (((IRIJXTabFrameUtils)QRoute.api(IRIJXTabFrameUtils.class)).isNowInKanDianTab()) && (b())) {
+        this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaApiIViolaBaseView.a(true);
       }
     }
-    b(1);
+    c(1);
   }
   
   public void onStart()
   {
     super.onStart();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.onActivityStart();
+    IViolaBaseView localIViolaBaseView = this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaApiIViolaBaseView;
+    if (localIViolaBaseView != null) {
+      localIViolaBaseView.onActivityStart();
     }
   }
   
   public void onStop()
   {
     super.onStop();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView != null)
+    IViolaBaseView localIViolaBaseView = this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaApiIViolaBaseView;
+    if (localIViolaBaseView != null)
     {
-      boolean bool = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.c();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.onActivityStop();
+      boolean bool = localIViolaBaseView.b();
+      this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaApiIViolaBaseView.onActivityStop();
       if (bool) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(false);
+        this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaApiIViolaBaseView.a(false);
       }
     }
   }
@@ -358,7 +440,7 @@ public class ReadinjoyAdHippyFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.fragment.ReadinjoyAdHippyFragment
  * JD-Core Version:    0.7.0.1
  */

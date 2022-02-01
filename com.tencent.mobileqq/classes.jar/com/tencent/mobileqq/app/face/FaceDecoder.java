@@ -21,27 +21,34 @@ public class FaceDecoder
   
   public FaceDecoder(AppInterface paramAppInterface)
   {
-    if ("module_nearby".equals(paramAppInterface.getModuleId())) {}
-    for (this.mDecoder = new NearbyFaceDecoder(paramAppInterface); this.mDecoder == null; this.mDecoder = new FaceDecoderImpl(paramAppInterface)) {
-      throw new NullPointerException("can not Instantiation FaceDecoder");
+    if ("module_nearby".equals(paramAppInterface.getModuleId())) {
+      this.mDecoder = new NearbyFaceDecoder(paramAppInterface);
+    } else {
+      this.mDecoder = new FaceDecoderImpl(paramAppInterface);
     }
+    if (this.mDecoder != null) {
+      return;
+    }
+    throw new NullPointerException("can not Instantiation FaceDecoder");
   }
   
   private byte getFaceShapeType(int paramInt)
   {
-    byte b = 3;
     if (paramInt == 115) {
-      b = 4;
+      return 4;
     }
-    return b;
+    return 3;
   }
   
   protected static void requestDownloadFace(AppInterface paramAppInterface, FaceInfo paramFaceInfo)
   {
-    if ((paramAppInterface == null) || (paramFaceInfo == null)) {
-      return;
+    if (paramAppInterface != null)
+    {
+      if (paramFaceInfo == null) {
+        return;
+      }
+      ThreadManager.post(new FaceDecoder.1(paramAppInterface, paramFaceInfo), 10, null, true);
     }
-    ThreadManager.post(new FaceDecoder.1(paramAppInterface, paramFaceInfo), 10, null, true);
   }
   
   public void cancelPendingRequests()
@@ -60,9 +67,11 @@ public class FaceDecoder
       return null;
     }
     byte b = getFaceShapeType(paramInt);
-    if ((paramInt == 101) || (paramInt == 1001)) {
-      b = 3;
+    if ((paramInt != 101) && (paramInt != 1001)) {
+      break label35;
     }
+    b = 3;
+    label35:
     return this.mDecoder.getBitmapFromCache(paramInt, paramString, 0, b, 0);
   }
   
@@ -178,7 +187,7 @@ public class FaceDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceDecoder
  * JD-Core Version:    0.7.0.1
  */

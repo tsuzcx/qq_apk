@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.zip.InflaterInputStream;
+import mqq.app.AppRuntime;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
@@ -58,101 +59,181 @@ public class NotificationController
   
   private HashMap<String, NotificationController.LimitEntry> a()
   {
-    int i = 0;
-    for (;;)
+    try
     {
-      HashMap localHashMap2;
-      try
+      if (this.b) {
+        break label484;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("NCtr", 2, "[init]");
+      }
+      localObject1 = BaseApplication.getContext().getSharedPreferences("config_prefile", 0);
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("config_should_limit_");
+      ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getAccount());
+      this.jdField_a_of_type_Boolean = ((SharedPreferences)localObject1).getBoolean(((StringBuilder)localObject3).toString(), false);
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("extra_limit_uins_");
+      ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getAccount());
+      localObject3 = ((SharedPreferences)localObject1).getString(((StringBuilder)localObject3).toString(), "");
+      if (QLog.isColorLevel())
       {
-        if (this.b) {
-          break label414;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("NCtr", 2, "[init]");
-        }
-        SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("config_prefile", 0);
-        this.jdField_a_of_type_Boolean = localSharedPreferences.getBoolean("config_should_limit_" + this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getAccount(), false);
-        Object localObject2 = localSharedPreferences.getString("extra_limit_uins_" + this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getAccount(), "");
-        if (QLog.isColorLevel()) {
-          QLog.d("NCtr", 2, "LimitUins:[" + ((String)localObject2).toString() + "]");
-        }
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          break label409;
-        }
-        localObject2 = ((String)localObject2).split(",");
-        localHashMap2 = new HashMap();
-        int j = localObject2.length;
-        if (i < j)
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("LimitUins:[");
+        ((StringBuilder)localObject4).append(((String)localObject3).toString());
+        ((StringBuilder)localObject4).append("]");
+        QLog.d("NCtr", 2, ((StringBuilder)localObject4).toString());
+      }
+      if (TextUtils.isEmpty((CharSequence)localObject3)) {
+        break label479;
+      }
+      localObject3 = ((String)localObject3).split(",");
+      localObject4 = new HashMap();
+      j = localObject3.length;
+      i = 0;
+    }
+    finally
+    {
+      for (;;)
+      {
+        Object localObject1;
+        Object localObject3;
+        Object localObject4;
+        int j;
+        int i;
+        Object localObject5;
+        Object localObject6;
+        for (;;)
         {
-          Object localObject3 = localObject2[i];
-          Object localObject4 = localSharedPreferences.getString("extra_limit_entry_" + this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getAccount() + "_" + (String)localObject3, "");
-          if (!TextUtils.isEmpty((CharSequence)localObject4))
-          {
-            localObject3 = ((String)localObject4).split(",");
-            localObject4 = new NotificationController.LimitEntry(this, localObject3[0], Integer.valueOf(localObject3[1]).intValue(), Integer.valueOf(localObject3[2]).intValue(), Long.valueOf(localObject3[3]).longValue(), Integer.valueOf(localObject3[4]).intValue());
-            localHashMap2.put(localObject3[0], localObject4);
-            if (QLog.isColorLevel()) {
-              QLog.d("NCtr", 2, "LimitEntry:[" + ((NotificationController.LimitEntry)localObject4).toString() + "]");
-            }
-          }
-          else if (QLog.isColorLevel())
-          {
-            QLog.d("NCtr", 2, "LimitEntry is null [" + (String)localObject3 + "]");
-          }
+          label479:
+          label484:
+          throw localObject2;
+        }
+        i += 1;
+      }
+    }
+    if (i < j)
+    {
+      localObject5 = localObject3[i];
+      localObject6 = new StringBuilder();
+      ((StringBuilder)localObject6).append("extra_limit_entry_");
+      ((StringBuilder)localObject6).append(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getAccount());
+      ((StringBuilder)localObject6).append("_");
+      ((StringBuilder)localObject6).append((String)localObject5);
+      localObject6 = ((SharedPreferences)localObject1).getString(((StringBuilder)localObject6).toString(), "");
+      if (!TextUtils.isEmpty((CharSequence)localObject6))
+      {
+        localObject6 = ((String)localObject6).split(",");
+        localObject5 = new NotificationController.LimitEntry(this, localObject6[0], Integer.valueOf(localObject6[1]).intValue(), Integer.valueOf(localObject6[2]).intValue(), Long.valueOf(localObject6[3]).longValue(), Integer.valueOf(localObject6[4]).intValue());
+        ((HashMap)localObject4).put(localObject6[0], localObject5);
+        if (QLog.isColorLevel())
+        {
+          localObject6 = new StringBuilder();
+          ((StringBuilder)localObject6).append("LimitEntry:[");
+          ((StringBuilder)localObject6).append(((NotificationController.LimitEntry)localObject5).toString());
+          ((StringBuilder)localObject6).append("]");
+          QLog.d("NCtr", 2, ((StringBuilder)localObject6).toString());
         }
       }
-      finally {}
-      this.jdField_a_of_type_JavaUtilHashMap = localHashMap2;
-      label409:
+      else if (QLog.isColorLevel())
+      {
+        localObject6 = new StringBuilder();
+        ((StringBuilder)localObject6).append("LimitEntry is null [");
+        ((StringBuilder)localObject6).append((String)localObject5);
+        ((StringBuilder)localObject6).append("]");
+        QLog.d("NCtr", 2, ((StringBuilder)localObject6).toString());
+      }
+    }
+    else
+    {
+      this.jdField_a_of_type_JavaUtilHashMap = ((HashMap)localObject4);
       this.b = true;
-      label414:
-      HashMap localHashMap1 = this.jdField_a_of_type_JavaUtilHashMap;
-      return localHashMap1;
-      i += 1;
+      localObject1 = this.jdField_a_of_type_JavaUtilHashMap;
+      return localObject1;
     }
   }
   
   private void a(Context paramContext, String paramString)
   {
-    if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)))
+    Object localObject = this.jdField_a_of_type_JavaUtilHashMap;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localObject != null)
     {
-      NotificationController.LimitEntry localLimitEntry = (NotificationController.LimitEntry)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      paramContext = paramContext.getSharedPreferences("config_prefile", 0).edit();
-      paramContext.putString("extra_limit_entry_" + this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getAccount() + "_" + paramString, localLimitEntry.toString());
-      paramContext.apply();
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("NCtr", 2, "[updateLimitEntrySP]" + paramString + " " + bool);
+      bool1 = bool2;
+      if (((HashMap)localObject).containsKey(paramString))
+      {
+        localObject = (NotificationController.LimitEntry)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+        paramContext = paramContext.getSharedPreferences("config_prefile", 0).edit();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("extra_limit_entry_");
+        localStringBuilder.append(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getAccount());
+        localStringBuilder.append("_");
+        localStringBuilder.append(paramString);
+        paramContext.putString(localStringBuilder.toString(), ((NotificationController.LimitEntry)localObject).toString());
+        paramContext.apply();
+        bool1 = true;
       }
-      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("[updateLimitEntrySP]");
+      paramContext.append(paramString);
+      paramContext.append(" ");
+      paramContext.append(bool1);
+      QLog.d("NCtr", 2, paramContext.toString());
     }
   }
   
   public int a(Context paramContext, String paramString)
   {
-    return paramContext.getSharedPreferences("config_prefile", 0).getInt("config_appid_" + paramString, 0);
+    paramContext = paramContext.getSharedPreferences("config_prefile", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("config_appid_");
+    localStringBuilder.append(paramString);
+    return paramContext.getInt(localStringBuilder.toString(), 0);
   }
   
   public void a(String paramString)
   {
+    Object localObject1 = BaseApplication.getContext();
     int i = 0;
-    Object localObject1 = BaseApplication.getContext().getSharedPreferences("config_prefile", 0);
-    Object localObject2 = ((SharedPreferences)localObject1).getString("extra_limit_uins_" + paramString, "");
+    localObject1 = ((BaseApplication)localObject1).getSharedPreferences("config_prefile", 0);
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("extra_limit_uins_");
+    ((StringBuilder)localObject2).append(paramString);
+    localObject2 = ((SharedPreferences)localObject1).getString(((StringBuilder)localObject2).toString(), "");
     localObject1 = ((SharedPreferences)localObject1).edit();
-    ((SharedPreferences.Editor)localObject1).remove("config_version_" + paramString);
-    ((SharedPreferences.Editor)localObject1).remove("config_appid_" + paramString);
-    ((SharedPreferences.Editor)localObject1).remove("config_should_limit_" + paramString);
-    ((SharedPreferences.Editor)localObject1).remove("extra_limit_uins__" + paramString);
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("config_version_");
+    localStringBuilder1.append(paramString);
+    ((SharedPreferences.Editor)localObject1).remove(localStringBuilder1.toString());
+    localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("config_appid_");
+    localStringBuilder1.append(paramString);
+    ((SharedPreferences.Editor)localObject1).remove(localStringBuilder1.toString());
+    localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("config_should_limit_");
+    localStringBuilder1.append(paramString);
+    ((SharedPreferences.Editor)localObject1).remove(localStringBuilder1.toString());
+    localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("extra_limit_uins__");
+    localStringBuilder1.append(paramString);
+    ((SharedPreferences.Editor)localObject1).remove(localStringBuilder1.toString());
     if (!TextUtils.isEmpty((CharSequence)localObject2))
     {
       localObject2 = ((String)localObject2).split(",");
       int j = localObject2.length;
       while (i < j)
       {
-        String str = localObject2[i];
-        ((SharedPreferences.Editor)localObject1).remove("extra_limit_entry_" + paramString + "_" + str);
+        localStringBuilder1 = localObject2[i];
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("extra_limit_entry_");
+        localStringBuilder2.append(paramString);
+        localStringBuilder2.append("_");
+        localStringBuilder2.append(localStringBuilder1);
+        ((SharedPreferences.Editor)localObject1).remove(localStringBuilder2.toString());
         i += 1;
       }
     }
@@ -169,97 +250,139 @@ public class NotificationController
     this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
   
+  public void a(boolean paramBoolean)
+  {
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge Z and I\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
   public boolean a(String paramString, int paramInt)
   {
-    boolean bool3 = true;
-    boolean bool1 = true;
-    for (;;)
+    try
     {
-      long l;
-      try
-      {
-        if (!QLog.isColorLevel()) {
-          break label523;
-        }
-        QLog.d("NCtr", 2, "shouldNotify uin " + paramString + " type " + paramInt);
+      if (!QLog.isColorLevel()) {
+        break label584;
       }
-      finally {}
-      Object localObject = a();
-      boolean bool2 = bool3;
-      if (this.jdField_a_of_type_Boolean)
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("shouldNotify uin ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" type ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("NCtr", 2, ((StringBuilder)localObject).toString());
+    }
+    finally
+    {
+      for (;;)
       {
-        bool2 = bool3;
-        if (localObject != null)
+        Object localObject;
+        long l1;
+        StringBuilder localStringBuilder;
+        long l2;
+        label338:
+        boolean bool1;
+        boolean bool2;
+        for (;;)
         {
-          bool2 = bool3;
-          if (((HashMap)localObject).containsKey(paramString))
-          {
-            l = a().longValue();
-            localObject = (NotificationController.LimitEntry)((HashMap)localObject).get(paramString);
-            if (QLog.isColorLevel()) {
-              QLog.d("NCtr", 2, "todayBeginTime = " + new Date(l) + "----" + l + " ，entry.mBaseLineTime = " + new Date(((NotificationController.LimitEntry)localObject).jdField_a_of_type_Long) + "----" + ((NotificationController.LimitEntry)localObject).jdField_a_of_type_Long);
-            }
-            if (((NotificationController.LimitEntry)localObject).jdField_a_of_type_Long >= 1L) {
-              continue;
-            }
-            if (((NotificationController.LimitEntry)localObject).b <= 0) {
-              continue;
-            }
-            ((NotificationController.LimitEntry)localObject).jdField_a_of_type_Long = l;
-            ((NotificationController.LimitEntry)localObject).c += 1;
-            paramInt = 1;
-            bool2 = bool1;
-            if (paramInt != 0)
-            {
-              localObject = Message.obtain();
-              ((Message)localObject).what = 1;
-              ((Message)localObject).obj = paramString;
-              this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
-              bool2 = bool1;
-            }
-          }
+          throw paramString;
         }
-      }
-      if (!bool2) {
-        ReportController.b(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, "dc00898", "", paramString, "0X8009995", "0X8009995", 0, 0, "" + System.currentTimeMillis(), "", "", "");
-      }
-      ReportController.b(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, "dc00898", "", paramString, "0X8009996", "0X8009996", 0, 0, "" + System.currentTimeMillis(), "", "", "");
-      if (QLog.isColorLevel()) {
-        QLog.d("NCtr", 2, "uin " + paramString + " shouldNotify is " + bool2);
-      }
-      label416:
-      return bool2;
-      paramInt = 0;
-      bool1 = false;
-      continue;
-      if ((int)((l - ((NotificationController.LimitEntry)localObject).jdField_a_of_type_Long) / 86400000L) >= ((NotificationController.LimitEntry)localObject).jdField_a_of_type_Int)
-      {
-        ((NotificationController.LimitEntry)localObject).jdField_a_of_type_Long = l;
-        ((NotificationController.LimitEntry)localObject).c = 0;
-        paramInt = 1;
-        if ((((NotificationController.LimitEntry)localObject).b > 0) && (((NotificationController.LimitEntry)localObject).c < ((NotificationController.LimitEntry)localObject).b))
+        label584:
+        if ((paramInt != 7200) && (paramInt != 1008) && (paramInt != 7220))
         {
-          ((NotificationController.LimitEntry)localObject).c += 1;
+          bool2 = true;
+          continue;
+          label614:
+          bool1 = true;
           paramInt = 1;
+          continue;
+          label622:
+          label628:
+          label633:
+          for (;;)
+          {
+            bool1 = false;
+            break label338;
+            paramInt = 0;
+            break;
+          }
+          label636:
+          continue;
+          bool1 = true;
         }
-        else
-        {
-          bool1 = false;
+      }
+    }
+    localObject = a();
+    if ((this.jdField_a_of_type_Boolean) && (localObject != null) && (((HashMap)localObject).containsKey(paramString)))
+    {
+      l1 = a().longValue();
+      localObject = (NotificationController.LimitEntry)((HashMap)localObject).get(paramString);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("todayBeginTime = ");
+        localStringBuilder.append(new Date(l1));
+        localStringBuilder.append("----");
+        localStringBuilder.append(l1);
+        localStringBuilder.append(" ，entry.mBaseLineTime = ");
+        localStringBuilder.append(new Date(((NotificationController.LimitEntry)localObject).jdField_a_of_type_Long));
+        localStringBuilder.append("----");
+        localStringBuilder.append(((NotificationController.LimitEntry)localObject).jdField_a_of_type_Long);
+        QLog.d("NCtr", 2, localStringBuilder.toString());
+      }
+      l2 = ((NotificationController.LimitEntry)localObject).jdField_a_of_type_Long;
+      paramInt = 0;
+      if (l2 < 1L)
+      {
+        if (((NotificationController.LimitEntry)localObject).b <= 0) {
+          break label622;
         }
+        ((NotificationController.LimitEntry)localObject).jdField_a_of_type_Long = l1;
+        ((NotificationController.LimitEntry)localObject).c += 1;
       }
       else
       {
-        paramInt = 0;
-        continue;
-        label523:
-        do
+        if ((int)((l1 - ((NotificationController.LimitEntry)localObject).jdField_a_of_type_Long) / 86400000L) < ((NotificationController.LimitEntry)localObject).jdField_a_of_type_Int) {
+          break label628;
+        }
+        ((NotificationController.LimitEntry)localObject).jdField_a_of_type_Long = l1;
+        ((NotificationController.LimitEntry)localObject).c = 0;
+        paramInt = 1;
+        if ((((NotificationController.LimitEntry)localObject).b <= 0) || (((NotificationController.LimitEntry)localObject).c >= ((NotificationController.LimitEntry)localObject).b)) {
+          break label633;
+        }
+        ((NotificationController.LimitEntry)localObject).c += 1;
+        break label614;
+        if (paramInt == 0) {
+          break label636;
+        }
+        localObject = Message.obtain();
+        ((Message)localObject).what = 1;
+        ((Message)localObject).obj = paramString;
+        this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+        break label636;
+        if (!bool1)
         {
-          bool2 = true;
-          break label416;
-          if ((paramInt == 7200) || (paramInt == 1008)) {
-            break;
-          }
-        } while (paramInt != 7220);
+          localObject = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("");
+          localStringBuilder.append(System.currentTimeMillis());
+          ReportController.b((AppRuntime)localObject, "dc00898", "", paramString, "0X8009995", "0X8009995", 0, 0, localStringBuilder.toString(), "", "", "");
+        }
+        localObject = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("");
+        localStringBuilder.append(System.currentTimeMillis());
+        ReportController.b((AppRuntime)localObject, "dc00898", "", paramString, "0X8009996", "0X8009996", 0, 0, localStringBuilder.toString(), "", "", "");
+        bool2 = bool1;
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("uin ");
+          ((StringBuilder)localObject).append(paramString);
+          ((StringBuilder)localObject).append(" shouldNotify is ");
+          ((StringBuilder)localObject).append(bool1);
+          QLog.d("NCtr", 2, ((StringBuilder)localObject).toString());
+          bool2 = bool1;
+        }
+        return bool2;
       }
     }
   }
@@ -280,202 +403,253 @@ public class NotificationController
         localByteArrayOutputStream.write(arrayOfByte, 0, i);
       }
       paramArrayOfByte = localByteArrayOutputStream.toByteArray();
+      return paramArrayOfByte;
     }
     catch (Throwable paramArrayOfByte)
     {
       if (QLog.isColorLevel()) {
         QLog.i("NCtr", 1, "inflateConfigString fail", paramArrayOfByte);
       }
-      return null;
     }
-    return paramArrayOfByte;
+    return null;
   }
   
   public int b(Context paramContext, String paramString)
   {
-    return paramContext.getSharedPreferences("config_prefile", 0).getInt("config_version_" + paramString, 0);
+    paramContext = paramContext.getSharedPreferences("config_prefile", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("config_version_");
+    localStringBuilder.append(paramString);
+    return paramContext.getInt(localStringBuilder.toString(), 0);
   }
   
   public void b(String paramString, int paramInt1, int paramInt2)
   {
     Object localObject1;
-    HashMap localHashMap;
     Object localObject2;
-    int m;
-    boolean bool;
-    int j;
     int k;
     int i;
-    Object localObject3;
-    label156:
-    String str;
+    int j;
+    boolean bool1;
+    int m;
+    boolean bool2;
     for (;;)
     {
       try
       {
         localObject1 = a();
-        if (localObject1 != null)
-        {
-          localObject1 = (HashMap)((HashMap)localObject1).clone();
-          localHashMap = new HashMap();
-          if (QLog.isColorLevel()) {
-            QLog.i("NCtr", 1, "sourceString : " + paramString);
-          }
-          localObject2 = XmlPullParserFactory.newInstance().newPullParser();
-          ((XmlPullParser)localObject2).setInput(new StringReader(paramString));
-          m = ((XmlPullParser)localObject2).getEventType();
-          bool = false;
-          paramString = "";
-          j = 0;
-          k = 0;
-          i = 50;
-          if (m == 1) {
-            break label915;
-          }
-          localObject3 = ((XmlPullParser)localObject2).getName();
+        if (localObject1 == null) {
+          break label1035;
         }
-        switch (m)
+        localObject2 = (HashMap)((HashMap)localObject1).clone();
+        localHashMap = new HashMap();
+        if (QLog.isColorLevel())
         {
-        case 0: 
-          this.jdField_a_of_type_Boolean = bool;
-          localObject2 = BaseApplication.getContext().getSharedPreferences("config_prefile", 0).edit();
-          localObject3 = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getAccount();
-          ((SharedPreferences.Editor)localObject2).putInt("config_version_" + (String)localObject3, paramInt1);
-          ((SharedPreferences.Editor)localObject2).putInt("config_appid_" + (String)localObject3, paramInt2);
-          ((SharedPreferences.Editor)localObject2).apply();
-          ((SharedPreferences.Editor)localObject2).putBoolean("config_should_limit_" + (String)localObject3, bool);
-          if ((localObject1 == null) || (((HashMap)localObject1).size() <= 0)) {
-            break label648;
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("sourceString : ");
+          ((StringBuilder)localObject1).append(paramString);
+          QLog.i("NCtr", 1, ((StringBuilder)localObject1).toString());
+        }
+        localObject3 = XmlPullParserFactory.newInstance().newPullParser();
+        ((XmlPullParser)localObject3).setInput(new StringReader(paramString));
+        k = ((XmlPullParser)localObject3).getEventType();
+        localObject1 = "";
+        paramString = "";
+        i = 0;
+        j = 0;
+        bool1 = false;
+        m = 50;
+        if (k == 1) {
+          break label1097;
+        }
+        localObject4 = ((XmlPullParser)localObject3).getName();
+        if (k == 0) {
+          break label1041;
+        }
+        if (k != 2)
+        {
+          if ((k != 3) || (!((String)localObject4).equalsIgnoreCase("entry"))) {
+            break label1041;
           }
-          localObject1 = ((HashMap)localObject1).keySet().iterator();
-          if (!((Iterator)localObject1).hasNext()) {
-            break label648;
+          if ((localObject2 != null) && (((HashMap)localObject2).containsKey(paramString)))
+          {
+            localObject4 = (NotificationController.LimitEntry)((HashMap)localObject2).get(paramString);
+            ((HashMap)localObject2).remove(paramString);
+            if ((i == ((NotificationController.LimitEntry)localObject4).jdField_a_of_type_Int) && (j == ((NotificationController.LimitEntry)localObject4).b))
+            {
+              localHashMap.put(paramString, localObject4);
+              break label1052;
+            }
+            localHashMap.put(paramString, new NotificationController.LimitEntry(this, paramString, i, j, 0L, 0));
+            break label1052;
           }
-          str = (String)((Iterator)localObject1).next();
-          ((SharedPreferences.Editor)localObject2).remove("extra_limit_entry_" + (String)localObject3 + "_" + paramString);
-          continue;
-          localObject1 = null;
+          localHashMap.put(paramString, new NotificationController.LimitEntry(this, paramString, i, j, 0L, 0));
+          break label1052;
+        }
+        if (((String)localObject4).equalsIgnoreCase("body"))
+        {
+          if (Integer.valueOf(((XmlPullParser)localObject3).getAttributeValue(0)).intValue() != 1) {
+            break label1070;
+          }
+          bool1 = true;
+          break label1073;
+        }
+        if (((String)localObject4).equalsIgnoreCase("puin"))
+        {
+          paramString = ((XmlPullParser)localObject3).nextText();
+          break label1089;
+        }
+        if (((String)localObject4).equalsIgnoreCase("day"))
+        {
+          k = Integer.valueOf(((XmlPullParser)localObject3).nextText()).intValue();
+          bool2 = bool1;
+        }
+        else
+        {
+          k = i;
+          bool2 = bool1;
+          if (((String)localObject4).equalsIgnoreCase("enableTimes"))
+          {
+            j = Integer.valueOf(((XmlPullParser)localObject3).nextText()).intValue();
+            k = i;
+            bool2 = bool1;
+          }
         }
       }
       catch (Exception paramString)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("NCtr", 1, "parse fail", paramString);
+        HashMap localHashMap;
+        Object localObject3;
+        Object localObject4;
+        label422:
+        if (!QLog.isColorLevel()) {
+          continue;
         }
+        QLog.e("NCtr", 1, "parse fail", paramString);
         return;
       }
-      continue;
-      break label918;
-      if (((String)localObject3).equalsIgnoreCase("body"))
-      {
-        if (Integer.valueOf(((XmlPullParser)localObject2).getAttributeValue(0)).intValue() != 1) {
-          break label929;
-        }
-        bool = true;
-        break label926;
-      }
-      if (((String)localObject3).equalsIgnoreCase("puin"))
-      {
-        paramString = ((XmlPullParser)localObject2).nextText();
-        break label918;
-      }
-      if (((String)localObject3).equalsIgnoreCase("day"))
-      {
-        j = Integer.valueOf(((XmlPullParser)localObject2).nextText()).intValue();
-        break label918;
-      }
-      if (!((String)localObject3).equalsIgnoreCase("enableTimes")) {
-        break label918;
-      }
-      k = Integer.valueOf(((XmlPullParser)localObject2).nextText()).intValue();
-      break label918;
-      if (!((String)localObject3).equalsIgnoreCase("entry")) {
-        break label918;
-      }
-      if ((localObject1 != null) && (((HashMap)localObject1).containsKey(paramString)))
-      {
-        localObject3 = (NotificationController.LimitEntry)((HashMap)localObject1).get(paramString);
-        ((HashMap)localObject1).remove(paramString);
-        if ((j == ((NotificationController.LimitEntry)localObject3).jdField_a_of_type_Int) && (k == ((NotificationController.LimitEntry)localObject3).b))
-        {
-          localHashMap.put(paramString, localObject3);
-          break label935;
-        }
-        localHashMap.put(paramString, new NotificationController.LimitEntry(this, paramString, j, k, 0L, 0));
-        break label935;
-      }
-      localHashMap.put(paramString, new NotificationController.LimitEntry(this, paramString, j, k, 0L, 0));
-      break label935;
+      k = ((XmlPullParser)localObject3).next();
     }
-    label648:
-    label915:
-    label918:
-    label926:
-    label929:
-    label935:
-    label951:
+    label1035:
+    label1041:
+    label1052:
+    label1070:
+    label1073:
+    label1081:
+    label1089:
+    label1097:
     for (;;)
     {
-      m = ((XmlPullParser)localObject2).next();
-      break;
+      this.jdField_a_of_type_Boolean = bool1;
+      localObject1 = BaseApplication.getContext().getSharedPreferences("config_prefile", 0).edit();
+      localObject3 = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getAccount();
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append("config_version_");
+      ((StringBuilder)localObject4).append((String)localObject3);
+      ((SharedPreferences.Editor)localObject1).putInt(((StringBuilder)localObject4).toString(), paramInt1);
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append("config_appid_");
+      ((StringBuilder)localObject4).append((String)localObject3);
+      ((SharedPreferences.Editor)localObject1).putInt(((StringBuilder)localObject4).toString(), paramInt2);
+      ((SharedPreferences.Editor)localObject1).apply();
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append("config_should_limit_");
+      ((StringBuilder)localObject4).append((String)localObject3);
+      ((SharedPreferences.Editor)localObject1).putBoolean(((StringBuilder)localObject4).toString(), bool1);
+      if ((localObject2 != null) && (((HashMap)localObject2).size() > 0))
+      {
+        localObject2 = ((HashMap)localObject2).keySet().iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          localObject4 = (String)((Iterator)localObject2).next();
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("extra_limit_entry_");
+          ((StringBuilder)localObject4).append((String)localObject3);
+          ((StringBuilder)localObject4).append("_");
+          ((StringBuilder)localObject4).append(paramString);
+          ((SharedPreferences.Editor)localObject1).remove(((StringBuilder)localObject4).toString());
+        }
+      }
       paramString = new StringBuilder();
       if (localHashMap.size() > 0)
       {
-        localObject1 = localHashMap.keySet().iterator();
-        while (((Iterator)localObject1).hasNext())
+        localObject2 = localHashMap.keySet().iterator();
+        while (((Iterator)localObject2).hasNext())
         {
-          str = (String)((Iterator)localObject1).next();
-          NotificationController.LimitEntry localLimitEntry = (NotificationController.LimitEntry)localHashMap.get(str);
-          ((SharedPreferences.Editor)localObject2).putString("extra_limit_entry_" + (String)localObject3 + "_" + str, localLimitEntry.toString());
-          paramString.append(str).append(",");
-          if (QLog.isColorLevel()) {
-            QLog.d("NCtr", 2, "LimitEntry:[" + localLimitEntry.toString() + "]");
+          Object localObject5 = (String)((Iterator)localObject2).next();
+          localObject4 = (NotificationController.LimitEntry)localHashMap.get(localObject5);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("extra_limit_entry_");
+          localStringBuilder.append((String)localObject3);
+          localStringBuilder.append("_");
+          localStringBuilder.append((String)localObject5);
+          ((SharedPreferences.Editor)localObject1).putString(localStringBuilder.toString(), ((NotificationController.LimitEntry)localObject4).toString());
+          paramString.append((String)localObject5);
+          paramString.append(",");
+          if (QLog.isColorLevel())
+          {
+            localObject5 = new StringBuilder();
+            ((StringBuilder)localObject5).append("LimitEntry:[");
+            ((StringBuilder)localObject5).append(((NotificationController.LimitEntry)localObject4).toString());
+            ((StringBuilder)localObject5).append("]");
+            QLog.d("NCtr", 2, ((StringBuilder)localObject5).toString());
           }
         }
-        ((SharedPreferences.Editor)localObject2).putString("extra_limit_uins_" + (String)localObject3, paramString.substring(0, paramString.length() - 1));
-        if (QLog.isColorLevel()) {
-          QLog.d("NCtr", 2, "LimitUins:[" + paramString.substring(0, paramString.length() - 1) + "].mShouldLimit" + this.jdField_a_of_type_Boolean);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("extra_limit_uins_");
+        ((StringBuilder)localObject2).append((String)localObject3);
+        ((SharedPreferences.Editor)localObject1).putString(((StringBuilder)localObject2).toString(), paramString.substring(0, paramString.length() - 1));
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("LimitUins:[");
+          ((StringBuilder)localObject2).append(paramString.substring(0, paramString.length() - 1));
+          ((StringBuilder)localObject2).append("].mShouldLimit");
+          ((StringBuilder)localObject2).append(this.jdField_a_of_type_Boolean);
+          QLog.d("NCtr", 2, ((StringBuilder)localObject2).toString());
         }
       }
-      ((SharedPreferences.Editor)localObject2).apply();
+      ((SharedPreferences.Editor)localObject1).apply();
       this.jdField_a_of_type_JavaUtilHashMap = localHashMap;
       return;
-      break label156;
-      for (;;)
-      {
-        if (i > 0) {
-          break label951;
-        }
-        break;
-        for (;;)
-        {
-          break;
-          bool = false;
-        }
-        paramString = "";
-        j = 0;
-        k = 0;
-        i -= 1;
+      localObject2 = null;
+      break;
+      k = i;
+      bool2 = bool1;
+      break label1081;
+      m -= 1;
+      paramString = (String)localObject1;
+      i = 0;
+      j = 0;
+      break label1089;
+      bool1 = false;
+      bool2 = bool1;
+      k = i;
+      bool1 = bool2;
+      i = k;
+      if (m > 0) {
+        break label422;
       }
     }
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return true;
-      b((String)paramMessage.obj, paramMessage.arg1, paramMessage.arg2);
-      continue;
+      if (i != 1) {
+        return true;
+      }
       paramMessage = (String)paramMessage.obj;
       a(BaseApplication.getContext(), paramMessage);
+      return true;
     }
+    b((String)paramMessage.obj, paramMessage.arg1, paramMessage.arg2);
+    return true;
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return null;
   }
@@ -483,9 +657,10 @@ public class NotificationController
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    if (localHandler != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      localHandler.removeCallbacksAndMessages(null);
       this.jdField_a_of_type_AndroidOsHandler = null;
     }
   }
@@ -494,7 +669,7 @@ public class NotificationController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.notification.NotificationController
  * JD-Core Version:    0.7.0.1
  */

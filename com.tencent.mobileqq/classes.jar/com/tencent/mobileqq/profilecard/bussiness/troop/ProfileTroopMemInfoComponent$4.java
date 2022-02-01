@@ -1,9 +1,11 @@
 package com.tencent.mobileqq.profilecard.bussiness.troop;
 
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profilecard.base.component.IProfileActivityDelegate;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.biz.troop.feeds.TroopNewGuidePopWindow;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
 
 class ProfileTroopMemInfoComponent$4
   implements Runnable
@@ -12,27 +14,33 @@ class ProfileTroopMemInfoComponent$4
   
   public void run()
   {
-    if (ProfileTroopMemInfoComponent.access$4600(this.this$0) == null) {}
-    do
+    Object localObject = ProfileTroopMemInfoComponent.access$3800(this.this$0, this.val$cardInfo);
+    if (localObject != null)
     {
-      do
-      {
-        return;
-      } while (!ProfileTroopMemInfoComponent.access$4700(this.this$0).isResume());
-      if (this.val$cardInfo != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ProfileTroopMemInfoComponent", 2, "onPluginInstallFinish, updateRecentSaidView.");
-        }
-        ProfileTroopMemInfoComponent.access$4400(ProfileTroopMemInfoComponent.access$4300(this.this$0), this.val$cardInfo, this.this$0);
-      }
-    } while (ProfileTroopMemInfoComponent.access$4800(this.this$0) == null);
-    ProfileTroopMemInfoComponent.access$4900(this.this$0).notifyCardUpdate();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(HardCodeUtil.a(2131708440));
+      localStringBuilder.append(TroopNewGuidePopWindow.a(((MessageRecord)localObject).time, true, false, true).toString());
+      localObject = localStringBuilder.toString();
+    }
+    else
+    {
+      localObject = null;
+    }
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      this.val$cardInfo.troopRecentSaid = ((String)localObject);
+    }
+    if (ProfileTroopMemInfoComponent.access$3900(this.this$0) == null) {
+      return;
+    }
+    if (!ProfileTroopMemInfoComponent.access$4000(this.this$0).isResume()) {
+      return;
+    }
+    ProfileTroopMemInfoComponent.access$4500(this.this$0).runOnUiThread(new ProfileTroopMemInfoComponent.4.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.troop.ProfileTroopMemInfoComponent.4
  * JD-Core Version:    0.7.0.1
  */

@@ -61,15 +61,16 @@ public class f
   
   public j b()
   {
-    if (this.b == null) {
+    j localj = this.b;
+    if (localj == null) {
       return null;
     }
-    return this.b.a();
+    return localj.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.appstate.f
  * JD-Core Version:    0.7.0.1
  */

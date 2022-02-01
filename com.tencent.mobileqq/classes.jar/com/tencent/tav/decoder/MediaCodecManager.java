@@ -22,7 +22,10 @@ public class MediaCodecManager
   public static MediaCodec createDecoderByType(String paramString)
   {
     MediaCodec localMediaCodec = MediaCodec.createDecoderByType(paramString);
-    putInMap("decode-" + paramString, localMediaCodec);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("decode-");
+    localStringBuilder.append(paramString);
+    putInMap(localStringBuilder.toString(), localMediaCodec);
     logCodecMapInfo("createDecoderByType:", false);
     return localMediaCodec;
   }
@@ -31,7 +34,10 @@ public class MediaCodecManager
   public static MediaCodec createEncoderByType(String paramString)
   {
     MediaCodec localMediaCodec = MediaCodec.createEncoderByType(paramString);
-    putInMap("encode-" + paramString, localMediaCodec);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("encode-");
+    localStringBuilder.append(paramString);
+    putInMap(localStringBuilder.toString(), localMediaCodec);
     logCodecMapInfo("createEncoderByType:", false);
     return localMediaCodec;
   }
@@ -51,15 +57,25 @@ public class MediaCodecManager
   
   private static void logCodecMapInfo(String paramString, boolean paramBoolean)
   {
-    Logger.i("MediaCodecManager", "logCodecMapInfo() called with: call from = [" + paramString + "]");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("logCodecMapInfo() called with: call from = [");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("]");
+    Logger.i("MediaCodecManager", ((StringBuilder)localObject).toString());
     paramString = codecListMap.keySet().iterator();
     while (paramString.hasNext())
     {
-      String str = (String)paramString.next();
-      List localList = (List)codecListMap.get(str);
+      localObject = (String)paramString.next();
+      List localList = (List)codecListMap.get(localObject);
       if (localList != null)
       {
-        Logger.i("MediaCodecManager", str + ":" + localList.size() + ", values = " + localList);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append(":");
+        localStringBuilder.append(localList.size());
+        localStringBuilder.append(", values = ");
+        localStringBuilder.append(localList);
+        Logger.i("MediaCodecManager", localStringBuilder.toString());
         printStack(paramBoolean, localList);
       }
     }
@@ -71,22 +87,26 @@ public class MediaCodecManager
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      Logger.i("MediaCodecManager", "logCodecMapInfo: stack = " + str);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("logCodecMapInfo: stack = ");
+      localStringBuilder.append(str);
+      Logger.i("MediaCodecManager", localStringBuilder.toString());
     }
   }
   
   private static void printStack(boolean paramBoolean, List<MediaCodec> paramList)
   {
-    if (!paramBoolean) {}
-    for (;;)
-    {
+    if (!paramBoolean) {
       return;
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        MediaCodec localMediaCodec = (MediaCodec)paramList.next();
-        Logger.i("MediaCodecManager", "stack = " + (String)stackMap.get(localMediaCodec));
-      }
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      MediaCodec localMediaCodec = (MediaCodec)paramList.next();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("stack = ");
+      localStringBuilder.append((String)stackMap.get(localMediaCodec));
+      Logger.i("MediaCodecManager", localStringBuilder.toString());
     }
   }
   
@@ -112,7 +132,7 @@ public class MediaCodecManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tav.decoder.MediaCodecManager
  * JD-Core Version:    0.7.0.1
  */

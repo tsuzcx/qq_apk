@@ -25,26 +25,26 @@ public final class AdAnalysisUtil
   
   public static gdt_analysis_event[] createBody(List<b> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty()))
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      AdLog.e("AdAnalysisUtil", "createBody error");
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      gdt_analysis_event localgdt_analysis_event = createEvent((b)paramList.next());
-      if (localgdt_analysis_event != null) {
-        localArrayList.add(localgdt_analysis_event);
+      ArrayList localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        gdt_analysis_event localgdt_analysis_event = createEvent((b)paramList.next());
+        if (localgdt_analysis_event != null) {
+          localArrayList.add(localgdt_analysis_event);
+        }
       }
+      if (localArrayList.isEmpty()) {
+        return null;
+      }
+      paramList = new gdt_analysis_event[localArrayList.size()];
+      localArrayList.toArray(paramList);
+      return paramList;
     }
-    if (localArrayList.isEmpty()) {
-      return null;
-    }
-    paramList = new gdt_analysis_event[localArrayList.size()];
-    localArrayList.toArray(paramList);
-    return paramList;
+    AdLog.e("AdAnalysisUtil", "createBody error");
+    return null;
   }
   
   private static gdt_analysis_event createEvent(b paramb)
@@ -66,35 +66,35 @@ public final class AdAnalysisUtil
   
   public static gdt_analysis_request createRequest(Context paramContext, gdt_analysis_event[] paramArrayOfgdt_analysis_event, String paramString)
   {
-    if ((paramArrayOfgdt_analysis_event == null) || (paramArrayOfgdt_analysis_event.length <= 0) || (TextUtils.isEmpty(paramString)))
+    if ((paramArrayOfgdt_analysis_event != null) && (paramArrayOfgdt_analysis_event.length > 0) && (!TextUtils.isEmpty(paramString)))
     {
-      AdLog.e("AdAnalysisUtil", "getRequest error");
-      return null;
+      gdt_analysis_request localgdt_analysis_request = new gdt_analysis_request();
+      localgdt_analysis_request.bid = 10001013;
+      localgdt_analysis_request.androidSDK = Build.VERSION.SDK_INT;
+      localgdt_analysis_request.androidBrand = Build.BRAND;
+      localgdt_analysis_request.androidManufacturer = Build.MANUFACTURER;
+      localgdt_analysis_request.ipType = AdNet.getIpFamily(paramContext);
+      localgdt_analysis_request.Model = Build.MODEL;
+      localgdt_analysis_request.appVersion = paramString;
+      localgdt_analysis_request.osType = 2;
+      localgdt_analysis_request.osVersion = Build.VERSION.RELEASE;
+      localgdt_analysis_request.body = paramArrayOfgdt_analysis_event;
+      return localgdt_analysis_request;
     }
-    gdt_analysis_request localgdt_analysis_request = new gdt_analysis_request();
-    localgdt_analysis_request.bid = 10001013;
-    localgdt_analysis_request.androidSDK = Build.VERSION.SDK_INT;
-    localgdt_analysis_request.androidBrand = Build.BRAND;
-    localgdt_analysis_request.androidManufacturer = Build.MANUFACTURER;
-    localgdt_analysis_request.ipType = AdNet.getIpFamily(paramContext);
-    localgdt_analysis_request.Model = Build.MODEL;
-    localgdt_analysis_request.appVersion = paramString;
-    localgdt_analysis_request.osType = 2;
-    localgdt_analysis_request.osVersion = Build.VERSION.RELEASE;
-    localgdt_analysis_request.body = paramArrayOfgdt_analysis_event;
-    return localgdt_analysis_request;
+    AdLog.e("AdAnalysisUtil", "getRequest error");
+    return null;
   }
   
   public static void initEvent(Context paramContext, int paramInt, gdt_analysis_event paramgdt_analysis_event)
   {
-    if ((paramgdt_analysis_event == null) || (paramInt == -2147483648))
+    if ((paramgdt_analysis_event != null) && (paramInt != -2147483648))
     {
-      AdLog.e("AdAnalysisUtil", "initEvent error");
+      paramgdt_analysis_event.eventId = String.valueOf(paramInt);
+      paramgdt_analysis_event.androidCurrentProcessName = AdProcessManager.INSTANCE.getCurrentProcessName(paramContext);
+      paramgdt_analysis_event.currentTime = System.currentTimeMillis();
       return;
     }
-    paramgdt_analysis_event.eventId = String.valueOf(paramInt);
-    paramgdt_analysis_event.androidCurrentProcessName = AdProcessManager.INSTANCE.getCurrentProcessName(paramContext);
-    paramgdt_analysis_event.currentTime = System.currentTimeMillis();
+    AdLog.e("AdAnalysisUtil", "initEvent error");
   }
 }
 

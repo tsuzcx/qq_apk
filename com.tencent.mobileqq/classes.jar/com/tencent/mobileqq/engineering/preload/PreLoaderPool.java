@@ -44,22 +44,22 @@ public class PreLoaderPool
   
   public void remove(String paramString)
   {
-    if ((this.workerMap != null) && (this.workerMap.containsKey(paramString))) {}
-    try
+    Object localObject = this.workerMap;
+    if ((localObject != null) && (((ConcurrentHashMap)localObject).containsKey(paramString)))
     {
-      IWorker localIWorker = (IWorker)this.workerMap.get(paramString);
-      if (localIWorker != null) {
-        localIWorker.onRemove();
+      try
+      {
+        localObject = (IWorker)this.workerMap.get(paramString);
+        if (localObject != null) {
+          ((IWorker)localObject).onRemove();
+        }
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Exception localException)
       {
         PreLoader.log(localException);
       }
+      this.workerMap.remove(paramString);
     }
-    this.workerMap.remove(paramString);
   }
   
   public <T> void removeListener(String paramString, OnTaskListener<T> paramOnTaskListener)
@@ -67,10 +67,11 @@ public class PreLoaderPool
     try
     {
       paramString = (IWorker)this.workerMap.get(paramString);
-      if (paramString != null) {
+      if (paramString != null)
+      {
         paramString.removeListener(paramOnTaskListener);
+        return;
       }
-      return;
     }
     catch (Exception paramString)
     {
@@ -83,10 +84,11 @@ public class PreLoaderPool
     try
     {
       paramString = (IWorker)this.workerMap.get(paramString);
-      if (paramString != null) {
+      if (paramString != null)
+      {
         paramString.setListener(paramOnTaskListener);
+        return;
       }
-      return;
     }
     catch (Exception paramString)
     {
@@ -96,7 +98,7 @@ public class PreLoaderPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.engineering.preload.PreLoaderPool
  * JD-Core Version:    0.7.0.1
  */

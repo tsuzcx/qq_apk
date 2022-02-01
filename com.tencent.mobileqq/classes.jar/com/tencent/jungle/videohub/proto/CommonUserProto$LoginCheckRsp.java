@@ -35,13 +35,15 @@ public final class CommonUserProto$LoginCheckRsp
   
   static
   {
+    Boolean localBoolean = Boolean.valueOf(false);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40, 48, 56, 64, 72, 80, 88, 98, 106, 114, 122, 128, 138 }, new String[] { "result", "user_name", "uin", "user_sig", "uid", "enable_report", "is_need_init", "server_time", "is_new_user", "imsdk_appid", "imsdk_account_type", "sso_prefix", "sso_report_prefix", "sso_heart_prefix", "edu_flex_url", "is_playing", "extra_room_data" }, new Object[] { Integer.valueOf(0), "", Long.valueOf(0L), "", Long.valueOf(0L), Boolean.valueOf(false), Boolean.valueOf(false), Long.valueOf(0L), Boolean.valueOf(false), Long.valueOf(0L), Long.valueOf(0L), "", "", "", "", Boolean.valueOf(false), localByteStringMicro }, LoginCheckRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40, 48, 56, 64, 72, 80, 88, 98, 106, 114, 122, 128, 138 }, new String[] { "result", "user_name", "uin", "user_sig", "uid", "enable_report", "is_need_init", "server_time", "is_new_user", "imsdk_appid", "imsdk_account_type", "sso_prefix", "sso_report_prefix", "sso_heart_prefix", "edu_flex_url", "is_playing", "extra_room_data" }, new Object[] { Integer.valueOf(0), "", localLong, "", localLong, localBoolean, localBoolean, localLong, localBoolean, localLong, localLong, "", "", "", "", localBoolean, localByteStringMicro }, LoginCheckRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.jungle.videohub.proto.CommonUserProto.LoginCheckRsp
  * JD-Core Version:    0.7.0.1
  */

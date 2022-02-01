@@ -34,32 +34,24 @@ public class SigTopicManager
   
   private boolean a(List<oidb_0xd9f.UinItem> paramList, oidb_0xd9f.UinItem paramUinItem)
   {
-    boolean bool2 = false;
-    boolean bool1;
     if (paramUinItem == null) {
-      bool1 = true;
+      return true;
     }
-    do
+    if (paramList != null)
     {
-      do
+      if (paramList.size() == 0) {
+        return false;
+      }
+      int i = 0;
+      while (i < paramList.size())
       {
-        return bool1;
-        bool1 = bool2;
-      } while (paramList == null);
-      bool1 = bool2;
-    } while (paramList.size() == 0);
-    int i = 0;
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i >= paramList.size()) {
-        break;
+        if (((oidb_0xd9f.UinItem)paramList.get(i)).uint64_uin.get() == paramUinItem.uint64_uin.get()) {
+          return true;
+        }
+        i += 1;
       }
-      if (((oidb_0xd9f.UinItem)paramList.get(i)).uint64_uin.get() == paramUinItem.uint64_uin.get()) {
-        return true;
-      }
-      i += 1;
     }
+    return false;
   }
   
   public int a(TextView paramTextView, String paramString1, String paramString2, int paramInt1, String paramString3, int paramInt2)
@@ -96,23 +88,21 @@ public class SigTopicManager
   
   public int a(List<oidb_0xd9f.TopicItem> paramList)
   {
-    int k;
-    if ((paramList == null) || (paramList.size() <= 0))
-    {
-      k = 0;
-      return k;
-    }
-    int j = 0;
     int i = 0;
-    for (;;)
+    if (paramList != null)
     {
-      k = i;
-      if (j >= paramList.size()) {
-        break;
+      if (paramList.size() <= 0) {
+        return 0;
       }
-      i += ((oidb_0xd9f.TopicItem)paramList.get(j)).uint32_frd_num.get();
-      j += 1;
+      int j = 0;
+      while (i < paramList.size())
+      {
+        j += ((oidb_0xd9f.TopicItem)paramList.get(i)).uint32_frd_num.get();
+        i += 1;
+      }
+      return j;
     }
+    return 0;
   }
   
   public long a(List<oidb_0xd9f.TopicItem> paramList)
@@ -139,12 +129,8 @@ public class SigTopicManager
               if (localList != null)
               {
                 int j = 0;
-                for (;;)
+                while (j < localList.size())
                 {
-                  l2 = l1;
-                  if (j >= localList.size()) {
-                    break;
-                  }
                   l2 = l1;
                   if (((oidb_0xd9f.UinItem)localList.get(j)).uint64_time.get() > l1) {
                     l2 = ((oidb_0xd9f.UinItem)localList.get(j)).uint64_time.get();
@@ -152,6 +138,7 @@ public class SigTopicManager
                   j += 1;
                   l1 = l2;
                 }
+                l2 = l1;
               }
             }
           }
@@ -165,45 +152,36 @@ public class SigTopicManager
   
   public Pair<Integer, String> a(List<oidb_0xd9f.TopicItem> paramList)
   {
-    int j = -1;
+    int i = -1;
     String str1 = "";
-    int i = j;
+    int m = i;
     String str2 = str1;
-    int k;
     if (paramList != null)
     {
-      i = j;
+      m = i;
       str2 = str1;
       if (paramList.size() > 0)
       {
-        k = 0;
-        i = -1;
-        if (k < paramList.size())
+        int j = 0;
+        for (int k = -1;; k = m)
         {
-          if (((oidb_0xd9f.TopicItem)paramList.get(k)).uint32_frd_num.get() < j) {
-            break label162;
+          m = i;
+          str2 = str1;
+          if (j >= paramList.size()) {
+            break;
           }
-          j = ((oidb_0xd9f.TopicItem)paramList.get(k)).uint32_topic_id.get();
-          str1 = ((oidb_0xd9f.TopicItem)paramList.get(k)).str_topic.get();
-          i = ((oidb_0xd9f.TopicItem)paramList.get(k)).uint32_frd_num.get();
+          m = k;
+          if (((oidb_0xd9f.TopicItem)paramList.get(j)).uint32_frd_num.get() >= k)
+          {
+            i = ((oidb_0xd9f.TopicItem)paramList.get(j)).uint32_topic_id.get();
+            str1 = ((oidb_0xd9f.TopicItem)paramList.get(j)).str_topic.get();
+            m = ((oidb_0xd9f.TopicItem)paramList.get(j)).uint32_frd_num.get();
+          }
+          j += 1;
         }
       }
     }
-    for (;;)
-    {
-      int m = k + 1;
-      k = j;
-      j = i;
-      i = k;
-      k = m;
-      break;
-      str2 = str1;
-      return new Pair(Integer.valueOf(i), str2);
-      label162:
-      m = i;
-      i = j;
-      j = m;
-    }
+    return new Pair(Integer.valueOf(m), str2);
   }
   
   public CharSequence a(SigTopicConfBean paramSigTopicConfBean)
@@ -276,18 +254,19 @@ public class SigTopicManager
   {
     paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
     String str = paramQQAppInterface.getString("sig_feed_id", "");
-    if ((paramRichStatus == null) || (paramRichStatus.feedsId == null)) {
-      if (a().a(str, ""))
+    if ((paramRichStatus != null) && (paramRichStatus.feedsId != null))
+    {
+      if (a().a(str, paramRichStatus.feedsId))
       {
-        paramQQAppInterface.edit().putString("sig_feed_id", "").apply();
+        paramQQAppInterface.edit().putString("sig_feed_id", paramRichStatus.feedsId).apply();
         paramQQAppInterface.edit().putBoolean("common_topic_friend_list_should_show", true).apply();
       }
     }
-    while (!a().a(str, paramRichStatus.feedsId)) {
-      return;
+    else if (a().a(str, ""))
+    {
+      paramQQAppInterface.edit().putString("sig_feed_id", "").apply();
+      paramQQAppInterface.edit().putBoolean("common_topic_friend_list_should_show", true).apply();
     }
-    paramQQAppInterface.edit().putString("sig_feed_id", paramRichStatus.feedsId).apply();
-    paramQQAppInterface.edit().putBoolean("common_topic_friend_list_should_show", true).apply();
   }
   
   public boolean a(QQAppInterface paramQQAppInterface)
@@ -297,36 +276,27 @@ public class SigTopicManager
   
   public boolean a(QQAppInterface paramQQAppInterface, long paramLong)
   {
-    boolean bool = false;
     if (paramLong > paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getLong("common_topic_refresh_time", -1L))
     {
       a(paramQQAppInterface, paramLong);
-      bool = true;
+      return true;
     }
-    return bool;
+    return false;
   }
   
   public boolean a(String paramString1, String paramString2)
   {
-    boolean bool2 = true;
-    boolean bool1;
     if ((TextUtils.isEmpty(paramString1)) && (TextUtils.isEmpty(paramString2))) {
-      bool1 = false;
+      return false;
     }
-    do
+    if (!TextUtils.isEmpty(paramString1))
     {
-      do
-      {
-        do
-        {
-          return bool1;
-          bool1 = bool2;
-        } while (TextUtils.isEmpty(paramString1));
-        bool1 = bool2;
-      } while (TextUtils.isEmpty(paramString2));
-      bool1 = bool2;
-    } while (!paramString1.equals(paramString2));
-    return false;
+      if (TextUtils.isEmpty(paramString2)) {
+        return true;
+      }
+      return paramString1.equals(paramString2) ^ true;
+    }
+    return true;
   }
   
   public void b(QQAppInterface paramQQAppInterface)
@@ -347,8 +317,11 @@ public class SigTopicManager
   
   public boolean c(QQAppInterface paramQQAppInterface)
   {
+    long l = QConfigManager.a().a(529, paramQQAppInterface.getCurrentAccountUin());
+    BaseApplication localBaseApplication = paramQQAppInterface.getApp();
+    paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
     boolean bool = false;
-    if (QConfigManager.a().a(529, paramQQAppInterface.getCurrentAccountUin()) > paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getLong("recommend_topic_version", -1L)) {
+    if (l > localBaseApplication.getSharedPreferences(paramQQAppInterface, 0).getLong("recommend_topic_version", -1L)) {
       bool = true;
     }
     return bool;
@@ -356,7 +329,7 @@ public class SigTopicManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.SigTopicManager
  * JD-Core Version:    0.7.0.1
  */

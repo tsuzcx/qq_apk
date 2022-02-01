@@ -18,34 +18,37 @@ class TVKVideoController$3
     if (QLog.isDevelopLevel()) {
       QLog.d("TVKVideoController", 4, new Object[] { "onFocusChange focusType:", Integer.valueOf(paramInt) });
     }
-    switch (paramInt)
+    if (paramInt != -2)
     {
-    }
-    do
-    {
-      do
+      if (paramInt != -1)
       {
-        return;
+        if (paramInt != 1) {
+          return;
+        }
         ((AudioManager)((Context)TVKVideoController.a(this.a).get()).getSystemService("audio")).requestAudioFocus(null, 3, 2);
         if (TVKVideoController.a(this.a) != null) {
           TVKVideoController.a(this.a).play();
         }
         TVKVideoController.a(this.a, 4);
         return;
-        if (TVKVideoController.a(this.a) != null) {
-          TVKVideoController.a(this.a).pause();
-        }
-        TVKVideoController.a(this.a, 6);
-      } while (TVKVideoController.a(this.a) == null);
-      TVKVideoController.a(this.a).onVideoStop();
-      return;
-    } while (TVKVideoController.a(this.a) == null);
-    TVKVideoController.a(this.a).setMute(true);
+      }
+      if (TVKVideoController.a(this.a) != null) {
+        TVKVideoController.a(this.a).pause();
+      }
+      TVKVideoController.a(this.a, 6);
+      if (TVKVideoController.a(this.a) != null) {
+        TVKVideoController.a(this.a).onVideoStop();
+      }
+    }
+    else if (TVKVideoController.a(this.a) != null)
+    {
+      TVKVideoController.a(this.a).setMute(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.qqfloatingscreen.videoview.TVKVideoController.3
  * JD-Core Version:    0.7.0.1
  */

@@ -20,17 +20,24 @@ public class f
   
   public Drawable.ConstantState a(int paramInt)
   {
-    Drawable.ConstantState localConstantState = null;
     this.c += 1;
-    if (this.c > 100) {
-      h.d("SkinEngine", 2, "parentFunction:" + this + ", childFunction=" + this.b.b[this.a], null);
-    }
-    for (;;)
+    int i = this.c;
+    Drawable.ConstantState localConstantState = null;
+    if (i > 100)
     {
-      this.c -= 1;
-      return localConstantState;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parentFunction:");
+      localStringBuilder.append(this);
+      localStringBuilder.append(", childFunction=");
+      localStringBuilder.append(this.b.b[this.a]);
+      h.d("SkinEngine", 2, localStringBuilder.toString(), null);
+    }
+    else
+    {
       localConstantState = (Drawable.ConstantState)this.b.b[this.a].valueAt(paramInt);
     }
+    this.c -= 1;
+    return localConstantState;
   }
   
   public Drawable.ConstantState a(long paramLong)
@@ -50,7 +57,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.theme.f
  * JD-Core Version:    0.7.0.1
  */

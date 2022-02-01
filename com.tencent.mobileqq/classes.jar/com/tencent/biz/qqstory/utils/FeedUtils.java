@@ -14,7 +14,7 @@ public class FeedUtils
         localStringBuilder = new StringBuilder();
         i = paramInt;
         if (localObject.length > paramInt) {
-          break label69;
+          continue;
         }
         i = localObject.length;
       }
@@ -23,28 +23,29 @@ public class FeedUtils
         Object localObject;
         StringBuilder localStringBuilder;
         int i;
-        return "";
-      }
-      if (paramInt < i)
-      {
-        localStringBuilder.append(localObject[paramInt].toString());
-        paramInt += 1;
-      }
-      else
-      {
-        localObject = localStringBuilder.toString();
-        return localObject;
-        label69:
+        continue;
         paramInt = 2;
+        continue;
       }
+      if (paramInt >= i) {
+        continue;
+      }
+      localStringBuilder.append(localObject[paramInt].toString());
+      paramInt += 1;
     }
+    localObject = localStringBuilder.toString();
+    return localObject;
+    return "";
   }
   
   public static void a(String paramString, int paramInt, long paramLong)
   {
     if (paramLong <= 0L)
     {
-      AssertUtils.a("unLikeRecommendFeed failed, because recommendId=" + paramLong, new Object[0]);
+      paramString = new StringBuilder();
+      paramString.append("unLikeRecommendFeed failed, because recommendId=");
+      paramString.append(paramLong);
+      AssertUtils.fail(paramString.toString(), new Object[0]);
       return;
     }
     FeedUtils.1 local1 = new FeedUtils.1();
@@ -57,7 +58,7 @@ public class FeedUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.FeedUtils
  * JD-Core Version:    0.7.0.1
  */

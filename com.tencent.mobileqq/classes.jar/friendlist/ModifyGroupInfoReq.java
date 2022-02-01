@@ -58,15 +58,16 @@ public final class ModifyGroupInfoReq
     paramJceOutputStream.write(this.strGroupMemo, 5);
     paramJceOutputStream.write(this.strFingerMemo, 6);
     paramJceOutputStream.write(this.dwValidMask, 7);
-    if (this.strRichFingerMemo != null) {
-      paramJceOutputStream.write(this.strRichFingerMemo, 8);
+    String str = this.strRichFingerMemo;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
     paramJceOutputStream.write(this.wVersion, 9);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     friendlist.ModifyGroupInfoReq
  * JD-Core Version:    0.7.0.1
  */

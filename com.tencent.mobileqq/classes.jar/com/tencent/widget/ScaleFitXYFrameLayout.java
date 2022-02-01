@@ -24,37 +24,36 @@ public class ScaleFitXYFrameLayout
     paramContext.recycle();
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
-    int i = View.MeasureSpec.getMode(paramInt1);
-    int j = View.MeasureSpec.getSize(paramInt1);
-    paramInt1 = View.MeasureSpec.getMode(paramInt2);
+    int j = View.MeasureSpec.getMode(paramInt1);
+    paramInt1 = View.MeasureSpec.getSize(paramInt1);
+    int i = View.MeasureSpec.getMode(paramInt2);
     View.MeasureSpec.getSize(paramInt2);
-    if (this.jdField_a_of_type_Float == 1.0F) {
-      if (i != 0)
+    if (this.jdField_a_of_type_Float == 1.0F)
+    {
+      if (j != 0)
       {
-        k = (int)(j * this.b);
-        setMeasuredDimension(j, k);
-        paramInt2 = View.MeasureSpec.makeMeasureSpec(j, i);
-        paramInt1 = View.MeasureSpec.makeMeasureSpec(k, paramInt1);
-        measureChildren(paramInt2, paramInt1);
+        paramInt2 = (int)(paramInt1 * this.b);
+        setMeasuredDimension(paramInt1, paramInt2);
+        paramInt1 = View.MeasureSpec.makeMeasureSpec(paramInt1, j);
+        paramInt2 = View.MeasureSpec.makeMeasureSpec(paramInt2, i);
       }
-    }
-    while (this.b != 1.0F) {
-      for (;;)
+      else
       {
-        int k;
-        return;
         setMeasuredDimension(0, 0);
+        paramInt1 = View.MeasureSpec.makeMeasureSpec(0, j);
         paramInt2 = View.MeasureSpec.makeMeasureSpec(0, i);
-        paramInt1 = View.MeasureSpec.makeMeasureSpec(0, paramInt1);
       }
+      measureChildren(paramInt1, paramInt2);
+      return;
     }
+    float f = this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.ScaleFitXYFrameLayout
  * JD-Core Version:    0.7.0.1
  */

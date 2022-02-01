@@ -54,18 +54,23 @@ public final class i
   {
     Context localContext = this.a;
     String str = this.b;
-    switch (i.6.a[paramPolicy.ordinal()])
+    int i = i.6.a[paramPolicy.ordinal()];
+    if (i != 1)
     {
-    default: 
-      return null;
-    case 1: 
-      return new com.tencent.tbs.one.impl.e.b.a(localContext, str, parama, paramFile, paramBundle, n());
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4) {
+            return null;
+          }
+          return new com.tencent.tbs.one.impl.a.g(new com.tencent.tbs.one.impl.a.a[] { new com.tencent.tbs.one.impl.e.c.b(this.a, this.b, parama, paramFile, paramBundle), new com.tencent.tbs.one.impl.e.e.b(this.a, this.b, parama, paramFile, paramBundle), new com.tencent.tbs.one.impl.e.c.a(this.a, this.b, parama, paramFile, paramBundle), new com.tencent.tbs.one.impl.e.e.a(this.a, this.b, parama, paramFile, paramBundle), com.tencent.tbs.one.impl.a.a(this, parama, paramFile, paramBundle) });
+        }
+        return new com.tencent.tbs.one.impl.e.d.a(localContext, str, parama, paramFile, paramBundle);
+      }
       return new i.5(this, localContext, n(), parama.d, paramFile, parama.c);
-    case 3: 
-      return new com.tencent.tbs.one.impl.e.d.a(localContext, str, parama, paramFile, paramBundle);
     }
-    return new com.tencent.tbs.one.impl.a.g(new com.tencent.tbs.one.impl.a.a[] { new com.tencent.tbs.one.impl.e.c.b(this.a, this.b, parama, paramFile, paramBundle), new com.tencent.tbs.one.impl.e.e.b(this.a, this.b, parama, paramFile, paramBundle), new com.tencent.tbs.one.impl.e.c.a(this.a, this.b, parama, paramFile, paramBundle), new com.tencent.tbs.one.impl.e.e.a(this.a, this.b, parama, paramFile, paramBundle), com.tencent.tbs.one.impl.a.a(this, parama, paramFile, paramBundle) });
+    return new com.tencent.tbs.one.impl.e.b.a(localContext, str, parama, paramFile, paramBundle, n());
   }
   
   private boolean a(String paramString, TBSOneCallback paramTBSOneCallback)
@@ -117,115 +122,109 @@ public final class i
   
   public final com.tencent.tbs.one.impl.a.a<e<com.tencent.tbs.one.impl.common.d>> a(Bundle paramBundle, l<e<com.tencent.tbs.one.impl.common.d>> paraml)
   {
-    boolean bool = false;
-    Object localObject1 = a();
-    if (localObject1 == TBSOneManager.Policy.BUILTIN_ONLY) {
+    Object localObject2 = a();
+    if (localObject2 == TBSOneManager.Policy.BUILTIN_ONLY) {
       return super.a(paramBundle, paraml);
     }
     String str = this.b;
-    com.tencent.tbs.one.impl.a.f.a("[%s] Installing DEPS, policy: %s", new Object[] { str, localObject1 });
+    boolean bool2 = false;
+    com.tencent.tbs.one.impl.a.f.a("[%s] Installing DEPS, policy: %s", new Object[] { str, localObject2 });
     File localFile = com.tencent.tbs.one.impl.common.f.b(this.c);
-    Object localObject2;
-    j localj;
     if (i())
     {
       com.tencent.tbs.one.impl.a.f.a("[%s] Applying the last update", new Object[] { str });
       Context localContext = this.a;
       f.a(localContext);
-      localObject2 = j();
-      if (localObject2 == null) {
-        break label340;
-      }
-      localj = j.a(com.tencent.tbs.one.impl.common.f.e(localFile, ".lock"));
-      if (localj == null) {
-        break label316;
-      }
-      if (!i()) {
-        break label292;
-      }
-      if (f.b(localContext, str)) {
-        break label268;
-      }
-    }
-    for (;;)
-    {
-      try
+      localObject1 = j();
+      if (localObject1 != null)
       {
-        com.tencent.tbs.one.impl.a.c.c(com.tencent.tbs.one.impl.common.f.c(this.c), localFile);
-        localj.a();
-        ((j)localObject2).a();
-        localObject2 = this.i.get("permanent_version");
-        if (!(localObject2 instanceof Integer)) {
-          break label364;
+        j localj = j.a(com.tencent.tbs.one.impl.common.f.e(localFile, ".lock"));
+        if (localj != null)
+        {
+          if (i())
+          {
+            if (!f.b(localContext, str)) {
+              try
+              {
+                com.tencent.tbs.one.impl.a.c.c(com.tencent.tbs.one.impl.common.f.c(this.c), localFile);
+              }
+              catch (IOException localIOException)
+              {
+                com.tencent.tbs.one.impl.a.f.c("[%s] Failed to apply the last update", new Object[] { str, localIOException });
+              }
+            } else {
+              com.tencent.tbs.one.impl.a.f.a("[%s] %s the category is being used by other processes", new Object[] { str, "Early out for applying the last update," });
+            }
+          }
+          else {
+            com.tencent.tbs.one.impl.a.f.a("[%s] %s the last update has applied by another process", new Object[] { str, "Early out for applying the last update," });
+          }
+          localj.a();
         }
-        i = ((Integer)localObject2).intValue();
-        if (localObject1 != TBSOneManager.Policy.AUTO) {
-          break label369;
+        else
+        {
+          com.tencent.tbs.one.impl.a.f.a("[%s] %s the DEPS installation lock is busy", new Object[] { str, "Early out for applying the last update," });
         }
-        paramBundle = a(TBSOneManager.Policy.AUTO, i, localFile, paramBundle);
-        paramBundle = new d(bool, paramBundle, localFile);
-        paramBundle.a(new i.3(this));
-        paramBundle.a(paraml);
-        return paramBundle;
-      }
-      catch (IOException localIOException)
-      {
-        com.tencent.tbs.one.impl.a.f.c("[%s] Failed to apply the last update", new Object[] { str, localIOException });
-        continue;
-      }
-      label268:
-      com.tencent.tbs.one.impl.a.f.a("[%s] %s the category is being used by other processes", new Object[] { str, "Early out for applying the last update," });
-      continue;
-      label292:
-      com.tencent.tbs.one.impl.a.f.a("[%s] %s the last update has applied by another process", new Object[] { str, "Early out for applying the last update," });
-      continue;
-      label316:
-      com.tencent.tbs.one.impl.a.f.a("[%s] %s the DEPS installation lock is busy", new Object[] { str, "Early out for applying the last update," });
-      continue;
-      label340:
-      com.tencent.tbs.one.impl.a.f.a("[%s] %s the update lock is busy", new Object[] { str, "Early out for applying the last update," });
-      continue;
-      label364:
-      int i = -1;
-      continue;
-      label369:
-      if (localObject1 == TBSOneManager.Policy.LOCAL_ONLY)
-      {
-        paramBundle = a(TBSOneManager.Policy.LOCAL_ONLY, i, localFile, paramBundle);
-      }
-      else if (localObject1 == TBSOneManager.Policy.ONLINE)
-      {
-        paramBundle = a(TBSOneManager.Policy.ONLINE, i, localFile, paramBundle);
+        ((j)localObject1).a();
       }
       else
       {
-        if (localObject1 == TBSOneManager.Policy.BUILTIN_FIRST)
-        {
-          if (localFile.exists()) {}
-          for (;;)
-          {
-            try
-            {
-              localObject1 = com.tencent.tbs.one.impl.common.d.a(localFile);
-              localObject2 = com.tencent.tbs.one.impl.common.d.a(com.tencent.tbs.one.impl.common.f.c(com.tencent.tbs.one.impl.common.f.a(this.a), str));
-              if (((com.tencent.tbs.one.impl.common.d)localObject1).a < ((com.tencent.tbs.one.impl.common.d)localObject2).a)
-              {
-                com.tencent.tbs.one.impl.a.f.a("[%s] Ignoring existing DEPS, builtin DEPS version has changed %d => %d", new Object[] { str, Integer.valueOf(((com.tencent.tbs.one.impl.common.d)localObject1).a), Integer.valueOf(((com.tencent.tbs.one.impl.common.d)localObject2).a) });
-                bool = true;
-                paramBundle = new com.tencent.tbs.one.impl.a.g(new com.tencent.tbs.one.impl.a.a[] { a(TBSOneManager.Policy.BUILTIN_ONLY, i, localFile, paramBundle), a(TBSOneManager.Policy.AUTO, i, localFile, paramBundle) });
-              }
-            }
-            catch (TBSOneException localTBSOneException) {}
-            bool = false;
-          }
-        }
-        if (localObject1 == TBSOneManager.Policy.LOCAL_FIRST) {
-          paramBundle = new com.tencent.tbs.one.impl.a.g(new com.tencent.tbs.one.impl.a.a[] { a(TBSOneManager.Policy.LOCAL_ONLY, i, localFile, paramBundle), a(TBSOneManager.Policy.AUTO, i, localFile, paramBundle) });
-        } else {
-          paramBundle = null;
-        }
+        com.tencent.tbs.one.impl.a.f.a("[%s] %s the update lock is busy", new Object[] { str, "Early out for applying the last update," });
       }
     }
+    Object localObject1 = this.i.get("permanent_version");
+    int i;
+    if ((localObject1 instanceof Integer)) {
+      i = ((Integer)localObject1).intValue();
+    } else {
+      i = -1;
+    }
+    localObject1 = null;
+    if (localObject2 == TBSOneManager.Policy.AUTO)
+    {
+      localObject1 = a(TBSOneManager.Policy.AUTO, i, localFile, paramBundle);
+      bool1 = bool2;
+    }
+    else if (localObject2 == TBSOneManager.Policy.LOCAL_ONLY)
+    {
+      localObject1 = a(TBSOneManager.Policy.LOCAL_ONLY, i, localFile, paramBundle);
+      bool1 = bool2;
+    }
+    else if (localObject2 == TBSOneManager.Policy.ONLINE)
+    {
+      localObject1 = a(TBSOneManager.Policy.ONLINE, i, localFile, paramBundle);
+      bool1 = bool2;
+    }
+    else if ((localObject2 == TBSOneManager.Policy.BUILTIN_FIRST) && (!localFile.exists())) {}
+    try
+    {
+      localObject1 = com.tencent.tbs.one.impl.common.d.a(localFile);
+      localObject2 = com.tencent.tbs.one.impl.common.d.a(com.tencent.tbs.one.impl.common.f.c(com.tencent.tbs.one.impl.common.f.a(this.a), str));
+      if (((com.tencent.tbs.one.impl.common.d)localObject1).a < ((com.tencent.tbs.one.impl.common.d)localObject2).a)
+      {
+        com.tencent.tbs.one.impl.a.f.a("[%s] Ignoring existing DEPS, builtin DEPS version has changed %d => %d", new Object[] { str, Integer.valueOf(((com.tencent.tbs.one.impl.common.d)localObject1).a), Integer.valueOf(((com.tencent.tbs.one.impl.common.d)localObject2).a) });
+        bool1 = true;
+      }
+    }
+    catch (TBSOneException localTBSOneException)
+    {
+      label500:
+      break label500;
+    }
+    boolean bool1 = false;
+    localObject1 = new com.tencent.tbs.one.impl.a.g(new com.tencent.tbs.one.impl.a.a[] { a(TBSOneManager.Policy.BUILTIN_ONLY, i, localFile, paramBundle), a(TBSOneManager.Policy.AUTO, i, localFile, paramBundle) });
+    break label604;
+    bool1 = bool2;
+    if (localObject2 == TBSOneManager.Policy.LOCAL_FIRST)
+    {
+      localObject1 = new com.tencent.tbs.one.impl.a.g(new com.tencent.tbs.one.impl.a.a[] { a(TBSOneManager.Policy.LOCAL_ONLY, i, localFile, paramBundle), a(TBSOneManager.Policy.AUTO, i, localFile, paramBundle) });
+      bool1 = bool2;
+    }
+    label604:
+    paramBundle = new d(bool1, (com.tencent.tbs.one.impl.a.a)localObject1, localFile);
+    paramBundle.a(new i.3(this));
+    paramBundle.a(paraml);
+    return paramBundle;
   }
   
   public final com.tencent.tbs.one.impl.a.a<e<File>> a(Bundle paramBundle, d.a parama, l<e<File>> paraml)
@@ -240,40 +239,45 @@ public final class i
     Object localObject = null;
     if (localPolicy == TBSOneManager.Policy.AUTO) {
       localObject = a(TBSOneManager.Policy.AUTO, parama, localFile, paramBundle);
+    } else if (localPolicy == TBSOneManager.Policy.LOCAL_ONLY) {
+      localObject = a(TBSOneManager.Policy.LOCAL_ONLY, parama, localFile, paramBundle);
+    } else if (localPolicy == TBSOneManager.Policy.ONLINE) {
+      localObject = a(TBSOneManager.Policy.ONLINE, parama, localFile, paramBundle);
+    } else if (localPolicy == TBSOneManager.Policy.BUILTIN_FIRST) {
+      localObject = new com.tencent.tbs.one.impl.a.g(new com.tencent.tbs.one.impl.a.a[] { a(TBSOneManager.Policy.BUILTIN_ONLY, parama, localFile, paramBundle), a(TBSOneManager.Policy.AUTO, parama, localFile, paramBundle) });
+    } else if (localPolicy == TBSOneManager.Policy.LOCAL_FIRST) {
+      localObject = new com.tencent.tbs.one.impl.a.g(new com.tencent.tbs.one.impl.a.a[] { a(TBSOneManager.Policy.LOCAL_ONLY, parama, localFile, paramBundle), a(TBSOneManager.Policy.AUTO, parama, localFile, paramBundle) });
     }
-    for (;;)
-    {
-      paramBundle = new c(this.a, parama, (com.tencent.tbs.one.impl.a.a)localObject, localFile);
-      paramBundle.a(paraml);
-      return paramBundle;
-      if (localPolicy == TBSOneManager.Policy.LOCAL_ONLY) {
-        localObject = a(TBSOneManager.Policy.LOCAL_ONLY, parama, localFile, paramBundle);
-      } else if (localPolicy == TBSOneManager.Policy.ONLINE) {
-        localObject = a(TBSOneManager.Policy.ONLINE, parama, localFile, paramBundle);
-      } else if (localPolicy == TBSOneManager.Policy.BUILTIN_FIRST) {
-        localObject = new com.tencent.tbs.one.impl.a.g(new com.tencent.tbs.one.impl.a.a[] { a(TBSOneManager.Policy.BUILTIN_ONLY, parama, localFile, paramBundle), a(TBSOneManager.Policy.AUTO, parama, localFile, paramBundle) });
-      } else if (localPolicy == TBSOneManager.Policy.LOCAL_FIRST) {
-        localObject = new com.tencent.tbs.one.impl.a.g(new com.tencent.tbs.one.impl.a.a[] { a(TBSOneManager.Policy.LOCAL_ONLY, parama, localFile, paramBundle), a(TBSOneManager.Policy.AUTO, parama, localFile, paramBundle) });
-      }
-    }
+    paramBundle = new c(this.a, parama, (com.tencent.tbs.one.impl.a.a)localObject, localFile);
+    paramBundle.a(paraml);
+    return paramBundle;
   }
   
   public final com.tencent.tbs.one.impl.a.a<e<com.tencent.tbs.one.impl.common.d>> a(TBSOneManager.Policy paramPolicy, int paramInt, File paramFile, Bundle paramBundle)
   {
     Context localContext = this.a;
     String str = this.b;
-    switch (i.6.a[paramPolicy.ordinal()])
+    int i = i.6.a[paramPolicy.ordinal()];
+    if (i != 1)
     {
-    default: 
-      return null;
-    case 1: 
-      return new com.tencent.tbs.one.impl.e.b.b(localContext, str, paramFile);
-    case 2: 
-      return new i.4(this, localContext, n(), paramFile);
-    case 3: 
-      return new com.tencent.tbs.one.impl.e.d.b(localContext, str, g(), paramFile);
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4) {
+            return null;
+          }
+          return com.tencent.tbs.one.impl.a.a(this, paramInt, paramFile, paramBundle);
+        }
+        paramPolicy = new com.tencent.tbs.one.impl.e.d.b(localContext, str, g(), paramFile);
+      }
+      else
+      {
+        paramPolicy = new i.4(this, localContext, n(), paramFile);
+      }
+      return paramPolicy;
     }
-    return com.tencent.tbs.one.impl.a.a(this, paramInt, paramFile, paramBundle);
+    return new com.tencent.tbs.one.impl.e.b.b(localContext, str, paramFile);
   }
   
   public final void a(Bundle paramBundle, String paramString, TBSOneCallback<File> paramTBSOneCallback)
@@ -305,44 +309,44 @@ public final class i
     if (paramString.equals("permanent_version")) {
       a(false);
     }
-    if (paramString.equals("guid"))
+    boolean bool = paramString.equals("guid");
+    String str2 = "";
+    String str1;
+    if (bool)
     {
-      if (paramObject == null)
-      {
-        str = "";
-        com.tencent.tbs.one.impl.a.d.a(str);
+      if (paramObject == null) {
+        str1 = "";
+      } else {
+        str1 = paramObject.toString();
       }
+      com.tencent.tbs.one.impl.a.d.a(str1);
     }
-    else if (paramString.equals("ppvn")) {
-      if (paramObject != null) {
-        break label220;
-      }
-    }
-    label220:
-    for (String str = "";; str = paramObject.toString())
+    if (paramString.equals("ppvn"))
     {
-      com.tencent.tbs.one.impl.a.d.b(str);
-      if (paramString.equals("disable_query_running_processes")) {
-        com.tencent.tbs.one.impl.a.d.a(com.tencent.tbs.one.impl.a.d.a(paramObject));
+      if (paramObject == null) {
+        str1 = str2;
+      } else {
+        str1 = paramObject.toString();
       }
-      if (paramString.equals("enable_console_logging")) {
-        com.tencent.tbs.one.impl.a.f.a(com.tencent.tbs.one.impl.a.d.a(paramObject));
-      }
-      if ((paramString.equals("is_need_update_at_upgrade")) && ((paramObject instanceof Boolean))) {
-        this.g = ((Boolean)paramObject).booleanValue();
-      }
-      if ((paramString.equals("update_interval")) && ((paramObject instanceof Long))) {
-        this.f = ((Long)paramObject).longValue();
-      }
-      if ((paramString.equals("is_ignore_update_flow_control")) && ((paramObject instanceof Boolean))) {
-        this.j = ((Boolean)paramObject).booleanValue();
-      }
-      if ((paramString.equals("is_ignore_update_wifi_network")) && ((paramObject instanceof Boolean))) {
-        this.k = ((Boolean)paramObject).booleanValue();
-      }
-      return;
-      str = paramObject.toString();
-      break;
+      com.tencent.tbs.one.impl.a.d.b(str1);
+    }
+    if (paramString.equals("disable_query_running_processes")) {
+      com.tencent.tbs.one.impl.a.d.a(com.tencent.tbs.one.impl.a.d.a(paramObject));
+    }
+    if (paramString.equals("enable_console_logging")) {
+      com.tencent.tbs.one.impl.a.f.a(com.tencent.tbs.one.impl.a.d.a(paramObject));
+    }
+    if ((paramString.equals("is_need_update_at_upgrade")) && ((paramObject instanceof Boolean))) {
+      this.g = ((Boolean)paramObject).booleanValue();
+    }
+    if ((paramString.equals("update_interval")) && ((paramObject instanceof Long))) {
+      this.f = ((Long)paramObject).longValue();
+    }
+    if ((paramString.equals("is_ignore_update_flow_control")) && ((paramObject instanceof Boolean))) {
+      this.j = ((Boolean)paramObject).booleanValue();
+    }
+    if ((paramString.equals("is_ignore_update_wifi_network")) && ((paramObject instanceof Boolean))) {
+      this.k = ((Boolean)paramObject).booleanValue();
     }
   }
   
@@ -431,60 +435,54 @@ public final class i
   public final boolean b(String paramString)
   {
     Object localObject = a(paramString);
-    if (!((File)localObject).exists()) {}
-    for (;;)
-    {
+    if (!((File)localObject).exists()) {
       return false;
-      localObject = ((File)localObject).listFiles();
-      if (localObject != null)
+    }
+    localObject = ((File)localObject).listFiles();
+    if (localObject == null) {
+      return false;
+    }
+    File localFile = com.tencent.tbs.one.impl.common.f.b(this.c);
+    if (!localFile.exists()) {
+      return false;
+    }
+    try
+    {
+      com.tencent.tbs.one.impl.common.d locald = com.tencent.tbs.one.impl.common.d.a(localFile);
+      paramString = locald.b(paramString);
+      if (paramString == null) {
+        return false;
+      }
+      paramString = paramString.f;
+      if (paramString != null)
       {
-        File localFile = com.tencent.tbs.one.impl.common.f.b(this.c);
-        if (localFile.exists())
+        j = paramString.length;
+        i = 0;
+        while (i < j)
         {
-          int j;
-          try
-          {
-            com.tencent.tbs.one.impl.common.d locald = com.tencent.tbs.one.impl.common.d.a(localFile);
-            paramString = locald.b(paramString);
-            if (paramString == null) {
-              continue;
-            }
-            paramString = paramString.f;
-            if (paramString != null)
-            {
-              j = paramString.length;
-              i = 0;
-              for (;;)
-              {
-                if (i >= j) {
-                  break label132;
-                }
-                if (!b(paramString[i])) {
-                  break;
-                }
-                i += 1;
-              }
-            }
-            j = localObject.length;
-          }
-          catch (TBSOneException paramString)
-          {
-            com.tencent.tbs.one.impl.a.f.c("[%s] Failed to parse DEPS file %s", new Object[] { this.b, localFile.getAbsolutePath(), paramString });
+          if (!b(paramString[i])) {
             return false;
           }
-          label132:
-          int i = 0;
-          while (i < j)
-          {
-            paramString = localObject[i];
-            if ((paramString.isDirectory()) && (f.g(paramString))) {
-              return true;
-            }
-            i += 1;
-          }
+          i += 1;
         }
       }
+      int j = localObject.length;
+      int i = 0;
+      while (i < j)
+      {
+        paramString = localObject[i];
+        if ((paramString.isDirectory()) && (f.g(paramString))) {
+          return true;
+        }
+        i += 1;
+      }
+      return false;
     }
+    catch (TBSOneException paramString)
+    {
+      com.tencent.tbs.one.impl.a.f.c("[%s] Failed to parse DEPS file %s", new Object[] { this.b, localFile.getAbsolutePath(), paramString });
+    }
+    return false;
   }
   
   public final TBSOneOnlineService c()
@@ -505,48 +503,43 @@ public final class i
   public final int[] c(String paramString)
   {
     paramString = a(paramString);
-    int[] arrayOfInt;
-    int j;
-    int i;
-    File localFile;
     if (paramString.exists())
     {
       paramString = paramString.listFiles();
       if (paramString != null)
       {
-        arrayOfInt = new int[paramString.length];
+        int[] arrayOfInt = new int[paramString.length];
         int m = paramString.length;
-        j = 0;
-        i = 0;
-        if (j < m)
+        int i = 0;
+        int k;
+        for (int j = 0; i < m; j = k)
         {
-          localFile = paramString[j];
-          if ((!localFile.isDirectory()) || (!f.g(localFile))) {
-            break label136;
+          File localFile = paramString[i];
+          k = j;
+          if (localFile.isDirectory())
+          {
+            k = j;
+            if (!f.g(localFile)) {}
           }
+          try
+          {
+            k = Integer.parseInt(localFile.getName());
+            arrayOfInt[j] = k;
+            k = j + 1;
+          }
+          catch (Exception localException)
+          {
+            label93:
+            break label93;
+          }
+          com.tencent.tbs.one.impl.a.f.c("[%s] Failed to parse installed version from path %s", new Object[] { this.b, localFile.getAbsolutePath() });
+          k = j;
+          i += 1;
         }
+        return Arrays.copyOfRange(arrayOfInt, 0, j);
       }
     }
-    label136:
-    for (;;)
-    {
-      try
-      {
-        int n = Integer.parseInt(localFile.getName());
-        int k = i + 1;
-        arrayOfInt[i] = n;
-        i = k;
-      }
-      catch (Exception localException)
-      {
-        com.tencent.tbs.one.impl.a.f.c("[%s] Failed to parse installed version from path %s", new Object[] { this.b, localFile.getAbsolutePath() });
-        continue;
-      }
-      j += 1;
-      break;
-      return Arrays.copyOfRange(arrayOfInt, 0, i);
-      return new int[0];
-    }
+    return new int[0];
   }
   
   public final TBSOneDebugger d()
@@ -602,17 +595,10 @@ public final class i
   
   public final boolean i()
   {
-    boolean bool2 = com.tencent.tbs.one.impl.common.f.c(this.c).exists();
-    if (!h().exists()) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      com.tencent.tbs.one.impl.a.f.a("[%s] Checking update availability, exists: %b, complete: %b", new Object[] { this.b, Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
-      if ((!bool2) || (!bool1)) {
-        break;
-      }
-      return true;
-    }
-    return false;
+    boolean bool1 = com.tencent.tbs.one.impl.common.f.c(this.c).exists();
+    boolean bool2 = h().exists() ^ true;
+    com.tencent.tbs.one.impl.a.f.a("[%s] Checking update availability, exists: %b, complete: %b", new Object[] { this.b, Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+    return (bool1) && (bool2);
   }
   
   public final j j()
@@ -641,7 +627,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.e.i
  * JD-Core Version:    0.7.0.1
  */

@@ -4,21 +4,21 @@ public class SecurityCommonException
   extends Exception
 {
   private static final long serialVersionUID = 1L;
-  private String t;
-  private String u;
+  private String v;
+  private String w;
   
   public SecurityCommonException() {}
   
   public SecurityCommonException(String paramString)
   {
     super(paramString);
-    this.u = paramString;
+    this.w = paramString;
   }
   
   public SecurityCommonException(String paramString1, String paramString2)
   {
-    this.t = paramString1;
-    this.u = paramString2;
+    this.v = paramString1;
+    this.w = paramString2;
   }
   
   public SecurityCommonException(String paramString, Throwable paramThrowable)
@@ -33,17 +33,17 @@ public class SecurityCommonException
   
   public String getMsgDes()
   {
-    return this.u;
+    return this.w;
   }
   
   public String getRetCd()
   {
-    return this.t;
+    return this.v;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.secure.android.common.util.SecurityCommonException
  * JD-Core Version:    0.7.0.1
  */

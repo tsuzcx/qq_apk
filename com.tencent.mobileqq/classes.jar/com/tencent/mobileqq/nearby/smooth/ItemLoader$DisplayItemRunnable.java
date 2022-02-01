@@ -19,23 +19,25 @@ final class ItemLoader$DisplayItemRunnable<Params, Result>
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest)) {}
-    View localView;
-    do
-    {
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest)) {
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest.c == null) {
-        throw new IllegalStateException("Result should not be null when displaying an item part");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest.c != null)
+    {
+      View localView = (View)this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest.b.get();
+      if (localView == null) {
+        return;
       }
-      localView = (View)this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest.b.get();
-    } while (localView == null);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest.c.get();
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(localView, localObject, this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest.a.intValue(), this.jdField_a_of_type_Boolean);
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest.c.get();
+      this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(localView, localObject, this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest.a.intValue(), this.jdField_a_of_type_Boolean);
+      return;
+    }
+    throw new IllegalStateException("Result should not be null when displaying an item part");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.smooth.ItemLoader.DisplayItemRunnable
  * JD-Core Version:    0.7.0.1
  */

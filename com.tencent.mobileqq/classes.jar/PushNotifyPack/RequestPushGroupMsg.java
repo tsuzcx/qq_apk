@@ -5,6 +5,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class RequestPushGroupMsg
   extends JceStruct
@@ -135,33 +136,39 @@ public final class RequestPushGroupMsg
     paramJceOutputStream.write(this.lInfoSeq, 9);
     paramJceOutputStream.write(this.shMsgLen, 10);
     paramJceOutputStream.write(this.vMsg, 11);
-    if (this.strGroupCard != null) {
-      paramJceOutputStream.write(this.strGroupCard, 12);
+    Object localObject = this.strGroupCard;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
     paramJceOutputStream.write(this.uAppShareID, 13);
-    if (this.vGPicInfo != null) {
-      paramJceOutputStream.write(this.vGPicInfo, 14);
+    localObject = this.vGPicInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 14);
     }
-    if (this.vAppShareCookie != null) {
-      paramJceOutputStream.write(this.vAppShareCookie, 15);
+    localObject = this.vAppShareCookie;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 15);
     }
-    if (this.stShareData != null) {
-      paramJceOutputStream.write(this.stShareData, 16);
+    localObject = this.stShareData;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 16);
     }
     paramJceOutputStream.write(this.lFromInstId, 17);
-    if (this.stGroupMsgHead != null) {
-      paramJceOutputStream.write(this.stGroupMsgHead, 18);
+    localObject = this.stGroupMsgHead;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 18);
     }
     paramJceOutputStream.write(this.wUserActive, 19);
-    if (this.vMarketFace != null) {
-      paramJceOutputStream.write(this.vMarketFace, 20);
+    localObject = this.vMarketFace;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 20);
     }
     paramJceOutputStream.write(this.uSuperQQBubbleId, 21);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PushNotifyPack.RequestPushGroupMsg
  * JD-Core Version:    0.7.0.1
  */

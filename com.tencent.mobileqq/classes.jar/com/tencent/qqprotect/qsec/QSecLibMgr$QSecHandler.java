@@ -15,30 +15,43 @@ class QSecLibMgr$QSecHandler
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    }
-    do
-    {
-      do
+      if (i != 2)
       {
-        return;
-        QSecLibMgr.a(this.a);
-        return;
-      } while (paramMessage.obj == null);
-      QSecLibMgr.a(this.a, (List)paramMessage.obj);
-      return;
-      QSecLibMgr.b(this.a);
-      return;
-      QSecLibMgr.c(this.a);
-      return;
-    } while (paramMessage.obj == null);
-    QSecLibMgr.a(this.a, (QSecLibMgr.LibEventListener)paramMessage.obj);
+        if (i != 3)
+        {
+          if (i != 4)
+          {
+            if (i != 5) {
+              return;
+            }
+            if (paramMessage.obj != null) {
+              QSecLibMgr.a(this.a, (QSecLibMgr.LibEventListener)paramMessage.obj);
+            }
+          }
+          else
+          {
+            QSecLibMgr.c(this.a);
+          }
+        }
+        else {
+          QSecLibMgr.b(this.a);
+        }
+      }
+      else if (paramMessage.obj != null) {
+        QSecLibMgr.a(this.a, (List)paramMessage.obj);
+      }
+    }
+    else {
+      QSecLibMgr.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.QSecLibMgr.QSecHandler
  * JD-Core Version:    0.7.0.1
  */

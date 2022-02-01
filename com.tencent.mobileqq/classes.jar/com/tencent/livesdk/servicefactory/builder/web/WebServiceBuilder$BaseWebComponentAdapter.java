@@ -105,37 +105,45 @@ public class WebServiceBuilder$BaseWebComponentAdapter
   public void writeCookie(String paramString, List<String> paramList)
   {
     Object localObject = (LoginServiceInterface)ServiceAccessorMgr.getInstance().getUserAccessor().getService(LoginServiceInterface.class);
-    int i = -1;
-    LoginInfo localLoginInfo;
-    long l2;
-    long l1;
-    String str1;
     if ((localObject != null) && (((LoginServiceInterface)localObject).getLoginInfo() != null))
     {
-      localLoginInfo = ((LoginServiceInterface)localObject).getLoginInfo();
-      l2 = localLoginInfo.uid;
-      if (localLoginInfo.tinyid == 0L) {
-        break label636;
+      LoginInfo localLoginInfo = ((LoginServiceInterface)localObject).getLoginInfo();
+      long l2 = localLoginInfo.uid;
+      long l1;
+      if (localLoginInfo.tinyid != 0L) {
+        l1 = localLoginInfo.tinyid;
+      } else {
+        l1 = l2;
       }
-      l1 = localLoginInfo.tinyid;
-      if (localLoginInfo.a2 != null) {
-        break label643;
+      String str1;
+      if (localLoginInfo.a2 == null) {
+        str1 = "";
+      } else {
+        str1 = HexUtil.bytesToHexString(localLoginInfo.a2);
       }
-      str1 = "";
-      label80:
-      switch (WebServiceBuilder.1.$SwitchMap$com$tencent$falco$base$libapi$login$LoginType[localObject.getLoginInfo().loginType.ordinal()])
+      int i = WebServiceBuilder.1.$SwitchMap$com$tencent$falco$base$libapi$login$LoginType[localObject.getLoginInfo().loginType.ordinal()];
+      if (i != 1)
       {
+        if (i != 2) {
+          i = -1;
+        } else {
+          i = 0;
+        }
       }
-    }
-    for (;;)
-    {
+      else {
+        i = 1;
+      }
       int j = ((AppGeneralInfoService)this.serviceManager.getService(AppGeneralInfoService.class)).getVersionCode();
       localObject = ((AppGeneralInfoService)this.serviceManager.getService(AppGeneralInfoService.class)).getVersionName();
       int k = ((AppGeneralInfoService)this.serviceManager.getService(AppGeneralInfoService.class)).getClientType();
       String str2 = ((AppGeneralInfoService)this.serviceManager.getService(AppGeneralInfoService.class)).getChannelID();
       String str3 = ((AppGeneralInfoService)this.serviceManager.getService(AppGeneralInfoService.class)).getDeviceID();
       paramString = UriUtil.getTopLevelDomainInLowerCase(paramString);
-      paramString = ";Domain=" + paramString + ";Path=/;";
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(";Domain=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(";Path=/;");
+      paramString = localStringBuilder.toString();
       paramList.add(String.format("%s=%s%s", new Object[] { "__client_exchange_appid", "", paramString }));
       paramList.add(String.format("%s=%d%s", new Object[] { "ilive_uin", Long.valueOf(l2), paramString }));
       paramList.add(String.format("%s=%d%s", new Object[] { "ilive_tinyid", Long.valueOf(l1), paramString }));
@@ -148,22 +156,12 @@ public class WebServiceBuilder$BaseWebComponentAdapter
       paramList.add(String.format("%s=%s%s", new Object[] { "ilive_deviceID", str3, paramString }));
       paramList.add(String.format("%s=%s%s", new Object[] { "originalId", localLoginInfo.openId, paramString }));
       paramList.add(String.format("%s=%s%s", new Object[] { "originalKey", localLoginInfo.access_token, paramString }));
-      return;
-      label636:
-      l1 = l2;
-      break;
-      label643:
-      str1 = HexUtil.bytesToHexString(localLoginInfo.a2);
-      break label80;
-      i = 1;
-      continue;
-      i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.servicefactory.builder.web.WebServiceBuilder.BaseWebComponentAdapter
  * JD-Core Version:    0.7.0.1
  */

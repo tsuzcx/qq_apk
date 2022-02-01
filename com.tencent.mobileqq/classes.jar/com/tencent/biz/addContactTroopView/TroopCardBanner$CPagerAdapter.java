@@ -1,10 +1,10 @@
 package com.tencent.biz.addContactTroopView;
 
-import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
+import androidx.viewpager.widget.PagerAdapter;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -54,7 +54,7 @@ public class TroopCardBanner$CPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.addContactTroopView.TroopCardBanner.CPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.specialcare;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-class QvipSpecialSoundConfig$SpecialSound
+public class QvipSpecialSoundConfig$SpecialSound
 {
   public int a;
   public String a;
@@ -53,7 +53,7 @@ class QvipSpecialSoundConfig$SpecialSound
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundConfig.SpecialSound
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import org.json.JSONObject;
 public class YtSDKKit
 {
   private static YtSDKKit jdField_a_of_type_ComTencentMobileqqIdentificationYtSDKKit;
-  private static final String jdField_a_of_type_JavaLangString = YtSDKKit.class.getSimpleName();
+  private static final String jdField_a_of_type_JavaLangString = "YtSDKKit";
   private JSONObject jdField_a_of_type_OrgJsonJSONObject;
   private JSONObject b;
   
@@ -29,22 +29,30 @@ public class YtSDKKit
   private YtSDKKitFramework.YtSDKKitFrameworkWorkMode a(int paramInt)
   {
     YtSDKKitFramework.YtSDKKitFrameworkWorkMode localYtSDKKitFrameworkWorkMode = YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_UNKNOWN;
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return localYtSDKKitFrameworkWorkMode;
-    case 0: 
-      return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_UNKNOWN;
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt != 4)
+            {
+              if (paramInt != 5) {
+                return localYtSDKKitFrameworkWorkMode;
+              }
+              return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_ACTREFLECT_TYPE;
+            }
+            return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_REFLECT_TYPE;
+          }
+          return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_ACTION_TYPE;
+        }
+        return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_SILENT_TYPE;
+      }
       return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_OCR_TYPE;
-    case 2: 
-      return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_SILENT_TYPE;
-    case 3: 
-      return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_ACTION_TYPE;
-    case 4: 
-      return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_REFLECT_TYPE;
     }
-    return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_ACTREFLECT_TYPE;
+    return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_UNKNOWN;
   }
   
   public int a(String paramString1, String paramString2)
@@ -57,7 +65,11 @@ public class YtSDKKit
     }
     catch (JSONException paramString1)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "initWithConfig error " + paramString1.getMessage());
+      paramString2 = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initWithConfig error ");
+      localStringBuilder.append(paramString1.getMessage());
+      QLog.e(paramString2, 1, localStringBuilder.toString());
     }
     return -1;
   }
@@ -69,7 +81,7 @@ public class YtSDKKit
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.identification.YtSDKKit
  * JD-Core Version:    0.7.0.1
  */

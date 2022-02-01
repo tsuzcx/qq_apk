@@ -39,13 +39,23 @@ public class QVipBackgroundCreator
     View localView = ((JsonInflaterFactory)localObject).a(this.jdField_a_of_type_AndroidAppActivity, str);
     if (localView == null)
     {
-      AssertUtils.a("type=" + str + " is illegal json=" + paramJSONObject, new Object[0]);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("type=");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(" is illegal json=");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      AssertUtils.fail(((StringBuilder)localObject).toString(), new Object[0]);
       return null;
     }
     localObject = ((JsonInflaterFactory)localObject).a(str, localView);
     if (localObject == null)
     {
-      AssertUtils.a("type=" + str + " create null view model json=" + paramJSONObject, new Object[0]);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("type=");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(" create null view model json=");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      AssertUtils.fail(((StringBuilder)localObject).toString(), new Object[0]);
       return null;
     }
     ((ViewModel)localObject).a(paramJSONObject);
@@ -65,14 +75,11 @@ public class QVipBackgroundCreator
     }
     a();
     int i = 0;
-    if (i < paramJSONArray.length())
+    while (i < paramJSONArray.length())
     {
       Object localObject = paramJSONArray.optJSONObject(i);
-      if (localObject == null) {}
-      for (;;)
+      if (localObject != null)
       {
-        i += 1;
-        break;
         localObject = a((JSONObject)localObject);
         if (localObject != null)
         {
@@ -81,6 +88,7 @@ public class QVipBackgroundCreator
           this.jdField_a_of_type_JavaUtilList.add(localObject);
         }
       }
+      i += 1;
     }
     return this;
   }
@@ -103,19 +111,20 @@ public class QVipBackgroundCreator
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
-      this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
+    Object localObject = this.jdField_a_of_type_AndroidViewViewGroup;
+    if (localObject != null) {
+      ((ViewGroup)localObject).removeAllViews();
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((ViewModel)localIterator.next()).c();
+    localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((ViewModel)((Iterator)localObject).next()).c();
     }
     this.jdField_a_of_type_JavaUtilList.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.diy.QVipBackgroundCreator
  * JD-Core Version:    0.7.0.1
  */

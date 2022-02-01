@@ -10,59 +10,54 @@ public class JumpParserFactory
     if ((paramJumpParserResult != null) && (paramArrayList != null)) {}
     for (;;)
     {
-      int i;
       try
       {
-        if (paramJumpParserResult.d() != null) {
-          break label134;
+        if (paramJumpParserResult.d() == null)
+        {
+          continue;
+          if (i >= paramArrayList.size()) {
+            break label148;
+          }
+          JumpParserBean localJumpParserBean = (JumpParserBean)paramArrayList.get(i);
+          if (!paramJumpParserResult.d().startsWith(localJumpParserBean.a())) {
+            break label141;
+          }
+          paramJumpParserResult = localJumpParserBean.a();
+          if (paramJumpParserResult == null) {
+            break;
+          }
+          paramJumpParserResult = paramJumpParserResult.newInstance();
+          if ((paramJumpParserResult instanceof JumpParserBase)) {
+            return (JumpParserBase)paramJumpParserResult;
+          }
+          QLog.e("JumpParserFactory", 1, "createJumpParser error: not extends JumpParserBase");
+          break;
+          QLog.e("JumpParserFactory", 1, "createJumpParser error: param is null");
+          return null;
         }
-        QLog.e("JumpParserFactory", 1, "createJumpParser error: param is null");
-        return null;
       }
       catch (Exception paramJumpParserResult)
       {
-        JumpParserBean localJumpParserBean;
-        QLog.e("JumpParserFactory", 1, "createJumpParser error: " + paramJumpParserResult.getMessage());
+        paramArrayList = new StringBuilder();
+        paramArrayList.append("createJumpParser error: ");
+        paramArrayList.append(paramJumpParserResult.getMessage());
+        QLog.e("JumpParserFactory", 1, paramArrayList.toString());
         return null;
       }
-      if (i < paramArrayList.size())
-      {
-        localJumpParserBean = (JumpParserBean)paramArrayList.get(i);
-        if (!paramJumpParserResult.d().startsWith(localJumpParserBean.a())) {
-          break label141;
-        }
-        paramJumpParserResult = localJumpParserBean.a();
-        if (paramJumpParserResult != null)
-        {
-          paramJumpParserResult = paramJumpParserResult.newInstance();
-          if ((paramJumpParserResult instanceof JumpParserBase)) {
-            paramJumpParserResult = (JumpParserBase)paramJumpParserResult;
-          } else {
-            QLog.e("JumpParserFactory", 1, "createJumpParser error: not extends JumpParserBase");
-          }
-        }
-        else
-        {
-          paramJumpParserResult = null;
-        }
-      }
-      else
-      {
-        paramJumpParserResult = null;
-        continue;
-        label134:
-        i = 0;
-        continue;
-      }
-      return paramJumpParserResult;
+      int i = 0;
+      continue;
       label141:
       i += 1;
+      continue;
+      label148:
+      paramJumpParserResult = null;
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.JumpParserFactory
  * JD-Core Version:    0.7.0.1
  */

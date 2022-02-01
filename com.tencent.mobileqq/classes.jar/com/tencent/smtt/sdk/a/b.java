@@ -11,16 +11,16 @@ public class b
   
   public static b a(JSONObject paramJSONObject)
   {
-    b localb = null;
     if (paramJSONObject != null)
     {
-      localb = new b();
+      b localb = new b();
       localb.a = paramJSONObject.optInt("id", -1);
       localb.b = paramJSONObject.optInt("cmd_id", -1);
       localb.c = paramJSONObject.optString("ext_params", "");
-      localb.d = (1000L * paramJSONObject.optLong("expiration", 0L));
+      localb.d = (paramJSONObject.optLong("expiration", 0L) * 1000L);
+      return localb;
     }
-    return localb;
+    return null;
   }
   
   public int a()
@@ -50,12 +50,23 @@ public class b
   
   public String toString()
   {
-    return "[id=" + this.a + ", cmd=" + this.b + ", extra='" + this.c + '\'' + ", expiration=" + a.a(this.d) + ']';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[id=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", cmd=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", extra='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", expiration=");
+    localStringBuilder.append(a.a(this.d));
+    localStringBuilder.append(']');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -13,8 +13,16 @@ class MultiCardRecommendFragment$3
   
   public void a(boolean paramBoolean, String paramString, int paramInt, Map<Integer, List<RecommendPerson>> paramMap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopMemberRecommend.MultiCardRecommendFragment", 2, "onGetTroopMemRecommendCards, success = " + paramBoolean + ",troopUin = " + paramString + ",notifySource = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGetTroopMemRecommendCards, success = ");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(",troopUin = ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",notifySource = ");
+      localStringBuilder.append(paramInt);
+      QLog.i("TroopMemberRecommend.MultiCardRecommendFragment", 2, localStringBuilder.toString());
     }
     if ((MultiCardRecommendFragment.a(this.a) != null) && (MultiCardRecommendFragment.a(this.a).equals(paramString)))
     {
@@ -27,7 +35,7 @@ class MultiCardRecommendFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardRecommendFragment.3
  * JD-Core Version:    0.7.0.1
  */

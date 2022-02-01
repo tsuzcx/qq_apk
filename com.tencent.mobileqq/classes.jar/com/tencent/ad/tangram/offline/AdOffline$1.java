@@ -12,8 +12,11 @@ class AdOffline$1
   
   public void run()
   {
-    if (this.val$ad == null) {}
-    while ((!this.val$ad.isAppXiJingOffline()) && (!this.val$ad.isWebXiJingOffline())) {
+    Ad localAd = this.val$ad;
+    if (localAd == null) {
+      return;
+    }
+    if ((!localAd.isAppXiJingOffline()) && (!this.val$ad.isWebXiJingOffline())) {
       return;
     }
     AdOffline.access$000(this.this$0, (Context)this.val$appContext.get(), this.val$ad, this.val$result);

@@ -23,13 +23,14 @@ public final class TimDocSSOMsg$GetPadListReqBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50, 56, 66, 72 }, new String[] { "uint32_appid", "uint32_timestamp", "uint32_offset", "uint32_count", "uint32_local_count_from_offset", "msg_login_info", "uint32_request_type", "bytes_timestamp", "uint32_list_type" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, GetPadListReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50, 56, 66, 72 }, new String[] { "uint32_appid", "uint32_timestamp", "uint32_offset", "uint32_count", "uint32_local_count_from_offset", "msg_login_info", "uint32_request_type", "bytes_timestamp", "uint32_list_type" }, new Object[] { localInteger, localInteger, localInteger, localInteger, localInteger, null, localInteger, localByteStringMicro, localInteger }, GetPadListReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.teamwork.TimDocSSOMsg.GetPadListReqBody
  * JD-Core Version:    0.7.0.1
  */

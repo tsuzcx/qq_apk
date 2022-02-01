@@ -36,10 +36,11 @@ public class Matrix4
   
   public Matrix4()
   {
-    this.val[0] = 1.0F;
-    this.val[5] = 1.0F;
-    this.val[10] = 1.0F;
-    this.val[15] = 1.0F;
+    float[] arrayOfFloat = this.val;
+    arrayOfFloat[0] = 1.0F;
+    arrayOfFloat[5] = 1.0F;
+    arrayOfFloat[10] = 1.0F;
+    arrayOfFloat[15] = 1.0F;
   }
   
   public Matrix4(Matrix4 paramMatrix4)
@@ -64,9 +65,10 @@ public class Matrix4
   
   public void getTranslation(Vector3 paramVector3)
   {
-    paramVector3.x = this.val[12];
-    paramVector3.y = this.val[13];
-    paramVector3.z = this.val[14];
+    float[] arrayOfFloat = this.val;
+    paramVector3.x = arrayOfFloat[12];
+    paramVector3.y = arrayOfFloat[13];
+    paramVector3.z = arrayOfFloat[14];
   }
   
   public float[] getValues()
@@ -76,65 +78,69 @@ public class Matrix4
   
   public Matrix4 idt()
   {
-    this.val[0] = 1.0F;
-    this.val[4] = 0.0F;
-    this.val[8] = 0.0F;
-    this.val[12] = 0.0F;
-    this.val[1] = 0.0F;
-    this.val[5] = 1.0F;
-    this.val[9] = 0.0F;
-    this.val[13] = 0.0F;
-    this.val[2] = 0.0F;
-    this.val[6] = 0.0F;
-    this.val[10] = 1.0F;
-    this.val[14] = 0.0F;
-    this.val[3] = 0.0F;
-    this.val[7] = 0.0F;
-    this.val[11] = 0.0F;
-    this.val[15] = 1.0F;
+    float[] arrayOfFloat = this.val;
+    arrayOfFloat[0] = 1.0F;
+    arrayOfFloat[4] = 0.0F;
+    arrayOfFloat[8] = 0.0F;
+    arrayOfFloat[12] = 0.0F;
+    arrayOfFloat[1] = 0.0F;
+    arrayOfFloat[5] = 1.0F;
+    arrayOfFloat[9] = 0.0F;
+    arrayOfFloat[13] = 0.0F;
+    arrayOfFloat[2] = 0.0F;
+    arrayOfFloat[6] = 0.0F;
+    arrayOfFloat[10] = 1.0F;
+    arrayOfFloat[14] = 0.0F;
+    arrayOfFloat[3] = 0.0F;
+    arrayOfFloat[7] = 0.0F;
+    arrayOfFloat[11] = 0.0F;
+    arrayOfFloat[15] = 1.0F;
     return this;
   }
   
   public Matrix4 inv()
   {
-    float f = this.val[3] * this.val[6] * this.val[9] * this.val[12] - this.val[2] * this.val[7] * this.val[9] * this.val[12] - this.val[3] * this.val[5] * this.val[10] * this.val[12] + this.val[1] * this.val[7] * this.val[10] * this.val[12] + this.val[2] * this.val[5] * this.val[11] * this.val[12] - this.val[1] * this.val[6] * this.val[11] * this.val[12] - this.val[3] * this.val[6] * this.val[8] * this.val[13] + this.val[2] * this.val[7] * this.val[8] * this.val[13] + this.val[3] * this.val[4] * this.val[10] * this.val[13] - this.val[0] * this.val[7] * this.val[10] * this.val[13] - this.val[2] * this.val[4] * this.val[11] * this.val[13] + this.val[0] * this.val[6] * this.val[11] * this.val[13] + this.val[3] * this.val[5] * this.val[8] * this.val[14] - this.val[1] * this.val[7] * this.val[8] * this.val[14] - this.val[3] * this.val[4] * this.val[9] * this.val[14] + this.val[0] * this.val[7] * this.val[9] * this.val[14] + this.val[1] * this.val[4] * this.val[11] * this.val[14] - this.val[0] * this.val[5] * this.val[11] * this.val[14] - this.val[2] * this.val[5] * this.val[8] * this.val[15] + this.val[1] * this.val[6] * this.val[8] * this.val[15] + this.val[2] * this.val[4] * this.val[9] * this.val[15] - this.val[0] * this.val[6] * this.val[9] * this.val[15] - this.val[1] * this.val[4] * this.val[10] * this.val[15] + this.val[0] * this.val[5] * this.val[10] * this.val[15];
-    if (f == 0.0F) {
-      throw new RuntimeException("non-invertible matrix");
+    float[] arrayOfFloat1 = this.val;
+    float f = arrayOfFloat1[3] * arrayOfFloat1[6] * arrayOfFloat1[9] * arrayOfFloat1[12] - arrayOfFloat1[2] * arrayOfFloat1[7] * arrayOfFloat1[9] * arrayOfFloat1[12] - arrayOfFloat1[3] * arrayOfFloat1[5] * arrayOfFloat1[10] * arrayOfFloat1[12] + arrayOfFloat1[1] * arrayOfFloat1[7] * arrayOfFloat1[10] * arrayOfFloat1[12] + arrayOfFloat1[2] * arrayOfFloat1[5] * arrayOfFloat1[11] * arrayOfFloat1[12] - arrayOfFloat1[1] * arrayOfFloat1[6] * arrayOfFloat1[11] * arrayOfFloat1[12] - arrayOfFloat1[3] * arrayOfFloat1[6] * arrayOfFloat1[8] * arrayOfFloat1[13] + arrayOfFloat1[2] * arrayOfFloat1[7] * arrayOfFloat1[8] * arrayOfFloat1[13] + arrayOfFloat1[3] * arrayOfFloat1[4] * arrayOfFloat1[10] * arrayOfFloat1[13] - arrayOfFloat1[0] * arrayOfFloat1[7] * arrayOfFloat1[10] * arrayOfFloat1[13] - arrayOfFloat1[2] * arrayOfFloat1[4] * arrayOfFloat1[11] * arrayOfFloat1[13] + arrayOfFloat1[0] * arrayOfFloat1[6] * arrayOfFloat1[11] * arrayOfFloat1[13] + arrayOfFloat1[3] * arrayOfFloat1[5] * arrayOfFloat1[8] * arrayOfFloat1[14] - arrayOfFloat1[1] * arrayOfFloat1[7] * arrayOfFloat1[8] * arrayOfFloat1[14] - arrayOfFloat1[3] * arrayOfFloat1[4] * arrayOfFloat1[9] * arrayOfFloat1[14] + arrayOfFloat1[0] * arrayOfFloat1[7] * arrayOfFloat1[9] * arrayOfFloat1[14] + arrayOfFloat1[1] * arrayOfFloat1[4] * arrayOfFloat1[11] * arrayOfFloat1[14] - arrayOfFloat1[0] * arrayOfFloat1[5] * arrayOfFloat1[11] * arrayOfFloat1[14] - arrayOfFloat1[2] * arrayOfFloat1[5] * arrayOfFloat1[8] * arrayOfFloat1[15] + arrayOfFloat1[1] * arrayOfFloat1[6] * arrayOfFloat1[8] * arrayOfFloat1[15] + arrayOfFloat1[2] * arrayOfFloat1[4] * arrayOfFloat1[9] * arrayOfFloat1[15] - arrayOfFloat1[0] * arrayOfFloat1[6] * arrayOfFloat1[9] * arrayOfFloat1[15] - arrayOfFloat1[1] * arrayOfFloat1[4] * arrayOfFloat1[10] * arrayOfFloat1[15] + arrayOfFloat1[0] * arrayOfFloat1[5] * arrayOfFloat1[10] * arrayOfFloat1[15];
+    if (f != 0.0F)
+    {
+      f = 1.0F / f;
+      float[] arrayOfFloat2 = this.tmp;
+      arrayOfFloat2[0] = (arrayOfFloat1[9] * arrayOfFloat1[14] * arrayOfFloat1[7] - arrayOfFloat1[13] * arrayOfFloat1[10] * arrayOfFloat1[7] + arrayOfFloat1[13] * arrayOfFloat1[6] * arrayOfFloat1[11] - arrayOfFloat1[5] * arrayOfFloat1[14] * arrayOfFloat1[11] - arrayOfFloat1[9] * arrayOfFloat1[6] * arrayOfFloat1[15] + arrayOfFloat1[5] * arrayOfFloat1[10] * arrayOfFloat1[15]);
+      arrayOfFloat2[4] = (arrayOfFloat1[12] * arrayOfFloat1[10] * arrayOfFloat1[7] - arrayOfFloat1[8] * arrayOfFloat1[14] * arrayOfFloat1[7] - arrayOfFloat1[12] * arrayOfFloat1[6] * arrayOfFloat1[11] + arrayOfFloat1[4] * arrayOfFloat1[14] * arrayOfFloat1[11] + arrayOfFloat1[8] * arrayOfFloat1[6] * arrayOfFloat1[15] - arrayOfFloat1[4] * arrayOfFloat1[10] * arrayOfFloat1[15]);
+      arrayOfFloat2[8] = (arrayOfFloat1[8] * arrayOfFloat1[13] * arrayOfFloat1[7] - arrayOfFloat1[12] * arrayOfFloat1[9] * arrayOfFloat1[7] + arrayOfFloat1[12] * arrayOfFloat1[5] * arrayOfFloat1[11] - arrayOfFloat1[4] * arrayOfFloat1[13] * arrayOfFloat1[11] - arrayOfFloat1[8] * arrayOfFloat1[5] * arrayOfFloat1[15] + arrayOfFloat1[4] * arrayOfFloat1[9] * arrayOfFloat1[15]);
+      arrayOfFloat2[12] = (arrayOfFloat1[12] * arrayOfFloat1[9] * arrayOfFloat1[6] - arrayOfFloat1[8] * arrayOfFloat1[13] * arrayOfFloat1[6] - arrayOfFloat1[12] * arrayOfFloat1[5] * arrayOfFloat1[10] + arrayOfFloat1[4] * arrayOfFloat1[13] * arrayOfFloat1[10] + arrayOfFloat1[8] * arrayOfFloat1[5] * arrayOfFloat1[14] - arrayOfFloat1[4] * arrayOfFloat1[9] * arrayOfFloat1[14]);
+      arrayOfFloat2[1] = (arrayOfFloat1[13] * arrayOfFloat1[10] * arrayOfFloat1[3] - arrayOfFloat1[9] * arrayOfFloat1[14] * arrayOfFloat1[3] - arrayOfFloat1[13] * arrayOfFloat1[2] * arrayOfFloat1[11] + arrayOfFloat1[1] * arrayOfFloat1[14] * arrayOfFloat1[11] + arrayOfFloat1[9] * arrayOfFloat1[2] * arrayOfFloat1[15] - arrayOfFloat1[1] * arrayOfFloat1[10] * arrayOfFloat1[15]);
+      arrayOfFloat2[5] = (arrayOfFloat1[8] * arrayOfFloat1[14] * arrayOfFloat1[3] - arrayOfFloat1[12] * arrayOfFloat1[10] * arrayOfFloat1[3] + arrayOfFloat1[12] * arrayOfFloat1[2] * arrayOfFloat1[11] - arrayOfFloat1[0] * arrayOfFloat1[14] * arrayOfFloat1[11] - arrayOfFloat1[8] * arrayOfFloat1[2] * arrayOfFloat1[15] + arrayOfFloat1[0] * arrayOfFloat1[10] * arrayOfFloat1[15]);
+      arrayOfFloat2[9] = (arrayOfFloat1[12] * arrayOfFloat1[9] * arrayOfFloat1[3] - arrayOfFloat1[8] * arrayOfFloat1[13] * arrayOfFloat1[3] - arrayOfFloat1[12] * arrayOfFloat1[1] * arrayOfFloat1[11] + arrayOfFloat1[0] * arrayOfFloat1[13] * arrayOfFloat1[11] + arrayOfFloat1[8] * arrayOfFloat1[1] * arrayOfFloat1[15] - arrayOfFloat1[0] * arrayOfFloat1[9] * arrayOfFloat1[15]);
+      arrayOfFloat2[13] = (arrayOfFloat1[8] * arrayOfFloat1[13] * arrayOfFloat1[2] - arrayOfFloat1[12] * arrayOfFloat1[9] * arrayOfFloat1[2] + arrayOfFloat1[12] * arrayOfFloat1[1] * arrayOfFloat1[10] - arrayOfFloat1[0] * arrayOfFloat1[13] * arrayOfFloat1[10] - arrayOfFloat1[8] * arrayOfFloat1[1] * arrayOfFloat1[14] + arrayOfFloat1[0] * arrayOfFloat1[9] * arrayOfFloat1[14]);
+      arrayOfFloat2[2] = (arrayOfFloat1[5] * arrayOfFloat1[14] * arrayOfFloat1[3] - arrayOfFloat1[13] * arrayOfFloat1[6] * arrayOfFloat1[3] + arrayOfFloat1[13] * arrayOfFloat1[2] * arrayOfFloat1[7] - arrayOfFloat1[1] * arrayOfFloat1[14] * arrayOfFloat1[7] - arrayOfFloat1[5] * arrayOfFloat1[2] * arrayOfFloat1[15] + arrayOfFloat1[1] * arrayOfFloat1[6] * arrayOfFloat1[15]);
+      arrayOfFloat2[6] = (arrayOfFloat1[12] * arrayOfFloat1[6] * arrayOfFloat1[3] - arrayOfFloat1[4] * arrayOfFloat1[14] * arrayOfFloat1[3] - arrayOfFloat1[12] * arrayOfFloat1[2] * arrayOfFloat1[7] + arrayOfFloat1[0] * arrayOfFloat1[14] * arrayOfFloat1[7] + arrayOfFloat1[4] * arrayOfFloat1[2] * arrayOfFloat1[15] - arrayOfFloat1[0] * arrayOfFloat1[6] * arrayOfFloat1[15]);
+      arrayOfFloat2[10] = (arrayOfFloat1[4] * arrayOfFloat1[13] * arrayOfFloat1[3] - arrayOfFloat1[12] * arrayOfFloat1[5] * arrayOfFloat1[3] + arrayOfFloat1[12] * arrayOfFloat1[1] * arrayOfFloat1[7] - arrayOfFloat1[0] * arrayOfFloat1[13] * arrayOfFloat1[7] - arrayOfFloat1[4] * arrayOfFloat1[1] * arrayOfFloat1[15] + arrayOfFloat1[0] * arrayOfFloat1[5] * arrayOfFloat1[15]);
+      arrayOfFloat2[14] = (arrayOfFloat1[12] * arrayOfFloat1[5] * arrayOfFloat1[2] - arrayOfFloat1[4] * arrayOfFloat1[13] * arrayOfFloat1[2] - arrayOfFloat1[12] * arrayOfFloat1[1] * arrayOfFloat1[6] + arrayOfFloat1[0] * arrayOfFloat1[13] * arrayOfFloat1[6] + arrayOfFloat1[4] * arrayOfFloat1[1] * arrayOfFloat1[14] - arrayOfFloat1[0] * arrayOfFloat1[5] * arrayOfFloat1[14]);
+      arrayOfFloat2[3] = (arrayOfFloat1[9] * arrayOfFloat1[6] * arrayOfFloat1[3] - arrayOfFloat1[5] * arrayOfFloat1[10] * arrayOfFloat1[3] - arrayOfFloat1[9] * arrayOfFloat1[2] * arrayOfFloat1[7] + arrayOfFloat1[1] * arrayOfFloat1[10] * arrayOfFloat1[7] + arrayOfFloat1[5] * arrayOfFloat1[2] * arrayOfFloat1[11] - arrayOfFloat1[1] * arrayOfFloat1[6] * arrayOfFloat1[11]);
+      arrayOfFloat2[7] = (arrayOfFloat1[4] * arrayOfFloat1[10] * arrayOfFloat1[3] - arrayOfFloat1[8] * arrayOfFloat1[6] * arrayOfFloat1[3] + arrayOfFloat1[8] * arrayOfFloat1[2] * arrayOfFloat1[7] - arrayOfFloat1[0] * arrayOfFloat1[10] * arrayOfFloat1[7] - arrayOfFloat1[4] * arrayOfFloat1[2] * arrayOfFloat1[11] + arrayOfFloat1[0] * arrayOfFloat1[6] * arrayOfFloat1[11]);
+      arrayOfFloat2[11] = (arrayOfFloat1[8] * arrayOfFloat1[5] * arrayOfFloat1[3] - arrayOfFloat1[4] * arrayOfFloat1[9] * arrayOfFloat1[3] - arrayOfFloat1[8] * arrayOfFloat1[1] * arrayOfFloat1[7] + arrayOfFloat1[0] * arrayOfFloat1[9] * arrayOfFloat1[7] + arrayOfFloat1[4] * arrayOfFloat1[1] * arrayOfFloat1[11] - arrayOfFloat1[0] * arrayOfFloat1[5] * arrayOfFloat1[11]);
+      arrayOfFloat2[15] = (arrayOfFloat1[4] * arrayOfFloat1[9] * arrayOfFloat1[2] - arrayOfFloat1[8] * arrayOfFloat1[5] * arrayOfFloat1[2] + arrayOfFloat1[8] * arrayOfFloat1[1] * arrayOfFloat1[6] - arrayOfFloat1[0] * arrayOfFloat1[9] * arrayOfFloat1[6] - arrayOfFloat1[4] * arrayOfFloat1[1] * arrayOfFloat1[10] + arrayOfFloat1[0] * arrayOfFloat1[5] * arrayOfFloat1[10]);
+      arrayOfFloat2[0] *= f;
+      arrayOfFloat2[4] *= f;
+      arrayOfFloat2[8] *= f;
+      arrayOfFloat2[12] *= f;
+      arrayOfFloat2[1] *= f;
+      arrayOfFloat2[5] *= f;
+      arrayOfFloat2[9] *= f;
+      arrayOfFloat2[13] *= f;
+      arrayOfFloat2[2] *= f;
+      arrayOfFloat2[6] *= f;
+      arrayOfFloat2[10] *= f;
+      arrayOfFloat2[14] *= f;
+      arrayOfFloat2[3] *= f;
+      arrayOfFloat2[7] *= f;
+      arrayOfFloat2[11] *= f;
+      arrayOfFloat2[15] *= f;
+      return this;
     }
-    f = 1.0F / f;
-    this.tmp[0] = (this.val[9] * this.val[14] * this.val[7] - this.val[13] * this.val[10] * this.val[7] + this.val[13] * this.val[6] * this.val[11] - this.val[5] * this.val[14] * this.val[11] - this.val[9] * this.val[6] * this.val[15] + this.val[5] * this.val[10] * this.val[15]);
-    this.tmp[4] = (this.val[12] * this.val[10] * this.val[7] - this.val[8] * this.val[14] * this.val[7] - this.val[12] * this.val[6] * this.val[11] + this.val[4] * this.val[14] * this.val[11] + this.val[8] * this.val[6] * this.val[15] - this.val[4] * this.val[10] * this.val[15]);
-    this.tmp[8] = (this.val[8] * this.val[13] * this.val[7] - this.val[12] * this.val[9] * this.val[7] + this.val[12] * this.val[5] * this.val[11] - this.val[4] * this.val[13] * this.val[11] - this.val[8] * this.val[5] * this.val[15] + this.val[4] * this.val[9] * this.val[15]);
-    this.tmp[12] = (this.val[12] * this.val[9] * this.val[6] - this.val[8] * this.val[13] * this.val[6] - this.val[12] * this.val[5] * this.val[10] + this.val[4] * this.val[13] * this.val[10] + this.val[8] * this.val[5] * this.val[14] - this.val[4] * this.val[9] * this.val[14]);
-    this.tmp[1] = (this.val[13] * this.val[10] * this.val[3] - this.val[9] * this.val[14] * this.val[3] - this.val[13] * this.val[2] * this.val[11] + this.val[1] * this.val[14] * this.val[11] + this.val[9] * this.val[2] * this.val[15] - this.val[1] * this.val[10] * this.val[15]);
-    this.tmp[5] = (this.val[8] * this.val[14] * this.val[3] - this.val[12] * this.val[10] * this.val[3] + this.val[12] * this.val[2] * this.val[11] - this.val[0] * this.val[14] * this.val[11] - this.val[8] * this.val[2] * this.val[15] + this.val[0] * this.val[10] * this.val[15]);
-    this.tmp[9] = (this.val[12] * this.val[9] * this.val[3] - this.val[8] * this.val[13] * this.val[3] - this.val[12] * this.val[1] * this.val[11] + this.val[0] * this.val[13] * this.val[11] + this.val[8] * this.val[1] * this.val[15] - this.val[0] * this.val[9] * this.val[15]);
-    this.tmp[13] = (this.val[8] * this.val[13] * this.val[2] - this.val[12] * this.val[9] * this.val[2] + this.val[12] * this.val[1] * this.val[10] - this.val[0] * this.val[13] * this.val[10] - this.val[8] * this.val[1] * this.val[14] + this.val[0] * this.val[9] * this.val[14]);
-    this.tmp[2] = (this.val[5] * this.val[14] * this.val[3] - this.val[13] * this.val[6] * this.val[3] + this.val[13] * this.val[2] * this.val[7] - this.val[1] * this.val[14] * this.val[7] - this.val[5] * this.val[2] * this.val[15] + this.val[1] * this.val[6] * this.val[15]);
-    this.tmp[6] = (this.val[12] * this.val[6] * this.val[3] - this.val[4] * this.val[14] * this.val[3] - this.val[12] * this.val[2] * this.val[7] + this.val[0] * this.val[14] * this.val[7] + this.val[4] * this.val[2] * this.val[15] - this.val[0] * this.val[6] * this.val[15]);
-    this.tmp[10] = (this.val[4] * this.val[13] * this.val[3] - this.val[12] * this.val[5] * this.val[3] + this.val[12] * this.val[1] * this.val[7] - this.val[0] * this.val[13] * this.val[7] - this.val[4] * this.val[1] * this.val[15] + this.val[0] * this.val[5] * this.val[15]);
-    this.tmp[14] = (this.val[12] * this.val[5] * this.val[2] - this.val[4] * this.val[13] * this.val[2] - this.val[12] * this.val[1] * this.val[6] + this.val[0] * this.val[13] * this.val[6] + this.val[4] * this.val[1] * this.val[14] - this.val[0] * this.val[5] * this.val[14]);
-    this.tmp[3] = (this.val[9] * this.val[6] * this.val[3] - this.val[5] * this.val[10] * this.val[3] - this.val[9] * this.val[2] * this.val[7] + this.val[1] * this.val[10] * this.val[7] + this.val[5] * this.val[2] * this.val[11] - this.val[1] * this.val[6] * this.val[11]);
-    this.tmp[7] = (this.val[4] * this.val[10] * this.val[3] - this.val[8] * this.val[6] * this.val[3] + this.val[8] * this.val[2] * this.val[7] - this.val[0] * this.val[10] * this.val[7] - this.val[4] * this.val[2] * this.val[11] + this.val[0] * this.val[6] * this.val[11]);
-    this.tmp[11] = (this.val[8] * this.val[5] * this.val[3] - this.val[4] * this.val[9] * this.val[3] - this.val[8] * this.val[1] * this.val[7] + this.val[0] * this.val[9] * this.val[7] + this.val[4] * this.val[1] * this.val[11] - this.val[0] * this.val[5] * this.val[11]);
-    this.tmp[15] = (this.val[4] * this.val[9] * this.val[2] - this.val[8] * this.val[5] * this.val[2] + this.val[8] * this.val[1] * this.val[6] - this.val[0] * this.val[9] * this.val[6] - this.val[4] * this.val[1] * this.val[10] + this.val[0] * this.val[5] * this.val[10]);
-    this.val[0] = (this.tmp[0] * f);
-    this.val[4] = (this.tmp[4] * f);
-    this.val[8] = (this.tmp[8] * f);
-    this.val[12] = (this.tmp[12] * f);
-    this.val[1] = (this.tmp[1] * f);
-    this.val[5] = (this.tmp[5] * f);
-    this.val[9] = (this.tmp[9] * f);
-    this.val[13] = (this.tmp[13] * f);
-    this.val[2] = (this.tmp[2] * f);
-    this.val[6] = (this.tmp[6] * f);
-    this.val[10] = (this.tmp[10] * f);
-    this.val[14] = (this.tmp[14] * f);
-    this.val[3] = (this.tmp[3] * f);
-    this.val[7] = (this.tmp[7] * f);
-    this.val[11] = (this.tmp[11] * f);
-    this.val[15] = (f * this.tmp[15]);
-    return this;
+    throw new RuntimeException("non-invertible matrix");
   }
   
   public void lerp(Matrix4 paramMatrix4, float paramFloat)
@@ -142,7 +148,8 @@ public class Matrix4
     int i = 0;
     while (i < 16)
     {
-      this.val[i] = (this.val[i] * (1.0F - paramFloat) + paramMatrix4.val[i] * paramFloat);
+      float[] arrayOfFloat = this.val;
+      arrayOfFloat[i] = (arrayOfFloat[i] * (1.0F - paramFloat) + paramMatrix4.val[i] * paramFloat);
       i += 1;
     }
   }
@@ -154,23 +161,27 @@ public class Matrix4
   
   public Matrix4 mul_java(Matrix4 paramMatrix4)
   {
-    this.tmp[0] = (this.val[0] * paramMatrix4.val[0] + this.val[4] * paramMatrix4.val[1] + this.val[8] * paramMatrix4.val[2] + this.val[12] * paramMatrix4.val[3]);
-    this.tmp[4] = (this.val[0] * paramMatrix4.val[4] + this.val[4] * paramMatrix4.val[5] + this.val[8] * paramMatrix4.val[6] + this.val[12] * paramMatrix4.val[7]);
-    this.tmp[8] = (this.val[0] * paramMatrix4.val[8] + this.val[4] * paramMatrix4.val[9] + this.val[8] * paramMatrix4.val[10] + this.val[12] * paramMatrix4.val[11]);
-    this.tmp[12] = (this.val[0] * paramMatrix4.val[12] + this.val[4] * paramMatrix4.val[13] + this.val[8] * paramMatrix4.val[14] + this.val[12] * paramMatrix4.val[15]);
-    this.tmp[1] = (this.val[1] * paramMatrix4.val[0] + this.val[5] * paramMatrix4.val[1] + this.val[9] * paramMatrix4.val[2] + this.val[13] * paramMatrix4.val[3]);
-    this.tmp[5] = (this.val[1] * paramMatrix4.val[4] + this.val[5] * paramMatrix4.val[5] + this.val[9] * paramMatrix4.val[6] + this.val[13] * paramMatrix4.val[7]);
-    this.tmp[9] = (this.val[1] * paramMatrix4.val[8] + this.val[5] * paramMatrix4.val[9] + this.val[9] * paramMatrix4.val[10] + this.val[13] * paramMatrix4.val[11]);
-    this.tmp[13] = (this.val[1] * paramMatrix4.val[12] + this.val[5] * paramMatrix4.val[13] + this.val[9] * paramMatrix4.val[14] + this.val[13] * paramMatrix4.val[15]);
-    this.tmp[2] = (this.val[2] * paramMatrix4.val[0] + this.val[6] * paramMatrix4.val[1] + this.val[10] * paramMatrix4.val[2] + this.val[14] * paramMatrix4.val[3]);
-    this.tmp[6] = (this.val[2] * paramMatrix4.val[4] + this.val[6] * paramMatrix4.val[5] + this.val[10] * paramMatrix4.val[6] + this.val[14] * paramMatrix4.val[7]);
-    this.tmp[10] = (this.val[2] * paramMatrix4.val[8] + this.val[6] * paramMatrix4.val[9] + this.val[10] * paramMatrix4.val[10] + this.val[14] * paramMatrix4.val[11]);
-    this.tmp[14] = (this.val[2] * paramMatrix4.val[12] + this.val[6] * paramMatrix4.val[13] + this.val[10] * paramMatrix4.val[14] + this.val[14] * paramMatrix4.val[15]);
-    this.tmp[3] = (this.val[3] * paramMatrix4.val[0] + this.val[7] * paramMatrix4.val[1] + this.val[11] * paramMatrix4.val[2] + this.val[15] * paramMatrix4.val[3]);
-    this.tmp[7] = (this.val[3] * paramMatrix4.val[4] + this.val[7] * paramMatrix4.val[5] + this.val[11] * paramMatrix4.val[6] + this.val[15] * paramMatrix4.val[7]);
-    this.tmp[11] = (this.val[3] * paramMatrix4.val[8] + this.val[7] * paramMatrix4.val[9] + this.val[11] * paramMatrix4.val[10] + this.val[15] * paramMatrix4.val[11]);
-    this.tmp[15] = (this.val[3] * paramMatrix4.val[12] + this.val[7] * paramMatrix4.val[13] + this.val[11] * paramMatrix4.val[14] + this.val[15] * paramMatrix4.val[15]);
-    return set(this.tmp);
+    float[] arrayOfFloat1 = this.tmp;
+    float[] arrayOfFloat2 = this.val;
+    float f = arrayOfFloat2[0];
+    paramMatrix4 = paramMatrix4.val;
+    arrayOfFloat1[0] = (f * paramMatrix4[0] + arrayOfFloat2[4] * paramMatrix4[1] + arrayOfFloat2[8] * paramMatrix4[2] + arrayOfFloat2[12] * paramMatrix4[3]);
+    arrayOfFloat1[4] = (arrayOfFloat2[0] * paramMatrix4[4] + arrayOfFloat2[4] * paramMatrix4[5] + arrayOfFloat2[8] * paramMatrix4[6] + arrayOfFloat2[12] * paramMatrix4[7]);
+    arrayOfFloat1[8] = (arrayOfFloat2[0] * paramMatrix4[8] + arrayOfFloat2[4] * paramMatrix4[9] + arrayOfFloat2[8] * paramMatrix4[10] + arrayOfFloat2[12] * paramMatrix4[11]);
+    arrayOfFloat1[12] = (arrayOfFloat2[0] * paramMatrix4[12] + arrayOfFloat2[4] * paramMatrix4[13] + arrayOfFloat2[8] * paramMatrix4[14] + arrayOfFloat2[12] * paramMatrix4[15]);
+    arrayOfFloat1[1] = (arrayOfFloat2[1] * paramMatrix4[0] + arrayOfFloat2[5] * paramMatrix4[1] + arrayOfFloat2[9] * paramMatrix4[2] + arrayOfFloat2[13] * paramMatrix4[3]);
+    arrayOfFloat1[5] = (arrayOfFloat2[1] * paramMatrix4[4] + arrayOfFloat2[5] * paramMatrix4[5] + arrayOfFloat2[9] * paramMatrix4[6] + arrayOfFloat2[13] * paramMatrix4[7]);
+    arrayOfFloat1[9] = (arrayOfFloat2[1] * paramMatrix4[8] + arrayOfFloat2[5] * paramMatrix4[9] + arrayOfFloat2[9] * paramMatrix4[10] + arrayOfFloat2[13] * paramMatrix4[11]);
+    arrayOfFloat1[13] = (arrayOfFloat2[1] * paramMatrix4[12] + arrayOfFloat2[5] * paramMatrix4[13] + arrayOfFloat2[9] * paramMatrix4[14] + arrayOfFloat2[13] * paramMatrix4[15]);
+    arrayOfFloat1[2] = (arrayOfFloat2[2] * paramMatrix4[0] + arrayOfFloat2[6] * paramMatrix4[1] + arrayOfFloat2[10] * paramMatrix4[2] + arrayOfFloat2[14] * paramMatrix4[3]);
+    arrayOfFloat1[6] = (arrayOfFloat2[2] * paramMatrix4[4] + arrayOfFloat2[6] * paramMatrix4[5] + arrayOfFloat2[10] * paramMatrix4[6] + arrayOfFloat2[14] * paramMatrix4[7]);
+    arrayOfFloat1[10] = (arrayOfFloat2[2] * paramMatrix4[8] + arrayOfFloat2[6] * paramMatrix4[9] + arrayOfFloat2[10] * paramMatrix4[10] + arrayOfFloat2[14] * paramMatrix4[11]);
+    arrayOfFloat1[14] = (arrayOfFloat2[2] * paramMatrix4[12] + arrayOfFloat2[6] * paramMatrix4[13] + arrayOfFloat2[10] * paramMatrix4[14] + arrayOfFloat2[14] * paramMatrix4[15]);
+    arrayOfFloat1[3] = (arrayOfFloat2[3] * paramMatrix4[0] + arrayOfFloat2[7] * paramMatrix4[1] + arrayOfFloat2[11] * paramMatrix4[2] + arrayOfFloat2[15] * paramMatrix4[3]);
+    arrayOfFloat1[7] = (arrayOfFloat2[3] * paramMatrix4[4] + arrayOfFloat2[7] * paramMatrix4[5] + arrayOfFloat2[11] * paramMatrix4[6] + arrayOfFloat2[15] * paramMatrix4[7]);
+    arrayOfFloat1[11] = (arrayOfFloat2[3] * paramMatrix4[8] + arrayOfFloat2[7] * paramMatrix4[9] + arrayOfFloat2[11] * paramMatrix4[10] + arrayOfFloat2[15] * paramMatrix4[11]);
+    arrayOfFloat1[15] = (arrayOfFloat2[3] * paramMatrix4[12] + arrayOfFloat2[7] * paramMatrix4[13] + arrayOfFloat2[11] * paramMatrix4[14] + arrayOfFloat2[15] * paramMatrix4[15]);
+    return set(arrayOfFloat1);
   }
   
   public Matrix4 set(Matrix3 paramMatrix3)
@@ -178,19 +189,22 @@ public class Matrix4
     this.val[0] = paramMatrix3.val[0];
     this.val[1] = paramMatrix3.val[1];
     this.val[2] = paramMatrix3.val[2];
-    this.val[3] = 0.0F;
-    this.val[4] = paramMatrix3.val[3];
+    float[] arrayOfFloat = this.val;
+    arrayOfFloat[3] = 0.0F;
+    arrayOfFloat[4] = paramMatrix3.val[3];
     this.val[5] = paramMatrix3.val[4];
     this.val[6] = paramMatrix3.val[5];
-    this.val[7] = 0.0F;
-    this.val[8] = 0.0F;
-    this.val[9] = 0.0F;
-    this.val[10] = 1.0F;
-    this.val[11] = 0.0F;
-    this.val[12] = paramMatrix3.val[6];
+    arrayOfFloat = this.val;
+    arrayOfFloat[7] = 0.0F;
+    arrayOfFloat[8] = 0.0F;
+    arrayOfFloat[9] = 0.0F;
+    arrayOfFloat[10] = 1.0F;
+    arrayOfFloat[11] = 0.0F;
+    arrayOfFloat[12] = paramMatrix3.val[6];
     this.val[13] = paramMatrix3.val[7];
-    this.val[14] = 0.0F;
-    this.val[15] = paramMatrix3.val[8];
+    arrayOfFloat = this.val;
+    arrayOfFloat[14] = 0.0F;
+    arrayOfFloat[15] = paramMatrix3.val[8];
     return this;
   }
   
@@ -210,22 +224,23 @@ public class Matrix4
     float f7 = paramQuaternion.y * paramQuaternion.w;
     float f8 = paramQuaternion.z * paramQuaternion.z;
     float f9 = paramQuaternion.z * paramQuaternion.w;
-    this.val[0] = (1.0F - 2.0F * (f5 + f8));
-    this.val[4] = (2.0F * (f2 - f9));
-    this.val[8] = (2.0F * (f3 + f7));
-    this.val[12] = 0.0F;
-    this.val[1] = ((f2 + f9) * 2.0F);
-    this.val[5] = (1.0F - (f8 + f1) * 2.0F);
-    this.val[9] = (2.0F * (f6 - f4));
-    this.val[13] = 0.0F;
-    this.val[2] = ((f3 - f7) * 2.0F);
-    this.val[6] = ((f4 + f6) * 2.0F);
-    this.val[10] = (1.0F - (f1 + f5) * 2.0F);
-    this.val[14] = 0.0F;
-    this.val[3] = 0.0F;
-    this.val[7] = 0.0F;
-    this.val[11] = 0.0F;
-    this.val[15] = 1.0F;
+    paramQuaternion = this.val;
+    paramQuaternion[0] = (1.0F - (f5 + f8) * 2.0F);
+    paramQuaternion[4] = ((f2 - f9) * 2.0F);
+    paramQuaternion[8] = ((f3 + f7) * 2.0F);
+    paramQuaternion[12] = 0.0F;
+    paramQuaternion[1] = ((f2 + f9) * 2.0F);
+    paramQuaternion[5] = (1.0F - (f8 + f1) * 2.0F);
+    paramQuaternion[9] = ((f6 - f4) * 2.0F);
+    paramQuaternion[13] = 0.0F;
+    paramQuaternion[2] = ((f3 - f7) * 2.0F);
+    paramQuaternion[6] = ((f6 + f4) * 2.0F);
+    paramQuaternion[10] = (1.0F - (f1 + f5) * 2.0F);
+    paramQuaternion[14] = 0.0F;
+    paramQuaternion[3] = 0.0F;
+    paramQuaternion[7] = 0.0F;
+    paramQuaternion[11] = 0.0F;
+    paramQuaternion[15] = 1.0F;
     return this;
   }
   
@@ -243,16 +258,18 @@ public class Matrix4
     this.val[12] = paramVector34.x;
     this.val[13] = paramVector34.y;
     this.val[14] = paramVector34.z;
-    this.val[3] = 0.0F;
-    this.val[7] = 0.0F;
-    this.val[11] = 0.0F;
-    this.val[15] = 1.0F;
+    paramVector31 = this.val;
+    paramVector31[3] = 0.0F;
+    paramVector31[7] = 0.0F;
+    paramVector31[11] = 0.0F;
+    paramVector31[15] = 1.0F;
     return this;
   }
   
   public Matrix4 set(float[] paramArrayOfFloat)
   {
-    System.arraycopy(paramArrayOfFloat, 0, this.val, 0, this.val.length);
+    float[] arrayOfFloat = this.val;
+    System.arraycopy(paramArrayOfFloat, 0, arrayOfFloat, 0, arrayOfFloat.length);
     return this;
   }
   
@@ -278,28 +295,32 @@ public class Matrix4
   public Matrix4 setToOrtho(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
   {
     idt();
-    float f1 = 2.0F / (paramFloat2 - paramFloat1);
-    float f2 = 2.0F / (paramFloat4 - paramFloat3);
-    float f3 = -2.0F / (paramFloat6 - paramFloat5);
-    paramFloat1 = -(paramFloat2 + paramFloat1) / (paramFloat2 - paramFloat1);
-    paramFloat2 = -(paramFloat4 + paramFloat3) / (paramFloat4 - paramFloat3);
-    paramFloat3 = -(paramFloat6 + paramFloat5) / (paramFloat6 - paramFloat5);
-    this.val[0] = f1;
-    this.val[1] = 0.0F;
-    this.val[2] = 0.0F;
-    this.val[3] = 0.0F;
-    this.val[4] = 0.0F;
-    this.val[5] = f2;
-    this.val[6] = 0.0F;
-    this.val[7] = 0.0F;
-    this.val[8] = 0.0F;
-    this.val[9] = 0.0F;
-    this.val[10] = f3;
-    this.val[11] = 0.0F;
-    this.val[12] = paramFloat1;
-    this.val[13] = paramFloat2;
-    this.val[14] = paramFloat3;
-    this.val[15] = 1.0F;
+    float f6 = paramFloat2 - paramFloat1;
+    float f1 = 2.0F / f6;
+    float f5 = paramFloat4 - paramFloat3;
+    float f2 = 2.0F / f5;
+    float f4 = paramFloat6 - paramFloat5;
+    float f3 = -2.0F / f4;
+    paramFloat1 = -(paramFloat2 + paramFloat1) / f6;
+    paramFloat2 = -(paramFloat4 + paramFloat3) / f5;
+    paramFloat3 = -(paramFloat6 + paramFloat5) / f4;
+    float[] arrayOfFloat = this.val;
+    arrayOfFloat[0] = f1;
+    arrayOfFloat[1] = 0.0F;
+    arrayOfFloat[2] = 0.0F;
+    arrayOfFloat[3] = 0.0F;
+    arrayOfFloat[4] = 0.0F;
+    arrayOfFloat[5] = f2;
+    arrayOfFloat[6] = 0.0F;
+    arrayOfFloat[7] = 0.0F;
+    arrayOfFloat[8] = 0.0F;
+    arrayOfFloat[9] = 0.0F;
+    arrayOfFloat[10] = f3;
+    arrayOfFloat[11] = 0.0F;
+    arrayOfFloat[12] = paramFloat1;
+    arrayOfFloat[13] = paramFloat2;
+    arrayOfFloat[14] = paramFloat3;
+    arrayOfFloat[15] = 1.0F;
     return this;
   }
   
@@ -330,33 +351,69 @@ public class Matrix4
   
   public String toString()
   {
-    return "[" + this.val[0] + "|" + this.val[4] + "|" + this.val[8] + "|" + this.val[12] + "]\n[" + this.val[1] + "|" + this.val[5] + "|" + this.val[9] + "|" + this.val[13] + "]\n[" + this.val[2] + "|" + this.val[6] + "|" + this.val[10] + "|" + this.val[14] + "]\n[" + this.val[3] + "|" + this.val[7] + "|" + this.val[11] + "|" + this.val[15] + "]\n";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.val[0]);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.val[4]);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.val[8]);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.val[12]);
+    localStringBuilder.append("]\n[");
+    localStringBuilder.append(this.val[1]);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.val[5]);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.val[9]);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.val[13]);
+    localStringBuilder.append("]\n[");
+    localStringBuilder.append(this.val[2]);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.val[6]);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.val[10]);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.val[14]);
+    localStringBuilder.append("]\n[");
+    localStringBuilder.append(this.val[3]);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.val[7]);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.val[11]);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.val[15]);
+    localStringBuilder.append("]\n");
+    return localStringBuilder.toString();
   }
   
   public Matrix4 tra()
   {
-    this.tmp[0] = this.val[0];
-    this.tmp[4] = this.val[1];
-    this.tmp[8] = this.val[2];
-    this.tmp[12] = this.val[3];
-    this.tmp[1] = this.val[4];
-    this.tmp[5] = this.val[5];
-    this.tmp[9] = this.val[6];
-    this.tmp[13] = this.val[7];
-    this.tmp[2] = this.val[8];
-    this.tmp[6] = this.val[9];
-    this.tmp[10] = this.val[10];
-    this.tmp[14] = this.val[11];
-    this.tmp[3] = this.val[12];
-    this.tmp[7] = this.val[13];
-    this.tmp[11] = this.val[14];
-    this.tmp[15] = this.val[15];
-    return set(this.tmp);
+    float[] arrayOfFloat1 = this.tmp;
+    float[] arrayOfFloat2 = this.val;
+    arrayOfFloat1[0] = arrayOfFloat2[0];
+    arrayOfFloat1[4] = arrayOfFloat2[1];
+    arrayOfFloat1[8] = arrayOfFloat2[2];
+    arrayOfFloat1[12] = arrayOfFloat2[3];
+    arrayOfFloat1[1] = arrayOfFloat2[4];
+    arrayOfFloat1[5] = arrayOfFloat2[5];
+    arrayOfFloat1[9] = arrayOfFloat2[6];
+    arrayOfFloat1[13] = arrayOfFloat2[7];
+    arrayOfFloat1[2] = arrayOfFloat2[8];
+    arrayOfFloat1[6] = arrayOfFloat2[9];
+    arrayOfFloat1[10] = arrayOfFloat2[10];
+    arrayOfFloat1[14] = arrayOfFloat2[11];
+    arrayOfFloat1[3] = arrayOfFloat2[12];
+    arrayOfFloat1[7] = arrayOfFloat2[13];
+    arrayOfFloat1[11] = arrayOfFloat2[14];
+    arrayOfFloat1[15] = arrayOfFloat2[15];
+    return set(arrayOfFloat1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.armap.sensor.rotation.Matrix4
  * JD-Core Version:    0.7.0.1
  */

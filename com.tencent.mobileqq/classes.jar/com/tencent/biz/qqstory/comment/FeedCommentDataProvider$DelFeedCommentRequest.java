@@ -28,15 +28,18 @@ public class FeedCommentDataProvider$DelFeedCommentRequest
   
   public LegoResponseBase a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspDelFeedComment localRspDelFeedComment = new qqstory_service.RspDelFeedComment();
+    Object localObject = new qqstory_service.RspDelFeedComment();
     try
     {
-      localRspDelFeedComment.mergeFrom(paramArrayOfByte);
-      return new FeedCommentDataProvider.DelFeedCommentResponse(localRspDelFeedComment, this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoResponseCallBack);
+      ((qqstory_service.RspDelFeedComment)localObject).mergeFrom(paramArrayOfByte);
+      return new FeedCommentDataProvider.DelFeedCommentResponse((qqstory_service.RspDelFeedComment)localObject, this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoResponseCallBack);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      SLog.d("Q.qqstory:FeedCommentDataProvider", "" + paramArrayOfByte);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(paramArrayOfByte);
+      SLog.d("Q.qqstory:FeedCommentDataProvider", ((StringBuilder)localObject).toString());
     }
     return null;
   }
@@ -46,7 +49,7 @@ public class FeedCommentDataProvider$DelFeedCommentRequest
     return FeedCommentDataProvider.b;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqDelFeedComment localReqDelFeedComment = new qqstory_service.ReqDelFeedComment();
     localReqDelFeedComment.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
@@ -56,7 +59,7 @@ public class FeedCommentDataProvider$DelFeedCommentRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedCommentDataProvider.DelFeedCommentRequest
  * JD-Core Version:    0.7.0.1
  */

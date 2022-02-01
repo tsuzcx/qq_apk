@@ -5,28 +5,21 @@ import java.util.regex.Pattern;
 
 public class FMConstants
 {
-  public static int a;
+  public static int a = 0;
   public static final String a;
-  public static boolean a;
+  public static boolean a = false;
   public static final char[] a;
   public static final String[] a;
-  public static int b;
+  public static int b = 1;
   public static final String b;
   public static final char[] b;
-  public static int c;
-  public static int d;
-  public static int e;
-  public static int f;
+  public static int c = 2;
+  public static int d = 3;
+  public static int e = 4;
+  public static int f = 5;
   
   static
   {
-    jdField_a_of_type_Int = 0;
-    jdField_b_of_type_Int = 1;
-    c = 2;
-    d = 3;
-    e = 4;
-    f = 5;
-    jdField_a_of_type_Boolean = false;
     jdField_a_of_type_ArrayOfJavaLangString = new String[] { ".doc|.docx|.wps|.pages|", ".xls|.xlsx|.et|.numbers|" };
     jdField_a_of_type_ArrayOfChar = new char[] { '…' };
     jdField_a_of_type_JavaLangString = new String(jdField_a_of_type_ArrayOfChar);
@@ -84,7 +77,7 @@ public class FMConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.FMConstants
  * JD-Core Version:    0.7.0.1
  */

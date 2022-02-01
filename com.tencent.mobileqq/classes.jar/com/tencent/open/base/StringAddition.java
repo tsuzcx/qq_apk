@@ -15,17 +15,14 @@ public class StringAddition
       return 0;
     }
     int i = 0;
-    if (j < paramString.length())
+    while (j < paramString.length())
     {
       if (a(paramString.charAt(j))) {
         i += 2;
-      }
-      for (;;)
-      {
-        j += 1;
-        break;
+      } else {
         i += 1;
       }
+      j += 1;
     }
     return i;
   }
@@ -49,84 +46,102 @@ public class StringAddition
     int j = 0;
     int i = paramInt;
     paramInt = j;
-    if (paramInt < k)
+    while (paramInt < k)
     {
       if (Character.isHighSurrogate(localCharBuffer.charAt(paramInt)))
       {
-        paramString = localCharBuffer.subSequence(paramInt, paramInt + 2).toString();
-        paramInt += 2;
+        j = paramInt + 2;
+        paramString = localCharBuffer.subSequence(paramInt, j).toString();
+        paramInt = j;
       }
-      for (;;)
+      else
       {
-        j = a(paramString);
-        if (i < j) {
-          break label139;
-        }
+        j = paramInt + 1;
+        paramString = localCharBuffer.subSequence(paramInt, j).toString();
+        paramInt = j;
+      }
+      j = a(paramString);
+      if (i >= j)
+      {
         i -= j;
         localStringBuilder.append(paramString);
-        break;
-        paramString = localCharBuffer.subSequence(paramInt, paramInt + 1).toString();
-        paramInt += 1;
       }
-      label139:
-      localStringBuilder.delete(localStringBuilder.length() - 2, localStringBuilder.length());
-      localStringBuilder.append("…");
+      else
+      {
+        localStringBuilder.delete(localStringBuilder.length() - 2, localStringBuilder.length());
+        localStringBuilder.append("…");
+      }
     }
     return localStringBuilder.toString();
   }
   
   public static final String a(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    int i = 0;
-    if (TextUtils.isEmpty(paramString1))
-    {
-      paramString2 = "";
-      return paramString2;
+    if (TextUtils.isEmpty(paramString1)) {
+      return "";
     }
-    if (!TextUtils.isEmpty(paramString2)) {}
-    for (String str = paramString2;; str = "UTF-8")
+    Object localObject;
+    if (!TextUtils.isEmpty(paramString2)) {
+      localObject = paramString2;
+    } else {
+      localObject = "UTF-8";
+    }
+    paramString2 = paramString1;
+    for (;;)
     {
-      paramString2 = paramString1;
-      for (;;)
+      int i;
+      int j;
+      try
       {
-        int j;
-        int k;
-        try
-        {
-          if (paramString1.getBytes(str).length <= paramInt) {
-            break;
-          }
-          j = 0;
-          paramString2 = paramString1;
-          if (i >= paramString1.length()) {
-            break;
-          }
-          k = paramString1.substring(i, i + 1).getBytes(str).length;
-          if (j + k > paramInt)
-          {
-            paramString2 = paramString1.substring(0, i);
-            paramString1 = paramString2;
-            paramString2 = paramString1;
-          }
+        if (paramString1.getBytes((String)localObject).length > paramInt) {
+          break label201;
         }
-        catch (Exception paramString2) {}
-        try
-        {
-          if (!TextUtils.isEmpty(paramString3)) {
-            paramString2 = paramString1 + paramString3;
-          }
-          return paramString2;
-        }
-        catch (Exception paramString2)
-        {
-          break label136;
-        }
-        j += k;
-        i += 1;
+        return paramString1;
       }
-      label136:
-      System.out.println("StructMsg sSubString error : " + paramString2.getMessage());
-      return paramString1;
+      catch (Exception paramString1)
+      {
+        int k;
+        paramString3 = System.out;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("StructMsg sSubString error : ");
+        ((StringBuilder)localObject).append(paramString1.getMessage());
+        paramString3.println(((StringBuilder)localObject).toString());
+        return paramString2;
+      }
+      paramString2 = paramString1;
+      if (i < paramString1.length())
+      {
+        k = i + 1;
+        paramString2 = paramString1;
+        j += paramString1.substring(i, k).getBytes((String)localObject).length;
+        if (j > paramInt)
+        {
+          paramString2 = paramString1;
+          paramString1 = paramString1.substring(0, i);
+          localObject = paramString1;
+          paramString2 = paramString1;
+          if (!TextUtils.isEmpty(paramString3))
+          {
+            paramString2 = paramString1;
+            localObject = new StringBuilder();
+            paramString2 = paramString1;
+            ((StringBuilder)localObject).append(paramString1);
+            paramString2 = paramString1;
+            ((StringBuilder)localObject).append(paramString3);
+            paramString2 = paramString1;
+            localObject = ((StringBuilder)localObject).toString();
+          }
+          return localObject;
+        }
+        i = k;
+      }
+      else
+      {
+        return paramString1;
+        label201:
+        i = 0;
+        j = 0;
+      }
     }
   }
   
@@ -144,27 +159,30 @@ public class StringAddition
     int j = 0;
     int i = paramInt;
     paramInt = j;
-    if (paramInt < k)
+    while (paramInt < k)
     {
       if (Character.isHighSurrogate(localCharBuffer.charAt(paramInt)))
       {
-        paramString = localCharBuffer.subSequence(paramInt, paramInt + 2).toString();
-        paramInt += 2;
+        j = paramInt + 2;
+        paramString = localCharBuffer.subSequence(paramInt, j).toString();
+        paramInt = j;
       }
-      for (;;)
+      else
       {
-        j = a(paramString);
-        if (i < j) {
-          break label154;
-        }
+        j = paramInt + 1;
+        paramString = localCharBuffer.subSequence(paramInt, j).toString();
+        paramInt = j;
+      }
+      j = a(paramString);
+      if (i >= j)
+      {
         i -= j;
         localStringBuilder.append(paramString);
-        break;
-        paramString = localCharBuffer.subSequence(paramInt, paramInt + 1).toString();
-        paramInt += 1;
       }
-      label154:
-      localStringBuilder.append("…");
+      else
+      {
+        localStringBuilder.append("…");
+      }
     }
     return localStringBuilder.toString();
   }
@@ -180,40 +198,37 @@ public class StringAddition
     int j = 0;
     int i = paramInt;
     paramInt = j;
-    if (paramInt < k)
+    while (paramInt < k)
     {
       if (Character.isHighSurrogate(localCharBuffer.charAt(paramInt)))
       {
-        paramString = localCharBuffer.subSequence(paramInt, paramInt + 2).toString();
-        paramInt += 2;
+        j = paramInt + 2;
+        paramString = localCharBuffer.subSequence(paramInt, j).toString();
+        paramInt = j;
       }
-      for (;;)
+      else
       {
-        j = a(paramString);
-        if (i < j) {
-          break label148;
-        }
+        j = paramInt + 1;
+        paramString = localCharBuffer.subSequence(paramInt, j).toString();
+        paramInt = j;
+      }
+      j = a(paramString);
+      if (i >= j)
+      {
         i -= j;
         localStringBuilder.append(paramString);
-        break;
-        paramString = localCharBuffer.subSequence(paramInt, paramInt + 1).toString();
-        paramInt += 1;
       }
-      label148:
-      if ((!paramBoolean1) || (paramBoolean2)) {
-        break label188;
+      else if ((paramBoolean1) && (!paramBoolean2))
+      {
+        localStringBuilder.delete(localStringBuilder.length() - 2, localStringBuilder.length());
+        localStringBuilder.append("…");
       }
-      localStringBuilder.delete(localStringBuilder.length() - 2, localStringBuilder.length());
-      localStringBuilder.append("…");
-    }
-    for (;;)
-    {
-      return localStringBuilder.toString();
-      label188:
-      if ((paramBoolean1) && (paramBoolean2)) {
+      else if ((paramBoolean1) && (paramBoolean2))
+      {
         localStringBuilder.append("…");
       }
     }
+    return localStringBuilder.toString();
   }
   
   protected static boolean a(char paramChar)
@@ -228,27 +243,28 @@ public class StringAddition
   
   public static String[] a(String paramString1, String paramString2)
   {
-    if ((paramString1 == null) || (paramString2 == null) || (paramString2.length() == 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int j;
-    for (int i = 0;; i = paramString2.length() + j)
+    if ((paramString1 != null) && (paramString2 != null) && (paramString2.length() != 0))
     {
-      j = paramString1.indexOf(paramString2, i);
-      if (j < 0)
+      ArrayList localArrayList = new ArrayList();
+      int j;
+      for (int i = 0;; i = paramString2.length() + j)
       {
-        localArrayList.add(paramString1.substring(i));
-        i = localArrayList.size() - 1;
-        while ((i >= 0) && (((String)localArrayList.get(i)).length() == 0))
+        j = paramString1.indexOf(paramString2, i);
+        if (j < 0)
         {
-          localArrayList.remove(i);
-          i -= 1;
+          localArrayList.add(paramString1.substring(i));
+          i = localArrayList.size() - 1;
+          while ((i >= 0) && (((String)localArrayList.get(i)).length() == 0))
+          {
+            localArrayList.remove(i);
+            i -= 1;
+          }
+          return (String[])localArrayList.toArray(new String[0]);
         }
+        localArrayList.add(paramString1.substring(i, j));
       }
-      localArrayList.add(paramString1.substring(i, j));
     }
-    return (String[])localArrayList.toArray(new String[0]);
+    return null;
   }
   
   public static String b(String paramString)
@@ -261,7 +277,7 @@ public class StringAddition
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.base.StringAddition
  * JD-Core Version:    0.7.0.1
  */

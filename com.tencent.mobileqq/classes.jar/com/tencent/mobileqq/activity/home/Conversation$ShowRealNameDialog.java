@@ -20,14 +20,15 @@ class Conversation$ShowRealNameDialog
   public void a()
   {
     Conversation.ShowRealNameDialog.1 local1 = new Conversation.ShowRealNameDialog.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a(), 230, this.jdField_a_of_type_JavaLangString, this.b, HardCodeUtil.a(2131702633), HardCodeUtil.a(2131702637), local1, local1);
+    Conversation localConversation = this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation;
+    localConversation.a = DialogUtil.a(localConversation.a(), 230, this.jdField_a_of_type_JavaLangString, this.b, HardCodeUtil.a(2131702766), HardCodeUtil.a(2131702770), local1, local1);
     this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a.setCancelable(false);
     this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.ShowRealNameDialog
  * JD-Core Version:    0.7.0.1
  */

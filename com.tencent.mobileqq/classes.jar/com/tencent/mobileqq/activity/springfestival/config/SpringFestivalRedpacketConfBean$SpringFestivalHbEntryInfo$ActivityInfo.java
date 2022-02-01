@@ -14,12 +14,30 @@ public class SpringFestivalRedpacketConfBean$SpringFestivalHbEntryInfo$ActivityI
   
   public String toString()
   {
-    return "ActivityInfo{id='" + this.id + '\'' + ", activityTime=" + this.activityTime + ", resUrl='" + this.resUrl + '\'' + ", videoUrl='" + this.videoUrl + '\'' + ", logoUrl='" + this.logoUrl + '\'' + ", pendantEndTime=" + this.pendantEndTime + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ActivityInfo{id='");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", activityTime=");
+    localStringBuilder.append(this.activityTime);
+    localStringBuilder.append(", resUrl='");
+    localStringBuilder.append(this.resUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", videoUrl='");
+    localStringBuilder.append(this.videoUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", logoUrl='");
+    localStringBuilder.append(this.logoUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", pendantEndTime=");
+    localStringBuilder.append(this.pendantEndTime);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.config.SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.ActivityInfo
  * JD-Core Version:    0.7.0.1
  */

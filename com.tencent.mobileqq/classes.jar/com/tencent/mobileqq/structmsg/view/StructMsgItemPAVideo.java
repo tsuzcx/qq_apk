@@ -46,67 +46,62 @@ public class StructMsgItemPAVideo
   {
     paramBundle = paramContext.getResources();
     int i = paramBundle.getDisplayMetrics().widthPixels;
-    if ((paramView != null) && ((paramView instanceof AnyScaleTypeImageView))) {
+    if ((paramView != null) && ((paramView instanceof AnyScaleTypeImageView)))
+    {
       paramView = (PAHighLightImageView)paramView;
     }
-    for (;;)
+    else
     {
-      paramView.setTag(this);
-      try
-      {
-        paramBundle = paramBundle.getDrawable(2130841925);
-        if (TextUtils.isEmpty(this.ac))
-        {
-          paramView.setBackgroundDrawable(paramBundle);
-          if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-          {
-            paramView.setOnLongClickListener((View.OnLongClickListener)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-            paramView.setOnTouchListener((View.OnTouchListener)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-          }
-          paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-          return paramView;
-          paramView = new PAHighLightImageView(paramContext);
-          paramView.setId(2131368907);
-          paramView.setContentDescription(paramBundle.getString(2131694583));
-          paramView.setDisplayRuleDef(CustomScaleType.a);
-          paramView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-          paramView.setContentDescription(paramBundle.getText(2131719540));
-        }
-      }
-      catch (OutOfMemoryError paramBundle)
-      {
-        for (;;)
-        {
-          paramBundle = null;
-        }
-        paramBundle = URLDrawable.getDrawable(this.ac, i, i, paramBundle, paramBundle);
-        if (AbsDownloader.hasFile(this.ac)) {
-          break label191;
-        }
-      }
+      paramView = new PAHighLightImageView(paramContext);
+      paramView.setId(2131368633);
+      paramView.setContentDescription(paramBundle.getString(2131694551));
+      paramView.setDisplayRuleDef(CustomScaleType.a);
+      paramView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+      paramView.setContentDescription(paramBundle.getText(2131719258));
     }
-    label191:
-    boolean bool;
-    if (!URLDrawableHelper.isMobileNetAndAutodownDisabled(paramContext))
+    paramView.setTag(this);
+    try
     {
-      bool = true;
-      label194:
-      paramBundle.setAutoDownload(bool);
-      if (paramBundle.getStatus() != 1) {
-        break label227;
-      }
-      paramView.setBackgroundDrawable(null);
+      paramBundle = paramBundle.getDrawable(2130841816);
     }
-    for (;;)
+    catch (OutOfMemoryError paramBundle)
+    {
+      label97:
+      boolean bool;
+      break label97;
+    }
+    paramBundle = null;
+    if (TextUtils.isEmpty(this.ac))
     {
       paramView.setBackgroundDrawable(paramBundle);
-      break;
-      bool = false;
-      break label194;
-      label227:
-      paramView.setURLDrawableDownListener(this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter);
-      paramView.setBackgroundColor(15790320);
     }
+    else
+    {
+      paramBundle = URLDrawable.getDrawable(this.ac, i, i, paramBundle, paramBundle);
+      if ((!AbsDownloader.hasFile(this.ac)) && (URLDrawableHelper.isMobileNetAndAutodownDisabled(paramContext))) {
+        bool = false;
+      } else {
+        bool = true;
+      }
+      paramBundle.setAutoDownload(bool);
+      if (paramBundle.getStatus() == 1)
+      {
+        paramView.setBackgroundDrawable(null);
+      }
+      else
+      {
+        paramView.setURLDrawableDownListener(this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter);
+        paramView.setBackgroundColor(15790320);
+      }
+      paramView.setBackgroundDrawable(paramBundle);
+    }
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      paramView.setOnLongClickListener((View.OnLongClickListener)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+      paramView.setOnTouchListener((View.OnTouchListener)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    }
+    paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    return paramView;
   }
   
   StructMsgForGeneralShare a(View paramView)
@@ -114,8 +109,8 @@ public class StructMsgItemPAVideo
     for (paramView = paramView.getParent(); paramView != null; paramView = paramView.getParent())
     {
       paramView = (ViewGroup)paramView;
-      if (paramView.getId() == 2131378578) {
-        return (StructMsgForGeneralShare)paramView.getTag(2131378578);
+      if (paramView.getId() == 2131377989) {
+        return (StructMsgForGeneralShare)paramView.getTag(2131377989);
       }
     }
     return null;
@@ -143,60 +138,41 @@ public class StructMsgItemPAVideo
   public void a(ObjectOutput paramObjectOutput)
   {
     super.a(paramObjectOutput);
-    if (this.ac != null)
-    {
-      str = this.ac;
-      paramObjectOutput.writeUTF(str);
-      if (this.ad == null) {
-        break label134;
-      }
-      str = this.ad;
-      label36:
-      paramObjectOutput.writeUTF(str);
-      if (this.jdField_a_of_type_Int > 5)
-      {
-        if (this.ae == null) {
-          break label140;
-        }
-        str = this.ae;
-        label63:
-        paramObjectOutput.writeUTF(str);
-        if (this.j == null) {
-          break label146;
-        }
-        str = this.j;
-        label82:
-        paramObjectOutput.writeUTF(str);
-        if (this.k == null) {
-          break label152;
-        }
-        str = this.k;
-        label101:
-        paramObjectOutput.writeUTF(str);
-        if (this.l == null) {
-          break label158;
-        }
-      }
+    Object localObject = this.ac;
+    String str = "";
+    if (localObject == null) {
+      localObject = "";
     }
-    label134:
-    label140:
-    label146:
-    label152:
-    label158:
-    for (String str = this.l;; str = "")
+    paramObjectOutput.writeUTF((String)localObject);
+    localObject = this.ad;
+    if (localObject == null) {
+      localObject = "";
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.jdField_a_of_type_Int > 5)
     {
-      paramObjectOutput.writeUTF(str);
-      return;
-      str = "";
-      break;
-      str = "";
-      break label36;
-      str = "";
-      break label63;
-      str = "";
-      break label82;
-      str = "";
-      break label101;
+      localObject = this.ae;
+      if (localObject == null) {
+        localObject = "";
+      }
+      paramObjectOutput.writeUTF((String)localObject);
+      if (this.j != null) {
+        localObject = this.j;
+      } else {
+        localObject = "";
+      }
+      paramObjectOutput.writeUTF((String)localObject);
+      if (this.k != null) {
+        localObject = this.k;
+      } else {
+        localObject = "";
+      }
+      paramObjectOutput.writeUTF((String)localObject);
+      localObject = str;
+      if (this.l != null) {
+        localObject = this.l;
+      }
+      paramObjectOutput.writeUTF((String)localObject);
     }
   }
   
@@ -223,23 +199,24 @@ public class StructMsgItemPAVideo
   
   public boolean a(StructMsgNode paramStructMsgNode)
   {
-    if (paramStructMsgNode == null) {}
-    do
-    {
+    if (paramStructMsgNode == null) {
       return true;
-      this.ac = paramStructMsgNode.a("cover");
-      this.ad = paramStructMsgNode.a("src");
-    } while (this.jdField_a_of_type_Int <= 5);
-    this.ae = paramStructMsgNode.a("video_info");
-    this.j = paramStructMsgNode.a("index");
-    this.k = paramStructMsgNode.a("index_name");
-    this.l = paramStructMsgNode.a("index_type");
+    }
+    this.ac = paramStructMsgNode.a("cover");
+    this.ad = paramStructMsgNode.a("src");
+    if (this.jdField_a_of_type_Int > 5)
+    {
+      this.ae = paramStructMsgNode.a("video_info");
+      this.j = paramStructMsgNode.a("index");
+      this.k = paramStructMsgNode.a("index_name");
+      this.l = paramStructMsgNode.a("index_type");
+    }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemPAVideo
  * JD-Core Version:    0.7.0.1
  */

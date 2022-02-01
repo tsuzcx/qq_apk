@@ -18,13 +18,12 @@ final class SynchronizedLazyImpl<T>
   {
     this.initializer = paramFunction0;
     this._value = UNINITIALIZED_VALUE.INSTANCE;
-    if (paramObject != null) {}
-    for (;;)
-    {
-      this.lock = paramObject;
-      return;
-      paramObject = this;
+    if (paramObject != null) {
+      paramFunction0 = paramObject;
+    } else {
+      paramFunction0 = this;
     }
+    this.lock = paramFunction0;
   }
   
   private final Object writeReplace()
@@ -41,17 +40,17 @@ final class SynchronizedLazyImpl<T>
     synchronized (this.lock)
     {
       localObject1 = this._value;
-      UNINITIALIZED_VALUE localUNINITIALIZED_VALUE = UNINITIALIZED_VALUE.INSTANCE;
-      if (localObject1 != localUNINITIALIZED_VALUE) {
-        return localObject1;
+      if (localObject1 == UNINITIALIZED_VALUE.INSTANCE)
+      {
+        localObject1 = this.initializer;
+        if (localObject1 == null) {
+          Intrinsics.throwNpe();
+        }
+        localObject1 = ((Function0)localObject1).invoke();
+        this._value = localObject1;
+        this.initializer = ((Function0)null);
       }
-      localObject1 = this.initializer;
-      if (localObject1 == null) {
-        Intrinsics.throwNpe();
-      }
-      localObject1 = ((Function0)localObject1).invoke();
-      this._value = localObject1;
-      this.initializer = ((Function0)null);
+      return localObject1;
     }
   }
   
@@ -71,7 +70,7 @@ final class SynchronizedLazyImpl<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.SynchronizedLazyImpl
  * JD-Core Version:    0.7.0.1
  */

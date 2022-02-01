@@ -21,15 +21,20 @@ public class PageInfoCacheController
   
   private void addToAttachedPageStore(View paramView, Context paramContext)
   {
-    Set localSet2 = (Set)this.mAttachedPageStore.get(paramContext);
-    Set localSet1 = localSet2;
-    if (localSet2 == null)
+    Set localSet = (Set)this.mAttachedPageStore.get(paramContext);
+    Object localObject = localSet;
+    if (localSet == null)
     {
-      localSet1 = Collections.newSetFromMap(new WeakHashMap());
-      this.mAttachedPageStore.put(paramContext, localSet1);
+      localObject = Collections.newSetFromMap(new WeakHashMap());
+      this.mAttachedPageStore.put(paramContext, localObject);
     }
-    localSet1.add(paramView);
-    Log.d("PageInfoCacheController", "view = " + paramView + ", context = " + paramContext);
+    ((Set)localObject).add(paramView);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("view = ");
+    ((StringBuilder)localObject).append(paramView);
+    ((StringBuilder)localObject).append(", context = ");
+    ((StringBuilder)localObject).append(paramContext);
+    Log.d("PageInfoCacheController", ((StringBuilder)localObject).toString());
   }
   
   private void addToUnattachedStore(View paramView)
@@ -39,11 +44,13 @@ public class PageInfoCacheController
   
   private Context getRefContext(Object paramObject, View paramView)
   {
-    if (((paramObject instanceof View)) && (!ViewCompatUtils.isAttachedToWindow((View)paramObject))) {}
-    while (paramView == null) {
+    if (((paramObject instanceof View)) && (!ViewCompatUtils.isAttachedToWindow((View)paramObject))) {
       return null;
     }
-    return paramView.getRootView().getContext();
+    if (paramView != null) {
+      return paramView.getRootView().getContext();
+    }
+    return null;
   }
   
   private View getRefView(Object paramObject)
@@ -54,8 +61,12 @@ public class PageInfoCacheController
     if ((paramObject instanceof Activity)) {
       return ((Activity)paramObject).getWindow().getDecorView();
     }
-    if (((paramObject instanceof Dialog)) && (((Dialog)paramObject).getWindow() != null)) {
-      return ((Dialog)paramObject).getWindow().getDecorView();
+    if ((paramObject instanceof Dialog))
+    {
+      paramObject = (Dialog)paramObject;
+      if (paramObject.getWindow() != null) {
+        return paramObject.getWindow().getDecorView();
+      }
     }
     return null;
   }
@@ -98,7 +109,7 @@ public class PageInfoCacheController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.page.PageInfoCacheController
  * JD-Core Version:    0.7.0.1
  */

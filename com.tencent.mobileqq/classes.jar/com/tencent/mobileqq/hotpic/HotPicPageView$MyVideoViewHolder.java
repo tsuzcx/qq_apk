@@ -46,38 +46,43 @@ public class HotPicPageView$MyVideoViewHolder
     if (this.itemView != null) {
       this.itemView.setOnTouchListener(null);
     }
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131368561));
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131368567));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131368566));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131381527));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131381533));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131381437));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373445));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131381447));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131381528));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131364752);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131381299));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131368304));
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131368310));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131368309));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380762));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380768));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131380692));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373023));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380703));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131380763));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131364639);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131380554));
   }
   
   public HotVideoData a()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localWeakReference == null) {
       return null;
     }
-    return (HotVideoData)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    return (HotVideoData)localWeakReference.get();
   }
   
   public HotVideoMongoliaRelativeLayout a()
   {
-    if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) || (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildCount() == 0)) {
-      return null;
-    }
-    View localView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewWithTag("HotVideoControlTag");
-    if (localView == null) {
-      return null;
-    }
-    if ((localView instanceof HotVideoMongoliaRelativeLayout)) {
-      return (HotVideoMongoliaRelativeLayout)localView;
+    Object localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    if (localObject != null)
+    {
+      if (((RelativeLayout)localObject).getChildCount() == 0) {
+        return null;
+      }
+      localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewWithTag("HotVideoControlTag");
+      if (localObject == null) {
+        return null;
+      }
+      if ((localObject instanceof HotVideoMongoliaRelativeLayout)) {
+        return (HotVideoMongoliaRelativeLayout)localObject;
+      }
     }
     return null;
   }
@@ -111,14 +116,13 @@ public class HotPicPageView$MyVideoViewHolder
   {
     if (paramDrawable != null)
     {
-      if (HotPicPageView.b()) {
+      if (HotPicPageView.b())
+      {
         this.jdField_d_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
+        return;
       }
+      ThreadManager.getUIHandler().post(new HotPicPageView.MyVideoViewHolder.1(this, paramDrawable));
     }
-    else {
-      return;
-    }
-    ThreadManager.getUIHandler().post(new HotPicPageView.MyVideoViewHolder.1(this, paramDrawable));
   }
   
   public void a(HotVideoData paramHotVideoData)
@@ -143,13 +147,13 @@ public class HotPicPageView$MyVideoViewHolder
   
   public boolean a(HotVideoData paramHotVideoData)
   {
-    if (paramHotVideoData == null) {}
-    HotVideoData localHotVideoData;
-    do
-    {
+    if (paramHotVideoData == null) {
       return false;
-      localHotVideoData = a();
-    } while (localHotVideoData == null);
+    }
+    HotVideoData localHotVideoData = a();
+    if (localHotVideoData == null) {
+      return false;
+    }
     return localHotVideoData.equals(paramHotVideoData);
   }
   
@@ -168,26 +172,105 @@ public class HotPicPageView$MyVideoViewHolder
       return;
     }
     c();
-    switch (paramInt)
+    Object localObject;
+    if (paramInt != -11)
     {
+      if (paramInt != -10)
+      {
+        switch (paramInt)
+        {
+        default: 
+          break;
+        case 6: 
+          this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
+          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+          this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+          this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+          this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+          this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+          this.itemView.setContentDescription(HardCodeUtil.a(2131705698));
+          break;
+        case 5: 
+          this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
+          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+          this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+          this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+          this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+          this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+          this.itemView.setContentDescription(HardCodeUtil.a(2131705697));
+          break;
+        case 4: 
+          this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
+          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+          this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+          this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+          this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+          this.itemView.setContentDescription(HardCodeUtil.a(2131705696));
+          b();
+          break;
+        case 3: 
+          if (this.jdField_d_of_type_AndroidWidgetImageView.getVisibility() == 0)
+          {
+            int i = this.jdField_a_of_type_Int;
+            if ((i == 1) || (i == 2))
+            {
+              localObject = new AlphaAnimation(1.0F, 0.8F);
+              ((AlphaAnimation)localObject).setDuration(600L);
+              ((AlphaAnimation)localObject).setAnimationListener(new HotPicPageView.MyVideoViewHolder.3(this));
+              this.jdField_d_of_type_AndroidWidgetImageView.startAnimation((Animation)localObject);
+              break label381;
+            }
+          }
+          this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
+          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+          this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+          this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+          this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+          this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+          this.itemView.setContentDescription(HardCodeUtil.a(2131705694));
+          break;
+        case 1: 
+        case 2: 
+          this.jdField_a_of_type_Boolean = false;
+          if (paramInt == 1) {
+            this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a(this);
+          }
+          this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
+          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+          this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+          this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+          this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+          this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+          break;
+        case 0: 
+          label381:
+          this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
+          a();
+          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+          this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+          this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+          this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+          this.itemView.setContentDescription(HardCodeUtil.a(2131705695));
+          break;
+        }
+      }
+      else
+      {
+        d();
+        this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.setContentDescription("");
+        this.jdField_a_of_type_Boolean = false;
+      }
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_Int = paramInt;
-      if ((paramInt != 0) || (!this.jdField_a_of_type_Boolean)) {
-        break;
-      }
-      Object localObject = a();
-      if (localObject == null) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.c(this, ((HotVideoData)localObject).picIndex);
-      this.jdField_a_of_type_Boolean = false;
-      return;
-      d();
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.setContentDescription("");
-      this.jdField_a_of_type_Boolean = false;
-      continue;
       this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
       a();
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
@@ -196,77 +279,18 @@ public class HotPicPageView$MyVideoViewHolder
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.itemView.setContentDescription(HardCodeUtil.a(2131705629));
-      continue;
-      this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
-      a();
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.itemView.setContentDescription(HardCodeUtil.a(2131705626));
+      this.itemView.setContentDescription(HardCodeUtil.a(2131705692));
       this.jdField_a_of_type_Boolean = false;
-      continue;
-      this.jdField_a_of_type_Boolean = false;
-      if (paramInt == 1) {
-        this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a(this);
-      }
-      this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      continue;
-      this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.itemView.setContentDescription(HardCodeUtil.a(2131705632));
-      continue;
-      if ((this.jdField_d_of_type_AndroidWidgetImageView.getVisibility() == 0) && ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2)))
+    }
+    this.jdField_a_of_type_Int = paramInt;
+    if ((paramInt == 0) && (this.jdField_a_of_type_Boolean))
+    {
+      localObject = a();
+      if (localObject != null)
       {
-        localObject = new AlphaAnimation(1.0F, 0.8F);
-        ((AlphaAnimation)localObject).setDuration(600L);
-        ((AlphaAnimation)localObject).setAnimationListener(new HotPicPageView.MyVideoViewHolder.3(this));
-        this.jdField_d_of_type_AndroidWidgetImageView.startAnimation((Animation)localObject);
+        this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.c(this, ((HotVideoData)localObject).picIndex);
+        this.jdField_a_of_type_Boolean = false;
       }
-      for (;;)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        this.itemView.setContentDescription(HardCodeUtil.a(2131705628));
-        break;
-        this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
-      }
-      this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.itemView.setContentDescription(HardCodeUtil.a(2131705630));
-      b();
-      continue;
-      this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.itemView.setContentDescription(HardCodeUtil.a(2131705631));
     }
   }
   
@@ -274,14 +298,13 @@ public class HotPicPageView$MyVideoViewHolder
   {
     if (paramDrawable != null)
     {
-      if (HotPicPageView.b()) {
+      if (HotPicPageView.b())
+      {
         this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
+        return;
       }
+      ThreadManager.getUIHandler().post(new HotPicPageView.MyVideoViewHolder.5(this, paramDrawable));
     }
-    else {
-      return;
-    }
-    ThreadManager.getUIHandler().post(new HotPicPageView.MyVideoViewHolder.5(this, paramDrawable));
   }
   
   public void c()
@@ -317,17 +340,20 @@ public class HotPicPageView$MyVideoViewHolder
   
   public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqHotpicOnHolderItemClickListener != null) && ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == -11))) {
-      this.jdField_a_of_type_ComTencentMobileqqHotpicOnHolderItemClickListener.c(this, getPosition());
-    }
-    for (;;)
+    if (this.jdField_a_of_type_ComTencentMobileqqHotpicOnHolderItemClickListener != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.jdField_a_of_type_Int == 1) {
-        a(0);
+      int i = this.jdField_a_of_type_Int;
+      if ((i == 0) || (i == -11))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqHotpicOnHolderItemClickListener.c(this, getPosition());
+        break label52;
       }
     }
+    if (this.jdField_a_of_type_Int == 1) {
+      a(0);
+    }
+    label52:
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onFileDownloadFailed(int paramInt)
@@ -379,7 +405,7 @@ public class HotPicPageView$MyVideoViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder
  * JD-Core Version:    0.7.0.1
  */

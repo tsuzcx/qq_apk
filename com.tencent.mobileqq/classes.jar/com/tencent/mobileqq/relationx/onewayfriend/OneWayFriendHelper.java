@@ -30,8 +30,9 @@ public class OneWayFriendHelper
     if (QLog.isColorLevel()) {
       QLog.d("OneWayFriendHelper", 0, String.format("notifyOneWayFriend friendUin=%s oneWayFriend=%s", new Object[] { paramString, Boolean.valueOf(paramBoolean) }));
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqRelationxOnewayfriendOneWayFriendHelper$OneWayFriendListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRelationxOnewayfriendOneWayFriendHelper$OneWayFriendListener.a(paramString, paramBoolean);
+    OneWayFriendHelper.OneWayFriendListener localOneWayFriendListener = this.jdField_a_of_type_ComTencentMobileqqRelationxOnewayfriendOneWayFriendHelper$OneWayFriendListener;
+    if (localOneWayFriendListener != null) {
+      localOneWayFriendListener.a(paramString, paramBoolean);
     }
   }
   
@@ -49,9 +50,11 @@ public class OneWayFriendHelper
       if (localOneWayFriendHandler != null) {
         localOneWayFriendHandler.a(Long.parseLong(this.jdField_a_of_type_JavaLangString));
       }
-      return;
     }
-    a(this.jdField_a_of_type_JavaLangString, false);
+    else
+    {
+      a(this.jdField_a_of_type_JavaLangString, false);
+    }
   }
   
   public void a(OneWayFriendHelper.OneWayFriendListener paramOneWayFriendListener)
@@ -67,7 +70,7 @@ public class OneWayFriendHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.onewayfriend.OneWayFriendHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -15,13 +15,18 @@ class QavVirtualMenuView$2
     if ((EffectsRenderController.b()) && (AEFilterSupport.a() > 3))
     {
       long l = SystemClock.elapsedRealtime();
-      QLog.i(QavVirtualMenuView.a(this.this$0), 1, "preload PTHumanSegmenter, cost[" + (SystemClock.elapsedRealtime() - l) + "]");
+      String str = QavVirtualMenuView.a(this.this$0);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("preload PTHumanSegmenter, cost[");
+      localStringBuilder.append(SystemClock.elapsedRealtime() - l);
+      localStringBuilder.append("]");
+      QLog.i(str, 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.virtual.QavVirtualMenuView.2
  * JD-Core Version:    0.7.0.1
  */

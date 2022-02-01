@@ -32,15 +32,18 @@ public class EmergeAnimation
   
   public void setInterpolator(Interpolator paramInterpolator)
   {
-    if ((this.glAnimation == null) || (paramInterpolator == null)) {
-      return;
+    if (this.glAnimation != null)
+    {
+      if (paramInterpolator == null) {
+        return;
+      }
+      this.glAnimation.setInterpolator(paramInterpolator);
     }
-    this.glAnimation.setInterpolator(paramInterpolator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.EmergeAnimation
  * JD-Core Version:    0.7.0.1
  */

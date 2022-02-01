@@ -16,31 +16,35 @@ public final class hh
     this.a = paramInt1;
     this.b = paramInt2;
     this.c = paramJSONArray;
-    if (this.c == null)
+    paramJSONArray = this.c;
+    if (paramJSONArray == null)
     {
       this.d = null;
       return;
     }
-    paramInt2 = this.c.length();
+    paramInt2 = paramJSONArray.length();
     this.d = new String[paramInt2];
     paramInt1 = 0;
-    while (paramInt1 < paramInt2) {
-      try
-      {
-        this.d[paramInt1] = this.c.getString(paramInt1);
-        paramInt1 += 1;
-      }
-      catch (JSONException paramJSONArray)
-      {
-        this.d = null;
-        or.b(Log.getStackTraceString(paramJSONArray));
+    for (;;)
+    {
+      if (paramInt1 < paramInt2) {
+        try
+        {
+          this.d[paramInt1] = this.c.getString(paramInt1);
+          paramInt1 += 1;
+        }
+        catch (JSONException paramJSONArray)
+        {
+          this.d = null;
+          or.b(Log.getStackTraceString(paramJSONArray));
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.hh
  * JD-Core Version:    0.7.0.1
  */

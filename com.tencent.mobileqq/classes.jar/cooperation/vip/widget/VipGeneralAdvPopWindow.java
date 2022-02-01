@@ -27,9 +27,9 @@ import java.util.ArrayList;
 public class VipGeneralAdvPopWindow
   extends PopupWindow
 {
-  private static final Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = a(2130851309);
+  private static final Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = a(2130851222);
   private static final SpringConfig jdField_a_of_type_ComTencentComponentAnimationReboundSpringConfig = SpringConfig.fromOrigamiTensionAndFriction(60.0D, 8.0D);
-  private static final Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable = a(2130851310);
+  private static final Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable = a(2130851223);
   private static final Drawable jdField_c_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(2130706432);
   private float jdField_a_of_type_Float = 0.1F;
   private int jdField_a_of_type_Int = 0;
@@ -60,7 +60,7 @@ public class VipGeneralAdvPopWindow
   
   public static double a(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4, double paramDouble5)
   {
-    return (paramDouble1 - paramDouble2) / (paramDouble3 - paramDouble2) * (paramDouble5 - paramDouble4) + paramDouble4;
+    return paramDouble4 + (paramDouble1 - paramDouble2) / (paramDouble3 - paramDouble2) * (paramDouble5 - paramDouble4);
   }
   
   public static Drawable a(int paramInt)
@@ -70,27 +70,31 @@ public class VipGeneralAdvPopWindow
       Drawable localDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(paramInt);
       return localDrawable;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label13:
+      break label13;
+    }
     return null;
   }
   
   private void a(int paramInt)
   {
-    Activity localActivity;
     if (this.jdField_a_of_type_AndroidViewLayoutInflater == null)
     {
-      localActivity = a();
-      if (localActivity != null) {}
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(localActivity);
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-        break;
+      Activity localActivity = a();
+      if (localActivity == null) {
+        return;
       }
+      this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(localActivity);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null)
+    {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt, null));
-    } while (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null);
+      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
+        return;
+      }
+    }
     a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, 0.0F);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setFocusable(true);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setFocusableInTouchMode(true);
@@ -102,11 +106,12 @@ public class VipGeneralAdvPopWindow
   
   private void a(View paramView, float paramFloat)
   {
-    if (paramView == null) {}
-    while (Build.VERSION.SDK_INT < 11) {
+    if (paramView == null) {
       return;
     }
-    paramView.setAlpha(paramFloat);
+    if (Build.VERSION.SDK_INT >= 11) {
+      paramView.setAlpha(paramFloat);
+    }
   }
   
   private int c()
@@ -125,14 +130,14 @@ public class VipGeneralAdvPopWindow
   private void f()
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    a(2131562842);
+    a(2131562658);
     setFocusable(true);
     setBackgroundDrawable(null);
     setWidth(-1);
     setHeight(-1);
     this.jdField_a_of_type_ComTencentComponentAnimationReboundSpring = SpringSystem.create().createSpring().setSpringConfig(jdField_a_of_type_ComTencentComponentAnimationReboundSpringConfig).addListener(new VipGeneralAdvPopWindow.1(this));
     this.jdField_a_of_type_CooperationVipWidgetVipGeneralAdvPopWindow$DropDownMenuAdapter = new VipGeneralAdvPopWindow.DropDownMenuAdapter(this, this.jdField_a_of_type_AndroidAppActivity);
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366071));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365988));
     this.jdField_a_of_type_AndroidWidgetListView.setFooterDividersEnabled(false);
     this.jdField_a_of_type_AndroidWidgetListView.setHeaderDividersEnabled(false);
     this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_CooperationVipWidgetVipGeneralAdvPopWindow$DropDownMenuAdapter);
@@ -146,60 +151,50 @@ public class VipGeneralAdvPopWindow
   
   private void h()
   {
-    if (this.jdField_a_of_type_ComTencentComponentAnimationReboundSpring == null) {
+    Spring localSpring = this.jdField_a_of_type_ComTencentComponentAnimationReboundSpring;
+    if (localSpring == null) {
       return;
     }
-    float f1 = (float)this.jdField_a_of_type_ComTencentComponentAnimationReboundSpring.getCurrentValue();
-    float f2 = (float)a(f1, 0.0D, 1.0D, 0.0D, 1.0D);
-    if (f1 < 0.0F) {
+    float f2 = (float)localSpring.getCurrentValue();
+    float f1 = (float)a(f2, 0.0D, 1.0D, 0.0D, 1.0D);
+    if (f2 < 0.0F) {
       this.jdField_a_of_type_Boolean = true;
     }
-    float f3;
     if (this.jdField_a_of_type_Boolean)
     {
+      f2 = (float)this.jdField_a_of_type_ComTencentComponentAnimationReboundSpring.getEndValue();
       f1 = (float)this.jdField_a_of_type_ComTencentComponentAnimationReboundSpring.getEndValue();
-      f3 = (float)this.jdField_a_of_type_ComTencentComponentAnimationReboundSpring.getEndValue();
     }
-    for (;;)
+    else if (this.jdField_b_of_type_Boolean)
     {
-      a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, f1);
-      a(this.jdField_a_of_type_AndroidWidgetListView, 1.0F);
-      ViewUtils.b(this.jdField_a_of_type_AndroidWidgetListView, f3);
-      ViewUtils.c(this.jdField_a_of_type_AndroidWidgetListView, f3);
-      if (this.jdField_c_of_type_Boolean)
-      {
-        ViewUtils.e(this.jdField_a_of_type_AndroidWidgetListView, 0.0F);
-        ViewUtils.d(this.jdField_a_of_type_AndroidWidgetListView, this.d);
-      }
-      for (;;)
-      {
-        if ((this.jdField_b_of_type_Boolean) || (f3 != 0.0F)) {
-          break label221;
-        }
-        g();
-        return;
-        if (!this.jdField_b_of_type_Boolean) {
-          break label223;
-        }
-        float f4 = this.jdField_b_of_type_Float;
-        this.jdField_b_of_type_Float += this.jdField_a_of_type_Float;
-        f1 = f4;
-        f3 = f2;
-        if (this.jdField_b_of_type_Float <= 1.0F) {
-          break;
-        }
+      f2 = this.jdField_b_of_type_Float;
+      this.jdField_b_of_type_Float = (this.jdField_a_of_type_Float + f2);
+      if (this.jdField_b_of_type_Float > 1.0F) {
         this.jdField_b_of_type_Float = 1.0F;
-        f1 = f4;
-        f3 = f2;
-        break;
-        ViewUtils.e(this.jdField_a_of_type_AndroidWidgetListView, this.e);
-        ViewUtils.d(this.jdField_a_of_type_AndroidWidgetListView, this.d);
       }
-      label221:
-      break;
-      label223:
-      f1 = f2;
-      f3 = f2;
+    }
+    else
+    {
+      float f3 = f1;
+      f2 = f1;
+      f1 = f3;
+    }
+    a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, f2);
+    a(this.jdField_a_of_type_AndroidWidgetListView, 1.0F);
+    ViewUtils.b(this.jdField_a_of_type_AndroidWidgetListView, f1);
+    ViewUtils.c(this.jdField_a_of_type_AndroidWidgetListView, f1);
+    if (this.jdField_c_of_type_Boolean)
+    {
+      ViewUtils.e(this.jdField_a_of_type_AndroidWidgetListView, 0.0F);
+      ViewUtils.d(this.jdField_a_of_type_AndroidWidgetListView, this.d);
+    }
+    else
+    {
+      ViewUtils.e(this.jdField_a_of_type_AndroidWidgetListView, this.e);
+      ViewUtils.d(this.jdField_a_of_type_AndroidWidgetListView, this.d);
+    }
+    if ((!this.jdField_b_of_type_Boolean) && (f1 == 0.0F)) {
+      g();
     }
   }
   
@@ -235,55 +230,57 @@ public class VipGeneralAdvPopWindow
   
   public void a(AdapterView.OnItemClickListener paramOnItemClickListener)
   {
-    if ((this.jdField_a_of_type_AndroidWidgetListView != null) && (paramOnItemClickListener != null)) {
-      this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(paramOnItemClickListener);
+    ListView localListView = this.jdField_a_of_type_AndroidWidgetListView;
+    if ((localListView != null) && (paramOnItemClickListener != null)) {
+      localListView.setOnItemClickListener(paramOnItemClickListener);
     }
   }
   
   public void a(VipGeneralAdvPopWindow.MenuData paramMenuData)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (paramMenuData != null)) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramMenuData);
+    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    if ((localArrayList != null) && (paramMenuData != null)) {
+      localArrayList.add(paramMenuData);
     }
   }
   
   public boolean a(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) || (this.jdField_a_of_type_AndroidWidgetListView == null)) {
-      return false;
+    if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_a_of_type_AndroidWidgetListView != null))
+    {
+      paramInt1 = ViewUtils.a() - this.jdField_a_of_type_AndroidWidgetRelativeLayout.getPaddingRight() * 2;
+      RelativeLayout.LayoutParams localLayoutParams2 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetListView.getLayoutParams();
+      RelativeLayout.LayoutParams localLayoutParams1 = localLayoutParams2;
+      if (localLayoutParams2 == null) {
+        localLayoutParams1 = new RelativeLayout.LayoutParams(paramInt1, this.jdField_c_of_type_Int);
+      }
+      int i = b();
+      localLayoutParams1.width = paramInt1;
+      localLayoutParams1.height = this.jdField_c_of_type_Int;
+      localLayoutParams1.topMargin = (paramInt2 - i - ViewUtils.b(5.0F));
+      this.jdField_a_of_type_AndroidWidgetListView.setLayoutParams(localLayoutParams1);
+      this.e = this.jdField_c_of_type_Int;
+      this.d = (paramInt1 - (this.jdField_a_of_type_Int / 2 - this.jdField_a_of_type_AndroidWidgetRelativeLayout.getPaddingRight()));
+      return true;
     }
-    paramInt1 = ViewUtils.a() - this.jdField_a_of_type_AndroidWidgetRelativeLayout.getPaddingRight() * 2;
-    RelativeLayout.LayoutParams localLayoutParams2 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetListView.getLayoutParams();
-    RelativeLayout.LayoutParams localLayoutParams1 = localLayoutParams2;
-    if (localLayoutParams2 == null) {
-      localLayoutParams1 = new RelativeLayout.LayoutParams(paramInt1, this.jdField_c_of_type_Int);
-    }
-    int i = b();
-    localLayoutParams1.width = paramInt1;
-    localLayoutParams1.height = this.jdField_c_of_type_Int;
-    localLayoutParams1.topMargin = (paramInt2 - i - ViewUtils.b(5.0F));
-    this.jdField_a_of_type_AndroidWidgetListView.setLayoutParams(localLayoutParams1);
-    this.e = this.jdField_c_of_type_Int;
-    this.d = (paramInt1 - (this.jdField_a_of_type_Int / 2 - this.jdField_a_of_type_AndroidWidgetRelativeLayout.getPaddingRight()));
-    return true;
+    return false;
   }
   
   public int b()
   {
-    int i;
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight() > 0)
     {
       i = ViewUtils.b() - this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
-      if (i > ViewUtils.b(25.0F)) {}
+      if (i <= ViewUtils.b(25.0F)) {
+        return i;
+      }
     }
-    int j;
-    do
-    {
-      return i;
-      j = c();
-      i = j;
-    } while (j > 0);
-    return ViewUtils.b(25.0F);
+    int j = c();
+    int i = j;
+    if (j <= 0) {
+      i = ViewUtils.b(25.0F);
+    }
+    return i;
   }
   
   public void b()
@@ -297,8 +294,9 @@ public class VipGeneralAdvPopWindow
     this.jdField_c_of_type_Boolean = true;
     a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, 0.0F);
     ViewUtils.a(this.jdField_a_of_type_AndroidWidgetListView, jdField_b_of_type_AndroidGraphicsDrawableDrawable);
-    if (this.jdField_a_of_type_AndroidWidgetListView != null) {
-      this.jdField_a_of_type_AndroidWidgetListView.setPadding(this.jdField_a_of_type_AndroidWidgetListView.getPaddingLeft(), this.jdField_a_of_type_AndroidWidgetListView.getPaddingTop() + ViewUtils.b(9.0F), this.jdField_a_of_type_AndroidWidgetListView.getPaddingRight(), this.jdField_a_of_type_AndroidWidgetListView.getPaddingBottom());
+    ListView localListView = this.jdField_a_of_type_AndroidWidgetListView;
+    if (localListView != null) {
+      localListView.setPadding(localListView.getPaddingLeft(), this.jdField_a_of_type_AndroidWidgetListView.getPaddingTop() + ViewUtils.b(9.0F), this.jdField_a_of_type_AndroidWidgetListView.getPaddingRight(), this.jdField_a_of_type_AndroidWidgetListView.getPaddingBottom());
     }
     super.showAtLocation(a(), 17, 0, 0);
     c();
@@ -306,8 +304,11 @@ public class VipGeneralAdvPopWindow
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentComponentAnimationReboundSpring == null) {}
-    while (this.jdField_a_of_type_ComTencentComponentAnimationReboundSpring.getCurrentValue() != this.jdField_a_of_type_ComTencentComponentAnimationReboundSpring.getEndValue()) {
+    Spring localSpring = this.jdField_a_of_type_ComTencentComponentAnimationReboundSpring;
+    if (localSpring == null) {
+      return;
+    }
+    if (localSpring.getCurrentValue() != this.jdField_a_of_type_ComTencentComponentAnimationReboundSpring.getEndValue()) {
       return;
     }
     if (this.jdField_a_of_type_ComTencentComponentAnimationReboundSpring.getEndValue() == 0.0D)
@@ -340,12 +341,12 @@ public class VipGeneralAdvPopWindow
       j += localView.getMeasuredHeight();
       i += 1;
     }
-    this.jdField_c_of_type_Int = (ViewUtils.b(9.0F) + j);
+    this.jdField_c_of_type_Int = (j + ViewUtils.b(9.0F));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.widget.VipGeneralAdvPopWindow
  * JD-Core Version:    0.7.0.1
  */

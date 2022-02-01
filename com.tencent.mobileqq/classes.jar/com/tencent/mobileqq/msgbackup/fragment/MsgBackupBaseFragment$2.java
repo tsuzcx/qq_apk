@@ -12,8 +12,12 @@ class MsgBackupBaseFragment$2
   
   public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onConfirmTokenResponse:  isSuccess: " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onConfirmTokenResponse:  isSuccess: ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, localStringBuilder.toString());
     }
     super.a(paramBoolean);
   }
@@ -28,39 +32,51 @@ class MsgBackupBaseFragment$2
   
   public void a(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onGetQrResponse: " + paramObject + ", isSuccess: " + paramBoolean);
-    }
     Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onGetQrResponse: ");
+      ((StringBuilder)localObject).append(paramObject);
+      ((StringBuilder)localObject).append(", isSuccess: ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, ((StringBuilder)localObject).toString());
+    }
     if ((paramBoolean) && ((paramObject instanceof MsgBackupGetQrRsp)))
     {
       localObject = (MsgBackupGetQrRsp)paramObject;
       this.a.a((MsgBackupGetQrRsp)localObject);
     }
-    for (;;)
+    else if ((paramObject instanceof Integer))
     {
-      super.a(paramBoolean, paramObject);
-      return;
-      if ((paramObject instanceof Integer))
-      {
-        localObject = (Integer)paramObject;
-        this.a.a((Integer)localObject);
-      }
+      localObject = (Integer)paramObject;
+      this.a.a((Integer)localObject);
     }
+    super.a(paramBoolean, paramObject);
   }
   
   public void b(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onRejectQRResponse:  isSuccess: " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onRejectQRResponse:  isSuccess: ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, localStringBuilder.toString());
     }
     super.b(paramBoolean);
   }
   
   public void b(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onConfirmQrResponse: " + paramObject + ", isSuccess: " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onConfirmQrResponse: ");
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append(", isSuccess: ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, localStringBuilder.toString());
     }
     this.a.a(paramBoolean, paramObject);
     super.b(paramBoolean, paramObject);
@@ -68,7 +84,7 @@ class MsgBackupBaseFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupBaseFragment.2
  * JD-Core Version:    0.7.0.1
  */

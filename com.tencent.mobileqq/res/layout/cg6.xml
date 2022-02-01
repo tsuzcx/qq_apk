@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@color/m7" android:layout_width="fill_parent" android:layout_height="40.0dip"
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:layout_gravity="top" android:background="#ffe0e0e6" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    <dov.com.qq.im.aeeditor.module.edit.widgets.AEEditorCheckGroupView android:orientation="horizontal" android:id="@id/mp9" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/o0x" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <ImageView android:id="@id/n9e" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/bjp" android:scaleType="fitCenter" />
-            <TextView android:textSize="@dimen/bh0" android:textColor="@color/ml" android:id="@id/obf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/w9c" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/o11" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <ImageView android:id="@id/n9j" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/bjr" android:scaleType="fitCenter" />
-            <TextView android:textSize="@dimen/bh0" android:textColor="@color/ml" android:id="@id/obh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/w_2" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/o19" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <ImageView android:id="@id/n9r" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/bju" android:scaleType="fitCenter" />
-            <TextView android:textSize="@dimen/bh0" android:textColor="@color/ml" android:id="@id/obn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/w_w" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/o15" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <ImageView android:id="@id/n9o" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/bjt" android:scaleType="fitCenter" />
-            <TextView android:textSize="@dimen/bh0" android:textColor="@color/ml" android:id="@id/obk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/w_a" />
-        </LinearLayout>
-    </dov.com.qq.im.aeeditor.module.edit.widgets.AEEditorCheckGroupView>
-</FrameLayout>
+    <RelativeLayout android:id="@id/jp7" android:layout_width="fill_parent" android:layout_height="32.0dip">
+        <com.tencent.avgame.gameroom.stage.util.CountDownClockNumLottieView android:id="@id/och" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="29.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="18.0sp" android:textColor="@color/al3" android:id="@id/joq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:shadowColor="#3d000000" android:shadowDx="0.0" android:shadowDy="2.0" android:shadowRadius="1.0" android:layout_centerInParent="true" />
+        <TextView android:textSize="18.0sp" android:textColor="@color/al3" android:id="@id/ocj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="30.0dip" android:shadowColor="#3d000000" android:shadowDx="0.0" android:shadowDy="2.0" android:shadowRadius="1.0" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <FrameLayout android:layout_width="140.0dip" android:layout_height="140.0dip" android:layout_centerInParent="true">
+        <ImageView android:id="@id/o9_" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/o9a" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+    <View android:id="@id/n5i" android:background="@drawable/bks" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="125.0dip" />
+    <View android:id="@id/od2" android:layout_width="fill_parent" android:layout_height="106.0dip" android:layout_alignParentBottom="true" />
+    <RelativeLayout android:id="@id/ngm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginBottom="20.5dip" android:layout_above="@id/od2" android:layout_centerHorizontal="true">
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:layout_centerHorizontal="true">
+            <RelativeLayout android:id="@id/nfd" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentLeft="true">
+                <com.tencent.avgame.ui.AVGameText android:id="@id/ofe" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="14.0dip" android:layout_toRightOf="@id/nfd">
+                <com.tencent.avgame.ui.AVGameText android:id="@id/ofg" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/nh3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="13.0dip" android:layout_above="@id/od2" android:layout_centerHorizontal="true">
+        <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/oie" android:paddingLeft="16.0dip" android:paddingRight="19.0dip" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip" android:maxLines="2" android:shadowColor="#33000000" android:shadowDx="0.0" android:shadowDy="2.0" android:shadowRadius="1.0" android:layout_weight="0.73" />
+    </LinearLayout>
+</merge>

@@ -12,7 +12,7 @@ import com.tencent.av.VideoController;
 import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.tips.TipsUtil;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
 class VideoControlUI$ToolbarAnimationListener
@@ -33,7 +33,18 @@ class VideoControlUI$ToolbarAnimationListener
     if ((this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (paramAnimation != null) && (2 == this.jdField_a_of_type_Int)) {
       this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(118), Boolean.valueOf(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h), Boolean.valueOf(false), Long.valueOf(paramAnimation.getDuration()) });
     }
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_d_of_type_JavaLangString, 1, "onAnimationEnd, mToolBarType[" + this.jdField_a_of_type_Int + "], animation[" + paramAnimation + "], mToolbarDisplay[" + this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h + "], seq[" + l + "]");
+    String str = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_d_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onAnimationEnd, mToolBarType[");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("], animation[");
+    localStringBuilder.append(paramAnimation);
+    localStringBuilder.append("], mToolbarDisplay[");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h);
+    localStringBuilder.append("], seq[");
+    localStringBuilder.append(l);
+    localStringBuilder.append("]");
+    QLog.w(str, 1, localStringBuilder.toString());
     if (!this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h)
     {
       if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_d_of_type_AndroidWidgetRelativeLayout != null) {
@@ -49,20 +60,20 @@ class VideoControlUI$ToolbarAnimationListener
         this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(0);
       }
       TipsUtil.b(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface, true);
-      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.y = 0;
-      if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController != null)
+      paramAnimation = this.jdField_a_of_type_ComTencentAvUiVideoControlUI;
+      paramAnimation.y = 0;
+      if (paramAnimation.jdField_a_of_type_ComTencentAvVideoController != null)
       {
         paramAnimation = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a();
-        if (((paramAnimation.F == 2) || (paramAnimation.F == 1)) && (!this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().s())) {
-          this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a(l, 360 - this.jdField_a_of_type_ComTencentAvUiVideoControlUI.t);
+        if (((paramAnimation.E == 2) || (paramAnimation.E == 1)) && (!this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().q()))
+        {
+          paramAnimation = this.jdField_a_of_type_ComTencentAvUiVideoControlUI;
+          paramAnimation.a(l, 360 - paramAnimation.t);
         }
       }
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.l = false;
-      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(102) });
-      return;
       if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_d_of_type_AndroidWidgetRelativeLayout != null) {
         this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_d_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
       }
@@ -82,42 +93,56 @@ class VideoControlUI$ToolbarAnimationListener
         this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_AndroidViewView.setVisibility(0);
       }
       VideoControlUI.a(this.jdField_a_of_type_ComTencentAvUiVideoControlUI, true);
-      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.y = 5;
-      if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController != null)
+      paramAnimation = this.jdField_a_of_type_ComTencentAvUiVideoControlUI;
+      paramAnimation.y = 5;
+      if (paramAnimation.jdField_a_of_type_ComTencentAvVideoController != null)
       {
         paramAnimation = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a();
-        if ((paramAnimation.F == 2) || (paramAnimation.F == 1)) {
+        if ((paramAnimation.E == 2) || (paramAnimation.E == 1)) {
           this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a(l, 0.0F);
         }
       }
     }
+    paramAnimation = this.jdField_a_of_type_ComTencentAvUiVideoControlUI;
+    paramAnimation.l = false;
+    paramAnimation.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(102) });
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.l = true;
-    if ((this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (paramAnimation != null) && (2 == this.jdField_a_of_type_Int)) {
+    Object localObject = this.jdField_a_of_type_ComTencentAvUiVideoControlUI;
+    ((VideoControlUI)localObject).l = true;
+    if ((((VideoControlUI)localObject).jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (paramAnimation != null) && (2 == this.jdField_a_of_type_Int)) {
       this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(118), Boolean.valueOf(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h), Boolean.valueOf(true), Long.valueOf(paramAnimation.getDuration()) });
     }
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_d_of_type_JavaLangString, 1, "[" + this.jdField_a_of_type_Int + "]onAnimationStart[" + paramAnimation + "]");
-    VideoControlUI.a(this.jdField_a_of_type_ComTencentAvUiVideoControlUI, (int)(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_AndroidViewAnimationAnimation.getDuration() / 5L));
-    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h) {
+    localObject = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_d_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("]onAnimationStart[");
+    localStringBuilder.append(paramAnimation);
+    localStringBuilder.append("]");
+    QLog.w((String)localObject, 1, localStringBuilder.toString());
+    paramAnimation = this.jdField_a_of_type_ComTencentAvUiVideoControlUI;
+    VideoControlUI.a(paramAnimation, (int)(paramAnimation.jdField_a_of_type_AndroidViewAnimationAnimation.getDuration() / 5L));
+    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h)
+    {
       this.jdField_a_of_type_ComTencentAvUiVideoControlUI.y = 0;
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvUiVideoControlUI$ToolbarAnimationRunnable);
-      return;
-      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.y = 5;
-      VideoControlUI.a(this.jdField_a_of_type_ComTencentAvUiVideoControlUI, false);
+      paramAnimation = this.jdField_a_of_type_ComTencentAvUiVideoControlUI;
+      paramAnimation.y = 5;
+      VideoControlUI.a(paramAnimation, false);
     }
+    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvUiVideoControlUI$ToolbarAnimationRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoControlUI.ToolbarAnimationListener
  * JD-Core Version:    0.7.0.1
  */

@@ -42,7 +42,7 @@ public class AlphaMaskFrameLayout
     this.jdField_a_of_type_Int = ((int)(paramContext.getResources().getDisplayMetrics().density * 15.0F + 0.5F));
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
     if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
@@ -51,9 +51,9 @@ public class AlphaMaskFrameLayout
       this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
       this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SCREEN));
     }
-    Object localObject1;
+    Object localObject1 = this.jdField_a_of_type_AndroidGraphicsBitmap;
     Object localObject2;
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() != getWidth()))
+    if ((localObject1 == null) || (((Bitmap)localObject1).getWidth() != getWidth()))
     {
       this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(getWidth(), this.jdField_a_of_type_Int, Bitmap.Config.ARGB_8888);
       this.jdField_a_of_type_AndroidGraphicsBitmap.setDensity(getResources().getDisplayMetrics().densityDpi);
@@ -62,7 +62,8 @@ public class AlphaMaskFrameLayout
       ((Paint)localObject2).setShader(new LinearGradient(0.0F, 0.0F, 0.0F, this.jdField_a_of_type_Int, jdField_a_of_type_ArrayOfInt, jdField_a_of_type_ArrayOfFloat, Shader.TileMode.CLAMP));
       ((Canvas)localObject1).drawRect(0.0F, 0.0F, ((Canvas)localObject1).getWidth(), ((Canvas)localObject1).getHeight(), (Paint)localObject2);
     }
-    if (((this.b == null) || (this.b.getWidth() != getWidth())) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null))
+    localObject1 = this.b;
+    if (((localObject1 == null) || (((Bitmap)localObject1).getWidth() != getWidth())) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null))
     {
       localObject1 = new Matrix();
       ((Matrix)localObject1).preScale(1.0F, -1.0F);
@@ -70,17 +71,19 @@ public class AlphaMaskFrameLayout
       this.b = Bitmap.createBitmap((Bitmap)localObject2, 0, 0, ((Bitmap)localObject2).getWidth(), ((Bitmap)localObject2).getHeight(), (Matrix)localObject1, false);
       this.b.setDensity(getResources().getDisplayMetrics().densityDpi);
     }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+    localObject1 = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if (localObject1 != null) {
+      paramCanvas.drawBitmap((Bitmap)localObject1, 0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
-    if (this.b != null) {
-      paramCanvas.drawBitmap(this.b, 0.0F, getHeight() - this.b.getHeight(), this.jdField_a_of_type_AndroidGraphicsPaint);
+    localObject1 = this.b;
+    if (localObject1 != null) {
+      paramCanvas.drawBitmap((Bitmap)localObject1, 0.0F, getHeight() - this.b.getHeight(), this.jdField_a_of_type_AndroidGraphicsPaint);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.AlphaMaskFrameLayout
  * JD-Core Version:    0.7.0.1
  */

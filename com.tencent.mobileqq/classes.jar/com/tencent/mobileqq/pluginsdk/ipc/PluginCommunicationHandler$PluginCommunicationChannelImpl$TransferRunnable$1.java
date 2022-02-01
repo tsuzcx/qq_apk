@@ -21,14 +21,15 @@ class PluginCommunicationHandler$PluginCommunicationChannelImpl$TransferRunnable
     }
     catch (RemoteException paramBundle)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.w("plugin_tag", 2, "tranferAsync ", paramBundle);
+      if (QLog.isColorLevel()) {
+        QLog.w("plugin_tag", 2, "tranferAsync ", paramBundle);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler.PluginCommunicationChannelImpl.TransferRunnable.1
  * JD-Core Version:    0.7.0.1
  */

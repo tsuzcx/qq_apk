@@ -8,14 +8,20 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class qqstory_710_del_message$ReqDelAllMessage
   extends MessageMicro<ReqDelAllMessage>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "start_time", "source", "version_ctrl" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, ReqDelAllMessage.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field source = PBField.initUInt32(0);
   public final PBUInt32Field start_time = PBField.initUInt32(0);
   public final PBUInt32Field version_ctrl = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "start_time", "source", "version_ctrl" }, new Object[] { localInteger, localInteger, localInteger }, ReqDelAllMessage.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_710_del_message.ReqDelAllMessage
  * JD-Core Version:    0.7.0.1
  */

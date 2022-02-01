@@ -22,134 +22,175 @@ public class MessageForIncompatibleGrayTips
   
   public void doParse()
   {
+    Object localObject;
     try
     {
       IncompatibleGrayTipsMessage localIncompatibleGrayTipsMessage = (IncompatibleGrayTipsMessage)MessagePkgUtils.a(this.msgData);
-      if (localIncompatibleGrayTipsMessage != null)
-      {
-        this.linkStart = localIncompatibleGrayTipsMessage.linkStart;
-        this.linkEnd = localIncompatibleGrayTipsMessage.linkEnd;
-        this.msg = localIncompatibleGrayTipsMessage.msg;
-        this.url = localIncompatibleGrayTipsMessage.url;
-      }
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-        Object localObject = null;
-      }
+      localException.printStackTrace();
+      localObject = null;
+    }
+    if (localObject != null)
+    {
+      this.linkStart = localObject.linkStart;
+      this.linkEnd = localObject.linkEnd;
+      this.msg = localObject.msg;
+      this.url = localObject.url;
     }
   }
   
   public Boolean parseTextXML(String paramString)
   {
-    Object localObject1 = Boolean.valueOf(false);
-    localObject2 = localObject1;
-    for (;;)
+    Object localObject2 = Boolean.valueOf(false);
+    Object localObject1 = localObject2;
+    try
     {
-      try
+      XmlPullParser localXmlPullParser = XmlPullParserFactory.newInstance().newPullParser();
+      localObject1 = localObject2;
+      localXmlPullParser.setInput(new StringReader(paramString));
+      localObject1 = localObject2;
+      int i = localXmlPullParser.getEventType();
+      Object localObject5 = null;
+      paramString = localObject5;
+      Object localObject3 = paramString;
+      Object localObject4 = paramString;
+      paramString = (String)localObject2;
+      while (i != 1)
       {
-        localXmlPullParser = XmlPullParserFactory.newInstance().newPullParser();
-        localObject2 = localObject1;
-        localXmlPullParser.setInput(new StringReader(paramString));
-        localObject2 = localObject1;
-        i = localXmlPullParser.getEventType();
-        localObject2 = null;
-        str = null;
-        paramString = (String)localObject1;
-        localObject1 = null;
-      }
-      catch (Exception localException2)
-      {
-        XmlPullParser localXmlPullParser;
-        int i;
-        String str;
+        localObject2 = paramString;
+        Object localObject8 = localObject5;
+        Object localObject7 = localObject4;
+        Object localObject6 = localObject3;
+        if (i != 0) {
+          if (i != 2)
+          {
+            if (i != 3)
+            {
+              localObject2 = paramString;
+              localObject8 = localObject5;
+              localObject7 = localObject4;
+              localObject6 = localObject3;
+            }
+            else
+            {
+              localObject2 = paramString;
+              localObject8 = localObject5;
+              localObject7 = localObject4;
+              localObject6 = localObject3;
+              localObject1 = paramString;
+              if ("PromptConfig".equalsIgnoreCase(localXmlPullParser.getName()))
+              {
+                localObject2 = paramString;
+                localObject8 = localObject5;
+                localObject7 = localObject4;
+                localObject6 = localObject3;
+                if (localObject3 != null)
+                {
+                  localObject1 = paramString;
+                  localObject2 = Boolean.valueOf(true);
+                  localObject8 = localObject5;
+                  localObject7 = localObject4;
+                  localObject6 = localObject3;
+                }
+              }
+            }
+          }
+          else
+          {
+            localObject2 = paramString;
+            localObject8 = localObject5;
+            localObject7 = localObject4;
+            localObject6 = localObject3;
+            localObject1 = paramString;
+            if ("PromptConfig".equalsIgnoreCase(localXmlPullParser.getName()))
+            {
+              localObject1 = paramString;
+              localObject6 = localXmlPullParser.getAttributeValue(null, "content").trim();
+              localObject1 = paramString;
+              localObject7 = localXmlPullParser.getAttributeValue(null, "urlshowtext").trim();
+              localObject1 = paramString;
+              localObject8 = localXmlPullParser.getAttributeValue(null, "url").trim();
+              localObject2 = paramString;
+            }
+          }
+        }
+        localObject1 = localObject2;
+        i = localXmlPullParser.next();
         paramString = (String)localObject2;
-        continue;
-        if (i == 1) {
-          continue;
-        }
-        switch (i)
-        {
-        }
-        Object localObject3 = localObject2;
-        continue;
+        localObject5 = localObject8;
+        localObject4 = localObject7;
+        localObject3 = localObject6;
       }
+      localObject1 = paramString;
       localObject2 = paramString;
-      i = localXmlPullParser.next();
-      localObject2 = localObject3;
-      continue;
-      localObject3 = localObject2;
-      continue;
-      try
+      if (paramString.booleanValue())
       {
-        if (!"PromptConfig".equalsIgnoreCase(localXmlPullParser.getName())) {
-          continue;
+        if (localObject5 != null)
+        {
+          localObject1 = paramString;
+          if ((localObject5.length() > 0) && (localObject4 != null))
+          {
+            localObject1 = paramString;
+            if (((String)localObject4).length() > 0)
+            {
+              localObject1 = paramString;
+              i = ((String)localObject3).indexOf("$URL$");
+              localObject2 = paramString;
+              if (i < 0) {
+                break label492;
+              }
+              localObject1 = paramString;
+              this.linkStart = i;
+              localObject1 = paramString;
+              this.linkEnd = (i + ((String)localObject4).length());
+              localObject1 = paramString;
+              this.url = localObject5;
+              localObject1 = paramString;
+              this.msg = ((String)localObject3).replace("$URL$", (CharSequence)localObject4);
+              localObject2 = paramString;
+              break label492;
+            }
+          }
         }
-        str = localXmlPullParser.getAttributeValue(null, "content").trim();
-        localObject3 = localXmlPullParser.getAttributeValue(null, "urlshowtext").trim();
-        localObject1 = localXmlPullParser.getAttributeValue(null, "url").trim();
-      }
-      catch (Exception localException1) {}
-      if ((!"PromptConfig".equalsIgnoreCase(localXmlPullParser.getName())) || (str == null)) {
-        continue;
-      }
-      localObject3 = Boolean.valueOf(true);
-      paramString = (String)localObject3;
-      localObject3 = localObject2;
-    }
-    localObject3 = paramString;
-    if (paramString.booleanValue())
-    {
-      if ((localObject1 == null) || (((String)localObject1).length() <= 0) || (localObject2 == null) || (((String)localObject2).length() <= 0)) {
-        break label282;
-      }
-      i = str.indexOf("$URL$");
-      localObject3 = paramString;
-      if (i >= 0)
-      {
-        this.linkStart = i;
-        this.linkEnd = (i + ((String)localObject2).length());
-        this.url = ((String)localObject1);
-        this.msg = str.replace("$URL$", (CharSequence)localObject2);
-        localObject3 = paramString;
+        localObject1 = paramString;
+        this.linkStart = 0;
+        localObject1 = paramString;
+        this.linkEnd = 0;
+        localObject1 = paramString;
+        this.msg = ((String)localObject3);
+        localObject1 = paramString;
+        this.url = null;
+        localObject2 = paramString;
       }
     }
-    for (;;)
+    catch (Exception paramString)
     {
-      if (((Boolean)localObject3).booleanValue()) {
-        serial();
-      }
-      return localObject3;
-      label282:
-      this.linkStart = 0;
-      this.linkEnd = 0;
-      this.msg = str;
-      this.url = null;
-      localObject3 = paramString;
-      continue;
       this.linkStart = 0;
       this.linkEnd = 0;
       this.msg = null;
       this.url = null;
-      localObject3 = paramString;
+      localObject2 = localObject1;
       if (QLog.isColorLevel())
       {
-        QLog.d(this.TAG, 2, localException1.getMessage(), localException1);
-        localObject3 = paramString;
+        QLog.d(this.TAG, 2, paramString.getMessage(), paramString);
+        localObject2 = localObject1;
       }
     }
+    label492:
+    if (((Boolean)localObject2).booleanValue()) {
+      serial();
+    }
+    return localObject2;
   }
   
-  public void postRead()
+  protected void postRead()
   {
     parse();
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     serial();
     ReportController.b(null, "CliOper", "", String.valueOf(this.frienduin), "0X800491A", "0X800491A", 0, 0, "", "", "", "");
@@ -175,7 +216,7 @@ public class MessageForIncompatibleGrayTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForIncompatibleGrayTips
  * JD-Core Version:    0.7.0.1
  */

@@ -23,7 +23,7 @@ public class WifiSDKUIApi
   public static final int COME_FROM_SERIOUS_RESULT_SOLUTION = 4;
   public static final String KEY_COME_FROM = "uiapi_k101";
   public static final String KEY_RISK_LIST = "uiapi_k100";
-  private static final String TAG = WifiSDKUIApi.class.getSimpleName();
+  private static final String TAG = "WifiSDKUIApi";
   private static boolean tl = false;
   private static BaseFragImplManager tm;
   
@@ -105,7 +105,7 @@ public class WifiSDKUIApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.wifisdk.ui.WifiSDKUIApi
  * JD-Core Version:    0.7.0.1
  */

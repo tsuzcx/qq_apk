@@ -10,6 +10,7 @@ public class TPVideoInfo$Builder
   private ArrayList<TPDownloadParamData> downloadParamList;
   private String fileID;
   private long height;
+  @TPCommonEnum.TP_VIDEO_CODEC_TYPE
   private int videoCodecId;
   private long width;
   
@@ -28,13 +29,11 @@ public class TPVideoInfo$Builder
   {
     if (TPCommonUtils.isEmpty(this.downloadParamList)) {
       this.downloadParamList = new ArrayList();
-    }
-    for (;;)
-    {
-      this.downloadParamList.add(paramTPDownloadParamData);
-      return this;
+    } else {
       this.downloadParamList.clear();
     }
+    this.downloadParamList.add(paramTPDownloadParamData);
+    return this;
   }
   
   public Builder downloadParamList(ArrayList<TPDownloadParamData> paramArrayList)
@@ -56,7 +55,7 @@ public class TPVideoInfo$Builder
     return this;
   }
   
-  public Builder videoCodecId(int paramInt)
+  public Builder videoCodecId(@TPCommonEnum.TP_VIDEO_CODEC_TYPE int paramInt)
   {
     this.videoCodecId = paramInt;
     return this;
@@ -64,7 +63,7 @@ public class TPVideoInfo$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPVideoInfo.Builder
  * JD-Core Version:    0.7.0.1
  */

@@ -12,13 +12,14 @@ class h$2
   public void run()
   {
     boolean bool = h.access$300(this.this$0, (Context)this.val$appContext.get(), h.access$100(this.this$0));
-    if (h.access$100(this.this$0) != null) {}
-    for (String str = h.access$100(this.this$0).toString();; str = null)
-    {
-      AdLog.i("AdDeviceInfoCache", String.format("flush %b %s", new Object[] { Boolean.valueOf(bool), str }));
-      h.access$200(this.this$0, 2);
-      return;
+    String str;
+    if (h.access$100(this.this$0) != null) {
+      str = h.access$100(this.this$0).toString();
+    } else {
+      str = null;
     }
+    AdLog.i("AdDeviceInfoCache", String.format("flush %b %s", new Object[] { Boolean.valueOf(bool), str }));
+    h.access$200(this.this$0, 2);
   }
 }
 

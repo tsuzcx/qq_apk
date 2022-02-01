@@ -5,13 +5,13 @@ public class QzoneGiftFullScreenViewController$MagicData
   public String emotionId;
   public boolean isPassivePraise;
   public String maigcPath;
-  public QzoneGiftFullScreenViewController.GiftFullScreenPlayListener playListener;
+  public IQzoneGiftFullScreenViewController.GiftFullScreenPlayListener playListener;
   
   public QzoneGiftFullScreenViewController$MagicData(QzoneGiftFullScreenViewController paramQzoneGiftFullScreenViewController) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.QzoneGiftFullScreenViewController.MagicData
  * JD-Core Version:    0.7.0.1
  */

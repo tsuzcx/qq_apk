@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="true" android:drawable="@drawable/g9d" />
-    <item android:state_selected="true" android:drawable="@drawable/g9d" />
-    <item android:drawable="@drawable/g9c" />
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="13.5dip" />
+            <size android:height="@dimen/bbk" />
+            <solid android:color="@color/ij" />
+        </shape>
+    </item>
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="13.5dip" />
+            <size android:height="@dimen/bbk" />
+            <solid android:color="@color/ij" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="13.5dip" />
+            <solid android:color="#00000000" />
+        </shape>
+    </item>
 </selector>

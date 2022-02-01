@@ -9,15 +9,15 @@ class RuntimeLoaderConfiguration$1
   
   public int compare(RuntimeLoaderConfiguration.RuntimeLoaderInfo paramRuntimeLoaderInfo1, RuntimeLoaderConfiguration.RuntimeLoaderInfo paramRuntimeLoaderInfo2)
   {
-    if ((paramRuntimeLoaderInfo1 == null) || (paramRuntimeLoaderInfo2 == null)) {
-      return 0;
+    if ((paramRuntimeLoaderInfo1 != null) && (paramRuntimeLoaderInfo2 != null)) {
+      return paramRuntimeLoaderInfo1.type - paramRuntimeLoaderInfo2.type;
     }
-    return paramRuntimeLoaderInfo1.type - paramRuntimeLoaderInfo2.type;
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.RuntimeLoaderConfiguration.1
  * JD-Core Version:    0.7.0.1
  */

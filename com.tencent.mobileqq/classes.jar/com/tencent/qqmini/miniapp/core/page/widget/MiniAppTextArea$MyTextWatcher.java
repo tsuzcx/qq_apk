@@ -22,18 +22,25 @@ class MiniAppTextArea$MyTextWatcher
   
   private void updateStyle(CharSequence paramCharSequence)
   {
-    if ((paramCharSequence != null) && (paramCharSequence.length() == 0)) {
+    if ((paramCharSequence != null) && (paramCharSequence.length() == 0))
+    {
       if (MiniAppTextArea.access$2600(this.this$0) != null)
       {
-        this.this$0.setTextSize(2, MiniAppTextArea.access$2600(this.this$0).optInt("fontSize"));
-        this.this$0.setTextColor(ColorUtils.parseColor(MiniAppTextArea.access$2600(this.this$0).optString("color")));
+        paramCharSequence = this.this$0;
+        paramCharSequence.setTextSize(2, MiniAppTextArea.access$2600(paramCharSequence).optInt("fontSize"));
+        paramCharSequence = this.this$0;
+        paramCharSequence.setTextColor(ColorUtils.parseColor(MiniAppTextArea.access$2600(paramCharSequence).optString("color")));
       }
     }
-    while (this.style == null) {
-      return;
+    else
+    {
+      paramCharSequence = this.style;
+      if (paramCharSequence != null)
+      {
+        this.this$0.setTextSize(2, paramCharSequence.optInt("fontSize"));
+        this.this$0.setTextColor(ColorUtils.parseColor(this.style.optString("color")));
+      }
     }
-    this.this$0.setTextSize(2, this.style.optInt("fontSize"));
-    this.this$0.setTextColor(ColorUtils.parseColor(this.style.optString("color")));
   }
   
   public void afterTextChanged(Editable paramEditable) {}
@@ -59,43 +66,38 @@ class MiniAppTextArea$MyTextWatcher
       {
         localJSONObject.put("inputId", MiniAppTextArea.access$900(this.this$0));
         if (paramInt3 != 0) {
-          break label242;
+          break label236;
         }
         localJSONObject.put("cursor", paramInt1);
+        continue;
+        localJSONObject.put("cursor", paramInt1 + paramInt3 - paramInt2);
         localJSONObject.put("value", MiniAppTextArea.access$2400(this.this$0));
-        if ((paramInt2 == 0) || (paramInt3 != 0)) {
-          break label218;
+        if ((paramInt2 != 0) && (paramInt3 == 0)) {
+          localJSONObject.put("keyCode", 8);
+        } else {
+          localJSONObject.put("keyCode", paramCharSequence.charAt(paramInt1 + paramInt3 - 1));
         }
-        localJSONObject.put("keyCode", 8);
         localJSONObject.put("data", MiniAppTextArea.access$2500(this.this$0));
         this.req.sendSubscribeJs("onKeyboardValueChange", localJSONObject.toString(), MiniAppTextArea.access$100(this.this$0).getWebviewId());
         return;
       }
       catch (Exception paramCharSequence)
       {
-        label186:
         QMLog.e("MiniAppTextArea", "onTextChanged error", paramCharSequence);
-        return;
       }
-      localJSONObject.put("cursor", paramInt1 + paramInt3 - paramInt2);
-      continue;
-      label218:
-      label242:
-      do
-      {
+      return;
+      label236:
+      if (paramInt2 != 0) {
+        paramInt2 -= 1;
+      } else {
         paramInt2 = 0;
-        break label186;
-        localJSONObject.put("keyCode", paramCharSequence.charAt(paramInt1 + paramInt3 - 1));
-        break;
-        return;
-      } while (paramInt2 == 0);
-      paramInt2 -= 1;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.widget.MiniAppTextArea.MyTextWatcher
  * JD-Core Version:    0.7.0.1
  */

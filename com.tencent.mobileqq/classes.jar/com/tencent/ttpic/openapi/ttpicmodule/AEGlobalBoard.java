@@ -20,17 +20,28 @@ public class AEGlobalBoard
     int j = localObject1.length;
     int i = 0;
     Object localObject2;
+    StringBuilder localStringBuilder;
     while (i < j)
     {
       localObject2 = localObject1[i];
-      localStringBuffer.append(AEGlobalBoard.PTStatus.access$100((AEGlobalBoard.PTStatus)localObject2) + " : " + AEGlobalBoard.PTStatus.access$000((AEGlobalBoard.PTStatus)localObject2) + "\n");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(AEGlobalBoard.PTStatus.access$100((AEGlobalBoard.PTStatus)localObject2));
+      localStringBuilder.append(" : ");
+      localStringBuilder.append(AEGlobalBoard.PTStatus.access$000((AEGlobalBoard.PTStatus)localObject2));
+      localStringBuilder.append("\n");
+      localStringBuffer.append(localStringBuilder.toString());
       i += 1;
     }
     localObject1 = boardRecords.entrySet().iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (Map.Entry)((Iterator)localObject1).next();
-      localStringBuffer.append((String)((Map.Entry)localObject2).getKey() + " : " + (String)((Map.Entry)localObject2).getValue() + "\n");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)((Map.Entry)localObject2).getKey());
+      localStringBuilder.append(" : ");
+      localStringBuilder.append((String)((Map.Entry)localObject2).getValue());
+      localStringBuilder.append("\n");
+      localStringBuffer.append(localStringBuilder.toString());
     }
     return localStringBuffer.toString();
   }
@@ -39,14 +50,13 @@ public class AEGlobalBoard
   {
     if (PTGlobalBoard_Enable)
     {
-      if (paramInt == 0) {
+      if (paramInt == 0)
+      {
         AEGlobalBoard.PTStatus.access$002(paramPTStatus, "成功");
+        return;
       }
+      AEGlobalBoard.PTStatus.access$002(paramPTStatus, "失败");
     }
-    else {
-      return;
-    }
-    AEGlobalBoard.PTStatus.access$002(paramPTStatus, "失败");
   }
   
   public static void writeBoard(AEGlobalBoard.PTStatus paramPTStatus, String paramString)
@@ -65,7 +75,7 @@ public class AEGlobalBoard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.ttpicmodule.AEGlobalBoard
  * JD-Core Version:    0.7.0.1
  */

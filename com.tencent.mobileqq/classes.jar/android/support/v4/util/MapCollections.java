@@ -26,32 +26,26 @@ abstract class MapCollections<K, V>
   
   public static <T> boolean equalsSetHelper(Set<T> paramSet, Object paramObject)
   {
-    boolean bool2 = true;
-    boolean bool1 = false;
     if (paramSet == paramObject) {
-      bool1 = true;
+      return true;
     }
-    while (!(paramObject instanceof Set)) {
-      return bool1;
+    if ((paramObject instanceof Set)) {
+      paramObject = (Set)paramObject;
     }
-    paramObject = (Set)paramObject;
     try
     {
       if (paramSet.size() == paramObject.size())
       {
-        bool1 = paramSet.containsAll(paramObject);
-        if (!bool1) {}
-      }
-      for (bool1 = bool2;; bool1 = false) {
-        return bool1;
+        boolean bool = paramSet.containsAll(paramObject);
+        if (bool) {
+          return true;
+        }
       }
       return false;
     }
-    catch (ClassCastException paramSet)
-    {
-      return false;
-    }
-    catch (NullPointerException paramSet) {}
+    catch (NullPointerException|ClassCastException paramSet) {}
+    return false;
+    return false;
   }
   
   public static <K, V> boolean removeAllHelper(Map<K, V> paramMap, Collection<?> paramCollection)
@@ -134,22 +128,20 @@ abstract class MapCollections<K, V>
   public <T> T[] toArrayHelper(T[] paramArrayOfT, int paramInt)
   {
     int j = colGetSize();
+    Object localObject = paramArrayOfT;
     if (paramArrayOfT.length < j) {
-      paramArrayOfT = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), j);
+      localObject = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), j);
     }
-    for (;;)
+    int i = 0;
+    while (i < j)
     {
-      int i = 0;
-      while (i < j)
-      {
-        paramArrayOfT[i] = colGetEntry(i, paramInt);
-        i += 1;
-      }
-      if (paramArrayOfT.length > j) {
-        paramArrayOfT[j] = null;
-      }
-      return paramArrayOfT;
+      localObject[i] = colGetEntry(i, paramInt);
+      i += 1;
     }
+    if (localObject.length > j) {
+      localObject[j] = null;
+    }
+    return localObject;
   }
 }
 

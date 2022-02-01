@@ -29,13 +29,14 @@ public class Request$Builder
     this.url = paramRequest.url;
     this.method = paramRequest.method;
     this.body = paramRequest.body;
-    if (paramRequest.tags.isEmpty()) {}
-    for (Object localObject = Collections.emptyMap();; localObject = new LinkedHashMap(paramRequest.tags))
-    {
-      this.tags = ((Map)localObject);
-      this.headers = paramRequest.headers.newBuilder();
-      return;
+    Object localObject;
+    if (paramRequest.tags.isEmpty()) {
+      localObject = Collections.emptyMap();
+    } else {
+      localObject = new LinkedHashMap(paramRequest.tags);
     }
+    this.tags = ((Map)localObject);
+    this.headers = paramRequest.headers.newBuilder();
   }
   
   public Builder addHeader(String paramString1, String paramString2)
@@ -46,10 +47,10 @@ public class Request$Builder
   
   public Request build()
   {
-    if (this.url == null) {
-      throw new IllegalStateException("url == null");
+    if (this.url != null) {
+      return new Request(this);
     }
-    return new Request(this);
+    throw new IllegalStateException("url == null");
   }
   
   public Builder cacheControl(CacheControl paramCacheControl)
@@ -95,21 +96,33 @@ public class Request$Builder
   
   public Builder method(String paramString, @Nullable RequestBody paramRequestBody)
   {
-    if (paramString == null) {
-      throw new NullPointerException("method == null");
-    }
-    if (paramString.length() == 0) {
+    if (paramString != null)
+    {
+      if (paramString.length() != 0)
+      {
+        if ((paramRequestBody != null) && (!HttpMethod.permitsRequestBody(paramString)))
+        {
+          paramRequestBody = new StringBuilder();
+          paramRequestBody.append("method ");
+          paramRequestBody.append(paramString);
+          paramRequestBody.append(" must not have a request body.");
+          throw new IllegalArgumentException(paramRequestBody.toString());
+        }
+        if ((paramRequestBody == null) && (HttpMethod.requiresRequestBody(paramString)))
+        {
+          paramRequestBody = new StringBuilder();
+          paramRequestBody.append("method ");
+          paramRequestBody.append(paramString);
+          paramRequestBody.append(" must have a request body.");
+          throw new IllegalArgumentException(paramRequestBody.toString());
+        }
+        this.method = paramString;
+        this.body = paramRequestBody;
+        return this;
+      }
       throw new IllegalArgumentException("method.length() == 0");
     }
-    if ((paramRequestBody != null) && (!HttpMethod.permitsRequestBody(paramString))) {
-      throw new IllegalArgumentException("method " + paramString + " must not have a request body.");
-    }
-    if ((paramRequestBody == null) && (HttpMethod.requiresRequestBody(paramString))) {
-      throw new IllegalArgumentException("method " + paramString + " must have a request body.");
-    }
-    this.method = paramString;
-    this.body = paramRequestBody;
-    return this;
+    throw new NullPointerException("method == null");
   }
   
   public Builder patch(RequestBody paramRequestBody)
@@ -135,19 +148,20 @@ public class Request$Builder
   
   public <T> Builder tag(Class<? super T> paramClass, @Nullable T paramT)
   {
-    if (paramClass == null) {
-      throw new NullPointerException("type == null");
-    }
-    if (paramT == null)
+    if (paramClass != null)
     {
-      this.tags.remove(paramClass);
+      if (paramT == null)
+      {
+        this.tags.remove(paramClass);
+        return this;
+      }
+      if (this.tags.isEmpty()) {
+        this.tags = new LinkedHashMap();
+      }
+      this.tags.put(paramClass, paramClass.cast(paramT));
       return this;
     }
-    if (this.tags.isEmpty()) {
-      this.tags = new LinkedHashMap();
-    }
-    this.tags.put(paramClass, paramClass.cast(paramT));
-    return this;
+    throw new NullPointerException("type == null");
   }
   
   public Builder tag(@Nullable Object paramObject)
@@ -157,43 +171,53 @@ public class Request$Builder
   
   public Builder url(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("url == null");
-    }
-    String str;
-    if (paramString.regionMatches(true, 0, "ws:", 0, 3)) {
-      str = "http:" + paramString.substring(3);
-    }
-    for (;;)
+    if (paramString != null)
     {
-      return url(HttpUrl.get(str));
-      str = paramString;
-      if (paramString.regionMatches(true, 0, "wss:", 0, 4)) {
-        str = "https:" + paramString.substring(4);
+      Object localObject;
+      if (paramString.regionMatches(true, 0, "ws:", 0, 3))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("http:");
+        ((StringBuilder)localObject).append(paramString.substring(3));
+        localObject = ((StringBuilder)localObject).toString();
       }
+      else
+      {
+        localObject = paramString;
+        if (paramString.regionMatches(true, 0, "wss:", 0, 4))
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("https:");
+          ((StringBuilder)localObject).append(paramString.substring(4));
+          localObject = ((StringBuilder)localObject).toString();
+        }
+      }
+      return url(HttpUrl.get((String)localObject));
     }
+    throw new NullPointerException("url == null");
   }
   
   public Builder url(URL paramURL)
   {
-    if (paramURL == null) {
-      throw new NullPointerException("url == null");
+    if (paramURL != null) {
+      return url(HttpUrl.get(paramURL.toString()));
     }
-    return url(HttpUrl.get(paramURL.toString()));
+    throw new NullPointerException("url == null");
   }
   
   public Builder url(HttpUrl paramHttpUrl)
   {
-    if (paramHttpUrl == null) {
-      throw new NullPointerException("url == null");
+    if (paramHttpUrl != null)
+    {
+      this.url = paramHttpUrl;
+      return this;
     }
-    this.url = paramHttpUrl;
-    return this;
+    throw new NullPointerException("url == null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.Request.Builder
  * JD-Core Version:    0.7.0.1
  */

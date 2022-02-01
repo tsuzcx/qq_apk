@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.recent.bannerprocessor.SecurePhoneChangeNotifyBannerProcessor;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.banner.BannerManager;
@@ -38,29 +39,29 @@ public class SecurePhoneBannerManager
   
   private Dialog a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    Dialog localDialog = CustomDialogFactory.a(paramContext, 2131755235);
-    View localView = LayoutInflater.from(paramContext).inflate(2131561120, null);
+    Dialog localDialog = CustomDialogFactory.a(paramContext, 2131755400);
+    View localView = LayoutInflater.from(paramContext).inflate(2131560982, null);
     localDialog.setContentView(localView);
-    Object localObject = (TextView)localView.findViewById(2131380489);
-    TextView localTextView1 = (TextView)localView.findViewById(2131380251);
-    TextView localTextView2 = (TextView)localView.findViewById(2131380202);
-    TextView localTextView3 = (TextView)localView.findViewById(2131380283);
-    LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131370587);
+    Object localObject = (TextView)localView.findViewById(2131379790);
+    TextView localTextView1 = (TextView)localView.findViewById(2131379566);
+    TextView localTextView2 = (TextView)localView.findViewById(2131379520);
+    TextView localTextView3 = (TextView)localView.findViewById(2131379595);
+    LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131370239);
     ((TextView)localObject).setText(this.c);
     localTextView3.setText(this.d);
     localObject = new GradientDrawable();
-    int i = ViewUtils.b(10.0F);
-    ((GradientDrawable)localObject).setCornerRadii(new float[] { i, i, i, i, 0.0F, 0.0F, 0.0F, 0.0F });
-    ((GradientDrawable)localObject).setColor(paramContext.getResources().getColor(2131167198));
+    float f = ViewUtils.b(10.0F);
+    ((GradientDrawable)localObject).setCornerRadii(new float[] { f, f, f, f, 0.0F, 0.0F, 0.0F, 0.0F });
+    ((GradientDrawable)localObject).setColor(paramContext.getResources().getColor(2131167223));
     localLinearLayout.setBackgroundDrawable((Drawable)localObject);
-    i = paramContext.getResources().getColor(2131167140);
+    int i = paramContext.getResources().getColor(2131167165);
     if (ThemeImageWrapper.isNightMode())
     {
-      localLinearLayout.setBackgroundResource(2130850120);
+      localLinearLayout.setBackgroundResource(2130850046);
       i = -16777216;
     }
     localObject = new GradientDrawable();
-    ((GradientDrawable)localObject).setCornerRadius(AIOUtils.a(6.0F, paramContext.getResources()));
+    ((GradientDrawable)localObject).setCornerRadius(AIOUtils.b(6.0F, paramContext.getResources()));
     localTextView1.setBackgroundDrawable((Drawable)localObject);
     ((GradientDrawable)localObject).setColor(i);
     localTextView2.setOnClickListener(new SecurePhoneBannerManager.3(this, paramQQAppInterface, paramContext, localDialog));
@@ -72,15 +73,16 @@ public class SecurePhoneBannerManager
   
   public static SecurePhoneBannerManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqUtilSecurePhoneBannerManager == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqUtilSecurePhoneBannerManager == null) {
-        jdField_a_of_type_ComTencentMobileqqUtilSecurePhoneBannerManager = new SecurePhoneBannerManager();
+    if (jdField_a_of_type_ComTencentMobileqqUtilSecurePhoneBannerManager == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqUtilSecurePhoneBannerManager == null) {
+          jdField_a_of_type_ComTencentMobileqqUtilSecurePhoneBannerManager = new SecurePhoneBannerManager();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqUtilSecurePhoneBannerManager;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqUtilSecurePhoneBannerManager;
   }
   
   private void a(Context paramContext)
@@ -90,26 +92,26 @@ public class SecurePhoneBannerManager
   
   private void a(Context paramContext, Dialog paramDialog)
   {
-    if (paramDialog == null) {
-      QLog.e("SecurePhoneBannerManager", 1, "showDialogEnterAnim dialog is null");
-    }
-    do
+    if (paramDialog == null)
     {
+      QLog.e("SecurePhoneBannerManager", 1, "showDialogEnterAnim dialog is null");
       return;
-      if (paramContext == null)
-      {
-        QLog.e("SecurePhoneBannerManager", 1, "showDialogEnterAnim context is null");
-        return;
-      }
-      paramDialog = (LinearLayout)paramDialog.findViewById(2131370587);
-    } while (paramDialog == null);
-    paramDialog.startAnimation(AnimationUtils.loadAnimation(paramContext, 2130772346));
+    }
+    if (paramContext == null)
+    {
+      QLog.e("SecurePhoneBannerManager", 1, "showDialogEnterAnim context is null");
+      return;
+    }
+    paramDialog = (LinearLayout)paramDialog.findViewById(2131370239);
+    if (paramDialog != null) {
+      paramDialog.startAnimation(AnimationUtils.loadAnimation(paramContext, 2130772378));
+    }
   }
   
   private void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt)
   {
     QLog.d("SecurePhoneBannerManager", 1, "dismiss banner");
-    BannerManager.a().a(5, 0, null);
+    BannerManager.a().a(SecurePhoneChangeNotifyBannerProcessor.jdField_a_of_type_Int, 0, null);
     this.jdField_a_of_type_Boolean = false;
     SharedPreUtils.a(paramContext, paramQQAppInterface.getAccount(), true, "sp_key_secure_phone_notice_time", Integer.valueOf(this.jdField_a_of_type_Int));
     if (paramInt == 1) {
@@ -120,23 +122,23 @@ public class SecurePhoneBannerManager
   
   private void b(Context paramContext, Dialog paramDialog)
   {
-    if (paramDialog == null) {
-      QLog.e("SecurePhoneBannerManager", 1, "showDialogExitAnim dialog is null");
-    }
-    LinearLayout localLinearLayout;
-    do
+    if (paramDialog == null)
     {
+      QLog.e("SecurePhoneBannerManager", 1, "showDialogExitAnim dialog is null");
       return;
-      if (paramContext == null)
-      {
-        QLog.e("SecurePhoneBannerManager", 1, "showDialogExitAnim context is null");
-        return;
-      }
-      localLinearLayout = (LinearLayout)paramDialog.findViewById(2131370587);
-    } while (localLinearLayout == null);
-    paramContext = AnimationUtils.loadAnimation(paramContext, 2130772347);
-    paramContext.setAnimationListener(new SecurePhoneBannerManager.2(this, paramDialog));
-    localLinearLayout.startAnimation(paramContext);
+    }
+    if (paramContext == null)
+    {
+      QLog.e("SecurePhoneBannerManager", 1, "showDialogExitAnim context is null");
+      return;
+    }
+    LinearLayout localLinearLayout = (LinearLayout)paramDialog.findViewById(2131370239);
+    if (localLinearLayout != null)
+    {
+      paramContext = AnimationUtils.loadAnimation(paramContext, 2130772379);
+      paramContext.setAnimationListener(new SecurePhoneBannerManager.2(this, paramDialog));
+      localLinearLayout.startAnimation(paramContext);
+    }
   }
   
   public TipsBar a(QQAppInterface paramQQAppInterface, Context paramContext)
@@ -147,7 +149,7 @@ public class SecurePhoneBannerManager
     TipsBar localTipsBar = new TipsBar(paramContext);
     localTipsBar.setVisibility(8);
     localTipsBar.a().setText(this.jdField_b_of_type_JavaLangString);
-    localTipsBar.setTipsIcon(paramContext.getResources().getDrawable(2130839417));
+    localTipsBar.setTipsIcon(paramContext.getResources().getDrawable(2130839273));
     localTipsBar.setOriginalOnClickListener(new SecurePhoneBannerManager.1(this, paramQQAppInterface, paramContext));
     return localTipsBar;
   }
@@ -170,47 +172,46 @@ public class SecurePhoneBannerManager
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     QLog.d("SecurePhoneBannerManager", 1, "getSecurePhoneState");
-    if (paramQQAppInterface == null) {
+    if (paramQQAppInterface == null)
+    {
       QLog.d("SecurePhoneBannerManager", 1, "getSecurePhoneState, app is null");
-    }
-    do
-    {
       return;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("SecurePhoneBannerManager", 2, "getSecurePhoneState, isShowing");
-        }
-        BannerManager.a().a(5, 2, null);
-        return;
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("SecurePhoneBannerManager", 2, "getSecurePhoneState, isShowing");
       }
-      if (paramQQAppInterface.isLogin()) {
-        break;
+      BannerManager.a().a(SecurePhoneChangeNotifyBannerProcessor.jdField_a_of_type_Int, 2, null);
+      return;
+    }
+    if (!paramQQAppInterface.isLogin())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("SecurePhoneBannerManager", 2, "getSecurePhoneState, but not login");
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("SecurePhoneBannerManager", 2, "getSecurePhoneState, but not login");
-    return;
+      return;
+    }
     String str = paramQQAppInterface.getCurrentAccountUin();
-    if (this.jdField_a_of_type_Int == 0) {}
-    for (int i = ((Integer)SharedPreUtils.a(paramContext, str, "sp_key_secure_phone_notice_time", Integer.valueOf(0))).intValue();; i = this.jdField_a_of_type_Int)
+    int j = this.jdField_a_of_type_Int;
+    int i = j;
+    if (j == 0) {
+      i = ((Integer)SharedPreUtils.a(paramContext, str, "sp_key_secure_phone_notice_time", Integer.valueOf(0))).intValue();
+    }
+    long l = i;
+    if (System.currentTimeMillis() < l * 1000L)
     {
-      long l = i;
-      if (System.currentTimeMillis() >= l * 1000L) {
-        break label151;
+      if (QLog.isColorLevel()) {
+        QLog.i("SecurePhoneBannerManager", 2, "getSecurePhoneState, but not time");
       }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("SecurePhoneBannerManager", 2, "getSecurePhoneState, but not time");
       return;
     }
-    label151:
     LoginVerifyServlet.b(paramQQAppInterface, new SecurePhoneBannerManager.8(this, paramQQAppInterface, paramContext, str));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.SecurePhoneBannerManager
  * JD-Core Version:    0.7.0.1
  */

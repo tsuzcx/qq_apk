@@ -23,31 +23,31 @@ public class StructMsgItemLayout22
   {
     LinearLayout localLinearLayout = new LinearLayout(paramContext);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    int i = AIOUtils.a(12.0F, paramContext.getResources());
+    int i = AIOUtils.b(12.0F, paramContext.getResources());
     localLinearLayout.setPadding(i, i, i, i);
     localLinearLayout.setLayoutParams(localLayoutParams);
     return localLinearLayout;
   }
   
-  public int b()
+  protected int b()
   {
     return 22;
   }
   
   public View b(Context paramContext, View paramView, Bundle paramBundle)
   {
-    Iterator localIterator;
     if ((paramView != null) && ((paramView instanceof LinearLayout)))
     {
       paramView = (LinearLayout)paramView;
       paramView.removeAllViews();
-      localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     }
-    for (;;)
+    else
     {
-      if (!localIterator.hasNext()) {
-        return paramView;
-      }
+      paramView = a(paramContext);
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
       Object localObject1 = (AbsStructMsgElement)localIterator.next();
       Object localObject2 = ((AbsStructMsgElement)localObject1).jdField_a_of_type_JavaLangString;
       ((AbsStructMsgElement)localObject1).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
@@ -67,16 +67,13 @@ public class StructMsgItemLayout22
         localObject2 = new LinearLayout.LayoutParams(-1, -2);
         ((LinearLayout.LayoutParams)localObject2).gravity = 16;
         ((LinearLayout.LayoutParams)localObject2).weight = 1.0F;
-        ((LinearLayout.LayoutParams)localObject2).rightMargin = AIOUtils.a(12.0F, paramContext.getResources());
+        ((LinearLayout.LayoutParams)localObject2).rightMargin = AIOUtils.b(12.0F, paramContext.getResources());
         paramView.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-        continue;
-        paramView = a(paramContext);
-        break;
       }
-      if ("picture".equals(localObject2))
+      else if ("picture".equals(localObject2))
       {
         localObject1 = ((AbsStructMsgElement)localObject1).a(paramContext, null, paramBundle);
-        int i = AIOUtils.a(50.0F, paramContext.getResources());
+        int i = AIOUtils.b(50.0F, paramContext.getResources());
         paramView.addView((View)localObject1, new LinearLayout.LayoutParams(i, i));
       }
     }
@@ -90,7 +87,7 @@ public class StructMsgItemLayout22
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout22
  * JD-Core Version:    0.7.0.1
  */

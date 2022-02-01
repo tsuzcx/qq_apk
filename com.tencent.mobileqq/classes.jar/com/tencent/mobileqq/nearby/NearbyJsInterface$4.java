@@ -2,10 +2,10 @@ package com.tencent.mobileqq.nearby;
 
 import android.os.Bundle;
 import com.tencent.biz.troop.TroopMemberApiClient;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.mobileqq.troop.api.ITroopMemberApiClientApi.Callback;
 
 class NearbyJsInterface$4
-  implements TroopMemberApiClient.Callback
+  implements ITroopMemberApiClientApi.Callback
 {
   NearbyJsInterface$4(NearbyJsInterface paramNearbyJsInterface, TroopMemberApiClient paramTroopMemberApiClient, int paramInt1, int paramInt2, int paramInt3) {}
   
@@ -17,7 +17,7 @@ class NearbyJsInterface$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyJsInterface.4
  * JD-Core Version:    0.7.0.1
  */

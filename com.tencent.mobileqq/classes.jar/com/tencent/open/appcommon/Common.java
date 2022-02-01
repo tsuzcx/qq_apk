@@ -9,30 +9,33 @@ import android.os.Environment;
 import android.os.Process;
 import android.os.StatFs;
 import android.text.TextUtils;
-import com.tencent.mobileqq.jsbridge.JsBridge.JsHandler;
 import com.tencent.mobileqq.vfs.VFSRegisterProxy;
 import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.appcommon.js.AsyncMethodMap;
 import com.tencent.open.base.LogUtility;
-import com.tencent.smtt.sdk.WebView;
 import java.io.File;
-import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Method;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class Common
 {
-  public static final String a = "file:///android_asset" + File.separator + "Page/system";
+  public static final String a;
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file:///android_asset");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("Page/system");
+    a = localStringBuilder.toString();
+  }
   
   public static int a()
   {
@@ -42,8 +45,7 @@ public class Common
   public static long a()
   {
     StatFs localStatFs = new StatFs(d());
-    long l = localStatFs.getAvailableBlocks();
-    return localStatFs.getBlockSize() * l;
+    return localStatFs.getAvailableBlocks() * localStatFs.getBlockSize();
   }
   
   /* Error */
@@ -66,256 +68,129 @@ public class Common
     //   25: aload_1
     //   26: aload_2
     //   27: invokespecial 88	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   30: astore 4
-    //   32: new 90	java/io/FileOutputStream
-    //   35: dup
-    //   36: aload 4
-    //   38: invokespecial 93	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   41: astore_2
-    //   42: aload_2
-    //   43: astore_1
-    //   44: sipush 4096
-    //   47: newarray byte
-    //   49: astore 5
-    //   51: aload_2
+    //   30: astore 5
+    //   32: aconst_null
+    //   33: astore 4
+    //   35: aconst_null
+    //   36: astore_1
+    //   37: new 90	java/io/FileOutputStream
+    //   40: dup
+    //   41: aload 5
+    //   43: invokespecial 93	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   46: astore_2
+    //   47: sipush 4096
+    //   50: newarray byte
     //   52: astore_1
     //   53: aload_0
-    //   54: aload 5
-    //   56: invokevirtual 99	java/io/InputStream:read	([B)I
-    //   59: istore_3
-    //   60: iconst_m1
-    //   61: iload_3
-    //   62: if_icmpeq +32 -> 94
-    //   65: aload_2
-    //   66: astore_1
-    //   67: aload_2
-    //   68: aload 5
-    //   70: iconst_0
-    //   71: iload_3
-    //   72: invokevirtual 103	java/io/FileOutputStream:write	([BII)V
-    //   75: goto -24 -> 51
-    //   78: astore_0
-    //   79: aload_2
-    //   80: astore_1
-    //   81: aload_0
-    //   82: athrow
-    //   83: astore_0
-    //   84: aload_1
-    //   85: ifnull +7 -> 92
-    //   88: aload_1
-    //   89: invokevirtual 106	java/io/FileOutputStream:close	()V
-    //   92: aload_0
-    //   93: athrow
-    //   94: aload_2
-    //   95: astore_1
-    //   96: aload_2
-    //   97: invokevirtual 109	java/io/FileOutputStream:flush	()V
-    //   100: aload_2
-    //   101: ifnull +7 -> 108
-    //   104: aload_2
-    //   105: invokevirtual 106	java/io/FileOutputStream:close	()V
-    //   108: aload 4
-    //   110: invokevirtual 112	java/io/File:length	()J
-    //   113: lreturn
-    //   114: astore_0
-    //   115: goto -7 -> 108
-    //   118: astore_1
-    //   119: goto -27 -> 92
-    //   122: astore_0
-    //   123: aconst_null
-    //   124: astore_1
-    //   125: goto -41 -> 84
-    //   128: astore_0
-    //   129: aconst_null
+    //   54: aload_1
+    //   55: invokevirtual 99	java/io/InputStream:read	([B)I
+    //   58: istore_3
+    //   59: iconst_m1
+    //   60: iload_3
+    //   61: if_icmpeq +13 -> 74
+    //   64: aload_2
+    //   65: aload_1
+    //   66: iconst_0
+    //   67: iload_3
+    //   68: invokevirtual 103	java/io/FileOutputStream:write	([BII)V
+    //   71: goto -18 -> 53
+    //   74: aload_2
+    //   75: invokevirtual 106	java/io/FileOutputStream:flush	()V
+    //   78: aload_2
+    //   79: invokevirtual 109	java/io/FileOutputStream:close	()V
+    //   82: aload 5
+    //   84: invokevirtual 112	java/io/File:length	()J
+    //   87: lreturn
+    //   88: astore_0
+    //   89: goto +21 -> 110
+    //   92: astore_0
+    //   93: aload_2
+    //   94: astore_1
+    //   95: goto +13 -> 108
+    //   98: astore_0
+    //   99: aload_1
+    //   100: astore_2
+    //   101: goto +9 -> 110
+    //   104: astore_0
+    //   105: aload 4
+    //   107: astore_1
+    //   108: aload_0
+    //   109: athrow
+    //   110: aload_2
+    //   111: ifnull +7 -> 118
+    //   114: aload_2
+    //   115: invokevirtual 109	java/io/FileOutputStream:close	()V
+    //   118: goto +5 -> 123
+    //   121: aload_0
+    //   122: athrow
+    //   123: goto -2 -> 121
+    //   126: astore_0
+    //   127: goto -45 -> 82
     //   130: astore_1
-    //   131: goto -50 -> 81
+    //   131: goto -13 -> 118
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	134	0	paramInputStream	java.io.InputStream
     //   0	134	1	paramString1	String
     //   0	134	2	paramString2	String
-    //   59	13	3	i	int
-    //   30	79	4	localFile	File
-    //   49	20	5	arrayOfByte	byte[]
+    //   58	10	3	i	int
+    //   33	73	4	localObject	Object
+    //   30	53	5	localFile	File
     // Exception table:
     //   from	to	target	type
-    //   44	51	78	java/lang/Exception
-    //   53	60	78	java/lang/Exception
-    //   67	75	78	java/lang/Exception
-    //   96	100	78	java/lang/Exception
-    //   44	51	83	finally
-    //   53	60	83	finally
-    //   67	75	83	finally
-    //   81	83	83	finally
-    //   96	100	83	finally
-    //   104	108	114	java/lang/Exception
-    //   88	92	118	java/lang/Exception
-    //   32	42	122	finally
-    //   32	42	128	java/lang/Exception
-  }
-  
-  public static String a(WebView paramWebView, HashMap<String, JsBridge.JsHandler> paramHashMap, String paramString)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    JSONArray localJSONArray1 = new JSONArray();
-    label737:
-    for (;;)
-    {
-      try
-      {
-        localJSONObject.put("r", "-1");
-        localJSONObject.put("data", localJSONArray1);
-        JSONArray localJSONArray2 = new JSONArray(URLDecoder.decode(paramString, "UTF-8"));
-        int i = 0;
-        String str1;
-        String str2;
-        Object localObject;
-        if (i < localJSONArray2.length())
-        {
-          paramWebView = localJSONArray2.optJSONObject(i);
-          if (paramWebView == null) {
-            break label737;
-          }
-          paramString = paramWebView.optString("ns");
-          str1 = paramWebView.optString("method");
-          str2 = paramWebView.optString("guid");
-          paramWebView = paramWebView.optString("args");
-          LogUtility.c("Common", "nameSpace:" + paramString + ",methodName=" + str1 + ",paramsStr=" + paramWebView);
-          localObject = new ArrayList();
-        }
-        int j;
-        Method[] arrayOfMethod;
-        int k;
-        i += 1;
-      }
-      catch (UnsupportedEncodingException paramWebView)
-      {
-        try
-        {
-          paramWebView = new JSONArray(paramWebView);
-          j = 0;
-          if (j < paramWebView.length())
-          {
-            ((List)localObject).add(paramWebView.getString(j));
-            j += 1;
-          }
-          else
-          {
-            paramWebView = (Class)AsyncMethodMap.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-            if (AsyncMethodMap.jdField_a_of_type_JavaUtilArrayList.contains(str1)) {
-              ((List)localObject).add(str2);
-            }
-            if (paramWebView != null)
-            {
-              arrayOfMethod = paramWebView.getMethods();
-              k = arrayOfMethod.length;
-              j = 0;
-              if (j < k)
-              {
-                paramWebView = arrayOfMethod[j];
-                if ((paramWebView.getName().equals(str1)) && (paramWebView.getParameterTypes().length == ((List)localObject).size()))
-                {
-                  if (paramWebView == null) {
-                    break label737;
-                  }
-                  paramString = paramHashMap.get(paramString);
-                  try
-                  {
-                    LogUtility.c("Common", "callBatch <call> class : " + paramString.getClass().getName() + " , method : " + str1 + "\n , args : " + localObject.toString());
-                    if (((List)localObject).size() != 0) {
-                      continue;
-                    }
-                    paramString = paramWebView.invoke(paramString, new Object[0]);
-                    paramWebView = paramWebView.getReturnType();
-                    if ((paramWebView == Void.TYPE) || (paramWebView == Void.class) || (paramString == null)) {
-                      break label737;
-                    }
-                    if (!(paramString instanceof String)) {
-                      continue;
-                    }
-                    ((String)paramString).replace("\\", "\\\\").replace("'", "\\'");
-                    paramWebView = (String)paramString;
-                    paramString = new JSONObject();
-                    localObject = new JSONArray();
-                    paramString.put("guid", str2);
-                    paramString.put("r", 0);
-                    paramString.put("data", paramWebView);
-                    ((JSONArray)localObject).put("interface." + str1);
-                    ((JSONArray)localObject).put(paramString);
-                    localJSONArray1.put(localObject);
-                  }
-                  catch (Exception paramWebView)
-                  {
-                    LogUtility.c("Common", "callBatch error", paramWebView);
-                  }
-                  paramWebView = paramWebView;
-                  LogUtility.b("Common", "callBatch decode params format err", paramWebView);
-                  return localJSONObject.toString();
-                }
-              }
-            }
-          }
-        }
-        catch (Exception paramWebView)
-        {
-          LogUtility.e("Common", "callBatch args error : " + paramWebView.toString());
-        }
-      }
-      catch (JSONException paramWebView)
-      {
-        LogUtility.b("Common", "callBatch request params format err", paramWebView);
-        continue;
-        j += 1;
-        continue;
-        paramString = paramWebView.invoke(paramString, ((List)localObject).toArray());
-        continue;
-        if (((paramString instanceof Number)) || ((paramString instanceof Long)) || ((paramString instanceof Integer)) || ((paramString instanceof Double)) || ((paramString instanceof Float)))
-        {
-          paramWebView = paramString.toString();
-        }
-        else if ((paramString instanceof Boolean))
-        {
-          paramWebView = paramString.toString();
-          continue;
-          localJSONObject.put("r", 0);
-          localJSONObject.put("data", localJSONArray1);
-          LogUtility.c("Common", "Response<callBatch> syncCallBatch result : " + localJSONObject);
-        }
-        else
-        {
-          paramWebView = "";
-          continue;
-          paramWebView = null;
-        }
-      }
-    }
+    //   47	53	88	finally
+    //   53	59	88	finally
+    //   64	71	88	finally
+    //   74	78	88	finally
+    //   47	53	92	java/lang/Exception
+    //   53	59	92	java/lang/Exception
+    //   64	71	92	java/lang/Exception
+    //   74	78	92	java/lang/Exception
+    //   37	47	98	finally
+    //   108	110	98	finally
+    //   37	47	104	java/lang/Exception
+    //   78	82	126	java/lang/Exception
+    //   114	118	130	java/lang/Exception
   }
   
   public static String a(Map<String, String> paramMap)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
+    StringBuilder localStringBuilder1 = new StringBuilder();
     Iterator localIterator = paramMap.keySet().iterator();
     int i = 1;
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramMap.get(str1);
+      String str = (String)localIterator.next();
+      Object localObject = (String)paramMap.get(str);
+      StringBuilder localStringBuilder2;
       if (i != 0)
       {
-        localStringBuilder.append(str1 + "=" + URLEncoder.encode(str2, "utf-8"));
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append(str);
+        localStringBuilder2.append("=");
+        localStringBuilder2.append(URLEncoder.encode((String)localObject, "utf-8"));
+        localStringBuilder1.append(localStringBuilder2.toString());
         i = 0;
       }
-      for (;;)
+      else if (localObject != null)
       {
-        break;
-        if (str2 != null) {
-          localStringBuilder.append("&" + str1 + "=" + URLEncoder.encode(str2, "utf-8"));
-        } else {
-          localStringBuilder.append("&" + str1 + "=");
-        }
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("&");
+        localStringBuilder2.append(str);
+        localStringBuilder2.append("=");
+        localStringBuilder2.append(URLEncoder.encode((String)localObject, "utf-8"));
+        localStringBuilder1.append(localStringBuilder2.toString());
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("&");
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append("=");
+        localStringBuilder1.append(((StringBuilder)localObject).toString());
       }
     }
-    return localStringBuilder.toString();
+    return localStringBuilder1.toString();
   }
   
   public static HashMap<String, String> a(String paramString)
@@ -382,65 +257,41 @@ public class Common
   
   public static void a(String paramString)
   {
-    LogUtility.c("Common", "setResourceMD5=" + paramString);
-    SharedPreferences.Editor localEditor = CommonDataAdapter.a().a().getSharedPreferences("qzoneappcenter", 4).edit();
-    localEditor.putString("relastmd5", paramString);
-    localEditor.commit();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setResourceMD5=");
+    ((StringBuilder)localObject).append(paramString);
+    LogUtility.c("Common", ((StringBuilder)localObject).toString());
+    localObject = CommonDataAdapter.a().a().getSharedPreferences("qzoneappcenter", 4).edit();
+    ((SharedPreferences.Editor)localObject).putString("relastmd5", paramString);
+    ((SharedPreferences.Editor)localObject).commit();
   }
   
-  /* Error */
   public static void a(boolean paramBoolean)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: invokestatic 421	java/util/concurrent/Executors:newSingleThreadScheduledExecutor	()Ljava/util/concurrent/ScheduledExecutorService;
-    //   6: astore_3
-    //   7: new 423	com/tencent/open/appcommon/Common$1
-    //   10: dup
-    //   11: invokespecial 424	com/tencent/open/appcommon/Common$1:<init>	()V
-    //   14: astore 4
-    //   16: iload_0
-    //   17: ifeq +24 -> 41
-    //   20: ldc2_w 425
-    //   23: lstore_1
-    //   24: aload_3
-    //   25: aload 4
-    //   27: lload_1
-    //   28: getstatic 432	java/util/concurrent/TimeUnit:SECONDS	Ljava/util/concurrent/TimeUnit;
-    //   31: invokeinterface 438 5 0
-    //   36: pop
-    //   37: ldc 2
-    //   39: monitorexit
-    //   40: return
-    //   41: lconst_0
-    //   42: lstore_1
-    //   43: goto -19 -> 24
-    //   46: astore_3
-    //   47: ldc 2
-    //   49: monitorexit
-    //   50: aload_3
-    //   51: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	52	0	paramBoolean	boolean
-    //   23	20	1	l	long
-    //   6	19	3	localScheduledExecutorService	java.util.concurrent.ScheduledExecutorService
-    //   46	5	3	localObject	Object
-    //   14	12	4	local1	Common.1
-    // Exception table:
-    //   from	to	target	type
-    //   3	16	46	finally
-    //   24	37	46	finally
+    for (;;)
+    {
+      try
+      {
+        ScheduledExecutorService localScheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
+        Common.1 local1 = new Common.1();
+        if (paramBoolean)
+        {
+          l = 10L;
+          localScheduledExecutorService.schedule(local1, l, TimeUnit.SECONDS);
+          return;
+        }
+      }
+      finally {}
+      long l = 0L;
+    }
   }
   
   public static boolean a()
   {
-    if (Environment.getExternalStorageState().equals("mounted")) {}
-    while (new File("/mnt/sdcard-ext").isDirectory()) {
+    if (Environment.getExternalStorageState().equals("mounted")) {
       return true;
     }
-    return false;
+    return new File("/mnt/sdcard-ext").isDirectory();
   }
   
   public static long[] a()
@@ -451,48 +302,70 @@ public class Common
   
   public static String[] a(String paramString)
   {
-    String str2;
-    String str1;
-    if (paramString.toLowerCase().startsWith("sd://"))
+    boolean bool = paramString.toLowerCase().startsWith("sd://");
+    String str = "";
+    Object localObject2 = str;
+    Object localObject1 = paramString;
+    if (bool)
     {
-      str2 = paramString.substring("sd://".length());
-      int i = str2.indexOf("?");
+      localObject2 = paramString.substring(5);
+      int i = ((String)localObject2).indexOf("?");
+      paramString = str;
+      localObject1 = localObject2;
       if (i != -1)
       {
-        str1 = str2.substring(0, i);
-        paramString = str2.substring(i + 1);
-        if (new File(g() + File.separator + str1).exists())
-        {
-          str2 = "file:///" + g() + File.separator + str1;
-          str1 = paramString;
-        }
+        localObject1 = ((String)localObject2).substring(0, i);
+        paramString = ((String)localObject2).substring(i + 1);
+      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(g());
+      ((StringBuilder)localObject2).append(File.separator);
+      ((StringBuilder)localObject2).append((String)localObject1);
+      if (new File(((StringBuilder)localObject2).toString()).exists())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("file:///");
+        ((StringBuilder)localObject2).append(g());
+        ((StringBuilder)localObject2).append(File.separator);
+        ((StringBuilder)localObject2).append((String)localObject1);
+        localObject1 = ((StringBuilder)localObject2).toString();
+        localObject2 = paramString;
+      }
+      else
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("file:///android_asset/Page/system/");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        localObject1 = ((StringBuilder)localObject2).toString();
+        localObject2 = paramString;
       }
     }
-    for (;;)
+    paramString = (String)localObject2;
+    if (!TextUtils.isEmpty((CharSequence)localObject2))
     {
-      paramString = str1;
-      if (!TextUtils.isEmpty(str1)) {
-        paramString = "&" + str1;
-      }
-      LogUtility.c("Common", "url params= " + str2 + " " + paramString);
-      return new String[] { str2, paramString };
-      str2 = "file:///android_asset/Page/system/" + str1;
-      str1 = paramString;
-      continue;
-      paramString = "";
-      str1 = str2;
-      break;
-      str1 = "";
-      str2 = paramString;
+      paramString = new StringBuilder();
+      paramString.append("&");
+      paramString.append((String)localObject2);
+      paramString = paramString.toString();
     }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("url params= ");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(" ");
+    ((StringBuilder)localObject2).append(paramString);
+    LogUtility.c("Common", ((StringBuilder)localObject2).toString());
+    return new String[] { localObject1, paramString };
   }
   
   public static void b(String paramString)
   {
-    LogUtility.c("Common", "setLastResourceZipMd5=" + paramString);
-    SharedPreferences.Editor localEditor = CommonDataAdapter.a().a().getSharedPreferences("qzoneappcenter", 4).edit();
-    localEditor.putString("lastresourcezipmd5", paramString);
-    localEditor.commit();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setLastResourceZipMd5=");
+    ((StringBuilder)localObject).append(paramString);
+    LogUtility.c("Common", ((StringBuilder)localObject).toString());
+    localObject = CommonDataAdapter.a().a().getSharedPreferences("qzoneappcenter", 4).edit();
+    ((SharedPreferences.Editor)localObject).putString("lastresourcezipmd5", paramString);
+    ((SharedPreferences.Editor)localObject).commit();
   }
   
   public static void b(boolean paramBoolean)
@@ -509,7 +382,11 @@ public class Common
   
   public static String c()
   {
-    return e() + File.separator + ".AppCenterWebBuffer_QQ";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(e());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(".AppCenterWebBuffer_QQ");
+    return localStringBuilder.toString();
   }
   
   public static void c(String paramString)
@@ -521,14 +398,18 @@ public class Common
   
   public static String d()
   {
+    String str = ".";
     try
     {
-      if ("mounted".equals(Environment.getExternalStorageState())) {
+      boolean bool = "mounted".equals(Environment.getExternalStorageState());
+      if (bool) {
         return Environment.getExternalStorageDirectory().getAbsolutePath();
       }
-      if (new File("/mnt/sdcard-ext").isDirectory()) {
-        return "/mnt/sdcard-ext";
+      bool = new File("/mnt/sdcard-ext").isDirectory();
+      if (bool) {
+        str = "/mnt/sdcard-ext";
       }
+      return str;
     }
     catch (Exception localException) {}
     return ".";
@@ -561,47 +442,82 @@ public class Common
   
   public static String f()
   {
-    return g() + File.separator + "qapp_center_index.htm";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(g());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("qapp_center_index.htm");
+    return localStringBuilder.toString();
   }
   
   public static String g()
   {
     String str = q();
-    LogUtility.b("Common", "<getSDResDir> getSDResDir=" + str);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("<getSDResDir> getSDResDir=");
+    localStringBuilder.append(str);
+    LogUtility.b("Common", localStringBuilder.toString());
     if (TextUtils.isEmpty(str)) {
       return "";
     }
-    return c() + File.separator + str;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(str);
+    return localStringBuilder.toString();
   }
   
   public static String h()
   {
-    return c() + File.separator + "tmp";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("tmp");
+    return localStringBuilder.toString();
   }
   
   public static String i()
   {
-    return c() + File.separator + "system_old_";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("system_old_");
+    return localStringBuilder.toString();
   }
   
   public static String j()
   {
-    return c() + File.separator + "resource.zip";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("resource.zip");
+    return localStringBuilder.toString();
   }
   
   public static String k()
   {
-    return c() + File.separator + "resource.diff";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("resource.diff");
+    return localStringBuilder.toString();
   }
   
   public static String l()
   {
-    return c() + File.separator + "resource_merged.zip";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("resource_merged.zip");
+    return localStringBuilder.toString();
   }
   
   public static String m()
   {
-    return "file:///android_asset" + File.separator + "Page/system";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file:///android_asset");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("Page/system");
+    return localStringBuilder.toString();
   }
   
   public static String n()
@@ -626,35 +542,39 @@ public class Common
   
   public static String r()
   {
+    String str = "";
     int i = Process.myPid();
     try
     {
-      Object localObject = CommonDataAdapter.a().a();
-      if (localObject != null)
+      Object localObject2 = CommonDataAdapter.a().a();
+      Object localObject1 = str;
+      if (localObject2 != null)
       {
-        localObject = ((ActivityManager)((Context)localObject).getSystemService("activity")).getRunningAppProcesses().iterator();
-        while (((Iterator)localObject).hasNext())
+        localObject2 = ((ActivityManager)((Context)localObject2).getSystemService("activity")).getRunningAppProcesses().iterator();
+        do
         {
-          ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
-          if (localRunningAppProcessInfo.pid == i)
-          {
-            localObject = localRunningAppProcessInfo.processName;
-            return localObject;
+          localObject1 = str;
+          if (!((Iterator)localObject2).hasNext()) {
+            break;
           }
-        }
+          localObject1 = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject2).next();
+        } while (((ActivityManager.RunningAppProcessInfo)localObject1).pid != i);
+        localObject1 = ((ActivityManager.RunningAppProcessInfo)localObject1).processName;
       }
+      return localObject1;
     }
     catch (Exception localException)
     {
-      LogUtility.c("Common", "exception happened!");
-      return "";
+      label76:
+      break label76;
     }
+    LogUtility.c("Common", "exception happened!");
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appcommon.Common
  * JD-Core Version:    0.7.0.1
  */

@@ -23,20 +23,19 @@ class QQStoryWatcherListActivity$1
   {
     if ((paramInt == 0) && (this.c + this.jdField_a_of_type_Int >= this.b))
     {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.b) {
+      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.b)
+      {
         this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a(3);
+        return;
       }
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a(1);
+      QQStoryWatcherListActivity.GetWatcherHelper.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a);
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a(1);
-    QQStoryWatcherListActivity.GetWatcherHelper.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity.1
  * JD-Core Version:    0.7.0.1
  */

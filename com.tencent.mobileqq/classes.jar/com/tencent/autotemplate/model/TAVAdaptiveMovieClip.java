@@ -35,45 +35,48 @@ public class TAVAdaptiveMovieClip
     }
     localObject = new TAVMovieTrackResource((String)localObject);
     ((TAVMovieTrackResource)localObject).setType(TAVMovieResource.TAVResourceType.TAVResourceTypeAudio);
-    float f = ((TAVMovieTrackResource)localObject).getTimeRange().getDuration().getTimeSeconds() * 1000.0F;
-    if (f - this.startOffset >= this.duration) {}
-    for (f = this.duration;; f -= this.startOffset)
-    {
-      ((TAVMovieTrackResource)localObject).setTimeRange(new CMTimeRange(new CMTime(this.startOffset / 1000.0F), new CMTime(f / 1000.0F)));
-      return localObject;
+    float f2 = ((TAVMovieTrackResource)localObject).getTimeRange().getDuration().getTimeSeconds() * 1000.0F;
+    float f3 = this.startOffset;
+    float f1 = this.duration;
+    if (f2 - f3 < f1) {
+      f1 = f2 - f3;
     }
+    ((TAVMovieTrackResource)localObject).setTimeRange(new CMTimeRange(new CMTime(this.startOffset / 1000.0F), new CMTime(f1 / 1000.0F)));
+    return localObject;
   }
   
   private String getFullPath()
   {
-    Object localObject2 = null;
-    Object localObject1;
     if ((!TextUtils.isEmpty(this.fileName)) && (new File(this.fileName).exists())) {
-      localObject1 = this.fileName;
+      return this.fileName;
     }
-    do
+    if ((!TextUtils.isEmpty(this.fileDir)) && (!TextUtils.isEmpty(this.fileName)))
     {
-      do
-      {
-        return localObject1;
-        localObject1 = localObject2;
-      } while (TextUtils.isEmpty(this.fileDir));
-      localObject1 = localObject2;
-    } while (TextUtils.isEmpty(this.fileName));
-    return this.fileDir + "/" + this.fileName;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.fileDir);
+      localStringBuilder.append("/");
+      localStringBuilder.append(this.fileName);
+      return localStringBuilder.toString();
+    }
+    return null;
   }
   
   public TAVMovieClip convertToMovieClip()
   {
     TAVMovieClip localTAVMovieClip = new TAVMovieClip();
     localTAVMovieClip.setResource(convertToMovieTrackResource());
-    if ((localTAVMovieClip.getResource() == null) || (localTAVMovieClip.getResource().getStatus() == TAVMovieResource.TAVMovieResourceStatus.TAVMovieResourceStatusError)) {}
-    do
+    if (localTAVMovieClip.getResource() != null)
     {
-      return null;
+      if (localTAVMovieClip.getResource().getStatus() == TAVMovieResource.TAVMovieResourceStatus.TAVMovieResourceStatusError) {
+        return null;
+      }
       localTAVMovieClip.getAudioConfiguration().setVolume(this.volume);
-    } while (!localTAVMovieClip.getResource().getTimeRange().isLegal());
-    return localTAVMovieClip;
+      if (!localTAVMovieClip.getResource().getTimeRange().isLegal()) {
+        return null;
+      }
+      return localTAVMovieClip;
+    }
+    return null;
   }
   
   public float getDuration()

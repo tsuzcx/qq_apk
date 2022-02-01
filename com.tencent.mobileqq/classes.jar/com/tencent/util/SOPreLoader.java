@@ -18,20 +18,24 @@ public class SOPreLoader
     if (TextUtils.isEmpty(a))
     {
       Object localObject = BaseApplicationImpl.getContext();
-      if (localObject == null) {
-        break label65;
+      if (localObject != null)
+      {
+        localObject = ((Context)localObject).getFilesDir();
+        if (TextUtils.isEmpty(a))
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(((File)localObject).getParent());
+          localStringBuilder.append("/txlib/");
+          localStringBuilder.append("cmshow/");
+          a = localStringBuilder.toString();
+        }
       }
-      localObject = ((Context)localObject).getFilesDir();
-      if (TextUtils.isEmpty(a)) {
-        a = ((File)localObject).getParent() + "/txlib/" + "cmshow/";
+      else
+      {
+        QLog.w("ApolloSoLoader_preLoader", 2, "getSoLibPath but context is null");
       }
     }
-    for (;;)
-    {
-      return a;
-      label65:
-      QLog.w("ApolloSoLoader_preLoader", 2, "getSoLibPath but context is null");
-    }
+    return a;
   }
   
   public static void a(String paramString)
@@ -52,7 +56,7 @@ public class SOPreLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.SOPreLoader
  * JD-Core Version:    0.7.0.1
  */

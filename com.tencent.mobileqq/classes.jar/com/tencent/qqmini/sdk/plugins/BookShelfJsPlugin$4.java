@@ -26,19 +26,25 @@ class BookShelfJsPlugin$4
     {
       Object localObject;
       long l;
+      StringBuilder localStringBuilder;
       QMLog.e("BookShelfJsPlugin", "handleQueryBookshelf exception: ", paramJSONObject);
       ApiUtil.wrapCallbackFail(this.val$req.event, null);
     }
     l = paramJSONObject.optLong("retCode");
     localObject = paramJSONObject.optString("errMsg");
-    QMLog.e("BookShelfJsPlugin", "handleQueryBookshelf fail, retCode: " + l + "; errMsg : " + (String)localObject);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleQueryBookshelf fail, retCode: ");
+    localStringBuilder.append(l);
+    localStringBuilder.append("; errMsg : ");
+    localStringBuilder.append((String)localObject);
+    QMLog.e("BookShelfJsPlugin", localStringBuilder.toString());
     this.val$req.fail(paramJSONObject, null);
     return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.BookShelfJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

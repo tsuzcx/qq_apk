@@ -26,20 +26,20 @@ public class VideoCardHolder
     super(paramView);
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_ComTencentMobileqqNowWidgetRoundedRectImageView = ((RoundedRectImageView)paramView.findViewById(2131364410));
-    this.jdField_a_of_type_ComTencentMobileqqNowWidgetCircleImageView = ((CircleImageView)paramView.findViewById(2131362720));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362723));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131362721));
-    this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131362725));
-    this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetFrameAnimationView = ((FrameAnimationView)paramView.findViewById(2131362724));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131381803));
-    this.c = ((TextView)paramView.findViewById(2131377353));
+    this.jdField_a_of_type_ComTencentMobileqqNowWidgetRoundedRectImageView = ((RoundedRectImageView)paramView.findViewById(2131364301));
+    this.jdField_a_of_type_ComTencentMobileqqNowWidgetCircleImageView = ((CircleImageView)paramView.findViewById(2131362677));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362679));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131362678));
+    this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131362681));
+    this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetFrameAnimationView = ((FrameAnimationView)paramView.findViewById(2131362680));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131381025));
+    this.c = ((TextView)paramView.findViewById(2131376806));
     paramView.setTag(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.VideoCardHolder
  * JD-Core Version:    0.7.0.1
  */

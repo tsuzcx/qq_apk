@@ -16,39 +16,36 @@ public abstract class d
   
   private void a(SQLiteDatabase paramSQLiteDatabase)
   {
-    ab.c("SqliteHelper", "tables count:" + b().length);
-    Class[] arrayOfClass = b();
-    int j = arrayOfClass.length;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("tables count:");
+    ((StringBuilder)localObject).append(b().length);
+    ab.c("SqliteHelper", ((StringBuilder)localObject).toString());
+    localObject = b();
+    int j = localObject.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i >= j) {
-        return;
-      }
-      Object localObject = arrayOfClass[i];
+      String str = localObject[i];
       try
       {
-        localObject = ((c)((Class)localObject).newInstance()).createTableSQL();
-        if ((localObject != null) && (((String)localObject).length() > 0)) {
-          paramSQLiteDatabase.execSQL((String)localObject);
+        str = ((c)str.newInstance()).createTableSQL();
+        if ((str != null) && (str.length() > 0)) {
+          paramSQLiteDatabase.execSQL(str);
         }
-        ab.c("SqliteHelper", "sql=" + (String)localObject);
-      }
-      catch (InstantiationException localInstantiationException)
-      {
-        for (;;)
-        {
-          ab.c("SqliteHelper", "exception: ", localInstantiationException);
-          localInstantiationException.printStackTrace();
-        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("sql=");
+        localStringBuilder.append(str);
+        ab.c("SqliteHelper", localStringBuilder.toString());
       }
       catch (IllegalAccessException localIllegalAccessException)
       {
-        for (;;)
-        {
-          ab.c("SqliteHelper", "exception: ", localIllegalAccessException);
-          localIllegalAccessException.printStackTrace();
-        }
+        ab.c("SqliteHelper", "exception: ", localIllegalAccessException);
+        localIllegalAccessException.printStackTrace();
+      }
+      catch (InstantiationException localInstantiationException)
+      {
+        ab.c("SqliteHelper", "exception: ", localInstantiationException);
+        localInstantiationException.printStackTrace();
       }
       i += 1;
     }
@@ -59,33 +56,24 @@ public abstract class d
     Class[] arrayOfClass = b();
     int j = arrayOfClass.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i < j)
+      Class localClass = arrayOfClass[i];
+      try
       {
-        Class localClass = arrayOfClass[i];
-        try
-        {
-          paramSQLiteDatabase.delete(((c)localClass.newInstance()).tableName(), null, null);
-          i += 1;
-        }
-        catch (InstantiationException localInstantiationException)
-        {
-          for (;;)
-          {
-            ab.c("SqliteHelper", "exception: ", localInstantiationException);
-            localInstantiationException.printStackTrace();
-          }
-        }
-        catch (IllegalAccessException localIllegalAccessException)
-        {
-          for (;;)
-          {
-            ab.c("SqliteHelper", "exception: ", localIllegalAccessException);
-            localIllegalAccessException.printStackTrace();
-          }
-        }
+        paramSQLiteDatabase.delete(((c)localClass.newInstance()).tableName(), null, null);
       }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        ab.c("SqliteHelper", "exception: ", localIllegalAccessException);
+        localIllegalAccessException.printStackTrace();
+      }
+      catch (InstantiationException localInstantiationException)
+      {
+        ab.c("SqliteHelper", "exception: ", localInstantiationException);
+        localInstantiationException.printStackTrace();
+      }
+      i += 1;
     }
   }
   
@@ -99,63 +87,68 @@ public abstract class d
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: aload_0
-    //   3: invokespecial 92	android/database/sqlite/SQLiteOpenHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   6: astore_1
-    //   7: aload_1
-    //   8: invokevirtual 96	android/database/sqlite/SQLiteDatabase:isDbLockedByCurrentThread	()Z
-    //   11: ifne +12 -> 23
-    //   14: aload_1
-    //   15: astore_2
-    //   16: aload_1
-    //   17: invokevirtual 99	android/database/sqlite/SQLiteDatabase:isDbLockedByOtherThreads	()Z
-    //   20: ifeq +27 -> 47
-    //   23: ldc2_w 100
-    //   26: invokestatic 107	android/os/SystemClock:sleep	(J)V
-    //   29: goto -22 -> 7
-    //   32: astore_2
-    //   33: ldc 17
-    //   35: ldc 72
-    //   37: aload_2
-    //   38: invokestatic 75	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   41: aload_2
-    //   42: invokevirtual 108	java/lang/Exception:printStackTrace	()V
-    //   45: aload_1
-    //   46: astore_2
-    //   47: aload_0
-    //   48: monitorexit
+    //   2: aconst_null
+    //   3: astore_1
+    //   4: aload_0
+    //   5: invokespecial 92	android/database/sqlite/SQLiteOpenHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   8: astore_2
+    //   9: aload_2
+    //   10: astore_1
+    //   11: aload_2
+    //   12: invokevirtual 96	android/database/sqlite/SQLiteDatabase:isDbLockedByCurrentThread	()Z
+    //   15: ifne +14 -> 29
+    //   18: aload_2
+    //   19: astore_1
+    //   20: aload_2
+    //   21: astore_3
+    //   22: aload_2
+    //   23: invokevirtual 99	android/database/sqlite/SQLiteDatabase:isDbLockedByOtherThreads	()Z
+    //   26: ifeq +33 -> 59
+    //   29: aload_2
+    //   30: astore_1
+    //   31: ldc2_w 100
+    //   34: invokestatic 107	android/os/SystemClock:sleep	(J)V
+    //   37: goto -28 -> 9
+    //   40: astore_1
+    //   41: goto +22 -> 63
+    //   44: astore_2
+    //   45: ldc 35
+    //   47: ldc 72
     //   49: aload_2
-    //   50: areturn
-    //   51: astore_1
-    //   52: aload_0
-    //   53: monitorexit
-    //   54: aload_1
-    //   55: athrow
-    //   56: astore_2
-    //   57: aconst_null
-    //   58: astore_1
-    //   59: goto -26 -> 33
+    //   50: invokestatic 75	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   53: aload_2
+    //   54: invokevirtual 108	java/lang/Exception:printStackTrace	()V
+    //   57: aload_1
+    //   58: astore_3
+    //   59: aload_0
+    //   60: monitorexit
+    //   61: aload_3
+    //   62: areturn
+    //   63: aload_0
+    //   64: monitorexit
+    //   65: goto +5 -> 70
+    //   68: aload_1
+    //   69: athrow
+    //   70: goto -2 -> 68
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	62	0	this	d
-    //   6	40	1	localSQLiteDatabase1	SQLiteDatabase
-    //   51	4	1	localObject1	Object
-    //   58	1	1	localObject2	Object
-    //   15	1	2	localSQLiteDatabase2	SQLiteDatabase
-    //   32	10	2	localException1	Exception
-    //   46	4	2	localSQLiteDatabase3	SQLiteDatabase
-    //   56	1	2	localException2	Exception
+    //   0	73	0	this	d
+    //   3	28	1	localObject1	Object
+    //   40	29	1	localObject2	Object
+    //   8	22	2	localSQLiteDatabase	SQLiteDatabase
+    //   44	10	2	localException	Exception
+    //   21	41	3	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   7	14	32	java/lang/Exception
-    //   16	23	32	java/lang/Exception
-    //   23	29	32	java/lang/Exception
-    //   2	7	51	finally
-    //   7	14	51	finally
-    //   16	23	51	finally
-    //   23	29	51	finally
-    //   33	45	51	finally
-    //   2	7	56	java/lang/Exception
+    //   4	9	40	finally
+    //   11	18	40	finally
+    //   22	29	40	finally
+    //   31	37	40	finally
+    //   45	57	40	finally
+    //   4	9	44	java/lang/Exception
+    //   11	18	44	java/lang/Exception
+    //   22	29	44	java/lang/Exception
+    //   31	37	44	java/lang/Exception
   }
   
   /* Error */
@@ -164,63 +157,68 @@ public abstract class d
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: aload_0
-    //   3: invokespecial 111	android/database/sqlite/SQLiteOpenHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   6: astore_1
-    //   7: aload_1
-    //   8: invokevirtual 96	android/database/sqlite/SQLiteDatabase:isDbLockedByCurrentThread	()Z
-    //   11: ifne +12 -> 23
-    //   14: aload_1
-    //   15: astore_2
-    //   16: aload_1
-    //   17: invokevirtual 99	android/database/sqlite/SQLiteDatabase:isDbLockedByOtherThreads	()Z
-    //   20: ifeq +27 -> 47
-    //   23: ldc2_w 100
-    //   26: invokestatic 107	android/os/SystemClock:sleep	(J)V
-    //   29: goto -22 -> 7
-    //   32: astore_2
-    //   33: ldc 17
-    //   35: ldc 72
-    //   37: aload_2
-    //   38: invokestatic 75	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   41: aload_2
-    //   42: invokevirtual 108	java/lang/Exception:printStackTrace	()V
-    //   45: aload_1
-    //   46: astore_2
-    //   47: aload_0
-    //   48: monitorexit
+    //   2: aconst_null
+    //   3: astore_1
+    //   4: aload_0
+    //   5: invokespecial 111	android/database/sqlite/SQLiteOpenHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   8: astore_2
+    //   9: aload_2
+    //   10: astore_1
+    //   11: aload_2
+    //   12: invokevirtual 96	android/database/sqlite/SQLiteDatabase:isDbLockedByCurrentThread	()Z
+    //   15: ifne +14 -> 29
+    //   18: aload_2
+    //   19: astore_1
+    //   20: aload_2
+    //   21: astore_3
+    //   22: aload_2
+    //   23: invokevirtual 99	android/database/sqlite/SQLiteDatabase:isDbLockedByOtherThreads	()Z
+    //   26: ifeq +33 -> 59
+    //   29: aload_2
+    //   30: astore_1
+    //   31: ldc2_w 100
+    //   34: invokestatic 107	android/os/SystemClock:sleep	(J)V
+    //   37: goto -28 -> 9
+    //   40: astore_1
+    //   41: goto +22 -> 63
+    //   44: astore_2
+    //   45: ldc 35
+    //   47: ldc 72
     //   49: aload_2
-    //   50: areturn
-    //   51: astore_1
-    //   52: aload_0
-    //   53: monitorexit
-    //   54: aload_1
-    //   55: athrow
-    //   56: astore_2
-    //   57: aconst_null
-    //   58: astore_1
-    //   59: goto -26 -> 33
+    //   50: invokestatic 75	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   53: aload_2
+    //   54: invokevirtual 108	java/lang/Exception:printStackTrace	()V
+    //   57: aload_1
+    //   58: astore_3
+    //   59: aload_0
+    //   60: monitorexit
+    //   61: aload_3
+    //   62: areturn
+    //   63: aload_0
+    //   64: monitorexit
+    //   65: goto +5 -> 70
+    //   68: aload_1
+    //   69: athrow
+    //   70: goto -2 -> 68
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	62	0	this	d
-    //   6	40	1	localSQLiteDatabase1	SQLiteDatabase
-    //   51	4	1	localObject1	Object
-    //   58	1	1	localObject2	Object
-    //   15	1	2	localSQLiteDatabase2	SQLiteDatabase
-    //   32	10	2	localException1	Exception
-    //   46	4	2	localSQLiteDatabase3	SQLiteDatabase
-    //   56	1	2	localException2	Exception
+    //   0	73	0	this	d
+    //   3	28	1	localObject1	Object
+    //   40	29	1	localObject2	Object
+    //   8	22	2	localSQLiteDatabase	SQLiteDatabase
+    //   44	10	2	localException	Exception
+    //   21	41	3	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   7	14	32	java/lang/Exception
-    //   16	23	32	java/lang/Exception
-    //   23	29	32	java/lang/Exception
-    //   2	7	51	finally
-    //   7	14	51	finally
-    //   16	23	51	finally
-    //   23	29	51	finally
-    //   33	45	51	finally
-    //   2	7	56	java/lang/Exception
+    //   4	9	40	finally
+    //   11	18	40	finally
+    //   22	29	40	finally
+    //   31	37	40	finally
+    //   45	57	40	finally
+    //   4	9	44	java/lang/Exception
+    //   11	18	44	java/lang/Exception
+    //   22	29	44	java/lang/Exception
+    //   31	37	44	java/lang/Exception
   }
   
   public void onCreate(SQLiteDatabase paramSQLiteDatabase)
@@ -238,7 +236,12 @@ public abstract class d
   {
     super.onOpen(paramSQLiteDatabase);
     int i = paramSQLiteDatabase.getVersion();
-    ab.c("SqliteHelper", " dbversion:" + i + " newVersion:" + a());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" dbversion:");
+    localStringBuilder.append(i);
+    localStringBuilder.append(" newVersion:");
+    localStringBuilder.append(a());
+    ab.c("SqliteHelper", localStringBuilder.toString());
     if (i == 0) {
       return;
     }
@@ -270,7 +273,10 @@ public abstract class d
           try
           {
             localObject = ((c)((Class)localObject).newInstance()).getAlterSQL(paramInt1, paramInt1 + 1);
-            ab.c("sqliteHelper", " upgrade:" + localObject);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(" upgrade:");
+            localStringBuilder.append(localObject);
+            ab.c("sqliteHelper", localStringBuilder.toString());
             if (localObject != null)
             {
               int j = 0;
@@ -295,7 +301,7 @@ public abstract class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistant.common.a.d
  * JD-Core Version:    0.7.0.1
  */

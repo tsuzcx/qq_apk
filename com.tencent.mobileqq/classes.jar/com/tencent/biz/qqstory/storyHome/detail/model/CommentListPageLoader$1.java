@@ -26,15 +26,18 @@ class CommentListPageLoader$1
       {
         CommentListPageLoader.a(this.this$0, localGetFeedCommentEvent);
         SLog.a("Q.qqstory.detail:CommentListPageLoader", "dispatch comment list return from cache: %s", localGetFeedCommentEvent);
-        return;
       }
-      SLog.d("Q.qqstory.detail:CommentListPageLoader", "load cache data later than load from network");
+      else
+      {
+        SLog.d("Q.qqstory.detail:CommentListPageLoader", "load cache data later than load from network");
+      }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.model.CommentListPageLoader.1
  * JD-Core Version:    0.7.0.1
  */

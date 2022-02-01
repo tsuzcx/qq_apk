@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +18,7 @@ import android.widget.TextView;
 import com.tencent.biz.richframework.network.VSNetworkHelper;
 import com.tencent.biz.richframework.network.request.BaseRequest;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -27,11 +27,9 @@ import com.tencent.mobileqq.leba.ILebaHelperService;
 import com.tencent.mobileqq.leba.observer.ResourcePluginListener;
 import com.tencent.mobileqq.qcircle.api.requests.QCircleGetCircleSwitchRequest;
 import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
 import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 
@@ -65,11 +63,11 @@ public class KidModeAdvanceSettingFragment
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131369999));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131370000));
-    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131370001));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormMultiLineSwitchItem = ((FormMultiLineSwitchItem)this.mContentView.findViewById(2131369997));
-    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131369998);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131369684));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131369685));
+    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131369686));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormMultiLineSwitchItem = ((FormMultiLineSwitchItem)this.mContentView.findViewById(2131369682));
+    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131369683);
     b();
     f();
     g();
@@ -84,61 +82,81 @@ public class KidModeAdvanceSettingFragment
       return;
     }
     int i = StudyModeManager.b();
-    if (i == 0) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if (i == 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.jdField_a_of_type_Boolean = bool;
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarFragment", 1, new Object[] { "isBindPhoneStatus: ", Integer.valueOf(i), ", setUrl: ", StudyModeManager.b() });
+    }
+    if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Boolean = bool;
-      if (QLog.isColorLevel()) {
-        QLog.d("IphoneTitleBarFragment", 1, new Object[] { "isBindPhoneStatus: ", Integer.valueOf(i), ", setUrl: ", StudyModeManager.b() });
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetFormMultiLineSwitchItem.a())
+      {
+        c(paramInt);
+        return;
       }
-      if (!this.jdField_a_of_type_Boolean) {
-        break label109;
-      }
-      if (!this.jdField_a_of_type_ComTencentMobileqqWidgetFormMultiLineSwitchItem.a()) {
-        break;
-      }
-      c(paramInt);
+      b(paramInt);
       return;
     }
-    b(paramInt);
-    return;
-    label109:
     h();
   }
   
   private void a(int paramInt, boolean paramBoolean)
   {
-    CompoundButton.OnCheckedChangeListener localOnCheckedChangeListener = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarFragment", 2, "updateAdvanceSettingSwitch mask: " + paramInt + ", isChecked: " + paramBoolean);
-    }
-    Object localObject;
-    switch (paramInt)
+    if (QLog.isColorLevel())
     {
-    default: 
-      localObject = null;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateAdvanceSettingSwitch mask: ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(", isChecked: ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.d("IphoneTitleBarFragment", 2, ((StringBuilder)localObject).toString());
     }
-    for (;;)
+    Object localObject = null;
+    CompoundButton.OnCheckedChangeListener localOnCheckedChangeListener;
+    if (paramInt != 4)
     {
-      if (localObject != null)
+      if (paramInt != 8)
       {
-        ((FormSwitchItem)localObject).setEnabled(true);
-        if (((FormSwitchItem)localObject).a() != paramBoolean) {
-          a((FormSwitchItem)localObject, paramBoolean, localOnCheckedChangeListener);
+        if (paramInt != 16)
+        {
+          if (paramInt != 32)
+          {
+            localOnCheckedChangeListener = null;
+          }
+          else
+          {
+            localObject = this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+            localOnCheckedChangeListener = this.jdField_c_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener;
+          }
+        }
+        else
+        {
+          localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+          localOnCheckedChangeListener = this.jdField_b_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener;
         }
       }
-      return;
-      localObject = this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-      localOnCheckedChangeListener = this.d;
-      continue;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-      localOnCheckedChangeListener = this.jdField_b_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener;
-      continue;
-      localObject = this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-      localOnCheckedChangeListener = this.jdField_c_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener;
-      continue;
+      else
+      {
+        localObject = this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+        localOnCheckedChangeListener = this.d;
+      }
+    }
+    else
+    {
       localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetFormMultiLineSwitchItem;
       localOnCheckedChangeListener = this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener;
+    }
+    if (localObject != null)
+    {
+      ((FormSwitchItem)localObject).setEnabled(true);
+      if (((FormSwitchItem)localObject).a() != paramBoolean) {
+        a((FormSwitchItem)localObject, paramBoolean, localOnCheckedChangeListener);
+      }
     }
   }
   
@@ -161,98 +179,50 @@ public class KidModeAdvanceSettingFragment
   
   private void b()
   {
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374923)).setText(HardCodeUtil.a(2131693594));
-    View localView2 = this.jdField_a_of_type_AndroidViewView.findViewById(2131374924);
+    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374459)).setText(HardCodeUtil.a(2131693549));
+    View localView2 = this.jdField_a_of_type_AndroidViewView.findViewById(2131374460);
     View localView1 = localView2;
     if (localView2 == null) {
-      localView1 = ((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131374925)).inflate();
+      localView1 = ((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131374461)).inflate();
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView1.findViewById(2131378268));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView1.findViewById(2131377679));
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, getResources().getDimensionPixelSize(2131296793));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, getResources().getDimensionPixelSize(2131296773));
     this.jdField_a_of_type_AndroidWidgetTextView.setTypeface(Typeface.DEFAULT);
     c();
   }
   
   private void b(int paramInt)
   {
-    StudyModeManager.a(-1);
-    QQAppInterface localQQAppInterface = getActivity().app;
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetFormMultiLineSwitchItem.a()) {}
-    for (int i = 1;; i = 0)
-    {
-      KidModeServlet.a(localQQAppInterface, paramInt, i);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   private void b(int paramInt, boolean paramBoolean)
   {
-    int i = 1;
-    FormSwitchItem localFormSwitchItem;
-    switch (paramInt)
-    {
-    default: 
-      localObject = null;
-      localFormSwitchItem = null;
-      if ((localFormSwitchItem != null) && (localObject != null))
-      {
-        if (NetworkUtil.d(getActivity())) {
-          break label153;
-        }
-        QLog.d("IphoneTitleBarFragment", 1, "network error");
-        if (paramBoolean) {
-          break label148;
-        }
-      }
-      break;
-    }
-    label148:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      a(localFormSwitchItem, paramBoolean, (CompoundButton.OnCheckedChangeListener)localObject);
-      QQToast.a(getActivity(), 1, 2131694354, 0).a();
-      return;
-      localFormSwitchItem = this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-      localObject = this.d;
-      break;
-      localFormSwitchItem = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-      localObject = this.jdField_b_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener;
-      break;
-      localFormSwitchItem = this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-      localObject = this.jdField_c_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener;
-      break;
-    }
-    label153:
-    Object localObject = getActivity().app;
-    if (paramBoolean) {}
-    for (;;)
-    {
-      KidModeServlet.a((QQAppInterface)localObject, paramInt, i);
-      return;
-      i = 0;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   private void c()
   {
-    ILebaHelperService localILebaHelperService = a();
-    if (localILebaHelperService != null) {}
-    for (int i = localILebaHelperService.getKidModlePluginSize(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);; i = 0)
-    {
-      if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(HardCodeUtil.a(2131693593), new Object[] { String.valueOf(i) }));
-      }
-      return;
+    Object localObject = a();
+    int i;
+    if (localObject != null) {
+      i = ((ILebaHelperService)localObject).getKidModlePluginSize(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    } else {
+      i = 0;
+    }
+    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localObject != null) {
+      ((TextView)localObject).setText(String.format(HardCodeUtil.a(2131693548), new Object[] { String.valueOf(i) }));
     }
   }
   
   private void c(int paramInt)
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(getActivity(), 230).setTitle(HardCodeUtil.a(2131693585)).setMessage(getString(2131693584, new Object[] { StudyModeManager.a() })).setNegativeButton(HardCodeUtil.a(2131693609), new KidModeAdvanceSettingFragment.10(this)).setPositiveButton(HardCodeUtil.a(2131693598), new KidModeAdvanceSettingFragment.9(this, paramInt));
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(getBaseActivity(), 230).setTitle(HardCodeUtil.a(2131693540)).setMessage(getString(2131693539, new Object[] { StudyModeManager.a() })).setNegativeButton(HardCodeUtil.a(2131693562), new KidModeAdvanceSettingFragment.10(this)).setPositiveButton(HardCodeUtil.a(2131693553), new KidModeAdvanceSettingFragment.9(this, paramInt));
     localQQCustomDialog.setOnCancelListener(new KidModeAdvanceSettingFragment.11(this));
-    FragmentActivity localFragmentActivity = getActivity();
-    if ((localFragmentActivity != null) && (!localFragmentActivity.isFinishing())) {
+    BaseActivity localBaseActivity = getBaseActivity();
+    if ((localBaseActivity != null) && (!localBaseActivity.isFinishing())) {
       localQQCustomDialog.show();
     }
   }
@@ -298,70 +268,69 @@ public class KidModeAdvanceSettingFragment
   private void h()
   {
     this.jdField_b_of_type_Boolean = true;
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(getActivity(), 230).setTitle(HardCodeUtil.a(2131694756)).setMessage(HardCodeUtil.a(2131693588)).setNegativeButton(HardCodeUtil.a(2131690779), new KidModeAdvanceSettingFragment.8(this)).setPositiveButton(HardCodeUtil.a(2131693587), new KidModeAdvanceSettingFragment.7(this));
-    FragmentActivity localFragmentActivity = getActivity();
-    if ((localFragmentActivity != null) && (!localFragmentActivity.isFinishing())) {
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(getBaseActivity(), 230).setTitle(HardCodeUtil.a(2131694738)).setMessage(HardCodeUtil.a(2131693543)).setNegativeButton(HardCodeUtil.a(2131690707), new KidModeAdvanceSettingFragment.8(this)).setPositiveButton(HardCodeUtil.a(2131693542), new KidModeAdvanceSettingFragment.7(this));
+    BaseActivity localBaseActivity = getBaseActivity();
+    if ((localBaseActivity != null) && (!localBaseActivity.isFinishing())) {
       localQQCustomDialog.show();
     }
   }
   
   private void i()
   {
-    boolean bool1 = true;
-    boolean bool2 = StudyModeManager.b(16);
-    boolean bool3 = StudyModeManager.b(32);
-    boolean bool4 = StudyModeManager.b(8);
-    a(16, bool2);
-    a(32, bool3);
-    a(8, bool4);
-    if ((StudyModeManager.a() == 1) && (StudyModeManager.b() == 0)) {}
-    for (;;)
-    {
-      a(4, bool1);
-      return;
+    boolean bool1 = StudyModeManager.b(16);
+    boolean bool2 = StudyModeManager.b(32);
+    boolean bool3 = StudyModeManager.b(8);
+    a(16, bool1);
+    a(32, bool2);
+    a(8, bool3);
+    int i = StudyModeManager.a();
+    bool1 = true;
+    if ((i != 1) || (StudyModeManager.b() != 0)) {
       bool1 = false;
     }
+    a(4, bool1);
   }
   
-  public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
+  protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && ((getActivity().getAppRuntime() instanceof QQAppInterface)))
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && ((getBaseActivity().getAppRuntime() instanceof QQAppInterface)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)getActivity().getAppRuntime());
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)getBaseActivity().getAppRuntime());
       a();
       KidModeServlet.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
   }
   
-  public int getContentLayoutId()
+  protected int getContentLayoutId()
   {
-    return 2131561284;
+    return 2131561127;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    if ((getActivity().getAppRuntime() instanceof QQAppInterface)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)getActivity().getAppRuntime());
+    if ((getBaseActivity().getAppRuntime() instanceof QQAppInterface)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)getBaseActivity().getAppRuntime());
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqStudymodeKidModeObserver);
     paramBundle = a();
     if (paramBundle != null) {
       paramBundle.addLebaListener(this.jdField_a_of_type_ComTencentMobileqqLebaObserverResourcePluginListener);
     }
-    if (StudyModeManager.b() == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
+    boolean bool;
+    if (StudyModeManager.b() == 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.jdField_a_of_type_Boolean = bool;
   }
   
-  public View onCreateCenterView()
+  protected View onCreateCenterView()
   {
     View localView = super.onCreateCenterView();
-    setTitle(getActivity().getString(2131693582));
+    setTitle(getBaseActivity().getString(2131693537));
     return localView;
   }
   
@@ -385,7 +354,7 @@ public class KidModeAdvanceSettingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.KidModeAdvanceSettingFragment
  * JD-Core Version:    0.7.0.1
  */

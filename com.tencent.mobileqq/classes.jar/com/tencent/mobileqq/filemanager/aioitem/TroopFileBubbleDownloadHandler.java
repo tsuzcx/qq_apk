@@ -42,133 +42,158 @@ public class TroopFileBubbleDownloadHandler
   
   protected CircleFileStateView a(BaseBubbleBuilder.ViewHolder paramViewHolder)
   {
-    if (paramViewHolder == null) {}
-    while (!(paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
+    if (paramViewHolder == null) {
       return null;
     }
-    return ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a;
+    if ((paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
+      return ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a;
+    }
+    return null;
   }
   
   protected void a(View paramView, BaseBubbleBuilder.ViewHolder paramViewHolder, ChatMessage paramChatMessage, int paramInt)
   {
-    if (paramChatMessage == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          TroopFileTransferManager localTroopFileTransferManager;
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                  QLog.i("TroopFileBubbleDownloadHandler", 1, "handlePauseClick: type[" + paramInt + "]");
-                } while (paramInt == -1);
-                paramView = (MessageForTroopFile)paramChatMessage;
-                localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(paramChatMessage.frienduin));
-              } while (localTroopFileTransferManager == null);
-              paramViewHolder = a(paramChatMessage);
-            } while (paramViewHolder == null);
-            int i = NetworkUtil.a((Activity)this.jdField_a_of_type_AndroidContentContext);
-            if (paramInt != 0) {
-              break;
-            }
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A888", "0X800A888", 0, 0, "", "", "", "");
-            if (i == 0)
-            {
-              TroopFileError.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getString(2131697610));
-              return;
-            }
-          } while (paramViewHolder.b != 8);
-          localTroopFileTransferManager.d(paramViewHolder.jdField_a_of_type_JavaUtilUUID);
-          return;
-        } while (paramInt != 1);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A887", "0X800A887", 0, 0, "", "", "", "");
-        paramChatMessage = new TroopFileItemOperation(Long.parseLong(paramChatMessage.frienduin), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext);
-        if ((paramViewHolder.b != 10) && (paramViewHolder.b != 9)) {
-          break;
-        }
-      } while (paramViewHolder.jdField_a_of_type_JavaUtilUUID == null);
-      paramChatMessage.b(paramViewHolder.jdField_a_of_type_JavaUtilUUID);
+    if (paramChatMessage == null) {
       return;
-      if (paramViewHolder.b == 7)
+    }
+    paramView = new StringBuilder();
+    paramView.append("handlePauseClick: type[");
+    paramView.append(paramInt);
+    paramView.append("]");
+    QLog.i("TroopFileBubbleDownloadHandler", 1, paramView.toString());
+    if (paramInt == -1) {
+      return;
+    }
+    paramView = (MessageForTroopFile)paramChatMessage;
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(paramChatMessage.frienduin));
+    if (localTroopFileTransferManager == null) {
+      return;
+    }
+    paramViewHolder = a(paramChatMessage);
+    if (paramViewHolder == null) {
+      return;
+    }
+    int i = NetworkUtil.getSystemNetwork((Activity)this.jdField_a_of_type_AndroidContentContext);
+    if (paramInt == 0)
+    {
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A888", "0X800A888", 0, 0, "", "", "", "");
+      if (i == 0)
       {
-        paramChatMessage.a(paramView.url, paramViewHolder.g, paramViewHolder.c, paramViewHolder.h);
+        TroopFileError.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getString(2131697616));
         return;
       }
-    } while ((paramViewHolder.b != 6) || (FileUtils.b(paramViewHolder.jdField_a_of_type_JavaLangString)));
-    paramChatMessage.a(paramView.url, paramViewHolder.g, paramViewHolder.c, paramViewHolder.h);
+      if (paramViewHolder.b != 8) {
+        return;
+      }
+      localTroopFileTransferManager.d(paramViewHolder.jdField_a_of_type_JavaUtilUUID);
+      return;
+    }
+    if (paramInt == 1)
+    {
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A887", "0X800A887", 0, 0, "", "", "", "");
+      paramChatMessage = new TroopFileItemOperation(Long.parseLong(paramChatMessage.frienduin), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext);
+      if ((paramViewHolder.b != 10) && (paramViewHolder.b != 9))
+      {
+        if (paramViewHolder.b == 7)
+        {
+          paramChatMessage.a(paramView.url, paramViewHolder.g, paramViewHolder.c, paramViewHolder.h);
+          return;
+        }
+        if ((paramViewHolder.b == 6) && (!FileUtils.fileExistsAndNotEmpty(paramViewHolder.jdField_a_of_type_JavaLangString))) {
+          paramChatMessage.a(paramView.url, paramViewHolder.g, paramViewHolder.c, paramViewHolder.h);
+        }
+      }
+      else if (paramViewHolder.jdField_a_of_type_JavaUtilUUID != null)
+      {
+        paramChatMessage.b(paramViewHolder.jdField_a_of_type_JavaUtilUUID);
+      }
+    }
   }
   
   protected void a(BaseBubbleBuilder.ViewHolder paramViewHolder, CircleFileStateView paramCircleFileStateView)
   {
-    if (paramViewHolder == null) {}
-    while (!(paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
+    if (paramViewHolder == null) {
       return;
     }
-    ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a = paramCircleFileStateView;
+    if ((paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
+      ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a = paramCircleFileStateView;
+    }
   }
   
   protected boolean a(ChatMessage paramChatMessage)
   {
-    if ((paramChatMessage == null) || (!(paramChatMessage instanceof MessageForTroopFile))) {
-      return false;
+    if (paramChatMessage != null)
+    {
+      if (!(paramChatMessage instanceof MessageForTroopFile)) {
+        return false;
+      }
+      Object localObject = (MessageForTroopFile)paramChatMessage;
+      paramChatMessage = a(paramChatMessage);
+      if (paramChatMessage == null) {
+        return false;
+      }
+      if ((((MessageForTroopFile)localObject).lastTime != 0L) && (((MessageForTroopFile)localObject).lastTime <= NetConnInfoCenter.getServerTime())) {
+        return false;
+      }
+      int i = FileManagerUtil.a(paramChatMessage.g);
+      if (i != 0)
+      {
+        if (i == 2) {
+          return false;
+        }
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("needShowDownloadIcon: current file status[");
+          ((StringBuilder)localObject).append(paramChatMessage.b);
+          ((StringBuilder)localObject).append("]");
+          QLog.i("TroopFileBubbleDownloadHandler", 1, ((StringBuilder)localObject).toString());
+        }
+        if ((paramChatMessage.b != 10) && (paramChatMessage.b != 9) && (paramChatMessage.b != 7)) {
+          return (paramChatMessage.b == 6) && (!FileUtils.fileExistsAndNotEmpty(paramChatMessage.jdField_a_of_type_JavaLangString));
+        }
+        return !FileUtils.fileExistsAndNotEmpty(paramChatMessage.jdField_a_of_type_JavaLangString);
+      }
     }
-    MessageForTroopFile localMessageForTroopFile = (MessageForTroopFile)paramChatMessage;
-    paramChatMessage = a(paramChatMessage);
-    if (paramChatMessage == null) {
-      return false;
-    }
-    if ((localMessageForTroopFile.lastTime != 0L) && (localMessageForTroopFile.lastTime <= NetConnInfoCenter.getServerTime())) {
-      return false;
-    }
-    int i = FileManagerUtil.a(paramChatMessage.g);
-    if ((i == 0) || (i == 2)) {
-      return false;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopFileBubbleDownloadHandler", 1, "needShowDownloadIcon: current file status[" + paramChatMessage.b + "]");
-    }
-    if ((paramChatMessage.b == 10) || (paramChatMessage.b == 9) || (paramChatMessage.b == 7)) {
-      return !FileUtils.b(paramChatMessage.jdField_a_of_type_JavaLangString);
-    }
-    return (paramChatMessage.b == 6) && (!FileUtils.b(paramChatMessage.jdField_a_of_type_JavaLangString));
+    return false;
   }
   
   protected boolean b(ChatMessage paramChatMessage)
   {
-    boolean bool = true;
-    if (paramChatMessage == null) {}
-    int i;
-    do
+    boolean bool2 = false;
+    if (paramChatMessage == null) {
+      return false;
+    }
+    paramChatMessage = a(paramChatMessage);
+    if (paramChatMessage == null) {
+      return false;
+    }
+    int i = FileManagerUtil.a(paramChatMessage.g);
+    boolean bool1 = bool2;
+    if (i != 0)
     {
-      do
-      {
+      if (i == 2) {
         return false;
-        paramChatMessage = a(paramChatMessage);
-      } while (paramChatMessage == null);
-      i = FileManagerUtil.a(paramChatMessage.g);
-    } while ((i == 0) || (i == 2));
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopFileBubbleDownloadHandler", 1, "needShowPauseIcon: current file status[" + paramChatMessage.b + "]");
+      }
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("needShowPauseIcon: current file status[");
+        localStringBuilder.append(paramChatMessage.b);
+        localStringBuilder.append("]");
+        QLog.i("TroopFileBubbleDownloadHandler", 1, localStringBuilder.toString());
+      }
+      bool1 = bool2;
+      if (paramChatMessage.b == 8) {
+        bool1 = true;
+      }
     }
-    if (paramChatMessage.b == 8) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
-    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.aioitem.TroopFileBubbleDownloadHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -17,8 +17,8 @@ public class GameMsgAppDrawer
   
   protected View a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppContainer = new GameMsgAppDrawer.1(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_AndroidContentContext, (GameMsgChatPie)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
-    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppContainer.a() == null) {}
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppContainer = new GameMsgAppDrawer.1(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidContentContext, (GameMsgChatPie)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppContainer.a();
     return this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppContainer.a();
   }
   
@@ -40,8 +40,9 @@ public class GameMsgAppDrawer
     if (QLog.isColorLevel()) {
       QLog.d("intimate_relationship", 2, "onDrawerStartOpen");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppContainer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppContainer.a();
+    GameMsgAppContainer localGameMsgAppContainer = this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppContainer;
+    if (localGameMsgAppContainer != null) {
+      localGameMsgAppContainer.a();
     }
   }
   
@@ -51,8 +52,9 @@ public class GameMsgAppDrawer
     if (QLog.isColorLevel()) {
       QLog.d("intimate_relationship", 2, "onDrawerOpened");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppContainer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppContainer.b();
+    GameMsgAppContainer localGameMsgAppContainer = this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppContainer;
+    if (localGameMsgAppContainer != null) {
+      localGameMsgAppContainer.b();
     }
   }
   
@@ -62,23 +64,25 @@ public class GameMsgAppDrawer
     if (QLog.isColorLevel()) {
       QLog.d("intimate_relationship", 2, "onDrawerClosed");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppContainer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppContainer.c();
+    GameMsgAppContainer localGameMsgAppContainer = this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppContainer;
+    if (localGameMsgAppContainer != null) {
+      localGameMsgAppContainer.c();
     }
   }
   
   public void k()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppContainer != null)
+    GameMsgAppContainer localGameMsgAppContainer = this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppContainer;
+    if (localGameMsgAppContainer != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppContainer.d();
+      localGameMsgAppContainer.d();
       this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppContainer = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.drawer.GameMsgAppDrawer
  * JD-Core Version:    0.7.0.1
  */

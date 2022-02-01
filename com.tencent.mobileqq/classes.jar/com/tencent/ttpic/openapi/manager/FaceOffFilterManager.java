@@ -62,7 +62,8 @@ public class FaceOffFilterManager
   
   public void setMaterialsMaxCount(int paramInt1, int paramInt2)
   {
-    this.materialMaxCount[paramInt1] = Math.max(paramInt2, this.materialMaxCount[paramInt1]);
+    int[] arrayOfInt = this.materialMaxCount;
+    arrayOfInt[paramInt1] = Math.max(paramInt2, arrayOfInt[paramInt1]);
   }
   
   public void setSwitch(int paramInt1, int paramInt2)
@@ -79,35 +80,44 @@ public class FaceOffFilterManager
   public void updateIndex()
   {
     int i = 0;
-    if (i < 5)
+    while (i < 5)
     {
-      if (this.needUpdate[i] != 0) {
-        if (this.materialMaxCount[i] > 1)
-        {
-          if (this.cosmeticChangeMode != 1) {
-            break label79;
-          }
-          int[] arrayOfInt = this.materialIndex;
-          arrayOfInt[i] += 1;
-          arrayOfInt = this.materialIndex;
-          arrayOfInt[i] %= this.materialMaxCount[i];
-        }
-      }
-      for (;;)
+      if (this.needUpdate[i] != 0)
       {
+        int[] arrayOfInt1 = this.materialMaxCount;
+        if (arrayOfInt1[i] > 1) {
+          if (this.cosmeticChangeMode == 1)
+          {
+            int[] arrayOfInt2 = this.materialIndex;
+            arrayOfInt2[i] += 1;
+            arrayOfInt2[i] %= arrayOfInt1[i];
+          }
+          else
+          {
+            double d1;
+            double d2;
+            for (int j = this.materialIndex[i];; j = (int)(d1 * d2))
+            {
+              arrayOfInt1 = this.materialIndex;
+              if (j != arrayOfInt1[i]) {
+                break;
+              }
+              d1 = Math.random();
+              d2 = this.materialMaxCount[i];
+              Double.isNaN(d2);
+            }
+            arrayOfInt1[i] = j;
+          }
+        }
         this.needUpdate[i] = false;
-        i += 1;
-        break;
-        label79:
-        for (int j = this.materialIndex[i]; j == this.materialIndex[i]; j = (int)(Math.random() * this.materialMaxCount[i])) {}
-        this.materialIndex[i] = j;
       }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.manager.FaceOffFilterManager
  * JD-Core Version:    0.7.0.1
  */

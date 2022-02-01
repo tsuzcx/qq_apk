@@ -14,7 +14,8 @@ class AVPlayerBuilderService$1
   {
     AVPlayerBuilderService.access$002(true);
     this.this$0.openSdkPlayerService.init(this.this$0.context, AVPlayerBuilderService.access$100(this.this$0));
-    this.this$0.currentPlayerService = this.this$0.openSdkPlayerService;
+    AVPlayerBuilderService localAVPlayerBuilderService = this.this$0;
+    localAVPlayerBuilderService.currentPlayerService = localAVPlayerBuilderService.openSdkPlayerService;
     this.this$0.mPlayerAdapter.getLogger().i("AVPlayerBuilderService", "open sdk onAvInitCompleted", new Object[0]);
   }
   
@@ -26,7 +27,7 @@ class AVPlayerBuilderService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avplayerbuilderservice.AVPlayerBuilderService.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@
         <TextView android:textSize="16.0dip" android:textColor="@color/el" android:gravity="center" android:id="@id/itc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/f2u" android:singleLine="true" />
         <TextView android:textSize="14.0dip" android:textColor="@color/yd" android:gravity="center" android:id="@id/f3y" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:singleLine="true" android:layout_below="@id/itc" />
         <RelativeLayout android:id="@id/f34" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="21.0dip" android:layout_below="@id/f3y">
-            <dov.com.qq.im.capture.view.QimMusicSeekView android:id="@id/f36" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <com.tencent.aelight.camera.aioeditor.capture.view.QimMusicSeekView android:id="@id/f36" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" />
             <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_below="@id/f36">
                 <TextView android:textSize="12.0dip" android:textColor="@color/el" android:id="@id/ill" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
                 <TextView android:textSize="12.0dip" android:textColor="@color/el" android:id="@id/ilk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />

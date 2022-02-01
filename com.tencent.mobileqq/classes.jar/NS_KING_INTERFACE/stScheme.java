@@ -15,16 +15,6 @@ public final class stScheme
   public String storeURL = "";
   public String webURL = "";
   
-  static
-  {
-    if (!stScheme.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public stScheme() {}
   
   public stScheme(String paramString1, String paramString2, String paramString3, String paramString4)
@@ -42,18 +32,17 @@ public final class stScheme
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -76,13 +65,28 @@ public final class stScheme
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (stScheme)paramObject;
-    } while ((!JceUtil.equals(this.appID, paramObject.appID)) || (!JceUtil.equals(this.schemeURL, paramObject.schemeURL)) || (!JceUtil.equals(this.storeURL, paramObject.storeURL)) || (!JceUtil.equals(this.webURL, paramObject.webURL)));
-    return true;
+    }
+    paramObject = (stScheme)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.appID, paramObject.appID))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.schemeURL, paramObject.schemeURL))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.storeURL, paramObject.storeURL))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.webURL, paramObject.webURL)) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -153,23 +157,27 @@ public final class stScheme
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.appID != null) {
-      paramJceOutputStream.write(this.appID, 0);
+    String str = this.appID;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.schemeURL != null) {
-      paramJceOutputStream.write(this.schemeURL, 1);
+    str = this.schemeURL;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.storeURL != null) {
-      paramJceOutputStream.write(this.storeURL, 2);
+    str = this.storeURL;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.webURL != null) {
-      paramJceOutputStream.write(this.webURL, 3);
+    str = this.webURL;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_INTERFACE.stScheme
  * JD-Core Version:    0.7.0.1
  */

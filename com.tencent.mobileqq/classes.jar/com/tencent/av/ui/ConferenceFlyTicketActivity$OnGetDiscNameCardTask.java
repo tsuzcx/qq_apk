@@ -23,140 +23,148 @@ class ConferenceFlyTicketActivity$OnGetDiscNameCardTask
   
   public void a(DownloadParams paramDownloadParams)
   {
-    DownloadParams localDownloadParams = null;
-    Object localObject3 = null;
-    Object localObject1 = null;
-    Object localObject8 = null;
-    Object localObject2 = "";
-    String str1 = "";
-    String str3 = "";
-    if (paramDownloadParams.a.jdField_a_of_type_Boolean) {}
-    for (;;)
+    boolean bool = paramDownloadParams.a.jdField_a_of_type_Boolean;
+    Object localObject4 = null;
+    Object localObject2 = null;
+    Object localObject6 = null;
+    String str1 = null;
+    Object localObject5 = "";
+    if (bool)
     {
-      Object localObject5;
-      Object localObject4;
       try
       {
         paramDownloadParams = new String(paramDownloadParams.a.jdField_a_of_type_ArrayOfByte, "UTF-8");
-        if (paramDownloadParams != null)
-        {
-          localObject5 = str1;
-          localObject4 = localObject2;
-          localObject3 = localObject1;
-          try
-          {
-            paramDownloadParams = new JSONObject(paramDownloadParams);
-            localObject5 = str1;
-            localObject4 = localObject2;
-            localObject3 = localObject1;
-            i = paramDownloadParams.getInt("retcode");
-            String str2 = str3;
-            Object localObject7 = str1;
-            Object localObject6 = localObject2;
-            localObject5 = str1;
-            localObject4 = localObject2;
-            localObject3 = localObject1;
-            if (paramDownloadParams.has("result"))
-            {
-              localObject5 = str1;
-              localObject4 = localObject2;
-              localObject3 = localObject1;
-              JSONObject localJSONObject = paramDownloadParams.getJSONObject("result");
-              paramDownloadParams = localObject8;
-              localObject5 = str1;
-              localObject4 = localObject2;
-              localObject3 = localObject1;
-              if (localJSONObject.has("result_code"))
-              {
-                localObject5 = str1;
-                localObject4 = localObject2;
-                localObject3 = localObject1;
-                paramDownloadParams = localJSONObject.getString("result_code");
-              }
-              localObject1 = localObject2;
-              localObject5 = str1;
-              localObject4 = localObject2;
-              localObject3 = paramDownloadParams;
-              if (localJSONObject.has("disc_name_card"))
-              {
-                localObject5 = str1;
-                localObject4 = localObject2;
-                localObject3 = paramDownloadParams;
-                localObject1 = localJSONObject.getString("disc_name_card");
-              }
-              localObject2 = str1;
-              localObject5 = str1;
-              localObject4 = localObject1;
-              localObject3 = paramDownloadParams;
-              if (localJSONObject.has("name_card_sender_uin"))
-              {
-                localObject5 = str1;
-                localObject4 = localObject1;
-                localObject3 = paramDownloadParams;
-                localObject2 = localJSONObject.getString("name_card_sender_uin");
-              }
-              str2 = str3;
-              localObject7 = localObject2;
-              localObject6 = localObject1;
-              localDownloadParams = paramDownloadParams;
-              localObject5 = localObject2;
-              localObject4 = localObject1;
-              localObject3 = paramDownloadParams;
-              if (localJSONObject.has("name_card_sender_name"))
-              {
-                localObject5 = localObject2;
-                localObject4 = localObject1;
-                localObject3 = paramDownloadParams;
-                str2 = localJSONObject.getString("name_card_sender_name");
-                localDownloadParams = paramDownloadParams;
-                localObject6 = localObject1;
-                localObject7 = localObject2;
-              }
-            }
-            localObject2 = str2;
-            localObject1 = localObject7;
-            paramDownloadParams = localObject6;
-            localObject3 = localDownloadParams;
-          }
-          catch (JSONException paramDownloadParams)
-          {
-            localObject1 = localObject5;
-            if (!QLog.isColorLevel()) {
-              break label602;
-            }
-            QLog.d(this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity.jdField_a_of_type_JavaLangString, 2, "OnGetDiscNameCardTask.onPostDownloadComplete e = " + paramDownloadParams.toString());
-            localObject2 = "";
-            i = -2;
-            paramDownloadParams = localObject4;
-            continue;
-          }
-          QLog.w(this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity.jdField_a_of_type_JavaLangString, 1, "OnGetDiscNameCardTask.onPostDownloadComplete, result_code[" + (String)localObject3 + "], disc_name_card[" + paramDownloadParams + "], name_card_sender_uin[" + (String)localObject1 + "], name_card_sender_name[" + (String)localObject2 + "], retcode[" + i + "], mDiscID[" + this.jdField_a_of_type_JavaLangString + "]");
-          ConferenceFlyTicketActivity.a(this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity.app.getCurrentUin(), (String)localObject1, (String)localObject2);
-          if ((i == 0) && (TextUtils.equals((CharSequence)localObject3, "0")) && (!TextUtils.isEmpty(paramDownloadParams)) && (!paramDownloadParams.equals("null"))) {
-            this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity.a(paramDownloadParams, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity.app.getCurrentUin(), (String)localObject1, (String)localObject2);
-          }
-          return;
-        }
       }
       catch (Exception paramDownloadParams)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity.jdField_a_of_type_JavaLangString, 2, "OnGetDiscNameCardTask.onPostDownloadComplete e = " + paramDownloadParams.toString());
+        if (QLog.isColorLevel())
+        {
+          localObject1 = this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity.jdField_a_of_type_JavaLangString;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("OnGetDiscNameCardTask.onPostDownloadComplete e = ");
+          localStringBuilder.append(paramDownloadParams.toString());
+          QLog.d((String)localObject1, 2, localStringBuilder.toString());
         }
         paramDownloadParams = null;
-        continue;
       }
-      label602:
-      localObject2 = "";
-      int i = -1;
-      localObject1 = "";
-      paramDownloadParams = "";
+      if (paramDownloadParams != null)
+      {
+        localObject1 = localObject2;
+        try
+        {
+          paramDownloadParams = new JSONObject(paramDownloadParams);
+          localObject1 = localObject2;
+          i = paramDownloadParams.getInt("retcode");
+          localObject1 = localObject2;
+          if (paramDownloadParams.has("result"))
+          {
+            localObject1 = localObject2;
+            localObject4 = paramDownloadParams.getJSONObject("result");
+            paramDownloadParams = str1;
+            localObject1 = localObject2;
+            if (((JSONObject)localObject4).has("result_code"))
+            {
+              localObject1 = localObject2;
+              paramDownloadParams = ((JSONObject)localObject4).getString("result_code");
+            }
+            localObject1 = paramDownloadParams;
+            if (((JSONObject)localObject4).has("disc_name_card"))
+            {
+              localObject1 = paramDownloadParams;
+              localObject2 = ((JSONObject)localObject4).getString("disc_name_card");
+              localObject1 = localObject2;
+            }
+            else
+            {
+              localObject1 = "";
+            }
+            try
+            {
+              if (((JSONObject)localObject4).has("name_card_sender_uin")) {
+                localObject2 = ((JSONObject)localObject4).getString("name_card_sender_uin");
+              } else {
+                localObject2 = "";
+              }
+              try
+              {
+                if (((JSONObject)localObject4).has("name_card_sender_name")) {
+                  str1 = ((JSONObject)localObject4).getString("name_card_sender_name");
+                } else {
+                  str1 = "";
+                }
+              }
+              catch (JSONException localJSONException1)
+              {
+                break label326;
+              }
+              str2 = "";
+            }
+            catch (JSONException localJSONException2)
+            {
+              localObject2 = "";
+            }
+          }
+          else
+          {
+            String str2;
+            localObject2 = str2;
+            localObject1 = localObject5;
+            paramDownloadParams = (DownloadParams)localObject4;
+          }
+        }
+        catch (JSONException localJSONException3)
+        {
+          localObject2 = "";
+          localObject4 = localObject2;
+          paramDownloadParams = (DownloadParams)localObject1;
+          localObject1 = localObject4;
+          label326:
+          i = -2;
+          if (QLog.isColorLevel())
+          {
+            localObject4 = this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity.jdField_a_of_type_JavaLangString;
+            localObject5 = new StringBuilder();
+            ((StringBuilder)localObject5).append("OnGetDiscNameCardTask.onPostDownloadComplete e = ");
+            ((StringBuilder)localObject5).append(localJSONException3.toString());
+            QLog.d((String)localObject4, 2, ((StringBuilder)localObject5).toString());
+          }
+          localObject3 = "";
+        }
+      }
+    }
+    int i = -1;
+    Object localObject1 = "";
+    localObject2 = localObject1;
+    Object localObject3 = localObject2;
+    paramDownloadParams = localObject6;
+    localObject4 = this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity.jdField_a_of_type_JavaLangString;
+    localObject5 = new StringBuilder();
+    ((StringBuilder)localObject5).append("OnGetDiscNameCardTask.onPostDownloadComplete, result_code[");
+    ((StringBuilder)localObject5).append(paramDownloadParams);
+    ((StringBuilder)localObject5).append("], disc_name_card[");
+    ((StringBuilder)localObject5).append((String)localObject1);
+    ((StringBuilder)localObject5).append("], name_card_sender_uin[");
+    ((StringBuilder)localObject5).append((String)localObject2);
+    ((StringBuilder)localObject5).append("], name_card_sender_name[");
+    ((StringBuilder)localObject5).append((String)localObject3);
+    ((StringBuilder)localObject5).append("], retcode[");
+    ((StringBuilder)localObject5).append(i);
+    ((StringBuilder)localObject5).append("], mDiscID[");
+    ((StringBuilder)localObject5).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject5).append("]");
+    QLog.w((String)localObject4, 1, ((StringBuilder)localObject5).toString());
+    localObject4 = this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity;
+    ConferenceFlyTicketActivity.a((ConferenceFlyTicketActivity)localObject4, this.jdField_a_of_type_JavaLangString, ((ConferenceFlyTicketActivity)localObject4).app.getCurrentUin(), (String)localObject2, (String)localObject3);
+    if ((i == 0) && (TextUtils.equals(paramDownloadParams, "0")) && (!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).equals("null")))
+    {
+      paramDownloadParams = this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity;
+      paramDownloadParams.a((String)localObject1, this.jdField_a_of_type_JavaLangString, paramDownloadParams.app.getCurrentUin(), (String)localObject2, (String)localObject3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.ConferenceFlyTicketActivity.OnGetDiscNameCardTask
  * JD-Core Version:    0.7.0.1
  */

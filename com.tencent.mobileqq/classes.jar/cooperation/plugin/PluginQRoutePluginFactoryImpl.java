@@ -11,33 +11,30 @@ public class PluginQRoutePluginFactoryImpl
   
   public IQRoutePlugin createSingleton(String paramString)
   {
-    Object localObject;
-    if ((paramString == null) || ("".endsWith(paramString))) {
-      localObject = null;
-    }
-    IQRoutePlugin localIQRoutePlugin;
-    do
+    if ((paramString != null) && (!"".endsWith(paramString)))
     {
-      return localObject;
-      localIQRoutePlugin = (IQRoutePlugin)this.a.get(paramString);
-      localObject = localIQRoutePlugin;
-    } while (localIQRoutePlugin != null);
-    synchronized (this.a)
-    {
-      localIQRoutePlugin = (IQRoutePlugin)this.a.get(paramString);
-      localObject = localIQRoutePlugin;
-      if (localIQRoutePlugin == null)
-      {
-        localObject = new QPluginAsQRoutePlugin(paramString);
-        this.a.put(paramString, localObject);
+      Object localObject = (IQRoutePlugin)this.a.get(paramString);
+      if (localObject == null) {
+        synchronized (this.a)
+        {
+          IQRoutePlugin localIQRoutePlugin = (IQRoutePlugin)this.a.get(paramString);
+          localObject = localIQRoutePlugin;
+          if (localIQRoutePlugin == null)
+          {
+            localObject = new QPluginAsQRoutePlugin(paramString);
+            this.a.put(paramString, localObject);
+          }
+          return localObject;
+        }
       }
       return localObject;
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.plugin.PluginQRoutePluginFactoryImpl
  * JD-Core Version:    0.7.0.1
  */

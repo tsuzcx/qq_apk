@@ -31,28 +31,27 @@ public class TofuHandler
     String str2 = paramToServiceMsg.extraData.getString("frdUin", "");
     paramToServiceMsg = new oidb_0xe61.RspBody();
     int i = parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg);
-    if (i == 0) {
-      if (paramToServiceMsg.rpt_beancurd_cube_info_result.has())
-      {
+    if (i == 0)
+    {
+      if (paramToServiceMsg.rpt_beancurd_cube_info_result.has()) {
         paramToServiceMsg = paramToServiceMsg.rpt_beancurd_cube_info_result.get();
-        if ((paramToServiceMsg == null) || (paramToServiceMsg.size() <= 0)) {
-          break label190;
-        }
+      } else {
+        paramToServiceMsg = null;
+      }
+      if ((paramToServiceMsg != null) && (paramToServiceMsg.size() > 0))
+      {
         notifyUI(0, true, new Object[] { str1, str2, paramToServiceMsg });
+        bool = true;
+        break label116;
       }
     }
-    label190:
-    for (boolean bool = true;; bool = false)
-    {
-      if (!bool) {
-        notifyUI(0, false, new Object[] { str1, str2, null });
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("Tofu_TofuHandler", 2, String.format("handlePullTofuData result=%d suc=%b selfUin=%s frdUin=%s", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool), str1, MobileQQ.getShortUinStr(str2) }));
-      }
-      return;
-      paramToServiceMsg = null;
-      break;
+    boolean bool = false;
+    label116:
+    if (!bool) {
+      notifyUI(0, false, new Object[] { str1, str2, null });
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("Tofu_TofuHandler", 2, String.format("handlePullTofuData result=%d suc=%b selfUin=%s frdUin=%s", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool), str1, MobileQQ.getShortUinStr(str2) }));
     }
   }
   
@@ -79,7 +78,7 @@ public class TofuHandler
     return this.allowCmdSet;
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return TofuObserver.class;
   }
@@ -93,7 +92,7 @@ public class TofuHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tofumsg.TofuHandler
  * JD-Core Version:    0.7.0.1
  */

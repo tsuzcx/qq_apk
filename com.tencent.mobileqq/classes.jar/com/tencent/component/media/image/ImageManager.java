@@ -45,7 +45,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FilenameFilter;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -73,13 +75,13 @@ public class ImageManager
   public static final String IMAGE_DIR_NAME_V1 = "image";
   public static final String IMAGE_DIR_NAME_V2 = "imageV2";
   private static final int IMAGE_HIT = 16;
-  private static final ConcurrentHashMap<String, Object> INVALIDATE_URLS;
+  private static final ConcurrentHashMap<String, Object> INVALIDATE_URLS = new ConcurrentHashMap();
   private static final boolean IS_ICE_CREAM_SANDWICH;
   private static final Object LOCK_CacheMap;
   private static final Object LOCK_mImageDecodeThreadPool;
   private static final Object LOCK_mImageGetNullOrCancelHandler;
   private static final Object LOCK_mImageTaskThreadPool;
-  private static final Object LOCK_mInstance;
+  private static final Object LOCK_mInstance = new Object();
   private static final int LOW_SIZE = 5242880;
   private static final String LRU_FILE_NAME = "imagelru.usetime";
   private static long MAX_INNER_SIZE_LIMIT = 0L;
@@ -89,7 +91,7 @@ public class ImageManager
   private static final int MSG_DUMP_MEMORY_CACHE = 1000;
   private static final int MSG_GET_NULL = 0;
   private static final int MSG_IMAGE_TASK_TRACER = 2;
-  public static final String TAG = ImageManager.class.getSimpleName();
+  public static final String TAG = "ImageManager";
   private static final int VERSION_CODES_LOLLIPOP = 21;
   private static Comparator<File> fileTimeComparator;
   private static Runnable getAllSDCardInfoRunnable;
@@ -125,608 +127,449 @@ public class ImageManager
   private static String storeRootPath;
   private static final AtomicInteger threadCount;
   public static final long timeInterval = 60000L;
-  private final BroadcastReceiver MsdCardMountReceiver = new ImageManager.11(this);
-  private Runnable checkOldImageFileAndCleanRunnable = new ImageManager.16(this);
-  private long checkStorageLowTime = 0L;
+  private final BroadcastReceiver MsdCardMountReceiver;
+  private Runnable checkOldImageFileAndCleanRunnable;
+  private long checkStorageLowTime;
   private Looper dispatcherLoop = null;
   private IImageFileTracer imageFileTracer = null;
-  private int imageMemCacheSize = 1;
-  private boolean isStorageLow = false;
+  private int imageMemCacheSize;
+  private boolean isStorageLow;
   IBitmapFactory mBitmapFactory;
   ByteArrayPool mByteArrayPool;
-  private Context mContext = null;
+  private Context mContext;
   private IDecoder mDecoder = null;
-  private ConcurrentHashMap<String, File> mFilename2FileMap = new ConcurrentHashMap();
-  private volatile boolean mHasEntryNoCacheUrlKeyAndCacheTimeMap = false;
+  private ConcurrentHashMap<String, File> mFilename2FileMap;
+  private volatile boolean mHasEntryNoCacheUrlKeyAndCacheTimeMap;
   private IDownloader mImageDownloader = null;
   private BaseHandler mImageGetNullOrCancelHandler = null;
-  private ConcurrentHashMap<Integer, Integer> mImageKey2SampleSizeMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<Integer, Integer> mImageKey2SampleSizeMap;
   private ConcurrentHashMap<Integer, HashSet<ImageKey>> mImageKeyHash2DecodeOrDownloadMap = new ConcurrentHashMap();
   private LruCache<Integer, Drawable> mImageKeyHash2DrawableMap = null;
   private LruCache<Integer, Image> mImageKeyHash2ImageMap = null;
   private ConcurrentHashMap<Integer, String> mImageKeyHash2UrlMap = new ConcurrentHashMap();
-  private HashMap<Integer, HashSet<ImageKey>> mImageKeyHash2WaitDecodeMap = new HashMap();
-  private ConcurrentHashMap<String, ImageManager.ImageAttri> mImagePath2AttriMap = new ConcurrentHashMap();
-  private ThreadLocal<HashSet<Integer>> mIntegerHashSet = new ImageManager.1(this);
-  private final BaseHandler mMainHandler = new BaseHandler(Looper.getMainLooper());
+  private HashMap<Integer, HashSet<ImageKey>> mImageKeyHash2WaitDecodeMap;
+  private ConcurrentHashMap<String, ImageManager.ImageAttri> mImagePath2AttriMap;
+  private ThreadLocal<HashSet<Integer>> mIntegerHashSet;
+  private final BaseHandler mMainHandler;
   private ConcurrentHashMap<String, Long> mNoCacheUrlKeyAndCacheTimeMap = new ConcurrentHashMap();
-  private volatile long mTotalFileSize = 0L;
+  private volatile long mTotalFileSize;
   private ConcurrentHashMap<String, HashSet<Integer>> mUrlKey2AllImageKeyMap = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, HashSet<Integer>> mUrlKey2DownloadImageKeyMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, HashSet<Integer>> mUrlKey2DownloadImageKeyMap;
   
   static
   {
-    mInstance = null;
-    LOCK_mInstance = new Object();
     LOCK_mImageGetNullOrCancelHandler = new Object();
     LOCK_CacheMap = new Object();
-    if (Build.VERSION.SDK_INT >= 14) {}
-    for (boolean bool = true;; bool = false)
-    {
-      IS_ICE_CREAM_SANDWICH = bool;
-      isMainProcess = true;
-      isInFriendFeed = false;
-      hasScrolled = false;
-      threadCount = new AtomicInteger(1);
-      mDecodeExceptionMap = new HashMap();
-      maxDecodeFailCount = -1;
-      mCachePath = null;
-      storeRootPath = "";
-      mSDCardName2PathMap = new HashMap();
-      mHasLoadSDCardName = false;
-      maxAvailableSizePath = "";
-      maxAvailableSize = 0L;
-      getAllSDCardInfoRunnable = new ImageManager.10();
-      isStorageReallyCanwriteMap = new HashMap();
-      mIsRegisterSdcardReceiver = false;
-      MAX_SDCARD_SIZE_LIMIT = 104857600L;
-      MAX_INNER_SIZE_LIMIT = 41943040L;
-      maxCacheSize = MAX_SDCARD_SIZE_LIMIT;
-      isUseExternalStorage = true;
-      imageFilenameFilter = new ImageManager.12();
-      fileTimeComparator = new ImageManager.13();
-      mImageDecodeThreadPool = null;
-      LOCK_mImageDecodeThreadPool = new Object();
-      mImageTaskThreadPool = null;
-      LOCK_mImageTaskThreadPool = new Object();
-      mLoadAllImageFileFlag = false;
-      mFilename2FileLengthMap = new ConcurrentHashMap();
-      mLruFilename2TimeMap = new ConcurrentHashMap(50, 0.75F, 8);
-      mSaveLruFileTime = 0L;
-      INVALIDATE_URLS = new ConcurrentHashMap();
-      return;
+    boolean bool;
+    if (Build.VERSION.SDK_INT >= 14) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    IS_ICE_CREAM_SANDWICH = bool;
+    isMainProcess = true;
+    isInFriendFeed = false;
+    hasScrolled = false;
+    threadCount = new AtomicInteger(1);
+    mDecodeExceptionMap = new HashMap();
+    maxDecodeFailCount = -1;
+    mCachePath = null;
+    storeRootPath = "";
+    mSDCardName2PathMap = new HashMap();
+    mHasLoadSDCardName = false;
+    maxAvailableSizePath = "";
+    maxAvailableSize = 0L;
+    getAllSDCardInfoRunnable = new ImageManager.10();
+    isStorageReallyCanwriteMap = new HashMap();
+    mIsRegisterSdcardReceiver = false;
+    MAX_SDCARD_SIZE_LIMIT = 104857600L;
+    MAX_INNER_SIZE_LIMIT = 41943040L;
+    maxCacheSize = MAX_SDCARD_SIZE_LIMIT;
+    isUseExternalStorage = true;
+    imageFilenameFilter = new ImageManager.12();
+    fileTimeComparator = new ImageManager.13();
+    mImageDecodeThreadPool = null;
+    LOCK_mImageDecodeThreadPool = new Object();
+    mImageTaskThreadPool = null;
+    LOCK_mImageTaskThreadPool = new Object();
+    mLoadAllImageFileFlag = false;
+    mFilename2FileLengthMap = new ConcurrentHashMap();
+    mLruFilename2TimeMap = new ConcurrentHashMap(50, 0.75F, 8);
+    mSaveLruFileTime = 0L;
   }
   
   private ImageManager()
   {
+    int k = 0;
+    this.mHasEntryNoCacheUrlKeyAndCacheTimeMap = false;
+    this.mImageKeyHash2WaitDecodeMap = new HashMap();
+    this.mUrlKey2DownloadImageKeyMap = new ConcurrentHashMap();
+    this.mIntegerHashSet = new ImageManager.1(this);
+    this.mMainHandler = new BaseHandler(Looper.getMainLooper());
+    this.mContext = null;
+    this.imageMemCacheSize = 1;
+    this.checkStorageLowTime = 0L;
+    this.isStorageLow = false;
+    this.mImageKey2SampleSizeMap = new ConcurrentHashMap();
+    this.mImagePath2AttriMap = new ConcurrentHashMap();
+    this.MsdCardMountReceiver = new ImageManager.11(this);
+    this.mFilename2FileMap = new ConcurrentHashMap();
+    this.mTotalFileSize = 0L;
+    this.checkOldImageFileAndCleanRunnable = new ImageManager.16(this);
+    this.mContext = ImageManagerEnv.getAppContext();
     sCloseNativeAndCache = ImageManagerEnv.g().closeNativeAndinBitmap();
     if (sCloseNativeAndCache) {
       ImageManagerLog.d(TAG, "wns closeNativeAndCache");
     }
-    int i;
-    Object localObject;
-    int m;
-    boolean bool;
-    label402:
-    int j;
-    if ((Build.VERSION.SDK_INT >= 21) && ("meizu".equalsIgnoreCase(Build.MANUFACTURER)))
-    {
+    if ((Build.VERSION.SDK_INT >= 21) && ("meizu".equalsIgnoreCase(Build.MANUFACTURER))) {
       i = 1;
-      if (i != 0)
-      {
-        sCloseNativeAndCache = true;
-        ImageManagerLog.d(TAG, "isMeizu closeNativeAndCache");
-      }
-      this.dispatcherLoop = ImageManagerEnv.g().getDispatcher();
-      if (this.dispatcherLoop == null)
-      {
-        localObject = new HandlerThread("Qzone_ImageManager_getnull_or_cancel");
-        ((HandlerThread)localObject).start();
-        this.dispatcherLoop = ((HandlerThread)localObject).getLooper();
-      }
-      m = ((ActivityManager)this.mContext.getSystemService("activity")).getMemoryClass();
-      localObject = ImageManagerEnv.g().getProcessName(this.mContext);
-      isMainProcess = ImageManagerEnv.g().isMainProcess(this.mContext);
-      if ((localObject == null) || (!((String)localObject).contains(":localphoto"))) {
-        break label612;
-      }
-      i = 524288 * m;
-      bool = true;
-      if (IS_ICE_CREAM_SANDWICH) {
-        break label624;
-      }
-      j = i / 2;
-      label413:
-      i = j - 307200;
-      this.imageMemCacheSize = i;
-      float f2 = ImageManagerEnv.g().getCacheMemRatio();
-      float f1 = f2;
-      if (f2 > 1.0F) {
-        f1 = 1.0F;
-      }
-      this.imageMemCacheSize = ((int)(this.imageMemCacheSize * f1));
-      ImageManagerLog.d(TAG, "imageMemCacheSize: " + this.imageMemCacheSize + " , drawableCacheRatio: " + f1 + ",memoryclass:" + m);
-      getDecodeThreadPool();
-      ImageOptionSampleSize.setSize(m, i);
-      if (Build.VERSION.SDK_INT < 14) {
-        sCloseNativeAndCache = true;
-      }
-      if (!sCloseNativeAndCache) {
-        break label716;
-      }
-    }
-    for (;;)
-    {
-      if (this.mDecoder == null)
-      {
-        this.mDecoder = new DefaultDecoder();
-        this.mBitmapFactory = new IBitmapFactory.DefaultBitmapFactory(this.mDecoder);
-      }
-      ImageManagerLog.d(TAG, "ImageManager() mDecoder:" + this.mDecoder);
-      registerSdCardMountReceiver();
-      getAllSDCardInfo();
-      registerDumpMemoryCacheReceiver();
-      return;
+    } else {
       i = 0;
-      break;
-      label612:
-      i = 262144 * m;
-      bool = false;
-      break label402;
-      label624:
-      if (Build.VERSION.SDK_INT >= 21)
-      {
-        int n = ImageManagerEnv.g().getMinMemoryClassInArt();
-        j = i;
-        if (m >= n) {
-          break label413;
-        }
-        sCloseNativeAndCache = true;
-        ImageManagerLog.d(TAG, "minMemory closeNativeAndCache:" + m + ", minMem: " + n);
-        j = i;
-        break label413;
-      }
-      j = i;
-      if (!bool) {
-        break label413;
-      }
+    }
+    if (i != 0)
+    {
       sCloseNativeAndCache = true;
+      ImageManagerLog.d(TAG, "isMeizu closeNativeAndCache");
+    }
+    this.dispatcherLoop = ImageManagerEnv.g().getDispatcher();
+    if (this.dispatcherLoop == null)
+    {
+      localObject = new HandlerThread("Qzone_ImageManager_getnull_or_cancel");
+      ((HandlerThread)localObject).start();
+      this.dispatcherLoop = ((HandlerThread)localObject).getLooper();
+    }
+    int m = ((ActivityManager)this.mContext.getSystemService("activity")).getMemoryClass();
+    Object localObject = ImageManagerEnv.g().getProcessName(this.mContext);
+    isMainProcess = ImageManagerEnv.g().isMainProcess(this.mContext);
+    int i = 262144 * m;
+    boolean bool;
+    if ((localObject != null) && (((String)localObject).contains(":localphoto")))
+    {
+      i = m * 524288;
+      bool = true;
+    }
+    else
+    {
+      bool = false;
+    }
+    int j;
+    if (!IS_ICE_CREAM_SANDWICH)
+    {
+      j = i / 2;
+    }
+    else if (Build.VERSION.SDK_INT >= 21)
+    {
+      int n = ImageManagerEnv.g().getMinMemoryClassInArt();
       j = i;
-      break label413;
-      label716:
-      if (Build.VERSION.SDK_INT >= 21) {
-        break label814;
-      }
-      this.mByteArrayPool = new ByteArrayPool(new ImageManager.2(this, bool));
-      this.mDecoder = new DalvikDecoder(this.mByteArrayPool);
-      if (!DalvikDecoder.loadSoSucess)
+      if (m < n)
       {
-        ImageManagerLog.w(TAG, "load so failed");
-        this.mDecoder = null;
-        this.mByteArrayPool = null;
         sCloseNativeAndCache = true;
-      }
-      else
-      {
-        this.mBitmapFactory = new IBitmapFactory.DalvikBitmapFactory(this.mByteArrayPool, this.mDecoder);
+        localObject = TAG;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("minMemory closeNativeAndCache:");
+        localStringBuilder.append(m);
+        localStringBuilder.append(", minMem: ");
+        localStringBuilder.append(n);
+        ImageManagerLog.d((String)localObject, localStringBuilder.toString());
+        j = i;
       }
     }
-    label814:
-    if (ImageDefaultConfig.isQzone(this.mContext))
+    else
     {
-      i = (int)(this.imageMemCacheSize * 0.4D);
-      this.imageMemCacheSize = ((int)(this.imageMemCacheSize * 0.6D));
-    }
-    for (;;)
-    {
-      ImageManagerLog.d(TAG, "ImageLoader----imageMemCacheSize = " + this.imageMemCacheSize);
-      this.mByteArrayPool = new ByteArrayPool(new ImageManager.3(this));
-      localObject = new ReuseBitmapCacheProxy(new ImageManager.4(this), i);
-      this.mDecoder = new ArtDecoder(this.mByteArrayPool, (BitmapPool)localObject);
-      this.mBitmapFactory = new IBitmapFactory.ArtBitmapFactory(this.mByteArrayPool, this.mDecoder);
-      BitmapReference.setGlobalReleaser((Releaser)localObject);
-      break;
-      if (ImageDefaultConfig.isPicture(this.mContext))
+      j = i;
+      if (bool)
       {
-        i = (int)(this.imageMemCacheSize * 0.6D);
-        this.imageMemCacheSize = ((int)(this.imageMemCacheSize * 0.4D));
+        sCloseNativeAndCache = true;
+        j = i;
       }
-      else
+    }
+    i = j - 307200;
+    this.imageMemCacheSize = i;
+    float f2 = ImageManagerEnv.g().getCacheMemRatio();
+    float f1 = f2;
+    if (f2 > 1.0F) {
+      f1 = 1.0F;
+    }
+    this.imageMemCacheSize = ((int)(this.imageMemCacheSize * f1));
+    localObject = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("imageMemCacheSize: ");
+    localStringBuilder.append(this.imageMemCacheSize);
+    localStringBuilder.append(" , drawableCacheRatio: ");
+    localStringBuilder.append(f1);
+    localStringBuilder.append(",memoryclass:");
+    localStringBuilder.append(m);
+    ImageManagerLog.d((String)localObject, localStringBuilder.toString());
+    getDecodeThreadPool();
+    ImageOptionSampleSize.setSize(m, i);
+    if (Build.VERSION.SDK_INT < 14) {
+      sCloseNativeAndCache = true;
+    }
+    if (!sCloseNativeAndCache) {
+      if (Build.VERSION.SDK_INT < 21)
       {
-        i = k;
-        if (ImageDefaultConfig.isMobileQQ(this.mContext))
+        this.mByteArrayPool = new ByteArrayPool(new ImageManager.2(this, bool));
+        this.mDecoder = new DalvikDecoder(this.mByteArrayPool);
+        if (!DalvikDecoder.loadSoSucess)
         {
-          i = (int)(this.imageMemCacheSize * 0.3D);
-          this.imageMemCacheSize = ((int)(this.imageMemCacheSize * 0.5D));
+          ImageManagerLog.w(TAG, "load so failed");
+          this.mDecoder = null;
+          this.mByteArrayPool = null;
+          sCloseNativeAndCache = true;
+        }
+        else
+        {
+          this.mBitmapFactory = new IBitmapFactory.DalvikBitmapFactory(this.mByteArrayPool, this.mDecoder);
         }
       }
+      else
+      {
+        double d;
+        if (ImageDefaultConfig.isQzone(this.mContext))
+        {
+          j = this.imageMemCacheSize;
+          d = j;
+          Double.isNaN(d);
+          i = (int)(d * 0.4D);
+          d = j;
+          Double.isNaN(d);
+          this.imageMemCacheSize = ((int)(d * 0.6D));
+        }
+        else if (ImageDefaultConfig.isPicture(this.mContext))
+        {
+          j = this.imageMemCacheSize;
+          d = j;
+          Double.isNaN(d);
+          i = (int)(d * 0.6D);
+          d = j;
+          Double.isNaN(d);
+          this.imageMemCacheSize = ((int)(d * 0.4D));
+        }
+        else
+        {
+          i = k;
+          if (ImageDefaultConfig.isMobileQQ(this.mContext))
+          {
+            j = this.imageMemCacheSize;
+            d = j;
+            Double.isNaN(d);
+            i = (int)(d * 0.3D);
+            d = j;
+            Double.isNaN(d);
+            this.imageMemCacheSize = ((int)(d * 0.5D));
+          }
+        }
+        localObject = TAG;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("ImageLoader----imageMemCacheSize = ");
+        localStringBuilder.append(this.imageMemCacheSize);
+        ImageManagerLog.d((String)localObject, localStringBuilder.toString());
+        this.mByteArrayPool = new ByteArrayPool(new ImageManager.3(this));
+        localObject = new ReuseBitmapCacheProxy(new ImageManager.4(this), i);
+        this.mDecoder = new ArtDecoder(this.mByteArrayPool, (BitmapPool)localObject);
+        this.mBitmapFactory = new IBitmapFactory.ArtBitmapFactory(this.mByteArrayPool, this.mDecoder);
+        BitmapReference.setGlobalReleaser((Releaser)localObject);
+      }
     }
+    if (this.mDecoder == null)
+    {
+      this.mDecoder = new DefaultDecoder();
+      this.mBitmapFactory = new IBitmapFactory.DefaultBitmapFactory(this.mDecoder);
+    }
+    localObject = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ImageManager() mDecoder:");
+    localStringBuilder.append(this.mDecoder);
+    ImageManagerLog.d((String)localObject, localStringBuilder.toString());
+    registerSdCardMountReceiver();
+    getAllSDCardInfo();
+    registerDumpMemoryCacheReceiver();
   }
   
-  /* Error */
   private void checkOldImageFileAndClean()
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore 4
-    //   3: getstatic 198	com/tencent/component/media/image/ImageManager:isMainProcess	Z
-    //   6: ifne +4 -> 10
-    //   9: return
-    //   10: getstatic 271	com/tencent/component/media/image/ImageManager:mLoadAllImageFileFlag	Z
-    //   13: ifeq +14 -> 27
-    //   16: aload_0
-    //   17: getfield 356	com/tencent/component/media/image/ImageManager:mTotalFileSize	J
-    //   20: getstatic 249	com/tencent/component/media/image/ImageManager:maxCacheSize	J
-    //   23: lcmp
-    //   24: iflt -15 -> 9
-    //   27: aload_0
-    //   28: getfield 337	com/tencent/component/media/image/ImageManager:mContext	Landroid/content/Context;
-    //   31: invokestatic 679	com/tencent/component/media/image/ImageManager:getCachePath	(Landroid/content/Context;)Ljava/lang/String;
-    //   34: astore 9
-    //   36: new 681	java/io/File
-    //   39: dup
-    //   40: aload 9
-    //   42: ldc 29
-    //   44: ldc 26
-    //   46: invokevirtual 685	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   49: invokespecial 686	java/io/File:<init>	(Ljava/lang/String;)V
-    //   52: astore 10
-    //   54: aload 10
-    //   56: invokevirtual 689	java/io/File:exists	()Z
-    //   59: ifeq +61 -> 120
-    //   62: aload 10
-    //   64: invokevirtual 692	java/io/File:isDirectory	()Z
-    //   67: ifeq +53 -> 120
-    //   70: aload 10
-    //   72: invokevirtual 696	java/io/File:listFiles	()[Ljava/io/File;
-    //   75: astore 11
-    //   77: aload 11
-    //   79: ifnull +35 -> 114
-    //   82: aload 11
-    //   84: arraylength
-    //   85: ifle +29 -> 114
-    //   88: aload 11
-    //   90: arraylength
-    //   91: istore_2
-    //   92: iconst_0
-    //   93: istore_1
-    //   94: iload_1
-    //   95: iload_2
-    //   96: if_icmpge +18 -> 114
-    //   99: aload 11
-    //   101: iload_1
-    //   102: aaload
-    //   103: invokevirtual 699	java/io/File:delete	()Z
-    //   106: pop
-    //   107: iload_1
-    //   108: iconst_1
-    //   109: iadd
-    //   110: istore_1
-    //   111: goto -17 -> 94
-    //   114: aload 10
-    //   116: invokevirtual 699	java/io/File:delete	()Z
-    //   119: pop
-    //   120: new 273	java/util/concurrent/ConcurrentHashMap
-    //   123: dup
-    //   124: invokespecial 274	java/util/concurrent/ConcurrentHashMap:<init>	()V
-    //   127: astore 12
-    //   129: new 701	java/util/ArrayList
-    //   132: dup
-    //   133: invokespecial 702	java/util/ArrayList:<init>	()V
-    //   136: astore 11
-    //   138: new 681	java/io/File
-    //   141: dup
-    //   142: aload 9
-    //   144: invokespecial 686	java/io/File:<init>	(Ljava/lang/String;)V
-    //   147: astore 9
-    //   149: aload 9
-    //   151: invokevirtual 689	java/io/File:exists	()Z
-    //   154: ifeq +449 -> 603
-    //   157: aload 9
-    //   159: invokevirtual 692	java/io/File:isDirectory	()Z
-    //   162: ifeq +441 -> 603
-    //   165: aload 9
-    //   167: getstatic 256	com/tencent/component/media/image/ImageManager:imageFilenameFilter	Ljava/io/FilenameFilter;
-    //   170: invokevirtual 705	java/io/File:listFiles	(Ljava/io/FilenameFilter;)[Ljava/io/File;
-    //   173: astore 13
-    //   175: aload 13
-    //   177: ifnull +426 -> 603
-    //   180: aload 13
-    //   182: arraylength
-    //   183: istore_1
-    //   184: iload_1
-    //   185: ifle +418 -> 603
-    //   188: iconst_0
-    //   189: istore_3
-    //   190: iconst_0
-    //   191: istore_1
-    //   192: iload_1
-    //   193: istore_2
-    //   194: iload_3
-    //   195: aload 13
-    //   197: arraylength
-    //   198: if_icmpge +402 -> 600
-    //   201: iload_1
-    //   202: istore_2
-    //   203: aload 11
-    //   205: aload 13
-    //   207: iload_3
-    //   208: aaload
-    //   209: invokevirtual 709	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   212: pop
-    //   213: iload_1
-    //   214: istore_2
-    //   215: aload 13
-    //   217: iload_3
-    //   218: aaload
-    //   219: invokevirtual 712	java/io/File:getName	()Ljava/lang/String;
-    //   222: astore 14
-    //   224: iload_1
-    //   225: istore_2
-    //   226: aload 14
-    //   228: invokestatic 716	com/tencent/component/media/image/ImageManager:parseInt	(Ljava/lang/String;)I
-    //   231: istore 5
-    //   233: iload_1
-    //   234: istore_2
-    //   235: getstatic 276	com/tencent/component/media/image/ImageManager:mFilename2FileLengthMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   238: iload 5
-    //   240: invokestatic 722	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   243: invokevirtual 726	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   246: checkcast 718	java/lang/Integer
-    //   249: astore 10
-    //   251: aload 10
-    //   253: astore 9
-    //   255: aload 10
-    //   257: ifnonnull +34 -> 291
-    //   260: iload_1
-    //   261: istore_2
-    //   262: aload 13
-    //   264: iload_3
-    //   265: aaload
-    //   266: invokevirtual 729	java/io/File:length	()J
-    //   269: l2i
-    //   270: invokestatic 722	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   273: astore 9
-    //   275: iload_1
-    //   276: istore_2
-    //   277: getstatic 276	com/tencent/component/media/image/ImageManager:mFilename2FileLengthMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   280: iload 5
-    //   282: invokestatic 722	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   285: aload 9
-    //   287: invokevirtual 733	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   290: pop
-    //   291: iload_1
-    //   292: istore_2
-    //   293: iload_1
-    //   294: aload 9
-    //   296: invokevirtual 736	java/lang/Integer:intValue	()I
-    //   299: iadd
-    //   300: istore_1
-    //   301: iload_1
-    //   302: istore_2
-    //   303: aload 12
-    //   305: aload 14
-    //   307: aload 13
-    //   309: iload_3
-    //   310: aaload
-    //   311: invokevirtual 733	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   314: pop
-    //   315: iload_3
-    //   316: iconst_1
-    //   317: iadd
-    //   318: istore_3
-    //   319: goto -127 -> 192
-    //   322: astore 10
-    //   324: aload 10
-    //   326: invokevirtual 739	java/lang/Throwable:printStackTrace	()V
-    //   329: goto -209 -> 120
-    //   332: astore 9
-    //   334: iconst_0
-    //   335: istore_1
-    //   336: aload 9
-    //   338: invokevirtual 739	java/lang/Throwable:printStackTrace	()V
-    //   341: aload_0
-    //   342: iload_1
-    //   343: i2l
-    //   344: putfield 356	com/tencent/component/media/image/ImageManager:mTotalFileSize	J
-    //   347: aload_0
-    //   348: aload 12
-    //   350: putfield 354	com/tencent/component/media/image/ImageManager:mFilename2FileMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   353: iconst_1
-    //   354: putstatic 271	com/tencent/component/media/image/ImageManager:mLoadAllImageFileFlag	Z
-    //   357: aload_0
-    //   358: getfield 356	com/tencent/component/media/image/ImageManager:mTotalFileSize	J
-    //   361: getstatic 249	com/tencent/component/media/image/ImageManager:maxCacheSize	J
-    //   364: lcmp
-    //   365: iflt -356 -> 9
-    //   368: getstatic 742	android/os/Build:MODEL	Ljava/lang/String;
-    //   371: invokevirtual 745	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   374: ldc_w 747
-    //   377: invokevirtual 441	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   380: istore 6
-    //   382: getstatic 249	com/tencent/component/media/image/ImageManager:maxCacheSize	J
-    //   385: l2f
-    //   386: ldc 109
-    //   388: fmul
-    //   389: f2l
-    //   390: lstore 7
-    //   392: aload_0
-    //   393: getstatic 282	com/tencent/component/media/image/ImageManager:mLruFilename2TimeMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   396: invokespecial 750	com/tencent/component/media/image/ImageManager:loadLruFileTime	(Ljava/util/concurrent/ConcurrentHashMap;)V
-    //   399: aload 11
-    //   401: getstatic 261	com/tencent/component/media/image/ImageManager:fileTimeComparator	Ljava/util/Comparator;
-    //   404: invokestatic 756	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
-    //   407: aload 11
-    //   409: invokevirtual 759	java/util/ArrayList:size	()I
-    //   412: iconst_1
-    //   413: isub
-    //   414: istore_2
-    //   415: iload 4
-    //   417: istore_1
-    //   418: iload_2
-    //   419: ifle +140 -> 559
-    //   422: aload 11
-    //   424: iload_2
-    //   425: invokevirtual 762	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   428: checkcast 681	java/io/File
-    //   431: astore 12
-    //   433: aload 12
-    //   435: invokevirtual 712	java/io/File:getName	()Ljava/lang/String;
-    //   438: astore 13
-    //   440: getstatic 276	com/tencent/component/media/image/ImageManager:mFilename2FileLengthMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   443: aload 13
-    //   445: invokestatic 716	com/tencent/component/media/image/ImageManager:parseInt	(Ljava/lang/String;)I
-    //   448: invokestatic 722	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   451: invokevirtual 765	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   454: checkcast 718	java/lang/Integer
-    //   457: astore 10
-    //   459: aload 10
-    //   461: astore 9
-    //   463: aload 10
-    //   465: ifnonnull +14 -> 479
-    //   468: aload 12
-    //   470: invokevirtual 729	java/io/File:length	()J
-    //   473: l2i
-    //   474: invokestatic 722	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   477: astore 9
-    //   479: aload_0
-    //   480: getfield 354	com/tencent/component/media/image/ImageManager:mFilename2FileMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   483: aload 13
-    //   485: invokevirtual 765	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   488: pop
-    //   489: aload_0
-    //   490: aload_0
-    //   491: getfield 356	com/tencent/component/media/image/ImageManager:mTotalFileSize	J
-    //   494: aload 9
-    //   496: invokevirtual 736	java/lang/Integer:intValue	()I
-    //   499: i2l
-    //   500: lsub
-    //   501: putfield 356	com/tencent/component/media/image/ImageManager:mTotalFileSize	J
-    //   504: aload 12
-    //   506: invokevirtual 699	java/io/File:delete	()Z
-    //   509: pop
-    //   510: getstatic 282	com/tencent/component/media/image/ImageManager:mLruFilename2TimeMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   513: aload 13
-    //   515: invokevirtual 765	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   518: checkcast 718	java/lang/Integer
-    //   521: astore 9
-    //   523: iload 6
-    //   525: ifeq +72 -> 597
-    //   528: iload_1
-    //   529: iconst_1
-    //   530: iadd
-    //   531: istore_3
-    //   532: iload_3
-    //   533: istore_1
-    //   534: iload_3
-    //   535: bipush 20
-    //   537: irem
-    //   538: ifne +11 -> 549
-    //   541: ldc2_w 766
-    //   544: invokestatic 773	java/lang/Thread:sleep	(J)V
-    //   547: iload_3
-    //   548: istore_1
-    //   549: aload_0
-    //   550: getfield 356	com/tencent/component/media/image/ImageManager:mTotalFileSize	J
-    //   553: lload 7
-    //   555: lcmp
-    //   556: ifge +20 -> 576
-    //   559: aload_0
-    //   560: getstatic 282	com/tencent/component/media/image/ImageManager:mLruFilename2TimeMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   563: iconst_1
-    //   564: invokespecial 777	com/tencent/component/media/image/ImageManager:forceSaveLruFileTime	(Ljava/util/concurrent/ConcurrentHashMap;Z)V
-    //   567: return
-    //   568: astore 9
-    //   570: aload 9
-    //   572: invokevirtual 739	java/lang/Throwable:printStackTrace	()V
-    //   575: return
-    //   576: iload_2
-    //   577: iconst_1
-    //   578: isub
-    //   579: istore_2
-    //   580: goto -162 -> 418
-    //   583: astore 9
-    //   585: iload_3
-    //   586: istore_1
-    //   587: goto -38 -> 549
-    //   590: astore 9
-    //   592: iload_2
-    //   593: istore_1
-    //   594: goto -258 -> 336
-    //   597: goto -48 -> 549
-    //   600: goto -259 -> 341
-    //   603: iconst_0
-    //   604: istore_1
-    //   605: goto -264 -> 341
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	608	0	this	ImageManager
-    //   93	512	1	i	int
-    //   91	502	2	j	int
-    //   189	397	3	k	int
-    //   1	415	4	m	int
-    //   231	50	5	n	int
-    //   380	144	6	bool	boolean
-    //   390	164	7	l	long
-    //   34	261	9	localObject1	Object
-    //   332	5	9	localThrowable1	Throwable
-    //   461	61	9	localObject2	Object
-    //   568	3	9	localThrowable2	Throwable
-    //   583	1	9	localException	Exception
-    //   590	1	9	localThrowable3	Throwable
-    //   52	204	10	localObject3	Object
-    //   322	3	10	localThrowable4	Throwable
-    //   457	7	10	localInteger	Integer
-    //   75	348	11	localObject4	Object
-    //   127	378	12	localObject5	Object
-    //   173	341	13	localObject6	Object
-    //   222	84	14	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   36	77	322	java/lang/Throwable
-    //   82	92	322	java/lang/Throwable
-    //   99	107	322	java/lang/Throwable
-    //   114	120	322	java/lang/Throwable
-    //   138	175	332	java/lang/Throwable
-    //   180	184	332	java/lang/Throwable
-    //   382	415	568	java/lang/Throwable
-    //   422	459	568	java/lang/Throwable
-    //   468	479	568	java/lang/Throwable
-    //   479	523	568	java/lang/Throwable
-    //   541	547	568	java/lang/Throwable
-    //   549	559	568	java/lang/Throwable
-    //   559	567	568	java/lang/Throwable
-    //   541	547	583	java/lang/Exception
-    //   194	201	590	java/lang/Throwable
-    //   203	213	590	java/lang/Throwable
-    //   215	224	590	java/lang/Throwable
-    //   226	233	590	java/lang/Throwable
-    //   235	251	590	java/lang/Throwable
-    //   262	275	590	java/lang/Throwable
-    //   277	291	590	java/lang/Throwable
-    //   293	301	590	java/lang/Throwable
-    //   303	315	590	java/lang/Throwable
+    if (!isMainProcess) {
+      return;
+    }
+    if ((mLoadAllImageFileFlag) && (this.mTotalFileSize < maxCacheSize)) {
+      return;
+    }
+    Object localObject1 = getCachePath(this.mContext);
+    int n = 0;
+    int j;
+    int i;
+    try
+    {
+      File localFile = new File(((String)localObject1).replace("imageV2", "image"));
+      if ((localFile.exists()) && (localFile.isDirectory()))
+      {
+        localObject3 = localFile.listFiles();
+        if ((localObject3 != null) && (localObject3.length > 0))
+        {
+          j = localObject3.length;
+          i = 0;
+          while (i < j)
+          {
+            localObject3[i].delete();
+            i += 1;
+          }
+        }
+        localFile.delete();
+      }
+    }
+    catch (Throwable localThrowable4)
+    {
+      localThrowable4.printStackTrace();
+    }
+    Object localObject4 = new ConcurrentHashMap();
+    Object localObject3 = new ArrayList();
+    Object localObject5;
+    int k;
+    Integer localInteger;
+    try
+    {
+      localObject1 = new File((String)localObject1);
+      if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
+      {
+        localObject5 = ((File)localObject1).listFiles(imageFilenameFilter);
+        if (localObject5 != null)
+        {
+          i = localObject5.length;
+          if (i > 0)
+          {
+            int m = 0;
+            i = 0;
+            for (;;)
+            {
+              j = i;
+              k = i;
+              try
+              {
+                if (m >= localObject5.length) {
+                  break label361;
+                }
+                j = i;
+                ((ArrayList)localObject3).add(localObject5[m]);
+                j = i;
+                String str = localObject5[m].getName();
+                j = i;
+                k = parseInt(str);
+                j = i;
+                localInteger = (Integer)mFilename2FileLengthMap.get(Integer.valueOf(k));
+                localObject1 = localInteger;
+                if (localInteger == null)
+                {
+                  j = i;
+                  localObject1 = Integer.valueOf((int)localObject5[m].length());
+                  j = i;
+                  mFilename2FileLengthMap.put(Integer.valueOf(k), localObject1);
+                }
+                j = i;
+                i += ((Integer)localObject1).intValue();
+                j = i;
+                ((ConcurrentHashMap)localObject4).put(str, localObject5[m]);
+                m += 1;
+              }
+              catch (Throwable localThrowable1)
+              {
+                break label354;
+              }
+            }
+          }
+        }
+      }
+      k = 0;
+    }
+    catch (Throwable localThrowable2)
+    {
+      j = 0;
+      label354:
+      localThrowable2.printStackTrace();
+      k = j;
+    }
+    label361:
+    this.mTotalFileSize = k;
+    this.mFilename2FileMap = ((ConcurrentHashMap)localObject4);
+    mLoadAllImageFileFlag = true;
+    if (this.mTotalFileSize < maxCacheSize) {
+      return;
+    }
+    boolean bool = Build.MODEL.toLowerCase().contains("vivo");
+    for (;;)
+    {
+      try
+      {
+        l = ((float)maxCacheSize * 0.8F);
+        loadLruFileTime(mLruFilename2TimeMap);
+        Collections.sort((List)localObject3, fileTimeComparator);
+        i = ((ArrayList)localObject3).size() - 1;
+        k = n;
+        if (i > 0)
+        {
+          localObject4 = (File)((ArrayList)localObject3).get(i);
+          localObject5 = ((File)localObject4).getName();
+          localInteger = (Integer)mFilename2FileLengthMap.remove(Integer.valueOf(parseInt((String)localObject5)));
+          Object localObject2 = localInteger;
+          if (localInteger == null) {
+            localObject2 = Integer.valueOf((int)((File)localObject4).length());
+          }
+          this.mFilename2FileMap.remove(localObject5);
+          this.mTotalFileSize -= ((Integer)localObject2).intValue();
+          ((File)localObject4).delete();
+          localObject2 = (Integer)mLruFilename2TimeMap.remove(localObject5);
+          j = k;
+          if (bool)
+          {
+            k += 1;
+            j = k;
+            if (k % 20 != 0) {}
+          }
+        }
+      }
+      catch (Throwable localThrowable3)
+      {
+        long l;
+        localThrowable3.printStackTrace();
+        return;
+      }
+      try
+      {
+        Thread.sleep(100L);
+        j = k;
+      }
+      catch (Exception localException)
+      {
+        j = k;
+        continue;
+        i -= 1;
+        k = j;
+      }
+      if (this.mTotalFileSize < l)
+      {
+        forceSaveLruFileTime(mLruFilename2TimeMap, true);
+        return;
+      }
+    }
   }
   
   private void checkSaveLruFileTime(ConcurrentHashMap<String, Integer> paramConcurrentHashMap)
   {
-    long l;
     if (isMainProcess)
     {
-      l = System.currentTimeMillis();
-      if (mSaveLruFileTime != 0L) {
-        break label29;
+      long l1 = System.currentTimeMillis();
+      long l2 = mSaveLruFileTime;
+      if (l2 == 0L)
+      {
+        mSaveLruFileTime = l1;
+        forceSaveLruFileTime(paramConcurrentHashMap, false);
+        return;
       }
-      mSaveLruFileTime = l;
-      forceSaveLruFileTime(paramConcurrentHashMap, false);
+      if (l1 - l2 > 60000L)
+      {
+        mSaveLruFileTime = l1;
+        forceSaveLruFileTime(paramConcurrentHashMap, false);
+      }
     }
-    label29:
-    while (l - mSaveLruFileTime <= 60000L) {
-      return;
-    }
-    mSaveLruFileTime = l;
-    forceSaveLruFileTime(paramConcurrentHashMap, false);
   }
   
   private void clearAllImageFile()
@@ -790,25 +633,23 @@ public class ImageManager
   
   public static Bitmap drawableToBitmap(Drawable paramDrawable)
   {
-    int j = 1;
     if ((paramDrawable instanceof BitmapDrawable)) {
       return ((BitmapDrawable)paramDrawable).getBitmap();
     }
     int i = paramDrawable.getIntrinsicWidth();
-    if (i > 0) {}
-    for (;;)
-    {
-      int k = paramDrawable.getIntrinsicHeight();
-      if (k > 0) {
-        j = k;
-      }
-      Bitmap localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-      Canvas localCanvas = new Canvas(localBitmap);
-      paramDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
-      paramDrawable.draw(localCanvas);
-      return localBitmap;
+    int j = 1;
+    if (i <= 0) {
       i = 1;
     }
+    int k = paramDrawable.getIntrinsicHeight();
+    if (k > 0) {
+      j = k;
+    }
+    Bitmap localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+    Canvas localCanvas = new Canvas(localBitmap);
+    paramDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
+    paramDrawable.draw(localCanvas);
+    return localBitmap;
   }
   
   private void evictAll()
@@ -823,187 +664,159 @@ public class ImageManager
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokevirtual 882	java/util/concurrent/ConcurrentHashMap:size	()I
-    //   4: ifle +182 -> 186
-    //   7: new 211	java/util/HashMap
+    //   1: invokevirtual 883	java/util/concurrent/ConcurrentHashMap:size	()I
+    //   4: ifle +244 -> 248
+    //   7: new 201	java/util/HashMap
     //   10: dup
-    //   11: invokespecial 212	java/util/HashMap:<init>	()V
+    //   11: invokespecial 202	java/util/HashMap:<init>	()V
     //   14: astore 4
     //   16: aload 4
     //   18: aload_1
-    //   19: invokevirtual 886	java/util/HashMap:putAll	(Ljava/util/Map;)V
+    //   19: invokevirtual 887	java/util/HashMap:putAll	(Ljava/util/Map;)V
     //   22: aload_1
-    //   23: invokevirtual 788	java/util/concurrent/ConcurrentHashMap:clear	()V
-    //   26: new 448	java/lang/StringBuilder
+    //   23: invokevirtual 789	java/util/concurrent/ConcurrentHashMap:clear	()V
+    //   26: new 440	java/lang/StringBuilder
     //   29: dup
-    //   30: invokespecial 449	java/lang/StringBuilder:<init>	()V
-    //   33: aload_0
-    //   34: getfield 337	com/tencent/component/media/image/ImageManager:mContext	Landroid/content/Context;
-    //   37: invokestatic 679	com/tencent/component/media/image/ImageManager:getCachePath	(Landroid/content/Context;)Ljava/lang/String;
-    //   40: invokevirtual 455	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   43: ldc 47
-    //   45: invokevirtual 455	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   48: invokevirtual 468	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   51: astore_1
-    //   52: iload_2
-    //   53: ifne +134 -> 187
-    //   56: iconst_1
-    //   57: istore_2
-    //   58: new 888	java/io/FileOutputStream
-    //   61: dup
-    //   62: aload_1
+    //   30: invokespecial 441	java/lang/StringBuilder:<init>	()V
+    //   33: astore_1
+    //   34: aload_1
+    //   35: aload_0
+    //   36: getfield 327	com/tencent/component/media/image/ImageManager:mContext	Landroid/content/Context;
+    //   39: invokestatic 680	com/tencent/component/media/image/ImageManager:getCachePath	(Landroid/content/Context;)Ljava/lang/String;
+    //   42: invokevirtual 447	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   45: pop
+    //   46: aload_1
+    //   47: ldc 47
+    //   49: invokevirtual 447	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   52: pop
+    //   53: aload_1
+    //   54: invokevirtual 456	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   57: astore_3
+    //   58: aconst_null
+    //   59: astore 5
+    //   61: aconst_null
+    //   62: astore_1
     //   63: iload_2
-    //   64: invokespecial 891	java/io/FileOutputStream:<init>	(Ljava/lang/String;Z)V
-    //   67: astore_3
-    //   68: aload_3
-    //   69: astore_1
-    //   70: new 448	java/lang/StringBuilder
-    //   73: dup
-    //   74: invokespecial 449	java/lang/StringBuilder:<init>	()V
-    //   77: astore 5
-    //   79: aload_3
-    //   80: astore_1
-    //   81: aload 4
-    //   83: invokevirtual 895	java/util/HashMap:keySet	()Ljava/util/Set;
-    //   86: invokeinterface 901 1 0
-    //   91: astore 6
-    //   93: aload_3
-    //   94: astore_1
-    //   95: aload 6
-    //   97: invokeinterface 906 1 0
-    //   102: ifeq +90 -> 192
-    //   105: aload_3
-    //   106: astore_1
-    //   107: aload 6
-    //   109: invokeinterface 910 1 0
-    //   114: checkcast 392	java/lang/String
-    //   117: astore 7
-    //   119: aload_3
-    //   120: astore_1
-    //   121: aload 5
-    //   123: aload 7
-    //   125: invokevirtual 455	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   128: pop
-    //   129: aload_3
-    //   130: astore_1
-    //   131: aload 5
-    //   133: ldc_w 912
-    //   136: invokevirtual 455	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   139: pop
-    //   140: aload_3
-    //   141: astore_1
-    //   142: aload 5
-    //   144: aload 4
-    //   146: aload 7
-    //   148: invokevirtual 913	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   151: invokevirtual 493	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   154: pop
-    //   155: aload_3
-    //   156: astore_1
-    //   157: aload 5
-    //   159: ldc_w 915
-    //   162: invokevirtual 455	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   165: pop
-    //   166: goto -73 -> 93
-    //   169: astore 4
-    //   171: aload_3
-    //   172: astore_1
-    //   173: aload 4
-    //   175: invokevirtual 916	java/lang/Exception:printStackTrace	()V
-    //   178: aload_3
-    //   179: ifnull +7 -> 186
-    //   182: aload_3
-    //   183: invokevirtual 919	java/io/FileOutputStream:close	()V
-    //   186: return
-    //   187: iconst_0
-    //   188: istore_2
-    //   189: goto -131 -> 58
-    //   192: aload_3
-    //   193: astore_1
-    //   194: aload_3
-    //   195: aload 5
-    //   197: invokevirtual 468	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   200: invokevirtual 923	java/lang/String:getBytes	()[B
-    //   203: invokevirtual 927	java/io/FileOutputStream:write	([B)V
-    //   206: aload_3
-    //   207: astore_1
+    //   64: ifne +8 -> 72
+    //   67: iconst_1
+    //   68: istore_2
+    //   69: goto +5 -> 74
+    //   72: iconst_0
+    //   73: istore_2
+    //   74: new 889	java/io/FileOutputStream
+    //   77: dup
+    //   78: aload_3
+    //   79: iload_2
+    //   80: invokespecial 892	java/io/FileOutputStream:<init>	(Ljava/lang/String;Z)V
+    //   83: astore_3
+    //   84: new 440	java/lang/StringBuilder
+    //   87: dup
+    //   88: invokespecial 441	java/lang/StringBuilder:<init>	()V
+    //   91: astore_1
+    //   92: aload 4
+    //   94: invokevirtual 896	java/util/HashMap:keySet	()Ljava/util/Set;
+    //   97: invokeinterface 902 1 0
+    //   102: astore 5
+    //   104: aload 5
+    //   106: invokeinterface 907 1 0
+    //   111: ifeq +53 -> 164
+    //   114: aload 5
+    //   116: invokeinterface 911 1 0
+    //   121: checkcast 386	java/lang/String
+    //   124: astore 6
+    //   126: aload_1
+    //   127: aload 6
+    //   129: invokevirtual 447	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   132: pop
+    //   133: aload_1
+    //   134: ldc_w 913
+    //   137: invokevirtual 447	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   140: pop
+    //   141: aload_1
+    //   142: aload 4
+    //   144: aload 6
+    //   146: invokevirtual 914	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   149: invokevirtual 577	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   152: pop
+    //   153: aload_1
+    //   154: ldc_w 916
+    //   157: invokevirtual 447	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   160: pop
+    //   161: goto -57 -> 104
+    //   164: aload_3
+    //   165: aload_1
+    //   166: invokevirtual 456	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   169: invokevirtual 920	java/lang/String:getBytes	()[B
+    //   172: invokevirtual 924	java/io/FileOutputStream:write	([B)V
+    //   175: aload_3
+    //   176: invokevirtual 927	java/io/FileOutputStream:flush	()V
+    //   179: aload_3
+    //   180: invokevirtual 930	java/io/FileOutputStream:close	()V
+    //   183: return
+    //   184: astore_1
+    //   185: goto +45 -> 230
+    //   188: astore 4
+    //   190: goto +18 -> 208
+    //   193: astore 4
+    //   195: aload_1
+    //   196: astore_3
+    //   197: aload 4
+    //   199: astore_1
+    //   200: goto +30 -> 230
+    //   203: astore 4
+    //   205: aload 5
+    //   207: astore_3
     //   208: aload_3
-    //   209: invokevirtual 930	java/io/FileOutputStream:flush	()V
-    //   212: aload_3
-    //   213: ifnull -27 -> 186
-    //   216: aload_3
-    //   217: invokevirtual 919	java/io/FileOutputStream:close	()V
-    //   220: return
-    //   221: astore_1
-    //   222: aload_1
-    //   223: invokevirtual 931	java/io/IOException:printStackTrace	()V
-    //   226: return
-    //   227: astore_1
-    //   228: aload_1
-    //   229: invokevirtual 931	java/io/IOException:printStackTrace	()V
-    //   232: return
-    //   233: astore_3
-    //   234: aconst_null
-    //   235: astore_1
-    //   236: aload_1
-    //   237: ifnull +7 -> 244
-    //   240: aload_1
-    //   241: invokevirtual 919	java/io/FileOutputStream:close	()V
-    //   244: aload_3
-    //   245: athrow
-    //   246: astore_1
-    //   247: aload_1
-    //   248: invokevirtual 931	java/io/IOException:printStackTrace	()V
-    //   251: goto -7 -> 244
-    //   254: astore_3
-    //   255: goto -19 -> 236
-    //   258: astore 4
-    //   260: aconst_null
-    //   261: astore_3
-    //   262: goto -91 -> 171
+    //   209: astore_1
+    //   210: aload 4
+    //   212: invokevirtual 931	java/lang/Exception:printStackTrace	()V
+    //   215: aload_3
+    //   216: ifnull +32 -> 248
+    //   219: aload_3
+    //   220: invokevirtual 930	java/io/FileOutputStream:close	()V
+    //   223: return
+    //   224: astore_1
+    //   225: aload_1
+    //   226: invokevirtual 932	java/io/IOException:printStackTrace	()V
+    //   229: return
+    //   230: aload_3
+    //   231: ifnull +15 -> 246
+    //   234: aload_3
+    //   235: invokevirtual 930	java/io/FileOutputStream:close	()V
+    //   238: goto +8 -> 246
+    //   241: astore_3
+    //   242: aload_3
+    //   243: invokevirtual 932	java/io/IOException:printStackTrace	()V
+    //   246: aload_1
+    //   247: athrow
+    //   248: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	265	0	this	ImageManager
-    //   0	265	1	paramConcurrentHashMap	ConcurrentHashMap<String, Integer>
-    //   0	265	2	paramBoolean	boolean
-    //   67	150	3	localFileOutputStream	java.io.FileOutputStream
-    //   233	12	3	localObject1	Object
-    //   254	1	3	localObject2	Object
-    //   261	1	3	localObject3	Object
-    //   14	131	4	localHashMap	HashMap
-    //   169	5	4	localException1	Exception
-    //   258	1	4	localException2	Exception
-    //   77	119	5	localStringBuilder	StringBuilder
-    //   91	17	6	localIterator	Iterator
-    //   117	30	7	str	String
+    //   0	249	0	this	ImageManager
+    //   0	249	1	paramConcurrentHashMap	ConcurrentHashMap<String, Integer>
+    //   0	249	2	paramBoolean	boolean
+    //   57	178	3	localObject1	Object
+    //   241	2	3	localIOException	java.io.IOException
+    //   14	129	4	localHashMap	HashMap
+    //   188	1	4	localException1	Exception
+    //   193	5	4	localObject2	Object
+    //   203	8	4	localException2	Exception
+    //   59	147	5	localIterator	Iterator
+    //   124	21	6	str	String
     // Exception table:
     //   from	to	target	type
-    //   70	79	169	java/lang/Exception
-    //   81	93	169	java/lang/Exception
-    //   95	105	169	java/lang/Exception
-    //   107	119	169	java/lang/Exception
-    //   121	129	169	java/lang/Exception
-    //   131	140	169	java/lang/Exception
-    //   142	155	169	java/lang/Exception
-    //   157	166	169	java/lang/Exception
-    //   194	206	169	java/lang/Exception
-    //   208	212	169	java/lang/Exception
-    //   216	220	221	java/io/IOException
-    //   182	186	227	java/io/IOException
-    //   58	68	233	finally
-    //   240	244	246	java/io/IOException
-    //   70	79	254	finally
-    //   81	93	254	finally
-    //   95	105	254	finally
-    //   107	119	254	finally
-    //   121	129	254	finally
-    //   131	140	254	finally
-    //   142	155	254	finally
-    //   157	166	254	finally
-    //   173	178	254	finally
-    //   194	206	254	finally
-    //   208	212	254	finally
-    //   58	68	258	java/lang/Exception
+    //   84	104	184	finally
+    //   104	161	184	finally
+    //   164	179	184	finally
+    //   84	104	188	java/lang/Exception
+    //   104	161	188	java/lang/Exception
+    //   164	179	188	java/lang/Exception
+    //   74	84	193	finally
+    //   210	215	193	finally
+    //   74	84	203	java/lang/Exception
+    //   179	183	224	java/io/IOException
+    //   219	223	224	java/io/IOException
+    //   234	238	241	java/io/IOException
   }
   
   private Drawable get(int paramInt)
@@ -1011,7 +824,11 @@ public class ImageManager
     if (!ImageManagerEnv.g().isQQProcess(this.mContext)) {
       return (Drawable)getDrawableCache().get(Integer.valueOf(paramInt));
     }
-    Object localObject = ImageManagerEnv.g().getQQImagecache().get(paramInt + "");
+    Object localObject = ImageManagerEnv.g().getQQImagecache();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("");
+    localObject = ((MQLruCache)localObject).get(localStringBuilder.toString());
     if ((localObject != null) && ((localObject instanceof Drawable))) {
       return (Drawable)localObject;
     }
@@ -1030,15 +847,16 @@ public class ImageManager
   @Public
   public static String getCachePath(Context paramContext)
   {
-    if (mCachePath == null) {}
-    try
-    {
-      if (mCachePath == null) {
-        mCachePath = getStorePath(paramContext, "imageV2", false, false);
+    if (mCachePath == null) {
+      try
+      {
+        if (mCachePath == null) {
+          mCachePath = getStorePath(paramContext, "imageV2", false, false);
+        }
       }
-      return mCachePath;
+      finally {}
     }
-    finally {}
+    return mCachePath;
   }
   
   @Public
@@ -1049,7 +867,11 @@ public class ImageManager
   
   private static String getCachePathNocache(Context paramContext)
   {
-    return getCachePath(paramContext) + "nocache" + File.separator;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getCachePath(paramContext));
+    localStringBuilder.append("nocache");
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
   }
   
   private static String getCachePathNocacheOrCreateIfInexistence(Context paramContext)
@@ -1065,15 +887,16 @@ public class ImageManager
   @Public
   public static String getCachePathSR(Context paramContext)
   {
-    if (sCachePath4SuperResolution == null) {}
-    try
-    {
-      if (sCachePath4SuperResolution == null) {
-        sCachePath4SuperResolution = getStorePath(paramContext, "image_sr", false, false);
+    if (sCachePath4SuperResolution == null) {
+      try
+      {
+        if (sCachePath4SuperResolution == null) {
+          sCachePath4SuperResolution = getStorePath(paramContext, "image_sr", false, false);
+        }
       }
-      return sCachePath4SuperResolution;
+      finally {}
     }
-    finally {}
+    return sCachePath4SuperResolution;
   }
   
   private static Executor getDecodeThreadPool()
@@ -1091,76 +914,86 @@ public class ImageManager
   
   private static int getDrawableAllocSize(Drawable paramDrawable)
   {
-    if (paramDrawable == null) {}
-    do
+    int j = 0;
+    if (paramDrawable == null) {
+      return 0;
+    }
+    if ((paramDrawable instanceof DrawableContainer)) {
+      return getDrawableAllocSize(((DrawableContainer)paramDrawable).getDrawable());
+    }
+    if ((paramDrawable instanceof PhotoGifDrawable)) {
+      return 0;
+    }
+    if ((paramDrawable instanceof NewGifDrawable)) {
+      return (int)((NewGifDrawable)paramDrawable).getAllocationByteCount();
+    }
+    if ((paramDrawable instanceof BitmapDrawable)) {
+      return BitmapUtils.getBitmapAllocSize(((BitmapDrawable)paramDrawable).getBitmap());
+    }
+    if ((paramDrawable instanceof BitmapImageDrawable)) {
+      return ((BitmapImageDrawable)paramDrawable).size();
+    }
+    if ((paramDrawable instanceof SliceBitmapDrawable)) {
+      return ((SliceBitmapDrawable)paramDrawable).getByteCount();
+    }
+    if ((paramDrawable instanceof NewAnimationDrawable)) {
+      return ((NewAnimationDrawable)paramDrawable).getByteCount();
+    }
+    int i;
+    if ((paramDrawable instanceof NinePatchRefDrawable))
     {
-      do
+      paramDrawable = ((NinePatchRefDrawable)paramDrawable).getBitmapRef();
+      i = j;
+      if (paramDrawable != null)
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              return 0;
-              if ((paramDrawable instanceof DrawableContainer)) {
-                return getDrawableAllocSize(((DrawableContainer)paramDrawable).getDrawable());
-              }
-            } while ((paramDrawable instanceof PhotoGifDrawable));
-            if ((paramDrawable instanceof NewGifDrawable)) {
-              return (int)((NewGifDrawable)paramDrawable).getAllocationByteCount();
-            }
-            if ((paramDrawable instanceof BitmapDrawable)) {
-              return BitmapUtils.getBitmapAllocSize(((BitmapDrawable)paramDrawable).getBitmap());
-            }
-            if ((paramDrawable instanceof BitmapImageDrawable)) {
-              return ((BitmapImageDrawable)paramDrawable).size();
-            }
-            if ((paramDrawable instanceof SliceBitmapDrawable)) {
-              return ((SliceBitmapDrawable)paramDrawable).getByteCount();
-            }
-            if ((paramDrawable instanceof NewAnimationDrawable)) {
-              return ((NewAnimationDrawable)paramDrawable).getByteCount();
-            }
-            if (!(paramDrawable instanceof NinePatchRefDrawable)) {
-              break;
-            }
-            paramDrawable = ((NinePatchRefDrawable)paramDrawable).getBitmapRef();
-          } while (paramDrawable == null);
-          paramDrawable = paramDrawable.getBitmap();
-        } while (paramDrawable == null);
-        return BitmapUtils.getBitmapAllocSize(paramDrawable);
-        if (!(paramDrawable instanceof RegionDrawable)) {
-          break;
+        paramDrawable = paramDrawable.getBitmap();
+        i = j;
+        if (paramDrawable != null) {
+          return BitmapUtils.getBitmapAllocSize(paramDrawable);
         }
-        paramDrawable = ((RegionDrawable)paramDrawable).getBitmapRef();
-      } while (paramDrawable == null);
-      paramDrawable = paramDrawable.getBitmap();
-    } while (paramDrawable == null);
-    return BitmapUtils.getBitmapAllocSize(paramDrawable);
-    int j = paramDrawable.getIntrinsicHeight();
-    int k = paramDrawable.getIntrinsicWidth();
-    int i = j;
-    if (j < 1) {
-      i = 1;
+      }
     }
-    j = k;
-    if (k < 1) {
-      j = 1;
+    else if ((paramDrawable instanceof RegionDrawable))
+    {
+      paramDrawable = ((RegionDrawable)paramDrawable).getBitmapRef();
+      i = j;
+      if (paramDrawable != null)
+      {
+        paramDrawable = paramDrawable.getBitmap();
+        i = j;
+        if (paramDrawable != null) {
+          return BitmapUtils.getBitmapAllocSize(paramDrawable);
+        }
+      }
     }
-    return j * i * 4;
+    else
+    {
+      j = paramDrawable.getIntrinsicHeight();
+      int k = paramDrawable.getIntrinsicWidth();
+      i = j;
+      if (j < 1) {
+        i = 1;
+      }
+      j = k;
+      if (k < 1) {
+        j = 1;
+      }
+      i = j * i * 4;
+    }
+    return i;
   }
   
   private LruCache<Integer, Drawable> getDrawableCache()
   {
-    if (this.mImageKeyHash2DrawableMap == null) {}
-    synchronized (LOCK_CacheMap)
-    {
-      if (this.mImageKeyHash2DrawableMap == null) {
-        this.mImageKeyHash2DrawableMap = new ImageManager.6(this, this.imageMemCacheSize);
+    if (this.mImageKeyHash2DrawableMap == null) {
+      synchronized (LOCK_CacheMap)
+      {
+        if (this.mImageKeyHash2DrawableMap == null) {
+          this.mImageKeyHash2DrawableMap = new ImageManager.6(this, this.imageMemCacheSize);
+        }
       }
-      return this.mImageKeyHash2DrawableMap;
     }
+    return this.mImageKeyHash2DrawableMap;
   }
   
   public static String getErrorString(ImageKey paramImageKey, int paramInt)
@@ -1187,26 +1020,28 @@ public class ImageManager
   
   private LruCache<Integer, Image> getImageCache()
   {
-    if (this.mImageKeyHash2ImageMap == null) {}
-    synchronized (LOCK_CacheMap)
-    {
-      if (this.mImageKeyHash2ImageMap == null) {
-        this.mImageKeyHash2ImageMap = new ImageManager.7(this, this.imageMemCacheSize);
+    if (this.mImageKeyHash2ImageMap == null) {
+      synchronized (LOCK_CacheMap)
+      {
+        if (this.mImageKeyHash2ImageMap == null) {
+          this.mImageKeyHash2ImageMap = new ImageManager.7(this, this.imageMemCacheSize);
+        }
       }
-      return this.mImageKeyHash2ImageMap;
     }
+    return this.mImageKeyHash2ImageMap;
   }
   
   public static ImageManager getInstance()
   {
-    if (mInstance == null) {}
-    synchronized (LOCK_mInstance)
-    {
-      if (mInstance == null) {
-        mInstance = new ImageManager();
+    if (mInstance == null) {
+      synchronized (LOCK_mInstance)
+      {
+        if (mInstance == null) {
+          mInstance = new ImageManager();
+        }
       }
-      return mInstance;
     }
+    return mInstance;
   }
   
   public static ImageManager getInstance(Context paramContext)
@@ -1219,35 +1054,48 @@ public class ImageManager
     if (TextUtils.isEmpty(paramString1)) {
       return null;
     }
-    if (TextUtils.isEmpty(paramString2)) {}
-    for (paramContext = getCachePath(paramContext);; paramContext = getCachePath(paramContext, paramString2))
-    {
-      paramContext = new File(paramContext + File.separator + String.valueOf(ImageKey.getUrlKey(paramString1, false).hashCode()));
-      SharpPUtils.deleteSharppCacheFileIfNessary(paramContext, paramString1);
-      return paramContext;
+    if (TextUtils.isEmpty(paramString2)) {
+      paramContext = getCachePath(paramContext);
+    } else {
+      paramContext = getCachePath(paramContext, paramString2);
     }
+    paramString2 = new StringBuilder();
+    paramString2.append(paramContext);
+    paramString2.append(File.separator);
+    paramString2.append(String.valueOf(ImageKey.getUrlKey(paramString1, false).hashCode()));
+    paramContext = new File(paramString2.toString());
+    SharpPUtils.deleteSharppCacheFileIfNessary(paramContext, paramString1);
+    return paramContext;
   }
   
   private String getNocacheFilePath(ImageKey paramImageKey, boolean paramBoolean)
   {
-    if (paramBoolean) {
-      return getCachePathNocacheOrCreateIfInexistence(this.mContext) + urlKey2FileName(paramImageKey.urlKey, true);
+    if (paramBoolean)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getCachePathNocacheOrCreateIfInexistence(this.mContext));
+      localStringBuilder.append(urlKey2FileName(paramImageKey.urlKey, true));
+      return localStringBuilder.toString();
     }
-    return getCachePathNocache(this.mContext) + urlKey2FileName(paramImageKey.urlKey, true);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getCachePathNocache(this.mContext));
+    localStringBuilder.append(urlKey2FileName(paramImageKey.urlKey, true));
+    return localStringBuilder.toString();
   }
   
   public static String getStorePath(Context paramContext, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
     String str1 = "";
-    localObject2 = str1;
+    Object localObject1 = str1;
+    Object localObject3;
     try
     {
       String str2 = Environment.getExternalStorageState();
-      localObject2 = str1;
-      maxCacheSize = MAX_INNER_SIZE_LIMIT;
-      localObject2 = str1;
-      isUseExternalStorage = false;
       localObject1 = str1;
+      maxCacheSize = MAX_INNER_SIZE_LIMIT;
+      localObject1 = str1;
+      isUseExternalStorage = false;
+      Object localObject2 = str1;
       if (!paramBoolean1)
       {
         localObject1 = str1;
@@ -1258,115 +1106,146 @@ public class ImageManager
           localObject2 = str1;
           if (paramContext.getExternalCacheDir().canWrite())
           {
-            localObject2 = str1;
+            localObject1 = str1;
             storeRootPath = Environment.getExternalStorageDirectory().getAbsolutePath();
+            localObject1 = str1;
+            str1 = ImageManagerEnv.g().getImageCacheDir(true);
             localObject2 = str1;
-            localObject1 = ImageManagerEnv.g().getImageCacheDir(true);
+            localObject1 = str1;
+            if (TextUtils.isEmpty(str1))
+            {
+              localObject1 = str1;
+              localObject2 = new StringBuilder();
+              localObject1 = str1;
+              ((StringBuilder)localObject2).append(paramContext.getExternalCacheDir());
+              localObject1 = str1;
+              ((StringBuilder)localObject2).append(File.separator);
+              localObject1 = str1;
+              ((StringBuilder)localObject2).append("qzone");
+              localObject1 = str1;
+              localObject2 = ((StringBuilder)localObject2).toString();
+            }
+            localObject1 = localObject2;
+            maxCacheSize = MAX_SDCARD_SIZE_LIMIT;
+            localObject1 = localObject2;
+            isUseExternalStorage = true;
           }
         }
       }
     }
-    catch (Exception localException1)
+    catch (Exception localException)
     {
-      for (;;)
-      {
-        label145:
-        Object localObject1 = localObject2;
-        localException1.printStackTrace();
-      }
+      localException.printStackTrace();
+      localObject3 = localObject1;
     }
-    try
-    {
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label397;
-      }
-      localObject2 = paramContext.getExternalCacheDir() + File.separator + "qzone";
-      localObject1 = localObject2;
-    }
-    catch (Exception localException2)
-    {
-      break label384;
-      break label145;
-    }
-    localObject2 = localObject1;
-    maxCacheSize = MAX_SDCARD_SIZE_LIMIT;
-    localObject2 = localObject1;
-    isUseExternalStorage = true;
     if (!isUseExternalStorage)
     {
       storeRootPath = Environment.getDataDirectory().getAbsolutePath();
-      localObject2 = ImageManagerEnv.g().getImageCacheDir(false);
-      localObject1 = localObject2;
-      if (TextUtils.isEmpty((CharSequence)localObject2)) {
-        localObject1 = paramContext.getCacheDir().getAbsolutePath() + File.separator + "qzone";
+      localObject1 = ImageManagerEnv.g().getImageCacheDir(false);
+      localObject3 = localObject1;
+      if (TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramContext.getCacheDir().getAbsolutePath());
+        ((StringBuilder)localObject1).append(File.separator);
+        ((StringBuilder)localObject1).append("qzone");
+        localObject3 = ((StringBuilder)localObject1).toString();
       }
     }
     paramContext = paramString;
-    if (!paramString.startsWith(File.separator)) {
-      paramContext = File.separator + paramString;
+    if (!paramString.startsWith(File.separator))
+    {
+      paramContext = new StringBuilder();
+      paramContext.append(File.separator);
+      paramContext.append(paramString);
+      paramContext = paramContext.toString();
     }
     paramString = paramContext;
-    if (!paramContext.endsWith(File.separator)) {
-      paramString = paramContext + File.separator;
+    if (!paramContext.endsWith(File.separator))
+    {
+      paramString = new StringBuilder();
+      paramString.append(paramContext);
+      paramString.append(File.separator);
+      paramString = paramString.toString();
     }
-    paramContext = new File((String)localObject1 + paramString);
+    paramContext = new StringBuilder();
+    paramContext.append((String)localObject3);
+    paramContext.append(paramString);
+    paramContext = new File(paramContext.toString());
     if (!paramContext.exists()) {
       paramContext.mkdirs();
     }
     paramString = paramContext.getAbsolutePath();
     paramContext = paramString;
-    if (!paramString.endsWith(File.separator)) {
-      paramContext = paramString + File.separator;
+    if (!paramString.endsWith(File.separator))
+    {
+      paramContext = new StringBuilder();
+      paramContext.append(paramString);
+      paramContext.append(File.separator);
+      paramContext = paramContext.toString();
     }
     return paramContext;
   }
   
   public static Handler getSuperResolutionHandler()
   {
-    if (mSuperResolutionHandler == null) {}
-    try
-    {
-      if (mSuperResolutionHandler == null)
+    if (mSuperResolutionHandler == null) {
+      try
       {
-        mImageSuperResolutionHandlerThread = new HandlerThread("super_resolution_handler_thread");
-        mImageSuperResolutionHandlerThread.start();
-        mSuperResolutionHandler = new ImageManager.15(mImageSuperResolutionHandlerThread.getLooper());
+        if (mSuperResolutionHandler == null)
+        {
+          mImageSuperResolutionHandlerThread = new HandlerThread("super_resolution_handler_thread");
+          mImageSuperResolutionHandlerThread.start();
+          mSuperResolutionHandler = new ImageManager.15(mImageSuperResolutionHandlerThread.getLooper());
+        }
       }
-      return mSuperResolutionHandler;
+      finally {}
     }
-    finally {}
+    return mSuperResolutionHandler;
   }
   
   private void handleDumpMemoryCacheBroadcast(Message paramMessage)
   {
-    int i;
-    int j;
     try
     {
-      i = paramMessage.arg1;
-      j = paramMessage.arg2;
+      int i = paramMessage.arg1;
+      int j = paramMessage.arg2;
       if (this.mImageKeyHash2DrawableMap != null)
       {
         paramMessage = this.mImageKeyHash2DrawableMap.snapshot();
         if (paramMessage != null)
         {
-          ImageManagerLog.w(TAG, "memory cache, cache size = " + this.imageMemCacheSize + ", length = " + paramMessage.size() + ", cache info = " + this.mImageKeyHash2DrawableMap.toString());
-          Iterator localIterator = paramMessage.entrySet().iterator();
-          while (localIterator.hasNext())
+          Object localObject1 = TAG;
+          Object localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("memory cache, cache size = ");
+          ((StringBuilder)localObject2).append(this.imageMemCacheSize);
+          ((StringBuilder)localObject2).append(", length = ");
+          ((StringBuilder)localObject2).append(paramMessage.size());
+          ((StringBuilder)localObject2).append(", cache info = ");
+          ((StringBuilder)localObject2).append(this.mImageKeyHash2DrawableMap.toString());
+          ImageManagerLog.w((String)localObject1, ((StringBuilder)localObject2).toString());
+          localObject1 = paramMessage.entrySet().iterator();
+          while (((Iterator)localObject1).hasNext())
           {
-            Object localObject = (Map.Entry)localIterator.next();
-            if (localObject != null)
+            localObject2 = (Map.Entry)((Iterator)localObject1).next();
+            if (localObject2 != null)
             {
-              int k = ((Integer)((Map.Entry)localObject).getKey()).intValue();
-              int m = getDrawableAllocSize((Drawable)((Map.Entry)localObject).getValue());
-              localObject = (String)this.mImageKeyHash2UrlMap.get(Integer.valueOf(k));
-              ImageManagerLog.w(TAG, "memory cache, key = " + k + ", drawable size = " + m + ", url = " + (String)localObject);
+              int k = ((Integer)((Map.Entry)localObject2).getKey()).intValue();
+              int m = getDrawableAllocSize((Drawable)((Map.Entry)localObject2).getValue());
+              localObject2 = (String)this.mImageKeyHash2UrlMap.get(Integer.valueOf(k));
+              String str = TAG;
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("memory cache, key = ");
+              localStringBuilder.append(k);
+              localStringBuilder.append(", drawable size = ");
+              localStringBuilder.append(m);
+              localStringBuilder.append(", url = ");
+              localStringBuilder.append((String)localObject2);
+              ImageManagerLog.w(str, localStringBuilder.toString());
             }
           }
         }
-      }
-      else
-      {
+        saveBitmapToSdcard(i, paramMessage, j);
         return;
       }
     }
@@ -1374,21 +1253,19 @@ public class ImageManager
     {
       paramMessage.printStackTrace();
     }
-    saveBitmapToSdcard(i, paramMessage, j);
   }
   
   private void handleIamgeTracer(Message paramMessage)
   {
     if ((paramMessage.obj instanceof ImageKey))
     {
-      if (paramMessage.arg1 == 16) {
+      if (paramMessage.arg1 == 16)
+      {
         ImageTaskTracer.traceImageGet((ImageKey)paramMessage.obj, true);
+        return;
       }
+      ImageTaskTracer.traceImageGet((ImageKey)paramMessage.obj, false);
     }
-    else {
-      return;
-    }
-    ImageTaskTracer.traceImageGet((ImageKey)paramMessage.obj, false);
   }
   
   private void handleImageGetNull(Message paramMessage)
@@ -1397,47 +1274,53 @@ public class ImageManager
     {
       paramMessage = (ImageKey)paramMessage.obj;
       paramMessage.options = ImageLoader.Options.copy(paramMessage.options);
-      if (paramMessage.flag == 0) {
-        paramMessage.recycle();
-      }
-    }
-    else
-    {
-      return;
-    }
-    Object localObject;
-    if ((paramMessage.isSuperResolutionUrl) && (!paramMessage.isHighScaleUrl) && (!TextUtils.isEmpty(paramMessage.bigUrl)))
-    {
-      localObject = ImageKey.getUrlKey(paramMessage.bigUrl, true);
-      String str = getCachePath(this.mContext);
-      localObject = new File(str + urlKey2FileName((String)localObject, true));
-      if ((ImageManagerEnv.g().enableSuperResolution()) && (!((File)localObject).exists())) {
-        break label194;
-      }
-      ImageManagerLog.w("superresolution", "big cache file exists. url=" + paramMessage.url);
-      paramMessage.srUrl = paramMessage.url;
-      paramMessage.setUrl(paramMessage.bigUrl);
-    }
-    for (;;)
-    {
-      localObject = ImageTaskBuilder.buildImageTask(paramMessage);
-      ImageTaskTracer.removeImageMsgGetNullRecord(paramMessage.hashCodeEx());
-      if (localObject == null) {
-        break;
-      }
-      ((ImageTask)localObject).excuteTask();
-      return;
-      label194:
-      if (!ImageManagerEnv.g().hasSuperResolutionInit())
+      if (paramMessage.flag == 0)
       {
-        localObject = getCachePathSR(this.mContext);
-        if (!new File((String)localObject + urlKey2FileName(paramMessage.urlKey, true)).exists())
+        paramMessage.recycle();
+        return;
+      }
+      if ((paramMessage.isSuperResolutionUrl) && (!paramMessage.isHighScaleUrl) && (!TextUtils.isEmpty(paramMessage.bigUrl)))
+      {
+        localObject1 = ImageKey.getUrlKey(paramMessage.bigUrl, true);
+        Object localObject2 = getCachePath(this.mContext);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject2);
+        localStringBuilder.append(urlKey2FileName((String)localObject1, true));
+        localObject1 = new File(localStringBuilder.toString());
+        if ((ImageManagerEnv.g().enableSuperResolution()) && (!((File)localObject1).exists()))
         {
-          ImageManagerLog.w("superresolution", "library not init. use big url. url=" + paramMessage.url);
+          if (!ImageManagerEnv.g().hasSuperResolutionInit())
+          {
+            localObject1 = getCachePathSR(this.mContext);
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append((String)localObject1);
+            ((StringBuilder)localObject2).append(urlKey2FileName(paramMessage.urlKey, true));
+            if (!new File(((StringBuilder)localObject2).toString()).exists())
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("library not init. use big url. url=");
+              ((StringBuilder)localObject1).append(paramMessage.url);
+              ImageManagerLog.w("superresolution", ((StringBuilder)localObject1).toString());
+              paramMessage.srUrl = paramMessage.url;
+              paramMessage.setUrl(paramMessage.bigUrl);
+              getSuperResolutionHandler().post(new ImageManager.8(this));
+            }
+          }
+        }
+        else
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("big cache file exists. url=");
+          ((StringBuilder)localObject1).append(paramMessage.url);
+          ImageManagerLog.w("superresolution", ((StringBuilder)localObject1).toString());
           paramMessage.srUrl = paramMessage.url;
           paramMessage.setUrl(paramMessage.bigUrl);
-          getSuperResolutionHandler().post(new ImageManager.8(this));
         }
+      }
+      Object localObject1 = ImageTaskBuilder.buildImageTask(paramMessage);
+      ImageTaskTracer.removeImageMsgGetNullRecord(paramMessage.hashCodeEx());
+      if (localObject1 != null) {
+        ((ImageTask)localObject1).excuteTask();
       }
     }
   }
@@ -1458,14 +1341,15 @@ public class ImageManager
   
   private BaseHandler imageGetNullOrCancelHandler()
   {
-    if (this.mImageGetNullOrCancelHandler == null) {}
-    synchronized (LOCK_mImageGetNullOrCancelHandler)
-    {
-      if (this.mImageGetNullOrCancelHandler == null) {
-        this.mImageGetNullOrCancelHandler = new ImageManager.5(this, this.dispatcherLoop);
+    if (this.mImageGetNullOrCancelHandler == null) {
+      synchronized (LOCK_mImageGetNullOrCancelHandler)
+      {
+        if (this.mImageGetNullOrCancelHandler == null) {
+          this.mImageGetNullOrCancelHandler = new ImageManager.5(this, this.dispatcherLoop);
+        }
       }
-      return this.mImageGetNullOrCancelHandler;
     }
+    return this.mImageGetNullOrCancelHandler;
   }
   
   public static void invalidateMemCache(String paramString)
@@ -1497,96 +1381,158 @@ public class ImageManager
   
   public static boolean isNetworkUrl(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
-      if ((paramString.startsWith("http://")) || (paramString.startsWith("https://"))) {
-        return true;
+    }
+    if ((!paramString.startsWith("http://")) && (!paramString.startsWith("https://")))
+    {
+      if (URLUtil.isFileUrl(paramString)) {
+        return false;
       }
-    } while ((URLUtil.isFileUrl(paramString)) || (paramString.startsWith("avatar://")));
-    return URLUtil.isNetworkUrl(paramString);
+      if (paramString.startsWith("avatar://")) {
+        return false;
+      }
+      return URLUtil.isNetworkUrl(paramString);
+    }
+    return true;
   }
   
+  /* Error */
   private static boolean isStorageReallyCanwrite(String paramString)
   {
-    localObject = (Boolean)isStorageReallyCanwriteMap.get(paramString);
-    if (localObject != null) {
-      return ((Boolean)localObject).booleanValue();
-    }
-    bool2 = false;
-    bool1 = false;
-    long l = Thread.currentThread().getId();
-    localObject = new File(paramString + "/qz" + l);
-    for (;;)
-    {
-      try
-      {
-        if (!((File)localObject).exists()) {
-          continue;
-        }
-        if (((File)localObject).delete()) {
-          bool1 = ((File)localObject).createNewFile();
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        localThrowable.printStackTrace();
-        ((File)localObject).delete();
-        bool1 = bool2;
-        continue;
-      }
-      finally
-      {
-        ((File)localObject).delete();
-      }
-      isStorageReallyCanwriteMap.put(paramString, Boolean.valueOf(bool1));
-      return bool1;
-      bool1 = ((File)localObject).createNewFile();
-    }
+    // Byte code:
+    //   0: getstatic 227	com/tencent/component/media/image/ImageManager:isStorageReallyCanwriteMap	Ljava/util/HashMap;
+    //   3: aload_0
+    //   4: invokevirtual 914	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   7: checkcast 1299	java/lang/Boolean
+    //   10: astore 5
+    //   12: aload 5
+    //   14: ifnull +9 -> 23
+    //   17: aload 5
+    //   19: invokevirtual 1332	java/lang/Boolean:booleanValue	()Z
+    //   22: ireturn
+    //   23: iconst_0
+    //   24: istore_2
+    //   25: invokestatic 1336	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   28: invokevirtual 1339	java/lang/Thread:getId	()J
+    //   31: lstore_3
+    //   32: new 440	java/lang/StringBuilder
+    //   35: dup
+    //   36: invokespecial 441	java/lang/StringBuilder:<init>	()V
+    //   39: astore 5
+    //   41: aload 5
+    //   43: aload_0
+    //   44: invokevirtual 447	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   47: pop
+    //   48: aload 5
+    //   50: ldc_w 1341
+    //   53: invokevirtual 447	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   56: pop
+    //   57: aload 5
+    //   59: lload_3
+    //   60: invokevirtual 1344	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   63: pop
+    //   64: new 682	java/io/File
+    //   67: dup
+    //   68: aload 5
+    //   70: invokevirtual 456	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   73: invokespecial 687	java/io/File:<init>	(Ljava/lang/String;)V
+    //   76: astore 5
+    //   78: aload 5
+    //   80: invokevirtual 690	java/io/File:exists	()Z
+    //   83: ifeq +22 -> 105
+    //   86: iload_2
+    //   87: istore_1
+    //   88: aload 5
+    //   90: invokevirtual 700	java/io/File:delete	()Z
+    //   93: ifeq +34 -> 127
+    //   96: aload 5
+    //   98: invokevirtual 1347	java/io/File:createNewFile	()Z
+    //   101: istore_1
+    //   102: goto +25 -> 127
+    //   105: aload 5
+    //   107: invokevirtual 1347	java/io/File:createNewFile	()Z
+    //   110: istore_1
+    //   111: goto +16 -> 127
+    //   114: astore_0
+    //   115: goto +32 -> 147
+    //   118: astore 6
+    //   120: aload 6
+    //   122: invokevirtual 703	java/lang/Throwable:printStackTrace	()V
+    //   125: iload_2
+    //   126: istore_1
+    //   127: aload 5
+    //   129: invokevirtual 700	java/io/File:delete	()Z
+    //   132: pop
+    //   133: getstatic 227	com/tencent/component/media/image/ImageManager:isStorageReallyCanwriteMap	Ljava/util/HashMap;
+    //   136: aload_0
+    //   137: iload_1
+    //   138: invokestatic 1350	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   141: invokevirtual 1351	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   144: pop
+    //   145: iload_1
+    //   146: ireturn
+    //   147: aload 5
+    //   149: invokevirtual 700	java/io/File:delete	()Z
+    //   152: pop
+    //   153: aload_0
+    //   154: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	155	0	paramString	String
+    //   87	59	1	bool1	boolean
+    //   24	102	2	bool2	boolean
+    //   31	29	3	l	long
+    //   10	138	5	localObject	Object
+    //   118	3	6	localThrowable	Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   78	86	114	finally
+    //   88	102	114	finally
+    //   105	111	114	finally
+    //   120	125	114	finally
+    //   78	86	118	java/lang/Throwable
+    //   88	102	118	java/lang/Throwable
+    //   105	111	118	java/lang/Throwable
   }
   
   private void loadLruFileTime(ConcurrentHashMap<String, Integer> paramConcurrentHashMap)
   {
-    Object localObject1 = getCachePath(this.mContext) + "imagelru.usetime";
-    for (;;)
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(getCachePath(this.mContext));
+    ((StringBuilder)localObject1).append("imagelru.usetime");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    try
     {
-      String str;
-      Object localObject2;
-      int i;
-      try
+      localObject1 = new File((String)localObject1);
+      if (((File)localObject1).exists())
       {
-        localObject1 = new File((String)localObject1);
-        if (((File)localObject1).exists())
+        localObject1 = new BufferedReader(new FileReader((File)localObject1));
+        for (;;)
         {
-          localObject1 = new BufferedReader(new FileReader((File)localObject1));
-          str = ((BufferedReader)localObject1).readLine();
-          if (str != null)
+          String str = ((BufferedReader)localObject1).readLine();
+          if (str == null) {
+            break;
+          }
+          Object localObject2 = str.split("|");
+          if ((localObject2 != null) && (localObject2.length == 2))
           {
-            localObject2 = str.split("|");
-            if ((localObject2 == null) || (localObject2.length != 2)) {
-              continue;
-            }
             str = localObject2[0];
-            i = Integer.parseInt(localObject2[1]);
+            int i = Integer.parseInt(localObject2[1]);
             localObject2 = (Integer)paramConcurrentHashMap.get(str);
-            if (localObject2 != null) {
-              break label141;
+            if (localObject2 == null) {
+              paramConcurrentHashMap.put(str, Integer.valueOf(i));
+            } else if (i > ((Integer)localObject2).intValue()) {
+              paramConcurrentHashMap.put(str, Integer.valueOf(i));
             }
-            paramConcurrentHashMap.put(str, Integer.valueOf(i));
-            continue;
           }
         }
-        return;
       }
-      catch (Throwable paramConcurrentHashMap)
-      {
-        paramConcurrentHashMap.printStackTrace();
-      }
-      label141:
-      if (i > ((Integer)localObject2).intValue()) {
-        paramConcurrentHashMap.put(str, Integer.valueOf(i));
-      }
+      return;
+    }
+    catch (Throwable paramConcurrentHashMap)
+    {
+      paramConcurrentHashMap.printStackTrace();
     }
   }
   
@@ -1597,7 +1543,11 @@ public class ImageManager
       int i = Integer.parseInt(paramString);
       return i;
     }
-    catch (NumberFormatException paramString) {}
+    catch (NumberFormatException paramString)
+    {
+      label7:
+      break label7;
+    }
     return 0;
   }
   
@@ -1635,37 +1585,47 @@ public class ImageManager
       getDrawableCache().put(Integer.valueOf(paramInt), paramDrawable);
       return;
     }
-    ImageManagerEnv.g().getQQImagecache().put(paramInt + "", paramDrawable);
+    MQLruCache localMQLruCache = ImageManagerEnv.g().getQQImagecache();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("");
+    localMQLruCache.put(localStringBuilder.toString(), paramDrawable);
   }
   
   private void putImageKey(Map<Integer, HashSet<ImageKey>> paramMap, int paramInt, ImageKey paramImageKey)
   {
-    if ((paramMap == null) || (paramImageKey == null)) {
-      return;
-    }
-    HashSet localHashSet2 = (HashSet)paramMap.get(Integer.valueOf(paramInt));
-    HashSet localHashSet1 = localHashSet2;
-    if (localHashSet2 == null)
+    if (paramMap != null)
     {
-      localHashSet1 = new HashSet();
-      paramMap.put(Integer.valueOf(paramInt), localHashSet1);
+      if (paramImageKey == null) {
+        return;
+      }
+      HashSet localHashSet2 = (HashSet)paramMap.get(Integer.valueOf(paramInt));
+      HashSet localHashSet1 = localHashSet2;
+      if (localHashSet2 == null)
+      {
+        localHashSet1 = new HashSet();
+        paramMap.put(Integer.valueOf(paramInt), localHashSet1);
+      }
+      localHashSet1.add(paramImageKey);
     }
-    localHashSet1.add(paramImageKey);
   }
   
   private void putImageKeyList(Map<Integer, HashSet<ImageKey>> paramMap, int paramInt, HashSet<ImageKey> paramHashSet)
   {
-    if ((paramMap == null) || (paramHashSet == null)) {
-      return;
-    }
-    HashSet localHashSet2 = (HashSet)paramMap.get(Integer.valueOf(paramInt));
-    HashSet localHashSet1 = localHashSet2;
-    if (localHashSet2 == null)
+    if (paramMap != null)
     {
-      localHashSet1 = new HashSet();
-      paramMap.put(Integer.valueOf(paramInt), localHashSet1);
+      if (paramHashSet == null) {
+        return;
+      }
+      HashSet localHashSet2 = (HashSet)paramMap.get(Integer.valueOf(paramInt));
+      HashSet localHashSet1 = localHashSet2;
+      if (localHashSet2 == null)
+      {
+        localHashSet1 = new HashSet();
+        paramMap.put(Integer.valueOf(paramInt), localHashSet1);
+      }
+      localHashSet1.addAll(paramHashSet);
     }
-    localHashSet1.addAll(paramHashSet);
   }
   
   private void registerDumpMemoryCacheReceiver()
@@ -1714,14 +1674,19 @@ public class ImageManager
       getDrawableCache().remove(Integer.valueOf(paramInt));
       return;
     }
-    ImageManagerEnv.g().getQQImagecache().remove(paramInt + "");
+    MQLruCache localMQLruCache = ImageManagerEnv.g().getQQImagecache();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("");
+    localMQLruCache.remove(localStringBuilder.toString());
   }
   
   static boolean removeInvalidatedUrl(String paramString)
   {
+    boolean bool3 = TextUtils.isEmpty(paramString);
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(paramString))
+    if (!bool3)
     {
       bool1 = bool2;
       if (INVALIDATE_URLS.remove(paramString) != null) {
@@ -1736,163 +1701,178 @@ public class ImageManager
   {
     // Byte code:
     //   0: iload_1
-    //   1: ifeq +165 -> 166
+    //   1: ifeq +292 -> 293
     //   4: aload_2
-    //   5: ifnull +161 -> 166
+    //   5: ifnull +288 -> 293
     //   8: aload_2
     //   9: iload_1
-    //   10: invokestatic 722	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   13: invokeinterface 1401 2 0
-    //   18: checkcast 833	android/graphics/drawable/Drawable
-    //   21: invokestatic 1449	com/tencent/component/media/image/ImageManager:drawableToBitmap	(Landroid/graphics/drawable/Drawable;)Landroid/graphics/Bitmap;
+    //   10: invokestatic 726	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   13: invokeinterface 1404 2 0
+    //   18: checkcast 834	android/graphics/drawable/Drawable
+    //   21: invokestatic 1452	com/tencent/component/media/image/ImageManager:drawableToBitmap	(Landroid/graphics/drawable/Drawable;)Landroid/graphics/Bitmap;
     //   24: astore 5
-    //   26: invokestatic 1112	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
-    //   29: invokevirtual 1115	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   26: invokestatic 1115	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
+    //   29: invokevirtual 1118	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   32: astore_2
-    //   33: new 681	java/io/File
+    //   33: new 440	java/lang/StringBuilder
     //   36: dup
-    //   37: new 448	java/lang/StringBuilder
-    //   40: dup
-    //   41: invokespecial 449	java/lang/StringBuilder:<init>	()V
+    //   37: invokespecial 441	java/lang/StringBuilder:<init>	()V
+    //   40: astore 4
+    //   42: aload 4
     //   44: aload_2
-    //   45: invokevirtual 455	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   48: getstatic 964	java/io/File:separator	Ljava/lang/String;
-    //   51: invokevirtual 455	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   54: ldc_w 1121
-    //   57: invokevirtual 455	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   60: invokevirtual 468	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   63: invokespecial 686	java/io/File:<init>	(Ljava/lang/String;)V
-    //   66: astore 4
-    //   68: aload 4
-    //   70: invokevirtual 689	java/io/File:exists	()Z
-    //   73: ifne +9 -> 82
-    //   76: aload 4
-    //   78: invokevirtual 1136	java/io/File:mkdirs	()Z
-    //   81: pop
-    //   82: iload_3
-    //   83: ifne +84 -> 167
-    //   86: new 448	java/lang/StringBuilder
-    //   89: dup
-    //   90: invokespecial 449	java/lang/StringBuilder:<init>	()V
-    //   93: iload_1
-    //   94: invokevirtual 458	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   97: ldc_w 1451
-    //   100: invokevirtual 455	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   103: invokevirtual 468	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   45: invokevirtual 447	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   48: pop
+    //   49: aload 4
+    //   51: getstatic 965	java/io/File:separator	Ljava/lang/String;
+    //   54: invokevirtual 447	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   57: pop
+    //   58: aload 4
+    //   60: ldc_w 1124
+    //   63: invokevirtual 447	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   66: pop
+    //   67: new 682	java/io/File
+    //   70: dup
+    //   71: aload 4
+    //   73: invokevirtual 456	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   76: invokespecial 687	java/io/File:<init>	(Ljava/lang/String;)V
+    //   79: astore 4
+    //   81: aload 4
+    //   83: invokevirtual 690	java/io/File:exists	()Z
+    //   86: ifne +9 -> 95
+    //   89: aload 4
+    //   91: invokevirtual 1139	java/io/File:mkdirs	()Z
+    //   94: pop
+    //   95: iload_3
+    //   96: ifne +33 -> 129
+    //   99: new 440	java/lang/StringBuilder
+    //   102: dup
+    //   103: invokespecial 441	java/lang/StringBuilder:<init>	()V
     //   106: astore_2
-    //   107: new 681	java/io/File
-    //   110: dup
-    //   111: aload 4
+    //   107: aload_2
+    //   108: iload_1
+    //   109: invokevirtual 450	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   112: pop
     //   113: aload_2
-    //   114: invokespecial 1453	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   117: astore_2
-    //   118: new 888	java/io/FileOutputStream
-    //   121: dup
-    //   122: aload_2
-    //   123: invokespecial 1454	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   126: astore 4
-    //   128: iload_3
-    //   129: ifne +62 -> 191
-    //   132: aload 4
-    //   134: astore_2
-    //   135: aload 5
-    //   137: getstatic 1460	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   140: bipush 100
-    //   142: aload 4
-    //   144: invokevirtual 1464	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   147: pop
-    //   148: aload 4
-    //   150: astore_2
-    //   151: aload 4
-    //   153: invokevirtual 930	java/io/FileOutputStream:flush	()V
-    //   156: aload 4
-    //   158: ifnull +8 -> 166
-    //   161: aload 4
-    //   163: invokevirtual 919	java/io/FileOutputStream:close	()V
-    //   166: return
-    //   167: new 448	java/lang/StringBuilder
+    //   114: ldc_w 1454
+    //   117: invokevirtual 447	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   120: pop
+    //   121: aload_2
+    //   122: invokevirtual 456	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   125: astore_2
+    //   126: goto +30 -> 156
+    //   129: new 440	java/lang/StringBuilder
+    //   132: dup
+    //   133: invokespecial 441	java/lang/StringBuilder:<init>	()V
+    //   136: astore_2
+    //   137: aload_2
+    //   138: iload_1
+    //   139: invokevirtual 450	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   142: pop
+    //   143: aload_2
+    //   144: ldc_w 1456
+    //   147: invokevirtual 447	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   150: pop
+    //   151: aload_2
+    //   152: invokevirtual 456	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   155: astore_2
+    //   156: new 682	java/io/File
+    //   159: dup
+    //   160: aload 4
+    //   162: aload_2
+    //   163: invokespecial 1458	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   166: astore_2
+    //   167: new 889	java/io/FileOutputStream
     //   170: dup
-    //   171: invokespecial 449	java/lang/StringBuilder:<init>	()V
-    //   174: iload_1
-    //   175: invokevirtual 458	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   178: ldc_w 1466
-    //   181: invokevirtual 455	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   184: invokevirtual 468	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   187: astore_2
-    //   188: goto -81 -> 107
+    //   171: aload_2
+    //   172: invokespecial 1459	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   175: astore 4
+    //   177: iload_3
+    //   178: ifne +22 -> 200
+    //   181: aload 4
+    //   183: astore_2
+    //   184: aload 5
+    //   186: getstatic 1465	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   189: bipush 100
     //   191: aload 4
-    //   193: astore_2
-    //   194: aload 5
-    //   196: getstatic 1469	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
-    //   199: bipush 100
-    //   201: aload 4
-    //   203: invokevirtual 1464	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   206: pop
-    //   207: goto -59 -> 148
-    //   210: astore 5
-    //   212: aload 4
-    //   214: astore_2
-    //   215: aload 5
-    //   217: invokevirtual 931	java/io/IOException:printStackTrace	()V
-    //   220: aload 4
-    //   222: ifnull -56 -> 166
-    //   225: aload 4
-    //   227: invokevirtual 919	java/io/FileOutputStream:close	()V
-    //   230: return
-    //   231: astore_2
-    //   232: aload_2
-    //   233: invokevirtual 916	java/lang/Exception:printStackTrace	()V
-    //   236: return
-    //   237: astore_2
-    //   238: aload_2
-    //   239: invokevirtual 916	java/lang/Exception:printStackTrace	()V
-    //   242: return
-    //   243: astore 4
-    //   245: aconst_null
-    //   246: astore_2
-    //   247: aload_2
-    //   248: ifnull +7 -> 255
-    //   251: aload_2
-    //   252: invokevirtual 919	java/io/FileOutputStream:close	()V
+    //   193: invokevirtual 1469	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   196: pop
+    //   197: goto +19 -> 216
+    //   200: aload 4
+    //   202: astore_2
+    //   203: aload 5
+    //   205: getstatic 1472	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   208: bipush 100
+    //   210: aload 4
+    //   212: invokevirtual 1469	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   215: pop
+    //   216: aload 4
+    //   218: astore_2
+    //   219: aload 4
+    //   221: invokevirtual 927	java/io/FileOutputStream:flush	()V
+    //   224: aload 4
+    //   226: invokevirtual 930	java/io/FileOutputStream:close	()V
+    //   229: return
+    //   230: astore 5
+    //   232: goto +15 -> 247
+    //   235: astore 4
+    //   237: aconst_null
+    //   238: astore_2
+    //   239: goto +35 -> 274
+    //   242: astore 5
+    //   244: aconst_null
+    //   245: astore 4
+    //   247: aload 4
+    //   249: astore_2
+    //   250: aload 5
+    //   252: invokevirtual 932	java/io/IOException:printStackTrace	()V
     //   255: aload 4
-    //   257: athrow
-    //   258: astore_2
-    //   259: aload_2
-    //   260: invokevirtual 916	java/lang/Exception:printStackTrace	()V
-    //   263: goto -8 -> 255
-    //   266: astore 4
-    //   268: goto -21 -> 247
-    //   271: astore 5
-    //   273: aconst_null
-    //   274: astore 4
-    //   276: goto -64 -> 212
+    //   257: ifnull +36 -> 293
+    //   260: aload 4
+    //   262: invokevirtual 930	java/io/FileOutputStream:close	()V
+    //   265: return
+    //   266: astore_2
+    //   267: aload_2
+    //   268: invokevirtual 931	java/lang/Exception:printStackTrace	()V
+    //   271: return
+    //   272: astore 4
+    //   274: aload_2
+    //   275: ifnull +15 -> 290
+    //   278: aload_2
+    //   279: invokevirtual 930	java/io/FileOutputStream:close	()V
+    //   282: goto +8 -> 290
+    //   285: astore_2
+    //   286: aload_2
+    //   287: invokevirtual 931	java/lang/Exception:printStackTrace	()V
+    //   290: aload 4
+    //   292: athrow
+    //   293: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	279	0	this	ImageManager
-    //   0	279	1	paramInt1	int
-    //   0	279	2	paramMap	Map<Integer, Drawable>
-    //   0	279	3	paramInt2	int
-    //   66	160	4	localObject1	Object
-    //   243	13	4	localObject2	Object
-    //   266	1	4	localObject3	Object
-    //   274	1	4	localObject4	Object
-    //   24	171	5	localBitmap	Bitmap
-    //   210	6	5	localIOException1	java.io.IOException
-    //   271	1	5	localIOException2	java.io.IOException
+    //   0	294	0	this	ImageManager
+    //   0	294	1	paramInt1	int
+    //   0	294	2	paramMap	Map<Integer, Drawable>
+    //   0	294	3	paramInt2	int
+    //   40	185	4	localObject1	Object
+    //   235	1	4	localObject2	Object
+    //   245	16	4	localObject3	Object
+    //   272	19	4	localObject4	Object
+    //   24	180	5	localBitmap	Bitmap
+    //   230	1	5	localIOException1	java.io.IOException
+    //   242	9	5	localIOException2	java.io.IOException
     // Exception table:
     //   from	to	target	type
-    //   135	148	210	java/io/IOException
-    //   151	156	210	java/io/IOException
-    //   194	207	210	java/io/IOException
-    //   225	230	231	java/lang/Exception
-    //   161	166	237	java/lang/Exception
-    //   118	128	243	finally
-    //   251	255	258	java/lang/Exception
-    //   135	148	266	finally
-    //   151	156	266	finally
-    //   194	207	266	finally
-    //   215	220	266	finally
-    //   118	128	271	java/io/IOException
+    //   184	197	230	java/io/IOException
+    //   203	216	230	java/io/IOException
+    //   219	224	230	java/io/IOException
+    //   167	177	235	finally
+    //   167	177	242	java/io/IOException
+    //   224	229	266	java/lang/Exception
+    //   260	265	266	java/lang/Exception
+    //   184	197	272	finally
+    //   203	216	272	finally
+    //   219	224	272	finally
+    //   250	255	272	finally
+    //   278	282	285	java/lang/Exception
   }
   
   public static void stopAllSuperResolutionTasks()
@@ -1910,8 +1890,8 @@ public class ImageManager
       {
         this.mContext.unregisterReceiver(this.MsdCardMountReceiver);
         mIsRegisterSdcardReceiver = false;
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -1923,40 +1903,40 @@ public class ImageManager
   private static void updateStorage(String paramString)
   {
     // Byte code:
-    //   0: new 681	java/io/File
+    //   0: new 682	java/io/File
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 686	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 687	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore_0
     //   9: aload_0
-    //   10: invokevirtual 689	java/io/File:exists	()Z
-    //   13: ifeq +113 -> 126
-    //   16: new 1350	java/io/BufferedReader
+    //   10: invokevirtual 690	java/io/File:exists	()Z
+    //   13: ifeq +162 -> 175
+    //   16: new 1353	java/io/BufferedReader
     //   19: dup
-    //   20: new 1352	java/io/FileReader
+    //   20: new 1355	java/io/FileReader
     //   23: dup
     //   24: aload_0
-    //   25: invokespecial 1355	java/io/FileReader:<init>	(Ljava/io/File;)V
-    //   28: invokespecial 1358	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   25: invokespecial 1358	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   28: invokespecial 1361	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   31: astore_1
     //   32: aload_1
     //   33: astore_0
     //   34: aload_1
-    //   35: invokevirtual 1361	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   35: invokevirtual 1364	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   38: astore_2
     //   39: aload_2
-    //   40: ifnull +87 -> 127
+    //   40: ifnull +71 -> 111
     //   43: aload_1
     //   44: astore_0
     //   45: aload_2
-    //   46: ldc_w 1482
-    //   49: invokevirtual 1130	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   46: ldc_w 1485
+    //   49: invokevirtual 1133	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   52: ifeq -20 -> 32
     //   55: aload_1
     //   56: astore_0
     //   57: aload_2
-    //   58: ldc_w 1484
-    //   61: invokevirtual 1365	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   58: ldc_w 1487
+    //   61: invokevirtual 1368	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   64: astore_3
     //   65: aload_1
     //   66: astore_0
@@ -1974,113 +1954,106 @@ public class ImageManager
     //   80: astore_3
     //   81: aload_1
     //   82: astore_0
-    //   83: new 681	java/io/File
+    //   83: new 682	java/io/File
     //   86: dup
     //   87: aload_2
-    //   88: invokespecial 686	java/io/File:<init>	(Ljava/lang/String;)V
-    //   91: invokevirtual 689	java/io/File:exists	()Z
+    //   88: invokespecial 687	java/io/File:<init>	(Ljava/lang/String;)V
+    //   91: invokevirtual 690	java/io/File:exists	()Z
     //   94: ifeq -62 -> 32
     //   97: aload_1
     //   98: astore_0
-    //   99: getstatic 224	com/tencent/component/media/image/ImageManager:mSDCardName2PathMap	Ljava/util/HashMap;
+    //   99: getstatic 214	com/tencent/component/media/image/ImageManager:mSDCardName2PathMap	Ljava/util/HashMap;
     //   102: aload_3
     //   103: aload_2
-    //   104: invokevirtual 1348	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   104: invokevirtual 1351	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   107: pop
     //   108: goto -76 -> 32
-    //   111: astore_2
-    //   112: aload_1
-    //   113: astore_0
-    //   114: aload_2
-    //   115: invokevirtual 916	java/lang/Exception:printStackTrace	()V
-    //   118: aload_1
-    //   119: ifnull +7 -> 126
-    //   122: aload_1
-    //   123: invokevirtual 1485	java/io/BufferedReader:close	()V
-    //   126: return
-    //   127: aload_1
+    //   111: aload_1
+    //   112: astore_0
+    //   113: aload_1
+    //   114: invokevirtual 1488	java/io/BufferedReader:close	()V
+    //   117: aload_1
+    //   118: invokevirtual 1488	java/io/BufferedReader:close	()V
+    //   121: return
+    //   122: astore_2
+    //   123: goto +12 -> 135
+    //   126: astore_1
+    //   127: aconst_null
     //   128: astore_0
-    //   129: aload_1
-    //   130: invokevirtual 1485	java/io/BufferedReader:close	()V
-    //   133: aload_1
-    //   134: ifnull -8 -> 126
-    //   137: aload_1
-    //   138: invokevirtual 1485	java/io/BufferedReader:close	()V
-    //   141: return
-    //   142: astore_0
-    //   143: aload_0
-    //   144: invokevirtual 931	java/io/IOException:printStackTrace	()V
-    //   147: return
-    //   148: astore_0
-    //   149: aload_0
-    //   150: invokevirtual 931	java/io/IOException:printStackTrace	()V
-    //   153: return
-    //   154: astore_1
-    //   155: aconst_null
-    //   156: astore_0
+    //   129: goto +28 -> 157
+    //   132: astore_2
+    //   133: aconst_null
+    //   134: astore_1
+    //   135: aload_1
+    //   136: astore_0
+    //   137: aload_2
+    //   138: invokevirtual 931	java/lang/Exception:printStackTrace	()V
+    //   141: aload_1
+    //   142: ifnull +33 -> 175
+    //   145: aload_1
+    //   146: invokevirtual 1488	java/io/BufferedReader:close	()V
+    //   149: return
+    //   150: astore_0
+    //   151: aload_0
+    //   152: invokevirtual 932	java/io/IOException:printStackTrace	()V
+    //   155: return
+    //   156: astore_1
     //   157: aload_0
-    //   158: ifnull +7 -> 165
+    //   158: ifnull +15 -> 173
     //   161: aload_0
-    //   162: invokevirtual 1485	java/io/BufferedReader:close	()V
-    //   165: aload_1
-    //   166: athrow
-    //   167: astore_0
-    //   168: aload_0
-    //   169: invokevirtual 931	java/io/IOException:printStackTrace	()V
-    //   172: goto -7 -> 165
-    //   175: astore_1
-    //   176: goto -19 -> 157
-    //   179: astore_2
-    //   180: aconst_null
-    //   181: astore_1
-    //   182: goto -70 -> 112
+    //   162: invokevirtual 1488	java/io/BufferedReader:close	()V
+    //   165: goto +8 -> 173
+    //   168: astore_0
+    //   169: aload_0
+    //   170: invokevirtual 932	java/io/IOException:printStackTrace	()V
+    //   173: aload_1
+    //   174: athrow
+    //   175: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	185	0	paramString	String
-    //   31	107	1	localBufferedReader	BufferedReader
-    //   154	12	1	localObject1	Object
-    //   175	1	1	localObject2	Object
-    //   181	1	1	localObject3	Object
+    //   0	176	0	paramString	String
+    //   31	87	1	localBufferedReader	BufferedReader
+    //   126	1	1	localObject1	Object
+    //   134	12	1	localObject2	Object
+    //   156	18	1	localObject3	Object
     //   38	66	2	str	String
-    //   111	4	2	localException1	Exception
-    //   179	1	2	localException2	Exception
+    //   122	1	2	localException1	Exception
+    //   132	6	2	localException2	Exception
     //   64	39	3	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   34	39	111	java/lang/Exception
-    //   45	55	111	java/lang/Exception
-    //   57	65	111	java/lang/Exception
-    //   67	73	111	java/lang/Exception
-    //   83	97	111	java/lang/Exception
-    //   99	108	111	java/lang/Exception
-    //   129	133	111	java/lang/Exception
-    //   137	141	142	java/io/IOException
-    //   122	126	148	java/io/IOException
-    //   16	32	154	finally
-    //   161	165	167	java/io/IOException
-    //   34	39	175	finally
-    //   45	55	175	finally
-    //   57	65	175	finally
-    //   67	73	175	finally
-    //   83	97	175	finally
-    //   99	108	175	finally
-    //   114	118	175	finally
-    //   129	133	175	finally
-    //   16	32	179	java/lang/Exception
+    //   34	39	122	java/lang/Exception
+    //   45	55	122	java/lang/Exception
+    //   57	65	122	java/lang/Exception
+    //   67	73	122	java/lang/Exception
+    //   83	97	122	java/lang/Exception
+    //   99	108	122	java/lang/Exception
+    //   113	117	122	java/lang/Exception
+    //   16	32	126	finally
+    //   16	32	132	java/lang/Exception
+    //   117	121	150	java/io/IOException
+    //   145	149	150	java/io/IOException
+    //   34	39	156	finally
+    //   45	55	156	finally
+    //   57	65	156	finally
+    //   67	73	156	finally
+    //   83	97	156	finally
+    //   99	108	156	finally
+    //   113	117	156	finally
+    //   137	141	156	finally
+    //   161	165	168	java/io/IOException
   }
   
   public static String urlKey2FileName(String paramString, boolean paramBoolean)
   {
-    String str;
     if (paramBoolean) {
-      str = String.valueOf(paramString.hashCode());
+      return String.valueOf(paramString.hashCode());
     }
-    do
-    {
-      return str;
-      str = paramString;
-    } while (!paramString.startsWith("file://"));
-    return paramString.substring("file://".length(), paramString.length());
+    String str = paramString;
+    if (paramString.startsWith("file://")) {
+      str = paramString.substring(7, paramString.length());
+    }
+    return str;
   }
   
   boolean canDownloadImage(ImageKey paramImageKey)
@@ -2096,52 +2069,62 @@ public class ImageManager
         this.isStorageLow = isAvailableStorageSizeLow();
         if ((this.isStorageLow) && (isUseExternalStorage))
         {
-          if (TextUtils.isEmpty(maxAvailableSizePath)) {
-            break label238;
+          StringBuilder localStringBuilder;
+          if (!TextUtils.isEmpty(maxAvailableSizePath))
+          {
+            mCachePath = getStorePath(this.mContext, "imageV2", false, true);
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append(getCachePath(this.mContext));
+            localStringBuilder.append(urlKey2FileName(paramImageKey.urlKey, true));
+            paramImageKey.filePath = localStringBuilder.toString();
+            clearAllImageFile();
+            this.isStorageLow = isAvailableStorageSizeLow();
+            if (this.isStorageLow)
+            {
+              mCachePath = getStorePath(this.mContext, "imageV2", true, false);
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append(getCachePath(this.mContext));
+              localStringBuilder.append(urlKey2FileName(paramImageKey.urlKey, true));
+              paramImageKey.filePath = localStringBuilder.toString();
+              clearAllImageFile();
+              this.isStorageLow = isAvailableStorageSizeLow();
+            }
           }
-          mCachePath = getStorePath(this.mContext, "imageV2", false, true);
-          paramImageKey.filePath = (getCachePath(this.mContext) + urlKey2FileName(paramImageKey.urlKey, true));
-          clearAllImageFile();
-          this.isStorageLow = isAvailableStorageSizeLow();
-          if (this.isStorageLow)
+          else
           {
             mCachePath = getStorePath(this.mContext, "imageV2", true, false);
-            paramImageKey.filePath = (getCachePath(this.mContext) + urlKey2FileName(paramImageKey.urlKey, true));
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append(getCachePath(this.mContext));
+            localStringBuilder.append(urlKey2FileName(paramImageKey.urlKey, true));
+            paramImageKey.filePath = localStringBuilder.toString();
             clearAllImageFile();
+            this.isStorageLow = isAvailableStorageSizeLow();
           }
         }
       }
-    }
-    for (this.isStorageLow = isAvailableStorageSizeLow();; this.isStorageLow = isAvailableStorageSizeLow())
-    {
       if ((this.isStorageLow) && (isMainProcess)) {
         ImageManagerEnv.g().showToast(0, this.mContext, "手机存储空间不足，图片无法下载展示，请及时清理！", 17);
       }
-      if (!this.isStorageLow) {
-        break;
-      }
-      return false;
-      label238:
-      mCachePath = getStorePath(this.mContext, "imageV2", true, false);
-      paramImageKey.filePath = (getCachePath(this.mContext) + urlKey2FileName(paramImageKey.urlKey, true));
-      clearAllImageFile();
     }
-    return true;
+    return !this.isStorageLow;
   }
   
   public void cancel(String paramString, ImageLoader.ImageLoadListener paramImageLoadListener, ImageLoader.Options paramOptions)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return;
+    if (paramString != null)
+    {
+      if (paramString.length() == 0) {
+        return;
+      }
+      ImageKey localImageKey = ImageKey.obtain();
+      localImageKey.setUrl(paramString);
+      localImageKey.listener = paramImageLoadListener;
+      localImageKey.options = ImageLoader.Options.copy(paramOptions);
+      paramString = imageGetNullOrCancelHandler().obtainMessage();
+      paramString.what = 1;
+      paramString.obj = localImageKey;
+      imageGetNullOrCancelHandler().sendMessage(paramString);
     }
-    ImageKey localImageKey = ImageKey.obtain();
-    localImageKey.setUrl(paramString);
-    localImageKey.listener = paramImageLoadListener;
-    localImageKey.options = ImageLoader.Options.copy(paramOptions);
-    paramString = imageGetNullOrCancelHandler().obtainMessage();
-    paramString.what = 1;
-    paramString.obj = localImageKey;
-    imageGetNullOrCancelHandler().sendMessage(paramString);
   }
   
   public int capacity()
@@ -2151,36 +2134,31 @@ public class ImageManager
   
   void checkBitmapDecodeFailCount(ImageKey paramImageKey)
   {
-    Integer localInteger;
     if (paramImageKey.isNetworkUrl)
     {
-      localInteger = (Integer)mDecodeExceptionMap.get(paramImageKey.filePath);
-      if (localInteger == null) {
-        break label113;
-      }
-      if (maxDecodeFailCount == -1)
+      Integer localInteger = (Integer)mDecodeExceptionMap.get(paramImageKey.filePath);
+      if (localInteger != null)
       {
-        maxDecodeFailCount = ImageManagerEnv.g().getMaxNumOfDecodingFailures();
-        if (maxDecodeFailCount <= -1)
+        if (maxDecodeFailCount == -1)
         {
-          maxDecodeFailCount = 3;
-          ImageManagerLog.w(TAG, "--maxDecodeFailCount<=-1,so set default value: 3.");
+          maxDecodeFailCount = ImageManagerEnv.g().getMaxNumOfDecodingFailures();
+          if (maxDecodeFailCount <= -1)
+          {
+            maxDecodeFailCount = 3;
+            ImageManagerLog.w(TAG, "--maxDecodeFailCount<=-1,so set default value: 3.");
+          }
         }
+        if (localInteger.intValue() >= maxDecodeFailCount)
+        {
+          removeImageFile(paramImageKey.url, null);
+          mDecodeExceptionMap.remove(paramImageKey.filePath);
+          return;
+        }
+        mDecodeExceptionMap.put(paramImageKey.filePath, Integer.valueOf(localInteger.intValue() + 1));
+        return;
       }
-      if (localInteger.intValue() >= maxDecodeFailCount)
-      {
-        removeImageFile(paramImageKey.url, null);
-        mDecodeExceptionMap.remove(paramImageKey.filePath);
-      }
+      mDecodeExceptionMap.put(paramImageKey.filePath, Integer.valueOf(1));
     }
-    else
-    {
-      return;
-    }
-    mDecodeExceptionMap.put(paramImageKey.filePath, Integer.valueOf(localInteger.intValue() + 1));
-    return;
-    label113:
-    mDecodeExceptionMap.put(paramImageKey.filePath, Integer.valueOf(1));
   }
   
   public void checkCleanImageLocalFile()
@@ -2197,31 +2175,27 @@ public class ImageManager
   
   public void clear(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    do
+    if (paramString != null)
     {
-      return;
+      if (paramString.length() == 0) {
+        return;
+      }
       paramString = ImageKey.getUrlKey(paramString, false);
       paramString = (HashSet)this.mUrlKey2AllImageKeyMap.remove(paramString);
-    } while (paramString == null);
-    paramString = paramString.iterator();
-    label39:
-    int i;
-    if (paramString.hasNext())
-    {
-      i = ((Integer)paramString.next()).intValue();
-      if (!IS_ICE_CREAM_SANDWICH) {
-        break label87;
+      if (paramString != null)
+      {
+        paramString = paramString.iterator();
+        while (paramString.hasNext())
+        {
+          int i = ((Integer)paramString.next()).intValue();
+          if (IS_ICE_CREAM_SANDWICH) {
+            remove(i);
+          } else {
+            getImageCache().remove(Integer.valueOf(i));
+          }
+          this.mImageKeyHash2UrlMap.remove(Integer.valueOf(i));
+        }
       }
-      remove(i);
-    }
-    for (;;)
-    {
-      this.mImageKeyHash2UrlMap.remove(Integer.valueOf(i));
-      break label39;
-      break;
-      label87:
-      getImageCache().remove(Integer.valueOf(i));
     }
   }
   
@@ -2231,34 +2205,29 @@ public class ImageManager
     localImageKey.setUrl(paramString);
     localImageKey.options = paramOptions;
     int i = localImageKey.hashCodeEx();
-    if ((localImageKey.urlKey == null) || (IS_ICE_CREAM_SANDWICH)) {
+    paramString = localImageKey.urlKey;
+    if (IS_ICE_CREAM_SANDWICH) {
       remove(i);
-    }
-    for (;;)
-    {
-      this.mImageKeyHash2UrlMap.remove(Integer.valueOf(i));
-      localImageKey.recycle();
-      return;
+    } else {
       getImageCache().remove(Integer.valueOf(i));
     }
+    this.mImageKeyHash2UrlMap.remove(Integer.valueOf(i));
+    localImageKey.recycle();
   }
   
   public void clear(boolean paramBoolean)
   {
     if (IS_ICE_CREAM_SANDWICH) {
       evictAll();
-    }
-    for (;;)
-    {
-      ImageKey.clearAndInitSize();
-      if (paramBoolean) {
-        clearAllImageFile();
-      }
-      this.mUrlKey2AllImageKeyMap.clear();
-      this.mImageKeyHash2UrlMap.clear();
-      return;
+    } else {
       getImageCache().evictAll();
     }
+    ImageKey.clearAndInitSize();
+    if (paramBoolean) {
+      clearAllImageFile();
+    }
+    this.mUrlKey2AllImageKeyMap.clear();
+    this.mImageKeyHash2UrlMap.clear();
   }
   
   public void clearMemoryCache()
@@ -2268,8 +2237,9 @@ public class ImageManager
   
   public BitmapReference getBitmap(int paramInt1, int paramInt2, Bitmap.Config paramConfig)
   {
-    if (this.mBitmapFactory != null) {
-      return this.mBitmapFactory.createBitmap(paramInt1, paramInt2, paramConfig);
+    IBitmapFactory localIBitmapFactory = this.mBitmapFactory;
+    if (localIBitmapFactory != null) {
+      return localIBitmapFactory.createBitmap(paramInt1, paramInt2, paramConfig);
     }
     return BitmapReference.getBitmapReference(Bitmap.createBitmap(paramInt1, paramInt2, paramConfig));
   }
@@ -2281,149 +2251,186 @@ public class ImageManager
   
   Drawable getDrawbleFromCache(ImageKey paramImageKey)
   {
-    if (paramImageKey == null) {}
-    do
-    {
-      return null;
-      if (!removeInvalidatedUrl(paramImageKey.url)) {
-        break;
-      }
-      clear(paramImageKey.url);
-    } while ((!paramImageKey.isSuperResolutionUrl) || (paramImageKey.isHighScaleUrl));
-    if (removeInvalidatedUrl(paramImageKey.bigUrl))
-    {
-      clear(paramImageKey.bigUrl);
+    if (paramImageKey == null) {
       return null;
     }
-    Object localObject1;
-    Object localObject2;
+    if (removeInvalidatedUrl(paramImageKey.url))
+    {
+      clear(paramImageKey.url);
+      if ((paramImageKey.isSuperResolutionUrl) && (!paramImageKey.isHighScaleUrl))
+      {
+        if (removeInvalidatedUrl(paramImageKey.bigUrl)) {
+          clear(paramImageKey.bigUrl);
+        }
+      }
+      else {
+        return null;
+      }
+    }
+    Object localObject3;
+    StringBuilder localStringBuilder;
+    long l;
     if (IS_ICE_CREAM_SANDWICH)
     {
-      if ((!paramImageKey.isSuperResolutionUrl) || (paramImageKey.isHighScaleUrl) || (TextUtils.isEmpty(paramImageKey.bigUrl))) {
-        break label801;
-      }
-      localObject1 = ImageKey.copy(paramImageKey);
-      ((ImageKey)localObject1).setUrl(paramImageKey.bigUrl);
-      localObject2 = get(((ImageKey)localObject1).hashCodeEx());
-      if (localObject2 != null) {
-        paramImageKey.setUrl(paramImageKey.bigUrl);
-      }
-      ((ImageKey)localObject1).recycle();
-    }
-    for (;;)
-    {
-      for (;;)
+      if ((paramImageKey.isSuperResolutionUrl) && (!paramImageKey.isHighScaleUrl) && (!TextUtils.isEmpty(paramImageKey.bigUrl)))
       {
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = get(paramImageKey.hashCodeEx());
+        localObject2 = ImageKey.copy(paramImageKey);
+        ((ImageKey)localObject2).setUrl(paramImageKey.bigUrl);
+        localObject1 = get(((ImageKey)localObject2).hashCodeEx());
+        if (localObject1 != null) {
+          paramImageKey.setUrl(paramImageKey.bigUrl);
         }
-        long l;
-        if ((localObject1 != null) && (this.mHasEntryNoCacheUrlKeyAndCacheTimeMap))
+        ((ImageKey)localObject2).recycle();
+      }
+      else
+      {
+        localObject1 = null;
+      }
+      if (localObject1 == null) {
+        localObject1 = get(paramImageKey.hashCodeEx());
+      }
+      localObject2 = localObject1;
+      if (localObject1 != null)
+      {
+        localObject2 = localObject1;
+        if (this.mHasEntryNoCacheUrlKeyAndCacheTimeMap)
         {
-          localObject2 = (Long)this.mNoCacheUrlKeyAndCacheTimeMap.get(paramImageKey.urlKey);
-          if (localObject2 != null)
+          localObject3 = (Long)this.mNoCacheUrlKeyAndCacheTimeMap.get(paramImageKey.urlKey);
+          localObject2 = localObject1;
+          if (localObject3 != null)
           {
-            ImageManagerLog.w(TAG, "getDrawbleFromCache, use no-cache, url = " + paramImageKey.url + ", cache_time = " + localObject2);
+            localObject2 = TAG;
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("getDrawbleFromCache, use no-cache, url = ");
+            localStringBuilder.append(paramImageKey.url);
+            localStringBuilder.append(", cache_time = ");
+            localStringBuilder.append(localObject3);
+            ImageManagerLog.w((String)localObject2, localStringBuilder.toString());
             l = ImageManagerEnv.g().getNoCacheImageExpiredTime();
-            if (System.currentTimeMillis() - ((Long)localObject2).longValue() >= l * 1000L)
+            if (System.currentTimeMillis() - ((Long)localObject3).longValue() >= l * 1000L)
             {
               this.mNoCacheUrlKeyAndCacheTimeMap.remove(paramImageKey.urlKey);
               if (this.mNoCacheUrlKeyAndCacheTimeMap.size() == 0) {
                 this.mHasEntryNoCacheUrlKeyAndCacheTimeMap = false;
               }
               clear(paramImageKey.url);
-              ImageManagerLog.w(TAG, "getDrawbleFromCache, clear no-cache memory, url = " + paramImageKey.url);
+              localObject1 = TAG;
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("getDrawbleFromCache, clear no-cache memory, url = ");
+              ((StringBuilder)localObject2).append(paramImageKey.url);
+              ImageManagerLog.w((String)localObject1, ((StringBuilder)localObject2).toString());
+              localObject2 = null;
+            }
+            else
+            {
+              localObject2 = localObject1;
+              if (!TextUtils.isEmpty(paramImageKey.filePath))
+              {
+                localObject2 = new File(paramImageKey.filePath);
+                localObject3 = TAG;
+                localStringBuilder = new StringBuilder();
+                localStringBuilder.append("getDrawbleFromCache, use no-cache drawable, url=");
+                localStringBuilder.append(paramImageKey.url);
+                localStringBuilder.append(", file length=");
+                localStringBuilder.append(((File)localObject2).length());
+                ImageManagerLog.d((String)localObject3, localStringBuilder.toString());
+                localObject2 = localObject1;
+              }
             }
           }
         }
-        for (paramImageKey = null; paramImageKey != null; paramImageKey = (ImageKey)localObject1)
+      }
+      if (localObject2 != null) {
+        return localObject2;
+      }
+      return null;
+    }
+    Object localObject2 = (Image)getImageCache().get(Integer.valueOf(paramImageKey.hashCodeEx()));
+    Object localObject1 = localObject2;
+    if (localObject2 != null)
+    {
+      localObject1 = localObject2;
+      if (this.mHasEntryNoCacheUrlKeyAndCacheTimeMap)
+      {
+        localObject3 = (Long)this.mNoCacheUrlKeyAndCacheTimeMap.get(paramImageKey.urlKey);
+        localObject1 = TAG;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getDrawbleFromCache, use no-cache, url = ");
+        localStringBuilder.append(paramImageKey.url);
+        localStringBuilder.append(", cache_time = ");
+        localStringBuilder.append(localObject3);
+        ImageManagerLog.w((String)localObject1, localStringBuilder.toString());
+        if (localObject3 != null)
         {
-          return paramImageKey;
-          if (!TextUtils.isEmpty(paramImageKey.filePath))
+          l = ImageManagerEnv.g().getNoCacheImageExpiredTime();
+          localObject1 = localObject2;
+          if (System.currentTimeMillis() - ((Long)localObject3).longValue() >= l * 1000L)
           {
-            localObject2 = new File(paramImageKey.filePath);
-            ImageManagerLog.d(TAG, "getDrawbleFromCache, use no-cache drawable, url=" + paramImageKey.url + ", file length=" + ((File)localObject2).length());
+            this.mNoCacheUrlKeyAndCacheTimeMap.remove(paramImageKey.urlKey);
+            if (this.mNoCacheUrlKeyAndCacheTimeMap.size() == 0) {
+              this.mHasEntryNoCacheUrlKeyAndCacheTimeMap = false;
+            }
+            clear(paramImageKey.url);
+            localObject1 = TAG;
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("getDrawbleFromCache, clear no-cache memory, url = ");
+            ((StringBuilder)localObject2).append(paramImageKey.url);
+            ImageManagerLog.w((String)localObject1, ((StringBuilder)localObject2).toString());
+            localObject1 = null;
           }
         }
-        break;
-        localObject2 = (Image)getImageCache().get(Integer.valueOf(paramImageKey.hashCodeEx()));
-        localObject1 = localObject2;
-        if (localObject2 != null)
+        else
         {
           localObject1 = localObject2;
-          if (this.mHasEntryNoCacheUrlKeyAndCacheTimeMap)
+          if (!TextUtils.isEmpty(paramImageKey.filePath))
           {
-            Long localLong = (Long)this.mNoCacheUrlKeyAndCacheTimeMap.get(paramImageKey.urlKey);
-            ImageManagerLog.w(TAG, "getDrawbleFromCache, use no-cache, url = " + paramImageKey.url + ", cache_time = " + localLong);
-            if (localLong == null) {
-              break label620;
-            }
-            l = ImageManagerEnv.g().getNoCacheImageExpiredTime();
-            localObject1 = localObject2;
-            if (System.currentTimeMillis() - localLong.longValue() >= l * 1000L)
-            {
-              this.mNoCacheUrlKeyAndCacheTimeMap.remove(paramImageKey.urlKey);
-              if (this.mNoCacheUrlKeyAndCacheTimeMap.size() == 0) {
-                this.mHasEntryNoCacheUrlKeyAndCacheTimeMap = false;
-              }
-              clear(paramImageKey.url);
-              ImageManagerLog.w(TAG, "getDrawbleFromCache, clear no-cache memory, url = " + paramImageKey.url);
-              localObject1 = null;
-            }
-          }
-        }
-        label589:
-        if (localObject1 == null) {
-          break;
-        }
-        try
-        {
-          if ((localObject1 instanceof FeedsBitmapImage))
-          {
-            paramImageKey = new SpecifiedBitmapDrawable(((FeedsBitmapImage)localObject1).getBitmap());
-            return paramImageKey;
-            label620:
-            localObject1 = localObject2;
-            if (TextUtils.isEmpty(paramImageKey.filePath)) {
-              break label589;
-            }
             localObject1 = new File(paramImageKey.filePath);
-            ImageManagerLog.d(TAG, "getDrawbleFromCache, use no-cache drawable, url=" + paramImageKey.url + ", file length=" + ((File)localObject1).length());
+            localObject3 = TAG;
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("getDrawbleFromCache, use no-cache drawable, url=");
+            localStringBuilder.append(paramImageKey.url);
+            localStringBuilder.append(", file length=");
+            localStringBuilder.append(((File)localObject1).length());
+            ImageManagerLog.d((String)localObject3, localStringBuilder.toString());
             localObject1 = localObject2;
-            break label589;
           }
-          if ((localObject1 instanceof BitmapImage))
-          {
-            if ((paramImageKey.options != null) && (paramImageKey.options.extraProcessor != null))
-            {
-              localObject1 = new BitmapImageDrawable((BitmapImage)localObject1, paramImageKey.options.clipWidth, paramImageKey.options.clipHeight);
-              return paramImageKey.options.extraProcessor.doProcess((Drawable)localObject1);
-            }
-            return new SpecifiedBitmapDrawable(((BitmapImage)localObject1).getBitmap());
-          }
-          if (!(localObject1 instanceof NewGifImage)) {
-            break;
-          }
-          paramImageKey = ((NewGifImage)localObject1).getDrawable();
-          return paramImageKey;
-        }
-        catch (Throwable paramImageKey)
-        {
-          return null;
         }
       }
-      label801:
-      localObject2 = null;
     }
+    if (localObject1 != null) {}
+    try
+    {
+      if ((localObject1 instanceof FeedsBitmapImage)) {
+        paramImageKey = new SpecifiedBitmapDrawable(((FeedsBitmapImage)localObject1).getBitmap());
+      } else if ((localObject1 instanceof BitmapImage))
+      {
+        if ((paramImageKey.options != null) && (paramImageKey.options.extraProcessor != null))
+        {
+          localObject1 = new BitmapImageDrawable((BitmapImage)localObject1, paramImageKey.options.clipWidth, paramImageKey.options.clipHeight);
+          paramImageKey = paramImageKey.options.extraProcessor.doProcess((Drawable)localObject1);
+        }
+        else
+        {
+          paramImageKey = new SpecifiedBitmapDrawable(((BitmapImage)localObject1).getBitmap());
+        }
+      }
+      else if ((localObject1 instanceof NewGifImage)) {
+        paramImageKey = ((NewGifImage)localObject1).getDrawable();
+      } else {
+        return null;
+      }
+    }
+    catch (Throwable paramImageKey)
+    {
+      return null;
+    }
+    return paramImageKey;
   }
   
   public Drawable getImage(ImageUrl paramImageUrl, ImageLoader.ImageLoadListener paramImageLoadListener, ImageLoader.Options paramOptions, byte paramByte, ImageLoader.ImageDownloadListener paramImageDownloadListener)
   {
-    if (paramImageUrl == null)
-    {
-      paramImageUrl = null;
-      return paramImageUrl;
+    if (paramImageUrl == null) {
+      return null;
     }
     ImageKey localImageKey = ImageKey.obtain();
     localImageKey.setUrl(paramImageUrl);
@@ -2431,51 +2438,41 @@ public class ImageManager
     localImageKey.flag = paramByte;
     localImageKey.listener = paramImageLoadListener;
     boolean bool;
-    if (localImageKey.options == null)
-    {
+    if (localImageKey.options == null) {
       bool = false;
-      label49:
-      localImageKey.needCallBackProcessPercent = bool;
-      localImageKey.imglistener = paramImageDownloadListener;
-      if ((localImageKey.isSuperResolutionUrl) && (!localImageKey.isHighScaleUrl))
-      {
-        paramImageLoadListener = paramImageUrl.url;
-        if (TextUtils.isEmpty(paramImageUrl.bigUrl)) {
-          break label218;
-        }
-      }
+    } else {
+      bool = localImageKey.options.needCallBackProcessPercent;
     }
-    label218:
-    for (paramImageUrl = paramImageUrl.bigUrl;; paramImageUrl = ImageManagerEnv.g().convertSrUrlToBigUrl(paramImageLoadListener))
+    localImageKey.needCallBackProcessPercent = bool;
+    localImageKey.imglistener = paramImageDownloadListener;
+    if ((localImageKey.isSuperResolutionUrl) && (!localImageKey.isHighScaleUrl))
     {
+      paramImageLoadListener = paramImageUrl.url;
+      if (!TextUtils.isEmpty(paramImageUrl.bigUrl)) {
+        paramImageUrl = paramImageUrl.bigUrl;
+      } else {
+        paramImageUrl = ImageManagerEnv.g().convertSrUrlToBigUrl(paramImageLoadListener);
+      }
       if (paramImageUrl != null) {
         localImageKey.bigUrl = paramImageUrl;
       }
-      paramImageLoadListener = getDrawbleFromCache(localImageKey);
-      if (paramImageLoadListener == null) {
-        break label229;
-      }
+    }
+    paramImageUrl = getDrawbleFromCache(localImageKey);
+    if (paramImageUrl != null)
+    {
       if ((isInFriendFeed) && (paramOptions != null) && (!paramOptions.isPreDecode) && (hasScrolled) && (!paramOptions.disableHitRateReport))
       {
-        paramImageUrl = imageGetNullOrCancelHandler().obtainMessage();
-        paramImageUrl.what = 2;
-        paramImageUrl.obj = localImageKey;
-        paramImageUrl.arg1 = 16;
-        imageGetNullOrCancelHandler().sendMessage(paramImageUrl);
+        paramImageLoadListener = imageGetNullOrCancelHandler().obtainMessage();
+        paramImageLoadListener.what = 2;
+        paramImageLoadListener.obj = localImageKey;
+        paramImageLoadListener.arg1 = 16;
+        imageGetNullOrCancelHandler().sendMessage(paramImageLoadListener);
       }
-      if (paramOptions != null)
-      {
-        paramImageUrl = paramImageLoadListener;
-        if (paramOptions.isGifPlayWhileDownloading == true) {
-          break;
-        }
+      if ((paramOptions == null) || (paramOptions.isGifPlayWhileDownloading != true)) {
+        localImageKey.recycle();
       }
-      localImageKey.recycle();
-      return paramImageLoadListener;
-      bool = localImageKey.options.needCallBackProcessPercent;
-      break label49;
+      return paramImageUrl;
     }
-    label229:
     if ((isInFriendFeed) && (paramOptions != null) && (!paramOptions.isPreDecode) && (hasScrolled) && (!paramOptions.disableHitRateReport))
     {
       paramImageUrl = imageGetNullOrCancelHandler().obtainMessage();
@@ -2494,19 +2491,22 @@ public class ImageManager
   
   public Drawable getImage(String paramString, ImageLoader.ImageLoadListener paramImageLoadListener, ImageLoader.Options paramOptions, byte paramByte, ImageLoader.ImageDownloadListener paramImageDownloadListener)
   {
-    if ((paramString == null) || (paramString.length() == 0))
+    if (paramString != null)
     {
-      paramString = null;
-      return paramString;
-    }
-    ImageKey localImageKey = ImageKey.obtain();
-    localImageKey.setUrl(paramString);
-    localImageKey.options = paramOptions;
-    localImageKey.flag = paramByte;
-    localImageKey.listener = paramImageLoadListener;
-    if (localImageKey.options == null) {}
-    for (boolean bool = false;; bool = localImageKey.options.needCallBackProcessPercent)
-    {
+      if (paramString.length() == 0) {
+        return null;
+      }
+      ImageKey localImageKey = ImageKey.obtain();
+      localImageKey.setUrl(paramString);
+      localImageKey.options = paramOptions;
+      localImageKey.flag = paramByte;
+      localImageKey.listener = paramImageLoadListener;
+      boolean bool;
+      if (localImageKey.options == null) {
+        bool = false;
+      } else {
+        bool = localImageKey.options.needCallBackProcessPercent;
+      }
       localImageKey.needCallBackProcessPercent = bool;
       localImageKey.imglistener = paramImageDownloadListener;
       if ((localImageKey.isSuperResolutionUrl) && (!localImageKey.isHighScaleUrl))
@@ -2516,172 +2516,180 @@ public class ImageManager
           localImageKey.bigUrl = paramString;
         }
       }
-      paramImageLoadListener = getDrawbleFromCache(localImageKey);
-      if (paramImageLoadListener == null) {
-        break label213;
+      paramString = getDrawbleFromCache(localImageKey);
+      if (paramString != null)
+      {
+        if ((isInFriendFeed) && (paramOptions != null) && (!paramOptions.isPreDecode) && (hasScrolled) && (!paramOptions.disableHitRateReport))
+        {
+          paramImageLoadListener = imageGetNullOrCancelHandler().obtainMessage();
+          paramImageLoadListener.what = 2;
+          paramImageLoadListener.obj = localImageKey;
+          paramImageLoadListener.arg1 = 16;
+          imageGetNullOrCancelHandler().sendMessage(paramImageLoadListener);
+        }
+        if ((paramOptions == null) || (paramOptions.isGifPlayWhileDownloading != true)) {
+          localImageKey.recycle();
+        }
+        return paramString;
       }
       if ((isInFriendFeed) && (paramOptions != null) && (!paramOptions.isPreDecode) && (hasScrolled) && (!paramOptions.disableHitRateReport))
       {
         paramString = imageGetNullOrCancelHandler().obtainMessage();
         paramString.what = 2;
         paramString.obj = localImageKey;
-        paramString.arg1 = 16;
+        paramString.arg1 = 0;
         imageGetNullOrCancelHandler().sendMessage(paramString);
       }
-      if (paramOptions != null)
-      {
-        paramString = paramImageLoadListener;
-        if (paramOptions.isGifPlayWhileDownloading == true) {
-          break;
-        }
-      }
-      localImageKey.recycle();
-      return paramImageLoadListener;
-    }
-    label213:
-    if ((isInFriendFeed) && (paramOptions != null) && (!paramOptions.isPreDecode) && (hasScrolled) && (!paramOptions.disableHitRateReport))
-    {
+      ImageTaskTracer.addImageMsgGetNullRecord(localImageKey.hashCodeEx());
       paramString = imageGetNullOrCancelHandler().obtainMessage();
-      paramString.what = 2;
+      paramString.what = 0;
       paramString.obj = localImageKey;
-      paramString.arg1 = 0;
       imageGetNullOrCancelHandler().sendMessage(paramString);
     }
-    ImageTaskTracer.addImageMsgGetNullRecord(localImageKey.hashCodeEx());
-    paramString = imageGetNullOrCancelHandler().obtainMessage();
-    paramString.what = 0;
-    paramString.obj = localImageKey;
-    imageGetNullOrCancelHandler().sendMessage(paramString);
     return null;
   }
   
   public Drawable getImageByUrlInMemory(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {}
     Object localObject;
-    do
+    if (paramString != null)
     {
-      int i;
-      do
+      if (paramString.length() == 0) {
+        return null;
+      }
+      paramString = ImageKey.getUrlKey(paramString, false);
+      paramString = (HashSet)this.mUrlKey2AllImageKeyMap.get(paramString);
+      if ((paramString != null) && (paramString.size() > 0))
       {
-        while (!paramString.hasNext())
+        paramString = paramString.iterator();
+        do
         {
+          int i;
           do
           {
-            return null;
-            paramString = ImageKey.getUrlKey(paramString, false);
-            paramString = (HashSet)this.mUrlKey2AllImageKeyMap.get(paramString);
-          } while ((paramString == null) || (paramString.size() <= 0));
-          paramString = paramString.iterator();
-        }
-        i = ((Integer)paramString.next()).intValue();
-        if (!IS_ICE_CREAM_SANDWICH) {
-          break;
-        }
-        localObject = get(i);
-      } while (localObject == null);
-      if ((localObject instanceof NewGifDrawable)) {
-        ((NewGifDrawable)localObject).setVisible(true, true);
+            if (!paramString.hasNext()) {
+              break label173;
+            }
+            i = ((Integer)paramString.next()).intValue();
+            if (!IS_ICE_CREAM_SANDWICH) {
+              break;
+            }
+            localObject = get(i);
+          } while (localObject == null);
+          if ((localObject instanceof NewGifDrawable)) {
+            ((NewGifDrawable)localObject).setVisible(true, true);
+          }
+          return localObject;
+          localObject = (Image)getImageCache().get(Integer.valueOf(i));
+        } while (localObject == null);
       }
-      return localObject;
-      localObject = (Image)getImageCache().get(Integer.valueOf(i));
-    } while (localObject == null);
+    }
     try
     {
       if ((localObject instanceof FeedsBitmapImage)) {
         paramString = new SpecifiedBitmapDrawable(((FeedsBitmapImage)localObject).getBitmap());
       } else if ((localObject instanceof BitmapImage)) {
         paramString = new SpecifiedBitmapDrawable(((BitmapImage)localObject).getBitmap());
+      } else {
+        label173:
+        return null;
       }
     }
     catch (Throwable paramString)
     {
-      paramString = null;
+      return null;
     }
-    paramString = null;
     return paramString;
   }
   
   public File getImageFile(String paramString, ImageLoader.Options paramOptions)
   {
+    boolean bool = isNetworkUrl(paramString);
     Object localObject = null;
-    File localFile1;
-    if (isNetworkUrl(paramString))
+    if (bool)
     {
       String str = urlKey2FileName(ImageKey.getUrlKey(paramString, true), true);
-      File localFile2 = (File)this.mFilename2FileMap.get(str);
-      localFile1 = localFile2;
-      if (localFile2 == null)
+      localObject = (File)this.mFilename2FileMap.get(str);
+      if (localObject == null)
       {
-        if ((paramOptions == null) || (paramOptions.fileRootPath == null) || (paramOptions.fileRootPath.length() <= 0)) {
-          break label141;
+        if ((paramOptions != null) && (paramOptions.fileRootPath != null) && (paramOptions.fileRootPath.length() > 0))
+        {
+          paramOptions = paramOptions.fileRootPath;
         }
-        paramOptions = paramOptions.fileRootPath;
-        localFile1 = new File(paramOptions + str);
-        if (!localFile1.exists()) {
-          break label162;
+        else
+        {
+          if (mLoadAllImageFileFlag == true) {
+            return null;
+          }
+          paramOptions = getCachePath(this.mContext);
         }
-        this.mFilename2FileMap.put(str, localFile1);
-        this.mTotalFileSize += localFile1.length();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramOptions);
+        ((StringBuilder)localObject).append(str);
+        localObject = new File(((StringBuilder)localObject).toString());
+        if (((File)localObject).exists())
+        {
+          this.mFilename2FileMap.put(str, localObject);
+          this.mTotalFileSize += ((File)localObject).length();
+        }
+        else
+        {
+          localObject = getImageFileForSuperResolution(paramString);
+        }
       }
     }
-    for (;;)
-    {
-      SharpPUtils.deleteSharppCacheFileIfNessary(localFile1, paramString);
-      SharpPUtils.checkNotSharppCacheFileIfNessary(localFile1, paramString);
-      paramOptions = localFile1;
-      label141:
-      do
-      {
-        return paramOptions;
-        paramOptions = localObject;
-      } while (mLoadAllImageFileFlag == true);
-      paramOptions = getCachePath(this.mContext);
-      break;
-      label162:
-      localFile1 = getImageFileForSuperResolution(paramString);
-      continue;
-      localFile1 = null;
-    }
+    SharpPUtils.deleteSharppCacheFileIfNessary((File)localObject, paramString);
+    SharpPUtils.checkNotSharppCacheFileIfNessary((File)localObject, paramString);
+    return localObject;
   }
   
   public File getImageFileForSuperResolution(String paramString)
   {
     if (ImageManagerEnv.g().isSuperResolutionUrl(paramString))
     {
-      Object localObject1;
+      Object localObject2;
+      StringBuilder localStringBuilder;
       if (ImageManagerEnv.g().isHighScaleUrl(paramString))
       {
         localObject1 = getCachePathSR(this.mContext);
-        localObject1 = new File((String)localObject1 + urlKey2FileName(ImageKey.getUrlKey(paramString, true), true));
-        if (!((File)localObject1).exists()) {}
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(urlKey2FileName(ImageKey.getUrlKey(paramString, true), true));
+        localObject1 = new File(((StringBuilder)localObject2).toString());
+        if (((File)localObject1).exists()) {
+          return localObject1;
+        }
+        localObject1 = ImageKey.getUrlKey4NoneHighScale(paramString, true);
+        localObject2 = getCachePath(this.mContext);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject2);
+        localStringBuilder.append(urlKey2FileName((String)localObject1, true));
+        localObject1 = new File(localStringBuilder.toString());
+        if (((File)localObject1).exists()) {
+          return localObject1;
+        }
       }
-      do
+      Object localObject1 = ImageManagerEnv.g().convertSrUrlToBigUrl(paramString);
+      if (localObject1 != null)
       {
-        Object localObject2;
-        do
-        {
-          do
-          {
-            return localObject1;
-            localObject1 = ImageKey.getUrlKey4NoneHighScale(paramString, true);
-            localObject2 = getCachePath(this.mContext);
-            localObject2 = new File((String)localObject2 + urlKey2FileName((String)localObject1, true));
-            localObject1 = localObject2;
-          } while (((File)localObject2).exists());
-          localObject1 = ImageManagerEnv.g().convertSrUrlToBigUrl(paramString);
-          if (localObject1 == null) {
-            break;
-          }
-          localObject1 = ImageKey.getUrlKey((String)localObject1, true);
-          localObject2 = getCachePath(this.mContext);
-          localObject2 = new File((String)localObject2 + urlKey2FileName((String)localObject1, true));
-          localObject1 = localObject2;
-        } while (((File)localObject2).exists());
+        localObject1 = ImageKey.getUrlKey((String)localObject1, true);
+        localObject2 = getCachePath(this.mContext);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject2);
+        localStringBuilder.append(urlKey2FileName((String)localObject1, true));
+        localObject1 = new File(localStringBuilder.toString());
+        if (((File)localObject1).exists()) {
+          return localObject1;
+        }
         localObject1 = getCachePathSR(this.mContext);
-        paramString = new File((String)localObject1 + urlKey2FileName(ImageKey.getUrlKey(paramString, true), true));
-        localObject1 = paramString;
-      } while (paramString.exists());
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(urlKey2FileName(ImageKey.getUrlKey(paramString, true), true));
+        paramString = new File(((StringBuilder)localObject2).toString());
+        if (paramString.exists()) {
+          return paramString;
+        }
+      }
     }
     return null;
   }
@@ -2689,96 +2697,127 @@ public class ImageManager
   void imageKeyFilePathCheck(ImageKey paramImageKey)
   {
     Object localObject1;
-    String str;
-    if ((paramImageKey.filePath == null) || (paramImageKey.filePath.length() == 0))
-    {
-      if (!paramImageKey.isNetworkUrl) {
-        break label396;
-      }
-      localObject1 = paramImageKey.urlKey;
-      if ((paramImageKey.options == null) || (paramImageKey.options.fileRootPath == null) || (paramImageKey.options.fileRootPath.length() <= 0)) {
-        break label151;
-      }
-      str = paramImageKey.options.fileRootPath;
-    }
-    label151:
-    label444:
-    for (;;)
-    {
-      paramImageKey.filePath = (str + urlKey2FileName((String)localObject1, true));
-      for (;;)
+    if ((paramImageKey.filePath == null) || (paramImageKey.filePath.length() == 0)) {
+      if (paramImageKey.isNetworkUrl)
       {
-        if ((!TextUtils.isEmpty(paramImageKey.filePath)) && (VideoThumbnail.isVideo(paramImageKey.filePath)))
+        Object localObject3 = paramImageKey.urlKey;
+        Object localObject2;
+        if ((paramImageKey.options != null) && (paramImageKey.options.fileRootPath != null) && (paramImageKey.options.fileRootPath.length() > 0))
         {
-          str = VideoThumbnail.queryVideoThumbnailFilePath(ImageManagerEnv.getAppContext(), paramImageKey.filePath);
-          if ((!TextUtils.isEmpty(str)) && (new File(str).exists())) {
-            paramImageKey.filePath = str;
-          }
+          localObject1 = paramImageKey.options.fileRootPath;
+          localObject2 = localObject3;
         }
-        return;
-        if (ImageManagerEnv.g().isSuperResolutionUrl(paramImageKey.url))
+        else if (ImageManagerEnv.g().isSuperResolutionUrl(paramImageKey.url))
         {
-          str = getCachePathSR(this.mContext);
-          Object localObject2 = new File(str + urlKey2FileName(paramImageKey.urlKey, true));
+          localObject1 = getCachePathSR(this.mContext);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append((String)localObject1);
+          ((StringBuilder)localObject2).append(urlKey2FileName(paramImageKey.urlKey, true));
+          localObject2 = new File(((StringBuilder)localObject2).toString());
+          Object localObject4;
           if (((File)localObject2).exists())
           {
-            ImageManagerLog.w("superresolution", "using cache. url=" + paramImageKey.url + " filePath=" + ((File)localObject2).getAbsolutePath());
+            localObject4 = new StringBuilder();
+            ((StringBuilder)localObject4).append("using cache. url=");
+            ((StringBuilder)localObject4).append(paramImageKey.url);
+            ((StringBuilder)localObject4).append(" filePath=");
+            ((StringBuilder)localObject4).append(((File)localObject2).getAbsolutePath());
+            ImageManagerLog.w("superresolution", ((StringBuilder)localObject4).toString());
             paramImageKey.needSuperResolution = false;
-            break;
+            localObject2 = localObject3;
           }
-          str = getCachePath(this.mContext);
-          if (!ImageManagerEnv.g().isHighScaleUrl(paramImageKey.url)) {
-            break label444;
+          else
+          {
+            localObject4 = getCachePath(this.mContext);
+            localObject2 = localObject3;
+            localObject1 = localObject4;
+            if (ImageManagerEnv.g().isHighScaleUrl(paramImageKey.url))
+            {
+              String str = ImageKey.getUrlKey4NoneHighScale(paramImageKey.url, true);
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append((String)localObject4);
+              ((StringBuilder)localObject1).append(urlKey2FileName(str, true));
+              File localFile = new File(((StringBuilder)localObject1).toString());
+              localObject2 = localObject3;
+              localObject1 = localObject4;
+              if (localFile.exists())
+              {
+                localObject1 = new StringBuilder();
+                ((StringBuilder)localObject1).append("high scale. using normal big cache. url=");
+                ((StringBuilder)localObject1).append(paramImageKey.url);
+                ((StringBuilder)localObject1).append(" filePath=");
+                ((StringBuilder)localObject1).append(localFile.getAbsolutePath());
+                ImageManagerLog.w("superresolution", ((StringBuilder)localObject1).toString());
+                localObject2 = str;
+                localObject1 = localObject4;
+              }
+            }
           }
-          localObject2 = ImageKey.getUrlKey4NoneHighScale(paramImageKey.url, true);
-          File localFile = new File(str + urlKey2FileName((String)localObject2, true));
-          if (!localFile.exists()) {
-            break label444;
-          }
-          ImageManagerLog.w("superresolution", "high scale. using normal big cache. url=" + paramImageKey.url + " filePath=" + localFile.getAbsolutePath());
-          localObject1 = localObject2;
-          break;
         }
-        str = getCachePath(this.mContext);
-        break;
-        if ((ImageManagerEnv.g().needCheckAvatar()) && (paramImageKey.isAvatarUrl())) {
-          paramImageKey.filePath = ImageManagerEnv.g().getAvatarPath(paramImageKey.url);
-        } else {
-          paramImageKey.filePath = urlKey2FileName(paramImageKey.urlKey, false);
+        else
+        {
+          localObject1 = getCachePath(this.mContext);
+          localObject2 = localObject3;
         }
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append((String)localObject1);
+        ((StringBuilder)localObject3).append(urlKey2FileName((String)localObject2, true));
+        paramImageKey.filePath = ((StringBuilder)localObject3).toString();
+      }
+      else if ((ImageManagerEnv.g().needCheckAvatar()) && (paramImageKey.isAvatarUrl()))
+      {
+        paramImageKey.filePath = ImageManagerEnv.g().getAvatarPath(paramImageKey.url);
+      }
+      else
+      {
+        paramImageKey.filePath = urlKey2FileName(paramImageKey.urlKey, false);
+      }
+    }
+    if ((!TextUtils.isEmpty(paramImageKey.filePath)) && (VideoThumbnail.isVideo(paramImageKey.filePath)))
+    {
+      localObject1 = VideoThumbnail.queryVideoThumbnailFilePath(ImageManagerEnv.getAppContext(), paramImageKey.filePath);
+      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (new File((String)localObject1).exists())) {
+        paramImageKey.filePath = ((String)localObject1);
       }
     }
   }
   
   protected void nocachedDeleteLocalFile(ImageKey paramImageKey)
   {
-    File localFile;
     if ((this.mHasEntryNoCacheUrlKeyAndCacheTimeMap) && (this.mNoCacheUrlKeyAndCacheTimeMap.containsKey(paramImageKey.urlKey)))
     {
-      localFile = new File(paramImageKey.filePath);
-      if (localFile.exists())
+      localObject = new File(paramImageKey.filePath);
+      if (((File)localObject).exists())
       {
-        boolean bool = localFile.delete();
-        ImageManagerLog.w(TAG, "nocachedDeleteLocalFile, delete local file is: " + bool + ", url = " + paramImageKey.url + ", filePath=" + paramImageKey.filePath);
+        boolean bool = ((File)localObject).delete();
+        localObject = TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("nocachedDeleteLocalFile, delete local file is: ");
+        localStringBuilder.append(bool);
+        localStringBuilder.append(", url = ");
+        localStringBuilder.append(paramImageKey.url);
+        localStringBuilder.append(", filePath=");
+        localStringBuilder.append(paramImageKey.filePath);
+        ImageManagerLog.w((String)localObject, localStringBuilder.toString());
         if (bool)
         {
           paramImageKey = new File(getNocacheFilePath(paramImageKey, false));
           if (paramImageKey.exists()) {
             paramImageKey.delete();
           }
+          return;
         }
       }
     }
-    do
+    Object localObject = new File(getNocacheFilePath(paramImageKey, false));
+    if (((File)localObject).exists())
     {
-      return;
-      localFile = new File(getNocacheFilePath(paramImageKey, false));
-    } while (!localFile.exists());
-    paramImageKey = new File(paramImageKey.filePath);
-    if (paramImageKey.exists()) {
-      paramImageKey.delete();
+      paramImageKey = new File(paramImageKey.filePath);
+      if (paramImageKey.exists()) {
+        paramImageKey.delete();
+      }
+      ((File)localObject).delete();
     }
-    localFile.delete();
   }
   
   public void notifyDownSuccess(ImageKey paramImageKey, String paramString1, String paramString2)
@@ -2788,84 +2827,96 @@ public class ImageManager
   
   boolean onDownloadSucceed(ImageKey paramImageKey, String paramString1, String paramString2, boolean paramBoolean)
   {
-    String str = ImageKey.getUrlKey(paramString1, false);
+    Object localObject2 = ImageKey.getUrlKey(paramString1, false);
     ImageTracer.endDownlaod(paramString1);
-    if ((paramImageKey != null) && (paramImageKey.flag == 3))
-    {
+    if ((paramImageKey != null) && (paramImageKey.flag == 3)) {
       ProgressTracer.print(5, paramString1);
-      Object localObject = str;
-      if (ImageManagerEnv.g().enableSocketMonitor()) {
-        localObject = ImageManagerEnv.g().removeSocketMonitorParam(str);
-      }
-      if (paramBoolean)
-      {
-        long l = System.currentTimeMillis();
-        this.mNoCacheUrlKeyAndCacheTimeMap.put(localObject, Long.valueOf(l));
-        this.mHasEntryNoCacheUrlKeyAndCacheTimeMap = true;
-        ImageManagerLog.w(TAG, "onDownloadSucceed,save no-cache info, url = " + paramString1);
-      }
-      if (paramImageKey == null) {
-        break label438;
-      }
-      imageKeyFilePathCheck(paramImageKey);
-      localObject = new File(paramImageKey.filePath);
-      if (!((File)localObject).exists()) {
-        break label265;
-      }
-      if ((paramImageKey.isNetworkUrl) && (!paramBoolean))
-      {
-        updateLruFile(paramImageKey);
-        paramString2 = ((File)localObject).getName();
-        i = (int)((File)localObject).length();
-        this.mFilename2FileMap.put(paramString2, localObject);
-        this.mTotalFileSize += i;
-        mFilename2FileLengthMap.put(Integer.valueOf(parseInt(paramString2)), Integer.valueOf(i));
-        ImageTracer.setImageLength(paramString1, i);
-      }
-      if (paramBoolean)
-      {
-        paramImageKey = new File(getNocacheFilePath(paramImageKey, true));
-        if (paramImageKey.exists()) {}
-      }
-    }
-    label265:
-    do
-    {
-      try
-      {
-        paramImageKey.createNewFile();
-        return true;
-      }
-      catch (Exception paramImageKey)
-      {
-        paramImageKey.printStackTrace();
-        return true;
-      }
+    } else {
       ProgressTracer.print(2, paramString1);
-      break;
+    }
+    Object localObject1 = localObject2;
+    if (ImageManagerEnv.g().enableSocketMonitor()) {
+      localObject1 = ImageManagerEnv.g().removeSocketMonitorParam((String)localObject2);
+    }
+    long l1;
+    if (paramBoolean)
+    {
+      l1 = System.currentTimeMillis();
+      this.mNoCacheUrlKeyAndCacheTimeMap.put(localObject1, Long.valueOf(l1));
+      this.mHasEntryNoCacheUrlKeyAndCacheTimeMap = true;
+      localObject1 = TAG;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("onDownloadSucceed,save no-cache info, url = ");
+      ((StringBuilder)localObject2).append(paramString1);
+      ImageManagerLog.w((String)localObject1, ((StringBuilder)localObject2).toString());
+    }
+    if (paramImageKey != null)
+    {
+      imageKeyFilePathCheck(paramImageKey);
+      localObject1 = new File(paramImageKey.filePath);
+      int i;
+      long l2;
+      if (((File)localObject1).exists())
+      {
+        if ((paramImageKey.isNetworkUrl) && (!paramBoolean))
+        {
+          updateLruFile(paramImageKey);
+          paramString2 = ((File)localObject1).getName();
+          i = (int)((File)localObject1).length();
+          this.mFilename2FileMap.put(paramString2, localObject1);
+          l1 = this.mTotalFileSize;
+          l2 = i;
+          this.mTotalFileSize = (l1 + l2);
+          mFilename2FileLengthMap.put(Integer.valueOf(parseInt(paramString2)), Integer.valueOf(i));
+          ImageTracer.setImageLength(paramString1, l2);
+        }
+        if (paramBoolean)
+        {
+          paramImageKey = new File(getNocacheFilePath(paramImageKey, true));
+          if (!paramImageKey.exists()) {
+            try
+            {
+              paramImageKey.createNewFile();
+              return true;
+            }
+            catch (Exception paramImageKey)
+            {
+              paramImageKey.printStackTrace();
+            }
+          }
+        }
+        return true;
+      }
       if (paramImageKey.isAvatarUrl())
       {
         paramImageKey.filePath = paramString2;
         return true;
       }
-      if (paramImageKey.filePath.startsWith("/data")) {
-        break label438;
+      if (!paramImageKey.filePath.startsWith("/data"))
+      {
+        mCachePath = getStorePath(this.mContext, "imageV2", true, false);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(getCachePath(this.mContext));
+        ((StringBuilder)localObject1).append(urlKey2FileName(paramImageKey.urlKey, true));
+        paramImageKey.filePath = ((StringBuilder)localObject1).toString();
+        paramImageKey = new File(paramImageKey.filePath);
+        if (ImageManagerEnv.g().copyFiles(new File(paramString2), paramImageKey))
+        {
+          if (!paramBoolean)
+          {
+            paramString2 = paramImageKey.getName();
+            i = (int)paramImageKey.length();
+            this.mFilename2FileMap.put(paramString2, paramImageKey);
+            l1 = this.mTotalFileSize;
+            l2 = i;
+            this.mTotalFileSize = (l1 + l2);
+            mFilename2FileLengthMap.put(Integer.valueOf(parseInt(paramString2)), Integer.valueOf(i));
+            ImageTracer.setImageLength(paramString1, l2);
+          }
+          return true;
+        }
       }
-      mCachePath = getStorePath(this.mContext, "imageV2", true, false);
-      paramImageKey.filePath = (getCachePath(this.mContext) + urlKey2FileName(paramImageKey.urlKey, true));
-      paramImageKey = new File(paramImageKey.filePath);
-      if (!ImageManagerEnv.g().copyFiles(new File(paramString2), paramImageKey)) {
-        break label438;
-      }
-    } while (paramBoolean);
-    paramString2 = paramImageKey.getName();
-    int i = (int)paramImageKey.length();
-    this.mFilename2FileMap.put(paramString2, paramImageKey);
-    this.mTotalFileSize += i;
-    mFilename2FileLengthMap.put(Integer.valueOf(parseInt(paramString2)), Integer.valueOf(i));
-    ImageTracer.setImageLength(paramString1, i);
-    return true;
-    label438:
+    }
     return false;
   }
   
@@ -2890,53 +2941,58 @@ public class ImageManager
       ImageManagerLog.d(TAG, "options.needCache=false,needn't put into cache");
       return;
     }
-    if (IS_ICE_CREAM_SANDWICH) {
-      if (drawableComputable(paramDrawable)) {
+    if (IS_ICE_CREAM_SANDWICH)
+    {
+      if (drawableComputable(paramDrawable))
+      {
         put(paramInt, paramDrawable);
       }
-    }
-    for (;;)
-    {
-      paramDrawable = (HashSet)this.mUrlKey2AllImageKeyMap.get(paramString);
-      paramImage = paramDrawable;
-      if (paramDrawable == null)
+      else
       {
-        paramImage = new HashSet();
-        this.mUrlKey2AllImageKeyMap.put(paramString, paramImage);
+        paramImage = new StringBuilder();
+        paramImage.append("drawable 不能精确计算大小，不能放入缓存中：");
+        paramImage.append(paramDrawable);
+        ImageManagerLog.d("feilongzou", paramImage.toString());
       }
-      paramImage.add(Integer.valueOf(paramInt));
-      return;
-      ImageManagerLog.d("feilongzou", "drawable 不能精确计算大小，不能放入缓存中：" + paramDrawable);
-      continue;
+    }
+    else {
       getImageCache().put(Integer.valueOf(paramInt), paramImage);
     }
+    paramDrawable = (HashSet)this.mUrlKey2AllImageKeyMap.get(paramString);
+    paramImage = paramDrawable;
+    if (paramDrawable == null)
+    {
+      paramImage = new HashSet();
+      this.mUrlKey2AllImageKeyMap.put(paramString, paramImage);
+    }
+    paramImage.add(Integer.valueOf(paramInt));
   }
   
   public void removeImageFile(String paramString, ImageLoader.Options paramOptions)
   {
-    String str;
     if (isNetworkUrl(paramString))
     {
-      str = urlKey2FileName(ImageKey.getUrlKey(paramString, true), true);
+      String str = urlKey2FileName(ImageKey.getUrlKey(paramString, true), true);
       File localFile = (File)this.mFilename2FileMap.remove(str);
       mFilename2FileLengthMap.remove(Integer.valueOf(parseInt(str)));
       paramString = localFile;
-      if (localFile == null) {
-        if ((paramOptions == null) || (paramOptions.fileRootPath == null) || (paramOptions.fileRootPath.length() <= 0)) {
-          break label135;
+      if (localFile == null)
+      {
+        if ((paramOptions != null) && (paramOptions.fileRootPath != null) && (paramOptions.fileRootPath.length() > 0)) {
+          paramString = paramOptions.fileRootPath;
+        } else {
+          paramString = getCachePath(this.mContext);
         }
+        paramOptions = new StringBuilder();
+        paramOptions.append(paramString);
+        paramOptions.append(str);
+        paramString = new File(paramOptions.toString());
       }
-    }
-    label135:
-    for (paramString = paramOptions.fileRootPath;; paramString = getCachePath(this.mContext))
-    {
-      paramString = new File(paramString + str);
       if ((paramString != null) && (paramString.exists()))
       {
         this.mTotalFileSize -= paramString.length();
         paramString.delete();
       }
-      return;
     }
   }
   
@@ -2955,13 +3011,16 @@ public class ImageManager
   
   public void saveSuperResImage(Bitmap paramBitmap, ImageKey paramImageKey)
   {
-    String str = getCachePathSR(this.mContext) + urlKey2FileName(paramImageKey.urlKey, true);
-    BitmapUtils.saveBitmapToFile(paramBitmap, str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(getCachePathSR(this.mContext));
+    ((StringBuilder)localObject).append(urlKey2FileName(paramImageKey.urlKey, true));
+    localObject = ((StringBuilder)localObject).toString();
+    BitmapUtils.saveBitmapToFile(paramBitmap, (String)localObject);
     paramBitmap = paramImageKey.filePath;
-    paramImageKey.filePath = str;
-    BitmapUtils.copyExif(paramBitmap, str);
+    paramImageKey.filePath = ((String)localObject);
+    BitmapUtils.copyExif(paramBitmap, (String)localObject);
     paramImageKey.needSuperResolution = false;
-    paramBitmap = new File(str);
+    paramBitmap = new File((String)localObject);
     updateLruFile(paramImageKey);
     paramImageKey = paramBitmap.getName();
     int i = (int)paramBitmap.length();
@@ -2977,8 +3036,9 @@ public class ImageManager
   
   protected void traceImageFile(boolean paramBoolean)
   {
-    if (this.imageFileTracer != null) {
-      this.imageFileTracer.onImageFileDecode(paramBoolean);
+    IImageFileTracer localIImageFileTracer = this.imageFileTracer;
+    if (localIImageFileTracer != null) {
+      localIImageFileTracer.onImageFileDecode(paramBoolean);
     }
   }
   
@@ -3008,7 +3068,7 @@ public class ImageManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.image.ImageManager
  * JD-Core Version:    0.7.0.1
  */

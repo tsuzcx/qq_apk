@@ -2,8 +2,8 @@ package okhttp3.internal.http2;
 
 import java.io.Closeable;
 import java.io.IOException;
-import java.io.InterruptedIOException;
 import java.net.Socket;
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -31,7 +31,7 @@ public final class Http2Connection
   static final long DEGRADED_PONG_TIMEOUT_NS = 1000000000L;
   static final int INTERVAL_PING = 1;
   static final int OKHTTP_CLIENT_WINDOW_SIZE = 16777216;
-  private static final ExecutorService listenerExecutor;
+  private static final ExecutorService listenerExecutor = new ThreadPoolExecutor(0, 2147483647, 60L, TimeUnit.SECONDS, new SynchronousQueue(), Util.threadFactory("OkHttp Http2Connection", true));
   private long awaitPingsSent = 0L;
   private long awaitPongsReceived = 0L;
   long bytesLeftInWriteWindow;
@@ -58,46 +58,36 @@ public final class Http2Connection
   final Http2Writer writer;
   private final ScheduledExecutorService writerExecutor;
   
-  static
-  {
-    if (!Http2Connection.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      listenerExecutor = new ThreadPoolExecutor(0, 2147483647, 60L, TimeUnit.SECONDS, new SynchronousQueue(), Util.threadFactory("OkHttp Http2Connection", true));
-      return;
-    }
-  }
-  
   Http2Connection(Http2Connection.Builder paramBuilder)
   {
     this.pushObserver = paramBuilder.pushObserver;
     this.client = paramBuilder.client;
     this.listener = paramBuilder.listener;
-    if (paramBuilder.client) {}
-    for (int i = 1;; i = 2)
-    {
-      this.nextStreamId = i;
-      if (paramBuilder.client) {
-        this.nextStreamId += 2;
-      }
-      if (paramBuilder.client) {
-        this.okHttpSettings.set(7, 16777216);
-      }
-      this.hostname = paramBuilder.hostname;
-      this.writerExecutor = new ScheduledThreadPoolExecutor(1, Util.threadFactory(Util.format("OkHttp %s Writer", new Object[] { this.hostname }), false));
-      if (paramBuilder.pingIntervalMillis != 0) {
-        this.writerExecutor.scheduleAtFixedRate(new Http2Connection.IntervalPingRunnable(this), paramBuilder.pingIntervalMillis, paramBuilder.pingIntervalMillis, TimeUnit.MILLISECONDS);
-      }
-      this.pushExecutor = new ThreadPoolExecutor(0, 1, 60L, TimeUnit.SECONDS, new LinkedBlockingQueue(), Util.threadFactory(Util.format("OkHttp %s Push Observer", new Object[] { this.hostname }), true));
-      this.peerSettings.set(7, 65535);
-      this.peerSettings.set(5, 16384);
-      this.bytesLeftInWriteWindow = this.peerSettings.getInitialWindowSize();
-      this.socket = paramBuilder.socket;
-      this.writer = new Http2Writer(paramBuilder.sink, this.client);
-      this.readerRunnable = new Http2Connection.ReaderRunnable(this, new Http2Reader(paramBuilder.source, this.client));
-      return;
+    int i;
+    if (paramBuilder.client) {
+      i = 1;
+    } else {
+      i = 2;
     }
+    this.nextStreamId = i;
+    if (paramBuilder.client) {
+      this.nextStreamId += 2;
+    }
+    if (paramBuilder.client) {
+      this.okHttpSettings.set(7, 16777216);
+    }
+    this.hostname = paramBuilder.hostname;
+    this.writerExecutor = new ScheduledThreadPoolExecutor(1, Util.threadFactory(Util.format("OkHttp %s Writer", new Object[] { this.hostname }), false));
+    if (paramBuilder.pingIntervalMillis != 0) {
+      this.writerExecutor.scheduleAtFixedRate(new Http2Connection.IntervalPingRunnable(this), paramBuilder.pingIntervalMillis, paramBuilder.pingIntervalMillis, TimeUnit.MILLISECONDS);
+    }
+    this.pushExecutor = new ThreadPoolExecutor(0, 1, 60L, TimeUnit.SECONDS, new LinkedBlockingQueue(), Util.threadFactory(Util.format("OkHttp %s Push Observer", new Object[] { this.hostname }), true));
+    this.peerSettings.set(7, 65535);
+    this.peerSettings.set(5, 16384);
+    this.bytesLeftInWriteWindow = this.peerSettings.getInitialWindowSize();
+    this.socket = paramBuilder.socket;
+    this.writer = new Http2Writer(paramBuilder.sink, this.client);
+    this.readerRunnable = new Http2Connection.ReaderRunnable(this, new Http2Reader(paramBuilder.source, this.client));
   }
   
   private void failConnection()
@@ -112,9 +102,9 @@ public final class Http2Connection
   
   private Http2Stream newStream(int paramInt, List<Header> paramList, boolean paramBoolean)
   {
-    int i = 0;
-    if (!paramBoolean) {}
-    for (boolean bool = true;; bool = false) {
+    boolean bool = paramBoolean ^ true;
+    for (;;)
+    {
       synchronized (this.writer)
       {
         try
@@ -122,37 +112,48 @@ public final class Http2Connection
           if (this.nextStreamId > 1073741823) {
             shutdown(ErrorCode.REFUSED_STREAM);
           }
-          if (!this.shutdown) {
-            break;
+          if (!this.shutdown)
+          {
+            int j = this.nextStreamId;
+            this.nextStreamId += 2;
+            Http2Stream localHttp2Stream = new Http2Stream(j, this, bool, false, null);
+            if ((!paramBoolean) || (this.bytesLeftInWriteWindow == 0L)) {
+              break label217;
+            }
+            if (localHttp2Stream.bytesLeftInWriteWindow == 0L)
+            {
+              break label217;
+              if (localHttp2Stream.isOpen()) {
+                this.streams.put(Integer.valueOf(j), localHttp2Stream);
+              }
+              if (paramInt == 0)
+              {
+                this.writer.synStream(bool, j, paramInt, paramList);
+              }
+              else
+              {
+                if (this.client) {
+                  continue;
+                }
+                this.writer.pushPromise(paramInt, j, paramList);
+              }
+              if (i != 0) {
+                this.writer.flush();
+              }
+              return localHttp2Stream;
+              throw new IllegalArgumentException("client streams shouldn't have associated stream IDs");
+            }
           }
-          throw new ConnectionShutdownException();
+          else
+          {
+            throw new ConnectionShutdownException();
+          }
         }
         finally {}
       }
-    }
-    int j = this.nextStreamId;
-    this.nextStreamId += 2;
-    Http2Stream localHttp2Stream = new Http2Stream(j, this, bool, false, null);
-    if ((paramBoolean) && (this.bytesLeftInWriteWindow != 0L) && (localHttp2Stream.bytesLeftInWriteWindow != 0L)) {}
-    for (;;)
-    {
-      if (localHttp2Stream.isOpen()) {
-        this.streams.put(Integer.valueOf(j), localHttp2Stream);
-      }
-      if (paramInt == 0) {
-        this.writer.synStream(bool, j, paramInt, paramList);
-      }
-      for (;;)
-      {
-        if (i != 0) {
-          this.writer.flush();
-        }
-        return localHttp2Stream;
-        if (this.client) {
-          throw new IllegalArgumentException("client streams shouldn't have associated stream IDs");
-        }
-        this.writer.pushPromise(paramInt, j, paramList);
-      }
+      int i = 0;
+      continue;
+      label217:
       i = 1;
     }
   }
@@ -177,12 +178,19 @@ public final class Http2Connection
   {
     try
     {
-      if (this.awaitPongsReceived < this.awaitPingsSent) {
+      while (this.awaitPongsReceived < this.awaitPingsSent) {
         wait();
       }
       return;
     }
-    finally {}
+    finally
+    {
+      localObject = finally;
+    }
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public void close()
@@ -190,139 +198,79 @@ public final class Http2Connection
     close(ErrorCode.NO_ERROR, ErrorCode.CANCEL);
   }
   
-  /* Error */
   void close(ErrorCode paramErrorCode1, ErrorCode paramErrorCode2)
   {
-    // Byte code:
-    //   0: getstatic 70	okhttp3/internal/http2/Http2Connection:$assertionsDisabled	Z
-    //   3: ifne +18 -> 21
-    //   6: aload_0
-    //   7: invokestatic 339	java/lang/Thread:holdsLock	(Ljava/lang/Object;)Z
-    //   10: ifeq +11 -> 21
-    //   13: new 341	java/lang/AssertionError
-    //   16: dup
-    //   17: invokespecial 342	java/lang/AssertionError:<init>	()V
-    //   20: athrow
-    //   21: aload_0
-    //   22: aload_1
-    //   23: invokevirtual 271	okhttp3/internal/http2/Http2Connection:shutdown	(Lokhttp3/internal/http2/ErrorCode;)V
-    //   26: aconst_null
-    //   27: astore_1
-    //   28: aload_0
-    //   29: monitorenter
-    //   30: aload_0
-    //   31: getfield 107	okhttp3/internal/http2/Http2Connection:streams	Ljava/util/Map;
-    //   34: invokeinterface 345 1 0
-    //   39: ifne +177 -> 216
-    //   42: aload_0
-    //   43: getfield 107	okhttp3/internal/http2/Http2Connection:streams	Ljava/util/Map;
-    //   46: invokeinterface 349 1 0
-    //   51: aload_0
-    //   52: getfield 107	okhttp3/internal/http2/Http2Connection:streams	Ljava/util/Map;
-    //   55: invokeinterface 352 1 0
-    //   60: anewarray 276	okhttp3/internal/http2/Http2Stream
-    //   63: invokeinterface 358 2 0
-    //   68: checkcast 360	[Lokhttp3/internal/http2/Http2Stream;
-    //   71: astore 6
-    //   73: aload_0
-    //   74: getfield 107	okhttp3/internal/http2/Http2Connection:streams	Ljava/util/Map;
-    //   77: invokeinterface 363 1 0
-    //   82: aload_0
-    //   83: monitorexit
-    //   84: aload_1
-    //   85: astore 5
-    //   87: aload 6
-    //   89: ifnull +65 -> 154
-    //   92: aload 6
-    //   94: arraylength
-    //   95: istore 4
-    //   97: iconst_0
-    //   98: istore_3
-    //   99: iload_3
-    //   100: iload 4
-    //   102: if_icmpge +49 -> 151
-    //   105: aload 6
-    //   107: iload_3
-    //   108: aaload
-    //   109: astore 5
-    //   111: aload 5
-    //   113: aload_2
-    //   114: invokevirtual 365	okhttp3/internal/http2/Http2Stream:close	(Lokhttp3/internal/http2/ErrorCode;)V
-    //   117: aload_1
-    //   118: astore 5
-    //   120: iload_3
-    //   121: iconst_1
-    //   122: iadd
-    //   123: istore_3
-    //   124: aload 5
-    //   126: astore_1
-    //   127: goto -28 -> 99
-    //   130: astore_1
-    //   131: aload_0
-    //   132: monitorexit
-    //   133: aload_1
-    //   134: athrow
-    //   135: astore 7
-    //   137: aload_1
-    //   138: astore 5
-    //   140: aload_1
-    //   141: ifnull -21 -> 120
-    //   144: aload 7
-    //   146: astore 5
-    //   148: goto -28 -> 120
-    //   151: aload_1
-    //   152: astore 5
-    //   154: aload_0
-    //   155: getfield 213	okhttp3/internal/http2/Http2Connection:writer	Lokhttp3/internal/http2/Http2Writer;
-    //   158: invokevirtual 367	okhttp3/internal/http2/Http2Writer:close	()V
-    //   161: aload 5
-    //   163: astore_1
-    //   164: aload_0
-    //   165: getfield 202	okhttp3/internal/http2/Http2Connection:socket	Ljava/net/Socket;
-    //   168: invokevirtual 370	java/net/Socket:close	()V
-    //   171: aload_0
-    //   172: getfield 168	okhttp3/internal/http2/Http2Connection:writerExecutor	Ljava/util/concurrent/ScheduledExecutorService;
-    //   175: invokeinterface 372 1 0
-    //   180: aload_0
-    //   181: getfield 192	okhttp3/internal/http2/Http2Connection:pushExecutor	Ljava/util/concurrent/ExecutorService;
-    //   184: invokeinterface 373 1 0
-    //   189: aload_1
-    //   190: ifnull +21 -> 211
-    //   193: aload_1
-    //   194: athrow
-    //   195: astore_1
-    //   196: aload 5
-    //   198: ifnull -34 -> 164
-    //   201: aload 5
-    //   203: astore_1
-    //   204: goto -40 -> 164
-    //   207: astore_1
-    //   208: goto -180 -> 28
-    //   211: return
-    //   212: astore_1
-    //   213: goto -42 -> 171
-    //   216: aconst_null
-    //   217: astore 6
-    //   219: goto -137 -> 82
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	222	0	this	Http2Connection
-    //   0	222	1	paramErrorCode1	ErrorCode
-    //   0	222	2	paramErrorCode2	ErrorCode
-    //   98	26	3	i	int
-    //   95	8	4	j	int
-    //   85	117	5	localObject	Object
-    //   71	147	6	arrayOfHttp2Stream	Http2Stream[]
-    //   135	10	7	localIOException	IOException
-    // Exception table:
-    //   from	to	target	type
-    //   30	82	130	finally
-    //   82	84	130	finally
-    //   131	133	130	finally
-    //   111	117	135	java/io/IOException
-    //   154	161	195	java/io/IOException
-    //   21	26	207	java/io/IOException
-    //   164	171	212	java/io/IOException
+    Http2Stream[] arrayOfHttp2Stream = null;
+    try
+    {
+      shutdown(paramErrorCode1);
+      paramErrorCode1 = null;
+    }
+    catch (IOException paramErrorCode1) {}
+    try
+    {
+      if (!this.streams.isEmpty())
+      {
+        arrayOfHttp2Stream = (Http2Stream[])this.streams.values().toArray(new Http2Stream[this.streams.size()]);
+        this.streams.clear();
+      }
+      Object localObject = paramErrorCode1;
+      if (arrayOfHttp2Stream != null)
+      {
+        int j = arrayOfHttp2Stream.length;
+        int i = 0;
+        for (;;)
+        {
+          localObject = paramErrorCode1;
+          if (i >= j) {
+            break;
+          }
+          localObject = arrayOfHttp2Stream[i];
+          try
+          {
+            ((Http2Stream)localObject).close(paramErrorCode2);
+            localObject = paramErrorCode1;
+          }
+          catch (IOException localIOException)
+          {
+            localObject = paramErrorCode1;
+            if (paramErrorCode1 != null) {
+              localObject = localIOException;
+            }
+          }
+          i += 1;
+          paramErrorCode1 = (ErrorCode)localObject;
+        }
+      }
+      try
+      {
+        this.writer.close();
+        paramErrorCode1 = (ErrorCode)localObject;
+      }
+      catch (IOException paramErrorCode2)
+      {
+        paramErrorCode1 = (ErrorCode)localObject;
+        if (localObject == null) {
+          paramErrorCode1 = paramErrorCode2;
+        }
+      }
+      try
+      {
+        this.socket.close();
+      }
+      catch (IOException paramErrorCode1) {}
+      this.writerExecutor.shutdown();
+      this.pushExecutor.shutdown();
+      if (paramErrorCode1 == null) {
+        return;
+      }
+      throw paramErrorCode1;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramErrorCode1;
+    }
   }
   
   public void flush()
@@ -349,56 +297,24 @@ public final class Http2Connection
     }
   }
   
-  /* Error */
   public boolean isHealthy(long paramLong)
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore 5
-    //   3: aload_0
-    //   4: monitorenter
-    //   5: aload_0
-    //   6: getfield 242	okhttp3/internal/http2/Http2Connection:shutdown	Z
-    //   9: istore 6
-    //   11: iload 6
-    //   13: ifeq +8 -> 21
-    //   16: aload_0
-    //   17: monitorexit
-    //   18: iload 5
-    //   20: ireturn
-    //   21: aload_0
-    //   22: getfield 115	okhttp3/internal/http2/Http2Connection:degradedPongsReceived	J
-    //   25: aload_0
-    //   26: getfield 113	okhttp3/internal/http2/Http2Connection:degradedPingsSent	J
-    //   29: lcmp
-    //   30: ifge +14 -> 44
-    //   33: aload_0
-    //   34: getfield 121	okhttp3/internal/http2/Http2Connection:degradedPongDeadlineNs	J
-    //   37: lstore_3
-    //   38: lload_1
-    //   39: lload_3
-    //   40: lcmp
-    //   41: ifge -25 -> 16
-    //   44: iconst_1
-    //   45: istore 5
-    //   47: goto -31 -> 16
-    //   50: astore 7
-    //   52: aload_0
-    //   53: monitorexit
-    //   54: aload 7
-    //   56: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	57	0	this	Http2Connection
-    //   0	57	1	paramLong	long
-    //   37	3	3	l	long
-    //   1	45	5	bool1	boolean
-    //   9	3	6	bool2	boolean
-    //   50	5	7	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   5	11	50	finally
-    //   21	38	50	finally
+    try
+    {
+      boolean bool = this.shutdown;
+      if (bool) {
+        return false;
+      }
+      if (this.degradedPongsReceived < this.degradedPingsSent)
+      {
+        long l = this.degradedPongDeadlineNs;
+        if (paramLong >= l) {
+          return false;
+        }
+      }
+      return true;
+    }
+    finally {}
   }
   
   public int maxConcurrentStreams()
@@ -437,12 +353,19 @@ public final class Http2Connection
   void pushDataLater(int paramInt1, BufferedSource paramBufferedSource, int paramInt2, boolean paramBoolean)
   {
     Buffer localBuffer = new Buffer();
-    paramBufferedSource.require(paramInt2);
-    paramBufferedSource.read(localBuffer, paramInt2);
-    if (localBuffer.size() != paramInt2) {
-      throw new IOException(localBuffer.size() + " != " + paramInt2);
+    long l = paramInt2;
+    paramBufferedSource.require(l);
+    paramBufferedSource.read(localBuffer, l);
+    if (localBuffer.size() == l)
+    {
+      pushExecutorExecute(new Http2Connection.6(this, "OkHttp %s Push Data[%s]", new Object[] { this.hostname, Integer.valueOf(paramInt1) }, paramInt1, localBuffer, paramInt2, paramBoolean));
+      return;
     }
-    pushExecutorExecute(new Http2Connection.6(this, "OkHttp %s Push Data[%s]", new Object[] { this.hostname, Integer.valueOf(paramInt1) }, paramInt1, localBuffer, paramInt2, paramBoolean));
+    paramBufferedSource = new StringBuilder();
+    paramBufferedSource.append(localBuffer.size());
+    paramBufferedSource.append(" != ");
+    paramBufferedSource.append(paramInt2);
+    throw new IOException(paramBufferedSource.toString());
   }
   
   void pushHeadersLater(int paramInt, List<Header> paramList, boolean paramBoolean)
@@ -455,73 +378,28 @@ public final class Http2Connection
     catch (RejectedExecutionException paramList) {}
   }
   
-  /* Error */
   void pushRequestLater(int paramInt, List<Header> paramList)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 135	okhttp3/internal/http2/Http2Connection:currentPushRequests	Ljava/util/Set;
-    //   6: iload_1
-    //   7: invokestatic 289	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   10: invokeinterface 465 2 0
-    //   15: ifeq +14 -> 29
-    //   18: aload_0
-    //   19: iload_1
-    //   20: getstatic 258	okhttp3/internal/http2/ErrorCode:PROTOCOL_ERROR	Lokhttp3/internal/http2/ErrorCode;
-    //   23: invokevirtual 469	okhttp3/internal/http2/Http2Connection:writeSynResetLater	(ILokhttp3/internal/http2/ErrorCode;)V
-    //   26: aload_0
-    //   27: monitorexit
-    //   28: return
-    //   29: aload_0
-    //   30: getfield 135	okhttp3/internal/http2/Http2Connection:currentPushRequests	Ljava/util/Set;
-    //   33: iload_1
-    //   34: invokestatic 289	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   37: invokeinterface 472 2 0
-    //   42: pop
-    //   43: aload_0
-    //   44: monitorexit
-    //   45: aload_0
-    //   46: new 474	okhttp3/internal/http2/Http2Connection$4
-    //   49: dup
-    //   50: aload_0
-    //   51: ldc_w 476
-    //   54: iconst_2
-    //   55: anewarray 4	java/lang/Object
-    //   58: dup
-    //   59: iconst_0
-    //   60: aload_0
-    //   61: getfield 155	okhttp3/internal/http2/Http2Connection:hostname	Ljava/lang/String;
-    //   64: aastore
-    //   65: dup
-    //   66: iconst_1
-    //   67: iload_1
-    //   68: invokestatic 289	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   71: aastore
-    //   72: iload_1
-    //   73: aload_2
-    //   74: invokespecial 479	okhttp3/internal/http2/Http2Connection$4:<init>	(Lokhttp3/internal/http2/Http2Connection;Ljava/lang/String;[Ljava/lang/Object;ILjava/util/List;)V
-    //   77: invokespecial 446	okhttp3/internal/http2/Http2Connection:pushExecutorExecute	(Lokhttp3/internal/NamedRunnable;)V
-    //   80: return
-    //   81: astore_2
-    //   82: return
-    //   83: astore_2
-    //   84: aload_0
-    //   85: monitorexit
-    //   86: aload_2
-    //   87: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	88	0	this	Http2Connection
-    //   0	88	1	paramInt	int
-    //   0	88	2	paramList	List<Header>
-    // Exception table:
-    //   from	to	target	type
-    //   45	80	81	java/util/concurrent/RejectedExecutionException
-    //   2	28	83	finally
-    //   29	45	83	finally
-    //   84	86	83	finally
+    try
+    {
+      if (this.currentPushRequests.contains(Integer.valueOf(paramInt)))
+      {
+        writeSynResetLater(paramInt, ErrorCode.PROTOCOL_ERROR);
+        return;
+      }
+      this.currentPushRequests.add(Integer.valueOf(paramInt));
+      return;
+    }
+    finally
+    {
+      try
+      {
+        pushExecutorExecute(new Http2Connection.4(this, "OkHttp %s Push Request[%s]", new Object[] { this.hostname, Integer.valueOf(paramInt) }, paramInt, paramList));
+        return;
+      }
+      catch (RejectedExecutionException paramList) {}
+      paramList = finally;
+    }
   }
   
   void pushResetLater(int paramInt, ErrorCode paramErrorCode)
@@ -531,10 +409,10 @@ public final class Http2Connection
   
   public Http2Stream pushStream(int paramInt, List<Header> paramList, boolean paramBoolean)
   {
-    if (this.client) {
-      throw new IllegalStateException("Client cannot push requests.");
+    if (!this.client) {
+      return newStream(paramInt, paramList, paramBoolean);
     }
-    return newStream(paramInt, paramList, paramBoolean);
+    throw new IllegalStateException("Client cannot push requests.");
   }
   
   boolean pushedStream(int paramInt)
@@ -557,68 +435,27 @@ public final class Http2Connection
     }
   }
   
-  /* Error */
   void sendDegradedPingLater()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 115	okhttp3/internal/http2/Http2Connection:degradedPongsReceived	J
-    //   6: aload_0
-    //   7: getfield 113	okhttp3/internal/http2/Http2Connection:degradedPingsSent	J
-    //   10: lcmp
-    //   11: ifge +6 -> 17
-    //   14: aload_0
-    //   15: monitorexit
-    //   16: return
-    //   17: aload_0
-    //   18: aload_0
-    //   19: getfield 113	okhttp3/internal/http2/Http2Connection:degradedPingsSent	J
-    //   22: lconst_1
-    //   23: ladd
-    //   24: putfield 113	okhttp3/internal/http2/Http2Connection:degradedPingsSent	J
-    //   27: aload_0
-    //   28: invokestatic 509	java/lang/System:nanoTime	()J
-    //   31: ldc2_w 16
-    //   34: ladd
-    //   35: putfield 121	okhttp3/internal/http2/Http2Connection:degradedPongDeadlineNs	J
-    //   38: aload_0
-    //   39: monitorexit
-    //   40: aload_0
-    //   41: getfield 168	okhttp3/internal/http2/Http2Connection:writerExecutor	Ljava/util/concurrent/ScheduledExecutorService;
-    //   44: new 511	okhttp3/internal/http2/Http2Connection$3
-    //   47: dup
-    //   48: aload_0
-    //   49: ldc_w 513
-    //   52: iconst_1
-    //   53: anewarray 4	java/lang/Object
-    //   56: dup
-    //   57: iconst_0
-    //   58: aload_0
-    //   59: getfield 155	okhttp3/internal/http2/Http2Connection:hostname	Ljava/lang/String;
-    //   62: aastore
-    //   63: invokespecial 516	okhttp3/internal/http2/Http2Connection$3:<init>	(Lokhttp3/internal/http2/Http2Connection;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   66: invokeinterface 517 2 0
-    //   71: return
-    //   72: astore_1
-    //   73: return
-    //   74: astore_1
-    //   75: aload_0
-    //   76: monitorexit
-    //   77: aload_1
-    //   78: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	79	0	this	Http2Connection
-    //   72	1	1	localRejectedExecutionException	RejectedExecutionException
-    //   74	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   40	71	72	java/util/concurrent/RejectedExecutionException
-    //   2	16	74	finally
-    //   17	40	74	finally
-    //   75	77	74	finally
+    try
+    {
+      if (this.degradedPongsReceived < this.degradedPingsSent) {
+        return;
+      }
+      this.degradedPingsSent += 1L;
+      this.degradedPongDeadlineNs = (System.nanoTime() + 1000000000L);
+      return;
+    }
+    finally
+    {
+      try
+      {
+        this.writerExecutor.execute(new Http2Connection.3(this, "OkHttp %s ping", new Object[] { this.hostname }));
+        return;
+      }
+      catch (RejectedExecutionException localRejectedExecutionException) {}
+      localObject = finally;
+    }
   }
   
   public void setSettings(Settings paramSettings)
@@ -627,20 +464,34 @@ public final class Http2Connection
     {
       try
       {
-        if (this.shutdown) {
-          throw new ConnectionShutdownException();
+        if (!this.shutdown)
+        {
+          this.okHttpSettings.merge(paramSettings);
+          this.writer.settings(paramSettings);
+          return;
         }
+        throw new ConnectionShutdownException();
       }
       finally {}
     }
-    this.okHttpSettings.merge(paramSettings);
-    this.writer.settings(paramSettings);
   }
   
   public void shutdown(ErrorCode paramErrorCode)
   {
-    int i;
-    synchronized (this.writer) {}
+    synchronized (this.writer)
+    {
+      try
+      {
+        if (this.shutdown) {
+          return;
+        }
+        this.shutdown = true;
+        int i = this.lastGoodStreamId;
+        this.writer.goAway(i, paramErrorCode, Util.EMPTY_BYTE_ARRAY);
+        return;
+      }
+      finally {}
+    }
   }
   
   public void start()
@@ -681,51 +532,134 @@ public final class Http2Connection
     }
   }
   
+  /* Error */
   public void writeData(int paramInt, boolean paramBoolean, Buffer paramBuffer, long paramLong)
   {
-    long l = paramLong;
-    if (paramLong == 0L)
-    {
-      this.writer.data(paramBoolean, paramInt, paramBuffer, 0);
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        int i = Math.min((int)Math.min(l, this.bytesLeftInWriteWindow), this.writer.maxDataLength());
-        this.bytesLeftInWriteWindow -= i;
-        l -= i;
-        Http2Writer localHttp2Writer = this.writer;
-        if ((!paramBoolean) || (l != 0L)) {
-          break label170;
-        }
-        bool = true;
-        localHttp2Writer.data(bool, paramInt, paramBuffer, i);
-        if (l <= 0L) {
-          break;
-        }
-        try
-        {
-          if (this.bytesLeftInWriteWindow > 0L) {
-            continue;
-          }
-          if (!this.streams.containsKey(Integer.valueOf(paramInt))) {
-            throw new IOException("stream closed");
-          }
-        }
-        catch (InterruptedException paramBuffer)
-        {
-          Thread.currentThread().interrupt();
-          throw new InterruptedIOException();
-        }
-        wait();
-      }
-      finally {}
-      continue;
-      label170:
-      boolean bool = false;
-    }
+    // Byte code:
+    //   0: lload 4
+    //   2: lstore 8
+    //   4: lload 4
+    //   6: lconst_0
+    //   7: lcmp
+    //   8: ifne +15 -> 23
+    //   11: aload_0
+    //   12: getfield 206	okhttp3/internal/http2/Http2Connection:writer	Lokhttp3/internal/http2/Http2Writer;
+    //   15: iload_2
+    //   16: iload_1
+    //   17: aload_3
+    //   18: iconst_0
+    //   19: invokevirtual 550	okhttp3/internal/http2/Http2Writer:data	(ZILokio/Buffer;I)V
+    //   22: return
+    //   23: lload 8
+    //   25: lconst_0
+    //   26: lcmp
+    //   27: ifle +161 -> 188
+    //   30: aload_0
+    //   31: monitorenter
+    //   32: aload_0
+    //   33: getfield 192	okhttp3/internal/http2/Http2Connection:bytesLeftInWriteWindow	J
+    //   36: lconst_0
+    //   37: lcmp
+    //   38: ifgt +37 -> 75
+    //   41: aload_0
+    //   42: getfield 100	okhttp3/internal/http2/Http2Connection:streams	Ljava/util/Map;
+    //   45: iload_1
+    //   46: invokestatic 280	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   49: invokeinterface 553 2 0
+    //   54: ifeq +10 -> 64
+    //   57: aload_0
+    //   58: invokevirtual 321	java/lang/Object:wait	()V
+    //   61: goto -29 -> 32
+    //   64: new 245	java/io/IOException
+    //   67: dup
+    //   68: ldc_w 555
+    //   71: invokespecial 431	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   74: athrow
+    //   75: lload 8
+    //   77: aload_0
+    //   78: getfield 192	okhttp3/internal/http2/Http2Connection:bytesLeftInWriteWindow	J
+    //   81: invokestatic 561	java/lang/Math:min	(JJ)J
+    //   84: l2i
+    //   85: aload_0
+    //   86: getfield 206	okhttp3/internal/http2/Http2Connection:writer	Lokhttp3/internal/http2/Http2Writer;
+    //   89: invokevirtual 564	okhttp3/internal/http2/Http2Writer:maxDataLength	()I
+    //   92: invokestatic 567	java/lang/Math:min	(II)I
+    //   95: istore 6
+    //   97: aload_0
+    //   98: getfield 192	okhttp3/internal/http2/Http2Connection:bytesLeftInWriteWindow	J
+    //   101: lstore 4
+    //   103: iload 6
+    //   105: i2l
+    //   106: lstore 10
+    //   108: aload_0
+    //   109: lload 4
+    //   111: lload 10
+    //   113: lsub
+    //   114: putfield 192	okhttp3/internal/http2/Http2Connection:bytesLeftInWriteWindow	J
+    //   117: aload_0
+    //   118: monitorexit
+    //   119: lload 8
+    //   121: lload 10
+    //   123: lsub
+    //   124: lstore 8
+    //   126: aload_0
+    //   127: getfield 206	okhttp3/internal/http2/Http2Connection:writer	Lokhttp3/internal/http2/Http2Writer;
+    //   130: astore 12
+    //   132: iload_2
+    //   133: ifeq +16 -> 149
+    //   136: lload 8
+    //   138: lconst_0
+    //   139: lcmp
+    //   140: ifne +9 -> 149
+    //   143: iconst_1
+    //   144: istore 7
+    //   146: goto +6 -> 152
+    //   149: iconst_0
+    //   150: istore 7
+    //   152: aload 12
+    //   154: iload 7
+    //   156: iload_1
+    //   157: aload_3
+    //   158: iload 6
+    //   160: invokevirtual 550	okhttp3/internal/http2/Http2Writer:data	(ZILokio/Buffer;I)V
+    //   163: goto -140 -> 23
+    //   166: astore_3
+    //   167: goto +17 -> 184
+    //   170: invokestatic 571	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   173: invokevirtual 574	java/lang/Thread:interrupt	()V
+    //   176: new 576	java/io/InterruptedIOException
+    //   179: dup
+    //   180: invokespecial 577	java/io/InterruptedIOException:<init>	()V
+    //   183: athrow
+    //   184: aload_0
+    //   185: monitorexit
+    //   186: aload_3
+    //   187: athrow
+    //   188: return
+    //   189: astore_3
+    //   190: goto -20 -> 170
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	193	0	this	Http2Connection
+    //   0	193	1	paramInt	int
+    //   0	193	2	paramBoolean	boolean
+    //   0	193	3	paramBuffer	Buffer
+    //   0	193	4	paramLong	long
+    //   95	64	6	i	int
+    //   144	11	7	bool	boolean
+    //   2	135	8	l1	long
+    //   106	16	10	l2	long
+    //   130	23	12	localHttp2Writer	Http2Writer
+    // Exception table:
+    //   from	to	target	type
+    //   32	61	166	finally
+    //   64	75	166	finally
+    //   75	103	166	finally
+    //   108	119	166	finally
+    //   170	184	166	finally
+    //   184	186	166	finally
+    //   32	61	189	java/lang/InterruptedException
+    //   64	75	189	java/lang/InterruptedException
   }
   
   void writePing()
@@ -748,8 +682,10 @@ public final class Http2Connection
     }
     catch (IOException localIOException)
     {
-      failConnection();
+      label11:
+      break label11;
     }
+    failConnection();
   }
   
   void writePingAndAwaitPong()
@@ -790,7 +726,7 @@ public final class Http2Connection
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.internal.http2.Http2Connection
  * JD-Core Version:    0.7.0.1
  */

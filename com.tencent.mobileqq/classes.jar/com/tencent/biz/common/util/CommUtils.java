@@ -8,11 +8,11 @@ import java.net.URL;
 
 public class CommUtils
 {
-  private static final String a = CommUtils.class.getName();
+  private static final String a = "com.tencent.biz.common.util.CommUtils";
   
   public static String a(String paramString)
   {
-    localStringBuffer = new StringBuffer();
+    StringBuffer localStringBuffer = new StringBuffer();
     try
     {
       paramString = new BufferedReader(new InputStreamReader(((HttpURLConnection)new URL(paramString).openConnection()).getInputStream()));
@@ -24,14 +24,16 @@ public class CommUtils
         }
         localStringBuffer.append(str);
       }
-      return localStringBuffer.toString();
     }
     catch (Exception paramString)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(a, 2, "http error");
-      }
+      label58:
+      break label58;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, "http error");
+    }
+    return localStringBuffer.toString();
   }
   
   public static void a(String paramString, CommUtils.IHttpGetString paramIHttpGetString)
@@ -41,7 +43,7 @@ public class CommUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.common.util.CommUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -32,10 +32,11 @@ public class CallView
   {
     float f1 = getMeasuredWidth() - this.jdField_b_of_type_Int;
     float f2 = getMeasuredHeight() - this.jdField_b_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsRectF.left = (-f1 / 3.0F);
-    this.jdField_a_of_type_AndroidGraphicsRectF.top = (2.0F * f2 / 3.0F);
-    this.jdField_a_of_type_AndroidGraphicsRectF.right = (f1 / 3.0F);
-    this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (f2 * 4.0F / 3.0F);
+    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    localRectF.left = (-f1 / 3.0F);
+    localRectF.top = (2.0F * f2 / 3.0F);
+    localRectF.right = (f1 / 3.0F);
+    localRectF.bottom = (f2 * 4.0F / 3.0F);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
     paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -100.0F, 100.0F, false, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
@@ -44,10 +45,11 @@ public class CallView
   {
     float f1 = getMeasuredWidth() - this.jdField_b_of_type_Int;
     float f2 = getMeasuredHeight() - this.jdField_b_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsRectF.left = (-f1 * 2.0F / 3.0F);
-    this.jdField_a_of_type_AndroidGraphicsRectF.top = (f2 / 3.0F);
-    this.jdField_a_of_type_AndroidGraphicsRectF.right = (f1 * 2.0F / 3.0F);
-    this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (f2 * 5.0F / 3.0F);
+    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    localRectF.left = (-f1 * 2.0F / 3.0F);
+    localRectF.top = (f2 / 3.0F);
+    localRectF.right = (f1 * 2.0F / 3.0F);
+    localRectF.bottom = (f2 * 5.0F / 3.0F);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
     paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -100.0F, 100.0F, false, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
@@ -56,31 +58,27 @@ public class CallView
   {
     float f1 = getMeasuredWidth() - this.jdField_b_of_type_Int;
     float f2 = getMeasuredHeight();
-    float f3 = this.jdField_b_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsRectF.left = (-f1);
-    this.jdField_a_of_type_AndroidGraphicsRectF.top = this.jdField_b_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsRectF.right = f1;
-    this.jdField_a_of_type_AndroidGraphicsRectF.bottom = ((f2 - f3) * 2.0F);
+    int i = this.jdField_b_of_type_Int;
+    float f3 = i;
+    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    localRectF.left = (-f1);
+    localRectF.top = i;
+    localRectF.right = f1;
+    localRectF.bottom = ((f2 - f3) * 2.0F);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
     paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -100.0F, 100.0F, false, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.jdField_a_of_type_Boolean)
     {
-      if (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long <= this.jdField_b_of_type_Long * 6L) {
-        break label47;
+      if (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long > this.jdField_b_of_type_Long * 6L)
+      {
+        this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
       }
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    }
-    for (;;)
-    {
-      postInvalidateDelayed(150L);
-      return;
-      label47:
-      if (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long > this.jdField_b_of_type_Long * 5L)
+      else if (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long > this.jdField_b_of_type_Long * 5L)
       {
         a(paramCanvas);
       }
@@ -104,6 +102,7 @@ public class CallView
       {
         a(paramCanvas);
       }
+      postInvalidateDelayed(150L);
     }
   }
   
@@ -114,7 +113,7 @@ public class CallView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.CallView
  * JD-Core Version:    0.7.0.1
  */

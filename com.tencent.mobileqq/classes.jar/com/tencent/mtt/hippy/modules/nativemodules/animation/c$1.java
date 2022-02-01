@@ -19,20 +19,18 @@ class c$1
   public void onAnimationUpdate(a parama)
   {
     c.a(this.a, parama);
-    if (this.a.c == null) {}
-    for (;;)
-    {
+    if (this.a.c == null) {
       return;
-      parama = this.a.c.iterator();
-      while (parama.hasNext()) {
-        ((a.a)parama.next()).onAnimationUpdate(this.a);
-      }
+    }
+    parama = this.a.c.iterator();
+    while (parama.hasNext()) {
+      ((a.a)parama.next()).onAnimationUpdate(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.animation.c.1
  * JD-Core Version:    0.7.0.1
  */

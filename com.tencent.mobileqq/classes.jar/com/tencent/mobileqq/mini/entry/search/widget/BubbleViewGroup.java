@@ -37,113 +37,89 @@ public class BubbleViewGroup
     return false;
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     paramInt2 = getPaddingTop();
-    paramInt3 = 0;
-    while (paramInt3 < this.mRowLayoutList.size())
+    paramInt1 = 0;
+    while (paramInt1 < this.mRowLayoutList.size())
     {
-      paramInt1 = getPaddingLeft();
-      BubbleViewGroup.WarpLine localWarpLine = (BubbleViewGroup.WarpLine)this.mRowLayoutList.get(paramInt3);
-      int i = getMeasuredWidth() - BubbleViewGroup.WarpLine.access$100(localWarpLine);
-      paramInt4 = 0;
-      while (paramInt4 < BubbleViewGroup.WarpLine.access$200(localWarpLine).size())
+      paramInt4 = getPaddingLeft();
+      BubbleViewGroup.WarpLine localWarpLine = (BubbleViewGroup.WarpLine)this.mRowLayoutList.get(paramInt1);
+      int k = getMeasuredWidth() - BubbleViewGroup.WarpLine.access$100(localWarpLine);
+      paramInt3 = 0;
+      while (paramInt3 < BubbleViewGroup.WarpLine.access$200(localWarpLine).size())
       {
-        View localView = (View)BubbleViewGroup.WarpLine.access$200(localWarpLine).get(paramInt4);
+        View localView = (View)BubbleViewGroup.WarpLine.access$200(localWarpLine).get(paramInt3);
+        int i;
         if (isFull())
         {
-          localView.layout(paramInt1, paramInt2, localView.getMeasuredWidth() + paramInt1 + i / BubbleViewGroup.WarpLine.access$200(localWarpLine).size(), localView.getMeasuredHeight() + paramInt2);
-          paramInt1 += localView.getMeasuredWidth() + HORIZONTAL_SPACE + i / BubbleViewGroup.WarpLine.access$200(localWarpLine).size();
-          paramInt4 += 1;
+          localView.layout(paramInt4, paramInt2, localView.getMeasuredWidth() + paramInt4 + k / BubbleViewGroup.WarpLine.access$200(localWarpLine).size(), localView.getMeasuredHeight() + paramInt2);
+          i = localView.getMeasuredWidth() + HORIZONTAL_SPACE;
         }
-        else
+        for (int j = k / BubbleViewGroup.WarpLine.access$200(localWarpLine).size();; j = HORIZONTAL_SPACE)
         {
-          switch (getGravity())
+          paramInt4 += i + j;
+          break;
+          i = getGravity();
+          if (i != 0)
           {
-          case 1: 
-          default: 
-            localView.layout(paramInt1, paramInt2, localView.getMeasuredWidth() + paramInt1, localView.getMeasuredHeight() + paramInt2);
+            if (i != 2)
+            {
+              localView.layout(paramInt4, paramInt2, localView.getMeasuredWidth() + paramInt4, localView.getMeasuredHeight() + paramInt2);
+            }
+            else
+            {
+              i = k / 2 + paramInt4;
+              localView.layout(i, paramInt2, localView.getMeasuredWidth() + i, localView.getMeasuredHeight() + paramInt2);
+            }
           }
-          for (;;)
+          else
           {
-            paramInt1 += localView.getMeasuredWidth() + HORIZONTAL_SPACE;
-            break;
-            localView.layout(paramInt1 + i, paramInt2, paramInt1 + i + localView.getMeasuredWidth(), localView.getMeasuredHeight() + paramInt2);
-            continue;
-            localView.layout(i / 2 + paramInt1, paramInt2, i / 2 + paramInt1 + localView.getMeasuredWidth(), localView.getMeasuredHeight() + paramInt2);
+            i = paramInt4 + k;
+            localView.layout(i, paramInt2, localView.getMeasuredWidth() + i, localView.getMeasuredHeight() + paramInt2);
           }
+          i = localView.getMeasuredWidth();
         }
+        paramInt3 += 1;
       }
-      paramInt1 = BubbleViewGroup.WarpLine.access$400(localWarpLine);
-      paramInt4 = VERTICAL_SPACE;
-      paramInt3 += 1;
-      paramInt2 += paramInt1 + paramInt4;
+      paramInt2 += BubbleViewGroup.WarpLine.access$400(localWarpLine) + VERTICAL_SPACE;
+      paramInt1 += 1;
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
-    int m = 0;
-    int k = View.MeasureSpec.getMode(paramInt1);
-    int i = View.MeasureSpec.getSize(paramInt1);
+    int i = View.MeasureSpec.getMode(paramInt1);
+    int m = View.MeasureSpec.getSize(paramInt1);
     int n = View.MeasureSpec.getMode(paramInt2);
-    int j = View.MeasureSpec.getSize(paramInt2);
+    int k = View.MeasureSpec.getSize(paramInt2);
     int i1 = getChildCount();
     measureChildren(paramInt1, paramInt2);
-    paramInt2 = i;
-    BubbleViewGroup.WarpLine localWarpLine;
-    switch (k)
+    int j = 0;
+    if (i != -2147483648)
     {
-    default: 
-      paramInt2 = i;
-    case 1073741824: 
-      localWarpLine = new BubbleViewGroup.WarpLine(this, null);
-      this.mRowLayoutList = new ArrayList();
-      paramInt1 = 0;
-      if ((paramInt1 >= i1) || (this.mRowLayoutList.size() >= 3))
+      if (i != 0)
       {
-        if ((BubbleViewGroup.WarpLine.access$200(localWarpLine).size() > 0) && (!this.mRowLayoutList.contains(localWarpLine)) && (this.mRowLayoutList.size() < 3)) {
-          this.mRowLayoutList.add(localWarpLine);
-        }
-        paramInt1 = getPaddingTop() + getPaddingBottom();
-        i = m;
-        label186:
-        if (i >= this.mRowLayoutList.size()) {
-          break label491;
-        }
-        if (i == 0) {
-          break label557;
-        }
-        paramInt1 += VERTICAL_SPACE;
+        paramInt2 = m;
       }
-      break;
+      else
+      {
+        paramInt2 = 0;
+        paramInt1 = 0;
+        while (paramInt2 < i1)
+        {
+          i = paramInt1;
+          if (paramInt2 != 0) {
+            i = paramInt1 + HORIZONTAL_SPACE;
+          }
+          paramInt1 = i + getChildAt(paramInt2).getMeasuredWidth();
+          paramInt2 += 1;
+        }
+        paramInt2 = paramInt1 + (getPaddingLeft() + getPaddingRight());
+      }
     }
-    label557:
-    for (;;)
+    else
     {
-      k = BubbleViewGroup.WarpLine.access$400((BubbleViewGroup.WarpLine)this.mRowLayoutList.get(i));
-      i += 1;
-      paramInt1 += k;
-      break label186;
-      paramInt2 = 0;
-      paramInt1 = 0;
-      while (paramInt2 < i1)
-      {
-        k = paramInt1;
-        if (paramInt2 != 0) {
-          k = paramInt1 + HORIZONTAL_SPACE;
-        }
-        paramInt1 = getChildAt(paramInt2).getMeasuredWidth();
-        paramInt2 += 1;
-        paramInt1 += k;
-      }
-      paramInt2 = paramInt1 + (getPaddingLeft() + getPaddingRight());
-      paramInt1 = paramInt2;
-      if (paramInt2 > i) {
-        paramInt1 = i;
-      }
-      paramInt2 = paramInt1;
-      break;
       paramInt2 = 0;
       paramInt1 = 0;
       while (paramInt2 < i1)
@@ -152,54 +128,75 @@ public class BubbleViewGroup
         if (paramInt2 != 0) {
           i = paramInt1 + HORIZONTAL_SPACE;
         }
-        paramInt1 = getChildAt(paramInt2).getMeasuredWidth();
+        paramInt1 = i + getChildAt(paramInt2).getMeasuredWidth();
         paramInt2 += 1;
-        paramInt1 += i;
       }
       paramInt2 = getPaddingLeft() + getPaddingRight() + paramInt1;
-      break;
-      if (BubbleViewGroup.WarpLine.access$100(localWarpLine) + getChildAt(paramInt1).getMeasuredWidth() + HORIZONTAL_SPACE > paramInt2) {
+      if (paramInt2 > m) {
+        paramInt2 = m;
+      }
+    }
+    BubbleViewGroup.WarpLine localWarpLine = new BubbleViewGroup.WarpLine(this, null);
+    this.mRowLayoutList = new ArrayList();
+    paramInt1 = 0;
+    while ((paramInt1 < i1) && (this.mRowLayoutList.size() < 3))
+    {
+      if (BubbleViewGroup.WarpLine.access$100(localWarpLine) + getChildAt(paramInt1).getMeasuredWidth() + HORIZONTAL_SPACE > paramInt2)
+      {
         if (BubbleViewGroup.WarpLine.access$200(localWarpLine).size() == 0)
         {
           BubbleViewGroup.WarpLine.access$300(localWarpLine, getChildAt(paramInt1));
           this.mRowLayoutList.add(localWarpLine);
           localWarpLine = new BubbleViewGroup.WarpLine(this, null);
         }
+        else
+        {
+          this.mRowLayoutList.add(localWarpLine);
+          localWarpLine = new BubbleViewGroup.WarpLine(this, null);
+          BubbleViewGroup.WarpLine.access$300(localWarpLine, getChildAt(paramInt1));
+        }
       }
-      for (;;)
-      {
-        paramInt1 += 1;
-        break;
-        this.mRowLayoutList.add(localWarpLine);
-        localWarpLine = new BubbleViewGroup.WarpLine(this, null);
+      else {
         BubbleViewGroup.WarpLine.access$300(localWarpLine, getChildAt(paramInt1));
-        continue;
-        BubbleViewGroup.WarpLine.access$300(localWarpLine, getChildAt(paramInt1));
       }
-      label491:
-      i = paramInt1;
-      switch (n)
-      {
-      default: 
-        i = paramInt1;
+      paramInt1 += 1;
+    }
+    if ((BubbleViewGroup.WarpLine.access$200(localWarpLine).size() > 0) && (!this.mRowLayoutList.contains(localWarpLine)) && (this.mRowLayoutList.size() < 3)) {
+      this.mRowLayoutList.add(localWarpLine);
+    }
+    paramInt1 = getPaddingTop() + getPaddingBottom();
+    i = j;
+    while (i < this.mRowLayoutList.size())
+    {
+      j = paramInt1;
+      if (i != 0) {
+        j = paramInt1 + VERTICAL_SPACE;
       }
-      for (;;)
+      paramInt1 = j + BubbleViewGroup.WarpLine.access$400((BubbleViewGroup.WarpLine)this.mRowLayoutList.get(i));
+      i += 1;
+    }
+    if (n != -2147483648) {
+      if (n != 0)
       {
-        setMeasuredDimension(paramInt2, i);
-        return;
-        i = j;
-        continue;
-        i = paramInt1;
-        if (paramInt1 > j) {
-          i = j;
+        i = k;
+        if (n == 1073741824) {
+          break label498;
         }
       }
     }
+    while (paramInt1 <= k)
+    {
+      i = paramInt1;
+      break;
+    }
+    i = k;
+    label498:
+    setMeasuredDimension(paramInt2, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.widget.BubbleViewGroup
  * JD-Core Version:    0.7.0.1
  */

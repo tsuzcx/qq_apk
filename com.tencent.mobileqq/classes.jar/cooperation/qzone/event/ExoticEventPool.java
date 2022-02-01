@@ -2,6 +2,7 @@ package cooperation.qzone.event;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import com.tencent.qzonehub.api.IQzoneEventApi.ExoticEventInterface;
 import cooperation.qzone.api.QZoneApiProxy;
 import cooperation.qzone.util.QZLog;
 import java.util.concurrent.BlockingQueue;
@@ -11,7 +12,7 @@ public class ExoticEventPool
 {
   private static final int MAX_QUEUE_SIZE = 20;
   private static final String TAG = "ExoticEventPool";
-  private final BlockingQueue<ExoticEvent> mQueue = new LinkedBlockingDeque(20);
+  private final BlockingQueue<IQzoneEventApi.ExoticEventInterface> mQueue = new LinkedBlockingDeque(20);
   
   @NonNull
   public static ExoticEventPool getInstance()
@@ -19,33 +20,33 @@ public class ExoticEventPool
     return ExoticEventPool.ExoticEventPoolHolder.access$100();
   }
   
-  public boolean onEventReceived(@Nullable ExoticEvent paramExoticEvent)
+  public boolean onEventReceived(@Nullable IQzoneEventApi.ExoticEventInterface paramExoticEventInterface)
   {
     if (QZoneApiProxy.isInQZoneEnvironment()) {
       return false;
     }
-    if (paramExoticEvent == null) {
+    if (paramExoticEventInterface == null) {
       return true;
     }
     try
     {
-      boolean bool = this.mQueue.add(paramExoticEvent);
+      boolean bool = this.mQueue.add(paramExoticEventInterface);
       return bool;
     }
-    catch (Throwable paramExoticEvent)
+    catch (Throwable paramExoticEventInterface)
     {
-      QZLog.w("ExoticEventPool", "onEventReceived: failed to add event", paramExoticEvent);
+      QZLog.w("ExoticEventPool", "onEventReceived: failed to add event", paramExoticEventInterface);
     }
     return false;
   }
   
   @Nullable
-  public ExoticEvent pollEvent()
+  public IQzoneEventApi.ExoticEventInterface pollEvent()
   {
     try
     {
-      ExoticEvent localExoticEvent = (ExoticEvent)this.mQueue.take();
-      return localExoticEvent;
+      IQzoneEventApi.ExoticEventInterface localExoticEventInterface = (IQzoneEventApi.ExoticEventInterface)this.mQueue.take();
+      return localExoticEventInterface;
     }
     catch (Throwable localThrowable)
     {
@@ -56,7 +57,7 @@ public class ExoticEventPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.event.ExoticEventPool
  * JD-Core Version:    0.7.0.1
  */

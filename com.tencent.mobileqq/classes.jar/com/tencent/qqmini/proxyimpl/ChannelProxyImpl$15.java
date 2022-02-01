@@ -33,13 +33,16 @@ class ChannelProxyImpl$15
     }
     catch (Exception paramEIPCResult)
     {
-      QLog.e("ChannelProxyImpl", 1, "addGroupApp, exception: " + Log.getStackTraceString(paramEIPCResult));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("addGroupApp, exception: ");
+      localStringBuilder.append(Log.getStackTraceString(paramEIPCResult));
+      QLog.e("ChannelProxyImpl", 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ChannelProxyImpl.15
  * JD-Core Version:    0.7.0.1
  */

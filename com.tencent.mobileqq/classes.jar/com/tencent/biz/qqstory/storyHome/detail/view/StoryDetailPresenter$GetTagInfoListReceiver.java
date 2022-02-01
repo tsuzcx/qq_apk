@@ -21,21 +21,22 @@ public final class StoryDetailPresenter$GetTagInfoListReceiver
   
   public void a(@NonNull StoryDetailPresenter paramStoryDetailPresenter, @NonNull TagManager.FeedTagListUpdateEvent paramFeedTagListUpdateEvent)
   {
-    if (StoryDetailPresenter.a(paramStoryDetailPresenter) == null) {
-      SLog.b("Q.qqstory.detail.StoryDetailPresenter", "ignore this tag info event. %s.", paramFeedTagListUpdateEvent.toString());
-    }
-    do
+    if (StoryDetailPresenter.a(paramStoryDetailPresenter) == null)
     {
-      do
-      {
-        return;
-      } while (!paramFeedTagListUpdateEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+      SLog.b("Q.qqstory.detail.StoryDetailPresenter", "ignore this tag info event. %s.", paramFeedTagListUpdateEvent.toString());
+      return;
+    }
+    if (paramFeedTagListUpdateEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
       SLog.a("Q.qqstory.detail.StoryDetailPresenter", "receive tag info event. %s.", paramFeedTagListUpdateEvent.toString());
       paramFeedTagListUpdateEvent = (GetFeedTagInfoListRequest.FeedTagInfoList)paramFeedTagListUpdateEvent.jdField_a_of_type_JavaUtilMap.get(StoryDetailPresenter.a(paramStoryDetailPresenter));
-    } while (paramFeedTagListUpdateEvent == null);
-    paramFeedTagListUpdateEvent = ((TagManager)SuperManager.a(27)).a(StoryDetailPresenter.a(paramStoryDetailPresenter).a(), paramFeedTagListUpdateEvent.a);
-    StoryDetailPresenter.a(paramStoryDetailPresenter).b(paramFeedTagListUpdateEvent, true);
-    paramStoryDetailPresenter.a();
+      if (paramFeedTagListUpdateEvent != null)
+      {
+        paramFeedTagListUpdateEvent = ((TagManager)SuperManager.a(27)).a(StoryDetailPresenter.a(paramStoryDetailPresenter).a(), paramFeedTagListUpdateEvent.a);
+        StoryDetailPresenter.a(paramStoryDetailPresenter).b(paramFeedTagListUpdateEvent, true);
+        paramStoryDetailPresenter.a();
+      }
+    }
   }
   
   public Class acceptEventClass()
@@ -45,7 +46,7 @@ public final class StoryDetailPresenter$GetTagInfoListReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailPresenter.GetTagInfoListReceiver
  * JD-Core Version:    0.7.0.1
  */

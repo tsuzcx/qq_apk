@@ -28,9 +28,7 @@ public class ModifyPwdTopBarObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 1) {
       return;
     }
     a(paramBoolean, paramObject);
@@ -38,7 +36,7 @@ public class ModifyPwdTopBarObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.security.business.ModifyPwdTopBarObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -12,17 +12,17 @@ class ReadInJoyAdPopSheetDialog$1
   
   public void onSystemUiVisibilityChange(int paramInt)
   {
-    if (Build.VERSION.SDK_INT >= 19) {}
-    for (paramInt = 4866;; paramInt = 771)
-    {
-      this.a.getWindow().getDecorView().setSystemUiVisibility(paramInt);
-      return;
+    if (Build.VERSION.SDK_INT >= 19) {
+      paramInt = 4866;
+    } else {
+      paramInt = 771;
     }
+    this.a.getWindow().getDecorView().setSystemUiVisibility(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdPopSheetDialog.1
  * JD-Core Version:    0.7.0.1
  */

@@ -42,25 +42,31 @@ public class StyleFilterRender
   
   public Frame RenderProcess(Frame paramFrame)
   {
-    if ((this.filter == null) || ((this.mCurrentOrder != 0) && (this.mCurrentOrder != this.RENDER_OREDER))) {}
-    while ((this.triggerCtrlItem != null) && (!this.triggerCtrlItem.isTriggered())) {
-      return paramFrame;
-    }
-    Frame localFrame = paramFrame;
-    if (this.triggerCtrlItem != null)
+    if (this.filter != null)
     {
-      localFrame = paramFrame;
-      if ((this.triggerCtrlItem instanceof StyleFilterTriggerCtrlItem))
+      if ((this.mCurrentOrder != 0) && (this.mCurrentOrder != this.RENDER_OREDER)) {
+        return paramFrame;
+      }
+      if ((this.triggerCtrlItem != null) && (!this.triggerCtrlItem.isTriggered())) {
+        return paramFrame;
+      }
+      Frame localFrame = paramFrame;
+      if (this.triggerCtrlItem != null)
       {
         localFrame = paramFrame;
-        if (((StyleFilterTriggerCtrlItem)this.triggerCtrlItem).isDenoise()) {
-          localFrame = renderBilaterialFitler(paramFrame);
+        if ((this.triggerCtrlItem instanceof StyleFilterTriggerCtrlItem))
+        {
+          localFrame = paramFrame;
+          if (((StyleFilterTriggerCtrlItem)this.triggerCtrlItem).isDenoise()) {
+            localFrame = renderBilaterialFitler(paramFrame);
+          }
         }
       }
-    }
-    paramFrame = this.filter.RenderProcess(localFrame);
-    if (localFrame != paramFrame) {
-      localFrame.unlock();
+      paramFrame = this.filter.RenderProcess(localFrame);
+      if (localFrame != paramFrame) {
+        localFrame.unlock();
+      }
+      return paramFrame;
     }
     return paramFrame;
   }
@@ -78,22 +84,24 @@ public class StyleFilterRender
   
   public void clear()
   {
-    if (this.mBilaterialFitler != null) {
-      this.mBilaterialFitler.clear();
+    BSmoothFilter localBSmoothFilter = this.mBilaterialFitler;
+    if (localBSmoothFilter != null) {
+      localBSmoothFilter.clear();
     }
     if (this.triggerCtrlItem != null) {
       this.triggerCtrlItem.clear();
     }
-    if (this.filter == null) {}
-    while (!(this.filter instanceof AEChainI)) {
+    if (this.filter == null) {
       return;
     }
-    ((AEChainI)this.filter).clear();
+    if ((this.filter instanceof AEChainI)) {
+      ((AEChainI)this.filter).clear();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.renderitem.StyleFilterRender
  * JD-Core Version:    0.7.0.1
  */

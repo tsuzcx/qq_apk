@@ -18,42 +18,41 @@ class NativeAppBrandRuntime$4
     if ((paramObject instanceof Map))
     {
       paramObject = (Map)paramObject;
-      if (!paramObject.containsKey("messageType")) {
-        break label123;
-      }
-      if ("__tissue_bridge_ready_".equals((String)paramObject.get("messageType")))
+      if (paramObject.containsKey("messageType"))
       {
-        QMLog.w("miniapp-start-TISSUE", " tissue initialization done, runtime:" + this.this$0.hashCode());
-        if (this.this$0.getMiniAppInfo() != null) {
-          break label112;
+        if ("__tissue_bridge_ready_".equals((String)paramObject.get("messageType")))
+        {
+          paramObject = new StringBuilder();
+          paramObject.append(" tissue initialization done, runtime:");
+          paramObject.append(this.this$0.hashCode());
+          QMLog.w("miniapp-start-TISSUE", paramObject.toString());
+          if (this.this$0.getMiniAppInfo() == null) {
+            paramObject = MiniProgramReportHelper.miniAppConfigForPreload();
+          } else {
+            paramObject = this.this$0.getMiniAppInfo();
+          }
+          MiniAppReportManager2.reportLaunchPiecewise(214, "", paramObject);
+          paramObject = this.val$initCallback;
+          if (paramObject != null) {
+            paramObject.onChannelInited();
+          }
         }
-        paramObject = MiniProgramReportHelper.miniAppConfigForPreload();
-        MiniAppReportManager2.reportLaunchPiecewise(214, "", paramObject);
-        if (this.val$initCallback != null) {
-          this.val$initCallback.onChannelInited();
+        return;
+      }
+      if (paramObject.containsKey("method"))
+      {
+        Object localObject = paramObject.get("method").toString();
+        localObject = (NativeAppBrandRuntime.TissueEventHandler)this.this$0.handlers.get(localObject);
+        if (localObject != null) {
+          ((NativeAppBrandRuntime.TissueEventHandler)localObject).on(paramObject, paramReply);
         }
       }
     }
-    label112:
-    label123:
-    Object localObject;
-    do
-    {
-      do
-      {
-        return;
-        paramObject = this.this$0.getMiniAppInfo();
-        break;
-      } while (!paramObject.containsKey("method"));
-      localObject = paramObject.get("method").toString();
-      localObject = (NativeAppBrandRuntime.TissueEventHandler)this.this$0.handlers.get(localObject);
-    } while (localObject == null);
-    ((NativeAppBrandRuntime.TissueEventHandler)localObject).on(paramObject, paramReply);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.flutter.core.NativeAppBrandRuntime.4
  * JD-Core Version:    0.7.0.1
  */

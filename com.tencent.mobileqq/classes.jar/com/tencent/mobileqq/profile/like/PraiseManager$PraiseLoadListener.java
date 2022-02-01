@@ -16,15 +16,16 @@ class PraiseManager$PraiseLoadListener
     if (paramInt1 == this.b)
     {
       this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.b(this);
-      if (this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager$OnPraiseLoadListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager$OnPraiseLoadListener.a(0, null, 0, "");
+      paramPraiseInfo = this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager$OnPraiseLoadListener;
+      if (paramPraiseInfo != null) {
+        paramPraiseInfo.a(0, null, 0, "");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.like.PraiseManager.PraiseLoadListener
  * JD-Core Version:    0.7.0.1
  */

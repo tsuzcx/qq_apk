@@ -13,7 +13,7 @@ public class TroopDingdongAtMeMsg
 {
   public TroopDingdongAtMeMsg(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131691811);
+    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131691733);
   }
   
   public Object a(int paramInt, MessageInfo paramMessageInfo, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
@@ -31,7 +31,7 @@ public class TroopDingdongAtMeMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msg.TroopDingdongAtMeMsg
  * JD-Core Version:    0.7.0.1
  */

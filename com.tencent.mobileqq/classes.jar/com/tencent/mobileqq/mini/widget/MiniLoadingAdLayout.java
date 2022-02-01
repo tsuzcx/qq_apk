@@ -14,6 +14,7 @@ import android.view.MotionEvent;
 import android.view.ViewGroup.LayoutParams;
 import android.webkit.URLUtil;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
@@ -26,6 +27,8 @@ import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.ui.dialog.DisplayHelper;
 import com.tencent.mobileqq.mini.util.AdUtils;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -44,6 +47,7 @@ import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
 
 public class MiniLoadingAdLayout
@@ -72,6 +76,9 @@ public class MiniLoadingAdLayout
   private RelativeLayout mGameLayout;
   private ImageView mGameLogoView;
   private TextView mGameNameView;
+  private TextView mGamePublicationInfoFirstLineView;
+  private LinearLayout mGamePublicationInfoLayout;
+  private TextView mGamePublicationInfoSecondLineView;
   private GdtAppReceiver mGdtAppReceiver;
   private RelativeLayout mLoadingAdBar;
   private RelativeLayout mLoadingAdBarLayout;
@@ -84,190 +91,183 @@ public class MiniLoadingAdLayout
   private com.tencent.qqmini.sdk.launcher.model.MiniAppInfo miniAppInfo;
   private long pressInterval;
   private long requestAdTimeStamp;
+  private boolean selectSecondOption;
   private long showAdStamp;
-  private int showSkipTime = this.countdownTime - QzoneConfig.getInstance().getConfig("qqminiapp", "launch_adv_skip_time", 1);
+  private int showSkipTime = this.countdownTime - QzoneConfig.getInstance().getConfig("qqminiapp", "launch_adv_skip_time", 0);
   private long showTimeStamp;
   private long touchStamp;
   
   public MiniLoadingAdLayout(Context paramContext)
   {
     super(paramContext);
-    if (QzoneConfig.getInstance().getConfig("qqminiapp", "launch_adv_app_auto_download", 0) == 1) {}
-    for (;;)
-    {
-      this.autoDownload = bool;
-      this.densityDpi = 1.0F;
-      initUI();
-      return;
-      bool = false;
+    int i = QzoneConfig.getInstance().getConfig("qqminiapp", "launch_adv_app_auto_download", 0);
+    boolean bool2 = true;
+    boolean bool1;
+    if (i == 1) {
+      bool1 = true;
+    } else {
+      bool1 = false;
     }
+    this.autoDownload = bool1;
+    if (QzoneConfig.getInstance().getConfig("qqminiapp", "launch_adv_ad_ui_mode", 0) == 1) {
+      bool1 = bool2;
+    } else {
+      bool1 = false;
+    }
+    this.selectSecondOption = bool1;
+    this.densityDpi = 1.0F;
+    initUI();
   }
   
   public MiniLoadingAdLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    if (QzoneConfig.getInstance().getConfig("qqminiapp", "launch_adv_app_auto_download", 0) == 1) {}
-    for (;;)
-    {
-      this.autoDownload = bool;
-      this.densityDpi = 1.0F;
-      initUI();
-      return;
-      bool = false;
+    int i = QzoneConfig.getInstance().getConfig("qqminiapp", "launch_adv_app_auto_download", 0);
+    boolean bool2 = true;
+    boolean bool1;
+    if (i == 1) {
+      bool1 = true;
+    } else {
+      bool1 = false;
     }
+    this.autoDownload = bool1;
+    if (QzoneConfig.getInstance().getConfig("qqminiapp", "launch_adv_ad_ui_mode", 0) == 1) {
+      bool1 = bool2;
+    } else {
+      bool1 = false;
+    }
+    this.selectSecondOption = bool1;
+    this.densityDpi = 1.0F;
+    initUI();
   }
   
   public MiniLoadingAdLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    if (QzoneConfig.getInstance().getConfig("qqminiapp", "launch_adv_app_auto_download", 0) == 1) {}
-    for (;;)
-    {
-      this.autoDownload = bool;
-      this.densityDpi = 1.0F;
-      initUI();
-      return;
-      bool = false;
+    paramInt = QzoneConfig.getInstance().getConfig("qqminiapp", "launch_adv_app_auto_download", 0);
+    boolean bool2 = true;
+    boolean bool1;
+    if (paramInt == 1) {
+      bool1 = true;
+    } else {
+      bool1 = false;
     }
+    this.autoDownload = bool1;
+    if (QzoneConfig.getInstance().getConfig("qqminiapp", "launch_adv_ad_ui_mode", 0) == 1) {
+      bool1 = bool2;
+    } else {
+      bool1 = false;
+    }
+    this.selectSecondOption = bool1;
+    this.densityDpi = 1.0F;
+    initUI();
   }
   
   private void adjustUI(boolean paramBoolean1, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean2, AdProxy.ILoadingAdListener paramILoadingAdListener)
   {
     Object localObject = paramString3;
     if (TextUtils.isEmpty(paramString3)) {
-      localObject = HardCodeUtil.a(2131694165);
+      localObject = HardCodeUtil.a(2131694120);
     }
     this.isGame = paramBoolean1;
     this.mLoadingAdImgView.setImageDrawable(Drawable.createFromPath(paramString4));
     paramString3 = this.mGameLayout;
     int i;
+    if (paramBoolean1) {
+      i = 0;
+    } else {
+      i = 8;
+    }
+    paramString3.setVisibility(i);
+    paramString3 = this.mAppLayout;
+    if (paramBoolean1) {
+      i = 8;
+    } else {
+      i = 0;
+    }
+    paramString3.setVisibility(i);
+    paramString3 = this.mCountdownTextView;
+    paramString4 = new StringBuilder();
+    paramString4.append(this.countdownTime);
+    paramString4.append("秒");
+    paramString3.setText(paramString4.toString());
+    paramString3 = (String)localObject;
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      paramString3 = HardCodeUtil.a(2131694120);
+    }
+    paramString4 = this.mDeveloperDescView;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131705111));
+    ((StringBuilder)localObject).append(paramString3);
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131705110));
+    paramString4.setText(((StringBuilder)localObject).toString());
+    localObject = (RelativeLayout.LayoutParams)this.mCountdownContainer.getLayoutParams();
+    paramString3 = (RelativeLayout.LayoutParams)this.mRightContainer.getLayoutParams();
+    float f = 10.0F;
     if (paramBoolean1)
     {
-      i = 0;
-      paramString3.setVisibility(i);
-      paramString3 = this.mAppLayout;
-      if (!paramBoolean1) {
-        break label333;
+      if (this.selectSecondOption) {
+        f = 27.5F;
       }
-      i = 8;
-      label70:
-      paramString3.setVisibility(i);
-      this.mCountdownTextView.setText(this.countdownTime + "秒");
-      paramString3 = (String)localObject;
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        paramString3 = HardCodeUtil.a(2131694165);
+      if (LiuHaiUtils.b()) {
+        i = ImmersiveUtils.getStatusBarHeight(getContext()) + DisplayUtil.dip2px(getContext(), f);
+      } else {
+        i = DisplayUtil.dip2px(getContext(), f);
       }
-      this.mDeveloperDescView.setText(HardCodeUtil.a(2131705035) + paramString3 + HardCodeUtil.a(2131705034));
-      localObject = (RelativeLayout.LayoutParams)this.mCountdownContainer.getLayoutParams();
-      paramString3 = (RelativeLayout.LayoutParams)this.mRightContainer.getLayoutParams();
-      if (!paramBoolean1) {
-        break label353;
-      }
-      if (!LiuHaiUtils.b()) {
-        break label339;
-      }
-      i = ImmersiveUtils.getStatusBarHeight(getContext()) + DisplayUtil.dip2px(getContext(), 10.0F);
-      label216:
       ((RelativeLayout.LayoutParams)localObject).topMargin = i;
       this.mRightContainer.setVisibility(8);
-      paramString4 = this.mGameNameView;
+      paramString3 = this.mGameNameView;
+      paramString4 = this.mGameLogoView;
     }
-    for (paramString3 = this.mGameLogoView;; paramString3 = this.mAppLogoView)
+    else
     {
-      this.mCountdownContainer.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      paramString4.setText(paramString1);
-      paramString3.setImageDrawable(MiniAppUtils.getIcon(getContext(), paramString2, true, 10));
-      this.mLoadingAdImgView.setOnClickListener(new MiniLoadingAdLayout.LoadingAdOnClickListener(this, 0, paramILoadingAdListener));
-      this.mLoadingAdBarLayout.setOnClickListener(new MiniLoadingAdLayout.LoadingAdOnClickListener(this, 1, paramILoadingAdListener));
-      if (paramBoolean2) {
-        this.mRightContainer.setVisibility(8);
-      }
-      return;
-      i = 8;
-      break;
-      label333:
-      i = 0;
-      break label70;
-      label339:
-      i = DisplayUtil.dip2px(getContext(), 10.0F);
-      break label216;
-      label353:
       ((RelativeLayout.LayoutParams)localObject).topMargin = (ImmersiveUtils.getStatusBarHeight(getContext()) + DisplayUtil.dip2px(getContext(), 10.0F));
       paramString3.topMargin = (ImmersiveUtils.getStatusBarHeight(getContext()) + DisplayUtil.dip2px(getContext(), 10.0F));
-      paramString4 = this.mAppNameView;
+      paramString3 = this.mAppNameView;
+      paramString4 = this.mAppLogoView;
+    }
+    this.mCountdownContainer.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    paramString3.setText(paramString1);
+    paramString4.setImageDrawable(MiniAppUtils.getIcon(getContext(), paramString2, true, 10));
+    if (!this.selectSecondOption)
+    {
+      this.mLoadingAdImgView.setOnClickListener(new MiniLoadingAdLayout.LoadingAdOnClickListener(this, 0, paramILoadingAdListener));
+      this.mLoadingAdBarLayout.setOnClickListener(new MiniLoadingAdLayout.LoadingAdOnClickListener(this, 1, paramILoadingAdListener));
+    }
+    else
+    {
+      this.mLoadingAdBar.setOnClickListener(new MiniLoadingAdLayout.LoadingAdOnClickListener(this, 1, paramILoadingAdListener));
+    }
+    if (paramBoolean2) {
+      this.mRightContainer.setVisibility(8);
     }
   }
   
-  /* Error */
   private JSONObject createLoadingAntiParamForClickCGI(com.tencent.qqmini.sdk.launcher.model.MiniAppInfo paramMiniAppInfo)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: aload_1
-    //   2: invokespecial 280	com/tencent/mobileqq/mini/widget/MiniLoadingAdLayout:createLoadingAntiParamForExpoCGI	(Lcom/tencent/qqmini/sdk/launcher/model/MiniAppInfo;)Lorg/json/JSONObject;
-    //   5: astore_1
-    //   6: aload_1
-    //   7: ifnonnull +92 -> 99
-    //   10: new 282	org/json/JSONObject
-    //   13: dup
-    //   14: invokespecial 283	org/json/JSONObject:<init>	()V
-    //   17: astore_2
-    //   18: aload_2
-    //   19: astore_1
-    //   20: aload_1
-    //   21: ldc_w 285
-    //   24: aload_0
-    //   25: getfield 287	com/tencent/mobileqq/mini/widget/MiniLoadingAdLayout:lastTouchDownX	I
-    //   28: invokevirtual 291	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   31: pop
-    //   32: aload_1
-    //   33: ldc_w 293
-    //   36: aload_0
-    //   37: getfield 295	com/tencent/mobileqq/mini/widget/MiniLoadingAdLayout:lastTouchDownY	I
-    //   40: invokevirtual 291	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   43: pop
-    //   44: aload_1
-    //   45: ldc_w 297
-    //   48: aload_0
-    //   49: getfield 299	com/tencent/mobileqq/mini/widget/MiniLoadingAdLayout:lastTouchUpX	I
-    //   52: invokevirtual 291	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   55: pop
-    //   56: aload_1
-    //   57: ldc_w 301
-    //   60: aload_0
-    //   61: getfield 303	com/tencent/mobileqq/mini/widget/MiniLoadingAdLayout:lastTouchUpY	I
-    //   64: invokevirtual 291	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   67: pop
-    //   68: aload_1
-    //   69: ldc_w 305
-    //   72: aload_0
-    //   73: getfield 307	com/tencent/mobileqq/mini/widget/MiniLoadingAdLayout:pressInterval	J
-    //   76: invokevirtual 310	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
-    //   79: pop
-    //   80: aload_1
-    //   81: areturn
-    //   82: astore_2
-    //   83: ldc 14
-    //   85: iconst_1
-    //   86: ldc_w 312
-    //   89: aload_2
-    //   90: invokestatic 318	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   93: aload_1
-    //   94: areturn
-    //   95: astore_2
-    //   96: goto -13 -> 83
-    //   99: goto -79 -> 20
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	102	0	this	MiniLoadingAdLayout
-    //   0	102	1	paramMiniAppInfo	com.tencent.qqmini.sdk.launcher.model.MiniAppInfo
-    //   17	2	2	localJSONObject	JSONObject
-    //   82	8	2	localException1	Exception
-    //   95	1	2	localException2	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   10	18	82	java/lang/Exception
-    //   20	80	95	java/lang/Exception
+    Object localObject = createLoadingAntiParamForExpoCGI(paramMiniAppInfo);
+    paramMiniAppInfo = (com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)localObject;
+    if (localObject == null) {}
+    try
+    {
+      paramMiniAppInfo = new JSONObject();
+      localObject = paramMiniAppInfo;
+      paramMiniAppInfo.put("aa", this.lastTouchDownX);
+      localObject = paramMiniAppInfo;
+      paramMiniAppInfo.put("ab", this.lastTouchDownY);
+      localObject = paramMiniAppInfo;
+      paramMiniAppInfo.put("ba", this.lastTouchUpX);
+      localObject = paramMiniAppInfo;
+      paramMiniAppInfo.put("bb", this.lastTouchUpY);
+      localObject = paramMiniAppInfo;
+      paramMiniAppInfo.put("g", this.pressInterval);
+      return paramMiniAppInfo;
+    }
+    catch (Exception paramMiniAppInfo)
+    {
+      QLog.e("MiniLoadingAdLayout", 1, "createLoadingAntiParamForClickCGI failed", paramMiniAppInfo);
+    }
+    return localObject;
   }
   
   private Bundle createLoadingAntiParamForClickReportServer(com.tencent.qqmini.sdk.launcher.model.MiniAppInfo paramMiniAppInfo, String paramString, int paramInt)
@@ -294,16 +294,10 @@ public class MiniLoadingAdLayout
     try
     {
       paramMiniAppInfo = new JSONObject();
-      int i;
-      int j;
-      QLog.e("MiniLoadingAdLayout", 1, "createLoadingAntiParamForExpoCGI failed", localException1);
-    }
-    catch (Exception localException1)
-    {
       try
       {
-        i = DisplayHelper.getScreenWidth(getContext());
-        j = DisplayHelper.getScreenHeight(getContext());
+        int i = DisplayHelper.getScreenWidth(getContext());
+        int j = DisplayHelper.getScreenHeight(getContext());
         paramMiniAppInfo.put("da", (int)(i / this.densityDpi));
         paramMiniAppInfo.put("db", (int)(j / this.densityDpi));
         paramMiniAppInfo.put("px", 0);
@@ -311,50 +305,55 @@ public class MiniLoadingAdLayout
         paramMiniAppInfo.put("x", 0);
         return paramMiniAppInfo;
       }
-      catch (Exception localException2)
-      {
-        break label89;
-      }
-      localException1 = localException1;
+      catch (Exception localException1) {}
+      QLog.e("MiniLoadingAdLayout", 1, "createLoadingAntiParamForExpoCGI failed", localException2);
+    }
+    catch (Exception localException2)
+    {
       paramMiniAppInfo = null;
     }
-    label89:
     return paramMiniAppInfo;
   }
   
   private Bundle createLoadingAntiParamForExpoReportServer(com.tencent.qqmini.sdk.launcher.model.MiniAppInfo paramMiniAppInfo, String paramString)
   {
-    int i = 0;
-    localBundle = new Bundle();
-    try
+    Bundle localBundle = new Bundle();
+    for (;;)
     {
-      localBundle.putInt("at", 0);
-      localBundle.putInt("cn_t", getNetworkType());
-      localBundle.putLong("et", this.showAdStamp);
-      localBundle.putInt("fh", 0);
-      localBundle.putInt("ic", 0);
-      if (this.isGame) {
-        i = 1;
-      }
-      localBundle.putInt("ig", i);
-      localBundle.putLong("it", this.requestAdTimeStamp);
-      localBundle.putInt("lt", 2);
-      localBundle.putInt("s", 0);
-      localBundle.putInt("sc_s", paramMiniAppInfo.launchParam.scene);
-      localBundle.putString("sc_sn", getExtraInfo(paramMiniAppInfo));
-      if (paramMiniAppInfo.launchParam.launchClickTimeMillis != 0L) {}
-      for (long l = paramMiniAppInfo.launchParam.launchClickTimeMillis;; l = this.showTimeStamp)
+      try
       {
-        localBundle.putLong("st", l);
-        localBundle.putString("viewid", parseViewId(paramString));
-        localBundle.putString("wlv", StorageUtil.getPreference().getString("version", "1.22.0.00008"));
+        localBundle.putInt("at", 0);
+        localBundle.putInt("cn_t", getNetworkType());
+        localBundle.putLong("et", this.showAdStamp);
+        localBundle.putInt("fh", 0);
+        localBundle.putInt("ic", 0);
+        if (this.isGame)
+        {
+          i = 1;
+          localBundle.putInt("ig", i);
+          localBundle.putLong("it", this.requestAdTimeStamp);
+          localBundle.putInt("lt", 2);
+          localBundle.putInt("s", 0);
+          localBundle.putInt("sc_s", paramMiniAppInfo.launchParam.scene);
+          localBundle.putString("sc_sn", getExtraInfo(paramMiniAppInfo));
+          long l;
+          if (paramMiniAppInfo.launchParam.launchClickTimeMillis != 0L) {
+            l = paramMiniAppInfo.launchParam.launchClickTimeMillis;
+          } else {
+            l = this.showTimeStamp;
+          }
+          localBundle.putLong("st", l);
+          localBundle.putString("viewid", parseViewId(paramString));
+          localBundle.putString("wlv", StorageUtil.getPreference().getString("version", "1.22.0.00008"));
+          return localBundle;
+        }
+      }
+      catch (Exception paramMiniAppInfo)
+      {
+        QLog.e("MiniLoadingAdLayout", 1, "createLoadingAntiParamForExpoReportServer failed", paramMiniAppInfo);
         return localBundle;
       }
-      return localBundle;
-    }
-    catch (Exception paramMiniAppInfo)
-    {
-      QLog.e("MiniLoadingAdLayout", 1, "createLoadingAntiParamForExpoReportServer failed", paramMiniAppInfo);
+      int i = 0;
     }
   }
   
@@ -368,44 +367,57 @@ public class MiniLoadingAdLayout
       paramMiniAppInfo = paramMiniAppInfo.launchParam.fromMiniAppId;
       return paramMiniAppInfo;
     }
-    catch (Exception paramMiniAppInfo) {}
+    catch (Exception paramMiniAppInfo)
+    {
+      label34:
+      break label34;
+    }
     return "";
   }
   
   private int getNetworkType()
   {
-    int j = NetworkUtil.a(BaseApplication.getContext().getApplicationContext());
-    int i;
+    int j = NetworkUtil.getSystemNetwork(BaseApplication.getContext().getApplicationContext());
     if (j == 5) {
-      i = 0;
+      return 0;
     }
-    do
-    {
-      return i;
-      i = j;
-    } while (j != 6);
-    return 7;
+    int i = j;
+    if (j == 6) {
+      i = 7;
+    }
+    return i;
   }
   
   private void initUI()
   {
-    LayoutInflater.from(getContext()).inflate(2131559532, this, true);
-    this.mAppLayout = ((RelativeLayout)findViewById(2131371637));
-    this.mGameLayout = ((RelativeLayout)findViewById(2131371647));
-    this.mRightContainer = ((RelativeLayout)findViewById(2131365290));
-    this.mCloseBtn = ((ImageView)findViewById(2131363963));
-    this.mCountdownContainer = ((RelativeLayout)findViewById(2131371643));
-    this.mCountdownTextView = ((TextView)findViewById(2131370728));
-    this.mLoadingAdSkipBtn = ((TextView)findViewById(2131371649));
-    this.mDeveloperDescView = ((TextView)findViewById(2131365743));
-    this.mAppNameView = ((TextView)findViewById(2131371638));
-    this.mGameNameView = ((TextView)findViewById(2131371648));
-    this.mAppLogoView = ((ImageView)findViewById(2131371636));
-    this.mGameLogoView = ((ImageView)findViewById(2131371645));
-    this.mLoadingAdImgView = ((ImageView)findViewById(2131370729));
-    this.mLoadingAdBarLayout = ((RelativeLayout)findViewById(2131371642));
-    this.mLoadingAdBar = ((RelativeLayout)findViewById(2131371640));
-    this.mLoadingAdTextView = ((TextView)findViewById(2131371639));
+    if (!this.selectSecondOption) {
+      LayoutInflater.from(getContext()).inflate(2131559408, this, true);
+    } else {
+      LayoutInflater.from(getContext()).inflate(2131559409, this, true);
+    }
+    this.mAppLayout = ((RelativeLayout)findViewById(2131371262));
+    this.mGameLayout = ((RelativeLayout)findViewById(2131371272));
+    this.mRightContainer = ((RelativeLayout)findViewById(2131365165));
+    this.mCloseBtn = ((ImageView)findViewById(2131363890));
+    this.mCountdownContainer = ((RelativeLayout)findViewById(2131371268));
+    this.mCountdownTextView = ((TextView)findViewById(2131370365));
+    if (!this.selectSecondOption) {
+      this.mLoadingAdSkipBtn = ((TextView)findViewById(2131371275));
+    } else {
+      this.mLoadingAdSkipBtn = ((TextView)findViewById(2131370367));
+    }
+    this.mDeveloperDescView = ((TextView)findViewById(2131365581));
+    this.mAppNameView = ((TextView)findViewById(2131371263));
+    this.mGameNameView = ((TextView)findViewById(2131371273));
+    this.mAppLogoView = ((ImageView)findViewById(2131371261));
+    this.mGameLogoView = ((ImageView)findViewById(2131371270));
+    this.mLoadingAdImgView = ((ImageView)findViewById(2131370366));
+    this.mLoadingAdBarLayout = ((RelativeLayout)findViewById(2131371267));
+    this.mLoadingAdBar = ((RelativeLayout)findViewById(2131371265));
+    this.mLoadingAdTextView = ((TextView)findViewById(2131371264));
+    this.mGamePublicationInfoLayout = ((LinearLayout)findViewById(2131371274));
+    this.mGamePublicationInfoFirstLineView = ((TextView)findViewById(2131367493));
+    this.mGamePublicationInfoSecondLineView = ((TextView)findViewById(2131367494));
     this.densityDpi = DisplayHelper.getDensity(getContext());
   }
   
@@ -414,16 +426,14 @@ public class MiniLoadingAdLayout
   private static String parseViewId(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    String str = Uri.parse(paramString).getQueryParameter("viewid");
+    paramString = str;
+    if (str == null) {
       paramString = "";
     }
-    String str;
-    do
-    {
-      return paramString;
-      str = Uri.parse(paramString).getQueryParameter("viewid");
-      paramString = str;
-    } while (str != null);
-    return "";
+    return paramString;
   }
   
   public static void report(Bundle paramBundle)
@@ -431,29 +441,127 @@ public class MiniLoadingAdLayout
     if (paramBundle == null) {
       return;
     }
-    QLog.i("MiniLoadingAdLayout", 1, "reportParams=" + paramBundle.toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("reportParams=");
+    localStringBuilder.append(paramBundle.toString());
+    QLog.i("MiniLoadingAdLayout", 1, localStringBuilder.toString());
     ThreadManager.excute(new MiniLoadingAdLayout.5(paramBundle), 128, null, true);
   }
   
   private void reportToGdt(String paramString, long paramLong)
   {
-    QLog.i("MiniLoadingAdLayout", 1, "yuki reportToGdt LoadingAd reportUrl = " + paramString);
-    if ((TextUtils.isEmpty(paramString)) || (!URLUtil.isNetworkUrl(paramString))) {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("yuki reportToGdt LoadingAd reportUrl = ");
+    localStringBuilder.append(paramString);
+    QLog.i("MiniLoadingAdLayout", 1, localStringBuilder.toString());
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (!URLUtil.isNetworkUrl(paramString)) {
+        return;
+      }
+      ThreadManager.executeOnNetWorkThread(new MiniLoadingAdLayout.4(this, paramString));
+    }
+  }
+  
+  private void showAdBar()
+  {
+    Object localObject1 = this.mAdInfo;
+    if ((localObject1 != null) && (((GdtAd)localObject1).info != null) && (this.mAdInfo.info.display_info != null) && (this.mAdInfo.info.display_info.basic_info != null) && (this.mAdInfo.info.display_info.basic_info.txt != null))
+    {
+      Object localObject2 = "";
+      localObject1 = localObject2;
+      if (this.mAdInfo.info.display_info.button_info.has())
+      {
+        localObject1 = localObject2;
+        if (this.mAdInfo.info.display_info.button_info.get() != null)
+        {
+          localObject1 = localObject2;
+          if (this.mAdInfo.info.display_info.button_info.get().size() > 0)
+          {
+            localObject1 = "";
+            int i = 0;
+            while (i < this.mAdInfo.info.display_info.button_info.get().size())
+            {
+              qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo localButtonInfo = (qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo)this.mAdInfo.info.display_info.button_info.get(i);
+              localObject2 = localObject1;
+              if (localButtonInfo.pos.get() == 2)
+              {
+                localObject2 = localObject1;
+                if (!TextUtils.isEmpty(localButtonInfo.txt.get())) {
+                  localObject2 = localButtonInfo.txt.get();
+                }
+              }
+              i += 1;
+              localObject1 = localObject2;
+            }
+          }
+        }
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        localObject2 = this.mLoadingAdTextView;
+        if ((localObject2 != null) && (this.mLoadingAdBarLayout != null))
+        {
+          ((TextView)localObject2).setText((CharSequence)localObject1);
+          this.mLoadingAdBarLayout.setVisibility(0);
+        }
+      }
+    }
+  }
+  
+  private void showPublicationInfo()
+  {
+    Object localObject1 = this.miniAppInfo;
+    if (localObject1 == null)
+    {
+      this.mGamePublicationInfoLayout.setVisibility(8);
+      this.mDeveloperDescView.setVisibility(0);
       return;
     }
-    ThreadManager.executeOnNetWorkThread(new MiniLoadingAdLayout.4(this, paramString));
+    if ((!TextUtils.isEmpty(((com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)localObject1).gamePublicationNumber)) && (!TextUtils.isEmpty(this.miniAppInfo.gameOperatingCompany)) && (!TextUtils.isEmpty(this.miniAppInfo.gameApprovalNumber)) && (!TextUtils.isEmpty(this.miniAppInfo.gameOperatingCompany)))
+    {
+      this.mGamePublicationInfoLayout.setVisibility(0);
+      this.mDeveloperDescView.setVisibility(8);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131694131));
+      ((StringBuilder)localObject1).append(this.miniAppInfo.gamePublicationNumber);
+      ((StringBuilder)localObject1).append("   ");
+      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131694129));
+      ((StringBuilder)localObject1).append(this.miniAppInfo.gameOperatingCompany);
+      localObject1 = ((StringBuilder)localObject1).toString();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(HardCodeUtil.a(2131694123));
+      ((StringBuilder)localObject2).append(this.miniAppInfo.gameApprovalNumber);
+      ((StringBuilder)localObject2).append("   ");
+      ((StringBuilder)localObject2).append(HardCodeUtil.a(2131694130));
+      ((StringBuilder)localObject2).append(this.miniAppInfo.gamePublicationCompany);
+      localObject2 = ((StringBuilder)localObject2).toString();
+      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
+      {
+        this.mGamePublicationInfoFirstLineView.setText((CharSequence)localObject1);
+        this.mGamePublicationInfoSecondLineView.setText((CharSequence)localObject2);
+      }
+      return;
+    }
+    this.mGamePublicationInfoLayout.setVisibility(8);
+    this.mDeveloperDescView.setVisibility(0);
   }
   
   private void startAdBarAnimation()
   {
-    if ((this.mAdInfo != null) && (this.mAdInfo.info != null) && (this.mAdInfo.info.display_info != null) && (this.mAdInfo.info.display_info.basic_info != null) && (this.mAdInfo.info.display_info.basic_info.txt != null))
+    Object localObject = this.mAdInfo;
+    if ((localObject != null) && (((GdtAd)localObject).info != null) && (this.mAdInfo.info.display_info != null) && (this.mAdInfo.info.display_info.basic_info != null) && (this.mAdInfo.info.display_info.basic_info.txt != null))
     {
-      String str = this.mAdInfo.info.display_info.basic_info.txt.get();
-      if ((!TextUtils.isEmpty(str)) && (this.mLoadingAdTextView != null) && (this.mLoadingAdBarLayout != null) && (this.mUiHandler != null))
+      localObject = this.mAdInfo.info.display_info.basic_info.txt.get();
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        this.mLoadingAdTextView.setText(str);
-        int i = QzoneConfig.getInstance().getConfig("qqminiapp", "loading_ad_bar_show_time", 1000);
-        this.mUiHandler.postDelayed(new MiniLoadingAdLayout.2(this), i);
+        TextView localTextView = this.mLoadingAdTextView;
+        if ((localTextView != null) && (this.mLoadingAdBarLayout != null) && (this.mUiHandler != null))
+        {
+          localTextView.setText((CharSequence)localObject);
+          int i = QzoneConfig.getInstance().getConfig("qqminiapp", "loading_ad_bar_show_time", 1000);
+          this.mUiHandler.postDelayed(new MiniLoadingAdLayout.2(this), i);
+        }
       }
     }
   }
@@ -479,7 +587,14 @@ public class MiniLoadingAdLayout
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    QLog.d("MiniLoadingAdLayout", 1, "wesley dispatchTouchEvent " + paramMotionEvent.getAction() + " x:" + paramMotionEvent.getX() + "  y:" + paramMotionEvent.getY());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("wesley dispatchTouchEvent ");
+    localStringBuilder.append(paramMotionEvent.getAction());
+    localStringBuilder.append(" x:");
+    localStringBuilder.append(paramMotionEvent.getX());
+    localStringBuilder.append("  y:");
+    localStringBuilder.append(paramMotionEvent.getY());
+    QLog.d("MiniLoadingAdLayout", 1, localStringBuilder.toString());
     try
     {
       int i = (int)(paramMotionEvent.getX() / this.densityDpi);
@@ -490,56 +605,51 @@ public class MiniLoadingAdLayout
         this.lastTouchDownY = j;
         this.touchStamp = System.currentTimeMillis();
       }
-      for (;;)
+      else if (paramMotionEvent.getAction() == 1)
       {
-        return super.dispatchTouchEvent(paramMotionEvent);
-        if (paramMotionEvent.getAction() == 1)
-        {
-          this.lastTouchUpX = i;
-          this.lastTouchUpY = j;
-          this.pressInterval = (System.currentTimeMillis() - this.touchStamp);
-        }
+        this.lastTouchUpX = i;
+        this.lastTouchUpY = j;
+        this.pressInterval = (System.currentTimeMillis() - this.touchStamp);
       }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.e("MiniLoadingAdLayout", 1, "dispatchTouchEvent failed,", localException);
-      }
+      QLog.e("MiniLoadingAdLayout", 1, "dispatchTouchEvent failed,", localException);
     }
+    return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   public boolean setupUI(MiniAppConfig paramMiniAppConfig, boolean paramBoolean, String paramString, GdtAd paramGdtAd)
   {
-    if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null) || (TextUtils.isEmpty(paramString)) || (paramGdtAd == null)) {
-      return false;
+    if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null) && (!TextUtils.isEmpty(paramString)) && (paramGdtAd != null))
+    {
+      this.mAdInfo = paramGdtAd;
+      this.mMiniAppConfig = paramMiniAppConfig;
+      adjustUI(paramBoolean, paramMiniAppConfig.config.name, URLDecoder.decode(paramMiniAppConfig.config.iconUrl), paramMiniAppConfig.config.developerDesc, paramString, false, null);
+      return true;
     }
-    this.mAdInfo = paramGdtAd;
-    this.mMiniAppConfig = paramMiniAppConfig;
-    adjustUI(paramBoolean, paramMiniAppConfig.config.name, URLDecoder.decode(paramMiniAppConfig.config.iconUrl), paramMiniAppConfig.config.developerDesc, paramString, false, null);
-    return true;
+    return false;
   }
   
   public boolean setupUIForSDK(com.tencent.qqmini.sdk.launcher.model.MiniAppInfo paramMiniAppInfo, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, long paramLong1, long paramLong2, AdProxy.ILoadingAdListener paramILoadingAdListener)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)))
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
     {
-      QLog.i("MiniLoadingAdLayout", 1, "setupUIForSDK adJson||name||iconUrl is empty");
-      return false;
-    }
-    paramString1 = AdUtils.convertJson2GdtAds(paramString1);
-    if ((paramString1 == null) || (paramString1.isEmpty()))
-    {
+      paramString1 = AdUtils.convertJson2GdtAds(paramString1);
+      if ((paramString1 != null) && (!paramString1.isEmpty()))
+      {
+        this.miniAppInfo = paramMiniAppInfo;
+        this.showTimeStamp = paramLong1;
+        this.requestAdTimeStamp = paramLong2;
+        this.mAdInfo = ((GdtAd)paramString1.get(0));
+        adjustUI(paramBoolean, paramString2, paramString3, paramString4, paramString5, true, paramILoadingAdListener);
+        return true;
+      }
       QLog.i("MiniLoadingAdLayout", 1, "setupUIForSDK ads is empty");
       return false;
     }
-    this.miniAppInfo = paramMiniAppInfo;
-    this.showTimeStamp = paramLong1;
-    this.requestAdTimeStamp = paramLong2;
-    this.mAdInfo = ((GdtAd)paramString1.get(0));
-    adjustUI(paramBoolean, paramString2, paramString3, paramString4, paramString5, true, paramILoadingAdListener);
-    return true;
+    QLog.i("MiniLoadingAdLayout", 1, "setupUIForSDK adJson||name||iconUrl is empty");
+    return false;
   }
   
   public void show(MiniLoadingAdLayout.OnDismissListener paramOnDismissListener)
@@ -547,34 +657,41 @@ public class MiniLoadingAdLayout
     setVisibility(0);
     this.showAdStamp = System.currentTimeMillis();
     startCountDown(paramOnDismissListener);
-    startAdBarAnimation();
-    JSONObject localJSONObject;
-    Bundle localBundle;
-    if ((this.mAdInfo != null) && (this.mAdInfo.info != null) && (this.mAdInfo.info.report_info != null) && (this.mAdInfo.info.report_info.exposure_url != null))
-    {
-      localJSONObject = createLoadingAntiParamForExpoCGI(this.miniAppInfo);
-      localBundle = createLoadingAntiParamForExpoReportServer(this.miniAppInfo, this.mAdInfo.info.report_info.exposure_url.get());
+    if (!this.selectSecondOption) {
+      startAdBarAnimation();
+    } else {
+      showAdBar();
     }
-    try
+    showPublicationInfo();
+    Object localObject = this.mAdInfo;
+    if ((localObject != null) && (((GdtAd)localObject).info != null) && (this.mAdInfo.info.report_info != null) && (this.mAdInfo.info.report_info.exposure_url != null))
     {
-      QLog.i("MiniLoadingAdLayout", 1, "report expo antiSpamParams=" + localJSONObject.toString());
-      reportToGdt(this.mAdInfo.info.report_info.exposure_url.get() + "&s=" + URLEncoder.encode(localJSONObject.toString(), "utf-8"), this.showAdStamp);
-      report(localBundle);
-      this.mLoadingAdSkipBtn.setOnClickListener(new MiniLoadingAdLayout.1(this, paramOnDismissListener));
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      localObject = createLoadingAntiParamForExpoCGI(this.miniAppInfo);
+      Bundle localBundle = createLoadingAntiParamForExpoReportServer(this.miniAppInfo, this.mAdInfo.info.report_info.exposure_url.get());
+      try
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("report expo antiSpamParams=");
+        localStringBuilder.append(((JSONObject)localObject).toString());
+        QLog.i("MiniLoadingAdLayout", 1, localStringBuilder.toString());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.mAdInfo.info.report_info.exposure_url.get());
+        localStringBuilder.append("&s=");
+        localStringBuilder.append(URLEncoder.encode(((JSONObject)localObject).toString(), "utf-8"));
+        reportToGdt(localStringBuilder.toString(), this.showAdStamp);
+        report(localBundle);
+      }
+      catch (Exception localException)
       {
         QLog.e("MiniLoadingAdLayout", 1, "reportToGdt failed", localException);
       }
     }
+    this.mLoadingAdSkipBtn.setOnClickListener(new MiniLoadingAdLayout.1(this, paramOnDismissListener));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.MiniLoadingAdLayout
  * JD-Core Version:    0.7.0.1
  */

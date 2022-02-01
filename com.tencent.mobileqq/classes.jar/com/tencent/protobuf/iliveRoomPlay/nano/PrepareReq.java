@@ -22,14 +22,15 @@ public final class PrepareReq
   
   public static PrepareReq[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new PrepareReq[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new PrepareReq[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static PrepareReq parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -52,24 +53,28 @@ public final class PrepareReq
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    int k = this.roomType;
     int i = j;
-    if (this.roomType != 0) {
-      i = j + CodedOutputByteBufferNano.computeInt32Size(1, this.roomType);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeInt32Size(1, k);
     }
+    k = this.closePgcCrossLimit;
     j = i;
-    if (this.closePgcCrossLimit != 0) {
-      j = i + CodedOutputByteBufferNano.computeInt32Size(2, this.closePgcCrossLimit);
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeInt32Size(2, k);
     }
+    k = this.closeSubAccountLimit;
     i = j;
-    if (this.closeSubAccountLimit != 0) {
-      i = j + CodedOutputByteBufferNano.computeInt32Size(3, this.closeSubAccountLimit);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeInt32Size(3, k);
     }
+    k = this.distributeSource;
     j = i;
-    if (this.distributeSource != 0) {
-      j = i + CodedOutputByteBufferNano.computeInt32Size(4, this.distributeSource);
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeInt32Size(4, k);
     }
     return j;
   }
@@ -79,48 +84,64 @@ public final class PrepareReq
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.roomType = paramCodedInputByteBufferNano.readInt32();
-        break;
-      case 16: 
-        this.closePgcCrossLimit = paramCodedInputByteBufferNano.readInt32();
-        break;
-      case 24: 
-        this.closeSubAccountLimit = paramCodedInputByteBufferNano.readInt32();
+      if (i == 0) {
         break;
       }
-      this.distributeSource = paramCodedInputByteBufferNano.readInt32();
+      if (i != 8)
+      {
+        if (i != 16)
+        {
+          if (i != 24)
+          {
+            if (i != 32)
+            {
+              if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+                return this;
+              }
+            }
+            else {
+              this.distributeSource = paramCodedInputByteBufferNano.readInt32();
+            }
+          }
+          else {
+            this.closeSubAccountLimit = paramCodedInputByteBufferNano.readInt32();
+          }
+        }
+        else {
+          this.closePgcCrossLimit = paramCodedInputByteBufferNano.readInt32();
+        }
+      }
+      else {
+        this.roomType = paramCodedInputByteBufferNano.readInt32();
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.roomType != 0) {
-      paramCodedOutputByteBufferNano.writeInt32(1, this.roomType);
+    int i = this.roomType;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeInt32(1, i);
     }
-    if (this.closePgcCrossLimit != 0) {
-      paramCodedOutputByteBufferNano.writeInt32(2, this.closePgcCrossLimit);
+    i = this.closePgcCrossLimit;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeInt32(2, i);
     }
-    if (this.closeSubAccountLimit != 0) {
-      paramCodedOutputByteBufferNano.writeInt32(3, this.closeSubAccountLimit);
+    i = this.closeSubAccountLimit;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeInt32(3, i);
     }
-    if (this.distributeSource != 0) {
-      paramCodedOutputByteBufferNano.writeInt32(4, this.distributeSource);
+    i = this.distributeSource;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeInt32(4, i);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.iliveRoomPlay.nano.PrepareReq
  * JD-Core Version:    0.7.0.1
  */

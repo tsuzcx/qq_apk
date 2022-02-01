@@ -46,7 +46,7 @@ public class ShakeItemBuilder
     return 1;
   }
   
-  public View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
+  protected View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     paramBaseChatItemLayout = paramBaseChatItemLayout.getContext();
     ShakeItemBuilder.Holder localHolder = (ShakeItemBuilder.Holder)paramViewHolder;
@@ -61,9 +61,9 @@ public class ShakeItemBuilder
       ((LinearLayout.LayoutParams)localObject).gravity = 16;
       paramViewHolder.addView(paramView, (ViewGroup.LayoutParams)localObject);
       localObject = new TextView(paramBaseChatItemLayout);
-      ((TextView)localObject).setTextColor(paramBaseChatItemLayout.getResources().getColorStateList(2131167052));
+      ((TextView)localObject).setTextColor(paramBaseChatItemLayout.getResources().getColorStateList(2131167075));
       ((TextView)localObject).setMaxWidth(BaseChatItemLayout.f);
-      ((TextView)localObject).setId(2131364637);
+      ((TextView)localObject).setId(2131364524);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
       localLayoutParams.gravity = 16;
       paramViewHolder.addView((View)localObject, localLayoutParams);
@@ -71,20 +71,20 @@ public class ShakeItemBuilder
       localHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject);
     }
     localHolder.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
-    int k = BaseChatItemLayout.o;
-    int j = BaseChatItemLayout.p;
     int i = BaseChatItemLayout.o;
-    localHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844953);
+    int j = BaseChatItemLayout.p;
+    int k = BaseChatItemLayout.o;
+    localHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844829);
     if (paramChatMessage.isSend())
     {
-      k = BaseChatItemLayout.p;
-      j = BaseChatItemLayout.o;
       i = BaseChatItemLayout.p;
-      localHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844954);
+      j = BaseChatItemLayout.o;
+      k = BaseChatItemLayout.p;
+      localHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844830);
     }
-    localHolder.jdField_a_of_type_AndroidWidgetImageView.setPadding(i, 0, 0, 0);
-    localHolder.jdField_a_of_type_AndroidWidgetTextView.setPadding(k, BaseChatItemLayout.m, j, BaseChatItemLayout.n);
-    localHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseChatItemLayout.getResources().getString(2131719142));
+    localHolder.jdField_a_of_type_AndroidWidgetImageView.setPadding(k, 0, 0, 0);
+    localHolder.jdField_a_of_type_AndroidWidgetTextView.setPadding(i, BaseChatItemLayout.m, j, BaseChatItemLayout.n);
+    localHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseChatItemLayout.getResources().getString(2131718860));
     paramViewHolder.setOnTouchListener(paramOnLongClickAndTouchListener);
     paramViewHolder.setOnLongClickListener(paramOnLongClickAndTouchListener);
     paramViewHolder.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
@@ -94,117 +94,127 @@ public class ShakeItemBuilder
         localHolder.b.setLength(0);
       }
       paramView = new StringBuilder();
-      if (paramChatMessage.time > 0L) {
-        paramView.append(TimeFormatterUtils.a(paramBaseChatItemLayout, 3, paramChatMessage.time * 1000L)).append(" ");
+      if (paramChatMessage.time > 0L)
+      {
+        paramView.append(TimeFormatterUtils.a(paramBaseChatItemLayout, 3, paramChatMessage.time * 1000L));
+        paramView.append(" ");
       }
-      if (!paramChatMessage.isSend()) {
-        break label417;
+      if (paramChatMessage.isSend())
+      {
+        paramView.append("我抖了");
+        paramView.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+        paramView.append("一下");
       }
-      paramView.append("我抖了").append(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d).append("一下");
-    }
-    for (;;)
-    {
+      else
+      {
+        paramView.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+        paramView.append("抖了你一下");
+      }
       paramViewHolder.setContentDescription(paramView.toString());
-      return paramViewHolder;
-      label417:
-      paramView.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d).append("抖了你一下");
     }
+    return paramViewHolder;
   }
   
-  public BaseBubbleBuilder.ViewHolder a()
+  protected BaseBubbleBuilder.ViewHolder a()
   {
     return new ShakeItemBuilder.Holder(this);
   }
   
-  public String a(ChatMessage paramChatMessage)
+  protected String a(ChatMessage paramChatMessage)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    if (paramChatMessage.time > 0L) {
-      localStringBuilder.append(TimeFormatterUtils.a(this.jdField_a_of_type_AndroidContentContext, 3, paramChatMessage.time * 1000L)).append(" ");
-    }
-    if (paramChatMessage.isSend()) {
-      localStringBuilder.append("我抖了").append(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d).append("一下");
-    }
-    for (;;)
+    if (paramChatMessage.time > 0L)
     {
-      return localStringBuilder.toString();
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d).append("抖了你一下");
+      localStringBuilder.append(TimeFormatterUtils.a(this.jdField_a_of_type_AndroidContentContext, 3, paramChatMessage.time * 1000L));
+      localStringBuilder.append(" ");
     }
+    if (paramChatMessage.isSend())
+    {
+      localStringBuilder.append("我抖了");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+      localStringBuilder.append("一下");
+    }
+    else
+    {
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+      localStringBuilder.append("抖了你一下");
+    }
+    return localStringBuilder.toString();
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
   {
-    switch (paramInt)
+    if (paramInt != 2131365480)
     {
-    default: 
-      return;
-    case 2131365636: 
-      ChatActivityFacade.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
+      if (paramInt != 2131371603) {
+        return;
+      }
+      super.a(paramInt, this.jdField_a_of_type_AndroidContentContext, paramChatMessage);
       return;
     }
-    super.a(paramInt, this.jdField_a_of_type_AndroidContentContext, paramChatMessage);
+    ChatActivityFacade.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
   }
   
-  public void a(View paramView)
+  protected void a(View paramView)
   {
     super.a(paramView);
     paramView = (MessageForShakeWindow)AIOUtils.a(paramView);
-    String str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131690018);
-    String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131690019);
+    String str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131689933);
+    String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131689934);
     if (paramView.isSendFromLocal()) {
       DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new ShakeItemBuilder.2(this, paramView), new ShakeItemBuilder.3(this)).show();
     }
   }
   
-  public void a(BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, ChatMessage paramChatMessage, BubbleInfo paramBubbleInfo)
+  protected void a(BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, ChatMessage paramChatMessage, BubbleInfo paramBubbleInfo)
   {
     ShakeItemBuilder.Holder localHolder = (ShakeItemBuilder.Holder)paramViewHolder;
-    if ((paramBubbleInfo.a == 0) || (!paramBubbleInfo.a()))
+    if ((paramBubbleInfo.a != 0) && (paramBubbleInfo.a()))
     {
-      paramView = paramView.getResources();
-      if (paramChatMessage.isSend())
-      {
-        paramViewHolder = paramView.getColorStateList(2131167056);
-        if (paramViewHolder != null) {
-          localHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramViewHolder);
-        }
-        if (!paramChatMessage.isSend()) {
-          break label90;
-        }
+      if (paramBubbleInfo.b == 0) {
+        localHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+      } else {
+        localHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramBubbleInfo.b);
       }
-      label90:
-      for (paramViewHolder = paramView.getColorStateList(2131167055);; paramViewHolder = paramView.getColorStateList(2131167054))
+      if (paramBubbleInfo.c == 0)
       {
-        localHolder.jdField_a_of_type_AndroidWidgetTextView.setLinkTextColor(paramViewHolder);
+        localHolder.jdField_a_of_type_AndroidWidgetTextView.setLinkTextColor(paramView.getResources().getColorStateList(2131167077));
         return;
-        paramViewHolder = paramView.getColorStateList(2131167052);
-        break;
       }
-    }
-    if (paramBubbleInfo.b == 0) {
-      localHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-    }
-    while (paramBubbleInfo.c == 0)
-    {
-      localHolder.jdField_a_of_type_AndroidWidgetTextView.setLinkTextColor(paramView.getResources().getColorStateList(2131167054));
+      localHolder.jdField_a_of_type_AndroidWidgetTextView.setLinkTextColor(paramBubbleInfo.c);
       return;
-      localHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramBubbleInfo.b);
     }
-    localHolder.jdField_a_of_type_AndroidWidgetTextView.setLinkTextColor(paramBubbleInfo.c);
+    paramViewHolder = paramView.getResources();
+    int i;
+    if (paramChatMessage.isSend()) {
+      i = 2131167079;
+    } else {
+      i = 2131167075;
+    }
+    paramView = paramViewHolder.getColorStateList(i);
+    if (paramView != null) {
+      localHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramView);
+    }
+    if (paramChatMessage.isSend()) {
+      paramViewHolder = paramViewHolder.getColorStateList(2131167078);
+    } else {
+      paramViewHolder = paramViewHolder.getColorStateList(2131167077);
+    }
+    localHolder.jdField_a_of_type_AndroidWidgetTextView.setLinkTextColor(paramViewHolder);
   }
   
   public QQCustomMenuItem[] a(View paramView)
   {
     paramView = new QQCustomMenu();
     ChatActivityFacade.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    super.a(paramView, this.jdField_a_of_type_AndroidContentContext, 2131371997, null, null);
-    super.a(paramView, this.jdField_a_of_type_AndroidContentContext, 2131362524, null, null);
+    super.a(paramView, this.jdField_a_of_type_AndroidContentContext, 2131371603, null, null);
+    super.a(paramView, this.jdField_a_of_type_AndroidContentContext, 2131362480, null, null);
     return paramView.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShakeItemBuilder
  * JD-Core Version:    0.7.0.1
  */

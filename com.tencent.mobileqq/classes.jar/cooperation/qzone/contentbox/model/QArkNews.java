@@ -42,19 +42,20 @@ public final class QArkNews
   
   public static JSONArray convertToJsonArray(ArrayList<QArkNews> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return null;
-    }
-    JSONArray localJSONArray = new JSONArray();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
+    if ((paramArrayList != null) && (paramArrayList.size() != 0))
     {
-      QArkNews localQArkNews = (QArkNews)paramArrayList.next();
-      if (localQArkNews != null) {
-        localJSONArray.put(localQArkNews.convertToJson());
+      JSONArray localJSONArray = new JSONArray();
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        QArkNews localQArkNews = (QArkNews)paramArrayList.next();
+        if (localQArkNews != null) {
+          localJSONArray.put(localQArkNews.convertToJson());
+        }
       }
+      return localJSONArray;
     }
-    return localJSONArray;
+    return null;
   }
   
   private static QArkNews parseFromJson(JSONObject paramJSONObject)
@@ -83,29 +84,25 @@ public final class QArkNews
   
   public static ArrayList<QArkNews> parseFromJsonArray(JSONArray paramJSONArray)
   {
-    if ((paramJSONArray == null) || (paramJSONArray.length() == 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    for (;;)
+    if ((paramJSONArray != null) && (paramJSONArray.length() != 0))
     {
-      if (i < paramJSONArray.length()) {
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      while (i < paramJSONArray.length())
+      {
         try
         {
           localArrayList.add(parseFromJson((JSONObject)paramJSONArray.get(i)));
-          i += 1;
         }
         catch (Exception localException)
         {
-          for (;;)
-          {
-            QZLog.e("QZoneMsgManager.QArkNews", "parseFromJsonArray error", localException);
-          }
+          QZLog.e("QZoneMsgManager.QArkNews", "parseFromJsonArray error", localException);
         }
+        i += 1;
       }
+      return localArrayList;
     }
-    return localArrayList;
+    return null;
   }
   
   private static QArkNews readFrom(NS_QZONE_MQMSG.QArkNews paramQArkNews)
@@ -123,24 +120,25 @@ public final class QArkNews
   
   public static ArrayList<QArkNews> readFromList(ArrayList<NS_QZONE_MQMSG.QArkNews> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
+    if ((paramArrayList != null) && (paramArrayList.size() != 0))
     {
-      NS_QZONE_MQMSG.QArkNews localQArkNews = (NS_QZONE_MQMSG.QArkNews)paramArrayList.next();
-      if (localQArkNews != null) {
-        localArrayList.add(readFrom(localQArkNews));
+      ArrayList localArrayList = new ArrayList();
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        NS_QZONE_MQMSG.QArkNews localQArkNews = (NS_QZONE_MQMSG.QArkNews)paramArrayList.next();
+        if (localQArkNews != null) {
+          localArrayList.add(readFrom(localQArkNews));
+        }
       }
+      return localArrayList;
     }
-    return localArrayList;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.contentbox.model.QArkNews
  * JD-Core Version:    0.7.0.1
  */

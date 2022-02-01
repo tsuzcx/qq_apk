@@ -23,15 +23,12 @@ final class a
   
   public final e a(com.b.a.m<?> paramm, Map<String, String> paramMap)
   {
-    k localk;
-    int j;
-    TreeMap localTreeMap;
     try
     {
-      localk = this.a.b(paramm, paramMap);
-      j = localk.b().a();
+      k localk = this.a.b(paramm, paramMap);
+      int j = localk.b().a();
       g[] arrayOfg = localk.a();
-      localTreeMap = new TreeMap(String.CASE_INSENSITIVE_ORDER);
+      TreeMap localTreeMap = new TreeMap(String.CASE_INSENSITIVE_ORDER);
       int k = arrayOfg.length;
       int i = 0;
       while (i < k)
@@ -47,26 +44,30 @@ final class a
         paramm.add(localg.b());
         i += 1;
       }
-      if (localk.c() != null) {
-        break label169;
+      if (localk.c() == null) {
+        return new e(j, localTreeMap);
       }
+      long l = localk.c().a();
+      if ((int)l == l) {
+        return new e(j, localTreeMap, (int)localk.c().a(), localk.c().b());
+      }
+      paramm = new StringBuilder("Response too large: ");
+      paramm.append(l);
+      throw new IOException(paramm.toString());
     }
     catch (ConnectTimeoutException paramm)
     {
-      throw new SocketTimeoutException(paramm.getMessage());
+      paramm = new SocketTimeoutException(paramm.getMessage());
     }
-    return new e(j, localTreeMap);
-    label169:
-    long l = localk.c().a();
-    if ((int)l != l) {
-      throw new IOException("Response too large: " + l);
+    for (;;)
+    {
+      throw paramm;
     }
-    return new e(j, localTreeMap, (int)localk.c().a(), localk.c().b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.b.a.a.a
  * JD-Core Version:    0.7.0.1
  */

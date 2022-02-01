@@ -53,30 +53,14 @@ public class MiniAppUseUserAppServlet
     String str1 = paramIntent.getStringExtra("key_refer");
     String str2 = paramIntent.getStringExtra("key_via");
     int k = paramIntent.getIntExtra("key_index", -1);
-    Object localObject1 = null;
-    if (arrayOfByte != null) {
+    if (arrayOfByte != null)
+    {
       localObject1 = new COMM.StCommonExt();
-    }
-    try
-    {
-      ((COMM.StCommonExt)localObject1).mergeFrom(arrayOfByte);
-      localObject2 = new UseUserAppRequest((COMM.StCommonExt)localObject1, (String)localObject2, i, j, str1, str2).encode(paramIntent, k, getTraceId());
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = new byte[4];
+      try
+      {
+        ((COMM.StCommonExt)localObject1).mergeFrom(arrayOfByte);
       }
-      paramPacket.setSSOCommand("LightAppSvc.mini_app_userapp.UseUserApp");
-      paramPacket.putSendData(WupUtil.a((byte[])localObject1));
-      paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniAppSetUserAppTopServlet", 2, "onSend. intent: " + paramIntent.toString());
-      }
-      super.onSend(paramIntent, paramPacket);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
         if (QLog.isColorLevel()) {
           QLog.e("MiniAppSetUserAppTopServlet", 2, "onSend. mergeFrom exception!");
@@ -84,11 +68,31 @@ public class MiniAppUseUserAppServlet
         localInvalidProtocolBufferMicroException.printStackTrace();
       }
     }
+    else
+    {
+      localObject1 = null;
+    }
+    localObject2 = new UseUserAppRequest((COMM.StCommonExt)localObject1, (String)localObject2, i, j, str1, str2).encode(paramIntent, k, getTraceId());
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new byte[4];
+    }
+    paramPacket.setSSOCommand("LightAppSvc.mini_app_userapp.UseUserApp");
+    paramPacket.putSendData(WupUtil.a((byte[])localObject1));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onSend. intent: ");
+      ((StringBuilder)localObject1).append(paramIntent.toString());
+      QLog.d("MiniAppSetUserAppTopServlet", 2, ((StringBuilder)localObject1).toString());
+    }
+    super.onSend(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppUseUserAppServlet
  * JD-Core Version:    0.7.0.1
  */

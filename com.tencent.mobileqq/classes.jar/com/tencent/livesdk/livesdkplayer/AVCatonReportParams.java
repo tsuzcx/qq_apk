@@ -27,7 +27,12 @@ public class AVCatonReportParams
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_b_of_type_JavaLangString = ("" + paramInt1 + "x" + paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("x");
+    localStringBuilder.append(paramInt2);
+    this.jdField_b_of_type_JavaLangString = localStringBuilder.toString();
   }
   
   public void a(long paramLong)
@@ -138,7 +143,7 @@ public class AVCatonReportParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.livesdkplayer.AVCatonReportParams
  * JD-Core Version:    0.7.0.1
  */

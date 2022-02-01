@@ -36,7 +36,7 @@ public final class mobile_online_report_item
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_online_report_item
  * JD-Core Version:    0.7.0.1
  */

@@ -42,25 +42,37 @@ public class MonitorServlet
 {
   private static int a()
   {
-    switch (NetworkUtil.b(BaseApplicationImpl.getContext()))
+    int j = NetworkUtil.getNetworkType(BaseApplicationImpl.getContext());
+    int i = 4;
+    if (j != 1)
     {
-    default: 
-      return 1;
-    case 1: 
-      return 3;
-    case 4: 
-      return 4;
-    case 3: 
-      return 5;
+      if (j != 2)
+      {
+        if (j != 3)
+        {
+          if (j != 4) {
+            return 1;
+          }
+        }
+        else {
+          return 5;
+        }
+      }
+      else {
+        return 6;
+      }
     }
-    return 6;
+    else {
+      i = 3;
+    }
+    return i;
   }
   
   private static mobile_monitor_report.UserCommReport a()
   {
     mobile_monitor_report.UserCommReport localUserCommReport = new mobile_monitor_report.UserCommReport();
     localUserCommReport.qua.set(String.valueOf(QUA.getQUA3()));
-    localUserCommReport.imei.set(String.valueOf(MobileInfoUtil.c()));
+    localUserCommReport.imei.set(String.valueOf(MobileInfoUtil.getImei()));
     String str = ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).getCityCode();
     localUserCommReport.city_code.set(str);
     localUserCommReport.mobile_type.set(Build.MODEL);
@@ -71,12 +83,16 @@ public class MonitorServlet
   
   private void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    byte[] arrayOfByte = null;
+    Object localObject;
     if (paramFromServiceMsg.isSuccess())
     {
       i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      PkgTools.copyData(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+      localObject = new byte[i];
+      PkgTools.copyData((byte[])localObject, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    }
+    else
+    {
+      localObject = null;
     }
     mobile_monitor_report.PkgRsp localPkgRsp = new mobile_monitor_report.PkgRsp();
     int i = paramFromServiceMsg.getResultCode();
@@ -84,7 +100,7 @@ public class MonitorServlet
       try
       {
         paramFromServiceMsg = new Unisso.UniSsoServerRsp();
-        paramFromServiceMsg.mergeFrom(arrayOfByte);
+        paramFromServiceMsg.mergeFrom((byte[])localObject);
         long l = paramFromServiceMsg.ret.get();
         if (QLog.isColorLevel()) {
           QLog.d("MonitorServlet", 1, new Object[] { " unissoResult=", Long.valueOf(l) });
@@ -94,24 +110,37 @@ public class MonitorServlet
         if (i == 0)
         {
           MonitorManager.a().a(localPkgRsp.mult_cnt.get(), localPkgRsp.mult_delay.get());
-          if (QLog.isColorLevel()) {
-            QLog.d("MonitorServlet", 2, "onReceive ret " + i);
+          if (QLog.isColorLevel())
+          {
+            paramFromServiceMsg = new StringBuilder();
+            paramFromServiceMsg.append("onReceive ret ");
+            paramFromServiceMsg.append(i);
+            QLog.d("MonitorServlet", 2, paramFromServiceMsg.toString());
           }
           notifyObserver(paramIntent, 1000, true, new Bundle(), MonitorObserver.class);
           return;
         }
-        QLog.d("MonitorServlet", 2, "onReceive ret " + i);
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("onReceive ret ");
+        paramFromServiceMsg.append(i);
+        QLog.d("MonitorServlet", 2, paramFromServiceMsg.toString());
         notifyObserver(paramIntent, 1000, false, new Bundle(), MonitorObserver.class);
         return;
       }
       catch (Exception paramFromServiceMsg)
       {
-        QLog.e("MonitorServlet", 2, "onReceive exception " + paramFromServiceMsg);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onReceive exception ");
+        ((StringBuilder)localObject).append(paramFromServiceMsg);
+        QLog.e("MonitorServlet", 2, ((StringBuilder)localObject).toString());
         notifyObserver(paramIntent, 1000, false, new Bundle(), MonitorObserver.class);
         return;
       }
     }
-    QLog.e("MonitorServlet", 2, "onReceive result fail with result " + i);
+    paramFromServiceMsg = new StringBuilder();
+    paramFromServiceMsg.append("onReceive result fail with result ");
+    paramFromServiceMsg.append(i);
+    QLog.e("MonitorServlet", 2, paramFromServiceMsg.toString());
     notifyObserver(paramIntent, 1000, false, new Bundle(), MonitorObserver.class);
   }
   
@@ -127,7 +156,7 @@ public class MonitorServlet
     Unisso.UniSsoServerReqComm localUniSsoServerReqComm = new Unisso.UniSsoServerReqComm();
     localUniSsoServerReqComm.platform.set(109L);
     localUniSsoServerReqComm.osver.set(Build.VERSION.RELEASE);
-    localUniSsoServerReqComm.mqqver.set("8.5.5");
+    localUniSsoServerReqComm.mqqver.set("8.7.0");
     localUniSsoServerReq.comm.set(localUniSsoServerReqComm);
     localUniSsoServerReq.reqdata.set(ByteStringMicro.copyFrom(localPkgExceptionReq.toByteArray()));
     paramList.putExtra("data", WupUtil.a(localUniSsoServerReq.toByteArray()));
@@ -137,20 +166,24 @@ public class MonitorServlet
   
   private void b(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    byte[] arrayOfByte = null;
+    Object localObject;
     if (paramFromServiceMsg.isSuccess())
     {
       i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      PkgTools.copyData(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+      localObject = new byte[i];
+      PkgTools.copyData((byte[])localObject, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    }
+    else
+    {
+      localObject = null;
     }
     mobile_monitor_report.PkgRsp localPkgRsp = new mobile_monitor_report.PkgRsp();
     int i = paramFromServiceMsg.getResultCode();
-    if (i == 1000) {
+    if ((i == 1000) && (localObject != null)) {
       try
       {
         paramFromServiceMsg = new Unisso.UniSsoServerRsp();
-        paramFromServiceMsg.mergeFrom(arrayOfByte);
+        paramFromServiceMsg.mergeFrom((byte[])localObject);
         long l = paramFromServiceMsg.ret.get();
         if (QLog.isColorLevel()) {
           QLog.d("MonitorServlet", 1, new Object[] { " unissoResult=", Long.valueOf(l) });
@@ -160,24 +193,37 @@ public class MonitorServlet
         if (i == 0)
         {
           MonitorManager.a().a(localPkgRsp.mult_cnt.get(), localPkgRsp.mult_delay.get());
-          if (QLog.isColorLevel()) {
-            QLog.d("MonitorServlet", 2, "onReceive ret " + i);
+          if (QLog.isColorLevel())
+          {
+            paramFromServiceMsg = new StringBuilder();
+            paramFromServiceMsg.append("onReceive ret ");
+            paramFromServiceMsg.append(i);
+            QLog.d("MonitorServlet", 2, paramFromServiceMsg.toString());
           }
           notifyObserver(paramIntent, 1000, true, new Bundle(), MonitorObserver.class);
           return;
         }
-        QLog.d("MonitorServlet", 2, "onReceive ret " + i);
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("onReceive ret ");
+        paramFromServiceMsg.append(i);
+        QLog.d("MonitorServlet", 2, paramFromServiceMsg.toString());
         notifyObserver(paramIntent, 1000, false, new Bundle(), MonitorObserver.class);
         return;
       }
       catch (Exception paramFromServiceMsg)
       {
-        QLog.e("MonitorServlet", 2, "onReceive exception " + paramFromServiceMsg);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onReceive exception ");
+        ((StringBuilder)localObject).append(paramFromServiceMsg);
+        QLog.e("MonitorServlet", 2, ((StringBuilder)localObject).toString());
         notifyObserver(paramIntent, 1000, false, new Bundle(), MonitorObserver.class);
         return;
       }
     }
-    QLog.e("MonitorServlet", 2, "onReceive result fail with result " + i);
+    paramFromServiceMsg = new StringBuilder();
+    paramFromServiceMsg.append("onReceive result fail with result ");
+    paramFromServiceMsg.append(i);
+    QLog.e("MonitorServlet", 2, paramFromServiceMsg.toString());
     notifyObserver(paramIntent, 1000, false, new Bundle(), MonitorObserver.class);
   }
   
@@ -193,7 +239,7 @@ public class MonitorServlet
     Unisso.UniSsoServerReqComm localUniSsoServerReqComm = new Unisso.UniSsoServerReqComm();
     localUniSsoServerReqComm.platform.set(109L);
     localUniSsoServerReqComm.osver.set(Build.VERSION.RELEASE);
-    localUniSsoServerReqComm.mqqver.set("8.5.5");
+    localUniSsoServerReqComm.mqqver.set("8.7.0");
     localUniSsoServerReq.comm.set(localUniSsoServerReqComm);
     localUniSsoServerReq.reqdata.set(ByteStringMicro.copyFrom(localPkgTraceReq.toByteArray()));
     paramList.putExtra("data", WupUtil.a(localUniSsoServerReq.toByteArray()));
@@ -203,39 +249,50 @@ public class MonitorServlet
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MonitorServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
-    }
-    if ((paramIntent == null) || (paramFromServiceMsg == null)) {}
-    String str2;
-    label157:
-    do
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      do
-      {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onReceive cmd=");
+      ((StringBuilder)localObject).append(paramIntent.getStringExtra("cmd"));
+      ((StringBuilder)localObject).append(",success=");
+      ((StringBuilder)localObject).append(paramFromServiceMsg.isSuccess());
+      QLog.d("MonitorServlet", 2, ((StringBuilder)localObject).toString());
+    }
+    if (paramIntent != null)
+    {
+      if (paramFromServiceMsg == null) {
         return;
-        str2 = paramFromServiceMsg.getServiceCmd();
-      } while (str2 == null);
-      StringBuilder localStringBuilder;
+      }
+      String str = paramFromServiceMsg.getServiceCmd();
+      if (str == null) {
+        return;
+      }
       if (QLog.isColorLevel())
       {
         boolean bool = paramFromServiceMsg.isSuccess();
-        localStringBuilder = new StringBuilder().append("resp:").append(str2).append(" is ");
-        if (!bool) {
-          break label157;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("resp:");
+        localStringBuilder.append(str);
+        localStringBuilder.append(" is ");
+        if (bool) {
+          localObject = "";
+        } else {
+          localObject = "not";
         }
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append(" success");
+        QLog.d("MonitorServlet", 2, localStringBuilder.toString());
       }
-      for (String str1 = "";; str1 = "not")
+      if (str.equals("MobileReport.ExceptionReport"))
       {
-        QLog.d("MonitorServlet", 2, str1 + " success");
-        if (!str2.equals("MobileReport.ExceptionReport")) {
-          break;
-        }
         a(paramIntent, paramFromServiceMsg);
         return;
       }
-    } while (!str2.equals("MobileReport.TraceReport"));
-    b(paramIntent, paramFromServiceMsg);
+      if (str.equals("MobileReport.TraceReport")) {
+        b(paramIntent, paramFromServiceMsg);
+      }
+    }
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -246,14 +303,18 @@ public class MonitorServlet
     paramPacket.setSSOCommand(str);
     paramPacket.setTimeout(l);
     paramPacket.putSendData(arrayOfByte);
-    if (QLog.isColorLevel()) {
-      QLog.d("MonitorServlet", 2, "onSend exit cmd=" + str);
+    if (QLog.isColorLevel())
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("onSend exit cmd=");
+      paramIntent.append(str);
+      QLog.d("MonitorServlet", 2, paramIntent.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.manager.MonitorServlet
  * JD-Core Version:    0.7.0.1
  */

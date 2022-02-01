@@ -6,7 +6,8 @@ import com.tencent.component.media.image.ImageManager;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.transfile.chatpic.PicUploadFileSizeLimit;
+import com.tencent.mobileqq.pic.api.IPicBus;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.util.Pair;
 import com.tencent.util.UiThreadUtil;
 import java.io.File;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map<Ljava.lang.String;Lcom.tencent.mobileqq.activity.photo.LocalMediaInfo;>;
 
 public class SendByFile
 {
@@ -25,10 +27,11 @@ public class SendByFile
   
   public static void a(QQAppInterface paramQQAppInterface, List<String> paramList, String paramString, int paramInt)
   {
-    if ((paramQQAppInterface == null) || (paramList == null)) {}
-    for (;;)
+    if (paramQQAppInterface != null)
     {
-      return;
+      if (paramList == null) {
+        return;
+      }
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
@@ -44,7 +47,7 @@ public class SendByFile
   
   protected int a()
   {
-    return (int)PicUploadFileSizeLimit.getLimitC2C();
+    return (int)((IPicBus)QRoute.api(IPicBus.class)).getC2CPicSizeLimit();
   }
   
   public SendByFile a(long paramLong)
@@ -108,16 +111,14 @@ public class SendByFile
           }
           if (i == 1)
           {
-            if ((l1 > this.b) || ((l1 > this.c) && (paramBoolean)))
+            if ((l1 <= this.b) && ((l1 <= this.c) || (!paramBoolean)))
             {
-              if (this.jdField_a_of_type_Boolean)
-              {
-                ((ArrayList)localPair.second).add(str);
-                AlbumUtil.c();
-              }
-            }
-            else {
               ((ArrayList)localPair.first).add(str);
+            }
+            else if (this.jdField_a_of_type_Boolean)
+            {
+              ((ArrayList)localPair.second).add(str);
+              AlbumUtil.c();
             }
           }
           else if ((l1 > this.jdField_a_of_type_Long) && (paramBoolean))
@@ -137,19 +138,17 @@ public class SendByFile
   
   public boolean a(Context paramContext, String paramString, boolean paramBoolean1, Map<String, LocalMediaInfo> paramMap1, Map<String, LocalMediaInfo> paramMap2, boolean paramBoolean2)
   {
-    if (ImageManager.isNetworkUrl(paramString))
-    {
-      paramBoolean2 = false;
-      return paramBoolean2;
+    if (ImageManager.isNetworkUrl(paramString)) {
+      return false;
     }
-    LocalMediaInfo localLocalMediaInfo = null;
+    Object localObject = null;
     if (paramMap1 != null) {
-      localLocalMediaInfo = (LocalMediaInfo)paramMap1.get(paramString);
+      localObject = (LocalMediaInfo)paramMap1.get(paramString);
     }
-    paramMap1 = localLocalMediaInfo;
-    if (localLocalMediaInfo == null)
+    paramMap1 = (Map<String, LocalMediaInfo>)localObject;
+    if (localObject == null)
     {
-      paramMap1 = localLocalMediaInfo;
+      paramMap1 = (Map<String, LocalMediaInfo>)localObject;
       if (paramMap2 != null) {
         paramMap1 = (LocalMediaInfo)paramMap2.get(paramString);
       }
@@ -169,114 +168,122 @@ public class SendByFile
       }
     }
     paramString = "";
-    double d1;
+    boolean bool = true;
     if (i == 1)
     {
-      if ((l1 <= this.b) && ((l1 <= this.c) || (!paramBoolean1))) {
-        break label574;
+      if ((l1 > this.b) || ((l1 > this.c) && (paramBoolean1)))
+      {
+        if (this.jdField_a_of_type_Boolean)
+        {
+          paramBoolean1 = bool;
+          if (!paramBoolean2) {
+            break label586;
+          }
+          paramMap1 = new DecimalFormat("#.##");
+          l2 = this.b;
+          paramString = "M";
+          double d1;
+          if (l1 > l2)
+          {
+            double d2 = (float)l2 * 1.0F / 1024.0F / 1024.0F + 1.0F;
+            d1 = d2;
+            if (d2 > 1000.0D)
+            {
+              Double.isNaN(d2);
+              d1 = d2 / 1024.0D;
+              paramString = "G";
+            }
+          }
+          else
+          {
+            d1 = this.c / 1024L / 1024L + 1L;
+          }
+          paramMap2 = paramContext.getResources().getString(2131689970);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("");
+          ((StringBuilder)localObject).append(paramMap1.format(d1));
+          paramString = String.format(paramMap2, new Object[] { ((StringBuilder)localObject).toString(), paramString });
+          paramBoolean1 = bool;
+          break label586;
+        }
+        paramBoolean1 = bool;
+        if (!paramBoolean2) {
+          break label586;
+        }
+        paramString = paramContext.getResources().getString(2131689971);
+        paramMap1 = new StringBuilder();
+        paramMap1.append("");
+        paramMap1.append(this.c / 1024L / 1024L + 1L);
+        paramString = String.format(paramString, new Object[] { paramMap1.toString() });
+        paramBoolean1 = bool;
+        break label586;
       }
+    }
+    else if ((l1 > this.jdField_a_of_type_Long) && (paramBoolean1))
+    {
       if (this.jdField_a_of_type_Boolean)
       {
+        paramBoolean1 = bool;
         if (!paramBoolean2) {
-          break label582;
+          break label586;
         }
-        paramString = "M";
-        paramMap1 = new DecimalFormat("#.##");
-        if (l1 > this.b)
-        {
-          double d2 = (float)this.b * 1.0F / 1024.0F / 1024.0F + 1.0F;
-          d1 = d2;
-          if (d2 > 1000.0D)
-          {
-            paramString = "G";
-            d1 = d2 / 1024.0D;
-          }
-          label234:
-          paramString = String.format(paramContext.getResources().getString(2131690055), new Object[] { "" + paramMap1.format(d1), paramString });
-        }
+        paramString = paramContext.getResources().getString(2131689918);
+        paramMap1 = new StringBuilder();
+        paramMap1.append("");
+        paramMap1.append(this.jdField_a_of_type_Long / 1024L / 1024L);
+        paramString = String.format(paramString, new Object[] { paramMap1.toString() });
+        paramBoolean1 = bool;
+        break label586;
       }
+      paramBoolean1 = bool;
+      if (!paramBoolean2) {
+        break label586;
+      }
+      paramString = paramContext.getResources().getString(2131689919);
+      paramMap1 = new StringBuilder();
+      paramMap1.append("");
+      paramMap1.append(this.jdField_a_of_type_Long / 1024L / 1024L);
+      paramString = String.format(paramString, new Object[] { paramMap1.toString() });
+      paramBoolean1 = bool;
+      break label586;
     }
-    for (;;)
+    paramBoolean1 = false;
+    label586:
+    paramMap1 = paramString;
+    if (paramBoolean1)
     {
-      label283:
-      paramBoolean1 = true;
-      for (;;)
-      {
-        paramMap1 = paramString;
-        if (paramBoolean1)
-        {
-          paramMap1 = paramString;
-          if (!paramBoolean2) {
-            if (!this.jdField_a_of_type_Boolean) {
-              break label560;
-            }
-          }
+      paramMap1 = paramString;
+      if (!paramBoolean2) {
+        if (this.jdField_a_of_type_Boolean) {
+          paramMap1 = paramContext.getResources().getString(2131689832);
+        } else {
+          paramMap1 = paramContext.getResources().getString(2131689833);
         }
-        label560:
-        for (paramMap1 = paramContext.getResources().getString(2131689918);; paramMap1 = paramContext.getResources().getString(2131689919))
-        {
-          paramBoolean2 = paramBoolean1;
-          if (!paramBoolean1) {
-            break;
-          }
-          UiThreadUtil.a(new SendByFile.1(this, paramContext, paramMap1));
-          return paramBoolean1;
-          d1 = this.c / 1024L / 1024L + 1L;
-          break label234;
-          if (!paramBoolean2) {
-            break label582;
-          }
-          paramString = String.format(paramContext.getResources().getString(2131690056), new Object[] { "" + (this.c / 1024L / 1024L + 1L) });
-          break label283;
-          if ((l1 <= this.jdField_a_of_type_Long) || (!paramBoolean1)) {
-            break label574;
-          }
-          if (this.jdField_a_of_type_Boolean) {
-            if (paramBoolean2) {
-              paramString = String.format(paramContext.getResources().getString(2131690003), new Object[] { "" + this.jdField_a_of_type_Long / 1024L / 1024L });
-            }
-          }
-          for (;;)
-          {
-            paramBoolean1 = true;
-            break;
-            if (paramBoolean2) {
-              paramString = String.format(paramContext.getResources().getString(2131690004), new Object[] { "" + this.jdField_a_of_type_Long / 1024L / 1024L });
-            }
-          }
-        }
-        label574:
-        paramString = "";
-        paramBoolean1 = false;
       }
-      label582:
-      paramString = "";
     }
+    if (paramBoolean1) {
+      UiThreadUtil.a(new SendByFile.1(this, paramContext, paramMap1));
+    }
+    return paramBoolean1;
   }
   
   public boolean a(Context paramContext, List<String> paramList, boolean paramBoolean, Map<String, LocalMediaInfo> paramMap1, Map<String, LocalMediaInfo> paramMap2)
   {
-    if (paramList == null) {}
-    do
-    {
-      while (!paramList.hasNext())
-      {
-        return false;
-        paramList = paramList.iterator();
+    if (paramList == null) {
+      return false;
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      if (a(paramContext, (String)paramList.next(), paramBoolean, paramMap1, paramMap2, false)) {
+        return true;
       }
-    } while (!a(paramContext, (String)paramList.next(), paramBoolean, paramMap1, paramMap2, false));
-    return true;
-  }
-  
-  public SendByFile b(long paramLong)
-  {
-    this.b = paramLong;
-    return this;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.SendByFile
  * JD-Core Version:    0.7.0.1
  */

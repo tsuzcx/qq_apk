@@ -44,14 +44,15 @@ public final class AnswerAddedFriendResp
     paramJceOutputStream.write(this.myfriendgroupid, 2);
     paramJceOutputStream.write(this.result, 3);
     paramJceOutputStream.write(this.errorCode, 4);
-    if (this.ErrorString != null) {
-      paramJceOutputStream.write(this.ErrorString, 5);
+    String str = this.ErrorString;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     friendlist.AnswerAddedFriendResp
  * JD-Core Version:    0.7.0.1
  */

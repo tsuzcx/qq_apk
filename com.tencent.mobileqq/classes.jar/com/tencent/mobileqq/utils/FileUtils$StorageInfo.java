@@ -2,23 +2,23 @@ package com.tencent.mobileqq.utils;
 
 public class FileUtils$StorageInfo
 {
-  public String a;
-  public boolean a;
-  public String b;
+  public boolean isRemoveable;
+  public String path;
+  public String state;
   
   public FileUtils$StorageInfo(String paramString)
   {
-    this.a = paramString;
+    this.path = paramString;
   }
   
-  public boolean a()
+  public boolean isMounted()
   {
-    return "mounted".equals(this.b);
+    return "mounted".equals(this.state);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.FileUtils.StorageInfo
  * JD-Core Version:    0.7.0.1
  */

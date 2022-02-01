@@ -7,7 +7,7 @@ import kotlin.jvm.internal.DoubleCompanionObject;
 import kotlin.jvm.internal.FloatCompanionObject;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"absoluteValue", "", "absoluteValue$annotations", "(D)V", "getAbsoluteValue", "(D)D", "", "(F)V", "(F)F", "", "(I)V", "(I)I", "", "(J)V", "(J)J", "sign", "sign$annotations", "getSign", "(J)I", "ulp", "ulp$annotations", "getUlp", "abs", "x", "n", "acos", "acosh", "asin", "asinh", "atan", "atan2", "y", "atanh", "ceil", "cos", "cosh", "exp", "expm1", "floor", "hypot", "ln", "ln1p", "log", "base", "log10", "log2", "max", "a", "b", "min", "round", "sin", "sinh", "sqrt", "tan", "tanh", "truncate", "IEEErem", "divisor", "nextDown", "nextTowards", "to", "nextUp", "pow", "roundToInt", "roundToLong", "withSign", "kotlin-stdlib"}, k=5, mv={1, 1, 16}, xi=1, xs="kotlin/math/MathKt")
-public class MathKt__MathJVMKt
+class MathKt__MathJVMKt
   extends MathKt__MathHKt
 {
   @SinceKotlin(version="1.2")
@@ -69,19 +69,27 @@ public class MathKt__MathJVMKt
   @SinceKotlin(version="1.2")
   public static final double acosh(double paramDouble)
   {
-    if (paramDouble < 1) {
+    double d1 = 1;
+    if (paramDouble < d1) {
       return DoubleCompanionObject.INSTANCE.getNaN();
     }
     if (paramDouble > Constants.upper_taylor_2_bound) {
       return Math.log(paramDouble) + Constants.LN2;
     }
-    if (paramDouble - 1 >= Constants.taylor_n_bound) {
-      return Math.log(Math.sqrt(paramDouble * paramDouble - 1) + paramDouble);
+    Double.isNaN(d1);
+    double d2 = paramDouble - d1;
+    if (d2 >= Constants.taylor_n_bound)
+    {
+      Double.isNaN(d1);
+      return Math.log(paramDouble + Math.sqrt(paramDouble * paramDouble - d1));
     }
-    double d = Math.sqrt(paramDouble - 1);
-    paramDouble = d;
-    if (d >= Constants.taylor_2_bound) {
-      paramDouble = d - d * d * d / 12;
+    d1 = Math.sqrt(d2);
+    paramDouble = d1;
+    if (d1 >= Constants.taylor_2_bound)
+    {
+      paramDouble = 12;
+      Double.isNaN(paramDouble);
+      paramDouble = d1 - d1 * d1 * d1 / paramDouble;
     }
     return paramDouble * Math.sqrt(2.0D);
   }
@@ -110,25 +118,35 @@ public class MathKt__MathJVMKt
   @SinceKotlin(version="1.2")
   public static final double asinh(double paramDouble)
   {
-    double d;
-    if (paramDouble >= Constants.taylor_n_bound) {
-      if (paramDouble > Constants.upper_taylor_n_bound) {
-        if (paramDouble > Constants.upper_taylor_2_bound) {
-          d = Math.log(paramDouble) + Constants.LN2;
-        }
-      }
-    }
-    do
+    if (paramDouble >= Constants.taylor_n_bound)
     {
-      return d;
-      return Math.log(2 * paramDouble + 1 / (2 * paramDouble));
-      return Math.log(Math.sqrt(paramDouble * paramDouble + 1) + paramDouble);
-      if (paramDouble <= -Constants.taylor_n_bound) {
-        return -MathKt.asinh(-paramDouble);
+      if (paramDouble > Constants.upper_taylor_n_bound)
+      {
+        if (paramDouble > Constants.upper_taylor_2_bound) {
+          return Math.log(paramDouble) + Constants.LN2;
+        }
+        d = 2;
+        Double.isNaN(d);
+        paramDouble *= d;
+        d = 1;
+        Double.isNaN(d);
+        return Math.log(paramDouble + d / paramDouble);
       }
-      d = paramDouble;
-    } while (Math.abs(paramDouble) < Constants.taylor_2_bound);
-    return paramDouble - paramDouble * paramDouble * paramDouble / 6;
+      d = 1;
+      Double.isNaN(d);
+      return Math.log(paramDouble + Math.sqrt(paramDouble * paramDouble + d));
+    }
+    if (paramDouble <= -Constants.taylor_n_bound) {
+      return -MathKt.asinh(-paramDouble);
+    }
+    double d = paramDouble;
+    if (Math.abs(paramDouble) >= Constants.taylor_2_bound)
+    {
+      d = 6;
+      Double.isNaN(d);
+      d = paramDouble - paramDouble * paramDouble * paramDouble / d;
+    }
+    return d;
   }
   
   @SinceKotlin(version="1.2")
@@ -171,13 +189,22 @@ public class MathKt__MathJVMKt
   {
     if (Math.abs(paramDouble) < Constants.taylor_n_bound)
     {
-      double d = paramDouble;
-      if (Math.abs(paramDouble) > Constants.taylor_2_bound) {
-        d = paramDouble + paramDouble * paramDouble * paramDouble / 3;
+      d = paramDouble;
+      if (Math.abs(paramDouble) > Constants.taylor_2_bound)
+      {
+        d = 3;
+        Double.isNaN(d);
+        d = paramDouble + paramDouble * paramDouble * paramDouble / d;
       }
       return d;
     }
-    return Math.log((1 + paramDouble) / (1 - paramDouble)) / 2;
+    double d = 1;
+    Double.isNaN(d);
+    Double.isNaN(d);
+    paramDouble = Math.log((d + paramDouble) / (d - paramDouble));
+    d = 2;
+    Double.isNaN(d);
+    return paramDouble / d;
   }
   
   @SinceKotlin(version="1.2")
@@ -378,19 +405,19 @@ public class MathKt__MathJVMKt
   @SinceKotlin(version="1.2")
   public static final double log(double paramDouble1, double paramDouble2)
   {
-    if ((paramDouble2 <= 0.0D) || (paramDouble2 == 1.0D)) {
-      return DoubleCompanionObject.INSTANCE.getNaN();
+    if ((paramDouble2 > 0.0D) && (paramDouble2 != 1.0D)) {
+      return Math.log(paramDouble1) / Math.log(paramDouble2);
     }
-    return Math.log(paramDouble1) / Math.log(paramDouble2);
+    return DoubleCompanionObject.INSTANCE.getNaN();
   }
   
   @SinceKotlin(version="1.2")
   public static final float log(float paramFloat1, float paramFloat2)
   {
-    if ((paramFloat2 <= 0.0F) || (paramFloat2 == 1.0F)) {
-      return FloatCompanionObject.INSTANCE.getNaN();
+    if ((paramFloat2 > 0.0F) && (paramFloat2 != 1.0F)) {
+      return (float)(Math.log(paramFloat1) / Math.log(paramFloat2));
     }
-    return (float)(Math.log(paramFloat1) / Math.log(paramFloat2));
+    return FloatCompanionObject.INSTANCE.getNaN();
   }
   
   @SinceKotlin(version="1.2")
@@ -562,34 +589,35 @@ public class MathKt__MathJVMKt
   @SinceKotlin(version="1.2")
   public static final int roundToInt(double paramDouble)
   {
-    if (Double.isNaN(paramDouble)) {
-      throw ((Throwable)new IllegalArgumentException("Cannot round NaN value."));
+    if (!Double.isNaN(paramDouble))
+    {
+      if (paramDouble > 2147483647) {
+        return 2147483647;
+      }
+      if (paramDouble < -2147483648) {
+        return -2147483648;
+      }
+      return (int)Math.round(paramDouble);
     }
-    if (paramDouble > 2147483647) {
-      return 2147483647;
-    }
-    if (paramDouble < -2147483648) {
-      return -2147483648;
-    }
-    return (int)Math.round(paramDouble);
+    throw ((Throwable)new IllegalArgumentException("Cannot round NaN value."));
   }
   
   @SinceKotlin(version="1.2")
   public static final int roundToInt(float paramFloat)
   {
-    if (Float.isNaN(paramFloat)) {
-      throw ((Throwable)new IllegalArgumentException("Cannot round NaN value."));
+    if (!Float.isNaN(paramFloat)) {
+      return Math.round(paramFloat);
     }
-    return Math.round(paramFloat);
+    throw ((Throwable)new IllegalArgumentException("Cannot round NaN value."));
   }
   
   @SinceKotlin(version="1.2")
   public static final long roundToLong(double paramDouble)
   {
-    if (Double.isNaN(paramDouble)) {
-      throw ((Throwable)new IllegalArgumentException("Cannot round NaN value."));
+    if (!Double.isNaN(paramDouble)) {
+      return Math.round(paramDouble);
     }
-    return Math.round(paramDouble);
+    throw ((Throwable)new IllegalArgumentException("Cannot round NaN value."));
   }
   
   @SinceKotlin(version="1.2")
@@ -685,25 +713,38 @@ public class MathKt__MathJVMKt
   @SinceKotlin(version="1.2")
   public static final double truncate(double paramDouble)
   {
-    if ((Double.isNaN(paramDouble)) || (Double.isInfinite(paramDouble))) {
-      return paramDouble;
+    double d = paramDouble;
+    if (!Double.isNaN(paramDouble))
+    {
+      if (Double.isInfinite(paramDouble)) {
+        return paramDouble;
+      }
+      if (paramDouble > 0) {
+        return Math.floor(paramDouble);
+      }
+      d = Math.ceil(paramDouble);
     }
-    if (paramDouble > 0) {
-      return Math.floor(paramDouble);
-    }
-    return Math.ceil(paramDouble);
+    return d;
   }
   
   @SinceKotlin(version="1.2")
   public static final float truncate(float paramFloat)
   {
-    if ((Float.isNaN(paramFloat)) || (Float.isInfinite(paramFloat))) {
-      return paramFloat;
+    float f = paramFloat;
+    if (!Float.isNaN(paramFloat))
+    {
+      if (Float.isInfinite(paramFloat)) {
+        return paramFloat;
+      }
+      double d;
+      if (paramFloat > 0) {
+        d = Math.floor(paramFloat);
+      } else {
+        d = Math.ceil(paramFloat);
+      }
+      f = (float)d;
     }
-    if (paramFloat > 0) {
-      return (float)Math.floor(paramFloat);
-    }
-    return (float)Math.ceil(paramFloat);
+    return f;
   }
   
   @SinceKotlin(version="1.2")
@@ -736,7 +777,7 @@ public class MathKt__MathJVMKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.math.MathKt__MathJVMKt
  * JD-Core Version:    0.7.0.1
  */

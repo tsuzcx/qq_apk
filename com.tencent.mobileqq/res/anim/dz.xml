@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<animation-list android:oneshot="false"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:duration="300" android:drawable="@drawable/db8" />
-    <item android:duration="300" android:drawable="@drawable/db9" />
-    <item android:duration="300" android:drawable="@drawable/db_" />
-</animation-list>

@@ -26,17 +26,18 @@ class StructMsgItemVideo$CornerDecoder
     }
     int j = this.c;
     int k = paramBitmap.getWidth();
-    if (paramBitmap.getHeight() != 0) {}
-    for (int i = paramBitmap.getHeight();; i = this.c)
-    {
-      i = k * j / i;
-      return ImageUtil.b(paramBitmap, this.jdField_a_of_type_Int, i, this.c);
+    if (paramBitmap.getHeight() != 0) {
+      i = paramBitmap.getHeight();
+    } else {
+      i = this.c;
     }
+    int i = j * k / i;
+    return ImageUtil.b(paramBitmap, this.jdField_a_of_type_Int, i, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemVideo.CornerDecoder
  * JD-Core Version:    0.7.0.1
  */

@@ -20,14 +20,19 @@ class QQLSActivity$14
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QQLSActivity", 2, "acquireBrightWakeLock:" + localException.toString());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("acquireBrightWakeLock:");
+        localStringBuilder.append(localException.toString());
+        QLog.e("QQLSActivity", 2, localStringBuilder.toString());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSActivity.14
  * JD-Core Version:    0.7.0.1
  */

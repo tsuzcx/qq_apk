@@ -43,12 +43,13 @@ public class CacheContent
   
   public boolean getBoolean(String paramString, boolean paramBoolean)
   {
-    if (!serverConfigEnable()) {}
-    do
-    {
+    if (!serverConfigEnable()) {
       return paramBoolean;
-      paramString = this.sharedPreferences.getString(paramString, String.valueOf(paramBoolean));
-    } while (TextUtils.isEmpty(paramString));
+    }
+    paramString = this.sharedPreferences.getString(paramString, String.valueOf(paramBoolean));
+    if (TextUtils.isEmpty(paramString)) {
+      return paramBoolean;
+    }
     return paramString.matches("^(1|true)$");
   }
   
@@ -79,7 +80,8 @@ public class CacheContent
   
   public boolean isValidate()
   {
-    return (this.sharedPreferences != null) && (!(this.sharedPreferences instanceof EmptySharedPreferences));
+    SharedPreferences localSharedPreferences = this.sharedPreferences;
+    return (localSharedPreferences != null) && (!(localSharedPreferences instanceof EmptySharedPreferences));
   }
   
   public void save(String paramString)
@@ -116,7 +118,7 @@ public class CacheContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.config.CacheContent
  * JD-Core Version:    0.7.0.1
  */

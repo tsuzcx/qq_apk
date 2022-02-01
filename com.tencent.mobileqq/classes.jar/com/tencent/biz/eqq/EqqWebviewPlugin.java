@@ -49,40 +49,44 @@ public class EqqWebviewPlugin
   
   protected void a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      try
-      {
-        paramString = new JSONObject(paramString).getString("uin");
-        CrmUtils.a(this.a, null, paramString, false, -1, true, -1);
-        return;
-      }
-      catch (JSONException paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("EqqWebviewPlugin", 2, "showEqq json error!");
+    }
+    try
+    {
+      paramString = new JSONObject(paramString).getString("uin");
+      CrmUtils.a(this.a, null, paramString, false, -1, true, -1);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      label37:
+      break label37;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("EqqWebviewPlugin", 2, "showEqq json error!");
+    }
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if (!"eqq".equals(paramString2)) {}
-    do
-    {
+    if (!"eqq".equals(paramString2)) {
       return false;
-      if ("showEQQ".equals(paramString3))
-      {
-        if (paramVarArgs.length > 0) {
-          a(paramVarArgs[0]);
-        }
-        return true;
+    }
+    if ("showEQQ".equals(paramString3))
+    {
+      if (paramVarArgs.length > 0) {
+        a(paramVarArgs[0]);
       }
-    } while ((!"showEQQAio".equals(paramString3)) || (paramVarArgs.length != 1));
-    b(paramVarArgs[0]);
+      return true;
+    }
+    if (("showEQQAio".equals(paramString3)) && (paramVarArgs.length == 1)) {
+      b(paramVarArgs[0]);
+    }
     return false;
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
     this.a = this.mRuntime.a();
@@ -90,7 +94,7 @@ public class EqqWebviewPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.eqq.EqqWebviewPlugin
  * JD-Core Version:    0.7.0.1
  */

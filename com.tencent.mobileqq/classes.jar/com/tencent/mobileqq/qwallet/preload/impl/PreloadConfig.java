@@ -2,9 +2,9 @@ package com.tencent.mobileqq.qwallet.preload.impl;
 
 import Wallet.ResInfo;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.config.QConfigManager;
+import com.tencent.mobileqq.qwallet.impl.QWalletTools;
 import com.tencent.mobileqq.qwallet.preload.PreloadStaticApi;
 import com.tencent.mobileqq.qwallet.preload.ResourceInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -78,42 +78,50 @@ public class PreloadConfig
     paramAppRuntime = PreloadStaticApi.a(paramAppRuntime, paramString);
     try
     {
-      paramString = (PreloadConfig)QWalletTools.a(paramAppRuntime);
-      if (paramString == null)
+      try
       {
-        paramString = new PreloadConfig();
-        paramString.mSavePath = paramAppRuntime;
-        paramString.mSaveLock = new byte[0];
-        paramString.mLastModules = paramString.getCloneModules();
-        if (QLog.isColorLevel()) {
-          QLog.d("PreloadService", 2, "readPreloadConfig:" + paramString);
-        }
-        return paramString;
+        paramString = (PreloadConfig)QWalletTools.a(paramAppRuntime);
       }
+      catch (Exception paramString)
+      {
+        if (!QLog.isColorLevel()) {
+          break label97;
+        }
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("readPreloadConfig exception:");
+      localStringBuilder.append(paramAppRuntime);
+      localStringBuilder.append("|");
+      localStringBuilder.append(paramString.toString());
+      QLog.w("PreloadService", 2, localStringBuilder.toString());
     }
     catch (InvalidClassException paramString)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PreloadService", 2, "preload config update should delete local config");
-        }
-        QConfigManager.a().a(68, 0);
-        paramString = null;
-      }
+      label74:
+      break label74;
     }
-    catch (Exception paramString)
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadService", 2, "preload config update should delete local config");
+    }
+    QConfigManager.a().a(68, 0);
+    label97:
+    paramString = null;
+    if (paramString == null) {
+      paramString = new PreloadConfig();
+    } else {
+      paramString.checkModules();
+    }
+    paramString.mSavePath = paramAppRuntime;
+    paramString.mSaveLock = new byte[0];
+    paramString.mLastModules = paramString.getCloneModules();
+    if (QLog.isColorLevel())
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("PreloadService", 2, "readPreloadConfig exception:" + paramAppRuntime + "|" + paramString.toString());
-        }
-        paramString = null;
-        continue;
-        paramString.checkModules();
-      }
+      paramAppRuntime = new StringBuilder();
+      paramAppRuntime.append("readPreloadConfig:");
+      paramAppRuntime.append(paramString);
+      QLog.d("PreloadService", 2, paramAppRuntime.toString());
     }
+    return paramString;
   }
   
   public static void splitModulesByBackControl(List<PreloadModuleImpl> paramList1, List<PreloadModuleImpl> paramList2, List<PreloadModuleImpl> paramList3)
@@ -132,10 +140,11 @@ public class PreloadConfig
   
   public static void splitModulesBySize(int paramInt, List<PreloadModuleImpl> paramList1, List<PreloadModuleImpl> paramList2, List<PreloadModuleImpl> paramList3)
   {
-    if ((paramList1 == null) || (paramList2 == null) || (paramList3 == null)) {}
-    for (;;)
+    if ((paramList1 != null) && (paramList2 != null))
     {
-      return;
+      if (paramList3 == null) {
+        return;
+      }
       paramList1 = paramList1.iterator();
       while (paramList1.hasNext())
       {
@@ -318,26 +327,19 @@ public class PreloadConfig
   
   public boolean isModulesChange(List<PreloadModuleImpl> paramList)
   {
-    boolean bool2 = false;
     List localList = getModules();
-    boolean bool1;
-    if (localList.size() != paramList.size())
-    {
-      bool1 = true;
-      return bool1;
+    if (localList.size() != paramList.size()) {
+      return true;
     }
     int i = 0;
-    for (;;)
+    while (i < localList.size())
     {
-      bool1 = bool2;
-      if (i >= localList.size()) {
-        break;
-      }
       if (((PreloadModuleImpl)localList.get(i)).isModuleChange((PreloadModuleImpl)paramList.get(i))) {
         return true;
       }
       i += 1;
     }
+    return false;
   }
   
   public boolean isResInConfig(PreloadResourceImpl paramPreloadResourceImpl)
@@ -394,12 +396,12 @@ public class PreloadConfig
       }
       return;
     }
-    catch (Exception paramString)
+    catch (OutOfMemoryError paramString)
     {
       paramString.printStackTrace();
       return;
     }
-    catch (OutOfMemoryError paramString)
+    catch (Exception paramString)
     {
       paramString.printStackTrace();
     }
@@ -434,12 +436,16 @@ public class PreloadConfig
   
   public String toString()
   {
-    return "Config [mModules=" + this.mPreloadModules + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Config [mModules=");
+    localStringBuilder.append(this.mPreloadModules);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadConfig
  * JD-Core Version:    0.7.0.1
  */

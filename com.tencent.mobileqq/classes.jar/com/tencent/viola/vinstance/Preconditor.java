@@ -37,10 +37,11 @@ public class Preconditor
   
   private void clearFailPrecondition()
   {
-    if (this.failPreconditions == null) {
+    List localList = this.failPreconditions;
+    if (localList == null) {
       return;
     }
-    this.failPreconditions.clear();
+    localList.clear();
   }
   
   private List<Precondition> getPreconditions(boolean paramBoolean)
@@ -86,47 +87,49 @@ public class Preconditor
   
   public void process(boolean paramBoolean)
   {
-    label170:
-    label171:
-    for (;;)
+    try
     {
-      try
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("precondition, isRetry: ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ViolaLogUtils.d("Preconditor", ((StringBuilder)localObject).toString());
+      localObject = processInternal(paramBoolean);
+      if (localObject == null) {
+        return;
+      }
+      paramBoolean = true;
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        ViolaLogUtils.d("Preconditor", "precondition, isRetry: " + paramBoolean);
-        Object localObject = processInternal(paramBoolean);
-        if (localObject == null) {
-          return;
-        }
-        paramBoolean = true;
-        localObject = ((List)localObject).iterator();
-        if (((Iterator)localObject).hasNext())
+        Precondition localPrecondition = (Precondition)((Iterator)localObject).next();
+        if (!localPrecondition.isSuccess())
         {
-          Precondition localPrecondition = (Precondition)((Iterator)localObject).next();
-          if (localPrecondition.isSuccess()) {
-            break label171;
-          }
           addFailPrecondition(localPrecondition);
           paramBoolean = false;
-          ViolaLogUtils.e("Preconditor", "precondition error: " + localPrecondition.getClass().getSimpleName());
-          break label171;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("precondition error: ");
+          localStringBuilder.append(localPrecondition.getClass().getSimpleName());
+          ViolaLogUtils.e("Preconditor", localStringBuilder.toString());
         }
-        ViolaLogUtils.d("Preconditor", "precondition, isSuccess: " + paramBoolean);
-        if (this.preconditionListener == null) {
-          break label170;
-        }
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("precondition, isSuccess: ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ViolaLogUtils.d("Preconditor", ((StringBuilder)localObject).toString());
+      if (this.preconditionListener != null)
+      {
         if (paramBoolean)
         {
           this.preconditionListener.onSuccess();
           return;
         }
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        localInterruptedException.printStackTrace();
+        this.preconditionListener.onError();
         return;
       }
-      this.preconditionListener.onError();
-      return;
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      localInterruptedException.printStackTrace();
     }
   }
   
@@ -142,7 +145,7 @@ public class Preconditor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.vinstance.Preconditor
  * JD-Core Version:    0.7.0.1
  */

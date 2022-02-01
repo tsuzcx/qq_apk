@@ -32,8 +32,11 @@ public class MoveAvgPredictor
       this.samples.remove(0);
     }
     this.samples.add(Long.valueOf(paramLong));
+    paramLong = 0L;
     Iterator localIterator = this.samples.iterator();
-    for (paramLong = 0L; localIterator.hasNext(); paramLong = ((Long)localIterator.next()).longValue() + paramLong) {}
+    while (localIterator.hasNext()) {
+      paramLong += ((Long)localIterator.next()).longValue();
+    }
     return paramLong / this.samples.size();
   }
   
@@ -45,12 +48,16 @@ public class MoveAvgPredictor
   
   public String toString()
   {
-    return "MoveAvgPredictor(" + this.maxSize + ')';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MoveAvgPredictor(");
+    localStringBuilder.append(this.maxSize);
+    localStringBuilder.append(')');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.bandwidth.MoveAvgPredictor
  * JD-Core Version:    0.7.0.1
  */

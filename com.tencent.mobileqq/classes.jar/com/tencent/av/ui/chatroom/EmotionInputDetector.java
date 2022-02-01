@@ -21,11 +21,11 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import com.tencent.av.chatroom.ChatRoomUtil;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.mobileqq.emoticonview.EmoticonCallback;
 import com.tencent.mobileqq.emoticonview.EmoticonInfo;
 import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonInfo;
 import com.tencent.mobileqq.text.QQTextBuilder;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.WeakReferenceHandler;
@@ -33,8 +33,8 @@ import com.tencent.util.WeakReferenceHandler;
 public class EmotionInputDetector
   implements Handler.Callback, ViewTreeObserver.OnGlobalLayoutListener, EmoticonCallback
 {
-  private static final String jdField_a_of_type_JavaLangString = BaseApplication.getContext().getString(2131695460);
-  private static final String jdField_b_of_type_JavaLangString = BaseApplication.getContext().getString(2131695463);
+  private static final String jdField_a_of_type_JavaLangString = BaseApplication.getContext().getString(2131695471);
+  private static final String jdField_b_of_type_JavaLangString = BaseApplication.getContext().getString(2131695474);
   private int jdField_a_of_type_Int = 0;
   private final Activity jdField_a_of_type_AndroidAppActivity;
   private final Point jdField_a_of_type_AndroidGraphicsPoint = new Point();
@@ -61,8 +61,15 @@ public class EmotionInputDetector
     if (Build.VERSION.SDK_INT <= 18) {
       this.jdField_a_of_type_Boolean = true;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("ChatRoomUtil", 2, "EmotionInputDetector, ARMode2[" + this.jdField_a_of_type_Boolean + "], sdk[" + Build.VERSION.SDK_INT + "]");
+    if (QLog.isColorLevel())
+    {
+      paramActivity = new StringBuilder();
+      paramActivity.append("EmotionInputDetector, ARMode2[");
+      paramActivity.append(this.jdField_a_of_type_Boolean);
+      paramActivity.append("], sdk[");
+      paramActivity.append(Build.VERSION.SDK_INT);
+      paramActivity.append("]");
+      QLog.i("ChatRoomUtil", 2, paramActivity.toString());
     }
   }
   
@@ -79,8 +86,9 @@ public class EmotionInputDetector
         QLog.i("ChatRoomUtil", 2, String.format("updateInputPanelState, [%s --> %s], seq[%s], soft[%s]", new Object[] { Integer.valueOf(this.c), Integer.valueOf(paramInt), Long.valueOf(paramLong), Integer.valueOf(this.jdField_a_of_type_Int) }));
       }
       this.c = paramInt;
-      if (this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector$EventListener != null) {
-        this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector$EventListener.a(this.c, paramLong);
+      EmotionInputDetector.EventListener localEventListener = this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector$EventListener;
+      if (localEventListener != null) {
+        localEventListener.a(this.c, paramLong);
       }
     }
   }
@@ -88,70 +96,92 @@ public class EmotionInputDetector
   private void a(long paramLong, int paramInt)
   {
     int i = this.jdField_b_of_type_Int;
-    if (this.jdField_b_of_type_Int != paramInt) {
+    if (i != paramInt) {
       this.jdField_b_of_type_Int = paramInt;
     }
-    if ((this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector$EventListener != null) && (i != paramInt)) {
-      this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector$EventListener.b(i, paramInt, this.c, paramLong);
+    EmotionInputDetector.EventListener localEventListener = this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector$EventListener;
+    if ((localEventListener != null) && (i != paramInt)) {
+      localEventListener.b(i, paramInt, this.c, paramLong);
     }
   }
   
   private void d()
   {
-    QQTextBuilder localQQTextBuilder = null;
     Object localObject = this.jdField_a_of_type_AndroidWidgetEditText.getText();
-    if ((localObject instanceof QQTextBuilder))
+    boolean bool = localObject instanceof QQTextBuilder;
+    QQTextBuilder localQQTextBuilder = null;
+    if (bool)
     {
       localQQTextBuilder = (QQTextBuilder)localObject;
       localObject = null;
     }
-    for (;;)
+    else
     {
-      if (localQQTextBuilder != null) {
-        localObject = ChatRoomUtil.a(localQQTextBuilder);
+      String str = localObject.toString();
+      localObject = str;
+      if (com.tencent.mobileqq.text.TextUtils.hasSysEmotion(str))
+      {
+        localQQTextBuilder = new QQTextBuilder(str, 3, 16);
+        localObject = str;
       }
-      this.jdField_a_of_type_AndroidWidgetEditText.setText("");
-      if ((this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector$EventListener != null) && (!android.text.TextUtils.isEmpty((CharSequence)localObject))) {
-        this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector$EventListener.a((String)localObject);
-      }
-      return;
-      localObject = localObject.toString();
-      if (com.tencent.mobileqq.text.TextUtils.hasSysEmotion((String)localObject)) {
-        localQQTextBuilder = new QQTextBuilder((CharSequence)localObject, 3, 16);
-      }
+    }
+    if (localQQTextBuilder != null) {
+      localObject = ChatRoomUtil.a(localQQTextBuilder);
+    }
+    this.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    if ((this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector$EventListener != null) && (!android.text.TextUtils.isEmpty((CharSequence)localObject))) {
+      this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector$EventListener.a((String)localObject);
     }
   }
   
   private void e()
   {
     long l = AudioHelper.b();
-    if (this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.hasMessages(2)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("ChatRoomUtil", 2, "showEmotionLayout, is to show. seq[" + l + "]");
-      }
-    }
-    do
+    Object localObject;
+    if (this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.hasMessages(2))
     {
-      return;
-      if (!b()) {
-        break;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("showEmotionLayout, is to show. seq[");
+        ((StringBuilder)localObject).append(l);
+        ((StringBuilder)localObject).append("]");
+        QLog.i("ChatRoomUtil", 2, ((StringBuilder)localObject).toString());
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("ChatRoomUtil", 2, "showEmotionLayout, is showing. seq[" + l + "]");
-    return;
-    if (QLog.isColorLevel()) {
-      QLog.i("ChatRoomUtil", 2, "showEmotionLayout, isSoftKeyboardShown[" + c() + "], seq[" + l + "]");
+      return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842338);
+    if (b())
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("showEmotionLayout, is showing. seq[");
+        ((StringBuilder)localObject).append(l);
+        ((StringBuilder)localObject).append("]");
+        QLog.i("ChatRoomUtil", 2, ((StringBuilder)localObject).toString());
+      }
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("showEmotionLayout, isSoftKeyboardShown[");
+      ((StringBuilder)localObject).append(c());
+      ((StringBuilder)localObject).append("], seq[");
+      ((StringBuilder)localObject).append(l);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("ChatRoomUtil", 2, ((StringBuilder)localObject).toString());
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842236);
     if (c())
     {
       a(5, l);
       c();
-      Message localMessage = Message.obtain();
-      localMessage.what = 2;
-      localMessage.arg1 = 0;
-      localMessage.arg2 = 0;
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessageDelayed(localMessage, 100L);
+      localObject = Message.obtain();
+      ((Message)localObject).what = 2;
+      ((Message)localObject).arg1 = 0;
+      ((Message)localObject).arg2 = 0;
+      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessageDelayed((Message)localObject, 100L);
       return;
     }
     f();
@@ -160,7 +190,7 @@ public class EmotionInputDetector
   private void f()
   {
     long l = AudioHelper.b();
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842338);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842236);
     this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(jdField_b_of_type_JavaLangString);
     this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
     a(4, l);
@@ -169,76 +199,56 @@ public class EmotionInputDetector
   
   private void g()
   {
-    View localView1 = this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView();
-    View localView2 = localView1.getRootView();
-    localView2.getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
-    int i = localView2.getRootView().getHeight();
+    Object localObject = this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView();
+    View localView = ((View)localObject).getRootView();
+    localView.getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
+    int i = localView.getRootView().getHeight();
     int j = i - this.jdField_a_of_type_AndroidGraphicsRect.height();
-    label73:
-    label86:
-    long l;
-    if (j > i / 4)
-    {
+    if (j > i / 4) {
       i = 1;
-      if (j > 0)
-      {
-        if (this.d != -1) {
-          break label494;
-        }
+    } else {
+      i = 2;
+    }
+    if (j > 0)
+    {
+      int k = this.d;
+      if (k == -1) {
         this.d = j;
-        if (this.e != -1) {
-          break label510;
-        }
-        this.e = j;
-        if ((this.d == this.e) && (this.jdField_a_of_type_AndroidGraphicsRect.top > 0)) {
-          this.d = this.jdField_a_of_type_AndroidGraphicsRect.top;
-        }
+      } else if (k > j) {
+        this.d = j;
       }
-      if (i != this.jdField_a_of_type_Int)
+      k = this.e;
+      if (k == -1) {
+        this.e = j;
+      } else if (k < j) {
+        this.e = j;
+      }
+      if ((this.d == this.e) && (this.jdField_a_of_type_AndroidGraphicsRect.top > 0)) {
+        this.d = this.jdField_a_of_type_AndroidGraphicsRect.top;
+      }
+    }
+    if (i != this.jdField_a_of_type_Int)
+    {
+      long l = AudioHelper.b();
+      if (i == 1)
       {
-        l = AudioHelper.b();
-        if (i == 1)
-        {
-          this.jdField_a_of_type_AndroidAppActivity.getWindowManager().getDefaultDisplay().getSize(this.jdField_a_of_type_AndroidGraphicsPoint);
-          ChatRoomUtil.jdField_a_of_type_Int = Math.max(this.jdField_a_of_type_AndroidGraphicsPoint.y - this.jdField_a_of_type_AndroidGraphicsRect.bottom, this.e - this.d);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("ChatRoomUtil", 2, String.format("updateSoftKeyboardState, seq[%s], [%s --> %s], inputPanelState[%s], height[%s], KeyBoardHeight[%s], ARMode2[%s], decorView[%s, %s, %s, %s], s[%s, %s], temp[%s, %s, %s, %s], diff[%s, %s]", new Object[] { Long.valueOf(l), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(i), Integer.valueOf(this.c), Integer.valueOf(j), Integer.valueOf(ChatRoomUtil.jdField_a_of_type_Int), Boolean.valueOf(this.jdField_a_of_type_Boolean), Integer.valueOf(localView1.getLeft()), Integer.valueOf(localView1.getTop()), Integer.valueOf(localView1.getRight()), Integer.valueOf(localView1.getBottom()), Integer.valueOf(this.jdField_a_of_type_AndroidGraphicsPoint.x), Integer.valueOf(this.jdField_a_of_type_AndroidGraphicsPoint.y), Integer.valueOf(this.jdField_a_of_type_AndroidGraphicsRect.left), Integer.valueOf(this.jdField_a_of_type_AndroidGraphicsRect.top), Integer.valueOf(this.jdField_a_of_type_AndroidGraphicsRect.right), Integer.valueOf(this.jdField_a_of_type_AndroidGraphicsRect.bottom), Integer.valueOf(this.d), Integer.valueOf(this.e) }));
-        }
-        j = this.jdField_a_of_type_Int;
-        this.jdField_a_of_type_Int = i;
-        if (this.jdField_a_of_type_Int != 1) {
-          break label526;
-        }
+        this.jdField_a_of_type_AndroidAppActivity.getWindowManager().getDefaultDisplay().getSize(this.jdField_a_of_type_AndroidGraphicsPoint);
+        ChatRoomUtil.jdField_a_of_type_Int = Math.max(this.jdField_a_of_type_AndroidGraphicsPoint.y - this.jdField_a_of_type_AndroidGraphicsRect.bottom, this.e - this.d);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("ChatRoomUtil", 2, String.format("updateSoftKeyboardState, seq[%s], [%s --> %s], inputPanelState[%s], height[%s], KeyBoardHeight[%s], ARMode2[%s], decorView[%s, %s, %s, %s], s[%s, %s], temp[%s, %s, %s, %s], diff[%s, %s]", new Object[] { Long.valueOf(l), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(i), Integer.valueOf(this.c), Integer.valueOf(j), Integer.valueOf(ChatRoomUtil.jdField_a_of_type_Int), Boolean.valueOf(this.jdField_a_of_type_Boolean), Integer.valueOf(((View)localObject).getLeft()), Integer.valueOf(((View)localObject).getTop()), Integer.valueOf(((View)localObject).getRight()), Integer.valueOf(((View)localObject).getBottom()), Integer.valueOf(this.jdField_a_of_type_AndroidGraphicsPoint.x), Integer.valueOf(this.jdField_a_of_type_AndroidGraphicsPoint.y), Integer.valueOf(this.jdField_a_of_type_AndroidGraphicsRect.left), Integer.valueOf(this.jdField_a_of_type_AndroidGraphicsRect.top), Integer.valueOf(this.jdField_a_of_type_AndroidGraphicsRect.right), Integer.valueOf(this.jdField_a_of_type_AndroidGraphicsRect.bottom), Integer.valueOf(this.d), Integer.valueOf(this.e) }));
+      }
+      j = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Int = i;
+      if (this.jdField_a_of_type_Int == 1)
+      {
         this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(2);
         a(2, l);
         if (b()) {
           b();
         }
       }
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector$EventListener != null) {
-        this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector$EventListener.a(j, i, this.c, l);
-      }
-      return;
-      i = 2;
-      break;
-      label494:
-      if (this.d <= j) {
-        break label73;
-      }
-      this.d = j;
-      break label73;
-      label510:
-      if (this.e >= j) {
-        break label86;
-      }
-      this.e = j;
-      break label86;
-      label526:
-      if (this.c == 5)
+      else if (this.c == 5)
       {
         this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(2);
         f();
@@ -250,6 +260,10 @@ public class EmotionInputDetector
       else
       {
         a(7, l);
+      }
+      localObject = this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector$EventListener;
+      if (localObject != null) {
+        ((EmotionInputDetector.EventListener)localObject).a(j, i, this.c, l);
       }
     }
   }
@@ -266,11 +280,14 @@ public class EmotionInputDetector
     this.jdField_a_of_type_AndroidWidgetEditText.setFocusable(true);
     this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(true);
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-    if (this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager != null) {
-      this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.showSoftInput(this.jdField_a_of_type_AndroidWidgetEditText, 1);
+    Object localObject = this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager;
+    if (localObject != null) {
+      ((InputMethodManager)localObject).showSoftInput(this.jdField_a_of_type_AndroidWidgetEditText, 1);
     }
-    if (!android.text.TextUtils.isEmpty(this.jdField_a_of_type_AndroidWidgetEditText.getText())) {
-      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+    if (!android.text.TextUtils.isEmpty(this.jdField_a_of_type_AndroidWidgetEditText.getText()))
+    {
+      localObject = this.jdField_a_of_type_AndroidWidgetEditText;
+      ((EditText)localObject).setSelection(((EditText)localObject).getText().length());
     }
     if (b())
     {
@@ -315,7 +332,7 @@ public class EmotionInputDetector
   public EmotionInputDetector a(ImageView paramImageView)
   {
     this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842336);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842234);
     this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(jdField_a_of_type_JavaLangString);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new EmotionInputDetector.5(this));
     return this;
@@ -354,7 +371,7 @@ public class EmotionInputDetector
     long l = AudioHelper.b();
     if (b())
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842336);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842234);
       this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(jdField_a_of_type_JavaLangString);
       this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
       if ((this.c != 6) && (!c())) {
@@ -366,14 +383,22 @@ public class EmotionInputDetector
   
   public boolean b()
   {
-    return (this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewViewGroup.getVisibility() == 0);
+    ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
+    return (localViewGroup != null) && (localViewGroup.getVisibility() == 0);
   }
   
   public void c()
   {
     long l = AudioHelper.b();
-    if (QLog.isColorLevel()) {
-      QLog.i("ChatRoomUtil", 2, "hideSoftKeyboard, soft[" + c() + "], seq[" + l + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("hideSoftKeyboard, soft[");
+      localStringBuilder.append(c());
+      localStringBuilder.append("], seq[");
+      localStringBuilder.append(l);
+      localStringBuilder.append("]");
+      QLog.i("ChatRoomUtil", 2, localStringBuilder.toString());
     }
     if (c())
     {
@@ -404,20 +429,17 @@ public class EmotionInputDetector
   {
     if (paramMessage.what == 2)
     {
-      if ((!c()) || (paramMessage.arg1 != 0)) {
-        break label55;
+      if ((c()) && (paramMessage.arg1 == 0))
+      {
+        Message localMessage = Message.obtain();
+        localMessage.what = 2;
+        paramMessage.arg1 += 1;
+        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessageDelayed(localMessage, 100L);
+        return true;
       }
-      Message localMessage = Message.obtain();
-      localMessage.what = 2;
-      paramMessage.arg1 += 1;
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessageDelayed(localMessage, 100L);
-    }
-    for (;;)
-    {
-      return true;
-      label55:
       f();
     }
+    return true;
   }
   
   public void onGlobalLayout()
@@ -450,7 +472,7 @@ public class EmotionInputDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.chatroom.EmotionInputDetector
  * JD-Core Version:    0.7.0.1
  */

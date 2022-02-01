@@ -9,45 +9,84 @@ import org.xml.sax.XMLReader;
 class FullScreenInputHelper$2
   implements Html.TagHandler
 {
-  static
-  {
-    if (!FullScreenInputHelper.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
-    }
-  }
-  
   FullScreenInputHelper$2(FullScreenInputHelper paramFullScreenInputHelper) {}
   
   public void handleTag(boolean paramBoolean, String paramString, Editable paramEditable, XMLReader paramXMLReader)
   {
-    if (paramString.equalsIgnoreCase("newLine")) {}
-    int i;
-    do
+    if (paramString.equalsIgnoreCase("newLine"))
     {
-      do
+      paramEditable.append("\n");
+      return;
+    }
+    int i;
+    Object localObject;
+    StringBuilder localStringBuilder;
+    if (paramString.equalsIgnoreCase("emotion"))
+    {
+      paramXMLReader = FullScreenInputHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperFullScreenInputHelper, paramXMLReader, "id");
+      if (!TextUtils.isEmpty(paramXMLReader))
       {
-        paramEditable.append("\n");
-        do
+        if ((!jdField_a_of_type_Boolean) && (paramXMLReader == null)) {
+          throw new AssertionError();
+        }
+        i = Integer.parseInt(paramXMLReader);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperFullScreenInputHelper;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("\024");
+        localStringBuilder.append((char)i);
+        paramEditable.append(((FullScreenInputHelper)localObject).a(localStringBuilder.toString()));
+        if (QLog.isColorLevel())
         {
-          return;
-        } while (!paramString.equalsIgnoreCase("emotion"));
-        paramXMLReader = FullScreenInputHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperFullScreenInputHelper, paramXMLReader, "id");
-      } while (TextUtils.isEmpty(paramXMLReader));
-      if ((!jdField_a_of_type_Boolean) && (paramXMLReader == null)) {
-        throw new AssertionError();
+          paramEditable = new StringBuilder();
+          paramEditable.append("[mix]handleTag: ");
+          paramEditable.append(paramString);
+          paramEditable.append(" emotionTag: ");
+          paramEditable.append(paramXMLReader);
+          paramEditable.append(" emotionId: ");
+          paramEditable.append(i);
+          QLog.d("FullScreenInputHelper", 2, paramEditable.toString());
+        }
       }
-      i = Integer.parseInt(paramXMLReader);
-      paramEditable.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperFullScreenInputHelper.a("\024" + (char)i));
-    } while (!QLog.isColorLevel());
-    QLog.d("FullScreenInputHelper", 2, "[mix]handleTag: " + paramString + " emotionTag: " + paramXMLReader + " emotionId: " + i);
+    }
+    else if (paramString.equalsIgnoreCase("littleEmotion"))
+    {
+      paramString = new char[4];
+      i = 0;
+      int j = 0;
+      while (i < 4)
+      {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperFullScreenInputHelper;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("index");
+        localStringBuilder.append(i);
+        localObject = FullScreenInputHelper.a((FullScreenInputHelper)localObject, paramXMLReader, localStringBuilder.toString());
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          if ((!jdField_a_of_type_Boolean) && (localObject == null)) {
+            throw new AssertionError();
+          }
+          paramString[i] = ((char)Integer.parseInt((String)localObject));
+          j = 1;
+        }
+        i += 1;
+      }
+      if (j != 0)
+      {
+        paramXMLReader = this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperFullScreenInputHelper;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("\024");
+        ((StringBuilder)localObject).append(paramString[0]);
+        ((StringBuilder)localObject).append(paramString[1]);
+        ((StringBuilder)localObject).append(paramString[2]);
+        ((StringBuilder)localObject).append(paramString[3]);
+        paramEditable.append(paramXMLReader.a(((StringBuilder)localObject).toString()));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FullScreenInputHelper.2
  * JD-Core Version:    0.7.0.1
  */

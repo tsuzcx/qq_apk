@@ -20,7 +20,7 @@ public class ProgressViewRed
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private int[] jdField_a_of_type_ArrayOfInt = { 2130845511, 2130845512, 2130845513, 2130845514, 2130845515, 2130845516, 2130845517, 2130845518, 2130845519, 2130845520, 2130845521, 2130845522, 2130845523, 2130845524, 2130845525, 2130845526, 2130845527, 2130845528, 2130845529, 2130845530 };
+  private int[] jdField_a_of_type_ArrayOfInt = { 2130845384, 2130845385, 2130845386, 2130845387, 2130845388, 2130845389, 2130845390, 2130845391, 2130845392, 2130845393, 2130845394, 2130845395, 2130845396, 2130845397, 2130845398, 2130845399, 2130845400, 2130845401, 2130845402, 2130845403 };
   private Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = null;
   private int jdField_b_of_type_Int = 0;
   private long jdField_b_of_type_Long = 0L;
@@ -81,54 +81,48 @@ public class ProgressViewRed
     }
     int k = getWidth();
     int m = getHeight();
-    int n = (int)(k * this.jdField_b_of_type_Long / this.jdField_a_of_type_Long);
-    if (this.jdField_b_of_type_Long > 0L)
+    long l1 = k;
+    long l2 = this.jdField_b_of_type_Long;
+    int n = (int)(l1 * l2 / this.jdField_a_of_type_Long);
+    if (l2 > 0L)
     {
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, n, m);
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
     }
-    int j;
-    int i;
-    int i1;
-    Bitmap localBitmap;
     if (this.jdField_b_of_type_Long < this.jdField_a_of_type_Long)
     {
       this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(n, 0, k, m);
       this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-      j = this.jdField_b_of_type_Int;
-      i = j;
-      if (j >= this.jdField_a_of_type_ArrayOfInt.length) {
-        i = j % this.jdField_a_of_type_ArrayOfInt.length;
+      int j = this.jdField_b_of_type_Int;
+      Object localObject = this.jdField_a_of_type_ArrayOfInt;
+      int i = j;
+      if (j >= localObject.length) {
+        i = j % localObject.length;
       }
-      i1 = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i].getWidth();
-      j = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i].getHeight();
-      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, i1, j);
-      if (i1 > k - n) {
-        break label228;
-      }
-      localBitmap = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i];
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(n, 0.0F, i1 + n, m);
-    }
-    for (;;)
-    {
-      if (localBitmap != null) {
-        paramCanvas.drawBitmap(localBitmap, null, this.jdField_a_of_type_AndroidGraphicsRectF, null);
-      }
-      this.jdField_b_of_type_Int += 1;
-      super.draw(paramCanvas);
-      return;
-      label228:
-      i1 = k - n;
-      if (i1 > 0)
+      j = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i].getWidth();
+      int i1 = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i].getHeight();
+      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, j, i1);
+      int i2 = k - n;
+      if (j <= i2)
       {
-        localBitmap = Bitmap.createBitmap(this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i], 0, 0, i1, j, null, false);
+        localObject = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i];
+        this.jdField_a_of_type_AndroidGraphicsRectF.set(n, 0.0F, n + j, m);
+      }
+      else if (i2 > 0)
+      {
+        localObject = Bitmap.createBitmap(this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i], 0, 0, i2, i1, null, false);
         this.jdField_a_of_type_AndroidGraphicsRectF.set(n, 0.0F, k, m);
       }
       else
       {
-        localBitmap = null;
+        localObject = null;
       }
+      if (localObject != null) {
+        paramCanvas.drawBitmap((Bitmap)localObject, null, this.jdField_a_of_type_AndroidGraphicsRectF, null);
+      }
+      this.jdField_b_of_type_Int += 1;
     }
+    super.draw(paramCanvas);
   }
   
   public void setAlpha(int paramInt)
@@ -141,7 +135,7 @@ public class ProgressViewRed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.portal.ProgressViewRed
  * JD-Core Version:    0.7.0.1
  */

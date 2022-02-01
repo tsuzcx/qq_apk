@@ -23,11 +23,15 @@ public class TroopHonorRichProcessor
     paramUdcUinData = paramUdcUinData.uint32_troop_honor_rich_flag;
     if (paramUdcUinData.has())
     {
-      ITroopHonorService localITroopHonorService = (ITroopHonorService)this.appRuntime.getRuntimeService(ITroopHonorService.class, "");
-      localITroopHonorService.saveHostHonorListRichTag((short)(byte)paramUdcUinData.get());
-      localITroopHonorService.updateHostHonorList(false);
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopHonor", 2, "honor_rich_0x5eb," + paramUdcUinData.get());
+      Object localObject = (ITroopHonorService)this.appRuntime.getRuntimeService(ITroopHonorService.class, "");
+      ((ITroopHonorService)localObject).saveHostHonorListRichTag((short)(byte)paramUdcUinData.get());
+      ((ITroopHonorService)localObject).updateHostHonorList(false);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("honor_rich_0x5eb,");
+        ((StringBuilder)localObject).append(paramUdcUinData.get());
+        QLog.d("TroopHonor", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
@@ -50,7 +54,7 @@ public class TroopHonorRichProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecommon.processor.TroopHonorRichProcessor
  * JD-Core Version:    0.7.0.1
  */

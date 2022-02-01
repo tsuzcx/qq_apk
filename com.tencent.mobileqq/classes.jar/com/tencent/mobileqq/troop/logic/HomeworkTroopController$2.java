@@ -6,10 +6,11 @@ import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.troop.utils.HWTroopUtils;
-import com.tencent.mobileqq.troop.utils.TroopLinkManager;
-import com.tencent.mobileqq.troop.utils.TroopLinkManager.LinkParams;
-import com.tencent.mobileqq.util.TroopReportor;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.troop.homework.api.IHWTroopUtilsApi;
+import com.tencent.mobileqq.troop.trooplink.api.ITroopLinkApi;
+import com.tencent.mobileqq.troop.trooplink.api.ITroopLinkApi.LinkParams;
+import com.tencent.mobileqq.utils.TroopReportor;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.ref.WeakReference;
 
@@ -23,13 +24,13 @@ class HomeworkTroopController$2
     BaseActivity localBaseActivity = (BaseActivity)HomeworkTroopController.a(this.a).get();
     if (localBaseActivity != null)
     {
-      HWTroopUtils.a(HomeworkTroopController.b(this.a), HomeworkTroopController.c(this.a).a);
-      Object localObject1 = TroopLinkManager.a();
-      Object localObject2 = ((TroopLinkManager)localObject1).a("troop_list_homework");
-      TroopLinkManager.LinkParams localLinkParams = new TroopLinkManager.LinkParams();
+      ((IHWTroopUtilsApi)QRoute.api(IHWTroopUtilsApi.class)).clearHomeworkTroopRedPoint(HomeworkTroopController.b(this.a), HomeworkTroopController.c(this.a).a);
+      Object localObject1 = (ITroopLinkApi)QRoute.api(ITroopLinkApi.class);
+      Object localObject2 = ((ITroopLinkApi)localObject1).getUrl("troop_list_homework");
+      ITroopLinkApi.LinkParams localLinkParams = new ITroopLinkApi.LinkParams();
       localLinkParams.a = HomeworkTroopController.d(this.a).a;
       localLinkParams.c = "aio";
-      localObject1 = ((TroopLinkManager)localObject1).a((String)localObject2, localLinkParams);
+      localObject1 = ((ITroopLinkApi)localObject1).replaceParams((String)localObject2, localLinkParams);
       localObject2 = new Intent(localBaseActivity, QQBrowserActivity.class);
       ((Intent)localObject2).putExtra("url", (String)localObject1);
       localBaseActivity.startActivity((Intent)localObject2);
@@ -40,7 +41,7 @@ class HomeworkTroopController$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.logic.HomeworkTroopController.2
  * JD-Core Version:    0.7.0.1
  */

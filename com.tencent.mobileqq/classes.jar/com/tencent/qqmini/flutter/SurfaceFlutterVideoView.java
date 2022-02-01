@@ -35,8 +35,14 @@ public class SurfaceFlutterVideoView
     this.videoPlayerProviderProxy = ((VideoPlayerProviderProxy)ProxyManager.get(VideoPlayerProviderProxy.class));
     this.player = this.videoPlayerProviderProxy.getVideoPlayer();
     this.player.setLooping(true);
-    this.data = ("" + paramMap.get("data"));
-    updateVideoSrc(paramMap.get("videoUrl") + "");
+    paramContext = new StringBuilder();
+    paramContext.append("");
+    paramContext.append(paramMap.get("data"));
+    this.data = paramContext.toString();
+    paramContext = new StringBuilder();
+    paramContext.append(paramMap.get("videoUrl"));
+    paramContext.append("");
+    updateVideoSrc(paramContext.toString());
     this.player.setOnCompletionListener(new SurfaceFlutterVideoView.1(this));
     this.player.setOnBufferingUpdateListener(new SurfaceFlutterVideoView.2(this));
     this.player.setOnErrorListener(new SurfaceFlutterVideoView.3(this));
@@ -45,10 +51,10 @@ public class SurfaceFlutterVideoView
   
   private void updateVideoSrc(String paramString)
   {
-    String str;
     if ((!StringUtil.isEmpty(paramString)) && (!paramString.equals(this.currentPath)))
     {
       this.currentPath = paramString;
+      String str;
       if (!paramString.startsWith("http"))
       {
         str = paramString;
@@ -58,18 +64,21 @@ public class SurfaceFlutterVideoView
       {
         str = this.videoPlayerProviderProxy.getUrl(MiniAppFileManager.getInstance().getAbsolutePath(paramString));
       }
-      QMLog.d("QFV", "handleOperateXWebVideo playUrl : " + str);
-    }
-    try
-    {
-      this.player.reset();
-      this.player.setDataSource(str);
-      this.player.prepareAsync();
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QMLog.e("QFV", "", paramString);
+      paramString = new StringBuilder();
+      paramString.append("handleOperateXWebVideo playUrl : ");
+      paramString.append(str);
+      QMLog.d("QFV", paramString.toString());
+      try
+      {
+        this.player.reset();
+        this.player.setDataSource(str);
+        this.player.prepareAsync();
+        return;
+      }
+      catch (Throwable paramString)
+      {
+        QMLog.e("QFV", "", paramString);
+      }
     }
   }
   
@@ -103,61 +112,75 @@ public class SurfaceFlutterVideoView
     if (paramMap == null) {
       QMLog.e("QFVideoView", "operate null map");
     }
-    QMLog.e("QFVideoView", "operate" + paramMap.toString());
-    String str = "" + paramMap.get("type");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("operate");
+    ((StringBuilder)localObject).append(paramMap.toString());
+    QMLog.e("QFVideoView", ((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(paramMap.get("type"));
+    localObject = ((StringBuilder)localObject).toString();
     try
     {
-      if ("play".equals(str))
+      if ("play".equals(localObject))
       {
         this.player.start();
         return;
       }
-      if ("pause".equals(str))
+      if ("pause".equals(localObject))
       {
         this.player.pause();
         return;
       }
+      if ("stop".equals(localObject))
+      {
+        this.player.stop();
+        return;
+      }
+      boolean bool = "seek".equals(localObject);
+      if (bool) {
+        try
+        {
+          int i = (int)(new JSONObject(paramMap).optDouble("time") * 1000.0D);
+          this.player.seekTo(i);
+          return;
+        }
+        catch (Exception localException)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("wrong seek pram. ");
+          localStringBuilder.append(paramMap);
+          QMLog.e("QFV", localStringBuilder.toString(), localException);
+          return;
+        }
+      }
+      if ("playbackRate".equals(localException))
+      {
+        QMLog.e("QFV", "playbackRate is not support.");
+        return;
+      }
+      if ("requestFullScreen".equals(localException)) {
+        return;
+      }
+      if ("exitFullScreen".equals(localException)) {
+        return;
+      }
+      "sendDanmu".equals(localException);
+      return;
     }
     catch (Throwable paramMap)
     {
       QMLog.e("QFV", "", paramMap);
-      return;
-    }
-    if ("stop".equals(str))
-    {
-      this.player.stop();
-      return;
-    }
-    boolean bool = "seek".equals(str);
-    if (bool) {
-      try
-      {
-        int i = (int)(new JSONObject(paramMap).optDouble("time") * 1000.0D);
-        this.player.seekTo(i);
-        return;
-      }
-      catch (Exception localException)
-      {
-        QMLog.e("QFV", "wrong seek pram. " + paramMap, localException);
-        return;
-      }
-    }
-    if ("playbackRate".equals(localException))
-    {
-      QMLog.e("QFV", "playbackRate is not support.");
-      return;
-    }
-    if ((!"requestFullScreen".equals(localException)) && (!"exitFullScreen".equals(localException)))
-    {
-      bool = "sendDanmu".equals(localException);
-      if (!bool) {}
     }
   }
   
   public void update(Map<String, Object> paramMap)
   {
     JSONObject localJSONObject = new JSONObject(paramMap);
-    QMLog.e("QFVideoView", "update" + paramMap.toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("update");
+    localStringBuilder.append(paramMap.toString());
+    QMLog.e("QFVideoView", localStringBuilder.toString());
     if (!localJSONObject.optBoolean("hide")) {
       setVisibility(0);
     }
@@ -168,7 +191,7 @@ public class SurfaceFlutterVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.flutter.SurfaceFlutterVideoView
  * JD-Core Version:    0.7.0.1
  */

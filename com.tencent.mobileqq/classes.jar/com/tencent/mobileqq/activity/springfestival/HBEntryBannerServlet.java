@@ -22,45 +22,56 @@ public class HBEntryBannerServlet
   public void a()
   {
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface)) {}
-    for (localObject = (QQAppInterface)localObject;; localObject = null)
+    if ((localObject instanceof QQAppInterface)) {
+      localObject = (QQAppInterface)localObject;
+    } else {
+      localObject = null;
+    }
+    if (localObject != null)
     {
-      if (localObject != null)
-      {
-        ((QQAppInterface)localObject).startServlet(new NewIntent(((QQAppInterface)localObject).getApp(), HBEntryBannerServlet.class));
-        return;
-      }
-      QLog.d("HBEntryBannerView", 2, "send req when qqAppInterface null");
+      ((QQAppInterface)localObject).startServlet(new NewIntent(((QQAppInterface)localObject).getApp(), HBEntryBannerServlet.class));
       return;
     }
+    QLog.d("HBEntryBannerView", 2, "send req when mApp null");
   }
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (paramFromServiceMsg.isSuccess()) {}
-    try
-    {
-      paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
-      paramIntent = new byte[paramFromServiceMsg.getInt() - 4];
-      paramFromServiceMsg.get(paramIntent);
-      paramFromServiceMsg = new shua1shua_onlinenumber.OnlineNumberReply();
-      paramFromServiceMsg.mergeFrom(paramIntent);
-      paramIntent = paramFromServiceMsg.msg.get();
-      int i = paramFromServiceMsg.interval.get();
-      int j = paramFromServiceMsg.num.get();
-      int k = paramFromServiceMsg.ret.get();
-      QLog.d("HBEntryBannerView", 2, "onReceive, msg:" + paramIntent + ", ret:" + k + ", number:" + j + ", interval:" + i);
-      if (i > 0) {
-        HBEntryBannerView.a = i;
+    if (paramFromServiceMsg.isSuccess()) {
+      try
+      {
+        paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
+        paramIntent = new byte[paramFromServiceMsg.getInt() - 4];
+        paramFromServiceMsg.get(paramIntent);
+        paramFromServiceMsg = new shua1shua_onlinenumber.OnlineNumberReply();
+        paramFromServiceMsg.mergeFrom(paramIntent);
+        paramIntent = paramFromServiceMsg.msg.get();
+        int i = paramFromServiceMsg.interval.get();
+        int j = paramFromServiceMsg.num.get();
+        int k = paramFromServiceMsg.ret.get();
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("onReceive, msg:");
+        paramFromServiceMsg.append(paramIntent);
+        paramFromServiceMsg.append(", ret:");
+        paramFromServiceMsg.append(k);
+        paramFromServiceMsg.append(", number:");
+        paramFromServiceMsg.append(j);
+        paramFromServiceMsg.append(", interval:");
+        paramFromServiceMsg.append(i);
+        QLog.d("HBEntryBannerView", 2, paramFromServiceMsg.toString());
+        if (i > 0) {
+          HBEntryBannerView.a = i;
+        }
+        if (j > 0)
+        {
+          HBEntryBannerView.b = j;
+          return;
+        }
       }
-      if (j > 0) {
-        HBEntryBannerView.b = j;
+      catch (InvalidProtocolBufferMicroException paramIntent)
+      {
+        paramIntent.printStackTrace();
       }
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramIntent)
-    {
-      paramIntent.printStackTrace();
     }
   }
   
@@ -73,7 +84,7 @@ public class HBEntryBannerServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.HBEntryBannerServlet
  * JD-Core Version:    0.7.0.1
  */

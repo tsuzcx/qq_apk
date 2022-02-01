@@ -219,17 +219,20 @@ public class PTDetectInfo$Builder
   
   public Builder pointsVis(Float[] paramArrayOfFloat)
   {
-    if ((paramArrayOfFloat == null) || (paramArrayOfFloat.length == 0)) {
-      return this;
-    }
-    float[] arrayOfFloat = new float[paramArrayOfFloat.length];
-    int i = 0;
-    while (i < paramArrayOfFloat.length)
+    if (paramArrayOfFloat != null)
     {
-      arrayOfFloat[i] = paramArrayOfFloat[i].floatValue();
-      i += 1;
+      if (paramArrayOfFloat.length == 0) {
+        return this;
+      }
+      float[] arrayOfFloat = new float[paramArrayOfFloat.length];
+      int i = 0;
+      while (i < paramArrayOfFloat.length)
+      {
+        arrayOfFloat[i] = paramArrayOfFloat[i].floatValue();
+        i += 1;
+      }
+      this.pointsVis = arrayOfFloat;
     }
-    this.pointsVis = arrayOfFloat;
     return this;
   }
   
@@ -277,7 +280,7 @@ public class PTDetectInfo$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.PTDetectInfo.Builder
  * JD-Core Version:    0.7.0.1
  */

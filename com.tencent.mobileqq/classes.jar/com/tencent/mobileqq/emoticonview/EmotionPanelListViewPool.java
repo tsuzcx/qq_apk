@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
 import android.content.Context;
-import android.util.Log;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,36 +13,43 @@ public class EmotionPanelListViewPool
   
   public static EmotionPanelListViewPool getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new EmotionPanelListViewPool();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new EmotionPanelListViewPool();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public void destory()
   {
     if (QLog.isColorLevel()) {
-      Log.d("EmotionPanelListViewPool", "destory");
+      QLog.d("EmotionPanelListViewPool", 4, "destory");
     }
-    if (this.listViews != null)
+    List localList = this.listViews;
+    if (localList != null)
     {
-      this.listViews.clear();
+      localList.clear();
       this.listViews = null;
     }
   }
   
   public EmotionPanelListView getListView(Context paramContext)
   {
-    if ((this.listViews != null) && (this.listViews.size() > 0))
+    Object localObject = this.listViews;
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
       paramContext = (EmotionPanelListView)this.listViews.remove(0);
-      if (QLog.isColorLevel()) {
-        Log.d("EmotionPanelListViewPool", "from listview pool and poolSize = " + this.listViews.size());
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("from listview pool and poolSize = ");
+        ((StringBuilder)localObject).append(this.listViews.size());
+        QLog.d("EmotionPanelListViewPool", 4, ((StringBuilder)localObject).toString());
       }
       return paramContext;
     }
@@ -52,29 +58,27 @@ public class EmotionPanelListViewPool
   
   public void relase(EmotionPanelListView paramEmotionPanelListView)
   {
-    if (paramEmotionPanelListView == null) {}
-    for (;;)
-    {
+    if (paramEmotionPanelListView == null) {
       return;
-      if (this.listViews == null)
-      {
-        this.listViews = new ArrayList();
-        this.listViews.add(paramEmotionPanelListView);
-      }
-      while (QLog.isColorLevel())
-      {
-        Log.d("EmotionPanelListViewPool", "relase listview");
-        return;
-        if (!this.listViews.contains(paramEmotionPanelListView)) {
-          this.listViews.add(0, paramEmotionPanelListView);
-        }
-      }
+    }
+    List localList = this.listViews;
+    if (localList == null)
+    {
+      this.listViews = new ArrayList();
+      this.listViews.add(paramEmotionPanelListView);
+    }
+    else if (!localList.contains(paramEmotionPanelListView))
+    {
+      this.listViews.add(0, paramEmotionPanelListView);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("EmotionPanelListViewPool", 4, "relase listview");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionPanelListViewPool
  * JD-Core Version:    0.7.0.1
  */

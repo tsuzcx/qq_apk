@@ -23,10 +23,8 @@ class EmoView$3
         EmoView.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a();
       }
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-      return;
       int i = (this.jdField_a_of_type_Int - 1) * 27 + paramInt;
       if (i < 107)
       {
@@ -40,11 +38,12 @@ class EmoView$3
         }
       }
     }
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.EmoView.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.history;
 
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ChatHistoryTroopMemberFragment$6
@@ -12,14 +12,14 @@ class ChatHistoryTroopMemberFragment$6
   
   public void onClick(View paramView)
   {
-    this.a.getActivity().setResult(0, this.a.getActivity().getIntent());
-    this.a.getActivity().finish();
+    this.a.getBaseActivity().setResult(0, this.a.getBaseActivity().getIntent());
+    this.a.getBaseActivity().finish();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.6
  * JD-Core Version:    0.7.0.1
  */

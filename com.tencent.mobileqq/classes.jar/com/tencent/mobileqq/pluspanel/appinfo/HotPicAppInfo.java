@@ -19,7 +19,7 @@ public class HotPicAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130838285;
+    return 2130838110;
   }
   
   public int getAppID()
@@ -48,19 +48,19 @@ public class HotPicAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131698472);
+    return BaseApplicationImpl.getContext().getString(2131698538);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     if (paramBaseChatPie != null) {
-      paramBaseChatPie.q(24);
+      paramBaseChatPie.j(24);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.HotPicAppInfo
  * JD-Core Version:    0.7.0.1
  */

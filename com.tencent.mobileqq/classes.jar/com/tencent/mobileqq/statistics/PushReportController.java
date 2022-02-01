@@ -21,22 +21,31 @@ public class PushReportController
     if (paramQQAppInterface == null) {
       return "unknown";
     }
-    switch (NetworkUtil.b(paramQQAppInterface.getApp()))
+    int i = NetworkUtil.getNetworkType(paramQQAppInterface.getApp());
+    if (i != 0)
     {
-    default: 
-      return "unknown";
-    case 0: 
-      return "none";
-    case 1: 
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if (i != 4)
+            {
+              if (i != 5) {
+                return "unknown";
+              }
+              return "5G";
+            }
+            return "4G";
+          }
+          return "3G";
+        }
+        return "2G";
+      }
       return "Wi-Fi";
-    case 2: 
-      return "2G";
-    case 3: 
-      return "3G";
-    case 4: 
-      return "4G";
     }
-    return "5G";
+    return "none";
   }
   
   private static String a(QQAppInterface paramQQAppInterface, PushReportController.PushReportItem paramPushReportItem)
@@ -53,8 +62,12 @@ public class PushReportController
   public static void a(QQAppInterface paramQQAppInterface, PushReportController.PushReportItem paramPushReportItem)
   {
     paramPushReportItem = a(paramQQAppInterface, paramPushReportItem);
-    if (QLog.isColorLevel()) {
-      QLog.i("PushReportController", 1, "reportPushEvent detail=" + paramPushReportItem);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportPushEvent detail=");
+      localStringBuilder.append(paramPushReportItem);
+      QLog.i("PushReportController", 1, localStringBuilder.toString());
     }
     if (paramQQAppInterface == null)
     {
@@ -98,7 +111,7 @@ public class PushReportController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.PushReportController
  * JD-Core Version:    0.7.0.1
  */

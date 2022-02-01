@@ -62,7 +62,8 @@ public class DiamondIconDrawable
   
   public int a()
   {
-    if ((this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState != null) && (this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.b != null)) {
+    DiamondIconDrawable.DiamondState localDiamondState = this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState;
+    if ((localDiamondState != null) && (localDiamondState.b != null)) {
       return Math.abs(this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.b.getBounds().left - getBounds().left);
     }
     return 0;
@@ -75,25 +76,28 @@ public class DiamondIconDrawable
   
   public void a(Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState != null)
+    DiamondIconDrawable.DiamondState localDiamondState = this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState;
+    if (localDiamondState != null)
     {
-      this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.b = paramDrawable;
+      localDiamondState.b = paramDrawable;
       h(paramDrawable);
     }
   }
   
   public boolean a()
   {
-    if ((this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState != null) && (this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)) {}
-    while ((this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState != null) && ((this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.d != null) || (this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.f != null) || (this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.e != null) || (this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.c != null))) {
+    DiamondIconDrawable.DiamondState localDiamondState = this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState;
+    if ((localDiamondState != null) && (localDiamondState.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)) {
       return false;
     }
-    return true;
+    localDiamondState = this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState;
+    return (localDiamondState == null) || ((localDiamondState.d == null) && (this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.f == null) && (this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.e == null) && (this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.c == null));
   }
   
   public int b()
   {
-    if ((this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState != null) && (this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.b != null)) {
+    DiamondIconDrawable.DiamondState localDiamondState = this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState;
+    if ((localDiamondState != null) && (localDiamondState.b != null)) {
       return Math.abs(this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.b.getBounds().top - getBounds().top);
     }
     return 0;
@@ -101,27 +105,30 @@ public class DiamondIconDrawable
   
   public void b(Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState != null)
+    DiamondIconDrawable.DiamondState localDiamondState = this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState;
+    if (localDiamondState != null)
     {
-      this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.c = paramDrawable;
+      localDiamondState.c = paramDrawable;
       h(paramDrawable);
     }
   }
   
   public void c(Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState != null)
+    DiamondIconDrawable.DiamondState localDiamondState = this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState;
+    if (localDiamondState != null)
     {
-      this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.d = paramDrawable;
+      localDiamondState.d = paramDrawable;
       h(paramDrawable);
     }
   }
   
   public void d(Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState != null)
+    DiamondIconDrawable.DiamondState localDiamondState = this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState;
+    if (localDiamondState != null)
     {
-      this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.e = paramDrawable;
+      localDiamondState.e = paramDrawable;
       h(paramDrawable);
     }
   }
@@ -157,27 +164,30 @@ public class DiamondIconDrawable
   
   public void e(Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState != null)
+    DiamondIconDrawable.DiamondState localDiamondState = this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState;
+    if (localDiamondState != null)
     {
-      this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.f = paramDrawable;
+      localDiamondState.f = paramDrawable;
       h(paramDrawable);
     }
   }
   
   public void f(Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState != null)
+    DiamondIconDrawable.DiamondState localDiamondState = this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState;
+    if (localDiamondState != null)
     {
-      this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.g = paramDrawable;
+      localDiamondState.g = paramDrawable;
       h(paramDrawable);
     }
   }
   
   public void g(Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState != null)
+    DiamondIconDrawable.DiamondState localDiamondState = this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState;
+    if (localDiamondState != null)
     {
-      this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+      localDiamondState.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
       h(paramDrawable);
     }
   }
@@ -214,17 +224,20 @@ public class DiamondIconDrawable
   {
     if (getBounds() != null)
     {
-      int i = getBounds().left;
-      int j = getBounds().top;
-      if ((i != paramInt1) || (j != paramInt2))
+      int j = getBounds().left;
+      int i = getBounds().top;
+      if ((j != paramInt1) || (i != paramInt2))
       {
-        a(this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.d, paramInt1 - i, paramInt2 - j);
-        a(this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.e, paramInt1 - i, paramInt2 - j);
-        a(this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.f, paramInt1 - i, paramInt2 - j);
-        a(this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.b, paramInt1 - i, paramInt2 - j);
-        a(this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.c, paramInt1 - i, paramInt2 - j);
-        a(this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.g, paramInt1 - i, paramInt2 - j);
-        a(this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.jdField_a_of_type_AndroidGraphicsDrawableDrawable, paramInt1 - i, paramInt2 - j);
+        Drawable localDrawable = this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.d;
+        j = paramInt1 - j;
+        i = paramInt2 - i;
+        a(localDrawable, j, i);
+        a(this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.e, j, i);
+        a(this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.f, j, i);
+        a(this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.b, j, i);
+        a(this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.c, j, i);
+        a(this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.g, j, i);
+        a(this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.jdField_a_of_type_AndroidGraphicsDrawableDrawable, j, i);
       }
     }
     super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
@@ -234,7 +247,7 @@ public class DiamondIconDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.vipcomponent.ui.DiamondIconDrawable
  * JD-Core Version:    0.7.0.1
  */

@@ -22,14 +22,16 @@ public final class hummer_commelem$MsgElemInfo_servtype24$LimitChatEnter
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 48, 58 }, new String[] { "bytes_tips_wording", "uint32_left_chat_time", "uint64_match_ts", "uint32_match_expired_time", "uint32_c2c_expired_time", "uint64_ready_ts", "bytes_match_nick" }, new Object[] { localByteStringMicro1, Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro2 }, LimitChatEnter.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 48, 58 }, new String[] { "bytes_tips_wording", "uint32_left_chat_time", "uint64_match_ts", "uint32_match_expired_time", "uint32_c2c_expired_time", "uint64_ready_ts", "bytes_match_nick" }, new Object[] { localByteStringMicro1, localInteger, localLong, localInteger, localInteger, localLong, localByteStringMicro2 }, LimitChatEnter.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype24.LimitChatEnter
  * JD-Core Version:    0.7.0.1
  */

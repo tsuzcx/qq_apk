@@ -41,8 +41,12 @@ public class NetworkFetcher
     }
     Object localObject1 = (FileExtension)((Pair)localObject2).first;
     localObject2 = (InputStream)((Pair)localObject2).second;
-    if (localObject1 == FileExtension.ZIP) {}
-    for (localObject1 = LottieCompositionFactory.fromZipStreamSync(new ZipInputStream((InputStream)localObject2), this.url); ((LottieResult)localObject1).getValue() != null; localObject1 = LottieCompositionFactory.fromJsonInputStreamSync((InputStream)localObject2, this.url)) {
+    if (localObject1 == FileExtension.ZIP) {
+      localObject1 = LottieCompositionFactory.fromZipStreamSync(new ZipInputStream((InputStream)localObject2), this.url);
+    } else {
+      localObject1 = LottieCompositionFactory.fromJsonInputStreamSync((InputStream)localObject2, this.url);
+    }
+    if (((LottieResult)localObject1).getValue() != null) {
       return (LottieComposition)((LottieResult)localObject1).getValue();
     }
     return null;
@@ -65,64 +69,71 @@ public class NetworkFetcher
   @WorkerThread
   private LottieResult fetchFromNetworkInternal()
   {
-    L.debug("Fetching " + this.url);
-    Object localObject1 = (HttpURLConnection)new URL(this.url).openConnection();
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("Fetching ");
+    ((StringBuilder)localObject1).append(this.url);
+    L.debug(((StringBuilder)localObject1).toString());
+    localObject1 = (HttpURLConnection)new URL(this.url).openConnection();
     ((HttpURLConnection)localObject1).setRequestMethod("GET");
     ((HttpURLConnection)localObject1).connect();
-    if ((((HttpURLConnection)localObject1).getErrorStream() != null) || (((HttpURLConnection)localObject1).getResponseCode() != 200))
+    if ((((HttpURLConnection)localObject1).getErrorStream() == null) && (((HttpURLConnection)localObject1).getResponseCode() == 200))
     {
-      localObject2 = new BufferedReader(new InputStreamReader(((HttpURLConnection)localObject1).getErrorStream()));
-      StringBuilder localStringBuilder = new StringBuilder();
-      for (;;)
+      localObject2 = ((HttpURLConnection)localObject1).getContentType();
+      int i = -1;
+      int j = ((String)localObject2).hashCode();
+      boolean bool = true;
+      if (j != -1248325150)
       {
-        String str = ((BufferedReader)localObject2).readLine();
-        if (str == null) {
-          break;
+        if ((j == -43840953) && (((String)localObject2).equals("application/json"))) {
+          i = 1;
         }
-        localStringBuilder.append(str).append('\n');
       }
-      return new LottieResult(new IllegalArgumentException("Unable to fetch " + this.url + ". Failed with " + ((HttpURLConnection)localObject1).getResponseCode() + "\n" + localStringBuilder));
-    }
-    Object localObject2 = ((HttpURLConnection)localObject1).getContentType();
-    int i = -1;
-    switch (((String)localObject2).hashCode())
-    {
-    default: 
-      switch (i)
+      else if (((String)localObject2).equals("application/zip")) {
+        i = 0;
+      }
+      if (i != 0)
       {
-      default: 
         L.debug("Received json response.");
         localObject2 = FileExtension.JSON;
         localObject1 = LottieCompositionFactory.fromJsonInputStreamSync(new FileInputStream(new File(this.networkCache.writeTempCacheFile(((HttpURLConnection)localObject1).getInputStream(), (FileExtension)localObject2).getAbsolutePath())), this.url);
-        label292:
-        if (((LottieResult)localObject1).getValue() != null) {
-          this.networkCache.renameTempFile((FileExtension)localObject2);
-        }
-        localObject2 = new StringBuilder().append("Completed fetch from network. Success: ");
-        if (((LottieResult)localObject1).getValue() == null) {}
-        break;
       }
-      break;
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      L.debug(bool);
+      else
+      {
+        L.debug("Handling zip response.");
+        localObject2 = FileExtension.ZIP;
+        localObject1 = LottieCompositionFactory.fromZipStreamSync(new ZipInputStream(new FileInputStream(this.networkCache.writeTempCacheFile(((HttpURLConnection)localObject1).getInputStream(), (FileExtension)localObject2))), this.url);
+      }
+      if (((LottieResult)localObject1).getValue() != null) {
+        this.networkCache.renameTempFile((FileExtension)localObject2);
+      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("Completed fetch from network. Success: ");
+      if (((LottieResult)localObject1).getValue() == null) {
+        bool = false;
+      }
+      ((StringBuilder)localObject2).append(bool);
+      L.debug(((StringBuilder)localObject2).toString());
       return localObject1;
-      if (!((String)localObject2).equals("application/zip")) {
-        break;
-      }
-      i = 0;
-      break;
-      if (!((String)localObject2).equals("application/json")) {
-        break;
-      }
-      i = 1;
-      break;
-      L.debug("Handling zip response.");
-      localObject2 = FileExtension.ZIP;
-      localObject1 = LottieCompositionFactory.fromZipStreamSync(new ZipInputStream(new FileInputStream(this.networkCache.writeTempCacheFile(((HttpURLConnection)localObject1).getInputStream(), (FileExtension)localObject2))), this.url);
-      break label292;
     }
+    Object localObject3 = new BufferedReader(new InputStreamReader(((HttpURLConnection)localObject1).getErrorStream()));
+    Object localObject2 = new StringBuilder();
+    for (;;)
+    {
+      String str = ((BufferedReader)localObject3).readLine();
+      if (str == null) {
+        break;
+      }
+      ((StringBuilder)localObject2).append(str);
+      ((StringBuilder)localObject2).append('\n');
+    }
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("Unable to fetch ");
+    ((StringBuilder)localObject3).append(this.url);
+    ((StringBuilder)localObject3).append(". Failed with ");
+    ((StringBuilder)localObject3).append(((HttpURLConnection)localObject1).getResponseCode());
+    ((StringBuilder)localObject3).append("\n");
+    ((StringBuilder)localObject3).append(localObject2);
+    return new LottieResult(new IllegalArgumentException(((StringBuilder)localObject3).toString()));
   }
   
   public static LottieResult<LottieComposition> fetchSync(Context paramContext, String paramString)
@@ -133,17 +144,21 @@ public class NetworkFetcher
   @WorkerThread
   public LottieResult<LottieComposition> fetchSync()
   {
-    LottieComposition localLottieComposition = fetchFromCache();
-    if (localLottieComposition != null) {
-      return new LottieResult(localLottieComposition);
+    Object localObject = fetchFromCache();
+    if (localObject != null) {
+      return new LottieResult(localObject);
     }
-    L.debug("Animation for " + this.url + " not found in cache. Fetching from network.");
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Animation for ");
+    ((StringBuilder)localObject).append(this.url);
+    ((StringBuilder)localObject).append(" not found in cache. Fetching from network.");
+    L.debug(((StringBuilder)localObject).toString());
     return fetchFromNetwork();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.network.NetworkFetcher
  * JD-Core Version:    0.7.0.1
  */

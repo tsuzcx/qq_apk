@@ -16,9 +16,10 @@ class VideoInfo$CompressVideoSegment$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.e = 10;
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.g = -2147483647;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForLayoutPosition(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.c);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo;
+    ((VideoInfo)localObject).e = 10;
+    ((VideoInfo)localObject).f = -2147483647;
+    localObject = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForLayoutPosition(((VideoInfo)localObject).c);
     if ((localObject instanceof VideoItem.VideoViewHolder))
     {
       localObject = (VideoItem.VideoViewHolder)localObject;
@@ -34,7 +35,7 @@ class VideoInfo$CompressVideoSegment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.model.VideoInfo.CompressVideoSegment.1
  * JD-Core Version:    0.7.0.1
  */

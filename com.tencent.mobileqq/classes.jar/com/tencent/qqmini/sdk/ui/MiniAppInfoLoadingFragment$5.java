@@ -19,14 +19,19 @@ class MiniAppInfoLoadingFragment$5
     }
     long l = paramJSONObject.optLong("retCode");
     String str = paramJSONObject.optString("errMsg");
-    QMLog.i("MiniAppInfoLoadingFragment", "getAppInfoByLink, retCode = " + l + ",errMsg = " + str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getAppInfoByLink, retCode = ");
+    ((StringBuilder)localObject).append(l);
+    ((StringBuilder)localObject).append(",errMsg = ");
+    ((StringBuilder)localObject).append(str);
+    QMLog.i("MiniAppInfoLoadingFragment", ((StringBuilder)localObject).toString());
     if (paramBoolean)
     {
-      MiniAppInfo localMiniAppInfo = (MiniAppInfo)paramJSONObject.opt("mini_app_info_data");
+      localObject = (MiniAppInfo)paramJSONObject.opt("mini_app_info_data");
       JSONObject localJSONObject = paramJSONObject.optJSONObject("mini_app_info_data_json");
       byte[] arrayOfByte = (byte[])paramJSONObject.opt("mini_app_info_data_pb");
       paramJSONObject = paramJSONObject.optString("shareTicket", "");
-      this.val$listener.onGetMiniAppInfo(localJSONObject, arrayOfByte, localMiniAppInfo, paramJSONObject, l, str);
+      this.val$listener.onGetMiniAppInfo(localJSONObject, arrayOfByte, (MiniAppInfo)localObject, paramJSONObject, l, str);
       return;
     }
     this.val$listener.onGetMiniAppInfo(null, null, null, null, l, str);
@@ -35,7 +40,7 @@ class MiniAppInfoLoadingFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.MiniAppInfoLoadingFragment.5
  * JD-Core Version:    0.7.0.1
  */

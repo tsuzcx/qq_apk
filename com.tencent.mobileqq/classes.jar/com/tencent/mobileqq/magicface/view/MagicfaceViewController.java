@@ -42,7 +42,7 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class MagicfaceViewController
   implements View.OnClickListener
 {
-  public static boolean a;
+  public static boolean a = false;
   protected Handler a;
   protected View a;
   protected WindowManager a;
@@ -55,7 +55,7 @@ public class MagicfaceViewController
   public MagicfaceActionManager a;
   protected IMagicFaceView a;
   protected MagicfaceContainerView a;
-  protected MagicfaceViewController.OnMagicPlayEnd a;
+  protected OnMagicPlayEnd a;
   Runnable jdField_a_of_type_JavaLangRunnable = null;
   protected String a;
   protected View b;
@@ -73,22 +73,23 @@ public class MagicfaceViewController
   
   static
   {
-    jdField_a_of_type_Boolean = false;
-    String str1 = DeviceInfoUtil.g();
-    if (str1 != null)
+    String str = DeviceInfoUtil.g();
+    Object localObject;
+    if (str != null)
     {
-      String str2 = str1.toLowerCase();
-      if ((!str2.contains("marvell")) && (!str2.contains("armv5")) && (!str2.contains("armv6"))) {
-        break label80;
+      localObject = str.toLowerCase();
+      if ((!((String)localObject).contains("marvell")) && (!((String)localObject).contains("armv5")) && (!((String)localObject).contains("armv6"))) {
+        jdField_a_of_type_Boolean = true;
+      } else {
+        jdField_a_of_type_Boolean = false;
       }
     }
-    label80:
-    for (jdField_a_of_type_Boolean = false;; jdField_a_of_type_Boolean = true)
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("MagicfaceViewController", 2, "cpuType=" + str1);
-      }
-      return;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("cpuType=");
+      ((StringBuilder)localObject).append(str);
+      QLog.i("MagicfaceViewController", 2, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -97,8 +98,12 @@ public class MagicfaceViewController
     this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     a();
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicfaceViewController", 2, "func MagicfaceViewController[Constructor] ends.isUseHardDecode:" + this.jdField_b_of_type_Boolean);
+    if (QLog.isColorLevel())
+    {
+      paramBaseChatPie = new StringBuilder();
+      paramBaseChatPie.append("func MagicfaceViewController[Constructor] ends.isUseHardDecode:");
+      paramBaseChatPie.append(this.jdField_b_of_type_Boolean);
+      QLog.d("MagicfaceViewController", 2, paramBaseChatPie.toString());
     }
   }
   
@@ -140,40 +145,35 @@ public class MagicfaceViewController
     WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
     if (Build.VERSION.SDK_INT < 26) {
       localLayoutParams.type = 2002;
+    } else {
+      localLayoutParams.type = 2038;
     }
-    for (;;)
-    {
-      localLayoutParams.flags = 40;
-      localLayoutParams.gravity = 51;
-      localLayoutParams.x = 0;
-      localLayoutParams.y = paramInt;
-      localLayoutParams.width = -1;
-      localLayoutParams.height = -2;
-      localLayoutParams.format = 1;
-      this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)BaseApplicationImpl.getContext().getSystemService("window"));
-      if (this.jdField_a_of_type_AndroidViewView.getParent() != null) {}
+    localLayoutParams.flags = 40;
+    localLayoutParams.gravity = 51;
+    localLayoutParams.x = 0;
+    localLayoutParams.y = paramInt;
+    localLayoutParams.width = -1;
+    localLayoutParams.height = -2;
+    localLayoutParams.format = 1;
+    this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)BaseApplicationImpl.getContext().getSystemService("window"));
+    if (this.jdField_a_of_type_AndroidViewView.getParent() != null) {
       try
       {
         this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_AndroidViewView);
-        try
-        {
-          this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
-          return;
-        }
-        catch (Exception localException1)
-        {
-          QLog.e("MagicfaceViewController", 1, "initTopbar: ", localException1);
-          return;
-        }
-        localException1.type = 2038;
       }
       catch (Exception localException2)
       {
-        for (;;)
-        {
-          QLog.e("MagicfaceViewController", 1, "initTopbar: ", localException2);
-        }
+        QLog.e("MagicfaceViewController", 1, "initTopbar: ", localException2);
       }
+    }
+    try
+    {
+      this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
+      return;
+    }
+    catch (Exception localException1)
+    {
+      QLog.e("MagicfaceViewController", 1, "initTopbar: ", localException1);
     }
   }
   
@@ -193,68 +193,77 @@ public class MagicfaceViewController
   
   public void a(Emoticon paramEmoticon, int paramInt1, String paramString, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicfaceViewController", 2, "func playMaigcface, magicValue:" + paramEmoticon.magicValue);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("func playMaigcface, magicValue:");
+      ((StringBuilder)localObject1).append(paramEmoticon.magicValue);
+      QLog.d("MagicfaceViewController", 2, ((StringBuilder)localObject1).toString());
     }
     long l = System.currentTimeMillis();
-    if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewIMagicFaceView != null) && (((View)this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewIMagicFaceView).getVisibility() == 0))
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewIMagicFaceView;
+    if ((localObject1 != null) && (((View)localObject1).getVisibility() == 0))
     {
       if (QLog.isColorLevel()) {
         QLog.d("MagicfaceViewController", 2, "func playMaigcface ends, step 1.");
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$OnMagicPlayEnd != null)
+      paramEmoticon = this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewOnMagicPlayEnd;
+      if (paramEmoticon != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$OnMagicPlayEnd.onPlayEnd();
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$OnMagicPlayEnd = null;
+        paramEmoticon.onPlayEnd();
+        this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewOnMagicPlayEnd = null;
+      }
+      return;
+    }
+    localObject1 = this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewIMagicFaceView;
+    if ((localObject1 != null) && (((View)localObject1).getVisibility() == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MagicfaceViewController", 2, "func playMaigcface ends, step 2.");
+      }
+      paramEmoticon = this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewOnMagicPlayEnd;
+      if (paramEmoticon != null)
+      {
+        paramEmoticon.onPlayEnd();
+        this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewOnMagicPlayEnd = null;
+      }
+      return;
+    }
+    localObject1 = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager;
+    if ((localObject1 != null) && (((MagicfaceActionManager)localObject1).a()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MagicfaceViewController", 2, "func playMaigcface ends, step 3.");
+      }
+      paramEmoticon = this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewOnMagicPlayEnd;
+      if (paramEmoticon != null)
+      {
+        paramEmoticon.onPlayEnd();
+        this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewOnMagicPlayEnd = null;
+      }
+      return;
+    }
+    if (paramInt1 == 1)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData = MagicfaceActionManager.a(paramEmoticon, paramInt1, paramInt2);
+      if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MagicfaceViewController", 2, "func playMaigcface ends, step 4.");
+        }
+        paramEmoticon = this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewOnMagicPlayEnd;
+        if (paramEmoticon != null)
+        {
+          paramEmoticon.onPlayEnd();
+          this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewOnMagicPlayEnd = null;
+        }
+        return;
       }
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if ((this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewIMagicFaceView == null) || (((View)this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewIMagicFaceView).getVisibility() != 0)) {
-            break;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("MagicfaceViewController", 2, "func playMaigcface ends, step 2.");
-          }
-        } while (this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$OnMagicPlayEnd == null);
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$OnMagicPlayEnd.onPlayEnd();
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$OnMagicPlayEnd = null;
-        return;
-        if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager == null) || (!this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.a())) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("MagicfaceViewController", 2, "func playMaigcface ends, step 3.");
-        }
-      } while (this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$OnMagicPlayEnd == null);
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$OnMagicPlayEnd.onPlayEnd();
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$OnMagicPlayEnd = null;
-      return;
-      if (paramInt1 != 1) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData = MagicfaceActionManager.a(paramEmoticon, paramInt1, paramInt2);
-      if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData != null) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("MagicfaceViewController", 2, "func playMaigcface ends, step 4.");
-      }
-    } while (this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$OnMagicPlayEnd == null);
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$OnMagicPlayEnd.onPlayEnd();
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$OnMagicPlayEnd = null;
-    return;
     this.jdField_a_of_type_JavaLangString = paramEmoticon.epId;
     b();
     this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager = new MagicfaceActionManager(this);
     Object localObject2;
-    Object localObject1;
-    Object localObject3;
     if (paramInt1 == 0)
     {
       if (QLog.isColorLevel()) {
@@ -263,31 +272,15 @@ public class MagicfaceViewController
       this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView.setVisibility(8);
       ((View)this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewIMagicFaceView).setVisibility(8);
       this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView.setVisibility(0);
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewIMagicFaceView;
-      localObject1 = this.jdField_a_of_type_AndroidWidgetTextView;
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewIMagicFaceView;
+      localObject2 = this.jdField_a_of_type_AndroidWidgetTextView;
       this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView.setMagicfaceGestureListener(this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager);
       localObject3 = (ViewGroup)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().getWindow().getDecorView();
       ((ViewGroup)localObject3).removeView(this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView);
       ((ViewGroup)localObject3).addView(this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView);
     }
-    for (;;)
+    else
     {
-      ((View)localObject2).setVisibility(0);
-      ((SurfaceView)localObject2).setZOrderOnTop(true);
-      ((SurfaceView)localObject2).getHolder().setFormat(-2);
-      localObject3 = new MagicfacePlayManager();
-      ((MagicfacePlayManager)localObject3).a((MagicfaceDecoder.MagicfaceRenderListener)localObject2);
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.a((MagicfacePlayManager)localObject3);
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.a(new MagicfaceViewController.6(this, paramInt1, (TextView)localObject1));
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.a(new MagicfaceViewController.7(this, l, paramInt1));
-      if (!((IMagicFaceView)localObject2).a()) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("MagicfaceViewController", 2, "func playMaigcface ends, step 7.");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.a(paramEmoticon, paramInt1, paramString, paramInt2);
-      return;
       if (QLog.isColorLevel()) {
         QLog.d("MagicfaceViewController", 2, "func playMaigcface ends, step 6.");
       }
@@ -308,50 +301,72 @@ public class MagicfaceViewController
       this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView.setVisibility(0);
       this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewIMagicFaceView.setIsFullScreen(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.jdField_b_of_type_Boolean);
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      localObject2 = this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewIMagicFaceView;
-      localObject1 = this.jdField_c_of_type_AndroidWidgetTextView;
+      localObject1 = this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewIMagicFaceView;
+      localObject2 = this.jdField_c_of_type_AndroidWidgetTextView;
       this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView.setMagicfaceGestureListener(this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+    ((View)localObject1).setVisibility(0);
+    Object localObject3 = (SurfaceView)localObject1;
+    ((SurfaceView)localObject3).setZOrderOnTop(true);
+    ((SurfaceView)localObject3).getHolder().setFormat(-2);
+    localObject3 = new MagicfacePlayManager();
+    ((MagicfacePlayManager)localObject3).a((MagicfaceDecoder.MagicfaceRenderListener)localObject1);
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.a((MagicfacePlayManager)localObject3);
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.a(new MagicfaceViewController.6(this, paramInt1, (TextView)localObject2));
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.a(new MagicfaceViewController.7(this, l, paramInt1));
+    if (((IMagicFaceView)localObject1).a())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MagicfaceViewController", 2, "func playMaigcface ends, step 7.");
+      }
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.a(paramEmoticon, paramInt1, paramString, paramInt2);
+      return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("MagicfaceViewController", 2, "func playMaigcface ends, step 8.");
     }
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(new MagicfaceViewController.8(this), 200L);
-    ((IMagicFaceView)localObject2).setSurfaceCreatelistener(new MagicfaceViewController.9(this, paramEmoticon, paramInt1, paramString, paramInt2));
+    ((IMagicFaceView)localObject1).setSurfaceCreatelistener(new MagicfaceViewController.9(this, paramEmoticon, paramInt1, paramString, paramInt2));
   }
   
-  public void a(Emoticon paramEmoticon, MagicfaceViewController.OnMagicPlayEnd paramOnMagicPlayEnd)
+  public void a(Emoticon paramEmoticon, OnMagicPlayEnd paramOnMagicPlayEnd)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicfaceViewController", 2, "func magicfaceAutoPlay, magicValue:" + paramEmoticon.magicValue);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("func magicfaceAutoPlay, magicValue:");
+      localStringBuilder.append(paramEmoticon.magicValue);
+      QLog.d("MagicfaceViewController", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$OnMagicPlayEnd = paramOnMagicPlayEnd;
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewOnMagicPlayEnd = paramOnMagicPlayEnd;
     if (!a())
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$OnMagicPlayEnd != null)
+      paramEmoticon = this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewOnMagicPlayEnd;
+      if (paramEmoticon != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$OnMagicPlayEnd.onPlayEnd();
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$OnMagicPlayEnd = null;
+        paramEmoticon.onPlayEnd();
+        this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewOnMagicPlayEnd = null;
       }
       if (QLog.isColorLevel()) {
         QLog.d("MagicfaceViewController", 2, "func magicfaceAutoPlay ends, not support.");
       }
-    }
-    do
-    {
       return;
-      paramOnMagicPlayEnd = new Emoticon();
-      paramOnMagicPlayEnd.eId = paramEmoticon.eId;
-      paramOnMagicPlayEnd.epId = paramEmoticon.epId;
-      paramOnMagicPlayEnd.magicValue = paramEmoticon.magicValue;
-      paramOnMagicPlayEnd.jobType = paramEmoticon.jobType;
-      this.jdField_a_of_type_ComTencentMobileqqDataEmoticon = paramOnMagicPlayEnd;
-    } while (this.jdField_a_of_type_AndroidOsHandler == null);
-    if (this.jdField_a_of_type_JavaLangRunnable == null) {
-      this.jdField_a_of_type_JavaLangRunnable = new MagicfaceViewController.3(this);
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 400L);
+    paramOnMagicPlayEnd = new Emoticon();
+    paramOnMagicPlayEnd.eId = paramEmoticon.eId;
+    paramOnMagicPlayEnd.epId = paramEmoticon.epId;
+    paramOnMagicPlayEnd.magicValue = paramEmoticon.magicValue;
+    paramOnMagicPlayEnd.jobType = paramEmoticon.jobType;
+    this.jdField_a_of_type_ComTencentMobileqqDataEmoticon = paramOnMagicPlayEnd;
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      if (this.jdField_a_of_type_JavaLangRunnable == null) {
+        this.jdField_a_of_type_JavaLangRunnable = new MagicfaceViewController.3(this);
+      }
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 400L);
+    }
   }
   
   public void b()
@@ -359,55 +374,52 @@ public class MagicfaceViewController
     if (QLog.isColorLevel()) {
       QLog.d("MagicfaceViewController", 2, "initMagicfaceView begins");
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.ai();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.N();
+    View localView;
     if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView == null)
     {
       if (QLog.isColorLevel()) {
         QLog.i("MagicfaceViewController", 2, "initMagicfaceView=======qvip_magicface_send");
       }
-      if (this.jdField_b_of_type_Boolean)
-      {
-        localView = View.inflate(BaseApplicationImpl.getContext(), 2131562100, null);
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewIMagicFaceView = ((IMagicFaceView)localView.findViewById(2131370971));
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView = ((MagicfaceContainerView)localView.findViewById(2131370972));
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131370985));
-        this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131370973));
-        this.jdField_b_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131370982));
-        this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131370970));
-        this.jdField_d_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131370983));
-        this.e = ((Button)localView.findViewById(2131370984));
-        this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-        this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-        this.jdField_d_of_type_AndroidWidgetButton.setOnClickListener(this);
-        this.e.setOnClickListener(this);
+      if (this.jdField_b_of_type_Boolean) {
+        localView = View.inflate(BaseApplicationImpl.getContext(), 2131561936, null);
+      } else {
+        localView = View.inflate(BaseApplicationImpl.getContext(), 2131561938, null);
       }
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewIMagicFaceView = ((IMagicFaceView)localView.findViewById(2131370605));
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView = ((MagicfaceContainerView)localView.findViewById(2131370606));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131370619));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131370607));
+      this.jdField_b_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131370616));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131370604));
+      this.jdField_d_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131370617));
+      this.e = ((Button)localView.findViewById(2131370618));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+      this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
+      this.jdField_d_of_type_AndroidWidgetButton.setOnClickListener(this);
+      this.e.setOnClickListener(this);
     }
-    else if (this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView == null)
+    if (this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView == null)
     {
-      if (!this.jdField_b_of_type_Boolean) {
-        break label415;
+      if (this.jdField_b_of_type_Boolean) {
+        localView = View.inflate(BaseApplicationImpl.getContext(), 2131561935, null);
+      } else {
+        localView = View.inflate(BaseApplicationImpl.getContext(), 2131561937, null);
       }
-    }
-    label415:
-    for (View localView = View.inflate(BaseApplicationImpl.getContext(), 2131562099, null);; localView = View.inflate(BaseApplicationImpl.getContext(), 2131562101, null))
-    {
-      this.jdField_a_of_type_AndroidViewView = View.inflate(BaseApplicationImpl.getContext(), 2131562103, null);
-      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131370981);
-      this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewIMagicFaceView = ((IMagicFaceView)localView.findViewById(2131370974));
-      this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView = ((MagicfaceContainerView)localView.findViewById(2131370976));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370980));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131370978));
-      this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131370975));
-      this.f = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131370977));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370979));
+      this.jdField_a_of_type_AndroidViewView = View.inflate(BaseApplicationImpl.getContext(), 2131561939, null);
+      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131370615);
+      this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewIMagicFaceView = ((IMagicFaceView)localView.findViewById(2131370608));
+      this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView = ((MagicfaceContainerView)localView.findViewById(2131370610));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370614));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131370612));
+      this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131370609));
+      this.f = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131370611));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370613));
       this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(this);
       this.f.setOnClickListener(this);
-      if (QLog.isColorLevel()) {
-        QLog.d("MagicfaceViewController", 2, "initMagicfaceView ends");
-      }
-      return;
-      localView = View.inflate(BaseApplicationImpl.getContext(), 2131562102, null);
-      break;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("MagicfaceViewController", 2, "initMagicfaceView ends");
     }
   }
   
@@ -425,20 +437,20 @@ public class MagicfaceViewController
   {
     if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.b())
     {
-      this.e.setBackgroundResource(2130847548);
+      this.e.setBackgroundResource(2130847416);
       return;
     }
-    this.e.setBackgroundResource(2130847547);
+    this.e.setBackgroundResource(2130847415);
   }
   
   public void d()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.c())
     {
-      this.f.setBackgroundResource(2130847495);
+      this.f.setBackgroundResource(2130847365);
       return;
     }
-    this.f.setBackgroundResource(2130847545);
+    this.f.setBackgroundResource(2130847413);
   }
   
   public void e()
@@ -448,25 +460,29 @@ public class MagicfaceViewController
   
   public void f()
   {
-    if (this.jdField_d_of_type_AndroidWidgetButton.getTag() == null) {}
-    Emoticon localEmoticon;
-    do
-    {
+    if (this.jdField_d_of_type_AndroidWidgetButton.getTag() == null) {
       return;
-      localEmoticon = (Emoticon)this.jdField_d_of_type_AndroidWidgetButton.getTag();
-    } while (localEmoticon.jobType != 2);
-    if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager != null) && (this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.a() >= 0)) {
-      if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.a() != 0) {
-        break label100;
-      }
     }
-    label100:
-    for (localEmoticon.magicValue = "value=1";; localEmoticon.magicValue = ("value=" + this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.a()))
+    Emoticon localEmoticon = (Emoticon)this.jdField_d_of_type_AndroidWidgetButton.getTag();
+    if (localEmoticon.jobType == 2)
     {
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager;
+      if ((localObject != null) && (((MagicfaceActionManager)localObject).a() >= 0)) {
+        if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.a() == 0)
+        {
+          localEmoticon.magicValue = "value=1";
+        }
+        else
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("value=");
+          ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.a());
+          localEmoticon.magicValue = ((StringBuilder)localObject).toString();
+        }
+      }
       ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), localEmoticon);
       g();
       a(localEmoticon, null);
-      return;
     }
   }
   
@@ -510,113 +526,82 @@ public class MagicfaceViewController
       localObject = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager;
       ((MagicfaceActionManager)localObject).a(new MagicfaceViewController.4(this, (MagicfaceActionManager)localObject));
     }
-    for (;;)
+    else
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$OnMagicPlayEnd != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$OnMagicPlayEnd.onPlayEnd();
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$OnMagicPlayEnd = null;
-      }
-      return;
       this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.h();
+    }
+    localObject = this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewOnMagicPlayEnd;
+    if (localObject != null)
+    {
+      ((OnMagicPlayEnd)localObject).onPlayEnd();
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewOnMagicPlayEnd = null;
     }
   }
   
   public void h()
   {
     g();
-    if ((this.jdField_a_of_type_AndroidOsHandler != null) && (this.jdField_a_of_type_JavaLangRunnable != null)) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    if (localHandler != null)
+    {
+      Runnable localRunnable = this.jdField_a_of_type_JavaLangRunnable;
+      if (localRunnable != null) {
+        localHandler.removeCallbacks(localRunnable);
+      }
     }
   }
   
   public void onClick(View paramView)
   {
-    boolean bool3 = true;
-    boolean bool2 = true;
+    boolean bool;
     switch (paramView.getId())
     {
     default: 
-    case 2131370970: 
-    case 2131370975: 
-    case 2131370982: 
-    case 2131370983: 
-      for (;;)
-      {
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), "CliOper", "", "", "MbFasong", "MbGuanbi", 0, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
-        g();
-        continue;
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), "CliOper", "", "", "MbJieshou", "MbZhudongGuanbi", 0, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
-        g();
-        continue;
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), "CliOper", "", "", "MbFasong", "MbChongzuo", 0, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
-        if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager != null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.f();
-          this.jdField_a_of_type_AndroidOsHandler.postDelayed(new MagicfaceViewController.1(this), 300L);
-          continue;
-          f();
-        }
-      }
-    case 2131370984: 
-      bool3 = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.b();
-      localMagicfaceActionManager = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager;
-      if (!bool3)
-      {
-        bool1 = true;
-        label275:
-        localMagicfaceActionManager.a(bool1);
-        c();
-        localMagicfaceActionManager = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager;
-        if (bool3) {
-          break label356;
-        }
-      }
-      label356:
-      for (bool1 = bool2;; bool1 = false)
-      {
-        localMagicfaceActionManager.c(bool1);
-        if (bool3) {
-          break;
-        }
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), "CliOper", "", "", "MbFasong", "MbKaiqiShengxiao", 0, 0, "", "", "", "");
-        break;
-        bool1 = false;
-        break label275;
-      }
-    }
-    bool2 = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.c();
-    MagicfaceActionManager localMagicfaceActionManager = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager;
-    if (!bool2)
-    {
-      bool1 = true;
-      label381:
-      localMagicfaceActionManager.b(bool1);
-      d();
-      localMagicfaceActionManager = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager;
-      if (bool2) {
-        break label461;
-      }
-    }
-    label461:
-    for (boolean bool1 = bool3;; bool1 = false)
-    {
-      localMagicfaceActionManager.c(bool1);
-      if (bool2) {
-        break;
-      }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), "CliOper", "", "", "MbJieshou", "MbKaiqiShengxiao2", 0, 0, "", "", "", "");
       break;
-      bool1 = false;
-      break label381;
+    case 2131370618: 
+      bool = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.b();
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.a(bool ^ true);
+      c();
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.c(bool ^ true);
+      if (!bool) {
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), "CliOper", "", "", "MbFasong", "MbKaiqiShengxiao", 0, 0, "", "", "", "");
+      }
+      break;
+    case 2131370617: 
+      f();
+      break;
+    case 2131370616: 
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), "CliOper", "", "", "MbFasong", "MbChongzuo", 0, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
+      MagicfaceActionManager localMagicfaceActionManager = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager;
+      if (localMagicfaceActionManager != null)
+      {
+        localMagicfaceActionManager.f();
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new MagicfaceViewController.1(this), 300L);
+      }
+      break;
+    case 2131370611: 
+      bool = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.c();
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.b(bool ^ true);
+      d();
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.c(bool ^ true);
+      if (!bool) {
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), "CliOper", "", "", "MbJieshou", "MbKaiqiShengxiao2", 0, 0, "", "", "", "");
+      }
+      break;
+    case 2131370609: 
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), "CliOper", "", "", "MbJieshou", "MbZhudongGuanbi", 0, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
+      g();
+      break;
+    case 2131370604: 
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), "CliOper", "", "", "MbFasong", "MbGuanbi", 0, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
+      g();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.view.MagicfaceViewController
  * JD-Core Version:    0.7.0.1
  */

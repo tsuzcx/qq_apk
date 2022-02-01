@@ -25,7 +25,7 @@ public abstract class ContactBaseView
   
   public int a()
   {
-    return getResources().getDimensionPixelSize(2131298179);
+    return getResources().getDimensionPixelSize(2131298174);
   }
   
   public void a() {}
@@ -49,7 +49,7 @@ public abstract class ContactBaseView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView
  * JD-Core Version:    0.7.0.1
  */

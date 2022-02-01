@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
 final class ReadInjoyIMAXAdFragment$8
   implements Runnable
@@ -9,12 +9,12 @@ final class ReadInjoyIMAXAdFragment$8
   
   public void run()
   {
-    this.a.getActivity().finish();
+    this.a.getBaseActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.8
  * JD-Core Version:    0.7.0.1
  */

@@ -7,8 +7,8 @@ import com.tencent.vas.update.wrapper.VasUpdateWrapper;
 public class CommonUtil
 {
   public static final String STSTEM_TAG = "VasUpdate_";
-  public static int TEST_TYPE = 0;
-  public static int sCookieId = 0;
+  public static int TEST_TYPE;
+  public static int sCookieId;
   
   public static int generateCookieId()
   {
@@ -19,7 +19,11 @@ public class CommonUtil
   
   public static String sComposeItemId(long paramLong, String paramString)
   {
-    return paramLong + "_" + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   public static long sParseBidId(String paramString)
@@ -35,7 +39,11 @@ public class CommonUtil
     catch (Throwable localThrowable)
     {
       localThrowable.printStackTrace();
-      VasUpdateWrapper.getLog().e("VasUpdate_", "sParseBidId error itemId = " + paramString, localThrowable);
+      IVasLog localIVasLog = VasUpdateWrapper.getLog();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sParseBidId error itemId = ");
+      localStringBuilder.append(paramString);
+      localIVasLog.e("VasUpdate_", localStringBuilder.toString(), localThrowable);
     }
     return 0L;
   }
@@ -53,14 +61,18 @@ public class CommonUtil
     catch (Throwable localThrowable)
     {
       localThrowable.printStackTrace();
-      VasUpdateWrapper.getLog().e("VasUpdate_", "sParseScid error itemId = " + paramString, localThrowable);
+      IVasLog localIVasLog = VasUpdateWrapper.getLog();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sParseScid error itemId = ");
+      localStringBuilder.append(paramString);
+      localIVasLog.e("VasUpdate_", localStringBuilder.toString(), localThrowable);
     }
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.vas.update.util.CommonUtil
  * JD-Core Version:    0.7.0.1
  */

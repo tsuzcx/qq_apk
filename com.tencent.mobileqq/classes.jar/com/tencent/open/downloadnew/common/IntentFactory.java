@@ -7,13 +7,10 @@ import android.text.TextUtils;
 import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.open.appcommon.AppClient;
 import com.tencent.open.appcommon.Common;
-import com.tencent.open.base.APNUtil;
 import com.tencent.open.base.LogUtility;
 import com.tencent.open.business.base.AppUtil;
 import com.tencent.open.downloadnew.DownloadManager;
 import com.tencent.qphone.base.util.BaseApplication;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -22,22 +19,16 @@ import mqq.app.MobileQQ;
 
 public class IntentFactory
 {
-  public static String a;
+  public static String a = "com.tencent.open.download.start";
   public static ArrayList<String> a;
-  public static String b;
-  public static String c;
-  public static String d;
-  public static String e;
-  public static String f;
+  public static String b = "com.tencent.open.download.pause";
+  public static String c = "com.tencent.open.download.restart";
+  public static String d = "com.tencent.open.download.complete";
+  public static String e = "com.tencent.open.download.open";
+  public static String f = "com.tencent.open.download.yyb";
   
   static
   {
-    jdField_a_of_type_JavaLangString = "com.tencent.open.download.start";
-    b = "com.tencent.open.download.pause";
-    c = "com.tencent.open.download.restart";
-    d = "com.tencent.open.download.complete";
-    e = "com.tencent.open.download.open";
-    f = "com.tencent.open.download.yyb";
     jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     jdField_a_of_type_JavaUtilArrayList.add(d);
     jdField_a_of_type_JavaUtilArrayList.add(e);
@@ -60,23 +51,49 @@ public class IntentFactory
       localIntent.putExtra("processName", paramNoticeParam);
     }
     paramNoticeParam = paramNoticeParam.replace(":", ".");
+    StringBuilder localStringBuilder;
     switch (paramInt)
     {
+    default: 
+      break;
+    case 6: 
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(e);
+      localStringBuilder.append(".");
+      localStringBuilder.append(paramNoticeParam);
+      localIntent.setAction(localStringBuilder.toString());
+      break;
+    case 5: 
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(f);
+      localStringBuilder.append(".");
+      localStringBuilder.append(paramNoticeParam);
+      localIntent.setAction(localStringBuilder.toString());
+      break;
+    case 4: 
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(d);
+      localStringBuilder.append(".");
+      localStringBuilder.append(paramNoticeParam);
+      localIntent.setAction(localStringBuilder.toString());
+      break;
+    case 2: 
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(b);
+      localStringBuilder.append(".");
+      localStringBuilder.append(paramNoticeParam);
+      localIntent.setAction(localStringBuilder.toString());
+      break;
+    case 1: 
+    case 3: 
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(".");
+      localStringBuilder.append(paramNoticeParam);
+      localIntent.setAction(localStringBuilder.toString());
     }
-    for (;;)
-    {
-      localIntent.setPackage(MobileQQ.getContext().getPackageName());
-      return PendingIntent.getBroadcast(CommonDataAdapter.a().a(), (int)(System.currentTimeMillis() & 0xFFFFFFF), localIntent, 134217728);
-      localIntent.setAction(b + "." + paramNoticeParam);
-      continue;
-      localIntent.setAction(jdField_a_of_type_JavaLangString + "." + paramNoticeParam);
-      continue;
-      localIntent.setAction(d + "." + paramNoticeParam);
-      continue;
-      localIntent.setAction(f + "." + paramNoticeParam);
-      continue;
-      localIntent.setAction(e + "." + paramNoticeParam);
-    }
+    localIntent.setPackage(MobileQQ.getContext().getPackageName());
+    return PendingIntent.getBroadcast(CommonDataAdapter.a().a(), (int)(System.currentTimeMillis() & 0xFFFFFFF), localIntent, 134217728);
   }
   
   public static Intent a(Bundle paramBundle)
@@ -89,121 +106,100 @@ public class IntentFactory
     Object localObject2 = paramBundle.keySet().iterator();
     while (((Iterator)localObject2).hasNext())
     {
-      str1 = (String)((Iterator)localObject2).next();
-      String str2 = paramBundle.getString(str1);
-      ((StringBuffer)localObject1).append(str1).append("=").append(str2).append("&");
+      localObject3 = (String)((Iterator)localObject2).next();
+      String str = paramBundle.getString((String)localObject3);
+      ((StringBuffer)localObject1).append((String)localObject3);
+      ((StringBuffer)localObject1).append("=");
+      ((StringBuffer)localObject1).append(str);
+      ((StringBuffer)localObject1).append("&");
     }
     localObject2 = Common.a(((StringBuffer)localObject1).toString());
     localObject1 = localObject2[0];
-    localObject2 = "" + localObject2[1];
-    String str1 = paramBundle.getString("from");
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("");
+    ((StringBuilder)localObject3).append(localObject2[1]);
+    localObject2 = ((StringBuilder)localObject3).toString();
+    localObject3 = paramBundle.getString("from");
     localIntent.putExtra("uinRestore", CommonDataAdapter.a().a());
     localIntent.putExtra("APP_URL_NOTICE", (String)localObject1);
-    if (a(str1)) {}
-    for (localObject1 = a(paramBundle);; localObject1 = localObject2)
-    {
-      localIntent.putExtra("APP_PARAMS_NOTICE", (String)localObject1);
-      LogUtility.b("IntentFactory", "params=" + (String)localObject2 + "\n pushParams=" + a(paramBundle));
-      if (paramBundle.containsKey("friendUin"))
-      {
-        localIntent.putExtra("friendUin", paramBundle.getString("friendUin"));
-        localIntent.putExtra("isTroop", paramBundle.getInt("isTroop"));
-      }
-      localIntent.addFlags(603979776);
-      return localIntent;
+    if (a((String)localObject3)) {
+      localObject1 = a(paramBundle);
+    } else {
+      localObject1 = localObject2;
     }
+    localIntent.putExtra("APP_PARAMS_NOTICE", (String)localObject1);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("params=");
+    ((StringBuilder)localObject1).append((String)localObject2);
+    ((StringBuilder)localObject1).append("\n pushParams=");
+    ((StringBuilder)localObject1).append(a(paramBundle));
+    LogUtility.b("IntentFactory", ((StringBuilder)localObject1).toString());
+    if (paramBundle.containsKey("friendUin"))
+    {
+      localIntent.putExtra("friendUin", paramBundle.getString("friendUin"));
+      localIntent.putExtra("isTroop", paramBundle.getInt("isTroop"));
+    }
+    localIntent.addFlags(603979776);
+    return localIntent;
   }
   
   public static Intent a(String paramString1, String paramString2, int paramInt)
   {
-    if ((paramString1 == null) || (paramString1.length() == 0)) {
-      return null;
+    if ((paramString1 != null) && (paramString1.length() != 0))
+    {
+      Object localObject1 = Common.a(paramString1);
+      paramString1 = (String)((HashMap)localObject1).get("appid");
+      String str1 = (String)((HashMap)localObject1).get("sendtime");
+      String str2 = (String)((HashMap)localObject1).get("packname");
+      String str3 = (String)((HashMap)localObject1).get("packetversion");
+      String str4 = (String)((HashMap)localObject1).get("msgtype");
+      String str5 = (String)((HashMap)localObject1).get("type");
+      String str6 = (String)((HashMap)localObject1).get("downurl");
+      localObject1 = (String)((HashMap)localObject1).get("via");
+      String str7 = AppClient.a((String)localObject1);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("appid=");
+      ((StringBuilder)localObject2).append(paramString1);
+      ((StringBuilder)localObject2).append("&sendtime=");
+      ((StringBuilder)localObject2).append(str1);
+      ((StringBuilder)localObject2).append("&packname=");
+      ((StringBuilder)localObject2).append(str2);
+      ((StringBuilder)localObject2).append("&packetversion=");
+      ((StringBuilder)localObject2).append(str3);
+      ((StringBuilder)localObject2).append("&msgtype=");
+      ((StringBuilder)localObject2).append(str4);
+      ((StringBuilder)localObject2).append("&type=");
+      ((StringBuilder)localObject2).append(str5);
+      ((StringBuilder)localObject2).append("&downUrl=");
+      ((StringBuilder)localObject2).append(str6);
+      ((StringBuilder)localObject2).append("&via=");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      LogUtility.b("IntentFactory", ((StringBuilder)localObject2).toString());
+      int i = AppUtil.a(str2);
+      int j = AppUtil.b(DownloadManager.a().a(paramString1));
+      localObject2 = new Bundle();
+      ((Bundle)localObject2).putString("id", paramString1);
+      ((Bundle)localObject2).putString("from", "2458");
+      ((Bundle)localObject2).putString("downloadUrl", str6);
+      ((Bundle)localObject2).putString("packageName", str2);
+      ((Bundle)localObject2).putString("installedVersion", String.valueOf(i));
+      ((Bundle)localObject2).putString("localVersion", String.valueOf(j));
+      ((Bundle)localObject2).putString("serverApkVersion", str3);
+      ((Bundle)localObject2).putString("typeid", str5);
+      ((Bundle)localObject2).putString("msgType", str4);
+      ((Bundle)localObject2).putString("sendTime", str1);
+      ((Bundle)localObject2).putString("via", (String)localObject1);
+      ((Bundle)localObject2).putString("splitvia", str7);
+      ((Bundle)localObject2).putString("friendUin", paramString2);
+      ((Bundle)localObject2).putInt("isTroop", paramInt);
+      return a((Bundle)localObject2);
     }
-    Object localObject = Common.a(paramString1);
-    paramString1 = (String)((HashMap)localObject).get("appid");
-    String str1 = (String)((HashMap)localObject).get("sendtime");
-    String str2 = (String)((HashMap)localObject).get("packname");
-    String str3 = (String)((HashMap)localObject).get("packetversion");
-    String str4 = (String)((HashMap)localObject).get("msgtype");
-    String str5 = (String)((HashMap)localObject).get("type");
-    String str6 = (String)((HashMap)localObject).get("downurl");
-    localObject = (String)((HashMap)localObject).get("via");
-    String str7 = AppClient.a((String)localObject);
-    LogUtility.b("IntentFactory", "appid=" + paramString1 + "&sendtime=" + str1 + "&packname=" + str2 + "&packetversion=" + str3 + "&msgtype=" + str4 + "&type=" + str5 + "&downUrl=" + str6 + "&via=" + (String)localObject);
-    int i = AppUtil.a(str2);
-    int j = AppUtil.b(DownloadManager.a().a(paramString1));
-    Bundle localBundle = new Bundle();
-    localBundle.putString("id", paramString1);
-    localBundle.putString("from", "2458");
-    localBundle.putString("downloadUrl", str6);
-    localBundle.putString("packageName", str2);
-    localBundle.putString("installedVersion", String.valueOf(i));
-    localBundle.putString("localVersion", String.valueOf(j));
-    localBundle.putString("serverApkVersion", str3);
-    localBundle.putString("typeid", str5);
-    localBundle.putString("msgType", str4);
-    localBundle.putString("sendTime", str1);
-    localBundle.putString("via", (String)localObject);
-    localBundle.putString("splitvia", str7);
-    localBundle.putString("friendUin", paramString2);
-    localBundle.putInt("isTroop", paramInt);
-    return a(localBundle);
+    return null;
   }
   
   protected static String a(Bundle paramBundle)
   {
-    Object localObject1;
-    if (paramBundle == null)
-    {
-      localObject1 = "";
-      return localObject1;
-    }
-    String str3 = paramBundle.getString("id");
-    LogUtility.b("IntentFactory", "appId=" + str3);
-    String str5;
-    if (!TextUtils.isEmpty(str3))
-    {
-      Object localObject2 = paramBundle.getString("downloadUrl");
-      String str4 = paramBundle.getString("packageName");
-      String str1 = paramBundle.getString("serverApkVersion");
-      localObject1 = str1;
-      if (str1 == null) {
-        localObject1 = "0";
-      }
-      str5 = paramBundle.getString("via");
-      String str2 = paramBundle.getString("splitvia");
-      int j = AppUtil.a(str4);
-      int k = AppUtil.b(DownloadManager.a().a(str3));
-      if (APNUtil.c(CommonDataAdapter.a().a())) {}
-      for (int i = 1;; i = 0)
-      {
-        try
-        {
-          str1 = URLEncoder.encode((String)localObject2, "utf-8");
-          localObject2 = str1;
-        }
-        catch (UnsupportedEncodingException localUnsupportedEncodingException)
-        {
-          for (;;)
-          {
-            localUnsupportedEncodingException.printStackTrace();
-            continue;
-            paramBundle = paramBundle + "&via=" + str5;
-          }
-        }
-        paramBundle = "&from=-10&id=" + str3 + "&channelId=" + paramBundle.getString("from") + "&installedVersion=" + String.valueOf(j) + "&localVersion=" + k + "&serverApkVersion=" + (String)localObject1 + "&typeId=" + "0" + "&msgType=" + "56" + "&sendTime=" + str3 + "&downloadUrl=" + (String)localObject2 + "&packageName=" + str4 + "&nt=" + i;
-        if (!TextUtils.isEmpty(str5)) {
-          break label357;
-        }
-        localObject1 = paramBundle;
-        if (TextUtils.isEmpty(str2)) {
-          break;
-        }
-        return paramBundle + "&splitvia=" + str2;
-      }
-    }
-    label357:
-    return "";
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   protected static boolean a(String paramString)
@@ -213,7 +209,7 @@ public class IntentFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.common.IntentFactory
  * JD-Core Version:    0.7.0.1
  */

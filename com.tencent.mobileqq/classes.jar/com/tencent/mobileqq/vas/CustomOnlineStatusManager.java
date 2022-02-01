@@ -2,7 +2,7 @@ package com.tencent.mobileqq.vas;
 
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.config.QConfigManager;
-import com.tencent.mobileqq.config.business.qvip.CustomOnlineStatusConfig;
+import com.tencent.mobileqq.vas.config.business.qvip.CustomOnlineStatusConfig;
 import com.tencent.pb.onlinestatus.CustomOnlineStatusPb.CustomOnlineStatusMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -84,40 +84,53 @@ public class CustomOnlineStatusManager
   public final boolean a()
   {
     int j = this.c;
-    CustomOnlineStatusConfig localCustomOnlineStatusConfig = (CustomOnlineStatusConfig)QConfigManager.a().a(479);
-    if ((localCustomOnlineStatusConfig == null) || (localCustomOnlineStatusConfig.a)) {}
-    for (int i = 1;; i = 0)
-    {
-      this.c = i;
-      if (j != this.c) {
-        a();
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("CustomOnlineStatusManager", 4, "featureEnable = " + this.c);
-      }
-      if (this.c != 1) {
-        break;
-      }
-      return true;
+    Object localObject = (CustomOnlineStatusConfig)QConfigManager.a().a(479);
+    boolean bool = false;
+    int i;
+    if ((localObject != null) && (!((CustomOnlineStatusConfig)localObject).a)) {
+      i = 0;
+    } else {
+      i = 1;
     }
-    return false;
+    this.c = i;
+    if (j != this.c) {
+      a();
+    }
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("featureEnable = ");
+      ((StringBuilder)localObject).append(this.c);
+      QLog.d("CustomOnlineStatusManager", 4, ((StringBuilder)localObject).toString());
+    }
+    if (this.c == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   public boolean a(String paramString)
   {
+    boolean bool2 = true;
+    boolean bool1 = bool2;
     if (paramString != null)
     {
       paramString = (Long)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      if (paramString != null) {
-        return Math.abs(System.currentTimeMillis() - paramString.longValue()) > this.b;
+      bool1 = bool2;
+      if (paramString != null)
+      {
+        if (Math.abs(System.currentTimeMillis() - paramString.longValue()) > this.b) {
+          return true;
+        }
+        bool1 = false;
       }
     }
-    return true;
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.CustomOnlineStatusManager
  * JD-Core Version:    0.7.0.1
  */

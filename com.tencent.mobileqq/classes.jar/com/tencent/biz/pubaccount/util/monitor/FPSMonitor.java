@@ -4,7 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.view.WindowManager;
-import com.tencent.biz.pubaccount.readinjoy.video.bandwidth.BandwidthPredictor;
+import com.tencent.mobileqq.kandian.base.bandwidth.api.IBandwidthPredictor;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.SoftReference;
 
@@ -19,8 +20,9 @@ public class FPSMonitor
   
   private Context a()
   {
-    if (this.jdField_a_of_type_JavaLangRefSoftReference != null) {
-      return (Context)this.jdField_a_of_type_JavaLangRefSoftReference.get();
+    SoftReference localSoftReference = this.jdField_a_of_type_JavaLangRefSoftReference;
+    if (localSoftReference != null) {
+      return (Context)localSoftReference.get();
     }
     return null;
   }
@@ -35,7 +37,8 @@ public class FPSMonitor
     if (a() != paramContext) {
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall != null) && (this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall.getParent() != null)) {
+    paramContext = this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall;
+    if ((paramContext != null) && (paramContext.getParent() != null)) {
       this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall);
     }
     if ((this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorDropFrameCollector != null) && (Build.VERSION.SDK_INT >= 16)) {
@@ -49,8 +52,9 @@ public class FPSMonitor
   
   public void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall.a(paramFloat1, paramFloat2, paramFloat3, BandwidthPredictor.a().b(), BandwidthPredictor.a().a());
+    FPSSuspendedBall localFPSSuspendedBall = this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall;
+    if (localFPSSuspendedBall != null) {
+      localFPSSuspendedBall.a(paramFloat1, paramFloat2, paramFloat3, ((IBandwidthPredictor)QRoute.api(IBandwidthPredictor.class)).getLastBandwidth(), ((IBandwidthPredictor)QRoute.api(IBandwidthPredictor.class)).getCurrentPrediction());
     }
   }
   
@@ -61,21 +65,20 @@ public class FPSMonitor
   
   public void a(Activity paramActivity, boolean paramBoolean)
   {
-    if (Build.VERSION.SDK_INT < 16) {}
-    Context localContext;
-    do
-    {
-      do
-      {
-        return;
-        if (this.jdField_a_of_type_Boolean) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("FPSMonitor", 2, "start fail, switch was closed");
+    if (Build.VERSION.SDK_INT < 16) {
       return;
-      localContext = a();
-    } while ((paramActivity == localContext) && (this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall != null));
+    }
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("FPSMonitor", 2, "start fail, switch was closed");
+      }
+      return;
+    }
+    Context localContext = a();
+    if ((paramActivity == localContext) && (this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall != null)) {
+      return;
+    }
     b(localContext);
     this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramActivity);
     this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramActivity.getSystemService("window"));
@@ -106,7 +109,7 @@ public class FPSMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.monitor.FPSMonitor
  * JD-Core Version:    0.7.0.1
  */

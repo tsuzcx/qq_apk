@@ -23,139 +23,99 @@ public final class BindAccountInfo
   @NotNull
   private final String g;
   
-  @NotNull
-  public final String a()
-  {
-    return this.a;
-  }
-  
-  @NotNull
-  public final String b()
-  {
-    return this.b;
-  }
-  
-  @NotNull
-  public final String c()
-  {
-    return this.c;
-  }
-  
-  @NotNull
-  public final String d()
-  {
-    return this.d;
-  }
-  
-  @NotNull
-  public final String e()
-  {
-    return this.e;
-  }
-  
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof BindAccountInfo))
       {
         paramObject = (BindAccountInfo)paramObject;
-        if ((!Intrinsics.areEqual(this.a, paramObject.a)) || (!Intrinsics.areEqual(this.b, paramObject.b)) || (!Intrinsics.areEqual(this.c, paramObject.c)) || (!Intrinsics.areEqual(this.d, paramObject.d)) || (!Intrinsics.areEqual(this.e, paramObject.e)) || (!Intrinsics.areEqual(this.f, paramObject.f)) || (!Intrinsics.areEqual(this.g, paramObject.g))) {}
+        if ((Intrinsics.areEqual(this.a, paramObject.a)) && (Intrinsics.areEqual(this.b, paramObject.b)) && (Intrinsics.areEqual(this.c, paramObject.c)) && (Intrinsics.areEqual(this.d, paramObject.d)) && (Intrinsics.areEqual(this.e, paramObject.e)) && (Intrinsics.areEqual(this.f, paramObject.f)) && (Intrinsics.areEqual(this.g, paramObject.g))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
-  }
-  
-  @NotNull
-  public final String f()
-  {
-    return this.f;
-  }
-  
-  @NotNull
-  public final String g()
-  {
-    return this.g;
+    return true;
   }
   
   public int hashCode()
   {
-    int i2 = 0;
     String str = this.a;
+    int i2 = 0;
     int i;
-    int j;
-    label37:
-    int k;
-    label54:
-    int m;
-    label72:
-    int n;
-    if (str != null)
-    {
+    if (str != null) {
       i = str.hashCode();
-      str = this.b;
-      if (str == null) {
-        break label167;
-      }
-      j = str.hashCode();
-      str = this.c;
-      if (str == null) {
-        break label172;
-      }
-      k = str.hashCode();
-      str = this.d;
-      if (str == null) {
-        break label177;
-      }
-      m = str.hashCode();
-      str = this.e;
-      if (str == null) {
-        break label183;
-      }
-      n = str.hashCode();
-      label90:
-      str = this.f;
-      if (str == null) {
-        break label189;
-      }
-    }
-    label167:
-    label172:
-    label177:
-    label183:
-    label189:
-    for (int i1 = str.hashCode();; i1 = 0)
-    {
-      str = this.g;
-      if (str != null) {
-        i2 = str.hashCode();
-      }
-      return (i1 + (n + (m + (k + (j + i * 31) * 31) * 31) * 31) * 31) * 31 + i2;
+    } else {
       i = 0;
-      break;
-      j = 0;
-      break label37;
-      k = 0;
-      break label54;
-      m = 0;
-      break label72;
-      n = 0;
-      break label90;
     }
+    str = this.b;
+    int j;
+    if (str != null) {
+      j = str.hashCode();
+    } else {
+      j = 0;
+    }
+    str = this.c;
+    int k;
+    if (str != null) {
+      k = str.hashCode();
+    } else {
+      k = 0;
+    }
+    str = this.d;
+    int m;
+    if (str != null) {
+      m = str.hashCode();
+    } else {
+      m = 0;
+    }
+    str = this.e;
+    int n;
+    if (str != null) {
+      n = str.hashCode();
+    } else {
+      n = 0;
+    }
+    str = this.f;
+    int i1;
+    if (str != null) {
+      i1 = str.hashCode();
+    } else {
+      i1 = 0;
+    }
+    str = this.g;
+    if (str != null) {
+      i2 = str.hashCode();
+    }
+    return (((((i * 31 + j) * 31 + k) * 31 + m) * 31 + n) * 31 + i1) * 31 + i2;
   }
   
   @NotNull
   public String toString()
   {
-    return "BindAccountInfo(title=" + this.a + ", subTitle=" + this.b + ", accountId=" + this.c + ", nickName=" + this.d + ", headUrl=" + this.e + ", negativeText=" + this.f + ", positiveText=" + this.g + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BindAccountInfo(title=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", subTitle=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", accountId=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", nickName=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", headUrl=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", negativeText=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", positiveText=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.publisharticle.BindAccountInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -93,12 +93,64 @@ public class TroopAIOAppInfo
   
   public String toString()
   {
-    return "TroopAppInfo{appid=" + this.appid + ", redDotID=" + this.redDotID + ", groupType='" + this.groupType + '\'' + ", hashVal='" + this.hashVal + '\'' + ", iconUrl='" + this.iconUrl + '\'' + ", name='" + this.name + '\'' + ", url='" + this.url + '\'' + ", redPoint=" + this.redPoint + ", canRemove=" + this.canRemove + ", minVersion='" + this.minVersion + '\'' + ", isGray=" + this.isGray + ", isCommon=" + this.isCommon + ", identifyMask=" + Integer.toBinaryString(this.identifyMask) + ", simpleDayUrl=" + this.simpleDayUrl + ", simpleDayPressUrl=" + this.simpleDayPressUrl + ", simpleNightUrl=" + this.simpleNightUrl + ", simpleNightPressUrl=" + this.simpleNightPressUrl + ", sort=" + this.sort + ", action=" + this.action + ", actionType=" + this.actionType + ", iconPress=" + this.iconPress + ", enable=" + this.enableC2C + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TroopAppInfo{appid=");
+    localStringBuilder.append(this.appid);
+    localStringBuilder.append(", redDotID=");
+    localStringBuilder.append(this.redDotID);
+    localStringBuilder.append(", groupType='");
+    localStringBuilder.append(this.groupType);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", hashVal='");
+    localStringBuilder.append(this.hashVal);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", iconUrl='");
+    localStringBuilder.append(this.iconUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", url='");
+    localStringBuilder.append(this.url);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", redPoint=");
+    localStringBuilder.append(this.redPoint);
+    localStringBuilder.append(", canRemove=");
+    localStringBuilder.append(this.canRemove);
+    localStringBuilder.append(", minVersion='");
+    localStringBuilder.append(this.minVersion);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", isGray=");
+    localStringBuilder.append(this.isGray);
+    localStringBuilder.append(", isCommon=");
+    localStringBuilder.append(this.isCommon);
+    localStringBuilder.append(", identifyMask=");
+    localStringBuilder.append(Integer.toBinaryString(this.identifyMask));
+    localStringBuilder.append(", simpleDayUrl=");
+    localStringBuilder.append(this.simpleDayUrl);
+    localStringBuilder.append(", simpleDayPressUrl=");
+    localStringBuilder.append(this.simpleDayPressUrl);
+    localStringBuilder.append(", simpleNightUrl=");
+    localStringBuilder.append(this.simpleNightUrl);
+    localStringBuilder.append(", simpleNightPressUrl=");
+    localStringBuilder.append(this.simpleNightPressUrl);
+    localStringBuilder.append(", sort=");
+    localStringBuilder.append(this.sort);
+    localStringBuilder.append(", action=");
+    localStringBuilder.append(this.action);
+    localStringBuilder.append(", actionType=");
+    localStringBuilder.append(this.actionType);
+    localStringBuilder.append(", iconPress=");
+    localStringBuilder.append(this.iconPress);
+    localStringBuilder.append(", enable=");
+    localStringBuilder.append(this.enableC2C);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAIOAppInfo
  * JD-Core Version:    0.7.0.1
  */

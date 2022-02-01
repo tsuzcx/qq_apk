@@ -25,12 +25,21 @@ public class RtcInitParam
   
   public String toString()
   {
-    return "MediaSdkInitInfo:[isEnv=" + this.isEnv + ";sdkAppID=" + this.sdkAppID + ";sdkAccountType=" + this.sdkAccountType + ";selfUin=" + this.selfUin + "]";
+    StringBuilder localStringBuilder = new StringBuilder("MediaSdkInitInfo:[isEnv=");
+    localStringBuilder.append(this.isEnv);
+    localStringBuilder.append(";sdkAppID=");
+    localStringBuilder.append(this.sdkAppID);
+    localStringBuilder.append(";sdkAccountType=");
+    localStringBuilder.append(this.sdkAccountType);
+    localStringBuilder.append(";selfUin=");
+    localStringBuilder.append(this.selfUin);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.opensdk.params.RtcInitParam
  * JD-Core Version:    0.7.0.1
  */

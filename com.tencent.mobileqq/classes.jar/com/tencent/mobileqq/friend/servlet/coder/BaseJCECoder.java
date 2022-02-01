@@ -29,7 +29,11 @@ public abstract class BaseJCECoder
       localUniPacket.decode(paramArrayOfByte);
       return localUniPacket.getByClass(paramString, paramT);
     }
-    catch (Exception paramArrayOfByte) {}
+    catch (Exception paramArrayOfByte)
+    {
+      label31:
+      break label31;
+    }
     return null;
   }
   
@@ -45,38 +49,23 @@ public abstract class BaseJCECoder
     Intrinsics.checkParameterIsNotNull(paramString, "cmd");
     String[] arrayOfString = a();
     int i;
-    label26:
-    int j;
-    if (arrayOfString.length == 0)
-    {
+    if (arrayOfString.length == 0) {
       i = 1;
-      if (i != 0) {
-        break label59;
-      }
-      i = 1;
-      if (i == 0) {
-        break label71;
-      }
-      j = arrayOfString.length;
+    } else {
       i = 0;
     }
-    for (;;)
+    if ((i ^ 0x1) != 0)
     {
-      if (i >= j) {
-        break label71;
-      }
-      if (Intrinsics.areEqual(paramString, arrayOfString[i]))
+      int j = arrayOfString.length;
+      i = 0;
+      while (i < j)
       {
-        return true;
-        i = 0;
-        break;
-        label59:
-        i = 0;
-        break label26;
+        if (Intrinsics.areEqual(paramString, arrayOfString[i])) {
+          return true;
+        }
+        i += 1;
       }
-      i += 1;
     }
-    label71:
     return false;
   }
   
@@ -85,7 +74,7 @@ public abstract class BaseJCECoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.friend.servlet.coder.BaseJCECoder
  * JD-Core Version:    0.7.0.1
  */

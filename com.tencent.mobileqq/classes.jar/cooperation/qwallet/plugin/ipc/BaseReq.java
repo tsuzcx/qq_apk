@@ -34,17 +34,25 @@ public abstract class BaseReq
       ((BaseReq)localObject).fromBundle(paramBundle);
       return localObject;
     }
-    catch (Exception paramBundle) {}
+    catch (Exception paramBundle)
+    {
+      paramBundle.printStackTrace();
+    }
     return null;
   }
   
   public final boolean doCallback(Bundle paramBundle)
   {
-    if ((paramBundle == null) || (this.fromReceiver == null)) {
-      return false;
+    if (paramBundle != null)
+    {
+      ResultReceiver localResultReceiver = this.fromReceiver;
+      if (localResultReceiver == null) {
+        return false;
+      }
+      localResultReceiver.send(0, paramBundle);
+      return true;
     }
-    this.fromReceiver.send(0, paramBundle);
-    return true;
+    return false;
   }
   
   public void fromBundle(Bundle paramBundle)
@@ -71,7 +79,7 @@ public abstract class BaseReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qwallet.plugin.ipc.BaseReq
  * JD-Core Version:    0.7.0.1
  */

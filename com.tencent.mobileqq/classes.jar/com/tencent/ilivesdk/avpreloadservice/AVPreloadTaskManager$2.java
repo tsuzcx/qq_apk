@@ -1,20 +1,23 @@
 package com.tencent.ilivesdk.avpreloadservice;
 
-import java.util.Comparator;
+import com.tencent.falco.utils.ThreadCenter;
 
 class AVPreloadTaskManager$2
-  implements Comparator<AVPreloadTask>
+  implements Runnable
 {
   AVPreloadTaskManager$2(AVPreloadTaskManager paramAVPreloadTaskManager) {}
   
-  public int a(AVPreloadTask paramAVPreloadTask1, AVPreloadTask paramAVPreloadTask2)
+  public void run()
   {
-    return paramAVPreloadTask2.f() - paramAVPreloadTask1.f();
+    AVPreloadTaskManager.a(this.this$0);
+    AVPreloadTaskManager.b(this.this$0);
+    AVPreloadTaskManager localAVPreloadTaskManager = this.this$0;
+    ThreadCenter.postDelayedUITask(localAVPreloadTaskManager, AVPreloadTaskManager.a(localAVPreloadTaskManager), 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadservice.AVPreloadTaskManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -93,60 +93,65 @@ public final class QuicNetReport
   public static QuicNetReport.Stats convertJsontoStats(String paramString)
   {
     if (paramString == null) {
-      paramString = null;
+      return null;
     }
-    QuicNetReport.Stats localStats;
-    for (;;)
+    QuicNetReport.Stats localStats = new QuicNetReport.Stats();
+    try
     {
-      return paramString;
-      localStats = new QuicNetReport.Stats();
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        if (localJSONObject.has("srtt_us")) {
-          localStats.mSrttUs = localJSONObject.optInt("srtt_us");
-        }
-        if (localJSONObject.has("estimated_bandwidth")) {
-          localStats.mEstimatedBandwidth = localJSONObject.optInt("estimated_bandwidth");
-        }
-        if (localJSONObject.has("rtt_mean")) {
-          localStats.mRttMean = localJSONObject.optInt("rtt_mean");
-        }
-        if (localJSONObject.has("lost_rate")) {
-          localStats.mLostRate = localJSONObject.optInt("lost_rate");
-        }
-        paramString = localStats;
-        if (localJSONObject.has("byte_recv"))
-        {
-          localStats.mByteRecv = localJSONObject.optInt("byte_recv");
-          return localStats;
-        }
+      paramString = new JSONObject(paramString);
+      if (paramString.has("srtt_us")) {
+        localStats.mSrttUs = paramString.optInt("srtt_us");
       }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
+      if (paramString.has("estimated_bandwidth")) {
+        localStats.mEstimatedBandwidth = paramString.optInt("estimated_bandwidth");
       }
+      if (paramString.has("rtt_mean")) {
+        localStats.mRttMean = paramString.optInt("rtt_mean");
+      }
+      if (paramString.has("lost_rate")) {
+        localStats.mLostRate = paramString.optInt("lost_rate");
+      }
+      if (paramString.has("byte_recv"))
+      {
+        localStats.mByteRecv = paramString.optInt("byte_recv");
+        return localStats;
+      }
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
     return localStats;
   }
   
   private int getNetType()
   {
-    switch (NetworkUtil.b(MobileQQ.getContext()))
+    int j = NetworkUtil.getNetworkType(MobileQQ.getContext());
+    int i = 4;
+    if (j != 1)
     {
-    case 5: 
-    default: 
-      return 0;
-    case 1: 
-      return 1;
-    case 2: 
-      return 3;
-    case 3: 
-      return 4;
-    case 4: 
-      return 5;
+      if (j != 2)
+      {
+        if (j != 3)
+        {
+          if (j != 4)
+          {
+            if (j != 6) {
+              return 0;
+            }
+            return 7;
+          }
+          return 5;
+        }
+      }
+      else {
+        return 3;
+      }
     }
-    return 7;
+    else {
+      i = 1;
+    }
+    return i;
   }
   
   public byte[] getReportMsg()
@@ -167,24 +172,27 @@ public final class QuicNetReport
     localNetInfo.bussinessid.set(this.businessId);
     try
     {
-      int i = Integer.parseInt("8.5.5".replace(".", ""));
+      int i = Integer.parseInt("8.7.0".replace(".", ""));
       localNetInfo.clientversion.set(i + 2000000);
-      localNetInfo.optype.set(1);
-      return localNetInfo.toByteArray();
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.e("quic", 2, localException, new Object[0]);
-      }
+      QLog.e("quic", 2, localException, new Object[0]);
     }
+    localNetInfo.optype.set(1);
+    return localNetInfo.toByteArray();
   }
   
   protected void report(boolean paramBoolean, long paramLong, HashMap<String, String> paramHashMap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("quic", 4, "reportBeaconEvent result: " + paramBoolean + " duration: " + paramLong);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportBeaconEvent result: ");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(" duration: ");
+      localStringBuilder.append(paramLong);
+      QLog.d("quic", 4, localStringBuilder.toString());
     }
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actShortVideoQuicDownload", paramBoolean, paramLong, this.fileSize, paramHashMap, "");
   }
@@ -206,54 +214,46 @@ public final class QuicNetReport
     localHashMap.put("param_quic_time_out", String.valueOf(this.timeOut));
     localHashMap.put("param_quic_http_status", String.valueOf(this.httpStatus));
     localHashMap.put("param_quic_conn_cost", String.valueOf(this.tConn));
-    String str;
-    if (this.isIpv6)
-    {
-      str = "1";
-      localHashMap.put("param_quic_is_ipv6", str);
-      if (!paramBoolean1) {
-        break label393;
-      }
-      str = "1";
-      label244:
-      localHashMap.put("param_quic_short_video", str);
-      if (!paramBoolean2) {
-        break label401;
-      }
-      str = "1";
-      label263:
-      localHashMap.put("param_quic_type_video", str);
-      if (this.stats != null)
-      {
-        localHashMap.put("param_quic_estimated_bandwidth", String.valueOf(this.stats.mEstimatedBandwidth));
-        localHashMap.put("param_quic_srtt_us", String.valueOf(this.stats.mSrttUs));
-        localHashMap.put("param_quic_rtt_mean", String.valueOf(this.stats.mRttMean));
-        localHashMap.put("param_quic_lost_rate", String.valueOf(this.stats.mLostRate));
-      }
-      paramBoolean1 = this.success;
-      if (this.totaltime <= 0L) {
-        break label409;
-      }
+    boolean bool = this.isIpv6;
+    String str = "1";
+    if (bool) {
+      localObject = "1";
+    } else {
+      localObject = "0";
     }
-    label393:
-    label401:
-    label409:
-    for (long l = this.totaltime + this.waitCost;; l = this.totaltime)
-    {
-      report(paramBoolean1, l, localHashMap);
-      return;
-      str = "0";
-      break;
-      str = "0";
-      break label244;
-      str = "0";
-      break label263;
+    localHashMap.put("param_quic_is_ipv6", localObject);
+    if (paramBoolean1) {
+      localObject = "1";
+    } else {
+      localObject = "0";
     }
+    localHashMap.put("param_quic_short_video", localObject);
+    if (paramBoolean2) {
+      localObject = str;
+    } else {
+      localObject = "0";
+    }
+    localHashMap.put("param_quic_type_video", localObject);
+    Object localObject = this.stats;
+    if (localObject != null)
+    {
+      localHashMap.put("param_quic_estimated_bandwidth", String.valueOf(((QuicNetReport.Stats)localObject).mEstimatedBandwidth));
+      localHashMap.put("param_quic_srtt_us", String.valueOf(this.stats.mSrttUs));
+      localHashMap.put("param_quic_rtt_mean", String.valueOf(this.stats.mRttMean));
+      localHashMap.put("param_quic_lost_rate", String.valueOf(this.stats.mLostRate));
+    }
+    paramBoolean1 = this.success;
+    long l2 = this.totaltime;
+    long l1 = l2;
+    if (l2 > 0L) {
+      l1 = l2 + this.waitCost;
+    }
+    report(paramBoolean1, l1, localHashMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.quic.report.QuicNetReport
  * JD-Core Version:    0.7.0.1
  */

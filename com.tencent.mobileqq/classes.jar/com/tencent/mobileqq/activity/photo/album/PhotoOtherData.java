@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.activity.photo.album;
 
 import NS_MOBILE_OPERATION.PicInfo;
-import android.os.Build.VERSION;
 import android.text.TextUtils;
 import com.tencent.component.media.image.ImageManager;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.transfile.chatpic.PicUploadFileSizeLimit;
-import com.tencent.mobileqq.utils.AlbumUtil;
-import com.tencent.sveffects.SvEffectSdkInitor;
-import dov.com.tencent.mobileqq.shortvideo.util.MediaMetadataUtils;
-import dov.com.tencent.mobileqq.shortvideo.util.MediaMetadataUtils.MetaData;
+import com.tencent.mobileqq.pic.api.IPicBus;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.shortvideo.util.MediaMetadataUtils;
+import com.tencent.mobileqq.shortvideo.util.MediaMetadataUtils.MetaData;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -18,73 +16,61 @@ public class PhotoOtherData
 {
   public int a;
   public long a;
+  public String a;
   public HashMap<String, PicInfo> a;
   public boolean a;
-  private boolean b = false;
+  public int b = (int)((IPicBus)QRoute.api(IPicBus.class)).getC2CPicSizeLimit();
   
   public PhotoOtherData()
   {
     this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = ((int)PicUploadFileSizeLimit.getLimitC2C());
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = 0;
   }
   
   public int a(PhotoCommonBaseData<PhotoOtherData> paramPhotoCommonBaseData, String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (a(paramPhotoCommonBaseData, paramString) == null)) {
-      return -1;
+    if ((!TextUtils.isEmpty(paramString)) && (a(paramPhotoCommonBaseData, paramString) != null)) {
+      return QAlbumUtil.getMediaType(a(paramPhotoCommonBaseData, paramString));
     }
-    return AlbumUtil.getMediaType(a(paramPhotoCommonBaseData, paramString));
+    return -1;
   }
   
   public LocalMediaInfo a(PhotoCommonBaseData<PhotoOtherData> paramPhotoCommonBaseData, String paramString)
   {
-    LocalMediaInfo localLocalMediaInfo = null;
+    Object localObject1;
     if (paramPhotoCommonBaseData.selectedMediaInfoHashMap != null) {
-      localLocalMediaInfo = (LocalMediaInfo)paramPhotoCommonBaseData.selectedMediaInfoHashMap.get(paramString);
+      localObject1 = (LocalMediaInfo)paramPhotoCommonBaseData.selectedMediaInfoHashMap.get(paramString);
+    } else {
+      localObject1 = null;
     }
-    if ((localLocalMediaInfo == null) && (paramPhotoCommonBaseData.allMediaInfoHashMap != null)) {
-      localLocalMediaInfo = (LocalMediaInfo)paramPhotoCommonBaseData.allMediaInfoHashMap.get(paramString);
-    }
-    for (;;)
+    Object localObject2 = localObject1;
+    if (localObject1 == null)
     {
-      if ((localLocalMediaInfo != null) && ((localLocalMediaInfo.mediaWidth == 0) || (localLocalMediaInfo.mediaHeight == 0)))
+      localObject2 = localObject1;
+      if (paramPhotoCommonBaseData.allMediaInfoHashMap != null) {
+        localObject2 = (LocalMediaInfo)paramPhotoCommonBaseData.allMediaInfoHashMap.get(paramString);
+      }
+    }
+    if ((localObject2 != null) && ((((LocalMediaInfo)localObject2).mediaWidth == 0) || (((LocalMediaInfo)localObject2).mediaHeight == 0)))
+    {
+      localObject1 = new MediaMetadataUtils.MetaData();
+      MediaMetadataUtils.a(paramString, (MediaMetadataUtils.MetaData)localObject1);
+      ((LocalMediaInfo)localObject2).mediaWidth = localObject1.a[0];
+      ((LocalMediaInfo)localObject2).mediaHeight = localObject1.a[1];
+      ((LocalMediaInfo)localObject2).rotation = localObject1.a[2];
+      if (paramPhotoCommonBaseData.allMediaInfoHashMap != null)
       {
-        MediaMetadataUtils.MetaData localMetaData = new MediaMetadataUtils.MetaData();
-        MediaMetadataUtils.a(paramString, localMetaData);
-        localLocalMediaInfo.mediaWidth = localMetaData.a[0];
-        localLocalMediaInfo.mediaHeight = localMetaData.a[1];
-        localLocalMediaInfo.rotation = localMetaData.a[2];
-        if (paramPhotoCommonBaseData.allMediaInfoHashMap != null)
+        paramPhotoCommonBaseData = (LocalMediaInfo)paramPhotoCommonBaseData.allMediaInfoHashMap.get(paramString);
+        if ((paramPhotoCommonBaseData != null) && ((paramPhotoCommonBaseData.mediaWidth == 0) || (paramPhotoCommonBaseData.mediaHeight == 0)))
         {
-          paramPhotoCommonBaseData = (LocalMediaInfo)paramPhotoCommonBaseData.allMediaInfoHashMap.get(paramString);
-          if ((paramPhotoCommonBaseData != null) && ((paramPhotoCommonBaseData.mediaWidth == 0) || (paramPhotoCommonBaseData.mediaHeight == 0)))
-          {
-            paramPhotoCommonBaseData.mediaWidth = localLocalMediaInfo.mediaWidth;
-            paramPhotoCommonBaseData.mediaHeight = localLocalMediaInfo.mediaHeight;
-            paramPhotoCommonBaseData.rotation = localLocalMediaInfo.rotation;
-          }
+          paramPhotoCommonBaseData.mediaWidth = ((LocalMediaInfo)localObject2).mediaWidth;
+          paramPhotoCommonBaseData.mediaHeight = ((LocalMediaInfo)localObject2).mediaHeight;
+          paramPhotoCommonBaseData.rotation = ((LocalMediaInfo)localObject2).rotation;
         }
       }
-      return localLocalMediaInfo;
     }
-  }
-  
-  public void a(boolean paramBoolean, PhotoCommonBaseData<PhotoOtherData> paramPhotoCommonBaseData)
-  {
-    this.b = paramBoolean;
-    if (paramBoolean)
-    {
-      paramPhotoCommonBaseData.needMediaInfo = true;
-      SvEffectSdkInitor.a();
-    }
-  }
-  
-  public boolean a()
-  {
-    if (Build.VERSION.SDK_INT < 17) {
-      return false;
-    }
-    return this.b;
+    return localObject2;
   }
   
   public boolean a(PhotoCommonBaseData<PhotoOtherData> paramPhotoCommonBaseData)
@@ -93,8 +79,10 @@ public class PhotoOtherData
     while (i < paramPhotoCommonBaseData.selectedPhotoList.size())
     {
       String str = (String)paramPhotoCommonBaseData.selectedPhotoList.get(i);
-      if (ImageManager.isNetworkUrl(str)) {}
-      while (a(paramPhotoCommonBaseData, str) != 0) {
+      if (ImageManager.isNetworkUrl(str)) {
+        return false;
+      }
+      if (a(paramPhotoCommonBaseData, str) != 0) {
         return false;
       }
       i += 1;
@@ -104,7 +92,7 @@ public class PhotoOtherData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.PhotoOtherData
  * JD-Core Version:    0.7.0.1
  */

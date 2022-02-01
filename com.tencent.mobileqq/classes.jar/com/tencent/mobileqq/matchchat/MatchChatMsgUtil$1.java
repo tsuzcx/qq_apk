@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.matchchat;
 
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.tianshu.ui.RedTouch;
 import com.tencent.qphone.base.util.QLog;
@@ -9,13 +9,17 @@ import mqq.os.MqqHandler;
 final class MatchChatMsgUtil$1
   implements Runnable
 {
-  MatchChatMsgUtil$1(QQAppInterface paramQQAppInterface, RedTouch paramRedTouch) {}
+  MatchChatMsgUtil$1(BaseQQAppInterface paramBaseQQAppInterface, RedTouch paramRedTouch) {}
   
   public void run()
   {
-    int i = MatchChatMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (QLog.isColorLevel()) {
-      QLog.d("MatchChatMsgUtil", 2, "updateExtendFriendRedTouch() : " + i);
+    int i = MatchChatMsgUtil.a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateExtendFriendRedTouch() : ");
+      localStringBuilder.append(i);
+      QLog.d("MatchChatMsgUtil", 2, localStringBuilder.toString());
     }
     if (this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch != null) {
       ThreadManager.getUIHandler().post(new MatchChatMsgUtil.1.1(this, i));
@@ -24,7 +28,7 @@ final class MatchChatMsgUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.matchchat.MatchChatMsgUtil.1
  * JD-Core Version:    0.7.0.1
  */

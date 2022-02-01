@@ -12,12 +12,15 @@ class SwiftBrowserMiscHandler$2
   
   public void run()
   {
-    FileUtil.a(new File(VFSAssistantUtils.getSDKPrivatePath(Environment.getExternalStorageDirectory() + "/tencent/MobileQQ/ShareScreenShots")));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Environment.getExternalStorageDirectory());
+    localStringBuilder.append("/tencent/MobileQQ/ShareScreenShots");
+    FileUtil.a(new File(VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString())));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserMiscHandler.2
  * JD-Core Version:    0.7.0.1
  */

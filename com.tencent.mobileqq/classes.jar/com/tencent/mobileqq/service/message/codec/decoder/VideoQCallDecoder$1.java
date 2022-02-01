@@ -14,26 +14,38 @@ class VideoQCallDecoder$1
   
   public void a(QavWrapper paramQavWrapper)
   {
-    AVPbInfo localAVPbInfo = paramQavWrapper.a(this.jdField_a_of_type_ArrayOfByte);
-    if (localAVPbInfo != null)
+    Object localObject1 = paramQavWrapper.a(this.jdField_a_of_type_ArrayOfByte);
+    if (localObject1 != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "ret, bindId:" + localAVPbInfo.bindId + ", bindIdType:" + localAVPbInfo.bindIdType + ", phoneNum:" + localAVPbInfo.phoneNum);
+      Object localObject2;
+      if (QLog.isColorLevel())
+      {
+        localObject2 = this.jdField_a_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("ret, bindId:");
+        localStringBuilder.append(((AVPbInfo)localObject1).bindId);
+        localStringBuilder.append(", bindIdType:");
+        localStringBuilder.append(((AVPbInfo)localObject1).bindIdType);
+        localStringBuilder.append(", phoneNum:");
+        localStringBuilder.append(((AVPbInfo)localObject1).phoneNum);
+        QLog.d((String)localObject2, 2, localStringBuilder.toString());
       }
-      if (!VcSystemInfo.isSupportSharpAudio()) {
+      if (!VcSystemInfo.isSupportSharpAudio())
+      {
         if (QLog.isColorLevel()) {
           QLog.d(this.jdField_a_of_type_JavaLangString, 2, "Discard video message cause device not support");
         }
       }
-    }
-    for (;;)
-    {
-      paramQavWrapper.a();
-      return;
-      if (this.jdField_a_of_type_Long >= 60L)
+      else if (this.jdField_a_of_type_Long >= 60L)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "Discard video message because of time out " + this.jdField_a_of_type_Long + " s");
+        if (QLog.isColorLevel())
+        {
+          localObject1 = this.jdField_a_of_type_JavaLangString;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("Discard video message because of time out ");
+          ((StringBuilder)localObject2).append(this.jdField_a_of_type_Long);
+          ((StringBuilder)localObject2).append(" s");
+          QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
         }
       }
       else
@@ -42,17 +54,18 @@ class VideoQCallDecoder$1
           QLog.d(this.jdField_a_of_type_JavaLangString, 2, "===========handleSharpVideoMessageResp 1234========");
         }
         this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(this.b, this.jdField_a_of_type_ArrayOfByte, this.c, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "ret, decode failed!");
-        }
       }
     }
+    else if (QLog.isColorLevel())
+    {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "ret, decode failed!");
+    }
+    paramQavWrapper.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.VideoQCallDecoder.1
  * JD-Core Version:    0.7.0.1
  */

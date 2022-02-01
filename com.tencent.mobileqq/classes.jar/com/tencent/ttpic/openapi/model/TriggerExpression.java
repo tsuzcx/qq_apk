@@ -33,80 +33,108 @@ public class TriggerExpression
   
   public boolean isTriggered()
   {
-    boolean bool = true;
     Object localObject1 = TriggerStateManager.getInstance().getPTDetectInfo();
-    if (localObject1 == null) {}
-    Object localObject2;
-    List localList;
-    AIAttr localAIAttr;
-    do
-    {
+    boolean bool2 = false;
+    if (localObject1 == null) {
       return false;
-      localObject2 = ((PTDetectInfo)localObject1).triggeredExpression;
-      localList = ((PTDetectInfo)localObject1).bodyPoints;
-      localAIAttr = ((PTDetectInfo)localObject1).aiAttr;
-      if ((!VideoMaterial.isFaceTriggerType(this.mTriggerType)) && (!VideoMaterial.isCatTriggerType(this.mTriggerType))) {
-        break;
-      }
-    } while (localObject2 == null);
-    return ((Set)localObject2).contains(Integer.valueOf(this.mTriggerType));
-    if (VideoMaterial.isGestureTriggerType(this.mTriggerType))
+    }
+    Object localObject2 = ((PTDetectInfo)localObject1).triggeredExpression;
+    List localList = ((PTDetectInfo)localObject1).bodyPoints;
+    AIAttr localAIAttr = ((PTDetectInfo)localObject1).aiAttr;
+    boolean bool1;
+    if ((!VideoMaterial.isFaceTriggerType(this.mTriggerType)) && (!VideoMaterial.isCatTriggerType(this.mTriggerType)))
     {
-      localObject2 = (PTHandAttr)localAIAttr.getAvailableData(AEDetectorType.HAND.value);
-      if (localObject2 == null) {
-        break label337;
+      if (VideoMaterial.isGestureTriggerType(this.mTriggerType))
+      {
+        localObject2 = (PTHandAttr)localAIAttr.getAvailableData(AEDetectorType.HAND.value);
+        if (localObject2 != null) {
+          bool1 = TriggerUtil.isGestureTriggered((PTHandAttr)localObject2, this.mTriggerType, this.triggerHandPoint, this.triggerFingerIndex, this.triggerArea, localAIAttr);
+        } else {
+          bool1 = false;
+        }
+        if (((PTDetectInfo)localObject1).isFreezeInfo)
+        {
+          bool1 = bool2;
+          if (((PTDetectInfo)localObject1).gestureTrigger != this.mTriggerType) {
+            return bool1;
+          }
+        }
+        else
+        {
+          return bool1;
+        }
+      }
+      else
+      {
+        if (!VideoMaterial.isAudioTextTriggerType(this.mTriggerType)) {
+          break label153;
+        }
+      }
+      for (;;)
+      {
+        return true;
+        label153:
+        if (VideoMaterial.isAllFreezeFrameTriggerType(this.mTriggerType)) {
+          return ((Set)localObject2).contains(Integer.valueOf(this.mTriggerType));
+        }
+        if (VideoMaterial.isTouchTriggerType(this.mTriggerType))
+        {
+          if (this.triggerArea != null)
+          {
+            localObject1 = TouchTriggerManager.getInstance().getCurTouchPosition();
+            return TriggerUtil.isTouchAreaTriggered(this.triggerArea, (PointF)localObject1);
+          }
+          return ((Set)localObject2).contains(Integer.valueOf(this.mTriggerType));
+        }
+        if (VideoMaterial.isBodyDetectType(this.mTriggerType))
+        {
+          bool1 = bool2;
+          if (localList == null) {
+            break;
+          }
+          bool1 = bool2;
+          if (localList.isEmpty()) {
+            break;
+          }
+        }
+        else
+        {
+          bool1 = bool2;
+          if (!VideoMaterial.isExternalWordsTriggerType(this.mTriggerType)) {
+            break;
+          }
+          if (localAIAttr == null) {
+            return false;
+          }
+          localObject1 = (List)localAIAttr.getRealtimeData(AEDetectorType.VOICE_RECOGNIZE.value);
+          bool1 = bool2;
+          if (localObject1 == null) {
+            break;
+          }
+          bool1 = bool2;
+          if (!((List)localObject1).contains(this.externalTriggerWords)) {
+            break;
+          }
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(AEDetectorType.VOICE_RECOGNIZE);
+          ((StringBuilder)localObject1).append(this.externalTriggerWords);
+          AIActionCounter.updateAction(((StringBuilder)localObject1).toString());
+        }
       }
     }
-    label337:
-    for (bool = TriggerUtil.isGestureTriggered((PTHandAttr)localObject2, this.mTriggerType, this.triggerHandPoint, this.triggerFingerIndex, this.triggerArea, localAIAttr);; bool = false)
+    else
     {
-      if (((PTDetectInfo)localObject1).isFreezeInfo)
-      {
-        if (((PTDetectInfo)localObject1).gestureTrigger != this.mTriggerType) {
-          break;
-        }
-        return true;
+      bool1 = bool2;
+      if (localObject2 != null) {
+        bool1 = ((Set)localObject2).contains(Integer.valueOf(this.mTriggerType));
       }
-      return bool;
-      if (VideoMaterial.isAudioTextTriggerType(this.mTriggerType)) {
-        return true;
-      }
-      if (VideoMaterial.isAllFreezeFrameTriggerType(this.mTriggerType)) {
-        return ((Set)localObject2).contains(Integer.valueOf(this.mTriggerType));
-      }
-      if (VideoMaterial.isTouchTriggerType(this.mTriggerType))
-      {
-        if (this.triggerArea != null)
-        {
-          localObject1 = TouchTriggerManager.getInstance().getCurTouchPosition();
-          return TriggerUtil.isTouchAreaTriggered(this.triggerArea, (PointF)localObject1);
-        }
-        return ((Set)localObject2).contains(Integer.valueOf(this.mTriggerType));
-      }
-      if (VideoMaterial.isBodyDetectType(this.mTriggerType))
-      {
-        if ((localList != null) && (!localList.isEmpty())) {}
-        for (;;)
-        {
-          return bool;
-          bool = false;
-        }
-      }
-      if ((!VideoMaterial.isExternalWordsTriggerType(this.mTriggerType)) || (localAIAttr == null)) {
-        break;
-      }
-      localObject1 = (List)localAIAttr.getRealtimeData(AEDetectorType.VOICE_RECOGNIZE.value);
-      if ((localObject1 == null) || (!((List)localObject1).contains(this.externalTriggerWords))) {
-        break;
-      }
-      AIActionCounter.updateAction(AEDetectorType.VOICE_RECOGNIZE + this.externalTriggerWords);
-      return true;
     }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.model.TriggerExpression
  * JD-Core Version:    0.7.0.1
  */

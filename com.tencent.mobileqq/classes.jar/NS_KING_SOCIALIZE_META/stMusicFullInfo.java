@@ -55,32 +55,39 @@ public final class stMusicFullInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.albumInfo != null) {
-      paramJceOutputStream.write(this.albumInfo, 0);
+    Object localObject = this.albumInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.singerInfo != null) {
-      paramJceOutputStream.write(this.singerInfo, 1);
+    localObject = this.singerInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.songInfo != null) {
-      paramJceOutputStream.write(this.songInfo, 2);
+    localObject = this.songInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.lyricInfo != null) {
-      paramJceOutputStream.write(this.lyricInfo, 3);
+    localObject = this.lyricInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.confInfo != null) {
-      paramJceOutputStream.write(this.confInfo, 4);
+    localObject = this.confInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
-    if (this.subtitleInfo != null) {
-      paramJceOutputStream.write(this.subtitleInfo, 5);
+    localObject = this.subtitleInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
-    if (this.foreignlyric != null) {
-      paramJceOutputStream.write(this.foreignlyric, 6);
+    localObject = this.foreignlyric;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_SOCIALIZE_META.stMusicFullInfo
  * JD-Core Version:    0.7.0.1
  */

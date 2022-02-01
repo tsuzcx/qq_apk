@@ -48,11 +48,12 @@ public final class SubSequence$iterator$1
   public T next()
   {
     drop();
-    if (this.position >= SubSequence.access$getEndIndex$p(this.this$0)) {
-      throw ((Throwable)new NoSuchElementException());
+    if (this.position < SubSequence.access$getEndIndex$p(this.this$0))
+    {
+      this.position += 1;
+      return this.iterator.next();
     }
-    this.position += 1;
-    return this.iterator.next();
+    throw ((Throwable)new NoSuchElementException());
   }
   
   public void remove()
@@ -67,7 +68,7 @@ public final class SubSequence$iterator$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.sequences.SubSequence.iterator.1
  * JD-Core Version:    0.7.0.1
  */

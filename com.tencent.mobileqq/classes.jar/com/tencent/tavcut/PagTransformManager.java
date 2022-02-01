@@ -26,15 +26,16 @@ public class PagTransformManager
   
   public static PagTransformManager getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new PagTransformManager();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new PagTransformManager();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   private void renderPag(@Nullable PAGFile paramPAGFile, @Nullable PagTransformManager.PagTransformListener paramPagTransformListener)
@@ -53,45 +54,42 @@ public class PagTransformManager
     }
     paramString = PAGFile.Load(paramString);
     PAGLayer[] arrayOfPAGLayer = paramString.getLayersByName("textcolor");
-    int j = arrayOfPAGLayer.length;
+    int k = arrayOfPAGLayer.length;
+    int j = 0;
     int i = 0;
     PAGLayer localPAGLayer;
-    if (i < j)
+    while (i < k)
     {
       localPAGLayer = arrayOfPAGLayer[i];
-      if (!(localPAGLayer instanceof PAGSolidLayer)) {
-        break label136;
-      }
-      if (paramInt1 != 0)
+      if ((localPAGLayer instanceof PAGSolidLayer))
       {
+        if (paramInt1 == 0) {
+          break;
+        }
         ((PAGSolidLayer)localPAGLayer).setSolidColor(paramInt1);
         paramString.setLayerIndex(localPAGLayer, paramString.getLayerIndex(localPAGLayer));
+        break;
       }
+      i += 1;
     }
     arrayOfPAGLayer = paramString.getLayersByName("bgcolor");
     i = arrayOfPAGLayer.length;
-    paramInt1 = 0;
-    for (;;)
+    paramInt1 = j;
+    while (paramInt1 < i)
     {
-      if (paramInt1 < i)
+      localPAGLayer = arrayOfPAGLayer[paramInt1];
+      if ((localPAGLayer instanceof PAGSolidLayer))
       {
-        localPAGLayer = arrayOfPAGLayer[paramInt1];
-        if (!(localPAGLayer instanceof PAGSolidLayer)) {
-          break label145;
+        if (paramInt2 == 0) {
+          break;
         }
-        if (paramInt2 != 0)
-        {
-          ((PAGSolidLayer)localPAGLayer).setSolidColor(paramInt2);
-          paramString.setLayerIndex(localPAGLayer, paramString.getLayerIndex(localPAGLayer));
-        }
+        ((PAGSolidLayer)localPAGLayer).setSolidColor(paramInt2);
+        paramString.setLayerIndex(localPAGLayer, paramString.getLayerIndex(localPAGLayer));
+        return paramString;
       }
-      return paramString;
-      label136:
-      i += 1;
-      break;
-      label145:
       paramInt1 += 1;
     }
+    return paramString;
   }
   
   public void pagFile2Bitmap(@Nullable String paramString, @Nullable PagTransformManager.PagTransformListener paramPagTransformListener)
@@ -125,11 +123,13 @@ public class PagTransformManager
   
   public void release()
   {
-    if (this.mPagSurface != null) {
-      this.mPagSurface.freeCache();
+    Object localObject = this.mPagSurface;
+    if (localObject != null) {
+      ((PAGSurface)localObject).freeCache();
     }
-    if (this.mPagRender != null) {
-      this.mPagRender.setSurface(null);
+    localObject = this.mPagRender;
+    if (localObject != null) {
+      ((PAGPlayer)localObject).setSurface(null);
     }
     this.surfaceTextureHandler.destroy();
     RendererUtils.clearTexture(this.mPagOutputTexture);
@@ -138,7 +138,7 @@ public class PagTransformManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.PagTransformManager
  * JD-Core Version:    0.7.0.1
  */

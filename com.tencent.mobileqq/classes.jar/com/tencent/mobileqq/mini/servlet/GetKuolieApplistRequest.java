@@ -21,16 +21,20 @@ public class GetKuolieApplistRequest
   
   public static INTERFACE.StGetExpandAppListRsp onResponse(byte[] paramArrayOfByte)
   {
-    INTERFACE.StGetExpandAppListRsp localStGetExpandAppListRsp = new INTERFACE.StGetExpandAppListRsp();
+    Object localObject = new INTERFACE.StGetExpandAppListRsp();
     try
     {
-      localStGetExpandAppListRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStGetExpandAppListRsp;
+      ((INTERFACE.StGetExpandAppListRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("GetKuolieApplistRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("GetKuolieApplistRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -43,7 +47,7 @@ public class GetKuolieApplistRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.GetKuolieApplistRequest
  * JD-Core Version:    0.7.0.1
  */

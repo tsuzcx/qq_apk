@@ -25,12 +25,12 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.MessageForTofuNicePics;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.profilecard.bussiness.photowall.view.PhotoWallView;
 import com.tencent.mobileqq.tofumsg.TofuConst;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.utils.TimeFormatterUtils;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
-import com.tencent.mobileqq.widget.PhotoWallView;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import org.jetbrains.annotations.NotNull;
@@ -40,14 +40,14 @@ public class TofuNicePicsItemBuilder
   implements View.OnClickListener
 {
   int a;
-  int c = 0;
+  int b = 0;
   
   public TofuNicePicsItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Int = AIOUtils.a(251.0F, paramContext.getResources());
-    this.c = AIOUtils.a(131.0F, paramContext.getResources());
+    this.jdField_a_of_type_Int = AIOUtils.b(251.0F, paramContext.getResources());
+    this.b = AIOUtils.b(131.0F, paramContext.getResources());
     paramQQAppInterface = (BeancurdManager)paramQQAppInterface.getManager(QQManagerFactory.BEANCURD_MANAGER);
     if (paramQQAppInterface != null) {
       paramQQAppInterface.a(3, 10);
@@ -58,23 +58,28 @@ public class TofuNicePicsItemBuilder
   private Drawable a(boolean paramBoolean, String paramString)
   {
     Drawable localDrawable = URLDrawableHelper.TRANSLUCENT;
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.TRANSLUCENT;
-    localURLDrawableOptions.mFailedDrawable = URLDrawableHelper.TRANSLUCENT;
-    localURLDrawableOptions.mRequestHeight = this.c;
-    if (paramBoolean) {}
-    for (int i = this.jdField_a_of_type_Int;; i = (int)(0.5F * this.jdField_a_of_type_Int))
+    Object localObject = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = URLDrawableHelper.TRANSLUCENT;
+    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = URLDrawableHelper.TRANSLUCENT;
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = this.b;
+    int i;
+    if (paramBoolean) {
+      i = this.jdField_a_of_type_Int;
+    } else {
+      i = (int)(this.jdField_a_of_type_Int * 0.5F);
+    }
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = i;
+    try
     {
-      localURLDrawableOptions.mRequestWidth = i;
-      try
-      {
-        paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-        return paramString;
-      }
-      catch (Exception paramString)
-      {
-        QLog.d("TofuNicePicsItemBuilder", 1, "getDrawable ex=" + paramString.getMessage(), paramString);
-      }
+      paramString = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getDrawable ex=");
+      ((StringBuilder)localObject).append(paramString.getMessage());
+      QLog.d("TofuNicePicsItemBuilder", 1, ((StringBuilder)localObject).toString(), paramString);
     }
     return localDrawable;
   }
@@ -84,15 +89,15 @@ public class TofuNicePicsItemBuilder
     View localView = paramView;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558938, null);
-      paramHolder.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131365294);
-      paramHolder.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131371065);
-      paramHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363608));
-      paramHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370304));
-      paramHolder.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377110));
-      paramHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370383));
-      paramHolder.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370384));
-      paramHolder.d = ((TextView)paramView.findViewById(2131379394));
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558836, null);
+      paramHolder.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131365169);
+      paramHolder.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131370699);
+      paramHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363536));
+      paramHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369972));
+      paramHolder.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376587));
+      paramHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370044));
+      paramHolder.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370045));
+      paramHolder.d = ((TextView)paramView.findViewById(2131378745));
       paramHolder.jdField_b_of_type_AndroidViewView.setOnTouchListener(UITools.a);
       localView = paramView;
       if (e)
@@ -111,18 +116,18 @@ public class TofuNicePicsItemBuilder
   
   private void a(ImageView paramImageView, Drawable paramDrawable)
   {
-    if (paramDrawable != null) {}
-    for (int i = 0;; i = 8)
-    {
-      paramImageView.setVisibility(i);
-      paramImageView.setImageDrawable(paramDrawable);
-      return;
+    int i;
+    if (paramDrawable != null) {
+      i = 0;
+    } else {
+      i = 8;
     }
+    paramImageView.setVisibility(i);
+    paramImageView.setImageDrawable(paramDrawable);
   }
   
-  public View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
+  protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    int i = 8;
     paramLinearLayout = (MessageForTofuNicePics)paramMessageRecord;
     paramMessageRecord = (TofuNicePicsItemBuilder.Holder)paramViewHolder;
     paramViewHolder = a(paramView, paramMessageRecord);
@@ -136,45 +141,55 @@ public class TofuNicePicsItemBuilder
       a(paramMessageRecord.jdField_b_of_type_AndroidWidgetImageView, paramView);
       a(paramMessageRecord.jdField_c_of_type_AndroidWidgetImageView, paramOnLongClickAndTouchListener);
       a(paramMessageRecord.jdField_a_of_type_AndroidWidgetImageView, null);
-      paramView = PLNewsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, 6);
-      paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690041, new Object[] { paramView, Integer.valueOf(paramLinearLayout.countInc) });
-      paramMessageRecord.jdField_b_of_type_AndroidWidgetTextView.setText(paramView);
-      if (paramLinearLayout.countInc <= 1) {
-        break label397;
-      }
-      paramMessageRecord.d.setText("共" + paramLinearLayout.countInc + "张");
-      paramMessageRecord.d.setVisibility(0);
     }
-    for (;;)
+    else
     {
-      paramView = TimeFormatterUtils.a(this.jdField_a_of_type_AndroidContentContext, 7, paramLinearLayout.upTime * 1000L);
-      paramMessageRecord.jdField_c_of_type_AndroidWidgetTextView.setText(paramView);
-      boolean bool = ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      paramView = paramMessageRecord.jdField_c_of_type_AndroidViewView;
-      if (bool) {
-        i = 0;
-      }
-      paramView.setVisibility(i);
-      paramMessageRecord.jdField_b_of_type_AndroidViewView.setTag(paramMessageRecord);
-      if (e)
-      {
-        paramMessageRecord.jdField_b_of_type_JavaLangStringBuilder.append(paramMessageRecord.jdField_b_of_type_AndroidWidgetTextView.getText()).append(paramMessageRecord.jdField_c_of_type_AndroidWidgetTextView.getText());
-        paramViewHolder.setContentDescription(paramMessageRecord.jdField_b_of_type_JavaLangStringBuilder.toString());
-      }
-      paramMessageRecord.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-      TofuConst.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800AE5F", 0);
-      return paramViewHolder;
       paramView = a(true, paramLinearLayout.url1);
       a(paramMessageRecord.jdField_b_of_type_AndroidWidgetImageView, null);
       a(paramMessageRecord.jdField_c_of_type_AndroidWidgetImageView, null);
       a(paramMessageRecord.jdField_a_of_type_AndroidWidgetImageView, paramView);
-      break;
-      label397:
+    }
+    paramView = PLNewsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, 6);
+    paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131689956, new Object[] { paramView, Integer.valueOf(paramLinearLayout.countInc) });
+    paramMessageRecord.jdField_b_of_type_AndroidWidgetTextView.setText(paramView);
+    int j = paramLinearLayout.countInc;
+    int i = 8;
+    if (j > 1)
+    {
+      paramView = paramMessageRecord.d;
+      paramOnLongClickAndTouchListener = new StringBuilder();
+      paramOnLongClickAndTouchListener.append("共");
+      paramOnLongClickAndTouchListener.append(paramLinearLayout.countInc);
+      paramOnLongClickAndTouchListener.append("张");
+      paramView.setText(paramOnLongClickAndTouchListener.toString());
+      paramMessageRecord.d.setVisibility(0);
+    }
+    else
+    {
       paramMessageRecord.d.setVisibility(8);
     }
+    paramView = TimeFormatterUtils.a(this.jdField_a_of_type_AndroidContentContext, 7, paramLinearLayout.upTime * 1000L);
+    paramMessageRecord.jdField_c_of_type_AndroidWidgetTextView.setText(paramView);
+    boolean bool = ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    paramView = paramMessageRecord.jdField_c_of_type_AndroidViewView;
+    if (bool) {
+      i = 0;
+    }
+    paramView.setVisibility(i);
+    paramMessageRecord.jdField_b_of_type_AndroidViewView.setTag(paramMessageRecord);
+    if (e)
+    {
+      paramView = paramMessageRecord.jdField_b_of_type_JavaLangStringBuilder;
+      paramView.append(paramMessageRecord.jdField_b_of_type_AndroidWidgetTextView.getText());
+      paramView.append(paramMessageRecord.jdField_c_of_type_AndroidWidgetTextView.getText());
+      paramViewHolder.setContentDescription(paramMessageRecord.jdField_b_of_type_JavaLangStringBuilder.toString());
+    }
+    paramMessageRecord.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
+    TofuConst.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800AE5F", 0);
+    return paramViewHolder;
   }
   
-  public AbstractChatItemBuilder.ViewHolder a()
+  protected AbstractChatItemBuilder.ViewHolder a()
   {
     return new TofuNicePicsItemBuilder.Holder(this);
   }
@@ -187,22 +202,24 @@ public class TofuNicePicsItemBuilder
   public void onClick(View paramView)
   {
     TofuNicePicsItemBuilder.Holder localHolder = (TofuNicePicsItemBuilder.Holder)paramView.getTag();
-    if (localHolder == null) {}
-    for (;;)
+    if (localHolder != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      PhotoWallView.a((Activity)paramView.getContext(), localHolder.jdField_a_of_type_JavaLangString, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("TofuNicePicsItemBuilder", 2, "jump photowall:" + localHolder.jdField_a_of_type_JavaLangString);
+      PhotoWallView.jumpToPhotoWall((Activity)paramView.getContext(), localHolder.jdField_a_of_type_JavaLangString, false);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("jump photowall:");
+        localStringBuilder.append(localHolder.jdField_a_of_type_JavaLangString);
+        QLog.d("TofuNicePicsItemBuilder", 2, localStringBuilder.toString());
       }
       TofuConst.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800AE60", 0);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TofuNicePicsItemBuilder
  * JD-Core Version:    0.7.0.1
  */

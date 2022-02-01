@@ -1,46 +1,22 @@
 package com.tencent.mobileqq.filemanageraux.widget;
 
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.mobileqq.teamwork.TeamWorkHandler;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
 class DocCooperationBanner$2
-  implements Runnable
+  extends AnimatorListenerAdapter
 {
-  DocCooperationBanner$2(DocCooperationBanner paramDocCooperationBanner, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, String paramString1, boolean paramBoolean, String paramString2) {}
+  DocCooperationBanner$2(DocCooperationBanner paramDocCooperationBanner) {}
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    Object localObject = "";
-    String str1 = "";
-    String str2;
-    String str3;
-    if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int == 0)
-    {
-      str1 = this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString;
-      str2 = this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b;
-      str3 = this.jdField_a_of_type_JavaLangString;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label89;
-      }
-    }
-    label89:
-    for (int i = 2;; i = 1)
-    {
-      localObject = TeamWorkHandler.a(str2, str3, i, (String)localObject, str1, this.b);
-      if (localObject != null) {
-        QLog.i("DocCooperationBanner", 2, ((JSONObject)localObject).toString());
-      }
-      return;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString;
-      break;
-    }
+    this.a.a.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.widget.DocCooperationBanner.2
  * JD-Core Version:    0.7.0.1
  */

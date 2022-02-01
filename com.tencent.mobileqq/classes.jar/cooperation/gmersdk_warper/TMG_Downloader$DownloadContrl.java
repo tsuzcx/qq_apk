@@ -2,7 +2,8 @@ package cooperation.gmersdk_warper;
 
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
+import com.tencent.mobileqq.apollo.game.api.ICmGameHelper;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.transfile.HttpNetReq;
 import com.tencent.mobileqq.transfile.NetworkCenter;
 import com.tencent.mobileqq.transfile.api.IHttpEngineService;
@@ -19,11 +20,10 @@ class TMG_Downloader$DownloadContrl
   
   boolean a(TMG_DownloadInfo paramTMG_DownloadInfo, int paramInt)
   {
-    String str1;
     if (!TMG_Downloader.b(paramTMG_DownloadInfo))
     {
       String str2 = paramTMG_DownloadInfo.a;
-      str1 = paramTMG_DownloadInfo.b;
+      String str1 = paramTMG_DownloadInfo.b;
       String str3 = TMG_Downloader.a(paramTMG_DownloadInfo);
       HttpNetReq localHttpNetReq = new HttpNetReq();
       localHttpNetReq.mCallback = new TMG_Downloader.DownloadContrl.1(this, str1, paramTMG_DownloadInfo);
@@ -31,79 +31,74 @@ class TMG_Downloader$DownloadContrl
       localHttpNetReq.mReqUrl = str2;
       localHttpNetReq.mHttpMethod = 0;
       localHttpNetReq.mOutPath = new File(str3).getPath();
-      localHttpNetReq.mContinuErrorLimit = NetworkUtil.a(NetworkCenter.getInstance().getNetType());
-      paramTMG_DownloadInfo = (IHttpEngineService)CmGameUtil.a().getRuntimeService(IHttpEngineService.class, "all");
-      if (paramTMG_DownloadInfo == null) {
-        break label212;
+      localHttpNetReq.mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
+      paramTMG_DownloadInfo = (IHttpEngineService)((ICmGameHelper)QRoute.api(ICmGameHelper.class)).getAppInterface().getRuntimeService(IHttpEngineService.class, "all");
+      boolean bool;
+      if (paramTMG_DownloadInfo != null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = localHttpNetReq;
+        paramTMG_DownloadInfo.sendReq(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
+        bool = true;
       }
-      this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = localHttpNetReq;
-      paramTMG_DownloadInfo.sendReq(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
-    }
-    label212:
-    for (boolean bool = true;; bool = false)
-    {
-      if ((!bool) && (this.jdField_a_of_type_CooperationGmersdk_warperTMG_Downloader$TMG_Downloader_DownloadEvent != null)) {
-        this.jdField_a_of_type_CooperationGmersdk_warperTMG_Downloader$TMG_Downloader_DownloadEvent.a(3, "");
+      else
+      {
+        bool = false;
+      }
+      if (!bool)
+      {
+        paramTMG_DownloadInfo = this.jdField_a_of_type_CooperationGmersdk_warperTMG_Downloader$TMG_Downloader_DownloadEvent;
+        if (paramTMG_DownloadInfo != null) {
+          paramTMG_DownloadInfo.a(3, "");
+        }
       }
       if (QLog.isColorLevel()) {
         QLog.i("TMG_Downloader", 2, String.format("downloadRes, md5[%s], etr[%s]", new Object[] { str1, Boolean.valueOf(bool) }));
       }
       return bool;
-      if (this.jdField_a_of_type_CooperationGmersdk_warperTMG_Downloader$TMG_Downloader_DownloadEvent != null) {
-        this.jdField_a_of_type_CooperationGmersdk_warperTMG_Downloader$TMG_Downloader_DownloadEvent.a(0, "So Already Exist!!!");
-      }
-      return false;
     }
+    paramTMG_DownloadInfo = this.jdField_a_of_type_CooperationGmersdk_warperTMG_Downloader$TMG_Downloader_DownloadEvent;
+    if (paramTMG_DownloadInfo != null) {
+      paramTMG_DownloadInfo.a(0, "So Already Exist!!!");
+    }
+    return false;
   }
   
   boolean a(TMG_DownloadInfo paramTMG_DownloadInfo, TMG_Downloader.TMG_Downloader_DownloadEvent paramTMG_Downloader_DownloadEvent)
   {
     this.jdField_a_of_type_CooperationGmersdk_warperTMG_Downloader$TMG_Downloader_DownloadEvent = paramTMG_Downloader_DownloadEvent;
     boolean bool;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if ((this.jdField_a_of_type_CooperationGmersdk_warperTMG_DownloadInfo == paramTMG_DownloadInfo) || (TextUtils.isEmpty(paramTMG_DownloadInfo.b)) || (paramTMG_DownloadInfo.b.equals(this.jdField_a_of_type_CooperationGmersdk_warperTMG_DownloadInfo.b))) {
-        break label220;
-      }
+    if ((this.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_CooperationGmersdk_warperTMG_DownloadInfo == paramTMG_DownloadInfo) || (TextUtils.isEmpty(paramTMG_DownloadInfo.b)) || (paramTMG_DownloadInfo.b.equals(this.jdField_a_of_type_CooperationGmersdk_warperTMG_DownloadInfo.b)))) {
+      bool = false;
+    } else {
       bool = true;
     }
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.d("TMG_Downloader", 2, String.format("DownloadContrl, mDownloading[%s], reDownload[%s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(bool) }));
+    }
+    if (!bool) {
+      return this.jdField_a_of_type_Boolean;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TMG_Downloader", 2, String.format("DownloadContrl, mDownloading[%s], reDownload[%s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(bool) }));
-      }
-      if (!bool)
+      paramTMG_Downloader_DownloadEvent = (IHttpEngineService)((ICmGameHelper)QRoute.api(ICmGameHelper.class)).getAppInterface().getRuntimeService(IHttpEngineService.class, "all");
+      if (paramTMG_Downloader_DownloadEvent != null)
       {
-        return this.jdField_a_of_type_Boolean;
-        bool = true;
-      }
-      else
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq != null)
-        {
-          paramTMG_Downloader_DownloadEvent = (IHttpEngineService)CmGameUtil.a().getRuntimeService(IHttpEngineService.class, "all");
-          if (paramTMG_Downloader_DownloadEvent != null)
-          {
-            QLog.d("TMG_Downloader", 2, String.format("DownloadContrl, cancelReq[%s]", new Object[] { (String)this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.getUserData() }));
-            paramTMG_Downloader_DownloadEvent.cancelReq(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
-          }
-        }
-        this.jdField_a_of_type_CooperationGmersdk_warperTMG_DownloadInfo = paramTMG_DownloadInfo;
-        this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = null;
-        if (QLog.isColorLevel()) {
-          QLog.d("TMG_Downloader", 2, String.format("DownloadContrl, mInfo[%s]", new Object[] { this.jdField_a_of_type_CooperationGmersdk_warperTMG_DownloadInfo }));
-        }
-        this.jdField_a_of_type_Boolean = a(this.jdField_a_of_type_CooperationGmersdk_warperTMG_DownloadInfo, 1);
-        return this.jdField_a_of_type_Boolean;
-        label220:
-        bool = false;
+        QLog.d("TMG_Downloader", 2, String.format("DownloadContrl, cancelReq[%s]", new Object[] { (String)this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.getUserData() }));
+        paramTMG_Downloader_DownloadEvent.cancelReq(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
       }
     }
+    this.jdField_a_of_type_CooperationGmersdk_warperTMG_DownloadInfo = paramTMG_DownloadInfo;
+    this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("TMG_Downloader", 2, String.format("DownloadContrl, mInfo[%s]", new Object[] { this.jdField_a_of_type_CooperationGmersdk_warperTMG_DownloadInfo }));
+    }
+    this.jdField_a_of_type_Boolean = a(this.jdField_a_of_type_CooperationGmersdk_warperTMG_DownloadInfo, 1);
+    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.gmersdk_warper.TMG_Downloader.DownloadContrl
  * JD-Core Version:    0.7.0.1
  */

@@ -27,8 +27,8 @@ public abstract class HuaweiApiAvailability
   public static final String HMS_API_NAME_PUSH = "HuaweiPush.API";
   public static final String HMS_API_NAME_SNS = "HuaweiSns.API";
   public static final int HMS_JSON_VERSION_MIN = 30000000;
-  public static final int HMS_SDK_VERSION_CODE = 50000301;
-  public static final String HMS_SDK_VERSION_NAME = "5.0.0.301";
+  public static final int HMS_SDK_VERSION_CODE = 50200300;
+  public static final String HMS_SDK_VERSION_NAME = "5.2.0.300";
   public static final int HMS_VERSION_CODE_GAME = 20503000;
   public static final int HMS_VERSION_CODE_IAP = 20700300;
   public static final int HMS_VERSION_CODE_ID = 30000000;
@@ -58,13 +58,17 @@ public abstract class HuaweiApiAvailability
   static
   {
     a.put("HuaweiID.API", Integer.valueOf(30000000));
-    a.put("HuaweiSns.API", Integer.valueOf(20503000));
-    a.put("HuaweiPay.API", Integer.valueOf(20503000));
-    a.put("HuaweiPush.API", Integer.valueOf(20503000));
-    a.put("HuaweiGame.API", Integer.valueOf(20503000));
+    Map localMap = a;
+    Integer localInteger = Integer.valueOf(20503000);
+    localMap.put("HuaweiSns.API", localInteger);
+    a.put("HuaweiPay.API", localInteger);
+    a.put("HuaweiPush.API", localInteger);
+    a.put("HuaweiGame.API", localInteger);
     a.put("HuaweiOpenDevice.API", Integer.valueOf(20601000));
-    a.put("HuaweiIap.API", Integer.valueOf(20700300));
-    a.put("HuaweiPPSkit.API", Integer.valueOf(20700300));
+    localMap = a;
+    localInteger = Integer.valueOf(20700300);
+    localMap.put("HuaweiIap.API", localInteger);
+    a.put("HuaweiPPSkit.API", localInteger);
   }
   
   public static Map<String, Integer> getApiMap()
@@ -74,7 +78,7 @@ public abstract class HuaweiApiAvailability
   
   public static HuaweiApiAvailability getInstance()
   {
-    return b.a();
+    return b.getInstance();
   }
   
   public static int getServicesVersionCode()
@@ -133,7 +137,7 @@ public abstract class HuaweiApiAvailability
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.api.HuaweiApiAvailability
  * JD-Core Version:    0.7.0.1
  */

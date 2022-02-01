@@ -54,119 +54,120 @@ public class HippyTextInputController
     return -1;
   }
   
-  public StyleNode createNode(boolean paramBoolean)
+  protected StyleNode createNode(boolean paramBoolean)
   {
     return new TextInputNode(paramBoolean);
   }
   
-  public View createViewImpl(Context paramContext)
+  protected View createViewImpl(Context paramContext)
   {
     return new HippyTextInput(paramContext);
   }
   
   public void dispatchFunction(HippyTextInput paramHippyTextInput, String paramString, HippyArray paramHippyArray)
   {
+    int i = paramString.hashCode();
     int j = 0;
-    int i = -1;
-    switch (paramString.hashCode())
+    switch (i)
     {
     default: 
-      switch (i)
-      {
+      break;
+    case 1690703013: 
+      if (paramString.equals("focusTextInput")) {
+        i = 2;
+      }
+      break;
+    case 1406685743: 
+      if (paramString.equals("setValue")) {
+        i = 0;
+      }
+      break;
+    case 287889441: 
+      if (paramString.equals("dissmiss")) {
+        i = 3;
+      }
+      break;
+    case 94746189: 
+      if (paramString.equals("clear")) {
+        i = 1;
+      }
+      break;
+    case -1699362314: 
+      if (paramString.equals("blurTextInput")) {
+        i = 4;
       }
       break;
     }
-    for (;;)
+    i = -1;
+    if (i != 0)
     {
-      super.dispatchFunction(paramHippyTextInput, paramString, paramHippyArray);
-      return;
-      if (!paramString.equals("setValue")) {
-        break;
-      }
-      i = 0;
-      break;
-      if (!paramString.equals("clear")) {
-        break;
-      }
-      i = 1;
-      break;
-      if (!paramString.equals("focusTextInput")) {
-        break;
-      }
-      i = 2;
-      break;
-      if (!paramString.equals("dissmiss")) {
-        break;
-      }
-      i = 3;
-      break;
-      if (!paramString.equals("blurTextInput")) {
-        break;
-      }
-      i = 4;
-      break;
-      if ((paramHippyArray != null) && (paramHippyArray.getString(0) != null))
+      if (i != 1)
       {
-        i = paramHippyArray.getInt(1);
-        if (paramHippyArray.size() < 2) {
-          i = paramHippyArray.getString(0).length();
-        }
-        paramHippyTextInput.jsSetValue(paramHippyArray.getString(0), i);
-        continue;
-        paramHippyTextInput.jsSetValue("", 0);
-        continue;
-        paramHippyTextInput.setFocusableInTouchMode(true);
-        Looper.getMainLooper();
-        Looper.myQueue().addIdleHandler(new HippyTextInputController.1(this, paramHippyTextInput, paramHippyArray));
-        continue;
-        paramHippyTextInput.hideInputMethod();
-      }
-    }
-    for (ViewParent localViewParent = paramHippyTextInput.getParent();; localViewParent = localViewParent.getParent()) {
-      if ((localViewParent == null) || ((localViewParent instanceof HippyRootView)))
-      {
-        i = j;
-        if (localViewParent != null)
+        if (i != 2)
         {
-          i = j;
-          if ((localViewParent instanceof HippyRootView))
+          if (i != 3)
           {
-            i = ((ViewGroup)localViewParent).getDescendantFocusability();
-            ((ViewGroup)localViewParent).setDescendantFocusability(393216);
+            if (i == 4)
+            {
+              for (ViewParent localViewParent = paramHippyTextInput.getParent(); (localViewParent != null) && (!(localViewParent instanceof HippyRootView)); localViewParent = localViewParent.getParent()) {}
+              i = j;
+              if (localViewParent != null)
+              {
+                i = j;
+                if ((localViewParent instanceof HippyRootView))
+                {
+                  ViewGroup localViewGroup = (ViewGroup)localViewParent;
+                  i = localViewGroup.getDescendantFocusability();
+                  localViewGroup.setDescendantFocusability(393216);
+                }
+              }
+              paramHippyTextInput.hideInputMethod();
+              paramHippyTextInput.clearFocus();
+              if ((localViewParent != null) && ((localViewParent instanceof HippyRootView))) {
+                ((ViewGroup)localViewParent).setDescendantFocusability(i);
+              }
+            }
+          }
+          else {
+            paramHippyTextInput.hideInputMethod();
           }
         }
-        paramHippyTextInput.hideInputMethod();
-        paramHippyTextInput.clearFocus();
-        if ((localViewParent == null) || (!(localViewParent instanceof HippyRootView))) {
-          break;
+        else
+        {
+          paramHippyTextInput.setFocusableInTouchMode(true);
+          Looper.getMainLooper();
+          Looper.myQueue().addIdleHandler(new HippyTextInputController.1(this, paramHippyTextInput, paramHippyArray));
         }
-        ((ViewGroup)localViewParent).setDescendantFocusability(i);
-        break;
+      }
+      else {
+        paramHippyTextInput.jsSetValue("", 0);
       }
     }
+    else if ((paramHippyArray != null) && (paramHippyArray.getString(0) != null))
+    {
+      i = paramHippyArray.getInt(1);
+      if (paramHippyArray.size() < 2) {
+        i = paramHippyArray.getString(0).length();
+      }
+      paramHippyTextInput.jsSetValue(paramHippyArray.getString(0), i);
+    }
+    super.dispatchFunction(paramHippyTextInput, paramString, paramHippyArray);
   }
   
   public void dispatchFunction(HippyTextInput paramHippyTextInput, String paramString, HippyArray paramHippyArray, Promise paramPromise)
   {
-    int i = -1;
-    switch (paramString.hashCode())
-    {
-    default: 
-      switch (i)
-      {
-      }
-      break;
-    }
-    do
-    {
-      return;
-      if (!paramString.equals("getValue")) {
-        break;
-      }
+    int i;
+    if ((paramString.hashCode() == 1967798203) && (paramString.equals("getValue"))) {
       i = 0;
-      break;
-    } while (paramPromise == null);
-    paramPromise.resolve(paramHippyTextInput.jsGetValue());
+    } else {
+      i = -1;
+    }
+    if (i != 0) {
+      return;
+    }
+    if (paramPromise != null) {
+      paramPromise.resolve(paramHippyTextInput.jsGetValue());
+    }
   }
   
   @HippyControllerProps(defaultNumber=-1.0D, defaultType="number", name="letterSpacing")
@@ -180,67 +181,60 @@ public class HippyTextInputController
   @HippyControllerProps(defaultNumber=2147483647.0D, defaultType="number", name="maxLength")
   public void maxLength(HippyTextInput paramHippyTextInput, int paramInt)
   {
-    int i = 0;
     InputFilter[] arrayOfInputFilter2 = paramHippyTextInput.getFilters();
     InputFilter[] arrayOfInputFilter3 = EMPTY_FILTERS;
+    int i = 0;
     InputFilter[] arrayOfInputFilter1;
     if (paramInt == -1)
     {
       arrayOfInputFilter1 = arrayOfInputFilter3;
-      if (arrayOfInputFilter2.length <= 0) {
-        break label204;
-      }
-      LinkedList localLinkedList = new LinkedList();
-      paramInt = i;
-      while (paramInt < arrayOfInputFilter2.length)
-      {
-        if (!(arrayOfInputFilter2[paramInt] instanceof InputFilter.LengthFilter)) {
-          localLinkedList.add(arrayOfInputFilter2[paramInt]);
-        }
-        paramInt += 1;
-      }
-      arrayOfInputFilter1 = arrayOfInputFilter3;
-      if (localLinkedList.isEmpty()) {
-        break label204;
-      }
-      arrayOfInputFilter1 = (InputFilter[])localLinkedList.toArray(new InputFilter[localLinkedList.size()]);
-    }
-    for (;;)
-    {
-      paramHippyTextInput.setFilters(arrayOfInputFilter1);
-      return;
       if (arrayOfInputFilter2.length > 0)
       {
-        i = 0;
-        int j = 0;
-        while (i < arrayOfInputFilter2.length)
+        LinkedList localLinkedList = new LinkedList();
+        paramInt = i;
+        while (paramInt < arrayOfInputFilter2.length)
         {
-          if ((arrayOfInputFilter2[i] instanceof InputFilter.LengthFilter))
-          {
-            arrayOfInputFilter2[i] = new InputFilter.LengthFilter(paramInt);
-            j = 1;
+          if (!(arrayOfInputFilter2[paramInt] instanceof InputFilter.LengthFilter)) {
+            localLinkedList.add(arrayOfInputFilter2[paramInt]);
           }
-          i += 1;
+          paramInt += 1;
         }
-        if (j == 0)
+        arrayOfInputFilter1 = arrayOfInputFilter3;
+        if (!localLinkedList.isEmpty()) {
+          arrayOfInputFilter1 = (InputFilter[])localLinkedList.toArray(new InputFilter[localLinkedList.size()]);
+        }
+      }
+    }
+    else if (arrayOfInputFilter2.length > 0)
+    {
+      i = 0;
+      int j = 0;
+      while (i < arrayOfInputFilter2.length)
+      {
+        if ((arrayOfInputFilter2[i] instanceof InputFilter.LengthFilter))
         {
-          arrayOfInputFilter1 = new InputFilter[arrayOfInputFilter2.length + 1];
-          System.arraycopy(arrayOfInputFilter2, 0, arrayOfInputFilter1, 0, arrayOfInputFilter2.length);
-          arrayOfInputFilter2[arrayOfInputFilter2.length] = new InputFilter.LengthFilter(paramInt);
+          arrayOfInputFilter2[i] = new InputFilter.LengthFilter(paramInt);
+          j = 1;
         }
+        i += 1;
+      }
+      if (j == 0)
+      {
+        arrayOfInputFilter1 = new InputFilter[arrayOfInputFilter2.length + 1];
+        System.arraycopy(arrayOfInputFilter2, 0, arrayOfInputFilter1, 0, arrayOfInputFilter2.length);
+        arrayOfInputFilter2[arrayOfInputFilter2.length] = new InputFilter.LengthFilter(paramInt);
       }
       else
       {
-        for (;;)
-        {
-          label204:
-          break;
-          arrayOfInputFilter1 = new InputFilter[1];
-          arrayOfInputFilter1[0] = new InputFilter.LengthFilter(paramInt);
-        }
+        arrayOfInputFilter1 = arrayOfInputFilter2;
       }
-      arrayOfInputFilter1 = arrayOfInputFilter2;
     }
+    else
+    {
+      arrayOfInputFilter1 = new InputFilter[1];
+      arrayOfInputFilter1[0] = new InputFilter.LengthFilter(paramInt);
+    }
+    paramHippyTextInput.setFilters(arrayOfInputFilter1);
   }
   
   @HippyControllerProps(defaultBoolean=true, defaultType="boolean", name="multiline")
@@ -249,15 +243,12 @@ public class HippyTextInputController
     int i = paramHippyTextInput.getInputType();
     if (paramBoolean) {
       i |= 0x20000;
-    }
-    for (;;)
-    {
-      paramHippyTextInput.setInputType(i);
-      if (paramBoolean) {
-        paramHippyTextInput.setGravityVertical(48);
-      }
-      return;
+    } else {
       i &= 0xFFFDFFFF;
+    }
+    paramHippyTextInput.setInputType(i);
+    if (paramBoolean) {
+      paramHippyTextInput.setGravityVertical(48);
     }
   }
   
@@ -343,22 +334,16 @@ public class HippyTextInputController
     int i = -1;
     if ("italic".equals(paramString)) {
       i = 2;
+    } else if ("normal".equals(paramString)) {
+      i = 0;
     }
-    for (;;)
-    {
-      Typeface localTypeface = paramHippyTextInput.getTypeface();
-      paramString = localTypeface;
-      if (localTypeface == null) {
-        paramString = Typeface.DEFAULT;
-      }
-      if (i == paramString.getStyle()) {
-        break;
-      }
+    Typeface localTypeface = paramHippyTextInput.getTypeface();
+    paramString = localTypeface;
+    if (localTypeface == null) {
+      paramString = Typeface.DEFAULT;
+    }
+    if (i != paramString.getStyle()) {
       paramHippyTextInput.setTypeface(paramString, i);
-      return;
-      if ("normal".equals(paramString)) {
-        i = 0;
-      }
     }
   }
   
@@ -367,29 +352,14 @@ public class HippyTextInputController
   {
     int k = -1;
     int j;
-    int i;
-    if (paramString != null)
-    {
+    if (paramString != null) {
       j = parseFontWeight(paramString);
-      if ((j < 500) && (!"bold".equals(paramString))) {
-        break label72;
-      }
-      i = 1;
-    }
-    for (;;)
-    {
-      Typeface localTypeface = paramHippyTextInput.getTypeface();
-      paramString = localTypeface;
-      if (localTypeface == null) {
-        paramString = Typeface.DEFAULT;
-      }
-      if (i != paramString.getStyle()) {
-        paramHippyTextInput.setTypeface(paramString, i);
-      }
-      return;
+    } else {
       j = -1;
-      break;
-      label72:
+    }
+    int i;
+    if ((j < 500) && (!"bold".equals(paramString)))
+    {
       if (!"normal".equals(paramString))
       {
         i = k;
@@ -404,33 +374,45 @@ public class HippyTextInputController
         i = 0;
       }
     }
+    else {
+      i = 1;
+    }
+    Typeface localTypeface = paramHippyTextInput.getTypeface();
+    paramString = localTypeface;
+    if (localTypeface == null) {
+      paramString = Typeface.DEFAULT;
+    }
+    if (i != paramString.getStyle()) {
+      paramHippyTextInput.setTypeface(paramString, i);
+    }
   }
   
   @HippyControllerProps(defaultString="", defaultType="string", name="keyboardType")
   public void setKeyboardType(HippyTextInput paramHippyTextInput, String paramString)
   {
-    int i = 1;
-    if ("numeric".equalsIgnoreCase(paramString)) {
+    int i;
+    if ("numeric".equalsIgnoreCase(paramString))
+    {
       i = 12290;
     }
-    for (;;)
+    else if ("email".equalsIgnoreCase(paramString))
     {
-      paramHippyTextInput.setInputType(i);
-      return;
-      if ("email".equalsIgnoreCase(paramString))
-      {
-        i = 33;
-      }
-      else if ("phone-pad".equalsIgnoreCase(paramString))
-      {
-        i = 3;
-      }
-      else if ("password".equalsIgnoreCase(paramString))
-      {
-        i = 129;
-        paramHippyTextInput.setTransformationMethod(PasswordTransformationMethod.getInstance());
-      }
+      i = 33;
     }
+    else if ("phone-pad".equalsIgnoreCase(paramString))
+    {
+      i = 3;
+    }
+    else if ("password".equalsIgnoreCase(paramString))
+    {
+      i = 129;
+      paramHippyTextInput.setTransformationMethod(PasswordTransformationMethod.getInstance());
+    }
+    else
+    {
+      i = 1;
+    }
+    paramHippyTextInput.setInputType(i);
   }
   
   @HippyControllerProps(defaultNumber=2147483647.0D, defaultType="number", name="numberOfLines")
@@ -466,129 +448,138 @@ public class HippyTextInputController
   @HippyControllerProps(name="returnKeyType")
   public void setReturnKeyType(HippyTextInput paramHippyTextInput, String paramString)
   {
-    int j = 2;
-    int i;
+    int j = 4;
     if (paramString != null)
     {
-      i = -1;
       switch (paramString.hashCode())
       {
       default: 
-        switch (i)
-        {
+        break;
+      case 3526536: 
+        if (paramString.equals("send")) {
+          i = 5;
+        }
+        break;
+      case 3387192: 
+        if (paramString.equals("none")) {
+          i = 2;
+        }
+        break;
+      case 3377907: 
+        if (paramString.equals("next")) {
+          i = 1;
+        }
+        break;
+      case 3089282: 
+        if (paramString.equals("done")) {
+          i = 6;
+        }
+        break;
+      case 3304: 
+        if (paramString.equals("go")) {
+          i = 0;
+        }
+        break;
+      case -906336856: 
+        if (paramString.equals("search")) {
+          i = 4;
+        }
+        break;
+      case -1273775369: 
+        if (paramString.equals("previous")) {
+          i = 3;
         }
         break;
       }
-    }
-    for (;;)
-    {
-      j = 6;
-      for (;;)
+      i = -1;
+      switch (i)
       {
-        paramHippyTextInput.setImeOptions(j | 0x2000000);
-        return;
-        if (!paramString.equals("go")) {
-          break;
-        }
-        i = 0;
+      default: 
         break;
-        if (!paramString.equals("next")) {
-          break;
-        }
-        i = 1;
+      case 6: 
+        paramHippyTextInput.setSingleLine(true);
         break;
-        if (!paramString.equals("none")) {
-          break;
-        }
-        i = 2;
-        break;
-        if (!paramString.equals("previous")) {
-          break;
-        }
+      case 4: 
+        paramHippyTextInput.setSingleLine(true);
         i = 3;
         break;
-        if (!paramString.equals("search")) {
-          break;
-        }
-        i = 4;
+      case 3: 
+        j = 7;
+      case 5: 
+        paramHippyTextInput.setSingleLine(true);
+        i = j;
         break;
-        if (!paramString.equals("send")) {
-          break;
-        }
+      case 2: 
+        i = 1;
+        break;
+      case 1: 
+        paramHippyTextInput.setSingleLine(true);
         i = 5;
         break;
-        if (!paramString.equals("done")) {
-          break;
-        }
-        i = 6;
+      case 0: 
+        i = 2;
         break;
-        j = 5;
-        paramHippyTextInput.setSingleLine(true);
-        continue;
-        j = 1;
-        continue;
-        j = 7;
-        paramHippyTextInput.setSingleLine(true);
-        continue;
-        paramHippyTextInput.setSingleLine(true);
-        j = 3;
-        continue;
-        paramHippyTextInput.setSingleLine(true);
-        j = 4;
       }
-      paramHippyTextInput.setSingleLine(true);
     }
+    int i = 6;
+    paramHippyTextInput.setImeOptions(0x2000000 | i);
   }
   
   @HippyControllerProps(defaultType="string", name="textAlign")
   public void setTextAlign(HippyTextInput paramHippyTextInput, String paramString)
   {
-    if ((paramString == null) || ("auto".equals(paramString))) {
-      paramHippyTextInput.setGravityHorizontal(0);
-    }
-    do
+    if ((paramString != null) && (!"auto".equals(paramString)))
     {
-      return;
-      if ("left".equals(paramString))
+      if ("left".equals(paramString)) {}
+      for (;;)
       {
         paramHippyTextInput.setGravityHorizontal(3);
         return;
+        if ("right".equals(paramString))
+        {
+          i = 5;
+          break;
+        }
+        if ("center".equals(paramString))
+        {
+          i = 1;
+          break;
+        }
+        if (!"justify".equals(paramString)) {
+          return;
+        }
       }
-      if ("right".equals(paramString))
-      {
-        paramHippyTextInput.setGravityHorizontal(5);
-        return;
-      }
-      if ("center".equals(paramString))
-      {
-        paramHippyTextInput.setGravityHorizontal(1);
-        return;
-      }
-    } while (!"justify".equals(paramString));
-    paramHippyTextInput.setGravityHorizontal(3);
+    }
+    int i = 0;
+    paramHippyTextInput.setGravityHorizontal(i);
   }
   
   @HippyControllerProps(name="textAlignVertical")
   public void setTextAlignVertical(HippyTextInput paramHippyTextInput, String paramString)
   {
-    if ((paramString == null) || ("auto".equals(paramString))) {
-      paramHippyTextInput.setGravityVertical(0);
-    }
-    do
+    int i;
+    if ((paramString != null) && (!"auto".equals(paramString)))
     {
-      return;
       if ("top".equals(paramString))
       {
-        paramHippyTextInput.setGravityVertical(48);
-        return;
+        i = 48;
       }
-      if ("bottom".equals(paramString))
+      else if ("bottom".equals(paramString))
       {
-        paramHippyTextInput.setGravityVertical(80);
-        return;
+        i = 80;
       }
-    } while (!"center".equals(paramString));
-    paramHippyTextInput.setGravityVertical(16);
+      else
+      {
+        if (!"center".equals(paramString)) {
+          return;
+        }
+        i = 16;
+      }
+    }
+    else {
+      i = 0;
+    }
+    paramHippyTextInput.setGravityVertical(i);
   }
   
   @HippyControllerProps(defaultNumber=-7829368.0D, defaultType="number", name="placeholderTextColor")
@@ -614,7 +605,7 @@ public class HippyTextInputController
     paramHippyTextInput.setValidator(paramString);
   }
   
-  public void updateExtra(View paramView, Object paramObject)
+  protected void updateExtra(View paramView, Object paramObject)
   {
     super.updateExtra(paramView, paramObject);
     if ((paramObject instanceof TextExtra))
@@ -662,7 +653,7 @@ public class HippyTextInputController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.textinput.HippyTextInputController
  * JD-Core Version:    0.7.0.1
  */

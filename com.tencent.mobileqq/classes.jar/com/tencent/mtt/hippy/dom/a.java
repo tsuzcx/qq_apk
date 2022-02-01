@@ -8,18 +8,19 @@ import java.util.Map;
 
 public class a
 {
-  private static boolean a;
+  private static final boolean a;
   private static a b;
-  private Map<d.a, Choreographer.FrameCallback> c = new HashMap();
+  private final Map<d.a, Choreographer.FrameCallback> c = new HashMap();
   
   static
   {
-    if (Build.VERSION.SDK_INT >= 16) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a = bool;
-      return;
+    boolean bool;
+    if (Build.VERSION.SDK_INT >= 16) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    a = bool;
   }
   
   public static a a()
@@ -52,14 +53,16 @@ public class a
         this.c.remove(parama);
         Choreographer.getInstance().removeFrameCallback(localFrameCallback);
       }
-      return;
     }
-    e.a().b(parama);
+    else
+    {
+      e.a().b(parama);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.dom.a
  * JD-Core Version:    0.7.0.1
  */

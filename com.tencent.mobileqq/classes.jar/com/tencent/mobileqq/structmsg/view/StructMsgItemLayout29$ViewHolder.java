@@ -22,38 +22,38 @@ class StructMsgItemLayout29$ViewHolder
   private void a(boolean paramBoolean)
   {
     Drawable localDrawable = this.a.getBackground();
-    if (localDrawable != null) {
-      if (!paramBoolean) {
-        break label28;
-      }
-    }
-    label28:
-    for (ColorFilter localColorFilter = null;; localColorFilter = BaseBubbleBuilder.a)
+    if (localDrawable != null)
     {
+      ColorFilter localColorFilter;
+      if (paramBoolean) {
+        localColorFilter = null;
+      } else {
+        localColorFilter = BaseBubbleBuilder.a;
+      }
       localDrawable.setColorFilter(localColorFilter);
       localDrawable.invalidateSelf();
-      return;
     }
   }
   
   public void a(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    case 2: 
-    default: 
-    case 1: 
-    case 3: 
-      do
-      {
+      if ((i != 1) && (i != 3)) {
         return;
-        paramView = this.a.getBackground();
-      } while (paramView == null);
-      paramView.setColorFilter(null);
-      paramView.invalidateSelf();
-      return;
+      }
+      paramView = this.a.getBackground();
+      if (paramView != null)
+      {
+        paramView.setColorFilter(null);
+        paramView.invalidateSelf();
+      }
     }
-    a(false);
+    else
+    {
+      a(false);
+    }
   }
   
   public void a(View paramView, boolean paramBoolean)
@@ -63,7 +63,7 @@ class StructMsgItemLayout29$ViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout29.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

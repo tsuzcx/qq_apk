@@ -36,13 +36,14 @@ public final class im_imagent$ImAgentHead
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 58, 66, 72, 80 }, new String[] { "command", "seq", "result", "err", "echo_buf", "req_user", "req_info", "signature", "sub_cmd", "server_ip" }, new Object[] { Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), "", localByteStringMicro, null, null, null, Integer.valueOf(0), Integer.valueOf(0) }, ImAgentHead.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 58, 66, 72, 80 }, new String[] { "command", "seq", "result", "err", "echo_buf", "req_user", "req_info", "signature", "sub_cmd", "server_ip" }, new Object[] { Integer.valueOf(1), localInteger, localInteger, "", localByteStringMicro, null, null, null, localInteger, localInteger }, ImAgentHead.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.msg.im_imagent.ImAgentHead
  * JD-Core Version:    0.7.0.1
  */

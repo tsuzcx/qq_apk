@@ -11,12 +11,21 @@ class PermissionPrivacyFragment$5$1
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PermissionPrivacyFragment", 2, "updateIntimateRelationshipFriendCount number:" + this.jdField_a_of_type_Int);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateIntimateRelationshipFriendCount number:");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      QLog.i("PermissionPrivacyFragment", 2, ((StringBuilder)localObject).toString());
     }
     if (this.jdField_a_of_type_Int > 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqSettingsFragmentPermissionPrivacyFragment$5.this$0.i.setRightText(this.jdField_a_of_type_Int + HardCodeUtil.a(2131700939));
+      localObject = this.jdField_a_of_type_ComTencentMobileqqSettingsFragmentPermissionPrivacyFragment$5.this$0.i;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(HardCodeUtil.a(2131701082));
+      ((FormSimpleItem)localObject).setRightText(localStringBuilder.toString());
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqSettingsFragmentPermissionPrivacyFragment$5.this$0.i.setRightText("");
@@ -24,7 +33,7 @@ class PermissionPrivacyFragment$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.settings.fragment.PermissionPrivacyFragment.5.1
  * JD-Core Version:    0.7.0.1
  */

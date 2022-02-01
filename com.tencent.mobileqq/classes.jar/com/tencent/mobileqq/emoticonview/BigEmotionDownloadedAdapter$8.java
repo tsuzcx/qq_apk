@@ -15,37 +15,41 @@ class BigEmotionDownloadedAdapter$8
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if ((paramThrowable instanceof RejectedExecutionException)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("BigEmotionDownloadedAdapter", 2, "arg0.getConstantState() = " + paramURLDrawable.getConstantState());
+    if ((paramThrowable instanceof RejectedExecutionException))
+    {
+      if (QLog.isColorLevel())
+      {
+        paramThrowable = new StringBuilder();
+        paramThrowable.append("arg0.getConstantState() = ");
+        paramThrowable.append(paramURLDrawable.getConstantState());
+        QLog.i("BigEmotionDownloadedAdapter", 2, paramThrowable.toString());
       }
     }
-    label41:
-    int i;
-    do
+    else if (paramURLDrawable != null)
     {
-      do
+      paramThrowable = paramURLDrawable.getFileInLocal();
+      if ((paramThrowable != null) && (paramThrowable.exists())) {
+        paramThrowable.delete();
+      }
+      paramThrowable = paramURLDrawable.getTag();
+      if ((paramThrowable instanceof Integer))
       {
-        do
+        int i = ((Integer)paramThrowable).intValue();
+        if (i < 3)
         {
-          break label41;
-          do
+          i += 1;
+          paramURLDrawable.setTag(Integer.valueOf(i));
+          paramURLDrawable.restartDownload();
+          if (QLog.isColorLevel())
           {
-            return;
-          } while (paramURLDrawable == null);
-          paramThrowable = paramURLDrawable.getFileInLocal();
-          if ((paramThrowable != null) && (paramThrowable.exists())) {
-            paramThrowable.delete();
+            paramURLDrawable = new StringBuilder();
+            paramURLDrawable.append("download recomment comic pic , try count = ");
+            paramURLDrawable.append(i);
+            QLog.i("BigEmotionDownloadedAdapter", 2, paramURLDrawable.toString());
           }
-          paramThrowable = paramURLDrawable.getTag();
-        } while (!(paramThrowable instanceof Integer));
-        i = ((Integer)paramThrowable).intValue();
-      } while (i >= 3);
-      i += 1;
-      paramURLDrawable.setTag(Integer.valueOf(i));
-      paramURLDrawable.restartDownload();
-    } while (!QLog.isColorLevel());
-    QLog.i("BigEmotionDownloadedAdapter", 2, "download recomment comic pic , try count = " + i);
+        }
+      }
+    }
   }
   
   public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
@@ -54,7 +58,7 @@ class BigEmotionDownloadedAdapter$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.BigEmotionDownloadedAdapter.8
  * JD-Core Version:    0.7.0.1
  */

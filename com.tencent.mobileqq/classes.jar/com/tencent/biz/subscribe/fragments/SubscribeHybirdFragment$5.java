@@ -1,35 +1,24 @@
 package com.tencent.biz.subscribe.fragments;
 
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
-import com.tencent.biz.subscribe.comment.CommentBottomBar;
-import com.tencent.biz.subscribe.comment.CommentPresenter.GetFeedResponseListener;
-import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.beans.ShareInfoBean;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class SubscribeHybirdFragment$5
-  implements CommentPresenter.GetFeedResponseListener
+  implements View.OnClickListener
 {
-  SubscribeHybirdFragment$5(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
+  SubscribeHybirdFragment$5(SubscribeHybirdFragment paramSubscribeHybirdFragment, ShareInfoBean paramShareInfoBean) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    SubscribeHybirdFragment.a(this.a).a(paramInt);
-  }
-  
-  public void a(CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp, boolean paramBoolean, long paramLong, String paramString)
-  {
-    if ((paramStGetFeedDetailRsp == null) || (paramStGetFeedDetailRsp.feed.get() == null))
-    {
-      QQToast.a(this.a.getHostActivity(), HardCodeUtil.a(2131714518), 0).a();
-      return;
-    }
-    SubscribeHybirdFragment.a(this.a, paramStGetFeedDetailRsp, paramLong, paramString);
+    this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribeHybirdFragment.a(this.jdField_a_of_type_ComTencentBizSubscribeBeansShareInfoBean);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment.5
  * JD-Core Version:    0.7.0.1
  */

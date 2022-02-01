@@ -23,14 +23,15 @@ public final class stBlockRecommPersonReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.personId != null) {
-      paramJceOutputStream.write(this.personId, 0);
+    String str = this.personId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stBlockRecommPersonReq
  * JD-Core Version:    0.7.0.1
  */

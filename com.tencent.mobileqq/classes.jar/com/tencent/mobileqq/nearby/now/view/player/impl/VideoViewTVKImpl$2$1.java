@@ -1,0 +1,22 @@
+package com.tencent.mobileqq.nearby.now.view.player.impl;
+
+import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnErrorListener;
+
+class VideoViewTVKImpl$2$1
+  implements Runnable
+{
+  VideoViewTVKImpl$2$1(VideoViewTVKImpl.2 param2, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject) {}
+  
+  public void run()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerImplVideoViewTVKImpl$2.a.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerImplVideoViewTVKImpl$2.a.a.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerImplVideoViewTVKImpl$2.a, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangObject);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+ * Qualified Name:     com.tencent.mobileqq.nearby.now.view.player.impl.VideoViewTVKImpl.2.1
+ * JD-Core Version:    0.7.0.1
+ */

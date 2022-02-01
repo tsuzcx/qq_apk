@@ -27,14 +27,15 @@ public final class s_pwdright
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.data != null) {
-      paramJceOutputStream.write(this.data, 0);
+    s_user locals_user = this.data;
+    if (locals_user != null) {
+      paramJceOutputStream.write(locals_user, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.s_pwdright
  * JD-Core Version:    0.7.0.1
  */

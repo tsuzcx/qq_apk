@@ -15,67 +15,82 @@ class ImageDisplayView$1
   public void run()
   {
     Object localObject1 = null;
-    try
+    for (;;)
     {
-      localBitmap = BitmapFactory.decodeFile(this.jdField_a_of_type_JavaLangString);
-      localObject1 = localBitmap;
-      int i = new ExifInterface(this.jdField_a_of_type_JavaLangString).getAttributeInt("Orientation", 0);
-      localObject1 = localBitmap;
-      localObject2 = new Matrix();
-      switch (i)
+      try
       {
+        Bitmap localBitmap = BitmapFactory.decodeFile(this.jdField_a_of_type_JavaLangString);
+        localObject1 = localBitmap;
+        int i = new ExifInterface(this.jdField_a_of_type_JavaLangString).getAttributeInt("Orientation", 0);
+        localObject1 = localBitmap;
+        Object localObject2 = new Matrix();
+        switch (i)
+        {
+        case 8: 
+          localObject1 = localBitmap;
+          localObject2 = ThreadManager.getUIHandler();
+          continue;
+          localObject1 = localBitmap;
+          ((Matrix)localObject2).postRotate(270.0F);
+          break;
+        case 7: 
+          localObject1 = localBitmap;
+          ((Matrix)localObject2).postRotate(270.0F);
+          localObject1 = localBitmap;
+          ((Matrix)localObject2).postScale(-1.0F, 1.0F);
+          break;
+        case 6: 
+          localObject1 = localBitmap;
+          ((Matrix)localObject2).postRotate(90.0F);
+          break;
+        case 5: 
+          localObject1 = localBitmap;
+          ((Matrix)localObject2).postRotate(90.0F);
+          localObject1 = localBitmap;
+          ((Matrix)localObject2).postScale(-1.0F, 1.0F);
+          break;
+        case 4: 
+          localObject1 = localBitmap;
+          ((Matrix)localObject2).postRotate(180.0F);
+          localObject1 = localBitmap;
+          ((Matrix)localObject2).postScale(-1.0F, 1.0F);
+          break;
+        case 3: 
+          localObject1 = localBitmap;
+          ((Matrix)localObject2).postRotate(180.0F);
+          break;
+        case 2: 
+          localObject1 = localBitmap;
+          ((Matrix)localObject2).postScale(-1.0F, 1.0F);
+          localObject1 = localBitmap;
+          localObject2 = Bitmap.createBitmap(localBitmap, 0, 0, localBitmap.getWidth(), localBitmap.getHeight(), (Matrix)localObject2, true);
+          localObject1 = localBitmap;
+          ThreadManager.getUIHandler().post(new ImageDisplayView.1.2(this, (Bitmap)localObject2));
+          return;
+          localObject1 = localBitmap;
+          ((MqqHandler)localObject2).post(new ImageDisplayView.1.1(this, localBitmap));
+          return;
+        }
       }
-    }
-    catch (Exception localException)
-    {
-      Bitmap localBitmap;
-      Object localObject2;
-      while (localObject1 != null)
+      catch (Exception localException)
       {
-        ThreadManager.getUIHandler().post(new ImageDisplayView.1.3(this, localObject1));
+        continue;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
         return;
-        localObject1 = localException;
-        ((Matrix)localObject2).postRotate(180.0F);
-        continue;
-        localObject1 = localException;
-        ((Matrix)localObject2).postRotate(180.0F);
-        localObject1 = localException;
-        ((Matrix)localObject2).postScale(-1.0F, 1.0F);
-        continue;
-        localObject1 = localException;
-        ((Matrix)localObject2).postRotate(90.0F);
-        localObject1 = localException;
-        ((Matrix)localObject2).postScale(-1.0F, 1.0F);
-        continue;
-        localObject1 = localException;
-        ((Matrix)localObject2).postRotate(90.0F);
-        continue;
-        localObject1 = localException;
-        ((Matrix)localObject2).postRotate(270.0F);
-        localObject1 = localException;
-        ((Matrix)localObject2).postScale(-1.0F, 1.0F);
-        continue;
-        localObject1 = localException;
-        ((Matrix)localObject2).postRotate(270.0F);
       }
+      if (localObject1 == null) {
+        return;
+      }
+      ThreadManager.getUIHandler().post(new ImageDisplayView.1.3(this, localObject1));
       return;
     }
-    catch (OutOfMemoryError localOutOfMemoryError) {}
-    localObject1 = localBitmap;
-    ThreadManager.getUIHandler().post(new ImageDisplayView.1.1(this, localBitmap));
-    return;
-    localObject1 = localBitmap;
-    ((Matrix)localObject2).postScale(-1.0F, 1.0F);
-    localObject1 = localBitmap;
-    localObject2 = Bitmap.createBitmap(localBitmap, 0, 0, localBitmap.getWidth(), localBitmap.getHeight(), (Matrix)localObject2, true);
-    localObject1 = localBitmap;
-    ThreadManager.getUIHandler().post(new ImageDisplayView.1.2(this, (Bitmap)localObject2));
-    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView.1
  * JD-Core Version:    0.7.0.1
  */

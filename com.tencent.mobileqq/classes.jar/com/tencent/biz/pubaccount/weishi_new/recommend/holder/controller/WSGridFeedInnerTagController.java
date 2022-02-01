@@ -24,80 +24,76 @@ public class WSGridFeedInnerTagController
   private void f()
   {
     stVideoTag localstVideoTag = this.jdField_a_of_type_UserGrowthStVideoTag;
-    if ((localstVideoTag == null) || (TextUtils.isEmpty(localstVideoTag.text)))
+    if ((localstVideoTag != null) && (!TextUtils.isEmpty(localstVideoTag.text)))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      return;
-    }
-    String str;
-    Object localObject;
-    label83:
-    GradientDrawable localGradientDrawable;
-    if ((!TextUtils.isEmpty(localstVideoTag.textColor)) && (localstVideoTag.textColor.startsWith("#")))
-    {
-      str = localstVideoTag.textColor;
-      if ((TextUtils.isEmpty(localstVideoTag.bgColor)) || (!localstVideoTag.bgColor.startsWith("#"))) {
-        break label205;
+      Object localObject1;
+      if ((!TextUtils.isEmpty(localstVideoTag.textColor)) && (localstVideoTag.textColor.startsWith("#")))
+      {
+        localObject1 = localstVideoTag.textColor;
       }
-      localObject = localstVideoTag.bgColor;
-      localGradientDrawable = new GradientDrawable();
+      else
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("#");
+        ((StringBuilder)localObject1).append(localstVideoTag.textColor);
+        localObject1 = ((StringBuilder)localObject1).toString();
+      }
+      if ((!TextUtils.isEmpty(localstVideoTag.bgColor)) && (localstVideoTag.bgColor.startsWith("#")))
+      {
+        localObject2 = localstVideoTag.bgColor;
+      }
+      else
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("#");
+        ((StringBuilder)localObject2).append(localstVideoTag.bgColor);
+        localObject2 = ((StringBuilder)localObject2).toString();
+      }
+      GradientDrawable localGradientDrawable = new GradientDrawable();
       localGradientDrawable.setCornerRadius(WeishiUIUtil.d);
       localGradientDrawable.setStroke(WeishiUIUtil.a, Color.parseColor("#4CFFFFFF"));
-      if (!WeishiUIUtil.a((String)localObject)) {
-        break label231;
+      if (!WeishiUIUtil.a((String)localObject2)) {
+        localObject2 = "#80000000";
       }
-      label121:
-      localGradientDrawable.setColor(Color.parseColor((String)localObject));
+      localGradientDrawable.setColor(Color.parseColor((String)localObject2));
       this.jdField_a_of_type_AndroidWidgetTextView.setText(localstVideoTag.text);
-      localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-      if (!WeishiUIUtil.a(str)) {
-        break label237;
+      Object localObject2 = this.jdField_a_of_type_AndroidWidgetTextView;
+      if (!WeishiUIUtil.a((String)localObject1)) {
+        localObject1 = "#FFFFFF";
       }
-    }
-    for (;;)
-    {
-      ((TextView)localObject).setTextColor(Color.parseColor(str));
+      ((TextView)localObject2).setTextColor(Color.parseColor((String)localObject1));
       this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(localGradientDrawable);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       return;
-      str = "#" + localstVideoTag.textColor;
-      break;
-      label205:
-      localObject = "#" + localstVideoTag.bgColor;
-      break label83;
-      label231:
-      localObject = "#80000000";
-      break label121;
-      label237:
-      str = "#FFFFFF";
     }
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
   
-  public void a()
+  protected void a()
   {
     this.jdField_a_of_type_UserGrowthStVideoTag = ((stSimpleMetaFeed)a()).videoTag;
   }
   
-  public int b()
+  protected int b()
   {
-    return 2131560540;
+    return 2131560430;
   }
   
-  public void b()
+  protected void b()
   {
     f();
   }
   
-  public void c() {}
+  protected void c() {}
   
-  public void e()
+  protected void e()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131369400));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131369128));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.controller.WSGridFeedInnerTagController
  * JD-Core Version:    0.7.0.1
  */

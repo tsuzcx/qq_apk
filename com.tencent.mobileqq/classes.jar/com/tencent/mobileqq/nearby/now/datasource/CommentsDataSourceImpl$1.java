@@ -28,17 +28,24 @@ class CommentsDataSourceImpl$1
 {
   CommentsDataSourceImpl$1(CommentsDataSourceImpl paramCommentsDataSourceImpl, CommentsDataSource.LoadCommentsCallback paramLoadCommentsCallback) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    boolean bool = false;
-    QLog.i("CommentsDataSource", 1, "errorCode:" + paramInt);
-    if ((paramInt == 0) && (paramArrayOfByte != null))
-    {
+    paramBundle = new StringBuilder();
+    paramBundle.append("errorCode:");
+    paramBundle.append(paramInt);
+    QLog.i("CommentsDataSource", 1, paramBundle.toString());
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
       paramBundle = new oidb_0xada.RspBody();
+    }
+    for (;;)
+    {
       try
       {
         paramBundle.mergeFrom(paramArrayOfByte);
-        QLog.i("CommentsDataSource", 1, "err_msg:" + paramBundle.err_msg.get());
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("err_msg:");
+        paramArrayOfByte.append(paramBundle.err_msg.get());
+        QLog.i("CommentsDataSource", 1, paramArrayOfByte.toString());
         if (!paramBundle.busi_buf.has())
         {
           QLog.i("CommentsDataSource", 1, "rspBody.busi_buf is null");
@@ -49,74 +56,93 @@ class CommentsDataSourceImpl$1
         paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
         if (paramArrayOfByte.result.get() != 0L)
         {
-          QLog.i("CommentsDataSource", 1, "error code :" + paramArrayOfByte.result.get());
+          paramBundle = new StringBuilder();
+          paramBundle.append("error code :");
+          paramBundle.append(paramArrayOfByte.result.get());
+          QLog.i("CommentsDataSource", 1, paramBundle.toString());
           this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource$LoadCommentsCallback.a();
           return;
         }
+        paramBundle = new Comments();
+        paramBundle.jdField_a_of_type_Long = paramArrayOfByte.total_num.get();
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("all comments count is: ");
+        ((StringBuilder)localObject).append(paramBundle.jdField_a_of_type_Long);
+        QLog.i("CommentsDataSource", 1, ((StringBuilder)localObject).toString());
+        if (paramArrayOfByte.end_flag.get() != 1L) {
+          break label853;
+        }
+        bool = true;
+        paramBundle.jdField_a_of_type_Boolean = bool;
+        paramBundle.jdField_a_of_type_JavaUtilList = new ArrayList();
+        if (paramArrayOfByte.lists.has())
+        {
+          localObject = paramArrayOfByte.lists.get().iterator();
+          if (((Iterator)localObject).hasNext())
+          {
+            NowNearbyVideoCommentProto.Comment localComment = (NowNearbyVideoCommentProto.Comment)((Iterator)localObject).next();
+            Comments.Comment localComment1 = new Comments.Comment();
+            localComment1.jdField_a_of_type_Long = localComment.comment_id.get();
+            localComment1.jdField_b_of_type_Long = localComment.create_time.get();
+            localComment1.jdField_a_of_type_Int = localComment.type.get();
+            if (localComment.publish_info.has())
+            {
+              localComment1.jdField_c_of_type_Long = localComment.publish_info.uid.get();
+              localComment1.jdField_b_of_type_JavaLangString = localComment.publish_info.anchor_name.get().toStringUtf8();
+              localComment1.jdField_c_of_type_JavaLangString = localComment.publish_info.head_img_url.get().toStringUtf8();
+              localComment1.jdField_b_of_type_Int = localComment.publish_info.user_type.get();
+              localComment1.jdField_d_of_type_Long = localComment.publish_info.now_id.get();
+              if (localComment.reply_info.has())
+              {
+                localComment1.jdField_e_of_type_Long = localComment.reply_info.uid.get();
+                localComment1.jdField_d_of_type_JavaLangString = localComment.reply_info.anchor_name.get().toStringUtf8();
+                localComment1.jdField_e_of_type_JavaLangString = localComment.reply_info.head_img_url.get().toStringUtf8();
+                localComment1.jdField_c_of_type_Int = localComment.reply_info.user_type.get();
+                localComment1.f = localComment.reply_info.now_id.get();
+              }
+            }
+            if ((localComment.content.has()) && (localComment.content.msgs.has())) {
+              localComment1.jdField_a_of_type_JavaLangString = ((NowNearbyVideoCommentProto.CommentMsg)localComment.content.msgs.get(0)).msg.get().toStringUtf8();
+            }
+            if (!CommentsDataSourceImpl.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSourceImpl).contains(Long.valueOf(localComment.comment_id.get()))) {
+              CommentsDataSourceImpl.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSourceImpl).add(Long.valueOf(localComment.comment_id.get()));
+            }
+            if (localComment1.jdField_a_of_type_Int == 2) {
+              paramBundle.b.add(localComment1);
+            }
+            paramBundle.jdField_a_of_type_JavaUtilList.add(localComment1);
+            continue;
+          }
+        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("total:");
+        ((StringBuilder)localObject).append(paramArrayOfByte.total_num.get());
+        ((StringBuilder)localObject).append(", ret:");
+        ((StringBuilder)localObject).append(paramArrayOfByte.result.get());
+        QLog.i("CommentsDataSource", 1, ((StringBuilder)localObject).toString());
+        this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource$LoadCommentsCallback.a(paramBundle);
+        return;
       }
       catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
-        QLog.i("CommentsDataSource", 1, "merge data error " + paramArrayOfByte);
+        paramBundle = new StringBuilder();
+        paramBundle.append("merge data error ");
+        paramBundle.append(paramArrayOfByte);
+        QLog.i("CommentsDataSource", 1, paramBundle.toString());
         this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource$LoadCommentsCallback.a();
         return;
       }
-      paramBundle = new Comments();
-      paramBundle.jdField_a_of_type_Long = paramArrayOfByte.total_num.get();
-      QLog.i("CommentsDataSource", 1, "all comments count is: " + paramBundle.jdField_a_of_type_Long);
-      if (paramArrayOfByte.end_flag.get() == 1L) {
-        bool = true;
-      }
-      paramBundle.jdField_a_of_type_Boolean = bool;
-      paramBundle.jdField_a_of_type_JavaUtilList = new ArrayList();
-      if (paramArrayOfByte.lists.has())
-      {
-        Iterator localIterator = paramArrayOfByte.lists.get().iterator();
-        while (localIterator.hasNext())
-        {
-          NowNearbyVideoCommentProto.Comment localComment = (NowNearbyVideoCommentProto.Comment)localIterator.next();
-          Comments.Comment localComment1 = new Comments.Comment();
-          localComment1.jdField_a_of_type_Long = localComment.comment_id.get();
-          localComment1.jdField_b_of_type_Long = localComment.create_time.get();
-          localComment1.jdField_a_of_type_Int = localComment.type.get();
-          if (localComment.publish_info.has())
-          {
-            localComment1.jdField_c_of_type_Long = localComment.publish_info.uid.get();
-            localComment1.jdField_b_of_type_JavaLangString = localComment.publish_info.anchor_name.get().toStringUtf8();
-            localComment1.jdField_c_of_type_JavaLangString = localComment.publish_info.head_img_url.get().toStringUtf8();
-            localComment1.jdField_b_of_type_Int = localComment.publish_info.user_type.get();
-            localComment1.jdField_d_of_type_Long = localComment.publish_info.now_id.get();
-            if (localComment.reply_info.has())
-            {
-              localComment1.jdField_e_of_type_Long = localComment.reply_info.uid.get();
-              localComment1.jdField_d_of_type_JavaLangString = localComment.reply_info.anchor_name.get().toStringUtf8();
-              localComment1.jdField_e_of_type_JavaLangString = localComment.reply_info.head_img_url.get().toStringUtf8();
-              localComment1.jdField_c_of_type_Int = localComment.reply_info.user_type.get();
-              localComment1.f = localComment.reply_info.now_id.get();
-            }
-          }
-          if ((localComment.content.has()) && (localComment.content.msgs.has())) {
-            localComment1.jdField_a_of_type_JavaLangString = ((NowNearbyVideoCommentProto.CommentMsg)localComment.content.msgs.get(0)).msg.get().toStringUtf8();
-          }
-          if (!CommentsDataSourceImpl.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSourceImpl).contains(Long.valueOf(localComment.comment_id.get()))) {
-            CommentsDataSourceImpl.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSourceImpl).add(Long.valueOf(localComment.comment_id.get()));
-          }
-          if (localComment1.jdField_a_of_type_Int == 2) {
-            paramBundle.b.add(localComment1);
-          }
-          paramBundle.jdField_a_of_type_JavaUtilList.add(localComment1);
-        }
-      }
-      QLog.i("CommentsDataSource", 1, "total:" + paramArrayOfByte.total_num.get() + ", ret:" + paramArrayOfByte.result.get());
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource$LoadCommentsCallback.a(paramBundle);
+      QLog.i("CommentsDataSource", 1, "getComments failed");
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource$LoadCommentsCallback.a();
       return;
+      label853:
+      boolean bool = false;
     }
-    QLog.i("CommentsDataSource", 1, "getComments failed");
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource$LoadCommentsCallback.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.datasource.CommentsDataSourceImpl.1
  * JD-Core Version:    0.7.0.1
  */

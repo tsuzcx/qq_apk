@@ -1,18 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
 import android.os.Parcel;
-import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.NativeAd.report.constant.AdClickPos;
-import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.util.RIJAdDownloadExKt;
+import com.tencent.biz.pubaccount.readinjoy.video.playfeeds.GameAdComData;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdDislikeInfo;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdvertisementExtInfo;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdvertisementSoftInfo;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.CommentAdParams;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.experiment.AdExperimentData;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdSwitchUtil;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdUtilService;
+import com.tencent.mobileqq.kandian.ad.api.IRIJCommonService;
+import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
+import com.tencent.mobileqq.kandian.repo.video.IVideoCardUIModel;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -24,8 +25,9 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.pts.core.PTSComposer.IPTSUpdateDataListener;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -36,8 +38,7 @@ import tencent.im.oidb.articlesummary.articlesummary.NegFeedback;
 import tencent.im.oidb.cmd0x886.oidb_cmd0x886.AdInfo;
 
 public class AdvertisementInfo
-  extends ArticleInfo
-  implements Parcelable
+  extends AbsBaseArticleInfo
 {
   public static final long ADVERTISEMENT_ALGORITHM_ID_MASK = 3L;
   public static final int AD_STYLE_0 = 0;
@@ -50,7 +51,7 @@ public class AdvertisementInfo
   public static final int IMAX_IMG_TYPE = 1002;
   public static final int IMAX_VIDEO_TYPE = 1001;
   public static final int PRODUCT_TYPE_APP = 12;
-  public static final String TABLE_NAME = AdvertisementInfo.class.getSimpleName();
+  public static final String TABLE_NAME = "AdvertisementInfo";
   public AdClickPos adClickPos;
   @notColumn
   public AdExperimentData adExperimentData = new AdExperimentData();
@@ -73,11 +74,13 @@ public class AdvertisementInfo
   @notColumn
   public double ecpm;
   @notColumn
-  public VideoInfo.GameAdComData gameAdComData;
+  public GameAdComData gameAdComData;
   @notColumn
   public boolean hasAddExposure;
   @notColumn
   public boolean isBottomAd = false;
+  @notColumn
+  public boolean isClickClose;
   public boolean isClickFromPkFragment = false;
   @notColumn
   public boolean isClickReplay;
@@ -93,6 +96,8 @@ public class AdvertisementInfo
   public boolean isShowBrandAnimate = false;
   @notColumn
   public boolean isShowingGuide = false;
+  @notColumn
+  public boolean isSmallCard;
   @notColumn
   public String liujinReportUrl;
   public long mADVideoAutoPlay = 0L;
@@ -200,6 +205,8 @@ public class AdvertisementInfo
   public int materialGroup = 0;
   public int miniProgramType;
   @notColumn
+  public String originalExposureUrl;
+  @notColumn
   public String packageName;
   @notColumn
   public int progress;
@@ -216,7 +223,6 @@ public class AdvertisementInfo
   
   public AdvertisementInfo(Parcel paramParcel)
   {
-    super(paramParcel);
     this.mAdFetchTime = paramParcel.readLong();
     this.mAdPosLayout = paramParcel.readInt();
     this.mAdPosID = paramParcel.readLong();
@@ -274,6 +280,7 @@ public class AdvertisementInfo
     this.mSoftAdType = paramParcel.readInt();
     this.mSoftAdData = paramParcel.readString();
     this.mRevisionVideoType = paramParcel.readInt();
+    this.mChannelID = paramParcel.readLong();
     this.mAdvertisementExtInfo = new AdvertisementExtInfo(this.mAdExtInfo);
     processAdExtraDataInfo(this.mAdExtInfo);
   }
@@ -367,41 +374,6 @@ public class AdvertisementInfo
     processAdExt(this.mAdExt);
   }
   
-  public static int getAdStyle(AdvertisementInfo paramAdvertisementInfo)
-  {
-    if (isAdvertisementInfo(paramAdvertisementInfo)) {
-      return ReadInJoyAdSwitchUtil.c(paramAdvertisementInfo);
-    }
-    return 0;
-  }
-  
-  public static int getBigAppAdStyle(AdvertisementInfo paramAdvertisementInfo)
-  {
-    if (isAppAdvertisementInfo(paramAdvertisementInfo)) {
-      return ReadInJoyAdSwitchUtil.c(paramAdvertisementInfo);
-    }
-    return 0;
-  }
-  
-  public static boolean isAdvertisementInfo(BaseArticleInfo paramBaseArticleInfo)
-  {
-    return paramBaseArticleInfo instanceof AdvertisementInfo;
-  }
-  
-  public static boolean isAppAdvertisementInfo(BaseArticleInfo paramBaseArticleInfo)
-  {
-    if (isAdvertisementInfo(paramBaseArticleInfo))
-    {
-      paramBaseArticleInfo = (AdvertisementInfo)paramBaseArticleInfo;
-      if ((paramBaseArticleInfo.mAdvertisementSoftInfo != null) && (paramBaseArticleInfo.mAdvertisementSoftInfo.e == 1)) {}
-      while ((RIJAdDownloadExKt.e(paramBaseArticleInfo)) || (RIJAdDownloadExKt.g(paramBaseArticleInfo)) || (paramBaseArticleInfo.mAdProductType == 12)) {
-        return true;
-      }
-      return false;
-    }
-    return false;
-  }
-  
   private void parseC2SClickUrl(JSONObject paramJSONObject)
   {
     if (paramJSONObject.has("c2s_click_url"))
@@ -415,8 +387,12 @@ public class AdvertisementInfo
         while (i < j)
         {
           String str = (String)paramJSONObject.opt(i);
-          if (QLog.isColorLevel()) {
-            QLog.d("processAdExtraDataInfo", 2, " processAdExtraDataInfo clickUrl = " + str);
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(" processAdExtraDataInfo clickUrl = ");
+            localStringBuilder.append(str);
+            QLog.d("processAdExtraDataInfo", 2, localStringBuilder.toString());
           }
           localArrayList.add(str);
           i += 1;
@@ -439,8 +415,12 @@ public class AdvertisementInfo
         while (i < j)
         {
           String str = (String)paramJSONObject.opt(i);
-          if (QLog.isColorLevel()) {
-            QLog.d("processAdExtraDataInfo", 2, " processAdExtraDataInfo exposureUrl = " + str);
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(" processAdExtraDataInfo exposureUrl = ");
+            localStringBuilder.append(str);
+            QLog.d("processAdExtraDataInfo", 2, localStringBuilder.toString());
           }
           localArrayList.add(str);
           i += 1;
@@ -463,8 +443,12 @@ public class AdvertisementInfo
         while (i < j)
         {
           String str = (String)paramJSONObject.opt(i);
-          if (QLog.isColorLevel()) {
-            QLog.d("processAdExtraDataInfo", 2, " processAdExtraDataInfo videoPlayUrl = " + str);
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(" processAdExtraDataInfo videoPlayUrl = ");
+            localStringBuilder.append(str);
+            QLog.d("processAdExtraDataInfo", 2, localStringBuilder.toString());
           }
           localArrayList.add(str);
           i += 1;
@@ -479,8 +463,12 @@ public class AdvertisementInfo
     if (paramJSONObject.has("pop_sheet"))
     {
       paramJSONObject = new JSONObject(paramJSONObject.optString("pop_sheet")).getString("h5Url");
-      if (QLog.isColorLevel()) {
-        QLog.d("processAdExtraDataInfo", 2, "h5Url = " + paramJSONObject);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("h5Url = ");
+        localStringBuilder.append(paramJSONObject);
+        QLog.d("processAdExtraDataInfo", 2, localStringBuilder.toString());
       }
       this.mPopFormH5Url = paramJSONObject;
     }
@@ -491,18 +479,14 @@ public class AdvertisementInfo
     if (paramJSONObject.has("button_flag"))
     {
       paramJSONObject = paramJSONObject.optString("button_flag", "1");
-      if (QLog.isColorLevel()) {
-        QLog.d("processAdExtraDataInfo", 2, "buttonFlag = " + paramJSONObject);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("buttonFlag = ");
+        localStringBuilder.append(paramJSONObject);
+        QLog.d("processAdExtraDataInfo", 2, localStringBuilder.toString());
       }
-      if (paramJSONObject.equals("0")) {
-        break label72;
-      }
-    }
-    label72:
-    for (boolean bool = true;; bool = false)
-    {
-      this.mShowAdButton = bool;
-      return;
+      this.mShowAdButton = (paramJSONObject.equals("0") ^ true);
     }
   }
   
@@ -531,9 +515,17 @@ public class AdvertisementInfo
       if (TextUtils.isEmpty(this.amsNfbUrl)) {
         this.amsNfbUrl = paramString.optString("amsNfbUrl");
       }
+      if (TextUtils.isEmpty(this.originalExposureUrl)) {
+        this.originalExposureUrl = paramString.optString("original_exposure_url");
+      }
       return;
     }
     catch (Throwable paramString) {}
+  }
+  
+  public int describeContents()
+  {
+    return 0;
   }
   
   public int getAdbf()
@@ -550,14 +542,16 @@ public class AdvertisementInfo
     if (!TextUtils.isEmpty(this.amsNfbUrl)) {
       return this.amsNfbUrl;
     }
-    if ((this.mAdvertisementSoftInfo != null) && (!TextUtils.isEmpty(this.mAdvertisementSoftInfo.V)))
+    Object localObject = this.mAdvertisementSoftInfo;
+    if ((localObject != null) && (!TextUtils.isEmpty(((AdvertisementSoftInfo)localObject).W)))
     {
-      this.amsNfbUrl = this.mAdvertisementSoftInfo.V;
+      this.amsNfbUrl = this.mAdvertisementSoftInfo.W;
       return this.amsNfbUrl;
     }
-    if ((this.gameAdComData != null) && (!TextUtils.isEmpty(this.gameAdComData.F)))
+    localObject = this.gameAdComData;
+    if ((localObject != null) && (!TextUtils.isEmpty(((GameAdComData)localObject).H)))
     {
-      this.amsNfbUrl = this.gameAdComData.F;
+      this.amsNfbUrl = this.gameAdComData.H;
       return this.amsNfbUrl;
     }
     return null;
@@ -570,8 +564,10 @@ public class AdvertisementInfo
   
   public String getExtraParam(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(this.mAdExtInfo))) {
-      return "";
+    if (!TextUtils.isEmpty(paramString)) {
+      if (TextUtils.isEmpty(this.mAdExtInfo)) {
+        return "";
+      }
     }
     try
     {
@@ -580,6 +576,12 @@ public class AdvertisementInfo
     }
     catch (Exception paramString) {}
     return "";
+    return "";
+  }
+  
+  protected IVideoCardUIModel getLazyModel()
+  {
+    return ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getVideoCardUIModel(this);
   }
   
   public String getLiujinReportUrl()
@@ -588,14 +590,16 @@ public class AdvertisementInfo
     if (!TextUtils.isEmpty(this.liujinReportUrl)) {
       return this.liujinReportUrl;
     }
-    if ((this.mAdvertisementSoftInfo != null) && (!TextUtils.isEmpty(this.mAdvertisementSoftInfo.T)))
+    Object localObject = this.mAdvertisementSoftInfo;
+    if ((localObject != null) && (!TextUtils.isEmpty(((AdvertisementSoftInfo)localObject).U)))
     {
-      this.liujinReportUrl = this.mAdvertisementSoftInfo.T;
+      this.liujinReportUrl = this.mAdvertisementSoftInfo.U;
       return this.liujinReportUrl;
     }
-    if ((this.gameAdComData != null) && (!TextUtils.isEmpty(this.gameAdComData.D)))
+    localObject = this.gameAdComData;
+    if ((localObject != null) && (!TextUtils.isEmpty(((GameAdComData)localObject).F)))
     {
-      this.liujinReportUrl = this.gameAdComData.D;
+      this.liujinReportUrl = this.gameAdComData.F;
       return this.liujinReportUrl;
     }
     return null;
@@ -603,10 +607,11 @@ public class AdvertisementInfo
   
   public int getNextAdPosition()
   {
-    if (this.mAdExtInfo != null) {
+    String str = this.mAdExtInfo;
+    if (str != null) {
       try
       {
-        int i = new JSONObject(this.mAdExtInfo).optInt("next_ad_position");
+        int i = new JSONObject(str).optInt("next_ad_position");
         return i;
       }
       catch (Exception localException)
@@ -617,18 +622,25 @@ public class AdvertisementInfo
     return 0;
   }
   
+  public PTSComposer.IPTSUpdateDataListener getPTSUpdateDataListener()
+  {
+    return null;
+  }
+  
   public String getPackageName()
   {
     processAdExtInfo(this.mAdExtInfo);
     if (!TextUtils.isEmpty(this.packageName)) {
       return this.packageName;
     }
-    if ((this.mAdvertisementSoftInfo != null) && (!TextUtils.isEmpty(this.mAdvertisementSoftInfo.o)))
+    Object localObject = this.mAdvertisementSoftInfo;
+    if ((localObject != null) && (!TextUtils.isEmpty(((AdvertisementSoftInfo)localObject).o)))
     {
       this.packageName = this.mAdvertisementSoftInfo.o;
       return this.packageName;
     }
-    if ((this.gameAdComData != null) && (!TextUtils.isEmpty(this.gameAdComData.d)))
+    localObject = this.gameAdComData;
+    if ((localObject != null) && (!TextUtils.isEmpty(((GameAdComData)localObject).d)))
     {
       this.packageName = this.gameAdComData.d;
       return this.packageName;
@@ -642,14 +654,16 @@ public class AdvertisementInfo
     if (!TextUtils.isEmpty(this.ticket)) {
       return this.ticket;
     }
-    if ((this.mAdvertisementSoftInfo != null) && (!TextUtils.isEmpty(this.mAdvertisementSoftInfo.U)))
+    Object localObject = this.mAdvertisementSoftInfo;
+    if ((localObject != null) && (!TextUtils.isEmpty(((AdvertisementSoftInfo)localObject).V)))
     {
-      this.ticket = this.mAdvertisementSoftInfo.U;
+      this.ticket = this.mAdvertisementSoftInfo.V;
       return this.ticket;
     }
-    if ((this.gameAdComData != null) && (!TextUtils.isEmpty(this.gameAdComData.E)))
+    localObject = this.gameAdComData;
+    if ((localObject != null) && (!TextUtils.isEmpty(((GameAdComData)localObject).G)))
     {
-      this.ticket = this.gameAdComData.E;
+      this.ticket = this.gameAdComData.G;
       return this.ticket;
     }
     return null;
@@ -657,8 +671,9 @@ public class AdvertisementInfo
   
   public boolean isCommentAd()
   {
-    if (this.mCommentAdParams != null) {
-      return this.mCommentAdParams.jdField_a_of_type_Boolean;
+    CommentAdParams localCommentAdParams = this.mCommentAdParams;
+    if (localCommentAdParams != null) {
+      return localCommentAdParams.jdField_a_of_type_Boolean;
     }
     return false;
   }
@@ -685,13 +700,29 @@ public class AdvertisementInfo
   
   public String logAdString()
   {
-    StringBuilder localStringBuilder = new StringBuilder("AdvertisementInfo[");
-    localStringBuilder.append("mAdMaterialId:" + this.mAdMaterialId).append(",");
-    localStringBuilder.append("mAdKdPos:" + this.mAdKdPos).append(",");
-    localStringBuilder.append("mAdExtInfo:" + this.mAdExtInfo).append(",");
-    localStringBuilder.append("mAdTraceId:" + this.mAdTraceId).append(",");
-    localStringBuilder.append("]");
-    return localStringBuilder.toString();
+    StringBuilder localStringBuilder1 = new StringBuilder("AdvertisementInfo[");
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("mAdMaterialId:");
+    localStringBuilder2.append(this.mAdMaterialId);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder1.append(",");
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("mAdKdPos:");
+    localStringBuilder2.append(this.mAdKdPos);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder1.append(",");
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("mAdExtInfo:");
+    localStringBuilder2.append(this.mAdExtInfo);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder1.append(",");
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("mAdTraceId:");
+    localStringBuilder2.append(this.mAdTraceId);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder1.append(",");
+    localStringBuilder1.append("]");
+    return localStringBuilder1.toString();
   }
   
   public oidb_cmd0x886.AdInfo makeReportAdInfo(int paramInt)
@@ -732,28 +763,34 @@ public class AdvertisementInfo
   
   public void processAdExt(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    try
     {
-      for (;;)
-      {
-        return;
-        try
-        {
-          paramString = new JSONObject(paramString);
-          if (paramString.has("subordinate_product_id")) {
-            this.mSubordinateProductId = paramString.optString("subordinate_product_id");
-          }
-          if (QLog.isColorLevel())
-          {
-            QLog.d("processAdExt", 2, " processAdExt mSubordinateProductId = " + this.mSubordinateProductId);
-            return;
-          }
-        }
-        catch (Exception paramString) {}
+      paramString = new JSONObject(paramString);
+      if (paramString.has("subordinate_product_id")) {
+        this.mSubordinateProductId = paramString.optString("subordinate_product_id");
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("processAdExt", 1, "processAdExt exception " + paramString.toString());
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append(" processAdExt mSubordinateProductId = ");
+        paramString.append(this.mSubordinateProductId);
+        QLog.d("processAdExt", 2, paramString.toString());
+        return;
+      }
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("processAdExt exception ");
+        localStringBuilder.append(paramString.toString());
+        QLog.e("processAdExt", 1, localStringBuilder.toString());
+      }
+    }
   }
   
   public void processAdExtraDataInfo(String paramString)
@@ -778,8 +815,16 @@ public class AdvertisementInfo
       }
       parsePopFormH5Url(paramString);
       parseShowAdButton(paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("processAdExtraDataInfo", 2, " processAdExtraDataInfo mAdCorporateImageName = " + this.mAdCorporateImageName + " mAdTraceId = " + this.mAdTraceId + "c2s_switch = " + this.mC2SSwitch);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" processAdExtraDataInfo mAdCorporateImageName = ");
+        localStringBuilder.append(this.mAdCorporateImageName);
+        localStringBuilder.append(" mAdTraceId = ");
+        localStringBuilder.append(this.mAdTraceId);
+        localStringBuilder.append("c2s_switch = ");
+        localStringBuilder.append(this.mC2SSwitch);
+        QLog.d("processAdExtraDataInfo", 2, localStringBuilder.toString());
       }
       if (paramString.has("phone_component_id")) {
         this.mPhoneComponetId = paramString.optInt("phone_component_id");
@@ -808,7 +853,7 @@ public class AdvertisementInfo
       if (paramString.has("imaxShowSlipAllowMs")) {
         this.mImaxShowSlipAllowMs = paramString.optInt("imaxShowSlipAllowMs", 3000);
       }
-      this.mImaxStyle = ReadInJoyHelper.a("sp_key_ad_imax_style");
+      this.mImaxStyle = ((IRIJCommonService)QRoute.api(IRIJCommonService.class)).getProteusOfflineBid("sp_key_ad_imax_style");
       if ((this.mImaxShowAdType == 1001) && ("1".equals(this.mImaxStyle))) {
         this.isIMaxAndNewStyle = true;
       }
@@ -824,7 +869,10 @@ public class AdvertisementInfo
     }
     catch (Exception paramString)
     {
-      QLog.e("processAdExtraDataInfo", 1, "processAdExtraDataInfo exception " + paramString.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("processAdExtraDataInfo exception ");
+      localStringBuilder.append(paramString.toString());
+      QLog.e("processAdExtraDataInfo", 1, localStringBuilder.toString());
     }
   }
   
@@ -855,7 +903,6 @@ public class AdvertisementInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeLong(this.mAdFetchTime);
     paramParcel.writeInt(this.mAdPosLayout);
     paramParcel.writeLong(this.mAdPosID);
@@ -913,11 +960,12 @@ public class AdvertisementInfo
     paramParcel.writeInt(this.mSoftAdType);
     paramParcel.writeString(this.mSoftAdData);
     paramParcel.writeInt(this.mRevisionVideoType);
+    paramParcel.writeLong(this.mChannelID);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo
  * JD-Core Version:    0.7.0.1
  */

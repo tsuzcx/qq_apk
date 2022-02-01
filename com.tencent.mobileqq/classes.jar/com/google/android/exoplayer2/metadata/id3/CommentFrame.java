@@ -31,39 +31,42 @@ public final class CommentFrame
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (CommentFrame)paramObject;
-    } while ((Util.areEqual(this.description, paramObject.description)) && (Util.areEqual(this.language, paramObject.language)) && (Util.areEqual(this.text, paramObject.text)));
+      return (Util.areEqual(this.description, paramObject.description)) && (Util.areEqual(this.language, paramObject.language)) && (Util.areEqual(this.text, paramObject.text));
+    }
     return false;
   }
   
   public int hashCode()
   {
+    String str = this.language;
     int k = 0;
     int i;
-    if (this.language != null)
-    {
-      i = this.language.hashCode();
-      if (this.description == null) {
-        break label68;
-      }
-    }
-    label68:
-    for (int j = this.description.hashCode();; j = 0)
-    {
-      if (this.text != null) {
-        k = this.text.hashCode();
-      }
-      return (j + (i + 527) * 31) * 31 + k;
+    if (str != null) {
+      i = str.hashCode();
+    } else {
       i = 0;
-      break;
     }
+    str = this.description;
+    int j;
+    if (str != null) {
+      j = str.hashCode();
+    } else {
+      j = 0;
+    }
+    str = this.text;
+    if (str != null) {
+      k = str.hashCode();
+    }
+    return ((527 + i) * 31 + j) * 31 + k;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -75,7 +78,7 @@ public final class CommentFrame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.id3.CommentFrame
  * JD-Core Version:    0.7.0.1
  */

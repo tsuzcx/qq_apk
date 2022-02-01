@@ -2,6 +2,7 @@ package com.tencent.mobileqq.flutter.qqface;
 
 import android.graphics.Bitmap;
 import com.qflutter.qqface.data.QQFaceNativeData;
+import com.qflutter.qqface.data.QQFaceParam;
 import com.qflutter.qqface.loader.QQFaceLoader;
 
 class QFlutterFace$1
@@ -14,12 +15,16 @@ class QFlutterFace$1
     QQFaceNativeData localQQFaceNativeData = new QQFaceNativeData();
     localQQFaceNativeData.setBitmap(paramBitmap);
     localQQFaceNativeData.setPath(paramString);
-    QQFaceLoader.instance().onUpdate(paramDecodeRequest.d, localQQFaceNativeData);
+    paramBitmap = new QQFaceParam();
+    paramBitmap.account = paramDecodeRequest.jdField_a_of_type_JavaLangString;
+    paramBitmap.faceType = paramDecodeRequest.jdField_a_of_type_Int;
+    paramBitmap.faceShape = paramDecodeRequest.b;
+    QQFaceLoader.instance().onUpdate(paramBitmap, localQQFaceNativeData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.qqface.QFlutterFace.1
  * JD-Core Version:    0.7.0.1
  */

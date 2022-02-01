@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.emoticonview;
 
 import com.tencent.mobileqq.app.CameraEmoRoamingObserver;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.emosm.api.ICameraEmotionRoamingDBManagerService;
 import com.tencent.mobileqq.emoticonview.ipc.QQEmoticonMainPanelApp;
-import com.tencent.mobileqq.emoticonview.ipc.proxy.CameraEmotionRoamingDBManagerProxy;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.CameraEmotionRoamingDBManagerServiceProxy;
 import com.tencent.qphone.base.util.QLog;
 
 class EmoticonPanelCameraHelper$2
@@ -11,7 +11,7 @@ class EmoticonPanelCameraHelper$2
 {
   EmoticonPanelCameraHelper$2(EmoticonPanelCameraHelper paramEmoticonPanelCameraHelper) {}
   
-  public void doOnDeleteEmoResult(int paramInt)
+  protected void doOnDeleteEmoResult(int paramInt)
   {
     if (QLog.isColorLevel()) {
       QLog.d("EmoticonPanelCameraHelper", 2, "CameraEmo, doOnDeleteEmoResult");
@@ -28,20 +28,20 @@ class EmoticonPanelCameraHelper$2
     }
     if (paramInt == 0)
     {
-      if ((this.this$0.mPanelController.app != null) && (((CameraEmotionRoamingDBManagerProxy)this.this$0.mPanelController.app.getManager(QQManagerFactory.CAMERA_EMOTION_DB_MANAGER)).getCatchDataCount() > 0)) {
+      if ((((EmoticonPanelController)this.this$0.mPanelController).app != null) && (((CameraEmotionRoamingDBManagerServiceProxy)((EmoticonPanelController)this.this$0.mPanelController).app.getRuntimeService(ICameraEmotionRoamingDBManagerService.class)).getCatchDataCount() > 0)) {
         this.this$0.tryHiddenCameraEmoGuide();
       }
       this.this$0.updateCameraEmoticonPanel();
     }
   }
   
-  public void onCameraEmoInsert()
+  protected void onCameraEmoInsert()
   {
     if (QLog.isColorLevel()) {
       QLog.d("EmoticonPanelCameraHelper", 2, "CameraEmo, onCameraEmoInsert");
     }
     this.this$0.updateCameraEmoticonPanel();
-    if ((this.this$0.mPanelController.app != null) && (((CameraEmotionRoamingDBManagerProxy)this.this$0.mPanelController.app.getManager(QQManagerFactory.CAMERA_EMOTION_DB_MANAGER)).getCatchDataCount() > 0)) {
+    if ((((EmoticonPanelController)this.this$0.mPanelController).app != null) && (((CameraEmotionRoamingDBManagerServiceProxy)((EmoticonPanelController)this.this$0.mPanelController).app.getRuntimeService(ICameraEmotionRoamingDBManagerService.class)).getCatchDataCount() > 0)) {
       this.this$0.tryHiddenCameraEmoGuide();
     }
   }
@@ -57,7 +57,7 @@ class EmoticonPanelCameraHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelCameraHelper.2
  * JD-Core Version:    0.7.0.1
  */

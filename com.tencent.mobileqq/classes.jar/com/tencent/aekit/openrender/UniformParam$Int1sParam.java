@@ -25,13 +25,19 @@ public class UniformParam$Int1sParam
     if (this.handle < 0) {
       return;
     }
-    GLES20.glUniform1iv(this.handle, this.value.length, this.value, 0);
+    paramInt = this.handle;
+    int[] arrayOfInt = this.value;
+    GLES20.glUniform1iv(paramInt, arrayOfInt.length, arrayOfInt, 0);
     GlUtil.checkGlError("FloatParam setParams");
   }
   
   public String toString()
   {
-    return this.name + " = " + this.value;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.name);
+    localStringBuilder.append(" = ");
+    localStringBuilder.append(this.value);
+    return localStringBuilder.toString();
   }
 }
 

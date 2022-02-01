@@ -20,6 +20,11 @@ public class QCircleLogImpl
     QLog.e(paramString1, paramInt, paramString2);
   }
   
+  public void e(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
+  {
+    QLog.e(paramString1, paramInt, paramString2, paramThrowable);
+  }
+  
   public void e(String paramString, int paramInt, Object... paramVarArgs)
   {
     QLog.e(paramString, paramInt, paramVarArgs);
@@ -62,7 +67,7 @@ public class QCircleLogImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.delegateimpl.QCircleLogImpl
  * JD-Core Version:    0.7.0.1
  */

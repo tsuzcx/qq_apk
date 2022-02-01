@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#ffdedede" />
-    <corners android:radius="2.0dip" />
-</shape>
+    <item android:state_enabled="false" android:drawable="@drawable/dso" />
+    <item android:state_enabled="true" android:drawable="@drawable/dsp" />
+</selector>

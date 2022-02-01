@@ -20,39 +20,51 @@ class VideoPlayerView$2
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 2025)
     {
-    }
-    do
-    {
-      return;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView != null)
-      {
-        int i = this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a();
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView$VideoInfoListener.a(i);
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoPlayerView", 2, "PROGRESS_MSG :" + i);
-        }
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2025, 100L);
-      return;
-      if ((this.a.jdField_a_of_type_AndroidWidgetImageView != null) && (this.a.jdField_a_of_type_AndroidWidgetImageView.getParent() != null) && (((ViewGroup)this.a.jdField_a_of_type_AndroidWidgetImageView.getParent()).getChildAt(0) != this.a.jdField_a_of_type_AndroidWidgetImageView))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("VideoPlayerView", 2, "UPDATE_COVER  mPlayer.getCurrentPosition()=" + this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a());
-        }
-        ((ViewGroup)this.a.jdField_a_of_type_AndroidWidgetImageView.getParent()).removeView(this.a.jdField_a_of_type_AndroidWidgetImageView);
-        VideoPlayerView.a(this.a).addView(this.a.jdField_a_of_type_AndroidWidgetImageView, 0, new RelativeLayout.LayoutParams(-1, -1));
-        VideoPlayerView.a(this.a).requestLayout();
+      if (i != 2026) {
         return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("VideoPlayerView", 2, "UPDATE_COVER  2do nothing()=");
+      if ((this.a.ivCover != null) && (this.a.ivCover.getParent() != null) && (((ViewGroup)this.a.ivCover.getParent()).getChildAt(0) != this.a.ivCover))
+      {
+        if (QLog.isColorLevel())
+        {
+          paramMessage = new StringBuilder();
+          paramMessage.append("UPDATE_COVER  mPlayer.getCurrentPosition()=");
+          paramMessage.append(this.a.mPlayer.a());
+          QLog.i("VideoPlayerView", 2, paramMessage.toString());
+        }
+        ((ViewGroup)this.a.ivCover.getParent()).removeView(this.a.ivCover);
+        VideoPlayerView.access$100(this.a).addView(this.a.ivCover, 0, new RelativeLayout.LayoutParams(-1, -1));
+        VideoPlayerView.access$100(this.a).requestLayout();
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("VideoPlayerView", 2, "UPDATE_COVER  2do nothing()=");
+      }
+    }
+    else
+    {
+      if (this.a.mPlayer != null)
+      {
+        i = this.a.mPlayer.a();
+        ((IVideoPlayerView.VideoInfoListener)this.a.mVideoInfoListener).onPlayProgress(i);
+        if (QLog.isColorLevel())
+        {
+          paramMessage = new StringBuilder();
+          paramMessage.append("PROGRESS_MSG :");
+          paramMessage.append(i);
+          QLog.d("VideoPlayerView", 2, paramMessage.toString());
+        }
+      }
+      this.a.mHandler.sendEmptyMessageDelayed(2025, 100L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.VideoPlayerView.2
  * JD-Core Version:    0.7.0.1
  */

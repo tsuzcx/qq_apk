@@ -19,11 +19,14 @@ public class LocationCategoryDetector$Category
   
   private boolean a(String[] paramArrayOfString)
   {
-    String str = null;
-    if (paramArrayOfString.length >= this.jdField_b_of_type_Int) {
-      str = paramArrayOfString[(this.jdField_b_of_type_Int - 1)];
+    int i = paramArrayOfString.length;
+    int j = this.jdField_b_of_type_Int;
+    if (i >= j) {
+      paramArrayOfString = paramArrayOfString[(j - 1)];
+    } else {
+      paramArrayOfString = null;
     }
-    return (str != null) && (str.equals(this.jdField_a_of_type_JavaLangString));
+    return (paramArrayOfString != null) && (paramArrayOfString.equals(this.jdField_a_of_type_JavaLangString));
   }
   
   public int a()
@@ -34,12 +37,22 @@ public class LocationCategoryDetector$Category
   @NonNull
   public String toString()
   {
-    return "Category [statusId=" + this.jdField_a_of_type_Int + ", displayName=" + this.jdField_b_of_type_JavaLangString + ", detectName=" + this.jdField_a_of_type_JavaLangString + ", level=" + this.jdField_b_of_type_Int + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Category [statusId=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", displayName=");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", detectName=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", level=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.auto.location.LocationCategoryDetector.Category
  * JD-Core Version:    0.7.0.1
  */

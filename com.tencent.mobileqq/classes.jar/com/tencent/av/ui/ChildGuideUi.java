@@ -43,23 +43,22 @@ public class ChildGuideUi
     if (QLog.isDevelopLevel()) {
       QLog.d("ChildGuideUi", 2, "initUI");
     }
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if ((localObject != null) && (((WeakReference)localObject).get() != null))
     {
-      AVActivity localAVActivity = (AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localAVActivity != null)
+      localObject = (AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localObject != null)
       {
-        localAVActivity.getLayoutInflater().inflate(2131559806, this.jdField_a_of_type_AndroidViewViewGroup);
-        this.jdField_a_of_type_AndroidContentResResources = localAVActivity.getResources();
+        ((AVActivity)localObject).getLayoutInflater().inflate(2131559683, this.jdField_a_of_type_AndroidViewViewGroup);
+        this.jdField_a_of_type_AndroidContentResResources = ((AVActivity)localObject).getResources();
       }
     }
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131373793));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131373365));
   }
   
   void a(View paramView)
   {
-    switch (paramView.getId())
-    {
-    default: 
+    if (paramView.getId() != 2131373365) {
       return;
     }
     b();
@@ -90,17 +89,25 @@ public class ChildGuideUi
   
   boolean c()
   {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("com.tencent.av.count", 0);
-    String str = "DoubleVideoChildLock_ShowGuide";
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-      str = "DoubleVideoChildLock_ShowGuide" + this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
-    }
-    if (localSharedPreferences.getInt(str, 0) == 0)
+    Object localObject1 = BaseApplicationImpl.getContext();
+    boolean bool = false;
+    Object localObject2 = ((BaseApplication)localObject1).getSharedPreferences("com.tencent.av.count", 0);
+    VideoAppInterface localVideoAppInterface = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+    localObject1 = "DoubleVideoChildLock_ShowGuide";
+    if (localVideoAppInterface != null)
     {
-      localSharedPreferences.edit().putInt(str, 1).commit();
-      return true;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("DoubleVideoChildLock_ShowGuide");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
+      localObject1 = ((StringBuilder)localObject1).toString();
     }
-    return false;
+    if (((SharedPreferences)localObject2).getInt((String)localObject1, 0) == 0)
+    {
+      localObject2 = ((SharedPreferences)localObject2).edit();
+      bool = true;
+      ((SharedPreferences.Editor)localObject2).putInt((String)localObject1, 1).commit();
+    }
+    return bool;
   }
   
   void d() {}
@@ -124,7 +131,7 @@ public class ChildGuideUi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.ChildGuideUi
  * JD-Core Version:    0.7.0.1
  */

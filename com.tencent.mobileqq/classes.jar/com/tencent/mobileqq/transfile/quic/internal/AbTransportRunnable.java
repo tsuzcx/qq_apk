@@ -31,14 +31,13 @@ public abstract class AbTransportRunnable
   
   protected Bundle obtainBundle()
   {
-    if (this.bundle == null) {
+    Bundle localBundle = this.bundle;
+    if (localBundle == null) {
       this.bundle = new Bundle();
+    } else {
+      localBundle.clear();
     }
-    for (;;)
-    {
-      return this.bundle;
-      this.bundle.clear();
-    }
+    return this.bundle;
   }
   
   public void onClose(int paramInt1, int paramInt2, String paramString)
@@ -51,27 +50,39 @@ public abstract class AbTransportRunnable
     localBundle.putInt("ID", paramInt1);
     localBundle.putInt("CODE", paramInt2);
     localBundle.putString("DESC", paramString);
-    this.message.obj = localBundle;
-    handleMessage(this.message);
+    paramString = this.message;
+    paramString.obj = localBundle;
+    handleMessage(paramString);
   }
   
   public void onCompleted(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("quic", 4, "[" + paramInt + "] onCompleted");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("] onCompleted");
+      QLog.d("quic", 4, localStringBuilder.toString());
     }
   }
   
   public void onConnect(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("quic", 4, "[" + paramInt1 + "] onConnect");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append("] onConnect");
+      QLog.d("quic", 4, ((StringBuilder)localObject).toString());
     }
     this.message.what = 1;
-    Bundle localBundle = obtainBundle();
-    localBundle.putInt("ID", paramInt1);
-    this.message.obj = localBundle;
-    handleMessage(this.message);
+    Object localObject = obtainBundle();
+    ((Bundle)localObject).putInt("ID", paramInt1);
+    Message localMessage = this.message;
+    localMessage.obj = localObject;
+    handleMessage(localMessage);
   }
   
   public void onDataReceive(int paramInt1, byte[] paramArrayOfByte, int paramInt2)
@@ -81,13 +92,14 @@ public abstract class AbTransportRunnable
     localBundle.putByteArray("DATA", paramArrayOfByte);
     localBundle.putInt("LEN", paramInt2);
     localBundle.putInt("ID", paramInt1);
-    this.message.obj = localBundle;
-    handleMessage(this.message);
+    paramArrayOfByte = this.message;
+    paramArrayOfByte.obj = localBundle;
+    handleMessage(paramArrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.quic.internal.AbTransportRunnable
  * JD-Core Version:    0.7.0.1
  */

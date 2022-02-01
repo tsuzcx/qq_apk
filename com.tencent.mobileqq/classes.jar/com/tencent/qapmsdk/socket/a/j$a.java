@@ -21,73 +21,71 @@ class j$a
   
   void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (this.g.z) {
-      this.d.write(paramArrayOfByte, paramInt1, paramInt2);
-    }
-    label173:
-    do
+    if (this.g.z)
     {
+      this.d.write(paramArrayOfByte, paramInt1, paramInt2);
       paramArrayOfByte = this.d.toByteArray();
-      for (;;)
+      while (this.i < paramArrayOfByte.length)
       {
         Object localObject;
-        if (this.i < paramArrayOfByte.length)
+        if (this.b == 0L)
         {
-          if (this.b == 0L)
+          localObject = a(paramArrayOfByte);
+          if (!TextUtils.isEmpty((CharSequence)localObject))
           {
-            localObject = a(paramArrayOfByte);
-            if (!TextUtils.isEmpty((CharSequence)localObject))
+            localObject = ((String)localObject).split(";");
+            paramInt1 = 0;
+            localObject = localObject[0];
+            l = 0L;
+            while (paramInt1 < ((String)localObject).length())
             {
-              long l = 0L;
-              localObject = localObject.split(";")[0];
-              paramInt2 = 0;
-              if (paramInt2 < ((String)localObject).length())
+              paramInt2 = localObject.getBytes()[paramInt1];
+              if ((paramInt2 >= 48) && (paramInt2 <= 57))
               {
-                paramInt1 = localObject.getBytes()[paramInt2];
-                if ((paramInt1 >= 48) && (paramInt1 <= 57)) {
-                  paramInt1 -= 48;
+                paramInt2 -= 48;
+              }
+              else
+              {
+                if ((paramInt2 >= 97) && (paramInt2 <= 102)) {
+                  paramInt2 -= 97;
                 }
                 for (;;)
                 {
-                  l = l << 4 | paramInt1;
-                  paramInt2 += 1;
+                  paramInt2 += 10;
                   break;
-                  if ((paramInt1 >= 97) && (paramInt1 <= 102))
-                  {
-                    paramInt1 = paramInt1 - 97 + 10;
+                  if ((paramInt2 < 65) || (paramInt2 > 70)) {
+                    break label179;
                   }
-                  else
-                  {
-                    if ((paramInt1 < 65) || (paramInt1 > 70)) {
-                      break label173;
-                    }
-                    paramInt1 = paramInt1 - 65 + 10;
-                  }
+                  paramInt2 -= 65;
                 }
               }
-              if (l == 0L) {
-                this.h = true;
-              }
-              this.b = l;
+              l = l << 4 | paramInt2;
+              paramInt1 += 1;
             }
+            label179:
+            if (l == 0L) {
+              this.h = true;
+            }
+            this.b = l;
           }
-          if (!this.h) {}
         }
-        else
-        {
+        if (this.h) {
           return;
         }
-        if (this.b != 0L)
+        long l = this.b;
+        if (l != 0L)
         {
-          localObject = a(paramArrayOfByte, (int)this.b);
+          localObject = a(paramArrayOfByte, (int)l);
           this.c += localObject.length;
           this.b -= localObject.length;
         }
       }
-      this.c += paramInt2;
-      this.a -= paramInt2;
-    } while (this.a != 0L);
-    this.h = true;
+    }
+    this.c += paramInt2;
+    this.a -= paramInt2;
+    if (this.a == 0L) {
+      this.h = true;
+    }
   }
   
   byte[] a()
@@ -97,7 +95,7 @@ class j$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.socket.a.j.a
  * JD-Core Version:    0.7.0.1
  */

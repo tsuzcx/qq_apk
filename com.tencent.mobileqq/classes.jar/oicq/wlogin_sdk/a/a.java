@@ -43,79 +43,124 @@ public class a
     tmp60_54[10] = 37;
     tmp60_54;
     ArrayList localArrayList = new ArrayList();
-    int i1 = tmp8_6.length;
-    int i = 0;
+    int m = tmp8_6.length;
     int j = 0;
-    int n = 0;
-    if (n < i1)
+    int k = 0;
+    int i = 0;
+    for (;;)
     {
-      Object localObject = new byte[0];
-      switch (tmp8_6[n])
-      {
-      }
-      for (;;)
-      {
-        int k = j;
-        int m = i;
-        if (localObject.length > 4)
-        {
-          m = i + 1;
-          k = j + localObject.length;
-          localArrayList.add(localObject);
-        }
-        n += 1;
-        i = m;
-        j = k;
+      byte[] arrayOfByte = paramArrayOfByte5;
+      Object localObject2 = paramArrayOfByte4;
+      Object localObject1 = paramArrayOfByte3;
+      if (j >= m) {
         break;
-        localObject = new RegTLV(2);
-        ((RegTLV)localObject).setInt(paramInt1);
-        localObject = ((RegTLV)localObject).getBuf();
-        continue;
-        localObject = new RegTLV(3);
-        ((RegTLV)localObject).setByte(paramByte2);
-        localObject = ((RegTLV)localObject).getBuf();
-        continue;
-        localObject = new RegTLV(10);
-        ((RegTLV)localObject).setData(paramArrayOfByte3, paramArrayOfByte3.length);
-        localObject = ((RegTLV)localObject).getBuf();
-        continue;
-        localObject = new RegTLV(13);
-        ((RegTLV)localObject).setInt(paramInt2);
-        localObject = ((RegTLV)localObject).getBuf();
-        continue;
-        localObject = new RegTLV(14);
-        ((RegTLV)localObject).setData(paramArrayOfByte4, paramArrayOfByte4.length);
-        localObject = ((RegTLV)localObject).getBuf();
-        continue;
-        localObject = new RegTLV(18);
-        ((RegTLV)localObject).setData(paramArrayOfByte5, paramArrayOfByte5.length);
-        localObject = ((RegTLV)localObject).getBuf();
-        continue;
-        localObject = new RegTLV(19);
-        ((RegTLV)localObject).setData(paramArrayOfByte6, paramArrayOfByte6.length);
-        localObject = ((RegTLV)localObject).getBuf();
-        continue;
-        localObject = new RegTLV(20);
-        ((RegTLV)localObject).setData(paramArrayOfByte7, paramArrayOfByte7.length);
-        localObject = ((RegTLV)localObject).getBuf();
-        continue;
-        localObject = new RegTLV(23);
-        ((RegTLV)localObject).setByte((byte)5);
-        localObject = ((RegTLV)localObject).getBuf();
-        continue;
-        localObject = new RegTLV(24);
-        ((RegTLV)localObject).setData(t.K, t.K.length);
-        localObject = ((RegTLV)localObject).getBuf();
-        continue;
-        localObject = new RegTLV(37);
-        ((RegTLV)localObject).setShort(t.aA);
-        localObject = ((RegTLV)localObject).getBuf();
       }
+      int n = tmp8_6[j];
+      if (n != 2)
+      {
+        if (n != 3)
+        {
+          if (n != 10)
+          {
+            if (n != 37)
+            {
+              if (n != 13)
+              {
+                if (n != 14)
+                {
+                  if (n != 23)
+                  {
+                    if (n != 24)
+                    {
+                      switch (n)
+                      {
+                      default: 
+                        localObject1 = new byte[0];
+                        break;
+                      case 20: 
+                        localObject1 = new RegTLV(20);
+                        ((RegTLV)localObject1).setData(paramArrayOfByte7, paramArrayOfByte7.length);
+                        localObject1 = ((RegTLV)localObject1).getBuf();
+                        break;
+                      case 19: 
+                        localObject1 = new RegTLV(19);
+                        ((RegTLV)localObject1).setData(paramArrayOfByte6, paramArrayOfByte6.length);
+                        localObject1 = ((RegTLV)localObject1).getBuf();
+                        break;
+                      case 18: 
+                        localObject1 = new RegTLV(18);
+                        ((RegTLV)localObject1).setData(arrayOfByte, arrayOfByte.length);
+                        localObject1 = ((RegTLV)localObject1).getBuf();
+                        break;
+                      }
+                    }
+                    else
+                    {
+                      localObject1 = new RegTLV(24);
+                      ((RegTLV)localObject1).setData(t.K, t.K.length);
+                      localObject1 = ((RegTLV)localObject1).getBuf();
+                    }
+                  }
+                  else
+                  {
+                    localObject1 = new RegTLV(23);
+                    ((RegTLV)localObject1).setByte((byte)5);
+                    localObject1 = ((RegTLV)localObject1).getBuf();
+                  }
+                }
+                else
+                {
+                  localObject1 = new RegTLV(14);
+                  ((RegTLV)localObject1).setData((byte[])localObject2, localObject2.length);
+                  localObject1 = ((RegTLV)localObject1).getBuf();
+                }
+              }
+              else
+              {
+                localObject1 = new RegTLV(13);
+                ((RegTLV)localObject1).setInt(paramInt2);
+                localObject1 = ((RegTLV)localObject1).getBuf();
+              }
+            }
+            else
+            {
+              localObject1 = new RegTLV(37);
+              ((RegTLV)localObject1).setShort(t.aA);
+              localObject1 = ((RegTLV)localObject1).getBuf();
+            }
+          }
+          else
+          {
+            localObject2 = new RegTLV(10);
+            ((RegTLV)localObject2).setData((byte[])localObject1, localObject1.length);
+            localObject1 = ((RegTLV)localObject2).getBuf();
+          }
+        }
+        else
+        {
+          localObject1 = new RegTLV(3);
+          ((RegTLV)localObject1).setByte(paramByte2);
+          localObject1 = ((RegTLV)localObject1).getBuf();
+        }
+      }
+      else
+      {
+        localObject1 = new RegTLV(2);
+        ((RegTLV)localObject1).setInt(paramInt1);
+        localObject1 = ((RegTLV)localObject1).getBuf();
+      }
+      if (localObject1.length > 4)
+      {
+        i += 1;
+        k += localObject1.length;
+        localArrayList.add(localObject1);
+      }
+      j += 1;
     }
-    paramArrayOfByte3 = new byte[j + 2];
+    paramArrayOfByte3 = new byte[k + 2];
     util.int16_to_buf(paramArrayOfByte3, 0, (short)i);
-    j = 2;
     paramInt2 = 0;
+    j = 2;
     while (paramInt2 < i)
     {
       paramArrayOfByte4 = (byte[])localArrayList.get(paramInt2);
@@ -134,29 +179,40 @@ public class a
       paramArrayOfByte5.writeShort(paramArrayOfByte1.length);
       paramArrayOfByte5.write(paramArrayOfByte1);
       paramArrayOfByte1 = cryptor.encrypt(paramArrayOfByte3, 0, paramArrayOfByte3.length, paramArrayOfByte2);
-      if (paramArrayOfByte1 == null)
+      if (paramArrayOfByte1 == null) {}
+      try
       {
         util.LOGI("encrypt failed", "");
         return null;
       }
+      catch (Exception paramArrayOfByte1) {}
       paramArrayOfByte5.writeShort(paramArrayOfByte1.length);
       paramArrayOfByte5.write(paramArrayOfByte1);
       paramArrayOfByte1 = paramArrayOfByte4.toByteArray();
       paramArrayOfByte5.close();
       paramArrayOfByte4.close();
-      paramArrayOfByte1 = a(paramArrayOfByte1);
-      return paramArrayOfByte1;
+      try
+      {
+        paramArrayOfByte1 = a(paramArrayOfByte1);
+        return paramArrayOfByte1;
+      }
+      catch (Exception paramArrayOfByte1) {}
+      paramArrayOfByte2 = new StringBuilder();
     }
-    catch (Exception paramArrayOfByte1)
-    {
-      util.LOGI("getRequest failed " + paramArrayOfByte1.getMessage(), "" + paramLong);
-    }
+    catch (Exception paramArrayOfByte1) {}
+    paramArrayOfByte2.append("getRequest failed ");
+    paramArrayOfByte2.append(paramArrayOfByte1.getMessage());
+    paramArrayOfByte1 = paramArrayOfByte2.toString();
+    paramArrayOfByte2 = new StringBuilder();
+    paramArrayOfByte2.append("");
+    paramArrayOfByte2.append(paramLong);
+    util.LOGI(paramArrayOfByte1, paramArrayOfByte2.toString());
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.a.a
  * JD-Core Version:    0.7.0.1
  */

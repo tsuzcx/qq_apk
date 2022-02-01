@@ -1,330 +1,320 @@
 package com.tencent.turingfd.sdk.xq;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.net.NetworkInfo.State;
-import android.os.Build.VERSION;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.InetSocketAddress;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.Proxy;
-import java.net.Proxy.Type;
-import java.net.URL;
-import java.util.concurrent.atomic.AtomicReference;
+import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
+import javax.xml.parsers.DocumentBuilder;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
 
-public final class throws
-  implements long
+public class throws
 {
-  public throws(String paramString) {}
+  public static final String[] _f = { "px", "dp", "sp", "pt", "in", "mm" };
+  public switch ag;
+  public Map<String, String> bg = new HashMap();
+  public String[] cg;
+  public int[] dg;
+  public int eg;
+  public int fg;
+  public int gg;
+  public int hg;
+  public byte[] mData;
   
-  public long.do a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
+  public Document a(InputStream paramInputStream)
   {
-    paramInt3 = -4000;
-    boolean localboolean = new boolean();
-    Object localObject4 = this.Rf;
-    Object localObject1 = this.get();
-    Object localObject5;
+    switch localswitch = new switch();
+    this.ag = localswitch;
+    this.mData = new byte[paramInputStream.available()];
+    paramInputStream.read(this.mData);
+    paramInputStream.close();
     for (;;)
     {
-      Object localObject2;
-      try
+      int i = this.hg;
+      if (i >= this.mData.length) {
+        break;
+      }
+      i = f(i);
+      if (i != -1)
       {
-        localObject5 = ((ConnectivityManager)((Context)localObject1).getSystemService("connectivity")).getActiveNetworkInfo();
-        if ((localObject5 == null) || ((((NetworkInfo)localObject5).getState() != NetworkInfo.State.CONNECTING) && (((NetworkInfo)localObject5).getState() != NetworkInfo.State.CONNECTED)))
+        if (i != 524291)
         {
-          localObject1 = boolean.do.Rh;
-          if (localObject1 != boolean.do.Rh) {
-            break label223;
-          }
-          paramInt1 = -1052;
-          if (paramInt1 == 0) {
-            break;
-          }
-          if (paramInt1 == 0) {
-            break label826;
-          }
-          return long.do.a(paramInt1, new byte[0]);
-        }
-        if (((NetworkInfo)localObject5).getType() == 1)
-        {
-          localObject1 = boolean.do.Oh;
-          continue;
-        }
-        if (((NetworkInfo)localObject5).getType() == 0)
-        {
-          localObject5 = boolean.j((Context)localObject1);
-          if ((localObject5 != null) && (((String)localObject5).length() > 0) && (boolean.k((Context)localObject1) > 0))
+          int j;
+          if (i != 524672)
           {
-            localObject1 = boolean.do.Ph;
-            continue;
-          }
-          localObject1 = boolean.do.Qh;
-          continue;
-        }
-        localObject1 = boolean.do.Qh;
-        continue;
-        if (!((String)localObject2).contains("ACCESS_NETWORK_STATE")) {
-          break label1001;
-        }
-      }
-      catch (Throwable localThrowable1)
-      {
-        localObject2 = localThrowable1.getMessage();
-        if (localObject2 == null) {
-          break label1001;
-        }
-      }
-      paramInt1 = 1;
-      label203:
-      if (paramInt1 != 0)
-      {
-        localObject2 = boolean.do.Oh;
-      }
-      else
-      {
-        localObject2 = boolean.do.Rh;
-        continue;
-        try
-        {
-          label223:
-          localObject4 = new URL((String)localObject4);
-          if (localObject2 == boolean.do.Ph) {}
-          for (localboolean.Sf = ((HttpURLConnection)((URL)localObject4).openConnection(new Proxy(Proxy.Type.HTTP, InetSocketAddress.createUnresolved(boolean.j(this.get()), boolean.k(this.get())))));; localboolean.Sf = ((HttpURLConnection)((URL)localObject4).openConnection()))
-          {
-            localboolean.Sf.setReadTimeout(15000);
-            localboolean.Sf.setConnectTimeout(15000);
-            paramInt1 = 0;
-            break;
-          }
-        }
-        catch (MalformedURLException localMalformedURLException)
-        {
-          localMalformedURLException.printStackTrace();
-          paramInt1 = -1053;
-        }
-        catch (Throwable localThrowable2)
-        {
-          localThrowable2.printStackTrace();
-          paramInt1 = -1000;
-        }
-        catch (IOException localIOException1)
-        {
-          Bergamot.getInstance().a(localIOException1);
-          localIOException1.printStackTrace();
-          paramInt1 = -1056;
-        }
-        catch (UnsupportedOperationException localUnsupportedOperationException)
-        {
-          localUnsupportedOperationException.printStackTrace();
-          paramInt1 = -1059;
-        }
-        catch (SecurityException localSecurityException)
-        {
-          localSecurityException.printStackTrace();
-          paramInt1 = -1058;
-        }
-        catch (IllegalArgumentException localIllegalArgumentException)
-        {
-          localIllegalArgumentException.printStackTrace();
-          paramInt1 = -1057;
-        }
-      }
-    }
-    localboolean.Tf = false;
-    for (;;)
-    {
-      label639:
-      int i;
-      try
-      {
-        for (;;)
-        {
-          paramInt1 = paramArrayOfByte.length;
-          localboolean.Sf.setDoOutput(true);
-          localboolean.Sf.setDoInput(true);
-          localboolean.Sf.setUseCaches(false);
-          localObject3 = localboolean.Sf;
-          ((HttpURLConnection)localObject3).setRequestMethod("POST");
-          localObject3 = localboolean.Sf;
-          ((HttpURLConnection)localObject3).setRequestProperty("Pragma", "no-cache");
-          localObject3 = localboolean.Sf;
-          ((HttpURLConnection)localObject3).setRequestProperty("Cache-Control", "no-cache");
-          localboolean.Sf.setInstanceFollowRedirects(false);
-          localObject3 = localboolean.Sf;
-          ((HttpURLConnection)localObject3).setRequestProperty("User-Agent", "QQPimSecure");
-          localObject3 = localboolean.Sf;
-          ((HttpURLConnection)localObject3).setRequestProperty("Accept", "*/*");
-          localObject3 = localboolean.Sf;
-          ((HttpURLConnection)localObject3).setRequestProperty("Accept-Charset", "utf-8");
-          localObject3 = localboolean.Sf;
-          ((HttpURLConnection)localObject3).setRequestProperty("Content-Type", "application/octet-stream");
-          localObject3 = localboolean.Sf;
-          localObject4 = new StringBuilder();
-          ((HttpURLConnection)localObject3).setRequestProperty("Content-length", "" + paramInt1);
-          try
-          {
-            if ((Build.VERSION.SDK != null) && (Build.VERSION.SDK_INT > 13))
+            Object localObject1;
+            int k;
+            Object localObject2;
+            int m;
+            int n;
+            int i1;
+            int i2;
+            if (i != 1835009)
             {
-              localObject3 = localboolean.Sf;
-              ((HttpURLConnection)localObject3).setRequestProperty("Connection", "close");
+              switch (i)
+              {
+              default: 
+                this.hg += 4;
+                break;
+              case 1048836: 
+                paramInputStream = getString(f(this.hg + 16));
+                localObject1 = this.ag;
+                ((Node)((switch)localObject1).Yf.peek()).appendChild(((switch)localObject1).Zf.createCDATASection(paramInputStream));
+                this.hg += 28;
+                break;
+              case 1048835: 
+                i = f(this.hg + 16);
+                getString(f(this.hg + 20));
+                if (i != -1) {
+                  getString(i);
+                }
+                this.ag.Yf.pop();
+                this.hg += 24;
+                break;
+              case 1048834: 
+                i = f(this.hg + 16);
+                k = f(this.hg + 20);
+                j = this.hg + 28;
+                paramInputStream = this.mData;
+                j = 0xFF00 & paramInputStream[(j + 1)] << 8 | paramInputStream[(j + 0)] << 0 & 0xFF;
+                String str = getString(k);
+                if (i == -1) {
+                  paramInputStream = "";
+                }
+                do
+                {
+                  localObject2 = str;
+                  localObject1 = paramInputStream;
+                  break;
+                  localObject1 = getString(i);
+                  paramInputStream = (InputStream)localObject1;
+                } while (!this.bg.containsKey(localObject1));
+                paramInputStream = new StringBuilder();
+                paramInputStream.append((String)this.bg.get(localObject1));
+                paramInputStream.append(':');
+                paramInputStream.append(str);
+                localObject2 = paramInputStream.toString();
+                this.hg += 36;
+                static[] arrayOfstatic = new static[j];
+                i = 0;
+                while (i < j)
+                {
+                  k = f(this.hg);
+                  m = f(this.hg + 4);
+                  n = f(this.hg + 8);
+                  i1 = f(this.hg + 12);
+                  i2 = f(this.hg + 16);
+                  static localstatic = new static();
+                  localstatic.mName = getString(m);
+                  if (k == -1)
+                  {
+                    localstatic.g(null);
+                    localstatic.setPrefix(null);
+                  }
+                  else
+                  {
+                    paramInputStream = getString(k);
+                    if (this.bg.containsKey(paramInputStream))
+                    {
+                      localstatic.g(paramInputStream);
+                      localstatic.setPrefix((String)this.bg.get(paramInputStream));
+                    }
+                  }
+                  if (n == -1)
+                  {
+                    switch (i1)
+                    {
+                    default: 
+                      paramInputStream = String.format("%08X/0x%08X", new Object[] { Integer.valueOf(i1), Integer.valueOf(i2) });
+                      break;
+                    case 469762056: 
+                    case 486539272: 
+                      paramInputStream = String.format("#%08X", new Object[] { Integer.valueOf(i2) });
+                      break;
+                    case 301989896: 
+                      boolean bool;
+                      if (i2 != 0) {
+                        bool = true;
+                      } else {
+                        bool = false;
+                      }
+                      paramInputStream = Boolean.toString(bool);
+                      break;
+                    case 268435464: 
+                    case 285212680: 
+                      paramInputStream = Integer.toString(i2);
+                      break;
+                    case 100663304: 
+                      double d = i2;
+                      Double.isNaN(d);
+                      d /= 2147483647.0D;
+                      paramInputStream = new DecimalFormat("#.##%").format(d);
+                      break;
+                    case 83886088: 
+                      paramInputStream = new StringBuilder();
+                      paramInputStream.append(Integer.toString(i2 >> 8));
+                      paramInputStream.append(_f[(i2 & 0xFF)]);
+                      paramInputStream = paramInputStream.toString();
+                      break;
+                    case 67108872: 
+                      paramInputStream = Float.toString(Float.intBitsToFloat(i2));
+                      break;
+                    case 50331656: 
+                      paramInputStream = getString(i2);
+                      break;
+                    case 33554440: 
+                      paramInputStream = String.format("?id/0x%08X", new Object[] { Integer.valueOf(i2) });
+                      break;
+                    case 16777224: 
+                      paramInputStream = String.format("@id/0x%08X", new Object[] { Integer.valueOf(i2) });
+                    }
+                    localstatic.setValue(paramInputStream);
+                  }
+                  else
+                  {
+                    localstatic.setValue(getString(n));
+                  }
+                  arrayOfstatic[i] = localstatic;
+                  this.hg += 20;
+                  i += 1;
+                }
+                this.ag.a((String)localObject1, str, (String)localObject2, arrayOfstatic);
+                break;
+              case 1048833: 
+                a(false);
+                break;
+              case 1048832: 
+                a(true);
+                break;
+              }
             }
-          }
-          catch (Exception localException2)
-          {
-            break label639;
-          }
-          localObject3 = localboolean.Sf.getOutputStream();
-          ((OutputStream)localObject3).write(paramArrayOfByte);
-          ((OutputStream)localObject3).flush();
-          ((OutputStream)localObject3).close();
-          paramInt2 = localboolean.Sf.getResponseCode();
-          if (paramInt2 == 200)
-          {
-            localboolean.Tf = true;
-            paramInt1 = 0;
-            break label1006;
-            paramInt2 = paramInt1;
-            if (i != 0)
+            else
             {
-              localObject3 = Bergamot.getInstance();
-              paramArrayOfByte = localboolean.Sf;
+              k = 0;
+              m = f(this.hg + 4);
+              this.eg = f(this.hg + 8);
+              this.fg = f(this.hg + 12);
+              n = this.hg;
+              i1 = f(n + 20);
+              i2 = f(this.hg + 24);
+              this.cg = new String[this.eg];
+              i = 0;
+              while (i < this.eg)
+              {
+                int i3 = f((i + 7) * 4 + this.hg) + (i1 + n);
+                localObject2 = this.cg;
+                paramInputStream = this.mData;
+                j = i3 + 1;
+                if (paramInputStream[j] == paramInputStream[i3])
+                {
+                  i4 = paramInputStream[i3];
+                  localObject1 = new byte[i4];
+                  j = 0;
+                  for (;;)
+                  {
+                    paramInputStream = (InputStream)localObject1;
+                    if (j >= i4) {
+                      break;
+                    }
+                    localObject1[j] = this.mData[(i3 + 2 + j)];
+                    j += 1;
+                  }
+                }
+                j = paramInputStream[j];
+                int i4 = paramInputStream[i3] & 0xFF | j << 8 & 0xFF00;
+                localObject1 = new byte[i4];
+                j = 0;
+                for (;;)
+                {
+                  paramInputStream = (InputStream)localObject1;
+                  if (j >= i4) {
+                    break;
+                  }
+                  localObject1[j] = this.mData[(j * 2 + (i3 + 2))];
+                  j += 1;
+                }
+                localObject2[i] = new String(paramInputStream);
+                i += 1;
+              }
+              if (i2 > 0)
+              {
+                i = k;
+                while (i < this.fg) {
+                  i += 1;
+                }
+              }
+              this.hg += m;
             }
           }
           else
           {
-            try
+            i = 0;
+            j = f(this.hg + 4);
+            this.gg = (j / 4 - 2);
+            this.dg = new int[this.gg];
+            while (i < this.gg)
             {
-              paramArrayOfByte = paramArrayOfByte.getHeaderField("Location");
-              ((Bergamot)localObject3).f("3", paramArrayOfByte);
-              break;
-              if (paramInt2 == -1)
-              {
-                paramInt1 = -2000;
-                break label1006;
-              }
-              paramInt1 = -2000 - paramInt2;
-              break label1006;
-              i = 0;
+              this.dg[i] = f((i + 2) * 4 + this.hg);
+              i += 1;
             }
-            catch (Exception paramArrayOfByte)
-            {
-              for (;;)
-              {
-                paramArrayOfByte = "";
-              }
-            }
+            this.hg += j;
           }
         }
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-        paramInt1 = -2000;
-      }
-      catch (IOException paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-        paramInt1 = -2056;
-      }
-      catch (ProtocolException paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-        paramInt1 = -2051;
-      }
-      catch (IllegalStateException paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-        paramInt1 = -2061;
-      }
-      catch (IllegalAccessError paramArrayOfByte)
-      {
-        paramInt2 = -2060;
-        paramArrayOfByte.printStackTrace();
-        paramInt1 = paramInt2;
-      }
-      break;
-      label826:
-      localObject4 = new AtomicReference();
-      Object localObject3 = localboolean.Sf;
-      paramInt2 = paramInt3;
-      if (localObject3 != null)
-      {
-        if (localboolean.Tf) {
-          break label873;
-        }
-        paramInt2 = paramInt3;
-      }
-      for (;;)
-      {
-        if (paramInt2 != 0)
+        else
         {
-          return long.do.a(paramInt2, new byte[0]);
-          label873:
-          paramArrayOfByte = null;
-          try
-          {
-            localObject3 = ((HttpURLConnection)localObject3).getInputStream();
-            localObject5 = new ByteArrayOutputStream();
-            for (;;)
-            {
-              paramInt1 = ((InputStream)localObject3).read();
-              if (paramInt1 == -1) {
-                break;
-              }
-              ((ByteArrayOutputStream)localObject5).write(paramInt1);
-            }
-          }
-          catch (IOException localIOException2)
-          {
-            paramInt1 = -4056;
-            localIOException2.printStackTrace();
-            for (;;)
-            {
-              ((AtomicReference)localObject4).set(paramArrayOfByte);
-              paramArrayOfByte = localboolean.Sf;
-              paramInt2 = paramInt1;
-              if (paramArrayOfByte == null) {
-                break;
-              }
-              paramArrayOfByte.disconnect();
-              localboolean.Sf = null;
-              paramInt2 = paramInt1;
-              break;
-              byte[] arrayOfByte = ((ByteArrayOutputStream)localObject5).toByteArray();
-              paramArrayOfByte = arrayOfByte;
-              paramInt1 = 0;
-            }
-          }
-          catch (Exception localException1)
-          {
-            for (;;)
-            {
-              localException1.printStackTrace();
-              paramInt1 = paramInt3;
-            }
-          }
+          paramInputStream = this.ag;
+          paramInputStream.Zf = paramInputStream.mBuilder.newDocument();
+          paramInputStream.Yf.push(paramInputStream.Zf);
+          this.hg += 8;
         }
       }
-      return long.do.a(paramInt2, (byte[])((AtomicReference)localObject4).get());
-      label1001:
-      paramInt1 = 0;
-      break label203;
-      label1006:
-      if ((paramInt2 >= 301) && (paramInt2 <= 305)) {
-        i = 1;
+      else {
+        this.ag.endDocument();
       }
     }
+    this.ag.endDocument();
+    return localswitch.Zf;
+  }
+  
+  public final void a(boolean paramBoolean)
+  {
+    int i = f(this.hg + 16);
+    String str1 = getString(f(this.hg + 20));
+    String str2 = getString(i);
+    if (paramBoolean)
+    {
+      this.ag.startPrefixMapping(str2, str1);
+      this.bg.put(str1, str2);
+    }
+    else
+    {
+      this.ag.b(str2, str1);
+      this.bg.remove(str1);
+    }
+    this.hg += 24;
+  }
+  
+  public final int f(int paramInt)
+  {
+    byte[] arrayOfByte = this.mData;
+    int i = arrayOfByte[(paramInt + 3)];
+    int j = arrayOfByte[(paramInt + 2)];
+    int k = arrayOfByte[(paramInt + 1)];
+    return arrayOfByte[(paramInt + 0)] << 0 & 0xFF | i << 24 & 0xFF000000 | j << 16 & 0xFF0000 | k << 8 & 0xFF00;
+  }
+  
+  public final String getString(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.eg)) {
+      return this.cg[paramInt];
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.throws
  * JD-Core Version:    0.7.0.1
  */

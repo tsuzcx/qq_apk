@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.location.net;
 
 import android.os.Handler;
-import android.util.Pair;
 import com.tencent.mobileqq.location.data.LocationItem;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -9,17 +8,27 @@ import java.util.concurrent.atomic.AtomicBoolean;
 class ReportLocationHandler$1
   implements Runnable
 {
-  ReportLocationHandler$1(ReportLocationHandler paramReportLocationHandler) {}
+  ReportLocationHandler$1(ReportLocationHandler paramReportLocationHandler, int paramInt, String paramString) {}
   
   public void run()
   {
-    if ((!QLog.isColorLevel()) || ((ReportLocationHandler.a(this.this$0) != null) && (ReportLocationHandler.a(this.this$0).a() != null)))
+    QLog.isColorLevel();
+    if ((ReportLocationHandler.a(this.this$0) != null) && (ReportLocationHandler.a(this.this$0).a() != null))
     {
-      ReportLocationHandler.a(this.this$0, ((Integer)ReportLocationHandler.a(this.this$0).a().first).intValue());
-      ReportLocationHandler.a(this.this$0, Long.valueOf(Long.parseLong((String)ReportLocationHandler.a(this.this$0).a().second)));
+      ReportLocationHandler.a(this.this$0, this.jdField_a_of_type_Int);
+      ReportLocationHandler.a(this.this$0, Long.valueOf(Long.parseLong(this.jdField_a_of_type_JavaLangString)));
       LocationItem localLocationItem = ReportLocationHandler.a(this.this$0).a();
-      if (QLog.isColorLevel()) {
-        QLog.d("ReportLocationHandler", 2, new Object[] { "report run: invoked. ", "uinType = [" + ReportLocationHandler.a(this.this$0) + "], sessionUin = [" + ReportLocationHandler.a(this.this$0) + "], locationItem = [" + localLocationItem + "]" });
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("uinType = [");
+        ((StringBuilder)localObject).append(ReportLocationHandler.a(this.this$0));
+        ((StringBuilder)localObject).append("], sessionUin = [");
+        ((StringBuilder)localObject).append(ReportLocationHandler.a(this.this$0));
+        ((StringBuilder)localObject).append("], locationItem = [");
+        ((StringBuilder)localObject).append(localLocationItem);
+        ((StringBuilder)localObject).append("]");
+        QLog.d("ReportLocationHandler", 2, new Object[] { "report run: invoked. ", ((StringBuilder)localObject).toString() });
       }
       if (ReportLocationHandler.a(this.this$0).get())
       {
@@ -28,21 +37,19 @@ class ReportLocationHandler$1
         }
         return;
       }
-      this.this$0.a(ReportLocationHandler.a(this.this$0), ReportLocationHandler.a(this.this$0).longValue(), localLocationItem);
+      Object localObject = this.this$0;
+      ReportLocationHandler.a((ReportLocationHandler)localObject, ReportLocationHandler.a((ReportLocationHandler)localObject), ReportLocationHandler.a(this.this$0).longValue(), localLocationItem);
     }
-    for (;;)
+    else if (QLog.isColorLevel())
     {
-      ReportLocationHandler.a(this.this$0).postDelayed(this, ReportLocationHandler.b());
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReportLocationHandler", 2, new Object[] { "report run: invoked. ", " check null: mLocationCallback: ", ReportLocationHandler.a(this.this$0) });
-      }
+      QLog.d("ReportLocationHandler", 2, new Object[] { "report run: invoked. ", " check null: mLocationCallback: ", ReportLocationHandler.a(this.this$0) });
     }
+    ReportLocationHandler.a(this.this$0).postDelayed(this, ReportLocationHandler.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.net.ReportLocationHandler.1
  * JD-Core Version:    0.7.0.1
  */

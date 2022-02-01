@@ -3,82 +3,82 @@ package com.tencent.mobileqq.fragment;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.QFragment;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import com.tencent.mobileqq.activity.fling.FlingHandler;
+import com.tencent.mobileqq.app.QBaseFragment;
 
 public class QPublicBaseFragment
-  extends QFragment
+  extends QBaseFragment
 {
-  public void a(Activity paramActivity) {}
+  public void beforeFinish() {}
   
-  public void a(Context paramContext, FlingHandler paramFlingHandler) {}
-  
-  public void a(Intent paramIntent) {}
-  
-  public boolean a(int paramInt, KeyEvent paramKeyEvent)
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     return false;
   }
   
-  public boolean a(MotionEvent paramMotionEvent)
+  public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     return false;
   }
   
-  public void b(boolean paramBoolean) {}
+  public void initSideFling(Context paramContext, FlingHandler paramFlingHandler) {}
   
-  public void c(boolean paramBoolean) {}
+  public void initWindowStyleAndAnimation(Activity paramActivity) {}
   
-  public boolean c()
-  {
-    return false;
-  }
-  
-  public boolean d()
+  public boolean isSupportScreenShot()
   {
     return true;
   }
   
-  public boolean d_()
+  public boolean isWrapContent()
   {
     return true;
   }
   
-  public void e() {}
-  
-  public boolean e()
-  {
-    return true;
-  }
-  
-  public void f() {}
-  
-  public boolean f()
-  {
-    return true;
-  }
-  
-  public void g() {}
-  
-  public boolean g()
+  public boolean needDispatchTouchEvent()
   {
     return false;
   }
   
-  public void h() {}
+  public boolean needImmersive()
+  {
+    return true;
+  }
   
-  public boolean h()
+  public boolean needStatusTrans()
+  {
+    return true;
+  }
+  
+  public void onAccountChanged() {}
+  
+  public boolean onBackEvent()
   {
     return false;
   }
   
-  public void i() {}
+  public void onFinish() {}
+  
+  public void onMultiWindowModeChanged(boolean paramBoolean) {}
+  
+  public void onNewIntent(Intent paramIntent) {}
+  
+  public void onPostThemeChanged() {}
+  
+  public void onPreThemeChanged() {}
+  
+  public void onWindowFocusChanged(boolean paramBoolean) {}
+  
+  public boolean overrideFinish()
+  {
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.QPublicBaseFragment
  * JD-Core Version:    0.7.0.1
  */

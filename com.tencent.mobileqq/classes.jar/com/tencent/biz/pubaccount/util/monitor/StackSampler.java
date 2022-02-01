@@ -22,7 +22,8 @@ class StackSampler
     int i = 0;
     while (i < j)
     {
-      localStringBuilder.append(localObject[i].toString()).append("\n");
+      localStringBuilder.append(localObject[i].toString());
+      localStringBuilder.append("\n");
       i += 1;
     }
     if (this.jdField_a_of_type_JavaUtilMap.size() == 100)
@@ -36,23 +37,29 @@ class StackSampler
   public void a(long paramLong1, long paramLong2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-    while (localIterator.hasNext())
+    Object localObject = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
       long l = ((Long)localEntry.getKey()).longValue();
-      if ((l > paramLong1) && (l < paramLong2)) {
-        localStringBuilder.append((String)localEntry.getValue()).append("\n");
+      if ((l > paramLong1) && (l < paramLong2))
+      {
+        localStringBuilder.append((String)localEntry.getValue());
+        localStringBuilder.append("\n");
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("FPSMonitor", 2, "printStackTrace: " + localStringBuilder.toString());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("printStackTrace: ");
+      ((StringBuilder)localObject).append(localStringBuilder.toString());
+      QLog.d("FPSMonitor", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.monitor.StackSampler
  * JD-Core Version:    0.7.0.1
  */

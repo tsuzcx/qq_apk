@@ -18,20 +18,22 @@ class ViewPropertyAnimatorCompat$ViewPropertyAnimatorListenerApi14
   public void onAnimationCancel(View paramView)
   {
     Object localObject = paramView.getTag(2113929216);
-    if ((localObject instanceof ViewPropertyAnimatorListener)) {}
-    for (localObject = (ViewPropertyAnimatorListener)localObject;; localObject = null)
-    {
-      if (localObject != null) {
-        ((ViewPropertyAnimatorListener)localObject).onAnimationCancel(paramView);
-      }
-      return;
+    if ((localObject instanceof ViewPropertyAnimatorListener)) {
+      localObject = (ViewPropertyAnimatorListener)localObject;
+    } else {
+      localObject = null;
+    }
+    if (localObject != null) {
+      ((ViewPropertyAnimatorListener)localObject).onAnimationCancel(paramView);
     }
   }
   
   @SuppressLint({"WrongConstant"})
   public void onAnimationEnd(View paramView)
   {
-    if (this.mVpa.mOldLayerType > -1)
+    int i = this.mVpa.mOldLayerType;
+    ViewPropertyAnimatorListener localViewPropertyAnimatorListener = null;
+    if (i > -1)
     {
       paramView.setLayerType(this.mVpa.mOldLayerType, null);
       this.mVpa.mOldLayerType = -1;
@@ -44,26 +46,23 @@ class ViewPropertyAnimatorCompat$ViewPropertyAnimatorListenerApi14
         this.mVpa.mEndAction = null;
         ((Runnable)localObject).run();
       }
-      localObject = paramView.getTag(2113929216);
-      if (!(localObject instanceof ViewPropertyAnimatorListener)) {
-        break label114;
+      Object localObject = paramView.getTag(2113929216);
+      if ((localObject instanceof ViewPropertyAnimatorListener)) {
+        localViewPropertyAnimatorListener = (ViewPropertyAnimatorListener)localObject;
       }
-    }
-    label114:
-    for (Object localObject = (ViewPropertyAnimatorListener)localObject;; localObject = null)
-    {
-      if (localObject != null) {
-        ((ViewPropertyAnimatorListener)localObject).onAnimationEnd(paramView);
+      if (localViewPropertyAnimatorListener != null) {
+        localViewPropertyAnimatorListener.onAnimationEnd(paramView);
       }
       this.mAnimEndCalled = true;
-      return;
     }
   }
   
   public void onAnimationStart(View paramView)
   {
     this.mAnimEndCalled = false;
-    if (this.mVpa.mOldLayerType > -1) {
+    int i = this.mVpa.mOldLayerType;
+    ViewPropertyAnimatorListener localViewPropertyAnimatorListener = null;
+    if (i > -1) {
       paramView.setLayerType(2, null);
     }
     if (this.mVpa.mStartAction != null)
@@ -73,19 +72,17 @@ class ViewPropertyAnimatorCompat$ViewPropertyAnimatorListenerApi14
       ((Runnable)localObject).run();
     }
     Object localObject = paramView.getTag(2113929216);
-    if ((localObject instanceof ViewPropertyAnimatorListener)) {}
-    for (localObject = (ViewPropertyAnimatorListener)localObject;; localObject = null)
-    {
-      if (localObject != null) {
-        ((ViewPropertyAnimatorListener)localObject).onAnimationStart(paramView);
-      }
-      return;
+    if ((localObject instanceof ViewPropertyAnimatorListener)) {
+      localViewPropertyAnimatorListener = (ViewPropertyAnimatorListener)localObject;
+    }
+    if (localViewPropertyAnimatorListener != null) {
+      localViewPropertyAnimatorListener.onAnimationStart(paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.view.ViewPropertyAnimatorCompat.ViewPropertyAnimatorListenerApi14
  * JD-Core Version:    0.7.0.1
  */

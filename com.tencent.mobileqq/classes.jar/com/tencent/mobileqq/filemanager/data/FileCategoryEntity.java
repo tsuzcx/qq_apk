@@ -17,49 +17,40 @@ public class FileCategoryEntity
   
   public static int a(int paramInt)
   {
+    int i = 2131692584;
+    if (paramInt != 23) {}
     switch (paramInt)
     {
-    case 1: 
-    case 12: 
-    case 13: 
-    case 14: 
-    case 15: 
-    case 16: 
-    case 17: 
-    case 18: 
-    case 19: 
-    case 20: 
-    case 21: 
-    case 22: 
     default: 
-      return 2131692364;
-    case 2: 
-      return 2131692433;
-    case 3: 
-      return 2131692355;
-    case 4: 
-      return 2131692334;
-    case 5: 
-      return 2131692372;
-    case 6: 
-      return 2131692378;
-    case 7: 
-      return 2131692363;
-    case 8: 
-      return 2131692390;
+      return 2131692584;
     case 11: 
-      return 2131692389;
-    case 9: 
-      return 2131692376;
+      return 2131692316;
     case 10: 
-      return 2131692375;
+      return 2131692587;
+    case 9: 
+      return 2131692303;
+    case 8: 
+      return 2131692317;
+    case 7: 
+      return 2131692582;
+    case 6: 
+      return 2131698215;
+    case 5: 
+      return 2131692586;
+    case 4: 
+      return 2131692580;
+    case 3: 
+      return 2131692579;
+    case 2: 
+      return 2131692589;
+      i = 2131692278;
     }
-    return 2131692350;
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.FileCategoryEntity
  * JD-Core Version:    0.7.0.1
  */

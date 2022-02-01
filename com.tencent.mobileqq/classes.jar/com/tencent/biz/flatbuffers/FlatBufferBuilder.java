@@ -7,7 +7,7 @@ import java.nio.charset.CharsetEncoder;
 
 public class FlatBufferBuilder
 {
-  static final Charset jdField_a_of_type_JavaNioCharsetCharset;
+  static final Charset jdField_a_of_type_JavaNioCharsetCharset = Charset.forName("UTF-8");
   int jdField_a_of_type_Int;
   ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
   CharsetEncoder jdField_a_of_type_JavaNioCharsetCharsetEncoder = jdField_a_of_type_JavaNioCharsetCharset.newEncoder();
@@ -20,17 +20,6 @@ public class FlatBufferBuilder
   boolean jdField_c_of_type_Boolean = false;
   int jdField_d_of_type_Int = 0;
   int e = 0;
-  
-  static
-  {
-    if (!FlatBufferBuilder.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_d_of_type_Boolean = bool;
-      jdField_a_of_type_JavaNioCharsetCharset = Charset.forName("UTF-8");
-      return;
-    }
-  }
   
   public FlatBufferBuilder()
   {
@@ -56,7 +45,7 @@ public class FlatBufferBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.flatbuffers.FlatBufferBuilder
  * JD-Core Version:    0.7.0.1
  */

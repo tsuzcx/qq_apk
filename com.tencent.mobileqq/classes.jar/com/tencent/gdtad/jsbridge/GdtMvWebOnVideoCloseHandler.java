@@ -8,20 +8,27 @@ class GdtMvWebOnVideoCloseHandler
 {
   public boolean a(GdtAdWebPlugin paramGdtAdWebPlugin, String paramString, String... paramVarArgs)
   {
-    if (paramGdtAdWebPlugin != null) {}
-    for (paramString = paramGdtAdWebPlugin.a(); (paramGdtAdWebPlugin == null) || (paramString == null); paramString = null)
+    if (paramGdtAdWebPlugin != null) {
+      paramString = paramGdtAdWebPlugin.a();
+    } else {
+      paramString = null;
+    }
+    if ((paramGdtAdWebPlugin != null) && (paramString != null))
     {
-      QLog.i("WebGdtMvWebOnVideoCloseHandler", 1, "webPlugin == null || activity == null");
+      paramGdtAdWebPlugin = new StringBuilder();
+      paramGdtAdWebPlugin.append("args=");
+      paramGdtAdWebPlugin.append(Arrays.toString(paramVarArgs));
+      QLog.i("WebGdtMvWebOnVideoCloseHandler", 1, paramGdtAdWebPlugin.toString());
+      a();
       return true;
     }
-    QLog.i("WebGdtMvWebOnVideoCloseHandler", 1, "args=" + Arrays.toString(paramVarArgs));
-    a();
+    QLog.i("WebGdtMvWebOnVideoCloseHandler", 1, "webPlugin == null || activity == null");
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtMvWebOnVideoCloseHandler
  * JD-Core Version:    0.7.0.1
  */

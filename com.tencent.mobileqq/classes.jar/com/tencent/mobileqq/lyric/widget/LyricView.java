@@ -41,7 +41,7 @@ public class LyricView
     return this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll.a(paramMotionEvent);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal.a(paramInt4 - paramInt2);
@@ -64,7 +64,7 @@ public class LyricView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.lyric.widget.LyricView
  * JD-Core Version:    0.7.0.1
  */

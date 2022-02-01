@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class GPS
   extends JceStruct
 {
-  static int cache_eType = 0;
+  static int cache_eType;
   public int eType = 0;
   public int iAlt = -10000000;
   public int iLat = 900000000;
@@ -41,7 +41,7 @@ public final class GPS
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     EncounterSvc.GPS
  * JD-Core Version:    0.7.0.1
  */

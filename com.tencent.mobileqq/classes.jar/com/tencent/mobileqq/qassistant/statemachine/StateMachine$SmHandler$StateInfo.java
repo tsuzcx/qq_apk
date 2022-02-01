@@ -10,16 +10,25 @@ class StateMachine$SmHandler$StateInfo
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("state=").append(this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineState.a()).append(",active=").append(this.jdField_a_of_type_Boolean).append(",parent=");
-    if (this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineStateMachine$SmHandler$StateInfo == null) {}
-    for (String str = "null";; str = this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineStateMachine$SmHandler$StateInfo.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineState.a()) {
-      return str;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("state=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineState.a());
+    localStringBuilder.append(",active=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(",parent=");
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineStateMachine$SmHandler$StateInfo;
+    if (localObject == null) {
+      localObject = "null";
+    } else {
+      localObject = ((StateInfo)localObject).jdField_a_of_type_ComTencentMobileqqQassistantStatemachineState.a();
     }
+    localStringBuilder.append((String)localObject);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.statemachine.StateMachine.SmHandler.StateInfo
  * JD-Core Version:    0.7.0.1
  */

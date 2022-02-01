@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.support.v4.app.FragmentActivity;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.message.MultiMsgProxy;
@@ -37,66 +37,66 @@ class MultiForwardChatPie$LongTextDownloadCallback
   
   public void a(DownCallBack.DownResult paramDownResult)
   {
-    if (this.a == null) {}
-    label409:
-    for (;;)
-    {
+    Object localObject1 = this.a;
+    if (localObject1 == null) {
       return;
-      MultiForwardChatPie localMultiForwardChatPie = (MultiForwardChatPie)this.a.get();
-      if ((localMultiForwardChatPie != null) && (localMultiForwardChatPie.jdField_b_of_type_JavaLangRunnable != null))
-      {
-        MultiForwardChatPie.a(localMultiForwardChatPie).removeCallbacks(localMultiForwardChatPie.jdField_b_of_type_JavaLangRunnable);
-        localMultiForwardChatPie.jdField_b_of_type_JavaLangRunnable = null;
+    }
+    localObject1 = (MultiForwardChatPie)((WeakReference)localObject1).get();
+    if ((localObject1 != null) && (((MultiForwardChatPie)localObject1).jdField_a_of_type_JavaLangRunnable != null))
+    {
+      MultiForwardChatPie.a((MultiForwardChatPie)localObject1).removeCallbacks(((MultiForwardChatPie)localObject1).jdField_a_of_type_JavaLangRunnable);
+      ((MultiForwardChatPie)localObject1).jdField_a_of_type_JavaLangRunnable = null;
+    }
+    if ((paramDownResult.jdField_a_of_type_Int == 0) && (paramDownResult.jdField_a_of_type_ArrayOfByte != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StructLongTextMsg", 2, "MultiForwardActivity.onDownload success");
       }
-      if ((paramDownResult.jdField_a_of_type_Int == 0) && (paramDownResult.jdField_a_of_type_ArrayOfByte != null))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("StructLongTextMsg", 2, "MultiForwardActivity.onDownload success");
-        }
-        if (localMultiForwardChatPie == null) {
-          continue;
-        }
-        Object localObject1 = new HashMap();
-        Object localObject2 = localMultiForwardChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(localMultiForwardChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, localMultiForwardChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localMultiForwardChatPie.jdField_b_of_type_Long);
-        localObject2 = localMultiForwardChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().a(paramDownResult.jdField_a_of_type_ArrayOfByte, (HashMap)localObject1, (MessageRecord)localObject2, null);
-        if ((localObject2 != null) && (((ArrayList)localObject2).size() == 1))
-        {
-          if (((MessageRecord)((ArrayList)localObject2).get(0)).msgtype == -1035) {
-            ((MixedMsgManager)localMultiForwardChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MIXED_MSG_MANAGER)).a(false, localMultiForwardChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-          }
-          MultiMsgManager.a().a((HashMap)localObject1, localMultiForwardChatPie.jdField_b_of_type_Long, localMultiForwardChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          localObject1 = new ArrayList();
-          ((List)localObject1).add((ChatMessage)((ArrayList)localObject2).get(0));
-          localMultiForwardChatPie.b((List)localObject1);
-          localObject1 = ChatActivityUtils.a(MultiForwardChatPie.a(localMultiForwardChatPie), localMultiForwardChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, localMultiForwardChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          localObject1 = ChatActivityUtils.a(localMultiForwardChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext(), localMultiForwardChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageRecord)localObject1, -1L);
-          if (QLog.isColorLevel()) {
-            QLog.d("StructLongTextMsg", 2, "MultiForwardActivity.onDownload, requestReceiveMultiMsg uses " + (System.currentTimeMillis() - MultiForwardChatPie.a(localMultiForwardChatPie)));
-          }
-          localMultiForwardChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new MultiForwardChatPie.LongTextDownloadCallback.1(this, localMultiForwardChatPie, (CharSequence)localObject1));
-        }
-      }
-      for (;;)
-      {
-        if ((localMultiForwardChatPie == null) || (localMultiForwardChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
-          break label409;
-        }
-        ((LongTextMsgManager)localMultiForwardChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.LONG_TEXT_MSG_MANAGER)).a(localMultiForwardChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMultiForwardChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramDownResult.jdField_a_of_type_Int, 2);
+      if (localObject1 == null) {
         return;
-        if (QLog.isColorLevel()) {
-          QLog.d("StructLongTextMsg", 2, "MultiForwardActivity.onDownload failed");
-        }
-        if (localMultiForwardChatPie == null) {
-          break;
-        }
-        localMultiForwardChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new MultiForwardChatPie.LongTextDownloadCallback.2(this, localMultiForwardChatPie));
       }
+      Object localObject2 = new HashMap();
+      Object localObject3 = ((MultiForwardChatPie)localObject1).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(((MultiForwardChatPie)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, ((MultiForwardChatPie)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, ((MultiForwardChatPie)localObject1).jdField_a_of_type_Long);
+      localObject3 = ((MultiForwardChatPie)localObject1).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().a(paramDownResult.jdField_a_of_type_ArrayOfByte, (HashMap)localObject2, (MessageRecord)localObject3, null);
+      if ((localObject3 != null) && (((ArrayList)localObject3).size() == 1))
+      {
+        if (((MessageRecord)((ArrayList)localObject3).get(0)).msgtype == -1035) {
+          ((MixedMsgManager)((MultiForwardChatPie)localObject1).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MIXED_MSG_MANAGER)).a(false, ((MultiForwardChatPie)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+        }
+        MultiMsgManager.a().a((HashMap)localObject2, ((MultiForwardChatPie)localObject1).jdField_a_of_type_Long, ((MultiForwardChatPie)localObject1).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        localObject2 = new ArrayList();
+        ((List)localObject2).add((ChatMessage)((ArrayList)localObject3).get(0));
+        ((MultiForwardChatPie)localObject1).b((List)localObject2);
+        localObject2 = ChatActivityUtils.a(MultiForwardChatPie.a((MultiForwardChatPie)localObject1), ((MultiForwardChatPie)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, ((MultiForwardChatPie)localObject1).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        localObject2 = ChatActivityUtils.a(((MultiForwardChatPie)localObject1).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext(), ((MultiForwardChatPie)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageRecord)localObject2, -1L);
+        if (QLog.isColorLevel())
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("MultiForwardActivity.onDownload, requestReceiveMultiMsg uses ");
+          ((StringBuilder)localObject3).append(System.currentTimeMillis() - MultiForwardChatPie.a((MultiForwardChatPie)localObject1));
+          QLog.d("StructLongTextMsg", 2, ((StringBuilder)localObject3).toString());
+        }
+        ((MultiForwardChatPie)localObject1).jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new MultiForwardChatPie.LongTextDownloadCallback.1(this, (MultiForwardChatPie)localObject1, (CharSequence)localObject2));
+      }
+    }
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StructLongTextMsg", 2, "MultiForwardActivity.onDownload failed");
+      }
+      if (localObject1 == null) {
+        return;
+      }
+      ((MultiForwardChatPie)localObject1).jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new MultiForwardChatPie.LongTextDownloadCallback.2(this, (MultiForwardChatPie)localObject1));
+    }
+    if ((localObject1 != null) && (((MultiForwardChatPie)localObject1).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
+      ((LongTextMsgManager)((MultiForwardChatPie)localObject1).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.LONG_TEXT_MSG_MANAGER)).a(((MultiForwardChatPie)localObject1).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((MultiForwardChatPie)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramDownResult.jdField_a_of_type_Int, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie.LongTextDownloadCallback
  * JD-Core Version:    0.7.0.1
  */

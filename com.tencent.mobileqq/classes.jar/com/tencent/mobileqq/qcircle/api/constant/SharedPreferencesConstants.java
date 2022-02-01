@@ -92,9 +92,14 @@ public abstract interface SharedPreferencesConstants
   public static final String KEY_QCIRCLE_DETAIL_KUOLIE_STICK_GUIDE_BUBBLE = "qcircle_detail_kuolie_stick_guide_bubble";
   public static final String KEY_QCIRCLE_GET_FOLLOWUSER_TIME = "sp_last_getfollowuser_time";
   public static final String KEY_QCIRCLE_NEED_CLIENT_REPORT_SUCCESS_RATE_CMD = "qcircle_need_client_report_success_rate_cmd";
+  public static final String KEY_QCIRCLE_NEED_PERIOD_COLLECT = "qcircle_need_period_collect";
   public static final String KEY_QCIRCLE_PUSH_FUEL_COUNT_TIME = "qcircle_fule_count_push_time";
+  public static final String KEY_QCIRCLE_RELATION_GROUP_TIME = "key_qcircle_relation_group_time";
+  public static final String KEY_QCIRCLE_RELATION_TIME_INTERVAL = "key_qcircle_relation_time_interval";
   public static final String KEY_QCIRCLE_SHOW_KJUOLIE_STICK_BUBBLE = "qcircle_show_kuolie_stick_bubble";
-  public static final String KEY_QCIRCLE_SHOW_MESSAGE_ENTER_GUIDE_TIPS = "qcircle_show_message_enter_guide_tips";
+  public static final String KEY_QCIRCLE_SHOW_LEBATAB_GUIDE_NEW = "qcircle_show_lebatab_guide_new";
+  public static final String KEY_QCIRCLE_SHOW_LEBA_QCIRCLE_ENTER_GUIDE_NEW = "qcircle_show_leba_qcircle_enter_guide_new";
+  public static final String KEY_QCIRCLE_SHOW_MESSAGE_ENTER_GUIDE_ANIM = "qcircle_show_message_enter_guide_anim";
   public static final String KEY_QCIRCLE_SHOW_PUBLISH_FEED_GUIDE_BUBBLE = "qcircle_show_publish_feed_guide_bubble_v2";
   public static final String KEY_QCIRCLE_SHOW_PUBLISH_LABEL_GUIDE_BUBBLE = "qcircle_show_publish_label_guide_bubble";
   public static final String KEY_QCIRCLE_UNREAD_MESSAGE_INFO = "qcircle_unread_message_info";
@@ -198,7 +203,7 @@ public abstract interface SharedPreferencesConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.constant.SharedPreferencesConstants
  * JD-Core Version:    0.7.0.1
  */

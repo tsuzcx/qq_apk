@@ -24,47 +24,43 @@ class HotChatFragment$2
     if ((paramIntent != null) && ("com.tencent.mobileqq.get_banner_rect".equals(paramIntent.getAction())))
     {
       paramContext = paramIntent.getStringExtra("content");
-      if (!TextUtils.isEmpty(paramContext)) {
-        break label31;
+      if (TextUtils.isEmpty(paramContext)) {
+        return;
+      }
+      try
+      {
+        paramContext = new JSONObject(paramContext).getJSONObject("params").getJSONArray("bannerHeight");
+        if (paramContext == null) {
+          return;
+        }
+        float f = this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources().getDisplayMetrics().density;
+        int j = paramContext.length();
+        this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+        int i = 0;
+        while (i < j)
+        {
+          paramIntent = paramContext.getJSONObject(i);
+          Rect localRect = new Rect();
+          localRect.top = ((int)(paramIntent.getInt("top") * f));
+          localRect.bottom = ((int)(paramIntent.getInt("bottom") * f));
+          this.a.jdField_a_of_type_JavaUtilArrayList.add(localRect);
+          i += 1;
+        }
+        this.a.jdField_a_of_type_Boolean = true;
+        return;
+      }
+      catch (JSONException paramContext)
+      {
+        if (QLog.isDevelopLevel()) {
+          paramContext.printStackTrace();
+        }
       }
     }
-    label31:
-    do
-    {
-      for (;;)
-      {
-        return;
-        try
-        {
-          paramContext = new JSONObject(paramContext).getJSONObject("params").getJSONArray("bannerHeight");
-          if (paramContext != null)
-          {
-            float f = this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources().getDisplayMetrics().density;
-            int j = paramContext.length();
-            this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-            int i = 0;
-            while (i < j)
-            {
-              paramIntent = paramContext.getJSONObject(i);
-              Rect localRect = new Rect();
-              localRect.top = ((int)(paramIntent.getInt("top") * f));
-              localRect.bottom = ((int)(paramIntent.getInt("bottom") * f));
-              this.a.jdField_a_of_type_JavaUtilArrayList.add(localRect);
-              i += 1;
-            }
-            this.a.d = true;
-            return;
-          }
-        }
-        catch (JSONException paramContext) {}
-      }
-    } while (!QLog.isDevelopLevel());
-    paramContext.printStackTrace();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.HotChatFragment.2
  * JD-Core Version:    0.7.0.1
  */

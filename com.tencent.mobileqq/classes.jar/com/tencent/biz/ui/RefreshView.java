@@ -40,7 +40,7 @@ public class RefreshView
   @SuppressLint({"InflateParams"})
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(paramContext).inflate(2131559765, null));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(paramContext).inflate(2131559642, null));
     addView(this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader.a(), 0);
     c();
   }
@@ -54,59 +54,62 @@ public class RefreshView
   
   private boolean c()
   {
-    boolean bool2 = false;
     int i = getScrollY();
+    boolean bool1 = false;
+    boolean bool2 = false;
     if (i < 0)
     {
-      if (i <= -a()) {
-        break label92;
-      }
-      if (!this.jdField_a_of_type_Boolean) {
-        break label61;
-      }
-      if ((this.jdField_b_of_type_Int == 0) || (this.jdField_b_of_type_Int == 2)) {
-        this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener.onNotCompleteVisable(0, null, null);
-      }
-    }
-    for (;;)
-    {
-      this.jdField_b_of_type_Int = 1;
-      return false;
-      label61:
-      if ((this.jdField_b_of_type_Int == 1) || (this.jdField_b_of_type_Int == 2)) {
-        this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener.onViewNotCompleteVisableAndReleased(0, null, null);
-      }
-    }
-    label92:
-    boolean bool1;
-    if (this.jdField_a_of_type_Boolean) {
-      if (this.jdField_b_of_type_Int != 0)
+      if (i > -a())
       {
-        bool1 = bool2;
-        if (this.jdField_b_of_type_Int != 1) {}
+        if (this.jdField_a_of_type_Boolean)
+        {
+          i = this.jdField_b_of_type_Int;
+          if ((i == 0) || (i == 2)) {
+            this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener.onNotCompleteVisable(0, null, null);
+          }
+        }
+        else
+        {
+          i = this.jdField_b_of_type_Int;
+          if ((i == 1) || (i == 2)) {
+            this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener.onViewNotCompleteVisableAndReleased(0, null, null);
+          }
+        }
+        this.jdField_b_of_type_Int = 1;
+        return false;
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        i = this.jdField_b_of_type_Int;
+        if (i != 0)
+        {
+          bool1 = bool2;
+          if (i != 1) {}
+        }
+        else
+        {
+          this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener.onViewCompleteVisable(0, null, null);
+          bool1 = bool2;
+        }
       }
       else
       {
-        this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener.onViewCompleteVisable(0, null, null);
         bool1 = bool2;
+        if (this.jdField_b_of_type_Int == 2) {
+          bool1 = this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener.onViewCompleteVisableAndReleased(0, null, null);
+        }
       }
-    }
-    for (;;)
-    {
       this.jdField_b_of_type_Int = 2;
-      return bool1;
-      bool1 = bool2;
-      if (this.jdField_b_of_type_Int == 2) {
-        bool1 = this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener.onViewCompleteVisableAndReleased(0, null, null);
-      }
     }
+    return bool1;
   }
   
   private void d()
   {
-    if (this.jdField_a_of_type_ComTencentBizUiRefreshView$OnRefreshListener != null)
+    RefreshView.OnRefreshListener localOnRefreshListener = this.jdField_a_of_type_ComTencentBizUiRefreshView$OnRefreshListener;
+    if (localOnRefreshListener != null)
     {
-      this.jdField_a_of_type_ComTencentBizUiRefreshView$OnRefreshListener.a();
+      localOnRefreshListener.a();
       return;
     }
     a();
@@ -151,7 +154,7 @@ public class RefreshView
     c();
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader.a().layout(0, -this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader.a().getMeasuredHeight(), this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader.a().getMeasuredWidth(), 0);
@@ -168,8 +171,9 @@ public class RefreshView
   
   public void setDelayBeforeScrollBack(long paramLong)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader instanceof PullRefreshHeader)) {
-      ((PullRefreshHeader)this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader).a = paramLong;
+    IPullRefreshHeader localIPullRefreshHeader = this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader;
+    if ((localIPullRefreshHeader instanceof PullRefreshHeader)) {
+      ((PullRefreshHeader)localIPullRefreshHeader).a = paramLong;
     }
   }
   
@@ -186,29 +190,33 @@ public class RefreshView
   
   public final void setHeaderBgColor(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader.setHeaderBgColor(paramInt);
+    IPullRefreshHeader localIPullRefreshHeader = this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader;
+    if (localIPullRefreshHeader != null) {
+      localIPullRefreshHeader.setHeaderBgColor(paramInt);
     }
   }
   
   public final void setHeaderBgDrawable(Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader.setHeaderBgDrawable(paramDrawable);
+    IPullRefreshHeader localIPullRefreshHeader = this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader;
+    if (localIPullRefreshHeader != null) {
+      localIPullRefreshHeader.setHeaderBgDrawable(paramDrawable);
     }
   }
   
   public final void setHeaderBgRes(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader.setHeaderBgRes(paramInt);
+    IPullRefreshHeader localIPullRefreshHeader = this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader;
+    if (localIPullRefreshHeader != null) {
+      localIPullRefreshHeader.setHeaderBgRes(paramInt);
     }
   }
   
   public final void setHeaderTextColor(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader.setTextColor(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
+    IPullRefreshHeader localIPullRefreshHeader = this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader;
+    if (localIPullRefreshHeader != null) {
+      localIPullRefreshHeader.setTextColor(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
     }
   }
   
@@ -227,7 +235,7 @@ public class RefreshView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.ui.RefreshView
  * JD-Core Version:    0.7.0.1
  */

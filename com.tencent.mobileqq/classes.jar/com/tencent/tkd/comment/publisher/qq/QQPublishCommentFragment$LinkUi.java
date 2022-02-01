@@ -9,11 +9,10 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import com.google.gson.Gson;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.tkd.comment.publisher.qq.bridge.QQReportBridge;
+import com.tencent.tkd.comment.publisher.qq.bridge.QQViewBridge;
 import com.tencent.tkd.comment.publisher.qq.model.TkdCommentLinkData;
 import com.tencent.tkd.comment.publisher.qq.model.TkdQQArgument;
-import com.tencent.tkd.comment.publisher.qq.util.TkdQQReport;
-import com.tencent.tkd.comment.publisher.qq.util.TkdQQView;
 import com.tencent.tkd.comment.publisher.qq.widget.TkdCommentLinkView;
 import com.tencent.tkd.comment.publisher.qq.widget.TkdCommentLinkView.OnLinkDeleteLinstener;
 import java.util.List;
@@ -32,24 +31,26 @@ class QQPublishCommentFragment$LinkUi
   
   QQPublishCommentFragment$LinkUi(QQPublishCommentFragment paramQQPublishCommentFragment, Dialog paramDialog)
   {
-    this.vLinkBtn = ((ImageView)paramDialog.findViewById(2131370432));
+    this.vLinkBtn = ((ImageView)paramDialog.findViewById(R.id.x));
     this.vLinkBtn.setOnClickListener(this);
-    this.vCommentLinkLayout = ((FrameLayout)paramDialog.findViewById(2131370442));
-    this.vCommentLinkDivider = paramDialog.findViewById(2131370438);
+    this.vCommentLinkLayout = ((FrameLayout)paramDialog.findViewById(R.id.z));
+    this.vCommentLinkDivider = paramDialog.findViewById(R.id.y);
     this.vCommentLinkLayout.getViewTreeObserver().addOnGlobalLayoutListener(this);
-    this.vCommentLink = ((TkdCommentLinkView)paramDialog.findViewById(2131365085));
+    this.vCommentLink = ((TkdCommentLinkView)paramDialog.findViewById(R.id.l));
     this.vCommentLink.setLinkDeleteLinstener(this);
+    this.vCommentLink.urlImageBridge = paramQQPublishCommentFragment.urlImageBridge;
   }
   
   private void checkShowDivider()
   {
     View localView = this.vCommentLinkDivider;
-    if (this.linkCount > 0) {}
-    for (int i = 0;; i = 8)
-    {
-      localView.setVisibility(i);
-      return;
+    int i;
+    if (this.linkCount > 0) {
+      i = 0;
+    } else {
+      i = 8;
     }
+    localView.setVisibility(i);
   }
   
   private String getLinkR5Data()
@@ -58,41 +59,42 @@ class QQPublishCommentFragment$LinkUi
     try
     {
       localJSONObject.put("os", 1);
-      localJSONObject.put("entry", TkdQQReport.getEntry());
-      localJSONObject.put("comment_level", TkdQQReport.getCommentLevel());
-      return localJSONObject.toString();
+      localJSONObject.put("entry", this.this$0.reportBridge.getEntry());
+      localJSONObject.put("comment_level", this.this$0.reportBridge.getCommentLevel());
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    return localJSONObject.toString();
   }
   
   private void openLink()
   {
-    TkdQQView.openLink(this.vCommentLinkLayout);
-    TkdQQReport.publicAccountReportClickEvent(QQPublishCommentFragment.access$1300(this.this$0), "0X800B085", "0X800B085", "", "", "", getLinkR5Data());
+    this.this$0.viewBridge.openLink(this.vCommentLinkLayout);
+    QQPublishCommentFragment localQQPublishCommentFragment = this.this$0;
+    QQPublishCommentFragment.access$1400(localQQPublishCommentFragment, QQPublishCommentFragment.access$1300(localQQPublishCommentFragment), "0X800B085", "0X800B085", "", "", "", getLinkR5Data());
   }
   
   private void reportDeleteLinkIfNeed(int paramInt1, int paramInt2)
   {
-    if (paramInt1 > paramInt2) {
-      TkdQQReport.publicAccountReportClickEvent(QQPublishCommentFragment.access$1300(this.this$0), "0X800B086", "0X800B086", "", "", "", getLinkR5Data());
+    if (paramInt1 > paramInt2)
+    {
+      QQPublishCommentFragment localQQPublishCommentFragment = this.this$0;
+      QQPublishCommentFragment.access$1400(localQQPublishCommentFragment, QQPublishCommentFragment.access$1300(localQQPublishCommentFragment), "0X800B086", "0X800B086", "", "", "", getLinkR5Data());
     }
   }
   
   void initData()
   {
     ImageView localImageView = this.vLinkBtn;
-    if (QQPublishCommentFragment.access$1200(this.this$0).showLink) {}
-    for (int i = 0;; i = 8)
-    {
-      localImageView.setVisibility(i);
-      return;
+    int i;
+    if (QQPublishCommentFragment.access$1200(this.this$0).showLink) {
+      i = 0;
+    } else {
+      i = 8;
     }
+    localImageView.setVisibility(i);
   }
   
   void onAddLink(TkdCommentLinkData paramTkdCommentLinkData)
@@ -105,10 +107,12 @@ class QQPublishCommentFragment$LinkUi
     if (paramView == this.vLinkBtn) {
       openLink();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public void onDeleteLink() {}
+  public void onDeleteLink()
+  {
+    this.this$0.viewBridge.onDeleteLink();
+  }
   
   void onDestroy()
   {
@@ -117,15 +121,15 @@ class QQPublishCommentFragment$LinkUi
   
   public void onGlobalLayout()
   {
-    View localView = this.vCommentLinkLayout.getChildAt(0);
-    if ((localView instanceof ViewGroup)) {}
-    for (int i = ((ViewGroup)localView).getChildCount();; i = 0)
-    {
-      reportDeleteLinkIfNeed(this.linkCount, i);
-      this.linkCount = i;
-      checkShowDivider();
-      return;
+    Object localObject = this.vCommentLinkLayout;
+    int i = 0;
+    localObject = ((FrameLayout)localObject).getChildAt(0);
+    if ((localObject instanceof ViewGroup)) {
+      i = ((ViewGroup)localObject).getChildCount();
     }
+    reportDeleteLinkIfNeed(this.linkCount, i);
+    this.linkCount = i;
+    checkShowDivider();
   }
   
   void packageDataInfo(JSONObject paramJSONObject)
@@ -138,7 +142,7 @@ class QQPublishCommentFragment$LinkUi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.QQPublishCommentFragment.LinkUi
  * JD-Core Version:    0.7.0.1
  */

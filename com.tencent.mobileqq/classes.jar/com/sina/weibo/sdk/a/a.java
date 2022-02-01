@@ -57,7 +57,9 @@ public final class a
     //   27: aload_1
     //   28: invokevirtual 79	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   31: invokestatic 84	com/sina/weibo/sdk/c/c:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   34: goto -13 -> 21
+    //   34: aload_0
+    //   35: monitorexit
+    //   36: return
     //   37: astore_1
     //   38: aload_0
     //   39: monitorexit
@@ -82,15 +84,12 @@ public final class a
     try
     {
       this.c = WeiboSsoSdk.getInstance().visitorLogin().getAid();
-      return this.c;
     }
     catch (Exception paramContext)
     {
-      for (;;)
-      {
-        c.b("AidManager", paramContext.getMessage());
-      }
+      c.b("AidManager", paramContext.getMessage());
     }
+    return this.c;
   }
 }
 

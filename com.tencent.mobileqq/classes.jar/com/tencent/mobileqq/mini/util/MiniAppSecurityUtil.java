@@ -1,12 +1,10 @@
 package com.tencent.mobileqq.mini.util;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.open.agent.util.AuthorityUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -15,6 +13,7 @@ import java.util.Map;
 
 public class MiniAppSecurityUtil
 {
+  private static final String DEFAULT_SIMPLE_UIN = "0";
   public static final String SAFE_BLOCK_MINIAPP_OPTIMIZATION_TVALUE_HANDLE = "0X800AA17";
   public static final String SAFE_BLOCK_MINIAPP_OPTIMIZATION_TVALUE_QUIT = "0X800AA16";
   public static final String SAFE_BLOCK_MINIAPP_OPTIMIZATION_TVALUE_SHOW = "0X800AA15";
@@ -43,10 +42,10 @@ public class MiniAppSecurityUtil
     {
       if ((!TextUtils.isEmpty(paramString)) && (sMiniAppLoginSecurityList.contains(paramString)))
       {
-        paramString = getLoginMiniAppUin(BaseApplicationImpl.sApplication);
+        paramString = getLoginMiniAppUin(BaseApplication.getContext());
         if (!TextUtils.isEmpty(paramString))
         {
-          boolean bool = TextUtils.isEmpty(getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), paramString));
+          boolean bool = TextUtils.isEmpty(getLoginMiniAppForbidToken(BaseApplication.getContext(), paramString));
           if (!bool) {
             return true;
           }
@@ -55,7 +54,10 @@ public class MiniAppSecurityUtil
     }
     catch (Exception paramString)
     {
-      QLog.e("MiniAppSecurityUtil", 1, "doCheckSafeUnblockWithLogin error: " + paramString.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doCheckSafeUnblockWithLogin error: ");
+      localStringBuilder.append(paramString.getMessage());
+      QLog.e("MiniAppSecurityUtil", 1, localStringBuilder.toString());
     }
     return false;
   }
@@ -64,84 +66,104 @@ public class MiniAppSecurityUtil
   {
     try
     {
-      String str = getLoginMiniAppUin(BaseApplicationImpl.sApplication);
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniAppSecurityUtil", 2, "doClearAfterLoginSuccess uin: " + AuthorityUtil.a(str));
+      String str = getLoginMiniAppUin(BaseApplication.getContext());
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("doClearAfterLoginSuccess uin: ");
+        localStringBuilder.append(getSimpleUin(str));
+        QLog.d("MiniAppSecurityUtil", 2, localStringBuilder.toString());
       }
       if (!TextUtils.isEmpty(str))
       {
-        if (paramBoolean) {
-          QLog.e("MiniAppSecurityUtil", 1, "doClearAfterLoginSuccess, forbid_token: " + getLoginMiniAppForbidToken(BaseApplicationImpl.sApplication, str));
+        if (paramBoolean)
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("doClearAfterLoginSuccess, forbid_token: ");
+          localStringBuilder.append(getLoginMiniAppForbidToken(BaseApplication.getContext(), str));
+          QLog.e("MiniAppSecurityUtil", 1, localStringBuilder.toString());
         }
-        removeLoginMiniAppForbidToken(BaseApplicationImpl.sApplication, str);
-        removeLoginMiniAppUin(BaseApplicationImpl.sApplication);
+        removeLoginMiniAppForbidToken(BaseApplication.getContext(), str);
+        removeLoginMiniAppUin(BaseApplication.getContext());
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
-      QLog.e("MiniAppSecurityUtil", 1, "remove LoginMiniAppData error: " + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("remove LoginMiniAppData error: ");
+      localStringBuilder.append(localException.getMessage());
+      QLog.e("MiniAppSecurityUtil", 1, localStringBuilder.toString());
     }
   }
   
   private static Map<String, String> getArguments(String paramString)
   {
-    int i = 0;
     HashMap localHashMap = new HashMap();
-    for (;;)
+    try
     {
-      try
+      paramString = paramString.split("&");
+      int j = paramString.length;
+      int i = 0;
+      while (i < j)
       {
-        paramString = paramString.split("&");
-        int j = paramString.length;
-        if (i < j)
-        {
-          String[] arrayOfString = paramString[i].split("=");
-          if ((arrayOfString == null) || (arrayOfString.length != 2)) {
-            break label69;
-          }
+        String[] arrayOfString = paramString[i].split("=");
+        if ((arrayOfString != null) && (arrayOfString.length == 2)) {
           localHashMap.put(arrayOfString[0], arrayOfString[1]);
         }
+        i += 1;
       }
-      catch (Exception paramString) {}
       return localHashMap;
-      label69:
-      i += 1;
     }
+    catch (Exception paramString) {}
+    return localHashMap;
   }
   
   public static Map<String, String> getArgumentsFromURL(String paramString)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
     if (paramString != null)
     {
       int i = paramString.indexOf("?");
-      localObject1 = localObject2;
-      if (-1 != i) {
-        localObject1 = getArguments(paramString.substring(i + 1));
+      if (-1 != i)
+      {
+        paramString = getArguments(paramString.substring(i + 1));
+        break label32;
       }
     }
-    paramString = (String)localObject1;
-    if (localObject1 == null) {
-      paramString = new HashMap();
+    paramString = null;
+    label32:
+    Object localObject = paramString;
+    if (paramString == null) {
+      localObject = new HashMap();
     }
-    return paramString;
+    return localObject;
   }
   
   public static String getLoginMiniAppForbidToken(Context paramContext, String paramString)
   {
     try
     {
-      paramContext = paramContext.getSharedPreferences("MiniAppSecurityUtil_Shared_Prefs", 4).getString(paramString + "_" + "kLoginMiniAppForbidToken", "");
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniAppSecurityUtil", 2, "getLoginMiniAppForbidToken uin: " + AuthorityUtil.a(paramString));
+      paramContext = paramContext.getSharedPreferences("MiniAppSecurityUtil_Shared_Prefs", 4);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("_");
+      localStringBuilder.append("kLoginMiniAppForbidToken");
+      paramContext = paramContext.getString(localStringBuilder.toString(), "");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getLoginMiniAppForbidToken uin: ");
+        localStringBuilder.append(getSimpleUin(paramString));
+        QLog.d("MiniAppSecurityUtil", 2, localStringBuilder.toString());
       }
       return paramContext;
     }
     catch (Exception paramContext)
     {
-      QLog.e("MiniAppSecurityUtil", 1, "getLoginMiniAppForbidToken error: " + paramContext.getMessage());
+      paramString = new StringBuilder();
+      paramString.append("getLoginMiniAppForbidToken error: ");
+      paramString.append(paramContext.getMessage());
+      QLog.e("MiniAppSecurityUtil", 1, paramString.toString());
     }
     return "";
   }
@@ -155,35 +177,26 @@ public class MiniAppSecurityUtil
     }
     catch (Exception paramContext)
     {
-      QLog.e("MiniAppSecurityUtil", 1, "getLoginMiniAppUin error: " + paramContext.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getLoginMiniAppUin error: ");
+      localStringBuilder.append(paramContext.getMessage());
+      QLog.e("MiniAppSecurityUtil", 1, localStringBuilder.toString());
     }
     return "";
   }
   
-  public static void modifyIntentDataWithoutLogin(Intent paramIntent, String paramString)
+  private static String getSimpleUin(String paramString)
   {
-    if ((paramIntent != null) && (doCheckSafeUnblockWithLogin(paramString)))
+    try
     {
-      paramIntent.putExtra("isOpenMonitorPanel", false);
-      paramIntent.putExtra("debugEnable", false);
-      paramIntent.putExtra("showDebug", false);
-      paramIntent.putExtra("showMonitor", false);
-      paramIntent.putExtra("showShareQQ", false);
-      paramIntent.putExtra("showShareQzone", false);
-      paramIntent.putExtra("showShareWeChatFriends", false);
-      paramIntent.putExtra("showShareWeChatMoment", false);
-      paramIntent.putExtra("topType", -11);
-      paramIntent.putExtra("showDetail", true);
-      paramIntent.putExtra("showSetting", false);
-      paramIntent.putExtra("showComplaint", true);
-      paramIntent.putExtra("addShortcut", false);
-      paramIntent.putExtra("showBackHome", -1);
-      paramIntent.putExtra("key_color_note", 0);
-      paramIntent.putExtra("isSpecialMiniApp", false);
-      paramIntent.putExtra("showKingcardTip", false);
-      paramIntent.putExtra("showChatNewsList", false);
-      paramIntent.putExtra("showRestartMiniApp", false);
+      if (TextUtils.isEmpty(paramString)) {
+        return "0";
+      }
+      paramString = paramString.substring(paramString.length() - 4);
+      return paramString;
     }
+    catch (Exception paramString) {}
+    return "0";
   }
   
   public static void removeLoginMiniAppForbidToken(Context paramContext, String paramString)
@@ -191,13 +204,20 @@ public class MiniAppSecurityUtil
     try
     {
       paramContext = paramContext.getSharedPreferences("MiniAppSecurityUtil_Shared_Prefs", 4).edit();
-      paramContext.remove(paramString + "_" + "kLoginMiniAppForbidToken");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("_");
+      localStringBuilder.append("kLoginMiniAppForbidToken");
+      paramContext.remove(localStringBuilder.toString());
       paramContext.commit();
       return;
     }
     catch (Exception paramContext)
     {
-      QLog.e("MiniAppSecurityUtil", 1, "removeLoginMiniAppForbidToken error: " + paramContext.getMessage());
+      paramString = new StringBuilder();
+      paramString.append("removeLoginMiniAppForbidToken error: ");
+      paramString.append(paramContext.getMessage());
+      QLog.e("MiniAppSecurityUtil", 1, paramString.toString());
     }
   }
   
@@ -212,7 +232,10 @@ public class MiniAppSecurityUtil
     }
     catch (Exception paramContext)
     {
-      QLog.e("MiniAppSecurityUtil", 1, "removeLoginMiniAppUin error: " + paramContext.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("removeLoginMiniAppUin error: ");
+      localStringBuilder.append(paramContext.getMessage());
+      QLog.e("MiniAppSecurityUtil", 1, localStringBuilder.toString());
     }
   }
   
@@ -221,13 +244,20 @@ public class MiniAppSecurityUtil
     try
     {
       paramContext = paramContext.getSharedPreferences("MiniAppSecurityUtil_Shared_Prefs", 4).edit();
-      paramContext.putString(paramString1 + "_" + "kLoginMiniAppForbidToken", paramString2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("_");
+      localStringBuilder.append("kLoginMiniAppForbidToken");
+      paramContext.putString(localStringBuilder.toString(), paramString2);
       paramContext.commit();
       return;
     }
     catch (Exception paramContext)
     {
-      QLog.e("MiniAppSecurityUtil", 1, "updateLoginMiniAppForbidToken error: " + paramContext.getMessage());
+      paramString1 = new StringBuilder();
+      paramString1.append("updateLoginMiniAppForbidToken error: ");
+      paramString1.append(paramContext.getMessage());
+      QLog.e("MiniAppSecurityUtil", 1, paramString1.toString());
     }
   }
   
@@ -235,8 +265,12 @@ public class MiniAppSecurityUtil
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniAppSecurityUtil", 2, "updateLoginMiniAppUin uin: " + AuthorityUtil.a(paramString));
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("updateLoginMiniAppUin uin: ");
+        localStringBuilder.append(getSimpleUin(paramString));
+        QLog.d("MiniAppSecurityUtil", 2, localStringBuilder.toString());
       }
       paramContext = paramContext.getSharedPreferences("MiniAppSecurityUtil_Shared_Prefs", 4).edit();
       paramContext.putString("kLoginMiniAppUin", paramString);
@@ -245,13 +279,16 @@ public class MiniAppSecurityUtil
     }
     catch (Exception paramContext)
     {
-      QLog.e("MiniAppSecurityUtil", 1, "updateLoginMiniAppUin error: " + paramContext.getMessage());
+      paramString = new StringBuilder();
+      paramString.append("updateLoginMiniAppUin error: ");
+      paramString.append(paramContext.getMessage());
+      QLog.e("MiniAppSecurityUtil", 1, paramString.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mini.util.MiniAppSecurityUtil
  * JD-Core Version:    0.7.0.1
  */

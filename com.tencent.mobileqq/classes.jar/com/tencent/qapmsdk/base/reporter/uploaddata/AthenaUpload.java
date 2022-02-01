@@ -30,22 +30,31 @@ public abstract class AthenaUpload
   public boolean isSucceeded(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "resp");
+    boolean bool = true;
     try
     {
       if (TextUtils.isEmpty((CharSequence)paramString)) {
         return false;
       }
       int i = new JSONObject(paramString).getInt("code");
-      if ((i == 1000) || (i == 1495)) {}
-      for (boolean bool = true;; bool = false) {
-        return bool;
+      if (i != 1000)
+      {
+        if (i == 1495) {
+          return true;
+        }
+        bool = false;
       }
-      return false;
+      return bool;
     }
     catch (Exception paramString)
     {
-      Logger.INSTANCE.e(new String[] { "QAPM_base_AthenaJsonUploadRunnable", paramString + ": response parameter json error" });
+      Logger localLogger = Logger.INSTANCE;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": response parameter json error");
+      localLogger.e(new String[] { "QAPM_base_AthenaJsonUploadRunnable", localStringBuilder.toString() });
     }
+    return false;
   }
   
   public final void setAthenaUrl(@NotNull URL paramURL)
@@ -56,7 +65,7 @@ public abstract class AthenaUpload
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.base.reporter.uploaddata.AthenaUpload
  * JD-Core Version:    0.7.0.1
  */

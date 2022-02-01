@@ -10,36 +10,34 @@ public class EmotionUtils
   
   public static void startSoundDrawablePlay(URLDrawable paramURLDrawable)
   {
-    Object localObject;
     if (paramURLDrawable != null)
     {
-      localObject = paramURLDrawable.getCurrDrawable();
+      Object localObject = paramURLDrawable.getCurrDrawable();
       if ((localObject != null) && ((localObject instanceof GifDrawable)))
       {
         localObject = ((GifDrawable)localObject).getImage();
-        if ((localObject == null) || (!(localObject instanceof VoiceGifImage))) {
-          break label72;
+        if ((localObject != null) && ((localObject instanceof VoiceGifImage)))
+        {
+          localObject = (VoiceGifImage)localObject;
+          ((VoiceGifImage)localObject).stop();
+          ((VoiceGifImage)localObject).start();
+          paramURLDrawable.invalidateSelf();
+          if (QLog.isColorLevel()) {
+            QLog.d("EmotionUtils", 2, "soundgif startSoundDrawablePlay start");
+          }
         }
-        ((VoiceGifImage)localObject).stop();
-        ((VoiceGifImage)localObject).start();
-        paramURLDrawable.invalidateSelf();
-        if (QLog.isColorLevel()) {
-          QLog.d("EmotionUtils", 2, "soundgif startSoundDrawablePlay start");
+        else if ((localObject != null) && ((localObject instanceof VoiceGifImageV2)))
+        {
+          localObject = (VoiceGifImageV2)localObject;
+          ((VoiceGifImageV2)localObject).stop();
+          ((VoiceGifImageV2)localObject).start();
+          paramURLDrawable.invalidateSelf();
+          if (QLog.isColorLevel()) {
+            QLog.d("EmotionUtils", 2, "soundgif startSoundDrawablePlay start");
+          }
         }
       }
     }
-    label72:
-    do
-    {
-      do
-      {
-        return;
-      } while ((localObject == null) || (!(localObject instanceof VoiceGifImageV2)));
-      ((VoiceGifImageV2)localObject).stop();
-      ((VoiceGifImageV2)localObject).start();
-      paramURLDrawable.invalidateSelf();
-    } while (!QLog.isColorLevel());
-    QLog.d("EmotionUtils", 2, "soundgif startSoundDrawablePlay start");
   }
   
   public static void stopSoundDrawablePlay(URLDrawable paramURLDrawable)
@@ -50,30 +48,27 @@ public class EmotionUtils
       if ((paramURLDrawable != null) && ((paramURLDrawable instanceof GifDrawable)))
       {
         paramURLDrawable = ((GifDrawable)paramURLDrawable).getImage();
-        if ((paramURLDrawable == null) || (!(paramURLDrawable instanceof VoiceGifImage))) {
-          break label61;
+        if ((paramURLDrawable != null) && ((paramURLDrawable instanceof VoiceGifImage)))
+        {
+          ((VoiceGifImage)paramURLDrawable).stop();
+          if (QLog.isColorLevel()) {
+            QLog.d("EmotionUtils", 2, "soundgif stopSoundDrawablePlay stop");
+          }
         }
-        ((VoiceGifImage)paramURLDrawable).stop();
-        if (QLog.isColorLevel()) {
-          QLog.d("EmotionUtils", 2, "soundgif stopSoundDrawablePlay stop");
+        else if ((paramURLDrawable != null) && ((paramURLDrawable instanceof VoiceGifImageV2)))
+        {
+          ((VoiceGifImageV2)paramURLDrawable).stop();
+          if (QLog.isColorLevel()) {
+            QLog.d("EmotionUtils", 2, "soundgif stopSoundDrawablePlay stop");
+          }
         }
       }
     }
-    label61:
-    do
-    {
-      do
-      {
-        return;
-      } while ((paramURLDrawable == null) || (!(paramURLDrawable instanceof VoiceGifImageV2)));
-      ((VoiceGifImageV2)paramURLDrawable).stop();
-    } while (!QLog.isColorLevel());
-    QLog.d("EmotionUtils", 2, "soundgif stopSoundDrawablePlay stop");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionUtils
  * JD-Core Version:    0.7.0.1
  */

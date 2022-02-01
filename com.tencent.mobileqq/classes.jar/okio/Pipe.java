@@ -11,10 +11,15 @@ public final class Pipe
   
   public Pipe(long paramLong)
   {
-    if (paramLong < 1L) {
-      throw new IllegalArgumentException("maxBufferSize < 1: " + paramLong);
+    if (paramLong >= 1L)
+    {
+      this.maxBufferSize = paramLong;
+      return;
     }
-    this.maxBufferSize = paramLong;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("maxBufferSize < 1: ");
+    localStringBuilder.append(paramLong);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public final Sink sink()
@@ -29,7 +34,7 @@ public final class Pipe
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okio.Pipe
  * JD-Core Version:    0.7.0.1
  */

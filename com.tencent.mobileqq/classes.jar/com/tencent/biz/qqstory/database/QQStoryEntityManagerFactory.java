@@ -6,9 +6,11 @@ import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeRecommendActivityReadE
 import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeVidListEntity;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.app.SQLiteOpenHelper;
+import com.tencent.mobileqq.editor.database.PublishVideoEntry;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityManagerFactory.SQLiteOpenHelperImpl;
+import com.tencent.mobileqq.persistence.ISQLiteOpenHelper;
 import com.tencent.mobileqq.persistence.OGEntityManager;
+import com.tencent.mobileqq.persistence.SQLiteOpenHelperFacade;
 import com.tencent.mobileqq.persistence.TableBuilder;
 import com.tencent.mobileqq.utils.SecurityUtile;
 import java.util.ArrayList;
@@ -34,39 +36,50 @@ public class QQStoryEntityManagerFactory
       {
         String str = SecurityUtile.decode(localCursor1.getString(0));
         Cursor localCursor2 = paramSQLiteDatabase.rawQuery("select sql from sqlite_master where type=? and name=?", new String[] { "table", str });
-        if (localCursor2 != null) {
-          for (;;)
+        if (localCursor2 != null)
+        {
+          try
           {
-            try
+            Object localObject;
+            if (str.equals(UserEntry.class.getSimpleName()))
             {
-              if (!str.equals(UserEntry.class.getSimpleName())) {
-                continue;
-              }
               localObject = UserEntry.class;
-              OGEntityManager.extractedStatementByReflect(localArrayList, str, localCursor2, (Class)localObject);
             }
-            catch (ClassNotFoundException localClassNotFoundException)
+            else if (str.equals(StoryEntry.class.getSimpleName()))
             {
-              Object localObject;
-              SLog.b("Q.qqstory.QQStoryEntityManagerFactory", "checkColumnChange", localClassNotFoundException);
-              continue;
-            }
-            localCursor2.close();
-            break;
-            if (str.equals(StoryEntry.class.getSimpleName())) {
               localObject = StoryEntry.class;
-            } else if (str.equals(StoryVideoEntry.class.getSimpleName())) {
-              localObject = StoryVideoEntry.class;
-            } else if (str.equals(StoryVideoListEntry.class.getSimpleName())) {
-              localObject = StoryVideoListEntry.class;
-            } else if (str.startsWith(PublishVideoEntry.class.getSimpleName())) {
-              localObject = PublishVideoEntry.class;
-            } else if (str.equals(HotTopicEntry.class.getSimpleName())) {
-              localObject = HotTopicEntry.class;
-            } else {
-              localObject = Class.forName(paramString + "." + str);
             }
+            else if (str.equals(StoryVideoEntry.class.getSimpleName()))
+            {
+              localObject = StoryVideoEntry.class;
+            }
+            else if (str.equals(StoryVideoListEntry.class.getSimpleName()))
+            {
+              localObject = StoryVideoListEntry.class;
+            }
+            else if (str.startsWith(PublishVideoEntry.class.getSimpleName()))
+            {
+              localObject = PublishVideoEntry.class;
+            }
+            else if (str.equals(HotTopicEntry.class.getSimpleName()))
+            {
+              localObject = HotTopicEntry.class;
+            }
+            else
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append(paramString);
+              ((StringBuilder)localObject).append(".");
+              ((StringBuilder)localObject).append(str);
+              localObject = Class.forName(((StringBuilder)localObject).toString());
+            }
+            OGEntityManager.extractedStatementByReflect(localArrayList, str, localCursor2, (Class)localObject);
           }
+          catch (ClassNotFoundException localClassNotFoundException)
+          {
+            SLog.b("Q.qqstory.QQStoryEntityManagerFactory", "checkColumnChange", localClassNotFoundException);
+          }
+          localCursor2.close();
         }
       }
       localCursor1.close();
@@ -80,15 +93,20 @@ public class QQStoryEntityManagerFactory
         paramSQLiteDatabase.execSQL((String)paramString.next());
       }
       paramSQLiteDatabase.setTransactionSuccessful();
+      paramSQLiteDatabase.endTransaction();
+      com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
+      SLog.a("Q.qqstory.QQStoryEntityManagerFactory", "checkColumnChange take time:%d", Long.valueOf(System.currentTimeMillis() - l));
+      return;
     }
     finally
     {
       paramSQLiteDatabase.endTransaction();
       com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
     }
-    paramSQLiteDatabase.endTransaction();
-    com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
-    SLog.a("Q.qqstory.QQStoryEntityManagerFactory", "checkColumnChange take time:%d", Long.valueOf(System.currentTimeMillis() - l));
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   public void a()
@@ -126,13 +144,17 @@ public class QQStoryEntityManagerFactory
   {
     if (this.dbHelper == null)
     {
-      this.mInnerDbHelper = new EntityManagerFactory.SQLiteOpenHelperImpl(this, "qqstory_" + paramString + ".db", null, 180);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("qqstory_");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(".db");
+      this.mInnerDbHelper = SQLiteOpenHelperFacade.a(this, localStringBuilder.toString(), 180);
       this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
     }
     return this.dbHelper;
   }
   
-  public void createDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
+  protected void createDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
   {
     paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new UserEntry()));
     paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new StoryEntry()));
@@ -158,12 +180,12 @@ public class QQStoryEntityManagerFactory
     paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new StoryAlbumEntry()));
   }
   
-  public String getPackageName()
+  protected String getPackageName()
   {
     return getClass().getPackage().getName();
   }
   
-  public void upgradeDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  protected void upgradeDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
     if (paramInt1 > paramInt2)
     {
@@ -256,7 +278,7 @@ public class QQStoryEntityManagerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.QQStoryEntityManagerFactory
  * JD-Core Version:    0.7.0.1
  */

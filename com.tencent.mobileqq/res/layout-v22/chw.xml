@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/bja" android:background="#e0000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="center" android:id="@id/aza" android:background="@drawable/i2p" android:layout_width="296.0dip" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+        <com.tencent.mobileqq.filemanager.widget.AsyncImageView android:id="@id/bj8" android:layout_width="fill_parent" android:layout_height="170.0dip" android:layout_alignParentTop="true" />
+        <TextView android:textSize="@dimen/aek" android:textStyle="bold" android:textColor="@color/fl" android:ellipsize="end" android:gravity="center" android:id="@id/muw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/xid" android:maxLines="1" android:layout_below="@id/bj8" />
+        <TextView android:textSize="@dimen/aej" android:textColor="@color/fl" android:id="@id/mux" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="30.0dip" android:text="@string/xic" android:layout_below="@id/muw" android:layout_marginHorizontal="30.0dip" />
+        <TextView android:textSize="17.0sp" android:id="@id/bik" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="30.0dip" android:layout_marginTop="24.0dip" android:layout_marginRight="30.0dip" android:layout_marginBottom="28.0dip" android:text="@string/xib" android:layout_below="@id/mux" android:layout_marginHorizontal="30.0dip" style="@style/i4" />
+        <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_below="@id/bik" />
+    </RelativeLayout>
+    <RelativeLayout android:layout_width="296.0dip" android:layout_height="wrap_content" android:layout_below="@id/aza">
+        <com.tencent.mobileqq.filemanager.widget.AsyncImageView android:id="@id/az7" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="40.0dip" android:src="@drawable/if3" android:layout_centerHorizontal="true" android:contentDescription="@string/l68" />
+    </RelativeLayout>
+</RelativeLayout>

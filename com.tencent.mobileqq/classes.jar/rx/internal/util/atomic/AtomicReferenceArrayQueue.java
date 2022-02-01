@@ -20,7 +20,8 @@ abstract class AtomicReferenceArrayQueue<E>
   
   protected final int calcElementOffset(long paramLong)
   {
-    return (int)paramLong & this.mask;
+    int i = (int)paramLong;
+    return this.mask & i;
   }
   
   protected final int calcElementOffset(long paramLong, int paramInt)
@@ -85,7 +86,7 @@ abstract class AtomicReferenceArrayQueue<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.util.atomic.AtomicReferenceArrayQueue
  * JD-Core Version:    0.7.0.1
  */

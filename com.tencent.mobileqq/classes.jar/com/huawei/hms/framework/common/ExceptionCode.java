@@ -22,11 +22,14 @@ public class ExceptionCode
   public static final int CRASH_EXCEPTION = 1103;
   public static final int INTERRUPT_CONNECT_CLOSE = 110214;
   public static final int INTERRUPT_EXCEPTION = 110213;
+  public static final int NETWORK_CHANGED = 110216;
   public static final int NETWORK_IO_EXCEPTION = 1102;
   public static final int NETWORK_UNREACHABLE = 110208;
+  public static final int PROTOCOL_ERROR = 110217;
   private static final String READ = "read";
   public static final int READ_ERROR = 110203;
   public static final int ROUTE_FAILED = 110207;
+  public static final int SHUTDOWN_EXCEPTION = 110218;
   public static final int SOCKET_CLOSE = 110215;
   public static final int SOCKET_CONNECT_TIMEOUT = 110221;
   public static final int SOCKET_READ_TIMEOUT = 110223;
@@ -43,68 +46,54 @@ public class ExceptionCode
   {
     String str = checkStrContainsKey(StringUtils.toLowerCase(paramException.getMessage()), paramVarArgs);
     if (!TextUtils.isEmpty(str)) {
-      paramException = str;
+      return str;
     }
-    label81:
-    for (;;)
+    StackTraceElement[] arrayOfStackTraceElement = paramException.getStackTrace();
+    int j = arrayOfStackTraceElement.length;
+    int i = 0;
+    paramException = str;
+    while (i < j)
     {
-      return paramException;
-      StackTraceElement[] arrayOfStackTraceElement = paramException.getStackTrace();
-      int j = arrayOfStackTraceElement.length;
-      int i = 0;
-      for (paramException = str;; paramException = str)
-      {
-        if (i >= j) {
-          break label81;
-        }
-        str = checkStrContainsKey(StringUtils.toLowerCase(arrayOfStackTraceElement[i].toString()), paramVarArgs);
-        paramException = str;
-        if (!TextUtils.isEmpty(str)) {
-          break;
-        }
-        i += 1;
+      paramException = checkStrContainsKey(StringUtils.toLowerCase(arrayOfStackTraceElement[i].toString()), paramVarArgs);
+      if (!TextUtils.isEmpty(paramException)) {
+        return paramException;
       }
+      i += 1;
     }
+    return paramException;
   }
   
   private static String checkStrContainsKey(String paramString, String... paramVarArgs)
   {
-    Object localObject;
-    if (TextUtils.isEmpty(paramString))
-    {
-      localObject = "";
-      return localObject;
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
     }
     int j = paramVarArgs.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i >= j) {
-        break label49;
-      }
       String str = paramVarArgs[i];
-      localObject = str;
       if (paramString.contains(str)) {
-        break;
+        return str;
       }
       i += 1;
     }
-    label49:
     return "";
   }
   
   public static int getErrorCodeFromException(Exception paramException)
   {
-    if (paramException == null) {}
-    do
-    {
+    if (paramException == null) {
       return 1102;
-      if (!(paramException instanceof IOException)) {
-        return 1103;
-      }
-      str = paramException.getMessage();
-    } while (str == null);
-    String str = StringUtils.toLowerCase(str);
+    }
+    if (!(paramException instanceof IOException)) {
+      return 1103;
+    }
+    String str = paramException.getMessage();
+    if (str == null) {
+      return 1102;
+    }
+    str = StringUtils.toLowerCase(str);
     int i = getErrorCodeFromMsg(str);
     if (i != 1102) {
       return i;
@@ -182,41 +171,45 @@ public class ExceptionCode
   {
     int i = 0;
     paramException = checkExceptionContainsKey(paramException, new String[] { "connect", "read", "write" });
-    switch (paramException.hashCode())
+    int j = paramException.hashCode();
+    if (j != 3496342)
     {
-    default: 
-      label64:
-      i = -1;
-    }
-    for (;;)
-    {
-      switch (i)
+      if (j != 113399775)
       {
-      default: 
-        return 110200;
-        if (!paramException.equals("connect")) {
-          break label64;
+        if ((j == 951351530) && (paramException.equals("connect"))) {
+          break label94;
         }
-        continue;
-        if (!paramException.equals("read")) {
-          break label64;
-        }
-        i = 1;
-        continue;
-        if (!paramException.equals("write")) {
-          break label64;
-        }
+      }
+      else if (paramException.equals("write"))
+      {
         i = 2;
+        break label94;
       }
     }
+    else if (paramException.equals("read"))
+    {
+      i = 1;
+      break label94;
+    }
+    i = -1;
+    label94:
+    if (i != 0)
+    {
+      if (i != 1)
+      {
+        if (i != 2) {
+          return 110200;
+        }
+        return 110225;
+      }
+      return 110223;
+    }
     return 110221;
-    return 110223;
-    return 110225;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.framework.common.ExceptionCode
  * JD-Core Version:    0.7.0.1
  */

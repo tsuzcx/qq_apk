@@ -26,7 +26,11 @@ public class VideoInfo$VideoRemark
     if (TextUtils.isEmpty(this.icondesc)) {
       return this.remark;
     }
-    return this.icondesc + " -- " + this.remark;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.icondesc);
+    localStringBuilder.append(" -- ");
+    localStringBuilder.append(this.remark);
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -41,7 +45,7 @@ public class VideoInfo$VideoRemark
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.model.VideoInfo.VideoRemark
  * JD-Core Version:    0.7.0.1
  */

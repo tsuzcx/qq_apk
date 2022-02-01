@@ -16,26 +16,31 @@ public final class ThreadManagerImpl
   {
     Intrinsics.checkParameterIsNotNull(paramThreadType, "threadType");
     Intrinsics.checkParameterIsNotNull(paramRunnable, "runnable");
-    switch (ThreadManagerImpl.WhenMappings.a[paramThreadType.ordinal()])
+    int i = ThreadManagerImpl.WhenMappings.a[paramThreadType.ordinal()];
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      ThreadManagerV2.getUIHandlerV2().post(paramRunnable);
-      return;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4) {
+            return;
+          }
+          ThreadManagerV2.executeOnNetWorkThread(paramRunnable);
+          return;
+        }
+        ThreadManagerV2.executeOnFileThread(paramRunnable);
+        return;
+      }
       ThreadManagerV2.executeOnSubThread(paramRunnable);
       return;
-    case 3: 
-      ThreadManagerV2.executeOnFileThread(paramRunnable);
-      return;
     }
-    ThreadManagerV2.executeOnNetWorkThread(paramRunnable);
+    ThreadManagerV2.getUIHandlerV2().post(paramRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.ThreadManagerImpl
  * JD-Core Version:    0.7.0.1
  */

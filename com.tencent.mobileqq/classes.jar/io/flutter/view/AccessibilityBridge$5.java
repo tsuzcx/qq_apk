@@ -14,7 +14,7 @@ class AccessibilityBridge$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.view.AccessibilityBridge.5
  * JD-Core Version:    0.7.0.1
  */

@@ -19,32 +19,38 @@ class VideoForDataline$1
   public void a(DatalineDownloadRespInfo paramDatalineDownloadRespInfo)
   {
     DataLineHandler localDataLineHandler = (DataLineHandler)VideoForDataline.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataVideoForDataline).getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
-    if (paramDatalineDownloadRespInfo.jdField_a_of_type_Long == -100001L) {}
-    String str2 = paramDatalineDownloadRespInfo.d;
-    Object localObject = paramDatalineDownloadRespInfo.jdField_b_of_type_JavaLangString;
+    long l = paramDatalineDownloadRespInfo.jdField_a_of_type_Long;
+    String str = paramDatalineDownloadRespInfo.d;
+    Object localObject1 = paramDatalineDownloadRespInfo.jdField_b_of_type_JavaLangString;
     int i = paramDatalineDownloadRespInfo.jdField_a_of_type_Int;
-    String str1 = paramDatalineDownloadRespInfo.j;
+    Object localObject2 = paramDatalineDownloadRespInfo.j;
     List localList = paramDatalineDownloadRespInfo.jdField_b_of_type_JavaUtilList;
-    str1 = VideoForDataline.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataVideoForDataline, str1, i);
-    if (!TextUtils.isEmpty(str1)) {
-      localObject = str1;
+    localObject2 = VideoForDataline.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataVideoForDataline, (String)localObject2, i);
+    if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject1 = localObject2;
     }
-    for (;;)
+    paramDatalineDownloadRespInfo = paramDatalineDownloadRespInfo.e;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("http://");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(":");
+    ((StringBuilder)localObject2).append(String.valueOf(i));
+    ((StringBuilder)localObject2).append(str);
+    localObject1 = ((StringBuilder)localObject2).toString();
+    if (QLog.isColorLevel())
     {
-      paramDatalineDownloadRespInfo = paramDatalineDownloadRespInfo.e;
-      localObject = "http://" + (String)localObject + ":" + String.valueOf(i) + str2;
-      if (QLog.isColorLevel()) {
-        QLog.i("VideoForDataline<QFile>XOXO", 1, "offlineVideo download. downloadUrl:" + (String)localObject);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoDownloadManager$FileVideoManagerCallback.a((String)localObject, paramDatalineDownloadRespInfo);
-      localDataLineHandler.OnSessionStart(VideoForDataline.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataVideoForDataline).sessionid);
-      return;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("offlineVideo download. downloadUrl:");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.i("VideoForDataline<QFile>XOXO", 1, ((StringBuilder)localObject2).toString());
     }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoDownloadManager$FileVideoManagerCallback.a((String)localObject1, paramDatalineDownloadRespInfo);
+    localDataLineHandler.OnSessionStart(VideoForDataline.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataVideoForDataline).sessionid);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.data.VideoForDataline.1
  * JD-Core Version:    0.7.0.1
  */

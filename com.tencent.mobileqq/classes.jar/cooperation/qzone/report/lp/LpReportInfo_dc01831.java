@@ -81,18 +81,25 @@ public class LpReportInfo_dc01831
   
   public String getSimpleInfo()
   {
-    return "dc01831:" + this.actiontype + "," + this.subactiontype + "," + this.reserves;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("dc01831:");
+    localStringBuilder.append(this.actiontype);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.subactiontype);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.reserves);
+    return localStringBuilder.toString();
   }
   
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    Object localObject1;
+    Object localObject1 = this.infos;
     Object localObject2;
     String str;
-    if (this.infos != null)
+    if (localObject1 != null)
     {
-      localObject1 = this.infos.keySet().iterator();
+      localObject1 = ((Map)localObject1).keySet().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (String)((Iterator)localObject1).next();
@@ -106,68 +113,69 @@ public class LpReportInfo_dc01831
     {
       if (!TextUtils.isEmpty(this.extraInfo)) {
         localObject1 = new JSONObject(this.extraInfo);
+      } else {
+        localObject1 = new JSONObject();
       }
-      for (;;)
+      if (((JSONObject)localObject1).length() > 0)
       {
-        if (((JSONObject)localObject1).length() > 0)
+        localObject2 = ((JSONObject)localObject1).keys();
+        while (((Iterator)localObject2).hasNext())
         {
-          localObject2 = ((JSONObject)localObject1).keys();
-          while (((Iterator)localObject2).hasNext())
-          {
-            str = (String)((Iterator)localObject2).next();
-            localHashMap.put(str, ((JSONObject)localObject1).optString(str));
-          }
-        }
-        try
-        {
-          i = Integer.parseInt((String)localHashMap.get("network_type"));
-          localHashMap.put("network_type", String.valueOf(((ILpReportUtils)QRoute.api(ILpReportUtils.class)).convertNetworkTypeToFitInDc00518(i)));
-          localHashMap.put("app_id", String.valueOf(AppSetting.a()));
-          localHashMap.put("qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
-          localHashMap.put("device", "1");
-          localHashMap.put("os_version", "android_" + Build.VERSION.RELEASE);
-          localHashMap.put("imei", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getIMEI());
-          return localHashMap;
-          localJSONObject = new JSONObject();
-        }
-        catch (Exception localException2)
-        {
-          for (;;)
-          {
-            i = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getNetworkType();
-          }
+          str = (String)((Iterator)localObject2).next();
+          localHashMap.put(str, ((JSONObject)localObject1).optString(str));
         }
       }
     }
     catch (Exception localException1)
     {
-      if (!localHashMap.containsKey("actiontype")) {
-        localHashMap.put("actiontype", String.valueOf(this.actiontype));
-      }
-      if (!localHashMap.containsKey("subactiontype")) {
-        localHashMap.put("subactiontype", String.valueOf(this.subactiontype));
-      }
-      if (!localHashMap.containsKey("reserves")) {
-        localHashMap.put("reserves", String.valueOf(this.reserves));
-      }
-      if (!localHashMap.containsKey("uin")) {
-        localHashMap.put("uin", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount());
-      }
-      if (!localHashMap.containsKey("touin")) {
-        localHashMap.put("touin", String.valueOf(this.touin));
-      }
-      if (!localHashMap.containsKey("network_type")) {}
+      label173:
+      break label173;
     }
-    for (;;)
+    if (!localHashMap.containsKey("actiontype")) {
+      localHashMap.put("actiontype", String.valueOf(this.actiontype));
+    }
+    if (!localHashMap.containsKey("subactiontype")) {
+      localHashMap.put("subactiontype", String.valueOf(this.subactiontype));
+    }
+    if (!localHashMap.containsKey("reserves")) {
+      localHashMap.put("reserves", String.valueOf(this.reserves));
+    }
+    if (!localHashMap.containsKey("uin")) {
+      localHashMap.put("uin", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount());
+    }
+    if (!localHashMap.containsKey("touin")) {
+      localHashMap.put("touin", String.valueOf(this.touin));
+    }
+    if (localHashMap.containsKey("network_type")) {}
+    try
     {
-      JSONObject localJSONObject;
-      int i = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getNetworkType();
+      i = Integer.parseInt((String)localHashMap.get("network_type"));
     }
+    catch (Exception localException2)
+    {
+      int i;
+      label343:
+      label374:
+      break label343;
+    }
+    i = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getNetworkType();
+    break label374;
+    i = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getNetworkType();
+    localHashMap.put("network_type", String.valueOf(((ILpReportUtils)QRoute.api(ILpReportUtils.class)).convertNetworkTypeToFitInDc00518(i)));
+    localHashMap.put("app_id", String.valueOf(AppSetting.a()));
+    localHashMap.put("qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
+    localHashMap.put("device", "1");
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("android_");
+    ((StringBuilder)localObject1).append(Build.VERSION.RELEASE);
+    localHashMap.put("os_version", ((StringBuilder)localObject1).toString());
+    localHashMap.put("imei", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getIMEI());
+    return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc01831
  * JD-Core Version:    0.7.0.1
  */

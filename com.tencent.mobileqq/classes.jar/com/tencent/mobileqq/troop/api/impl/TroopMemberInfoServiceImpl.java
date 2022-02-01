@@ -1,14 +1,17 @@
 package com.tencent.mobileqq.troop.api.impl;
 
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.support.v4.util.LruCache;
 import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.SQLiteOpenHelper;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.statistics.StatisticCollector;
@@ -17,7 +20,12 @@ import com.tencent.mobileqq.troop.api.ITroopInfoService;
 import com.tencent.mobileqq.troop.api.ITroopMemberInfoService;
 import com.tencent.mobileqq.troop.api.ITroopMemberInfoService.ITroopMemberInfoCallBack;
 import com.tencent.mobileqq.troop.api.ITroopMemberInfoService.TroopMemberUpdateObserver;
+import com.tencent.mobileqq.troop.api.config.TroopCommonConfig;
+import com.tencent.mobileqq.troop.api.observer.TroopMngObserver;
+import com.tencent.mobileqq.troop.api.observer.TroopObserver;
 import com.tencent.mobileqq.troop.api.utils.TroopMemberThreadManager;
+import com.tencent.mobileqq.troop.handler.TroopMemberListHandler;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -39,49 +47,56 @@ public class TroopMemberInfoServiceImpl
   protected AppRuntime app;
   protected EntityManager em;
   private TroopMemberInfoServiceImpl.SaveTroopMemberTask mCurrentSaveTask;
+  private TroopObserver mGetTroopMemberListObserver = new TroopMemberInfoServiceImpl.2(this);
+  protected ArrayList<TroopInfo> mGetTroopMemberListTroops = null;
+  protected int mRetryGetTroopMemberListCount = 0;
   private ConcurrentLinkedQueue<TroopMemberInfoServiceImpl.SaveTroopMemberTask> mRunningTask = new ConcurrentLinkedQueue();
   private ConcurrentLinkedQueue<TroopMemberInfoServiceImpl.SaveTroopMemberTask> mSaveTroopMemberTasks = new ConcurrentLinkedQueue();
   protected Map<String, List<WeakReference<ITroopMemberInfoService.ITroopMemberInfoCallBack>>> mTmiCallBackRefMap = new HashMap(5);
   protected ArrayList<ITroopMemberInfoService.TroopMemberUpdateObserver> mTroopMemberUpdateObserverList = new ArrayList();
+  private TroopMngObserver mTroopMngObserver = new TroopMemberInfoServiceImpl.1(this);
   protected LruCache<String, LruCache<String, TroopMemberInfo>> troopMembers1 = new LruCache(12);
   
   private boolean assignBigClub(int paramInt1, int paramInt2, int paramInt3, int paramInt4, TroopMemberInfo paramTroopMemberInfo)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramInt1 != -100)
+    if ((paramInt1 != -100) && (paramInt1 != paramTroopMemberInfo.mBigClubVipType))
     {
-      bool1 = bool2;
-      if (paramInt1 != paramTroopMemberInfo.mBigClubVipType)
-      {
-        paramTroopMemberInfo.mBigClubVipType = paramInt1;
-        bool1 = true;
-      }
+      paramTroopMemberInfo.mBigClubVipType = paramInt1;
+      bool2 = true;
     }
-    bool2 = bool1;
+    else
+    {
+      bool2 = false;
+    }
+    boolean bool1 = bool2;
     if (paramInt2 != -100)
     {
-      bool2 = bool1;
+      bool1 = bool2;
       if (paramInt2 != paramTroopMemberInfo.mBigClubVipLevel)
       {
         paramTroopMemberInfo.mBigClubVipLevel = paramInt2;
+        bool1 = true;
+      }
+    }
+    boolean bool2 = bool1;
+    if (paramInt3 != -100)
+    {
+      bool2 = bool1;
+      if (paramInt3 != paramTroopMemberInfo.mBigClubTemplateId)
+      {
+        paramTroopMemberInfo.mBigClubTemplateId = paramInt3;
         bool2 = true;
       }
     }
     bool1 = bool2;
-    if (paramInt3 != -100)
+    if (paramInt4 != -100)
     {
       bool1 = bool2;
-      if (paramInt3 != paramTroopMemberInfo.mBigClubTemplateId)
+      if (paramInt4 != paramTroopMemberInfo.mIsHideBigClub)
       {
-        paramTroopMemberInfo.mBigClubTemplateId = paramInt3;
+        paramTroopMemberInfo.mIsHideBigClub = paramInt4;
         bool1 = true;
       }
-    }
-    if ((paramInt4 != -100) && (paramInt4 != paramTroopMemberInfo.mIsHideBigClub))
-    {
-      paramTroopMemberInfo.mIsHideBigClub = paramInt4;
-      return true;
     }
     return bool1;
   }
@@ -91,105 +106,123 @@ public class TroopMemberInfoServiceImpl
     boolean bool3 = false;
     if ((paramInt > 0) && (paramInt != paramTroopMemberInfo.level))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopMemberInfoService", 2, "saveTroopMemberEx: troopUin=" + paramString1 + ", memberUin=" + paramString2 + ", newTitleId=" + paramInt + ", oldTitleId=" + paramTroopMemberInfo.level);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("saveTroopMemberEx: troopUin=");
+        localStringBuilder.append(paramString1);
+        localStringBuilder.append(", memberUin=");
+        localStringBuilder.append(paramString2);
+        localStringBuilder.append(", newTitleId=");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(", oldTitleId=");
+        localStringBuilder.append(paramTroopMemberInfo.level);
+        QLog.d("TroopMemberInfoService", 2, localStringBuilder.toString());
       }
       paramTroopMemberInfo.level = paramInt;
+      bool2 = true;
     }
-    for (boolean bool2 = true;; bool2 = false)
+    else
     {
-      boolean bool1 = bool2;
-      if (paramLong != -100L)
-      {
-        bool1 = bool2;
-        if (paramLong != paramTroopMemberInfo.gagTimeStamp)
-        {
-          paramTroopMemberInfo.gagTimeStamp = paramLong;
-          bool1 = true;
-        }
-      }
-      bool2 = bool3;
-      if (paramByte == 1) {
-        bool2 = true;
-      }
-      bool3 = bool1;
-      if (paramByte != -100)
-      {
-        bool3 = bool1;
-        if (paramTroopMemberInfo.isTroopFollowed != bool2)
-        {
-          paramTroopMemberInfo.isTroopFollowed = bool2;
-          bool3 = true;
-        }
-      }
-      if ((paramDouble != -100.0D) && (paramDouble != paramTroopMemberInfo.distanceToSelf))
-      {
-        paramTroopMemberInfo.distanceToSelf = paramDouble;
-        paramTroopMemberInfo.distanceToSelfUpdateTimeStamp = System.currentTimeMillis();
-        return true;
-      }
-      return bool3;
+      bool2 = false;
     }
-  }
-  
-  private boolean assignMemberInfo2(String paramString, int paramInt, long paramLong1, long paramLong2, TroopMemberInfo paramTroopMemberInfo)
-  {
-    boolean bool2 = false;
     boolean bool1 = bool2;
-    if (paramString != null)
+    if (paramLong != -100L)
     {
       bool1 = bool2;
-      if (!paramString.equals(paramTroopMemberInfo.mUniqueTitle))
+      if (paramLong != paramTroopMemberInfo.gagTimeStamp)
       {
-        paramTroopMemberInfo.mUniqueTitle = paramString;
+        paramTroopMemberInfo.gagTimeStamp = paramLong;
         bool1 = true;
       }
     }
-    bool2 = bool1;
-    if (paramInt != -100)
+    if (paramByte == 1) {
+      bool3 = true;
+    }
+    boolean bool2 = bool1;
+    if (paramByte != -100)
     {
       bool2 = bool1;
-      if (paramInt != paramTroopMemberInfo.realLevel)
+      if (paramTroopMemberInfo.isTroopFollowed != bool3)
       {
-        paramTroopMemberInfo.realLevel = paramInt;
+        paramTroopMemberInfo.isTroopFollowed = bool3;
         bool2 = true;
       }
     }
     bool1 = bool2;
-    if (paramLong1 != -100L)
+    if (paramDouble != -100.0D)
     {
       bool1 = bool2;
-      if (paramLong1 != paramTroopMemberInfo.join_time)
+      if (paramDouble != paramTroopMemberInfo.distanceToSelf)
       {
-        paramTroopMemberInfo.join_time = paramLong1;
+        paramTroopMemberInfo.distanceToSelf = paramDouble;
+        paramTroopMemberInfo.distanceToSelfUpdateTimeStamp = System.currentTimeMillis();
         bool1 = true;
       }
     }
-    if ((paramLong2 != -100L) && (paramLong2 != paramTroopMemberInfo.last_active_time))
+    return bool1;
+  }
+  
+  private boolean assignMemberInfo2(String paramString, int paramInt, long paramLong1, long paramLong2, TroopMemberInfo paramTroopMemberInfo)
+  {
+    if ((paramString != null) && (!paramString.equals(paramTroopMemberInfo.mUniqueTitle)))
     {
-      paramTroopMemberInfo.last_active_time = paramLong2;
-      return true;
+      paramTroopMemberInfo.mUniqueTitle = paramString;
+      bool2 = true;
+    }
+    else
+    {
+      bool2 = false;
+    }
+    boolean bool1 = bool2;
+    if (paramInt != -100)
+    {
+      bool1 = bool2;
+      if (paramInt != paramTroopMemberInfo.realLevel)
+      {
+        paramTroopMemberInfo.realLevel = paramInt;
+        bool1 = true;
+      }
+    }
+    boolean bool2 = bool1;
+    if (paramLong1 != -100L)
+    {
+      bool2 = bool1;
+      if (paramLong1 != paramTroopMemberInfo.join_time)
+      {
+        paramTroopMemberInfo.join_time = paramLong1;
+        bool2 = true;
+      }
+    }
+    bool1 = bool2;
+    if (paramLong2 != -100L)
+    {
+      bool1 = bool2;
+      if (paramLong2 != paramTroopMemberInfo.last_active_time)
+      {
+        paramTroopMemberInfo.last_active_time = paramLong2;
+        bool1 = true;
+      }
     }
     return bool1;
   }
   
   private boolean assignMemberInfo3(long paramLong, int paramInt1, int paramInt2, int paramInt3, TroopMemberInfo paramTroopMemberInfo)
   {
-    boolean bool2 = false;
     if (paramLong != -100L) {
       paramTroopMemberInfo.msgseq = paramLong;
     }
-    boolean bool1 = bool2;
-    if (paramInt1 != -100)
+    boolean bool1;
+    if ((paramInt1 != -100) && (paramInt1 != paramTroopMemberInfo.age))
     {
-      bool1 = bool2;
-      if (paramInt1 != paramTroopMemberInfo.age)
-      {
-        paramTroopMemberInfo.age = ((byte)paramInt1);
-        bool1 = true;
-      }
+      paramTroopMemberInfo.age = ((byte)paramInt1);
+      bool1 = true;
     }
-    bool2 = bool1;
+    else
+    {
+      bool1 = false;
+    }
+    boolean bool2 = bool1;
     if (paramInt2 != -100)
     {
       bool2 = bool1;
@@ -209,85 +242,91 @@ public class TroopMemberInfoServiceImpl
   
   private boolean assignNick(String paramString1, String paramString2, TroopMemberInfo paramTroopMemberInfo)
   {
-    boolean bool2 = false;
-    if (paramString1 == null) {}
-    for (String str = null;; str = removeColorNickChar(paramString1))
+    String str;
+    if (paramString1 == null) {
+      str = null;
+    } else {
+      str = removeColorNickChar(paramString1);
+    }
+    if ((paramString1 != null) && (!paramString1.equals(paramTroopMemberInfo.troopColorNick)))
     {
-      boolean bool1 = bool2;
-      if (paramString1 != null)
+      paramTroopMemberInfo.troopColorNick = paramString1;
+      bool2 = true;
+    }
+    else
+    {
+      bool2 = false;
+    }
+    boolean bool1 = bool2;
+    if (str != null)
+    {
+      bool1 = bool2;
+      if (!str.equals(paramTroopMemberInfo.troopnick))
       {
-        bool1 = bool2;
-        if (!paramString1.equals(paramTroopMemberInfo.troopColorNick))
-        {
-          paramTroopMemberInfo.troopColorNick = paramString1;
-          bool1 = true;
-        }
+        paramTroopMemberInfo.troopnick = str;
+        bool1 = true;
       }
+    }
+    boolean bool2 = bool1;
+    if (paramString2 != null)
+    {
       bool2 = bool1;
-      if (str != null)
+      if (!paramString2.equals(paramTroopMemberInfo.friendnick))
       {
-        bool2 = bool1;
-        if (!str.equals(paramTroopMemberInfo.troopnick))
-        {
-          paramTroopMemberInfo.troopnick = str;
-          bool2 = true;
-        }
+        paramTroopMemberInfo.friendnick = paramString2;
+        bool2 = true;
       }
-      if ((paramString2 == null) || (paramString2.equals(paramTroopMemberInfo.friendnick))) {
-        break;
-      }
-      paramTroopMemberInfo.friendnick = paramString2;
-      return true;
     }
     return bool2;
   }
   
   private boolean assignNickNameId(int paramInt, TroopMemberInfo paramTroopMemberInfo)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (-100 != paramInt)
+    if ((-100 != paramInt) && (paramInt != paramTroopMemberInfo.troopColorNickId))
     {
-      bool1 = bool2;
-      if (paramInt != paramTroopMemberInfo.troopColorNickId)
-      {
-        paramTroopMemberInfo.troopColorNickId = paramInt;
-        bool1 = true;
-      }
+      paramTroopMemberInfo.troopColorNickId = paramInt;
+      return true;
     }
-    return bool1;
+    return false;
   }
   
   private boolean assignVip(int paramInt1, int paramInt2, TroopMemberInfo paramTroopMemberInfo)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramInt1 != -100)
+    boolean bool1;
+    if ((paramInt1 != -100) && (paramInt1 != paramTroopMemberInfo.mVipType))
     {
-      bool1 = bool2;
-      if (paramInt1 != paramTroopMemberInfo.mVipType)
+      paramTroopMemberInfo.mVipType = paramInt1;
+      bool1 = true;
+    }
+    else
+    {
+      bool1 = false;
+    }
+    boolean bool2 = bool1;
+    if (paramInt2 != -100)
+    {
+      bool2 = bool1;
+      if (paramInt2 != paramTroopMemberInfo.mVipLevel)
       {
-        paramTroopMemberInfo.mVipType = paramInt1;
-        bool1 = true;
+        paramTroopMemberInfo.mVipLevel = paramInt2;
+        bool2 = true;
       }
     }
-    if ((paramInt2 != -100) && (paramInt2 != paramTroopMemberInfo.mVipLevel))
-    {
-      paramTroopMemberInfo.mVipLevel = paramInt2;
-      return true;
-    }
-    return bool1;
+    return bool2;
   }
   
   private void deleteTroopMemberInLruCache(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
-    do
+    if (!TextUtils.isEmpty(paramString1))
     {
-      return;
+      if (TextUtils.isEmpty(paramString2)) {
+        return;
+      }
       paramString1 = (LruCache)this.troopMembers1.get(paramString1);
-    } while (paramString1 == null);
-    paramString1.remove(paramString2);
+      if (paramString1 != null) {
+        paramString1.remove(paramString2);
+      }
+    }
   }
   
   private void deleteTroopMembersInLruCache(String paramString)
@@ -298,6 +337,168 @@ public class TroopMemberInfoServiceImpl
     this.troopMembers1.remove(paramString);
   }
   
+  private void handleOnTroopManagerSuccess(int paramInt1, int paramInt2, String paramString)
+  {
+    Object localObject;
+    if (paramInt1 != 2)
+    {
+      if (paramInt1 != 3)
+      {
+        if ((paramInt1 != 4) && (paramInt1 != 6))
+        {
+          if (paramInt1 == 9) {
+            break label200;
+          }
+          return;
+        }
+        localObject = ((ITroopInfoService)this.app.getRuntimeService(ITroopInfoService.class, "")).findTroopInfo(paramString);
+        if ((localObject == null) || (!TroopCommonConfig.a(this.app, (TroopInfo)localObject, true))) {
+          return;
+        }
+        TroopMemberListHandler localTroopMemberListHandler = (TroopMemberListHandler)((AppInterface)this.app).getBusinessHandler(TroopMemberListHandler.class.getName());
+        if (localTroopMemberListHandler == null) {
+          return;
+        }
+        try
+        {
+          if (this.mGetTroopMemberListTroops == null)
+          {
+            this.mGetTroopMemberListTroops = new ArrayList();
+            this.mGetTroopMemberListTroops.add(localObject);
+            localTroopMemberListHandler.a(true, paramString, ((TroopInfo)localObject).troopcode, 9);
+          }
+          else
+          {
+            this.mGetTroopMemberListTroops.add(localObject);
+          }
+          return;
+        }
+        finally {}
+      }
+      localObject = new ArrayList();
+      ((ArrayList)localObject).add(paramString);
+      ((ITroopMemberInfoService)this.app.getRuntimeService(ITroopMemberInfoService.class, "")).notifyTroopMembersUpdate((ArrayList)localObject);
+      return;
+    }
+    label200:
+    ((ITroopMemberInfoService)this.app.getRuntimeService(ITroopMemberInfoService.class, "")).notifyQuitTroop(paramString);
+    try
+    {
+      if (this.mGetTroopMemberListTroops != null)
+      {
+        localObject = this.mGetTroopMemberListTroops.iterator();
+        while (((Iterator)localObject).hasNext()) {
+          if (((TroopInfo)((Iterator)localObject).next()).troopuin.equals(paramString)) {
+            ((Iterator)localObject).remove();
+          }
+        }
+      }
+      return;
+    }
+    finally
+    {
+      for (;;)
+      {
+        throw paramString;
+      }
+    }
+  }
+  
+  private void handleOnUpdateTroopGetMemberList(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  {
+    if (QLog.isColorLevel())
+    {
+      paramList = new StringBuilder();
+      paramList.append("onUpdateTroopGetMemberList(memberLimit), troopUin:");
+      paramList.append(paramString);
+      paramList.append(", mGetTroopMemberListTroops == null:");
+      boolean bool;
+      if (this.mGetTroopMemberListTroops == null) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      paramList.append(bool);
+      QLog.i("TroopMemberInfoService", 2, paramList.toString());
+    }
+    paramList = new ArrayList();
+    paramList.add(paramString);
+    Object localObject = this.mGetTroopMemberListTroops;
+    if (localObject == null)
+    {
+      ((ITroopMemberInfoService)this.app.getRuntimeService(ITroopMemberInfoService.class, "")).notifyTroopMembersUpdate(paramList);
+      return;
+    }
+    if (((ArrayList)localObject).size() > 0)
+    {
+      localObject = (TroopInfo)this.mGetTroopMemberListTroops.get(0);
+      if (!((TroopInfo)localObject).troopuin.equals(paramString)) {
+        return;
+      }
+      TroopMemberListHandler localTroopMemberListHandler = (TroopMemberListHandler)((AppInterface)this.app).getBusinessHandler(TroopMemberListHandler.class.getName());
+      if (!paramBoolean)
+      {
+        paramInt1 = this.mRetryGetTroopMemberListCount;
+        this.mRetryGetTroopMemberListCount = (paramInt1 + 1);
+        if ((paramInt1 < 3) && (localTroopMemberListHandler != null))
+        {
+          localTroopMemberListHandler.a(true, ((TroopInfo)localObject).troopuin, ((TroopInfo)localObject).troopcode, 4);
+          if (QLog.isColorLevel())
+          {
+            paramString = new StringBuilder();
+            paramString.append("getTroopsMemberList(memberLimit), failed, retry mRetryGetTroopMemberListCount:");
+            paramString.append(this.mRetryGetTroopMemberListCount);
+            paramString.append(", troopUin");
+            paramString.append(((TroopInfo)localObject).troopuin);
+            QLog.w("TroopMemberInfoService", 2, paramString.toString());
+          }
+          return;
+        }
+        ((ITroopMemberInfoService)this.app.getRuntimeService(ITroopMemberInfoService.class, "")).notifyGetTroopMembersFailed(paramString);
+      }
+      else
+      {
+        ((ITroopMemberInfoService)this.app.getRuntimeService(ITroopMemberInfoService.class, "")).notifyTroopMembersUpdate(paramList);
+      }
+      if (QLog.isColorLevel())
+      {
+        paramList = new StringBuilder();
+        paramList.append("notifyTroopMembersUpdate, troopUin:");
+        paramList.append(paramString);
+        QLog.i("TroopMemberInfoService", 2, paramList.toString());
+      }
+      handlerUpdateNext();
+    }
+  }
+  
+  private void handlerUpdateNext()
+  {
+    try
+    {
+      this.mGetTroopMemberListTroops.remove(0);
+      if (this.mGetTroopMemberListTroops.size() > 0)
+      {
+        TroopInfo localTroopInfo = (TroopInfo)this.mGetTroopMemberListTroops.get(0);
+        this.mRetryGetTroopMemberListCount = 0;
+        TroopMemberListHandler localTroopMemberListHandler = (TroopMemberListHandler)((AppInterface)this.app).getBusinessHandler(TroopMemberListHandler.class.getName());
+        if (localTroopMemberListHandler != null) {
+          localTroopMemberListHandler.a(true, localTroopInfo.troopuin, localTroopInfo.troopcode, 4);
+        }
+      }
+      else
+      {
+        try
+        {
+          this.mGetTroopMemberListTroops = null;
+          return;
+        }
+        finally {}
+      }
+      return;
+    }
+    finally {}
+  }
+  
   private static String removeColorNickChar(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
@@ -305,7 +506,7 @@ public class TroopMemberInfoServiceImpl
     }
     StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
-    if (i < paramString.length())
+    while (i < paramString.length())
     {
       if (paramString.charAt(i) == '<')
       {
@@ -314,12 +515,11 @@ public class TroopMemberInfoServiceImpl
           i = j;
         }
       }
-      for (;;)
+      else
       {
-        i += 1;
-        break;
         localStringBuilder.append(paramString.charAt(i));
       }
+      i += 1;
     }
     return localStringBuilder.toString();
   }
@@ -331,16 +531,19 @@ public class TroopMemberInfoServiceImpl
   
   private boolean saveTroopMemberEx(String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, int paramInt3, int paramInt4, long paramLong1, byte paramByte, long paramLong2, double paramDouble, String paramString6, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11, long paramLong3, long paramLong4, int paramInt12)
   {
-    TroopMemberInfo localTroopMemberInfo = getTroopMember(paramString1, paramString2);
-    boolean bool = false;
-    paramString5 = localTroopMemberInfo;
-    if (localTroopMemberInfo == null)
+    paramString5 = getTroopMember(paramString1, paramString2);
+    boolean bool;
+    if (paramString5 == null)
     {
       paramString5 = new TroopMemberInfo();
       paramString5.troopuin = paramString1;
       paramString5.memberuin = paramString2;
       paramString5.isTroopFollowed = false;
       bool = true;
+    }
+    else
+    {
+      bool = false;
     }
     if (assignNick(paramString3, paramString4, paramString5)) {
       bool = true;
@@ -351,41 +554,37 @@ public class TroopMemberInfoServiceImpl
     if (assignVip(paramInt6, paramInt7, paramString5)) {
       bool = true;
     }
-    for (;;)
-    {
-      if (assignBigClub(paramInt8, paramInt9, paramInt10, paramInt11, paramString5)) {
-        bool = true;
-      }
-      for (;;)
-      {
-        if (assignMemberInfo1(paramString1, paramString2, paramInt1, paramLong2, paramByte, paramDouble, paramString5)) {}
-        for (int i = 1;; i = bool)
-        {
-          if (assignMemberInfo2(paramString6, paramInt5, paramLong3, paramLong4, paramString5)) {
-            i = 1;
-          }
-          if ((paramLong1 != -100L) && (paramLong1 < paramString5.msgseq)) {}
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("TroopMemberInfoService", 2, "saveTroopMemberEx ," + paramString5.toString());
-            }
-            if (i == 0) {
-              break;
-            }
-            if (paramString5.getStatus() == 1000) {
-              saveTroopMemberInfoInLruCache(paramString1, paramString2, paramString5);
-            }
-            addSaveTask(new TroopMemberInfoServiceImpl.SaveTroopMemberTask(this, paramString5, bool));
-            return true;
-            if (assignMemberInfo3(paramLong1, paramInt2, paramInt3, paramInt4, paramString5)) {
-              i = 1;
-            }
-          }
-          return false;
-        }
-      }
+    if (assignBigClub(paramInt8, paramInt9, paramInt10, paramInt11, paramString5)) {
+      bool = true;
     }
+    int i;
+    if (assignMemberInfo1(paramString1, paramString2, paramInt1, paramLong2, paramByte, paramDouble, paramString5)) {
+      i = 1;
+    } else {
+      i = bool;
+    }
+    if (assignMemberInfo2(paramString6, paramInt5, paramLong3, paramLong4, paramString5)) {
+      i = 1;
+    }
+    if (((paramLong1 == -100L) || (paramLong1 >= paramString5.msgseq)) && (assignMemberInfo3(paramLong1, paramInt2, paramInt3, paramInt4, paramString5))) {
+      i = 1;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString3 = new StringBuilder();
+      paramString3.append("saveTroopMemberEx ,");
+      paramString3.append(paramString5.toString());
+      QLog.d("TroopMemberInfoService", 2, paramString3.toString());
+    }
+    if (i != 0)
+    {
+      if (paramString5.getStatus() == 1000) {
+        saveTroopMemberInfoInLruCache(paramString1, paramString2, paramString5);
+      }
+      addSaveTask(new TroopMemberInfoServiceImpl.SaveTroopMemberTask(this, paramString5, bool));
+      return true;
+    }
+    return false;
   }
   
   private boolean saveTroopMemberEx(String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, int paramInt3, int paramInt4, long paramLong1, byte paramByte, long paramLong2, double paramDouble, String paramString6, int paramInt5, int paramInt6, int paramInt7, long paramLong3, long paramLong4)
@@ -420,8 +619,16 @@ public class TroopMemberInfoServiceImpl
   
   public boolean deleteTroopMember(String paramString1, String paramString2, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberInfoService", 2, "deleteTroopMember, troopUin=" + paramString1 + ",memberUin=" + paramString2 + ",updateHeadAndName=" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("deleteTroopMember, troopUin=");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(",memberUin=");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(",updateHeadAndName=");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.d("TroopMemberInfoService", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = this.app.getEntityManagerFactory().createEntityManager();
     if (localObject == null) {
@@ -461,208 +668,222 @@ public class TroopMemberInfoServiceImpl
   public boolean deleteTroopMembers(String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: aload_1
-    //   3: invokestatic 216	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   6: ifeq +5 -> 11
-    //   9: iconst_0
-    //   10: ireturn
-    //   11: aload_0
-    //   12: getfield 319	com/tencent/mobileqq/troop/api/impl/TroopMemberInfoServiceImpl:app	Lmqq/app/AppRuntime;
-    //   15: invokevirtual 325	mqq/app/AppRuntime:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
-    //   18: invokevirtual 331	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   21: astore 5
-    //   23: aload 5
-    //   25: invokevirtual 392	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   28: astore 4
-    //   30: aload 4
-    //   32: astore_3
-    //   33: aload_3
-    //   34: invokevirtual 397	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
-    //   37: aload 5
-    //   39: ldc 71
-    //   41: iconst_0
-    //   42: ldc_w 399
-    //   45: iconst_1
-    //   46: anewarray 152	java/lang/String
-    //   49: dup
-    //   50: iconst_0
-    //   51: aload_1
-    //   52: aastore
+    //   0: aload_1
+    //   1: invokestatic 251	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   4: ifeq +5 -> 9
+    //   7: iconst_0
+    //   8: ireturn
+    //   9: aload_0
+    //   10: getfield 262	com/tencent/mobileqq/troop/api/impl/TroopMemberInfoServiceImpl:app	Lmqq/app/AppRuntime;
+    //   13: invokevirtual 452	mqq/app/AppRuntime:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
+    //   16: invokevirtual 458	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   19: astore 5
+    //   21: aconst_null
+    //   22: astore 4
+    //   24: aconst_null
+    //   25: astore_2
+    //   26: aload 5
+    //   28: invokevirtual 507	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   31: astore_3
+    //   32: aload_3
+    //   33: invokevirtual 512	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   36: aload 5
+    //   38: ldc 106
+    //   40: iconst_0
+    //   41: ldc_w 514
+    //   44: iconst_1
+    //   45: anewarray 187	java/lang/String
+    //   48: dup
+    //   49: iconst_0
+    //   50: aload_1
+    //   51: aastore
+    //   52: aconst_null
     //   53: aconst_null
     //   54: aconst_null
     //   55: aconst_null
-    //   56: aconst_null
-    //   57: invokevirtual 403	com/tencent/mobileqq/persistence/EntityManager:query	(Ljava/lang/Class;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
-    //   60: astore 4
-    //   62: aload 4
-    //   64: ifnull +15 -> 79
-    //   67: aload 4
-    //   69: invokeinterface 407 1 0
-    //   74: istore_2
-    //   75: iload_2
-    //   76: ifeq +13 -> 89
-    //   79: aload_3
-    //   80: ifnull +7 -> 87
-    //   83: aload_3
-    //   84: invokevirtual 410	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   87: iconst_0
-    //   88: ireturn
-    //   89: aload 4
-    //   91: invokeinterface 414 1 0
-    //   96: astore 4
-    //   98: aload 4
-    //   100: invokeinterface 419 1 0
-    //   105: ifeq +55 -> 160
-    //   108: aload 5
-    //   110: aload 4
-    //   112: invokeinterface 423 1 0
-    //   117: checkcast 71	com/tencent/mobileqq/data/troop/TroopMemberInfo
-    //   120: invokevirtual 352	com/tencent/mobileqq/persistence/EntityManager:remove	(Lcom/tencent/mobileqq/persistence/Entity;)Z
-    //   123: pop
-    //   124: goto -26 -> 98
-    //   127: astore 4
-    //   129: ldc 13
-    //   131: iconst_2
-    //   132: ldc_w 425
-    //   135: aload 4
-    //   137: invokestatic 429	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   140: aload_3
-    //   141: ifnull +7 -> 148
-    //   144: aload_3
-    //   145: invokevirtual 410	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   148: aload 5
-    //   150: invokevirtual 374	com/tencent/mobileqq/persistence/EntityManager:close	()V
-    //   153: aload_0
-    //   154: aload_1
-    //   155: invokespecial 431	com/tencent/mobileqq/troop/api/impl/TroopMemberInfoServiceImpl:deleteTroopMembersInLruCache	(Ljava/lang/String;)V
-    //   158: iconst_1
-    //   159: ireturn
-    //   160: aload_3
-    //   161: invokevirtual 434	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
-    //   164: aload_3
-    //   165: ifnull -17 -> 148
-    //   168: aload_3
-    //   169: invokevirtual 410	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   172: goto -24 -> 148
-    //   175: astore_1
-    //   176: aconst_null
-    //   177: astore_3
-    //   178: aload_3
-    //   179: ifnull +7 -> 186
-    //   182: aload_3
-    //   183: invokevirtual 410	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   186: aload_1
-    //   187: athrow
-    //   188: astore_1
-    //   189: goto -11 -> 178
-    //   192: astore_1
-    //   193: goto -15 -> 178
-    //   196: astore 4
-    //   198: goto -69 -> 129
+    //   56: invokevirtual 518	com/tencent/mobileqq/persistence/EntityManager:query	(Ljava/lang/Class;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
+    //   59: astore_2
+    //   60: aload_2
+    //   61: ifnull +64 -> 125
+    //   64: aload_2
+    //   65: invokeinterface 522 1 0
+    //   70: ifeq +6 -> 76
+    //   73: goto +52 -> 125
+    //   76: aload_2
+    //   77: invokeinterface 523 1 0
+    //   82: astore_2
+    //   83: aload_2
+    //   84: invokeinterface 322 1 0
+    //   89: ifeq +21 -> 110
+    //   92: aload 5
+    //   94: aload_2
+    //   95: invokeinterface 326 1 0
+    //   100: checkcast 106	com/tencent/mobileqq/data/troop/TroopMemberInfo
+    //   103: invokevirtual 469	com/tencent/mobileqq/persistence/EntityManager:remove	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   106: pop
+    //   107: goto -24 -> 83
+    //   110: aload_3
+    //   111: invokevirtual 526	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   114: aload_3
+    //   115: ifnull +63 -> 178
+    //   118: aload_3
+    //   119: invokevirtual 529	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   122: goto +56 -> 178
+    //   125: aload_3
+    //   126: ifnull +7 -> 133
+    //   129: aload_3
+    //   130: invokevirtual 529	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   133: iconst_0
+    //   134: ireturn
+    //   135: astore_1
+    //   136: goto +54 -> 190
+    //   139: astore 4
+    //   141: goto +16 -> 157
+    //   144: astore_1
+    //   145: aload_2
+    //   146: astore_3
+    //   147: goto +43 -> 190
+    //   150: astore_2
+    //   151: aload 4
+    //   153: astore_3
+    //   154: aload_2
+    //   155: astore 4
+    //   157: aload_3
+    //   158: astore_2
+    //   159: ldc 13
+    //   161: iconst_2
+    //   162: ldc_w 531
+    //   165: aload 4
+    //   167: invokestatic 535	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   170: aload_3
+    //   171: ifnull +7 -> 178
+    //   174: aload_3
+    //   175: invokevirtual 529	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   178: aload 5
+    //   180: invokevirtual 489	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   183: aload_0
+    //   184: aload_1
+    //   185: invokespecial 537	com/tencent/mobileqq/troop/api/impl/TroopMemberInfoServiceImpl:deleteTroopMembersInLruCache	(Ljava/lang/String;)V
+    //   188: iconst_1
+    //   189: ireturn
+    //   190: aload_3
+    //   191: ifnull +7 -> 198
+    //   194: aload_3
+    //   195: invokevirtual 529	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   198: goto +5 -> 203
+    //   201: aload_1
+    //   202: athrow
+    //   203: goto -2 -> 201
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	201	0	this	TroopMemberInfoServiceImpl
-    //   0	201	1	paramString	String
-    //   74	2	2	bool	boolean
-    //   1	182	3	localObject1	Object
-    //   28	83	4	localObject2	Object
-    //   127	9	4	localException1	java.lang.Exception
-    //   196	1	4	localException2	java.lang.Exception
-    //   21	128	5	localEntityManager	EntityManager
+    //   0	206	0	this	TroopMemberInfoServiceImpl
+    //   0	206	1	paramString	String
+    //   25	121	2	localObject1	Object
+    //   150	5	2	localException1	java.lang.Exception
+    //   158	1	2	localObject2	Object
+    //   31	164	3	localObject3	Object
+    //   22	1	4	localObject4	Object
+    //   139	13	4	localException2	java.lang.Exception
+    //   155	11	4	localObject5	Object
+    //   19	160	5	localEntityManager	EntityManager
     // Exception table:
     //   from	to	target	type
-    //   33	62	127	java/lang/Exception
-    //   67	75	127	java/lang/Exception
-    //   89	98	127	java/lang/Exception
-    //   98	124	127	java/lang/Exception
-    //   160	164	127	java/lang/Exception
-    //   23	30	175	finally
-    //   33	62	188	finally
-    //   67	75	188	finally
-    //   89	98	188	finally
-    //   98	124	188	finally
-    //   160	164	188	finally
-    //   129	140	192	finally
-    //   23	30	196	java/lang/Exception
+    //   32	60	135	finally
+    //   64	73	135	finally
+    //   76	83	135	finally
+    //   83	107	135	finally
+    //   110	114	135	finally
+    //   32	60	139	java/lang/Exception
+    //   64	73	139	java/lang/Exception
+    //   76	83	139	java/lang/Exception
+    //   83	107	139	java/lang/Exception
+    //   110	114	139	java/lang/Exception
+    //   26	32	144	finally
+    //   159	170	144	finally
+    //   26	32	150	java/lang/Exception
   }
   
   public List<TroopMemberInfo> enhanceTroopMemberList(String paramString, List<TroopMemberInfo> paramList)
   {
+    boolean bool = QLog.isColorLevel();
     int k = 0;
     Object localObject1;
     int i;
-    Object localObject2;
-    if (QLog.isColorLevel())
+    if (bool)
     {
-      localObject1 = new StringBuilder().append("enhanceTroopMemberList before troopUin = ").append(paramString).append("  memberList.size:");
-      if (paramList != null)
-      {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("enhanceTroopMemberList before troopUin = ");
+      ((StringBuilder)localObject1).append(paramString);
+      ((StringBuilder)localObject1).append("  memberList.size:");
+      if (paramList != null) {
         i = paramList.size();
-        QLog.d("TroopMemberInfoService", 2, i);
+      } else {
+        i = 0;
       }
+      ((StringBuilder)localObject1).append(i);
+      QLog.d("TroopMemberInfoService", 2, ((StringBuilder)localObject1).toString());
+    }
+    Object localObject2;
+    if (paramList != null)
+    {
+      localObject2 = paramList;
+      if (paramList.size() >= 6) {}
     }
     else
     {
-      if (paramList != null)
-      {
-        localObject2 = paramList;
-        if (paramList.size() >= 6) {
-          break label237;
-        }
-      }
       ArrayList localArrayList = getTroopMembersInLruCache(paramString);
       localObject2 = paramList;
-      if (localArrayList.isEmpty()) {
-        break label237;
-      }
-      localObject1 = paramList;
-      if (paramList == null) {
-        localObject1 = new ArrayList();
-      }
-      i = 0;
-      label116:
-      localObject2 = localObject1;
-      if (i >= localArrayList.size()) {
-        break label237;
-      }
-      localObject2 = localObject1;
-      if (i >= 6) {
-        break label237;
-      }
-      paramList = (TroopMemberInfo)localArrayList.get(i);
-      localObject2 = ((List)localObject1).iterator();
-      TroopMemberInfo localTroopMemberInfo;
-      do
+      if (!localArrayList.isEmpty())
       {
-        if (!((Iterator)localObject2).hasNext()) {
-          break;
+        localObject1 = paramList;
+        if (paramList == null) {
+          localObject1 = new ArrayList();
         }
-        localTroopMemberInfo = (TroopMemberInfo)((Iterator)localObject2).next();
-      } while ((localTroopMemberInfo == null) || (paramList == null) || (!TextUtils.equals(localTroopMemberInfo.memberuin, paramList.memberuin)));
+        i = 0;
+        for (;;)
+        {
+          localObject2 = localObject1;
+          if (i >= localArrayList.size()) {
+            break;
+          }
+          localObject2 = localObject1;
+          if (i >= 6) {
+            break;
+          }
+          paramList = (TroopMemberInfo)localArrayList.get(i);
+          localObject2 = ((List)localObject1).iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            TroopMemberInfo localTroopMemberInfo = (TroopMemberInfo)((Iterator)localObject2).next();
+            if ((localTroopMemberInfo != null) && (paramList != null) && (TextUtils.equals(localTroopMemberInfo.memberuin, paramList.memberuin)))
+            {
+              j = 1;
+              break label238;
+            }
+          }
+          int j = 0;
+          label238:
+          if (j == 0) {
+            ((List)localObject1).add(paramList);
+          }
+          i += 1;
+        }
+      }
     }
-    for (int j = 1;; j = 0)
+    if (QLog.isColorLevel())
     {
-      if (j == 0) {
-        ((List)localObject1).add(paramList);
+      paramList = new StringBuilder();
+      paramList.append("enhanceTroopMemberList after troopUin = ");
+      paramList.append(paramString);
+      paramList.append("  memberList.size:");
+      i = k;
+      if (localObject2 != null) {
+        i = ((List)localObject2).size();
       }
-      i += 1;
-      break label116;
-      i = 0;
-      break;
-      label237:
-      if (QLog.isColorLevel())
-      {
-        paramString = new StringBuilder().append("enhanceTroopMemberList after troopUin = ").append(paramString).append("  memberList.size:");
-        i = k;
-        if (localObject2 != null) {
-          i = ((List)localObject2).size();
-        }
-        QLog.d("TroopMemberInfoService", 2, i);
-      }
-      return localObject2;
+      paramList.append(i);
+      QLog.d("TroopMemberInfoService", 2, paramList.toString());
     }
+    return localObject2;
   }
   
   public List<TroopMemberInfo> getAllTroopMembers(String paramString)
@@ -682,94 +903,111 @@ public class TroopMemberInfoServiceImpl
   
   public TroopMemberInfo getTroopMemberInLruCache(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return null;
+    boolean bool = TextUtils.isEmpty(paramString1);
+    TroopMemberInfo localTroopMemberInfo = null;
+    if (!bool)
+    {
+      if (TextUtils.isEmpty(paramString2)) {
+        return null;
+      }
+      paramString1 = (LruCache)this.troopMembers1.get(paramString1);
+      if (paramString1 == null) {
+        return null;
+      }
+      localTroopMemberInfo = (TroopMemberInfo)paramString1.get(paramString2);
     }
-    paramString1 = (LruCache)this.troopMembers1.get(paramString1);
-    if (paramString1 == null) {
-      return null;
-    }
-    return (TroopMemberInfo)paramString1.get(paramString2);
+    return localTroopMemberInfo;
   }
   
   public void getTroopMemberInfo(String paramString1, String paramString2, ITroopMemberInfoService.ITroopMemberInfoCallBack paramITroopMemberInfoCallBack)
   {
-    if (Looper.myLooper() != Looper.getMainLooper()) {
+    Object localObject1;
+    if (Looper.myLooper() != Looper.getMainLooper())
+    {
       if (paramITroopMemberInfoCallBack != null)
       {
-        localObject = getTroopMemberInLruCache(paramString1, paramString2);
-        if (localObject == null) {
-          break label35;
+        localObject1 = getTroopMemberInLruCache(paramString1, paramString2);
+        if (localObject1 != null)
+        {
+          paramITroopMemberInfoCallBack.a((TroopMemberInfo)localObject1);
+          return;
         }
-        paramITroopMemberInfoCallBack.a((TroopMemberInfo)localObject);
+        paramITroopMemberInfoCallBack.a(getTroopMemberInfoFromDb(paramString1, paramString2));
       }
     }
-    label35:
-    do
+    else
     {
-      return;
-      paramITroopMemberInfoCallBack.a(getTroopMemberInfoFromDb(paramString1, paramString2));
-      return;
-      List localList = (List)this.mTmiCallBackRefMap.get(paramString1 + "_" + paramString2);
-      localObject = localList;
-      if (localList != null) {
-        break label166;
+      localObject1 = this.mTmiCallBackRefMap;
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramString1);
+      ((StringBuilder)localObject2).append("_");
+      ((StringBuilder)localObject2).append(paramString2);
+      localObject2 = (List)((Map)localObject1).get(((StringBuilder)localObject2).toString());
+      localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        localObject1 = getTroopMemberInLruCache(paramString1, paramString2);
+        if (localObject1 != null)
+        {
+          if (paramITroopMemberInfoCallBack != null) {
+            paramITroopMemberInfoCallBack.a((TroopMemberInfo)localObject1);
+          }
+          return;
+        }
+        localObject1 = new ArrayList();
+        localObject2 = this.mTmiCallBackRefMap;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString1);
+        localStringBuilder.append("_");
+        localStringBuilder.append(paramString2);
+        ((Map)localObject2).put(localStringBuilder.toString(), localObject1);
       }
-      localObject = getTroopMemberInLruCache(paramString1, paramString2);
-      if (localObject == null) {
-        break;
+      if (!((List)localObject1).isEmpty()) {
+        break label240;
       }
-    } while (paramITroopMemberInfoCallBack == null);
-    paramITroopMemberInfoCallBack.a((TroopMemberInfo)localObject);
+      ((List)localObject1).add(new WeakReference(paramITroopMemberInfoCallBack));
+      TroopMemberThreadManager.a(new TroopMemberInfoServiceImpl.4(this, paramString1, paramString2));
+    }
     return;
-    Object localObject = new ArrayList();
-    this.mTmiCallBackRefMap.put(paramString1 + "_" + paramString2, localObject);
-    label166:
-    if (((List)localObject).isEmpty())
-    {
-      ((List)localObject).add(new WeakReference(paramITroopMemberInfoCallBack));
-      TroopMemberThreadManager.a(new TroopMemberInfoServiceImpl.2(this, paramString1, paramString2));
-      return;
-    }
-    ((List)localObject).add(new WeakReference(paramITroopMemberInfoCallBack));
+    label240:
+    ((List)localObject1).add(new WeakReference(paramITroopMemberInfoCallBack));
   }
   
   public TroopMemberInfo getTroopMemberInfoFromDb(String paramString1, String paramString2)
   {
-    if (StatisticCollector.getSqliteSwitchBySample(12)) {}
-    for (long l = SystemClock.uptimeMillis();; l = 0L)
-    {
-      Object localObject = this.app.getEntityManagerFactory().createEntityManager();
-      List localList = ((EntityManager)localObject).query(TroopMemberInfo.class, false, "troopuin=? AND memberuin=?", new String[] { paramString1, paramString2 }, null, null, null, null);
-      ((EntityManager)localObject).close();
-      HashMap localHashMap;
-      if (l != 0L)
-      {
-        l = SystemClock.uptimeMillis() - l;
-        localHashMap = new HashMap(10);
-        if (Looper.myLooper() != Looper.getMainLooper()) {
-          break label233;
-        }
-      }
-      label233:
-      for (localObject = "1";; localObject = "0")
-      {
-        localHashMap.put("param_IsMainThread", localObject);
-        localHashMap.put("param_OptType", "query");
-        localHashMap.put("param_bustag", "Troop");
-        localHashMap.put("param_intrans", "0");
-        localHashMap.put("param_OptTotalCost", String.valueOf(l));
-        localHashMap.put("param_WalSwitch", String.valueOf(SQLiteOpenHelper.WAL_ENABLE));
-        StatisticCollector.getInstance(this.app.getApplicationContext()).collectPerformance(null, "actFriendSqliteOpt", true, l, 0L, localHashMap, null, false);
-        if ((localList == null) || (localList.size() <= 0)) {
-          break;
-        }
-        localObject = (TroopMemberInfo)localList.get(0);
-        saveTroopMemberInfoInLruCache(paramString1, paramString2, (TroopMemberInfo)localObject);
-        return localObject;
-      }
-      return null;
+    long l;
+    if (StatisticCollector.getSqliteSwitchBySample(12)) {
+      l = SystemClock.uptimeMillis();
+    } else {
+      l = 0L;
     }
+    Object localObject = this.app.getEntityManagerFactory().createEntityManager();
+    List localList = ((EntityManager)localObject).query(TroopMemberInfo.class, false, "troopuin=? AND memberuin=?", new String[] { paramString1, paramString2 }, null, null, null, null);
+    ((EntityManager)localObject).close();
+    if (l != 0L)
+    {
+      l = SystemClock.uptimeMillis() - l;
+      HashMap localHashMap = new HashMap(10);
+      if (Looper.myLooper() == Looper.getMainLooper()) {
+        localObject = "1";
+      } else {
+        localObject = "0";
+      }
+      localHashMap.put("param_IsMainThread", localObject);
+      localHashMap.put("param_OptType", "query");
+      localHashMap.put("param_bustag", "Troop");
+      localHashMap.put("param_intrans", "0");
+      localHashMap.put("param_OptTotalCost", String.valueOf(l));
+      localHashMap.put("param_WalSwitch", String.valueOf(SQLiteOpenHelper.WAL_ENABLE));
+      StatisticCollector.getInstance(this.app.getApplicationContext()).collectPerformance(null, "actFriendSqliteOpt", true, l, 0L, localHashMap, null, false);
+    }
+    if ((localList != null) && (localList.size() > 0))
+    {
+      localObject = (TroopMemberInfo)localList.get(0);
+      saveTroopMemberInfoInLruCache(paramString1, paramString2, (TroopMemberInfo)localObject);
+      return localObject;
+    }
+    return null;
   }
   
   public ArrayList<TroopMemberInfo> getTroopMembersInLruCache(String paramString)
@@ -797,18 +1035,97 @@ public class TroopMemberInfoServiceImpl
     return localArrayList;
   }
   
+  public void getTroopsMemberList()
+  {
+    if (this.mGetTroopMemberListTroops != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("TroopMemberInfoService", 2, "getTroopsMemberList(memberLimit), last getTroopsMemberList(int memberLimit) is not finished.");
+      }
+      return;
+    }
+    Object localObject2 = ((ITroopInfoService)this.app.getRuntimeService(ITroopInfoService.class, "")).getUiTroopList();
+    if (localObject2 == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("TroopMemberInfoService", 2, "getTroopsMemberList(memberLimit), troopList is null");
+      }
+      return;
+    }
+    this.mGetTroopMemberListTroops = new ArrayList();
+    TroopMemberListHandler localTroopMemberListHandler = (TroopMemberListHandler)((AppInterface)this.app).getBusinessHandler(TroopMemberListHandler.class.getName());
+    int j;
+    int i;
+    if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0))
+    {
+      int k = 0;
+      j = 0;
+      int n;
+      for (i = 0; k < ((ArrayList)localObject2).size(); i = n)
+      {
+        TroopInfo localTroopInfo = (TroopInfo)((ArrayList)localObject2).get(k);
+        int m = j;
+        n = i;
+        if (TroopCommonConfig.a(this.app, localTroopInfo, false)) {
+          try
+          {
+            this.mGetTroopMemberListTroops.add(localTroopInfo);
+            m = j + 1;
+            n = i + localTroopInfo.wMemberNum;
+          }
+          finally {}
+        }
+        k += 1;
+        j = m;
+      }
+      if ((this.mGetTroopMemberListTroops.size() > 0) && (localObject1 != null))
+      {
+        localObject2 = (TroopInfo)this.mGetTroopMemberListTroops.get(0);
+        localObject1.a(true, ((TroopInfo)localObject2).troopuin, ((TroopInfo)localObject2).troopcode, 4);
+      }
+      else
+      {
+        this.mGetTroopMemberListTroops = null;
+      }
+    }
+    else
+    {
+      this.mGetTroopMemberListTroops = null;
+      j = 0;
+      i = 0;
+    }
+    if (j > 0)
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("reqUin", this.app.getCurrentUin());
+      localHashMap.put("tpNum", String.valueOf(j));
+      localHashMap.put("tpMemNum", String.valueOf(i));
+      localHashMap.put("isFirst", String.valueOf(this.app.getApp().getSharedPreferences(this.app.getCurrentAccountUin(), 0).getInt("is_first_upgrade_to_500", 0)));
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.app.getCurrentAccountUin(), "tMSearchUpdateReq", false, 0L, 0L, localHashMap, "");
+    }
+  }
+  
   public boolean isMemberInCache(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
-    do
+    boolean bool3 = TextUtils.isEmpty(paramString1);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (!bool3)
     {
-      return false;
+      if (TextUtils.isEmpty(paramString2)) {
+        return false;
+      }
       paramString1 = (LruCache)this.troopMembers1.get(paramString1);
-    } while (paramString1 == null);
-    if (paramString1.get(paramString2) != null) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+      bool1 = bool2;
+      if (paramString1 != null)
+      {
+        bool1 = bool2;
+        if (paramString1.get(paramString2) != null) {
+          bool1 = true;
+        }
+      }
     }
+    return bool1;
   }
   
   public void notifyChangeMember(String paramString1, String paramString2)
@@ -865,9 +1182,19 @@ public class TroopMemberInfoServiceImpl
   {
     this.app = paramAppRuntime;
     this.em = this.app.getEntityManagerFactory().createEntityManager();
+    ((AppInterface)this.app).addObserver(this.mGetTroopMemberListObserver, true);
+    ((AppInterface)this.app).addObserver(this.mTroopMngObserver, true);
   }
   
-  public void onDestroy() {}
+  public void onDestroy()
+  {
+    AppRuntime localAppRuntime = this.app;
+    if (localAppRuntime != null)
+    {
+      ((AppInterface)localAppRuntime).removeObserver(this.mGetTroopMemberListObserver);
+      ((AppInterface)this.app).removeObserver(this.mTroopMngObserver);
+    }
+  }
   
   public void removeTroopMemberUpdateObserver(ITroopMemberInfoService.TroopMemberUpdateObserver paramTroopMemberUpdateObserver)
   {
@@ -885,19 +1212,19 @@ public class TroopMemberInfoServiceImpl
   
   public void runNextSaveTask()
   {
-    if (this.mRunningTask.size() >= 3) {}
-    TroopMemberInfoServiceImpl.SaveTroopMemberTask localSaveTroopMemberTask;
-    do
+    if (this.mRunningTask.size() >= 3) {
+      return;
+    }
+    if (!this.mSaveTroopMemberTasks.isEmpty())
     {
-      do
+      TroopMemberInfoServiceImpl.SaveTroopMemberTask localSaveTroopMemberTask = (TroopMemberInfoServiceImpl.SaveTroopMemberTask)this.mSaveTroopMemberTasks.poll();
+      if (localSaveTroopMemberTask != null)
       {
-        return;
-      } while (this.mSaveTroopMemberTasks.isEmpty());
-      localSaveTroopMemberTask = (TroopMemberInfoServiceImpl.SaveTroopMemberTask)this.mSaveTroopMemberTasks.poll();
-    } while (localSaveTroopMemberTask == null);
-    this.mCurrentSaveTask = localSaveTroopMemberTask;
-    this.mRunningTask.add(localSaveTroopMemberTask);
-    ThreadManager.excute(localSaveTroopMemberTask, 32, null, false);
+        this.mCurrentSaveTask = localSaveTroopMemberTask;
+        this.mRunningTask.add(localSaveTroopMemberTask);
+        ThreadManager.excute(localSaveTroopMemberTask, 32, null, false);
+      }
+    }
   }
   
   public void saveTroopMember(TroopMemberInfo paramTroopMemberInfo, boolean paramBoolean)
@@ -911,6 +1238,30 @@ public class TroopMemberInfoServiceImpl
   public boolean saveTroopMember(String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2)
   {
     return saveTroopMemberEx(paramString1, paramString2, paramString3, paramInt1, paramString4, paramString5, paramInt2, paramInt3, paramInt4, paramLong1, (byte)-100, paramLong2, -100.0D, -100L, -100L);
+  }
+  
+  public void saveTroopMemberCmduinFlagEx3(String paramString1, String paramString2, long paramLong)
+  {
+    Object localObject2 = getTroopMember(paramString1, paramString2);
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      localObject1 = new TroopMemberInfo();
+      ((TroopMemberInfo)localObject1).memberuin = paramString2;
+      ((TroopMemberInfo)localObject1).troopuin = paramString1;
+    }
+    ((TroopMemberInfo)localObject1).cmduinFlagEx3Grocery = paramLong;
+    localObject2 = this.app.getEntityManagerFactory().createEntityManager();
+    if (((TroopMemberInfo)localObject1).getStatus() == 1000)
+    {
+      saveTroopMemberInfoInLruCache(paramString1, paramString2, (TroopMemberInfo)localObject1);
+      ((EntityManager)localObject2).persistOrReplace((Entity)localObject1);
+    }
+    else
+    {
+      ((EntityManager)localObject2).update((Entity)localObject1);
+    }
+    ((EntityManager)localObject2).close();
   }
   
   public boolean saveTroopMemberEx(String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, int paramInt3, int paramInt4, long paramLong1, byte paramByte, long paramLong2, double paramDouble)
@@ -930,16 +1281,19 @@ public class TroopMemberInfoServiceImpl
   
   public void saveTroopMemberInfoInLruCache(String paramString1, String paramString2, TroopMemberInfo paramTroopMemberInfo)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return;
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      if (TextUtils.isEmpty(paramString2)) {
+        return;
+      }
+      LruCache localLruCache2 = (LruCache)this.troopMembers1.get(paramString1);
+      LruCache localLruCache1 = localLruCache2;
+      if (localLruCache2 == null) {
+        localLruCache1 = new LruCache(48);
+      }
+      localLruCache1.put(paramString2, paramTroopMemberInfo);
+      this.troopMembers1.put(paramString1, localLruCache1);
     }
-    LruCache localLruCache2 = (LruCache)this.troopMembers1.get(paramString1);
-    LruCache localLruCache1 = localLruCache2;
-    if (localLruCache2 == null) {
-      localLruCache1 = new LruCache(48);
-    }
-    localLruCache1.put(paramString2, paramTroopMemberInfo);
-    this.troopMembers1.put(paramString1, localLruCache1);
   }
   
   public void saveTroopMemberInfoToDB(String paramString1, String paramString2, TroopMemberInfo paramTroopMemberInfo)
@@ -947,247 +1301,307 @@ public class TroopMemberInfoServiceImpl
     if (paramTroopMemberInfo == null) {
       return;
     }
-    ThreadManager.post(new TroopMemberInfoServiceImpl.1(this, paramTroopMemberInfo, new Handler(Looper.getMainLooper()), paramString1, paramString2), 8, null, false);
+    ThreadManager.post(new TroopMemberInfoServiceImpl.3(this, paramTroopMemberInfo, new Handler(Looper.getMainLooper()), paramString1, paramString2), 8, null, false);
   }
   
   /* Error */
   public boolean saveTroopMembers(List<TroopMemberInfo> paramList)
   {
     // Byte code:
-    //   0: aload_1
-    //   1: ifnull +12 -> 13
-    //   4: aload_1
-    //   5: invokeinterface 407 1 0
-    //   10: ifeq +7 -> 17
-    //   13: iconst_0
-    //   14: istore_3
-    //   15: iload_3
-    //   16: ireturn
-    //   17: new 655	java/util/HashSet
-    //   20: dup
-    //   21: invokespecial 656	java/util/HashSet:<init>	()V
-    //   24: astore 7
-    //   26: iconst_0
-    //   27: istore_3
-    //   28: iconst_0
-    //   29: istore 4
-    //   31: iconst_0
-    //   32: istore_2
-    //   33: aconst_null
-    //   34: astore 5
-    //   36: aload_0
-    //   37: getfield 462	com/tencent/mobileqq/troop/api/impl/TroopMemberInfoServiceImpl:em	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   40: invokevirtual 392	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   43: astore 6
-    //   45: aload 6
-    //   47: astore 5
-    //   49: iload 4
-    //   51: istore_3
-    //   52: aload 5
-    //   54: invokevirtual 397	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
-    //   57: iload 4
-    //   59: istore_3
-    //   60: aload_1
-    //   61: invokeinterface 414 1 0
-    //   66: astore_1
-    //   67: iload_2
-    //   68: istore_3
-    //   69: aload_1
-    //   70: invokeinterface 419 1 0
-    //   75: ifeq +155 -> 230
-    //   78: iload_2
-    //   79: istore_3
-    //   80: aload_1
-    //   81: invokeinterface 423 1 0
-    //   86: checkcast 71	com/tencent/mobileqq/data/troop/TroopMemberInfo
-    //   89: astore 6
-    //   91: iload_2
-    //   92: istore_3
-    //   93: new 96	java/lang/StringBuilder
-    //   96: dup
-    //   97: invokespecial 97	java/lang/StringBuilder:<init>	()V
-    //   100: aload 6
-    //   102: getfield 256	com/tencent/mobileqq/data/troop/TroopMemberInfo:troopuin	Ljava/lang/String;
-    //   105: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   108: ldc_w 490
-    //   111: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   114: aload 6
-    //   116: getfield 259	com/tencent/mobileqq/data/troop/TroopMemberInfo:memberuin	Ljava/lang/String;
-    //   119: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   122: invokevirtual 116	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   125: astore 8
-    //   127: iload_2
-    //   128: istore_3
-    //   129: aload 6
-    //   131: getfield 259	com/tencent/mobileqq/data/troop/TroopMemberInfo:memberuin	Ljava/lang/String;
-    //   134: ldc_w 658
-    //   137: invokevirtual 156	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   140: ifne -73 -> 67
-    //   143: iload_2
-    //   144: istore_3
-    //   145: aload 7
-    //   147: aload 8
-    //   149: invokevirtual 660	java/util/HashSet:contains	(Ljava/lang/Object;)Z
-    //   152: ifne +198 -> 350
-    //   155: iload_2
-    //   156: istore_3
-    //   157: aload_0
-    //   158: aload 6
-    //   160: getfield 256	com/tencent/mobileqq/data/troop/TroopMemberInfo:troopuin	Ljava/lang/String;
-    //   163: aload 6
-    //   165: getfield 259	com/tencent/mobileqq/data/troop/TroopMemberInfo:memberuin	Ljava/lang/String;
-    //   168: aload 6
-    //   170: getfield 185	com/tencent/mobileqq/data/troop/TroopMemberInfo:troopColorNick	Ljava/lang/String;
-    //   173: aload 6
-    //   175: getfield 88	com/tencent/mobileqq/data/troop/TroopMemberInfo:level	I
-    //   178: aload 6
-    //   180: getfield 191	com/tencent/mobileqq/data/troop/TroopMemberInfo:friendnick	Ljava/lang/String;
-    //   183: aconst_null
-    //   184: aload 6
-    //   186: getfield 174	com/tencent/mobileqq/data/troop/TroopMemberInfo:age	B
-    //   189: aload 6
-    //   191: getfield 177	com/tencent/mobileqq/data/troop/TroopMemberInfo:sex	B
-    //   194: aload 6
-    //   196: getfield 180	com/tencent/mobileqq/data/troop/TroopMemberInfo:distance	I
-    //   199: aload 6
-    //   201: getfield 170	com/tencent/mobileqq/data/troop/TroopMemberInfo:msgseq	J
-    //   204: aload 6
-    //   206: getfield 126	com/tencent/mobileqq/data/troop/TroopMemberInfo:gagTimeStamp	J
-    //   209: invokevirtual 662	com/tencent/mobileqq/troop/api/impl/TroopMemberInfoServiceImpl:saveTroopMember	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;IIIJJ)Z
-    //   212: istore 4
-    //   214: iload 4
-    //   216: iload_2
-    //   217: ior
-    //   218: istore_2
-    //   219: aload 7
-    //   221: aload 8
-    //   223: invokevirtual 663	java/util/HashSet:add	(Ljava/lang/Object;)Z
-    //   226: pop
-    //   227: goto -160 -> 67
-    //   230: iload_2
-    //   231: istore_3
-    //   232: aload 5
-    //   234: invokevirtual 434	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
-    //   237: iload_2
-    //   238: istore_3
-    //   239: aload 5
-    //   241: ifnull -226 -> 15
-    //   244: aload 5
-    //   246: invokevirtual 410	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   249: iload_2
-    //   250: ireturn
-    //   251: astore 6
-    //   253: iload_3
-    //   254: istore_2
-    //   255: aload 5
-    //   257: astore_1
-    //   258: aload 6
-    //   260: astore 5
-    //   262: invokestatic 94	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   265: ifeq +14 -> 279
-    //   268: ldc 13
-    //   270: iconst_2
-    //   271: aload 5
-    //   273: invokestatic 667	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   276: invokestatic 669	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   279: iload_2
-    //   280: istore_3
-    //   281: aload_1
-    //   282: ifnull -267 -> 15
-    //   285: aload_1
-    //   286: invokevirtual 410	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   289: iload_2
-    //   290: ireturn
-    //   291: astore_1
-    //   292: aconst_null
-    //   293: astore 5
-    //   295: aload 5
-    //   297: ifnull +8 -> 305
-    //   300: aload 5
-    //   302: invokevirtual 410	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   305: aload_1
-    //   306: athrow
-    //   307: astore_1
-    //   308: goto -13 -> 295
-    //   311: astore 6
-    //   313: aload_1
-    //   314: astore 5
-    //   316: aload 6
-    //   318: astore_1
-    //   319: goto -24 -> 295
-    //   322: astore 6
-    //   324: aload 5
-    //   326: astore_1
-    //   327: aload 6
-    //   329: astore 5
-    //   331: iload_3
-    //   332: istore_2
-    //   333: goto -71 -> 262
-    //   336: astore_1
-    //   337: aload 5
+    //   0: iconst_0
+    //   1: istore 4
+    //   3: iconst_0
+    //   4: istore_3
+    //   5: aload_1
+    //   6: ifnull +444 -> 450
+    //   9: aload_1
+    //   10: invokeinterface 522 1 0
+    //   15: ifeq +5 -> 20
+    //   18: iconst_0
+    //   19: ireturn
+    //   20: new 819	java/util/HashSet
+    //   23: dup
+    //   24: invokespecial 820	java/util/HashSet:<init>	()V
+    //   27: astore 8
+    //   29: aconst_null
+    //   30: astore 5
+    //   32: aconst_null
+    //   33: astore 6
+    //   35: iload 4
+    //   37: istore_2
+    //   38: aload_0
+    //   39: getfield 560	com/tencent/mobileqq/troop/api/impl/TroopMemberInfoServiceImpl:em	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   42: invokevirtual 507	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   45: astore 7
+    //   47: aload 7
+    //   49: astore 6
+    //   51: iload 4
+    //   53: istore_2
+    //   54: aload 7
+    //   56: astore 5
+    //   58: aload 7
+    //   60: invokevirtual 512	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   63: aload 7
+    //   65: astore 6
+    //   67: iload 4
+    //   69: istore_2
+    //   70: aload 7
+    //   72: astore 5
+    //   74: aload_1
+    //   75: invokeinterface 523 1 0
+    //   80: astore_1
+    //   81: aload 7
+    //   83: astore 6
+    //   85: iload_3
+    //   86: istore_2
+    //   87: aload 7
+    //   89: astore 5
+    //   91: aload_1
+    //   92: invokeinterface 322 1 0
+    //   97: ifeq +262 -> 359
+    //   100: aload 7
+    //   102: astore 6
+    //   104: iload_3
+    //   105: istore_2
+    //   106: aload 7
+    //   108: astore 5
+    //   110: aload_1
+    //   111: invokeinterface 326 1 0
+    //   116: checkcast 106	com/tencent/mobileqq/data/troop/TroopMemberInfo
+    //   119: astore 9
+    //   121: aload 7
+    //   123: astore 6
+    //   125: iload_3
+    //   126: istore_2
+    //   127: aload 7
+    //   129: astore 5
+    //   131: new 131	java/lang/StringBuilder
+    //   134: dup
+    //   135: invokespecial 132	java/lang/StringBuilder:<init>	()V
+    //   138: astore 10
+    //   140: aload 7
+    //   142: astore 6
+    //   144: iload_3
+    //   145: istore_2
+    //   146: aload 7
+    //   148: astore 5
+    //   150: aload 10
+    //   152: aload 9
+    //   154: getfield 393	com/tencent/mobileqq/data/troop/TroopMemberInfo:troopuin	Ljava/lang/String;
+    //   157: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   160: pop
+    //   161: aload 7
+    //   163: astore 6
+    //   165: iload_3
+    //   166: istore_2
+    //   167: aload 7
+    //   169: astore 5
+    //   171: aload 10
+    //   173: ldc_w 587
+    //   176: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   179: pop
+    //   180: aload 7
+    //   182: astore 6
+    //   184: iload_3
+    //   185: istore_2
+    //   186: aload 7
+    //   188: astore 5
+    //   190: aload 10
+    //   192: aload 9
+    //   194: getfield 396	com/tencent/mobileqq/data/troop/TroopMemberInfo:memberuin	Ljava/lang/String;
+    //   197: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   200: pop
+    //   201: aload 7
+    //   203: astore 6
+    //   205: iload_3
+    //   206: istore_2
+    //   207: aload 7
+    //   209: astore 5
+    //   211: aload 10
+    //   213: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   216: astore 10
+    //   218: aload 7
+    //   220: astore 6
+    //   222: iload_3
+    //   223: istore_2
+    //   224: aload 7
+    //   226: astore 5
+    //   228: aload 9
+    //   230: getfield 396	com/tencent/mobileqq/data/troop/TroopMemberInfo:memberuin	Ljava/lang/String;
+    //   233: ldc_w 822
+    //   236: invokevirtual 191	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   239: ifeq +6 -> 245
+    //   242: goto -161 -> 81
+    //   245: aload 7
+    //   247: astore 6
+    //   249: iload_3
+    //   250: istore_2
+    //   251: aload 7
+    //   253: astore 5
+    //   255: iload_3
+    //   256: istore 4
+    //   258: aload 8
+    //   260: aload 10
+    //   262: invokevirtual 824	java/util/HashSet:contains	(Ljava/lang/Object;)Z
+    //   265: ifne +187 -> 452
+    //   268: aload 7
+    //   270: astore 6
+    //   272: iload_3
+    //   273: istore_2
+    //   274: aload 7
+    //   276: astore 5
+    //   278: iload_3
+    //   279: aload_0
+    //   280: aload 9
+    //   282: getfield 393	com/tencent/mobileqq/data/troop/TroopMemberInfo:troopuin	Ljava/lang/String;
+    //   285: aload 9
+    //   287: getfield 396	com/tencent/mobileqq/data/troop/TroopMemberInfo:memberuin	Ljava/lang/String;
+    //   290: aload 9
+    //   292: getfield 224	com/tencent/mobileqq/data/troop/TroopMemberInfo:troopColorNick	Ljava/lang/String;
+    //   295: aload 9
+    //   297: getfield 123	com/tencent/mobileqq/data/troop/TroopMemberInfo:level	I
+    //   300: aload 9
+    //   302: getfield 230	com/tencent/mobileqq/data/troop/TroopMemberInfo:friendnick	Ljava/lang/String;
+    //   305: aconst_null
+    //   306: aload 9
+    //   308: getfield 209	com/tencent/mobileqq/data/troop/TroopMemberInfo:age	B
+    //   311: aload 9
+    //   313: getfield 212	com/tencent/mobileqq/data/troop/TroopMemberInfo:sex	B
+    //   316: aload 9
+    //   318: getfield 215	com/tencent/mobileqq/data/troop/TroopMemberInfo:distance	I
+    //   321: aload 9
+    //   323: getfield 205	com/tencent/mobileqq/data/troop/TroopMemberInfo:msgseq	J
+    //   326: aload 9
+    //   328: getfield 161	com/tencent/mobileqq/data/troop/TroopMemberInfo:gagTimeStamp	J
+    //   331: invokevirtual 826	com/tencent/mobileqq/troop/api/impl/TroopMemberInfoServiceImpl:saveTroopMember	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;IIIJJ)Z
+    //   334: ior
+    //   335: istore 4
+    //   337: aload 7
     //   339: astore 6
-    //   341: aload_1
-    //   342: astore 5
-    //   344: aload 6
-    //   346: astore_1
-    //   347: goto -85 -> 262
-    //   350: goto -123 -> 227
+    //   341: iload 4
+    //   343: istore_2
+    //   344: aload 7
+    //   346: astore 5
+    //   348: aload 8
+    //   350: aload 10
+    //   352: invokevirtual 827	java/util/HashSet:add	(Ljava/lang/Object;)Z
+    //   355: pop
+    //   356: goto +96 -> 452
+    //   359: aload 7
+    //   361: astore 6
+    //   363: iload_3
+    //   364: istore_2
+    //   365: aload 7
+    //   367: astore 5
+    //   369: aload 7
+    //   371: invokevirtual 526	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   374: iload_3
+    //   375: istore 4
+    //   377: aload 7
+    //   379: ifnull +56 -> 435
+    //   382: aload 7
+    //   384: astore 5
+    //   386: iload_3
+    //   387: istore_2
+    //   388: aload 5
+    //   390: invokevirtual 529	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   393: iload_2
+    //   394: ireturn
+    //   395: astore_1
+    //   396: goto +42 -> 438
+    //   399: astore_1
+    //   400: aload 5
+    //   402: astore 6
+    //   404: invokestatic 129	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   407: ifeq +17 -> 424
+    //   410: aload 5
+    //   412: astore 6
+    //   414: ldc 13
+    //   416: iconst_2
+    //   417: aload_1
+    //   418: invokestatic 831	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   421: invokestatic 833	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   424: iload_2
+    //   425: istore 4
+    //   427: aload 5
+    //   429: ifnull +6 -> 435
+    //   432: goto -44 -> 388
+    //   435: iload 4
+    //   437: ireturn
+    //   438: aload 6
+    //   440: ifnull +8 -> 448
+    //   443: aload 6
+    //   445: invokevirtual 529	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   448: aload_1
+    //   449: athrow
+    //   450: iconst_0
+    //   451: ireturn
+    //   452: iload 4
+    //   454: istore_3
+    //   455: goto -374 -> 81
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	353	0	this	TroopMemberInfoServiceImpl
-    //   0	353	1	paramList	List<TroopMemberInfo>
-    //   32	301	2	bool1	boolean
-    //   14	318	3	bool2	boolean
-    //   29	189	4	bool3	boolean
-    //   34	309	5	localObject1	Object
-    //   43	162	6	localObject2	Object
-    //   251	8	6	localThrowable1	java.lang.Throwable
-    //   311	6	6	localObject3	Object
-    //   322	6	6	localThrowable2	java.lang.Throwable
-    //   339	6	6	localObject4	Object
-    //   24	196	7	localHashSet	java.util.HashSet
-    //   125	97	8	str	String
+    //   0	458	0	this	TroopMemberInfoServiceImpl
+    //   0	458	1	paramList	List<TroopMemberInfo>
+    //   37	388	2	bool1	boolean
+    //   4	451	3	bool2	boolean
+    //   1	452	4	bool3	boolean
+    //   30	398	5	localObject1	Object
+    //   33	411	6	localObject2	Object
+    //   45	338	7	localEntityTransaction	com.tencent.mobileqq.persistence.EntityTransaction
+    //   27	322	8	localHashSet	java.util.HashSet
+    //   119	208	9	localTroopMemberInfo	TroopMemberInfo
+    //   138	213	10	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   36	45	251	java/lang/Throwable
-    //   36	45	291	finally
-    //   52	57	307	finally
-    //   60	67	307	finally
-    //   69	78	307	finally
-    //   80	91	307	finally
-    //   93	127	307	finally
-    //   129	143	307	finally
-    //   145	155	307	finally
-    //   157	214	307	finally
-    //   219	227	307	finally
-    //   232	237	307	finally
-    //   262	279	311	finally
-    //   52	57	322	java/lang/Throwable
-    //   60	67	322	java/lang/Throwable
-    //   69	78	322	java/lang/Throwable
-    //   80	91	322	java/lang/Throwable
-    //   93	127	322	java/lang/Throwable
-    //   129	143	322	java/lang/Throwable
-    //   145	155	322	java/lang/Throwable
-    //   157	214	322	java/lang/Throwable
-    //   232	237	322	java/lang/Throwable
-    //   219	227	336	java/lang/Throwable
+    //   38	47	395	finally
+    //   58	63	395	finally
+    //   74	81	395	finally
+    //   91	100	395	finally
+    //   110	121	395	finally
+    //   131	140	395	finally
+    //   150	161	395	finally
+    //   171	180	395	finally
+    //   190	201	395	finally
+    //   211	218	395	finally
+    //   228	242	395	finally
+    //   258	268	395	finally
+    //   278	337	395	finally
+    //   348	356	395	finally
+    //   369	374	395	finally
+    //   404	410	395	finally
+    //   414	424	395	finally
+    //   38	47	399	java/lang/Throwable
+    //   58	63	399	java/lang/Throwable
+    //   74	81	399	java/lang/Throwable
+    //   91	100	399	java/lang/Throwable
+    //   110	121	399	java/lang/Throwable
+    //   131	140	399	java/lang/Throwable
+    //   150	161	399	java/lang/Throwable
+    //   171	180	399	java/lang/Throwable
+    //   190	201	399	java/lang/Throwable
+    //   211	218	399	java/lang/Throwable
+    //   228	242	399	java/lang/Throwable
+    //   258	268	399	java/lang/Throwable
+    //   278	337	399	java/lang/Throwable
+    //   348	356	399	java/lang/Throwable
+    //   369	374	399	java/lang/Throwable
   }
   
   public void updateTroopMemberCache(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      paramString = (LruCache)this.troopMembers1.get(paramString);
-    } while (paramString == null);
-    paramString.evictAll();
+    }
+    paramString = (LruCache)this.troopMembers1.get(paramString);
+    if (paramString != null) {
+      paramString.evictAll();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.impl.TroopMemberInfoServiceImpl
  * JD-Core Version:    0.7.0.1
  */

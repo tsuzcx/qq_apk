@@ -16,7 +16,7 @@ class AVGameServerIPCModule$MyFriendListObserver
     this.b = new WeakReference(paramQQAppInterface);
   }
   
-  public void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
     AVGameServerIPCModule localAVGameServerIPCModule = (AVGameServerIPCModule)this.a.get();
     QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
@@ -27,7 +27,7 @@ class AVGameServerIPCModule$MyFriendListObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.ipc.AVGameServerIPCModule.MyFriendListObserver
  * JD-Core Version:    0.7.0.1
  */

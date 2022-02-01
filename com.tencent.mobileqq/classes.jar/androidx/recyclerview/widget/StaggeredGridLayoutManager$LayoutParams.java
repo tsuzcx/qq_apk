@@ -39,10 +39,11 @@ public class StaggeredGridLayoutManager$LayoutParams
   
   public final int getSpanIndex()
   {
-    if (this.mSpan == null) {
+    StaggeredGridLayoutManager.Span localSpan = this.mSpan;
+    if (localSpan == null) {
       return -1;
     }
-    return this.mSpan.mIndex;
+    return localSpan.mIndex;
   }
   
   public boolean isFullSpan()
@@ -57,7 +58,7 @@ public class StaggeredGridLayoutManager$LayoutParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.StaggeredGridLayoutManager.LayoutParams
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.mobileqq.utils.JumpParser;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.qzone.contentbox.model.MQBottomCell;
 
 class MsgMoreViewV2$1
@@ -14,16 +13,15 @@ class MsgMoreViewV2$1
   
   public void onClick(View paramView)
   {
-    JumpAction localJumpAction = JumpParser.a(MsgMoreViewV2.access$000(this.this$0), MsgMoreViewV2.access$100(this.this$0), this.val$bottomCell.jumpUrl);
-    if (localJumpAction != null) {
-      localJumpAction.a();
+    paramView = JumpParser.a(MsgMoreViewV2.access$000(this.this$0), MsgMoreViewV2.access$100(this.this$0), this.val$bottomCell.jumpUrl);
+    if (paramView != null) {
+      paramView.a();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.contentbox.MsgMoreViewV2.1
  * JD-Core Version:    0.7.0.1
  */

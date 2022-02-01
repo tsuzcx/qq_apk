@@ -14,24 +14,19 @@ final class OrientationHelper$1
   public int getDecoratedEnd(View paramView)
   {
     RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-    int i = this.mLayoutManager.getDecoratedRight(paramView);
-    return localLayoutParams.rightMargin + i;
+    return this.mLayoutManager.getDecoratedRight(paramView) + localLayoutParams.rightMargin;
   }
   
   public int getDecoratedMeasurement(View paramView)
   {
     RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-    int i = this.mLayoutManager.getDecoratedMeasuredWidth(paramView);
-    int j = localLayoutParams.leftMargin;
-    return localLayoutParams.rightMargin + (i + j);
+    return this.mLayoutManager.getDecoratedMeasuredWidth(paramView) + localLayoutParams.leftMargin + localLayoutParams.rightMargin;
   }
   
   public int getDecoratedMeasurementInOther(View paramView)
   {
     RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-    int i = this.mLayoutManager.getDecoratedMeasuredHeight(paramView);
-    int j = localLayoutParams.topMargin;
-    return localLayoutParams.bottomMargin + (i + j);
+    return this.mLayoutManager.getDecoratedMeasuredHeight(paramView) + localLayoutParams.topMargin + localLayoutParams.bottomMargin;
   }
   
   public int getDecoratedStart(View paramView)
@@ -99,7 +94,7 @@ final class OrientationHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.OrientationHelper.1
  * JD-Core Version:    0.7.0.1
  */

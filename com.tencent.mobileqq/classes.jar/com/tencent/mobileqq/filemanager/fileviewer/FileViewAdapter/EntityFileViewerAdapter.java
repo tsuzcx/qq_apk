@@ -23,27 +23,27 @@ public class EntityFileViewerAdapter
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramFileManagerEntity;
-    if ((1 == c()) || (2 == c())) {
+    int i = c();
+    boolean bool2 = true;
+    if ((1 == i) || (2 == c())) {
       this.jdField_a_of_type_Boolean = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getBaseContext(), paramFileManagerEntity.fileName, paramFileManagerEntity.fileSize);
     }
     this.jdField_a_of_type_Long = 3145728L;
+    boolean bool1;
     if (3 == c())
     {
       bool1 = bool2;
       if (FileManagerUtil.b(this)) {}
     }
+    else if ((6 == c()) && (d() == 1) && (FileUtils.fileExistsAndNotEmpty(g())))
+    {
+      bool1 = bool2;
+    }
     else
     {
-      if ((6 != c()) || (d() != 1) || (!FileUtils.b(g()))) {
-        break label119;
-      }
+      bool1 = false;
     }
-    label119:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.b = bool1;
-      return;
-    }
+    this.b = bool1;
   }
   
   public int a()
@@ -79,6 +79,11 @@ public class EntityFileViewerAdapter
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath = paramString;
   }
   
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend;
+  }
+  
   public int b()
   {
     return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType;
@@ -91,16 +96,10 @@ public class EntityFileViewerAdapter
   
   public String b()
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType == 5)
-    {
-      localObject1 = localObject2;
-      if (FileUtil.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath())) {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath();
-      }
+    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType == 5) && (FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath()))) {
+      return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath();
     }
-    return localObject1;
+    return null;
   }
   
   public int c()
@@ -115,7 +114,7 @@ public class EntityFileViewerAdapter
     else
     {
       i = j;
-      if (FileUtil.b(g())) {
+      if (FileUtil.a(g())) {
         i = 3;
       }
     }
@@ -134,7 +133,7 @@ public class EntityFileViewerAdapter
   
   public int d()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.isZipInnerFile) && (FileUtil.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath()))) {
+    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.isZipInnerFile) && (FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath()))) {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 1;
     }
     return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status;
@@ -157,7 +156,7 @@ public class EntityFileViewerAdapter
   
   public String f()
   {
-    if (FileUtil.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath())) {
+    if (FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath())) {
       return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath();
     }
     return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath;
@@ -170,7 +169,7 @@ public class EntityFileViewerAdapter
   
   public String h()
   {
-    if (FileUtil.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath())) {
+    if (FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath())) {
       return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath();
     }
     return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strThumbPath;
@@ -178,7 +177,7 @@ public class EntityFileViewerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileViewAdapter.EntityFileViewerAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -13,14 +13,17 @@ class UniformDownloadMgr$5
   public void run()
   {
     this.jdField_a_of_type_AndroidOsBundle.putLong("_filesize_from_dlg", UDFileInfo.a(this.jdField_a_of_type_JavaLangString, 4));
-    QLog.d("UniformDownloadMgr_Impl", 1, "【UniformDL-startDownloadNoSzie】 fileSize: " + this.jdField_a_of_type_AndroidOsBundle.getLong("_filesize_from_dlg", 0L));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("【UniformDL-startDownloadNoSzie】 fileSize: ");
+    localStringBuilder.append(this.jdField_a_of_type_AndroidOsBundle.getLong("_filesize_from_dlg", 0L));
+    QLog.d("UniformDownloadMgr_Impl", 1, localStringBuilder.toString());
     this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
     UniformDownloadMgr.a(this.this$0).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.core.UniformDownloadMgr.5
  * JD-Core Version:    0.7.0.1
  */

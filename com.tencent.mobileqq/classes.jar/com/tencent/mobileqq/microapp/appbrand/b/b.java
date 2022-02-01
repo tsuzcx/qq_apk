@@ -22,34 +22,43 @@ public class b
   
   public static b a()
   {
-    if (b == null) {}
-    try
-    {
-      if (b == null) {
-        b = new b();
+    if (b == null) {
+      try
+      {
+        if (b == null) {
+          b = new b();
+        }
       }
-      return b;
+      finally {}
     }
-    finally {}
+    return b;
   }
   
   private String a(int paramInt)
   {
-    String str;
-    switch (paramInt)
-    {
-    default: 
-      str = "tmp";
+    Object localObject2 = "tmp";
+    Object localObject1 = localObject2;
+    if (paramInt != 0) {
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          localObject1 = localObject2;
+        } else {
+          localObject1 = "usr";
+        }
+      }
+      else {
+        localObject1 = "store";
+      }
     }
-    for (;;)
-    {
-      return Environment.getExternalStorageDirectory().getPath() + "/miniApp/files/" + this.c + "/" + this.d + "/" + str;
-      str = "tmp";
-      continue;
-      str = "store";
-      continue;
-      str = "usr";
-    }
+    localObject2 = new StringBuilder(Environment.getExternalStorageDirectory().getPath());
+    ((StringBuilder)localObject2).append("/miniApp/files/");
+    ((StringBuilder)localObject2).append(this.c);
+    ((StringBuilder)localObject2).append("/");
+    ((StringBuilder)localObject2).append(this.d);
+    ((StringBuilder)localObject2).append("/");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    return ((StringBuilder)localObject2).toString();
   }
   
   private String d(String paramString)
@@ -58,55 +67,81 @@ public class b
       return "";
     }
     String str = e(paramString);
-    if (TextUtils.isEmpty(str)) {}
-    for (str = "";; str = "." + str)
+    if (TextUtils.isEmpty(str))
     {
-      str = MD5.toMD5(new StringBuilder().append(System.currentTimeMillis()).append("").toString()) + str;
-      str = "wxfile://" + "tmp" + "_" + str;
-      this.e.put(str, paramString);
-      return str;
+      str = "";
     }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(".");
+      ((StringBuilder)localObject).append(str);
+      str = ((StringBuilder)localObject).toString();
+    }
+    Object localObject = new StringBuilder();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(System.currentTimeMillis());
+    localStringBuilder.append("");
+    ((StringBuilder)localObject).append(MD5.toMD5(localStringBuilder.toString()));
+    ((StringBuilder)localObject).append(str);
+    str = ((StringBuilder)localObject).toString();
+    localObject = new StringBuffer("wxfile://");
+    ((StringBuffer)localObject).append("tmp");
+    ((StringBuffer)localObject).append("_");
+    ((StringBuffer)localObject).append(str);
+    str = ((StringBuffer)localObject).toString();
+    this.e.put(str, paramString);
+    return str;
   }
   
   private static String e(String paramString)
   {
-    String str2 = "";
     try
     {
-      str1 = new URL(paramString).getPath();
-      paramString = str1;
+      String str = new URL(paramString).getPath();
+      paramString = str;
     }
     catch (Throwable localThrowable)
     {
-      String str1;
-      label17:
+      label14:
       int i;
-      break label17;
+      break label14;
     }
-    str1 = str2;
     if (!TextUtils.isEmpty(paramString))
     {
       i = paramString.lastIndexOf(".");
-      str1 = str2;
       if (i != -1)
       {
-        str1 = str2;
-        if (i + 1 < paramString.length()) {
-          str1 = paramString.substring(i + 1);
+        i += 1;
+        if (i < paramString.length()) {
+          return paramString.substring(i);
         }
       }
     }
-    return str1;
+    return "";
   }
   
   public String a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (paramString = "";; paramString = "." + paramString)
+    if (TextUtils.isEmpty(paramString))
     {
-      paramString = MD5.toMD5(new StringBuilder().append(System.currentTimeMillis()).append("").toString()) + paramString;
-      return new File(a(0), paramString).getAbsolutePath();
+      paramString = "";
     }
+    else
+    {
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append(".");
+      localStringBuilder1.append(paramString);
+      paramString = localStringBuilder1.toString();
+    }
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(System.currentTimeMillis());
+    localStringBuilder2.append("");
+    localStringBuilder1.append(MD5.toMD5(localStringBuilder2.toString()));
+    localStringBuilder1.append(paramString);
+    paramString = localStringBuilder1.toString();
+    return new File(a(0), paramString).getAbsolutePath();
   }
   
   public void a(c paramc)
@@ -114,7 +149,10 @@ public class b
     this.c = paramc.d;
     this.d = BaseApplicationImpl.getApplication().getRuntime().getAccount();
     this.a = paramc;
-    paramc = this.c + this.d;
+    paramc = new StringBuilder();
+    paramc.append(this.c);
+    paramc.append(this.d);
+    paramc = paramc.toString();
     this.e = ((Map)this.f.get(paramc));
     if (this.e == null)
     {
@@ -125,35 +163,38 @@ public class b
   
   public String b(String paramString)
   {
-    for (;;)
+    for (Object localObject1 = "store";; localObject1 = "tmp")
     {
       try
       {
-        localObject = new File(paramString);
-        String str = ((File)localObject).getParentFile().getAbsolutePath();
-        if ((a(0).equals(str)) || (a(1).equals(str)))
-        {
-          if (((File)localObject).getParentFile().getName().equals("store"))
-          {
-            localObject = "store";
-            paramString = new File(paramString).getName();
-            return "wxfile://" + (String)localObject + "_" + paramString;
-          }
-        }
-        else
+        Object localObject2 = new File(paramString);
+        String str = ((File)localObject2).getParentFile().getAbsolutePath();
+        if ((!a(0).equals(str)) && (!a(1).equals(str)))
         {
           if (str.startsWith(a(2)))
           {
             paramString = a(2);
-            paramString = ((File)localObject).getAbsolutePath().replace(paramString, "");
-            return "wxfile://usr" + paramString;
+            paramString = ((File)localObject2).getAbsolutePath().replace(paramString, "");
+            localObject1 = new StringBuilder("wxfile://usr");
+            ((StringBuilder)localObject1).append(paramString);
+            return ((StringBuilder)localObject1).toString();
           }
-          if (new File(paramString).exists())
-          {
-            paramString = d(paramString);
-            return paramString;
+          if (new File(paramString).exists()) {
+            return d(paramString);
           }
-          return "";
+        }
+        else
+        {
+          if (!((File)localObject2).getParentFile().getName().equals("store")) {
+            continue;
+          }
+          paramString = new File(paramString).getName();
+          localObject2 = new StringBuffer("wxfile://");
+          ((StringBuffer)localObject2).append((String)localObject1);
+          ((StringBuffer)localObject2).append("_");
+          ((StringBuffer)localObject2).append(paramString);
+          paramString = ((StringBuffer)localObject2).toString();
+          return paramString;
         }
       }
       catch (Throwable paramString)
@@ -161,23 +202,19 @@ public class b
         paramString.printStackTrace();
         return "";
       }
-      Object localObject = "tmp";
+      return "";
     }
   }
   
   public String c(String paramString)
   {
-    Object localObject;
     if (TextUtils.isEmpty(paramString)) {
-      localObject = "";
+      return "";
     }
-    String str;
-    do
-    {
-      return localObject;
-      str = (String)this.e.get(paramString);
-      localObject = str;
-    } while (!TextUtils.isEmpty(str));
+    String str = (String)this.e.get(paramString);
+    if (!TextUtils.isEmpty(str)) {
+      return str;
+    }
     if (paramString.startsWith("wxfile://tmp_"))
     {
       paramString = paramString.replace("wxfile://tmp_", "");
@@ -204,7 +241,10 @@ public class b
     }
     else
     {
-      if ((paramString.toLowerCase().startsWith("http://")) || (paramString.toLowerCase().startsWith("https://"))) {
+      if (paramString.toLowerCase().startsWith("http://")) {
+        return paramString;
+      }
+      if (paramString.toLowerCase().startsWith("https://")) {
         return paramString;
       }
       if (new File(this.a.j(paramString)).exists()) {
@@ -212,11 +252,12 @@ public class b
       }
     }
     return "";
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.b.b
  * JD-Core Version:    0.7.0.1
  */

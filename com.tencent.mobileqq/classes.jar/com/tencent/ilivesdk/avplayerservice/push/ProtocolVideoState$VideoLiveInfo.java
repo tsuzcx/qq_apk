@@ -40,14 +40,15 @@ public final class ProtocolVideoState$VideoLiveInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 48, 58, 64, 72, 82, 88, 96 }, new String[] { "VideoChanel", "Gender", "LogoTimeStamp", "Nick", "NowTime", "GameID", "VideoResList", "Uin", "UserType", "FlashUrl", "DefaultVideoID", "video_use_p2p_flag" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), null, Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0) }, VideoLiveInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 48, 58, 64, 72, 82, 88, 96 }, new String[] { "VideoChanel", "Gender", "LogoTimeStamp", "Nick", "NowTime", "GameID", "VideoResList", "Uin", "UserType", "FlashUrl", "DefaultVideoID", "video_use_p2p_flag" }, new Object[] { localInteger, localInteger, localInteger, localByteStringMicro1, localInteger, localInteger, null, Long.valueOf(0L), localInteger, localByteStringMicro2, localInteger, localInteger }, VideoLiveInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avplayerservice.push.ProtocolVideoState.VideoLiveInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,24 @@
 package com.tencent.open.agent;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class OpenCardContainer$1
-  extends Handler
+  implements View.OnClickListener
 {
-  OpenCardContainer$1(OpenCardContainer paramOpenCardContainer, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  OpenCardContainer$1(OpenCardContainer paramOpenCardContainer) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("SDK_LOGIN.OpenCardContainer", 2, "-->handleMessage MSG_UPDATE");
-      }
-      OpenCardContainer.a(this.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageDrawable(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    }
+    this.a.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setMainAccountSelect(true);
+    this.a.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$VirtualAccountAdapter.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.OpenCardContainer.1
  * JD-Core Version:    0.7.0.1
  */

@@ -35,8 +35,12 @@ public class GroupIntimateRelationshipConfProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
       GroupIntimateRelationshipBean localGroupIntimateRelationshipBean = GroupIntimateRelationshipBean.a(paramArrayOfQConfItem[0]);
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupIntimateRelationshipConfProcessor", 2, "onParsed " + paramArrayOfQConfItem[0].a);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed ");
+        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        QLog.d("GroupIntimateRelationshipConfProcessor", 2, localStringBuilder.toString());
       }
       return localGroupIntimateRelationshipBean;
     }
@@ -45,8 +49,12 @@ public class GroupIntimateRelationshipConfProcessor
   
   public void a(GroupIntimateRelationshipBean paramGroupIntimateRelationshipBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupIntimateRelationshipConfProcessor", 2, "onUpdate newConf:" + paramGroupIntimateRelationshipBean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate newConf:");
+      localStringBuilder.append(paramGroupIntimateRelationshipBean);
+      QLog.d("GroupIntimateRelationshipConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -72,8 +80,12 @@ public class GroupIntimateRelationshipConfProcessor
   
   public void onReqFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupIntimateRelationshipConfProcessor", 2, "onReqFailed failCode:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqFailed failCode:");
+      localStringBuilder.append(paramInt);
+      QLog.d("GroupIntimateRelationshipConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -84,7 +96,7 @@ public class GroupIntimateRelationshipConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.GroupIntimateRelationshipConfProcessor
  * JD-Core Version:    0.7.0.1
  */

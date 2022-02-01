@@ -34,23 +34,23 @@ public class LebaSearchPart
   {
     QQAppInterface localQQAppInterface = a();
     QBaseActivity localQBaseActivity = a();
-    if ((localQQAppInterface == null) || (localQBaseActivity == null)) {
-      QLog.i("LebaQCirclePartImpl", 1, "initLebaQQCircleView app == null || activity == null");
-    }
-    do
+    if ((localQQAppInterface != null) && (localQBaseActivity != null))
     {
-      return;
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131370245));
-      this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370248);
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366452));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131369913));
+      this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369916);
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366333));
       this.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
-      AccessibilityUtil.a(this.jdField_a_of_type_AndroidWidgetEditText, localQBaseActivity.getString(2131691248));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363942));
+      AccessibilityUtil.a(this.jdField_a_of_type_AndroidWidgetEditText, localQBaseActivity.getString(2131691169));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363868));
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
       p();
       this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new LebaSearchPart.MyFocusChangeListener(localQQAppInterface, localQBaseActivity));
-    } while (!AppSetting.d);
-    AccessibilityUtil.b(paramView);
+      if (AppSetting.d) {
+        AccessibilityUtil.b(paramView);
+      }
+      return;
+    }
+    QLog.i("LebaQCirclePartImpl", 1, "initLebaQQCircleView app == null || activity == null");
   }
   
   public void a(boolean paramBoolean)
@@ -70,39 +70,34 @@ public class LebaSearchPart
   
   public void p()
   {
-    int j = 0;
-    Object localObject;
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
     {
       boolean bool = SearchConfigUtils.a();
-      localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-      if (!bool) {
-        break label57;
+      Object localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+      int j = 0;
+      int i;
+      if (bool) {
+        i = 0;
+      } else {
+        i = 8;
       }
-      i = 0;
       ((RelativeLayout)localObject).setVisibility(i);
-      if (this.jdField_a_of_type_AndroidViewView != null)
+      localObject = this.jdField_a_of_type_AndroidViewView;
+      if (localObject != null)
       {
-        localObject = this.jdField_a_of_type_AndroidViewView;
-        if (bool) {
-          break label63;
+        if (!bool) {
+          i = j;
+        } else {
+          i = 8;
         }
+        ((View)localObject).setVisibility(i);
       }
-    }
-    label57:
-    label63:
-    for (int i = j;; i = 8)
-    {
-      ((View)localObject).setVisibility(i);
-      return;
-      i = 8;
-      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.mainbiz.LebaSearchPart
  * JD-Core Version:    0.7.0.1
  */

@@ -23,31 +23,33 @@ public class DexPatchItemConfigDalvik
     String str1 = super.a();
     try
     {
-      JSONObject localJSONObject = new JSONObject(str1);
-      localJSONObject.put("patchName", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("patchUrl", this.b);
-      localJSONObject.put("patchSize", this.jdField_a_of_type_Int);
+      Object localObject = new JSONObject(str1);
+      ((JSONObject)localObject).put("patchName", this.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("patchUrl", this.b);
+      ((JSONObject)localObject).put("patchSize", this.jdField_a_of_type_Int);
       StringBuilder localStringBuilder = new StringBuilder("");
       if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
       {
         Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
         while (localIterator.hasNext())
         {
-          String str3 = (String)localIterator.next();
-          if (!TextUtils.isEmpty(str3)) {
-            localStringBuilder.append(str3).append(";");
+          String str2 = (String)localIterator.next();
+          if (!TextUtils.isEmpty(str2))
+          {
+            localStringBuilder.append(str2);
+            localStringBuilder.append(";");
           }
         }
       }
-      localJSONException.put("classIdList", localStringBuilder.toString());
+      ((JSONObject)localObject).put("classIdList", localStringBuilder.toString());
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
     }
     catch (JSONException localJSONException)
     {
       QLog.d("PatchLogTag", 1, "DexPatchItemConfigDalvik writeToJsonString", localJSONException);
-      return str1;
     }
-    String str2 = localJSONException.toString();
-    return str2;
+    return str1;
   }
   
   public ArrayList<String> a()
@@ -57,10 +59,10 @@ public class DexPatchItemConfigDalvik
   
   protected void a(JSONObject paramJSONObject)
   {
-    int i = 0;
     super.a(paramJSONObject);
     this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchName", null);
     this.b = paramJSONObject.optString("patchUrl", null);
+    int i = 0;
     this.jdField_a_of_type_Int = paramJSONObject.optInt("patchSize", 0);
     paramJSONObject = paramJSONObject.optString("classIdList", "").split(";");
     if ((paramJSONObject != null) && (paramJSONObject.length > 0))
@@ -89,7 +91,7 @@ public class DexPatchItemConfigDalvik
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hotpatch.config.DexPatchItemConfigDalvik
  * JD-Core Version:    0.7.0.1
  */

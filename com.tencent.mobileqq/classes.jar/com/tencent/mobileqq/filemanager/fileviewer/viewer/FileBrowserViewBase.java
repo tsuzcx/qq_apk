@@ -31,8 +31,9 @@ public abstract class FileBrowserViewBase
   
   public Rect a()
   {
-    if (this.jdField_a_of_type_AndroidOsBundle != null) {
-      return (Rect)this.jdField_a_of_type_AndroidOsBundle.getParcelable("file_browser_params_thumb_bound");
+    Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle;
+    if (localBundle != null) {
+      return (Rect)localBundle.getParcelable("file_browser_params_thumb_bound");
     }
     return null;
   }
@@ -58,13 +59,14 @@ public abstract class FileBrowserViewBase
   
   public void a(View.OnClickListener paramOnClickListener)
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null))
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if ((localView != null) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null))
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131379776));
-      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131379742));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379752));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366468));
-      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379740);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131379107));
+      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131379080));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379089));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366347));
+      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379078);
     }
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(paramOnClickListener);
   }
@@ -84,11 +86,12 @@ public abstract class FileBrowserViewBase
   public void a(String paramString, View.OnClickListener paramOnClickListener)
   {
     if (this.c == null) {
-      this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372540));
+      this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372125));
     }
-    if (this.c != null)
+    TextView localTextView = this.c;
+    if (localTextView != null)
     {
-      this.c.setText(paramString);
+      localTextView.setText(paramString);
       this.c.setOnClickListener(paramOnClickListener);
       this.c.setVisibility(0);
       a(true);
@@ -97,33 +100,32 @@ public abstract class FileBrowserViewBase
   
   public void a(boolean paramBoolean)
   {
-    TextView localTextView;
-    if (this.c != null)
+    TextView localTextView = this.c;
+    if (localTextView != null)
     {
-      localTextView = this.c;
-      if (!paramBoolean) {
-        break label24;
+      int i;
+      if (paramBoolean) {
+        i = 0;
+      } else {
+        i = 8;
       }
-    }
-    label24:
-    for (int i = 0;; i = 8)
-    {
       localTextView.setVisibility(i);
-      return;
     }
   }
   
   public void b()
   {
-    if (this.jdField_b_of_type_AndroidViewView != null) {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    View localView = this.jdField_b_of_type_AndroidViewView;
+    if (localView != null) {
+      localView.setVisibility(8);
     }
   }
   
   public void b(int paramInt)
   {
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(paramInt);
+    TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
+    if (localTextView != null) {
+      localTextView.setVisibility(paramInt);
     }
   }
   
@@ -136,25 +138,22 @@ public abstract class FileBrowserViewBase
   
   public void b(boolean paramBoolean)
   {
-    RelativeLayout localRelativeLayout;
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+    RelativeLayout localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    if (localRelativeLayout != null)
     {
-      localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-      if (!paramBoolean) {
-        break label24;
+      int i;
+      if (paramBoolean) {
+        i = 0;
+      } else {
+        i = 8;
       }
-    }
-    label24:
-    for (int i = 0;; i = 8)
-    {
       localRelativeLayout.setVisibility(i);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.viewer.FileBrowserViewBase
  * JD-Core Version:    0.7.0.1
  */

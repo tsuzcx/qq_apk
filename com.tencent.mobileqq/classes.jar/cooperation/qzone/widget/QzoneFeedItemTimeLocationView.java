@@ -40,25 +40,42 @@ public class QzoneFeedItemTimeLocationView
   
   private void init()
   {
-    LayoutInflater.from(this.mContext).inflate(2131558932, this);
-    this.feedLocationTv = ((TextView)findViewById(2131366798));
-    this.feedCreateTimeTv = ((TextView)findViewById(2131366870));
+    LayoutInflater.from(this.mContext).inflate(2131558830, this);
+    this.feedLocationTv = ((TextView)findViewById(2131366662));
+    this.feedCreateTimeTv = ((TextView)findViewById(2131366732));
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (paramBoolean)
     {
       paramInt1 = 0;
-      if (this.feedCreateTimeTv != null) {
-        paramInt1 = this.feedCreateTimeTv.getWidth();
+      Object localObject = this.feedCreateTimeTv;
+      if (localObject != null) {
+        paramInt1 = ((TextView)localObject).getWidth();
       }
       paramInt2 = getWidth();
-      paramInt3 = paramInt2 - (int)(this.mContext.getResources().getDimension(2131296419) + 0.5D) - (int)(this.mContext.getResources().getDimension(2131296420) + 0.5D) - (int)(this.mContext.getResources().getDimension(2131296418) + 0.5D) - paramInt1 - 1;
+      double d = this.mContext.getResources().getDimension(2131296398);
+      Double.isNaN(d);
+      paramInt3 = (int)(d + 0.5D);
+      d = this.mContext.getResources().getDimension(2131296399);
+      Double.isNaN(d);
+      paramInt4 = (int)(d + 0.5D);
+      d = this.mContext.getResources().getDimension(2131296397);
+      Double.isNaN(d);
+      paramInt3 = paramInt2 - paramInt3 - paramInt4 - (int)(d + 0.5D) - paramInt1 - 1;
       this.feedLocationTv.setMaxWidth(paramInt3);
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneFeedItemTimeLocationView", 2, "onLayout change:timeWidth:" + paramInt1 + ",feedLocationTvWidth(max):" + paramInt3 + ",feedLocationLayoutWidth:" + paramInt2);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onLayout change:timeWidth:");
+        ((StringBuilder)localObject).append(paramInt1);
+        ((StringBuilder)localObject).append(",feedLocationTvWidth(max):");
+        ((StringBuilder)localObject).append(paramInt3);
+        ((StringBuilder)localObject).append(",feedLocationLayoutWidth:");
+        ((StringBuilder)localObject).append(paramInt2);
+        QLog.d("QzoneFeedItemTimeLocationView", 2, ((StringBuilder)localObject).toString());
       }
     }
     if (QLog.isColorLevel()) {
@@ -66,7 +83,7 @@ public class QzoneFeedItemTimeLocationView
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
   }
@@ -78,7 +95,7 @@ public class QzoneFeedItemTimeLocationView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.widget.QzoneFeedItemTimeLocationView
  * JD-Core Version:    0.7.0.1
  */

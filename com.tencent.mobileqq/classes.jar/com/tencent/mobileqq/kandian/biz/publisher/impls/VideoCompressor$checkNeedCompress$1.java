@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.kandian.biz.publisher.impls;
 
-import com.tencent.biz.pubaccount.readinjoy.video.videoconverter.VideoConvertUtil;
-import com.tencent.biz.pubaccount.readinjoy.video.videoconverter.VideoMediaInfo;
+import com.tencent.mobileqq.kandian.base.video.compress.VideoCompressUtil;
+import com.tencent.mobileqq.kandian.base.video.compress.VideoMediaInfo;
 import com.tencent.tkd.topicsdk.framework.ThreadManagerKt;
 import kotlin.Metadata;
 import kotlin.Unit;
@@ -21,12 +21,12 @@ final class VideoCompressor$checkNeedCompress$1
   
   public final void invoke()
   {
-    ThreadManagerKt.a((Function0)new VideoCompressor.checkNeedCompress.1.1(this, VideoConvertUtil.a(VideoMediaInfo.a(this.$path))));
+    ThreadManagerKt.a((Function0)new VideoCompressor.checkNeedCompress.1.1(this, VideoCompressUtil.a(VideoMediaInfo.a(this.$path))));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.VideoCompressor.checkNeedCompress.1
  * JD-Core Version:    0.7.0.1
  */

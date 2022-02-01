@@ -16,12 +16,14 @@ class LyricViewScroll$1
     Log.v("LyricViewScroll", "fling detect running");
     if (this.jdField_a_of_type_Int == this.this$0.getScrollY())
     {
-      this.this$0.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      LyricViewScroll.a(this.this$0).b(this.jdField_a_of_type_Int);
+      LyricViewScroll localLyricViewScroll = this.this$0;
+      localLyricViewScroll.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      LyricViewScroll.a(localLyricViewScroll).b(this.jdField_a_of_type_Int);
       Log.d("LyricViewScroll", "fling stop");
       this.this$0.jdField_a_of_type_JavaUtilTimer.cancel();
-      this.this$0.jdField_a_of_type_Boolean = false;
-      LyricViewScroll.a(this.this$0, false);
+      localLyricViewScroll = this.this$0;
+      localLyricViewScroll.jdField_a_of_type_Boolean = false;
+      LyricViewScroll.a(localLyricViewScroll, false);
       return;
     }
     this.jdField_a_of_type_Int = this.this$0.getScrollY();
@@ -30,7 +32,7 @@ class LyricViewScroll$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.lyric.widget.LyricViewScroll.1
  * JD-Core Version:    0.7.0.1
  */

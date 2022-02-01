@@ -57,8 +57,9 @@ public final class DisplayImageOptions
   
   public Drawable getImageForEmptyUri(Resources paramResources)
   {
-    if (this.imageResForEmptyUri != 0) {
-      return paramResources.getDrawable(this.imageResForEmptyUri);
+    int i = this.imageResForEmptyUri;
+    if (i != 0) {
+      return paramResources.getDrawable(i);
     }
     return this.imageForEmptyUri;
   }
@@ -70,8 +71,9 @@ public final class DisplayImageOptions
   
   public Drawable getImageOnFail(Resources paramResources)
   {
-    if (this.imageResOnFail != 0) {
-      return paramResources.getDrawable(this.imageResOnFail);
+    int i = this.imageResOnFail;
+    if (i != 0) {
+      return paramResources.getDrawable(i);
     }
     return this.imageOnFail;
   }
@@ -83,8 +85,9 @@ public final class DisplayImageOptions
   
   public Drawable getImageOnLoading(Resources paramResources)
   {
-    if (this.imageResOnLoading != 0) {
-      return paramResources.getDrawable(this.imageResOnLoading);
+    int i = this.imageResOnLoading;
+    if (i != 0) {
+      return paramResources.getDrawable(i);
     }
     return this.imageOnLoading;
   }
@@ -126,7 +129,7 @@ public final class DisplayImageOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.libapi.imageloader.DisplayImageOptions
  * JD-Core Version:    0.7.0.1
  */

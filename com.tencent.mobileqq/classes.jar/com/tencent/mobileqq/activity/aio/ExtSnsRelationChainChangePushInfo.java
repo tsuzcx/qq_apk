@@ -60,65 +60,66 @@ public class ExtSnsRelationChainChangePushInfo
   
   public int a()
   {
+    ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo localRelationalChainPushInfo;
     if (this.jdField_a_of_type_Int == 2)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo != null) {
-        return this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int;
+      localRelationalChainPushInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo;
+      if (localRelationalChainPushInfo != null) {
+        return localRelationalChainPushInfo.jdField_a_of_type_Int;
       }
     }
-    else if (this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo != null) {
-      return this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int;
+    else
+    {
+      localRelationalChainPushInfo = this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo;
+      if (localRelationalChainPushInfo != null) {
+        return localRelationalChainPushInfo.jdField_a_of_type_Int;
+      }
     }
     return 0;
   }
   
   public ExtSnsRelationChainChangePushInfo.MutualMarkPushGrayTipInfo a()
   {
-    Object localObject2 = null;
-    Object localObject1;
     if (this.jdField_a_of_type_Int == 2)
     {
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo != null)
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo;
+      if ((localObject != null) && (((ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo != null))
       {
-        localObject1 = localObject2;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo != null)
-        {
-          localObject1 = new ExtSnsRelationChainChangePushInfo.MutualMarkPushGrayTipInfo();
-          ((ExtSnsRelationChainChangePushInfo.MutualMarkPushGrayTipInfo)localObject1).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_a_of_type_JavaLangString;
-          ((ExtSnsRelationChainChangePushInfo.MutualMarkPushGrayTipInfo)localObject1).jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_e_of_type_Long;
-          ((ExtSnsRelationChainChangePushInfo.MutualMarkPushGrayTipInfo)localObject1).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_b_of_type_JavaLangString;
-          ((ExtSnsRelationChainChangePushInfo.MutualMarkPushGrayTipInfo)localObject1).jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_b_of_type_Int;
-        }
+        localObject = new ExtSnsRelationChainChangePushInfo.MutualMarkPushGrayTipInfo();
+        ((ExtSnsRelationChainChangePushInfo.MutualMarkPushGrayTipInfo)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_a_of_type_JavaLangString;
+        ((ExtSnsRelationChainChangePushInfo.MutualMarkPushGrayTipInfo)localObject).jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_e_of_type_Long;
+        ((ExtSnsRelationChainChangePushInfo.MutualMarkPushGrayTipInfo)localObject).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_b_of_type_JavaLangString;
+        ((ExtSnsRelationChainChangePushInfo.MutualMarkPushGrayTipInfo)localObject).jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_b_of_type_Int;
+        break label193;
       }
     }
-    for (;;)
+    else
     {
-      long l1 = a();
-      long l2 = b();
-      if ((l1 == 21L) && (localObject1 != null) && (l2 == 1L)) {
-        ((ExtSnsRelationChainChangePushInfo.MutualMarkPushGrayTipInfo)localObject1).jdField_a_of_type_Int = 1;
-      }
-      return localObject1;
-      localObject1 = localObject2;
-      if (this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo != null)
+      localObject = this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo;
+      if ((localObject != null) && (((ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo != null))
       {
-        localObject1 = localObject2;
-        if (this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo != null)
-        {
-          localObject1 = new ExtSnsRelationChainChangePushInfo.MutualMarkPushGrayTipInfo();
-          ((ExtSnsRelationChainChangePushInfo.MutualMarkPushGrayTipInfo)localObject1).jdField_a_of_type_JavaLangString = this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_a_of_type_JavaLangString;
-          ((ExtSnsRelationChainChangePushInfo.MutualMarkPushGrayTipInfo)localObject1).jdField_a_of_type_Long = this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_e_of_type_Long;
-          ((ExtSnsRelationChainChangePushInfo.MutualMarkPushGrayTipInfo)localObject1).jdField_b_of_type_JavaLangString = this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_b_of_type_JavaLangString;
-          ((ExtSnsRelationChainChangePushInfo.MutualMarkPushGrayTipInfo)localObject1).jdField_a_of_type_Int = this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_b_of_type_Int;
-        }
+        localObject = new ExtSnsRelationChainChangePushInfo.MutualMarkPushGrayTipInfo();
+        ((ExtSnsRelationChainChangePushInfo.MutualMarkPushGrayTipInfo)localObject).jdField_a_of_type_JavaLangString = this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_a_of_type_JavaLangString;
+        ((ExtSnsRelationChainChangePushInfo.MutualMarkPushGrayTipInfo)localObject).jdField_a_of_type_Long = this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_e_of_type_Long;
+        ((ExtSnsRelationChainChangePushInfo.MutualMarkPushGrayTipInfo)localObject).jdField_b_of_type_JavaLangString = this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_b_of_type_JavaLangString;
+        ((ExtSnsRelationChainChangePushInfo.MutualMarkPushGrayTipInfo)localObject).jdField_a_of_type_Int = this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_b_of_type_Int;
+        break label193;
       }
     }
+    Object localObject = null;
+    label193:
+    long l1 = a();
+    long l2 = b();
+    if ((l1 == 21L) && (localObject != null) && (l2 == 1L)) {
+      ((ExtSnsRelationChainChangePushInfo.MutualMarkPushGrayTipInfo)localObject).jdField_a_of_type_Int = 1;
+    }
+    return localObject;
   }
   
   public String a()
   {
-    if ((this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo != null) && (this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo != null)) {
+    ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo localRelationalChainPushInfo = this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo;
+    if ((localRelationalChainPushInfo != null) && (localRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo != null)) {
       return this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.c;
     }
     return null;
@@ -126,12 +127,13 @@ public class ExtSnsRelationChainChangePushInfo
   
   public boolean a()
   {
+    ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo localRelationalChainPushInfo = this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo != null)
+    if (localRelationalChainPushInfo != null)
     {
       bool1 = bool2;
-      if (this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo != null)
+      if (localRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo != null)
       {
         bool1 = bool2;
         if (this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_b_of_type_Boolean)
@@ -152,21 +154,28 @@ public class ExtSnsRelationChainChangePushInfo
   
   public int b()
   {
+    ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo localRelationalChainPushInfo;
     if (this.jdField_a_of_type_Int == 2)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo != null) {
-        return this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a();
+      localRelationalChainPushInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo;
+      if (localRelationalChainPushInfo != null) {
+        return localRelationalChainPushInfo.a();
       }
     }
-    else if (this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo != null) {
-      return this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a();
+    else
+    {
+      localRelationalChainPushInfo = this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo;
+      if (localRelationalChainPushInfo != null) {
+        return localRelationalChainPushInfo.a();
+      }
     }
     return 0;
   }
   
   public String b()
   {
-    if ((this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo != null) && (this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo != null)) {
+    ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo localRelationalChainPushInfo = this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo;
+    if ((localRelationalChainPushInfo != null) && (localRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo != null)) {
       return this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_e_of_type_JavaLangString;
     }
     return null;
@@ -174,39 +183,37 @@ public class ExtSnsRelationChainChangePushInfo
   
   public boolean b()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo != null)
-    {
-      bool1 = bool2;
-      if (this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo != null)
-      {
-        bool1 = bool2;
-        if (!TextUtils.isEmpty(this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.c)) {
-          bool1 = true;
-        }
-      }
+    ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo localRelationalChainPushInfo = this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo;
+    if ((localRelationalChainPushInfo != null) && (localRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo != null)) {
+      return TextUtils.isEmpty(this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.c) ^ true;
     }
-    return bool1;
+    return false;
   }
   
   public int c()
   {
+    ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo localRelationalChainPushInfo;
     if (this.jdField_a_of_type_Int == 2)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo != null) {
-        return this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.b();
+      localRelationalChainPushInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo;
+      if (localRelationalChainPushInfo != null) {
+        return localRelationalChainPushInfo.b();
       }
     }
-    else if (this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo != null) {
-      return this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.b();
+    else
+    {
+      localRelationalChainPushInfo = this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo;
+      if (localRelationalChainPushInfo != null) {
+        return localRelationalChainPushInfo.b();
+      }
     }
     return 0;
   }
   
   public String c()
   {
-    if ((this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo != null) && (this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo != null)) {
+    ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo localRelationalChainPushInfo = this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo;
+    if ((localRelationalChainPushInfo != null) && (localRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo != null)) {
       return this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.f;
     }
     return null;
@@ -214,8 +221,9 @@ public class ExtSnsRelationChainChangePushInfo
   
   public int d()
   {
-    if (this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo != null) {
-      return this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a();
+    ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo localRelationalChainPushInfo = this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo;
+    if (localRelationalChainPushInfo != null) {
+      return localRelationalChainPushInfo.a();
     }
     return 0;
   }
@@ -225,18 +233,28 @@ public class ExtSnsRelationChainChangePushInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ExtSnsRelationChainChangePushInfo{");
-    localStringBuilder.append("selfUin:").append(this.jdField_a_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("friendUin:").append(this.jdField_b_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("changeType:").append(this.jdField_a_of_type_Int).append(", ");
-    localStringBuilder.append("old:").append(this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo).append(", ");
-    localStringBuilder.append("now:").append(this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo).append(", ");
+    localStringBuilder.append("selfUin:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("friendUin:");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("changeType:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("old:");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("now:");
+    localStringBuilder.append(this.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo);
+    localStringBuilder.append(", ");
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.ExtSnsRelationChainChangePushInfo
  * JD-Core Version:    0.7.0.1
  */

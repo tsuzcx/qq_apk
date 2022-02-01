@@ -23,14 +23,8 @@ class FeedManager$3$1
     paramBatchGetFriendStoryFeedInfoRequest = (BatchGetFriendStoryFeedInfoRequest.GetFriendStoryFeedInfoResp)paramBaseResponse;
     paramBaseResponse = new FeedManager.GetFeedItemEvent();
     paramBaseResponse.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    if ((paramErrorMessage.isFail()) || (paramBatchGetFriendStoryFeedInfoRequest == null)) {
-      FeedManager.a().remove(this.a.a);
-    }
-    for (;;)
+    if ((!paramErrorMessage.isFail()) && (paramBatchGetFriendStoryFeedInfoRequest != null))
     {
-      SLog.a("Q.qqstory.home.data.FeedManager", "request feed item, net rec , feed id: %s , err :%d", this.a.a, Integer.valueOf(paramErrorMessage.errorCode));
-      StoryDispatcher.a().dispatch(paramBaseResponse);
-      return;
       if (!paramBatchGetFriendStoryFeedInfoRequest.a.isEmpty())
       {
         paramBaseResponse.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem = this.a.this$0.a(((StoryHomeFeed)paramBatchGetFriendStoryFeedInfoRequest.a.get(0)).a());
@@ -41,11 +35,16 @@ class FeedManager$3$1
         FeedManager.a().remove(this.a.a);
       }
     }
+    else {
+      FeedManager.a().remove(this.a.a);
+    }
+    SLog.a("Q.qqstory.home.data.FeedManager", "request feed item, net rec , feed id: %s , err :%d", this.a.a, Integer.valueOf(paramErrorMessage.errorCode));
+    StoryDispatcher.a().dispatch(paramBaseResponse);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.FeedManager.3.1
  * JD-Core Version:    0.7.0.1
  */

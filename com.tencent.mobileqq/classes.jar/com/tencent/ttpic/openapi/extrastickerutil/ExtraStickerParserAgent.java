@@ -18,19 +18,21 @@ public class ExtraStickerParserAgent
   
   public void clear()
   {
-    if (this.mParsersMap != null) {
-      this.mParsersMap.clear();
+    HashMap localHashMap = this.mParsersMap;
+    if (localHashMap != null) {
+      localHashMap.clear();
     }
     this.mPagFactoryListener = null;
   }
   
   public IExtraStickerParser creatExtraParser(int paramInt)
   {
-    if (this.mParsersMap != null)
+    Object localObject = this.mParsersMap;
+    if (localObject != null)
     {
-      IExtraParserFactoryListener localIExtraParserFactoryListener = (IExtraParserFactoryListener)this.mParsersMap.get(Integer.valueOf(paramInt));
-      if (localIExtraParserFactoryListener != null) {
-        return localIExtraParserFactoryListener.creatExtraStickerParser();
+      localObject = (IExtraParserFactoryListener)((HashMap)localObject).get(Integer.valueOf(paramInt));
+      if (localObject != null) {
+        return ((IExtraParserFactoryListener)localObject).creatExtraStickerParser();
       }
     }
     return null;
@@ -38,16 +40,18 @@ public class ExtraStickerParserAgent
   
   public IExtraStickerParser creatPagParser()
   {
-    if (this.mPagFactoryListener != null) {
-      return this.mPagFactoryListener.creatExtraStickerParser();
+    IExtraParserFactoryListener localIExtraParserFactoryListener = this.mPagFactoryListener;
+    if (localIExtraParserFactoryListener != null) {
+      return localIExtraParserFactoryListener.creatExtraStickerParser();
     }
     return null;
   }
   
   public boolean isInExtraParser(int paramInt)
   {
-    if (this.mParsersMap != null) {
-      return this.mParsersMap.containsKey(Integer.valueOf(paramInt));
+    HashMap localHashMap = this.mParsersMap;
+    if (localHashMap != null) {
+      return localHashMap.containsKey(Integer.valueOf(paramInt));
     }
     return false;
   }
@@ -67,7 +71,7 @@ public class ExtraStickerParserAgent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.extrastickerutil.ExtraStickerParserAgent
  * JD-Core Version:    0.7.0.1
  */

@@ -13,25 +13,19 @@ class ChatHistoryC2CAllFragment$6
   
   public void onClick(View paramView)
   {
-    if (!this.a.d)
-    {
-      if (!VersionUtils.e()) {
-        break label40;
+    if (!this.a.d) {
+      if (VersionUtils.e()) {
+        this.a.startActivity(new Intent("android.settings.SETTINGS"));
+      } else {
+        this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
       }
-      this.a.startActivity(new Intent("android.settings.SETTINGS"));
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label40:
-      this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment.6
  * JD-Core Version:    0.7.0.1
  */

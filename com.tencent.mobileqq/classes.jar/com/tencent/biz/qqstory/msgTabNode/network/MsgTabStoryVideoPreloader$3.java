@@ -24,8 +24,14 @@ class MsgTabStoryVideoPreloader$3
   {
     if (!paramList.isEmpty())
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("MsgTabStoryVideoPreloader", 2, "start download video list, list = " + paramList.size() + "\n" + paramList);
+      if (QLog.isColorLevel())
+      {
+        paramMsgTabNodeInfo = new StringBuilder();
+        paramMsgTabNodeInfo.append("start download video list, list = ");
+        paramMsgTabNodeInfo.append(paramList.size());
+        paramMsgTabNodeInfo.append("\n");
+        paramMsgTabNodeInfo.append(paramList);
+        QLog.i("MsgTabStoryVideoPreloader", 2, paramMsgTabNodeInfo.toString());
       }
       MsgTabStoryVideoPreloader.a(this.a, paramList);
       return;
@@ -38,7 +44,7 @@ class MsgTabStoryVideoPreloader$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.network.MsgTabStoryVideoPreloader.3
  * JD-Core Version:    0.7.0.1
  */

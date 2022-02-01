@@ -38,15 +38,17 @@ public class DecodeHintType
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (DecodeHintType)paramObject;
-    } while ((this.valueType.equals(paramObject.valueType)) && (this.name.equals(paramObject.name)));
+      return (this.valueType.equals(paramObject.valueType)) && (this.name.equals(paramObject.name));
+    }
     return false;
   }
   
@@ -62,12 +64,19 @@ public class DecodeHintType
   
   public String toString()
   {
-    return "DecodeHintType{valueType=" + this.valueType + ", name='" + this.name + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DecodeHintType{valueType=");
+    localStringBuilder.append(this.valueType);
+    localStringBuilder.append(", name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.zxing.DecodeHintType
  * JD-Core Version:    0.7.0.1
  */

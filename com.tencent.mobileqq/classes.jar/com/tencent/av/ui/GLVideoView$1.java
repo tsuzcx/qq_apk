@@ -31,18 +31,47 @@ class GLVideoView$1
   public void onRenderInfoNotify(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int i = GLVideoView.a(paramInt4);
-    if (QLog.isColorLevel()) {
-      QLog.w(GLVideoView.a(this.jdField_a_of_type_ComTencentAvUiGLVideoView), 1, "onRenderInfoNotify, width[" + this.jdField_a_of_type_ComTencentAvUiGLVideoView.y + "->" + paramInt1 + "], height[" + this.jdField_a_of_type_ComTencentAvUiGLVideoView.z + "->" + paramInt2 + "], angle[" + this.jdField_a_of_type_ComTencentAvUiGLVideoView.x + "->" + paramInt3 + "], rotation[" + GLVideoView.a(this.jdField_a_of_type_ComTencentAvUiGLVideoView) + "->" + i + "], srcR[" + paramInt4 + "], isLocalView[" + this.jdField_a_of_type_ComTencentAvUiGLVideoView.c() + "]");
+    if (QLog.isColorLevel())
+    {
+      localObject = GLVideoView.a(this.jdField_a_of_type_ComTencentAvUiGLVideoView);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onRenderInfoNotify, width[");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUiGLVideoView.y);
+      localStringBuilder.append("->");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append("], height[");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUiGLVideoView.z);
+      localStringBuilder.append("->");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append("], angle[");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUiGLVideoView.x);
+      localStringBuilder.append("->");
+      localStringBuilder.append(paramInt3);
+      localStringBuilder.append("], rotation[");
+      localStringBuilder.append(GLVideoView.a(this.jdField_a_of_type_ComTencentAvUiGLVideoView));
+      localStringBuilder.append("->");
+      localStringBuilder.append(i);
+      localStringBuilder.append("], srcR[");
+      localStringBuilder.append(paramInt4);
+      localStringBuilder.append("], isLocalView[");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUiGLVideoView.c());
+      localStringBuilder.append("]");
+      QLog.w((String)localObject, 1, localStringBuilder.toString());
     }
-    if ((!this.jdField_a_of_type_ComTencentAvUiGLVideoView.c()) && (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)) {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(10004), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if (!this.jdField_a_of_type_ComTencentAvUiGLVideoView.c())
+    {
+      localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+      if (localObject != null) {
+        ((VideoAppInterface)localObject).a(new Object[] { Integer.valueOf(10004), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      }
     }
-    this.jdField_a_of_type_ComTencentAvUiGLVideoView.y = paramInt1;
-    this.jdField_a_of_type_ComTencentAvUiGLVideoView.z = paramInt2;
-    this.jdField_a_of_type_ComTencentAvUiGLVideoView.x = paramInt3;
-    this.jdField_a_of_type_ComTencentAvUiGLVideoView.k = i;
+    Object localObject = this.jdField_a_of_type_ComTencentAvUiGLVideoView;
+    ((GLVideoView)localObject).y = paramInt1;
+    ((GLVideoView)localObject).z = paramInt2;
+    ((GLVideoView)localObject).x = paramInt3;
+    ((GLVideoView)localObject).k = i;
     if (paramInt4 != -1) {
-      GLVideoView.a(this.jdField_a_of_type_ComTencentAvUiGLVideoView, i);
+      GLVideoView.a((GLVideoView)localObject, i);
     }
     GLVideoView.d(this.jdField_a_of_type_ComTencentAvUiGLVideoView);
   }
@@ -54,7 +83,7 @@ class GLVideoView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.GLVideoView.1
  * JD-Core Version:    0.7.0.1
  */

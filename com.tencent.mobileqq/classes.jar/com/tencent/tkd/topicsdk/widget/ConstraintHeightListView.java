@@ -18,7 +18,9 @@ public final class ConstraintHeightListView
   public ConstraintHeightListView(@NotNull Context paramContext, @NotNull AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.jdField_a_of_type_ArrayOfInt, 0, 0);
+    int[] arrayOfInt = R.styleable.jdField_a_of_type_ArrayOfInt;
+    int i = 0;
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, arrayOfInt, 0, 0);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "array");
     int j = paramContext.getIndexCount();
     while (i < j)
@@ -32,17 +34,19 @@ public final class ConstraintHeightListView
     paramContext.recycle();
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if ((getMeasuredHeight() > this.a) && (this.a > -1)) {
+    float f1 = getMeasuredHeight();
+    float f2 = this.a;
+    if ((f1 > f2) && (f2 > -1)) {
       setMeasuredDimension(View.MeasureSpec.getSize(paramInt1), (int)this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.ConstraintHeightListView
  * JD-Core Version:    0.7.0.1
  */

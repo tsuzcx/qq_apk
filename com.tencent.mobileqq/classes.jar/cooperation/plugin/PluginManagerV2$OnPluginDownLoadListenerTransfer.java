@@ -20,35 +20,39 @@ class PluginManagerV2$OnPluginDownLoadListenerTransfer
   
   public void onInstallBegin(String paramString)
   {
-    if (this.a != null) {
-      this.a.b(paramString);
+    PluginDownloader.OnPluginDownLoadListener localOnPluginDownLoadListener = this.a;
+    if (localOnPluginDownLoadListener != null) {
+      localOnPluginDownLoadListener.b(paramString);
     }
   }
   
   public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
   {
-    if (this.a != null) {
-      this.a.a(paramInt1, paramInt2, paramString);
+    PluginDownloader.OnPluginDownLoadListener localOnPluginDownLoadListener = this.a;
+    if (localOnPluginDownLoadListener != null) {
+      localOnPluginDownLoadListener.a(paramInt1, paramInt2, paramString);
     }
   }
   
   public void onInstallError(String paramString, int paramInt)
   {
-    if (this.a != null) {
-      this.a.a(false, paramString);
+    PluginDownloader.OnPluginDownLoadListener localOnPluginDownLoadListener = this.a;
+    if (localOnPluginDownLoadListener != null) {
+      localOnPluginDownLoadListener.a(false, paramString);
     }
   }
   
   public void onInstallFinish(String paramString)
   {
-    if (this.a != null) {
-      this.a.a(true, paramString);
+    PluginDownloader.OnPluginDownLoadListener localOnPluginDownLoadListener = this.a;
+    if (localOnPluginDownLoadListener != null) {
+      localOnPluginDownLoadListener.a(true, paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.plugin.PluginManagerV2.OnPluginDownLoadListenerTransfer
  * JD-Core Version:    0.7.0.1
  */

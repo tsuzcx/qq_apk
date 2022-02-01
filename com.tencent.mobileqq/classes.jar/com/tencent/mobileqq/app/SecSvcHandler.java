@@ -11,11 +11,9 @@ import com.tencent.ims.get_config.ReqBody;
 import com.tencent.ims.get_config.RspBody;
 import com.tencent.ims.wx_msg_opt.ReqBody;
 import com.tencent.ims.wx_msg_opt.RspBody;
-import com.tencent.mobileqq.activity.AuthDevRenameActivity;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneUnityManager;
 import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
@@ -27,14 +25,11 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqprotect.qsec.SecSvcHandlerHelper;
 import com.tencent.qqprotect.singleupdate.QPUpdateManager;
 import java.nio.ByteBuffer;
-import java.util.List;
 import tencent.im.oidb.cmd0x614.Oidb_0x614.DeviceManageHead;
 import tencent.im.oidb.cmd0x614.Oidb_0x614.ReNameDeviceNameReqBody;
 import tencent.im.oidb.cmd0x614.Oidb_0x614.ReqBody;
-import tencent.im.oidb.cmd0xeb8.oidb_0xeb8.PhoneInfo;
+import tencent.im.oidb.cmd0x614.Oidb_0x614.RspBody;
 import tencent.im.oidb.cmd0xeb8.oidb_0xeb8.ReqBody;
-import tencent.im.oidb.cmd0xeb8.oidb_0xeb8.RspBody;
-import tencent.im.oidb.cmd0xebd.oidb_0xebd.ReqBody;
 import tencent.im.oidb.cmd0xebd.oidb_0xebd.RspBody;
 import tencent.im.oidb.cmd0xec0.oidb_0xec0.ReqBody;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
@@ -55,415 +50,650 @@ public class SecSvcHandler
   
   private void a(int paramInt, SubMsgType0xc6.AccountExceptionAlertBody paramAccountExceptionAlertBody)
   {
-    if (paramAccountExceptionAlertBody == null) {
+    if (paramAccountExceptionAlertBody == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("SecSvcHandler", 2, "account exception alert, null body");
       }
-    }
-    do
-    {
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isLogin()) {
-        break;
+    }
+    if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isLogin())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SecSvcHandler", 2, "user not logined, no alert");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("SecSvcHandler", 2, "user not logined, no alert");
-    return;
-    String str1 = "";
-    String str2 = "";
-    String str3 = "";
-    String str4 = "";
-    String str5 = "";
+      return;
+    }
+    String str1;
     if (paramAccountExceptionAlertBody.str_title.has()) {
       str1 = paramAccountExceptionAlertBody.str_title.get();
+    } else {
+      str1 = "";
     }
+    String str2;
     if (paramAccountExceptionAlertBody.str_content.has()) {
       str2 = paramAccountExceptionAlertBody.str_content.get();
+    } else {
+      str2 = "";
     }
+    String str3;
     if (paramAccountExceptionAlertBody.str_left_button_text.has()) {
       str3 = paramAccountExceptionAlertBody.str_left_button_text.get();
+    } else {
+      str3 = "";
     }
+    String str4;
     if (paramAccountExceptionAlertBody.str_right_button_text.has()) {
       str4 = paramAccountExceptionAlertBody.str_right_button_text.get();
+    } else {
+      str4 = "";
     }
+    String str5;
     if (paramAccountExceptionAlertBody.str_right_button_link.has()) {
       str5 = paramAccountExceptionAlertBody.str_right_button_link.get();
+    } else {
+      str5 = "";
     }
-    if (paramAccountExceptionAlertBody.uint32_left_button_id.has()) {}
-    for (int i = paramAccountExceptionAlertBody.uint32_left_button_id.get();; i = 0)
+    int i;
+    if (paramAccountExceptionAlertBody.uint32_left_button_id.has()) {
+      i = paramAccountExceptionAlertBody.uint32_left_button_id.get();
+    } else {
+      i = 0;
+    }
+    int j;
+    if (paramAccountExceptionAlertBody.uint32_right_button_id.has()) {
+      j = paramAccountExceptionAlertBody.uint32_right_button_id.get();
+    } else {
+      j = 0;
+    }
+    if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && ((!TextUtils.isEmpty(str3)) || (!TextUtils.isEmpty(str4))))
     {
-      if (paramAccountExceptionAlertBody.uint32_right_button_id.has()) {}
-      for (int j = paramAccountExceptionAlertBody.uint32_right_button_id.get();; j = 0)
-      {
-        if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)) || ((TextUtils.isEmpty(str3)) && (TextUtils.isEmpty(str4))))
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("SecSvcHandler", 2, "empty title or content, or no buttons, so no alert");
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("SecSvcHandler", 2, String.format("cmd=%d, args: title=%s, msg=%s, lbtn=%s, rbtn=%s, url=%s,lbip=%d, rbid=%d", new Object[] { Integer.valueOf(paramInt), str1, str2, str3, str4, str5, Integer.valueOf(i), Integer.valueOf(j) }));
-        }
-        new Handler(Looper.getMainLooper()).post(new SecSvcHandler.1(this, str1, str2, str3, str4, str5, i, j, paramInt));
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("SecSvcHandler", 2, String.format("cmd=%d, args: title=%s, msg=%s, lbtn=%s, rbtn=%s, url=%s,lbip=%d, rbid=%d", new Object[] { Integer.valueOf(paramInt), str1, str2, str3, str4, str5, Integer.valueOf(i), Integer.valueOf(j) }));
       }
+      new Handler(Looper.getMainLooper()).post(new SecSvcHandler.1(this, str1, str2, str3, str4, str5, i, j, paramInt));
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("SecSvcHandler", 2, "empty title or content, or no buttons, so no alert");
     }
   }
   
   private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    bool1 = false;
+    boolean bool2 = false;
     boolean bool3 = false;
+    boolean bool1 = false;
     boolean bool4 = false;
-    if ((paramObject == null) || (paramFromServiceMsg == null) || (paramToServiceMsg == null) || (!paramFromServiceMsg.isSuccess()))
-    {
-      notifyUI(8, false, Integer.valueOf(-1));
-      return;
-    }
-    for (;;)
+    if ((paramObject != null) && (paramFromServiceMsg != null) && (paramToServiceMsg != null) && (paramFromServiceMsg.isSuccess()))
     {
       try
       {
         oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
         localOIDBSSOPkg.mergeFrom(paramFromServiceMsg.getWupBuffer());
         paramToServiceMsg = new Bundle();
-        bool2 = bool3;
-        paramObject = paramToServiceMsg;
-      }
-      catch (Exception paramFromServiceMsg)
-      {
+        bool1 = bool3;
         try
         {
           if (localOIDBSSOPkg.uint32_result.has())
           {
-            bool1 = bool4;
-            bool2 = bool3;
+            bool2 = bool4;
+            bool1 = bool3;
             if (localOIDBSSOPkg.uint32_result.get() == 0) {
-              bool1 = true;
+              bool2 = true;
             }
-            bool2 = bool1;
+            bool1 = bool2;
             paramToServiceMsg.putInt("ret_code", localOIDBSSOPkg.uint32_result.get());
           }
+          bool1 = bool2;
+          bool3 = bool2;
           paramObject = paramToServiceMsg;
-          bool2 = bool1;
-        }
-        catch (Exception paramFromServiceMsg)
-        {
-          for (;;)
-          {
-            boolean bool2;
-            bool1 = bool2;
+          if (!localOIDBSSOPkg.str_error_msg.has()) {
+            break label223;
           }
+          bool1 = bool2;
+          paramToServiceMsg.putString("err_msg", localOIDBSSOPkg.str_error_msg.get());
+          bool3 = bool2;
+          paramObject = paramToServiceMsg;
         }
-        try
-        {
-          if (localOIDBSSOPkg.str_error_msg.has())
-          {
-            paramToServiceMsg.putString("err_msg", localOIDBSSOPkg.str_error_msg.get());
-            bool2 = bool1;
-            paramObject = paramToServiceMsg;
-          }
-          notifyUI(8, bool2, paramObject);
-          return;
-        }
-        catch (Exception paramFromServiceMsg)
-        {
-          break label175;
-        }
-        paramFromServiceMsg = paramFromServiceMsg;
-        paramToServiceMsg = null;
-        bool1 = false;
+        catch (Exception paramFromServiceMsg) {}
+        bool3 = bool1;
       }
-      label175:
-      bool2 = bool1;
+      catch (Exception paramFromServiceMsg)
+      {
+        paramToServiceMsg = null;
+      }
+      paramObject = paramToServiceMsg;
       if (QLog.isColorLevel())
       {
-        QLog.d("SecSvcHandler", 2, "onUnbindPhoneNumLogin error:" + paramFromServiceMsg.getMessage());
+        paramObject = new StringBuilder();
+        paramObject.append("onUnbindPhoneNumLogin error:");
+        paramObject.append(paramFromServiceMsg.getMessage());
+        QLog.d("SecSvcHandler", 2, paramObject.toString());
         paramObject = paramToServiceMsg;
-        bool2 = bool1;
+        bool3 = bool1;
       }
+      label223:
+      notifyUI(8, bool3, paramObject);
+      return;
     }
+    notifyUI(8, false, Integer.valueOf(-1));
   }
   
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if ((paramObject == null) || (paramFromServiceMsg == null) || (paramToServiceMsg == null) || (!paramFromServiceMsg.isSuccess()))
+    Boolean localBoolean = Boolean.valueOf(false);
+    if ((paramObject != null) && (paramFromServiceMsg != null) && (paramToServiceMsg != null) && (paramFromServiceMsg.isSuccess()))
     {
-      if (paramToServiceMsg == null) {}
-      for (paramToServiceMsg = Boolean.valueOf(false);; paramToServiceMsg = paramToServiceMsg.getAttribute("open_close_contacts", Boolean.valueOf(false)))
+      if (parseOIDBPkg(paramFromServiceMsg, paramObject, new oidb_0xebd.RspBody()) == 0)
       {
-        notifyUI(10, false, paramToServiceMsg);
+        notifyUI(10, true, paramToServiceMsg.getAttribute("open_close_contacts", localBoolean));
         return;
       }
-    }
-    if (parseOIDBPkg(paramFromServiceMsg, paramObject, new oidb_0xebd.RspBody()) == 0)
-    {
-      notifyUI(10, true, paramToServiceMsg.getAttribute("open_close_contacts", Boolean.valueOf(false)));
+      notifyUI(10, false, paramToServiceMsg.getAttribute("open_close_contacts", localBoolean));
       return;
     }
-    notifyUI(10, false, paramToServiceMsg.getAttribute("open_close_contacts", Boolean.valueOf(false)));
+    if (paramToServiceMsg == null) {
+      paramToServiceMsg = localBoolean;
+    } else {
+      paramToServiceMsg = paramToServiceMsg.getAttribute("open_close_contacts", localBoolean);
+    }
+    notifyUI(10, false, paramToServiceMsg);
   }
   
+  /* Error */
   private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    boolean bool3 = false;
-    boolean bool1 = false;
-    oidb_0xeb8.PhoneInfo localPhoneInfo = null;
-    Bundle localBundle = null;
-    paramToServiceMsg = localBundle;
-    boolean bool2 = bool1;
-    if (paramObject != null)
-    {
-      paramToServiceMsg = localBundle;
-      bool2 = bool1;
-    }
-    int i;
-    for (;;)
-    {
-      try
-      {
-        if (paramFromServiceMsg.isSuccess())
-        {
-          paramObject = new oidb_sso.OIDBSSOPkg();
-          paramObject.mergeFrom(paramFromServiceMsg.getWupBuffer());
-          paramToServiceMsg = localBundle;
-          bool2 = bool1;
-          if (paramObject.uint32_result.get() == 0)
-          {
-            paramToServiceMsg = localBundle;
-            bool2 = bool1;
-            if (paramObject.bytes_bodybuffer.has())
-            {
-              paramFromServiceMsg = new oidb_0xeb8.RspBody();
-              paramFromServiceMsg.mergeFrom(paramObject.bytes_bodybuffer.get().toByteArray());
-              i = paramFromServiceMsg.uint32_check_result.get();
-              paramToServiceMsg = localBundle;
-              bool2 = bool1;
-              if (i > 0)
-              {
-                if (i == 4) {
-                  break label720;
-                }
-                bool1 = true;
-              }
-            }
-          }
-        }
-        label166:
-        int j;
-        label278:
-        int k;
-        paramToServiceMsg = paramFromServiceMsg;
-      }
-      catch (Exception paramObject)
-      {
-        try
-        {
-          paramToServiceMsg = new Bundle();
-        }
-        catch (Exception paramObject)
-        {
-          for (;;)
-          {
-            bool1 = true;
-            paramFromServiceMsg = localPhoneInfo;
-          }
-        }
-        try
-        {
-          paramToServiceMsg.putInt("check_result", i);
-          if (i != 3) {
-            break label726;
-          }
-          i = 1;
-          paramToServiceMsg.putInt("need_unify", i);
-          if (paramFromServiceMsg.str_mibao_change_url.has()) {
-            paramToServiceMsg.putString("mibao_change_url", paramFromServiceMsg.str_mibao_change_url.get());
-          }
-          if (paramFromServiceMsg.str_mibao_set_url.has()) {
-            paramToServiceMsg.putString("mibao_set_url", paramFromServiceMsg.str_mibao_set_url.get());
-          }
-          if (paramFromServiceMsg.str_mibao_verify_url.has()) {
-            paramToServiceMsg.putString("mibao_verify_url", paramFromServiceMsg.str_mibao_verify_url.get());
-          }
-          bool2 = bool1;
-          if (paramFromServiceMsg.rpt_phone_info.has())
-          {
-            paramFromServiceMsg = paramFromServiceMsg.rpt_phone_info.get();
-            paramObject = new Bundle[paramFromServiceMsg.size()];
-            i = 0;
-            if (i < paramFromServiceMsg.size())
-            {
-              localPhoneInfo = (oidb_0xeb8.PhoneInfo)paramFromServiceMsg.get(i);
-              if (localPhoneInfo == null) {
-                break label711;
-              }
-              localBundle = new Bundle();
-              j = -1;
-              if (localPhoneInfo.uint32_phone_type.has())
-              {
-                localBundle.putInt("phone_type", localPhoneInfo.uint32_phone_type.get());
-                j = localPhoneInfo.uint32_phone_type.get();
-              }
-              if (localPhoneInfo.str_country_code.has())
-              {
-                localBundle.putString("country_code", localPhoneInfo.str_country_code.get());
-                if (j == 1) {
-                  paramToServiceMsg.putString("country_code", localPhoneInfo.str_country_code.get());
-                }
-              }
-              if (localPhoneInfo.str_phone.has())
-              {
-                localBundle.putString("phone", localPhoneInfo.str_phone.get());
-                if (j == 1) {
-                  paramToServiceMsg.putString("phone", localPhoneInfo.str_phone.get());
-                }
-              }
-              bool2 = bool1;
-              if (localPhoneInfo.uint32_phone_status.has())
-              {
-                k = localPhoneInfo.uint32_phone_status.get();
-                localBundle.putInt("status", k);
-                if (j == 1) {
-                  paramToServiceMsg.putInt("status", k);
-                }
-                bool2 = bool1;
-                if (k == 4)
-                {
-                  bool2 = false;
-                  QLog.e("SecSvcHandler", 1, "onGetNewPhoneUnityInfo: get phone type: " + j + " fail.");
-                }
-              }
-              if (!localPhoneInfo.bytes_vas_phone.has()) {
-                break label732;
-              }
-              localBundle.putByteArray("vaskey", localPhoneInfo.bytes_vas_phone.get().toByteArray());
-              break label732;
-            }
-            paramToServiceMsg.putParcelableArray("phone_info", paramObject);
-            ((PhoneUnityManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.PHONE_UNITY_MANAGER)).a(paramToServiceMsg);
-            bool2 = bool1;
-          }
-          paramToServiceMsg.putBoolean("is_all_phone_get", bool2);
-          bool2 = true;
-          notifyUI(5, bool2, paramToServiceMsg);
-          return;
-        }
-        catch (Exception paramObject)
-        {
-          bool1 = true;
-          paramFromServiceMsg = paramToServiceMsg;
-          break label642;
-        }
-        paramObject = paramObject;
-        bool1 = bool3;
-        paramFromServiceMsg = localPhoneInfo;
-      }
-      label642:
-      bool2 = bool1;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("SecSvcHandler", 2, "onGetPhoneBindInfo error:" + paramObject.getMessage());
-        paramToServiceMsg = paramFromServiceMsg;
-        bool2 = bool1;
-      }
-    }
-    for (;;)
-    {
-      label711:
-      i += 1;
-      break label278;
-      label720:
-      bool1 = false;
-      break;
-      label726:
-      i = 0;
-      break label166;
-      label732:
-      paramObject[i] = localBundle;
-      bool1 = bool2;
-    }
+    // Byte code:
+    //   0: aload_3
+    //   1: ifnull +737 -> 738
+    //   4: aload_2
+    //   5: invokevirtual 134	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
+    //   8: ifeq +730 -> 738
+    //   11: new 136	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   14: dup
+    //   15: invokespecial 139	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
+    //   18: astore_3
+    //   19: aload_3
+    //   20: aload_2
+    //   21: invokevirtual 143	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
+    //   24: invokevirtual 147	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   27: pop
+    //   28: aload_3
+    //   29: getfield 153	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   32: invokevirtual 79	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   35: ifne +703 -> 738
+    //   38: aload_3
+    //   39: getfield 213	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   42: invokevirtual 216	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   45: ifeq +693 -> 738
+    //   48: new 218	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$RspBody
+    //   51: dup
+    //   52: invokespecial 219	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$RspBody:<init>	()V
+    //   55: astore_1
+    //   56: aload_1
+    //   57: aload_3
+    //   58: getfield 213	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   61: invokevirtual 222	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   64: invokevirtual 227	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   67: invokevirtual 228	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   70: pop
+    //   71: aload_1
+    //   72: getfield 231	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$RspBody:uint32_check_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   75: invokevirtual 79	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   78: istore 4
+    //   80: iload 4
+    //   82: ifle +656 -> 738
+    //   85: iconst_4
+    //   86: istore 5
+    //   88: iload 4
+    //   90: iconst_4
+    //   91: if_icmpeq +9 -> 100
+    //   94: iconst_1
+    //   95: istore 8
+    //   97: goto +6 -> 103
+    //   100: iconst_0
+    //   101: istore 8
+    //   103: new 149	android/os/Bundle
+    //   106: dup
+    //   107: invokespecial 150	android/os/Bundle:<init>	()V
+    //   110: astore_2
+    //   111: aload_2
+    //   112: ldc 233
+    //   114: iload 4
+    //   116: invokevirtual 159	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   119: iload 4
+    //   121: iconst_3
+    //   122: if_icmpne +630 -> 752
+    //   125: iconst_1
+    //   126: istore 4
+    //   128: goto +3 -> 131
+    //   131: aload_2
+    //   132: ldc 235
+    //   134: iload 4
+    //   136: invokevirtual 159	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   139: aload_1
+    //   140: getfield 238	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$RspBody:str_mibao_change_url	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   143: invokevirtual 51	com/tencent/mobileqq/pb/PBStringField:has	()Z
+    //   146: ifeq +16 -> 162
+    //   149: aload_2
+    //   150: ldc 240
+    //   152: aload_1
+    //   153: getfield 238	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$RspBody:str_mibao_change_url	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   156: invokevirtual 55	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   159: invokevirtual 168	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   162: aload_1
+    //   163: getfield 243	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$RspBody:str_mibao_set_url	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   166: invokevirtual 51	com/tencent/mobileqq/pb/PBStringField:has	()Z
+    //   169: ifeq +16 -> 185
+    //   172: aload_2
+    //   173: ldc 245
+    //   175: aload_1
+    //   176: getfield 243	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$RspBody:str_mibao_set_url	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   179: invokevirtual 55	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   182: invokevirtual 168	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   185: aload_1
+    //   186: getfield 248	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$RspBody:str_mibao_verify_url	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   189: invokevirtual 51	com/tencent/mobileqq/pb/PBStringField:has	()Z
+    //   192: ifeq +16 -> 208
+    //   195: aload_2
+    //   196: ldc 250
+    //   198: aload_1
+    //   199: getfield 248	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$RspBody:str_mibao_verify_url	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   202: invokevirtual 55	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   205: invokevirtual 168	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   208: aload_1
+    //   209: getfield 254	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$RspBody:rpt_phone_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   212: invokevirtual 257	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
+    //   215: ifeq +571 -> 786
+    //   218: aload_1
+    //   219: getfield 254	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$RspBody:rpt_phone_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   222: invokevirtual 260	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   225: astore_3
+    //   226: aload_3
+    //   227: invokeinterface 265 1 0
+    //   232: anewarray 149	android/os/Bundle
+    //   235: astore 10
+    //   237: iconst_0
+    //   238: istore 4
+    //   240: iload 4
+    //   242: aload_3
+    //   243: invokeinterface 265 1 0
+    //   248: if_icmpge +359 -> 607
+    //   251: aload_3
+    //   252: iload 4
+    //   254: invokeinterface 268 2 0
+    //   259: checkcast 270	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$PhoneInfo
+    //   262: astore 11
+    //   264: aload 11
+    //   266: ifnonnull +6 -> 272
+    //   269: goto +508 -> 777
+    //   272: new 149	android/os/Bundle
+    //   275: dup
+    //   276: invokespecial 150	android/os/Bundle:<init>	()V
+    //   279: astore 12
+    //   281: aload 11
+    //   283: getfield 273	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$PhoneInfo:uint32_phone_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   286: invokevirtual 76	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   289: ifeq +469 -> 758
+    //   292: aload 11
+    //   294: getfield 273	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$PhoneInfo:uint32_phone_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   297: invokevirtual 79	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   300: istore 7
+    //   302: aload 12
+    //   304: ldc_w 275
+    //   307: iload 7
+    //   309: invokevirtual 159	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   312: iload 7
+    //   314: istore 6
+    //   316: iload 7
+    //   318: iload 5
+    //   320: if_icmpne +47 -> 367
+    //   323: aload_2
+    //   324: ldc_w 277
+    //   327: iconst_0
+    //   328: invokevirtual 281	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
+    //   331: aload_2
+    //   332: ldc_w 283
+    //   335: aload 11
+    //   337: getfield 286	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$PhoneInfo:str_phone	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   340: invokevirtual 55	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   343: invokevirtual 168	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   346: aload_2
+    //   347: ldc_w 288
+    //   350: aload_1
+    //   351: getfield 291	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$RspBody:str_verify_premibao_url	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   354: invokevirtual 55	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   357: invokevirtual 168	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   360: iload 7
+    //   362: istore 6
+    //   364: goto +3 -> 367
+    //   367: aload 11
+    //   369: getfield 294	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$PhoneInfo:str_country_code	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   372: invokevirtual 51	com/tencent/mobileqq/pb/PBStringField:has	()Z
+    //   375: ifeq +40 -> 415
+    //   378: aload 12
+    //   380: ldc_w 296
+    //   383: aload 11
+    //   385: getfield 294	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$PhoneInfo:str_country_code	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   388: invokevirtual 55	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   391: invokevirtual 168	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   394: iload 6
+    //   396: iconst_1
+    //   397: if_icmpne +18 -> 415
+    //   400: aload_2
+    //   401: ldc_w 296
+    //   404: aload 11
+    //   406: getfield 294	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$PhoneInfo:str_country_code	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   409: invokevirtual 55	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   412: invokevirtual 168	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   415: aload 11
+    //   417: getfield 286	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$PhoneInfo:str_phone	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   420: invokevirtual 51	com/tencent/mobileqq/pb/PBStringField:has	()Z
+    //   423: ifeq +40 -> 463
+    //   426: aload 12
+    //   428: ldc_w 298
+    //   431: aload 11
+    //   433: getfield 286	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$PhoneInfo:str_phone	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   436: invokevirtual 55	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   439: invokevirtual 168	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   442: iload 6
+    //   444: iconst_1
+    //   445: if_icmpne +18 -> 463
+    //   448: aload_2
+    //   449: ldc_w 298
+    //   452: aload 11
+    //   454: getfield 286	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$PhoneInfo:str_phone	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   457: invokevirtual 55	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   460: invokevirtual 168	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   463: aload 11
+    //   465: getfield 301	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$PhoneInfo:uint32_phone_status	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   468: invokevirtual 76	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   471: ifeq +296 -> 767
+    //   474: aload 11
+    //   476: getfield 301	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$PhoneInfo:uint32_phone_status	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   479: invokevirtual 79	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   482: istore 5
+    //   484: aload 12
+    //   486: ldc_w 303
+    //   489: iload 5
+    //   491: invokevirtual 159	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   494: iload 6
+    //   496: iconst_1
+    //   497: if_icmpne +12 -> 509
+    //   500: aload_2
+    //   501: ldc_w 303
+    //   504: iload 5
+    //   506: invokevirtual 159	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   509: iload 5
+    //   511: iconst_4
+    //   512: if_icmpne +252 -> 764
+    //   515: new 170	java/lang/StringBuilder
+    //   518: dup
+    //   519: invokespecial 171	java/lang/StringBuilder:<init>	()V
+    //   522: astore 13
+    //   524: aload 13
+    //   526: ldc_w 305
+    //   529: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   532: pop
+    //   533: aload 13
+    //   535: iload 6
+    //   537: invokevirtual 308	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   540: pop
+    //   541: aload 13
+    //   543: ldc_w 310
+    //   546: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   549: pop
+    //   550: aload 13
+    //   552: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   555: astore 13
+    //   557: ldc 27
+    //   559: iconst_1
+    //   560: aload 13
+    //   562: invokestatic 313	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   565: iconst_0
+    //   566: istore 8
+    //   568: goto +3 -> 571
+    //   571: iconst_4
+    //   572: istore 5
+    //   574: aload 11
+    //   576: getfield 316	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$PhoneInfo:bytes_vas_phone	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   579: invokevirtual 216	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   582: ifeq +188 -> 770
+    //   585: aload 12
+    //   587: ldc_w 318
+    //   590: aload 11
+    //   592: getfield 316	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$PhoneInfo:bytes_vas_phone	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   595: invokevirtual 222	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   598: invokevirtual 227	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   601: invokevirtual 322	android/os/Bundle:putByteArray	(Ljava/lang/String;[B)V
+    //   604: goto +166 -> 770
+    //   607: aload_2
+    //   608: ldc_w 324
+    //   611: aload 10
+    //   613: invokevirtual 328	android/os/Bundle:putParcelableArray	(Ljava/lang/String;[Landroid/os/Parcelable;)V
+    //   616: aload_0
+    //   617: getfield 16	com/tencent/mobileqq/app/SecSvcHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   620: getstatic 333	com/tencent/mobileqq/app/QQManagerFactory:PHONE_UNITY_MANAGER	I
+    //   623: invokevirtual 337	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   626: checkcast 339	com/tencent/mobileqq/activity/contact/phonecontact/PhoneUnityManager
+    //   629: aload_2
+    //   630: invokevirtual 342	com/tencent/mobileqq/activity/contact/phonecontact/PhoneUnityManager:a	(Landroid/os/Bundle;)V
+    //   633: goto +3 -> 636
+    //   636: iconst_1
+    //   637: istore 9
+    //   639: aload_2
+    //   640: ldc_w 344
+    //   643: iload 8
+    //   645: invokevirtual 281	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
+    //   648: aload_2
+    //   649: astore_3
+    //   650: goto +93 -> 743
+    //   653: iconst_1
+    //   654: istore 8
+    //   656: astore_1
+    //   657: goto +25 -> 682
+    //   660: astore_1
+    //   661: iconst_1
+    //   662: istore 8
+    //   664: goto +18 -> 682
+    //   667: astore_1
+    //   668: iconst_1
+    //   669: istore 8
+    //   671: aconst_null
+    //   672: astore_2
+    //   673: goto +9 -> 682
+    //   676: astore_1
+    //   677: aconst_null
+    //   678: astore_2
+    //   679: iconst_0
+    //   680: istore 8
+    //   682: iload 8
+    //   684: istore 9
+    //   686: aload_2
+    //   687: astore_3
+    //   688: invokestatic 25	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   691: ifeq +52 -> 743
+    //   694: new 170	java/lang/StringBuilder
+    //   697: dup
+    //   698: invokespecial 171	java/lang/StringBuilder:<init>	()V
+    //   701: astore_3
+    //   702: aload_3
+    //   703: ldc_w 346
+    //   706: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   709: pop
+    //   710: aload_3
+    //   711: aload_1
+    //   712: invokevirtual 180	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   715: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   718: pop
+    //   719: ldc 27
+    //   721: iconst_2
+    //   722: aload_3
+    //   723: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   726: invokestatic 33	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   729: iload 8
+    //   731: istore 9
+    //   733: aload_2
+    //   734: astore_3
+    //   735: goto +8 -> 743
+    //   738: aconst_null
+    //   739: astore_3
+    //   740: iconst_0
+    //   741: istore 9
+    //   743: aload_0
+    //   744: iconst_5
+    //   745: iload 9
+    //   747: aload_3
+    //   748: invokevirtual 187	com/tencent/mobileqq/app/SecSvcHandler:notifyUI	(IZLjava/lang/Object;)V
+    //   751: return
+    //   752: iconst_0
+    //   753: istore 4
+    //   755: goto -624 -> 131
+    //   758: iconst_m1
+    //   759: istore 6
+    //   761: goto -394 -> 367
+    //   764: goto -193 -> 571
+    //   767: goto -196 -> 571
+    //   770: aload 10
+    //   772: iload 4
+    //   774: aload 12
+    //   776: aastore
+    //   777: iload 4
+    //   779: iconst_1
+    //   780: iadd
+    //   781: istore 4
+    //   783: goto -543 -> 240
+    //   786: goto -150 -> 636
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	789	0	this	SecSvcHandler
+    //   0	789	1	paramToServiceMsg	ToServiceMsg
+    //   0	789	2	paramFromServiceMsg	FromServiceMsg
+    //   0	789	3	paramObject	Object
+    //   78	704	4	i	int
+    //   86	487	5	j	int
+    //   314	446	6	k	int
+    //   300	61	7	m	int
+    //   95	635	8	bool1	boolean
+    //   637	109	9	bool2	boolean
+    //   235	536	10	arrayOfBundle	Bundle[]
+    //   262	329	11	localPhoneInfo	tencent.im.oidb.cmd0xeb8.oidb_0xeb8.PhoneInfo
+    //   279	496	12	localBundle	Bundle
+    //   522	39	13	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   557	565	653	java/lang/Exception
+    //   574	604	653	java/lang/Exception
+    //   607	633	653	java/lang/Exception
+    //   639	648	653	java/lang/Exception
+    //   111	119	660	java/lang/Exception
+    //   131	162	660	java/lang/Exception
+    //   162	185	660	java/lang/Exception
+    //   185	208	660	java/lang/Exception
+    //   208	237	660	java/lang/Exception
+    //   240	264	660	java/lang/Exception
+    //   272	312	660	java/lang/Exception
+    //   323	360	660	java/lang/Exception
+    //   367	394	660	java/lang/Exception
+    //   400	415	660	java/lang/Exception
+    //   415	442	660	java/lang/Exception
+    //   448	463	660	java/lang/Exception
+    //   463	494	660	java/lang/Exception
+    //   500	509	660	java/lang/Exception
+    //   515	557	660	java/lang/Exception
+    //   103	111	667	java/lang/Exception
+    //   4	80	676	java/lang/Exception
   }
   
   private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     int j = 0;
-    int i = 1;
-    if ((paramObject == null) || (!paramFromServiceMsg.isSuccess()))
-    {
-      notifyUI(1, false, null);
-      return;
-    }
+    if ((paramObject != null) && (paramFromServiceMsg.isSuccess())) {}
     for (;;)
     {
       try
       {
-        paramFromServiceMsg = new get_config.RspBody();
-        paramFromServiceMsg.mergeFrom((byte[])paramObject);
+        get_config.RspBody localRspBody = new get_config.RspBody();
+        localRspBody.mergeFrom((byte[])paramObject);
         paramObject = new Bundle();
-        if (paramFromServiceMsg.u32_proto_version.has()) {
-          i = paramFromServiceMsg.u32_proto_version.get();
+        if (!localRspBody.u32_proto_version.has()) {
+          break label305;
         }
+        i = localRspBody.u32_proto_version.get();
         paramObject.putInt("proto_version", i);
-        paramToServiceMsg = "";
-        if (paramFromServiceMsg.str_config_name.has()) {
-          paramToServiceMsg = paramFromServiceMsg.str_config_name.get();
+        boolean bool = localRspBody.str_config_name.has();
+        paramFromServiceMsg = "";
+        if (!bool) {
+          break label311;
         }
+        paramToServiceMsg = localRspBody.str_config_name.get();
         paramObject.putString("config_name", paramToServiceMsg);
-        if (!paramFromServiceMsg.u32_config_version.has()) {
-          break label273;
+        if (!localRspBody.u32_config_version.has()) {
+          break label317;
         }
-        i = paramFromServiceMsg.u32_config_version.get();
+        i = localRspBody.u32_config_version.get();
         paramObject.putInt("config_version", i);
         i = j;
-        if (paramFromServiceMsg.u32_effect_time.has()) {
-          i = paramFromServiceMsg.u32_effect_time.get();
+        if (localRspBody.u32_effect_time.has()) {
+          i = localRspBody.u32_effect_time.get();
         }
         paramObject.putInt("effect_time", i);
-        paramToServiceMsg = "";
-        if (paramFromServiceMsg.str_md5.has()) {
-          paramToServiceMsg = paramFromServiceMsg.str_md5.get();
+        if (!localRspBody.str_md5.has()) {
+          break label323;
         }
+        paramToServiceMsg = localRspBody.str_md5.get();
         paramObject.putString("md5", paramToServiceMsg);
-        paramToServiceMsg = "";
-        if (paramFromServiceMsg.str_download_link.has()) {
-          paramToServiceMsg = paramFromServiceMsg.str_download_link.get();
+        paramToServiceMsg = paramFromServiceMsg;
+        if (localRspBody.str_download_link.has()) {
+          paramToServiceMsg = localRspBody.str_download_link.get();
         }
         paramObject.putString("download_url", paramToServiceMsg);
         notifyUI(1, true, paramObject);
         return;
       }
-      catch (Exception paramToServiceMsg) {}
-      if (!QLog.isColorLevel()) {
-        break;
+      catch (Exception paramToServiceMsg)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramFromServiceMsg = new StringBuilder();
+          paramFromServiceMsg.append("onGetAntiFraudConfig error:");
+          paramFromServiceMsg.append(paramToServiceMsg.getMessage());
+          QLog.d("SecSvcHandler", 2, paramFromServiceMsg.toString());
+        }
+        return;
       }
-      QLog.d("SecSvcHandler", 2, "onGetAntiFraudConfig error:" + paramToServiceMsg.getMessage());
+      notifyUI(1, false, null);
       return;
-      label273:
+      label305:
+      int i = 1;
+      continue;
+      label311:
+      paramToServiceMsg = "";
+      continue;
+      label317:
       i = 0;
+      continue;
+      label323:
+      paramToServiceMsg = "";
     }
   }
   
   private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    int i = 1;
-    if ((paramObject == null) || (!paramFromServiceMsg.isSuccess()))
-    {
-      notifyUI(2, false, null);
-      return;
+    if ((paramObject != null) && (paramFromServiceMsg.isSuccess())) {
+      paramObject = new wx_msg_opt.RspBody();
     }
-    paramObject = new wx_msg_opt.RspBody();
     for (;;)
     {
       try
       {
         paramObject.mergeFrom(paramFromServiceMsg.getWupBuffer());
         paramFromServiceMsg = new Bundle();
-        if (paramObject.uint32_cmd.has()) {
-          i = paramObject.uint32_cmd.get();
+        if (!paramObject.uint32_cmd.has()) {
+          break label220;
         }
+        i = paramObject.uint32_cmd.get();
         paramFromServiceMsg.putInt("cmd", i);
         i = -1;
         if (paramObject.uint32_ret.has()) {
@@ -471,7 +701,7 @@ public class SecSvcHandler
         }
         paramFromServiceMsg.putInt("ret", i);
         if (!paramObject.uint32_opt.has()) {
-          break label208;
+          break label226;
         }
         i = paramObject.uint32_opt.get();
         paramFromServiceMsg.putInt("opt", i);
@@ -483,13 +713,23 @@ public class SecSvcHandler
         notifyUI(2, true, paramFromServiceMsg);
         return;
       }
-      catch (Exception paramToServiceMsg) {}
-      if (!QLog.isColorLevel()) {
-        break;
+      catch (Exception paramToServiceMsg)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramFromServiceMsg = new StringBuilder();
+          paramFromServiceMsg.append("onWXSyncQQMsgOption error:");
+          paramFromServiceMsg.append(paramToServiceMsg.getMessage());
+          QLog.d("SecSvcHandler", 2, paramFromServiceMsg.toString());
+        }
+        return;
       }
-      QLog.d("SecSvcHandler", 2, "onWXSyncQQMsgOption error:" + paramToServiceMsg.getMessage());
+      notifyUI(2, false, null);
       return;
-      label208:
+      label220:
+      int i = 1;
+      continue;
+      label226:
       i = 2;
     }
   }
@@ -497,12 +737,9 @@ public class SecSvcHandler
   private void f(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     boolean bool2 = false;
-    if ((paramObject == null) || (!paramFromServiceMsg.isSuccess()))
-    {
-      notifyUI(3, false, null);
-      return;
+    if ((paramObject != null) && (paramFromServiceMsg.isSuccess())) {
+      paramObject = new device_lock_query_status.RspBody();
     }
-    paramObject = new device_lock_query_status.RspBody();
     for (;;)
     {
       try
@@ -510,7 +747,7 @@ public class SecSvcHandler
         paramObject.mergeFrom(paramFromServiceMsg.getWupBuffer());
         paramFromServiceMsg = new Bundle();
         if (!paramObject.u32_status.has()) {
-          break label181;
+          break label193;
         }
         i = paramObject.u32_status.get();
         paramFromServiceMsg.putInt("status", i);
@@ -530,354 +767,285 @@ public class SecSvcHandler
         notifyUI(3, bool1, paramFromServiceMsg);
         return;
       }
-      catch (Exception paramToServiceMsg) {}
-      if (!QLog.isColorLevel()) {
-        break;
+      catch (Exception paramToServiceMsg)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramFromServiceMsg = new StringBuilder();
+          paramFromServiceMsg.append("onQueryDevLockStatus error:");
+          paramFromServiceMsg.append(paramToServiceMsg.getMessage());
+          QLog.d("SecSvcHandler", 2, paramFromServiceMsg.toString());
+        }
+        return;
       }
-      QLog.d("SecSvcHandler", 2, "onQueryDevLockStatus error:" + paramToServiceMsg.getMessage());
+      notifyUI(3, false, null);
       return;
-      label181:
+      label193:
       int i = 0;
     }
   }
   
-  /* Error */
   private void g(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    // Byte code:
-    //   0: aload_3
-    //   1: ifnull +252 -> 253
-    //   4: aload_2
-    //   5: invokevirtual 134	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
-    //   8: ifeq +245 -> 253
-    //   11: new 140	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   14: dup
-    //   15: invokespecial 143	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
-    //   18: astore_3
-    //   19: aload_3
-    //   20: aload_2
-    //   21: invokevirtual 147	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
-    //   24: invokevirtual 151	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   27: pop
-    //   28: aload_3
-    //   29: getfield 213	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   32: invokevirtual 216	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   35: ifeq +218 -> 253
-    //   38: new 418	tencent/im/oidb/cmd0x614/Oidb_0x614$RspBody
-    //   41: dup
-    //   42: invokespecial 419	tencent/im/oidb/cmd0x614/Oidb_0x614$RspBody:<init>	()V
-    //   45: astore_2
-    //   46: aload_2
-    //   47: aload_3
-    //   48: getfield 213	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   51: invokevirtual 222	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   54: invokevirtual 227	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   57: invokevirtual 420	tencent/im/oidb/cmd0x614/Oidb_0x614$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   60: pop
-    //   61: aload_2
-    //   62: getfield 424	tencent/im/oidb/cmd0x614/Oidb_0x614$RspBody:msg_dm_head	Ltencent/im/oidb/cmd0x614/Oidb_0x614$DeviceManageHead;
-    //   65: invokevirtual 427	tencent/im/oidb/cmd0x614/Oidb_0x614$DeviceManageHead:has	()Z
-    //   68: ifeq +185 -> 253
-    //   71: aload_2
-    //   72: getfield 424	tencent/im/oidb/cmd0x614/Oidb_0x614$RspBody:msg_dm_head	Ltencent/im/oidb/cmd0x614/Oidb_0x614$DeviceManageHead;
-    //   75: astore_2
-    //   76: aload_2
-    //   77: getfield 428	tencent/im/oidb/cmd0x614/Oidb_0x614$DeviceManageHead:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   80: invokevirtual 76	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   83: ifeq +170 -> 253
-    //   86: aload_2
-    //   87: getfield 428	tencent/im/oidb/cmd0x614/Oidb_0x614$DeviceManageHead:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   90: invokevirtual 79	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   93: istore 4
-    //   95: iload 4
-    //   97: ifne +156 -> 253
-    //   100: new 153	android/os/Bundle
-    //   103: dup
-    //   104: invokespecial 154	android/os/Bundle:<init>	()V
-    //   107: astore_3
-    //   108: aload_1
-    //   109: getfield 432	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   112: getstatic 438	com/tencent/mobileqq/activity/AuthDevRenameActivity:i	Ljava/lang/String;
-    //   115: invokevirtual 442	android/os/Bundle:getInt	(Ljava/lang/String;)I
-    //   118: istore 4
-    //   120: aload_3
-    //   121: getstatic 438	com/tencent/mobileqq/activity/AuthDevRenameActivity:i	Ljava/lang/String;
-    //   124: iload 4
-    //   126: invokevirtual 163	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   129: aload_1
-    //   130: getfield 432	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   133: getstatic 444	com/tencent/mobileqq/activity/AuthDevRenameActivity:f	Ljava/lang/String;
-    //   136: invokevirtual 448	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   139: astore_2
-    //   140: aload_3
-    //   141: getstatic 444	com/tencent/mobileqq/activity/AuthDevRenameActivity:f	Ljava/lang/String;
-    //   144: aload_2
-    //   145: invokevirtual 172	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   148: aload_1
-    //   149: getfield 432	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   152: getstatic 451	com/tencent/mobileqq/activity/AuthDevRenameActivity:h	Ljava/lang/String;
-    //   155: invokevirtual 455	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
-    //   158: astore_1
-    //   159: aload_3
-    //   160: getstatic 451	com/tencent/mobileqq/activity/AuthDevRenameActivity:h	Ljava/lang/String;
-    //   163: aload_1
-    //   164: invokevirtual 309	android/os/Bundle:putByteArray	(Ljava/lang/String;[B)V
-    //   167: iconst_1
-    //   168: istore 6
-    //   170: aload_0
-    //   171: iconst_4
-    //   172: iload 6
-    //   174: aload_3
-    //   175: invokevirtual 138	com/tencent/mobileqq/app/SecSvcHandler:notifyUI	(IZLjava/lang/Object;)V
-    //   178: return
-    //   179: astore_2
-    //   180: iconst_0
-    //   181: istore 5
-    //   183: aconst_null
-    //   184: astore_1
-    //   185: aload_1
-    //   186: astore_3
-    //   187: iload 5
-    //   189: istore 6
-    //   191: invokestatic 25	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   194: ifeq -24 -> 170
-    //   197: ldc 27
-    //   199: iconst_2
-    //   200: new 174	java/lang/StringBuilder
-    //   203: dup
-    //   204: invokespecial 175	java/lang/StringBuilder:<init>	()V
-    //   207: ldc_w 457
-    //   210: invokevirtual 181	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   213: aload_2
-    //   214: invokevirtual 184	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   217: invokevirtual 181	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   220: invokevirtual 187	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   223: invokestatic 33	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   226: aload_1
-    //   227: astore_3
-    //   228: iload 5
-    //   230: istore 6
-    //   232: goto -62 -> 170
-    //   235: astore_2
-    //   236: aconst_null
-    //   237: astore_1
-    //   238: iconst_1
-    //   239: istore 5
-    //   241: goto -56 -> 185
-    //   244: astore_2
-    //   245: iconst_1
-    //   246: istore 5
-    //   248: aload_3
-    //   249: astore_1
-    //   250: goto -65 -> 185
-    //   253: iconst_0
-    //   254: istore 6
-    //   256: aconst_null
-    //   257: astore_3
-    //   258: goto -88 -> 170
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	261	0	this	SecSvcHandler
-    //   0	261	1	paramToServiceMsg	ToServiceMsg
-    //   0	261	2	paramFromServiceMsg	FromServiceMsg
-    //   0	261	3	paramObject	Object
-    //   93	32	4	i	int
-    //   181	66	5	bool1	boolean
-    //   168	87	6	bool2	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   4	95	179	java/lang/Exception
-    //   100	108	235	java/lang/Exception
-    //   108	167	244	java/lang/Exception
+    boolean bool4 = false;
+    boolean bool3 = false;
+    Object localObject3 = null;
+    Object localObject2 = null;
+    boolean bool2 = bool4;
+    Object localObject1 = localObject3;
+    if (paramObject != null)
+    {
+      boolean bool1 = bool3;
+      bool2 = bool4;
+      localObject1 = localObject3;
+      try
+      {
+        if (!paramFromServiceMsg.isSuccess()) {
+          break label345;
+        }
+        bool1 = bool3;
+        paramObject = new oidb_sso.OIDBSSOPkg();
+        bool1 = bool3;
+        paramObject.mergeFrom(paramFromServiceMsg.getWupBuffer());
+        bool1 = bool3;
+        bool2 = bool4;
+        localObject1 = localObject3;
+        if (!paramObject.bytes_bodybuffer.has()) {
+          break label345;
+        }
+        bool1 = bool3;
+        paramFromServiceMsg = new Oidb_0x614.RspBody();
+        bool1 = bool3;
+        paramFromServiceMsg.mergeFrom(paramObject.bytes_bodybuffer.get().toByteArray());
+        bool1 = bool3;
+        bool2 = bool4;
+        localObject1 = localObject3;
+        if (!paramFromServiceMsg.msg_dm_head.has()) {
+          break label345;
+        }
+        bool1 = bool3;
+        paramFromServiceMsg = paramFromServiceMsg.msg_dm_head;
+        bool1 = bool3;
+        bool2 = bool4;
+        localObject1 = localObject3;
+        if (!paramFromServiceMsg.uint32_result.has()) {
+          break label345;
+        }
+        bool1 = bool3;
+        bool2 = bool4;
+        localObject1 = localObject3;
+        if (paramFromServiceMsg.uint32_result.get() != 0) {
+          break label345;
+        }
+        bool2 = true;
+        bool3 = true;
+        bool1 = true;
+        paramFromServiceMsg = new Bundle();
+        try
+        {
+          paramFromServiceMsg.putInt("index", paramToServiceMsg.extraData.getInt("index"));
+          paramFromServiceMsg.putString("target_name", paramToServiceMsg.extraData.getString("target_name"));
+          paramFromServiceMsg.putByteArray("target_desc", paramToServiceMsg.extraData.getByteArray("target_desc"));
+          bool2 = bool3;
+          localObject1 = paramFromServiceMsg;
+        }
+        catch (Exception paramObject)
+        {
+          paramToServiceMsg = paramFromServiceMsg;
+          bool1 = bool2;
+          paramFromServiceMsg = paramObject;
+        }
+        bool2 = bool1;
+      }
+      catch (Exception paramFromServiceMsg)
+      {
+        paramToServiceMsg = localObject2;
+      }
+      localObject1 = paramToServiceMsg;
+      if (QLog.isColorLevel())
+      {
+        paramObject = new StringBuilder();
+        paramObject.append("onRenameAuthDev error:");
+        paramObject.append(paramFromServiceMsg.getMessage());
+        QLog.d("SecSvcHandler", 2, paramObject.toString());
+        localObject1 = paramToServiceMsg;
+        bool2 = bool1;
+      }
+    }
+    label345:
+    notifyUI(4, bool2, localObject1);
   }
   
   private void h(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    boolean bool1 = false;
+    boolean bool2 = false;
     boolean bool3 = false;
+    boolean bool1 = false;
+    boolean bool5 = false;
     boolean bool4 = false;
-    if (paramObject != null) {}
-    for (;;)
+    if (paramObject != null)
     {
       try
       {
         if (!paramFromServiceMsg.isSuccess()) {
-          break label210;
+          break label212;
         }
         paramObject = new oidb_sso.OIDBSSOPkg();
         paramObject.mergeFrom(paramFromServiceMsg.getWupBuffer());
-        paramFromServiceMsg = new Bundle();
-        bool2 = bool3;
-        paramToServiceMsg = paramFromServiceMsg;
-      }
-      catch (Exception paramObject)
-      {
+        paramToServiceMsg = new Bundle();
+        bool1 = bool3;
         try
         {
           if (paramObject.uint32_result.has())
           {
-            bool1 = bool4;
-            bool2 = bool3;
+            bool2 = bool4;
+            bool1 = bool3;
             if (paramObject.uint32_result.get() == 0) {
-              bool1 = true;
+              bool2 = true;
             }
-            bool2 = bool1;
-            paramFromServiceMsg.putInt("ret_code", paramObject.uint32_result.get());
-          }
-          paramToServiceMsg = paramFromServiceMsg;
-          bool2 = bool1;
-        }
-        catch (Exception paramObject)
-        {
-          for (;;)
-          {
             bool1 = bool2;
+            paramToServiceMsg.putInt("ret_code", paramObject.uint32_result.get());
           }
-        }
-        try
-        {
-          if (paramObject.str_error_msg.has())
-          {
-            paramFromServiceMsg.putString("err_msg", paramObject.str_error_msg.get());
-            bool2 = bool1;
-            paramToServiceMsg = paramFromServiceMsg;
+          bool1 = bool2;
+          bool3 = bool2;
+          paramFromServiceMsg = paramToServiceMsg;
+          if (!paramObject.str_error_msg.has()) {
+            break label218;
           }
-          notifyUI(7, bool2, paramToServiceMsg);
-          return;
+          bool1 = bool2;
+          paramToServiceMsg.putString("err_msg", paramObject.str_error_msg.get());
+          bool3 = bool2;
+          paramFromServiceMsg = paramToServiceMsg;
         }
-        catch (Exception paramObject)
-        {
-          break label148;
-        }
-        paramObject = paramObject;
-        paramFromServiceMsg = null;
-        bool1 = false;
+        catch (Exception paramObject) {}
+        bool3 = bool1;
       }
-      label148:
-      boolean bool2 = bool1;
-      if (QLog.isColorLevel())
+      catch (Exception paramObject)
       {
-        QLog.d("SecSvcHandler", 2, "onBindPhoneNumLogin error:" + paramObject.getMessage());
-        paramToServiceMsg = paramFromServiceMsg;
-        bool2 = bool1;
-        continue;
-        label210:
         paramToServiceMsg = null;
-        bool2 = false;
       }
+      paramFromServiceMsg = paramToServiceMsg;
+      if (!QLog.isColorLevel()) {
+        break label218;
+      }
+      paramFromServiceMsg = new StringBuilder();
+      paramFromServiceMsg.append("onBindPhoneNumLogin error:");
+      paramFromServiceMsg.append(paramObject.getMessage());
+      QLog.d("SecSvcHandler", 2, paramFromServiceMsg.toString());
+      bool3 = bool1;
+      paramFromServiceMsg = paramToServiceMsg;
+      break label218;
     }
+    label212:
+    paramFromServiceMsg = null;
+    bool3 = bool5;
+    label218:
+    notifyUI(7, bool3, paramFromServiceMsg);
   }
   
   private void i(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    boolean bool1 = false;
+    boolean bool2 = false;
     boolean bool3 = false;
+    boolean bool1 = false;
+    boolean bool5 = false;
     boolean bool4 = false;
-    if (paramObject != null) {}
-    for (;;)
+    if (paramObject != null)
     {
       try
       {
         if (!paramFromServiceMsg.isSuccess()) {
-          break label209;
+          break label211;
         }
         paramObject = new oidb_sso.OIDBSSOPkg();
         paramObject.mergeFrom(paramFromServiceMsg.getWupBuffer());
-        paramFromServiceMsg = new Bundle();
-        bool2 = bool3;
-        paramToServiceMsg = paramFromServiceMsg;
-      }
-      catch (Exception paramObject)
-      {
+        paramToServiceMsg = new Bundle();
+        bool1 = bool3;
         try
         {
           if (paramObject.uint32_result.has())
           {
-            bool1 = bool4;
-            bool2 = bool3;
+            bool2 = bool4;
+            bool1 = bool3;
             if (paramObject.uint32_result.get() == 0) {
-              bool1 = true;
+              bool2 = true;
             }
-            bool2 = bool1;
-            paramFromServiceMsg.putInt("ret_code", paramObject.uint32_result.get());
-          }
-          paramToServiceMsg = paramFromServiceMsg;
-          bool2 = bool1;
-        }
-        catch (Exception paramObject)
-        {
-          for (;;)
-          {
             bool1 = bool2;
+            paramToServiceMsg.putInt("ret_code", paramObject.uint32_result.get());
           }
-        }
-        try
-        {
-          if (paramObject.str_error_msg.has())
-          {
-            paramFromServiceMsg.putString("err_msg", paramObject.str_error_msg.get());
-            bool2 = bool1;
-            paramToServiceMsg = paramFromServiceMsg;
+          bool1 = bool2;
+          bool3 = bool2;
+          paramFromServiceMsg = paramToServiceMsg;
+          if (!paramObject.str_error_msg.has()) {
+            break label217;
           }
-          notifyUI(8, bool2, paramToServiceMsg);
-          return;
+          bool1 = bool2;
+          paramToServiceMsg.putString("err_msg", paramObject.str_error_msg.get());
+          bool3 = bool2;
+          paramFromServiceMsg = paramToServiceMsg;
         }
-        catch (Exception paramObject)
-        {
-          break label148;
-        }
-        paramObject = paramObject;
-        paramFromServiceMsg = null;
-        bool1 = false;
+        catch (Exception paramObject) {}
+        bool3 = bool1;
       }
-      label148:
-      boolean bool2 = bool1;
-      if (QLog.isColorLevel())
+      catch (Exception paramObject)
       {
-        QLog.d("SecSvcHandler", 2, "onUnbindPhoneNumLogin error:" + paramObject.getMessage());
-        paramToServiceMsg = paramFromServiceMsg;
-        bool2 = bool1;
-        continue;
-        label209:
         paramToServiceMsg = null;
-        bool2 = false;
       }
+      paramFromServiceMsg = paramToServiceMsg;
+      if (!QLog.isColorLevel()) {
+        break label217;
+      }
+      paramFromServiceMsg = new StringBuilder();
+      paramFromServiceMsg.append("onUnbindPhoneNumLogin error:");
+      paramFromServiceMsg.append(paramObject.getMessage());
+      QLog.d("SecSvcHandler", 2, paramFromServiceMsg.toString());
+      bool3 = bool1;
+      paramFromServiceMsg = paramToServiceMsg;
+      break label217;
     }
+    label211:
+    paramFromServiceMsg = null;
+    bool3 = bool5;
+    label217:
+    notifyUI(8, bool3, paramFromServiceMsg);
   }
   
   private void j(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if ((paramObject != null) && (paramFromServiceMsg.isSuccess())) {}
-    try
-    {
-      d.e(3, d.x(), paramFromServiceMsg.getWupBuffer());
-      return;
-    }
-    catch (Throwable paramToServiceMsg)
-    {
-      paramToServiceMsg.printStackTrace();
+    if ((paramObject != null) && (paramFromServiceMsg.isSuccess())) {
+      try
+      {
+        d.e(3, d.x(), paramFromServiceMsg.getWupBuffer());
+        return;
+      }
+      catch (Throwable paramToServiceMsg)
+      {
+        paramToServiceMsg.printStackTrace();
+      }
     }
   }
   
   private void k(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if ((paramObject == null) || (!paramFromServiceMsg.isSuccess()))
-    {
-      QLog.e("SecSvcHandler", 1, String.format("[SFU] onQQProtectUpdate failed, FromServiceMsg: %s", new Object[] { paramFromServiceMsg.getStringForLog() }));
-      return;
-    }
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SecSvcHandler", 2, "[SFU] Received reply from server.");
+    if ((paramObject != null) && (paramFromServiceMsg.isSuccess())) {
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("SecSvcHandler", 2, "[SFU] Received reply from server.");
+        }
+        ((QPUpdateManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QQPROTECT_UPDATE_MANAGER)).a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
       }
-      ((QPUpdateManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QQPROTECT_UPDATE_MANAGER)).a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-      return;
+      catch (Exception paramToServiceMsg)
+      {
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("[SFU] onQQProtectUpdate error:");
+        paramFromServiceMsg.append(paramToServiceMsg.getMessage());
+        QLog.e("SecSvcHandler", 2, paramFromServiceMsg.toString());
+        return;
+      }
     }
-    catch (Exception paramToServiceMsg)
-    {
-      QLog.e("SecSvcHandler", 2, "[SFU] onQQProtectUpdate error:" + paramToServiceMsg.getMessage());
-    }
+    QLog.e("SecSvcHandler", 1, String.format("[SFU] onQQProtectUpdate failed, FromServiceMsg: %s", new Object[] { paramFromServiceMsg.getStringForLog() }));
   }
   
   public void a()
@@ -911,46 +1079,60 @@ public class SecSvcHandler
   
   public void a(long paramLong, byte[] paramArrayOfByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SecSvcHandler", 2, "SecSvcHandler onReceivePushMessage subMsgTye = " + Integer.toHexString((int)paramLong));
-    }
-    switch ((int)paramLong)
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("SecSvcHandler onReceivePushMessage subMsgTye = ");
+      localStringBuilder.append(Integer.toHexString((int)paramLong));
+      QLog.d("SecSvcHandler", 2, localStringBuilder.toString());
     }
-    int i;
-    do
+    if ((int)paramLong != 198) {
+      return;
+    }
+    try
     {
-      do
+      paramArrayOfByte = (SubMsgType0xc6.MsgBody)new SubMsgType0xc6.MsgBody().mergeFrom(paramArrayOfByte);
+      int i = paramArrayOfByte.uint32_sec_cmd.get();
+      if (QLog.isColorLevel())
       {
-        return;
-        try
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("SecSvcHandler onReceivePushMessage SecCmd = ");
+        localStringBuilder.append(i);
+        QLog.d("SecSvcHandler", 2, localStringBuilder.toString());
+      }
+      if (i != 1) {
+        if (i != 2)
         {
-          paramArrayOfByte = (SubMsgType0xc6.MsgBody)new SubMsgType0xc6.MsgBody().mergeFrom(paramArrayOfByte);
-          i = paramArrayOfByte.uint32_sec_cmd.get();
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("SecSvcHandler", 2, "SecSvcHandler onReceivePushMessage SecCmd = " + i);
+          if (i == 3) {}
         }
-        catch (Exception paramArrayOfByte)
+        else
         {
+          try
+          {
+            ((QPUpdateManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QQPROTECT_UPDATE_MANAGER)).b(i);
+            return;
+          }
+          catch (Exception paramArrayOfByte)
+          {
+            if (!QLog.isColorLevel()) {
+              break label233;
+            }
+          }
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onQQProtectUpdate error:");
+          localStringBuilder.append(paramArrayOfByte.getMessage());
+          QLog.d("SecSvcHandler", 2, localStringBuilder.toString());
           return;
         }
-      } while (!paramArrayOfByte.msg_s2c_account_exception_notify.has());
-      a(i, (SubMsgType0xc6.AccountExceptionAlertBody)paramArrayOfByte.msg_s2c_account_exception_notify.get());
-      return;
-      try
-      {
-        ((QPUpdateManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QQPROTECT_UPDATE_MANAGER)).b(i);
-        return;
       }
-      catch (Exception paramArrayOfByte) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("SecSvcHandler", 2, "onQQProtectUpdate error:" + paramArrayOfByte.getMessage());
-    return;
-    switch (i)
-    {
+      if (paramArrayOfByte.msg_s2c_account_exception_notify.has()) {
+        a(i, (SubMsgType0xc6.AccountExceptionAlertBody)paramArrayOfByte.msg_s2c_account_exception_notify.get());
+      }
+      label233:
+      return;
     }
+    catch (Exception paramArrayOfByte) {}
   }
   
   public void a(Bundle paramBundle)
@@ -958,14 +1140,14 @@ public class SecSvcHandler
     if (paramBundle == null) {
       return;
     }
-    Object localObject1 = paramBundle.getString(AuthDevRenameActivity.a);
-    Object localObject2 = paramBundle.getString(AuthDevRenameActivity.b);
-    long l3 = paramBundle.getLong(AuthDevRenameActivity.c);
-    long l4 = paramBundle.getLong(AuthDevRenameActivity.d);
-    byte[] arrayOfByte2 = paramBundle.getByteArray(AuthDevRenameActivity.e);
-    String str = paramBundle.getString(AuthDevRenameActivity.f);
-    byte[] arrayOfByte1 = paramBundle.getByteArray(AuthDevRenameActivity.h);
-    int i = paramBundle.getInt(AuthDevRenameActivity.i);
+    Object localObject1 = paramBundle.getString("uin");
+    Object localObject2 = paramBundle.getString("appname");
+    long l3 = paramBundle.getLong("appid");
+    long l4 = paramBundle.getLong("sub_appid");
+    byte[] arrayOfByte2 = paramBundle.getByteArray("device_guid");
+    String str = paramBundle.getString("target_name");
+    byte[] arrayOfByte1 = paramBundle.getByteArray("target_desc");
+    int i = paramBundle.getInt("index");
     long l1 = 0L;
     try
     {
@@ -976,7 +1158,6 @@ public class SecSvcHandler
     {
       for (;;)
       {
-        Oidb_0x614.ReNameDeviceNameReqBody localReNameDeviceNameReqBody;
         paramBundle.printStackTrace();
       }
     }
@@ -985,29 +1166,33 @@ public class SecSvcHandler
     paramBundle.uint32_result.set(0);
     paramBundle.uint64_uin.set(l1);
     paramBundle.bytes_guid.set(ByteStringMicro.copyFrom(arrayOfByte2));
-    paramBundle.uint32_appid.set((int)l3);
-    paramBundle.uint32_subappid.set((int)l4);
+    Object localObject3 = paramBundle.uint32_appid;
+    int j = (int)l3;
+    ((PBUInt32Field)localObject3).set(j);
+    localObject3 = paramBundle.uint32_subappid;
+    int k = (int)l4;
+    ((PBUInt32Field)localObject3).set(k);
     paramBundle.bytes_appname.set(ByteStringMicro.copyFromUtf8((String)localObject2));
-    localReNameDeviceNameReqBody = new Oidb_0x614.ReNameDeviceNameReqBody();
-    localReNameDeviceNameReqBody.bytes_guid.set(ByteStringMicro.copyFrom(arrayOfByte2));
-    localReNameDeviceNameReqBody.uint32_appid.set((int)l3);
-    localReNameDeviceNameReqBody.uint32_subappid.set((int)l4);
-    localReNameDeviceNameReqBody.bytes_appname.set(ByteStringMicro.copyFromUtf8((String)localObject2));
-    localReNameDeviceNameReqBody.bytes_device_des.set(ByteStringMicro.copyFrom(arrayOfByte1));
-    localReNameDeviceNameReqBody.bytes_rename_device_name.set(ByteStringMicro.copyFromUtf8(str));
+    localObject3 = new Oidb_0x614.ReNameDeviceNameReqBody();
+    ((Oidb_0x614.ReNameDeviceNameReqBody)localObject3).bytes_guid.set(ByteStringMicro.copyFrom(arrayOfByte2));
+    ((Oidb_0x614.ReNameDeviceNameReqBody)localObject3).uint32_appid.set(j);
+    ((Oidb_0x614.ReNameDeviceNameReqBody)localObject3).uint32_subappid.set(k);
+    ((Oidb_0x614.ReNameDeviceNameReqBody)localObject3).bytes_appname.set(ByteStringMicro.copyFromUtf8((String)localObject2));
+    ((Oidb_0x614.ReNameDeviceNameReqBody)localObject3).bytes_device_des.set(ByteStringMicro.copyFrom(arrayOfByte1));
+    ((Oidb_0x614.ReNameDeviceNameReqBody)localObject3).bytes_rename_device_name.set(ByteStringMicro.copyFromUtf8(str));
     localObject2 = new Oidb_0x614.ReqBody();
     ((Oidb_0x614.ReqBody)localObject2).msg_dm_head.set(paramBundle);
-    ((Oidb_0x614.ReqBody)localObject2).msg_mdn_req_body.set(localReNameDeviceNameReqBody);
+    ((Oidb_0x614.ReqBody)localObject2).msg_mdn_req_body.set((MessageMicro)localObject3);
     paramBundle = new oidb_sso.OIDBSSOPkg();
     paramBundle.uint32_command.set(1556);
     paramBundle.uint32_service_type.set(1);
     paramBundle.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((Oidb_0x614.ReqBody)localObject2).toByteArray()));
     localObject1 = new ToServiceMsg("mobileqq.service", (String)localObject1, "OidbSvc.0x614_1");
     ((ToServiceMsg)localObject1).putWupBuffer(paramBundle.toByteArray());
-    ((ToServiceMsg)localObject1).extraData.putLong(AuthDevRenameActivity.a, l1);
-    ((ToServiceMsg)localObject1).extraData.putString(AuthDevRenameActivity.f, str);
-    ((ToServiceMsg)localObject1).extraData.putByteArray(AuthDevRenameActivity.h, arrayOfByte1);
-    ((ToServiceMsg)localObject1).extraData.putInt(AuthDevRenameActivity.i, i);
+    ((ToServiceMsg)localObject1).extraData.putLong("uin", l1);
+    ((ToServiceMsg)localObject1).extraData.putString("target_name", str);
+    ((ToServiceMsg)localObject1).extraData.putByteArray("target_desc", arrayOfByte1);
+    ((ToServiceMsg)localObject1).extraData.putInt("index", i);
     sendPbReq((ToServiceMsg)localObject1);
   }
   
@@ -1028,30 +1213,28 @@ public class SecSvcHandler
     paramString = AntiFraudConfigFileUtil.a().a(paramString, "Version");
     int j = 0;
     i = j;
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      i = Integer.parseInt(paramString);
-      localReqBody.u32_config_version.set(i);
-      paramString = createToServiceMsg("SecuritySvc.GetConfig");
-      paramString.putWupBuffer(localReqBody.toByteArray());
-      sendPbReq(paramString);
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      for (;;)
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        i = Integer.parseInt(paramString);
+      }
+      catch (Throwable paramString)
       {
         paramString.printStackTrace();
         i = j;
       }
     }
+    localReqBody.u32_config_version.set(i);
+    paramString = createToServiceMsg("SecuritySvc.GetConfig");
+    paramString.putWupBuffer(localReqBody.toByteArray());
+    sendPbReq(paramString);
   }
   
   public void a(boolean paramBoolean)
   {
+    boolean bool = QLog.isColorLevel();
     int i = 2;
-    if (QLog.isColorLevel()) {
+    if (bool) {
       QLog.d("SecSvcHandler", 2, "setWXSyncQQMsgOption");
     }
     wx_msg_opt.ReqBody localReqBody = new wx_msg_opt.ReqBody();
@@ -1115,17 +1298,7 @@ public class SecSvcHandler
   
   protected void b(boolean paramBoolean)
   {
-    Object localObject = new oidb_0xebd.ReqBody();
-    PBUInt32Field localPBUInt32Field = ((oidb_0xebd.ReqBody)localObject).uint32_set_is_searched_by_mobile;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      localPBUInt32Field.set(i);
-      localObject = makeOIDBPkg("OidbSvc.0xebd", 3773, 1, ((oidb_0xebd.ReqBody)localObject).toByteArray());
-      ((ToServiceMsg)localObject).addAttribute("open_close_contacts", Boolean.valueOf(paramBoolean));
-      sendPbReq((ToServiceMsg)localObject);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void b(byte[] paramArrayOfByte)
@@ -1232,7 +1405,7 @@ public class SecSvcHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.SecSvcHandler
  * JD-Core Version:    0.7.0.1
  */

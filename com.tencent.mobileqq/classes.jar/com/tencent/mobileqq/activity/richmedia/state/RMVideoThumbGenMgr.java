@@ -12,29 +12,23 @@ public class RMVideoThumbGenMgr
   
   int a(RMVideoThumbGenMgr.ThumbGenItem paramThumbGenItem, boolean paramBoolean)
   {
-    int i = 1;
-    if (paramThumbGenItem == null) {}
-    int j;
-    do
+    if (paramThumbGenItem == null) {
+      return 1;
+    }
+    paramThumbGenItem.jdField_a_of_type_Boolean = true;
+    int i = paramThumbGenItem.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(7);
+    if ((i == 3) && (paramThumbGenItem.c != null) && (paramBoolean))
     {
-      do
-      {
-        return i;
-        paramThumbGenItem.jdField_a_of_type_Boolean = true;
-        j = paramThumbGenItem.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(7);
-        if ((j == 3) && (paramThumbGenItem.jdField_c_of_type_JavaLangString != null) && (paramBoolean))
-        {
-          FileUtils.e(paramThumbGenItem.jdField_c_of_type_JavaLangString);
-          paramThumbGenItem.jdField_c_of_type_JavaLangString = null;
-          return j;
-        }
-        i = j;
-      } while (j != 6);
-      i = j;
-    } while (paramThumbGenItem.jdField_b_of_type_JavaLangString == null);
-    FileUtils.e(paramThumbGenItem.jdField_b_of_type_JavaLangString);
-    paramThumbGenItem.jdField_b_of_type_JavaLangString = null;
-    return j;
+      FileUtils.deleteFile(paramThumbGenItem.c);
+      paramThumbGenItem.c = null;
+      return i;
+    }
+    if ((i == 6) && (paramThumbGenItem.jdField_b_of_type_JavaLangString != null))
+    {
+      FileUtils.deleteFile(paramThumbGenItem.jdField_b_of_type_JavaLangString);
+      paramThumbGenItem.jdField_b_of_type_JavaLangString = null;
+    }
+    return i;
   }
   
   public RMVideoThumbGenMgr.ThumbGenItem a()
@@ -42,80 +36,33 @@ public class RMVideoThumbGenMgr
     return this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoThumbGenMgr$ThumbGenItem;
   }
   
-  public void a()
+  void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoThumbGenMgr$ThumbGenItem != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoThumbGenMgr$ThumbGenItem.jdField_b_of_type_Boolean = false;
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    for (;;)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoThumbGenMgr$ThumbGenItem);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoThumbGenMgr$ThumbGenItem = null;
-      return;
-    }
-  }
-  
-  public void a(String paramString, float paramFloat, int paramInt)
-  {
-    a(paramString, paramFloat, paramInt, 0);
-  }
-  
-  public void a(String paramString, float paramFloat, int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoThumbGenMgr$ThumbGenItem != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoThumbGenMgr$ThumbGenItem.jdField_b_of_type_Boolean = true;
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoThumbGenMgr$ThumbGenItem);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoThumbGenMgr$ThumbGenItem = null;
-      b(paramString, paramFloat, paramInt1, paramInt2);
-      return;
-    }
-  }
-  
-  void b()
-  {
-    RMVideoThumbGenMgr.ThumbGenItem localThumbGenItem = null;
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        localThumbGenItem = (RMVideoThumbGenMgr.ThumbGenItem)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-        this.jdField_a_of_type_JavaUtilArrayList.remove(0);
+        if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+        {
+          RMVideoThumbGenMgr.ThumbGenItem localThumbGenItem = (RMVideoThumbGenMgr.ThumbGenItem)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+          this.jdField_a_of_type_JavaUtilArrayList.remove(0);
+          if ((localThumbGenItem != null) && (a(localThumbGenItem, localThumbGenItem.jdField_b_of_type_Boolean) == 2)) {
+            synchronized (this.jdField_a_of_type_JavaLangObject)
+            {
+              this.jdField_a_of_type_JavaUtilArrayList.add(localThumbGenItem);
+              return;
+            }
+          }
+          return;
+        }
       }
-      if ((localThumbGenItem == null) || (a(localThumbGenItem, localThumbGenItem.jdField_b_of_type_Boolean) != 2)) {}
+      Object localObject3 = null;
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.add(localThumbGenItem);
-      return;
-      localObject1 = finally;
-      throw localObject1;
-    }
-  }
-  
-  void b(String paramString, float paramFloat, int paramInt1, int paramInt2)
-  {
-    RMVideoThumbGenMgr.ThumbGenItem localThumbGenItem = new RMVideoThumbGenMgr.ThumbGenItem(this);
-    localThumbGenItem.jdField_a_of_type_Boolean = false;
-    localThumbGenItem.jdField_a_of_type_JavaLangString = paramString;
-    localThumbGenItem.jdField_a_of_type_Int = paramInt1;
-    localThumbGenItem.jdField_c_of_type_Int = paramInt2;
-    paramInt2 = (int)(localThumbGenItem.jdField_a_of_type_Int / paramFloat);
-    paramInt1 = paramInt2;
-    if (paramInt2 % 2 > 0) {
-      paramInt1 = paramInt2 - 1;
-    }
-    localThumbGenItem.jdField_b_of_type_Int = paramInt1;
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoThumbGenMgr$ThumbGenItem = localThumbGenItem;
-    localThumbGenItem.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoThumbGenMgr$ThumbGenTask.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoThumbGenMgr$ThumbGenItem = localThumbGenItem;
-    localThumbGenItem.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoThumbGenMgr$ThumbGenTask.execute(new Void[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.state.RMVideoThumbGenMgr
  * JD-Core Version:    0.7.0.1
  */

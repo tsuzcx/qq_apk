@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,18 +42,20 @@ public final class sparkle_word
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.sparkle_color != null) {
-      paramJceOutputStream.write(this.sparkle_color, 0);
+    Object localObject = this.sparkle_color;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
     paramJceOutputStream.write(this.span_time, 1);
-    if (this.extend_info != null) {
-      paramJceOutputStream.write(this.extend_info, 2);
+    localObject = this.extend_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_COMM.sparkle_word
  * JD-Core Version:    0.7.0.1
  */

@@ -15,30 +15,41 @@ class InnerWebView$3$1
   public Void perform(BaseRuntime paramBaseRuntime)
   {
     paramBaseRuntime = paramBaseRuntime.getPage();
-    if (!(paramBaseRuntime instanceof AppBrandPageContainer)) {
+    if (!(paramBaseRuntime instanceof AppBrandPageContainer))
+    {
       QMLog.d("Action", "Page is invalid");
-    }
-    int i;
-    do
-    {
-      return null;
-      paramBaseRuntime = (AppBrandPageContainer)paramBaseRuntime;
-      i = paramBaseRuntime.getPageCount();
-      bool = paramBaseRuntime.isCurrentTabBarPage();
-      paramBaseRuntime = paramBaseRuntime.getShowingPage();
-    } while ((paramBaseRuntime == null) || (paramBaseRuntime.getNavBar() == null));
-    paramBaseRuntime = paramBaseRuntime.getNavBar();
-    if ((!bool) && ((i > 1) || (this.this$1.this$0.canGoBack()))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramBaseRuntime.setEnableBackIcon(bool).setTitleText(this.this$1.val$title);
       return null;
     }
+    paramBaseRuntime = (AppBrandPageContainer)paramBaseRuntime;
+    int i = paramBaseRuntime.getPageCount();
+    boolean bool1 = paramBaseRuntime.isCurrentTabBarPage();
+    paramBaseRuntime = paramBaseRuntime.getShowingPage();
+    if ((paramBaseRuntime != null) && (paramBaseRuntime.getNavBar() != null))
+    {
+      paramBaseRuntime = paramBaseRuntime.getNavBar();
+      boolean bool2 = true;
+      if (!bool1)
+      {
+        bool1 = bool2;
+        if (i > 1) {
+          break label93;
+        }
+        if (this.this$1.this$0.canGoBack())
+        {
+          bool1 = bool2;
+          break label93;
+        }
+      }
+      bool1 = false;
+      label93:
+      paramBaseRuntime.setEnableBackIcon(bool1).setTitleText(this.this$1.val$title);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.InnerWebView.3.1
  * JD-Core Version:    0.7.0.1
  */

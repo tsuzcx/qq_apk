@@ -29,20 +29,23 @@ public final class OfficialComment
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strTagName != null) {
-      paramJceOutputStream.write(this.strTagName, 0);
+    String str = this.strTagName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.strTagBgColor != null) {
-      paramJceOutputStream.write(this.strTagBgColor, 1);
+    str = this.strTagBgColor;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strContent != null) {
-      paramJceOutputStream.write(this.strContent, 2);
+    str = this.strContent;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_COMM.OfficialComment
  * JD-Core Version:    0.7.0.1
  */

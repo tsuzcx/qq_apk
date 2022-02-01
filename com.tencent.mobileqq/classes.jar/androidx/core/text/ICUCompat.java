@@ -16,16 +16,15 @@ public final class ICUCompat
   
   static
   {
-    if (Build.VERSION.SDK_INT < 21) {}
-    while (Build.VERSION.SDK_INT >= 24) {
+    if (Build.VERSION.SDK_INT < 21) {
       try
       {
         Class localClass = Class.forName("libcore.icu.ICU");
-        if (localClass != null)
-        {
-          sGetScriptMethod = localClass.getMethod("getScript", new Class[] { String.class });
-          sAddLikelySubtagsMethod = localClass.getMethod("addLikelySubtags", new Class[] { String.class });
+        if (localClass == null) {
+          return;
         }
+        sGetScriptMethod = localClass.getMethod("getScript", new Class[] { String.class });
+        sAddLikelySubtagsMethod = localClass.getMethod("addLikelySubtags", new Class[] { String.class });
         return;
       }
       catch (Exception localException1)
@@ -35,15 +34,16 @@ public final class ICUCompat
         Log.w("ICUCompat", localException1);
         return;
       }
-    }
-    try
-    {
-      sAddLikelySubtagsMethod = Class.forName("libcore.icu.ICU").getMethod("addLikelySubtags", new Class[] { Locale.class });
-      return;
-    }
-    catch (Exception localException2)
-    {
-      throw new IllegalStateException(localException2);
+    } else if (Build.VERSION.SDK_INT < 24) {
+      try
+      {
+        sAddLikelySubtagsMethod = Class.forName("libcore.icu.ICU").getMethod("addLikelySubtags", new Class[] { Locale.class });
+        return;
+      }
+      catch (Exception localException2)
+      {
+        throw new IllegalStateException(localException2);
+      }
     }
   }
   
@@ -58,18 +58,16 @@ public final class ICUCompat
         return str;
       }
     }
+    catch (InvocationTargetException localInvocationTargetException)
+    {
+      Log.w("ICUCompat", localInvocationTargetException);
+      return paramLocale;
+    }
     catch (IllegalAccessException localIllegalAccessException)
     {
       Log.w("ICUCompat", localIllegalAccessException);
-      return paramLocale;
     }
-    catch (InvocationTargetException localInvocationTargetException)
-    {
-      for (;;)
-      {
-        Log.w("ICUCompat", localInvocationTargetException);
-      }
-    }
+    return paramLocale;
   }
   
   private static String getScript(String paramString)
@@ -82,59 +80,51 @@ public final class ICUCompat
         return paramString;
       }
     }
-    catch (IllegalAccessException paramString)
+    catch (InvocationTargetException paramString)
     {
       Log.w("ICUCompat", paramString);
       return null;
     }
-    catch (InvocationTargetException paramString)
+    catch (IllegalAccessException paramString)
     {
-      for (;;)
-      {
-        Log.w("ICUCompat", paramString);
-      }
+      Log.w("ICUCompat", paramString);
     }
+    return null;
   }
   
   @Nullable
   public static String maximizeAndGetScript(Locale paramLocale)
   {
-    String str1 = null;
     if (Build.VERSION.SDK_INT >= 24) {
-      paramLocale = ULocale.addLikelySubtags(ULocale.forLocale(paramLocale)).getScript();
+      return ULocale.addLikelySubtags(ULocale.forLocale(paramLocale)).getScript();
     }
-    String str2;
-    do
+    if (Build.VERSION.SDK_INT >= 21)
     {
-      return paramLocale;
-      if (Build.VERSION.SDK_INT >= 21) {
-        try
-        {
-          str1 = ((Locale)sAddLikelySubtagsMethod.invoke(null, new Object[] { paramLocale })).getScript();
-          return str1;
-        }
-        catch (InvocationTargetException localInvocationTargetException)
-        {
-          Log.w("ICUCompat", localInvocationTargetException);
-          return paramLocale.getScript();
-        }
-        catch (IllegalAccessException localIllegalAccessException)
-        {
-          for (;;)
-          {
-            Log.w("ICUCompat", localIllegalAccessException);
-          }
-        }
+      try
+      {
+        String str = ((Locale)sAddLikelySubtagsMethod.invoke(null, new Object[] { paramLocale })).getScript();
+        return str;
       }
-      str2 = addLikelySubtags(paramLocale);
-      paramLocale = localIllegalAccessException;
-    } while (str2 == null);
-    return getScript(str2);
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        Log.w("ICUCompat", localIllegalAccessException);
+      }
+      catch (InvocationTargetException localInvocationTargetException)
+      {
+        Log.w("ICUCompat", localInvocationTargetException);
+      }
+      return paramLocale.getScript();
+    }
+    paramLocale = addLikelySubtags(paramLocale);
+    if (paramLocale != null) {
+      return getScript(paramLocale);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.text.ICUCompat
  * JD-Core Version:    0.7.0.1
  */

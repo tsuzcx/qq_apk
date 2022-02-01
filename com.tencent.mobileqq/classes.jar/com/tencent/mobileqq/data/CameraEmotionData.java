@@ -10,18 +10,20 @@ public class CameraEmotionData
   
   public void increaseClickNum()
   {
-    if (this.clickNum == 2147483647) {
+    int i = this.clickNum;
+    if (i == 2147483647) {
       return;
     }
-    this.clickNum += 1;
+    this.clickNum = (i + 1);
   }
   
   public void increaseExposeNum()
   {
-    if (this.exposeNum == 2147483647) {
+    int i = this.exposeNum;
+    if (i == 2147483647) {
       return;
     }
-    this.exposeNum += 1;
+    this.exposeNum = (i + 1);
   }
   
   public void replace(CameraEmotionData paramCameraEmotionData)
@@ -36,12 +38,32 @@ public class CameraEmotionData
   
   public String toString()
   {
-    return "CameraEmotionData [uin=" + this.uin + ", emoId=" + this.emoId + ", emoPath=" + this.emoPath + ", strContext=" + this.strContext + ", RomaingType=" + this.RomaingType + ", resid=" + this.resid + ", url=" + this.url + ", md5=" + this.md5 + ", templateId:" + this.templateId + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CameraEmotionData [uin=");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append(", emoId=");
+    localStringBuilder.append(this.emoId);
+    localStringBuilder.append(", emoPath=");
+    localStringBuilder.append(this.emoPath);
+    localStringBuilder.append(", strContext=");
+    localStringBuilder.append(this.strContext);
+    localStringBuilder.append(", RomaingType=");
+    localStringBuilder.append(this.RomaingType);
+    localStringBuilder.append(", resid=");
+    localStringBuilder.append(this.resid);
+    localStringBuilder.append(", url=");
+    localStringBuilder.append(this.url);
+    localStringBuilder.append(", md5=");
+    localStringBuilder.append(this.md5);
+    localStringBuilder.append(", templateId:");
+    localStringBuilder.append(this.templateId);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.CameraEmotionData
  * JD-Core Version:    0.7.0.1
  */

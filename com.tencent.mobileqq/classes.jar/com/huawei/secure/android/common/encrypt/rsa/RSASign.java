@@ -1,6 +1,5 @@
 package com.huawei.secure.android.common.encrypt.rsa;
 
-import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.util.Base64;
 import com.huawei.secure.android.common.encrypt.keystore.rsa.RSASignKS;
@@ -24,22 +23,22 @@ public abstract class RSASign
 {
   private static final String CHARSET = "UTF-8";
   private static final String L = "SHA256WithRSA/PSS";
-  private static final String TAG = RSASign.class.getSimpleName();
+  private static final String TAG = "RSASign";
   private static final String i = "";
   private static final String s = "SHA256WithRSA";
   
   private static String a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      b.f(TAG, "sign content or key is null");
-      return "";
+      paramString2 = EncryptUtil.getPrivateKey(paramString2);
+      if (paramBoolean) {
+        return newSign(paramString1, paramString2);
+      }
+      return sign(paramString1, paramString2);
     }
-    paramString2 = EncryptUtil.getPrivateKey(paramString2);
-    if (paramBoolean) {
-      return newSign(paramString1, paramString2);
-    }
-    return sign(paramString1, paramString2);
+    b.f(TAG, "sign content or key is null");
+    return "";
   }
   
   private static String a(String paramString, PrivateKey paramPrivateKey, boolean paramBoolean)
@@ -51,23 +50,27 @@ public abstract class RSASign
     }
     catch (UnsupportedEncodingException paramString)
     {
-      b.f(TAG, "sign UnsupportedEncodingException: " + paramString.getMessage());
+      paramPrivateKey = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sign UnsupportedEncodingException: ");
+      localStringBuilder.append(paramString.getMessage());
+      b.f(paramPrivateKey, localStringBuilder.toString());
     }
     return "";
   }
   
   private static boolean a(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString3)) || (TextUtils.isEmpty(paramString2)))
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString3)) && (!TextUtils.isEmpty(paramString2)))
     {
-      b.f(TAG, "content or public key or sign value is null");
-      return false;
+      paramString3 = EncryptUtil.getPublicKey(paramString3);
+      if (paramBoolean) {
+        return newVerifySign(paramString1, paramString2, paramString3);
+      }
+      return verifySign(paramString1, paramString2, paramString3);
     }
-    paramString3 = EncryptUtil.getPublicKey(paramString3);
-    if (paramBoolean) {
-      return newVerifySign(paramString1, paramString2, paramString3);
-    }
-    return verifySign(paramString1, paramString2, paramString3);
+    b.f(TAG, "content or public key or sign value is null");
+    return false;
   }
   
   private static boolean a(String paramString1, String paramString2, PublicKey paramPublicKey, boolean paramBoolean)
@@ -77,19 +80,26 @@ public abstract class RSASign
       paramBoolean = verifySign(paramString1.getBytes("UTF-8"), Base64.decode(paramString2, 0), paramPublicKey, paramBoolean);
       return paramBoolean;
     }
-    catch (UnsupportedEncodingException paramString1)
-    {
-      b.f(TAG, "verifySign UnsupportedEncodingException: " + paramString1.getMessage());
-      return false;
-    }
     catch (Exception paramString1)
     {
-      b.f(TAG, "base64 decode Exception : " + paramString1.getMessage());
+      paramString2 = TAG;
+      paramPublicKey = new StringBuilder();
+      paramPublicKey.append("base64 decode Exception : ");
+      paramPublicKey.append(paramString1.getMessage());
+      b.f(paramString2, paramPublicKey.toString());
+      return false;
+    }
+    catch (UnsupportedEncodingException paramString1)
+    {
+      paramString2 = TAG;
+      paramPublicKey = new StringBuilder();
+      paramPublicKey.append("verifySign UnsupportedEncodingException: ");
+      paramPublicKey.append(paramString1.getMessage());
+      b.f(paramString2, paramPublicKey.toString());
     }
     return false;
   }
   
-  @RequiresApi(api=23)
   public static String newSign(String paramString1, String paramString2)
   {
     if (!RSASignKS.isBuildVersionHigherThan22())
@@ -100,7 +110,6 @@ public abstract class RSASign
     return a(paramString1, paramString2, true);
   }
   
-  @RequiresApi(api=23)
   public static String newSign(String paramString, PrivateKey paramPrivateKey)
   {
     if (!RSASignKS.isBuildVersionHigherThan22())
@@ -111,7 +120,6 @@ public abstract class RSASign
     return a(paramString, paramPrivateKey, true);
   }
   
-  @RequiresApi(api=23)
   public static boolean newVerifySign(String paramString1, String paramString2, String paramString3)
   {
     if (!RSASignKS.isBuildVersionHigherThan22())
@@ -122,7 +130,6 @@ public abstract class RSASign
     return a(paramString1, paramString2, paramString3, true);
   }
   
-  @RequiresApi(api=23)
   public static boolean newVerifySign(String paramString1, String paramString2, PublicKey paramPublicKey)
   {
     if (!RSASignKS.isBuildVersionHigherThan22())
@@ -148,49 +155,68 @@ public abstract class RSASign
   public static byte[] sign(byte[] paramArrayOfByte, PrivateKey paramPrivateKey, boolean paramBoolean)
   {
     byte[] arrayOfByte = new byte[0];
-    if ((paramArrayOfByte == null) || (paramPrivateKey == null) || (!RSAEncrypt.isPrivateKeyLengthRight((RSAPrivateKey)paramPrivateKey)))
+    if ((paramArrayOfByte != null) && (paramPrivateKey != null) && (RSAEncrypt.isPrivateKeyLengthRight((RSAPrivateKey)paramPrivateKey)))
     {
-      b.f(TAG, "content or privateKey is null , or length is too short");
-      return arrayOfByte;
-    }
-    if (paramBoolean) {}
-    for (;;)
-    {
+      if (paramBoolean) {}
       try
       {
-        localSignature = Signature.getInstance("SHA256WithRSA/PSS");
-        localSignature.setParameter(new PSSParameterSpec("SHA-256", "MGF1", MGF1ParameterSpec.SHA256, 32, 1));
-        localSignature.initSign(paramPrivateKey);
-        localSignature.update(paramArrayOfByte);
-        return localSignature.sign();
+        localObject = Signature.getInstance("SHA256WithRSA/PSS");
+        ((Signature)localObject).setParameter(new PSSParameterSpec("SHA-256", "MGF1", MGF1ParameterSpec.SHA256, 32, 1));
+        break label66;
+        localObject = Signature.getInstance("SHA256WithRSA");
+        label66:
+        ((Signature)localObject).initSign(paramPrivateKey);
+        ((Signature)localObject).update(paramArrayOfByte);
+        paramArrayOfByte = ((Signature)localObject).sign();
+        return paramArrayOfByte;
       }
-      catch (NoSuchAlgorithmException paramArrayOfByte)
+      catch (Exception paramArrayOfByte)
       {
-        Signature localSignature;
-        b.f(TAG, "sign NoSuchAlgorithmException: " + paramArrayOfByte.getMessage());
-        return arrayOfByte;
-      }
-      catch (InvalidKeyException paramArrayOfByte)
-      {
-        b.f(TAG, "sign InvalidKeyException: " + paramArrayOfByte.getMessage());
-        return arrayOfByte;
-      }
-      catch (SignatureException paramArrayOfByte)
-      {
-        b.f(TAG, "sign SignatureException: " + paramArrayOfByte.getMessage());
+        paramPrivateKey = TAG;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("sign Exception: ");
+        ((StringBuilder)localObject).append(paramArrayOfByte.getMessage());
+        b.f(paramPrivateKey, ((StringBuilder)localObject).toString());
         return arrayOfByte;
       }
       catch (InvalidAlgorithmParameterException paramArrayOfByte)
       {
-        b.f(TAG, "sign InvalidAlgorithmParameterException: " + paramArrayOfByte.getMessage());
+        paramPrivateKey = TAG;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("sign InvalidAlgorithmParameterException: ");
+        ((StringBuilder)localObject).append(paramArrayOfByte.getMessage());
+        b.f(paramPrivateKey, ((StringBuilder)localObject).toString());
         return arrayOfByte;
       }
-      catch (Exception paramArrayOfByte)
+      catch (SignatureException paramArrayOfByte)
       {
-        b.f(TAG, "sign Exception: " + paramArrayOfByte.getMessage());
+        paramPrivateKey = TAG;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("sign SignatureException: ");
+        ((StringBuilder)localObject).append(paramArrayOfByte.getMessage());
+        b.f(paramPrivateKey, ((StringBuilder)localObject).toString());
+        return arrayOfByte;
       }
-      localSignature = Signature.getInstance("SHA256WithRSA");
+      catch (InvalidKeyException paramArrayOfByte)
+      {
+        paramPrivateKey = TAG;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("sign InvalidKeyException: ");
+        ((StringBuilder)localObject).append(paramArrayOfByte.getMessage());
+        b.f(paramPrivateKey, ((StringBuilder)localObject).toString());
+        return arrayOfByte;
+      }
+      catch (NoSuchAlgorithmException paramArrayOfByte)
+      {
+        paramPrivateKey = TAG;
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("sign NoSuchAlgorithmException: ");
+        ((StringBuilder)localObject).append(paramArrayOfByte.getMessage());
+        b.f(paramPrivateKey, ((StringBuilder)localObject).toString());
+        return arrayOfByte;
+      }
     }
+    b.f(TAG, "content or privateKey is null , or length is too short");
     return arrayOfByte;
   }
   
@@ -208,40 +234,47 @@ public abstract class RSASign
   
   public static boolean verifySign(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, PublicKey paramPublicKey, boolean paramBoolean)
   {
-    if ((paramArrayOfByte1 == null) || (paramPublicKey == null) || (paramArrayOfByte2 == null) || (!RSAEncrypt.isPublicKeyLengthRight((RSAPublicKey)paramPublicKey)))
+    if ((paramArrayOfByte1 != null) && (paramPublicKey != null) && (paramArrayOfByte2 != null) && (RSAEncrypt.isPublicKeyLengthRight((RSAPublicKey)paramPublicKey)))
     {
-      b.f(TAG, "content or publicKey is null , or length is too short");
-      return false;
-    }
-    if (paramBoolean) {}
-    for (;;)
-    {
+      if (paramBoolean) {}
       try
       {
-        localSignature = Signature.getInstance("SHA256WithRSA/PSS");
+        Signature localSignature = Signature.getInstance("SHA256WithRSA/PSS");
         localSignature.setParameter(new PSSParameterSpec("SHA-256", "MGF1", MGF1ParameterSpec.SHA256, 32, 1));
+        break label68;
+        localSignature = Signature.getInstance("SHA256WithRSA");
+        label68:
         localSignature.initVerify(paramPublicKey);
         localSignature.update(paramArrayOfByte1);
-        return localSignature.verify(paramArrayOfByte2);
-      }
-      catch (GeneralSecurityException paramArrayOfByte1)
-      {
-        Signature localSignature;
-        b.f(TAG, "check sign exception: " + paramArrayOfByte1.getMessage());
-        return false;
+        paramBoolean = localSignature.verify(paramArrayOfByte2);
+        return paramBoolean;
       }
       catch (Exception paramArrayOfByte1)
       {
-        b.f(TAG, "exception : " + paramArrayOfByte1.getMessage());
-        continue;
+        paramArrayOfByte2 = TAG;
+        paramPublicKey = new StringBuilder();
+        paramPublicKey.append("exception : ");
+        paramPublicKey.append(paramArrayOfByte1.getMessage());
+        b.f(paramArrayOfByte2, paramPublicKey.toString());
+        return false;
       }
-      localSignature = Signature.getInstance("SHA256WithRSA");
+      catch (GeneralSecurityException paramArrayOfByte1)
+      {
+        paramArrayOfByte2 = TAG;
+        paramPublicKey = new StringBuilder();
+        paramPublicKey.append("check sign exception: ");
+        paramPublicKey.append(paramArrayOfByte1.getMessage());
+        b.f(paramArrayOfByte2, paramPublicKey.toString());
+        return false;
+      }
     }
+    b.f(TAG, "content or publicKey is null , or length is too short");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.secure.android.common.encrypt.rsa.RSASign
  * JD-Core Version:    0.7.0.1
  */

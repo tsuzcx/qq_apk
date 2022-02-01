@@ -18,66 +18,69 @@ final class d$a
   public static a a(byte[] paramArrayOfByte)
   {
     a locala = new a();
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
     {
-      Log.e("MicroMsg.SDK.GetQRCodeResult", "parse fail, buf is null");
-      locala.m = OAuthErrCode.WechatAuth_Err_NetworkErr;
-      return locala;
-    }
-    try
-    {
-      paramArrayOfByte = new String(paramArrayOfByte, "utf-8");
       try
       {
-        paramArrayOfByte = new JSONObject(paramArrayOfByte);
-        int i = paramArrayOfByte.getInt("errcode");
-        if (i != 0)
+        paramArrayOfByte = new String(paramArrayOfByte, "utf-8");
+        try
         {
-          Log.e("MicroMsg.SDK.GetQRCodeResult", String.format("resp errcode = %d", new Object[] { Integer.valueOf(i) }));
-          locala.m = OAuthErrCode.WechatAuth_Err_NormalErr;
-          locala.q = i;
-          locala.r = paramArrayOfByte.optString("errmsg");
+          paramArrayOfByte = new JSONObject(paramArrayOfByte);
+          int i = paramArrayOfByte.getInt("errcode");
+          if (i != 0)
+          {
+            Log.e("MicroMsg.SDK.GetQRCodeResult", String.format("resp errcode = %d", new Object[] { Integer.valueOf(i) }));
+            locala.m = OAuthErrCode.WechatAuth_Err_NormalErr;
+            locala.q = i;
+            locala.r = paramArrayOfByte.optString("errmsg");
+            return locala;
+          }
+          Object localObject = paramArrayOfByte.getJSONObject("qrcode").getString("qrcodebase64");
+          if ((localObject != null) && (((String)localObject).length() != 0))
+          {
+            localObject = Base64.decode((String)localObject, 0);
+            if ((localObject != null) && (localObject.length != 0))
+            {
+              locala.m = OAuthErrCode.WechatAuth_Err_OK;
+              locala.s = ((byte[])localObject);
+              locala.n = paramArrayOfByte.getString("uuid");
+              locala.o = paramArrayOfByte.getString("appname");
+              Log.d("MicroMsg.SDK.GetQRCodeResult", String.format("parse succ, save in memory, uuid = %s, appname = %s, imgBufLength = %d", new Object[] { locala.n, locala.o, Integer.valueOf(locala.s.length) }));
+              return locala;
+            }
+            Log.e("MicroMsg.SDK.GetQRCodeResult", "parse fail, qrcodeBuf is null");
+            locala.m = OAuthErrCode.WechatAuth_Err_JsonDecodeErr;
+            return locala;
+          }
+          Log.e("MicroMsg.SDK.GetQRCodeResult", "parse fail, qrcodeBase64 is null");
+          locala.m = OAuthErrCode.WechatAuth_Err_JsonDecodeErr;
           return locala;
+        }
+        catch (Exception paramArrayOfByte)
+        {
+          paramArrayOfByte = String.format("parse json fail, ex = %s", new Object[] { paramArrayOfByte.getMessage() });
         }
       }
       catch (Exception paramArrayOfByte)
       {
-        Log.e("MicroMsg.SDK.GetQRCodeResult", String.format("parse json fail, ex = %s", new Object[] { paramArrayOfByte.getMessage() }));
-        locala.m = OAuthErrCode.WechatAuth_Err_NormalErr;
-        return locala;
+        for (;;)
+        {
+          paramArrayOfByte = String.format("parse fail, build String fail, ex = %s", new Object[] { paramArrayOfByte.getMessage() });
+        }
       }
-      localObject = paramArrayOfByte.getJSONObject("qrcode").getString("qrcodebase64");
+      Log.e("MicroMsg.SDK.GetQRCodeResult", paramArrayOfByte);
     }
-    catch (Exception paramArrayOfByte)
+    for (paramArrayOfByte = OAuthErrCode.WechatAuth_Err_NormalErr;; paramArrayOfByte = OAuthErrCode.WechatAuth_Err_NetworkErr)
     {
-      Log.e("MicroMsg.SDK.GetQRCodeResult", String.format("parse fail, build String fail, ex = %s", new Object[] { paramArrayOfByte.getMessage() }));
-      locala.m = OAuthErrCode.WechatAuth_Err_NormalErr;
+      locala.m = paramArrayOfByte;
       return locala;
+      Log.e("MicroMsg.SDK.GetQRCodeResult", "parse fail, buf is null");
     }
-    if ((localObject == null) || (((String)localObject).length() == 0))
-    {
-      Log.e("MicroMsg.SDK.GetQRCodeResult", "parse fail, qrcodeBase64 is null");
-      locala.m = OAuthErrCode.WechatAuth_Err_JsonDecodeErr;
-      return locala;
-    }
-    Object localObject = Base64.decode((String)localObject, 0);
-    if ((localObject == null) || (localObject.length == 0))
-    {
-      Log.e("MicroMsg.SDK.GetQRCodeResult", "parse fail, qrcodeBuf is null");
-      locala.m = OAuthErrCode.WechatAuth_Err_JsonDecodeErr;
-      return locala;
-    }
-    locala.m = OAuthErrCode.WechatAuth_Err_OK;
-    locala.s = ((byte[])localObject);
-    locala.n = paramArrayOfByte.getString("uuid");
-    locala.o = paramArrayOfByte.getString("appname");
-    Log.d("MicroMsg.SDK.GetQRCodeResult", String.format("parse succ, save in memory, uuid = %s, appname = %s, imgBufLength = %d", new Object[] { locala.n, locala.o, Integer.valueOf(locala.s.length) }));
-    return locala;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.opensdk.diffdev.a.d.a
  * JD-Core Version:    0.7.0.1
  */

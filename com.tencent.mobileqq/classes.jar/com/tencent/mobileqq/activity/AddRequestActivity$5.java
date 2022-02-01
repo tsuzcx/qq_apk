@@ -4,13 +4,14 @@ import android.view.View;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.SystemMessageProcessor;
+import com.tencent.mobileqq.newfriend.api.INewFriendApi;
 import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -30,56 +31,60 @@ class AddRequestActivity$5
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt == 0)
     {
-    default: 
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-    }
-    if (NetworkUtil.d(BaseApplication.getContext()))
-    {
-      long l1 = FriendSystemMsgController.a().b();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a = FriendSystemMsgController.a().a(Long.valueOf(l1));
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a != null)
+      if (NetworkUtil.isNetSupport(BaseApplication.getContext()))
       {
-        paramInt = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg_type.get();
-        l1 = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg_seq.get();
-        long l2 = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.req_uin.get();
-        int i = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.sub_type.get();
-        int j = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.src_id.get();
-        int k = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.sub_src_id.get();
-        int m = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.group_msg_type.get();
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.actions.get();
-        if ((paramView != null) && (1 < paramView.size()))
+        long l1 = ((INewFriendApi)QRoute.api(INewFriendApi.class)).getCurrStructMsgKey();
+        this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a = ((INewFriendApi)QRoute.api(INewFriendApi.class)).getStructMsgFromMap(Long.valueOf(l1));
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a != null)
         {
-          ((structmsg.SystemMsgActionInfo)((structmsg.SystemMsgAction)paramView.get(1)).action_info.get()).blacklist.set(true);
-          AddRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, true);
-          this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app.getMsgHandler().a().a(paramInt, l1, l2, i, j, k, m, (structmsg.SystemMsgActionInfo)((structmsg.SystemMsgAction)paramView.get(1)).action_info.get(), 1, null, false);
-          AddRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131719050, 1000L, false);
+          paramInt = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg_type.get();
+          l1 = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg_seq.get();
+          long l2 = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.req_uin.get();
+          int i = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.sub_type.get();
+          int j = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.src_id.get();
+          int k = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.sub_src_id.get();
+          int m = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.group_msg_type.get();
+          paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.actions.get();
+          if ((paramView != null) && (1 < paramView.size()))
+          {
+            ((structmsg.SystemMsgActionInfo)((structmsg.SystemMsgAction)paramView.get(1)).action_info.get()).blacklist.set(true);
+            AddRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, true);
+            this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app.getMsgHandler().a().a(paramInt, l1, l2, i, j, k, m, (structmsg.SystemMsgActionInfo)((structmsg.SystemMsgAction)paramView.get(1)).action_info.get(), 1, null, false);
+            AddRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131718766, 1000L, false);
+          }
+          else
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("shield, ");
+            if (paramView != null) {
+              paramInt = paramView.size();
+            } else {
+              paramInt = -1;
+            }
+            localStringBuilder.append(paramInt);
+            QLog.d("Q.systemmsg.AddRequestActivity", 1, localStringBuilder.toString());
+          }
+        }
+        else
+        {
+          QLog.d("Q.systemmsg.AddRequestActivity", 1, "shield");
         }
       }
-    }
-    for (;;)
-    {
+      else
+      {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131694424, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.getTitleBarHeight());
+      }
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app, "CliOper", "", "", "Verification_msg", "Vfc_shield_clk", 0, 0, "", "", "", "");
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app, "CliOper", "", "", "0X800AA45", "0X800AA45", 0, 0, "", "", "", "");
-      break;
-      StringBuilder localStringBuilder = new StringBuilder().append("shield, ");
-      if (paramView != null) {}
-      for (paramInt = paramView.size();; paramInt = -1)
-      {
-        QLog.d("Q.systemmsg.AddRequestActivity", 1, paramInt);
-        break;
-      }
-      QLog.d("Q.systemmsg.AddRequestActivity", 1, "shield");
-      continue;
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131694459, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.getTitleBarHeight());
     }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddRequestActivity.5
  * JD-Core Version:    0.7.0.1
  */

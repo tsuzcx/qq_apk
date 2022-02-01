@@ -24,60 +24,25 @@ public class QzoneAuthorizeConfig
   
   public static QzoneAuthorizeConfig getInstance()
   {
-    if (instance == null) {}
-    try
-    {
-      if (instance == null) {
-        instance = new QzoneAuthorizeConfig();
+    if (instance == null) {
+      try
+      {
+        if (instance == null) {
+          instance = new QzoneAuthorizeConfig();
+        }
       }
-      return instance;
+      finally {}
     }
-    finally {}
+    return instance;
   }
   
   private void getNewBlackList(String paramString, ConcurrentHashMap<String, Set<String>> paramConcurrentHashMap)
   {
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (;;)
+    if (!TextUtils.isEmpty(paramString))
     {
-      int i;
-      Object localObject;
-      int j;
-      String str;
       try
       {
         paramString = new JSONArray(paramString);
-        if ((paramString == null) || (paramString.length() <= 0)) {
-          break label198;
-        }
-        paramConcurrentHashMap.clear();
-        int m = paramString.length();
-        i = 0;
-        if (i >= m) {
-          break label197;
-        }
-        localObject = paramString.optJSONObject(i);
-        JSONArray localJSONArray1 = ((JSONObject)localObject).optJSONArray("schema");
-        JSONArray localJSONArray2 = ((JSONObject)localObject).optJSONArray("match");
-        int n = localJSONArray2.length();
-        j = 0;
-        if (j >= n) {
-          break label225;
-        }
-        str = localJSONArray2.optString(j);
-        Set localSet = (Set)paramConcurrentHashMap.get(str);
-        localObject = localSet;
-        if (localSet == null) {
-          localObject = new HashSet(20);
-        }
-        int i1 = localJSONArray1.length();
-        int k = 0;
-        if (k >= i1) {
-          break label207;
-        }
-        ((Set)localObject).add(localJSONArray1.optString(k));
-        k += 1;
-        continue;
       }
       catch (Exception paramString)
       {
@@ -85,115 +50,136 @@ public class QzoneAuthorizeConfig
           QLog.e("QzoneAuthorizeConfig", 2, "Js Api Config JSONArray error!", paramString);
         }
         paramString = null;
-        continue;
       }
-      QLog.e("QzoneAuthorizeConfig", 1, "get Js Api Config From jsApiBlackString is empty!");
-      label197:
-      return;
-      label198:
+      if ((paramString != null) && (paramString.length() > 0))
+      {
+        paramConcurrentHashMap.clear();
+        int m = paramString.length();
+        int i = 0;
+        while (i < m)
+        {
+          Object localObject = paramString.optJSONObject(i);
+          JSONArray localJSONArray1 = ((JSONObject)localObject).optJSONArray("schema");
+          JSONArray localJSONArray2 = ((JSONObject)localObject).optJSONArray("match");
+          int n = localJSONArray2.length();
+          int j = 0;
+          while (j < n)
+          {
+            String str = localJSONArray2.optString(j);
+            Set localSet = (Set)paramConcurrentHashMap.get(str);
+            localObject = localSet;
+            if (localSet == null) {
+              localObject = new HashSet(20);
+            }
+            int i1 = localJSONArray1.length();
+            int k = 0;
+            while (k < i1)
+            {
+              ((Set)localObject).add(localJSONArray1.optString(k));
+              k += 1;
+            }
+            paramConcurrentHashMap.put(str, localObject);
+            j += 1;
+          }
+          i += 1;
+        }
+        return;
+      }
       QLog.e("QzoneAuthorizeConfig", 1, "Js Api Config JSONArray From jsApiBlackString is empty");
       return;
-      label207:
-      paramConcurrentHashMap.put(str, localObject);
-      j += 1;
-      continue;
-      label225:
-      i += 1;
     }
+    QLog.e("QzoneAuthorizeConfig", 1, "get Js Api Config From jsApiBlackString is empty!");
   }
   
   public static boolean isDomainMatch(String paramString1, String paramString2)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      bool1 = false;
-    }
-    do
+    boolean bool2 = TextUtils.isEmpty(paramString1);
+    boolean bool1 = false;
+    if (!bool2)
     {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while ("*".equals(paramString1));
-      if (!"*.*".equals(paramString1)) {
-        break;
+      if (TextUtils.isEmpty(paramString2)) {
+        return false;
       }
-      bool1 = bool2;
-    } while (paramString2.indexOf('.') != -1);
+      if ("*".equals(paramString1)) {
+        return true;
+      }
+      if ("*.*".equals(paramString1))
+      {
+        if (paramString2.indexOf('.') != -1) {
+          bool1 = true;
+        }
+        return bool1;
+      }
+      if (paramString1.startsWith("*")) {
+        return paramString2.endsWith(paramString1.substring(1));
+      }
+      if (paramString1.endsWith("*")) {
+        return paramString2.startsWith(paramString1.substring(0, paramString1.length() - 1));
+      }
+      return paramString2.equals(paramString1);
+    }
     return false;
-    if (paramString1.startsWith("*")) {
-      return paramString2.endsWith(paramString1.substring(1));
-    }
-    if (paramString1.endsWith("*")) {
-      return paramString2.startsWith(paramString1.substring(0, paramString1.length() - 1));
-    }
-    return paramString2.equals(paramString1);
   }
   
   public boolean hasJsApiRight(String paramString1, String paramString2)
   {
-    for (;;)
+    try
     {
-      try
+      paramString1 = Uri.parse(paramString1);
+      Object localObject1 = paramString1.getScheme();
+      if ((!((String)localObject1).equals("http")) && (!((String)localObject1).equals("https"))) {
+        return false;
+      }
+      localObject1 = QzoneConfig.getInstance().getConfig("QZoneSetting", "jsapiblacklist", "");
+      if (!((String)localObject1).equals(this.mJsApiBlackString))
       {
-        paramString1 = Uri.parse(paramString1);
-        Object localObject1 = paramString1.getScheme();
-        if ((!((String)localObject1).equals("http")) && (!((String)localObject1).equals("https"))) {
-          return false;
-        }
-        localObject1 = QzoneConfig.getInstance().getConfig("QZoneSetting", "jsapiblacklist", "");
-        if (!((String)localObject1).equals(this.mJsApiBlackString))
-        {
-          getNewBlackList((String)localObject1, this.mJsApiBlackList);
-          this.mJsApiBlackString = ((String)localObject1);
-          if (QLog.isColorLevel()) {
-            QLog.d("QzoneAuthorizeConfig", 1, this.mJsApiBlackString);
-          }
-        }
-        if (this.mJsApiBlackList.size() == 0) {
-          return true;
-        }
-        localObject1 = this.mJsApiBlackList.keySet();
-        if (((Set)localObject1).size() == 0) {
-          return true;
-        }
-        paramString1 = paramString1.getHost();
-        if (!TextUtils.isEmpty(paramString1))
-        {
-          paramString1 = paramString1.toLowerCase();
-          localObject1 = ((Set)localObject1).iterator();
-          if (((Iterator)localObject1).hasNext())
-          {
-            Object localObject2 = (String)((Iterator)localObject1).next();
-            if (isDomainMatch((String)localObject2, paramString1))
-            {
-              localObject2 = (Set)this.mJsApiBlackList.get(localObject2);
-              if ((localObject2 != null) && (((Set)localObject2).size() != 0))
-              {
-                localObject2 = ((Set)localObject2).iterator();
-                if (((Iterator)localObject2).hasNext())
-                {
-                  boolean bool = isDomainMatch((String)((Iterator)localObject2).next(), paramString2);
-                  if (bool) {
-                    return false;
-                  }
-                }
-              }
-            }
-          }
-          else
-          {
-            return true;
-          }
+        getNewBlackList((String)localObject1, this.mJsApiBlackList);
+        this.mJsApiBlackString = ((String)localObject1);
+        if (QLog.isColorLevel()) {
+          QLog.d("QzoneAuthorizeConfig", 1, this.mJsApiBlackString);
         }
       }
-      catch (Exception paramString1)
-      {
-        QLog.e("QzoneAuthorizeConfig", 1, "hasJsApiRight()", paramString1);
+      if (this.mJsApiBlackList.size() == 0) {
         return true;
       }
+      Object localObject2 = this.mJsApiBlackList.keySet();
+      if (((Set)localObject2).size() == 0) {
+        return true;
+      }
+      localObject1 = paramString1.getHost();
+      paramString1 = (String)localObject1;
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        paramString1 = ((String)localObject1).toLowerCase();
+      }
+      localObject1 = ((Set)localObject2).iterator();
+      boolean bool;
+      do
+      {
+        while (!((Iterator)localObject2).hasNext())
+        {
+          do
+          {
+            do
+            {
+              if (!((Iterator)localObject1).hasNext()) {
+                break;
+              }
+              localObject2 = (String)((Iterator)localObject1).next();
+            } while (!isDomainMatch((String)localObject2, paramString1));
+            localObject2 = (Set)this.mJsApiBlackList.get(localObject2);
+          } while ((localObject2 == null) || (((Set)localObject2).size() == 0));
+          localObject2 = ((Set)localObject2).iterator();
+        }
+        bool = isDomainMatch((String)((Iterator)localObject2).next(), paramString2);
+      } while (!bool);
+      return false;
+      return true;
     }
+    catch (Exception paramString1)
+    {
+      QLog.e("QzoneAuthorizeConfig", 1, "hasJsApiRight()", paramString1);
+    }
+    return true;
   }
   
   public boolean hasSchemeRight(String paramString1, String paramString2)
@@ -253,7 +239,7 @@ public class QzoneAuthorizeConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.QzoneAuthorizeConfig
  * JD-Core Version:    0.7.0.1
  */

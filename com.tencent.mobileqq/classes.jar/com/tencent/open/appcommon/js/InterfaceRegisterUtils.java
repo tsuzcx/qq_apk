@@ -14,10 +14,9 @@ public class InterfaceRegisterUtils
   
   public static void a(WebView paramWebView)
   {
-    int i;
     try
     {
-      i = paramWebView.hashCode();
+      int i = paramWebView.hashCode();
       paramWebView = (List)a.get(Integer.valueOf(i));
       if (paramWebView == null) {
         return;
@@ -27,13 +26,13 @@ public class InterfaceRegisterUtils
         ((BaseInterface)localIterator.next()).destroy();
       }
       paramWebView.clear();
+      a.remove(Integer.valueOf(i));
+      return;
     }
     catch (Exception paramWebView)
     {
       paramWebView.printStackTrace();
-      return;
     }
-    a.remove(Integer.valueOf(i));
   }
   
   public static void a(WebView paramWebView, String paramString)
@@ -75,7 +74,7 @@ public class InterfaceRegisterUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appcommon.js.InterfaceRegisterUtils
  * JD-Core Version:    0.7.0.1
  */

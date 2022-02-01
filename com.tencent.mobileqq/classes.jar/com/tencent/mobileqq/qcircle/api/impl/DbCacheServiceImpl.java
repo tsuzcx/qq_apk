@@ -10,17 +10,17 @@ public class DbCacheServiceImpl
 {
   public void close()
   {
-    DbCacheService.getInstance().close();
+    DbCacheService.a().a();
   }
   
   public IDBManagerWrapper getCacheManager(Class<? extends IDBCacheDataWrapper> paramClass, long paramLong, String paramString)
   {
-    return DbCacheService.getInstance().getCacheManager(paramClass, paramLong, paramString);
+    return DbCacheService.a().a(paramClass, paramLong, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.impl.DbCacheServiceImpl
  * JD-Core Version:    0.7.0.1
  */

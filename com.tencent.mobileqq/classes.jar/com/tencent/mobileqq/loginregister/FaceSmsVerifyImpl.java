@@ -30,12 +30,12 @@ public class FaceSmsVerifyImpl
   {
     if (paramInt1 == 21)
     {
-      QLog.d("FaceSmsVerifyImpl", 1, "onActivity requestCode == AuthDevActivity.REQ_LEGACY, resultCode is : " + paramInt2);
-      if (paramInt2 == -1)
-      {
-        paramQBaseActivity.setResult(paramInt2, paramIntent);
-        paramQBaseActivity.finish();
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivity requestCode == AuthDevActivity.REQ_LEGACY, resultCode is : ");
+      localStringBuilder.append(paramInt2);
+      QLog.d("FaceSmsVerifyImpl", 1, localStringBuilder.toString());
+      paramQBaseActivity.setResult(paramInt2, paramIntent);
+      paramQBaseActivity.finish();
     }
   }
   
@@ -66,7 +66,7 @@ public class FaceSmsVerifyImpl
       return false;
     }
     QLog.d("FaceSmsVerifyImpl", 2, new Object[] { "checkSms, smsCode : ", paramString });
-    LoginVerifyServlet.a(paramQBaseActivity.getAppRuntime(), paramString, this.jdField_a_of_type_ComTencentMobileqqLoginregisterFaceSmsVerifyImpl$FaceSmsVerifyObserver);
+    LoginVerifyServlet.b(paramQBaseActivity.getAppRuntime(), paramString, this.jdField_a_of_type_ComTencentMobileqqLoginregisterFaceSmsVerifyImpl$FaceSmsVerifyObserver);
     ReportController.b(null, "dc00898", "", "", "0X800A31C", "0X800A31C", 0, 0, "", "", "", "");
     return true;
   }
@@ -78,7 +78,6 @@ public class FaceSmsVerifyImpl
     if (!"f_SetFaceData".equals(this.jdField_a_of_type_JavaLangString)) {
       return false;
     }
-    paramICommonSmsView.setTipsVisibility(4);
     b(paramQBaseActivity, paramICommonSmsView);
     QLog.d("FaceSmsVerifyImpl", 1, "Set Face Data startGetVerifyCode.begin");
     LoginVerifyServlet.a(paramQBaseActivity.getAppRuntime(), this.jdField_a_of_type_ComTencentMobileqqLoginregisterFaceSmsVerifyImpl$FaceSmsVerifyObserver);
@@ -88,7 +87,7 @@ public class FaceSmsVerifyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.FaceSmsVerifyImpl
  * JD-Core Version:    0.7.0.1
  */

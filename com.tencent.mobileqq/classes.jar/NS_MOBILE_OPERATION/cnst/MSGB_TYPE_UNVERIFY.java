@@ -6,7 +6,7 @@ public abstract interface MSGB_TYPE_UNVERIFY
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.cnst.MSGB_TYPE_UNVERIFY
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package cooperation.qzone.video;
 
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
+import mqq.app.MobileQQ;
 
 public class QzoneVideoBeaconReport
 {
@@ -218,79 +218,106 @@ public class QzoneVideoBeaconReport
   
   public static void reportAlbumEvent(String paramString1, String paramString2)
   {
-    if (TextUtils.isEmpty(paramString2)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString2)) {
       return;
-      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(paramString1, paramString2, true, 0L, 0L, new HashMap(), null);
-    } while (!QLog.isColorLevel());
-    QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2);
+    }
+    StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance(paramString1, paramString2, true, 0L, 0L, new HashMap(), null);
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("event:");
+      paramString1.append(paramString2);
+      QLog.d("QzoneVideoBeaconReport", 2, paramString1.toString());
+    }
   }
   
   public static void reportAlbumEvent(String paramString1, String paramString2, String paramString3)
   {
-    if (TextUtils.isEmpty(paramString2)) {}
-    String str;
-    do
-    {
+    if (TextUtils.isEmpty(paramString2)) {
       return;
-      HashMap localHashMap = new HashMap();
-      str = paramString3;
-      if (TextUtils.isEmpty(paramString3)) {
-        str = "unfinedsource";
-      }
-      localHashMap.put("refer", str);
-      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(paramString1, paramString2, true, 0L, 0L, localHashMap, null);
-    } while (!QLog.isColorLevel());
-    QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2 + " refer = " + str);
+    }
+    HashMap localHashMap = new HashMap();
+    String str = paramString3;
+    if (TextUtils.isEmpty(paramString3)) {
+      str = "unfinedsource";
+    }
+    localHashMap.put("refer", str);
+    StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance(paramString1, paramString2, true, 0L, 0L, localHashMap, null);
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("event:");
+      paramString1.append(paramString2);
+      paramString1.append(" refer = ");
+      paramString1.append(str);
+      QLog.d("QzoneVideoBeaconReport", 2, paramString1.toString());
+    }
   }
   
   public static void reportAlbumEvent(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    if (TextUtils.isEmpty(paramString2)) {}
-    String str;
-    do
-    {
+    if (TextUtils.isEmpty(paramString2)) {
       return;
-      HashMap localHashMap = new HashMap();
-      str = paramString3;
-      if (TextUtils.isEmpty(paramString3)) {
-        str = "unfinedsource";
-      }
-      paramString3 = paramString4;
-      if (TextUtils.isEmpty(paramString4)) {
-        paramString3 = "0";
-      }
-      localHashMap.put("refer", str);
-      localHashMap.put("type", paramString3);
-      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(paramString1, paramString2, true, 0L, 0L, localHashMap, null);
-    } while (!QLog.isColorLevel());
-    QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2 + " refer = " + str + "type =" + paramString3);
+    }
+    HashMap localHashMap = new HashMap();
+    String str = paramString3;
+    if (TextUtils.isEmpty(paramString3)) {
+      str = "unfinedsource";
+    }
+    paramString3 = paramString4;
+    if (TextUtils.isEmpty(paramString4)) {
+      paramString3 = "0";
+    }
+    localHashMap.put("refer", str);
+    localHashMap.put("type", paramString3);
+    StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance(paramString1, paramString2, true, 0L, 0L, localHashMap, null);
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("event:");
+      paramString1.append(paramString2);
+      paramString1.append(" refer = ");
+      paramString1.append(str);
+      paramString1.append("type =");
+      paramString1.append(paramString3);
+      QLog.d("QzoneVideoBeaconReport", 2, paramString1.toString());
+    }
   }
   
   public static void reportQzoneLiveEvent(String paramString1, String paramString2, String paramString3)
   {
-    if (TextUtils.isEmpty(paramString2)) {}
-    String str;
-    do
-    {
+    if (TextUtils.isEmpty(paramString2)) {
       return;
-      HashMap localHashMap = new HashMap();
-      str = paramString3;
-      if (TextUtils.isEmpty(paramString3)) {
-        str = "unfinedsource";
-      }
-      localHashMap.put("event_result", str);
-      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(paramString1, paramString2, true, 0L, 0L, localHashMap, null);
-    } while (!QLog.isColorLevel());
-    QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2 + " refer = " + str);
+    }
+    HashMap localHashMap = new HashMap();
+    String str = paramString3;
+    if (TextUtils.isEmpty(paramString3)) {
+      str = "unfinedsource";
+    }
+    localHashMap.put("event_result", str);
+    StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance(paramString1, paramString2, true, 0L, 0L, localHashMap, null);
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("event:");
+      paramString1.append(paramString2);
+      paramString1.append(" refer = ");
+      paramString1.append(str);
+      QLog.d("QzoneVideoBeaconReport", 2, paramString1.toString());
+    }
   }
   
   public static void reportVideoEvent(String paramString1, String paramString2, long paramLong)
   {
-    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(paramString1, paramString2, true, paramLong, 0L, new HashMap(), null);
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2 + " duration:" + paramLong);
+    StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance(paramString1, paramString2, true, paramLong, 0L, new HashMap(), null);
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("event:");
+      paramString1.append(paramString2);
+      paramString1.append(" duration:");
+      paramString1.append(paramLong);
+      QLog.d("QzoneVideoBeaconReport", 2, paramString1.toString());
     }
   }
   
@@ -299,9 +326,17 @@ public class QzoneVideoBeaconReport
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_FailCode", paramString3);
     localHashMap.put("reserve", paramString4);
-    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(paramString1, paramString2, true, 0L, 0L, localHashMap, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2 + " resultCode:" + paramString3 + " reserve:" + paramString4);
+    StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance(paramString1, paramString2, true, 0L, 0L, localHashMap, null);
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("event:");
+      paramString1.append(paramString2);
+      paramString1.append(" resultCode:");
+      paramString1.append(paramString3);
+      paramString1.append(" reserve:");
+      paramString1.append(paramString4);
+      QLog.d("QzoneVideoBeaconReport", 2, paramString1.toString());
     }
   }
   
@@ -310,9 +345,19 @@ public class QzoneVideoBeaconReport
     HashMap localHashMap = new HashMap();
     localHashMap.put(paramString3, paramString4);
     localHashMap.put("reserve", paramString5);
-    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(paramString1, paramString2, true, 0L, 0L, localHashMap, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2 + " key:" + paramString3 + " value:" + paramString4 + ", reserve:" + paramString5);
+    StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance(paramString1, paramString2, true, 0L, 0L, localHashMap, null);
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("event:");
+      paramString1.append(paramString2);
+      paramString1.append(" key:");
+      paramString1.append(paramString3);
+      paramString1.append(" value:");
+      paramString1.append(paramString4);
+      paramString1.append(", reserve:");
+      paramString1.append(paramString5);
+      QLog.d("QzoneVideoBeaconReport", 2, paramString1.toString());
     }
   }
   
@@ -320,15 +365,19 @@ public class QzoneVideoBeaconReport
   {
     HashMap localHashMap = new HashMap();
     localHashMap.putAll(paramHashMap);
-    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(paramString1, paramString2, true, 0L, 0L, localHashMap, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2);
+    StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance(paramString1, paramString2, true, 0L, 0L, localHashMap, null);
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("event:");
+      paramString1.append(paramString2);
+      QLog.d("QzoneVideoBeaconReport", 2, paramString1.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.video.QzoneVideoBeaconReport
  * JD-Core Version:    0.7.0.1
  */

@@ -76,26 +76,36 @@ public class SoftKeyboardStateHelper
     Rect localRect = new Rect();
     this.activityRootView.getWindowVisibleDisplayFrame(localRect);
     int i = this.activityRootView.getRootView().getHeight() - (localRect.bottom - localRect.top) - ImmersiveUtils.getStatusBarHeight(this.activityRootView.getContext());
-    if (QLog.isColorLevel()) {
-      QLog.d("SoftKeyboardStateHelper", 2, "onGlobalLayout , activityRootView.Height = " + this.activityRootView.getRootView().getHeight() + " heightDiff = " + i + " (r.bottom - r.top) = " + (localRect.bottom - localRect.top));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGlobalLayout , activityRootView.Height = ");
+      localStringBuilder.append(this.activityRootView.getRootView().getHeight());
+      localStringBuilder.append(" heightDiff = ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" (r.bottom - r.top) = ");
+      localStringBuilder.append(localRect.bottom - localRect.top);
+      QLog.d("SoftKeyboardStateHelper", 2, localStringBuilder.toString());
     }
     if ((!this.isSoftKeyboardOpened) && (i > this.KEY_BOARD_HIGH_DIFF))
     {
       this.isSoftKeyboardOpened = true;
       notifyOnSoftKeyboardOpened(i);
-    }
-    while ((!this.isSoftKeyboardOpened) || (i >= this.KEY_BOARD_HIGH_DIFF)) {
       return;
     }
-    this.isSoftKeyboardOpened = false;
-    notifyOnSoftKeyboardClosed();
+    if ((this.isSoftKeyboardOpened) && (i < this.KEY_BOARD_HIGH_DIFF))
+    {
+      this.isSoftKeyboardOpened = false;
+      notifyOnSoftKeyboardClosed();
+    }
   }
   
   public void removeSoftKeyboardStateListener()
   {
     this.listeners.clear();
-    if (this.activityRootView != null) {
-      this.activityRootView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    View localView = this.activityRootView;
+    if (localView != null) {
+      localView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
   }
   
@@ -111,7 +121,7 @@ public class SoftKeyboardStateHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.util.SoftKeyboardStateHelper
  * JD-Core Version:    0.7.0.1
  */

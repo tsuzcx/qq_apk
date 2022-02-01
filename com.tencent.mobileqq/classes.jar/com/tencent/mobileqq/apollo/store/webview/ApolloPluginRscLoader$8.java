@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.store.webview;
 
-import com.tencent.mobileqq.apollo.api.res.IApolloResDownloader.OnApolloDownLoadListener;
+import com.tencent.mobileqq.apollo.res.api.IApolloResDownloader.OnApolloDownLoadListener;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -8,29 +8,50 @@ import java.io.File;
 class ApolloPluginRscLoader$8
   implements IApolloResDownloader.OnApolloDownLoadListener
 {
-  ApolloPluginRscLoader$8(ApolloPluginRscLoader paramApolloPluginRscLoader, int paramInt, File paramFile, String paramString) {}
+  ApolloPluginRscLoader$8(ApolloPluginRscLoader paramApolloPluginRscLoader, File paramFile, String paramString) {}
   
   public void a(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPluginRscLoader", 2, "getApolloRsc onDownLoadFinish:" + this.jdField_a_of_type_Int + " sucess:" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("getApolloRsc onDownLoadFinish:");
+      paramString.append(paramInt1);
+      paramString.append(" sucess:");
+      paramString.append(paramBoolean);
+      QLog.d("[cmshow]ApolloPluginRscLoader", 2, paramString.toString());
     }
     if (paramBoolean)
     {
       if (this.jdField_a_of_type_JavaIoFile.exists())
       {
-        this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloPluginRscLoader.a(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_Int + HardCodeUtil.a(2131700570));
+        paramString = this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloPluginRscLoader;
+        paramArrayOfInt = this.jdField_a_of_type_JavaLangString;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramInt1);
+        localStringBuilder.append(HardCodeUtil.a(2131700730));
+        paramString.a(paramArrayOfInt, 0, localStringBuilder.toString());
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloPluginRscLoader.a(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Int + HardCodeUtil.a(2131700569));
+      paramString = this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloPluginRscLoader;
+      paramArrayOfInt = this.jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(HardCodeUtil.a(2131700706));
+      paramString.a(paramArrayOfInt, 2, localStringBuilder.toString());
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloPluginRscLoader.a(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Int + HardCodeUtil.a(2131700591));
+    paramString = this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloPluginRscLoader;
+    paramArrayOfInt = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(HardCodeUtil.a(2131700724));
+    paramString.a(paramArrayOfInt, 2, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.webview.ApolloPluginRscLoader.8
  * JD-Core Version:    0.7.0.1
  */

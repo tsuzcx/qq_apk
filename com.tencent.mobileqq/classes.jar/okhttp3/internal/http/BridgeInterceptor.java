@@ -41,7 +41,9 @@ public final class BridgeInterceptor
         localStringBuilder.append("; ");
       }
       Cookie localCookie = (Cookie)paramList.get(i);
-      localStringBuilder.append(localCookie.name()).append('=').append(localCookie.value());
+      localStringBuilder.append(localCookie.name());
+      localStringBuilder.append('=');
+      localStringBuilder.append(localCookie.value());
       i += 1;
     }
     return localStringBuilder.toString();
@@ -49,7 +51,6 @@ public final class BridgeInterceptor
   
   public Response intercept(Interceptor.Chain paramChain)
   {
-    int j = 0;
     Object localObject1 = paramChain.request();
     Object localObject2 = ((Request)localObject1).newBuilder();
     Object localObject3 = ((Request)localObject1).body();
@@ -60,56 +61,57 @@ public final class BridgeInterceptor
         ((Request.Builder)localObject2).header("Content-Type", localMediaType.toString());
       }
       long l = ((RequestBody)localObject3).contentLength();
-      if (l == -1L) {
-        break label374;
+      if (l != -1L)
+      {
+        ((Request.Builder)localObject2).header("Content-Length", Long.toString(l));
+        ((Request.Builder)localObject2).removeHeader("Transfer-Encoding");
       }
-      ((Request.Builder)localObject2).header("Content-Length", Long.toString(l));
-      ((Request.Builder)localObject2).removeHeader("Transfer-Encoding");
+      else
+      {
+        ((Request.Builder)localObject2).header("Transfer-Encoding", "chunked");
+        ((Request.Builder)localObject2).removeHeader("Content-Length");
+      }
     }
-    for (;;)
+    localObject3 = ((Request)localObject1).header("Host");
+    int j = 0;
+    if (localObject3 == null) {
+      ((Request.Builder)localObject2).header("Host", Util.hostHeader(((Request)localObject1).url(), false));
+    }
+    if (((Request)localObject1).header("Connection") == null) {
+      ((Request.Builder)localObject2).header("Connection", "Keep-Alive");
+    }
+    int i = j;
+    if (((Request)localObject1).header("Accept-Encoding") == null)
     {
-      if (((Request)localObject1).header("Host") == null) {
-        ((Request.Builder)localObject2).header("Host", Util.hostHeader(((Request)localObject1).url(), false));
-      }
-      if (((Request)localObject1).header("Connection") == null) {
-        ((Request.Builder)localObject2).header("Connection", "Keep-Alive");
-      }
-      int i = j;
-      if (((Request)localObject1).header("Accept-Encoding") == null)
+      i = j;
+      if (((Request)localObject1).header("Range") == null)
       {
-        i = j;
-        if (((Request)localObject1).header("Range") == null)
-        {
-          i = 1;
-          ((Request.Builder)localObject2).header("Accept-Encoding", "gzip");
-        }
+        i = 1;
+        ((Request.Builder)localObject2).header("Accept-Encoding", "gzip");
       }
-      localObject3 = this.cookieJar.loadForRequest(((Request)localObject1).url());
-      if (!((List)localObject3).isEmpty()) {
-        ((Request.Builder)localObject2).header("Cookie", cookieHeader((List)localObject3));
-      }
-      if (((Request)localObject1).header("User-Agent") == null) {
-        ((Request.Builder)localObject2).header("User-Agent", Version.userAgent());
-      }
-      paramChain = paramChain.proceed(((Request.Builder)localObject2).build());
-      HttpHeaders.receiveHeaders(this.cookieJar, ((Request)localObject1).url(), paramChain.headers());
-      localObject1 = paramChain.newBuilder().request((Request)localObject1);
-      if ((i != 0) && ("gzip".equalsIgnoreCase(paramChain.header("Content-Encoding"))) && (HttpHeaders.hasBody(paramChain)))
-      {
-        localObject2 = new GzipSource(paramChain.body().source());
-        ((Response.Builder)localObject1).headers(paramChain.headers().newBuilder().removeAll("Content-Encoding").removeAll("Content-Length").build());
-        ((Response.Builder)localObject1).body(new RealResponseBody(paramChain.header("Content-Type"), -1L, Okio.buffer((Source)localObject2)));
-      }
-      return ((Response.Builder)localObject1).build();
-      label374:
-      ((Request.Builder)localObject2).header("Transfer-Encoding", "chunked");
-      ((Request.Builder)localObject2).removeHeader("Content-Length");
     }
+    localObject3 = this.cookieJar.loadForRequest(((Request)localObject1).url());
+    if (!((List)localObject3).isEmpty()) {
+      ((Request.Builder)localObject2).header("Cookie", cookieHeader((List)localObject3));
+    }
+    if (((Request)localObject1).header("User-Agent") == null) {
+      ((Request.Builder)localObject2).header("User-Agent", Version.userAgent());
+    }
+    paramChain = paramChain.proceed(((Request.Builder)localObject2).build());
+    HttpHeaders.receiveHeaders(this.cookieJar, ((Request)localObject1).url(), paramChain.headers());
+    localObject1 = paramChain.newBuilder().request((Request)localObject1);
+    if ((i != 0) && ("gzip".equalsIgnoreCase(paramChain.header("Content-Encoding"))) && (HttpHeaders.hasBody(paramChain)))
+    {
+      localObject2 = new GzipSource(paramChain.body().source());
+      ((Response.Builder)localObject1).headers(paramChain.headers().newBuilder().removeAll("Content-Encoding").removeAll("Content-Length").build());
+      ((Response.Builder)localObject1).body(new RealResponseBody(paramChain.header("Content-Type"), -1L, Okio.buffer((Source)localObject2)));
+    }
+    return ((Response.Builder)localObject1).build();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.internal.http.BridgeInterceptor
  * JD-Core Version:    0.7.0.1
  */

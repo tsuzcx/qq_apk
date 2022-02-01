@@ -16,70 +16,69 @@ class TokenFetcher$1
       return;
     }
     TokenFetcher.GetUploadTokenListener localGetUploadTokenListener = (TokenFetcher.GetUploadTokenListener)paramObject;
-    paramObject = "";
-    Object localObject;
-    if ((paramInt != 0) || (TextUtils.isEmpty(paramString)))
+    paramObject = null;
+    String str2 = "";
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramString)))
+    {
+      try
+      {
+        Object localObject1 = new JSONObject(paramString);
+        paramInt = ((JSONObject)localObject1).getInt("ErrorCode");
+        if (paramInt != 0)
+        {
+          localObject1 = ((JSONObject)localObject1).getString("ErrorInfo");
+          Log.e("TokenFetcher", String.format("mUploadTokenListener|errCode=%d, errInfo=%s", new Object[] { Integer.valueOf(paramInt), localObject1 }));
+          if (paramInt == 70001) {
+            break label311;
+          }
+          if (paramInt != 70347) {
+            break label301;
+          }
+          break label311;
+        }
+        localObject2 = ((JSONObject)localObject1).getString("upload_token");
+        localObject1 = new TokenFetcher.UploadInfo(((JSONObject)localObject1).getString("upload_url"), (String)localObject2);
+        paramString = "";
+        paramObject = localObject1;
+      }
+      catch (JSONException localJSONException)
+      {
+        paramInt = 8198;
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("mUploadTokenListener|decode resp json fail. resp=");
+        ((StringBuilder)localObject2).append(paramString);
+        Log.e("TokenFetcher", ((StringBuilder)localObject2).toString());
+        localJSONException.printStackTrace();
+        paramString = "decode resp json fail.";
+      }
+    }
+    else
     {
       Log.e("TokenFetcher", String.format("mUploadTokenListener|http error code=%d", new Object[] { Integer.valueOf(0) }));
       paramInt = 8196;
-      paramString = null;
-      if (paramString != null) {
-        break label267;
-      }
-      localObject = "";
-      label64:
-      if (paramString != null) {
-        break label276;
-      }
+      paramString = "";
     }
-    label267:
-    label276:
-    for (String str2 = "";; str2 = paramString.upload_url)
+    for (;;)
     {
-      for (;;)
-      {
-        Log.d("TokenFetcher", String.format("mUploadTokenListener|errCode=%d, errInfo=%s, token=%s, url=%s", new Object[] { Integer.valueOf(paramInt), paramObject, localObject, str2 }));
-        localGetUploadTokenListener.onCompleted(paramInt, paramObject, paramString);
-        return;
-        try
-        {
-          localObject = new JSONObject(paramString);
-          paramInt = ((JSONObject)localObject).getInt("ErrorCode");
-          if (paramInt != 0)
-          {
-            paramObject = ((JSONObject)localObject).getString("ErrorInfo");
-            Log.e("TokenFetcher", String.format("mUploadTokenListener|errCode=%d, errInfo=%s", new Object[] { Integer.valueOf(paramInt), paramObject }));
-            if (paramInt == 70001) {
-              break label285;
-            }
-            if (paramInt != 70347) {
-              break label294;
-            }
-            break label285;
-          }
-          str2 = ((JSONObject)localObject).getString("upload_token");
-          localObject = new TokenFetcher.UploadInfo(((JSONObject)localObject).getString("upload_url"), str2);
-          paramString = (String)localObject;
-        }
-        catch (JSONException localJSONException)
-        {
-          paramInt = 8198;
-          paramObject = "decode resp json fail.";
-          Log.e("TokenFetcher", "mUploadTokenListener|decode resp json fail. resp=" + paramString);
-          localJSONException.printStackTrace();
-          paramString = null;
-        }
+      String str1;
+      if (paramObject == null) {
+        str1 = "";
+      } else {
+        str1 = paramObject.token;
       }
-      break;
-      String str1 = paramString.token;
-      break label64;
-    }
-    label285:
-    label294:
-    for (paramInt = 8199;; paramInt = 8194)
-    {
-      paramString = null;
-      break;
+      if (paramObject != null) {
+        str2 = paramObject.upload_url;
+      }
+      Log.d("TokenFetcher", String.format("mUploadTokenListener|errCode=%d, errInfo=%s, token=%s, url=%s", new Object[] { Integer.valueOf(paramInt), paramString, str1, str2 }));
+      localGetUploadTokenListener.onCompleted(paramInt, paramString, paramObject);
+      return;
+      label301:
+      paramInt = 8194;
+      paramString = str1;
+      continue;
+      label311:
+      paramInt = 8199;
+      paramString = str1;
     }
   }
 }

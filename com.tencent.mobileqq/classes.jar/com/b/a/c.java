@@ -36,72 +36,80 @@ public final class c
     }
     Process.setThreadPriority(10);
     this.d.a();
-    label73:
-    b.a locala;
-    for (;;)
+    label152:
+    do
     {
       try
       {
-        m localm = (m)this.b.take();
-        localm.a("cache-queue-take");
-        if (!localm.f()) {
-          break label73;
+        do
+        {
+          for (;;)
+          {
+            localm = (m)this.b.take();
+            localm.a("cache-queue-take");
+            if (!localm.f()) {
+              break;
+            }
+            localm.b("cache-discard-canceled");
+          }
+          localObject = this.d.a(localm.d());
+          if (localObject != null) {
+            break;
+          }
+          localm.a("cache-miss");
+        } while (c.a.a(this.g, localm));
+        for (localObject = this.c;; localObject = this.c)
+        {
+          ((BlockingQueue)localObject).put(localm);
+          break;
+          if (!((b.a)localObject).a()) {
+            break label152;
+          }
+          localm.a("cache-hit-expired");
+          localm.a((b.a)localObject);
+          if (c.a.a(this.g, localm)) {
+            break;
+          }
         }
-        localm.b("cache-discard-canceled");
-        continue;
-        if (!this.f) {
-          continue;
-        }
-      }
-      catch (InterruptedException localInterruptedException) {}
-      return;
-      locala = this.d.a(localInterruptedException.d());
-      if (locala == null)
-      {
-        localInterruptedException.a("cache-miss");
-        if (!c.a.a(this.g, localInterruptedException)) {
-          this.c.put(localInterruptedException);
-        }
-      }
-      else
-      {
-        if (!locala.a()) {
+        localm.a("cache-hit");
+        localo = localm.a(new j(((b.a)localObject).a, ((b.a)localObject).g));
+        localm.a("cache-hit-parsed");
+        if (((b.a)localObject).f >= System.currentTimeMillis()) {
           break;
         }
-        localInterruptedException.a("cache-hit-expired");
-        localInterruptedException.a(locala);
-        if (!c.a.a(this.g, localInterruptedException)) {
-          this.c.put(localInterruptedException);
+        i = 1;
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        for (;;)
+        {
+          m localm;
+          Object localObject;
+          o localo;
+          continue;
+          int i = 0;
         }
       }
-    }
-    localInterruptedException.a("cache-hit");
-    o localo = localInterruptedException.a(new j(locala.a, locala.g));
-    localInterruptedException.a("cache-hit-parsed");
-    if (locala.f < System.currentTimeMillis()) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0)
+      if (i == 0) {}
+      for (localObject = this.e;; localObject = this.e)
       {
-        this.e.a(localInterruptedException, localo);
+        ((p)localObject).a(localm, localo);
         break;
+        localm.a("cache-hit-refresh-needed");
+        localm.a((b.a)localObject);
+        localo.d = true;
+        if (!c.a.a(this.g, localm))
+        {
+          this.e.a(localm, localo, new c.1(this, localm));
+          break;
+        }
       }
-      localInterruptedException.a("cache-hit-refresh-needed");
-      localInterruptedException.a(locala);
-      localo.d = true;
-      if (!c.a.a(this.g, localInterruptedException))
-      {
-        this.e.a(localInterruptedException, localo, new c.1(this, localInterruptedException));
-        break;
-      }
-      this.e.a(localInterruptedException, localo);
-      break;
-    }
+    } while (!this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.b.a.c
  * JD-Core Version:    0.7.0.1
  */

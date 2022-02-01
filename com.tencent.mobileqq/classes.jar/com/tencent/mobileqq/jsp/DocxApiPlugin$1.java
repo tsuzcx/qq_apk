@@ -17,22 +17,18 @@ class DocxApiPlugin$1
     try
     {
       paramTencentDocGuideDialog.dismiss();
-      this.a.mRuntime.a().finish();
-      ReportController.b(null, "CliOper", "", "", "0X80094EB", "0X80094EB", 0, 0, "", "", "", "");
-      return;
     }
     catch (Throwable paramTencentDocGuideDialog)
     {
-      for (;;)
-      {
-        QLog.e("DocxApiPlugin", 1, "handleEvent", paramTencentDocGuideDialog);
-      }
+      QLog.e("DocxApiPlugin", 1, "handleEvent", paramTencentDocGuideDialog);
     }
+    this.a.mRuntime.a().finish();
+    ReportController.b(null, "CliOper", "", "", "0X80094EB", "0X80094EB", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.DocxApiPlugin.1
  * JD-Core Version:    0.7.0.1
  */

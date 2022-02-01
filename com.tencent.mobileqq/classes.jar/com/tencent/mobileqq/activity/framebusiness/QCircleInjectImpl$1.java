@@ -1,40 +1,45 @@
 package com.tencent.mobileqq.activity.framebusiness;
 
-import android.os.Handler;
-import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
-import com.tencent.mobileqq.activity.qcircle.QCircleFrame;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.PopupWindow;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.mobileqq.app.FrameFragment;
-import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.RedTypeInfo;
-import com.tencent.mobileqq.tianshu.ui.RedTouch;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-final class QCircleInjectImpl$1
+class QCircleInjectImpl$1
   implements Runnable
 {
-  QCircleInjectImpl$1(FrameFragment paramFrameFragment) {}
+  QCircleInjectImpl$1(QCircleInjectImpl paramQCircleInjectImpl, FrameFragment paramFrameFragment) {}
   
   public void run()
   {
-    BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = QCircleFrame.a(this.a.a() instanceof QCircleFrame);
-    if (localRedTypeInfo == null) {
-      QLog.i("updateQCircleRedDot", 1, "redInfo is null");
-    }
-    RedTouch localRedTouch;
-    do
+    if ((this.a.a.length > 8) && (!this.a.getActivity().isFinishing()))
     {
-      do
-      {
+      View localView = this.a.a[8].findViewById(2131378232);
+      if (localView == null) {
         return;
-      } while (this.a.jdField_a_of_type_JavaUtilHashMap == null);
-      localRedTouch = (RedTouch)this.a.jdField_a_of_type_JavaUtilHashMap.get(FrameControllerUtil.g);
-    } while ((localRedTouch == null) || (this.a.jdField_a_of_type_AndroidOsHandler == null));
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new QCircleInjectImpl.1.1(this, localRedTouch, localRedTypeInfo));
+      }
+      int i = QCircleInjectImpl.a();
+      int j = QCircleInjectImpl.b();
+      if (QCircleInjectImpl.a(this.this$0) == null)
+      {
+        localObject = LayoutInflater.from(this.a.getContext()).inflate(2131560718, null);
+        QCircleInjectImpl.a(this.this$0, new PopupWindow((View)localObject, j, i));
+        QCircleInjectImpl.a(this.this$0).setOutsideTouchable(true);
+      }
+      int k = localView.getWidth();
+      Object localObject = new int[2];
+      localView.getLocationInWindow((int[])localObject);
+      QCircleInjectImpl.a(this.this$0).showAtLocation(this.a.getView(), 0, localObject[0] + k / 2 - j / 2, localObject[1] - i);
+      ThreadManager.getUIHandler().postDelayed(QCircleInjectImpl.a(this.this$0), 5000L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.framebusiness.QCircleInjectImpl.1
  * JD-Core Version:    0.7.0.1
  */

@@ -16,17 +16,31 @@ class StickyNoteShopLayout$1
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if ((paramObject instanceof GetSuixintieSigFontRsp)) {
-      if ((((GetSuixintieSigFontRsp)paramObject).isEnd != 1) || (((GetSuixintieSigFontRsp)paramObject).vItems.size() != 1)) {}
-    }
-    while ((this.jdField_a_of_type_Boolean) || (StickyNoteShopLayout.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout).getItemCount() != 0))
+    if ((paramObject instanceof GetSuixintieSigFontRsp))
     {
-      return;
-      if (!this.jdField_a_of_type_Boolean) {
-        FileUtils.a(((GetSuixintieSigFontRsp)paramObject).toByteArray(), StickyNoteShopLayout.a + '_' + StickyNoteShopLayout.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout));
-      }
       paramObject = (GetSuixintieSigFontRsp)paramObject;
-      QLog.d("StickyNoteShopLayout", 2, " type:" + paramInt + " isSuccess:" + paramBoolean + " isLoadMore:" + this.jdField_a_of_type_Boolean + " size:" + paramObject.stRet.ret);
+      if ((paramObject.isEnd == 1) && (paramObject.vItems.size() == 1)) {
+        return;
+      }
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        localObject = paramObject.toByteArray();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(StickyNoteShopLayout.a);
+        localStringBuilder.append('_');
+        localStringBuilder.append(StickyNoteShopLayout.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout));
+        FileUtils.writeFile((byte[])localObject, localStringBuilder.toString());
+      }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" type:");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" isSuccess:");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(" isLoadMore:");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(" size:");
+      ((StringBuilder)localObject).append(paramObject.stRet.ret);
+      QLog.d("StickyNoteShopLayout", 2, ((StringBuilder)localObject).toString());
       StickyNoteShopLayout.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout, paramObject.strAttachInfo);
       if ((paramObject.stRet.ret == 0) && (paramObject.vItems != null) && (paramObject.vItems.size() > 0))
       {
@@ -36,12 +50,14 @@ class StickyNoteShopLayout$1
       StickyNoteShopLayout.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout, true);
       return;
     }
-    ThreadManagerV2.getUIHandlerV2().post(new StickyNoteShopLayout.1.2(this));
+    if ((!this.jdField_a_of_type_Boolean) && (StickyNoteShopLayout.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout).getItemCount() == 0)) {
+      ThreadManagerV2.getUIHandlerV2().post(new StickyNoteShopLayout.1.2(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout.1
  * JD-Core Version:    0.7.0.1
  */

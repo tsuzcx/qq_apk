@@ -11,12 +11,17 @@ class RouterHandler$6
   public void run()
   {
     Session localSession = (Session)this.this$0.e.get(Long.valueOf(this.a));
-    this.this$0.a(1, localSession, (float)((float)this.b * 1.0D / (float)this.c), 0);
+    RouterHandler localRouterHandler = this.this$0;
+    double d1 = (float)this.b;
+    Double.isNaN(d1);
+    double d2 = (float)this.c;
+    Double.isNaN(d2);
+    localRouterHandler.a(1, localSession, (float)(d1 * 1.0D / d2), 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.RouterHandler.6
  * JD-Core Version:    0.7.0.1
  */

@@ -24,15 +24,16 @@ public final class UnifySearchDiscovery$SubBusinessItem
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 48, 56, 64 }, new String[] { "title", "icon_url", "group_masks", "is_hot_words_list", "jump_url", "has_red_dot", "red_seq", "bzid" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, SubBusinessItem.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 48, 56, 64 }, new String[] { "title", "icon_url", "group_masks", "is_hot_words_list", "jump_url", "has_red_dot", "red_seq", "bzid" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Long.valueOf(0L), localInteger, localByteStringMicro3, localInteger, localInteger, localInteger }, SubBusinessItem.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     pb.unify.search.UnifySearchDiscovery.SubBusinessItem
  * JD-Core Version:    0.7.0.1
  */

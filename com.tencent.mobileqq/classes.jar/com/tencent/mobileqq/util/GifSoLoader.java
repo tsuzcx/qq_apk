@@ -11,13 +11,20 @@ public class GifSoLoader
 {
   public static String a(Context paramContext)
   {
-    if (paramContext == null) {}
-    do
-    {
+    Object localObject = null;
+    if (paramContext == null) {
       return null;
-      paramContext = paramContext.getFilesDir();
-    } while (paramContext == null);
-    return paramContext.getParent() + "/lib/";
+    }
+    File localFile = paramContext.getFilesDir();
+    paramContext = localObject;
+    if (localFile != null)
+    {
+      paramContext = new StringBuilder();
+      paramContext.append(localFile.getParent());
+      paramContext.append("/lib/");
+      paramContext = paramContext.toString();
+    }
+    return paramContext;
   }
   
   public static void a(String paramString)
@@ -33,7 +40,7 @@ public class GifSoLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.GifSoLoader
  * JD-Core Version:    0.7.0.1
  */

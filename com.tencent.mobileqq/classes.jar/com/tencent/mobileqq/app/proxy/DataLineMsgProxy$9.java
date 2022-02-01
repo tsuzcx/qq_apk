@@ -16,17 +16,20 @@ class DataLineMsgProxy$9
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       localContentValues.put("serverPath", this.jdField_a_of_type_JavaLangString);
     }
-    if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length > 0)) {
-      localContentValues.put("md5", this.jdField_a_of_type_ArrayOfByte);
+    Object localObject = this.jdField_a_of_type_ArrayOfByte;
+    if ((localObject != null) && (localObject.length > 0)) {
+      localContentValues.put("md5", (byte[])localObject);
     }
-    if (localDataLineMsgRecord != null) {
-      this.this$0.a(this.this$0.jdField_a_of_type_JavaLangString, localContentValues, "msgId=?", new String[] { String.valueOf(localDataLineMsgRecord.msgId) }, null);
+    if (localDataLineMsgRecord != null)
+    {
+      localObject = this.this$0;
+      ((DataLineMsgProxy)localObject).a(((DataLineMsgProxy)localObject).jdField_a_of_type_JavaLangString, localContentValues, "msgId=?", new String[] { String.valueOf(localDataLineMsgRecord.msgId) }, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.proxy.DataLineMsgProxy.9
  * JD-Core Version:    0.7.0.1
  */

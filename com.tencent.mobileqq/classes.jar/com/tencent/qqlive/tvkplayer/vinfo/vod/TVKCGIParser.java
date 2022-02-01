@@ -64,78 +64,53 @@ public class TVKCGIParser
       parseXMLError();
       return true;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label37:
+      break label37;
+    }
     return false;
   }
   
   public boolean isXML85ErrorCode()
   {
-    boolean bool2 = false;
     NodeList localNodeList1 = this.mDoc.getElementsByTagName("s");
     NodeList localNodeList2 = this.mDoc.getElementsByTagName("em");
     NodeList localNodeList3 = this.mDoc.getElementsByTagName("type");
-    boolean bool1 = bool2;
-    if (localNodeList1.getLength() > 0)
+    if ((localNodeList1.getLength() > 0) && (localNodeList2.getLength() > 0) && (localNodeList3.getLength() > 0) && (localNodeList1.item(0).getFirstChild().getNodeValue().equals("f")))
     {
-      bool1 = bool2;
-      if (localNodeList2.getLength() > 0)
+      int i = TVKUtils.optInt(localNodeList2.item(0).getFirstChild().getNodeValue(), 0);
+      int j = TVKUtils.optInt(localNodeList3.item(0).getFirstChild().getNodeValue(), 0);
+      if ((i == 85) && (j == -3))
       {
-        bool1 = bool2;
-        if (localNodeList3.getLength() > 0)
-        {
-          bool1 = bool2;
-          if (localNodeList1.item(0).getFirstChild().getNodeValue().equals("f"))
-          {
-            int i = TVKUtils.optInt(localNodeList2.item(0).getFirstChild().getNodeValue(), 0);
-            int j = TVKUtils.optInt(localNodeList3.item(0).getFirstChild().getNodeValue(), 0);
-            bool1 = bool2;
-            if (i == 85)
-            {
-              bool1 = bool2;
-              if (j == -3)
-              {
-                localNodeList1 = this.mDoc.getElementsByTagName("curTime");
-                if (localNodeList1.getLength() > 0) {
-                  TVKVideoInfoCheckTime.mServerTime = TVKUtils.optInt(localNodeList1.item(0).getFirstChild().getNodeValue(), 0);
-                }
-                localNodeList1 = this.mDoc.getElementsByTagName("rand");
-                if (localNodeList1.getLength() > 0) {
-                  TVKVideoInfoCheckTime.mRandKey = localNodeList1.item(0).getFirstChild().getNodeValue();
-                }
-                TVKVideoInfoCheckTime.mElapsedRealTime = SystemClock.elapsedRealtime();
-                bool1 = true;
-              }
-            }
-          }
+        localNodeList1 = this.mDoc.getElementsByTagName("curTime");
+        if (localNodeList1.getLength() > 0) {
+          TVKVideoInfoCheckTime.mServerTime = TVKUtils.optInt(localNodeList1.item(0).getFirstChild().getNodeValue(), 0);
         }
+        localNodeList1 = this.mDoc.getElementsByTagName("rand");
+        if (localNodeList1.getLength() > 0) {
+          TVKVideoInfoCheckTime.mRandKey = localNodeList1.item(0).getFirstChild().getNodeValue();
+        }
+        TVKVideoInfoCheckTime.mElapsedRealTime = SystemClock.elapsedRealtime();
+        return true;
       }
     }
-    return bool1;
+    return false;
   }
   
   public boolean isXMLHaveRetryNode()
   {
-    boolean bool2 = false;
     NodeList localNodeList = this.mDoc.getElementsByTagName("retry");
-    boolean bool1 = bool2;
-    if (localNodeList.getLength() > 0)
-    {
-      bool1 = bool2;
-      if (TVKUtils.optInt(localNodeList.item(0).getFirstChild().getNodeValue(), 0) > 0) {
-        bool1 = true;
-      }
-    }
-    return bool1;
+    return (localNodeList.getLength() > 0) && (TVKUtils.optInt(localNodeList.item(0).getFirstChild().getNodeValue(), 0) > 0);
   }
   
   public boolean isXMLSuccess()
   {
-    boolean bool = false;
     NodeList localNodeList = this.mDoc.getElementsByTagName("s");
     if (localNodeList.getLength() > 0) {
-      bool = localNodeList.item(0).getFirstChild().getNodeValue().equals("o");
+      return localNodeList.item(0).getFirstChild().getNodeValue().equals("o");
     }
-    return bool;
+    return false;
   }
   
   public TVKCGIVideoInfo parseVideoInfo()
@@ -153,7 +128,7 @@ public class TVKCGIParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.vod.TVKCGIParser
  * JD-Core Version:    0.7.0.1
  */

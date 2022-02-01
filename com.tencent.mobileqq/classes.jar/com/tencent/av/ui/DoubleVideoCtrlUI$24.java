@@ -14,7 +14,7 @@ class DoubleVideoCtrlUI$24
   {
     if (this.a.jdField_a_of_type_ComTencentAvVideoController != null)
     {
-      this.a.jdField_a_of_type_ComTencentAvVideoController.h(this.a.jdField_a_of_type_ComTencentAvVideoController.a().d);
+      this.a.jdField_a_of_type_ComTencentAvVideoController.h(this.a.jdField_a_of_type_ComTencentAvVideoController.a().c);
       TipsUtil.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1013);
     }
     ReportController.b(null, "CliOper", "", "", "0X8005CFD", "0X8005CFD", 0, 0, "", "", "", "");
@@ -23,7 +23,7 @@ class DoubleVideoCtrlUI$24
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoCtrlUI.24
  * JD-Core Version:    0.7.0.1
  */

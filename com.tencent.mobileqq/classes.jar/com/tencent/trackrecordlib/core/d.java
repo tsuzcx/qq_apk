@@ -14,34 +14,37 @@ public class d
   
   public static boolean a(Message paramMessage)
   {
-    return (c != null) && (c.sendMessage(paramMessage));
+    Handler localHandler = c;
+    return (localHandler != null) && (localHandler.sendMessage(paramMessage));
   }
   
   public static boolean a(Runnable paramRunnable)
   {
-    return (c != null) && (c.post(paramRunnable));
+    Handler localHandler = c;
+    return (localHandler != null) && (localHandler.post(paramRunnable));
   }
   
   @SuppressLint({"HandlerLeak"})
   public void run()
   {
-    if (Looper.myLooper() == null) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        Looper.prepare();
-      }
-      c = new d.1(this);
-      if (i != 0) {
-        Looper.loop();
-      }
-      return;
+    int i;
+    if (Looper.myLooper() == null) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
+      Looper.prepare();
+    }
+    c = new d.1(this);
+    if (i != 0) {
+      Looper.loop();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trackrecordlib.core.d
  * JD-Core Version:    0.7.0.1
  */

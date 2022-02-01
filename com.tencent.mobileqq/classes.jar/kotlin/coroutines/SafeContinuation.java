@@ -58,20 +58,19 @@ public final class SafeContinuation<T>
   {
     Object localObject2 = this.result;
     Object localObject1 = localObject2;
-    if (localObject2 == CoroutineSingletons.UNDECIDED) {
-      if (RESULT.compareAndSet(this, CoroutineSingletons.UNDECIDED, IntrinsicsKt.getCOROUTINE_SUSPENDED())) {
-        localObject2 = IntrinsicsKt.getCOROUTINE_SUSPENDED();
-      }
-    }
-    do
+    if (localObject2 == CoroutineSingletons.UNDECIDED)
     {
-      return localObject2;
-      localObject1 = this.result;
-      if (localObject1 == CoroutineSingletons.RESUMED) {
+      if (RESULT.compareAndSet(this, CoroutineSingletons.UNDECIDED, IntrinsicsKt.getCOROUTINE_SUSPENDED())) {
         return IntrinsicsKt.getCOROUTINE_SUSPENDED();
       }
-      localObject2 = localObject1;
-    } while (!(localObject1 instanceof Result.Failure));
+      localObject1 = this.result;
+    }
+    if (localObject1 == CoroutineSingletons.RESUMED) {
+      return IntrinsicsKt.getCOROUTINE_SUSPENDED();
+    }
+    if (!(localObject1 instanceof Result.Failure)) {
+      return localObject1;
+    }
     throw ((Result.Failure)localObject1).exception;
   }
   
@@ -100,18 +99,25 @@ public final class SafeContinuation<T>
     } while (!RESULT.compareAndSet(this, IntrinsicsKt.getCOROUTINE_SUSPENDED(), CoroutineSingletons.RESUMED));
     this.delegate.resumeWith(paramObject);
     return;
-    throw ((Throwable)new IllegalStateException("Already resumed"));
+    paramObject = (Throwable)new IllegalStateException("Already resumed");
+    for (;;)
+    {
+      throw paramObject;
+    }
   }
   
   @NotNull
   public String toString()
   {
-    return "SafeContinuation for " + this.delegate;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SafeContinuation for ");
+    localStringBuilder.append(this.delegate);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.coroutines.SafeContinuation
  * JD-Core Version:    0.7.0.1
  */

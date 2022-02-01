@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceHolder;
+import com.tencent.qqlive.module.videoreport.dtreport.audio.playback.ReportMediaPlayer;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.report.ReportUtil;
 import com.tencent.ttpic.openapi.offlineset.AEOfflineConfig;
@@ -57,19 +58,20 @@ public class PagShelfPlayer
   
   public PagShelfPlayer()
   {
-    if (!PagUtil.isSupportPagForVideo())
+    if (PagUtil.isSupportPagForVideo())
     {
-      Log.i("PagShelfPlayer", "当前系统不支持PAG。");
-      TTPTLogger.e("PagShelfPlayer", "当前系统不支持PAG。");
-      throw new PagNotSupportSystemException("PagShelfPlayer");
+      this.mPagRender = new PAGRenderer();
+      if (AEOfflineConfig.isNeedSoftDecode()) {
+        PagUtil.useSoftDecode();
+      }
+      this.mPlayTask = new PagShelfPlayer.PagPlayTimerTask(this, null);
+      this.mHandler = new Handler();
+      this.mRenderRunable = new PagShelfPlayer.RenderRunable(this, null);
+      return;
     }
-    this.mPagRender = new PAGRenderer();
-    if (AEOfflineConfig.isNeedSoftDecode()) {
-      PagUtil.useSoftDecode();
-    }
-    this.mPlayTask = new PagShelfPlayer.PagPlayTimerTask(this, null);
-    this.mHandler = new Handler();
-    this.mRenderRunable = new PagShelfPlayer.RenderRunable(this, null);
+    Log.i("PagShelfPlayer", "当前系统不支持PAG。");
+    TTPTLogger.e("PagShelfPlayer", "当前系统不支持PAG。");
+    throw new PagNotSupportSystemException("PagShelfPlayer");
   }
   
   private void setPagfile(PAGFile paramPAGFile)
@@ -77,36 +79,41 @@ public class PagShelfPlayer
     if (paramPAGFile == null)
     {
       TTPTLogger.e("PagShelfPlayer", "pagfile is null.");
-      if (this.mVideoShelfListener != null) {
-        this.mVideoShelfListener.onError(-1, "pagfile is null", null);
+      paramPAGFile = this.mVideoShelfListener;
+      if (paramPAGFile != null) {
+        paramPAGFile.onError(-1, "pagfile is null", null);
       }
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (paramPAGFile.tagLevel() <= PAGFile.MaxSupportedTagLevel()) {
-          break;
-        }
-      } while (this.mVideoShelfListener == null);
-      this.mVideoShelfListener.onError(-3, "pagsdk version is low", null);
       return;
-      this.mPagFile = paramPAGFile;
-      if (this.mVideoShelfListener != null) {
-        this.mVideoShelfListener.onChangVideoSize(this.mPagFile.width(), this.mPagFile.height());
+    }
+    if (paramPAGFile.tagLevel() > PAGFile.MaxSupportedTagLevel())
+    {
+      paramPAGFile = this.mVideoShelfListener;
+      if (paramPAGFile != null) {
+        paramPAGFile.onError(-3, "pagsdk version is low", null);
       }
-      this.mDuration = paramPAGFile.duration();
-      this.mFrameProgressGap = (40000.0D / this.mDuration);
-      if (this.mPlayTask != null) {
-        this.mPlayTask.reset();
-      }
-      this.mPagRender.setFile(paramPAGFile);
-    } while (!AEOfflineConfig.isNeedScale());
-    Log.i("PagShelfPlayer", "使用低尺度的PAG文件进行预览。");
-    TTPTLogger.i("PagShelfPlayer", "使用低尺度的PAG文件进行预览。");
-    this.mPagRender.setMaxFrameRate(-1.0F);
-    this.mPagRender.setCacheScale(AEOfflineConfig.getPagPlayScale());
+      return;
+    }
+    this.mPagFile = paramPAGFile;
+    Object localObject = this.mVideoShelfListener;
+    if (localObject != null) {
+      ((IVideoShelfPlayerListener)localObject).onChangVideoSize(this.mPagFile.width(), this.mPagFile.height());
+    }
+    this.mDuration = paramPAGFile.duration();
+    double d = this.mDuration;
+    Double.isNaN(d);
+    this.mFrameProgressGap = (40000.0D / d);
+    localObject = this.mPlayTask;
+    if (localObject != null) {
+      ((PagShelfPlayer.PagPlayTimerTask)localObject).reset();
+    }
+    this.mPagRender.setFile(paramPAGFile);
+    if (AEOfflineConfig.isNeedScale())
+    {
+      Log.i("PagShelfPlayer", "使用低尺度的PAG文件进行预览。");
+      TTPTLogger.i("PagShelfPlayer", "使用低尺度的PAG文件进行预览。");
+      this.mPagRender.setMaxFrameRate(-1.0F);
+      this.mPagRender.setCacheScale(AEOfflineConfig.getPagPlayScale());
+    }
   }
   
   private void setTimeCount()
@@ -114,8 +121,9 @@ public class PagShelfPlayer
     long l = System.currentTimeMillis();
     if (l - this.mTime > 1000L)
     {
-      if (this.mVideoShelfListener != null) {
-        this.mVideoShelfListener.onUpdateRate(this.mFrameCount);
+      IVideoShelfPlayerListener localIVideoShelfPlayerListener = this.mVideoShelfListener;
+      if (localIVideoShelfPlayerListener != null) {
+        localIVideoShelfPlayerListener.onUpdateRate(this.mFrameCount);
       }
       this.mTime = l;
       this.mFrameCount = 0;
@@ -131,7 +139,10 @@ public class PagShelfPlayer
   
   public int getCurrentPosition()
   {
-    return (int)(this.mPagRender.getProgress() * this.mDuration / 1000.0D);
+    double d1 = this.mPagRender.getProgress();
+    double d2 = this.mDuration;
+    Double.isNaN(d2);
+    return (int)(d1 * d2 / 1000.0D);
   }
   
   public long getDuration()
@@ -146,16 +157,18 @@ public class PagShelfPlayer
   
   public int getVideoHeight()
   {
-    if (this.mPagFile != null) {
-      return this.mPagFile.height();
+    PAGFile localPAGFile = this.mPagFile;
+    if (localPAGFile != null) {
+      return localPAGFile.height();
     }
     return 0;
   }
   
   public int getVideoWidth()
   {
-    if (this.mPagFile != null) {
-      return this.mPagFile.width();
+    PAGFile localPAGFile = this.mPagFile;
+    if (localPAGFile != null) {
+      return localPAGFile.width();
     }
     return 0;
   }
@@ -169,98 +182,115 @@ public class PagShelfPlayer
   {
     TTPTLogger.i("PagShelfPlayer", "pause");
     this.mIsPlaying = false;
-    if (this.mPlayTask != null) {
-      this.mPlayTask.pause();
+    Object localObject = this.mPlayTask;
+    if (localObject != null) {
+      ((PagShelfPlayer.PagPlayTimerTask)localObject).pause();
     }
-    if ((this.mAudioPlayer != null) && (!this.isStoped)) {}
-    try
-    {
-      this.mAudioPlayer.pause();
-      return;
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      Log.e("PagShelfPlayer", "audioplayer pause has IllegalStateException:" + localIllegalStateException.getMessage());
+    localObject = this.mAudioPlayer;
+    if ((localObject != null) && (!this.isStoped)) {
+      try
+      {
+        ((MediaPlayer)localObject).pause();
+        return;
+      }
+      catch (IllegalStateException localIllegalStateException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("audioplayer pause has IllegalStateException:");
+        localStringBuilder.append(localIllegalStateException.getMessage());
+        Log.e("PagShelfPlayer", localStringBuilder.toString());
+      }
     }
   }
   
   public void prepare()
   {
-    if (this.mAudioPlayer != null) {}
-    try
+    MediaPlayer localMediaPlayer = this.mAudioPlayer;
+    if (localMediaPlayer != null)
     {
-      this.mAudioPlayer.prepare();
-      this.isStoped = false;
-      if (this.mVideoShelfListener != null) {
-        this.mVideoShelfListener.onPrepared(this);
-      }
-      TTPTLogger.i("PagShelfPlayer", "prepare.");
-      return;
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      for (;;)
+      try
       {
-        TTPTLogger.e("PagShelfPlayer", "audioplayer prepare has IOException|IllegalStateException:" + localIllegalStateException.getMessage());
+        localMediaPlayer.prepare();
+        this.isStoped = false;
       }
+      catch (IllegalStateException localIllegalStateException) {}catch (IOException localIOException) {}
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("audioplayer prepare has IOException|IllegalStateException:");
+      localStringBuilder.append(localIOException.getMessage());
+      TTPTLogger.e("PagShelfPlayer", localStringBuilder.toString());
     }
-    catch (IOException localIOException)
-    {
-      label46:
-      break label46;
+    IVideoShelfPlayerListener localIVideoShelfPlayerListener = this.mVideoShelfListener;
+    if (localIVideoShelfPlayerListener != null) {
+      localIVideoShelfPlayerListener.onPrepared(this);
     }
+    TTPTLogger.i("PagShelfPlayer", "prepare.");
   }
   
   public void reset()
   {
     TTPTLogger.i("PagShelfPlayer", "reset");
-    if (this.mPlayTask != null) {
-      this.mPlayTask.reset();
+    Object localObject = this.mPlayTask;
+    if (localObject != null) {
+      ((PagShelfPlayer.PagPlayTimerTask)localObject).reset();
     }
     this.mPagRender.setProgress(0.0D);
     this.mIsPlaying = false;
-    if (this.mPagSurface != null) {
-      this.mPagSurface.freeCache();
+    localObject = this.mPagSurface;
+    if (localObject != null) {
+      ((PAGSurface)localObject).freeCache();
     }
-    if (this.mAudioPlayer != null) {
-      this.mAudioPlayer.reset();
+    localObject = this.mAudioPlayer;
+    if (localObject != null) {
+      ((MediaPlayer)localObject).reset();
     }
   }
   
   public void seekTo(int paramInt)
   {
-    TTPTLogger.i("PagShelfPlayer", "seekto:" + paramInt * 1000.0D / this.mDuration);
-    this.mPagRender.setProgress(paramInt * 1000.0D / this.mDuration);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("seekto:");
+    double d1 = paramInt;
+    Double.isNaN(d1);
+    d1 *= 1000.0D;
+    double d2 = this.mDuration;
+    Double.isNaN(d2);
+    ((StringBuilder)localObject).append(d1 / d2);
+    TTPTLogger.i("PagShelfPlayer", ((StringBuilder)localObject).toString());
+    localObject = this.mPagRender;
+    d2 = this.mDuration;
+    Double.isNaN(d2);
+    ((PAGRenderer)localObject).setProgress(d1 / d2);
     this.mPagRender.flush();
-    if (this.mAudioPlayer != null) {}
-    try
+    localObject = this.mAudioPlayer;
+    if (localObject != null)
     {
-      if (this.isStoped)
+      try
       {
-        this.mAudioPlayer.prepare();
-        this.isStoped = false;
+        if (this.isStoped)
+        {
+          ((MediaPlayer)localObject).prepare();
+          this.isStoped = false;
+        }
+        this.mAudioPlayer.seekTo(paramInt);
+        return;
       }
-      this.mAudioPlayer.seekTo(paramInt);
-      return;
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      TTPTLogger.e("PagShelfPlayer", "audioplayer seekto has IllegalStateException:" + localIllegalStateException.getMessage());
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      label99:
-      break label99;
+      catch (IllegalStateException localIllegalStateException) {}catch (IOException localIOException) {}
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("audioplayer seekto has IllegalStateException:");
+      localStringBuilder.append(localIOException.getMessage());
+      TTPTLogger.e("PagShelfPlayer", localStringBuilder.toString());
     }
   }
   
   public void setDataSource(AssetManager paramAssetManager, String paramString)
   {
-    if ((paramAssetManager == null) || (paramString == null)) {
-      return;
+    if (paramAssetManager != null)
+    {
+      if (paramString == null) {
+        return;
+      }
+      setPagfile(PAGFile.Load(paramAssetManager, paramString));
     }
-    setPagfile(PAGFile.Load(paramAssetManager, paramString));
   }
   
   public void setDataSource(String paramString)
@@ -268,153 +298,105 @@ public class PagShelfPlayer
     if (paramString == null) {
       return;
     }
-    TTPTLogger.i("PagShelfPlayer", "pag path:" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pag path:");
+    localStringBuilder.append(paramString);
+    TTPTLogger.i("PagShelfPlayer", localStringBuilder.toString());
     setPagfile(PAGFile.Load(paramString));
   }
   
   public void setDisplay(SurfaceHolder paramSurfaceHolder)
   {
-    if (paramSurfaceHolder == null) {}
-    for (paramSurfaceHolder = null;; paramSurfaceHolder = PAGSurface.FromSurface(paramSurfaceHolder.getSurface()))
-    {
-      this.mPagSurface = paramSurfaceHolder;
-      this.mPagRender.setSurface(this.mPagSurface);
-      return;
+    if (paramSurfaceHolder == null) {
+      paramSurfaceHolder = null;
+    } else {
+      paramSurfaceHolder = PAGSurface.FromSurface(paramSurfaceHolder.getSurface());
     }
+    this.mPagSurface = paramSurfaceHolder;
+    this.mPagRender.setSurface(this.mPagSurface);
   }
   
   public void setLooping(boolean paramBoolean)
   {
-    PagShelfPlayer.PagPlayTimerTask localPagPlayTimerTask = this.mPlayTask;
-    if (paramBoolean) {}
-    for (int i = -1;; i = 1)
-    {
-      localPagPlayTimerTask.setReaptTime(i);
-      if (this.mAudioPlayer != null) {
-        this.mAudioPlayer.setLooping(paramBoolean);
-      }
-      return;
+    Object localObject = this.mPlayTask;
+    int i;
+    if (paramBoolean) {
+      i = -1;
+    } else {
+      i = 1;
+    }
+    ((PagShelfPlayer.PagPlayTimerTask)localObject).setReaptTime(i);
+    localObject = this.mAudioPlayer;
+    if (localObject != null) {
+      ((MediaPlayer)localObject).setLooping(paramBoolean);
     }
   }
   
   public void setParam(String paramString, Object... paramVarArgs)
   {
+    int i = paramString.hashCode();
     int k = 0;
     int j = 0;
-    int i;
-    switch (paramString.hashCode())
+    switch (i)
     {
     default: 
-      i = -1;
-      label54:
-      switch (i)
-      {
+      break;
+    case 1991330946: 
+      if (paramString.equals("pagShelfPlayerAudioFilePath")) {
+        i = 0;
+      }
+      break;
+    case 1707690663: 
+      if (paramString.equals("pagImgReplace")) {
+        i = 1;
+      }
+      break;
+    case -716976004: 
+      if (paramString.equals("imgGroup")) {
+        i = 3;
+      }
+      break;
+    case -1145231791: 
+      if (paramString.equals("pagTextReplace")) {
+        i = 2;
       }
       break;
     }
-    for (;;)
+    i = -1;
+    paramString = null;
+    Object localObject;
+    if (i != 0)
     {
-      return;
-      if (!paramString.equals("pagShelfPlayerAudioFilePath")) {
-        break;
-      }
-      i = 0;
-      break label54;
-      if (!paramString.equals("pagImgReplace")) {
-        break;
-      }
-      i = 1;
-      break label54;
-      if (!paramString.equals("pagTextReplace")) {
-        break;
-      }
-      i = 2;
-      break label54;
-      if (!paramString.equals("imgGroup")) {
-        break;
-      }
-      i = 3;
-      break label54;
-      paramString = paramVarArgs[0];
-      if ((paramString instanceof Boolean))
+      if (i != 1)
       {
-        for (;;)
+        if (i != 2)
         {
-          try
+          if (i != 3) {
+            return;
+          }
+          if (paramVarArgs != null)
           {
-            if (((Boolean)paramString).booleanValue())
-            {
-              paramString = paramVarArgs[1];
-              paramVarArgs = paramVarArgs[2];
-              if (((paramString instanceof AssetManager)) && ((paramVarArgs instanceof String)))
-              {
-                paramString = ((AssetManager)paramString).openFd((String)paramVarArgs);
-                this.mAudioPlayer = new MediaPlayer();
-                this.mAudioPlayer.setDataSource(paramString.getFileDescriptor(), paramString.getStartOffset(), paramString.getLength());
-                TTPTLogger.i("PagShelfPlayer", "audio path(asset):" + (String)paramVarArgs);
-              }
-              if (this.mAudioPlayer == null) {
-                break;
-              }
-              this.mAudioPlayer.setOnCompletionListener(new PagShelfPlayer.1(this));
-              this.mAudioPlayer.setOnErrorListener(new PagShelfPlayer.2(this));
+            if (paramVarArgs.length == 0) {
               return;
             }
-          }
-          catch (Exception paramString)
-          {
-            paramString.printStackTrace();
-            if (this.mVideoShelfListener != null) {
-              this.mVideoShelfListener.onError(-1, "audio file is null", null);
-            }
-            ReportUtil.report("[" + PagShelfPlayer.class.getSimpleName() + "] mVideoPlayer.setDataSource , error msg = " + paramString.toString());
-            return;
-          }
-          paramString = paramVarArgs[1];
-          if ((paramString instanceof String))
-          {
-            this.mAudioPlayer = new MediaPlayer();
-            this.mAudioPlayer.setDataSource((String)paramString);
-            TTPTLogger.i("PagShelfPlayer", "audio path:" + (String)paramString);
-          }
-        }
-        if ((paramVarArgs == null) || (paramVarArgs.length < 2))
-        {
-          TTPTLogger.e("PagShelfPlayer", "传入PAG的替换图像参数有误");
-          return;
-        }
-        Object localObject = paramVarArgs[0];
-        if ((localObject instanceof int[]))
-        {
-          paramString = null;
-          if ((paramVarArgs[1] instanceof Bitmap)) {
-            paramString = (Bitmap)paramVarArgs[1];
-          }
-          while (paramString == null)
-          {
-            TTPTLogger.e("PagShelfPlayer", "传入PAG的替换图像为空。");
-            return;
-            if ((paramVarArgs[1] instanceof String)) {
-              paramString = BitmapUtils.decodeSampledBitmapFromFile((String)paramVarArgs[1], 1080, 1080);
+            paramString = paramVarArgs[0];
+            if ((paramString instanceof HashMap))
+            {
+              paramString = (HashMap)paramString;
+              if (paramString == null) {
+                return;
+              }
+              paramString = paramString.entrySet().iterator();
+              while (paramString.hasNext())
+              {
+                paramVarArgs = (Map.Entry)paramString.next();
+                setParam("pagImgReplace", new Object[] { paramVarArgs.getValue(), paramVarArgs.getKey() });
+              }
             }
           }
-          paramString = PAGImage.FromBitmap(paramString);
-          paramString.setScaleMode(3);
-          paramVarArgs = (int[])localObject;
-          k = paramVarArgs.length;
-          i = j;
-          while (i < k)
-          {
-            j = paramVarArgs[i];
-            this.mPagRender.replaceImage(j, paramString);
-            i += 1;
-          }
-          continue;
-          if ((paramVarArgs == null) || (paramVarArgs.length < 2))
-          {
-            TTPTLogger.e("PagShelfPlayer", "传入PAG的替换文本参数有误");
-            return;
-          }
+        }
+        else if ((paramVarArgs != null) && (paramVarArgs.length >= 2))
+        {
           paramString = paramVarArgs[0];
           if ((paramString instanceof Integer[]))
           {
@@ -426,48 +408,119 @@ public class PagShelfPlayer
             if (((paramVarArgs[1] instanceof String)) && (this.mPagFile != null) && (this.mPagRender != null))
             {
               paramString = (Integer[])paramString;
-              j = paramString.length;
-              i = k;
-              for (;;)
+              k = paramString.length;
+              i = j;
+              while (i < k)
               {
-                if (i >= j) {
-                  break label732;
+                j = paramString[i].intValue();
+                if (j >= this.mPagFile.numTexts()) {
+                  return;
                 }
-                k = paramString[i].intValue();
-                if (k >= this.mPagFile.numTexts()) {
-                  break;
-                }
-                localObject = this.mPagFile.getTextData(k);
+                localObject = this.mPagFile.getTextData(j);
                 if (localObject == null)
                 {
                   TTPTLogger.e("PagShelfPlayer", "文字样式在PAG文件中未找到，无法进行设置文字");
                   return;
                 }
                 ((PAGText)localObject).text = ((String)paramVarArgs[1]);
-                this.mPagRender.setTextData(k, (PAGText)localObject);
+                this.mPagRender.setTextData(j, (PAGText)localObject);
                 i += 1;
-              }
-              label732:
-              continue;
-              if ((paramVarArgs != null) && (paramVarArgs.length != 0))
-              {
-                paramString = paramVarArgs[0];
-                if ((paramString instanceof HashMap))
-                {
-                  paramString = (HashMap)paramString;
-                  if (paramString != null)
-                  {
-                    paramString = paramString.entrySet().iterator();
-                    while (paramString.hasNext())
-                    {
-                      paramVarArgs = (Map.Entry)paramString.next();
-                      setParam("pagImgReplace", new Object[] { paramVarArgs.getValue(), paramVarArgs.getKey() });
-                    }
-                  }
-                }
               }
             }
           }
+        }
+        else
+        {
+          TTPTLogger.e("PagShelfPlayer", "传入PAG的替换文本参数有误");
+        }
+      }
+      else if ((paramVarArgs != null) && (paramVarArgs.length >= 2))
+      {
+        localObject = paramVarArgs[0];
+        if ((localObject instanceof int[]))
+        {
+          if ((paramVarArgs[1] instanceof Bitmap)) {
+            paramString = (Bitmap)paramVarArgs[1];
+          } else if ((paramVarArgs[1] instanceof String)) {
+            paramString = BitmapUtils.decodeSampledBitmapFromFile((String)paramVarArgs[1], 1080, 1080);
+          }
+          if (paramString == null)
+          {
+            TTPTLogger.e("PagShelfPlayer", "传入PAG的替换图像为空。");
+            return;
+          }
+          paramString = PAGImage.FromBitmap(paramString);
+          paramString.setScaleMode(3);
+          paramVarArgs = (int[])localObject;
+          j = paramVarArgs.length;
+          i = k;
+          while (i < j)
+          {
+            k = paramVarArgs[i];
+            this.mPagRender.replaceImage(k, paramString);
+            i += 1;
+          }
+        }
+      }
+      else
+      {
+        TTPTLogger.e("PagShelfPlayer", "传入PAG的替换图像参数有误");
+      }
+    }
+    else
+    {
+      paramString = paramVarArgs[0];
+      if ((paramString instanceof Boolean)) {
+        try
+        {
+          if (((Boolean)paramString).booleanValue())
+          {
+            localObject = paramVarArgs[1];
+            paramString = paramVarArgs[2];
+            if (((localObject instanceof AssetManager)) && ((paramString instanceof String)))
+            {
+              paramVarArgs = ((AssetManager)localObject).openFd((String)paramString);
+              this.mAudioPlayer = new ReportMediaPlayer();
+              this.mAudioPlayer.setDataSource(paramVarArgs.getFileDescriptor(), paramVarArgs.getStartOffset(), paramVarArgs.getLength());
+              paramVarArgs = new StringBuilder();
+              paramVarArgs.append("audio path(asset):");
+              paramVarArgs.append((String)paramString);
+              TTPTLogger.i("PagShelfPlayer", paramVarArgs.toString());
+            }
+          }
+          else
+          {
+            paramString = paramVarArgs[1];
+            if ((paramString instanceof String))
+            {
+              this.mAudioPlayer = new ReportMediaPlayer();
+              this.mAudioPlayer.setDataSource((String)paramString);
+              paramVarArgs = new StringBuilder();
+              paramVarArgs.append("audio path:");
+              paramVarArgs.append((String)paramString);
+              TTPTLogger.i("PagShelfPlayer", paramVarArgs.toString());
+            }
+          }
+          if (this.mAudioPlayer != null)
+          {
+            this.mAudioPlayer.setOnCompletionListener(new PagShelfPlayer.1(this));
+            this.mAudioPlayer.setOnErrorListener(new PagShelfPlayer.2(this));
+            return;
+          }
+        }
+        catch (Exception paramString)
+        {
+          paramString.printStackTrace();
+          paramVarArgs = this.mVideoShelfListener;
+          if (paramVarArgs != null) {
+            paramVarArgs.onError(-1, "audio file is null", null);
+          }
+          paramVarArgs = new StringBuilder();
+          paramVarArgs.append("[");
+          paramVarArgs.append(PagShelfPlayer.class.getSimpleName());
+          paramVarArgs.append("] mVideoPlayer.setDataSource , error msg = ");
+          paramVarArgs.append(paramString.toString());
+          ReportUtil.report(paramVarArgs.toString());
         }
       }
     }
@@ -476,13 +529,13 @@ public class PagShelfPlayer
   public void setSurface(Surface paramSurface)
   {
     TTPTLogger.i("PagShelfPlayer", "setsurface.");
-    if (paramSurface == null) {}
-    for (paramSurface = null;; paramSurface = PAGSurface.FromSurface(paramSurface))
-    {
-      this.mPagSurface = paramSurface;
-      this.mPagRender.setSurface(this.mPagSurface);
-      return;
+    if (paramSurface == null) {
+      paramSurface = null;
+    } else {
+      paramSurface = PAGSurface.FromSurface(paramSurface);
     }
+    this.mPagSurface = paramSurface;
+    this.mPagRender.setSurface(this.mPagSurface);
   }
   
   public void setVideoShelfPlayerListener(IVideoShelfPlayerListener paramIVideoShelfPlayerListener)
@@ -492,10 +545,14 @@ public class PagShelfPlayer
   
   public void start()
   {
-    double d = this.mPagRender.getProgress();
-    TTPTLogger.i("PagShelfPlayer", "start:" + d);
-    if (this.mPlayTask != null) {
-      this.mPlayTask.resume();
+    double d1 = this.mPagRender.getProgress();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("start:");
+    ((StringBuilder)localObject).append(d1);
+    TTPTLogger.i("PagShelfPlayer", ((StringBuilder)localObject).toString());
+    localObject = this.mPlayTask;
+    if (localObject != null) {
+      ((PagShelfPlayer.PagPlayTimerTask)localObject).resume();
     }
     if (this.mTimer == null)
     {
@@ -503,32 +560,42 @@ public class PagShelfPlayer
       this.mTimer.schedule(this.mPlayTask, 0L, 40L);
     }
     this.mIsPlaying = true;
-    if (this.mAudioPlayer != null) {}
-    try
+    localObject = this.mAudioPlayer;
+    if (localObject != null)
     {
-      if (this.isStoped)
+      try
       {
-        this.mAudioPlayer.prepare();
-        this.isStoped = false;
+        if (this.isStoped)
+        {
+          ((MediaPlayer)localObject).prepare();
+          this.isStoped = false;
+        }
+        if (this.mPlayTask.isLooping()) {
+          this.mAudioPlayer.setLooping(this.mPlayTask.isLooping());
+        }
+        localObject = this.mAudioPlayer;
+        long l = this.mDuration;
+        double d2 = l;
+        Double.isNaN(d2);
+        int i = (int)(d2 * d1 / 1000.0D);
+        ((MediaPlayer)localObject).seekTo(i);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("start:");
+        l = this.mDuration;
+        d2 = l;
+        Double.isNaN(d2);
+        i = (int)(d2 * d1 / 1000.0D);
+        ((StringBuilder)localObject).append(i);
+        TTPTLogger.i("PagShelfPlayer", ((StringBuilder)localObject).toString());
+        this.mAudioPlayer.start();
+        this.mIsAudioPlaying = true;
+        return;
       }
-      if (this.mPlayTask.isLooping()) {
-        this.mAudioPlayer.setLooping(this.mPlayTask.isLooping());
-      }
-      this.mAudioPlayer.seekTo((int)(this.mDuration * d / 1000.0D));
-      TTPTLogger.i("PagShelfPlayer", "start:" + (int)(this.mDuration * d / 1000.0D));
-      this.mAudioPlayer.start();
-      this.mIsAudioPlaying = true;
-      return;
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      TTPTLogger.e("PagShelfPlayer", "audioplayer start has IllegalStateException:" + localIllegalStateException.getMessage());
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      label204:
-      break label204;
+      catch (IllegalStateException localIllegalStateException) {}catch (IOException localIOException) {}
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("audioplayer start has IllegalStateException:");
+      localStringBuilder.append(localIOException.getMessage());
+      TTPTLogger.e("PagShelfPlayer", localStringBuilder.toString());
     }
   }
   
@@ -536,47 +603,56 @@ public class PagShelfPlayer
   {
     TTPTLogger.i("PagShelfPlayer", "stop");
     this.mIsPlaying = false;
-    if (this.mPagSurface != null) {
-      this.mPagSurface.freeCache();
+    Object localObject = this.mPagSurface;
+    if (localObject != null) {
+      ((PAGSurface)localObject).freeCache();
     }
     this.mPagRender.setSurface(null);
-    if (this.mTimer != null)
+    localObject = this.mTimer;
+    if (localObject != null)
     {
-      this.mTimer.cancel();
+      ((Timer)localObject).cancel();
       this.mTimer = null;
     }
-    if (this.mPlayTask != null)
+    localObject = this.mPlayTask;
+    if (localObject != null)
     {
-      this.mPlayTask.pause();
+      ((PagShelfPlayer.PagPlayTimerTask)localObject).pause();
       this.mPlayTask.cancel();
     }
-    if (this.mAudioPlayer != null) {}
-    try
-    {
-      this.mIsAudioPlaying = false;
-      this.mAudioPlayer.stop();
-      this.isStoped = true;
-      this.mAudioPlayer.release();
-      return;
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      Log.e("PagShelfPlayer", "audioplayer stop has IllegalStateException:" + localIllegalStateException.getMessage());
+    localObject = this.mAudioPlayer;
+    if (localObject != null) {
+      try
+      {
+        this.mIsAudioPlaying = false;
+        ((MediaPlayer)localObject).stop();
+        this.isStoped = true;
+        this.mAudioPlayer.release();
+        return;
+      }
+      catch (IllegalStateException localIllegalStateException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("audioplayer stop has IllegalStateException:");
+        localStringBuilder.append(localIllegalStateException.getMessage());
+        Log.e("PagShelfPlayer", localStringBuilder.toString());
+      }
     }
   }
   
   public void surfaceUpdateSize()
   {
-    if (this.mPagSurface != null)
+    PAGSurface localPAGSurface = this.mPagSurface;
+    if (localPAGSurface != null)
     {
-      this.mPagSurface.updateSize();
+      localPAGSurface.updateSize();
       this.mPagRender.flush();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.videoshelf.model.player.PagShelfPlayer
  * JD-Core Version:    0.7.0.1
  */

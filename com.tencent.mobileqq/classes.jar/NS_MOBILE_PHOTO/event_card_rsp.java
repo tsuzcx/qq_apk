@@ -13,6 +13,7 @@ public final class event_card_rsp
   static Map<String, String> cache_ext;
   static ArrayList<event_group> cache_groups = new ArrayList();
   public Map<String, String> ext = null;
+  public boolean gray_status = false;
   public ArrayList<event_group> groups = null;
   public int reset = 0;
   public String start_cardid = "";
@@ -28,13 +29,14 @@ public final class event_card_rsp
   
   public event_card_rsp() {}
   
-  public event_card_rsp(long paramLong, ArrayList<event_group> paramArrayList, String paramString, Map<String, String> paramMap, int paramInt)
+  public event_card_rsp(long paramLong, ArrayList<event_group> paramArrayList, String paramString, Map<String, String> paramMap, int paramInt, boolean paramBoolean)
   {
     this.uin = paramLong;
     this.groups = paramArrayList;
     this.start_cardid = paramString;
     this.ext = paramMap;
     this.reset = paramInt;
+    this.gray_status = paramBoolean;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -44,24 +46,28 @@ public final class event_card_rsp
     this.start_cardid = paramJceInputStream.readString(2, false);
     this.ext = ((Map)paramJceInputStream.read(cache_ext, 3, false));
     this.reset = paramJceInputStream.read(this.reset, 4, false);
+    this.gray_status = paramJceInputStream.read(this.gray_status, 5, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.groups, 1);
-    if (this.start_cardid != null) {
-      paramJceOutputStream.write(this.start_cardid, 2);
+    Object localObject = this.start_cardid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.ext != null) {
-      paramJceOutputStream.write(this.ext, 3);
+    localObject = this.ext;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
     paramJceOutputStream.write(this.reset, 4);
+    paramJceOutputStream.write(this.gray_status, 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.event_card_rsp
  * JD-Core Version:    0.7.0.1
  */

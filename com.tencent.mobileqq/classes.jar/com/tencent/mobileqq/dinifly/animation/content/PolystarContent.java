@@ -51,281 +51,285 @@ public class PolystarContent
     this.rotationAnimation = paramPolystarShape.getRotation().createAnimation();
     this.outerRadiusAnimation = paramPolystarShape.getOuterRadius().createAnimation();
     this.outerRoundednessAnimation = paramPolystarShape.getOuterRoundedness().createAnimation();
-    if (this.type == PolystarShape.Type.STAR) {
-      this.innerRadiusAnimation = paramPolystarShape.getInnerRadius().createAnimation();
-    }
-    for (this.innerRoundednessAnimation = paramPolystarShape.getInnerRoundedness().createAnimation();; this.innerRoundednessAnimation = null)
+    if (this.type == PolystarShape.Type.STAR)
     {
-      paramBaseLayer.addAnimation(this.pointsAnimation);
-      paramBaseLayer.addAnimation(this.positionAnimation);
-      paramBaseLayer.addAnimation(this.rotationAnimation);
-      paramBaseLayer.addAnimation(this.outerRadiusAnimation);
-      paramBaseLayer.addAnimation(this.outerRoundednessAnimation);
-      if (this.type == PolystarShape.Type.STAR)
-      {
-        paramBaseLayer.addAnimation(this.innerRadiusAnimation);
-        paramBaseLayer.addAnimation(this.innerRoundednessAnimation);
-      }
-      this.pointsAnimation.addUpdateListener(this);
-      this.positionAnimation.addUpdateListener(this);
-      this.rotationAnimation.addUpdateListener(this);
-      this.outerRadiusAnimation.addUpdateListener(this);
-      this.outerRoundednessAnimation.addUpdateListener(this);
-      if (this.type == PolystarShape.Type.STAR)
-      {
-        this.innerRadiusAnimation.addUpdateListener(this);
-        this.innerRoundednessAnimation.addUpdateListener(this);
-      }
-      return;
+      this.innerRadiusAnimation = paramPolystarShape.getInnerRadius().createAnimation();
+      this.innerRoundednessAnimation = paramPolystarShape.getInnerRoundedness().createAnimation();
+    }
+    else
+    {
       this.innerRadiusAnimation = null;
+      this.innerRoundednessAnimation = null;
+    }
+    paramBaseLayer.addAnimation(this.pointsAnimation);
+    paramBaseLayer.addAnimation(this.positionAnimation);
+    paramBaseLayer.addAnimation(this.rotationAnimation);
+    paramBaseLayer.addAnimation(this.outerRadiusAnimation);
+    paramBaseLayer.addAnimation(this.outerRoundednessAnimation);
+    if (this.type == PolystarShape.Type.STAR)
+    {
+      paramBaseLayer.addAnimation(this.innerRadiusAnimation);
+      paramBaseLayer.addAnimation(this.innerRoundednessAnimation);
+    }
+    this.pointsAnimation.addUpdateListener(this);
+    this.positionAnimation.addUpdateListener(this);
+    this.rotationAnimation.addUpdateListener(this);
+    this.outerRadiusAnimation.addUpdateListener(this);
+    this.outerRoundednessAnimation.addUpdateListener(this);
+    if (this.type == PolystarShape.Type.STAR)
+    {
+      this.innerRadiusAnimation.addUpdateListener(this);
+      this.innerRoundednessAnimation.addUpdateListener(this);
     }
   }
   
   private void createPolygonPath()
   {
     int i = (int)Math.floor(((Float)this.pointsAnimation.getValue()).floatValue());
-    double d1;
-    float f5;
-    float f1;
-    float f2;
-    double d3;
-    label134:
-    float f4;
-    float f3;
-    if (this.rotationAnimation == null)
-    {
+    Object localObject = this.rotationAnimation;
+    if (localObject == null) {
       d1 = 0.0D;
-      d1 = Math.toRadians(d1 - 90.0D);
-      f5 = (float)(6.283185307179586D / i);
-      float f6 = ((Float)this.outerRoundednessAnimation.getValue()).floatValue() / 100.0F;
-      float f7 = ((Float)this.outerRadiusAnimation.getValue()).floatValue();
-      f1 = (float)(f7 * Math.cos(d1));
-      f2 = (float)(f7 * Math.sin(d1));
-      this.path.moveTo(f1, f2);
-      d3 = f5;
-      double d2 = Math.ceil(i);
-      i = 0;
-      d1 += d3;
-      if (i >= d2) {
-        break label365;
-      }
-      f4 = (float)(f7 * Math.cos(d1));
-      f3 = (float)(f7 * Math.sin(d1));
-      if (f6 == 0.0F) {
-        break label351;
-      }
-      float f9 = (float)(Math.atan2(f2, f1) - 1.570796326794897D);
-      float f8 = (float)Math.cos(f9);
-      f9 = (float)Math.sin(f9);
-      float f11 = (float)(Math.atan2(f3, f4) - 1.570796326794897D);
-      float f10 = (float)Math.cos(f11);
-      f11 = (float)Math.sin(f11);
-      this.path.cubicTo(f1 - f8 * (f7 * f6 * 0.25F), f2 - f7 * f6 * 0.25F * f9, f4 + f10 * (f7 * f6 * 0.25F), f11 * (f7 * f6 * 0.25F) + f3, f4, f3);
+    } else {
+      d1 = ((Float)((BaseKeyframeAnimation)localObject).getValue()).floatValue();
     }
-    for (;;)
+    double d4 = Math.toRadians(d1 - 90.0D);
+    double d3 = i;
+    Double.isNaN(d3);
+    float f3 = (float)(6.283185307179586D / d3);
+    float f5 = ((Float)this.outerRoundednessAnimation.getValue()).floatValue() / 100.0F;
+    float f6 = ((Float)this.outerRadiusAnimation.getValue()).floatValue();
+    double d2 = f6;
+    double d1 = Math.cos(d4);
+    Double.isNaN(d2);
+    float f1 = (float)(d1 * d2);
+    d1 = Math.sin(d4);
+    Double.isNaN(d2);
+    float f2 = (float)(d1 * d2);
+    this.path.moveTo(f1, f2);
+    d1 = f3;
+    Double.isNaN(d1);
+    d4 += d1;
+    d3 = Math.ceil(d3);
+    i = 0;
+    while (i < d3)
     {
-      d3 = f5;
+      double d5 = Math.cos(d4);
+      Double.isNaN(d2);
+      f3 = (float)(d5 * d2);
+      d5 = Math.sin(d4);
+      Double.isNaN(d2);
+      float f4 = (float)(d2 * d5);
+      if (f5 != 0.0F)
+      {
+        d5 = (float)(Math.atan2(f2, f1) - 1.570796326794897D);
+        float f7 = (float)Math.cos(d5);
+        float f8 = (float)Math.sin(d5);
+        d5 = (float)(Math.atan2(f4, f3) - 1.570796326794897D);
+        float f9 = (float)Math.cos(d5);
+        float f10 = (float)Math.sin(d5);
+        float f11 = f6 * f5 * 0.25F;
+        this.path.cubicTo(f1 - f7 * f11, f2 - f8 * f11, f3 + f9 * f11, f4 + f11 * f10, f3, f4);
+      }
+      else
+      {
+        this.path.lineTo(f3, f4);
+      }
+      Double.isNaN(d1);
+      d4 += d1;
       i += 1;
-      f1 = f4;
-      d1 += d3;
-      f2 = f3;
-      break label134;
-      d1 = ((Float)this.rotationAnimation.getValue()).floatValue();
-      break;
-      label351:
-      this.path.lineTo(f4, f3);
+      f2 = f4;
+      f1 = f3;
     }
-    label365:
-    PointF localPointF = (PointF)this.positionAnimation.getValue();
-    this.path.offset(localPointF.x, localPointF.y);
+    localObject = (PointF)this.positionAnimation.getValue();
+    this.path.offset(((PointF)localObject).x, ((PointF)localObject).y);
     this.path.close();
   }
   
   private void createStarPath()
   {
-    float f8 = ((Float)this.pointsAnimation.getValue()).floatValue();
-    double d1;
-    float f17;
-    float f14;
-    float f18;
-    if (this.rotationAnimation == null)
-    {
+    float f1 = ((Float)this.pointsAnimation.getValue()).floatValue();
+    Object localObject = this.rotationAnimation;
+    if (localObject == null) {
       d1 = 0.0D;
-      d1 = Math.toRadians(d1 - 90.0D);
-      f17 = (float)(6.283185307179586D / f8);
-      f14 = f17 / 2.0F;
-      f18 = f8 - (int)f8;
-      if (f18 == 0.0F) {
-        break label840;
-      }
-      d1 += (1.0F - f18) * f14;
+    } else {
+      d1 = ((Float)((BaseKeyframeAnimation)localObject).getValue()).floatValue();
     }
-    label265:
-    label551:
-    label560:
-    label569:
-    label578:
-    label709:
-    label840:
+    double d2 = Math.toRadians(d1 - 90.0D);
+    double d3 = f1;
+    Double.isNaN(d3);
+    float f10 = (float)(6.283185307179586D / d3);
+    float f8 = f10 / 2.0F;
+    float f23 = f1 - (int)f1;
+    double d1 = d2;
+    if (f23 != 0.0F)
+    {
+      d1 = (1.0F - f23) * f8;
+      Double.isNaN(d1);
+      d1 = d2 + d1;
+    }
+    float f7 = ((Float)this.outerRadiusAnimation.getValue()).floatValue();
+    f1 = ((Float)this.innerRadiusAnimation.getValue()).floatValue();
+    localObject = this.innerRoundednessAnimation;
+    float f3;
+    if (localObject != null) {
+      f3 = ((Float)((BaseKeyframeAnimation)localObject).getValue()).floatValue() / 100.0F;
+    } else {
+      f3 = 0.0F;
+    }
+    localObject = this.outerRoundednessAnimation;
+    float f6;
+    if (localObject != null) {
+      f6 = ((Float)((BaseKeyframeAnimation)localObject).getValue()).floatValue() / 100.0F;
+    } else {
+      f6 = 0.0F;
+    }
+    float f4;
+    double d4;
+    if (f23 != 0.0F)
+    {
+      f4 = (f7 - f1) * f23 + f1;
+      d2 = f4;
+      d4 = Math.cos(d1);
+      Double.isNaN(d2);
+      f2 = (float)(d2 * d4);
+      d4 = Math.sin(d1);
+      Double.isNaN(d2);
+      f5 = (float)(d2 * d4);
+      this.path.moveTo(f2, f5);
+      d2 = f10 * f23 / 2.0F;
+      Double.isNaN(d2);
+      d1 += d2;
+    }
+    else
+    {
+      d2 = f7;
+      d4 = Math.cos(d1);
+      Double.isNaN(d2);
+      f2 = (float)(d2 * d4);
+      d4 = Math.sin(d1);
+      Double.isNaN(d2);
+      f5 = (float)(d2 * d4);
+      this.path.moveTo(f2, f5);
+      d2 = f8;
+      Double.isNaN(d2);
+      d1 += d2;
+      f4 = 0.0F;
+    }
+    d2 = Math.ceil(d3) * 2.0D;
+    int i = 0;
+    int j = 0;
+    float f12 = f5;
+    float f11 = f2;
+    float f5 = f8;
+    float f2 = f7;
     for (;;)
     {
-      float f3 = ((Float)this.outerRadiusAnimation.getValue()).floatValue();
-      float f4 = ((Float)this.innerRadiusAnimation.getValue()).floatValue();
-      if (this.innerRoundednessAnimation != null) {}
-      for (float f1 = ((Float)this.innerRoundednessAnimation.getValue()).floatValue() / 100.0F;; f1 = 0.0F)
-      {
-        float f2 = 0.0F;
-        if (this.outerRoundednessAnimation != null) {
-          f2 = ((Float)this.outerRoundednessAnimation.getValue()).floatValue() / 100.0F;
-        }
-        float f5;
-        float f6;
-        float f7;
-        label223:
-        double d2;
-        int j;
-        int i;
-        float f10;
-        float f9;
-        if (f18 != 0.0F)
-        {
-          f5 = (f3 - f4) * f18 + f4;
-          f6 = (float)(f5 * Math.cos(d1));
-          f7 = (float)(f5 * Math.sin(d1));
-          this.path.moveTo(f6, f7);
-          d1 += f17 * f18 / 2.0F;
-          d2 = Math.ceil(f8) * 2.0D;
-          j = 0;
-          i = 0;
-          f10 = f6;
-          f9 = f7;
-          label248:
-          if (j >= d2) {
-            break label771;
-          }
-          if (i == 0) {
-            break label467;
-          }
-          f6 = f3;
-          if ((f5 == 0.0F) || (j != d2 - 2.0D)) {
-            break label827;
-          }
-        }
-        for (float f11 = f17 * f18 / 2.0F;; f11 = f14)
-        {
-          f7 = f6;
-          if (f5 != 0.0F)
-          {
-            f7 = f6;
-            if (j == d2 - 1.0D) {
-              f7 = f5;
-            }
-          }
-          float f15 = (float)(f7 * Math.cos(d1));
-          float f16 = (float)(f7 * Math.sin(d1));
-          if ((f1 == 0.0F) && (f2 == 0.0F))
-          {
-            this.path.lineTo(f15, f16);
-            double d3 = f11;
-            if (i != 0) {
-              break label765;
-            }
-            i = 1;
-            label382:
-            j += 1;
-            f9 = f16;
-            f10 = f15;
-            d1 += d3;
-            break label248;
-            d1 = ((Float)this.rotationAnimation.getValue()).floatValue();
-            break;
-            f6 = (float)(f3 * Math.cos(d1));
-            f7 = (float)(f3 * Math.sin(d1));
-            this.path.moveTo(f6, f7);
-            d1 += f14;
-            f5 = 0.0F;
-            break label223;
-            label467:
-            f6 = f4;
-            break label265;
-          }
-          f6 = (float)(Math.atan2(f9, f10) - 1.570796326794897D);
-          f8 = (float)Math.cos(f6);
-          float f21 = (float)Math.sin(f6);
-          f6 = (float)(Math.atan2(f16, f15) - 1.570796326794897D);
-          float f19 = (float)Math.cos(f6);
-          float f20 = (float)Math.sin(f6);
-          float f12;
-          float f13;
-          if (i != 0)
-          {
-            f6 = f1;
-            if (i == 0) {
-              break label709;
-            }
-            f7 = f2;
-            if (i == 0) {
-              break label716;
-            }
-            f12 = f4;
-            if (i == 0) {
-              break label723;
-            }
-            f13 = f3;
-            f8 *= f12 * f6 * 0.47829F;
-            f12 = f12 * f6 * 0.47829F * f21;
-            f6 = f13 * f7 * 0.47829F * f19;
-            f7 = f13 * f7 * 0.47829F * f20;
-            if (f18 == 0.0F) {
-              break label808;
-            }
-            if (j != 0) {
-              break label730;
-            }
-            f12 *= f18;
-            f13 = f8 * f18;
-            f8 = f7;
-            f7 = f6;
-            f6 = f13;
-          }
-          for (;;)
-          {
-            this.path.cubicTo(f10 - f6, f9 - f12, f7 + f15, f8 + f16, f15, f16);
-            break;
-            f6 = f2;
-            break label551;
-            f7 = f1;
-            break label560;
-            label716:
-            f12 = f3;
-            break label569;
-            label723:
-            f13 = f4;
-            break label578;
-            label730:
-            if (j == d2 - 1.0D)
-            {
-              f13 = f7 * f18;
-              f7 = f6 * f18;
-              f6 = f8;
-              f8 = f13;
-              continue;
-              label765:
-              i = 0;
-              break label382;
-              PointF localPointF = (PointF)this.positionAnimation.getValue();
-              this.path.offset(localPointF.x, localPointF.y);
-              this.path.close();
-              return;
-            }
-            f13 = f7;
-            f7 = f6;
-            f6 = f8;
-            f8 = f13;
-          }
-        }
+      d3 = i;
+      if (d3 >= d2) {
+        break;
       }
+      if (j != 0) {
+        f7 = f2;
+      } else {
+        f7 = f1;
+      }
+      float f14;
+      if ((f4 != 0.0F) && (d3 == d2 - 2.0D)) {
+        f14 = f10 * f23 / 2.0F;
+      } else {
+        f14 = f5;
+      }
+      if ((f4 != 0.0F) && (d3 == d2 - 1.0D)) {
+        f7 = f4;
+      }
+      d4 = f7;
+      double d5 = Math.cos(d1);
+      Double.isNaN(d4);
+      float f15 = (float)(d4 * d5);
+      d5 = Math.sin(d1);
+      Double.isNaN(d4);
+      float f13 = (float)(d4 * d5);
+      if ((f3 == 0.0F) && (f6 == 0.0F))
+      {
+        this.path.lineTo(f15, f13);
+      }
+      else
+      {
+        float f17 = f15;
+        d4 = f12;
+        f7 = f1;
+        f8 = f3;
+        d4 = (float)(Math.atan2(d4, f11) - 1.570796326794897D);
+        float f19 = (float)Math.cos(d4);
+        float f20 = (float)Math.sin(d4);
+        float f9 = f6;
+        d4 = f13;
+        float f18 = f13;
+        d4 = (float)(Math.atan2(d4, f17) - 1.570796326794897D);
+        float f21 = (float)Math.cos(d4);
+        float f22 = (float)Math.sin(d4);
+        if (j != 0) {
+          f16 = f8;
+        } else {
+          f16 = f9;
+        }
+        if (j != 0) {
+          f8 = f9;
+        }
+        if (j != 0) {
+          f9 = f7;
+        } else {
+          f9 = f2;
+        }
+        if (j != 0) {
+          f7 = f2;
+        }
+        f9 = f9 * f16 * 0.47829F;
+        f19 *= f9;
+        f20 = f9 * f20;
+        f7 = f7 * f8 * 0.47829F;
+        f21 *= f7;
+        f22 = f7 * f22;
+        f7 = f19;
+        f8 = f21;
+        f9 = f20;
+        float f16 = f22;
+        if (f23 != 0.0F) {
+          if (i == 0)
+          {
+            f7 = f19 * f23;
+            f9 = f20 * f23;
+            f8 = f21;
+            f16 = f22;
+          }
+          else
+          {
+            f7 = f19;
+            f8 = f21;
+            f9 = f20;
+            f16 = f22;
+            if (d3 == d2 - 1.0D)
+            {
+              f8 = f21 * f23;
+              f16 = f22 * f23;
+              f9 = f20;
+              f7 = f19;
+            }
+          }
+        }
+        this.path.cubicTo(f11 - f7, f12 - f9, f17 + f8, f18 + f16, f17, f18);
+      }
+      d3 = f14;
+      Double.isNaN(d3);
+      d1 += d3;
+      j ^= 0x1;
+      i += 1;
+      f11 = f15;
+      f12 = f13;
     }
+    localObject = (PointF)this.positionAnimation.getValue();
+    this.path.offset(((PointF)localObject).x, ((PointF)localObject).y);
+    this.path.close();
   }
   
   private void invalidate()
@@ -336,39 +340,48 @@ public class PolystarContent
   
   public <T> void addValueCallback(T paramT, @Nullable LottieValueCallback<T> paramLottieValueCallback)
   {
-    if (paramT == LottieProperty.POLYSTAR_POINTS) {
-      this.pointsAnimation.setValueCallback(paramLottieValueCallback);
-    }
-    do
+    if (paramT == LottieProperty.POLYSTAR_POINTS)
     {
+      this.pointsAnimation.setValueCallback(paramLottieValueCallback);
       return;
-      if (paramT == LottieProperty.POLYSTAR_ROTATION)
+    }
+    if (paramT == LottieProperty.POLYSTAR_ROTATION)
+    {
+      this.rotationAnimation.setValueCallback(paramLottieValueCallback);
+      return;
+    }
+    if (paramT == LottieProperty.POSITION)
+    {
+      this.positionAnimation.setValueCallback(paramLottieValueCallback);
+      return;
+    }
+    BaseKeyframeAnimation localBaseKeyframeAnimation;
+    if (paramT == LottieProperty.POLYSTAR_INNER_RADIUS)
+    {
+      localBaseKeyframeAnimation = this.innerRadiusAnimation;
+      if (localBaseKeyframeAnimation != null)
       {
-        this.rotationAnimation.setValueCallback(paramLottieValueCallback);
+        localBaseKeyframeAnimation.setValueCallback(paramLottieValueCallback);
         return;
       }
-      if (paramT == LottieProperty.POSITION)
+    }
+    if (paramT == LottieProperty.POLYSTAR_OUTER_RADIUS)
+    {
+      this.outerRadiusAnimation.setValueCallback(paramLottieValueCallback);
+      return;
+    }
+    if (paramT == LottieProperty.POLYSTAR_INNER_ROUNDEDNESS)
+    {
+      localBaseKeyframeAnimation = this.innerRoundednessAnimation;
+      if (localBaseKeyframeAnimation != null)
       {
-        this.positionAnimation.setValueCallback(paramLottieValueCallback);
+        localBaseKeyframeAnimation.setValueCallback(paramLottieValueCallback);
         return;
       }
-      if ((paramT == LottieProperty.POLYSTAR_INNER_RADIUS) && (this.innerRadiusAnimation != null))
-      {
-        this.innerRadiusAnimation.setValueCallback(paramLottieValueCallback);
-        return;
-      }
-      if (paramT == LottieProperty.POLYSTAR_OUTER_RADIUS)
-      {
-        this.outerRadiusAnimation.setValueCallback(paramLottieValueCallback);
-        return;
-      }
-      if ((paramT == LottieProperty.POLYSTAR_INNER_ROUNDEDNESS) && (this.innerRoundednessAnimation != null))
-      {
-        this.innerRoundednessAnimation.setValueCallback(paramLottieValueCallback);
-        return;
-      }
-    } while (paramT != LottieProperty.POLYSTAR_OUTER_ROUNDEDNESS);
-    this.outerRoundednessAnimation.setValueCallback(paramLottieValueCallback);
+    }
+    if (paramT == LottieProperty.POLYSTAR_OUTER_ROUNDEDNESS) {
+      this.outerRoundednessAnimation.setValueCallback(paramLottieValueCallback);
+    }
   }
   
   public String getName()
@@ -387,19 +400,20 @@ public class PolystarContent
       this.isPathValid = true;
       return this.path;
     }
-    switch (PolystarContent.1.$SwitchMap$com$tencent$mobileqq$dinifly$model$content$PolystarShape$Type[this.type.ordinal()])
+    int i = PolystarContent.1.$SwitchMap$com$tencent$mobileqq$dinifly$model$content$PolystarShape$Type[this.type.ordinal()];
+    if (i != 1)
     {
+      if (i == 2) {
+        createPolygonPath();
+      }
     }
-    for (;;)
-    {
-      this.path.close();
-      this.trimPaths.apply(this.path);
-      this.isPathValid = true;
-      return this.path;
+    else {
       createStarPath();
-      continue;
-      createPolygonPath();
     }
+    this.path.close();
+    this.trimPaths.apply(this.path);
+    this.isPathValid = true;
+    return this.path;
   }
   
   public void onValueChanged()
@@ -418,11 +432,14 @@ public class PolystarContent
     while (i < paramList1.size())
     {
       paramList2 = (Content)paramList1.get(i);
-      if (((paramList2 instanceof TrimPathContent)) && (((TrimPathContent)paramList2).getType() == ShapeTrimPath.Type.SIMULTANEOUSLY))
+      if ((paramList2 instanceof TrimPathContent))
       {
         paramList2 = (TrimPathContent)paramList2;
-        this.trimPaths.addTrimPath(paramList2);
-        paramList2.addListener(this);
+        if (paramList2.getType() == ShapeTrimPath.Type.SIMULTANEOUSLY)
+        {
+          this.trimPaths.addTrimPath(paramList2);
+          paramList2.addListener(this);
+        }
       }
       i += 1;
     }
@@ -430,7 +447,7 @@ public class PolystarContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.content.PolystarContent
  * JD-Core Version:    0.7.0.1
  */

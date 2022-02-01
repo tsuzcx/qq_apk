@@ -3,9 +3,9 @@ package com.tencent.mobileqq.vas.qqvaluecard;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.vas.qqvaluecard.bean.QQValueInfoItem;
 import com.tencent.mobileqq.vas.qqvaluecard.view.QQValuePagView;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mobileqq.vas.updatesystem.business.QQValueViewBusiness;
 import com.tencent.mobileqq.vas.updatesystem.business.QQVasUpdateBusiness;
 import java.util.Collection;
@@ -26,23 +26,17 @@ public class QQValueInfoManage
   
   public QQValueInfoItem a(@NonNull String paramString)
   {
-    Object localObject;
     if (paramString == null) {
-      localObject = null;
+      return null;
     }
-    QQValueInfoItem localQQValueInfoItem;
-    do
-    {
-      do
-      {
-        return localObject;
-        localQQValueInfoItem = (QQValueInfoItem)jdField_a_of_type_JavaUtilMap.get(paramString);
-        localObject = localQQValueInfoItem;
-      } while (localQQValueInfoItem != null);
-      localQQValueInfoItem = QQValueInfoItem.a(paramString);
-      localObject = localQQValueInfoItem;
-    } while (localQQValueInfoItem == null);
-    jdField_a_of_type_JavaUtilMap.put(paramString, localQQValueInfoItem);
+    QQValueInfoItem localQQValueInfoItem = (QQValueInfoItem)jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (localQQValueInfoItem != null) {
+      return localQQValueInfoItem;
+    }
+    localQQValueInfoItem = QQValueInfoItem.a(paramString);
+    if (localQQValueInfoItem != null) {
+      jdField_a_of_type_JavaUtilMap.put(paramString, localQQValueInfoItem);
+    }
     return localQQValueInfoItem;
   }
   
@@ -68,12 +62,14 @@ public class QQValueInfoManage
   public void a(@NonNull String paramString, Object paramObject)
   {
     paramObject = QQValueInfoItem.a(paramObject);
-    if (paramObject == null) {}
-    while (paramObject.a(a(paramString))) {
+    if (paramObject == null) {
       return;
     }
-    jdField_a_of_type_JavaUtilMap.put(paramString, paramObject);
-    paramObject.a(paramString);
+    if (!paramObject.a(a(paramString)))
+    {
+      jdField_a_of_type_JavaUtilMap.put(paramString, paramObject);
+      paramObject.a(paramString);
+    }
   }
   
   public void b(String paramString)
@@ -109,7 +105,7 @@ public class QQValueInfoManage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qqvaluecard.QQValueInfoManage
  * JD-Core Version:    0.7.0.1
  */

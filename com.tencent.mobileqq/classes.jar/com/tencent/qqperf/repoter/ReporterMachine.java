@@ -29,20 +29,12 @@ import org.json.JSONObject;
 public class ReporterMachine
 {
   private static IReporter jdField_a_of_type_ComTencentQqperfRepoterIReporter;
-  private static ReporterMachine jdField_a_of_type_ComTencentQqperfRepoterReporterMachine = null;
-  private static String jdField_a_of_type_JavaLangString;
+  private static ReporterMachine jdField_a_of_type_ComTencentQqperfRepoterReporterMachine;
+  private static String jdField_a_of_type_JavaLangString = "";
   private static List<ResultObject> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-  private static Queue<String> jdField_a_of_type_JavaUtilQueue;
+  private static Queue<String> jdField_a_of_type_JavaUtilQueue = new ConcurrentLinkedQueue();
   private static MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   private static boolean jdField_a_of_type_Boolean = false;
-  
-  static
-  {
-    jdField_a_of_type_MqqOsMqqHandler = null;
-    jdField_a_of_type_JavaLangString = "";
-    jdField_a_of_type_ComTencentQqperfRepoterIReporter = null;
-    jdField_a_of_type_JavaUtilQueue = new ConcurrentLinkedQueue();
-  }
   
   private ReporterMachine()
   {
@@ -58,13 +50,14 @@ public class ReporterMachine
   
   public static ReporterMachine a()
   {
-    if (jdField_a_of_type_ComTencentQqperfRepoterReporterMachine == null) {}
-    try
-    {
-      jdField_a_of_type_ComTencentQqperfRepoterReporterMachine = new ReporterMachine();
-      return jdField_a_of_type_ComTencentQqperfRepoterReporterMachine;
+    if (jdField_a_of_type_ComTencentQqperfRepoterReporterMachine == null) {
+      try
+      {
+        jdField_a_of_type_ComTencentQqperfRepoterReporterMachine = new ReporterMachine();
+      }
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentQqperfRepoterReporterMachine;
   }
   
   public static void a(ResultObject paramResultObject)
@@ -104,20 +97,17 @@ public class ReporterMachine
     localJSONObject.put("os", Build.VERSION.RELEASE);
     localJSONObject.put("rdmuuid", jdField_a_of_type_JavaLangString);
     localJSONObject.put("deviceid", ((IPerfApi)QRoute.api(IPerfApi.class)).getDeviceId());
-    if (MobileQQ.sProcessId == 1) {}
-    try
-    {
-      String.valueOf(paramResultObject.params.get("newplugin"));
-      jdField_a_of_type_ComTencentQqperfRepoterIReporter.a(paramResultObject, new ReporterMachine.1());
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+    if (MobileQQ.sProcessId == 1) {
+      try
+      {
+        String.valueOf(paramResultObject.params.get("newplugin"));
+      }
+      catch (Exception localException)
       {
         QLog.d("Magnifier_ReporterMachine", 1, "reportAtOnce", localException);
       }
     }
+    jdField_a_of_type_ComTencentQqperfRepoterIReporter.a(paramResultObject, new ReporterMachine.1());
   }
   
   public String a()
@@ -154,7 +144,7 @@ public class ReporterMachine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.repoter.ReporterMachine
  * JD-Core Version:    0.7.0.1
  */

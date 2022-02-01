@@ -14,38 +14,39 @@ class AssetExportThread$AudioWriterProgressListener
   public void onError(@NonNull ExportErrorStatus paramExportErrorStatus)
   {
     Logger.e("AssetExportThread", "AudioWriterProgressListener onError: ", paramExportErrorStatus.throwable);
-    AssetExportThread.access$2200(this.this$0, paramExportErrorStatus);
+    AssetExportThread.access$400(this.this$0, paramExportErrorStatus);
   }
   
   public void onProgressChanged(AssetWriterInput paramAssetWriterInput, long paramLong)
   {
-    Logger.i("AssetExportSession", "onProgressChanged: audioWriter " + paramLong + "  / " + AssetExportThread.access$1700(this.this$0));
+    paramAssetWriterInput = new StringBuilder();
+    paramAssetWriterInput.append("onProgressChanged: audioWriter ");
+    paramAssetWriterInput.append(paramLong);
+    paramAssetWriterInput.append("  / ");
+    paramAssetWriterInput.append(AssetExportThread.access$1800(this.this$0));
+    Logger.i("AssetExportSession", paramAssetWriterInput.toString());
     if (paramLong == -1L)
     {
-      AssetExportThread.access$2002(this.this$0, AssetExportThread.access$1100(this.this$0).timeRange.getDuration().getTimeUs());
-      AssetExportThread.access$802(this.this$0, true);
-      AssetExportThread.access$1900(this.this$0).sendEmptyMessage(2);
-    }
-    do
-    {
+      paramAssetWriterInput = this.this$0;
+      AssetExportThread.access$2502(paramAssetWriterInput, AssetExportThread.access$1200(paramAssetWriterInput).timeRange.getDuration().getTimeUs());
+      AssetExportThread.access$902(this.this$0, true);
+      AssetExportThread.access$2000(this.this$0).sendEmptyMessage(2);
       return;
-      AssetExportThread.access$2002(this.this$0, paramLong);
-      paramLong = AssetExportThread.access$1700(this.this$0);
-      if (paramLong != 0L) {
-        AssetExportThread.access$1100(this.this$0).progress = ((float)(AssetExportThread.access$1800(this.this$0) + AssetExportThread.access$2000(this.this$0)) * 1.0F / (float)paramLong);
-      }
-      if (AssetExportThread.access$2100(this.this$0) != null) {
-        AssetExportThread.access$2100(this.this$0).handlerCallback(AssetExportThread.access$1100(this.this$0));
-      }
-    } while (((AssetExportThread.access$2000(this.this$0) <= AssetExportThread.access$1800(this.this$0)) || (!AssetExportThread.access$700(this.this$0))) && (AssetExportThread.access$2000(this.this$0) < AssetExportThread.access$1100(this.this$0).timeRange.getDuration().getTimeUs()));
-    AssetExportThread.access$2002(this.this$0, AssetExportThread.access$1100(this.this$0).timeRange.getDuration().getTimeUs());
-    AssetExportThread.access$802(this.this$0, true);
-    AssetExportThread.access$1900(this.this$0).sendEmptyMessage(2);
+    }
+    AssetExportThread.access$2502(this.this$0, paramLong);
+    AssetExportThread.access$2100(this.this$0);
+    if (((AssetExportThread.access$2500(this.this$0) > AssetExportThread.access$1900(this.this$0)) && (AssetExportThread.access$800(this.this$0))) || (AssetExportThread.access$2500(this.this$0) >= AssetExportThread.access$1200(this.this$0).timeRange.getEnd().getTimeUs()))
+    {
+      paramAssetWriterInput = this.this$0;
+      AssetExportThread.access$2502(paramAssetWriterInput, AssetExportThread.access$1200(paramAssetWriterInput).timeRange.getDuration().getTimeUs());
+      AssetExportThread.access$902(this.this$0, true);
+      AssetExportThread.access$2000(this.this$0).sendEmptyMessage(2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tav.core.AssetExportThread.AudioWriterProgressListener
  * JD-Core Version:    0.7.0.1
  */

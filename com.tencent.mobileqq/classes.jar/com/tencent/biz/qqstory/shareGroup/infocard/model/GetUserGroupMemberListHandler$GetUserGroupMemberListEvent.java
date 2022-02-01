@@ -11,12 +11,19 @@ public class GetUserGroupMemberListHandler$GetUserGroupMemberListEvent
   
   public String toString()
   {
-    return "GetUserGroupMemberListEvent{troopUin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", memberList=" + this.jdField_a_of_type_JavaUtilList + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetUserGroupMemberListEvent{troopUin='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", memberList=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.infocard.model.GetUserGroupMemberListHandler.GetUserGroupMemberListEvent
  * JD-Core Version:    0.7.0.1
  */

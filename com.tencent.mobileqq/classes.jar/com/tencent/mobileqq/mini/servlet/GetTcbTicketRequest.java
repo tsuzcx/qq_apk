@@ -24,16 +24,20 @@ public class GetTcbTicketRequest
   
   public static INTERFACE.StGetTCBTicketRsp onResponse(byte[] paramArrayOfByte)
   {
-    INTERFACE.StGetTCBTicketRsp localStGetTCBTicketRsp = new INTERFACE.StGetTCBTicketRsp();
+    Object localObject = new INTERFACE.StGetTCBTicketRsp();
     try
     {
-      localStGetTCBTicketRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStGetTCBTicketRsp;
+      ((INTERFACE.StGetTCBTicketRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("GetTcbTicketRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("GetTcbTicketRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -46,7 +50,7 @@ public class GetTcbTicketRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.GetTcbTicketRequest
  * JD-Core Version:    0.7.0.1
  */

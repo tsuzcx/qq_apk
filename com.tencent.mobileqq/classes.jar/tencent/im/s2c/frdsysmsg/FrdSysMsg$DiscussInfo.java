@@ -16,7 +16,7 @@ public final class FrdSysMsg$DiscussInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.s2c.frdsysmsg.FrdSysMsg.DiscussInfo
  * JD-Core Version:    0.7.0.1
  */

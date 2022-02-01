@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class b
   extends JceStruct
@@ -50,11 +51,13 @@ public final class b
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.a, 0);
-    if (this.b != null) {
-      paramJceOutputStream.write(this.b, 1);
+    Object localObject = this.b;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.c != null) {
-      paramJceOutputStream.write(this.c, 2);
+    localObject = this.c;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 2);
     }
     paramJceOutputStream.write(this.d, 3);
     paramJceOutputStream.write(this.e, 4);
@@ -62,7 +65,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.msf.service.protocol.b.b
  * JD-Core Version:    0.7.0.1
  */

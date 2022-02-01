@@ -15,14 +15,7 @@ public abstract class TroopFileReqDownloadFileObserver
     super(false);
   }
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    b(paramInt, paramArrayOfByte, paramBundle);
-  }
-  
-  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle);
-  
-  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
     if (paramInt != 0)
     {
@@ -39,18 +32,27 @@ public abstract class TroopFileReqDownloadFileObserver
         a(true, 0, paramArrayOfByte, paramBundle);
         return;
       }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
       a(false, -1, null, paramBundle);
       return;
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      label69:
+      break label69;
+    }
     a(false, -1, null, paramBundle);
+  }
+  
+  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle);
+  
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    a(paramInt, paramArrayOfByte, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.file.protocol.TroopFileReqDownloadFileObserver
  * JD-Core Version:    0.7.0.1
  */

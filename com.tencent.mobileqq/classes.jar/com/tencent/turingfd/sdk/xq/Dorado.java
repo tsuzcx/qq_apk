@@ -1,80 +1,122 @@
 package com.tencent.turingfd.sdk.xq;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.view.Window;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
-public class Dorado
-  extends case
+public final class Dorado
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public static List<String> La = new ArrayList();
-  public static List<String> Ma;
-  public String Ua = "";
-  public List<String> Va = null;
-  public List<String> Wa = null;
-  public int eb = 0;
-  public String ib = "";
-  public int type = 0;
+  public Dorado(Window paramWindow, String paramString, Cassiopeia paramCassiopeia) {}
   
-  static
+  public boolean onPreDraw()
   {
-    La.add("");
-    Ma = new ArrayList();
-    Ma.add("");
-  }
-  
-  public void a(byte parambyte)
-  {
-    parambyte.a(this.eb, 0);
-    Object localObject = this.ib;
-    if (localObject != null) {
-      parambyte.b((String)localObject, 1);
-    }
-    parambyte.a(this.type, 2);
-    localObject = this.Ua;
-    if (localObject != null) {
-      parambyte.b((String)localObject, 3);
-    }
-    localObject = this.Va;
-    if (localObject != null) {
-      parambyte.a((Collection)localObject, 4);
-    }
-    localObject = this.Wa;
-    if (localObject != null) {
-      parambyte.a((Collection)localObject, 5);
-    }
-  }
-  
-  public void a(try paramtry)
-  {
-    this.eb = paramtry.a(this.eb, 0, true);
-    this.ib = paramtry.a(1, false);
-    this.type = paramtry.a(this.type, 2, false);
-    this.Ua = paramtry.a(3, false);
-    this.Va = ((List)paramtry.a(La, 4, false));
-    this.Wa = ((List)paramtry.a(Ma, 5, false));
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
+    try
     {
+      this.zh.getDecorView().getViewTreeObserver().removeOnPreDrawListener(this);
+      localObject1 = this.zh;
+      int i = private.J();
+      localObject3 = null;
+      if (i < 30) {}
+    }
+    catch (Throwable localThrowable1)
+    {
+      Object localObject1;
+      Object localObject3;
+      Object localObject2;
+      label74:
+      label121:
+      localThrowable1.printStackTrace();
+      label157:
+      label220:
       return true;
-      if (paramObject == null) {
-        return false;
+    }
+    try
+    {
+      localObject2 = localObject1.getClass();
+      localObject2 = ((Class)localObject2).getDeclaredMethod("getViewRootImpl", new Class[0]);
+      ((Method)localObject2).setAccessible(true);
+      localObject1 = ((Method)localObject2).invoke(localObject1, new Object[0]);
+    }
+    catch (Throwable localThrowable2)
+    {
+      break label74;
+    }
+    localObject1 = null;
+    if (localObject1 == null) {
+      return true;
+    }
+    try
+    {
+      localObject2 = localObject1.getClass();
+      localObject2 = ((Class)localObject2).getDeclaredMethod("getAccessibilityInteractionController", new Class[0]);
+      ((Method)localObject2).setAccessible(true);
+      localObject1 = ((Method)localObject2).invoke(localObject1, new Object[0]);
+    }
+    catch (Throwable localThrowable3)
+    {
+      break label121;
+    }
+    localObject1 = null;
+    if (localObject1 == null) {
+      return true;
+    }
+    try
+    {
+      localObject2 = localObject1.getClass().getDeclaredField("mHandler");
+      ((Field)localObject2).setAccessible(true);
+      localObject2 = ((Field)localObject2).get(localObject1);
+    }
+    catch (Throwable localThrowable5)
+    {
+      boolean bool;
+      break label157;
+    }
+    localObject2 = null;
+    if (localObject2 != null)
+    {
+      bool = localObject2 instanceof Draco;
+      if (bool) {
+        return true;
       }
-      if (!(paramObject instanceof Dorado)) {
-        return false;
-      }
-      paramObject = (Dorado)paramObject;
-    } while ((char.equals(this.eb, paramObject.eb)) && (char.equals(this.ib, paramObject.ib)) && (char.equals(this.type, paramObject.type)) && (char.equals(this.Ua, paramObject.Ua)) && (char.equals(this.Va, paramObject.Va)) && (char.equals(this.Wa, paramObject.Wa)));
-    return false;
+    }
+    try
+    {
+      Object localObject4 = localObject2.getClass();
+      localObject4 = ((Class)localObject4).getMethod("getLooper", new Class[0]);
+      ((Method)localObject4).setAccessible(true);
+      localObject4 = ((Method)localObject4).invoke(localObject2, new Object[0]);
+      localObject3 = localObject4;
+    }
+    catch (Throwable localThrowable6)
+    {
+      break label220;
+    }
+    localObject3 = (Looper)localObject3;
+    if (localObject3 == null) {
+      return true;
+    }
+    localObject2 = new Draco((Handler)localObject2, this.zh, (Looper)localObject3, this.Bh, this.Ah);
+    try
+    {
+      localObject3 = localObject1.getClass().getDeclaredField("mHandler");
+      ((Field)localObject3).setAccessible(true);
+      ((Field)localObject3).set(localObject1, localObject2);
+      return true;
+    }
+    catch (Throwable localThrowable4) {}
+    return true;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Dorado
  * JD-Core Version:    0.7.0.1
  */

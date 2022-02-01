@@ -17,30 +17,35 @@ public class ContactsFragmentFactory
     {
     default: 
       localObject = new FriendFragment();
-    }
-    for (;;)
-    {
-      ((ContactsBaseFragment)localObject).d(paramInt);
-      return localObject;
-      localObject = new RecommendFriendFragment();
-      continue;
-      localObject = new FriendFragment();
-      continue;
-      localObject = new TroopFragment();
-      continue;
-      localObject = new PublicAccountFragment();
-      continue;
-      localObject = new DeviceFragment();
-      continue;
-      localObject = new PhoneContactFragment();
-      continue;
+      break;
+    case 6: 
       localObject = new AlphabetFriendFragment();
+      break;
+    case 5: 
+      localObject = new PublicAccountFragment();
+      break;
+    case 4: 
+      localObject = new PhoneContactFragment();
+      break;
+    case 3: 
+      localObject = new DeviceFragment();
+      break;
+    case 2: 
+      localObject = new TroopFragment();
+      break;
+    case 1: 
+      localObject = new FriendFragment();
+      break;
+    case 0: 
+      localObject = new RecommendFriendFragment();
     }
+    ((ContactsBaseFragment)localObject).d(paramInt);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.base.tabs.ContactsFragmentFactory
  * JD-Core Version:    0.7.0.1
  */

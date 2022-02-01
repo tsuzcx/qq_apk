@@ -55,14 +55,15 @@ public final class ReqGetSign
     paramJceOutputStream.write(this.uAppID, 2);
     paramJceOutputStream.write(this.cA2Type, 3);
     paramJceOutputStream.write(this.vA2, 4);
-    if (this.vCiphertext != null) {
-      paramJceOutputStream.write(this.vCiphertext, 5);
+    byte[] arrayOfByte = this.vCiphertext;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.ReqGetSign
  * JD-Core Version:    0.7.0.1
  */

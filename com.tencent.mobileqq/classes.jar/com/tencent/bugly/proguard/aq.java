@@ -38,27 +38,32 @@ public final class aq
   {
     paramj.a(this.a, 0);
     paramj.a(this.b, 1);
-    if (this.c != null) {
-      paramj.a(this.c, 2);
+    Object localObject = this.c;
+    if (localObject != null) {
+      paramj.a((String)localObject, 2);
     }
-    if (this.d != null) {
-      paramj.a(this.d, 3);
+    localObject = this.d;
+    if (localObject != null) {
+      paramj.a((String)localObject, 3);
     }
-    if (this.e != null) {
-      paramj.a(this.e, 4);
+    localObject = this.e;
+    if (localObject != null) {
+      paramj.a((String)localObject, 4);
     }
-    if (this.f != null) {
-      paramj.a(this.f, 5);
+    localObject = this.f;
+    if (localObject != null) {
+      paramj.a((Map)localObject, 5);
     }
-    if (this.g != null) {
-      paramj.a(this.g, 6);
+    localObject = this.g;
+    if (localObject != null) {
+      paramj.a((String)localObject, 6);
     }
     paramj.a(this.h, 7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.bugly.proguard.aq
  * JD-Core Version:    0.7.0.1
  */

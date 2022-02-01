@@ -36,13 +36,13 @@ class MiniAppDesktopAdapter$DesktopMostCommonlyUsedViewHolder
   {
     super(paramView);
     this.activityReference = paramWeakReference;
-    this.backgroundView = paramView.findViewById(2131371467);
-    this.icon = ((ImageView)paramView.findViewById(2131371470));
-    this.title = ((TextView)paramView.findViewById(2131371473));
-    this.helpInfo = ((TextView)paramView.findViewById(2131371469));
-    this.addBtn = ((ImageView)paramView.findViewById(2131371466));
-    this.closeBtn = ((ImageView)paramView.findViewById(2131371468));
-    this.helpInfo.setText(HardCodeUtil.a(2131706906));
+    this.backgroundView = paramView.findViewById(2131371087);
+    this.icon = ((ImageView)paramView.findViewById(2131371090));
+    this.title = ((TextView)paramView.findViewById(2131371093));
+    this.helpInfo = ((TextView)paramView.findViewById(2131371089));
+    this.addBtn = ((ImageView)paramView.findViewById(2131371086));
+    this.closeBtn = ((ImageView)paramView.findViewById(2131371088));
+    this.helpInfo.setText(HardCodeUtil.a(2131706928));
     this.backgroundView.setOnClickListener(this);
     this.addBtn.setOnClickListener(this);
     this.closeBtn.setOnClickListener(this);
@@ -83,48 +83,58 @@ class MiniAppDesktopAdapter$DesktopMostCommonlyUsedViewHolder
   
   private void setAllVisibility(int paramInt)
   {
-    if (this.backgroundView != null) {
-      this.backgroundView.setVisibility(paramInt);
+    View localView = this.backgroundView;
+    if (localView != null) {
+      localView.setVisibility(paramInt);
     }
   }
   
   public void bindView(DesktopMostCommonlyUsedInfo paramDesktopMostCommonlyUsedInfo)
   {
-    if ((paramDesktopMostCommonlyUsedInfo == null) || (paramDesktopMostCommonlyUsedInfo.appInfo == null)) {
-      return;
-    }
-    this.miniAppInfo = paramDesktopMostCommonlyUsedInfo.appInfo;
-    this.icon.setImageDrawable(MiniAppUtils.getIcon(this.icon.getContext(), this.miniAppInfo.iconUrl, true));
-    String str = this.miniAppInfo.name;
-    paramDesktopMostCommonlyUsedInfo = str;
-    if (str != null)
+    if (paramDesktopMostCommonlyUsedInfo != null)
     {
-      paramDesktopMostCommonlyUsedInfo = str;
-      if (str.length() >= 7) {
-        paramDesktopMostCommonlyUsedInfo = str.substring(0, 5) + "...";
+      if (paramDesktopMostCommonlyUsedInfo.appInfo == null) {
+        return;
       }
+      this.miniAppInfo = paramDesktopMostCommonlyUsedInfo.appInfo;
+      paramDesktopMostCommonlyUsedInfo = this.icon;
+      paramDesktopMostCommonlyUsedInfo.setImageDrawable(MiniAppUtils.getIcon(paramDesktopMostCommonlyUsedInfo.getContext(), this.miniAppInfo.iconUrl, true));
+      String str = this.miniAppInfo.name;
+      paramDesktopMostCommonlyUsedInfo = str;
+      if (str != null)
+      {
+        paramDesktopMostCommonlyUsedInfo = str;
+        if (str.length() >= 7)
+        {
+          paramDesktopMostCommonlyUsedInfo = new StringBuilder();
+          paramDesktopMostCommonlyUsedInfo.append(str.substring(0, 5));
+          paramDesktopMostCommonlyUsedInfo.append("...");
+          paramDesktopMostCommonlyUsedInfo = paramDesktopMostCommonlyUsedInfo.toString();
+        }
+      }
+      this.title.setText(paramDesktopMostCommonlyUsedInfo);
+      this.state = 0;
+      setAllVisibility(0);
+      paramDesktopMostCommonlyUsedInfo = new MiniAppConfig(this.miniAppInfo);
+      paramDesktopMostCommonlyUsedInfo.launchParam.scene = 3027;
+      MiniProgramLpReportDC04239.reportAsync(paramDesktopMostCommonlyUsedInfo, "page_view", "expo", null, null);
     }
-    this.title.setText(paramDesktopMostCommonlyUsedInfo);
-    this.state = 0;
-    setAllVisibility(0);
-    paramDesktopMostCommonlyUsedInfo = new MiniAppConfig(this.miniAppInfo);
-    paramDesktopMostCommonlyUsedInfo.launchParam.scene = 3027;
-    MiniProgramLpReportDC04239.reportAsync(paramDesktopMostCommonlyUsedInfo, "page_view", "expo", null, null);
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i != 2131371086)
     {
-    case 2131371467: 
-    default: 
-      onOtherClicked();
-      return;
-    case 2131371466: 
-      onAddBtnClicked();
+      if (i != 2131371088)
+      {
+        onOtherClicked();
+        return;
+      }
+      onCloseBtnClicked();
       return;
     }
-    onCloseBtnClicked();
+    onAddBtnClicked();
   }
   
   public void rejectFrequentlyRecommends()
@@ -137,7 +147,7 @@ class MiniAppDesktopAdapter$DesktopMostCommonlyUsedViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.DesktopMostCommonlyUsedViewHolder
  * JD-Core Version:    0.7.0.1
  */

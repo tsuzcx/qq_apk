@@ -23,7 +23,7 @@ public class QQGameConfigServiceImpl
   public static final String GC_CONF_DIR = "gc_conf";
   public static final long INVALID_TIME = 86400000L;
   public static final String KEY_CONF_COMM = "comminfo";
-  private static final String TAG = "QQGameConfigServiceImpl";
+  private static final String TAG = "Wadl_QQGameConfigServiceImpl";
   public static final long UNCHECK = -1L;
   private HashMap<String, WadlBaseConfig> confMap = new HashMap();
   private short updateConfFailCount = 0;
@@ -59,6 +59,25 @@ public class QQGameConfigServiceImpl
     return new File(getConfDir(), "conf.json");
   }
   
+  public void handlePushConfigCheck(String paramString)
+  {
+    boolean bool = TextUtils.isEmpty(paramString);
+    long l2 = -1L;
+    long l1 = l2;
+    if (!bool) {
+      try
+      {
+        l1 = new JSONObject(paramString).optLong("version", -1L);
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+        l1 = l2;
+      }
+    }
+    checkConfigUpdate(true, l1);
+  }
+  
   public void loadConfig()
   {
     ThreadManagerV2.excute(new QQGameConfigServiceImpl.1(this), 64, null, false);
@@ -66,47 +85,53 @@ public class QQGameConfigServiceImpl
   
   public void requestConfig(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGameConfigServiceImpl", 2, "requestConfig currVersion=" + paramLong);
-    }
-    JSONObject localJSONObject1 = new JSONObject();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("requestConfig currVersion=");
+    ((StringBuilder)localObject).append(paramLong);
+    QLog.d("Wadl_QQGameConfigServiceImpl", 1, ((StringBuilder)localObject).toString());
+    localObject = new JSONObject();
     try
     {
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("op_version", paramLong);
-      localJSONObject1.put("req", localJSONObject2);
-      ((IQQGameNetService)QRoute.api(IQQGameNetService.class)).requestWebSso("13136", localJSONObject1, null);
-      return;
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("op_version", paramLong);
+      ((JSONObject)localObject).put("req", localJSONObject);
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    ((IQQGameNetService)QRoute.api(IQQGameNetService.class)).requestWebSso("13136", (JSONObject)localObject, null);
   }
   
   public void writeConfig(boolean paramBoolean, String paramString, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGameConfigServiceImpl", 2, "writeConfig...newVersion=" + paramLong + ",content=" + paramString);
-    }
-    if (!paramBoolean) {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("writeConfig...newVersion=");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(",content=");
+    localStringBuilder.append(paramString);
+    QLog.d("Wadl_QQGameConfigServiceImpl", 1, localStringBuilder.toString());
+    if (!paramBoolean)
+    {
       this.updateConfFailCount = ((short)(this.updateConfFailCount + 1));
     }
-    while ((TextUtils.isEmpty(paramString)) || (paramLong < 0L))
+    else
     {
-      return;
       this.updateConfFailCount = 0;
       this.updateConfTime = System.currentTimeMillis();
     }
-    ThreadManagerV2.excute(new QQGameConfigServiceImpl.3(this, paramString, paramLong), 16, null, false);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (paramLong < 0L) {
+        return;
+      }
+      ThreadManagerV2.excute(new QQGameConfigServiceImpl.3(this, paramString, paramLong), 16, null, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.api.impl.QQGameConfigServiceImpl
  * JD-Core Version:    0.7.0.1
  */

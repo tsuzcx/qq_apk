@@ -18,38 +18,40 @@ class QRScanEntryView$11
   
   public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    long l = 0L;
+    long l;
     if (paramLottieComposition != null)
     {
       l = paramLottieComposition.getDuration() + 100L;
       Object localObject = paramLottieComposition.getBounds();
-      int i = AIOUtils.a(30.0F, this.a.getResources());
-      float f1 = i / ((Rect)localObject).width();
-      float f2 = i / ((Rect)localObject).height();
+      float f2 = AIOUtils.b(30.0F, this.a.getResources());
+      float f1 = f2 / ((Rect)localObject).width();
+      f2 /= ((Rect)localObject).height();
       localObject = new LottieDrawable();
       ((LottieDrawable)localObject).setComposition(paramLottieComposition);
       ((LottieDrawable)localObject).setScale(f1, f2);
       ((LottieDrawable)localObject).playAnimation();
       QRScanEntryView.a(this.a).setCompoundDrawablesWithIntrinsicBounds(null, (Drawable)localObject, null, null);
     }
-    for (;;)
+    else
     {
-      paramLottieComposition = ObjectAnimator.ofFloat(QRScanEntryView.a(this.a), "alpha", new float[] { 1.0F, 0.0F, 1.0F });
-      paramLottieComposition.setDuration(300L);
-      paramLottieComposition.setRepeatCount(2);
-      paramLottieComposition.setStartDelay(l);
-      paramLottieComposition.start();
-      QRScanEntryView.a(this.a, QRScanEntryView.a(this.a), true, false);
-      QRScanEntryView.a(this.a, QRScanEntryView.b(this.a), false, true);
-      return;
       QLog.e("AREngine_QRScanEntryView", 1, "loadFlashLightSVGDrawable fail, use static resource.");
-      QRScanEntryView.a(this.a).setCompoundDrawablesWithIntrinsicBounds(0, 2130844990, 0, 0);
+      QRScanEntryView.a(this.a).setCompoundDrawablesWithIntrinsicBounds(0, 2130844866, 0, 0);
+      l = 0L;
     }
+    paramLottieComposition = ObjectAnimator.ofFloat(QRScanEntryView.a(this.a), "alpha", new float[] { 1.0F, 0.0F, 1.0F });
+    paramLottieComposition.setDuration(300L);
+    paramLottieComposition.setRepeatCount(2);
+    paramLottieComposition.setStartDelay(l);
+    paramLottieComposition.start();
+    paramLottieComposition = this.a;
+    QRScanEntryView.a(paramLottieComposition, QRScanEntryView.a(paramLottieComposition), true, false);
+    paramLottieComposition = this.a;
+    QRScanEntryView.a(paramLottieComposition, QRScanEntryView.b(paramLottieComposition), false, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.QRScanEntryView.11
  * JD-Core Version:    0.7.0.1
  */

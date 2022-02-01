@@ -12,14 +12,21 @@ class VideoBaseItem$7
   
   public void onNetVideoInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, TVK_NetVideoInfo paramTVK_NetVideoInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoBaseItem", 2, "[MediaPlayer] onNetVideoInfo what=" + paramTVK_NetVideoInfo.getErrInfo() + ",extra=" + paramTVK_NetVideoInfo.getState() + ",mCacheProgress=");
+    if (QLog.isColorLevel())
+    {
+      paramTVK_IMediaPlayer = new StringBuilder();
+      paramTVK_IMediaPlayer.append("[MediaPlayer] onNetVideoInfo what=");
+      paramTVK_IMediaPlayer.append(paramTVK_NetVideoInfo.getErrInfo());
+      paramTVK_IMediaPlayer.append(",extra=");
+      paramTVK_IMediaPlayer.append(paramTVK_NetVideoInfo.getState());
+      paramTVK_IMediaPlayer.append(",mCacheProgress=");
+      QLog.d("VideoBaseItem", 2, paramTVK_IMediaPlayer.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.VideoBaseItem.7
  * JD-Core Version:    0.7.0.1
  */

@@ -39,14 +39,15 @@ public final class GPicInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.vPath, 0);
-    if (this.vHost != null) {
-      paramJceOutputStream.write(this.vHost, 1);
+    byte[] arrayOfByte = this.vHost;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PushNotifyPack.GPicInfo
  * JD-Core Version:    0.7.0.1
  */

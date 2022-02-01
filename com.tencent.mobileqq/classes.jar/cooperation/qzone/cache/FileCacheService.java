@@ -21,13 +21,15 @@ public class FileCacheService
   
   public FileCacheService(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      throw new NullPointerException("file cache: name can NOT be empty!");
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.mName = paramString;
+      this.version = paramInt1;
+      this.mExternalCapacity = paramInt2;
+      this.mInternalCapacity = paramInt3;
+      return;
     }
-    this.mName = paramString;
-    this.version = paramInt1;
-    this.mExternalCapacity = paramInt2;
-    this.mInternalCapacity = paramInt3;
+    throw new NullPointerException("file cache: name can NOT be empty!");
   }
   
   private File createFile(String paramString)
@@ -54,28 +56,21 @@ public class FileCacheService
   
   private void ensureStorage()
   {
-    if (this.mStorageCounter.getAndIncrement() < 5) {}
-    String str;
-    Object localObject;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          this.mStorageCounter.set(0);
-          str = getDir();
-        } while (TextUtils.isEmpty(str));
-        for (localObject = new File(str); !((File)localObject).exists(); localObject = ((File)localObject).getParentFile()) {}
-      } while (!FileStorageHandler.isStorageSizeLow(((File)localObject).getAbsolutePath()));
-      localObject = this.mStorageHandler;
-    } while (localObject == null);
-    if (!CacheManager.isInternal(str)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ((FileCacheService.StorageHandler)localObject).onLowStorage(this, bool);
+    if (this.mStorageCounter.getAndIncrement() < 5) {
       return;
+    }
+    this.mStorageCounter.set(0);
+    String str = getDir();
+    if (TextUtils.isEmpty(str)) {
+      return;
+    }
+    for (Object localObject = new File(str); !((File)localObject).exists(); localObject = ((File)localObject).getParentFile()) {}
+    if (FileStorageHandler.isStorageSizeLow(((File)localObject).getAbsolutePath()))
+    {
+      localObject = this.mStorageHandler;
+      if (localObject != null) {
+        ((FileCacheService.StorageHandler)localObject).onLowStorage(this, CacheManager.isInternal(str) ^ true);
+      }
     }
   }
   
@@ -89,12 +84,19 @@ public class FileCacheService
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("CacheManager", 2, "FileCacheService deleteFile fileName:" + paramString);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("FileCacheService deleteFile fileName:");
+      localStringBuilder.append(paramString);
+      QLog.i("CacheManager", 2, localStringBuilder.toString());
     }
     paramString = getPath(paramString);
     FileUtils.delete(paramString);
-    FileUtils.delete(paramString + ".headers");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".headers");
+    FileUtils.delete(localStringBuilder.toString());
   }
   
   public int getCapacity(boolean paramBoolean)
@@ -121,39 +123,33 @@ public class FileCacheService
       return null;
     }
     String str = getPath(paramString);
-    Object localObject;
-    if (str == null)
+    File localFile;
+    if (str == null) {
+      localFile = null;
+    } else {
+      localFile = new File(str);
+    }
+    if (isFileValid(localFile))
     {
-      localObject = null;
-      if (!isFileValid((File)localObject)) {
-        break label59;
-      }
       updateLruFile(str, false);
-      label37:
-      if (!isFileValid((File)localObject)) {
-        break label92;
-      }
     }
-    for (;;)
+    else if (paramBoolean)
     {
-      return localObject;
-      localObject = new File(str);
-      break;
-      label59:
-      if (!paramBoolean) {
-        break label37;
+      localFile = createFile(paramString);
+      paramString = localFile;
+      if (!isFileValid(localFile)) {
+        break label88;
       }
-      paramString = createFile(paramString);
-      localObject = paramString;
-      if (!isFileValid(paramString)) {
-        break label37;
-      }
-      updateLruFile(paramString.getAbsolutePath(), true);
-      localObject = paramString;
-      break label37;
-      label92:
-      localObject = null;
+      updateLruFile(localFile.getAbsolutePath(), true);
+      paramString = localFile;
+      break label88;
     }
+    paramString = localFile;
+    label88:
+    if (isFileValid(paramString)) {
+      return paramString;
+    }
+    return null;
   }
   
   public String getPath(String paramString)
@@ -165,7 +161,11 @@ public class FileCacheService
     if (TextUtils.isEmpty(str)) {
       return "";
     }
-    return str + File.separator + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   public void setStorageHandler(FileCacheService.StorageHandler paramStorageHandler)
@@ -175,16 +175,20 @@ public class FileCacheService
   
   public void updateLruFile(String paramString, boolean paramBoolean)
   {
-    File localFile = new File(paramString);
-    if ((localFile.exists()) && (!localFile.setLastModified(System.currentTimeMillis())) && (QLog.isDevelopLevel())) {
-      QLog.w("FileCacheService", 2, "更新缓存文件的lru文件时间失败. path=" + paramString);
+    Object localObject = new File(paramString);
+    if ((((File)localObject).exists()) && (!((File)localObject).setLastModified(System.currentTimeMillis())) && (QLog.isDevelopLevel()))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("更新缓存文件的lru文件时间失败. path=");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.w("FileCacheService", 2, ((StringBuilder)localObject).toString());
     }
     ensureStorage();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.cache.FileCacheService
  * JD-Core Version:    0.7.0.1
  */

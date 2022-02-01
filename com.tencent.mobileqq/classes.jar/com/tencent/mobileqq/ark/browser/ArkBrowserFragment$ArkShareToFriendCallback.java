@@ -10,8 +10,9 @@ class ArkBrowserFragment$ArkShareToFriendCallback
   
   public void a(String paramString)
   {
-    this.a.a = paramString;
-    paramString = this.a.getWebView();
+    ArkBrowserFragment localArkBrowserFragment = this.a;
+    localArkBrowserFragment.a = paramString;
+    paramString = localArkBrowserFragment.getWebView();
     if (paramString != null) {
       paramString.callJs("NativeApi.lightappGetShareData();");
     }
@@ -19,7 +20,7 @@ class ArkBrowserFragment$ArkShareToFriendCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ark.browser.ArkBrowserFragment.ArkShareToFriendCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -69,39 +69,60 @@ public final class TroopAskAnonymouslyHelper
     if (QLog.isColorLevel()) {
       QLog.i("TroopAskAnonymouslyHelper", 2, "filterAndHandleAskAnonymouslyReplyMsg");
     }
-    if (((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof BaseTroopChatPie)) && (((BaseTroopChatPie)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie).G())) {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    if (((localObject instanceof BaseTroopChatPie)) && (((BaseTroopChatPie)localObject).v()))
+    {
       if (QLog.isColorLevel()) {
         QLog.i("TroopAskAnonymouslyHelper", 2, "filterAndHandleAskAnonymouslyReplyMsg current is in anonymous mode");
       }
-    }
-    while (paramMessage.getData() == null) {
       return;
     }
-    paramMessage = paramMessage.obj;
-    if (paramMessage == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Long");
-    }
-    long l1 = ((Long)paramMessage).longValue();
-    paramMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageProxy(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b()).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b(), l1);
-    if ((paramMessage != null) && ((paramMessage instanceof MessageForReplyText)) && (((MessageForReplyText)paramMessage).mSourceMsgInfo != null) && (((MessageForReplyText)paramMessage).mSourceMsgInfo.mSourceMsgSeq > 0L))
+    if (paramMessage.getData() != null)
     {
-      Object localObject = ReplyTextItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessage.frienduin, paramMessage.istroop, ((MessageForReplyText)paramMessage).mSourceMsgInfo.mSourceMsgSeq);
-      if ((localObject != null) && (AskAnonymousUtil.a((MessageRecord)localObject)))
+      paramMessage = paramMessage.obj;
+      if (paramMessage != null)
       {
-        String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.d();
-        Intrinsics.checkExpressionValueIsNotNull(str, "mChatPie.curTroopUin");
-        l1 = Long.parseLong(str);
-        long l2 = AskAnonymousUtil.a((MessageRecord)localObject);
-        paramMessage = paramMessage.msg;
-        if (QLog.isColorLevel()) {
-          QLog.i("TroopAskAnonymouslyHelper", 2, "filterAndHandleAskAnonymouslyReplyMsg groupCode = " + l1 + " questionId = " + l2 + " replyStr = " + paramMessage);
+        long l1 = ((Long)paramMessage).longValue();
+        paramMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageProxy(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b()).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b(), l1);
+        if ((paramMessage != null) && ((paramMessage instanceof MessageForReplyText)))
+        {
+          localObject = (MessageForReplyText)paramMessage;
+          if ((((MessageForReplyText)localObject).mSourceMsgInfo != null) && (((MessageForReplyText)localObject).mSourceMsgInfo.mSourceMsgSeq > 0L))
+          {
+            localObject = ReplyTextItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessage.frienduin, paramMessage.istroop, ((MessageForReplyText)localObject).mSourceMsgInfo.mSourceMsgSeq);
+            if ((localObject != null) && (AskAnonymousUtil.a((MessageRecord)localObject)))
+            {
+              String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.d();
+              Intrinsics.checkExpressionValueIsNotNull(str, "mChatPie.curTroopUin");
+              l1 = Long.parseLong(str);
+              long l2 = AskAnonymousUtil.a((MessageRecord)localObject);
+              paramMessage = paramMessage.msg;
+              if (QLog.isColorLevel())
+              {
+                localObject = new StringBuilder();
+                ((StringBuilder)localObject).append("filterAndHandleAskAnonymouslyReplyMsg groupCode = ");
+                ((StringBuilder)localObject).append(l1);
+                ((StringBuilder)localObject).append(" questionId = ");
+                ((StringBuilder)localObject).append(l2);
+                ((StringBuilder)localObject).append(" replyStr = ");
+                ((StringBuilder)localObject).append(paramMessage);
+                QLog.i("TroopAskAnonymouslyHelper", 2, ((StringBuilder)localObject).toString());
+              }
+              ReportController.b(null, "dc00899", "Grp_AIO", "", "ask_tab", "ans_send", 0, 0, String.valueOf(l1), "0", paramMessage, "");
+              localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.ANONYMOUS_ANSWER_HANDLER);
+              if (localObject != null)
+              {
+                ((AnonymousHandler)localObject).replyTroopAskAnonymously(l1, l2, paramMessage);
+                return;
+              }
+              throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.profilecard.bussiness.anonymous.handler.AnonymousHandler");
+            }
+          }
         }
-        ReportController.b(null, "dc00899", "Grp_AIO", "", "ask_tab", "ans_send", 0, 0, String.valueOf(l1), "0", paramMessage, "");
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.ANONYMOUS_ANSWER_HANDLER);
-        if (localObject == null) {
-          throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.profilecard.bussiness.anonymous.handler.AnonymousHandler");
-        }
-        ((AnonymousHandler)localObject).replyTroopAskAnonymously(l1, l2, paramMessage);
+      }
+      else
+      {
+        throw new TypeCastException("null cannot be cast to non-null type kotlin.Long");
       }
     }
   }
@@ -156,41 +177,37 @@ public final class TroopAskAnonymouslyHelper
   public boolean handleMessage(@Nullable Message paramMessage)
   {
     if (paramMessage != null) {
-      switch (paramMessage.what)
-      {
-      default: 
+      if (paramMessage.what != 0) {
         QLog.e("TroopAskAnonymouslyHelper", 2, "handle for unknown message");
+      } else {
+        a(paramMessage);
       }
     }
-    for (;;)
-    {
-      return false;
-      a(paramMessage);
-    }
+    return false;
   }
   
   @NotNull
   public int[] interestedIn()
   {
-    return new int[] { 4, 14 };
+    return new int[] { 4, 15 };
   }
   
   public void onMoveToState(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 4)
     {
-    default: 
-      return;
-    case 4: 
-      a();
+      if (paramInt != 15) {
+        return;
+      }
+      b();
       return;
     }
-    b();
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopAskAnonymouslyHelper
  * JD-Core Version:    0.7.0.1
  */

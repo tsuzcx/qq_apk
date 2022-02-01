@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class SlaveMasterMsg
   extends JceStruct
@@ -91,22 +92,25 @@ public final class SlaveMasterMsg
     paramJceOutputStream.write(this.lToUin, 6);
     paramJceOutputStream.write(this.wToApp, 7);
     paramJceOutputStream.write(this.uToInstId, 8);
-    if (this.vOrigMsg != null) {
-      paramJceOutputStream.write(this.vOrigMsg, 9);
+    Object localObject = this.vOrigMsg;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 9);
     }
     paramJceOutputStream.write(this.uLastChangeTime, 10);
-    if (this.vReserved != null) {
-      paramJceOutputStream.write(this.vReserved, 11);
+    localObject = this.vReserved;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 11);
     }
-    if (this.vMarketFace != null) {
-      paramJceOutputStream.write(this.vMarketFace, 12);
+    localObject = this.vMarketFace;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 12);
     }
     paramJceOutputStream.write(this.uSuperQQBubbleId, 13);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     IMMsgBodyPack.SlaveMasterMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -43,103 +43,106 @@ public class ListFragment
       return;
     }
     Object localObject = getView();
-    if (localObject == null) {
-      throw new IllegalStateException("Content view not yet created");
-    }
-    if ((localObject instanceof ListView))
+    if (localObject != null)
     {
-      this.mList = ((ListView)localObject);
-      this.mListShown = true;
-      this.mList.setOnItemClickListener(this.mOnClickListener);
-      if (this.mAdapter == null) {
-        break label254;
-      }
-      localObject = this.mAdapter;
-      this.mAdapter = null;
-      setListAdapter((ListAdapter)localObject);
-    }
-    for (;;)
-    {
-      this.mHandler.post(this.mRequestFocus);
-      return;
-      this.mStandardEmptyView = ((TextView)((View)localObject).findViewById(16711681));
-      if (this.mStandardEmptyView == null) {
-        this.mEmptyView = ((View)localObject).findViewById(16908292);
-      }
-      for (;;)
+      if ((localObject instanceof ListView))
       {
+        this.mList = ((ListView)localObject);
+      }
+      else
+      {
+        this.mStandardEmptyView = ((TextView)((View)localObject).findViewById(16711681));
+        TextView localTextView = this.mStandardEmptyView;
+        if (localTextView == null) {
+          this.mEmptyView = ((View)localObject).findViewById(16908292);
+        } else {
+          localTextView.setVisibility(8);
+        }
         this.mProgressContainer = ((View)localObject).findViewById(16711682);
         this.mListContainer = ((View)localObject).findViewById(16711683);
         localObject = ((View)localObject).findViewById(16908298);
-        if ((localObject instanceof ListView)) {
-          break label193;
+        if (!(localObject instanceof ListView))
+        {
+          if (localObject == null) {
+            throw new RuntimeException("Your content must have a ListView whose id attribute is 'android.R.id.list'");
+          }
+          throw new RuntimeException("Content has view with id attribute 'android.R.id.list' that is not a ListView class");
         }
-        if (localObject != null) {
-          break;
+        this.mList = ((ListView)localObject);
+        localObject = this.mEmptyView;
+        if (localObject != null)
+        {
+          this.mList.setEmptyView((View)localObject);
         }
-        throw new RuntimeException("Your content must have a ListView whose id attribute is 'android.R.id.list'");
-        this.mStandardEmptyView.setVisibility(8);
+        else
+        {
+          localObject = this.mEmptyText;
+          if (localObject != null)
+          {
+            this.mStandardEmptyView.setText((CharSequence)localObject);
+            this.mList.setEmptyView(this.mStandardEmptyView);
+          }
+        }
       }
-      throw new RuntimeException("Content has view with id attribute 'android.R.id.list' that is not a ListView class");
-      label193:
-      this.mList = ((ListView)localObject);
-      if (this.mEmptyView != null)
+      this.mListShown = true;
+      this.mList.setOnItemClickListener(this.mOnClickListener);
+      localObject = this.mAdapter;
+      if (localObject != null)
       {
-        this.mList.setEmptyView(this.mEmptyView);
-        break;
+        this.mAdapter = null;
+        setListAdapter((ListAdapter)localObject);
       }
-      if (this.mEmptyText == null) {
-        break;
-      }
-      this.mStandardEmptyView.setText(this.mEmptyText);
-      this.mList.setEmptyView(this.mStandardEmptyView);
-      break;
-      label254:
-      if (this.mProgressContainer != null) {
+      else if (this.mProgressContainer != null)
+      {
         setListShown(false, false);
       }
+      this.mHandler.post(this.mRequestFocus);
+      return;
     }
+    throw new IllegalStateException("Content view not yet created");
   }
   
   private void setListShown(boolean paramBoolean1, boolean paramBoolean2)
   {
     ensureList();
-    if (this.mProgressContainer == null) {
-      throw new IllegalStateException("Can't be used with a custom content view");
-    }
-    if (this.mListShown == paramBoolean1) {
-      return;
-    }
-    this.mListShown = paramBoolean1;
-    if (paramBoolean1)
+    View localView = this.mProgressContainer;
+    if (localView != null)
     {
-      if (paramBoolean2)
-      {
-        this.mProgressContainer.startAnimation(AnimationUtils.loadAnimation(getContext(), 17432577));
-        this.mListContainer.startAnimation(AnimationUtils.loadAnimation(getContext(), 17432576));
+      if (this.mListShown == paramBoolean1) {
+        return;
       }
-      for (;;)
+      this.mListShown = paramBoolean1;
+      if (paramBoolean1)
       {
+        if (paramBoolean2)
+        {
+          localView.startAnimation(AnimationUtils.loadAnimation(getContext(), 17432577));
+          this.mListContainer.startAnimation(AnimationUtils.loadAnimation(getContext(), 17432576));
+        }
+        else
+        {
+          localView.clearAnimation();
+          this.mListContainer.clearAnimation();
+        }
         this.mProgressContainer.setVisibility(8);
         this.mListContainer.setVisibility(0);
         return;
-        this.mProgressContainer.clearAnimation();
+      }
+      if (paramBoolean2)
+      {
+        localView.startAnimation(AnimationUtils.loadAnimation(getContext(), 17432576));
+        this.mListContainer.startAnimation(AnimationUtils.loadAnimation(getContext(), 17432577));
+      }
+      else
+      {
+        localView.clearAnimation();
         this.mListContainer.clearAnimation();
       }
-    }
-    if (paramBoolean2)
-    {
-      this.mProgressContainer.startAnimation(AnimationUtils.loadAnimation(getContext(), 17432576));
-      this.mListContainer.startAnimation(AnimationUtils.loadAnimation(getContext(), 17432577));
-    }
-    for (;;)
-    {
       this.mProgressContainer.setVisibility(0);
       this.mListContainer.setVisibility(8);
       return;
-      this.mProgressContainer.clearAnimation();
-      this.mListContainer.clearAnimation();
     }
+    throw new IllegalStateException("Can't be used with a custom content view");
   }
   
   @Nullable
@@ -218,45 +221,55 @@ public class ListFragment
   @NonNull
   public final ListAdapter requireListAdapter()
   {
-    ListAdapter localListAdapter = getListAdapter();
-    if (localListAdapter == null) {
-      throw new IllegalStateException("ListFragment " + this + " does not have a ListAdapter.");
+    Object localObject = getListAdapter();
+    if (localObject != null) {
+      return localObject;
     }
-    return localListAdapter;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("ListFragment ");
+    ((StringBuilder)localObject).append(this);
+    ((StringBuilder)localObject).append(" does not have a ListAdapter.");
+    throw new IllegalStateException(((StringBuilder)localObject).toString());
   }
   
   public void setEmptyText(@Nullable CharSequence paramCharSequence)
   {
     ensureList();
-    if (this.mStandardEmptyView == null) {
-      throw new IllegalStateException("Can't be used with a custom content view");
+    TextView localTextView = this.mStandardEmptyView;
+    if (localTextView != null)
+    {
+      localTextView.setText(paramCharSequence);
+      if (this.mEmptyText == null) {
+        this.mList.setEmptyView(this.mStandardEmptyView);
+      }
+      this.mEmptyText = paramCharSequence;
+      return;
     }
-    this.mStandardEmptyView.setText(paramCharSequence);
-    if (this.mEmptyText == null) {
-      this.mList.setEmptyView(this.mStandardEmptyView);
-    }
-    this.mEmptyText = paramCharSequence;
+    throw new IllegalStateException("Can't be used with a custom content view");
   }
   
   public void setListAdapter(@Nullable ListAdapter paramListAdapter)
   {
+    Object localObject = this.mAdapter;
     boolean bool = false;
-    if (this.mAdapter != null) {}
-    for (int i = 1;; i = 0)
+    int i;
+    if (localObject != null) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    this.mAdapter = paramListAdapter;
+    localObject = this.mList;
+    if (localObject != null)
     {
-      this.mAdapter = paramListAdapter;
-      if (this.mList != null)
+      ((ListView)localObject).setAdapter(paramListAdapter);
+      if ((!this.mListShown) && (i == 0))
       {
-        this.mList.setAdapter(paramListAdapter);
-        if ((!this.mListShown) && (i == 0))
-        {
-          if (requireView().getWindowToken() != null) {
-            bool = true;
-          }
-          setListShown(true, bool);
+        if (requireView().getWindowToken() != null) {
+          bool = true;
         }
+        setListShown(true, bool);
       }
-      return;
     }
   }
   
@@ -278,7 +291,7 @@ public class ListFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.fragment.app.ListFragment
  * JD-Core Version:    0.7.0.1
  */

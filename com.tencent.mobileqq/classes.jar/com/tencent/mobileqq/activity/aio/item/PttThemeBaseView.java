@@ -12,7 +12,7 @@ import android.graphics.Xfermode;
 import android.util.AttributeSet;
 import android.view.View;
 import androidx.annotation.Nullable;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.util.Utils;
 import com.tencent.qphone.base.util.QLog;
 
 public abstract class PttThemeBaseView
@@ -59,24 +59,28 @@ public abstract class PttThemeBaseView
   private Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
     if (paramBitmap == null) {
-      paramBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+      return Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
     }
-    int j;
-    int k;
-    Bitmap localBitmap;
-    do
+    int j = paramBitmap.getWidth();
+    int k = paramBitmap.getHeight();
+    if ((j == paramInt1) && (k == paramInt2)) {
+      return paramBitmap;
+    }
+    paramBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        return paramBitmap;
-        j = paramBitmap.getWidth();
-        k = paramBitmap.getHeight();
-      } while ((j == paramInt1) && (k == paramInt2));
-      localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-      paramBitmap = localBitmap;
-    } while (!QLog.isColorLevel());
-    QLog.d("PttBaseView", 2, "initBitmap change width =" + paramInt1 + " height=" + paramInt2 + " oldBitmapWidth =" + j + " oldBitmpHeight=" + k);
-    return localBitmap;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initBitmap change width =");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" height=");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(" oldBitmapWidth =");
+      localStringBuilder.append(j);
+      localStringBuilder.append(" oldBitmpHeight=");
+      localStringBuilder.append(k);
+      QLog.d("PttBaseView", 2, localStringBuilder.toString());
+    }
+    return paramBitmap;
   }
   
   private void c()
@@ -90,10 +94,12 @@ public abstract class PttThemeBaseView
   
   public void a()
   {
-    if ((this.jdField_c_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_c_of_type_AndroidGraphicsBitmap.isRecycled())) {
+    Bitmap localBitmap = this.jdField_c_of_type_AndroidGraphicsBitmap;
+    if ((localBitmap != null) && (!localBitmap.isRecycled())) {
       this.jdField_c_of_type_AndroidGraphicsBitmap.recycle();
     }
-    if ((this.jdField_d_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_d_of_type_AndroidGraphicsBitmap.isRecycled())) {
+    localBitmap = this.jdField_d_of_type_AndroidGraphicsBitmap;
+    if ((localBitmap != null) && (!localBitmap.isRecycled())) {
       this.jdField_d_of_type_AndroidGraphicsBitmap.recycle();
     }
     this.jdField_c_of_type_AndroidGraphicsBitmap = null;
@@ -107,7 +113,7 @@ public abstract class PttThemeBaseView
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.e);
     this.jdField_a_of_type_AndroidGraphicsXfermode = new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP);
     this.jdField_a_of_type_AndroidGraphicsPorterDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
-    this.i = AIOUtils.a(paramInt, getContext().getResources());
+    this.i = Utils.a(paramInt, getContext().getResources());
   }
   
   protected abstract void a(Canvas paramCanvas);
@@ -116,14 +122,17 @@ public abstract class PttThemeBaseView
   
   protected void b()
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsCanvas == null) || (this.jdField_c_of_type_AndroidGraphicsBitmap == null) || (!this.jdField_a_of_type_Boolean)) {
-      return;
+    if ((this.jdField_a_of_type_AndroidGraphicsCanvas != null) && (this.jdField_c_of_type_AndroidGraphicsBitmap != null))
+    {
+      if (!this.jdField_a_of_type_Boolean) {
+        return;
+      }
+      this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(this.jdField_a_of_type_AndroidGraphicsPorterDuffXfermode);
+      this.jdField_a_of_type_AndroidGraphicsCanvas.drawPaint(this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.f);
+      this.jdField_a_of_type_AndroidGraphicsCanvas.drawRect(this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(this.jdField_a_of_type_AndroidGraphicsPorterDuffXfermode);
-    this.jdField_a_of_type_AndroidGraphicsCanvas.drawPaint(this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.f);
-    this.jdField_a_of_type_AndroidGraphicsCanvas.drawRect(this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
   protected void b(Canvas paramCanvas)
@@ -137,7 +146,7 @@ public abstract class PttThemeBaseView
     }
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if ((this.jdField_a_of_type_AndroidGraphicsRectF == null) || (this.jdField_a_of_type_Boolean)) {
@@ -156,11 +165,23 @@ public abstract class PttThemeBaseView
     }
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (QLog.isColorLevel()) {
-      QLog.d("PttBaseView", 2, "onLayout changed=" + paramBoolean + " left=" + paramInt1 + " top=" + paramInt2 + " right=" + paramInt3 + " bottom=" + paramInt4);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onLayout changed=");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(" left=");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" top=");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(" right=");
+      localStringBuilder.append(paramInt3);
+      localStringBuilder.append(" bottom=");
+      localStringBuilder.append(paramInt4);
+      QLog.d("PttBaseView", 2, localStringBuilder.toString());
     }
     if (paramBoolean)
     {
@@ -172,10 +193,13 @@ public abstract class PttThemeBaseView
       if (this.h < 0) {
         this.h = 0;
       }
-      this.jdField_a_of_type_Int = (this.g - this.i);
-      this.jdField_c_of_type_Int = (this.g + this.i);
-      this.jdField_b_of_type_Int = (this.h - this.i);
-      this.jdField_d_of_type_Int = (this.h + this.i);
+      paramInt2 = this.g;
+      paramInt1 = this.i;
+      this.jdField_a_of_type_Int = (paramInt2 - paramInt1);
+      this.jdField_c_of_type_Int = (paramInt2 + paramInt1);
+      paramInt2 = this.h;
+      this.jdField_b_of_type_Int = (paramInt2 - paramInt1);
+      this.jdField_d_of_type_Int = (paramInt2 + paramInt1);
       this.jdField_c_of_type_AndroidGraphicsBitmap = a(this.jdField_c_of_type_AndroidGraphicsBitmap, getMeasuredWidth(), getMeasuredHeight());
       this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_c_of_type_AndroidGraphicsBitmap);
       this.jdField_d_of_type_AndroidGraphicsBitmap = a(this.jdField_d_of_type_AndroidGraphicsBitmap, getMeasuredWidth(), getMeasuredHeight());
@@ -189,8 +213,12 @@ public abstract class PttThemeBaseView
   {
     if (this.f != paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PttBaseView", 2, "setThemeColor " + Integer.toHexString(this.f));
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setThemeColor ");
+        localStringBuilder.append(Integer.toHexString(this.f));
+        QLog.d("PttBaseView", 2, localStringBuilder.toString());
       }
       this.f = paramInt;
       this.jdField_a_of_type_Boolean = true;
@@ -200,7 +228,7 @@ public abstract class PttThemeBaseView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PttThemeBaseView
  * JD-Core Version:    0.7.0.1
  */

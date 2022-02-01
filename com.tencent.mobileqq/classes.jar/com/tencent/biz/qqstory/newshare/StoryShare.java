@@ -93,11 +93,13 @@ public class StoryShare
   
   public StoryShare a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareModeBaseShareModeBase == null) {
-      throw new IllegalStateException("Error: mShareMode is null! StoryShare should init mode() first!");
+    ShareModeBase localShareModeBase = this.jdField_a_of_type_ComTencentBizQqstoryNewshareModeBaseShareModeBase;
+    if (localShareModeBase != null)
+    {
+      localShareModeBase.b.put(paramString1, paramString2);
+      return this;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModeBaseShareModeBase.b.put(paramString1, paramString2);
-    return this;
+    throw new IllegalStateException("Error: mShareMode is null! StoryShare should init mode() first!");
   }
   
   public StoryShare a(@NonNull List<int[]> paramList)
@@ -112,64 +114,73 @@ public class StoryShare
   
   public boolean a(int paramInt1, int paramInt2, Intent paramIntent)
   {
+    Activity localActivity;
     if (paramInt1 == 29782)
     {
-      Activity localActivity = this.jdField_a_of_type_ComTencentBizQqstoryNewshareUiShareUI.a();
-      if ((paramInt2 == -1) && (localActivity != null)) {}
-      for (;;)
-      {
-        try
-        {
-          TroopShareUtility.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), (Activity)localActivity, paramInt2, paramIntent);
-          if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnShareListener != null) {
-            this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnShareListener.a(1);
-          }
-          if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnShareListener != null) {
-            this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnShareListener.a();
-          }
-        }
-        catch (Exception paramIntent)
-        {
-          if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnShareListener == null) {
-            continue;
-          }
-          this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnShareListener.c(1);
-          if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnShareListener == null) {
-            continue;
-          }
-          this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnShareListener.a();
-          continue;
-        }
-        return true;
-        if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnShareListener != null) {
-          this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnShareListener.d(1);
-        }
-        if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnShareListener != null) {
-          this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnShareListener.a();
-        }
+      localActivity = this.jdField_a_of_type_ComTencentBizQqstoryNewshareUiShareUI.a();
+      if ((paramInt2 != -1) || (localActivity == null)) {}
+    }
+    try
+    {
+      TroopShareUtility.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), (Activity)localActivity, paramInt2, paramIntent);
+      if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnShareListener != null) {
+        this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnShareListener.b(1);
+      }
+      if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnShareListener == null) {
+        break label144;
+      }
+      this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnShareListener.d();
+      return true;
+    }
+    catch (Exception paramIntent)
+    {
+      label80:
+      break label80;
+    }
+    paramIntent = this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnShareListener;
+    if (paramIntent != null) {
+      paramIntent.c(1);
+    }
+    paramIntent = this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnShareListener;
+    if (paramIntent != null)
+    {
+      paramIntent.d();
+      return true;
+      paramIntent = this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnShareListener;
+      if (paramIntent != null) {
+        paramIntent.d(1);
+      }
+      paramIntent = this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnShareListener;
+      if (paramIntent != null) {
+        paramIntent.d();
       }
     }
+    label144:
+    return true;
     return false;
   }
   
   public StoryShare b()
   {
     SLog.a("StoryShare", "show(): %s", toString());
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareModeBaseShareModeBase == null) {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnShareListener != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnShareListener.c(0);
-      }
-    }
-    do
+    if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareModeBaseShareModeBase == null)
     {
-      return this;
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareUiShareUI.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareUiOnShareUIListener);
-      if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnShareListener != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnShareListener.b();
+      localOnShareListener = this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnShareListener;
+      if (localOnShareListener != null) {
+        localOnShareListener.c(0);
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareUiShareUI.d();
-    } while (this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnShareListener == null);
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnShareListener.c();
+      return this;
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareUiShareUI.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareUiOnShareUIListener);
+    OnShareListener localOnShareListener = this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnShareListener;
+    if (localOnShareListener != null) {
+      localOnShareListener.a();
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareUiShareUI.d();
+    localOnShareListener = this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnShareListener;
+    if (localOnShareListener != null) {
+      localOnShareListener.b();
+    }
     return this;
   }
   
@@ -179,7 +190,7 @@ public class StoryShare
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.StoryShare
  * JD-Core Version:    0.7.0.1
  */

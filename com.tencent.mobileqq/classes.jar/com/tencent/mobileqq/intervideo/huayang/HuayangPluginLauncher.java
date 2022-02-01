@@ -19,6 +19,7 @@ import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.intervideo.IVPluginInfo;
 import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.HashMap;
@@ -29,304 +30,300 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 public class HuayangPluginLauncher
+  implements IHuayangPluginLauncher
 {
-  private static Map<String, HuayangPluginLauncher> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new HuayangPluginLauncher.1(this);
-  private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
-  private final InstalledPlugin jdField_a_of_type_ComTencentHydevteamPluginframeworkInstalledpluginInstalledPlugin;
-  private final PluginLoader jdField_a_of_type_ComTencentHydevteamPluginframeworkPluginloaderPluginLoader = new DynamicPluginLoader();
-  private RunningPlugin jdField_a_of_type_ComTencentHydevteamPluginframeworkPluginloaderRunningPlugin;
-  private IVPluginInfo jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo;
-  private IVPluginDataReporter jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter;
-  private String jdField_a_of_type_JavaLangString;
-  private final List<HuayangPluginLauncher.HuayangPluginLauncherListener> jdField_a_of_type_JavaUtilList = new LinkedList();
-  volatile boolean jdField_a_of_type_Boolean = false;
-  private String jdField_b_of_type_JavaLangString;
-  volatile boolean jdField_b_of_type_Boolean = false;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  private boolean d;
-  private boolean e;
+  private static final int MSG_NOTIFY_LAUNCH_COMPLETED = 3;
+  private static final int MSG_NOTIFY_LOAD_COMPLETED = 2;
+  private static final int MSG_UPDATE_PROGRESS = 1;
+  public static final String TAG = "HuayangPluginLauncher";
+  private static Map<String, HuayangPluginLauncher> sLauncherMap = new HashMap();
+  private final Context appContext;
+  private final InstalledPlugin installedPlugin;
+  private boolean isMainPlugin;
+  private boolean isNeedStart;
+  private String mAppName;
+  private IVPluginDataReporter mDataReporter;
+  private final List<IHuayangPluginLauncher.HuayangPluginLauncherListener> mLauncherListeners = new LinkedList();
+  private IVPluginInfo mPluginInfo;
+  private int mProgress;
+  private boolean mRunning;
+  private RunningPlugin mRunningPlugin;
+  volatile boolean mStartActivityCalled = false;
+  volatile boolean mStartPluginCalled = false;
+  private long mStartTime;
+  private String mTargetPageUri;
+  private final Handler mUiHandler = new Handler(Looper.getMainLooper(), this.mUiHandlerCallback);
+  private Handler.Callback mUiHandlerCallback = new HuayangPluginLauncher.1(this);
+  private String mUin;
+  private final PluginLoader pluginLoader = new DynamicPluginLoader();
   
   private HuayangPluginLauncher(Context paramContext, InstalledPlugin paramInstalledPlugin)
   {
-    this.jdField_a_of_type_ComTencentHydevteamPluginframeworkInstalledpluginInstalledPlugin = paramInstalledPlugin;
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter = new IVPluginDataReporter();
+    this.installedPlugin = paramInstalledPlugin;
+    this.appContext = paramContext.getApplicationContext();
+    this.mDataReporter = new IVPluginDataReporter();
   }
   
   @NonNull
-  private Intent a()
+  private Intent getPluginIntentData()
   {
     Intent localIntent = new Intent();
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      localIntent.setData(Uri.parse(this.jdField_a_of_type_JavaLangString));
+    String str = this.mTargetPageUri;
+    if (str != null) {
+      localIntent.setData(Uri.parse(str));
     }
-    localIntent.putExtras(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.a);
-    if (this.e) {}
-    for (int i = 1;; i = 2)
-    {
-      localIntent.putExtra("PluginStartMode", i);
-      localIntent.putExtra("isNeedTransparent", true);
-      localIntent.putExtra("qqVersion", "8.5.5");
-      return localIntent;
+    localIntent.putExtras(this.mPluginInfo.a);
+    int i;
+    if (this.isMainPlugin) {
+      i = 1;
+    } else {
+      i = 2;
     }
+    localIntent.putExtra("PluginStartMode", i);
+    localIntent.putExtra("isNeedTransparent", true);
+    localIntent.putExtra("qqVersion", "8.7.0");
+    return localIntent;
   }
   
-  private RunningPlugin a()
+  private void initPlugin(RunningPlugin paramRunningPlugin)
   {
     long l = System.currentTimeMillis();
-    a("HuayangPluginLauncher", HardCodeUtil.a(2131705658));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131705728));
+    ((StringBuilder)localObject).append(this.installedPlugin.pluginFile);
+    log("HuayangPluginLauncher", ((StringBuilder)localObject).toString());
+    localObject = getPluginIntentData();
     try
     {
-      ProgressFuture localProgressFuture = this.jdField_a_of_type_ComTencentHydevteamPluginframeworkPluginloaderPluginLoader.loadPlugin(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentHydevteamPluginframeworkInstalledpluginInstalledPlugin);
-      if (localProgressFuture == null)
+      paramRunningPlugin.startInitActivity((Intent)localObject).get();
+    }
+    catch (Throwable paramRunningPlugin)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("HuayangPluginLauncher", 2, paramRunningPlugin, new Object[0]);
+      }
+      ((IHuayangCrashReport)QRoute.api(IHuayangCrashReport.class)).report(paramRunningPlugin);
+    }
+    paramRunningPlugin = new StringBuilder();
+    paramRunningPlugin.append(HardCodeUtil.a(2131705726));
+    paramRunningPlugin.append(this.installedPlugin.pluginFile);
+    paramRunningPlugin.append(HardCodeUtil.a(2131705723));
+    paramRunningPlugin.append(System.currentTimeMillis() - l);
+    log("HuayangPluginLauncher", paramRunningPlugin.toString());
+  }
+  
+  private RunningPlugin loadPlugin()
+  {
+    long l = System.currentTimeMillis();
+    log("HuayangPluginLauncher", HardCodeUtil.a(2131705724));
+    try
+    {
+      Object localObject1 = this.pluginLoader.loadPlugin(this.appContext, this.installedPlugin);
+      if (localObject1 == null)
       {
-        a("HuayangPluginLauncher", HardCodeUtil.a(2131705668) + (System.currentTimeMillis() - l));
-        a(false, new Exception("loadFuture == null"));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131705734));
+        ((StringBuilder)localObject1).append(System.currentTimeMillis() - l);
+        log("HuayangPluginLauncher", ((StringBuilder)localObject1).toString());
+        notifyCompleted(false, new Exception("loadFuture == null"));
         return null;
       }
+      HuayangPluginLauncher.3 local3 = new HuayangPluginLauncher.3(this);
+      this.mUiHandler.post(local3);
+      try
+      {
+        localObject1 = (RunningPlugin)((ProgressFuture)localObject1).get(100L, TimeUnit.SECONDS);
+        Object localObject2 = null;
+      }
+      catch (Exception localException2)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("HuayangPluginLauncher", 2, localException2, new Object[0]);
+        }
+        localObject1 = null;
+      }
+      this.mUiHandler.removeCallbacks(local3);
+      if (localException2 != null)
+      {
+        notifyCompleted(false, localException2);
+        return null;
+      }
+      publishProgress(80);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(HardCodeUtil.a(2131705738));
+      localStringBuilder.append(this.installedPlugin.pluginFile);
+      localStringBuilder.append(HardCodeUtil.a(2131705733));
+      localStringBuilder.append(System.currentTimeMillis() - l);
+      log("HuayangPluginLauncher", localStringBuilder.toString());
+      return localObject1;
     }
     catch (Exception localException1)
     {
       if (QLog.isColorLevel()) {
         QLog.e("HuayangPluginLauncher", 2, "在加载插件并调用其Application的OnCreate方法过程中出错", localException1);
       }
-      a(false, localException1);
-      return null;
+      notifyCompleted(false, localException1);
     }
-    HuayangPluginLauncher.3 local3 = new HuayangPluginLauncher.3(this);
-    this.jdField_a_of_type_AndroidOsHandler.post(local3);
-    RunningPlugin localRunningPlugin;
-    try
-    {
-      localRunningPlugin = (RunningPlugin)localException1.get(100L, TimeUnit.SECONDS);
-      localThrowable = null;
-    }
-    catch (Exception localException2)
-    {
-      for (;;)
-      {
-        Throwable localThrowable;
-        if (QLog.isColorLevel()) {
-          QLog.e("HuayangPluginLauncher", 2, localException2, new Object[0]);
-        }
-        localRunningPlugin = null;
-      }
-      a(80);
-      a("HuayangPluginLauncher", HardCodeUtil.a(2131705672) + this.jdField_a_of_type_ComTencentHydevteamPluginframeworkInstalledpluginInstalledPlugin.pluginFile + HardCodeUtil.a(2131705667) + (System.currentTimeMillis() - l));
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(local3);
-    if (localThrowable != null)
-    {
-      a(false, localThrowable);
-      return null;
-    }
-    return localRunningPlugin;
+    return null;
   }
   
-  public static HuayangPluginLauncher a(Context paramContext, InstalledPlugin paramInstalledPlugin)
-  {
-    try
-    {
-      HuayangPluginLauncher localHuayangPluginLauncher2 = (HuayangPluginLauncher)jdField_a_of_type_JavaUtilMap.get(paramInstalledPlugin.pluginFile.getName());
-      HuayangPluginLauncher localHuayangPluginLauncher1 = localHuayangPluginLauncher2;
-      if (localHuayangPluginLauncher2 == null)
-      {
-        localHuayangPluginLauncher1 = new HuayangPluginLauncher(paramContext, paramInstalledPlugin);
-        jdField_a_of_type_JavaUtilMap.put(paramInstalledPlugin.pluginFile.getName(), localHuayangPluginLauncher1);
-      }
-      return localHuayangPluginLauncher1;
-    }
-    finally {}
-  }
-  
-  private void a(int paramInt)
-  {
-    if (paramInt < this.jdField_a_of_type_Int) {
-      return;
-    }
-    a("HuayangPluginLauncher", HardCodeUtil.a(2131705666) + paramInt);
-    this.jdField_a_of_type_Int = paramInt;
-    Message localMessage = Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 1, paramInt, 0);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  private void a(RunningPlugin paramRunningPlugin)
-  {
-    this.jdField_b_of_type_Boolean = true;
-    long l = System.currentTimeMillis();
-    a("HuayangPluginLauncher", HardCodeUtil.a(2131705656) + this.jdField_a_of_type_ComTencentHydevteamPluginframeworkInstalledpluginInstalledPlugin.pluginFile);
-    paramRunningPlugin = paramRunningPlugin.startLauncherActivity(a());
-    a(90);
-    for (;;)
-    {
-      try
-      {
-        paramRunningPlugin.get();
-        a(true, null);
-        if (!HuayangJsPlugin.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_c_of_type_JavaLangString)) {
-          continue;
-        }
-        Monitor.a("2691707");
-        paramRunningPlugin = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("pre_huayang_plugin_new_start_mode", 4).edit();
-        paramRunningPlugin.putBoolean("huayang_plugin_start_flag" + this.jdField_b_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_c_of_type_JavaLangString, true);
-        paramRunningPlugin.putString("huayang_plugin_launch_appType_", this.jdField_c_of_type_JavaLangString);
-        paramRunningPlugin.apply();
-        Monitor.a("2585917");
-      }
-      catch (Throwable paramRunningPlugin)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("HuayangPluginLauncher", 2, paramRunningPlugin, new Object[0]);
-        a(false, paramRunningPlugin);
-        continue;
-      }
-      a("HuayangPluginLauncher", HardCodeUtil.a(2131705671) + this.jdField_a_of_type_ComTencentHydevteamPluginframeworkInstalledpluginInstalledPlugin.pluginFile + HardCodeUtil.a(2131705664) + (System.currentTimeMillis() - l));
-      return;
-      if (HuayangJsPlugin.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_c_of_type_JavaLangString)) {
-        Monitor.a("2597725");
-      }
-    }
-  }
-  
-  private void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opDepartment(this.jdField_c_of_type_JavaLangString).opName(paramString1).opType(paramString1).opIn(paramInt1).opResult(paramInt2).d1(paramString2).d2(paramString3).d4(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_c_of_type_JavaLangString).report();
-  }
-  
-  private void a(String paramString1, String paramString2)
+  private void log(String paramString1, String paramString2)
   {
     if (QLog.isColorLevel()) {
       QLog.d(paramString1, 2, paramString2);
     }
   }
   
-  private void a(boolean paramBoolean, String paramString)
+  private void notifyCompleted(boolean paramBoolean, Throwable paramThrowable)
   {
-    int j = (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-    int i;
-    if (paramBoolean)
-    {
-      i = 1;
-      if (!this.d) {
-        break label81;
-      }
-    }
-    label81:
-    for (String str = "1";; str = "0")
-    {
-      a("launchFinish", i, j, paramString, str, this.jdField_c_of_type_JavaLangString + "_" + this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_c_of_type_JavaLangString);
-      return;
-      i = 0;
-      break;
-    }
-  }
-  
-  private void a(boolean paramBoolean, Throwable paramThrowable)
-  {
-    a(100);
+    publishProgress(100);
     if ((!paramBoolean) && (!(paramThrowable instanceof TimeoutException)) && (!(paramThrowable instanceof InterruptedException)))
     {
-      this.jdField_a_of_type_ComTencentHydevteamPluginframeworkPluginloaderPluginLoader.setPluginDisabled(this.jdField_a_of_type_ComTencentHydevteamPluginframeworkInstalledpluginInstalledPlugin);
+      this.pluginLoader.setPluginDisabled(this.installedPlugin);
       if (QLog.isColorLevel()) {
         QLog.e("HuayangPluginLauncher", 2, "设置插件启动失败标志失败");
       }
     }
-    Object localObject = this.jdField_a_of_type_AndroidOsHandler;
-    int i;
+    Message localMessage = Message.obtain(this.mUiHandler, 3, paramBoolean ^ true, 0, paramThrowable);
+    this.mUiHandler.sendMessage(localMessage);
     if (paramBoolean)
     {
-      i = 0;
-      localObject = Message.obtain((Handler)localObject, 3, i, 0, paramThrowable);
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
-      if (!paramBoolean) {
-        break label107;
-      }
-      a(paramBoolean, null);
+      reportLaunchResult(paramBoolean, null);
     }
-    for (;;)
+    else
     {
-      this.jdField_c_of_type_Boolean = false;
-      return;
-      i = 1;
-      break;
-      label107:
-      a(paramBoolean, paramThrowable.toString());
-      HuayangCrashReport.a(paramThrowable);
+      reportLaunchResult(paramBoolean, paramThrowable.toString());
+      ((IHuayangCrashReport)QRoute.api(IHuayangCrashReport.class)).report(paramThrowable);
     }
+    this.mRunning = false;
   }
   
-  private void b(RunningPlugin paramRunningPlugin)
+  private void publishProgress(int paramInt)
   {
+    if (paramInt < this.mProgress) {
+      return;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131705732));
+    ((StringBuilder)localObject).append(paramInt);
+    log("HuayangPluginLauncher", ((StringBuilder)localObject).toString());
+    this.mProgress = paramInt;
+    localObject = Message.obtain(this.mUiHandler, 1, paramInt, 0);
+    this.mUiHandler.sendMessage((Message)localObject);
+  }
+  
+  private void report(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4)
+  {
+    this.mDataReporter.opDepartment(this.mAppName).opName(paramString1).opType(paramString1).opIn(paramInt1).opResult(paramInt2).d1(paramString2).d2(paramString3).d4(this.mPluginInfo.c).report();
+  }
+  
+  private void reportLaunchResult(boolean paramBoolean, String paramString)
+  {
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
+  private void startupPlugin(RunningPlugin paramRunningPlugin)
+  {
+    this.mStartPluginCalled = true;
     long l = System.currentTimeMillis();
-    a("HuayangPluginLauncher", HardCodeUtil.a(2131705662) + this.jdField_a_of_type_ComTencentHydevteamPluginframeworkInstalledpluginInstalledPlugin.pluginFile);
-    Intent localIntent = a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(HardCodeUtil.a(2131705722));
+    localStringBuilder.append(this.installedPlugin.pluginFile);
+    log("HuayangPluginLauncher", localStringBuilder.toString());
+    paramRunningPlugin = paramRunningPlugin.startLauncherActivity(getPluginIntentData());
+    publishProgress(90);
     try
     {
-      paramRunningPlugin.startInitActivity(localIntent).get();
-      a("HuayangPluginLauncher", HardCodeUtil.a(2131705660) + this.jdField_a_of_type_ComTencentHydevteamPluginframeworkInstalledpluginInstalledPlugin.pluginFile + HardCodeUtil.a(2131705657) + (System.currentTimeMillis() - l));
-      return;
+      paramRunningPlugin.get();
+      notifyCompleted(true, null);
+      if (((IHuayangJsPlugin)QRoute.api(IHuayangJsPlugin.class)).isODPkg(this.mPluginInfo.c)) {
+        Monitor.a("2691707");
+      } else if (((IHuayangJsPlugin)QRoute.api(IHuayangJsPlugin.class)).isHyPkg(this.mPluginInfo.c)) {
+        Monitor.a("2597725");
+      }
+      paramRunningPlugin = this.appContext.getSharedPreferences("pre_huayang_plugin_new_start_mode", 4).edit();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("huayang_plugin_start_flag");
+      localStringBuilder.append(this.mUin);
+      localStringBuilder.append(this.mPluginInfo.c);
+      paramRunningPlugin.putBoolean(localStringBuilder.toString(), true);
+      paramRunningPlugin.putString("huayang_plugin_launch_appType_", this.mAppName);
+      paramRunningPlugin.apply();
+      Monitor.a("2585917");
     }
     catch (Throwable paramRunningPlugin)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("HuayangPluginLauncher", 2, paramRunningPlugin, new Object[0]);
-        }
-        HuayangCrashReport.a(paramRunningPlugin);
+      if (QLog.isColorLevel()) {
+        QLog.e("HuayangPluginLauncher", 2, paramRunningPlugin, new Object[0]);
       }
+      notifyCompleted(false, paramRunningPlugin);
     }
+    paramRunningPlugin = new StringBuilder();
+    paramRunningPlugin.append(HardCodeUtil.a(2131705737));
+    paramRunningPlugin.append(this.installedPlugin.pluginFile);
+    paramRunningPlugin.append(HardCodeUtil.a(2131705730));
+    paramRunningPlugin.append(System.currentTimeMillis() - l);
+    log("HuayangPluginLauncher", paramRunningPlugin.toString());
   }
   
-  public void a(HuayangPluginLauncher.HuayangPluginLauncherListener paramHuayangPluginLauncherListener)
+  public void addLauncherListener(IHuayangPluginLauncher.HuayangPluginLauncherListener paramHuayangPluginLauncherListener)
   {
     if (paramHuayangPluginLauncherListener != null) {
-      this.jdField_a_of_type_JavaUtilList.add(paramHuayangPluginLauncherListener);
+      this.mLauncherListeners.add(paramHuayangPluginLauncherListener);
     }
   }
   
-  public void a(String paramString1, boolean paramBoolean1, boolean paramBoolean2, IVPluginInfo paramIVPluginInfo, String paramString2, String paramString3)
+  public HuayangPluginLauncher getInstance(Context paramContext, Object paramObject)
   {
-    if (this.jdField_c_of_type_Boolean)
+    try
     {
-      a("HuayangPluginLauncher", "launchPlugin mRunning return");
+      HuayangPluginLauncher localHuayangPluginLauncher2 = (HuayangPluginLauncher)sLauncherMap.get(((InstalledPlugin)paramObject).pluginFile.getName());
+      HuayangPluginLauncher localHuayangPluginLauncher1 = localHuayangPluginLauncher2;
+      if (localHuayangPluginLauncher2 == null)
+      {
+        localHuayangPluginLauncher1 = new HuayangPluginLauncher(paramContext, (InstalledPlugin)paramObject);
+        sLauncherMap.put(((InstalledPlugin)paramObject).pluginFile.getName(), localHuayangPluginLauncher1);
+      }
+      return localHuayangPluginLauncher1;
+    }
+    finally {}
+  }
+  
+  public boolean isStartPluginCalled()
+  {
+    return this.mStartPluginCalled;
+  }
+  
+  public void launchPlugin(String paramString1, boolean paramBoolean1, boolean paramBoolean2, IVPluginInfo paramIVPluginInfo, String paramString2, String paramString3)
+  {
+    if (this.mRunning)
+    {
+      log("HuayangPluginLauncher", "launchPlugin mRunning return");
       return;
     }
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.d = paramBoolean1;
-    this.e = paramBoolean2;
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo = paramIVPluginInfo;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.mRunning = true;
+    this.mAppName = paramString3;
+    this.mStartActivityCalled = false;
+    this.mStartPluginCalled = false;
+    this.isNeedStart = paramBoolean1;
+    this.isMainPlugin = paramBoolean2;
+    this.mPluginInfo = paramIVPluginInfo;
+    this.mUin = paramString2;
+    this.mStartTime = System.currentTimeMillis();
+    this.mTargetPageUri = paramString1;
     ThreadManager.executeOnSubThread(new HuayangPluginLauncher.2(this, paramBoolean2));
   }
   
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public void b(HuayangPluginLauncher.HuayangPluginLauncherListener paramHuayangPluginLauncherListener)
+  public void removeLauncherListener(IHuayangPluginLauncher.HuayangPluginLauncherListener paramHuayangPluginLauncherListener)
   {
     if (paramHuayangPluginLauncherListener != null) {
-      this.jdField_a_of_type_JavaUtilList.remove(paramHuayangPluginLauncherListener);
+      this.mLauncherListeners.remove(paramHuayangPluginLauncherListener);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.huayang.HuayangPluginLauncher
  * JD-Core Version:    0.7.0.1
  */

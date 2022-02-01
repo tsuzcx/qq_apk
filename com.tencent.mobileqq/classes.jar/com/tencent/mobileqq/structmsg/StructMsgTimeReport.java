@@ -27,16 +27,25 @@ public class StructMsgTimeReport
     long l1 = SystemClock.uptimeMillis();
     long l2 = this.jdField_a_of_type_Long;
     HashMap localHashMap = new HashMap();
-    localHashMap.put("cost", l1 - l2 + "");
-    localHashMap.put("layout", paramInt1 + "");
-    localHashMap.put("first", paramInt2 + "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(l1 - l2);
+    localStringBuilder.append("");
+    localHashMap.put("cost", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("");
+    localHashMap.put("layout", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("");
+    localHashMap.put("first", localStringBuilder.toString());
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "structmsg_builder_getview", true, 0L, 0L, localHashMap, "", false);
     this.jdField_a_of_type_Long = -1L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgTimeReport
  * JD-Core Version:    0.7.0.1
  */

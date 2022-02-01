@@ -13,7 +13,14 @@ class AdvertisementVideoPreloadManager$PreloadCallback
   {
     synchronized (AdvertisementVideoPreloadManager.a(this.a))
     {
-      AdvertisementVideoPreloadManager.c("onPreLoadFailed vid:" + paramString1 + ", i:" + paramInt + ", callbackMsg:" + paramString2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPreLoadFailed vid:");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(", i:");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", callbackMsg:");
+      localStringBuilder.append(paramString2);
+      AdvertisementVideoPreloadManager.c(localStringBuilder.toString());
       AdvertisementVideoPreloadManager.a(this.a, AdvertisementVideoPreloadManager.a(this.a));
       return;
     }
@@ -23,7 +30,12 @@ class AdvertisementVideoPreloadManager$PreloadCallback
   {
     synchronized (AdvertisementVideoPreloadManager.a(this.a))
     {
-      AdvertisementVideoPreloadManager.c("onPreLoadSucess vid:" + paramString1 + ", detail:" + paramString2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPreLoadSucess vid:");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(", detail:");
+      localStringBuilder.append(paramString2);
+      AdvertisementVideoPreloadManager.c(localStringBuilder.toString());
       try
       {
         paramString2 = new JSONObject(paramString2);
@@ -40,8 +52,8 @@ class AdvertisementVideoPreloadManager$PreloadCallback
       }
       catch (Exception paramString1)
       {
-        label136:
-        break label136;
+        label152:
+        break label152;
       }
       return;
     }
@@ -49,7 +61,7 @@ class AdvertisementVideoPreloadManager$PreloadCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager.PreloadCallback
  * JD-Core Version:    0.7.0.1
  */

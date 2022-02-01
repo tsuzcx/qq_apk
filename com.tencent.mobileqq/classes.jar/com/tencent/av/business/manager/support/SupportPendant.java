@@ -15,28 +15,43 @@ public class SupportPendant
   
   private boolean a()
   {
-    if (b()) {}
-    do
-    {
+    if (b()) {
       return true;
-      if (this.jdField_a_of_type_Int < 17)
-      {
-        AVLog.printColorLog("SupportPendant", "isUserEffectFace error  OSversion:" + this.jdField_a_of_type_Int);
-        return false;
-      }
-      if (this.jdField_b_of_type_Int < 4)
-      {
-        AVLog.printColorLog("SupportPendant", "isUserEffectFace error cpucount:" + this.jdField_b_of_type_Int);
-        return false;
-      }
-      if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_a_of_type_Long < 1400000L))
-      {
-        AVLog.printColorLog("SupportPendant", "isUserEffectFace error cpuFrequency:" + this.jdField_a_of_type_Long);
-        return false;
-      }
-    } while (this.jdField_b_of_type_Long >= 1073741824L);
-    AVLog.printColorLog("SupportPendant", "isUserEffectFace error  memory:" + this.jdField_b_of_type_Long);
-    return false;
+    }
+    StringBuilder localStringBuilder;
+    if (this.jdField_a_of_type_Int < 17)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isUserEffectFace error  OSversion:");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      AVLog.printColorLog("SupportPendant", localStringBuilder.toString());
+      return false;
+    }
+    if (this.jdField_b_of_type_Int < 4)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isUserEffectFace error cpucount:");
+      localStringBuilder.append(this.jdField_b_of_type_Int);
+      AVLog.printColorLog("SupportPendant", localStringBuilder.toString());
+      return false;
+    }
+    if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_a_of_type_Long < 1400000L))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isUserEffectFace error cpuFrequency:");
+      localStringBuilder.append(this.jdField_a_of_type_Long);
+      AVLog.printColorLog("SupportPendant", localStringBuilder.toString());
+      return false;
+    }
+    if (this.jdField_b_of_type_Long < 1073741824L)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isUserEffectFace error  memory:");
+      localStringBuilder.append(this.jdField_b_of_type_Long);
+      AVLog.printColorLog("SupportPendant", localStringBuilder.toString());
+      return false;
+    }
+    return true;
   }
   
   private static boolean b()
@@ -69,7 +84,7 @@ public class SupportPendant
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.support.SupportPendant
  * JD-Core Version:    0.7.0.1
  */

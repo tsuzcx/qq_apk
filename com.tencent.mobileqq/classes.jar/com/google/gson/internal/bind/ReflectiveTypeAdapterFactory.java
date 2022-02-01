@@ -39,20 +39,23 @@ public final class ReflectiveTypeAdapterFactory
   private ReflectiveTypeAdapterFactory.BoundField createBoundField(Gson paramGson, Field paramField, String paramString, TypeToken<?> paramTypeToken, boolean paramBoolean1, boolean paramBoolean2)
   {
     boolean bool2 = Primitives.isPrimitive(paramTypeToken.getRawType());
-    Object localObject = (JsonAdapter)paramField.getAnnotation(JsonAdapter.class);
-    TypeAdapter localTypeAdapter = null;
-    if (localObject != null) {
-      localTypeAdapter = this.jsonAdapterFactory.getTypeAdapter(this.constructorConstructor, paramGson, paramTypeToken, (JsonAdapter)localObject);
+    Object localObject1 = (JsonAdapter)paramField.getAnnotation(JsonAdapter.class);
+    if (localObject1 != null) {
+      localObject1 = this.jsonAdapterFactory.getTypeAdapter(this.constructorConstructor, paramGson, paramTypeToken, (JsonAdapter)localObject1);
+    } else {
+      localObject1 = null;
     }
-    if (localTypeAdapter != null) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      localObject = localTypeAdapter;
-      if (localTypeAdapter == null) {
-        localObject = paramGson.getAdapter(paramTypeToken);
-      }
-      return new ReflectiveTypeAdapterFactory.1(this, paramString, paramBoolean1, paramBoolean2, paramField, bool1, (TypeAdapter)localObject, paramGson, paramTypeToken, bool2);
+    boolean bool1;
+    if (localObject1 != null) {
+      bool1 = true;
+    } else {
+      bool1 = false;
     }
+    Object localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = paramGson.getAdapter(paramTypeToken);
+    }
+    return new ReflectiveTypeAdapterFactory.1(this, paramString, paramBoolean1, paramBoolean2, paramField, bool1, (TypeAdapter)localObject2, paramGson, paramTypeToken, bool2);
   }
   
   static boolean excludeField(Field paramField, boolean paramBoolean, Excluder paramExcluder)
@@ -67,93 +70,77 @@ public final class ReflectiveTypeAdapterFactory
       return localLinkedHashMap;
     }
     Type localType1 = paramTypeToken.getType();
-    Object localObject1 = paramClass;
-    paramClass = paramTypeToken;
-    label94:
-    int j;
-    if (localObject1 != Object.class)
+    Object localObject1 = paramTypeToken;
+    while (paramClass != Object.class)
     {
-      Field[] arrayOfField = ((Class)localObject1).getDeclaredFields();
-      int k = arrayOfField.length;
+      Field[] arrayOfField = paramClass.getDeclaredFields();
+      int m = arrayOfField.length;
       int i = 0;
-      for (;;)
+      while (i < m)
       {
-        if (i < k)
+        Field localField = arrayOfField[i];
+        boolean bool1 = excludeField(localField, true);
+        boolean bool2 = excludeField(localField, false);
+        if ((bool1) || (bool2))
         {
-          Field localField = arrayOfField[i];
-          boolean bool1 = excludeField(localField, true);
-          boolean bool2 = excludeField(localField, false);
-          if ((!bool1) && (!bool2))
+          localField.setAccessible(true);
+          Type localType2 = .Gson.Types.resolve(((TypeToken)localObject1).getType(), paramClass, localField.getGenericType());
+          List localList = getFieldNames(localField);
+          int j = localList.size();
+          paramTypeToken = null;
+          int k = 0;
+          while (k < j)
           {
-            i += 1;
-          }
-          else
-          {
-            localField.setAccessible(true);
-            Type localType2 = .Gson.Types.resolve(paramClass.getType(), (Class)localObject1, localField.getGenericType());
-            List localList = getFieldNames(localField);
-            paramTypeToken = null;
-            int m = localList.size();
-            j = 0;
-            label147:
-            if (j < m)
-            {
-              Object localObject2 = (String)localList.get(j);
-              if (j != 0) {
-                bool1 = false;
-              }
-              localObject2 = (ReflectiveTypeAdapterFactory.BoundField)localLinkedHashMap.put(localObject2, createBoundField(paramGson, localField, (String)localObject2, TypeToken.get(localType2), bool1, bool2));
-              if (paramTypeToken != null) {
-                break label293;
-              }
+            Object localObject2 = (String)localList.get(k);
+            if (k != 0) {
+              bool1 = false;
+            }
+            localObject2 = (ReflectiveTypeAdapterFactory.BoundField)localLinkedHashMap.put(localObject2, createBoundField(paramGson, localField, (String)localObject2, TypeToken.get(localType2), bool1, bool2));
+            if (paramTypeToken == null) {
               paramTypeToken = (TypeToken<?>)localObject2;
             }
+            k += 1;
           }
+          if (paramTypeToken != null) {}
         }
+        else
+        {
+          i += 1;
+          continue;
+        }
+        paramGson = new StringBuilder();
+        paramGson.append(localType1);
+        paramGson.append(" declares multiple JSON fields named ");
+        paramGson.append(paramTypeToken.name);
+        throw new IllegalArgumentException(paramGson.toString());
       }
+      localObject1 = TypeToken.get(.Gson.Types.resolve(((TypeToken)localObject1).getType(), paramClass, paramClass.getGenericSuperclass()));
+      paramClass = ((TypeToken)localObject1).getRawType();
     }
-    label293:
-    for (;;)
-    {
-      j += 1;
-      break label147;
-      if (paramTypeToken == null) {
-        break label94;
-      }
-      throw new IllegalArgumentException(localType1 + " declares multiple JSON fields named " + paramTypeToken.name);
-      paramClass = TypeToken.get(.Gson.Types.resolve(paramClass.getType(), (Class)localObject1, ((Class)localObject1).getGenericSuperclass()));
-      localObject1 = paramClass.getRawType();
-      break;
-      return localLinkedHashMap;
-    }
+    return localLinkedHashMap;
   }
   
   private List<String> getFieldNames(Field paramField)
   {
     Object localObject = (SerializedName)paramField.getAnnotation(SerializedName.class);
-    if (localObject == null)
-    {
-      paramField = Collections.singletonList(this.fieldNamingPolicy.translateName(paramField));
-      return paramField;
+    if (localObject == null) {
+      return Collections.singletonList(this.fieldNamingPolicy.translateName(paramField));
     }
     paramField = ((SerializedName)localObject).value();
-    String[] arrayOfString = ((SerializedName)localObject).alternate();
-    if (arrayOfString.length == 0) {
+    localObject = ((SerializedName)localObject).alternate();
+    if (localObject.length == 0) {
       return Collections.singletonList(paramField);
     }
-    localObject = new ArrayList(arrayOfString.length + 1);
-    ((List)localObject).add(paramField);
-    int j = arrayOfString.length;
+    ArrayList localArrayList = new ArrayList(localObject.length + 1);
+    localArrayList.add(paramField);
+    int j = localObject.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      paramField = (Field)localObject;
-      if (i >= j) {
-        break;
-      }
-      ((List)localObject).add(arrayOfString[i]);
+      localArrayList.add(localObject[i]);
       i += 1;
     }
+    return localArrayList;
   }
   
   public <T> TypeAdapter<T> create(Gson paramGson, TypeToken<T> paramTypeToken)
@@ -172,7 +159,7 @@ public final class ReflectiveTypeAdapterFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.internal.bind.ReflectiveTypeAdapterFactory
  * JD-Core Version:    0.7.0.1
  */

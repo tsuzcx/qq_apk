@@ -61,14 +61,18 @@ public final class QAPMLauncher
       if ((pluginManager.productPlugin(PluginCombination.userBreadCrumbPlugin.pluginName) != null) && ((PluginController.startedPluginMode & PluginCombination.userBreadCrumbPlugin.mode) > 0))
       {
         Class localClass = Class.forName("com.tencent.qapmsdk.athena.BreadCrumb");
-        Method localMethod = localClass.getDeclaredMethod("getInstance", new Class[0]);
-        localClass.getDeclaredMethod("setFlag", new Class[] { Integer.TYPE }).invoke(localMethod.invoke(null, new Object[0]), new Object[] { Integer.valueOf(PluginController.startedPluginMode) });
+        localObject = localClass.getDeclaredMethod("getInstance", new Class[0]);
+        localClass.getDeclaredMethod("setFlag", new Class[] { Integer.TYPE }).invoke(((Method)localObject).invoke(null, new Object[0]), new Object[] { Integer.valueOf(PluginController.startedPluginMode) });
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
-      Logger.INSTANCE.w(new String[] { "QAPM_manager_QAPMLauncher", localException + ": Not found BreadCrumb Model" });
+      Object localObject = Logger.INSTANCE;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localException);
+      localStringBuilder.append(": Not found BreadCrumb Model");
+      ((Logger)localObject).w(new String[] { "QAPM_manager_QAPMLauncher", localStringBuilder.toString() });
     }
   }
   
@@ -127,7 +131,7 @@ public final class QAPMLauncher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.qapmmanager.QAPMLauncher
  * JD-Core Version:    0.7.0.1
  */

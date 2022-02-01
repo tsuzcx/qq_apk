@@ -3,7 +3,7 @@ package com.tencent.tmassistantsdk.internal.c.a;
 public class a
   extends com.tencent.tmassistant.common.a.a
 {
-  protected static a a = null;
+  protected static a a;
   
   public static a e()
   {
@@ -18,12 +18,12 @@ public class a
     finally {}
   }
   
-  public String b()
+  protected String b()
   {
     return "BusinessInfoLogTable";
   }
   
-  public String[] b(int paramInt)
+  protected String[] b(int paramInt)
   {
     if (paramInt > 1) {
       return new String[] { c() };
@@ -31,19 +31,19 @@ public class a
     return null;
   }
   
-  public String c()
+  protected String c()
   {
     return "CREATE TABLE if not exists BusinessInfoLogTable( _id INTEGER PRIMARY KEY AUTOINCREMENT, logData BLOB );";
   }
   
-  public String d()
+  protected String d()
   {
     return "INSERT INTO BusinessInfoLogTable logData = ?";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.c.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -12,27 +12,28 @@ class SDKSetEmotionDialog$1
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKSetEmotionDialog, 0);
+    DialogInterface.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+    if (localOnClickListener != null) {
+      localOnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKSetEmotionDialog, 0);
     }
     try
     {
       if (this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKSetEmotionDialog.isShowing()) {
         this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKSetEmotionDialog.dismiss();
       }
-      label38:
+      label37:
       EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
     catch (Exception localException)
     {
-      break label38;
+      break label37;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.SDKSetEmotionDialog.1
  * JD-Core Version:    0.7.0.1
  */

@@ -25,10 +25,13 @@ class LocationPoiDataFromMapHelper$1
   
   public void a(int paramInt, BaseObject paramBaseObject)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    LocationPoiDataFromMapHelper.a(this.a, false);
-    Object localObject = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
+    Object localObject = this.a;
+    boolean bool2 = false;
+    boolean bool3 = false;
+    boolean bool1 = false;
+    LocationPoiDataFromMapHelper.a((LocationPoiDataFromMapHelper)localObject, false);
+    localObject = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
+    Iterator localIterator;
     LocationRoom.Venue localVenue;
     if ((paramBaseObject instanceof Geo2AddressResultObject))
     {
@@ -43,34 +46,17 @@ class LocationPoiDataFromMapHelper$1
           LocationPoiDataFromMapHelper.a(this.a).add(localVenue);
         }
         localObject = this.a;
-        if (paramBaseObject.result.poi_count < 20) {
-          break label232;
+        if (paramBaseObject.result.poi_count >= 20) {
+          bool1 = true;
         }
-        bool1 = true;
         LocationPoiDataFromMapHelper.b((LocationPoiDataFromMapHelper)localObject, bool1);
       }
     }
-    label232:
-    do
+    else if ((paramBaseObject instanceof SuggestionResultObject))
     {
-      do
+      paramBaseObject = (SuggestionResultObject)paramBaseObject;
+      if (paramBaseObject.data != null)
       {
-        do
-        {
-          if (QLog.isDevelopLevel()) {
-            QLog.i("LocationPoiDataFromMapHelper", 4, "[venue][poi-data] fetch onSuccess: mVenueList size = " + LocationPoiDataFromMapHelper.a(this.a).size() + ", mHashMore = " + LocationPoiDataFromMapHelper.a(this.a));
-          }
-          if (LocationPoiDataFromMapHelper.a(this.a) != null) {
-            ThreadManager.getUIHandler().post(new LocationPoiDataFromMapHelper.1.1(this));
-          }
-          return;
-          bool1 = false;
-          break;
-          if (!(paramBaseObject instanceof SuggestionResultObject)) {
-            break label350;
-          }
-          paramBaseObject = (SuggestionResultObject)paramBaseObject;
-        } while (paramBaseObject.data == null);
         LocationPoiDataFromMapHelper.a(this.a);
         localIterator = paramBaseObject.data.iterator();
         while (localIterator.hasNext())
@@ -79,38 +65,58 @@ class LocationPoiDataFromMapHelper$1
           LocationPoiDataFromMapHelper.a(this.a).add(localVenue);
         }
         localObject = this.a;
-        if (paramBaseObject.count >= 20) {}
-        for (;;)
-        {
-          LocationPoiDataFromMapHelper.b((LocationPoiDataFromMapHelper)localObject, bool1);
-          break;
-          bool1 = false;
+        bool1 = bool2;
+        if (paramBaseObject.count >= 20) {
+          bool1 = true;
         }
-      } while (!(paramBaseObject instanceof SearchResultObject));
-      paramBaseObject = (SearchResultObject)paramBaseObject;
-    } while (paramBaseObject.data == null);
-    label350:
-    LocationPoiDataFromMapHelper.a(this.a);
-    Iterator localIterator = paramBaseObject.data.iterator();
-    while (localIterator.hasNext())
-    {
-      localVenue = LocationRoom.Venue.a((String)localObject, (SearchResultObject.SearchResultData)localIterator.next());
-      LocationPoiDataFromMapHelper.a(this.a).add(localVenue);
+        LocationPoiDataFromMapHelper.b((LocationPoiDataFromMapHelper)localObject, bool1);
+      }
     }
-    localObject = this.a;
-    if (paramBaseObject.count >= 20) {}
-    for (bool1 = bool2;; bool1 = false)
+    else if ((paramBaseObject instanceof SearchResultObject))
     {
-      LocationPoiDataFromMapHelper.b((LocationPoiDataFromMapHelper)localObject, bool1);
-      break;
+      paramBaseObject = (SearchResultObject)paramBaseObject;
+      if (paramBaseObject.data != null)
+      {
+        LocationPoiDataFromMapHelper.a(this.a);
+        localIterator = paramBaseObject.data.iterator();
+        while (localIterator.hasNext())
+        {
+          localVenue = LocationRoom.Venue.a((String)localObject, (SearchResultObject.SearchResultData)localIterator.next());
+          LocationPoiDataFromMapHelper.a(this.a).add(localVenue);
+        }
+        localObject = this.a;
+        bool1 = bool3;
+        if (paramBaseObject.count >= 20) {
+          bool1 = true;
+        }
+        LocationPoiDataFromMapHelper.b((LocationPoiDataFromMapHelper)localObject, bool1);
+      }
+    }
+    if (QLog.isDevelopLevel())
+    {
+      paramBaseObject = new StringBuilder();
+      paramBaseObject.append("[venue][poi-data] fetch onSuccess: mVenueList size = ");
+      paramBaseObject.append(LocationPoiDataFromMapHelper.a(this.a).size());
+      paramBaseObject.append(", mHashMore = ");
+      paramBaseObject.append(LocationPoiDataFromMapHelper.a(this.a));
+      QLog.i("LocationPoiDataFromMapHelper", 4, paramBaseObject.toString());
+    }
+    if (LocationPoiDataFromMapHelper.a(this.a) != null) {
+      ThreadManager.getUIHandler().post(new LocationPoiDataFromMapHelper.1.1(this));
     }
   }
   
   public void onFailure(int paramInt, String paramString, Throwable paramThrowable)
   {
     LocationPoiDataFromMapHelper.a(this.a, false);
-    if (QLog.isDevelopLevel()) {
-      QLog.i("LocationPoiDataFromMapHelper", 4, "[venue][poi-data] fetch onFailure: mVenueList size = " + LocationPoiDataFromMapHelper.a(this.a).size() + ", mHashMore = " + LocationPoiDataFromMapHelper.a(this.a));
+    if (QLog.isDevelopLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("[venue][poi-data] fetch onFailure: mVenueList size = ");
+      paramString.append(LocationPoiDataFromMapHelper.a(this.a).size());
+      paramString.append(", mHashMore = ");
+      paramString.append(LocationPoiDataFromMapHelper.a(this.a));
+      QLog.i("LocationPoiDataFromMapHelper", 4, paramString.toString());
     }
     if (LocationPoiDataFromMapHelper.a(this.a) != null) {
       ThreadManager.getUIHandler().post(new LocationPoiDataFromMapHelper.1.2(this));
@@ -119,7 +125,7 @@ class LocationPoiDataFromMapHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationPoiDataFromMapHelper.1
  * JD-Core Version:    0.7.0.1
  */

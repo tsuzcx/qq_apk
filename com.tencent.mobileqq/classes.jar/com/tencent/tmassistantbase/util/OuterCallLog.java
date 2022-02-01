@@ -15,7 +15,7 @@ public class OuterCallLog
   public static final String OuterCall_TMAssistantCallYYB_V2_StartToDownloadList = "OuterCall_TMAssistantCallYYB_V2_StartToDownloadList";
   public static final String OuterCall_TMQQDownloaderDataProcessor_HandleDownloadTask_End = "OuterCall_TMQQDownloaderDataProcessor_HandleDownloadTask_End";
   public static final String OuterCall_TMQQDownloaderDataProcessor_HandleDownloadTask_Start = "OuterCall_TMQQDownloaderDataProcessor_HandleDownloadTask_Start";
-  public static OuterCallLog sInstance = null;
+  public static OuterCallLog sInstance;
   public volatile long lastTime = 0L;
   
   public static OuterCallLog getsInstance()
@@ -36,7 +36,11 @@ public class OuterCallLog
     if (this.lastTime == 0L) {
       reset();
     }
-    Log.i("OuterCallFromQQ", paramString + " costTime = " + (System.currentTimeMillis() - this.lastTime));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" costTime = ");
+    localStringBuilder.append(System.currentTimeMillis() - this.lastTime);
+    Log.i("OuterCallFromQQ", localStringBuilder.toString());
     this.lastTime = System.currentTimeMillis();
   }
   
@@ -48,7 +52,7 @@ public class OuterCallLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistantbase.util.OuterCallLog
  * JD-Core Version:    0.7.0.1
  */

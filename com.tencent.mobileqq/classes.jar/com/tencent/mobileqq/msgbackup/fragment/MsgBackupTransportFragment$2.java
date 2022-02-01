@@ -15,31 +15,29 @@ class MsgBackupTransportFragment$2
     paramInt = MsgBackupTransportProcessor.a().e();
     if (1 == paramInt)
     {
-      this.a.l();
-      if (this.a.a) {
+      this.a.m();
+      if (this.a.a)
+      {
         MsgBackupReporter.a("0X800A253", 3);
+        return;
       }
-    }
-    while (2 != paramInt)
-    {
-      return;
       MsgBackupReporter.a("0X800A253", 1);
       return;
     }
-    if (this.a.d) {
-      MsgBackupReporter.a("0X800A244", 2);
-    }
-    for (;;)
+    if (2 == paramInt)
     {
-      this.a.l();
-      return;
-      MsgBackupReporter.a("0X800A244", 1);
+      if (this.a.e) {
+        MsgBackupReporter.a("0X800A244", 2);
+      } else {
+        MsgBackupReporter.a("0X800A244", 1);
+      }
+      this.a.m();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment.2
  * JD-Core Version:    0.7.0.1
  */

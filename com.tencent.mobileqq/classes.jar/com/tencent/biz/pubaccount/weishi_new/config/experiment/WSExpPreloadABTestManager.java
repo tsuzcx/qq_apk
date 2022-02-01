@@ -1,6 +1,7 @@
 package com.tencent.biz.pubaccount.weishi_new.config.experiment;
 
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
 
 public class WSExpPreloadABTestManager
 {
@@ -28,7 +29,7 @@ public class WSExpPreloadABTestManager
   
   public long a()
   {
-    long l = WSExpUtils.a(a(this.a, "QQFeedsPreload", "valid_duration"), 18000L);
+    long l = WeishiUtils.a(a(this.a, "QQFeedsPreload", "valid_duration"), 18000L);
     if (l <= 0L) {
       return 18000L;
     }
@@ -37,8 +38,9 @@ public class WSExpPreloadABTestManager
   
   public String a()
   {
-    if (this.a != null) {
-      return this.a.c();
+    WSExpPolicyEntities localWSExpPolicyEntities = this.a;
+    if (localWSExpPolicyEntities != null) {
+      return localWSExpPolicyEntities.c();
     }
     return "";
   }
@@ -83,7 +85,7 @@ public class WSExpPreloadABTestManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.config.experiment.WSExpPreloadABTestManager
  * JD-Core Version:    0.7.0.1
  */

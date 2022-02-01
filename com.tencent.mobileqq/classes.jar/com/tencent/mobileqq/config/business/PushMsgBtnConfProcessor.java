@@ -18,13 +18,22 @@ public class PushMsgBtnConfProcessor
 {
   public static int a(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "poke_msg_btn_is_show", 0);
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append("poke_msg_btn_is_show");
+    return paramContext.getInt(localStringBuilder.toString(), 0);
   }
   
   public static void a(Context paramContext, String paramString, int paramInt)
   {
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putInt(paramString + "_" + "poke_msg_btn_is_show", paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append("poke_msg_btn_is_show");
+    paramContext.putInt(localStringBuilder.toString(), paramInt);
     paramContext.apply();
   }
   
@@ -37,31 +46,33 @@ public class PushMsgBtnConfProcessor
   @Nullable
   public PushMsgBtnBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    j = 0;
-    i = j;
+    int j = 0;
+    int i = j;
     if (paramArrayOfQConfItem != null)
     {
       i = j;
-      if (paramArrayOfQConfItem.length > 0) {
-        paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
-      }
-    }
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("handlePushMsgBtnConfig", 2, "handlePushMsgBtnConfig. strContent = " + paramArrayOfQConfItem);
-      }
-      i = new JSONObject(paramArrayOfQConfItem).getInt("isPushSwitchShow");
-    }
-    catch (Exception paramArrayOfQConfItem)
-    {
-      for (;;)
+      if (paramArrayOfQConfItem.length > 0)
       {
-        i = j;
-        if (QLog.isColorLevel())
+        paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+        try
         {
-          QLog.e("handlePushMsgBtnConfig", 2, "PushMsgBtnConfig parse error", paramArrayOfQConfItem);
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("handlePushMsgBtnConfig. strContent = ");
+            localStringBuilder.append(paramArrayOfQConfItem);
+            QLog.d("handlePushMsgBtnConfig", 2, localStringBuilder.toString());
+          }
+          i = new JSONObject(paramArrayOfQConfItem).getInt("isPushSwitchShow");
+        }
+        catch (Exception paramArrayOfQConfItem)
+        {
           i = j;
+          if (QLog.isColorLevel())
+          {
+            QLog.e("handlePushMsgBtnConfig", 2, "PushMsgBtnConfig parse error", paramArrayOfQConfItem);
+            i = j;
+          }
         }
       }
     }
@@ -70,11 +81,15 @@ public class PushMsgBtnConfProcessor
   
   public void a(PushMsgBtnBean paramPushMsgBtnBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("handlePushMsgBtnConfig", 2, "handlePushMsgBtnConfig. onUpdate = " + paramPushMsgBtnBean.a);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handlePushMsgBtnConfig. onUpdate = ");
+      ((StringBuilder)localObject).append(paramPushMsgBtnBean.a);
+      QLog.d("handlePushMsgBtnConfig", 2, ((StringBuilder)localObject).toString());
     }
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    a(localQQAppInterface.getApp(), localQQAppInterface.getAccount(), paramPushMsgBtnBean.a);
+    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    a(((QQAppInterface)localObject).getApp(), ((QQAppInterface)localObject).getAccount(), paramPushMsgBtnBean.a);
   }
   
   public Class clazz()
@@ -106,7 +121,7 @@ public class PushMsgBtnConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.PushMsgBtnConfProcessor
  * JD-Core Version:    0.7.0.1
  */

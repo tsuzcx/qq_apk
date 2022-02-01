@@ -56,8 +56,8 @@ public class e
   {
     int m = Color.parseColor("#ddd9d9");
     StateListDrawable localStateListDrawable = new StateListDrawable();
-    int n = this.g / 2;
-    Object localObject = new RoundRectShape(new float[] { n, n, n, n, n, n, n, n }, null, null);
+    float f1 = this.g / 2;
+    Object localObject = new RoundRectShape(new float[] { f1, f1, f1, f1, f1, f1, f1, f1 }, null, null);
     ShapeDrawable localShapeDrawable = new ShapeDrawable((Shape)localObject);
     localShapeDrawable.getPaint().setColor(-16711936);
     localStateListDrawable.addState(new int[] { 16842908, 16842910 }, localShapeDrawable);
@@ -81,27 +81,32 @@ public class e
       localObject = getLayoutParams();
       if ((localObject instanceof FrameLayout.LayoutParams))
       {
-        localObject = new FrameLayout.LayoutParams(this.g, this.g);
+        m = this.g;
+        localObject = new FrameLayout.LayoutParams(m, m);
         ((FrameLayout.LayoutParams)localObject).topMargin = this.g;
         return localObject;
       }
       if ((localObject instanceof LinearLayout.LayoutParams))
       {
-        localObject = new LinearLayout.LayoutParams(this.g, this.g);
+        m = this.g;
+        localObject = new LinearLayout.LayoutParams(m, m);
         ((LinearLayout.LayoutParams)localObject).topMargin = this.g;
         return localObject;
       }
       if ((localObject instanceof RelativeLayout.LayoutParams))
       {
-        localObject = new RelativeLayout.LayoutParams(this.g, this.g);
+        m = this.g;
+        localObject = new RelativeLayout.LayoutParams(m, m);
         ((RelativeLayout.LayoutParams)localObject).topMargin = this.g;
         return localObject;
       }
-      localObject = new ViewGroup.MarginLayoutParams(this.g, this.g);
+      m = this.g;
+      localObject = new ViewGroup.MarginLayoutParams(m, m);
       ((ViewGroup.MarginLayoutParams)localObject).topMargin = this.g;
       return localObject;
     }
-    Object localObject = new ViewGroup.MarginLayoutParams(this.g, this.g);
+    int m = this.g;
+    Object localObject = new ViewGroup.MarginLayoutParams(m, m);
     ((ViewGroup.MarginLayoutParams)localObject).topMargin = this.g;
     return localObject;
   }
@@ -122,7 +127,7 @@ public class e
     }
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     setLayoutParams(getMarginLayoutParams());
     getViewTreeObserver().addOnGlobalLayoutListener(this);
@@ -139,7 +144,7 @@ public class e
     }
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     if (Build.VERSION.SDK_INT >= 16)
@@ -158,96 +163,95 @@ public class e
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool = true;
-    int i3 = 0;
-    label47:
-    int m;
-    int i5;
-    int i1;
-    int i4;
-    int i6;
-    int n;
-    switch (paramMotionEvent.getAction())
+    int m = paramMotionEvent.getAction();
+    if (m != 0)
     {
-    default: 
-    case 0: 
-      for (;;)
-      {
-        bool = super.onTouchEvent(paramMotionEvent);
-        return bool;
-        getParent().requestDisallowInterceptTouchEvent(true);
-        this.a = ((int)paramMotionEvent.getRawX());
-        this.b = ((int)paramMotionEvent.getRawY());
-        this.c = getLeft();
-        this.d = getRight();
-        this.e = getTop();
-        this.f = getBottom();
+      int i3 = 0;
+      if (m != 1) {
+        if (m != 2)
+        {
+          if (m != 3) {
+            break label384;
+          }
+        }
+        else
+        {
+          n = (int)paramMotionEvent.getRawX() - this.a;
+          m = (int)paramMotionEvent.getRawY() - this.b;
+          int i1 = this.c + n;
+          int i4 = this.e + m;
+          n = this.d + n;
+          int i5 = this.f + m;
+          m = i1;
+          if (i1 < 0)
+          {
+            n = getWidth() + 0;
+            m = 0;
+          }
+          i1 = this.j;
+          int i2;
+          if (n > i1)
+          {
+            i2 = i1 - getWidth();
+          }
+          else
+          {
+            i2 = m;
+            i1 = n;
+          }
+          if (i4 < 0)
+          {
+            m = getHeight() + 0;
+            n = i3;
+          }
+          else
+          {
+            n = i4;
+            m = i5;
+          }
+          i4 = this.k;
+          i3 = m;
+          if (m > i4)
+          {
+            n = i4 - getHeight();
+            i3 = i4;
+          }
+          layout(i2, n, i1, i3);
+          break label384;
+        }
       }
-    case 2: 
-      m = (int)paramMotionEvent.getRawX() - this.a;
-      i5 = (int)paramMotionEvent.getRawY() - this.b;
-      i1 = this.c + m;
-      i4 = this.e + i5;
-      m += this.d;
-      i6 = this.f;
-      n = i1;
-      if (i1 < 0)
-      {
-        m = getWidth() + 0;
-        n = 0;
+      getParent().requestDisallowInterceptTouchEvent(false);
+      ValueAnimator localValueAnimator;
+      if (getLeft() > this.j / 2) {
+        localValueAnimator = ObjectAnimator.ofInt(new int[] { getLeft(), this.j - getWidth() });
+      } else {
+        localValueAnimator = ObjectAnimator.ofInt(new int[] { getLeft(), 0 });
       }
-      if (m > this.j) {
-        i1 = this.j;
+      localValueAnimator.addUpdateListener(this);
+      localValueAnimator.start();
+      m = (int)paramMotionEvent.getRawX();
+      int n = (int)paramMotionEvent.getRawY();
+      if ((Math.abs(this.a - m) > this.i) || (Math.abs(this.b - n) > this.i)) {
+        return true;
       }
-      break;
     }
-    for (int i2 = i1 - getWidth();; i2 = n)
+    else
     {
-      if (i4 < 0) {
-        m = getHeight() + 0;
-      }
-      for (n = i3;; n = i4)
-      {
-        i3 = m;
-        if (m > this.k)
-        {
-          i3 = this.k;
-          n = i3 - getHeight();
-        }
-        layout(i2, n, i1, i3);
-        break;
-        getParent().requestDisallowInterceptTouchEvent(false);
-        ValueAnimator localValueAnimator;
-        if (getLeft() > this.j / 2)
-        {
-          localValueAnimator = ObjectAnimator.ofInt(new int[] { getLeft(), this.j - getWidth() });
-          localValueAnimator.addUpdateListener(this);
-          localValueAnimator.start();
-        }
-        for (;;)
-        {
-          m = (int)paramMotionEvent.getRawX();
-          n = (int)paramMotionEvent.getRawY();
-          if (Math.abs(this.a - m) > this.i) {
-            break label47;
-          }
-          if (Math.abs(this.b - n) <= this.i) {
-            break;
-          }
-          return true;
-          localValueAnimator = ObjectAnimator.ofInt(new int[] { getLeft(), 0 });
-          localValueAnimator.addUpdateListener(this);
-          localValueAnimator.start();
-        }
-        m = i5 + i6;
-      }
-      i1 = m;
+      getParent().requestDisallowInterceptTouchEvent(true);
+      this.a = ((int)paramMotionEvent.getRawX());
+      this.b = ((int)paramMotionEvent.getRawY());
+      this.c = getLeft();
+      this.d = getRight();
+      this.e = getTop();
+      this.f = getBottom();
     }
+    label384:
+    return super.onTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.a.e
  * JD-Core Version:    0.7.0.1
  */

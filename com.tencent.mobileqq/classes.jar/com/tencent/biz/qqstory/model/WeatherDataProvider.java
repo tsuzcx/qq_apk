@@ -17,10 +17,10 @@ public class WeatherDataProvider
   
   public WeatherDataProvider()
   {
-    d();
+    c();
   }
   
-  private void d()
+  private void c()
   {
     Object localObject = (StoryConfigManager)SuperManager.a(10);
     this.jdField_a_of_type_Long = ((Long)((StoryConfigManager)localObject).b("edit_video_weather_expiry_time", Long.valueOf(0L))).longValue();
@@ -40,10 +40,11 @@ public class WeatherDataProvider
   
   public WeatherDataProvider.WeatherInfo a()
   {
-    if ((this.jdField_a_of_type_Long == 0L) || (this.jdField_a_of_type_Long >= System.currentTimeMillis())) {
-      return null;
+    long l = this.jdField_a_of_type_Long;
+    if ((l != 0L) && (l < System.currentTimeMillis())) {
+      return (WeatherDataProvider.WeatherInfo)this.jdField_a_of_type_JavaLangObject;
     }
-    return (WeatherDataProvider.WeatherInfo)this.jdField_a_of_type_JavaLangObject;
+    return null;
   }
   
   protected void a(int paramInt1, int paramInt2)
@@ -78,7 +79,7 @@ public class WeatherDataProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.WeatherDataProvider
  * JD-Core Version:    0.7.0.1
  */

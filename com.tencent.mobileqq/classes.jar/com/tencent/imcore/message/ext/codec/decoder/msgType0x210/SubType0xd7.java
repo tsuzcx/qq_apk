@@ -10,7 +10,7 @@ import com.tencent.mobileqq.data.MsgBoxInterFollowManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class SubType0xd7
-  implements Msg0X210SubTypeDecoder
+  implements Msg0X210SubTypeDecoder<OnLinePushMessageProcessor>
 {
   private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
@@ -22,13 +22,13 @@ public class SubType0xd7
   
   public MessageRecord a(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    a(paramOnLinePushMessageProcessor.a(), paramMsgType0x210);
+    a((QQAppInterface)paramOnLinePushMessageProcessor.a(), paramMsgType0x210);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0xd7
  * JD-Core Version:    0.7.0.1
  */

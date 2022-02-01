@@ -42,8 +42,10 @@ public class MutualMarkForDisplayInfo
   
   public float a()
   {
-    if (b()) {}
-    while (a()) {
+    if (b()) {
+      return 0.4F;
+    }
+    if (a()) {
       return 0.4F;
     }
     return 1.0F;
@@ -70,24 +72,37 @@ public class MutualMarkForDisplayInfo
   
   public boolean a()
   {
-    boolean bool = true;
-    if ((this.jdField_a_of_type_Long == 12L) || (IntimateUtil.a(this.jdField_a_of_type_Long))) {
-      bool = false;
-    }
-    do
+    long l = this.jdField_a_of_type_Long;
+    if (l != 12L)
     {
-      return bool;
-      if ((!MutualMarkUtils.c(this.jdField_a_of_type_Long)) && (this.jdField_a_of_type_Long != 7L)) {
-        break;
+      if (IntimateUtil.a(l)) {
+        return false;
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("MutualMarkForDisplayInfo", 2, "isInTwinkling icon_status:" + this.f + " currentMillis:" + NetConnInfoCenter.getServerTimeMillis() + " icon_status_end_time:" + this.g);
+      if ((!MutualMarkUtils.c(this.jdField_a_of_type_Long)) && (this.jdField_a_of_type_Long != 7L))
+      {
+        if (MutualMarkUtils.a(this.jdField_d_of_type_Long * 1000L)) {
+          return true;
+        }
       }
-    } while ((this.f == 2L) && (NetConnInfoCenter.getServerTimeMillis() < this.g * 1000L));
-    while (!MutualMarkUtils.a(this.jdField_d_of_type_Long * 1000L)) {
-      return false;
+      else
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("isInTwinkling icon_status:");
+          localStringBuilder.append(this.f);
+          localStringBuilder.append(" currentMillis:");
+          localStringBuilder.append(NetConnInfoCenter.getServerTimeMillis());
+          localStringBuilder.append(" icon_status_end_time:");
+          localStringBuilder.append(this.g);
+          QLog.i("MutualMarkForDisplayInfo", 2, localStringBuilder.toString());
+        }
+        if ((this.f == 2L) && (NetConnInfoCenter.getServerTimeMillis() < this.g * 1000L)) {
+          return true;
+        }
+      }
     }
-    return true;
+    return false;
   }
   
   public boolean b()
@@ -97,45 +112,69 @@ public class MutualMarkForDisplayInfo
   
   public boolean c()
   {
-    if ((this.jdField_c_of_type_Boolean) && (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))) {}
-    while ((this.jdField_c_of_type_Int == 0) && (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))) {
+    if ((this.jdField_c_of_type_Boolean) && (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))) {
       return false;
     }
-    return true;
+    return (this.jdField_c_of_type_Int != 0) || (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString));
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("MutualMarkForDisplayInfo{");
-    localStringBuilder.append("type=").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(", level=").append(this.jdField_b_of_type_Long);
-    localStringBuilder.append(", count=").append(this.jdField_a_of_type_Float);
-    localStringBuilder.append(", continue_days=").append(this.jdField_c_of_type_Long);
-    localStringBuilder.append(", last_action_time=").append(this.jdField_d_of_type_Long);
-    localStringBuilder.append(", last_change_time=").append(this.e);
-    localStringBuilder.append(", icon_status=").append(this.f);
-    localStringBuilder.append(", icon_status_end_time=").append(this.g);
-    localStringBuilder.append(", sub_level=").append(this.h);
-    localStringBuilder.append(", hasRemindInContact=").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(", remindAnimStartTime=").append(this.i);
-    localStringBuilder.append(", sortKeyForNormal=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", isInAIOTitleLeft2=").append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append(", sortKeyForAIOTitle=").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", name='").append(this.jdField_a_of_type_JavaLangString).append("'");
-    localStringBuilder.append(", disableLocalResource=").append(this.jdField_c_of_type_Boolean);
-    localStringBuilder.append(", iconResId=").append(this.jdField_c_of_type_Int);
-    localStringBuilder.append(", iconApngUrl='").append(this.jdField_b_of_type_JavaLangString).append("'");
-    localStringBuilder.append(", icon_static_url='").append(this.jdField_c_of_type_JavaLangString).append("'");
-    localStringBuilder.append(", icon_name='").append(this.jdField_d_of_type_JavaLangString).append("'");
-    localStringBuilder.append(", user_close_flag=").append(this.jdField_d_of_type_Boolean);
+    localStringBuilder.append("type=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", level=");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", count=");
+    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(", continue_days=");
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(", last_action_time=");
+    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append(", last_change_time=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", icon_status=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", icon_status_end_time=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", sub_level=");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(", hasRemindInContact=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", remindAnimStartTime=");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(", sortKeyForNormal=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", isInAIOTitleLeft2=");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(", sortKeyForAIOTitle=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", name='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("'");
+    localStringBuilder.append(", disableLocalResource=");
+    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(", iconResId=");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(", iconApngUrl='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("'");
+    localStringBuilder.append(", icon_static_url='");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append("'");
+    localStringBuilder.append(", icon_name='");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append("'");
+    localStringBuilder.append(", user_close_flag=");
+    localStringBuilder.append(this.jdField_d_of_type_Boolean);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.info.MutualMarkForDisplayInfo
  * JD-Core Version:    0.7.0.1
  */

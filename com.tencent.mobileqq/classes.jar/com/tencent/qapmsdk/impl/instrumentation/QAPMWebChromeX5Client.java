@@ -5,7 +5,7 @@ import android.webkit.WebView;
 
 public class QAPMWebChromeX5Client
 {
-  private static int injectMax = 0;
+  private static int injectMax;
   
   public static void addWebViewBridge(WebView paramWebView) {}
   
@@ -16,7 +16,7 @@ public class QAPMWebChromeX5Client
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.QAPMWebChromeX5Client
  * JD-Core Version:    0.7.0.1
  */

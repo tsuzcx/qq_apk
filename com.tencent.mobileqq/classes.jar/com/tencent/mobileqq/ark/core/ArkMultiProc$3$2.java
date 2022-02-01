@@ -1,0 +1,24 @@
+package com.tencent.mobileqq.ark.core;
+
+import com.tencent.ark.open.delegate.IArkDelegateHTTPCallback;
+import com.tencent.mobileqq.ark.delegate.IHTTPDownloadCallback;
+
+class ArkMultiProc$3$2
+  implements IHTTPDownloadCallback
+{
+  ArkMultiProc$3$2(ArkMultiProc.3 param3, IArkDelegateHTTPCallback paramIArkDelegateHTTPCallback) {}
+  
+  public void a(int paramInt, byte[] paramArrayOfByte)
+  {
+    IArkDelegateHTTPCallback localIArkDelegateHTTPCallback = this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateHTTPCallback;
+    if (localIArkDelegateHTTPCallback != null) {
+      localIArkDelegateHTTPCallback.onComplete(paramInt, paramArrayOfByte);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     com.tencent.mobileqq.ark.core.ArkMultiProc.3.2
+ * JD-Core Version:    0.7.0.1
+ */

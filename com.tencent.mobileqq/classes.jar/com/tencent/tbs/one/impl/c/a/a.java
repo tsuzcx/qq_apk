@@ -67,7 +67,14 @@ public final class a
     if (this.a)
     {
       this.b.readFully(this.d, 0, 8);
-      return this.d[7] << 56 | (this.d[6] & 0xFF) << 48 | (this.d[5] & 0xFF) << 40 | (this.d[4] & 0xFF) << 32 | (this.d[3] & 0xFF) << 24 | (this.d[2] & 0xFF) << 16 | (this.d[1] & 0xFF) << 8 | this.d[0] & 0xFF;
+      byte[] arrayOfByte = this.d;
+      long l1 = arrayOfByte[7];
+      long l2 = arrayOfByte[6] & 0xFF;
+      long l3 = arrayOfByte[5] & 0xFF;
+      long l4 = arrayOfByte[4] & 0xFF;
+      long l5 = arrayOfByte[3] & 0xFF;
+      long l6 = arrayOfByte[2] & 0xFF;
+      return (arrayOfByte[1] & 0xFF) << 8 | l1 << 56 | l2 << 48 | l3 << 40 | l4 << 32 | l5 << 24 | l6 << 16 | arrayOfByte[0] & 0xFF;
     }
     return this.b.readLong();
   }
@@ -79,7 +86,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.c.a.a
  * JD-Core Version:    0.7.0.1
  */

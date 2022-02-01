@@ -62,19 +62,19 @@ public class MiniGamePkg
     try
     {
       QMLog.e("MiniGamePkg", "loadGamePkgFromFolderPath initNetwork");
-      if ((paramMiniGamePkg != null) && (paramMiniGamePkg.networkTimeoutInfo != null)) {}
-      for (paramMiniGamePkg = paramMiniGamePkg.networkTimeoutInfo;; paramMiniGamePkg = new NetworkTimeoutInfo())
+      if ((paramMiniGamePkg != null) && (paramMiniGamePkg.networkTimeoutInfo != null)) {
+        paramMiniGamePkg = paramMiniGamePkg.networkTimeoutInfo;
+      } else {
+        paramMiniGamePkg = new NetworkTimeoutInfo();
+      }
+      SpecialProxy localSpecialProxy = (SpecialProxy)AppLoaderFactory.g().getProxyManager().get(SpecialProxy.class);
+      if (localSpecialProxy != null)
       {
-        SpecialProxy localSpecialProxy = (SpecialProxy)AppLoaderFactory.g().getProxyManager().get(SpecialProxy.class);
-        if (localSpecialProxy == null) {
-          break;
-        }
         Bundle localBundle = new Bundle();
         localBundle.putParcelable("NetworkTimeOutInfo", paramMiniGamePkg);
         localSpecialProxy.sendEventToHost(2, localBundle, null);
         return;
       }
-      return;
     }
     catch (Throwable paramMiniGamePkg)
     {
@@ -84,13 +84,14 @@ public class MiniGamePkg
   
   public static MiniGamePkg loadGamePkgFromFolderPath(String paramString1, String paramString2, MiniAppInfo paramMiniAppInfo)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (!new File(paramString1).exists())) {
-      return null;
+    if ((!TextUtils.isEmpty(paramString1)) && (new File(paramString1).exists()))
+    {
+      paramString1 = new MiniGamePkg(paramString1, paramMiniAppInfo);
+      paramString1.init(paramString2);
+      initOkHttp(paramString1);
+      return paramString1;
     }
-    paramString1 = new MiniGamePkg(paramString1, paramMiniAppInfo);
-    paramString1.init(paramString2);
-    initOkHttp(paramString1);
-    return paramString1;
+    return null;
   }
   
   public void downloadSubPack(MiniAppInfo paramMiniAppInfo, String paramString, GpkgManager.OnInitGpkgListener paramOnInitGpkgListener)
@@ -103,9 +104,10 @@ public class MiniGamePkg
     if (StringUtil.isEmpty(paramString)) {
       return "";
     }
-    if (this.subPackRoots != null)
+    HashMap localHashMap = this.subPackRoots;
+    if (localHashMap != null)
     {
-      if (this.subPackRoots.containsKey(paramString)) {
+      if (localHashMap.containsKey(paramString)) {
         return (String)this.subPackRoots.get(paramString);
       }
       if (this.subPackRoots.containsValue(paramString)) {
@@ -123,26 +125,29 @@ public class MiniGamePkg
   public void init(String paramString)
   {
     if (paramString != null) {}
-    for (;;)
+    try
     {
-      try
-      {
-        this.mConfigStr = FileUtils.readFileToString(new File(getApkgFolderPath() + "/" + paramString, "game.json"));
-        this.mGameConfigJson = new JSONObject(this.mConfigStr);
-        JSONArray localJSONArray = this.mGameConfigJson.optJSONArray("subpackages");
-        paramString = localJSONArray;
-        if (localJSONArray == null) {
-          paramString = this.mGameConfigJson.optJSONArray("subPackages");
-        }
-        this.subPackRoots = getSubPackRoots(paramString);
-        this.networkTimeoutInfo = NetworkTimeoutInfo.parse(this.mGameConfigJson.optJSONObject("networkTimeout"));
-        return;
-      }
-      catch (Throwable paramString)
-      {
-        paramString.printStackTrace();
-      }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(getApkgFolderPath());
+      ((StringBuilder)localObject).append("/");
+      ((StringBuilder)localObject).append(paramString);
+      this.mConfigStr = FileUtils.readFileToString(new File(((StringBuilder)localObject).toString(), "game.json"));
+      break label77;
       this.mConfigStr = FileUtils.readFileToString(new File(getApkgFolderPath(), "game.json"));
+      label77:
+      this.mGameConfigJson = new JSONObject(this.mConfigStr);
+      localObject = this.mGameConfigJson.optJSONArray("subpackages");
+      paramString = (String)localObject;
+      if (localObject == null) {
+        paramString = this.mGameConfigJson.optJSONArray("subPackages");
+      }
+      this.subPackRoots = getSubPackRoots(paramString);
+      this.networkTimeoutInfo = NetworkTimeoutInfo.parse(this.mGameConfigJson.optJSONObject("networkTimeout"));
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
     }
   }
   
@@ -153,7 +158,7 @@ public class MiniGamePkg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.gpkg.MiniGamePkg
  * JD-Core Version:    0.7.0.1
  */

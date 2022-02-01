@@ -24,27 +24,19 @@ public final class em$c<K extends Comparable<K>, V>
   
   public final boolean equals(Object paramObject)
   {
-    if (!(paramObject instanceof Map.Entry)) {}
-    Object localObject;
-    do
+    if (!(paramObject instanceof Map.Entry)) {
+      return false;
+    }
+    Object localObject = (Map.Entry)paramObject;
+    paramObject = ((Map.Entry)localObject).getValue();
+    if (this.a.equals(((Map.Entry)localObject).getKey()))
     {
-      do
-      {
-        return false;
-        paramObject = (Map.Entry)paramObject;
-        localObject = paramObject.getValue();
-      } while (!this.a.equals(paramObject.getKey()));
-      if (this.b != null) {
-        break;
-      }
-    } while (localObject != null);
-    for (;;)
-    {
-      return true;
-      if (!this.b.equals(localObject)) {
-        break;
+      localObject = this.b;
+      if (localObject == null ? paramObject == null : localObject.equals(paramObject)) {
+        return true;
       }
     }
+    return false;
   }
   
   public final V getValue()
@@ -55,10 +47,14 @@ public final class em$c<K extends Comparable<K>, V>
   public final int hashCode()
   {
     int j = this.a.hashCode();
-    if (this.b == null) {}
-    for (int i = 0;; i = this.b.hashCode()) {
-      return i ^ j;
+    Object localObject = this.b;
+    int i;
+    if (localObject == null) {
+      i = 0;
+    } else {
+      i = localObject.hashCode();
     }
+    return j ^ i;
   }
   
   public final V setValue(V paramV)
@@ -70,12 +66,16 @@ public final class em$c<K extends Comparable<K>, V>
   
   public final String toString()
   {
-    return this.a + "=" + this.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.b);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.em.c
  * JD-Core Version:    0.7.0.1
  */

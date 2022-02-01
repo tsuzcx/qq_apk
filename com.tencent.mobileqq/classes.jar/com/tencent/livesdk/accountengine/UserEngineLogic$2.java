@@ -12,7 +12,13 @@ class UserEngineLogic$2
   
   public void onFail(int paramInt, String paramString)
   {
-    ((LogSdkServiceInterface)UserEngineLogic.access$100(this.this$0).getService(LogSdkServiceInterface.class)).getLog().i("UserEngineLogic", "re-login exit room fail, errorCode=" + paramInt + ", errMsg=" + paramString, new Object[0]);
+    LogInterface localLogInterface = ((LogSdkServiceInterface)UserEngineLogic.access$100(this.this$0).getService(LogSdkServiceInterface.class)).getLog();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("re-login exit room fail, errorCode=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", errMsg=");
+    localStringBuilder.append(paramString);
+    localLogInterface.i("UserEngineLogic", localStringBuilder.toString(), new Object[0]);
   }
   
   public void onSuccess()
@@ -22,7 +28,7 @@ class UserEngineLogic$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.accountengine.UserEngineLogic.2
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ class RecyclerView$AdapterDataObservable
 {
   public boolean hasObservers()
   {
-    return !this.mObservers.isEmpty();
+    return this.mObservers.isEmpty() ^ true;
   }
   
   public void notifyChanged()
@@ -69,7 +69,7 @@ class RecyclerView$AdapterDataObservable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.RecyclerView.AdapterDataObservable
  * JD-Core Version:    0.7.0.1
  */

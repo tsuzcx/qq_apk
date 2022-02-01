@@ -69,17 +69,12 @@ public class AutoPlayImageView
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
     if (Build.VERSION.SDK_INT >= 16) {
       super.setLayerType(2, null);
+    } else if (Build.VERSION.SDK_INT >= 14) {
+      super.setLayerType(1, null);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-2302756);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-      return;
-      if (Build.VERSION.SDK_INT >= 14) {
-        super.setLayerType(1, null);
-      }
-    }
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-2302756);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
   }
   
   public int a()
@@ -93,16 +88,19 @@ public class AutoPlayImageView
     if ((paramString != null) && ((paramString instanceof RegionDrawable)))
     {
       paramString = ((RegionDrawable)paramString).getBitmap();
-      if ((paramString == null) || (paramString.isRecycled())) {}
-    }
-    for (paramString = new BitmapDrawable(paramString);; paramString = null)
-    {
-      Object localObject = paramString;
-      if (paramString == null) {
-        localObject = new EmptyDrawable(-2631721, paramInt1, paramInt2);
+      if ((paramString != null) && (!paramString.isRecycled()))
+      {
+        paramString = new BitmapDrawable(paramString);
+        break label55;
       }
-      return localObject;
     }
+    paramString = null;
+    label55:
+    Object localObject = paramString;
+    if (paramString == null) {
+      localObject = new EmptyDrawable(-2631721, paramInt1, paramInt2);
+    }
+    return localObject;
   }
   
   public QQLiveDrawable.QQLiveDrawableParams a(int paramInt1, int paramInt2, long paramLong, String paramString1, String paramString2, QQLiveDrawable.OnStateListener paramOnStateListener)
@@ -141,14 +139,18 @@ public class AutoPlayImageView
   
   public void a()
   {
-    SLog.b("AutoPlayImageView", "pausePlay last mState=" + this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Int == 3) {}
-    do
-    {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("pausePlay last mState=");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    SLog.b("AutoPlayImageView", ((StringBuilder)localObject).toString());
+    if (this.jdField_a_of_type_Int == 3) {
       return;
-      this.jdField_a_of_type_Int = 2;
-    } while ((this.jdField_a_of_type_ComTencentImageURLDrawable == null) || (!(this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof QQLiveDrawable)));
-    ((QQLiveDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).pause();
+    }
+    this.jdField_a_of_type_Int = 2;
+    localObject = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    if ((localObject != null) && ((((URLDrawable)localObject).getCurrDrawable() instanceof QQLiveDrawable))) {
+      ((QQLiveDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).pause();
+    }
   }
   
   public void a(String paramString1, int paramInt1, int paramInt2, long paramLong, String paramString2)
@@ -167,45 +169,76 @@ public class AutoPlayImageView
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_Int == 3) {}
-    while ((this.jdField_a_of_type_ComTencentImageURLDrawable == null) || (!(this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof QQLiveDrawable))) {
+    int i = this.jdField_a_of_type_Int;
+    boolean bool2 = false;
+    if (i == 3) {
       return false;
     }
-    if (((QQLiveDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).getPlayState() == 4) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    URLDrawable localURLDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    boolean bool1 = bool2;
+    if (localURLDrawable != null)
+    {
+      bool1 = bool2;
+      if ((localURLDrawable.getCurrDrawable() instanceof QQLiveDrawable))
+      {
+        bool1 = bool2;
+        if (((QQLiveDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).getPlayState() == 4) {
+          bool1 = true;
+        }
+      }
     }
+    return bool1;
   }
   
   public void b()
   {
-    SLog.b("AutoPlayImageView", "resumePlay last mState=" + this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Int == 3) {}
-    do
-    {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("resumePlay last mState=");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    SLog.b("AutoPlayImageView", ((StringBuilder)localObject).toString());
+    if (this.jdField_a_of_type_Int == 3) {
       return;
-      this.jdField_a_of_type_Int = 1;
-    } while ((this.jdField_a_of_type_ComTencentImageURLDrawable == null) || (!(this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof QQLiveDrawable)));
-    ((QQLiveDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).resume();
-    super.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    }
+    this.jdField_a_of_type_Int = 1;
+    localObject = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    if ((localObject != null) && ((((URLDrawable)localObject).getCurrDrawable() instanceof QQLiveDrawable)))
+    {
+      ((QQLiveDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).resume();
+      super.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    }
   }
   
   public boolean b()
   {
-    if ((this.jdField_a_of_type_ComTencentImageURLDrawable != null) && ((this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof QQLiveDrawable))) {
-      return ((QQLiveDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).getPlayState() == 2;
+    URLDrawable localURLDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localURLDrawable != null)
+    {
+      bool1 = bool2;
+      if ((localURLDrawable.getCurrDrawable() instanceof QQLiveDrawable))
+      {
+        bool1 = bool2;
+        if (((QQLiveDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).getPlayState() == 2) {
+          bool1 = true;
+        }
+      }
     }
-    return false;
+    return bool1;
   }
   
   public void c()
   {
-    SLog.b("AutoPlayImageView", "pausePlay last mState=" + this.jdField_a_of_type_Int);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("pausePlay last mState=");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    SLog.b("AutoPlayImageView", ((StringBuilder)localObject).toString());
     if (this.jdField_a_of_type_Int == 1) {
       this.jdField_a_of_type_Boolean = false;
     }
     this.jdField_a_of_type_Int = 3;
-    if ((this.jdField_a_of_type_ComTencentImageURLDrawable != null) && ((this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof QQLiveDrawable))) {
+    localObject = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    if ((localObject != null) && ((((URLDrawable)localObject).getCurrDrawable() instanceof QQLiveDrawable))) {
       ((QQLiveDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).recyleAndKeepPostion();
     }
   }
@@ -224,50 +257,46 @@ public class AutoPlayImageView
       this.jdField_a_of_type_AndroidGraphicsPath = new Path();
     }
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    int i = getWidth() - getPaddingLeft() - getPaddingRight();
-    int j = getHeight();
+    int j = getWidth() - getPaddingLeft() - getPaddingRight();
+    int i = getHeight();
     int k = getPaddingTop();
     int m = getPaddingBottom();
-    RectF localRectF = new RectF(getPaddingLeft(), getPaddingTop(), getPaddingLeft() + i, j - k - m + getPaddingTop());
-    if (this.d > 0) {
-      i = this.d;
+    RectF localRectF = new RectF(getPaddingLeft(), getPaddingTop(), getPaddingLeft() + j, getPaddingTop() + (i - k - m));
+    i = this.d;
+    if (i <= 0) {
+      i = j / 30;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(localRectF, i, i, Path.Direction.CCW);
-      this.jdField_a_of_type_AndroidGraphicsPath.setFillType(Path.FillType.EVEN_ODD);
-      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
-      super.draw(paramCanvas);
-      this.jdField_a_of_type_AndroidGraphicsPath.reset();
-      this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(localRectF, i, i, Path.Direction.CCW);
-      if (QQStoryContext.a()) {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getContext().getResources().getColor(2131166517));
-      }
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-      return;
-      i /= 30;
+    Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+    float f = i;
+    localPath.addRoundRect(localRectF, f, f, Path.Direction.CCW);
+    this.jdField_a_of_type_AndroidGraphicsPath.setFillType(Path.FillType.EVEN_ODD);
+    paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+    super.draw(paramCanvas);
+    this.jdField_a_of_type_AndroidGraphicsPath.reset();
+    this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(localRectF, f, f, Path.Direction.CCW);
+    if (QQStoryContext.a()) {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getContext().getResources().getColor(2131166531));
     }
+    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if ((this.jdField_a_of_type_ComTencentImageURLDrawable != null) && ((this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof QQLiveDrawable)))
+    URLDrawable localURLDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    if ((localURLDrawable != null) && ((localURLDrawable.getCurrDrawable() instanceof QQLiveDrawable)))
     {
       ((QQLiveDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).release();
       this.jdField_a_of_type_ComTencentImageURLDrawable = null;
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
   }
   
-  public void onStateChange(String paramString, QQLiveDrawable.QQLiveDrawableParams paramQQLiveDrawableParams, int paramInt, Object paramObject)
-  {
-    if (paramInt == 2) {}
-  }
+  public void onStateChange(String paramString, QQLiveDrawable.QQLiveDrawableParams paramQQLiveDrawableParams, int paramInt, Object paramObject) {}
   
   public void setBorderColor(@ColorInt int paramInt)
   {
@@ -277,10 +306,12 @@ public class AutoPlayImageView
   
   public void setCorner(int paramInt)
   {
-    if (paramInt <= 0) {
-      throw new IllegalArgumentException("should not be less than 0");
+    if (paramInt > 0)
+    {
+      this.d = paramInt;
+      return;
     }
-    this.d = paramInt;
+    throw new IllegalArgumentException("should not be less than 0");
   }
   
   public void setCoverDrawable(Drawable paramDrawable)
@@ -297,17 +328,17 @@ public class AutoPlayImageView
   
   public void setImageDrawable(Drawable paramDrawable)
   {
-    if ((paramDrawable instanceof URLDrawable)) {}
-    for (this.jdField_a_of_type_ComTencentImageURLDrawable = ((URLDrawable)paramDrawable);; this.jdField_a_of_type_ComTencentImageURLDrawable = null)
-    {
-      super.setImageDrawable(paramDrawable);
-      return;
+    if ((paramDrawable instanceof URLDrawable)) {
+      this.jdField_a_of_type_ComTencentImageURLDrawable = ((URLDrawable)paramDrawable);
+    } else {
+      this.jdField_a_of_type_ComTencentImageURLDrawable = null;
     }
+    super.setImageDrawable(paramDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.AutoPlayImageView
  * JD-Core Version:    0.7.0.1
  */

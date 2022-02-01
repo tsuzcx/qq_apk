@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class CheckSinglePkgSigRsp
   extends JceStruct
@@ -47,24 +48,28 @@ public final class CheckSinglePkgSigRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret, 0);
-    if (this.vtMarket != null) {
-      paramJceOutputStream.write(this.vtMarket, 1);
+    Object localObject = this.vtMarket;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.pkgSig != null) {
-      paramJceOutputStream.write(this.pkgSig, 2);
+    localObject = this.pkgSig;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.sigVersionCode, 3);
-    if (this.tmastUrl != null) {
-      paramJceOutputStream.write(this.tmastUrl, 4);
+    localObject = this.tmastUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.pageUrl != null) {
-      paramJceOutputStream.write(this.pageUrl, 5);
+    localObject = this.pageUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MAAccessClient.CheckSinglePkgSigRsp
  * JD-Core Version:    0.7.0.1
  */

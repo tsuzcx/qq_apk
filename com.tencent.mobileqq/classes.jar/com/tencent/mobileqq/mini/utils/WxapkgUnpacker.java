@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.mini.utils;
 
 import android.content.res.AssetManager;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -18,7 +19,7 @@ public class WxapkgUnpacker
     // Byte code:
     //   0: aload_0
     //   1: invokestatic 23	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   4: ifne +10 -> 14
+    //   4: ifne +519 -> 523
     //   7: aload_1
     //   8: invokestatic 23	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   11: ifeq +5 -> 16
@@ -26,291 +27,324 @@ public class WxapkgUnpacker
     //   15: ireturn
     //   16: aload_2
     //   17: invokestatic 23	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   20: ifeq +88 -> 108
+    //   20: ifeq +50 -> 70
     //   23: new 25	java/lang/StringBuilder
     //   26: dup
     //   27: invokespecial 26	java/lang/StringBuilder:<init>	()V
-    //   30: new 28	java/io/File
-    //   33: dup
-    //   34: aload_1
-    //   35: invokespecial 31	java/io/File:<init>	(Ljava/lang/String;)V
-    //   38: invokevirtual 35	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   41: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   44: ldc 41
-    //   46: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   49: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   52: astore_1
-    //   53: aload_2
-    //   54: astore 7
-    //   56: new 46	java/io/RandomAccessFile
-    //   59: dup
-    //   60: aload_0
-    //   61: ldc 48
-    //   63: invokespecial 51	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   66: astore_2
-    //   67: aload_2
-    //   68: invokevirtual 55	java/io/RandomAccessFile:readByte	()B
-    //   71: bipush 190
-    //   73: if_icmpeq +51 -> 124
-    //   76: new 57	java/lang/RuntimeException
-    //   79: dup
-    //   80: ldc 59
-    //   82: invokespecial 60	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
-    //   85: athrow
-    //   86: astore_1
-    //   87: aload_2
-    //   88: astore_0
-    //   89: ldc 8
-    //   91: iconst_1
-    //   92: ldc 62
-    //   94: aload_1
-    //   95: invokestatic 68	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   98: aload_0
-    //   99: ifnull +7 -> 106
-    //   102: aload_0
-    //   103: invokevirtual 71	java/io/RandomAccessFile:close	()V
-    //   106: iconst_0
-    //   107: ireturn
-    //   108: new 28	java/io/File
-    //   111: dup
-    //   112: aload_2
-    //   113: invokespecial 31	java/io/File:<init>	(Ljava/lang/String;)V
-    //   116: invokevirtual 35	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   119: astore 7
-    //   121: goto -65 -> 56
-    //   124: aload_2
-    //   125: ldc2_w 72
-    //   128: invokevirtual 77	java/io/RandomAccessFile:seek	(J)V
-    //   131: aload_2
-    //   132: invokevirtual 81	java/io/RandomAccessFile:readInt	()I
-    //   135: istore 5
-    //   137: new 83	java/util/ArrayList
-    //   140: dup
-    //   141: iload 5
-    //   143: invokespecial 86	java/util/ArrayList:<init>	(I)V
-    //   146: astore 9
-    //   148: iconst_0
-    //   149: istore 4
-    //   151: iload 4
-    //   153: iload 5
-    //   155: if_icmpge +219 -> 374
-    //   158: aload_2
-    //   159: invokevirtual 81	java/io/RandomAccessFile:readInt	()I
-    //   162: istore 6
-    //   164: iload 6
-    //   166: newarray byte
-    //   168: astore_0
-    //   169: aload_2
-    //   170: aload_0
-    //   171: iconst_0
-    //   172: iload 6
-    //   174: invokevirtual 90	java/io/RandomAccessFile:read	([BII)I
-    //   177: pop
-    //   178: new 28	java/io/File
-    //   181: dup
-    //   182: new 92	java/lang/String
-    //   185: dup
-    //   186: aload_0
-    //   187: iconst_0
-    //   188: iload 6
-    //   190: invokespecial 95	java/lang/String:<init>	([BII)V
-    //   193: invokespecial 31	java/io/File:<init>	(Ljava/lang/String;)V
-    //   196: invokevirtual 35	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   199: astore 8
-    //   201: aload 8
-    //   203: astore_0
-    //   204: aload 7
-    //   206: invokestatic 23	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   209: ifne +58 -> 267
-    //   212: aload 8
-    //   214: aload 7
-    //   216: invokevirtual 99	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   219: ifne +124 -> 343
-    //   222: iload_3
-    //   223: ifeq +110 -> 333
-    //   226: aload 7
-    //   228: aload 8
-    //   230: invokevirtual 99	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   233: ifne +13 -> 246
-    //   236: aload 7
-    //   238: aload 8
-    //   240: invokevirtual 102	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   243: ifeq +55 -> 298
-    //   246: new 25	java/lang/StringBuilder
-    //   249: dup
-    //   250: invokespecial 26	java/lang/StringBuilder:<init>	()V
-    //   253: aload 7
-    //   255: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   258: ldc 41
-    //   260: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   263: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   266: astore_0
-    //   267: aload 9
-    //   269: new 104	com/tencent/mobileqq/mini/utils/WxapkgUnpacker$WxapkgFile
-    //   272: dup
-    //   273: aload_0
-    //   274: aload_2
-    //   275: invokevirtual 81	java/io/RandomAccessFile:readInt	()I
-    //   278: aload_2
-    //   279: invokevirtual 81	java/io/RandomAccessFile:readInt	()I
-    //   282: invokespecial 107	com/tencent/mobileqq/mini/utils/WxapkgUnpacker$WxapkgFile:<init>	(Ljava/lang/String;II)V
-    //   285: invokevirtual 111	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   288: pop
-    //   289: iload 4
-    //   291: iconst_1
-    //   292: iadd
-    //   293: istore 4
-    //   295: goto -144 -> 151
-    //   298: new 25	java/lang/StringBuilder
-    //   301: dup
-    //   302: invokespecial 26	java/lang/StringBuilder:<init>	()V
-    //   305: aload 7
-    //   307: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   310: ldc 41
-    //   312: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   315: getstatic 114	java/io/File:separator	Ljava/lang/String;
-    //   318: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   321: aload 8
-    //   323: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   326: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   329: astore_0
-    //   330: goto -63 -> 267
-    //   333: aload_2
-    //   334: ifnull +7 -> 341
-    //   337: aload_2
-    //   338: invokevirtual 71	java/io/RandomAccessFile:close	()V
-    //   341: iconst_0
-    //   342: ireturn
-    //   343: aload 8
-    //   345: aload 7
-    //   347: new 25	java/lang/StringBuilder
-    //   350: dup
-    //   351: invokespecial 26	java/lang/StringBuilder:<init>	()V
-    //   354: aload 7
-    //   356: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   359: ldc 41
-    //   361: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   364: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   367: invokevirtual 118	java/lang/String:replaceFirst	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   370: astore_0
-    //   371: goto -104 -> 267
-    //   374: aload 9
-    //   376: invokevirtual 122	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   379: astore_0
-    //   380: aload_0
-    //   381: invokeinterface 128 1 0
-    //   386: ifeq +84 -> 470
-    //   389: aload_0
-    //   390: invokeinterface 132 1 0
-    //   395: checkcast 104	com/tencent/mobileqq/mini/utils/WxapkgUnpacker$WxapkgFile
-    //   398: astore 7
+    //   30: astore 7
+    //   32: aload 7
+    //   34: new 28	java/io/File
+    //   37: dup
+    //   38: aload_1
+    //   39: invokespecial 31	java/io/File:<init>	(Ljava/lang/String;)V
+    //   42: invokevirtual 35	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   45: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   48: pop
+    //   49: aload 7
+    //   51: ldc 41
+    //   53: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   56: pop
+    //   57: aload 7
+    //   59: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   62: astore 7
+    //   64: aload_2
+    //   65: astore 8
+    //   67: goto +19 -> 86
+    //   70: new 28	java/io/File
+    //   73: dup
+    //   74: aload_2
+    //   75: invokespecial 31	java/io/File:<init>	(Ljava/lang/String;)V
+    //   78: invokevirtual 35	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   81: astore 8
+    //   83: aload_1
+    //   84: astore 7
+    //   86: aconst_null
+    //   87: astore 9
+    //   89: aconst_null
+    //   90: astore_1
+    //   91: new 46	java/io/RandomAccessFile
+    //   94: dup
+    //   95: aload_0
+    //   96: ldc 48
+    //   98: invokespecial 51	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   101: astore_2
+    //   102: aload_2
+    //   103: invokevirtual 55	java/io/RandomAccessFile:readByte	()B
+    //   106: bipush 190
+    //   108: if_icmpne +352 -> 460
+    //   111: aload_2
+    //   112: ldc2_w 56
+    //   115: invokevirtual 61	java/io/RandomAccessFile:seek	(J)V
+    //   118: aload_2
+    //   119: invokevirtual 65	java/io/RandomAccessFile:readInt	()I
+    //   122: istore 5
+    //   124: new 67	java/util/ArrayList
+    //   127: dup
+    //   128: iload 5
+    //   130: invokespecial 70	java/util/ArrayList:<init>	(I)V
+    //   133: astore 9
+    //   135: iconst_0
+    //   136: istore 4
+    //   138: iload 4
+    //   140: iload 5
+    //   142: if_icmpge +233 -> 375
+    //   145: aload_2
+    //   146: invokevirtual 65	java/io/RandomAccessFile:readInt	()I
+    //   149: istore 6
+    //   151: iload 6
+    //   153: newarray byte
+    //   155: astore_0
+    //   156: aload_2
+    //   157: aload_0
+    //   158: iconst_0
+    //   159: iload 6
+    //   161: invokevirtual 74	java/io/RandomAccessFile:read	([BII)I
+    //   164: pop
+    //   165: new 28	java/io/File
+    //   168: dup
+    //   169: new 76	java/lang/String
+    //   172: dup
+    //   173: aload_0
+    //   174: iconst_0
+    //   175: iload 6
+    //   177: invokespecial 79	java/lang/String:<init>	([BII)V
+    //   180: invokespecial 31	java/io/File:<init>	(Ljava/lang/String;)V
+    //   183: invokevirtual 35	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   186: astore_1
+    //   187: aload_1
+    //   188: astore_0
+    //   189: aload 8
+    //   191: invokestatic 23	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   194: ifne +150 -> 344
+    //   197: aload_1
+    //   198: aload 8
+    //   200: invokevirtual 83	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   203: ifne +108 -> 311
+    //   206: iload_3
+    //   207: ifeq +98 -> 305
+    //   210: aload 8
+    //   212: aload_1
+    //   213: invokevirtual 83	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   216: ifne +59 -> 275
+    //   219: aload 8
+    //   221: aload_1
+    //   222: invokevirtual 86	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   225: ifeq +6 -> 231
+    //   228: goto +47 -> 275
+    //   231: new 25	java/lang/StringBuilder
+    //   234: dup
+    //   235: invokespecial 26	java/lang/StringBuilder:<init>	()V
+    //   238: astore_0
+    //   239: aload_0
+    //   240: aload 8
+    //   242: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   245: pop
+    //   246: aload_0
+    //   247: ldc 41
+    //   249: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   252: pop
+    //   253: aload_0
+    //   254: getstatic 89	java/io/File:separator	Ljava/lang/String;
+    //   257: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   260: pop
+    //   261: aload_0
+    //   262: aload_1
+    //   263: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   266: pop
+    //   267: aload_0
+    //   268: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   271: astore_0
+    //   272: goto +72 -> 344
+    //   275: new 25	java/lang/StringBuilder
+    //   278: dup
+    //   279: invokespecial 26	java/lang/StringBuilder:<init>	()V
+    //   282: astore_0
+    //   283: aload_0
+    //   284: aload 8
+    //   286: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   289: pop
+    //   290: aload_0
+    //   291: ldc 41
+    //   293: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   296: pop
+    //   297: aload_0
+    //   298: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   301: astore_0
+    //   302: goto +42 -> 344
+    //   305: aload_2
+    //   306: invokevirtual 92	java/io/RandomAccessFile:close	()V
+    //   309: iconst_0
+    //   310: ireturn
+    //   311: new 25	java/lang/StringBuilder
+    //   314: dup
+    //   315: invokespecial 26	java/lang/StringBuilder:<init>	()V
+    //   318: astore_0
+    //   319: aload_0
+    //   320: aload 8
+    //   322: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   325: pop
+    //   326: aload_0
+    //   327: ldc 41
+    //   329: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   332: pop
+    //   333: aload_1
+    //   334: aload 8
+    //   336: aload_0
+    //   337: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   340: invokevirtual 96	java/lang/String:replaceFirst	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   343: astore_0
+    //   344: aload 9
+    //   346: new 98	com/tencent/mobileqq/mini/utils/WxapkgUnpacker$WxapkgFile
+    //   349: dup
+    //   350: aload_0
+    //   351: aload_2
+    //   352: invokevirtual 65	java/io/RandomAccessFile:readInt	()I
+    //   355: aload_2
+    //   356: invokevirtual 65	java/io/RandomAccessFile:readInt	()I
+    //   359: invokespecial 101	com/tencent/mobileqq/mini/utils/WxapkgUnpacker$WxapkgFile:<init>	(Ljava/lang/String;II)V
+    //   362: invokevirtual 105	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   365: pop
+    //   366: iload 4
+    //   368: iconst_1
+    //   369: iadd
+    //   370: istore 4
+    //   372: goto -234 -> 138
+    //   375: aload 9
+    //   377: invokevirtual 109	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   380: astore_0
+    //   381: aload_0
+    //   382: invokeinterface 115 1 0
+    //   387: ifeq +67 -> 454
+    //   390: aload_0
+    //   391: invokeinterface 119 1 0
+    //   396: checkcast 98	com/tencent/mobileqq/mini/utils/WxapkgUnpacker$WxapkgFile
+    //   399: astore_1
     //   400: new 28	java/io/File
     //   403: dup
-    //   404: aload_1
-    //   405: aload 7
-    //   407: getfield 135	com/tencent/mobileqq/mini/utils/WxapkgUnpacker$WxapkgFile:name	Ljava/lang/String;
-    //   410: invokespecial 136	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   404: aload 7
+    //   406: aload_1
+    //   407: getfield 122	com/tencent/mobileqq/mini/utils/WxapkgUnpacker$WxapkgFile:name	Ljava/lang/String;
+    //   410: invokespecial 123	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   413: astore 8
     //   415: aload_2
-    //   416: aload 7
-    //   418: getfield 140	com/tencent/mobileqq/mini/utils/WxapkgUnpacker$WxapkgFile:start	I
-    //   421: i2l
-    //   422: invokevirtual 77	java/io/RandomAccessFile:seek	(J)V
-    //   425: aload 7
-    //   427: getfield 143	com/tencent/mobileqq/mini/utils/WxapkgUnpacker$WxapkgFile:length	I
-    //   430: newarray byte
-    //   432: astore 9
-    //   434: aload_2
-    //   435: aload 9
-    //   437: iconst_0
-    //   438: aload 7
-    //   440: getfield 143	com/tencent/mobileqq/mini/utils/WxapkgUnpacker$WxapkgFile:length	I
-    //   443: invokevirtual 90	java/io/RandomAccessFile:read	([BII)I
-    //   446: pop
-    //   447: aload 8
-    //   449: aload 9
-    //   451: invokestatic 147	com/tencent/mobileqq/mini/utils/WxapkgUnpacker:write	(Ljava/io/File;[B)V
-    //   454: goto -74 -> 380
-    //   457: astore_0
-    //   458: aload_2
-    //   459: astore_1
-    //   460: aload_1
-    //   461: ifnull +7 -> 468
-    //   464: aload_1
-    //   465: invokevirtual 71	java/io/RandomAccessFile:close	()V
-    //   468: aload_0
+    //   416: aload_1
+    //   417: getfield 127	com/tencent/mobileqq/mini/utils/WxapkgUnpacker$WxapkgFile:start	I
+    //   420: i2l
+    //   421: invokevirtual 61	java/io/RandomAccessFile:seek	(J)V
+    //   424: aload_1
+    //   425: getfield 130	com/tencent/mobileqq/mini/utils/WxapkgUnpacker$WxapkgFile:length	I
+    //   428: newarray byte
+    //   430: astore 9
+    //   432: aload_2
+    //   433: aload 9
+    //   435: iconst_0
+    //   436: aload_1
+    //   437: getfield 130	com/tencent/mobileqq/mini/utils/WxapkgUnpacker$WxapkgFile:length	I
+    //   440: invokevirtual 74	java/io/RandomAccessFile:read	([BII)I
+    //   443: pop
+    //   444: aload 8
+    //   446: aload 9
+    //   448: invokestatic 134	com/tencent/mobileqq/mini/utils/WxapkgUnpacker:write	(Ljava/io/File;[B)V
+    //   451: goto -70 -> 381
+    //   454: aload_2
+    //   455: invokevirtual 92	java/io/RandomAccessFile:close	()V
+    //   458: iconst_1
+    //   459: ireturn
+    //   460: new 136	java/lang/RuntimeException
+    //   463: dup
+    //   464: ldc 138
+    //   466: invokespecial 139	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
     //   469: athrow
-    //   470: aload_2
-    //   471: ifnull +7 -> 478
-    //   474: aload_2
-    //   475: invokevirtual 71	java/io/RandomAccessFile:close	()V
-    //   478: iconst_1
-    //   479: ireturn
-    //   480: astore_0
-    //   481: goto -140 -> 341
-    //   484: astore_0
-    //   485: goto -7 -> 478
-    //   488: astore_0
-    //   489: goto -383 -> 106
-    //   492: astore_1
-    //   493: goto -25 -> 468
-    //   496: astore_0
-    //   497: aconst_null
-    //   498: astore_1
-    //   499: goto -39 -> 460
-    //   502: astore_2
+    //   470: astore_0
+    //   471: goto +42 -> 513
+    //   474: astore_1
+    //   475: aload_2
+    //   476: astore_0
+    //   477: aload_1
+    //   478: astore_2
+    //   479: goto +13 -> 492
+    //   482: astore_0
+    //   483: aload_1
+    //   484: astore_2
+    //   485: goto +28 -> 513
+    //   488: astore_2
+    //   489: aload 9
+    //   491: astore_0
+    //   492: aload_0
+    //   493: astore_1
+    //   494: ldc 8
+    //   496: iconst_1
+    //   497: ldc 141
+    //   499: aload_2
+    //   500: invokestatic 147	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   503: aload_0
-    //   504: astore_1
-    //   505: aload_2
-    //   506: astore_0
-    //   507: goto -47 -> 460
-    //   510: astore_1
-    //   511: aconst_null
-    //   512: astore_0
-    //   513: goto -424 -> 89
+    //   504: ifnull +7 -> 511
+    //   507: aload_0
+    //   508: invokevirtual 92	java/io/RandomAccessFile:close	()V
+    //   511: iconst_0
+    //   512: ireturn
+    //   513: aload_2
+    //   514: ifnull +7 -> 521
+    //   517: aload_2
+    //   518: invokevirtual 92	java/io/RandomAccessFile:close	()V
+    //   521: aload_0
+    //   522: athrow
+    //   523: iconst_0
+    //   524: ireturn
+    //   525: astore_0
+    //   526: iconst_0
+    //   527: ireturn
+    //   528: astore_0
+    //   529: iconst_1
+    //   530: ireturn
+    //   531: astore_0
+    //   532: iconst_0
+    //   533: ireturn
+    //   534: astore_1
+    //   535: goto -14 -> 521
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	516	0	paramString1	String
-    //   0	516	1	paramString2	String
-    //   0	516	2	paramString3	String
-    //   0	516	3	paramBoolean	boolean
-    //   149	145	4	i	int
-    //   135	21	5	j	int
-    //   162	27	6	k	int
-    //   54	385	7	localObject1	Object
-    //   199	249	8	localObject2	Object
-    //   146	304	9	localObject3	Object
+    //   0	538	0	paramString1	String
+    //   0	538	1	paramString2	String
+    //   0	538	2	paramString3	String
+    //   0	538	3	paramBoolean	boolean
+    //   136	235	4	i	int
+    //   122	21	5	j	int
+    //   149	27	6	k	int
+    //   30	375	7	localObject1	Object
+    //   65	380	8	localObject2	Object
+    //   87	403	9	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   67	86	86	java/lang/Exception
-    //   124	148	86	java/lang/Exception
-    //   158	201	86	java/lang/Exception
-    //   204	222	86	java/lang/Exception
-    //   226	246	86	java/lang/Exception
-    //   246	267	86	java/lang/Exception
-    //   267	289	86	java/lang/Exception
-    //   298	330	86	java/lang/Exception
-    //   343	371	86	java/lang/Exception
-    //   374	380	86	java/lang/Exception
-    //   380	454	86	java/lang/Exception
-    //   67	86	457	finally
-    //   124	148	457	finally
-    //   158	201	457	finally
-    //   204	222	457	finally
-    //   226	246	457	finally
-    //   246	267	457	finally
-    //   267	289	457	finally
-    //   298	330	457	finally
-    //   343	371	457	finally
-    //   374	380	457	finally
-    //   380	454	457	finally
-    //   337	341	480	java/lang/Exception
-    //   474	478	484	java/lang/Exception
-    //   102	106	488	java/lang/Exception
-    //   464	468	492	java/lang/Exception
-    //   56	67	496	finally
-    //   89	98	502	finally
-    //   56	67	510	java/lang/Exception
+    //   102	135	470	finally
+    //   145	187	470	finally
+    //   189	206	470	finally
+    //   210	228	470	finally
+    //   231	272	470	finally
+    //   275	302	470	finally
+    //   311	344	470	finally
+    //   344	366	470	finally
+    //   375	381	470	finally
+    //   381	451	470	finally
+    //   460	470	470	finally
+    //   102	135	474	java/lang/Exception
+    //   145	187	474	java/lang/Exception
+    //   189	206	474	java/lang/Exception
+    //   210	228	474	java/lang/Exception
+    //   231	272	474	java/lang/Exception
+    //   275	302	474	java/lang/Exception
+    //   311	344	474	java/lang/Exception
+    //   344	366	474	java/lang/Exception
+    //   375	381	474	java/lang/Exception
+    //   381	451	474	java/lang/Exception
+    //   460	470	474	java/lang/Exception
+    //   91	102	482	finally
+    //   494	503	482	finally
+    //   91	102	488	java/lang/Exception
+    //   305	309	525	java/lang/Exception
+    //   454	458	528	java/lang/Exception
+    //   507	511	531	java/lang/Exception
+    //   517	521	534	java/lang/Exception
   }
   
   /* Error */
@@ -318,162 +352,178 @@ public class WxapkgUnpacker
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 5
-    //   3: new 28	java/io/File
+    //   1: astore 4
+    //   3: new 25	java/lang/StringBuilder
     //   6: dup
-    //   7: new 25	java/lang/StringBuilder
-    //   10: dup
-    //   11: invokespecial 26	java/lang/StringBuilder:<init>	()V
-    //   14: invokestatic 157	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   17: invokevirtual 161	com/tencent/common/app/BaseApplicationImpl:getFilesDir	()Ljava/io/File;
-    //   20: invokevirtual 164	java/io/File:getPath	()Ljava/lang/String;
-    //   23: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7: invokespecial 26	java/lang/StringBuilder:<init>	()V
+    //   10: astore_3
+    //   11: aload_3
+    //   12: invokestatic 157	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   15: invokevirtual 161	com/tencent/common/app/BaseApplicationImpl:getFilesDir	()Ljava/io/File;
+    //   18: invokevirtual 164	java/io/File:getPath	()Ljava/lang/String;
+    //   21: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   24: pop
+    //   25: aload_3
     //   26: ldc 166
     //   28: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   31: aload_1
-    //   32: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   38: invokespecial 31	java/io/File:<init>	(Ljava/lang/String;)V
-    //   41: astore 4
-    //   43: new 168	java/io/FileOutputStream
-    //   46: dup
-    //   47: aload 4
-    //   49: invokespecial 171	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   52: astore_3
-    //   53: aload_3
-    //   54: astore_1
-    //   55: sipush 1024
-    //   58: newarray byte
-    //   60: astore 5
-    //   62: aload_3
-    //   63: astore_1
-    //   64: aload_0
-    //   65: aload 5
-    //   67: invokevirtual 176	java/io/InputStream:read	([B)I
-    //   70: istore_2
-    //   71: iload_2
-    //   72: ifle +60 -> 132
-    //   75: aload_3
-    //   76: astore_1
-    //   77: aload_3
-    //   78: aload 5
-    //   80: iconst_0
-    //   81: iload_2
-    //   82: invokevirtual 180	java/io/OutputStream:write	([BII)V
-    //   85: goto -23 -> 62
-    //   88: astore_1
-    //   89: aload_3
-    //   90: astore_0
-    //   91: aload_1
-    //   92: astore_3
-    //   93: aload_0
-    //   94: astore_1
-    //   95: ldc 8
-    //   97: iconst_1
-    //   98: new 25	java/lang/StringBuilder
-    //   101: dup
-    //   102: invokespecial 26	java/lang/StringBuilder:<init>	()V
-    //   105: ldc 182
-    //   107: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   110: aload_3
-    //   111: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   114: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   117: invokestatic 188	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   120: aload_0
-    //   121: ifnull +7 -> 128
-    //   124: aload_0
-    //   125: invokevirtual 189	java/io/OutputStream:close	()V
-    //   128: aconst_null
-    //   129: astore_0
-    //   130: aload_0
-    //   131: areturn
-    //   132: aload_3
-    //   133: astore_1
-    //   134: aload_0
-    //   135: invokevirtual 190	java/io/InputStream:close	()V
-    //   138: aload 4
-    //   140: astore_0
-    //   141: aload_3
-    //   142: ifnull -12 -> 130
-    //   145: aload_3
-    //   146: invokevirtual 189	java/io/OutputStream:close	()V
-    //   149: aload 4
-    //   151: areturn
-    //   152: astore_0
-    //   153: aload_0
-    //   154: invokevirtual 193	java/io/IOException:printStackTrace	()V
+    //   31: pop
+    //   32: aload_3
+    //   33: aload_1
+    //   34: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   37: pop
+    //   38: new 28	java/io/File
+    //   41: dup
+    //   42: aload_3
+    //   43: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   46: invokespecial 31	java/io/File:<init>	(Ljava/lang/String;)V
+    //   49: astore 5
+    //   51: new 168	java/io/FileOutputStream
+    //   54: dup
+    //   55: aload 5
+    //   57: invokespecial 171	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   60: astore_3
+    //   61: aload_3
+    //   62: astore_1
+    //   63: sipush 1024
+    //   66: newarray byte
+    //   68: astore 4
+    //   70: aload_3
+    //   71: astore_1
+    //   72: aload_0
+    //   73: aload 4
+    //   75: invokevirtual 176	java/io/InputStream:read	([B)I
+    //   78: istore_2
+    //   79: iload_2
+    //   80: ifle +16 -> 96
+    //   83: aload_3
+    //   84: astore_1
+    //   85: aload_3
+    //   86: aload 4
+    //   88: iconst_0
+    //   89: iload_2
+    //   90: invokevirtual 180	java/io/OutputStream:write	([BII)V
+    //   93: goto -23 -> 70
+    //   96: aload_3
+    //   97: astore_1
+    //   98: aload_0
+    //   99: invokevirtual 181	java/io/InputStream:close	()V
+    //   102: aload_3
+    //   103: invokevirtual 182	java/io/OutputStream:close	()V
+    //   106: aload 5
+    //   108: areturn
+    //   109: astore_0
+    //   110: aload_0
+    //   111: invokevirtual 185	java/io/IOException:printStackTrace	()V
+    //   114: aload 5
+    //   116: areturn
+    //   117: astore 4
+    //   119: aload_3
+    //   120: astore_0
+    //   121: goto +14 -> 135
+    //   124: astore_0
+    //   125: aload 4
+    //   127: astore_1
+    //   128: goto +65 -> 193
+    //   131: astore 4
+    //   133: aconst_null
+    //   134: astore_0
+    //   135: aload_0
+    //   136: astore_1
+    //   137: new 25	java/lang/StringBuilder
+    //   140: dup
+    //   141: invokespecial 26	java/lang/StringBuilder:<init>	()V
+    //   144: astore_3
+    //   145: aload_0
+    //   146: astore_1
+    //   147: aload_3
+    //   148: ldc 187
+    //   150: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   153: pop
+    //   154: aload_0
+    //   155: astore_1
+    //   156: aload_3
     //   157: aload 4
-    //   159: areturn
-    //   160: astore_0
-    //   161: aload_0
-    //   162: invokevirtual 193	java/io/IOException:printStackTrace	()V
-    //   165: goto -37 -> 128
-    //   168: astore_0
-    //   169: aload 5
-    //   171: astore_1
-    //   172: aload_1
-    //   173: ifnull +7 -> 180
-    //   176: aload_1
-    //   177: invokevirtual 189	java/io/OutputStream:close	()V
-    //   180: aload_0
-    //   181: athrow
-    //   182: astore_1
-    //   183: aload_1
-    //   184: invokevirtual 193	java/io/IOException:printStackTrace	()V
-    //   187: goto -7 -> 180
-    //   190: astore_0
-    //   191: goto -19 -> 172
-    //   194: astore_3
-    //   195: aconst_null
-    //   196: astore_0
-    //   197: goto -104 -> 93
+    //   159: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   162: pop
+    //   163: aload_0
+    //   164: astore_1
+    //   165: ldc 8
+    //   167: iconst_1
+    //   168: aload_3
+    //   169: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   172: invokestatic 193	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   175: aload_0
+    //   176: ifnull +14 -> 190
+    //   179: aload_0
+    //   180: invokevirtual 182	java/io/OutputStream:close	()V
+    //   183: aconst_null
+    //   184: areturn
+    //   185: astore_0
+    //   186: aload_0
+    //   187: invokevirtual 185	java/io/IOException:printStackTrace	()V
+    //   190: aconst_null
+    //   191: areturn
+    //   192: astore_0
+    //   193: aload_1
+    //   194: ifnull +15 -> 209
+    //   197: aload_1
+    //   198: invokevirtual 182	java/io/OutputStream:close	()V
+    //   201: goto +8 -> 209
+    //   204: astore_1
+    //   205: aload_1
+    //   206: invokevirtual 185	java/io/IOException:printStackTrace	()V
+    //   209: goto +5 -> 214
+    //   212: aload_0
+    //   213: athrow
+    //   214: goto -2 -> 212
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	200	0	paramInputStream	InputStream
-    //   0	200	1	paramString	String
-    //   70	12	2	i	int
-    //   52	94	3	localObject	Object
-    //   194	1	3	localIOException	java.io.IOException
-    //   41	117	4	localFile	File
-    //   1	169	5	arrayOfByte	byte[]
+    //   0	217	0	paramInputStream	InputStream
+    //   0	217	1	paramString	String
+    //   78	12	2	i	int
+    //   10	159	3	localObject	Object
+    //   1	86	4	arrayOfByte	byte[]
+    //   117	9	4	localIOException1	java.io.IOException
+    //   131	27	4	localIOException2	java.io.IOException
+    //   49	66	5	localFile	File
     // Exception table:
     //   from	to	target	type
-    //   55	62	88	java/io/IOException
-    //   64	71	88	java/io/IOException
-    //   77	85	88	java/io/IOException
-    //   134	138	88	java/io/IOException
-    //   145	149	152	java/io/IOException
-    //   124	128	160	java/io/IOException
-    //   3	53	168	finally
-    //   176	180	182	java/io/IOException
-    //   55	62	190	finally
-    //   64	71	190	finally
-    //   77	85	190	finally
-    //   95	120	190	finally
-    //   134	138	190	finally
-    //   3	53	194	java/io/IOException
+    //   102	106	109	java/io/IOException
+    //   63	70	117	java/io/IOException
+    //   72	79	117	java/io/IOException
+    //   85	93	117	java/io/IOException
+    //   98	102	117	java/io/IOException
+    //   3	61	124	finally
+    //   3	61	131	java/io/IOException
+    //   179	183	185	java/io/IOException
+    //   63	70	192	finally
+    //   72	79	192	finally
+    //   85	93	192	finally
+    //   98	102	192	finally
+    //   137	145	192	finally
+    //   147	154	192	finally
+    //   156	163	192	finally
+    //   165	175	192	finally
+    //   197	201	204	java/io/IOException
   }
   
   public static File getWxapkgFileInAssets(String paramString)
   {
-    File localFile = null;
-    Object localObject1 = BaseApplicationImpl.getContext().getAssets();
+    Object localObject = BaseApplicationImpl.getContext().getAssets();
+    InputStream localInputStream;
     try
     {
-      localObject1 = ((AssetManager)localObject1).open(paramString);
-      if (localObject1 != null) {
-        localFile = createFileFromInputStream((InputStream)localObject1, paramString);
-      }
-      return localFile;
+      localObject = ((AssetManager)localObject).open(paramString);
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-        Object localObject2 = null;
-      }
+      localThrowable.printStackTrace();
+      localInputStream = null;
     }
+    if (localInputStream != null) {
+      return createFileFromInputStream(localInputStream, paramString);
+    }
+    return null;
   }
   
   private static boolean unpackAtomically(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
@@ -484,22 +534,25 @@ public class WxapkgUnpacker
       QLog.e("WxapkgUnpacker", 1, "unpackAtomically fail !zipFile.exists() ");
       return false;
     }
-    String str1 = new File(paramString2, paramString3).getAbsolutePath();
-    String str2 = str1 + "Tmp";
-    FileUtils.delete(str2, false);
+    String str = new File(paramString2, paramString3).getAbsolutePath();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(str);
+    ((StringBuilder)localObject).append("Tmp");
+    localObject = ((StringBuilder)localObject).toString();
+    FileUtils.delete((String)localObject, false);
     if (!Unpacker(paramString1, paramString2, paramString3, paramBoolean))
     {
       QLog.e("WxapkgUnpacker", 1, "unpackAtomically Unpacker fail");
       return false;
     }
-    paramString2 = new File(str2);
+    paramString2 = new File((String)localObject);
     if (!paramString2.exists())
     {
       QLog.e("WxapkgUnpacker", 1, "unpackAtomically !uniqueFolderTmpFile.exists()");
       return false;
     }
-    paramString3 = new File(str1);
-    FileUtils.delete(str1, false);
+    paramString3 = new File(str);
+    FileUtils.delete(str, false);
     if (!FileUtils.renameFile(paramString2, paramString3))
     {
       QLog.e("WxapkgUnpacker", 1, "unpackAtomically !FileUtils.renameFile(uniqueFolderTmpFile, uniqueFolderFile)");
@@ -542,66 +595,32 @@ public class WxapkgUnpacker
     }
   }
   
-  /* Error */
   public static boolean unpackSync(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: aload_0
-    //   4: invokestatic 23	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   7: ifne +14 -> 21
-    //   10: aload_1
-    //   11: invokestatic 23	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   14: istore 4
-    //   16: iload 4
-    //   18: ifeq +10 -> 28
-    //   21: iconst_0
-    //   22: istore_3
-    //   23: ldc 2
-    //   25: monitorexit
-    //   26: iload_3
-    //   27: ireturn
-    //   28: new 28	java/io/File
-    //   31: dup
-    //   32: aload_1
-    //   33: aload_2
-    //   34: invokespecial 136	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   37: invokevirtual 237	java/io/File:exists	()Z
-    //   40: ifeq +8 -> 48
-    //   43: iconst_1
-    //   44: istore_3
-    //   45: goto -22 -> 23
-    //   48: aload_0
-    //   49: aload_1
-    //   50: aload_2
-    //   51: iload_3
-    //   52: invokestatic 270	com/tencent/mobileqq/mini/utils/WxapkgUnpacker:unpackAtomically	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Z
-    //   55: istore_3
-    //   56: goto -33 -> 23
-    //   59: astore_0
-    //   60: ldc 2
-    //   62: monitorexit
-    //   63: aload_0
-    //   64: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	65	0	paramString1	String
-    //   0	65	1	paramString2	String
-    //   0	65	2	paramString3	String
-    //   0	65	3	paramBoolean	boolean
-    //   14	3	4	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   3	16	59	finally
-    //   28	43	59	finally
-    //   48	56	59	finally
+    try
+    {
+      if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+      {
+        boolean bool = new File(paramString2, paramString3).exists();
+        if (bool) {
+          return true;
+        }
+        paramBoolean = unpackAtomically(paramString1, paramString2, paramString3, paramBoolean);
+        return paramBoolean;
+      }
+      return false;
+    }
+    finally {}
   }
   
   private static void write(File paramFile, byte[] paramArrayOfByte)
   {
-    if ((!paramFile.getParentFile().exists()) && (!paramFile.getParentFile().mkdirs())) {
-      throw new RuntimeException("Create folder fail:" + paramFile.getParentFile().getAbsolutePath());
+    if ((!paramFile.getParentFile().exists()) && (!paramFile.getParentFile().mkdirs()))
+    {
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("Create folder fail:");
+      paramArrayOfByte.append(paramFile.getParentFile().getAbsolutePath());
+      throw new RuntimeException(paramArrayOfByte.toString());
     }
     paramFile = new FileOutputStream(paramFile);
     try
@@ -617,7 +636,7 @@ public class WxapkgUnpacker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.utils.WxapkgUnpacker
  * JD-Core Version:    0.7.0.1
  */

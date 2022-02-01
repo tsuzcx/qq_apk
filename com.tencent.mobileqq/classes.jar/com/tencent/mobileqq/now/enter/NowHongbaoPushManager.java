@@ -2,7 +2,7 @@ package com.tencent.mobileqq.now.enter;
 
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.intervideo.now.dynamic.DynamicNowManager;
+import com.tencent.mobileqq.intervideo.now.dynamic.IDynamicNowManager;
 import com.tencent.mobileqq.now.enter.pb.NowPushMsgList.NowPushMsg;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
@@ -26,7 +26,7 @@ public class NowHongbaoPushManager
       if (QLog.isColorLevel()) {
         QLog.i("NowHongbaoPushManager", 2, "发送wns日志请求");
       }
-      ((DynamicNowManager)this.a.getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER)).c();
+      ((IDynamicNowManager)this.a.getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER)).c();
       return true;
     }
     return false;
@@ -39,13 +39,39 @@ public class NowHongbaoPushManager
   
   public void a(NowPushMsgList.NowPushMsg paramNowPushMsg)
   {
-    QLog.i("NowHongbaoPushManager", 1, "receiveOnLinePush ： type=" + paramNowPushMsg.uint32_type.get() + ", show=" + paramNowPushMsg.uint32_switch.get() + ", startTime=" + paramNowPushMsg.uint64_start_time.get() + ", endTime=" + paramNowPushMsg.uint64_end_time.get() + ",taskId =" + paramNowPushMsg.uint32_task_id.get() + ",version =" + paramNowPushMsg.uint32_version.get());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("receiveOnLinePush ： type=");
+    localStringBuilder.append(paramNowPushMsg.uint32_type.get());
+    localStringBuilder.append(", show=");
+    localStringBuilder.append(paramNowPushMsg.uint32_switch.get());
+    localStringBuilder.append(", startTime=");
+    localStringBuilder.append(paramNowPushMsg.uint64_start_time.get());
+    localStringBuilder.append(", endTime=");
+    localStringBuilder.append(paramNowPushMsg.uint64_end_time.get());
+    localStringBuilder.append(",taskId =");
+    localStringBuilder.append(paramNowPushMsg.uint32_task_id.get());
+    localStringBuilder.append(",version =");
+    localStringBuilder.append(paramNowPushMsg.uint32_version.get());
+    QLog.i("NowHongbaoPushManager", 1, localStringBuilder.toString());
     c(paramNowPushMsg);
   }
   
   public void b(NowPushMsgList.NowPushMsg paramNowPushMsg)
   {
-    QLog.i("NowHongbaoPushManager", 1, "receiveOfflinePush ： type=" + paramNowPushMsg.uint32_type.get() + ", show=" + paramNowPushMsg.uint32_switch.get() + ", startTime=" + paramNowPushMsg.uint64_start_time.get() + ", endTime=" + paramNowPushMsg.uint64_end_time.get() + ",taskId =" + paramNowPushMsg.uint32_task_id.get() + ",version =" + paramNowPushMsg.uint32_version.get());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("receiveOfflinePush ： type=");
+    localStringBuilder.append(paramNowPushMsg.uint32_type.get());
+    localStringBuilder.append(", show=");
+    localStringBuilder.append(paramNowPushMsg.uint32_switch.get());
+    localStringBuilder.append(", startTime=");
+    localStringBuilder.append(paramNowPushMsg.uint64_start_time.get());
+    localStringBuilder.append(", endTime=");
+    localStringBuilder.append(paramNowPushMsg.uint64_end_time.get());
+    localStringBuilder.append(",taskId =");
+    localStringBuilder.append(paramNowPushMsg.uint32_task_id.get());
+    localStringBuilder.append(",version =");
+    localStringBuilder.append(paramNowPushMsg.uint32_version.get());
+    QLog.i("NowHongbaoPushManager", 1, localStringBuilder.toString());
     c(paramNowPushMsg);
   }
   
@@ -53,7 +79,7 @@ public class NowHongbaoPushManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.enter.NowHongbaoPushManager
  * JD-Core Version:    0.7.0.1
  */

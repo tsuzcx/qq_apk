@@ -1,23 +1,16 @@
 package com.tencent.ark.open.delegate;
 
-import java.io.File;
 import java.util.HashMap;
 
-public abstract class IArkDelegateNet
+public abstract interface IArkDelegateNet
 {
-  public void download(String paramString, boolean paramBoolean1, boolean paramBoolean2, HashMap<String, String> paramHashMap, File paramFile, IArkDelegateNetCallback paramIArkDelegateNetCallback) {}
+  public abstract void get(String paramString, HashMap<String, String> paramHashMap, IArkDelegateHTTPCallback paramIArkDelegateHTTPCallback);
   
-  public int getNetworkType()
-  {
-    return 0;
-  }
+  public abstract int getNetworkType();
   
-  public boolean isNetworkAvailable()
-  {
-    return true;
-  }
+  public abstract boolean isNetworkAvailable();
   
-  public void sendAppMsg(String paramString1, String paramString2, int paramInt1, int paramInt2, IArkDelegateNetCallback paramIArkDelegateNetCallback) {}
+  public abstract void post(String paramString, HashMap<String, String> paramHashMap, byte[] paramArrayOfByte, IArkDelegateHTTPCallback paramIArkDelegateHTTPCallback);
 }
 
 

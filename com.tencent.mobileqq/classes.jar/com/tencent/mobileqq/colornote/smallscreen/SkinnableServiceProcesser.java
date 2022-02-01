@@ -42,15 +42,16 @@ public class SkinnableServiceProcesser
       return;
     }
     QLog.d("SkinEngine", 1, "SkinnableActivityProcesser on pre theme changed");
-    if (this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenSkinnableServiceProcesser$Callback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenSkinnableServiceProcesser$Callback.e();
+    paramContext = this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenSkinnableServiceProcesser$Callback;
+    if (paramContext != null) {
+      paramContext.e();
     }
     QLog.d("SkinEngine", 1, "SkinnableActivityProcesser on post theme changed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.smallscreen.SkinnableServiceProcesser
  * JD-Core Version:    0.7.0.1
  */

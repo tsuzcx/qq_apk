@@ -20,10 +20,11 @@ final class SpellCheckerSessionHooker$2
         SpellCheckerSessionHooker.a = SpellCheckerSession.class.getDeclaredField("mSpellCheckerSessionListener");
         SpellCheckerSessionHooker.a.setAccessible(true);
       }
-      if (SpellCheckerSessionHooker.a.get(localSpellCheckerSession) != null) {
+      if (SpellCheckerSessionHooker.a.get(localSpellCheckerSession) != null)
+      {
         JavaHookBridge.invokeOriginMethod(paramMethodHookParam.method, paramMethodHookParam.thisObject, paramMethodHookParam.args);
+        return;
       }
-      return;
     }
     catch (Throwable paramMethodHookParam)
     {
@@ -33,7 +34,7 @@ final class SpellCheckerSessionHooker$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.javahook.SpellCheckerSessionHooker.2
  * JD-Core Version:    0.7.0.1
  */

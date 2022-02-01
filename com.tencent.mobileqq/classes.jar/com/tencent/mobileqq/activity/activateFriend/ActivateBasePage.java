@@ -14,7 +14,7 @@ import android.widget.TextView;
 public abstract class ActivateBasePage
   extends RelativeLayout
 {
-  public static float a;
+  public static float a = 2.364865F;
   LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   View jdField_a_of_type_AndroidViewView = null;
   Button jdField_a_of_type_AndroidWidgetButton;
@@ -25,18 +25,14 @@ public abstract class ActivateBasePage
   TextView d;
   TextView e;
   
-  static
-  {
-    jdField_a_of_type_Float = 2.364865F;
-  }
-  
   public ActivateBasePage(Context paramContext)
   {
     super(paramContext);
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
     a();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid.setTextScrolling(false);
+    paramContext = this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid;
+    if (paramContext != null) {
+      paramContext.setTextScrolling(false);
     }
   }
   
@@ -50,7 +46,7 @@ public abstract class ActivateBasePage
   
   protected void a(View paramView)
   {
-    int i = (int)((int)(getResources().getDisplayMetrics().widthPixels - 16.0F * getResources().getDisplayMetrics().density) / jdField_a_of_type_Float);
+    int i = (int)((int)(getResources().getDisplayMetrics().widthPixels - getResources().getDisplayMetrics().density * 16.0F) / jdField_a_of_type_Float);
     ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
     localLayoutParams.height = i;
     paramView.setLayoutParams(localLayoutParams);
@@ -58,8 +54,9 @@ public abstract class ActivateBasePage
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid.a();
+    ActivateFriendGrid localActivateFriendGrid = this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid;
+    if (localActivateFriendGrid != null) {
+      localActivateFriendGrid.a();
     }
   }
   
@@ -69,7 +66,7 @@ public abstract class ActivateBasePage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ActivateBasePage
  * JD-Core Version:    0.7.0.1
  */

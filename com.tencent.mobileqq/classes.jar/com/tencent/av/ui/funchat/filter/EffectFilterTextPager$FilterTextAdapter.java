@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
-import android.support.v4.view.PagerAdapter;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +12,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout.LayoutParams;
+import androidx.viewpager.widget.PagerAdapter;
 import com.tencent.av.AVLog;
 import com.tencent.av.business.manager.filter.FilterItem;
 import com.tencent.image.URLDrawable;
@@ -38,18 +38,19 @@ public class EffectFilterTextPager$FilterTextAdapter
   
   public int a(FilterItem paramFilterItem)
   {
+    int i = 0;
     if (paramFilterItem == null) {
       return 0;
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    int i = 0;
-    for (;;)
+    while (localIterator.hasNext())
     {
-      if ((!localIterator.hasNext()) || (((FilterItem)localIterator.next()).getId().equals(paramFilterItem.getId()))) {
+      if (((FilterItem)localIterator.next()).getId().equals(paramFilterItem.getId())) {
         return i;
       }
       i += 1;
     }
+    return i;
   }
   
   FilterItem a(int paramInt)
@@ -84,44 +85,47 @@ public class EffectFilterTextPager$FilterTextAdapter
   @TargetApi(11)
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    Object localObject = (FilterItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    Object localObject2 = (FilterItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     Context localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject1 = null;
     if (localContext != null)
     {
-      ViewGroup localViewGroup = (ViewGroup)((LayoutInflater)localContext.getSystemService("layout_inflater")).inflate(2131559905, null);
-      ImageView localImageView = (ImageView)localViewGroup.findViewById(2131373813);
+      ViewGroup localViewGroup = (ViewGroup)((LayoutInflater)localContext.getSystemService("layout_inflater")).inflate(2131559776, null);
+      ImageView localImageView = (ImageView)localViewGroup.findViewById(2131373385);
       localImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-      if (localObject != null) {}
-      for (localObject = ((FilterItem)localObject).getIconurl();; localObject = null)
-      {
-        if (TextUtils.isEmpty((CharSequence)localObject))
-        {
-          AVLog.printColorLog("EffectFilterTextPager", "decodeFile url is null.");
-          localImageView.setImageDrawable(null);
-        }
-        for (;;)
-        {
-          if (this.jdField_a_of_type_Boolean)
-          {
-            localObject = (LinearLayout.LayoutParams)localImageView.getLayoutParams();
-            float f = localContext.getResources().getDimension(2131297773);
-            ((LinearLayout.LayoutParams)localObject).setMargins(((LinearLayout.LayoutParams)localObject).leftMargin, (int)f, ((LinearLayout.LayoutParams)localObject).rightMargin, ((LinearLayout.LayoutParams)localObject).bottomMargin);
-            localImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-            localImageView.setScaleX(0.6F);
-            localImageView.setScaleY(0.6F);
-          }
-          paramViewGroup.addView(localViewGroup);
-          return localViewGroup;
-          URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-          localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-          localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-          localURLDrawableOptions.mRequestWidth = localContext.getResources().getDimensionPixelSize(2131297778);
-          localURLDrawableOptions.mRequestHeight = localContext.getResources().getDimensionPixelSize(2131297777);
-          localImageView.setImageDrawable(URLDrawable.getDrawable((String)localObject, localURLDrawableOptions));
-        }
+      if (localObject2 != null) {
+        localObject1 = ((FilterItem)localObject2).getIconUrl();
+      } else {
+        localObject1 = null;
       }
+      if (TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        AVLog.printColorLog("EffectFilterTextPager", "decodeFile url is null.");
+        localImageView.setImageDrawable(null);
+      }
+      else
+      {
+        localObject2 = URLDrawable.URLDrawableOptions.obtain();
+        ColorDrawable localColorDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+        ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = localColorDrawable;
+        ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = localColorDrawable;
+        ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = localContext.getResources().getDimensionPixelSize(2131297769);
+        ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = localContext.getResources().getDimensionPixelSize(2131297768);
+        localImageView.setImageDrawable(URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject2));
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        localObject1 = (LinearLayout.LayoutParams)localImageView.getLayoutParams();
+        float f = localContext.getResources().getDimension(2131297764);
+        ((LinearLayout.LayoutParams)localObject1).setMargins(((LinearLayout.LayoutParams)localObject1).leftMargin, (int)f, ((LinearLayout.LayoutParams)localObject1).rightMargin, ((LinearLayout.LayoutParams)localObject1).bottomMargin);
+        localImageView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        localImageView.setScaleX(0.6F);
+        localImageView.setScaleY(0.6F);
+      }
+      paramViewGroup.addView(localViewGroup);
+      localObject1 = localViewGroup;
     }
-    return null;
+    return localObject1;
   }
   
   public boolean isViewFromObject(View paramView, Object paramObject)
@@ -131,7 +135,7 @@ public class EffectFilterTextPager$FilterTextAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.funchat.filter.EffectFilterTextPager.FilterTextAdapter
  * JD-Core Version:    0.7.0.1
  */

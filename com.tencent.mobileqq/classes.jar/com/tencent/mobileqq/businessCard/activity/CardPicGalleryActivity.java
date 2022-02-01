@@ -29,7 +29,6 @@ import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.MessageRoamManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.SVIPHandler;
 import com.tencent.mobileqq.app.SVIPObserver;
 import com.tencent.mobileqq.ar.utils.UniformUtils;
 import com.tencent.mobileqq.forward.ForwardBaseOption;
@@ -38,7 +37,8 @@ import com.tencent.mobileqq.util.ProfileCardUtil;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.ViewUtils;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.vas.svip.api.ISVIPHandler;
+import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -112,53 +112,56 @@ public class CardPicGalleryActivity
   
   protected void a()
   {
-    if ((this.d == 1) && (!this.jdField_a_of_type_Boolean)) {}
-    label15:
-    do
+    if ((this.d == 1) && (!this.jdField_a_of_type_Boolean)) {
+      return;
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentWidgetGallery;
+    if (localObject == null) {
+      return;
+    }
+    localObject = ((Gallery)localObject).getSelectedView();
+    if (localObject == null) {
+      return;
+    }
+    localObject = ((ImageView)((View)localObject).findViewById(2131364340)).getDrawable();
+    if (localObject != null)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            break label15;
-            break label15;
-            do
-            {
-              return;
-            } while (this.jdField_a_of_type_ComTencentWidgetGallery == null);
-            localObject = this.jdField_a_of_type_ComTencentWidgetGallery.getSelectedView();
-          } while (localObject == null);
-          localObject = ((ImageView)((View)localObject).findViewById(2131364450)).getDrawable();
-        } while ((localObject == null) || (!(localObject instanceof URLDrawable)));
-        localObject = (URLDrawable)localObject;
-      } while ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) && (((URLDrawable)localObject).getStatus() != 1));
+      if (!(localObject instanceof URLDrawable)) {
+        return;
+      }
+      localObject = (URLDrawable)localObject;
+      if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) && (((URLDrawable)localObject).getStatus() != 1)) {
+        return;
+      }
       ActionSheet localActionSheet = ActionSheet.create(this);
       a(localActionSheet);
       localActionSheet.setOnButtonClickListener(new CardPicGalleryActivity.4(this, (URLDrawable)localObject, localActionSheet));
       localActionSheet.setOnBottomCancelListener(new CardPicGalleryActivity.5(this, localActionSheet));
       localActionSheet.show();
-    } while (2 != this.d);
-    if (this.app != null) {}
-    for (Object localObject = this.app.getCurrentAccountUin();; localObject = "")
-    {
-      VasWebviewUtil.reportCommercialDrainage((String)localObject, "defaultcard", "click_more", "", 1, 0, 0, "", Integer.toString(this.jdField_c_of_type_Int), "");
-      return;
+      if (2 == this.d)
+      {
+        if (this.app != null) {
+          localObject = this.app.getCurrentAccountUin();
+        } else {
+          localObject = "";
+        }
+        VasWebviewUtil.a((String)localObject, "defaultcard", "click_more", "", 1, 0, 0, "", Integer.toString(this.jdField_c_of_type_Int), "");
+      }
     }
   }
   
   protected void a(int paramInt, URLDrawable paramURLDrawable)
   {
-    switch (this.d)
+    int i = this.d;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      b(paramInt, paramURLDrawable);
+      if (i != 2) {
+        return;
+      }
+      c(paramInt, paramURLDrawable);
       return;
     }
-    c(paramInt, paramURLDrawable);
+    b(paramInt, paramURLDrawable);
   }
   
   void a(URLDrawable paramURLDrawable)
@@ -175,7 +178,7 @@ public class CardPicGalleryActivity
       if (QLog.isColorLevel()) {
         QLog.e("qqBaseActivity", 2, "", paramURLDrawable);
       }
-      QQToast.a(this, getString(2131692807), 0).a();
+      QQToast.a(this, getString(2131692762), 0).a();
     }
   }
   
@@ -196,135 +199,142 @@ public class CardPicGalleryActivity
   
   protected void a(ActionSheet paramActionSheet)
   {
-    switch (this.d)
+    int i = this.d;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      paramActionSheet.addButton(2131698611);
-      if (this.jdField_c_of_type_Boolean) {
-        paramActionSheet.addButton(2131698598, 3);
+      if (i != 2) {
+        return;
       }
-      paramActionSheet.addCancelButton(2131690800);
+      if ((this.jdField_c_of_type_Int > 0) && (!this.jdField_b_of_type_Boolean)) {
+        paramActionSheet.addButton(2131693264);
+      }
+      paramActionSheet.addButton(2131693256);
+      paramActionSheet.addButton(2131693262);
+      paramActionSheet.addButton(2131693254);
+      paramActionSheet.addCancelButton(2131690728);
       return;
     }
-    if ((this.jdField_c_of_type_Int > 0) && (!this.jdField_b_of_type_Boolean)) {
-      paramActionSheet.addButton(2131693310);
+    paramActionSheet.addButton(2131698677);
+    if (this.jdField_c_of_type_Boolean) {
+      paramActionSheet.addButton(2131698664, 3);
     }
-    paramActionSheet.addButton(2131693302);
-    paramActionSheet.addButton(2131693308);
-    paramActionSheet.addButton(2131693300);
-    paramActionSheet.addCancelButton(2131690800);
+    paramActionSheet.addCancelButton(2131690728);
   }
   
   protected void b(int paramInt, URLDrawable paramURLDrawable)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 0: 
-      c(paramURLDrawable);
+      if (paramInt != 1) {
+        return;
+      }
+      paramURLDrawable = new Intent();
+      paramURLDrawable.putExtra("delete_pic", true);
+      setResult(-1, paramURLDrawable);
+      finish();
       return;
     }
-    paramURLDrawable = new Intent();
-    paramURLDrawable.putExtra("delete_pic", true);
-    setResult(-1, paramURLDrawable);
-    finish();
+    c(paramURLDrawable);
   }
   
   void b(URLDrawable paramURLDrawable)
   {
-    if (paramURLDrawable.getStatus() != 1) {}
-    String str;
-    for (;;)
-    {
+    if (paramURLDrawable.getStatus() != 1) {
       return;
-      new File(AppConstants.SDCARD_IMG_SAVE).mkdirs();
-      str = AppConstants.SDCARD_IMG_SAVE + Utils.Crc64String(paramURLDrawable.getURL().toString());
-      File localFile = new File(str);
-      if (!localFile.exists()) {
-        try
-        {
-          if (localFile.createNewFile())
-          {
-            b(paramURLDrawable, localFile.getPath());
-            return;
-          }
-        }
-        catch (IOException paramURLDrawable)
-        {
-          QQToast.a(this, getString(2131694921), 0).a();
-          return;
-        }
-      }
     }
-    DialogUtil.a(this, 230).setTitle(getString(2131718675)).setMessage(getString(2131694917)).setPositiveButton(getString(2131718540), new CardPicGalleryActivity.8(this, paramURLDrawable, str)).setNegativeButton(getString(2131694495), new CardPicGalleryActivity.7(this)).show();
+    new File(AppConstants.SDCARD_IMG_SAVE).mkdirs();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(AppConstants.SDCARD_IMG_SAVE);
+    ((StringBuilder)localObject).append(Utils.Crc64String(paramURLDrawable.getURL().toString()));
+    localObject = ((StringBuilder)localObject).toString();
+    File localFile = new File((String)localObject);
+    if (!localFile.exists()) {}
+    try
+    {
+      if (!localFile.createNewFile()) {
+        break label177;
+      }
+      b(paramURLDrawable, localFile.getPath());
+      return;
+    }
+    catch (IOException paramURLDrawable)
+    {
+      label92:
+      break label92;
+    }
+    QQToast.a(this, getString(2131694911), 0).a();
+    return;
+    DialogUtil.a(this, 230).setTitle(getString(2131718393)).setMessage(getString(2131694907)).setPositiveButton(getString(2131718205), new CardPicGalleryActivity.8(this, paramURLDrawable, (String)localObject)).setNegativeButton(getString(2131694460), new CardPicGalleryActivity.7(this)).show();
+    label177:
   }
   
   protected void c(int paramInt, URLDrawable paramURLDrawable)
   {
-    int i;
-    if (this.jdField_c_of_type_Int != 0)
+    if ((this.jdField_c_of_type_Int != 0) && (!this.jdField_b_of_type_Boolean)) {
+      break label24;
+    }
+    paramInt += 1;
+    label24:
+    Object localObject = "";
+    if (paramInt != 0)
     {
-      i = paramInt;
-      if (!this.jdField_b_of_type_Boolean) {}
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            paramInt = 0;
+          }
+          else
+          {
+            a(paramURLDrawable);
+            if (this.app != null) {
+              localObject = this.app.getCurrentAccountUin();
+            }
+            VasWebviewUtil.a((String)localObject, "defaultcard", "collect", "", 1, 0, 0, "", Integer.toString(this.jdField_c_of_type_Int), "");
+            paramInt = 3;
+          }
+        }
+        else
+        {
+          c(paramURLDrawable);
+          if (this.app != null) {
+            localObject = this.app.getCurrentAccountUin();
+          }
+          VasWebviewUtil.a((String)localObject, "defaultcard", "save", "", 1, 0, 0, "", Integer.toString(this.jdField_c_of_type_Int), "");
+          paramInt = 2;
+        }
+      }
+      else
+      {
+        a(paramURLDrawable, (String)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_b_of_type_Int));
+        if (this.app != null) {
+          localObject = this.app.getCurrentAccountUin();
+        }
+        VasWebviewUtil.a((String)localObject, "defaultcard", "send", "", 1, 0, 0, "", Integer.toString(this.jdField_c_of_type_Int), "");
+        paramInt = 1;
+      }
     }
     else
     {
-      i = paramInt + 1;
-    }
-    paramInt = 0;
-    switch (i)
-    {
-    }
-    for (;;)
-    {
-      QQAppInterface localQQAppInterface = this.app;
-      if (this.jdField_b_of_type_Boolean) {}
-      for (paramURLDrawable = "1";; paramURLDrawable = "2")
+      if ((this.app != null) && (this.jdField_c_of_type_Int > 0))
       {
-        ReportController.b(localQQAppInterface, "dc00898", "", "", "0X800A88C", "0X800A88C", paramInt, 0, paramURLDrawable, "", "", "");
-        return;
-        if ((this.app == null) || (this.jdField_c_of_type_Int <= 0)) {
-          break label371;
+        ((ISVIPHandler)this.app.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).g(this.jdField_c_of_type_Int);
+        if (this.app != null) {
+          localObject = this.app.getCurrentAccountUin();
         }
-        ((SVIPHandler)this.app.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).g(this.jdField_c_of_type_Int);
-        if (this.app != null) {}
-        for (paramURLDrawable = this.app.getCurrentAccountUin();; paramURLDrawable = "")
-        {
-          VasWebviewUtil.reportCommercialDrainage(paramURLDrawable, "defaultcard", "set_mydefaultcard", "", 1, 0, 0, "", Integer.toString(this.jdField_c_of_type_Int), "");
-          paramInt = 5;
-          break;
-        }
-        a(paramURLDrawable, (String)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_b_of_type_Int));
-        if (this.app != null) {}
-        for (paramURLDrawable = this.app.getCurrentAccountUin();; paramURLDrawable = "")
-        {
-          VasWebviewUtil.reportCommercialDrainage(paramURLDrawable, "defaultcard", "send", "", 1, 0, 0, "", Integer.toString(this.jdField_c_of_type_Int), "");
-          paramInt = 1;
-          break;
-        }
-        c(paramURLDrawable);
-        if (this.app != null) {}
-        for (paramURLDrawable = this.app.getCurrentAccountUin();; paramURLDrawable = "")
-        {
-          VasWebviewUtil.reportCommercialDrainage(paramURLDrawable, "defaultcard", "save", "", 1, 0, 0, "", Integer.toString(this.jdField_c_of_type_Int), "");
-          paramInt = 2;
-          break;
-        }
-        a(paramURLDrawable);
-        if (this.app != null) {}
-        for (paramURLDrawable = this.app.getCurrentAccountUin();; paramURLDrawable = "")
-        {
-          VasWebviewUtil.reportCommercialDrainage(paramURLDrawable, "defaultcard", "collect", "", 1, 0, 0, "", Integer.toString(this.jdField_c_of_type_Int), "");
-          paramInt = 3;
-          break;
-        }
+        VasWebviewUtil.a((String)localObject, "defaultcard", "set_mydefaultcard", "", 1, 0, 0, "", Integer.toString(this.jdField_c_of_type_Int), "");
       }
-      label371:
       paramInt = 5;
     }
+    localObject = this.app;
+    if (this.jdField_b_of_type_Boolean) {
+      paramURLDrawable = "1";
+    } else {
+      paramURLDrawable = "2";
+    }
+    ReportController.b((AppRuntime)localObject, "dc00898", "", "", "0X800A88C", "0X800A88C", paramInt, 0, paramURLDrawable, "", "", "");
   }
   
   @Override
@@ -336,25 +346,27 @@ public class CardPicGalleryActivity
     return bool;
   }
   
-  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
-    if (paramInt1 == 10) {}
-    while ((paramInt1 != 21) || (paramInt2 != -1)) {
+    if (paramInt1 == 10) {
       return;
     }
-    Intent localIntent = AIOUtils.a(new Intent(this, SplashActivity.class), null);
-    localIntent.putExtras(new Bundle(paramIntent.getExtras()));
-    startActivity(localIntent);
-    finish();
+    if ((paramInt1 == 21) && (paramInt2 == -1))
+    {
+      Intent localIntent = AIOUtils.a(new Intent(this, SplashActivity.class), null);
+      localIntent.putExtras(new Bundle(paramIntent.getExtras()));
+      startActivity(localIntent);
+      finish();
+    }
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     this.mNeedStatusTrans = false;
     this.isClearCoverLayer = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561130);
+    super.setContentView(2131560994);
     paramBundle = getIntent();
     this.jdField_a_of_type_JavaUtilArrayList = paramBundle.getStringArrayListExtra("business_card_pics");
     this.jdField_a_of_type_Boolean = paramBundle.getBooleanExtra("is_edit_mode", false);
@@ -363,82 +375,75 @@ public class CardPicGalleryActivity
     this.jdField_c_of_type_Boolean = paramBundle.getBooleanExtra("is_from_profile", false);
     this.jdField_c_of_type_Int = paramBundle.getIntExtra("default_card_id", 0);
     this.jdField_b_of_type_Boolean = paramBundle.getBooleanExtra("is_from_mine_profile", false);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131379538);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131378886);
     UniformUtils.a(this, this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363408));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363340));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131367677));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367683));
+    this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131367431));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367437));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     if ((this.d == 1) && (!this.jdField_a_of_type_Boolean)) {
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
-    this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131297168));
+    this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131297150));
     this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_AndroidWidgetBaseAdapter);
     this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(new CardPicGalleryActivity.1(this));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)super.findViewById(2131364449));
-    Object localObject2;
-    Object localObject1;
-    label536:
-    int i;
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)super.findViewById(2131364339));
     if (this.d == 2)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(new CardPicGalleryActivity.2(this));
       this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemLongClickListener(new CardPicGalleryActivity.3(this));
       this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this);
-      paramBundle = BaseApplicationImpl.getApplication().getSharedPreferences("profile_sp", 0);
-      this.jdField_a_of_type_Long = paramBundle.getLong("recommend_id", 0L);
-      this.jdField_a_of_type_JavaLangString = paramBundle.getString("recommend_url", "");
-      this.jdField_b_of_type_JavaLangString = paramBundle.getString("recommend_desc", "");
-      localObject2 = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379127);
-      paramBundle = (ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131368914);
-      localObject1 = getResources().getDrawable(2130851250);
+      Object localObject1 = BaseApplicationImpl.getApplication().getSharedPreferences("profile_sp", 0);
+      this.jdField_a_of_type_Long = ((SharedPreferences)localObject1).getLong("recommend_id", 0L);
+      paramBundle = "";
+      this.jdField_a_of_type_JavaLangString = ((SharedPreferences)localObject1).getString("recommend_url", "");
+      this.jdField_b_of_type_JavaLangString = ((SharedPreferences)localObject1).getString("recommend_desc", "");
+      Object localObject2 = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378497);
+      localObject1 = (ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131368640);
+      Drawable localDrawable = getResources().getDrawable(2130851161);
       if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)))
       {
         ((TextView)localObject2).setText(this.jdField_b_of_type_JavaLangString);
         localObject2 = URLDrawable.URLDrawableOptions.obtain();
         ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = ViewUtils.a(75.0F);
         ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = ViewUtils.a(80.0F);
-        ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Drawable)localObject1);
-        ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
-        paramBundle.setImageDrawable(URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject2));
-        if (this.jdField_b_of_type_Boolean) {
-          this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-        }
-        localObject1 = this.app;
-        if (this.app == null) {
-          break label637;
-        }
-        paramBundle = this.app.getCurrentAccountUin();
-        ReportController.b((AppRuntime)localObject1, "CliOper", "", paramBundle, "card_mall", "0X8007B2A", 0, 0, String.valueOf(this.jdField_a_of_type_Long), "", "", "");
-        paramBundle = this.app;
-        if (!this.jdField_b_of_type_Boolean) {
-          break label643;
-        }
-        i = 1;
-        label581:
-        ReportController.b(paramBundle, "dc00898", "", "", "0X800A88B", "0X800A88B", i, 0, "", "", "", "");
+        ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = localDrawable;
+        ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = localDrawable;
+        ((ImageView)localObject1).setImageDrawable(URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject2));
       }
+      else
+      {
+        ((TextView)localObject2).setText(HardCodeUtil.a(2131701669));
+        ((ImageView)localObject1).setImageDrawable(localDrawable);
+      }
+      if (this.jdField_b_of_type_Boolean) {
+        this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
+      }
+      localObject1 = this.app;
+      if (this.app != null) {
+        paramBundle = this.app.getCurrentAccountUin();
+      }
+      ReportController.b((AppRuntime)localObject1, "CliOper", "", paramBundle, "card_mall", "0X8007B2A", 0, 0, String.valueOf(this.jdField_a_of_type_Long), "", "", "");
+      paramBundle = this.app;
+      int i;
+      if (this.jdField_b_of_type_Boolean) {
+        i = 1;
+      } else {
+        i = 2;
+      }
+      ReportController.b(paramBundle, "dc00898", "", "", "0X800A88B", "0X800A88B", i, 0, "", "", "", "");
     }
-    for (;;)
+    else
     {
-      addObserver(this.jdField_a_of_type_ComTencentMobileqqAppSVIPObserver);
-      return true;
-      ((TextView)localObject2).setText(HardCodeUtil.a(2131701529));
-      paramBundle.setImageDrawable((Drawable)localObject1);
-      break;
-      label637:
-      paramBundle = "";
-      break label536;
-      label643:
-      i = 2;
-      break label581;
       this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
     }
+    addObserver(this.jdField_a_of_type_ComTencentMobileqqAppSVIPObserver);
+    return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
     if ((this.app != null) && (((MessageRoamManager)this.app.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER)).a(hashCode()))) {
@@ -447,49 +452,46 @@ public class CardPicGalleryActivity
     removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppSVIPObserver);
   }
   
-  public boolean onBackEvent()
+  protected boolean onBackEvent()
   {
     finish();
-    overridePendingTransition(0, 2130772375);
+    overridePendingTransition(0, 2130772405);
     return true;
   }
   
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_a_of_type_AndroidWidgetImageView) {
+    if (paramView == this.jdField_a_of_type_AndroidWidgetImageView)
+    {
       a();
     }
-    do
+    else if (paramView == this.jdField_a_of_type_AndroidWidgetTextView)
     {
-      for (;;)
-      {
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        if (paramView != this.jdField_a_of_type_AndroidWidgetTextView) {
-          break;
-        }
-        onBackEvent();
-      }
-    } while (paramView != this.jdField_a_of_type_AndroidViewViewGroup);
-    ProfileCardUtil.a(this, this.app.getCurrentAccountUin(), "inside.friendCardBackground", 1, 1, 1, "recommendId=" + this.jdField_a_of_type_Long, false);
-    QQAppInterface localQQAppInterface = this.app;
-    if (this.app != null)
-    {
-      str = this.app.getCurrentAccountUin();
-      label105:
-      ReportController.b(localQQAppInterface, "CliOper", "", str, "card_mall", "0X8004DC0", 0, 0, String.valueOf(this.jdField_a_of_type_Long), "", "", "");
-      if (this.app == null) {
-        break label180;
-      }
+      onBackEvent();
     }
-    label180:
-    for (String str = this.app.getCurrentAccountUin();; str = "")
+    else if (paramView == this.jdField_a_of_type_AndroidViewViewGroup)
     {
-      VasWebviewUtil.reportCommercialDrainage(str, "defaultcard", "click_card_others", "", 1, 0, 0, "", "", "");
-      break;
-      str = "";
-      break label105;
+      Object localObject1 = this.app.getCurrentAccountUin();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("recommendId=");
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_Long);
+      ProfileCardUtil.a(this, (String)localObject1, "inside.friendCardBackground", 1, 1, 1, ((StringBuilder)localObject2).toString(), false);
+      QQAppInterface localQQAppInterface = this.app;
+      localObject1 = this.app;
+      localObject2 = "";
+      if (localObject1 != null) {
+        localObject1 = this.app.getCurrentAccountUin();
+      } else {
+        localObject1 = "";
+      }
+      ReportController.b(localQQAppInterface, "CliOper", "", (String)localObject1, "card_mall", "0X8004DC0", 0, 0, String.valueOf(this.jdField_a_of_type_Long), "", "", "");
+      localObject1 = localObject2;
+      if (this.app != null) {
+        localObject1 = this.app.getCurrentAccountUin();
+      }
+      VasWebviewUtil.a((String)localObject1, "defaultcard", "click_card_others", "", 1, 0, 0, "", "", "");
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   @Override
@@ -511,7 +513,7 @@ public class CardPicGalleryActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity
  * JD-Core Version:    0.7.0.1
  */

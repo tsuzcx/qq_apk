@@ -17,13 +17,13 @@ class FontManager$8
         QLog.i("tag.vasFont.enlarge", 2, "enableEnlargeFontEffect --> extensionInfo is null.");
       }
       AvatarPendantUtil.a(this.jdField_a_of_type_JavaLangString);
-      AvatarPendantUtil.a(this.this$0.a);
+      AvatarPendantUtil.a(FontManager.a(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.FontManager.8
  * JD-Core Version:    0.7.0.1
  */

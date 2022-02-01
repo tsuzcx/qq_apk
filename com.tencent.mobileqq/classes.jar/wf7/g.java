@@ -44,44 +44,55 @@ public final class g
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ap, 0);
-    if (this.aq != -2.55D) {
-      paramJceOutputStream.write(this.aq, 1);
+    double d = this.aq;
+    if (d != -2.55D) {
+      paramJceOutputStream.write(d, 1);
     }
-    if (this.ar != 2.03D) {
-      paramJceOutputStream.write(this.ar, 2);
+    d = this.ar;
+    if (d != 2.03D) {
+      paramJceOutputStream.write(d, 2);
     }
-    if (this.as != 0.9300000000000001D) {
-      paramJceOutputStream.write(this.as, 3);
+    d = this.as;
+    if (d != 0.9300000000000001D) {
+      paramJceOutputStream.write(d, 3);
     }
-    if (this.at != 13.4D) {
-      paramJceOutputStream.write(this.at, 4);
+    d = this.at;
+    if (d != 13.4D) {
+      paramJceOutputStream.write(d, 4);
     }
-    if (this.au != -7.37D) {
-      paramJceOutputStream.write(this.au, 5);
+    d = this.au;
+    if (d != -7.37D) {
+      paramJceOutputStream.write(d, 5);
     }
-    if (this.av != -3.99D) {
-      paramJceOutputStream.write(this.av, 6);
+    d = this.av;
+    if (d != -3.99D) {
+      paramJceOutputStream.write(d, 6);
     }
-    if (this.aw != 0.167D) {
-      paramJceOutputStream.write(this.aw, 7);
+    d = this.aw;
+    if (d != 0.167D) {
+      paramJceOutputStream.write(d, 7);
     }
-    if (this.ax != 0.333D) {
-      paramJceOutputStream.write(this.ax, 8);
+    d = this.ax;
+    if (d != 0.333D) {
+      paramJceOutputStream.write(d, 8);
     }
-    if (this.ay != 0.5D) {
-      paramJceOutputStream.write(this.ay, 9);
+    d = this.ay;
+    if (d != 0.5D) {
+      paramJceOutputStream.write(d, 9);
     }
-    if (this.az != 0.667D) {
-      paramJceOutputStream.write(this.az, 10);
+    d = this.az;
+    if (d != 0.667D) {
+      paramJceOutputStream.write(d, 10);
     }
-    if (this.aA != 0.833D) {
-      paramJceOutputStream.write(this.aA, 11);
+    d = this.aA;
+    if (d != 0.833D) {
+      paramJceOutputStream.write(d, 11);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.g
  * JD-Core Version:    0.7.0.1
  */

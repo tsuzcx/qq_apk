@@ -27,18 +27,11 @@ public class AppComponentFactory
   {
     try
     {
-      paramClassLoader = (Activity)Class.forName(paramString, false, paramClassLoader).getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
+      paramClassLoader = (Activity)Class.forName(paramString, false, paramClassLoader).asSubclass(Activity.class).getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
       return paramClassLoader;
     }
-    catch (NoSuchMethodException paramClassLoader)
-    {
-      throw new RuntimeException("Couldn't call constructor", paramClassLoader);
-    }
-    catch (InvocationTargetException paramClassLoader)
-    {
-      label27:
-      break label27;
-    }
+    catch (NoSuchMethodException paramClassLoader) {}catch (InvocationTargetException paramClassLoader) {}
+    throw new RuntimeException("Couldn't call constructor", paramClassLoader);
   }
   
   @NonNull
@@ -52,18 +45,11 @@ public class AppComponentFactory
   {
     try
     {
-      paramClassLoader = (Application)Class.forName(paramString, false, paramClassLoader).getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
+      paramClassLoader = (Application)Class.forName(paramString, false, paramClassLoader).asSubclass(Application.class).getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
       return paramClassLoader;
     }
-    catch (NoSuchMethodException paramClassLoader)
-    {
-      throw new RuntimeException("Couldn't call constructor", paramClassLoader);
-    }
-    catch (InvocationTargetException paramClassLoader)
-    {
-      label27:
-      break label27;
-    }
+    catch (NoSuchMethodException paramClassLoader) {}catch (InvocationTargetException paramClassLoader) {}
+    throw new RuntimeException("Couldn't call constructor", paramClassLoader);
   }
   
   @NonNull
@@ -77,18 +63,11 @@ public class AppComponentFactory
   {
     try
     {
-      paramClassLoader = (ContentProvider)Class.forName(paramString, false, paramClassLoader).getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
+      paramClassLoader = (ContentProvider)Class.forName(paramString, false, paramClassLoader).asSubclass(ContentProvider.class).getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
       return paramClassLoader;
     }
-    catch (NoSuchMethodException paramClassLoader)
-    {
-      throw new RuntimeException("Couldn't call constructor", paramClassLoader);
-    }
-    catch (InvocationTargetException paramClassLoader)
-    {
-      label27:
-      break label27;
-    }
+    catch (NoSuchMethodException paramClassLoader) {}catch (InvocationTargetException paramClassLoader) {}
+    throw new RuntimeException("Couldn't call constructor", paramClassLoader);
   }
   
   @NonNull
@@ -102,18 +81,11 @@ public class AppComponentFactory
   {
     try
     {
-      paramClassLoader = (BroadcastReceiver)Class.forName(paramString, false, paramClassLoader).getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
+      paramClassLoader = (BroadcastReceiver)Class.forName(paramString, false, paramClassLoader).asSubclass(BroadcastReceiver.class).getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
       return paramClassLoader;
     }
-    catch (NoSuchMethodException paramClassLoader)
-    {
-      throw new RuntimeException("Couldn't call constructor", paramClassLoader);
-    }
-    catch (InvocationTargetException paramClassLoader)
-    {
-      label27:
-      break label27;
-    }
+    catch (NoSuchMethodException paramClassLoader) {}catch (InvocationTargetException paramClassLoader) {}
+    throw new RuntimeException("Couldn't call constructor", paramClassLoader);
   }
   
   @NonNull
@@ -127,23 +99,16 @@ public class AppComponentFactory
   {
     try
     {
-      paramClassLoader = (Service)Class.forName(paramString, false, paramClassLoader).getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
+      paramClassLoader = (Service)Class.forName(paramString, false, paramClassLoader).asSubclass(Service.class).getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
       return paramClassLoader;
     }
-    catch (NoSuchMethodException paramClassLoader)
-    {
-      throw new RuntimeException("Couldn't call constructor", paramClassLoader);
-    }
-    catch (InvocationTargetException paramClassLoader)
-    {
-      label27:
-      break label27;
-    }
+    catch (NoSuchMethodException paramClassLoader) {}catch (InvocationTargetException paramClassLoader) {}
+    throw new RuntimeException("Couldn't call constructor", paramClassLoader);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.AppComponentFactory
  * JD-Core Version:    0.7.0.1
  */

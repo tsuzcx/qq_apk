@@ -13,8 +13,16 @@ class OpenApiManager$2
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("OpenApi.Manager", 2, "onRuntimeDisactive, app = " + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface + ", current = " + OpenApiManager.access$000(this.this$0) + ", " + this.jdField_a_of_type_Boolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onRuntimeDisactive, app = ");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      localStringBuilder.append(", current = ");
+      localStringBuilder.append(OpenApiManager.access$000(this.this$0));
+      localStringBuilder.append(", ");
+      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      QLog.d("OpenApi.Manager", 2, localStringBuilder.toString());
     }
     if ((OpenApiManager.access$000(this.this$0) != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == OpenApiManager.access$000(this.this$0)))
     {
@@ -30,7 +38,7 @@ class OpenApiManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.openapi.OpenApiManager.2
  * JD-Core Version:    0.7.0.1
  */

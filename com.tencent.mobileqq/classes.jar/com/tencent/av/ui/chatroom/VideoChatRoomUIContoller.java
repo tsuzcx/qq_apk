@@ -57,8 +57,8 @@ public class VideoChatRoomUIContoller
   {
     if (this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer == null)
     {
-      ((ViewStub)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131374063)).inflate();
-      this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer = ((VideoChatRoomContainer)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131373789));
+      ((ViewStub)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131373618)).inflate();
+      this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer = ((VideoChatRoomContainer)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131373361));
       this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
     }
     return this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer;
@@ -70,76 +70,71 @@ public class VideoChatRoomUIContoller
       return;
     }
     this.jdField_a_of_type_JavaUtilArrayList.clear();
-    ChatRoomMng localChatRoomMng = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-    if (localChatRoomMng != null) {
-      localChatRoomMng.a(paramChatRoomInfo, this.jdField_a_of_type_JavaUtilArrayList);
+    Object localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+    if (localObject != null) {
+      ((ChatRoomMng)localObject).a(paramChatRoomInfo, this.jdField_a_of_type_JavaUtilArrayList);
     }
-    paramChatRoomInfo = null;
-    if (this.jdField_a_of_type_JavaUtilList != this.b) {
-      paramChatRoomInfo = this.b;
-    }
-    for (;;)
+    localObject = this.jdField_a_of_type_JavaUtilList;
+    paramChatRoomInfo = this.b;
+    if (localObject == paramChatRoomInfo)
     {
-      a(this.jdField_a_of_type_JavaUtilArrayList, paramChatRoomInfo);
-      this.jdField_a_of_type_JavaUtilList = paramChatRoomInfo;
-      this.jdField_a_of_type_ComTencentAvUiAVActivity.runOnUiThread(new VideoChatRoomUIContoller.3(this));
-      return;
-      if (this.jdField_a_of_type_JavaUtilList != this.c) {
-        paramChatRoomInfo = this.c;
+      paramChatRoomInfo = this.c;
+      if (localObject == paramChatRoomInfo) {
+        paramChatRoomInfo = null;
       }
     }
+    a(this.jdField_a_of_type_JavaUtilArrayList, paramChatRoomInfo);
+    this.jdField_a_of_type_JavaUtilList = paramChatRoomInfo;
+    this.jdField_a_of_type_ComTencentAvUiAVActivity.runOnUiThread(new VideoChatRoomUIContoller.3(this));
   }
   
   private void a(List<ChatRoomMsg> paramList, List<VideoChatMessage> paramList1)
   {
-    if ((paramList == null) || (paramList1 == null)) {
-      return;
-    }
-    String str1 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
-    paramList1.clear();
-    paramList = paramList.iterator();
-    label31:
-    ChatRoomMsg localChatRoomMsg;
-    VideoChatMessage localVideoChatMessage;
-    while (paramList.hasNext())
+    if (paramList != null)
     {
-      localChatRoomMsg = (ChatRoomMsg)paramList.next();
-      if (localChatRoomMsg != null)
+      if (paramList1 == null) {
+        return;
+      }
+      String str1 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
+      paramList1.clear();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        String str2 = String.valueOf(localChatRoomMsg.jdField_a_of_type_Long);
-        localVideoChatMessage = VideoChatMessage.a();
-        localVideoChatMessage.b(str2);
-        localVideoChatMessage.a(localChatRoomMsg.jdField_a_of_type_JavaLangString);
-        if (!TextUtils.equals(str2, str1)) {
-          break label154;
+        ChatRoomMsg localChatRoomMsg = (ChatRoomMsg)paramList.next();
+        if (localChatRoomMsg != null)
+        {
+          String str2 = String.valueOf(localChatRoomMsg.jdField_a_of_type_Long);
+          VideoChatMessage localVideoChatMessage = VideoChatMessage.a();
+          localVideoChatMessage.b(str2);
+          localVideoChatMessage.a(localChatRoomMsg.jdField_a_of_type_JavaLangString);
+          int i;
+          if (TextUtils.equals(str2, str1)) {
+            i = 1;
+          } else {
+            i = 2;
+          }
+          localVideoChatMessage.a(i);
+          localVideoChatMessage.c(String.format("%s|%s", new Object[] { Long.valueOf(localChatRoomMsg.d), Long.valueOf(localChatRoomMsg.b) }));
+          paramList1.add(localVideoChatMessage);
         }
       }
-    }
-    label154:
-    for (int i = 1;; i = 2)
-    {
-      localVideoChatMessage.a(i);
-      localVideoChatMessage.c(String.format("%s|%s", new Object[] { Long.valueOf(localChatRoomMsg.d), Long.valueOf(localChatRoomMsg.b) }));
-      paramList1.add(localVideoChatMessage);
-      break label31;
-      break;
     }
   }
   
   private int b()
   {
-    if (this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer != null)
+    VideoChatRoomContainer localVideoChatRoomContainer = this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer;
+    int i = 0;
+    if (localVideoChatRoomContainer != null)
     {
-      int j = this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer.getWidth();
-      int i = j;
-      if (j == 0)
+      i = localVideoChatRoomContainer.getWidth();
+      if (i == 0)
       {
         this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer.measure(0, 0);
-        i = this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer.getMeasuredWidth();
+        return this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer.getMeasuredWidth();
       }
-      return i;
     }
-    return 0;
+    return i;
   }
   
   private void b()
@@ -152,69 +147,64 @@ public class VideoChatRoomUIContoller
   private void d(int paramInt)
   {
     SessionInfo localSessionInfo = SessionMgr.a().a();
-    if ((localSessionInfo.B) || (localSessionInfo.J) || (localSessionInfo.A())) {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("VideoChatRoomUIContoller", 4, "ChatRoomPanel can not show when recording.");
-      }
-    }
-    Object localObject;
-    do
+    if ((!localSessionInfo.az) && (!localSessionInfo.y) && (!localSessionInfo.r()))
     {
-      do
-      {
+      Object localObject1 = this.jdField_a_of_type_ComTencentAvUiAVActivity.jdField_a_of_type_ComTencentAvUiVideoControlUI;
+      if (localObject1 == null) {
         return;
-        localObject = this.jdField_a_of_type_ComTencentAvUiAVActivity.jdField_a_of_type_ComTencentAvUiVideoControlUI;
-      } while (localObject == null);
-      if ((this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer == null) || (this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer.getVisibility() != 0)) {
-        break;
       }
-    } while (!QLog.isDevelopLevel());
-    QLog.i("VideoChatRoomUIContoller", 4, "ChatRoomPanel has already show");
-    return;
-    if (this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer == null) {
-      this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer = a();
-    }
-    this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer.setVisibility(0);
-    b();
-    if (paramInt == 2)
-    {
-      ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer, "TranslationX", new float[] { b(), 0.0F });
-      ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer, "alpha", new float[] { 0.0F, 1.0F });
-      AnimatorSet localAnimatorSet = new AnimatorSet();
-      localAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2 });
-      localAnimatorSet.setDuration(300L);
-      localAnimatorSet.start();
-    }
-    for (;;)
-    {
-      b(((VideoControlUI)localObject).c());
-      a();
-      localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-      if (localObject != null)
+      Object localObject2 = this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer;
+      if ((localObject2 != null) && (((VideoChatRoomContainer)localObject2).getVisibility() == 0))
       {
-        localObject = ((ChatRoomMng)localObject).a(localSessionInfo, true);
-        if (QLog.isColorLevel()) {
-          QLog.i("ChatRoomUtil", 2, String.format("showChatRoomPanelWithAnimation, session[%s], chat_room[%s]", new Object[] { localSessionInfo, localObject }));
+        if (QLog.isDevelopLevel()) {
+          QLog.i("VideoChatRoomUIContoller", 4, "ChatRoomPanel has already show");
         }
-        a((ChatRoomInfo)localObject);
+        return;
       }
-      ChatRoomUtil.a("0X800A8D3");
-      return;
-      if (paramInt == 0)
+      if (this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer == null) {
+        this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer = a();
+      }
+      this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer.setVisibility(0);
+      b();
+      if (paramInt == 2)
+      {
+        localObject2 = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer, "TranslationX", new float[] { b(), 0.0F });
+        ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer, "alpha", new float[] { 0.0F, 1.0F });
+        AnimatorSet localAnimatorSet = new AnimatorSet();
+        localAnimatorSet.playTogether(new Animator[] { localObject2, localObjectAnimator });
+        localAnimatorSet.setDuration(300L);
+        localAnimatorSet.start();
+      }
+      else if (paramInt == 0)
       {
         this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer.setTranslationX(0.0F);
         this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer.setAlpha(1.0F);
       }
+      b(((VideoControlUI)localObject1).c());
+      a();
+      localObject1 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+      if (localObject1 != null)
+      {
+        localObject1 = ((ChatRoomMng)localObject1).a(localSessionInfo, true);
+        if (QLog.isColorLevel()) {
+          QLog.i("ChatRoomUtil", 2, String.format("showChatRoomPanelWithAnimation, session[%s], chat_room[%s]", new Object[] { localSessionInfo, localObject1 }));
+        }
+        a((ChatRoomInfo)localObject1);
+      }
+      ChatRoomUtil.a("0X800A8D3");
+      return;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.i("VideoChatRoomUIContoller", 4, "ChatRoomPanel can not show when recording.");
     }
   }
   
   public int a()
   {
-    int i = 0;
     if (a()) {
-      i = this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer.a();
+      return this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer.a();
     }
-    return i;
+    return 0;
   }
   
   public void a()
@@ -226,120 +216,129 @@ public class VideoChatRoomUIContoller
   
   public void a(int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("VideoChatRoomUIContoller", 4, "showChatRoomPanel, which[" + paramInt + "]");
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("showChatRoomPanel, which[");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("]");
+      QLog.i("VideoChatRoomUIContoller", 4, localStringBuilder.toString());
     }
     d(paramInt);
   }
   
   public void a(String paramString)
   {
-    if ((paramString == null) || (paramString.length() <= 0)) {}
-    ChatRoomMng localChatRoomMng;
-    ChatRoomInfo localChatRoomInfo;
-    do
+    if (paramString != null)
     {
-      do
-      {
+      if (paramString.length() <= 0) {
         return;
-        localChatRoomMng = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-      } while (localChatRoomMng == null);
-      localChatRoomInfo = localChatRoomMng.a(SessionMgr.a().a(), true);
-    } while (localChatRoomInfo == null);
-    localChatRoomMng.a(localChatRoomInfo, paramString, System.currentTimeMillis());
+      }
+      ChatRoomMng localChatRoomMng = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+      if (localChatRoomMng != null)
+      {
+        ChatRoomInfo localChatRoomInfo = localChatRoomMng.a(SessionMgr.a().a(), true);
+        if (localChatRoomInfo != null) {
+          localChatRoomMng.a(localChatRoomInfo, paramString, System.currentTimeMillis());
+        }
+      }
+    }
   }
   
   public void a(boolean paramBoolean)
   {
     int i = 0;
-    Object localObject;
-    if (!paramBoolean)
+    if (!paramBoolean) {
+      SessionMgr.a().a().at = a();
+    } else {
+      SessionMgr.a().a().at = false;
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+    if (localObject != null) {
+      ((ChatRoomMng)localObject).b(this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomUIContoller$ChatRoomMsgObserver);
+    }
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomUIContoller$ChatRoomUIObserver);
+    localObject = this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer;
+    if (localObject != null) {
+      localObject = ((VideoChatRoomContainer)localObject).a;
+    } else {
+      localObject = null;
+    }
+    if (localObject != null)
     {
-      SessionMgr.a().a().aF = a();
-      localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-      if (localObject != null) {
-        ((ChatRoomMng)localObject).b(this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomUIContoller$ChatRoomMsgObserver);
-      }
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomUIContoller$ChatRoomUIObserver);
-      if (this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer == null) {
-        break label114;
-      }
-      localObject = this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer.a;
-      label65:
-      if (localObject == null) {
-        break label129;
-      }
       localObject = ((EditText)localObject).getText();
-      if (localObject != null) {
-        break label119;
+      if (localObject == null) {
+        localObject = null;
+      } else {
+        localObject = ((Editable)localObject).getFilters();
       }
-      localObject = null;
+      while ((localObject != null) && (i < localObject.length))
+      {
+        localObject[i] = null;
+        i += 1;
+      }
     }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      if ((localObject == null) || (i >= localObject.length)) {
-        break label129;
-      }
-      localObject[i] = null;
-      i += 1;
-      continue;
-      SessionMgr.a().a().aF = false;
-      break;
-      label114:
-      localObject = null;
-      break label65;
-      label119:
-      localObject = ((Editable)localObject).getFilters();
-    }
-    label129:
-    if (QLog.isColorLevel()) {
-      QLog.i("ChatRoomUtil", 2, "VideoChatRoomUIContoller-destroy, isQuit[" + paramBoolean + "], mCheckFirstShowChatRoomPanel[" + SessionMgr.a().a().aF + "]");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("VideoChatRoomUIContoller-destroy, isQuit[");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append("], mCheckFirstShowChatRoomPanel[");
+      ((StringBuilder)localObject).append(SessionMgr.a().a().at);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("ChatRoomUtil", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer != null) && (this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer.getVisibility() == 0);
+    VideoChatRoomContainer localVideoChatRoomContainer = this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer;
+    return (localVideoChatRoomContainer != null) && (localVideoChatRoomContainer.getVisibility() == 0);
   }
   
   public void b(int paramInt)
   {
     if (a())
     {
-      if (this.jdField_a_of_type_ComTencentAvUiAVActivity.c() != 4) {
-        break label144;
+      if (this.jdField_a_of_type_ComTencentAvUiAVActivity.c() == 4)
+      {
+        SessionInfo localSessionInfo = null;
+        VideoController localVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+        if (localVideoController != null) {
+          localSessionInfo = localVideoController.a();
+        }
+        if ((localSessionInfo != null) && (localSessionInfo.k()) && (localSessionInfo.t()))
+        {
+          i = this.jdField_a_of_type_ComTencentAvUiAVActivity.jdField_a_of_type_ComTencentAvUiVideoLayerUI.m + paramInt + this.jdField_a_of_type_ComTencentAvUiAVActivity.getResources().getDimensionPixelSize(2131297708);
+          break label90;
+        }
       }
-      SessionInfo localSessionInfo = null;
-      VideoController localVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-      if (localVideoController != null) {
-        localSessionInfo = localVideoController.a();
-      }
-      if ((localSessionInfo == null) || (!localSessionInfo.m()) || (!localSessionInfo.t())) {
-        break label144;
-      }
-    }
-    label144:
-    for (int i = this.jdField_a_of_type_ComTencentAvUiAVActivity.jdField_a_of_type_ComTencentAvUiVideoLayerUI.m + paramInt + this.jdField_a_of_type_ComTencentAvUiAVActivity.getResources().getDimensionPixelSize(2131297717);; i = paramInt)
-    {
+      int i = paramInt;
+      label90:
       if (QLog.isDevelopLevel()) {
         QLog.i("ChatRoomUtil", 4, String.format("updateChatRoomPanel, [%s --> %s], layoutMode[%s]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(this.jdField_a_of_type_ComTencentAvUiAVActivity.c()) }));
       }
       this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer.a(i);
-      return;
     }
   }
   
   public boolean b()
   {
-    return (this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer != null) && (this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer.c());
+    VideoChatRoomContainer localVideoChatRoomContainer = this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer;
+    return (localVideoChatRoomContainer != null) && (localVideoChatRoomContainer.c());
   }
   
   public void c(int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("ChatRoomUtil", 4, "hideChatRoomPanel, from[" + paramInt + "]");
-    }
     Object localObject;
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("hideChatRoomPanel, from[");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("ChatRoomUtil", 4, ((StringBuilder)localObject).toString());
+    }
     if (a())
     {
       if (paramInt == 2)
@@ -348,37 +347,34 @@ public class VideoChatRoomUIContoller
         ((AlphaAnimation)localObject).setDuration(300L);
         ((AlphaAnimation)localObject).setAnimationListener(new VideoChatRoomUIContoller.1(this));
         this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer.startAnimation((Animation)localObject);
+        return;
       }
+      if (paramInt == 1)
+      {
+        localObject = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer, "TranslationX", new float[] { 0.0F, b() });
+        ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer, "alpha", new float[] { 1.0F, 0.0F });
+        AnimatorSet localAnimatorSet = new AnimatorSet();
+        localAnimatorSet.playTogether(new Animator[] { localObject, localObjectAnimator });
+        localAnimatorSet.setDuration(300L);
+        localAnimatorSet.addListener(new VideoChatRoomUIContoller.2(this));
+        localAnimatorSet.start();
+        return;
+      }
+      this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer.setVisibility(8);
     }
-    else {
-      return;
-    }
-    if (paramInt == 1)
-    {
-      localObject = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer, "TranslationX", new float[] { 0.0F, b() });
-      ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer, "alpha", new float[] { 1.0F, 0.0F });
-      AnimatorSet localAnimatorSet = new AnimatorSet();
-      localAnimatorSet.playTogether(new Animator[] { localObject, localObjectAnimator });
-      localAnimatorSet.setDuration(300L);
-      localAnimatorSet.addListener(new VideoChatRoomUIContoller.2(this));
-      localAnimatorSet.start();
-      return;
-    }
-    this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer.setVisibility(8);
   }
   
   public boolean c()
   {
-    boolean bool = false;
     if (a()) {
-      bool = this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer.a();
+      return this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer.a();
     }
-    return bool;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.chatroom.VideoChatRoomUIContoller
  * JD-Core Version:    0.7.0.1
  */

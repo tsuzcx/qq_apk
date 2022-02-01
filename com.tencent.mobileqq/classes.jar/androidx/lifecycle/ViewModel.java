@@ -17,15 +17,16 @@ public abstract class ViewModel
   
   private static void closeWithRuntimeException(Object paramObject)
   {
-    if ((paramObject instanceof Closeable)) {}
-    try
-    {
-      ((Closeable)paramObject).close();
-      return;
-    }
-    catch (IOException paramObject)
-    {
-      throw new RuntimeException(paramObject);
+    if ((paramObject instanceof Closeable)) {
+      try
+      {
+        ((Closeable)paramObject).close();
+        return;
+      }
+      catch (IOException paramObject)
+      {
+        throw new RuntimeException(paramObject);
+      }
     }
   }
   
@@ -33,58 +34,59 @@ public abstract class ViewModel
   final void clear()
   {
     this.mCleared = true;
-    if (this.mBagOfTags != null) {
-      synchronized (this.mBagOfTags)
+    Map localMap = this.mBagOfTags;
+    if (localMap != null) {
+      try
       {
         Iterator localIterator = this.mBagOfTags.values().iterator();
-        if (localIterator.hasNext()) {
+        while (localIterator.hasNext()) {
           closeWithRuntimeException(localIterator.next());
         }
       }
+      finally {}
     }
     onCleared();
   }
   
   <T> T getTag(String paramString)
   {
-    if (this.mBagOfTags == null) {
+    Map localMap = this.mBagOfTags;
+    if (localMap == null) {
       return null;
     }
-    synchronized (this.mBagOfTags)
+    try
     {
       paramString = this.mBagOfTags.get(paramString);
       return paramString;
     }
+    finally {}
   }
   
   protected void onCleared() {}
   
   <T> T setTagIfAbsent(String paramString, T paramT)
   {
-    for (;;)
+    synchronized (this.mBagOfTags)
     {
-      Object localObject;
-      synchronized (this.mBagOfTags)
-      {
-        localObject = this.mBagOfTags.get(paramString);
-        if (localObject == null) {
-          this.mBagOfTags.put(paramString, paramT);
-        }
-        if (localObject == null)
-        {
-          if (this.mCleared) {
-            closeWithRuntimeException(paramT);
-          }
-          return paramT;
-        }
+      Object localObject = this.mBagOfTags.get(paramString);
+      if (localObject == null) {
+        this.mBagOfTags.put(paramString, paramT);
       }
-      paramT = localObject;
+      if (localObject == null) {
+        paramString = paramT;
+      } else {
+        paramString = localObject;
+      }
+      if (this.mCleared) {
+        closeWithRuntimeException(paramString);
+      }
+      return paramString;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.lifecycle.ViewModel
  * JD-Core Version:    0.7.0.1
  */

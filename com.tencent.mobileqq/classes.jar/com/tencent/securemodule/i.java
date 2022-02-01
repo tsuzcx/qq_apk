@@ -5,94 +5,46 @@ import java.io.Serializable;
 public final class i
   implements Serializable
 {
-  public static final i A;
-  public static final i B;
-  public static final i C;
-  public static final i D;
-  public static final i E;
-  public static final i F;
-  public static final i G;
-  public static final i H;
-  public static final i I;
-  public static final i J;
-  public static final i K;
-  private static i[] M;
-  public static final i a;
-  public static final i b;
-  public static final i c;
-  public static final i d;
-  public static final i e;
-  public static final i f;
-  public static final i g;
-  public static final i h;
-  public static final i i;
-  public static final i j;
-  public static final i k;
-  public static final i l;
-  public static final i m;
-  public static final i n;
-  public static final i o;
-  public static final i p;
-  public static final i q;
-  public static final i r;
-  public static final i s;
-  public static final i t;
-  public static final i u;
-  public static final i v;
-  public static final i w;
-  public static final i x;
-  public static final i y;
-  public static final i z;
+  public static final i A = new i(26, 26, "EP_King_SuperUser");
+  public static final i B = new i(27, 27, "EP_Secure_SDK_Ign");
+  public static final i C = new i(28, 28, "EP_Tracker");
+  public static final i D = new i(29, 29, "EP_TencentUser");
+  public static final i E = new i(30, 30, "EP_Album");
+  public static final i F = new i(31, 31, "EP_WeShare");
+  public static final i G = new i(32, 32, "EP_Tencent_Cleaner");
+  public static final i H = new i(33, 35, "EP_Secure_Mini");
+  public static final i I = new i(34, 40, "EP_GameAssistant_SDK");
+  public static final i J = new i(35, 41, "EP_QQDownloader_SDK");
+  public static final i K = new i(36, 42, "EP_END");
+  private static i[] M = new i[37];
+  public static final i a = new i(0, 0, "EP_None");
+  public static final i b = new i(1, 1, "EP_Secure");
+  public static final i c = new i(2, 2, "EP_Phonebook");
+  public static final i d = new i(3, 3, "EP_Pim");
+  public static final i e = new i(4, 4, "EP_QQPhonebook");
+  public static final i f = new i(5, 5, "EP_QZone");
+  public static final i g = new i(6, 6, "EP_MobileQQ_Secure");
+  public static final i h = new i(7, 7, "EP_QQBrowse_Secure");
+  public static final i i = new i(8, 8, "EP_XiaoYou");
+  public static final i j = new i(9, 9, "EP_Secure_Eng");
+  public static final i k = new i(10, 10, "EP_WBlog");
+  public static final i l = new i(11, 11, "EP_Phonebook_Eng");
+  public static final i m = new i(12, 12, "EP_AppAssistant");
+  public static final i n = new i(13, 13, "EP_Secure_SDK");
+  public static final i o = new i(14, 14, "EP_KingRoot");
+  public static final i p = new i(15, 15, "EP_Secure_SDK_Pay");
+  public static final i q = new i(16, 16, "EP_Secure_Jailbreak");
+  public static final i r = new i(17, 17, "EP_KingUser");
+  public static final i s = new i(18, 18, "EP_Pim_Pro");
+  public static final i t = new i(19, 19, "EP_Pim_Jailbreak");
+  public static final i u = new i(20, 20, "EP_PhonebookPro");
+  public static final i v = new i(21, 21, "EP_PowerManager");
+  public static final i w = new i(22, 22, "EP_BenchMark");
+  public static final i x = new i(23, 23, "EP_SecurePro_Enhance");
+  public static final i y = new i(24, 24, "EP_Pim_Eng");
+  public static final i z = new i(25, 25, "EP_SMS_Fraud_Killer");
   private int N;
   private String O = new String();
-  
-  static
-  {
-    if (!i.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      L = bool;
-      M = new i[37];
-      a = new i(0, 0, "EP_None");
-      b = new i(1, 1, "EP_Secure");
-      c = new i(2, 2, "EP_Phonebook");
-      d = new i(3, 3, "EP_Pim");
-      e = new i(4, 4, "EP_QQPhonebook");
-      f = new i(5, 5, "EP_QZone");
-      g = new i(6, 6, "EP_MobileQQ_Secure");
-      h = new i(7, 7, "EP_QQBrowse_Secure");
-      i = new i(8, 8, "EP_XiaoYou");
-      j = new i(9, 9, "EP_Secure_Eng");
-      k = new i(10, 10, "EP_WBlog");
-      l = new i(11, 11, "EP_Phonebook_Eng");
-      m = new i(12, 12, "EP_AppAssistant");
-      n = new i(13, 13, "EP_Secure_SDK");
-      o = new i(14, 14, "EP_KingRoot");
-      p = new i(15, 15, "EP_Secure_SDK_Pay");
-      q = new i(16, 16, "EP_Secure_Jailbreak");
-      r = new i(17, 17, "EP_KingUser");
-      s = new i(18, 18, "EP_Pim_Pro");
-      t = new i(19, 19, "EP_Pim_Jailbreak");
-      u = new i(20, 20, "EP_PhonebookPro");
-      v = new i(21, 21, "EP_PowerManager");
-      w = new i(22, 22, "EP_BenchMark");
-      x = new i(23, 23, "EP_SecurePro_Enhance");
-      y = new i(24, 24, "EP_Pim_Eng");
-      z = new i(25, 25, "EP_SMS_Fraud_Killer");
-      A = new i(26, 26, "EP_King_SuperUser");
-      B = new i(27, 27, "EP_Secure_SDK_Ign");
-      C = new i(28, 28, "EP_Tracker");
-      D = new i(29, 29, "EP_TencentUser");
-      E = new i(30, 30, "EP_Album");
-      F = new i(31, 31, "EP_WeShare");
-      G = new i(32, 32, "EP_Tencent_Cleaner");
-      H = new i(33, 35, "EP_Secure_Mini");
-      I = new i(34, 40, "EP_GameAssistant_SDK");
-      J = new i(35, 41, "EP_QQDownloader_SDK");
-      K = new i(36, 42, "EP_END");
-      return;
-    }
-  }
   
   private i(int paramInt1, int paramInt2, String paramString)
   {
@@ -104,17 +56,25 @@ public final class i
   public static i a(int paramInt)
   {
     int i1 = 0;
-    while (i1 < M.length)
+    for (;;)
     {
-      if (M[i1].a() == paramInt) {
+      localObject = M;
+      if (i1 >= localObject.length) {
+        break;
+      }
+      if (localObject[i1].a() == paramInt) {
         return M[i1];
       }
       i1 += 1;
     }
-    if (!L) {
-      throw new AssertionError();
+    if (L) {
+      return null;
     }
-    return null;
+    Object localObject = new AssertionError();
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
   }
   
   public int a()
@@ -129,7 +89,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.securemodule.i
  * JD-Core Version:    0.7.0.1
  */

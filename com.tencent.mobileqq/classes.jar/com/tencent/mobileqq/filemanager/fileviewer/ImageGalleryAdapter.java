@@ -15,7 +15,7 @@ import com.tencent.image.RegionDrawableData;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.photo.ProGallery.OnProGalleryListener;
+import com.tencent.mobileqq.activity.photo.OnProGalleryListener;
 import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.ImageFileInfo;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
@@ -25,7 +25,7 @@ import java.util.List;
 
 public class ImageGalleryAdapter
   extends BaseAdapter
-  implements ProGallery.OnProGalleryListener
+  implements OnProGalleryListener
 {
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
@@ -39,38 +39,33 @@ public class ImageGalleryAdapter
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().densityDpi;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130851249);
-    this.b = paramContext.getResources().getDrawable(2130839549);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130851160);
+    this.b = paramContext.getResources().getDrawable(2130839406);
   }
   
   private void a(View paramView, URLDrawable paramURLDrawable, int paramInt)
   {
-    boolean bool = true;
-    switch (paramInt)
+    if (paramInt != 3)
     {
-    case 4: 
-    case 5: 
-    case 7: 
-    default: 
-      paramInt = 0;
-      if (paramURLDrawable.isAnim()) {
-        break;
+      if (paramInt != 6)
+      {
+        if (paramInt != 8) {
+          paramInt = 0;
+        } else {
+          paramInt = 3;
+        }
+      }
+      else {
+        paramInt = 1;
       }
     }
-    for (;;)
-    {
-      paramView.setTag(2131296390, Boolean.valueOf(bool));
-      if (bool) {
-        paramView.setTag(2131296389, Integer.valueOf(paramInt));
-      }
-      return;
-      paramInt = 1;
-      break;
+    else {
       paramInt = 2;
-      break;
-      paramInt = 3;
-      break;
-      bool = false;
+    }
+    boolean bool = paramURLDrawable.isAnim() ^ true;
+    paramView.setTag(2131296390, Boolean.valueOf(bool));
+    if (bool) {
+      paramView.setTag(2131296389, Integer.valueOf(paramInt));
     }
   }
   
@@ -81,16 +76,18 @@ public class ImageGalleryAdapter
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList != null) {
+      return localList.size();
     }
     return 0;
   }
   
   public Object getItem(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList != null) {
+      return localList.get(paramInt);
     }
     return null;
   }
@@ -105,67 +102,67 @@ public class ImageGalleryAdapter
     View localView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560965, null);
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560840, null);
       paramView = new ImageGalleryAdapter.ImagePhotoHolder(this, null);
-      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131368729));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379394));
-      paramView.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)localView.findViewById(2131373554));
+      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131368461));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378745));
+      paramView.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)localView.findViewById(2131373132));
       localView.setTag(paramView);
     }
-    Object localObject1;
-    for (;;)
+    else
     {
-      localObject1 = (FileBrowserModelBase.ImageFileInfo)getItem(paramInt);
-      if (localObject1 != null) {
-        break;
-      }
-      paramView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
       localObject1 = (ImageGalleryAdapter.ImagePhotoHolder)paramView.getTag();
       localView = paramView;
       paramView = (View)localObject1;
     }
-    URL localURL = ((FileBrowserModelBase.ImageFileInfo)localObject1).a();
-    int i = ((FileBrowserModelBase.ImageFileInfo)localObject1).a();
-    if (localURL != null)
+    Object localObject1 = (FileBrowserModelBase.ImageFileInfo)getItem(paramInt);
+    if (localObject1 == null)
     {
-      Object localObject2 = this.b;
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject2);
-      localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      localURLDrawableOptions.mPlayGifImage = true;
-      localURLDrawableOptions.mUseExifOrientation = false;
-      localObject2 = URLDrawable.getDrawable(localURL, localURLDrawableOptions);
-      ((URLDrawable)localObject2).setTargetDensity(this.jdField_a_of_type_Int);
-      paramView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject2);
-      if (((FileBrowserModelBase.ImageFileInfo)localObject1).a())
-      {
-        paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-        label246:
-        a(localView, (URLDrawable)localObject2, ((FileBrowserModelBase.ImageFileInfo)localObject1).b());
-        if ((i != 1) || (!AsyncImageView.a(localURL)) || (!FileUtil.a(((FileBrowserModelBase.ImageFileInfo)localObject1).b()))) {
-          break label321;
-        }
-        ((URLDrawable)localObject2).setTag(Integer.valueOf(1));
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject2);
-      }
-    }
-    for (;;)
-    {
-      break;
-      paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
-      break label246;
-      label321:
-      this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-      continue;
       paramView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      if (!((FileBrowserModelBase.ImageFileInfo)localObject1).b())
+    }
+    else
+    {
+      URL localURL = ((FileBrowserModelBase.ImageFileInfo)localObject1).a();
+      int i = ((FileBrowserModelBase.ImageFileInfo)localObject1).a();
+      if (localURL != null)
       {
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        localView.setTag(2131296386, Float.valueOf(1.0F));
+        Object localObject2 = this.b;
+        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject2);
+        localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        localURLDrawableOptions.mPlayGifImage = true;
+        localURLDrawableOptions.mUseExifOrientation = false;
+        localObject2 = URLDrawable.getDrawable(localURL, localURLDrawableOptions);
+        ((URLDrawable)localObject2).setTargetDensity(this.jdField_a_of_type_Int);
+        paramView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject2);
+        if (((FileBrowserModelBase.ImageFileInfo)localObject1).a()) {
+          paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+        } else {
+          paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
+        }
+        a(localView, (URLDrawable)localObject2, ((FileBrowserModelBase.ImageFileInfo)localObject1).b());
+        if ((i == 1) && (AsyncImageView.a(localURL)) && (FileUtil.b(((FileBrowserModelBase.ImageFileInfo)localObject1).b())))
+        {
+          ((URLDrawable)localObject2).setTag(Integer.valueOf(1));
+          this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject2);
+        }
+        else
+        {
+          this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
+        }
+      }
+      else
+      {
+        paramView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        if (!((FileBrowserModelBase.ImageFileInfo)localObject1).b())
+        {
+          paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+          localView.setTag(2131296386, Float.valueOf(1.0F));
+        }
       }
     }
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
   
   public View onCreateView(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -201,7 +198,7 @@ public class ImageGalleryAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.ImageGalleryAdapter
  * JD-Core Version:    0.7.0.1
  */

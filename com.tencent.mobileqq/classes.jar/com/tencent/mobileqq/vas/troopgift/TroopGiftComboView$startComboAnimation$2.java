@@ -24,27 +24,30 @@ final class TroopGiftComboView$startComboAnimation$2
   public final void invoke(@NotNull PAGView paramPAGView)
   {
     Intrinsics.checkParameterIsNotNull(paramPAGView, "pagView");
-    ValueAnimator localValueAnimator;
+    Object localObject;
     if (TroopGiftComboView.a(this.this$0) > 0L)
     {
-      localValueAnimator = this.$animator;
-      Intrinsics.checkExpressionValueIsNotNull(localValueAnimator, "animator");
-      localValueAnimator.setDuration(TroopGiftComboView.a(this.this$0));
+      localObject = this.$animator;
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "animator");
+      ((ValueAnimator)localObject).setDuration(TroopGiftComboView.a(this.this$0));
     }
-    for (;;)
+    else
     {
-      this.$animator.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new TroopGiftComboView.startComboAnimation.2.1(this, paramPAGView));
-      return;
-      localValueAnimator = this.$animator;
-      Intrinsics.checkExpressionValueIsNotNull(localValueAnimator, "animator");
-      localValueAnimator.setDuration(TroopGiftComboView.a(this.this$0, this.$comboTimes));
-      QLog.e(this.this$0.a(), 1, "Get troopgift combo pag duration failed. comboTimes: " + this.$comboTimes);
+      localObject = this.$animator;
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "animator");
+      ((ValueAnimator)localObject).setDuration(TroopGiftComboView.a(this.this$0, this.$comboTimes));
+      localObject = this.this$0.a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Get troopgift combo pag duration failed. comboTimes: ");
+      localStringBuilder.append(this.$comboTimes);
+      QLog.e((String)localObject, 1, localStringBuilder.toString());
     }
+    this.$animator.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new TroopGiftComboView.startComboAnimation.2.1(this, paramPAGView));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopgift.TroopGiftComboView.startComboAnimation.2
  * JD-Core Version:    0.7.0.1
  */

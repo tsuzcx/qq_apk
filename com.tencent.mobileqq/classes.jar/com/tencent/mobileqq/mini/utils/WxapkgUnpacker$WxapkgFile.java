@@ -15,12 +15,21 @@ class WxapkgUnpacker$WxapkgFile
   
   public String toString()
   {
-    return "WxapkgFile{name='" + this.name + '\'' + ", start=" + this.start + ", length=" + this.length + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WxapkgFile{name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", start=");
+    localStringBuilder.append(this.start);
+    localStringBuilder.append(", length=");
+    localStringBuilder.append(this.length);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.utils.WxapkgUnpacker.WxapkgFile
  * JD-Core Version:    0.7.0.1
  */

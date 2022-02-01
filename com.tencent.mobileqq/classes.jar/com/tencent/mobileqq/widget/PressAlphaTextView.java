@@ -26,24 +26,34 @@ public class PressAlphaTextView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((!isClickable()) || (!isEnabled())) {
-      return super.onTouchEvent(paramMotionEvent);
-    }
-    switch (paramMotionEvent.getAction())
+    if ((isClickable()) && (isEnabled()))
     {
-    }
-    for (;;)
-    {
-      return super.onTouchEvent(paramMotionEvent);
+      int i = paramMotionEvent.getAction();
+      if (i != 0) {
+        if (i != 1)
+        {
+          if (i != 2) {
+            if (i != 3) {
+              break label58;
+            }
+          }
+        }
+        else
+        {
+          setAlpha(1.0F);
+          break label58;
+        }
+      }
       setAlpha(0.5F);
-      continue;
-      setAlpha(1.0F);
+      label58:
+      return super.onTouchEvent(paramMotionEvent);
     }
+    return super.onTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PressAlphaTextView
  * JD-Core Version:    0.7.0.1
  */

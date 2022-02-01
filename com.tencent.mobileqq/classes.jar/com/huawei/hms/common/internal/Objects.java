@@ -4,18 +4,17 @@ import java.util.Arrays;
 
 public final class Objects
 {
-  private Objects()
+  public Objects()
   {
     throw new AssertionError("Uninstantiable");
   }
   
   public static boolean equal(Object paramObject1, Object paramObject2)
   {
-    if (paramObject1 == paramObject2) {}
-    while ((paramObject1 != null) && (paramObject1.equals(paramObject2))) {
+    if (paramObject1 == paramObject2) {
       return true;
     }
-    return false;
+    return (paramObject1 != null) && (paramObject1.equals(paramObject2));
   }
   
   public static int hashCode(Object... paramVarArgs)
@@ -30,7 +29,7 @@ public final class Objects
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.internal.Objects
  * JD-Core Version:    0.7.0.1
  */

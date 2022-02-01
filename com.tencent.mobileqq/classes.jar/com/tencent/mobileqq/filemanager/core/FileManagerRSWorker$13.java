@@ -12,7 +12,7 @@ class FileManagerRSWorker$13
   
   public void a()
   {
-    this.a.b();
+    this.a.a();
   }
   
   public void a(int paramInt)
@@ -27,19 +27,22 @@ class FileManagerRSWorker$13
   
   public void a(String paramString1, String paramString2)
   {
-    if (this.a.jdField_d_of_type_JavaLangString.equalsIgnoreCase(paramString1)) {
+    if (this.a.jdField_d_of_type_JavaLangString.equalsIgnoreCase(paramString1))
+    {
       this.a.jdField_d_of_type_JavaLangString = paramString2;
-    }
-    while (!this.a.jdField_b_of_type_JavaLangString.equalsIgnoreCase(paramString1)) {
       return;
     }
-    this.a.jdField_b_of_type_JavaLangString = paramString2;
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setFilePath(paramString2);
+    if (this.a.jdField_b_of_type_JavaLangString.equalsIgnoreCase(paramString1))
+    {
+      paramString1 = this.a;
+      paramString1.jdField_b_of_type_JavaLangString = paramString2;
+      paramString1.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setFilePath(paramString2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.FileManagerRSWorker.13
  * JD-Core Version:    0.7.0.1
  */

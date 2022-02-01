@@ -11,35 +11,58 @@ final class QZoneAppCtrlUploadFileLogic$3
   
   public boolean accept(File paramFile, String paramString)
   {
-    if ((!paramString.startsWith("QAVSDK")) && (!paramString.startsWith("qavsdk"))) {}
-    long l;
-    do
+    if ((!paramString.startsWith("QAVSDK")) && (!paramString.startsWith("qavsdk"))) {
+      return false;
+    }
+    if (paramString.split("_").length == 2) {
+      return false;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramFile);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(paramString);
+    localObject = new File(((StringBuilder)localObject).toString());
+    if (!((File)localObject).exists()) {
+      return false;
+    }
+    long l = ((File)localObject).lastModified();
+    if (QLog.isDevelopLevel())
     {
-      File localFile;
-      do
-      {
-        do
-        {
-          return false;
-        } while (paramString.split("_").length == 2);
-        localFile = new File(paramFile + File.separator + paramString);
-      } while ((localFile == null) || (!localFile.exists()));
-      l = localFile.lastModified();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("file dir: ");
+      ((StringBuilder)localObject).append(paramFile.getName());
+      QLog.d("QZoneAppCtrlUploadFileLogic", 4, ((StringBuilder)localObject).toString());
+      paramFile = new StringBuilder();
+      paramFile.append("file name: ");
+      paramFile.append(paramString);
+      paramFile.append(" mStartTime: ");
+      paramFile.append(this.val$mStartTime);
+      paramFile.append(" mEndTime: ");
+      paramFile.append(this.val$mEndTime);
+      paramFile.append(" lastModifiedTime: ");
+      paramFile.append(l);
+      QLog.d("QZoneAppCtrlUploadFileLogic", 4, paramFile.toString());
+    }
+    if (l >= this.val$mStartTime)
+    {
+      if (l > this.val$mEndTime) {
+        return false;
+      }
       if (QLog.isDevelopLevel())
       {
-        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "file dir: " + paramFile.getName());
-        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "file name: " + paramString + " mStartTime: " + this.val$mStartTime + " mEndTime: " + this.val$mEndTime + " lastModifiedTime: " + l);
+        paramFile = new StringBuilder();
+        paramFile.append("find file name: ");
+        paramFile.append(paramString);
+        QLog.d("QZoneAppCtrlUploadFileLogic", 4, paramFile.toString());
       }
-    } while ((l < this.val$mStartTime) || (l > this.val$mEndTime));
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QZoneAppCtrlUploadFileLogic", 4, "find file name: " + paramString);
+      return true;
     }
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.util.QZoneAppCtrlUploadFileLogic.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ogp" android:paddingBottom="8.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.weishi_new.view.WSRoundedImageView android:id="@id/oh9" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="4.0dip" android:scaleType="centerCrop" />
-    <com.tencent.mobileqq.dinifly.DiniFlyAnimationView android:id="@id/oh_" android:visibility="gone" android:layout_width="54.0dip" android:layout_height="54.0dip" android:layout_marginLeft="10.0dip" />
-    <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center" android:id="@id/ohd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:maxWidth="170.0dip" android:maxLines="1" />
-    <TextView android:textSize="13.0sp" android:textStyle="bold" android:textColor="@color/al3" android:gravity="center_vertical" android:id="@id/ohc" android:background="@drawable/dwj" android:paddingLeft="9.5dip" android:paddingRight="9.5dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="25.0dip" android:text="@string/yi_" />
-</LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/omv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/omw" android:padding="13.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <TextView android:layout_gravity="center_vertical" android:id="@id/omz" android:paddingRight="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:00" android:layout_toRightOf="@id/omw" />
+    </LinearLayout>
+    <RelativeLayout android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <View android:background="#4cffffff" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_centerVertical="true" />
+        <com.tencent.biz.pubaccount.weishi_new.view.RotationSeekBar android:id="@id/omx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:max="1000" android:progressDrawable="@drawable/e3a" android:thumb="@drawable/gwr" android:thumbOffset="0.0dip" android:layout_centerVertical="true" style="@style/a6s" />
+        <ImageView android:id="@id/omy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.5dip" android:scaleType="fitXY" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</RelativeLayout>

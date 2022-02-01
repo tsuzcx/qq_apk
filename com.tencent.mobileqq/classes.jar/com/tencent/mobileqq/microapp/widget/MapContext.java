@@ -63,9 +63,21 @@ public final class MapContext
   
   private void a(String paramString, JSONObject paramJSONObject)
   {
-    paramString = "WeixinJSBridge.subscribeHandler(\"" + paramString + "\", " + paramJSONObject + "," + this.a.pageWebviewId + ")";
-    if (QLog.isColorLevel()) {
-      QLog.d("MapContext", 2, "callbackJs jsStr=" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WeixinJSBridge.subscribeHandler(\"");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("\", ");
+    localStringBuilder.append(paramJSONObject);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.a.pageWebviewId);
+    localStringBuilder.append(")");
+    paramString = localStringBuilder.toString();
+    if (QLog.isColorLevel())
+    {
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("callbackJs jsStr=");
+      paramJSONObject.append(paramString);
+      QLog.d("MapContext", 2, paramJSONObject.toString());
     }
     this.a.evaluteJs(paramString);
   }
@@ -101,7 +113,14 @@ public final class MapContext
       paramCameraPosition = new JSONObject();
       paramCameraPosition.put("mapId", this.d);
       paramCameraPosition.put("type", "begin");
-      this.f.evaluteJs("WeixinJSBridge.subscribeHandler(\"onMapRegionChange\", " + paramCameraPosition + ", " + this.a.pageWebviewId + ")");
+      ServiceWebview localServiceWebview = this.f;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("WeixinJSBridge.subscribeHandler(\"onMapRegionChange\", ");
+      localStringBuilder.append(paramCameraPosition);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(this.a.pageWebviewId);
+      localStringBuilder.append(")");
+      localServiceWebview.evaluteJs(localStringBuilder.toString());
       return;
     }
     catch (JSONException paramCameraPosition)
@@ -117,7 +136,14 @@ public final class MapContext
       paramCameraPosition = new JSONObject();
       paramCameraPosition.put("mapId", this.d);
       paramCameraPosition.put("type", "end");
-      this.f.evaluteJs("WeixinJSBridge.subscribeHandler(\"onMapRegionChange\", " + paramCameraPosition + ", " + this.a.pageWebviewId + ")");
+      ServiceWebview localServiceWebview = this.f;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("WeixinJSBridge.subscribeHandler(\"onMapRegionChange\", ");
+      localStringBuilder.append(paramCameraPosition);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(this.a.pageWebviewId);
+      localStringBuilder.append(")");
+      localServiceWebview.evaluteJs(localStringBuilder.toString());
       return;
     }
     catch (JSONException paramCameraPosition)
@@ -130,10 +156,17 @@ public final class MapContext
   {
     try
     {
-      paramMarker = ((JSONObject)paramMarker.getTag()).optString("data");
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("data", paramMarker);
-      this.f.evaluteJs("WeixinJSBridge.subscribeHandler(\"onMapCalloutClick\", " + localJSONObject + ", " + this.a.pageWebviewId + ")");
+      Object localObject = ((JSONObject)paramMarker.getTag()).optString("data");
+      paramMarker = new JSONObject();
+      paramMarker.put("data", localObject);
+      localObject = this.f;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("WeixinJSBridge.subscribeHandler(\"onMapCalloutClick\", ");
+      localStringBuilder.append(paramMarker);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(this.a.pageWebviewId);
+      localStringBuilder.append(")");
+      ((ServiceWebview)localObject).evaluteJs(localStringBuilder.toString());
       return;
     }
     catch (JSONException paramMarker)
@@ -160,7 +193,14 @@ public final class MapContext
     {
       paramLatLng = new JSONObject();
       paramLatLng.put("mapId", this.d);
-      this.f.evaluteJs("WeixinJSBridge.subscribeHandler(\"onMapClick\", " + paramLatLng + ", " + this.a.pageWebviewId + ")");
+      ServiceWebview localServiceWebview = this.f;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("WeixinJSBridge.subscribeHandler(\"onMapClick\", ");
+      localStringBuilder.append(paramLatLng);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(this.a.pageWebviewId);
+      localStringBuilder.append(")");
+      localServiceWebview.evaluteJs(localStringBuilder.toString());
       return;
     }
     catch (JSONException paramLatLng)
@@ -184,24 +224,28 @@ public final class MapContext
       if (!paramMarker.isInfoWindowShown()) {
         paramMarker.showInfoWindow();
       }
-      paramMarker = ((JSONObject)paramMarker.getTag()).optString("data");
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("data", paramMarker);
-      this.f.evaluteJs("WeixinJSBridge.subscribeHandler(\"onMapMarkerClick\", " + localJSONObject + ", " + this.a.pageWebviewId + ")");
+      Object localObject = ((JSONObject)paramMarker.getTag()).optString("data");
+      paramMarker = new JSONObject();
+      paramMarker.put("data", localObject);
+      localObject = this.f;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("WeixinJSBridge.subscribeHandler(\"onMapMarkerClick\", ");
+      localStringBuilder.append(paramMarker);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(this.a.pageWebviewId);
+      localStringBuilder.append(")");
+      ((ServiceWebview)localObject).evaluteJs(localStringBuilder.toString());
     }
     catch (JSONException paramMarker)
     {
-      for (;;)
-      {
-        paramMarker.printStackTrace();
-      }
+      paramMarker.printStackTrace();
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.MapContext
  * JD-Core Version:    0.7.0.1
  */

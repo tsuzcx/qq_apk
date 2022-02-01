@@ -7,12 +7,12 @@ class BaseVideoView$1
   
   public void run()
   {
-    BaseVideoView.access$000(this.this$0);
+    this.this$0.setCoverInVisible();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.view.BaseVideoView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -22,7 +22,10 @@ public class Shader
   public void bind()
   {
     GLES20.glUseProgram(this.shaderProgram);
-    GlUtil.checkGlError("glUseProgram:" + this.shaderProgram);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("glUseProgram:");
+    localStringBuilder.append(this.shaderProgram);
+    GlUtil.checkGlError(localStringBuilder.toString());
   }
   
   public void clear()

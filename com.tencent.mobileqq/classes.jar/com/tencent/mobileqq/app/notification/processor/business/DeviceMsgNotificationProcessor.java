@@ -28,7 +28,7 @@ public class DeviceMsgNotificationProcessor
     Object localObject1;
     if (("device_groupchat".equals(paramMessage.extStr)) && ((paramMessage.msgtype == -4501) || (paramMessage.msgtype == -4508)))
     {
-      Object localObject2 = ContactUtils.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessage.senderuin, true);
+      Object localObject2 = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessage.senderuin, true);
       localObject1 = localObject2;
       if (!TextUtils.isEmpty(paramMessage.senderuin))
       {
@@ -41,21 +41,25 @@ public class DeviceMsgNotificationProcessor
       if (localObject1 == null) {
         localObject2 = "";
       }
-      localObject1 = (String)localObject2 + ": " + c();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append((String)localObject2);
+      ((StringBuilder)localObject1).append(": ");
+      ((StringBuilder)localObject1).append(c());
+      localObject1 = ((StringBuilder)localObject1).toString();
       this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.d((String)localObject1);
     }
-    for (;;)
+    else
     {
-      b(paramMessage);
-      return this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement;
       localObject1 = c();
       this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.d((String)localObject1);
     }
+    b(paramMessage);
+    return this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.notification.processor.business.DeviceMsgNotificationProcessor
  * JD-Core Version:    0.7.0.1
  */

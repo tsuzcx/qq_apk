@@ -29,11 +29,9 @@ public class TAVPagAutomaticEffect
       return null;
     }
     TAVMovieSticker localTAVMovieSticker = new TAVMovieSticker(getFullPath());
-    if ((localTAVMovieSticker == null) || (localTAVMovieSticker.getSticker() == null)) {
+    if (localTAVMovieSticker.getSticker() == null) {
       return null;
     }
-    label194:
-    float f2;
     if (this.parameter != null)
     {
       localTAVMovieSticker.setRotation(this.parameter.rotation);
@@ -41,63 +39,60 @@ public class TAVPagAutomaticEffect
       if (this.parameter.position != null) {
         localTAVMovieSticker.setPosition(new PointF(this.parameter.position.centerX, this.parameter.position.centerY));
       }
-      localTAVMovieSticker.getSticker().updateTextData();
-      if (this.effectId != null) {
-        localTAVMovieSticker.getSticker().getExtraBundle().putString("key_extra_material_id", this.effectId);
-      }
-      localTAVMovieSticker.setStickerMode(getMode());
-      if ((this.startOffset <= -1L) || (this.endOffset != -1L)) {
-        break label275;
-      }
-      f1 = (float)this.startOffset;
-      if (this.duration <= 0L) {
-        break label259;
-      }
-      paramFloat = (float)this.duration;
-      f2 = f1;
-      if (this.parameter != null)
-      {
-        if (this.parameter.rhythmPosition != 1L) {
-          break label368;
-        }
-        f2 = f1 - paramFloat / 2.0F;
-      }
     }
-    for (;;)
+    else
     {
-      if (paramFloat > 0.0F) {
-        break label391;
-      }
-      return null;
       localTAVMovieSticker.setRotation(this.rotation);
       localTAVMovieSticker.setScale(this.scale);
       localTAVMovieSticker.setPosition(this.position);
-      break;
-      label259:
-      paramFloat = (float)localTAVMovieSticker.getSticker().durationTime() / 1000.0F;
-      break label194;
-      label275:
-      if ((this.startOffset == -1L) && (this.endOffset > -1L))
-      {
-        if (this.duration > 0L) {}
-        for (f1 = (float)this.duration;; f1 = (float)localTAVMovieSticker.getSticker().durationTime() / 1000.0F)
-        {
-          f2 = paramFloat - f1 - (float)this.endOffset;
-          paramFloat = f1;
-          f1 = f2;
-          break;
-        }
-      }
-      paramFloat = paramFloat - (float)this.startOffset - (float)this.endOffset;
+    }
+    localTAVMovieSticker.getSticker().updateTextData();
+    if (this.effectId != null) {
+      localTAVMovieSticker.getSticker().getExtraBundle().putString("key_extra_material_id", this.effectId);
+    }
+    localTAVMovieSticker.setStickerMode(getMode());
+    if ((this.startOffset > -1L) && (this.endOffset == -1L))
+    {
       f1 = (float)this.startOffset;
-      break label194;
-      label368:
-      f2 = f1;
-      if (this.parameter.rhythmPosition == 2L) {
-        f2 = f1 - paramFloat;
+      if (this.duration > 0L) {
+        paramFloat = (float)this.duration;
+      } else {
+        paramFloat = (float)localTAVMovieSticker.getSticker().durationTime() / 1000.0F;
       }
     }
-    label391:
+    else if ((this.startOffset == -1L) && (this.endOffset > -1L))
+    {
+      if (this.duration > 0L) {
+        f1 = (float)this.duration;
+      } else {
+        f1 = (float)localTAVMovieSticker.getSticker().durationTime() / 1000.0F;
+      }
+      f2 = paramFloat - f1 - (float)this.endOffset;
+      paramFloat = f1;
+      f1 = f2;
+    }
+    else
+    {
+      paramFloat = paramFloat - (float)this.startOffset - (float)this.endOffset;
+      f1 = (float)this.startOffset;
+    }
+    float f2 = f1;
+    if (this.parameter != null) {
+      if (this.parameter.rhythmPosition == 1L)
+      {
+        f2 = f1 - paramFloat / 2.0F;
+      }
+      else
+      {
+        f2 = f1;
+        if (this.parameter.rhythmPosition == 2L) {
+          f2 = f1 - paramFloat;
+        }
+      }
+    }
+    if (paramFloat <= 0.0F) {
+      return null;
+    }
     float f1 = f2;
     if (f2 < 0.0F) {
       f1 = 0.0F;
@@ -124,7 +119,7 @@ public class TAVPagAutomaticEffect
   public CMTime getStickerDuration()
   {
     TAVMovieSticker localTAVMovieSticker = new TAVMovieSticker(getFullPath());
-    if ((localTAVMovieSticker == null) || (localTAVMovieSticker.getSticker() == null)) {
+    if (localTAVMovieSticker.getSticker() == null) {
       return new CMTime(0L, 1000000);
     }
     return new CMTime(localTAVMovieSticker.getSticker().durationTime(), 1000000);

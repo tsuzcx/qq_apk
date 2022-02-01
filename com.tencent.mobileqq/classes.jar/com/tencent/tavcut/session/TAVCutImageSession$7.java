@@ -12,13 +12,14 @@ class TAVCutImageSession$7
   
   public void run()
   {
-    this.this$0.toggleAEKit((MediaModel)this.this$0.mediaModels.get(this.val$index), (VideoRenderChainManager)this.this$0.renderChainManagers.get(this.val$index), this.val$on);
+    TAVCutImageSession localTAVCutImageSession = this.this$0;
+    localTAVCutImageSession.toggleAEKit((MediaModel)localTAVCutImageSession.mediaModels.get(this.val$index), (VideoRenderChainManager)this.this$0.renderChainManagers.get(this.val$index), this.val$on);
     this.this$0.render(this.val$index);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutImageSession.7
  * JD-Core Version:    0.7.0.1
  */

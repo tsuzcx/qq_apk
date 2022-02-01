@@ -50,89 +50,81 @@ public class PinnedHeaderExpandableListView
   
   private void configHeaderView(int paramInt, boolean paramBoolean)
   {
-    int j = 1;
     int k = getPackedPositionType(getExpandableListPosition(paramInt));
-    View localView;
-    if (k != 2) {
-      if (k == 0) {
-        if ((getPackedPositionType(getExpandableListPosition(paramInt + 1)) == 0) || (getPackedPositionType(getExpandableListPosition(paramInt + 1)) == 2))
-        {
+    int j = 1;
+    if (k != 2)
+    {
+      if (k == 0)
+      {
+        i = paramInt + 1;
+        if ((getPackedPositionType(getExpandableListPosition(i)) != 0) && (getPackedPositionType(getExpandableListPosition(i)) != 2)) {
+          this.mCurHeaderViewState = 0;
+        } else {
           this.mCurHeaderViewState = -1;
-          if (this.mCurHeaderViewState == -1) {
-            break label425;
-          }
-          if (this.mCurHeaderViewState != 1) {
-            break label303;
-          }
-          localView = getChildAt(1);
-          int m = this.mHeaderView.getMeasuredHeight();
-          if (localView == null) {
-            break label298;
-          }
-          i = localView.getTop();
-          label99:
-          this.mCurHeaderViewPushUpDistance = (m - i);
-          label107:
-          if (!this.mShouldHeaderShow) {
-            break label316;
-          }
-          this.mHeaderView.setVisibility(0);
-          if (!this.mAdapter.needHideBackgroundGroup()) {
-            break label316;
-          }
-          if (k != 0) {
-            break label506;
-          }
-          localView = getChildAt(0);
-          if ((localView == null) || (isDirectChildHeaderOrFooter(localView))) {
-            break label506;
-          }
-          localView.setVisibility(4);
         }
+      }
+      else if (getChildAt(0).getBottom() > this.mHeaderView.getMeasuredHeight())
+      {
+        this.mCurHeaderViewState = 0;
+      }
+      else if (getPackedPositionType(getExpandableListPosition(paramInt + 1)) == 0)
+      {
+        this.mCurHeaderViewState = 1;
+      }
+      else
+      {
+        this.mCurHeaderViewState = 0;
       }
     }
-    label298:
-    label303:
-    label316:
-    label506:
-    for (int i = 1;; i = 0)
+    else {
+      this.mCurHeaderViewState = -1;
+    }
+    int i = this.mCurHeaderViewState;
+    View localView;
+    if (i != -1)
     {
-      k = getChildCount();
-      if (i != 0) {
-        i = j;
-      }
-      for (;;)
+      if (i == 1)
       {
-        if (i >= k) {
-          break label316;
+        localView = getChildAt(1);
+        int m = this.mHeaderView.getMeasuredHeight();
+        if (localView != null) {
+          i = localView.getTop();
+        } else {
+          i = 0;
         }
-        localView = getChildAt(i);
-        if ((localView != null) && (localView.getVisibility() != 0) && (!isDirectChildHeaderOrFooter(localView))) {
-          localView.setVisibility(0);
-        }
-        i += 1;
-        continue;
-        this.mCurHeaderViewState = 0;
-        break;
-        if (getChildAt(0).getBottom() > this.mHeaderView.getMeasuredHeight())
-        {
-          this.mCurHeaderViewState = 0;
-          break;
-        }
-        if (getPackedPositionType(getExpandableListPosition(paramInt + 1)) == 0)
-        {
-          this.mCurHeaderViewState = 1;
-          break;
-        }
-        this.mCurHeaderViewState = 0;
-        break;
-        this.mCurHeaderViewState = -1;
-        break;
-        i = 0;
-        break label99;
+        this.mCurHeaderViewPushUpDistance = (m - i);
+      }
+      else
+      {
         this.mCurHeaderViewPushUpDistance = 0;
-        break label107;
-        i = 0;
+      }
+      if (this.mShouldHeaderShow)
+      {
+        this.mHeaderView.setVisibility(0);
+        if (this.mAdapter.needHideBackgroundGroup())
+        {
+          if (k == 0)
+          {
+            localView = getChildAt(0);
+            if ((localView != null) && (!isDirectChildHeaderOrFooter(localView)))
+            {
+              localView.setVisibility(4);
+              i = j;
+              break label258;
+            }
+          }
+          i = 0;
+          label258:
+          j = getChildCount();
+          while (i < j)
+          {
+            localView = getChildAt(i);
+            if ((localView != null) && (localView.getVisibility() != 0) && (!isDirectChildHeaderOrFooter(localView))) {
+              localView.setVisibility(0);
+            }
+            i += 1;
+          }
+        }
       }
       paramInt = getPackedPositionGroup(getExpandableListPosition(paramInt));
       if ((paramInt != this.mCurHeaderGroupPos) || (paramBoolean) || (this.oweOneForceLayout))
@@ -143,27 +135,27 @@ public class PinnedHeaderExpandableListView
         paramInt = View.MeasureSpec.makeMeasureSpec(this.mHeaderView.getMeasuredWidth(), 1073741824);
         i = View.MeasureSpec.makeMeasureSpec(this.mHeaderView.getMeasuredHeight(), 1073741824);
         this.mHeaderView.measure(paramInt, i);
-        this.mHeaderView.layout(0, 0, this.mHeaderView.getMeasuredWidth(), this.mHeaderView.getMeasuredHeight());
+        localView = this.mHeaderView;
+        localView.layout(0, 0, localView.getMeasuredWidth(), this.mHeaderView.getMeasuredHeight());
       }
-      for (;;)
+    }
+    else
+    {
+      if (paramBoolean) {
+        this.oweOneForceLayout = true;
+      }
+      this.mHeaderView.setVisibility(4);
+      if (this.mAdapter.needHideBackgroundGroup())
       {
-        return;
-        if (paramBoolean) {
-          this.oweOneForceLayout = true;
-        }
-        this.mHeaderView.setVisibility(4);
-        if (this.mAdapter.needHideBackgroundGroup())
+        i = getChildCount();
+        paramInt = 0;
+        while (paramInt < i)
         {
-          i = getChildCount();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localView = getChildAt(paramInt);
-            if ((localView != null) && (localView.getVisibility() != 0) && (!isDirectChildHeaderOrFooter(localView))) {
-              localView.setVisibility(0);
-            }
-            paramInt += 1;
+          localView = getChildAt(paramInt);
+          if ((localView != null) && (localView.getVisibility() != 0) && (!isDirectChildHeaderOrFooter(localView))) {
+            localView.setVisibility(0);
           }
+          paramInt += 1;
         }
       }
     }
@@ -190,10 +182,11 @@ public class PinnedHeaderExpandableListView
     paramView.refreshDrawableState();
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
-    if ((this.mHeaderView != null) && (this.mHeaderView.getVisibility() == 0))
+    View localView = this.mHeaderView;
+    if ((localView != null) && (localView.getVisibility() == 0))
     {
       paramCanvas.save();
       paramCanvas.translate(0.0F, -this.mCurHeaderViewPushUpDistance);
@@ -208,16 +201,20 @@ public class PinnedHeaderExpandableListView
     float f2 = paramMotionEvent.getY();
     if (this.mDispatchTouchEventToHeaderView)
     {
-      if ((this.mHeaderView != null) && (this.mHeaderView.dispatchTouchEvent(paramMotionEvent))) {}
-      for (boolean bool = true;; bool = false)
-      {
-        if ((paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 1)) {
-          this.mDispatchTouchEventToHeaderView = false;
-        }
-        return bool;
+      localView = this.mHeaderView;
+      boolean bool;
+      if ((localView != null) && (localView.dispatchTouchEvent(paramMotionEvent))) {
+        bool = true;
+      } else {
+        bool = false;
       }
+      if ((paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 1)) {
+        this.mDispatchTouchEventToHeaderView = false;
+      }
+      return bool;
     }
-    if ((this.mHeaderView != null) && (f1 >= 0.0F) && (f1 <= this.mHeaderView.getMeasuredWidth()) && (f2 >= 0.0F) && (f2 <= this.mHeaderView.getMeasuredHeight() - this.mCurHeaderViewPushUpDistance) && (paramMotionEvent.getAction() == 0) && (this.mHeaderView.getVisibility() == 0) && (this.mHeaderView.dispatchTouchEvent(paramMotionEvent)))
+    View localView = this.mHeaderView;
+    if ((localView != null) && (f1 >= 0.0F) && (f1 <= localView.getMeasuredWidth()) && (f2 >= 0.0F) && (f2 <= this.mHeaderView.getMeasuredHeight() - this.mCurHeaderViewPushUpDistance) && (paramMotionEvent.getAction() == 0) && (this.mHeaderView.getVisibility() == 0) && (this.mHeaderView.dispatchTouchEvent(paramMotionEvent)))
     {
       this.mDispatchTouchEventToHeaderView = true;
       return true;
@@ -225,11 +222,12 @@ public class PinnedHeaderExpandableListView
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
-  public void drawableStateChanged()
+  protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if (this.mHeaderView != null) {
-      refreshAllChild(this.mHeaderView);
+    View localView = this.mHeaderView;
+    if (localView != null) {
+      refreshAllChild(localView);
     }
   }
   
@@ -238,22 +236,24 @@ public class PinnedHeaderExpandableListView
     return this.mHeaderView;
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (this.mHeaderView != null) {
       configHeaderView(getFirstVisiblePosition(), true);
     }
-    if (this.mOnLayoutListener != null) {
-      this.mOnLayoutListener.onLayout(this, paramInt1, paramInt2, paramInt3, paramInt4);
+    PinnedHeaderExpandableListView.OnLayoutListener localOnLayoutListener = this.mOnLayoutListener;
+    if (localOnLayoutListener != null) {
+      localOnLayoutListener.onLayout(this, paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if (this.mHeaderView != null) {
-      measureChild(this.mHeaderView, paramInt1, paramInt2);
+    View localView = this.mHeaderView;
+    if (localView != null) {
+      measureChild(localView, paramInt1, paramInt2);
     }
   }
   
@@ -262,15 +262,17 @@ public class PinnedHeaderExpandableListView
     if (this.mHeaderView != null) {
       configHeaderView(paramInt1, false);
     }
-    if (this.mOnScrollListener != null) {
-      this.mOnScrollListener.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    AbsListView.OnScrollListener localOnScrollListener = this.mOnScrollListener;
+    if (localOnScrollListener != null) {
+      localOnScrollListener.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.mOnScrollListener != null) {
-      this.mOnScrollListener.onScrollStateChanged(paramAbsListView, paramInt);
+    AbsListView.OnScrollListener localOnScrollListener = this.mOnScrollListener;
+    if (localOnScrollListener != null) {
+      localOnScrollListener.onScrollStateChanged(paramAbsListView, paramInt);
     }
   }
   
@@ -284,8 +286,9 @@ public class PinnedHeaderExpandableListView
       if (i != 0)
       {
         this.mHeaderView = LayoutInflater.from(this.mContext).inflate(i, this, false);
-        if (this.mHeaderView != null) {
-          this.mHeaderView.setOnTouchListener(new PinnedHeaderExpandableListView.1(this));
+        paramExpandableListAdapter = this.mHeaderView;
+        if (paramExpandableListAdapter != null) {
+          paramExpandableListAdapter.setOnTouchListener(new PinnedHeaderExpandableListView.1(this));
         }
         requestLayout();
       }
@@ -315,7 +318,7 @@ public class PinnedHeaderExpandableListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.PinnedHeaderExpandableListView
  * JD-Core Version:    0.7.0.1
  */

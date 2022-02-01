@@ -9,89 +9,117 @@ public class HttpDownloadUtils
 {
   public static void a(DownloadInfo paramDownloadInfo)
   {
-    if ((paramDownloadInfo == null) || (paramDownloadInfo.urlOriginal == null) || (paramDownloadInfo.urlOriginal.length() == 0)) {}
-    label33:
-    int i;
-    int j;
-    String str2;
-    do
+    if ((paramDownloadInfo != null) && (paramDownloadInfo.urlOriginal != null))
     {
-      return;
-      if (!paramDownloadInfo.isHttps) {
-        break;
+      if (paramDownloadInfo.urlOriginal.length() == 0) {
+        return;
       }
-      localObject = HttpDownloadUtil.PROTOCOL_HTTPS;
-      i = ((String)localObject).length();
-      j = paramDownloadInfo.urlOriginal.indexOf("/", i);
-      str2 = paramDownloadInfo.urlOriginal.substring(i, j);
-    } while ((j <= i) && (TextUtils.isEmpty(str2)));
-    label86:
-    String str1;
-    if ("imgcache.qq.com".equalsIgnoreCase(str2))
-    {
-      i = 12;
-      str1 = (String)localObject + "[^/\\s]*/";
-      String str3 = FMTSrvAddrProvider.getInstance().getSrvAddr(i);
-      if ((str3 == null) || (str3.length() <= 0)) {
-        break label396;
+      Object localObject1;
+      if (paramDownloadInfo.isHttps) {
+        localObject1 = HttpDownloadUtil.PROTOCOL_HTTPS;
+      } else {
+        localObject1 = "http://";
       }
-      str1 = paramDownloadInfo.urlOriginal.replaceFirst(str1, str3);
-      if ((!paramDownloadInfo.isHttps) || (TextUtils.isEmpty(str1)) || (!str1.startsWith("http://"))) {
-        break label454;
+      int i = ((String)localObject1).length();
+      int j = paramDownloadInfo.urlOriginal.indexOf("/", i);
+      String str2 = paramDownloadInfo.urlOriginal.substring(i, j);
+      if ((j <= i) && (TextUtils.isEmpty(str2))) {
+        return;
       }
-    }
-    label396:
-    label454:
-    for (Object localObject = (String)localObject + str1.substring("http://".length());; localObject = str1)
-    {
-      paramDownloadInfo.host = str2;
-      paramDownloadInfo.reqUrl = ((String)localObject);
-      paramDownloadInfo.isIPUrl = true;
-      paramDownloadInfo.domainType = i;
-      if (!QLog.isColorLevel()) {
-        break;
+      if ("imgcache.qq.com".equalsIgnoreCase(str2))
+      {
+        i = 12;
       }
-      QLog.d("Q.emoji.EmoDown", 2, "replaceDomainWithIp " + paramDownloadInfo.isIPUrl + " url[" + paramDownloadInfo.urlOriginal + "] resetIP[" + (String)localObject + "] host[" + paramDownloadInfo.host + "]");
-      return;
-      localObject = "http://";
-      break label33;
-      if ("imgcache.gtimg.cn".equalsIgnoreCase(str2))
+      else if ("imgcache.gtimg.cn".equalsIgnoreCase(str2))
       {
         i = 13;
-        break label86;
       }
-      if ("i.gtimg.cn".equalsIgnoreCase(str2))
+      else if ("i.gtimg.cn".equalsIgnoreCase(str2))
       {
         i = 14;
-        break label86;
       }
-      if ("cmshow.gtimg.cn".equalsIgnoreCase(str2))
+      else
       {
+        if (!"cmshow.gtimg.cn".equalsIgnoreCase(str2)) {
+          break label462;
+        }
         i = 17;
-        break label86;
       }
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("[^/\\s]*/");
+      localObject2 = ((StringBuilder)localObject2).toString();
+      String str1 = FMTSrvAddrProvider.getInstance().getSrvAddr(i);
+      if ((str1 != null) && (str1.length() > 0))
+      {
+        str1 = paramDownloadInfo.urlOriginal.replaceFirst((String)localObject2, str1);
+        localObject2 = str1;
+        if (paramDownloadInfo.isHttps)
+        {
+          localObject2 = str1;
+          if (!TextUtils.isEmpty(str1))
+          {
+            localObject2 = str1;
+            if (str1.startsWith("http://"))
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append((String)localObject1);
+              ((StringBuilder)localObject2).append(str1.substring(7));
+              localObject2 = ((StringBuilder)localObject2).toString();
+            }
+          }
+        }
+        paramDownloadInfo.host = str2;
+        paramDownloadInfo.reqUrl = ((String)localObject2);
+        paramDownloadInfo.isIPUrl = true;
+        paramDownloadInfo.domainType = i;
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("replaceDomainWithIp ");
+          ((StringBuilder)localObject1).append(paramDownloadInfo.isIPUrl);
+          ((StringBuilder)localObject1).append(" url[");
+          ((StringBuilder)localObject1).append(paramDownloadInfo.urlOriginal);
+          ((StringBuilder)localObject1).append("] resetIP[");
+          ((StringBuilder)localObject1).append((String)localObject2);
+          ((StringBuilder)localObject1).append("] host[");
+          ((StringBuilder)localObject1).append(paramDownloadInfo.host);
+          ((StringBuilder)localObject1).append("]");
+          QLog.d("Q.emoji.EmoDown", 2, ((StringBuilder)localObject1).toString());
+        }
+      }
+      else
+      {
+        paramDownloadInfo.host = null;
+        paramDownloadInfo.reqUrl = paramDownloadInfo.urlOriginal;
+        paramDownloadInfo.isIPUrl = false;
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("replaceDomainWithIp false.url[");
+          ((StringBuilder)localObject1).append(paramDownloadInfo.reqUrl);
+          ((StringBuilder)localObject1).append("]");
+          QLog.d("Q.emoji.EmoDown", 2, ((StringBuilder)localObject1).toString());
+        }
+      }
+      return;
+      label462:
       paramDownloadInfo.host = null;
       paramDownloadInfo.reqUrl = paramDownloadInfo.urlOriginal;
       paramDownloadInfo.isIPUrl = false;
-      if (!QLog.isColorLevel()) {
-        break;
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("unknow domain url=");
+        ((StringBuilder)localObject1).append(paramDownloadInfo.isIPUrl);
+        QLog.d("Q.emoji.EmoDown", 2, ((StringBuilder)localObject1).toString());
       }
-      QLog.d("Q.emoji.EmoDown", 2, "unknow domain url=" + paramDownloadInfo.isIPUrl);
-      return;
-      paramDownloadInfo.host = null;
-      paramDownloadInfo.reqUrl = paramDownloadInfo.urlOriginal;
-      paramDownloadInfo.isIPUrl = false;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("Q.emoji.EmoDown", 2, "replaceDomainWithIp false.url[" + paramDownloadInfo.reqUrl + "]");
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.HttpDownloadUtils
  * JD-Core Version:    0.7.0.1
  */

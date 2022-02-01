@@ -9,6 +9,7 @@ import com.tencent.qqlive.module.videoreport.constants.ClickPolicy;
 import com.tencent.qqlive.module.videoreport.constants.EndExposurePolicy;
 import com.tencent.qqlive.module.videoreport.constants.ExposurePolicy;
 import com.tencent.qqlive.module.videoreport.constants.ReportPolicy;
+import com.tencent.qqlive.module.videoreport.data.IDynamicParams;
 import com.tencent.qqlive.module.videoreport.data.IElementDynamicParams;
 import com.tencent.qqlive.module.videoreport.dtreport.api.DTConfig;
 import com.tencent.qqlive.module.videoreport.dtreport.api.PageSearchMode;
@@ -89,6 +90,7 @@ public class VideoReport
     return VideoReportInner.getInstance().getElementExposePolicy(paramObject);
   }
   
+  @Deprecated
   public static Map<String, ?> getElementParams(Object paramObject)
   {
     return VideoReportInner.getInstance().getElementParams(paramObject);
@@ -100,6 +102,11 @@ public class VideoReport
     return VideoReportInner.getInstance().getElementReportPolicy(paramObject);
   }
   
+  public static PageInfo getPageInfo(View paramView)
+  {
+    return VideoReportInner.getInstance().getPageInfo(paramView);
+  }
+  
   public static void ignorePageInOutEvent(Object paramObject, boolean paramBoolean)
   {
     VideoReportInner.getInstance().ignorePageInOutEvent(paramObject, paramBoolean);
@@ -108,6 +115,11 @@ public class VideoReport
   public static boolean isDebugMode()
   {
     return VideoReportInner.getInstance().isDebugMode();
+  }
+  
+  public static boolean isInit()
+  {
+    return VideoReportInner.getInstance().isInit();
   }
   
   public static boolean isInjectSuccess()
@@ -133,7 +145,13 @@ public class VideoReport
   @Nullable
   public static Map<String, Object> pageInfoForView(View paramView)
   {
-    return VideoReportInner.getInstance().pageInfoForView(paramView);
+    return VideoReportInner.getInstance().pageInfoForView("", paramView);
+  }
+  
+  @Nullable
+  public static Map<String, Object> pageInfoForView(String paramString, View paramView)
+  {
+    return VideoReportInner.getInstance().pageInfoForView(paramString, paramView);
   }
   
   public static void pageLogicDestroy(Object paramObject)
@@ -141,10 +159,17 @@ public class VideoReport
     VideoReportInner.getInstance().pageLogicDestroy(paramObject);
   }
   
+  @Deprecated
   @Nullable
   public static Map<String, Object> paramsForView(View paramView)
   {
-    return VideoReportInner.getInstance().paramsForView(paramView);
+    return VideoReportInner.getInstance().paramsForView("", paramView);
+  }
+  
+  @Nullable
+  public static Map<String, Object> paramsForView(String paramString, View paramView)
+  {
+    return VideoReportInner.getInstance().paramsForView(paramString, paramView);
   }
   
   public static void registerEventDynamicParams(IEventDynamicParams paramIEventDynamicParams)
@@ -186,12 +211,12 @@ public class VideoReport
   
   public static void reportEvent(String paramString, Object paramObject, Map<String, ?> paramMap)
   {
-    VideoReportInner.getInstance().reportEvent(paramString, paramObject, paramMap);
+    VideoReportInner.getInstance().reportCustomEvent(paramString, paramObject, paramMap);
   }
   
   public static void reportEvent(String paramString, Map<String, ?> paramMap)
   {
-    VideoReportInner.getInstance().reportEvent(paramString, paramMap);
+    VideoReportInner.getInstance().reportCustomEvent(paramString, null, paramMap);
   }
   
   public static void reportStdEvent(StdEventCode paramStdEventCode, IEventParamsBuilder paramIEventParamsBuilder)
@@ -244,6 +269,7 @@ public class VideoReport
     VideoReportInner.getInstance().setElementClickPolicy(paramObject, paramClickPolicy);
   }
   
+  @Deprecated
   public static void setElementDynamicParams(Object paramObject, IElementDynamicParams paramIElementDynamicParams)
   {
     VideoReportInner.getInstance().setElementDynamicParams(paramObject, paramIElementDynamicParams);
@@ -310,6 +336,11 @@ public class VideoReport
     VideoReportInner.getInstance().setEventAdditionalReport(paramIAdditionalReportListener);
   }
   
+  public static void setEventDynamicParams(Object paramObject, @Nullable IDynamicParams paramIDynamicParams)
+  {
+    VideoReportInner.getInstance().setEventDynamicParams(paramObject, paramIDynamicParams);
+  }
+  
   public static void setLogicParent(View paramView1, View paramView2)
   {
     VideoReportInner.getInstance().setLogicParent(paramView1, paramView2);
@@ -355,6 +386,7 @@ public class VideoReport
     VideoReportInner.getInstance().setPublicParam(paramString, paramObject);
   }
   
+  @Deprecated
   public static void setVideoReportConfig(@NonNull DTConfig paramDTConfig)
   {
     VideoReportInner.getInstance().setVideoReportConfig(paramDTConfig);
@@ -373,6 +405,16 @@ public class VideoReport
   public static void startWithConfiguration(Application paramApplication, Configuration paramConfiguration)
   {
     VideoReportInner.getInstance().startWithConfiguration(paramApplication, paramConfiguration);
+  }
+  
+  public static void supportPlayerReport(boolean paramBoolean)
+  {
+    VideoReportInner.getInstance().supportPlayerReport(paramBoolean);
+  }
+  
+  public static void supportWebViewReport(boolean paramBoolean)
+  {
+    VideoReportInner.getInstance().supportWebViewReport(paramBoolean);
   }
   
   public static void traverseExposure()
@@ -405,20 +447,32 @@ public class VideoReport
     VideoReportInner.getInstance().unbindVideoPlayerInfo(paramObject);
   }
   
+  public static void updateConfiguration(Configuration paramConfiguration)
+  {
+    VideoReportInner.getInstance().updateConfiguration(paramConfiguration);
+  }
+  
   public static void updateVideoPlayerInfo(@NonNull Object paramObject, @NonNull VideoBaseEntity paramVideoBaseEntity)
   {
     VideoReportInner.getInstance().updateVideoPlayerInfo(paramObject, paramVideoBaseEntity);
   }
   
+  @Deprecated
   @Nullable
   public static Map<String, Object> viewTreeParamsForView(View paramView)
   {
-    return VideoReportInner.getInstance().viewTreeParamsForView(paramView);
+    return VideoReportInner.getInstance().viewTreeParamsForView("", paramView);
+  }
+  
+  @Nullable
+  public static Map<String, Object> viewTreeParamsForView(String paramString, View paramView)
+  {
+    return VideoReportInner.getInstance().viewTreeParamsForView(paramString, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.VideoReport
  * JD-Core Version:    0.7.0.1
  */

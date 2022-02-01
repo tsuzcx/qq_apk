@@ -17,24 +17,34 @@ public class GameWnsUtils
   private static boolean buildModelEnable()
   {
     String str1 = WnsConfig.getConfig("QZoneSetting", "MiniGameBlackList", "[GT-I9502]");
+    boolean bool1 = false;
     try
     {
       String str2 = Build.MODEL;
-      if (TextUtils.isEmpty(str2))
+      boolean bool2 = TextUtils.isEmpty(str2);
+      if (bool2)
       {
         QMLog.e("GameWnsUtils", "buildModelEnable model empty");
         return false;
       }
-      QMLog.d("GameWnsUtils", "build model is " + str2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("build model is ");
+      localStringBuilder.append(str2);
+      QMLog.d("GameWnsUtils", localStringBuilder.toString());
       if (!TextUtils.isEmpty(str1))
       {
-        boolean bool = str1.contains("[" + str2 + "]");
-        if (bool) {}
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[");
+        localStringBuilder.append(str2);
+        localStringBuilder.append("]");
+        bool2 = str1.contains(localStringBuilder.toString());
+        if (bool2) {}
       }
       else
       {
-        return true;
+        bool1 = true;
       }
+      return bool1;
     }
     catch (Throwable localThrowable)
     {
@@ -74,7 +84,6 @@ public class GameWnsUtils
   
   public static boolean enableOpengles3()
   {
-    boolean bool = true;
     String[] arrayOfString = OPENGL_ES3_BLACK_LIST;
     int j = arrayOfString.length;
     int i = 0;
@@ -86,12 +95,7 @@ public class GameWnsUtils
       }
       i += 1;
     }
-    if (WnsConfig.getConfig("qqtriton", "enableOpengles3", 1) > 0) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
-    }
+    return WnsConfig.getConfig("qqtriton", "enableOpengles3", 1) > 0;
   }
   
   public static boolean enablePersistentDebugVersion()
@@ -225,7 +229,13 @@ public class GameWnsUtils
   
   public static String getGlobalConfig()
   {
-    return "self = GameGlobal = __TT__GLOBAL__ = global = window = this;\nself.__ttObjdec__ = {};\nself.wx = self.wx || {};\nself.WeixinNativeBuffer = Triton.WeixinNativeBuffer;\nvar __wxConfig = __wxConfig || {};\n__wxConfig.env = {};\n__wxConfig.env.USER_DATA_PATH = '" + MiniSDKConst.STR_WXFILE + "usr';\n__wxConfig.platform = 'android';\n__wxConfig.QUA = '" + QUAUtil.getPlatformQUA() + "';\nwx.env = __wxConfig.env;\nvar __qqConfig = __wxConfig || {};\n";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("self = GameGlobal = __TT__GLOBAL__ = global = window = this;\nself.__ttObjdec__ = {};\nself.wx = self.wx || {};\nself.WeixinNativeBuffer = Triton.WeixinNativeBuffer;\nvar __wxConfig = __wxConfig || {};\n__wxConfig.env = {};\n__wxConfig.env.USER_DATA_PATH = '");
+    localStringBuilder.append(MiniSDKConst.STR_WXFILE);
+    localStringBuilder.append("usr';\n__wxConfig.platform = 'android';\n__wxConfig.QUA = '");
+    localStringBuilder.append(QUAUtil.getPlatformQUA());
+    localStringBuilder.append("';\nwx.env = __wxConfig.env;\nvar __qqConfig = __wxConfig || {};\n");
+    return localStringBuilder.toString();
   }
   
   public static int getNoPresentDurationLimit()
@@ -265,7 +275,11 @@ public class GameWnsUtils
   
   public static boolean killAllGamesWhenDestroy()
   {
-    return WnsConfig.getConfig("qqtriton", "MiniGameKillAllGamesWhenDestroy", 0) == 1;
+    boolean bool = false;
+    if (WnsConfig.getConfig("qqtriton", "MiniGameKillAllGamesWhenDestroy", 0) == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean killAllGamesWhenReuse()
@@ -279,41 +293,32 @@ public class GameWnsUtils
   
   public static boolean needBackPressHint(String paramString)
   {
-    boolean bool2 = false;
     Object localObject = WnsConfig.getConfig("qqtriton", "MiniGameBackPressHintList", "1108292102");
-    boolean bool1 = bool2;
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {}
-    try
-    {
-      localObject = ((String)localObject).split(",");
-      bool1 = bool2;
-      int i;
-      if (localObject != null) {
-        i = 0;
-      }
-      for (;;)
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      try
       {
-        bool1 = bool2;
-        if (i < localObject.length)
+        localObject = ((String)localObject).split(",");
+        if (localObject != null)
         {
-          if (!TextUtils.isEmpty(localObject[i]))
+          int i = 0;
+          while (i < localObject.length)
           {
-            bool1 = localObject[i].equals(paramString);
-            if (bool1) {
-              bool1 = true;
+            if (!TextUtils.isEmpty(localObject[i]))
+            {
+              boolean bool = localObject[i].equals(paramString);
+              if (bool) {
+                return true;
+              }
             }
+            i += 1;
           }
         }
-        else {
-          return bool1;
-        }
-        i += 1;
+        return false;
       }
-      return false;
-    }
-    catch (Throwable paramString)
-    {
-      QMLog.e("GameWnsUtils", "needBackPressHint exception", paramString);
+      catch (Throwable paramString)
+      {
+        QMLog.e("GameWnsUtils", "needBackPressHint exception", paramString);
+      }
     }
   }
   
@@ -345,13 +350,9 @@ public class GameWnsUtils
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        long l1;
-        localThrowable.printStackTrace();
-      }
+      localThrowable.printStackTrace();
     }
-    l1 = 0L;
+    long l1 = 0L;
     try
     {
       long l2 = Long.parseLong(LoginManager.getInstance().getAccount());
@@ -359,8 +360,8 @@ public class GameWnsUtils
     }
     catch (Exception localException)
     {
-      label84:
-      break label84;
+      label94:
+      break label94;
     }
     l1 %= 100L;
     return (l1 >= arrayOfInt[0]) && (l1 < arrayOfInt[1]);
@@ -368,7 +369,7 @@ public class GameWnsUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.GameWnsUtils
  * JD-Core Version:    0.7.0.1
  */

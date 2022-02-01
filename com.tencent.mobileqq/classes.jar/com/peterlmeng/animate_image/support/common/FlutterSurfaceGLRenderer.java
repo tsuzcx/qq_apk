@@ -34,18 +34,18 @@ public class FlutterSurfaceGLRenderer
   
   private void handleRenderBitmap(Bitmap paramBitmap)
   {
-    if (this.mBitmapTexture == null)
+    BitmapTexture localBitmapTexture = this.mBitmapTexture;
+    if (localBitmapTexture == null)
     {
       this.mBitmapTexture = new BitmapTexture(this.mContext, paramBitmap);
       this.mBitmapTexture.onSurfaceCreated();
     }
-    for (;;)
+    else
     {
-      this.mBitmapTexture.draw();
-      this.mGLRenderer.swapBuffer();
-      return;
-      this.mBitmapTexture.updateBitmap(paramBitmap);
+      localBitmapTexture.updateBitmap(paramBitmap);
     }
+    this.mBitmapTexture.draw();
+    this.mGLRenderer.swapBuffer();
   }
   
   public void handleInit()
@@ -55,20 +55,22 @@ public class FlutterSurfaceGLRenderer
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      return false;
-    case 3: 
-      handleRenderBitmap((Bitmap)paramMessage.obj);
-    }
-    for (;;)
-    {
-      return true;
+      if (i != 2)
+      {
+        if (i != 3) {
+          return false;
+        }
+        handleRenderBitmap((Bitmap)paramMessage.obj);
+        return true;
+      }
       handleUnInit();
-      continue;
-      handleInit();
+      return true;
     }
+    handleInit();
+    return true;
   }
   
   public void handleUnInit()
@@ -93,7 +95,7 @@ public class FlutterSurfaceGLRenderer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.peterlmeng.animate_image.support.common.FlutterSurfaceGLRenderer
  * JD-Core Version:    0.7.0.1
  */

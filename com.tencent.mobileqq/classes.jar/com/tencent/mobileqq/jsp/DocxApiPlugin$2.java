@@ -16,33 +16,57 @@ class DocxApiPlugin$2
   
   public void run()
   {
-    Object localObject = (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment)((TeamWorkDocEditBrowserActivity)this.jdField_a_of_type_AndroidAppActivity).getCurrentWebViewFragment();
-    if (localObject == null) {}
-    do
-    {
+    Object localObject1 = (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment)((TeamWorkDocEditBrowserActivity)this.jdField_a_of_type_AndroidAppActivity).getCurrentWebViewFragment();
+    if (localObject1 == null) {
       return;
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(this.jdField_a_of_type_JavaLangString);
-      String str1 = new File(this.jdField_a_of_type_JavaLangString).getName();
-      String str2 = ((TicketManager)((TeamWorkDocEditBrowserActivity)this.jdField_a_of_type_AndroidAppActivity).a.getManager(2)).getSkey(((TeamWorkDocEditBrowserActivity)this.jdField_a_of_type_AndroidAppActivity).a.getAccount());
-      localObject = ((TeamWorkDocEditBrowserActivity)this.jdField_a_of_type_AndroidAppActivity).a(localArrayList, ((TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment)localObject).b, str2, "1", ((TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment)localObject).jdField_c_of_type_JavaLangString, ((TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment)localObject).jdField_c_of_type_Int);
-      if ((localObject != null) && (((ArrayList)localObject).size() != 0))
+    }
+    Object localObject2 = new ArrayList();
+    ((ArrayList)localObject2).add(this.jdField_a_of_type_JavaLangString);
+    String str = new File(this.jdField_a_of_type_JavaLangString).getName();
+    Object localObject3 = ((TicketManager)((TeamWorkDocEditBrowserActivity)this.jdField_a_of_type_AndroidAppActivity).a.getManager(2)).getSkey(((TeamWorkDocEditBrowserActivity)this.jdField_a_of_type_AndroidAppActivity).a.getAccount());
+    localObject1 = ((TeamWorkDocEditBrowserActivity)this.jdField_a_of_type_AndroidAppActivity).a((ArrayList)localObject2, ((TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment)localObject1).b, (String)localObject3, "1", ((TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment)localObject1).jdField_c_of_type_JavaLangString, ((TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment)localObject1).jdField_c_of_type_Int);
+    if ((localObject1 != null) && (((ArrayList)localObject1).size() != 0))
+    {
+      localObject1 = (String)((ArrayList)localObject1).get(0);
+      if (QLog.isColorLevel())
       {
-        localObject = (String)((ArrayList)localObject).get(0);
-        if (QLog.isColorLevel()) {
-          QLog.i("TeamWorkDocEditBrowserActivity", 2, " url = " + (String)localObject + " fileName = " + str1);
-        }
-        this.this$0.callJs("insertImageForNativeJSBridge('" + (String)localObject + "','" + this.b + "','" + str1 + "')");
-        return;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(" url = ");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(" fileName = ");
+        ((StringBuilder)localObject2).append(str);
+        QLog.i("TeamWorkDocEditBrowserActivity", 2, ((StringBuilder)localObject2).toString());
       }
-      this.this$0.callJs("insertImageForNativeJSBridge('" + null + "','" + this.b + "','" + str1 + "')");
-    } while (!QLog.isColorLevel());
-    QLog.i("TeamWorkDocEditBrowserActivity", 2, "picture upload fail");
+      localObject2 = this.this$0;
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("insertImageForNativeJSBridge('");
+      ((StringBuilder)localObject3).append((String)localObject1);
+      ((StringBuilder)localObject3).append("','");
+      ((StringBuilder)localObject3).append(this.b);
+      ((StringBuilder)localObject3).append("','");
+      ((StringBuilder)localObject3).append(str);
+      ((StringBuilder)localObject3).append("')");
+      ((DocxApiPlugin)localObject2).callJs(((StringBuilder)localObject3).toString());
+      return;
+    }
+    localObject1 = this.this$0;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("insertImageForNativeJSBridge('");
+    ((StringBuilder)localObject2).append(null);
+    ((StringBuilder)localObject2).append("','");
+    ((StringBuilder)localObject2).append(this.b);
+    ((StringBuilder)localObject2).append("','");
+    ((StringBuilder)localObject2).append(str);
+    ((StringBuilder)localObject2).append("')");
+    ((DocxApiPlugin)localObject1).callJs(((StringBuilder)localObject2).toString());
+    if (QLog.isColorLevel()) {
+      QLog.i("TeamWorkDocEditBrowserActivity", 2, "picture upload fail");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.DocxApiPlugin.2
  * JD-Core Version:    0.7.0.1
  */

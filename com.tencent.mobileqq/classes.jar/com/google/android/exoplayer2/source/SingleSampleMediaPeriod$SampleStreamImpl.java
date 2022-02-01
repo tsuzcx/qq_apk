@@ -41,35 +41,36 @@ final class SingleSampleMediaPeriod$SampleStreamImpl
   
   public int readData(FormatHolder paramFormatHolder, DecoderInputBuffer paramDecoderInputBuffer, boolean paramBoolean)
   {
-    if (this.streamState == 2)
+    int i = this.streamState;
+    if (i == 2)
     {
       paramDecoderInputBuffer.addFlag(4);
       return -4;
     }
-    if ((paramBoolean) || (this.streamState == 0))
+    if ((!paramBoolean) && (i != 0))
     {
-      paramFormatHolder.format = this.this$0.format;
-      this.streamState = 1;
-      return -5;
-    }
-    if (this.this$0.loadingFinished)
-    {
-      if (this.this$0.loadingSucceeded)
+      if (this.this$0.loadingFinished)
       {
-        paramDecoderInputBuffer.timeUs = 0L;
-        paramDecoderInputBuffer.addFlag(1);
-        paramDecoderInputBuffer.ensureSpaceForWrite(this.this$0.sampleSize);
-        paramDecoderInputBuffer.data.put(this.this$0.sampleData, 0, this.this$0.sampleSize);
-        sendFormat();
-      }
-      for (;;)
-      {
+        if (this.this$0.loadingSucceeded)
+        {
+          paramDecoderInputBuffer.timeUs = 0L;
+          paramDecoderInputBuffer.addFlag(1);
+          paramDecoderInputBuffer.ensureSpaceForWrite(this.this$0.sampleSize);
+          paramDecoderInputBuffer.data.put(this.this$0.sampleData, 0, this.this$0.sampleSize);
+          sendFormat();
+        }
+        else
+        {
+          paramDecoderInputBuffer.addFlag(4);
+        }
         this.streamState = 2;
         return -4;
-        paramDecoderInputBuffer.addFlag(4);
       }
+      return -3;
     }
-    return -3;
+    paramFormatHolder.format = this.this$0.format;
+    this.streamState = 1;
+    return -5;
   }
   
   public void reset()
@@ -92,7 +93,7 @@ final class SingleSampleMediaPeriod$SampleStreamImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.SingleSampleMediaPeriod.SampleStreamImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -26,22 +26,20 @@ public class PluginSplashDialog
   
   public void dismiss()
   {
-    if (this.mReceiver != null) {}
-    try
+    if (this.mReceiver != null)
     {
-      getContext().unregisterReceiver(this.mReceiver);
-      this.mReceiver = null;
-      this.mHandler.removeMessages(0);
-      super.dismiss();
-      return;
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      for (;;)
+      try
+      {
+        getContext().unregisterReceiver(this.mReceiver);
+      }
+      catch (IllegalArgumentException localIllegalArgumentException)
       {
         localIllegalArgumentException.printStackTrace();
       }
+      this.mReceiver = null;
     }
+    this.mHandler.removeMessages(0);
+    super.dismiss();
   }
   
   public void show()
@@ -68,7 +66,7 @@ public class PluginSplashDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.PluginSplashDialog
  * JD-Core Version:    0.7.0.1
  */

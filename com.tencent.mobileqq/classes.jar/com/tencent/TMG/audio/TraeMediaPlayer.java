@@ -37,53 +37,79 @@ public class TraeMediaPlayer
   
   private void volumeDo()
   {
-    if ((this.mMediaPlay == null) || (!this._ringMode) || (this._streamType == 2)) {
-      return;
+    if ((this.mMediaPlay != null) && (this._ringMode)) {
+      if (this._streamType == 2) {
+        return;
+      }
     }
     for (;;)
     {
-      int i;
+      int j;
       int n;
       try
       {
         localAudioManager = (AudioManager)this._context.getSystemService("audio");
-        j = localAudioManager.getStreamVolume(this._streamType);
-        i = localAudioManager.getStreamMaxVolume(this._streamType);
-        int k = localAudioManager.getStreamVolume(2);
-        int m = localAudioManager.getStreamMaxVolume(2);
-        n = (int)(k * 1.0D / m * i);
+        m = localAudioManager.getStreamVolume(this._streamType);
+        j = localAudioManager.getStreamMaxVolume(this._streamType);
+        i = localAudioManager.getStreamVolume(2);
+        k = localAudioManager.getStreamMaxVolume(2);
+        double d1 = i;
+        Double.isNaN(d1);
+        double d2 = k;
+        Double.isNaN(d2);
+        d1 = d1 * 1.0D / d2;
+        d2 = j;
+        Double.isNaN(d2);
+        n = (int)(d1 * d2);
         if (!QLog.isColorLevel()) {
-          break label186;
+          break label245;
         }
-        QLog.e("TRAE", 0, "TraeMediaPlay volumeDo currV:" + j + " maxV:" + i + " currRV:" + k + " maxRV:" + m + " setV:" + n);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("TraeMediaPlay volumeDo currV:");
+        localStringBuilder.append(m);
+        localStringBuilder.append(" maxV:");
+        localStringBuilder.append(j);
+        localStringBuilder.append(" currRV:");
+        localStringBuilder.append(i);
+        localStringBuilder.append(" maxRV:");
+        localStringBuilder.append(k);
+        localStringBuilder.append(" setV:");
+        localStringBuilder.append(n);
+        QLog.e("TRAE", 0, localStringBuilder.toString());
       }
       catch (Exception localException)
       {
         AudioManager localAudioManager;
-        int j;
+        int m;
         return;
       }
       localAudioManager.setStreamVolume(this._streamType, i, 0);
-      this._prevVolume = j;
+      this._prevVolume = m;
       return;
-      label186:
-      while (n + 1 < i)
-      {
-        i = n + 1;
-        break;
+      label245:
+      int k = n + 1;
+      int i = k;
+      if (k >= j) {
+        i = j;
       }
     }
   }
   
   private void volumeUndo()
   {
-    if ((this.mMediaPlay == null) || (!this._ringMode) || (this._streamType == 2) || (this._prevVolume == -1)) {
-      return;
+    if ((this.mMediaPlay != null) && (this._ringMode) && (this._streamType != 2)) {
+      if (this._prevVolume == -1) {
+        return;
+      }
     }
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 0, "TraeMediaPlay volumeUndo _prevVolume:" + this._prevVolume);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("TraeMediaPlay volumeUndo _prevVolume:");
+        localStringBuilder.append(this._prevVolume);
+        QLog.e("TRAE", 0, localStringBuilder.toString());
       }
       ((AudioManager)this._context.getSystemService("audio")).setStreamVolume(this._streamType, this._prevVolume, 0);
       return;
@@ -108,7 +134,14 @@ public class TraeMediaPlayer
   
   public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    AudioDeviceInterface.LogTraceEntry(" cb:" + this.mCallback + " loopCount:" + this._loopCount + " _loop:" + this._loop);
+    paramMediaPlayer = new StringBuilder();
+    paramMediaPlayer.append(" cb:");
+    paramMediaPlayer.append(this.mCallback);
+    paramMediaPlayer.append(" loopCount:");
+    paramMediaPlayer.append(this._loopCount);
+    paramMediaPlayer.append(" _loop:");
+    paramMediaPlayer.append(this._loop);
+    AudioDeviceInterface.LogTraceEntry(paramMediaPlayer.toString());
     if (this._loop)
     {
       if (QLog.isColorLevel()) {
@@ -116,13 +149,10 @@ public class TraeMediaPlayer
       }
       return;
     }
-    for (;;)
+    try
     {
-      try
+      if (this._loopCount <= 0)
       {
-        if (this._loopCount > 0) {
-          continue;
-        }
         volumeUndo();
         if (this.mMediaPlay.isPlaying()) {
           this.mMediaPlay.stop();
@@ -133,35 +163,46 @@ public class TraeMediaPlayer
         if (this.mCallback != null) {
           this.mCallback.onCompletion();
         }
-        AudioDeviceInterface.LogTraceExit();
       }
-      catch (Exception paramMediaPlayer)
+      else
       {
-        continue;
+        this.mMediaPlay.start();
+        this._loopCount -= 1;
       }
-      return;
-      this.mMediaPlay.start();
-      this._loopCount -= 1;
+      label168:
+      AudioDeviceInterface.LogTraceExit();
+    }
+    catch (Exception paramMediaPlayer)
+    {
+      break label168;
     }
   }
   
   public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    AudioDeviceInterface.LogTraceEntry(" cb:" + this.mCallback + " arg1:" + paramInt1 + " arg2:" + paramInt2);
+    paramMediaPlayer = new StringBuilder();
+    paramMediaPlayer.append(" cb:");
+    paramMediaPlayer.append(this.mCallback);
+    paramMediaPlayer.append(" arg1:");
+    paramMediaPlayer.append(paramInt1);
+    paramMediaPlayer.append(" arg2:");
+    paramMediaPlayer.append(paramInt2);
+    AudioDeviceInterface.LogTraceEntry(paramMediaPlayer.toString());
     try
     {
       this.mMediaPlay.release();
-      label50:
+      label64:
       this.mMediaPlay = null;
-      if (this.mCallback != null) {
-        this.mCallback.onCompletion();
+      paramMediaPlayer = this.mCallback;
+      if (paramMediaPlayer != null) {
+        paramMediaPlayer.onCompletion();
       }
       AudioDeviceInterface.LogTraceExit();
       return false;
     }
     catch (Exception paramMediaPlayer)
     {
-      break label50;
+      break label64;
     }
   }
   
@@ -169,708 +210,855 @@ public class TraeMediaPlayer
   public boolean playRing(int paramInt1, int paramInt2, android.net.Uri paramUri, java.lang.String paramString, boolean paramBoolean1, int paramInt3, boolean paramBoolean2, boolean paramBoolean3, int paramInt4)
   {
     // Byte code:
-    //   0: invokestatic 95	com/tencent/TMG/utils/QLog:isColorLevel	()Z
-    //   3: ifeq +132 -> 135
-    //   6: new 99	java/lang/StringBuilder
+    //   0: invokestatic 101	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   3: ifeq +196 -> 199
+    //   6: new 103	java/lang/StringBuilder
     //   9: dup
-    //   10: invokespecial 100	java/lang/StringBuilder:<init>	()V
-    //   13: ldc 205
-    //   15: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   18: iload_1
-    //   19: invokevirtual 109	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   22: ldc 207
-    //   24: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   27: iload_2
-    //   28: invokevirtual 109	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   31: ldc 209
-    //   33: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   36: aload_3
-    //   37: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   40: ldc 211
-    //   42: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   45: aload 4
-    //   47: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   50: ldc 213
-    //   52: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   55: astore 12
-    //   57: iload 5
-    //   59: ifeq +150 -> 209
-    //   62: ldc 215
-    //   64: astore 11
-    //   66: aload 12
-    //   68: aload 11
-    //   70: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   73: ldc 217
-    //   75: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   78: iload 6
-    //   80: invokevirtual 109	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   83: ldc 219
-    //   85: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   88: astore 12
-    //   90: iload 7
-    //   92: ifeq +124 -> 216
-    //   95: ldc 215
-    //   97: astore 11
-    //   99: ldc 97
-    //   101: iconst_0
-    //   102: aload 12
-    //   104: aload 11
-    //   106: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   109: ldc 221
-    //   111: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   114: iload 8
-    //   116: invokevirtual 150	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   119: ldc 223
-    //   121: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   124: iload 9
-    //   126: invokevirtual 109	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   129: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   132: invokestatic 125	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   135: iload 5
-    //   137: ifne +92 -> 229
-    //   140: iload 6
-    //   142: ifgt +87 -> 229
-    //   145: invokestatic 95	com/tencent/TMG/utils/QLog:isColorLevel	()Z
-    //   148: ifeq +59 -> 207
-    //   151: new 99	java/lang/StringBuilder
-    //   154: dup
-    //   155: invokespecial 100	java/lang/StringBuilder:<init>	()V
-    //   158: ldc 225
-    //   160: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   163: iload_1
-    //   164: invokevirtual 109	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   167: ldc 213
-    //   169: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   172: astore 4
-    //   174: iload 5
-    //   176: ifeq +47 -> 223
-    //   179: ldc 215
-    //   181: astore_3
-    //   182: ldc 97
-    //   184: iconst_0
-    //   185: aload 4
-    //   187: aload_3
-    //   188: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   191: ldc 217
-    //   193: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   196: iload 6
-    //   198: invokevirtual 109	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   201: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   204: invokestatic 125	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   207: iconst_0
-    //   208: ireturn
-    //   209: ldc 227
-    //   211: astore 11
-    //   213: goto -147 -> 66
-    //   216: ldc 227
-    //   218: astore 11
-    //   220: goto -121 -> 99
-    //   223: ldc 227
-    //   225: astore_3
-    //   226: goto -44 -> 182
-    //   229: aload_0
-    //   230: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   233: ifnull +31 -> 264
-    //   236: aload_0
-    //   237: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   240: invokevirtual 168	android/media/MediaPlayer:isPlaying	()Z
-    //   243: istore 10
-    //   245: iload 10
-    //   247: ifeq +5 -> 252
-    //   250: iconst_0
-    //   251: ireturn
-    //   252: aload_0
-    //   253: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   256: invokevirtual 177	android/media/MediaPlayer:release	()V
-    //   259: aload_0
-    //   260: aconst_null
-    //   261: putfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   264: aload_0
-    //   265: getfield 56	com/tencent/TMG/audio/TraeMediaPlayer:_watchTimer	Ljava/util/Timer;
-    //   268: ifnull +20 -> 288
-    //   271: aload_0
-    //   272: getfield 56	com/tencent/TMG/audio/TraeMediaPlayer:_watchTimer	Ljava/util/Timer;
-    //   275: invokevirtual 232	java/util/Timer:cancel	()V
-    //   278: aload_0
-    //   279: aconst_null
-    //   280: putfield 56	com/tencent/TMG/audio/TraeMediaPlayer:_watchTimer	Ljava/util/Timer;
-    //   283: aload_0
-    //   284: aconst_null
-    //   285: putfield 58	com/tencent/TMG/audio/TraeMediaPlayer:_watchTimertask	Ljava/util/TimerTask;
-    //   288: aload_0
-    //   289: getfield 62	com/tencent/TMG/audio/TraeMediaPlayer:_context	Landroid/content/Context;
-    //   292: ldc 74
-    //   294: invokevirtual 80	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   297: checkcast 82	android/media/AudioManager
-    //   300: astore 11
-    //   302: aload_0
-    //   303: new 165	android/media/MediaPlayer
-    //   306: dup
-    //   307: invokespecial 233	android/media/MediaPlayer:<init>	()V
-    //   310: putfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   313: aload_0
-    //   314: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   317: ifnonnull +196 -> 513
-    //   320: aload_0
-    //   321: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   324: invokevirtual 177	android/media/MediaPlayer:release	()V
-    //   327: aload_0
-    //   328: aconst_null
-    //   329: putfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   332: iconst_0
-    //   333: ireturn
-    //   334: astore 11
-    //   336: aload_0
-    //   337: aconst_null
-    //   338: putfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   341: goto -77 -> 264
-    //   344: astore_3
-    //   345: invokestatic 95	com/tencent/TMG/utils/QLog:isColorLevel	()Z
-    //   348: ifeq +43 -> 391
-    //   351: ldc 97
-    //   353: iconst_0
-    //   354: new 99	java/lang/StringBuilder
-    //   357: dup
-    //   358: invokespecial 100	java/lang/StringBuilder:<init>	()V
-    //   361: ldc 235
-    //   363: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   366: aload_3
-    //   367: invokevirtual 238	java/lang/IllegalStateException:getLocalizedMessage	()Ljava/lang/String;
-    //   370: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   373: ldc 240
-    //   375: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   378: aload_3
-    //   379: invokevirtual 243	java/lang/IllegalStateException:getMessage	()Ljava/lang/String;
-    //   382: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   385: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   388: invokestatic 161	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   391: aload_0
-    //   392: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   395: invokevirtual 177	android/media/MediaPlayer:release	()V
+    //   10: invokespecial 104	java/lang/StringBuilder:<init>	()V
+    //   13: astore 12
+    //   15: aload 12
+    //   17: ldc 211
+    //   19: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   22: pop
+    //   23: aload 12
+    //   25: iload_1
+    //   26: invokevirtual 113	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   29: pop
+    //   30: aload 12
+    //   32: ldc 213
+    //   34: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   37: pop
+    //   38: aload 12
+    //   40: iload_2
+    //   41: invokevirtual 113	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   44: pop
+    //   45: aload 12
+    //   47: ldc 215
+    //   49: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   52: pop
+    //   53: aload 12
+    //   55: aload_3
+    //   56: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   59: pop
+    //   60: aload 12
+    //   62: ldc 217
+    //   64: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   67: pop
+    //   68: aload 12
+    //   70: aload 4
+    //   72: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   75: pop
+    //   76: aload 12
+    //   78: ldc 219
+    //   80: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   83: pop
+    //   84: iload 5
+    //   86: ifeq +10 -> 96
+    //   89: ldc 221
+    //   91: astore 11
+    //   93: goto +7 -> 100
+    //   96: ldc 223
+    //   98: astore 11
+    //   100: aload 12
+    //   102: aload 11
+    //   104: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   107: pop
+    //   108: aload 12
+    //   110: ldc 225
+    //   112: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   115: pop
+    //   116: aload 12
+    //   118: iload 6
+    //   120: invokevirtual 113	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   123: pop
+    //   124: aload 12
+    //   126: ldc 227
+    //   128: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   131: pop
+    //   132: iload 7
+    //   134: ifeq +10 -> 144
+    //   137: ldc 221
+    //   139: astore 11
+    //   141: goto +7 -> 148
+    //   144: ldc 223
+    //   146: astore 11
+    //   148: aload 12
+    //   150: aload 11
+    //   152: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   155: pop
+    //   156: aload 12
+    //   158: ldc 229
+    //   160: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   163: pop
+    //   164: aload 12
+    //   166: iload 8
+    //   168: invokevirtual 156	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   171: pop
+    //   172: aload 12
+    //   174: ldc 231
+    //   176: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   179: pop
+    //   180: aload 12
+    //   182: iload 9
+    //   184: invokevirtual 113	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   187: pop
+    //   188: ldc 123
+    //   190: iconst_0
+    //   191: aload 12
+    //   193: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   196: invokestatic 131	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   199: iload 5
+    //   201: ifne +98 -> 299
+    //   204: iload 6
+    //   206: ifgt +93 -> 299
+    //   209: invokestatic 101	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   212: ifeq +85 -> 297
+    //   215: new 103	java/lang/StringBuilder
+    //   218: dup
+    //   219: invokespecial 104	java/lang/StringBuilder:<init>	()V
+    //   222: astore 4
+    //   224: aload 4
+    //   226: ldc 233
+    //   228: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   231: pop
+    //   232: aload 4
+    //   234: iload_1
+    //   235: invokevirtual 113	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   238: pop
+    //   239: aload 4
+    //   241: ldc 219
+    //   243: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   246: pop
+    //   247: iload 5
+    //   249: ifeq +9 -> 258
+    //   252: ldc 221
+    //   254: astore_3
+    //   255: goto +6 -> 261
+    //   258: ldc 223
+    //   260: astore_3
+    //   261: aload 4
+    //   263: aload_3
+    //   264: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   267: pop
+    //   268: aload 4
+    //   270: ldc 225
+    //   272: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   275: pop
+    //   276: aload 4
+    //   278: iload 6
+    //   280: invokevirtual 113	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   283: pop
+    //   284: ldc 123
+    //   286: iconst_0
+    //   287: aload 4
+    //   289: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   292: invokestatic 131	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   295: iconst_0
+    //   296: ireturn
+    //   297: iconst_0
+    //   298: ireturn
+    //   299: aload_0
+    //   300: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
+    //   303: astore 11
+    //   305: aload 11
+    //   307: ifnull +42 -> 349
+    //   310: aload_0
+    //   311: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
+    //   314: invokevirtual 174	android/media/MediaPlayer:isPlaying	()Z
+    //   317: istore 10
+    //   319: iload 10
+    //   321: ifeq +5 -> 326
+    //   324: iconst_0
+    //   325: ireturn
+    //   326: aload_0
+    //   327: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
+    //   330: invokevirtual 183	android/media/MediaPlayer:release	()V
+    //   333: aload_0
+    //   334: aconst_null
+    //   335: putfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
+    //   338: goto +11 -> 349
+    //   341: astore_3
+    //   342: aload_0
+    //   343: aconst_null
+    //   344: putfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
+    //   347: aload_3
+    //   348: athrow
+    //   349: aload_0
+    //   350: getfield 56	com/tencent/TMG/audio/TraeMediaPlayer:_watchTimer	Ljava/util/Timer;
+    //   353: ifnull +20 -> 373
+    //   356: aload_0
+    //   357: getfield 56	com/tencent/TMG/audio/TraeMediaPlayer:_watchTimer	Ljava/util/Timer;
+    //   360: invokevirtual 238	java/util/Timer:cancel	()V
+    //   363: aload_0
+    //   364: aconst_null
+    //   365: putfield 56	com/tencent/TMG/audio/TraeMediaPlayer:_watchTimer	Ljava/util/Timer;
+    //   368: aload_0
+    //   369: aconst_null
+    //   370: putfield 58	com/tencent/TMG/audio/TraeMediaPlayer:_watchTimertask	Ljava/util/TimerTask;
+    //   373: aload_0
+    //   374: getfield 62	com/tencent/TMG/audio/TraeMediaPlayer:_context	Landroid/content/Context;
+    //   377: ldc 74
+    //   379: invokevirtual 80	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   382: checkcast 82	android/media/AudioManager
+    //   385: astore 11
+    //   387: aload_0
+    //   388: new 240	com/tencent/qqlive/module/videoreport/dtreport/audio/playback/ReportMediaPlayer
+    //   391: dup
+    //   392: invokespecial 241	com/tencent/qqlive/module/videoreport/dtreport/audio/playback/ReportMediaPlayer:<init>	()V
+    //   395: putfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
     //   398: aload_0
-    //   399: aconst_null
-    //   400: putfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   403: iconst_0
-    //   404: ireturn
-    //   405: astore_3
-    //   406: aload_0
-    //   407: aconst_null
-    //   408: putfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   411: aload_3
-    //   412: athrow
-    //   413: astore_3
-    //   414: invokestatic 95	com/tencent/TMG/utils/QLog:isColorLevel	()Z
-    //   417: ifeq -26 -> 391
-    //   420: ldc 97
-    //   422: iconst_0
-    //   423: new 99	java/lang/StringBuilder
-    //   426: dup
-    //   427: invokespecial 100	java/lang/StringBuilder:<init>	()V
-    //   430: ldc 245
-    //   432: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   435: aload_3
-    //   436: invokevirtual 246	java/io/IOException:getLocalizedMessage	()Ljava/lang/String;
-    //   439: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   442: ldc 240
-    //   444: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   447: aload_3
-    //   448: invokevirtual 247	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   451: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   454: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   457: invokestatic 161	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   460: goto -69 -> 391
-    //   463: astore_3
-    //   464: invokestatic 95	com/tencent/TMG/utils/QLog:isColorLevel	()Z
-    //   467: ifeq -76 -> 391
-    //   470: ldc 97
-    //   472: iconst_0
-    //   473: new 99	java/lang/StringBuilder
-    //   476: dup
-    //   477: invokespecial 100	java/lang/StringBuilder:<init>	()V
-    //   480: ldc 249
-    //   482: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   485: aload_3
-    //   486: invokevirtual 250	java/lang/Exception:getLocalizedMessage	()Ljava/lang/String;
-    //   489: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   492: ldc 240
-    //   494: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   497: aload_3
-    //   498: invokevirtual 251	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   501: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   504: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   507: invokestatic 161	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   510: goto -119 -> 391
-    //   513: aload_0
-    //   514: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   517: aload_0
-    //   518: invokevirtual 255	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
-    //   521: aload_0
-    //   522: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   525: aload_0
-    //   526: invokevirtual 259	android/media/MediaPlayer:setOnErrorListener	(Landroid/media/MediaPlayer$OnErrorListener;)V
-    //   529: iload_1
-    //   530: tableswitch	default:+663 -> 1193, 0:+79->609, 1:+250->780, 2:+348->878
-    //   557: nop
-    //   558: swap
-    //   559: ifeq +29 -> 588
-    //   562: ldc 97
-    //   564: iconst_0
-    //   565: new 99	java/lang/StringBuilder
-    //   568: dup
-    //   569: invokespecial 100	java/lang/StringBuilder:<init>	()V
-    //   572: ldc_w 261
-    //   575: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   578: iload_1
-    //   579: invokevirtual 109	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   582: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   585: invokestatic 125	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   588: aload_0
-    //   589: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   592: invokevirtual 177	android/media/MediaPlayer:release	()V
-    //   595: aload_0
-    //   596: aconst_null
-    //   597: putfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   600: aload_0
-    //   601: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   604: ifnonnull +319 -> 923
-    //   607: iconst_0
-    //   608: ireturn
-    //   609: invokestatic 95	com/tencent/TMG/utils/QLog:isColorLevel	()Z
-    //   612: ifeq +29 -> 641
-    //   615: ldc 97
-    //   617: iconst_0
-    //   618: new 99	java/lang/StringBuilder
-    //   621: dup
-    //   622: invokespecial 100	java/lang/StringBuilder:<init>	()V
-    //   625: ldc_w 263
-    //   628: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   399: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
+    //   402: ifnonnull +17 -> 419
+    //   405: aload_0
+    //   406: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
+    //   409: invokevirtual 183	android/media/MediaPlayer:release	()V
+    //   412: aload_0
+    //   413: aconst_null
+    //   414: putfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
+    //   417: iconst_0
+    //   418: ireturn
+    //   419: aload_0
+    //   420: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
+    //   423: aload_0
+    //   424: invokevirtual 245	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
+    //   427: aload_0
+    //   428: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
+    //   431: aload_0
+    //   432: invokevirtual 249	android/media/MediaPlayer:setOnErrorListener	(Landroid/media/MediaPlayer$OnErrorListener;)V
+    //   435: iload_1
+    //   436: ifeq +172 -> 608
+    //   439: iload_1
+    //   440: iconst_1
+    //   441: if_icmpeq +110 -> 551
+    //   444: iload_1
+    //   445: iconst_2
+    //   446: if_icmpeq +55 -> 501
+    //   449: invokestatic 101	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   452: ifeq +34 -> 486
+    //   455: new 103	java/lang/StringBuilder
+    //   458: dup
+    //   459: invokespecial 104	java/lang/StringBuilder:<init>	()V
+    //   462: astore_3
+    //   463: aload_3
+    //   464: ldc 251
+    //   466: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   469: pop
+    //   470: aload_3
+    //   471: iload_1
+    //   472: invokevirtual 113	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   475: pop
+    //   476: ldc 123
+    //   478: iconst_0
+    //   479: aload_3
+    //   480: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   483: invokestatic 131	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   486: aload_0
+    //   487: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
+    //   490: invokevirtual 183	android/media/MediaPlayer:release	()V
+    //   493: aload_0
+    //   494: aconst_null
+    //   495: putfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
+    //   498: goto +239 -> 737
+    //   501: invokestatic 101	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   504: ifeq +35 -> 539
+    //   507: new 103	java/lang/StringBuilder
+    //   510: dup
+    //   511: invokespecial 104	java/lang/StringBuilder:<init>	()V
+    //   514: astore_3
+    //   515: aload_3
+    //   516: ldc 253
+    //   518: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   521: pop
+    //   522: aload_3
+    //   523: aload 4
+    //   525: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   528: pop
+    //   529: ldc 123
+    //   531: iconst_0
+    //   532: aload_3
+    //   533: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   536: invokestatic 131	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   539: aload_0
+    //   540: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
+    //   543: aload 4
+    //   545: invokevirtual 256	android/media/MediaPlayer:setDataSource	(Ljava/lang/String;)V
+    //   548: goto +189 -> 737
+    //   551: invokestatic 101	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   554: ifeq +39 -> 593
+    //   557: new 103	java/lang/StringBuilder
+    //   560: dup
+    //   561: invokespecial 104	java/lang/StringBuilder:<init>	()V
+    //   564: astore 4
+    //   566: aload 4
+    //   568: ldc_w 258
+    //   571: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   574: pop
+    //   575: aload 4
+    //   577: aload_3
+    //   578: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   581: pop
+    //   582: ldc 123
+    //   584: iconst_0
+    //   585: aload 4
+    //   587: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   590: invokestatic 131	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   593: aload_0
+    //   594: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
+    //   597: aload_0
+    //   598: getfield 62	com/tencent/TMG/audio/TraeMediaPlayer:_context	Landroid/content/Context;
+    //   601: aload_3
+    //   602: invokevirtual 261	android/media/MediaPlayer:setDataSource	(Landroid/content/Context;Landroid/net/Uri;)V
+    //   605: goto +132 -> 737
+    //   608: invokestatic 101	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   611: ifeq +35 -> 646
+    //   614: new 103	java/lang/StringBuilder
+    //   617: dup
+    //   618: invokespecial 104	java/lang/StringBuilder:<init>	()V
+    //   621: astore_3
+    //   622: aload_3
+    //   623: ldc_w 263
+    //   626: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   629: pop
+    //   630: aload_3
     //   631: iload_2
-    //   632: invokevirtual 109	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   635: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   638: invokestatic 125	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   641: aload_0
-    //   642: getfield 62	com/tencent/TMG/audio/TraeMediaPlayer:_context	Landroid/content/Context;
-    //   645: invokevirtual 267	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   648: iload_2
-    //   649: invokevirtual 273	android/content/res/Resources:openRawResourceFd	(I)Landroid/content/res/AssetFileDescriptor;
-    //   652: astore_3
-    //   653: aload_3
-    //   654: ifnonnull +49 -> 703
-    //   657: invokestatic 95	com/tencent/TMG/utils/QLog:isColorLevel	()Z
-    //   660: ifeq +29 -> 689
-    //   663: ldc 97
-    //   665: iconst_0
-    //   666: new 99	java/lang/StringBuilder
-    //   669: dup
-    //   670: invokespecial 100	java/lang/StringBuilder:<init>	()V
-    //   673: ldc_w 275
-    //   676: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   679: iload_2
-    //   680: invokevirtual 109	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   683: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   686: invokestatic 125	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   689: aload_0
-    //   690: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   693: invokevirtual 177	android/media/MediaPlayer:release	()V
-    //   696: aload_0
-    //   697: aconst_null
-    //   698: putfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   701: iconst_0
-    //   702: ireturn
-    //   703: aload_0
-    //   704: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   707: aload_3
-    //   708: invokevirtual 281	android/content/res/AssetFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
-    //   711: aload_3
-    //   712: invokevirtual 285	android/content/res/AssetFileDescriptor:getStartOffset	()J
-    //   715: aload_3
-    //   716: invokevirtual 288	android/content/res/AssetFileDescriptor:getLength	()J
-    //   719: invokevirtual 292	android/media/MediaPlayer:setDataSource	(Ljava/io/FileDescriptor;JJ)V
+    //   632: invokevirtual 113	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   635: pop
+    //   636: ldc 123
+    //   638: iconst_0
+    //   639: aload_3
+    //   640: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   643: invokestatic 131	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   646: aload_0
+    //   647: getfield 62	com/tencent/TMG/audio/TraeMediaPlayer:_context	Landroid/content/Context;
+    //   650: invokevirtual 267	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   653: iload_2
+    //   654: invokevirtual 273	android/content/res/Resources:openRawResourceFd	(I)Landroid/content/res/AssetFileDescriptor;
+    //   657: astore_3
+    //   658: aload_3
+    //   659: ifnonnull +55 -> 714
+    //   662: invokestatic 101	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   665: ifeq +35 -> 700
+    //   668: new 103	java/lang/StringBuilder
+    //   671: dup
+    //   672: invokespecial 104	java/lang/StringBuilder:<init>	()V
+    //   675: astore_3
+    //   676: aload_3
+    //   677: ldc_w 275
+    //   680: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   683: pop
+    //   684: aload_3
+    //   685: iload_2
+    //   686: invokevirtual 113	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   689: pop
+    //   690: ldc 123
+    //   692: iconst_0
+    //   693: aload_3
+    //   694: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   697: invokestatic 131	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   700: aload_0
+    //   701: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
+    //   704: invokevirtual 183	android/media/MediaPlayer:release	()V
+    //   707: aload_0
+    //   708: aconst_null
+    //   709: putfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
+    //   712: iconst_0
+    //   713: ireturn
+    //   714: aload_0
+    //   715: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
+    //   718: aload_3
+    //   719: invokevirtual 281	android/content/res/AssetFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
     //   722: aload_3
-    //   723: invokevirtual 295	android/content/res/AssetFileDescriptor:close	()V
-    //   726: goto -126 -> 600
-    //   729: astore_3
-    //   730: invokestatic 95	com/tencent/TMG/utils/QLog:isColorLevel	()Z
-    //   733: ifeq -342 -> 391
-    //   736: ldc 97
-    //   738: iconst_0
-    //   739: new 99	java/lang/StringBuilder
-    //   742: dup
-    //   743: invokespecial 100	java/lang/StringBuilder:<init>	()V
-    //   746: ldc_w 297
-    //   749: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   752: aload_3
-    //   753: invokevirtual 298	java/lang/IllegalArgumentException:getLocalizedMessage	()Ljava/lang/String;
-    //   756: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   759: ldc 240
-    //   761: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   764: aload_3
-    //   765: invokevirtual 299	java/lang/IllegalArgumentException:getMessage	()Ljava/lang/String;
-    //   768: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   771: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   774: invokestatic 161	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   777: goto -386 -> 391
-    //   780: invokestatic 95	com/tencent/TMG/utils/QLog:isColorLevel	()Z
-    //   783: ifeq +29 -> 812
-    //   786: ldc 97
-    //   788: iconst_0
-    //   789: new 99	java/lang/StringBuilder
-    //   792: dup
-    //   793: invokespecial 100	java/lang/StringBuilder:<init>	()V
-    //   796: ldc_w 301
-    //   799: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   802: aload_3
-    //   803: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   806: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   809: invokestatic 125	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   812: aload_0
-    //   813: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   816: aload_0
-    //   817: getfield 62	com/tencent/TMG/audio/TraeMediaPlayer:_context	Landroid/content/Context;
-    //   820: aload_3
-    //   821: invokevirtual 304	android/media/MediaPlayer:setDataSource	(Landroid/content/Context;Landroid/net/Uri;)V
-    //   824: goto -224 -> 600
-    //   827: astore_3
-    //   828: invokestatic 95	com/tencent/TMG/utils/QLog:isColorLevel	()Z
-    //   831: ifeq -440 -> 391
-    //   834: ldc 97
-    //   836: iconst_0
-    //   837: new 99	java/lang/StringBuilder
-    //   840: dup
-    //   841: invokespecial 100	java/lang/StringBuilder:<init>	()V
-    //   844: ldc_w 306
-    //   847: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   850: aload_3
-    //   851: invokevirtual 307	java/lang/SecurityException:getLocalizedMessage	()Ljava/lang/String;
-    //   854: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   857: ldc 240
-    //   859: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   862: aload_3
-    //   863: invokevirtual 308	java/lang/SecurityException:getMessage	()Ljava/lang/String;
-    //   866: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   869: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   872: invokestatic 161	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   875: goto -484 -> 391
-    //   878: invokestatic 95	com/tencent/TMG/utils/QLog:isColorLevel	()Z
-    //   881: ifeq +30 -> 911
-    //   884: ldc 97
-    //   886: iconst_0
-    //   887: new 99	java/lang/StringBuilder
-    //   890: dup
-    //   891: invokespecial 100	java/lang/StringBuilder:<init>	()V
-    //   894: ldc_w 310
-    //   897: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   900: aload 4
-    //   902: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   905: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   908: invokestatic 125	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   911: aload_0
-    //   912: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   915: aload 4
-    //   917: invokevirtual 312	android/media/MediaPlayer:setDataSource	(Ljava/lang/String;)V
-    //   920: goto -320 -> 600
-    //   923: aload_0
-    //   924: iload 7
-    //   926: putfield 54	com/tencent/TMG/audio/TraeMediaPlayer:_ringMode	Z
-    //   929: iconst_0
-    //   930: istore_1
-    //   931: aload_0
-    //   932: getfield 54	com/tencent/TMG/audio/TraeMediaPlayer:_ringMode	Z
-    //   935: ifeq +211 -> 1146
-    //   938: aload_0
-    //   939: iconst_2
-    //   940: putfield 44	com/tencent/TMG/audio/TraeMediaPlayer:_streamType	I
-    //   943: iconst_1
-    //   944: istore_1
-    //   945: aload_0
-    //   946: iload 8
-    //   948: putfield 46	com/tencent/TMG/audio/TraeMediaPlayer:_hasCall	Z
-    //   951: aload_0
-    //   952: getfield 46	com/tencent/TMG/audio/TraeMediaPlayer:_hasCall	Z
-    //   955: ifeq +9 -> 964
-    //   958: aload_0
-    //   959: iload 9
-    //   961: putfield 44	com/tencent/TMG/audio/TraeMediaPlayer:_streamType	I
-    //   964: aload_0
-    //   965: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   968: aload_0
-    //   969: getfield 44	com/tencent/TMG/audio/TraeMediaPlayer:_streamType	I
-    //   972: invokevirtual 316	android/media/MediaPlayer:setAudioStreamType	(I)V
-    //   975: aload_0
-    //   976: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   979: invokevirtual 319	android/media/MediaPlayer:prepare	()V
-    //   982: aload_0
-    //   983: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   986: iload 5
-    //   988: invokevirtual 323	android/media/MediaPlayer:setLooping	(Z)V
-    //   991: aload_0
-    //   992: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   995: invokevirtual 187	android/media/MediaPlayer:start	()V
-    //   998: aload_0
-    //   999: iload 5
-    //   1001: putfield 48	com/tencent/TMG/audio/TraeMediaPlayer:_loop	Z
-    //   1004: aload_0
-    //   1005: getfield 48	com/tencent/TMG/audio/TraeMediaPlayer:_loop	Z
-    //   1008: iconst_1
-    //   1009: if_icmpne +155 -> 1164
-    //   1012: aload_0
-    //   1013: iconst_1
-    //   1014: putfield 52	com/tencent/TMG/audio/TraeMediaPlayer:_loopCount	I
-    //   1017: aload_0
-    //   1018: iconst_m1
-    //   1019: putfield 50	com/tencent/TMG/audio/TraeMediaPlayer:_durationMS	I
-    //   1022: aload_0
-    //   1023: aload_0
-    //   1024: getfield 52	com/tencent/TMG/audio/TraeMediaPlayer:_loopCount	I
-    //   1027: iconst_1
-    //   1028: isub
-    //   1029: putfield 52	com/tencent/TMG/audio/TraeMediaPlayer:_loopCount	I
-    //   1032: aload_0
-    //   1033: getfield 46	com/tencent/TMG/audio/TraeMediaPlayer:_hasCall	Z
-    //   1036: ifne +9 -> 1045
-    //   1039: aload 11
-    //   1041: iload_1
-    //   1042: invokevirtual 326	android/media/AudioManager:setMode	(I)V
-    //   1045: aload_0
-    //   1046: getfield 50	com/tencent/TMG/audio/TraeMediaPlayer:_durationMS	I
-    //   1049: ifle +46 -> 1095
-    //   1052: aload_0
-    //   1053: new 229	java/util/Timer
-    //   1056: dup
-    //   1057: invokespecial 327	java/util/Timer:<init>	()V
-    //   1060: putfield 56	com/tencent/TMG/audio/TraeMediaPlayer:_watchTimer	Ljava/util/Timer;
-    //   1063: aload_0
-    //   1064: new 329	com/tencent/TMG/audio/TraeMediaPlayer$1
-    //   1067: dup
-    //   1068: aload_0
-    //   1069: invokespecial 332	com/tencent/TMG/audio/TraeMediaPlayer$1:<init>	(Lcom/tencent/TMG/audio/TraeMediaPlayer;)V
-    //   1072: putfield 58	com/tencent/TMG/audio/TraeMediaPlayer:_watchTimertask	Ljava/util/TimerTask;
-    //   1075: aload_0
-    //   1076: getfield 56	com/tencent/TMG/audio/TraeMediaPlayer:_watchTimer	Ljava/util/Timer;
-    //   1079: aload_0
-    //   1080: getfield 58	com/tencent/TMG/audio/TraeMediaPlayer:_watchTimertask	Ljava/util/TimerTask;
-    //   1083: aload_0
-    //   1084: getfield 50	com/tencent/TMG/audio/TraeMediaPlayer:_durationMS	I
-    //   1087: sipush 1000
-    //   1090: iadd
-    //   1091: i2l
-    //   1092: invokevirtual 336	java/util/Timer:schedule	(Ljava/util/TimerTask;J)V
-    //   1095: invokestatic 95	com/tencent/TMG/utils/QLog:isColorLevel	()Z
-    //   1098: ifeq +98 -> 1196
-    //   1101: ldc 97
-    //   1103: iconst_0
-    //   1104: new 99	java/lang/StringBuilder
-    //   1107: dup
-    //   1108: invokespecial 100	java/lang/StringBuilder:<init>	()V
-    //   1111: ldc_w 338
-    //   1114: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1117: aload_0
-    //   1118: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   1121: invokevirtual 340	android/media/MediaPlayer:getDuration	()I
-    //   1124: invokevirtual 109	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1127: ldc 213
-    //   1129: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1132: iload 5
-    //   1134: invokevirtual 150	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1137: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1140: invokestatic 125	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1143: goto +53 -> 1196
-    //   1146: aload_0
-    //   1147: iconst_0
-    //   1148: putfield 44	com/tencent/TMG/audio/TraeMediaPlayer:_streamType	I
-    //   1151: getstatic 345	android/os/Build$VERSION:SDK_INT	I
-    //   1154: bipush 11
-    //   1156: if_icmplt -211 -> 945
-    //   1159: iconst_3
-    //   1160: istore_1
-    //   1161: goto -216 -> 945
-    //   1164: aload_0
-    //   1165: iload 6
-    //   1167: putfield 52	com/tencent/TMG/audio/TraeMediaPlayer:_loopCount	I
-    //   1170: aload_0
-    //   1171: aload_0
-    //   1172: getfield 52	com/tencent/TMG/audio/TraeMediaPlayer:_loopCount	I
-    //   1175: aload_0
-    //   1176: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   1179: invokevirtual 340	android/media/MediaPlayer:getDuration	()I
-    //   1182: imul
-    //   1183: putfield 50	com/tencent/TMG/audio/TraeMediaPlayer:_durationMS	I
-    //   1186: goto -164 -> 1022
-    //   1189: astore_3
-    //   1190: goto -792 -> 398
-    //   1193: goto -637 -> 556
-    //   1196: iconst_1
-    //   1197: ireturn
+    //   723: invokevirtual 285	android/content/res/AssetFileDescriptor:getStartOffset	()J
+    //   726: aload_3
+    //   727: invokevirtual 288	android/content/res/AssetFileDescriptor:getLength	()J
+    //   730: invokevirtual 291	android/media/MediaPlayer:setDataSource	(Ljava/io/FileDescriptor;JJ)V
+    //   733: aload_3
+    //   734: invokevirtual 294	android/content/res/AssetFileDescriptor:close	()V
+    //   737: aload_0
+    //   738: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
+    //   741: ifnonnull +5 -> 746
+    //   744: iconst_0
+    //   745: ireturn
+    //   746: aload_0
+    //   747: iload 7
+    //   749: putfield 54	com/tencent/TMG/audio/TraeMediaPlayer:_ringMode	Z
+    //   752: aload_0
+    //   753: getfield 54	com/tencent/TMG/audio/TraeMediaPlayer:_ringMode	Z
+    //   756: ifeq +13 -> 769
+    //   759: aload_0
+    //   760: iconst_2
+    //   761: putfield 44	com/tencent/TMG/audio/TraeMediaPlayer:_streamType	I
+    //   764: iconst_1
+    //   765: istore_1
+    //   766: goto +21 -> 787
+    //   769: aload_0
+    //   770: iconst_0
+    //   771: putfield 44	com/tencent/TMG/audio/TraeMediaPlayer:_streamType	I
+    //   774: getstatic 299	android/os/Build$VERSION:SDK_INT	I
+    //   777: bipush 11
+    //   779: if_icmplt +616 -> 1395
+    //   782: iconst_3
+    //   783: istore_1
+    //   784: goto +3 -> 787
+    //   787: aload_0
+    //   788: iload 8
+    //   790: putfield 46	com/tencent/TMG/audio/TraeMediaPlayer:_hasCall	Z
+    //   793: aload_0
+    //   794: getfield 46	com/tencent/TMG/audio/TraeMediaPlayer:_hasCall	Z
+    //   797: ifeq +9 -> 806
+    //   800: aload_0
+    //   801: iload 9
+    //   803: putfield 44	com/tencent/TMG/audio/TraeMediaPlayer:_streamType	I
+    //   806: aload_0
+    //   807: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
+    //   810: aload_0
+    //   811: getfield 44	com/tencent/TMG/audio/TraeMediaPlayer:_streamType	I
+    //   814: invokevirtual 303	android/media/MediaPlayer:setAudioStreamType	(I)V
+    //   817: aload_0
+    //   818: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
+    //   821: invokevirtual 306	android/media/MediaPlayer:prepare	()V
+    //   824: aload_0
+    //   825: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
+    //   828: iload 5
+    //   830: invokevirtual 310	android/media/MediaPlayer:setLooping	(Z)V
+    //   833: aload_0
+    //   834: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
+    //   837: invokevirtual 190	android/media/MediaPlayer:start	()V
+    //   840: aload_0
+    //   841: iload 5
+    //   843: putfield 48	com/tencent/TMG/audio/TraeMediaPlayer:_loop	Z
+    //   846: aload_0
+    //   847: getfield 48	com/tencent/TMG/audio/TraeMediaPlayer:_loop	Z
+    //   850: iconst_1
+    //   851: if_icmpne +16 -> 867
+    //   854: aload_0
+    //   855: iconst_1
+    //   856: putfield 52	com/tencent/TMG/audio/TraeMediaPlayer:_loopCount	I
+    //   859: aload_0
+    //   860: iconst_m1
+    //   861: putfield 50	com/tencent/TMG/audio/TraeMediaPlayer:_durationMS	I
+    //   864: goto +25 -> 889
+    //   867: aload_0
+    //   868: iload 6
+    //   870: putfield 52	com/tencent/TMG/audio/TraeMediaPlayer:_loopCount	I
+    //   873: aload_0
+    //   874: aload_0
+    //   875: getfield 52	com/tencent/TMG/audio/TraeMediaPlayer:_loopCount	I
+    //   878: aload_0
+    //   879: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
+    //   882: invokevirtual 312	android/media/MediaPlayer:getDuration	()I
+    //   885: imul
+    //   886: putfield 50	com/tencent/TMG/audio/TraeMediaPlayer:_durationMS	I
+    //   889: aload_0
+    //   890: aload_0
+    //   891: getfield 52	com/tencent/TMG/audio/TraeMediaPlayer:_loopCount	I
+    //   894: iconst_1
+    //   895: isub
+    //   896: putfield 52	com/tencent/TMG/audio/TraeMediaPlayer:_loopCount	I
+    //   899: aload_0
+    //   900: getfield 46	com/tencent/TMG/audio/TraeMediaPlayer:_hasCall	Z
+    //   903: ifne +9 -> 912
+    //   906: aload 11
+    //   908: iload_1
+    //   909: invokevirtual 315	android/media/AudioManager:setMode	(I)V
+    //   912: aload_0
+    //   913: getfield 50	com/tencent/TMG/audio/TraeMediaPlayer:_durationMS	I
+    //   916: ifle +46 -> 962
+    //   919: aload_0
+    //   920: new 235	java/util/Timer
+    //   923: dup
+    //   924: invokespecial 316	java/util/Timer:<init>	()V
+    //   927: putfield 56	com/tencent/TMG/audio/TraeMediaPlayer:_watchTimer	Ljava/util/Timer;
+    //   930: aload_0
+    //   931: new 318	com/tencent/TMG/audio/TraeMediaPlayer$1
+    //   934: dup
+    //   935: aload_0
+    //   936: invokespecial 321	com/tencent/TMG/audio/TraeMediaPlayer$1:<init>	(Lcom/tencent/TMG/audio/TraeMediaPlayer;)V
+    //   939: putfield 58	com/tencent/TMG/audio/TraeMediaPlayer:_watchTimertask	Ljava/util/TimerTask;
+    //   942: aload_0
+    //   943: getfield 56	com/tencent/TMG/audio/TraeMediaPlayer:_watchTimer	Ljava/util/Timer;
+    //   946: aload_0
+    //   947: getfield 58	com/tencent/TMG/audio/TraeMediaPlayer:_watchTimertask	Ljava/util/TimerTask;
+    //   950: aload_0
+    //   951: getfield 50	com/tencent/TMG/audio/TraeMediaPlayer:_durationMS	I
+    //   954: sipush 1000
+    //   957: iadd
+    //   958: i2l
+    //   959: invokevirtual 325	java/util/Timer:schedule	(Ljava/util/TimerTask;J)V
+    //   962: invokestatic 101	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   965: ifeq +55 -> 1020
+    //   968: new 103	java/lang/StringBuilder
+    //   971: dup
+    //   972: invokespecial 104	java/lang/StringBuilder:<init>	()V
+    //   975: astore_3
+    //   976: aload_3
+    //   977: ldc_w 327
+    //   980: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   983: pop
+    //   984: aload_3
+    //   985: aload_0
+    //   986: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
+    //   989: invokevirtual 312	android/media/MediaPlayer:getDuration	()I
+    //   992: invokevirtual 113	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   995: pop
+    //   996: aload_3
+    //   997: ldc 219
+    //   999: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1002: pop
+    //   1003: aload_3
+    //   1004: iload 5
+    //   1006: invokevirtual 156	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   1009: pop
+    //   1010: ldc 123
+    //   1012: iconst_0
+    //   1013: aload_3
+    //   1014: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1017: invokestatic 131	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1020: iconst_1
+    //   1021: ireturn
+    //   1022: astore_3
+    //   1023: goto +83 -> 1106
+    //   1026: astore_3
+    //   1027: goto +146 -> 1173
+    //   1030: astore_3
+    //   1031: goto +209 -> 1240
+    //   1034: astore_3
+    //   1035: goto +273 -> 1308
+    //   1038: astore_3
+    //   1039: invokestatic 101	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   1042: ifeq +330 -> 1372
+    //   1045: new 103	java/lang/StringBuilder
+    //   1048: dup
+    //   1049: invokespecial 104	java/lang/StringBuilder:<init>	()V
+    //   1052: astore 4
+    //   1054: aload 4
+    //   1056: ldc_w 329
+    //   1059: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1062: pop
+    //   1063: aload 4
+    //   1065: aload_3
+    //   1066: invokevirtual 332	java/lang/SecurityException:getLocalizedMessage	()Ljava/lang/String;
+    //   1069: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1072: pop
+    //   1073: aload 4
+    //   1075: ldc_w 334
+    //   1078: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1081: pop
+    //   1082: aload 4
+    //   1084: aload_3
+    //   1085: invokevirtual 337	java/lang/SecurityException:getMessage	()Ljava/lang/String;
+    //   1088: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1091: pop
+    //   1092: ldc 123
+    //   1094: iconst_0
+    //   1095: aload 4
+    //   1097: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1100: invokestatic 167	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1103: goto +269 -> 1372
+    //   1106: invokestatic 101	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   1109: ifeq +263 -> 1372
+    //   1112: new 103	java/lang/StringBuilder
+    //   1115: dup
+    //   1116: invokespecial 104	java/lang/StringBuilder:<init>	()V
+    //   1119: astore 4
+    //   1121: aload 4
+    //   1123: ldc_w 339
+    //   1126: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1129: pop
+    //   1130: aload 4
+    //   1132: aload_3
+    //   1133: invokevirtual 340	java/lang/IllegalArgumentException:getLocalizedMessage	()Ljava/lang/String;
+    //   1136: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1139: pop
+    //   1140: aload 4
+    //   1142: ldc_w 334
+    //   1145: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1148: pop
+    //   1149: aload 4
+    //   1151: aload_3
+    //   1152: invokevirtual 341	java/lang/IllegalArgumentException:getMessage	()Ljava/lang/String;
+    //   1155: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1158: pop
+    //   1159: ldc 123
+    //   1161: iconst_0
+    //   1162: aload 4
+    //   1164: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1167: invokestatic 167	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1170: goto +202 -> 1372
+    //   1173: invokestatic 101	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   1176: ifeq +196 -> 1372
+    //   1179: new 103	java/lang/StringBuilder
+    //   1182: dup
+    //   1183: invokespecial 104	java/lang/StringBuilder:<init>	()V
+    //   1186: astore 4
+    //   1188: aload 4
+    //   1190: ldc_w 343
+    //   1193: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1196: pop
+    //   1197: aload 4
+    //   1199: aload_3
+    //   1200: invokevirtual 344	java/io/IOException:getLocalizedMessage	()Ljava/lang/String;
+    //   1203: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1206: pop
+    //   1207: aload 4
+    //   1209: ldc_w 334
+    //   1212: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1215: pop
+    //   1216: aload 4
+    //   1218: aload_3
+    //   1219: invokevirtual 345	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   1222: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1225: pop
+    //   1226: ldc 123
+    //   1228: iconst_0
+    //   1229: aload 4
+    //   1231: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1234: invokestatic 167	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1237: goto +135 -> 1372
+    //   1240: invokestatic 101	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   1243: ifeq +129 -> 1372
+    //   1246: new 103	java/lang/StringBuilder
+    //   1249: dup
+    //   1250: invokespecial 104	java/lang/StringBuilder:<init>	()V
+    //   1253: astore 4
+    //   1255: aload 4
+    //   1257: ldc_w 347
+    //   1260: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1263: pop
+    //   1264: aload 4
+    //   1266: aload_3
+    //   1267: invokevirtual 348	java/lang/IllegalStateException:getLocalizedMessage	()Ljava/lang/String;
+    //   1270: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1273: pop
+    //   1274: aload 4
+    //   1276: ldc_w 334
+    //   1279: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1282: pop
+    //   1283: aload 4
+    //   1285: aload_3
+    //   1286: invokevirtual 349	java/lang/IllegalStateException:getMessage	()Ljava/lang/String;
+    //   1289: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1292: pop
+    //   1293: ldc 123
+    //   1295: iconst_0
+    //   1296: aload 4
+    //   1298: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1301: invokestatic 167	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1304: goto +68 -> 1372
+    //   1307: astore_3
+    //   1308: invokestatic 101	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   1311: ifeq +61 -> 1372
+    //   1314: new 103	java/lang/StringBuilder
+    //   1317: dup
+    //   1318: invokespecial 104	java/lang/StringBuilder:<init>	()V
+    //   1321: astore 4
+    //   1323: aload 4
+    //   1325: ldc_w 351
+    //   1328: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1331: pop
+    //   1332: aload 4
+    //   1334: aload_3
+    //   1335: invokevirtual 352	java/lang/Exception:getLocalizedMessage	()Ljava/lang/String;
+    //   1338: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1341: pop
+    //   1342: aload 4
+    //   1344: ldc_w 334
+    //   1347: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1350: pop
+    //   1351: aload 4
+    //   1353: aload_3
+    //   1354: invokevirtual 353	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   1357: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1360: pop
+    //   1361: ldc 123
+    //   1363: iconst_0
+    //   1364: aload 4
+    //   1366: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1369: invokestatic 167	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1372: aload_0
+    //   1373: getfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
+    //   1376: invokevirtual 183	android/media/MediaPlayer:release	()V
+    //   1379: aload_0
+    //   1380: aconst_null
+    //   1381: putfield 42	com/tencent/TMG/audio/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
+    //   1384: iconst_0
+    //   1385: ireturn
+    //   1386: astore 11
+    //   1388: goto -1055 -> 333
+    //   1391: astore_3
+    //   1392: goto -13 -> 1379
+    //   1395: iconst_0
+    //   1396: istore_1
+    //   1397: goto -610 -> 787
+    //   1400: astore_3
+    //   1401: goto -93 -> 1308
+    //   1404: astore_3
+    //   1405: goto -299 -> 1106
+    //   1408: astore_3
+    //   1409: goto -236 -> 1173
+    //   1412: astore_3
+    //   1413: goto -173 -> 1240
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1198	0	this	TraeMediaPlayer
-    //   0	1198	1	paramInt1	int
-    //   0	1198	2	paramInt2	int
-    //   0	1198	3	paramUri	android.net.Uri
-    //   0	1198	4	paramString	java.lang.String
-    //   0	1198	5	paramBoolean1	boolean
-    //   0	1198	6	paramInt3	int
-    //   0	1198	7	paramBoolean2	boolean
-    //   0	1198	8	paramBoolean3	boolean
-    //   0	1198	9	paramInt4	int
-    //   243	3	10	bool	boolean
-    //   64	237	11	localObject	Object
-    //   334	706	11	localException	Exception
-    //   55	48	12	localStringBuilder	java.lang.StringBuilder
+    //   0	1416	0	this	TraeMediaPlayer
+    //   0	1416	1	paramInt1	int
+    //   0	1416	2	paramInt2	int
+    //   0	1416	3	paramUri	android.net.Uri
+    //   0	1416	4	paramString	java.lang.String
+    //   0	1416	5	paramBoolean1	boolean
+    //   0	1416	6	paramInt3	int
+    //   0	1416	7	paramBoolean2	boolean
+    //   0	1416	8	paramBoolean3	boolean
+    //   0	1416	9	paramInt4	int
+    //   317	3	10	bool	boolean
+    //   91	816	11	localObject	Object
+    //   1386	1	11	localException	Exception
+    //   13	179	12	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   252	259	334	java/lang/Exception
-    //   229	245	344	java/lang/IllegalStateException
-    //   259	264	344	java/lang/IllegalStateException
-    //   264	288	344	java/lang/IllegalStateException
-    //   288	332	344	java/lang/IllegalStateException
-    //   336	341	344	java/lang/IllegalStateException
-    //   406	413	344	java/lang/IllegalStateException
-    //   513	529	344	java/lang/IllegalStateException
-    //   556	588	344	java/lang/IllegalStateException
-    //   588	600	344	java/lang/IllegalStateException
-    //   600	607	344	java/lang/IllegalStateException
-    //   609	641	344	java/lang/IllegalStateException
-    //   641	653	344	java/lang/IllegalStateException
-    //   657	689	344	java/lang/IllegalStateException
-    //   689	701	344	java/lang/IllegalStateException
-    //   703	726	344	java/lang/IllegalStateException
-    //   780	812	344	java/lang/IllegalStateException
-    //   812	824	344	java/lang/IllegalStateException
-    //   878	911	344	java/lang/IllegalStateException
-    //   911	920	344	java/lang/IllegalStateException
-    //   923	929	344	java/lang/IllegalStateException
-    //   931	943	344	java/lang/IllegalStateException
-    //   945	964	344	java/lang/IllegalStateException
-    //   964	1022	344	java/lang/IllegalStateException
-    //   1022	1045	344	java/lang/IllegalStateException
-    //   1045	1095	344	java/lang/IllegalStateException
-    //   1095	1143	344	java/lang/IllegalStateException
-    //   1146	1151	344	java/lang/IllegalStateException
-    //   1151	1159	344	java/lang/IllegalStateException
-    //   1164	1186	344	java/lang/IllegalStateException
-    //   252	259	405	finally
-    //   229	245	413	java/io/IOException
-    //   259	264	413	java/io/IOException
-    //   264	288	413	java/io/IOException
-    //   288	332	413	java/io/IOException
-    //   336	341	413	java/io/IOException
-    //   406	413	413	java/io/IOException
-    //   513	529	413	java/io/IOException
-    //   556	588	413	java/io/IOException
-    //   588	600	413	java/io/IOException
-    //   600	607	413	java/io/IOException
-    //   609	641	413	java/io/IOException
-    //   641	653	413	java/io/IOException
-    //   657	689	413	java/io/IOException
-    //   689	701	413	java/io/IOException
-    //   703	726	413	java/io/IOException
-    //   780	812	413	java/io/IOException
-    //   812	824	413	java/io/IOException
-    //   878	911	413	java/io/IOException
-    //   911	920	413	java/io/IOException
-    //   923	929	413	java/io/IOException
-    //   931	943	413	java/io/IOException
-    //   945	964	413	java/io/IOException
-    //   964	1022	413	java/io/IOException
-    //   1022	1045	413	java/io/IOException
-    //   1045	1095	413	java/io/IOException
-    //   1095	1143	413	java/io/IOException
-    //   1146	1151	413	java/io/IOException
-    //   1151	1159	413	java/io/IOException
-    //   1164	1186	413	java/io/IOException
-    //   229	245	463	java/lang/Exception
-    //   259	264	463	java/lang/Exception
-    //   264	288	463	java/lang/Exception
-    //   288	332	463	java/lang/Exception
-    //   336	341	463	java/lang/Exception
-    //   345	391	463	java/lang/Exception
-    //   406	413	463	java/lang/Exception
-    //   414	460	463	java/lang/Exception
-    //   513	529	463	java/lang/Exception
-    //   556	588	463	java/lang/Exception
-    //   588	600	463	java/lang/Exception
-    //   600	607	463	java/lang/Exception
-    //   609	641	463	java/lang/Exception
-    //   641	653	463	java/lang/Exception
-    //   657	689	463	java/lang/Exception
-    //   689	701	463	java/lang/Exception
-    //   703	726	463	java/lang/Exception
-    //   730	777	463	java/lang/Exception
-    //   780	812	463	java/lang/Exception
-    //   812	824	463	java/lang/Exception
-    //   828	875	463	java/lang/Exception
-    //   878	911	463	java/lang/Exception
-    //   911	920	463	java/lang/Exception
-    //   923	929	463	java/lang/Exception
-    //   931	943	463	java/lang/Exception
-    //   945	964	463	java/lang/Exception
-    //   964	1022	463	java/lang/Exception
-    //   1022	1045	463	java/lang/Exception
-    //   1045	1095	463	java/lang/Exception
-    //   1095	1143	463	java/lang/Exception
-    //   1146	1151	463	java/lang/Exception
-    //   1151	1159	463	java/lang/Exception
-    //   1164	1186	463	java/lang/Exception
-    //   229	245	729	java/lang/IllegalArgumentException
-    //   259	264	729	java/lang/IllegalArgumentException
-    //   264	288	729	java/lang/IllegalArgumentException
-    //   288	332	729	java/lang/IllegalArgumentException
-    //   336	341	729	java/lang/IllegalArgumentException
-    //   406	413	729	java/lang/IllegalArgumentException
-    //   513	529	729	java/lang/IllegalArgumentException
-    //   556	588	729	java/lang/IllegalArgumentException
-    //   588	600	729	java/lang/IllegalArgumentException
-    //   600	607	729	java/lang/IllegalArgumentException
-    //   609	641	729	java/lang/IllegalArgumentException
-    //   641	653	729	java/lang/IllegalArgumentException
-    //   657	689	729	java/lang/IllegalArgumentException
-    //   689	701	729	java/lang/IllegalArgumentException
-    //   703	726	729	java/lang/IllegalArgumentException
-    //   780	812	729	java/lang/IllegalArgumentException
-    //   812	824	729	java/lang/IllegalArgumentException
-    //   878	911	729	java/lang/IllegalArgumentException
-    //   911	920	729	java/lang/IllegalArgumentException
-    //   923	929	729	java/lang/IllegalArgumentException
-    //   931	943	729	java/lang/IllegalArgumentException
-    //   945	964	729	java/lang/IllegalArgumentException
-    //   964	1022	729	java/lang/IllegalArgumentException
-    //   1022	1045	729	java/lang/IllegalArgumentException
-    //   1045	1095	729	java/lang/IllegalArgumentException
-    //   1095	1143	729	java/lang/IllegalArgumentException
-    //   1146	1151	729	java/lang/IllegalArgumentException
-    //   1151	1159	729	java/lang/IllegalArgumentException
-    //   1164	1186	729	java/lang/IllegalArgumentException
-    //   229	245	827	java/lang/SecurityException
-    //   259	264	827	java/lang/SecurityException
-    //   264	288	827	java/lang/SecurityException
-    //   288	332	827	java/lang/SecurityException
-    //   336	341	827	java/lang/SecurityException
-    //   406	413	827	java/lang/SecurityException
-    //   513	529	827	java/lang/SecurityException
-    //   556	588	827	java/lang/SecurityException
-    //   588	600	827	java/lang/SecurityException
-    //   600	607	827	java/lang/SecurityException
-    //   609	641	827	java/lang/SecurityException
-    //   641	653	827	java/lang/SecurityException
-    //   657	689	827	java/lang/SecurityException
-    //   689	701	827	java/lang/SecurityException
-    //   703	726	827	java/lang/SecurityException
-    //   780	812	827	java/lang/SecurityException
-    //   812	824	827	java/lang/SecurityException
-    //   878	911	827	java/lang/SecurityException
-    //   911	920	827	java/lang/SecurityException
-    //   923	929	827	java/lang/SecurityException
-    //   931	943	827	java/lang/SecurityException
-    //   945	964	827	java/lang/SecurityException
-    //   964	1022	827	java/lang/SecurityException
-    //   1022	1045	827	java/lang/SecurityException
-    //   1045	1095	827	java/lang/SecurityException
-    //   1095	1143	827	java/lang/SecurityException
-    //   1146	1151	827	java/lang/SecurityException
-    //   1151	1159	827	java/lang/SecurityException
-    //   1164	1186	827	java/lang/SecurityException
-    //   391	398	1189	java/lang/Exception
+    //   326	333	341	finally
+    //   310	319	1022	java/lang/IllegalArgumentException
+    //   333	338	1022	java/lang/IllegalArgumentException
+    //   342	349	1022	java/lang/IllegalArgumentException
+    //   349	373	1022	java/lang/IllegalArgumentException
+    //   373	417	1022	java/lang/IllegalArgumentException
+    //   419	435	1022	java/lang/IllegalArgumentException
+    //   449	486	1022	java/lang/IllegalArgumentException
+    //   486	498	1022	java/lang/IllegalArgumentException
+    //   501	539	1022	java/lang/IllegalArgumentException
+    //   539	548	1022	java/lang/IllegalArgumentException
+    //   551	593	1022	java/lang/IllegalArgumentException
+    //   593	605	1022	java/lang/IllegalArgumentException
+    //   608	646	1022	java/lang/IllegalArgumentException
+    //   646	658	1022	java/lang/IllegalArgumentException
+    //   662	700	1022	java/lang/IllegalArgumentException
+    //   700	712	1022	java/lang/IllegalArgumentException
+    //   714	737	1022	java/lang/IllegalArgumentException
+    //   737	744	1022	java/lang/IllegalArgumentException
+    //   746	764	1022	java/lang/IllegalArgumentException
+    //   769	782	1022	java/lang/IllegalArgumentException
+    //   787	806	1022	java/lang/IllegalArgumentException
+    //   806	864	1022	java/lang/IllegalArgumentException
+    //   867	889	1022	java/lang/IllegalArgumentException
+    //   889	912	1022	java/lang/IllegalArgumentException
+    //   912	962	1022	java/lang/IllegalArgumentException
+    //   962	1020	1022	java/lang/IllegalArgumentException
+    //   310	319	1026	java/io/IOException
+    //   333	338	1026	java/io/IOException
+    //   342	349	1026	java/io/IOException
+    //   349	373	1026	java/io/IOException
+    //   373	417	1026	java/io/IOException
+    //   419	435	1026	java/io/IOException
+    //   449	486	1026	java/io/IOException
+    //   486	498	1026	java/io/IOException
+    //   501	539	1026	java/io/IOException
+    //   539	548	1026	java/io/IOException
+    //   551	593	1026	java/io/IOException
+    //   593	605	1026	java/io/IOException
+    //   608	646	1026	java/io/IOException
+    //   646	658	1026	java/io/IOException
+    //   662	700	1026	java/io/IOException
+    //   700	712	1026	java/io/IOException
+    //   714	737	1026	java/io/IOException
+    //   737	744	1026	java/io/IOException
+    //   746	764	1026	java/io/IOException
+    //   769	782	1026	java/io/IOException
+    //   787	806	1026	java/io/IOException
+    //   806	864	1026	java/io/IOException
+    //   867	889	1026	java/io/IOException
+    //   889	912	1026	java/io/IOException
+    //   912	962	1026	java/io/IOException
+    //   962	1020	1026	java/io/IOException
+    //   310	319	1030	java/lang/IllegalStateException
+    //   333	338	1030	java/lang/IllegalStateException
+    //   342	349	1030	java/lang/IllegalStateException
+    //   349	373	1030	java/lang/IllegalStateException
+    //   373	417	1030	java/lang/IllegalStateException
+    //   419	435	1030	java/lang/IllegalStateException
+    //   449	486	1030	java/lang/IllegalStateException
+    //   486	498	1030	java/lang/IllegalStateException
+    //   501	539	1030	java/lang/IllegalStateException
+    //   539	548	1030	java/lang/IllegalStateException
+    //   551	593	1030	java/lang/IllegalStateException
+    //   593	605	1030	java/lang/IllegalStateException
+    //   608	646	1030	java/lang/IllegalStateException
+    //   646	658	1030	java/lang/IllegalStateException
+    //   662	700	1030	java/lang/IllegalStateException
+    //   700	712	1030	java/lang/IllegalStateException
+    //   714	737	1030	java/lang/IllegalStateException
+    //   737	744	1030	java/lang/IllegalStateException
+    //   746	764	1030	java/lang/IllegalStateException
+    //   769	782	1030	java/lang/IllegalStateException
+    //   787	806	1030	java/lang/IllegalStateException
+    //   806	864	1030	java/lang/IllegalStateException
+    //   867	889	1030	java/lang/IllegalStateException
+    //   889	912	1030	java/lang/IllegalStateException
+    //   912	962	1030	java/lang/IllegalStateException
+    //   962	1020	1030	java/lang/IllegalStateException
+    //   299	305	1034	java/lang/Exception
+    //   310	319	1034	java/lang/Exception
+    //   333	338	1034	java/lang/Exception
+    //   342	349	1034	java/lang/Exception
+    //   349	373	1034	java/lang/Exception
+    //   373	417	1034	java/lang/Exception
+    //   419	435	1034	java/lang/Exception
+    //   449	486	1034	java/lang/Exception
+    //   486	498	1034	java/lang/Exception
+    //   501	539	1034	java/lang/Exception
+    //   539	548	1034	java/lang/Exception
+    //   551	593	1034	java/lang/Exception
+    //   593	605	1034	java/lang/Exception
+    //   608	646	1034	java/lang/Exception
+    //   646	658	1034	java/lang/Exception
+    //   662	700	1034	java/lang/Exception
+    //   700	712	1034	java/lang/Exception
+    //   714	737	1034	java/lang/Exception
+    //   737	744	1034	java/lang/Exception
+    //   746	764	1034	java/lang/Exception
+    //   769	782	1034	java/lang/Exception
+    //   787	806	1034	java/lang/Exception
+    //   806	864	1034	java/lang/Exception
+    //   867	889	1034	java/lang/Exception
+    //   889	912	1034	java/lang/Exception
+    //   912	962	1034	java/lang/Exception
+    //   962	1020	1034	java/lang/Exception
+    //   299	305	1038	java/lang/SecurityException
+    //   310	319	1038	java/lang/SecurityException
+    //   333	338	1038	java/lang/SecurityException
+    //   342	349	1038	java/lang/SecurityException
+    //   349	373	1038	java/lang/SecurityException
+    //   373	417	1038	java/lang/SecurityException
+    //   419	435	1038	java/lang/SecurityException
+    //   449	486	1038	java/lang/SecurityException
+    //   486	498	1038	java/lang/SecurityException
+    //   501	539	1038	java/lang/SecurityException
+    //   539	548	1038	java/lang/SecurityException
+    //   551	593	1038	java/lang/SecurityException
+    //   593	605	1038	java/lang/SecurityException
+    //   608	646	1038	java/lang/SecurityException
+    //   646	658	1038	java/lang/SecurityException
+    //   662	700	1038	java/lang/SecurityException
+    //   700	712	1038	java/lang/SecurityException
+    //   714	737	1038	java/lang/SecurityException
+    //   737	744	1038	java/lang/SecurityException
+    //   746	764	1038	java/lang/SecurityException
+    //   769	782	1038	java/lang/SecurityException
+    //   787	806	1038	java/lang/SecurityException
+    //   806	864	1038	java/lang/SecurityException
+    //   867	889	1038	java/lang/SecurityException
+    //   889	912	1038	java/lang/SecurityException
+    //   912	962	1038	java/lang/SecurityException
+    //   962	1020	1038	java/lang/SecurityException
+    //   1073	1103	1307	java/lang/Exception
+    //   1106	1170	1307	java/lang/Exception
+    //   1173	1237	1307	java/lang/Exception
+    //   1240	1304	1307	java/lang/Exception
+    //   326	333	1386	java/lang/Exception
+    //   1372	1379	1391	java/lang/Exception
+    //   1039	1073	1400	java/lang/Exception
+    //   299	305	1404	java/lang/IllegalArgumentException
+    //   299	305	1408	java/io/IOException
+    //   299	305	1412	java/lang/IllegalStateException
   }
   
   public void stopRing()
@@ -878,10 +1066,11 @@ public class TraeMediaPlayer
     if (QLog.isColorLevel()) {
       QLog.d("TRAE", 0, "TraeMediaPlay stopRing ");
     }
-    if (this.mMediaPlay == null) {
+    MediaPlayer localMediaPlayer = this.mMediaPlay;
+    if (localMediaPlayer == null) {
       return;
     }
-    if (this.mMediaPlay.isPlaying()) {
+    if (localMediaPlayer.isPlaying()) {
       this.mMediaPlay.stop();
     }
     this.mMediaPlay.reset();
@@ -897,8 +1086,8 @@ public class TraeMediaPlayer
     }
     catch (Exception localException)
     {
-      label78:
-      break label78;
+      label77:
+      break label77;
     }
     this.mMediaPlay = null;
     this._durationMS = -1;

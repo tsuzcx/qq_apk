@@ -27,15 +27,13 @@ import com.tencent.mobileqq.surfaceviewaction.action.ScaleAction;
 import com.tencent.mobileqq.surfaceviewaction.action.SequenceAction;
 import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
 import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView.IVideoTimeGetter;
 import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -54,665 +52,638 @@ public class SceneBuilder
   
   private BaseNode a(ISpriteView paramISpriteView, JSONObject paramJSONObject)
   {
-    int n;
-    Object localObject1;
-    Object localObject3;
-    label38:
-    Object localObject2;
-    int i1;
-    int i;
-    Paint localPaint;
-    Object localObject5;
-    int k;
-    Object localObject4;
-    int i4;
-    if ((paramISpriteView instanceof SpriteGLView))
-    {
-      n = 4;
-      localObject1 = paramJSONObject.optString("text");
-      if (!(paramISpriteView instanceof SpriteGLView)) {
-        break label764;
-      }
-      localObject3 = new com.tencent.mobileqq.surfaceviewaction.gl.Sprite((SpriteGLView)paramISpriteView);
-      ((BaseNode)localObject3).c(1.0F / n);
-      localObject2 = localObject1;
-      if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$ILabelTextHandle != null) {
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$ILabelTextHandle.a((ISprite)localObject3, (String)localObject1);
-      }
-      i1 = paramJSONObject.optInt("textSize", 20) * n;
-      i = Color.parseColor(paramJSONObject.optString("textColor"));
-      localPaint = new Paint();
-      localPaint.setAntiAlias(true);
-      localPaint.setColor(i);
-      localPaint.setTextSize(i1);
-      localObject5 = paramJSONObject.optJSONObject("size");
-      k = (int)localPaint.measureText((String)localObject2);
-      localObject4 = paramJSONObject.optString("imageRight");
-      i4 = paramJSONObject.optInt("imagePadding") * n;
-      if (TextUtils.isEmpty((CharSequence)localObject4)) {
-        break label961;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$IImageBitmapHandle == null) {
-        break label955;
-      }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$IImageBitmapHandle.a((ISprite)localObject3, this.jdField_a_of_type_JavaLangString, (String)localObject4);
-      label205:
-      if (localObject1 != null) {
-        break label817;
-      }
+    boolean bool = paramISpriteView instanceof SpriteGLView;
+    int j;
+    if (bool) {
+      j = 4;
+    } else {
+      j = 1;
     }
-    label817:
-    label946:
-    label955:
-    label961:
-    for (;;)
+    Object localObject1 = paramJSONObject.optString("text");
+    if (bool) {
+      localObject3 = new com.tencent.mobileqq.surfaceviewaction.gl.Sprite((SpriteGLView)paramISpriteView);
+    } else {
+      localObject3 = new com.tencent.mobileqq.surfaceviewaction.nv.Sprite((SpriteNativeView)paramISpriteView);
+    }
+    float f4 = j;
+    ((BaseNode)localObject3).c(1.0F / f4);
+    Object localObject4 = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$ILabelTextHandle;
+    Object localObject2 = localObject1;
+    if (localObject4 != null) {
+      localObject2 = ((SceneBuilder.ILabelTextHandle)localObject4).a((ISprite)localObject3, (String)localObject1);
+    }
+    int k = paramJSONObject.optInt("textSize", 20) * j;
+    int i = Color.parseColor(paramJSONObject.optString("textColor"));
+    Object localObject5 = new Paint();
+    ((Paint)localObject5).setAntiAlias(true);
+    ((Paint)localObject5).setColor(i);
+    float f1 = k;
+    ((Paint)localObject5).setTextSize(f1);
+    Object localObject6 = paramJSONObject.optJSONObject("size");
+    i = (int)((Paint)localObject5).measureText((String)localObject2);
+    String str = paramJSONObject.optString("imageRight");
+    int i2 = paramJSONObject.optInt("imagePadding") * j;
+    bool = TextUtils.isEmpty(str);
+    int i3 = 0;
+    if (!bool)
     {
-      int j;
-      int m;
-      int i2;
-      float f2;
-      float f1;
-      float f6;
-      float f3;
-      float f5;
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$IImageBitmapHandle;
+      if (localObject1 != null) {
+        localObject1 = ((SceneBuilder.IImageBitmapHandle)localObject1).a((ISprite)localObject3, this.jdField_a_of_type_JavaLangString, str);
+      } else {
+        localObject1 = null;
+      }
+      localObject4 = localObject1;
+      if (localObject1 == null) {}
       try
       {
-        localObject4 = ImageUtil.a(this.jdField_a_of_type_JavaLangString + "/" + (String)localObject4, null);
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject4).append("/");
+        ((StringBuilder)localObject4).append(str);
+        localObject4 = ImageUtil.a(((StringBuilder)localObject4).toString(), null);
         localObject1 = localObject4;
-        if (localObject1 == null) {
-          break label946;
-        }
-        i = ((Bitmap)localObject1).getWidth();
-        j = ((Bitmap)localObject1).getHeight();
-        j *= n;
-        i *= n;
-        if (localObject5 == null) {
-          break label935;
-        }
-        if (((JSONObject)localObject5).optInt("width") == 0) {
-          break label932;
-        }
-        k = ((JSONObject)localObject5).optInt("width") * n;
-        if (((JSONObject)localObject5).optInt("height") == 0) {
-          break label925;
-        }
-        m = ((JSONObject)localObject5).optInt("height") * n;
-        if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$ILabelTextHandle != null) {
-          this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$ILabelTextHandle.a(k - i - i4, (String)localObject2, localPaint);
-        }
-        localObject2 = a(k - i - i4, (String)localObject2, localPaint);
-        i2 = m;
-        m = k;
-        if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$ILabelTextHandle == null) {
-          break label919;
-        }
-        k = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$ILabelTextHandle.a(m, i, i4, (String)localObject2, localPaint);
-        i3 = k;
-        if (k == 0) {
-          i3 = (int)localPaint.measureText((String)localObject2);
-        }
-        i = i + i3 + i4;
       }
       catch (OutOfMemoryError localOutOfMemoryError)
       {
-        int i3;
-        float f7;
-        float f4;
-        label764:
-        if (QLog.isColorLevel()) {
-          QLog.e("SceneBuilder", 2, "buildLabel" + QLog.getStackTraceString(localOutOfMemoryError));
-        }
-      }
-      try
-      {
-        localObject4 = Bitmap.createBitmap(m, i2, Bitmap.Config.ARGB_8888);
-        localObject5 = new Canvas((Bitmap)localObject4);
-        ((Canvas)localObject5).drawColor(-16777216, PorterDuff.Mode.CLEAR);
-        f7 = i1 * 0.8F;
-        f2 = 0.0F;
-        f1 = 0.0F;
-        f4 = 0.0F;
-        f6 = 0.0F;
-        f3 = 0.0F;
-        f5 = 0.0F;
-        paramJSONObject = paramJSONObject.optString("gravity");
-        if (paramJSONObject == null) {
-          break label913;
-        }
-        if (!paramJSONObject.contains("left")) {
-          break label858;
-        }
-        f1 = 0.0F;
-        if (!paramJSONObject.contains("top")) {
-          break label877;
-        }
-        f2 = 0.0F;
-        f3 = f5;
-        f4 = f2;
-        if (paramJSONObject.equals("center"))
+        do
         {
-          f1 = (m - i) / 2;
-          f4 = (i2 - i1) / 2;
-          f3 = (i2 - j) / 2;
-        }
-        if (paramJSONObject.contains("center_horizontal")) {
-          f1 = (m - i) / 2;
-        }
-        f2 = f1;
-        if (!paramJSONObject.contains("center_vertical")) {
-          break label913;
-        }
-        f2 = (i2 - i1) / 2;
-        f3 = (i2 - j) / 2;
-        f4 = f2;
-        f2 = f1;
-        f1 = f3;
-        if ((this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$ILabelTextHandle == null) || (!this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$ILabelTextHandle.a((Canvas)localObject5, (String)localObject2, f2, f4, f7, m, i2, localPaint))) {
-          ((Canvas)localObject5).drawText((String)localObject2, f2, f4 + f7, localPaint);
-        }
-        if (localObject1 != null)
-        {
-          paramJSONObject = new Matrix();
-          paramJSONObject.postScale(n, n);
-          f3 = i4;
-          paramJSONObject.postTranslate(i3 + (f3 + f2), f1);
-          ((Canvas)localObject5).drawBitmap((Bitmap)localObject1, paramJSONObject, localPaint);
-        }
-        ((ISprite)localObject3).a(paramISpriteView, (Bitmap)localObject4);
+          localObject4 = localObject1;
+        } while (!QLog.isColorLevel());
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("buildLabel");
+        ((StringBuilder)localObject4).append(QLog.getStackTraceString(localOutOfMemoryError));
+        QLog.e("SceneBuilder", 2, ((StringBuilder)localObject4).toString());
       }
-      catch (OutOfMemoryError paramISpriteView)
+      localObject4 = localObject1;
+      if (localObject1 != null)
       {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("SceneBuilder", 2, "buildLabel" + QLog.getStackTraceString(paramISpriteView));
-        return localObject3;
-      }
-      return localObject3;
-      n = 1;
-      break;
-      localObject3 = new com.tencent.mobileqq.surfaceviewaction.nv.Sprite((SpriteNativeView)paramISpriteView);
-      break label38;
-      continue;
-      label858:
-      if (paramJSONObject.contains("right"))
-      {
-        f1 = m - i;
-        continue;
-        label877:
-        f3 = f5;
-        f2 = f6;
-        if (paramJSONObject.contains("bottom"))
-        {
-          f2 = i2 - i1;
-          f3 = i2 - j;
-          continue;
-          f1 = f3;
-          continue;
-          k = 0;
-          continue;
-          m = i1;
-          continue;
-          continue;
-          i2 = i1;
-          m = k;
-          continue;
-          j = 0;
-          i = 0;
-          continue;
-          localObject1 = null;
-          break label205;
-          localObject1 = null;
-          j = 0;
-          i = 0;
-        }
+        n = ((Bitmap)localObject1).getWidth() * j;
+        m = ((Bitmap)localObject1).getHeight() * j;
+        break label410;
       }
     }
+    else
+    {
+      localObject4 = null;
+    }
+    int n = 0;
+    int m = 0;
+    localObject1 = localObject4;
+    label410:
+    localObject4 = localObject3;
+    int i1;
+    if (localObject6 != null)
+    {
+      if (((JSONObject)localObject6).optInt("width") != 0) {
+        i = ((JSONObject)localObject6).optInt("width") * j;
+      }
+      if (((JSONObject)localObject6).optInt("height") != 0) {
+        j = ((JSONObject)localObject6).optInt("height") * j;
+      } else {
+        j = k;
+      }
+      localObject3 = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$ILabelTextHandle;
+      if (localObject3 != null) {
+        ((SceneBuilder.ILabelTextHandle)localObject3).a(i - n - i2, (String)localObject2, (Paint)localObject5);
+      }
+      localObject2 = a(i - n - i2, (String)localObject2, (Paint)localObject5);
+      i1 = i;
+    }
+    else
+    {
+      j = k;
+      i1 = i;
+    }
+    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$ILabelTextHandle;
+    if (localObject3 != null) {
+      i = ((SceneBuilder.ILabelTextHandle)localObject3).a(i1, n, i2, (String)localObject2, (Paint)localObject5);
+    } else {
+      i = i3;
+    }
+    localObject3 = localObject5;
+    localObject5 = localObject1;
+    if (i == 0) {
+      i = (int)((Paint)localObject3).measureText((String)localObject2);
+    }
+    localObject1 = localObject3;
+    n = n + i + i2;
+    try
+    {
+      localObject3 = Bitmap.createBitmap(i1, j, Bitmap.Config.ARGB_8888);
+      localObject6 = new Canvas((Bitmap)localObject3);
+      ((Canvas)localObject6).drawColor(-16777216, PorterDuff.Mode.CLEAR);
+      float f5 = f1 * 0.8F;
+      paramJSONObject = paramJSONObject.optString("gravity");
+      float f2;
+      float f3;
+      if (paramJSONObject != null)
+      {
+        if ((!paramJSONObject.contains("left")) && (paramJSONObject.contains("right"))) {
+          f1 = i1 - n;
+        } else {
+          f1 = 0.0F;
+        }
+        if ((!paramJSONObject.contains("top")) && (paramJSONObject.contains("bottom")))
+        {
+          f2 = j - k;
+          f3 = j - m;
+        }
+        else
+        {
+          f3 = 0.0F;
+          f2 = 0.0F;
+        }
+        if (paramJSONObject.equals("center"))
+        {
+          f1 = (i1 - n) / 2;
+          f2 = (j - k) / 2;
+          f3 = (j - m) / 2;
+        }
+        if (paramJSONObject.contains("center_horizontal")) {
+          f1 = (i1 - n) / 2;
+        }
+        if (paramJSONObject.contains("center_vertical"))
+        {
+          f2 = (j - k) / 2;
+          f3 = (j - m) / 2;
+        }
+      }
+      else
+      {
+        f1 = 0.0F;
+        f2 = 0.0F;
+        f3 = 0.0F;
+      }
+      SceneBuilder.ILabelTextHandle localILabelTextHandle = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$ILabelTextHandle;
+      if (localILabelTextHandle != null)
+      {
+        paramJSONObject = (JSONObject)localObject1;
+        if (localILabelTextHandle.a((Canvas)localObject6, (String)localObject2, f1, f2, f5, i1, j, paramJSONObject))
+        {
+          localObject1 = paramJSONObject;
+          break label902;
+        }
+      }
+      ((Canvas)localObject6).drawText((String)localObject2, f1, f2 + f5, (Paint)localObject1);
+      label902:
+      if (localObject5 != null)
+      {
+        paramJSONObject = new Matrix();
+        paramJSONObject.postScale(f4, f4);
+        paramJSONObject.postTranslate(f1 + i2 + i, f3);
+        ((Canvas)localObject6).drawBitmap((Bitmap)localObject5, paramJSONObject, (Paint)localObject1);
+      }
+      ((ISprite)localObject4).a(paramISpriteView, (Bitmap)localObject3);
+      return localObject4;
+    }
+    catch (OutOfMemoryError paramISpriteView)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("buildLabel");
+        paramJSONObject.append(QLog.getStackTraceString(paramISpriteView));
+        QLog.e("SceneBuilder", 2, paramJSONObject.toString());
+      }
+    }
+    return localObject4;
   }
   
   private BaseNode a(ISpriteView paramISpriteView, JSONObject paramJSONObject, ILayer paramILayer)
   {
-    Object localObject1 = null;
-    Object localObject3 = paramJSONObject.optString("type");
-    if ("layer".equals(localObject3)) {
+    Object localObject1 = paramJSONObject.optString("type");
+    boolean bool = "layer".equals(localObject1);
+    int j = 0;
+    label194:
+    label228:
+    int i;
+    int k;
+    Object localObject4;
+    if (bool)
+    {
       if ((paramISpriteView instanceof SpriteGLView)) {
         localObject1 = new com.tencent.mobileqq.surfaceviewaction.gl.Layer((SpriteGLView)paramISpriteView);
-      }
-    }
-    Object localObject6;
-    label134:
-    int i;
-    int j;
-    label412:
-    label457:
-    Object localObject2;
-    while (localObject1 == null)
-    {
-      localObject3 = null;
-      return localObject3;
-      localObject1 = new com.tencent.mobileqq.surfaceviewaction.nv.Layer((SpriteNativeView)paramISpriteView);
-      continue;
-      if ("image".equals(localObject3))
-      {
-        localObject1 = null;
-        Object localObject4 = paramJSONObject.optString("path");
-        localObject6 = paramJSONObject.optString("event");
-        if ((paramISpriteView instanceof SpriteGLView))
-        {
-          localObject3 = (SpriteGLView)paramISpriteView;
-          if (TextUtils.isEmpty((CharSequence)localObject6))
-          {
-            localObject3 = new com.tencent.mobileqq.surfaceviewaction.gl.Sprite((SpriteGLView)localObject3);
-            if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$IImageBitmapHandle != null) {
-              localObject1 = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$IImageBitmapHandle.a((ISprite)localObject3, this.jdField_a_of_type_JavaLangString, (String)localObject4);
-            }
-            if (localObject1 != null) {
-              break label412;
-            }
-          }
-        }
-        for (;;)
-        {
-          for (;;)
-          {
-            try
-            {
-              localObject4 = ImageUtil.a(this.jdField_a_of_type_JavaLangString + "/" + (String)localObject4, null);
-              localObject1 = localObject3;
-              if (localObject4 == null) {
-                break;
-              }
-              localObject1 = paramJSONObject.optJSONObject("size");
-              if (localObject1 == null) {
-                break label457;
-              }
-              i = ((JSONObject)localObject1).optInt("width");
-              j = ((JSONObject)localObject1).optInt("height");
-            }
-            catch (OutOfMemoryError localOutOfMemoryError2)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.e("SceneBuilder", 2, "buildNode" + QLog.getStackTraceString(localOutOfMemoryError2));
-              }
-            }
-            try
-            {
-              localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject4, i, j, true);
-              ((ISprite)localObject3).a(paramISpriteView, (Bitmap)localObject1);
-              localObject1 = localObject3;
-            }
-            catch (OutOfMemoryError localOutOfMemoryError1)
-            {
-              if (!QLog.isColorLevel()) {
-                break label457;
-              }
-              QLog.e("SceneBuilder", 2, "buildNode" + QLog.getStackTraceString(localOutOfMemoryError1));
-            }
-          }
-          localObject3 = new com.tencent.mobileqq.surfaceviewaction.gl.ImageButton((SpriteGLView)localObject3, true, (String)localObject6);
-          ((com.tencent.mobileqq.surfaceviewaction.gl.ImageButton)localObject3).a(new SceneBuilder.2(this, paramILayer, (String)localObject6));
-          break label134;
-          localObject3 = (SpriteNativeView)paramISpriteView;
-          if (TextUtils.isEmpty((CharSequence)localObject6))
-          {
-            localObject3 = new com.tencent.mobileqq.surfaceviewaction.nv.Sprite((SpriteNativeView)localObject3);
-            break label134;
-          }
-          localObject3 = new com.tencent.mobileqq.surfaceviewaction.nv.ImageButton((SpriteNativeView)localObject3, (String)localObject6);
-          ((com.tencent.mobileqq.surfaceviewaction.nv.ImageButton)localObject3).a(new SceneBuilder.3(this, paramILayer, (BaseNode)localObject3, (String)localObject6));
-          break label134;
-          localObject5 = localObject1;
-          continue;
-          localObject2 = localObject5;
-        }
-      }
-      if ("video".equals(localObject3))
-      {
-        if ((paramISpriteView instanceof SpriteGLView))
-        {
-          localObject3 = (SpriteGLView)paramISpriteView;
-          localObject2 = new com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite((SpriteGLView)localObject3, ((SpriteGLView)localObject3).getContext(), true);
-          ((com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite)localObject2).c(this.jdField_a_of_type_JavaLangString + "/" + paramJSONObject.optString("path"));
-          if (paramJSONObject.optBoolean("isKey", false)) {
-            ((SpriteGLView)localObject3).setVideoTimeGetter((com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite)localObject2);
-          }
-          if (paramJSONObject.optBoolean("autoClose", false)) {
-            ((com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener);
-          }
-          ((com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite)localObject2).a(paramJSONObject.optBoolean("isLooping", false));
-        }
-        else
-        {
-          localObject2 = (SpriteNativeView)paramISpriteView;
-          localObject3 = this.jdField_a_of_type_JavaLangString + "/" + paramJSONObject.optString("path");
-          localObject2 = new com.tencent.mobileqq.surfaceviewaction.nv.VideoSprite((SpriteNativeView)localObject2, (String)localObject3);
-          ((com.tencent.mobileqq.surfaceviewaction.nv.VideoSprite)localObject2).a((String)localObject3, paramJSONObject.optBoolean("isLooping", false));
-        }
-      }
-      else if ("label".equals(localObject3)) {
-        localObject2 = a(paramISpriteView, paramJSONObject);
-      }
-    }
-    ((BaseNode)localObject2).a(paramJSONObject.optString("name"));
-    ((BaseNode)localObject2).a(paramJSONObject.optInt("tag"));
-    ((BaseNode)localObject2).a((float)paramJSONObject.optDouble("x", 0.0D));
-    ((BaseNode)localObject2).b((float)paramJSONObject.optDouble("y", 0.0D));
-    ((BaseNode)localObject2).b((int)(paramJSONObject.optDouble("alpha", 1.0D) * 255.0D));
-    ((BaseNode)localObject2).c(((BaseNode)localObject2).a() * (float)paramJSONObject.optDouble("scale", 1.0D));
-    ((BaseNode)localObject2).d((float)paramJSONObject.optDouble("rotate", 0.0D));
-    ((BaseNode)localObject2).e(((BaseNode)paramILayer).a());
-    localObject3 = paramJSONObject.optJSONArray("actions");
-    if (localObject3 != null) {
-      ((BaseNode)localObject2).a(a((JSONArray)localObject3));
-    }
-    Object localObject5 = paramJSONObject.optJSONObject("frames");
-    if (localObject5 != null)
-    {
-      localObject3 = new Frame();
-      ((Frame)localObject3).jdField_a_of_type_Int = ((JSONObject)localObject5).optInt("fps");
-      localObject5 = ((JSONObject)localObject5).optJSONArray("datas");
-      j = ((JSONArray)localObject5).length();
-      ((Frame)localObject3).jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionFrame$FrameData = new Frame.FrameData[j];
-      i = 0;
-      while (i < j)
-      {
-        ((Frame)localObject3).jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionFrame$FrameData[i] = new Frame.FrameData();
-        localObject6 = ((JSONArray)localObject5).optJSONObject(i);
-        localObject3.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionFrame$FrameData[i].jdField_a_of_type_Float = ((JSONObject)localObject6).optInt("x");
-        localObject3.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionFrame$FrameData[i].b = ((JSONObject)localObject6).optInt("y");
-        i += 1;
-      }
-      ((BaseNode)localObject2).a((Frame)localObject3);
-    }
-    localObject3 = paramJSONObject.optString("horizontal_align");
-    if (localObject3 != null)
-    {
-      if (((String)localObject3).equals("left")) {
-        ((BaseNode)localObject2).c(0);
+      } else {
+        localObject1 = new com.tencent.mobileqq.surfaceviewaction.nv.Layer((SpriteNativeView)paramISpriteView);
       }
     }
     else
     {
-      label1028:
-      localObject3 = paramJSONObject.optString("vertical_align");
-      if (localObject3 != null)
+      if ("image".equals(localObject1))
       {
-        if (!((String)localObject3).equals("top")) {
-          break label1180;
+        String str = paramJSONObject.optString("path");
+        localObject2 = paramJSONObject.optString("event");
+        if ((paramISpriteView instanceof SpriteGLView))
+        {
+          localObject1 = (SpriteGLView)paramISpriteView;
+          if (TextUtils.isEmpty((CharSequence)localObject2))
+          {
+            localObject1 = new com.tencent.mobileqq.surfaceviewaction.gl.Sprite((SpriteGLView)localObject1);
+          }
+          else
+          {
+            localObject1 = new com.tencent.mobileqq.surfaceviewaction.gl.ImageButton((SpriteGLView)localObject1, true, (String)localObject2);
+            ((com.tencent.mobileqq.surfaceviewaction.gl.ImageButton)localObject1).a(new SceneBuilder.2(this, paramILayer, (String)localObject2));
+            break label228;
+          }
         }
-        ((BaseNode)localObject2).d(0);
+        else
+        {
+          localObject1 = (SpriteNativeView)paramISpriteView;
+          if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+            break label194;
+          }
+          localObject1 = new com.tencent.mobileqq.surfaceviewaction.nv.Sprite((SpriteNativeView)localObject1);
+        }
+        break label228;
+        localObject1 = new com.tencent.mobileqq.surfaceviewaction.nv.ImageButton((SpriteNativeView)localObject1, (String)localObject2);
+        ((com.tencent.mobileqq.surfaceviewaction.nv.ImageButton)localObject1).a(new SceneBuilder.3(this, paramILayer, (BaseNode)localObject1, (String)localObject2));
+        localObject2 = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$IImageBitmapHandle;
+        if (localObject2 != null) {
+          localObject3 = ((SceneBuilder.IImageBitmapHandle)localObject2).a((ISprite)localObject1, this.jdField_a_of_type_JavaLangString, str);
+        } else {
+          localObject3 = null;
+        }
+        localObject2 = localObject3;
+        if (localObject3 == null) {
+          try
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject2).append("/");
+            ((StringBuilder)localObject2).append(str);
+            localObject2 = ImageUtil.a(((StringBuilder)localObject2).toString(), null);
+          }
+          catch (OutOfMemoryError localOutOfMemoryError1)
+          {
+            localObject2 = localObject3;
+            if (QLog.isColorLevel())
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("buildNode");
+              ((StringBuilder)localObject2).append(QLog.getStackTraceString(localOutOfMemoryError1));
+              QLog.e("SceneBuilder", 2, ((StringBuilder)localObject2).toString());
+              localObject2 = localObject3;
+            }
+          }
+        }
+        localObject3 = localObject1;
+        if (localObject2 != null)
+        {
+          JSONObject localJSONObject = paramJSONObject.optJSONObject("size");
+          localObject3 = localObject2;
+          if (localJSONObject != null)
+          {
+            i = localJSONObject.optInt("width");
+            k = localJSONObject.optInt("height");
+            try
+            {
+              localObject3 = Bitmap.createScaledBitmap((Bitmap)localObject2, i, k, true);
+            }
+            catch (OutOfMemoryError localOutOfMemoryError2)
+            {
+              localObject3 = localObject2;
+              if (QLog.isColorLevel())
+              {
+                localObject3 = new StringBuilder();
+                ((StringBuilder)localObject3).append("buildNode");
+                ((StringBuilder)localObject3).append(QLog.getStackTraceString(localOutOfMemoryError2));
+                QLog.e("SceneBuilder", 2, ((StringBuilder)localObject3).toString());
+                localObject3 = localObject2;
+              }
+            }
+          }
+          ((ISprite)localObject1).a(paramISpriteView, (Bitmap)localObject3);
+          localObject3 = localObject1;
+        }
+      }
+      else
+      {
+        if (!"video".equals(localObject1)) {
+          break label757;
+        }
+        if (!(paramISpriteView instanceof SpriteGLView)) {
+          break label670;
+        }
+        localObject1 = (SpriteGLView)paramISpriteView;
+        localObject3 = new com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite((SpriteGLView)localObject1, ((SpriteGLView)localObject1).getContext(), true);
+        localObject2 = (com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite)localObject3;
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject4).append("/");
+        ((StringBuilder)localObject4).append(paramJSONObject.optString("path"));
+        ((com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite)localObject2).c(((StringBuilder)localObject4).toString());
+        if (paramJSONObject.optBoolean("isKey", false)) {
+          ((SpriteGLView)localObject1).setVideoTimeGetter((SpriteGLView.IVideoTimeGetter)localObject2);
+        }
+        if (paramJSONObject.optBoolean("autoClose", false)) {
+          ((com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener);
+        }
+        ((com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite)localObject2).a(paramJSONObject.optBoolean("isLooping", false));
+      }
+      localObject1 = localObject3;
+      break label782;
+      label670:
+      localObject1 = (SpriteNativeView)paramISpriteView;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append("/");
+      ((StringBuilder)localObject2).append(paramJSONObject.optString("path"));
+      localObject2 = ((StringBuilder)localObject2).toString();
+      localObject1 = new com.tencent.mobileqq.surfaceviewaction.nv.VideoSprite((SpriteNativeView)localObject1, (String)localObject2);
+      ((com.tencent.mobileqq.surfaceviewaction.nv.VideoSprite)localObject1).a((String)localObject2, paramJSONObject.optBoolean("isLooping", false));
+      break label782;
+      label757:
+      if ("label".equals(localObject1)) {
+        localObject1 = a(paramISpriteView, paramJSONObject);
+      } else {
+        localObject1 = null;
       }
     }
-    for (;;)
+    label782:
+    if (localObject1 == null) {
+      return null;
+    }
+    ((BaseNode)localObject1).a(paramJSONObject.optString("name"));
+    ((BaseNode)localObject1).a(paramJSONObject.optInt("tag"));
+    ((BaseNode)localObject1).a((float)paramJSONObject.optDouble("x", 0.0D));
+    ((BaseNode)localObject1).b((float)paramJSONObject.optDouble("y", 0.0D));
+    ((BaseNode)localObject1).b((int)(paramJSONObject.optDouble("alpha", 1.0D) * 255.0D));
+    ((BaseNode)localObject1).c(((BaseNode)localObject1).a() * (float)paramJSONObject.optDouble("scale", 1.0D));
+    ((BaseNode)localObject1).d((float)paramJSONObject.optDouble("rotate", 0.0D));
+    ((BaseNode)localObject1).e(((BaseNode)paramILayer).a());
+    Object localObject2 = paramJSONObject.optJSONArray("actions");
+    if (localObject2 != null) {
+      ((BaseNode)localObject1).a(a((JSONArray)localObject2));
+    }
+    Object localObject3 = paramJSONObject.optJSONObject("frames");
+    if (localObject3 != null)
     {
-      localObject3 = localObject2;
-      if (!(localObject2 instanceof ILayer)) {
-        break;
-      }
-      localObject5 = (ILayer)localObject2;
-      paramJSONObject = paramJSONObject.optJSONArray("children");
-      j = paramJSONObject.length();
+      localObject2 = new Frame();
+      ((Frame)localObject2).jdField_a_of_type_Int = ((JSONObject)localObject3).optInt("fps");
+      localObject3 = ((JSONObject)localObject3).optJSONArray("datas");
+      k = ((JSONArray)localObject3).length();
+      ((Frame)localObject2).jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionFrame$FrameData = new Frame.FrameData[k];
       i = 0;
-      for (;;)
+      while (i < k)
       {
-        localObject3 = localObject2;
-        if (i >= j) {
-          break;
-        }
+        ((Frame)localObject2).jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionFrame$FrameData[i] = new Frame.FrameData();
+        localObject4 = ((JSONArray)localObject3).optJSONObject(i);
+        localObject2.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionFrame$FrameData[i].jdField_a_of_type_Float = ((JSONObject)localObject4).optInt("x");
+        localObject2.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionFrame$FrameData[i].b = ((JSONObject)localObject4).optInt("y");
+        i += 1;
+      }
+      ((BaseNode)localObject1).a((Frame)localObject2);
+    }
+    localObject2 = paramJSONObject.optString("horizontal_align");
+    if (localObject2 != null) {
+      if (((String)localObject2).equals("left")) {
+        ((BaseNode)localObject1).c(0);
+      } else if (((String)localObject2).equals("right")) {
+        ((BaseNode)localObject1).c(1);
+      } else if (((String)localObject2).equals("center")) {
+        ((BaseNode)localObject1).c(2);
+      }
+    }
+    localObject2 = paramJSONObject.optString("vertical_align");
+    if (localObject2 != null) {
+      if (((String)localObject2).equals("top")) {
+        ((BaseNode)localObject1).d(0);
+      } else if (((String)localObject2).equals("bottom")) {
+        ((BaseNode)localObject1).d(1);
+      } else if (((String)localObject2).equals("center")) {
+        ((BaseNode)localObject1).d(2);
+      }
+    }
+    if ((localObject1 instanceof ILayer))
+    {
+      localObject2 = (ILayer)localObject1;
+      paramJSONObject = paramJSONObject.optJSONArray("children");
+      k = paramJSONObject.length();
+      i = j;
+      while (i < k)
+      {
         localObject3 = a(paramISpriteView, paramJSONObject.getJSONObject(i), paramILayer);
         if (localObject3 != null) {
-          ((ILayer)localObject5).a((BaseNode)localObject3);
+          ((ILayer)localObject2).a((BaseNode)localObject3);
         }
         i += 1;
       }
-      if (((String)localObject3).equals("right"))
-      {
-        ((BaseNode)localObject2).c(1);
-        break label1028;
-      }
-      if (!((String)localObject3).equals("center")) {
-        break label1028;
-      }
-      ((BaseNode)localObject2).c(2);
-      break label1028;
-      label1180:
-      if (((String)localObject3).equals("bottom")) {
-        ((BaseNode)localObject2).d(1);
-      } else if (((String)localObject3).equals("center")) {
-        ((BaseNode)localObject2).d(2);
-      }
     }
+    return localObject1;
   }
   
   private ILayer a(ISpriteView paramISpriteView, String paramString)
   {
-    Object localObject1;
-    if ((paramISpriteView instanceof SpriteGLView))
-    {
+    if ((paramISpriteView instanceof SpriteGLView)) {
       localObject1 = new com.tencent.mobileqq.surfaceviewaction.gl.Layer((SpriteGLView)paramISpriteView);
-      if (paramString != null) {
-        break label43;
-      }
-    }
-    for (;;)
-    {
-      return localObject1;
+    } else {
       localObject1 = new com.tencent.mobileqq.surfaceviewaction.nv.Layer((SpriteNativeView)paramISpriteView);
-      break;
-      try
+    }
+    if (paramString == null) {
+      return localObject1;
+    }
+    try
+    {
+      paramString = new JSONObject(paramString);
+      Object localObject2 = paramString.optJSONObject("size");
+      int i = ((JSONObject)localObject2).optInt("width");
+      int j = ((JSONObject)localObject2).optInt("height");
+      this.jdField_a_of_type_Float = (this.jdField_a_of_type_Int / i);
+      if (this.jdField_a_of_type_Boolean)
       {
-        label43:
-        paramString = new JSONObject(paramString);
-        Object localObject2 = paramString.optJSONObject("size");
-        int i = ((JSONObject)localObject2).optInt("width");
-        int j = ((JSONObject)localObject2).optInt("height");
-        this.jdField_a_of_type_Float = (this.jdField_a_of_type_Int / i);
-        if (this.jdField_a_of_type_Boolean)
-        {
-          localObject2 = ((ViewGroup)paramISpriteView).getLayoutParams();
-          ((ViewGroup.LayoutParams)localObject2).width = this.jdField_a_of_type_Int;
-          ((ViewGroup.LayoutParams)localObject2).height = ((int)(j * this.jdField_a_of_type_Float));
-          ((ViewGroup)paramISpriteView).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-          ((BaseNode)localObject1).c(this.jdField_a_of_type_Float);
-          if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$ILayoutSizeHandler != null) {
-            this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$ILayoutSizeHandler.a(((ViewGroup.LayoutParams)localObject2).width, ((ViewGroup.LayoutParams)localObject2).height);
-          }
-        }
-        paramString = paramString.optJSONArray("scene");
-        if (paramString != null)
-        {
-          j = paramString.length();
-          i = 0;
-          while (i < j)
-          {
-            localObject2 = a(paramISpriteView, paramString.getJSONObject(i), (ILayer)localObject1);
-            if (localObject2 != null) {
-              ((ILayer)localObject1).a((BaseNode)localObject2);
-            }
-            i += 1;
-          }
-          if (!QLog.isColorLevel()) {}
+        localObject2 = ((ViewGroup)paramISpriteView).getLayoutParams();
+        ((ViewGroup.LayoutParams)localObject2).width = this.jdField_a_of_type_Int;
+        ((ViewGroup.LayoutParams)localObject2).height = ((int)(j * this.jdField_a_of_type_Float));
+        ((ViewGroup)paramISpriteView).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        ((BaseNode)localObject1).c(this.jdField_a_of_type_Float);
+        if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$ILayoutSizeHandler != null) {
+          this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$ILayoutSizeHandler.a(((ViewGroup.LayoutParams)localObject2).width, ((ViewGroup.LayoutParams)localObject2).height);
         }
       }
-      catch (Exception paramISpriteView) {}
+      paramString = paramString.optJSONArray("scene");
+      if (paramString != null)
+      {
+        j = paramString.length();
+        i = 0;
+        while (i < j)
+        {
+          localObject2 = a(paramISpriteView, paramString.getJSONObject(i), (ILayer)localObject1);
+          if (localObject2 != null) {
+            ((ILayer)localObject1).a((BaseNode)localObject2);
+          }
+          i += 1;
+        }
+      }
+      return localObject1;
     }
-    QLog.e("SceneBuilder", 2, "buildFromJson" + QLog.getStackTraceString(paramISpriteView));
-    return localObject1;
+    catch (Exception paramISpriteView)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("buildFromJson");
+        paramString.append(QLog.getStackTraceString(paramISpriteView));
+        QLog.e("SceneBuilder", 2, paramString.toString());
+      }
+    }
   }
   
   private Action a(JSONObject paramJSONObject)
   {
-    Object localObject1 = null;
-    JSONObject localJSONObject = null;
     Object localObject2 = paramJSONObject.optString("type");
     String str = paramJSONObject.optString("timeType");
     int j = paramJSONObject.optInt("duration");
-    if (((String)localObject2).equals("sequence")) {
+    boolean bool = ((String)localObject2).equals("sequence");
+    Object localObject1 = null;
+    if (bool)
+    {
       localObject1 = new SequenceAction(a(paramJSONObject.optJSONArray("actions")));
     }
-    label513:
-    label516:
-    for (;;)
+    else if (((String)localObject2).equals("delay"))
     {
-      if (localObject1 != null)
+      localObject1 = new DelayAction(j);
+    }
+    else if (((String)localObject2).equals("position"))
+    {
+      localObject2 = paramJSONObject.optJSONObject("from");
+      JSONObject localJSONObject = paramJSONObject.optJSONObject("to");
+      if ((this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$IActionPositionHandler != null) && ("$POSITIONX$".equals(localJSONObject.optString("x"))))
       {
-        ((Action)localObject1).jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isRepeat");
-        if (str != null)
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$IActionPositionHandler.a((JSONObject)localObject2, localJSONObject, this.jdField_a_of_type_Float);
+        if ((localObject1 != null) && (localObject1.length == 2))
         {
-          if (!str.equals("linear")) {
-            break label473;
-          }
-          ((Action)localObject1).e = 0;
-        }
-        label102:
-        if ((paramJSONObject.optBoolean("autoClose", false)) && (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener != null)) {
-          ((Action)localObject1).a(new SceneBuilder.4(this));
+          localObject1 = new MoveToAction(j, localObject1[0].jdField_a_of_type_Float, localObject1[0].b, localObject1[1].jdField_a_of_type_Float, localObject1[1].b);
+          i = 1;
+          break label223;
         }
       }
-      return localObject1;
-      if (((String)localObject2).equals("delay"))
-      {
-        localObject1 = new DelayAction(j);
-      }
-      else
-      {
-        if (((String)localObject2).equals("position"))
-        {
-          localJSONObject = paramJSONObject.optJSONObject("from");
-          localObject2 = paramJSONObject.optJSONObject("to");
-          if ((this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$IActionPositionHandler == null) || (!"$POSITIONX$".equals(((JSONObject)localObject2).optString("x")))) {
-            break label513;
-          }
-          Point[] arrayOfPoint = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$IActionPositionHandler.a(localJSONObject, (JSONObject)localObject2, this.jdField_a_of_type_Float);
-          if ((arrayOfPoint == null) || (arrayOfPoint.length != 2)) {
-            break label513;
-          }
-          localObject1 = new MoveToAction(j, arrayOfPoint[0].jdField_a_of_type_Float, arrayOfPoint[0].b, arrayOfPoint[1].jdField_a_of_type_Float, arrayOfPoint[1].b);
-        }
-        for (int i = 1;; i = 0)
-        {
-          if (i != 0) {
-            break label516;
-          }
-          localObject1 = new MoveToAction(j, (float)localJSONObject.optDouble("x"), (float)localJSONObject.optDouble("y"), (float)((JSONObject)localObject2).optDouble("x"), (float)((JSONObject)localObject2).optDouble("y"));
-          break;
-          if (((String)localObject2).equals("scale"))
-          {
-            localObject1 = new ScaleAction(j, (float)paramJSONObject.optDouble("from", 1.0D), (float)paramJSONObject.optDouble("to", 1.0D));
-            break;
-          }
-          if (((String)localObject2).equals("alpha"))
-          {
-            localObject1 = new OpacityAction(j, (int)(paramJSONObject.optDouble("from", 1.0D) * 255.0D), (int)(paramJSONObject.optDouble("to", 1.0D) * 255.0D));
-            break;
-          }
-          localObject1 = localJSONObject;
-          if (!((String)localObject2).equals("rotate")) {
-            break;
-          }
-          localObject1 = new RotateAction(j, paramJSONObject.optInt("from", 0), paramJSONObject.optInt("to", 0));
-          break;
-          label473:
-          if (str.equals("easeIn"))
-          {
-            ((Action)localObject1).e = 1;
-            break label102;
-          }
-          if (!str.equals("easeOut")) {
-            break label102;
-          }
-          ((Action)localObject1).e = 2;
-          break label102;
-        }
+      localObject1 = null;
+      int i = 0;
+      label223:
+      if (i == 0) {
+        localObject1 = new MoveToAction(j, (float)((JSONObject)localObject2).optDouble("x"), (float)((JSONObject)localObject2).optDouble("y"), (float)localJSONObject.optDouble("x"), (float)localJSONObject.optDouble("y"));
       }
     }
+    else if (((String)localObject2).equals("scale"))
+    {
+      localObject1 = new ScaleAction(j, (float)paramJSONObject.optDouble("from", 1.0D), (float)paramJSONObject.optDouble("to", 1.0D));
+    }
+    else if (((String)localObject2).equals("alpha"))
+    {
+      localObject1 = new OpacityAction(j, (int)(paramJSONObject.optDouble("from", 1.0D) * 255.0D), (int)(paramJSONObject.optDouble("to", 1.0D) * 255.0D));
+    }
+    else if (((String)localObject2).equals("rotate"))
+    {
+      localObject1 = new RotateAction(j, paramJSONObject.optInt("from", 0), paramJSONObject.optInt("to", 0));
+    }
+    if (localObject1 != null)
+    {
+      ((Action)localObject1).jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isRepeat");
+      if (str != null) {
+        if (str.equals("linear")) {
+          ((Action)localObject1).e = 0;
+        } else if (str.equals("easeIn")) {
+          ((Action)localObject1).e = 1;
+        } else if (str.equals("easeOut")) {
+          ((Action)localObject1).e = 2;
+        }
+      }
+      if ((paramJSONObject.optBoolean("autoClose", false)) && (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener != null)) {
+        ((Action)localObject1).a(new SceneBuilder.4(this));
+      }
+    }
+    return localObject1;
   }
   
   public static String a(int paramInt, String paramString, Paint paramPaint)
   {
-    String str2 = "";
-    if (paramInt <= 0) {}
-    float f;
-    do
-    {
+    if (paramInt <= 0) {
       return paramString;
-      f = paramPaint.measureText("...");
-    } while ((int)Math.ceil(paramPaint.measureText(paramString)) <= paramInt);
+    }
+    float f = paramPaint.measureText("...");
+    if ((int)Math.ceil(paramPaint.measureText(paramString)) <= paramInt) {
+      return paramString;
+    }
     int i = paramString.length() - 1;
-    for (;;)
+    while (i > 0)
     {
-      String str1 = str2;
-      if (i > 0)
+      if ((int)Math.ceil(paramPaint.measureText(paramString, 0, i) + f) <= paramInt)
       {
-        if ((int)Math.ceil(paramPaint.measureText(paramString, 0, i) + f) <= paramInt) {
-          str1 = paramString.substring(0, i) + "...";
-        }
-      }
-      else {
-        return str1;
+        paramPaint = new StringBuilder();
+        paramPaint.append(paramString.substring(0, i));
+        paramPaint.append("...");
+        return paramPaint.toString();
       }
       i -= 1;
     }
+    return "";
   }
   
   public static boolean a(File paramFile)
   {
-    StringBuffer localStringBuffer;
-    Object localObject;
     if (paramFile.exists())
     {
-      localStringBuffer = new StringBuffer();
-      localStringBuffer.append(paramFile.getAbsolutePath()).append(File.separator).append("check.ini");
-      localObject = new File(localStringBuffer.toString());
-      if (((File)localObject).exists()) {}
-    }
-    else
-    {
-      return false;
-    }
-    for (;;)
-    {
-      int i;
-      try
-      {
-        localObject = FileUtils.b((File)localObject);
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break;
-        }
-        localObject = ((String)localObject).split("&");
-        if (localObject == null) {
-          break;
-        }
-        i = 0;
-        if (i >= localObject.length) {
-          break label225;
-        }
-        if (localObject[i].startsWith("﻿")) {
-          localObject[i] = localObject[i].replace("﻿", "");
-        }
-        localStringBuffer.setLength(0);
-        localStringBuffer.append(paramFile.getAbsolutePath()).append(File.separator).append(localObject[i]);
-        File localFile = new File(localStringBuffer.toString());
-        if (localFile.exists()) {
-          break label218;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e("SceneBuilder", 2, "isAnimationPackageValid File not exist:" + localFile.getName());
+      StringBuffer localStringBuffer = new StringBuffer();
+      localStringBuffer.append(paramFile.getAbsolutePath());
+      localStringBuffer.append(File.separator);
+      localStringBuffer.append("check.ini");
+      Object localObject = new File(localStringBuffer.toString());
+      if (!((File)localObject).exists()) {
         return false;
       }
-      catch (IOException paramFile) {}
-      if (!QLog.isColorLevel()) {
-        break;
+      for (;;)
+      {
+        try
+        {
+          localObject = FileUtils.readFileToString((File)localObject);
+          if (TextUtils.isEmpty((CharSequence)localObject)) {
+            return false;
+          }
+          arrayOfString = ((String)localObject).split("&");
+          if (arrayOfString != null) {
+            continue;
+          }
+          return false;
+        }
+        catch (IOException paramFile)
+        {
+          String[] arrayOfString;
+          continue;
+          int i = 0;
+          continue;
+        }
+        if (i >= arrayOfString.length) {
+          continue;
+        }
+        if (arrayOfString[i].startsWith("﻿")) {
+          arrayOfString[i] = arrayOfString[i].replace("﻿", "");
+        }
+        localStringBuffer.setLength(0);
+        localStringBuffer.append(paramFile.getAbsolutePath());
+        localStringBuffer.append(File.separator);
+        localStringBuffer.append(arrayOfString[i]);
+        localObject = new File(localStringBuffer.toString());
+        if (!((File)localObject).exists())
+        {
+          if (QLog.isColorLevel())
+          {
+            paramFile = new StringBuilder();
+            paramFile.append("isAnimationPackageValid File not exist:");
+            paramFile.append(((File)localObject).getName());
+            QLog.e("SceneBuilder", 2, paramFile.toString());
+          }
+          return false;
+        }
+        i += 1;
       }
-      QLog.e("SceneBuilder", 2, "isAnimationPackageValid IOException");
-      return false;
-      label218:
-      i += 1;
+      return true;
+      if (QLog.isColorLevel()) {
+        QLog.e("SceneBuilder", 2, "isAnimationPackageValid IOException");
+      }
     }
-    label225:
-    return true;
+    return false;
   }
   
   private Action[] a(JSONArray paramJSONArray)
@@ -728,72 +699,101 @@ public class SceneBuilder
     return arrayOfAction;
   }
   
+  /* Error */
   private static String b(String paramString)
   {
-    try
-    {
-      localInputStreamReader = new InputStreamReader(new FileInputStream(new File(paramString)));
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        label66:
-        localBufferedReader = null;
-        InputStreamReader localInputStreamReader = null;
-      }
-    }
-    try
-    {
-      localBufferedReader = new BufferedReader(localInputStreamReader);
-      try
-      {
-        paramString = new StringBuilder();
-        for (;;)
-        {
-          String str = localBufferedReader.readLine();
-          if (str == null) {
-            break;
-          }
-          paramString.append(str);
-          paramString.append('\n');
-        }
-        paramString.printStackTrace();
-      }
-      catch (Exception paramString) {}
-    }
-    catch (Exception paramString)
-    {
-      localBufferedReader = null;
-      break label66;
-    }
-    if (localBufferedReader != null) {}
-    try
-    {
-      localBufferedReader.close();
-      if (localInputStreamReader != null) {}
-      try
-      {
-        localInputStreamReader.close();
-        return null;
-      }
-      catch (IOException paramString)
-      {
-        paramString.printStackTrace();
-        return null;
-      }
-      localBufferedReader.close();
-      localInputStreamReader.close();
-      paramString = paramString.toString();
-      return paramString;
-    }
-    catch (IOException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
-    }
+    // Byte code:
+    //   0: new 654	java/io/InputStreamReader
+    //   3: dup
+    //   4: new 656	java/io/FileInputStream
+    //   7: dup
+    //   8: new 600	java/io/File
+    //   11: dup
+    //   12: aload_0
+    //   13: invokespecial 619	java/io/File:<init>	(Ljava/lang/String;)V
+    //   16: invokespecial 659	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   19: invokespecial 662	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   22: astore_2
+    //   23: new 664	java/io/BufferedReader
+    //   26: dup
+    //   27: aload_2
+    //   28: invokespecial 667	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   31: astore_1
+    //   32: new 123	java/lang/StringBuilder
+    //   35: dup
+    //   36: invokespecial 124	java/lang/StringBuilder:<init>	()V
+    //   39: astore_0
+    //   40: aload_1
+    //   41: invokevirtual 670	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   44: astore_3
+    //   45: aload_3
+    //   46: ifnull +19 -> 65
+    //   49: aload_0
+    //   50: aload_3
+    //   51: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   54: pop
+    //   55: aload_0
+    //   56: bipush 10
+    //   58: invokevirtual 673	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   61: pop
+    //   62: goto -22 -> 40
+    //   65: aload_1
+    //   66: invokevirtual 676	java/io/BufferedReader:close	()V
+    //   69: aload_2
+    //   70: invokevirtual 677	java/io/InputStreamReader:close	()V
+    //   73: aload_0
+    //   74: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   77: astore_0
+    //   78: aload_0
+    //   79: areturn
+    //   80: astore_0
+    //   81: goto +14 -> 95
+    //   84: astore_0
+    //   85: aconst_null
+    //   86: astore_1
+    //   87: goto +8 -> 95
+    //   90: astore_0
+    //   91: aconst_null
+    //   92: astore_1
+    //   93: aload_1
+    //   94: astore_2
+    //   95: aload_0
+    //   96: invokevirtual 680	java/lang/Exception:printStackTrace	()V
+    //   99: aload_1
+    //   100: ifnull +15 -> 115
+    //   103: aload_1
+    //   104: invokevirtual 676	java/io/BufferedReader:close	()V
+    //   107: goto +8 -> 115
+    //   110: astore_0
+    //   111: aload_0
+    //   112: invokevirtual 681	java/io/IOException:printStackTrace	()V
+    //   115: aload_2
+    //   116: ifnull +14 -> 130
+    //   119: aload_2
+    //   120: invokevirtual 677	java/io/InputStreamReader:close	()V
+    //   123: aconst_null
+    //   124: areturn
+    //   125: astore_0
+    //   126: aload_0
+    //   127: invokevirtual 681	java/io/IOException:printStackTrace	()V
+    //   130: aconst_null
+    //   131: areturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	132	0	paramString	String
+    //   31	73	1	localBufferedReader	java.io.BufferedReader
+    //   22	98	2	localObject	Object
+    //   44	7	3	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   32	40	80	java/lang/Exception
+    //   40	45	80	java/lang/Exception
+    //   49	62	80	java/lang/Exception
+    //   65	78	80	java/lang/Exception
+    //   23	32	84	java/lang/Exception
+    //   0	23	90	java/lang/Exception
+    //   103	107	110	java/io/IOException
+    //   119	123	125	java/io/IOException
   }
   
   public SceneBuilder a(int paramInt)
@@ -846,7 +846,7 @@ public class SceneBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder
  * JD-Core Version:    0.7.0.1
  */

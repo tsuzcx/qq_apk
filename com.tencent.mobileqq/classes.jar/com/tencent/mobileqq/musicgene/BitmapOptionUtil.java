@@ -12,47 +12,45 @@ public class BitmapOptionUtil
   {
     int[] arrayOfInt = new int[8];
     HashMap localHashMap = new HashMap();
+    int m = 0;
     int i = 0;
-    if (i < paramArrayOfFloat.length)
+    for (;;)
     {
+      k = paramArrayOfFloat.length;
       j = 1;
-      for (;;)
+      if (i >= k) {
+        break;
+      }
+      j = 1;
+      while (j <= 7)
       {
-        if (j <= 7)
+        if (paramArrayOfFloat[i][0] < j / 7.0F * 360.0F)
         {
-          if (paramArrayOfFloat[i][0] < 360.0F * (j / 7.0F))
-          {
-            arrayOfInt[j] += 1;
-            List localList = (List)localHashMap.get(Integer.valueOf(j));
-            Object localObject = localList;
-            if (localList == null) {
-              localObject = new ArrayList();
-            }
-            ((List)localObject).add(paramArrayOfFloat[i]);
-            localHashMap.put(Integer.valueOf(j), localObject);
+          arrayOfInt[j] += 1;
+          List localList = (List)localHashMap.get(Integer.valueOf(j));
+          Object localObject = localList;
+          if (localList == null) {
+            localObject = new ArrayList();
           }
-        }
-        else
-        {
-          i += 1;
+          ((List)localObject).add(paramArrayOfFloat[i]);
+          localHashMap.put(Integer.valueOf(j), localObject);
           break;
         }
         j += 1;
       }
+      i += 1;
     }
     int k = -1;
-    int j = 0;
-    i = 1;
-    while (i <= 7)
+    i = j;
+    for (int j = m; i <= 7; j = m)
     {
-      int m = j;
+      m = j;
       if (arrayOfInt[i] > j)
       {
         m = arrayOfInt[i];
         k = i;
       }
       i += 1;
-      j = m;
     }
     if (localHashMap.containsKey(Integer.valueOf(k))) {
       return (List)localHashMap.get(Integer.valueOf(k));
@@ -68,45 +66,42 @@ public class BitmapOptionUtil
       paramArrayOfFloat2[1] = paramArrayOfFloat1[1];
       paramArrayOfFloat1[2] += 0.7F;
     }
-    for (;;)
+    else
     {
-      if (paramArrayOfFloat2[1] > 0.5F) {
-        paramArrayOfFloat2[1] -= 0.1F;
-      }
-      return;
       paramArrayOfFloat2[0] = paramArrayOfFloat1[0];
       paramArrayOfFloat2[1] = paramArrayOfFloat1[1];
-      if (paramArrayOfFloat1[2] + 0.5D >= 1.0D) {
+      double d = paramArrayOfFloat1[2];
+      Double.isNaN(d);
+      if (d + 0.5D >= 1.0D) {
         paramArrayOfFloat1[2] -= 0.5F;
       } else {
         paramArrayOfFloat1[2] += 0.5F;
       }
     }
+    if (paramArrayOfFloat2[1] > 0.5F) {
+      paramArrayOfFloat2[1] -= 0.1F;
+    }
   }
   
   private static float[] a(List<float[]> paramList)
   {
-    float[] arrayOfFloat;
-    int i;
-    if (paramList.size() > 4)
+    int j = paramList.size();
+    int i = 0;
+    if (j > 4)
     {
-      float f = 3.4028235E+38F;
-      arrayOfFloat = null;
-      i = 0;
-      if (i < paramList.size())
+      float f1 = 3.4028235E+38F;
+      float[] arrayOfFloat = null;
+      while (i < paramList.size())
       {
-        if (((float[])paramList.get(i))[2] >= f) {
-          break label135;
+        float f2 = f1;
+        if (((float[])paramList.get(i))[2] < f1)
+        {
+          f2 = ((float[])paramList.get(i))[2];
+          arrayOfFloat = (float[])paramList.get(i);
         }
-        f = ((float[])paramList.get(i))[2];
-        arrayOfFloat = (float[])paramList.get(i);
+        i += 1;
+        f1 = f2;
       }
-    }
-    label135:
-    for (;;)
-    {
-      i += 1;
-      break;
       if (arrayOfFloat[2] > 0.15D) {
         arrayOfFloat[2] -= 0.1F;
       }
@@ -114,10 +109,10 @@ public class BitmapOptionUtil
         arrayOfFloat[1] -= 0.1F;
       }
       return arrayOfFloat;
-      paramList = (float[])paramList.get(0);
-      paramList[2] = 0.15F;
-      return paramList;
     }
+    paramList = (float[])paramList.get(0);
+    paramList[2] = 0.15F;
+    return paramList;
   }
   
   public static int[] a(int paramInt)
@@ -155,25 +150,21 @@ public class BitmapOptionUtil
     float f4 = paramArrayOfFloat1[0];
     float f3 = paramArrayOfFloat1[1];
     float f1 = paramArrayOfFloat1[2];
-    if (f1 <= 0.15D) {
+    double d = f1;
+    if (d <= 0.15D) {
       f1 += 0.7F;
+    } else if (d <= 0.5D) {
+      f1 += 0.5F;
+    } else {
+      f1 -= 0.5F;
     }
-    for (;;)
-    {
-      float f2 = f3;
-      if (f3 >= 0.5F) {
-        f2 = f3 - 0.1F;
-      }
-      paramArrayOfFloat2[0] = f4;
-      paramArrayOfFloat2[1] = f2;
-      paramArrayOfFloat2[2] = f1;
-      return;
-      if (f1 <= 0.5D) {
-        f1 += 0.5F;
-      } else {
-        f1 -= 0.5F;
-      }
+    float f2 = f3;
+    if (f3 >= 0.5F) {
+      f2 = f3 - 0.1F;
     }
+    paramArrayOfFloat2[0] = f4;
+    paramArrayOfFloat2[1] = f2;
+    paramArrayOfFloat2[2] = f1;
   }
   
   private static int[] b(Bitmap paramBitmap)
@@ -186,7 +177,7 @@ public class BitmapOptionUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.BitmapOptionUtil
  * JD-Core Version:    0.7.0.1
  */

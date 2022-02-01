@@ -173,85 +173,83 @@ public class LBSObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    case 3: 
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-    case 20: 
-    case 21: 
-    case 22: 
-    case 23: 
-    default: 
-    case 1: 
-    case 2: 
-    case 8: 
-    case 12: 
-    case 13: 
-    case 14: 
-    case 9: 
-    case 10: 
-    case 11: 
-    case 18: 
-    case 15: 
-    case 16: 
-    case 17: 
-    case 19: 
-    case 25: 
-    case 26: 
-      do
+      if (paramInt != 2)
       {
-        return;
-        h(paramBoolean, paramObject);
-        return;
-        g(paramBoolean, paramObject);
-        return;
+        switch (paramInt)
+        {
+        default: 
+          switch (paramInt)
+          {
+          default: 
+            return;
+          case 28: 
+            paramObject = (Object[])paramObject;
+            a(paramBoolean, ((Integer)paramObject[0]).intValue(), (cmd0x7f5.GroupInfo)paramObject[1]);
+            return;
+          case 27: 
+            e(paramBoolean, (Object[])paramObject);
+            return;
+          case 26: 
+            if (paramObject == null) {
+              return;
+            }
+            paramObject = (Object[])paramObject;
+            a((NearbyUser)paramObject[0], ((Boolean)paramObject[1]).booleanValue(), ((Integer)paramObject[2]).intValue());
+            return;
+          case 25: 
+            a(paramBoolean, paramObject);
+            return;
+          }
+          d(paramBoolean, (Object[])paramObject);
+          return;
+        case 19: 
+          a(paramBoolean, ((Integer)paramObject).intValue());
+          return;
+        case 18: 
+          b(paramBoolean, paramObject);
+          return;
+        case 17: 
+          c(paramBoolean, (Object[])paramObject);
+          return;
+        case 16: 
+          b(paramBoolean, (Object[])paramObject);
+          return;
+        case 15: 
+          a(paramBoolean, (Object[])paramObject);
+          return;
+        case 14: 
+          d(paramBoolean, paramObject);
+          return;
+        case 13: 
+          e(paramBoolean, paramObject);
+          return;
+        case 12: 
+          f(paramBoolean, paramObject);
+          return;
+        case 11: 
+          c(paramBoolean, paramObject);
+          return;
+        case 10: 
+          f(paramBoolean, (Object[])paramObject);
+          return;
+        case 9: 
+          a(paramBoolean, ((Boolean)paramObject).booleanValue());
+          return;
+        }
         g(paramBoolean, (Object[])paramObject);
         return;
-        f(paramBoolean, paramObject);
-        return;
-        e(paramBoolean, paramObject);
-        return;
-        d(paramBoolean, paramObject);
-        return;
-        a(paramBoolean, ((Boolean)paramObject).booleanValue());
-        return;
-        f(paramBoolean, (Object[])paramObject);
-        return;
-        c(paramBoolean, paramObject);
-        return;
-        b(paramBoolean, paramObject);
-        return;
-        a(paramBoolean, (Object[])paramObject);
-        return;
-        b(paramBoolean, (Object[])paramObject);
-        return;
-        c(paramBoolean, (Object[])paramObject);
-        return;
-        a(paramBoolean, ((Integer)paramObject).intValue());
-        return;
-        a(paramBoolean, paramObject);
-        return;
-      } while (paramObject == null);
-      paramObject = (Object[])paramObject;
-      a((NearbyUser)paramObject[0], ((Boolean)paramObject[1]).booleanValue(), ((Integer)paramObject[2]).intValue());
-      return;
-    case 24: 
-      d(paramBoolean, (Object[])paramObject);
-      return;
-    case 27: 
-      e(paramBoolean, (Object[])paramObject);
+      }
+      g(paramBoolean, paramObject);
       return;
     }
-    paramObject = (Object[])paramObject;
-    a(paramBoolean, ((Integer)paramObject[0]).intValue(), (cmd0x7f5.GroupInfo)paramObject[1]);
+    h(paramBoolean, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.LBSObserver
  * JD-Core Version:    0.7.0.1
  */

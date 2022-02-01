@@ -17,14 +17,14 @@ import me.weishu.epic.art.EpicNative;
 public class Entry64_2
 {
   private static final String TAG = "Entry64";
-  private static Map<Class<?>, String> bridgeMethodMap;
+  private static Map<Class<?>, String> bridgeMethodMap = new HashMap();
   
   static
   {
-    int i = 0;
-    bridgeMethodMap = new HashMap();
     Class[] arrayOfClass = new Class[8];
-    arrayOfClass[0] = Boolean.TYPE;
+    Class localClass = Boolean.TYPE;
+    int i = 0;
+    arrayOfClass[0] = localClass;
     arrayOfClass[1] = Byte.TYPE;
     arrayOfClass[2] = Character.TYPE;
     arrayOfClass[3] = Short.TYPE;
@@ -41,8 +41,11 @@ public class Entry64_2
         bridgeMethodMap.put(Object.class, "referenceBridge");
         return;
       }
-      Class localClass = arrayOfClass[i];
-      bridgeMethodMap.put(localClass, localClass.getName() + "Bridge");
+      localClass = arrayOfClass[i];
+      Map localMap = bridgeMethodMap;
+      StringBuilder localStringBuilder = new StringBuilder(String.valueOf(localClass.getName()));
+      localStringBuilder.append("Bridge");
+      localMap.put(localClass, localStringBuilder.toString());
       i += 1;
     }
   }
@@ -199,54 +202,59 @@ public class Entry64_2
   
   public static Method getBridgeMethod(Epic.MethodInfo paramMethodInfo)
   {
+    try
+    {
+      localObject = paramMethodInfo.returnType;
+      if (paramMethodInfo.isStatic) {
+        i = paramMethodInfo.paramNumber;
+      } else {
+        i = paramMethodInfo.paramNumber + 1;
+      }
+    }
+    catch (Throwable paramMethodInfo)
+    {
+      for (;;)
+      {
+        Object localObject;
+        int i;
+        Class[] arrayOfClass;
+        paramMethodInfo = new RuntimeException("can not found bridge.", paramMethodInfo);
+        for (;;)
+        {
+          throw paramMethodInfo;
+        }
+        int j = i;
+        if (i <= 2)
+        {
+          j = 2;
+          continue;
+          paramMethodInfo = Object.class;
+        }
+      }
+    }
+    arrayOfClass = new Class[j];
+    i = 0;
     for (;;)
     {
-      int i;
-      int j;
-      try
+      if (i >= j)
       {
-        Class localClass = paramMethodInfo.returnType;
-        Class[] arrayOfClass;
-        if (paramMethodInfo.isStatic)
-        {
-          i = paramMethodInfo.paramNumber;
-          break label149;
-          arrayOfClass = new Class[j];
-          i = 0;
-          if (i >= j)
-          {
-            Map localMap = bridgeMethodMap;
-            if (!localClass.isPrimitive()) {
-              continue;
-            }
-            paramMethodInfo = localClass;
-            paramMethodInfo = (String)localMap.get(paramMethodInfo);
-            Logger.d("Entry64", "bridge method:" + paramMethodInfo + ", map:" + bridgeMethodMap);
-            paramMethodInfo = Entry64_2.class.getDeclaredMethod(paramMethodInfo, arrayOfClass);
-            paramMethodInfo.setAccessible(true);
-            return paramMethodInfo;
-          }
+        Map localMap = bridgeMethodMap;
+        if (!((Class)localObject).isPrimitive()) {
+          break;
         }
-        else
-        {
-          i = paramMethodInfo.paramNumber + 1;
-          break label149;
-        }
-        arrayOfClass[i] = Long.TYPE;
-        i += 1;
-        continue;
-        paramMethodInfo = Object.class;
-        continue;
-        j = i;
+        paramMethodInfo = (Epic.MethodInfo)localObject;
+        paramMethodInfo = (String)localMap.get(paramMethodInfo);
+        localObject = new StringBuilder("bridge method:");
+        ((StringBuilder)localObject).append(paramMethodInfo);
+        ((StringBuilder)localObject).append(", map:");
+        ((StringBuilder)localObject).append(bridgeMethodMap);
+        Logger.d("Entry64", ((StringBuilder)localObject).toString());
+        paramMethodInfo = Entry64_2.class.getDeclaredMethod(paramMethodInfo, arrayOfClass);
+        paramMethodInfo.setAccessible(true);
+        return paramMethodInfo;
       }
-      catch (Throwable paramMethodInfo)
-      {
-        throw new RuntimeException("can not found bridge.", paramMethodInfo);
-      }
-      label149:
-      if (i <= 2) {
-        j = 2;
-      }
+      arrayOfClass[i] = Long.TYPE;
+      i += 1;
     }
   }
   
@@ -389,156 +397,153 @@ public class Entry64_2
   {
     Logger.i("Entry64", "enter bridge function.");
     long l1 = XposedHelpers.getLongField(Thread.currentThread(), "nativePeer");
-    Logger.d("Entry64", "java thread native peer:" + Long.toHexString(l1));
-    Logger.d("Entry64", "struct:" + Long.toHexString(paramLong2));
-    Logger.d("Entry64", "struct:" + Debug.hexdump(EpicNative.get(paramLong2, 24), paramLong2));
+    Object localObject1 = new StringBuilder("java thread native peer:");
+    ((StringBuilder)localObject1).append(Long.toHexString(l1));
+    Logger.d("Entry64", ((StringBuilder)localObject1).toString());
+    localObject1 = new StringBuilder("struct:");
+    ((StringBuilder)localObject1).append(Long.toHexString(paramLong2));
+    Logger.d("Entry64", ((StringBuilder)localObject1).toString());
+    localObject1 = new StringBuilder("struct:");
+    ((StringBuilder)localObject1).append(Debug.hexdump(EpicNative.get(paramLong2, 24), paramLong2));
+    Logger.d("Entry64", ((StringBuilder)localObject1).toString());
     long l2 = ByteBuffer.wrap(EpicNative.get(paramLong2, 8)).order(ByteOrder.LITTLE_ENDIAN).getLong();
-    Logger.d("Entry64", "stack:" + l2);
-    Object localObject1 = ByteBuffer.allocate(8).order(ByteOrder.LITTLE_ENDIAN).putLong(paramLong1).array();
-    byte[] arrayOfByte = EpicNative.get(8L + paramLong2, 8);
-    paramLong2 = ByteBuffer.wrap(EpicNative.get(16L + paramLong2, 8)).order(ByteOrder.LITTLE_ENDIAN).getLong();
-    Logger.d("Entry64", "sourceMethod:" + Long.toHexString(paramLong2));
-    Object localObject3 = Epic.getMethodInfo(paramLong2);
-    Logger.d("Entry64", "originMethodInfo :" + localObject3);
-    boolean bool = ((Epic.MethodInfo)localObject3).isStatic;
-    int j = ((Epic.MethodInfo)localObject3).paramNumber;
-    Class[] arrayOfClass = ((Epic.MethodInfo)localObject3).paramTypes;
-    Object[] arrayOfObject = new Object[j];
-    Object localObject2;
+    localObject1 = new StringBuilder("stack:");
+    ((StringBuilder)localObject1).append(l2);
+    Logger.d("Entry64", ((StringBuilder)localObject1).toString());
+    localObject1 = ByteBuffer.allocate(8).order(ByteOrder.LITTLE_ENDIAN).putLong(paramLong1).array();
+    Object localObject4 = EpicNative.get(paramLong2 + 8L, 8);
+    paramLong2 = ByteBuffer.wrap(EpicNative.get(paramLong2 + 16L, 8)).order(ByteOrder.LITTLE_ENDIAN).getLong();
+    Object localObject2 = new StringBuilder("sourceMethod:");
+    ((StringBuilder)localObject2).append(Long.toHexString(paramLong2));
+    Logger.d("Entry64", ((StringBuilder)localObject2).toString());
+    localObject2 = Epic.getMethodInfo(paramLong2);
+    Object localObject3 = new StringBuilder("originMethodInfo :");
+    ((StringBuilder)localObject3).append(localObject2);
+    Logger.d("Entry64", ((StringBuilder)localObject3).toString());
+    boolean bool = ((Epic.MethodInfo)localObject2).isStatic;
+    int j = ((Epic.MethodInfo)localObject2).paramNumber;
+    Class[] arrayOfClass = ((Epic.MethodInfo)localObject2).paramTypes;
+    localObject3 = new Object[j];
+    int i;
     if (bool)
     {
-      localObject2 = null;
-      if (j == 0) {
-        localObject1 = localObject2;
+      if (j != 0)
+      {
+        localObject3[0] = wrapArgument(arrayOfClass[0], l1, (byte[])localObject1);
+        if (j != 1)
+        {
+          localObject3[1] = wrapArgument(arrayOfClass[1], l1, (byte[])localObject4);
+          if (j != 2)
+          {
+            localObject3[2] = wrapArgument(arrayOfClass[2], l1, paramLong3);
+            if (j != 3)
+            {
+              localObject3[3] = wrapArgument(arrayOfClass[3], l1, paramLong4);
+              if (j != 4)
+              {
+                localObject3[4] = wrapArgument(arrayOfClass[4], l1, paramLong5);
+                if (j != 5)
+                {
+                  localObject3[5] = wrapArgument(arrayOfClass[5], l1, paramLong6);
+                  if (j != 6)
+                  {
+                    localObject3[6] = wrapArgument(arrayOfClass[6], l1, paramLong7);
+                    i = 7;
+                    if (j == 7) {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      for (;;)
+      {
+        if (i >= j)
+        {
+          localObject1 = null;
+          break;
+        }
+        localObject1 = EpicNative.get(i * 8 + l2 + 8L, 8);
+        localObject3[i] = wrapArgument(arrayOfClass[i], l1, (byte[])localObject1);
+        i += 1;
       }
     }
-    do
+    localObject1 = EpicNative.getObject(l1, paramLong1);
+    StringBuilder localStringBuilder = new StringBuilder("this :");
+    localStringBuilder.append(localObject1);
+    Logger.i("Entry64", localStringBuilder.toString());
+    if (j != 0)
     {
-      do
+      localObject3[0] = wrapArgument(arrayOfClass[0], l1, (byte[])localObject4);
+      if (j != 1)
       {
-        do
+        localObject3[1] = wrapArgument(arrayOfClass[1], l1, paramLong3);
+        if (j != 2)
         {
-          do
+          localObject3[2] = wrapArgument(arrayOfClass[2], l1, paramLong4);
+          if (j != 3)
           {
-            do
+            localObject3[3] = wrapArgument(arrayOfClass[3], l1, paramLong5);
+            if (j != 4)
             {
-              do
+              localObject3[4] = wrapArgument(arrayOfClass[4], l1, paramLong6);
+              if (j != 5)
               {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          do
-                          {
-                            do
-                            {
-                              do
-                              {
-                                Logger.i("Entry64", "arguments:" + Arrays.toString(arrayOfObject));
-                                localObject2 = ((Epic.MethodInfo)localObject3).returnType;
-                                localObject3 = ((Epic.MethodInfo)localObject3).method;
-                                Logger.d("Entry64", "leave bridge function");
-                                if (localObject2 != Void.TYPE) {
-                                  break;
-                                }
-                                onHookVoid(localObject3, localObject1, arrayOfObject);
-                                return Integer.valueOf(0);
-                                arrayOfObject[0] = wrapArgument(arrayOfClass[0], l1, (byte[])localObject1);
-                                localObject1 = localObject2;
-                              } while (j == 1);
-                              arrayOfObject[1] = wrapArgument(arrayOfClass[1], l1, arrayOfByte);
-                              localObject1 = localObject2;
-                            } while (j == 2);
-                            arrayOfObject[2] = wrapArgument(arrayOfClass[2], l1, paramLong3);
-                            localObject1 = localObject2;
-                          } while (j == 3);
-                          arrayOfObject[3] = wrapArgument(arrayOfClass[3], l1, paramLong4);
-                          localObject1 = localObject2;
-                        } while (j == 4);
-                        arrayOfObject[4] = wrapArgument(arrayOfClass[4], l1, paramLong5);
-                        localObject1 = localObject2;
-                      } while (j == 5);
-                      arrayOfObject[5] = wrapArgument(arrayOfClass[5], l1, paramLong6);
-                      localObject1 = localObject2;
-                    } while (j == 6);
-                    arrayOfObject[6] = wrapArgument(arrayOfClass[6], l1, paramLong7);
-                    localObject1 = localObject2;
-                  } while (j == 7);
-                  i = 7;
-                  for (;;)
-                  {
-                    localObject1 = localObject2;
-                    if (i >= j) {
-                      break;
-                    }
-                    localObject1 = EpicNative.get(i * 8 + l2 + 8L, 8);
-                    arrayOfObject[i] = wrapArgument(arrayOfClass[i], l1, (byte[])localObject1);
-                    i += 1;
-                  }
-                  localObject2 = EpicNative.getObject(l1, paramLong1);
-                  Logger.i("Entry64", "this :" + localObject2);
-                  localObject1 = localObject2;
-                } while (j == 0);
-                arrayOfObject[0] = wrapArgument(arrayOfClass[0], l1, arrayOfByte);
-                localObject1 = localObject2;
-              } while (j == 1);
-              arrayOfObject[1] = wrapArgument(arrayOfClass[1], l1, paramLong3);
-              localObject1 = localObject2;
-            } while (j == 2);
-            arrayOfObject[2] = wrapArgument(arrayOfClass[2], l1, paramLong4);
-            localObject1 = localObject2;
-          } while (j == 3);
-          arrayOfObject[3] = wrapArgument(arrayOfClass[3], l1, paramLong5);
-          localObject1 = localObject2;
-        } while (j == 4);
-        arrayOfObject[4] = wrapArgument(arrayOfClass[4], l1, paramLong6);
-        localObject1 = localObject2;
-      } while (j == 5);
-      arrayOfObject[5] = wrapArgument(arrayOfClass[5], l1, paramLong7);
-      localObject1 = localObject2;
-    } while (j == 6);
-    int i = 6;
+                localObject3[5] = wrapArgument(arrayOfClass[5], l1, paramLong7);
+                i = 6;
+                if (j == 6) {}
+              }
+            }
+          }
+        }
+      }
+    }
     for (;;)
     {
-      localObject1 = localObject2;
-      if (i >= j) {
-        break;
+      if (i >= j)
+      {
+        localObject4 = new StringBuilder("arguments:");
+        ((StringBuilder)localObject4).append(Arrays.toString((Object[])localObject3));
+        Logger.i("Entry64", ((StringBuilder)localObject4).toString());
+        localObject4 = ((Epic.MethodInfo)localObject2).returnType;
+        localObject2 = ((Epic.MethodInfo)localObject2).method;
+        Logger.d("Entry64", "leave bridge function");
+        if (localObject4 == Void.TYPE)
+        {
+          onHookVoid(localObject2, localObject1, (Object[])localObject3);
+          return Integer.valueOf(0);
+        }
+        if (localObject4 == Character.TYPE) {
+          return Character.valueOf(onHookChar(localObject2, localObject1, (Object[])localObject3));
+        }
+        if (localObject4 == Byte.TYPE) {
+          return Byte.valueOf(onHookByte(localObject2, localObject1, (Object[])localObject3));
+        }
+        if (localObject4 == Short.TYPE) {
+          return Short.valueOf(onHookShort(localObject2, localObject1, (Object[])localObject3));
+        }
+        if (localObject4 == Integer.TYPE) {
+          return Integer.valueOf(onHookInt(localObject2, localObject1, (Object[])localObject3));
+        }
+        if (localObject4 == Long.TYPE) {
+          return Long.valueOf(onHookLong(localObject2, localObject1, (Object[])localObject3));
+        }
+        if (localObject4 == Float.TYPE) {
+          return Float.valueOf(onHookFloat(localObject2, localObject1, (Object[])localObject3));
+        }
+        if (localObject4 == Double.TYPE) {
+          return Double.valueOf(onHookDouble(localObject2, localObject1, (Object[])localObject3));
+        }
+        if (localObject4 == Boolean.TYPE) {
+          return Boolean.valueOf(onHookBoolean(localObject2, localObject1, (Object[])localObject3));
+        }
+        return onHookObject(localObject2, localObject1, (Object[])localObject3);
       }
-      localObject1 = EpicNative.get(i * 8 + l2 + 16L, 8);
-      arrayOfObject[i] = wrapArgument(arrayOfClass[i], l1, (byte[])localObject1);
+      localObject4 = EpicNative.get(l2 + i * 8 + 16L, 8);
+      localObject3[i] = wrapArgument(arrayOfClass[i], l1, (byte[])localObject4);
       i += 1;
     }
-    if (localObject2 == Character.TYPE) {
-      return Character.valueOf(onHookChar(localObject3, localObject1, arrayOfObject));
-    }
-    if (localObject2 == Byte.TYPE) {
-      return Byte.valueOf(onHookByte(localObject3, localObject1, arrayOfObject));
-    }
-    if (localObject2 == Short.TYPE) {
-      return Short.valueOf(onHookShort(localObject3, localObject1, arrayOfObject));
-    }
-    if (localObject2 == Integer.TYPE) {
-      return Integer.valueOf(onHookInt(localObject3, localObject1, arrayOfObject));
-    }
-    if (localObject2 == Long.TYPE) {
-      return Long.valueOf(onHookLong(localObject3, localObject1, arrayOfObject));
-    }
-    if (localObject2 == Float.TYPE) {
-      return Float.valueOf(onHookFloat(localObject3, localObject1, arrayOfObject));
-    }
-    if (localObject2 == Double.TYPE) {
-      return Double.valueOf(onHookDouble(localObject3, localObject1, arrayOfObject));
-    }
-    if (localObject2 == Boolean.TYPE) {
-      return Boolean.valueOf(onHookBoolean(localObject3, localObject1, arrayOfObject));
-    }
-    return onHookObject(localObject3, localObject1, arrayOfObject);
   }
   
   private static short shortBridge(long paramLong1, long paramLong2)
@@ -639,14 +644,16 @@ public class Entry64_2
         }
         return Boolean.valueOf(false);
       }
-      throw new RuntimeException("unknown type:" + paramClass);
+      paramArrayOfByte = new StringBuilder("unknown type:");
+      paramArrayOfByte.append(paramClass);
+      throw new RuntimeException(paramArrayOfByte.toString());
     }
     return EpicNative.getObject(paramLong, paramArrayOfByte.getLong());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     me.weishu.epic.art.entry.Entry64_2
  * JD-Core Version:    0.7.0.1
  */

@@ -32,30 +32,32 @@ public class AlbumDecodeHandler
   
   public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    for (paramDownloadParams = null;; paramDownloadParams = (AlbumDecodeHandler.OnDecodeCompleteCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get())
-    {
-      if (paramDownloadParams != null)
-      {
-        int[] arrayOfInt = BitmapOptionUtil.a(Bitmap.createBitmap(paramBitmap, 0, paramBitmap.getHeight() / 2, paramBitmap.getWidth(), paramBitmap.getHeight() / 2));
-        if ((arrayOfInt != null) && (arrayOfInt.length >= 2))
-        {
-          ArrayList localArrayList = new ArrayList();
-          localArrayList.add(Integer.valueOf(arrayOfInt[0]));
-          localArrayList.add(Integer.valueOf(arrayOfInt[1]));
-          if (!jdField_a_of_type_JavaUtilHashMap.containsKey(this.jdField_a_of_type_JavaLangString)) {
-            jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_JavaLangString, localArrayList);
-          }
-        }
-        paramDownloadParams.a(this.jdField_a_of_type_JavaLangString, arrayOfInt[0], arrayOfInt[1], this.jdField_a_of_type_JavaLangObject);
-      }
-      return paramBitmap;
+    paramDownloadParams = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (paramDownloadParams == null) {
+      paramDownloadParams = null;
+    } else {
+      paramDownloadParams = (AlbumDecodeHandler.OnDecodeCompleteCallback)paramDownloadParams.get();
     }
+    if (paramDownloadParams != null)
+    {
+      int[] arrayOfInt = BitmapOptionUtil.a(Bitmap.createBitmap(paramBitmap, 0, paramBitmap.getHeight() / 2, paramBitmap.getWidth(), paramBitmap.getHeight() / 2));
+      if ((arrayOfInt != null) && (arrayOfInt.length >= 2))
+      {
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(Integer.valueOf(arrayOfInt[0]));
+        localArrayList.add(Integer.valueOf(arrayOfInt[1]));
+        if (!jdField_a_of_type_JavaUtilHashMap.containsKey(this.jdField_a_of_type_JavaLangString)) {
+          jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_JavaLangString, localArrayList);
+        }
+      }
+      paramDownloadParams.a(this.jdField_a_of_type_JavaLangString, arrayOfInt[0], arrayOfInt[1], this.jdField_a_of_type_JavaLangObject);
+    }
+    return paramBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.AlbumDecodeHandler
  * JD-Core Version:    0.7.0.1
  */

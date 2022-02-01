@@ -1,78 +1,44 @@
 package com.huawei.hms.stats;
 
 import android.content.Context;
-import java.util.Set;
+import com.huawei.hianalytics.process.HiAnalyticsInstance;
+import com.huawei.hms.utils.HMSBIInitializer;
+import java.util.LinkedHashMap;
 
-public abstract class b
+public class b
 {
-  public static Set<String> a()
+  public static HiAnalyticsInstance a;
+  
+  public static HiAnalyticsInstance a(Context paramContext)
   {
-    return n.a().b();
+    a = HMSBIInitializer.getInstance(paramContext).getAnalyticsInstance();
+    return a;
   }
   
-  public static void a(String paramString)
+  public static void a(Context paramContext, int paramInt)
   {
-    n.a().c().k(paramString);
+    if (a(paramContext) != null) {
+      a.onReport(paramInt);
+    }
   }
   
-  public static String b()
+  public static void a(Context paramContext, int paramInt, String paramString, LinkedHashMap<String, String> paramLinkedHashMap)
   {
-    return n.a().c().f();
+    if (a(paramContext) != null) {
+      a.onEvent(paramInt, paramString, paramLinkedHashMap);
+    }
   }
   
-  public static void b(String paramString)
+  public static void a(Context paramContext, String paramString1, String paramString2)
   {
-    n.a().c().i(paramString);
-  }
-  
-  public static String c()
-  {
-    return n.a().c().i();
-  }
-  
-  public static void c(String paramString)
-  {
-    n.a().c().j(paramString);
-  }
-  
-  public static String d()
-  {
-    return n.a().c().j();
-  }
-  
-  public static String e()
-  {
-    return n.a().c().k();
-  }
-  
-  public static String f()
-  {
-    return n.a().c().l();
-  }
-  
-  public static String g()
-  {
-    return n.a().c().m();
-  }
-  
-  public static int h()
-  {
-    return n.a().c().b();
-  }
-  
-  public static int i()
-  {
-    return n.a().c().c();
-  }
-  
-  public static Context j()
-  {
-    return n.a().c().a();
+    if (a(paramContext) != null) {
+      a.onEvent(paramContext, paramString1, paramString2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.stats.b
  * JD-Core Version:    0.7.0.1
  */

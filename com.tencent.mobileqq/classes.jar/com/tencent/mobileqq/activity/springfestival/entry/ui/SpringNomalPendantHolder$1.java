@@ -18,12 +18,13 @@ class SpringNomalPendantHolder$1
       this.a.jdField_a_of_type_ComTencentMobileqqPortalImageSwitchAnim.b = paramFloat1.floatValue();
       this.a.jdField_a_of_type_ComTencentMobileqqPortalImageSwitchAnim.jdField_a_of_type_Float = this.a.jdField_a_of_type_Float;
     }
-    this.a.a((int)(this.a.d * paramFloat1.floatValue()));
+    paramValueAnimation = this.a;
+    paramValueAnimation.a((int)(paramValueAnimation.d * paramFloat1.floatValue()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.ui.SpringNomalPendantHolder.1
  * JD-Core Version:    0.7.0.1
  */

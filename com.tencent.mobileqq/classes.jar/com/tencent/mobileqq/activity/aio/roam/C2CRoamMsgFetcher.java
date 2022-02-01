@@ -1,13 +1,14 @@
 package com.tencent.mobileqq.activity.aio.roam;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import com.tencent.imcore.message.BaseMsgProxy;
 import com.tencent.imcore.message.IRoamMsgFetcher;
 import com.tencent.imcore.message.MsgProxyUtils;
-import com.tencent.imcore.message.QQMessageFacade.RefreshMessageContext;
-import com.tencent.mobileqq.apollo.api.handler.IApolloExtensionHandler;
+import com.tencent.imcore.message.RefreshMessageContext;
+import com.tencent.mobileqq.apollo.handler.IApolloExtensionHandler;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.MessageRoamManager;
@@ -22,7 +23,7 @@ import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.RoamDate;
 import com.tencent.mobileqq.data.RoamMessagePreloadInfo;
 import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
-import com.tencent.mobileqq.graytip.UniteGrayTipUtil;
+import com.tencent.mobileqq.graytip.UniteGrayTipMsgUtil;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -34,7 +35,6 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import java.util.List<Lcom.tencent.mobileqq.data.MessageRecord;>;
 import java.util.Locale;
 import mqq.manager.AccountManager;
 import oicq.wlogin_sdk.devicelock.DevlockInfo;
@@ -92,14 +92,28 @@ public class C2CRoamMsgFetcher
   private void a(QQAppInterface paramQQAppInterface)
   {
     paramQQAppInterface = (MessageRoamManager)paramQQAppInterface.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
-    if (((paramQQAppInterface.d()) && (paramQQAppInterface.a() == 3)) || ((paramQQAppInterface.c()) && (paramQQAppInterface.a() == 2)) || ((paramQQAppInterface.c()) && ((paramQQAppInterface.a() == 0) || (paramQQAppInterface.a() == 1)))) {}
-    while ((paramQQAppInterface.a() == 4) || (!this.jdField_d_of_type_Boolean) || (paramQQAppInterface.a() != 2)) {
-      return;
+    if (((!paramQQAppInterface.d()) || (paramQQAppInterface.a() != 3)) && ((!paramQQAppInterface.c()) || (paramQQAppInterface.a() != 2)))
+    {
+      if (paramQQAppInterface.c())
+      {
+        if (paramQQAppInterface.a() == 0) {
+          return;
+        }
+        if (paramQQAppInterface.a() == 1) {
+          return;
+        }
+      }
+      if (paramQQAppInterface.a() == 4) {
+        return;
+      }
+      if ((this.jdField_d_of_type_Boolean) && (paramQQAppInterface.a() == 2))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("C2CMsgRoamProxy", 2, "query failed, continue");
+        }
+        paramQQAppInterface.g();
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CMsgRoamProxy", 2, "query failed, continue");
-    }
-    paramQQAppInterface.g();
   }
   
   private void a(MessageRecord paramMessageRecord, int paramInt)
@@ -122,63 +136,75 @@ public class C2CRoamMsgFetcher
   {
     int j = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.b();
     boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.g();
-    Object localObject1;
-    int i;
+    Object localObject2;
     if (QLog.isColorLevel())
     {
       localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.b();
-      localObject2 = new StringBuilder().append("mode: ").append(j).append(", isSetPasswd: ").append(bool).append(", refreshTimeLine: ").append(paramBoolean3).append(", devSetup: ").append(paramBoolean1).append(", allowSet: ").append(paramBoolean2).append(", da2 length: ");
-      if (localObject1 == null)
-      {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("mode: ");
+      ((StringBuilder)localObject2).append(j);
+      ((StringBuilder)localObject2).append(", isSetPasswd: ");
+      ((StringBuilder)localObject2).append(bool);
+      ((StringBuilder)localObject2).append(", refreshTimeLine: ");
+      ((StringBuilder)localObject2).append(paramBoolean3);
+      ((StringBuilder)localObject2).append(", devSetup: ");
+      ((StringBuilder)localObject2).append(paramBoolean1);
+      ((StringBuilder)localObject2).append(", allowSet: ");
+      ((StringBuilder)localObject2).append(paramBoolean2);
+      ((StringBuilder)localObject2).append(", da2 length: ");
+      int i;
+      if (localObject1 == null) {
         i = 0;
-        QLog.d("C2CMsgRoamProxy", 2, i);
+      } else {
+        i = localObject1.length;
       }
+      ((StringBuilder)localObject2).append(i);
+      QLog.d("C2CMsgRoamProxy", 2, ((StringBuilder)localObject2).toString());
     }
-    else
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localObject1 == null)
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      if (localObject1 != null) {
-        break label146;
-      }
       QLog.d("C2CMsgRoamProxy", 1, "checkDevAuthSync after destroy");
-    }
-    label146:
-    do
-    {
       return;
-      i = localObject1.length;
-      break;
-      if (j != 1) {
-        break label247;
+    }
+    if (j == 1)
+    {
+      if (paramBoolean1)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.b() != null)
+        {
+          this.g = true;
+          return;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.e("C2CMsgRoamProxy", 2, "devlock is open but no da2 ticket， refresh da2...");
+        }
+        localObject2 = (AccountManager)((QQAppInterface)localObject1).getManager(0);
+        if (localObject2 != null)
+        {
+          this.jdField_f_of_type_ComTencentMobileqqActivityAioRoamC2CRoamMsgFetcher$Signal.a();
+          ((AccountManager)localObject2).refreshDA2(((QQAppInterface)localObject1).getCurrentAccountUin(), new C2CRoamMsgFetcher.3(this));
+          this.jdField_f_of_type_ComTencentMobileqqActivityAioRoamC2CRoamMsgFetcher$Signal.a(30000L);
+          return;
+        }
+        this.g = false;
       }
-    } while (!paramBoolean1);
-    if (this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.b() != null)
-    {
-      this.g = true;
-      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("C2CMsgRoamProxy", 2, "devlock is open but no da2 ticket， refresh da2...");
+    else {
+      this.g = false;
     }
-    Object localObject2 = (AccountManager)((QQAppInterface)localObject1).getManager(0);
-    if (localObject2 != null)
-    {
-      this.jdField_f_of_type_ComTencentMobileqqActivityAioRoamC2CRoamMsgFetcher$Signal.a();
-      ((AccountManager)localObject2).refreshDA2(((QQAppInterface)localObject1).getCurrentAccountUin(), new C2CRoamMsgFetcher.3(this));
-      this.jdField_f_of_type_ComTencentMobileqqActivityAioRoamC2CRoamMsgFetcher$Signal.a(30000L);
-      return;
-    }
-    this.g = false;
-    return;
-    label247:
-    this.g = false;
   }
   
   private boolean a(QQAppInterface paramQQAppInterface, Object paramObject)
   {
     paramObject = (List)paramObject;
     paramQQAppInterface = (MessageRoamManager)paramQQAppInterface.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
-    if ((paramObject == null) || (paramObject.size() == 0))
+    if ((paramObject != null) && (paramObject.size() != 0))
+    {
+      paramQQAppInterface.a();
+      this.jdField_d_of_type_Boolean = false;
+    }
+    else
     {
       if (((paramQQAppInterface.d()) && (paramQQAppInterface.a() == 3)) || ((paramQQAppInterface.c()) && (paramQQAppInterface.a() == 2)) || ((paramQQAppInterface.c()) && ((paramQQAppInterface.a() == 0) || (paramQQAppInterface.a() == 1)))) {
         return true;
@@ -195,11 +221,6 @@ public class C2CRoamMsgFetcher
         }
         return true;
       }
-    }
-    else
-    {
-      if (paramQQAppInterface.a() == 4) {}
-      this.jdField_d_of_type_Boolean = false;
     }
     paramQQAppInterface.h();
     this.jdField_a_of_type_JavaUtilList = paramObject;
@@ -234,8 +255,14 @@ public class C2CRoamMsgFetcher
     this.jdField_b_of_type_ComTencentMobileqqActivityAioRoamC2CRoamMsgFetcher$Signal.a(30000L);
     a(3);
     long l2 = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CMsgRoamProxy", 2, "getRoamMessageTimeLineSync cost: " + (l2 - l1) + ", result: " + this.jdField_a_of_type_Boolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getRoamMessageTimeLineSync cost: ");
+      localStringBuilder.append(l2 - l1);
+      localStringBuilder.append(", result: ");
+      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      QLog.d("C2CMsgRoamProxy", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.f();
     this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.c(this.jdField_a_of_type_Boolean);
@@ -243,58 +270,60 @@ public class C2CRoamMsgFetcher
   
   private void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.i()) {}
-    long l1;
-    long l2;
-    do
-    {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.i()) {
       return;
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      if (localQQAppInterface == null)
-      {
-        QLog.d("C2CMsgRoamProxy", 1, "syncRoamType after destroy");
-        return;
-      }
-      l1 = SystemClock.uptimeMillis();
-      ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).addObserver(this.jdField_a_of_type_ComTencentMobileqqAppSVIPObserver);
-      IApolloExtensionHandler localIApolloExtensionHandler = (IApolloExtensionHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER);
-      this.jdField_c_of_type_ComTencentMobileqqActivityAioRoamC2CRoamMsgFetcher$Signal.a();
-      localIApolloExtensionHandler.a(new String[] { localQQAppInterface.getCurrentAccountUin() }, new int[] { 42255 });
-      this.jdField_c_of_type_ComTencentMobileqqActivityAioRoamC2CRoamMsgFetcher$Signal.a();
-      l2 = SystemClock.uptimeMillis();
-    } while (!QLog.isColorLevel());
-    QLog.d("C2CMsgRoamProxy", 2, "syncRoamType cost: " + (l2 - l1));
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localObject == null)
+    {
+      QLog.d("C2CMsgRoamProxy", 1, "syncRoamType after destroy");
+      return;
+    }
+    long l1 = SystemClock.uptimeMillis();
+    ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).addObserver(this.jdField_a_of_type_ComTencentMobileqqAppSVIPObserver);
+    IApolloExtensionHandler localIApolloExtensionHandler = (IApolloExtensionHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER);
+    this.jdField_c_of_type_ComTencentMobileqqActivityAioRoamC2CRoamMsgFetcher$Signal.a();
+    localIApolloExtensionHandler.a(new String[] { ((QQAppInterface)localObject).getCurrentAccountUin() }, new int[] { 42255 });
+    this.jdField_c_of_type_ComTencentMobileqqActivityAioRoamC2CRoamMsgFetcher$Signal.a();
+    long l2 = SystemClock.uptimeMillis();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("syncRoamType cost: ");
+      ((StringBuilder)localObject).append(l2 - l1);
+      QLog.d("C2CMsgRoamProxy", 2, ((StringBuilder)localObject).toString());
+    }
   }
   
   private void c(int paramInt1, int paramInt2, Object paramObject)
   {
     switch (paramInt1)
     {
-    }
-    for (;;)
-    {
-      this.jdField_c_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("C2CMsgRoamProxy", 2, new Object[] { "handleTimeLineRsp msg:", Integer.valueOf(paramInt1) });
-      }
-      this.jdField_b_of_type_ComTencentMobileqqActivityAioRoamC2CRoamMsgFetcher$Signal.b();
-      return;
-      if (paramInt2 == -1) {}
-      for (;;)
+    default: 
+      break;
+    case 18: 
+      this.jdField_a_of_type_Boolean = true;
+      break;
+    case 17: 
+      this.jdField_a_of_type_Boolean = false;
+      break;
+    case 16: 
+      if (paramInt2 != -1)
       {
-        this.jdField_a_of_type_Boolean = false;
-        break;
-        QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getString(2131692961), 0).a();
+        paramObject = this.jdField_a_of_type_AndroidAppActivity;
+        QQToast.a(paramObject, paramObject.getString(2131692921), 0).a();
       }
       this.jdField_a_of_type_Boolean = false;
-      continue;
-      this.jdField_a_of_type_Boolean = true;
     }
+    this.jdField_c_of_type_Boolean = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("C2CMsgRoamProxy", 2, new Object[] { "handleTimeLineRsp msg:", Integer.valueOf(paramInt1) });
+    }
+    this.jdField_b_of_type_ComTencentMobileqqActivityAioRoamC2CRoamMsgFetcher$Signal.b();
   }
   
   private void c(boolean paramBoolean)
   {
-    boolean bool2 = true;
     if (QLog.isColorLevel()) {
       QLog.d("C2CMsgRoamProxy", 2, "checkDevStatusSync");
     }
@@ -315,25 +344,20 @@ public class C2CRoamMsgFetcher
     DevlockInfo[] arrayOfDevlockInfo = new DevlockInfo[1];
     EquipmentLockImpl.a().a(localQQAppInterface, localQQAppInterface.getCurrentAccountUin(), new C2CRoamMsgFetcher.2(this, l, arrayOfInt, arrayOfDevlockInfo));
     this.jdField_e_of_type_ComTencentMobileqqActivityAioRoamC2CRoamMsgFetcher$Signal.a(30000L);
+    boolean bool2 = false;
     if ((arrayOfInt[0] == 0) && (arrayOfDevlockInfo[0] != null))
     {
       boolean bool1;
-      if (arrayOfDevlockInfo[0].DevSetup == 1)
-      {
+      if (arrayOfDevlockInfo[0].DevSetup == 1) {
         bool1 = true;
-        if (arrayOfDevlockInfo[0].AllowSet != 1) {
-          break label169;
-        }
-      }
-      for (;;)
-      {
-        a(bool1, bool2, paramBoolean);
-        return;
+      } else {
         bool1 = false;
-        break;
-        label169:
-        bool2 = false;
       }
+      if (arrayOfDevlockInfo[0].AllowSet == 1) {
+        bool2 = true;
+      }
+      a(bool1, bool2, paramBoolean);
+      return;
     }
     this.g = false;
   }
@@ -347,55 +371,61 @@ public class C2CRoamMsgFetcher
   
   private void e(int paramInt1, int paramInt2, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CMsgRoamProxy", 2, "handleRoamMessageRsp, what: " + paramInt1);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("handleRoamMessageRsp, what: ");
+      ((StringBuilder)localObject1).append(paramInt1);
+      QLog.d("C2CMsgRoamProxy", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (localObject == null)
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localObject1 == null)
     {
       QLog.d("C2CMsgRoamProxy", 1, "handleRoamMessageRsp after destroy");
       this.jdField_a_of_type_ComTencentMobileqqActivityAioRoamC2CRoamMsgFetcher$Signal.b();
       return;
     }
-    localObject = (MessageRoamManager)((QQAppInterface)localObject).getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
-    Calendar localCalendar;
+    localObject1 = (MessageRoamManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
+    Object localObject2;
     if (paramObject != null)
     {
-      localCalendar = Calendar.getInstance();
+      localObject2 = Calendar.getInstance();
       paramObject = (Long)paramObject;
-      if (paramInt2 != 1) {
-        break label179;
+      int i;
+      if (paramInt2 == 1) {
+        i = 1;
+      } else {
+        i = 0;
       }
-    }
-    label179:
-    for (int i = 1;; i = 0)
-    {
-      localCalendar.setTimeInMillis(paramObject.longValue() * 1000L);
+      ((Calendar)localObject2).setTimeInMillis(paramObject.longValue() * 1000L);
       if (i == 0) {
-        ((MessageRoamManager)localObject).a(localCalendar, false);
-      }
-      switch (paramInt1)
-      {
-      case 3: 
-      default: 
-        return;
-      case 0: 
-        QLog.e("C2CMsgRoamProxy", 2, new Exception("handleRoamMessageRsp"), new Object[0]);
-        ((MessageRoamManager)localObject).e();
-        return;
+        ((MessageRoamManager)localObject1).a((Calendar)localObject2, false);
       }
     }
-    if (paramInt2 == -1) {}
-    for (;;)
+    if (paramInt1 != 0)
     {
-      ((MessageRoamManager)localObject).e();
-      return;
-      paramObject = ((MessageRoamManager)localObject).a();
-      if (paramObject != null) {
-        QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getString(2131692963, new Object[] { Integer.valueOf(paramObject.get(2) + 1), Integer.valueOf(paramObject.get(5)) }), 0).a();
+      if (paramInt1 != 1)
+      {
+        if (paramInt1 != 2) {
+          return;
+        }
+        ((MessageRoamManager)localObject1).e();
+        return;
       }
+      if (paramInt2 != -1)
+      {
+        paramObject = ((MessageRoamManager)localObject1).a();
+        if (paramObject != null)
+        {
+          localObject2 = this.jdField_a_of_type_AndroidAppActivity;
+          QQToast.a((Context)localObject2, ((Activity)localObject2).getString(2131692923, new Object[] { Integer.valueOf(paramObject.get(2) + 1), Integer.valueOf(paramObject.get(5)) }), 0).a();
+        }
+      }
+      ((MessageRoamManager)localObject1).e();
+      return;
     }
-    ((MessageRoamManager)localObject).e();
+    QLog.e("C2CMsgRoamProxy", 2, new Exception("handleRoamMessageRsp"), new Object[0]);
+    ((MessageRoamManager)localObject1).e();
   }
   
   private boolean e()
@@ -417,8 +447,12 @@ public class C2CRoamMsgFetcher
       ((MessageRoamHandler)localObject).a();
       this.jdField_d_of_type_ComTencentMobileqqActivityAioRoamC2CRoamMsgFetcher$Signal.a(30000L);
       long l2 = SystemClock.uptimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("C2CMsgRoamProxy", 2, "getAuthModeSync cost: " + (l2 - l1));
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getAuthModeSync cost: ");
+        ((StringBuilder)localObject).append(l2 - l1);
+        QLog.d("C2CMsgRoamProxy", 2, ((StringBuilder)localObject).toString());
       }
       return true;
     }
@@ -452,29 +486,36 @@ public class C2CRoamMsgFetcher
   @Nullable
   List<ChatMessage> a(int paramInt)
   {
+    long l1;
     if (QLog.isColorLevel())
     {
       localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a();
-      if (localObject != null) {
-        break label90;
+      if (localObject == null) {
+        l1 = 0L;
+      } else {
+        l1 = ((Calendar)localObject).getTimeInMillis();
       }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getHistorySync, current date: ");
+      ((StringBuilder)localObject).append(l1);
+      ((StringBuilder)localObject).append(", type: ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("C2CMsgRoamProxy", 2, ((StringBuilder)localObject).toString());
     }
-    label90:
-    for (long l1 = 0L;; l1 = ((Calendar)localObject).getTimeInMillis())
+    b();
+    this.jdField_d_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaUtilList = null;
+    if (this.jdField_f_of_type_Boolean)
     {
-      QLog.d("C2CMsgRoamProxy", 2, "getHistorySync, current date: " + l1 + ", type: " + paramInt);
-      b();
-      this.jdField_d_of_type_Boolean = true;
-      this.jdField_a_of_type_JavaUtilList = null;
-      if (!this.jdField_f_of_type_Boolean) {
-        break;
-      }
       QLog.w("C2CMsgRoamProxy", 1, "get roam msg canceled");
       return null;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a() == null)
     {
-      QLog.e("C2CMsgRoamProxy", 1, "current page date is null, show roam flag: " + this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.e());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("current page date is null, show roam flag: ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.e());
+      QLog.e("C2CMsgRoamProxy", 1, ((StringBuilder)localObject).toString());
       return null;
     }
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a(paramInt);
@@ -488,109 +529,104 @@ public class C2CRoamMsgFetcher
       }
       this.jdField_a_of_type_ComTencentMobileqqActivityAioRoamC2CRoamMsgFetcher$Signal.a(30000L);
       long l2 = SystemClock.uptimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("C2CMsgRoamProxy", 2, "getHistorySync cost: " + (l2 - l1));
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getHistorySync cost: ");
+        ((StringBuilder)localObject).append(l2 - l1);
+        QLog.d("C2CMsgRoamProxy", 2, ((StringBuilder)localObject).toString());
       }
     }
-    for (;;)
+    else if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_JavaUtilCalendar = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a();
-      return this.jdField_a_of_type_JavaUtilList;
-      if (QLog.isColorLevel()) {
-        QLog.w("C2CMsgRoamProxy", 2, "preload info is null");
-      }
+      QLog.w("C2CMsgRoamProxy", 2, "preload info is null");
     }
+    this.jdField_a_of_type_JavaUtilCalendar = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a();
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
   @Nullable
   List<ChatMessage> a(List<MessageRecord> paramList, long paramLong, MessageRecord paramMessageRecord)
   {
-    Object localObject = a(1);
-    if (localObject == null) {
-      paramList = null;
+    Object localObject1 = a(1);
+    if (localObject1 == null) {
+      return null;
     }
-    for (;;)
+    Object localObject2 = new ArrayList();
+    Iterator localIterator1 = paramList.iterator();
+    while (localIterator1.hasNext())
     {
-      return paramList;
-      ArrayList localArrayList = new ArrayList();
-      Iterator localIterator1 = paramList.iterator();
-      while (localIterator1.hasNext())
+      MessageRecord localMessageRecord = (MessageRecord)localIterator1.next();
+      Iterator localIterator2 = ((List)localObject1).iterator();
+      while (localIterator2.hasNext())
       {
-        MessageRecord localMessageRecord = (MessageRecord)localIterator1.next();
-        Iterator localIterator2 = ((List)localObject).iterator();
-        while (localIterator2.hasNext())
-        {
-          ChatMessage localChatMessage = (ChatMessage)localIterator2.next();
-          if (MsgProxyUtils.a(localMessageRecord, localChatMessage, true)) {
-            localArrayList.add(localChatMessage);
-          }
-        }
-      }
-      ((List)localObject).removeAll(localArrayList);
-      if ((((List)localObject).size() > 0) && (paramMessageRecord != null) && (UniteGrayTipUtil.a(paramMessageRecord)) && (((ChatMessage)((List)localObject).get(0)).time >= paramMessageRecord.time))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("C2CMsgRoamProxy", 2, "roam msg is later than top revoke msg. revoke msg time: " + paramMessageRecord.time + ", top msg time: " + ((ChatMessage)((List)localObject).get(0)).time);
-        }
-        try
-        {
-          Thread.sleep(200L);
-          localObject = new ArrayList((Collection)localObject);
-          paramMessageRecord = a(paramList, paramLong, paramMessageRecord);
-          paramList = (List<MessageRecord>)localObject;
-          if (paramMessageRecord != null)
-          {
-            ((List)localObject).addAll(0, paramMessageRecord);
-            return localObject;
-          }
-        }
-        catch (InterruptedException localInterruptedException2)
-        {
-          for (;;)
-          {
-            localInterruptedException2.printStackTrace();
-          }
+        ChatMessage localChatMessage = (ChatMessage)localIterator2.next();
+        if (MsgProxyUtils.a(localMessageRecord, localChatMessage, true)) {
+          ((ArrayList)localObject2).add(localChatMessage);
         }
       }
     }
-    if ((((List)localObject).size() == 0) || ((paramLong != 0L) && (((ChatMessage)((List)localObject).get(0)).time >= paramLong)) || ((paramLong == 0L) && (paramMessageRecord != null) && (((ChatMessage)((List)localObject).get(0)).time >= paramMessageRecord.time)))
+    ((List)localObject1).removeAll((Collection)localObject2);
+    if ((((List)localObject1).size() > 0) && (paramMessageRecord != null) && (UniteGrayTipMsgUtil.a(paramMessageRecord)) && (((ChatMessage)((List)localObject1).get(0)).time >= paramMessageRecord.time))
     {
-      StringBuilder localStringBuilder;
       if (QLog.isColorLevel())
       {
-        localStringBuilder = new StringBuilder().append("get duplicate msg, try again. break time: ").append(paramLong).append(", top msg time: ");
-        if (((List)localObject).size() != 0) {
-          break label428;
-        }
-        localObject = "";
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("roam msg is later than top revoke msg. revoke msg time: ");
+        ((StringBuilder)localObject2).append(paramMessageRecord.time);
+        ((StringBuilder)localObject2).append(", top msg time: ");
+        ((StringBuilder)localObject2).append(((ChatMessage)((List)localObject1).get(0)).time);
+        QLog.d("C2CMsgRoamProxy", 2, ((StringBuilder)localObject2).toString());
       }
-      for (;;)
+      try
       {
-        QLog.d("C2CMsgRoamProxy", 2, localObject);
-        try
-        {
-          Thread.sleep(200L);
-          return a(paramList, paramLong, paramMessageRecord);
-          label428:
-          localObject = Long.valueOf(((ChatMessage)((List)localObject).get(0)).time);
-        }
-        catch (InterruptedException localInterruptedException1)
-        {
-          for (;;)
-          {
-            QLog.e("C2CMsgRoamProxy", 1, localInterruptedException1, new Object[0]);
-          }
-        }
+        Thread.sleep(200L);
       }
+      catch (InterruptedException localInterruptedException2)
+      {
+        localInterruptedException2.printStackTrace();
+      }
+      localObject1 = new ArrayList((Collection)localObject1);
+      paramList = a(paramList, paramLong, paramMessageRecord);
+      if (paramList != null) {
+        ((List)localObject1).addAll(0, paramList);
+      }
+      return localObject1;
     }
-    return localInterruptedException1;
+    if ((((List)localObject1).size() != 0) && ((paramLong == 0L) || (((ChatMessage)((List)localObject1).get(0)).time < paramLong)) && ((paramLong != 0L) || (paramMessageRecord == null) || (((ChatMessage)((List)localObject1).get(0)).time < paramMessageRecord.time))) {
+      return localObject1;
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("get duplicate msg, try again. break time: ");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(", top msg time: ");
+      if (((List)localObject1).size() == 0) {
+        localObject1 = "";
+      } else {
+        localObject1 = Long.valueOf(((ChatMessage)((List)localObject1).get(0)).time);
+      }
+      localStringBuilder.append(localObject1);
+      QLog.d("C2CMsgRoamProxy", 2, localStringBuilder.toString());
+    }
+    try
+    {
+      Thread.sleep(200L);
+    }
+    catch (InterruptedException localInterruptedException1)
+    {
+      QLog.e("C2CMsgRoamProxy", 1, localInterruptedException1, new Object[0]);
+    }
+    return a(paramList, paramLong, paramMessageRecord);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager != null)
+    MessageRoamManager localMessageRoamManager = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager;
+    if (localMessageRoamManager != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.q();
+      localMessageRoamManager.q();
       this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a(hashCode());
       this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.b(this);
       ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppSVIPObserver);
@@ -600,8 +636,12 @@ public class C2CRoamMsgFetcher
   
   public void a(int paramInt1, int paramInt2, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CMsgRoamProxy", 2, "handleQueryMessageFromDBRsp, what: " + paramInt1);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleQueryMessageFromDBRsp, what: ");
+      ((StringBuilder)localObject).append(paramInt1);
+      QLog.d("C2CMsgRoamProxy", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
     if (localObject == null)
@@ -610,32 +650,33 @@ public class C2CRoamMsgFetcher
       this.jdField_a_of_type_ComTencentMobileqqActivityAioRoamC2CRoamMsgFetcher$Signal.b();
       return;
     }
-    switch (paramInt1)
+    if (paramInt1 != 22)
     {
-    default: 
-      if (QLog.isColorLevel())
-      {
-        paramObject = this.jdField_a_of_type_JavaUtilList;
-        localObject = new StringBuilder().append("getHistorySig notify, result ");
-        if (paramObject != null) {
-          break label161;
-        }
-      }
-      break;
+      if ((paramInt1 != 23) || (a((QQAppInterface)localObject, paramObject))) {}
     }
-    label161:
-    for (paramObject = "is null";; paramObject = " size: " + paramObject.size())
-    {
-      QLog.d("C2CMsgRoamProxy", 2, paramObject);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRoamC2CRoamMsgFetcher$Signal.b();
-      return;
+    else {
       a((QQAppInterface)localObject);
-      break;
-      if (a((QQAppInterface)localObject, paramObject)) {
-        break;
-      }
-      return;
     }
+    if (QLog.isColorLevel())
+    {
+      paramObject = this.jdField_a_of_type_JavaUtilList;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getHistorySig notify, result ");
+      if (paramObject == null)
+      {
+        paramObject = "is null";
+      }
+      else
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" size: ");
+        localStringBuilder.append(paramObject.size());
+        paramObject = localStringBuilder.toString();
+      }
+      ((StringBuilder)localObject).append(paramObject);
+      QLog.d("C2CMsgRoamProxy", 2, ((StringBuilder)localObject).toString());
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioRoamC2CRoamMsgFetcher$Signal.b();
   }
   
   public void a(MessageRoamManager.MessageRoamListener paramMessageRoamListener)
@@ -653,19 +694,32 @@ public class C2CRoamMsgFetcher
   
   void a(String paramString, int paramInt1, ArrayList<MessageRecord> paramArrayList, int paramInt2, long paramLong, Calendar paramCalendar)
   {
-    if (paramArrayList.size() > 0) {}
-    for (long l1 = ((MessageRecord)paramArrayList.get(0)).time;; l1 = paramLong)
+    long l1;
+    if (paramArrayList.size() > 0) {
+      l1 = ((MessageRecord)paramArrayList.get(0)).time;
+    } else {
+      l1 = paramLong;
+    }
+    long l2 = paramCalendar.getTimeInMillis() / 1000L;
+    paramCalendar = new StringBuilder();
+    paramCalendar.append("query local msg from ");
+    paramCalendar.append(l1);
+    paramCalendar.append(" to ");
+    paramCalendar.append(l2);
+    QLog.d("C2CMsgRoamProxy", 1, paramCalendar.toString());
+    if ((paramLong >= 0L) && (paramLong > l2))
     {
-      long l2 = paramCalendar.getTimeInMillis() / 1000L;
-      QLog.d("C2CMsgRoamProxy", 1, "query local msg from " + l1 + " to " + l2);
-      if ((paramLong >= 0L) && (paramLong > l2))
+      paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageProxy(paramInt1).a(paramString, paramInt1, l1, paramInt2, String.format(Locale.getDefault(), "time>=%d", new Object[] { Long.valueOf(l2) }));
+      if ((paramString.size() > 0) && (QLog.isColorLevel()))
       {
-        paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageProxy(paramInt1).a(paramString, paramInt1, l1, paramInt2, String.format(Locale.getDefault(), "time>=%d", new Object[] { Long.valueOf(l2) }));
-        if ((paramString.size() > 0) && (QLog.isColorLevel())) {
-          QLog.d("C2CMsgRoamProxy", 2, "query local msg size: " + paramString.size() + ", first msg: " + ((MessageRecord)paramString.get(0)).toString());
-        }
-        paramArrayList.addAll(0, paramString);
+        paramCalendar = new StringBuilder();
+        paramCalendar.append("query local msg size: ");
+        paramCalendar.append(paramString.size());
+        paramCalendar.append(", first msg: ");
+        paramCalendar.append(((MessageRecord)paramString.get(0)).toString());
+        QLog.d("C2CMsgRoamProxy", 2, paramCalendar.toString());
       }
+      paramArrayList.addAll(0, paramString);
       return;
     }
   }
@@ -705,33 +759,43 @@ public class C2CRoamMsgFetcher
       QLog.d("C2CMsgRoamProxy", 2, "isDevOpened");
     }
     long l1 = SystemClock.uptimeMillis();
-    boolean bool1 = NetworkUtil.d(BaseApplication.getContext());
+    boolean bool1 = NetworkUtil.isNetSupport(BaseApplication.getContext());
     c();
     boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.h();
-    if ((!bool1) || (!bool2)) {
-      return false;
-    }
-    if (!this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.f())
+    if (bool1)
     {
-      e();
-      if (this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.f()) {
+      if (!bool2) {
+        return false;
+      }
+      if (!this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.f())
+      {
+        e();
+        if (this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.f()) {
+          c(false);
+        } else {
+          this.g = false;
+        }
+      }
+      else
+      {
         c(false);
       }
-    }
-    for (;;)
-    {
       long l2 = SystemClock.uptimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("C2CMsgRoamProxy", 2, "isDevOpened cost: " + (l2 - l1) + ", ret: " + this.g);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isDevOpened cost: ");
+        localStringBuilder.append(l2 - l1);
+        localStringBuilder.append(", ret: ");
+        localStringBuilder.append(this.g);
+        QLog.d("C2CMsgRoamProxy", 2, localStringBuilder.toString());
       }
       return this.g;
-      this.g = false;
-      continue;
-      c(false);
     }
+    return false;
   }
   
-  public boolean a(String paramString, int paramInt1, int paramInt2, QQMessageFacade.RefreshMessageContext paramRefreshMessageContext, ArrayList<MessageRecord> paramArrayList, MessageRecord paramMessageRecord, long paramLong)
+  public boolean a(String paramString, int paramInt1, int paramInt2, RefreshMessageContext paramRefreshMessageContext, ArrayList<MessageRecord> paramArrayList, MessageRecord paramMessageRecord, long paramLong)
   {
     int i = a(paramString, paramInt1, paramArrayList);
     if (i == 0) {
@@ -740,27 +804,29 @@ public class C2CRoamMsgFetcher
     this.jdField_f_of_type_Boolean = false;
     int j = paramArrayList.size();
     long l;
-    if (paramMessageRecord == null)
-    {
+    if (paramMessageRecord == null) {
       l = NetConnInfoCenter.getServerTime();
-      if ((paramMessageRecord != null) && ((this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager == null) || (!this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.e()) || (this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a() != null))) {
-        break label116;
+    } else {
+      l = paramMessageRecord.time;
+    }
+    if (paramMessageRecord != null)
+    {
+      paramRefreshMessageContext = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager;
+      if ((paramRefreshMessageContext == null) || (!paramRefreshMessageContext.e()) || (this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a() != null))
+      {
+        bool = false;
+        break label95;
       }
     }
-    label116:
-    for (boolean bool = true;; bool = false)
+    boolean bool = true;
+    label95:
+    a(bool);
+    b();
+    if (!this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.h())
     {
-      a(bool);
-      b();
-      if (this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.h()) {
-        break label122;
-      }
       QLog.i("C2CMsgRoamProxy", 1, "not open roam");
       return false;
-      l = paramMessageRecord.time;
-      break;
     }
-    label122:
     a(paramMessageRecord, i);
     this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.c(true);
     if (a() == null)
@@ -768,21 +834,17 @@ public class C2CRoamMsgFetcher
       QLog.w("C2CMsgRoamProxy", 1, "current page date is null, init again");
       paramRefreshMessageContext = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.d;
       a(true);
-      if (paramRefreshMessageContext == null) {
-        break label203;
+      if (paramRefreshMessageContext != null) {
+        a(paramRefreshMessageContext);
+      } else {
+        QLog.d("C2CMsgRoamProxy", 1, "last query date is null");
       }
-      a(paramRefreshMessageContext);
     }
-    for (;;)
+    bool = c();
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
     {
-      bool = c();
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        break;
-      }
       QLog.w("C2CMsgRoamProxy", 1, "getRoamMsg app is null");
       return true;
-      label203:
-      QLog.d("C2CMsgRoamProxy", 1, "last query date is null");
     }
     paramRefreshMessageContext = a();
     if (paramRefreshMessageContext == null)
@@ -800,123 +862,105 @@ public class C2CRoamMsgFetcher
         QLog.d("C2CMsgRoamProxy", 1, "check auth failed");
         return false;
       }
-      if (!d()) {
-        break label424;
-      }
-      paramString = a(paramArrayList, paramLong, paramMessageRecord);
-      if (paramString == null) {
-        break label412;
-      }
-      if (QLog.isColorLevel())
+      if (d())
       {
-        QLog.d("C2CMsgRoamProxy", 2, "get roam msg size: " + paramString.size());
-        if (paramString.size() > 0) {
-          QLog.d("C2CMsgRoamProxy", 2, "first roam msg: " + ((ChatMessage)paramString.get(0)).toString());
+        paramString = a(paramArrayList, paramLong, paramMessageRecord);
+        if (paramString != null)
+        {
+          if (QLog.isColorLevel())
+          {
+            paramRefreshMessageContext = new StringBuilder();
+            paramRefreshMessageContext.append("get roam msg size: ");
+            paramRefreshMessageContext.append(paramString.size());
+            QLog.d("C2CMsgRoamProxy", 2, paramRefreshMessageContext.toString());
+            if (paramString.size() > 0)
+            {
+              paramRefreshMessageContext = new StringBuilder();
+              paramRefreshMessageContext.append("first roam msg: ");
+              paramRefreshMessageContext.append(((ChatMessage)paramString.get(0)).toString());
+              QLog.d("C2CMsgRoamProxy", 2, paramRefreshMessageContext.toString());
+            }
+          }
+          paramArrayList.addAll(0, paramString);
+          return true;
         }
+        QLog.d("C2CMsgRoamProxy", 1, "no more roam msg");
+        return true;
       }
-      paramArrayList.addAll(0, paramString);
+      QLog.d("C2CMsgRoamProxy", 1, "get timeline failed");
+      return false;
     }
-    for (;;)
-    {
-      return true;
-      label412:
-      QLog.d("C2CMsgRoamProxy", 1, "no more roam msg");
-    }
-    label424:
-    QLog.d("C2CMsgRoamProxy", 1, "get timeline failed");
-    return false;
+    return true;
   }
   
   public void b(int paramInt1, int paramInt2, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CMsgRoamProxy", 2, "onHandleMsg: " + paramInt1);
-    }
-    switch (paramInt1)
+    if (QLog.isColorLevel())
     {
-    case 5: 
-    case 6: 
-    case 7: 
-    case 8: 
-    case 9: 
-    case 10: 
-    case 11: 
-    case 12: 
-    case 13: 
-    case 14: 
-    case 15: 
-    case 26: 
-    case 27: 
-    case 28: 
-    case 29: 
-    case 30: 
-    case 31: 
-    case 32: 
-    case 33: 
-    default: 
-      return;
-    case 0: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-      e(paramInt1, paramInt2, paramObject);
-      return;
-    case 22: 
-    case 23: 
-      a(paramInt1, paramInt2, paramObject);
-      return;
-    case 16: 
-    case 17: 
-    case 18: 
-    case 19: 
-    case 20: 
-    case 21: 
-      c(paramInt1, paramInt2, paramObject);
-      return;
-    case 34: 
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onHandleMsg: ");
+      localStringBuilder.append(paramInt1);
+      QLog.d("C2CMsgRoamProxy", 2, localStringBuilder.toString());
+    }
+    if ((paramInt1 != 0) && (paramInt1 != 1) && (paramInt1 != 2) && (paramInt1 != 3) && (paramInt1 != 4))
+    {
+      if (paramInt1 != 34)
+      {
+        switch (paramInt1)
+        {
+        default: 
+          return;
+        case 24: 
+        case 25: 
+          d(paramInt1, paramInt2, paramObject);
+          return;
+        case 22: 
+        case 23: 
+          a(paramInt1, paramInt2, paramObject);
+          return;
+        }
+        c(paramInt1, paramInt2, paramObject);
+        return;
+      }
       if (QLog.isColorLevel()) {
         QLog.d("C2CMsgRoamProxy", 2, "handle_get_roam_msg_auth_mode notify");
       }
       this.jdField_d_of_type_ComTencentMobileqqActivityAioRoamC2CRoamMsgFetcher$Signal.b();
       return;
     }
-    d(paramInt1, paramInt2, paramObject);
+    e(paramInt1, paramInt2, paramObject);
   }
   
   boolean b()
   {
-    boolean bool2 = false;
     if (QLog.isColorLevel()) {
       QLog.d("C2CMsgRoamProxy", 2, "startQueryTimeLineSync");
     }
-    boolean bool1;
     if (this.jdField_c_of_type_Boolean) {
-      bool1 = this.jdField_a_of_type_Boolean;
+      return this.jdField_a_of_type_Boolean;
     }
-    long l1;
-    boolean bool4;
-    do
+    b();
+    long l1 = SystemClock.uptimeMillis();
+    boolean bool1 = NetworkUtil.isNetSupport(BaseApplication.getContext());
+    c();
+    boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.h();
+    if (bool1)
     {
-      boolean bool3;
-      do
+      if (!bool2) {
+        return false;
+      }
+      b(false);
+      long l2 = SystemClock.uptimeMillis();
+      if (QLog.isColorLevel())
       {
-        return bool1;
-        b();
-        l1 = SystemClock.uptimeMillis();
-        bool3 = NetworkUtil.d(BaseApplication.getContext());
-        c();
-        bool4 = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.h();
-        bool1 = bool2;
-      } while (!bool3);
-      bool1 = bool2;
-    } while (!bool4);
-    b(false);
-    long l2 = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CMsgRoamProxy", 2, "startQueryTimeLineSync cost: " + (l2 - l1));
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("startQueryTimeLineSync cost: ");
+        localStringBuilder.append(l2 - l1);
+        QLog.d("C2CMsgRoamProxy", 2, localStringBuilder.toString());
+      }
+      return this.jdField_a_of_type_Boolean;
     }
-    return this.jdField_a_of_type_Boolean;
+    return false;
   }
   
   boolean c()
@@ -928,7 +972,10 @@ public class C2CRoamMsgFetcher
     }
     if (this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.b() == null)
     {
-      QLog.e("C2CMsgRoamProxy", 1, "can not get first page date, roam flag: " + this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.e());
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("can not get first page date, roam flag: ");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.e());
+      QLog.e("C2CMsgRoamProxy", 1, ((StringBuilder)localObject1).toString());
       return true;
     }
     long l = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.b().getTimeInMillis();
@@ -938,8 +985,12 @@ public class C2CRoamMsgFetcher
       localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a().a(this.jdField_a_of_type_JavaLangString, ((Calendar)localObject1).get(1), ((Calendar)localObject1).get(2) + 1);
       if (localObject2 == null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.w("C2CMsgRoamProxy", 2, "roam date cache is null: " + ((Calendar)localObject1).getTimeInMillis());
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("roam date cache is null: ");
+          ((StringBuilder)localObject2).append(((Calendar)localObject1).getTimeInMillis());
+          QLog.w("C2CMsgRoamProxy", 2, ((StringBuilder)localObject2).toString());
         }
         ((Calendar)localObject1).set(5, 1);
         ((Calendar)localObject1).add(5, -1);
@@ -948,10 +999,19 @@ public class C2CRoamMsgFetcher
       else
       {
         this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a(((Calendar)localObject1).get(1), ((Calendar)localObject1).get(2), i);
-        int j = ((RoamDate)localObject2).getLocState(i - 1);
-        int k = ((RoamDate)localObject2).getSerState(i - 1);
-        if (QLog.isColorLevel()) {
-          QLog.d("C2CMsgRoamProxy", 2, "ser: " + k + ", local: " + j + ", day: " + i);
+        int k = i - 1;
+        int j = ((RoamDate)localObject2).getLocState(k);
+        k = ((RoamDate)localObject2).getSerState(k);
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("ser: ");
+          ((StringBuilder)localObject2).append(k);
+          ((StringBuilder)localObject2).append(", local: ");
+          ((StringBuilder)localObject2).append(j);
+          ((StringBuilder)localObject2).append(", day: ");
+          ((StringBuilder)localObject2).append(i);
+          QLog.d("C2CMsgRoamProxy", 2, ((StringBuilder)localObject2).toString());
         }
         if ((k == 2) && ((j == 1) || (j == 2) || (j == 0)))
         {
@@ -968,7 +1028,7 @@ public class C2CRoamMsgFetcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.roam.C2CRoamMsgFetcher
  * JD-Core Version:    0.7.0.1
  */

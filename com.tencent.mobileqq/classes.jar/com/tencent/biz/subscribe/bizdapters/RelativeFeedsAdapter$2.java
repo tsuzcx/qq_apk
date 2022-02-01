@@ -28,7 +28,7 @@ class RelativeFeedsAdapter$2
         }
       }
       this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter.notifyDataSetChanged();
-      QQToast.a(RelativeFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter), 2, HardCodeUtil.a(2131690851), 0).a();
+      QQToast.a(RelativeFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter), 2, HardCodeUtil.a(2131690779), 0).a();
       if (this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter.b().size() < 5) {
         this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter.o();
       }
@@ -40,7 +40,7 @@ class RelativeFeedsAdapter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.bizdapters.RelativeFeedsAdapter.2
  * JD-Core Version:    0.7.0.1
  */

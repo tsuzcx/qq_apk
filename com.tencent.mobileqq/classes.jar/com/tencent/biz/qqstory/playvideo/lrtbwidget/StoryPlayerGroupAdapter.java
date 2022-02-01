@@ -2,9 +2,9 @@ package com.tencent.biz.qqstory.playvideo.lrtbwidget;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.viewpager.widget.PagerAdapter;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.playvideo.dataprovider.IDataProvider.FakeGroupInfo;
 import com.tencent.biz.qqstory.playvideo.dataprovider.IDataProvider.GroupId;
@@ -37,39 +37,58 @@ public class StoryPlayerGroupAdapter
   {
     IDataProvider.GroupInfo localGroupInfo = (IDataProvider.GroupInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     ArrayList localArrayList = new ArrayList();
-    if (localGroupInfo.c()) {
-      if ((localGroupInfo instanceof IDataProvider.FakeGroupInfo)) {
-        localArrayList.add(StoryPlayerVideoData.a("LoadingGroup-" + localGroupInfo.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId.a, null, "Fake-Loading"));
-      }
-    }
-    for (;;)
+    Object localObject;
+    if (localGroupInfo.c())
     {
-      paramStoryPlayerGroupHolder.a(paramInt, localGroupInfo, localArrayList);
-      return;
-      localArrayList.add(StoryPlayerVideoData.a("LoadingGroup-" + localGroupInfo.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId.a, null, ((UIGroupInfo)localGroupInfo).b));
-      continue;
-      if (localGroupInfo.b())
+      if ((localGroupInfo instanceof IDataProvider.FakeGroupInfo))
       {
-        if ((localGroupInfo instanceof IDataProvider.FakeGroupInfo)) {
-          localArrayList.add(StoryPlayerVideoData.a("ErrorGroup-" + localGroupInfo.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId.a, null, ((IDataProvider.FakeGroupInfo)localGroupInfo).a));
-        } else {
-          localArrayList.add(StoryPlayerVideoData.a("ErrorGroup-" + localGroupInfo.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId.a, null, ((UIGroupInfo)localGroupInfo).a));
-        }
-      }
-      else if (localGroupInfo.jdField_a_of_type_JavaUtilList.isEmpty())
-      {
-        localArrayList.add(StoryPlayerVideoData.a("EmptyGroup-" + localGroupInfo.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId.a, null, new ErrorMessage(97000000, "no vid")));
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("LoadingGroup-");
+        ((StringBuilder)localObject).append(localGroupInfo.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId.a);
+        localArrayList.add(StoryPlayerVideoData.a(((StringBuilder)localObject).toString(), null, "Fake-Loading"));
       }
       else
       {
-        Iterator localIterator = localGroupInfo.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          localArrayList.add(new StoryPlayerVideoData(str, (String)localGroupInfo.jdField_a_of_type_JavaUtilMap.get(str)));
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("LoadingGroup-");
+        ((StringBuilder)localObject).append(localGroupInfo.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId.a);
+        localArrayList.add(StoryPlayerVideoData.a(((StringBuilder)localObject).toString(), null, ((UIGroupInfo)localGroupInfo).b));
       }
     }
+    else if (localGroupInfo.b())
+    {
+      if ((localGroupInfo instanceof IDataProvider.FakeGroupInfo))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("ErrorGroup-");
+        ((StringBuilder)localObject).append(localGroupInfo.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId.a);
+        localArrayList.add(StoryPlayerVideoData.a(((StringBuilder)localObject).toString(), null, ((IDataProvider.FakeGroupInfo)localGroupInfo).a));
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("ErrorGroup-");
+        ((StringBuilder)localObject).append(localGroupInfo.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId.a);
+        localArrayList.add(StoryPlayerVideoData.a(((StringBuilder)localObject).toString(), null, ((UIGroupInfo)localGroupInfo).a));
+      }
+    }
+    else if (localGroupInfo.jdField_a_of_type_JavaUtilList.isEmpty())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("EmptyGroup-");
+      ((StringBuilder)localObject).append(localGroupInfo.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId.a);
+      localArrayList.add(StoryPlayerVideoData.a(((StringBuilder)localObject).toString(), null, new ErrorMessage(97000000, "no vid")));
+    }
+    else
+    {
+      localObject = localGroupInfo.jdField_a_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str = (String)((Iterator)localObject).next();
+        localArrayList.add(new StoryPlayerVideoData(str, (String)localGroupInfo.jdField_a_of_type_JavaUtilMap.get(str)));
+      }
+    }
+    paramStoryPlayerGroupHolder.a(paramInt, localGroupInfo, localArrayList);
   }
   
   @Deprecated
@@ -143,7 +162,12 @@ public class StoryPlayerGroupAdapter
     SLog.a("Q.qqstory.playernew.StoryPlayerGroupAdapter", "instantiateItem, verticalPosition = %d", Integer.valueOf(paramInt));
     if ((IDataProvider.GroupInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt) == null)
     {
-      AssertUtils.a(false, "can not get group info by position = " + paramInt + ", size = " + this.jdField_a_of_type_JavaUtilArrayList.size());
+      paramViewGroup = new StringBuilder();
+      paramViewGroup.append("can not get group info by position = ");
+      paramViewGroup.append(paramInt);
+      paramViewGroup.append(", size = ");
+      paramViewGroup.append(this.jdField_a_of_type_JavaUtilArrayList.size());
+      AssertUtils.assertTrue(false, paramViewGroup.toString());
       return null;
     }
     StoryPlayerGroupHolder localStoryPlayerGroupHolder2 = (StoryPlayerGroupHolder)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGlobalHolder.a().a(StoryPlayerGroupHolder.class);
@@ -165,9 +189,10 @@ public class StoryPlayerGroupAdapter
   
   public boolean isViewFromObject(View paramView, Object paramObject)
   {
+    boolean bool3 = paramObject instanceof StoryPlayerGroupHolder;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if ((paramObject instanceof StoryPlayerGroupHolder))
+    if (bool3)
     {
       bool1 = bool2;
       if (((StoryPlayerGroupHolder)paramObject).jdField_a_of_type_AndroidViewView == paramView) {
@@ -179,7 +204,7 @@ public class StoryPlayerGroupAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupAdapter
  * JD-Core Version:    0.7.0.1
  */

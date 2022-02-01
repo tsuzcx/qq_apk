@@ -10,68 +10,79 @@ class RepeaterParser
 {
   static Repeater parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
-    AnimatableTransform localAnimatableTransform = null;
-    boolean bool = false;
-    AnimatableFloatValue localAnimatableFloatValue1 = null;
-    AnimatableFloatValue localAnimatableFloatValue2 = null;
     String str1 = null;
-    label14:
+    Object localObject1 = str1;
+    Object localObject2 = localObject1;
+    Object localObject3 = localObject2;
+    boolean bool = false;
     while (paramJsonReader.hasNext())
     {
       String str2 = paramJsonReader.nextName();
       int i = -1;
-      switch (str2.hashCode())
+      int j = str2.hashCode();
+      if (j != 99)
       {
-      }
-      for (;;)
-      {
-        switch (i)
+        if (j != 111)
         {
-        default: 
-          paramJsonReader.skipValue();
-          break label14;
-          if (str2.equals("nm"))
+          if (j != 3324)
           {
-            i = 0;
-            continue;
-            if (str2.equals("c"))
+            if (j != 3519)
             {
-              i = 1;
-              continue;
-              if (str2.equals("o"))
-              {
-                i = 2;
-                continue;
-                if (str2.equals("tr"))
-                {
-                  i = 3;
-                  continue;
-                  if (str2.equals("hd")) {
-                    i = 4;
-                  }
-                }
+              if ((j == 3710) && (str2.equals("tr"))) {
+                i = 3;
               }
             }
+            else if (str2.equals("nm")) {
+              i = 0;
+            }
           }
-          break;
+          else if (str2.equals("hd")) {
+            i = 4;
+          }
+        }
+        else if (str2.equals("o")) {
+          i = 2;
         }
       }
-      str1 = paramJsonReader.nextString();
-      continue;
-      localAnimatableFloatValue2 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
-      continue;
-      localAnimatableFloatValue1 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
-      continue;
-      localAnimatableTransform = AnimatableTransformParser.parse(paramJsonReader, paramLottieComposition);
-      continue;
-      bool = paramJsonReader.nextBoolean();
+      else if (str2.equals("c")) {
+        i = 1;
+      }
+      if (i != 0)
+      {
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            if (i != 3)
+            {
+              if (i != 4) {
+                paramJsonReader.skipValue();
+              } else {
+                bool = paramJsonReader.nextBoolean();
+              }
+            }
+            else {
+              localObject3 = AnimatableTransformParser.parse(paramJsonReader, paramLottieComposition);
+            }
+          }
+          else {
+            localObject2 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
+          }
+        }
+        else {
+          localObject1 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
+        }
+      }
+      else {
+        str1 = paramJsonReader.nextString();
+      }
     }
-    return new Repeater(str1, localAnimatableFloatValue2, localAnimatableFloatValue1, localAnimatableTransform, bool);
+    return new Repeater(str1, (AnimatableFloatValue)localObject1, (AnimatableFloatValue)localObject2, (AnimatableTransform)localObject3, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.RepeaterParser
  * JD-Core Version:    0.7.0.1
  */

@@ -6,6 +6,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Map;
 
 public class stSimpleMetaGdtAdInfo
@@ -144,79 +145,101 @@ public class stSimpleMetaGdtAdInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.isWeishiGdtTangramAdv, 0);
-    if (this.gdtTangramAdJson != null) {
-      paramJceOutputStream.write(this.gdtTangramAdJson, 1);
+    Object localObject = this.gdtTangramAdJson;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.cellId != null) {
-      paramJceOutputStream.write(this.cellId, 2);
+    localObject = this.cellId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.floatingLayerCardStyle != null) {
-      paramJceOutputStream.write(this.floatingLayerCardStyle, 3);
+    localObject = this.floatingLayerCardStyle;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.cookie != null) {
-      paramJceOutputStream.write(this.cookie, 4);
+    localObject = this.cookie;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 4);
     }
-    if (this.appid != null) {
-      paramJceOutputStream.write(this.appid, 5);
+    localObject = this.appid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.bottomButton != null) {
-      paramJceOutputStream.write(this.bottomButton, 6);
+    localObject = this.bottomButton;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
     paramJceOutputStream.write(this.playType, 7);
     paramJceOutputStream.write(this.videoType, 8);
     paramJceOutputStream.write(this.videoTime, 9);
-    if (this.user != null) {
-      paramJceOutputStream.write(this.user, 10);
+    localObject = this.user;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 10);
     }
-    if (this.video_url != null) {
-      paramJceOutputStream.write(this.video_url, 11);
+    localObject = this.video_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
-    if (this.videoId != null) {
-      paramJceOutputStream.write(this.videoId, 12);
+    localObject = this.videoId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
     paramJceOutputStream.write(this.videoClickType, 13);
-    if (this.summary != null) {
-      paramJceOutputStream.write(this.summary, 14);
+    localObject = this.summary;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 14);
     }
-    if (this.pictureUrl != null) {
-      paramJceOutputStream.write(this.pictureUrl, 15);
+    localObject = this.pictureUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 15);
     }
-    if (this.customDroplist != null) {
-      paramJceOutputStream.write(this.customDroplist, 16);
+    localObject = this.customDroplist;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 16);
     }
-    if (this.canvasData != null) {
-      paramJceOutputStream.write(this.canvasData, 17);
+    localObject = this.canvasData;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 17);
     }
-    if (this.dest_url != null) {
-      paramJceOutputStream.write(this.dest_url, 18);
+    localObject = this.dest_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 18);
     }
     paramJceOutputStream.write(this.dest_type, 19);
-    if (this.reportUrl != null) {
-      paramJceOutputStream.write(this.reportUrl, 20);
+    localObject = this.reportUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 20);
     }
-    if (this.actionUrl != null) {
-      paramJceOutputStream.write(this.actionUrl, 21);
+    localObject = this.actionUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 21);
     }
     paramJceOutputStream.write(this.rankCurrentWithHalfStar, 22);
-    if (this.schemaPageUrl != null) {
-      paramJceOutputStream.write(this.schemaPageUrl, 23);
+    localObject = this.schemaPageUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 23);
     }
-    if (this.left_top_button != null) {
-      paramJceOutputStream.write(this.left_top_button, 24);
+    localObject = this.left_top_button;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 24);
     }
-    if (this.mapPassBack != null) {
-      paramJceOutputStream.write(this.mapPassBack, 25);
+    localObject = this.mapPassBack;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 25);
     }
-    if (this.stMapABTest != null) {
-      paramJceOutputStream.write(this.stMapABTest, 26);
+    localObject = this.stMapABTest;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 26);
     }
     paramJceOutputStream.write(this.hasReportExposure, 27);
-    if (this.busiParam != null) {
-      paramJceOutputStream.write(this.busiParam, 28);
+    localObject = this.busiParam;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 28);
     }
     paramJceOutputStream.write(this.advPos, 29);
-    if (this.impressionUrl != null) {
-      paramJceOutputStream.write(this.impressionUrl, 30);
+    localObject = this.impressionUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 30);
     }
     paramJceOutputStream.write(this.isGdtAdImpressionReport, 31);
     paramJceOutputStream.write(this.isGdtAdVidoReport, 32);
@@ -227,7 +250,7 @@ public class stSimpleMetaGdtAdInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stSimpleMetaGdtAdInfo
  * JD-Core Version:    0.7.0.1
  */

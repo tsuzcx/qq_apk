@@ -40,13 +40,14 @@ public final class oidb_0x6d8$GetFileListReqBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 50, 56, 64, 72, 80, 88, 96, 104, 114, 120, 128, 136, 144 }, new String[] { "uint64_group_code", "uint32_app_id", "str_folder_id", "start_timestamp", "uint32_file_count", "max_timestamp", "uint32_all_file_count", "uint32_req_from", "uint32_sort_by", "uint32_filter_code", "uint64_uin", "uint32_field_flag", "uint32_start_index", "bytes_context", "uint32_client_version", "uint32_white_list", "uint32_sort_order", "uint32_show_onlinedoc_folder" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), "", null, Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(16777215), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, GetFileListReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 50, 56, 64, 72, 80, 88, 96, 104, 114, 120, 128, 136, 144 }, new String[] { "uint64_group_code", "uint32_app_id", "str_folder_id", "start_timestamp", "uint32_file_count", "max_timestamp", "uint32_all_file_count", "uint32_req_from", "uint32_sort_by", "uint32_filter_code", "uint64_uin", "uint32_field_flag", "uint32_start_index", "bytes_context", "uint32_client_version", "uint32_white_list", "uint32_sort_order", "uint32_show_onlinedoc_folder" }, new Object[] { Long.valueOf(0L), localInteger, "", null, localInteger, null, localInteger, localInteger, localInteger, localInteger, Long.valueOf(0L), Integer.valueOf(16777215), localInteger, localByteStringMicro, localInteger, localInteger, localInteger, localInteger }, GetFileListReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFileListReqBody
  * JD-Core Version:    0.7.0.1
  */

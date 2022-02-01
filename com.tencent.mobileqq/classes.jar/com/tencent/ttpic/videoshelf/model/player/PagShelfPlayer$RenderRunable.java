@@ -12,12 +12,15 @@ class PagShelfPlayer$RenderRunable
   {
     PagShelfPlayer.access$1100(this.this$0);
     PagShelfPlayer.access$300(this.this$0).flush();
-    Log.i("PagShelfPlayer", "progress:" + PagShelfPlayer.access$300(this.this$0).getProgress());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("progress:");
+    localStringBuilder.append(PagShelfPlayer.access$300(this.this$0).getProgress());
+    Log.i("PagShelfPlayer", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.videoshelf.model.player.PagShelfPlayer.RenderRunable
  * JD-Core Version:    0.7.0.1
  */

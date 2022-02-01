@@ -8,6 +8,7 @@ import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.open.base.LogUtility;
 import com.tencent.open.business.base.AppUtil;
 import com.tencent.open.business.base.OpenConfig;
+import com.tencent.qqmini.sdk.launcher.utils.OSUtils;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -27,87 +28,105 @@ public class ControlPolicyUtil
   
   public static String a(int paramInt, String paramString)
   {
-    if ("biz_src_zf_games".equals(paramString)) {
-      switch (paramInt)
-      {
-      default: 
-        paramString = "Common_GC_InstallYYB_Install_Words";
-      }
-    }
-    for (;;)
+    boolean bool = "biz_src_zf_games".equals(paramString);
+    String str = "Common_InstallYYB_Install_Words";
+    if (bool)
     {
-      return OpenConfig.a(CommonDataAdapter.a().a(), null).b(paramString);
-      paramString = "Common_GC_InstallYYB_Install_Words";
-      continue;
-      paramString = "Common_GC_InstallYYB_Update_Words";
-      continue;
-      paramString = "Common_GC_UpdateYYB_Install_Words";
-      continue;
-      paramString = "Common_GC_UpdateYYB_Update_Words";
-      continue;
-      if ("biz_src_jc_update".equals(paramString)) {
-        switch (paramInt)
-        {
-        case 2: 
-        default: 
-          paramString = null;
-          break;
-        case 1: 
-          paramString = "Common_QQUpdate_InstallYYB_Update_Words";
-          break;
-        case 3: 
-          paramString = "Common_QQUpdate_UpdateYYB_Update_Words";
-          break;
+      if (paramInt != 1)
+      {
+        if (paramInt == 2) {
+          break label52;
         }
-      } else {
-        switch (paramInt)
+        if (paramInt == 3) {
+          break label46;
+        }
+        if (paramInt == 4) {}
+      }
+      else
+      {
+        paramString = "Common_GC_InstallYYB_Install_Words";
+        break label136;
+      }
+      paramString = "Common_GC_UpdateYYB_Update_Words";
+      break label136;
+      label46:
+      paramString = "Common_GC_UpdateYYB_Install_Words";
+      break label136;
+      label52:
+      paramString = "Common_GC_InstallYYB_Update_Words";
+    }
+    else if ("biz_src_jc_update".equals(paramString))
+    {
+      if (paramInt != 1)
+      {
+        if (paramInt != 3) {
+          paramString = null;
+        } else {
+          paramString = "Common_QQUpdate_UpdateYYB_Update_Words";
+        }
+      }
+      else {
+        paramString = "Common_QQUpdate_InstallYYB_Update_Words";
+      }
+    }
+    else
+    {
+      paramString = str;
+      if (paramInt != 1) {
+        if (paramInt != 2)
         {
-        default: 
-          paramString = "Common_InstallYYB_Install_Words";
-          break;
-        case 1: 
-          paramString = "Common_InstallYYB_Install_Words";
-          break;
-        case 2: 
+          if (paramInt != 3)
+          {
+            if (paramInt != 4) {
+              paramString = str;
+            } else {
+              paramString = "Common_UpdateYYB_Update_Words";
+            }
+          }
+          else {
+            paramString = "Common_UpdateYYB_Install_Words";
+          }
+        }
+        else {
           paramString = "Common_InstallYYB_Update_Words";
-          break;
-        case 3: 
-          paramString = "Common_UpdateYYB_Install_Words";
-          break;
-        case 4: 
-          paramString = "Common_UpdateYYB_Update_Words";
         }
       }
     }
+    label136:
+    return OpenConfig.a(CommonDataAdapter.a().a(), null).b(paramString);
   }
   
   public static void a()
   {
-    int i = 1;
-    if (!OpenConfig.a(CommonDataAdapter.a().a(), null).b("Common_Show_Dialog_Flag")) {}
-    SharedPreferences.Editor localEditor;
-    do
-    {
+    if (!OpenConfig.a(CommonDataAdapter.a().a(), null).b("Common_Show_Dialog_Flag")) {
       return;
-      localObject = CommonDataAdapter.a().a().getSharedPreferences("share_myAppApi", 0);
-      localEditor = ((SharedPreferences)localObject).edit();
-      if (OpenConfig.a(CommonDataAdapter.a().a(), null).a("Common_Dialog_Only_Once_Flag"))
-      {
-        localEditor.putBoolean("SP_Has_shown_Dialog", true);
-        localEditor.commit();
+    }
+    Object localObject = CommonDataAdapter.a().a().getSharedPreferences("share_myAppApi", 0);
+    SharedPreferences.Editor localEditor = ((SharedPreferences)localObject).edit();
+    boolean bool = OpenConfig.a(CommonDataAdapter.a().a(), null).a("Common_Dialog_Only_Once_Flag");
+    int i = 1;
+    if (bool)
+    {
+      localEditor.putBoolean("SP_Has_shown_Dialog", true);
+      localEditor.commit();
+      return;
+    }
+    int j = OpenConfig.a(CommonDataAdapter.a().a(), null).b("Common_Max_Count");
+    if (j != -1)
+    {
+      if (j == 0) {
         return;
       }
-      j = OpenConfig.a(CommonDataAdapter.a().a(), null).a("Common_Max_Count");
-    } while ((j == -1) || (j == 0));
-    int j = ((SharedPreferences)localObject).getInt("SP_Show_Dialog_Count", 0);
-    Object localObject = ((SharedPreferences)localObject).getString("SP_Show_Dialog_Date", "");
-    String str = new SimpleDateFormat("yyyy年MM月dd日").format(new Date(System.currentTimeMillis()));
-    if (str.equals(localObject)) {
-      i = j + 1;
+      j = ((SharedPreferences)localObject).getInt("SP_Show_Dialog_Count", 0);
+      localObject = ((SharedPreferences)localObject).getString("SP_Show_Dialog_Date", "");
+      String str = new SimpleDateFormat("yyyy年MM月dd日").format(new Date(System.currentTimeMillis()));
+      if (str.equals(localObject)) {
+        i = 1 + j;
+      }
+      localEditor.putInt("SP_Show_Dialog_Count", i);
+      localEditor.putString("SP_Show_Dialog_Date", str);
+      localEditor.commit();
     }
-    localEditor.putInt("SP_Show_Dialog_Count", i);
-    localEditor.putString("SP_Show_Dialog_Date", str);
-    localEditor.commit();
   }
   
   public static void a(long paramLong)
@@ -131,11 +150,9 @@ public class ControlPolicyUtil
     {
       localEditor.putLong("SP_Lastest_require_time", paramLong);
       localEditor.commit();
-    }
-    while (paramLong == l) {
       return true;
     }
-    return false;
+    return paramLong == l;
   }
   
   public static long b()
@@ -145,35 +162,18 @@ public class ControlPolicyUtil
   
   public static void b()
   {
-    int i = 0;
-    SharedPreferences localSharedPreferences = CommonDataAdapter.a().a().getSharedPreferences("share_myAppApi", 0);
-    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
-    int j = localSharedPreferences.getInt("tmast_wake_times", 0);
-    if (!b(localSharedPreferences.getLong("tmast_wake_last_time", 0L))) {}
-    for (;;)
-    {
-      localEditor.putInt("tmast_wake_times", i + 1);
-      localEditor.putLong("tmast_wake_last_time", System.currentTimeMillis());
-      return;
-      i = j;
-    }
+    OpenConfig.a(CommonDataAdapter.a().a(), null);
   }
   
   public static boolean b()
   {
-    DownloadInfo localDownloadInfo = DownloadManager.a().a("1101070898");
-    Object localObject = "";
-    if (localDownloadInfo != null) {
-      localObject = localDownloadInfo.l;
+    Object localObject = DownloadManager.a().a("1101070898");
+    if (localObject != null) {
+      localObject = ((DownloadInfo)localObject).l;
+    } else {
+      localObject = "";
     }
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      localObject = new File((String)localObject);
-      if ((localObject != null) && (((File)localObject).exists())) {
-        return false;
-      }
-    }
-    return true;
+    return (TextUtils.isEmpty((CharSequence)localObject)) || (!new File((String)localObject).exists());
   }
   
   public static boolean b(long paramLong)
@@ -185,91 +185,90 @@ public class ControlPolicyUtil
     return (localCalendar2.get(1) == localCalendar1.get(1)) && (localCalendar2.get(6) - localCalendar1.get(6) == 0);
   }
   
+  public static void c()
+  {
+    Object localObject = CommonDataAdapter.a().a();
+    int i = 0;
+    localObject = ((Context)localObject).getSharedPreferences("share_myAppApi", 0);
+    SharedPreferences.Editor localEditor = ((SharedPreferences)localObject).edit();
+    int j = ((SharedPreferences)localObject).getInt("tmast_wake_times", 0);
+    if (b(((SharedPreferences)localObject).getLong("tmast_wake_last_time", 0L))) {
+      i = j;
+    }
+    localEditor.putInt("tmast_wake_times", i + 1);
+    localEditor.putLong("tmast_wake_last_time", System.currentTimeMillis());
+    localEditor.commit();
+  }
+  
   public static boolean c()
   {
-    return OpenConfig.a(CommonDataAdapter.a().a(), null).a("Common_root_autoinstall_flag") <= 0;
+    return OpenConfig.a(CommonDataAdapter.a().a(), null).b("Common_root_autoinstall_flag") <= 0;
   }
   
   public static boolean d()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (AppUtil.a("com.tencent.android.qqdownloader") > 4001126)
-    {
-      bool1 = bool2;
-      if (OpenConfig.a(CommonDataAdapter.a().a(), null).b("Common_QQ_CARRY_IDENTITY")) {
-        bool1 = true;
-      }
-    }
-    return bool1;
+    return (AppUtil.a("com.tencent.android.qqdownloader") > 4001126) && (OpenConfig.a(CommonDataAdapter.a().a(), null).b("Common_QQ_CARRY_IDENTITY"));
   }
   
   public static boolean e()
   {
     Object localObject = OpenConfig.a(CommonDataAdapter.a().a(), null).b("Common_Release_Control").trim();
-    if (TextUtils.isEmpty((CharSequence)localObject)) {}
-    do
-    {
-      do
-      {
-        return true;
-      } while (((String)localObject).equals("-1"));
-      if (((String)localObject).equals("-2")) {
-        return false;
-      }
-      localObject = ((String)localObject).split(";");
-    } while (localObject == null);
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return true;
+    }
+    if (((String)localObject).equals("-1")) {
+      return true;
+    }
+    if (((String)localObject).equals("-2")) {
+      return false;
+    }
+    localObject = ((String)localObject).split(";");
+    if (localObject == null) {
+      return true;
+    }
     String str1 = String.valueOf(CommonDataAdapter.a().a());
     if (str1 == null) {
       return false;
     }
     int j = localObject.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i >= j) {
-        break label115;
-      }
       String str2 = localObject[i];
       if ((str2.length() == 2) && (str1.endsWith(str2))) {
-        break;
+        return true;
       }
       i += 1;
     }
-    label115:
     return false;
   }
   
   public static boolean f()
   {
-    if (!OpenConfig.a(CommonDataAdapter.a().a(), null).b("Common_Show_Dialog_Flag")) {}
-    int i;
-    int j;
-    do
+    if (!OpenConfig.a(CommonDataAdapter.a().a(), null).b("Common_Show_Dialog_Flag")) {
+      return false;
+    }
+    Object localObject = CommonDataAdapter.a().a().getSharedPreferences("share_myAppApi", 0);
+    boolean bool = ((SharedPreferences)localObject).getBoolean("SP_Has_shown_Dialog", false);
+    if (OpenConfig.a(CommonDataAdapter.a().a(), null).a("Common_Dialog_Only_Once_Flag")) {
+      return !bool;
+    }
+    int i = OpenConfig.a(CommonDataAdapter.a().a(), null).b("Common_Max_Count");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" maxCount = ");
+    localStringBuilder.append(i);
+    LogUtility.c("OpenConfig-MyAppApi", localStringBuilder.toString());
+    if (i != -1)
     {
-      boolean bool;
-      do
-      {
-        return false;
-        localObject = CommonDataAdapter.a().a().getSharedPreferences("share_myAppApi", 0);
-        bool = ((SharedPreferences)localObject).getBoolean("SP_Has_shown_Dialog", false);
-        if (!OpenConfig.a(CommonDataAdapter.a().a(), null).a("Common_Dialog_Only_Once_Flag")) {
-          break;
-        }
-      } while (bool);
-      return true;
-      i = OpenConfig.a(CommonDataAdapter.a().a(), null).a("Common_Max_Count");
-      LogUtility.c("OpenConfig-MyAppApi", " maxCount = " + i);
-      if ((i == -1) || (i == 0)) {
+      if (i == 0) {
         return true;
       }
-      j = ((SharedPreferences)localObject).getInt("SP_Show_Dialog_Count", 0);
-      Object localObject = ((SharedPreferences)localObject).getString("SP_Show_Dialog_Date", "");
-      if (!new SimpleDateFormat("yyyy年MM月dd日").format(new Date(System.currentTimeMillis())).equals(localObject)) {
-        break;
+      int j = ((SharedPreferences)localObject).getInt("SP_Show_Dialog_Count", 0);
+      localObject = ((SharedPreferences)localObject).getString("SP_Show_Dialog_Date", "");
+      if (new SimpleDateFormat("yyyy年MM月dd日").format(new Date(System.currentTimeMillis())).equals(localObject)) {
+        return j < i;
       }
-    } while (j >= i);
-    return true;
+    }
     return true;
   }
   
@@ -285,45 +284,124 @@ public class ControlPolicyUtil
   
   public static boolean i()
   {
-    boolean bool2 = false;
-    boolean bool3 = OpenConfig.a(CommonDataAdapter.a().a(), null).c("Common_tmast_wake");
+    boolean bool = OpenConfig.a(CommonDataAdapter.a().a(), null).c("Common_tmast_wake");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(">>allowTmastWake allowWake = ");
+    localStringBuilder.append(bool);
+    LogUtility.c("TAMST_WAKE", localStringBuilder.toString());
+    return (bool) && (j());
+  }
+  
+  public static boolean j()
+  {
     long l1 = OpenConfig.a(CommonDataAdapter.a().a(), null).a("Common_wake_limite");
     long l2 = OpenConfig.a(CommonDataAdapter.a().a(), null).a("Common_wake_interval") * 1000L;
-    SharedPreferences localSharedPreferences = CommonDataAdapter.a().a().getSharedPreferences("share_myAppApi", 0);
-    int i = localSharedPreferences.getInt("tmast_wake_times", 0);
-    long l3 = localSharedPreferences.getLong("tmast_wake_last_time", 0L);
-    boolean bool4 = b(l3);
-    if (!bool4) {
+    Object localObject = CommonDataAdapter.a().a();
+    boolean bool2 = false;
+    localObject = ((Context)localObject).getSharedPreferences("share_myAppApi", 0);
+    int i = ((SharedPreferences)localObject).getInt("tmast_wake_times", 0);
+    long l3 = ((SharedPreferences)localObject).getLong("tmast_wake_last_time", 0L);
+    boolean bool3 = b(l3);
+    if (!bool3) {
       i = 0;
     }
-    LogUtility.c("TAMST_WAKE", ">>allowTmastWake allowWake = " + bool3 + " wakeLimit = " + l1 + " wakeInterval = " + l2 + " wakeTimes = " + i + " isToday = " + bool4);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(">>allowTmastWake  wakeLimit = ");
+    ((StringBuilder)localObject).append(l1);
+    ((StringBuilder)localObject).append(" wakeInterval = ");
+    ((StringBuilder)localObject).append(l2);
+    ((StringBuilder)localObject).append(" wakeTimes = ");
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append(" isToday = ");
+    ((StringBuilder)localObject).append(bool3);
+    LogUtility.c("TAMST_WAKE", ((StringBuilder)localObject).toString());
     boolean bool1 = bool2;
-    if (bool3)
-    {
-      bool1 = bool2;
-      if (i < l1) {
-        if (System.currentTimeMillis() - l3 <= l2)
-        {
-          bool1 = bool2;
-          if (bool4) {}
-        }
-        else
-        {
-          bool1 = true;
-        }
+    if (i < l1) {
+      if (System.currentTimeMillis() - l3 <= l2)
+      {
+        bool1 = bool2;
+        if (bool3) {}
+      }
+      else
+      {
+        bool1 = true;
       }
     }
     return bool1;
   }
   
-  public static boolean j()
+  public static boolean k()
+  {
+    boolean bool1 = o();
+    boolean bool2 = false;
+    if (!bool1) {
+      return false;
+    }
+    bool1 = bool2;
+    if (OpenConfig.a(CommonDataAdapter.a().a(), null).c("Common_YYB_Wake"))
+    {
+      bool1 = bool2;
+      if (j()) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public static boolean l()
+  {
+    return OpenConfig.a(CommonDataAdapter.a().a(), null).c("Common_YYB_InstWake");
+  }
+  
+  public static boolean m()
+  {
+    return OpenConfig.a(CommonDataAdapter.a().a(), null).c("Common_YYB_TmastWake_870");
+  }
+  
+  public static boolean n()
+  {
+    return OpenConfig.a(CommonDataAdapter.a().a(), null).c("Common_YYB_BgWake");
+  }
+  
+  public static boolean o()
+  {
+    if (!p()) {
+      return true;
+    }
+    return OpenConfig.a(CommonDataAdapter.a().a(), null).c("Common_YYB_MiUi12Wake");
+  }
+  
+  public static boolean p()
+  {
+    String str = OSUtils.getMIUIVersion();
+    if (TextUtils.isEmpty(str)) {
+      return false;
+    }
+    try
+    {
+      int i = Integer.parseInt(str.substring(1));
+      if (i >= 12) {
+        return true;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parseInt error:");
+      localStringBuilder.append(localThrowable.getMessage());
+      LogUtility.e("ControlPolicyUtil", localStringBuilder.toString());
+    }
+    return false;
+  }
+  
+  public static boolean q()
   {
     return OpenConfig.a(CommonDataAdapter.a().a(), null).b("Common_yyb_wifi_download_Switch");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.ControlPolicyUtil
  * JD-Core Version:    0.7.0.1
  */

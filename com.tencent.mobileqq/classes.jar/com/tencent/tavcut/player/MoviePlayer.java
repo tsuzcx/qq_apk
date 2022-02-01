@@ -1,5 +1,6 @@
 package com.tencent.tavcut.player;
 
+import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
 import android.animation.ObjectAnimator;
@@ -39,59 +40,94 @@ public class MoviePlayer
 {
   public static final int VIDEO_PLAYER_HEIGHT = 1280;
   public static final int VIDEO_PLAYER_WIDTH = 720;
-  private final String TAG = "MoviePlayer@" + Integer.toHexString(hashCode());
-  private AudioManager.OnAudioFocusChangeListener audioFocusChangeListener = new MoviePlayer.3(this);
+  private final String TAG;
+  private AudioManager.OnAudioFocusChangeListener audioFocusChangeListener;
   private AudioManager audioManager;
-  private int backColor = -16777216;
+  private int backColor;
   private Context context;
-  private boolean isAllowInterrupt = true;
-  private boolean isAutoPlay = true;
-  private boolean loopPlay = false;
+  private boolean isAllowInterrupt;
+  private boolean isAutoPlay;
+  private boolean loopPlay;
   private TextureView mContentView;
   private TAVCutVideoView mPlayerLayout;
   private MoviePlayer.onVideoProgressListener mProgressListener;
   private RenderContextParams mRenderContextParams;
-  private boolean needNewComposition = false;
+  private boolean needNewComposition;
   private CMTimeRange playRange;
   private volatile boolean playReady;
   private Player player;
-  private List<MoviePlayer.OnPlayerLifeCycleListener> playerLifeCycleListeners = new ArrayList();
-  private List<IPlayer.PlayerListener> playerListeners = new ArrayList();
-  private CMTime position = CMTime.CMTimeZero;
+  private List<MoviePlayer.OnPlayerLifeCycleListener> playerLifeCycleListeners;
+  private List<IPlayer.PlayerListener> playerListeners;
+  private CMTime position;
   private int rotation;
   private float scaleRatio;
   private CMTime seekTime;
   private Surface surface;
   private int surfaceHeight;
-  private List<MoviePlayer.SurfaceTextureChangeListener> surfaceTextureChangeListeners = new ArrayList();
+  private List<MoviePlayer.SurfaceTextureChangeListener> surfaceTextureChangeListeners;
   private int surfaceWidth;
   private TAVComposition tavComposition;
-  private boolean updatingPlayItem = false;
-  private float volume = 1.0F;
+  private boolean updatingPlayItem;
+  private float volume;
+  
+  public MoviePlayer()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MoviePlayer@");
+    localStringBuilder.append(Integer.toHexString(hashCode()));
+    this.TAG = localStringBuilder.toString();
+    this.isAllowInterrupt = true;
+    this.isAutoPlay = true;
+    this.loopPlay = false;
+    this.volume = 1.0F;
+    this.position = CMTime.CMTimeZero;
+    this.backColor = -16777216;
+    this.playerLifeCycleListeners = new ArrayList();
+    this.playerListeners = new ArrayList();
+    this.surfaceTextureChangeListeners = new ArrayList();
+    this.updatingPlayItem = false;
+    this.needNewComposition = false;
+    this.audioFocusChangeListener = new MoviePlayer.3(this);
+  }
   
   private void abandonAudioFocus()
   {
-    if (this.audioManager == null) {
+    AudioManager localAudioManager = this.audioManager;
+    if (localAudioManager == null) {
       return;
     }
-    this.audioManager.abandonAudioFocus(this.audioFocusChangeListener);
+    localAudioManager.abandonAudioFocus(this.audioFocusChangeListener);
   }
   
   @NonNull
   private PlayerItem buildPlayerItem(TAVComposition paramTAVComposition)
   {
-    Logger.d(this.TAG, "buildPlayerItem() called with: tavComposition = [" + paramTAVComposition + "]");
+    Object localObject = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("buildPlayerItem() called with: tavComposition = [");
+    localStringBuilder.append(paramTAVComposition);
+    localStringBuilder.append("]");
+    Logger.d((String)localObject, localStringBuilder.toString());
     paramTAVComposition = new TAVCompositionBuilder(paramTAVComposition).buildSource();
-    PlayerItem localPlayerItem = new PlayerItem(paramTAVComposition.getAsset());
-    localPlayerItem.setVideoComposition(paramTAVComposition.getVideoComposition());
-    localPlayerItem.setAudioMix(paramTAVComposition.getAudioMix());
-    return localPlayerItem;
+    localObject = new PlayerItem(paramTAVComposition.getAsset());
+    ((PlayerItem)localObject).setVideoComposition(paramTAVComposition.getVideoComposition());
+    ((PlayerItem)localObject).setAudioMix(paramTAVComposition.getAudioMix());
+    return localObject;
   }
   
   @NonNull
   private Player newPlayer(PlayerItem paramPlayerItem, CMTime paramCMTime, boolean paramBoolean)
   {
-    Logger.d(this.TAG, "newPlayer() called with: playerItem = [" + paramPlayerItem + "], position = [" + paramCMTime + "], autoPlay = [" + paramBoolean + "]");
+    String str = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("newPlayer() called with: playerItem = [");
+    localStringBuilder.append(paramPlayerItem);
+    localStringBuilder.append("], position = [");
+    localStringBuilder.append(paramCMTime);
+    localStringBuilder.append("], autoPlay = [");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("]");
+    Logger.d(str, localStringBuilder.toString());
     paramPlayerItem = new Player(paramPlayerItem);
     paramPlayerItem.setPlayerListener(this);
     paramPlayerItem.setLoop(this.loopPlay);
@@ -109,11 +145,12 @@ public class MoviePlayer
   
   private void notifySurfaceTextureChange(SurfaceTexture paramSurfaceTexture)
   {
-    if ((this.surfaceTextureChangeListeners != null) && (this.surfaceTextureChangeListeners.size() > 0))
+    Object localObject = this.surfaceTextureChangeListeners;
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      Iterator localIterator = this.surfaceTextureChangeListeners.iterator();
-      while (localIterator.hasNext()) {
-        ((MoviePlayer.SurfaceTextureChangeListener)localIterator.next()).onTextureChange(paramSurfaceTexture);
+      localObject = this.surfaceTextureChangeListeners.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((MoviePlayer.SurfaceTextureChangeListener)((Iterator)localObject).next()).onTextureChange(paramSurfaceTexture);
       }
     }
   }
@@ -144,86 +181,96 @@ public class MoviePlayer
   
   private boolean requestAudioFocus()
   {
-    if (this.context == null) {
+    Context localContext = this.context;
+    if (localContext == null) {
       return true;
     }
     if (this.audioManager == null) {
-      this.audioManager = ((AudioManager)this.context.getSystemService("audio"));
+      this.audioManager = ((AudioManager)localContext.getSystemService("audio"));
     }
-    if (this.audioManager.requestAudioFocus(this.audioFocusChangeListener, 3, 1) == 1) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    return this.audioManager.requestAudioFocus(this.audioFocusChangeListener, 3, 1) == 1;
   }
   
   private void startRotatePlayerContainer(int paramInt1, int paramInt2, CGSize paramCGSize, int paramInt3)
   {
-    if (this.player == null) {}
-    float f3;
-    float f4;
-    float f1;
-    float f2;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (this.player.getGlViewport() == null);
-        f3 = this.surfaceWidth;
-        f4 = this.surfaceHeight;
-      } while ((f3 == 0.0F) || (f4 == 0.0F) || (paramCGSize.equals(CGSize.CGSizeZero)));
-      f1 = paramCGSize.width;
-      f2 = paramCGSize.height;
-    } while ((f1 == 0.0F) || (f2 == 0.0F));
-    f1 /= f2;
-    ObjectAnimator localObjectAnimator1;
-    ObjectAnimator localObjectAnimator2;
-    ObjectAnimator localObjectAnimator3;
-    if (f1 < f3 / f4)
-    {
-      f2 = f1 * f4;
-      f1 = f4;
-      f1 = Math.min(f4 / f2, f3 / f1);
-      this.scaleRatio = f1;
-      paramCGSize = new AnimatorSet();
-      if (paramInt2 != 90) {
-        break label275;
-      }
-      localObjectAnimator1 = ObjectAnimator.ofFloat(this.mPlayerLayout, "rotation", new float[] { -paramInt1, -90.0F }).setDuration(paramInt3);
-      localObjectAnimator2 = ObjectAnimator.ofFloat(this.mPlayerLayout, "scaleX", new float[] { 1.0F, f1 }).setDuration(paramInt3);
-      localObjectAnimator3 = ObjectAnimator.ofFloat(this.mPlayerLayout, "scaleY", new float[] { 1.0F, f1 }).setDuration(paramInt3);
-      paramCGSize.play(localObjectAnimator1).with(localObjectAnimator2).with(localObjectAnimator3);
-    }
-    for (;;)
-    {
-      paramCGSize.start();
+    Object localObject = this.player;
+    if (localObject == null) {
       return;
-      f1 = f3 / f1;
-      f2 = f3;
-      break;
-      label275:
-      if (paramInt2 == 180)
-      {
-        localObjectAnimator1 = ObjectAnimator.ofFloat(this.mPlayerLayout, "rotation", new float[] { -paramInt1, -180.0F }).setDuration(paramInt3);
-        localObjectAnimator2 = ObjectAnimator.ofFloat(this.mPlayerLayout, "scaleX", new float[] { f1, 1.0F }).setDuration(paramInt3);
-        localObjectAnimator3 = ObjectAnimator.ofFloat(this.mPlayerLayout, "scaleY", new float[] { f1, 1.0F }).setDuration(paramInt3);
-        paramCGSize.play(localObjectAnimator1).with(localObjectAnimator2).with(localObjectAnimator3);
+    }
+    if (((Player)localObject).getGlViewport() == null) {
+      return;
+    }
+    float f3 = this.surfaceWidth;
+    float f4 = this.surfaceHeight;
+    if (f3 != 0.0F)
+    {
+      if (f4 == 0.0F) {
+        return;
       }
-      else if (paramInt2 == 270)
-      {
-        localObjectAnimator1 = ObjectAnimator.ofFloat(this.mPlayerLayout, "rotation", new float[] { -paramInt1, -270.0F }).setDuration(paramInt3);
-        localObjectAnimator2 = ObjectAnimator.ofFloat(this.mPlayerLayout, "scaleX", new float[] { 1.0F, f1 }).setDuration(paramInt3);
-        localObjectAnimator3 = ObjectAnimator.ofFloat(this.mPlayerLayout, "scaleY", new float[] { 1.0F, f1 }).setDuration(paramInt3);
-        paramCGSize.play(localObjectAnimator1).with(localObjectAnimator2).with(localObjectAnimator3);
+      if (paramCGSize.equals(CGSize.CGSizeZero)) {
+        return;
       }
-      else if (paramInt2 == 0)
+      float f1 = paramCGSize.width;
+      float f2 = paramCGSize.height;
+      if (f1 != 0.0F)
       {
-        localObjectAnimator1 = ObjectAnimator.ofFloat(this.mPlayerLayout, "rotation", new float[] { -paramInt1, 0.0F }).setDuration(paramInt3);
-        localObjectAnimator2 = ObjectAnimator.ofFloat(this.mPlayerLayout, "scaleX", new float[] { f1, 1.0F }).setDuration(paramInt3);
-        localObjectAnimator3 = ObjectAnimator.ofFloat(this.mPlayerLayout, "scaleY", new float[] { f1, 1.0F }).setDuration(paramInt3);
-        paramCGSize.play(localObjectAnimator1).with(localObjectAnimator2).with(localObjectAnimator3);
+        if (f2 == 0.0F) {
+          return;
+        }
+        f1 /= f2;
+        if (f1 < f3 / f4)
+        {
+          f2 = f4 * f1;
+          f1 = f4;
+        }
+        else
+        {
+          f1 = f3 / f1;
+          f2 = f3;
+        }
+        f1 = Math.min(f4 / f2, f3 / f1);
+        this.scaleRatio = f1;
+        paramCGSize = new AnimatorSet();
+        long l;
+        ObjectAnimator localObjectAnimator1;
+        ObjectAnimator localObjectAnimator2;
+        if (paramInt2 == 90)
+        {
+          localObject = ObjectAnimator.ofFloat(this.mPlayerLayout, "rotation", new float[] { -paramInt1, -90.0F });
+          l = paramInt3;
+          localObject = ((ObjectAnimator)localObject).setDuration(l);
+          localObjectAnimator1 = ObjectAnimator.ofFloat(this.mPlayerLayout, "scaleX", new float[] { 1.0F, f1 }).setDuration(l);
+          localObjectAnimator2 = ObjectAnimator.ofFloat(this.mPlayerLayout, "scaleY", new float[] { 1.0F, f1 }).setDuration(l);
+          paramCGSize.play((Animator)localObject).with(localObjectAnimator1).with(localObjectAnimator2);
+        }
+        else if (paramInt2 == 180)
+        {
+          localObject = ObjectAnimator.ofFloat(this.mPlayerLayout, "rotation", new float[] { -paramInt1, -180.0F });
+          l = paramInt3;
+          localObject = ((ObjectAnimator)localObject).setDuration(l);
+          localObjectAnimator1 = ObjectAnimator.ofFloat(this.mPlayerLayout, "scaleX", new float[] { f1, 1.0F }).setDuration(l);
+          localObjectAnimator2 = ObjectAnimator.ofFloat(this.mPlayerLayout, "scaleY", new float[] { f1, 1.0F }).setDuration(l);
+          paramCGSize.play((Animator)localObject).with(localObjectAnimator1).with(localObjectAnimator2);
+        }
+        else if (paramInt2 == 270)
+        {
+          localObject = ObjectAnimator.ofFloat(this.mPlayerLayout, "rotation", new float[] { -paramInt1, -270.0F });
+          l = paramInt3;
+          localObject = ((ObjectAnimator)localObject).setDuration(l);
+          localObjectAnimator1 = ObjectAnimator.ofFloat(this.mPlayerLayout, "scaleX", new float[] { 1.0F, f1 }).setDuration(l);
+          localObjectAnimator2 = ObjectAnimator.ofFloat(this.mPlayerLayout, "scaleY", new float[] { 1.0F, f1 }).setDuration(l);
+          paramCGSize.play((Animator)localObject).with(localObjectAnimator1).with(localObjectAnimator2);
+        }
+        else if (paramInt2 == 0)
+        {
+          localObject = ObjectAnimator.ofFloat(this.mPlayerLayout, "rotation", new float[] { -paramInt1, 0.0F });
+          l = paramInt3;
+          localObject = ((ObjectAnimator)localObject).setDuration(l);
+          localObjectAnimator1 = ObjectAnimator.ofFloat(this.mPlayerLayout, "scaleX", new float[] { f1, 1.0F }).setDuration(l);
+          localObjectAnimator2 = ObjectAnimator.ofFloat(this.mPlayerLayout, "scaleY", new float[] { f1, 1.0F }).setDuration(l);
+          paramCGSize.play((Animator)localObject).with(localObjectAnimator1).with(localObjectAnimator2);
+        }
+        paramCGSize.start();
       }
     }
   }
@@ -263,46 +310,26 @@ public class MoviePlayer
     this.mContentView.setSurfaceTextureListener(new MoviePlayer.1(this));
   }
   
-  /* Error */
   public IPlayer.PlayerStatus getCurrentStatus()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 192	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
-    //   6: ifnonnull +11 -> 17
-    //   9: getstatic 472	com/tencent/tav/player/IPlayer$PlayerStatus:ERROR	Lcom/tencent/tav/player/IPlayer$PlayerStatus;
-    //   12: astore_1
-    //   13: aload_0
-    //   14: monitorexit
-    //   15: aload_1
-    //   16: areturn
-    //   17: aload_0
-    //   18: getfield 192	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
-    //   21: invokevirtual 475	com/tencent/tav/player/Player:currentStatus	()Lcom/tencent/tav/player/IPlayer$PlayerStatus;
-    //   24: astore_1
-    //   25: goto -12 -> 13
-    //   28: astore_1
-    //   29: aload_0
-    //   30: monitorexit
-    //   31: aload_1
-    //   32: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	33	0	this	MoviePlayer
-    //   12	13	1	localPlayerStatus	IPlayer.PlayerStatus
-    //   28	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	13	28	finally
-    //   17	25	28	finally
+    try
+    {
+      if (this.player == null)
+      {
+        localPlayerStatus = IPlayer.PlayerStatus.ERROR;
+        return localPlayerStatus;
+      }
+      IPlayer.PlayerStatus localPlayerStatus = this.player.currentStatus();
+      return localPlayerStatus;
+    }
+    finally {}
   }
   
   public CMTime getDuration()
   {
-    if (this.player != null) {
-      return this.player.duration();
+    Player localPlayer = this.player;
+    if (localPlayer != null) {
+      return localPlayer.duration();
     }
     return CMTime.CMTimeInvalid;
   }
@@ -322,48 +349,28 @@ public class MoviePlayer
     return this.mPlayerLayout;
   }
   
-  /* Error */
   public CMTime getPosition()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 192	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
-    //   6: ifnull +15 -> 21
-    //   9: aload_0
-    //   10: getfield 192	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
-    //   13: invokevirtual 491	com/tencent/tav/player/Player:position	()Lcom/tencent/tav/coremedia/CMTime;
-    //   16: astore_1
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: aload_1
-    //   20: areturn
-    //   21: getstatic 483	com/tencent/tav/coremedia/CMTime:CMTimeInvalid	Lcom/tencent/tav/coremedia/CMTime;
-    //   24: astore_1
-    //   25: goto -8 -> 17
-    //   28: astore_1
-    //   29: aload_0
-    //   30: monitorexit
-    //   31: aload_1
-    //   32: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	33	0	this	MoviePlayer
-    //   16	9	1	localCMTime	CMTime
-    //   28	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	17	28	finally
-    //   21	25	28	finally
+    try
+    {
+      if (this.player != null)
+      {
+        localCMTime = this.player.position();
+        return localCMTime;
+      }
+      CMTime localCMTime = CMTime.CMTimeInvalid;
+      return localCMTime;
+    }
+    finally {}
   }
   
   public CGRect getRealRenderSize()
   {
-    if (this.player == null) {
+    Player localPlayer = this.player;
+    if (localPlayer == null) {
       return null;
     }
-    return this.player.getGlViewport();
+    return localPlayer.getGlViewport();
   }
   
   public int getRotation()
@@ -405,105 +412,66 @@ public class MoviePlayer
     return this.playReady;
   }
   
-  /* Error */
   public boolean isPlaying()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 192	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
-    //   6: ifnull +48 -> 54
-    //   9: aload_0
-    //   10: getfield 88	com/tencent/tavcut/player/MoviePlayer:TAG	Ljava/lang/String;
-    //   13: new 65	java/lang/StringBuilder
-    //   16: dup
-    //   17: invokespecial 66	java/lang/StringBuilder:<init>	()V
-    //   20: ldc_w 504
-    //   23: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   26: aload_0
-    //   27: getfield 192	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
-    //   30: invokevirtual 506	com/tencent/tav/player/Player:isPlaying	()Z
-    //   33: invokevirtual 256	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   36: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   39: invokestatic 208	com/tencent/tavcut/util/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   42: aload_0
-    //   43: getfield 192	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
-    //   46: invokevirtual 506	com/tencent/tav/player/Player:isPlaying	()Z
-    //   49: istore_1
-    //   50: aload_0
-    //   51: monitorexit
-    //   52: iload_1
-    //   53: ireturn
-    //   54: iconst_0
-    //   55: istore_1
-    //   56: goto -6 -> 50
-    //   59: astore_2
-    //   60: aload_0
-    //   61: monitorexit
-    //   62: aload_2
-    //   63: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	64	0	this	MoviePlayer
-    //   49	7	1	bool	boolean
-    //   59	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	50	59	finally
+    try
+    {
+      if (this.player != null)
+      {
+        String str = this.TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isPlaying:");
+        localStringBuilder.append(this.player.isPlaying());
+        Logger.d(str, localStringBuilder.toString());
+        boolean bool = this.player.isPlaying();
+        return bool;
+      }
+      return false;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  /* Error */
   public boolean isReleased()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 192	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
-    //   6: ifnull +15 -> 21
-    //   9: aload_0
-    //   10: getfield 192	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
-    //   13: invokevirtual 509	com/tencent/tav/player/Player:isReleased	()Z
-    //   16: istore_1
-    //   17: iload_1
-    //   18: ifeq +9 -> 27
-    //   21: iconst_1
-    //   22: istore_1
-    //   23: aload_0
-    //   24: monitorexit
-    //   25: iload_1
-    //   26: ireturn
-    //   27: iconst_0
-    //   28: istore_1
-    //   29: goto -6 -> 23
-    //   32: astore_2
-    //   33: aload_0
-    //   34: monitorexit
-    //   35: aload_2
-    //   36: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	37	0	this	MoviePlayer
-    //   16	13	1	bool	boolean
-    //   32	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	17	32	finally
+    try
+    {
+      if (this.player != null)
+      {
+        bool = this.player.isReleased();
+        if (!bool)
+        {
+          bool = false;
+          break label31;
+        }
+      }
+      boolean bool = true;
+      label31:
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public void onPositionChanged(CMTime paramCMTime)
   {
-    if (this.updatingPlayItem) {}
-    do
-    {
+    if (this.updatingPlayItem) {
       return;
-      Iterator localIterator = this.playerListeners.iterator();
-      while (localIterator.hasNext()) {
-        ((IPlayer.PlayerListener)localIterator.next()).onPositionChanged(paramCMTime);
-      }
-    } while (this.mProgressListener == null);
-    this.mProgressListener.updateVideoProgress(paramCMTime.getTimeUs() / 1000L);
+    }
+    Object localObject = this.playerListeners.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((IPlayer.PlayerListener)((Iterator)localObject).next()).onPositionChanged(paramCMTime);
+    }
+    localObject = this.mProgressListener;
+    if (localObject != null) {
+      ((MoviePlayer.onVideoProgressListener)localObject).updateVideoProgress(paramCMTime.getTimeUs() / 1000L);
+    }
   }
   
   public void onStatusChanged(IPlayer.PlayerStatus paramPlayerStatus)
@@ -514,101 +482,50 @@ public class MoviePlayer
     }
   }
   
-  /* Error */
   public void pause()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 88	com/tencent/tavcut/player/MoviePlayer:TAG	Ljava/lang/String;
-    //   6: new 65	java/lang/StringBuilder
-    //   9: dup
-    //   10: invokespecial 66	java/lang/StringBuilder:<init>	()V
-    //   13: ldc_w 533
-    //   16: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   19: aload_0
-    //   20: getfield 192	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
-    //   23: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   26: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   29: invokestatic 208	com/tencent/tavcut/util/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   32: aload_0
-    //   33: getfield 192	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
-    //   36: ifnull +17 -> 53
-    //   39: aload_0
-    //   40: invokespecial 535	com/tencent/tavcut/player/MoviePlayer:abandonAudioFocus	()V
-    //   43: aload_0
-    //   44: getfield 192	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
-    //   47: invokevirtual 537	com/tencent/tav/player/Player:pause	()V
-    //   50: aload_0
-    //   51: monitorexit
-    //   52: return
-    //   53: aload_0
-    //   54: iconst_0
-    //   55: putfield 92	com/tencent/tavcut/player/MoviePlayer:isAutoPlay	Z
-    //   58: goto -8 -> 50
-    //   61: astore_1
-    //   62: aload_0
-    //   63: monitorexit
-    //   64: aload_1
-    //   65: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	66	0	this	MoviePlayer
-    //   61	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	50	61	finally
-    //   53	58	61	finally
+    try
+    {
+      String str = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("pause: player = ");
+      localStringBuilder.append(this.player);
+      Logger.d(str, localStringBuilder.toString());
+      if (this.player != null)
+      {
+        abandonAudioFocus();
+        this.player.pause();
+      }
+      else
+      {
+        this.isAutoPlay = false;
+      }
+      return;
+    }
+    finally {}
   }
   
-  /* Error */
   public void play()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 88	com/tencent/tavcut/player/MoviePlayer:TAG	Ljava/lang/String;
-    //   6: new 65	java/lang/StringBuilder
-    //   9: dup
-    //   10: invokespecial 66	java/lang/StringBuilder:<init>	()V
-    //   13: ldc_w 539
-    //   16: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   19: aload_0
-    //   20: getfield 192	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
-    //   23: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   26: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   29: invokestatic 208	com/tencent/tavcut/util/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   32: aload_0
-    //   33: getfield 192	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
-    //   36: ifnull +20 -> 56
-    //   39: aload_0
-    //   40: invokespecial 310	com/tencent/tavcut/player/MoviePlayer:requestAudioFocus	()Z
-    //   43: ifeq +10 -> 53
-    //   46: aload_0
-    //   47: getfield 192	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
-    //   50: invokevirtual 313	com/tencent/tav/player/Player:play	()V
-    //   53: aload_0
-    //   54: monitorexit
-    //   55: return
-    //   56: aload_0
-    //   57: iconst_1
-    //   58: putfield 92	com/tencent/tavcut/player/MoviePlayer:isAutoPlay	Z
-    //   61: goto -8 -> 53
-    //   64: astore_1
-    //   65: aload_0
-    //   66: monitorexit
-    //   67: aload_1
-    //   68: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	69	0	this	MoviePlayer
-    //   64	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	53	64	finally
-    //   56	61	64	finally
+    try
+    {
+      String str = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("play: player = ");
+      localStringBuilder.append(this.player);
+      Logger.d(str, localStringBuilder.toString());
+      if (this.player != null)
+      {
+        if (requestAudioFocus()) {
+          this.player.play();
+        }
+      }
+      else {
+        this.isAutoPlay = true;
+      }
+      return;
+    }
+    finally {}
   }
   
   public void readSnapShootBitmap(OnReadSnapShootListener paramOnReadSnapShootListener)
@@ -618,29 +535,31 @@ public class MoviePlayer
   
   public void refresh()
   {
-    for (;;)
+    try
     {
-      try
-      {
-        Player localPlayer = this.player;
-        if (localPlayer == null) {
-          return;
-        }
-        if (this.player.duration().equalsTo(getPosition())) {
-          this.player.seekToTime(getPosition().sub(new CMTime(1L, 1000)));
-        } else {
-          this.player.seekToTime(getPosition());
-        }
+      Player localPlayer = this.player;
+      if (localPlayer == null) {
+        return;
       }
-      finally {}
+      if (this.player.duration().equalsTo(getPosition())) {
+        this.player.seekToTime(getPosition().sub(new CMTime(1L, 1000)));
+      } else {
+        this.player.seekToTime(getPosition());
+      }
+      return;
     }
+    finally {}
   }
   
   public void release()
   {
     try
     {
-      Logger.d(this.TAG, "release: player = " + this.player);
+      String str = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("release: player = ");
+      localStringBuilder.append(this.player);
+      Logger.d(str, localStringBuilder.toString());
       if (this.player != null)
       {
         abandonAudioFocus();
@@ -693,32 +612,42 @@ public class MoviePlayer
   {
     this.rotation = paramInt;
     CGSize localCGSize2 = CGSize.CGSizeZero;
+    TAVComposition localTAVComposition = this.tavComposition;
     CGSize localCGSize1 = localCGSize2;
-    if (this.tavComposition != null)
+    if (localTAVComposition != null)
     {
       localCGSize1 = localCGSize2;
-      if (this.tavComposition.getRenderSize() != null) {
+      if (localTAVComposition.getRenderSize() != null) {
         localCGSize1 = this.tavComposition.getRenderSize();
       }
     }
     if (paramBoolean)
     {
-      startRotatePlayerContainer(this.rotation - 90, this.rotation, localCGSize1, 300);
+      paramInt = this.rotation;
+      startRotatePlayerContainer(paramInt - 90, paramInt, localCGSize1, 300);
       return;
     }
-    startRotatePlayerContainer(this.rotation, this.rotation, localCGSize1, 0);
+    paramInt = this.rotation;
+    startRotatePlayerContainer(paramInt, paramInt, localCGSize1, 0);
   }
   
   public void seekToTime(CMTime paramCMTime)
   {
-    Logger.d(this.TAG, "seekToTime() called with: cmTime = [" + paramCMTime + "],player = " + this.player);
-    CMTime localCMTime = paramCMTime;
+    Object localObject = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("seekToTime() called with: cmTime = [");
+    localStringBuilder.append(paramCMTime);
+    localStringBuilder.append("],player = ");
+    localStringBuilder.append(this.player);
+    Logger.d((String)localObject, localStringBuilder.toString());
+    localObject = paramCMTime;
     if (paramCMTime.smallThan(CMTime.CMTimeZero)) {
-      localCMTime = CMTime.CMTimeZero;
+      localObject = CMTime.CMTimeZero;
     }
-    this.seekTime = localCMTime;
-    if (this.player != null) {
-      this.player.seekToTime(localCMTime);
+    this.seekTime = ((CMTime)localObject);
+    paramCMTime = this.player;
+    if (paramCMTime != null) {
+      paramCMTime.seekToTime((CMTime)localObject);
     }
   }
   
@@ -744,8 +673,9 @@ public class MoviePlayer
   public void setBackColor(int paramInt)
   {
     this.backColor = paramInt;
-    if (this.player != null) {
-      this.player.setBgColor(paramInt);
+    Player localPlayer = this.player;
+    if (localPlayer != null) {
+      localPlayer.setBgColor(paramInt);
     }
   }
   
@@ -753,7 +683,13 @@ public class MoviePlayer
   {
     try
     {
-      Logger.d(this.TAG, "setLoopPlay() called with: loopPlay = [" + paramBoolean + "],player = " + this.player);
+      String str = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setLoopPlay() called with: loopPlay = [");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("],player = ");
+      localStringBuilder.append(this.player);
+      Logger.d(str, localStringBuilder.toString());
       this.loopPlay = paramBoolean;
       if (this.player != null) {
         this.player.setLoop(paramBoolean);
@@ -771,7 +707,13 @@ public class MoviePlayer
   {
     try
     {
-      Logger.d(this.TAG, "setPlayRange() called with: playRange = [" + paramCMTimeRange + "],player = " + this.player);
+      String str = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setPlayRange() called with: playRange = [");
+      localStringBuilder.append(paramCMTimeRange);
+      localStringBuilder.append("],player = ");
+      localStringBuilder.append(this.player);
+      Logger.d(str, localStringBuilder.toString());
       this.playRange = paramCMTimeRange;
       if (this.player != null) {
         this.player.setPlayRange(paramCMTimeRange);
@@ -793,8 +735,9 @@ public class MoviePlayer
   public void setRenderContextParams(RenderContextParams paramRenderContextParams)
   {
     this.mRenderContextParams = paramRenderContextParams;
-    if (this.player != null) {
-      this.player.setRenderContextParams(this.mRenderContextParams);
+    paramRenderContextParams = this.player;
+    if (paramRenderContextParams != null) {
+      paramRenderContextParams.setRenderContextParams(this.mRenderContextParams);
     }
   }
   
@@ -816,7 +759,13 @@ public class MoviePlayer
   {
     try
     {
-      Logger.d(this.TAG, "setVolume() called with: volume = [" + paramFloat + "],player = " + this.player);
+      String str = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setVolume() called with: volume = [");
+      localStringBuilder.append(paramFloat);
+      localStringBuilder.append("],player = ");
+      localStringBuilder.append(this.player);
+      Logger.d(str, localStringBuilder.toString());
       this.volume = paramFloat;
       if (this.player != null) {
         this.player.setVolume(paramFloat);
@@ -832,7 +781,16 @@ public class MoviePlayer
   
   public void updateComposition(TAVComposition paramTAVComposition, CMTime paramCMTime, boolean paramBoolean)
   {
-    Logger.d(this.TAG, "updateComposition() called with: tavComposition = [" + paramTAVComposition + "], position = [" + paramCMTime + "], autoPlay = [" + paramBoolean + "]");
+    Object localObject = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateComposition() called with: tavComposition = [");
+    localStringBuilder.append(paramTAVComposition);
+    localStringBuilder.append("], position = [");
+    localStringBuilder.append(paramCMTime);
+    localStringBuilder.append("], autoPlay = [");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("]");
+    Logger.d((String)localObject, localStringBuilder.toString());
     this.tavComposition = paramTAVComposition;
     this.position = paramCMTime;
     if (paramTAVComposition == null) {
@@ -847,13 +805,14 @@ public class MoviePlayer
     if (this.seekTime == null) {
       this.seekTime = paramCMTime;
     }
-    if ((this.player == null) || (this.player.isReleased()))
+    localObject = this.player;
+    if ((localObject != null) && (!((Player)localObject).isReleased()))
     {
-      this.player = newPlayer(paramTAVComposition, this.seekTime, paramBoolean);
+      this.updatingPlayItem = true;
+      this.player.update(paramTAVComposition, paramCMTime, new MoviePlayer.2(this, paramBoolean));
       return;
     }
-    this.updatingPlayItem = true;
-    this.player.update(paramTAVComposition, paramCMTime, new MoviePlayer.2(this, paramBoolean));
+    this.player = newPlayer(paramTAVComposition, this.seekTime, paramBoolean);
   }
   
   public void updateComposition(TAVComposition paramTAVComposition, boolean paramBoolean)
@@ -863,7 +822,7 @@ public class MoviePlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.player.MoviePlayer
  * JD-Core Version:    0.7.0.1
  */

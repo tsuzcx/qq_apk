@@ -23,6 +23,7 @@ import com.tencent.mobileqq.ar.keying.KeyingManager;
 import com.tencent.mobileqq.ar.keying.KeyingParams;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.dtreport.audio.playback.ReportMediaPlayer;
 import java.io.File;
 import java.util.HashMap;
 
@@ -78,55 +79,67 @@ class NormalVideoARRenderable
   
   private void a()
   {
-    QLog.d("AREngine_ARVideoRenderable", 1, "initMedia, mHasMediaInit=" + this.jdField_d_of_type_Boolean);
-    if (this.jdField_d_of_type_Boolean) {}
-    do
-    {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("initMedia, mHasMediaInit=");
+    ((StringBuilder)localObject).append(this.jdField_d_of_type_Boolean);
+    QLog.d("AREngine_ARVideoRenderable", 1, ((StringBuilder)localObject).toString());
+    if (this.jdField_d_of_type_Boolean) {
       return;
+    }
+    this.jdField_d_of_type_Boolean = true;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      QLog.d("AREngine_ARVideoRenderable", 1, "initMedia failed, mVideoPath is empty");
+      return;
+    }
+    if (!new File(this.jdField_a_of_type_JavaLangString).exists())
+    {
+      QLog.d("AREngine_ARVideoRenderable", 1, "initMedia failed, file not exist");
+      return;
+    }
+    try
+    {
+      this.jdField_a_of_type_AndroidMediaMediaPlayer = new ReportMediaPlayer();
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(this);
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(this);
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnBufferingUpdateListener(this);
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(this);
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnInfoListener(this);
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setLooping(false);
+      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_d_of_type_Int);
+      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
+      localObject = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setSurface((Surface)localObject);
+      ((Surface)localObject).release();
       this.jdField_d_of_type_Boolean = true;
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-      {
-        QLog.d("AREngine_ARVideoRenderable", 1, "initMedia failed, mVideoPath is empty");
-        return;
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("init, throwable t = ");
+      localStringBuilder.append(localThrowable.getMessage());
+      QLog.d("AREngine_ARVideoRenderable", 1, localStringBuilder.toString());
+      if (QLog.isColorLevel()) {
+        localThrowable.printStackTrace();
       }
-      if (!new File(this.jdField_a_of_type_JavaLangString).exists())
-      {
-        QLog.d("AREngine_ARVideoRenderable", 1, "initMedia failed, file not exist");
-        return;
-      }
-      try
-      {
-        this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(this);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(this);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnBufferingUpdateListener(this);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(this);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnInfoListener(this);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setLooping(false);
-        this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_d_of_type_Int);
-        this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
-        Surface localSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setSurface(localSurface);
-        localSurface.release();
-        this.jdField_d_of_type_Boolean = true;
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.d("AREngine_ARVideoRenderable", 1, "init, throwable t = " + localThrowable.getMessage());
-      }
-    } while (!QLog.isColorLevel());
-    localThrowable.printStackTrace();
+    }
   }
   
   private void b()
   {
-    QLog.d("AREngine_ARVideoRenderable", 1, "initGl, mHasMediaInit=" + this.jdField_d_of_type_Boolean);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("initGl, mHasMediaInit=");
+    ((StringBuilder)localObject).append(this.jdField_d_of_type_Boolean);
+    QLog.d("AREngine_ARVideoRenderable", 1, ((StringBuilder)localObject).toString());
     Matrix.setIdentityM(this.jdField_b_of_type_ArrayOfFloat, 0);
-    int[] arrayOfInt = new int[1];
-    GLES20.glGenTextures(1, arrayOfInt, 0);
-    this.jdField_d_of_type_Int = arrayOfInt[0];
-    QLog.d("AREngine_ARVideoRenderable", 1, "initGl, mTextureID=" + this.jdField_d_of_type_Int);
+    localObject = new int[1];
+    GLES20.glGenTextures(1, (int[])localObject, 0);
+    this.jdField_d_of_type_Int = localObject[0];
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("initGl, mTextureID=");
+    ((StringBuilder)localObject).append(this.jdField_d_of_type_Int);
+    QLog.d("AREngine_ARVideoRenderable", 1, ((StringBuilder)localObject).toString());
     if (this.jdField_d_of_type_Int == 0) {
       return;
     }
@@ -146,8 +159,14 @@ class NormalVideoARRenderable
   
   private void h()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARVideoRenderable", 2, "isColorLevel, mLoopCount=" + this.jdField_c_of_type_Int + ", mCurPlayCount=" + this.jdField_b_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isColorLevel, mLoopCount=");
+      localStringBuilder.append(this.jdField_c_of_type_Int);
+      localStringBuilder.append(", mCurPlayCount=");
+      localStringBuilder.append(this.jdField_b_of_type_Int);
+      QLog.d("AREngine_ARVideoRenderable", 2, localStringBuilder.toString());
     }
   }
   
@@ -160,44 +179,46 @@ class NormalVideoARRenderable
   
   public void a(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float[] paramArrayOfFloat3, float[] paramArrayOfFloat4)
   {
-    if ((!this.jdField_e_of_type_Boolean) || (paramArrayOfFloat2 == null) || (paramArrayOfFloat3 == null) || (paramArrayOfFloat4 == null) || (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelNormalVideoARResourceInfo == null)) {
-      return;
-    }
-    GLES20.glBlendFunc(770, 771);
-    GLES20.glEnable(3042);
-    if (this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase == null) {
-      g();
-    }
-    int k;
-    KeyingParams localKeyingParams;
-    if ((this.jdField_a_of_type_ComTencentMobileqqArARRenderModelNormalVideoARResourceInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelNormalVideoARResourceInfo.jdField_b_of_type_Int == 1)) {
-      if (this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase != null)
+    if ((this.jdField_e_of_type_Boolean) && (paramArrayOfFloat2 != null) && (paramArrayOfFloat3 != null) && (paramArrayOfFloat4 != null))
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelNormalVideoARResourceInfo == null) {
+        return;
+      }
+      GLES20.glBlendFunc(770, 771);
+      GLES20.glEnable(3042);
+      if (this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase == null) {
+        g();
+      }
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelNormalVideoARResourceInfo;
+      int k;
+      if ((localObject != null) && (((NormalVideoARResourceInfo)localObject).jdField_b_of_type_Int == 1))
       {
         paramArrayOfFloat2 = this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase;
-        k = this.jdField_d_of_type_Int;
-        localKeyingParams = this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingParams;
-        paramArrayOfFloat1 = a(paramArrayOfFloat1, paramArrayOfFloat3, paramArrayOfFloat4);
-        paramArrayOfFloat3 = this.jdField_b_of_type_ArrayOfFloat;
-        paramArrayOfFloat2.a(new int[] { k }, localKeyingParams, paramArrayOfFloat1, paramArrayOfFloat3);
+        if (paramArrayOfFloat2 != null)
+        {
+          k = this.jdField_d_of_type_Int;
+          localObject = this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingParams;
+          paramArrayOfFloat1 = a(paramArrayOfFloat1, paramArrayOfFloat3, paramArrayOfFloat4);
+          paramArrayOfFloat3 = this.jdField_b_of_type_ArrayOfFloat;
+          paramArrayOfFloat2.a(new int[] { k }, (KeyingParams)localObject, paramArrayOfFloat1, paramArrayOfFloat3);
+        }
       }
-    }
-    for (;;)
-    {
-      GLES20.glDisable(3042);
-      GLES20.glBindTexture(36197, 0);
-      if (!this.j) {
-        break;
-      }
-      this.j = false;
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase != null)
+      else
       {
         paramArrayOfFloat3 = this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase;
-        k = this.jdField_d_of_type_Int;
-        localKeyingParams = this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingParams;
-        paramArrayOfFloat1 = a(paramArrayOfFloat1, paramArrayOfFloat2, paramArrayOfFloat4);
-        paramArrayOfFloat2 = this.jdField_b_of_type_ArrayOfFloat;
-        paramArrayOfFloat3.a(new int[] { k }, localKeyingParams, paramArrayOfFloat1, paramArrayOfFloat2);
+        if (paramArrayOfFloat3 != null)
+        {
+          k = this.jdField_d_of_type_Int;
+          localObject = this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingParams;
+          paramArrayOfFloat1 = a(paramArrayOfFloat1, paramArrayOfFloat2, paramArrayOfFloat4);
+          paramArrayOfFloat2 = this.jdField_b_of_type_ArrayOfFloat;
+          paramArrayOfFloat3.a(new int[] { k }, (KeyingParams)localObject, paramArrayOfFloat1, paramArrayOfFloat2);
+        }
+      }
+      GLES20.glDisable(3042);
+      GLES20.glBindTexture(36197, 0);
+      if (this.j) {
+        this.j = false;
       }
     }
   }
@@ -212,30 +233,34 @@ class NormalVideoARRenderable
         Matrix.scaleM(this.jdField_a_of_type_ArrayOfFloat, 0, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelNormalVideoARResourceInfo.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo$ARVideoLayout.jdField_a_of_type_Float * paramArrayOfFloat1[0], this.jdField_a_of_type_ComTencentMobileqqArARRenderModelNormalVideoARResourceInfo.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo$ARVideoLayout.jdField_b_of_type_Float * paramArrayOfFloat1[1], 1.0F);
         Matrix.translateM(this.jdField_a_of_type_ArrayOfFloat, 0, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelNormalVideoARResourceInfo.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo$ARVideoLayout.jdField_c_of_type_Float, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelNormalVideoARResourceInfo.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo$ARVideoLayout.d, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelNormalVideoARResourceInfo.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo$ARVideoLayout.e);
       }
-      return this.jdField_a_of_type_ArrayOfFloat;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelNormalVideoARResourceInfo.jdField_c_of_type_Int == 1) {}
-    for (;;)
+    else
     {
-      Matrix.multiplyMM(this.jdField_a_of_type_ArrayOfFloat, 0, paramArrayOfFloat2, 0, this.jdField_a_of_type_ArrayOfFloat, 0);
-      Matrix.multiplyMM(this.jdField_a_of_type_ArrayOfFloat, 0, paramArrayOfFloat3, 0, this.jdField_a_of_type_ArrayOfFloat, 0);
-      break;
-      Matrix.scaleM(this.jdField_a_of_type_ArrayOfFloat, 0, paramArrayOfFloat1[0], paramArrayOfFloat1[1], 1.0F);
+      if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelNormalVideoARResourceInfo.jdField_c_of_type_Int != 1) {
+        Matrix.scaleM(this.jdField_a_of_type_ArrayOfFloat, 0, paramArrayOfFloat1[0], paramArrayOfFloat1[1], 1.0F);
+      }
+      paramArrayOfFloat1 = this.jdField_a_of_type_ArrayOfFloat;
+      Matrix.multiplyMM(paramArrayOfFloat1, 0, paramArrayOfFloat2, 0, paramArrayOfFloat1, 0);
+      paramArrayOfFloat1 = this.jdField_a_of_type_ArrayOfFloat;
+      Matrix.multiplyMM(paramArrayOfFloat1, 0, paramArrayOfFloat3, 0, paramArrayOfFloat1, 0);
     }
+    return this.jdField_a_of_type_ArrayOfFloat;
   }
   
   public int b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelNormalVideoARResourceInfo != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqArARRenderModelNormalVideoARResourceInfo.jdField_a_of_type_Int;
+    NormalVideoARResourceInfo localNormalVideoARResourceInfo = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelNormalVideoARResourceInfo;
+    if (localNormalVideoARResourceInfo != null) {
+      return localNormalVideoARResourceInfo.jdField_a_of_type_Int;
     }
     return 2;
   }
   
   public int c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelNormalVideoARResourceInfo != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqArARRenderModelNormalVideoARResourceInfo.jdField_b_of_type_Int;
+    NormalVideoARResourceInfo localNormalVideoARResourceInfo = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelNormalVideoARResourceInfo;
+    if (localNormalVideoARResourceInfo != null) {
+      return localNormalVideoARResourceInfo.jdField_b_of_type_Int;
     }
     return 0;
   }
@@ -260,330 +285,330 @@ class NormalVideoARRenderable
   public void d()
   {
     // Byte code:
-    //   0: iconst_1
-    //   1: istore_1
-    //   2: ldc 148
-    //   4: iconst_1
-    //   5: ldc_w 384
-    //   8: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   11: invokestatic 242	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   14: ifeq +29 -> 43
-    //   17: ldc 148
-    //   19: iconst_2
-    //   20: new 150	java/lang/StringBuilder
-    //   23: dup
-    //   24: invokespecial 151	java/lang/StringBuilder:<init>	()V
-    //   27: ldc_w 386
-    //   30: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   33: aload_0
-    //   34: invokevirtual 389	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   37: invokevirtual 163	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   40: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   43: aload_0
-    //   44: getfield 53	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_b_of_type_Boolean	Z
-    //   47: ifne +20 -> 67
-    //   50: aload_0
-    //   51: getfield 51	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   54: ifnull +13 -> 67
-    //   57: aload_0
-    //   58: getfield 51	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   61: invokevirtual 392	android/media/MediaPlayer:isPlaying	()Z
-    //   64: ifeq +52 -> 116
-    //   67: invokestatic 242	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   70: ifeq +45 -> 115
-    //   73: ldc 148
-    //   75: iconst_2
-    //   76: new 150	java/lang/StringBuilder
-    //   79: dup
-    //   80: invokespecial 151	java/lang/StringBuilder:<init>	()V
-    //   83: ldc_w 394
-    //   86: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   89: aload_0
-    //   90: getfield 53	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_b_of_type_Boolean	Z
-    //   93: invokevirtual 160	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   96: ldc_w 396
-    //   99: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   102: aload_0
-    //   103: getfield 51	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   106: invokevirtual 389	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   109: invokevirtual 163	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   112: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   115: return
-    //   116: aload_0
-    //   117: iconst_0
-    //   118: putfield 71	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:h	Z
-    //   121: aload_0
-    //   122: iconst_0
-    //   123: putfield 65	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_e_of_type_Boolean	Z
-    //   126: new 398	java/io/FileInputStream
-    //   129: dup
-    //   130: new 177	java/io/File
-    //   133: dup
-    //   134: aload_0
-    //   135: getfield 109	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   138: invokespecial 180	java/io/File:<init>	(Ljava/lang/String;)V
-    //   141: invokespecial 401	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   144: astore_3
-    //   145: aload_3
-    //   146: astore_2
-    //   147: aload_3
-    //   148: invokevirtual 405	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
-    //   151: astore 4
-    //   153: aload_3
-    //   154: astore_2
+    //   0: ldc 160
+    //   2: iconst_1
+    //   3: ldc_w 386
+    //   6: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   9: invokestatic 244	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   12: ifeq +35 -> 47
+    //   15: new 148	java/lang/StringBuilder
+    //   18: dup
+    //   19: invokespecial 149	java/lang/StringBuilder:<init>	()V
+    //   22: astore_2
+    //   23: aload_2
+    //   24: ldc_w 388
+    //   27: invokevirtual 155	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: pop
+    //   31: aload_2
+    //   32: aload_0
+    //   33: invokevirtual 391	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   36: pop
+    //   37: ldc 160
+    //   39: iconst_2
+    //   40: aload_2
+    //   41: invokevirtual 163	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   44: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   47: aload_0
+    //   48: getfield 53	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_b_of_type_Boolean	Z
+    //   51: ifne +403 -> 454
+    //   54: aload_0
+    //   55: getfield 51	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   58: astore_2
+    //   59: aload_2
+    //   60: ifnull +394 -> 454
+    //   63: aload_2
+    //   64: invokevirtual 394	android/media/MediaPlayer:isPlaying	()Z
+    //   67: ifeq +6 -> 73
+    //   70: goto +384 -> 454
+    //   73: aload_0
+    //   74: iconst_0
+    //   75: putfield 71	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:h	Z
+    //   78: aload_0
+    //   79: iconst_0
+    //   80: putfield 65	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_e_of_type_Boolean	Z
+    //   83: aconst_null
+    //   84: astore 4
+    //   86: aconst_null
+    //   87: astore 5
+    //   89: aconst_null
+    //   90: astore_2
+    //   91: new 396	java/io/FileInputStream
+    //   94: dup
+    //   95: new 177	java/io/File
+    //   98: dup
+    //   99: aload_0
+    //   100: getfield 109	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   103: invokespecial 180	java/io/File:<init>	(Ljava/lang/String;)V
+    //   106: invokespecial 399	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   109: astore_3
+    //   110: aload_3
+    //   111: invokevirtual 403	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
+    //   114: astore_2
+    //   115: aload_0
+    //   116: getfield 51	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   119: aload_2
+    //   120: invokevirtual 407	android/media/MediaPlayer:setDataSource	(Ljava/io/FileDescriptor;)V
+    //   123: aload_0
+    //   124: iconst_1
+    //   125: putfield 57	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_b_of_type_Int	I
+    //   128: aload_0
+    //   129: getfield 51	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   132: astore_2
+    //   133: aload_0
+    //   134: getfield 59	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_c_of_type_Int	I
+    //   137: ifne +376 -> 513
+    //   140: iconst_1
+    //   141: istore_1
+    //   142: goto +3 -> 145
+    //   145: aload_2
+    //   146: iload_1
+    //   147: invokevirtual 215	android/media/MediaPlayer:setLooping	(Z)V
+    //   150: aload_0
+    //   151: iconst_1
+    //   152: putfield 69	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:g	Z
     //   155: aload_0
     //   156: getfield 51	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   159: aload 4
-    //   161: invokevirtual 409	android/media/MediaPlayer:setDataSource	(Ljava/io/FileDescriptor;)V
-    //   164: aload_3
-    //   165: astore_2
-    //   166: aload_0
-    //   167: iconst_1
-    //   168: putfield 57	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_b_of_type_Int	I
-    //   171: aload_3
-    //   172: astore_2
-    //   173: aload_0
-    //   174: getfield 51	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   177: astore 4
-    //   179: aload_3
-    //   180: astore_2
-    //   181: aload_0
-    //   182: getfield 59	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_c_of_type_Int	I
-    //   185: ifne +96 -> 281
-    //   188: aload_3
-    //   189: astore_2
-    //   190: aload 4
-    //   192: iload_1
-    //   193: invokevirtual 213	android/media/MediaPlayer:setLooping	(Z)V
-    //   196: aload_3
-    //   197: astore_2
-    //   198: aload_0
-    //   199: iconst_1
-    //   200: putfield 69	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:g	Z
-    //   203: aload_3
-    //   204: astore_2
-    //   205: aload_0
-    //   206: getfield 51	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   209: invokevirtual 412	android/media/MediaPlayer:prepare	()V
-    //   212: aload_3
-    //   213: astore_2
-    //   214: aload_0
-    //   215: iconst_0
-    //   216: putfield 67	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:f	Z
+    //   159: invokevirtual 410	android/media/MediaPlayer:prepare	()V
+    //   162: aload_0
+    //   163: iconst_0
+    //   164: putfield 67	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:f	Z
+    //   167: aload_0
+    //   168: getfield 51	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   171: invokevirtual 412	android/media/MediaPlayer:start	()V
+    //   174: aload_0
+    //   175: iconst_1
+    //   176: putfield 53	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_b_of_type_Boolean	Z
+    //   179: aload_0
+    //   180: getfield 101	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback	Lcom/tencent/mobileqq/ar/ARRenderModel/ARRenderMangerInnerCallback;
+    //   183: ifnull +17 -> 200
+    //   186: aload_0
+    //   187: getfield 101	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback	Lcom/tencent/mobileqq/ar/ARRenderModel/ARRenderMangerInnerCallback;
+    //   190: iconst_0
+    //   191: aload_0
+    //   192: getfield 59	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_c_of_type_Int	I
+    //   195: invokeinterface 416 3 0
+    //   200: aload_3
+    //   201: invokevirtual 419	java/io/FileInputStream:close	()V
+    //   204: return
+    //   205: astore_2
+    //   206: invokestatic 244	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   209: ifeq +220 -> 429
+    //   212: aload_2
+    //   213: invokevirtual 247	java/lang/Throwable:printStackTrace	()V
+    //   216: return
+    //   217: astore 4
     //   219: aload_3
     //   220: astore_2
-    //   221: aload_0
-    //   222: getfield 51	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   225: invokevirtual 414	android/media/MediaPlayer:start	()V
-    //   228: aload_3
-    //   229: astore_2
-    //   230: aload_0
-    //   231: iconst_1
-    //   232: putfield 53	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_b_of_type_Boolean	Z
-    //   235: aload_3
-    //   236: astore_2
-    //   237: aload_0
-    //   238: getfield 101	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback	Lcom/tencent/mobileqq/ar/ARRenderModel/ARRenderMangerInnerCallback;
-    //   241: ifnull +19 -> 260
-    //   244: aload_3
-    //   245: astore_2
-    //   246: aload_0
-    //   247: getfield 101	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback	Lcom/tencent/mobileqq/ar/ARRenderModel/ARRenderMangerInnerCallback;
-    //   250: iconst_0
-    //   251: aload_0
-    //   252: getfield 59	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_c_of_type_Int	I
-    //   255: invokeinterface 418 3 0
-    //   260: aload_3
-    //   261: ifnull -146 -> 115
-    //   264: aload_3
-    //   265: invokevirtual 421	java/io/FileInputStream:close	()V
-    //   268: return
-    //   269: astore_2
-    //   270: invokestatic 242	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   273: ifeq -158 -> 115
-    //   276: aload_2
-    //   277: invokevirtual 245	java/lang/Throwable:printStackTrace	()V
-    //   280: return
-    //   281: iconst_0
-    //   282: istore_1
-    //   283: goto -95 -> 188
-    //   286: astore 4
-    //   288: aconst_null
-    //   289: astore_3
-    //   290: aload_3
-    //   291: astore_2
-    //   292: ldc 148
-    //   294: iconst_2
-    //   295: new 150	java/lang/StringBuilder
-    //   298: dup
-    //   299: invokespecial 151	java/lang/StringBuilder:<init>	()V
-    //   302: ldc_w 423
-    //   305: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   308: aload 4
-    //   310: invokevirtual 424	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   313: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   316: invokevirtual 163	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   319: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   322: aload_3
-    //   323: astore_2
-    //   324: invokestatic 242	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   327: ifeq +10 -> 337
-    //   330: aload_3
-    //   331: astore_2
-    //   332: aload 4
-    //   334: invokevirtual 425	java/io/IOException:printStackTrace	()V
-    //   337: aload_3
-    //   338: astore_2
-    //   339: aload_0
-    //   340: invokevirtual 427	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:f	()V
-    //   343: aload_3
-    //   344: ifnull -229 -> 115
-    //   347: aload_3
-    //   348: invokevirtual 421	java/io/FileInputStream:close	()V
-    //   351: return
-    //   352: astore_2
-    //   353: invokestatic 242	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   356: ifeq -241 -> 115
-    //   359: aload_2
-    //   360: invokevirtual 245	java/lang/Throwable:printStackTrace	()V
-    //   363: return
-    //   364: astore 4
-    //   366: aconst_null
-    //   367: astore_3
-    //   368: aload_3
-    //   369: astore_2
-    //   370: ldc 148
-    //   372: iconst_2
-    //   373: new 150	java/lang/StringBuilder
-    //   376: dup
-    //   377: invokespecial 151	java/lang/StringBuilder:<init>	()V
-    //   380: ldc_w 429
-    //   383: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   386: aload 4
-    //   388: invokevirtual 239	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   391: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   394: invokevirtual 163	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   397: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   400: aload_3
-    //   401: astore_2
-    //   402: invokestatic 242	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   405: ifeq +10 -> 415
-    //   408: aload_3
-    //   409: astore_2
-    //   410: aload 4
-    //   412: invokevirtual 245	java/lang/Throwable:printStackTrace	()V
-    //   415: aload_3
-    //   416: astore_2
-    //   417: aload_0
-    //   418: invokevirtual 427	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:f	()V
-    //   421: aload_3
-    //   422: ifnull -307 -> 115
-    //   425: aload_3
-    //   426: invokevirtual 421	java/io/FileInputStream:close	()V
+    //   221: aload 4
+    //   223: astore_3
+    //   224: goto +206 -> 430
+    //   227: astore 4
+    //   229: goto +19 -> 248
+    //   232: astore 4
+    //   234: goto +107 -> 341
+    //   237: astore_3
+    //   238: goto +192 -> 430
+    //   241: astore_2
+    //   242: aload 4
+    //   244: astore_3
+    //   245: aload_2
+    //   246: astore 4
+    //   248: aload_3
+    //   249: astore_2
+    //   250: new 148	java/lang/StringBuilder
+    //   253: dup
+    //   254: invokespecial 149	java/lang/StringBuilder:<init>	()V
+    //   257: astore 5
+    //   259: aload_3
+    //   260: astore_2
+    //   261: aload 5
+    //   263: ldc_w 421
+    //   266: invokevirtual 155	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   269: pop
+    //   270: aload_3
+    //   271: astore_2
+    //   272: aload 5
+    //   274: aload 4
+    //   276: invokevirtual 241	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   279: invokevirtual 155	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   282: pop
+    //   283: aload_3
+    //   284: astore_2
+    //   285: ldc 160
+    //   287: iconst_2
+    //   288: aload 5
+    //   290: invokevirtual 163	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   293: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   296: aload_3
+    //   297: astore_2
+    //   298: invokestatic 244	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   301: ifeq +10 -> 311
+    //   304: aload_3
+    //   305: astore_2
+    //   306: aload 4
+    //   308: invokevirtual 247	java/lang/Throwable:printStackTrace	()V
+    //   311: aload_3
+    //   312: astore_2
+    //   313: aload_0
+    //   314: invokevirtual 423	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:f	()V
+    //   317: aload_3
+    //   318: ifnull +111 -> 429
+    //   321: aload_3
+    //   322: invokevirtual 419	java/io/FileInputStream:close	()V
+    //   325: return
+    //   326: astore_2
+    //   327: invokestatic 244	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   330: ifeq +99 -> 429
+    //   333: goto -121 -> 212
+    //   336: astore 4
+    //   338: aload 5
+    //   340: astore_3
+    //   341: aload_3
+    //   342: astore_2
+    //   343: new 148	java/lang/StringBuilder
+    //   346: dup
+    //   347: invokespecial 149	java/lang/StringBuilder:<init>	()V
+    //   350: astore 5
+    //   352: aload_3
+    //   353: astore_2
+    //   354: aload 5
+    //   356: ldc_w 425
+    //   359: invokevirtual 155	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   362: pop
+    //   363: aload_3
+    //   364: astore_2
+    //   365: aload 5
+    //   367: aload 4
+    //   369: invokevirtual 426	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   372: invokevirtual 155	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   375: pop
+    //   376: aload_3
+    //   377: astore_2
+    //   378: ldc 160
+    //   380: iconst_2
+    //   381: aload 5
+    //   383: invokevirtual 163	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   386: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   389: aload_3
+    //   390: astore_2
+    //   391: invokestatic 244	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   394: ifeq +10 -> 404
+    //   397: aload_3
+    //   398: astore_2
+    //   399: aload 4
+    //   401: invokevirtual 427	java/io/IOException:printStackTrace	()V
+    //   404: aload_3
+    //   405: astore_2
+    //   406: aload_0
+    //   407: invokevirtual 423	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:f	()V
+    //   410: aload_3
+    //   411: ifnull +18 -> 429
+    //   414: aload_3
+    //   415: invokevirtual 419	java/io/FileInputStream:close	()V
+    //   418: return
+    //   419: astore_2
+    //   420: invokestatic 244	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   423: ifeq +6 -> 429
+    //   426: goto -214 -> 212
     //   429: return
-    //   430: astore_2
-    //   431: invokestatic 242	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   434: ifeq -319 -> 115
-    //   437: aload_2
-    //   438: invokevirtual 245	java/lang/Throwable:printStackTrace	()V
-    //   441: return
-    //   442: astore_3
-    //   443: aconst_null
-    //   444: astore_2
-    //   445: aload_2
-    //   446: ifnull +7 -> 453
-    //   449: aload_2
-    //   450: invokevirtual 421	java/io/FileInputStream:close	()V
-    //   453: aload_3
-    //   454: athrow
-    //   455: astore_2
-    //   456: invokestatic 242	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   459: ifeq -6 -> 453
-    //   462: aload_2
-    //   463: invokevirtual 245	java/lang/Throwable:printStackTrace	()V
-    //   466: goto -13 -> 453
-    //   469: astore_3
-    //   470: goto -25 -> 445
-    //   473: astore 4
-    //   475: goto -107 -> 368
-    //   478: astore 4
-    //   480: goto -190 -> 290
+    //   430: aload_2
+    //   431: ifnull +21 -> 452
+    //   434: aload_2
+    //   435: invokevirtual 419	java/io/FileInputStream:close	()V
+    //   438: goto +14 -> 452
+    //   441: astore_2
+    //   442: invokestatic 244	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   445: ifeq +7 -> 452
+    //   448: aload_2
+    //   449: invokevirtual 247	java/lang/Throwable:printStackTrace	()V
+    //   452: aload_3
+    //   453: athrow
+    //   454: invokestatic 244	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   457: ifeq +55 -> 512
+    //   460: new 148	java/lang/StringBuilder
+    //   463: dup
+    //   464: invokespecial 149	java/lang/StringBuilder:<init>	()V
+    //   467: astore_2
+    //   468: aload_2
+    //   469: ldc_w 429
+    //   472: invokevirtual 155	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   475: pop
+    //   476: aload_2
+    //   477: aload_0
+    //   478: getfield 53	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_b_of_type_Boolean	Z
+    //   481: invokevirtual 158	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   484: pop
+    //   485: aload_2
+    //   486: ldc_w 431
+    //   489: invokevirtual 155	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   492: pop
+    //   493: aload_2
+    //   494: aload_0
+    //   495: getfield 51	com/tencent/mobileqq/ar/ARRenderModel/NormalVideoARRenderable:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   498: invokevirtual 391	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   501: pop
+    //   502: ldc 160
+    //   504: iconst_2
+    //   505: aload_2
+    //   506: invokevirtual 163	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   509: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   512: return
+    //   513: iconst_0
+    //   514: istore_1
+    //   515: goto -370 -> 145
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	483	0	this	NormalVideoARRenderable
-    //   1	282	1	bool	boolean
-    //   146	100	2	localFileInputStream1	java.io.FileInputStream
-    //   269	8	2	localThrowable1	Throwable
-    //   291	48	2	localFileInputStream2	java.io.FileInputStream
-    //   352	8	2	localThrowable2	Throwable
-    //   369	48	2	localFileInputStream3	java.io.FileInputStream
-    //   430	8	2	localThrowable3	Throwable
-    //   444	6	2	localObject1	Object
-    //   455	8	2	localThrowable4	Throwable
-    //   144	282	3	localFileInputStream4	java.io.FileInputStream
-    //   442	12	3	localObject2	Object
-    //   469	1	3	localObject3	Object
-    //   151	40	4	localObject4	Object
-    //   286	47	4	localIOException1	java.io.IOException
-    //   364	47	4	localThrowable5	Throwable
-    //   473	1	4	localThrowable6	Throwable
-    //   478	1	4	localIOException2	java.io.IOException
+    //   0	518	0	this	NormalVideoARRenderable
+    //   141	374	1	bool	boolean
+    //   22	124	2	localObject1	Object
+    //   205	8	2	localThrowable1	Throwable
+    //   220	1	2	localObject2	Object
+    //   241	5	2	localThrowable2	Throwable
+    //   249	64	2	localObject3	Object
+    //   326	1	2	localThrowable3	Throwable
+    //   342	64	2	localObject4	Object
+    //   419	16	2	localThrowable4	Throwable
+    //   441	8	2	localThrowable5	Throwable
+    //   467	39	2	localStringBuilder1	StringBuilder
+    //   109	115	3	localObject5	Object
+    //   237	1	3	localObject6	Object
+    //   244	209	3	localObject7	Object
+    //   84	1	4	localObject8	Object
+    //   217	5	4	localObject9	Object
+    //   227	1	4	localThrowable6	Throwable
+    //   232	11	4	localIOException1	java.io.IOException
+    //   246	61	4	localThrowable7	Throwable
+    //   336	64	4	localIOException2	java.io.IOException
+    //   87	295	5	localStringBuilder2	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   264	268	269	java/lang/Throwable
-    //   126	145	286	java/io/IOException
-    //   347	351	352	java/lang/Throwable
-    //   126	145	364	java/lang/Throwable
-    //   425	429	430	java/lang/Throwable
-    //   126	145	442	finally
-    //   449	453	455	java/lang/Throwable
-    //   147	153	469	finally
-    //   155	164	469	finally
-    //   166	171	469	finally
-    //   173	179	469	finally
-    //   181	188	469	finally
-    //   190	196	469	finally
-    //   198	203	469	finally
-    //   205	212	469	finally
-    //   214	219	469	finally
-    //   221	228	469	finally
-    //   230	235	469	finally
-    //   237	244	469	finally
-    //   246	260	469	finally
-    //   292	322	469	finally
-    //   324	330	469	finally
-    //   332	337	469	finally
-    //   339	343	469	finally
-    //   370	400	469	finally
-    //   402	408	469	finally
-    //   410	415	469	finally
-    //   417	421	469	finally
-    //   147	153	473	java/lang/Throwable
-    //   155	164	473	java/lang/Throwable
-    //   166	171	473	java/lang/Throwable
-    //   173	179	473	java/lang/Throwable
-    //   181	188	473	java/lang/Throwable
-    //   190	196	473	java/lang/Throwable
-    //   198	203	473	java/lang/Throwable
-    //   205	212	473	java/lang/Throwable
-    //   214	219	473	java/lang/Throwable
-    //   221	228	473	java/lang/Throwable
-    //   230	235	473	java/lang/Throwable
-    //   237	244	473	java/lang/Throwable
-    //   246	260	473	java/lang/Throwable
-    //   147	153	478	java/io/IOException
-    //   155	164	478	java/io/IOException
-    //   166	171	478	java/io/IOException
-    //   173	179	478	java/io/IOException
-    //   181	188	478	java/io/IOException
-    //   190	196	478	java/io/IOException
-    //   198	203	478	java/io/IOException
-    //   205	212	478	java/io/IOException
-    //   214	219	478	java/io/IOException
-    //   221	228	478	java/io/IOException
-    //   230	235	478	java/io/IOException
-    //   237	244	478	java/io/IOException
-    //   246	260	478	java/io/IOException
+    //   200	204	205	java/lang/Throwable
+    //   110	140	217	finally
+    //   145	200	217	finally
+    //   110	140	227	java/lang/Throwable
+    //   145	200	227	java/lang/Throwable
+    //   110	140	232	java/io/IOException
+    //   145	200	232	java/io/IOException
+    //   91	110	237	finally
+    //   250	259	237	finally
+    //   261	270	237	finally
+    //   272	283	237	finally
+    //   285	296	237	finally
+    //   298	304	237	finally
+    //   306	311	237	finally
+    //   313	317	237	finally
+    //   343	352	237	finally
+    //   354	363	237	finally
+    //   365	376	237	finally
+    //   378	389	237	finally
+    //   391	397	237	finally
+    //   399	404	237	finally
+    //   406	410	237	finally
+    //   91	110	241	java/lang/Throwable
+    //   321	325	326	java/lang/Throwable
+    //   91	110	336	java/io/IOException
+    //   414	418	419	java/lang/Throwable
+    //   434	438	441	java/lang/Throwable
   }
   
   public boolean d()
@@ -601,32 +626,41 @@ class NormalVideoARRenderable
   public void f()
   {
     QLog.d("AREngine_ARVideoRenderable", 1, "onDestroy");
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {}
-    try
-    {
-      boolean bool = this.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying();
-      if (QLog.isColorLevel()) {
-        QLog.d("HSRender", 2, "onDestroy, isPlaying=" + bool + ", isLooping=" + this.jdField_a_of_type_AndroidMediaMediaPlayer.isLooping());
+    Object localObject = this.jdField_a_of_type_AndroidMediaMediaPlayer;
+    if (localObject != null) {
+      try
+      {
+        boolean bool = ((MediaPlayer)localObject).isPlaying();
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("onDestroy, isPlaying=");
+          ((StringBuilder)localObject).append(bool);
+          ((StringBuilder)localObject).append(", isLooping=");
+          ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidMediaMediaPlayer.isLooping());
+          QLog.d("HSRender", 2, ((StringBuilder)localObject).toString());
+        }
+        if (bool) {
+          this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
+        }
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
       }
-      if (bool) {
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-      }
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Exception localException)
       {
         if (QLog.isColorLevel()) {
           localException.printStackTrace();
         }
-        QLog.d("AREngine_ARVideoRenderable", 1, "onDestroy, exception, e=" + localException.getMessage());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onDestroy, exception, e=");
+        localStringBuilder.append(localException.getMessage());
+        QLog.d("AREngine_ARVideoRenderable", 1, localStringBuilder.toString());
       }
     }
     this.jdField_e_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase != null)
+    KeyingBase localKeyingBase = this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase;
+    if (localKeyingBase != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase.b();
+      localKeyingBase.b();
       this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase = null;
     }
     this.jdField_b_of_type_Int = 0;
@@ -637,8 +671,12 @@ class NormalVideoARRenderable
   
   public void onBufferingUpdate(MediaPlayer paramMediaPlayer, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARVideoRenderable", 2, "onBufferingUpdate, percent=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramMediaPlayer = new StringBuilder();
+      paramMediaPlayer.append("onBufferingUpdate, percent=");
+      paramMediaPlayer.append(paramInt);
+      QLog.d("AREngine_ARVideoRenderable", 2, paramMediaPlayer.toString());
     }
   }
   
@@ -647,8 +685,9 @@ class NormalVideoARRenderable
     if (QLog.isColorLevel()) {
       QLog.d("AREngine_ARVideoRenderable", 2, "onCompletion");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.b(2, this.jdField_c_of_type_Int - this.jdField_b_of_type_Int);
+    paramMediaPlayer = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback;
+    if (paramMediaPlayer != null) {
+      paramMediaPlayer.b(2, this.jdField_c_of_type_Int - this.jdField_b_of_type_Int);
     }
     if (this.jdField_b_of_type_Int >= this.jdField_c_of_type_Int)
     {
@@ -670,16 +709,27 @@ class NormalVideoARRenderable
       if (QLog.isColorLevel()) {
         paramMediaPlayer.printStackTrace();
       }
-      QLog.d("AREngine_ARVideoRenderable", 1, "onCompletion, exception=" + paramMediaPlayer + ", msg=" + paramMediaPlayer.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCompletion, exception=");
+      localStringBuilder.append(paramMediaPlayer);
+      localStringBuilder.append(", msg=");
+      localStringBuilder.append(paramMediaPlayer.getMessage());
+      QLog.d("AREngine_ARVideoRenderable", 1, localStringBuilder.toString());
       f();
     }
   }
   
   public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    QLog.d("AREngine_ARVideoRenderable", 1, "onError, what=" + paramInt1 + ", extra" + paramInt2);
-    if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelNormalVideoARResourceInfo.jdField_a_of_type_JavaLangString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onError, what=");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(", extra");
+    ((StringBuilder)localObject).append(paramInt2);
+    QLog.d("AREngine_ARVideoRenderable", 1, ((StringBuilder)localObject).toString());
+    localObject = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback;
+    if (localObject != null) {
+      ((ARRenderMangerInnerCallback)localObject).a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelNormalVideoARResourceInfo.jdField_a_of_type_JavaLangString);
     }
     if (paramMediaPlayer != null) {
       paramMediaPlayer.release();
@@ -697,20 +747,27 @@ class NormalVideoARRenderable
   {
     if (this.h) {
       this.jdField_e_of_type_Boolean = true;
+    } else {
+      this.h = true;
     }
-    while ((!this.g) && (Build.MODEL.equalsIgnoreCase("MI 6")))
+    if ((!this.g) && (Build.MODEL.equalsIgnoreCase("MI 6")))
     {
       QLog.d("AREngine_ARVideoRenderable", 1, "onFrameAvailable mIsLooping ");
       return;
-      this.h = true;
     }
     this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(this.jdField_a_of_type_JavaLangRunnable);
   }
   
   public boolean onInfo(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARVideoRenderable", 2, "onInfo, what=" + paramInt1 + ", extra=" + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      paramMediaPlayer = new StringBuilder();
+      paramMediaPlayer.append("onInfo, what=");
+      paramMediaPlayer.append(paramInt1);
+      paramMediaPlayer.append(", extra=");
+      paramMediaPlayer.append(paramInt2);
+      QLog.d("AREngine_ARVideoRenderable", 2, paramMediaPlayer.toString());
     }
     return false;
   }
@@ -724,7 +781,7 @@ class NormalVideoARRenderable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.NormalVideoARRenderable
  * JD-Core Version:    0.7.0.1
  */

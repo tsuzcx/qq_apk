@@ -1,23 +1,50 @@
 package com.tencent.mobileqq.location.ui;
 
-import com.tencent.mobileqq.widget.QQToast;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.avatar.listener.DecodeTaskCompletionListener;
+import com.tencent.mobileqq.location.model.FaceItem;
+import com.tencent.mobileqq.utils.BaseImageUtil;
+import com.tencent.qphone.base.util.QLog;
 
 class LocationPickController$3
-  implements Runnable
+  implements DecodeTaskCompletionListener
 {
   LocationPickController$3(LocationPickController paramLocationPickController) {}
   
-  public void run()
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if (LocationPickController.a(this.this$0).getCount() <= 0) {
-      LocationPickController.a(this.this$0);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("remainingTasks = [");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append("], uin = [");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("], avatar = [");
+      ((StringBuilder)localObject).append(paramBitmap);
+      ((StringBuilder)localObject).append("]");
+      QLog.d("LocationShareController", 2, new Object[] { "[location] onDecodeTaskCompleted invoked. ", ((StringBuilder)localObject).toString() });
     }
-    QQToast.a(LocationPickController.a(this.this$0), 1, 2131693867, 0).a();
+    Bitmap localBitmap = BaseImageUtil.c(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
+    Object localObject = LocationAvatarHelper.a().a(paramString);
+    long l = System.currentTimeMillis();
+    paramBitmap = (Bitmap)localObject;
+    if (localObject == null)
+    {
+      paramBitmap = new FaceItem();
+      LocationAvatarHelper.a().a(paramString, paramBitmap);
+    }
+    paramBitmap.jdField_a_of_type_Long = l;
+    paramBitmap.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
+    LocationPickController.a(this.a).a(paramString, localBitmap);
+    if (LocationPickController.a(this.a) != null) {
+      LocationPickController.a(this.a).onDecodeTaskCompleted(paramInt1, paramInt2, paramString, localBitmap);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationPickController.3
  * JD-Core Version:    0.7.0.1
  */

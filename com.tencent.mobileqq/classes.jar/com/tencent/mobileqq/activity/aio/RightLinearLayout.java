@@ -23,48 +23,42 @@ public class RightLinearLayout
   {
     int j = getPaddingTop();
     int m = getPaddingBottom();
-    paramInt3 = getChildCount();
-    paramInt1 = getPaddingLeft();
-    paramInt3 -= 1;
-    int i1;
-    LinearLayout.LayoutParams localLayoutParams;
-    int i;
-    if (paramInt3 >= 0)
+    paramInt1 = getChildCount();
+    paramInt3 = getPaddingLeft();
+    paramInt1 -= 1;
+    while (paramInt1 >= 0)
     {
-      View localView = getChildAt(paramInt3);
-      if ((localView == null) || (localView.getVisibility() == 8)) {
-        break label205;
-      }
-      int n = localView.getMeasuredWidth();
-      i1 = localView.getMeasuredHeight();
-      localLayoutParams = (LinearLayout.LayoutParams)localView.getLayoutParams();
-      int k = localLayoutParams.gravity;
-      i = k;
-      if (k < 0) {
-        i = 16;
-      }
-      switch (i & 0x70)
+      View localView = getChildAt(paramInt1);
+      int i = paramInt3;
+      if (localView != null)
       {
-      default: 
-        i = j;
-        label124:
-        paramInt1 += localLayoutParams.leftMargin;
-        localView.layout(paramInt1, i, paramInt1 + n, i1 + i);
-        paramInt1 = localLayoutParams.rightMargin + n + 0 + paramInt1;
+        i = paramInt3;
+        if (localView.getVisibility() != 8)
+        {
+          int n = localView.getMeasuredWidth();
+          int i1 = localView.getMeasuredHeight();
+          LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localView.getLayoutParams();
+          int k = localLayoutParams.gravity;
+          i = k;
+          if (k < 0) {
+            i = 16;
+          }
+          if ((i & 0x70) != 16) {
+            i = j;
+          } else {
+            i = (paramInt4 - paramInt2 - j - m - i1) / 2 + j + localLayoutParams.topMargin - localLayoutParams.bottomMargin;
+          }
+          paramInt3 += localLayoutParams.leftMargin;
+          localView.layout(paramInt3, i, paramInt3 + n, i1 + i);
+          i = paramInt3 + (n + localLayoutParams.rightMargin + 0);
+        }
       }
-    }
-    label205:
-    for (;;)
-    {
-      paramInt3 -= 1;
-      break;
-      i = (paramInt4 - paramInt2 - j - m - i1) / 2 + j + localLayoutParams.topMargin - localLayoutParams.bottomMargin;
-      break label124;
-      return;
+      paramInt1 -= 1;
+      paramInt3 = i;
     }
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (getOrientation() == 1)
     {
@@ -76,7 +70,7 @@ public class RightLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.RightLinearLayout
  * JD-Core Version:    0.7.0.1
  */

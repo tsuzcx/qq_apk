@@ -21,14 +21,15 @@ public final class GearInfo
   
   public static GearInfo[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new GearInfo[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new GearInfo[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static GearInfo parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -50,16 +51,18 @@ public final class GearInfo
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    int k = this.level;
     int i = j;
-    if (this.level != 0) {
-      i = j + CodedOutputByteBufferNano.computeInt32Size(1, this.level);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeInt32Size(1, k);
     }
+    k = this.bitrate;
     j = i;
-    if (this.bitrate != 0) {
-      j = i + CodedOutputByteBufferNano.computeInt32Size(2, this.bitrate);
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeInt32Size(2, k);
     }
     i = j;
     if (!this.name.equals("")) {
@@ -73,32 +76,43 @@ public final class GearInfo
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.level = paramCodedInputByteBufferNano.readInt32();
-        break;
-      case 16: 
-        this.bitrate = paramCodedInputByteBufferNano.readInt32();
+      if (i == 0) {
         break;
       }
-      this.name = paramCodedInputByteBufferNano.readString();
+      if (i != 8)
+      {
+        if (i != 16)
+        {
+          if (i != 26)
+          {
+            if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+              return this;
+            }
+          }
+          else {
+            this.name = paramCodedInputByteBufferNano.readString();
+          }
+        }
+        else {
+          this.bitrate = paramCodedInputByteBufferNano.readInt32();
+        }
+      }
+      else {
+        this.level = paramCodedInputByteBufferNano.readInt32();
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.level != 0) {
-      paramCodedOutputByteBufferNano.writeInt32(1, this.level);
+    int i = this.level;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeInt32(1, i);
     }
-    if (this.bitrate != 0) {
-      paramCodedOutputByteBufferNano.writeInt32(2, this.bitrate);
+    i = this.bitrate;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeInt32(2, i);
     }
     if (!this.name.equals("")) {
       paramCodedOutputByteBufferNano.writeString(3, this.name);
@@ -108,7 +122,7 @@ public final class GearInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.roomAccess.roomAccess.nano.GearInfo
  * JD-Core Version:    0.7.0.1
  */

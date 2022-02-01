@@ -37,25 +37,22 @@ public class PreloadItem
       return null;
     }
     PreloadItem localPreloadItem = new PreloadItem();
-    for (;;)
+    try
     {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        if (paramString.has("item_id"))
-        {
-          localPreloadItem.mItemId = paramString.optString("item_id");
-          localPreloadItem.mFlag = paramString.optInt("flag");
-          return localPreloadItem;
-        }
+      paramString = new JSONObject(paramString);
+      if (paramString.has("item_id")) {
+        localPreloadItem.mItemId = paramString.optString("item_id");
+      } else {
+        localPreloadItem.mItemId = CommonUtil.sComposeItemId(paramString.optLong("bid"), paramString.optString("scid"));
       }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-        return localPreloadItem;
-      }
-      localPreloadItem.mItemId = CommonUtil.sComposeItemId(paramString.optLong("bid"), paramString.optString("scid"));
+      localPreloadItem.mFlag = paramString.optInt("flag");
+      return localPreloadItem;
     }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return localPreloadItem;
   }
   
   public static ArrayList<PreloadItem> parsePreloadItemList(JSONArray paramJSONArray)
@@ -90,7 +87,7 @@ public class PreloadItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.vas.update.entity.db.PreloadItem
  * JD-Core Version:    0.7.0.1
  */

@@ -21,21 +21,19 @@ public class WebSocketProxyImpl
   public boolean closeSocket(int paramInt1, int paramInt2, String paramString)
   {
     WebSocketProxyImpl.WebSocketTask localWebSocketTask = (WebSocketProxyImpl.WebSocketTask)this.a.get(Integer.valueOf(paramInt1));
-    if ((localWebSocketTask != null) && (localWebSocketTask.a != null)) {}
-    try
-    {
-      localWebSocketTask.a.close(paramInt2, paramString);
-      ThreadManager.getSubThreadHandler().postDelayed(new WebSocketProxyImpl.1(this, localWebSocketTask, paramInt1, paramInt2, paramString), 1000L);
-      this.a.remove(Integer.valueOf(paramInt1));
-      return false;
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
+    if ((localWebSocketTask != null) && (localWebSocketTask.a != null)) {
+      try
+      {
+        localWebSocketTask.a.close(paramInt2, paramString);
+        ThreadManager.getSubThreadHandler().postDelayed(new WebSocketProxyImpl.1(this, localWebSocketTask, paramInt1, paramInt2, paramString), 1000L);
+      }
+      catch (Exception paramString)
       {
         QLog.e("WebSocketProxyImpl", 1, "closeSocket error:", paramString);
       }
     }
+    this.a.remove(Integer.valueOf(paramInt1));
+    return false;
   }
   
   public boolean connectSocket(int paramInt1, String paramString1, Map<String, String> paramMap, String paramString2, int paramInt2, WebSocketProxy.WebSocketListener paramWebSocketListener)
@@ -58,7 +56,6 @@ public class WebSocketProxyImpl
       catch (Exception paramString)
       {
         QLog.e("WebSocketProxyImpl", 1, "sendStringMessage error:", paramString);
-        return false;
       }
     }
     return false;
@@ -76,7 +73,6 @@ public class WebSocketProxyImpl
       catch (Exception paramArrayOfByte)
       {
         QLog.e("WebSocketProxyImpl", 1, "sendBinaryMessage error:", paramArrayOfByte);
-        return false;
       }
     }
     return false;
@@ -84,7 +80,7 @@ public class WebSocketProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.WebSocketProxyImpl
  * JD-Core Version:    0.7.0.1
  */

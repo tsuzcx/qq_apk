@@ -4,10 +4,10 @@ import android.app.Activity;
 import android.view.View;
 import android.view.Window;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDisLikeDialogView;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDisLikeDialogViewForAd;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.kandian.biz.dislike.ReadInJoyDisLikeDialogView;
+import com.tencent.mobileqq.kandian.repo.dislike.DislikeInfo;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.util.VersionUtils;
 import com.tencent.widget.ActionSheet;
@@ -29,10 +29,11 @@ public class NativeAdDislikeHelper
   
   public void a(AdvertisementInfo paramAdvertisementInfo, ArrayList<DislikeInfo> paramArrayList)
   {
-    if ((paramAdvertisementInfo == null) || (paramArrayList == null) || (paramArrayList.size() == 0)) {}
-    for (;;)
+    if ((paramAdvertisementInfo != null) && (paramArrayList != null))
     {
-      return;
+      if (paramArrayList.size() == 0) {
+        return;
+      }
       this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidAppActivity, null));
       Object localObject = new NativeAdDislikeHelper.1(this);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.registerWatchDisMissActionListener((ActionSheet.WatchDismissActions)localObject);
@@ -64,7 +65,7 @@ public class NativeAdDislikeHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.util.NativeAdDislikeHelper
  * JD-Core Version:    0.7.0.1
  */

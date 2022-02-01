@@ -12,15 +12,16 @@ public class a
   
   public static a a()
   {
-    if (b == null) {}
-    try
-    {
-      if (b == null) {
-        b = new a();
+    if (b == null) {
+      try
+      {
+        if (b == null) {
+          b = new a();
+        }
       }
-      return b;
+      finally {}
     }
-    finally {}
+    return b;
   }
   
   public void a(a.a parama)
@@ -34,7 +35,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.a.a
  * JD-Core Version:    0.7.0.1
  */

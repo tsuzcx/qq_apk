@@ -19,14 +19,28 @@ class VSNetworkHelper$1
       long l = System.currentTimeMillis();
       Object localObject = this.val$req.getRequestKey();
       localObject = CacheHelper.fileCache().getStream((String)localObject);
-      if ((localObject == null) || (((Cache.CacheInputStream)localObject).getInputStream() == null))
+      if ((localObject != null) && (((Cache.CacheInputStream)localObject).getInputStream() != null))
       {
-        RFLog.d("VSNetworkHelper| Protocol Cache", RFLog.USR, "cache not found or bundle deserialized failed,CmdName:" + this.val$req.getCmdName() + " Seq:" + this.val$req.getCurrentSeq());
+        localObject = this.val$req.decode(VSNetworkHelper.access$000(this.this$0, ((Cache.CacheInputStream)localObject).getInputStream()));
+        VSNetworkHelper.getDispatchObserver().sendCacheToTargetCallBack(this.val$req, localObject);
+        i = RFLog.USR;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("send Cache Success costTime:");
+        ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
+        ((StringBuilder)localObject).append(",CmdName:");
+        ((StringBuilder)localObject).append(this.val$req.getCmdName());
+        ((StringBuilder)localObject).append(" Seq:");
+        ((StringBuilder)localObject).append(this.val$req.getCurrentSeq());
+        RFLog.d("VSNetworkHelper| Protocol Cache", i, ((StringBuilder)localObject).toString());
         return;
       }
-      localObject = this.val$req.decode(VSNetworkHelper.access$000(this.this$0, ((Cache.CacheInputStream)localObject).getInputStream()));
-      VSNetworkHelper.getDispatchObserver().sendCacheToTargetCallBack(this.val$req, localObject);
-      RFLog.d("VSNetworkHelper| Protocol Cache", RFLog.USR, "send Cache Success costTime:" + (System.currentTimeMillis() - l) + ",CmdName:" + this.val$req.getCmdName() + " Seq:" + this.val$req.getCurrentSeq());
+      int i = RFLog.USR;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("cache not found or bundle deserialized failed,CmdName:");
+      ((StringBuilder)localObject).append(this.val$req.getCmdName());
+      ((StringBuilder)localObject).append(" Seq:");
+      ((StringBuilder)localObject).append(this.val$req.getCurrentSeq());
+      RFLog.d("VSNetworkHelper| Protocol Cache", i, ((StringBuilder)localObject).toString());
       return;
     }
     catch (Exception localException)
@@ -37,7 +51,7 @@ class VSNetworkHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.richframework.network.VSNetworkHelper.1
  * JD-Core Version:    0.7.0.1
  */

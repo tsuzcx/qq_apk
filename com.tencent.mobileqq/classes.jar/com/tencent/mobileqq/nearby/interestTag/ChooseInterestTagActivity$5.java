@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.nearby.business.NearbyCardHandler;
+import com.tencent.mobileqq.nearby.business.INearbyCardHandler;
 import java.util.List;
 
 class ChooseInterestTagActivity$5
@@ -20,44 +20,45 @@ class ChooseInterestTagActivity$5
     {
     default: 
       return;
-    case 4097: 
-      ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.c(this.a), 30, 0, 0);
+    case 4100: 
+      ChooseInterestTagActivity.access$1502(this.a, false);
+      return;
+    case 4099: 
+      ChooseInterestTagActivity.access$1600(this.a, HardCodeUtil.a(2131702020));
+      ChooseInterestTagActivity.access$1700(this.a).setText("");
+      ChooseInterestTagActivity.access$1700(this.a).setOnClickListener(null);
       return;
     case 4098: 
-      ChooseInterestTagActivity.a(this.a).setVisibility(8);
+      ChooseInterestTagActivity.access$900(this.a).setVisibility(8);
       paramMessage = (List)paramMessage.obj;
       if (paramMessage != null) {
-        ChooseInterestTagActivity.a(this.a, paramMessage);
+        ChooseInterestTagActivity.access$1002(this.a, paramMessage);
       }
-      if (ChooseInterestTagActivity.a(this.a) == null)
+      paramMessage = ChooseInterestTagActivity.access$1100(this.a);
+      boolean bool = true;
+      if (paramMessage == null)
       {
-        ChooseInterestTagActivity.a(this.a, new InterestTagAdapter(this.a, ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a)));
-        ChooseInterestTagActivity.a(this.a).setAdapter(ChooseInterestTagActivity.a(this.a));
         paramMessage = this.a;
-        if (ChooseInterestTagActivity.b(this.a) == -1) {
-          break label219;
-        }
+        ChooseInterestTagActivity.access$1102(paramMessage, new InterestTagAdapter(paramMessage, ChooseInterestTagActivity.access$000(paramMessage), ChooseInterestTagActivity.access$1000(this.a), ChooseInterestTagActivity.access$1200(this.a)));
+        ChooseInterestTagActivity.access$1300(this.a).setAdapter(ChooseInterestTagActivity.access$1100(this.a));
       }
-      for (boolean bool = true;; bool = false)
+      else
       {
-        ChooseInterestTagActivity.a(paramMessage, false, bool);
-        return;
-        ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), true);
-        break;
+        ChooseInterestTagActivity.access$1100(this.a).a(ChooseInterestTagActivity.access$1000(this.a), true);
       }
-    case 4100: 
-      label219:
-      ChooseInterestTagActivity.a(this.a, false);
+      paramMessage = this.a;
+      if (ChooseInterestTagActivity.access$200(paramMessage) == -1) {
+        bool = false;
+      }
+      ChooseInterestTagActivity.access$1400(paramMessage, false, bool);
       return;
     }
-    ChooseInterestTagActivity.a(this.a, HardCodeUtil.a(2131701880));
-    ChooseInterestTagActivity.a(this.a).setText("");
-    ChooseInterestTagActivity.a(this.a).setOnClickListener(null);
+    ChooseInterestTagActivity.access$300(this.a).a(ChooseInterestTagActivity.access$700(this.a), ChooseInterestTagActivity.access$000(this.a), ChooseInterestTagActivity.access$800(this.a), 30, 0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.5
  * JD-Core Version:    0.7.0.1
  */

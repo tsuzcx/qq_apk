@@ -53,25 +53,129 @@ public class TPSurfaceView
     getHolder().addCallback(this.surfaceCallback);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
-    int j;
-    float f;
     if ((this.videoWidth > 0) && (this.videoHeight > 0))
     {
-      j = getDefaultSize(getWidth(), paramInt1);
-      paramInt1 = getDefaultSize(getHeight(), paramInt2);
-      if (this.type == 2) {
-        if (this.videoWidth * paramInt1 > this.videoHeight * j)
+      int i = getDefaultSize(getWidth(), paramInt1);
+      int j = getDefaultSize(getHeight(), paramInt2);
+      float f2 = 1.0F;
+      paramInt1 = this.type;
+      int k;
+      int m;
+      float f1;
+      if (paramInt1 == 2)
+      {
+        k = this.videoWidth;
+        m = this.videoHeight;
+        if (k * j > i * m)
         {
-          paramInt2 = this.videoWidth * paramInt1 / this.videoHeight;
-          f = 1.0F;
+          paramInt2 = k * j / m;
+          f1 = f2;
+          paramInt1 = j;
+        }
+        else
+        {
+          f1 = f2;
+          paramInt2 = i;
+          paramInt1 = j;
+          if (k * j < i * m)
+          {
+            paramInt1 = m * i / k;
+            f1 = f2;
+            paramInt2 = i;
+          }
         }
       }
-    }
-    for (;;)
-    {
-      int i = paramInt1;
+      else if (paramInt1 == 1)
+      {
+        f1 = f2;
+        paramInt2 = i;
+        paramInt1 = j;
+      }
+      else if (paramInt1 == 6)
+      {
+        k = this.videoWidth;
+        m = this.videoHeight;
+        if (k * j > i * m)
+        {
+          paramInt1 = m * i / k;
+          f1 = f2;
+          paramInt2 = i;
+        }
+        else
+        {
+          f1 = f2;
+          paramInt2 = i;
+          paramInt1 = j;
+          if (k * j < i * m)
+          {
+            paramInt2 = j * k / m;
+            f1 = j;
+            f1 /= k / m * f1;
+            paramInt1 = j;
+          }
+        }
+      }
+      else
+      {
+        paramInt2 = this.videoWidth;
+        k = this.radioWidth;
+        paramInt1 = paramInt2;
+        if (k != 0)
+        {
+          m = this.radioHeight;
+          paramInt1 = paramInt2;
+          if (m != 0) {
+            paramInt1 = (int)(paramInt2 * k / m);
+          }
+        }
+        paramInt2 = paramInt1 * j;
+        k = this.videoHeight;
+        if (paramInt2 > i * k)
+        {
+          paramInt1 = k * i / paramInt1;
+          paramInt2 = i;
+        }
+        else
+        {
+          if (paramInt2 < i * k) {
+            paramInt2 /= k;
+          } else {
+            paramInt2 = i;
+          }
+          paramInt1 = j;
+        }
+        k = this.degree;
+        if (k != 90)
+        {
+          f1 = f2;
+          if (k != 270) {}
+        }
+        else
+        {
+          f1 = f2;
+          if (paramInt1 > 0)
+          {
+            f1 = f2;
+            if (paramInt2 > 0)
+            {
+              if (i / paramInt1 < j / paramInt2)
+              {
+                f1 = i;
+                f2 = paramInt1;
+              }
+              else
+              {
+                f1 = j;
+                f2 = paramInt2;
+              }
+              f1 /= f2;
+            }
+          }
+        }
+      }
+      i = paramInt1;
       if ((getContext() instanceof Activity))
       {
         i = paramInt1;
@@ -79,88 +183,12 @@ public class TPSurfaceView
           i = paramInt1 - UIUtil.getNavigationBarHeight(getContext());
         }
       }
-      setMeasuredDimension((int)(paramInt2 * this.scale * f), (int)(f * (i * this.scale)));
+      f2 = paramInt2;
+      float f3 = this.scale;
+      setMeasuredDimension((int)(f2 * f3 * f1), (int)(i * f3 * f1));
       return;
-      if (this.videoWidth * paramInt1 < this.videoHeight * j)
-      {
-        paramInt1 = this.videoHeight * j / this.videoWidth;
-        f = 1.0F;
-        paramInt2 = j;
-        continue;
-        if (this.type == 1)
-        {
-          f = 1.0F;
-          paramInt2 = j;
-          continue;
-        }
-        if (this.type == 6)
-        {
-          if (this.videoWidth * paramInt1 > this.videoHeight * j)
-          {
-            paramInt1 = this.videoHeight * j / this.videoWidth;
-            f = 1.0F;
-            paramInt2 = j;
-            continue;
-          }
-          if (this.videoWidth * paramInt1 < this.videoHeight * j)
-          {
-            paramInt2 = this.videoWidth * paramInt1 / this.videoHeight;
-            f = paramInt1 / (this.videoWidth / this.videoHeight * paramInt1);
-          }
-        }
-        else
-        {
-          i = this.videoWidth;
-          paramInt2 = i;
-          if (this.radioWidth != 0)
-          {
-            paramInt2 = i;
-            if (this.radioHeight != 0) {
-              paramInt2 = (int)(this.videoWidth * this.radioWidth / this.radioHeight);
-            }
-          }
-          if (paramInt2 * paramInt1 > this.videoHeight * j)
-          {
-            paramInt2 = this.videoHeight * j / paramInt2;
-            i = j;
-          }
-          for (;;)
-          {
-            if (((this.degree == 90) || (this.degree == 270)) && (paramInt2 > 0) && (i > 0))
-            {
-              if (j / paramInt2 < paramInt1 / i)
-              {
-                f = j / paramInt2;
-                paramInt1 = paramInt2;
-                paramInt2 = i;
-                break;
-                if (paramInt2 * paramInt1 >= this.videoHeight * j) {
-                  break label478;
-                }
-                i = paramInt2 * paramInt1 / this.videoHeight;
-                paramInt2 = paramInt1;
-                continue;
-              }
-              f = paramInt1 / i;
-              paramInt1 = paramInt2;
-              paramInt2 = i;
-              break;
-              super.onMeasure(paramInt1, paramInt2);
-              return;
-            }
-            f = 1.0F;
-            paramInt1 = paramInt2;
-            paramInt2 = i;
-            break;
-            label478:
-            paramInt2 = paramInt1;
-            i = j;
-          }
-        }
-      }
-      f = 1.0F;
-      paramInt2 = j;
     }
+    super.onMeasure(paramInt1, paramInt2);
   }
   
   public boolean setDegree(int paramInt)
@@ -206,7 +234,7 @@ public class TPSurfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.livesdkplayer.renderview.TPSurfaceView
  * JD-Core Version:    0.7.0.1
  */

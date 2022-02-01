@@ -18,15 +18,22 @@ class ShortVideoItemBuilder$CompressUpdateListenerImpl
     if (localHolder == null) {
       return;
     }
-    paramMessageForShortVideo = paramMessageForShortVideo.frienduin + paramMessageForShortVideo.uniseq;
-    localHolder.a.setAnimProgress(HardCodeUtil.a(2131714011), paramMessageForShortVideo);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramMessageForShortVideo.frienduin);
+    localStringBuilder.append(paramMessageForShortVideo.uniseq);
+    paramMessageForShortVideo = localStringBuilder.toString();
+    localHolder.a.setAnimProgress(HardCodeUtil.a(2131713942), paramMessageForShortVideo);
     localHolder.a.a(paramMessageForShortVideo, paramFloat);
   }
   
   public void a(MessageForShortVideo paramMessageForShortVideo, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoItemBuilder", 2, "<MessageProgressView> CompressUpdateListener,onFinish. seq = " + paramMessageForShortVideo.uniseq);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("<MessageProgressView> CompressUpdateListener,onFinish. seq = ");
+      localStringBuilder.append(paramMessageForShortVideo.uniseq);
+      QLog.d("ShortVideoItemBuilder", 2, localStringBuilder.toString());
     }
     UiThreadUtil.a(new ShortVideoItemBuilder.CompressUpdateListenerImpl.2(this, paramMessageForShortVideo, paramInt));
   }
@@ -37,15 +44,19 @@ class ShortVideoItemBuilder$CompressUpdateListenerImpl
     if (localHolder == null) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoItemBuilder", 2, "<MessageProgressView> CompressUpdateListenerImpl , onLaunch. seq = " + paramMessageForShortVideo.uniseq);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("<MessageProgressView> CompressUpdateListenerImpl , onLaunch. seq = ");
+      localStringBuilder.append(paramMessageForShortVideo.uniseq);
+      QLog.d("ShortVideoItemBuilder", 2, localStringBuilder.toString());
     }
     UiThreadUtil.a(new ShortVideoItemBuilder.CompressUpdateListenerImpl.1(this, paramMessageForShortVideo, paramBoolean, localHolder));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.CompressUpdateListenerImpl
  * JD-Core Version:    0.7.0.1
  */

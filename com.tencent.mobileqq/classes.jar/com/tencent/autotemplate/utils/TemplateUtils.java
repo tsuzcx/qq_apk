@@ -20,88 +20,89 @@ public class TemplateUtils
 {
   public static CMTime calculateTotalTime(TAVComposition paramTAVComposition)
   {
-    Object localObject1 = paramTAVComposition.getVideoChannels();
-    paramTAVComposition = CMTime.CMTimeZero;
-    Iterator localIterator = ((List)localObject1).iterator();
-    if (localIterator.hasNext())
+    paramTAVComposition = paramTAVComposition.getVideoChannels();
+    Object localObject1 = CMTime.CMTimeZero;
+    Iterator localIterator = paramTAVComposition.iterator();
+    while (localIterator.hasNext())
     {
       Object localObject2 = (List)localIterator.next();
-      localObject1 = CMTime.CMTimeZero;
+      paramTAVComposition = CMTime.CMTimeZero;
       localObject2 = ((List)localObject2).iterator();
       while (((Iterator)localObject2).hasNext()) {
-        localObject1 = ((CMTime)localObject1).add(((TAVClip)((Iterator)localObject2).next()).getResource().getScaledDuration());
+        paramTAVComposition = paramTAVComposition.add(((TAVClip)((Iterator)localObject2).next()).getResource().getScaledDuration());
       }
-      if (!((CMTime)localObject1).bigThan(paramTAVComposition)) {
-        break label96;
+      if (paramTAVComposition.bigThan((CMTime)localObject1)) {
+        localObject1 = paramTAVComposition;
       }
-      paramTAVComposition = (TAVComposition)localObject1;
     }
-    label96:
-    for (;;)
-    {
-      break;
-      return paramTAVComposition;
-    }
+    return localObject1;
   }
   
   public static List<List<TAVClip>> checkVideoMaxDuration(TAVComposition paramTAVComposition, CMTime paramCMTime)
   {
-    if (paramTAVComposition == null) {}
-    do
-    {
+    if (paramTAVComposition == null) {
       return null;
-      localObject1 = paramTAVComposition.getVideoChannels();
-    } while ((localObject1 == null) || (((List)localObject1).isEmpty()));
-    paramTAVComposition = new ArrayList();
-    Object localObject1 = ((List)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      Object localObject2 = (List)((Iterator)localObject1).next();
-      ArrayList localArrayList = new ArrayList();
-      localObject2 = ((List)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext()) {
-        localArrayList.add((TAVClip)((Iterator)localObject2).next());
-      }
-      paramTAVComposition.add(localArrayList);
     }
-    return checkVideoMaxDuration(paramTAVComposition, paramCMTime);
+    Object localObject1 = paramTAVComposition.getVideoChannels();
+    if (localObject1 != null)
+    {
+      if (((List)localObject1).isEmpty()) {
+        return null;
+      }
+      paramTAVComposition = new ArrayList();
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        Object localObject2 = (List)((Iterator)localObject1).next();
+        ArrayList localArrayList = new ArrayList();
+        localObject2 = ((List)localObject2).iterator();
+        while (((Iterator)localObject2).hasNext()) {
+          localArrayList.add((TAVClip)((Iterator)localObject2).next());
+        }
+        paramTAVComposition.add(localArrayList);
+      }
+      return checkVideoMaxDuration(paramTAVComposition, paramCMTime);
+    }
+    return null;
   }
   
   public static List<List<TAVClip>> checkVideoMaxDuration(List<List<TAVClip>> paramList, CMTime paramCMTime)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return paramList;
-    }
-    ArrayList localArrayList1 = new ArrayList();
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
+    if (paramList != null)
     {
-      Object localObject = (List)localIterator.next();
-      paramList = CMTime.CMTimeZero;
-      ArrayList localArrayList2 = new ArrayList();
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      if (paramList.isEmpty()) {
+        return paramList;
+      }
+      ArrayList localArrayList1 = new ArrayList();
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
       {
-        TAVClip localTAVClip = (TAVClip)((Iterator)localObject).next();
-        CMTime localCMTime = paramList.add(localTAVClip.getResource().getScaledDuration());
-        if ((localCMTime.smallThan(paramCMTime)) || (localCMTime.equalsTo(paramCMTime)))
+        Object localObject = (List)localIterator.next();
+        paramList = CMTime.CMTimeZero;
+        ArrayList localArrayList2 = new ArrayList();
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
         {
+          TAVClip localTAVClip = (TAVClip)((Iterator)localObject).next();
+          CMTime localCMTime = paramList.add(localTAVClip.getResource().getScaledDuration());
+          if ((!localCMTime.smallThan(paramCMTime)) && (!localCMTime.equalsTo(paramCMTime)))
+          {
+            paramList = localCMTime.sub(paramCMTime);
+            if (!localTAVClip.getResource().getScaledDuration().bigThan(paramList)) {
+              break;
+            }
+            cutClip(localTAVClip, paramList);
+            localArrayList2.add(localTAVClip);
+            break;
+          }
           localArrayList2.add(localTAVClip);
           paramList = paramList.add(localTAVClip.getResource().getScaledDuration());
         }
-        else
-        {
-          paramList = localCMTime.sub(paramCMTime);
-          if (localTAVClip.getResource().getScaledDuration().bigThan(paramList))
-          {
-            cutClip(localTAVClip, paramList);
-            localArrayList2.add(localTAVClip);
-          }
-        }
+        localArrayList1.add(localArrayList2);
       }
-      localArrayList1.add(localArrayList2);
+      return localArrayList1;
     }
-    return localArrayList1;
+    return paramList;
   }
   
   public static void cutClip(TAVClip paramTAVClip, CMTime paramCMTime)
@@ -111,7 +112,7 @@ public class TemplateUtils
     CMTime localCMTime2 = paramTAVClip.getResource().getScaledDuration();
     float f = localCMTime1.getTimeSeconds() / localCMTime2.getTimeSeconds();
     paramCMTime = localCMTime2.sub(paramCMTime);
-    localCMTime1 = new CMTime((f * paramCMTime.getTimeSeconds() * 1000.0F), 1000);
+    localCMTime1 = new CMTime((paramCMTime.getTimeSeconds() * f * 1000.0F), 1000);
     localCMTimeRange = new CMTimeRange(localCMTimeRange.getStart(), localCMTime1);
     paramTAVClip.getResource().setSourceTimeRange(localCMTimeRange);
     paramTAVClip.getResource().setDuration(localCMTime1);

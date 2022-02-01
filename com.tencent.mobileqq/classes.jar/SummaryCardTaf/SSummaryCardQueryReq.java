@@ -43,8 +43,9 @@ public final class SSummaryCardQueryReq
     paramJceOutputStream.write(this.cmd, 0);
     paramJceOutputStream.write(this.uin, 1);
     paramJceOutputStream.write(this.queryuin, 2);
-    if (this.version != null) {
-      paramJceOutputStream.write(this.version, 3);
+    String str = this.version;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.src, 4);
     paramJceOutputStream.write(this.platform, 5);

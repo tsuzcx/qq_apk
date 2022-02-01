@@ -66,14 +66,15 @@ public final class stMetaNumericSys
     paramJceOutputStream.write(this.priv_feed_num, 6);
     paramJceOutputStream.write(this.fri_follow_num, 7);
     paramJceOutputStream.write(this.frdonly_feed_num, 8);
-    if (this.fri_follow_avatar != null) {
-      paramJceOutputStream.write(this.fri_follow_avatar, 9);
+    ArrayList localArrayList = this.fri_follow_avatar;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_SOCIALIZE_META.stMetaNumericSys
  * JD-Core Version:    0.7.0.1
  */

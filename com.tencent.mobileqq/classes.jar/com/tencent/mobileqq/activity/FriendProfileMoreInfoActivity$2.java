@@ -21,27 +21,32 @@ class FriendProfileMoreInfoActivity$2
 {
   FriendProfileMoreInfoActivity$2(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void onGetProfileCard(boolean paramBoolean, Object paramObject)
+  protected void onGetProfileCard(boolean paramBoolean, Object paramObject)
   {
-    if ((paramBoolean) && ((paramObject instanceof Card)) && (Utils.a(this.a.app.getCurrentAccountUin(), ((Card)paramObject).uin)))
+    if ((paramBoolean) && ((paramObject instanceof Card)))
     {
-      FriendProfileMoreInfoActivity.a(this.a, (Card)paramObject, true);
-      if (!this.a.i)
+      String str = this.a.app.getCurrentAccountUin();
+      paramObject = (Card)paramObject;
+      if (Utils.a(str, paramObject.uin))
       {
-        paramObject = (BusinessCardManager)this.a.app.getManager(QQManagerFactory.BUSINESS_CARD_MANAGER);
-        FriendProfileMoreInfoActivity.a(this.a, paramObject.a());
+        FriendProfileMoreInfoActivity.a(this.a, paramObject, true);
+        if (!this.a.i)
+        {
+          paramObject = (BusinessCardManager)this.a.app.getManager(QQManagerFactory.BUSINESS_CARD_MANAGER);
+          FriendProfileMoreInfoActivity.a(this.a, paramObject.a());
+        }
       }
     }
   }
   
-  public void onGetProfileDetail(boolean paramBoolean, String paramString, Card paramCard)
+  protected void onGetProfileDetail(boolean paramBoolean, String paramString, Card paramCard)
   {
     if ((paramBoolean) && (paramCard != null) && (Utils.a(this.a.app.getCurrentAccountUin(), paramCard.uin))) {
       FriendProfileMoreInfoActivity.a(this.a, paramCard, true);
     }
   }
   
-  public void onSetProfileDetail(boolean paramBoolean, int paramInt, Card paramCard)
+  protected void onSetProfileDetail(boolean paramBoolean, int paramInt, Card paramCard)
   {
     if (QLog.isColorLevel()) {
       QLog.d("FriendProfileMoreInfoActivity", 2, String.format("onSetProfileDetail success=%s resultCode=%s mDelayRemoveCardObserver=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), Boolean.valueOf(this.a.jdField_b_of_type_Boolean) }));
@@ -51,18 +56,24 @@ class FriendProfileMoreInfoActivity$2
       FriendProfileMoreInfoActivity.a(this.a, paramBoolean, paramCard);
       return;
     }
-    if (((paramBoolean) && (paramInt == 0)) || ((!paramBoolean) && (paramInt == 34)))
+    if (((!paramBoolean) || (paramInt != 0)) && ((paramBoolean) || (paramInt != 34))) {
+      if (paramInt == 40) {
+        FriendProfileMoreInfoActivity.a(this.a, 2131718812, 1);
+      } else {
+        FriendProfileMoreInfoActivity.a(this.a, 2131695119, 1);
+      }
+    }
+    Object localObject;
+    if (this.a.jdField_b_of_type_Boolean)
     {
-      label86:
-      if (this.a.jdField_b_of_type_Boolean)
-      {
-        this.a.removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
-        this.a.removeObserver(FriendProfileMoreInfoActivity.a(this.a));
-        this.a.jdField_b_of_type_Boolean = false;
-      }
-      if ((!this.a.jdField_a_of_type_Boolean) || (this.a.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)) {
-        break label765;
-      }
+      localObject = this.a;
+      ((FriendProfileMoreInfoActivity)localObject).removeObserver(((FriendProfileMoreInfoActivity)localObject).jdField_a_of_type_ComTencentMobileqqAppCardObserver);
+      localObject = this.a;
+      ((FriendProfileMoreInfoActivity)localObject).removeObserver(FriendProfileMoreInfoActivity.a((FriendProfileMoreInfoActivity)localObject));
+      this.a.jdField_b_of_type_Boolean = false;
+    }
+    if ((this.a.jdField_a_of_type_Boolean) && (this.a.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog != null))
+    {
       if (paramBoolean)
       {
         ReportController.b(this.a.app, "dc00898", "", "", "0X8007EC3", "0X8007EC3", 0, 0, "", "", "", "");
@@ -70,10 +81,9 @@ class FriendProfileMoreInfoActivity$2
         {
           paramCard = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
           if ((!TextUtils.isEmpty(paramCard)) && (!TextUtils.isEmpty(paramCard.trim()))) {
-            break label699;
+            ReportController.b(this.a.app, "dc00898", "", "", "0X8007EC7", "0X8007EC7", 0, 0, "", "", "", "");
           }
         }
-        label230:
         if (this.a.jdField_c_of_type_Boolean) {
           ReportController.b(this.a.app, "dc00898", "", "", "0X8007EC8", "0X8007EC8", 0, 0, "", "", "", "");
         }
@@ -98,48 +108,34 @@ class FriendProfileMoreInfoActivity$2
         if (this.a.jdField_d_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity$MaxBytesTextWatcher.jdField_b_of_type_Boolean)
         {
           paramCard = this.a.jdField_d_of_type_AndroidWidgetEditText.getText().toString();
-          Matcher localMatcher = SearchBaseActivity.a.matcher(paramCard);
-          if ((TextUtils.isEmpty(paramCard)) || (localMatcher.matches())) {
-            break label732;
+          localObject = SearchBaseActivity.a.matcher(paramCard);
+          if ((TextUtils.isEmpty(paramCard)) || (((Matcher)localObject).matches())) {
+            ReportController.b(this.a.app, "dc00898", "", "", "0X8007ECF", "0X8007ECF", 0, 0, "", "", "", "");
           }
         }
+        if (this.a.h) {
+          ReportController.b(this.a.app, "dc00898", "", "", "0X8007ED0", "0X8007ED0", 0, 0, "", "", "", "");
+        }
+        if (this.a.jdField_a_of_type_AndroidOsBundle == null) {
+          this.a.jdField_a_of_type_AndroidOsBundle = new Bundle();
+        }
+      }
+      paramCard = this.a;
+      paramCard.jdField_a_of_type_Boolean = false;
+      paramCard.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      if (!this.a.isFinishing()) {
+        this.a.finish();
       }
     }
-    for (;;)
+    else
     {
-      if (this.a.h) {
-        ReportController.b(this.a.app, "dc00898", "", "", "0X8007ED0", "0X8007ED0", 0, 0, "", "", "", "");
-      }
-      if (this.a.jdField_a_of_type_AndroidOsBundle == null) {
-        this.a.jdField_a_of_type_AndroidOsBundle = new Bundle();
-      }
-      this.a.jdField_a_of_type_Boolean = false;
-      this.a.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      if (this.a.isFinishing()) {
-        break;
-      }
-      this.a.finish();
-      return;
-      if (paramInt == 40)
-      {
-        FriendProfileMoreInfoActivity.a(this.a, 2131719095, 1);
-        break label86;
-      }
-      FriendProfileMoreInfoActivity.a(this.a, 2131695129, 1);
-      break label86;
-      label699:
-      ReportController.b(this.a.app, "dc00898", "", "", "0X8007EC7", "0X8007EC7", 0, 0, "", "", "", "");
-      break label230;
-      label732:
-      ReportController.b(this.a.app, "dc00898", "", "", "0X8007ECF", "0X8007ECF", 0, 0, "", "", "", "");
+      FriendProfileMoreInfoActivity.a(this.a, paramCard, true);
     }
-    label765:
-    FriendProfileMoreInfoActivity.a(this.a, paramCard, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity.2
  * JD-Core Version:    0.7.0.1
  */

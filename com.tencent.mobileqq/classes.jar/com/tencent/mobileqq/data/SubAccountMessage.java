@@ -1,11 +1,14 @@
 package com.tencent.mobileqq.data;
 
+import com.tencent.mobileqq.msg.api.IMessageFacade;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import com.tencent.mobileqq.util.MessageRecordUtil;
 import java.io.UnsupportedEncodingException;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="subUin,senderuin,time")
 public class SubAccountMessage
@@ -89,29 +92,35 @@ public class SubAccountMessage
   
   public MessageRecord convertToMessageRecord()
   {
-    MessageForText localMessageForText = new MessageForText();
-    localMessageForText.selfuin = this.selfuin;
-    localMessageForText.frienduin = this.frienduin;
-    localMessageForText.senderuin = this.senderuin;
-    localMessageForText.time = this.time;
-    localMessageForText.msgtype = this.msgtype;
-    localMessageForText.msg = this.msg;
-    localMessageForText.isread = this.isread;
-    localMessageForText.isValid = this.isValid;
-    localMessageForText.msgData = this.msgData;
-    localMessageForText.extInt = this.extInt;
-    localMessageForText.extLong = this.extInt;
-    localMessageForText.extraflag = this.extraflag;
-    localMessageForText.extStr = this.extStr;
-    localMessageForText.longMsgCount = this.longMsgCount;
-    localMessageForText.longMsgId = this.longMsgId;
-    localMessageForText.longMsgIndex = this.longMsgIndex;
-    localMessageForText.msgseq = this.msgseq;
-    localMessageForText.shmsgseq = this.shmsgseq;
-    localMessageForText.uniseq = this.uniseq;
-    localMessageForText.vipBubbleID = this.vipBubbleID;
-    localMessageForText.istroop = this.istroop;
-    return localMessageForText;
+    Object localObject = (IMessageFacade)MobileQQ.sMobileQQ.peekAppRuntime().getRuntimeService(IMessageFacade.class, "");
+    String str = this.msg;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.uniseq);
+    localStringBuilder.append("");
+    localObject = ((IMessageFacade)localObject).constructMessageForText(str, localStringBuilder.toString(), this.frienduin, this.istroop);
+    ((MessageRecord)localObject).selfuin = this.selfuin;
+    ((MessageRecord)localObject).frienduin = this.frienduin;
+    ((MessageRecord)localObject).senderuin = this.senderuin;
+    ((MessageRecord)localObject).time = this.time;
+    ((MessageRecord)localObject).msgtype = this.msgtype;
+    ((MessageRecord)localObject).msg = this.msg;
+    ((MessageRecord)localObject).isread = this.isread;
+    ((MessageRecord)localObject).isValid = this.isValid;
+    ((MessageRecord)localObject).msgData = this.msgData;
+    int i = this.extInt;
+    ((MessageRecord)localObject).extInt = i;
+    ((MessageRecord)localObject).extLong = i;
+    ((MessageRecord)localObject).extraflag = this.extraflag;
+    ((MessageRecord)localObject).extStr = this.extStr;
+    ((MessageRecord)localObject).longMsgCount = this.longMsgCount;
+    ((MessageRecord)localObject).longMsgId = this.longMsgId;
+    ((MessageRecord)localObject).longMsgIndex = this.longMsgIndex;
+    ((MessageRecord)localObject).msgseq = this.msgseq;
+    ((MessageRecord)localObject).shmsgseq = this.shmsgseq;
+    ((MessageRecord)localObject).uniseq = this.uniseq;
+    ((MessageRecord)localObject).vipBubbleID = this.vipBubbleID;
+    ((MessageRecord)localObject).istroop = this.istroop;
+    return localObject;
   }
   
   public String getTableName()
@@ -119,7 +128,7 @@ public class SubAccountMessage
     return super.getTableName();
   }
   
-  public void postRead()
+  protected void postRead()
   {
     try
     {
@@ -132,30 +141,51 @@ public class SubAccountMessage
     }
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
-    if (this.msg != null) {}
-    try
-    {
-      this.msgData = this.msg.getBytes("UTF-8");
-      return;
-    }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
-    {
-      localUnsupportedEncodingException.printStackTrace();
+    String str = this.msg;
+    if (str != null) {
+      try
+      {
+        this.msgData = str.getBytes("UTF-8");
+        return;
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        localUnsupportedEncodingException.printStackTrace();
+      }
     }
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("SubAccountMessage");
-    localStringBuilder.append(",subUin:").append(this.subUin).append(",selfUin:").append(this.selfuin).append(",friendUin:").append(this.frienduin).append(",senderUin:").append(this.senderuin).append(",senderName:").append(this.sendername).append(",time:").append(this.time).append(",isRead:").append(this.isread).append(",msgType:").append(this.msgtype).append(",subExtr:").append(this.subExtr).append(",msg:").append(MessageRecordUtil.a(this.msg));
+    localStringBuilder.append(",subUin:");
+    localStringBuilder.append(this.subUin);
+    localStringBuilder.append(",selfUin:");
+    localStringBuilder.append(this.selfuin);
+    localStringBuilder.append(",friendUin:");
+    localStringBuilder.append(this.frienduin);
+    localStringBuilder.append(",senderUin:");
+    localStringBuilder.append(this.senderuin);
+    localStringBuilder.append(",senderName:");
+    localStringBuilder.append(this.sendername);
+    localStringBuilder.append(",time:");
+    localStringBuilder.append(this.time);
+    localStringBuilder.append(",isRead:");
+    localStringBuilder.append(this.isread);
+    localStringBuilder.append(",msgType:");
+    localStringBuilder.append(this.msgtype);
+    localStringBuilder.append(",subExtr:");
+    localStringBuilder.append(this.subExtr);
+    localStringBuilder.append(",msg:");
+    localStringBuilder.append(MessageRecordUtil.a(this.msg));
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.SubAccountMessage
  * JD-Core Version:    0.7.0.1
  */

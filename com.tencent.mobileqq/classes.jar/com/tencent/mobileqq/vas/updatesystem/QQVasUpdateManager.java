@@ -22,7 +22,7 @@ public class QQVasUpdateManager
     return this.a;
   }
   
-  public IVasUpdateFactory createVasUpdateFactory()
+  protected IVasUpdateFactory createVasUpdateFactory()
   {
     this.a = new VasUpdateFactory();
     return this.a;
@@ -39,14 +39,14 @@ public class QQVasUpdateManager
     return new BaseUpdateBusiness[] { new TroopNickNameBusiness(), new QQValueViewBusiness(), new TestUpdateBusinessV2() };
   }
   
-  public BaseUpdateBusiness registerCommonBusinessCallback()
+  protected BaseUpdateBusiness registerCommonBusinessCallback()
   {
     return new NativeUpdateBusiness();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.updatesystem.QQVasUpdateManager
  * JD-Core Version:    0.7.0.1
  */

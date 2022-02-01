@@ -19,8 +19,9 @@ public class ShortVideoInfoInterface
     if (this.a == null) {
       this.a = new PicInfoInterface.ErrInfo();
     }
-    this.a.a = paramString1;
-    this.a.b = paramString2;
+    PicInfoInterface.ErrInfo localErrInfo = this.a;
+    localErrInfo.a = paramString1;
+    localErrInfo.b = paramString2;
     Logger.b(this, paramString1, paramString2);
   }
   
@@ -31,7 +32,7 @@ public class ShortVideoInfoInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoInfoInterface
  * JD-Core Version:    0.7.0.1
  */

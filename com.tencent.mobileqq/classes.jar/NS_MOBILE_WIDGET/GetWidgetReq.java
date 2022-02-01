@@ -35,14 +35,15 @@ public final class GetWidgetReq
     paramJceOutputStream.write(this.widgetid, 0);
     paramJceOutputStream.write(this.time, 1);
     paramJceOutputStream.write(this.zone, 2);
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 3);
+    String str = this.attach_info;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_WIDGET.GetWidgetReq
  * JD-Core Version:    0.7.0.1
  */

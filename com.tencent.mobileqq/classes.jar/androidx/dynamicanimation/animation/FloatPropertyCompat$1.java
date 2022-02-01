@@ -5,19 +5,24 @@ import android.util.FloatProperty;
 final class FloatPropertyCompat$1
   extends FloatPropertyCompat<T>
 {
-  public float a(T paramT)
+  FloatPropertyCompat$1(String paramString, FloatProperty paramFloatProperty)
   {
-    return ((Float)this.a.get(paramT)).floatValue();
+    super(paramString);
   }
   
-  public void a(T paramT, float paramFloat)
+  public float getValue(T paramT)
   {
-    this.a.setValue(paramT, paramFloat);
+    return ((Float)this.val$property.get(paramT)).floatValue();
+  }
+  
+  public void setValue(T paramT, float paramFloat)
+  {
+    this.val$property.setValue(paramT, paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.dynamicanimation.animation.FloatPropertyCompat.1
  * JD-Core Version:    0.7.0.1
  */

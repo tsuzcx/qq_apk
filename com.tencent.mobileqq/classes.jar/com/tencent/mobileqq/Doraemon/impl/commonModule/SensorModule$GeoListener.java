@@ -18,8 +18,16 @@ class SensorModule$GeoListener
   
   public void onLocationFinish(int paramInt, SosoLbsInfo paramSosoLbsInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DoraemonOpenAPI.sensor.location", 2, "onLocationFinish: errCode=" + paramInt + ", info=" + paramSosoLbsInfo + ", isActive=" + this.jdField_a_of_type_Boolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("onLocationFinish: errCode=");
+      localStringBuilder1.append(paramInt);
+      localStringBuilder1.append(", info=");
+      localStringBuilder1.append(paramSosoLbsInfo);
+      localStringBuilder1.append(", isActive=");
+      localStringBuilder1.append(this.jdField_a_of_type_Boolean);
+      QLog.d("DoraemonOpenAPI.sensor.location", 2, localStringBuilder1.toString());
     }
     if (!this.jdField_a_of_type_Boolean) {
       return;
@@ -42,25 +50,26 @@ class SensorModule$GeoListener
         paramSosoLbsInfo.put("altitude", d5);
         paramSosoLbsInfo.put("verticalAccuracy", 0.0D);
         paramSosoLbsInfo.put("horizontalAccuracy", d4);
-        DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, paramSosoLbsInfo);
-        return;
       }
       catch (JSONException localJSONException)
       {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("DoraemonOpenAPI.sensor", 2, localJSONException.getMessage(), localJSONException);
-          }
+        if (QLog.isColorLevel()) {
+          QLog.e("DoraemonOpenAPI.sensor", 2, localJSONException.getMessage(), localJSONException);
         }
       }
+      DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, paramSosoLbsInfo);
+      return;
     }
-    DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, paramInt, "error " + paramInt);
+    paramSosoLbsInfo = this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback;
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("error ");
+    localStringBuilder2.append(paramInt);
+    DoraemonUtil.a(paramSosoLbsInfo, paramInt, localStringBuilder2.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.commonModule.SensorModule.GeoListener
  * JD-Core Version:    0.7.0.1
  */

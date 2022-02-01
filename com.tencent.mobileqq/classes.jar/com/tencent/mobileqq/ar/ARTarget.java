@@ -13,12 +13,16 @@ public class ARTarget
   
   public String toString()
   {
-    return "ARTarget{arResourceInfo=" + this.a + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ARTarget{arResourceInfo=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARTarget
  * JD-Core Version:    0.7.0.1
  */

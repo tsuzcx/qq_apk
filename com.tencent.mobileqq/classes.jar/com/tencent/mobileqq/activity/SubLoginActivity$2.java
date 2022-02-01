@@ -17,7 +17,7 @@ class SubLoginActivity$2
   
   public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.jdField_b_of_type_Boolean) {
+    if (this.a.b) {
       return;
     }
     if (paramInt == 0)
@@ -27,39 +27,34 @@ class SubLoginActivity$2
       if (SubLoginActivity.a(this.a) != null) {
         paramView = SubLoginActivity.a(this.a).getText().toString();
       }
-      if (TextUtils.isEmpty(paramView)) {
-        break label258;
+      String str = "https://ti.qq.com/safe/forgetpw?source_id=2756";
+      if (!TextUtils.isEmpty(paramView)) {
+        str = String.format(Locale.getDefault(), "%s&account=%s", new Object[] { "https://ti.qq.com/safe/forgetpw?source_id=2756", paramView });
       }
+      paramView = new Intent();
+      paramView.putExtra("uin", SubLoginActivity.a(this.a));
+      paramView.putExtra("reqType", 3);
+      paramView.putExtra("url", str);
+      RouteUtils.a(this.a, paramView, "/base/browser");
+      this.a.startActivity(paramView);
     }
-    label258:
-    for (paramView = String.format(Locale.getDefault(), "%s&account=%s", new Object[] { "https://ti.qq.com/safe/forgetpw?source_id=2756", paramView });; paramView = "https://ti.qq.com/safe/forgetpw?source_id=2756")
+    else if (paramInt == 1)
     {
-      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
-      localIntent.putExtra("uin", SubLoginActivity.a(this.a));
-      localIntent.putExtra("reqType", 3);
-      localIntent.putExtra("url", paramView);
-      this.a.startActivity(localIntent);
-      for (;;)
-      {
-        this.a.jdField_b_of_type_Boolean = true;
-        this.a.a.dismiss();
-        return;
-        if (paramInt == 1)
-        {
-          ReportController.a(this.a.app, "dc00898", "", "", "0X800AFDF", "0X800AFDF", 0, 0, "", "", "", "");
-          paramView = new Intent();
-          paramView.putExtra("isSubaccount", true);
-          paramView.putExtra("fromWhere", this.a.jdField_b_of_type_JavaLangString);
-          paramView.putExtra("entrance", "fromSubLogin");
-          RouteUtils.a(this.a, paramView, "/base/safe/loginPhoneNumActivity");
-        }
-      }
+      ReportController.a(this.a.app, "dc00898", "", "", "0X800AFDF", "0X800AFDF", 0, 0, "", "", "", "");
+      paramView = new Intent();
+      paramView.putExtra("isSubaccount", true);
+      paramView.putExtra("fromWhere", this.a.fromWhere);
+      paramView.putExtra("entrance", "fromSubLogin");
+      RouteUtils.a(this.a, paramView, "/base/safe/loginPhoneNumActivity");
     }
+    paramView = this.a;
+    paramView.b = true;
+    paramView.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubLoginActivity.2
  * JD-Core Version:    0.7.0.1
  */

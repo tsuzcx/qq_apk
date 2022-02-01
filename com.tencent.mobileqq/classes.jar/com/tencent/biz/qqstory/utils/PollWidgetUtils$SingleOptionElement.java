@@ -17,8 +17,8 @@ public class PollWidgetUtils$SingleOptionElement
 {
   public static final int[] a;
   public static final int[] b;
-  public static final int[] c = { 2130844762, 2130844765 };
-  public static final int[] d = { 2131379217, 2131379218 };
+  public static final int[] c = { 2130844638, 2130844641 };
+  public static final int[] d = { 2131378580, 2131378581 };
   int jdField_a_of_type_Int;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   public boolean a;
@@ -26,8 +26,8 @@ public class PollWidgetUtils$SingleOptionElement
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131364073, 2131364074 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 2130844761, 2130844764 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2131363994, 2131363995 };
+    jdField_b_of_type_ArrayOfInt = new int[] { 2130844637, 2130844640 };
   }
   
   public PollWidgetUtils$SingleOptionElement(PollWidgetUtils.WidgetWrapper paramWidgetWrapper, View paramView, int paramInt)
@@ -39,11 +39,6 @@ public class PollWidgetUtils$SingleOptionElement
     paramView.setOnTouchListener(this);
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
   public void a(float paramFloat)
   {
     this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format(Locale.getDefault(), "%.0f%%", new Object[] { Float.valueOf(paramFloat) }));
@@ -51,80 +46,78 @@ public class PollWidgetUtils$SingleOptionElement
   
   public void a(CharSequence paramCharSequence)
   {
-    if (TextUtils.isEmpty(paramCharSequence)) {}
-    for (CharSequence localCharSequence = this.jdField_a_of_type_AndroidWidgetTextView.getHint();; localCharSequence = paramCharSequence)
+    CharSequence localCharSequence;
+    if (TextUtils.isEmpty(paramCharSequence)) {
+      localCharSequence = this.jdField_a_of_type_AndroidWidgetTextView.getHint();
+    } else {
+      localCharSequence = paramCharSequence;
+    }
+    int j;
+    if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0) {
+      j = 1;
+    } else {
+      j = 0;
+    }
+    int k;
+    float[] arrayOfFloat1;
+    if (j != 0)
     {
-      int j;
-      int k;
-      float[] arrayOfFloat1;
-      if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0)
-      {
-        j = 1;
-        if (j == 0) {
-          break label201;
-        }
-        k = UIUtils.a(this.jdField_a_of_type_AndroidWidgetTextView.getContext(), 72.5F);
-        arrayOfFloat1 = new float[3];
-        float[] tmp55_53 = arrayOfFloat1;
-        tmp55_53[0] = 21.0F;
-        float[] tmp60_55 = tmp55_53;
-        tmp60_55[1] = 18.0F;
-        float[] tmp65_60 = tmp60_55;
-        tmp65_60[2] = 14.0F;
-        tmp65_60;
+      k = UIUtils.a(this.jdField_a_of_type_AndroidWidgetTextView.getContext(), 72.5F);
+      arrayOfFloat1 = new float[3];
+      float[] tmp67_65 = arrayOfFloat1;
+      tmp67_65[0] = 21.0F;
+      float[] tmp72_67 = tmp67_65;
+      tmp72_67[1] = 18.0F;
+      float[] tmp77_72 = tmp72_67;
+      tmp77_72[2] = 14.0F;
+      tmp77_72;
+    }
+    else
+    {
+      k = UIUtils.a(this.jdField_a_of_type_AndroidWidgetTextView.getContext(), 84.0F);
+      arrayOfFloat1 = new float[2];
+      float[] tmp107_105 = arrayOfFloat1;
+      tmp107_105[0] = 28.0F;
+      float[] tmp112_107 = tmp107_105;
+      tmp112_107[1] = 21.0F;
+      tmp112_107;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(k);
+    float[] arrayOfFloat2 = new float[localCharSequence.length()];
+    Paint localPaint = new Paint(this.jdField_a_of_type_AndroidWidgetTextView.getPaint());
+    int i1 = -1;
+    int i = 0;
+    for (;;)
+    {
+      m = i1;
+      if (i >= arrayOfFloat1.length) {
+        break label312;
       }
-      int i;
-      int n;
-      for (;;)
+      localPaint.setTextSize(TypedValue.applyDimension(1, arrayOfFloat1[i], this.jdField_a_of_type_AndroidWidgetTextView.getResources().getDisplayMetrics()));
+      localPaint.getTextWidths(localCharSequence.toString(), arrayOfFloat2);
+      int i2 = arrayOfFloat2.length;
+      m = 0;
+      int n = 0;
+      while (m < i2)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(k);
-        float[] arrayOfFloat2 = new float[localCharSequence.length()];
-        Paint localPaint = new Paint(this.jdField_a_of_type_AndroidWidgetTextView.getPaint());
-        i = 0;
-        if (i >= arrayOfFloat1.length) {
-          break label335;
-        }
-        localPaint.setTextSize(TypedValue.applyDimension(1, arrayOfFloat1[i], this.jdField_a_of_type_AndroidWidgetTextView.getResources().getDisplayMetrics()));
-        localPaint.getTextWidths(localCharSequence.toString(), arrayOfFloat2);
-        n = 0;
-        int i1 = arrayOfFloat2.length;
-        int m = 0;
-        while (m < i1)
-        {
-          float f = arrayOfFloat2[m];
-          n = (int)(n + f);
-          m += 1;
-        }
-        j = 0;
+        float f = arrayOfFloat2[m];
+        n = (int)(n + f);
+        m += 1;
+      }
+      if ((n <= k) || (i == arrayOfFloat1.length - 1)) {
         break;
-        label201:
-        k = UIUtils.a(this.jdField_a_of_type_AndroidWidgetTextView.getContext(), 84.0F);
-        arrayOfFloat1 = new float[2];
-        float[] tmp222_220 = arrayOfFloat1;
-        tmp222_220[0] = 28.0F;
-        float[] tmp227_222 = tmp222_220;
-        tmp227_222[1] = 21.0F;
-        tmp227_222;
       }
-      if ((n <= k) || (i == arrayOfFloat1.length - 1))
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, arrayOfFloat1[i]);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
-        SLog.a("Q.qqstory.widget.PollWidgetUtils", "text size = %s", Float.valueOf(arrayOfFloat1[i]));
-      }
-      for (;;)
-      {
-        paramCharSequence = PollWidgetUtils.a(this.jdField_a_of_type_AndroidWidgetTextView, 2);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
-        if ((j != 0) && (i == arrayOfFloat1.length - 1)) {
-          this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(1, 20.0F);
-        }
-        return;
-        i += 1;
-        break;
-        label335:
-        i = -1;
-      }
+      i += 1;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, arrayOfFloat1[i]);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+    SLog.a("Q.qqstory.widget.PollWidgetUtils", "text size = %s", Float.valueOf(arrayOfFloat1[i]));
+    int m = i;
+    label312:
+    paramCharSequence = PollWidgetUtils.a(this.jdField_a_of_type_AndroidWidgetTextView, 2);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+    if ((j != 0) && (m == arrayOfFloat1.length - 1)) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(1, 20.0F);
     }
   }
   
@@ -147,62 +140,68 @@ public class PollWidgetUtils$SingleOptionElement
     }
     if (this.jdField_a_of_type_Boolean) {
       this.jdField_a_of_type_AndroidViewView.setBackgroundResource(0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-      this.jdField_b_of_type_AndroidWidgetTextView.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-      return;
+    } else {
       this.jdField_a_of_type_AndroidViewView.setBackgroundResource(c[this.jdField_a_of_type_Int]);
     }
+    this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+    this.jdField_b_of_type_AndroidWidgetTextView.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
+    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-16777216);
   }
   
   public void c(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    b(this.jdField_b_of_type_Boolean);
-  }
-  
-  public void d(boolean paramBoolean)
   {
     if ((paramBoolean) && (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() != 0))
     {
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
       a(this.jdField_a_of_type_AndroidWidgetTextView.getText());
-    }
-    while ((paramBoolean) || (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() != 0)) {
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    a(this.jdField_a_of_type_AndroidWidgetTextView.getText());
+    if ((!paramBoolean) && (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0))
+    {
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      a(this.jdField_a_of_type_AndroidWidgetTextView.getText());
+    }
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((a()) || (this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OnWidgetElementClickListener == null) || (!this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$WidgetWrapper.a())) {
-      return paramView.onTouchEvent(paramMotionEvent);
-    }
-    switch (paramMotionEvent.getActionMasked())
+    if ((!a()) && (this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OnWidgetElementClickListener != null) && (this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$WidgetWrapper.a()))
     {
-    }
-    for (;;)
-    {
-      return paramView.onTouchEvent(paramMotionEvent);
-      b(true);
-      continue;
-      b(false);
-      continue;
-      if ((paramMotionEvent.getX() < 0.0F) || (paramMotionEvent.getX() > paramView.getWidth()) || (paramMotionEvent.getY() < 0.0F) || (paramMotionEvent.getY() > paramView.getHeight())) {
+      int i = paramMotionEvent.getActionMasked();
+      if (i != 0)
+      {
+        if (i != 1) {
+          if (i != 2)
+          {
+            if (i != 3) {
+              break label119;
+            }
+          }
+          else
+          {
+            if ((paramMotionEvent.getX() >= 0.0F) && (paramMotionEvent.getX() <= paramView.getWidth()) && (paramMotionEvent.getY() >= 0.0F) && (paramMotionEvent.getY() <= paramView.getHeight())) {
+              break label119;
+            }
+            b(false);
+            break label119;
+          }
+        }
         b(false);
       }
+      else
+      {
+        b(true);
+      }
+      label119:
+      return paramView.onTouchEvent(paramMotionEvent);
     }
+    return paramView.onTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.PollWidgetUtils.SingleOptionElement
  * JD-Core Version:    0.7.0.1
  */

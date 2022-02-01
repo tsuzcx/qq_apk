@@ -16,14 +16,26 @@ final class DownloadApi$13
   {
     DownloadApi.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
     ReportController.b(null, "dc00898", "", "", "0X8008F7C", "0X8008F7C", 0, 0, "", "", "", "");
-    paramDialogInterface = this.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.f) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.c) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.d);
-    paramDialogInterface = System.currentTimeMillis() / 1000L + "|" + 101 + "|" + paramDialogInterface;
+    paramDialogInterface = new StringBuilder();
+    paramDialogInterface.append(this.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.f));
+    paramDialogInterface.append("_");
+    paramDialogInterface.append(this.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.c));
+    paramDialogInterface.append("_");
+    paramDialogInterface.append(this.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.d));
+    paramDialogInterface = paramDialogInterface.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(System.currentTimeMillis() / 1000L);
+    localStringBuilder.append("|");
+    localStringBuilder.append(101);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramDialogInterface);
+    paramDialogInterface = localStringBuilder.toString();
     AppCircleReportManager.a().a(25, paramDialogInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadApi.13
  * JD-Core Version:    0.7.0.1
  */

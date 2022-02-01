@@ -21,10 +21,12 @@ class VideoCompressProcessor$HWCompressProcessor
     this.jdField_a_of_type_JavaLangString = paramString2;
     this.b = paramString1;
     this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoCompressProcessor$HWCompressUpdateListener = paramHWCompressUpdateListener;
-    if (paramString2 == null) {
-      throw new IllegalArgumentException("null == outputFilePath");
+    if (paramString2 != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoCompressConfig$CompressInfo = paramCompressInfo;
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoCompressConfig$CompressInfo = paramCompressInfo;
+    throw new IllegalArgumentException("null == outputFilePath");
   }
   
   public VideoConverterConfig getEncodeConfig(int paramInt1, int paramInt2)
@@ -42,8 +44,9 @@ class VideoCompressProcessor$HWCompressProcessor
     if (QLog.isColorLevel()) {
       QLog.d("VideoCompressProcessor", 2, "CompressTask, step: HWCompressProcessor onCanceled!");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoCompressProcessor$HWCompressUpdateListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoCompressProcessor$HWCompressUpdateListener.a(3);
+    VideoCompressProcessor.HWCompressUpdateListener localHWCompressUpdateListener = this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoCompressProcessor$HWCompressUpdateListener;
+    if (localHWCompressUpdateListener != null) {
+      localHWCompressUpdateListener.a(3);
     }
   }
   
@@ -52,18 +55,24 @@ class VideoCompressProcessor$HWCompressProcessor
     if (QLog.isColorLevel()) {
       QLog.e("VideoCompressProcessor", 2, "CompressTask, step: HWCompressProcessor onFailed");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoCompressProcessor$HWCompressUpdateListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoCompressProcessor$HWCompressUpdateListener.a(2);
+    paramThrowable = this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoCompressProcessor$HWCompressUpdateListener;
+    if (paramThrowable != null) {
+      paramThrowable.a(2);
     }
   }
   
   public void onProgress(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: HWCompressProcessor onProgress:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("CompressTask, step: HWCompressProcessor onProgress:");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("VideoCompressProcessor", 2, ((StringBuilder)localObject).toString());
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoCompressProcessor$HWCompressUpdateListener != null) && (paramInt >= 0) && (paramInt <= 10000)) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoCompressProcessor$HWCompressUpdateListener.a(paramInt / 10000.0F);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoCompressProcessor$HWCompressUpdateListener;
+    if ((localObject != null) && (paramInt >= 0) && (paramInt <= 10000)) {
+      ((VideoCompressProcessor.HWCompressUpdateListener)localObject).a(paramInt / 10000.0F);
     }
   }
   
@@ -72,14 +81,15 @@ class VideoCompressProcessor$HWCompressProcessor
     if (QLog.isColorLevel()) {
       QLog.d("VideoCompressProcessor", 2, "CompressTask, step: HWCompressProcessor onSucceed");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoCompressProcessor$HWCompressUpdateListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoCompressProcessor$HWCompressUpdateListener.a(1);
+    VideoCompressProcessor.HWCompressUpdateListener localHWCompressUpdateListener = this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoCompressProcessor$HWCompressUpdateListener;
+    if (localHWCompressUpdateListener != null) {
+      localHWCompressUpdateListener.a(1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.VideoCompressProcessor.HWCompressProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -29,12 +29,13 @@ public class PersonalizeSetAvatarServlet
   public void onProcessData(Intent paramIntent, Bundle paramBundle, byte[] paramArrayOfByte)
   {
     new INTERFACE.StSetUserAvatarRsp().mergeFrom(paramArrayOfByte);
-    if (paramBundle.getLong("retCode") == 0L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      notifyObserver(paramIntent, 1034, bool, paramBundle, MiniAppObserver.class);
-      return;
+    boolean bool;
+    if (paramBundle.getLong("retCode") == 0L) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    notifyObserver(paramIntent, 1034, bool, paramBundle, MiniAppObserver.class);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -52,26 +53,14 @@ public class PersonalizeSetAvatarServlet
     String str3 = paramIntent.getStringExtra("mini_app_busi_info");
     int j = paramIntent.getIntExtra("key_index", -1);
     localObject2 = null;
-    if (arrayOfByte != null) {
+    if (arrayOfByte != null)
+    {
       localObject2 = new COMM.StCommonExt();
-    }
-    try
-    {
-      ((COMM.StCommonExt)localObject2).mergeFrom(arrayOfByte);
-      localObject2 = new SetAvatarRequest((COMM.StCommonExt)localObject2, str1, (String)localObject1, i, str2, str3).encode(paramIntent, j, getTraceId());
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = new byte[4];
+      try
+      {
+        ((COMM.StCommonExt)localObject2).mergeFrom(arrayOfByte);
       }
-      paramPacket.setSSOCommand("LightAppSvc.mini_app_userapp.SetUserAvatar");
-      paramPacket.putSendData(WupUtil.a((byte[])localObject1));
-      paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-      super.onSend(paramIntent, paramPacket);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
         if (QLog.isColorLevel()) {
           QLog.e("PersonalizeSetAvatarServlet", 2, "onSend. mergeFrom exception!");
@@ -79,11 +68,20 @@ public class PersonalizeSetAvatarServlet
         localInvalidProtocolBufferMicroException.printStackTrace();
       }
     }
+    localObject2 = new SetAvatarRequest((COMM.StCommonExt)localObject2, str1, (String)localObject1, i, str2, str3).encode(paramIntent, j, getTraceId());
+    localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new byte[4];
+    }
+    paramPacket.setSSOCommand("LightAppSvc.mini_app_userapp.SetUserAvatar");
+    paramPacket.putSendData(WupUtil.a((byte[])localObject1));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    super.onSend(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.PersonalizeSetAvatarServlet
  * JD-Core Version:    0.7.0.1
  */

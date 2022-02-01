@@ -17,15 +17,17 @@ final class DefaultTrackSelector$AudioConfigurationTuple
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (AudioConfigurationTuple)paramObject;
-    } while ((this.channelCount == paramObject.channelCount) && (this.sampleRate == paramObject.sampleRate) && (TextUtils.equals(this.mimeType, paramObject.mimeType)));
+      return (this.channelCount == paramObject.channelCount) && (this.sampleRate == paramObject.sampleRate) && (TextUtils.equals(this.mimeType, paramObject.mimeType));
+    }
     return false;
   }
   
@@ -33,15 +35,19 @@ final class DefaultTrackSelector$AudioConfigurationTuple
   {
     int j = this.channelCount;
     int k = this.sampleRate;
-    if (this.mimeType != null) {}
-    for (int i = this.mimeType.hashCode();; i = 0) {
-      return i + (j * 31 + k) * 31;
+    String str = this.mimeType;
+    int i;
+    if (str != null) {
+      i = str.hashCode();
+    } else {
+      i = 0;
     }
+    return (j * 31 + k) * 31 + i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.trackselection.DefaultTrackSelector.AudioConfigurationTuple
  * JD-Core Version:    0.7.0.1
  */

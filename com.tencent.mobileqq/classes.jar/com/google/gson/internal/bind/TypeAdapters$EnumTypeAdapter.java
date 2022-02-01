@@ -52,7 +52,11 @@ final class TypeAdapters$EnumTypeAdapter<T extends Enum<T>>
     }
     catch (NoSuchFieldException paramClass)
     {
-      throw new AssertionError(paramClass);
+      paramClass = new AssertionError(paramClass);
+    }
+    for (;;)
+    {
+      throw paramClass;
     }
   }
   
@@ -68,17 +72,17 @@ final class TypeAdapters$EnumTypeAdapter<T extends Enum<T>>
   
   public void write(JsonWriter paramJsonWriter, T paramT)
   {
-    if (paramT == null) {}
-    for (paramT = null;; paramT = (String)this.constantToName.get(paramT))
-    {
-      paramJsonWriter.value(paramT);
-      return;
+    if (paramT == null) {
+      paramT = null;
+    } else {
+      paramT = (String)this.constantToName.get(paramT);
     }
+    paramJsonWriter.value(paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.internal.bind.TypeAdapters.EnumTypeAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -8,15 +8,15 @@ public class e
     if ((paramByte & 0x8) != 0) {
       s = paramInt - 1;
     }
-    if (paramShort > s) {
-      throw d.a("PROTOCOL_ERROR padding %s > remaining length %s", new Object[] { Short.valueOf(paramShort), Integer.valueOf(s) });
+    if (paramShort <= s) {
+      return (short)(s - paramShort);
     }
-    return (short)(s - paramShort);
+    throw d.a("PROTOCOL_ERROR padding %s > remaining length %s", new Object[] { Short.valueOf(paramShort), Integer.valueOf(s) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.socket.b.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.recent.guidebanner;
 
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.qqsettingme.api.IThemeUtilApi;
 import com.tencent.mobileqq.mvvm.BaseRepository;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import mqq.app.AppRuntime;
 import tencent.im.oidb.cmd0x59f.oidb_0x59f.Guidelines_8410;
 
 class NewerGuideBannerRepository
@@ -22,7 +22,8 @@ class NewerGuideBannerRepository
   
   int a()
   {
-    if ((this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410 != null) && (this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410.uint32_jump_type.has())) {
+    oidb_0x59f.Guidelines_8410 localGuidelines_8410 = this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410;
+    if ((localGuidelines_8410 != null) && (localGuidelines_8410.uint32_jump_type.has())) {
       return this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410.uint32_jump_type.get();
     }
     return 0;
@@ -30,30 +31,28 @@ class NewerGuideBannerRepository
   
   String a()
   {
-    Object localObject2;
-    if (this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410 == null) {
-      localObject2 = "";
+    Object localObject1 = this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410;
+    Object localObject2 = "";
+    if (localObject1 == null) {
+      return "";
     }
-    do
+    localObject1 = localObject2;
+    if (a())
     {
-      Object localObject1;
-      do
-      {
-        return localObject2;
-        localObject2 = "";
-        localObject1 = localObject2;
-        if (a())
-        {
-          localObject1 = localObject2;
-          if (this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410.str_res_url_night.has()) {
-            localObject1 = this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410.str_res_url_night.get();
-          }
-        }
-        localObject2 = localObject1;
-      } while (!TextUtils.isEmpty((CharSequence)localObject1));
+      localObject1 = localObject2;
+      if (this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410.str_res_url_night.has()) {
+        localObject1 = this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410.str_res_url_night.get();
+      }
+    }
+    localObject2 = localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1))
+    {
       localObject2 = localObject1;
-    } while (!this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410.str_res_url.has());
-    return this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410.str_res_url.get();
+      if (this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410.str_res_url.has()) {
+        localObject2 = this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410.str_res_url.get();
+      }
+    }
+    return localObject2;
   }
   
   void a(oidb_0x59f.Guidelines_8410 paramGuidelines_8410)
@@ -63,32 +62,32 @@ class NewerGuideBannerRepository
   
   boolean a()
   {
-    return ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
+    return ((IThemeUtilApi)QRoute.api(IThemeUtilApi.class)).isNowThemeIsNight(null, false, null);
   }
   
-  boolean a(QQAppInterface paramQQAppInterface)
+  boolean a(AppRuntime paramAppRuntime)
   {
-    paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityRecentGuidebannerNewerGuideBannerSharePreferenceHelper.a(paramQQAppInterface.getCurrentAccountUin());
-    if (!TextUtils.isEmpty(paramQQAppInterface)) {
+    paramAppRuntime = this.jdField_a_of_type_ComTencentMobileqqActivityRecentGuidebannerNewerGuideBannerSharePreferenceHelper.a(paramAppRuntime.getCurrentAccountUin());
+    if (!TextUtils.isEmpty(paramAppRuntime)) {
       try
       {
-        Object localObject = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINESE).parse(paramQQAppInterface);
-        paramQQAppInterface = Calendar.getInstance();
-        paramQQAppInterface.setTime((Date)localObject);
+        Object localObject = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINESE).parse(paramAppRuntime);
+        paramAppRuntime = Calendar.getInstance();
+        paramAppRuntime.setTime((Date)localObject);
         localObject = Calendar.getInstance();
         ((Calendar)localObject).setTime(new Date());
-        if ((paramQQAppInterface.get(0) == ((Calendar)localObject).get(0)) && (paramQQAppInterface.get(1) == ((Calendar)localObject).get(1)))
+        if ((paramAppRuntime.get(0) == ((Calendar)localObject).get(0)) && (paramAppRuntime.get(1) == ((Calendar)localObject).get(1)))
         {
-          int i = paramQQAppInterface.get(6);
+          int i = paramAppRuntime.get(6);
           int j = ((Calendar)localObject).get(6);
           if (i == j) {
             return true;
           }
         }
       }
-      catch (Throwable paramQQAppInterface)
+      catch (Throwable paramAppRuntime)
       {
-        QLog.e("NewerGuideBannerModel", 1, paramQQAppInterface, new Object[0]);
+        QLog.e("NewerGuideBannerModel", 1, paramAppRuntime, new Object[0]);
       }
     }
     return false;
@@ -96,7 +95,8 @@ class NewerGuideBannerRepository
   
   int b()
   {
-    if ((this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410 != null) && (this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410.uint32_banner_id.has())) {
+    oidb_0x59f.Guidelines_8410 localGuidelines_8410 = this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410;
+    if ((localGuidelines_8410 != null) && (localGuidelines_8410.uint32_banner_id.has())) {
       return this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410.uint32_banner_id.get();
     }
     return 0;
@@ -104,16 +104,20 @@ class NewerGuideBannerRepository
   
   String b()
   {
-    if (this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410 == null) {}
-    while (!this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410.str_jump_url.has()) {
+    oidb_0x59f.Guidelines_8410 localGuidelines_8410 = this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410;
+    String str = "";
+    if (localGuidelines_8410 == null) {
       return "";
     }
-    return this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410.str_jump_url.get();
+    if (localGuidelines_8410.str_jump_url.has()) {
+      str = this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410.str_jump_url.get();
+    }
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.guidebanner.NewerGuideBannerRepository
  * JD-Core Version:    0.7.0.1
  */

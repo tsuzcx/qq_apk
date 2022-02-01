@@ -217,18 +217,18 @@ public final class VideoEffectModel
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof VideoEffectModel))
       {
         paramObject = (VideoEffectModel)paramObject;
-        if ((this.effectType != paramObject.effectType) || (!Intrinsics.areEqual(this.filePath, paramObject.filePath)) || (!Intrinsics.areEqual(this.stickerId, paramObject.stickerId)) || (Float.compare(this.startTime, paramObject.startTime) != 0) || (Float.compare(this.duration, paramObject.duration) != 0) || (this.isUserEdit != paramObject.isUserEdit) || (this.source != paramObject.source) || (!Intrinsics.areEqual(this.effectId, paramObject.effectId)) || (!Intrinsics.areEqual(this.effectName, paramObject.effectName)) || (this.effectBgColor != paramObject.effectBgColor) || (this.createTime != paramObject.createTime) || (!Intrinsics.areEqual(this.landscapePath, paramObject.landscapePath)) || (this.animationMode != paramObject.animationMode) || (!Intrinsics.areEqual(this.verticalPath, paramObject.verticalPath)) || (!Intrinsics.areEqual(this.categoryId, paramObject.categoryId)) || (this.timeLineIndex != paramObject.timeLineIndex) || (this.effectSubType != paramObject.effectSubType) || (this.startOffset != paramObject.startOffset) || (this.endOffset != paramObject.endOffset) || (this.isRelative != paramObject.isRelative) || (this.isLoadName != paramObject.isLoadName) || (!Intrinsics.areEqual(this.pagTextItems, paramObject.pagTextItems))) {}
+        if ((this.effectType == paramObject.effectType) && (Intrinsics.areEqual(this.filePath, paramObject.filePath)) && (Intrinsics.areEqual(this.stickerId, paramObject.stickerId)) && (Float.compare(this.startTime, paramObject.startTime) == 0) && (Float.compare(this.duration, paramObject.duration) == 0) && (this.isUserEdit == paramObject.isUserEdit) && (this.source == paramObject.source) && (Intrinsics.areEqual(this.effectId, paramObject.effectId)) && (Intrinsics.areEqual(this.effectName, paramObject.effectName)) && (this.effectBgColor == paramObject.effectBgColor) && (this.createTime == paramObject.createTime) && (Intrinsics.areEqual(this.landscapePath, paramObject.landscapePath)) && (this.animationMode == paramObject.animationMode) && (Intrinsics.areEqual(this.verticalPath, paramObject.verticalPath)) && (Intrinsics.areEqual(this.categoryId, paramObject.categoryId)) && (this.timeLineIndex == paramObject.timeLineIndex) && (this.effectSubType == paramObject.effectSubType) && (this.startOffset == paramObject.startOffset) && (this.endOffset == paramObject.endOffset) && (this.isRelative == paramObject.isRelative) && (this.isLoadName == paramObject.isLoadName) && (Intrinsics.areEqual(this.pagTextItems, paramObject.pagTextItems))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public final int getAnimationMode()
@@ -300,11 +300,12 @@ public final class VideoEffectModel
   {
     if ((TextUtils.isEmpty((CharSequence)this.verticalPath)) && (TextUtils.isEmpty((CharSequence)this.landscapePath)))
     {
-      this.verticalPath = this.filePath;
-      this.landscapePath = this.filePath;
+      Object localObject = this.filePath;
+      this.verticalPath = ((String)localObject);
+      this.landscapePath = ((String)localObject);
       if (!TextUtils.isEmpty((CharSequence)this.verticalPath))
       {
-        Object localObject = this.verticalPath;
+        localObject = this.verticalPath;
         if (localObject == null) {
           Intrinsics.throwNpe();
         }
@@ -320,15 +321,21 @@ public final class VideoEffectModel
             Intrinsics.throwNpe();
           }
           int i = str2.length();
-          int j = ".pag".length();
-          if (str1 == null) {
-            throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+          if (str1 != null)
+          {
+            str1 = str1.substring(0, i - 4);
+            Intrinsics.checkExpressionValueIsNotNull(str1, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+            ((StringBuilder)localObject).append(str1);
+            ((StringBuilder)localObject).append("_landscape");
+            ((StringBuilder)localObject).append(".pag");
+            this.landscapePath = ((StringBuilder)localObject).toString();
+            if (!FileUtils.exists(this.landscapePath)) {
+              this.landscapePath = this.verticalPath;
+            }
           }
-          str1 = str1.substring(0, i - j);
-          Intrinsics.checkExpressionValueIsNotNull(str1, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-          this.landscapePath = (str1 + "_landscape" + ".pag");
-          if (!FileUtils.exists(this.landscapePath)) {
-            this.landscapePath = this.verticalPath;
+          else
+          {
+            throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
           }
         }
       }
@@ -516,12 +523,58 @@ public final class VideoEffectModel
   @NotNull
   public String toString()
   {
-    return "VideoEffectModel(effectType=" + this.effectType + ", filePath=" + this.filePath + ", stickerId=" + this.stickerId + ", startTime=" + this.startTime + ", duration=" + this.duration + ", isUserEdit=" + this.isUserEdit + ", source=" + this.source + ", effectId=" + this.effectId + ", effectName=" + this.effectName + ", effectBgColor=" + this.effectBgColor + ", createTime=" + this.createTime + ", landscapePath=" + this.landscapePath + ", animationMode=" + this.animationMode + ", verticalPath=" + this.verticalPath + ", categoryId=" + this.categoryId + ", timeLineIndex=" + this.timeLineIndex + ", effectSubType=" + this.effectSubType + ", startOffset=" + this.startOffset + ", endOffset=" + this.endOffset + ", isRelative=" + this.isRelative + ", isLoadName=" + this.isLoadName + ", pagTextItems=" + this.pagTextItems + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VideoEffectModel(effectType=");
+    localStringBuilder.append(this.effectType);
+    localStringBuilder.append(", filePath=");
+    localStringBuilder.append(this.filePath);
+    localStringBuilder.append(", stickerId=");
+    localStringBuilder.append(this.stickerId);
+    localStringBuilder.append(", startTime=");
+    localStringBuilder.append(this.startTime);
+    localStringBuilder.append(", duration=");
+    localStringBuilder.append(this.duration);
+    localStringBuilder.append(", isUserEdit=");
+    localStringBuilder.append(this.isUserEdit);
+    localStringBuilder.append(", source=");
+    localStringBuilder.append(this.source);
+    localStringBuilder.append(", effectId=");
+    localStringBuilder.append(this.effectId);
+    localStringBuilder.append(", effectName=");
+    localStringBuilder.append(this.effectName);
+    localStringBuilder.append(", effectBgColor=");
+    localStringBuilder.append(this.effectBgColor);
+    localStringBuilder.append(", createTime=");
+    localStringBuilder.append(this.createTime);
+    localStringBuilder.append(", landscapePath=");
+    localStringBuilder.append(this.landscapePath);
+    localStringBuilder.append(", animationMode=");
+    localStringBuilder.append(this.animationMode);
+    localStringBuilder.append(", verticalPath=");
+    localStringBuilder.append(this.verticalPath);
+    localStringBuilder.append(", categoryId=");
+    localStringBuilder.append(this.categoryId);
+    localStringBuilder.append(", timeLineIndex=");
+    localStringBuilder.append(this.timeLineIndex);
+    localStringBuilder.append(", effectSubType=");
+    localStringBuilder.append(this.effectSubType);
+    localStringBuilder.append(", startOffset=");
+    localStringBuilder.append(this.startOffset);
+    localStringBuilder.append(", endOffset=");
+    localStringBuilder.append(this.endOffset);
+    localStringBuilder.append(", isRelative=");
+    localStringBuilder.append(this.isRelative);
+    localStringBuilder.append(", isLoadName=");
+    localStringBuilder.append(this.isLoadName);
+    localStringBuilder.append(", pagTextItems=");
+    localStringBuilder.append(this.pagTextItems);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.effect.VideoEffectModel
  * JD-Core Version:    0.7.0.1
  */

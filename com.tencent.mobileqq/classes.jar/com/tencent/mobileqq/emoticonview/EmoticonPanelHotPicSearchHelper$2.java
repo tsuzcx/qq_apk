@@ -13,20 +13,17 @@ class EmoticonPanelHotPicSearchHelper$2
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if ((paramInt == 0) || (paramInt == 2)) {
+    if ((paramInt != 0) && (paramInt != 2)) {
+      AbstractGifImage.pauseAll();
+    } else {
       AbstractGifImage.resumeAll();
     }
-    for (;;)
-    {
-      this.this$0.mLastScrollState = paramInt;
-      return;
-      AbstractGifImage.pauseAll();
-    }
+    this.this$0.mLastScrollState = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelHotPicSearchHelper.2
  * JD-Core Version:    0.7.0.1
  */

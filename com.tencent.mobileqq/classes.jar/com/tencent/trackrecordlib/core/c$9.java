@@ -18,19 +18,19 @@ class c$9
   {
     Object localObject = f.a(this.a);
     d.a locala = new d.a().a(UiAction.EXPOSE).a((a)localObject).a(this.b.getClass().getName()).b(i.a(this.b));
-    if ((RecordManager.getInstance().b) && ((this.b instanceof EditText))) {}
-    for (localObject = null;; localObject = i.c(this.b))
-    {
-      localObject = locala.c((String)localObject).d(i.b(this.b)).e(i.f(this.b)).f(i.d(this.b)).h(this.c).g(this.d).a();
-      RecordManager.getInstance().recordEvent((b)localObject);
-      c.a(this.e, (b)localObject);
-      return;
+    if ((RecordManager.getInstance().b) && ((this.b instanceof EditText))) {
+      localObject = null;
+    } else {
+      localObject = i.c(this.b);
     }
+    localObject = locala.c((String)localObject).d(i.b(this.b)).e(i.f(this.b)).f(i.d(this.b)).h(this.c).g(this.d).a();
+    RecordManager.getInstance().recordEvent((b)localObject);
+    c.a(this.e, (b)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trackrecordlib.core.c.9
  * JD-Core Version:    0.7.0.1
  */

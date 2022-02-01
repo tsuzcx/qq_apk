@@ -43,65 +43,51 @@ public class HistorySignViewHolder
   protected void a(boolean paramBoolean)
   {
     super.a(paramBoolean);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView;
     int i;
-    label49:
-    label77:
-    label98:
-    LikesView localLikesView;
-    if (this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView != null)
+    if (localObject != null)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView;
-      if (paramBoolean)
-      {
+      if (paramBoolean) {
         i = jdField_a_of_type_ArrayOfInt[14];
-        ((CommentsView)localObject).setNormalTextColor(i);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView;
-        if (!paramBoolean) {
-          break label162;
-        }
+      } else {
+        i = jdField_a_of_type_ArrayOfInt[16];
+      }
+      ((CommentsView)localObject).setNormalTextColor(i);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView;
+      if (paramBoolean) {
         i = jdField_a_of_type_ArrayOfInt[13];
-        ((CommentsView)localObject).setItemColor(i);
+      } else {
+        i = jdField_a_of_type_ArrayOfInt[15];
       }
+      ((CommentsView)localObject).setItemColor(i);
     }
-    else if (this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView != null)
+    localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView;
+    if (localObject != null)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView;
-      if (!paramBoolean) {
-        break label172;
+      if (paramBoolean) {
+        i = jdField_a_of_type_ArrayOfInt[14];
+      } else {
+        i = jdField_a_of_type_ArrayOfInt[15];
       }
-      i = jdField_a_of_type_ArrayOfInt[14];
       ((LikesView)localObject).setNormalTextColor(i);
       localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView;
-      if (!paramBoolean) {
-        break label182;
+      if (paramBoolean) {
+        i = jdField_a_of_type_ArrayOfInt[13];
+      } else {
+        i = jdField_a_of_type_ArrayOfInt[15];
       }
-      i = jdField_a_of_type_ArrayOfInt[13];
       ((LikesView)localObject).setItemColor(i);
       localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView.a();
       if ((this.jdField_a_of_type_AndroidContentContext != null) && (localObject != null))
       {
-        localLikesView = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView;
-        if (!paramBoolean) {
-          break label192;
+        LikesView localLikesView = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView;
+        if (paramBoolean) {
+          localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847672);
+        } else {
+          localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847673);
         }
+        localLikesView.setLikSpanDrawable((Drawable)localObject);
       }
-    }
-    label162:
-    label172:
-    label182:
-    label192:
-    for (Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847805);; localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847806))
-    {
-      localLikesView.setLikSpanDrawable((Drawable)localObject);
-      return;
-      i = jdField_a_of_type_ArrayOfInt[16];
-      break;
-      i = jdField_a_of_type_ArrayOfInt[15];
-      break label49;
-      i = jdField_a_of_type_ArrayOfInt[15];
-      break label77;
-      i = jdField_a_of_type_ArrayOfInt[15];
-      break label98;
     }
   }
   
@@ -124,7 +110,7 @@ public class HistorySignViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.sign.HistorySignViewHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -14,19 +14,20 @@ class IntimateInfoView$12
   {
     if ((!TextUtils.isEmpty(this.a.a)) && (IntimateInfoView.a(this.a) != null))
     {
-      if (IntimateInfoView.a(this.a) == 1) {
-        IntimateInfoView.b(this.a, this.a.a);
+      if (IntimateInfoView.a(this.a) == 1)
+      {
+        paramDialogInterface = this.a;
+        IntimateInfoView.b(paramDialogInterface, paramDialogInterface.a);
+        return;
       }
+      paramDialogInterface = this.a;
+      IntimateInfoView.a(paramDialogInterface, paramDialogInterface.a, IntimateInfoView.a(this.a).maskType);
     }
-    else {
-      return;
-    }
-    IntimateInfoView.a(this.a, this.a.a, IntimateInfoView.a(this.a).maskType);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoView.12
  * JD-Core Version:    0.7.0.1
  */

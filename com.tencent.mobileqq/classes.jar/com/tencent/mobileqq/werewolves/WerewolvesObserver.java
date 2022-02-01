@@ -14,24 +14,26 @@ public class WerewolvesObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 1: 
-      a((submsgtype0xdd.MsgBody)paramObject);
-      return;
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3) {
+          return;
+        }
+        a(((Integer)paramObject).intValue());
+        return;
+      }
       paramObject = (Object[])paramObject;
       a(((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), ((Boolean)paramObject[2]).booleanValue());
       return;
     }
-    a(((Integer)paramObject).intValue());
+    a((submsgtype0xdd.MsgBody)paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.werewolves.WerewolvesObserver
  * JD-Core Version:    0.7.0.1
  */

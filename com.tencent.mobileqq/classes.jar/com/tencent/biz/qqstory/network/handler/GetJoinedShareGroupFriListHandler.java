@@ -6,6 +6,7 @@ import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.base.StoryDispatcher;
 import com.tencent.biz.qqstory.channel.CmdTaskManger;
 import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.channel.NetworkRequest;
 import com.tencent.biz.qqstory.network.BatchNetHandler;
 import com.tencent.biz.qqstory.network.request.GetJoinedShareGroupFriListRequest;
 import com.tencent.biz.qqstory.network.response.GetJoinedShareGroupFriListResponse;
@@ -22,11 +23,15 @@ public class GetJoinedShareGroupFriListHandler
   
   public void a()
   {
-    GetJoinedShareGroupFriListRequest localGetJoinedShareGroupFriListRequest = new GetJoinedShareGroupFriListRequest();
-    localGetJoinedShareGroupFriListRequest.b = this.jdField_a_of_type_JavaLangString;
-    CmdTaskManger.a().a(localGetJoinedShareGroupFriListRequest, this);
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory.shareGroup.GetJoinedShareGroupFriListHandler", 2, "GetJoinedShareGroupFriListHandler sendRequest groupID = " + this.jdField_a_of_type_JavaLangString);
+    Object localObject = new GetJoinedShareGroupFriListRequest();
+    ((GetJoinedShareGroupFriListRequest)localObject).b = this.jdField_a_of_type_JavaLangString;
+    CmdTaskManger.a().a((NetworkRequest)localObject, this);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("GetJoinedShareGroupFriListHandler sendRequest groupID = ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      QLog.e("Q.qqstory.shareGroup.GetJoinedShareGroupFriListHandler", 2, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -42,17 +47,16 @@ public class GetJoinedShareGroupFriListHandler
       paramGetJoinedShareGroupFriListRequest.jdField_a_of_type_JavaUtilArrayList = paramGetJoinedShareGroupFriListResponse.jdField_a_of_type_JavaUtilArrayList;
       b();
     }
-    for (;;)
+    else
     {
-      StoryDispatcher.a().dispatch(paramGetJoinedShareGroupFriListRequest);
-      return;
       c();
     }
+    StoryDispatcher.a().dispatch(paramGetJoinedShareGroupFriListRequest);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetJoinedShareGroupFriListHandler
  * JD-Core Version:    0.7.0.1
  */

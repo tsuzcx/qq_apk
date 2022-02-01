@@ -36,17 +36,21 @@ class ReadInjoyIMAXAdFragment$WeakListener
   public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
     paramTVK_IMediaPlayer = (ReadInjoyIMAXAdFragment)this.a.get();
-    if (paramTVK_IMediaPlayer == null) {}
-    do
-    {
+    if (paramTVK_IMediaPlayer == null) {
       return false;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInjoyIMAXAdFragment", 2, "error msg = " + paramString);
-      }
-      ReadInjoyIMAXAdFragment.e(paramTVK_IMediaPlayer, 8);
-      paramTVK_IMediaPlayer.i();
-    } while (!QLog.isColorLevel());
-    QLog.i("ReadInjoyIMAXAdFragment", 2, "ReadInjoyIMAXAdFragment start video error");
+    }
+    if (QLog.isColorLevel())
+    {
+      paramObject = new StringBuilder();
+      paramObject.append("error msg = ");
+      paramObject.append(paramString);
+      QLog.d("ReadInjoyIMAXAdFragment", 2, paramObject.toString());
+    }
+    ReadInjoyIMAXAdFragment.e(paramTVK_IMediaPlayer, 8);
+    paramTVK_IMediaPlayer.i();
+    if (QLog.isColorLevel()) {
+      QLog.i("ReadInjoyIMAXAdFragment", 2, "ReadInjoyIMAXAdFragment start video error");
+    }
     return false;
   }
   
@@ -79,7 +83,7 @@ class ReadInjoyIMAXAdFragment$WeakListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.WeakListener
  * JD-Core Version:    0.7.0.1
  */

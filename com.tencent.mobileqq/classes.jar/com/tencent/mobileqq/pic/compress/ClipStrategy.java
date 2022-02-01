@@ -31,189 +31,98 @@ public class ClipStrategy
     {
       int i = paramBitmap.getWidth();
       int j = paramBitmap.getHeight();
-      if ((i > this.jdField_a_of_type_Int) || (j > this.jdField_a_of_type_Int)) {
+      int k = this.jdField_a_of_type_Int;
+      if ((i > k) || (j > k)) {
         return true;
       }
     }
     return false;
   }
   
-  /* Error */
   private Bitmap b(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
-    // Byte code:
-    //   0: aload_1
-    //   1: invokevirtual 39	android/graphics/Bitmap:getWidth	()I
-    //   4: istore 5
-    //   6: aload_1
-    //   7: invokevirtual 42	android/graphics/Bitmap:getHeight	()I
-    //   10: istore 6
-    //   12: new 47	android/graphics/Matrix
-    //   15: dup
-    //   16: invokespecial 48	android/graphics/Matrix:<init>	()V
-    //   19: astore 8
-    //   21: aload_1
-    //   22: astore 7
-    //   24: aload_0
-    //   25: getfield 29	com/tencent/mobileqq/pic/compress/ClipStrategy:jdField_a_of_type_Boolean	Z
-    //   28: ifeq +67 -> 95
-    //   31: aload 8
-    //   33: aload_0
-    //   34: getfield 27	com/tencent/mobileqq/pic/compress/ClipStrategy:jdField_c_of_type_Int	I
-    //   37: i2f
-    //   38: iload 5
-    //   40: iconst_1
-    //   41: ishr
-    //   42: i2f
-    //   43: iload 6
-    //   45: iconst_1
-    //   46: ishr
-    //   47: i2f
-    //   48: invokevirtual 52	android/graphics/Matrix:postRotate	(FFF)Z
-    //   51: pop
-    //   52: iload 5
-    //   54: aload_1
-    //   55: invokevirtual 39	android/graphics/Bitmap:getWidth	()I
-    //   58: if_icmple +198 -> 256
-    //   61: aload_1
-    //   62: invokevirtual 39	android/graphics/Bitmap:getWidth	()I
-    //   65: istore_2
-    //   66: iload 6
-    //   68: aload_1
-    //   69: invokevirtual 42	android/graphics/Bitmap:getHeight	()I
-    //   72: if_icmple +177 -> 249
-    //   75: aload_1
-    //   76: invokevirtual 42	android/graphics/Bitmap:getHeight	()I
-    //   79: istore 4
-    //   81: aload_1
-    //   82: iconst_0
-    //   83: iconst_0
-    //   84: iload_2
-    //   85: iload 4
-    //   87: aload 8
-    //   89: iconst_1
-    //   90: invokestatic 56	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
-    //   93: astore 7
-    //   95: aload_0
-    //   96: iconst_1
-    //   97: putfield 17	com/tencent/mobileqq/pic/compress/ClipStrategy:jdField_b_of_type_Boolean	Z
-    //   100: iload_3
-    //   101: i2f
-    //   102: aload_0
-    //   103: getfield 25	com/tencent/mobileqq/pic/compress/ClipStrategy:jdField_a_of_type_Float	F
-    //   106: fmul
-    //   107: f2i
-    //   108: istore 4
-    //   110: iload 5
-    //   112: iload 6
-    //   114: if_icmple +88 -> 202
-    //   117: iload 4
-    //   119: istore_2
-    //   120: aload_0
-    //   121: getfield 27	com/tencent/mobileqq/pic/compress/ClipStrategy:jdField_c_of_type_Int	I
-    //   124: bipush 90
-    //   126: idiv
-    //   127: iconst_2
-    //   128: irem
-    //   129: ifeq +109 -> 238
-    //   132: iload_3
-    //   133: istore 4
-    //   135: iload_3
-    //   136: aload 7
-    //   138: invokevirtual 39	android/graphics/Bitmap:getWidth	()I
-    //   141: if_icmple +10 -> 151
-    //   144: aload 7
-    //   146: invokevirtual 39	android/graphics/Bitmap:getWidth	()I
-    //   149: istore 4
-    //   151: iload_2
-    //   152: istore_3
-    //   153: iload_2
-    //   154: aload 7
-    //   156: invokevirtual 42	android/graphics/Bitmap:getHeight	()I
-    //   159: if_icmple +9 -> 168
-    //   162: aload 7
-    //   164: invokevirtual 42	android/graphics/Bitmap:getHeight	()I
-    //   167: istore_3
-    //   168: aload 7
-    //   170: iconst_0
-    //   171: iconst_0
-    //   172: iload 4
-    //   174: iload_3
-    //   175: invokestatic 59	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIII)Landroid/graphics/Bitmap;
-    //   178: astore_1
-    //   179: aload_1
-    //   180: areturn
-    //   181: astore 7
-    //   183: aload_1
-    //   184: invokevirtual 62	android/graphics/Bitmap:recycle	()V
-    //   187: aload 7
-    //   189: invokevirtual 65	java/lang/OutOfMemoryError:printStackTrace	()V
-    //   192: aload_0
-    //   193: ldc 67
-    //   195: ldc 69
-    //   197: invokevirtual 72	com/tencent/mobileqq/pic/compress/ClipStrategy:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   200: aconst_null
-    //   201: areturn
-    //   202: iload_3
-    //   203: istore_2
-    //   204: iload 4
-    //   206: istore_3
-    //   207: goto -87 -> 120
-    //   210: astore_1
-    //   211: aload 7
-    //   213: invokevirtual 76	android/graphics/Bitmap:isRecycled	()Z
-    //   216: ifne +8 -> 224
-    //   219: aload 7
-    //   221: invokevirtual 62	android/graphics/Bitmap:recycle	()V
-    //   224: aload_1
-    //   225: invokevirtual 65	java/lang/OutOfMemoryError:printStackTrace	()V
-    //   228: aload_0
-    //   229: ldc 78
-    //   231: ldc 69
-    //   233: invokevirtual 72	com/tencent/mobileqq/pic/compress/ClipStrategy:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   236: aconst_null
-    //   237: areturn
-    //   238: iload_2
-    //   239: istore 4
-    //   241: iload_3
-    //   242: istore_2
-    //   243: iload 4
-    //   245: istore_3
-    //   246: goto -114 -> 132
-    //   249: iload 6
-    //   251: istore 4
-    //   253: goto -172 -> 81
-    //   256: iload 5
-    //   258: istore_2
-    //   259: goto -193 -> 66
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	262	0	this	ClipStrategy
-    //   0	262	1	paramBitmap	Bitmap
-    //   0	262	2	paramInt1	int
-    //   0	262	3	paramInt2	int
-    //   79	173	4	i	int
-    //   4	253	5	j	int
-    //   10	240	6	k	int
-    //   22	147	7	localBitmap	Bitmap
-    //   181	39	7	localOutOfMemoryError	OutOfMemoryError
-    //   19	69	8	localMatrix	Matrix
-    // Exception table:
-    //   from	to	target	type
-    //   52	66	181	java/lang/OutOfMemoryError
-    //   66	81	181	java/lang/OutOfMemoryError
-    //   81	95	181	java/lang/OutOfMemoryError
-    //   120	132	210	java/lang/OutOfMemoryError
-    //   135	151	210	java/lang/OutOfMemoryError
-    //   153	168	210	java/lang/OutOfMemoryError
-    //   168	179	210	java/lang/OutOfMemoryError
+    int k = paramBitmap.getWidth();
+    int m = paramBitmap.getHeight();
+    Matrix localMatrix = new Matrix();
+    Bitmap localBitmap = paramBitmap;
+    if (this.jdField_a_of_type_Boolean) {
+      localMatrix.postRotate(this.jdField_c_of_type_Int, k >> 1, m >> 1);
+    }
+    for (;;)
+    {
+      try
+      {
+        if (k <= paramBitmap.getWidth()) {
+          break label262;
+        }
+        paramInt1 = paramBitmap.getWidth();
+        if (m <= paramBitmap.getHeight()) {
+          break label268;
+        }
+        i = paramBitmap.getHeight();
+        localBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, paramInt1, i, localMatrix, true);
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        paramBitmap.recycle();
+        localOutOfMemoryError.printStackTrace();
+        a("keepShortSideAndClipLongSide rotate", "cut createBitmap OutOfMemoryError");
+        return null;
+      }
+      this.jdField_b_of_type_Boolean = true;
+      int j = (int)(paramInt2 * this.jdField_a_of_type_Float);
+      paramInt1 = j;
+      int i = paramInt2;
+      if (k > m)
+      {
+        paramInt1 = paramInt2;
+        i = j;
+      }
+      paramInt2 = paramInt1;
+      j = i;
+      try
+      {
+        if (this.jdField_c_of_type_Int / 90 % 2 != 0)
+        {
+          paramInt2 = i;
+          j = paramInt1;
+        }
+        paramInt1 = j;
+        if (j > localOutOfMemoryError.getWidth()) {
+          paramInt1 = localOutOfMemoryError.getWidth();
+        }
+        i = paramInt2;
+        if (paramInt2 > localOutOfMemoryError.getHeight()) {
+          i = localOutOfMemoryError.getHeight();
+        }
+        paramBitmap = Bitmap.createBitmap(localOutOfMemoryError, 0, 0, paramInt1, i);
+        return paramBitmap;
+      }
+      catch (OutOfMemoryError paramBitmap)
+      {
+        if (!localOutOfMemoryError.isRecycled()) {
+          localOutOfMemoryError.recycle();
+        }
+        paramBitmap.printStackTrace();
+        a("keepShortSideAndClipLongSide clip", "cut createBitmap OutOfMemoryError");
+        return null;
+      }
+      label262:
+      paramInt1 = k;
+      continue;
+      label268:
+      i = m;
+    }
   }
   
   private boolean b(Bitmap paramBitmap)
   {
     int i = paramBitmap.getWidth();
     int j = paramBitmap.getHeight();
-    return (i > j * this.jdField_a_of_type_Float) || (j > i * this.jdField_a_of_type_Float);
+    float f1 = i;
+    float f2 = j;
+    float f3 = this.jdField_a_of_type_Float;
+    return (f1 > f2 * f3) || (f2 > f1 * f3);
   }
   
   private Bitmap c(Bitmap paramBitmap)
@@ -221,62 +130,63 @@ public class ClipStrategy
     int j = paramBitmap.getWidth();
     int k = paramBitmap.getHeight();
     Matrix localMatrix = new Matrix();
-    Bitmap localBitmap = paramBitmap;
-    int i;
+    Bitmap localBitmap1 = paramBitmap;
+    Bitmap localBitmap2;
     if (this.jdField_a_of_type_Boolean)
     {
       localMatrix.postRotate(this.jdField_c_of_type_Int, j >> 1, k >> 1);
-      i = j;
-    }
-    try
-    {
-      if (j > paramBitmap.getWidth()) {
-        i = paramBitmap.getWidth();
+      int i = j;
+      try
+      {
+        if (j > paramBitmap.getWidth()) {
+          i = paramBitmap.getWidth();
+        }
+        j = k;
+        if (k > paramBitmap.getHeight()) {
+          j = paramBitmap.getHeight();
+        }
+        localBitmap1 = Bitmap.createBitmap(paramBitmap, 0, 0, i, j, localMatrix, true);
+        return localBitmap1;
       }
-      j = k;
-      if (k > paramBitmap.getHeight()) {
-        j = paramBitmap.getHeight();
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        paramBitmap.recycle();
+        localOutOfMemoryError.printStackTrace();
+        a("keepSide", "createBitmap OutOfMemoryError");
+        localBitmap2 = null;
       }
-      localBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, i, j, localMatrix, true);
-      return localBitmap;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      paramBitmap.recycle();
-      localOutOfMemoryError.printStackTrace();
-      a("keepSide", "createBitmap OutOfMemoryError");
-    }
-    return null;
+    return localBitmap2;
   }
   
   public Bitmap a(Bitmap paramBitmap)
   {
+    Bitmap localBitmap = paramBitmap;
     if (a(paramBitmap)) {
-      paramBitmap = b(paramBitmap);
+      localBitmap = b(paramBitmap);
     }
-    for (;;)
+    if (localBitmap == null) {
+      return localBitmap;
+    }
+    int j = localBitmap.getWidth();
+    int i = localBitmap.getHeight();
+    int k;
+    if (j > i)
     {
-      if (paramBitmap == null) {
-        return paramBitmap;
-      }
-      int i = paramBitmap.getWidth();
-      int j = paramBitmap.getHeight();
-      int k;
-      if (i > j)
-      {
-        k = j;
-        j = i;
-      }
-      while (b(paramBitmap))
-      {
-        return b(paramBitmap, j, k);
-        k = i;
-      }
-      if (j > this.jdField_a_of_type_Int) {
-        return a(paramBitmap, j, k);
-      }
-      return c(paramBitmap);
+      k = i;
     }
+    else
+    {
+      k = j;
+      j = i;
+    }
+    if (b(localBitmap)) {
+      return b(localBitmap, j, k);
+    }
+    if (j > this.jdField_a_of_type_Int) {
+      return a(localBitmap, j, k);
+    }
+    return c(localBitmap);
   }
   
   Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2)
@@ -319,52 +229,46 @@ public class ClipStrategy
   
   Bitmap b(Bitmap paramBitmap)
   {
-    int k = paramBitmap.getWidth();
-    int m = paramBitmap.getHeight();
-    int i;
-    int j;
-    if (k > m)
-    {
-      i = m;
-      j = (int)(i * this.jdField_a_of_type_Float);
-      if (k <= m) {
-        break label90;
-      }
+    int n = paramBitmap.getWidth();
+    int i1 = paramBitmap.getHeight();
+    if (n > i1) {
+      i = i1;
+    } else {
+      i = n;
     }
-    for (;;)
+    int m = (int)(i * this.jdField_a_of_type_Float);
+    int k = i;
+    int j = m;
+    if (n > i1)
     {
+      k = m;
+      j = i;
+    }
+    int i = k;
+    try
+    {
+      if (k > paramBitmap.getWidth()) {
+        i = paramBitmap.getWidth();
+      }
       k = j;
-      try
-      {
-        if (j > paramBitmap.getWidth()) {
-          k = paramBitmap.getWidth();
-        }
-        j = i;
-        if (i > paramBitmap.getHeight()) {
-          j = paramBitmap.getHeight();
-        }
-        Bitmap localBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, k, j);
-        return localBitmap;
+      if (j > paramBitmap.getHeight()) {
+        k = paramBitmap.getHeight();
       }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        paramBitmap.recycle();
-        localOutOfMemoryError.printStackTrace();
-        a("clipBigImg", "createBitmap OutOfMemoryError");
-      }
-      i = k;
-      break;
-      label90:
-      k = i;
-      i = j;
-      j = k;
+      Bitmap localBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, i, k);
+      return localBitmap;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      paramBitmap.recycle();
+      localOutOfMemoryError.printStackTrace();
+      a("clipBigImg", "createBitmap OutOfMemoryError");
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.compress.ClipStrategy
  * JD-Core Version:    0.7.0.1
  */

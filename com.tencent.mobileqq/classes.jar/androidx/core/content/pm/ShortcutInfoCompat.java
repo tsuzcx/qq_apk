@@ -45,14 +45,18 @@ public class ShortcutInfoCompat
   private PersistableBundle buildLegacyExtrasBundle()
   {
     PersistableBundle localPersistableBundle = new PersistableBundle();
-    if ((this.mPersons != null) && (this.mPersons.length > 0))
+    Object localObject = this.mPersons;
+    if ((localObject != null) && (localObject.length > 0))
     {
-      localPersistableBundle.putInt("extraPersonCount", this.mPersons.length);
-      int i = 0;
-      while (i < this.mPersons.length)
+      localPersistableBundle.putInt("extraPersonCount", localObject.length);
+      int j;
+      for (int i = 0; i < this.mPersons.length; i = j)
       {
-        localPersistableBundle.putPersistableBundle("extraPerson_" + (i + 1), this.mPersons[i].toPersistableBundle());
-        i += 1;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("extraPerson_");
+        j = i + 1;
+        ((StringBuilder)localObject).append(j);
+        localPersistableBundle.putPersistableBundle(((StringBuilder)localObject).toString(), this.mPersons[i].toPersistableBundle());
       }
     }
     localPersistableBundle.putBoolean("extraLongLived", this.mIsLongLived);
@@ -64,10 +68,10 @@ public class ShortcutInfoCompat
   @VisibleForTesting
   static boolean getLongLivedFromExtra(@NonNull PersistableBundle paramPersistableBundle)
   {
-    if ((paramPersistableBundle == null) || (!paramPersistableBundle.containsKey("extraLongLived"))) {
-      return false;
+    if ((paramPersistableBundle != null) && (paramPersistableBundle.containsKey("extraLongLived"))) {
+      return paramPersistableBundle.getBoolean("extraLongLived");
     }
-    return paramPersistableBundle.getBoolean("extraLongLived");
+    return false;
   }
   
   @Nullable
@@ -76,33 +80,31 @@ public class ShortcutInfoCompat
   @VisibleForTesting
   static androidx.core.app.Person[] getPersonsFromExtra(@NonNull PersistableBundle paramPersistableBundle)
   {
-    Object localObject;
-    if ((paramPersistableBundle == null) || (!paramPersistableBundle.containsKey("extraPersonCount")))
+    if ((paramPersistableBundle != null) && (paramPersistableBundle.containsKey("extraPersonCount")))
     {
-      localObject = null;
-      return localObject;
-    }
-    int j = paramPersistableBundle.getInt("extraPersonCount");
-    androidx.core.app.Person[] arrayOfPerson = new androidx.core.app.Person[j];
-    int i = 0;
-    for (;;)
-    {
-      localObject = arrayOfPerson;
-      if (i >= j) {
-        break;
+      int k = paramPersistableBundle.getInt("extraPersonCount");
+      androidx.core.app.Person[] arrayOfPerson = new androidx.core.app.Person[k];
+      int j;
+      for (int i = 0; i < k; i = j)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("extraPerson_");
+        j = i + 1;
+        localStringBuilder.append(j);
+        arrayOfPerson[i] = androidx.core.app.Person.fromPersistableBundle(paramPersistableBundle.getPersistableBundle(localStringBuilder.toString()));
       }
-      arrayOfPerson[i] = androidx.core.app.Person.fromPersistableBundle(paramPersistableBundle.getPersistableBundle("extraPerson_" + (i + 1)));
-      i += 1;
+      return arrayOfPerson;
     }
+    return null;
   }
   
   Intent addToIntent(Intent paramIntent)
   {
-    paramIntent.putExtra("android.intent.extra.shortcut.INTENT", this.mIntents[(this.mIntents.length - 1)]).putExtra("android.intent.extra.shortcut.NAME", this.mLabel.toString());
+    Object localObject1 = this.mIntents;
+    paramIntent.putExtra("android.intent.extra.shortcut.INTENT", localObject1[(localObject1.length - 1)]).putExtra("android.intent.extra.shortcut.NAME", this.mLabel.toString());
     Object localObject3;
     Object localObject4;
     PackageManager localPackageManager;
-    Object localObject1;
     if (this.mIcon != null)
     {
       localObject3 = null;
@@ -110,13 +112,14 @@ public class ShortcutInfoCompat
       if (this.mIsAlwaysBadged)
       {
         localPackageManager = this.mContext.getPackageManager();
+        localObject3 = this.mActivity;
         localObject1 = localObject4;
-        if (this.mActivity == null) {}
+        if (localObject3 == null) {}
       }
     }
     try
     {
-      localObject1 = localPackageManager.getActivityIcon(this.mActivity);
+      localObject1 = localPackageManager.getActivityIcon((ComponentName)localObject3);
       localObject3 = localObject1;
       if (localObject1 == null) {
         localObject3 = this.mContext.getApplicationInfo().loadIcon(localPackageManager);
@@ -166,13 +169,15 @@ public class ShortcutInfoCompat
   @NonNull
   public Intent getIntent()
   {
-    return this.mIntents[(this.mIntents.length - 1)];
+    Intent[] arrayOfIntent = this.mIntents;
+    return arrayOfIntent[(arrayOfIntent.length - 1)];
   }
   
   @NonNull
   public Intent[] getIntents()
   {
-    return (Intent[])Arrays.copyOf(this.mIntents, this.mIntents.length);
+    Intent[] arrayOfIntent = this.mIntents;
+    return (Intent[])Arrays.copyOf(arrayOfIntent, arrayOfIntent.length);
   }
   
   @Nullable
@@ -196,8 +201,9 @@ public class ShortcutInfoCompat
   public ShortcutInfo toShortcutInfo()
   {
     ShortcutInfo.Builder localBuilder = new ShortcutInfo.Builder(this.mContext, this.mId).setShortLabel(this.mLabel).setIntents(this.mIntents);
-    if (this.mIcon != null) {
-      localBuilder.setIcon(this.mIcon.toIcon());
+    Object localObject = this.mIcon;
+    if (localObject != null) {
+      localBuilder.setIcon(((IconCompat)localObject).toIcon(this.mContext));
     }
     if (!TextUtils.isEmpty(this.mLongLabel)) {
       localBuilder.setLongLabel(this.mLongLabel);
@@ -205,38 +211,41 @@ public class ShortcutInfoCompat
     if (!TextUtils.isEmpty(this.mDisabledMessage)) {
       localBuilder.setDisabledMessage(this.mDisabledMessage);
     }
-    if (this.mActivity != null) {
-      localBuilder.setActivity(this.mActivity);
+    localObject = this.mActivity;
+    if (localObject != null) {
+      localBuilder.setActivity((ComponentName)localObject);
     }
-    if (this.mCategories != null) {
-      localBuilder.setCategories(this.mCategories);
+    localObject = this.mCategories;
+    if (localObject != null) {
+      localBuilder.setCategories((Set)localObject);
     }
     localBuilder.setRank(this.mRank);
     if (Build.VERSION.SDK_INT >= 29)
     {
-      if ((this.mPersons != null) && (this.mPersons.length > 0))
+      localObject = this.mPersons;
+      if ((localObject != null) && (localObject.length > 0))
       {
-        android.app.Person[] arrayOfPerson = new android.app.Person[this.mPersons.length];
+        localObject = new android.app.Person[localObject.length];
         int i = 0;
-        while (i < arrayOfPerson.length)
+        while (i < localObject.length)
         {
-          arrayOfPerson[i] = this.mPersons[i].toAndroidPerson();
+          localObject[i] = this.mPersons[i].toAndroidPerson();
           i += 1;
         }
-        localBuilder.setPersons(arrayOfPerson);
+        localBuilder.setPersons((android.app.Person[])localObject);
       }
       localBuilder.setLongLived(this.mIsLongLived);
     }
-    for (;;)
+    else
     {
-      return localBuilder.build();
       localBuilder.setExtras(buildLegacyExtrasBundle());
     }
+    return localBuilder.build();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.content.pm.ShortcutInfoCompat
  * JD-Core Version:    0.7.0.1
  */

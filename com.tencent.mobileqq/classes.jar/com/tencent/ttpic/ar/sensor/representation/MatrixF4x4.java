@@ -43,16 +43,17 @@ public class MatrixF4x4
       int j = 0;
       while (j < 4)
       {
-        int k = i * 4;
         int m = paramInt2 + 0 + j;
-        paramArrayOfFloat2[m] += this.matrix[(k + j)] * paramArrayOfFloat1[(paramInt1 + 0 + i)];
-        m = paramInt2 + 4 + j;
-        paramArrayOfFloat2[m] += this.matrix[(k + j)] * paramArrayOfFloat1[(paramInt1 + 4 + i)];
-        m = paramInt2 + 8 + j;
-        paramArrayOfFloat2[m] += this.matrix[(k + j)] * paramArrayOfFloat1[(paramInt1 + 8 + i)];
-        m = paramInt2 + 12 + j;
         float f = paramArrayOfFloat2[m];
-        paramArrayOfFloat2[m] = (this.matrix[(k + j)] * paramArrayOfFloat1[(paramInt1 + 12 + i)] + f);
+        float[] arrayOfFloat = this.matrix;
+        int k = i * 4 + j;
+        paramArrayOfFloat2[m] = (f + arrayOfFloat[k] * paramArrayOfFloat1[(paramInt1 + 0 + i)]);
+        m = paramInt2 + 4 + j;
+        paramArrayOfFloat2[m] += arrayOfFloat[k] * paramArrayOfFloat1[(paramInt1 + 4 + i)];
+        m = paramInt2 + 8 + j;
+        paramArrayOfFloat2[m] += arrayOfFloat[k] * paramArrayOfFloat1[(paramInt1 + 8 + i)];
+        m = paramInt2 + 12 + j;
+        paramArrayOfFloat2[m] += arrayOfFloat[k] * paramArrayOfFloat1[(paramInt1 + 12 + i)];
         j += 1;
       }
       i += 1;
@@ -101,158 +102,143 @@ public class MatrixF4x4
   
   public void multiplyVector3fByMatrix(Vector3f paramVector3f)
   {
-    float f4 = 0.0F;
-    float f2 = 0.0F;
     if (this.matrix.length == 9)
     {
-      float[] arrayOfFloat = paramVector3f.toArray();
+      float[] arrayOfFloat1 = paramVector3f.toArray();
+      boolean bool = this.colMaj;
+      float f4 = 0.0F;
+      float f3 = 0.0F;
+      int j = 0;
+      int i = 0;
       float f5;
       float f6;
-      float f7;
-      float f8;
-      float f9;
-      if (!this.colMaj)
+      float[] arrayOfFloat2;
+      if (!bool)
       {
-        i = 0;
+        f2 = 0.0F;
         f1 = 0.0F;
-        f3 = 0.0F;
         for (;;)
         {
-          f4 = f3;
-          f5 = f2;
+          f4 = f2;
+          f5 = f3;
           f6 = f1;
           if (i >= 3) {
             break;
           }
-          int j = i * 3;
-          f4 = this.matrix[(j + 0)];
-          f5 = arrayOfFloat[i];
-          f6 = this.matrix[(j + 1)];
-          f7 = arrayOfFloat[i];
-          f8 = this.matrix[(j + 2)];
-          f9 = arrayOfFloat[i];
+          j = i * 3;
+          arrayOfFloat2 = this.matrix;
+          f3 += arrayOfFloat2[(j + 0)] * arrayOfFloat1[i];
+          f2 += arrayOfFloat2[(j + 1)] * arrayOfFloat1[i];
+          f1 += arrayOfFloat2[(j + 2)] * arrayOfFloat1[i];
           i += 1;
-          f3 = f8 * f9 + f3;
-          f2 = f6 * f7 + f2;
-          f1 = f4 * f5 + f1;
         }
       }
-      int i = 0;
+      float f2 = 0.0F;
       float f1 = 0.0F;
-      float f3 = 0.0F;
-      f2 = f4;
+      i = j;
+      f3 = f4;
       for (;;)
       {
-        f4 = f3;
-        f5 = f2;
+        f4 = f2;
+        f5 = f3;
         f6 = f1;
         if (i >= 3) {
           break;
         }
-        f4 = this.matrix[(i + 0)];
-        f5 = arrayOfFloat[i];
-        f6 = this.matrix[(i + 3)];
-        f7 = arrayOfFloat[i];
-        f8 = this.matrix[(i + 6)];
-        f9 = arrayOfFloat[i];
+        arrayOfFloat2 = this.matrix;
+        f3 += arrayOfFloat2[(i + 0)] * arrayOfFloat1[i];
+        f2 += arrayOfFloat2[(i + 3)] * arrayOfFloat1[i];
+        f1 += arrayOfFloat2[(i + 6)] * arrayOfFloat1[i];
         i += 1;
-        f3 = f8 * f9 + f3;
-        f2 = f6 * f7 + f2;
-        f1 = f4 * f5 + f1;
       }
-      paramVector3f.setX(f6);
-      paramVector3f.setY(f5);
-      paramVector3f.setZ(f4);
+      paramVector3f.setX(f5);
+      paramVector3f.setY(f4);
+      paramVector3f.setZ(f6);
       return;
     }
-    LogUtils.e("matrix", "Matrix is invalid, is " + this.matrix.length + " long, this function expects the internal matrix to be of size 9");
+    paramVector3f = new StringBuilder();
+    paramVector3f.append("Matrix is invalid, is ");
+    paramVector3f.append(this.matrix.length);
+    paramVector3f.append(" long, this function expects the internal matrix to be of size 9");
+    LogUtils.e("matrix", paramVector3f.toString());
   }
   
   public void multiplyVector4fByMatrix(Vector4f paramVector4f)
   {
-    float f5 = 0.0F;
-    float f3 = 0.0F;
     if (this.matrix.length == 16)
     {
-      float[] arrayOfFloat = paramVector4f.array();
+      float[] arrayOfFloat1 = paramVector4f.array();
+      boolean bool = this.colMaj;
+      int j = 0;
+      int i = 0;
+      float f5 = 0.0F;
+      float f4 = 0.0F;
       float f6;
       float f7;
       float f8;
-      float f9;
-      float f10;
-      float f11;
-      float f12;
-      if (this.colMaj)
+      float[] arrayOfFloat2;
+      if (bool)
       {
-        i = 0;
+        f3 = 0.0F;
         f2 = 0.0F;
         f1 = 0.0F;
-        f4 = 0.0F;
         for (;;)
         {
-          f5 = f4;
-          f6 = f3;
+          f5 = f3;
+          f6 = f4;
           f7 = f2;
           f8 = f1;
           if (i >= 4) {
             break;
           }
-          int j = i * 4;
-          f5 = this.matrix[(j + 0)];
-          f6 = arrayOfFloat[i];
-          f7 = this.matrix[(j + 1)];
-          f8 = arrayOfFloat[i];
-          f9 = this.matrix[(j + 2)];
-          f10 = arrayOfFloat[i];
-          f11 = this.matrix[(j + 3)];
-          f12 = arrayOfFloat[i];
+          j = i * 4;
+          arrayOfFloat2 = this.matrix;
+          f4 += arrayOfFloat2[(j + 0)] * arrayOfFloat1[i];
+          f3 += arrayOfFloat2[(j + 1)] * arrayOfFloat1[i];
+          f2 += arrayOfFloat2[(j + 2)] * arrayOfFloat1[i];
+          f1 += arrayOfFloat2[(j + 3)] * arrayOfFloat1[i];
           i += 1;
-          f4 = f11 * f12 + f4;
-          f3 = f9 * f10 + f3;
-          f2 = f7 * f8 + f2;
-          f1 = f5 * f6 + f1;
         }
       }
-      int i = 0;
+      float f3 = 0.0F;
       float f2 = 0.0F;
       float f1 = 0.0F;
-      float f4 = 0.0F;
-      f3 = f5;
+      f4 = f5;
+      i = j;
       for (;;)
       {
-        f5 = f4;
-        f6 = f3;
+        f5 = f3;
+        f6 = f4;
         f7 = f2;
         f8 = f1;
         if (i >= 4) {
           break;
         }
-        f5 = this.matrix[(i + 0)];
-        f6 = arrayOfFloat[i];
-        f7 = this.matrix[(i + 4)];
-        f8 = arrayOfFloat[i];
-        f9 = this.matrix[(i + 8)];
-        f10 = arrayOfFloat[i];
-        f11 = this.matrix[(i + 12)];
-        f12 = arrayOfFloat[i];
+        arrayOfFloat2 = this.matrix;
+        f4 += arrayOfFloat2[(i + 0)] * arrayOfFloat1[i];
+        f3 += arrayOfFloat2[(i + 4)] * arrayOfFloat1[i];
+        f2 += arrayOfFloat2[(i + 8)] * arrayOfFloat1[i];
+        f1 += arrayOfFloat2[(i + 12)] * arrayOfFloat1[i];
         i += 1;
-        f4 = f11 * f12 + f4;
-        f3 = f9 * f10 + f3;
-        f2 = f7 * f8 + f2;
-        f1 = f5 * f6 + f1;
       }
-      paramVector4f.setX(f8);
-      paramVector4f.setY(f7);
-      paramVector4f.setZ(f6);
-      paramVector4f.setW(f5);
+      paramVector4f.setX(f6);
+      paramVector4f.setY(f5);
+      paramVector4f.setZ(f7);
+      paramVector4f.setW(f8);
       return;
     }
-    LogUtils.e("matrix", "Matrix is invalid, is " + this.matrix.length + " long, this equation expects a 16 value matrix");
+    paramVector4f = new StringBuilder();
+    paramVector4f.append("Matrix is invalid, is ");
+    paramVector4f.append(this.matrix.length);
+    paramVector4f.append(" long, this equation expects a 16 value matrix");
+    LogUtils.e("matrix", paramVector4f.toString());
   }
   
   public void set(MatrixF4x4 paramMatrixF4x4)
   {
-    System.arraycopy(paramMatrixF4x4.matrix, 0, this.matrix, 0, this.matrix.length);
+    paramMatrixF4x4 = paramMatrixF4x4.matrix;
+    float[] arrayOfFloat = this.matrix;
+    System.arraycopy(paramMatrixF4x4, 0, arrayOfFloat, 0, arrayOfFloat.length);
   }
   
   public void setColumnMajor(boolean paramBoolean)
@@ -262,24 +248,28 @@ public class MatrixF4x4
   
   public void setMatrix(float[] paramArrayOfFloat)
   {
-    if ((paramArrayOfFloat.length == 16) || (paramArrayOfFloat.length == 9))
+    if ((paramArrayOfFloat.length != 16) && (paramArrayOfFloat.length != 9))
     {
-      this.matrix = paramArrayOfFloat;
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Matrix set is invalid, size is ");
+      localStringBuilder.append(paramArrayOfFloat.length);
+      localStringBuilder.append(" expected 9 or 16");
+      throw new IllegalArgumentException(localStringBuilder.toString());
     }
-    throw new IllegalArgumentException("Matrix set is invalid, size is " + paramArrayOfFloat.length + " expected 9 or 16");
+    this.matrix = paramArrayOfFloat;
   }
   
   public void setW0(float paramFloat)
   {
-    if (this.matrix.length == 16)
+    float[] arrayOfFloat = this.matrix;
+    if (arrayOfFloat.length == 16)
     {
       if (this.colMaj)
       {
-        this.matrix[matIndCol16_4x4[12]] = paramFloat;
+        arrayOfFloat[matIndCol16_4x4[12]] = paramFloat;
         return;
       }
-      this.matrix[matIndRow16_4x4[12]] = paramFloat;
+      arrayOfFloat[matIndRow16_4x4[12]] = paramFloat;
       return;
     }
     throw new IllegalStateException("length of matrix should be 16");
@@ -287,14 +277,15 @@ public class MatrixF4x4
   
   public void setW1(float paramFloat)
   {
-    if (this.matrix.length == 16)
+    float[] arrayOfFloat = this.matrix;
+    if (arrayOfFloat.length == 16)
     {
       if (this.colMaj)
       {
-        this.matrix[matIndCol16_4x4[13]] = paramFloat;
+        arrayOfFloat[matIndCol16_4x4[13]] = paramFloat;
         return;
       }
-      this.matrix[matIndRow16_4x4[13]] = paramFloat;
+      arrayOfFloat[matIndRow16_4x4[13]] = paramFloat;
       return;
     }
     throw new IllegalStateException("length of matrix should be 16");
@@ -302,14 +293,15 @@ public class MatrixF4x4
   
   public void setW2(float paramFloat)
   {
-    if (this.matrix.length == 16)
+    float[] arrayOfFloat = this.matrix;
+    if (arrayOfFloat.length == 16)
     {
       if (this.colMaj)
       {
-        this.matrix[matIndCol16_4x4[14]] = paramFloat;
+        arrayOfFloat[matIndCol16_4x4[14]] = paramFloat;
         return;
       }
-      this.matrix[matIndRow16_4x4[14]] = paramFloat;
+      arrayOfFloat[matIndRow16_4x4[14]] = paramFloat;
       return;
     }
     throw new IllegalStateException("length of matrix should be 16");
@@ -317,14 +309,15 @@ public class MatrixF4x4
   
   public void setW3(float paramFloat)
   {
-    if (this.matrix.length == 16)
+    float[] arrayOfFloat = this.matrix;
+    if (arrayOfFloat.length == 16)
     {
       if (this.colMaj)
       {
-        this.matrix[matIndCol16_4x4[15]] = paramFloat;
+        arrayOfFloat[matIndCol16_4x4[15]] = paramFloat;
         return;
       }
-      this.matrix[matIndRow16_4x4[15]] = paramFloat;
+      arrayOfFloat[matIndRow16_4x4[15]] = paramFloat;
       return;
     }
     throw new IllegalStateException("length of matrix should be 16");
@@ -332,74 +325,78 @@ public class MatrixF4x4
   
   public void setX0(float paramFloat)
   {
-    if (this.matrix.length == 16)
+    float[] arrayOfFloat = this.matrix;
+    if (arrayOfFloat.length == 16)
     {
       if (this.colMaj)
       {
-        this.matrix[matIndCol16_3x3[0]] = paramFloat;
+        arrayOfFloat[matIndCol16_3x3[0]] = paramFloat;
         return;
       }
-      this.matrix[matIndRow16_3x3[0]] = paramFloat;
+      arrayOfFloat[matIndRow16_3x3[0]] = paramFloat;
       return;
     }
     if (this.colMaj)
     {
-      this.matrix[matIndCol9_3x3[0]] = paramFloat;
+      arrayOfFloat[matIndCol9_3x3[0]] = paramFloat;
       return;
     }
-    this.matrix[matIndRow9_3x3[0]] = paramFloat;
+    arrayOfFloat[matIndRow9_3x3[0]] = paramFloat;
   }
   
   public void setX1(float paramFloat)
   {
-    if (this.matrix.length == 16)
+    float[] arrayOfFloat = this.matrix;
+    if (arrayOfFloat.length == 16)
     {
       if (this.colMaj)
       {
-        this.matrix[matIndCol16_3x3[1]] = paramFloat;
+        arrayOfFloat[matIndCol16_3x3[1]] = paramFloat;
         return;
       }
-      this.matrix[matIndRow16_3x3[1]] = paramFloat;
+      arrayOfFloat[matIndRow16_3x3[1]] = paramFloat;
       return;
     }
     if (this.colMaj)
     {
-      this.matrix[matIndCol9_3x3[1]] = paramFloat;
+      arrayOfFloat[matIndCol9_3x3[1]] = paramFloat;
       return;
     }
-    this.matrix[matIndRow9_3x3[1]] = paramFloat;
+    arrayOfFloat[matIndRow9_3x3[1]] = paramFloat;
   }
   
   public void setX2(float paramFloat)
   {
-    if (this.matrix.length == 16)
+    float[] arrayOfFloat = this.matrix;
+    if (arrayOfFloat.length == 16)
     {
       if (this.colMaj)
       {
-        this.matrix[matIndCol16_3x3[2]] = paramFloat;
+        arrayOfFloat[matIndCol16_3x3[2]] = paramFloat;
         return;
       }
-      this.matrix[matIndRow16_3x3[2]] = paramFloat;
+      arrayOfFloat[matIndRow16_3x3[2]] = paramFloat;
       return;
     }
     if (this.colMaj)
     {
-      this.matrix[matIndCol9_3x3[2]] = paramFloat;
+      arrayOfFloat[matIndCol9_3x3[2]] = paramFloat;
       return;
     }
-    this.matrix[matIndRow9_3x3[2]] = paramFloat;
+    arrayOfFloat[matIndRow9_3x3[2]] = paramFloat;
   }
   
   public void setX3(float paramFloat)
   {
-    if (this.matrix.length == 16)
+    float[] arrayOfFloat = this.matrix;
+    if (arrayOfFloat.length == 16)
     {
       if (this.colMaj)
       {
-        this.matrix[matIndCol16_4x4[3]] = paramFloat;
+        arrayOfFloat[matIndCol16_4x4[3]] = paramFloat;
         return;
       }
-      this.matrix[matIndRow16_4x4[3]] = paramFloat;
+      arrayOfFloat[matIndRow16_4x4[3]] = paramFloat;
       return;
     }
     throw new IllegalStateException("length of matrix should be 16");
@@ -407,74 +404,78 @@ public class MatrixF4x4
   
   public void setY0(float paramFloat)
   {
-    if (this.matrix.length == 16)
+    float[] arrayOfFloat = this.matrix;
+    if (arrayOfFloat.length == 16)
     {
       if (this.colMaj)
       {
-        this.matrix[matIndCol16_3x3[3]] = paramFloat;
+        arrayOfFloat[matIndCol16_3x3[3]] = paramFloat;
         return;
       }
-      this.matrix[matIndRow16_3x3[3]] = paramFloat;
+      arrayOfFloat[matIndRow16_3x3[3]] = paramFloat;
       return;
     }
     if (this.colMaj)
     {
-      this.matrix[matIndCol9_3x3[3]] = paramFloat;
+      arrayOfFloat[matIndCol9_3x3[3]] = paramFloat;
       return;
     }
-    this.matrix[matIndRow9_3x3[3]] = paramFloat;
+    arrayOfFloat[matIndRow9_3x3[3]] = paramFloat;
   }
   
   public void setY1(float paramFloat)
   {
-    if (this.matrix.length == 16)
+    float[] arrayOfFloat = this.matrix;
+    if (arrayOfFloat.length == 16)
     {
       if (this.colMaj)
       {
-        this.matrix[matIndCol16_3x3[4]] = paramFloat;
+        arrayOfFloat[matIndCol16_3x3[4]] = paramFloat;
         return;
       }
-      this.matrix[matIndRow16_3x3[4]] = paramFloat;
+      arrayOfFloat[matIndRow16_3x3[4]] = paramFloat;
       return;
     }
     if (this.colMaj)
     {
-      this.matrix[matIndCol9_3x3[4]] = paramFloat;
+      arrayOfFloat[matIndCol9_3x3[4]] = paramFloat;
       return;
     }
-    this.matrix[matIndRow9_3x3[4]] = paramFloat;
+    arrayOfFloat[matIndRow9_3x3[4]] = paramFloat;
   }
   
   public void setY2(float paramFloat)
   {
-    if (this.matrix.length == 16)
+    float[] arrayOfFloat = this.matrix;
+    if (arrayOfFloat.length == 16)
     {
       if (this.colMaj)
       {
-        this.matrix[matIndCol16_3x3[5]] = paramFloat;
+        arrayOfFloat[matIndCol16_3x3[5]] = paramFloat;
         return;
       }
-      this.matrix[matIndRow16_3x3[5]] = paramFloat;
+      arrayOfFloat[matIndRow16_3x3[5]] = paramFloat;
       return;
     }
     if (this.colMaj)
     {
-      this.matrix[matIndCol9_3x3[5]] = paramFloat;
+      arrayOfFloat[matIndCol9_3x3[5]] = paramFloat;
       return;
     }
-    this.matrix[matIndRow9_3x3[5]] = paramFloat;
+    arrayOfFloat[matIndRow9_3x3[5]] = paramFloat;
   }
   
   public void setY3(float paramFloat)
   {
-    if (this.matrix.length == 16)
+    float[] arrayOfFloat = this.matrix;
+    if (arrayOfFloat.length == 16)
     {
       if (this.colMaj)
       {
-        this.matrix[matIndCol16_4x4[7]] = paramFloat;
+        arrayOfFloat[matIndCol16_4x4[7]] = paramFloat;
         return;
       }
-      this.matrix[matIndRow16_4x4[7]] = paramFloat;
+      arrayOfFloat[matIndRow16_4x4[7]] = paramFloat;
       return;
     }
     throw new IllegalStateException("length of matrix should be 16");
@@ -482,74 +483,78 @@ public class MatrixF4x4
   
   public void setZ0(float paramFloat)
   {
-    if (this.matrix.length == 16)
+    float[] arrayOfFloat = this.matrix;
+    if (arrayOfFloat.length == 16)
     {
       if (this.colMaj)
       {
-        this.matrix[matIndCol16_3x3[6]] = paramFloat;
+        arrayOfFloat[matIndCol16_3x3[6]] = paramFloat;
         return;
       }
-      this.matrix[matIndRow16_3x3[6]] = paramFloat;
+      arrayOfFloat[matIndRow16_3x3[6]] = paramFloat;
       return;
     }
     if (this.colMaj)
     {
-      this.matrix[matIndCol9_3x3[6]] = paramFloat;
+      arrayOfFloat[matIndCol9_3x3[6]] = paramFloat;
       return;
     }
-    this.matrix[matIndRow9_3x3[6]] = paramFloat;
+    arrayOfFloat[matIndRow9_3x3[6]] = paramFloat;
   }
   
   public void setZ1(float paramFloat)
   {
-    if (this.matrix.length == 16)
+    float[] arrayOfFloat = this.matrix;
+    if (arrayOfFloat.length == 16)
     {
       if (this.colMaj)
       {
-        this.matrix[matIndCol16_3x3[7]] = paramFloat;
+        arrayOfFloat[matIndCol16_3x3[7]] = paramFloat;
         return;
       }
-      this.matrix[matIndRow16_3x3[7]] = paramFloat;
+      arrayOfFloat[matIndRow16_3x3[7]] = paramFloat;
       return;
     }
     if (this.colMaj)
     {
-      this.matrix[matIndCol9_3x3[7]] = paramFloat;
+      arrayOfFloat[matIndCol9_3x3[7]] = paramFloat;
       return;
     }
-    this.matrix[matIndRow9_3x3[7]] = paramFloat;
+    arrayOfFloat[matIndRow9_3x3[7]] = paramFloat;
   }
   
   public void setZ2(float paramFloat)
   {
-    if (this.matrix.length == 16)
+    float[] arrayOfFloat = this.matrix;
+    if (arrayOfFloat.length == 16)
     {
       if (this.colMaj)
       {
-        this.matrix[matIndCol16_3x3[8]] = paramFloat;
+        arrayOfFloat[matIndCol16_3x3[8]] = paramFloat;
         return;
       }
-      this.matrix[matIndRow16_3x3[8]] = paramFloat;
+      arrayOfFloat[matIndRow16_3x3[8]] = paramFloat;
       return;
     }
     if (this.colMaj)
     {
-      this.matrix[matIndCol9_3x3[8]] = paramFloat;
+      arrayOfFloat[matIndCol9_3x3[8]] = paramFloat;
       return;
     }
-    this.matrix[matIndRow9_3x3[8]] = paramFloat;
+    arrayOfFloat[matIndRow9_3x3[8]] = paramFloat;
   }
   
   public void setZ3(float paramFloat)
   {
-    if (this.matrix.length == 16)
+    float[] arrayOfFloat = this.matrix;
+    if (arrayOfFloat.length == 16)
     {
       if (this.colMaj)
       {
-        this.matrix[matIndCol16_4x4[11]] = paramFloat;
+        arrayOfFloat[matIndCol16_4x4[11]] = paramFloat;
         return;
       }
-      this.matrix[matIndRow16_4x4[11]] = paramFloat;
+      arrayOfFloat[matIndRow16_4x4[11]] = paramFloat;
       return;
     }
     throw new IllegalStateException("length of matrix should be 16");
@@ -562,39 +567,43 @@ public class MatrixF4x4
   
   public void transpose()
   {
+    int k = this.matrix.length;
     int j = 0;
     int i = 0;
-    if (this.matrix.length == 16)
+    float[] arrayOfFloat2;
+    if (k == 16)
     {
-      arrayOfFloat = new float[16];
+      arrayOfFloat1 = new float[16];
       while (i < 4)
       {
         j = i * 4;
-        arrayOfFloat[j] = this.matrix[i];
-        arrayOfFloat[(j + 1)] = this.matrix[(i + 4)];
-        arrayOfFloat[(j + 2)] = this.matrix[(i + 8)];
-        arrayOfFloat[(j + 3)] = this.matrix[(i + 12)];
+        arrayOfFloat2 = this.matrix;
+        arrayOfFloat1[j] = arrayOfFloat2[i];
+        arrayOfFloat1[(j + 1)] = arrayOfFloat2[(i + 4)];
+        arrayOfFloat1[(j + 2)] = arrayOfFloat2[(i + 8)];
+        arrayOfFloat1[(j + 3)] = arrayOfFloat2[(i + 12)];
         i += 1;
       }
-      this.matrix = arrayOfFloat;
+      this.matrix = arrayOfFloat1;
       return;
     }
-    float[] arrayOfFloat = new float[9];
+    float[] arrayOfFloat1 = new float[9];
     i = j;
     while (i < 3)
     {
       j = i * 3;
-      arrayOfFloat[j] = this.matrix[i];
-      arrayOfFloat[(j + 1)] = this.matrix[(i + 3)];
-      arrayOfFloat[(j + 2)] = this.matrix[(i + 6)];
+      arrayOfFloat2 = this.matrix;
+      arrayOfFloat1[j] = arrayOfFloat2[i];
+      arrayOfFloat1[(j + 1)] = arrayOfFloat2[(i + 3)];
+      arrayOfFloat1[(j + 2)] = arrayOfFloat2[(i + 6)];
       i += 1;
     }
-    this.matrix = arrayOfFloat;
+    this.matrix = arrayOfFloat1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.ar.sensor.representation.MatrixF4x4
  * JD-Core Version:    0.7.0.1
  */

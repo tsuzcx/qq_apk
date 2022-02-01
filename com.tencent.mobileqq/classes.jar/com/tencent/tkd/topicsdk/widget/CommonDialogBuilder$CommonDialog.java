@@ -142,16 +142,14 @@ public final class CommonDialogBuilder$CommonDialog
     paramBundle = findViewById(R.id.b);
     Intrinsics.checkExpressionValueIsNotNull(paramBundle, "findViewById(R.id.contentLayout)");
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramBundle);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(R.id.f));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(R.id.c));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(R.id.e));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(R.id.d));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(R.id.g));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(R.id.d));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(R.id.f));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(R.id.e));
     paramBundle = findViewById(R.id.a);
     Intrinsics.checkExpressionValueIsNotNull(paramBundle, "findViewById(R.id.bottomSplitLine)");
     this.jdField_a_of_type_AndroidViewView = paramBundle;
     int i;
-    label247:
-    Object localObject;
     if (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaLangString))
     {
       paramBundle = this.jdField_a_of_type_AndroidWidgetTextView;
@@ -167,17 +165,26 @@ public final class CommonDialogBuilder$CommonDialog
           paramBundle.setTextColor(i);
         }
       }
-      paramBundle = this.jdField_b_of_type_AndroidWidgetTextView;
+    }
+    else
+    {
+      paramBundle = this.jdField_a_of_type_AndroidWidgetTextView;
       if (paramBundle != null) {
-        paramBundle.setMovementMethod(LinkMovementMethod.getInstance());
+        paramBundle.setVisibility(8);
       }
-      paramBundle = this.jdField_b_of_type_AndroidWidgetTextView;
-      if (paramBundle != null) {
-        paramBundle.setHighlightColor(0);
-      }
-      if (this.jdField_b_of_type_AndroidViewView == null) {
-        break label464;
-      }
+    }
+    paramBundle = this.jdField_b_of_type_AndroidWidgetTextView;
+    if (paramBundle != null) {
+      paramBundle.setMovementMethod(LinkMovementMethod.getInstance());
+    }
+    paramBundle = this.jdField_b_of_type_AndroidWidgetTextView;
+    int j = 0;
+    if (paramBundle != null) {
+      paramBundle.setHighlightColor(0);
+    }
+    Object localObject;
+    if (this.jdField_b_of_type_AndroidViewView != null)
+    {
       paramBundle = this.jdField_b_of_type_AndroidWidgetTextView;
       if (paramBundle != null) {
         paramBundle.setVisibility(8);
@@ -187,137 +194,127 @@ public final class CommonDialogBuilder$CommonDialog
         Intrinsics.throwUninitializedPropertyAccessException("mContentLayout");
       }
       paramBundle.addView(this.jdField_b_of_type_AndroidViewView);
-      paramBundle = this.jdField_b_of_type_JavaLangString;
-      if (paramBundle == null) {
-        break label584;
+    }
+    else
+    {
+      paramBundle = this.jdField_a_of_type_JavaLangCharSequence;
+      if ((paramBundle != null) && (paramBundle.length() != 0)) {
+        i = 0;
+      } else {
+        i = 1;
       }
-      if (((CharSequence)paramBundle).length() <= 0) {
-        break label579;
-      }
-      i = 1;
-      label270:
-      if (i == 0) {
-        break label584;
-      }
-      localObject = this.jdField_d_of_type_AndroidWidgetTextView;
-      if (localObject != null) {
-        ((TextView)localObject).setText((CharSequence)paramBundle);
-      }
-      paramBundle = this.jdField_c_of_type_JavaLangInteger;
-      if (paramBundle != null)
+      if (i != 0)
       {
-        i = ((Number)paramBundle).intValue();
-        paramBundle = this.jdField_d_of_type_AndroidWidgetTextView;
+        paramBundle = this.jdField_b_of_type_AndroidWidgetTextView;
         if (paramBundle != null) {
-          paramBundle.setTextColor(i);
+          paramBundle.setVisibility(8);
         }
       }
-      label322:
-      paramBundle = this.jdField_d_of_type_AndroidWidgetTextView;
-      if (paramBundle != null) {
-        paramBundle.setOnClickListener((View.OnClickListener)new CommonDialogBuilder.CommonDialog.onCreate.3(this));
-      }
-      paramBundle = this.jdField_c_of_type_JavaLangString;
-      if (paramBundle == null) {
-        break label632;
-      }
-      if (((CharSequence)paramBundle).length() <= 0) {
-        break label627;
-      }
-      i = 1;
-      label369:
-      if (i == 0) {
-        break label632;
-      }
-      localObject = this.jdField_c_of_type_AndroidWidgetTextView;
-      if (localObject != null) {
-        ((TextView)localObject).setText((CharSequence)paramBundle);
-      }
-      paramBundle = this.jdField_b_of_type_JavaLangInteger;
-      if (paramBundle != null)
+      else
       {
-        i = ((Number)paramBundle).intValue();
-        paramBundle = this.jdField_c_of_type_AndroidWidgetTextView;
+        paramBundle = this.jdField_b_of_type_AndroidWidgetTextView;
         if (paramBundle != null) {
-          paramBundle.setTextColor(i);
+          paramBundle.setVisibility(0);
+        }
+        paramBundle = this.jdField_b_of_type_AndroidWidgetTextView;
+        if (paramBundle != null) {
+          paramBundle.setText(this.jdField_a_of_type_JavaLangCharSequence);
+        }
+        paramBundle = this.jdField_b_of_type_AndroidWidgetTextView;
+        if (paramBundle != null)
+        {
+          localObject = this.jdField_d_of_type_JavaLangInteger;
+          if (localObject != null) {
+            i = ((Integer)localObject).intValue();
+          } else {
+            i = 17;
+          }
+          paramBundle.setGravity(i);
         }
       }
     }
-    for (;;)
+    paramBundle = this.jdField_b_of_type_JavaLangString;
+    if (paramBundle != null)
     {
-      paramBundle = this.jdField_c_of_type_AndroidWidgetTextView;
-      if (paramBundle != null) {
-        paramBundle.setOnClickListener((View.OnClickListener)new CommonDialogBuilder.CommonDialog.onCreate.5(this));
+      paramBundle = (CharSequence)paramBundle;
+      if (paramBundle.length() > 0) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      return;
-      paramBundle = this.jdField_a_of_type_AndroidWidgetTextView;
-      if (paramBundle == null) {
-        break;
-      }
-      paramBundle.setVisibility(8);
-      break;
-      label464:
-      paramBundle = this.jdField_a_of_type_JavaLangCharSequence;
-      if ((paramBundle == null) || (paramBundle.length() == 0)) {}
-      for (i = 1;; i = 0)
+      if (i != 0)
       {
-        if (i == 0) {
-          break label511;
+        localObject = this.jdField_d_of_type_AndroidWidgetTextView;
+        if (localObject != null) {
+          ((TextView)localObject).setText(paramBundle);
         }
-        paramBundle = this.jdField_b_of_type_AndroidWidgetTextView;
+        paramBundle = this.jdField_c_of_type_JavaLangInteger;
         if (paramBundle == null) {
-          break;
+          break label513;
         }
-        paramBundle.setVisibility(8);
-        break;
+        i = ((Number)paramBundle).intValue();
+        paramBundle = this.jdField_d_of_type_AndroidWidgetTextView;
+        if (paramBundle == null) {
+          break label513;
+        }
+        paramBundle.setTextColor(i);
+        break label513;
       }
-      label511:
-      paramBundle = this.jdField_b_of_type_AndroidWidgetTextView;
-      if (paramBundle != null) {
-        paramBundle.setVisibility(0);
+    }
+    paramBundle = this.jdField_d_of_type_AndroidWidgetTextView;
+    if (paramBundle != null) {
+      paramBundle.setText((CharSequence)"");
+    }
+    paramBundle = this.jdField_a_of_type_AndroidViewView;
+    if (paramBundle == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("bottomSplitLine");
+    }
+    paramBundle.setVisibility(8);
+    label513:
+    paramBundle = this.jdField_d_of_type_AndroidWidgetTextView;
+    if (paramBundle != null) {
+      paramBundle.setOnClickListener((View.OnClickListener)new CommonDialogBuilder.CommonDialog.onCreate.3(this));
+    }
+    paramBundle = this.jdField_c_of_type_JavaLangString;
+    if (paramBundle != null)
+    {
+      paramBundle = (CharSequence)paramBundle;
+      i = j;
+      if (paramBundle.length() > 0) {
+        i = 1;
       }
-      paramBundle = this.jdField_b_of_type_AndroidWidgetTextView;
-      if (paramBundle != null) {
-        paramBundle.setText(this.jdField_a_of_type_JavaLangCharSequence);
-      }
-      paramBundle = this.jdField_b_of_type_AndroidWidgetTextView;
-      if (paramBundle == null) {
-        break label247;
-      }
-      localObject = this.jdField_d_of_type_JavaLangInteger;
-      if (localObject != null) {}
-      for (i = ((Integer)localObject).intValue();; i = 17)
+      if (i != 0)
       {
-        paramBundle.setGravity(i);
-        break;
+        localObject = this.jdField_c_of_type_AndroidWidgetTextView;
+        if (localObject != null) {
+          ((TextView)localObject).setText(paramBundle);
+        }
+        paramBundle = this.jdField_b_of_type_JavaLangInteger;
+        if (paramBundle == null) {
+          break label655;
+        }
+        i = ((Number)paramBundle).intValue();
+        paramBundle = this.jdField_c_of_type_AndroidWidgetTextView;
+        if (paramBundle == null) {
+          break label655;
+        }
+        paramBundle.setTextColor(i);
+        break label655;
       }
-      label579:
-      i = 0;
-      break label270;
-      label584:
-      paramBundle = this.jdField_d_of_type_AndroidWidgetTextView;
-      if (paramBundle != null) {
-        paramBundle.setText((CharSequence)"");
-      }
-      paramBundle = this.jdField_a_of_type_AndroidViewView;
-      if (paramBundle == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("bottomSplitLine");
-      }
+    }
+    paramBundle = this.jdField_c_of_type_AndroidWidgetTextView;
+    if (paramBundle != null) {
       paramBundle.setVisibility(8);
-      break label322;
-      label627:
-      i = 0;
-      break label369;
-      label632:
-      paramBundle = this.jdField_c_of_type_AndroidWidgetTextView;
-      if (paramBundle != null) {
-        paramBundle.setVisibility(8);
-      }
-      paramBundle = this.jdField_a_of_type_AndroidViewView;
-      if (paramBundle == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("bottomSplitLine");
-      }
-      paramBundle.setVisibility(8);
+    }
+    paramBundle = this.jdField_a_of_type_AndroidViewView;
+    if (paramBundle == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("bottomSplitLine");
+    }
+    paramBundle.setVisibility(8);
+    label655:
+    paramBundle = this.jdField_c_of_type_AndroidWidgetTextView;
+    if (paramBundle != null) {
+      paramBundle.setOnClickListener((View.OnClickListener)new CommonDialogBuilder.CommonDialog.onCreate.5(this));
     }
   }
   
@@ -329,7 +326,7 @@ public final class CommonDialogBuilder$CommonDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.CommonDialogBuilder.CommonDialog
  * JD-Core Version:    0.7.0.1
  */

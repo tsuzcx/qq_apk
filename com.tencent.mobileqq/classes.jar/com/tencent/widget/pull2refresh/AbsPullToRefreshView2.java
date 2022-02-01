@@ -19,161 +19,106 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.ViewParent;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoyAnimBaseManager;
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoyRefreshAnimFactory;
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.widget.QQUIDelegate;
+import com.tencent.widget.pull2refresh.anim.DefaultAnimManager;
+import com.tencent.widget.pull2refresh.anim.IAnimManager;
 
 public abstract class AbsPullToRefreshView2
   extends LinearLayout
   implements Handler.Callback
 {
-  private float jdField_a_of_type_Float = -1.0F;
-  private int jdField_a_of_type_Int = 0;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  protected View a;
-  protected ReadInJoyAnimBaseManager a;
-  private PullToRefreshListener jdField_a_of_type_ComTencentWidgetPull2refreshPullToRefreshListener;
-  protected boolean a;
-  private float jdField_b_of_type_Float = -1.0F;
-  private int jdField_b_of_type_Int;
-  protected View b;
-  private int c;
-  private int d;
-  private int e = 10;
-  private int f;
+  private static final int CHANGE_STATE_TO_READY = 0;
+  private static final int HANDLE_MOV_HEAD_TO = 1;
+  private static final int REFRESH_TIME_OUT = 2;
+  private static final int RESET_VIEW_POS = 3;
+  public static final int STATE_HEADER_REFRESHING = 1;
+  public static final int STATE_HEADER_REFRESH_FAILED = 3;
+  public static final int STATE_HEADER_REFRESH_SUCCESS = 2;
+  public static final int STATE_HEADER_RELEASE_TO_READY = 5;
+  public static final int STATE_HEADER_RELEASE_TO_REFRESH = 4;
+  public static final int STATE_READY = 0;
+  public static final int STATE_RELEASE_TODEFAULT = 6;
+  public static final String TAG = "AbsPullToRefreshView2";
+  public static final int Y_X_RATIO = 5;
+  protected boolean isRefreshing = false;
+  private float lastTouchX = -1.0F;
+  private float lastTouchY = -1.0F;
+  protected IAnimManager mAnimManager;
+  private int mAnimSpeed = 10;
+  protected View mFooterView;
+  private Handler mHandler;
+  private Drawable mHeaderBgDrawable;
+  private int mHeaderHeight;
+  protected View mHeaderView;
+  private int mHeaderVisibleHeight;
+  private int mMaxVelocity;
+  private int mPreFrameHeight;
+  private int mState = 0;
+  private PullToRefreshListener pullToRefreshListener;
   
   public AbsPullToRefreshView2(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = false;
-    b();
+    init();
   }
   
   public AbsPullToRefreshView2(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Boolean = false;
-    b();
+    init();
   }
   
   @TargetApi(11)
   public AbsPullToRefreshView2(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Boolean = false;
-    b();
+    init();
   }
   
-  private void a(int paramInt1, int paramInt2)
-  {
-    a("moveHeaderTo:" + paramInt1 + ",duration=" + paramInt2 + ",getHeaderCurPos()=" + b());
-    if (paramInt1 == b()) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, paramInt1, paramInt2));
-  }
-  
-  private void a(long paramLong)
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshPullToRefreshListener.a(this.jdField_a_of_type_AndroidViewView, true);
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0), paramLong);
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-    }
-  }
-  
-  private void a(View paramView)
+  private void addViewToHeader(View paramView)
   {
     if (paramView == null) {
       return;
     }
-    b(paramView);
-    this.c = a();
-    this.jdField_b_of_type_Int = paramView.getMeasuredHeight();
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, this.jdField_b_of_type_Int);
-    localLayoutParams.topMargin = (-this.jdField_b_of_type_Int);
+    measureView(paramView);
+    this.mHeaderVisibleHeight = configHeaderVisibleHeight();
+    this.mHeaderHeight = paramView.getMeasuredHeight();
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, this.mHeaderHeight);
+    localLayoutParams.topMargin = (-this.mHeaderHeight);
     super.addView(paramView, localLayoutParams);
   }
   
-  private void a(String paramString)
+  private void clearAnima()
+  {
+    this.mHandler.removeMessages(1);
+    this.mHandler.removeMessages(3);
+  }
+  
+  private int getHeaderCurPos()
+  {
+    return ((LinearLayout.LayoutParams)this.mHeaderView.getLayoutParams()).topMargin;
+  }
+  
+  private void init()
+  {
+    initAnimBaseManager();
+    super.setOrientation(1);
+    this.mState = 0;
+    this.mHandler = new Handler(Looper.getMainLooper(), this);
+    this.mHeaderView = generateHeaderView();
+    this.mFooterView = generateFooterView();
+    this.mPreFrameHeight = QQUIDelegate.a(getContext(), 15.0F);
+    this.mMaxVelocity = ViewConfiguration.get(getContext()).getScaledMaximumFlingVelocity();
+    addViewToHeader(this.mHeaderView);
+    setWillNotDraw(false);
+  }
+  
+  private void log(String paramString)
   {
     Log.d("AbsPullToRefreshView2", paramString);
   }
   
-  private int b()
-  {
-    return ((LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams()).topMargin;
-  }
-  
-  private void b()
-  {
-    a();
-    super.setOrientation(1);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_AndroidViewView = a();
-    this.jdField_b_of_type_AndroidViewView = b();
-    this.f = UIUtils.a(getContext(), 15.0F);
-    this.d = ViewConfiguration.get(getContext()).getScaledMaximumFlingVelocity();
-    a(this.jdField_a_of_type_AndroidViewView);
-    setWillNotDraw(false);
-  }
-  
-  private void b(int paramInt)
-  {
-    int i = 0;
-    if (this.jdField_a_of_type_ComTencentWidgetPull2refreshPullToRefreshListener == null) {}
-    do
-    {
-      return;
-      switch (paramInt)
-      {
-      default: 
-        return;
-      }
-    } while (this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshPullToRefreshListener.a(this.jdField_a_of_type_AndroidViewView);
-    return;
-    paramInt = 100 - Math.abs((int)(b() * 1.0F / -this.jdField_b_of_type_Int * 100.0F));
-    if (paramInt < 0) {
-      paramInt = i;
-    }
-    while (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshPullToRefreshListener.a(this.jdField_a_of_type_AndroidViewView, paramInt);
-      return;
-      if (this.jdField_a_of_type_Boolean) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshPullToRefreshListener.a(this.jdField_a_of_type_AndroidViewView);
-      return;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_ComTencentWidgetPull2refreshPullToRefreshListener.a(this.jdField_a_of_type_AndroidViewView, false);
-        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0), 1000L);
-      }
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-      return;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_ComTencentWidgetPull2refreshPullToRefreshListener.a(this.jdField_a_of_type_AndroidViewView, true);
-        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0), 0L);
-      }
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-      return;
-    }
-  }
-  
-  private void b(View paramView)
+  private void measureView(View paramView)
   {
     ViewGroup.LayoutParams localLayoutParams2 = paramView.getLayoutParams();
     ViewGroup.LayoutParams localLayoutParams1 = localLayoutParams2;
@@ -182,297 +127,463 @@ public abstract class AbsPullToRefreshView2
     }
     int j = ViewGroup.getChildMeasureSpec(0, 0, localLayoutParams1.width);
     int i = localLayoutParams1.height;
-    if (i > 0) {}
-    for (i = View.MeasureSpec.makeMeasureSpec(i, 1073741824);; i = View.MeasureSpec.makeMeasureSpec(0, 0))
-    {
-      paramView.measure(j, i);
-      return;
+    if (i > 0) {
+      i = View.MeasureSpec.makeMeasureSpec(i, 1073741824);
+    } else {
+      i = View.MeasureSpec.makeMeasureSpec(0, 0);
     }
+    paramView.measure(j, i);
   }
   
-  private void c()
+  private void moveHeaderBy(int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-  }
-  
-  private void c(int paramInt)
-  {
-    a("moveHeaderSmoothlyBy dy=" + paramInt);
-    if (Math.abs(paramInt) > this.f * 2) {
-      return;
-    }
-    d(paramInt);
-  }
-  
-  private void c(boolean paramBoolean)
-  {
-    b(paramBoolean);
-    getParent().requestDisallowInterceptTouchEvent(true);
-  }
-  
-  private void d(int paramInt)
-  {
-    a("moveHeaderBy dy=" + paramInt);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("moveHeaderBy dy=");
+    ((StringBuilder)localObject).append(paramInt);
+    log(((StringBuilder)localObject).toString());
     if (paramInt == 0) {
       return;
     }
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.topMargin -= paramInt;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    localObject = (LinearLayout.LayoutParams)this.mHeaderView.getLayoutParams();
+    ((LinearLayout.LayoutParams)localObject).topMargin -= paramInt;
+    this.mHeaderView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     invalidate();
   }
   
-  protected int a()
+  private void moveHeaderSmoothlyBy(int paramInt)
   {
-    return UIUtils.a(getContext(), 60.0F);
-  }
-  
-  protected abstract View a();
-  
-  protected ReadInJoyAnimBaseManager a()
-  {
-    return a(1);
-  }
-  
-  public ReadInJoyAnimBaseManager a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsPullToRefreshView2", 1, "setAnimType animType = " + paramInt);
-    }
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoyAnimBaseManager != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoyAnimBaseManager instanceof ReadInJoySkinAnimManager))) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoyAnimBaseManager.d();
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoyAnimBaseManager = ReadInJoyRefreshAnimFactory.a(getContext(), paramInt);
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoyAnimBaseManager;
-  }
-  
-  protected void a()
-  {
-    if (a())
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-      a(this.c / 2 - this.jdField_b_of_type_Int, 100);
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3), 100L);
-    }
-    while (!b()) {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("moveHeaderSmoothlyBy dy=");
+    localStringBuilder.append(paramInt);
+    log(localStringBuilder.toString());
+    if (Math.abs(paramInt) > this.mPreFrameHeight * 2) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-    a(-this.jdField_b_of_type_Int - this.c, 100);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3), 100L);
+    moveHeaderBy(paramInt);
   }
   
-  protected void a(int paramInt)
+  private void moveHeaderTo(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_Int == paramInt) && (paramInt != 5)) {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("moveHeaderTo:");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(",duration=");
+    ((StringBuilder)localObject).append(paramInt2);
+    ((StringBuilder)localObject).append(",getHeaderCurPos()=");
+    ((StringBuilder)localObject).append(getHeaderCurPos());
+    log(((StringBuilder)localObject).toString());
+    if (paramInt1 == getHeaderCurPos()) {
       return;
     }
-    a("change to state:" + paramInt);
-    this.jdField_a_of_type_Int = paramInt;
-    switch (this.jdField_a_of_type_Int)
-    {
-    }
-    for (;;)
-    {
-      b(this.jdField_a_of_type_Int);
-      return;
-      a(-this.jdField_b_of_type_Int, 200);
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-      continue;
-      a(this.c - this.jdField_b_of_type_Int, 200);
-    }
+    this.mHandler.removeMessages(1);
+    localObject = this.mHandler;
+    ((Handler)localObject).sendMessage(((Handler)localObject).obtainMessage(1, paramInt1, paramInt2));
   }
   
-  protected void a(PullToRefreshListener paramPullToRefreshListener)
+  private void notifyHeaderRefreshStateChange(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshPullToRefreshListener = paramPullToRefreshListener;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      a(2);
+    Object localObject = this.pullToRefreshListener;
+    if (localObject == null) {
       return;
     }
-    a(3);
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoyAnimBaseManager != null) && (this.jdField_a_of_type_Boolean))
+    if (paramInt != 1)
     {
-      a(1500L);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoyAnimBaseManager.a(paramBoolean, paramString);
-    }
-  }
-  
-  protected abstract boolean a();
-  
-  protected abstract View b();
-  
-  protected abstract void b(boolean paramBoolean);
-  
-  protected abstract boolean b();
-  
-  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction() & 0xFF)
-    {
-    }
-    for (;;)
-    {
-      return super.dispatchTouchEvent(paramMotionEvent);
-      a("dispatchTouchEvent: ------down------ getY=" + paramMotionEvent.getY());
-      c();
-      this.jdField_b_of_type_Float = paramMotionEvent.getX();
-      this.jdField_a_of_type_Float = paramMotionEvent.getY();
-      continue;
-      float f2 = this.jdField_b_of_type_Float - paramMotionEvent.getX();
-      float f1 = this.jdField_a_of_type_Float - paramMotionEvent.getY();
-      int i = b();
-      a("dispatchTouchEvent: move getY=" + paramMotionEvent.getY() + ",isScroll2Top()()=" + a() + ",mHeaderHeight=" + this.jdField_b_of_type_Int + ",currentHeaderPos=" + i + ",dy=" + f1 + ",dx=" + f2);
-      this.jdField_b_of_type_Float = paramMotionEvent.getX();
-      this.jdField_a_of_type_Float = paramMotionEvent.getY();
-      if (Math.abs(f1) / Math.abs(f2) < 5.0F)
+      if (paramInt != 2)
       {
-        getParent().requestDisallowInterceptTouchEvent(false);
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 5) {
+              return;
+            }
+            int i = 100 - Math.abs((int)(getHeaderCurPos() * 1.0F / -this.mHeaderHeight * 100.0F));
+            paramInt = i;
+            if (i < 0) {
+              paramInt = 0;
+            }
+            if (!this.isRefreshing) {
+              this.pullToRefreshListener.onNotCompleteVisable(this.mHeaderView, paramInt);
+            }
+          }
+          else if (!this.isRefreshing)
+          {
+            ((PullToRefreshListener)localObject).onViewCompleteVisable(this.mHeaderView);
+          }
+        }
+        else
+        {
+          if (this.isRefreshing)
+          {
+            ((PullToRefreshListener)localObject).onRefreshCompleted(this.mHeaderView, false);
+            localObject = this.mHandler;
+            ((Handler)localObject).sendMessageDelayed(((Handler)localObject).obtainMessage(0), 1000L);
+          }
+          this.isRefreshing = false;
+          this.mHandler.removeMessages(2);
+        }
       }
       else
       {
-        if ((a()) && (f1 < 0.0F))
+        if (this.isRefreshing)
         {
-          c((int)f1 / 2);
-          c(true);
+          ((PullToRefreshListener)localObject).onRefreshCompleted(this.mHeaderView, true);
+          localObject = this.mHandler;
+          ((Handler)localObject).sendMessageDelayed(((Handler)localObject).obtainMessage(0), 0L);
         }
-        for (;;)
-        {
-          i = b();
-          if (i <= this.c - this.jdField_b_of_type_Int) {
-            break label463;
-          }
-          a(4);
-          break;
-          if (i > -this.jdField_b_of_type_Int)
-          {
-            if (paramMotionEvent.getPointerCount() > 1)
-            {
-              c(true);
-            }
-            else if (Math.abs(f1) > 0.0F)
-            {
-              f2 = f1;
-              if (i - f1 < -this.jdField_b_of_type_Int) {
-                f2 = this.jdField_b_of_type_Int + i;
-              }
-              c((int)f2);
-              c(true);
-            }
-          }
-          else if (i < -this.jdField_b_of_type_Int)
-          {
-            if (paramMotionEvent.getPointerCount() > 1)
-            {
-              c(true);
-            }
-            else if (Math.abs(f1) > 0.0F)
-            {
-              f2 = f1;
-              if (i - f1 > -this.jdField_b_of_type_Int) {
-                f2 = this.jdField_b_of_type_Int + i;
-              }
-              c((int)f2);
-              c(true);
-            }
-          }
-          else {
-            c(false);
-          }
-        }
-        label463:
-        if (i > -this.jdField_b_of_type_Int)
-        {
-          a(5);
-        }
-        else if (i < -this.jdField_b_of_type_Int)
-        {
-          a(6);
-          continue;
-          a("dispatchTouchEvent: *******up****** mState=" + this.jdField_a_of_type_Int);
-          getParent().requestDisallowInterceptTouchEvent(false);
-          this.jdField_a_of_type_Float = -1.0F;
-          this.jdField_b_of_type_Float = -1.0F;
-          if (this.jdField_a_of_type_Int == 4) {
-            a(1);
-          } else if (this.jdField_a_of_type_Int == 5) {
-            a(0);
-          } else if (this.jdField_a_of_type_Int == 6) {
-            a(0);
-          } else if (b() != -this.jdField_b_of_type_Int) {
-            this.jdField_a_of_type_AndroidOsHandler.sendMessage(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3));
-          }
-        }
+        this.isRefreshing = false;
+        this.mHandler.removeMessages(2);
       }
     }
+    else if (!this.isRefreshing)
+    {
+      this.isRefreshing = true;
+      ((PullToRefreshListener)localObject).onViewCompleteVisableAndReleased(this.mHeaderView);
+    }
   }
+  
+  private void shieldedConflictTouchEvent(boolean paramBoolean)
+  {
+    clearContentViewClickEvent(paramBoolean);
+    getParent().requestDisallowInterceptTouchEvent(true);
+  }
+  
+  private void stopLoadingState(long paramLong)
+  {
+    if (this.isRefreshing)
+    {
+      this.pullToRefreshListener.onRefreshCompleted(this.mHeaderView, true);
+      Handler localHandler = this.mHandler;
+      localHandler.sendMessageDelayed(localHandler.obtainMessage(0), paramLong);
+      this.isRefreshing = false;
+      this.mHandler.removeMessages(2);
+    }
+  }
+  
+  protected void changeToState(int paramInt)
+  {
+    if ((this.mState == paramInt) && (paramInt != 5)) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("change to state:");
+    localStringBuilder.append(paramInt);
+    log(localStringBuilder.toString());
+    this.mState = paramInt;
+    paramInt = this.mState;
+    if (paramInt != 0)
+    {
+      if (paramInt == 1) {
+        moveHeaderTo(this.mHeaderVisibleHeight - this.mHeaderHeight, 200);
+      }
+    }
+    else
+    {
+      moveHeaderTo(-this.mHeaderHeight, 200);
+      this.mHandler.removeMessages(2);
+    }
+    notifyHeaderRefreshStateChange(this.mState);
+  }
+  
+  protected abstract void clearContentViewClickEvent(boolean paramBoolean);
+  
+  protected int configHeaderVisibleHeight()
+  {
+    return QQUIDelegate.a(getContext(), 60.0F);
+  }
+  
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    int i = paramMotionEvent.getAction() & 0xFF;
+    Object localObject;
+    if (i != 0)
+    {
+      if (i != 1) {
+        if (i != 2)
+        {
+          if (i != 3) {
+            break label696;
+          }
+        }
+        else
+        {
+          float f2 = this.lastTouchX - paramMotionEvent.getX();
+          float f1 = this.lastTouchY - paramMotionEvent.getY();
+          i = getHeaderCurPos();
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("dispatchTouchEvent: move getY=");
+          ((StringBuilder)localObject).append(paramMotionEvent.getY());
+          ((StringBuilder)localObject).append(",isScroll2Top()()=");
+          ((StringBuilder)localObject).append(isScroll2Top());
+          ((StringBuilder)localObject).append(",mHeaderHeight=");
+          ((StringBuilder)localObject).append(this.mHeaderHeight);
+          ((StringBuilder)localObject).append(",currentHeaderPos=");
+          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(",dy=");
+          ((StringBuilder)localObject).append(f1);
+          ((StringBuilder)localObject).append(",dx=");
+          ((StringBuilder)localObject).append(f2);
+          log(((StringBuilder)localObject).toString());
+          this.lastTouchX = paramMotionEvent.getX();
+          this.lastTouchY = paramMotionEvent.getY();
+          if (Math.abs(f1) / Math.abs(f2) < 5.0F)
+          {
+            getParent().requestDisallowInterceptTouchEvent(false);
+            break label696;
+          }
+          if ((isScroll2Top()) && (f1 < 0.0F))
+          {
+            moveHeaderSmoothlyBy((int)f1 / 2);
+            shieldedConflictTouchEvent(true);
+          }
+          else
+          {
+            j = this.mHeaderHeight;
+            float f3;
+            if (i > -j)
+            {
+              if (paramMotionEvent.getPointerCount() > 1)
+              {
+                shieldedConflictTouchEvent(true);
+              }
+              else if (Math.abs(f1) > 0.0F)
+              {
+                f3 = i;
+                j = this.mHeaderHeight;
+                f2 = f1;
+                if (f3 - f1 < -j) {
+                  f2 = i + j;
+                }
+                moveHeaderSmoothlyBy((int)f2);
+                shieldedConflictTouchEvent(true);
+              }
+            }
+            else if (i < -j)
+            {
+              if (paramMotionEvent.getPointerCount() > 1)
+              {
+                shieldedConflictTouchEvent(true);
+              }
+              else if (Math.abs(f1) > 0.0F)
+              {
+                f3 = i;
+                j = this.mHeaderHeight;
+                f2 = f1;
+                if (f3 - f1 > -j) {
+                  f2 = i + j;
+                }
+                moveHeaderSmoothlyBy((int)f2);
+                shieldedConflictTouchEvent(true);
+              }
+            }
+            else {
+              shieldedConflictTouchEvent(false);
+            }
+          }
+          i = getHeaderCurPos();
+          int j = this.mHeaderVisibleHeight;
+          int k = this.mHeaderHeight;
+          if (i > j - k)
+          {
+            changeToState(4);
+            break label696;
+          }
+          if (i > -k)
+          {
+            changeToState(5);
+            break label696;
+          }
+          if (i >= -k) {
+            break label696;
+          }
+          changeToState(6);
+          break label696;
+        }
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("dispatchTouchEvent: *******up****** mState=");
+      ((StringBuilder)localObject).append(this.mState);
+      log(((StringBuilder)localObject).toString());
+      getParent().requestDisallowInterceptTouchEvent(false);
+      this.lastTouchY = -1.0F;
+      this.lastTouchX = -1.0F;
+      i = this.mState;
+      if (i == 4)
+      {
+        changeToState(1);
+      }
+      else if (i == 5)
+      {
+        changeToState(0);
+      }
+      else if (i == 6)
+      {
+        changeToState(0);
+      }
+      else if (getHeaderCurPos() != -this.mHeaderHeight)
+      {
+        localObject = this.mHandler;
+        ((Handler)localObject).sendMessage(((Handler)localObject).obtainMessage(3));
+      }
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("dispatchTouchEvent: ------down------ getY=");
+      ((StringBuilder)localObject).append(paramMotionEvent.getY());
+      log(((StringBuilder)localObject).toString());
+      clearAnima();
+      this.lastTouchX = paramMotionEvent.getX();
+      this.lastTouchY = paramMotionEvent.getY();
+    }
+    label696:
+    return super.dispatchTouchEvent(paramMotionEvent);
+  }
+  
+  protected abstract View generateFooterView();
+  
+  protected abstract View generateHeaderView();
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 0)
     {
-    default: 
-      return true;
-    case 0: 
-      a(0);
-      return true;
-    case 3: 
-      a(-this.jdField_b_of_type_Int, 100);
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-      return true;
-    case 2: 
-      a(3);
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3) {
+            return true;
+          }
+          moveHeaderTo(-this.mHeaderHeight, 100);
+          this.mHandler.removeMessages(2);
+          return true;
+        }
+        changeToState(3);
+        return true;
+      }
+      i = paramMessage.arg1;
+      int j = paramMessage.arg2;
+      int m = getHeaderCurPos();
+      int k = this.mAnimSpeed;
+      m = (i - m) * k / j;
+      j -= k;
+      if ((j > 0) && ((m != 0) || (getHeaderCurPos() - i <= 0)))
+      {
+        moveHeaderBy(-m);
+        paramMessage = this.mHandler;
+        paramMessage.sendMessageDelayed(paramMessage.obtainMessage(1, i, j), this.mAnimSpeed);
+        return true;
+      }
+      moveHeaderBy(getHeaderCurPos() - i);
       return true;
     }
-    int i = paramMessage.arg1;
-    int k = paramMessage.arg2;
-    int j = (i - b()) * this.e / k;
-    k -= this.e;
-    if ((k <= 0) || ((j == 0) && (b() - i > 0)))
-    {
-      d(b() - i);
-      return true;
-    }
-    d(-j);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, i, k), this.e);
+    changeToState(0);
     return true;
   }
   
-  public void onDetachedFromWindow()
+  protected void initAnimBaseManager()
   {
-    super.onDetachedFromWindow();
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    setAnimType(new DefaultAnimManager(getContext()));
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected abstract boolean isScroll2Bottom();
+  
+  protected abstract boolean isScroll2Top();
+  
+  public void onDestroy()
   {
-    int i = b() + this.jdField_b_of_type_Int;
-    if ((i > 0) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
+    IAnimManager localIAnimManager = this.mAnimManager;
+    if (localIAnimManager != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, getWidth(), i);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      localIAnimManager.onDestroy();
+      this.mAnimManager = null;
+    }
+  }
+  
+  protected void onDetachedFromWindow()
+  {
+    super.onDetachedFromWindow();
+    this.mHandler.removeCallbacksAndMessages(null);
+  }
+  
+  protected void onDraw(Canvas paramCanvas)
+  {
+    int i = getHeaderCurPos() + this.mHeaderHeight;
+    if (i > 0)
+    {
+      Drawable localDrawable = this.mHeaderBgDrawable;
+      if (localDrawable != null)
+      {
+        localDrawable.setBounds(0, 0, getWidth(), i);
+        this.mHeaderBgDrawable.draw(paramCanvas);
+      }
     }
     super.onDraw(paramCanvas);
   }
   
+  public void pullRefreshCompleted(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      changeToState(2);
+      return;
+    }
+    changeToState(3);
+  }
+  
+  protected void rebound()
+  {
+    Handler localHandler;
+    if (isScroll2Top())
+    {
+      this.mHandler.removeMessages(3);
+      moveHeaderTo(this.mHeaderVisibleHeight / 2 - this.mHeaderHeight, 100);
+      localHandler = this.mHandler;
+      localHandler.sendMessageDelayed(localHandler.obtainMessage(3), 100L);
+      return;
+    }
+    if (isScroll2Bottom())
+    {
+      this.mHandler.removeMessages(3);
+      moveHeaderTo(-this.mHeaderHeight - this.mHeaderVisibleHeight, 100);
+      localHandler = this.mHandler;
+      localHandler.sendMessageDelayed(localHandler.obtainMessage(3), 100L);
+    }
+  }
+  
+  public void setAnimType(IAnimManager paramIAnimManager)
+  {
+    IAnimManager localIAnimManager = this.mAnimManager;
+    if ((localIAnimManager != null) && (localIAnimManager.isSkinAnimManager())) {
+      this.mAnimManager.onDestroy();
+    }
+    this.mAnimManager = paramIAnimManager;
+  }
+  
   public void setPullHeaderBgDrawable(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.mHeaderBgDrawable = paramDrawable;
+  }
+  
+  protected void setPullToRefreshListener(PullToRefreshListener paramPullToRefreshListener)
+  {
+    this.pullToRefreshListener = paramPullToRefreshListener;
+  }
+  
+  public void showRefreshResult(boolean paramBoolean, String paramString)
+  {
+    if ((this.mAnimManager != null) && (this.isRefreshing))
+    {
+      stopLoadingState(1500L);
+      this.mAnimManager.showRefreshResult(paramBoolean, paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.pull2refresh.AbsPullToRefreshView2
  * JD-Core Version:    0.7.0.1
  */

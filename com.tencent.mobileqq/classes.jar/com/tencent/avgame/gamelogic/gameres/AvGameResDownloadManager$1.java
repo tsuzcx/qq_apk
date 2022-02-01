@@ -1,9 +1,9 @@
 package com.tencent.avgame.gamelogic.gameres;
 
 import android.text.TextUtils;
-import com.tencent.avgame.util.AvGameConfBean;
-import com.tencent.mobileqq.config.business.AvGameConfProcessor;
-import com.tencent.mobileqq.config.business.AvGameConfProcessor.OnGetConfigListener;
+import com.tencent.avgame.config.AvGameConfProcessor.OnGetConfigListener;
+import com.tencent.avgame.config.AvGameConfigUtil;
+import com.tencent.avgame.config.data.AvGameConfBean;
 import com.tencent.qphone.base.util.QLog;
 
 class AvGameResDownloadManager$1
@@ -13,22 +13,33 @@ class AvGameResDownloadManager$1
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AvGameResDownloadManager", 2, "onGetConfigFinished result:" + paramInt);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onGetConfigFinished result:");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.i("AvGameResDownloadManager", 2, ((StringBuilder)localObject).toString());
     }
     if (paramInt == 0)
     {
-      String str1 = AvGameConfProcessor.a().a();
-      String str2 = AvGameConfProcessor.a().b();
-      if (QLog.isColorLevel()) {
-        QLog.i("AvGameResDownloadManager", 2, "onGetConfigFinished url:" + str1 + " md5:" + str2);
-      }
-      if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)))
+      localObject = AvGameConfigUtil.a().a();
+      String str = AvGameConfigUtil.a().b();
+      if (QLog.isColorLevel())
       {
-        AvGameResDownloadManager.a(this.a).b(110);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onGetConfigFinished url:");
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append(" md5:");
+        localStringBuilder.append(str);
+        QLog.i("AvGameResDownloadManager", 2, localStringBuilder.toString());
+      }
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(str)))
+      {
+        this.a.a(new AvGameResDownloadManager.ResInfo((String)localObject, str));
         return;
       }
-      this.a.a(new AvGameResDownloadManager.ResInfo(str1, str2));
+      AvGameResDownloadManager.a(this.a).b(110);
       return;
     }
     AvGameResDownloadManager.a(this.a).b(paramInt);
@@ -36,7 +47,7 @@ class AvGameResDownloadManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.gameres.AvGameResDownloadManager.1
  * JD-Core Version:    0.7.0.1
  */

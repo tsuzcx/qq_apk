@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class get_video_list_rsp
   extends JceStruct
@@ -50,25 +51,29 @@ public final class get_video_list_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret, 0);
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 1);
+    Object localObject = this.msg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.video_list != null) {
-      paramJceOutputStream.write(this.video_list, 2);
+    localObject = this.video_list;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
     paramJceOutputStream.write(this.has_more, 3);
-    if (this.attach_info_new != null) {
-      paramJceOutputStream.write(this.attach_info_new, 4);
+    localObject = this.attach_info_new;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.attach_info_old != null) {
-      paramJceOutputStream.write(this.attach_info_old, 5);
+    localObject = this.attach_info_old;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.old_video_hint_flag, 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_VIDEO.get_video_list_rsp
  * JD-Core Version:    0.7.0.1
  */

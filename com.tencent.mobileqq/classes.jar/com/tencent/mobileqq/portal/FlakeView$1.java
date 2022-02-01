@@ -18,27 +18,23 @@ class FlakeView$1
     int i = 0;
     for (;;)
     {
-      if (i < this.jdField_a_of_type_ArrayOfJavaLangString.length) {
-        try
-        {
-          arrayOfBitmap[i] = BitmapFactory.decodeFile(this.jdField_a_of_type_ArrayOfJavaLangString[i]);
-          i += 1;
-        }
-        catch (OutOfMemoryError localOutOfMemoryError)
-        {
-          for (;;)
-          {
-            localOutOfMemoryError.printStackTrace();
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            localException.printStackTrace();
-          }
-        }
+      String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      if (i >= arrayOfString.length) {
+        break;
       }
+      try
+      {
+        arrayOfBitmap[i] = BitmapFactory.decodeFile(arrayOfString[i]);
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        localOutOfMemoryError.printStackTrace();
+      }
+      i += 1;
     }
     i = 0;
     while (i < this.jdField_a_of_type_Int)
@@ -48,7 +44,7 @@ class FlakeView$1
       {
         localObject = Flake.a(this.this$0.getWidth(), (Bitmap)localObject, 3, this.this$0.getResources());
         ((Flake)localObject).a = (this.this$0.getWidth() / 2);
-        ((Flake)localObject).b = AIOUtils.a(205.0F, this.this$0.getResources());
+        ((Flake)localObject).b = AIOUtils.b(205.0F, this.this$0.getResources());
         this.this$0.a.add(localObject);
         localObject = this.this$0;
         ((FlakeView)localObject).e += 1;
@@ -60,7 +56,7 @@ class FlakeView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.portal.FlakeView.1
  * JD-Core Version:    0.7.0.1
  */

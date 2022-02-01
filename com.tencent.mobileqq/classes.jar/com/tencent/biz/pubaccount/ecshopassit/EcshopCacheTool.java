@@ -42,7 +42,11 @@ public class EcshopCacheTool
   
   static
   {
-    jdField_a_of_type_JavaLangString = BaseApplication.getContext().getFilesDir() + File.separator + "shop_assit_banner_json.txt";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseApplication.getContext().getFilesDir());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("shop_assit_banner_json.txt");
+    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
   }
   
   public EcshopCacheTool(AppInterface paramAppInterface, ShopWebViewFragment paramShopWebViewFragment)
@@ -67,12 +71,16 @@ public class EcshopCacheTool
   
   public String a(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_JavaUtilMap == null)) {
-      return "";
-    }
-    paramString = (Friends)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString != null) {
-      return paramString.getFriendNick();
+    if (!TextUtils.isEmpty(paramString))
+    {
+      Map localMap = this.jdField_a_of_type_JavaUtilMap;
+      if (localMap == null) {
+        return "";
+      }
+      paramString = (Friends)localMap.get(paramString);
+      if (paramString != null) {
+        return paramString.getFriendNick();
+      }
     }
     return "";
   }
@@ -81,17 +89,21 @@ public class EcshopCacheTool
   {
     this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment = null;
     this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopReportHandler = null;
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      this.jdField_a_of_type_JavaUtilMap.clear();
+    Map localMap = this.jdField_a_of_type_JavaUtilMap;
+    if (localMap != null) {
+      localMap.clear();
     }
-    if (this.b != null) {
-      this.b.clear();
+    localMap = this.b;
+    if (localMap != null) {
+      localMap.clear();
     }
-    if (this.c != null) {
-      this.c.clear();
+    localMap = this.c;
+    if (localMap != null) {
+      localMap.clear();
     }
-    if (this.d != null) {
-      this.d.clear();
+    localMap = this.d;
+    if (localMap != null) {
+      localMap.clear();
     }
   }
   
@@ -132,7 +144,12 @@ public class EcshopCacheTool
     {
       localSQQSHPClientReq.latitude.set(paramDouble2);
       localSQQSHPClientReq.longitude.set(paramDouble1);
-      QLog.i("EcshopCacheTool", 2, "lat:" + paramDouble2 + ",lon:" + paramDouble1);
+      paramList = new StringBuilder();
+      paramList.append("lat:");
+      paramList.append(paramDouble2);
+      paramList.append(",lon:");
+      paramList.append(paramDouble1);
+      QLog.i("EcshopCacheTool", 2, paramList.toString());
     }
     localNewIntent.putExtra("extra_cmd", "SQQShopFolderSvc.GetShopBindUin");
     localNewIntent.putExtra("extra_data", localSQQSHPClientReq.toByteArray());
@@ -143,10 +160,15 @@ public class EcshopCacheTool
   
   public boolean a(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_JavaUtilMap == null)) {
-      return false;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      Map localMap = this.jdField_a_of_type_JavaUtilMap;
+      if (localMap == null) {
+        return false;
+      }
+      return (Friends)localMap.get(paramString) != null;
     }
-    return (Friends)this.jdField_a_of_type_JavaUtilMap.get(paramString) != null;
+    return false;
   }
   
   public void b(Context paramContext, String paramString)
@@ -159,7 +181,7 @@ public class EcshopCacheTool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.EcshopCacheTool
  * JD-Core Version:    0.7.0.1
  */

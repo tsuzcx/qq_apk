@@ -19,7 +19,7 @@ public class TroopHomeworkSpecialMsg
 {
   public TroopHomeworkSpecialMsg(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131697428);
+    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131697447);
   }
   
   public Object a(int paramInt, MessageInfo paramMessageInfo, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
@@ -50,8 +50,8 @@ public class TroopHomeworkSpecialMsg
       {
         this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo = new MessageNavInfo();
         this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(this.c);
+        return;
       }
-      return;
     }
     catch (JSONException paramArrayOfByte)
     {
@@ -79,17 +79,14 @@ public class TroopHomeworkSpecialMsg
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
     return localJSONObject.toString().getBytes();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.troop_homework.model.TroopHomeworkSpecialMsg
  * JD-Core Version:    0.7.0.1
  */

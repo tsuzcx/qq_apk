@@ -10,19 +10,25 @@ class PublicAccountChatPie$17
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.Q = false;
-    this.a.Z = false;
-    this.a.e(this.a.jdField_m_of_type_AndroidViewView);
-    this.a.jdField_m_of_type_Int = 1;
+    paramAnimation = this.a;
+    paramAnimation.G = false;
+    paramAnimation.i = 0;
+    paramAnimation.H = false;
+    paramAnimation.Q = false;
+    paramAnimation.P = false;
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    paramAnimation = this.a;
+    paramAnimation.a(paramAnimation.g, PublicAccountChatPie.b(this.a));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.17
  * JD-Core Version:    0.7.0.1
  */

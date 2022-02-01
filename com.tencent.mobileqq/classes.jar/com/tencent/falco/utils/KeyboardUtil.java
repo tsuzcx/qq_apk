@@ -36,14 +36,15 @@ public final class KeyboardUtil
   
   public static int keyboardHeight(Activity paramActivity)
   {
-    if ((paramActivity == null) || (paramActivity.getWindow() == null)) {
-      return 0;
+    if ((paramActivity != null) && (paramActivity.getWindow() != null))
+    {
+      int i = UIUtil.getScreenMetrics(paramActivity).heightPixels;
+      View localView = paramActivity.getWindow().getDecorView();
+      Rect localRect = new Rect();
+      localView.getWindowVisibleDisplayFrame(localRect);
+      return i - UIUtil.getStatusBarHeight(paramActivity) - localRect.height();
     }
-    int i = UIUtil.getScreenMetrics(paramActivity).heightPixels;
-    View localView = paramActivity.getWindow().getDecorView();
-    Rect localRect = new Rect();
-    localView.getWindowVisibleDisplayFrame(localRect);
-    return i - UIUtil.getStatusBarHeight(paramActivity) - localRect.height();
+    return 0;
   }
   
   public static void showKeyboard(Context paramContext, IBinder paramIBinder)
@@ -63,7 +64,7 @@ public final class KeyboardUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.utils.KeyboardUtil
  * JD-Core Version:    0.7.0.1
  */

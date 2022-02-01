@@ -21,43 +21,40 @@ public final class SingleProducer<T>
   
   public void request(long paramLong)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("n >= 0 required");
-    }
-    if (paramLong == 0L) {
-      break label22;
-    }
-    for (;;)
+    if (paramLong >= 0L)
     {
-      label22:
-      return;
+      if (paramLong == 0L) {
+        return;
+      }
       if (compareAndSet(false, true))
       {
         Subscriber localSubscriber = this.child;
         Object localObject = this.value;
         if (localSubscriber.isUnsubscribed()) {
-          break;
+          return;
         }
         try
         {
           localSubscriber.onNext(localObject);
-          if (!localSubscriber.isUnsubscribed())
-          {
-            localSubscriber.onCompleted();
+          if (localSubscriber.isUnsubscribed()) {
             return;
           }
+          localSubscriber.onCompleted();
+          return;
         }
         catch (Throwable localThrowable)
         {
           Exceptions.throwOrReport(localThrowable, localSubscriber, localObject);
         }
       }
+      return;
     }
+    throw new IllegalArgumentException("n >= 0 required");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.producers.SingleProducer
  * JD-Core Version:    0.7.0.1
  */

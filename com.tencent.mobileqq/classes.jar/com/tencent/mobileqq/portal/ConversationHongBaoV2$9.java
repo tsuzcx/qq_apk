@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.portal;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.os.Handler;
 import android.widget.ImageView;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class ConversationHongBaoV2$9
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   ConversationHongBaoV2$9(ConversationHongBaoV2 paramConversationHongBaoV2) {}
   
@@ -24,7 +24,7 @@ class ConversationHongBaoV2$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.portal.ConversationHongBaoV2.9
  * JD-Core Version:    0.7.0.1
  */

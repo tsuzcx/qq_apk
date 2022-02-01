@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/ohr" android:paddingTop="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerHorizontal="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/ohq" android:paddingLeft="21.0dip" android:paddingRight="21.0dip" android:layout_width="58.0dip" android:layout_height="28.0dip" android:src="@drawable/iaq" android:scaleType="center" />
-    <TextView android:textSize="20.0sp" android:textStyle="bold" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/ohj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:singleLine="true" android:layout_alignParentRight="true" />
-    <TextView android:textSize="@dimen/ayo" android:textStyle="bold" android:textColor="@color/al3" android:id="@id/och" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_below="@id/ohj" android:layout_alignRight="@id/ohj" />
+    <com.tencent.biz.pubaccount.weishi_new.view.WSRoundedImageView android:layout_gravity="center_horizontal" android:id="@id/ok2" android:layout_width="43.0dip" android:layout_height="43.0dip" android:layout_marginLeft="10.5dip" android:layout_marginRight="10.5dip" android:layout_marginBottom="21.0dip" android:scaleType="centerCrop" />
+    <com.tencent.mobileqq.dinifly.DiniFlyAnimationView android:layout_gravity="center_horizontal" android:id="@id/nbz" android:layout_width="27.0dip" android:layout_height="18.0dip" android:layout_marginLeft="8.0dip" android:layout_marginTop="34.0dip" android:scaleType="fitXY" android:layout_alignLeft="@id/ok2" />
 </RelativeLayout>

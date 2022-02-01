@@ -19,27 +19,28 @@ public class UpdateLoginAction
     String str2 = ((Intent)localObject).getStringExtra("StrUpgradeDesc");
     ((Intent)localObject).getStringExtra("StrUrl");
     localObject = DialogUtil.a(paramActivity, 230).setTitle(str1).setMessage(str2);
-    ((QQCustomDialog)localObject).setPositiveButton(HardCodeUtil.a(2131709251), new UpdateLoginAction.1(this, paramActivity));
-    ((QQCustomDialog)localObject).setPositiveButtonContentDescription(paramActivity.getString(2131720402));
-    ((QQCustomDialog)localObject).setNegativeButton(HardCodeUtil.a(2131710841), new UpdateLoginAction.2(this));
+    ((QQCustomDialog)localObject).setPositiveButton(HardCodeUtil.a(2131709259), new UpdateLoginAction.1(this, paramActivity));
+    ((QQCustomDialog)localObject).setPositiveButtonContentDescription(paramActivity.getString(2131720141));
+    ((QQCustomDialog)localObject).setNegativeButton(HardCodeUtil.a(2131710818), new UpdateLoginAction.2(this));
     ((QQCustomDialog)localObject).show();
   }
   
   public void a(QBaseActivity paramQBaseActivity, Bundle paramBundle)
   {
     paramBundle = paramQBaseActivity.getIntent();
-    if (paramBundle == null) {
+    if (paramBundle == null)
+    {
       QLog.e("UpdateLoginAction", 1, "onLoginViewCreate intent is null");
-    }
-    while (!paramBundle.getBooleanExtra("reason_for_upgrade", false)) {
       return;
     }
-    a(paramQBaseActivity);
+    if (paramBundle.getBooleanExtra("reason_for_upgrade", false)) {
+      a(paramQBaseActivity);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.UpdateLoginAction
  * JD-Core Version:    0.7.0.1
  */

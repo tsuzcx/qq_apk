@@ -12,16 +12,20 @@ public class ArkCollector
   
   public void a()
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
+    Object localObject = this.a.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      ArkView localArkView = (ArkView)localIterator.next();
+      ArkView localArkView = (ArkView)((Iterator)localObject).next();
       if (localArkView != null) {
         localArkView.onDestroy();
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkCollector", 2, this.a.size() + " ArkViews onDestroy");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.a.size());
+      ((StringBuilder)localObject).append(" ArkViews onDestroy");
+      QLog.d("ArkCollector", 2, ((StringBuilder)localObject).toString());
     }
     this.a.clear();
   }
@@ -33,37 +37,45 @@ public class ArkCollector
   
   public void b()
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
+    Object localObject = this.a.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      ArkView localArkView = (ArkView)localIterator.next();
+      ArkView localArkView = (ArkView)((Iterator)localObject).next();
       if (localArkView != null) {
         localArkView.onPause();
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkCollector", 2, this.a.size() + " ArkViews onPause");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.a.size());
+      ((StringBuilder)localObject).append(" ArkViews onPause");
+      QLog.d("ArkCollector", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   public void c()
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
+    Object localObject = this.a.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      ArkView localArkView = (ArkView)localIterator.next();
+      ArkView localArkView = (ArkView)((Iterator)localObject).next();
       if (localArkView != null) {
         localArkView.onResume();
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkCollector", 2, this.a.size() + " ArkViews onResume");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.a.size());
+      ((StringBuilder)localObject).append(" ArkViews onResume");
+      QLog.d("ArkCollector", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.qqdaily.ArkCollector
  * JD-Core Version:    0.7.0.1
  */

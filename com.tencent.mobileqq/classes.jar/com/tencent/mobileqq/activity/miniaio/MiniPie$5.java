@@ -4,7 +4,8 @@ import android.app.Activity;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.emoticonview.IEmoticonMainPanel;
 import com.tencent.mobileqq.utils.SoftKeyboardHeight;
 import com.tencent.qphone.base.util.QLog;
 
@@ -15,43 +16,53 @@ class MiniPie$5
   
   public void run()
   {
-    int j = 300;
-    int k = this.this$0.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.getHeight();
-    int i = k;
-    if (k <= 0)
+    int j = this.this$0.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel.getView().getHeight();
+    int i = j;
+    if (j <= 0)
     {
       QLog.e(this.this$0.jdField_a_of_type_JavaLangString, 1, "emoHeight <=0 reset to 196dp");
       i = SoftKeyboardHeight.a(0);
     }
-    k = MiniPie.a(this.this$0, this.this$0.jdField_a_of_type_AndroidViewViewGroup);
-    int m = this.this$0.jdField_a_of_type_AndroidViewViewGroup.getHeight();
-    if (QLog.isColorLevel()) {
-      QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 2, "dialogHeight" + m + " emoh " + i + " dY " + k);
-    }
-    if (m + k + i > MiniChatConstants.SCREEN_HEIGHT)
+    Object localObject = this.this$0;
+    j = MiniPie.a((MiniPie)localObject, ((MiniPie)localObject).jdField_a_of_type_AndroidViewViewGroup);
+    int k = this.this$0.jdField_a_of_type_AndroidViewViewGroup.getHeight();
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      i = MiniChatConstants.SCREEN_HEIGHT - k - i - 2;
-      if (i >= 300) {
-        break label231;
-      }
-      i = j;
+      localObject = this.this$0.jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("dialogHeight");
+      localStringBuilder.append(k);
+      localStringBuilder.append(" emoh ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" dY ");
+      localStringBuilder.append(j);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
-    label231:
-    for (;;)
+    if (k + j + i > MiniChatConstants.SCREEN_HEIGHT)
     {
-      WindowManager.LayoutParams localLayoutParams = ((Activity)this.this$0.jdField_a_of_type_AndroidContentContext).getWindow().getAttributes();
-      localLayoutParams.height = i;
-      ((Activity)this.this$0.jdField_a_of_type_AndroidContentContext).getWindow().setAttributes(localLayoutParams);
-      if (QLog.isColorLevel()) {
-        QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 2, "new dialogHeight" + i);
+      i = MiniChatConstants.SCREEN_HEIGHT - j - i - 2;
+      j = 300;
+      if (i < 300) {
+        i = j;
       }
-      return;
+      localObject = ((Activity)this.this$0.jdField_a_of_type_AndroidContentContext).getWindow().getAttributes();
+      ((WindowManager.LayoutParams)localObject).height = i;
+      ((Activity)this.this$0.jdField_a_of_type_AndroidContentContext).getWindow().setAttributes((WindowManager.LayoutParams)localObject);
+      if (QLog.isColorLevel())
+      {
+        localObject = this.this$0.jdField_a_of_type_JavaLangString;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("new dialogHeight");
+        localStringBuilder.append(i);
+        QLog.d((String)localObject, 2, localStringBuilder.toString());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniPie.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msgbackup.controller;
 
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msgbackup.tempapi.IMsgBackupTempApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.util.List;
 
 class MsgBackupManager$5
@@ -11,7 +11,7 @@ class MsgBackupManager$5
   
   public void run()
   {
-    List localList = MsgBackupManager.a(this.this$0).getMessageFacade().b();
+    List localList = ((IMsgBackupTempApi)QRoute.api(IMsgBackupTempApi.class)).getAllMsgTableData(MsgBackupManager.a(this.this$0));
     if (MsgBackupManager.a(this.this$0) != null) {
       MsgBackupManager.a(this.this$0).a(localList);
     }
@@ -19,7 +19,7 @@ class MsgBackupManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.controller.MsgBackupManager.5
  * JD-Core Version:    0.7.0.1
  */

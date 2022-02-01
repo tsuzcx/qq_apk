@@ -31,9 +31,10 @@ public class ViewPagerPageChangeListener
   
   private void onScrollStateChangeToIdle()
   {
-    if ((this.mPager != null) && (this.mCurrPageIndex != this.mLastPageIndex))
+    Object localObject = this.mPager;
+    if ((localObject != null) && (this.mCurrPageIndex != this.mLastPageIndex))
     {
-      Object localObject = this.mPager.getCallBackPromise();
+      localObject = ((HippyViewPager)localObject).getCallBackPromise();
       if (localObject != null)
       {
         HippyMap localHippyMap = new HippyMap();
@@ -52,22 +53,26 @@ public class ViewPagerPageChangeListener
   public void onPageScrollStateChanged(int paramInt1, int paramInt2)
   {
     String str;
-    switch (paramInt2)
+    if (paramInt2 != 0)
     {
-    default: 
-      throw new IllegalStateException("Unsupported pageScrollState");
-    case 0: 
-      str = "idle";
+      if (paramInt2 != 1)
+      {
+        if (paramInt2 == 2) {
+          str = "settling";
+        } else {
+          throw new IllegalStateException("Unsupported pageScrollState");
+        }
+      }
+      else {
+        str = "dragging";
+      }
+    }
+    else
+    {
       onScrollStateChangeToIdle();
+      str = "idle";
     }
-    for (;;)
-    {
-      this.mPageScrollStateChangeEmitter.send(str);
-      return;
-      str = "dragging";
-      continue;
-      str = "settling";
-    }
+    this.mPageScrollStateChangeEmitter.send(str);
   }
   
   public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
@@ -79,18 +84,19 @@ public class ViewPagerPageChangeListener
   {
     this.mCurrPageIndex = paramInt;
     this.mPageSelectedEmitter.send(paramInt);
-    if (this.mPager != null)
+    Object localObject = this.mPager;
+    if (localObject != null)
     {
-      View localView = this.mPager.getViewFromAdapter(this.mCurrPageIndex);
-      new HippyPageItemExposureEvent("onWillAppear").send(localView, this.mCurrPageIndex);
-      localView = this.mPager.getViewFromAdapter(this.mLastPageIndex);
-      new HippyPageItemExposureEvent("onWillDisAppear").send(localView, this.mLastPageIndex);
+      localObject = ((HippyViewPager)localObject).getViewFromAdapter(this.mCurrPageIndex);
+      new HippyPageItemExposureEvent("onWillAppear").send((View)localObject, this.mCurrPageIndex);
+      localObject = this.mPager.getViewFromAdapter(this.mLastPageIndex);
+      new HippyPageItemExposureEvent("onWillDisAppear").send((View)localObject, this.mLastPageIndex);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.viewpager.ViewPagerPageChangeListener
  * JD-Core Version:    0.7.0.1
  */

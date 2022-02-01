@@ -3,11 +3,10 @@ package com.tencent.mobileqq.minigame.splash;
 import android.text.TextUtils;
 import com.tencent.biz.common.util.ZipUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.transfile.INetEngineListener;
 import com.tencent.mobileqq.transfile.NetReq;
 import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import com.tencent.mobileqq.transfile.predownload.IPreDownloadController;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -33,7 +32,8 @@ public class SplashMiniGameDownloadManager$DownLoadNetEngine
   {
     try
     {
-      if (paramNetResp.mResult == 0)
+      int i = paramNetResp.mResult;
+      if (i == 0)
       {
         QLog.i("SplashMiniGameDownloadMgr", 1, "ResFile has download!");
         if (!TextUtils.isEmpty(this.resPath))
@@ -42,16 +42,23 @@ public class SplashMiniGameDownloadManager$DownLoadNetEngine
           if (paramNetResp.exists())
           {
             long l = paramNetResp.length();
-            PreDownloadController localPreDownloadController = (PreDownloadController)this.app.getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2);
-            if (localPreDownloadController.isEnable())
+            Object localObject = (IPreDownloadController)this.app.getRuntimeService(IPreDownloadController.class);
+            if (((IPreDownloadController)localObject).isEnable())
             {
               QLog.i("SplashMiniGameDownloadMgr", 1, "preDownloadSuccess");
-              localPreDownloadController.preDownloadSuccess(this.downloadurl, l);
+              ((IPreDownloadController)localObject).preDownloadSuccess(this.downloadurl, l);
             }
             if (this.type == 0)
             {
-              ZipUtils.unZipFile(paramNetResp, paramNetResp.getParent() + File.separator);
-              this.resPath = (paramNetResp.getParent() + File.separator + "splash.png");
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append(paramNetResp.getParent());
+              ((StringBuilder)localObject).append(File.separator);
+              ZipUtils.unZipFile(paramNetResp, ((StringBuilder)localObject).toString());
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append(paramNetResp.getParent());
+              ((StringBuilder)localObject).append(File.separator);
+              ((StringBuilder)localObject).append("splash.png");
+              this.resPath = ((StringBuilder)localObject).toString();
             }
             SplashMiniGameUtil.downloadSuccess(this.appid, this.type, this.resPath);
             return;
@@ -72,7 +79,7 @@ public class SplashMiniGameDownloadManager$DownLoadNetEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.splash.SplashMiniGameDownloadManager.DownLoadNetEngine
  * JD-Core Version:    0.7.0.1
  */

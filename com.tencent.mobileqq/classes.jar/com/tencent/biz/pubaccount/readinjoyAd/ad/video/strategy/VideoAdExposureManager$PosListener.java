@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.video.strategy;
 
 import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.model.FixPosArticleInterface.FixPosArticleAsyncListener;
+import com.tencent.mobileqq.kandian.biz.feeds.api.FixPosArticleInterface.FixPosArticleAsyncListener;
 import java.lang.ref.WeakReference;
 
 final class VideoAdExposureManager$PosListener
@@ -16,18 +16,19 @@ final class VideoAdExposureManager$PosListener
   
   public void a(int paramInt)
   {
-    if (this.a != null)
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      VideoAdExposureManager localVideoAdExposureManager = (VideoAdExposureManager)this.a.get();
-      if ((localVideoAdExposureManager != null) && (VideoAdExposureManager.a(localVideoAdExposureManager) != null)) {
-        VideoAdExposureManager.a(localVideoAdExposureManager).post(new VideoAdExposureManager.PosListener.1(this, localVideoAdExposureManager, paramInt));
+      localObject = (VideoAdExposureManager)((WeakReference)localObject).get();
+      if ((localObject != null) && (VideoAdExposureManager.a((VideoAdExposureManager)localObject) != null)) {
+        VideoAdExposureManager.a((VideoAdExposureManager)localObject).post(new VideoAdExposureManager.PosListener.1(this, (VideoAdExposureManager)localObject, paramInt));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.video.strategy.VideoAdExposureManager.PosListener
  * JD-Core Version:    0.7.0.1
  */

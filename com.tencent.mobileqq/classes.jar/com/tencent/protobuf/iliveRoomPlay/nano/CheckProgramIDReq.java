@@ -20,14 +20,15 @@ public final class CheckProgramIDReq
   
   public static CheckProgramIDReq[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new CheckProgramIDReq[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new CheckProgramIDReq[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static CheckProgramIDReq parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -48,12 +49,13 @@ public final class CheckProgramIDReq
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    long l = this.uid;
     int i = j;
-    if (this.uid != 0L) {
-      i = j + CodedOutputByteBufferNano.computeUInt64Size(1, this.uid);
+    if (l != 0L) {
+      i = j + CodedOutputByteBufferNano.computeUInt64Size(1, l);
     }
     j = i;
     if (!this.programId.equals("")) {
@@ -67,26 +69,33 @@ public final class CheckProgramIDReq
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.uid = paramCodedInputByteBufferNano.readUInt64();
+      if (i == 0) {
         break;
       }
-      this.programId = paramCodedInputByteBufferNano.readString();
+      if (i != 8)
+      {
+        if (i != 18)
+        {
+          if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+            return this;
+          }
+        }
+        else {
+          this.programId = paramCodedInputByteBufferNano.readString();
+        }
+      }
+      else {
+        this.uid = paramCodedInputByteBufferNano.readUInt64();
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.uid != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(1, this.uid);
+    long l = this.uid;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(1, l);
     }
     if (!this.programId.equals("")) {
       paramCodedOutputByteBufferNano.writeString(2, this.programId);
@@ -96,7 +105,7 @@ public final class CheckProgramIDReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.iliveRoomPlay.nano.CheckProgramIDReq
  * JD-Core Version:    0.7.0.1
  */

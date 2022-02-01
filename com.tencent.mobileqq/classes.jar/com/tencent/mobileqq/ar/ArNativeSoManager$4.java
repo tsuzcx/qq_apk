@@ -28,22 +28,30 @@ class ArNativeSoManager$4
   
   public void a(boolean paramBoolean, ARPreSoResourceDownload.DownloadInfo paramDownloadInfo)
   {
-    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes onARResourceDownloadComplete. result = " + paramBoolean + ", name = " + this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a + ", filename = " + paramDownloadInfo.c + ", url = " + paramDownloadInfo.a);
-    if (paramBoolean) {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("downloadSoRes onARResourceDownloadComplete. result = ");
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append(", name = ");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    ((StringBuilder)localObject).append(", filename = ");
+    ((StringBuilder)localObject).append(paramDownloadInfo.c);
+    ((StringBuilder)localObject).append(", url = ");
+    ((StringBuilder)localObject).append(paramDownloadInfo.a);
+    QLog.i("AREngine_ArNativeSoManager", 1, ((StringBuilder)localObject).toString());
+    if (paramBoolean)
+    {
       if (!ArNativeSoManager.a(this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager, paramDownloadInfo.c, paramDownloadInfo.b))
       {
         ArNativeSoManager.a(this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager, paramDownloadInfo.c);
         QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes failed. checkFileValid failed.");
+        return;
       }
+      this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager.a(paramDownloadInfo.d, paramDownloadInfo.c, paramDownloadInfo.b);
     }
-    ARPreSoResourceDownload.ARResourceDownloadCallback localARResourceDownloadCallback;
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager.a(paramDownloadInfo.d, paramDownloadInfo.c, paramDownloadInfo.b) == 0) {}
-      localARResourceDownloadCallback = ArNativeSoManager.a(this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
-    } while (localARResourceDownloadCallback == null);
-    localARResourceDownloadCallback.a(paramBoolean, paramDownloadInfo);
+    localObject = ArNativeSoManager.a(this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    if (localObject != null) {
+      ((ARPreSoResourceDownload.ARResourceDownloadCallback)localObject).a(paramBoolean, paramDownloadInfo);
+    }
   }
   
   public void b()
@@ -56,7 +64,7 @@ class ArNativeSoManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArNativeSoManager.4
  * JD-Core Version:    0.7.0.1
  */

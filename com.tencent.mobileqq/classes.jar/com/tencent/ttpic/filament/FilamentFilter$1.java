@@ -9,12 +9,13 @@ class FilamentFilter$1
   
   public void run()
   {
-    FilamentFilter.access$002(this.this$0, new SurfaceTexture(FilamentFilter.access$100(this.this$0)[0]));
+    FilamentFilter localFilamentFilter = this.this$0;
+    FilamentFilter.access$002(localFilamentFilter, new SurfaceTexture(FilamentFilter.access$100(localFilamentFilter)[0]));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filament.FilamentFilter.1
  * JD-Core Version:    0.7.0.1
  */

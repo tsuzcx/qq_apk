@@ -17,10 +17,14 @@ public class DTEventDynamicParams
   
   private void addDTParams(Map<String, Object> paramMap)
   {
-    if ((this.mDtParamProvider == null) || (paramMap == null)) {
-      return;
+    IDTParamProvider localIDTParamProvider = this.mDtParamProvider;
+    if (localIDTParamProvider != null)
+    {
+      if (paramMap == null) {
+        return;
+      }
+      paramMap.putAll(DTCommonParams.getCommParams(localIDTParamProvider));
     }
-    paramMap.putAll(DTCommonParams.getCommParams(this.mDtParamProvider));
   }
   
   private void checkParams(@NonNull Map<String, Object> paramMap)
@@ -49,8 +53,9 @@ public class DTEventDynamicParams
   {
     Map localMap = (Map)this.mEventParams.get();
     localMap.clear();
-    if (this.mDtParamProvider != null) {
-      this.mDtParamProvider.setEventDynamicParams(paramString, localMap);
+    IDTParamProvider localIDTParamProvider = this.mDtParamProvider;
+    if (localIDTParamProvider != null) {
+      localIDTParamProvider.setEventDynamicParams(paramString, localMap);
     }
     checkParams(localMap);
     if (paramMap != null) {
@@ -63,8 +68,9 @@ public class DTEventDynamicParams
   {
     Map localMap = (Map)this.mNonRealTimeParams.get();
     localMap.clear();
-    if (this.mDtParamProvider != null) {
-      this.mDtParamProvider.setNonRealtimePublicDynamicParams(localMap);
+    IDTParamProvider localIDTParamProvider = this.mDtParamProvider;
+    if (localIDTParamProvider != null) {
+      localIDTParamProvider.setNonRealtimePublicDynamicParams(localMap);
     }
     checkParams(localMap);
     if (paramMap != null) {
@@ -78,8 +84,9 @@ public class DTEventDynamicParams
   {
     Map localMap = (Map)this.mRealTimeParams.get();
     localMap.clear();
-    if (this.mDtParamProvider != null) {
-      this.mDtParamProvider.setRealtimePublicDynamicParams(localMap);
+    IDTParamProvider localIDTParamProvider = this.mDtParamProvider;
+    if (localIDTParamProvider != null) {
+      localIDTParamProvider.setRealtimePublicDynamicParams(localMap);
     }
     checkParams(localMap);
     if (paramMap != null) {
@@ -90,7 +97,7 @@ public class DTEventDynamicParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.reportchannel.DTEventDynamicParams
  * JD-Core Version:    0.7.0.1
  */

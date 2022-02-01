@@ -37,15 +37,15 @@ public class CommonTitleBar
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131559776, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368719));
+    LayoutInflater.from(paramContext).inflate(2131559653, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368451));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new CommonTitleBar.1(this));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380799));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380062));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new CommonTitleBar.2(this));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380832));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368720));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380095));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368452));
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new CommonTitleBar.3(this));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131373554));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131373132));
   }
   
   public void a()
@@ -84,7 +84,7 @@ public class CommonTitleBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appstore.component.CommonTitleBar
  * JD-Core Version:    0.7.0.1
  */

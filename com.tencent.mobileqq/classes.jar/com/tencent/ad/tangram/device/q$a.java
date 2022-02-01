@@ -1,15 +1,15 @@
 package com.tencent.ad.tangram.device;
 
 import android.text.TextUtils;
-import com.tencent.ad.tangram.protocol.gdt_settings.Settings.SettingsForUUID;
+import com.tencent.ad.tangram.protocol.gdt_settings.Settings.SettingsForDeviceInfo.UUID;
 
 public final class q$a
 {
-  private gdt_settings.Settings.SettingsForUUID settings;
+  private gdt_settings.Settings.SettingsForDeviceInfo.UUID settings;
   
-  public q$a(gdt_settings.Settings.SettingsForUUID paramSettingsForUUID)
+  public q$a(gdt_settings.Settings.SettingsForDeviceInfo.UUID paramUUID)
   {
-    this.settings = paramSettingsForUUID;
+    this.settings = paramUUID;
   }
   
   public String getValue()
@@ -30,7 +30,8 @@ public final class q$a
   
   public boolean isValid()
   {
-    return (this.settings != null) && (this.settings.version > 0) && (!TextUtils.isEmpty(this.settings.salt)) && (this.settings.maxLength > 0);
+    gdt_settings.Settings.SettingsForDeviceInfo.UUID localUUID = this.settings;
+    return (localUUID != null) && (localUUID.version > 0) && (!TextUtils.isEmpty(this.settings.salt)) && (this.settings.maxLength > 0);
   }
 }
 

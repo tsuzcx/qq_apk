@@ -26,44 +26,49 @@ class AuthDevOpenUgActivity$1
       if (paramWUserSigInfo != null) {
         paramWUserSigInfo.refreshDA2(this.a.app.getCurrentAccountUin(), null);
       }
-      EquipmentLockImpl.a().a(this.a.app, this.a, this.a.app.getCurrentAccountUin(), true);
-      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131692061), 0).b(this.a.getTitleBarHeight());
+      paramWUserSigInfo = EquipmentLockImpl.a();
+      paramErrMsg = this.a.app;
+      AuthDevOpenUgActivity localAuthDevOpenUgActivity = this.a;
+      paramWUserSigInfo.a(paramErrMsg, localAuthDevOpenUgActivity, localAuthDevOpenUgActivity.app.getCurrentAccountUin(), true);
+      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131691980), 0).b(this.a.getTitleBarHeight());
       paramWUserSigInfo = this.a.app.getHandler(LoginInfoActivity.class);
       if (paramWUserSigInfo != null) {
         paramWUserSigInfo.obtainMessage(20140331, 1, 0).sendToTarget();
       }
-      AuthDevOpenUgActivity.a(this.a, true, 0);
+      AuthDevOpenUgActivity.access$100(this.a, true, 0);
       paramErrMsg = new Intent();
       paramErrMsg.putExtra("auth_dev_open", true);
-      if (AuthDevOpenUgActivity.a(this.a) != null) {}
-      for (paramWUserSigInfo = AuthDevOpenUgActivity.a(this.a).Mobile;; paramWUserSigInfo = "")
-      {
-        paramErrMsg.putExtra("phone_num", paramWUserSigInfo);
-        this.a.a(-1, paramErrMsg);
-        return;
+      if (AuthDevOpenUgActivity.access$200(this.a) != null) {
+        paramWUserSigInfo = AuthDevOpenUgActivity.access$200(this.a).Mobile;
+      } else {
+        paramWUserSigInfo = "";
       }
+      paramErrMsg.putExtra("phone_num", paramWUserSigInfo);
+      this.a.finishSelf(-1, paramErrMsg);
+      return;
     }
     if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
     {
       QQToast.a(this.a.getApplicationContext(), 1, paramErrMsg.getMessage(), 0).b(this.a.getTitleBarHeight());
       return;
     }
-    QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131692103), 0).b(this.a.getTitleBarHeight());
+    QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131692022), 0).b(this.a.getTitleBarHeight());
   }
   
   public void onCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    if ((paramInt != 0) || (paramDevlockInfo == null))
+    if ((paramInt == 0) && (paramDevlockInfo != null))
     {
-      QQToast.a(this.a, this.a.getString(2131692112), 0).b(this.a.getTitleBarHeight());
+      AuthDevOpenUgActivity.access$000(this.a, paramDevlockInfo);
       return;
     }
-    AuthDevOpenUgActivity.a(this.a, paramDevlockInfo);
+    paramWUserSigInfo = this.a;
+    QQToast.a(paramWUserSigInfo, paramWUserSigInfo.getString(2131692031), 0).b(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AuthDevOpenUgActivity.1
  * JD-Core Version:    0.7.0.1
  */

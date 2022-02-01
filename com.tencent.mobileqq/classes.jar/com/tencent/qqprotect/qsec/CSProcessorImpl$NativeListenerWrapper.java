@@ -12,14 +12,15 @@ class CSProcessorImpl$NativeListenerWrapper
   
   public void a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    if (this.jdField_a_of_type_Long != 0L) {
-      QSecFramework.a(7L, this.jdField_a_of_type_Long, paramInt, 0L, paramArrayOfByte1, paramArrayOfByte2, null, null);
+    long l = this.jdField_a_of_type_Long;
+    if (l != 0L) {
+      QSecFramework.a(7L, l, paramInt, 0L, paramArrayOfByte1, paramArrayOfByte2, null, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.CSProcessorImpl.NativeListenerWrapper
  * JD-Core Version:    0.7.0.1
  */

@@ -30,7 +30,7 @@ public class StoryPickerListAdapter
   
   private View a(ViewGroup paramViewGroup)
   {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561930, paramViewGroup, false);
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561777, paramViewGroup, false);
     paramViewGroup.setTag(new StoryPickerListAdapter.DayItemViewHolder(this, paramViewGroup, this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView$OnHorizontalScrollListener));
     return paramViewGroup;
   }
@@ -43,8 +43,10 @@ public class StoryPickerListAdapter
   
   public VideoCollectionItem a()
   {
-    if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-      return (VideoCollectionItem)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+    if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+    {
+      ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+      return (VideoCollectionItem)localArrayList.get(localArrayList.size() - 1);
     }
     return null;
   }
@@ -113,20 +115,18 @@ public class StoryPickerListAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    View localView = paramView;
     if (paramView == null) {
-      paramView = a(paramViewGroup);
+      localView = a(paramViewGroup);
     }
-    for (;;)
-    {
-      a(paramInt, paramView);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-    }
+    a(paramInt, localView);
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.widget.StoryPickerListAdapter
  * JD-Core Version:    0.7.0.1
  */

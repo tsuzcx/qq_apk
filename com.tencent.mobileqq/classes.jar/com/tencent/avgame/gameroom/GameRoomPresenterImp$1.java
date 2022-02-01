@@ -15,17 +15,22 @@ class GameRoomPresenterImp$1
   public void a()
   {
     int i = MSFNetInfoMonitor.b();
-    if (GameEngine.a().a()) {
+    if (GameEngine.a().a())
+    {
       this.a.a.sendEmptyMessageDelayed(8, 0L);
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("GameRoomPresenterImp", 2, "onEnterRoomSucess, curNetType[" + i + "]");
-      }
-      return;
       this.a.a.sendEmptyMessageDelayed(8, 3000L);
       this.a.a.sendEmptyMessageDelayed(9, 6000L);
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onEnterRoomSucess, curNetType[");
+      localStringBuilder.append(i);
+      localStringBuilder.append("]");
+      QLog.i("GameRoomPresenterImp", 2, localStringBuilder.toString());
     }
   }
   
@@ -41,8 +46,16 @@ class GameRoomPresenterImp$1
   
   public void a(boolean paramBoolean, long paramLong, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("GameRoomPresenterImp", 1, "onMemberVideoInOrOut userUin:" + paramLong + "  videoIn:" + paramBoolean + "  videoSrcType:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onMemberVideoInOrOut userUin:");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append("  videoIn:");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("  videoSrcType:");
+      localStringBuilder.append(paramInt);
+      QLog.i("GameRoomPresenterImp", 1, localStringBuilder.toString());
     }
     this.a.a.sendEmptyMessage(2);
     GameRoomPresenterImp.a(this.a);
@@ -56,7 +69,7 @@ class GameRoomPresenterImp$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.GameRoomPresenterImp.1
  * JD-Core Version:    0.7.0.1
  */

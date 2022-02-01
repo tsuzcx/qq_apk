@@ -66,22 +66,19 @@ public final class Cea608Decoder
   public Cea608Decoder(String paramString, int paramInt)
   {
     int i;
-    if ("application/x-mp4-cea-608".equals(paramString))
-    {
+    if ("application/x-mp4-cea-608".equals(paramString)) {
       i = 2;
-      this.packetLength = i;
-      switch (paramInt)
-      {
-      }
-    }
-    for (this.selectedField = 1;; this.selectedField = 2)
-    {
-      setCaptionMode(0);
-      resetCueBuilders();
-      return;
+    } else {
       i = 3;
-      break;
     }
+    this.packetLength = i;
+    if ((paramInt != 3) && (paramInt != 4)) {
+      this.selectedField = 1;
+    } else {
+      this.selectedField = 2;
+    }
+    setCaptionMode(0);
+    resetCueBuilders();
   }
   
   private static char getChar(byte paramByte)
@@ -133,32 +130,39 @@ public final class Cea608Decoder
       this.repeatableControlCc1 = paramByte1;
       this.repeatableControlCc2 = paramByte2;
     }
-    if (isMidrowCtrlCode(paramByte1, paramByte2)) {
-      handleMidrowCtrl(paramByte2);
-    }
-    for (;;)
+    if (isMidrowCtrlCode(paramByte1, paramByte2))
     {
+      handleMidrowCtrl(paramByte2);
       return bool;
-      if (isPreambleAddressCode(paramByte1, paramByte2)) {
-        handlePreambleAddressCode(paramByte1, paramByte2);
-      } else if (isTabCtrlCode(paramByte1, paramByte2)) {
-        this.currentCueBuilder.setTab(paramByte2 - 32);
-      } else if (isMiscCode(paramByte1, paramByte2)) {
-        handleMiscCode(paramByte2);
-      }
     }
+    if (isPreambleAddressCode(paramByte1, paramByte2))
+    {
+      handlePreambleAddressCode(paramByte1, paramByte2);
+      return bool;
+    }
+    if (isTabCtrlCode(paramByte1, paramByte2))
+    {
+      this.currentCueBuilder.setTab(paramByte2 - 32);
+      return bool;
+    }
+    if (isMiscCode(paramByte1, paramByte2)) {
+      handleMiscCode(paramByte2);
+    }
+    return bool;
   }
   
   private void handleMidrowCtrl(byte paramByte)
   {
-    if ((paramByte & 0x1) == 1) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if ((paramByte & 0x1) == 1) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.currentCueBuilder.setUnderline(bool);
+    paramByte = paramByte >> 1 & 0xF;
+    if (paramByte == 7)
     {
-      this.currentCueBuilder.setUnderline(bool);
-      paramByte = paramByte >> 1 & 0xF;
-      if (paramByte != 7) {
-        break;
-      }
       this.currentCueBuilder.setMidrowStyle(new StyleSpan(2), 2);
       this.currentCueBuilder.setMidrowStyle(new ForegroundColorSpan(-1), 1);
       return;
@@ -168,95 +172,106 @@ public final class Cea608Decoder
   
   private void handleMiscCode(byte paramByte)
   {
-    switch (paramByte)
+    if (paramByte != 32)
     {
-    case 33: 
-    case 34: 
-    case 35: 
-    case 36: 
-    case 40: 
-    default: 
-      if (this.captionMode != 0) {
-        break;
-      }
-    }
-    do
-    {
-      do
+      if (paramByte != 41)
       {
-        return;
+        switch (paramByte)
+        {
+        default: 
+          int i = this.captionMode;
+          if (i == 0) {
+            return;
+          }
+          if (paramByte != 33)
+          {
+            if (paramByte != 36) {
+              switch (paramByte)
+              {
+              default: 
+                return;
+              case 47: 
+                this.cues = getDisplayCues();
+                resetCueBuilders();
+                return;
+              case 46: 
+                resetCueBuilders();
+                return;
+              case 45: 
+                if ((i != 1) || (this.currentCueBuilder.isEmpty())) {
+                  break;
+                }
+                this.currentCueBuilder.rollUp();
+                return;
+              case 44: 
+                this.cues = null;
+                if ((i != 1) && (i != 3)) {
+                  break;
+                }
+                resetCueBuilders();
+                return;
+              }
+            }
+          }
+          else {
+            this.currentCueBuilder.backspace();
+          }
+          return;
+        case 39: 
+          setCaptionMode(1);
+          setCaptionRowCount(4);
+          return;
+        case 38: 
+          setCaptionMode(1);
+          setCaptionRowCount(3);
+          return;
+        }
         setCaptionMode(1);
         setCaptionRowCount(2);
         return;
-        setCaptionMode(1);
-        setCaptionRowCount(3);
-        return;
-        setCaptionMode(1);
-        setCaptionRowCount(4);
-        return;
-        setCaptionMode(2);
-        return;
-        setCaptionMode(3);
-        return;
-        switch (paramByte)
-        {
-        case 36: 
-        default: 
-          return;
-        case 33: 
-          this.currentCueBuilder.backspace();
-          return;
-        case 44: 
-          this.cues = null;
-        }
-      } while ((this.captionMode != 1) && (this.captionMode != 3));
-      resetCueBuilders();
+      }
+      setCaptionMode(3);
       return;
-      resetCueBuilders();
-      return;
-      this.cues = getDisplayCues();
-      resetCueBuilders();
-      return;
-    } while ((this.captionMode != 1) || (this.currentCueBuilder.isEmpty()));
-    this.currentCueBuilder.rollUp();
+    }
+    setCaptionMode(2);
   }
   
   private void handlePreambleAddressCode(byte paramByte1, byte paramByte2)
   {
     int j = ROW_INDICES[(paramByte1 & 0x7)];
-    if ((paramByte2 & 0x20) != 0) {}
-    for (paramByte1 = 1;; paramByte1 = 0)
+    if ((paramByte2 & 0x20) != 0) {
+      paramByte1 = 1;
+    } else {
+      paramByte1 = 0;
+    }
+    int i = j;
+    if (paramByte1 != 0) {
+      i = j + 1;
+    }
+    if (i != this.currentCueBuilder.getRow())
     {
-      int i = j;
-      if (paramByte1 != 0) {
-        i = j + 1;
-      }
-      if (i != this.currentCueBuilder.getRow())
+      if ((this.captionMode != 1) && (!this.currentCueBuilder.isEmpty()))
       {
-        if ((this.captionMode != 1) && (!this.currentCueBuilder.isEmpty()))
-        {
-          this.currentCueBuilder = new Cea608Decoder.CueBuilder(this.captionMode, this.captionRowCount);
-          this.cueBuilders.add(this.currentCueBuilder);
-        }
-        this.currentCueBuilder.setRow(i);
+        this.currentCueBuilder = new Cea608Decoder.CueBuilder(this.captionMode, this.captionRowCount);
+        this.cueBuilders.add(this.currentCueBuilder);
       }
-      if ((paramByte2 & 0x1) == 1) {
-        this.currentCueBuilder.setPreambleStyle(new UnderlineSpan());
+      this.currentCueBuilder.setRow(i);
+    }
+    if ((paramByte2 & 0x1) == 1) {
+      this.currentCueBuilder.setPreambleStyle(new UnderlineSpan());
+    }
+    paramByte1 = paramByte2 >> 1 & 0xF;
+    if (paramByte1 <= 7)
+    {
+      if (paramByte1 == 7)
+      {
+        this.currentCueBuilder.setPreambleStyle(new StyleSpan(2));
+        this.currentCueBuilder.setPreambleStyle(new ForegroundColorSpan(-1));
+        return;
       }
-      paramByte1 = paramByte2 >> 1 & 0xF;
-      if (paramByte1 > 7) {
-        break label195;
-      }
-      if (paramByte1 != 7) {
-        break;
-      }
-      this.currentCueBuilder.setPreambleStyle(new StyleSpan(2));
-      this.currentCueBuilder.setPreambleStyle(new ForegroundColorSpan(-1));
+      this.currentCueBuilder.setPreambleStyle(new ForegroundColorSpan(COLORS[paramByte1]));
       return;
     }
-    this.currentCueBuilder.setPreambleStyle(new ForegroundColorSpan(COLORS[paramByte1]));
-    return;
-    label195:
     this.currentCueBuilder.setIndent(COLUMN_INDICES[(paramByte1 & 0x7)]);
   }
   
@@ -294,16 +309,15 @@ public final class Cea608Decoder
   
   private void setCaptionMode(int paramInt)
   {
-    if (this.captionMode == paramInt) {}
-    int i;
-    do
-    {
+    int i = this.captionMode;
+    if (i == paramInt) {
       return;
-      i = this.captionMode;
-      this.captionMode = paramInt;
-      resetCueBuilders();
-    } while ((i != 3) && (paramInt != 1) && (paramInt != 0));
-    this.cues = null;
+    }
+    this.captionMode = paramInt;
+    resetCueBuilders();
+    if ((i == 3) || (paramInt == 1) || (paramInt == 0)) {
+      this.cues = null;
+    }
   }
   
   private void setCaptionRowCount(int paramInt)
@@ -314,69 +328,78 @@ public final class Cea608Decoder
   
   protected Subtitle createSubtitle()
   {
-    this.lastCues = this.cues;
-    return new CeaSubtitle(this.cues);
+    List localList = this.cues;
+    this.lastCues = localList;
+    return new CeaSubtitle(localList);
   }
   
   protected void decode(SubtitleInputBuffer paramSubtitleInputBuffer)
   {
     this.ccData.reset(paramSubtitleInputBuffer.data.array(), paramSubtitleInputBuffer.data.limit());
-    boolean bool = false;
     int k = 0;
-    while (this.ccData.bytesLeft() >= this.packetLength)
+    boolean bool2;
+    for (boolean bool1 = false;; bool1 = bool2)
     {
-      if (this.packetLength == 2) {}
+      int m;
       int i;
       int j;
-      for (int m = -4;; m = (byte)this.ccData.readUnsignedByte())
+      do
       {
-        i = (byte)(this.ccData.readUnsignedByte() & 0x7F);
-        j = (byte)(this.ccData.readUnsignedByte() & 0x7F);
-        if (((m & 0x6) != 4) || ((this.selectedField == 1) && ((m & 0x1) != 0)) || ((this.selectedField == 2) && ((m & 0x1) != 1)) || ((i == 0) && (j == 0))) {
+        m = this.ccData.bytesLeft();
+        int n = this.packetLength;
+        if (m < n) {
           break;
         }
-        if (((i & 0xF7) != 17) || ((j & 0xF0) != 48)) {
-          break label175;
+        if (n == 2) {
+          m = -4;
+        } else {
+          m = (byte)this.ccData.readUnsignedByte();
         }
+        i = (byte)(this.ccData.readUnsignedByte() & 0x7F);
+        j = (byte)(this.ccData.readUnsignedByte() & 0x7F);
+      } while (((m & 0x6) != 4) || ((this.selectedField == 1) && ((m & 0x1) != 0)) || ((this.selectedField == 2) && ((m & 0x1) != 1)) || ((i == 0) && (j == 0)));
+      if (((i & 0xF7) == 17) && ((j & 0xF0) == 48))
+      {
         this.currentCueBuilder.append(getSpecialChar(j));
-        k = 1;
-        break;
+        bool2 = bool1;
       }
-      label175:
-      if (((i & 0xF6) == 18) && ((j & 0xE0) == 32))
+      else if (((i & 0xF6) == 18) && ((j & 0xE0) == 32))
       {
         this.currentCueBuilder.backspace();
         if ((i & 0x1) == 0)
         {
           this.currentCueBuilder.append(getExtendedEsFrChar(j));
-          k = 1;
+          bool2 = bool1;
         }
         else
         {
           this.currentCueBuilder.append(getExtendedPtDeChar(j));
-          k = 1;
+          bool2 = bool1;
         }
       }
       else if ((i & 0xE0) == 0)
       {
-        bool = handleCtrl(i, j);
-        k = 1;
+        bool2 = handleCtrl(i, j);
       }
       else
       {
         this.currentCueBuilder.append(getChar(i));
-        if ((j & 0xE0) != 0) {
+        bool2 = bool1;
+        if ((j & 0xE0) != 0)
+        {
           this.currentCueBuilder.append(getChar(j));
+          bool2 = bool1;
         }
-        k = 1;
       }
+      k = 1;
     }
     if (k != 0)
     {
-      if (!bool) {
+      if (!bool1) {
         this.repeatableControlSet = false;
       }
-      if ((this.captionMode == 1) || (this.captionMode == 3)) {
+      k = this.captionMode;
+      if ((k == 1) || (k == 3)) {
         this.cues = getDisplayCues();
       }
     }
@@ -409,7 +432,7 @@ public final class Cea608Decoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.text.cea.Cea608Decoder
  * JD-Core Version:    0.7.0.1
  */

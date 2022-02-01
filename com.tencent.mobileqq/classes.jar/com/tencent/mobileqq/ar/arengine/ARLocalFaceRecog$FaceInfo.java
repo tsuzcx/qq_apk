@@ -19,12 +19,25 @@ public class ARLocalFaceRecog$FaceInfo
   
   public String toString()
   {
-    return "FaceInfo{name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", tracked=" + this.jdField_a_of_type_Boolean + ", lostCount=" + this.c + ", faceType=" + this.jdField_a_of_type_Int + ", faceStatus=" + this.jdField_a_of_type_ComTencentYTFaceModelFaceStatus + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FaceInfo{name='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", tracked=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", lostCount=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", faceType=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", faceStatus=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentYTFaceModelFaceStatus);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARLocalFaceRecog.FaceInfo
  * JD-Core Version:    0.7.0.1
  */

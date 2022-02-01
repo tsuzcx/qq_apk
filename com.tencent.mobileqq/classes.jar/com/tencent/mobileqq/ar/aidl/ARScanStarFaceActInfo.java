@@ -40,7 +40,33 @@ public class ARScanStarFaceActInfo
   
   public String toString()
   {
-    return "ARScanStarFaceActInfo{actTitle='" + this.jdField_c_of_type_JavaLangString + '\'' + "actDescription='" + this.d + '\'' + ", starName='" + this.jdField_a_of_type_JavaLangString + '\'' + ", starUin='" + this.jdField_b_of_type_JavaLangString + '\'' + ", starWebUrl='" + this.e + '\'' + ", adImgUrl='" + this.f + '\'' + ", beginTime=" + this.jdField_a_of_type_Long + ", endTime=" + this.jdField_b_of_type_Long + ", actID=" + this.jdField_c_of_type_Long + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ARScanStarFaceActInfo{actTitle='");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append("actDescription='");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", starName='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", starUin='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", starWebUrl='");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", adImgUrl='");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", beginTime=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", endTime=");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", actID=");
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -58,7 +84,7 @@ public class ARScanStarFaceActInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.aidl.ARScanStarFaceActInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -34,17 +34,18 @@ public class GrsConfig
   {
     GrsBaseInfo localGrsBaseInfo = new GrsBaseInfo();
     localGrsBaseInfo.setSerCountry(this.serCountry);
-    if (TextUtils.isEmpty(this.versionName)) {}
-    for (paramContext = PackageUtils.getVersionName(paramContext);; paramContext = this.versionName)
-    {
-      localGrsBaseInfo.setVersionName(paramContext);
-      localGrsBaseInfo.setAppName(this.appName);
-      localGrsBaseInfo.setUid(this.userId);
-      localGrsBaseInfo.setRegCountry(this.regCountry);
-      localGrsBaseInfo.setIssueCountry(this.issueCountry);
-      localGrsBaseInfo.setCountrySource(this.countrySource);
-      return localGrsBaseInfo;
+    if (TextUtils.isEmpty(this.versionName)) {
+      paramContext = PackageUtils.getVersionName(paramContext);
+    } else {
+      paramContext = this.versionName;
     }
+    localGrsBaseInfo.setVersionName(paramContext);
+    localGrsBaseInfo.setAppName(this.appName);
+    localGrsBaseInfo.setUid(this.userId);
+    localGrsBaseInfo.setRegCountry(this.regCountry);
+    localGrsBaseInfo.setIssueCountry(this.issueCountry);
+    localGrsBaseInfo.setCountrySource(this.countrySource);
+    return localGrsBaseInfo;
   }
   
   public String getIssueCountry()
@@ -109,7 +110,7 @@ public class GrsConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.framework.network.grs.GrsConfig
  * JD-Core Version:    0.7.0.1
  */

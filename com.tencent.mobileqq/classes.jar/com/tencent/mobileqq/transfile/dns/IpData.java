@@ -63,13 +63,13 @@ public class IpData
         localJSONArray.put(localJSONObject);
       }
       paramList = localJSONArray.toString();
+      return paramList;
     }
     catch (Exception paramList)
     {
       paramList.printStackTrace();
-      return null;
     }
-    return paramList;
+    return null;
   }
   
   public static ArrayList<IpData> unParse(String paramString)
@@ -77,25 +77,21 @@ public class IpData
     try
     {
       ArrayList localArrayList = new ArrayList();
-      JSONArray localJSONArray = new JSONArray(paramString);
+      paramString = new JSONArray(paramString);
       int i = 0;
-      for (;;)
+      while (i < paramString.length())
       {
-        paramString = localArrayList;
-        if (i >= localJSONArray.length()) {
-          break;
-        }
-        paramString = localJSONArray.getJSONObject(i);
-        localArrayList.add(new IpData(paramString.getString("i"), paramString.optInt("p", 80), paramString.optInt("t", 1)));
+        JSONObject localJSONObject = paramString.getJSONObject(i);
+        localArrayList.add(new IpData(localJSONObject.getString("i"), localJSONObject.optInt("p", 80), localJSONObject.optInt("t", 1)));
         i += 1;
       }
-      return paramString;
+      return localArrayList;
     }
     catch (Exception paramString)
     {
       paramString.printStackTrace();
-      paramString = null;
     }
+    return null;
   }
   
   public int describeContents()
@@ -113,7 +109,7 @@ public class IpData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.dns.IpData
  * JD-Core Version:    0.7.0.1
  */

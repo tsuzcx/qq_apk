@@ -31,7 +31,13 @@ public class LebaQzoneStyleBean
       paramArrayOfQConfItem = new JSONObject((String)localObject1);
       localLebaQzoneStyleBean.a = paramArrayOfQConfItem.optInt("gridstyle", 0);
       localLebaQzoneStyleBean.b = paramArrayOfQConfItem.optInt("sequenceadjust", 0);
-      QLog.i("LebaQzoneStyleBean", 1, "parse config=" + (String)localObject1 + ",style=" + localLebaQzoneStyleBean.a + ",sequenceAdjust=" + localLebaQzoneStyleBean.b);
+      paramArrayOfQConfItem = new StringBuilder("parse config=");
+      paramArrayOfQConfItem.append((String)localObject1);
+      paramArrayOfQConfItem.append(",style=");
+      paramArrayOfQConfItem.append(localLebaQzoneStyleBean.a);
+      paramArrayOfQConfItem.append(",sequenceAdjust=");
+      paramArrayOfQConfItem.append(localLebaQzoneStyleBean.b);
+      QLog.i("LebaQzoneStyleBean", 1, paramArrayOfQConfItem.toString());
       return localLebaQzoneStyleBean;
     }
     catch (Exception paramArrayOfQConfItem)
@@ -43,7 +49,7 @@ public class LebaQzoneStyleBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.config.LebaQzoneStyleBean
  * JD-Core Version:    0.7.0.1
  */

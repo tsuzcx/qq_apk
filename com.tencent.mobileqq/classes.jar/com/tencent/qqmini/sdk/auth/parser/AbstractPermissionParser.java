@@ -17,13 +17,19 @@ abstract class AbstractPermissionParser
   
   public boolean addEvent(EventInfo paramEventInfo)
   {
-    if (paramEventInfo == null) {}
-    while (this.mEventsMap == null) {
+    if (paramEventInfo == null) {
       return false;
     }
-    if (this.mEventsMap.containsKey(paramEventInfo.name))
+    Object localObject = this.mEventsMap;
+    if (localObject == null) {
+      return false;
+    }
+    if (((Map)localObject).containsKey(paramEventInfo.name))
     {
-      Log.w("PermissionParser", "Ignore duplicated event entry " + paramEventInfo.name);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Ignore duplicated event entry ");
+      ((StringBuilder)localObject).append(paramEventInfo.name);
+      Log.w("PermissionParser", ((StringBuilder)localObject).toString());
       return false;
     }
     this.mEventsMap.put(paramEventInfo.name, paramEventInfo);
@@ -35,37 +41,47 @@ abstract class AbstractPermissionParser
     if (paramPermissionInfo == null) {
       return false;
     }
+    StringBuilder localStringBuilder;
     if (paramPermissionInfo.builtIn)
     {
       if (this.mSystemPermissionMap.containsKey(paramPermissionInfo.id))
       {
-        Log.w("PermissionParser", "Ignore duplicated system permission entry " + paramPermissionInfo.id);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Ignore duplicated system permission entry ");
+        localStringBuilder.append(paramPermissionInfo.id);
+        Log.w("PermissionParser", localStringBuilder.toString());
         return false;
       }
       this.mSystemPermissionMap.put(paramPermissionInfo.id, paramPermissionInfo);
     }
-    for (;;)
+    else
     {
-      return true;
       if (this.mScopePermissionMap.containsKey(paramPermissionInfo.id))
       {
-        Log.w("PermissionParser", "Ignore duplicated scope permission entry " + paramPermissionInfo.id);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Ignore duplicated scope permission entry ");
+        localStringBuilder.append(paramPermissionInfo.id);
+        Log.w("PermissionParser", localStringBuilder.toString());
         return false;
       }
       this.mScopePermissionMap.put(paramPermissionInfo.id, paramPermissionInfo);
     }
+    return true;
   }
   
   public void clear()
   {
-    if (this.mSystemPermissionMap != null) {
-      this.mSystemPermissionMap.clear();
+    Map localMap = this.mSystemPermissionMap;
+    if (localMap != null) {
+      localMap.clear();
     }
-    if (this.mScopePermissionMap != null) {
-      this.mScopePermissionMap.clear();
+    localMap = this.mScopePermissionMap;
+    if (localMap != null) {
+      localMap.clear();
     }
-    if (this.mEventsMap != null) {
-      this.mEventsMap.clear();
+    localMap = this.mEventsMap;
+    if (localMap != null) {
+      localMap.clear();
     }
   }
   
@@ -86,7 +102,7 @@ abstract class AbstractPermissionParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.auth.parser.AbstractPermissionParser
  * JD-Core Version:    0.7.0.1
  */

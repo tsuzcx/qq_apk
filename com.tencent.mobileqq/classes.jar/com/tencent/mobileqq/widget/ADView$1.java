@@ -22,43 +22,35 @@ class ADView$1
       i += 1;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetADView.f) {
-      if (paramInt == -1) {
-        i = j - 1;
-      }
+      if (paramInt != -1) {}
     }
-    for (;;)
+    do
     {
-      if ((i > -1) && (i < j))
-      {
-        localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-        if (localView != null) {
-          localView.setEnabled(true);
-        }
-      }
-      return;
+      i = j - 1;
+      break;
       i = paramInt;
-      if (paramInt == j)
+      if (paramInt != j) {
+        break;
+      }
+      if (paramInt == -1)
       {
         i = 0;
-        continue;
-        if (paramInt == -1)
-        {
-          i = 0;
-        }
-        else
-        {
-          i = paramInt;
-          if (paramInt == j) {
-            i = j - 1;
-          }
-        }
+        break;
+      }
+      i = paramInt;
+    } while (paramInt == j);
+    if ((i > -1) && (i < j))
+    {
+      localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+      if (localView != null) {
+        localView.setEnabled(true);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ADView.1
  * JD-Core Version:    0.7.0.1
  */

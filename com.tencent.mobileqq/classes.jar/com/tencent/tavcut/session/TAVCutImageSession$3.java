@@ -1,37 +1,30 @@
 package com.tencent.tavcut.session;
 
 import android.util.SparseArray;
-import com.tencent.tav.core.composition.VideoComposition.RenderLayoutMode;
-import com.tencent.tav.coremedia.CGSize;
-import com.tencent.tavcut.util.CompositionUtils;
-import com.tencent.tavkit.composition.TAVComposition;
-import com.tencent.weseevideo.composition.VideoRenderChainManager;
-import com.tencent.weseevideo.composition.builder.MediaBuilderListener;
-import com.tencent.weseevideo.composition.builder.MediaBuilderOutput;
-import com.tencent.weseevideo.composition.image.WSImageRender;
+import com.tencent.tavcut.view.TAVCutImageView;
+import com.tencent.weseevideo.editor.sticker.StickerController;
+import java.lang.ref.WeakReference;
 
 class TAVCutImageSession$3
-  implements MediaBuilderListener
+  implements Runnable
 {
-  TAVCutImageSession$3(TAVCutImageSession paramTAVCutImageSession, int paramInt, CGSize paramCGSize) {}
+  TAVCutImageSession$3(TAVCutImageSession paramTAVCutImageSession, int paramInt, TAVCutImageView paramTAVCutImageView) {}
   
-  public void buildCompleted(int paramInt, VideoRenderChainManager paramVideoRenderChainManager, MediaBuilderOutput paramMediaBuilderOutput)
+  public void run()
   {
-    this.this$0.renderChainManagers.put(this.val$index, paramVideoRenderChainManager);
-    this.this$0.tavCompositions.put(this.val$index, paramVideoRenderChainManager.getComposition());
-    paramVideoRenderChainManager.getComposition().setRenderSize(this.val$size);
-    paramVideoRenderChainManager.getComposition().setRenderLayoutMode(VideoComposition.RenderLayoutMode.aspectFill);
-    paramMediaBuilderOutput = new WSImageRender();
-    CompositionUtils.removeTAVAspectEffect(paramVideoRenderChainManager.getComposition());
-    paramMediaBuilderOutput.init(paramVideoRenderChainManager.getComposition(), paramVideoRenderChainManager.getComposition().getRenderSize());
-    paramMediaBuilderOutput.setMineIndex(this.val$index);
-    paramMediaBuilderOutput.setCurrent(this.this$0.getCurrentIndex());
-    TAVCutImageSession.access$300(this.this$0).put(this.val$index, paramMediaBuilderOutput);
+    TAVCutImageSession.access$400(this.this$0).put(this.val$index, new WeakReference(this.val$tavCutImageView));
+    if ((StickerController)this.this$0.stickerControllers.get(this.val$index) == null)
+    {
+      StickerController localStickerController = this.this$0.createStickerController();
+      this.this$0.stickerControllers.put(this.val$index, localStickerController);
+      localStickerController.createStickerContext(true);
+      this.this$0.runOnMainThread(new TAVCutImageSession.3.1(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutImageSession.3
  * JD-Core Version:    0.7.0.1
  */

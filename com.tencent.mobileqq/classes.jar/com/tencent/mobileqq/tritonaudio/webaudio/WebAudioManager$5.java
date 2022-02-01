@@ -14,21 +14,29 @@ class WebAudioManager$5
   {
     AudioDecoder localAudioDecoder = new AudioDecoder();
     localAudioDecoder.setOnDecodeProcessListener(new WebAudioManager.5.1(this, localAudioDecoder));
-    if (Build.VERSION.SDK_INT >= 23) {
+    if (Build.VERSION.SDK_INT >= 23)
+    {
       localAudioDecoder.decodeInMemory(this.val$audioData, this.val$decodeId);
-    }
-    while (Build.VERSION.SDK_INT < 16) {
       return;
     }
-    String str = Environment.getExternalStorageDirectory().getPath() + "/minigame/audio_" + System.currentTimeMillis();
-    this.this$0.writeFile(this.val$audioData, str, false, this.val$audioData.length);
-    localAudioDecoder.decodeByPath(str, this.val$decodeId);
-    this.this$0.deleteFile(str);
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(Environment.getExternalStorageDirectory().getPath());
+      ((StringBuilder)localObject).append("/minigame/audio_");
+      ((StringBuilder)localObject).append(System.currentTimeMillis());
+      localObject = ((StringBuilder)localObject).toString();
+      WebAudioManager localWebAudioManager = this.this$0;
+      byte[] arrayOfByte = this.val$audioData;
+      localWebAudioManager.writeFile(arrayOfByte, (String)localObject, false, arrayOfByte.length);
+      localAudioDecoder.decodeByPath((String)localObject, this.val$decodeId);
+      this.this$0.deleteFile((String)localObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tritonaudio.webaudio.WebAudioManager.5
  * JD-Core Version:    0.7.0.1
  */

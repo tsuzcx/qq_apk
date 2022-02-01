@@ -15,27 +15,27 @@ class VideoCoverListBar$1
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    case 2: 
-    default: 
-      return false;
-    case 0: 
-      this.jdField_a_of_type_Float = paramMotionEvent.getX();
-      this.b = paramMotionEvent.getY();
+      if ((i != 1) && (i != 3)) {
+        return false;
+      }
+      if (Math.abs(paramMotionEvent.getY() - this.b) > Math.min(this.jdField_a_of_type_Int, 40)) {
+        StoryReportor.a("play_video", "slide_mini", 0, 0, new String[] { "2", "", "", VideoCoverListBar.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar) });
+      }
+      this.jdField_a_of_type_Float = -1.0F;
+      this.b = -1.0F;
       return false;
     }
-    if (Math.abs(paramMotionEvent.getY() - this.b) > Math.min(this.jdField_a_of_type_Int, 40)) {
-      StoryReportor.a("play_video", "slide_mini", 0, 0, new String[] { "2", "", "", VideoCoverListBar.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar) });
-    }
-    this.jdField_a_of_type_Float = -1.0F;
-    this.b = -1.0F;
+    this.jdField_a_of_type_Float = paramMotionEvent.getX();
+    this.b = paramMotionEvent.getY();
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.VideoCoverListBar.1
  * JD-Core Version:    0.7.0.1
  */

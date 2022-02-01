@@ -41,12 +41,12 @@ import mqq.app.MobileQQ;
 
 public class MapUtils
 {
-  private static long jdField_a_of_type_Long = 0L;
-  private static Boolean jdField_a_of_type_JavaLangBoolean = null;
+  private static long jdField_a_of_type_Long;
+  private static Boolean jdField_a_of_type_JavaLangBoolean;
   
   private static double a(double paramDouble)
   {
-    return 3.141592653589793D * paramDouble / 180.0D;
+    return paramDouble * 3.141592653589793D / 180.0D;
   }
   
   private static double a(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4)
@@ -55,8 +55,7 @@ public class MapUtils
     paramDouble3 = a(paramDouble3);
     paramDouble2 = a(paramDouble2);
     paramDouble4 = a(paramDouble4);
-    double d = Math.pow(Math.sin((paramDouble1 - paramDouble3) / 2.0D), 2.0D);
-    return Math.asin(Math.sqrt(Math.cos(paramDouble1) * Math.cos(paramDouble3) * Math.pow(Math.sin((paramDouble2 - paramDouble4) / 2.0D), 2.0D) + d)) * 2.0D * 6378137.0D;
+    return Math.asin(Math.sqrt(Math.pow(Math.sin((paramDouble1 - paramDouble3) / 2.0D), 2.0D) + Math.cos(paramDouble1) * Math.cos(paramDouble3) * Math.pow(Math.sin((paramDouble2 - paramDouble4) / 2.0D), 2.0D))) * 2.0D * 6378137.0D;
   }
   
   public static double a(LatLng paramLatLng1, LatLng paramLatLng2)
@@ -66,44 +65,51 @@ public class MapUtils
   
   static int a(Context paramContext)
   {
-    int j = 0;
-    if (Build.VERSION.SDK_INT >= 19) {}
-    for (;;)
+    if (Build.VERSION.SDK_INT >= 19)
     {
       try
       {
         i = Settings.Secure.getInt(paramContext.getContentResolver(), "location_mode");
-        if (QLog.isColorLevel()) {
-          QLog.d("MapUtils", 2, "getLocationMode: invoked. locationMode: " + i);
-        }
-        return i;
       }
       catch (Settings.SettingNotFoundException paramContext)
       {
         paramContext.printStackTrace();
-        i = j;
-        continue;
-      }
-      paramContext = Settings.Secure.getString(paramContext.getContentResolver(), "location_providers_allowed");
-      int i = j;
-      if (!TextUtils.isEmpty(paramContext)) {
-        if ((paramContext.contains("gps")) && (paramContext.contains("network")))
-        {
-          i = 3;
-        }
-        else if (paramContext.contains("gps"))
-        {
-          i = 1;
-        }
-        else
-        {
-          i = j;
-          if (paramContext.contains("network")) {
-            i = 2;
-          }
-        }
+        break label46;
       }
     }
+    else
+    {
+      paramContext = Settings.Secure.getString(paramContext.getContentResolver(), "location_providers_allowed");
+      if (!TextUtils.isEmpty(paramContext)) {
+        break label51;
+      }
+    }
+    label46:
+    label51:
+    do
+    {
+      i = 0;
+      break;
+      if ((paramContext.contains("gps")) && (paramContext.contains("network")))
+      {
+        i = 3;
+        break;
+      }
+      if (paramContext.contains("gps"))
+      {
+        i = 1;
+        break;
+      }
+    } while (!paramContext.contains("network"));
+    int i = 2;
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("getLocationMode: invoked. locationMode: ");
+      paramContext.append(i);
+      QLog.d("MapUtils", 2, paramContext.toString());
+    }
+    return i;
   }
   
   public static LatLng a(Collection<LocationItem> paramCollection)
@@ -123,7 +129,7 @@ public class MapUtils
     double d3 = 0.0D;
     double d2 = 0.0D;
     double d8;
-    for (double d1 = 0.0D; paramList.hasNext(); d1 += d8)
+    for (double d1 = d2; paramList.hasNext(); d1 += d8)
     {
       LatLng localLatLng = (LatLng)paramList.next();
       d8 = localLatLng.getLatitude() * 3.141592653589793D / 180.0D;
@@ -134,13 +140,17 @@ public class MapUtils
       d7 = Math.sin(d7);
       d8 = Math.sin(d8);
       d3 += d5 * d6;
-      d2 += d7 * d4;
+      d2 += d4 * d7;
     }
-    d3 /= i;
-    d2 /= i;
-    d1 /= i;
-    double d4 = Math.atan2(d2, d3);
-    return new LatLng(Math.atan2(d1, Math.sqrt(d3 * d3 + d2 * d2)) * 180.0D / 3.141592653589793D, 180.0D * d4 / 3.141592653589793D);
+    double d4 = i;
+    Double.isNaN(d4);
+    d3 /= d4;
+    Double.isNaN(d4);
+    d2 /= d4;
+    Double.isNaN(d4);
+    d1 /= d4;
+    d4 = Math.atan2(d2, d3);
+    return new LatLng(Math.atan2(d1, Math.sqrt(d3 * d3 + d2 * d2)) * 180.0D / 3.141592653589793D, d4 * 180.0D / 3.141592653589793D);
   }
   
   private static Object a(Object paramObject, String paramString)
@@ -155,12 +165,12 @@ public class MapUtils
       paramObject = paramString.get(paramObject);
       return paramObject;
     }
-    catch (NoSuchFieldException paramObject)
+    catch (IllegalAccessException paramObject)
     {
       paramObject.printStackTrace();
       return null;
     }
-    catch (IllegalAccessException paramObject)
+    catch (NoSuchFieldException paramObject)
     {
       paramObject.printStackTrace();
     }
@@ -171,26 +181,53 @@ public class MapUtils
   {
     if (paramDouble < 60.0D)
     {
-      if (Math.round(paramDouble) <= 0L) {}
-      for (i = 1;; i = (int)Math.round(paramDouble)) {
-        return i + "分钟";
+      if (Math.round(paramDouble) <= 0L) {
+        i = 1;
+      } else {
+        i = (int)Math.round(paramDouble);
       }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(i);
+      localStringBuilder.append("分钟");
+      return localStringBuilder.toString();
     }
     if (paramDouble < 1440.0D)
     {
       i = (int)(paramDouble / 60.0D);
-      j = (int)Math.round(paramDouble - i * 60);
-      return i + "小时" + j + "分钟";
+      d1 = i * 60;
+      Double.isNaN(d1);
+      j = (int)Math.round(paramDouble - d1);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(i);
+      localStringBuilder.append("小时");
+      localStringBuilder.append(j);
+      localStringBuilder.append("分钟");
+      return localStringBuilder.toString();
     }
     int i = (int)(paramDouble / 1440.0D);
-    int j = (int)(paramDouble / 60.0D - i * 24);
-    int k = (int)Math.round(paramDouble - j * 60 - i * 24 * 60);
-    return i + "天" + j + "小时" + k + "分钟";
+    double d1 = paramDouble / 60.0D;
+    int k = i * 24;
+    double d2 = k;
+    Double.isNaN(d2);
+    int j = (int)(d1 - d2);
+    d1 = j * 60;
+    Double.isNaN(d1);
+    d2 = k * 60;
+    Double.isNaN(d2);
+    k = (int)Math.round(paramDouble - d1 - d2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(i);
+    localStringBuilder.append("天");
+    localStringBuilder.append(j);
+    localStringBuilder.append("小时");
+    localStringBuilder.append(k);
+    localStringBuilder.append("分钟");
+    return localStringBuilder.toString();
   }
   
   public static void a()
   {
-    jdField_a_of_type_JavaLangBoolean = null;
+    a = null;
   }
   
   static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, LatLng paramLatLng1, LatLng paramLatLng2)
@@ -200,53 +237,69 @@ public class MapUtils
       String str = String.format("qqmap://map/routeplan?type=%s&from=%s&fromcoord=%f,%f&to=%s&tocoord=%f,%f&policy=1&referer=qq", new Object[] { paramString1, paramString2, Double.valueOf(paramLatLng1.latitude), Double.valueOf(paramLatLng1.longitude), paramString3, Double.valueOf(paramLatLng2.latitude), Double.valueOf(paramLatLng2.longitude) });
       try
       {
-        Intent localIntent = Intent.parseUri(str, 0);
-        localIntent.addCategory("android.intent.category.BROWSABLE");
-        localIntent.setComponent(null);
-        localIntent.setSelector(null);
-        localIntent.putExtra("big_brother_source_key", "biz_src_location_share");
-        paramActivity.startActivity(localIntent);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqmap", 2, "launchQQMap: " + str);
+        Object localObject = Intent.parseUri(str, 0);
+        ((Intent)localObject).addCategory("android.intent.category.BROWSABLE");
+        ((Intent)localObject).setComponent(null);
+        ((Intent)localObject).setSelector(null);
+        ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_location_share");
+        paramActivity.startActivity((Intent)localObject);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("launchQQMap: ");
+          ((StringBuilder)localObject).append(str);
+          QLog.d("Q.qqmap", 2, ((StringBuilder)localObject).toString());
         }
         return;
       }
       catch (Exception localException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.w("Q.qqmap", 2, "launchQQMap: " + str, localException);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("launchQQMap: ");
+          localStringBuilder.append(str);
+          QLog.w("Q.qqmap", 2, localStringBuilder.toString(), localException);
         }
         ReportController.b(null, "CliOper", "", "", "0X800A972", "0X800A972", 1, 0, "0", "0", "0", "");
       }
     }
-    for (;;)
+    else
     {
-      try
-      {
-        paramString1 = String.format("qqmap://map/routeplan?type=%s&from=%s&fromcoord=%f,%f&to=%s&tocoord=%f,%f&referer=qq", new Object[] { paramString1, paramString2, Double.valueOf(paramLatLng1.latitude), Double.valueOf(paramLatLng1.longitude), paramString3, Double.valueOf(paramLatLng2.latitude), Double.valueOf(paramLatLng2.longitude) });
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqmap", 2, "launchQQMap, mapparam = " + paramString1);
-        }
-        paramString1 = URLEncoder.encode(paramString1, "UTF-8");
-        paramString1 = "https://mapdownload.map.qq.com/outindex?key=qq&referer=qq2&channel=10041881%2C10041882&intention=" + paramString1;
-        a(paramActivity, paramString1);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("Q.qqmap", 2, "launchQQMap, download = " + paramString1);
-        return;
-      }
-      catch (UnsupportedEncodingException paramString1)
-      {
-        paramString1.printStackTrace();
-        a(paramActivity, "https://mapdownload.map.qq.com/outindex?key=qq&referer=qq2&channel=10041881%2C10041882");
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("Q.qqmap", 2, "launchQQMap, download = https://mapdownload.map.qq.com/outindex?key=qq&referer=qq2&channel=10041881%2C10041882");
-      return;
       ReportController.b(null, "CliOper", "", "", "0X800A972", "0X800A972", 2, 0, "0", "0", "0", "");
+    }
+    try
+    {
+      paramString1 = String.format("qqmap://map/routeplan?type=%s&from=%s&fromcoord=%f,%f&to=%s&tocoord=%f,%f&referer=qq", new Object[] { paramString1, paramString2, Double.valueOf(paramLatLng1.latitude), Double.valueOf(paramLatLng1.longitude), paramString3, Double.valueOf(paramLatLng2.latitude), Double.valueOf(paramLatLng2.longitude) });
+      if (QLog.isColorLevel())
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("launchQQMap, mapparam = ");
+        paramString2.append(paramString1);
+        QLog.d("Q.qqmap", 2, paramString2.toString());
+      }
+      paramString1 = URLEncoder.encode(paramString1, "UTF-8");
+      paramString2 = new StringBuilder();
+      paramString2.append("https://mapdownload.map.qq.com/outindex?key=qq&referer=qq2&channel=10041881%2C10041882&intention=");
+      paramString2.append(paramString1);
+      paramString1 = paramString2.toString();
+      a(paramActivity, paramString1);
+      if (QLog.isColorLevel())
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("launchQQMap, download = ");
+        paramString2.append(paramString1);
+        QLog.d("Q.qqmap", 2, paramString2.toString());
+      }
+      return;
+    }
+    catch (UnsupportedEncodingException paramString1)
+    {
+      paramString1.printStackTrace();
+      a(paramActivity, "https://mapdownload.map.qq.com/outindex?key=qq&referer=qq2&channel=10041881%2C10041882");
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqmap", 2, "launchQQMap, download = https://mapdownload.map.qq.com/outindex?key=qq&referer=qq2&channel=10041881%2C10041882");
+      }
     }
   }
   
@@ -311,12 +364,12 @@ public class MapUtils
       paramString.set(paramObject1, paramObject2);
       return;
     }
-    catch (NoSuchFieldException paramObject1)
+    catch (IllegalAccessException paramObject1)
     {
       paramObject1.printStackTrace();
       return;
     }
-    catch (IllegalAccessException paramObject1)
+    catch (NoSuchFieldException paramObject1)
     {
       paramObject1.printStackTrace();
     }
@@ -329,13 +382,16 @@ public class MapUtils
       paramTextView.post(new MapUtils.1(paramString1, paramString2, paramTextView));
       return;
     }
-    String str = paramString1 + paramString2;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(paramString2);
+    localObject = ((StringBuilder)localObject).toString();
     float f2 = paramTextView.getWidth();
     float f1 = paramTextView.getPaint().measureText(paramString1);
     float f3 = paramTextView.getPaint().measureText(paramString2);
     if (f1 + f3 <= f2)
     {
-      paramTextView.setText(str);
+      paramTextView.setText((CharSequence)localObject);
       return;
     }
     float f4 = paramTextView.getPaint().measureText("...");
@@ -344,39 +400,48 @@ public class MapUtils
       paramString1 = paramString1.substring(0, paramString1.length() - 1);
       f1 = paramTextView.getPaint().measureText(paramString1);
     }
-    paramTextView.setText(paramString1 + "..." + paramString2);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append("...");
+    ((StringBuilder)localObject).append(paramString2);
+    paramTextView.setText(((StringBuilder)localObject).toString());
   }
   
   static boolean a()
   {
-    if (jdField_a_of_type_JavaLangBoolean == null) {
-      jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(PackageUtil.a(MobileQQ.sMobileQQ, "com.tencent.map"));
+    if (a == null) {
+      a = Boolean.valueOf(PackageUtil.a(MobileQQ.sMobileQQ, "com.tencent.map"));
     }
-    return jdField_a_of_type_JavaLangBoolean.booleanValue();
+    return a.booleanValue();
   }
   
   static boolean a(Context paramContext, TencentMap paramTencentMap, LatLng paramLatLng)
   {
-    boolean bool1 = false;
     int i = paramContext.getResources().getDisplayMetrics().heightPixels;
     paramContext = new Rect(0, 0, paramContext.getResources().getDisplayMetrics().widthPixels, i);
     paramTencentMap = paramTencentMap.getProjection();
-    if (paramTencentMap == null) {}
-    boolean bool2;
-    do
+    if (paramTencentMap == null) {
+      return false;
+    }
+    paramTencentMap = paramTencentMap.toScreenLocation(paramLatLng);
+    boolean bool = paramContext.contains(paramTencentMap.x, paramTencentMap.y);
+    if (QLog.isColorLevel())
     {
-      return bool1;
-      paramTencentMap = paramTencentMap.toScreenLocation(paramLatLng);
-      bool2 = paramContext.contains(paramTencentMap.x, paramTencentMap.y);
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.d("MapUtils", 2, "[map][init]isLocationInScreen: invoked. location: " + paramLatLng + " screen: " + paramTencentMap + " inScreen: " + bool2);
-    return bool2;
+      paramContext = new StringBuilder();
+      paramContext.append("[map][init]isLocationInScreen: invoked. location: ");
+      paramContext.append(paramLatLng);
+      paramContext.append(" screen: ");
+      paramContext.append(paramTencentMap);
+      paramContext.append(" inScreen: ");
+      paramContext.append(bool);
+      QLog.d("MapUtils", 2, paramContext.toString());
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.MapUtils
  * JD-Core Version:    0.7.0.1
  */

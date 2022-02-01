@@ -12,11 +12,17 @@ class HippyTextInputController$1
   public boolean queueIdle()
   {
     boolean bool = this.val$view.requestFocusFromTouch();
-    LogUtils.d("InputText", " requestFocusFromTouch result:" + bool);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" requestFocusFromTouch result:");
+    localStringBuilder.append(bool);
+    LogUtils.d("InputText", localStringBuilder.toString());
     if (!bool)
     {
       bool = this.val$view.requestFocus();
-      LogUtils.d("InputText", "requestFocus result:" + bool);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("requestFocus result:");
+      localStringBuilder.append(bool);
+      LogUtils.d("InputText", localStringBuilder.toString());
     }
     if ((this.val$var.getObject(0) == null) || (this.val$var.getBoolean(0) == true)) {
       this.val$view.showInputMethodManager();
@@ -26,7 +32,7 @@ class HippyTextInputController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.textinput.HippyTextInputController.1
  * JD-Core Version:    0.7.0.1
  */

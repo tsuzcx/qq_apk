@@ -35,23 +35,29 @@ class MiniLoadingAdLayout$LoadingAdOnClickListener
     paramView.jdField_a_of_type_ComTencentGdtadAditemGdtAd = MiniLoadingAdLayout.access$100(this.this$0);
     paramView.jdField_a_of_type_Boolean = true;
     paramView.b = MiniLoadingAdLayout.access$900(this.this$0);
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putString("big_brother_ref_source_key", "biz_src_miniappD");
-    paramView.jdField_a_of_type_AndroidOsBundle = ((Bundle)localObject);
-    localObject = MiniLoadingAdLayout.access$1000(this.this$0, MiniLoadingAdLayout.access$000(this.this$0));
-    Bundle localBundle = MiniLoadingAdLayout.access$200(this.this$0, MiniLoadingAdLayout.access$000(this.this$0), MiniLoadingAdLayout.access$100(this.this$0).getUrlForClick(), 5);
-    paramView.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).toString();
-    QLog.i("MiniLoadingAdLayout", 1, "report click antiSpamParams=" + ((JSONObject)localObject).toString());
+    Object localObject1 = new Bundle();
+    ((Bundle)localObject1).putString("big_brother_ref_source_key", "biz_src_miniappD");
+    paramView.jdField_a_of_type_AndroidOsBundle = ((Bundle)localObject1);
+    localObject1 = this.this$0;
+    localObject1 = MiniLoadingAdLayout.access$1000((MiniLoadingAdLayout)localObject1, MiniLoadingAdLayout.access$000((MiniLoadingAdLayout)localObject1));
+    Object localObject2 = this.this$0;
+    localObject2 = MiniLoadingAdLayout.access$200((MiniLoadingAdLayout)localObject2, MiniLoadingAdLayout.access$000((MiniLoadingAdLayout)localObject2), MiniLoadingAdLayout.access$100(this.this$0).getUrlForClick(), 5);
+    paramView.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("report click antiSpamParams=");
+    localStringBuilder.append(((JSONObject)localObject1).toString());
+    QLog.i("MiniLoadingAdLayout", 1, localStringBuilder.toString());
     GdtHandler.a(paramView);
-    MiniLoadingAdLayout.report(localBundle);
-    if (this.loadingAdListener != null) {
-      this.loadingAdListener.onAdClick(this.type);
+    MiniLoadingAdLayout.report((Bundle)localObject2);
+    paramView = this.loadingAdListener;
+    if (paramView != null) {
+      paramView.onAdClick(this.type);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.MiniLoadingAdLayout.LoadingAdOnClickListener
  * JD-Core Version:    0.7.0.1
  */

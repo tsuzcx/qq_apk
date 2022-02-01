@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.ar.aidl;
 
 import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
 import android.os.Parcel;
 
 public abstract class IArGlobalConfigManager$Stub
@@ -14,30 +12,13 @@ public abstract class IArGlobalConfigManager$Stub
     attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
   }
   
-  public static IArGlobalConfigManager a(IBinder paramIBinder)
-  {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
-    if ((localIInterface != null) && ((localIInterface instanceof IArGlobalConfigManager))) {
-      return (IArGlobalConfigManager)localIInterface;
-    }
-    return new IArGlobalConfigManager.Stub.Proxy(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    switch (paramInt1)
+    if (paramInt1 != 1)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
+      if (paramInt1 != 1598968902) {
+        return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+      }
       paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
       return true;
     }
@@ -56,7 +37,7 @@ public abstract class IArGlobalConfigManager$Stub
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager.Stub
  * JD-Core Version:    0.7.0.1
  */

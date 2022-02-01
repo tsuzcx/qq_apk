@@ -4,6 +4,7 @@ import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.async.JobContext;
@@ -27,86 +28,90 @@ public class VideoInfo$CompressVideoSegment
   {
     VideoInfo localVideoInfo = (VideoInfo)paramImageInfo;
     if (QLog.isColorLevel()) {
-      QLog.d("CompressVideoSegment", 2, new Object[] { "CompressVideoSegment start. info status=", Integer.valueOf(localVideoInfo.jdField_g_of_type_Int) });
+      QLog.d("CompressVideoSegment", 2, new Object[] { "CompressVideoSegment start. info status=", Integer.valueOf(localVideoInfo.jdField_f_of_type_Int) });
     }
     String str = ImageInfo.b();
-    XMediaEditor localXMediaEditor;
-    int i;
-    for (;;)
+    try
     {
-      try
-      {
-        localXMediaEditor = (XMediaEditor)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (localXMediaEditor == null) {
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("CompressVideoSegment", 2, new Object[] { "CompressVideoSegment sourceVideoPath=", localVideoInfo.f });
-        }
-        str = VFSAssistantUtils.getSDKPrivatePath(str + localVideoInfo.f.substring(localVideoInfo.f.lastIndexOf("/") + 1, localVideoInfo.f.lastIndexOf(".")) + System.currentTimeMillis() + FileUtil.a(localVideoInfo.f));
-        i = TroopHomeworkHelper.a(localXMediaEditor.getContext(), localVideoInfo.f, str);
-        if (QLog.isColorLevel()) {
-          QLog.d("CompressVideoSegment", 2, new Object[] { "CompressVideo ret:", Integer.valueOf(i) });
-        }
-        if (i != 1) {
-          break label414;
-        }
-        str = localVideoInfo.f;
+      localXMediaEditor = (XMediaEditor)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localXMediaEditor == null) {
+        break label367;
       }
-      catch (OutOfMemoryError localOutOfMemoryError)
+      if (QLog.isColorLevel()) {
+        QLog.d("CompressVideoSegment", 2, new Object[] { "CompressVideoSegment sourceVideoPath=", localVideoInfo.jdField_f_of_type_JavaLangString });
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(localVideoInfo.jdField_f_of_type_JavaLangString.substring(localVideoInfo.jdField_f_of_type_JavaLangString.lastIndexOf("/") + 1, localVideoInfo.jdField_f_of_type_JavaLangString.lastIndexOf(".")));
+      localStringBuilder.append(System.currentTimeMillis());
+      localStringBuilder.append(FileUtil.a(localVideoInfo.jdField_f_of_type_JavaLangString));
+      str = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
+      i = TroopHomeworkHelper.a(localXMediaEditor.getContext(), localVideoInfo.jdField_f_of_type_JavaLangString, str);
+      if (QLog.isColorLevel()) {
+        QLog.d("CompressVideoSegment", 2, new Object[] { "CompressVideo ret:", Integer.valueOf(i) });
+      }
+      if (i != 1) {
+        break label433;
+      }
+      str = localVideoInfo.jdField_f_of_type_JavaLangString;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      for (;;)
       {
-        label217:
-        QLog.e("CompressVideoSegment", 1, "CompressVideoSegment error. OutOfMemoryError");
-        URLDrawable.clearMemoryCache();
-        System.gc();
-        if (this.jdField_a_of_type_Boolean) {
-          continue;
+        XMediaEditor localXMediaEditor;
+        int i;
+        label367:
+        continue;
+        if (i != 0) {
+          if (i != 1) {}
         }
+      }
+    }
+    if (FileUtils.fileExistsAndNotEmpty(str))
+    {
+      if (FileUtil.a(str) > 104857600L)
+      {
+        notifyError(new Error("200"));
+        return;
+      }
+      localVideoInfo.g = str;
+      ThreadManager.getUIHandler().post(new VideoInfo.CompressVideoSegment.1(this, localVideoInfo, localXMediaEditor));
+      if (!isCanceled())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("CompressVideoSegment", 2, new Object[] { "CompressVideoSegment notifyResult. mVideoCompressedPath=", localVideoInfo.g, ", info status=", Integer.valueOf(localVideoInfo.jdField_f_of_type_Int) });
+        }
+        notifyResult(localVideoInfo);
+      }
+    }
+    else
+    {
+      notifyError(new Error("-200"));
+      return;
+      notifyError(new Error("0"));
+      return;
+      QLog.e("CompressVideoSegment", 1, "CompressVideoSegment error. OutOfMemoryError");
+      URLDrawable.clearMemoryCache();
+      System.gc();
+      if (!this.jdField_a_of_type_Boolean)
+      {
         this.jdField_a_of_type_Boolean = true;
         a(paramJobContext, paramImageInfo);
         return;
-        notifyError(new Error("-200"));
-        return;
-        notifyError(new Error("0"));
-        return;
-        notifyError(new Error("-1"));
-        return;
       }
-      if (FileUtil.b(str))
-      {
-        if (FileUtil.a(str) > 104857600L)
-        {
-          notifyError(new Error("200"));
-          return;
-        }
-        localVideoInfo.jdField_g_of_type_JavaLangString = str;
-        ThreadManager.getUIHandler().post(new VideoInfo.CompressVideoSegment.1(this, localVideoInfo, localXMediaEditor));
-        if (isCanceled()) {
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("CompressVideoSegment", 2, new Object[] { "CompressVideoSegment notifyResult. mVideoCompressedPath=", localVideoInfo.jdField_g_of_type_JavaLangString, ", info status=", Integer.valueOf(localVideoInfo.jdField_g_of_type_Int) });
-        }
-        notifyResult(localVideoInfo);
-        return;
-      }
-      label414:
-      if (i != 0) {
-        if (i != 1) {
-          break label217;
-        }
-      }
+      notifyError(new Error("-1"));
     }
   }
   
-  public void onCancel()
+  protected void onCancel()
   {
     notifyError(new Error("c_2001"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.model.VideoInfo.CompressVideoSegment
  * JD-Core Version:    0.7.0.1
  */

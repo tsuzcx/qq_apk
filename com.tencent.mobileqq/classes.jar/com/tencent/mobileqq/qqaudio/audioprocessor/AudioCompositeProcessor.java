@@ -13,40 +13,39 @@ public class AudioCompositeProcessor
   {
     paramArrayOfByte = new IAudioProcessor.ProcessData(paramArrayOfByte, paramInt1, paramInt2);
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Object localObject2;
     for (;;)
     {
-      Object localObject = paramArrayOfByte;
-      IAudioProcessor localIAudioProcessor;
-      IAudioProcessor.ProcessData localProcessData;
-      if (localIterator.hasNext())
-      {
-        localIAudioProcessor = (IAudioProcessor)localIterator.next();
-        if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorIAudioProcessorListener != null) {
-          this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorIAudioProcessorListener.a(localIAudioProcessor, paramArrayOfByte);
-        }
-        localProcessData = localIAudioProcessor.a(paramArrayOfByte.jdField_a_of_type_ArrayOfByte, paramArrayOfByte.b, paramArrayOfByte.jdField_a_of_type_Int);
-        localObject = localProcessData;
-        if (localProcessData != null)
-        {
-          localObject = localProcessData;
-          if (localProcessData.jdField_a_of_type_ArrayOfByte != null)
-          {
-            if (localProcessData.jdField_a_of_type_Int != 0) {
-              break label121;
-            }
-            localObject = localProcessData;
-          }
-        }
+      localObject2 = paramArrayOfByte;
+      if (!localIterator.hasNext()) {
+        break;
       }
-      return localObject;
-      label121:
-      paramArrayOfByte = localProcessData;
-      if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorIAudioProcessorListener != null)
+      IAudioProcessor localIAudioProcessor = (IAudioProcessor)localIterator.next();
+      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorIAudioProcessorListener;
+      if (localObject1 != null) {
+        ((IAudioProcessorListener)localObject1).a(localIAudioProcessor, paramArrayOfByte);
+      }
+      localObject1 = localIAudioProcessor.a(paramArrayOfByte.jdField_a_of_type_ArrayOfByte, paramArrayOfByte.b, paramArrayOfByte.jdField_a_of_type_Int);
+      localObject2 = localObject1;
+      if (localObject1 == null) {
+        break;
+      }
+      localObject2 = localObject1;
+      if (((IAudioProcessor.ProcessData)localObject1).jdField_a_of_type_ArrayOfByte == null) {
+        break;
+      }
+      if (((IAudioProcessor.ProcessData)localObject1).jdField_a_of_type_Int == 0) {
+        return localObject1;
+      }
+      localObject2 = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorIAudioProcessorListener;
+      paramArrayOfByte = (byte[])localObject1;
+      if (localObject2 != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorIAudioProcessorListener.b(localIAudioProcessor, localProcessData);
-        paramArrayOfByte = localProcessData;
+        ((IAudioProcessorListener)localObject2).b(localIAudioProcessor, (IAudioProcessor.ProcessData)localObject1);
+        paramArrayOfByte = (byte[])localObject1;
       }
     }
+    return localObject2;
   }
   
   public void a()
@@ -77,7 +76,7 @@ public class AudioCompositeProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.audioprocessor.AudioCompositeProcessor
  * JD-Core Version:    0.7.0.1
  */

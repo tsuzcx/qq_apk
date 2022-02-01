@@ -20,27 +20,29 @@ public final class ContinuationInterceptor$DefaultImpls
   public static <E extends CoroutineContext.Element> E get(ContinuationInterceptor paramContinuationInterceptor, @NotNull CoroutineContext.Key<E> paramKey)
   {
     Intrinsics.checkParameterIsNotNull(paramKey, "key");
-    if ((paramKey instanceof AbstractCoroutineContextKey))
+    boolean bool = paramKey instanceof AbstractCoroutineContextKey;
+    Object localObject = null;
+    if (bool)
     {
-      if (((AbstractCoroutineContextKey)paramKey).isSubKey$kotlin_stdlib(paramContinuationInterceptor.getKey()))
+      AbstractCoroutineContextKey localAbstractCoroutineContextKey = (AbstractCoroutineContextKey)paramKey;
+      paramKey = localObject;
+      if (localAbstractCoroutineContextKey.isSubKey$kotlin_stdlib(paramContinuationInterceptor.getKey()))
       {
-        paramKey = ((AbstractCoroutineContextKey)paramKey).tryCast$kotlin_stdlib((CoroutineContext.Element)paramContinuationInterceptor);
-        paramContinuationInterceptor = paramKey;
+        paramKey = localAbstractCoroutineContextKey.tryCast$kotlin_stdlib((CoroutineContext.Element)paramContinuationInterceptor);
         if (!(paramKey instanceof CoroutineContext.Element)) {
-          paramContinuationInterceptor = null;
+          return null;
         }
-        return paramContinuationInterceptor;
       }
-      return null;
+      return paramKey;
     }
-    if (ContinuationInterceptor.Key == paramKey) {
-      if (paramContinuationInterceptor == null) {
-        throw new TypeCastException("null cannot be cast to non-null type E");
+    if (ContinuationInterceptor.Key == paramKey)
+    {
+      if (paramContinuationInterceptor != null) {
+        return (CoroutineContext.Element)paramContinuationInterceptor;
       }
+      throw new TypeCastException("null cannot be cast to non-null type E");
     }
-    for (paramContinuationInterceptor = (CoroutineContext.Element)paramContinuationInterceptor;; paramContinuationInterceptor = null) {
-      return paramContinuationInterceptor;
-    }
+    return null;
   }
   
   @NotNull
@@ -49,13 +51,19 @@ public final class ContinuationInterceptor$DefaultImpls
     Intrinsics.checkParameterIsNotNull(paramKey, "key");
     if ((paramKey instanceof AbstractCoroutineContextKey))
     {
-      if ((((AbstractCoroutineContextKey)paramKey).isSubKey$kotlin_stdlib(paramContinuationInterceptor.getKey())) && (((AbstractCoroutineContextKey)paramKey).tryCast$kotlin_stdlib((CoroutineContext.Element)paramContinuationInterceptor) != null)) {
-        return (CoroutineContext)EmptyCoroutineContext.INSTANCE;
+      AbstractCoroutineContextKey localAbstractCoroutineContextKey = (AbstractCoroutineContextKey)paramKey;
+      paramKey = paramContinuationInterceptor;
+      if (localAbstractCoroutineContextKey.isSubKey$kotlin_stdlib(paramContinuationInterceptor.getKey()))
+      {
+        paramKey = paramContinuationInterceptor;
+        if (localAbstractCoroutineContextKey.tryCast$kotlin_stdlib((CoroutineContext.Element)paramContinuationInterceptor) != null) {
+          paramKey = EmptyCoroutineContext.INSTANCE;
+        }
       }
-      return (CoroutineContext)paramContinuationInterceptor;
+      return (CoroutineContext)paramKey;
     }
     if (ContinuationInterceptor.Key == paramKey) {
-      return (CoroutineContext)EmptyCoroutineContext.INSTANCE;
+      paramContinuationInterceptor = EmptyCoroutineContext.INSTANCE;
     }
     return (CoroutineContext)paramContinuationInterceptor;
   }
@@ -74,7 +82,7 @@ public final class ContinuationInterceptor$DefaultImpls
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.coroutines.ContinuationInterceptor.DefaultImpls
  * JD-Core Version:    0.7.0.1
  */

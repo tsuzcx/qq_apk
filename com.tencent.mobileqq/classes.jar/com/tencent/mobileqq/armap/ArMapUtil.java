@@ -12,84 +12,55 @@ import mqq.app.MobileQQ;
 public class ArMapUtil
 {
   static SimpleDateFormat a;
-  public static boolean a;
+  public static boolean a = false;
   static SimpleDateFormat b;
-  
-  static
-  {
-    jdField_a_of_type_JavaTextSimpleDateFormat = null;
-    b = null;
-    jdField_a_of_type_Boolean = false;
-  }
   
   public static long a(String paramString)
   {
-    if (jdField_a_of_type_JavaTextSimpleDateFormat == null)
+    if (a == null)
     {
-      jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
-      jdField_a_of_type_JavaTextSimpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+      a = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
+      a.setTimeZone(TimeZone.getTimeZone("GMT+8"));
     }
     long l2 = -1L;
+    long l1;
     try
     {
-      l1 = jdField_a_of_type_JavaTextSimpleDateFormat.parse(paramString).getTime();
-      if (QLog.isColorLevel()) {
-        QLog.d("ArMapUtil", 2, "data2Millis, date = " + paramString + ",millis = " + l1);
-      }
-      return l1;
+      l1 = a.parse(paramString).getTime();
     }
     catch (Exception localException)
     {
-      for (;;)
+      l1 = l2;
+      if (QLog.isColorLevel())
       {
-        long l1 = l2;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ArMapUtil", 2, "", localException);
-          l1 = l2;
-        }
+        QLog.d("ArMapUtil", 2, "", localException);
+        l1 = l2;
       }
     }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("data2Millis, date = ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",millis = ");
+      localStringBuilder.append(l1);
+      QLog.d("ArMapUtil", 2, localStringBuilder.toString());
+    }
+    return l1;
   }
   
   public static SharedPreferences a(AppRuntime paramAppRuntime)
   {
-    return paramAppRuntime.getApplication().getSharedPreferences(paramAppRuntime.getAccount() + "sp_ar_map", 4);
-  }
-  
-  public static long b(String paramString)
-  {
-    if (b == null)
-    {
-      b = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-      b.setTimeZone(TimeZone.getTimeZone("GMT+8"));
-    }
-    long l2 = -1L;
-    try
-    {
-      l1 = b.parse(paramString).getTime();
-      if (QLog.isColorLevel()) {
-        QLog.d("ArMapUtil", 2, "data2Millis1, date = " + paramString + ",millis = " + l1);
-      }
-      return l1;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        long l1 = l2;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ArMapUtil", 2, "", localException);
-          l1 = l2;
-        }
-      }
-    }
+    MobileQQ localMobileQQ = paramAppRuntime.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramAppRuntime.getAccount());
+    localStringBuilder.append("sp_ar_map");
+    return localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ArMapUtil
  * JD-Core Version:    0.7.0.1
  */

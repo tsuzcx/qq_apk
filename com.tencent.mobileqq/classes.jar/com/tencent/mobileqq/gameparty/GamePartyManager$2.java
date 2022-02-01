@@ -19,7 +19,7 @@ class GamePartyManager$2
     //   14: aload_1
     //   15: ldc 31
     //   17: invokevirtual 35	org/json/JSONObject:getLong	(Ljava/lang/String;)J
-    //   20: lstore 4
+    //   20: lstore 6
     //   22: aload_1
     //   23: ldc 37
     //   25: invokevirtual 29	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
@@ -29,10 +29,10 @@ class GamePartyManager$2
     //   32: invokevirtual 43	org/json/JSONObject:getInt	(Ljava/lang/String;)I
     //   35: istore_2
     //   36: invokestatic 49	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getServerTime	()J
-    //   39: lstore 6
+    //   39: lstore 4
     //   41: ldc 51
     //   43: monitorenter
-    //   44: lload 4
+    //   44: lload 6
     //   46: aload_0
     //   47: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
     //   50: getfield 55	com/tencent/mobileqq/gameparty/GamePartyManager:jdField_b_of_type_Long	J
@@ -49,245 +49,269 @@ class GamePartyManager$2
     //   74: return
     //   75: aload_0
     //   76: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
-    //   79: lload 4
+    //   79: lload 6
     //   81: putfield 55	com/tencent/mobileqq/gameparty/GamePartyManager:jdField_b_of_type_Long	J
     //   84: ldc 51
     //   86: monitorexit
-    //   87: lload 6
-    //   89: iload_2
-    //   90: i2l
-    //   91: lcmp
-    //   92: ifle +394 -> 486
-    //   95: lload 6
-    //   97: iload_2
-    //   98: i2l
-    //   99: lsub
-    //   100: lstore 4
-    //   102: aload_0
-    //   103: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
-    //   106: aload_1
-    //   107: ldc 71
-    //   109: invokevirtual 43	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   112: putfield 75	com/tencent/mobileqq/gameparty/GamePartyManager:d	I
-    //   115: aload_0
-    //   116: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
-    //   119: getfield 75	com/tencent/mobileqq/gameparty/GamePartyManager:d	I
-    //   122: ifgt +13 -> 135
-    //   125: aload_0
-    //   126: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
-    //   129: getstatic 77	com/tencent/mobileqq/gameparty/GamePartyManager:jdField_a_of_type_Int	I
-    //   132: putfield 75	com/tencent/mobileqq/gameparty/GamePartyManager:d	I
-    //   135: aload_1
-    //   136: ldc 79
-    //   138: invokevirtual 43	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   141: istore_3
-    //   142: invokestatic 61	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   145: ifeq +62 -> 207
-    //   148: ldc 63
-    //   150: iconst_2
-    //   151: new 81	java/lang/StringBuilder
-    //   154: dup
-    //   155: invokespecial 82	java/lang/StringBuilder:<init>	()V
-    //   158: ldc 84
-    //   160: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   163: iload_2
-    //   164: invokevirtual 91	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   167: ldc 93
-    //   169: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   172: lload 4
-    //   174: invokevirtual 96	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   177: ldc 98
-    //   179: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   182: aload_0
-    //   183: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
-    //   186: getfield 75	com/tencent/mobileqq/gameparty/GamePartyManager:d	I
-    //   189: invokevirtual 91	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   192: ldc 100
-    //   194: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   197: iload_3
-    //   198: invokevirtual 91	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   201: invokevirtual 104	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   204: invokestatic 69	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   207: lload 4
-    //   209: aload_0
-    //   210: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
-    //   213: getfield 75	com/tencent/mobileqq/gameparty/GamePartyManager:d	I
-    //   216: i2l
-    //   217: lcmp
-    //   218: ifge +260 -> 478
-    //   221: iload_3
-    //   222: ifle +256 -> 478
-    //   225: iload_3
-    //   226: iconst_5
-    //   227: if_icmpge +251 -> 478
-    //   230: aload_0
-    //   231: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
-    //   234: aload_1
-    //   235: ldc 106
-    //   237: invokevirtual 43	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   240: invokestatic 109	com/tencent/mobileqq/gameparty/GamePartyManager:a	(Lcom/tencent/mobileqq/gameparty/GamePartyManager;I)I
-    //   243: pop
-    //   244: aload_0
-    //   245: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
-    //   248: aload_1
-    //   249: ldc 111
-    //   251: invokevirtual 115	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   254: invokestatic 118	com/tencent/mobileqq/gameparty/GamePartyManager:a	(Lcom/tencent/mobileqq/gameparty/GamePartyManager;Ljava/lang/String;)Ljava/lang/String;
-    //   257: pop
-    //   258: aload_0
-    //   259: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
-    //   262: aload_1
-    //   263: ldc 120
-    //   265: invokevirtual 115	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   268: putfield 123	com/tencent/mobileqq/gameparty/GamePartyManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   271: aload_0
-    //   272: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
-    //   275: aload_1
-    //   276: ldc 125
-    //   278: invokevirtual 43	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   281: putfield 127	com/tencent/mobileqq/gameparty/GamePartyManager:jdField_b_of_type_Int	I
-    //   284: aload_0
-    //   285: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
-    //   288: aload_1
-    //   289: ldc 129
-    //   291: invokevirtual 43	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   294: putfield 132	com/tencent/mobileqq/gameparty/GamePartyManager:c	I
-    //   297: aload_0
-    //   298: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
-    //   301: iload_2
-    //   302: i2l
-    //   303: putfield 134	com/tencent/mobileqq/gameparty/GamePartyManager:jdField_a_of_type_Long	J
-    //   306: aload_1
-    //   307: ldc 136
-    //   309: invokevirtual 29	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   312: astore 8
-    //   314: aload_0
-    //   315: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
-    //   318: aload 8
-    //   320: ldc 138
-    //   322: invokevirtual 115	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   325: putfield 140	com/tencent/mobileqq/gameparty/GamePartyManager:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   328: aload_0
-    //   329: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
-    //   332: aload 8
-    //   334: ldc 79
-    //   336: invokevirtual 43	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   339: putfield 143	com/tencent/mobileqq/gameparty/GamePartyManager:e	I
-    //   342: aload_0
-    //   343: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
-    //   346: getfield 146	com/tencent/mobileqq/gameparty/GamePartyManager:jdField_a_of_type_JavaUtilVector	Ljava/util/Vector;
-    //   349: invokevirtual 151	java/util/Vector:clear	()V
-    //   352: aload_1
-    //   353: ldc 153
-    //   355: invokevirtual 157	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   358: astore_1
-    //   359: iconst_0
-    //   360: istore_2
-    //   361: iload_2
-    //   362: aload_1
-    //   363: invokevirtual 163	org/json/JSONArray:length	()I
-    //   366: if_icmpge +130 -> 496
-    //   369: aload_1
-    //   370: iload_2
-    //   371: invokevirtual 166	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
-    //   374: astore 8
-    //   376: aload 8
-    //   378: ldc 106
-    //   380: invokevirtual 43	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   383: istore_3
-    //   384: aload 8
-    //   386: ldc 111
-    //   388: invokevirtual 115	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   391: astore 8
-    //   393: iload_3
-    //   394: iflt +39 -> 433
-    //   397: aload 8
-    //   399: invokestatic 172	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   402: ifne +31 -> 433
-    //   405: aload_0
-    //   406: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
-    //   409: getfield 146	com/tencent/mobileqq/gameparty/GamePartyManager:jdField_a_of_type_JavaUtilVector	Ljava/util/Vector;
-    //   412: new 174	com/tencent/mobileqq/gameparty/GamePartyManager$Session
-    //   415: dup
-    //   416: aload_0
-    //   417: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
-    //   420: iload_3
-    //   421: invokestatic 177	com/tencent/mobileqq/gameparty/GamePartyManager:b	(I)I
-    //   424: aload 8
-    //   426: invokespecial 180	com/tencent/mobileqq/gameparty/GamePartyManager$Session:<init>	(Lcom/tencent/mobileqq/gameparty/GamePartyManager;ILjava/lang/String;)V
-    //   429: invokevirtual 184	java/util/Vector:add	(Ljava/lang/Object;)Z
-    //   432: pop
-    //   433: iload_2
-    //   434: iconst_1
-    //   435: iadd
-    //   436: istore_2
-    //   437: goto -76 -> 361
-    //   440: astore_1
-    //   441: ldc 51
-    //   443: monitorexit
-    //   444: aload_1
-    //   445: athrow
-    //   446: astore_1
-    //   447: invokestatic 61	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   450: ifeq +28 -> 478
-    //   453: ldc 63
-    //   455: iconst_2
-    //   456: new 81	java/lang/StringBuilder
-    //   459: dup
-    //   460: invokespecial 82	java/lang/StringBuilder:<init>	()V
-    //   463: ldc 186
-    //   465: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   468: aload_1
-    //   469: invokevirtual 189	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   472: invokevirtual 104	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   475: invokestatic 69	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   87: iload_2
+    //   88: i2l
+    //   89: lstore 6
+    //   91: lload 4
+    //   93: lload 6
+    //   95: lcmp
+    //   96: ifle +13 -> 109
+    //   99: lload 4
+    //   101: lload 6
+    //   103: lsub
+    //   104: lstore 4
+    //   106: goto +10 -> 116
+    //   109: lload 6
+    //   111: lload 4
+    //   113: lsub
+    //   114: lstore 4
+    //   116: aload_0
+    //   117: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
+    //   120: aload_1
+    //   121: ldc 71
+    //   123: invokevirtual 43	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   126: putfield 75	com/tencent/mobileqq/gameparty/GamePartyManager:d	I
+    //   129: aload_0
+    //   130: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
+    //   133: getfield 75	com/tencent/mobileqq/gameparty/GamePartyManager:d	I
+    //   136: ifgt +13 -> 149
+    //   139: aload_0
+    //   140: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
+    //   143: getstatic 77	com/tencent/mobileqq/gameparty/GamePartyManager:jdField_a_of_type_Int	I
+    //   146: putfield 75	com/tencent/mobileqq/gameparty/GamePartyManager:d	I
+    //   149: aload_1
+    //   150: ldc 79
+    //   152: invokevirtual 43	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   155: istore_3
+    //   156: invokestatic 61	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   159: ifeq +90 -> 249
+    //   162: new 81	java/lang/StringBuilder
+    //   165: dup
+    //   166: invokespecial 82	java/lang/StringBuilder:<init>	()V
+    //   169: astore 8
+    //   171: aload 8
+    //   173: ldc 84
+    //   175: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   178: pop
+    //   179: aload 8
+    //   181: iload_2
+    //   182: invokevirtual 91	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   185: pop
+    //   186: aload 8
+    //   188: ldc 93
+    //   190: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   193: pop
+    //   194: aload 8
+    //   196: lload 4
+    //   198: invokevirtual 96	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   201: pop
+    //   202: aload 8
+    //   204: ldc 98
+    //   206: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   209: pop
+    //   210: aload 8
+    //   212: aload_0
+    //   213: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
+    //   216: getfield 75	com/tencent/mobileqq/gameparty/GamePartyManager:d	I
+    //   219: invokevirtual 91	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   222: pop
+    //   223: aload 8
+    //   225: ldc 100
+    //   227: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   230: pop
+    //   231: aload 8
+    //   233: iload_3
+    //   234: invokevirtual 91	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   237: pop
+    //   238: ldc 63
+    //   240: iconst_2
+    //   241: aload 8
+    //   243: invokevirtual 104	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   246: invokestatic 69	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   249: lload 4
+    //   251: aload_0
+    //   252: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
+    //   255: getfield 75	com/tencent/mobileqq/gameparty/GamePartyManager:d	I
+    //   258: i2l
+    //   259: lcmp
+    //   260: ifge +274 -> 534
+    //   263: iload_3
+    //   264: ifle +270 -> 534
+    //   267: iload_3
+    //   268: iconst_5
+    //   269: if_icmpge +265 -> 534
+    //   272: aload_0
+    //   273: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
+    //   276: aload_1
+    //   277: ldc 106
+    //   279: invokevirtual 43	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   282: invokestatic 109	com/tencent/mobileqq/gameparty/GamePartyManager:a	(Lcom/tencent/mobileqq/gameparty/GamePartyManager;I)I
+    //   285: pop
+    //   286: aload_0
+    //   287: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
+    //   290: aload_1
+    //   291: ldc 111
+    //   293: invokevirtual 115	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   296: invokestatic 118	com/tencent/mobileqq/gameparty/GamePartyManager:a	(Lcom/tencent/mobileqq/gameparty/GamePartyManager;Ljava/lang/String;)Ljava/lang/String;
+    //   299: pop
+    //   300: aload_0
+    //   301: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
+    //   304: aload_1
+    //   305: ldc 120
+    //   307: invokevirtual 115	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   310: putfield 123	com/tencent/mobileqq/gameparty/GamePartyManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   313: aload_0
+    //   314: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
+    //   317: aload_1
+    //   318: ldc 125
+    //   320: invokevirtual 43	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   323: putfield 127	com/tencent/mobileqq/gameparty/GamePartyManager:jdField_b_of_type_Int	I
+    //   326: aload_0
+    //   327: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
+    //   330: aload_1
+    //   331: ldc 129
+    //   333: invokevirtual 43	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   336: putfield 132	com/tencent/mobileqq/gameparty/GamePartyManager:c	I
+    //   339: aload_0
+    //   340: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
+    //   343: lload 6
+    //   345: putfield 134	com/tencent/mobileqq/gameparty/GamePartyManager:jdField_a_of_type_Long	J
+    //   348: aload_1
+    //   349: ldc 136
+    //   351: invokevirtual 29	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   354: astore 8
+    //   356: aload_0
+    //   357: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
+    //   360: aload 8
+    //   362: ldc 138
+    //   364: invokevirtual 115	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   367: putfield 140	com/tencent/mobileqq/gameparty/GamePartyManager:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   370: aload_0
+    //   371: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
+    //   374: aload 8
+    //   376: ldc 79
+    //   378: invokevirtual 43	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   381: putfield 143	com/tencent/mobileqq/gameparty/GamePartyManager:e	I
+    //   384: aload_0
+    //   385: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
+    //   388: getfield 146	com/tencent/mobileqq/gameparty/GamePartyManager:jdField_a_of_type_JavaUtilVector	Ljava/util/Vector;
+    //   391: invokevirtual 151	java/util/Vector:clear	()V
+    //   394: aload_1
+    //   395: ldc 153
+    //   397: invokevirtual 157	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   400: astore_1
+    //   401: iconst_0
+    //   402: istore_2
+    //   403: iload_2
+    //   404: aload_1
+    //   405: invokevirtual 163	org/json/JSONArray:length	()I
+    //   408: if_icmpge +70 -> 478
+    //   411: aload_1
+    //   412: iload_2
+    //   413: invokevirtual 166	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   416: astore 8
+    //   418: aload 8
+    //   420: ldc 106
+    //   422: invokevirtual 43	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   425: istore_3
+    //   426: aload 8
+    //   428: ldc 111
+    //   430: invokevirtual 115	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   433: astore 8
+    //   435: iload_3
+    //   436: iflt +111 -> 547
+    //   439: aload 8
+    //   441: invokestatic 172	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   444: ifne +103 -> 547
+    //   447: aload_0
+    //   448: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
+    //   451: getfield 146	com/tencent/mobileqq/gameparty/GamePartyManager:jdField_a_of_type_JavaUtilVector	Ljava/util/Vector;
+    //   454: new 174	com/tencent/mobileqq/gameparty/GamePartyManager$Session
+    //   457: dup
+    //   458: aload_0
+    //   459: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
+    //   462: iload_3
+    //   463: invokestatic 177	com/tencent/mobileqq/gameparty/GamePartyManager:b	(I)I
+    //   466: aload 8
+    //   468: invokespecial 180	com/tencent/mobileqq/gameparty/GamePartyManager$Session:<init>	(Lcom/tencent/mobileqq/gameparty/GamePartyManager;ILjava/lang/String;)V
+    //   471: invokevirtual 184	java/util/Vector:add	(Ljava/lang/Object;)Z
+    //   474: pop
+    //   475: goto +72 -> 547
     //   478: aload_0
     //   479: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
-    //   482: invokevirtual 191	com/tencent/mobileqq/gameparty/GamePartyManager:b	()V
+    //   482: invokevirtual 186	com/tencent/mobileqq/gameparty/GamePartyManager:a	()V
     //   485: return
-    //   486: iload_2
-    //   487: i2l
-    //   488: lload 6
-    //   490: lsub
-    //   491: lstore 4
-    //   493: goto -391 -> 102
-    //   496: aload_0
-    //   497: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
-    //   500: invokevirtual 193	com/tencent/mobileqq/gameparty/GamePartyManager:a	()V
-    //   503: return
-    //   504: astore 8
-    //   506: goto -391 -> 115
+    //   486: astore_1
+    //   487: ldc 51
+    //   489: monitorexit
+    //   490: aload_1
+    //   491: athrow
+    //   492: astore_1
+    //   493: invokestatic 61	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   496: ifeq +38 -> 534
+    //   499: new 81	java/lang/StringBuilder
+    //   502: dup
+    //   503: invokespecial 82	java/lang/StringBuilder:<init>	()V
+    //   506: astore 8
+    //   508: aload 8
+    //   510: ldc 188
+    //   512: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   515: pop
+    //   516: aload 8
+    //   518: aload_1
+    //   519: invokevirtual 191	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   522: pop
+    //   523: ldc 63
+    //   525: iconst_2
+    //   526: aload 8
+    //   528: invokevirtual 104	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   531: invokestatic 69	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   534: aload_0
+    //   535: getfield 12	com/tencent/mobileqq/gameparty/GamePartyManager$2:a	Lcom/tencent/mobileqq/gameparty/GamePartyManager;
+    //   538: invokevirtual 193	com/tencent/mobileqq/gameparty/GamePartyManager:b	()V
+    //   541: return
+    //   542: astore 8
+    //   544: goto -415 -> 129
+    //   547: iload_2
+    //   548: iconst_1
+    //   549: iadd
+    //   550: istore_2
+    //   551: goto -148 -> 403
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	509	0	this	2
-    //   0	509	1	paramString	java.lang.String
-    //   35	452	2	i	int
-    //   141	280	3	j	int
-    //   20	472	4	l1	long
-    //   39	450	6	l2	long
-    //   312	113	8	localObject	Object
-    //   504	1	8	localJSONException	org.json.JSONException
+    //   0	554	0	this	2
+    //   0	554	1	paramString	java.lang.String
+    //   35	516	2	i	int
+    //   155	308	3	j	int
+    //   39	211	4	l1	long
+    //   20	324	6	l2	long
+    //   169	358	8	localObject	Object
+    //   542	1	8	localJSONException	org.json.JSONException
     // Exception table:
     //   from	to	target	type
-    //   44	71	440	finally
-    //   71	74	440	finally
-    //   75	87	440	finally
-    //   441	444	440	finally
-    //   0	44	446	org/json/JSONException
-    //   115	135	446	org/json/JSONException
-    //   135	207	446	org/json/JSONException
-    //   207	221	446	org/json/JSONException
-    //   230	359	446	org/json/JSONException
-    //   361	393	446	org/json/JSONException
-    //   397	433	446	org/json/JSONException
-    //   444	446	446	org/json/JSONException
-    //   496	503	446	org/json/JSONException
-    //   102	115	504	org/json/JSONException
+    //   44	71	486	finally
+    //   71	74	486	finally
+    //   75	87	486	finally
+    //   487	490	486	finally
+    //   0	44	492	org/json/JSONException
+    //   129	149	492	org/json/JSONException
+    //   149	249	492	org/json/JSONException
+    //   249	263	492	org/json/JSONException
+    //   272	401	492	org/json/JSONException
+    //   403	435	492	org/json/JSONException
+    //   439	475	492	org/json/JSONException
+    //   478	485	492	org/json/JSONException
+    //   490	492	492	org/json/JSONException
+    //   116	129	542	org/json/JSONException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gameparty.GamePartyManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.statistics;
 
-import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import mqq.app.AppRuntime;
 
 public class ReportTask
 {
   protected int a;
-  protected QQAppInterface a;
   protected String a;
   protected List<String> a;
+  protected AppRuntime a;
   protected int b;
   protected String b;
   protected int c;
@@ -18,13 +18,13 @@ public class ReportTask
   protected String d = "";
   protected String e = "";
   
-  public ReportTask(QQAppInterface paramQQAppInterface)
+  public ReportTask(AppRuntime paramAppRuntime)
   {
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_b_of_type_JavaLangString = "";
     this.jdField_c_of_type_JavaLangString = "";
     this.jdField_b_of_type_Int = 1;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
   }
   
   public ReportTask a(int paramInt)
@@ -52,15 +52,16 @@ public class ReportTask
   
   public void a()
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if ((localList != null) && (localList.size() != 0))
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.e, this.jdField_c_of_type_JavaLangString, this.d, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, "", "", "", "");
+      while (this.jdField_a_of_type_JavaUtilList.size() < 4) {
+        this.jdField_a_of_type_JavaUtilList.add("");
+      }
+      ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.e, this.jdField_c_of_type_JavaLangString, this.d, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, (String)this.jdField_a_of_type_JavaUtilList.get(0), (String)this.jdField_a_of_type_JavaUtilList.get(1), (String)this.jdField_a_of_type_JavaUtilList.get(2), (String)this.jdField_a_of_type_JavaUtilList.get(3));
       return;
     }
-    while (this.jdField_a_of_type_JavaUtilList.size() < 4) {
-      this.jdField_a_of_type_JavaUtilList.add("");
-    }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.e, this.jdField_c_of_type_JavaLangString, this.d, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, (String)this.jdField_a_of_type_JavaUtilList.get(0), (String)this.jdField_a_of_type_JavaUtilList.get(1), (String)this.jdField_a_of_type_JavaUtilList.get(2), (String)this.jdField_a_of_type_JavaUtilList.get(3));
+    ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.e, this.jdField_c_of_type_JavaLangString, this.d, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, "", "", "", "");
   }
   
   public ReportTask b(int paramInt)
@@ -95,7 +96,7 @@ public class ReportTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.ReportTask
  * JD-Core Version:    0.7.0.1
  */

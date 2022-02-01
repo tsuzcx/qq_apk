@@ -16,21 +16,16 @@ class TileList<T>
   public TileList.Tile<T> addOrReplace(TileList.Tile<T> paramTile)
   {
     int i = this.mTiles.indexOfKey(paramTile.mStartPosition);
-    Object localObject;
     if (i < 0)
     {
       this.mTiles.put(paramTile.mStartPosition, paramTile);
-      localObject = null;
+      return null;
     }
-    TileList.Tile localTile;
-    do
-    {
-      return localObject;
-      localTile = (TileList.Tile)this.mTiles.valueAt(i);
-      this.mTiles.setValueAt(i, paramTile);
-      localObject = localTile;
-    } while (this.mLastAccessedTile != localTile);
-    this.mLastAccessedTile = paramTile;
+    TileList.Tile localTile = (TileList.Tile)this.mTiles.valueAt(i);
+    this.mTiles.setValueAt(i, paramTile);
+    if (this.mLastAccessedTile == localTile) {
+      this.mLastAccessedTile = paramTile;
+    }
     return localTile;
   }
   
@@ -46,7 +41,8 @@ class TileList<T>
   
   public T getItemAt(int paramInt)
   {
-    if ((this.mLastAccessedTile == null) || (!this.mLastAccessedTile.containsPosition(paramInt)))
+    TileList.Tile localTile = this.mLastAccessedTile;
+    if ((localTile == null) || (!localTile.containsPosition(paramInt)))
     {
       int i = this.mTileSize;
       i = this.mTiles.indexOfKey(paramInt - paramInt % i);

@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.app;
 
 import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.login.PwdSetUtil;
-import com.tencent.mobileqq.onlinestatus.AccountPanel.OnAccountExitListener;
+import com.tencent.mobileqq.onlinestatus.IAccountPanel.OnAccountExitListener;
 import com.tencent.mobileqq.statistics.ReportController;
 import java.lang.ref.WeakReference;
 
 final class FrameHelperActivity$OnAccountExitListener
-  implements AccountPanel.OnAccountExitListener
+  implements IAccountPanel.OnAccountExitListener
 {
   private WeakReference<FrameHelperActivity> a;
   
@@ -20,25 +19,30 @@ final class FrameHelperActivity$OnAccountExitListener
   public void a()
   {
     FrameHelperActivity localFrameHelperActivity = (FrameHelperActivity)this.a.get();
-    if (localFrameHelperActivity == null) {}
-    FragmentActivity localFragmentActivity;
-    QQAppInterface localQQAppInterface;
-    do
+    if (localFrameHelperActivity == null) {
+      return;
+    }
+    QBaseActivity localQBaseActivity = localFrameHelperActivity.a();
+    if (localQBaseActivity != null)
     {
-      do
-      {
+      if (localQBaseActivity.getAppRuntime() == null) {
         return;
-        localFragmentActivity = localFrameHelperActivity.getActivity();
-      } while ((localFragmentActivity == null) || (localFragmentActivity.getAppInterface() == null));
-      localQQAppInterface = localFragmentActivity.app;
-    } while ((PwdSetUtil.a(localQQAppInterface, localFragmentActivity)) || ((FrameHelperActivity.a(localFrameHelperActivity) != null) && (FrameHelperActivity.a(localFrameHelperActivity).isShowing())));
-    FrameHelperActivity.a(localFrameHelperActivity, localQQAppInterface, localFragmentActivity);
-    ReportController.b(localQQAppInterface, "dc00898", "", "", "0X800A00D", "0X800A00D", 0, 0, "", "", "", "");
+      }
+      QQAppInterface localQQAppInterface = (QQAppInterface)localQBaseActivity.getAppRuntime();
+      if (PwdSetUtil.a(localQQAppInterface, localQBaseActivity)) {
+        return;
+      }
+      if ((FrameHelperActivity.a(localFrameHelperActivity) != null) && (FrameHelperActivity.a(localFrameHelperActivity).isShowing())) {
+        return;
+      }
+      FrameHelperActivity.a(localFrameHelperActivity, localQQAppInterface, localQBaseActivity);
+      ReportController.b(localQQAppInterface, "dc00898", "", "", "0X800A00D", "0X800A00D", 0, 0, "", "", "", "");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.FrameHelperActivity.OnAccountExitListener
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ public class TPLogUtil
   public static final int WARNING = 20;
   private static boolean isDebug = true;
   private static int logPrintLevel = 50;
-  private static TPPlayerMgr.OnLogListener onLogListener = null;
+  private static TPPlayerMgr.OnLogListener onLogListener;
   
   public static void d(String paramString1, String paramString2)
   {
@@ -33,15 +33,26 @@ public class TPLogUtil
   
   public static void e(String paramString1, Throwable paramThrowable, String paramString2)
   {
-    String str = "";
-    if (!TextUtils.isEmpty(paramString2)) {
-      str = paramString2 + "\n";
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append("\n");
+      paramString2 = ((StringBuilder)localObject).toString();
     }
-    paramString2 = str;
-    if (paramThrowable != null) {
-      paramString2 = str + Log.getStackTraceString(paramThrowable);
+    else
+    {
+      paramString2 = "";
     }
-    printTag(10, paramString1, paramString2, new Object[0]);
+    Object localObject = paramString2;
+    if (paramThrowable != null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(Log.getStackTraceString(paramThrowable));
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    printTag(10, paramString1, (String)localObject, new Object[0]);
   }
   
   public static void i(String paramString1, String paramString2)
@@ -51,20 +62,26 @@ public class TPLogUtil
   
   private static void logToLogListener(int paramInt, String paramString1, String paramString2)
   {
-    switch (paramInt)
+    if (paramInt != 10)
     {
-    default: 
-      return;
-    case 60: 
-      onLogListener.v(paramString1, paramString2);
-      return;
-    case 50: 
-      onLogListener.d(paramString1, paramString2);
-      return;
-    case 40: 
-      onLogListener.i(paramString1, paramString2);
-      return;
-    case 20: 
+      if (paramInt != 20)
+      {
+        if (paramInt != 40)
+        {
+          if (paramInt != 50)
+          {
+            if (paramInt != 60) {
+              return;
+            }
+            onLogListener.v(paramString1, paramString2);
+            return;
+          }
+          onLogListener.d(paramString1, paramString2);
+          return;
+        }
+        onLogListener.i(paramString1, paramString2);
+        return;
+      }
       onLogListener.w(paramString1, paramString2);
       return;
     }
@@ -81,35 +98,46 @@ public class TPLogUtil
     if (paramVarArgs != null) {}
     try
     {
-      if (paramVarArgs.length == 0) {}
-      for (str = paramString2; onLogListener != null; str = String.format(paramString2, paramVarArgs))
+      if (paramVarArgs.length == 0) {
+        str = paramString2;
+      } else {
+        str = String.format(paramString2, paramVarArgs);
+      }
+      if (onLogListener != null)
       {
         if (i > logPrintLevel) {
-          return;
+          break label105;
         }
         logToLogListener(i, paramString1, str);
         return;
       }
-      if ((isDebug) && (i <= logPrintLevel))
-      {
-        Log.println(toSysLevel(i), paramString1, str);
-        return;
+      if ((!isDebug) || (i > logPrintLevel)) {
+        break label105;
       }
-    }
-    catch (MissingFormatArgumentException paramString1)
-    {
-      paramString1.printStackTrace();
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      paramString1.printStackTrace();
+      Log.println(toSysLevel(i), paramString1, str);
       return;
     }
     catch (OutOfMemoryError paramString1)
     {
-      paramString1.printStackTrace();
+      break label91;
     }
+    catch (Exception paramString1)
+    {
+      break label96;
+    }
+    catch (MissingFormatArgumentException paramString1)
+    {
+      label91:
+      break label101;
+    }
+    paramString1.printStackTrace();
+    return;
+    label96:
+    paramString1.printStackTrace();
+    return;
+    label101:
+    paramString1.printStackTrace();
+    label105:
   }
   
   public static void setDebugEnable(boolean paramBoolean)
@@ -129,17 +157,23 @@ public class TPLogUtil
   
   private static int toSysLevel(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 10)
     {
-    default: 
-      return 0;
-    case 60: 
-      return 2;
-    case 50: 
-      return 3;
-    case 40: 
-      return 4;
-    case 20: 
+      if (paramInt != 20)
+      {
+        if (paramInt != 40)
+        {
+          if (paramInt != 50)
+          {
+            if (paramInt != 60) {
+              return 0;
+            }
+            return 2;
+          }
+          return 3;
+        }
+        return 4;
+      }
       return 5;
     }
     return 6;
@@ -157,7 +191,7 @@ public class TPLogUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.utils.TPLogUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -44,15 +44,16 @@ public final class RequestQueryQQMobileContactsNotBind
     paramJceOutputStream.write(this.nextFlag, 0);
     paramJceOutputStream.write(this.sessionSid, 1);
     paramJceOutputStream.write(this.Compressd, 2);
-    if (this.MobileUniqueNo != null) {
-      paramJceOutputStream.write(this.MobileUniqueNo, 3);
+    String str = this.MobileUniqueNo;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.timeStamp, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.RequestQueryQQMobileContactsNotBind
  * JD-Core Version:    0.7.0.1
  */

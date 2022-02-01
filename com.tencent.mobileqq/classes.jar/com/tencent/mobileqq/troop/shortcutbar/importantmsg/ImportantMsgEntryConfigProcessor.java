@@ -12,7 +12,10 @@ public class ImportantMsgEntryConfigProcessor
   @NonNull
   public ImportantMsgEntryConfig a(int paramInt)
   {
-    QLog.d("ImportantMsgEntryConfigProcessor", 2, "migrateOldOrDefaultContent, type: " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("migrateOldOrDefaultContent, type: ");
+    localStringBuilder.append(paramInt);
+    QLog.d("ImportantMsgEntryConfigProcessor", 2, localStringBuilder.toString());
     return new ImportantMsgEntryConfig();
   }
   
@@ -49,7 +52,10 @@ public class ImportantMsgEntryConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.d("ImportantMsgEntryConfigProcessor", 1, "onReqFailed, failCode = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReqFailed, failCode = ");
+    localStringBuilder.append(paramInt);
+    QLog.d("ImportantMsgEntryConfigProcessor", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -59,7 +65,7 @@ public class ImportantMsgEntryConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.ImportantMsgEntryConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

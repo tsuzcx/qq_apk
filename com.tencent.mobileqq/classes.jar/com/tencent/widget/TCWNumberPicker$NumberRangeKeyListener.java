@@ -15,14 +15,18 @@ class TCWNumberPicker$NumberRangeKeyListener
     if (localCharSequence2 == null) {
       localCharSequence1 = paramCharSequence.subSequence(paramInt1, paramInt2);
     }
-    paramCharSequence = String.valueOf(paramSpanned.subSequence(0, paramInt3)) + localCharSequence1 + paramSpanned.subSequence(paramInt4, paramSpanned.length());
+    paramCharSequence = new StringBuilder();
+    paramCharSequence.append(String.valueOf(paramSpanned.subSequence(0, paramInt3)));
+    paramCharSequence.append(localCharSequence1);
+    paramCharSequence.append(paramSpanned.subSequence(paramInt4, paramSpanned.length()));
+    paramCharSequence = paramCharSequence.toString();
     if ("".equals(paramCharSequence)) {
-      localCharSequence1 = paramCharSequence;
+      return paramCharSequence;
     }
-    while (TCWNumberPicker.a(this.a, paramCharSequence) <= TCWNumberPicker.a(this.a)) {
-      return localCharSequence1;
+    if (TCWNumberPicker.a(this.a, paramCharSequence) > TCWNumberPicker.a(this.a)) {
+      return "";
     }
-    return "";
+    return localCharSequence1;
   }
   
   protected char[] getAcceptedChars()
@@ -37,7 +41,7 @@ class TCWNumberPicker$NumberRangeKeyListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.TCWNumberPicker.NumberRangeKeyListener
  * JD-Core Version:    0.7.0.1
  */

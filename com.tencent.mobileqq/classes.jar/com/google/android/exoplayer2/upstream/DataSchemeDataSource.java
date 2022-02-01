@@ -21,8 +21,9 @@ public final class DataSchemeDataSource
   
   public Uri getUri()
   {
-    if (this.dataSpec != null) {
-      return this.dataSpec.uri;
+    DataSpec localDataSpec = this.dataSpec;
+    if (localDataSpec != null) {
+      return localDataSpec.uri;
     }
     return null;
   }
@@ -32,28 +33,39 @@ public final class DataSchemeDataSource
     this.dataSpec = paramDataSpec;
     paramDataSpec = paramDataSpec.uri;
     Object localObject = paramDataSpec.getScheme();
-    if (!"data".equals(localObject)) {
-      throw new ParserException("Unsupported scheme: " + (String)localObject);
-    }
-    localObject = paramDataSpec.getSchemeSpecificPart().split(",");
-    if (localObject.length > 2) {
-      throw new ParserException("Unexpected URI format: " + paramDataSpec);
-    }
-    paramDataSpec = localObject[1];
-    if (localObject[0].contains(";base64")) {}
-    for (;;)
+    StringBuilder localStringBuilder1;
+    if ("data".equals(localObject))
     {
-      try
+      localObject = paramDataSpec.getSchemeSpecificPart().split(",");
+      if (localObject.length <= 2)
       {
-        this.data = Base64.decode(paramDataSpec, 0);
+        paramDataSpec = localObject[1];
+        if (localObject[0].contains(";base64")) {
+          try
+          {
+            this.data = Base64.decode(paramDataSpec, 0);
+          }
+          catch (IllegalArgumentException localIllegalArgumentException)
+          {
+            StringBuilder localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append("Error while parsing Base64 encoded string: ");
+            localStringBuilder2.append(paramDataSpec);
+            throw new ParserException(localStringBuilder2.toString(), localIllegalArgumentException);
+          }
+        } else {
+          this.data = URLDecoder.decode(paramDataSpec, "US-ASCII").getBytes();
+        }
         return this.data.length;
       }
-      catch (IllegalArgumentException localIllegalArgumentException)
-      {
-        throw new ParserException("Error while parsing Base64 encoded string: " + paramDataSpec, localIllegalArgumentException);
-      }
-      this.data = URLDecoder.decode(paramDataSpec, "US-ASCII").getBytes();
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("Unexpected URI format: ");
+      localStringBuilder1.append(paramDataSpec);
+      throw new ParserException(localStringBuilder1.toString());
     }
+    paramDataSpec = new StringBuilder();
+    paramDataSpec.append("Unsupported scheme: ");
+    paramDataSpec.append(localStringBuilder1);
+    throw new ParserException(paramDataSpec.toString());
   }
   
   public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -73,7 +85,7 @@ public final class DataSchemeDataSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.upstream.DataSchemeDataSource
  * JD-Core Version:    0.7.0.1
  */

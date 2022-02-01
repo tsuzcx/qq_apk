@@ -15,7 +15,7 @@ public class HippyTKDViewGroupController
 {
   private static final String PROP_NAME_DISABLE_EXTERNAL_SCROLL = "disableExternalScroll";
   
-  public View createViewImpl(Context paramContext)
+  protected View createViewImpl(Context paramContext)
   {
     return new HippyTKDViewGroup(paramContext);
   }
@@ -36,7 +36,7 @@ public class HippyTKDViewGroupController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.view.HippyTKDViewGroupController
  * JD-Core Version:    0.7.0.1
  */

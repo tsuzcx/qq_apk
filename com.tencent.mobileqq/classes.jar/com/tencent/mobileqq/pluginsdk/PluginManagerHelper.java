@@ -42,18 +42,19 @@ public class PluginManagerHelper
     if (QLog.isColorLevel()) {
       QLog.i("plugin_tag", 2, "PluginManagerHelper.getPluginInterface");
     }
-    if ((sClient == null) || (!sClient.useful()))
+    PluginManagerClient localPluginManagerClient = sClient;
+    if ((localPluginManagerClient != null) && (localPluginManagerClient.useful()))
     {
-      sListener.add(new WeakReference(paramOnPluginManagerLoadedListener));
-      PluginRemoteProcessor.get().process(paramContext, sSc, 1);
+      paramOnPluginManagerLoadedListener.onPluginManagerLoaded(sClient);
       return;
     }
-    paramOnPluginManagerLoadedListener.onPluginManagerLoaded(sClient);
+    sListener.add(new WeakReference(paramOnPluginManagerLoadedListener));
+    PluginRemoteProcessor.get().process(paramContext, sSc, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.PluginManagerHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -9,14 +9,15 @@ final class FlashChatTextEffectView$3
   
   public void run()
   {
-    if ((this.a != null) && (this.a.a != null)) {
+    FlashChatTextEffectView.MyViewHolder localMyViewHolder = this.a;
+    if ((localMyViewHolder != null) && (localMyViewHolder.a != null)) {
       this.a.a.stopAnim();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flashchat.FlashChatTextEffectView.3
  * JD-Core Version:    0.7.0.1
  */

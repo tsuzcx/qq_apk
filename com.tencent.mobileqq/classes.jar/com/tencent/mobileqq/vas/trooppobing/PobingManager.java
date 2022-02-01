@@ -16,7 +16,10 @@ public class PobingManager
   
   public static String a(int paramInt)
   {
-    return "pobing.bitmap.cache." + b.get(Integer.valueOf(paramInt));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pobing.bitmap.cache.");
+    localStringBuilder.append(b.get(Integer.valueOf(paramInt)));
+    return localStringBuilder.toString();
   }
   
   public static void a()
@@ -41,17 +44,28 @@ public class PobingManager
   public static boolean a(long paramLong)
   {
     Boolean localBoolean = (Boolean)a.get(Long.valueOf(paramLong));
-    return (localBoolean == null) || (localBoolean.equals(Boolean.valueOf(true)));
+    boolean bool = true;
+    if (localBoolean != null)
+    {
+      if (localBoolean.equals(Boolean.valueOf(true))) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   public static String b(int paramInt)
   {
-    return "pobing.preview.cache." + b.get(Integer.valueOf(paramInt));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pobing.preview.cache.");
+    localStringBuilder.append(b.get(Integer.valueOf(paramInt)));
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.trooppobing.PobingManager
  * JD-Core Version:    0.7.0.1
  */

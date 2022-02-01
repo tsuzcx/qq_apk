@@ -27,18 +27,19 @@ public final class RouteSelector$Selection
   
   public Route next()
   {
-    if (!hasNext()) {
-      throw new NoSuchElementException();
+    if (hasNext())
+    {
+      List localList = this.routes;
+      int i = this.nextRouteIndex;
+      this.nextRouteIndex = (i + 1);
+      return (Route)localList.get(i);
     }
-    List localList = this.routes;
-    int i = this.nextRouteIndex;
-    this.nextRouteIndex = (i + 1);
-    return (Route)localList.get(i);
+    throw new NoSuchElementException();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.internal.connection.RouteSelector.Selection
  * JD-Core Version:    0.7.0.1
  */

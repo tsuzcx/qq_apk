@@ -37,21 +37,25 @@ public class GLMaskImageView
   protected void transferVertexData()
   {
     super.transferVertexData();
-    RectF localRectF1 = getCurrentDrawRegionSize();
-    RectF localRectF2 = new RectF(this.context.getViewPort());
-    this.region.setIntersect(localRectF1, localRectF2);
-    float f1 = (this.region.left - localRectF2.left) / localRectF2.width();
-    float f2 = (localRectF2.right - this.region.right) / localRectF2.width();
-    float f3 = (this.region.top - localRectF2.top) / localRectF2.height();
-    float f4 = (localRectF2.bottom - this.region.bottom) / localRectF2.height();
-    this.mVertexBuffer.put(f1);
+    Object localObject = getCurrentDrawRegionSize();
+    RectF localRectF = new RectF(this.context.getViewPort());
+    this.region.setIntersect((RectF)localObject, localRectF);
+    float f3 = (this.region.left - localRectF.left) / localRectF.width();
+    float f2 = (localRectF.right - this.region.right) / localRectF.width();
+    float f1 = (this.region.top - localRectF.top) / localRectF.height();
+    float f4 = (localRectF.bottom - this.region.bottom) / localRectF.height();
     this.mVertexBuffer.put(f3);
     this.mVertexBuffer.put(f1);
-    this.mVertexBuffer.put(1.0F - f4);
-    this.mVertexBuffer.put(1.0F - f2);
-    this.mVertexBuffer.put(1.0F - f4);
-    this.mVertexBuffer.put(1.0F - f2);
     this.mVertexBuffer.put(f3);
+    localObject = this.mVertexBuffer;
+    f3 = 1.0F - f4;
+    ((FloatBuffer)localObject).put(f3);
+    localObject = this.mVertexBuffer;
+    f2 = 1.0F - f2;
+    ((FloatBuffer)localObject).put(f2);
+    this.mVertexBuffer.put(f3);
+    this.mVertexBuffer.put(f2);
+    this.mVertexBuffer.put(f1);
   }
   
   protected void updateAttribute()
@@ -68,7 +72,7 @@ public class GLMaskImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.GLMaskImageView
  * JD-Core Version:    0.7.0.1
  */

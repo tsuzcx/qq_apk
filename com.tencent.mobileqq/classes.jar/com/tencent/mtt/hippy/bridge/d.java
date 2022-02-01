@@ -23,7 +23,9 @@ import com.tencent.mtt.hippy.modules.nativemodules.timer.TimerModule;
 import com.tencent.mtt.hippy.modules.nativemodules.uimanager.UIManagerModule;
 import com.tencent.mtt.hippy.modules.nativemodules.utils.UtilsModule;
 import com.tencent.mtt.hippy.uimanager.HippyViewController;
+import com.tencent.mtt.hippy.utils.LogUtils;
 import com.tencent.mtt.hippy.views.audioview.AudioViewController;
+import com.tencent.mtt.hippy.views.custom.HippyCustomPropsController;
 import com.tencent.mtt.hippy.views.image.HippyImageViewController;
 import com.tencent.mtt.hippy.views.list.HippyListItemViewController;
 import com.tencent.mtt.hippy.views.list.HippyListViewController;
@@ -40,19 +42,6 @@ import com.tencent.mtt.hippy.views.view.HippyViewGroupController;
 import com.tencent.mtt.hippy.views.viewpager.HippyViewPagerController;
 import com.tencent.mtt.hippy.views.viewpager.HippyViewPagerItemController;
 import com.tencent.mtt.hippy.views.webview.HippyWebViewController;
-import com.tencent.mtt.tkd.views.audio.TkdAudioViewController;
-import com.tencent.mtt.tkd.views.image.TkdImageViewController;
-import com.tencent.mtt.tkd.views.list.TkdListItemViewController;
-import com.tencent.mtt.tkd.views.list.TkdListViewController;
-import com.tencent.mtt.tkd.views.modal.TkdModalHostManager;
-import com.tencent.mtt.tkd.views.refresh.TkdPullFooterViewController;
-import com.tencent.mtt.tkd.views.refresh.TkdPullHeaderViewController;
-import com.tencent.mtt.tkd.views.scroll.TkdScrollViewController;
-import com.tencent.mtt.tkd.views.text.TkdTextViewController;
-import com.tencent.mtt.tkd.views.textinput.TkdTextInputController;
-import com.tencent.mtt.tkd.views.view.TkdViewGroupController;
-import com.tencent.mtt.tkd.views.viewpager.TkdViewPagerController;
-import com.tencent.mtt.tkd.views.viewpager.TkdViewPagerItemController;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -61,6 +50,21 @@ import java.util.Map;
 public class d
   implements HippyAPIProvider
 {
+  private void a(String paramString, List<Class<? extends HippyViewController>> paramList)
+  {
+    try
+    {
+      paramList.add(Class.forName(paramString));
+      return;
+    }
+    catch (ClassNotFoundException paramString)
+    {
+      label12:
+      break label12;
+    }
+    LogUtils.d("HippyCoreAPI", "not contain video component, make sure current project config!");
+  }
+  
   public List<Class<? extends HippyViewController>> getControllers()
   {
     ArrayList localArrayList = new ArrayList();
@@ -81,19 +85,8 @@ public class d
     localArrayList.add(NavigatorController.class);
     localArrayList.add(HippyWebViewController.class);
     localArrayList.add(AudioViewController.class);
-    localArrayList.add(TkdScrollViewController.class);
-    localArrayList.add(TkdListItemViewController.class);
-    localArrayList.add(TkdListViewController.class);
-    localArrayList.add(TkdAudioViewController.class);
-    localArrayList.add(TkdImageViewController.class);
-    localArrayList.add(TkdModalHostManager.class);
-    localArrayList.add(TkdPullFooterViewController.class);
-    localArrayList.add(TkdPullHeaderViewController.class);
-    localArrayList.add(TkdTextViewController.class);
-    localArrayList.add(TkdTextInputController.class);
-    localArrayList.add(TkdViewGroupController.class);
-    localArrayList.add(TkdViewPagerController.class);
-    localArrayList.add(TkdViewPagerItemController.class);
+    localArrayList.add(HippyCustomPropsController.class);
+    a("com.tencent.mtt.hippy.views.videoview.VideoHippyViewController", localArrayList);
     return localArrayList;
   }
   
@@ -128,7 +121,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.bridge.d
  * JD-Core Version:    0.7.0.1
  */

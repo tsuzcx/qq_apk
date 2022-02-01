@@ -25,88 +25,82 @@ public final class DeviceIo$Companion
     while (((Iterator)localObject2).hasNext())
     {
       localObject1 = ((Iterator)localObject2).next();
-      if (new File((String)localObject1).exists())
-      {
-        localObject1 = (String)localObject1;
-        if (localObject1 == null) {
-          break label209;
-        }
-        label76:
-        localObject2 = (String)null;
-        localObject1 = (CharSequence)FileUtil.Companion.readOutputFromFile((String)localObject1);
-        localObject1 = new Regex(" ").split((CharSequence)localObject1, 0);
-        if (((List)localObject1).isEmpty()) {
-          break label220;
-        }
-        localObject3 = ((List)localObject1).listIterator(((List)localObject1).size());
-        label131:
-        if (!((ListIterator)localObject3).hasPrevious()) {
-          break label220;
-        }
-        if (((CharSequence)((ListIterator)localObject3).previous()).length() != 0) {
-          break label215;
-        }
-        i = 1;
-        label164:
-        if (i != 0) {
-          break label218;
-        }
+      if (new File((String)localObject1).exists()) {
+        break label72;
       }
     }
-    label209:
-    label215:
-    label218:
-    label220:
-    for (Object localObject1 = CollectionsKt.take((Iterable)localObject1, ((ListIterator)localObject3).nextIndex() + 1);; localObject1 = CollectionsKt.emptyList())
-    {
-      localObject1 = (Collection)localObject1;
-      if (localObject1 != null) {
-        break label227;
-      }
-      throw new TypeCastException("null cannot be cast to non-null type java.util.Collection<T>");
-      localObject1 = null;
-      break;
-      localObject1 = "";
-      break label76;
-      i = 0;
-      break label164;
-      break label131;
-    }
-    label227:
-    localObject1 = ((Collection)localObject1).toArray(new String[0]);
+    Object localObject1 = null;
+    label72:
+    localObject1 = (String)localObject1;
     if (localObject1 == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<T>");
+      localObject1 = "";
     }
-    Object localObject3 = (String[])localObject1;
-    int j = localObject3.length;
-    int i = 0;
-    localObject1 = localObject2;
-    if (i < j)
+    localObject2 = (String)null;
+    localObject1 = (CharSequence)FileUtil.Companion.readOutputFromFile((String)localObject1);
+    localObject1 = new Regex(" ").split((CharSequence)localObject1, 0);
+    Object localObject3;
+    int i;
+    if (!((List)localObject1).isEmpty())
     {
-      localObject2 = localObject3[i];
-      if (!StringsKt.contains$default((CharSequence)localObject2, (CharSequence)"[", false, 2, null)) {
-        break label354;
+      localObject3 = ((List)localObject1).listIterator(((List)localObject1).size());
+      while (((ListIterator)localObject3).hasPrevious())
+      {
+        if (((CharSequence)((ListIterator)localObject3).previous()).length() == 0) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        if (i == 0)
+        {
+          localObject1 = CollectionsKt.take((Iterable)localObject1, ((ListIterator)localObject3).nextIndex() + 1);
+          break label208;
+        }
       }
-      localObject1 = localObject2;
     }
-    label354:
-    for (;;)
+    localObject1 = CollectionsKt.emptyList();
+    label208:
+    localObject1 = (Collection)localObject1;
+    if (localObject1 != null)
     {
-      i += 1;
-      break;
+      localObject1 = ((Collection)localObject1).toArray(new String[0]);
       if (localObject1 != null)
       {
-        i = ((String)localObject1).length();
-        if (localObject1 == null) {
-          throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+        localObject3 = (String[])localObject1;
+        int j = localObject3.length;
+        localObject1 = localObject2;
+        i = 0;
+        while (i < j)
+        {
+          localObject2 = localObject3[i];
+          if (StringsKt.contains$default((CharSequence)localObject2, (CharSequence)"[", false, 2, null)) {
+            localObject1 = localObject2;
+          }
+          i += 1;
         }
-        localObject1 = ((String)localObject1).substring(1, i - 1);
-        Intrinsics.checkExpressionValueIsNotNull(localObject1, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-        if (localObject1 != null) {
-          return localObject1;
+        if (localObject1 != null)
+        {
+          i = ((String)localObject1).length();
+          if (localObject1 != null)
+          {
+            localObject1 = ((String)localObject1).substring(1, i - 1);
+            Intrinsics.checkExpressionValueIsNotNull(localObject1, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+            if (localObject1 != null) {
+              return localObject1;
+            }
+          }
+          else
+          {
+            throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+          }
         }
+        return "";
       }
-      return "";
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<T>");
+    }
+    localObject1 = new TypeCastException("null cannot be cast to non-null type java.util.Collection<T>");
+    for (;;)
+    {
+      throw ((Throwable)localObject1);
     }
   }
   
@@ -117,9 +111,16 @@ public final class DeviceIo$Companion
     int i = 0;
     while (i <= 1)
     {
-      if (new File("/sys/block/mmcblk" + i).exists())
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("/sys/block/mmcblk");
+      localStringBuilder.append(i);
+      if (new File(localStringBuilder.toString()).exists())
       {
-        localObject = new File("/sys/block/mmcblk" + i + "/queue/read_ahead_kb");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("/sys/block/mmcblk");
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append("/queue/read_ahead_kb");
+        localObject = new File(((StringBuilder)localObject).toString());
         localObject = FileUtil.Companion.readOutputFromFile(((File)localObject).getAbsolutePath());
       }
       i += 1;
@@ -129,7 +130,7 @@ public final class DeviceIo$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.common.device.DeviceIo.Companion
  * JD-Core Version:    0.7.0.1
  */

@@ -27,8 +27,13 @@ public class GameLog
   
   public static String cutString(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ((paramString.length() < 1024) || (paramString.length() < 1024)) {
+    if (TextUtils.isEmpty(paramString)) {
+      return paramString;
+    }
+    if (paramString.length() < 1024) {
+      return paramString;
+    }
+    if (paramString.length() < 1024) {
       return paramString;
     }
     return paramString.substring(0, 1023);
@@ -41,13 +46,14 @@ public class GameLog
   
   public static GameLog getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      sInstance = new GameLog();
-      return sInstance;
+    if (sInstance == null) {
+      try
+      {
+        sInstance = new GameLog();
+      }
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public static void printVconsoleLog(String paramString1, String paramString2)
@@ -68,79 +74,108 @@ public class GameLog
   
   public int d(String paramString1, String paramString2)
   {
-    if (enableLog()) {
-      QLog.i("[minigame] " + paramString1, 1, paramString2);
+    if (enableLog())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[minigame] ");
+      localStringBuilder.append(paramString1);
+      QLog.i(localStringBuilder.toString(), 1, paramString2);
     }
     return 0;
   }
   
   public int d(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (enableLog()) {
-      QLog.i("[minigame] " + paramString1, 1, paramString2, paramThrowable);
+    if (enableLog())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[minigame] ");
+      localStringBuilder.append(paramString1);
+      QLog.i(localStringBuilder.toString(), 1, paramString2, paramThrowable);
     }
     return 0;
   }
   
   public int e(String paramString1, String paramString2)
   {
-    if (enableLog()) {
-      QLog.e("[minigame] " + paramString1, 1, paramString2);
+    if (enableLog())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[minigame] ");
+      localStringBuilder.append(paramString1);
+      QLog.e(localStringBuilder.toString(), 1, paramString2);
     }
     return 0;
   }
   
   public int e(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (enableLog()) {
-      QLog.e("[minigame] " + paramString1, 1, paramString2, paramThrowable);
+    if (enableLog())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[minigame] ");
+      localStringBuilder.append(paramString1);
+      QLog.e(localStringBuilder.toString(), 1, paramString2, paramThrowable);
     }
     return 0;
   }
   
   public String getLogMessage(String paramString)
   {
-    String str = paramString;
+    Object localObject = paramString;
     if (!TextUtils.isEmpty(mPreLogInfo))
     {
-      if (!mPreLogInfo.equals(paramString)) {
-        break label100;
-      }
-      mRepeatLogInfoNumber += 1L;
-      if (mRepeatLogInfoNumber >= 9223372036854775807L) {
-        mRepeatLogInfoNumber = 0L;
-      }
-    }
-    for (;;)
-    {
-      str = paramString;
-      if (mRepeatLogInfoNumber > 10L)
+      if (mPreLogInfo.equals(paramString))
       {
-        if (mRepeatLogInfoNumber % 10L != 0L) {
-          break;
+        mRepeatLogInfoNumber += 1L;
+        if (mRepeatLogInfoNumber >= 9223372036854775807L) {
+          mRepeatLogInfoNumber = 0L;
         }
-        str = paramString + "[ repeat " + mRepeatLogInfoNumber + "]";
       }
-      return str;
-      label100:
-      mRepeatLogInfoNumber = 0L;
-      mPreLogInfo = paramString;
+      else
+      {
+        mRepeatLogInfoNumber = 0L;
+        mPreLogInfo = paramString;
+      }
+      long l = mRepeatLogInfoNumber;
+      localObject = paramString;
+      if (l > 10L)
+      {
+        if (l % 10L == 0L)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramString);
+          ((StringBuilder)localObject).append("[ repeat ");
+          ((StringBuilder)localObject).append(mRepeatLogInfoNumber);
+          ((StringBuilder)localObject).append("]");
+          return ((StringBuilder)localObject).toString();
+        }
+        localObject = null;
+      }
     }
-    return null;
+    return localObject;
   }
   
   public int i(String paramString1, String paramString2)
   {
-    if (enableLog()) {
-      QLog.i("[minigame] " + paramString1, 1, paramString2);
+    if (enableLog())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[minigame] ");
+      localStringBuilder.append(paramString1);
+      QLog.i(localStringBuilder.toString(), 1, paramString2);
     }
     return 0;
   }
   
   public int i(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (enableLog()) {
-      QLog.i("[minigame] " + paramString1, 1, paramString2, paramThrowable);
+    if (enableLog())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[minigame] ");
+      localStringBuilder.append(paramString1);
+      QLog.i(localStringBuilder.toString(), 1, paramString2, paramThrowable);
     }
     return 0;
   }
@@ -148,23 +183,25 @@ public class GameLog
   public void printConsoleLog(@NotNull LogDelegate.Level paramLevel, @NotNull String paramString1, @NotNull String paramString2, @Nullable Throwable paramThrowable)
   {
     printLog(paramLevel, paramString1, paramString2, paramThrowable);
-    switch (GameLog.1.$SwitchMap$com$tencent$mobileqq$triton$utils$LogDelegate$Level[paramLevel.ordinal()])
+    int i = GameLog.1.$SwitchMap$com$tencent$mobileqq$triton$utils$LogDelegate$Level[paramLevel.ordinal()];
+    if (i != 1)
     {
-    case 2: 
-    case 3: 
-    default: 
-      paramLevel = "log";
+      if (i != 4)
+      {
+        if (i != 5) {
+          paramLevel = "log";
+        } else {
+          paramLevel = "error";
+        }
+      }
+      else {
+        paramLevel = "warn";
+      }
     }
-    for (;;)
-    {
-      printVconsoleLog(paramLevel, paramString2);
-      return;
+    else {
       paramLevel = "info";
-      continue;
-      paramLevel = "warn";
-      continue;
-      paramLevel = "error";
     }
+    printVconsoleLog(paramLevel, paramString2);
   }
   
   public void printLog(@NotNull LogDelegate.Level paramLevel, @NotNull String paramString1, @NotNull String paramString2, @Nullable Throwable paramThrowable)
@@ -172,49 +209,71 @@ public class GameLog
     if (enableLog())
     {
       paramString2 = getLogMessage(paramString2);
-      if (paramString2 != null) {}
+      if (paramString2 == null) {
+        return;
+      }
+      int i = GameLog.1.$SwitchMap$com$tencent$mobileqq$triton$utils$LogDelegate$Level[paramLevel.ordinal()];
+      if ((i != 1) && (i != 2))
+      {
+        if (i != 3)
+        {
+          if (i != 4)
+          {
+            if (i != 5) {
+              return;
+            }
+            paramLevel = new StringBuilder();
+            paramLevel.append("[minigame] ");
+            paramLevel.append(paramString1);
+            QLog.e(paramLevel.toString(), 1, paramString2, paramThrowable);
+            return;
+          }
+          paramLevel = new StringBuilder();
+          paramLevel.append("[minigame] ");
+          paramLevel.append(paramString1);
+          QLog.w(paramLevel.toString(), 1, paramString2, paramThrowable);
+          return;
+        }
+        paramLevel = new StringBuilder();
+        paramLevel.append("[minigame] ");
+        paramLevel.append(paramString1);
+        QLog.d(paramLevel.toString(), 1, paramString2, paramThrowable);
+        return;
+      }
+      paramLevel = new StringBuilder();
+      paramLevel.append("[minigame] ");
+      paramLevel.append(paramString1);
+      QLog.i(paramLevel.toString(), 1, paramString2, paramThrowable);
     }
-    else
-    {
-      return;
-    }
-    switch (GameLog.1.$SwitchMap$com$tencent$mobileqq$triton$utils$LogDelegate$Level[paramLevel.ordinal()])
-    {
-    default: 
-      return;
-    case 1: 
-    case 2: 
-      QLog.i("[minigame] " + paramString1, 1, paramString2, paramThrowable);
-      return;
-    case 3: 
-      QLog.d("[minigame] " + paramString1, 1, paramString2, paramThrowable);
-      return;
-    case 4: 
-      QLog.w("[minigame] " + paramString1, 1, paramString2, paramThrowable);
-      return;
-    }
-    QLog.e("[minigame] " + paramString1, 1, paramString2, paramThrowable);
   }
   
   public int w(String paramString1, String paramString2)
   {
-    if (enableLog()) {
-      QLog.w("[minigame] " + paramString1, 1, paramString2);
+    if (enableLog())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[minigame] ");
+      localStringBuilder.append(paramString1);
+      QLog.w(localStringBuilder.toString(), 1, paramString2);
     }
     return 0;
   }
   
   public int w(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (enableLog()) {
-      QLog.w("[minigame] " + paramString1, 1, paramString2, paramThrowable);
+    if (enableLog())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[minigame] ");
+      localStringBuilder.append(paramString1);
+      QLog.w(localStringBuilder.toString(), 1, paramString2, paramThrowable);
     }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.utils.GameLog
  * JD-Core Version:    0.7.0.1
  */

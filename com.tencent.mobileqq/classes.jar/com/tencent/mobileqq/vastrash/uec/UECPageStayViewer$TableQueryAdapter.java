@@ -43,38 +43,36 @@ public class UECPageStayViewer$TableQueryAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    View localView;
-    Object localObject;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.a.getContext()).inflate(2131561652, paramViewGroup, false);
-      paramView = new UECPageStayViewer.QueryViewHolder(this.a, localView);
-      localView.setTag(paramView);
-      localObject = (QQStayTimeInfo)a().get(paramInt);
-      paramView.a.setText(((QQStayTimeInfo)localObject).page_info);
-      paramView.b.setText(((QQStayTimeInfo)localObject).page_info_ext);
-      paramView.c.setText(((QQStayTimeInfo)localObject).stay_time + "");
-      if (paramInt % 2 != 0) {
-        break label172;
-      }
-      localView.setBackgroundColor(this.a.getContext().getResources().getColor(2131166602));
+      paramView = LayoutInflater.from(this.a.getContext()).inflate(2131561503, paramViewGroup, false);
+      localObject = new UECPageStayViewer.QueryViewHolder(this.a, paramView);
+      paramView.setTag(localObject);
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
       localObject = (UECPageStayViewer.QueryViewHolder)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-      break;
-      label172:
-      localView.setBackgroundColor(this.a.getContext().getResources().getColor(2131167374));
     }
+    QQStayTimeInfo localQQStayTimeInfo = (QQStayTimeInfo)a().get(paramInt);
+    ((UECPageStayViewer.QueryViewHolder)localObject).a.setText(localQQStayTimeInfo.page_info);
+    ((UECPageStayViewer.QueryViewHolder)localObject).b.setText(localQQStayTimeInfo.page_info_ext);
+    Object localObject = ((UECPageStayViewer.QueryViewHolder)localObject).c;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(localQQStayTimeInfo.stay_time);
+    localStringBuilder.append("");
+    ((TextView)localObject).setText(localStringBuilder.toString());
+    if (paramInt % 2 == 0) {
+      paramView.setBackgroundColor(this.a.getContext().getResources().getColor(2131166617));
+    } else {
+      paramView.setBackgroundColor(this.a.getContext().getResources().getColor(2131167394));
+    }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vastrash.uec.UECPageStayViewer.TableQueryAdapter
  * JD-Core Version:    0.7.0.1
  */

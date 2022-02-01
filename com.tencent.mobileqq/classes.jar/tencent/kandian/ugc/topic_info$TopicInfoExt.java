@@ -12,7 +12,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class topic_info$TopicInfoExt
   extends MessageMicro<TopicInfoExt>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 48, 56, 64, 72, 82, 88, 96, 106, 114, 120, 128, 136, 144, 154 }, new String[] { "has_subscribe", "modules", "content_count", "subscribe_num", "share_url", "algorithm_id", "is_top", "topic_view", "feeds_up_time", "feed_up_time_text", "topic_feed_audit_status", "comment_num", "creator_nickname", "creator_avatar_url", "new_num", "my_topic_flag", "auditing_video_cnt", "cooperator_cnt", "lastest_cooperator_user" }, new Object[] { Boolean.valueOf(false), null, Integer.valueOf(0), Integer.valueOf(0), "", Long.valueOf(0L), Boolean.valueOf(false), Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0), Boolean.valueOf(false), Integer.valueOf(0), Integer.valueOf(0), null }, TopicInfoExt.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt64Field algorithm_id = PBField.initInt64(0L);
   public final PBUInt32Field auditing_video_cnt = PBField.initUInt32(0);
   public final PBUInt32Field comment_num = PBField.initUInt32(0);
@@ -32,10 +32,17 @@ public final class topic_info$TopicInfoExt
   public final PBUInt32Field subscribe_num = PBField.initUInt32(0);
   public final PBUInt32Field topic_feed_audit_status = PBField.initUInt32(0);
   public final PBUInt32Field topic_view = PBField.initUInt32(0);
+  
+  static
+  {
+    Boolean localBoolean = Boolean.valueOf(false);
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 48, 56, 64, 72, 82, 88, 96, 106, 114, 120, 128, 136, 144, 154 }, new String[] { "has_subscribe", "modules", "content_count", "subscribe_num", "share_url", "algorithm_id", "is_top", "topic_view", "feeds_up_time", "feed_up_time_text", "topic_feed_audit_status", "comment_num", "creator_nickname", "creator_avatar_url", "new_num", "my_topic_flag", "auditing_video_cnt", "cooperator_cnt", "lastest_cooperator_user" }, new Object[] { localBoolean, null, localInteger, localInteger, "", Long.valueOf(0L), localBoolean, localInteger, localInteger, "", localInteger, localInteger, "", "", localInteger, localBoolean, localInteger, localInteger, null }, TopicInfoExt.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.kandian.ugc.topic_info.TopicInfoExt
  * JD-Core Version:    0.7.0.1
  */

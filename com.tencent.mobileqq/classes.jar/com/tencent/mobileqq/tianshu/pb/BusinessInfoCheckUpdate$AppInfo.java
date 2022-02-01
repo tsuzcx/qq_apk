@@ -14,7 +14,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class BusinessInfoCheckUpdate$AppInfo
   extends MessageMicro<AppInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 24, 32, 42, 50, 56, 66, 72, 80, 90, 96, 104, 112, 120, 130, 136, 144, 154, 160, 168, 176 }, new String[] { "uiAppId", "iNewFlag", "type", "buffer", "path", "modify_ts", "missions", "appset", "num", "icon_url", "icon_flag", "icon_type", "push_red_ts", "mission_level", "red_display_info", "use_cache", "preload_ts", "extend", "exposure_max", "id_list", "push_to" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Boolean.valueOf(false), Long.valueOf(0L), "", Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0) }, AppInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field appset = PBField.initInt32(0);
   public final PBStringField buffer = PBField.initString("");
   public final PBUInt32Field exposure_max = PBField.initUInt32(0);
@@ -36,10 +36,16 @@ public final class BusinessInfoCheckUpdate$AppInfo
   public final PBUInt32Field type = PBField.initUInt32(0);
   public final PBUInt32Field uiAppId = PBField.initUInt32(0);
   public final PBBoolField use_cache = PBField.initBool(false);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 24, 32, 42, 50, 56, 66, 72, 80, 90, 96, 104, 112, 120, 130, 136, 144, 154, 160, 168, 176 }, new String[] { "uiAppId", "iNewFlag", "type", "buffer", "path", "modify_ts", "missions", "appset", "num", "icon_url", "icon_flag", "icon_type", "push_red_ts", "mission_level", "red_display_info", "use_cache", "preload_ts", "extend", "exposure_max", "id_list", "push_to" }, new Object[] { localInteger, localInteger, localInteger, "", "", localInteger, "", localInteger, localInteger, "", localInteger, localInteger, localInteger, localInteger, null, Boolean.valueOf(false), Long.valueOf(0L), "", localInteger, Long.valueOf(0L), localInteger }, AppInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo
  * JD-Core Version:    0.7.0.1
  */

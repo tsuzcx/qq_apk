@@ -39,24 +39,29 @@ public final class TencentLocationManager
   {
     try
     {
-      if (d != null) {
-        break label76;
+      if (d == null) {
+        if (paramContext != null)
+        {
+          if (paramContext.getApplicationContext() != null)
+          {
+            if (Looper.myLooper() != null) {
+              d = new TencentLocationManager(paramContext.getApplicationContext());
+            } else {
+              throw new IllegalArgumentException("getInstance must be use in Thread with looper. Please first use Looper.prapare()");
+            }
+          }
+          else {
+            throw new NullPointerException("application context is null");
+          }
+        }
+        else {
+          throw new NullPointerException("context is null");
+        }
       }
-      if (paramContext == null) {
-        throw new NullPointerException("context is null");
-      }
+      paramContext = d;
+      return paramContext;
     }
     finally {}
-    if (paramContext.getApplicationContext() == null) {
-      throw new NullPointerException("application context is null");
-    }
-    if (Looper.myLooper() == null) {
-      throw new IllegalArgumentException("getInstance must be use in Thread with looper. Please first use Looper.prapare()");
-    }
-    d = new TencentLocationManager(paramContext.getApplicationContext());
-    label76:
-    paramContext = d;
-    return paramContext;
   }
   
   public final int clearPedometerData()
@@ -141,110 +146,117 @@ public final class TencentLocationManager
   public final int requestLocationUpdates(TencentLocationRequest paramTencentLocationRequest, TencentLocationListener paramTencentLocationListener, Looper paramLooper)
   {
     new StringBuilder("request location with looper,thread name:").append(Thread.currentThread().getName());
-    if (paramTencentLocationRequest == null) {
-      throw new NullPointerException("request is null");
-    }
-    if (paramTencentLocationListener == null) {
+    if (paramTencentLocationRequest != null)
+    {
+      if (paramTencentLocationListener != null)
+      {
+        if (paramLooper != null) {
+          synchronized (this.a)
+          {
+            int i = this.c.a(paramTencentLocationRequest, paramTencentLocationListener, paramLooper);
+            return i;
+          }
+        }
+        throw new NullPointerException("looper is null");
+      }
       throw new NullPointerException("listener is null");
     }
-    if (paramLooper == null) {
-      throw new NullPointerException("looper is null");
-    }
-    synchronized (this.a)
-    {
-      int i = this.c.a(paramTencentLocationRequest, paramTencentLocationListener, paramLooper);
-      return i;
-    }
+    throw new NullPointerException("request is null");
   }
   
   public final void setCoordinateType(int paramInt)
   {
-    if ((paramInt == 1) || (paramInt == 0)) {
-      synchronized (this.a)
-      {
-        ek localek = this.c;
-        if (localek.a != paramInt) {
-          localek.a = paramInt;
-        }
-        return;
-      }
-    }
-    throw new IllegalArgumentException("unknown coordinate type: ".concat(String.valueOf(paramInt)));
-  }
-  
-  public final void setDeviceID(Pair<String, String> paramPair)
-  {
-    if (paramPair == null) {
-      throw new IllegalArgumentException("deviceID is null!");
-    }
-    if (((!((String)paramPair.first).equals("qImei")) && (!((String)paramPair.first).equals("oaId")) && (!((String)paramPair.first).matches("^[a-z0-9A-Z]{6,32}$"))) || (TextUtils.isEmpty((CharSequence)paramPair.second))) {
-      throw new IllegalArgumentException("your deviceID is illegal!");
-    }
-    du localdu = this.b.b;
-    dy.a("LocationSDK", "location_device_id_type", paramPair.first);
-    dy.a("LocationSDK", "location_device_id", paramPair.second);
-    localdu.p = paramPair;
-  }
-  
-  public final void setKey(String paramString)
-  {
-    if ((paramString == null) || (paramString.equals(""))) {
-      throw new IllegalArgumentException("bad key: ".concat(String.valueOf(paramString)));
-    }
-    this.b.b.g = paramString;
-  }
-  
-  public final int startDirectionUpdates(TencentDirectionListener paramTencentDirectionListener, Looper paramLooper)
-  {
-    if (paramTencentDirectionListener == null) {
-      throw new NullPointerException("listener is null");
-    }
-    if (paramLooper == null) {
-      throw new NullPointerException("looper is null");
-    }
-    ek localek = this.c;
-    int i;
-    if ((paramTencentDirectionListener == null) || (paramLooper == null)) {
-      i = -1;
-    }
-    int j;
-    do
-    {
-      return i;
-      if (localek.b == null) {
-        return -2;
-      }
-      localek.b.a();
-      paramLooper = new Handler(paramLooper);
-      j = localek.b.a(paramLooper, paramTencentDirectionListener);
-      i = j;
-    } while (j != 0);
-    localek.b.a = true;
-    return j;
-  }
-  
-  public final int startDistanceCalculate(TencentDistanceListener paramTencentDistanceListener)
-  {
-    int i = 1;
-    if (paramTencentDistanceListener == null) {
-      throw new NullPointerException("listener is null");
+    if ((paramInt != 1) && (paramInt != 0)) {
+      throw new IllegalArgumentException("unknown coordinate type: ".concat(String.valueOf(paramInt)));
     }
     synchronized (this.a)
     {
       ek localek = this.c;
-      if (localek.d == null) {}
-      for (;;)
-      {
-        return i;
-        if (!localek.e) {
-          break;
-        }
-        i = 2;
+      if (localek.a != paramInt) {
+        localek.a = paramInt;
       }
-      localek.e = true;
-      localek.k = paramTencentDistanceListener;
-      i = 0;
+      return;
     }
+  }
+  
+  public final void setDeviceID(Pair<String, String> paramPair)
+  {
+    if (paramPair != null)
+    {
+      if (((((String)paramPair.first).equals("qImei")) || (((String)paramPair.first).equals("oaId")) || (((String)paramPair.first).matches("^[a-z0-9A-Z]{6,32}$"))) && (!TextUtils.isEmpty((CharSequence)paramPair.second)))
+      {
+        du localdu = this.b.b;
+        dy.a("LocationSDK", "location_device_id_type", paramPair.first);
+        dy.a("LocationSDK", "location_device_id", paramPair.second);
+        localdu.p = paramPair;
+        return;
+      }
+      throw new IllegalArgumentException("your deviceID is illegal!");
+    }
+    throw new IllegalArgumentException("deviceID is null!");
+  }
+  
+  public final void setKey(String paramString)
+  {
+    if ((paramString != null) && (!paramString.equals("")))
+    {
+      this.b.b.g = paramString;
+      return;
+    }
+    throw new IllegalArgumentException("bad key: ".concat(String.valueOf(paramString)));
+  }
+  
+  public final int startDirectionUpdates(TencentDirectionListener paramTencentDirectionListener, Looper paramLooper)
+  {
+    if (paramTencentDirectionListener != null)
+    {
+      if (paramLooper != null)
+      {
+        ek localek = this.c;
+        if ((paramTencentDirectionListener != null) && (paramLooper != null))
+        {
+          if (localek.b == null) {
+            return -2;
+          }
+          localek.b.a();
+          paramLooper = new Handler(paramLooper);
+          int i = localek.b.a(paramLooper, paramTencentDirectionListener);
+          if (i == 0) {
+            localek.b.a = true;
+          }
+          return i;
+        }
+        return -1;
+      }
+      throw new NullPointerException("looper is null");
+    }
+    throw new NullPointerException("listener is null");
+  }
+  
+  public final int startDistanceCalculate(TencentDistanceListener paramTencentDistanceListener)
+  {
+    if (paramTencentDistanceListener != null) {
+      synchronized (this.a)
+      {
+        ek localek = this.c;
+        TencentLocationListener localTencentLocationListener = localek.d;
+        int i = 1;
+        if (localTencentLocationListener != null) {
+          if (localek.e)
+          {
+            i = 2;
+          }
+          else
+          {
+            localek.e = true;
+            localek.k = paramTencentDistanceListener;
+            i = 0;
+          }
+        }
+        return i;
+      }
+    }
+    throw new NullPointerException("listener is null");
   }
   
   public final void stopDirectionUpdate()
@@ -265,7 +277,13 @@ public final class TencentLocationManager
       localek.e = false;
       localek.j = null;
       fc localfc = new fc();
-      localfc.a = (fp.a((localek.g + 1) / (localek.i + 1), 4) * 100.0D);
+      double d1 = localek.g + 1;
+      int i = localek.i;
+      double d2 = i + 1;
+      Double.isNaN(d1);
+      Double.isNaN(d2);
+      d1 /= d2;
+      localfc.a = (fp.a(d1, 4) * 100.0D);
       localfc.b = localek.g;
       localfc.c = localek.h;
       localek.g = 0;
@@ -277,7 +295,7 @@ public final class TencentLocationManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.geolocation.TencentLocationManager
  * JD-Core Version:    0.7.0.1
  */

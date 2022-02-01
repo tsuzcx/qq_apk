@@ -31,14 +31,15 @@ public final class cell_gift_combin
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.gifts != null) {
-      paramJceOutputStream.write(this.gifts, 0);
+    ArrayList localArrayList = this.gifts;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_gift_combin
  * JD-Core Version:    0.7.0.1
  */

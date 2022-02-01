@@ -9,12 +9,12 @@ import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.widget.TextView;
+import androidx.annotation.NonNull;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBFloatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.richstatus.topic.ClickColorTopicSpan;
-import com.tencent.mobileqq.richstatus.topic.TopicUtil;
 import com.tencent.mobileqq.text.ITopic.OnTopicClickListener;
 import com.tencent.mobileqq.text.OffsetableImageSpan;
 import com.tencent.mobileqq.utils.HexUtil;
@@ -30,7 +30,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -46,8 +45,10 @@ public class RichStatus
   public static final float LOC_SPAN_RESIZE_FACTOR = 0.9F;
   public static final float OFFSET_IMAGE_SPAN = -0.1F;
   public static final int SPAN_ALIGN_MODE = 0;
-  private static RichStatus a = null;
-  public static final ColorStateList sActionColor = new ColorStateList(new int[][] { { 16842919 }, new int[0] }, new int[] { -2039584, -8947849 });
+  public static final int TOPIC_COLOR = -11692801;
+  public static final int TOPIC_COLOR_PRESSED = -2142399233;
+  private static RichStatus a;
+  public static final ColorStateList sActionColor;
   private static final long serialVersionUID = 1L;
   public int actId;
   public int actionId = 0;
@@ -78,6 +79,12 @@ public class RichStatus
   public int tplId;
   public int tplType;
   
+  static
+  {
+    int[] arrayOfInt = new int[0];
+    sActionColor = new ColorStateList(new int[][] { { 16842919 }, arrayOfInt }, new int[] { -2039584, -8947849 });
+  }
+  
   public RichStatus(String paramString)
   {
     if (paramString != null)
@@ -90,6 +97,12 @@ public class RichStatus
   private static int a(String paramString)
   {
     return paramString.getBytes().length;
+  }
+  
+  private ColorStateList a(int paramInt1, int paramInt2)
+  {
+    int[] arrayOfInt = { 0 };
+    return new ColorStateList(new int[][] { { 16842919 }, arrayOfInt }, new int[] { paramInt2, paramInt1 });
   }
   
   private void a(SpannableStringBuilder paramSpannableStringBuilder, String paramString)
@@ -134,122 +147,27 @@ public class RichStatus
   public static RichStatus parseStatus(byte[] paramArrayOfByte)
   {
     RichStatus localRichStatus = new RichStatus(null);
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 2)) {
-      return localRichStatus;
-    }
-    ByteBuffer localByteBuffer = ByteBuffer.wrap(paramArrayOfByte).order(ByteOrder.BIG_ENDIAN);
-    Object localObject1 = null;
-    int i = 0;
-    label118:
-    int k;
+    ByteBuffer localByteBuffer;
+    Object localObject1;
     int j;
-    label150:
+    int i;
+    int m;
+    int k;
     int n;
-    Object localObject2;
-    for (;;)
-    {
-      if (localByteBuffer.hasRemaining())
-      {
-        if (localByteBuffer.remaining() >= 2) {
-          break label118;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.richstatus.status", 2, HexUtil.bytes2HexStr(paramArrayOfByte));
-        }
-      }
-      for (;;)
-      {
-        if (localObject1 != null) {
-          localRichStatus.a((String)localObject1);
-        }
-        if (QLog.isDevelopLevel()) {
-          QLog.i("RichStatus", 2, String.format("parseStatus %s", new Object[] { localRichStatus.toSpannableString(null) }));
-        }
-        return localRichStatus;
-        k = localByteBuffer.get();
-        j = localByteBuffer.get();
-        if (k >= 0) {
-          break label1184;
-        }
-        k += 256;
-        if (j >= 0) {
-          break label1181;
-        }
-        j += 256;
-        if (localByteBuffer.remaining() >= j) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.richstatus.status", 2, HexUtil.bytes2HexStr(paramArrayOfByte));
-        }
-      }
-      n = i + 2;
-      if ((k <= 0) || (k >= 128)) {
-        break;
-      }
-      localObject2 = new String(paramArrayOfByte, n, j);
-      i = j + n;
-      localByteBuffer.position(i);
-      switch (k)
-      {
-      case 3: 
-      default: 
-        if (localObject1 == null) {
-          localObject1 = localObject2;
-        }
-        break;
-      case 1: 
-        localRichStatus.actionText = ((String)localObject2);
-        break;
-      case 2: 
-        localRichStatus.dataText = ((String)localObject2);
-        break;
-      case 4: 
-        if (localObject1 == null) {
-          break label1178;
-        }
-        localRichStatus.a((String)localObject1);
-        localObject1 = null;
-        label299:
-        if (localRichStatus.plainText != null) {}
-        for (localRichStatus.locationPosition = localRichStatus.plainText.size();; localRichStatus.locationPosition = 0)
-        {
-          localRichStatus.locationText = ((String)localObject2);
-          break;
-        }
-        localObject1 = (String)localObject1 + (String)localObject2;
-      }
-    }
-    label464:
     Object localObject4;
-    switch (k)
+    Object localObject2;
+    if (paramArrayOfByte != null)
     {
-    default: 
-    case 129: 
-    case 130: 
-    case 144: 
-    case 145: 
-    case 162: 
-    case 163: 
-    case 146: 
-    case 147: 
+      if (paramArrayOfByte.length <= 2) {
+        return localRichStatus;
+      }
+      localByteBuffer = ByteBuffer.wrap(paramArrayOfByte).order(ByteOrder.BIG_ENDIAN);
+      localObject1 = null;
+      j = 0;
       for (;;)
       {
-        i = n + j;
-        localByteBuffer.position(i);
-        break;
-        if (localByteBuffer.remaining() < 8)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.richstatus.status", 2, HexUtil.bytes2HexStr(paramArrayOfByte));
-          }
-        }
-        else
-        {
-          localRichStatus.actionId = localByteBuffer.getInt();
-          localRichStatus.dataId = localByteBuffer.getInt();
-          continue;
-          if (localByteBuffer.remaining() < 8)
+        if (localByteBuffer.hasRemaining()) {
+          if (localByteBuffer.remaining() < 2)
           {
             if (QLog.isColorLevel()) {
               QLog.d("Q.richstatus.status", 2, HexUtil.bytes2HexStr(paramArrayOfByte));
@@ -257,31 +175,103 @@ public class RichStatus
           }
           else
           {
-            localRichStatus.lontitude = localByteBuffer.getInt();
-            localRichStatus.latitude = localByteBuffer.getInt();
-            continue;
-            localRichStatus.feedsId = new String(paramArrayOfByte, n, j);
-            if (QLog.isColorLevel())
+            i = localByteBuffer.get();
+            m = localByteBuffer.get();
+            k = i;
+            if (i < 0) {
+              k = i + 256;
+            }
+            i = m;
+            if (m < 0) {
+              i = m + 256;
+            }
+            if (localByteBuffer.remaining() < i)
             {
-              QLog.d("Q.richstatus.status", 2, HexUtil.bytes2HexStr(paramArrayOfByte) + ",sign feeds id=" + localRichStatus.feedsId);
-              continue;
-              localRichStatus.tplId = localByteBuffer.getInt();
-              continue;
-              localRichStatus.fontId = localByteBuffer.getInt();
-              continue;
-              localRichStatus.fontType = localByteBuffer.getInt();
-              continue;
-              localRichStatus.tplType = localByteBuffer.getInt();
-              continue;
-              localRichStatus.actId = localByteBuffer.getInt();
+              if (QLog.isColorLevel()) {
+                QLog.d("Q.richstatus.status", 2, HexUtil.bytes2HexStr(paramArrayOfByte));
+              }
+            }
+            else
+            {
+              n = j + 2;
+              if ((k > 0) && (k < 128))
+              {
+                localObject4 = new String(paramArrayOfByte, n, i);
+                j = n + i;
+                localByteBuffer.position(j);
+                if (k != 1)
+                {
+                  if (k != 2)
+                  {
+                    if (k != 4)
+                    {
+                      if (localObject1 == null)
+                      {
+                        localObject1 = localObject4;
+                      }
+                      else
+                      {
+                        localObject2 = new StringBuilder();
+                        ((StringBuilder)localObject2).append((String)localObject1);
+                        ((StringBuilder)localObject2).append((String)localObject4);
+                        localObject1 = ((StringBuilder)localObject2).toString();
+                      }
+                    }
+                    else
+                    {
+                      localObject2 = localObject1;
+                      if (localObject1 != null)
+                      {
+                        localRichStatus.a((String)localObject1);
+                        localObject2 = null;
+                      }
+                      localObject1 = localRichStatus.plainText;
+                      if (localObject1 != null) {
+                        localRichStatus.locationPosition = ((ArrayList)localObject1).size();
+                      } else {
+                        localRichStatus.locationPosition = 0;
+                      }
+                      localRichStatus.locationText = ((String)localObject4);
+                      localObject1 = localObject2;
+                    }
+                  }
+                  else {
+                    localRichStatus.dataText = ((String)localObject4);
+                  }
+                }
+                else {
+                  localRichStatus.actionText = ((String)localObject4);
+                }
+              }
+              else if (k != 129)
+              {
+                if (k != 130) {
+                  switch (k)
+                  {
+                  default: 
+                    switch (k)
+                    {
+                    default: 
+                      break;
+                    case 163: 
+                      localRichStatus.fontType = localByteBuffer.getInt();
+                      break;
+                    case 162: 
+                      localRichStatus.fontId = localByteBuffer.getInt();
+                      break;
+                    case 161: 
+                      localObject4 = new byte[i];
+                      localByteBuffer.get((byte[])localObject4);
+                      localObject2 = new richstatus_sticker.RichStatus_Sticker();
+                    }
+                    break;
+                  }
+                }
+              }
             }
           }
         }
       }
-    case 161: 
-      localObject4 = new byte[j];
-      localByteBuffer.get((byte[])localObject4);
-      localObject2 = new richstatus_sticker.RichStatus_Sticker();
     }
     for (;;)
     {
@@ -289,122 +279,181 @@ public class RichStatus
       {
         ((richstatus_sticker.RichStatus_Sticker)localObject2).mergeFrom((byte[])localObject4);
         if ((!((richstatus_sticker.RichStatus_Sticker)localObject2).sticker_info.has()) || (((richstatus_sticker.RichStatus_Sticker)localObject2).sticker_info.size() <= 0)) {
-          break label464;
+          break label1137;
         }
-        if (localRichStatus.mStickerInfos == null)
-        {
+        if (localRichStatus.mStickerInfos == null) {
           localRichStatus.mStickerInfos = new ArrayList();
-          break label1187;
-          if (i >= ((richstatus_sticker.RichStatus_Sticker)localObject2).sticker_info.size()) {
-            break label930;
-          }
-          localObject4 = (richstatus_sticker.StickerInfo)((richstatus_sticker.RichStatus_Sticker)localObject2).sticker_info.get(i);
-          RichStatus.StickerInfo localStickerInfo = new RichStatus.StickerInfo();
-          localStickerInfo.id = ((richstatus_sticker.StickerInfo)localObject4).uint32_id.get();
-          localStickerInfo.posX = ((richstatus_sticker.StickerInfo)localObject4).float_posX.get();
-          localStickerInfo.posY = ((richstatus_sticker.StickerInfo)localObject4).float_posY.get();
-          localStickerInfo.width = ((richstatus_sticker.StickerInfo)localObject4).float_width.get();
-          localStickerInfo.height = ((richstatus_sticker.StickerInfo)localObject4).float_height.get();
-          localRichStatus.mStickerInfos.add(localStickerInfo);
-          i += 1;
-          continue;
+        } else {
+          localRichStatus.mStickerInfos.clear();
         }
-        localRichStatus.mStickerInfos.clear();
       }
       catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
+        RichStatus.StickerInfo localStickerInfo;
         QLog.e("RichStatus", 1, "parse sticker error: ", localInvalidProtocolBufferMicroException);
+        break label1137;
       }
-      break label464;
-      label930:
-      if (!QLog.isColorLevel()) {
-        break label464;
-      }
-      QLog.d("RichStatus", 2, "parseStatus sticker info size = " + localRichStatus.mStickerInfos.size());
-      break label464;
-      if (localByteBuffer.remaining() < 4)
+      if (j < ((richstatus_sticker.RichStatus_Sticker)localObject2).sticker_info.size())
       {
-        if (!QLog.isColorLevel()) {
-          break label464;
-        }
-        QLog.d("Q.richstatus.status", 2, HexUtil.bytes2HexStr(paramArrayOfByte));
-        break label464;
+        localObject4 = (richstatus_sticker.StickerInfo)((richstatus_sticker.RichStatus_Sticker)localObject2).sticker_info.get(j);
+        localStickerInfo = new RichStatus.StickerInfo();
+        localStickerInfo.id = ((richstatus_sticker.StickerInfo)localObject4).uint32_id.get();
+        localStickerInfo.posX = ((richstatus_sticker.StickerInfo)localObject4).float_posX.get();
+        localStickerInfo.posY = ((richstatus_sticker.StickerInfo)localObject4).float_posY.get();
+        localStickerInfo.width = ((richstatus_sticker.StickerInfo)localObject4).float_width.get();
+        localStickerInfo.height = ((richstatus_sticker.StickerInfo)localObject4).float_height.get();
+        localRichStatus.mStickerInfos.add(localStickerInfo);
+        j += 1;
       }
-      i = localByteBuffer.getInt();
-      if (j <= 4) {
-        break label464;
-      }
-      Object localObject3 = new String(paramArrayOfByte, n + 4, j - 4);
-      if (((String)localObject3).isEmpty()) {
-        break label464;
-      }
-      localObject3 = new Pair(Integer.valueOf(i), localObject3);
-      localRichStatus.topics.add(localObject3);
-      break label464;
-      if (localByteBuffer.remaining() < 5)
+      else
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.richstatus.status", 2, HexUtil.bytes2HexStr(paramArrayOfByte));
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("parseStatus sticker info size = ");
+          ((StringBuilder)localObject2).append(localRichStatus.mStickerInfos.size());
+          QLog.d("RichStatus", 2, ((StringBuilder)localObject2).toString());
+          break label1137;
+          if (localByteBuffer.remaining() < 5)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("Q.richstatus.status", 2, HexUtil.bytes2HexStr(paramArrayOfByte));
+            }
+            QLog.e("RichStatus", 1, "parseStatus error, T_TOPIC_POS remaining not enough!");
+          }
+          else
+          {
+            j = i;
+            while (j >= 5)
+            {
+              int i1 = localByteBuffer.getInt();
+              m = localByteBuffer.get();
+              k = m;
+              if (m < 0) {
+                k = m + 256;
+              }
+              Object localObject3 = new Pair(Integer.valueOf(i1), Integer.valueOf(k));
+              localRichStatus.topicsPos.add(localObject3);
+              j -= 5;
+              continue;
+              if (localByteBuffer.remaining() < 4)
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("Q.richstatus.status", 2, HexUtil.bytes2HexStr(paramArrayOfByte));
+                }
+              }
+              else
+              {
+                j = localByteBuffer.getInt();
+                if (i > 4)
+                {
+                  localObject3 = new String(paramArrayOfByte, n + 4, i - 4);
+                  if (!((String)localObject3).isEmpty())
+                  {
+                    localObject3 = new Pair(Integer.valueOf(j), localObject3);
+                    localRichStatus.topics.add(localObject3);
+                    break;
+                    localRichStatus.actId = localByteBuffer.getInt();
+                    break;
+                    localRichStatus.tplType = localByteBuffer.getInt();
+                    break;
+                    localRichStatus.tplId = localByteBuffer.getInt();
+                    break;
+                    localRichStatus.feedsId = new String(paramArrayOfByte, n, i);
+                    if (QLog.isColorLevel())
+                    {
+                      localObject3 = new StringBuilder();
+                      ((StringBuilder)localObject3).append(HexUtil.bytes2HexStr(paramArrayOfByte));
+                      ((StringBuilder)localObject3).append(",sign feeds id=");
+                      ((StringBuilder)localObject3).append(localRichStatus.feedsId);
+                      QLog.d("Q.richstatus.status", 2, ((StringBuilder)localObject3).toString());
+                      break;
+                      if (localByteBuffer.remaining() < 8)
+                      {
+                        if (QLog.isColorLevel()) {
+                          QLog.d("Q.richstatus.status", 2, HexUtil.bytes2HexStr(paramArrayOfByte));
+                        }
+                      }
+                      else
+                      {
+                        localRichStatus.lontitude = localByteBuffer.getInt();
+                        localRichStatus.latitude = localByteBuffer.getInt();
+                        break;
+                        if (localByteBuffer.remaining() < 8)
+                        {
+                          if (QLog.isColorLevel()) {
+                            QLog.d("Q.richstatus.status", 2, HexUtil.bytes2HexStr(paramArrayOfByte));
+                          }
+                        }
+                        else
+                        {
+                          localRichStatus.actionId = localByteBuffer.getInt();
+                          localRichStatus.dataId = localByteBuffer.getInt();
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
-        QLog.e("RichStatus", 1, "parseStatus error, T_TOPIC_POS remaining not enough!");
-        break label464;
-      }
-      i = j;
-      while (i >= 5)
-      {
-        int i1 = localByteBuffer.getInt();
-        int m = localByteBuffer.get();
-        k = m;
-        if (m < 0) {
-          k = m + 256;
+        label1137:
+        j = n + i;
+        localByteBuffer.position(j);
+        break;
+        if (localObject1 != null) {
+          localRichStatus.a((String)localObject1);
         }
-        localObject3 = new Pair(Integer.valueOf(i1), Integer.valueOf(k));
-        localRichStatus.topicsPos.add(localObject3);
-        i -= 5;
+        if (QLog.isDevelopLevel()) {
+          QLog.i("RichStatus", 2, String.format("parseStatus %s", new Object[] { localRichStatus.toSpannableString(null) }));
+        }
+        return localRichStatus;
+        j = 0;
       }
-      break label464;
-      label1178:
-      break label299;
-      label1181:
-      break label150;
-      label1184:
-      break;
-      label1187:
-      i = 0;
     }
   }
   
   public boolean bOnlyHasTopic()
   {
-    if (this.topics.size() == 0) {}
-    StringBuilder localStringBuilder;
-    do
+    int i = this.topics.size();
+    boolean bool = false;
+    if (i == 0) {
+      return false;
+    }
+    if (!TextUtils.isEmpty(this.actionText)) {
+      return false;
+    }
+    Object localObject = this.plainText;
+    if (localObject != null)
     {
-      do
-      {
-        return false;
-      } while (!TextUtils.isEmpty(this.actionText));
-      if ((this.plainText == null) || (this.plainText.size() == 0)) {
+      if (((ArrayList)localObject).size() == 0) {
         return true;
       }
-      localStringBuilder = new StringBuilder();
-      int i = 0;
+      localObject = new StringBuilder();
+      i = 0;
       while (i < this.locationPosition)
       {
-        a(localStringBuilder, (String)this.plainText.get(i));
+        a((StringBuilder)localObject, (String)this.plainText.get(i));
         i += 1;
       }
-      if (this.plainText != null) {}
-      for (i = this.plainText.size();; i = 0)
-      {
-        int j = this.locationPosition;
-        while (j < i)
-        {
-          a(localStringBuilder, (String)this.plainText.get(j));
-          j += 1;
-        }
+      ArrayList localArrayList = this.plainText;
+      if (localArrayList != null) {
+        i = localArrayList.size();
+      } else {
+        i = 0;
       }
-    } while (localStringBuilder.toString().trim().length() != 0);
+      int j = this.locationPosition;
+      while (j < i)
+      {
+        a((StringBuilder)localObject, (String)this.plainText.get(j));
+        j += 1;
+      }
+      if (((StringBuilder)localObject).toString().trim().length() == 0) {
+        bool = true;
+      }
+      return bool;
+    }
     return true;
   }
   
@@ -426,21 +475,19 @@ public class RichStatus
   
   public Object clone()
   {
-    Object localObject = null;
+    Object localObject;
     try
     {
       RichStatus localRichStatus = (RichStatus)super.clone();
-      localObject = localRichStatus;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      for (;;)
-      {
-        localCloneNotSupportedException.printStackTrace();
-      }
+      localCloneNotSupportedException.printStackTrace();
+      localObject = null;
     }
-    if (this.plainText != null) {
-      localObject.plainText = ((ArrayList)this.plainText.clone());
+    ArrayList localArrayList = this.plainText;
+    if (localArrayList != null) {
+      localObject.plainText = ((ArrayList)localArrayList.clone());
     }
     if (this.topics.size() > 0)
     {
@@ -465,16 +512,17 @@ public class RichStatus
     this.fontType = paramRichStatus.fontType;
     this.actionId = paramRichStatus.actionId;
     this.actionText = paramRichStatus.actionText;
-    if (paramRichStatus.plainText != null) {}
-    for (this.plainText = ((ArrayList)paramRichStatus.plainText.clone());; this.plainText = null)
-    {
-      this.topics.clear();
-      this.topics.addAll(paramRichStatus.topics);
-      this.topicsPos.clear();
-      this.topicsPos.addAll(paramRichStatus.topicsPos);
-      this.locationText = paramRichStatus.locationText;
-      return;
+    ArrayList localArrayList = paramRichStatus.plainText;
+    if (localArrayList != null) {
+      this.plainText = ((ArrayList)localArrayList.clone());
+    } else {
+      this.plainText = null;
     }
+    this.topics.clear();
+    this.topics.addAll(paramRichStatus.topics);
+    this.topicsPos.clear();
+    this.topicsPos.addAll(paramRichStatus.topicsPos);
+    this.locationText = paramRichStatus.locationText;
   }
   
   public int countLength()
@@ -484,58 +532,64 @@ public class RichStatus
   
   public int countUtfLength()
   {
+    boolean bool = TextUtils.isEmpty(this.actionText);
     int k = 0;
-    if (!TextUtils.isEmpty(this.actionText)) {}
-    for (int j = a(this.actionText) + 12 + 0;; j = 0)
+    if (!bool) {
+      j = a(this.actionText) + 12 + 0;
+    } else {
+      j = 0;
+    }
+    int i = j;
+    if (!TextUtils.isEmpty(this.dataText)) {
+      i = j + (a(this.dataText) + 2);
+    }
+    int j = i;
+    if (!TextUtils.isEmpty(this.locationText)) {
+      j = i + (a(this.locationText) + 12);
+    }
+    i = 0;
+    while (i < this.topics.size())
     {
-      int i = j;
-      if (!TextUtils.isEmpty(this.dataText)) {
-        i = j + (a(this.dataText) + 2);
+      localObject1 = (String)((Pair)this.topics.get(i)).second;
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        j += a((String)localObject1) + 6;
       }
-      j = i;
-      if (!TextUtils.isEmpty(this.locationText)) {
-        j = i + (a(this.locationText) + 12);
-      }
-      i = 0;
-      Object localObject1;
-      if (i < this.topics.size())
-      {
-        localObject1 = (String)((Pair)this.topics.get(i)).second;
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {}
-        for (;;)
-        {
-          i += 1;
-          break;
-          j += a((String)localObject1) + 6;
-        }
-      }
+      i += 1;
+    }
+    Object localObject1 = this.topicsPos;
+    i = j;
+    if (localObject1 != null)
+    {
       i = j;
-      if (this.topicsPos != null)
+      if (((List)localObject1).size() > 0) {
+        i = j + (this.topicsPos.size() * 5 + 2);
+      }
+    }
+    localObject1 = this.plainText;
+    j = i;
+    Object localObject2;
+    if (localObject1 != null)
+    {
+      localObject1 = ((ArrayList)localObject1).iterator();
+      for (;;)
       {
-        i = j;
-        if (this.topicsPos.size() > 0) {
-          i = j + (this.topicsPos.size() * 5 + 2);
+        j = i;
+        if (!((Iterator)localObject1).hasNext()) {
+          break;
+        }
+        localObject2 = (String)((Iterator)localObject1).next();
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          i += a((String)localObject2) + 2;
         }
       }
-      j = i;
-      Object localObject2;
-      if (this.plainText != null)
-      {
-        localObject1 = this.plainText.iterator();
-        for (;;)
-        {
-          j = i;
-          if (!((Iterator)localObject1).hasNext()) {
-            break;
-          }
-          localObject2 = (String)((Iterator)localObject1).next();
-          if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-            i += a((String)localObject2) + 2;
-          }
-        }
-      }
-      j += 24;
-      if ((this.mStickerInfos != null) && (this.mStickerInfos.size() > 0))
+    }
+    j += 24;
+    localObject1 = this.mStickerInfos;
+    i = j;
+    if (localObject1 != null)
+    {
+      i = j;
+      if (((ArrayList)localObject1).size() > 0)
       {
         localObject1 = new richstatus_sticker.RichStatus_Sticker();
         i = k;
@@ -551,38 +605,35 @@ public class RichStatus
           ((richstatus_sticker.RichStatus_Sticker)localObject1).sticker_info.add(localStickerInfo);
           i += 1;
         }
-        return ((richstatus_sticker.RichStatus_Sticker)localObject1).toByteArray().length + 2 + j;
+        i = j + (((richstatus_sticker.RichStatus_Sticker)localObject1).toByteArray().length + 2);
       }
-      return j;
     }
+    return i;
   }
   
   public byte[] encode()
   {
-    int k = 0;
     ByteBuffer localByteBuffer = ByteBuffer.allocate(countUtfLength());
     localByteBuffer.order(ByteOrder.BIG_ENDIAN);
     a(localByteBuffer, 1, this.actionText);
     a(localByteBuffer, 2, this.dataText);
+    int k = 0;
     int i = 0;
-    int j;
-    Object localObject;
     int m;
-    if (i < this.topics.size())
+    while (i < this.topics.size())
     {
       j = ((Integer)((Pair)this.topics.get(i)).first).intValue();
-      localObject = (String)((Pair)this.topics.get(i)).second;
-      if (TextUtils.isEmpty((CharSequence)localObject)) {}
-      for (;;)
+      localObject1 = (String)((Pair)this.topics.get(i)).second;
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        i += 1;
-        break;
-        m = a((String)localObject);
-        localObject = ((String)localObject).getBytes();
-        localByteBuffer.put((byte)-108).put((byte)(m + 4)).putInt(j).put((byte[])localObject, 0, localObject.length);
+        m = a((String)localObject1);
+        localObject1 = ((String)localObject1).getBytes();
+        localByteBuffer.put((byte)-108).put((byte)(m + 4)).putInt(j).put((byte[])localObject1, 0, localObject1.length);
       }
+      i += 1;
     }
-    if ((this.topicsPos != null) && (this.topicsPos.size() > 0))
+    Object localObject1 = this.topicsPos;
+    if ((localObject1 != null) && (((List)localObject1).size() > 0))
     {
       i = this.topicsPos.size();
       localByteBuffer.put((byte)-107).put((byte)(i * 5));
@@ -605,15 +656,17 @@ public class RichStatus
       }
     }
     a(localByteBuffer, 4, this.locationText);
-    if (this.plainText != null) {}
-    for (i = this.plainText.size();; i = 0)
+    localObject1 = this.plainText;
+    if (localObject1 != null) {
+      i = ((ArrayList)localObject1).size();
+    } else {
+      i = 0;
+    }
+    int j = this.locationPosition;
+    while (j < i)
     {
-      j = this.locationPosition;
-      while (j < i)
-      {
-        a(localByteBuffer, 3, (String)this.plainText.get(j));
-        j += 1;
-      }
+      a(localByteBuffer, 3, (String)this.plainText.get(j));
+      j += 1;
     }
     if (!TextUtils.isEmpty(this.actionText)) {
       localByteBuffer.put((byte)-127).put((byte)8).putInt(this.actionId).putInt(this.dataId);
@@ -625,26 +678,34 @@ public class RichStatus
     localByteBuffer.put((byte)-110).put((byte)4).putInt(this.tplType);
     localByteBuffer.put((byte)-94).put((byte)4).putInt(this.fontId);
     localByteBuffer.put((byte)-93).put((byte)4).putInt(this.fontType);
-    if ((this.mStickerInfos != null) && (this.mStickerInfos.size() > 0))
+    localObject1 = this.mStickerInfos;
+    if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0))
     {
-      localObject = new richstatus_sticker.RichStatus_Sticker();
+      localObject1 = new richstatus_sticker.RichStatus_Sticker();
       i = k;
+      Object localObject2;
       while (i < this.mStickerInfos.size())
       {
-        RichStatus.StickerInfo localStickerInfo = (RichStatus.StickerInfo)this.mStickerInfos.get(i);
-        richstatus_sticker.StickerInfo localStickerInfo1 = new richstatus_sticker.StickerInfo();
-        localStickerInfo1.uint32_id.set(localStickerInfo.id);
-        localStickerInfo1.float_posX.set(localStickerInfo.posX);
-        localStickerInfo1.float_posY.set(localStickerInfo.posY);
-        localStickerInfo1.float_width.set(localStickerInfo.width);
-        localStickerInfo1.float_height.set(localStickerInfo.height);
-        ((richstatus_sticker.RichStatus_Sticker)localObject).sticker_info.add(localStickerInfo1);
+        localObject2 = (RichStatus.StickerInfo)this.mStickerInfos.get(i);
+        richstatus_sticker.StickerInfo localStickerInfo = new richstatus_sticker.StickerInfo();
+        localStickerInfo.uint32_id.set(((RichStatus.StickerInfo)localObject2).id);
+        localStickerInfo.float_posX.set(((RichStatus.StickerInfo)localObject2).posX);
+        localStickerInfo.float_posY.set(((RichStatus.StickerInfo)localObject2).posY);
+        localStickerInfo.float_width.set(((RichStatus.StickerInfo)localObject2).width);
+        localStickerInfo.float_height.set(((RichStatus.StickerInfo)localObject2).height);
+        ((richstatus_sticker.RichStatus_Sticker)localObject1).sticker_info.add(localStickerInfo);
         i += 1;
       }
-      localObject = ((richstatus_sticker.RichStatus_Sticker)localObject).toByteArray();
-      localByteBuffer.put((byte)-95).put((byte)localObject.length).put((byte[])localObject);
-      if (QLog.isColorLevel()) {
-        QLog.d("RichStatus", 2, "encode sticker info size = " + this.mStickerInfos.size() + " buffer length = " + localObject.length);
+      localObject1 = ((richstatus_sticker.RichStatus_Sticker)localObject1).toByteArray();
+      localByteBuffer.put((byte)-95).put((byte)localObject1.length).put((byte[])localObject1);
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("encode sticker info size = ");
+        ((StringBuilder)localObject2).append(this.mStickerInfos.size());
+        ((StringBuilder)localObject2).append(" buffer length = ");
+        ((StringBuilder)localObject2).append(localObject1.length);
+        QLog.d("RichStatus", 2, ((StringBuilder)localObject2).toString());
       }
     }
     return localByteBuffer.array();
@@ -663,67 +724,70 @@ public class RichStatus
   public String getActionAndData()
   {
     Object localObject;
-    if ((this.enableSummaryCached) && (this.cachedStatusHeader != null))
+    if (this.enableSummaryCached)
     {
       localObject = this.cachedStatusHeader;
-      return localObject;
+      if (localObject != null) {
+        return localObject;
+      }
     }
-    String str;
-    if (TextUtils.isEmpty(this.actionText)) {
-      str = "";
-    }
-    for (;;)
+    if (TextUtils.isEmpty(this.actionText))
     {
-      localObject = str;
-      if (!this.enableSummaryCached) {
-        break;
-      }
-      this.cachedStatusHeader = str;
-      return str;
-      if (TextUtils.isEmpty(this.dataText)) {
-        str = this.actionText;
-      } else {
-        str = this.actionText + this.dataText;
-      }
+      localObject = "";
     }
+    else if (TextUtils.isEmpty(this.dataText))
+    {
+      localObject = this.actionText;
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.actionText);
+      ((StringBuilder)localObject).append(this.dataText);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    if (this.enableSummaryCached) {
+      this.cachedStatusHeader = ((String)localObject);
+    }
+    return localObject;
   }
   
   public CharSequence getLocSS(Resources paramResources, float paramFloat, CharSequence paramCharSequence)
   {
-    if (TextUtils.isEmpty(this.locationText)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(this.locationText)) {
       return paramCharSequence;
-      Object localObject2 = new StringBuilder();
-      Object localObject1;
-      if (paramCharSequence != null)
-      {
-        localObject1 = paramCharSequence;
-        localObject1 = new SpannableString(localObject1 + "[L]" + " " + this.locationText);
-      }
-      try
-      {
-        localObject2 = BitmapFactory.decodeResource(paramResources, 2130849988);
-        if (localObject2 == null) {
-          continue;
-        }
-        int i = (int)(0.9F * paramFloat + 0.5F);
-        int j = ((Bitmap)localObject2).getWidth() * i / ((Bitmap)localObject2).getHeight();
-        paramResources = new StatableBitmapDrawable(paramResources, (Bitmap)localObject2, false, true);
-        paramResources.setBounds(0, 0, j, i);
-        paramResources = new OffsetableImageSpan(paramResources, 0).setOffset(-0.1F);
-        if (paramCharSequence == null) {}
-        for (i = 0;; i = paramCharSequence.length())
-        {
-          ((SpannableString)localObject1).setSpan(paramResources, i, "[L]".length() + i, 33);
-          return localObject1;
-          localObject1 = "";
-          break;
-        }
+    }
+    Object localObject2 = new StringBuilder();
+    if (paramCharSequence != null) {
+      localObject1 = paramCharSequence;
+    } else {
+      localObject1 = "";
+    }
+    ((StringBuilder)localObject2).append(localObject1);
+    ((StringBuilder)localObject2).append("[L]");
+    ((StringBuilder)localObject2).append(" ");
+    ((StringBuilder)localObject2).append(this.locationText);
+    Object localObject1 = new SpannableString(((StringBuilder)localObject2).toString());
+    try
+    {
+      localObject2 = BitmapFactory.decodeResource(paramResources, 2130849886);
+      if (localObject2 == null) {
         return paramCharSequence;
       }
-      catch (OutOfMemoryError paramResources) {}
+      int j = (int)(paramFloat * 0.9F + 0.5F);
+      int k = ((Bitmap)localObject2).getWidth() * j / ((Bitmap)localObject2).getHeight();
+      int i = 0;
+      paramResources = new StatableBitmapDrawable(paramResources, (Bitmap)localObject2, false, true);
+      paramResources.setBounds(0, 0, k, j);
+      paramResources = new OffsetableImageSpan(paramResources, 0).setOffset(-0.1F);
+      if (paramCharSequence != null) {
+        i = paramCharSequence.length();
+      }
+      ((SpannableString)localObject1).setSpan(paramResources, i, i + 3, 33);
+      return localObject1;
     }
+    catch (OutOfMemoryError paramResources) {}
+    return paramCharSequence;
   }
   
   public CharSequence getLocSS(TextView paramTextView)
@@ -738,17 +802,23 @@ public class RichStatus
   
   public String getPlainText()
   {
-    int k = 0;
-    if ((this.enableSummaryCached) && (this.cachedStatusContent != null)) {
-      return this.cachedStatusContent;
+    if (this.enableSummaryCached)
+    {
+      localObject1 = this.cachedStatusContent;
+      if (localObject1 != null) {
+        return localObject1;
+      }
     }
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    if (shouldShowAtHead())
+    Object localObject1 = new StringBuilder(100);
+    boolean bool = shouldShowAtHead();
+    int k = 0;
+    int i;
+    if (bool)
     {
       i = 0;
       while (i < this.topics.size())
       {
-        localStringBuilder.append((String)((Pair)this.topics.get(i)).second);
+        ((StringBuilder)localObject1).append((String)((Pair)this.topics.get(i)).second);
         i += 1;
       }
     }
@@ -757,60 +827,62 @@ public class RichStatus
       i = 0;
       while (i < this.locationPosition)
       {
-        a(localStringBuilder, (String)this.plainText.get(i));
+        a((StringBuilder)localObject1, (String)this.plainText.get(i));
         i += 1;
       }
     }
-    if (this.plainText != null) {}
-    int j;
-    for (int i = this.plainText.size();; i = 0)
-    {
-      j = this.locationPosition;
-      while (j < i)
-      {
-        a(localStringBuilder, (String)this.plainText.get(j));
-        j += 1;
-      }
+    Object localObject2 = this.plainText;
+    if (localObject2 != null) {
+      i = ((ArrayList)localObject2).size();
+    } else {
+      i = 0;
     }
-    String str;
+    int j = this.locationPosition;
+    while (j < i)
+    {
+      a((StringBuilder)localObject1, (String)this.plainText.get(j));
+      j += 1;
+    }
     if (shouldShowMixing())
     {
       sortTopicPos();
       i = k;
-      if (i < this.topicsPos.size())
+      while (i < this.topicsPos.size())
       {
-        str = getTopicStrById(((Integer)((Pair)this.topicsPos.get(i)).first).intValue());
-        if (!TextUtils.isEmpty(str)) {}
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break;
-      j = ((Integer)((Pair)this.topicsPos.get(i)).second).intValue();
-      if (j > localStringBuilder.length())
-      {
-        if (this.enableSummaryCached) {
-          this.cachedStatusContent = localStringBuilder.toString();
+        localObject2 = getTopicStrById(((Integer)((Pair)this.topicsPos.get(i)).first).intValue());
+        if (!TextUtils.isEmpty((CharSequence)localObject2))
+        {
+          j = ((Integer)((Pair)this.topicsPos.get(i)).second).intValue();
+          if (j > ((StringBuilder)localObject1).length()) {
+            break;
+          }
+          ((StringBuilder)localObject1).insert(j, (String)localObject2);
         }
-        return localStringBuilder.toString();
+        i += 1;
       }
-      localStringBuilder.insert(j, str);
     }
+    if (this.enableSummaryCached) {
+      this.cachedStatusContent = ((StringBuilder)localObject1).toString();
+    }
+    return ((StringBuilder)localObject1).toString();
   }
   
   public String getTopicStrById(int paramInt)
   {
-    if ((this.topics == null) || (this.topics.size() <= 0)) {
-      return null;
-    }
-    int i = 0;
-    while (i < this.topics.size())
+    List localList = this.topics;
+    if (localList != null)
     {
-      if (((Integer)((Pair)this.topics.get(i)).first).intValue() == paramInt) {
-        return (String)((Pair)this.topics.get(i)).second;
+      if (localList.size() <= 0) {
+        return null;
       }
-      i += 1;
+      int i = 0;
+      while (i < this.topics.size())
+      {
+        if (((Integer)((Pair)this.topics.get(i)).first).intValue() == paramInt) {
+          return (String)((Pair)this.topics.get(i)).second;
+        }
+        i += 1;
+      }
     }
     return null;
   }
@@ -818,42 +890,58 @@ public class RichStatus
   public int getTotalLenForShow()
   {
     CharSequence localCharSequence = toSpannableStringWithoutAction(null);
-    int i = 0;
+    int i;
     if (!TextUtils.isEmpty(this.actionText)) {
-      i = "[S]".length() + 1;
+      i = 4;
+    } else {
+      i = 0;
     }
     return i + localCharSequence.length();
   }
   
   public boolean hasTopic()
   {
-    return (this.topics != null) && (this.topics.size() > 0);
+    List localList = this.topics;
+    return (localList != null) && (localList.size() > 0);
   }
   
   public boolean isEmpty()
   {
-    int j;
-    if (this.plainText != null)
+    Object localObject = this.plainText;
+    boolean bool2 = false;
+    if (localObject != null)
     {
-      Iterator localIterator = this.plainText.iterator();
+      localObject = ((ArrayList)localObject).iterator();
       int i = 1;
-      j = i;
-      if (!localIterator.hasNext()) {
-        break label50;
+      for (;;)
+      {
+        j = i;
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+        if (!TextUtils.isEmpty((String)((Iterator)localObject).next())) {
+          i = 0;
+        }
       }
-      if (TextUtils.isEmpty((String)localIterator.next())) {
-        break label84;
-      }
-      i = 0;
     }
-    label50:
-    label84:
-    for (;;)
+    int j = 1;
+    boolean bool1 = bool2;
+    if (this.actionId == 0)
     {
-      break;
-      j = 1;
-      return (this.actionId == 0) && (this.dataId == 0) && (j != 0) && (this.topics.isEmpty());
+      bool1 = bool2;
+      if (this.dataId == 0)
+      {
+        bool1 = bool2;
+        if (j != 0)
+        {
+          bool1 = bool2;
+          if (this.topics.isEmpty()) {
+            bool1 = true;
+          }
+        }
+      }
     }
+    return bool1;
   }
   
   public boolean isEmptyStatus()
@@ -868,17 +956,34 @@ public class RichStatus
   
   public boolean shouldShowAtHead()
   {
-    return (this.topics != null) && (this.topics.size() > 0) && ((this.topicsPos == null) || (this.topicsPos.size() <= 0));
+    List localList = this.topics;
+    if ((localList != null) && (localList.size() > 0))
+    {
+      localList = this.topicsPos;
+      if ((localList == null) || (localList.size() <= 0)) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public boolean shouldShowMixing()
   {
-    return (this.topics != null) && (this.topics.size() > 0) && (this.topicsPos != null) && (this.topicsPos.size() == this.topics.size());
+    List localList = this.topics;
+    if ((localList != null) && (localList.size() > 0))
+    {
+      localList = this.topicsPos;
+      if ((localList != null) && (localList.size() == this.topics.size())) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public void sortTopicPos()
   {
-    if ((this.topicsPos != null) && (this.topicsPos.size() > 1)) {
+    List localList = this.topicsPos;
+    if ((localList != null) && (localList.size() > 1)) {
       Collections.sort(this.topicsPos, new RichStatus.1(this));
     }
   }
@@ -895,158 +1000,160 @@ public class RichStatus
   
   public SpannableString toSpannableString(String paramString, int paramInt1, int paramInt2)
   {
-    String str1 = paramString;
+    String str = paramString;
     if (paramString == null) {
-      str1 = "";
+      str = "";
     }
-    paramString = new StringBuilder(str1);
+    paramString = new StringBuilder(str);
     a(paramString, this.actionText);
     a(paramString, this.dataText);
     paramString = new StringBuilder(paramString.toString().trim());
     int m = paramString.length();
-    if (m > str1.length()) {
-      paramString.append(' ');
-    }
-    for (int i = m + 1;; i = m)
+    int i;
+    if (m > str.length())
     {
-      if (shouldShowAtHead())
+      paramString.append(' ');
+      i = m + 1;
+    }
+    else
+    {
+      i = m;
+    }
+    if (shouldShowAtHead())
+    {
+      j = 0;
+      while (j < this.topics.size())
       {
-        j = 0;
-        while (j < this.topics.size())
-        {
-          paramString.append((String)((Pair)this.topics.get(j)).second);
-          j += 1;
-        }
-      }
-      int j = 0;
-      while (j < this.locationPosition)
-      {
-        a(paramString, (String)this.plainText.get(j));
+        paramString.append((String)((Pair)this.topics.get(j)).second);
         j += 1;
-      }
-      if (this.plainText != null) {}
-      int k;
-      for (j = this.plainText.size();; j = 0)
-      {
-        k = this.locationPosition;
-        while (k < j)
-        {
-          a(paramString, (String)this.plainText.get(k));
-          k += 1;
-        }
-      }
-      String str2;
-      if (shouldShowMixing())
-      {
-        sortTopicPos();
-        j = 0;
-        if (j < this.topicsPos.size())
-        {
-          str2 = getTopicStrById(((Integer)((Pair)this.topicsPos.get(j)).first).intValue());
-          if (!TextUtils.isEmpty(str2)) {}
-        }
-      }
-      for (;;)
-      {
-        j += 1;
-        break;
-        k = ((Integer)((Pair)this.topicsPos.get(j)).second).intValue() + i;
-        if (k > paramString.length())
-        {
-          paramString = new SpannableString(paramString.toString().trim());
-          if (m > str1.length()) {
-            paramString.setSpan(new StatableSpanTextView.StatableForegroundColorSpan(paramInt1, paramInt2), 0, m, 33);
-          }
-          return paramString;
-        }
-        paramString.insert(k, str2);
       }
     }
+    int j = 0;
+    while (j < this.locationPosition)
+    {
+      a(paramString, (String)this.plainText.get(j));
+      j += 1;
+    }
+    Object localObject = this.plainText;
+    if (localObject != null) {
+      j = ((ArrayList)localObject).size();
+    } else {
+      j = 0;
+    }
+    int k = this.locationPosition;
+    while (k < j)
+    {
+      a(paramString, (String)this.plainText.get(k));
+      k += 1;
+    }
+    if (shouldShowMixing())
+    {
+      sortTopicPos();
+      j = 0;
+      while (j < this.topicsPos.size())
+      {
+        localObject = getTopicStrById(((Integer)((Pair)this.topicsPos.get(j)).first).intValue());
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          k = ((Integer)((Pair)this.topicsPos.get(j)).second).intValue() + i;
+          if (k > paramString.length()) {
+            break;
+          }
+          paramString.insert(k, (String)localObject);
+        }
+        j += 1;
+      }
+    }
+    paramString = new SpannableString(paramString.toString().trim());
+    if (m > str.length()) {
+      paramString.setSpan(new StatableSpanTextView.StatableForegroundColorSpan(paramInt1, paramInt2), 0, m, 33);
+    }
+    return paramString;
   }
   
   public CharSequence toSpannableStringWithTopic(String paramString, int paramInt1, int paramInt2, ITopic.OnTopicClickListener paramOnTopicClickListener)
   {
-    String str1 = paramString;
     if (paramString == null) {
-      str1 = "";
+      paramString = "";
     }
-    paramString = new SpannableStringBuilder(str1);
-    a(paramString, this.actionText);
-    a(paramString, this.dataText);
-    paramString = new SpannableStringBuilder(paramString.toString().trim());
-    int m = paramString.length();
-    if (m > str1.length()) {
-      paramString.append(' ');
-    }
-    for (int i = m + 1;; i = m)
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramString);
+    a(localSpannableStringBuilder, this.actionText);
+    a(localSpannableStringBuilder, this.dataText);
+    localSpannableStringBuilder = new SpannableStringBuilder(localSpannableStringBuilder.toString().trim());
+    int m = localSpannableStringBuilder.length();
+    int i;
+    if (m > paramString.length())
     {
-      int k;
-      String str2;
-      ClickColorTopicSpan localClickColorTopicSpan;
-      if (shouldShowAtHead())
+      localSpannableStringBuilder.append(' ');
+      i = m + 1;
+    }
+    else
+    {
+      i = m;
+    }
+    int j;
+    ClickColorTopicSpan localClickColorTopicSpan;
+    if (shouldShowAtHead())
+    {
+      j = 0;
+      while (j < this.topics.size())
       {
-        j = 0;
-        if (j < this.topics.size())
+        if (!TextUtils.isEmpty((CharSequence)((Pair)this.topics.get(j)).second))
         {
-          if (TextUtils.isEmpty((CharSequence)((Pair)this.topics.get(j)).second)) {}
-          for (;;)
-          {
-            j += 1;
-            break;
-            k = paramString.length();
-            str2 = (String)((Pair)this.topics.get(j)).second;
-            localClickColorTopicSpan = new ClickColorTopicSpan(paramOnTopicClickListener, TopicUtil.a(-11692801, -2142399233), new Pair(((Pair)this.topics.get(j)).first, str2));
-            paramString.append(str2);
-            paramString.setSpan(localClickColorTopicSpan, k, str2.length() + k, 33);
-          }
+          k = localSpannableStringBuilder.length();
+          localObject = (String)((Pair)this.topics.get(j)).second;
+          localClickColorTopicSpan = new ClickColorTopicSpan(paramOnTopicClickListener, a(-11692801, -2142399233), new Pair(((Pair)this.topics.get(j)).first, localObject));
+          localSpannableStringBuilder.append((CharSequence)localObject);
+          localSpannableStringBuilder.setSpan(localClickColorTopicSpan, k, ((String)localObject).length() + k, 33);
         }
-      }
-      if (this.plainText != null)
-      {
-        j = 0;
-        while (j < this.locationPosition)
-        {
-          a(paramString, (String)this.plainText.get(j));
-          j += 1;
-        }
-      }
-      if (this.plainText != null) {}
-      for (int j = this.plainText.size();; j = 0)
-      {
-        k = this.locationPosition;
-        while (k < j)
-        {
-          a(paramString, (String)this.plainText.get(k));
-          k += 1;
-        }
-      }
-      if (shouldShowMixing())
-      {
-        sortTopicPos();
-        j = 0;
-        if (j < this.topicsPos.size())
-        {
-          str2 = getTopicStrById(((Integer)((Pair)this.topicsPos.get(j)).first).intValue());
-          if (!TextUtils.isEmpty(str2)) {}
-        }
-      }
-      for (;;)
-      {
         j += 1;
-        break;
-        k = i + ((Integer)((Pair)this.topicsPos.get(j)).second).intValue();
-        if (k > paramString.length())
-        {
-          if (m > str1.length()) {
-            paramString.setSpan(new StatableSpanTextView.StatableForegroundColorSpan(paramInt1, paramInt2), 0, m, 33);
-          }
-          return paramString;
-        }
-        localClickColorTopicSpan = new ClickColorTopicSpan(paramOnTopicClickListener, TopicUtil.a(-11692801, -2142399233), new Pair(((Pair)this.topicsPos.get(j)).first, str2));
-        paramString.insert(k, str2);
-        paramString.setSpan(localClickColorTopicSpan, k, str2.length() + k, 33);
       }
     }
+    if (this.plainText != null)
+    {
+      j = 0;
+      while (j < this.locationPosition)
+      {
+        a(localSpannableStringBuilder, (String)this.plainText.get(j));
+        j += 1;
+      }
+    }
+    Object localObject = this.plainText;
+    if (localObject != null) {
+      j = ((ArrayList)localObject).size();
+    } else {
+      j = 0;
+    }
+    int k = this.locationPosition;
+    while (k < j)
+    {
+      a(localSpannableStringBuilder, (String)this.plainText.get(k));
+      k += 1;
+    }
+    if (shouldShowMixing())
+    {
+      sortTopicPos();
+      j = 0;
+      while (j < this.topicsPos.size())
+      {
+        localObject = getTopicStrById(((Integer)((Pair)this.topicsPos.get(j)).first).intValue());
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          k = ((Integer)((Pair)this.topicsPos.get(j)).second).intValue() + i;
+          if (k > localSpannableStringBuilder.length()) {
+            break;
+          }
+          localClickColorTopicSpan = new ClickColorTopicSpan(paramOnTopicClickListener, a(-11692801, -2142399233), new Pair(((Pair)this.topicsPos.get(j)).first, localObject));
+          localSpannableStringBuilder.insert(k, (CharSequence)localObject);
+          localSpannableStringBuilder.setSpan(localClickColorTopicSpan, k, ((String)localObject).length() + k, 33);
+        }
+        j += 1;
+      }
+    }
+    if (m > paramString.length()) {
+      localSpannableStringBuilder.setSpan(new StatableSpanTextView.StatableForegroundColorSpan(paramInt1, paramInt2), 0, m, 33);
+    }
+    return localSpannableStringBuilder;
   }
   
   public CharSequence toSpannableStringWithoutAction()
@@ -1054,30 +1161,27 @@ public class RichStatus
     return toSpannableStringWithoutAction(null);
   }
   
-  @NotNull
+  @NonNull
   public CharSequence toSpannableStringWithoutAction(ITopic.OnTopicClickListener paramOnTopicClickListener)
   {
-    int k = 0;
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    int j;
-    String str;
+    boolean bool = shouldShowAtHead();
+    int k = 0;
     ClickColorTopicSpan localClickColorTopicSpan;
-    if (shouldShowAtHead())
+    if (bool)
     {
       i = 0;
-      if (i < this.topics.size())
+      while (i < this.topics.size())
       {
-        if (TextUtils.isEmpty((CharSequence)((Pair)this.topics.get(i)).second)) {}
-        for (;;)
+        if (!TextUtils.isEmpty((CharSequence)((Pair)this.topics.get(i)).second))
         {
-          i += 1;
-          break;
           j = localSpannableStringBuilder.length();
-          str = (String)((Pair)this.topics.get(i)).second;
-          localClickColorTopicSpan = new ClickColorTopicSpan(paramOnTopicClickListener, TopicUtil.a(-11692801, -2142399233), new Pair(((Pair)this.topics.get(i)).first, str));
-          localSpannableStringBuilder.append(str);
-          localSpannableStringBuilder.setSpan(localClickColorTopicSpan, j, str.length() + j, 33);
+          localObject = (String)((Pair)this.topics.get(i)).second;
+          localClickColorTopicSpan = new ClickColorTopicSpan(paramOnTopicClickListener, a(-11692801, -2142399233), new Pair(((Pair)this.topics.get(i)).first, localObject));
+          localSpannableStringBuilder.append((CharSequence)localObject);
+          localSpannableStringBuilder.setSpan(localClickColorTopicSpan, j, ((String)localObject).length() + j, 33);
         }
+        i += 1;
       }
     }
     int i = 0;
@@ -1086,382 +1190,232 @@ public class RichStatus
       a(localSpannableStringBuilder, (String)this.plainText.get(i));
       i += 1;
     }
-    if (this.plainText != null) {}
-    for (i = this.plainText.size();; i = 0)
+    Object localObject = this.plainText;
+    if (localObject != null) {
+      i = ((ArrayList)localObject).size();
+    } else {
+      i = 0;
+    }
+    int j = this.locationPosition;
+    while (j < i)
     {
-      j = this.locationPosition;
-      while (j < i)
-      {
-        a(localSpannableStringBuilder, (String)this.plainText.get(j));
-        j += 1;
-      }
+      a(localSpannableStringBuilder, (String)this.plainText.get(j));
+      j += 1;
     }
     if (shouldShowMixing())
     {
       sortTopicPos();
       i = k;
-      if (i < this.topicsPos.size())
+      while (i < this.topicsPos.size())
       {
-        str = getTopicStrById(((Integer)((Pair)this.topicsPos.get(i)).first).intValue());
-        if (!TextUtils.isEmpty(str)) {}
+        localObject = getTopicStrById(((Integer)((Pair)this.topicsPos.get(i)).first).intValue());
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          j = ((Integer)((Pair)this.topicsPos.get(i)).second).intValue();
+          if (j > localSpannableStringBuilder.length()) {
+            return localSpannableStringBuilder;
+          }
+          localClickColorTopicSpan = new ClickColorTopicSpan(paramOnTopicClickListener, a(-11692801, -2142399233), new Pair(((Pair)this.topicsPos.get(i)).first, localObject));
+          localSpannableStringBuilder.insert(j, (CharSequence)localObject);
+          localSpannableStringBuilder.setSpan(localClickColorTopicSpan, j, ((String)localObject).length() + j, 33);
+        }
+        i += 1;
       }
     }
-    for (;;)
-    {
-      i += 1;
-      break;
-      j = ((Integer)((Pair)this.topicsPos.get(i)).second).intValue();
-      if (j > localSpannableStringBuilder.length()) {
-        return localSpannableStringBuilder;
-      }
-      localClickColorTopicSpan = new ClickColorTopicSpan(paramOnTopicClickListener, TopicUtil.a(-11692801, -2142399233), new Pair(((Pair)this.topicsPos.get(i)).first, str));
-      localSpannableStringBuilder.insert(j, str);
-      localSpannableStringBuilder.setSpan(localClickColorTopicSpan, j, str.length() + j, 33);
-    }
+    return localSpannableStringBuilder;
   }
   
-  /* Error */
   public void topicFromJson(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 114	com/tencent/mobileqq/richstatus/RichStatus:topics	Ljava/util/List;
-    //   4: invokeinterface 401 1 0
-    //   9: aload_1
-    //   10: invokestatic 136	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   13: ifne +132 -> 145
-    //   16: new 639	org/json/JSONArray
-    //   19: dup
-    //   20: aload_1
-    //   21: invokespecial 640	org/json/JSONArray:<init>	(Ljava/lang/String;)V
-    //   24: astore 4
-    //   26: iconst_0
-    //   27: istore_2
-    //   28: iload_2
-    //   29: aload 4
-    //   31: invokevirtual 641	org/json/JSONArray:length	()I
-    //   34: if_icmpge +111 -> 145
-    //   37: aload 4
-    //   39: iload_2
-    //   40: invokevirtual 642	org/json/JSONArray:get	(I)Ljava/lang/Object;
-    //   43: checkcast 644	org/json/JSONObject
-    //   46: astore 5
-    //   48: aload 5
-    //   50: ldc_w 645
-    //   53: invokevirtual 648	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   56: istore_3
-    //   57: aload 5
-    //   59: ldc_w 650
-    //   62: invokevirtual 654	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   65: astore 5
-    //   67: aload 5
-    //   69: invokestatic 136	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   72: ifne +26 -> 98
-    //   75: aload_0
-    //   76: getfield 114	com/tencent/mobileqq/richstatus/RichStatus:topics	Ljava/util/List;
-    //   79: new 361	com/tencent/util/Pair
-    //   82: dup
-    //   83: iload_3
-    //   84: invokestatic 367	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   87: aload 5
-    //   89: invokespecial 370	com/tencent/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   92: invokeinterface 373 2 0
-    //   97: pop
-    //   98: iload_2
-    //   99: iconst_1
-    //   100: iadd
-    //   101: istore_2
-    //   102: goto -74 -> 28
-    //   105: astore 4
-    //   107: invokestatic 193	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   110: ifeq +35 -> 145
-    //   113: ldc 212
-    //   115: iconst_2
-    //   116: new 145	java/lang/StringBuilder
-    //   119: dup
-    //   120: invokespecial 248	java/lang/StringBuilder:<init>	()V
-    //   123: ldc_w 655
-    //   126: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   129: aload 4
-    //   131: invokevirtual 658	org/json/JSONException:getMessage	()Ljava/lang/String;
-    //   134: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   137: invokevirtual 252	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   140: aload 4
-    //   142: invokestatic 660	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   145: invokestatic 193	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   148: ifeq +23 -> 171
-    //   151: ldc 212
-    //   153: iconst_2
-    //   154: ldc_w 662
-    //   157: iconst_1
-    //   158: anewarray 4	java/lang/Object
-    //   161: dup
-    //   162: iconst_0
-    //   163: aload_1
-    //   164: aastore
-    //   165: invokestatic 222	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   168: invokestatic 225	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   171: return
-    //   172: astore 4
-    //   174: invokestatic 193	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   177: ifeq -32 -> 145
-    //   180: ldc 212
-    //   182: iconst_2
-    //   183: new 145	java/lang/StringBuilder
-    //   186: dup
-    //   187: invokespecial 248	java/lang/StringBuilder:<init>	()V
-    //   190: ldc_w 655
-    //   193: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   196: aload 4
-    //   198: invokevirtual 663	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   201: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   204: invokevirtual 252	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   207: aload 4
-    //   209: invokestatic 660	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   212: goto -67 -> 145
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	215	0	this	RichStatus
-    //   0	215	1	paramString	String
-    //   27	75	2	i	int
-    //   56	28	3	j	int
-    //   24	14	4	localJSONArray	JSONArray
-    //   105	36	4	localJSONException	JSONException
-    //   172	36	4	localException	java.lang.Exception
-    //   46	42	5	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   16	26	105	org/json/JSONException
-    //   28	98	105	org/json/JSONException
-    //   16	26	172	java/lang/Exception
-    //   28	98	172	java/lang/Exception
+    this.topics.clear();
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        JSONArray localJSONArray = new JSONArray(paramString);
+        int i = 0;
+        Object localObject;
+        while (i < localJSONArray.length())
+        {
+          localObject = (JSONObject)localJSONArray.get(i);
+          int j = ((JSONObject)localObject).optInt("id");
+          localObject = ((JSONObject)localObject).optString("topic");
+          if (!TextUtils.isEmpty((CharSequence)localObject)) {
+            this.topics.add(new Pair(Integer.valueOf(j), localObject));
+          }
+          i += 1;
+        }
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("topicFromJson");
+          ((StringBuilder)localObject).append(localException.getMessage());
+          QLog.i("RichStatus", 2, ((StringBuilder)localObject).toString(), localException);
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("topicFromJson");
+          ((StringBuilder)localObject).append(localJSONException.getMessage());
+          QLog.i("RichStatus", 2, ((StringBuilder)localObject).toString(), localJSONException);
+        }
+      }
+    } else {
+      QLog.i("RichStatus", 2, String.format("topicFromJson %s", new Object[] { paramString }));
+    }
   }
   
-  /* Error */
   public void topicPosFromJson(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 116	com/tencent/mobileqq/richstatus/RichStatus:topicsPos	Ljava/util/List;
-    //   4: invokeinterface 401 1 0
-    //   9: aload_1
-    //   10: invokestatic 136	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   13: ifne +127 -> 140
-    //   16: new 639	org/json/JSONArray
-    //   19: dup
-    //   20: aload_1
-    //   21: invokespecial 640	org/json/JSONArray:<init>	(Ljava/lang/String;)V
-    //   24: astore 5
-    //   26: iconst_0
-    //   27: istore_2
-    //   28: iload_2
-    //   29: aload 5
-    //   31: invokevirtual 641	org/json/JSONArray:length	()I
-    //   34: if_icmpge +106 -> 140
-    //   37: aload 5
-    //   39: iload_2
-    //   40: invokevirtual 642	org/json/JSONArray:get	(I)Ljava/lang/Object;
-    //   43: checkcast 644	org/json/JSONObject
-    //   46: astore 6
-    //   48: aload 6
-    //   50: ldc_w 645
-    //   53: invokevirtual 648	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   56: istore_3
-    //   57: aload 6
-    //   59: ldc_w 666
-    //   62: invokevirtual 648	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   65: istore 4
-    //   67: aload_0
-    //   68: getfield 116	com/tencent/mobileqq/richstatus/RichStatus:topicsPos	Ljava/util/List;
-    //   71: new 361	com/tencent/util/Pair
-    //   74: dup
-    //   75: iload_3
-    //   76: invokestatic 367	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   79: iload 4
-    //   81: invokestatic 367	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   84: invokespecial 370	com/tencent/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   87: invokeinterface 373 2 0
-    //   92: pop
-    //   93: iload_2
-    //   94: iconst_1
-    //   95: iadd
-    //   96: istore_2
-    //   97: goto -69 -> 28
-    //   100: astore 5
-    //   102: invokestatic 193	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   105: ifeq +35 -> 140
-    //   108: ldc 212
-    //   110: iconst_2
-    //   111: new 145	java/lang/StringBuilder
-    //   114: dup
-    //   115: invokespecial 248	java/lang/StringBuilder:<init>	()V
-    //   118: ldc_w 667
-    //   121: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   124: aload 5
-    //   126: invokevirtual 658	org/json/JSONException:getMessage	()Ljava/lang/String;
-    //   129: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   132: invokevirtual 252	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   135: aload 5
-    //   137: invokestatic 660	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   140: invokestatic 193	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   143: ifeq +23 -> 166
-    //   146: ldc 212
-    //   148: iconst_2
-    //   149: ldc_w 669
-    //   152: iconst_1
-    //   153: anewarray 4	java/lang/Object
-    //   156: dup
-    //   157: iconst_0
-    //   158: aload_1
-    //   159: aastore
-    //   160: invokestatic 222	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   163: invokestatic 225	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   166: return
-    //   167: astore 5
-    //   169: invokestatic 193	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   172: ifeq -32 -> 140
-    //   175: ldc 212
-    //   177: iconst_2
-    //   178: new 145	java/lang/StringBuilder
-    //   181: dup
-    //   182: invokespecial 248	java/lang/StringBuilder:<init>	()V
-    //   185: ldc_w 667
-    //   188: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   191: aload 5
-    //   193: invokevirtual 663	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   196: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   199: invokevirtual 252	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   202: aload 5
-    //   204: invokestatic 660	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   207: goto -67 -> 140
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	210	0	this	RichStatus
-    //   0	210	1	paramString	String
-    //   27	70	2	i	int
-    //   56	20	3	j	int
-    //   65	15	4	k	int
-    //   24	14	5	localJSONArray	JSONArray
-    //   100	36	5	localJSONException	JSONException
-    //   167	36	5	localException	java.lang.Exception
-    //   46	12	6	localJSONObject	JSONObject
-    // Exception table:
-    //   from	to	target	type
-    //   16	26	100	org/json/JSONException
-    //   28	93	100	org/json/JSONException
-    //   16	26	167	java/lang/Exception
-    //   28	93	167	java/lang/Exception
+    this.topicsPos.clear();
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        JSONArray localJSONArray = new JSONArray(paramString);
+        int i = 0;
+        Object localObject;
+        while (i < localJSONArray.length())
+        {
+          localObject = (JSONObject)localJSONArray.get(i);
+          int j = ((JSONObject)localObject).optInt("id");
+          int k = ((JSONObject)localObject).optInt("topicPos");
+          this.topicsPos.add(new Pair(Integer.valueOf(j), Integer.valueOf(k)));
+          i += 1;
+        }
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("topicPosFromJson");
+          ((StringBuilder)localObject).append(localException.getMessage());
+          QLog.i("RichStatus", 2, ((StringBuilder)localObject).toString(), localException);
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("topicPosFromJson");
+          ((StringBuilder)localObject).append(localJSONException.getMessage());
+          QLog.i("RichStatus", 2, ((StringBuilder)localObject).toString(), localJSONException);
+        }
+      }
+    } else {
+      QLog.i("RichStatus", 2, String.format("topicPosFromJson %s", new Object[] { paramString }));
+    }
   }
   
   public String topicPosToJson()
   {
+    Object localObject1 = null;
     int i = 0;
-    localObject = null;
-    if (i < this.topicsPos.size())
+    Object localObject2;
+    while (i < this.topicsPos.size())
     {
       JSONObject localJSONObject = new JSONObject();
-      for (;;)
+      Object localObject4 = localObject1;
+      try
       {
-        for (;;)
+        localJSONObject.put("id", ((Pair)this.topicsPos.get(i)).first);
+        localObject4 = localObject1;
+        localJSONObject.put("topicPos", ((Pair)this.topicsPos.get(i)).second);
+        Object localObject3 = localObject1;
+        if (localObject1 == null)
         {
-          try
-          {
-            localJSONObject.put("id", ((Pair)this.topicsPos.get(i)).first);
-            localJSONObject.put("topicPos", ((Pair)this.topicsPos.get(i)).second);
-            if (localObject != null) {
-              continue;
-            }
-            JSONArray localJSONArray = new JSONArray();
-            localObject = localJSONArray;
-          }
-          catch (JSONException localJSONException2)
-          {
-            continue;
-            localObject = "";
-            continue;
-            continue;
-          }
-          try
-          {
-            ((JSONArray)localObject).put(localJSONObject);
-            i += 1;
-          }
-          catch (JSONException localJSONException1) {}
+          localObject4 = localObject1;
+          localObject3 = new JSONArray();
         }
-        localJSONException1.printStackTrace();
+        localObject4 = localObject3;
+        ((JSONArray)localObject3).put(localJSONObject);
+        localObject1 = localObject3;
       }
-    }
-    if (localObject != null)
-    {
-      localObject = ((JSONArray)localObject).toString();
-      if (QLog.isColorLevel()) {
-        QLog.i("RichStatus", 2, String.format("topicPosToJson %s", new Object[] { localObject }));
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+        localObject2 = localObject4;
       }
-      return localObject;
+      i += 1;
     }
+    if (localObject2 != null) {
+      localObject2 = ((JSONArray)localObject2).toString();
+    } else {
+      localObject2 = "";
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("RichStatus", 2, String.format("topicPosToJson %s", new Object[] { localObject2 }));
+    }
+    return localObject2;
   }
   
   public String topicToJson()
   {
-    localObject = null;
+    Object localObject1 = null;
     int i = 0;
-    if (i < this.topics.size())
+    Object localObject2;
+    while (i < this.topics.size())
     {
-      if (TextUtils.isEmpty((CharSequence)((Pair)this.topics.get(i)).second)) {}
-      for (;;)
+      if (!TextUtils.isEmpty((CharSequence)((Pair)this.topics.get(i)).second))
       {
-        i += 1;
-        break;
         JSONObject localJSONObject = new JSONObject();
+        Object localObject4 = localObject1;
         try
         {
           localJSONObject.put("id", ((Pair)this.topics.get(i)).first);
+          localObject4 = localObject1;
           localJSONObject.put("topic", ((Pair)this.topics.get(i)).second);
-          if (localObject != null) {
-            break label188;
-          }
-          JSONArray localJSONArray = new JSONArray();
-          localObject = localJSONArray;
-        }
-        catch (JSONException localJSONException2)
-        {
-          for (;;)
+          Object localObject3 = localObject1;
+          if (localObject1 == null)
           {
-            continue;
-            localObject = "";
+            localObject4 = localObject1;
+            localObject3 = new JSONArray();
           }
+          localObject4 = localObject3;
+          ((JSONArray)localObject3).put(localJSONObject);
+          localObject1 = localObject3;
         }
-        try
+        catch (JSONException localJSONException)
         {
-          ((JSONArray)localObject).put(localJSONObject);
+          localJSONException.printStackTrace();
+          localObject2 = localObject4;
         }
-        catch (JSONException localJSONException1) {}
-        localJSONException1.printStackTrace();
       }
+      i += 1;
     }
-    if (localObject != null)
-    {
-      localObject = ((JSONArray)localObject).toString();
-      if (QLog.isColorLevel()) {
-        QLog.i("RichStatus", 2, String.format("topicToJson %s", new Object[] { localObject }));
-      }
-      return localObject;
+    if (localObject2 != null) {
+      localObject2 = ((JSONArray)localObject2).toString();
+    } else {
+      localObject2 = "";
     }
+    if (QLog.isColorLevel()) {
+      QLog.i("RichStatus", 2, String.format("topicToJson %s", new Object[] { localObject2 }));
+    }
+    return localObject2;
   }
   
   public String topicToPlainText()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
-    if (i < this.topics.size())
+    while (i < this.topics.size())
     {
-      if (TextUtils.isEmpty((CharSequence)((Pair)this.topics.get(i)).second)) {}
-      for (;;)
-      {
-        i += 1;
-        break;
+      if (!TextUtils.isEmpty((CharSequence)((Pair)this.topics.get(i)).second)) {
         localStringBuilder.append((String)((Pair)this.topics.get(i)).second);
       }
+      i += 1;
     }
     if (QLog.isColorLevel()) {
       QLog.i("RichStatus", 2, String.format("topicToPlainText %s", new Object[] { localStringBuilder.toString() }));
@@ -1471,7 +1425,7 @@ public class RichStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.RichStatus
  * JD-Core Version:    0.7.0.1
  */

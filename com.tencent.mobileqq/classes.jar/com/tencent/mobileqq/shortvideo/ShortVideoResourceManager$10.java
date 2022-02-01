@@ -1,20 +1,25 @@
 package com.tencent.mobileqq.shortvideo;
 
-import com.tencent.mobileqq.transfile.NetResp;
+import android.content.Context;
+import com.tencent.mobileqq.widget.QQToast;
 
-class ShortVideoResourceManager$10
+final class ShortVideoResourceManager$10
   implements Runnable
 {
-  ShortVideoResourceManager$10(ShortVideoResourceManager paramShortVideoResourceManager, NetResp paramNetResp) {}
+  ShortVideoResourceManager$10(String paramString) {}
   
   public void run()
   {
-    ShortVideoResourceManager.a(this.this$0, this.a);
+    Context localContext = VideoEnvironment.getContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(this.a);
+    QQToast.a(localContext, localStringBuilder.toString(), 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.10
  * JD-Core Version:    0.7.0.1
  */

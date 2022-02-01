@@ -18,8 +18,8 @@ public class LebaQCircleTableMgrItem
   {
     if (paramInt == 3)
     {
-      paramViewGroup = LayoutInflater.from(paramContext).inflate(2131561306, paramViewGroup, false);
-      paramViewGroup.setTag(2131370251, Integer.valueOf(paramInt));
+      paramViewGroup = LayoutInflater.from(paramContext).inflate(2131561149, paramViewGroup, false);
+      paramViewGroup.setTag(2131369919, Integer.valueOf(paramInt));
       return new LebaQCircleTableMgrItem.SwitchBtnViewHolder(paramContext, paramViewGroup, paramBoolean);
     }
     return null;
@@ -27,15 +27,17 @@ public class LebaQCircleTableMgrItem
   
   public void a(Context paramContext, List<LebaMgrViewItem> paramList)
   {
-    if (paramList == null) {}
-    while ((!QzoneConfig.isQQCircleShowLebaEntrance(StudyModeManager.a())) || (!QzoneConfig.isQQCircleShowSwitchButton())) {
+    if (paramList == null) {
       return;
     }
-    LebaMgrViewItem localLebaMgrViewItem = new LebaMgrViewItem();
-    localLebaMgrViewItem.jdField_a_of_type_Int = 3;
-    localLebaMgrViewItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131719715);
-    localLebaMgrViewItem.b = 2130845617;
-    paramList.add(localLebaMgrViewItem);
+    if ((QzoneConfig.isQQCircleShowLebaEntrance(StudyModeManager.a())) && (QzoneConfig.isQQCircleShowSwitchButton()))
+    {
+      LebaMgrViewItem localLebaMgrViewItem = new LebaMgrViewItem();
+      localLebaMgrViewItem.jdField_a_of_type_Int = 3;
+      localLebaMgrViewItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131719438);
+      localLebaMgrViewItem.b = 2130845490;
+      paramList.add(localLebaMgrViewItem);
+    }
   }
   
   public boolean a(RecyclerView.ViewHolder paramViewHolder, LebaMgrViewItem paramLebaMgrViewItem, Context paramContext, boolean paramBoolean)
@@ -50,7 +52,7 @@ public class LebaQCircleTableMgrItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.qcircle.mgr.LebaQCircleTableMgrItem
  * JD-Core Version:    0.7.0.1
  */

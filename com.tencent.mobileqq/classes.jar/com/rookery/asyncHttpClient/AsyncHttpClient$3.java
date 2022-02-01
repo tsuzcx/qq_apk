@@ -15,25 +15,23 @@ class AsyncHttpClient$3
   public void process(HttpResponse paramHttpResponse, HttpContext paramHttpContext)
   {
     paramHttpContext = paramHttpResponse.getEntity();
-    if (paramHttpContext == null) {}
-    for (;;)
-    {
+    if (paramHttpContext == null) {
       return;
-      paramHttpContext = paramHttpContext.getContentEncoding();
-      if (paramHttpContext != null)
+    }
+    paramHttpContext = paramHttpContext.getContentEncoding();
+    if (paramHttpContext != null)
+    {
+      paramHttpContext = paramHttpContext.getElements();
+      int j = paramHttpContext.length;
+      int i = 0;
+      while (i < j)
       {
-        paramHttpContext = paramHttpContext.getElements();
-        int j = paramHttpContext.length;
-        int i = 0;
-        while (i < j)
+        if (paramHttpContext[i].getName().equalsIgnoreCase("gzip"))
         {
-          if (paramHttpContext[i].getName().equalsIgnoreCase("gzip"))
-          {
-            paramHttpResponse.setEntity(new AsyncHttpClient.InflatingEntity(paramHttpResponse.getEntity()));
-            return;
-          }
-          i += 1;
+          paramHttpResponse.setEntity(new AsyncHttpClient.InflatingEntity(paramHttpResponse.getEntity()));
+          return;
         }
+        i += 1;
       }
     }
   }

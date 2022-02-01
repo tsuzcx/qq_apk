@@ -76,27 +76,29 @@ public class SoftKeyboardStateHelper
     Rect localRect = new Rect();
     this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
     int i = localRect.height();
-    if (this.b == 0) {
-      this.b = i;
-    }
-    do
+    int j = this.b;
+    if (j == 0)
     {
+      this.b = i;
       return;
-      i = this.b - i;
-      if ((!this.jdField_a_of_type_Boolean) && (i >= 250))
-      {
-        this.jdField_a_of_type_Boolean = true;
-        a(i);
-        return;
-      }
-    } while ((!this.jdField_a_of_type_Boolean) || (i >= 100));
-    this.jdField_a_of_type_Boolean = false;
-    b();
+    }
+    i = j - i;
+    if ((!this.jdField_a_of_type_Boolean) && (i >= 250))
+    {
+      this.jdField_a_of_type_Boolean = true;
+      a(i);
+      return;
+    }
+    if ((this.jdField_a_of_type_Boolean) && (i < 100))
+    {
+      this.jdField_a_of_type_Boolean = false;
+      b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.SoftKeyboardStateHelper
  * JD-Core Version:    0.7.0.1
  */

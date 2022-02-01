@@ -6,6 +6,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -77,36 +78,43 @@ public final class get_all_feedsphoto_ex_rsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.all_applist_data != null) {
-      paramJceOutputStream.write(this.all_applist_data, 0);
+    Object localObject = this.all_applist_data;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
     paramJceOutputStream.write(this.hasmore, 1);
     paramJceOutputStream.write(this.remain_count, 2);
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 3);
+    localObject = this.attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.auto_load, 4);
-    if (this.share_album != null) {
-      paramJceOutputStream.write(this.share_album, 5);
+    localObject = this.share_album;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
     paramJceOutputStream.write(this.lossy_service, 7);
-    if (this.extend_info != null) {
-      paramJceOutputStream.write(this.extend_info, 8);
+    localObject = this.extend_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 8);
     }
-    if (this.category_infos != null) {
-      paramJceOutputStream.write(this.category_infos, 9);
+    localObject = this.category_infos;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 9);
     }
-    if (this.timeline != null) {
-      paramJceOutputStream.write(this.timeline, 10);
+    localObject = this.timeline;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 10);
     }
-    if (this.stMemoryInfo != null) {
-      paramJceOutputStream.write(this.stMemoryInfo, 11);
+    localObject = this.stMemoryInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 11);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.get_all_feedsphoto_ex_rsp
  * JD-Core Version:    0.7.0.1
  */

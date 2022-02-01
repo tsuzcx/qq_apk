@@ -18,66 +18,70 @@ class SendMultiPictureHelper$1
   {
     int i = paramMessage.what;
     paramMessage = (FileMsg)paramMessage.obj;
-    if (paramMessage == null) {
+    if (paramMessage == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("SendMultiPictureHelper", 2, "file is null");
       }
-    }
-    label389:
-    for (;;)
-    {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("SendMultiPictureHelper", 2, "transferListener status: " + i);
-      }
-      Object localObject = paramMessage.mUin + paramMessage.uniseq;
-      localObject = ((ITransFileController)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITransFileController.class)).findProcessor((String)localObject);
-      if ((localObject instanceof BaseTransProcessor)) {}
-      for (i = ((BaseTransProcessor)localObject).getProgress();; i = 0)
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("transferListener status: ");
+      ((StringBuilder)localObject).append(i);
+      QLog.d("SendMultiPictureHelper", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramMessage.mUin);
+    ((StringBuilder)localObject).append(paramMessage.uniseq);
+    localObject = ((StringBuilder)localObject).toString();
+    localObject = ((ITransFileController)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITransFileController.class)).findProcessor((String)localObject);
+    if ((localObject instanceof BaseTransProcessor)) {
+      i = ((BaseTransProcessor)localObject).getProgress();
+    } else {
+      i = 0;
+    }
+    if (this.a.f) {
+      return;
+    }
+    if (this.a.jdField_b_of_type_Boolean)
+    {
+      if (paramMessage.status == 1005)
       {
-        if (this.a.jdField_d_of_type_Boolean) {
-          break label389;
-        }
-        if (this.a.jdField_b_of_type_Boolean)
-        {
-          if (paramMessage.status == 1005)
-          {
-            this.a.jdField_c_of_type_Boolean = true;
-            return;
-          }
-          if (paramMessage.status == 1003)
-          {
-            this.a.a();
-            return;
-          }
-          SendMultiPictureHelper.a(this.a, this.a.jdField_c_of_type_Int, this.a.jdField_a_of_type_JavaLangString, paramMessage.uniseq);
-          return;
-        }
-        if (paramMessage.status == 1003)
-        {
-          if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
-            this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(String.format(this.a.jdField_d_of_type_JavaLangString, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(100) }));
-          }
-          this.a.a();
-          return;
-        }
-        if (paramMessage.status == 1005)
-        {
-          this.a.a();
-          return;
-        }
-        if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
-          break;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(String.format(this.a.jdField_d_of_type_JavaLangString, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(i) }));
+        this.a.e = true;
         return;
       }
+      if (paramMessage.status == 1003)
+      {
+        this.a.a();
+        return;
+      }
+      localObject = this.a;
+      SendMultiPictureHelper.a((SendMultiPictureHelper)localObject, ((SendMultiPictureHelper)localObject).c, this.a.jdField_a_of_type_JavaLangString, paramMessage.uniseq);
+      return;
+    }
+    if (paramMessage.status == 1003)
+    {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(String.format(this.a.d, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(100) }));
+      }
+      this.a.a();
+      return;
+    }
+    if (paramMessage.status == 1005)
+    {
+      this.a.a();
+      return;
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(String.format(this.a.d, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(i) }));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SendMultiPictureHelper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -34,20 +34,21 @@ public class SuperPlayerSdkMgr
   
   public void onSDKInited(boolean paramBoolean)
   {
-    if (this.a == null) {
+    IWSPlayerSdkMgr.InstallListener localInstallListener = this.a;
+    if (localInstallListener == null) {
       return;
     }
     if (paramBoolean)
     {
-      this.a.a();
+      localInstallListener.a();
       return;
     }
-    this.a.a(0);
+    localInstallListener.a(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.wrapper.superplayer.SuperPlayerSdkMgr
  * JD-Core Version:    0.7.0.1
  */

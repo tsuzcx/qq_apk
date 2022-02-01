@@ -10,8 +10,22 @@ class ARTransferPromotionRenderable$20
   
   public void run()
   {
-    ARTransferPromotionRenderable.b(this.this$0, ARTransferPromotionRenderable.f(this.this$0) + this.a.length);
-    QLog.i("ARTransferPromotionRenderable", 1, "insertWorldCupSpark. mInsertedSparkTotalCnt = " + ARTransferPromotionRenderable.f(this.this$0) + ", new cnt = " + this.a.length + ", px[0] = " + this.a[0] + ", py[0] = " + this.b[0] + ", degree[0] = " + this.c[0] + ", hasDrawedFrame = " + ARTransferPromotionRenderable.e(this.this$0));
+    Object localObject = this.this$0;
+    ARTransferPromotionRenderable.b((ARTransferPromotionRenderable)localObject, ARTransferPromotionRenderable.f((ARTransferPromotionRenderable)localObject) + this.a.length);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("insertWorldCupSpark. mInsertedSparkTotalCnt = ");
+    ((StringBuilder)localObject).append(ARTransferPromotionRenderable.f(this.this$0));
+    ((StringBuilder)localObject).append(", new cnt = ");
+    ((StringBuilder)localObject).append(this.a.length);
+    ((StringBuilder)localObject).append(", px[0] = ");
+    ((StringBuilder)localObject).append(this.a[0]);
+    ((StringBuilder)localObject).append(", py[0] = ");
+    ((StringBuilder)localObject).append(this.b[0]);
+    ((StringBuilder)localObject).append(", degree[0] = ");
+    ((StringBuilder)localObject).append(this.c[0]);
+    ((StringBuilder)localObject).append(", hasDrawedFrame = ");
+    ((StringBuilder)localObject).append(ARTransferPromotionRenderable.e(this.this$0));
+    QLog.i("ARTransferPromotionRenderable", 1, ((StringBuilder)localObject).toString());
     if ((ARTransferPromotionRenderable.a(this.this$0) != null) && (ARTransferPromotionRenderable.e(this.this$0))) {
       ARTransferPromotionRenderable.a(this.this$0).native_insertWorldCupSpark(this.a, this.b, this.c);
     }
@@ -19,7 +33,7 @@ class ARTransferPromotionRenderable$20
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.20
  * JD-Core Version:    0.7.0.1
  */

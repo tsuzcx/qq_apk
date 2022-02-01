@@ -17,12 +17,20 @@ class DownloadManagerV2$9
       TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.this$0.a(this.a.d);
       if (localTMAssistantDownloadTaskInfo != null)
       {
-        LogUtility.b("DownloadManagerV2", "[doGeneraWriteCodeTask] taskInfo=" + localTMAssistantDownloadTaskInfo + ",writeCodeState=" + this.a.j);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[doGeneraWriteCodeTask] taskInfo=");
+        localStringBuilder.append(localTMAssistantDownloadTaskInfo);
+        localStringBuilder.append(",writeCodeState=");
+        localStringBuilder.append(this.a.j);
+        LogUtility.b("DownloadManagerV2", localStringBuilder.toString());
         this.a.l = localTMAssistantDownloadTaskInfo.mSavePath;
         this.a.jdField_c_of_type_Long = localTMAssistantDownloadTaskInfo.mTotalDataLen;
         this.this$0.c(this.a);
-        if ((this.a.j != 0) && (!TextUtils.isEmpty(this.a.e))) {
-          break label182;
+        if ((this.a.j != 0) && (!TextUtils.isEmpty(this.a.e)))
+        {
+          LogUtility.b("DownloadManagerV2", "[doGeneraWriteCodeTask] taskInfo == null");
+          DownloadManagerV2.b(this.this$0, this.a);
+          return;
         }
         this.this$0.a(4, this.a);
         if (!"1101070898".equals(this.a.jdField_c_of_type_JavaLangString))
@@ -34,23 +42,16 @@ class DownloadManagerV2$9
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        label182:
-        LogUtility.c("DownloadManagerV2", "[doGeneraWriteCodeTask]>>>", localException);
-      }
+      LogUtility.c("DownloadManagerV2", "[doGeneraWriteCodeTask]>>>", localException);
     }
     if (this.a.a) {
       this.this$0.a(this.a, false);
     }
-    return;
-    LogUtility.b("DownloadManagerV2", "[doGeneraWriteCodeTask] taskInfo == null");
-    DownloadManagerV2.b(this.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2.9
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.selectmember.ResultRecord;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class QQCustomDialogWtihForwardAvatar$3
@@ -22,7 +22,7 @@ class QQCustomDialogWtihForwardAvatar$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogWtihForwardAvatar.3
  * JD-Core Version:    0.7.0.1
  */

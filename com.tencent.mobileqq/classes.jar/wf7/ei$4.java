@@ -25,12 +25,17 @@ class ei$4
           ((ei.a)localObject2).onConnected();
         }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject3;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.ei.4
  * JD-Core Version:    0.7.0.1
  */

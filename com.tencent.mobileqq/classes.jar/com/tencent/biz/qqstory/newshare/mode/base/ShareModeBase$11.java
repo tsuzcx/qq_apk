@@ -1,46 +1,29 @@
 package com.tencent.biz.qqstory.newshare.mode.base;
 
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.newshare.job.AddPollViewJob;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import java.io.File;
-import java.net.URI;
-import java.net.URISyntaxException;
+import com.tencent.biz.qqstory.newshare.job.EncryptUrlJob;
+import com.tencent.biz.qqstory.newshare.model.ShareCopyLinkData;
+import java.util.HashMap;
 
 class ShareModeBase$11
-  extends AddPollViewJob
+  extends EncryptUrlJob
 {
-  ShareModeBase$11(ShareModeBase paramShareModeBase, StoryVideoItem paramStoryVideoItem)
+  ShareModeBase$11(ShareModeBase paramShareModeBase, String paramString1, String paramString2, boolean paramBoolean, ShareCopyLinkData paramShareCopyLinkData)
   {
-    super(paramStoryVideoItem);
+    super(paramString1, paramString2, paramBoolean);
   }
   
   public boolean b()
   {
-    Object localObject = (String)a("result");
-    try
-    {
-      localObject = new URI((String)localObject);
-      if ("file".equals(((URI)localObject).getScheme()))
-      {
-        localObject = new File((URI)localObject);
-        if (((File)localObject).exists())
-        {
-          a("UploadImageJob_in_image_file_path", ((File)localObject).getAbsolutePath());
-          return true;
-        }
-      }
-    }
-    catch (URISyntaxException localURISyntaxException)
-    {
-      SLog.c(this.b, "Error: 保存投票失败", localURISyntaxException);
-    }
-    return false;
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a = ((String)a("EncryptUrlJob_encryptedUrl"));
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a, this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a);
+    a("ShortenUrlJob_shortenedUrls", localHashMap);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase.11
  * JD-Core Version:    0.7.0.1
  */

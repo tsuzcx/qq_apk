@@ -11,14 +11,14 @@ class MixSearchWebFragment$3
   
   public void onClick(View paramView)
   {
-    this.a.a(3);
+    this.a.a(1);
     this.a.doOnBackEvent();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.MixSearchWebFragment.3
  * JD-Core Version:    0.7.0.1
  */

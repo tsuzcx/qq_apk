@@ -11,14 +11,18 @@ public class ReportLogHelper
   public static final int LOG_TRACK_TYPE_ORDER_RESULT = 3;
   public static final int LOG_TRACK_TYPE_SEQ_INIT = 4;
   public static final int LOG_TRACK_TYPE_TIME_TASK = 1;
-  public static int timePeriodCnt;
+  public static int timePeriodCnt = 0;
   public static Timer timer;
-  public static boolean timerTaskIsRun;
+  public static boolean timerTaskIsRun = false;
   
   public static String makeBody(int paramInt1, int paramInt2, int paramInt3)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramInt1).append(",").append(paramInt2).append(",").append(paramInt3);
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramInt3);
     return localStringBuilder.toString();
   }
   
@@ -50,7 +54,7 @@ public class ReportLogHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.secprotocol.t.ReportLogHelper
  * JD-Core Version:    0.7.0.1
  */

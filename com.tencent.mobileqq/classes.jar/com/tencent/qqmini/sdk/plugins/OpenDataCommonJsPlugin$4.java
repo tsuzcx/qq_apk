@@ -13,26 +13,34 @@ class OpenDataCommonJsPlugin$4
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("setUserCloudStorage callback appid:").append(OpenDataCommonJsPlugin.access$300(this.this$0).appId).append(", isSuc").append(paramBoolean).append(", ret:");
-    if (paramJSONObject != null) {}
-    for (paramJSONObject = paramJSONObject.toString();; paramJSONObject = "")
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setUserCloudStorage callback appid:");
+    localStringBuilder.append(OpenDataCommonJsPlugin.access$300(this.this$0).appId);
+    localStringBuilder.append(", isSuc");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(", ret:");
+    if (paramJSONObject != null) {
+      paramJSONObject = paramJSONObject.toString();
+    } else {
+      paramJSONObject = "";
+    }
+    localStringBuilder.append(paramJSONObject);
+    QMLog.i("OpenDataCommonJsPlugin", localStringBuilder.toString());
+    paramJSONObject = new JSONObject();
+    if (paramBoolean) {}
+    try
     {
-      QMLog.i("OpenDataCommonJsPlugin", paramJSONObject);
-      paramJSONObject = new JSONObject();
-      if (!paramBoolean) {
-        break;
-      }
-      try
-      {
-        paramJSONObject.put("state", "success");
-        this.val$req.ok(paramJSONObject);
-        return;
-      }
-      catch (Throwable paramJSONObject)
-      {
-        QMLog.e("OpenDataCommonJsPlugin", "setUserCloudStorage error " + paramJSONObject.getMessage());
-        this.val$req.fail();
-      }
+      paramJSONObject.put("state", "success");
+      this.val$req.ok(paramJSONObject);
+      return;
+    }
+    catch (Throwable paramJSONObject)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setUserCloudStorage error ");
+      localStringBuilder.append(paramJSONObject.getMessage());
+      QMLog.e("OpenDataCommonJsPlugin", localStringBuilder.toString());
+      this.val$req.fail();
     }
     paramJSONObject.put("state", "fail");
     this.val$req.fail(paramJSONObject, null);
@@ -41,7 +49,7 @@ class OpenDataCommonJsPlugin$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.OpenDataCommonJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

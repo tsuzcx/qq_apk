@@ -22,13 +22,14 @@ public final class FeedsProtocol$FeedIds
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "feed_id", "type", "follow_type", "follow_uid" }, new Object[] { localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L) }, FeedIds.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "feed_id", "type", "follow_type", "follow_uid" }, new Object[] { localByteStringMicro, localInteger, localInteger, Long.valueOf(0L) }, FeedIds.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.now.FeedsProtocol.FeedIds
  * JD-Core Version:    0.7.0.1
  */

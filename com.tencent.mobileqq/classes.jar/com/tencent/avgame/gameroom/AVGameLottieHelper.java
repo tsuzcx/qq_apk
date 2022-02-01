@@ -6,14 +6,13 @@ import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.os.Handler;
 import android.support.v4.util.MQLruCache;
-import com.tencent.avgame.gamelogic.gameres.AvGameResDownloadManager;
+import com.tencent.avgame.gamelogic.gameres.AvGameResDownloadUtil;
 import com.tencent.mobileqq.app.GlobalImageCache;
 import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qav.thread.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.FileInputStream;
-import org.jetbrains.annotations.Nullable;
 
 public class AVGameLottieHelper
 {
@@ -21,7 +20,7 @@ public class AVGameLottieHelper
   {
     try
     {
-      LottieComposition.Factory.fromAssetFileName(paramContext, paramString1, new AVGameLottieHelper.3(paramInt1, paramContext, paramInt2, paramInt3, paramString2, paramLottieDrawableLoadedListener));
+      LottieComposition.Factory.fromAssetFileName(paramContext, paramString1, new AVGameLottieHelper.3(paramInt1, paramInt2, paramInt3, paramContext, paramString2, paramLottieDrawableLoadedListener));
       return;
     }
     catch (Exception paramContext)
@@ -33,12 +32,24 @@ public class AVGameLottieHelper
   
   public static void a(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2, AVGameLottieHelper.LottieDrawableLoadedListener paramLottieDrawableLoadedListener)
   {
-    paramString1 = AvGameResDownloadManager.a() + paramString1;
-    paramString2 = AvGameResDownloadManager.a() + paramString2;
-    if (QLog.isColorLevel()) {
-      QLog.d("AVGameLottieHelper", 2, "loadLottieAnim  animJsonPath = " + paramString1 + ",animImageDirPath = " + paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AvGameResDownloadUtil.a());
+    localStringBuilder.append(paramString1);
+    paramString1 = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AvGameResDownloadUtil.a());
+    localStringBuilder.append(paramString2);
+    paramString2 = localStringBuilder.toString();
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("loadLottieAnim  animJsonPath = ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(",animImageDirPath = ");
+      localStringBuilder.append(paramString2);
+      QLog.d("AVGameLottieHelper", 2, localStringBuilder.toString());
     }
-    if ((FileUtils.b(paramString1)) && (FileUtils.b(paramString2)))
+    if ((FileUtils.fileExistsAndNotEmpty(paramString1)) && (FileUtils.fileExistsAndNotEmpty(paramString2)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("AVGameLottieHelper", 2, "loadLottieAnim loadLottieAnimFromFile");
@@ -47,7 +58,6 @@ public class AVGameLottieHelper
     }
   }
   
-  @Nullable
   private static Bitmap b(String paramString)
   {
     Object localObject = GlobalImageCache.a.get(paramString);
@@ -64,7 +74,10 @@ public class AVGameLottieHelper
     }
     catch (Throwable paramString)
     {
-      QLog.i("AVGameLottieHelper", 1, "getBitmap error " + paramString.getMessage());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getBitmap error ");
+      ((StringBuilder)localObject).append(paramString.getMessage());
+      QLog.i("AVGameLottieHelper", 1, ((StringBuilder)localObject).toString());
     }
     return null;
   }
@@ -73,7 +86,7 @@ public class AVGameLottieHelper
   {
     try
     {
-      LottieComposition.Factory.fromInputStream(paramContext, new FileInputStream(paramString1), new AVGameLottieHelper.1(paramInt1, paramInt2, paramContext, paramString2, paramLottieDrawableLoadedListener));
+      LottieComposition.Factory.fromInputStream(paramContext, new FileInputStream(paramString1), new AVGameLottieHelper.1(paramInt1, paramInt2, paramString2, paramLottieDrawableLoadedListener));
       return;
     }
     catch (Exception paramContext)
@@ -85,7 +98,7 @@ public class AVGameLottieHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.AVGameLottieHelper
  * JD-Core Version:    0.7.0.1
  */

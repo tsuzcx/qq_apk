@@ -13,7 +13,11 @@ public final class DataLocalTmpPmUpdater
   
   public DataLocalTmpPmUpdater(String paramString)
   {
-    this.a = new File("/data/local/tmp/" + paramString + "PluginManager.apk");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("/data/local/tmp/");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("PluginManager.apk");
+    this.a = new File(localStringBuilder.toString());
   }
   
   public File getLatest()
@@ -41,7 +45,7 @@ public final class DataLocalTmpPmUpdater
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.DataLocalTmpPmUpdater
  * JD-Core Version:    0.7.0.1
  */

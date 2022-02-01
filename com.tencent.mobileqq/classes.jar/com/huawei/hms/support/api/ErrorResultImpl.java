@@ -23,31 +23,30 @@ public abstract class ErrorResultImpl<R extends Result>
   
   private R a(int paramInt)
   {
-    Object localObject = getClass().getGenericSuperclass();
-    if (localObject != null)
-    {
+    Object localObject = ErrorResultImpl.class.getGenericSuperclass();
+    if (localObject != null) {
       localObject = GenericTypeReflector.getType(((java.lang.reflect.ParameterizedType)localObject).getActualTypeArguments()[0]);
-      try
-      {
-        this.a = ((Result)((Class)localObject).newInstance());
-        this.a.setStatus(new Status(paramInt));
-        return this.a;
-      }
-      catch (InstantiationException localInstantiationException)
-      {
-        for (;;)
-        {
-          HMSLog.e("ErrorResultImpl", "InstantiationException");
-        }
-      }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        for (;;)
-        {
-          HMSLog.e("ErrorResultImpl", "IllegalAccessException");
-        }
-      }
     }
+    try
+    {
+      this.a = ((Result)((Class)localObject).newInstance());
+      this.a.setStatus(new Status(paramInt));
+    }
+    catch (InstantiationException localInstantiationException)
+    {
+      break label64;
+    }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      label54:
+      break label54;
+    }
+    HMSLog.e("ErrorResultImpl", "IllegalAccessException");
+    break label71;
+    label64:
+    HMSLog.e("ErrorResultImpl", "InstantiationException");
+    label71:
+    return this.a;
     return null;
   }
   
@@ -58,10 +57,10 @@ public abstract class ErrorResultImpl<R extends Result>
   
   public R await(long paramLong, TimeUnit paramTimeUnit)
   {
-    if (Looper.myLooper() == Looper.getMainLooper()) {
-      throw new IllegalStateException("await must not be called on the UI thread");
+    if (Looper.myLooper() != Looper.getMainLooper()) {
+      return a(this.b);
     }
-    return a(this.b);
+    throw new IllegalStateException("await must not be called on the UI thread");
   }
   
   @Deprecated
@@ -79,7 +78,7 @@ public abstract class ErrorResultImpl<R extends Result>
     if (paramLooper == null) {
       localLooper = Looper.myLooper();
     }
-    new Handler(localLooper).post(new ErrorResultImpl.1(this, paramResultCallback));
+    new Handler(localLooper).post(new ErrorResultImpl.a(this, paramResultCallback));
   }
   
   public final void setResultCallback(ResultCallback<R> paramResultCallback)
@@ -95,7 +94,7 @@ public abstract class ErrorResultImpl<R extends Result>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.support.api.ErrorResultImpl
  * JD-Core Version:    0.7.0.1
  */

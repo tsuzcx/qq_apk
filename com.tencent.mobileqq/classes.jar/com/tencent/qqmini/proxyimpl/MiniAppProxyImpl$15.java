@@ -16,7 +16,12 @@ class MiniAppProxyImpl$15
   {
     if ((MiniAppProxyImpl.b(this.a) != null) && (MiniAppProxyImpl.c(this.a) != null) && (MiniAppProxyImpl.b(this.a).equals(paramString1)) && (MiniAppProxyImpl.c(this.a).equals(paramString2)))
     {
-      QLog.d("MiniAppProxyImpl", 1, "installSucceed: " + paramString1 + "; pkgname : " + paramString2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("installSucceed: ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("; pkgname : ");
+      localStringBuilder.append(paramString2);
+      QLog.d("MiniAppProxyImpl", 1, localStringBuilder.toString());
       InnerAppReportDc4239.innerAppReport(MiniAppProxyImpl.a(this.a), null, "launchapp", "installapp", "qqdownload");
     }
   }
@@ -69,7 +74,7 @@ class MiniAppProxyImpl$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAppProxyImpl.15
  * JD-Core Version:    0.7.0.1
  */

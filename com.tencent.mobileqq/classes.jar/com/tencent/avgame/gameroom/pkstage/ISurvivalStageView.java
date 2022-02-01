@@ -12,7 +12,7 @@ public abstract interface ISurvivalStageView
   
   public abstract void a(EngineData paramEngineData);
   
-  public abstract void a(String paramString1, String paramString2);
+  public abstract void a(String paramString);
   
   public abstract void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5);
   
@@ -30,7 +30,7 @@ public abstract interface ISurvivalStageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.pkstage.ISurvivalStageView
  * JD-Core Version:    0.7.0.1
  */

@@ -23,20 +23,19 @@ class TAVMovieFilterProxyWithTimeRange$TAVMovieFilterEffect
   @NonNull
   public CIImage apply(TAVVideoEffect paramTAVVideoEffect, CIImage paramCIImage, RenderInfo paramRenderInfo)
   {
-    if ((TAVMovieFilterProxyWithTimeRange.access$100(this.this$0) != null) && (!TAVMovieFilterProxyWithTimeRange.access$100(this.this$0).containsTime(paramRenderInfo.getTime()))) {}
-    int i;
-    int j;
-    do
-    {
+    if ((TAVMovieFilterProxyWithTimeRange.access$100(this.this$0) != null) && (!TAVMovieFilterProxyWithTimeRange.access$100(this.this$0).containsTime(paramRenderInfo.getTime()))) {
       return paramCIImage;
-      paramTAVVideoEffect = paramRenderInfo.getCiContext();
-      i = (int)paramRenderInfo.getRenderSize().width;
-      j = (int)paramRenderInfo.getRenderSize().height;
-      if (this.mEffect != null) {
-        break;
-      }
+    }
+    paramTAVVideoEffect = paramRenderInfo.getCiContext();
+    int i = (int)paramRenderInfo.getRenderSize().width;
+    int j = (int)paramRenderInfo.getRenderSize().height;
+    if (this.mEffect == null)
+    {
       this.mEffect = TAVMovieFilterProxyWithTimeRange.access$000(this.this$0);
-    } while (this.mEffect == null);
+      if (this.mEffect == null) {
+        return paramCIImage;
+      }
+    }
     this.mEffect.setRendererWidth(i);
     this.mEffect.setRendererHeight(j);
     if (this.cacheTextureInfo == null)
@@ -60,12 +59,14 @@ class TAVMovieFilterProxyWithTimeRange$TAVMovieFilterEffect
   
   public void release()
   {
-    if (this.mEffect != null)
+    Object localObject = this.mEffect;
+    if (localObject != null)
     {
-      this.mEffect.release();
+      ((BaseEffect)localObject).release();
       this.mEffect = null;
     }
-    if ((this.cacheTextureInfo != null) && (!this.cacheTextureInfo.isReleased())) {
+    localObject = this.cacheTextureInfo;
+    if ((localObject != null) && (!((TextureInfo)localObject).isReleased())) {
       this.cacheTextureInfo.release();
     }
   }

@@ -44,13 +44,27 @@ public class PagFilter
   
   PagFilter(String paramString1, String paramString2)
   {
-    this.pagFilePath = (paramString1 + File.separator + paramString2 + File.separator + paramString2 + ".pag");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(".pag");
+    this.pagFilePath = localStringBuilder.toString();
     this.surfaceTextureHandler = new SimpleGLThread(EGL14.eglGetCurrentContext(), "PagFilterSTHT");
   }
   
   PagFilter(String paramString1, String paramString2, List<Integer> paramList)
   {
-    this.pagFilePath = (paramString1 + File.separator + paramString2 + File.separator + paramString2 + ".pag");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(".pag");
+    this.pagFilePath = localStringBuilder.toString();
     this.surfaceTextureHandler = new SimpleGLThread(EGL14.eglGetCurrentContext(), "PagFilterSTHT");
     if (paramList.size() > 0) {
       this.replaceImageIndex = ((Integer)paramList.get(0)).intValue();
@@ -59,34 +73,28 @@ public class PagFilter
   
   private boolean initPag(int paramInt1, int paramInt2)
   {
-    boolean bool = true;
-    PAGFile localPAGFile;
     if (!this.isPagInit)
     {
-      localPAGFile = loadPag(this.pagFilePath);
+      PAGFile localPAGFile = loadPag(this.pagFilePath);
       if (localPAGFile == null) {
-        bool = false;
+        return false;
       }
+      this.surfaceTextureHandler.postJobSync(new PagFilter.2(this));
+      this.pagOutputSurfaceTexture.setDefaultBufferSize(paramInt1, paramInt2);
+      this.pagOutputSurfaceTexture.setOnFrameAvailableListener(new PagFilter.3(this));
+      this.pagSurface = PAGSurface.FromSurfaceTexture(this.pagOutputSurfaceTexture, EGL14.eglGetCurrentContext());
+      this.pagRender.setSurface(this.pagSurface);
+      this.pagRender.setFile(localPAGFile);
+      this.pagRender.setScaleMode(3);
+      this.isPagInit = true;
     }
-    else
-    {
-      return bool;
-    }
-    this.surfaceTextureHandler.postJobSync(new PagFilter.2(this));
-    this.pagOutputSurfaceTexture.setDefaultBufferSize(paramInt1, paramInt2);
-    this.pagOutputSurfaceTexture.setOnFrameAvailableListener(new PagFilter.3(this));
-    this.pagSurface = PAGSurface.FromSurfaceTexture(this.pagOutputSurfaceTexture, EGL14.eglGetCurrentContext());
-    this.pagRender.setSurface(this.pagSurface);
-    this.pagRender.setFile(localPAGFile);
-    this.pagRender.setScaleMode(3);
-    this.isPagInit = true;
     return true;
   }
   
   private PAGFile loadPag(String paramString)
   {
     if (paramString.startsWith("assets://")) {
-      return loadPageFromAsset(paramString.substring("assets://".length()));
+      return loadPageFromAsset(paramString.substring(9));
     }
     return loadPagFromStorage(paramString);
   }
@@ -117,34 +125,37 @@ public class PagFilter
     this.pagRender.replaceImage(this.replaceImageIndex, localPAGImage);
     this.pagRender.setProgress(paramDouble);
     this.surfaceTextureHandler.postJob(new PagFilter.1(this));
-    boolean bool = false;
-    try
+    boolean bool2 = false;
+    for (;;)
     {
-      if (!this.firstFrame) {
-        bool = this.pagFrameLock.tryAcquire(1000L, TimeUnit.MILLISECONDS);
+      try
+      {
+        if (this.firstFrame) {
+          break label247;
+        }
+        bool1 = this.pagFrameLock.tryAcquire(1000L, TimeUnit.MILLISECONDS);
+        this.firstFrame = false;
       }
-      this.firstFrame = false;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
+      catch (InterruptedException localInterruptedException)
       {
         LogUtils.e(localInterruptedException);
-        bool = false;
+        bool1 = bool2;
+      }
+      if (bool1)
+      {
+        this.oesTextureConvertFilter.updateMatrix(this.transformMatrix);
+        this.oesTextureConvertFilter.RenderProcess(this.pagOutputTexture, paramInt1, paramInt2, -1, 0.0D, this.outputFrame);
+        return this.outputFrame;
       }
       int i = (paramFrame.width - paramInt1) / 2;
       int j = (paramFrame.height - paramInt2) / 2;
-      float[] arrayOfFloat = AlgoUtils.calTexCoords(i, j + paramInt2, i + paramInt1, j, paramFrame.width, paramFrame.height);
+      float[] arrayOfFloat = AlgoUtils.calTexCoords(i, paramInt2 + j, paramInt1 + i, j, paramFrame.width, paramFrame.height);
       this.cropFilter.setTexCords(arrayOfFloat);
       this.cropFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, this.cropFrame);
+      return this.cropFrame;
+      label247:
+      boolean bool1 = false;
     }
-    if (bool)
-    {
-      this.oesTextureConvertFilter.updateMatrix(this.transformMatrix);
-      this.oesTextureConvertFilter.RenderProcess(this.pagOutputTexture, paramInt1, paramInt2, -1, 0.0D, this.outputFrame);
-      return this.outputFrame;
-    }
-    return this.cropFrame;
   }
   
   public void init()
@@ -158,8 +169,9 @@ public class PagFilter
   {
     this.outputFrame.clear();
     this.cropFrame.clear();
-    if (this.pagSurface != null) {
-      this.pagSurface.freeCache();
+    PAGSurface localPAGSurface = this.pagSurface;
+    if (localPAGSurface != null) {
+      localPAGSurface.freeCache();
     }
     this.pagRender.setSurface(null);
     this.oesTextureConvertFilter.clearGLSL();
@@ -179,7 +191,7 @@ public class PagFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.PagFilter
  * JD-Core Version:    0.7.0.1
  */

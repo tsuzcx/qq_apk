@@ -16,39 +16,52 @@ class NearbyProfileEditTribePanel$12
   
   public int getRowCount(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return 0;
-    case 0: 
-      return this.a.b - 1896 + 1;
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          return 0;
+        }
+        Calendar localCalendar = Calendar.getInstance();
+        localCalendar.set(1, this.a.e + 1896);
+        localCalendar.set(2, this.a.f);
+        localCalendar.set(5, 1);
+        return localCalendar.getActualMaximum(5);
+      }
       return 12;
     }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(1, this.a.e + 1896);
-    localCalendar.set(2, this.a.f);
-    localCalendar.set(5, 1);
-    return localCalendar.getActualMaximum(5);
+    return this.a.b - 1896 + 1;
   }
   
   public String getText(int paramInt1, int paramInt2)
   {
-    switch (paramInt1)
+    if (paramInt1 != 0)
     {
-    default: 
-      return "";
-    case 0: 
-      return paramInt2 + 1896 + HardCodeUtil.a(2131707313);
-    case 1: 
-      return paramInt2 + 1 + HardCodeUtil.a(2131707305);
+      if (paramInt1 != 1)
+      {
+        if (paramInt1 != 2) {
+          return "";
+        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramInt2 + 1);
+        localStringBuilder.append(HardCodeUtil.a(2131707318));
+        return localStringBuilder.toString();
+      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramInt2 + 1);
+      localStringBuilder.append(HardCodeUtil.a(2131707330));
+      return localStringBuilder.toString();
     }
-    return paramInt2 + 1 + HardCodeUtil.a(2131707293);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt2 + 1896);
+    localStringBuilder.append(HardCodeUtil.a(2131707338));
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel.12
  * JD-Core Version:    0.7.0.1
  */

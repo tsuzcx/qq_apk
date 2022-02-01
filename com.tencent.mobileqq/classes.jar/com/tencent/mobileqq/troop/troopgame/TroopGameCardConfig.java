@@ -17,48 +17,49 @@ public class TroopGameCardConfig
   
   public static TroopGameCardConfig a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopGameCardConfig", 2, "content : " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("content : ");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.d("TroopGameCardConfig", 2, ((StringBuilder)localObject1).toString());
     }
     if (TextUtils.isEmpty(paramString)) {
-      paramString = null;
+      return null;
     }
-    TroopGameCardConfig localTroopGameCardConfig;
-    do
+    Object localObject1 = new TroopGameCardConfig();
+    try
     {
-      return paramString;
-      localTroopGameCardConfig = new TroopGameCardConfig();
-      try
+      Object localObject2 = new JSONObject(paramString);
+      ((TroopGameCardConfig)localObject1).a(((JSONObject)localObject2).optString("resUrl", ""));
+      ((TroopGameCardConfig)localObject1).b(((JSONObject)localObject2).optString("resMd5", ""));
+      ((TroopGameCardConfig)localObject1).c = ((JSONObject)localObject2).optString("troopCardTipsContent", "");
+      ((TroopGameCardConfig)localObject1).jdField_a_of_type_Int = ((JSONObject)localObject2).getInt("numOfMsgToCheck");
+      paramString = new ArrayList();
+      localObject2 = ((JSONObject)localObject2).getJSONArray("grayTroopUins");
+      if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0))
       {
-        Object localObject = new JSONObject(paramString);
-        localTroopGameCardConfig.a(((JSONObject)localObject).optString("resUrl", ""));
-        localTroopGameCardConfig.b(((JSONObject)localObject).optString("resMd5", ""));
-        localTroopGameCardConfig.c = ((JSONObject)localObject).optString("troopCardTipsContent", "");
-        localTroopGameCardConfig.jdField_a_of_type_Int = ((JSONObject)localObject).getInt("numOfMsgToCheck");
-        paramString = new ArrayList();
-        localObject = ((JSONObject)localObject).getJSONArray("grayTroopUins");
-        if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+        int i = 0;
+        while (i < ((JSONArray)localObject2).length())
         {
-          int i = 0;
-          while (i < ((JSONArray)localObject).length())
-          {
-            paramString.add(Integer.valueOf(((JSONArray)localObject).getInt(i)));
-            i += 1;
-          }
-        }
-        localTroopGameCardConfig.jdField_a_of_type_JavaUtilList = paramString;
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          paramString.printStackTrace();
+          paramString.add(Integer.valueOf(((JSONArray)localObject2).getInt(i)));
+          i += 1;
         }
       }
-      paramString = localTroopGameCardConfig;
-    } while (!QLog.isColorLevel());
-    QLog.d("TroopGameCardConfig", 2, "resUrl : " + "");
-    return localTroopGameCardConfig;
+      ((TroopGameCardConfig)localObject1).jdField_a_of_type_JavaUtilList = paramString;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("resUrl : ");
+      paramString.append("");
+      QLog.d("TroopGameCardConfig", 2, paramString.toString());
+    }
+    return localObject1;
   }
   
   public int a()
@@ -78,46 +79,55 @@ public class TroopGameCardConfig
   
   public boolean a(String paramString)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopGameCardConfig", 2, "isGrayTroop troopUin = " + paramString);
-    }
-    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_JavaUtilList == null))
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel())
-      {
-        paramString = new StringBuilder().append("mGrayTroopUinList isNull:  ");
-        if (this.jdField_a_of_type_JavaUtilList != null) {
-          break label96;
-        }
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isGrayTroop troopUin = ");
+      localStringBuilder.append(paramString);
+      QLog.d("TroopGameCardConfig", 2, localStringBuilder.toString());
+    }
+    boolean bool3 = TextUtils.isEmpty(paramString);
+    boolean bool2 = false;
+    boolean bool1 = true;
+    if ((!bool3) && (this.jdField_a_of_type_JavaUtilList != null))
+    {
+      paramString = paramString.substring(paramString.length() - 1);
+      int i = 0;
       for (;;)
       {
-        QLog.d("TroopGameCardConfig", 2, bool1);
-        bool2 = false;
-        return bool2;
-        label96:
+        bool1 = bool2;
+        if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
+          break;
+        }
+        if (String.valueOf(this.jdField_a_of_type_JavaUtilList.get(i)).equals(paramString))
+        {
+          bool1 = true;
+          break;
+        }
+        i += 1;
+      }
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("isGrayTroop grayTroopUinList size = ");
+        paramString.append(this.jdField_a_of_type_JavaUtilList.size());
+        paramString.append(", isGrayTroop = ");
+        paramString.append(bool1);
+        QLog.d("TroopGameCardConfig", 2, paramString.toString());
+      }
+      return bool1;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("mGrayTroopUinList isNull:  ");
+      if (this.jdField_a_of_type_JavaUtilList != null) {
         bool1 = false;
       }
+      paramString.append(bool1);
+      QLog.d("TroopGameCardConfig", 2, paramString.toString());
     }
-    paramString = paramString.substring(paramString.length() - 1);
-    int i = 0;
-    label114:
-    if (i < this.jdField_a_of_type_JavaUtilList.size()) {
-      if (!String.valueOf(this.jdField_a_of_type_JavaUtilList.get(i)).equals(paramString)) {}
-    }
-    for (bool1 = bool2;; bool1 = false)
-    {
-      bool2 = bool1;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("TroopGameCardConfig", 2, "isGrayTroop grayTroopUinList size = " + this.jdField_a_of_type_JavaUtilList.size() + ", isGrayTroop = " + bool1);
-      return bool1;
-      i += 1;
-      break label114;
-    }
+    return false;
   }
   
   public String b()
@@ -137,7 +147,7 @@ public class TroopGameCardConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopgame.TroopGameCardConfig
  * JD-Core Version:    0.7.0.1
  */

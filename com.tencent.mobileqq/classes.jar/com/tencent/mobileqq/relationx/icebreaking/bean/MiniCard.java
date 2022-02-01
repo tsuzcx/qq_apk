@@ -24,18 +24,36 @@ public class MiniCard
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(1024);
-    localStringBuilder.append("baseProfile").append("=").append(this.jdField_a_of_type_ComTencentMobileqqRelationxIcebreakingBeanMiniCard$BaseProfile).append("|\n");
-    localStringBuilder.append("personalLabels").append("=").append(Arrays.toString(this.jdField_a_of_type_JavaUtilList.toArray())).append("|\n");
-    localStringBuilder.append("qZoneInfo").append("=").append(this.jdField_a_of_type_ComTencentMobileqqRelationxIcebreakingBeanMiniCard$QZoneInfo).append("|\n");
-    localStringBuilder.append("nicePics").append("=").append(Arrays.toString(this.b.toArray())).append("|\n");
-    localStringBuilder.append("sign").append("=").append(this.jdField_a_of_type_ComTencentMobileqqRelationxIcebreakingBeanMiniCard$Sign).append("|\n");
-    localStringBuilder.append("askAnonymously").append("=").append(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousBeanAnonymousQuestion).append("|\n");
+    localStringBuilder.append("baseProfile");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqRelationxIcebreakingBeanMiniCard$BaseProfile);
+    localStringBuilder.append("|\n");
+    localStringBuilder.append("personalLabels");
+    localStringBuilder.append("=");
+    localStringBuilder.append(Arrays.toString(this.jdField_a_of_type_JavaUtilList.toArray()));
+    localStringBuilder.append("|\n");
+    localStringBuilder.append("qZoneInfo");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqRelationxIcebreakingBeanMiniCard$QZoneInfo);
+    localStringBuilder.append("|\n");
+    localStringBuilder.append("nicePics");
+    localStringBuilder.append("=");
+    localStringBuilder.append(Arrays.toString(this.b.toArray()));
+    localStringBuilder.append("|\n");
+    localStringBuilder.append("sign");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqRelationxIcebreakingBeanMiniCard$Sign);
+    localStringBuilder.append("|\n");
+    localStringBuilder.append("askAnonymously");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousBeanAnonymousQuestion);
+    localStringBuilder.append("|\n");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.icebreaking.bean.MiniCard
  * JD-Core Version:    0.7.0.1
  */

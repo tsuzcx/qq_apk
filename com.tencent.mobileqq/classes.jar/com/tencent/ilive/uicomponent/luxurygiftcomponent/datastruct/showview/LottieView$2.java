@@ -15,16 +15,26 @@ class LottieView$2
     this.this$0.setVisibility(4);
   }
   
+  public void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
+  {
+    this.this$0.setVisibility(4);
+  }
+  
   public void onAnimationRepeat(Animator paramAnimator) {}
   
   public void onAnimationStart(Animator paramAnimator)
   {
     this.this$0.setVisibility(0);
   }
+  
+  public void onAnimationStart(Animator paramAnimator, boolean paramBoolean)
+  {
+    this.this$0.setVisibility(0);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.uicomponent.luxurygiftcomponent.datastruct.showview.LottieView.2
  * JD-Core Version:    0.7.0.1
  */

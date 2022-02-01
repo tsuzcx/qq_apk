@@ -10,7 +10,7 @@ import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-class AVPreloadEngine$AVPreloadPlayListener
+public class AVPreloadEngine$AVPreloadPlayListener
   implements ITPPlayListener
 {
   private AVPreloadTaskInterface jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface;
@@ -20,9 +20,142 @@ class AVPreloadEngine$AVPreloadPlayListener
     this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface = paramAVPreloadTaskInterface;
   }
   
+  private void a()
+  {
+    this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.a(true);
+    AVPreloadEngine.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine).post(new AVPreloadEngine.AVPreloadPlayListener.4(this));
+  }
+  
+  private void a(int paramInt, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
+  {
+    if (paramInt != 5) {
+      return;
+    }
+    paramInt = ((Integer)paramObject1).intValue();
+    if (paramInt != 1)
+    {
+      if (paramInt != 2)
+      {
+        if (paramInt != 4)
+        {
+          if (paramInt != 5) {
+            return;
+          }
+          b(paramObject3.toString());
+          return;
+        }
+        if (!AVPreloadEngine.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine))
+        {
+          AVPreloadLog.c("AVPreloadEngine", "enableScreenShot = false", new Object[0]);
+          return;
+        }
+        paramObject1 = new AVPreloadEngine.FrameData(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine, null);
+        paramObject3 = (String)paramObject3;
+        try
+        {
+          paramObject1.jdField_a_of_type_ArrayOfByte = ((byte[])paramObject2);
+          paramObject1.c = paramObject1.jdField_a_of_type_ArrayOfByte.length;
+          paramObject2 = new JSONObject(paramObject3);
+          paramObject1.jdField_a_of_type_Int = paramObject2.getInt("width");
+          paramObject1.b = paramObject2.getInt("height");
+        }
+        catch (Exception paramObject2)
+        {
+          paramObject2.printStackTrace();
+        }
+        a(paramObject1);
+        return;
+      }
+      a();
+      return;
+    }
+    a(paramObject3.toString());
+  }
+  
+  private void a(AVPreloadEngine.FrameData paramFrameData)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onPlayCallback MESSAGE_PRELOAD_H264_CONFIG taskId #");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.j());
+    localStringBuilder.append(" url =");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.b());
+    AVPreloadLog.b("AVPreloadEngine", localStringBuilder.toString(), new Object[0]);
+    ThreadCenter.postLogicTask(new AVPreloadEngine.AVPreloadPlayListener.6(this, paramFrameData), "decoder_first_frame_thread");
+  }
+  
+  private void a(String paramString)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onPlayCallback MESSAGE_PRELOAD_FINISH taskId #");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.j());
+    ((StringBuilder)localObject).append(" key id =");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.a());
+    ((StringBuilder)localObject).append("  data: ");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("     url: ");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.b());
+    localObject = ((StringBuilder)localObject).toString();
+    boolean bool1 = false;
+    AVPreloadLog.b("AVPreloadEngine", (String)localObject, new Object[0]);
+    try
+    {
+      paramString = new JSONObject(paramString);
+      boolean bool2 = paramString.has("updateSpeed");
+      if (bool2)
+      {
+        int i = paramString.getInt("speed");
+        if (i > 0) {
+          AVPreloadEngine.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine, i);
+        }
+      }
+      else
+      {
+        localObject = new AVPreloadTaskInterface.TaskReportInfo();
+        ((AVPreloadTaskInterface.TaskReportInfo)localObject).a(paramString.getInt("duration"));
+        ((AVPreloadTaskInterface.TaskReportInfo)localObject).b(paramString.getInt("recvBytes"));
+        ((AVPreloadTaskInterface.TaskReportInfo)localObject).a(paramString.getLong("preloadDurationMS"));
+        ((AVPreloadTaskInterface.TaskReportInfo)localObject).b(paramString.getLong("preloadBytes"));
+        if (paramString.getInt("isPlayerConnected") == 0) {
+          bool1 = true;
+        }
+        ((AVPreloadTaskInterface.TaskReportInfo)localObject).a(bool1);
+        ((AVPreloadTaskInterface.TaskReportInfo)localObject).c(paramString.getInt("speed"));
+        ((AVPreloadTaskInterface.TaskReportInfo)localObject).a(paramString.getString("ipStr"));
+        this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.a((AVPreloadTaskInterface.TaskReportInfo)localObject);
+        this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.a(true);
+        this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.a(AVPreloadTaskInterface.AVPreloadState.PRELOAD_FINISH);
+        this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.h(AVPreloadEngine.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine));
+        AVPreloadEngine.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine).post(new AVPreloadEngine.AVPreloadPlayListener.3(this));
+        return;
+      }
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  private void b(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onPlayCallback MESSAGE_GAPTIME taskId #");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.j());
+    localStringBuilder.append(" url =");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.b());
+    localStringBuilder.append("  ext1: ");
+    localStringBuilder.append(paramString);
+    AVPreloadLog.b("AVPreloadEngine", localStringBuilder.toString(), new Object[0]);
+    AVPreloadEngine.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine).post(new AVPreloadEngine.AVPreloadPlayListener.5(this, paramString));
+  }
+  
   public long getAdvRemainTime()
   {
     return 0L;
+  }
+  
+  public String getContentType(int paramInt, String paramString)
+  {
+    return null;
   }
   
   public int getCurrentPlayClipNo()
@@ -31,6 +164,16 @@ class AVPreloadEngine$AVPreloadPlayListener
   }
   
   public long getCurrentPosition()
+  {
+    return 0L;
+  }
+  
+  public String getDataFilePath(int paramInt, String paramString)
+  {
+    return null;
+  }
+  
+  public long getDataTotalSize(int paramInt, String paramString)
   {
     return 0L;
   }
@@ -66,17 +209,28 @@ class AVPreloadEngine$AVPreloadPlayListener
     localStringBuffer.append(paramString3);
     localStringBuffer.append("errorCodeStr=");
     localStringBuffer.append(paramString4);
-    AVPreloadLog.b("AVPreload|Core", "onDownloadCdnUrlInfoUpdate " + localStringBuffer.toString(), new Object[0]);
+    paramString1 = new StringBuilder();
+    paramString1.append("onDownloadCdnUrlInfoUpdate ");
+    paramString1.append(localStringBuffer.toString());
+    AVPreloadLog.b("AVPreload|Core", paramString1.toString(), new Object[0]);
   }
   
   public void onDownloadCdnUrlUpdate(String paramString)
   {
-    AVPreloadLog.b("AVPreload|Core", "onDownloadCdnUrlUpdate url =" + paramString, new Object[0]);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onDownloadCdnUrlUpdate url =");
+    localStringBuilder.append(paramString);
+    AVPreloadLog.b("AVPreload|Core", localStringBuilder.toString(), new Object[0]);
   }
   
   public void onDownloadError(int paramInt1, int paramInt2, String paramString)
   {
-    AVPreloadLog.b("AVPreloadEngine", "download error taskId #" + this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.j() + " key id =" + this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.a(), new Object[0]);
+    paramString = new StringBuilder();
+    paramString.append("download error taskId #");
+    paramString.append(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.j());
+    paramString.append(" key id =");
+    paramString.append(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.a());
+    AVPreloadLog.b("AVPreloadEngine", paramString.toString(), new Object[0]);
     this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.a(AVPreloadTaskInterface.AVPreloadState.PRELOAD_FAILED);
     this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.c(paramInt2);
     AVPreloadEngine.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine).post(new AVPreloadEngine.AVPreloadPlayListener.2(this));
@@ -84,7 +238,12 @@ class AVPreloadEngine$AVPreloadPlayListener
   
   public void onDownloadFinish()
   {
-    AVPreloadLog.b("AVPreloadEngine", "download finish taskId #" + this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.j() + " key id =" + this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.a(), new Object[0]);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("download finish taskId #");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.j());
+    localStringBuilder.append(" key id =");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.a());
+    AVPreloadLog.b("AVPreloadEngine", localStringBuilder.toString(), new Object[0]);
     this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.a(AVPreloadTaskInterface.AVPreloadState.PRELOAD_COMPLETED);
     AVPreloadEngine.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine).post(new AVPreloadEngine.AVPreloadPlayListener.1(this));
   }
@@ -96,7 +255,12 @@ class AVPreloadEngine$AVPreloadPlayListener
   
   public void onDownloadProtocolUpdate(String paramString1, String paramString2)
   {
-    AVPreloadLog.b("AVPreload|Core", "onDownloadProtocolUpdate protocol=" + paramString1 + " protocolVer" + paramString2, new Object[0]);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onDownloadProtocolUpdate protocol=");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(" protocolVer");
+    localStringBuilder.append(paramString2);
+    AVPreloadLog.b("AVPreload|Core", localStringBuilder.toString(), new Object[0]);
   }
   
   public void onDownloadStatusUpdate(int paramInt)
@@ -106,65 +270,28 @@ class AVPreloadEngine$AVPreloadPlayListener
   
   public Object onPlayCallback(int paramInt, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
   {
-    boolean bool = true;
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      return null;
-      AVPreloadLog.b("AVPreloadEngine", "onPlayCallback MESSAGE_PRELOAD_FINISH taskId #" + this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.j() + " key id =" + this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.a() + "  ext1: " + paramObject1 + "     url: " + this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.b(), new Object[0]);
-      try
-      {
-        paramObject1 = new JSONObject(paramObject1.toString());
-        if (!paramObject1.has("updateSpeed")) {
-          break label169;
-        }
-        paramInt = paramObject1.getInt("speed");
-        if (paramInt <= 0) {
-          continue;
-        }
-        AVPreloadEngine.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine, paramInt);
-      }
-      catch (JSONException paramObject1)
-      {
-        paramObject1.printStackTrace();
-      }
-      continue;
-      label169:
-      paramObject2 = new AVPreloadTaskInterface.TaskReportInfo();
-      paramObject2.a(paramObject1.getInt("duration"));
-      paramObject2.b(paramObject1.getInt("recvBytes"));
-      paramObject2.a(paramObject1.getLong("preloadDurationMS"));
-      paramObject2.b(paramObject1.getLong("preloadBytes"));
-      if (paramObject1.getInt("isPlayerConnected") == 0) {}
-      for (;;)
-      {
-        paramObject2.a(bool);
-        paramObject2.c(paramObject1.getInt("speed"));
-        paramObject2.a(paramObject1.getString("ipStr"));
-        this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.a(paramObject2);
-        this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.a(true);
-        this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.a(AVPreloadTaskInterface.AVPreloadState.PRELOAD_FINISH);
-        this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.h(AVPreloadEngine.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine));
-        AVPreloadEngine.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine).post(new AVPreloadEngine.AVPreloadPlayListener.3(this));
-        break;
-        bool = false;
-      }
-      AVPreloadLog.b("AVPreloadEngine", "onPlayCallback MESSAGE_PRELOAD_H264_CONFIG taskId #" + this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.j() + " url =" + this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.b() + "  ext1: " + paramObject1, new Object[0]);
-      ThreadCenter.postLogicTask(new AVPreloadEngine.AVPreloadPlayListener.4(this, paramObject1), "decoder_first_frame_thread");
-      continue;
-      this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.a(true);
-      AVPreloadEngine.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine).post(new AVPreloadEngine.AVPreloadPlayListener.5(this));
-      continue;
-      AVPreloadLog.b("AVPreloadEngine", "onPlayCallback MESSAGE_GAPTIME taskId #" + this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.j() + " url =" + this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface.b() + "  ext1: " + paramObject1, new Object[0]);
-      AVPreloadEngine.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine).post(new AVPreloadEngine.AVPreloadPlayListener.6(this, paramObject1));
-    }
+    a(paramInt, paramObject1, paramObject2, paramObject3, paramObject4);
+    return null;
+  }
+  
+  public int onReadData(int paramInt, String paramString, long paramLong1, long paramLong2)
+  {
+    return 0;
+  }
+  
+  public int onStartReadData(int paramInt, String paramString, long paramLong1, long paramLong2)
+  {
+    return 0;
+  }
+  
+  public int onStopReadData(int paramInt1, String paramString, int paramInt2)
+  {
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadservice.AVPreloadEngine.AVPreloadPlayListener
  * JD-Core Version:    0.7.0.1
  */

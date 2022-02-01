@@ -20,23 +20,20 @@ public class ARCloudPreOcrResult
   
   public static boolean a(ARCloudPreOcrResult paramARCloudPreOcrResult)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramARCloudPreOcrResult != null)
+    boolean bool;
+    if ((paramARCloudPreOcrResult != null) && (paramARCloudPreOcrResult.a()) && (paramARCloudPreOcrResult.b())) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if (QLog.isColorLevel())
     {
-      bool1 = bool2;
-      if (paramARCloudPreOcrResult.a())
-      {
-        bool1 = bool2;
-        if (paramARCloudPreOcrResult.b()) {
-          bool1 = true;
-        }
-      }
+      paramARCloudPreOcrResult = new StringBuilder();
+      paramARCloudPreOcrResult.append("isRecogSuccess result = ");
+      paramARCloudPreOcrResult.append(bool);
+      QLog.d("ARCloudPreOcrResult", 2, paramARCloudPreOcrResult.toString());
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ARCloudPreOcrResult", 2, "isRecogSuccess result = " + bool1);
-    }
-    return bool1;
+    return bool;
   }
   
   public boolean a()
@@ -51,12 +48,30 @@ public class ARCloudPreOcrResult
   
   public String toString()
   {
-    return "ARCloudPreOcrResult{recogType = " + this.jdField_b_of_type_Long + ", recogSvrRetCode = " + this.jdField_a_of_type_Int + ", recogSvrRetMsg = " + this.jdField_a_of_type_JavaLangString + ", sessionId = " + this.jdField_b_of_type_JavaLangString + ", arWordDetectRetCode = " + this.jdField_b_of_type_Int + ", arWordDetectRetMsg = " + this.jdField_c_of_type_JavaLangString + ", wordType = " + this.jdField_c_of_type_Int + ", confidence = " + this.jdField_a_of_type_Float + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ARCloudPreOcrResult{recogType = ");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", recogSvrRetCode = ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", recogSvrRetMsg = ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", sessionId = ");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", arWordDetectRetCode = ");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", arWordDetectRetMsg = ");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(", wordType = ");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(", confidence = ");
+    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudPreOcrResult
  * JD-Core Version:    0.7.0.1
  */

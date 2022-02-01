@@ -13,20 +13,26 @@ public class ExponentialPredictor
   public long onSample(long paramLong)
   {
     long l = paramLong;
-    if (this.currentPredition > 0L) {
-      l = (this.weight * (float)paramLong + (1.0F - this.weight) * (float)this.currentPredition);
+    if (this.currentPredition > 0L)
+    {
+      float f = this.weight;
+      l = ((float)paramLong * f + (1.0F - f) * (float)this.currentPredition);
     }
     return l;
   }
   
   public String toString()
   {
-    return "ExponentialPredictor(" + this.weight + ')';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ExponentialPredictor(");
+    localStringBuilder.append(this.weight);
+    localStringBuilder.append(')');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.bandwidth.ExponentialPredictor
  * JD-Core Version:    0.7.0.1
  */

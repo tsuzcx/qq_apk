@@ -19,94 +19,115 @@ public final class YtLogger
   public static final int WARN_LEVEL = 1;
   private static int currentLogLevel = 0;
   @SuppressLint({"SimpleDateFormat"})
-  private static DateFormat dateFormat;
+  private static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss.SSS");
   private static File localFile;
-  private static String localLogName;
-  private static YtLogger.IYtLoggerListener loggerListener = null;
+  private static String localLogName = "youtu_log";
+  private static YtLogger.IYtLoggerListener loggerListener;
   private static ExecutorService mExecutorService = Executors.newSingleThreadExecutor();
   private static boolean needLogFile = false;
   
   static
   {
-    dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss.SSS");
-    localLogName = "youtu_log";
     localFile = null;
   }
   
   private static String buildMessage(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if ((localLogName != null) && (!"".equals(localLogName)) && (needLogFile))
+    Object localObject = localLogName;
+    if ((localObject != null) && (!"".equals(localObject)) && (needLogFile))
     {
-      StringBuffer localStringBuffer1 = new StringBuffer();
-      localStringBuffer1.append(paramString2);
-      StringBuffer localStringBuffer2 = new StringBuffer();
-      localStringBuffer2.append(dateFormat.format(new Date()));
-      localStringBuffer2.append("    ");
-      localStringBuffer2.append("    ");
-      localStringBuffer2.append(paramString1);
-      localStringBuffer2.append("    ");
-      localStringBuffer2.append(localStringBuffer1);
+      localObject = new StringBuffer();
+      ((StringBuffer)localObject).append(paramString2);
+      StringBuffer localStringBuffer = new StringBuffer();
+      localStringBuffer.append(dateFormat.format(new Date()));
+      localStringBuffer.append("    ");
+      localStringBuffer.append("    ");
+      localStringBuffer.append(paramString1);
+      localStringBuffer.append("    ");
+      localStringBuffer.append((StringBuffer)localObject);
       if (paramThrowable != null)
       {
-        localStringBuffer2.append(System.getProperty("line.separator"));
-        localStringBuffer2.append(Log.getStackTraceString(paramThrowable));
+        localStringBuffer.append(System.getProperty("line.separator"));
+        localStringBuffer.append(Log.getStackTraceString(paramThrowable));
       }
-      save2File(localStringBuffer2.toString());
+      save2File(localStringBuffer.toString());
     }
     return paramString2;
   }
   
   public static void d(String paramString, Object paramObject)
   {
-    if (currentLogLevel >= 4) {
-      showLog(paramString, "[YoutuLog]-[DEBUG]-" + paramObject);
+    if (currentLogLevel >= 4)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[YoutuLog]-[DEBUG]-");
+      localStringBuilder.append(paramObject);
+      showLog(paramString, localStringBuilder.toString());
     }
   }
   
   public static void e(String paramString1, String paramString2)
   {
-    if (currentLogLevel >= 0) {
-      showLog(paramString1, "[YoutuLog]-[ERROR]-" + paramString2);
+    if (currentLogLevel >= 0)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[YoutuLog]-[ERROR]-");
+      localStringBuilder.append(paramString2);
+      showLog(paramString1, localStringBuilder.toString());
     }
   }
   
   private static File getLogFile(String paramString)
   {
-    paramString = new File(Environment.getExternalStorageDirectory() + File.separator + "youtulog" + File.separator + paramString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(Environment.getExternalStorageDirectory());
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append("youtulog");
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(paramString);
+    paramString = new File(((StringBuilder)localObject).toString());
     if ((!paramString.exists()) && (!paramString.mkdirs())) {
-      paramString = null;
+      return null;
     }
-    Object localObject;
-    do
-    {
-      return paramString;
-      localObject = dateFormat.format(new Date()) + ".log";
-      localObject = new File(paramString.getPath() + File.separator + (String)localObject);
-      paramString = (String)localObject;
-    } while (((File)localObject).exists());
-    try
-    {
-      ((File)localObject).createNewFile();
-      return localObject;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(dateFormat.format(new Date()));
+    ((StringBuilder)localObject).append(".log");
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString.getPath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append((String)localObject);
+    paramString = new File(localStringBuilder.toString());
+    if (!paramString.exists()) {
+      try
+      {
+        paramString.createNewFile();
+        return paramString;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return localObject;
+    return paramString;
   }
   
   public static void i(String paramString1, String paramString2)
   {
-    if (currentLogLevel >= 2) {
-      showLog(paramString1, "[YoutuLog]-[INFO]-" + paramString2);
+    if (currentLogLevel >= 2)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[YoutuLog]-[INFO]-");
+      localStringBuilder.append(paramString2);
+      showLog(paramString1, localStringBuilder.toString());
     }
   }
   
   private static void save2File(String paramString)
   {
-    if (localFile != null) {
-      writeFile(localFile, paramString);
+    File localFile1 = localFile;
+    if (localFile1 != null) {
+      writeFile(localFile1, paramString);
     }
   }
   
@@ -132,23 +153,32 @@ public final class YtLogger
   
   private static void showLog(String paramString1, String paramString2)
   {
-    if (loggerListener != null) {
-      loggerListener.log(paramString1, paramString2);
+    YtLogger.IYtLoggerListener localIYtLoggerListener = loggerListener;
+    if (localIYtLoggerListener != null) {
+      localIYtLoggerListener.log(paramString1, paramString2);
     }
     Log.d(paramString1, buildMessage(paramString1, paramString2, null));
   }
   
   public static void v(String paramString, Object paramObject)
   {
-    if (currentLogLevel >= 5) {
-      showLog(paramString, "[YoutuLog]-[VERB]-" + paramObject);
+    if (currentLogLevel >= 5)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[YoutuLog]-[VERB]-");
+      localStringBuilder.append(paramObject);
+      showLog(paramString, localStringBuilder.toString());
     }
   }
   
   public static void w(String paramString1, String paramString2)
   {
-    if (currentLogLevel >= 1) {
-      showLog(paramString1, "[YoutuLog]-[WARN]-" + paramString2);
+    if (currentLogLevel >= 1)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[YoutuLog]-[WARN]-");
+      localStringBuilder.append(paramString2);
+      showLog(paramString1, localStringBuilder.toString());
     }
   }
   
@@ -159,7 +189,7 @@ public final class YtLogger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.common.YtLogger
  * JD-Core Version:    0.7.0.1
  */

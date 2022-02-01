@@ -26,13 +26,14 @@ public final class im_msg_body$Attr
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 74, 82 }, new String[] { "code_page", "time", "random", "color", "size", "effect", "char_set", "pitch_and_family", "font_name", "reserve_data" }, new Object[] { Integer.valueOf(-1), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(10), Integer.valueOf(7), Integer.valueOf(78), Integer.valueOf(90), "Times New Roman", localByteStringMicro }, Attr.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 74, 82 }, new String[] { "code_page", "time", "random", "color", "size", "effect", "char_set", "pitch_and_family", "font_name", "reserve_data" }, new Object[] { Integer.valueOf(-1), Integer.valueOf(1), localInteger, localInteger, Integer.valueOf(10), Integer.valueOf(7), Integer.valueOf(78), Integer.valueOf(90), "Times New Roman", localByteStringMicro }, Attr.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.msg.im_msg_body.Attr
  * JD-Core Version:    0.7.0.1
  */

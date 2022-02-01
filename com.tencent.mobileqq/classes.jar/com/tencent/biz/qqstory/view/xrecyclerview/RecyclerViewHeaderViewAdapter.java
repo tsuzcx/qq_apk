@@ -69,9 +69,10 @@ public class RecyclerViewHeaderViewAdapter<T extends RecyclerView.Adapter>
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
+    int i = this.jdField_a_of_type_JavaUtilList.size();
     Object localObject2 = null;
     Object localObject1 = null;
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
+    if (paramInt < i)
     {
       if (StaggeredGridLayoutManager.LayoutParams.class.isInstance(paramViewHolder.itemView.getLayoutParams())) {
         localObject1 = (StaggeredGridLayoutManager.LayoutParams)paramViewHolder.itemView.getLayoutParams();
@@ -84,29 +85,25 @@ public class RecyclerViewHeaderViewAdapter<T extends RecyclerView.Adapter>
       }
       ((StaggeredGridLayoutManager.LayoutParams)localObject2).setFullSpan(true);
     }
-    for (;;)
+    else if (paramInt < this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount())
     {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-      return;
-      if (paramInt < this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount())
-      {
-        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onBindViewHolder(paramViewHolder, paramInt - this.jdField_a_of_type_JavaUtilList.size());
-      }
-      else
-      {
-        localObject1 = localObject2;
-        if (StaggeredGridLayoutManager.LayoutParams.class.isInstance(paramViewHolder.itemView.getLayoutParams())) {
-          localObject1 = (StaggeredGridLayoutManager.LayoutParams)paramViewHolder.itemView.getLayoutParams();
-        }
-        localObject2 = localObject1;
-        if (localObject1 == null)
-        {
-          localObject2 = new StaggeredGridLayoutManager.LayoutParams(-1, -2);
-          paramViewHolder.itemView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        }
-        ((StaggeredGridLayoutManager.LayoutParams)localObject2).setFullSpan(true);
-      }
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onBindViewHolder(paramViewHolder, paramInt - this.jdField_a_of_type_JavaUtilList.size());
     }
+    else
+    {
+      localObject1 = localObject2;
+      if (StaggeredGridLayoutManager.LayoutParams.class.isInstance(paramViewHolder.itemView.getLayoutParams())) {
+        localObject1 = (StaggeredGridLayoutManager.LayoutParams)paramViewHolder.itemView.getLayoutParams();
+      }
+      localObject2 = localObject1;
+      if (localObject1 == null)
+      {
+        localObject2 = new StaggeredGridLayoutManager.LayoutParams(-1, -2);
+        paramViewHolder.itemView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      }
+      ((StaggeredGridLayoutManager.LayoutParams)localObject2).setFullSpan(true);
+    }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
@@ -126,7 +123,7 @@ public class RecyclerViewHeaderViewAdapter<T extends RecyclerView.Adapter>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.xrecyclerview.RecyclerViewHeaderViewAdapter
  * JD-Core Version:    0.7.0.1
  */

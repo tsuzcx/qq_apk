@@ -56,7 +56,7 @@ public class MessageForQQStoryFeed
     AIOQQStoryFeedPB.AIOQQStoryFeed localAIOQQStoryFeed = new AIOQQStoryFeedPB.AIOQQStoryFeed();
     localAIOQQStoryFeed.msg_covers_info.set(localCoverItem);
     localAIOQQStoryFeed.uint64_time.set(System.currentTimeMillis() / 1000L);
-    localAIOQQStoryFeed.str_location.set(HardCodeUtil.a(2131706612));
+    localAIOQQStoryFeed.str_location.set(HardCodeUtil.a(2131706634));
     localAIOQQStoryFeed.str_feed_id.set("FEED-1000-2f583f987a1ffd3644b2672111f0d64b31d30c72d9598be3-20180412");
     localAIOQQStoryFeed.str_union_id.set("0_2463624242");
     localMsgBody.msg_aio_feed.set(localAIOQQStoryFeed);
@@ -80,13 +80,22 @@ public class MessageForQQStoryFeed
   
   public void mergeFrom(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
-      return;
-    }
-    AIOQQStoryFeedPB.MsgBody localMsgBody = new AIOQQStoryFeedPB.MsgBody();
-    try
+    if (paramArrayOfByte != null)
     {
-      localMsgBody.mergeFrom(paramArrayOfByte);
+      if (paramArrayOfByte.length <= 0) {
+        return;
+      }
+      AIOQQStoryFeedPB.MsgBody localMsgBody = new AIOQQStoryFeedPB.MsgBody();
+      try
+      {
+        localMsgBody.mergeFrom(paramArrayOfByte);
+      }
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("MessageForQQStoryFeed", 2, "mergeFrom Failed. info: exception: ", localInvalidProtocolBufferMicroException);
+        }
+      }
       this.msgData = paramArrayOfByte;
       this.mCoverUrl = localMsgBody.msg_aio_feed.msg_covers_info.str_cover.get();
       this.mMainText = localMsgBody.msg_aio_feed.msg_covers_info.str_content.get();
@@ -97,20 +106,10 @@ public class MessageForQQStoryFeed
       this.mKeepTime = localMsgBody.uint32_keep_time.get();
       this.mQZoneRemainTime = localMsgBody.uint32_latest_qzone_time.get();
       this.friendActionMills = localMsgBody.uint64_msg_time.get();
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("MessageForQQStoryFeed", 2, "mergeFrom Failed. info: exception: ", localInvalidProtocolBufferMicroException);
-        }
-      }
     }
   }
   
-  public void postRead()
+  protected void postRead()
   {
     doParse();
   }
@@ -118,20 +117,30 @@ public class MessageForQQStoryFeed
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("MessageForQQStoryFeed{");
-    localStringBuilder.append(", mFeedId='").append(this.mFeedId).append('\n');
-    localStringBuilder.append(", mFeedTime=").append(this.mFeedTime);
-    localStringBuilder.append(", mKeepTime=").append(this.mKeepTime);
-    localStringBuilder.append(", mQZoneRemainTime=").append(this.mQZoneRemainTime);
-    localStringBuilder.append(", mMainText='").append(this.mMainText).append('\n');
-    localStringBuilder.append(", mFeedAddress='").append(this.mFeedAddress).append('\n');
-    localStringBuilder.append(", friendActionMills=").append(this.friendActionMills);
+    localStringBuilder.append(", mFeedId='");
+    localStringBuilder.append(this.mFeedId);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", mFeedTime=");
+    localStringBuilder.append(this.mFeedTime);
+    localStringBuilder.append(", mKeepTime=");
+    localStringBuilder.append(this.mKeepTime);
+    localStringBuilder.append(", mQZoneRemainTime=");
+    localStringBuilder.append(this.mQZoneRemainTime);
+    localStringBuilder.append(", mMainText='");
+    localStringBuilder.append(this.mMainText);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", mFeedAddress='");
+    localStringBuilder.append(this.mFeedAddress);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", friendActionMills=");
+    localStringBuilder.append(this.friendActionMills);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForQQStoryFeed
  * JD-Core Version:    0.7.0.1
  */

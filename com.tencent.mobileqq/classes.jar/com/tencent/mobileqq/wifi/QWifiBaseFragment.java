@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import com.wifisdk.ui.WifiSDKUIApi;
 import com.wifisdk.ui.api.BaseFragImplManager;
 import com.wifisdk.ui.fragments.BaseFragmentImpl;
@@ -15,11 +15,6 @@ public abstract class QWifiBaseFragment
   extends PublicBaseFragment
 {
   protected BaseFragmentImpl a = WifiSDKUIApi.getFragImplManager().newFragImpl(a());
-  
-  public QWifiBaseFragment()
-  {
-    this.a.onAttachToFragment(this);
-  }
   
   public abstract int a();
   
@@ -48,7 +43,7 @@ public abstract class QWifiBaseFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = this.a.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
@@ -96,7 +91,7 @@ public abstract class QWifiBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.wifi.QWifiBaseFragment
  * JD-Core Version:    0.7.0.1
  */

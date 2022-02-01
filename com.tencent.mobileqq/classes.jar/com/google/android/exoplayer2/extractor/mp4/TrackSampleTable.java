@@ -15,38 +15,35 @@ final class TrackSampleTable
   
   public TrackSampleTable(long[] paramArrayOfLong1, int[] paramArrayOfInt1, int paramInt, long[] paramArrayOfLong2, int[] paramArrayOfInt2, long paramLong)
   {
-    if (paramArrayOfInt1.length == paramArrayOfLong2.length)
-    {
+    int i = paramArrayOfInt1.length;
+    int j = paramArrayOfLong2.length;
+    boolean bool2 = true;
+    boolean bool1;
+    if (i == j) {
       bool1 = true;
-      Assertions.checkArgument(bool1);
-      if (paramArrayOfLong1.length != paramArrayOfLong2.length) {
-        break label103;
-      }
+    } else {
+      bool1 = false;
+    }
+    Assertions.checkArgument(bool1);
+    if (paramArrayOfLong1.length == paramArrayOfLong2.length) {
       bool1 = true;
-      label34:
-      Assertions.checkArgument(bool1);
-      if (paramArrayOfInt2.length != paramArrayOfLong2.length) {
-        break label109;
-      }
-    }
-    label103:
-    label109:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      Assertions.checkArgument(bool1);
-      this.offsets = paramArrayOfLong1;
-      this.sizes = paramArrayOfInt1;
-      this.maximumSize = paramInt;
-      this.timestampsUs = paramArrayOfLong2;
-      this.flags = paramArrayOfInt2;
-      this.durationUs = paramLong;
-      this.sampleCount = paramArrayOfLong1.length;
-      return;
+    } else {
       bool1 = false;
-      break;
-      bool1 = false;
-      break label34;
     }
+    Assertions.checkArgument(bool1);
+    if (paramArrayOfInt2.length == paramArrayOfLong2.length) {
+      bool1 = bool2;
+    } else {
+      bool1 = false;
+    }
+    Assertions.checkArgument(bool1);
+    this.offsets = paramArrayOfLong1;
+    this.sizes = paramArrayOfInt1;
+    this.maximumSize = paramInt;
+    this.timestampsUs = paramArrayOfLong2;
+    this.flags = paramArrayOfInt2;
+    this.durationUs = paramLong;
+    this.sampleCount = paramArrayOfLong1.length;
   }
   
   public int getIndexOfEarlierOrEqualSynchronizationSample(long paramLong)
@@ -77,7 +74,7 @@ final class TrackSampleTable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.mp4.TrackSampleTable
  * JD-Core Version:    0.7.0.1
  */

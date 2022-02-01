@@ -16,22 +16,34 @@ class TavLoggerProxy
   
   public void d(String paramString1, String paramString2)
   {
-    QMLog.d("WS_" + paramString1, paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WS_");
+    localStringBuilder.append(paramString1);
+    QMLog.d(localStringBuilder.toString(), paramString2);
   }
   
   public void e(String paramString1, String paramString2)
   {
-    QMLog.e("WS_" + paramString1, paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WS_");
+    localStringBuilder.append(paramString1);
+    QMLog.e(localStringBuilder.toString(), paramString2);
   }
   
   public void e(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    QMLog.e("WS_" + paramString1, paramString2, paramThrowable);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WS_");
+    localStringBuilder.append(paramString1);
+    QMLog.e(localStringBuilder.toString(), paramString2, paramThrowable);
   }
   
   public void i(String paramString1, String paramString2)
   {
-    QMLog.i("WS_" + paramString1, paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WS_");
+    localStringBuilder.append(paramString1);
+    QMLog.i(localStringBuilder.toString(), paramString2);
   }
   
   public void v(String paramString1, String paramString2)
@@ -41,12 +53,15 @@ class TavLoggerProxy
   
   public void w(String paramString1, String paramString2)
   {
-    QMLog.w("WS_" + paramString1, paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WS_");
+    localStringBuilder.append(paramString1);
+    QMLog.w(localStringBuilder.toString(), paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.TavLoggerProxy
  * JD-Core Version:    0.7.0.1
  */

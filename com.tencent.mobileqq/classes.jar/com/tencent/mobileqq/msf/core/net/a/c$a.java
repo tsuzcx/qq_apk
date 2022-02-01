@@ -18,60 +18,90 @@ class c$a
   public boolean handleMessage(Message paramMessage)
   {
     int i = paramMessage.what;
-    switch (i)
-    {
+    if (i != 1) {
+      if (i != 2) {
+        if (i != 3) {
+          if (i != 5) {
+            if (i != 7) {
+              if (i != 153) {
+                if (i != 154) {
+                  return false;
+                }
+              }
+            }
+          }
+        }
+      }
     }
-    do
+    try
     {
-      return false;
-      try
-      {
-        QLog.d("HwSocketAdaptor", 1, "bastet detect connection closed");
-        return false;
-      }
-      catch (Exception paramMessage)
-      {
-        QLog.d("HwSocketAdaptor", 1, "bastet handler process event " + i + "failed " + paramMessage.toString(), paramMessage);
-        return false;
-      }
-      QLog.d("HwSocketAdaptor", 1, "bastet detect connection established");
-      return false;
-      int j = Integer.valueOf(paramMessage.arg1).intValue();
-      QLog.d("HwSocketAdaptor", 1, "bastet detect net quality event, level:" + j);
-      return false;
-      c.a(true);
-      paramMessage = (String)paramMessage.obj;
-      QLog.d("HwSocketAdaptor", 1, "bastet Heartbeat:  " + paramMessage);
-      return false;
-      QLog.d("HwSocketAdaptor", 1, "basetet heartbeat is not available");
-      a.a("exception");
-      c.c.removeMessages(153);
-      return false;
-      if (!c.b())
-      {
-        QLog.d("HwSocketAdaptor", 1, "Heartbeat Log has not been reported, pause heartbeat");
-        a.a("exception");
-        c.b(c.c() + 1);
-        return false;
-      }
-      c.a(false);
-      c.c.sendEmptyMessageDelayed(153, 2700000L);
-      return false;
       if (c.d())
       {
-        QLog.d("HwSocketAdaptor", 1, "reset mode in cycle, resume mode " + c.e());
+        paramMessage = new StringBuilder();
+        paramMessage.append("reset mode in cycle, resume mode ");
+        paramMessage.append(c.e());
+        QLog.d("HwSocketAdaptor", 1, paramMessage.toString());
         c.b(false);
         c.c(c.e() + 1);
         a.k();
       }
-    } while (c.e() > com.tencent.mobileqq.msf.core.a.a.aO());
-    c.c.sendEmptyMessageDelayed(154, com.tencent.mobileqq.msf.core.a.a.aP());
+      if (c.e() > com.tencent.mobileqq.msf.core.a.a.aO()) {
+        break label367;
+      }
+      c.c.sendEmptyMessageDelayed(154, com.tencent.mobileqq.msf.core.a.a.aP());
+      return false;
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder;
+      int j;
+      break label317;
+    }
+    if (!c.b())
+    {
+      QLog.d("HwSocketAdaptor", 1, "Heartbeat Log has not been reported, pause heartbeat");
+      a.a("exception");
+      c.b(c.c() + 1);
+      return false;
+    }
+    c.a(false);
+    c.c.sendEmptyMessageDelayed(153, 2700000L);
+    return false;
+    c.a(true);
+    paramMessage = (String)paramMessage.obj;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("bastet Heartbeat:  ");
+    localStringBuilder.append(paramMessage);
+    QLog.d("HwSocketAdaptor", 1, localStringBuilder.toString());
+    return false;
+    QLog.d("HwSocketAdaptor", 1, "basetet heartbeat is not available");
+    a.a("exception");
+    c.c.removeMessages(153);
+    return false;
+    j = Integer.valueOf(paramMessage.arg1).intValue();
+    paramMessage = new StringBuilder();
+    paramMessage.append("bastet detect net quality event, level:");
+    paramMessage.append(j);
+    QLog.d("HwSocketAdaptor", 1, paramMessage.toString());
+    return false;
+    QLog.d("HwSocketAdaptor", 1, "bastet detect connection closed");
+    return false;
+    QLog.d("HwSocketAdaptor", 1, "bastet detect connection established");
+    return false;
+    label317:
+    paramMessage = new StringBuilder();
+    paramMessage.append("bastet handler process event ");
+    paramMessage.append(i);
+    paramMessage.append("failed ");
+    paramMessage.append(localStringBuilder.toString());
+    QLog.d("HwSocketAdaptor", 1, paramMessage.toString(), localStringBuilder);
+    label367:
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.a.c.a
  * JD-Core Version:    0.7.0.1
  */

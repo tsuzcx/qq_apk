@@ -14,5 +14,7 @@ readinjoy_expose_subcomment_one.geojson
 readinjoy_expose_subcomment_two.geojson
 readinjoy_expose_subcomments.geojson
 readinjoy_expsesub_total.geojson
+readinjoy_secondPage_comment_reply.geojson
+readinjoy_secondPage_comment_reply_container.geojson
 vv_comment_awsome_mark_img.geojson
 vv_comment_media.geojson

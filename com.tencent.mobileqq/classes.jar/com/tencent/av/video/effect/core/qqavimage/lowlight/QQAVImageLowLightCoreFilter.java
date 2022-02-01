@@ -33,14 +33,14 @@ public class QQAVImageLowLightCoreFilter
     super.onDestroy();
   }
   
-  public void onDrawArraysAfter()
+  protected void onDrawArraysAfter()
   {
     GLES20.glActiveTexture(33985);
     GLES20.glBindTexture(3553, 0);
     GLES20.glActiveTexture(33984);
   }
   
-  public void onDrawArraysPre()
+  protected void onDrawArraysPre()
   {
     GLES20.glActiveTexture(33985);
     GLES20.glBindTexture(3553, this.mLowLightImageTexture);
@@ -70,7 +70,7 @@ public class QQAVImageLowLightCoreFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.video.effect.core.qqavimage.lowlight.QQAVImageLowLightCoreFilter
  * JD-Core Version:    0.7.0.1
  */

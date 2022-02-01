@@ -7,9 +7,9 @@ class BaseMsgBoxActivity$2
 {
   BaseMsgBoxActivity$2(BaseMsgBoxActivity paramBaseMsgBoxActivity) {}
   
-  public void onGetFriendDateNick(boolean paramBoolean, String paramString1, String paramString2)
+  protected void onGetFriendDateNick(boolean paramBoolean, String paramString1, String paramString2)
   {
-    if (!this.a.a) {
+    if (!this.a.mInitUI) {
       return;
     }
     this.a.runOnUiThread(new BaseMsgBoxActivity.2.1(this, paramBoolean, paramString1, paramString2));
@@ -17,7 +17,7 @@ class BaseMsgBoxActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dating.BaseMsgBoxActivity.2
  * JD-Core Version:    0.7.0.1
  */

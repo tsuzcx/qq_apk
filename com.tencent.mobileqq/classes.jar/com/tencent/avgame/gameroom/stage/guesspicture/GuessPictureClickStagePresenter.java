@@ -14,9 +14,9 @@ import com.tencent.avgame.gameroom.IGameRoomPresenter;
 import com.tencent.avgame.gameroom.stage.IGameStagePresenter;
 import com.tencent.avgame.gameroom.stage.IGameStageView;
 import com.tencent.avgame.gameroom.stage.IStagePresenter;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class GuessPictureClickStagePresenter
   implements IGameStagePresenter
@@ -36,39 +36,46 @@ public class GuessPictureClickStagePresenter
   
   public String a(Context paramContext, EngineData paramEngineData)
   {
-    paramEngineData = paramEngineData.a();
-    paramContext = null;
-    if (paramEngineData != null)
+    paramContext = paramEngineData.a();
+    if (paramContext != null)
     {
-      if (paramEngineData.a != 2) {
-        break label54;
-      }
-      paramContext = BaseApplicationImpl.getContext().getResources().getString(2131690417);
-    }
-    for (;;)
-    {
-      paramEngineData = paramContext;
-      if (TextUtils.isEmpty(paramContext)) {
-        paramEngineData = BaseApplicationImpl.getContext().getResources().getString(2131690417);
-      }
-      return paramEngineData;
-      label54:
-      paramContext = paramEngineData.n;
-      paramEngineData = paramContext;
-      if (!TextUtils.isEmpty(paramContext))
+      if (paramContext.a == 2)
       {
+        paramContext = MobileQQ.sMobileQQ;
+        paramContext = MobileQQ.getContext().getResources().getString(2131690341);
+      }
+      else
+      {
+        paramContext = paramContext.n;
         paramEngineData = paramContext;
-        if (paramContext.contains("\\n")) {
-          paramEngineData = paramContext.replace("\\n", "\n");
+        if (!TextUtils.isEmpty(paramContext))
+        {
+          paramEngineData = paramContext;
+          if (paramContext.contains("\\n")) {
+            paramEngineData = paramContext.replace("\\n", "\n");
+          }
+        }
+        paramContext = paramEngineData;
+        if (QLog.isColorLevel())
+        {
+          paramContext = new StringBuilder();
+          paramContext.append("getGamePrepareBottomTip result = ");
+          paramContext.append(paramEngineData);
+          QLog.d("GuessPictureClickStagePresenter", 2, paramContext.toString());
+          paramContext = paramEngineData;
         }
       }
-      paramContext = paramEngineData;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("GuessPictureClickStagePresenter", 2, "getGamePrepareBottomTip result = " + paramEngineData);
-        paramContext = paramEngineData;
-      }
     }
+    else {
+      paramContext = null;
+    }
+    paramEngineData = paramContext;
+    if (TextUtils.isEmpty(paramContext))
+    {
+      paramContext = MobileQQ.sMobileQQ;
+      paramEngineData = MobileQQ.getContext().getResources().getString(2131690341);
+    }
+    return paramEngineData;
   }
   
   public String a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
@@ -86,7 +93,7 @@ public class GuessPictureClickStagePresenter
       return "";
     }
     if ((localEngineData.f()) && (localEngineData.p() == 0)) {
-      return paramContext.getResources().getString(2131690415);
+      return paramContext.getResources().getString(2131690339);
     }
     return "";
   }
@@ -132,8 +139,12 @@ public class GuessPictureClickStagePresenter
     a(GameEngine.a().a(), true);
     a(paramEngineData.a());
     this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter.a().e(false);
-    String str = paramEngineData.e() + 1 + "/" + paramEngineData.f();
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStageView.setTitleRight(str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramEngineData.e() + 1);
+    ((StringBuilder)localObject).append("/");
+    ((StringBuilder)localObject).append(paramEngineData.f());
+    localObject = ((StringBuilder)localObject).toString();
+    this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStageView.setTitleRight((String)localObject);
     this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter.a(this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStageView.a(), paramEngineData.a().a.e * 1000, paramEngineData.a().d());
   }
   
@@ -142,7 +153,11 @@ public class GuessPictureClickStagePresenter
     a(GameEngine.a().a(), true);
     a(paramEngineData.a());
     this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter.a(this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStageView.a(), paramEngineData.a().f(), paramEngineData.a().d());
-    paramEngineData = paramEngineData.e() + 1 + "/" + paramEngineData.f();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramEngineData.e() + 1);
+    localStringBuilder.append("/");
+    localStringBuilder.append(paramEngineData.f());
+    paramEngineData = localStringBuilder.toString();
     this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStageView.setTitleRight(paramEngineData);
   }
   
@@ -154,7 +169,7 @@ public class GuessPictureClickStagePresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.stage.guesspicture.GuessPictureClickStagePresenter
  * JD-Core Version:    0.7.0.1
  */

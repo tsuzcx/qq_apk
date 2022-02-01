@@ -30,14 +30,24 @@ public final class JsonTreeReader
   
   private void expect(JsonToken paramJsonToken)
   {
-    if (peek() != paramJsonToken) {
-      throw new IllegalStateException("Expected " + paramJsonToken + " but was " + peek() + locationString());
+    if (peek() == paramJsonToken) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Expected ");
+    localStringBuilder.append(paramJsonToken);
+    localStringBuilder.append(" but was ");
+    localStringBuilder.append(peek());
+    localStringBuilder.append(locationString());
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   private String locationString()
   {
-    return " at path " + getPath();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" at path ");
+    localStringBuilder.append(getPath());
+    return localStringBuilder.toString();
   }
   
   private Object peekStack()
@@ -47,32 +57,34 @@ public final class JsonTreeReader
   
   private Object popStack()
   {
-    Object localObject = this.stack;
+    Object[] arrayOfObject = this.stack;
     int i = this.stackSize - 1;
     this.stackSize = i;
-    localObject = localObject[i];
-    this.stack[this.stackSize] = null;
+    Object localObject = arrayOfObject[i];
+    arrayOfObject[this.stackSize] = null;
     return localObject;
   }
   
   private void push(Object paramObject)
   {
-    if (this.stackSize == this.stack.length)
+    int i = this.stackSize;
+    Object[] arrayOfObject1 = this.stack;
+    if (i == arrayOfObject1.length)
     {
-      arrayOfObject = new Object[this.stackSize * 2];
-      int[] arrayOfInt = new int[this.stackSize * 2];
-      String[] arrayOfString = new String[this.stackSize * 2];
-      System.arraycopy(this.stack, 0, arrayOfObject, 0, this.stackSize);
+      Object[] arrayOfObject2 = new Object[i * 2];
+      int[] arrayOfInt = new int[i * 2];
+      String[] arrayOfString = new String[i * 2];
+      System.arraycopy(arrayOfObject1, 0, arrayOfObject2, 0, i);
       System.arraycopy(this.pathIndices, 0, arrayOfInt, 0, this.stackSize);
       System.arraycopy(this.pathNames, 0, arrayOfString, 0, this.stackSize);
-      this.stack = arrayOfObject;
+      this.stack = arrayOfObject2;
       this.pathIndices = arrayOfInt;
       this.pathNames = arrayOfString;
     }
-    Object[] arrayOfObject = this.stack;
-    int i = this.stackSize;
+    arrayOfObject1 = this.stack;
+    i = this.stackSize;
     this.stackSize = (i + 1);
-    arrayOfObject[i] = paramObject;
+    arrayOfObject1[i] = paramObject;
   }
   
   public void beginArray()
@@ -99,10 +111,11 @@ public final class JsonTreeReader
     expect(JsonToken.END_ARRAY);
     popStack();
     popStack();
-    if (this.stackSize > 0)
+    int i = this.stackSize;
+    if (i > 0)
     {
       int[] arrayOfInt = this.pathIndices;
-      int i = this.stackSize - 1;
+      i -= 1;
       arrayOfInt[i] += 1;
     }
   }
@@ -112,50 +125,50 @@ public final class JsonTreeReader
     expect(JsonToken.END_OBJECT);
     popStack();
     popStack();
-    if (this.stackSize > 0)
+    int i = this.stackSize;
+    if (i > 0)
     {
       int[] arrayOfInt = this.pathIndices;
-      int i = this.stackSize - 1;
+      i -= 1;
       arrayOfInt[i] += 1;
     }
   }
   
   public String getPath()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append('$');
-    int j = 0;
-    if (j < this.stackSize)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append('$');
+    int i;
+    for (int j = 0; j < this.stackSize; j = i + 1)
     {
-      Object[] arrayOfObject;
-      int i;
-      if ((this.stack[j] instanceof JsonArray))
+      Object localObject = this.stack;
+      if ((localObject[j] instanceof JsonArray))
       {
-        arrayOfObject = this.stack;
         j += 1;
         i = j;
-        if ((arrayOfObject[j] instanceof Iterator))
+        if ((localObject[j] instanceof Iterator))
         {
-          localStringBuilder.append('[').append(this.pathIndices[j]).append(']');
+          localStringBuilder.append('[');
+          localStringBuilder.append(this.pathIndices[j]);
+          localStringBuilder.append(']');
           i = j;
         }
       }
-      for (;;)
+      else
       {
-        j = i + 1;
-        break;
         i = j;
-        if ((this.stack[j] instanceof JsonObject))
+        if ((localObject[j] instanceof JsonObject))
         {
-          arrayOfObject = this.stack;
           j += 1;
           i = j;
-          if ((arrayOfObject[j] instanceof Iterator))
+          if ((localObject[j] instanceof Iterator))
           {
             localStringBuilder.append('.');
+            localObject = this.pathNames;
             i = j;
-            if (this.pathNames[j] != null)
+            if (localObject[j] != null)
             {
-              localStringBuilder.append(this.pathNames[j]);
+              localStringBuilder.append(localObject[j]);
               i = j;
             }
           }
@@ -175,10 +188,11 @@ public final class JsonTreeReader
   {
     expect(JsonToken.BOOLEAN);
     boolean bool = ((JsonPrimitive)popStack()).getAsBoolean();
-    if (this.stackSize > 0)
+    int i = this.stackSize;
+    if (i > 0)
     {
       int[] arrayOfInt = this.pathIndices;
-      int i = this.stackSize - 1;
+      i -= 1;
       arrayOfInt[i] += 1;
     }
     return bool;
@@ -187,18 +201,30 @@ public final class JsonTreeReader
   public double nextDouble()
   {
     Object localObject = peek();
-    if ((localObject != JsonToken.NUMBER) && (localObject != JsonToken.STRING)) {
-      throw new IllegalStateException("Expected " + JsonToken.NUMBER + " but was " + localObject + locationString());
+    if ((localObject != JsonToken.NUMBER) && (localObject != JsonToken.STRING))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Expected ");
+      localStringBuilder.append(JsonToken.NUMBER);
+      localStringBuilder.append(" but was ");
+      localStringBuilder.append(localObject);
+      localStringBuilder.append(locationString());
+      throw new IllegalStateException(localStringBuilder.toString());
     }
     double d = ((JsonPrimitive)peekStack()).getAsDouble();
-    if ((!isLenient()) && ((Double.isNaN(d)) || (Double.isInfinite(d)))) {
-      throw new NumberFormatException("JSON forbids NaN and infinities: " + d);
+    if ((!isLenient()) && ((Double.isNaN(d)) || (Double.isInfinite(d))))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("JSON forbids NaN and infinities: ");
+      ((StringBuilder)localObject).append(d);
+      throw new NumberFormatException(((StringBuilder)localObject).toString());
     }
     popStack();
-    if (this.stackSize > 0)
+    int i = this.stackSize;
+    if (i > 0)
     {
       localObject = this.pathIndices;
-      int i = this.stackSize - 1;
+      i -= 1;
       localObject[i] += 1;
     }
     return d;
@@ -207,15 +233,23 @@ public final class JsonTreeReader
   public int nextInt()
   {
     Object localObject = peek();
-    if ((localObject != JsonToken.NUMBER) && (localObject != JsonToken.STRING)) {
-      throw new IllegalStateException("Expected " + JsonToken.NUMBER + " but was " + localObject + locationString());
+    if ((localObject != JsonToken.NUMBER) && (localObject != JsonToken.STRING))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Expected ");
+      localStringBuilder.append(JsonToken.NUMBER);
+      localStringBuilder.append(" but was ");
+      localStringBuilder.append(localObject);
+      localStringBuilder.append(locationString());
+      throw new IllegalStateException(localStringBuilder.toString());
     }
     int i = ((JsonPrimitive)peekStack()).getAsInt();
     popStack();
-    if (this.stackSize > 0)
+    int j = this.stackSize;
+    if (j > 0)
     {
       localObject = this.pathIndices;
-      int j = this.stackSize - 1;
+      j -= 1;
       localObject[j] += 1;
     }
     return i;
@@ -224,15 +258,23 @@ public final class JsonTreeReader
   public long nextLong()
   {
     Object localObject = peek();
-    if ((localObject != JsonToken.NUMBER) && (localObject != JsonToken.STRING)) {
-      throw new IllegalStateException("Expected " + JsonToken.NUMBER + " but was " + localObject + locationString());
+    if ((localObject != JsonToken.NUMBER) && (localObject != JsonToken.STRING))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Expected ");
+      localStringBuilder.append(JsonToken.NUMBER);
+      localStringBuilder.append(" but was ");
+      localStringBuilder.append(localObject);
+      localStringBuilder.append(locationString());
+      throw new IllegalStateException(localStringBuilder.toString());
     }
     long l = ((JsonPrimitive)peekStack()).getAsLong();
     popStack();
-    if (this.stackSize > 0)
+    int i = this.stackSize;
+    if (i > 0)
     {
       localObject = this.pathIndices;
-      int i = this.stackSize - 1;
+      i -= 1;
       localObject[i] += 1;
     }
     return l;
@@ -252,28 +294,38 @@ public final class JsonTreeReader
   {
     expect(JsonToken.NULL);
     popStack();
-    if (this.stackSize > 0)
+    int i = this.stackSize;
+    if (i > 0)
     {
       int[] arrayOfInt = this.pathIndices;
-      int i = this.stackSize - 1;
+      i -= 1;
       arrayOfInt[i] += 1;
     }
   }
   
   public String nextString()
   {
-    Object localObject = peek();
-    if ((localObject != JsonToken.STRING) && (localObject != JsonToken.NUMBER)) {
-      throw new IllegalStateException("Expected " + JsonToken.STRING + " but was " + localObject + locationString());
-    }
-    localObject = ((JsonPrimitive)popStack()).getAsString();
-    if (this.stackSize > 0)
+    Object localObject1 = peek();
+    Object localObject2;
+    if ((localObject1 != JsonToken.STRING) && (localObject1 != JsonToken.NUMBER))
     {
-      int[] arrayOfInt = this.pathIndices;
-      int i = this.stackSize - 1;
-      arrayOfInt[i] += 1;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("Expected ");
+      ((StringBuilder)localObject2).append(JsonToken.STRING);
+      ((StringBuilder)localObject2).append(" but was ");
+      ((StringBuilder)localObject2).append(localObject1);
+      ((StringBuilder)localObject2).append(locationString());
+      throw new IllegalStateException(((StringBuilder)localObject2).toString());
     }
-    return localObject;
+    localObject1 = ((JsonPrimitive)popStack()).getAsString();
+    int i = this.stackSize;
+    if (i > 0)
+    {
+      localObject2 = this.pathIndices;
+      i -= 1;
+      localObject2[i] += 1;
+    }
+    return localObject1;
   }
   
   public JsonToken peek()
@@ -343,19 +395,20 @@ public final class JsonTreeReader
       nextName();
       this.pathNames[(this.stackSize - 2)] = "null";
     }
-    for (;;)
+    else
     {
-      if (this.stackSize > 0)
-      {
-        int[] arrayOfInt = this.pathIndices;
-        int i = this.stackSize - 1;
-        arrayOfInt[i] += 1;
-      }
-      return;
       popStack();
-      if (this.stackSize > 0) {
-        this.pathNames[(this.stackSize - 1)] = "null";
+      i = this.stackSize;
+      if (i > 0) {
+        this.pathNames[(i - 1)] = "null";
       }
+    }
+    int i = this.stackSize;
+    if (i > 0)
+    {
+      int[] arrayOfInt = this.pathIndices;
+      i -= 1;
+      arrayOfInt[i] += 1;
     }
   }
   
@@ -366,7 +419,7 @@ public final class JsonTreeReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.internal.bind.JsonTreeReader
  * JD-Core Version:    0.7.0.1
  */

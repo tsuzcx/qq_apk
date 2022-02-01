@@ -3,7 +3,7 @@ package com.tencent.tkd.topicsdk.framework.eventdispatch.report;
 import java.io.Serializable;
 import kotlin.Metadata;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/framework/eventdispatch/report/ReportEventElement;", "", "Ljava/io/Serializable;", "(Ljava/lang/String;I)V", "ELEMENT_INVALID", "BUTTON_CONFIRM", "BUTTON_NEXT_STEP", "BUTTON_CANCEL", "BUTTON_PUBLISH", "BUTTON_LIVE", "BUTTON_SAVE_DRAFT", "BUTTON_SELECT_AT", "BUTTON_SAVE_TO_ALBUM", "BUTTON_CHANGE_COVER", "BUTTON_CREATE_COLUMN", "BUTTON_ADD_TO_COLUMN", "BUTTON_SELECT_TOPIC", "BUTTON_ADD_COMMODITY", "BUTTON_ADD_LOCATION", "WIDGET_RICH_EDIT_TEXT", "WIDGET_TIMELINE_BAR", "WIDGET_TIMELINE_FRAME", "WIDGET_TIMELINE_INDICATOR", "WIDGET_SELECT_COVER_FRAME", "BUTTON_CANCEL_NO_DIALOG", "topicsdk-framework_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/framework/eventdispatch/report/ReportEventElement;", "", "Ljava/io/Serializable;", "(Ljava/lang/String;I)V", "ELEMENT_INVALID", "BUTTON_CONFIRM", "BUTTON_NEXT_STEP", "BUTTON_CANCEL", "BUTTON_PUBLISH", "BUTTON_LIVE", "BUTTON_SAVE_DRAFT", "BUTTON_SELECT_AT", "BUTTON_SAVE_TO_ALBUM", "BUTTON_CHANGE_COVER", "BUTTON_CREATE_COLUMN", "BUTTON_ADD_TO_COLUMN", "BUTTON_SELECT_TOPIC", "BUTTON_ADD_COMMODITY", "BUTTON_ADD_LOCATION", "WIDGET_RICH_EDIT_TEXT", "WIDGET_TIMELINE_BAR", "WIDGET_TIMELINE_FRAME", "WIDGET_TIMELINE_INDICATOR", "WIDGET_SELECT_COVER_FRAME", "WIDGET_UCROP", "WIDGET_CREATE_TOPIC_POPUP", "BUTTON_SELECT_COVER_CAPTURE_TAB", "BUTTON_SELECT_COVER_GALLERY_TAB", "BUTTON_CANCEL_NO_DIALOG", "BUTTON_PROGRESSBAR_PAUSE", "BUTTON_PROGRESSBAR_UPLOAD", "BUTTON_PROGRESSBAR_RETRY", "BUTTON_DELIVER_TO_KD_COMMUNITY", "topicsdk-framework_release"}, k=1, mv={1, 1, 16})
 public enum ReportEventElement
   implements Serializable
 {
@@ -49,16 +49,32 @@ public enum ReportEventElement
     WIDGET_TIMELINE_INDICATOR = localReportEventElement19;
     ReportEventElement localReportEventElement20 = new ReportEventElement("WIDGET_SELECT_COVER_FRAME", 19);
     WIDGET_SELECT_COVER_FRAME = localReportEventElement20;
-    ReportEventElement localReportEventElement21 = new ReportEventElement("BUTTON_CANCEL_NO_DIALOG", 20);
-    BUTTON_CANCEL_NO_DIALOG = localReportEventElement21;
-    $VALUES = new ReportEventElement[] { localReportEventElement1, localReportEventElement2, localReportEventElement3, localReportEventElement4, localReportEventElement5, localReportEventElement6, localReportEventElement7, localReportEventElement8, localReportEventElement9, localReportEventElement10, localReportEventElement11, localReportEventElement12, localReportEventElement13, localReportEventElement14, localReportEventElement15, localReportEventElement16, localReportEventElement17, localReportEventElement18, localReportEventElement19, localReportEventElement20, localReportEventElement21 };
+    ReportEventElement localReportEventElement21 = new ReportEventElement("WIDGET_UCROP", 20);
+    WIDGET_UCROP = localReportEventElement21;
+    ReportEventElement localReportEventElement22 = new ReportEventElement("WIDGET_CREATE_TOPIC_POPUP", 21);
+    WIDGET_CREATE_TOPIC_POPUP = localReportEventElement22;
+    ReportEventElement localReportEventElement23 = new ReportEventElement("BUTTON_SELECT_COVER_CAPTURE_TAB", 22);
+    BUTTON_SELECT_COVER_CAPTURE_TAB = localReportEventElement23;
+    ReportEventElement localReportEventElement24 = new ReportEventElement("BUTTON_SELECT_COVER_GALLERY_TAB", 23);
+    BUTTON_SELECT_COVER_GALLERY_TAB = localReportEventElement24;
+    ReportEventElement localReportEventElement25 = new ReportEventElement("BUTTON_CANCEL_NO_DIALOG", 24);
+    BUTTON_CANCEL_NO_DIALOG = localReportEventElement25;
+    ReportEventElement localReportEventElement26 = new ReportEventElement("BUTTON_PROGRESSBAR_PAUSE", 25);
+    BUTTON_PROGRESSBAR_PAUSE = localReportEventElement26;
+    ReportEventElement localReportEventElement27 = new ReportEventElement("BUTTON_PROGRESSBAR_UPLOAD", 26);
+    BUTTON_PROGRESSBAR_UPLOAD = localReportEventElement27;
+    ReportEventElement localReportEventElement28 = new ReportEventElement("BUTTON_PROGRESSBAR_RETRY", 27);
+    BUTTON_PROGRESSBAR_RETRY = localReportEventElement28;
+    ReportEventElement localReportEventElement29 = new ReportEventElement("BUTTON_DELIVER_TO_KD_COMMUNITY", 28);
+    BUTTON_DELIVER_TO_KD_COMMUNITY = localReportEventElement29;
+    $VALUES = new ReportEventElement[] { localReportEventElement1, localReportEventElement2, localReportEventElement3, localReportEventElement4, localReportEventElement5, localReportEventElement6, localReportEventElement7, localReportEventElement8, localReportEventElement9, localReportEventElement10, localReportEventElement11, localReportEventElement12, localReportEventElement13, localReportEventElement14, localReportEventElement15, localReportEventElement16, localReportEventElement17, localReportEventElement18, localReportEventElement19, localReportEventElement20, localReportEventElement21, localReportEventElement22, localReportEventElement23, localReportEventElement24, localReportEventElement25, localReportEventElement26, localReportEventElement27, localReportEventElement28, localReportEventElement29 };
   }
   
   private ReportEventElement() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.framework.eventdispatch.report.ReportEventElement
  * JD-Core Version:    0.7.0.1
  */

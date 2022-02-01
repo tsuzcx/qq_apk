@@ -21,14 +21,15 @@ public final class TabRank
   
   public static TabRank[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new TabRank[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new TabRank[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static TabRank parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -50,16 +51,18 @@ public final class TabRank
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    int k = this.tab;
     int i = j;
-    if (this.tab != 0) {
-      i = j + CodedOutputByteBufferNano.computeUInt32Size(1, this.tab);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeUInt32Size(1, k);
     }
+    k = this.rank;
     j = i;
-    if (this.rank != 0) {
-      j = i + CodedOutputByteBufferNano.computeUInt32Size(2, this.rank);
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeUInt32Size(2, k);
     }
     i = j;
     if (!this.tabName.equals("")) {
@@ -73,32 +76,43 @@ public final class TabRank
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.tab = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 16: 
-        this.rank = paramCodedInputByteBufferNano.readUInt32();
+      if (i == 0) {
         break;
       }
-      this.tabName = paramCodedInputByteBufferNano.readString();
+      if (i != 8)
+      {
+        if (i != 16)
+        {
+          if (i != 26)
+          {
+            if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+              return this;
+            }
+          }
+          else {
+            this.tabName = paramCodedInputByteBufferNano.readString();
+          }
+        }
+        else {
+          this.rank = paramCodedInputByteBufferNano.readUInt32();
+        }
+      }
+      else {
+        this.tab = paramCodedInputByteBufferNano.readUInt32();
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.tab != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(1, this.tab);
+    int i = this.tab;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(1, i);
     }
-    if (this.rank != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(2, this.rank);
+    i = this.rank;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(2, i);
     }
     if (!this.tabName.equals("")) {
       paramCodedOutputByteBufferNano.writeString(3, this.tabName);
@@ -108,7 +122,7 @@ public final class TabRank
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.iliveGiftInfoNew.nano.TabRank
  * JD-Core Version:    0.7.0.1
  */

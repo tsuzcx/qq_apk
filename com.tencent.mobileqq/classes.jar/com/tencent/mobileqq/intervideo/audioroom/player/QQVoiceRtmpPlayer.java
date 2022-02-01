@@ -27,8 +27,9 @@ public class QQVoiceRtmpPlayer
   
   private void b()
   {
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      play(this.jdField_a_of_type_JavaLangString);
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (str != null) {
+      play(str);
     }
   }
   
@@ -54,39 +55,45 @@ public class QQVoiceRtmpPlayer
   
   public boolean isPlaying()
   {
-    return (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) && (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.isPlaying());
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    return (localISuperPlayer != null) && (localISuperPlayer.isPlaying());
   }
   
   public void onCompletion(ISuperPlayer paramISuperPlayer)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoAudioroomPlayerIQQVoiceAudioListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoAudioroomPlayerIQQVoiceAudioListener.onCompletion();
+    paramISuperPlayer = this.jdField_a_of_type_ComTencentMobileqqIntervideoAudioroomPlayerIQQVoiceAudioListener;
+    if (paramISuperPlayer != null) {
+      paramISuperPlayer.onCompletion();
     }
   }
   
   public boolean onError(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoAudioroomPlayerIQQVoiceAudioListener != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqIntervideoAudioroomPlayerIQQVoiceAudioListener.onError(paramInt1, paramInt2, paramInt3, paramString);
+    paramISuperPlayer = this.jdField_a_of_type_ComTencentMobileqqIntervideoAudioroomPlayerIQQVoiceAudioListener;
+    if (paramISuperPlayer != null) {
+      return paramISuperPlayer.onError(paramInt1, paramInt2, paramInt3, paramString);
     }
     return false;
   }
   
   public boolean onInfo(ISuperPlayer paramISuperPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoAudioroomPlayerIQQVoiceAudioListener != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqIntervideoAudioroomPlayerIQQVoiceAudioListener.onInfo(paramInt, paramLong1, paramLong2, paramObject);
+    paramISuperPlayer = this.jdField_a_of_type_ComTencentMobileqqIntervideoAudioroomPlayerIQQVoiceAudioListener;
+    if (paramISuperPlayer != null) {
+      return paramISuperPlayer.onInfo(paramInt, paramLong1, paramLong2, paramObject);
     }
     return false;
   }
   
   public void onVideoPrepared(ISuperPlayer paramISuperPlayer)
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null)
+    paramISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (paramISuperPlayer != null)
     {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.start();
-      if (this.jdField_a_of_type_ComTencentMobileqqIntervideoAudioroomPlayerIQQVoiceAudioListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqIntervideoAudioroomPlayerIQQVoiceAudioListener.onAudioFirstFrame();
+      paramISuperPlayer.start();
+      paramISuperPlayer = this.jdField_a_of_type_ComTencentMobileqqIntervideoAudioroomPlayerIQQVoiceAudioListener;
+      if (paramISuperPlayer != null) {
+        paramISuperPlayer.onAudioFirstFrame();
       }
     }
   }
@@ -105,11 +112,12 @@ public class QQVoiceRtmpPlayer
   
   public void release()
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer == null) {
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer == null) {
       return;
     }
     this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.stop();
+    localISuperPlayer.stop();
     this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.release();
     this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer = null;
   }
@@ -121,7 +129,7 @@ public class QQVoiceRtmpPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.audioroom.player.QQVoiceRtmpPlayer
  * JD-Core Version:    0.7.0.1
  */

@@ -8,21 +8,22 @@ public class MessageForVideoVip
   
   protected void doParse()
   {
-    if (this.msg != null) {}
-    for (String[] arrayOfString = this.msg.split("\\|");; arrayOfString = null)
+    String[] arrayOfString;
+    if (this.msg != null) {
+      arrayOfString = this.msg.split("\\|");
+    } else {
+      arrayOfString = null;
+    }
+    if ((arrayOfString != null) && (arrayOfString.length == 2))
     {
-      if ((arrayOfString != null) && (arrayOfString.length == 2))
-      {
-        this.wording = arrayOfString[0];
-        this.url = arrayOfString[1];
-      }
-      return;
+      this.wording = arrayOfString[0];
+      this.url = arrayOfString[1];
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForVideoVip
  * JD-Core Version:    0.7.0.1
  */

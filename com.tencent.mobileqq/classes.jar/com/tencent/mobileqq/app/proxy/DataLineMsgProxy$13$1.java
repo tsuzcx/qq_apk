@@ -12,39 +12,37 @@ class DataLineMsgProxy$13$1
   
   public void run()
   {
-    int j = 0;
-    int i = j;
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    int k = 0;
+    int i = 0;
+    int j = k;
+    if (localObject != null)
     {
-      i = j;
+      j = k;
       if (DataLineMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy$13.this$0) != null)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        i = 0;
-        if (localIterator.hasNext())
+        localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+        for (;;)
         {
-          DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
-          if (!DataLineMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy$13.this$0).insertFrontToList(localDataLineMsgRecord)) {
-            break label107;
+          j = i;
+          if (!((Iterator)localObject).hasNext()) {
+            break;
           }
-          i += 1;
+          DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)((Iterator)localObject).next();
+          if (DataLineMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy$13.this$0).insertFrontToList(localDataLineMsgRecord)) {
+            i += 1;
+          }
         }
       }
     }
-    label107:
-    for (;;)
-    {
-      break;
-      if (this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy$13.a != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy$13.a.a(i);
-      }
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy$13.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy$13.a.a(j);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.proxy.DataLineMsgProxy.13.1
  * JD-Core Version:    0.7.0.1
  */

@@ -8,14 +8,20 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class mobileqq_qidian$NotRecvQdGroupMsgReq
   extends MessageMicro<NotRecvQdGroupMsgReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "uint64_extuin", "uint64_kfuin", "uint64_taskid" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L) }, NotRecvQdGroupMsgReq.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field uint64_extuin = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_kfuin = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_taskid = PBField.initUInt64(0L);
+  
+  static
+  {
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "uint64_extuin", "uint64_kfuin", "uint64_taskid" }, new Object[] { localLong, localLong, localLong }, NotRecvQdGroupMsgReq.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qidian.proto.mobileqq_qidian.NotRecvQdGroupMsgReq
  * JD-Core Version:    0.7.0.1
  */

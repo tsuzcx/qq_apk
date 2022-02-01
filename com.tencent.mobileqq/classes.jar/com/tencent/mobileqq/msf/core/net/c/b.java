@@ -44,22 +44,50 @@ public class b
         localHashMap.put("osVersion", String.valueOf(Build.VERSION.SDK_INT));
         localHashMap.put("deviceBrand", Build.BRAND);
         localHashMap.put("deviceModel", Build.MODEL);
-        if (QLog.isDebugVersion()) {
-          QLog.d("QualityIpv6TestReport", 4, "reportQualityTest result=" + paramInt1 + ", clientIpFamily=" + paramInt2 + ", clientNetType=" + paramInt3 + ", serverIpFamily=" + paramInt4 + ", testType=" + paramb + ", domain=" + paramString1 + ", nat64Prefix=" + paramString2 + ", apn=" + NetConnInfoCenter.getCurrentAPN() + ", imsi=" + o.e() + ", os=" + Build.VERSION.SDK_INT + ", brand=" + Build.BRAND + ", model=" + Build.MODEL);
+        if (QLog.isDebugVersion())
+        {
+          StringBuilder localStringBuilder = new StringBuilder("reportQualityTest result=");
+          localStringBuilder.append(paramInt1);
+          localStringBuilder.append(", clientIpFamily=");
+          localStringBuilder.append(paramInt2);
+          localStringBuilder.append(", clientNetType=");
+          localStringBuilder.append(paramInt3);
+          localStringBuilder.append(", serverIpFamily=");
+          localStringBuilder.append(paramInt4);
+          localStringBuilder.append(", testType=");
+          localStringBuilder.append(paramb);
+          localStringBuilder.append(", domain=");
+          localStringBuilder.append(paramString1);
+          localStringBuilder.append(", nat64Prefix=");
+          localStringBuilder.append(paramString2);
+          localStringBuilder.append(", apn=");
+          localStringBuilder.append(NetConnInfoCenter.getCurrentAPN());
+          localStringBuilder.append(", imsi=");
+          localStringBuilder.append(o.e());
+          localStringBuilder.append(", os=");
+          localStringBuilder.append(Build.VERSION.SDK_INT);
+          localStringBuilder.append(", brand=");
+          localStringBuilder.append(Build.BRAND);
+          localStringBuilder.append(", model=");
+          localStringBuilder.append(Build.MODEL);
+          QLog.d("QualityIpv6TestReport", 4, localStringBuilder.toString());
         }
         k.d.getStatReporter().a("EvtIpv6QualityReport", true, 0L, 0L, localHashMap, false, false);
+        return;
       }
-      return;
     }
     catch (Throwable paramb)
     {
-      QLog.d("QualityIpv6TestReport", 1, "reportQualityTest exception=" + paramb);
+      paramString1 = new StringBuilder();
+      paramString1.append("reportQualityTest exception=");
+      paramString1.append(paramb);
+      QLog.d("QualityIpv6TestReport", 1, paramString1.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.c.b
  * JD-Core Version:    0.7.0.1
  */

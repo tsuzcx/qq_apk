@@ -11,36 +11,43 @@ class AVAudioCtrl$MyPhoneStatusListener
   
   public void onCallStateChanged(boolean paramBoolean)
   {
-    if (AVAudioCtrl.access$600(this.this$0)) {
-      Log.e("SdkJni", "onCallStateChanged isSystemApp return");
-    }
-    do
+    if (AVAudioCtrl.access$600(this.this$0))
     {
-      do
+      Log.e("SdkJni", "onCallStateChanged isSystemApp return");
+      return;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onCallStateChanged isCalling: ");
+    ((StringBuilder)localObject).append(paramBoolean);
+    Log.e("SdkJni", ((StringBuilder)localObject).toString());
+    localObject = this.this$0;
+    ((AVAudioCtrl)localObject).mIsCalling = paramBoolean;
+    if (paramBoolean)
+    {
+      if (!((AVAudioCtrl)localObject).mIsPauseByUser)
       {
-        do
-        {
-          return;
-          Log.e("SdkJni", "onCallStateChanged isCalling: " + paramBoolean);
-          this.this$0.mIsCalling = paramBoolean;
-          if (!paramBoolean) {
-            break;
-          }
-        } while (this.this$0.mIsPauseByUser);
         this.this$0.pauseAudio();
         Log.e("SdkJni", "MyPhoneStatusListener iscalling ");
-      } while (AVAudioCtrl.access$400(this.this$0) == null);
-      Log.e("SdkJni", "MyPhoneStatusListener stopService ");
-      AVAudioCtrl.access$400(this.this$0).stopService();
-      return;
-      Log.e("SdkJni", "MyPhoneStatusListener notcalling ");
-    } while (this.this$0.mIsPauseByUser);
-    if (AVAudioCtrl.access$400(this.this$0) != null)
-    {
-      AVAudioCtrl.access$400(this.this$0).startService(AVAudioCtrl.access$700(this.this$0));
-      Log.e("SdkJni", "MyPhoneStatusListener startService ");
+        if (AVAudioCtrl.access$400(this.this$0) != null)
+        {
+          Log.e("SdkJni", "MyPhoneStatusListener stopService ");
+          AVAudioCtrl.access$400(this.this$0).stopService();
+        }
+      }
     }
-    this.this$0.resumeAudio();
+    else
+    {
+      Log.e("SdkJni", "MyPhoneStatusListener notcalling ");
+      if (!this.this$0.mIsPauseByUser)
+      {
+        if (AVAudioCtrl.access$400(this.this$0) != null)
+        {
+          AVAudioCtrl.access$400(this.this$0).startService(AVAudioCtrl.access$700(this.this$0));
+          Log.e("SdkJni", "MyPhoneStatusListener startService ");
+        }
+        this.this$0.resumeAudio();
+      }
+    }
   }
 }
 

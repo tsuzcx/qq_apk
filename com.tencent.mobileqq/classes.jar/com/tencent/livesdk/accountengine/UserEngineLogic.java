@@ -75,8 +75,9 @@ public class UserEngineLogic
   
   public void destroyRoomEngine()
   {
-    if (this.currentRoomEngine != null) {
-      this.currentRoomEngine.unint();
+    RoomEngine localRoomEngine = this.currentRoomEngine;
+    if (localRoomEngine != null) {
+      localRoomEngine.unint();
     }
   }
   
@@ -113,7 +114,8 @@ public class UserEngineLogic
       paramSdkLoginCallback.onFail(-1, "login busy");
       return;
     }
-    if ((this.currentRoomEngine != null) && (this.currentRoomEngine.isInRoom()))
+    RoomEngine localRoomEngine = this.currentRoomEngine;
+    if ((localRoomEngine != null) && (localRoomEngine.isInRoom()))
     {
       this.enterRoomInfo = ((RoomServiceInterface)this.currentRoomEngine.getService(RoomServiceInterface.class)).getEnterRoomInfo();
       ((RoomServiceInterface)this.currentRoomEngine.getService(RoomServiceInterface.class)).exitRoom(new UserEngineLogic.2(this));
@@ -141,6 +143,11 @@ public class UserEngineLogic
     this.userInitCallbackList.remove(paramUserInitStateCallback);
   }
   
+  public void resetLoginState()
+  {
+    this.userInitState = -1;
+  }
+  
   public void setCurrentRoomEngine(RoomEngine paramRoomEngine)
   {
     this.currentRoomEngine = paramRoomEngine;
@@ -159,31 +166,42 @@ public class UserEngineLogic
   
   public void updateAuthTicket(String paramString1, String paramString2)
   {
-    log().i("UserEngineLogic", "updateAuthTicket-> id=" + paramString1, new Object[0]);
-    LoginRequest localLoginRequest = LoginRequest.getFromSp(this.mContext);
-    if ((localLoginRequest == null) || (TextUtils.isEmpty(localLoginRequest.id)) || (TextUtils.isEmpty(localLoginRequest.token)))
+    Object localObject1 = log();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("updateAuthTicket-> id=");
+    ((StringBuilder)localObject2).append(paramString1);
+    ((LogInterface)localObject1).i("UserEngineLogic", ((StringBuilder)localObject2).toString(), new Object[0]);
+    localObject1 = LoginRequest.getFromSp(this.mContext);
+    if ((localObject1 != null) && (!TextUtils.isEmpty(((LoginRequest)localObject1).id)) && (!TextUtils.isEmpty(((LoginRequest)localObject1).token)))
     {
-      log().e("UserEngineLogic", "updateAuthTicket-> there haven't login", new Object[0]);
+      if (!TextUtils.equals(paramString1, ((LoginRequest)localObject1).id))
+      {
+        localObject2 = log();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("updateAuthTicket-> Id has changed, oldId=");
+        localStringBuilder.append(((LoginRequest)localObject1).id);
+        localStringBuilder.append(", newId=");
+        localStringBuilder.append(paramString1);
+        ((LogInterface)localObject2).e("UserEngineLogic", localStringBuilder.toString(), new Object[0]);
+      }
+      if (TextUtils.equals(paramString2, ((LoginRequest)localObject1).token))
+      {
+        log().e("UserEngineLogic", "updateAuthTicket-> the token haven't change", new Object[0]);
+        return;
+      }
+      ((LoginRequest)localObject1).id = paramString1;
+      ((LoginRequest)localObject1).token = paramString2;
+      ((LoginRequest)localObject1).flushToSp(this.mContext);
+      ((ChannelInterface)this.mServiceManager.getService(ChannelInterface.class)).setAuthTicket(paramString1, paramString2);
+      ((LoginServiceInterface)this.mServiceManager.getService(LoginServiceInterface.class)).setAuthTicket(paramString1, paramString2);
       return;
     }
-    if (!TextUtils.equals(paramString1, localLoginRequest.id)) {
-      log().e("UserEngineLogic", "updateAuthTicket-> Id has changed, oldId=" + localLoginRequest.id + ", newId=" + paramString1, new Object[0]);
-    }
-    if (TextUtils.equals(paramString2, localLoginRequest.token))
-    {
-      log().e("UserEngineLogic", "updateAuthTicket-> the token haven't change", new Object[0]);
-      return;
-    }
-    localLoginRequest.id = paramString1;
-    localLoginRequest.token = paramString2;
-    localLoginRequest.flushToSp(this.mContext);
-    ((ChannelInterface)this.mServiceManager.getService(ChannelInterface.class)).setAuthTicket(paramString1, paramString2);
-    ((LoginServiceInterface)this.mServiceManager.getService(LoginServiceInterface.class)).setAuthTicket(paramString1, paramString2);
+    log().e("UserEngineLogic", "updateAuthTicket-> there haven't login", new Object[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.accountengine.UserEngineLogic
  * JD-Core Version:    0.7.0.1
  */

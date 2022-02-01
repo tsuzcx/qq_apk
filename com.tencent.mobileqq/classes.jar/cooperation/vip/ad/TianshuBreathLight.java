@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
 import com.tencent.mobileqq.vas.VasApngUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ARMapHongBaoListView;
@@ -35,47 +35,40 @@ public class TianshuBreathLight
   
   public void a(TianShuAccess.AdItem paramAdItem)
   {
-    if (paramAdItem == null) {
-      QLog.e("ConvActivePendantHolderBase", 2, "showLayer with null ");
-    }
-    label33:
-    label203:
-    label204:
-    for (;;)
+    if (paramAdItem == null)
     {
+      QLog.e("ConvActivePendantHolderBase", 2, "showLayer with null ");
       return;
-      this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem = paramAdItem;
-      Object localObject1 = paramAdItem.argList.get().iterator();
-      paramAdItem = null;
-      Object localObject2;
-      if (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (TianShuAccess.MapEntry)((Iterator)localObject1).next();
-        if (!((TianShuAccess.MapEntry)localObject2).key.get().equals("image")) {
-          break label203;
-        }
+    }
+    this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem = paramAdItem;
+    Object localObject1 = paramAdItem.argList.get().iterator();
+    paramAdItem = null;
+    Object localObject2;
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (TianShuAccess.MapEntry)((Iterator)localObject1).next();
+      if (((TianShuAccess.MapEntry)localObject2).key.get().equals("image")) {
         paramAdItem = ((TianShuAccess.MapEntry)localObject2).value.get();
       }
-      for (;;)
+    }
+    if (!TextUtils.isEmpty(paramAdItem))
+    {
+      localObject1 = new Bundle();
+      ((Bundle)localObject1).putInt("key_loop", 1);
+      localObject2 = URLDrawableHelperConstants.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = VasApngUtil.getApngURLDrawable(paramAdItem, new int[] { 2 }, (Drawable)localObject2, (Bundle)localObject1, null);
+      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
       {
-        break label33;
-        if (TextUtils.isEmpty(paramAdItem)) {
-          break label204;
-        }
-        localObject1 = new Bundle();
-        ((Bundle)localObject1).putInt("key_loop", 1);
-        localObject2 = URLDrawableHelper.TRANSPARENT;
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = VasApngUtil.getApngURLDrawable(paramAdItem, new int[] { 2 }, (Drawable)localObject2, (Bundle)localObject1, null);
-        if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-          break;
-        }
         this.jdField_a_of_type_CooperationVipAdAnimationDrawableProxyView = new AnimationDrawableProxyView(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
         c();
-        if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem == null)) {
-          break;
+        paramAdItem = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        if (paramAdItem != null)
+        {
+          localObject1 = this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem;
+          if (localObject1 != null) {
+            TianshuAdUtils.a(paramAdItem, 101, String.valueOf(((TianShuAccess.AdItem)localObject1).iAdId.get()), this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem.traceinfo.get());
+          }
         }
-        TianshuAdUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 101, String.valueOf(this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem.iAdId.get()), this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem.traceinfo.get());
-        return;
       }
     }
   }
@@ -89,8 +82,8 @@ public class TianshuBreathLight
       if (j == 0) {
         i = ScreenUtil.SCREEN_WIDTH;
       }
-      j = AIOUtils.a(375.0F, this.jdField_a_of_type_AndroidViewView.getResources());
-      a(i - j - 0, 0, j, AIOUtils.a(30.0F, this.jdField_a_of_type_AndroidViewView.getResources()), this.jdField_a_of_type_AndroidViewView);
+      j = AIOUtils.b(375.0F, this.jdField_a_of_type_AndroidViewView.getResources());
+      a(i - j + 0, 0, j, AIOUtils.b(30.0F, this.jdField_a_of_type_AndroidViewView.getResources()), this.jdField_a_of_type_AndroidViewView);
       return;
     }
     catch (Throwable localThrowable)
@@ -102,18 +95,23 @@ public class TianshuBreathLight
   public void g()
   {
     super.g();
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem != null))
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localQQAppInterface != null)
     {
-      TianshuAdUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 102, String.valueOf(this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem.iAdId.get()), this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem.traceinfo.get());
-      if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView instanceof ARMapHongBaoListView))) {
-        ((ARMapHongBaoListView)this.jdField_a_of_type_AndroidViewView).h();
+      TianShuAccess.AdItem localAdItem = this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem;
+      if (localAdItem != null)
+      {
+        TianshuAdUtils.a(localQQAppInterface, 102, String.valueOf(localAdItem.iAdId.get()), this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem.traceinfo.get());
+        if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView instanceof ARMapHongBaoListView))) {
+          ((ARMapHongBaoListView)this.jdField_a_of_type_AndroidViewView).h();
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.ad.TianshuBreathLight
  * JD-Core Version:    0.7.0.1
  */

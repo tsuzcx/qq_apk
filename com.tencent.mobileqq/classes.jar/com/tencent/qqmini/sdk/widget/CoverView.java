@@ -50,10 +50,11 @@ public class CoverView
       paramMotionEvent = new JSONObject();
       paramMotionEvent.put("data", this.data);
       paramMotionEvent.put("touches", localJSONArray);
-      if (this.mJsRuntimeListener != null) {
+      if (this.mJsRuntimeListener != null)
+      {
         this.mJsRuntimeListener.onEvaluateSubscribeJS("onTouchCancel", paramMotionEvent.toString());
+        return;
       }
-      return;
     }
     catch (JSONException paramMotionEvent)
     {
@@ -74,10 +75,11 @@ public class CoverView
       paramMotionEvent = new JSONObject();
       paramMotionEvent.put("data", this.data);
       paramMotionEvent.put("touch", localJSONObject);
-      if (this.mJsRuntimeListener != null) {
+      if (this.mJsRuntimeListener != null)
+      {
         this.mJsRuntimeListener.onEvaluateSubscribeJS("onTouchStart", paramMotionEvent.toString());
+        return;
       }
-      return;
     }
     catch (JSONException paramMotionEvent)
     {
@@ -106,10 +108,11 @@ public class CoverView
       paramMotionEvent = new JSONObject();
       paramMotionEvent.put("data", this.data);
       paramMotionEvent.put("touches", localJSONArray);
-      if (this.mJsRuntimeListener != null) {
+      if (this.mJsRuntimeListener != null)
+      {
         this.mJsRuntimeListener.onEvaluateSubscribeJS("onTouchMove", paramMotionEvent.toString());
+        return;
       }
-      return;
     }
     catch (JSONException paramMotionEvent)
     {
@@ -131,10 +134,11 @@ public class CoverView
       paramMotionEvent = new JSONObject();
       paramMotionEvent.put("data", this.data);
       paramMotionEvent.put("touch", localJSONObject);
-      if (this.mJsRuntimeListener != null) {
+      if (this.mJsRuntimeListener != null)
+      {
         this.mJsRuntimeListener.onEvaluateSubscribeJS("onTouchStart", paramMotionEvent.toString());
+        return;
       }
-      return;
     }
     catch (JSONException paramMotionEvent)
     {
@@ -156,10 +160,11 @@ public class CoverView
       paramMotionEvent = new JSONObject();
       paramMotionEvent.put("data", this.data);
       paramMotionEvent.put("touch", localJSONObject);
-      if (this.mJsRuntimeListener != null) {
+      if (this.mJsRuntimeListener != null)
+      {
         this.mJsRuntimeListener.onEvaluateSubscribeJS("onTouchEnd", paramMotionEvent.toString());
+        return;
       }
-      return;
     }
     catch (Exception paramMotionEvent)
     {
@@ -180,10 +185,11 @@ public class CoverView
       paramMotionEvent = new JSONObject();
       paramMotionEvent.put("data", this.data);
       paramMotionEvent.put("touch", localJSONObject);
-      if (this.mJsRuntimeListener != null) {
+      if (this.mJsRuntimeListener != null)
+      {
         this.mJsRuntimeListener.onEvaluateSubscribeJS("onTouchEnd", paramMotionEvent.toString());
+        return;
       }
-      return;
     }
     catch (JSONException paramMotionEvent)
     {
@@ -202,7 +208,9 @@ public class CoverView
       int m = getHeight();
       int n = getPaddingTop();
       int i1 = getPaddingBottom();
-      localPath.addRoundRect(new RectF(getPaddingLeft(), getPaddingTop(), i - j - k + getPaddingLeft(), m - n - i1 + getPaddingTop()), this.mBorderRadius, this.mBorderRadius, Path.Direction.CCW);
+      RectF localRectF = new RectF(getPaddingLeft(), getPaddingTop(), getPaddingLeft() + (i - j - k), getPaddingTop() + (m - n - i1));
+      float f = this.mBorderRadius;
+      localPath.addRoundRect(localRectF, f, f, Path.Direction.CCW);
       localPath.setFillType(Path.FillType.EVEN_ODD);
       paramCanvas.clipPath(localPath);
     }
@@ -224,28 +232,63 @@ public class CoverView
     if (this.mIgnoreTouchEventToJS) {
       return super.onTouchEvent(paramMotionEvent);
     }
-    switch (paramMotionEvent.getActionMasked())
+    int i = paramMotionEvent.getActionMasked();
+    if (i != 0)
     {
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            StringBuilder localStringBuilder;
+            if (i != 5)
+            {
+              if (i == 6)
+              {
+                localStringBuilder = new StringBuilder();
+                localStringBuilder.append("--ACTION_POINTER_UP--");
+                localStringBuilder.append(paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex()));
+                QMLog.d("CoverView", localStringBuilder.toString());
+                handleTouchPointerUp(paramMotionEvent);
+              }
+            }
+            else
+            {
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("--ACTION_POINTER_DOWN--");
+              localStringBuilder.append(paramMotionEvent.getPointerCount());
+              localStringBuilder.append("   ");
+              localStringBuilder.append(paramMotionEvent.getActionIndex());
+              localStringBuilder.append("   ");
+              localStringBuilder.append(paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex()));
+              QMLog.d("CoverView", localStringBuilder.toString());
+              handleTouchPointerDown(paramMotionEvent);
+            }
+          }
+          else
+          {
+            QMLog.d("CoverView", "--ACTION_CANCEL--");
+            handleTouchCancel(paramMotionEvent);
+          }
+        }
+        else {
+          handleTouchMove(paramMotionEvent);
+        }
+      }
+      else
+      {
+        QMLog.d("CoverView", "--ACTION_UP--");
+        handleTouchUp(paramMotionEvent);
+      }
     }
-    while (this.enableGesture)
+    else
     {
-      return true;
       QMLog.d("CoverView", "--ACTION_DOWN--");
       handleTouchDown(paramMotionEvent);
-      continue;
-      QMLog.d("CoverView", "--ACTION_POINTER_DOWN--" + paramMotionEvent.getPointerCount() + "   " + paramMotionEvent.getActionIndex() + "   " + paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex()));
-      handleTouchPointerDown(paramMotionEvent);
-      continue;
-      handleTouchMove(paramMotionEvent);
-      continue;
-      QMLog.d("CoverView", "--ACTION_UP--");
-      handleTouchUp(paramMotionEvent);
-      continue;
-      QMLog.d("CoverView", "--ACTION_POINTER_UP--" + paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex()));
-      handleTouchPointerUp(paramMotionEvent);
-      continue;
-      QMLog.d("CoverView", "--ACTION_CANCEL--");
-      handleTouchCancel(paramMotionEvent);
+    }
+    if (this.enableGesture) {
+      return true;
     }
     return super.onTouchEvent(paramMotionEvent);
   }
@@ -279,7 +322,7 @@ public class CoverView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.CoverView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.search.ftsentity;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
+import com.tencent.mobileqq.fts.v1.FTSEntity;
 import com.tencent.mobileqq.search.model.ISearchResultPositionModel;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,14 +34,14 @@ public abstract class FTSEntitySearchResultModel
     this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
   public boolean a()
   {
     return false;
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
   
   public CharSequence d()
@@ -55,7 +55,7 @@ public abstract class FTSEntitySearchResultModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.ftsentity.FTSEntitySearchResultModel
  * JD-Core Version:    0.7.0.1
  */

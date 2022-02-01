@@ -31,14 +31,15 @@ public final class BroadcastUrl
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.mapBroadcastUrl != null) {
-      paramJceOutputStream.write(this.mapBroadcastUrl, 0);
+    Map localMap = this.mapBroadcastUrl;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_NEXTRADIO_QZONEBGMUSIC.BroadcastUrl
  * JD-Core Version:    0.7.0.1
  */

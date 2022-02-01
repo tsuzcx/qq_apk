@@ -16,8 +16,9 @@ final class QQSettingUtil$2
     if (paramURLDrawable != null) {
       paramURLDrawable.setBounds(0, 0, 0, 0);
     }
-    if (this.a != null) {
-      this.a.postInvalidate();
+    paramURLDrawable = this.a;
+    if (paramURLDrawable != null) {
+      paramURLDrawable.postInvalidate();
     }
   }
   
@@ -26,8 +27,9 @@ final class QQSettingUtil$2
     if (paramURLDrawable != null) {
       paramURLDrawable.setBounds(0, 0, 0, 0);
     }
-    if (this.a != null) {
-      this.a.postInvalidate();
+    paramURLDrawable = this.a;
+    if (paramURLDrawable != null) {
+      paramURLDrawable.postInvalidate();
     }
   }
   
@@ -38,14 +40,15 @@ final class QQSettingUtil$2
     if (paramURLDrawable != null) {
       paramURLDrawable.setBounds(0, 0, UIUtils.a(BaseApplicationImpl.getContext(), 47.0F), UIUtils.a(BaseApplicationImpl.getContext(), 14.0F));
     }
-    if (this.a != null) {
-      this.a.postInvalidate();
+    paramURLDrawable = this.a;
+    if (paramURLDrawable != null) {
+      paramURLDrawable.postInvalidate();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.QQSettingUtil.2
  * JD-Core Version:    0.7.0.1
  */

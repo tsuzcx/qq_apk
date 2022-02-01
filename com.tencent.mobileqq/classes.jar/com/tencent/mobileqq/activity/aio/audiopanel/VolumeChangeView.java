@@ -8,7 +8,7 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.util.AttributeSet;
 import android.view.View;
-import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.qqui.R.styleable;
 
 public class VolumeChangeView
   extends View
@@ -29,24 +29,25 @@ public class VolumeChangeView
   public VolumeChangeView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.change_voice_volume);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.bU);
     a(paramContext);
     paramContext.recycle();
   }
   
   private void a(TypedArray paramTypedArray)
   {
+    int j = R.styleable.cn;
     boolean bool = false;
-    if (paramTypedArray.getInt(2, 0) == 0) {
+    if (paramTypedArray.getInt(j, 0) == 0) {
       bool = true;
     }
     this.jdField_a_of_type_Boolean = bool;
-    this.jdField_a_of_type_Int = paramTypedArray.getInt(3, 5);
-    this.b = ((int)paramTypedArray.getDimension(5, 8.0F));
-    this.c = ((int)paramTypedArray.getDimension(4, 48.0F));
-    this.d = getResources().getColor(2131167025);
-    this.h = getResources().getColor(2131167024);
-    this.i = getResources().getDimensionPixelOffset(2131299273);
+    this.jdField_a_of_type_Int = paramTypedArray.getInt(R.styleable.co, 5);
+    this.b = ((int)paramTypedArray.getDimension(R.styleable.cq, 8.0F));
+    this.c = ((int)paramTypedArray.getDimension(R.styleable.cp, 48.0F));
+    this.d = getResources().getColor(2131167048);
+    this.h = getResources().getColor(2131167047);
+    this.i = getResources().getDimensionPixelOffset(2131299276);
     this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_Int];
   }
   
@@ -55,9 +56,13 @@ public class VolumeChangeView
     if (this.jdField_a_of_type_ArrayOfInt != null)
     {
       int j = 0;
-      while (j < this.jdField_a_of_type_ArrayOfInt.length)
+      for (;;)
       {
-        this.jdField_a_of_type_ArrayOfInt[j] = 0;
+        int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+        if (j >= arrayOfInt.length) {
+          break;
+        }
+        arrayOfInt[j] = 0;
         j += 1;
       }
       this.e = 0;
@@ -77,51 +82,49 @@ public class VolumeChangeView
     invalidate();
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int j = 0;
-    if (j < this.jdField_a_of_type_Int)
+    while (j < this.jdField_a_of_type_Int)
     {
-      if (this.jdField_a_of_type_Boolean)
+      boolean bool = this.jdField_a_of_type_Boolean;
+      float f1 = 0.0F;
+      if (bool)
       {
-        if (j < this.g)
-        {
+        if (j < this.g) {
           this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.h);
-          label41:
-          if (j != 0) {
-            break label108;
-          }
-        }
-        label108:
-        for (f1 = 0.0F;; f1 = (this.i + this.b) * j)
-        {
-          paramCanvas.drawRect(f1, this.f - this.c / 2, f1 + this.b, this.f + this.c / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
-          j += 1;
-          break;
+        } else {
           this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.d);
-          break label41;
         }
-      }
-      if (j < this.g)
-      {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.h);
-        label143:
-        if (j != this.jdField_a_of_type_Int - 1) {
-          break label172;
+        if (j == 0) {
+          break label156;
         }
+        k = (this.i + this.b) * j;
       }
-      label172:
-      for (float f1 = 0.0F;; f1 = (this.jdField_a_of_type_Int - 1 - j) * (this.i + this.b))
+      else
       {
-        break;
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.d);
-        break label143;
+        if (j < this.g) {
+          this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.h);
+        } else {
+          this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.d);
+        }
+        k = this.jdField_a_of_type_Int;
+        if (j == k - 1) {
+          break label156;
+        }
+        k = (k - 1 - j) * (this.i + this.b);
       }
+      f1 = k;
+      label156:
+      int k = this.f;
+      int m = this.c;
+      paramCanvas.drawRect(f1, k - m / 2, f1 + this.b, k + m / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
+      j += 1;
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     paramInt1 = this.jdField_a_of_type_Int;
     paramInt2 = this.b;
@@ -130,7 +133,7 @@ public class VolumeChangeView
     setMeasuredDimension(paramInt1 * (paramInt2 + j) + getPaddingLeft() + getPaddingRight(), k + getPaddingTop() + getPaddingBottom());
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.f = (paramInt2 / 2);
@@ -146,8 +149,9 @@ public class VolumeChangeView
   public void setColor(int paramInt)
   {
     this.h = paramInt;
-    if (this.jdField_a_of_type_AndroidGraphicsPaint != null) {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.h);
+    Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
+    if (localPaint != null) {
+      localPaint.setColor(this.h);
     }
   }
   
@@ -165,7 +169,7 @@ public class VolumeChangeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.VolumeChangeView
  * JD-Core Version:    0.7.0.1
  */

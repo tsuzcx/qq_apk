@@ -26,6 +26,7 @@ import com.tencent.tavsticker.core.TAVStickerContext;
 import com.tencent.tavsticker.core.TAVStickerEditView;
 import com.tencent.tavsticker.model.TAVSticker;
 import com.tencent.weseevideo.composition.VideoRenderChainManager;
+import com.tencent.weseevideo.composition.builder.MediaBuilderOutput;
 import com.tencent.weseevideo.editor.sticker.StickerController;
 import com.tencent.weseevideo.editor.sticker.dispatcher.IStickerEventListener;
 import com.tencent.weseevideo.editor.sticker.dispatcher.StickerEventDispatcher;
@@ -34,6 +35,7 @@ import com.tencent.weseevideo.editor.utils.HandlerUtils;
 import com.tencent.weseevideo.model.MediaModel;
 import com.tencent.weseevideo.model.effect.MediaEffectModel;
 import com.tencent.weseevideo.model.effect.StickerModel;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -45,10 +47,13 @@ public abstract class TAVCutSession
   implements Session, StickerLyricCallback, StickerOperationCallback, StickerStateCallback
 {
   private static final String TAG = TAVCutImageSession.class.getSimpleName();
+  protected final SparseArray<ArrayList<TAVSticker>> bulkStickers = new SparseArray();
   protected Context context;
   protected int currentIndex = 0;
   protected String initMediaModelsMD5 = "";
+  protected final SparseArray<MediaBuilderOutput> mediaBuilderOutputs = new SparseArray();
   protected List<MediaModel> mediaModels;
+  protected List<String> mediaModelsMD5 = new ArrayList();
   protected final SparseArray<VideoRenderChainManager> renderChainManagers = new SparseArray();
   protected boolean runAsync = false;
   protected SessionConfig sessionConfig;
@@ -67,24 +72,20 @@ public abstract class TAVCutSession
   {
     List localList = ((MediaModel)this.mediaModels.get(paramInt)).getMediaEffectModel().getStickerModelList();
     int i = 0;
-    for (;;)
+    while (i < localList.size())
     {
-      if (i < localList.size())
+      if (((StickerModel)localList.get(i)).getUniqueId().equals(paramTAVSticker.getStickerId()))
       {
-        if (((StickerModel)localList.get(i)).getUniqueId().equals(paramTAVSticker.getStickerId())) {
-          localList.remove(i);
-        }
-      }
-      else
-      {
-        if (!(paramTAVSticker instanceof WSLyricSticker)) {
-          break;
-        }
-        paramTAVSticker = WSLyricSticker.dumpToSubtitleModel(paramTAVSticker);
-        ((MediaModel)this.mediaModels.get(paramInt)).getMediaEffectModel().setSubtitleModel(paramTAVSticker);
-        return;
+        localList.remove(i);
+        break;
       }
       i += 1;
+    }
+    if ((paramTAVSticker instanceof WSLyricSticker))
+    {
+      paramTAVSticker = WSLyricSticker.dumpToSubtitleModel(paramTAVSticker);
+      ((MediaModel)this.mediaModels.get(paramInt)).getMediaEffectModel().setSubtitleModel(paramTAVSticker);
+      return;
     }
     paramTAVSticker = StickerUtil.tavSticker2StickerModel(paramTAVSticker);
     paramTAVSticker.setDuration((float)paramTAVSticker.getEndTime() - paramTAVSticker.getStartTime());
@@ -93,12 +94,29 @@ public abstract class TAVCutSession
   
   private void updateStickerModel(TAVSticker paramTAVSticker)
   {
-    runTask(new TAVCutSession.7(this, paramTAVSticker));
+    runTask(new TAVCutSession.8(this, paramTAVSticker));
+  }
+  
+  public void addSticker(int paramInt, @NonNull List<StickerModel> paramList, boolean paramBoolean)
+  {
+    StickerController localStickerController2 = (StickerController)this.stickerControllers.get(paramInt);
+    StickerController localStickerController1 = localStickerController2;
+    if (localStickerController2 == null)
+    {
+      localStickerController1 = createStickerController();
+      this.stickerControllers.put(paramInt, localStickerController1);
+    }
+    runTask(new TAVCutSession.5(this, localStickerController1, paramInt, paramList, paramBoolean));
   }
   
   protected void addSticker(@NonNull StickerController paramStickerController, @NonNull StickerModel paramStickerModel)
   {
-    runTask(new TAVCutSession.4(this, paramStickerController, paramStickerModel));
+    addSticker(paramStickerController, paramStickerModel, true);
+  }
+  
+  protected void addSticker(@NonNull StickerController paramStickerController, @NonNull StickerModel paramStickerModel, boolean paramBoolean)
+  {
+    runTask(new TAVCutSession.4(this, paramStickerController, paramStickerModel, paramBoolean));
   }
   
   protected void applyCurrentSticker(StickerController paramStickerController)
@@ -123,49 +141,49 @@ public abstract class TAVCutSession
   protected CGSize constrainRenderSize(int paramInt1, int paramInt2)
   {
     CGSize localCGSize = new CGSize(paramInt1, paramInt2);
+    Object localObject = this.sessionConfig;
     int i;
-    Size localSize;
-    if (this.sessionConfig != null)
-    {
-      i = this.sessionConfig.getMaxIntermediateRenderSize();
-      if (i != -1)
-      {
-        localSize = Util.constrainMaxSize(new Size(paramInt1, paramInt2), i);
-        localCGSize.width = localSize.getWidth();
-        localCGSize.height = localSize.getHeight();
-      }
-      if (this.sessionConfig == null) {
-        break label184;
-      }
-    }
-    label184:
-    for (paramInt1 = this.sessionConfig.getMinIntermediateRenderSize();; paramInt1 = -1)
-    {
-      if (paramInt1 != -1)
-      {
-        localSize = Util.constrainMinSize(new Size((int)localCGSize.width, (int)localCGSize.height), paramInt1);
-        localCGSize.width = localSize.getWidth();
-        localCGSize.height = localSize.getHeight();
-      }
-      Logger.i(TAG, String.format("targetRenderSize = %d * %d", new Object[] { Integer.valueOf((int)localCGSize.width), Integer.valueOf((int)localCGSize.height) }));
-      return localCGSize;
+    if (localObject != null) {
+      i = ((SessionConfig)localObject).getMaxIntermediateRenderSize();
+    } else {
       i = -1;
-      break;
     }
+    if (i != -1)
+    {
+      localObject = Util.constrainMaxSize(new Size(paramInt1, paramInt2), i);
+      localCGSize.width = ((Size)localObject).getWidth();
+      localCGSize.height = ((Size)localObject).getHeight();
+    }
+    localObject = this.sessionConfig;
+    if (localObject != null) {
+      paramInt1 = ((SessionConfig)localObject).getMinIntermediateRenderSize();
+    } else {
+      paramInt1 = -1;
+    }
+    if (paramInt1 != -1)
+    {
+      localObject = Util.constrainMinSize(new Size((int)localCGSize.width, (int)localCGSize.height), paramInt1);
+      localCGSize.width = ((Size)localObject).getWidth();
+      localCGSize.height = ((Size)localObject).getHeight();
+    }
+    Logger.i(TAG, String.format("targetRenderSize = %d * %d", new Object[] { Integer.valueOf((int)localCGSize.width), Integer.valueOf((int)localCGSize.height) }));
+    return localCGSize;
   }
   
   protected StickerController createStickerController()
   {
     Context localContext = this.context;
-    if (this.sessionConfig != null) {}
-    for (Object localObject = this.sessionConfig.getStickerEditViewIconConfig();; localObject = null)
-    {
-      localObject = new StickerController(localContext, (StickerEditViewIconConfig)localObject);
-      ((StickerController)localObject).setStickerOperationCallback(this);
-      ((StickerController)localObject).setStickerStateCallback(this);
-      ((StickerController)localObject).setStickerLyricCallback(this);
-      return localObject;
+    Object localObject = this.sessionConfig;
+    if (localObject != null) {
+      localObject = ((SessionConfig)localObject).getStickerEditViewIconConfig();
+    } else {
+      localObject = null;
     }
+    localObject = new StickerController(localContext, (StickerEditViewIconConfig)localObject);
+    ((StickerController)localObject).setStickerOperationCallback(this);
+    ((StickerController)localObject).setStickerStateCallback(this);
+    ((StickerController)localObject).setStickerLyricCallback(this);
+    return localObject;
   }
   
   public int getCurrentIndex()
@@ -183,21 +201,47 @@ public abstract class TAVCutSession
     return Util.md5(localStringBuilder.toString());
   }
   
+  public List<String> getMediaModelsMd5()
+  {
+    return this.mediaModelsMD5;
+  }
+  
   public SessionConfig getSessionConfig()
   {
     return this.sessionConfig;
   }
   
-  public int getStickerTotalSize()
+  public int getStickerSizeByIndex(int paramInt)
   {
-    if (this.mediaModels == null) {
+    Object localObject = this.mediaModels;
+    int i = 0;
+    if (localObject == null) {
       return 0;
     }
+    localObject = (MediaModel)((List)localObject).get(paramInt);
+    paramInt = i;
+    if (localObject != null)
+    {
+      localObject = ((MediaModel)localObject).getMediaEffectModel();
+      paramInt = i;
+      if (((MediaEffectModel)localObject).getStickerModelList().size() > 0) {
+        paramInt = ((MediaEffectModel)localObject).getStickerModelList().size();
+      }
+    }
+    return paramInt;
+  }
+  
+  public int getStickerTotalSize()
+  {
+    Object localObject = this.mediaModels;
     int i = 0;
+    if (localObject == null) {
+      return 0;
+    }
     int k;
     for (int j = 0; i < this.mediaModels.size(); j = k)
     {
-      Object localObject = (MediaModel)this.mediaModels.get(i);
+      localObject = (MediaModel)this.mediaModels.get(i);
       k = j;
       if (localObject != null)
       {
@@ -220,57 +264,53 @@ public abstract class TAVCutSession
   
   public boolean isTavStickerSelected()
   {
-    boolean bool2 = false;
     int i = 0;
-    for (;;)
+    while (i < this.stickerControllers.size())
     {
-      boolean bool1 = bool2;
-      if (i < this.stickerControllers.size())
-      {
-        int j = this.stickerControllers.keyAt(i);
-        if ((this.stickerControllers.get(j) != null) && (((StickerController)this.stickerControllers.get(j)).getCurrentSticker() != null)) {
-          bool1 = true;
-        }
-      }
-      else
-      {
-        return bool1;
+      int j = this.stickerControllers.keyAt(i);
+      if ((this.stickerControllers.get(j) != null) && (((StickerController)this.stickerControllers.get(j)).getCurrentSticker() != null)) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   public boolean mediaChanged()
   {
-    return !this.initMediaModelsMD5.equals(getMediaModelsMD5());
+    return this.initMediaModelsMD5.equals(getMediaModelsMD5()) ^ true;
   }
   
   public void onAddStickerDone(String paramString)
   {
-    if (this.stickerOperationCallback != null) {
-      this.stickerOperationCallback.onAddStickerDone(paramString);
+    StickerOperationCallback localStickerOperationCallback = this.stickerOperationCallback;
+    if (localStickerOperationCallback != null) {
+      localStickerOperationCallback.onAddStickerDone(paramString);
     }
   }
   
   public void onDeleteButtonClick(String paramString)
   {
-    runTask(new TAVCutSession.9(this, paramString));
-    if (this.stickerOperationCallback != null) {
-      this.stickerOperationCallback.onDeleteButtonClick(paramString);
+    runTask(new TAVCutSession.10(this, paramString));
+    StickerOperationCallback localStickerOperationCallback = this.stickerOperationCallback;
+    if (localStickerOperationCallback != null) {
+      localStickerOperationCallback.onDeleteButtonClick(paramString);
     }
   }
   
   public void onDeleteSticker()
   {
-    if (this.stickerLyricCallback != null) {
-      this.stickerLyricCallback.onDeleteSticker();
+    StickerLyricCallback localStickerLyricCallback = this.stickerLyricCallback;
+    if (localStickerLyricCallback != null) {
+      localStickerLyricCallback.onDeleteSticker();
     }
   }
   
   public void onPause()
   {
     StickerEventDispatcher.getInstance().removeStickerEventListener(this.stickerEventListener);
-    if ((this.stickerControllers != null) && (this.stickerControllers.size() > 0))
+    SparseArray localSparseArray = this.stickerControllers;
+    if ((localSparseArray != null) && (localSparseArray.size() > 0))
     {
       int i = 0;
       while (i < this.stickerControllers.size())
@@ -294,167 +334,187 @@ public abstract class TAVCutSession
   {
     if ((paramTAVStickerEditView != null) && (paramTAVStickerEditView.getSticker() != null))
     {
-      i = 0;
-      if (i >= this.stickerControllers.size()) {
-        break label79;
+      int k = -1;
+      int i = 0;
+      int j;
+      for (;;)
+      {
+        j = k;
+        if (i >= this.stickerControllers.size()) {
+          break;
+        }
+        SparseArray localSparseArray = this.stickerControllers;
+        if (((StickerController)localSparseArray.get(localSparseArray.keyAt(i))).getStickerContext() == paramTAVStickerContext)
+        {
+          j = this.stickerControllers.keyAt(i);
+          break;
+        }
+        i += 1;
       }
-      if (((StickerController)this.stickerControllers.get(this.stickerControllers.keyAt(i))).getStickerContext() != paramTAVStickerContext) {
-        break label72;
+      if (j >= 0) {
+        addOrUpdateStickerData(paramTAVStickerEditView.getSticker(), j);
       }
-    }
-    label72:
-    label79:
-    for (int i = this.stickerControllers.keyAt(i);; i = -1)
-    {
-      if (i >= 0) {
-        addOrUpdateStickerData(paramTAVStickerEditView.getSticker(), i);
-      }
-      return;
-      i += 1;
-      break;
     }
   }
   
   public void onStickerClick(TextEditorData paramTextEditorData)
   {
-    if (this.stickerOperationCallback != null) {
-      this.stickerOperationCallback.onStickerClick(paramTextEditorData);
+    StickerOperationCallback localStickerOperationCallback = this.stickerOperationCallback;
+    if (localStickerOperationCallback != null) {
+      localStickerOperationCallback.onStickerClick(paramTextEditorData);
     }
   }
   
   public void onStickerMoving(String paramString)
   {
-    if (this.stickerOperationCallback != null) {
-      this.stickerOperationCallback.onStickerMoving(paramString);
+    StickerOperationCallback localStickerOperationCallback = this.stickerOperationCallback;
+    if (localStickerOperationCallback != null) {
+      localStickerOperationCallback.onStickerMoving(paramString);
     }
   }
   
   public void onStickerOutsideClick()
   {
-    if (this.stickerOperationCallback != null) {
-      this.stickerOperationCallback.onStickerOutsideClick();
+    StickerOperationCallback localStickerOperationCallback = this.stickerOperationCallback;
+    if (localStickerOperationCallback != null) {
+      localStickerOperationCallback.onStickerOutsideClick();
     }
   }
   
   public void onStickerResign(TAVSticker paramTAVSticker)
   {
-    if ((paramTAVSticker instanceof WSLyricSticker)) {
+    if ((paramTAVSticker instanceof WSLyricSticker))
+    {
       if (((MediaModel)this.mediaModels.get(this.currentIndex)).getMediaEffectModel().getSubtitleModel() == null) {
         ((MediaModel)this.mediaModels.get(this.currentIndex)).getMediaEffectModel().setSubtitleModel(WSLyricSticker.dumpToSubtitleModel(paramTAVSticker));
       }
     }
-    for (;;)
+    else
     {
-      return;
       Iterator localIterator = ((MediaModel)this.mediaModels.get(this.currentIndex)).getMediaEffectModel().getStickerModelList().iterator();
-      do
-      {
-        if (!localIterator.hasNext()) {
-          break;
+      while (localIterator.hasNext()) {
+        if (((StickerModel)localIterator.next()).getUniqueId().equals(paramTAVSticker.getStickerId()))
+        {
+          i = 1;
+          break label125;
         }
-      } while (!((StickerModel)localIterator.next()).getUniqueId().equals(paramTAVSticker.getStickerId()));
-      for (int i = 1; i == 0; i = 0)
-      {
+      }
+      int i = 0;
+      label125:
+      if (i == 0) {
         ((MediaModel)this.mediaModels.get(this.currentIndex)).getMediaEffectModel().getStickerModelList().add(StickerUtil.tavSticker2StickerModel(paramTAVSticker));
-        return;
       }
     }
   }
   
   public void onStickerSelect(TextEditorData paramTextEditorData)
   {
-    if (this.stickerOperationCallback != null) {
-      this.stickerOperationCallback.onStickerSelect(paramTextEditorData);
+    StickerOperationCallback localStickerOperationCallback = this.stickerOperationCallback;
+    if (localStickerOperationCallback != null) {
+      localStickerOperationCallback.onStickerSelect(paramTextEditorData);
     }
   }
   
   public void onStickerTouchEnd(TextEditorData paramTextEditorData)
   {
-    if (this.stickerOperationCallback != null) {
-      this.stickerOperationCallback.onStickerTouchEnd(paramTextEditorData);
+    StickerOperationCallback localStickerOperationCallback = this.stickerOperationCallback;
+    if (localStickerOperationCallback != null) {
+      localStickerOperationCallback.onStickerTouchEnd(paramTextEditorData);
     }
   }
   
   public void onStickerTouchStart(TextEditorData paramTextEditorData)
   {
-    if (this.stickerOperationCallback != null) {
-      this.stickerOperationCallback.onStickerTouchStart(paramTextEditorData);
+    StickerOperationCallback localStickerOperationCallback = this.stickerOperationCallback;
+    if (localStickerOperationCallback != null) {
+      localStickerOperationCallback.onStickerTouchStart(paramTextEditorData);
     }
   }
   
   public void onTextEditButtonClick(TextEditorData paramTextEditorData)
   {
-    if (this.stickerOperationCallback != null) {
-      this.stickerOperationCallback.onTextEditButtonClick(paramTextEditorData);
+    StickerOperationCallback localStickerOperationCallback = this.stickerOperationCallback;
+    if (localStickerOperationCallback != null) {
+      localStickerOperationCallback.onTextEditButtonClick(paramTextEditorData);
     }
   }
   
   public void onUpdateTextStickerDone(String paramString)
   {
-    if (this.stickerOperationCallback != null) {
-      this.stickerOperationCallback.onUpdateTextStickerDone(paramString);
+    StickerOperationCallback localStickerOperationCallback = this.stickerOperationCallback;
+    if (localStickerOperationCallback != null) {
+      localStickerOperationCallback.onUpdateTextStickerDone(paramString);
     }
   }
   
   protected void recordInitMediaModelsMD5()
   {
     this.initMediaModelsMD5 = getMediaModelsMD5();
+    Iterator localIterator = this.mediaModels.iterator();
+    while (localIterator.hasNext())
+    {
+      MediaModel localMediaModel = (MediaModel)localIterator.next();
+      this.mediaModelsMD5.add(Util.md5(localMediaModel.toString()));
+    }
   }
   
   @CallSuper
   public void release()
   {
-    runTask(new TAVCutSession.12(this));
+    runTask(new TAVCutSession.13(this));
   }
   
   void resetAEKitModel(@NonNull MediaModel paramMediaModel, @NonNull VideoRenderChainManager paramVideoRenderChainManager, float paramFloat1, String paramString1, float paramFloat2, Map<String, String> paramMap, String paramString2)
   {
-    if ((this instanceof TAVCutVideoSession)) {}
-    for (int i = 2;; i = 1)
-    {
-      AEKitModel localAEKitModel = new AEKitModel(i);
-      localAEKitModel.setEffectStrength(paramFloat1);
-      localAEKitModel.setLutPath(paramString1);
-      localAEKitModel.setGlowAlpha(paramFloat2);
-      localAEKitModel.setAdjustParams(paramMap);
-      localAEKitModel.setMaterial(paramString2);
-      paramMediaModel.getMediaEffectModel().setAeKitModel(localAEKitModel);
-      updateRenderChain(paramVideoRenderChainManager, paramMediaModel.getMediaEffectModel());
-      return;
+    int i;
+    if ((this instanceof TAVCutVideoSession)) {
+      i = 2;
+    } else {
+      i = 1;
     }
+    AEKitModel localAEKitModel = new AEKitModel(i);
+    localAEKitModel.setEffectStrength(paramFloat1);
+    localAEKitModel.setLutPath(paramString1);
+    localAEKitModel.setGlowAlpha(paramFloat2);
+    localAEKitModel.setAdjustParams(paramMap);
+    localAEKitModel.setMaterial(paramString2);
+    paramMediaModel.getMediaEffectModel().setAeKitModel(localAEKitModel);
+    updateRenderChain(paramVideoRenderChainManager, paramMediaModel.getMediaEffectModel(), false);
   }
   
   void resetAEKitModel(@NonNull MediaModel paramMediaModel, @NonNull VideoRenderChainManager paramVideoRenderChainManager, @Nullable String paramString, float paramFloat)
   {
-    if ((this instanceof TAVCutVideoSession)) {}
-    for (int i = 2;; i = 1)
-    {
-      AEKitModel localAEKitModel = new AEKitModel(i);
-      localAEKitModel.setLutPath(paramString);
-      localAEKitModel.setLutAlpha(paramFloat);
-      paramMediaModel.getMediaEffectModel().setAeKitModel(localAEKitModel);
-      updateRenderChain(paramVideoRenderChainManager, paramMediaModel.getMediaEffectModel());
-      return;
+    int i;
+    if ((this instanceof TAVCutVideoSession)) {
+      i = 2;
+    } else {
+      i = 1;
     }
+    AEKitModel localAEKitModel = new AEKitModel(i);
+    localAEKitModel.setLutPath(paramString);
+    localAEKitModel.setLutAlpha(paramFloat);
+    paramMediaModel.getMediaEffectModel().setAeKitModel(localAEKitModel);
+    updateRenderChain(paramVideoRenderChainManager, paramMediaModel.getMediaEffectModel(), false);
   }
   
   void resetAEKitModelForAI(@NonNull MediaModel paramMediaModel, @NonNull VideoRenderChainManager paramVideoRenderChainManager, @Nullable String paramString, float paramFloat1, HashMap<String, String> paramHashMap, int paramInt, float paramFloat2, long paramLong)
   {
-    if ((this instanceof TAVCutVideoSession)) {}
-    for (int i = 2;; i = 1)
-    {
-      AEKitModel localAEKitModel = new AEKitModel(i);
-      localAEKitModel.setAdjustParams(paramHashMap);
-      localAEKitModel.setLutPath(paramString);
-      localAEKitModel.setStartTime(0L);
-      localAEKitModel.setSmoothLevel(paramInt);
-      localAEKitModel.setLutAlpha(paramFloat1);
-      localAEKitModel.setGlowAlpha(paramFloat2);
-      localAEKitModel.setDuration(paramLong);
-      paramMediaModel.getMediaEffectModel().setAeKitModel(localAEKitModel);
-      updateRenderChain(paramVideoRenderChainManager, paramMediaModel.getMediaEffectModel());
-      return;
+    int i;
+    if ((this instanceof TAVCutVideoSession)) {
+      i = 2;
+    } else {
+      i = 1;
     }
+    AEKitModel localAEKitModel = new AEKitModel(i);
+    localAEKitModel.setAdjustParams(paramHashMap);
+    localAEKitModel.setLutPath(paramString);
+    localAEKitModel.setStartTime(0L);
+    localAEKitModel.setSmoothLevel(paramInt);
+    localAEKitModel.setLutAlpha(paramFloat1);
+    localAEKitModel.setGlowAlpha(paramFloat2);
+    localAEKitModel.setDuration(paramLong);
+    paramMediaModel.getMediaEffectModel().setAeKitModel(localAEKitModel);
+    updateRenderChain(paramVideoRenderChainManager, paramMediaModel.getMediaEffectModel());
   }
   
   protected void runOnMainThread(Runnable paramRunnable)
@@ -467,8 +527,10 @@ public abstract class TAVCutSession
     if (Looper.myLooper() != Looper.getMainLooper())
     {
       Semaphore localSemaphore = new Semaphore(0);
-      HandlerUtils.getMainHandler().post(new TAVCutSession.10(this, paramRunnable, localSemaphore));
-      if (paramBoolean) {}
+      HandlerUtils.getMainHandler().post(new TAVCutSession.11(this, paramRunnable, localSemaphore));
+      if (!paramBoolean) {
+        return;
+      }
       try
       {
         localSemaphore.acquire();
@@ -500,7 +562,7 @@ public abstract class TAVCutSession
   
   public void setCurrentIndex(int paramInt)
   {
-    runTask(new TAVCutSession.5(this, paramInt));
+    runTask(new TAVCutSession.6(this, paramInt));
   }
   
   void setEffectStrength(@NonNull MediaModel paramMediaModel, @NonNull VideoRenderChainManager paramVideoRenderChainManager, float paramFloat)
@@ -510,7 +572,7 @@ public abstract class TAVCutSession
       return;
     }
     localAEKitModel.setEffectStrength(paramFloat);
-    updateRenderChain(paramVideoRenderChainManager, paramMediaModel.getMediaEffectModel());
+    updateRenderChain(paramVideoRenderChainManager, paramMediaModel.getMediaEffectModel(), false);
   }
   
   @Deprecated
@@ -518,20 +580,19 @@ public abstract class TAVCutSession
   {
     AEKitModel localAEKitModel2 = paramMediaModel.getMediaEffectModel().getAeKitModel();
     AEKitModel localAEKitModel1 = localAEKitModel2;
-    if (localAEKitModel2 == null) {
-      if (!(this instanceof TAVCutVideoSession)) {
-        break label64;
-      }
-    }
-    label64:
-    for (int i = 2;; i = 1)
+    if (localAEKitModel2 == null)
     {
+      int i;
+      if ((this instanceof TAVCutVideoSession)) {
+        i = 2;
+      } else {
+        i = 1;
+      }
       localAEKitModel1 = new AEKitModel(i);
-      localAEKitModel1.setMaterial(paramString);
-      paramMediaModel.getMediaEffectModel().setAeKitModel(localAEKitModel1);
-      updateRenderChain(paramVideoRenderChainManager, paramMediaModel.getMediaEffectModel());
-      return;
     }
+    localAEKitModel1.setMaterial(paramString);
+    paramMediaModel.getMediaEffectModel().setAeKitModel(localAEKitModel1);
+    updateRenderChain(paramVideoRenderChainManager, paramMediaModel.getMediaEffectModel());
   }
   
   public void setSessionConfig(SessionConfig paramSessionConfig)
@@ -541,12 +602,12 @@ public abstract class TAVCutSession
   
   public void setStickerLyricCallback(StickerLyricCallback paramStickerLyricCallback)
   {
-    runTask(new TAVCutSession.13(this, paramStickerLyricCallback));
+    runTask(new TAVCutSession.14(this, paramStickerLyricCallback));
   }
   
   public void setStickerOperationCallback(StickerOperationCallback paramStickerOperationCallback)
   {
-    runTask(new TAVCutSession.8(this, paramStickerOperationCallback));
+    runTask(new TAVCutSession.9(this, paramStickerOperationCallback));
   }
   
   void toggleAEKit(@NonNull MediaModel paramMediaModel, @NonNull VideoRenderChainManager paramVideoRenderChainManager, boolean paramBoolean)
@@ -555,25 +616,27 @@ public abstract class TAVCutSession
     if (localAEKitModel == null) {
       return;
     }
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      localAEKitModel.setDisable(paramBoolean);
-      updateRenderChain(paramVideoRenderChainManager, paramMediaModel.getMediaEffectModel());
-      return;
-    }
+    localAEKitModel.setDisable(paramBoolean ^ true);
+    updateRenderChain(paramVideoRenderChainManager, paramMediaModel.getMediaEffectModel());
   }
   
   protected void updateRenderChain(VideoRenderChainManager paramVideoRenderChainManager, MediaEffectModel paramMediaEffectModel)
   {
     if (paramVideoRenderChainManager != null) {
-      paramVideoRenderChainManager.updateRenderChain(paramMediaEffectModel);
+      paramVideoRenderChainManager.updateRenderChain(paramMediaEffectModel, true);
+    }
+  }
+  
+  protected void updateRenderChain(VideoRenderChainManager paramVideoRenderChainManager, MediaEffectModel paramMediaEffectModel, boolean paramBoolean)
+  {
+    if (paramVideoRenderChainManager != null) {
+      paramVideoRenderChainManager.updateRenderChain(paramMediaEffectModel, paramBoolean);
     }
   }
   
   public void updateTextSticker(TextEditorData paramTextEditorData)
   {
-    runTask(new TAVCutSession.6(this, paramTextEditorData));
+    runTask(new TAVCutSession.7(this, paramTextEditorData));
   }
   
   protected void waitAllTaskComplete()
@@ -582,7 +645,7 @@ public abstract class TAVCutSession
       return;
     }
     Semaphore localSemaphore = new Semaphore(0);
-    runTask(new TAVCutSession.11(this, localSemaphore));
+    runTask(new TAVCutSession.12(this, localSemaphore));
     try
     {
       localSemaphore.acquire();
@@ -596,7 +659,7 @@ public abstract class TAVCutSession
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutSession
  * JD-Core Version:    0.7.0.1
  */

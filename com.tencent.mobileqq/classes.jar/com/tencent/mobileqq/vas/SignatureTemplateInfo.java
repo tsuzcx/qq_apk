@@ -46,6 +46,7 @@ public class SignatureTemplateInfo
   
   public SignatureTemplateInfo(String paramString)
   {
+    int i1 = 0;
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
     this.jdField_a_of_type_JavaLangString = paramString;
     if (paramString.equals("0")) {
@@ -62,7 +63,7 @@ public class SignatureTemplateInfo
   public void a()
   {
     this.jdField_a_of_type_JavaLangString = "0";
-    this.jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131714077);
+    this.jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131713985);
     this.jdField_a_of_type_Int = 1;
     this.jdField_b_of_type_Int = -1;
     this.e = "#FF03081A";
@@ -71,7 +72,7 @@ public class SignatureTemplateInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.SignatureTemplateInfo
  * JD-Core Version:    0.7.0.1
  */

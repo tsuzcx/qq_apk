@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.widget.SwipPinnedHeaderExpandableListView android:id="@id/l64" android:layout_width="fill_parent" android:layout_height="fill_parent" android:cacheColorHint="@null" android:childDivider="@null" android:divider="@null" android:contentDescription=" " />
+    <com.tencent.widget.SwipPinnedHeaderExpandableListView android:id="@id/l64" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:cacheColorHint="@null" android:childDivider="@null" android:divider="@null" />
     <TextView android:textSize="13.0dip" android:textColor="@color/skin_gray2" android:gravity="center|left" android:id="@id/k1f" android:background="@drawable/skin_group_list_sub_entry" android:paddingLeft="10.0dip" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="25.0dip" android:singleLine="true" />
     <LinearLayout android:orientation="vertical" android:id="@id/bwe" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
         <View android:layout_gravity="center_horizontal" android:background="@drawable/gmh" android:layout_width="80.0dip" android:layout_height="80.0dip" />

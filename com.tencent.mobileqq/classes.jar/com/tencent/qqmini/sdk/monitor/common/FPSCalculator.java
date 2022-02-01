@@ -31,60 +31,62 @@ public class FPSCalculator
   {
     if (this.mEnable)
     {
-      if (Build.VERSION.SDK_INT < 16) {
-        break label80;
-      }
-      if (this.mChoreographer != null)
+      if (Build.VERSION.SDK_INT >= 16)
       {
-        this.mChoreographer.removeFrameCallback(this.mFPSMeasuringCallback);
-        if (QMLog.isColorLevel()) {
-          QMLog.d("FPSCalculator", "removeFrameCallback ");
+        Choreographer localChoreographer = this.mChoreographer;
+        if (localChoreographer != null)
+        {
+          localChoreographer.removeFrameCallback(this.mFPSMeasuringCallback);
+          if (QMLog.isColorLevel()) {
+            QMLog.d("FPSCalculator", "removeFrameCallback ");
+          }
         }
+        this.mHandler.removeCallbacksAndMessages(Boolean.valueOf(true));
       }
-      this.mHandler.removeCallbacksAndMessages(Boolean.valueOf(true));
-    }
-    for (;;)
-    {
+      else
+      {
+        this.mHandler.removeCallbacksAndMessages(Boolean.valueOf(true));
+      }
       this.mFrameStartTime = 0L;
       this.mFramesRendered = 0;
       this.mEnable = false;
       QMLog.d("FPSCalculator", "FPSCalculator set enable = false");
-      return;
-      label80:
-      this.mHandler.removeCallbacksAndMessages(Boolean.valueOf(true));
     }
   }
   
   private void doOnFrame(long paramLong)
   {
     paramLong = nsToMs(paramLong);
-    if (this.mFrameStartTime <= 0L) {
+    long l = this.mFrameStartTime;
+    if (l <= 0L)
+    {
       this.mFrameStartTime = paramLong;
     }
-    for (;;)
+    else
     {
-      this.mChoreographer.postFrameCallback(this.mFPSMeasuringCallback);
-      return;
-      long l = paramLong - this.mFrameStartTime;
+      l = paramLong - l;
       this.mFramesRendered += 1;
-      if (l <= 500L) {
-        continue;
-      }
-      double d = this.mFramesRendered * 1000 / l;
-      this.mFrameStartTime = paramLong;
-      this.mFramesRendered = 0;
-      Object localObject1 = this.mLock;
-      int i = 0;
-      try
+      if (l > 500L)
       {
-        while (i < this.mListener.size())
+        double d1 = this.mFramesRendered * 1000;
+        double d2 = l;
+        Double.isNaN(d1);
+        Double.isNaN(d2);
+        d1 /= d2;
+        this.mFrameStartTime = paramLong;
+        int i = 0;
+        this.mFramesRendered = 0;
+        synchronized (this.mLock)
         {
-          ((FPSCalculator.GetFPSListener)this.mListener.get(i)).onInfo(this.mFrameStartTime, d);
-          i += 1;
+          while (i < this.mListener.size())
+          {
+            ((FPSCalculator.GetFPSListener)this.mListener.get(i)).onInfo(this.mFrameStartTime, d1);
+            i += 1;
+          }
         }
       }
-      finally {}
     }
+    this.mChoreographer.postFrameCallback(this.mFPSMeasuringCallback);
   }
   
   private void enable()
@@ -115,15 +117,16 @@ public class FPSCalculator
   
   public static FPSCalculator getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new FPSCalculator();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new FPSCalculator();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   private static long nsToMs(long paramLong)
@@ -166,7 +169,7 @@ public class FPSCalculator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.monitor.common.FPSCalculator
  * JD-Core Version:    0.7.0.1
  */

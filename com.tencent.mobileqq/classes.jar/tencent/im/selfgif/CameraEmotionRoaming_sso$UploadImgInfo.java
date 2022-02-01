@@ -20,14 +20,15 @@ public final class CameraEmotionRoaming_sso$UploadImgInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42 }, new String[] { "bytes_img_md5", "uint32_img_width", "uint32_img_height", "uint64_img_size", "bytes_img_other" }, new Object[] { localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro2 }, UploadImgInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42 }, new String[] { "bytes_img_md5", "uint32_img_width", "uint32_img_height", "uint64_img_size", "bytes_img_other" }, new Object[] { localByteStringMicro1, localInteger, localInteger, Long.valueOf(0L), localByteStringMicro2 }, UploadImgInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.selfgif.CameraEmotionRoaming_sso.UploadImgInfo
  * JD-Core Version:    0.7.0.1
  */

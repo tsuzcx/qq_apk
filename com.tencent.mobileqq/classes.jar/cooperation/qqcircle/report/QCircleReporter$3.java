@@ -16,19 +16,24 @@ class QCircleReporter$3
     if (QCircleReporter.access$200(this.this$0).size() == 0) {
       return;
     }
-    RFLog.w("QCircleReporter", RFLog.USR, "reportCacheDataListToServer size:" + QCircleReporter.access$200(this.this$0).size());
+    int i = RFLog.USR;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("reportCacheDataListToServer size:");
+    ((StringBuilder)localObject).append(QCircleReporter.access$200(this.this$0).size());
+    RFLog.w("QCircleReporter", i, ((StringBuilder)localObject).toString());
     RFLog.d("QCircleReporter", RFLog.USR, "reportCacheDataListToServerWithSession called");
-    Iterator localIterator = QCircleReporter.access$200(this.this$0).iterator();
-    while (localIterator.hasNext()) {
-      ((QQCircleReport.SingleDcData)localIterator.next()).byteExtinfo.add(QCircleReportHelper.newEntry("SessionID", this.val$session));
+    localObject = QCircleReporter.access$200(this.this$0).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((QQCircleReport.SingleDcData)((Iterator)localObject).next()).byteExtinfo.add(QCircleReportHelper.newEntry("SessionID", this.val$session));
     }
-    QCircleReporter.access$300(this.this$0, QCircleReporter.access$200(this.this$0));
+    localObject = this.this$0;
+    QCircleReporter.access$300((QCircleReporter)localObject, QCircleReporter.access$200((QCircleReporter)localObject));
     QCircleReporter.access$200(this.this$0).clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleReporter.3
  * JD-Core Version:    0.7.0.1
  */

@@ -21,44 +21,63 @@ class NearbyGiftPanelDialog$1$1
   
   public void onDone(DownloadTask paramDownloadTask)
   {
-    if (paramDownloadTask.jdField_a_of_type_Int == 0) {
-      localObject = paramDownloadTask.a().getString("filePath");
-    }
-    while (!QLog.isColorLevel()) {
+    Object localObject1;
+    Object localObject2;
+    if (paramDownloadTask.jdField_a_of_type_Int == 0)
+    {
+      localObject1 = paramDownloadTask.a().getString("filePath");
       try
       {
-        Object localObject;
-        paramDownloadTask = new File((String)localObject);
-        String str = FileUtils.b(paramDownloadTask);
-        if (QLog.isColorLevel()) {
-          QLog.d(NearbyGiftPanelDialog.a(), 2, "onDone() content =  " + str + ", filePath = " + (String)localObject);
-        }
-        if (!TextUtils.isEmpty(str))
+        paramDownloadTask = new File((String)localObject1);
+        localObject2 = FileUtils.readFileToString(paramDownloadTask);
+        if (QLog.isColorLevel())
         {
-          localObject = new TroopGiftAioPanelData(new JSONObject(str), "");
-          ((TroopGiftAioPanelData)localObject).a(NearbyGiftPanelDialog.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog$1.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog), NearbyGiftPanelDialog.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog$1.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog));
-          this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog$1.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftManager.a(this.jdField_a_of_type_Int, NearbyGiftPanelDialog.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog$1.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog));
-          if (NearbyGiftPanelDialog.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog$1.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog) != null) {
-            NearbyGiftPanelDialog.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog$1.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog).post(new NearbyGiftPanelDialog.1.1.1(this, (TroopGiftAioPanelData)localObject));
-          }
-          paramDownloadTask.deleteOnExit();
+          String str = NearbyGiftPanelDialog.a();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onDone() content =  ");
+          localStringBuilder.append((String)localObject2);
+          localStringBuilder.append(", filePath = ");
+          localStringBuilder.append((String)localObject1);
+          QLog.d(str, 2, localStringBuilder.toString());
         }
-        return;
-      }
-      catch (IOException paramDownloadTask)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d(NearbyGiftPanelDialog.a(), 2, QLog.getStackTraceString(paramDownloadTask));
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          return;
+        }
+        localObject1 = new TroopGiftAioPanelData(new JSONObject((String)localObject2), "");
+        ((TroopGiftAioPanelData)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog$1.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog$1.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog.jdField_a_of_type_Int);
+        this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog$1.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftManager.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog$1.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog.jdField_a_of_type_Int);
+        if (this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog$1.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel != null) {
+          this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog$1.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.post(new NearbyGiftPanelDialog.1.1.1(this, (TroopGiftAioPanelData)localObject1));
+        }
+        paramDownloadTask.deleteOnExit();
         return;
       }
       catch (JSONException paramDownloadTask)
       {
-        while (!QLog.isColorLevel()) {}
+        if (!QLog.isColorLevel()) {
+          return;
+        }
         QLog.d(NearbyGiftPanelDialog.a(), 2, QLog.getStackTraceString(paramDownloadTask));
         return;
       }
+      catch (IOException paramDownloadTask)
+      {
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+      }
+      QLog.d(NearbyGiftPanelDialog.a(), 2, QLog.getStackTraceString(paramDownloadTask));
     }
-    QLog.d(NearbyGiftPanelDialog.a(), 2, "onError() time =  " + (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog$1.jdField_a_of_type_Long) + ", errorCode = " + paramDownloadTask.jdField_a_of_type_Int);
+    else if (QLog.isColorLevel())
+    {
+      localObject1 = NearbyGiftPanelDialog.a();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("onError() time =  ");
+      ((StringBuilder)localObject2).append(System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog$1.jdField_a_of_type_Long);
+      ((StringBuilder)localObject2).append(", errorCode = ");
+      ((StringBuilder)localObject2).append(paramDownloadTask.jdField_a_of_type_Int);
+      QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
+    }
   }
   
   public boolean onStart(DownloadTask paramDownloadTask)
@@ -68,7 +87,7 @@ class NearbyGiftPanelDialog$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gift.NearbyGiftPanelDialog.1.1
  * JD-Core Version:    0.7.0.1
  */

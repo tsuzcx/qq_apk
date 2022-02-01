@@ -14,11 +14,16 @@ final class PlayModeUtils$1
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.player.PlayModeUtils", 2, "urlDrawable onLoadFialed, exception: " + QLog.getStackTraceString(paramThrowable));
+    if (QLog.isColorLevel())
+    {
+      paramURLDrawable = new StringBuilder();
+      paramURLDrawable.append("urlDrawable onLoadFialed, exception: ");
+      paramURLDrawable.append(QLog.getStackTraceString(paramThrowable));
+      QLog.d("Q.qqstory.player.PlayModeUtils", 2, paramURLDrawable.toString());
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilPlayModeUtils$ImageViewLoadCallback != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilPlayModeUtils$ImageViewLoadCallback.b();
+    paramURLDrawable = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilPlayModeUtils$ImageViewLoadCallback;
+    if (paramURLDrawable != null) {
+      paramURLDrawable.b();
     }
   }
   
@@ -30,14 +35,15 @@ final class PlayModeUtils$1
       QLog.d("Q.qqstory.player.PlayModeUtils", 2, "urlDrawable onLoadSuccessed");
     }
     StoryReportor.b("storypic", "load_time", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long), 0, new String[0]);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilPlayModeUtils$ImageViewLoadCallback != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilPlayModeUtils$ImageViewLoadCallback.a();
+    paramURLDrawable = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilPlayModeUtils$ImageViewLoadCallback;
+    if (paramURLDrawable != null) {
+      paramURLDrawable.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playmode.util.PlayModeUtils.1
  * JD-Core Version:    0.7.0.1
  */

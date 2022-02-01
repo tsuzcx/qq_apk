@@ -17,21 +17,20 @@ final class c
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
+    if (paramMessage.what != 10000) {
       return;
-    } while ((b.d() > 0L) && (SystemClock.elapsedRealtime() - b.d() < a.q()));
-    b.a(SystemClock.elapsedRealtime());
-    QLog.d(b.f, 1, "clean and compress log");
-    b.e();
+    }
+    if ((b.d() <= 0L) || (SystemClock.elapsedRealtime() - b.d() >= a.q()))
+    {
+      b.a(SystemClock.elapsedRealtime());
+      QLog.d(b.f, 1, "clean and compress log");
+      b.e();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qphone.base.util.log.a.c
  * JD-Core Version:    0.7.0.1
  */

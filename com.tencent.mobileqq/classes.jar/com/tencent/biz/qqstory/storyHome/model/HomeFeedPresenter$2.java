@@ -17,7 +17,8 @@ class HomeFeedPresenter$2
       HomeFeedPresenter.a(this.this$0).clear();
     }
     HomeFeedPresenter.a(this.this$0).addAll(this.a.b);
-    this.this$0.a(HomeFeedPresenter.a(this.this$0));
+    HomeFeedPresenter localHomeFeedPresenter = this.this$0;
+    localHomeFeedPresenter.a(HomeFeedPresenter.a(localHomeFeedPresenter));
     Collections.sort(HomeFeedPresenter.a(this.this$0), GeneralHomeFeed.a);
     HomeFeedPresenter.a(this.this$0, this.a.jdField_a_of_type_Boolean);
     this.a.b = HomeFeedPresenter.a(this.this$0);
@@ -29,7 +30,7 @@ class HomeFeedPresenter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter.2
  * JD-Core Version:    0.7.0.1
  */

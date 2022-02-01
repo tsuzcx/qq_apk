@@ -14,15 +14,16 @@ class SendMultiPictureHelper$3
     if (!this.a.jdField_a_of_type_Boolean)
     {
       this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
-      this.a.b = true;
-      SendMultiPictureHelper.a(this.a);
+      paramDialogInterface = this.a;
+      paramDialogInterface.b = true;
+      SendMultiPictureHelper.a(paramDialogInterface);
       this.a.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SendMultiPictureHelper.3
  * JD-Core Version:    0.7.0.1
  */

@@ -15,43 +15,48 @@ class TraeAudioManager$earphoneSwitchThread
   
   public void _run()
   {
-    if (TraeAudioManager.IsUpdateSceneFlag) {
-      this.this$0.InternalSetSpeaker(this.this$0._context, false);
+    TraeAudioManager localTraeAudioManager;
+    if (TraeAudioManager.IsUpdateSceneFlag)
+    {
+      localTraeAudioManager = this.this$0;
+      localTraeAudioManager.InternalSetSpeaker(localTraeAudioManager._context, false);
     }
     updateStatus();
-    if (!TraeAudioManager.IsUpdateSceneFlag) {
+    if (!TraeAudioManager.IsUpdateSceneFlag)
+    {
       if (QLog.isColorLevel()) {
         QLog.w("TRAE", 0, "connect earphone: do nothing");
       }
+      return;
     }
+    int i = 0;
     for (;;)
     {
-      return;
-      while (this._running == true)
+      long l;
+      if (this._running == true)
       {
-        if (this.this$0._am.isSpeakerphoneOn()) {
-          this.this$0.InternalSetSpeaker(this.this$0._context, false);
+        if (this.this$0._am.isSpeakerphoneOn())
+        {
+          localTraeAudioManager = this.this$0;
+          localTraeAudioManager.InternalSetSpeaker(localTraeAudioManager._context, false);
         }
-        long l;
         if (i < 5) {
           l = 1000L;
+        } else {
+          l = 4000L;
         }
-        try
-        {
-          for (;;)
-          {
-            Thread.sleep(l);
-            label97:
-            i += 1;
-            break;
-            l = 4000L;
-          }
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          break label97;
-        }
-        int i = 0;
+      }
+      try
+      {
+        Thread.sleep(l);
+        label110:
+        i += 1;
+        continue;
+        return;
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        break label110;
       }
     }
   }

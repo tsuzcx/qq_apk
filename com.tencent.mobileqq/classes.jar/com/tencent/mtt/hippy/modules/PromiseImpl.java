@@ -47,7 +47,7 @@ public class PromiseImpl
   
   public boolean isCallback()
   {
-    return !TextUtils.equals(this.mCallId, "-1");
+    return TextUtils.equals(this.mCallId, "-1") ^ true;
   }
   
   public boolean needResolveBySelf()
@@ -72,7 +72,7 @@ public class PromiseImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.PromiseImpl
  * JD-Core Version:    0.7.0.1
  */

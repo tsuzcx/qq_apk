@@ -1,62 +1,41 @@
 package com.tencent.mobileqq.filemanager.activity;
 
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
+import com.tencent.mobileqq.filemanager.api.IQQFileTempUtils;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.LocalFileAdapter;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.mobileqq.widget.SlideDetectListView.OnSlideListener;
-import com.tencent.widget.BubblePopupWindow;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtil;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.ArrayList;
 
 class LocalFileBrowserActivity$2
-  implements SlideDetectListView.OnSlideListener
+  implements ActionSheet.OnButtonClickListener
 {
-  LocalFileBrowserActivity$2(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
-  
-  public void a(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) {
-      this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a();
-    }
-    if (!this.a.b())
+    if ((paramInt == 0) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.e != -1))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.a(null);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
-      paramView.setPressed(false);
+      paramView = (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b.get(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.e);
+      if ((FileUtils.fileExistsAndNotEmpty(paramView.c())) && (!((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).deleteFile(paramView.c())))
+      {
+        FMToastUtil.a(2131692274);
+      }
+      else
+      {
+        QQFileManagerUtil.e(paramView.c());
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b.remove(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.e);
+        LocalFileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity);
+      }
     }
-    do
-    {
-      return;
-      paramSlideDetectListView = paramView.findViewById(2131377928);
-      paramView = (FileInfo)this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.getItem(paramInt);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.a(paramView);
-    } while (paramSlideDetectListView == null);
-    paramView = (Button)paramSlideDetectListView.findViewById(2131365625);
-    paramView.setTag(Integer.valueOf(paramInt));
-    paramView.setOnClickListener(this.a.jdField_a_of_type_AndroidViewView$OnClickListener);
-    ((ShaderAnimLayout)paramSlideDetectListView).a();
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setDeleteAreaDim(paramSlideDetectListView.getLayoutParams().width, paramSlideDetectListView.getLayoutParams().height);
-  }
-  
-  public void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
-  {
-    paramSlideDetectListView = paramView.findViewById(2131377928);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.a(null);
-    if (paramSlideDetectListView != null)
-    {
-      ((ShaderAnimLayout)paramSlideDetectListView).e();
-      paramSlideDetectListView = (Button)paramSlideDetectListView.findViewById(2131365625);
-      paramSlideDetectListView.setTag(null);
-      paramSlideDetectListView.setOnClickListener(null);
-    }
-    LocalFileBrowserActivity.a(this.a);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity.2
  * JD-Core Version:    0.7.0.1
  */

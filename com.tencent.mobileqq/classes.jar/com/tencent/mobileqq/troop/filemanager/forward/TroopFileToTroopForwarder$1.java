@@ -12,21 +12,31 @@ class TroopFileToTroopForwarder$1
   
   public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
   {
-    if (paramBundle.getLong("troopUin") != TroopFileToTroopForwarder.a(this.a)) {}
-    do
-    {
+    if (paramBundle.getLong("troopUin") != TroopFileToTroopForwarder.a(this.a)) {
       return;
-      paramBundle = paramBundle.getString("itemKey");
-    } while ((paramBundle == null) || (!UUID.fromString(paramBundle).equals(this.a.a())));
-    if (!paramBoolean) {
-      TroopFileTransferUtil.Log.a("TroopFileToTroopForwarder", TroopFileTransferUtil.Log.a, "[" + TroopFileToTroopForwarder.a(this.a) + "] onFowardToTroopResult isSuccess:false ");
+    }
+    paramBundle = paramBundle.getString("itemKey");
+    if (paramBundle == null) {
+      return;
+    }
+    if (!UUID.fromString(paramBundle).equals(this.a.a())) {
+      return;
+    }
+    if (!paramBoolean)
+    {
+      int i = TroopFileTransferUtil.Log.a;
+      paramBundle = new StringBuilder();
+      paramBundle.append("[");
+      paramBundle.append(TroopFileToTroopForwarder.a(this.a));
+      paramBundle.append("] onFowardToTroopResult isSuccess:false ");
+      TroopFileTransferUtil.Log.a("TroopFileToTroopForwarder", i, paramBundle.toString());
     }
     TroopFileToTroopForwarder.a(this.a, paramInt1, paramInt2, paramString1, paramString2, paramString3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.forward.TroopFileToTroopForwarder.1
  * JD-Core Version:    0.7.0.1
  */

@@ -62,26 +62,23 @@ public class ARMapTracer$GLHackTask
       this.jdField_a_of_type_JavaLangRunnable.run();
     }
     l = SystemClock.elapsedRealtime() - l;
-    String str2;
     if ((QLog.isDevelopLevel()) && (l > 33L))
     {
-      str2 = GLHackTask.class.getSimpleName();
-      if (this.jdField_a_of_type_JavaLangRunnable == null) {
-        break label122;
+      String str = GLHackTask.class.getSimpleName();
+      Object localObject = this.jdField_a_of_type_JavaLangRunnable;
+      if (localObject != null) {
+        localObject = localObject.getClass().getName();
+      } else {
+        localObject = "default";
       }
+      QLog.d(str, 2, new Object[] { "%s cost: %d", localObject, Long.valueOf(l) });
     }
-    label122:
-    for (String str1 = this.jdField_a_of_type_JavaLangRunnable.getClass().getName();; str1 = "default")
-    {
-      QLog.d(str2, 2, new Object[] { "%s cost: %d", str1, Long.valueOf(l) });
-      a();
-      return;
-    }
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ARMapTracer.GLHackTask
  * JD-Core Version:    0.7.0.1
  */

@@ -77,7 +77,8 @@ public class VerticalPagerView
   
   public void b(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_AndroidWidgetScroller.startScroll(this.jdField_a_of_type_AndroidWidgetScroller.getFinalX(), this.jdField_a_of_type_AndroidWidgetScroller.getFinalY(), paramInt1, paramInt2, paramInt3);
+    Scroller localScroller = this.jdField_a_of_type_AndroidWidgetScroller;
+    localScroller.startScroll(localScroller.getFinalX(), this.jdField_a_of_type_AndroidWidgetScroller.getFinalY(), paramInt1, paramInt2, paramInt3);
     super.invalidate();
   }
   
@@ -93,81 +94,92 @@ public class VerticalPagerView
       scrollTo(this.jdField_a_of_type_AndroidWidgetScroller.getCurrX(), this.jdField_a_of_type_AndroidWidgetScroller.getCurrY());
       super.postInvalidate();
     }
-    for (;;)
+    else if (!this.jdField_a_of_type_Boolean)
     {
-      super.computeScroll();
-      return;
-      if ((!this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Int != this.jdField_c_of_type_Int))
+      int i = this.jdField_b_of_type_Int;
+      int j = this.jdField_c_of_type_Int;
+      if (i != j)
       {
-        a(this.jdField_c_of_type_Int);
-        if (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnPagerChangedListener != null) {
-          this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnPagerChangedListener.a(this, super.getChildAt(this.jdField_c_of_type_Int), this.jdField_c_of_type_Int);
+        a(j);
+        VerticalPagerView.OnPagerChangedListener localOnPagerChangedListener = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnPagerChangedListener;
+        if (localOnPagerChangedListener != null) {
+          localOnPagerChangedListener.a(this, super.getChildAt(this.jdField_c_of_type_Int), this.jdField_c_of_type_Int);
         }
         this.jdField_b_of_type_Int = this.jdField_c_of_type_Int;
       }
     }
+    super.computeScroll();
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((super.getChildCount() < 2) || (!this.jdField_b_of_type_Boolean)) {}
-    int i;
-    do
+    if (super.getChildCount() >= 2)
     {
-      do
-      {
+      if (!this.jdField_b_of_type_Boolean) {
         return false;
-        i = paramMotionEvent.getAction();
-        this.jdField_c_of_type_Float = paramMotionEvent.getX();
-        this.d = paramMotionEvent.getY();
-        if (i == 0)
-        {
-          this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
-          this.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
-          this.jdField_b_of_type_Float = this.d;
-          this.e = this.d;
-          return false;
-        }
-      } while (i != 2);
-      float f1 = Math.abs(this.jdField_c_of_type_Float - this.jdField_a_of_type_Float);
-      float f2 = Math.abs(this.d - this.jdField_b_of_type_Float);
-      if ((f2 < DisplayUtil.a(super.getContext(), 10.0F)) || (f2 < f1))
+      }
+      int i = paramMotionEvent.getAction();
+      this.jdField_c_of_type_Float = paramMotionEvent.getX();
+      this.d = paramMotionEvent.getY();
+      float f1;
+      if (i == 0)
       {
         this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
+        this.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
+        f1 = this.d;
+        this.jdField_b_of_type_Float = f1;
+        this.e = f1;
         return false;
       }
-      i = (int)(paramMotionEvent.getY() - this.jdField_a_of_type_Int);
-      if (i > 0)
+      if (i == 2)
       {
-        if (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnInterceptTouchListener != null) {
-          return this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnInterceptTouchListener.b(this.jdField_c_of_type_Int);
+        f1 = Math.abs(this.jdField_c_of_type_Float - this.jdField_a_of_type_Float);
+        float f2 = Math.abs(this.d - this.jdField_b_of_type_Float);
+        if ((f2 >= DisplayUtil.a(super.getContext(), 10.0F)) && (f2 >= f1))
+        {
+          i = (int)(paramMotionEvent.getY() - this.jdField_a_of_type_Int);
+          if (i > 0)
+          {
+            paramMotionEvent = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnInterceptTouchListener;
+            if (paramMotionEvent != null) {
+              return paramMotionEvent.b(this.jdField_c_of_type_Int);
+            }
+            return b(this.jdField_c_of_type_Int);
+          }
+          if (i < 0)
+          {
+            paramMotionEvent = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnInterceptTouchListener;
+            if (paramMotionEvent != null) {
+              return paramMotionEvent.a(this.jdField_c_of_type_Int);
+            }
+            return a(this.jdField_c_of_type_Int);
+          }
         }
-        return b(this.jdField_c_of_type_Int);
+        else
+        {
+          this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
+        }
       }
-    } while (i >= 0);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnInterceptTouchListener != null) {
-      return this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnInterceptTouchListener.a(this.jdField_c_of_type_Int);
     }
-    return a(this.jdField_c_of_type_Int);
+    return false;
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int k = super.getChildCount();
+    int m = super.getChildCount();
     int i = 0;
-    int j = 0;
-    while (i < k)
+    int k;
+    for (int j = 0; i < m; j = k)
     {
       View localView = super.getChildAt(i);
-      int m = paramInt4 - paramInt2;
-      localView.layout(0, j, paramInt3 - paramInt1, j + m);
-      j += m;
+      k = paramInt4 - paramInt2 + j;
+      localView.layout(0, j, paramInt3 - paramInt1, k);
       i += 1;
     }
     setCurrentPage(this.jdField_c_of_type_Int);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     int j = super.getChildCount();
@@ -186,11 +198,13 @@ public class VerticalPagerView
     if (i == 0)
     {
       this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
-      this.jdField_b_of_type_Float = this.d;
+      f1 = this.d;
+      this.jdField_b_of_type_Float = f1;
       this.jdField_a_of_type_Boolean = true;
-      this.e = this.d;
+      this.e = f1;
       return true;
     }
+    Object localObject;
     if (i == 2)
     {
       this.jdField_a_of_type_Int = ((int)(paramMotionEvent.getY() - this.jdField_a_of_type_Int));
@@ -198,71 +212,78 @@ public class VerticalPagerView
       if (Math.abs(this.d - this.jdField_b_of_type_Float) < DisplayUtil.a(super.getContext(), 10.0F))
       {
         this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
-        this.f = (this.d - this.e);
-        this.e = this.d;
+        f1 = this.d;
+        this.f = (f1 - this.e);
+        this.e = f1;
         return false;
       }
       if (i < 0)
       {
         this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
-        if (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnPagerChangedListener != null) {
-          this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnPagerChangedListener.a(false, this.jdField_c_of_type_Int);
+        paramMotionEvent = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnPagerChangedListener;
+        if (paramMotionEvent != null) {
+          paramMotionEvent.a(false, this.jdField_c_of_type_Int);
         }
-        this.f = (this.d - this.e);
-        this.e = this.d;
+        f1 = this.d;
+        this.f = (f1 - this.e);
+        this.e = f1;
         return false;
       }
       if (i > (super.getChildCount() - 1) * super.getHeight())
       {
         this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
-        if (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnPagerChangedListener != null) {
-          this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnPagerChangedListener.a(false, this.jdField_c_of_type_Int);
+        paramMotionEvent = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnPagerChangedListener;
+        if (paramMotionEvent != null) {
+          paramMotionEvent.a(false, this.jdField_c_of_type_Int);
         }
-        this.f = (this.d - this.e);
-        this.e = this.d;
+        f1 = this.d;
+        this.f = (f1 - this.e);
+        this.e = f1;
         return false;
       }
-      this.jdField_a_of_type_AndroidWidgetScroller.startScroll(0, this.jdField_a_of_type_AndroidWidgetScroller.getFinalY(), 0, -this.jdField_a_of_type_Int, 0);
+      localObject = this.jdField_a_of_type_AndroidWidgetScroller;
+      ((Scroller)localObject).startScroll(0, ((Scroller)localObject).getFinalY(), 0, -this.jdField_a_of_type_Int, 0);
       this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
       super.invalidate();
-      if (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnPagerChangedListener != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnPagerChangedListener.a(true, this.jdField_c_of_type_Int);
+      localObject = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnPagerChangedListener;
+      if (localObject != null) {
+        ((VerticalPagerView.OnPagerChangedListener)localObject).a(true, this.jdField_c_of_type_Int);
       }
     }
-    while ((i != 1) && (i != 3))
+    else if ((i == 1) || (i == 3))
     {
-      this.f = (this.d - this.e);
+      f1 = Math.abs(this.f);
       this.e = this.d;
-      return super.onTouchEvent(paramMotionEvent);
-    }
-    float f1 = Math.abs(this.f);
-    this.e = this.d;
-    i = this.jdField_a_of_type_AndroidWidgetScroller.getCurrY() - this.jdField_c_of_type_Int * super.getHeight();
-    if ((i > super.getHeight() / 4) || ((i > 0) && (f1 > DisplayUtil.a(super.getContext(), 7.0F))))
-    {
-      this.jdField_c_of_type_Int += 1;
-      if (this.jdField_c_of_type_Int >= super.getChildCount()) {
-        this.jdField_c_of_type_Int = (super.getChildCount() - 1);
+      i = this.jdField_a_of_type_AndroidWidgetScroller.getCurrY() - this.jdField_c_of_type_Int * super.getHeight();
+      if ((i <= super.getHeight() / 4) && ((i <= 0) || (f1 <= DisplayUtil.a(super.getContext(), 7.0F))))
+      {
+        if ((i < -super.getHeight() / 4) || ((i < 0) && (f1 > DisplayUtil.a(super.getContext(), 5.0F))))
+        {
+          this.jdField_c_of_type_Int -= 1;
+          if (this.jdField_c_of_type_Int < 0) {
+            this.jdField_c_of_type_Int = 0;
+          }
+        }
       }
-    }
-    for (;;)
-    {
+      else
+      {
+        this.jdField_c_of_type_Int += 1;
+        if (this.jdField_c_of_type_Int >= super.getChildCount()) {
+          this.jdField_c_of_type_Int = (super.getChildCount() - 1);
+        }
+      }
       a(0, this.jdField_c_of_type_Int * super.getHeight());
       this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnPagerChangedListener == null) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnPagerChangedListener.a(false, this.jdField_c_of_type_Int);
-      break;
-      if ((i < -super.getHeight() / 4) || ((i < 0) && (f1 > DisplayUtil.a(super.getContext(), 5.0F))))
-      {
-        this.jdField_c_of_type_Int -= 1;
-        if (this.jdField_c_of_type_Int < 0) {
-          this.jdField_c_of_type_Int = 0;
-        }
+      localObject = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnPagerChangedListener;
+      if (localObject != null) {
+        ((VerticalPagerView.OnPagerChangedListener)localObject).a(false, this.jdField_c_of_type_Int);
       }
     }
+    float f1 = this.d;
+    this.f = (f1 - this.e);
+    this.e = f1;
+    return super.onTouchEvent(paramMotionEvent);
   }
   
   public void setCurrentPage(int paramInt)
@@ -294,7 +315,7 @@ public class VerticalPagerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView
  * JD-Core Version:    0.7.0.1
  */

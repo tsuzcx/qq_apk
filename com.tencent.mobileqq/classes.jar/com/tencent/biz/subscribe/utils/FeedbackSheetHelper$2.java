@@ -15,24 +15,21 @@ final class FeedbackSheetHelper$2
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt == 0)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
       paramView = new DoTipOffRequest(0, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, 2);
       VSNetworkHelper.getInstance().sendRequest(paramView, new FeedbackSheetHelper.2.1(this));
-      if (this.jdField_a_of_type_ComTencentBizSubscribeUtilsFeedbackSheetHelper$ClickItemListener != null) {
-        this.jdField_a_of_type_ComTencentBizSubscribeUtilsFeedbackSheetHelper$ClickItemListener.a(false);
+      paramView = this.jdField_a_of_type_ComTencentBizSubscribeUtilsFeedbackSheetHelper$ClickItemListener;
+      if (paramView != null) {
+        paramView.a(false);
       }
     }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.utils.FeedbackSheetHelper.2
  * JD-Core Version:    0.7.0.1
  */

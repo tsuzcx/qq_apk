@@ -9,8 +9,8 @@ class ReadInJoyNativeAdFragment$11
   
   public void run()
   {
-    ReadInJoyNativeAdFragment.a(this.this$0).setBackgroundResource(2130839445);
-    ReadInJoyNativeAdFragment.a(this.this$0).setText(this.this$0.getText(2131718289));
+    ReadInJoyNativeAdFragment.a(this.this$0).setBackgroundResource(2130839301);
+    ReadInJoyNativeAdFragment.a(this.this$0).setText(this.this$0.getText(2131717954));
     ReadInJoyNativeAdFragment.a(this.this$0).setTextColor(-1);
     ReadInJoyNativeAdFragment.a(this.this$0).setProgress(0);
     ReadInJoyNativeAdFragment.a(this.this$0).setClickable(true);
@@ -19,7 +19,7 @@ class ReadInJoyNativeAdFragment$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment.11
  * JD-Core Version:    0.7.0.1
  */

@@ -57,7 +57,10 @@ public class ProfileCommonServiceImpl
     oidb_0x5eb.ReqBody localReqBody = new oidb_0x5eb.ReqBody();
     localReqBody.rpt_uint64_uins.add(Long.valueOf(this.appRuntime.getLongAccountUin()));
     Object localObject = this.processorFactory.a().iterator();
-    for (boolean bool = false; ((Iterator)localObject).hasNext(); bool = ((AbsProfileCommonProcessor)((Iterator)localObject).next()).onGetProfileDetailRequestForLogin(localReqBody) | bool) {}
+    boolean bool = false;
+    while (((Iterator)localObject).hasNext()) {
+      bool |= ((AbsProfileCommonProcessor)((Iterator)localObject).next()).onGetProfileDetailRequestForLogin(localReqBody);
+    }
     if (QLog.isColorLevel()) {
       QLog.d("ProfileCommonServiceImpl", 2, String.format("getProfileDetailForLogin needRequest=%s", new Object[] { Boolean.valueOf(bool) }));
     }
@@ -159,15 +162,16 @@ public class ProfileCommonServiceImpl
       }
     }
     localObject = getProcessor((String)localObject);
-    if (localObject != null) {}
-    try
-    {
-      ((AbsProfileCommonProcessor)localObject).onGetProfileDetailResponse(paramBundle, paramBoolean, paramUdcUinData);
-      return;
-    }
-    catch (Exception paramBundle)
-    {
-      QLog.e("ProfileCommonServiceImpl", 1, "responseGetProfileDetail fail.", paramBundle);
+    if (localObject != null) {
+      try
+      {
+        ((AbsProfileCommonProcessor)localObject).onGetProfileDetailResponse(paramBundle, paramBoolean, paramUdcUinData);
+        return;
+      }
+      catch (Exception paramBundle)
+      {
+        QLog.e("ProfileCommonServiceImpl", 1, "responseGetProfileDetail fail.", paramBundle);
+      }
     }
   }
   
@@ -180,22 +184,23 @@ public class ProfileCommonServiceImpl
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
       localObject = getProcessor((String)localObject);
-      if (localObject == null) {}
-    }
-    try
-    {
-      ((AbsProfileCommonProcessor)localObject).onSetProfileDetailResponse(paramBundle, paramBoolean);
-      return;
-    }
-    catch (Exception paramBundle)
-    {
-      QLog.e("ProfileCommonServiceImpl", 1, "responseSetProfileDetail fail.", paramBundle);
+      if (localObject != null) {
+        try
+        {
+          ((AbsProfileCommonProcessor)localObject).onSetProfileDetailResponse(paramBundle, paramBoolean);
+          return;
+        }
+        catch (Exception paramBundle)
+        {
+          QLog.e("ProfileCommonServiceImpl", 1, "responseSetProfileDetail fail.", paramBundle);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecommon.api.impl.ProfileCommonServiceImpl
  * JD-Core Version:    0.7.0.1
  */

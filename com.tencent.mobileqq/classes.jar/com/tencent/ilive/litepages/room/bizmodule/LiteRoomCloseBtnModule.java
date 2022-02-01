@@ -17,16 +17,16 @@ public class LiteRoomCloseBtnModule
     super.onCreate(paramContext);
   }
   
-  public void onInflateComponent()
+  protected void onInflateComponent()
   {
     super.onInflateComponent();
-    this.mCloseComponent = ((RoomCloseComponent)getComponentFactory().getComponent(RoomCloseComponent.class).setRootView(getRootView().findViewById(2131364826)).build());
+    this.mCloseComponent = ((RoomCloseComponent)getComponentFactory().getComponent(RoomCloseComponent.class).setRootView(getRootView().findViewById(2131364713)).build());
     this.mCloseComponent.setCloseListener(new LiteRoomCloseBtnModule.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.litepages.room.bizmodule.LiteRoomCloseBtnModule
  * JD-Core Version:    0.7.0.1
  */

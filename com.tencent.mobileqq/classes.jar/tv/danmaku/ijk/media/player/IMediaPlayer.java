@@ -48,12 +48,13 @@ public abstract interface IMediaPlayer
   
   static
   {
-    if ((Build.VERSION.SDK_INT >= 16) && (Build.VERSION.SDK_INT < 23)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      SUPPORT_NEXT_MEDIA = bool;
-      return;
+    boolean bool;
+    if ((Build.VERSION.SDK_INT >= 16) && (Build.VERSION.SDK_INT < 23)) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    SUPPORT_NEXT_MEDIA = bool;
   }
   
   public abstract int getAudioSessionId();
@@ -155,7 +156,7 @@ public abstract interface IMediaPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tv.danmaku.ijk.media.player.IMediaPlayer
  * JD-Core Version:    0.7.0.1
  */

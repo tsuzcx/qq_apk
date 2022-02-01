@@ -73,21 +73,20 @@ public class GetShareGroupInfoHandler
       paramGetShareGroupInfoRequest.jdField_a_of_type_JavaUtilList = paramErrorMessage;
       b();
     }
-    for (;;)
+    else
     {
-      StoryDispatcher.a().dispatch(paramGetShareGroupInfoRequest);
-      paramGetShareGroupInfoResponse = this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetShareGroupInfoHandler$OnGetShareGroupInfoCallback;
-      if (paramGetShareGroupInfoResponse != null) {
-        paramGetShareGroupInfoResponse.a(paramGetShareGroupInfoRequest);
-      }
-      return;
       c();
+    }
+    StoryDispatcher.a().dispatch(paramGetShareGroupInfoRequest);
+    paramGetShareGroupInfoResponse = this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetShareGroupInfoHandler$OnGetShareGroupInfoCallback;
+    if (paramGetShareGroupInfoResponse != null) {
+      paramGetShareGroupInfoResponse.a(paramGetShareGroupInfoRequest);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetShareGroupInfoHandler
  * JD-Core Version:    0.7.0.1
  */

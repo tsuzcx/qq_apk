@@ -4,12 +4,16 @@ import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.step.ResCheckStep.AdResCheckInfo;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdUtils;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.kandian.ad.api.IRIJSuperMaskService;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qroute.QRouteApi;
 import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/mgr/SuperMaskDataMgr;", "", "()V", "adData", "getAdData", "()Ljava/lang/Object;", "setAdData", "(Ljava/lang/Object;)V", "adResData", "Lorg/json/JSONObject;", "getAdResData", "()Lorg/json/JSONObject;", "setAdResData", "(Lorg/json/JSONObject;)V", "resCheckInfo", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/ResCheckStep$AdResCheckInfo;", "getResCheckInfo", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/ResCheckStep$AdResCheckInfo;", "setResCheckInfo", "(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/ResCheckStep$AdResCheckInfo;)V", "isNormalMask", "", "receiveAd", "", "adInfo", "resetDataMgr", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/mgr/SuperMaskDataMgr;", "", "()V", "adData", "getAdData", "()Ljava/lang/Object;", "setAdData", "(Ljava/lang/Object;)V", "adResData", "Lorg/json/JSONObject;", "getAdResData", "()Lorg/json/JSONObject;", "setAdResData", "(Lorg/json/JSONObject;)V", "resCheckInfo", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/ResCheckStep$AdResCheckInfo;", "getResCheckInfo", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/ResCheckStep$AdResCheckInfo;", "setResCheckInfo", "(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/ResCheckStep$AdResCheckInfo;)V", "isBidMask", "", "isNormalMask", "receiveAd", "", "adInfo", "resetDataMgr", "kandian_ad_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class SuperMaskDataMgr
 {
   public static final SuperMaskDataMgr a;
@@ -61,7 +65,9 @@ public final class SuperMaskDataMgr
     if (((paramObject instanceof AdvertisementInfo)) && (ReadInJoyAdUtils.h((AdvertisementInfo)paramObject)))
     {
       QLog.d("ReadInJoySuperMaskAd", 1, "receiveAd");
-      SuperMaskUIMgr.a.a(1);
+      QRouteApi localQRouteApi = QRoute.api(IRIJSuperMaskService.class);
+      Intrinsics.checkExpressionValueIsNotNull(localQRouteApi, "QRoute.api(IRIJSuperMaskService::class.java)");
+      ((IRIJSuperMaskService)localQRouteApi).setShowStatus(1);
       SuperMaskReportMgr.a.b();
       jdField_a_of_type_JavaLangObject = paramObject;
       SuperMaskReportMgr.a(SuperMaskReportMgr.a, "recviceMask", null, 2, null);
@@ -83,10 +89,20 @@ public final class SuperMaskDataMgr
     }
     return ReadInJoyAdUtils.i((AdvertisementInfo)localObject1);
   }
+  
+  public final boolean b()
+  {
+    Object localObject2 = jdField_a_of_type_JavaLangObject;
+    Object localObject1 = localObject2;
+    if (!(localObject2 instanceof AdvertisementInfo)) {
+      localObject1 = null;
+    }
+    return ReadInJoyAdUtils.j((AdvertisementInfo)localObject1);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.mgr.SuperMaskDataMgr
  * JD-Core Version:    0.7.0.1
  */

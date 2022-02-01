@@ -17,7 +17,9 @@ import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.uimanager.HippyViewBase;
 import com.tencent.mtt.hippy.uimanager.HippyViewController;
 import com.tencent.mtt.hippy.uimanager.NativeGestureDispatcher;
-import com.tencent.mtt.hippy.utils.PixelUtil;
+import com.tencent.mtt.hippy.uimanager.RenderManager;
+import com.tencent.mtt.hippy.uimanager.RenderNode;
+import com.tencent.mtt.hippy.utils.LogUtils;
 import com.tencent.mtt.hippy.utils.UrlUtils;
 import com.tencent.mtt.hippy.views.common.CommonBackgroundDrawable;
 import com.tencent.mtt.hippy.views.common.CommonBorder;
@@ -38,6 +40,8 @@ public class HippyImageView
   public static final String IMAGE_PROPS = "props";
   public static final String IMAGE_TYPE_APNG = "apng";
   public static final String IMAGE_TYPE_GIF = "gif";
+  private HippyEngineContext hippyEngineContext;
+  private HippyMap initProps = new HippyMap();
   private boolean isGifPaused = false;
   protected NativeGestureDispatcher mGestureDispatcher;
   private long mGifLastPlayTime = -1L;
@@ -50,8 +54,6 @@ public class HippyImageView
   private int mGifStartX = 0;
   private int mGifStartY = 0;
   private boolean mHasSetTempBackgroundColor = false;
-  protected String mHippyImageViewDefalutImgeUrl = null;
-  private HippyMap mIniProps = new HippyMap();
   private Rect mNinePatchRect;
   private HippyImageView.OnErrorEvent mOnErrorEvent;
   private HippyImageView.OnLoadEndEvent mOnLoadEndEvent;
@@ -66,7 +68,8 @@ public class HippyImageView
   public HippyImageView(Context paramContext)
   {
     super(paramContext);
-    paramContext = ((HippyInstanceContext)paramContext).getEngineContext();
+    this.hippyEngineContext = ((HippyInstanceContext)paramContext).getEngineContext();
+    paramContext = this.hippyEngineContext;
     if (paramContext != null) {
       setImageAdapter(paramContext.getGlobalConfigs().getImageLoaderAdapter());
     }
@@ -74,11 +77,11 @@ public class HippyImageView
   
   private void computeMatrixParams()
   {
-    AsyncImageView.ScaleType localScaleType;
     if (!this.mGifMatrixComputed)
     {
       this.mGifStartX = 0;
       this.mGifStartY = 0;
+      float f1 = 1.0F;
       this.mGifScaleX = 1.0F;
       this.mGifScaleY = 1.0F;
       if ((this.mGifMovie.width() > 0) && (this.mGifMovie.height() > 0) && (getWidth() > 0) && (getHeight() > 0))
@@ -86,49 +89,65 @@ public class HippyImageView
         this.mGifScaleX = (getWidth() / this.mGifMovie.width());
         this.mGifScaleY = (getHeight() / this.mGifMovie.height());
       }
-      if (this.mScaleType == null) {
-        break label220;
+      AsyncImageView.ScaleType localScaleType;
+      if (this.mScaleType != null) {
+        localScaleType = this.mScaleType;
+      } else {
+        localScaleType = AsyncImageView.ScaleType.FIT_XY;
       }
-      localScaleType = this.mScaleType;
-      switch (HippyImageView.2.$SwitchMap$com$tencent$mtt$supportui$views$asyncimage$AsyncImageView$ScaleType[localScaleType.ordinal()])
+      int i = HippyImageView.2.$SwitchMap$com$tencent$mtt$supportui$views$asyncimage$AsyncImageView$ScaleType[localScaleType.ordinal()];
+      if (i != 1)
       {
+        if (i != 2)
+        {
+          float f2;
+          float f3;
+          if (i != 3)
+          {
+            if (i != 4)
+            {
+              if (i != 5) {
+                break label238;
+              }
+              this.mGifScaleY = 1.0F;
+              this.mGifScaleX = 1.0F;
+              break label238;
+            }
+            f2 = this.mGifScaleX;
+            f3 = this.mGifScaleY;
+            f1 = f2;
+            if (f2 >= f3) {
+              break label233;
+            }
+            f1 = f3;
+          }
+          else
+          {
+            f2 = this.mGifScaleX;
+            f3 = this.mGifScaleY;
+            f1 = f2;
+            if (f2 <= f3) {
+              break label233;
+            }
+            f1 = f3;
+          }
+          this.mGifScaleX = f1;
+          break label238;
+        }
+        else
+        {
+          this.mGifScaleX = 1.0F;
+        }
+        label233:
+        this.mGifScaleY = f1;
       }
-    }
-    for (;;)
-    {
+      label238:
       if (this.mScaleType != AsyncImageView.ScaleType.ORIGIN)
       {
         this.mGifStartX = ((int)((getWidth() / this.mGifScaleX - this.mGifMovie.width()) / 2.0F));
         this.mGifStartY = ((int)((getHeight() / this.mGifScaleY - this.mGifMovie.height()) / 2.0F));
       }
       this.mGifMatrixComputed = true;
-      return;
-      label220:
-      localScaleType = AsyncImageView.ScaleType.FIT_XY;
-      break;
-      this.mGifScaleX = 1.0F;
-      this.mGifScaleY = 1.0F;
-      continue;
-      if (this.mGifScaleX > this.mGifScaleY)
-      {
-        this.mGifScaleX = this.mGifScaleY;
-      }
-      else
-      {
-        this.mGifScaleY = this.mGifScaleX;
-        continue;
-        if (this.mGifScaleX < this.mGifScaleY)
-        {
-          this.mGifScaleX = this.mGifScaleY;
-        }
-        else
-        {
-          this.mGifScaleY = this.mGifScaleX;
-          continue;
-          this.mGifScaleY = 1.0F;
-          this.mGifScaleX = 1.0F;
-        }
-      }
     }
   }
   
@@ -164,7 +183,7 @@ public class HippyImageView
     return this.mOnLoadStartEvent;
   }
   
-  public void afterSetContent(String paramString)
+  protected void afterSetContent(String paramString)
   {
     restoreBackgroundColorAfterSetContent();
   }
@@ -174,81 +193,86 @@ public class HippyImageView
     this.mTintColor = 0;
   }
   
-  public void doFetchImage(Object paramObject, int paramInt)
+  protected void doFetchImage(Object paramObject, int paramInt)
   {
     if (this.mImageAdapter != null)
     {
-      if (paramObject != null) {
-        break label87;
+      Object localObject = paramObject;
+      if (paramObject == null) {
+        localObject = new HashMap();
       }
-      paramObject = new HashMap();
-    }
-    label42:
-    label87:
-    for (;;)
-    {
-      if ((paramObject instanceof Map)) {}
-      try
+      if ((localObject instanceof Map))
       {
-        ((Map)paramObject).put("props", this.mIniProps);
-        if (paramInt == SOURCE_TYPE_SRC) {}
-        for (String str = this.mUrl;; str = this.mDefaultSourceUrl)
+        paramObject = this.hippyEngineContext;
+        if (paramObject != null)
         {
-          this.mImageAdapter.fetchImage(str, new HippyImageView.1(this, paramInt), paramObject);
-          return;
+          paramObject = paramObject.getRenderManager().getRenderNode(getId());
+          if (paramObject != null) {
+            this.initProps = paramObject.getProps();
+          }
+        }
+        try
+        {
+          ((Map)localObject).put("props", this.initProps);
+        }
+        catch (Exception paramObject)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("doFetchImage: ");
+          localStringBuilder.append(paramObject.getMessage());
+          LogUtils.d("HippyImageView", localStringBuilder.toString());
         }
       }
-      catch (Exception localException)
-      {
-        break label42;
+      if (paramInt == SOURCE_TYPE_SRC) {
+        paramObject = this.mUrl;
+      } else {
+        paramObject = this.mDefaultSourceUrl;
       }
+      this.mImageAdapter.fetchImage(paramObject, new HippyImageView.1(this, paramInt, paramObject), localObject);
     }
   }
   
-  protected boolean drawGIF(Canvas paramCanvas)
+  protected void drawGIF(Canvas paramCanvas)
   {
-    if (this.mGifMovie == null) {
-      return false;
+    Movie localMovie = this.mGifMovie;
+    if (localMovie == null) {
+      return;
     }
-    int j = this.mGifMovie.duration();
+    int j = localMovie.duration();
     int i = j;
     if (j == 0) {
       i = 1000;
     }
-    long l = System.currentTimeMillis();
+    long l1 = System.currentTimeMillis();
     if (!this.isGifPaused)
     {
-      if (this.mGifLastPlayTime == -1L) {
-        break label158;
+      long l2 = this.mGifLastPlayTime;
+      if (l2 != -1L)
+      {
+        this.mGifProgress = ((int)(this.mGifProgress + (l1 - l2)));
+        if (this.mGifProgress > i) {
+          this.mGifProgress = 0;
+        }
       }
-      this.mGifProgress = ((int)(this.mGifProgress + (l - this.mGifLastPlayTime)));
-      if (this.mGifProgress > i) {
-        this.mGifProgress = 0;
-      }
+      this.mGifLastPlayTime = l1;
     }
-    label158:
-    for (this.mGifLastPlayTime = l;; this.mGifLastPlayTime = l)
-    {
-      computeMatrixParams();
-      this.mGifMovie.setTime(this.mGifProgress);
-      paramCanvas.save();
-      paramCanvas.scale(this.mGifScaleX, this.mGifScaleY);
-      this.mGifMovie.draw(paramCanvas, this.mGifStartX, this.mGifStartY);
-      paramCanvas.restore();
-      if (this.isGifPaused) {
-        break;
-      }
+    computeMatrixParams();
+    this.mGifMovie.setTime(this.mGifProgress);
+    paramCanvas.save();
+    paramCanvas.scale(this.mGifScaleX, this.mGifScaleY);
+    this.mGifMovie.draw(paramCanvas, this.mGifStartX, this.mGifStartY);
+    paramCanvas.restore();
+    if (!this.isGifPaused) {
       postInvalidateDelayed(40L);
-      return false;
     }
   }
   
-  public BackgroundDrawable generateBackgroundDrawable()
+  protected BackgroundDrawable generateBackgroundDrawable()
   {
     return new CommonBackgroundDrawable();
   }
   
-  public ContentDrawable generateContentDrawable()
+  protected ContentDrawable generateContentDrawable()
   {
     return new HippyContentDrawable();
   }
@@ -258,7 +282,7 @@ public class HippyImageView
     return this.mGestureDispatcher;
   }
   
-  public void handleGetImageFail(Throwable paramThrowable)
+  protected void handleGetImageFail(Throwable paramThrowable)
   {
     if (this.mShouldSendImageEvent[HippyImageView.ImageEvent.ONERROR.ordinal()] != 0) {
       getOnErrorEvent().send(this, null);
@@ -271,14 +295,14 @@ public class HippyImageView
     }
   }
   
-  public void handleGetImageStart()
+  protected void handleGetImageStart()
   {
     if (this.mShouldSendImageEvent[HippyImageView.ImageEvent.ONLOAD_START.ordinal()] != 0) {
       getOnLoadStartEvent().send(this, null);
     }
   }
   
-  public void handleGetImageSuccess()
+  protected void handleGetImageSuccess()
   {
     if (this.mShouldSendImageEvent[HippyImageView.ImageEvent.ONLOAD.ordinal()] != 0) {
       getOnLoadEvent().send(this, null);
@@ -302,12 +326,18 @@ public class HippyImageView
     }
   }
   
-  public void handleImageRequest(IDrawableTarget paramIDrawableTarget, int paramInt, Object paramObject)
+  protected void handleImageRequest(IDrawableTarget paramIDrawableTarget, int paramInt, Object paramObject)
   {
-    if (((paramIDrawableTarget instanceof HippyDrawable)) && (((HippyDrawable)paramIDrawableTarget).isAnimated()))
+    boolean bool = paramIDrawableTarget instanceof HippyDrawable;
+    Object localObject = null;
+    if (bool)
     {
-      this.mGifMovie = ((HippyDrawable)paramIDrawableTarget).getGIF();
-      setLayerType(1, null);
+      HippyDrawable localHippyDrawable = (HippyDrawable)paramIDrawableTarget;
+      if (localHippyDrawable.isAnimated())
+      {
+        this.mGifMovie = localHippyDrawable.getGIF();
+        setLayerType(1, null);
+      }
     }
     if ((!TextUtils.isEmpty(this.mImageType)) && (this.mImageType.equals("apng")) && (paramInt == SOURCE_TYPE_SRC))
     {
@@ -325,12 +355,12 @@ public class HippyImageView
         }
       }
       this.mUrlFetchState = 0;
-      if ((paramObject instanceof Throwable)) {}
-      for (paramIDrawableTarget = (Throwable)paramObject;; paramIDrawableTarget = null)
-      {
-        handleGetImageFail(paramIDrawableTarget);
-        return;
+      paramIDrawableTarget = localObject;
+      if ((paramObject instanceof Throwable)) {
+        paramIDrawableTarget = (Throwable)paramObject;
       }
+      handleGetImageFail(paramIDrawableTarget);
+      return;
     }
     super.handleImageRequest(paramIDrawableTarget, paramInt, paramObject);
   }
@@ -343,47 +373,46 @@ public class HippyImageView
     }
   }
   
-  public void onFetchImage(String paramString)
+  protected void onFetchImage(String paramString)
   {
     Drawable localDrawable = getBackground();
     resetContent();
-    if ((paramString != null) && ((UrlUtils.isWebUrl(paramString)) || (UrlUtils.isFileUrl(paramString)))) {
-      if (!this.mUserHasSetBackgroudnColor) {
-        break label125;
-      }
-    }
-    label125:
-    for (int i = this.mUserSetBackgroundColor;; i = -3355444)
+    if ((paramString != null) && ((UrlUtils.isWebUrl(paramString)) || (UrlUtils.isFileUrl(paramString))))
     {
-      if ((localDrawable instanceof CommonBackgroundDrawable))
-      {
-        ((CommonBackgroundDrawable)localDrawable).setBackgroundColor(i);
-        setCustomBackgroundDrawable((CommonBackgroundDrawable)localDrawable);
+      int i = -3355444;
+      if (this.mUserHasSetBackgroudnColor) {
+        i = this.mUserSetBackgroundColor;
       }
-      for (;;)
+      if ((localDrawable instanceof CommonBackgroundDrawable)) {
+        paramString = localDrawable;
+      }
+      do
       {
-        super.setBackgroundColor(i);
-        this.mHasSetTempBackgroundColor = true;
-        return;
-        if (((localDrawable instanceof LayerDrawable)) && (((LayerDrawable)localDrawable).getNumberOfLayers() > 0))
-        {
-          paramString = ((LayerDrawable)localDrawable).getDrawable(0);
-          if ((paramString instanceof CommonBackgroundDrawable))
-          {
-            ((CommonBackgroundDrawable)paramString).setBackgroundColor(i);
-            setCustomBackgroundDrawable((CommonBackgroundDrawable)paramString);
-          }
+        paramString = (CommonBackgroundDrawable)paramString;
+        paramString.setBackgroundColor(i);
+        setCustomBackgroundDrawable(paramString);
+        break;
+        if (!(localDrawable instanceof LayerDrawable)) {
+          break;
         }
-      }
+        paramString = (LayerDrawable)localDrawable;
+        if (paramString.getNumberOfLayers() <= 0) {
+          break;
+        }
+        paramString = paramString.getDrawable(0);
+      } while ((paramString instanceof CommonBackgroundDrawable));
+      super.setBackgroundColor(i);
+      this.mHasSetTempBackgroundColor = true;
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool2 = super.onTouchEvent(paramMotionEvent);
+    NativeGestureDispatcher localNativeGestureDispatcher = this.mGestureDispatcher;
     boolean bool1 = bool2;
-    if (this.mGestureDispatcher != null) {
-      bool1 = bool2 | this.mGestureDispatcher.handleTouchEvent(paramMotionEvent);
+    if (localNativeGestureDispatcher != null) {
+      bool1 = bool2 | localNativeGestureDispatcher.handleTouchEvent(paramMotionEvent);
     }
     return bool1;
   }
@@ -394,7 +423,7 @@ public class HippyImageView
     this.mGifLastPlayTime = -1L;
   }
   
-  public void resetContent()
+  protected void resetContent()
   {
     super.resetContent();
     this.mGifMovie = null;
@@ -416,14 +445,18 @@ public class HippyImageView
     this.mImageType = null;
     setBackgroundDrawable(null);
     int i = 0;
-    while (i < this.mShouldSendImageEvent.length)
+    for (;;)
     {
-      this.mShouldSendImageEvent[i] = false;
+      boolean[] arrayOfBoolean = this.mShouldSendImageEvent;
+      if (i >= arrayOfBoolean.length) {
+        break;
+      }
+      arrayOfBoolean[i] = false;
       i += 1;
     }
   }
   
-  public void restoreBackgroundColorAfterSetContent()
+  protected void restoreBackgroundColorAfterSetContent()
   {
     if ((this.mBGDrawable != null) && (this.mHasSetTempBackgroundColor))
     {
@@ -446,8 +479,7 @@ public class HippyImageView
   
   public void setHippyViewDefaultSource(String paramString)
   {
-    this.mHippyImageViewDefalutImgeUrl = paramString;
-    setDefaultSource(this.mHippyImageViewDefalutImgeUrl);
+    setDefaultSource(paramString);
   }
   
   protected void setImageEventEnable(int paramInt, boolean paramBoolean)
@@ -455,64 +487,28 @@ public class HippyImageView
     this.mShouldSendImageEvent[paramInt] = paramBoolean;
   }
   
-  public void setIniProps(HippyMap paramHippyMap)
+  public void setInitProps(HippyMap paramHippyMap)
   {
-    int m = 0;
-    int j = 0;
-    this.mIniProps.clear();
-    int i;
-    if (paramHippyMap.containsKey("style"))
-    {
-      HippyMap localHippyMap = paramHippyMap.getMap("style");
-      if (localHippyMap != null) {
-        if (localHippyMap.containsKey("width"))
-        {
-          i = Math.round(PixelUtil.dp2px(localHippyMap.getDouble("width")));
-          if (localHippyMap.containsKey("height")) {
-            j = Math.round(PixelUtil.dp2px(localHippyMap.getDouble("height")));
-          }
-          k = i;
-          m = j;
-          if (localHippyMap.containsKey("resizeMode"))
-          {
-            this.mIniProps.pushString("resizeMode", localHippyMap.getString("resizeMode"));
-            m = j;
-          }
-        }
-      }
-    }
-    for (int k = i;; k = 0)
-    {
-      if (paramHippyMap.containsKey("imageType")) {
-        this.mIniProps.pushString("imageType", paramHippyMap.getString("imageType"));
-      }
-      this.mIniProps.pushInt("repeatCount", paramHippyMap.getInt("repeatCount"));
-      this.mIniProps.pushBoolean("isGif", paramHippyMap.getBoolean("isGif"));
-      this.mIniProps.pushInt("width", k);
-      this.mIniProps.pushInt("height", m);
-      return;
-      i = 0;
-      break;
-    }
+    this.initProps = paramHippyMap;
   }
   
   public void setNinePatchCoordinate(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (paramBoolean) {
+    if (paramBoolean)
+    {
       this.mNinePatchRect = null;
     }
-    for (;;)
+    else
     {
-      if ((this.mContentDrawable instanceof HippyContentDrawable))
-      {
-        ((HippyContentDrawable)this.mContentDrawable).setNinePatchCoordinate(this.mNinePatchRect);
-        invalidate();
-      }
-      return;
       if (this.mNinePatchRect == null) {
         this.mNinePatchRect = new Rect();
       }
       this.mNinePatchRect.set(paramInt1, paramInt2, paramInt3, paramInt4);
+    }
+    if ((this.mContentDrawable instanceof HippyContentDrawable))
+    {
+      ((HippyContentDrawable)this.mContentDrawable).setNinePatchCoordinate(this.mNinePatchRect);
+      invalidate();
     }
   }
   
@@ -525,48 +521,54 @@ public class HippyImageView
     this.mShowCount = 0;
   }
   
-  public boolean shouldFetchImage()
+  protected boolean shouldFetchImage()
   {
-    if (this.mUrlFetchState == 1) {}
-    label112:
-    label115:
-    label117:
-    Bitmap localBitmap;
-    do
-    {
-      for (;;)
-      {
-        return false;
-        if (this.mUrlFetchState == 0) {
-          return true;
-        }
-        boolean bool2 = this.mIniProps.getBoolean("isGif");
-        boolean bool1 = bool2;
-        if (!bool2) {
-          if ((TextUtils.isEmpty(this.mImageType)) || (!this.mImageType.equals("gif"))) {
-            break label112;
-          }
-        }
-        for (bool1 = true;; bool1 = false)
-        {
-          if ((!TextUtils.isEmpty(this.mImageType)) && (this.mImageType.equals("apng")) && (this.mContentDrawable != null) && (!(this.mContentDrawable instanceof ContentDrawable))) {
-            break label115;
-          }
-          if (!bool1) {
-            break label117;
-          }
-          if (this.mGifMovie != null) {
-            break;
-          }
-          return true;
-        }
+    if (this.mUrlFetchState == 1) {
+      return false;
+    }
+    if (this.mUrlFetchState == 0) {
+      return true;
+    }
+    Object localObject = this.initProps;
+    boolean bool1;
+    if (localObject != null) {
+      bool1 = ((HippyMap)localObject).getBoolean("isGif");
+    } else {
+      bool1 = false;
+    }
+    boolean bool2 = bool1;
+    if (!bool1) {
+      if ((!TextUtils.isEmpty(this.mImageType)) && (this.mImageType.equals("gif"))) {
+        bool2 = true;
+      } else {
+        bool2 = false;
       }
-      localBitmap = getBitmap();
-    } while ((localBitmap != null) && (!localBitmap.isRecycled()));
+    }
+    if ((!TextUtils.isEmpty(this.mImageType)) && (this.mImageType.equals("apng")) && (this.mContentDrawable != null) && (!(this.mContentDrawable instanceof ContentDrawable))) {
+      return false;
+    }
+    if (bool2)
+    {
+      if (this.mGifMovie == null) {
+        return true;
+      }
+    }
+    else
+    {
+      localObject = getBitmap();
+      if (localObject == null) {
+        break label150;
+      }
+      if (((Bitmap)localObject).isRecycled()) {
+        return true;
+      }
+    }
+    return false;
+    label150:
     return true;
   }
   
-  public boolean shouldUseFetchImageMode(String paramString)
+  protected boolean shouldUseFetchImageMode(String paramString)
   {
     return (UrlUtils.isWebUrl(paramString)) || (UrlUtils.isFileUrl(paramString));
   }
@@ -577,7 +579,7 @@ public class HippyImageView
     invalidate();
   }
   
-  public void updateContentDrawableProperty()
+  protected void updateContentDrawableProperty()
   {
     super.updateContentDrawableProperty();
     if ((this.mContentDrawable instanceof HippyContentDrawable)) {
@@ -587,7 +589,7 @@ public class HippyImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.image.HippyImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.widget.ImageView;
+import com.tencent.avgame.api.R.styleable;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.ApngImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 
@@ -23,7 +23,7 @@ public class AutoResizeAsyncImageView
   extends ImageView
   implements URLDrawable.URLDrawableListener
 {
-  public static final String a;
+  public static final String a = "com.tencent.avgame.gamelobby.view.AutoResizeAsyncImageView";
   private float jdField_a_of_type_Float = -1.0F;
   private int jdField_a_of_type_Int = 0;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
@@ -33,11 +33,6 @@ public class AutoResizeAsyncImageView
   private float jdField_b_of_type_Float = -1.0F;
   private int jdField_b_of_type_Int = 0;
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = AutoResizeAsyncImageView.class.getName();
-  }
   
   public AutoResizeAsyncImageView(Context paramContext)
   {
@@ -52,25 +47,26 @@ public class AutoResizeAsyncImageView
   public AutoResizeAsyncImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.AutoResizeAsyncImageView);
-    this.jdField_a_of_type_Int = paramContext.getDimensionPixelSize(8, 0);
-    this.jdField_b_of_type_Int = paramContext.getDimensionPixelSize(7, 0);
-    this.jdField_a_of_type_Float = paramContext.getFloat(4, -1.0F);
-    this.jdField_b_of_type_Float = paramContext.getFloat(5, -1.0F);
-    this.jdField_a_of_type_Boolean = paramContext.getBoolean(3, false);
-    paramAttributeSet = new ColorDrawable(paramContext.getColor(0, 0));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a(paramContext, 6, paramAttributeSet);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = a(paramContext, 2, paramAttributeSet);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.t);
+    this.jdField_a_of_type_Int = paramContext.getDimensionPixelSize(R.styleable.h, 0);
+    this.jdField_b_of_type_Int = paramContext.getDimensionPixelSize(R.styleable.g, 0);
+    this.jdField_a_of_type_Float = paramContext.getFloat(R.styleable.d, -1.0F);
+    this.jdField_b_of_type_Float = paramContext.getFloat(R.styleable.e, -1.0F);
+    this.jdField_a_of_type_Boolean = paramContext.getBoolean(R.styleable.c, false);
+    paramAttributeSet = new ColorDrawable(paramContext.getColor(R.styleable.jdField_a_of_type_Int, 0));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a(paramContext, R.styleable.f, paramAttributeSet);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = a(paramContext, R.styleable.jdField_b_of_type_Int, paramAttributeSet);
     b();
-    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mUseApngImage = paramContext.getBoolean(9, false);
+    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mUseApngImage = paramContext.getBoolean(R.styleable.i, false);
     paramContext.recycle();
   }
   
   private Drawable a(TypedArray paramTypedArray, int paramInt, Drawable paramDrawable)
   {
-    paramTypedArray = paramTypedArray.getDrawable(paramInt);
-    if (paramTypedArray == null) {
-      return paramDrawable;
+    Drawable localDrawable = paramTypedArray.getDrawable(paramInt);
+    paramTypedArray = localDrawable;
+    if (localDrawable == null) {
+      paramTypedArray = paramDrawable;
     }
     return paramTypedArray;
   }
@@ -95,25 +91,27 @@ public class AutoResizeAsyncImageView
   private void b()
   {
     this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mFailedDrawable = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mDecodeFileStrategy = 3;
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions;
+    localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    localURLDrawableOptions.mFailedDrawable = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+    localURLDrawableOptions.mDecodeFileStrategy = 3;
   }
   
   public void a()
   {
     Object localObject = getDrawable();
-    if (!(localObject instanceof URLDrawable)) {}
-    do
-    {
+    if (!(localObject instanceof URLDrawable)) {
       return;
-      localObject = (URLDrawable)localObject;
-    } while ((localObject == null) || (!(((URLDrawable)localObject).getCurrDrawable() instanceof ApngDrawable)) || (((ApngDrawable)((URLDrawable)localObject).getCurrDrawable()).getImage() == null));
-    Bitmap localBitmap = ((ApngDrawable)((URLDrawable)localObject).getCurrDrawable()).getImage().getCurrentFrame();
-    if (localBitmap != null) {
-      localBitmap.eraseColor(0);
     }
-    ((ApngDrawable)((URLDrawable)localObject).getCurrDrawable()).repaly();
+    localObject = (URLDrawable)localObject;
+    if ((localObject != null) && ((((URLDrawable)localObject).getCurrDrawable() instanceof ApngDrawable)) && (((ApngDrawable)((URLDrawable)localObject).getCurrDrawable()).getImage() != null))
+    {
+      Bitmap localBitmap = ((ApngDrawable)((URLDrawable)localObject).getCurrDrawable()).getImage().getCurrentFrame();
+      if (localBitmap != null) {
+        localBitmap.eraseColor(0);
+      }
+      ((ApngDrawable)((URLDrawable)localObject).getCurrDrawable()).repaly();
+    }
   }
   
   public void a(String paramString)
@@ -123,35 +121,40 @@ public class AutoResizeAsyncImageView
   
   public void a(String paramString, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
   {
-    if (a(paramString)) {
+    if (a(paramString))
+    {
       a();
-    }
-    while (TextUtils.isEmpty(paramString)) {
       return;
     }
-    paramString = URLDrawable.getDrawable(paramString, paramURLDrawableOptions);
-    paramString.setURLDrawableListener(this);
-    setImageDrawable(paramString);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = URLDrawable.getDrawable(paramString, paramURLDrawableOptions);
+      paramString.setURLDrawableListener(this);
+      setImageDrawable(paramString);
+    }
   }
   
   public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener != null) {
-      this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener.onLoadCanceled(paramURLDrawable);
+    URLDrawable.URLDrawableListener localURLDrawableListener = this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener;
+    if (localURLDrawableListener != null) {
+      localURLDrawableListener.onLoadCanceled(paramURLDrawable);
     }
   }
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener != null) {
-      this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener.onLoadFialed(paramURLDrawable, paramThrowable);
+    URLDrawable.URLDrawableListener localURLDrawableListener = this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener;
+    if (localURLDrawableListener != null) {
+      localURLDrawableListener.onLoadFialed(paramURLDrawable, paramThrowable);
     }
   }
   
   public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener != null) {
-      this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener.onLoadProgressed(paramURLDrawable, paramInt);
+    URLDrawable.URLDrawableListener localURLDrawableListener = this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener;
+    if (localURLDrawableListener != null) {
+      localURLDrawableListener.onLoadProgressed(paramURLDrawable, paramInt);
     }
   }
   
@@ -159,12 +162,13 @@ public class AutoResizeAsyncImageView
   {
     setImageDrawable(paramURLDrawable);
     requestLayout();
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener != null) {
-      this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener.onLoadSuccessed(paramURLDrawable);
+    URLDrawable.URLDrawableListener localURLDrawableListener = this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener;
+    if (localURLDrawableListener != null) {
+      localURLDrawableListener.onLoadSuccessed(paramURLDrawable);
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     Drawable localDrawable = getDrawable();
     int j = View.MeasureSpec.getMode(paramInt1);
@@ -172,54 +176,55 @@ public class AutoResizeAsyncImageView
     if (localDrawable != null)
     {
       int i;
-      if ((localDrawable.getIntrinsicHeight() < 0) || (localDrawable.getIntrinsicWidth() < 0))
-      {
+      if ((localDrawable.getIntrinsicHeight() >= 0) && (localDrawable.getIntrinsicWidth() >= 0)) {
+        i = 0;
+      } else {
         i = 1;
-        QLog.d(jdField_a_of_type_JavaLangString, QLog._DEFAULT_REPORTLOG_LEVEL, "Drawable not null");
-        if ((j != 1073741824) || ((k != -2147483648) && (k != 0))) {
-          break label150;
-        }
-        paramInt2 = View.MeasureSpec.getSize(paramInt1);
-        if (i == 0) {
-          break label97;
-        }
-        paramInt1 = this.jdField_b_of_type_Int;
       }
-      for (;;)
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "Drawable not null");
+      double d;
+      if ((j == 1073741824) && ((k == -2147483648) || (k == 0)))
       {
+        paramInt2 = View.MeasureSpec.getSize(paramInt1);
+        if (i != 0)
+        {
+          paramInt1 = this.jdField_b_of_type_Int;
+        }
+        else
+        {
+          if (this.jdField_a_of_type_Boolean) {
+            d = Math.ceil(paramInt2 * this.jdField_a_of_type_Float / this.jdField_b_of_type_Float);
+          } else {
+            d = Math.ceil(paramInt2 * localDrawable.getIntrinsicHeight() / localDrawable.getIntrinsicWidth());
+          }
+          paramInt1 = (int)d;
+        }
         setMeasuredDimension(paramInt2, paramInt1);
         return;
-        i = 0;
-        break;
-        label97:
-        if (this.jdField_a_of_type_Boolean) {
-          paramInt1 = (int)Math.ceil(paramInt2 * this.jdField_a_of_type_Float / this.jdField_b_of_type_Float);
-        } else {
-          paramInt1 = (int)Math.ceil(paramInt2 * localDrawable.getIntrinsicHeight() / localDrawable.getIntrinsicWidth());
-        }
       }
-      label150:
       if (((j == -2147483648) || (j == 0)) && (k == 1073741824))
       {
         paramInt2 = View.MeasureSpec.getSize(paramInt2);
-        if (i != 0) {
+        if (i != 0)
+        {
           paramInt1 = this.jdField_a_of_type_Int;
         }
-        for (;;)
+        else
         {
-          setMeasuredDimension(paramInt1, paramInt2);
-          return;
           if (this.jdField_a_of_type_Boolean) {
-            paramInt1 = (int)Math.ceil(paramInt2 * this.jdField_b_of_type_Float / this.jdField_a_of_type_Float);
+            d = Math.ceil(paramInt2 * this.jdField_b_of_type_Float / this.jdField_a_of_type_Float);
           } else {
-            paramInt1 = (int)Math.ceil(paramInt2 * localDrawable.getIntrinsicWidth() / localDrawable.getIntrinsicHeight());
+            d = Math.ceil(paramInt2 * localDrawable.getIntrinsicWidth() / localDrawable.getIntrinsicHeight());
           }
+          paramInt1 = (int)d;
         }
+        setMeasuredDimension(paramInt1, paramInt2);
+        return;
       }
       super.onMeasure(paramInt1, paramInt2);
       return;
     }
-    QLog.d(jdField_a_of_type_JavaLangString, QLog._DEFAULT_REPORTLOG_LEVEL, "Drawable null");
+    QLog.d(jdField_a_of_type_JavaLangString, 2, "Drawable null");
     if ((j == 1073741824) && ((k == -2147483648) || (k == 0)))
     {
       setMeasuredDimension(View.MeasureSpec.getSize(paramInt1), this.jdField_b_of_type_Int);
@@ -281,7 +286,7 @@ public class AutoResizeAsyncImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelobby.view.AutoResizeAsyncImageView
  * JD-Core Version:    0.7.0.1
  */

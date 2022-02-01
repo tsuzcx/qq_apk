@@ -4,11 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.addfriend.api.IAddFriendApi;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.search.adapter.GroupSearchAdapter;
 import com.tencent.mobileqq.search.model.GroupBaseNetSearchModelItem;
 import com.tencent.mobileqq.statistics.ReportController;
@@ -22,57 +23,62 @@ class ActiveEntitySearchResultPresenter$4
   
   public void onClick(View paramView)
   {
-    Object localObject;
     if (this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.o == 1)
     {
       ReportController.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 0, 0, "", "", "", "");
       ReportController.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 2, 0, "", "", "", "");
-      localObject = (FriendsManager)ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter).getManager(QQManagerFactory.FRIENDS_MANAGER);
-      if ((((FriendsManager)localObject).b(this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.b)) || (((FriendsManager)localObject).d(this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.b))) {
-        break label339;
-      }
-      boolean bool = this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.b();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.uniteSearch.ActiveEntitySearchResultPresenter", 2, "click add mobileNumberResult = " + bool + ",id = " + this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.b);
-      }
-      if (!bool) {
-        break label270;
-      }
-      localObject = AddFriendLogicActivity.a(paramView.getContext(), 2, this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.b, null, 3014, 1, this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.c, null, null, HardCodeUtil.a(2131707975), null);
-      paramView.getContext().startActivity((Intent)localObject);
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       ReportController.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 0, 0, "", "", "", "");
       ReportController.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 1, 0, "", "", "", "");
-      break;
-      label270:
-      int i = 3;
-      if (this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.a == 99) {
-        i = 4;
-      }
-      localObject = AddFriendLogicActivity.a(paramView.getContext(), 1, this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.b, null, 3020, i, this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.c, null, null, paramView.getContext().getString(2131689557), null);
-      paramView.getContext().startActivity((Intent)localObject);
-      continue;
-      label339:
-      if (((FriendsManager)localObject).b(this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.b))
+    }
+    Object localObject = (FriendsManager)ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter).getManager(QQManagerFactory.FRIENDS_MANAGER);
+    if ((!((FriendsManager)localObject).b(this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.b)) && (!((FriendsManager)localObject).d(this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.b)))
+    {
+      boolean bool = this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.b();
+      if (QLog.isColorLevel())
       {
-        this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.n = 2;
-        ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter).notifyDataSetChanged();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("click add mobileNumberResult = ");
+        ((StringBuilder)localObject).append(bool);
+        ((StringBuilder)localObject).append(",id = ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.b);
+        QLog.d("Q.uniteSearch.ActiveEntitySearchResultPresenter", 2, ((StringBuilder)localObject).toString());
+      }
+      if (bool)
+      {
+        localObject = ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).startAddFriend(paramView.getContext(), 2, this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.b, null, 3014, 1, this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.c, null, null, HardCodeUtil.a(2131707994), null);
+        ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).launchAddFriend(paramView.getContext(), (Intent)localObject);
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.n = 1;
-        ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter).notifyDataSetChanged();
+        int i;
+        if (this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.a == 99) {
+          i = 4;
+        } else {
+          i = 3;
+        }
+        localObject = ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).startAddFriend(paramView.getContext(), 1, this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.b, null, 3020, i, this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.c, null, null, paramView.getContext().getString(2131689589), null);
+        ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).launchAddFriend(paramView.getContext(), (Intent)localObject);
       }
     }
+    else if (((FriendsManager)localObject).b(this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.b))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.n = 2;
+      ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter).notifyDataSetChanged();
+    }
+    else
+    {
+      this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.n = 1;
+      ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter).notifyDataSetChanged();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.ActiveEntitySearchResultPresenter.4
  * JD-Core Version:    0.7.0.1
  */

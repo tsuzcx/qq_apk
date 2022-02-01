@@ -1,16 +1,39 @@
 package com.tencent.mobileqq.startup.step;
 
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Rect;
+import android.support.v4.view.ViewCompat;
+import android.view.View;
+
 final class SetSplash$13
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public void run()
+  SetSplash$13(int paramInt1, int paramInt2, int paramInt3, View paramView, SetSplash.SplashAnimListener paramSplashAnimListener) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    SetSplash.a(SetSplash.a());
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    int i = this.jdField_a_of_type_Int;
+    if (i > 0) {
+      i = (int)(i * f);
+    } else {
+      i = 0;
+    }
+    int j = this.b;
+    int k = (int)((j - this.c) * f);
+    paramValueAnimator = new Rect(0, i, this.jdField_a_of_type_AndroidViewView.getRight(), j - k + i);
+    ViewCompat.setClipBounds(this.jdField_a_of_type_AndroidViewView, paramValueAnimator);
+    if ((f > 0.6D) && (!SetSplash.d()))
+    {
+      SetSplash.a(true);
+      SetSplash.b(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqStartupStepSetSplash$SplashAnimListener);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.SetSplash.13
  * JD-Core Version:    0.7.0.1
  */

@@ -2,11 +2,11 @@ package com.tencent.ilive.pages.room.bizmodule;
 
 import android.content.Context;
 import android.content.res.Resources;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 import com.tencent.falco.base.libapi.log.LogInterface;
 import com.tencent.ilive.base.bizmodule.BaseBizModule;
 import com.tencent.ilive.base.bizmodule.BizModuleContext;
-import com.tencent.ilive.commonpages.room.VerticalViewPager;
 import com.tencent.ilive.dialog.CustomizedDialog;
 import com.tencent.ilive.dialog.DialogUtil;
 import com.tencent.ilive.interfaces.IAudienceRoomPager;
@@ -21,13 +21,14 @@ public class RoomBizModule
   private static final String TAG = "RoomBizModule";
   private IAudienceRoomPager mAudienceRoomPager;
   private RoomEngine mRoomEngine;
-  public RoomBizContext roomBizContext;
+  protected RoomBizContext roomBizContext;
   
   public boolean getAcceptReEnterRoom()
   {
     return false;
   }
   
+  @Nullable
   public IAudienceRoomPager getAudienceRoomPager()
   {
     return this.mAudienceRoomPager;
@@ -60,8 +61,14 @@ public class RoomBizModule
     if (getAudienceRoomPager() != null)
     {
       int i = this.roomBizContext.getEnterRoomInfo().bootModulesIndex;
-      int j = getAudienceRoomPager().getViewPager().getCurrentItem();
-      getLog().i("RoomBizModule", "onCreate--selfRoomIndex=" + i + ";pagerCurrentIndex=" + j, new Object[0]);
+      int j = getAudienceRoomPager().getCurrentIndex();
+      paramContext = getLog();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCreate--selfRoomIndex=");
+      localStringBuilder.append(i);
+      localStringBuilder.append(";pagerCurrentIndex=");
+      localStringBuilder.append(j);
+      paramContext.i("RoomBizModule", localStringBuilder.toString(), new Object[0]);
       if (i == j)
       {
         this.isUserVisibleHint = true;
@@ -70,7 +77,7 @@ public class RoomBizModule
     }
   }
   
-  public void onCreateCases() {}
+  protected void onCreateCases() {}
   
   public void onEnterRoom(boolean paramBoolean)
   {
@@ -86,9 +93,9 @@ public class RoomBizModule
   
   public void onFirstFrame() {}
   
-  public void onInflateComponent() {}
+  protected void onInflateComponent() {}
   
-  public void onInitComponentEvent() {}
+  protected void onInitComponentEvent() {}
   
   public void onPlayOver() {}
   
@@ -111,7 +118,7 @@ public class RoomBizModule
     this.mRoomEngine = paramRoomEngine;
   }
   
-  public void showErrExitDialog(String paramString)
+  protected void showErrExitDialog(String paramString)
   {
     if (this.context == null) {
       return;
@@ -119,7 +126,7 @@ public class RoomBizModule
     try
     {
       FragmentActivity localFragmentActivity = (FragmentActivity)this.context;
-      DialogUtil.createOneBtnDialog(localFragmentActivity, null, paramString, localFragmentActivity.getString(2131693845), new RoomBizModule.1(this, localFragmentActivity)).setRightBtnColor(localFragmentActivity.getResources().getColor(2131165307)).show(localFragmentActivity.getSupportFragmentManager(), "");
+      DialogUtil.createOneBtnDialog(localFragmentActivity, null, paramString, localFragmentActivity.getString(2131693798), new RoomBizModule.1(this, localFragmentActivity)).setRightBtnColor(localFragmentActivity.getResources().getColor(2131165273)).show(localFragmentActivity.getSupportFragmentManager(), "");
       return;
     }
     catch (Exception paramString)
@@ -130,7 +137,7 @@ public class RoomBizModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.pages.room.bizmodule.RoomBizModule
  * JD-Core Version:    0.7.0.1
  */

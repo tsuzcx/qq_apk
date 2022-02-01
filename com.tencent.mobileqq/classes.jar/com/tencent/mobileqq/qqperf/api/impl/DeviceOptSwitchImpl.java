@@ -1,0 +1,30 @@
+package com.tencent.mobileqq.qqperf.api.impl;
+
+import com.tencent.mobileqq.qqperf.api.IDeviceOptSwitch;
+import com.tencent.qqperf.opt.suspendthread.DeviceOptSwitch;
+import java.util.Set;
+
+public class DeviceOptSwitchImpl
+  implements IDeviceOptSwitch
+{
+  public Set<Integer> getPreDownloadWhiteList()
+  {
+    return DeviceOptSwitch.jdField_a_of_type_JavaUtilSet;
+  }
+  
+  public boolean isDisablePreDownload()
+  {
+    return DeviceOptSwitch.jdField_a_of_type_Boolean;
+  }
+  
+  public void setDisablePreDownloadTime(long paramLong)
+  {
+    DeviceOptSwitch.c = paramLong;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+ * Qualified Name:     com.tencent.mobileqq.qqperf.api.impl.DeviceOptSwitchImpl
+ * JD-Core Version:    0.7.0.1
+ */

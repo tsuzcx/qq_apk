@@ -17,7 +17,7 @@ public class DataLinePanelBarLoader
     super(paramChatPanelBarContext);
   }
   
-  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
+  protected void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
   {
     this.a.add(AIOPanelUtiles.d);
     this.a.add(AIOPanelUtiles.o);
@@ -33,7 +33,7 @@ public class DataLinePanelBarLoader
     return SessionTypeUtil.a(paramQQAppInterface, paramSessionInfo);
   }
   
-  public void c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
+  protected void c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
   {
     this.a.add(AIOPanelUtiles.d);
     this.a.add(AIOPanelUtiles.o);
@@ -46,7 +46,7 @@ public class DataLinePanelBarLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.chatpanelbar.loader.DataLinePanelBarLoader
  * JD-Core Version:    0.7.0.1
  */

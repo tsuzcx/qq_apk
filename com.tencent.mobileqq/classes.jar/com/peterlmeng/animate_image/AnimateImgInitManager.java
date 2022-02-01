@@ -35,10 +35,10 @@ public class AnimateImgInitManager
       boolean bool = loadPagSo(paramAnimateImgInitInterface.getPagLibPath());
       return bool;
     }
-    catch (Exception paramAnimateImgInitInterface)
+    catch (UnsatisfiedLinkError paramAnimateImgInitInterface)
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("load so exception");
+      localStringBuilder.append("load so UnsatisfiedLinkError:");
       localStringBuilder.append(paramAnimateImgInitInterface.getMessage());
       LogUtils.b("AnimateImgInitManager", localStringBuilder.toString());
     }
@@ -49,19 +49,20 @@ public class AnimateImgInitManager
   
   public boolean reloadSo()
   {
-    if (this.animateImgInitInterface == null) {
+    AnimateImgInitInterface localAnimateImgInitInterface = this.animateImgInitInterface;
+    if (localAnimateImgInitInterface == null) {
       return false;
     }
     try
     {
-      boolean bool = loadPagSo(this.animateImgInitInterface.getPagLibPath());
+      boolean bool = loadPagSo(localAnimateImgInitInterface.getPagLibPath());
       return bool;
     }
-    catch (Exception localException)
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("load so exception");
-      localStringBuilder.append(localException.getMessage());
+      localStringBuilder.append("load so UnsatisfiedLinkError:");
+      localStringBuilder.append(localUnsatisfiedLinkError.getMessage());
       LogUtils.b("AnimateImgInitManager", localStringBuilder.toString());
     }
     return false;
@@ -69,12 +70,13 @@ public class AnimateImgInitManager
   
   public boolean soFileExist()
   {
-    return (this.animateImgInitInterface != null) && (new File(this.animateImgInitInterface.getPagLibPath()).exists());
+    AnimateImgInitInterface localAnimateImgInitInterface = this.animateImgInitInterface;
+    return (localAnimateImgInitInterface != null) && (new File(localAnimateImgInitInterface.getPagLibPath()).exists());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.peterlmeng.animate_image.AnimateImgInitManager
  * JD-Core Version:    0.7.0.1
  */

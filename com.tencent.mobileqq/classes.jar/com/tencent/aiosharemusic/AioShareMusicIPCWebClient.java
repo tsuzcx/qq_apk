@@ -40,11 +40,12 @@ public class AioShareMusicIPCWebClient
       if (QIPCClientHelper.getInstance().getClient() != null)
       {
         QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
-        if (QLog.isColorLevel()) {
+        if (QLog.isColorLevel())
+        {
           QLog.d("AioShareMusic.AioShareMusicIPCWebClient", 2, "unregister real");
+          return;
         }
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -54,25 +55,23 @@ public class AioShareMusicIPCWebClient
   
   public void a(AioShareMusicIPCWebClient.AioShareMusicClient2WebCallback paramAioShareMusicClient2WebCallback)
   {
-    if (this.a != null) {}
-    for (;;)
-    {
+    if (this.a != null) {
       return;
-      try
+    }
+    try
+    {
+      AioShareMusicIPCWebClient localAioShareMusicIPCWebClient = a();
+      this.a = paramAioShareMusicClient2WebCallback;
+      QIPCClientHelper.getInstance().register(localAioShareMusicIPCWebClient);
+      if (QLog.isColorLevel())
       {
-        AioShareMusicIPCWebClient localAioShareMusicIPCWebClient = a();
-        this.a = paramAioShareMusicClient2WebCallback;
-        QIPCClientHelper.getInstance().register(localAioShareMusicIPCWebClient);
-        if (QLog.isColorLevel())
-        {
-          QLog.d("AioShareMusic.AioShareMusicIPCWebClient", 2, "register real");
-          return;
-        }
+        QLog.d("AioShareMusic.AioShareMusicIPCWebClient", 2, "register real");
+        return;
       }
-      catch (Exception paramAioShareMusicClient2WebCallback)
-      {
-        QLog.e("AioShareMusic.AioShareMusicIPCWebClient", 1, "register ipc module error.", paramAioShareMusicClient2WebCallback);
-      }
+    }
+    catch (Exception paramAioShareMusicClient2WebCallback)
+    {
+      QLog.e("AioShareMusic.AioShareMusicIPCWebClient", 1, "register ipc module error.", paramAioShareMusicClient2WebCallback);
     }
   }
   
@@ -84,15 +83,12 @@ public class AioShareMusicIPCWebClient
       if (this.a != null) {
         this.a.a(paramString, paramBundle);
       }
-      return null;
     }
     catch (JSONException paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
+      paramString.printStackTrace();
     }
+    return null;
   }
 }
 

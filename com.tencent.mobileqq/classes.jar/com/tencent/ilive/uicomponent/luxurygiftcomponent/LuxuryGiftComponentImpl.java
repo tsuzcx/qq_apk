@@ -41,49 +41,77 @@ public class LuxuryGiftComponentImpl
   {
     WebGiftInfo localWebGiftInfo = new WebGiftInfo();
     localWebGiftInfo.uin = paramLuxuryGiftData.consumerUin;
+    LogInterface localLogInterface;
+    StringBuilder localStringBuilder;
     if (!TextUtils.isEmpty(paramLuxuryGiftData.effectId))
     {
-      getLuxuryGiftAdapter().getLogger().e("LuxuryGiftComponentImpl", " effectId e= " + paramLuxuryGiftData.effectId, new Object[0]);
+      localLogInterface = getLuxuryGiftAdapter().getLogger();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" effectId e= ");
+      localStringBuilder.append(paramLuxuryGiftData.effectId);
+      localLogInterface.e("LuxuryGiftComponentImpl", localStringBuilder.toString(), new Object[0]);
       localWebGiftInfo.effectId = paramLuxuryGiftData.effectId;
-      if (TextUtils.isEmpty(paramLuxuryGiftData.effectWord)) {
-        break label263;
-      }
-      getLuxuryGiftAdapter().getLogger().e("LuxuryGiftComponentImpl", " effectWord  e= " + paramLuxuryGiftData.effectWord, new Object[0]);
     }
-    for (localWebGiftInfo.comment = paramLuxuryGiftData.effectWord;; localWebGiftInfo.comment = paramLuxuryGiftInfo.comment)
+    else
     {
-      localWebGiftInfo.giftName = paramLuxuryGiftInfo.giftName;
-      localWebGiftInfo.senderName = paramLuxuryGiftData.consumerName;
-      localWebGiftInfo.senderHeadKey = paramLuxuryGiftData.headKey;
-      localWebGiftInfo.senderHeadUrl = paramLuxuryGiftData.headUrl;
-      localWebGiftInfo.anchorName = paramLuxuryGiftData.playName;
-      localWebGiftInfo.anchorUin = paramLuxuryGiftData.playUin;
-      localWebGiftInfo.giftBigIcon = paramLuxuryGiftInfo.bigIcon;
-      localWebGiftInfo.giftSmallIcon = paramLuxuryGiftInfo.smallIcon;
-      localWebGiftInfo.giftTimestamp = paramLuxuryGiftInfo.timestamp;
-      return localWebGiftInfo;
       localWebGiftInfo.effectId = paramLuxuryGiftInfo.effectId;
-      getLuxuryGiftAdapter().getLogger().e("LuxuryGiftComponentImpl", " effectId g= " + paramLuxuryGiftInfo.effectId, new Object[0]);
-      break;
-      label263:
-      getLuxuryGiftAdapter().getLogger().e("LuxuryGiftComponentImpl", " comment  g= " + paramLuxuryGiftInfo.comment, new Object[0]);
+      localLogInterface = getLuxuryGiftAdapter().getLogger();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" effectId g= ");
+      localStringBuilder.append(paramLuxuryGiftInfo.effectId);
+      localLogInterface.e("LuxuryGiftComponentImpl", localStringBuilder.toString(), new Object[0]);
     }
+    if (!TextUtils.isEmpty(paramLuxuryGiftData.effectWord))
+    {
+      localLogInterface = getLuxuryGiftAdapter().getLogger();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" effectWord  e= ");
+      localStringBuilder.append(paramLuxuryGiftData.effectWord);
+      localLogInterface.e("LuxuryGiftComponentImpl", localStringBuilder.toString(), new Object[0]);
+      localWebGiftInfo.comment = paramLuxuryGiftData.effectWord;
+    }
+    else
+    {
+      localLogInterface = getLuxuryGiftAdapter().getLogger();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" comment  g= ");
+      localStringBuilder.append(paramLuxuryGiftInfo.comment);
+      localLogInterface.e("LuxuryGiftComponentImpl", localStringBuilder.toString(), new Object[0]);
+      localWebGiftInfo.comment = paramLuxuryGiftInfo.comment;
+    }
+    localWebGiftInfo.giftName = paramLuxuryGiftInfo.giftName;
+    localWebGiftInfo.senderName = paramLuxuryGiftData.consumerName;
+    localWebGiftInfo.senderHeadKey = paramLuxuryGiftData.headKey;
+    localWebGiftInfo.senderHeadUrl = paramLuxuryGiftData.headUrl;
+    localWebGiftInfo.anchorName = paramLuxuryGiftData.playName;
+    localWebGiftInfo.anchorUin = paramLuxuryGiftData.playUin;
+    localWebGiftInfo.giftBigIcon = paramLuxuryGiftInfo.bigIcon;
+    localWebGiftInfo.giftSmallIcon = paramLuxuryGiftInfo.smallIcon;
+    localWebGiftInfo.giftTimestamp = paramLuxuryGiftInfo.timestamp;
+    return localWebGiftInfo;
   }
   
   private boolean isShowingAnim()
   {
-    return (this.mHonorableGiftController != null) && (this.mHonorableGiftController.isGiftViewBuilded()) && (this.mHonorableGiftController.isWorking());
+    LuxuryGiftController localLuxuryGiftController = this.mHonorableGiftController;
+    return (localLuxuryGiftController != null) && (localLuxuryGiftController.isGiftViewBuilded()) && (this.mHonorableGiftController.isWorking());
   }
   
   private void playNext()
   {
-    if (this.mToPlayGiftsList.size() == 0) {}
-    while (this.mLuxuryGiftAdapter == null) {
+    if (this.mToPlayGiftsList.size() == 0) {
       return;
     }
-    getLuxuryGiftAdapter().getLogger().e("LuxuryGiftComponentImpl", "playNext  size=" + this.mToPlayGiftsList.size(), new Object[0]);
-    LuxuryGiftData localLuxuryGiftData = this.mToPlayGiftsList.peek();
-    if ((localLuxuryGiftData.giftType == 104) || (localLuxuryGiftData.giftType == 101) || (localLuxuryGiftData.giftType == 106))
+    if (this.mLuxuryGiftAdapter == null) {
+      return;
+    }
+    Object localObject = getLuxuryGiftAdapter().getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("playNext  size=");
+    localStringBuilder.append(this.mToPlayGiftsList.size());
+    ((LogInterface)localObject).e("LuxuryGiftComponentImpl", localStringBuilder.toString(), new Object[0]);
+    localObject = this.mToPlayGiftsList.peek();
+    if ((((LuxuryGiftData)localObject).giftType == 104) || (((LuxuryGiftData)localObject).giftType == 101) || (((LuxuryGiftData)localObject).giftType == 106))
     {
       if (!this.mHonorableGiftController.isGiftViewBuilded()) {
         buildRichGiftShowView();
@@ -98,17 +126,28 @@ public class LuxuryGiftComponentImpl
   
   private void sendShowGiftMsg(LuxuryGiftData paramLuxuryGiftData)
   {
-    if ((paramLuxuryGiftData.giftType == 101) || (paramLuxuryGiftData.giftType == 106)) {
-      return;
+    if (paramLuxuryGiftData.giftType != 101)
+    {
+      if (paramLuxuryGiftData.giftType == 106) {
+        return;
+      }
+      LogInterface localLogInterface = getLuxuryGiftAdapter().getLogger();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sendShowGiftMsg e=");
+      localStringBuilder.append(paramLuxuryGiftData);
+      localLogInterface.e("LuxuryGiftComponentImpl", localStringBuilder.toString(), new Object[0]);
     }
-    getLuxuryGiftAdapter().getLogger().e("LuxuryGiftComponentImpl", "sendShowGiftMsg e=" + paramLuxuryGiftData, new Object[0]);
   }
   
   private void showAnimation(LuxuryGiftData paramLuxuryGiftData)
   {
     if (!UIUtil.isScreenPortrait(this.mRootView.getContext()))
     {
-      getLuxuryGiftAdapter().getLogger().i("LuxuryGiftComponentImpl", " showAnimation isPortrait= " + UIUtil.isScreenPortrait(this.mRootView.getContext()), new Object[0]);
+      paramLuxuryGiftData = getLuxuryGiftAdapter().getLogger();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" showAnimation isPortrait= ");
+      ((StringBuilder)localObject).append(UIUtil.isScreenPortrait(this.mRootView.getContext()));
+      paramLuxuryGiftData.i("LuxuryGiftComponentImpl", ((StringBuilder)localObject).toString(), new Object[0]);
       return;
     }
     if (paramLuxuryGiftData == null)
@@ -116,11 +155,21 @@ public class LuxuryGiftComponentImpl
       getLuxuryGiftAdapter().getLogger().i("LuxuryGiftComponentImpl", "showAnimation: info = null.", new Object[0]);
       return;
     }
-    getLuxuryGiftAdapter().getLogger().e("LuxuryGiftComponentImpl", "showAnimation，info.effectId=" + paramLuxuryGiftData.effectId + " info=" + paramLuxuryGiftData.consumerUin, new Object[0]);
+    Object localObject = getLuxuryGiftAdapter().getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("showAnimation，info.effectId=");
+    localStringBuilder.append(paramLuxuryGiftData.effectId);
+    localStringBuilder.append(" info=");
+    localStringBuilder.append(paramLuxuryGiftData.consumerUin);
+    ((LogInterface)localObject).e("LuxuryGiftComponentImpl", localStringBuilder.toString(), new Object[0]);
     paramLuxuryGiftData.playTimeMonitor.waitInQueueTime = System.currentTimeMillis();
     if ((paramLuxuryGiftData.giftType == 104) || (paramLuxuryGiftData.giftType == 101))
     {
-      getLuxuryGiftAdapter().getLogger().e("LuxuryGiftComponentImpl", "showAnimation  type=" + paramLuxuryGiftData.giftType, new Object[0]);
+      localObject = getLuxuryGiftAdapter().getLogger();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("showAnimation  type=");
+      localStringBuilder.append(paramLuxuryGiftData.giftType);
+      ((LogInterface)localObject).e("LuxuryGiftComponentImpl", localStringBuilder.toString(), new Object[0]);
       showRichGiftAnimation(paramLuxuryGiftData);
     }
     if (paramLuxuryGiftData.consumerUin == getLuxuryGiftAdapter().getAccountUin())
@@ -133,22 +182,27 @@ public class LuxuryGiftComponentImpl
   
   public void animViewReady()
   {
-    if (this.mLuxuryGiftAdapter == null) {}
-    do
-    {
+    if (this.mLuxuryGiftAdapter == null) {
       return;
-      getLuxuryGiftAdapter().getLogger().e("LuxuryGiftComponentImpl", "======================animViewReady-----------------", new Object[0]);
-      if ((this.mIsNeedShow) && (this.mHonorableGiftController != null) && (this.mHonorableGiftController.isGiftViewBuilded())) {
+    }
+    getLuxuryGiftAdapter().getLogger().e("LuxuryGiftComponentImpl", "======================animViewReady-----------------", new Object[0]);
+    if (this.mIsNeedShow)
+    {
+      LuxuryGiftController localLuxuryGiftController = this.mHonorableGiftController;
+      if ((localLuxuryGiftController != null) && (localLuxuryGiftController.isGiftViewBuilded())) {
         this.mHonorableGiftController.setGiftViewVisible(true);
       }
-      getLuxuryGiftAdapter().getLogger().e("LuxuryGiftComponentImpl", "sgac - animViewReady PlayNext", new Object[0]);
-      if ((this.mToPlayGiftsList.selfSize() > 0) && (!this.mToPlayGiftsList.isPrevEventSelfEvent()))
-      {
-        getLuxuryGiftAdapter().getLogger().e("LuxuryGiftComponentImpl", " play Self", new Object[0]);
-        playNext();
-        return;
-      }
-    } while (isShowingAnim());
+    }
+    getLuxuryGiftAdapter().getLogger().e("LuxuryGiftComponentImpl", "sgac - animViewReady PlayNext", new Object[0]);
+    if ((this.mToPlayGiftsList.selfSize() > 0) && (!this.mToPlayGiftsList.isPrevEventSelfEvent()))
+    {
+      getLuxuryGiftAdapter().getLogger().e("LuxuryGiftComponentImpl", " play Self", new Object[0]);
+      playNext();
+      return;
+    }
+    if (isShowingAnim()) {
+      return;
+    }
     getLuxuryGiftAdapter().getLogger().e("LuxuryGiftComponentImpl", " play Next ", new Object[0]);
     playNext();
   }
@@ -169,9 +223,10 @@ public class LuxuryGiftComponentImpl
   public void buildRichGiftShowView()
   {
     getLuxuryGiftAdapter().getLogger().i("LuxuryGiftComponentImpl", "buildRichGiftShowView", new Object[0]);
-    if (this.mRichGiftContainerView != null)
+    FrameLayout localFrameLayout = this.mRichGiftContainerView;
+    if (localFrameLayout != null)
     {
-      this.mHonorableGiftController.createGiftView(this.mRichGiftContainerView);
+      this.mHonorableGiftController.createGiftView(localFrameLayout);
       this.mHonorableGiftController.setAnimationListener(this);
     }
   }
@@ -188,23 +243,45 @@ public class LuxuryGiftComponentImpl
   {
     paramLuxuryGiftData.playTimeMonitor.sendTimeStamp = System.currentTimeMillis();
     this.mToPlayGiftsList.offer(paramLuxuryGiftData);
-    if (this.mLuxuryGiftAdapter == null) {}
-    do
-    {
+    if (this.mLuxuryGiftAdapter == null) {
       return;
-      if ((paramLuxuryGiftData.consumerUin == getLuxuryGiftAdapter().getAccountUin()) && (paramLuxuryGiftData.effectType != 1))
-      {
-        getLuxuryGiftAdapter().getLogger().e("LuxuryGiftComponentImpl", " add To PlayList mySelf:" + paramLuxuryGiftData.consumerUin, new Object[0]);
-        if (this.mHonorableGiftController != null) {
-          this.mHonorableGiftController.cancelAnimation();
-        }
-        playNext();
-        return;
+    }
+    if ((paramLuxuryGiftData.consumerUin == getLuxuryGiftAdapter().getAccountUin()) && (paramLuxuryGiftData.effectType != 1))
+    {
+      localLogInterface = getLuxuryGiftAdapter().getLogger();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" add To PlayList mySelf:");
+      localStringBuilder.append(paramLuxuryGiftData.consumerUin);
+      localLogInterface.e("LuxuryGiftComponentImpl", localStringBuilder.toString(), new Object[0]);
+      paramLuxuryGiftData = this.mHonorableGiftController;
+      if (paramLuxuryGiftData != null) {
+        paramLuxuryGiftData.cancelAnimation();
       }
-      getLuxuryGiftAdapter().getLogger().e("LuxuryGiftComponentImpl", "t=" + System.currentTimeMillis() + ",uin=" + paramLuxuryGiftData.consumerUin + ",hornorable=" + this.mHonorableGiftController.isWorking(), new Object[0]);
-    } while (this.mHonorableGiftController.isWorking());
-    getLuxuryGiftAdapter().getLogger().e("LuxuryGiftComponentImpl", "  isWorking= " + this.mHonorableGiftController.isWorking() + ",t =" + System.currentTimeMillis() + ",addToPlayList " + paramLuxuryGiftData, new Object[0]);
-    playNext();
+      playNext();
+      return;
+    }
+    LogInterface localLogInterface = getLuxuryGiftAdapter().getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("t=");
+    localStringBuilder.append(System.currentTimeMillis());
+    localStringBuilder.append(",uin=");
+    localStringBuilder.append(paramLuxuryGiftData.consumerUin);
+    localStringBuilder.append(",hornorable=");
+    localStringBuilder.append(this.mHonorableGiftController.isWorking());
+    localLogInterface.e("LuxuryGiftComponentImpl", localStringBuilder.toString(), new Object[0]);
+    if (!this.mHonorableGiftController.isWorking())
+    {
+      localLogInterface = getLuxuryGiftAdapter().getLogger();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("  isWorking= ");
+      localStringBuilder.append(this.mHonorableGiftController.isWorking());
+      localStringBuilder.append(",t =");
+      localStringBuilder.append(System.currentTimeMillis());
+      localStringBuilder.append(",addToPlayList ");
+      localStringBuilder.append(paramLuxuryGiftData);
+      localLogInterface.e("LuxuryGiftComponentImpl", localStringBuilder.toString(), new Object[0]);
+      playNext();
+    }
   }
   
   public LuxuryGiftAdapter getLuxuryGiftAdapter()
@@ -225,7 +302,8 @@ public class LuxuryGiftComponentImpl
   public void hideLuxuryAnimationView()
   {
     this.mIsNeedShow = false;
-    if ((this.mHonorableGiftController != null) && (this.mHonorableGiftController.isGiftViewBuilded())) {
+    LuxuryGiftController localLuxuryGiftController = this.mHonorableGiftController;
+    if ((localLuxuryGiftController != null) && (localLuxuryGiftController.isGiftViewBuilded())) {
       this.mHonorableGiftController.setGiftViewVisible(false);
     }
   }
@@ -251,12 +329,14 @@ public class LuxuryGiftComponentImpl
     ThreadCenter.clear(this);
     ThreadCenter.clear(this.mHonorableGiftController);
     this.mLuxuryGiftAdapter = null;
+    this.mHonorableGiftController.uninit();
   }
   
   public void onGetLuxuryGiftResInfoList(List<LuxuryGiftInfo> paramList)
   {
-    if (this.mHonorableGiftController != null) {
-      this.mHonorableGiftController.onGetLuxuryGiftResInfoList(paramList);
+    LuxuryGiftController localLuxuryGiftController = this.mHonorableGiftController;
+    if (localLuxuryGiftController != null) {
+      localLuxuryGiftController.onGetLuxuryGiftResInfoList(paramList);
     }
   }
   
@@ -281,7 +361,8 @@ public class LuxuryGiftComponentImpl
   public void showAllLuxuryView()
   {
     this.mIsNeedShow = true;
-    if ((this.mHonorableGiftController != null) && (this.mHonorableGiftController.isGiftViewBuilded())) {
+    LuxuryGiftController localLuxuryGiftController = this.mHonorableGiftController;
+    if ((localLuxuryGiftController != null) && (localLuxuryGiftController.isGiftViewBuilded())) {
       this.mHonorableGiftController.setGiftViewVisible(true);
     }
   }
@@ -289,14 +370,19 @@ public class LuxuryGiftComponentImpl
   public void showLuxuryAnimationView()
   {
     this.mIsNeedShow = true;
-    if ((this.mHonorableGiftController != null) && (this.mHonorableGiftController.isGiftViewBuilded())) {
+    LuxuryGiftController localLuxuryGiftController = this.mHonorableGiftController;
+    if ((localLuxuryGiftController != null) && (localLuxuryGiftController.isGiftViewBuilded())) {
       this.mHonorableGiftController.setGiftViewVisible(true);
     }
   }
   
   public void showRichGiftAnimation(LuxuryGiftData paramLuxuryGiftData)
   {
-    getLuxuryGiftAdapter().getLogger().i("LuxuryGiftComponentImpl", "showRichGiftAnimation: event:" + paramLuxuryGiftData, new Object[0]);
+    Object localObject1 = getLuxuryGiftAdapter().getLogger();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("showRichGiftAnimation: event:");
+    ((StringBuilder)localObject2).append(paramLuxuryGiftData);
+    ((LogInterface)localObject1).i("LuxuryGiftComponentImpl", ((StringBuilder)localObject2).toString(), new Object[0]);
     if (paramLuxuryGiftData == null)
     {
       getLuxuryGiftAdapter().getLogger().i("LuxuryGiftComponentImpl", "exception gift == null", new Object[0]);
@@ -307,27 +393,36 @@ public class LuxuryGiftComponentImpl
       getLuxuryGiftAdapter().getLogger().i("LuxuryGiftComponentImpl", "exceptionLuxuryGiftComponentImplnot init", new Object[0]);
       return;
     }
-    if ((this.mHonorableGiftController == null) || (!this.mHonorableGiftController.isGiftViewBuilded()))
+    localObject1 = this.mHonorableGiftController;
+    if ((localObject1 != null) && (((LuxuryGiftController)localObject1).isGiftViewBuilded()))
     {
-      getLuxuryGiftAdapter().getLogger().i("LuxuryGiftComponentImpl", "exceptionmRichGiftShowView not init", new Object[0]);
+      localObject1 = getLuxuryGiftAdapter().getLuxuryGiftInfo(paramLuxuryGiftData.giftType, paramLuxuryGiftData.giftId, true);
+      if (localObject1 == null)
+      {
+        localObject1 = getLuxuryGiftAdapter().getLogger();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("!!!!!!!!!!!! showRichGiftAnimation, giftInfo is null  id=");
+        ((StringBuilder)localObject2).append(paramLuxuryGiftData.giftId);
+        ((LogInterface)localObject1).e("LuxuryGiftComponentImpl", ((StringBuilder)localObject2).toString(), new Object[0]);
+        getLuxuryGiftAdapter().queryLuxuryGiftInfo(paramLuxuryGiftData.giftId, new LuxuryGiftComponentImpl.1(this, paramLuxuryGiftData));
+        return;
+      }
+      localObject2 = getLuxuryGiftAdapter().getLogger();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("showRichGiftAnimation: giftinfo:");
+      localStringBuilder.append(localObject1);
+      ((LogInterface)localObject2).i("LuxuryGiftComponentImpl", localStringBuilder.toString(), new Object[0]);
+      this.mHonorableGiftController.showAnimation(constructWebGiftInfo(paramLuxuryGiftData, (LuxuryGiftInfo)localObject1), paramLuxuryGiftData);
       return;
     }
-    LuxuryGiftInfo localLuxuryGiftInfo = getLuxuryGiftAdapter().getLuxuryGiftInfo(paramLuxuryGiftData.giftType, paramLuxuryGiftData.giftId, true);
-    if (localLuxuryGiftInfo == null)
-    {
-      getLuxuryGiftAdapter().getLogger().e("LuxuryGiftComponentImpl", "!!!!!!!!!!!! showRichGiftAnimation, giftInfo is null  id=" + paramLuxuryGiftData.giftId, new Object[0]);
-      getLuxuryGiftAdapter().queryLuxuryGiftInfo(paramLuxuryGiftData.giftId, new LuxuryGiftComponentImpl.1(this, paramLuxuryGiftData));
-      return;
-    }
-    getLuxuryGiftAdapter().getLogger().i("LuxuryGiftComponentImpl", "showRichGiftAnimation: giftinfo:" + localLuxuryGiftInfo, new Object[0]);
-    this.mHonorableGiftController.showAnimation(constructWebGiftInfo(paramLuxuryGiftData, localLuxuryGiftInfo), paramLuxuryGiftData);
+    getLuxuryGiftAdapter().getLogger().i("LuxuryGiftComponentImpl", "exceptionmRichGiftShowView not init", new Object[0]);
   }
   
   public void stopLuxuyAnimationAndHide() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.uicomponent.luxurygiftcomponent.LuxuryGiftComponentImpl
  * JD-Core Version:    0.7.0.1
  */

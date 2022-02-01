@@ -62,50 +62,56 @@ public class BeautyParam
       {
       default: 
         this.basic3 = initStantardFace();
-        switch (BeautyParam.1.$SwitchMap$com$tencent$ttpic$openapi$filter$BeautyParam$MeshType[paramMeshType.ordinal()])
-        {
-        default: 
-          this.basic4 = initStantardFace();
-          label280:
-          this.basic5 = initLongFace();
-          this.basic6 = initRoundFace();
-          this.basic7 = initSquareFace();
-          this.basic8 = initDiamondFace();
-        }
         break;
+      case 7: 
+        this.basic3 = initBasic4Mesh_Pudding260();
+        break;
+      case 6: 
+        this.basic3 = initBasic4Mesh_Pudding250();
+        break;
+      case 5: 
+        this.basic3 = initBasic4Mesh_Pudding240();
+        break;
+      case 4: 
+        this.basic3 = initBasic4Mesh_Pudding220();
+        break;
+      case 2: 
+      case 3: 
+        this.basic3 = initBasic4Mesh();
+        break;
+      case 1: 
+        this.basic3 = initBasic573Mesh();
       }
+      int i = BeautyParam.1.$SwitchMap$com$tencent$ttpic$openapi$filter$BeautyParam$MeshType[paramMeshType.ordinal()];
+      if ((i != 2) && (i != 3)) {
+        this.basic4 = initStantardFace();
+      } else {
+        this.basic4 = initBasic4Mesh();
+      }
+      this.basic5 = initLongFace();
+      this.basic6 = initRoundFace();
+      this.basic7 = initSquareFace();
+      this.basic8 = initDiamondFace();
+      this.guideBasic = initGuideMesh();
     }
-    for (this.guideBasic = initGuideMesh();; this.guideBasic = EMPTY_PARAM)
+    else
     {
-      this.basic = this.basic4;
-      return;
-      this.basic3 = initBasic573Mesh();
-      break;
-      this.basic3 = initBasic4Mesh();
-      break;
-      this.basic3 = initBasic4Mesh_Pudding220();
-      break;
-      this.basic3 = initBasic4Mesh_Pudding240();
-      break;
-      this.basic3 = initBasic4Mesh_Pudding250();
-      break;
-      this.basic3 = initBasic4Mesh_Pudding260();
-      break;
-      this.basic4 = initBasic4Mesh();
-      break label280;
-      this.eye = EMPTY_PARAM;
-      this.nose = EMPTY_PARAM;
-      this.vlian = EMPTY_PARAM;
-      this.zhailian = EMPTY_PARAM;
-      this.xiaba = EMPTY_PARAM;
-      this.faceShorten = EMPTY_PARAM;
-      this.basic3 = EMPTY_PARAM;
-      this.basic4 = EMPTY_PARAM;
-      this.basic5 = EMPTY_PARAM;
-      this.basic6 = EMPTY_PARAM;
-      this.basic7 = EMPTY_PARAM;
-      this.basic8 = EMPTY_PARAM;
+      paramMeshType = EMPTY_PARAM;
+      this.eye = paramMeshType;
+      this.nose = paramMeshType;
+      this.vlian = paramMeshType;
+      this.zhailian = paramMeshType;
+      this.xiaba = paramMeshType;
+      this.faceShorten = paramMeshType;
+      this.basic3 = paramMeshType;
+      this.basic4 = paramMeshType;
+      this.basic5 = paramMeshType;
+      this.basic6 = paramMeshType;
+      this.basic7 = paramMeshType;
+      this.basic8 = paramMeshType;
+      this.guideBasic = paramMeshType;
     }
+    this.basic = this.basic4;
   }
   
   private DistortParam initBasic4Mesh()
@@ -214,87 +220,103 @@ public class BeautyParam
     {
     default: 
       return EMPTY_PARAM;
-    case 1: 
-      return this.vlian;
-    case 2: 
-      return this.zhailian;
-    case 3: 
-      return this.xiaba;
+    case 12: 
+      return this.basic8;
+    case 11: 
+      return this.basic7;
+    case 10: 
+      return this.basic6;
+    case 9: 
+      return this.basic5;
+    case 8: 
+      return this.basic4;
+    case 7: 
+      return this.basic3;
+    case 6: 
+      return this.faceShorten;
+    case 5: 
+      return this.nose;
     case 4: 
       if (this.meshType == BeautyParam.MeshType.PITU) {
         return this.eye4Pitu;
       }
       return this.eye;
-    case 5: 
-      return this.nose;
-    case 6: 
-      return this.faceShorten;
-    case 7: 
-      return this.basic3;
-    case 8: 
-      return this.basic4;
-    case 9: 
-      return this.basic5;
-    case 10: 
-      return this.basic6;
-    case 11: 
-      return this.basic7;
+    case 3: 
+      return this.xiaba;
+    case 2: 
+      return this.zhailian;
     }
-    return this.basic8;
+    return this.vlian;
   }
   
   public void setDistortParam(BeautyRealConfig.TYPE paramTYPE, DistortParam paramDistortParam)
   {
     switch (BeautyParam.1.$SwitchMap$com$tencent$ttpic$openapi$config$BeautyRealConfig$TYPE[paramTYPE.ordinal()])
     {
+    default: 
+      break;
+    case 12: 
+      this.basic8 = paramDistortParam;
+      break;
+    case 11: 
+      this.basic7 = paramDistortParam;
+      break;
+    case 10: 
+      this.basic6 = paramDistortParam;
+      break;
+    case 9: 
+      this.basic5 = paramDistortParam;
+      break;
+    case 8: 
+      this.basic4 = paramDistortParam;
+      break;
+    case 7: 
+      this.basic3 = paramDistortParam;
+      break;
+    case 6: 
+      this.faceShorten = paramDistortParam;
+      break;
+    case 5: 
+      this.nose = paramDistortParam;
+      break;
+    case 4: 
+      this.eye = paramDistortParam;
+      break;
+    case 3: 
+      this.xiaba = paramDistortParam;
+      break;
+    case 2: 
+      this.zhailian = paramDistortParam;
+      break;
+    case 1: 
+      this.vlian = paramDistortParam;
     }
-    for (;;)
+    switch (BeautyParam.1.$SwitchMap$com$tencent$ttpic$openapi$config$BeautyRealConfig$TYPE[paramTYPE.ordinal()])
     {
-      switch (BeautyParam.1.$SwitchMap$com$tencent$ttpic$openapi$config$BeautyRealConfig$TYPE[paramTYPE.ordinal()])
-      {
-      default: 
-        return;
-        this.vlian = paramDistortParam;
-        continue;
-        this.eye = paramDistortParam;
-        continue;
-        this.nose = paramDistortParam;
-        continue;
-        this.zhailian = paramDistortParam;
-        continue;
-        this.xiaba = paramDistortParam;
-        continue;
-        this.faceShorten = paramDistortParam;
-        continue;
-        this.basic3 = paramDistortParam;
-        continue;
-        this.basic4 = paramDistortParam;
-        continue;
-        this.basic5 = paramDistortParam;
-        continue;
-        this.basic6 = paramDistortParam;
-        continue;
-        this.basic7 = paramDistortParam;
-        continue;
-        this.basic8 = paramDistortParam;
-      }
+    default: 
+      return;
+    case 12: 
+      this.basic = this.basic8;
+      return;
+    case 11: 
+      this.basic = this.basic7;
+      return;
+    case 10: 
+      this.basic = this.basic6;
+      return;
+    case 9: 
+      this.basic = this.basic5;
+      return;
+    case 8: 
+      this.basic = this.basic4;
+      return;
     }
     this.basic = this.basic3;
-    return;
-    this.basic = this.basic4;
-    return;
-    this.basic = this.basic5;
-    return;
-    this.basic = this.basic6;
-    return;
-    this.basic = this.basic7;
-    return;
-    this.basic = this.basic8;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.BeautyParam
  * JD-Core Version:    0.7.0.1
  */

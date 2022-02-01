@@ -35,17 +35,20 @@ class UserManager$2
       }
       SLog.d("Q.qqstory.user.UserManager", "get server inf success ,%s , time :%d", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID, Long.valueOf(l - this.jdField_a_of_type_Long) });
     }
+    else
+    {
+      SLog.d("Q.qqstory.user.UserManager", "get server info fail , %s, time :%d", new Object[] { paramErrorMessage, Long.valueOf(l - this.jdField_a_of_type_Long) });
+    }
     synchronized (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID)
     {
       this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID.notifyAll();
       return;
-      SLog.d("Q.qqstory.user.UserManager", "get server info fail , %s, time :%d", new Object[] { paramErrorMessage, Long.valueOf(l - this.jdField_a_of_type_Long) });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.UserManager.2
  * JD-Core Version:    0.7.0.1
  */

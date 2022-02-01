@@ -20,11 +20,11 @@ class MoveFileActivity$6
     if (TroopFileUtils.b(paramEditable))
     {
       localTextView.setEnabled(false);
-      localTextView.setTextColor(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getResources().getColor(2131165629));
+      localTextView.setTextColor(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getResources().getColor(2131165606));
       return;
     }
     localTextView.setEnabled(true);
-    localTextView.setTextColor(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getResources().getColor(2131165624));
+    localTextView.setTextColor(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getResources().getColor(2131165601));
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -33,26 +33,27 @@ class MoveFileActivity$6
   {
     if (paramInt3 > 0)
     {
-      paramCharSequence = paramCharSequence.toString();
-      String str = TroopFileUtils.b(paramCharSequence);
-      if ((paramCharSequence == null) || (paramCharSequence.equals(str))) {
-        break label57;
+      Object localObject = paramCharSequence.toString();
+      paramCharSequence = TroopFileUtils.b((String)localObject);
+      if ((localObject != null) && (!((String)localObject).equals(paramCharSequence)))
+      {
+        localObject = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity;
+        ((MoveFileActivity)localObject).jdField_a_of_type_Int = paramInt1;
+        ((MoveFileActivity)localObject).jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence);
+        return;
       }
-      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Int = paramInt1;
-      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(str);
+      if (this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Int);
+        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Boolean = false;
+      }
     }
-    label57:
-    while (!this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.file.MoveFileActivity.6
  * JD-Core Version:    0.7.0.1
  */

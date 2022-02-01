@@ -22,10 +22,10 @@ public final class Global
   
   private static boolean assertGlobal()
   {
-    if (sGlobal == null) {
-      throw new IllegalStateException("Global hadn't initialized.");
+    if (sGlobal != null) {
+      return true;
     }
-    return true;
+    throw new IllegalStateException("Global hadn't initialized.");
   }
   
   private static String buildPaths(String paramString1, String paramString2)
@@ -33,7 +33,11 @@ public final class Global
     if (TextUtils.isEmpty(paramString2)) {
       return paramString1;
     }
-    return paramString1 + File.separator + paramString2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString2);
+    return localStringBuilder.toString();
   }
   
   public static Context getApplicationContext()
@@ -96,7 +100,7 @@ public final class Global
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.kwstudio.office.base.Global
  * JD-Core Version:    0.7.0.1
  */

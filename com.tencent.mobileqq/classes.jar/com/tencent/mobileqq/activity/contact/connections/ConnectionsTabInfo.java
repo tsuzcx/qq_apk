@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.contact.connections;
 
-import android.support.annotation.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -58,7 +57,7 @@ public class ConnectionsTabInfo
     return localJSONObject;
   }
   
-  public boolean equals(@Nullable Object paramObject)
+  public boolean equals(Object paramObject)
   {
     if ((paramObject instanceof ConnectionsTabInfo)) {
       return this.jdField_a_of_type_Int == ((ConnectionsTabInfo)paramObject).jdField_a_of_type_Int;
@@ -68,12 +67,23 @@ public class ConnectionsTabInfo
   
   public String toString()
   {
-    return "tab_id=" + this.jdField_a_of_type_Int + " recommend_count=" + this.jdField_b_of_type_Int + " tab_name=" + this.jdField_a_of_type_JavaLangString + " icon_url_select=" + this.jdField_b_of_type_JavaLangString + " icon_url_unselect=" + this.c;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("tab_id=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" recommend_count=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(" tab_name=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" icon_url_select=");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" icon_url_unselect=");
+    localStringBuilder.append(this.c);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.connections.ConnectionsTabInfo
  * JD-Core Version:    0.7.0.1
  */

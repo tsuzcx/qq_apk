@@ -20,33 +20,35 @@ class AdExposureListHolder$1
     if ((localObject1 != null) && (((File)localObject1).exists()))
     {
       localObject1 = b.read((File)localObject1);
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {}
-    }
-    try
-    {
-      JSONArray localJSONArray = new JSONArray((String)localObject1);
-      int i;
-      if (localJSONArray.length() > 0)
-      {
-        localObject1 = AdExposureListHolder.access$100(this.this$0);
-        i = 0;
-      }
-      try
-      {
-        while (i < localJSONArray.length())
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        try
         {
-          AdExposureListHolder.access$200(this.this$0).add(localJSONArray.get(i).toString());
-          i += 1;
+          JSONArray localJSONArray = new JSONArray((String)localObject1);
+          if (localJSONArray.length() > 0)
+          {
+            localObject1 = AdExposureListHolder.access$100(this.this$0);
+            int i = 0;
+            try
+            {
+              while (i < localJSONArray.length())
+              {
+                AdExposureListHolder.access$200(this.this$0).add(localJSONArray.get(i).toString());
+                i += 1;
+              }
+            }
+            finally {}
+          }
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("init from file ids :");
+          ((StringBuilder)localObject1).append(AdExposureListHolder.access$200(this.this$0).size());
+          AdLog.i("AdExposureListHolder", ((StringBuilder)localObject1).toString());
+          return;
         }
-        AdLog.i("AdExposureListHolder", "init from file ids :" + AdExposureListHolder.access$200(this.this$0).size());
-        return;
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+        }
       }
-      finally {}
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
     }
   }
 }

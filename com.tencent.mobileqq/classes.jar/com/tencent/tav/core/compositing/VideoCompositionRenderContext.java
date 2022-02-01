@@ -73,12 +73,18 @@ public class VideoCompositionRenderContext
   
   public String toString()
   {
-    return "VideoCompositionRenderContext{size=" + this.size + ", renderContext=" + this.renderContext + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VideoCompositionRenderContext{size=");
+    localStringBuilder.append(this.size);
+    localStringBuilder.append(", renderContext=");
+    localStringBuilder.append(this.renderContext);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tav.core.compositing.VideoCompositionRenderContext
  * JD-Core Version:    0.7.0.1
  */

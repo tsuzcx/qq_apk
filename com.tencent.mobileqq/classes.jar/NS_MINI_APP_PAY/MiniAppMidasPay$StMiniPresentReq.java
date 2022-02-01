@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class MiniAppMidasPay$StMiniPresentReq
   extends MessageMicro<StMiniPresentReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 50, 58, 66, 74, 80, 90, 98, 106, 112, 122 }, new String[] { "extInfo", "openid", "qq_appid", "offer_id", "ts", "zone_id", "pf", "pfkey", "user_ip", "present_counts", "bill_no", "sig", "qq_sig", "sandbox_env", "openkey" }, new Object[] { null, "", "", "", Long.valueOf(0L), "", "", "", "", Long.valueOf(0L), "", "", "", Long.valueOf(0L), "" }, StMiniPresentReq.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField bill_no = PBField.initString("");
   public COMM.StCommonExt extInfo = new COMM.StCommonExt();
   public final PBStringField offer_id = PBField.initString("");
@@ -26,10 +26,16 @@ public final class MiniAppMidasPay$StMiniPresentReq
   public final PBInt64Field ts = PBField.initInt64(0L);
   public final PBStringField user_ip = PBField.initString("");
   public final PBStringField zone_id = PBField.initString("");
+  
+  static
+  {
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 50, 58, 66, 74, 80, 90, 98, 106, 112, 122 }, new String[] { "extInfo", "openid", "qq_appid", "offer_id", "ts", "zone_id", "pf", "pfkey", "user_ip", "present_counts", "bill_no", "sig", "qq_sig", "sandbox_env", "openkey" }, new Object[] { null, "", "", "", localLong, "", "", "", "", localLong, "", "", "", localLong, "" }, StMiniPresentReq.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MINI_APP_PAY.MiniAppMidasPay.StMiniPresentReq
  * JD-Core Version:    0.7.0.1
  */

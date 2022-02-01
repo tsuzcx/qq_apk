@@ -12,15 +12,16 @@ public class SettingsConfigHelper
   
   public static void a(AppInterface paramAppInterface, boolean paramBoolean)
   {
-    if (paramAppInterface != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SettingsConfigHelper", 2, String.format("setUseNewSettings useNewSettings=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-      }
-      paramAppInterface = paramAppInterface.getPreferences().edit();
-      paramAppInterface.putBoolean("sp_key_use_new_settings", paramBoolean);
-      paramAppInterface.apply();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setUseNewSettings useNewSettings=%s ");
+    localStringBuilder.append(paramBoolean);
+    QLog.d("SettingsConfigHelper", 1, localStringBuilder.toString());
+    if (paramAppInterface == null) {
+      return;
     }
+    paramAppInterface = paramAppInterface.getPreferences().edit();
+    paramAppInterface.putBoolean("sp_key_use_new_settings", paramBoolean);
+    paramAppInterface.apply();
   }
   
   public static boolean a(AppInterface paramAppInterface)
@@ -32,17 +33,17 @@ public class SettingsConfigHelper
       {
         jdField_a_of_type_Boolean = paramAppInterface.getPreferences().getBoolean("sp_key_use_new_settings", false);
         jdField_a_of_type_Long = l;
-        if (QLog.isColorLevel()) {
-          QLog.d("SettingsConfigHelper", 2, String.format("getUseNewSettings init useNewSettings=%s", new Object[] { Boolean.valueOf(jdField_a_of_type_Boolean) }));
-        }
       }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("SettingsConfigHelper", 2, String.format("getUseNewSettings init useNewSettings=%s", new Object[] { Boolean.valueOf(jdField_a_of_type_Boolean) }));
     }
     return jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.settings.config.SettingsConfigHelper
  * JD-Core Version:    0.7.0.1
  */

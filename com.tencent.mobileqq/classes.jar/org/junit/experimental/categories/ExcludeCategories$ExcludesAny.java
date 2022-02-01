@@ -19,12 +19,15 @@ class ExcludeCategories$ExcludesAny
   
   public String describe()
   {
-    return "excludes " + super.describe();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("excludes ");
+    localStringBuilder.append(super.describe());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.experimental.categories.ExcludeCategories.ExcludesAny
  * JD-Core Version:    0.7.0.1
  */

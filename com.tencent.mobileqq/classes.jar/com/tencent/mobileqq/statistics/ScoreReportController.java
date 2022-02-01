@@ -26,15 +26,19 @@ public class ScoreReportController
     localReportData.jdField_d_of_type_JavaLangString = paramString1;
     localReportData.jdField_f_of_type_JavaLangString = paramString2;
     paramString1 = a(localReportData);
-    if (QLog.isColorLevel()) {
-      QLog.i("ScoreReportController", 1, "getReportingDetail=" + paramString1);
+    if (QLog.isColorLevel())
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("getReportingDetail=");
+      paramString2.append(paramString1);
+      QLog.i("ScoreReportController", 1, paramString2.toString());
     }
     ReportController.b(paramQQAppInterface, "dc02653", paramString1, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.ScoreReportController
  * JD-Core Version:    0.7.0.1
  */

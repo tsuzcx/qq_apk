@@ -1,32 +1,30 @@
 package com.tencent.av.ui;
 
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.guide.GuideHelper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
+import android.view.View.OnTouchListener;
+import com.tencent.qphone.base.util.QLog;
 
 class EffectSettingUi$4
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
   EffectSettingUi$4(EffectSettingUi paramEffectSettingUi) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    EffectSettingUi.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, -1007L);
-    this.a.c(-1007L, true);
-    AVEffectReport.b();
-    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      AVActivity localAVActivity = (AVActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-      localAVActivity.a.a(-1007L, localAVActivity, 99, 0);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    EffectSettingUi.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, -1008L);
+    paramView = this.a.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("m_qav_effect_bottom, onTouchEvent[");
+    localStringBuilder.append(paramMotionEvent.getAction());
+    localStringBuilder.append("]");
+    QLog.w(paramView, 1, localStringBuilder.toString());
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.EffectSettingUi.4
  * JD-Core Version:    0.7.0.1
  */

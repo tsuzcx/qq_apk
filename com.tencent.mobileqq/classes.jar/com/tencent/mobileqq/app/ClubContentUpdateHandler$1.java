@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import com.tencent.mobileqq.apollo.api.IApolloManagerService;
-import com.tencent.mobileqq.apollo.api.uitls.IApolloUtil;
+import com.tencent.mobileqq.apollo.res.api.IApolloResManager;
+import com.tencent.mobileqq.apollo.utils.api.IApolloUtil;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 
@@ -14,23 +14,33 @@ class ClubContentUpdateHandler$1
   {
     try
     {
-      IApolloManagerService localIApolloManagerService = (IApolloManagerService)this.this$0.a.getRuntimeService(IApolloManagerService.class, "all");
+      Object localObject = (IApolloResManager)this.this$0.a.getRuntimeService(IApolloResManager.class, "all");
       int i = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloPanelJsonVer(1);
       if (i != this.jdField_a_of_type_Int) {
-        localIApolloManagerService.downloadJson(1);
+        ((IApolloResManager)localObject).downloadJson(1);
       }
-      QLog.i("ClubContentUpdateHandler", 1, "handleApolloPanelRelTimeUpdate name: " + this.jdField_a_of_type_JavaLangString + ", ver: " + this.jdField_a_of_type_Int + ", locver: " + i);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleApolloPanelRelTimeUpdate name: ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(", ver: ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(", locver: ");
+      ((StringBuilder)localObject).append(i);
+      QLog.i("ClubContentUpdateHandler", 1, ((StringBuilder)localObject).toString());
       return;
     }
     catch (Exception localException)
     {
-      QLog.e("ClubContentUpdateHandler", 1, "handleApolloPanelRealTimeUpdate failed" + localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleApolloPanelRealTimeUpdate failed");
+      localStringBuilder.append(localException);
+      QLog.e("ClubContentUpdateHandler", 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ClubContentUpdateHandler.1
  * JD-Core Version:    0.7.0.1
  */

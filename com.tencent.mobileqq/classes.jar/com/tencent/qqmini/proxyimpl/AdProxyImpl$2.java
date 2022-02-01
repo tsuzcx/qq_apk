@@ -23,27 +23,35 @@ class AdProxyImpl$2
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if ((paramBoolean) && (paramJSONObject != null)) {}
-    while (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener == null) {
+    if ((paramBoolean) && (paramJSONObject != null)) {
       try
       {
-        Object localObject = (MiniAppAd.StGetAdRsp)paramJSONObject.get("response");
+        Object localObject2 = (MiniAppAd.StGetAdRsp)paramJSONObject.get("response");
         int i = paramJSONObject.getInt("retCode");
-        String str = paramJSONObject.getString("errMsg");
-        paramJSONObject = ((MiniAppAd.StGetAdRsp)localObject).strAdsJson.get();
-        QLog.d("MiniLoadingAdManager", 1, "selectAd receive retCode= " + i + " errMsg=" + str);
-        if (QLog.isColorLevel()) {
-          QLog.d("AdProxyImpl", 2, "adJson=" + paramJSONObject);
+        Object localObject1 = paramJSONObject.getString("errMsg");
+        paramJSONObject = ((MiniAppAd.StGetAdRsp)localObject2).strAdsJson.get();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("selectAd receive retCode= ");
+        ((StringBuilder)localObject2).append(i);
+        ((StringBuilder)localObject2).append(" errMsg=");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        QLog.d("MiniLoadingAdManager", 1, ((StringBuilder)localObject2).toString());
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("adJson=");
+          ((StringBuilder)localObject1).append(paramJSONObject);
+          QLog.d("AdProxyImpl", 2, ((StringBuilder)localObject1).toString());
         }
         if ((i == 0) && (!TextUtils.isEmpty(paramJSONObject)))
         {
-          localObject = AdUtils.convertJson2GdtAds(paramJSONObject);
-          if ((localObject != null) && (((List)localObject).size() > 0))
+          localObject1 = AdUtils.convertJson2GdtAds(paramJSONObject);
+          if ((localObject1 != null) && (((List)localObject1).size() > 0))
           {
-            localObject = (GdtAd)((List)localObject).get(0);
-            if ((localObject != null) && (((GdtAd)localObject).info != null) && (((GdtAd)localObject).info.report_info != null) && (((GdtAd)localObject).info.report_info.trace_info != null))
+            localObject1 = (GdtAd)((List)localObject1).get(0);
+            if ((localObject1 != null) && (((GdtAd)localObject1).info != null) && (((GdtAd)localObject1).info.report_info != null) && (((GdtAd)localObject1).info.report_info.trace_info != null))
             {
-              long l = ((GdtAd)localObject).info.report_info.trace_info.aid.get();
+              long l = ((GdtAd)localObject1).info.report_info.trace_info.aid.get();
               this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener.onSelectAdProcessDone(paramJSONObject, l);
               return;
             }
@@ -55,12 +63,15 @@ class AdProxyImpl$2
         QLog.e("MiniLoadingAdManager", 1, "selectAd getRewardedVideoADInfo error", paramJSONObject);
       }
     }
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener.onSelectAdProcessDone(null, -1L);
+    paramJSONObject = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener;
+    if (paramJSONObject != null) {
+      paramJSONObject.onSelectAdProcessDone(null, -1L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.2
  * JD-Core Version:    0.7.0.1
  */

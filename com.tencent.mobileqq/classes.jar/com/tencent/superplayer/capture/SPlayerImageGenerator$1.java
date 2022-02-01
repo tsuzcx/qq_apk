@@ -11,21 +11,23 @@ class SPlayerImageGenerator$1
   
   public void onCaptureVideoFailed(int paramInt)
   {
-    if (this.val$listener != null) {
-      this.val$listener.onCaptureVideoFailed(paramInt);
+    ISPlayerImageGenerator.Listener localListener = this.val$listener;
+    if (localListener != null) {
+      localListener.onCaptureVideoFailed(paramInt);
     }
   }
   
   public void onCaptureVideoSuccess(Bitmap paramBitmap)
   {
-    if (this.val$listener != null) {
-      this.val$listener.onCaptureVideoSuccess(paramBitmap);
+    ISPlayerImageGenerator.Listener localListener = this.val$listener;
+    if (localListener != null) {
+      localListener.onCaptureVideoSuccess(paramBitmap);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.capture.SPlayerImageGenerator.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk;
 
-import androidx.annotation.NonNull;
-
 public class ExcitingTransferUploadChnConfigInfo
 {
   public long nConnectTimeout = 7000L;
@@ -14,15 +12,33 @@ public class ExcitingTransferUploadChnConfigInfo
   public long uMuliFileSizeLimit = 10485760L;
   public int uPieceSize = 524288;
   
-  @NonNull
   public String toString()
   {
-    return "uMuliFileSizeLimit:" + this.uMuliFileSizeLimit + " uMaxChannelNum:" + this.uMaxChannelNum + " uPieceSize:" + this.uPieceSize + "nMaxEachHostTotalUseCount:" + this.nMaxEachHostTotalUseCount + " nMaxEachHostErrorCount:" + this.nMaxEachHostErrorCount + " nMaxEachHostParallelUseCount:" + this.nMaxEachHostParallelUseCount + " nConnectTimeout:" + this.nConnectTimeout + " nDataTimeout:" + this.nDataTimeout + " nTotoalDataTimeout:" + this.nTotoalDataTimeout;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("uMuliFileSizeLimit:");
+    localStringBuilder.append(this.uMuliFileSizeLimit);
+    localStringBuilder.append(" uMaxChannelNum:");
+    localStringBuilder.append(this.uMaxChannelNum);
+    localStringBuilder.append(" uPieceSize:");
+    localStringBuilder.append(this.uPieceSize);
+    localStringBuilder.append("nMaxEachHostTotalUseCount:");
+    localStringBuilder.append(this.nMaxEachHostTotalUseCount);
+    localStringBuilder.append(" nMaxEachHostErrorCount:");
+    localStringBuilder.append(this.nMaxEachHostErrorCount);
+    localStringBuilder.append(" nMaxEachHostParallelUseCount:");
+    localStringBuilder.append(this.nMaxEachHostParallelUseCount);
+    localStringBuilder.append(" nConnectTimeout:");
+    localStringBuilder.append(this.nConnectTimeout);
+    localStringBuilder.append(" nDataTimeout:");
+    localStringBuilder.append(this.nDataTimeout);
+    localStringBuilder.append(" nTotoalDataTimeout:");
+    localStringBuilder.append(this.nTotoalDataTimeout);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadChnConfigInfo
  * JD-Core Version:    0.7.0.1
  */

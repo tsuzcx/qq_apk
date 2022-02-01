@@ -18,50 +18,53 @@ public class MiniAppCheckSessionServlet
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    localBundle = new Bundle();
-    for (;;)
+    Bundle localBundle = new Bundle();
+    try
     {
-      try
+      localBundle.putInt("key_index", paramIntent.getIntExtra("key_index", -1));
+      if (paramFromServiceMsg != null)
       {
-        localBundle.putInt("key_index", paramIntent.getIntExtra("key_index", -1));
-        if (paramFromServiceMsg == null) {
-          continue;
+        if (paramFromServiceMsg.isSuccess())
+        {
+          PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+          localStQWebRsp.mergeFrom(WupUtil.b(paramFromServiceMsg.getWupBuffer()));
+          localBundle.putInt("key_index", (int)localStQWebRsp.Seq.get());
+          if ((localStQWebRsp.retCode != null) && (localStQWebRsp.errMsg != null))
+          {
+            localBundle.putLong("ret", localStQWebRsp.retCode.get());
+            localBundle.putString("errMsg", localStQWebRsp.errMsg.get().toString());
+            notifyObserver(paramIntent, 1002, true, localBundle, MiniAppObserver.class);
+          }
+          else
+          {
+            notifyObserver(paramIntent, 1002, false, localBundle, MiniAppObserver.class);
+          }
         }
-        if (!paramFromServiceMsg.isSuccess()) {
-          continue;
+        else
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("MiniAppCheckSessionServlet", 2, "inform MiniAppGetLoginCodeServlet isSuccess false");
+          }
+          notifyObserver(paramIntent, 1002, false, localBundle, MiniAppObserver.class);
         }
-        PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(WupUtil.b(paramFromServiceMsg.getWupBuffer()));
-        localBundle.putInt("key_index", (int)localStQWebRsp.Seq.get());
-        if ((localStQWebRsp.retCode == null) || (localStQWebRsp.errMsg == null)) {
-          continue;
-        }
-        localBundle.putLong("ret", localStQWebRsp.retCode.get());
-        localBundle.putString("errMsg", localStQWebRsp.errMsg.get().toString());
-        notifyObserver(paramIntent, 1002, true, localBundle, MiniAppObserver.class);
       }
-      catch (Throwable localThrowable)
+      else
       {
-        QLog.e("MiniAppCheckSessionServlet", 1, localThrowable + "onReceive error");
-        notifyObserver(paramIntent, 1002, false, localBundle, MiniAppObserver.class);
-        continue;
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("MiniAppCheckSessionServlet", 2, "inform QZoneGetGroupCountServlet resultcode fail.");
         }
-        QLog.d("MiniAppCheckSessionServlet", 2, "inform MiniAppGetLoginCodeServlet isSuccess false");
         notifyObserver(paramIntent, 1002, false, localBundle, MiniAppObserver.class);
-        continue;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("MiniAppCheckSessionServlet", 2, "inform QZoneGetGroupCountServlet resultcode fail.");
-        notifyObserver(paramIntent, 1002, false, localBundle, MiniAppObserver.class);
-        continue;
       }
-      doReport(paramIntent, paramFromServiceMsg);
-      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localThrowable);
+      localStringBuilder.append("onReceive error");
+      QLog.e("MiniAppCheckSessionServlet", 1, localStringBuilder.toString());
       notifyObserver(paramIntent, 1002, false, localBundle, MiniAppObserver.class);
     }
+    doReport(paramIntent, paramFromServiceMsg);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -82,7 +85,7 @@ public class MiniAppCheckSessionServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppCheckSessionServlet
  * JD-Core Version:    0.7.0.1
  */

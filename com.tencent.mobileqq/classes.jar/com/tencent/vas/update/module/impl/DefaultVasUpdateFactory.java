@@ -15,15 +15,16 @@ public class DefaultVasUpdateFactory
   
   public static DefaultVasUpdateFactory getInstance()
   {
-    if (mInstance == null) {}
-    try
-    {
-      if (mInstance == null) {
-        mInstance = new DefaultVasUpdateFactory();
+    if (mInstance == null) {
+      try
+      {
+        if (mInstance == null) {
+          mInstance = new DefaultVasUpdateFactory();
+        }
       }
-      return mInstance;
+      finally {}
     }
-    finally {}
+    return mInstance;
   }
   
   public ICmdManager getCmdManager()
@@ -58,7 +59,7 @@ public class DefaultVasUpdateFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.vas.update.module.impl.DefaultVasUpdateFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -32,39 +32,36 @@ public class VideoConverterImpl
   @SuppressLint({"NewApi"})
   private int startHardwareConvert(String paramString, VideoConverter.Processor paramProcessor, boolean paramBoolean)
   {
-    Object localObject = null;
-    if (this.useNativeCodec) {
-      paramString = localObject;
-    }
-    for (;;)
+    if (this.useNativeCodec)
     {
-      paramString = new Thread(paramString, "VideoConverter");
-      this.mThreadRef = new WeakReference(paramString);
-      paramString.start();
-      if (paramBoolean) {}
+      paramString = null;
+    }
+    else
+    {
+      initConverterCallback(paramProcessor);
+      paramString = new HardwareConverter(paramString, this.mConverterCallback);
+    }
+    paramString = new Thread(paramString, "VideoConverter");
+    this.mThreadRef = new WeakReference(paramString);
+    paramString.start();
+    if (paramBoolean) {
       try
       {
         paramString.join();
-        if (this.mException != null)
-        {
-          return -1003;
-          initConverterCallback(paramProcessor);
-          paramString = new HardwareConverter(paramString, this.mConverterCallback);
-        }
       }
       catch (InterruptedException paramString)
       {
-        for (;;)
-        {
-          ConvertLog.e("VideoConverter", 1, "startHardwareConvert error", paramString);
-        }
-        if (this.mCancelled) {
-          return -1002;
-        }
-        if (this.noNeedCompress) {
-          return -1;
-        }
+        ConvertLog.e("VideoConverter", 1, "startHardwareConvert error", paramString);
       }
+    }
+    if (this.mException != null) {
+      return -1003;
+    }
+    if (this.mCancelled) {
+      return -1002;
+    }
+    if (this.noNeedCompress) {
+      return -1;
     }
     return 0;
   }
@@ -87,16 +84,18 @@ public class VideoConverterImpl
   
   protected boolean cancel()
   {
-    if (this.mThreadRef != null)
+    Object localObject = this.mThreadRef;
+    if (localObject != null)
     {
-      Thread localThread = (Thread)this.mThreadRef.get();
-      if (localThread != null) {
-        localThread.interrupt();
+      localObject = (Thread)((WeakReference)localObject).get();
+      if (localObject != null) {
+        ((Thread)localObject).interrupt();
       }
     }
     SoftwareConverter.continueCompress.set(false);
-    if (this.mProcess != null) {
-      this.mProcess.destroy();
+    localObject = this.mProcess;
+    if (localObject != null) {
+      ((Process)localObject).destroy();
     }
     return true;
   }
@@ -118,70 +117,67 @@ public class VideoConverterImpl
   
   protected int start(Context paramContext, String paramString, VideoConverter.Processor paramProcessor, boolean paramBoolean)
   {
-    int m = 0;
     if (!this.running)
     {
+      int m = 1;
       this.running = true;
       int n = -5;
-      if ((this.compressMode == 1) && (Build.VERSION.SDK_INT < 18))
-      {
-        j = -3;
-        return j;
+      if ((this.compressMode == 1) && (Build.VERSION.SDK_INT < 18)) {
+        return -3;
       }
       int i = MediaCodecSupport.checkSupportMediaCodecFeature(paramContext);
-      if ((Build.VERSION.SDK_INT >= 18) && ((i & 0x1) > 0) && ((i & 0x2) > 0)) {}
-      for (int j = 1; (this.compressMode == 1) && (j == 0); j = 0) {
+      if ((Build.VERSION.SDK_INT >= 18) && ((i & 0x1) > 0) && ((i & 0x2) > 0)) {
+        j = 1;
+      } else {
+        j = 0;
+      }
+      if ((this.compressMode == 1) && (j == 0)) {
         return -6;
       }
-      int k;
-      if ((this.compressMode == 3) || (this.compressMode == 1))
-      {
-        k = 1;
-        label114:
-        i = n;
-        if (j != 0)
-        {
-          i = n;
-          if (k != 0) {
-            i = startHardwareConvert(paramString, paramProcessor, paramBoolean);
-          }
-        }
-        paramBoolean = SoftwareConverter.supportCodec();
-        if ((j != 0) || (this.compressMode != 3)) {
-          break label214;
-        }
-      }
-      label214:
-      for (j = 1;; j = 0)
-      {
-        if (this.compressMode != 2)
-        {
-          k = m;
-          if (j == 0) {}
-        }
-        else
-        {
-          k = 1;
-        }
-        j = i;
-        if (!paramBoolean) {
-          break;
-        }
-        j = i;
-        if (k == 0) {
-          break;
-        }
-        return startSoftwareConvert(paramString, paramProcessor);
+      i = this.compressMode;
+      if ((i != 3) && (i != 1)) {
         k = 0;
-        break label114;
+      } else {
+        k = 1;
       }
+      i = n;
+      if (j != 0)
+      {
+        i = n;
+        if (k != 0) {
+          i = startHardwareConvert(paramString, paramProcessor, paramBoolean);
+        }
+      }
+      paramBoolean = SoftwareConverter.supportCodec();
+      if ((j == 0) && (this.compressMode == 3)) {
+        k = 1;
+      } else {
+        k = 0;
+      }
+      int j = m;
+      if (this.compressMode != 2) {
+        if (k != 0) {
+          j = m;
+        } else {
+          j = 0;
+        }
+      }
+      int k = i;
+      if (paramBoolean)
+      {
+        k = i;
+        if (j != 0) {
+          k = startSoftwareConvert(paramString, paramProcessor);
+        }
+      }
+      return k;
     }
     return -4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmedia.videocompress.VideoConverterImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -13,29 +13,33 @@ class QQStoryMainController$7
 {
   QQStoryMainController$7(QQStoryMainController paramQQStoryMainController) {}
   
-  public void a(Object paramObject)
+  protected void a(Object paramObject)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    MessageNotifySegment localMessageNotifySegment;
-    do
-    {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQStoryMainController", 2, "refresh red point if needed");
-      }
-      paramObject = ((TroopRedTouchManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH_EX)).a(52);
-      if (QLog.isColorLevel()) {
-        QLog.i("storyRedDotDebug", 2, "更新小黑条红点:" + TroopRedTouchManager.a(paramObject));
-      }
-      localMessageNotifySegment = (MessageNotifySegment)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.a("MessageNotifySegment");
-    } while (localMessageNotifySegment == null);
-    localMessageNotifySegment.a(paramObject);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.p();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQStoryMainController", 2, "refresh red point if needed");
+    }
+    paramObject = ((TroopRedTouchManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH_EX)).a(52);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("更新小黑条红点:");
+      ((StringBuilder)localObject).append(TroopRedTouchManager.a(paramObject));
+      QLog.i("storyRedDotDebug", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = (MessageNotifySegment)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.a("MessageNotifySegment");
+    if (localObject != null)
+    {
+      ((MessageNotifySegment)localObject).a(paramObject);
+      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.p();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.QQStoryMainController.7
  * JD-Core Version:    0.7.0.1
  */

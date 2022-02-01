@@ -2,6 +2,7 @@ package com.tencent.mobileqq.activity;
 
 import QQService.DeviceItemDes;
 import QQService.SvcDevLoginInfo;
+import QQService.SvcRspGetDevLoginInfo;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,31 +27,36 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.app.MessageRoamManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.SecSvcHandler;
-import com.tencent.mobileqq.app.SecSvcObserver;
+import com.tencent.ims.wx_msg_opt.ReqBody;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.QIphoneTitleBarActivity;
+import com.tencent.mobileqq.app.identity.IDevListView;
+import com.tencent.mobileqq.app.identity.ISafeApi;
+import com.tencent.mobileqq.app.utils.RouteUtils;
 import com.tencent.mobileqq.equipmentlock.DevlockPhoneStatus;
-import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
+import com.tencent.mobileqq.friend.observer.IFriendObserver;
+import com.tencent.mobileqq.loginregister.ILoginRegisterApi;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qroute.route.annotation.RoutePage;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.utils.BaseSharedPreUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.mobileqq.utils.TimeFormatterUtils;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
@@ -64,6 +70,8 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 import mqq.manager.WtloginManager;
 import mqq.observer.WtloginObserver;
 import mqq.os.MqqHandler;
@@ -75,17 +83,10 @@ import tencent.im.oidb.oidb_0x5e1.UdcUinData;
 
 @RoutePage(desc="设备管理页面", path="/base/safe/authDevActivity")
 public class AuthDevActivity
-  extends IphoneTitleBarActivity
-  implements View.OnClickListener
+  extends QIphoneTitleBarActivity
+  implements View.OnClickListener, IDevListView
 {
-  public static final int FACE_DATA_STATE_HAS_SET = 1;
-  public static final int FACE_DATA_STATE_NOT_SET = 0;
   private static final String FROM_QQ_SAFE_MINIAPP = "app_qq_safe_center";
-  public static final String KEY_FACE_STATE = "faceStateKey";
-  public static final String KEY_FROM = "from";
-  public static final int REQ_IDENTIFICATION = 22;
-  public static final int REQ_LEGACY = 21;
-  public static final int SERVICE_TYPE_SET_FACE = 2;
   private static final String TAG = "Q.devlock.AuthDevActivity";
   private static final String T_ALLOW_BOTH_ONLINE_CLICK = "0X800AC53";
   private static final String T_DEV_MANAGE_PAGE_SHOW = "0X800AC52";
@@ -105,17 +106,18 @@ public class AuthDevActivity
   private boolean mCanOpenOrClose = true;
   private Dialog mConfirmDialog;
   private ActionSheet mDelDevSheet = null;
+  private IFriendObserver mDevListObserver;
   private DevlockInfo mDevLockInfo;
+  private BusinessObserver mDevLockObserver;
   private boolean mEnableOpenAllowsetDev = false;
   private oidb_0x5e1.RspBody mFaceStateRsp;
-  private FriendListObserver mFriendObserver = new AuthDevActivity.7(this);
   private String mFrom;
-  private Handler mHandler = new AuthDevActivity.1(this);
+  private Handler mHandler = new Handler();
   private List<SvcDevLoginInfo> mHistoryList = new ArrayList();
   private boolean mIsAllowSet = false;
   private boolean mIsAuthDevOpen = false;
   private boolean mIsGrayAccount;
-  private CompoundButton.OnCheckedChangeListener mOnCheckedChangeListener = new AuthDevActivity.2(this);
+  private CompoundButton.OnCheckedChangeListener mOnCheckedChangeListener = new AuthDevActivity.1(this);
   private List<SvcDevLoginInfo> mOnLineList = new ArrayList();
   private FormSwitchItem mOpenCloseButton = null;
   private String mPageName = "";
@@ -123,47 +125,64 @@ public class AuthDevActivity
   private QQProgressDialog mProDialog;
   private ActionSheet mRenameDevSheet = null;
   private Dialog mRiskDialog;
-  private SecSvcObserver mSecSvcObserver = new AuthDevActivity.11(this);
+  private ISafeApi mSafeApi;
   private FaceSecureCheck.SecureCheckResponse mSecureRsp;
   private String mSecureState;
+  private int mSeq;
   private String mTmpKey;
   private TextView mTvBottomTips;
   private TextView mWXSyncQQMsgDesc = null;
   private FormSwitchItem mWXSyncQQMsgLayout = null;
-  private WtloginObserver mWtLoginObserver = new AuthDevActivity.8(this);
+  private WtloginObserver mWtLoginObserver = new AuthDevActivity.6(this);
+  
+  private ToServiceMsg buildWxSyncReq(BusinessHandler paramBusinessHandler)
+  {
+    wx_msg_opt.ReqBody localReqBody = new wx_msg_opt.ReqBody();
+    localReqBody.uint64_uin.set(this.mRuntime.getLongAccountUin());
+    localReqBody.uint32_cmd.set(1);
+    PBUInt32Field localPBUInt32Field = localReqBody.uint32_seq;
+    int i = this.mSeq;
+    this.mSeq = (i + 1);
+    localPBUInt32Field.set(i);
+    localReqBody.uint32_opt.set(1);
+    paramBusinessHandler = paramBusinessHandler.createToServiceMsg("DevLockAuthSvc.WxMsgOpt");
+    paramBusinessHandler.putWupBuffer(localReqBody.toByteArray());
+    return paramBusinessHandler;
+  }
   
   private Dialog createRiskDialog()
   {
-    ReportDialog localReportDialog = new ReportDialog(this, 2131755842);
-    localReportDialog.setContentView(2131559060);
-    TextView localTextView1 = (TextView)localReportDialog.findViewById(2131365811);
+    ReportDialog localReportDialog = new ReportDialog(this, 2131756189);
+    localReportDialog.setContentView(2131558954);
+    TextView localTextView1 = (TextView)localReportDialog.findViewById(2131365648);
     if (localTextView1 != null) {
-      localTextView1.setText(getString(2131692128));
+      localTextView1.setText(getString(2131692047));
     }
-    localTextView1 = (TextView)localReportDialog.findViewById(2131365807);
+    localTextView1 = (TextView)localReportDialog.findViewById(2131365644);
     if (localTextView1 != null) {
-      localTextView1.setText(getString(2131692125));
+      localTextView1.setText(getString(2131692044));
     }
-    localTextView1 = (TextView)localReportDialog.findViewById(2131365796);
+    localTextView1 = (TextView)localReportDialog.findViewById(2131365633);
     if (localTextView1 != null) {
-      localTextView1.setText(2131692126);
+      localTextView1.setText(2131692045);
     }
-    TextView localTextView2 = (TextView)localReportDialog.findViewById(2131365802);
+    TextView localTextView2 = (TextView)localReportDialog.findViewById(2131365639);
     if (localTextView2 != null) {
-      localTextView2.setText(2131692127);
+      localTextView2.setText(2131692046);
     }
     if (localTextView1 != null) {
-      localTextView1.setOnClickListener(new AuthDevActivity.9(this));
+      localTextView1.setOnClickListener(new AuthDevActivity.7(this));
     }
     if (localTextView2 != null) {
-      localTextView2.setOnClickListener(new AuthDevActivity.10(this));
+      localTextView2.setOnClickListener(new AuthDevActivity.8(this));
     }
     return localReportDialog;
   }
   
   private void dismissSafetyRiskDialog()
   {
-    if ((this.mRiskDialog != null) && (this.mRiskDialog.isShowing())) {
+    Dialog localDialog = this.mRiskDialog;
+    if ((localDialog != null) && (localDialog.isShowing())) {
       this.mRiskDialog.dismiss();
     }
   }
@@ -175,55 +194,59 @@ public class AuthDevActivity
     this.mBothOnlineButton.setEnabled(false);
   }
   
+  private MqqHandler getHandler(Class<?> paramClass)
+  {
+    if (!(this.mRuntime instanceof AppInterface)) {
+      return null;
+    }
+    return ((AppInterface)this.mRuntime).getHandler(paramClass);
+  }
+  
   private void hideProgerssDialog()
   {
-    this.mHandler.post(new AuthDevActivity.14(this));
+    this.mHandler.post(new AuthDevActivity.11(this));
   }
   
   private void initPageUI()
   {
     this.mOpenCloseButton.setChecked(this.mIsAuthDevOpen);
     this.mOpenCloseButton.setOnCheckedChangeListener(this.mOnCheckedChangeListener);
-    Object localObject = this.app.getHandler(LoginInfoActivity.class);
-    if (localObject != null)
+    Object localObject;
+    if ((this.mRuntime instanceof AppInterface))
     {
-      if (this.mIsAuthDevOpen) {
-        ((MqqHandler)localObject).obtainMessage(20140331, 1, 0).sendToTarget();
-      }
+      localObject = (AppInterface)this.mRuntime;
+      localObject = getHandler(this.mSafeApi.getLoginInfoActivity());
     }
     else
     {
-      if (!this.mIsAuthDevOpen) {
-        break label105;
-      }
-      localObject = (SecSvcHandler)this.app.getBusinessHandler(BusinessHandlerFactory.SEC_SVC_HANDLER);
-      if (localObject != null) {
-        ((SecSvcHandler)localObject).a();
-      }
-      startGetAuthDevList();
+      localObject = null;
     }
-    for (;;)
+    if (localObject != null) {
+      if (this.mIsAuthDevOpen) {
+        ((MqqHandler)localObject).obtainMessage(20140331, 1, 0).sendToTarget();
+      } else {
+        ((MqqHandler)localObject).obtainMessage(20140331, 0, 0).sendToTarget();
+      }
+    }
+    if (this.mIsAuthDevOpen)
     {
+      this.mSafeApi.getWxMsgOptions(this.mRuntime);
+      startGetAuthDevList();
       return;
-      ((MqqHandler)localObject).obtainMessage(20140331, 0, 0).sendToTarget();
-      break;
-      label105:
-      if ((this.mIsAllowSet) && ((EquipmentLockImpl.a().c()) || (this.mEnableOpenAllowsetDev))) {
-        onClickOpenCloseDevLockBtn();
+    }
+    if ((this.mIsAllowSet) && ((this.mSafeApi.getIsPushRecommandDevLock(this.mRuntime)) || (this.mEnableOpenAllowsetDev))) {
+      onClickOpenCloseDevLockBtn();
+    } else if (this.mIsGrayAccount) {
+      startGetRecentDevList();
+    } else {
+      this.mAuthDevLoadingView.setVisibility(8);
+    }
+    if ("app_qq_safe_center".equals(this.mFrom))
+    {
+      if (this.mRiskDialog == null) {
+        this.mRiskDialog = createRiskDialog();
       }
-      while ("app_qq_safe_center".equals(this.mFrom))
-      {
-        if (this.mRiskDialog == null) {
-          this.mRiskDialog = createRiskDialog();
-        }
-        this.mRiskDialog.show();
-        return;
-        if (this.mIsGrayAccount) {
-          startGetRecentDevList();
-        } else {
-          this.mAuthDevLoadingView.setVisibility(8);
-        }
-      }
+      this.mRiskDialog.show();
     }
   }
   
@@ -241,166 +264,205 @@ public class AuthDevActivity
     return false;
   }
   
+  private void onBothOnlineStatusChanged(boolean paramBoolean)
+  {
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
   private void onClickOpenCloseDevLockBtn()
   {
-    if (!NetworkUtil.d(this)) {
-      QQToast.a(this, getString(2131692257), 0).b(getTitleBarHeight());
-    }
-    int i;
-    do
+    if (!NetworkUtil.isNetSupport(this))
     {
-      do
-      {
-        return;
-        if (this.mIsAuthDevOpen)
-        {
-          ReportController.b(this.app, "CliOper", "", "", "My_eq_lock", "My_eq_lock_close", 0, 0, "", "", "", "");
-          ReportController.b(null, "dc00898", "", "", "0X800A71C", "0X800A71C", 0, 0, "", "", "", "");
-          if (QLog.isColorLevel()) {
-            QLog.d("DevRpt", 2, "登录保护页点击开关，关闭登录保护的用户数、次数！0X800A71C");
-          }
-          QLog.d("Q.devlock.AuthDevActivity", 1, "onClick.begin to close dev lock");
-          showConfirmCloseDialog();
-          return;
-        }
-        QLog.d("Q.devlock.AuthDevActivity", 1, "onClick.begin to CheckDevLockSms");
-        localObject = (DevlockInfo)getIntent().getParcelableExtra("DevlockInfo");
-        if ((TextUtils.isEmpty(this.mPhoneNum)) || ((localObject != null) && (((DevlockInfo)localObject).AllowSet == 0)))
-        {
-          Intent localIntent = new Intent(this, AuthDevOpenUgActivity.class);
-          localIntent.putExtra("DevlockInfo", (Parcelable)localObject);
-          startActivityForResult(localIntent, 0);
-          return;
-        }
-        if (DevlockPhoneStatus.a().a() == DevlockPhoneStatus.d)
-        {
-          DevlockPhoneStatus.a().a(this, this.mPhoneNum);
-          return;
-        }
-        ReportController.b(this.app, "CliOper", "", "", "My_eq_lock", "My_eq_lock_open", 0, 0, "0", "", "", "");
-        ReportController.b(null, "dc00898", "", "", "0X800A71B", "0X800A71B", 0, 0, "", "", "", "");
-        if (QLog.isColorLevel()) {
-          QLog.d("DevRpt", 2, "登录保护页点击开关，开启登录保护的用户数、次数！0X800A71B");
-        }
-        if (this.mCanOpenOrClose) {
-          break;
-        }
-      } while ((this.mProDialog != null) && (this.mProDialog.isShowing()));
-      showProgressDialog();
+      QQToast.a(this, getString(2131692183), 0).b(getTitleBarHeight());
       return;
+    }
+    if (this.mIsAuthDevOpen)
+    {
+      ReportController.b(this.mRuntime, "CliOper", "", "", "My_eq_lock", "My_eq_lock_close", 0, 0, "", "", "", "");
+      ReportController.b(null, "dc00898", "", "", "0X800A71C", "0X800A71C", 0, 0, "", "", "", "");
+      if (QLog.isColorLevel()) {
+        QLog.d("DevRpt", 2, "登录保护页点击开关，关闭登录保护的用户数、次数！0X800A71C");
+      }
+      QLog.d("Q.devlock.AuthDevActivity", 1, "onClick.begin to close dev lock");
+      showConfirmCloseDialog();
+      return;
+    }
+    QLog.d("Q.devlock.AuthDevActivity", 1, "onClick.begin to CheckDevLockSms");
+    Object localObject = (DevlockInfo)getIntent().getParcelableExtra("DevlockInfo");
+    if ((!TextUtils.isEmpty(this.mPhoneNum)) && ((localObject == null) || (((DevlockInfo)localObject).AllowSet != 0)))
+    {
+      if (DevlockPhoneStatus.a().a() == 2)
+      {
+        DevlockPhoneStatus.a().a(this, this.mPhoneNum);
+        return;
+      }
+      ReportController.b(this.mRuntime, "CliOper", "", "", "My_eq_lock", "My_eq_lock_open", 0, 0, "0", "", "", "");
+      ReportController.b(null, "dc00898", "", "", "0X800A71B", "0X800A71B", 0, 0, "", "", "", "");
+      if (QLog.isColorLevel()) {
+        QLog.d("DevRpt", 2, "登录保护页点击开关，开启登录保护的用户数、次数！0X800A71B");
+      }
+      if (!this.mCanOpenOrClose)
+      {
+        localObject = this.mProDialog;
+        if ((localObject == null) || (!((QQProgressDialog)localObject).isShowing())) {
+          showProgressDialog();
+        }
+        return;
+      }
       showProgressDialog();
       this.mCanOpenOrClose = false;
-      Object localObject = this.app.getCurrentAccountUin();
-      i = EquipmentLockImpl.a().a(this.app, (String)localObject, "", null, this.mWtLoginObserver);
-    } while (i == 0);
-    this.mCanOpenOrClose = true;
-    hideProgerssDialog();
-    QLog.d("Q.devlock.AuthDevActivity", 1, "onClick.CheckDevLockSms fail ret=" + i);
-    QQToast.a(getApplicationContext(), getString(2131692102), 0).b(getTitleBarHeight());
+      localObject = this.mRuntime.getCurrentAccountUin();
+      int i = this.mSafeApi.checkDevLockSms(this.mRuntime, (String)localObject, "", null, this.mWtLoginObserver);
+      if (i != 0)
+      {
+        this.mCanOpenOrClose = true;
+        hideProgerssDialog();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onClick.CheckDevLockSms fail ret=");
+        ((StringBuilder)localObject).append(i);
+        QLog.d("Q.devlock.AuthDevActivity", 1, ((StringBuilder)localObject).toString());
+        QQToast.a(getApplicationContext(), getString(2131692021), 0).b(getTitleBarHeight());
+      }
+      return;
+    }
+    Intent localIntent = new Intent();
+    localIntent.putExtra("DevlockInfo", (Parcelable)localObject);
+    startActivityForResult(localIntent, 0);
+    RouteUtils.a(this, localIntent, "/base/safe/authDevOpenActivity", 0);
+  }
+  
+  private void onDevlockStatusChanged()
+  {
+    if (this.mOpenCloseButton.a()) {
+      localObject = "0";
+    } else {
+      localObject = "1";
+    }
+    ReportController.b(null, "dc00898", "", "", "0X800AC54", "0X800AC54", 0, 0, (String)localObject, "", "", "");
+    this.mOpenCloseButton.setOnCheckedChangeListener(null);
+    Object localObject = this.mOpenCloseButton;
+    ((FormSwitchItem)localObject).setChecked(((FormSwitchItem)localObject).a() ^ true);
+    this.mOpenCloseButton.setOnCheckedChangeListener(this.mOnCheckedChangeListener);
+    onClickOpenCloseDevLockBtn();
+  }
+  
+  private void onWxMsgStatusChanged()
+  {
+    this.mWXSyncQQMsgLayout.setOnCheckedChangeListener(null);
+    FormSwitchItem localFormSwitchItem = this.mWXSyncQQMsgLayout;
+    localFormSwitchItem.setChecked(localFormSwitchItem.a() ^ true);
+    this.mWXSyncQQMsgLayout.setOnCheckedChangeListener(this.mOnCheckedChangeListener);
+    if (!NetworkUtil.isNetSupport(this))
+    {
+      QQToast.a(this, getString(2131692183), 0).b(getTitleBarHeight());
+      return;
+    }
+    this.mSafeApi.setWXSyncQQMsgOption(this.mRuntime, this.mWXSyncQQMsgLayout.a() ^ true);
   }
   
   private void showDelDevActionSheet(String paramString1, ArrayList<DeviceItemDes> paramArrayList, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong)
   {
-    String str = paramString1;
     if (TextUtils.isEmpty(paramString1)) {
-      str = getResources().getString(2131694414);
+      paramString1 = getResources().getString(2131694379);
     }
     this.mDelDevSheet = ((ActionSheet)ActionSheetHelper.a(this, null));
-    if (paramBoolean1) {}
-    for (paramString1 = getString(2131692085, new Object[] { str });; paramString1 = getString(2131692083, new Object[] { str }))
-    {
-      this.mDelDevSheet.setMainTitle(paramString1);
-      this.mDelDevSheet.addRadioButton(getResources().getString(2131692082), 3, false);
-      this.mDelDevSheet.addCancelButton(2131690800);
-      this.mDelDevSheet.setOnButtonClickListener(new AuthDevActivity.6(this, paramString2, paramArrayList, paramInt, paramBoolean2, paramLong));
-      this.mDelDevSheet.show();
-      return;
+    if (paramBoolean1) {
+      paramString1 = getString(2131692004, new Object[] { paramString1 });
+    } else {
+      paramString1 = getString(2131692002, new Object[] { paramString1 });
     }
+    this.mDelDevSheet.setMainTitle(paramString1);
+    this.mDelDevSheet.addRadioButton(getResources().getString(2131692001), 3, false);
+    this.mDelDevSheet.addCancelButton(2131690728);
+    this.mDelDevSheet.setOnButtonClickListener(new AuthDevActivity.5(this, paramString2, paramArrayList, paramInt, paramBoolean2, paramLong));
+    this.mDelDevSheet.show();
   }
   
   private void showProgressDialog()
   {
-    this.mHandler.post(new AuthDevActivity.13(this));
+    this.mHandler.post(new AuthDevActivity.10(this));
   }
   
   private void showRenameDevActionSheet(String paramString1, ArrayList<DeviceItemDes> paramArrayList, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong1, long paramLong2, byte[] paramArrayOfByte, boolean paramBoolean3, SvcDevLoginInfo paramSvcDevLoginInfo)
   {
     this.mRenameDevSheet = ((ActionSheet)ActionSheetHelper.a(this, null));
-    LinearLayout localLinearLayout = (LinearLayout)getLayoutInflater().inflate(2131559215, this.mRenameDevSheet.getRootView(), false);
-    TextView localTextView = (TextView)localLinearLayout.findViewById(2131361984);
+    LinearLayout localLinearLayout = (LinearLayout)getLayoutInflater().inflate(2131559093, this.mRenameDevSheet.getRootView(), false);
+    TextView localTextView = (TextView)localLinearLayout.findViewById(2131362000);
     boolean bool1 = Arrays.equals(NetConnInfoCenter.GUID, paramArrayOfByte);
     boolean bool2 = isOnlineDevice(paramSvcDevLoginInfo);
     if (this.mIsAuthDevOpen)
     {
-      paramSvcDevLoginInfo = getString(2131692056);
-      paramArrayOfByte = getString(2131692056);
+      paramSvcDevLoginInfo = getString(2131691975);
+      paramArrayOfByte = getString(2131691975);
       if (paramLong2 > 0L)
       {
         paramArrayOfByte = new Date(1000L * paramLong2);
-        paramSvcDevLoginInfo = getString(2131692051, new Object[] { new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()).format(paramArrayOfByte) });
-        paramArrayOfByte = getString(2131692051, new Object[] { new SimpleDateFormat("yyyy年MM月dd日 HH点mm分", Locale.getDefault()).format(paramArrayOfByte) });
-        if ((bool1) || (bool2)) {
-          paramSvcDevLoginInfo = getString(2131692058);
-        }
-        localTextView.setText(paramSvcDevLoginInfo);
-        if ((!bool1) && (!bool2)) {
-          break label357;
-        }
-        paramArrayOfByte = getString(2131692058);
+        paramSvcDevLoginInfo = getString(2131691970, new Object[] { new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()).format(paramArrayOfByte) });
+        paramArrayOfByte = getString(2131691970, new Object[] { new SimpleDateFormat("yyyy年MM月dd日 HH点mm分", Locale.getDefault()).format(paramArrayOfByte) });
       }
-      label357:
-      for (;;)
+      else
       {
-        localTextView.setContentDescription(paramArrayOfByte);
-        this.mRenameDevSheet.addView(localLinearLayout);
-        if (this.mIsAuthDevOpen) {
-          this.mRenameDevSheet.addButton(getResources().getString(2131692121), 5, 0);
-        }
-        if ((!bool1) || (this.mIsAuthDevOpen)) {
-          this.mRenameDevSheet.addButton(getResources().getString(2131691563), 3, 1);
-        }
-        this.mRenameDevSheet.addCancelButton(2131690800);
-        this.mRenameDevSheet.setOnButtonClickListener(new AuthDevActivity.5(this, paramString2, paramLong1, paramString1, paramInt, paramBoolean3, paramArrayList, paramBoolean1, paramBoolean2));
-        this.mRenameDevSheet.show();
-        return;
         QLog.e("Q.devlock.AuthDevActivity", 1, "format login time error: time <= 0");
-        break;
       }
+      if ((bool1) || (bool2)) {
+        paramSvcDevLoginInfo = getString(2131691977);
+      }
+      localTextView.setText(paramSvcDevLoginInfo);
+      if ((bool1) || (bool2)) {
+        paramArrayOfByte = getString(2131691977);
+      }
+      localTextView.setContentDescription(paramArrayOfByte);
     }
-    if (bool1) {}
-    for (paramArrayOfByte = getString(2131692046);; paramArrayOfByte = getString(2131692084, new Object[] { paramString1 }))
+    else
     {
+      if (bool1) {
+        paramArrayOfByte = getString(2131691965);
+      } else {
+        paramArrayOfByte = getString(2131692003, new Object[] { paramString1 });
+      }
       localTextView.setText(paramArrayOfByte);
-      break;
     }
+    this.mRenameDevSheet.addView(localLinearLayout);
+    if (this.mIsAuthDevOpen) {
+      this.mRenameDevSheet.addButton(getResources().getString(2131692040), 5, 0);
+    }
+    if ((!bool1) || (this.mIsAuthDevOpen)) {
+      this.mRenameDevSheet.addButton(getResources().getString(2131691484), 3, 1);
+    }
+    this.mRenameDevSheet.addCancelButton(2131690728);
+    this.mRenameDevSheet.setOnButtonClickListener(new AuthDevActivity.4(this, paramString2, paramLong1, paramString1, paramInt, paramBoolean3, paramArrayList, paramBoolean1, paramBoolean2));
+    this.mRenameDevSheet.show();
   }
   
   private void startGetAuthDevList()
   {
     QLog.d("Q.devlock.AuthDevActivity", 1, "startGetAuthDevList.begin to getAuthLoginDevList");
-    boolean bool = EquipmentLockImpl.a().c(this.app, this.mPageName, 0L);
+    boolean bool = this.mSafeApi.getAuthLoginDevList(this.mRuntime, this.mPageName, 0L);
     if (bool)
     {
       this.mAuthListDesc.setVisibility(0);
-      this.mAuthListDesc.setText(getString(2131692124));
+      this.mAuthListDesc.setText(getString(2131692043));
       this.mAuthDevLoadingView.setVisibility(0);
-      this.mTvBottomTips.setText(getString(2131692063));
+      this.mTvBottomTips.setText(getString(2131691982));
       return;
     }
-    QLog.d("Q.devlock.AuthDevActivity", 1, "startGetAuthDevList getAuthLoginDevList failed ret =" + bool);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("startGetAuthDevList getAuthLoginDevList failed ret =");
+    localStringBuilder.append(bool);
+    QLog.d("Q.devlock.AuthDevActivity", 1, localStringBuilder.toString());
   }
   
   private void startGetRecentDevList()
   {
-    boolean bool1 = EquipmentLockImpl.a().b(this.app, this.mPageName, 0L);
-    boolean bool2 = EquipmentLockImpl.a().a(this.app, this.mPageName, 0L);
+    boolean bool1 = this.mSafeApi.getRecentLoginDevList(this.mRuntime, this.mPageName, 0L);
+    boolean bool2 = this.mSafeApi.getLoginDevList(this.mRuntime, this.mPageName, 0L);
     if ((bool1) && (bool2))
     {
       this.mHistoryList.clear();
       this.mAuthListDesc.setVisibility(0);
-      this.mAuthListDesc.setText(getString(2131692129));
+      this.mAuthListDesc.setText(getString(2131692048));
       this.mAuthDevLoadingView.setVisibility(0);
-      this.mTvBottomTips.setText(getString(2131692062));
+      this.mTvBottomTips.setText(getString(2131691981));
       return;
     }
     QLog.d("Q.devlock.AuthDevActivity", 1, new Object[] { "onCreate getRecentLoginDevList failed recentLoginRet=", Boolean.valueOf(bool1), " loginDevRet=", Boolean.valueOf(bool2) });
@@ -408,59 +470,62 @@ public class AuthDevActivity
   
   private void updateHistoryListUI(List<SvcDevLoginInfo> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0))
+    if ((paramList != null) && (paramList.size() != 0))
     {
-      this.mAuthListDesc.setVisibility(4);
-      this.mAuthListLayout.setVisibility(8);
-      return;
-    }
-    this.mAuthListLayout.removeAllViews();
-    this.mAuthListLayout.setVisibility(0);
-    int j = paramList.size();
-    int i = 0;
-    while (i < j)
-    {
-      SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)paramList.get(i);
-      if (localSvcDevLoginInfo == null)
+      this.mAuthListLayout.removeAllViews();
+      this.mAuthListLayout.setVisibility(0);
+      int j = paramList.size();
+      int i = 0;
+      while (i < j)
       {
-        i += 1;
-      }
-      else
-      {
-        View localView = getLayoutInflater().inflate(2131561182, this.mAuthListLayout, false);
-        RelativeLayout localRelativeLayout = (RelativeLayout)localView.findViewById(2131369361);
-        label127:
-        TextView localTextView1;
-        Object localObject1;
-        if (j == 1)
+        SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)paramList.get(i);
+        if (localSvcDevLoginInfo != null)
         {
-          localRelativeLayout.setBackgroundResource(2130839575);
-          TextView localTextView2 = (TextView)localView.findViewById(2131372115);
-          localTextView1 = (TextView)localView.findViewById(2131369051);
+          View localView = getLayoutInflater().inflate(2131561045, this.mAuthListLayout, false);
+          RelativeLayout localRelativeLayout = (RelativeLayout)localView.findViewById(2131369090);
+          if (j == 1) {
+            localRelativeLayout.setBackgroundResource(2130839433);
+          } else if (i == 0) {
+            localRelativeLayout.setBackgroundResource(2130839449);
+          } else if (i == j - 1) {
+            localRelativeLayout.setBackgroundResource(2130839440);
+          } else {
+            localRelativeLayout.setBackgroundResource(2130839443);
+          }
+          TextView localTextView2 = (TextView)localView.findViewById(2131371697);
+          TextView localTextView1 = (TextView)localView.findViewById(2131368773);
           Object localObject2 = localSvcDevLoginInfo.strDeviceName;
-          localObject1 = localObject2;
+          Object localObject1 = localObject2;
           if (TextUtils.isEmpty((CharSequence)localObject2)) {
-            localObject1 = getResources().getString(2131694414);
+            localObject1 = getResources().getString(2131694379);
           }
           localObject2 = null;
           boolean bool1 = Arrays.equals(NetConnInfoCenter.GUID, localSvcDevLoginInfo.vecGuid);
           boolean bool2 = isOnlineDevice(localSvcDevLoginInfo);
-          if (bool1) {
-            localObject2 = "（" + getResources().getString(2131694411) + "）";
+          if (bool1)
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("（");
+            ((StringBuilder)localObject2).append(getResources().getString(2131694376));
+            ((StringBuilder)localObject2).append("）");
+            localObject2 = ((StringBuilder)localObject2).toString();
           }
           SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder((CharSequence)localObject1);
           if (!TextUtils.isEmpty((CharSequence)localObject2))
           {
             localSpannableStringBuilder.append((CharSequence)localObject2);
-            AuthDevActivity.3 local3 = new AuthDevActivity.3(this);
+            AuthDevActivity.2 local2 = new AuthDevActivity.2(this);
             int k = ((String)localObject1).length();
-            localSpannableStringBuilder.setSpan(local3, k, ((String)localObject2).length() + k, 33);
+            localSpannableStringBuilder.setSpan(local2, k, ((String)localObject2).length() + k, 33);
           }
           localTextView2.setText(localSpannableStringBuilder);
           localObject1 = new StringBuilder();
           localObject2 = new StringBuilder();
-          if (bool2) {
-            ((StringBuilder)localObject2).append(getString(2131692057)).append(" ").append(localSvcDevLoginInfo.strDeviceName);
+          if (bool2)
+          {
+            ((StringBuilder)localObject2).append(getString(2131691976));
+            ((StringBuilder)localObject2).append(" ");
+            ((StringBuilder)localObject2).append(localSvcDevLoginInfo.strDeviceName);
           }
           if ((localSvcDevLoginInfo.iLoginTime > 0L) && (!this.mIsAuthDevOpen)) {
             ((StringBuilder)localObject1).append(TimeFormatterUtils.a(localSvcDevLoginInfo.iLoginTime * 1000L, "yyyy-MM-dd "));
@@ -475,59 +540,45 @@ public class AuthDevActivity
             }
             ((StringBuilder)localObject1).append(localSvcDevLoginInfo.strDeviceTypeInfo);
           }
-          if ((!bool2) || (this.mIsAuthDevOpen)) {
-            break label579;
-          }
-          localTextView1.setText(((StringBuilder)localObject2).toString());
-        }
-        for (;;)
-        {
-          localRelativeLayout.setClickable(true);
-          localRelativeLayout.setTag(localSvcDevLoginInfo);
-          localRelativeLayout.setOnClickListener(new AuthDevActivity.4(this, paramList, localRelativeLayout, i, localSvcDevLoginInfo));
-          this.mAuthListLayout.addView(localView);
-          break;
-          if (i == 0)
-          {
-            localRelativeLayout.setBackgroundResource(2130839591);
-            break label127;
-          }
-          if (i == j - 1)
-          {
-            localRelativeLayout.setBackgroundResource(2130839582);
-            break label127;
-          }
-          localRelativeLayout.setBackgroundResource(2130839585);
-          break label127;
-          label579:
-          if (((StringBuilder)localObject1).length() > 0) {
+          if ((bool2) && (!this.mIsAuthDevOpen)) {
+            localTextView1.setText(((StringBuilder)localObject2).toString());
+          } else if (((StringBuilder)localObject1).length() > 0) {
             localTextView1.setText(((StringBuilder)localObject1).toString());
           }
+          localRelativeLayout.setClickable(true);
+          localRelativeLayout.setTag(localSvcDevLoginInfo);
+          localRelativeLayout.setOnClickListener(new AuthDevActivity.3(this, paramList, localRelativeLayout, i, localSvcDevLoginInfo));
+          this.mAuthListLayout.addView(localView);
         }
+        i += 1;
       }
-    }
-    paramList = this.mAuthListDesc;
-    if (this.mAuthListLayout.getChildCount() == 0) {}
-    for (i = 4;; i = 0)
-    {
+      paramList = this.mAuthListDesc;
+      if (this.mAuthListLayout.getChildCount() == 0) {
+        i = 4;
+      } else {
+        i = 0;
+      }
       paramList.setVisibility(i);
       return;
     }
+    this.mAuthListDesc.setVisibility(4);
+    this.mAuthListLayout.setVisibility(8);
   }
   
   void dismissConfirmCloseDialog()
   {
-    if ((this.mConfirmDialog == null) || (this.mConfirmDialog.isShowing())) {}
+    Dialog localDialog = this.mConfirmDialog;
+    if ((localDialog == null) || (localDialog.isShowing())) {}
     try
     {
       this.mConfirmDialog.dismiss();
-      label24:
+      label23:
       this.mConfirmDialog = null;
       return;
     }
     catch (Exception localException)
     {
-      break label24;
+      break label23;
     }
   }
   
@@ -540,7 +591,120 @@ public class AuthDevActivity
     return bool;
   }
   
-  public void doOnResume()
+  protected boolean doOnCreate(Bundle paramBundle)
+  {
+    super.doOnCreate(paramBundle);
+    super.setContentView(2131561044);
+    this.mSafeApi = ((ISafeApi)QRoute.api(ISafeApi.class));
+    this.mAuthListLayout = ((LinearLayout)super.findViewById(2131363059));
+    this.mAuthDevLoadingView = ((ProgressBar)super.findViewById(2131373161));
+    this.mTvBottomTips = ((TextView)findViewById(2131379522));
+    this.mOpenCloseButton = ((FormSwitchItem)super.findViewById(2131363067));
+    this.mBothOnlineButton = ((FormSwitchItem)findViewById(2131363697));
+    this.mAuthListDesc = ((TextView)super.findViewById(2131363061));
+    this.mAuthListDesc.setVisibility(4);
+    this.mWXSyncQQMsgLayout = ((FormSwitchItem)super.findViewById(2131381271));
+    this.mWXSyncQQMsgLayout.setOnCheckedChangeListener(this.mOnCheckedChangeListener);
+    this.mWXSyncQQMsgLayout.setVisibility(8);
+    this.mWXSyncQQMsgDesc = ((TextView)super.findViewById(2131381270));
+    this.mWXSyncQQMsgDesc.setVisibility(8);
+    this.rightViewText.setVisibility(0);
+    this.rightViewText.setText(2131693138);
+    this.rightViewText.setOnClickListener(this);
+    paramBundle = super.getIntent();
+    if (TextUtils.equals(paramBundle.getExtras().getString("devlock_open_source"), "PhoneUnity")) {
+      this.leftView.setText(2131699253);
+    }
+    if (this.mRuntime == null)
+    {
+      finish();
+      QLog.e("Q.devlock.AuthDevActivity", 1, "error : app is null");
+      return false;
+    }
+    boolean bool = SettingCloneUtil.readValue(this, this.mRuntime.getCurrentAccountUin(), "login_accounts", "qqsetting_bothonline_key", true);
+    this.mBothOnlineButton.setChecked(bool);
+    this.mBothOnlineButton.setOnCheckedChangeListener(this.mOnCheckedChangeListener);
+    if (AppSetting.d)
+    {
+      this.mOpenCloseButton.setContentDescription(getString(2131692018));
+      this.rightViewText.setContentDescription(getString(2131691986));
+      this.mBothOnlineButton.setContentDescription(getString(2131693276));
+    }
+    try
+    {
+      this.mPageName = getPackageManager().getPackageInfo(getPackageName(), 0).packageName;
+    }
+    catch (PackageManager.NameNotFoundException localNameNotFoundException)
+    {
+      localNameNotFoundException.printStackTrace();
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("packName = ");
+      localStringBuilder.append(this.mPageName);
+      QLog.d("Q.devlock.AuthDevActivity", 2, localStringBuilder.toString());
+    }
+    this.mDevLockObserver = this.mSafeApi.getDevLockObserver(this);
+    this.mDevListObserver = this.mSafeApi.getDevListObserver(this);
+    addObserver(this.mDevLockObserver);
+    addObserver(this.mDevListObserver);
+    this.mFrom = paramBundle.getStringExtra("from");
+    if ("app_qq_safe_center".equals(this.mFrom))
+    {
+      paramBundle = (String)BaseSharedPreUtil.a(this, this.mRuntime.getCurrentAccountUin(), "device_manage_switch", "");
+      if (TextUtils.isEmpty(paramBundle)) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        if (new JSONObject(paramBundle).optInt("securityType", 0) != 0) {
+          break label832;
+        }
+        bool = true;
+        this.mIsGrayAccount = bool;
+      }
+      catch (Exception paramBundle)
+      {
+        QLog.e("Q.devlock.AuthDevActivity", 1, new Object[] { "parse dev gray switch error : ", paramBundle.getMessage() });
+      }
+      startGetDevLockStatus();
+      break label771;
+      this.mIsGrayAccount = paramBundle.getExtras().getBoolean("auth_dev_gray_switch");
+      this.mIsAuthDevOpen = paramBundle.getExtras().getBoolean("auth_dev_open");
+      this.mPhoneNum = paramBundle.getExtras().getString("phone_num");
+      this.mIsAllowSet = paramBundle.getExtras().getBoolean("allow_set");
+      this.mEnableOpenAllowsetDev = paramBundle.getExtras().getBoolean("enable_open_allowset_dev");
+      this.isH5_logic = paramBundle.getExtras().getBoolean("h5_flag");
+      this.mSecureState = paramBundle.getExtras().getString("secureState", "secureStateUNKNOWN");
+      this.mDevLockInfo = ((DevlockInfo)paramBundle.getParcelableExtra("DevlockInfo"));
+      if ("secureStateOk".equals(this.mSecureState))
+      {
+        this.mAppId = paramBundle.getStringExtra("faceAppId");
+        this.mTmpKey = paramBundle.getStringExtra("faceTmpKey");
+        this.mSecureRsp = new FaceSecureCheck.SecureCheckResponse();
+        this.mSecureRsp.bool_sec_pass.set(true);
+        this.mSecureRsp.str_tmpkey.set(this.mTmpKey);
+        this.mSecureRsp.str_openid.set(this.mAppId);
+      }
+      initPageUI();
+      label771:
+      if (!this.mIsGrayAccount)
+      {
+        this.mBothOnlineButton.setVisibility(8);
+        return false;
+      }
+      super.setTitle(2131691971);
+      this.rightViewText.setVisibility(8);
+      ReportController.b(null, "dc00898", "", "", "0X800AC52", "0X800AC52", 0, 0, "", "", "", "");
+      return false;
+      label832:
+      bool = false;
+    }
+  }
+  
+  protected void doOnResume()
   {
     super.doOnResume();
   }
@@ -551,40 +715,41 @@ public class AuthDevActivity
     if (getIntent().getBooleanExtra("from_risk_hint", false))
     {
       getIntent().removeExtra("from_risk_hint");
-      Intent localIntent = new Intent(this, LoginInfoActivity.class);
+      Intent localIntent = new Intent();
       localIntent.putExtra("from_risk_hint", true);
-      startActivity(localIntent);
+      RouteUtils.a(this, localIntent, "/base/safe/loginInfo");
     }
   }
   
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    boolean bool1;
     if (paramInt1 == 0)
     {
       QLog.d("Q.devlock.AuthDevActivity", 1, new Object[] { "onActivityResult requestCode is 0, resultCode is : ", Integer.valueOf(paramInt2) });
       if (((paramInt2 == 0) || (paramInt2 == -1)) && (paramIntent != null) && (paramIntent.getExtras() != null) && (this.mDevLockInfo != null))
       {
         paramIntent = paramIntent.getExtras();
-        if (this.mDevLockInfo.DevSetup != 1) {
-          break label319;
+        boolean bool1;
+        if (this.mDevLockInfo.DevSetup == 1) {
+          bool1 = true;
+        } else {
+          bool1 = false;
         }
-        bool1 = true;
         boolean bool2 = paramIntent.getBoolean("auth_dev_open", bool1);
         String str = paramIntent.getString("phone_num");
-        if (this.mDevLockInfo.AllowSet != 1) {
-          break label325;
+        if (this.mDevLockInfo.AllowSet == 1) {
+          bool1 = true;
+        } else {
+          bool1 = false;
         }
-        bool1 = true;
-        label114:
         boolean bool3 = paramIntent.getBoolean("allow_set");
         QLog.d("Q.devlock.AuthDevActivity", 1, new Object[] { "status is ", Boolean.valueOf(bool1), "open is ", Boolean.valueOf(bool2), " status is ", Boolean.valueOf(bool1), " allowSet is ", Boolean.valueOf(bool3) });
-        if (!bool2) {
-          break label331;
+        if (bool2) {
+          this.mDevLockInfo.DevSetup = 1;
+        } else {
+          this.mDevLockInfo.DevSetup = 0;
         }
-        this.mDevLockInfo.DevSetup = 1;
-        label205:
         this.mIsAuthDevOpen = bool2;
         if (!TextUtils.isEmpty(str))
         {
@@ -592,157 +757,160 @@ public class AuthDevActivity
           this.mPhoneNum = str;
         }
         this.mAllowSet = bool3;
-        if (!bool3) {
-          break label342;
+        if (bool3) {
+          this.mDevLockInfo.AllowSet = 1;
+        } else {
+          this.mDevLockInfo.AllowSet = 0;
+        }
+        if (this.mIsAuthDevOpen)
+        {
+          this.mOpenCloseButton.setOnCheckedChangeListener(null);
+          this.mOpenCloseButton.setChecked(true);
+          this.mOpenCloseButton.setOnCheckedChangeListener(this.mOnCheckedChangeListener);
+          startGetAuthDevList();
+          paramIntent = getHandler(this.mSafeApi.getLoginInfoActivity());
+          if (paramIntent != null) {
+            paramIntent.obtainMessage(20140331, 1, 0).sendToTarget();
+          }
         }
       }
-    }
-    label319:
-    label325:
-    label331:
-    label342:
-    for (this.mDevLockInfo.AllowSet = 1;; this.mDevLockInfo.AllowSet = 0)
-    {
-      if (this.mIsAuthDevOpen)
-      {
-        this.mOpenCloseButton.setOnCheckedChangeListener(null);
-        this.mOpenCloseButton.setChecked(true);
-        this.mOpenCloseButton.setOnCheckedChangeListener(this.mOnCheckedChangeListener);
-        startGetAuthDevList();
-        paramIntent = this.app.getHandler(LoginInfoActivity.class);
-        if (paramIntent != null) {
-          paramIntent.obtainMessage(20140331, 1, 0).sendToTarget();
-        }
-      }
-      return;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label114;
-      this.mDevLockInfo.DevSetup = 0;
-      break label205;
     }
   }
   
-  public boolean onBackEvent()
+  protected boolean onBackEvent()
   {
     Object localObject1 = getIntent();
     if (localObject1 != null)
     {
       localObject1 = ((Intent)localObject1).getExtras();
-      if ((localObject1 == null) || (!((Bundle)localObject1).containsKey("devlock_need_broadcast"))) {}
-    }
-    for (boolean bool = ((Bundle)localObject1).getBoolean("devlock_need_broadcast");; bool = false)
-    {
-      if (bool)
+      if ((localObject1 != null) && (((Bundle)localObject1).containsKey("devlock_need_broadcast")))
       {
-        localObject1 = new Intent();
-        ((Intent)localObject1).setAction("mqq.intent.action.DEVLOCK_ROAM");
-        ((Intent)localObject1).putExtra("auth_dev_open", this.mIsAuthDevOpen);
-        if (this.mIsAuthDevOpen)
+        bool = ((Bundle)localObject1).getBoolean("devlock_need_broadcast");
+        break label41;
+      }
+    }
+    boolean bool = false;
+    label41:
+    if (bool)
+    {
+      localObject1 = new Intent();
+      ((Intent)localObject1).setAction("mqq.intent.action.DEVLOCK_ROAM");
+      ((Intent)localObject1).putExtra("auth_dev_open", this.mIsAuthDevOpen);
+      if (this.mIsAuthDevOpen)
+      {
+        localObject2 = (WtloginManager)this.mRuntime.getManager(1);
+        if (localObject2 != null)
         {
-          Object localObject2 = (WtloginManager)this.app.getManager(1);
-          if (localObject2 != null)
-          {
-            localObject2 = ((WtloginManager)localObject2).getLocalTicket(this.app.getCurrentAccountUin(), 16L, 33554432);
-            if (localObject2 != null) {
-              ((Intent)localObject1).putExtra("devlock_roam_sig", ((Ticket)localObject2)._sig);
-            }
+          localObject2 = ((WtloginManager)localObject2).getLocalTicket(this.mRuntime.getCurrentAccountUin(), 16L, 33554432);
+          if (localObject2 != null) {
+            ((Intent)localObject1).putExtra("devlock_roam_sig", ((Ticket)localObject2)._sig);
           }
         }
-        sendBroadcast((Intent)localObject1, "com.tencent.msg.permission.pushnotify");
       }
-      localObject1 = new Intent();
-      ((Intent)localObject1).putExtra("auth_dev_open", this.mIsAuthDevOpen);
-      ((Intent)localObject1).putExtra("allow_set", this.mAllowSet);
-      ((Intent)localObject1).putExtra("phone_num", this.mPhoneNum);
-      if ((this.mFaceStateRsp != null) && (!this.mFaceStateRsp.rpt_msg_uin_data.isEmpty())) {
-        ((Intent)localObject1).putExtra("faceStateKey", String.valueOf(((oidb_0x5e1.UdcUinData)this.mFaceStateRsp.rpt_msg_uin_data.get(0)).user_login_guard_face.get()));
-      }
-      setResult(0, (Intent)localObject1);
-      if ((AuthDevOpenUgActivity.a()) && (this.isH5_logic))
-      {
-        finish();
-        startActivity(new Intent(this, LoginInfoActivity.class));
-      }
-      finish();
-      return false;
+      sendBroadcast((Intent)localObject1, "com.tencent.msg.permission.pushnotify");
     }
+    localObject1 = new Intent();
+    ((Intent)localObject1).putExtra("auth_dev_open", this.mIsAuthDevOpen);
+    ((Intent)localObject1).putExtra("allow_set", this.mAllowSet);
+    ((Intent)localObject1).putExtra("phone_num", this.mPhoneNum);
+    Object localObject2 = this.mFaceStateRsp;
+    if ((localObject2 != null) && (!((oidb_0x5e1.RspBody)localObject2).rpt_msg_uin_data.isEmpty())) {
+      ((Intent)localObject1).putExtra("faceStateKey", String.valueOf(((oidb_0x5e1.UdcUinData)this.mFaceStateRsp.rpt_msg_uin_data.get(0)).user_login_guard_face.get()));
+    }
+    setResult(0, (Intent)localObject1);
+    if ((this.mSafeApi.isH5Jump()) && (this.isH5_logic))
+    {
+      finish();
+      RouteUtils.a(this, new Intent(), "/base/safe/loginInfo");
+    }
+    finish();
+    return false;
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    Object localObject1;
+    if (i == 2131369233)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      Object localObject = new Intent(this, QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", "https://kf.qq.com/touch/apifaq/1211147RVfAV140617UV3MZn.html?ADTAG=veda.mobileqq.en");
-      ((Intent)localObject).putExtra("hide_more_button", true);
-      startActivity((Intent)localObject);
+      localObject1 = new Intent();
+      ((Intent)localObject1).putExtra("url", "https://kf.qq.com/touch/apifaq/1211147RVfAV140617UV3MZn.html?ADTAG=veda.mobileqq.en");
+      ((Intent)localObject1).putExtra("hide_more_button", true);
+      startActivity((Intent)localObject1);
+      RouteUtils.a(this, (Intent)localObject1, "/base/browser");
       ReportController.b(null, "dc00898", "", "", "0X800A720", "0X800A720", 0, 0, "", "", "", "");
-      if (QLog.isColorLevel())
-      {
+      if (QLog.isColorLevel()) {
         QLog.d("DevRpt", 2, "点击帮助！0X800A720");
-        continue;
-        onClickOpenCloseDevLockBtn();
-        continue;
+      }
+    }
+    else if (i == 2131363067)
+    {
+      onClickOpenCloseDevLockBtn();
+    }
+    else if (i == 2131365639)
+    {
+      dismissConfirmCloseDialog();
+      ReportController.b(this.mRuntime, "dc00899", "DevLockSwitchDialog", this.mRuntime.getCurrentAccountUin(), "clickCancel", "dialogRightBtn", 0, 1, "", "", "", "");
+      ReportController.b(null, "dc00898", "", "", "0X800A71E", "0X800A71E", 0, 0, "", "", "", "");
+      if (QLog.isColorLevel()) {
+        QLog.d("DevRpt", 2, "登录保护页关闭登录保护时的确认弹窗中点击取消！0X800A71E");
+      }
+    }
+    else if (i == 2131365633)
+    {
+      try
+      {
         dismissConfirmCloseDialog();
-        ReportController.b(this.app, "dc00899", "DevLockSwitchDialog", this.app.getCurrentAccountUin(), "clickCancel", "dialogRightBtn", 0, 1, "", "", "", "");
-        ReportController.b(null, "dc00898", "", "", "0X800A71E", "0X800A71E", 0, 0, "", "", "", "");
-        if (QLog.isColorLevel())
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(Utils.b(this.mRuntime.getCurrentAccountUin()));
+        ((StringBuilder)localObject1).append("_");
+        ((StringBuilder)localObject1).append("last_safety_risk_dialog_time");
+        localObject1 = getSharedPreferences(((StringBuilder)localObject1).toString(), 0).edit();
+        ((SharedPreferences.Editor)localObject1).putLong("last_safety_risk_dialog_time", System.currentTimeMillis());
+        ((SharedPreferences.Editor)localObject1).commit();
+        ReportController.b(null, "dc00898", "", "", "0X800A71D", "0X800A71D", 0, 0, "", "", "", "");
+        if (QLog.isColorLevel()) {
+          QLog.d("DevRpt", 2, "登录保护页关闭登录保护时的确认弹窗中点击关闭！0X800A71D");
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      ReportController.b(this.mRuntime, "dc00899", "DevLockSwitchDialog", this.mRuntime.getCurrentAccountUin(), "clickClose", "dialogLeftBtn", 0, 2, "", "", "", "");
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.devlock.AuthDevActivity", 2, "onClick.begin to CloseDevLock");
+      }
+      Object localObject2;
+      if (!this.mCanOpenOrClose)
+      {
+        localObject2 = this.mProDialog;
+        if ((localObject2 == null) || (!((QQProgressDialog)localObject2).isShowing())) {
+          showProgressDialog();
+        }
+      }
+      else
+      {
+        showProgressDialog();
+        this.mCanOpenOrClose = false;
+        localObject2 = this.mRuntime.getCurrentAccountUin();
+        i = this.mSafeApi.closeDevLock(this.mRuntime, (String)localObject2, this.mWtLoginObserver);
+        if (i != 0)
         {
-          QLog.d("DevRpt", 2, "登录保护页关闭登录保护时的确认弹窗中点击取消！0X800A71E");
-          continue;
-          int i;
-          try
+          hideProgerssDialog();
+          this.mCanOpenOrClose = true;
+          if (QLog.isColorLevel())
           {
-            dismissConfirmCloseDialog();
-            localObject = getSharedPreferences(LoginInfoActivity.md5sum(getCurrentAccountUin()) + "_" + LoginInfoActivity.LAST_DIALOG_SHOW_TIME, 0).edit();
-            ((SharedPreferences.Editor)localObject).putLong(LoginInfoActivity.LAST_DIALOG_SHOW_TIME, System.currentTimeMillis());
-            ((SharedPreferences.Editor)localObject).commit();
-            ReportController.b(null, "dc00898", "", "", "0X800A71D", "0X800A71D", 0, 0, "", "", "", "");
-            if (QLog.isColorLevel()) {
-              QLog.d("DevRpt", 2, "登录保护页关闭登录保护时的确认弹窗中点击关闭！0X800A71D");
-            }
-            ReportController.b(this.app, "dc00899", "DevLockSwitchDialog", this.app.getCurrentAccountUin(), "clickClose", "dialogLeftBtn", 0, 2, "", "", "", "");
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.devlock.AuthDevActivity", 2, "onClick.begin to CloseDevLock");
-            }
-            if (!this.mCanOpenOrClose)
-            {
-              if ((this.mProDialog != null) && (this.mProDialog.isShowing())) {
-                continue;
-              }
-              showProgressDialog();
-            }
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("onClick.CloseDevLock fail ret =");
+            ((StringBuilder)localObject2).append(i);
+            QLog.d("Q.devlock.AuthDevActivity", 2, ((StringBuilder)localObject2).toString());
           }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              localException.printStackTrace();
-            }
-            showProgressDialog();
-            this.mCanOpenOrClose = false;
-            String str = this.app.getCurrentAccountUin();
-            i = EquipmentLockImpl.a().a(this.app, str, this.mWtLoginObserver);
-          }
-          if (i != 0)
-          {
-            hideProgerssDialog();
-            this.mCanOpenOrClose = true;
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.devlock.AuthDevActivity", 2, "onClick.CloseDevLock fail ret =" + i);
-            }
-            QQToast.a(getApplicationContext(), getString(2131692068), 0).b(getTitleBarHeight());
-          }
+          QQToast.a(getApplicationContext(), getString(2131691987), 0).b(getTitleBarHeight());
         }
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   @Override
@@ -752,159 +920,323 @@ public class AuthDevActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onCreate(Bundle paramBundle)
+  public void onDelAuthDevResult(boolean paramBoolean, String paramString, int paramInt)
   {
-    super.onCreate(paramBundle);
-    super.setContentView(2131561181);
-    this.mAuthListLayout = ((LinearLayout)super.findViewById(2131363119));
-    this.mAuthDevLoadingView = ((ProgressBar)super.findViewById(2131373581));
-    this.mTvBottomTips = ((TextView)findViewById(2131380205));
-    this.mOpenCloseButton = ((FormSwitchItem)super.findViewById(2131363127));
-    this.mBothOnlineButton = ((FormSwitchItem)findViewById(2131363768));
-    this.mAuthListDesc = ((TextView)super.findViewById(2131363121));
-    this.mAuthListDesc.setVisibility(4);
-    this.mWXSyncQQMsgLayout = ((FormSwitchItem)super.findViewById(2131382069));
-    this.mWXSyncQQMsgLayout.setOnCheckedChangeListener(this.mOnCheckedChangeListener);
-    this.mWXSyncQQMsgLayout.setVisibility(8);
-    this.mWXSyncQQMsgDesc = ((TextView)super.findViewById(2131382068));
-    this.mWXSyncQQMsgDesc.setVisibility(8);
-    this.rightViewText.setVisibility(0);
-    this.rightViewText.setText(2131693178);
-    this.rightViewText.setOnClickListener(this);
-    paramBundle = super.getIntent();
-    if (TextUtils.equals(paramBundle.getExtras().getString("devlock_open_source"), "PhoneUnity")) {
-      this.leftView.setText(2131699149);
+    boolean bool = false;
+    QLog.d("Q.devlock.AuthDevActivity", 1, new Object[] { "onDelAuthDevResult.isSuccess=", Boolean.valueOf(paramBoolean), " errorMsg=", paramString, " index=", Integer.valueOf(paramInt) });
+    hideProgerssDialog();
+    Object localObject;
+    if (this.mIsAuthDevOpen) {
+      localObject = this.mAuthList;
+    } else {
+      localObject = this.mHistoryList;
     }
-    if (this.app == null)
+    if (paramBoolean)
     {
-      QLog.e("Q.devlock.AuthDevActivity", 1, "app is null, refresh app");
-      this.app = ((QQAppInterface)getAppRuntime());
-    }
-    if (this.app == null)
-    {
-      finish();
-      QLog.e("Q.devlock.AuthDevActivity", 1, "error : app is null");
+      if ((paramInt > -1) && (paramInt < ((List)localObject).size()))
+      {
+        paramString = (SvcDevLoginInfo)((List)localObject).get(paramInt);
+        if (Arrays.equals(NetConnInfoCenter.GUID, paramString.vecGuid))
+        {
+          this.mRuntime.updateSubAccountLogin(this.mRuntime.getCurrentAccountUin(), false);
+          this.mRuntime.getApplication().refreAccountList();
+          ((ILoginRegisterApi)QRoute.api(ILoginRegisterApi.class)).logout(this, this.mRuntime, true);
+          paramString = this.mRuntime.getManager(1);
+          paramBoolean = bool;
+          if (paramString == null) {
+            paramBoolean = true;
+          }
+          QLog.d("Q.devlock.AuthDevActivity", 1, new Object[] { "clear login sig, manage is null : [", Boolean.valueOf(paramBoolean), "]" });
+          if (paramString != null)
+          {
+            paramString = (WtloginManager)paramString;
+            localObject = this.mRuntime.getAccount();
+            paramString.clearUserFastLoginData((String)localObject, 16L);
+            paramString.clearUserFastLoginData((String)localObject, 1600001540L);
+            paramString.refreshMemorySig();
+          }
+          return;
+        }
+        if (paramInt < ((List)localObject).size())
+        {
+          ((List)localObject).remove(paramInt);
+          updateHistoryListUI((List)localObject);
+        }
+      }
+      QQToast.a(getApplicationContext(), 2, getString(2131692006), 0).b(getTitleBarHeight());
       return;
     }
-    boolean bool = SettingCloneUtil.readValue(this, this.app.getCurrentAccountUin(), "login_accounts", "qqsetting_bothonline_key", true);
-    this.mBothOnlineButton.setChecked(bool);
-    this.mBothOnlineButton.setOnCheckedChangeListener(this.mOnCheckedChangeListener);
-    if (AppSetting.d)
+    if (TextUtils.isEmpty(paramString))
     {
-      this.mOpenCloseButton.setContentDescription(getString(2131692099));
-      this.rightViewText.setContentDescription(getString(2131692067));
-      this.mBothOnlineButton.setContentDescription(getString(2131693321));
+      QQToast.a(getApplicationContext(), 1, getString(2131692005), 0).b(getTitleBarHeight());
+      return;
     }
-    try
-    {
-      this.mPageName = getPackageManager().getPackageInfo(getPackageName(), 0).packageName;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.AuthDevActivity", 2, "packName = " + this.mPageName);
-      }
-      addObserver(this.mFriendObserver);
-      addObserver(this.mSecSvcObserver);
-      this.mFrom = paramBundle.getStringExtra("from");
-      if ("app_qq_safe_center".equals(this.mFrom))
-      {
-        paramBundle = SharedPreUtils.j(this, getCurrentAccountUin());
-        if (!TextUtils.isEmpty(paramBundle)) {}
-        try
-        {
-          if (new JSONObject(paramBundle).optInt("securityType", 0) != 0) {
-            break label517;
-          }
-          bool = true;
-          this.mIsGrayAccount = bool;
-        }
-        catch (Exception paramBundle)
-        {
-          for (;;)
-          {
-            QLog.e("Q.devlock.AuthDevActivity", 1, new Object[] { "parse dev gray switch error : ", paramBundle.getMessage() });
-          }
-        }
-        startGetDevLockStatus();
-        if (this.mIsGrayAccount) {
-          break label756;
-        }
-        this.mBothOnlineButton.setVisibility(8);
-        return;
-      }
-    }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException)
-    {
-      for (;;)
-      {
-        localNameNotFoundException.printStackTrace();
-        continue;
-        label517:
-        bool = false;
-        continue;
-        this.mIsGrayAccount = paramBundle.getExtras().getBoolean("auth_dev_gray_switch");
-        this.mIsAuthDevOpen = paramBundle.getExtras().getBoolean("auth_dev_open");
-        this.mPhoneNum = paramBundle.getExtras().getString("phone_num");
-        this.mIsAllowSet = paramBundle.getExtras().getBoolean("allow_set");
-        this.mEnableOpenAllowsetDev = paramBundle.getExtras().getBoolean("enable_open_allowset_dev");
-        this.isH5_logic = paramBundle.getExtras().getBoolean("h5_flag");
-        this.mSecureState = paramBundle.getExtras().getString("secureState", "secureStateUNKNOWN");
-        this.mDevLockInfo = ((DevlockInfo)paramBundle.getParcelableExtra("DevlockInfo"));
-        if ("secureStateOk".equals(this.mSecureState))
-        {
-          this.mAppId = paramBundle.getStringExtra("faceAppId");
-          this.mTmpKey = paramBundle.getStringExtra("faceTmpKey");
-          this.mSecureRsp = new FaceSecureCheck.SecureCheckResponse();
-          this.mSecureRsp.bool_sec_pass.set(true);
-          this.mSecureRsp.str_tmpkey.set(this.mTmpKey);
-          this.mSecureRsp.str_openid.set(this.mAppId);
-        }
-        initPageUI();
-      }
-      label756:
-      super.setTitle(2131692052);
-      this.rightViewText.setVisibility(8);
-      ReportController.b(null, "dc00898", "", "", "0X800AC52", "0X800AC52", 0, 0, "", "", "", "");
-    }
+    QQToast.a(getApplicationContext(), 1, paramString, 0).b(getTitleBarHeight());
   }
   
-  public void onDestroy()
+  public void onDelHistoryDevResult(boolean paramBoolean, String paramString, int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onDelHistoryDevResult isSuccess=");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(" errorMsg=");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" index=");
+    localStringBuilder.append(paramInt);
+    QLog.d("Q.devlock.AuthDevActivity", 1, localStringBuilder.toString());
+    hideProgerssDialog();
+    if (paramBoolean)
+    {
+      ReportController.b(this.mRuntime, "CliOper", "", "", "My_eq", "Delete_eq", 0, 0, "", "", "", "");
+      if (paramInt > -1)
+      {
+        paramString = this.mHistoryList;
+        if ((paramString != null) && (paramInt < paramString.size()))
+        {
+          this.mHistoryList.remove(paramInt);
+          updateHistoryListUI(this.mHistoryList);
+        }
+      }
+      QQToast.a(getApplicationContext(), 2, getString(2131692006), 0).b(getTitleBarHeight());
+      return;
+    }
+    if (TextUtils.isEmpty(paramString))
+    {
+      QQToast.a(getApplicationContext(), 1, getString(2131694373), 0).b(getTitleBarHeight());
+      return;
+    }
+    QQToast.a(getApplicationContext(), 1, paramString, 0).b(getTitleBarHeight());
+  }
+  
+  protected void onDestroy()
   {
     super.onDestroy();
     hideProgerssDialog();
     dismissSafetyRiskDialog();
-    removeObserver(this.mFriendObserver);
-    removeObserver(this.mSecSvcObserver);
+    removeObserver(this.mDevListObserver);
+    removeObserver(this.mDevLockObserver);
+  }
+  
+  public void onGetAuthDevResult(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
+  {
+    this.mAuthDevLoadingView.setVisibility(8);
+    if (!this.mIsAuthDevOpen) {
+      return;
+    }
+    if ((paramBoolean) && (paramSvcRspGetDevLoginInfo != null) && (paramSvcRspGetDevLoginInfo.iResult == 0))
+    {
+      QLog.d("Q.devlock.AuthDevActivity", 1, "onGetAuthDevResult.success");
+      this.mAuthList = paramSvcRspGetDevLoginInfo.vecAuthLoginDevInfo;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("Q.devlock.AuthDevActivity", 2, "------------------------------------------------------------------------------");
+        paramSvcRspGetDevLoginInfo = this.mAuthList.iterator();
+        while (paramSvcRspGetDevLoginInfo.hasNext())
+        {
+          localObject = (SvcDevLoginInfo)paramSvcRspGetDevLoginInfo.next();
+          if (localObject != null)
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("SvcDevLoginInfo.iAppId=");
+            localStringBuilder.append(((SvcDevLoginInfo)localObject).iAppId);
+            localStringBuilder.append(" iLoginTime=");
+            localStringBuilder.append(((SvcDevLoginInfo)localObject).iLoginTime);
+            localStringBuilder.append(" strLoginLocation=");
+            localStringBuilder.append(((SvcDevLoginInfo)localObject).strLoginLocation);
+            localStringBuilder.append(" iLoginPlatform=");
+            localStringBuilder.append(((SvcDevLoginInfo)localObject).iLoginPlatform);
+            localStringBuilder.append(" strDeviceName=");
+            localStringBuilder.append(((SvcDevLoginInfo)localObject).strDeviceName);
+            localStringBuilder.append(" strDeviceTypeInfo");
+            localStringBuilder.append(((SvcDevLoginInfo)localObject).strDeviceTypeInfo);
+            QLog.d("Q.devlock.AuthDevActivity", 2, localStringBuilder.toString());
+          }
+        }
+        QLog.d("Q.devlock.AuthDevActivity", 2, "------------------------------------------------------------------------------");
+      }
+      updateHistoryListUI(this.mAuthList);
+      return;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onGetAuthDevResult.isSuccess=");
+    ((StringBuilder)localObject).append(paramBoolean);
+    QLog.d("Q.devlock.AuthDevActivity", 1, ((StringBuilder)localObject).toString());
+    if (paramSvcRspGetDevLoginInfo == null)
+    {
+      QLog.d("Q.devlock.AuthDevActivity", 1, "onGetAuthDevResult.data is null");
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onGetAuthDevResult.data.iResult=");
+      ((StringBuilder)localObject).append(paramSvcRspGetDevLoginInfo.iResult);
+      QLog.d("Q.devlock.AuthDevActivity", 1, ((StringBuilder)localObject).toString());
+    }
+    this.mAuthListDesc.setVisibility(4);
+    QQToast.a(this, 1, getString(2131692017), 0).b(getTitleBarHeight());
+  }
+  
+  public void onGetHistoryDevResult(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
+  {
+    this.mAuthDevLoadingView.setVisibility(8);
+    if ((paramBoolean) && (paramSvcRspGetDevLoginInfo != null) && (paramSvcRspGetDevLoginInfo.iResult == 0))
+    {
+      QLog.d("Q.devlock.AuthDevActivity", 1, "onGetHistoryDevResult success");
+      this.mHistoryList.addAll(paramSvcRspGetDevLoginInfo.vecHistoryLoginDevInfo);
+      updateHistoryListUI(this.mHistoryList);
+      return;
+    }
+    String str;
+    if (paramSvcRspGetDevLoginInfo == null) {
+      str = "";
+    } else {
+      str = String.valueOf(paramSvcRspGetDevLoginInfo.iResult);
+    }
+    boolean bool;
+    if (paramSvcRspGetDevLoginInfo == null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    QLog.d("Q.devlock.AuthDevActivity", 1, new Object[] { "onGetHistoryDevResult fail isSuccess=", Boolean.valueOf(paramBoolean), " data==null ? ", Boolean.valueOf(bool), "errorResult : ", str });
+    QQToast.a(getActivity(), 1, getString(2131692017), 0).b(getTitleBarHeight());
+  }
+  
+  public void onGetLoginDevResult(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
+  {
+    this.mAuthDevLoadingView.setVisibility(8);
+    if ((paramBoolean) && (paramSvcRspGetDevLoginInfo != null) && (paramSvcRspGetDevLoginInfo.iResult == 0))
+    {
+      QLog.d("Q.devlock.AuthDevActivity", 1, "onGetLoginDevResult success");
+      this.mOnLineList = paramSvcRspGetDevLoginInfo.vecCurrentLoginDevInfo;
+      this.mHistoryList.addAll(0, this.mOnLineList);
+      updateHistoryListUI(this.mHistoryList);
+      return;
+    }
+    String str;
+    if (paramSvcRspGetDevLoginInfo == null) {
+      str = "";
+    } else {
+      str = String.valueOf(paramSvcRspGetDevLoginInfo.iResult);
+    }
+    boolean bool;
+    if (paramSvcRspGetDevLoginInfo == null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    QLog.d("Q.devlock.AuthDevActivity", 1, new Object[] { "onGetLoginDevResult fail isSuccess=", Boolean.valueOf(paramBoolean), " data==null ? ", Boolean.valueOf(bool), "errorResult : ", str });
+    QQToast.a(getActivity(), 1, getString(2131692017), 0).b(getTitleBarHeight());
+  }
+  
+  public void onRenameAuthDev(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte, String paramString)
+  {
+    if (paramBoolean)
+    {
+      Object localObject = this.mAuthList;
+      if ((localObject != null) && (paramInt >= 0) && (paramInt < ((List)localObject).size()))
+      {
+        localObject = (SvcDevLoginInfo)this.mAuthList.get(paramInt);
+        if (Arrays.equals(((SvcDevLoginInfo)localObject).stDeviceItemDes.vecItemDes, paramArrayOfByte))
+        {
+          ((SvcDevLoginInfo)localObject).strDeviceName = paramString;
+          updateHistoryListUI(this.mAuthList);
+        }
+        localObject = getHandler(this.mSafeApi.getLoginInfoActivity());
+        if (localObject != null)
+        {
+          localObject = ((MqqHandler)localObject).obtainMessage(1);
+          Bundle localBundle = new Bundle();
+          localBundle.putString("target_name", paramString);
+          localBundle.putByteArray("target_desc", paramArrayOfByte);
+          ((Message)localObject).setData(localBundle);
+          ((Message)localObject).sendToTarget();
+        }
+      }
+    }
+  }
+  
+  public void onWXSyncQQMsgOption(int paramInt, Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      return;
+    }
+    boolean bool2 = true;
+    boolean bool1 = true;
+    paramInt = paramBundle.getInt("cmd", 1);
+    int i = paramBundle.getInt("opt", 2);
+    int j = paramBundle.getInt("ret", -1);
+    paramBundle = (String)paramBundle.get("wording");
+    FormSwitchItem localFormSwitchItem;
+    if (paramInt != 1)
+    {
+      if (paramInt != 2) {
+        return;
+      }
+      if (j == 0)
+      {
+        this.mWXSyncQQMsgLayout.setOnCheckedChangeListener(null);
+        localFormSwitchItem = this.mWXSyncQQMsgLayout;
+        if (i != 1) {
+          bool1 = false;
+        }
+        localFormSwitchItem.setChecked(bool1);
+        this.mWXSyncQQMsgLayout.setOnCheckedChangeListener(this.mOnCheckedChangeListener);
+        this.mWXSyncQQMsgDesc.setText(paramBundle);
+        return;
+      }
+      this.mWXSyncQQMsgLayout.setVisibility(8);
+      this.mWXSyncQQMsgDesc.setVisibility(8);
+      QQToast.a(this, paramBundle, 0).b(getTitleBarHeight());
+      return;
+    }
+    if (j == 0)
+    {
+      this.mWXSyncQQMsgLayout.setVisibility(0);
+      this.mWXSyncQQMsgLayout.setOnCheckedChangeListener(null);
+      localFormSwitchItem = this.mWXSyncQQMsgLayout;
+      if (i == 1) {
+        bool1 = bool2;
+      } else {
+        bool1 = false;
+      }
+      localFormSwitchItem.setChecked(bool1);
+      this.mWXSyncQQMsgLayout.setOnCheckedChangeListener(this.mOnCheckedChangeListener);
+      this.mWXSyncQQMsgDesc.setVisibility(0);
+      this.mWXSyncQQMsgDesc.setText(paramBundle);
+      return;
+    }
+    this.mWXSyncQQMsgLayout.setVisibility(8);
+    this.mWXSyncQQMsgDesc.setVisibility(8);
   }
   
   void showConfirmCloseDialog()
   {
     dismissConfirmCloseDialog();
-    ReportDialog localReportDialog = new ReportDialog(this, 2131755842);
-    localReportDialog.setContentView(2131559060);
-    TextView localTextView = (TextView)localReportDialog.findViewById(2131365811);
-    if (localTextView != null) {
-      localTextView.setText(getString(2131692070));
+    ReportDialog localReportDialog = new ReportDialog(this, 2131756189);
+    localReportDialog.setContentView(2131558954);
+    TextView localTextView1 = (TextView)localReportDialog.findViewById(2131365648);
+    if (localTextView1 != null) {
+      localTextView1.setText(getString(2131691989));
     }
-    localTextView = (TextView)localReportDialog.findViewById(2131365807);
-    if (localTextView != null)
-    {
-      localObject = (MessageRoamManager)this.app.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
-      if ((localObject != null) && (((MessageRoamManager)localObject).h()) && (((MessageRoamManager)localObject).b() == 1)) {}
-      localTextView.setText(getString(2131692061));
+    localTextView1 = (TextView)localReportDialog.findViewById(2131365644);
+    if (localTextView1 != null) {
+      localTextView1.setText(getString(2131691980));
     }
-    localTextView = (TextView)localReportDialog.findViewById(2131365796);
-    if (localTextView != null) {
-      localTextView.setText(2131690946);
+    localTextView1 = (TextView)localReportDialog.findViewById(2131365633);
+    if (localTextView1 != null) {
+      localTextView1.setText(2131690874);
     }
-    Object localObject = (TextView)localReportDialog.findViewById(2131365802);
-    if (localObject != null) {
-      ((TextView)localObject).setText(2131690800);
+    TextView localTextView2 = (TextView)localReportDialog.findViewById(2131365639);
+    if (localTextView2 != null) {
+      localTextView2.setText(2131690728);
     }
-    localReportDialog.setOnDismissListener(new AuthDevActivity.12(this));
-    if (localTextView != null) {
-      localTextView.setOnClickListener(this);
+    localReportDialog.setOnDismissListener(new AuthDevActivity.9(this));
+    if (localTextView1 != null) {
+      localTextView1.setOnClickListener(this);
     }
-    if (localObject != null) {
-      ((TextView)localObject).setOnClickListener(this);
+    if (localTextView2 != null) {
+      localTextView2.setOnClickListener(this);
     }
     this.mConfirmDialog = localReportDialog;
     this.mConfirmDialog.show();
@@ -915,21 +1247,25 @@ public class AuthDevActivity
     if (QLog.isColorLevel()) {
       QLog.d("Q.devlock.AuthDevActivity", 2, "startGetDevLockStatus begin to CheckDevLockStatus");
     }
-    String str = this.app.getCurrentAccountUin();
-    int i = EquipmentLockImpl.a().a(this.app, str, this.mWtLoginObserver);
+    Object localObject = this.mRuntime.getCurrentAccountUin();
+    int i = this.mSafeApi.checkDevLockStatus(this.mRuntime, (String)localObject, this.mWtLoginObserver);
     if (i != 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.AuthDevActivity", 2, "startGetDevLockStatus CheckDevLockStatus failed. ret=" + i);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("startGetDevLockStatus CheckDevLockStatus failed. ret=");
+        ((StringBuilder)localObject).append(i);
+        QLog.d("Q.devlock.AuthDevActivity", 2, ((StringBuilder)localObject).toString());
       }
       getDevLockInfoError();
-      QQToast.a(this, getString(2131694461), 0).a();
+      QQToast.a(this, getString(2131694426), 0).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AuthDevActivity
  * JD-Core Version:    0.7.0.1
  */

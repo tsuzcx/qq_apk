@@ -21,10 +21,20 @@ public class LangSettingFragment$LocaleListAdapter
   
   private boolean a(int paramInt)
   {
-    if ((paramInt >= LangSettingFragment.a().size()) || (paramInt < 0)) {
-      return false;
+    int i = LangSettingFragment.a().size();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramInt < i)
+    {
+      if (paramInt < 0) {
+        return false;
+      }
+      bool1 = bool2;
+      if (((Integer)LangSettingFragment.a().get(paramInt)).intValue() == 1033) {
+        bool1 = true;
+      }
     }
-    return ((Integer)LangSettingFragment.a().get(paramInt)).intValue() == 1033;
+    return bool1;
   }
   
   public int getCount()
@@ -44,26 +54,24 @@ public class LangSettingFragment$LocaleListAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    FormSimpleItem localFormSimpleItem = new FormSimpleItem(this.a.getActivity());
+    FormSimpleItem localFormSimpleItem = new FormSimpleItem(this.a.getBaseActivity());
     if (paramInt == LangSettingFragment.a(this.a)) {
-      localFormSimpleItem.setRightIcon(this.a.getResources().getDrawable(2130844830));
-    }
-    for (;;)
-    {
-      if (paramInt < LangSettingFragment.a().size()) {
-        localFormSimpleItem.setLeftText(LangSettingFragment.a(this.a, paramInt, false));
-      }
-      localFormSimpleItem.setTag(Integer.valueOf(paramInt));
-      localFormSimpleItem.setOnClickListener(a(paramInt));
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localFormSimpleItem;
+      localFormSimpleItem.setRightIcon(this.a.getResources().getDrawable(2130844706));
+    } else {
       localFormSimpleItem.setRightIcon(null);
     }
+    if (paramInt < LangSettingFragment.a().size()) {
+      localFormSimpleItem.setLeftText(LangSettingFragment.a(this.a, paramInt, false));
+    }
+    localFormSimpleItem.setTag(Integer.valueOf(paramInt));
+    localFormSimpleItem.setOnClickListener(a(paramInt));
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localFormSimpleItem;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.LangSettingFragment.LocaleListAdapter
  * JD-Core Version:    0.7.0.1
  */

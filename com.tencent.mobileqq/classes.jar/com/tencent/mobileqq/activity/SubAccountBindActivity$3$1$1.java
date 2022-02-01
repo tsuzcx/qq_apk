@@ -10,17 +10,17 @@ class SubAccountBindActivity$3$1$1
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivitySubAccountBindActivity$3.a.e();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivitySubAccountBindActivity$3.a.b(this.a.jdField_a_of_type_ComTencentMobileqqActivitySubAccountBindActivity$3.a.getString(2131719626));
+    this.a.jdField_a_of_type_ComTencentMobileqqActivitySubAccountBindActivity$3.a.hideJuhua();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivitySubAccountBindActivity$3.a.showQQToast(this.a.jdField_a_of_type_ComTencentMobileqqActivitySubAccountBindActivity$3.a.getString(2131719345));
     Intent localIntent = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqActivitySubAccountBindActivity$3.a, SubLoginActivity.class);
     localIntent.putExtra("subuin", this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.getUin());
-    localIntent.putExtra("fromWhere", this.a.jdField_a_of_type_ComTencentMobileqqActivitySubAccountBindActivity$3.a.b);
+    localIntent.putExtra("fromWhere", this.a.jdField_a_of_type_ComTencentMobileqqActivitySubAccountBindActivity$3.a.fromWhere);
     this.a.jdField_a_of_type_ComTencentMobileqqActivitySubAccountBindActivity$3.a.startActivity(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubAccountBindActivity.3.1.1
  * JD-Core Version:    0.7.0.1
  */

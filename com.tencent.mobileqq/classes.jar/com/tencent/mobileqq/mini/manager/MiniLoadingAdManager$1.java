@@ -15,13 +15,14 @@ class MiniLoadingAdManager$1
   {
     MiniAppAd.StGetAdReq localStGetAdReq = MiniLoadingAdManager.access$000(this.val$miniAppConfig, this.val$uin, 0);
     QLog.d("MiniLoadingAdManager", 1, "选单接口调用");
-    MiniProgramLpReportDC04239.reportMiniAppEvent(this.val$miniAppConfig, MiniProgramLpReportDC04239.getAppType(this.val$miniAppConfig), null, "ad", "ad_loading", "request_call_cnt", null);
+    MiniAppConfig localMiniAppConfig = this.val$miniAppConfig;
+    MiniProgramLpReportDC04239.reportMiniAppEvent(localMiniAppConfig, MiniProgramLpReportDC04239.getAppType(localMiniAppConfig), null, "ad", "ad_loading", "request_call_cnt", null);
     MiniAppCmdUtil.getInstance().getRewardedVideoADInfo(localStGetAdReq, new MiniLoadingAdManager.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.manager.MiniLoadingAdManager.1
  * JD-Core Version:    0.7.0.1
  */

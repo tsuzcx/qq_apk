@@ -14,25 +14,39 @@ class QCircleOkHttpDW$1
   
   public void onFailure(Call paramCall, IOException paramIOException)
   {
-    RFLog.i("QCircleOkHttpDW", RFLog.USR, "seq = " + this.val$option.getSeq() + "okHttp（）okHttpDownLoadException" + paramIOException);
+    int i = RFLog.USR;
+    paramCall = new StringBuilder();
+    paramCall.append("seq = ");
+    paramCall.append(this.val$option.getSeq());
+    paramCall.append("okHttp（）okHttpDownLoadException");
+    paramCall.append(paramIOException);
+    RFLog.i("QCircleOkHttpDW", i, paramCall.toString());
     QCircleOkHttpDW.access$000(this.this$0, this.val$option, this.val$callBack);
   }
   
   public void onResponse(Call paramCall, Response paramResponse)
   {
-    if (paramResponse.isSuccessful()) {
+    if (paramResponse.isSuccessful())
+    {
       QCircleOkHttpDW.access$100(this.this$0, this.val$option, paramResponse, this.val$callBack);
-    }
-    while ((!paramResponse.isRedirect()) && (paramResponse.code() >= 200) && (paramResponse.code() < 301)) {
       return;
     }
-    RFLog.i("QCircleOkHttpDW", RFLog.USR, "seq = " + this.val$option.getSeq() + "okHttp（）okHttpDownLoadFailed:" + paramResponse.code());
-    QCircleOkHttpDW.access$000(this.this$0, this.val$option, this.val$callBack);
+    if ((paramResponse.isRedirect()) || (paramResponse.code() < 200) || (paramResponse.code() >= 301))
+    {
+      int i = RFLog.USR;
+      paramCall = new StringBuilder();
+      paramCall.append("seq = ");
+      paramCall.append(this.val$option.getSeq());
+      paramCall.append("okHttp（）okHttpDownLoadFailed:");
+      paramCall.append(paramResponse.code());
+      RFLog.i("QCircleOkHttpDW", i, paramCall.toString());
+      QCircleOkHttpDW.access$000(this.this$0, this.val$option, this.val$callBack);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.picload.QCircleOkHttpDW.1
  * JD-Core Version:    0.7.0.1
  */

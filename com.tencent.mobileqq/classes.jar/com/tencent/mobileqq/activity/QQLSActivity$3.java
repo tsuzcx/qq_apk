@@ -35,20 +35,17 @@ class QQLSActivity$3
     QQLSActivity.a(this.a, paramLong);
     QQLSActivity.b(this.a, System.currentTimeMillis());
     if (QQLSActivity.a(this.a)) {
-      QQLSActivity.a(this.a).setText(2131698912);
+      QQLSActivity.a(this.a).setText(2131698991);
+    } else {
+      QQLSActivity.a(this.a).setText(2131698990);
     }
-    for (;;)
-    {
-      paramAdapterView = QQLSActivity.a(this.a).obtainMessage(6);
-      QQLSActivity.a(this.a).sendMessageDelayed(paramAdapterView, 500L);
-      return;
-      QQLSActivity.a(this.a).setText(2131698911);
-    }
+    paramAdapterView = QQLSActivity.a(this.a).obtainMessage(6);
+    QQLSActivity.a(this.a).sendMessageDelayed(paramAdapterView, 500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSActivity.3
  * JD-Core Version:    0.7.0.1
  */

@@ -49,14 +49,19 @@ public class AsyncListUtil<T>
   @Nullable
   public T getItem(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.mItemCount)) {
-      throw new IndexOutOfBoundsException(paramInt + " is not within 0 and " + this.mItemCount);
+    if ((paramInt >= 0) && (paramInt < this.mItemCount))
+    {
+      localObject = this.mTileList.getItemAt(paramInt);
+      if ((localObject == null) && (!isRefreshPending())) {
+        this.mMissingPositions.put(paramInt, 0);
+      }
+      return localObject;
     }
-    Object localObject = this.mTileList.getItemAt(paramInt);
-    if ((localObject == null) && (!isRefreshPending())) {
-      this.mMissingPositions.put(paramInt, 0);
-    }
-    return localObject;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(" is not within 0 and ");
+    ((StringBuilder)localObject).append(this.mItemCount);
+    throw new IndexOutOfBoundsException(((StringBuilder)localObject).toString());
   }
   
   public int getItemCount()
@@ -66,7 +71,10 @@ public class AsyncListUtil<T>
   
   void log(String paramString, Object... paramVarArgs)
   {
-    Log.d("AsyncListUtil", "[MAIN] " + String.format(paramString, paramVarArgs));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[MAIN] ");
+    localStringBuilder.append(String.format(paramString, paramVarArgs));
+    Log.d("AsyncListUtil", localStringBuilder.toString());
   }
   
   public void onRangeChanged()
@@ -90,35 +98,56 @@ public class AsyncListUtil<T>
   void updateRange()
   {
     this.mViewCallback.getItemRangeInto(this.mTmpRange);
-    if ((this.mTmpRange[0] > this.mTmpRange[1]) || (this.mTmpRange[0] < 0)) {}
-    while (this.mTmpRange[1] >= this.mItemCount) {
-      return;
-    }
-    if (!this.mAllowScrollHints) {
-      this.mScrollHint = 0;
-    }
-    for (;;)
+    Object localObject = this.mTmpRange;
+    if (localObject[0] <= localObject[1])
     {
-      this.mPrevRange[0] = this.mTmpRange[0];
-      this.mPrevRange[1] = this.mTmpRange[1];
-      this.mViewCallback.extendRangeInto(this.mTmpRange, this.mTmpRangeExtended, this.mScrollHint);
-      this.mTmpRangeExtended[0] = Math.min(this.mTmpRange[0], Math.max(this.mTmpRangeExtended[0], 0));
-      this.mTmpRangeExtended[1] = Math.max(this.mTmpRange[1], Math.min(this.mTmpRangeExtended[1], this.mItemCount - 1));
-      this.mBackgroundProxy.updateRange(this.mTmpRange[0], this.mTmpRange[1], this.mTmpRangeExtended[0], this.mTmpRangeExtended[1], this.mScrollHint);
-      return;
-      if ((this.mTmpRange[0] > this.mPrevRange[1]) || (this.mPrevRange[0] > this.mTmpRange[1])) {
-        this.mScrollHint = 0;
-      } else if (this.mTmpRange[0] < this.mPrevRange[0]) {
-        this.mScrollHint = 1;
-      } else if (this.mTmpRange[0] > this.mPrevRange[0]) {
-        this.mScrollHint = 2;
+      if (localObject[0] < 0) {
+        return;
       }
+      if (localObject[1] >= this.mItemCount) {
+        return;
+      }
+      if (!this.mAllowScrollHints)
+      {
+        this.mScrollHint = 0;
+      }
+      else
+      {
+        i = localObject[0];
+        arrayOfInt = this.mPrevRange;
+        if ((i <= arrayOfInt[1]) && (arrayOfInt[0] <= localObject[1]))
+        {
+          if (localObject[0] < arrayOfInt[0]) {
+            this.mScrollHint = 1;
+          } else if (localObject[0] > arrayOfInt[0]) {
+            this.mScrollHint = 2;
+          }
+        }
+        else {
+          this.mScrollHint = 0;
+        }
+      }
+      localObject = this.mPrevRange;
+      int[] arrayOfInt = this.mTmpRange;
+      localObject[0] = arrayOfInt[0];
+      localObject[1] = arrayOfInt[1];
+      this.mViewCallback.extendRangeInto(arrayOfInt, this.mTmpRangeExtended, this.mScrollHint);
+      localObject = this.mTmpRangeExtended;
+      localObject[0] = Math.min(this.mTmpRange[0], Math.max(localObject[0], 0));
+      localObject = this.mTmpRangeExtended;
+      localObject[1] = Math.max(this.mTmpRange[1], Math.min(localObject[1], this.mItemCount - 1));
+      localObject = this.mBackgroundProxy;
+      arrayOfInt = this.mTmpRange;
+      int i = arrayOfInt[0];
+      int j = arrayOfInt[1];
+      arrayOfInt = this.mTmpRangeExtended;
+      ((ThreadUtil.BackgroundCallback)localObject).updateRange(i, j, arrayOfInt[0], arrayOfInt[1], this.mScrollHint);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.AsyncListUtil
  * JD-Core Version:    0.7.0.1
  */

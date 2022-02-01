@@ -30,44 +30,41 @@ class DiscussionListAdapter2$3
       ((ShaderAnimLayout)localObject).d();
     }
     localObject = paramView.getTag();
-    if (!(localObject instanceof DiscussionInfo)) {}
-    for (;;)
+    if ((localObject instanceof DiscussionInfo))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       DiscussionInfo localDiscussionInfo = (DiscussionInfo)localObject;
-      if (NetworkUtil.a(DiscussionListAdapter2.a(this.a)) == 0)
+      if (NetworkUtil.getSystemNetwork(DiscussionListAdapter2.a(this.a)) == 0)
       {
         localObject = (BaseActivity)DiscussionListAdapter2.a(this.a);
-        QQToast.a((Context)localObject, 2131696097, 0).b(((BaseActivity)localObject).getTitleBarHeight());
+        QQToast.a((Context)localObject, 2131696114, 0).b(((BaseActivity)localObject).getTitleBarHeight());
       }
       else if ((!localDiscussionInfo.hasCollect) && (((DiscussionManager)this.a.a.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a() >= 80))
       {
         localObject = (BaseActivity)DiscussionListAdapter2.a(this.a);
-        QQToast.a((Context)localObject, DiscussionListAdapter2.a(this.a).getString(2131696096, new Object[] { String.valueOf(80) }), 0).b(((BaseActivity)localObject).getTitleBarHeight());
+        QQToast.a((Context)localObject, DiscussionListAdapter2.a(this.a).getString(2131696113, new Object[] { String.valueOf(80) }), 0).b(((BaseActivity)localObject).getTitleBarHeight());
       }
       else
       {
         DiscussionHandler localDiscussionHandler = (DiscussionHandler)this.a.a.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER);
-        if (localDiscussionInfo.hasCollect) {}
-        for (localObject = "0X8006898";; localObject = "0X8006897")
-        {
-          ReportController.b(this.a.a, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
-          if (!localDiscussionInfo.hasCollect) {
-            break label271;
-          }
-          localDiscussionHandler.e(Long.valueOf(localDiscussionInfo.uin).longValue());
-          break;
+        if (localDiscussionInfo.hasCollect) {
+          localObject = "0X8006898";
+        } else {
+          localObject = "0X8006897";
         }
-        label271:
-        localDiscussionHandler.d(Long.valueOf(localDiscussionInfo.uin).longValue());
+        ReportController.b(this.a.a, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
+        if (localDiscussionInfo.hasCollect) {
+          localDiscussionHandler.e(Long.valueOf(localDiscussionInfo.uin).longValue());
+        } else {
+          localDiscussionHandler.d(Long.valueOf(localDiscussionInfo.uin).longValue());
+        }
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.DiscussionListAdapter2.3
  * JD-Core Version:    0.7.0.1
  */

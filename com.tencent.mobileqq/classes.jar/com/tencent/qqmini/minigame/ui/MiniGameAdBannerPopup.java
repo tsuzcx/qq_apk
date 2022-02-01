@@ -70,7 +70,14 @@ public class MiniGameAdBannerPopup
       if ((TextUtils.isEmpty(APPID_WHITE_LIST)) && (TextUtils.isEmpty(APPID_BLACK_LIST))) {
         return true;
       }
-      QMLog.d("MiniGameAdBannerPopup", "allowShowForAppId check if appid " + paramString + " in whitelist " + APPID_WHITE_LIST + " or blacklist " + APPID_BLACK_LIST);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("allowShowForAppId check if appid ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" in whitelist ");
+      localStringBuilder.append(APPID_WHITE_LIST);
+      localStringBuilder.append(" or blacklist ");
+      localStringBuilder.append(APPID_BLACK_LIST);
+      QMLog.d("MiniGameAdBannerPopup", localStringBuilder.toString());
       if (!TextUtils.isEmpty(APPID_WHITE_LIST)) {
         return checkWhiteList(paramString);
       }
@@ -89,96 +96,97 @@ public class MiniGameAdBannerPopup
   
   private static boolean allowShowForRefer(int paramInt)
   {
-    try
+    for (;;)
     {
-      if ((TextUtils.isEmpty(REFER_WHITE_LIST)) && (TextUtils.isEmpty(REFER_BLACK_LIST))) {
-        return true;
-      }
-      QMLog.d("MiniGameAdBannerPopup", "allowShowForRefer check if scene " + paramInt + " in whitelist " + REFER_WHITE_LIST + " or blacklist " + REFER_BLACK_LIST);
-      String[] arrayOfString;
-      int j;
       int i;
-      if (!TextUtils.isEmpty(REFER_WHITE_LIST))
+      try
       {
-        arrayOfString = getWhiteListRefers();
-        if (arrayOfString != null)
-        {
-          j = arrayOfString.length;
-          i = 0;
-          for (;;)
-          {
-            if (i >= j) {
-              break label179;
-            }
-            if (Integer.parseInt(arrayOfString[i]) == paramInt) {
-              break;
-            }
-            i += 1;
-          }
+        if ((TextUtils.isEmpty(REFER_WHITE_LIST)) && (TextUtils.isEmpty(REFER_BLACK_LIST))) {
+          return true;
         }
-      }
-      else
-      {
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("allowShowForRefer check if scene ");
+        ((StringBuilder)localObject).append(paramInt);
+        ((StringBuilder)localObject).append(" in whitelist ");
+        ((StringBuilder)localObject).append(REFER_WHITE_LIST);
+        ((StringBuilder)localObject).append(" or blacklist ");
+        ((StringBuilder)localObject).append(REFER_BLACK_LIST);
+        QMLog.d("MiniGameAdBannerPopup", ((StringBuilder)localObject).toString());
+        int j;
+        if (!TextUtils.isEmpty(REFER_WHITE_LIST))
+        {
+          localObject = getWhiteListRefers();
+          if (localObject == null) {
+            break;
+          }
+          j = localObject.length;
+          i = 0;
+          if (i >= j) {
+            break;
+          }
+          if (Integer.parseInt(localObject[i]) != paramInt) {
+            break label198;
+          }
+          return true;
+        }
         if (!TextUtils.isEmpty(REFER_BLACK_LIST))
         {
-          arrayOfString = getBlackListRefers();
-          if (arrayOfString != null)
+          localObject = getBlackListRefers();
+          if (localObject != null)
           {
-            j = arrayOfString.length;
+            j = localObject.length;
             i = 0;
-            while (i < j)
+            if (i < j)
             {
-              int k = Integer.parseInt(arrayOfString[i]);
+              int k = Integer.parseInt(localObject[i]);
               if (k == paramInt) {
                 return false;
               }
               i += 1;
+              continue;
             }
           }
+          return true;
         }
-        return true;
       }
+      catch (Exception localException)
+      {
+        QMLog.e("MiniGameAdBannerPopup", "allowShowForRefer", localException);
+      }
+      return true;
+      label198:
+      i += 1;
     }
-    catch (Exception localException)
-    {
-      QMLog.e("MiniGameAdBannerPopup", "allowShowForRefer", localException);
-    }
-    label179:
     return false;
   }
   
   private static boolean checkBlackList(String paramString)
   {
-    String[] arrayOfString;
-    int j;
-    int i;
-    if (APPID_BLACK_LIST.contains(","))
+    Object localObject = APPID_BLACK_LIST;
+    String str = ",";
+    if (((String)localObject).contains(","))
     {
-      arrayOfString = APPID_BLACK_LIST.split(",");
-      if (arrayOfString != null)
-      {
-        j = arrayOfString.length;
-        i = 0;
-      }
+      localObject = APPID_BLACK_LIST;
     }
     else
     {
-      for (;;)
+      localObject = APPID_BLACK_LIST;
+      str = ";";
+    }
+    localObject = ((String)localObject).split(str);
+    if (localObject != null)
+    {
+      int j = localObject.length;
+      int i = 0;
+      while (i < j)
       {
-        if (i >= j) {
-          break label74;
-        }
-        String str = arrayOfString[i];
-        if ((str != null) && (str.equals(paramString)))
-        {
+        str = localObject[i];
+        if ((str != null) && (str.equals(paramString))) {
           return false;
-          arrayOfString = APPID_BLACK_LIST.split(";");
-          break;
         }
         i += 1;
       }
     }
-    label74:
     return true;
   }
   
@@ -189,248 +197,186 @@ public class MiniGameAdBannerPopup
   
   private static void checkShouldShowInternal(Context paramContext, String paramString, int paramInt)
   {
-    if ((paramContext == null) || (paramString == null)) {}
-    WeakReference localWeakReference;
-    do
+    if (paramContext != null)
     {
-      return;
-      localWeakReference = new WeakReference(paramContext);
-    } while (((ChannelProxy)ProxyManager.get(ChannelProxy.class)).tianshuRequestAdv(paramContext, paramString, paramInt, 258, 1, new MiniGameAdBannerPopup.2(localWeakReference, paramString, paramInt)));
-    MiniToast.makeText(paramContext, 0, "暂不支持在" + QUAUtil.getApplicationName(paramContext) + "中请求广告弹窗", 1);
-    handleGetAdResult(paramContext, paramString, paramInt, false, null);
+      if (paramString == null) {
+        return;
+      }
+      Object localObject = new WeakReference(paramContext);
+      if (!((ChannelProxy)ProxyManager.get(ChannelProxy.class)).tianshuRequestAdv(paramContext, paramString, paramInt, 258, 1, new MiniGameAdBannerPopup.2((WeakReference)localObject, paramString, paramInt)))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("暂不支持在");
+        ((StringBuilder)localObject).append(QUAUtil.getApplicationName(paramContext));
+        ((StringBuilder)localObject).append("中请求广告弹窗");
+        MiniToast.makeText(paramContext, 0, ((StringBuilder)localObject).toString(), 1);
+        handleGetAdResult(paramContext, paramString, paramInt, false, null);
+      }
+    }
   }
   
   private static boolean checkWhiteList(String paramString)
   {
-    boolean bool2 = false;
-    String[] arrayOfString;
-    boolean bool1;
-    int j;
-    int i;
-    if (APPID_WHITE_LIST.contains(","))
+    Object localObject = APPID_WHITE_LIST;
+    String str = ",";
+    if (((String)localObject).contains(","))
     {
-      arrayOfString = APPID_WHITE_LIST.split(",");
-      bool1 = bool2;
-      if (arrayOfString != null)
-      {
-        j = arrayOfString.length;
-        i = 0;
-      }
+      localObject = APPID_WHITE_LIST;
     }
-    for (;;)
+    else
     {
-      bool1 = bool2;
-      if (i < j)
+      localObject = APPID_WHITE_LIST;
+      str = ";";
+    }
+    localObject = ((String)localObject).split(str);
+    if (localObject != null)
+    {
+      int j = localObject.length;
+      int i = 0;
+      while (i < j)
       {
-        String str = arrayOfString[i];
+        str = localObject[i];
         if ((str != null) && (str.equals(paramString))) {
-          bool1 = true;
+          return true;
         }
+        i += 1;
       }
-      else
-      {
-        return bool1;
-        arrayOfString = APPID_WHITE_LIST.split(";");
-        break;
-      }
-      i += 1;
     }
+    return false;
   }
   
   private static String[] getBlackListRefers()
   {
-    if (REFER_BLACK_LIST.contains(",")) {
-      return REFER_BLACK_LIST.split(",");
+    String str1 = REFER_BLACK_LIST;
+    String str2 = ",";
+    if (str1.contains(","))
+    {
+      str1 = REFER_BLACK_LIST;
     }
-    return REFER_BLACK_LIST.split(";");
+    else
+    {
+      str1 = REFER_BLACK_LIST;
+      str2 = ";";
+    }
+    return str1.split(str2);
   }
   
   private static String[] getWhiteListRefers()
   {
-    if (REFER_WHITE_LIST.contains(",")) {
-      return REFER_WHITE_LIST.split(",");
+    String str1 = REFER_WHITE_LIST;
+    String str2 = ",";
+    if (str1.contains(","))
+    {
+      str1 = REFER_WHITE_LIST;
     }
-    return REFER_WHITE_LIST.split(";");
+    else
+    {
+      str1 = REFER_WHITE_LIST;
+      str2 = ";";
+    }
+    return str1.split(str2);
   }
   
   private static void handleGetAdResult(Context paramContext, String paramString, int paramInt, boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    Object localObject8 = null;
-    Object localObject3 = null;
-    Object localObject2;
-    Object localObject1;
-    Object localObject6;
-    Object localObject5;
+    Object localObject9 = null;
+    Object localObject5 = null;
     if ((paramBoolean) && (paramGetAdsRsp != null))
     {
-      if (paramGetAdsRsp.mapAds.isEmpty()) {
-        break label884;
-      }
-      paramGetAdsRsp = (TianShuAccess.RspEntry)paramGetAdsRsp.mapAds.get(0);
-      if ((paramGetAdsRsp != null) && (paramGetAdsRsp.value != null) && (!paramGetAdsRsp.value.lst.isEmpty()))
+      if (!paramGetAdsRsp.mapAds.isEmpty())
       {
-        TianShuAccess.AdItem localAdItem2 = (TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(0);
-        TianShuAccess.AdItem localAdItem1;
-        Object localObject7;
-        if ((localAdItem2 != null) && (localAdItem2.argList != null) && (!localAdItem2.argList.isEmpty()))
+        paramGetAdsRsp = (TianShuAccess.RspEntry)paramGetAdsRsp.mapAds.get(0);
+        if ((paramGetAdsRsp != null) && (paramGetAdsRsp.value != null) && (!paramGetAdsRsp.value.lst.isEmpty()))
         {
-          Iterator localIterator = localAdItem2.argList.get().iterator();
-          localObject2 = null;
-          localObject1 = null;
-          paramGetAdsRsp = null;
-          localAdItem1 = localAdItem2;
-          localObject8 = localObject3;
-          localObject7 = localObject2;
-          Object localObject4 = localObject1;
-          localObject6 = paramGetAdsRsp;
-          if (localIterator.hasNext())
+          TianShuAccess.AdItem localAdItem = (TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(0);
+          if ((localAdItem != null) && (localAdItem.argList != null) && (!localAdItem.argList.isEmpty()))
           {
-            localObject4 = (TianShuAccess.MapEntry)localIterator.next();
-            if ("type".equals(((TianShuAccess.MapEntry)localObject4).key.get()))
-            {
-              localObject4 = ((TianShuAccess.MapEntry)localObject4).value.get();
-              paramGetAdsRsp = localObject2;
-              localObject2 = localObject4;
-              localObject4 = localObject3;
-              localObject3 = localObject2;
-              localObject2 = localObject1;
-              localObject1 = paramGetAdsRsp;
-              paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject4;
-            }
+            Iterator localIterator = localAdItem.argList.get().iterator();
+            localObject4 = null;
+            localObject1 = localObject4;
+            paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject1;
             for (;;)
             {
-              localObject4 = localObject3;
-              localObject6 = localObject2;
-              localObject3 = paramGetAdsRsp;
-              localObject2 = localObject1;
-              localObject1 = localObject6;
-              paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject4;
-              break;
-              if ("url".equals(((TianShuAccess.MapEntry)localObject4).key.get()))
-              {
-                localObject6 = ((TianShuAccess.MapEntry)localObject4).value.get();
-                localObject4 = paramGetAdsRsp;
-                paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject3;
-                localObject1 = localObject2;
-                localObject2 = localObject6;
-                localObject3 = localObject4;
+              localObject9 = localObject5;
+              localObject8 = localObject4;
+              localObject6 = localObject1;
+              Object localObject2 = paramGetAdsRsp;
+              localObject7 = localAdItem;
+              if (!localIterator.hasNext()) {
+                break;
               }
-              else if ("text".equals(((TianShuAccess.MapEntry)localObject4).key.get()))
-              {
-                localObject6 = ((TianShuAccess.MapEntry)localObject4).value.get();
-                localObject2 = localObject1;
-                localObject4 = paramGetAdsRsp;
-                localObject1 = localObject6;
-                paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject3;
-                localObject3 = localObject4;
-              }
-              else if ("pic".equals(((TianShuAccess.MapEntry)localObject4).key.get()))
-              {
-                localObject6 = ((TianShuAccess.MapEntry)localObject4).value.get();
-                localObject3 = localObject1;
-                localObject4 = paramGetAdsRsp;
-                paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject6;
-                localObject1 = localObject2;
-                localObject2 = localObject3;
-                localObject3 = localObject4;
-              }
-              else if ("appid_on".equals(((TianShuAccess.MapEntry)localObject4).key.get()))
-              {
-                APPID_WHITE_LIST = ((TianShuAccess.MapEntry)localObject4).value.get();
-                localObject4 = localObject1;
-                localObject6 = paramGetAdsRsp;
-                paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject3;
-                localObject1 = localObject2;
-                localObject2 = localObject4;
-                localObject3 = localObject6;
-              }
-              else if ("appid_off".equals(((TianShuAccess.MapEntry)localObject4).key.get()))
-              {
-                APPID_BLACK_LIST = ((TianShuAccess.MapEntry)localObject4).value.get();
-                localObject4 = localObject1;
-                localObject6 = paramGetAdsRsp;
-                paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject3;
-                localObject1 = localObject2;
-                localObject2 = localObject4;
-                localObject3 = localObject6;
-              }
-              else if ("refer_on".equals(((TianShuAccess.MapEntry)localObject4).key.get()))
-              {
-                REFER_WHITE_LIST = ((TianShuAccess.MapEntry)localObject4).value.get();
-                localObject4 = localObject1;
-                localObject6 = paramGetAdsRsp;
-                paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject3;
-                localObject1 = localObject2;
-                localObject2 = localObject4;
-                localObject3 = localObject6;
-              }
-              else if ("refer_off".equals(((TianShuAccess.MapEntry)localObject4).key.get()))
-              {
-                REFER_BLACK_LIST = ((TianShuAccess.MapEntry)localObject4).value.get();
-                localObject4 = localObject1;
-                localObject6 = paramGetAdsRsp;
-                paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject3;
-                localObject1 = localObject2;
-                localObject2 = localObject4;
-                localObject3 = localObject6;
-              }
-              else if (("show_time".equals(((TianShuAccess.MapEntry)localObject4).key.get())) && (!TextUtils.isEmpty(((TianShuAccess.MapEntry)localObject4).value.get())))
-              {
+              localObject2 = (TianShuAccess.MapEntry)localIterator.next();
+              if ("type".equals(((TianShuAccess.MapEntry)localObject2).key.get())) {
+                localObject5 = ((TianShuAccess.MapEntry)localObject2).value.get();
+              } else if ("url".equals(((TianShuAccess.MapEntry)localObject2).key.get())) {
+                localObject4 = ((TianShuAccess.MapEntry)localObject2).value.get();
+              } else if ("text".equals(((TianShuAccess.MapEntry)localObject2).key.get())) {
+                localObject1 = ((TianShuAccess.MapEntry)localObject2).value.get();
+              } else if ("pic".equals(((TianShuAccess.MapEntry)localObject2).key.get())) {
+                paramGetAdsRsp = ((TianShuAccess.MapEntry)localObject2).value.get();
+              } else if ("appid_on".equals(((TianShuAccess.MapEntry)localObject2).key.get())) {
+                APPID_WHITE_LIST = ((TianShuAccess.MapEntry)localObject2).value.get();
+              } else if ("appid_off".equals(((TianShuAccess.MapEntry)localObject2).key.get())) {
+                APPID_BLACK_LIST = ((TianShuAccess.MapEntry)localObject2).value.get();
+              } else if ("refer_on".equals(((TianShuAccess.MapEntry)localObject2).key.get())) {
+                REFER_WHITE_LIST = ((TianShuAccess.MapEntry)localObject2).value.get();
+              } else if ("refer_off".equals(((TianShuAccess.MapEntry)localObject2).key.get())) {
+                REFER_BLACK_LIST = ((TianShuAccess.MapEntry)localObject2).value.get();
+              } else if (("show_time".equals(((TianShuAccess.MapEntry)localObject2).key.get())) && (!TextUtils.isEmpty(((TianShuAccess.MapEntry)localObject2).value.get()))) {
                 try
                 {
-                  SHOW_DELAY_SECONDS_AFTER_GAME_LAUNCH = Integer.parseInt(((TianShuAccess.MapEntry)localObject4).value.get());
-                  localObject4 = localObject1;
-                  localObject6 = paramGetAdsRsp;
-                  paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject3;
-                  localObject1 = localObject2;
-                  localObject2 = localObject4;
-                  localObject3 = localObject6;
+                  SHOW_DELAY_SECONDS_AFTER_GAME_LAUNCH = Integer.parseInt(((TianShuAccess.MapEntry)localObject2).value.get());
                 }
                 catch (Exception localException)
                 {
                   QMLog.e("MiniGameAdBannerPopup", "handleGetAdResult", localException);
                 }
               }
-              else
-              {
-                localObject5 = localObject1;
-                localObject6 = paramGetAdsRsp;
-                paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject3;
-                localObject1 = localObject2;
-                localObject2 = localObject5;
-                localObject3 = localObject6;
-              }
             }
           }
+          QMLog.e("MiniGameAdBannerPopup", "onGetAdvs no ad item");
         }
         else
         {
-          QMLog.e("MiniGameAdBannerPopup", "onGetAdvs no ad item");
-          localAdItem1 = null;
-          localObject7 = null;
-          localObject5 = null;
-          localObject6 = null;
+          QMLog.e("MiniGameAdBannerPopup", "onGetAdvs no ad data");
         }
-        localObject2 = localAdItem1;
+        localObject7 = null;
+        Object localObject8 = localObject7;
+        Object localObject6 = localObject8;
+        localObject3 = localObject6;
+        paramGetAdsRsp = localObject9;
         localObject1 = localObject8;
-        paramGetAdsRsp = localObject7;
+        localObject4 = localObject3;
+        localObject3 = localObject6;
+        break label579;
       }
     }
-    for (;;)
-    {
-      QMLog.d("MiniGameAdBannerPopup", "handleGetAdResult appid whitelist " + APPID_WHITE_LIST + "\n appid blacklist " + APPID_BLACK_LIST + "\n refer whitelist " + REFER_WHITE_LIST + "\n refer blacklist " + REFER_BLACK_LIST + "\n show time " + SHOW_DELAY_SECONDS_AFTER_GAME_LAUNCH);
-      showAdBanner(paramContext, paramString, paramInt, (String)localObject6, localObject5, paramGetAdsRsp, (String)localObject1, localObject2);
-      return;
-      QMLog.e("MiniGameAdBannerPopup", "onGetAdvs no ad data");
-      break;
+    else {
       QMLog.e("MiniGameAdBannerPopup", "onGetAdvs no ad result");
-      label884:
-      localObject2 = null;
-      localObject1 = null;
-      paramGetAdsRsp = null;
-      localObject5 = null;
-      localObject6 = null;
     }
+    localObject5 = null;
+    paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject5;
+    Object localObject1 = paramGetAdsRsp;
+    Object localObject3 = localObject1;
+    Object localObject7 = localObject3;
+    Object localObject4 = localObject3;
+    localObject3 = localObject1;
+    localObject1 = paramGetAdsRsp;
+    paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject5;
+    label579:
+    localObject5 = new StringBuilder();
+    ((StringBuilder)localObject5).append("handleGetAdResult appid whitelist ");
+    ((StringBuilder)localObject5).append(APPID_WHITE_LIST);
+    ((StringBuilder)localObject5).append("\n appid blacklist ");
+    ((StringBuilder)localObject5).append(APPID_BLACK_LIST);
+    ((StringBuilder)localObject5).append("\n refer whitelist ");
+    ((StringBuilder)localObject5).append(REFER_WHITE_LIST);
+    ((StringBuilder)localObject5).append("\n refer blacklist ");
+    ((StringBuilder)localObject5).append(REFER_BLACK_LIST);
+    ((StringBuilder)localObject5).append("\n show time ");
+    ((StringBuilder)localObject5).append(SHOW_DELAY_SECONDS_AFTER_GAME_LAUNCH);
+    QMLog.d("MiniGameAdBannerPopup", ((StringBuilder)localObject5).toString());
+    showAdBanner(paramContext, paramString, paramInt, paramGetAdsRsp, (String)localObject1, localObject3, (String)localObject4, (TianShuAccess.AdItem)localObject7);
   }
   
   private static boolean isParamEmpty(Context paramContext, String paramString1, String paramString2, String paramString3)
@@ -445,63 +391,73 @@ public class MiniGameAdBannerPopup
   
   private static void showAdBanner(Context paramContext, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, TianShuAccess.AdItem paramAdItem)
   {
-    if (!allowShowForAppId(paramString1)) {
-      QMLog.e("MiniGameAdBannerPopup", "handleGetAdResult not allow for appid " + paramString1);
-    }
-    do
+    if (!allowShowForAppId(paramString1))
     {
+      paramContext = new StringBuilder();
+      paramContext.append("handleGetAdResult not allow for appid ");
+      paramContext.append(paramString1);
+      QMLog.e("MiniGameAdBannerPopup", paramContext.toString());
       return;
-      if (!allowShowForRefer(paramInt))
-      {
-        QMLog.e("MiniGameAdBannerPopup", "handleGetAdResult not allow for refer " + paramInt);
-        return;
-      }
-    } while ((paramString2 == null) || (paramString3 == null) || (paramString4 == null) || (paramString5 == null) || (paramAdItem == null));
-    ThreadManager.getUIHandler().postDelayed(new MiniGameAdBannerPopup.3(paramContext, paramString2, paramString4, paramString5, paramString3, paramAdItem), TimeUnit.SECONDS.toMillis(SHOW_DELAY_SECONDS_AFTER_GAME_LAUNCH));
+    }
+    if (!allowShowForRefer(paramInt))
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("handleGetAdResult not allow for refer ");
+      paramContext.append(paramInt);
+      QMLog.e("MiniGameAdBannerPopup", paramContext.toString());
+      return;
+    }
+    if ((paramString2 != null) && (paramString3 != null) && (paramString4 != null) && (paramString5 != null) && (paramAdItem != null)) {
+      ThreadManager.getUIHandler().postDelayed(new MiniGameAdBannerPopup.3(paramContext, paramString2, paramString4, paramString5, paramString3, paramAdItem), TimeUnit.SECONDS.toMillis(SHOW_DELAY_SECONDS_AFTER_GAME_LAUNCH));
+    }
   }
   
   private static void showAdBannerPopupWindow(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, TianShuAccess.AdItem paramAdItem)
   {
-    if (isParamEmpty(paramContext, paramString2, paramString3, paramString4)) {}
-    do
+    if (isParamEmpty(paramContext, paramString2, paramString3, paramString4)) {
+      return;
+    }
+    if (!(paramContext instanceof Activity)) {
+      return;
+    }
+    Object localObject1 = (Activity)paramContext;
+    if (!((Activity)localObject1).isFinishing())
     {
-      do
-      {
+      if ((Build.VERSION.SDK_INT >= 17) && (((Activity)localObject1).isDestroyed())) {
         return;
-      } while (!(paramContext instanceof Activity));
-      localObject1 = (Activity)paramContext;
-    } while ((((Activity)localObject1).isFinishing()) || ((Build.VERSION.SDK_INT >= 17) && (((Activity)localObject1).isDestroyed())));
-    Object localObject1 = LayoutInflater.from(paramContext).inflate(R.layout.mini_sdk_ad_banner_popup_dialog, null);
-    Object localObject2 = (TextView)((View)localObject1).findViewById(R.id.mini_sdk_ad_banner_popup_dialog_title);
-    ReportDialog localReportDialog = new ReportDialog(paramContext);
-    localReportDialog.setCancelable(false);
-    if (localReportDialog.getWindow() != null)
-    {
-      localReportDialog.getWindow().requestFeature(1);
-      localReportDialog.getWindow().setBackgroundDrawableResource(17170445);
+      }
+      localObject1 = LayoutInflater.from(paramContext).inflate(R.layout.mini_sdk_ad_banner_popup_dialog, null);
+      Object localObject2 = (TextView)((View)localObject1).findViewById(R.id.mini_sdk_ad_banner_popup_dialog_title);
+      ReportDialog localReportDialog = new ReportDialog(paramContext);
+      localReportDialog.setCancelable(false);
+      if (localReportDialog.getWindow() != null)
+      {
+        localReportDialog.getWindow().requestFeature(1);
+        localReportDialog.getWindow().setBackgroundDrawableResource(17170445);
+      }
+      localReportDialog.setContentView((View)localObject1, new ViewGroup.LayoutParams(-1, -1));
+      localReportDialog.setOnShowListener(new MiniGameAdBannerPopup.4(paramAdItem, paramString1));
+      ((ImageView)((View)localObject1).findViewById(R.id.mini_sdk_ad_banner_popup_dialog_close_button)).setOnClickListener(new MiniGameAdBannerPopup.5(localReportDialog, paramAdItem, paramString1));
+      if (!TextUtils.isEmpty(paramString2)) {
+        ((TextView)localObject2).setText(paramString2);
+      }
+      paramString2 = new MiniGameAdBannerPopup.BottomCornerURLImageView(paramContext);
+      paramString2.setAdjustViewBounds(true);
+      paramString2.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      paramString2.setClickable(true);
+      localObject2 = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+      paramString2.setImageDrawable(((MiniAppProxy)localObject2).getDrawable(paramContext, paramString3, 0, 0, null));
+      paramString2.setOnClickListener(new MiniGameAdBannerPopup.6(localReportDialog, paramContext, paramString4, (MiniAppProxy)localObject2, paramAdItem, paramString1));
+      paramContext = new LinearLayout.LayoutParams(-1, (int)TypedValue.applyDimension(1, 229.0F, paramContext.getResources().getDisplayMetrics()));
+      paramContext.gravity = 1;
+      ((LinearLayout)((View)localObject1).findViewById(R.id.mini_game_ad_banner_popup_dialog_content_layout)).addView(paramString2, paramContext);
+      localReportDialog.show();
     }
-    localReportDialog.setContentView((View)localObject1, new ViewGroup.LayoutParams(-1, -1));
-    localReportDialog.setOnShowListener(new MiniGameAdBannerPopup.4(paramAdItem, paramString1));
-    ((ImageView)((View)localObject1).findViewById(R.id.mini_sdk_ad_banner_popup_dialog_close_button)).setOnClickListener(new MiniGameAdBannerPopup.5(localReportDialog, paramAdItem, paramString1));
-    if (!TextUtils.isEmpty(paramString2)) {
-      ((TextView)localObject2).setText(paramString2);
-    }
-    paramString2 = new MiniGameAdBannerPopup.BottomCornerURLImageView(paramContext);
-    paramString2.setAdjustViewBounds(true);
-    paramString2.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    paramString2.setClickable(true);
-    localObject2 = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-    paramString2.setImageDrawable(((MiniAppProxy)localObject2).getDrawable(paramContext, paramString3, 0, 0, null));
-    paramString2.setOnClickListener(new MiniGameAdBannerPopup.6(localReportDialog, paramContext, paramString4, (MiniAppProxy)localObject2, paramAdItem, paramString1));
-    paramContext = new LinearLayout.LayoutParams(-1, (int)TypedValue.applyDimension(1, 229.0F, paramContext.getResources().getDisplayMetrics()));
-    paramContext.gravity = 1;
-    ((LinearLayout)((View)localObject1).findViewById(R.id.mini_game_ad_banner_popup_dialog_content_layout)).addView(paramString2, paramContext);
-    localReportDialog.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.ui.MiniGameAdBannerPopup
  * JD-Core Version:    0.7.0.1
  */

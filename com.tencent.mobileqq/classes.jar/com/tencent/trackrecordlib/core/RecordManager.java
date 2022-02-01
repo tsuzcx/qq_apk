@@ -14,7 +14,7 @@ import org.json.JSONObject;
 
 public class RecordManager
 {
-  private static final String c = RecordManager.class.getSimpleName();
+  private static final String c = "RecordManager";
   private static boolean d = false;
   public Context a;
   public boolean b = false;
@@ -47,7 +47,11 @@ public class RecordManager
   
   private boolean a()
   {
-    Log.i(c, "SDK_INT: " + Build.VERSION.SDK_INT);
+    String str = c;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SDK_INT: ");
+    localStringBuilder.append(Build.VERSION.SDK_INT);
+    Log.i(str, localStringBuilder.toString());
     return Build.VERSION.SDK_INT >= 21;
   }
   
@@ -129,20 +133,26 @@ public class RecordManager
     if (d)
     {
       paramb = paramb.e().toString();
-      Log.d(c, "eventMsg: " + paramb);
-      if (this.j != null) {
-        this.j.onRecordEvent(paramb);
+      Object localObject = c;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("eventMsg: ");
+      localStringBuilder.append(paramb);
+      Log.d((String)localObject, localStringBuilder.toString());
+      localObject = this.j;
+      if (localObject != null) {
+        ((IRecordCallback)localObject).onRecordEvent(paramb);
       }
     }
   }
   
   public void setElementId(Object paramObject, String paramString)
   {
-    if (!this.h) {}
-    while (!a(paramObject)) {
+    if (!this.h) {
       return;
     }
-    com.tencent.trackrecordlib.d.a.e.a(paramObject, paramString);
+    if (a(paramObject)) {
+      com.tencent.trackrecordlib.d.a.e.a(paramObject, paramString);
+    }
   }
   
   public void setEnableExposure(boolean paramBoolean)
@@ -189,10 +199,11 @@ public class RecordManager
   public void startRecord(Context paramContext, IRecordConfig paramIRecordConfig, IRecordCallback paramIRecordCallback)
   {
     Log.d(c, "start record!");
-    if ((d) || (!a())) {}
-    for (;;)
+    if (!d)
     {
-      return;
+      if (!a()) {
+        return;
+      }
       if (!a(paramContext))
       {
         Log.e(c, "start record failed without Application Context!");
@@ -201,7 +212,7 @@ public class RecordManager
       this.a = paramContext.getApplicationContext();
       a(this.a, paramIRecordConfig, paramIRecordCallback);
       if ((!b(this.a)) && (!this.g)) {
-        continue;
+        return;
       }
       try
       {
@@ -209,12 +220,12 @@ public class RecordManager
         b();
         c();
         d();
-        if (!com.tencent.trackrecordlib.g.e.b(this.a)) {
-          continue;
+        if (com.tencent.trackrecordlib.g.e.b(this.a))
+        {
+          f.a(this.a);
+          e();
+          f();
         }
-        f.a(this.a);
-        e();
-        f();
         return;
       }
       finally {}
@@ -225,29 +236,31 @@ public class RecordManager
   public void stopRecord()
   {
     Log.d(c, "stop record!");
-    if (d) {}
-    try
-    {
-      d = false;
-      if (this.a != null)
+    if (d) {
+      try
       {
-        a.a().b(this.a);
-        f.b(this.a);
+        d = false;
+        if (this.a != null)
+        {
+          a.a().b(this.a);
+          f.b(this.a);
+        }
       }
-      if (this.e != null) {
-        this.e.b();
-      }
-      if (this.f != null) {
-        this.f.b();
-      }
-      return;
+      finally {}
     }
-    finally {}
+    com.tencent.trackrecordlib.e.a locala = this.e;
+    if (locala != null) {
+      locala.b();
+    }
+    locala = this.f;
+    if (locala != null) {
+      locala.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trackrecordlib.core.RecordManager
  * JD-Core Version:    0.7.0.1
  */

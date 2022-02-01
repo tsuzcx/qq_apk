@@ -27,14 +27,11 @@ public class TroopMemRecommendConfBean
     {
       int j = paramArrayOfQConfItem.length;
       int i = 0;
-      if (i < j)
+      while (i < j)
       {
         Object localObject = paramArrayOfQConfItem[i];
-        if (localObject == null) {}
-        for (;;)
+        if (localObject != null)
         {
-          i += 1;
-          break;
           localObject = ((QConfItem)localObject).a;
           try
           {
@@ -56,15 +53,17 @@ public class TroopMemRecommendConfBean
           }
           catch (JSONException localJSONException)
           {
-            for (;;)
-            {
-              localJSONException.printStackTrace();
-            }
+            localJSONException.printStackTrace();
           }
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopMemberRecommend.ConfBean", 2, "parse: " + localTroopMemRecommendConfBean.toString());
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("parse: ");
+            localStringBuilder.append(localTroopMemRecommendConfBean.toString());
+            QLog.d("TroopMemberRecommend.ConfBean", 2, localStringBuilder.toString());
           }
         }
+        i += 1;
       }
     }
     return localTroopMemRecommendConfBean;
@@ -77,22 +76,17 @@ public class TroopMemRecommendConfBean
     {
       int j = paramJSONArray.length();
       int i = 0;
-      for (;;)
+      while (i < j)
       {
-        if (i < j) {
-          try
-          {
-            localArrayList.add(Long.valueOf(paramJSONArray.getLong(i)));
-            i += 1;
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              QLog.e("TroopMemberRecommend.ConfBean", 2, "TroopMemRecommendConfBean processJsonArray error", localException);
-            }
-          }
+        try
+        {
+          localArrayList.add(Long.valueOf(paramJSONArray.getLong(i)));
         }
+        catch (Exception localException)
+        {
+          QLog.e("TroopMemberRecommend.ConfBean", 2, "TroopMemRecommendConfBean processJsonArray error", localException);
+        }
+        i += 1;
       }
     }
     return localArrayList;
@@ -101,13 +95,21 @@ public class TroopMemRecommendConfBean
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("TroopMemRecommendConfBean [gtcSwitch: ").append(this.jdField_a_of_type_Int).append(", groupMemberCount: ").append(this.b).append(", allGroupTypesEnable: ").append(this.c).append(", enabledGroupTypes: ").append(this.jdField_a_of_type_JavaUtilList.toString()).append("]");
+    localStringBuilder.append("TroopMemRecommendConfBean [gtcSwitch: ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", groupMemberCount: ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", allGroupTypesEnable: ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", enabledGroupTypes: ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.toString());
+    localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.TroopMemRecommendConfBean
  * JD-Core Version:    0.7.0.1
  */

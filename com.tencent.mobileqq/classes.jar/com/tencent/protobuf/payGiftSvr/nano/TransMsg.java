@@ -21,14 +21,15 @@ public final class TransMsg
   
   public static TransMsg[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new TransMsg[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new TransMsg[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static TransMsg parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -49,12 +50,13 @@ public final class TransMsg
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    int k = this.msgType;
     int i = j;
-    if (this.msgType != 0) {
-      i = j + CodedOutputByteBufferNano.computeUInt32Size(1, this.msgType);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeUInt32Size(1, k);
     }
     j = i;
     if (!Arrays.equals(this.msgData, WireFormatNano.EMPTY_BYTES)) {
@@ -68,26 +70,33 @@ public final class TransMsg
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.msgType = paramCodedInputByteBufferNano.readUInt32();
+      if (i == 0) {
         break;
       }
-      this.msgData = paramCodedInputByteBufferNano.readBytes();
+      if (i != 8)
+      {
+        if (i != 18)
+        {
+          if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+            return this;
+          }
+        }
+        else {
+          this.msgData = paramCodedInputByteBufferNano.readBytes();
+        }
+      }
+      else {
+        this.msgType = paramCodedInputByteBufferNano.readUInt32();
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.msgType != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(1, this.msgType);
+    int i = this.msgType;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(1, i);
     }
     if (!Arrays.equals(this.msgData, WireFormatNano.EMPTY_BYTES)) {
       paramCodedOutputByteBufferNano.writeBytes(2, this.msgData);
@@ -97,7 +106,7 @@ public final class TransMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.payGiftSvr.nano.TransMsg
  * JD-Core Version:    0.7.0.1
  */

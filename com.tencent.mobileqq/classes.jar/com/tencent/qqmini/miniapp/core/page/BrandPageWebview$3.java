@@ -19,7 +19,8 @@ class BrandPageWebview$3
   public void onPageFinished(WebView paramWebView, String paramString)
   {
     super.onPageFinished(paramWebView, paramString);
-    this.this$0.setCurrState(BrandPageWebview.access$600(this.this$0));
+    paramWebView = this.this$0;
+    paramWebView.setCurrState(BrandPageWebview.access$600(paramWebView));
   }
   
   @Override
@@ -31,32 +32,32 @@ class BrandPageWebview$3
   
   public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
   {
-    QMLog.i("TAG_CHROMIUM", "shouldInterceptRequest: " + paramWebResourceRequest.getUrl());
-    Object localObject1;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("shouldInterceptRequest: ");
+    ((StringBuilder)localObject1).append(paramWebResourceRequest.getUrl());
+    QMLog.i("TAG_CHROMIUM", ((StringBuilder)localObject1).toString());
     if (paramWebResourceRequest.getUrl() != null)
     {
       localObject1 = paramWebResourceRequest.getUrl().toString();
       if ((!TextUtils.isEmpty((CharSequence)localObject1)) && ((((String)localObject1).startsWith("https://appservice.qq.com/")) || (((String)localObject1).startsWith("wxfile://")))) {
-        localObject1 = BrandPageWebview.access$500(this.this$0, paramWebView, paramWebResourceRequest.getUrl().toString());
+        return BrandPageWebview.access$500(this.this$0, paramWebView, paramWebResourceRequest.getUrl().toString());
       }
     }
-    do
+    Object localObject2 = null;
+    localObject1 = localObject2;
+    if (paramWebResourceRequest.getUrl() != null)
     {
-      Object localObject2;
-      do
-      {
-        return localObject1;
-        localObject2 = null;
-        localObject1 = localObject2;
-      } while (paramWebResourceRequest.getUrl() == null);
       localObject1 = localObject2;
-    } while (!IPV6OnlyUtils.isIPV6Enable(paramWebResourceRequest.getUrl().toString()));
-    return this.this$0.doIPV6OnlyRequest(paramWebView, paramWebResourceRequest);
+      if (IPV6OnlyUtils.isIPV6Enable(paramWebResourceRequest.getUrl().toString())) {
+        localObject1 = this.this$0.doIPV6OnlyRequest(paramWebView, paramWebResourceRequest);
+      }
+    }
+    return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.BrandPageWebview.3
  * JD-Core Version:    0.7.0.1
  */

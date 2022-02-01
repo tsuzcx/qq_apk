@@ -16,24 +16,22 @@ class ARCloudControl$8
     {
       QLog.i("AREngine_ARCloudControl", 1, "requestToCheckLBSLocation timeout.");
       ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).removeOnLocationListener(this.this$0.jdField_a_of_type_ComTencentMobileqqSosoLocationSosoInterfaceOnLocationListener);
-      if (!ARCloudControl.a(this.this$0)) {}
+      if (ARCloudControl.a(this.this$0)) {
+        return;
+      }
+      ARCloudLBSLocationCheckResult localARCloudLBSLocationCheckResult = new ARCloudLBSLocationCheckResult();
+      localARCloudLBSLocationCheckResult.a = 2;
+      ARCloudRecogResult.a(this.this$0.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, ARCloudControl.a(this.this$0), localARCloudLBSLocationCheckResult);
+      if (ARCloudControl.a(this.this$0) != null) {
+        ARCloudControl.a(this.this$0).a(0, ARCloudControl.a(this.this$0));
+      }
+      ARCloudControl.a(this.this$0, null);
     }
-    else
-    {
-      return;
-    }
-    ARCloudLBSLocationCheckResult localARCloudLBSLocationCheckResult = new ARCloudLBSLocationCheckResult();
-    localARCloudLBSLocationCheckResult.a = 2;
-    ARCloudRecogResult.a(this.this$0.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, ARCloudControl.a(this.this$0), localARCloudLBSLocationCheckResult);
-    if (ARCloudControl.a(this.this$0) != null) {
-      ARCloudControl.a(this.this$0).a(0, ARCloudControl.a(this.this$0));
-    }
-    ARCloudControl.a(this.this$0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudControl.8
  * JD-Core Version:    0.7.0.1
  */

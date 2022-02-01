@@ -25,25 +25,20 @@ public enum MaterialManager
     if (paramVideoMaterial == null) {
       return;
     }
-    if ((this.material != null) && (this.material.getId() != null))
-    {
-      if (!this.material.getId().equals(paramVideoMaterial.getId())) {
-        break label51;
+    VideoMaterial localVideoMaterial = this.material;
+    if ((localVideoMaterial != null) && (localVideoMaterial.getId() != null)) {
+      if (this.material.getId().equals(paramVideoMaterial.getId())) {
+        RandomGroupManager.getInstance().clearCurValue();
+      } else {
+        RandomGroupManager.getInstance().clearAll();
       }
-      RandomGroupManager.getInstance().clearCurValue();
     }
-    for (;;)
-    {
-      this.material = paramVideoMaterial;
-      return;
-      label51:
-      RandomGroupManager.getInstance().clearAll();
-    }
+    this.material = paramVideoMaterial;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.manager.MaterialManager
  * JD-Core Version:    0.7.0.1
  */

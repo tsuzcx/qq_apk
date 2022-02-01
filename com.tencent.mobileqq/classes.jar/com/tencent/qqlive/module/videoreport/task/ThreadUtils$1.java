@@ -9,12 +9,16 @@ final class ThreadUtils$1
 {
   public Thread newThread(@NonNull Runnable paramRunnable)
   {
-    return new Thread(paramRunnable, "vrpool-" + ThreadUtils.access$000().getAndIncrement() + "-thread");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("vrpool-");
+    localStringBuilder.append(ThreadUtils.access$000().getAndIncrement());
+    localStringBuilder.append("-thread");
+    return new Thread(paramRunnable, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.task.ThreadUtils.1
  * JD-Core Version:    0.7.0.1
  */

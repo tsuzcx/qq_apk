@@ -29,28 +29,30 @@ class LiteActivity$13
       this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getIntent().putExtra("MigSdkShareNotDone", false);
       ForwardSdkShareOption.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity, true, "sendToMyComputer", this.jdField_a_of_type_Long);
     }
-    for (;;)
+    else
     {
-      Util.a(this.jdField_a_of_type_AndroidContentContext, 0, "", "");
-      this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.finish();
-      if (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getIntent().getBooleanExtra("show_share_result_dialog_return_thirdapp", true)) {}
+      ForwardSdkShareOption.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity, true, "shareToQQ", this.jdField_a_of_type_Long);
+    }
+    Util.a(this.jdField_a_of_type_AndroidContentContext, 0, "", "");
+    this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.finish();
+    if (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getIntent().getBooleanExtra("show_share_result_dialog_return_thirdapp", true)) {
       try
       {
         this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getActivity().moveTaskToBack(true);
         return;
-        ForwardSdkShareOption.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity, true, "shareToQQ", this.jdField_a_of_type_Long);
       }
       catch (Throwable paramDialogInterface)
       {
-        while (!QLog.isColorLevel()) {}
-        QLog.e(LiteActivity.a, 2, "qbShowShareResultDialog ", paramDialogInterface);
+        if (QLog.isColorLevel()) {
+          QLog.e(LiteActivity.a, 2, "qbShowShareResultDialog ", paramDialogInterface);
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.LiteActivity.13
  * JD-Core Version:    0.7.0.1
  */

@@ -21,7 +21,6 @@ final class RecentItemChatMsgData$1
     add(Integer.valueOf(7400));
     add(Integer.valueOf(10004));
     add(Integer.valueOf(10005));
-    add(Integer.valueOf(1037));
     add(Integer.valueOf(1044));
     add(Integer.valueOf(1045));
     add(Integer.valueOf(10007));
@@ -32,7 +31,7 @@ final class RecentItemChatMsgData$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData.1
  * JD-Core Version:    0.7.0.1
  */

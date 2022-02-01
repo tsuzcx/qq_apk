@@ -58,18 +58,48 @@ public class NewTogetherRoomMessageData
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" groupUin = " + this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" groupOwnerUin = " + this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(" roomid = " + this.jdField_a_of_type_Long);
-    localStringBuilder.append(" oldRoomid = " + this.jdField_b_of_type_Long);
-    localStringBuilder.append(" roomName = " + this.d);
-    localStringBuilder.append(" jumpScheme = " + this.e);
-    localStringBuilder.append(" roomCover = " + this.f);
-    localStringBuilder.append(" roomtype = " + this.jdField_a_of_type_Int);
-    localStringBuilder.append(" fromid = " + this.g);
-    localStringBuilder.append(" oldRoomtype = " + this.jdField_c_of_type_Int);
-    return localStringBuilder.toString();
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" groupUin = ");
+    localStringBuilder2.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" groupOwnerUin = ");
+    localStringBuilder2.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" roomid = ");
+    localStringBuilder2.append(this.jdField_a_of_type_Long);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" oldRoomid = ");
+    localStringBuilder2.append(this.jdField_b_of_type_Long);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" roomName = ");
+    localStringBuilder2.append(this.d);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" jumpScheme = ");
+    localStringBuilder2.append(this.e);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" roomCover = ");
+    localStringBuilder2.append(this.f);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" roomtype = ");
+    localStringBuilder2.append(this.jdField_a_of_type_Int);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" fromid = ");
+    localStringBuilder2.append(this.g);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" oldRoomtype = ");
+    localStringBuilder2.append(this.jdField_c_of_type_Int);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    return localStringBuilder1.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -88,7 +118,7 @@ public class NewTogetherRoomMessageData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData
  * JD-Core Version:    0.7.0.1
  */

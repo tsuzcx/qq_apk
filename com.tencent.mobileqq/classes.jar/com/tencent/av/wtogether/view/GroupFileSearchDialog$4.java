@@ -12,18 +12,17 @@ class GroupFileSearchDialog$4
   
   public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
-    {
-      InputMethodUtil.b(this.a.a);
-      this.a.d();
-      return true;
+    if ((paramInt != 3) && ((paramKeyEvent == null) || (paramKeyEvent.getKeyCode() != 66))) {
+      return false;
     }
-    return false;
+    InputMethodUtil.b(this.a.a);
+    this.a.d();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.wtogether.view.GroupFileSearchDialog.4
  * JD-Core Version:    0.7.0.1
  */

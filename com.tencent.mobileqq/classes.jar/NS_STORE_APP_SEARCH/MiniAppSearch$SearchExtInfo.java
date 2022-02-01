@@ -17,7 +17,7 @@ public final class MiniAppSearch$SearchExtInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_STORE_APP_SEARCH.MiniAppSearch.SearchExtInfo
  * JD-Core Version:    0.7.0.1
  */

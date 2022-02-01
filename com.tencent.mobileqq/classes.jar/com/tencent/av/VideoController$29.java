@@ -7,12 +7,17 @@ class VideoController$29
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_JavaLangString + "_" + this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean, this.b);
+    VideoController localVideoController = this.this$0;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localVideoController.a(localStringBuilder.toString(), this.jdField_a_of_type_Boolean, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoController.29
  * JD-Core Version:    0.7.0.1
  */

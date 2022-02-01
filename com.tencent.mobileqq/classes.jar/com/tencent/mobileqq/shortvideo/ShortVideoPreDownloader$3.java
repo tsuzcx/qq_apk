@@ -9,13 +9,18 @@ class ShortVideoPreDownloader$3
   
   public void run()
   {
-    ShortVideoPreDownloader.a("consumeShortVideoThumb", "start download thumb, fileType=" + this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoDownloadInfo.e + ", uniseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("start download thumb, fileType=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoDownloadInfo.e);
+    localStringBuilder.append(", uniseq:");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+    ShortVideoPreDownloader.a("consumeShortVideoThumb", localStringBuilder.toString());
     ShortVideoBusiManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq, this.this$0.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoPreDownloader.3
  * JD-Core Version:    0.7.0.1
  */

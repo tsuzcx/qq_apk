@@ -8,18 +8,19 @@ public class QavVideoRecordUICtrl$FadeInOutAnimation
 {
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    if (paramFloat < 0.5F) {}
-    for (float f = (0.5F - paramFloat) / 0.5F;; f = (paramFloat - 0.5F) / 0.5F)
-    {
-      paramTransformation.setAlpha(f);
-      super.applyTransformation(paramFloat, paramTransformation);
-      return;
+    float f;
+    if (paramFloat < 0.5F) {
+      f = 0.5F - paramFloat;
+    } else {
+      f = paramFloat - 0.5F;
     }
+    paramTransformation.setAlpha(f / 0.5F);
+    super.applyTransformation(paramFloat, paramTransformation);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.QavVideoRecordUICtrl.FadeInOutAnimation
  * JD-Core Version:    0.7.0.1
  */

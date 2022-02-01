@@ -12,7 +12,7 @@ public final class BITMAP_SVR_ID
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_BITMAP_4TH.BITMAP_SVR_ID
  * JD-Core Version:    0.7.0.1
  */

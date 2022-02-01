@@ -27,14 +27,15 @@ public final class RspGetGroupInArea
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stGroupArea != null) {
-      paramJceOutputStream.write(this.stGroupArea, 0);
+    GroupArea localGroupArea = this.stGroupArea;
+    if (localGroupArea != null) {
+      paramJceOutputStream.write(localGroupArea, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NearbyGroup.RspGetGroupInArea
  * JD-Core Version:    0.7.0.1
  */

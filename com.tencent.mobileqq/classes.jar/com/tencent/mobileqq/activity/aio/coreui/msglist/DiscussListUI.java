@@ -3,10 +3,10 @@ package com.tencent.mobileqq.activity.aio.coreui.msglist;
 import android.os.SystemClock;
 import android.view.View;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.RefreshMessageContext;
+import com.tencent.imcore.message.RefreshMessageContext;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.activity.aio.ChatAdapter1;
 import com.tencent.mobileqq.activity.aio.ChatContext;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.AIOContext;
 import com.tencent.mobileqq.activity.aio.core.msglist.MsgList;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -30,27 +30,27 @@ public class DiscussListUI
     }
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.getCount() > 0)
     {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a();
       this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      ((ChatContext)this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext.a).a(this.jdField_a_of_type_Long);
+      ((ChatContext)this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext.a).a(this.jdField_a_of_type_Long);
       paramListView = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a();
       if (paramListView != null)
       {
         if (paramListView.jdField_b_of_type_Boolean)
         {
-          this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext.e = true;
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a().a(paramView.jdField_a_of_type_JavaLangString, paramView.jdField_a_of_type_Int, paramListView.jdField_a_of_type_Long, paramListView.jdField_b_of_type_Long, paramListView.c, this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext);
+          this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext.e = true;
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().getMessageFacade().a().a(paramView.jdField_a_of_type_JavaLangString, paramView.jdField_a_of_type_Int, paramListView.jdField_a_of_type_Long, paramListView.jdField_b_of_type_Long, paramListView.c, this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext);
           paramListView.j();
           return true;
         }
-        this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext.e = false;
-        this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext.f = true;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramView.jdField_a_of_type_JavaLangString, paramView.jdField_a_of_type_Int, 20, this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext);
+        this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext.e = false;
+        this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext.f = true;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().getMessageFacade().a(paramView.jdField_a_of_type_JavaLangString, paramView.jdField_a_of_type_Int, 20, this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext);
         return true;
       }
-      this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext.e = false;
-      this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext.f = true;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramView.jdField_a_of_type_JavaLangString, paramView.jdField_a_of_type_Int, 20, this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext);
+      this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext.e = false;
+      this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext.f = true;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().getMessageFacade().a(paramView.jdField_a_of_type_JavaLangString, paramView.jdField_a_of_type_Int, 20, this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext);
       return true;
     }
     a(false);
@@ -59,7 +59,7 @@ public class DiscussListUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.msglist.DiscussListUI
  * JD-Core Version:    0.7.0.1
  */

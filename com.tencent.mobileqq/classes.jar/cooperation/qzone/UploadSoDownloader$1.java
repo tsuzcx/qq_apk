@@ -11,7 +11,10 @@ class UploadSoDownloader$1
   public void run()
   {
     boolean bool = UploadSoDownloader.access$100(this.this$0, UploadSoDownloader.access$000().getAbsolutePath());
-    QLog.d("[upload2]UploadEnv", 1, "check so md5 result: " + bool);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("check so md5 result: ");
+    localStringBuilder.append(bool);
+    QLog.d("[upload2]UploadEnv", 1, localStringBuilder.toString());
     if (bool)
     {
       UploadSoDownloader.access$202(true);
@@ -22,22 +25,18 @@ class UploadSoDownloader$1
       if (UploadSoDownloader.access$000().exists()) {
         UploadSoDownloader.access$000().delete();
       }
-      UploadSoDownloader.access$300(this.this$0, false);
-      UploadSoDownloader.access$202(false);
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      localThrowable.printStackTrace();
     }
+    UploadSoDownloader.access$300(this.this$0, false);
+    UploadSoDownloader.access$202(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.UploadSoDownloader.1
  * JD-Core Version:    0.7.0.1
  */

@@ -33,27 +33,27 @@ public class SoCrashInfo
   
   private static int a(String paramString, int paramInt)
   {
-    int i = paramInt;
     if (!TextUtils.isEmpty(paramString)) {}
     try
     {
-      i = Integer.parseInt(paramString);
+      int i = Integer.parseInt(paramString);
       return i;
     }
     catch (Throwable paramString) {}
+    return paramInt;
     return paramInt;
   }
   
   private static long a(String paramString, long paramLong)
   {
-    long l = paramLong;
     if (!TextUtils.isEmpty(paramString)) {}
     try
     {
-      l = Long.parseLong(paramString);
+      long l = Long.parseLong(paramString);
       return l;
     }
     catch (Throwable paramString) {}
+    return paramLong;
     return paramLong;
   }
   
@@ -103,64 +103,69 @@ public class SoCrashInfo
   
   public static void a(String paramString1, String paramString2, int paramInt)
   {
-    SoCrashInfo localSoCrashInfo = SoLoadUtils.a(paramString1, paramString2);
-    if (localSoCrashInfo == null)
-    {
-      localSoCrashInfo = new SoCrashInfo(paramString2);
-      if (paramInt != 1) {
-        break label163;
-      }
-      localSoCrashInfo.jdField_b_of_type_Int += 1;
-      if (localSoCrashInfo.jdField_b_of_type_Int >= 999) {
-        localSoCrashInfo.jdField_b_of_type_Int = 0;
-      }
-      l = NetConnInfoCenter.getServerTimeMillis();
-      localSoCrashInfo.jdField_a_of_type_JavaUtilList.add(Long.valueOf(l));
-      if (localSoCrashInfo.jdField_a_of_type_JavaUtilList.size() >= 3)
-      {
-        if (Math.abs(l - ((Long)localSoCrashInfo.jdField_a_of_type_JavaUtilList.get(0)).longValue()) > 1800000L) {
-          break label134;
-        }
-        localSoCrashInfo.jdField_b_of_type_Long = l;
-      }
-      SoLoadUtils.a(localSoCrashInfo, paramString1);
+    SoCrashInfo localSoCrashInfo2 = SoLoadUtils.a(paramString1, paramString2);
+    SoCrashInfo localSoCrashInfo1 = localSoCrashInfo2;
+    if (localSoCrashInfo2 == null) {
+      localSoCrashInfo1 = new SoCrashInfo(paramString2);
     }
-    label134:
-    label163:
-    while (paramInt != 0) {
-      for (;;)
-      {
-        long l;
-        return;
-        break;
-        while (localSoCrashInfo.jdField_a_of_type_JavaUtilList.size() >= 3) {
-          localSoCrashInfo.jdField_a_of_type_JavaUtilList.remove(0);
+    if (paramInt == 1)
+    {
+      localSoCrashInfo1.jdField_b_of_type_Int += 1;
+      if (localSoCrashInfo1.jdField_b_of_type_Int >= 999) {
+        localSoCrashInfo1.jdField_b_of_type_Int = 0;
+      }
+      long l = NetConnInfoCenter.getServerTimeMillis();
+      localSoCrashInfo1.jdField_a_of_type_JavaUtilList.add(Long.valueOf(l));
+      if (localSoCrashInfo1.jdField_a_of_type_JavaUtilList.size() >= 3) {
+        if (Math.abs(l - ((Long)localSoCrashInfo1.jdField_a_of_type_JavaUtilList.get(0)).longValue()) <= 1800000L) {
+          localSoCrashInfo1.jdField_b_of_type_Long = l;
+        } else {
+          while (localSoCrashInfo1.jdField_a_of_type_JavaUtilList.size() >= 3) {
+            localSoCrashInfo1.jdField_a_of_type_JavaUtilList.remove(0);
+          }
         }
       }
-    }
-    localSoCrashInfo.jdField_a_of_type_Int += 1;
-    if (localSoCrashInfo.jdField_a_of_type_Int > 2)
-    {
-      SoConfigManager.a().a(paramString1, paramString2);
-      SoLoadUtils.b(paramString1);
-      SoLoadUtils.a(paramString1);
+      SoLoadUtils.a(localSoCrashInfo1, paramString1);
       return;
     }
-    if (localSoCrashInfo.jdField_a_of_type_Int == 1) {
-      localSoCrashInfo.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
+    if (paramInt == 0)
+    {
+      localSoCrashInfo1.jdField_a_of_type_Int += 1;
+      paramInt = localSoCrashInfo1.jdField_a_of_type_Int;
+      if (paramInt > 2)
+      {
+        SoConfigManager.a().a(paramString1, paramString2);
+        SoLoadUtils.b(paramString1);
+        SoLoadUtils.a(paramString1);
+        return;
+      }
+      if (paramInt == 1) {
+        localSoCrashInfo1.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
+      }
+      SoLoadUtils.a(localSoCrashInfo1, paramString1);
     }
-    SoLoadUtils.a(localSoCrashInfo, paramString1);
   }
   
   public String a()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("?").append("ver=").append(this.jdField_a_of_type_JavaLangString).append("&loadCTs=").append(this.jdField_a_of_type_Int).append("&lastLCT=").append(this.jdField_a_of_type_Long).append("&runCTs=").append(this.jdField_b_of_type_Int).append("&runCPT=").append(this.jdField_b_of_type_Long);
+    localStringBuilder.append("?");
+    localStringBuilder.append("ver=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("&loadCTs=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("&lastLCT=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("&runCTs=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("&runCPT=");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
       long l = ((Long)localIterator.next()).longValue();
-      localStringBuilder.append("&prc=").append(l);
+      localStringBuilder.append("&prc=");
+      localStringBuilder.append(l);
     }
     return localStringBuilder.toString();
   }
@@ -187,26 +192,44 @@ public class SoCrashInfo
   
   public boolean e()
   {
-    return (this.jdField_b_of_type_Int > 0) && (this.jdField_b_of_type_Int % 3 == 0);
+    int i = this.jdField_b_of_type_Int;
+    return (i > 0) && (i % 3 == 0);
   }
   
   public boolean f()
   {
-    if (d()) {}
-    while ((a()) || (e())) {
+    if (d()) {
       return true;
     }
-    return false;
+    if (!a()) {
+      return e();
+    }
+    return true;
   }
   
   public String toString()
   {
-    return "SoCrashInfo{mSoVer='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mLoadCrashTimes=" + this.jdField_a_of_type_Int + ", mFirstLoadCrashTime=" + this.jdField_a_of_type_Long + ", mRunCrashProtectTime=" + this.jdField_b_of_type_Long + ", mPreRunCrashTimes=" + this.jdField_a_of_type_JavaUtilList + ", mRunCrashTimes=" + this.jdField_b_of_type_Int + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SoCrashInfo{mSoVer='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mLoadCrashTimes=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", mFirstLoadCrashTime=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", mRunCrashProtectTime=");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", mPreRunCrashTimes=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(", mRunCrashTimes=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soload.entity.SoCrashInfo
  * JD-Core Version:    0.7.0.1
  */

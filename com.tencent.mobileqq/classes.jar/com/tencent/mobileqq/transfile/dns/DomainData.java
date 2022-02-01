@@ -38,13 +38,13 @@ public class DomainData
         localJSONArray.put(localJSONObject);
       }
       paramHashMap = localJSONArray.toString();
+      return paramHashMap;
     }
     catch (Exception paramHashMap)
     {
       paramHashMap.printStackTrace();
-      return null;
     }
-    return paramHashMap;
+    return null;
   }
   
   public static HashMap<String, DomainData> unParse(String paramString)
@@ -52,31 +52,27 @@ public class DomainData
     try
     {
       HashMap localHashMap = new HashMap();
-      JSONArray localJSONArray = new JSONArray(paramString);
+      paramString = new JSONArray(paramString);
       int i = 0;
-      for (;;)
+      while (i < paramString.length())
       {
-        paramString = localHashMap;
-        if (i >= localJSONArray.length()) {
-          break;
-        }
-        paramString = localJSONArray.getJSONObject(i);
-        String str = paramString.getString("n");
-        localHashMap.put(str, new DomainData(str, IpData.unParse(paramString.getString("l"))));
+        JSONObject localJSONObject = paramString.getJSONObject(i);
+        String str = localJSONObject.getString("n");
+        localHashMap.put(str, new DomainData(str, IpData.unParse(localJSONObject.getString("l"))));
         i += 1;
       }
-      return paramString;
+      return localHashMap;
     }
     catch (Exception paramString)
     {
       paramString.printStackTrace();
-      paramString = null;
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.dns.DomainData
  * JD-Core Version:    0.7.0.1
  */

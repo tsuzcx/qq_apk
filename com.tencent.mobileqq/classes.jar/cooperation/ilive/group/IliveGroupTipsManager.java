@@ -19,17 +19,12 @@ import tencent.im.oidb.cmd0x857.TroopTips0x857.QQVaLiveNotifyMsg;
 public class IliveGroupTipsManager
   implements Manager
 {
-  public static String a;
+  public static String a = "source_resume";
   public static String b = "source_push";
   public static String c = "source_loop";
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private IliveGroupObserver jdField_a_of_type_CooperationIliveGroupIliveGroupObserver;
   private HashMap<Long, Boolean> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "source_resume";
-  }
   
   public IliveGroupTipsManager(QQAppInterface paramQQAppInterface)
   {
@@ -41,12 +36,13 @@ public class IliveGroupTipsManager
     if (this.jdField_a_of_type_CooperationIliveGroupIliveGroupObserver == null) {
       return;
     }
-    if (paramBoolean) {}
-    for (long l = 3000L;; l = 0L)
-    {
-      ThreadManagerV2.getUIHandlerV2().postDelayed(new IliveGroupTipsManager.1(this, paramBoolean, paramString, paramLong), l);
-      return;
+    long l;
+    if (paramBoolean) {
+      l = 3000L;
+    } else {
+      l = 0L;
     }
+    ThreadManagerV2.getUIHandlerV2().postDelayed(new IliveGroupTipsManager.1(this, paramBoolean, paramString, paramLong), l);
   }
   
   public static boolean a()
@@ -72,29 +68,36 @@ public class IliveGroupTipsManager
   
   public void a(TroopTips0x857.QQVaLiveNotifyMsg paramQQVaLiveNotifyMsg, long paramLong)
   {
-    boolean bool2 = false;
     if (paramQQVaLiveNotifyMsg == null) {
       return;
     }
+    boolean bool3 = paramQQVaLiveNotifyMsg.notify_type.has();
+    boolean bool2 = false;
     boolean bool1 = bool2;
-    if (paramQQVaLiveNotifyMsg.notify_type.has())
+    if (bool3)
     {
       bool1 = bool2;
       if (paramQQVaLiveNotifyMsg.notify_type.get() == 1) {
         bool1 = true;
       }
     }
-    if (paramQQVaLiveNotifyMsg.bytes_uid.has()) {}
-    for (paramQQVaLiveNotifyMsg = paramQQVaLiveNotifyMsg.bytes_uid.get().toStringUtf8();; paramQQVaLiveNotifyMsg = "")
-    {
-      QLog.d("IliveGroupTipsManager", 1, "handlePushLiveData isLive = " + bool1 + " puid = " + paramQQVaLiveNotifyMsg + " troopUin = " + paramLong);
-      this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), Boolean.valueOf(bool1));
-      ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(String.valueOf(paramLong)).setIsTroopLive(bool1);
-      if (this.jdField_a_of_type_CooperationIliveGroupIliveGroupObserver == null) {
-        break;
-      }
+    if (paramQQVaLiveNotifyMsg.bytes_uid.has()) {
+      paramQQVaLiveNotifyMsg = paramQQVaLiveNotifyMsg.bytes_uid.get().toStringUtf8();
+    } else {
+      paramQQVaLiveNotifyMsg = "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handlePushLiveData isLive = ");
+    localStringBuilder.append(bool1);
+    localStringBuilder.append(" puid = ");
+    localStringBuilder.append(paramQQVaLiveNotifyMsg);
+    localStringBuilder.append(" troopUin = ");
+    localStringBuilder.append(paramLong);
+    QLog.d("IliveGroupTipsManager", 1, localStringBuilder.toString());
+    this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), Boolean.valueOf(bool1));
+    ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(String.valueOf(paramLong)).setIsTroopLive(bool1);
+    if (this.jdField_a_of_type_CooperationIliveGroupIliveGroupObserver != null) {
       a(paramLong, bool1, paramQQVaLiveNotifyMsg);
-      return;
     }
   }
   
@@ -106,14 +109,19 @@ public class IliveGroupTipsManager
   
   public void onDestroy()
   {
-    if ((this.jdField_a_of_type_CooperationIliveGroupIliveGroupObserver != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_CooperationIliveGroupIliveGroupObserver);
+    IliveGroupObserver localIliveGroupObserver = this.jdField_a_of_type_CooperationIliveGroupIliveGroupObserver;
+    if (localIliveGroupObserver != null)
+    {
+      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      if (localQQAppInterface != null) {
+        localQQAppInterface.removeObserver(localIliveGroupObserver);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.group.IliveGroupTipsManager
  * JD-Core Version:    0.7.0.1
  */

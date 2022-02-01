@@ -74,13 +74,14 @@ final class MatcherMatchResult
   public MatchResult next()
   {
     int j = getMatchResult().end();
-    if (getMatchResult().end() == getMatchResult().start()) {}
-    for (int i = 1;; i = 0)
+    if (getMatchResult().end() == getMatchResult().start()) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    int i = j + i;
+    if (i <= this.input.length())
     {
-      i += j;
-      if (i > this.input.length()) {
-        break;
-      }
       Matcher localMatcher = this.matcher.pattern().matcher(this.input);
       Intrinsics.checkExpressionValueIsNotNull(localMatcher, "matcher.pattern().matcher(input)");
       return RegexKt.access$findNext(localMatcher, i, this.input);
@@ -90,7 +91,7 @@ final class MatcherMatchResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.text.MatcherMatchResult
  * JD-Core Version:    0.7.0.1
  */

@@ -13,12 +13,13 @@ class VideoController$17
     if (QLog.isColorLevel()) {
       QLog.d(VideoController.a, 2, "mSwitchToMultiRunnable timeOut ");
     }
-    this.this$0.b(this.this$0.a().d, 2);
+    VideoController localVideoController = this.this$0;
+    localVideoController.b(localVideoController.a().c, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoController.17
  * JD-Core Version:    0.7.0.1
  */

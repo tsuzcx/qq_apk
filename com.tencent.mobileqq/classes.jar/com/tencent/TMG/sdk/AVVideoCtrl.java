@@ -44,7 +44,10 @@ public class AVVideoCtrl
   
   public static boolean isEnableBeauty()
   {
-    QLog.d("AVVideoCtrl", 0, "isEnable = " + VcSystemInfo.isBeautySupported());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isEnable = ");
+    localStringBuilder.append(VcSystemInfo.isBeautySupported());
+    QLog.d("AVVideoCtrl", 0, localStringBuilder.toString());
     return VcSystemInfo.isBeautySupported();
   }
   
@@ -60,19 +63,19 @@ public class AVVideoCtrl
   
   public int addWatermark(int paramInt, Bitmap paramBitmap)
   {
-    if ((paramInt < 1) || (paramInt > 8))
+    if ((paramInt >= 1) && (paramInt <= 8))
     {
-      QLog.d("AVVideoCtrl", 0, "AVPresetType error");
-      return 1004;
+      if (paramBitmap == null)
+      {
+        QLog.d("AVVideoCtrl", 0, "bitmap null");
+        return 1004;
+      }
+      int[] arrayOfInt = new int[paramBitmap.getWidth() * paramBitmap.getHeight()];
+      paramBitmap.getPixels(arrayOfInt, 0, paramBitmap.getWidth(), 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
+      return nativeAddWatermark(paramInt, arrayOfInt, paramBitmap.getWidth(), paramBitmap.getHeight());
     }
-    if (paramBitmap == null)
-    {
-      QLog.d("AVVideoCtrl", 0, "bitmap null");
-      return 1004;
-    }
-    int[] arrayOfInt = new int[paramBitmap.getWidth() * paramBitmap.getHeight()];
-    paramBitmap.getPixels(arrayOfInt, 0, paramBitmap.getWidth(), 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
-    return nativeAddWatermark(paramInt, arrayOfInt, paramBitmap.getWidth(), paramBitmap.getHeight());
+    QLog.d("AVVideoCtrl", 0, "AVPresetType error");
+    return 1004;
   }
   
   public void deleteTime()
@@ -84,15 +87,14 @@ public class AVVideoCtrl
   
   public int enableCamera(int paramInt1, boolean paramBoolean, int paramInt2, AVVideoCtrl.EnableCameraCompleteCallback paramEnableCameraCompleteCallback)
   {
-    switch (paramInt2)
+    if ((paramInt2 != 0) && (paramInt2 != 1))
     {
-    default: 
-      return 1004;
-    case 0: 
-    case 1: 
-      return enableCamera(paramInt1, paramBoolean, paramEnableCameraCompleteCallback);
+      if (paramInt2 != 2) {
+        return 1004;
+      }
+      return enableCameraPreview(paramInt1, paramBoolean, paramEnableCameraCompleteCallback);
     }
-    return enableCameraPreview(paramInt1, paramBoolean, paramEnableCameraCompleteCallback);
+    return enableCamera(paramInt1, paramBoolean, paramEnableCameraCompleteCallback);
   }
   
   public native int enableCamera(int paramInt, boolean paramBoolean, AVVideoCtrl.EnableCameraCompleteCallback paramEnableCameraCompleteCallback);
@@ -121,17 +123,18 @@ public class AVVideoCtrl
   
   public int getFilterTime()
   {
-    int i = 0;
-    if (timeArray != null) {
-      i = timeArray[0];
+    int[] arrayOfInt = timeArray;
+    if (arrayOfInt != null) {
+      return arrayOfInt[0];
     }
-    return i;
+    return 0;
   }
   
   public int getPendantTime()
   {
-    if (timeArray != null) {
-      return timeArray[1];
+    int[] arrayOfInt = timeArray;
+    if (arrayOfInt != null) {
+      return arrayOfInt[1];
     }
     return 0;
   }
@@ -156,8 +159,9 @@ public class AVVideoCtrl
     if (timeArray != null)
     {
       QLog.d("AVVideoCtrl", 0, "resetEffectTime");
-      timeArray[0] = 0;
-      timeArray[1] = 0;
+      int[] arrayOfInt = timeArray;
+      arrayOfInt[0] = 0;
+      arrayOfInt[1] = 0;
     }
   }
   
@@ -204,15 +208,14 @@ public class AVVideoCtrl
     if ((paramInt1 != 0) && (paramInt1 != 1)) {
       return 1004;
     }
-    switch (paramInt2)
+    if ((paramInt2 != 0) && (paramInt2 != 1))
     {
-    default: 
-      return 1004;
-    case 0: 
-    case 1: 
-      return enableCameraSendPermission(true);
+      if (paramInt2 != 2) {
+        return 1004;
+      }
+      return enableCameraSendPermission(false);
     }
-    return enableCameraSendPermission(false);
+    return enableCameraSendPermission(true);
   }
 }
 

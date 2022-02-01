@@ -10,17 +10,19 @@ class LoginView$1
   
   public void run()
   {
-    int[] arrayOfInt = new int[2];
-    this.this$0.h.getLocationOnScreen(arrayOfInt);
+    Object localObject = new int[2];
+    this.this$0.h.getLocationOnScreen((int[])localObject);
     LoginView localLoginView = this.this$0;
-    int i = this.this$0.b.getHeight();
-    LoginView.a(localLoginView, arrayOfInt[1] + i - (int)(LoginView.a(this.this$0) * 7.0F + 0.5F));
-    QLog.d("LoginActivity.LoginView", 2, "down bottomLine" + LoginView.a(this.this$0));
+    LoginView.a(localLoginView, localLoginView.b.getHeight() + localObject[1] - (int)(LoginView.a(this.this$0) * 7.0F + 0.5F));
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("down bottomLine");
+    ((StringBuilder)localObject).append(LoginView.a(this.this$0));
+    QLog.d("LoginActivity.LoginView", 2, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginView.1
  * JD-Core Version:    0.7.0.1
  */

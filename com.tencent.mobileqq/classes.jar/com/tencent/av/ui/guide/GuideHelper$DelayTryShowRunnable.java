@@ -21,7 +21,13 @@ class GuideHelper$DelayTryShowRunnable
   
   public final void a(long paramLong)
   {
-    QLog.w("GuideHelper", 1, "removeCallback, seq[" + paramLong + "], last_seq[" + this.jdField_a_of_type_Long + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("removeCallback, seq[");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("], last_seq[");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("]");
+    QLog.w("GuideHelper", 1, localStringBuilder.toString());
     this.jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_MqqUtilWeakReference = null;
     this.b = null;
@@ -42,24 +48,41 @@ class GuideHelper$DelayTryShowRunnable
     if (this.jdField_a_of_type_Long == 0L) {
       return;
     }
-    if (this.jdField_a_of_type_MqqUtilWeakReference != null) {}
-    for (Context localContext = (Context)this.jdField_a_of_type_MqqUtilWeakReference.get(); localContext == null; localContext = null)
+    Object localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+    GuideHelper localGuideHelper = null;
+    if (localObject != null) {
+      localObject = (Context)((WeakReference)localObject).get();
+    } else {
+      localObject = null;
+    }
+    if (localObject == null)
     {
-      QLog.w("GuideHelper", 1, "DelayTryShowRunnable, context fail, seq[" + this.jdField_a_of_type_Long + "]");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("DelayTryShowRunnable, context fail, seq[");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append("]");
+      QLog.w("GuideHelper", 1, ((StringBuilder)localObject).toString());
       return;
     }
-    if (this.b != null) {}
-    for (GuideHelper localGuideHelper = (GuideHelper)this.b.get(); localGuideHelper == null; localGuideHelper = null)
+    WeakReference localWeakReference = this.b;
+    if (localWeakReference != null) {
+      localGuideHelper = (GuideHelper)localWeakReference.get();
+    }
+    if (localGuideHelper == null)
     {
-      QLog.w("GuideHelper", 1, "DelayTryShowRunnable, GuideHelper fail, seq[" + this.jdField_a_of_type_Long + "]");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("DelayTryShowRunnable, GuideHelper fail, seq[");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append("]");
+      QLog.w("GuideHelper", 1, ((StringBuilder)localObject).toString());
       return;
     }
-    GuideHelper.a(localGuideHelper, this.jdField_a_of_type_Long, localContext, this.jdField_a_of_type_Int);
+    GuideHelper.a(localGuideHelper, this.jdField_a_of_type_Long, (Context)localObject, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.guide.GuideHelper.DelayTryShowRunnable
  * JD-Core Version:    0.7.0.1
  */

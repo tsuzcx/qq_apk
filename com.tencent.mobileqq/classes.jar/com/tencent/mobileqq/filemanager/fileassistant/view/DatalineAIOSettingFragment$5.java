@@ -6,7 +6,7 @@ import android.view.View;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.ChatSettingActivity.DeleteHistoryListener;
 import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.apollo.api.script.ISpriteCommFunc;
+import com.tencent.mobileqq.apollo.script.api.ISpriteCommFunc;
 import com.tencent.mobileqq.app.MessageRoamManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
@@ -30,112 +30,110 @@ class DatalineAIOSettingFragment$5
   
   public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity$DeleteHistoryListener != null)
+    paramDialog = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity$DeleteHistoryListener;
+    if (paramDialog != null)
     {
       if (paramBoolean)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity$DeleteHistoryListener.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0);
+        paramDialog.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0);
         this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity$DeleteHistoryListener.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0);
       }
       this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity$DeleteHistoryListener.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1);
       this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity$DeleteHistoryListener.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1);
     }
-    paramDialog = new StringBuilder();
+    Object localObject = new StringBuilder();
     paramView = (MessageRoamManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
     paramView.a(this.jdField_a_of_type_JavaLangString);
-    int i = paramView.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramDialog);
-    if ((paramDialog != null) && (paramDialog.length() > 0)) {}
-    for (paramDialog = paramDialog.toString();; paramDialog = null)
+    int i = paramView.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, (StringBuilder)localObject);
+    paramDialog = null;
+    if (((StringBuilder)localObject).length() > 0) {
+      paramDialog = ((StringBuilder)localObject).toString();
+    }
+    if (i <= 0)
     {
-      if (i <= 0)
-      {
-        QQToast.a(BaseApplication.getContext(), 2, 2131691562, 1).a();
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity$DeleteHistoryListener != null) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity$DeleteHistoryListener.a(this.jdField_a_of_type_AndroidAppActivity);
-        }
-        return;
+      QQToast.a(BaseApplication.getContext(), 2, 2131691483, 1).a();
+      paramDialog = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity$DeleteHistoryListener;
+      if (paramDialog != null) {
+        paramDialog.a(this.jdField_a_of_type_AndroidAppActivity);
       }
-      List localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    }
+    else
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
       long l1;
-      if ((localList != null) && (!localList.isEmpty())) {
-        if (((MessageRecord)localList.get(localList.size() - 1)).isSendFromLocal()) {
-          l1 = ((MessageRecord)localList.get(localList.size() - 1)).time + 2L;
+      if ((localObject != null) && (!((List)localObject).isEmpty()))
+      {
+        if (((MessageRecord)((List)localObject).get(((List)localObject).size() - 1)).isSendFromLocal()) {
+          l1 = ((MessageRecord)((List)localObject).get(((List)localObject).size() - 1)).time + 2L;
+        } else {
+          l1 = ((MessageRecord)((List)localObject).get(((List)localObject).size() - 1)).time;
         }
       }
-      for (;;)
-      {
-        for (;;)
-        {
-          if (FriendsStatusUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int))
-          {
-            FriendsStatusUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true, false);
-          }
-          for (;;)
-          {
-            ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).stopAllTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "chat_history_c2c_start_del_msg");
-            if (!paramBoolean) {
-              break label443;
-            }
-            if (NetworkUtil.d(BaseApplication.getContext())) {
-              break label405;
-            }
-            QQToast.a(BaseApplication.getContext(), 2131691559, 1).a();
-            return;
-            l1 = ((MessageRecord)localList.get(localList.size() - 1)).time;
-            break;
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-          }
-          label405:
-          ((MessageRoamManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER)).i();
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-          paramView.n();
-          label443:
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().e(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-          if (paramDialog != null) {}
-          try
-          {
-            l2 = Long.parseLong(paramDialog);
-            l1 = Math.max(l2, l1);
-            if (l1 > 0L) {
-              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, l1);
-            }
-            paramView.a().c();
-            paramView.b();
-            if (paramBoolean) {
-              paramView.n();
-            }
-            paramDialog = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
-            if (paramDialog != null)
-            {
-              paramView = paramDialog.obtainMessage(1017);
-              paramView.obj = this.jdField_a_of_type_JavaLangString;
-              paramView.arg1 = this.jdField_a_of_type_Int;
-              paramDialog.sendMessage(paramView);
-            }
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity$DeleteHistoryListener == null) {
-              break;
-            }
-            this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity$DeleteHistoryListener.a(this.jdField_a_of_type_AndroidAppActivity);
-            return;
-          }
-          catch (Exception paramDialog)
-          {
-            for (;;)
-            {
-              paramDialog.printStackTrace();
-              long l2 = 0L;
-            }
-          }
-        }
+      else {
         l1 = 0L;
+      }
+      if (FriendsStatusUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int))
+      {
+        FriendsStatusUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true, false);
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      }
+      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).stopAllTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "chat_history_c2c_start_del_msg");
+      if (paramBoolean)
+      {
+        if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
+        {
+          QQToast.a(BaseApplication.getContext(), 2131691480, 1).a();
+          return;
+        }
+        ((MessageRoamManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER)).i();
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+        paramView.n();
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().c(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      if (paramDialog != null)
+      {
+        long l2;
+        try
+        {
+          l2 = Long.parseLong(paramDialog);
+        }
+        catch (Exception paramDialog)
+        {
+          paramDialog.printStackTrace();
+          l2 = 0L;
+        }
+        l1 = Math.max(l2, l1);
+        if (l1 > 0L) {
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, l1);
+        }
+      }
+      paramView.a().c();
+      paramView.b();
+      if (paramBoolean) {
+        paramView.n();
+      }
+      paramDialog = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+      if (paramDialog != null)
+      {
+        paramView = paramDialog.obtainMessage(1017);
+        paramView.obj = this.jdField_a_of_type_JavaLangString;
+        paramView.arg1 = this.jdField_a_of_type_Int;
+        paramDialog.sendMessage(paramView);
+      }
+      paramDialog = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity$DeleteHistoryListener;
+      if (paramDialog != null) {
+        paramDialog.a(this.jdField_a_of_type_AndroidAppActivity);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.view.DatalineAIOSettingFragment.5
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,8 @@ package com.tencent.mobileqq.intervideo.now.dynamic;
 
 import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.intervideo.LoginKeyHelper;
+import com.tencent.mobileqq.intervideo.ILoginKeyHelper;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
 import mqq.util.WeakReference;
@@ -27,9 +28,9 @@ final class PluginManagerInterfaceImpl$GetAccessTokenBundle
     Bundle[] arrayOfBundle = new Bundle[1];
     if (localObject != null)
     {
-      localObject = new LoginKeyHelper();
+      localObject = (ILoginKeyHelper)QRoute.api(ILoginKeyHelper.class);
       CountDownLatch localCountDownLatch = new CountDownLatch(1);
-      ((LoginKeyHelper)localObject).a(PluginManagerInterfaceImpl.a(), this.b, BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, new PluginManagerInterfaceImpl.GetAccessTokenBundle.1(this, (LoginKeyHelper)localObject, arrayOfBundle, localCountDownLatch));
+      ((ILoginKeyHelper)localObject).getAccessToken(PluginManagerInterfaceImpl.a(), this.b, BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, new PluginManagerInterfaceImpl.GetAccessTokenBundle.1(this, (ILoginKeyHelper)localObject, arrayOfBundle, localCountDownLatch));
       localCountDownLatch.await();
       return arrayOfBundle[0];
     }
@@ -42,7 +43,7 @@ final class PluginManagerInterfaceImpl$GetAccessTokenBundle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.PluginManagerInterfaceImpl.GetAccessTokenBundle
  * JD-Core Version:    0.7.0.1
  */

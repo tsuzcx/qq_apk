@@ -2,16 +2,16 @@ package com.tencent.mobileqq.troop.navigatebar;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
 
 public class TroopAioMsgNavigateSticker
   extends BaseTroopAioMsgNavigateBarDelegate
 {
-  public TroopAioMsgNavigateSticker(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  public TroopAioMsgNavigateSticker(QQAppInterface paramQQAppInterface, Context paramContext, BaseSessionInfo paramBaseSessionInfo)
   {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
+    super(paramQQAppInterface, paramContext, paramBaseSessionInfo);
     this.a = 10;
   }
   
@@ -27,7 +27,7 @@ public class TroopAioMsgNavigateSticker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.navigatebar.TroopAioMsgNavigateSticker
  * JD-Core Version:    0.7.0.1
  */

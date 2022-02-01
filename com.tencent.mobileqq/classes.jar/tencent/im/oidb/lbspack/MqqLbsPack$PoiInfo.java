@@ -20,14 +20,15 @@ public final class MqqLbsPack$PoiInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42 }, new String[] { "uint64_poi_id", "int32_lat", "int32_lon", "bytes_name", "bytes_addr" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2 }, PoiInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42 }, new String[] { "uint64_poi_id", "int32_lat", "int32_lon", "bytes_name", "bytes_addr" }, new Object[] { Long.valueOf(0L), localInteger, localInteger, localByteStringMicro1, localByteStringMicro2 }, PoiInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.lbspack.MqqLbsPack.PoiInfo
  * JD-Core Version:    0.7.0.1
  */

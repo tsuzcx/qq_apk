@@ -63,34 +63,35 @@ public class MessageForLongMsg
   
   public boolean canSelectable()
   {
-    if (this.longMsgFragmentList != null)
+    Object localObject1 = this.longMsgFragmentList;
+    if (localObject1 != null)
     {
-      Object localObject;
+      Object localObject2;
       do
       {
-        Iterator localIterator = this.longMsgFragmentList.iterator();
-        while (!((Iterator)localObject).hasNext())
+        localObject1 = ((List)localObject1).iterator();
+        while (!((Iterator)localObject2).hasNext())
         {
           do
           {
             do
             {
-              if (!localIterator.hasNext()) {
+              if (!((Iterator)localObject1).hasNext()) {
                 break;
               }
-              localObject = (MessageRecord)localIterator.next();
-              if ((localObject instanceof MessageForText)) {
+              localObject2 = (MessageRecord)((Iterator)localObject1).next();
+              if ((localObject2 instanceof MessageForText)) {
                 return true;
               }
-              if ((localObject instanceof MessageForReplyText)) {
+              if ((localObject2 instanceof MessageForReplyText)) {
                 return true;
               }
-            } while (!(localObject instanceof MessageForMixedMsg));
-            localObject = (MessageForMixedMsg)localObject;
-          } while (((MessageForMixedMsg)localObject).msgElemList == null);
-          localObject = ((MessageForMixedMsg)localObject).msgElemList.iterator();
+            } while (!(localObject2 instanceof MessageForMixedMsg));
+            localObject2 = (MessageForMixedMsg)localObject2;
+          } while (((MessageForMixedMsg)localObject2).msgElemList == null);
+          localObject2 = ((MessageForMixedMsg)localObject2).msgElemList.iterator();
         }
-      } while (!((MessageRecord)((Iterator)localObject).next() instanceof MessageForText));
+      } while (!((MessageRecord)((Iterator)localObject2).next() instanceof MessageForText));
       return true;
     }
     return false;
@@ -101,278 +102,268 @@ public class MessageForLongMsg
     super.doParse();
     StringBuilder localStringBuilder1 = new StringBuilder();
     StringBuilder localStringBuilder2 = new StringBuilder();
+    int i;
     int k;
-    boolean bool1;
-    Object localObject5;
     int j;
-    boolean bool2;
-    int n;
-    boolean bool3;
+    label1142:
     synchronized (this.fragmentListSyncLock)
     {
-      if ((this.longMsgFragmentList == null) || (this.longMsgFragmentList.isEmpty())) {
-        break label1033;
-      }
-      k = 0;
-      bool1 = false;
-      localObject5 = this.longMsgFragmentList.iterator();
-      j = 0;
-      for (;;)
+      Object localObject1 = this.longMsgFragmentList;
+      i = 0;
+      int i3 = 0;
+      int m = i;
+      if (localObject1 != null)
       {
-        if (((Iterator)localObject5).hasNext())
+        m = i;
+        if (!this.longMsgFragmentList.isEmpty())
         {
-          MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject5).next();
-          Object localObject1 = localMessageRecord.getExtInfoFromExtStr("sens_msg_ctrl_info");
-          bool2 = TextUtils.isEmpty((CharSequence)localObject1);
-          if (bool2) {
-            break label1007;
-          }
-          for (;;)
+          Object localObject4 = this.longMsgFragmentList.iterator();
+          k = 0;
+          j = 0;
+          boolean bool1 = false;
+          while (((Iterator)localObject4).hasNext())
           {
-            try
+            Object localObject5 = (MessageRecord)((Iterator)localObject4).next();
+            localObject1 = ((MessageRecord)localObject5).getExtInfoFromExtStr("sens_msg_ctrl_info");
+            boolean bool3 = TextUtils.isEmpty((CharSequence)localObject1);
+            int i1 = k;
+            int i2 = j;
+            boolean bool2 = bool1;
+            int n;
+            if (!bool3)
             {
-              localObject6 = new bankcode_info.BankcodeCtrlInfo();
-              ((bankcode_info.BankcodeCtrlInfo)localObject6).mergeFrom(HexUtil.hexStr2Bytes((String)localObject1));
-              if (!((bankcode_info.BankcodeCtrlInfo)localObject6).msgtail_id.has()) {
-                break label1002;
-              }
-              i = ((bankcode_info.BankcodeCtrlInfo)localObject6).msgtail_id.get();
-              if (i != 1)
+              m = k;
+              n = j;
+              bool3 = bool1;
+              try
               {
-                j = i;
-                break;
-              }
-              n = k;
-              bool2 = bool1;
-              j = i;
-              m = k;
-              bool3 = bool1;
-            }
-            catch (Exception localException1)
-            {
-              Object localObject6;
-              label235:
-              i = j;
-            }
-            try
-            {
-              if (!((bankcode_info.BankcodeCtrlInfo)localObject6).bankcode_elems.has()) {
-                break label522;
-              }
-              m = k;
-              bool3 = bool1;
-              localObject1 = ((bankcode_info.BankcodeCtrlInfo)localObject6).bankcode_elems.get();
-              n = k;
-              bool2 = bool1;
-              j = i;
-              if (localObject1 == null) {
-                break label522;
-              }
-              m = k;
-              bool3 = bool1;
-              localObject6 = ((List)localObject1).iterator();
-              m = k;
-              bool3 = bool1;
-              if (((Iterator)localObject6).hasNext())
-              {
+                localObject6 = new bankcode_info.BankcodeCtrlInfo();
                 m = k;
+                n = j;
                 bool3 = bool1;
-                bankcode_info.BankcodeElem localBankcodeElem = (bankcode_info.BankcodeElem)((Iterator)localObject6).next();
+                ((bankcode_info.BankcodeCtrlInfo)localObject6).mergeFrom(HexUtil.hexStr2Bytes((String)localObject1));
                 m = k;
+                n = j;
                 bool3 = bool1;
-                if (!localBankcodeElem.bankcode_attr.has()) {
-                  break label997;
+                i = k;
+                if (!((bankcode_info.BankcodeCtrlInfo)localObject6).msgtail_id.has()) {
+                  break label1142;
                 }
                 m = k;
+                n = j;
                 bool3 = bool1;
-                j = localBankcodeElem.bankcode_attr.get();
-                break label1017;
+                i = ((bankcode_info.BankcodeCtrlInfo)localObject6).msgtail_id.get();
               }
-              n = k;
-              bool2 = bool1;
-              j = i;
-              if (k != 20) {
-                break label522;
-              }
-              m = k;
-              bool3 = bool1;
-              localObject6 = ((List)localObject1).iterator();
-              n = k;
-              bool2 = bool1;
-              j = i;
-              m = k;
-              bool3 = bool1;
-              if (!((Iterator)localObject6).hasNext()) {
-                break label522;
-              }
-              m = k;
-              bool3 = bool1;
-              localObject1 = (bankcode_info.BankcodeElem)((Iterator)localObject6).next();
-              j = 0;
-              m = k;
-              bool3 = bool1;
-              if (((bankcode_info.BankcodeElem)localObject1).bankcode_attr.has())
+              catch (Exception localException1)
               {
-                m = k;
+                Object localObject6;
+                bankcode_info.BankcodeElem localBankcodeElem;
+                localException1.printStackTrace();
+                bool2 = bool3;
+                i2 = n;
+                i1 = m;
+              }
+              m = i;
+              n = j;
+              bool3 = bool1;
+              i1 = i;
+              i2 = j;
+              bool2 = bool1;
+              if (((bankcode_info.BankcodeCtrlInfo)localObject6).bankcode_elems.has())
+              {
+                m = i;
+                n = j;
                 bool3 = bool1;
-                j = ((bankcode_info.BankcodeElem)localObject1).bankcode_attr.get();
+                localObject1 = ((bankcode_info.BankcodeCtrlInfo)localObject6).bankcode_elems.get();
+                i1 = i;
+                i2 = j;
+                bool2 = bool1;
+                if (localObject1 != null)
+                {
+                  m = i;
+                  n = j;
+                  bool3 = bool1;
+                  localObject6 = ((List)localObject1).iterator();
+                  m = i;
+                  n = j;
+                  bool3 = bool1;
+                  if (((Iterator)localObject6).hasNext())
+                  {
+                    m = i;
+                    n = j;
+                    bool3 = bool1;
+                    localBankcodeElem = (bankcode_info.BankcodeElem)((Iterator)localObject6).next();
+                    m = i;
+                    n = j;
+                    bool3 = bool1;
+                    if (!localBankcodeElem.bankcode_attr.has()) {
+                      break label1152;
+                    }
+                    m = i;
+                    n = j;
+                    bool3 = bool1;
+                    k = localBankcodeElem.bankcode_attr.get();
+                    break label1154;
+                  }
+                  i1 = i;
+                  i2 = j;
+                  bool2 = bool1;
+                  if (j == 20)
+                  {
+                    m = i;
+                    n = j;
+                    bool3 = bool1;
+                    localObject6 = ((List)localObject1).iterator();
+                    for (;;)
+                    {
+                      m = i;
+                      n = j;
+                      bool3 = bool1;
+                      i1 = i;
+                      i2 = j;
+                      bool2 = bool1;
+                      if (!((Iterator)localObject6).hasNext()) {
+                        break;
+                      }
+                      m = i;
+                      n = j;
+                      bool3 = bool1;
+                      localBankcodeElem = (bankcode_info.BankcodeElem)((Iterator)localObject6).next();
+                      m = i;
+                      n = j;
+                      bool3 = bool1;
+                      if (!localBankcodeElem.bankcode_attr.has()) {
+                        break label1164;
+                      }
+                      m = i;
+                      n = j;
+                      bool3 = bool1;
+                      k = localBankcodeElem.bankcode_attr.get();
+                      break label1166;
+                      localObject1 = null;
+                      m = i;
+                      n = j;
+                      bool3 = bool1;
+                      if (localBankcodeElem.clean_bankcode.has())
+                      {
+                        m = i;
+                        n = j;
+                        bool3 = bool1;
+                        localObject1 = localBankcodeElem.clean_bankcode.get();
+                      }
+                      m = i;
+                      n = j;
+                      bool3 = bool1;
+                      if (!TextUtils.isEmpty((CharSequence)localObject1))
+                      {
+                        m = i;
+                        n = j;
+                        bool3 = bool1;
+                        bool2 = MQPSensitiveMsgUtil.a().a((String)localObject1);
+                        if (!bool2) {
+                          bool1 = true;
+                        }
+                      }
+                    }
+                  }
+                }
               }
-              if (j != 20) {
-                continue;
-              }
-              m = k;
-              bool3 = bool1;
-              if (!((bankcode_info.BankcodeElem)localObject1).clean_bankcode.has()) {
-                break label986;
-              }
-              m = k;
-              bool3 = bool1;
-              localObject1 = ((bankcode_info.BankcodeElem)localObject1).clean_bankcode.get();
             }
-            catch (Exception localException3)
-            {
-              for (;;)
-              {
-                String str;
-                Iterator localIterator;
-                k = m;
-                bool1 = bool3;
-              }
-              continue;
-              localObject3 = null;
-              continue;
-            }
-            m = k;
-            bool3 = bool1;
-            if (TextUtils.isEmpty((CharSequence)localObject1)) {
-              break label983;
-            }
-            m = k;
-            bool3 = bool1;
-            bool2 = MQPSensitiveMsgUtil.a().a((String)localObject1);
-            if (bool2) {
-              break label983;
-            }
-            bool1 = true;
-          }
-          localException1.printStackTrace();
-          j = i;
-          bool2 = bool1;
-          n = k;
-          label522:
-          if (this.mSourceMsgInfo == null)
-          {
-            str = localMessageRecord.getExtInfoFromExtStr("sens_msg_source_msg_info");
-            bool1 = TextUtils.isEmpty(str);
-            if (bool1) {}
-          }
-          try
-          {
-            this.mSourceMsgInfo = ((MessageForReplyText.SourceMsgInfo)MessagePkgUtils.a(HexUtil.hexStr2Bytes(str)));
-            k = n;
+            k = i1;
+            j = i2;
             bool1 = bool2;
-          }
-          catch (Exception localException2)
-          {
-            for (;;)
+            if (this.mSourceMsgInfo == null)
             {
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.msg.", 2, "getSourceMsgInfo exception:" + localException2.getMessage());
+              String str = ((MessageRecord)localObject5).getExtInfoFromExtStr("sens_msg_source_msg_info");
+              bool3 = TextUtils.isEmpty(str);
+              k = i1;
+              j = i2;
+              bool1 = bool2;
+              if (!bool3)
+              {
+                try
+                {
+                  this.mSourceMsgInfo = ((MessageForReplyText.SourceMsgInfo)MessagePkgUtils.a(HexUtil.hexStr2Bytes(str)));
+                  k = i1;
+                  j = i2;
+                  bool1 = bool2;
+                }
+                catch (Exception localException2)
+                {
+                  k = i1;
+                  j = i2;
+                  bool1 = bool2;
+                }
+                if (QLog.isColorLevel())
+                {
+                  localObject5 = new StringBuilder();
+                  ((StringBuilder)localObject5).append("getSourceMsgInfo exception:");
+                  ((StringBuilder)localObject5).append(localException2.getMessage());
+                  QLog.d("Q.msg.", 2, ((StringBuilder)localObject5).toString());
+                  k = i1;
+                  j = i2;
+                  bool1 = bool2;
+                }
+              }
+            }
+          }
+          Iterator localIterator = this.longMsgFragmentList.iterator();
+          i = i3;
+          for (;;)
+          {
+            m = i;
+            if (!localIterator.hasNext()) {
+              break;
+            }
+            localObject4 = (MessageRecord)localIterator.next();
+            if ((localObject4 instanceof ChatMessage))
+            {
+              if (k == 1)
+              {
+                ((MessageRecord)localObject4).saveExtInfoToExtStr("sens_msg_attr", Integer.toString(j));
+                ((MessageRecord)localObject4).saveExtInfoToExtStr("sens_msg_has_not_confirmed_msg", Boolean.toString(bool1));
+              }
+              ((ChatMessage)localObject4).doParse();
+              if ((localObject4 instanceof MessageForText))
+              {
+                if (!TextUtils.isEmpty(((MessageRecord)localObject4).msg)) {
+                  localStringBuilder1.append(((MessageRecord)localObject4).msg);
+                }
+                if (!TextUtils.isEmpty(((MessageRecord)localObject4).msg2))
+                {
+                  localStringBuilder2.append(((MessageRecord)localObject4).msg2);
+                  i = 1;
+                }
+                else if (!TextUtils.isEmpty(((MessageRecord)localObject4).msg))
+                {
+                  localStringBuilder2.append(((MessageRecord)localObject4).msg);
+                }
+              }
+              else if ((localObject4 instanceof MessageForReplyText))
+              {
+                localStringBuilder1.append(((MessageForReplyText)localObject4).msg);
+                localStringBuilder2.append(((MessageForReplyText)localObject4).msg);
+              }
+              else if ((localObject4 instanceof MessageForMixedMsg))
+              {
+                localStringBuilder1.append(((MessageForMixedMsg)localObject4).msg);
+                localStringBuilder2.append(((MessageForMixedMsg)localObject4).msg2);
+              }
+              else if ((localObject4 instanceof MessageForPic))
+              {
+                localStringBuilder1.append(((MessageForPic)localObject4).getSummaryMsg());
+                localStringBuilder2.append(((MessageForPic)localObject4).getSummaryMsg());
               }
             }
           }
         }
       }
-    }
-    localIterator = this.longMsgFragmentList.iterator();
-    int i = 0;
-    int m = i;
-    if (localIterator.hasNext())
-    {
-      localObject5 = (MessageRecord)localIterator.next();
-      if (!(localObject5 instanceof ChatMessage)) {
-        break label1030;
-      }
-      if (j == 1)
-      {
-        ((MessageRecord)localObject5).saveExtInfoToExtStr("sens_msg_attr", Integer.toString(k));
-        ((MessageRecord)localObject5).saveExtInfoToExtStr("sens_msg_has_not_confirmed_msg", Boolean.toString(bool1));
-      }
-      ((ChatMessage)localObject5).doParse();
-      if ((localObject5 instanceof MessageForText))
-      {
-        if (!TextUtils.isEmpty(((MessageRecord)localObject5).msg)) {
-          localStringBuilder1.append(((MessageRecord)localObject5).msg);
-        }
-        if (!TextUtils.isEmpty(((MessageRecord)localObject5).msg2))
-        {
-          localStringBuilder2.append(((MessageRecord)localObject5).msg2);
-          i = 1;
-          break label1027;
-        }
-        if (TextUtils.isEmpty(((MessageRecord)localObject5).msg)) {
-          break label1030;
-        }
-        localStringBuilder2.append(((MessageRecord)localObject5).msg);
-        break label1027;
-      }
-      if ((localObject5 instanceof MessageForReplyText))
-      {
-        localStringBuilder1.append(((MessageForReplyText)localObject5).msg);
-        localStringBuilder2.append(((MessageForReplyText)localObject5).msg);
-        break label1027;
-      }
-      if ((localObject5 instanceof MessageForMixedMsg))
-      {
-        localStringBuilder1.append(((MessageForMixedMsg)localObject5).msg);
-        localStringBuilder2.append(((MessageForMixedMsg)localObject5).msg2);
-        break label1027;
-      }
-      if (!(localObject5 instanceof MessageForPic)) {
-        break label1030;
-      }
-      localStringBuilder1.append(((MessageForPic)localObject5).getSummaryMsg());
-      localStringBuilder2.append(((MessageForPic)localObject5).getSummaryMsg());
-      break label1030;
-    }
-    for (;;)
-    {
       this.msg = localStringBuilder1.toString();
       this.sb = new QQText(this.msg, 13, ChatTextSizeSettingActivity.a(), this.istroop);
       if (m != 0) {
         this.sb2 = new QQText(localStringBuilder2.toString(), 13, ChatTextSizeSettingActivity.a(), this.istroop);
       }
       return;
-      label983:
-      label986:
-      label997:
-      label1002:
-      label1007:
-      label1017:
-      do
-      {
-        Object localObject3;
-        j = k;
-        break label1022;
-        j = 0;
-        continue;
-        i = j;
-        break;
-        n = k;
-        bool2 = bool1;
-        break label522;
-      } while (j <= k);
-      label1022:
-      k = j;
-      break label235;
-      label1027:
-      label1030:
-      for (;;)
-      {
-        break;
-      }
-      label1033:
-      m = 0;
     }
   }
   
@@ -408,143 +399,162 @@ public class MessageForLongMsg
   
   public MessageRecord rebuildLongMsg(boolean paramBoolean)
   {
+    int i = this.msgtype;
+    Object localObject3 = null;
     Object localObject6;
-    if (this.msgtype == -1037) {
-      localObject6 = new StringBuilder("");
-    }
-    label868:
-    for (;;)
+    Object localObject7;
+    Object localObject8;
+    if (i == -1037)
     {
-      Object localObject3;
-      Object localObject7;
+      localObject6 = new StringBuilder("");
       synchronized (this.fragmentListSyncLock)
       {
-        localObject3 = this.longMsgFragmentList.iterator();
-        int i = 0;
-        if (((Iterator)localObject3).hasNext())
+        localObject7 = this.longMsgFragmentList.iterator();
+        i = 0;
+        while (((Iterator)localObject7).hasNext())
         {
-          localObject7 = (MessageRecord)((Iterator)localObject3).next();
-          if ((localObject7 instanceof MessageForText))
+          localObject8 = (MessageRecord)((Iterator)localObject7).next();
+          if ((localObject8 instanceof MessageForText))
           {
-            ((StringBuilder)localObject6).append(((MessageForText)localObject7).msg);
-            break label868;
-          }
-          if (!(localObject7 instanceof MessageForReplyText)) {
-            break label868;
-          }
-          ((StringBuilder)localObject6).append(((MessageForReplyText)localObject7).msg);
-          i = 1;
-          break label868;
-        }
-        if ((!paramBoolean) || (i == 0)) {}
-      }
-      ??? = null;
-      continue;
-      if (this.msgtype == -1036)
-      {
-        localObject6 = new ArrayList();
-        ArrayList localArrayList = new ArrayList();
-        localObject7 = new StringBuffer();
-        Iterator localIterator;
-        for (;;)
-        {
-          Object localObject8;
-          synchronized (this.fragmentListSyncLock)
-          {
-            localIterator = this.longMsgFragmentList.iterator();
-            if (!localIterator.hasNext()) {
-              break;
-            }
-            localObject8 = (MessageRecord)localIterator.next();
-            if ((localObject8 instanceof MessageForText)) {
-              ((List)localObject6).add(localObject8);
-            }
-          }
-          Object localObject9;
-          if ((localObject8 instanceof MessageForMixedMsg))
-          {
-            localObject8 = ((MessageForMixedMsg)localObject8).msgElemList.iterator();
-            while (((Iterator)localObject8).hasNext())
-            {
-              localObject9 = (MessageRecord)((Iterator)localObject8).next();
-              if ((localObject9 instanceof MessageForText))
-              {
-                ((List)localObject6).add(localObject9);
-              }
-              else if ((localObject9 instanceof MessageForPic))
-              {
-                if (!((List)localObject6).isEmpty())
-                {
-                  Object localObject10 = ((List)localObject6).iterator();
-                  while (((Iterator)localObject10).hasNext()) {
-                    ((StringBuffer)localObject7).append(((MessageRecord)((Iterator)localObject10).next()).msg);
-                  }
-                  localObject10 = (MessageForText)MessageRecordFactory.a(-1000);
-                  ((MessageForText)localObject10).msgtype = -1000;
-                  ((MessageForText)localObject10).msg = ((StringBuffer)localObject7).toString();
-                  ((StringBuffer)localObject7).delete(0, ((StringBuffer)localObject7).length());
-                  localObject5.add(localObject10);
-                  ((List)localObject6).clear();
-                }
-                localObject5.add((MessageForPic)((MessageRecord)localObject9).deepCopyByReflect());
-              }
-              else if ((localObject9 instanceof MessageForReplyText))
-              {
-                ((List)localObject6).add(localObject9);
-              }
-            }
-          }
-          else if ((localObject8 instanceof MessageForPic))
-          {
-            if (!((List)localObject6).isEmpty())
-            {
-              localObject9 = ((List)localObject6).iterator();
-              while (((Iterator)localObject9).hasNext()) {
-                ((StringBuffer)localObject7).append(((MessageRecord)((Iterator)localObject9).next()).msg);
-              }
-              localObject9 = (MessageForText)MessageRecordFactory.a(-1000);
-              ((MessageForText)localObject9).msgtype = -1000;
-              ((MessageForText)localObject9).msg = ((StringBuffer)localObject7).toString();
-              ((StringBuffer)localObject7).delete(0, ((StringBuffer)localObject7).length());
-              localObject5.add(localObject9);
-              ((List)localObject6).clear();
-            }
-            localObject5.add((MessageForPic)((MessageRecord)localObject8).deepCopyByReflect());
+            ((StringBuilder)localObject6).append(((MessageForText)localObject8).msg);
           }
           else if ((localObject8 instanceof MessageForReplyText))
           {
-            ((List)localObject6).add(localObject8);
+            ((StringBuilder)localObject6).append(((MessageForReplyText)localObject8).msg);
+            i = 1;
+          }
+        }
+        ??? = localObject3;
+        if (paramBoolean)
+        {
+          ??? = localObject3;
+          if (i != 0) {
+            try
+            {
+              ??? = (MessageForReplyText)((MessageForReplyText)this.longMsgFragmentList.get(0)).deepCopyByReflect();
+              ((MessageForReplyText)???).msg = ((StringBuilder)localObject6).toString();
+            }
+            catch (Exception localException)
+            {
+              QLog.e("MultiMsg_TAG", 1, localException, new Object[0]);
+              ??? = localObject3;
+            }
+          }
+        }
+        localObject3 = ???;
+        if (??? == null)
+        {
+          localObject3 = MessageRecordFactory.a(-1000);
+          copyMessageRecordBaseField((MessageRecord)localObject3, this);
+          ((MessageRecord)localObject3).msgtype = -1000;
+          ((MessageRecord)localObject3).msg = ((StringBuilder)localObject6).toString();
+        }
+        return localObject3;
+      }
+    }
+    if (this.msgtype == -1036)
+    {
+      localObject6 = new ArrayList();
+      ArrayList localArrayList = new ArrayList();
+      localObject7 = new StringBuffer();
+      synchronized (this.fragmentListSyncLock)
+      {
+        localObject8 = this.longMsgFragmentList.iterator();
+        while (((Iterator)localObject8).hasNext())
+        {
+          Object localObject9 = (MessageRecord)((Iterator)localObject8).next();
+          if ((localObject9 instanceof MessageForText))
+          {
+            ((List)localObject6).add(localObject9);
+          }
+          else
+          {
+            Object localObject10;
+            if ((localObject9 instanceof MessageForMixedMsg))
+            {
+              localObject9 = ((MessageForMixedMsg)localObject9).msgElemList.iterator();
+              while (((Iterator)localObject9).hasNext())
+              {
+                localObject10 = (MessageRecord)((Iterator)localObject9).next();
+                if ((localObject10 instanceof MessageForText))
+                {
+                  ((List)localObject6).add(localObject10);
+                }
+                else if ((localObject10 instanceof MessageForPic))
+                {
+                  if (!((List)localObject6).isEmpty())
+                  {
+                    Object localObject11 = ((List)localObject6).iterator();
+                    while (((Iterator)localObject11).hasNext()) {
+                      ((StringBuffer)localObject7).append(((MessageRecord)((Iterator)localObject11).next()).msg);
+                    }
+                    localObject11 = (MessageForText)MessageRecordFactory.a(-1000);
+                    ((MessageForText)localObject11).msgtype = -1000;
+                    ((MessageForText)localObject11).msg = ((StringBuffer)localObject7).toString();
+                    ((StringBuffer)localObject7).delete(0, ((StringBuffer)localObject7).length());
+                    localArrayList.add(localObject11);
+                    ((List)localObject6).clear();
+                  }
+                  localArrayList.add((MessageForPic)((MessageRecord)localObject10).deepCopyByReflect());
+                }
+                else if ((localObject10 instanceof MessageForReplyText))
+                {
+                  ((List)localObject6).add(localObject10);
+                }
+              }
+            }
+            else if ((localObject9 instanceof MessageForPic))
+            {
+              if (!((List)localObject6).isEmpty())
+              {
+                localObject10 = ((List)localObject6).iterator();
+                while (((Iterator)localObject10).hasNext()) {
+                  ((StringBuffer)localObject7).append(((MessageRecord)((Iterator)localObject10).next()).msg);
+                }
+                localObject10 = (MessageForText)MessageRecordFactory.a(-1000);
+                ((MessageForText)localObject10).msgtype = -1000;
+                ((MessageForText)localObject10).msg = ((StringBuffer)localObject7).toString();
+                ((StringBuffer)localObject7).delete(0, ((StringBuffer)localObject7).length());
+                localArrayList.add(localObject10);
+                ((List)localObject6).clear();
+              }
+              localArrayList.add((MessageForPic)((MessageRecord)localObject9).deepCopyByReflect());
+            }
+            else if ((localObject9 instanceof MessageForReplyText))
+            {
+              ((List)localObject6).add(localObject9);
+            }
           }
         }
         if (!((List)localObject6).isEmpty())
         {
-          localIterator = ((List)localObject6).iterator();
-          if (localIterator.hasNext())
+          localObject8 = ((List)localObject6).iterator();
+          while (((Iterator)localObject8).hasNext())
           {
-            ??? = (MessageRecord)localIterator.next();
-            if (((MessageRecord)???).msg == null) {}
-            for (??? = "";; ??? = ((MessageRecord)???).msg)
-            {
-              ((StringBuffer)localObject7).append((String)???);
-              break;
+            ??? = (MessageRecord)((Iterator)localObject8).next();
+            if (((MessageRecord)???).msg == null) {
+              ??? = "";
+            } else {
+              ??? = ((MessageRecord)???).msg;
             }
+            ((StringBuffer)localObject7).append((String)???);
           }
           ??? = (MessageForText)MessageRecordFactory.a(-1000);
           ((MessageForText)???).msgtype = -1000;
           ((MessageForText)???).msg = ((StringBuffer)localObject7).toString();
           ((StringBuffer)localObject7).delete(0, ((StringBuffer)localObject7).length());
-          localObject5.add(???);
+          localArrayList.add(???);
           ((List)localObject6).clear();
         }
         ??? = (MessageForMixedMsg)MessageRecordFactory.a(-1035);
         copyMessageRecordBaseField((MessageRecord)???, this);
         ((MessageForMixedMsg)???).msgtype = -1035;
-        ((MessageForMixedMsg)???).msgElemList = localObject5;
+        ((MessageForMixedMsg)???).msgElemList = localArrayList;
         ((MessageForMixedMsg)???).prewrite();
         return ???;
       }
-      return null;
     }
+    return null;
   }
   
   public void setPulledSourceMsg()
@@ -554,7 +564,7 @@ public class MessageForLongMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForLongMsg
  * JD-Core Version:    0.7.0.1
  */

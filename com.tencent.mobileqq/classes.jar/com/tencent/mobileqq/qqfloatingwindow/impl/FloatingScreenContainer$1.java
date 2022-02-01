@@ -16,11 +16,8 @@ class FloatingScreenContainer$1
     if (this.jdField_a_of_type_Int >= -this.b) {
       this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x = ((int)(this.c + paramValueAnimator.floatValue() * (this.jdField_a_of_type_Int - this.c)));
     }
-    if (this.d >= this.e)
-    {
-      WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
-      float f1 = this.f;
-      localLayoutParams.y = ((int)(paramValueAnimator.floatValue() * (this.d - this.f) + f1));
+    if (this.d >= this.e) {
+      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = ((int)(this.f + paramValueAnimator.floatValue() * (this.d - this.f)));
     }
     this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowImplFloatingScreenContainer.a(this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
     FloatingScreenContainer.a(this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowImplFloatingScreenContainer).setFloatingCenterX(this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x);
@@ -29,7 +26,7 @@ class FloatingScreenContainer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qqfloatingwindow.impl.FloatingScreenContainer.1
  * JD-Core Version:    0.7.0.1
  */

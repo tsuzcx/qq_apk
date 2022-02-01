@@ -38,13 +38,12 @@ public class RoomService
       RoomDataServer.requestExitRoom(this.mAdapter, getLiveInfo().roomInfo);
       paramEnterExitRoomCallback.onSuccess();
     }
-    for (;;)
+    else
     {
-      this.roomHeartController.cancelHeart();
-      this.enterRoomInfo = null;
-      return;
       paramEnterExitRoomCallback.onFail(-1, "");
     }
+    this.roomHeartController.cancelHeart();
+    this.enterRoomInfo = null;
   }
   
   public EnterRoomInfo getEnterRoomInfo()
@@ -71,8 +70,9 @@ public class RoomService
   public void onDestroy()
   {
     this.mLiveInfo = null;
-    if (this.roomHeartController != null) {
-      this.roomHeartController.cancelHeart();
+    RoomHeartController localRoomHeartController = this.roomHeartController;
+    if (localRoomHeartController != null) {
+      localRoomHeartController.cancelHeart();
     }
   }
   
@@ -85,7 +85,7 @@ public class RoomService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.roomservice.RoomService
  * JD-Core Version:    0.7.0.1
  */

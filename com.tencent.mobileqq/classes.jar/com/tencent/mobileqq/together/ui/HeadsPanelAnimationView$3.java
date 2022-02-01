@@ -19,46 +19,47 @@ class HeadsPanelAnimationView$3
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      return false;
-    case 1: 
-      if (this.a.b.size() == 0)
-      {
-        QLog.d("MatchViewHolder", 1, "MSG_START_ANIMATION uinList is empty!");
+      if (i != 2) {
         return false;
       }
-      this.a.b();
-      if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      }
-      if ((this.a.b != null) && (this.a.b.size() > 3))
+      paramMessage = (ArrayList)paramMessage.obj;
+      if (this.a.jdField_a_of_type_Boolean)
       {
-        paramMessage = (String)this.a.b.get(3);
-        Drawable localDrawable = ImageUtil.a(true);
-        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        if (localQQAppInterface != null) {
-          FaceDrawable.getFaceDrawable(localQQAppInterface, 1, paramMessage, 4, localDrawable, localDrawable);
-        }
+        paramMessage = Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 2, paramMessage);
+        this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 500L);
+        return false;
       }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 5000L);
+      HeadsPanelAnimationView.a(this.a, paramMessage);
       return false;
     }
-    paramMessage = (ArrayList)paramMessage.obj;
-    if (this.a.jdField_a_of_type_Boolean)
+    if (this.a.b.size() == 0)
     {
-      paramMessage = Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 2, paramMessage);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 500L);
+      QLog.d("MatchViewHolder", 1, "MSG_START_ANIMATION uinList is empty!");
       return false;
     }
-    HeadsPanelAnimationView.a(this.a, paramMessage);
+    this.a.b();
+    if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
+      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    }
+    if ((this.a.b != null) && (this.a.b.size() > 3))
+    {
+      paramMessage = (String)this.a.b.get(3);
+      Drawable localDrawable = ImageUtil.a(true);
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (localQQAppInterface != null) {
+        FaceDrawable.getFaceDrawable(localQQAppInterface, 1, paramMessage, 4, localDrawable, localDrawable);
+      }
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 5000L);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.together.ui.HeadsPanelAnimationView.3
  * JD-Core Version:    0.7.0.1
  */

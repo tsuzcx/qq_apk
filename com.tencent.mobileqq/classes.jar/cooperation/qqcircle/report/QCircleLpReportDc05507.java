@@ -2,7 +2,7 @@ package cooperation.qqcircle.report;
 
 import android.os.Handler;
 import com.tencent.biz.richframework.delegate.impl.RFLog;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.biz.richframework.delegate.impl.RFThreadManager;
 import com.tencent.mobileqq.config.api.IAppSettingApi;
 import com.tencent.mobileqq.qroute.QRoute;
 
@@ -64,7 +64,10 @@ public class QCircleLpReportDc05507
   
   private static boolean needReportNow(int paramInt1, int paramInt2)
   {
-    return (paramInt1 == 1) || (paramInt1 == 2);
+    if (paramInt1 != 1) {
+      return paramInt1 == 2;
+    }
+    return true;
   }
   
   public static void report(QCircleLpReportDc05507.DataBuilder paramDataBuilder)
@@ -76,7 +79,15 @@ public class QCircleLpReportDc05507
     }
     if (QCircleLpReportDc05507.DataBuilder.access$000(paramDataBuilder) <= 0)
     {
-      RFLog.e("QCircleReportBean_QCircleLpReportDc05507", RFLog.USR, "report invalid pageId," + QCircleLpReportDc05507.DataBuilder.access$000(paramDataBuilder) + ",actionType:" + QCircleLpReportDc05507.DataBuilder.access$100(paramDataBuilder) + ",subActionType:" + QCircleLpReportDc05507.DataBuilder.access$200(paramDataBuilder));
+      int i = RFLog.USR;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("report invalid pageId,");
+      localStringBuilder.append(QCircleLpReportDc05507.DataBuilder.access$000(paramDataBuilder));
+      localStringBuilder.append(",actionType:");
+      localStringBuilder.append(QCircleLpReportDc05507.DataBuilder.access$100(paramDataBuilder));
+      localStringBuilder.append(",subActionType:");
+      localStringBuilder.append(QCircleLpReportDc05507.DataBuilder.access$200(paramDataBuilder));
+      RFLog.e("QCircleReportBean_QCircleLpReportDc05507", i, localStringBuilder.toString());
       showErrorToast(QCircleLpReportDc05507.DataBuilder.access$100(paramDataBuilder), QCircleLpReportDc05507.DataBuilder.access$200(paramDataBuilder));
     }
     QCircleReporter.getInstance().getReportHandler().post(new QCircleLpReportDc05507.1(paramDataBuilder));
@@ -85,13 +96,13 @@ public class QCircleLpReportDc05507
   private static void showErrorToast(int paramInt1, int paramInt2)
   {
     if (((IAppSettingApi)QRoute.api(IAppSettingApi.class)).isDebugVersion()) {
-      ThreadManagerV2.getUIHandlerV2().post(new QCircleLpReportDc05507.2(paramInt1, paramInt2));
+      RFThreadManager.getUIHandler().post(new QCircleLpReportDc05507.2(paramInt1, paramInt2));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleLpReportDc05507
  * JD-Core Version:    0.7.0.1
  */

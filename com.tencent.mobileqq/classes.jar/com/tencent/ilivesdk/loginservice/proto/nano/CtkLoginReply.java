@@ -31,69 +31,87 @@ public final class CtkLoginReply
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
+      if (i == 0) {
+        break;
+      }
+      if (i != 10)
       {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
+        if (i != 18)
+        {
+          if (i != 26)
+          {
+            if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+              return this;
+            }
+          }
+          else
+          {
+            if (this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoConfigKeyValue == null) {
+              this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoConfigKeyValue = new ConfigKeyValue();
+            }
+            paramCodedInputByteBufferNano.readMessage(this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoConfigKeyValue);
+          }
         }
-      case 0: 
-        return this;
-      case 10: 
+        else
+        {
+          if (this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoTicketInfo == null) {
+            this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoTicketInfo = new TicketInfo();
+          }
+          paramCodedInputByteBufferNano.readMessage(this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoTicketInfo);
+        }
+      }
+      else
+      {
         if (this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoAccountBaseInfo == null) {
           this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoAccountBaseInfo = new AccountBaseInfo();
         }
         paramCodedInputByteBufferNano.readMessage(this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoAccountBaseInfo);
-        break;
-      case 18: 
-        if (this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoTicketInfo == null) {
-          this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoTicketInfo = new TicketInfo();
-        }
-        paramCodedInputByteBufferNano.readMessage(this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoTicketInfo);
-        break;
       }
-      if (this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoConfigKeyValue == null) {
-        this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoConfigKeyValue = new ConfigKeyValue();
-      }
-      paramCodedInputByteBufferNano.readMessage(this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoConfigKeyValue);
     }
+    return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    Object localObject = this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoAccountBaseInfo;
     int i = j;
-    if (this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoAccountBaseInfo != null) {
-      i = j + CodedOutputByteBufferNano.computeMessageSize(1, this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoAccountBaseInfo);
+    if (localObject != null) {
+      i = j + CodedOutputByteBufferNano.computeMessageSize(1, (MessageNano)localObject);
     }
+    localObject = this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoTicketInfo;
     j = i;
-    if (this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoTicketInfo != null) {
-      j = i + CodedOutputByteBufferNano.computeMessageSize(2, this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoTicketInfo);
+    if (localObject != null) {
+      j = i + CodedOutputByteBufferNano.computeMessageSize(2, (MessageNano)localObject);
     }
+    localObject = this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoConfigKeyValue;
     i = j;
-    if (this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoConfigKeyValue != null) {
-      i = j + CodedOutputByteBufferNano.computeMessageSize(3, this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoConfigKeyValue);
+    if (localObject != null) {
+      i = j + CodedOutputByteBufferNano.computeMessageSize(3, (MessageNano)localObject);
     }
     return i;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoAccountBaseInfo != null) {
-      paramCodedOutputByteBufferNano.writeMessage(1, this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoAccountBaseInfo);
+    Object localObject = this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoAccountBaseInfo;
+    if (localObject != null) {
+      paramCodedOutputByteBufferNano.writeMessage(1, (MessageNano)localObject);
     }
-    if (this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoTicketInfo != null) {
-      paramCodedOutputByteBufferNano.writeMessage(2, this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoTicketInfo);
+    localObject = this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoTicketInfo;
+    if (localObject != null) {
+      paramCodedOutputByteBufferNano.writeMessage(2, (MessageNano)localObject);
     }
-    if (this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoConfigKeyValue != null) {
-      paramCodedOutputByteBufferNano.writeMessage(3, this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoConfigKeyValue);
+    localObject = this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoConfigKeyValue;
+    if (localObject != null) {
+      paramCodedOutputByteBufferNano.writeMessage(3, (MessageNano)localObject);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.loginservice.proto.nano.CtkLoginReply
  * JD-Core Version:    0.7.0.1
  */

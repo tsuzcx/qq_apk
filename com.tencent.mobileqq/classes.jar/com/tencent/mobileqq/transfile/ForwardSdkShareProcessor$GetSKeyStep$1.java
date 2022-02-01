@@ -2,6 +2,7 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.Bundle;
 import com.tencent.mobileqq.forward.ForwardStatisticsReporter;
+import com.tencent.mobileqq.transfile.report.ProcessorReport;
 import com.tencent.open.agent.util.AuthorityUtil;
 import com.tencent.open.data.SharedPrefs;
 import com.tencent.qphone.base.util.QLog;
@@ -15,17 +16,27 @@ class ForwardSdkShareProcessor$GetSKeyStep$1
   
   public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    QLog.w("Q.share.ForwardSdkShareProcessor", 1, "GetSKeyStep|onFailed|account=" + paramString + ",ret=" + paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetSKeyStep|onFailed|account=");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(",ret=");
+    localStringBuilder.append(paramInt2);
+    QLog.w("Q.share.ForwardSdkShareProcessor", 1, localStringBuilder.toString());
     if (this.this$1.this$0.isSdkShare()) {
       ForwardStatisticsReporter.a("KEY_SSO_GET_TICKET_NO_PASSWD", paramBundle, false);
     }
-    this.this$1.this$0.setError(9401, "get sKey failed");
+    this.this$1.this$0.mProcessorReport.setError(9401, "get sKey failed", null, null);
     this.this$1.doError();
   }
   
   public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
   {
-    QLog.i("Q.share.ForwardSdkShareProcessor", 1, "GetSKeyStep|onGetTicketNoPasswd|account=" + AuthorityUtil.a(paramString) + ",type=" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetSKeyStep|onGetTicketNoPasswd|account=");
+    localStringBuilder.append(AuthorityUtil.a(paramString));
+    localStringBuilder.append(",type=");
+    localStringBuilder.append(paramInt);
+    QLog.i("Q.share.ForwardSdkShareProcessor", 1, localStringBuilder.toString());
     if (this.this$1.this$0.isSdkShare()) {
       ForwardStatisticsReporter.a("KEY_SSO_GET_TICKET_NO_PASSWD", paramBundle, true);
     }
@@ -38,23 +49,26 @@ class ForwardSdkShareProcessor$GetSKeyStep$1
       this.this$1.doNextStep();
       return;
     }
-    this.this$1.this$0.setError(9401, "get sKey failed");
+    this.this$1.this$0.mProcessorReport.setError(9401, "get sKey failed", null, null);
     this.this$1.doError();
   }
   
   public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
   {
-    QLog.w("Q.share.ForwardSdkShareProcessor", 1, "GetSKeyStep|onUserCancel|action=" + paramInt);
+    paramString = new StringBuilder();
+    paramString.append("GetSKeyStep|onUserCancel|action=");
+    paramString.append(paramInt);
+    QLog.w("Q.share.ForwardSdkShareProcessor", 1, paramString.toString());
     if (this.this$1.this$0.isSdkShare()) {
       ForwardStatisticsReporter.a("KEY_SSO_GET_TICKET_NO_PASSWD", paramBundle, false);
     }
-    this.this$1.this$0.setError(9401, "onUserCancel");
+    this.this$1.this$0.mProcessorReport.setError(9401, "onUserCancel", null, null);
     this.this$1.doError();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ForwardSdkShareProcessor.GetSKeyStep.1
  * JD-Core Version:    0.7.0.1
  */

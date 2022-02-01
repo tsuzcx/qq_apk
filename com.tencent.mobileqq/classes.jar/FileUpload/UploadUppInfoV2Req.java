@@ -77,22 +77,25 @@ public final class UploadUppInfoV2Req
     paramJceOutputStream.write(this.iType, 5);
     paramJceOutputStream.write(this.iUploadIp, 6);
     paramJceOutputStream.write(this.PhotoSpecInfo, 7);
-    if (this.mapExt != null) {
-      paramJceOutputStream.write(this.mapExt, 8);
+    Object localObject = this.mapExt;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 8);
     }
-    if (this.sPicPath != null) {
-      paramJceOutputStream.write(this.sPicPath, 9);
+    localObject = this.sPicPath;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
     paramJceOutputStream.write(this.iBatchID, 10);
-    if (this.mutlipicinfo != null) {
-      paramJceOutputStream.write(this.mutlipicinfo, 11);
+    localObject = this.mutlipicinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 11);
     }
     paramJceOutputStream.write(this.iPhotoType, 12);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     FileUpload.UploadUppInfoV2Req
  * JD-Core Version:    0.7.0.1
  */

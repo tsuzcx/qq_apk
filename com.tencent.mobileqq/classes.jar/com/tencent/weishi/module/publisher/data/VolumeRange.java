@@ -48,18 +48,18 @@ public final class VolumeRange
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof VolumeRange))
       {
         paramObject = (VolumeRange)paramObject;
-        if ((Float.compare(this.start, paramObject.start) != 0) || (Float.compare(this.end, paramObject.end) != 0)) {}
+        if ((Float.compare(this.start, paramObject.start) == 0) && (Float.compare(this.end, paramObject.end) == 0)) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public final float getEnd()
@@ -80,7 +80,13 @@ public final class VolumeRange
   @NotNull
   public String toString()
   {
-    return "VolumeRange(start=" + this.start + ", end=" + this.end + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VolumeRange(start=");
+    localStringBuilder.append(this.start);
+    localStringBuilder.append(", end=");
+    localStringBuilder.append(this.end);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(@NotNull Parcel paramParcel, int paramInt)
@@ -92,7 +98,7 @@ public final class VolumeRange
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weishi.module.publisher.data.VolumeRange
  * JD-Core Version:    0.7.0.1
  */

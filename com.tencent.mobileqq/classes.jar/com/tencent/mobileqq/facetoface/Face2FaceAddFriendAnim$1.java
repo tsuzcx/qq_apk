@@ -19,24 +19,44 @@ class Face2FaceAddFriendAnim$1
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(Face2FaceAddFriendActivity.a, 2, "startFriendInAnimation currentUin ( " + this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceUserData.e.substring(0, 4) + ", " + this.jdField_a_of_type_Int + " ) Animation Start  ");
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      paramAnimation = Face2FaceAddFriendActivity.a;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("startFriendInAnimation currentUin ( ");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceUserData.e.substring(0, 4));
+      localStringBuilder.append(", ");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(" ) Animation Start  ");
+      QLog.d(paramAnimation, 2, localStringBuilder.toString());
     }
-    double d2 = Math.atan(this.jdField_a_of_type_Double) * 180.0D / 3.141592653589793D * this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendAnim.jdField_b_of_type_Int;
-    double d1 = d2;
+    double d1 = Math.atan(this.jdField_a_of_type_Double) * 180.0D / 3.141592653589793D;
+    double d2 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendAnim.jdField_b_of_type_Int;
+    Double.isNaN(d2);
+    d2 = d1 * d2;
+    d1 = d2;
     if (this.jdField_a_of_type_Boolean) {
       d1 = 180.0D - d2;
     }
     this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendAnim.jdField_b_of_type_Float = ((float)d1);
-    if (QLog.isColorLevel()) {
-      QLog.d(Face2FaceAddFriendActivity.a, 2, "startFriendInAnimation uinToHoleIndex add( " + this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceUserData.e.substring(0, 4) + ", " + this.jdField_a_of_type_Int + " )");
+    if (QLog.isColorLevel())
+    {
+      paramAnimation = Face2FaceAddFriendActivity.a;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("startFriendInAnimation uinToHoleIndex add( ");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceUserData.e.substring(0, 4));
+      localStringBuilder.append(", ");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(" )");
+      QLog.d(paramAnimation, 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendAnim.a(2, this.jdField_b_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceAddFriendAnim.1
  * JD-Core Version:    0.7.0.1
  */

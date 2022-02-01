@@ -15,7 +15,7 @@ public final class VacAdvGetAccess$VacBindWindowRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VAC_ADV_GET_ACCESS.VacAdvGetAccess.VacBindWindowRsp
  * JD-Core Version:    0.7.0.1
  */

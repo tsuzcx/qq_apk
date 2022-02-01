@@ -94,19 +94,23 @@ public final class FeedSkinInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.sSkinId != null) {
-      paramJceOutputStream.write(this.sSkinId, 0);
+    Object localObject = this.sSkinId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.lUin, 1);
-    if (this.sPicUrl != null) {
-      paramJceOutputStream.write(this.sPicUrl, 2);
+    localObject = this.sPicUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.lTime, 3);
-    if (this.desc != null) {
-      paramJceOutputStream.write(this.desc, 4);
+    localObject = this.desc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 5);
+    localObject = this.title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.vip_property, 6);
     paramJceOutputStream.write(this.sSkinType, 7);
@@ -114,39 +118,48 @@ public final class FeedSkinInfo
     paramJceOutputStream.write(this.iVipPrize, 9);
     paramJceOutputStream.write(this.iExpireTime, 10);
     paramJceOutputStream.write(this.uiSettleTime, 11);
-    if (this.strItemSummary != null) {
-      paramJceOutputStream.write(this.strItemSummary, 12);
+    localObject = this.strItemSummary;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
-    if (this.strThumbUrl != null) {
-      paramJceOutputStream.write(this.strThumbUrl, 13);
+    localObject = this.strThumbUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
-    if (this.strTraceInfo != null) {
-      paramJceOutputStream.write(this.strTraceInfo, 14);
+    localObject = this.strTraceInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 14);
     }
     paramJceOutputStream.write(this.iHasNewFlag, 15);
-    if (this.strDesignerInfo != null) {
-      paramJceOutputStream.write(this.strDesignerInfo, 16);
+    localObject = this.strDesignerInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 16);
     }
-    if (this.strMusicH5Url != null) {
-      paramJceOutputStream.write(this.strMusicH5Url, 17);
+    localObject = this.strMusicH5Url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 17);
     }
-    if (this.mapExtInfo != null) {
-      paramJceOutputStream.write(this.mapExtInfo, 18);
+    localObject = this.mapExtInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 18);
     }
-    if (this.strBgColor != null) {
-      paramJceOutputStream.write(this.strBgColor, 19);
+    localObject = this.strBgColor;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 19);
     }
-    if (this.strGradientColorBegin != null) {
-      paramJceOutputStream.write(this.strGradientColorBegin, 20);
+    localObject = this.strGradientColorBegin;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 20);
     }
-    if (this.strGradientColorEnd != null) {
-      paramJceOutputStream.write(this.strGradientColorEnd, 21);
+    localObject = this.strGradientColorEnd;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 21);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_CUSTOM.FeedSkinInfo
  * JD-Core Version:    0.7.0.1
  */

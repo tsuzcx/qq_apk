@@ -7,44 +7,42 @@ class SSCMTimer$1
 {
   public void run()
   {
-    long l;
-    int i;
     if (SSCMTimer.a(this.this$0))
     {
-      l = Long.parseLong(Utils.a());
+      long l = Long.parseLong(Utils.a());
       if (l == -1L)
       {
         SSCMTimer.a(this.this$0, false);
-        i = 0;
+      }
+      else
+      {
+        i = (int)(l - SSCMTimer.a(this.this$0));
+        SSCMTimer.a(this.this$0, l);
+        break label62;
       }
     }
-    for (;;)
+    int i = 0;
+    label62:
+    if (i > 0)
     {
-      if (i > 0) {
-        SSCMTimer.a(this.this$0, 0);
-      }
-      do
-      {
-        do
-        {
-          return;
-          i = (int)(l - SSCMTimer.a(this.this$0));
-          SSCMTimer.a(this.this$0, l);
-          break;
-          SSCMTimer.a(this.this$0, SSCMTimer.a(this.this$0) + SSCMTimer.b(this.this$0));
-        } while (SSCMTimer.a(this.this$0) < 120000);
-        SSCMTimer.b(this.this$0, 1);
-        cancel();
-      } while (SSCMTimer.a(this.this$0) == null);
-      SSCMTimer.a(this.this$0).a(SSCMTimer.a(this.this$0));
+      SSCMTimer.a(this.this$0, 0);
       return;
-      i = 0;
+    }
+    SSCMTimer localSSCMTimer = this.this$0;
+    SSCMTimer.a(localSSCMTimer, SSCMTimer.a(localSSCMTimer) + SSCMTimer.b(this.this$0));
+    if (SSCMTimer.a(this.this$0) >= 120000)
+    {
+      SSCMTimer.b(this.this$0, 1);
+      cancel();
+      if (SSCMTimer.a(this.this$0) != null) {
+        SSCMTimer.a(this.this$0).a(SSCMTimer.a(this.this$0));
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.wstt.SSCM.SSCMTimer.1
  * JD-Core Version:    0.7.0.1
  */

@@ -16,17 +16,24 @@ public class ElapseStat
   
   public static void b(String paramString)
   {
-    if ((!QLog.isColorLevel()) || (!a.containsKey(paramString))) {
-      return;
+    if ((QLog.isColorLevel()) && (a.containsKey(paramString)))
+    {
+      if (a.get(paramString) == null) {
+        return;
+      }
+      long l = ((Long)a.get(paramString)).longValue();
+      a.remove(paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" elpase:");
+      localStringBuilder.append(System.currentTimeMillis() - l);
+      QLog.d("ElapseStat", 2, localStringBuilder.toString());
     }
-    long l = ((Long)a.get(paramString)).longValue();
-    a.remove(paramString);
-    QLog.d("ElapseStat", 2, paramString + " elpase:" + (System.currentTimeMillis() - l));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.util.ElapseStat
  * JD-Core Version:    0.7.0.1
  */

@@ -40,23 +40,39 @@ public final class CombinedContext
       }
       paramCombinedContext = (CombinedContext)paramCombinedContext;
     }
-    if (paramCombinedContext == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.coroutines.experimental.CoroutineContext.Element");
+    if (paramCombinedContext != null) {
+      return contains((CoroutineContext.Element)paramCombinedContext);
     }
-    return contains((CoroutineContext.Element)paramCombinedContext);
+    paramCombinedContext = new TypeCastException("null cannot be cast to non-null type kotlin.coroutines.experimental.CoroutineContext.Element");
+    for (;;)
+    {
+      throw paramCombinedContext;
+    }
   }
   
   private final int size()
   {
-    if ((this.left instanceof CombinedContext)) {
-      return ((CombinedContext)this.left).size() + 1;
+    CoroutineContext localCoroutineContext = this.left;
+    if ((localCoroutineContext instanceof CombinedContext)) {
+      return ((CombinedContext)localCoroutineContext).size() + 1;
     }
     return 2;
   }
   
   public boolean equals(@Nullable Object paramObject)
   {
-    return ((CombinedContext)this == paramObject) || (((paramObject instanceof CombinedContext)) && (((CombinedContext)paramObject).size() == size()) && (((CombinedContext)paramObject).containsAll(this)));
+    if ((CombinedContext)this != paramObject) {
+      if ((paramObject instanceof CombinedContext))
+      {
+        paramObject = (CombinedContext)paramObject;
+        if ((paramObject.size() == size()) && (paramObject.containsAll(this))) {}
+      }
+      else
+      {
+        return false;
+      }
+    }
+    return true;
   }
   
   public <R> R fold(R paramR, @NotNull Function2<? super R, ? super CoroutineContext.Element, ? extends R> paramFunction2)
@@ -127,12 +143,16 @@ public final class CombinedContext
   @NotNull
   public String toString()
   {
-    return "[" + (String)fold("", (Function2)CombinedContext.toString.1.INSTANCE) + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append((String)fold("", (Function2)CombinedContext.toString.1.INSTANCE));
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.coroutines.experimental.CombinedContext
  * JD-Core Version:    0.7.0.1
  */

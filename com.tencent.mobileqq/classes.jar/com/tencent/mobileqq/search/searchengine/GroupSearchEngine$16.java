@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import com.tencent.mobileqq.filemanager.data.search.GroupSearchModelFileEntity;
+import com.tencent.mobileqq.search.base.engine.ISearchEngine;
+import com.tencent.mobileqq.search.business.group.model.GroupSearchModelFileEntity;
 import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
 import com.tencent.mobileqq.search.model.ISearchResultModel;
 import java.util.List;
@@ -20,7 +21,7 @@ class GroupSearchEngine$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.GroupSearchEngine.16
  * JD-Core Version:    0.7.0.1
  */

@@ -34,13 +34,15 @@ class OrientationDetector$RotationObserver
       OrientationDetector.access$002(this.this$0, true);
       this.this$0.enable(true);
     }
-    for (;;)
+    else
     {
-      ViolaLogUtils.d("OrientationDetector", "RotationObserver.onChange() : rotateState=" + i);
-      return;
       OrientationDetector.access$002(this.this$0, false);
       this.this$0.enable(false);
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RotationObserver.onChange() : rotateState=");
+    localStringBuilder.append(i);
+    ViolaLogUtils.d("OrientationDetector", localStringBuilder.toString());
   }
   
   public void registerObserver()
@@ -59,7 +61,7 @@ class OrientationDetector$RotationObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.utils.OrientationDetector.RotationObserver
  * JD-Core Version:    0.7.0.1
  */

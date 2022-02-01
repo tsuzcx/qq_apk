@@ -43,7 +43,9 @@ public class DiscoverManager
     {
       CardEntry localCardEntry1 = paramCardItem.toCardEntry();
       paramCardItem = a(localEntityManager, CardEntry.class, CardEntry.class.getSimpleName(), CardEntry.getCardIdSelection(), new String[] { paramCardItem.cardId });
-      if (paramCardItem == null) {
+      if (paramCardItem == null)
+      {
+        localEntityManager.getTransaction().end();
         return;
       }
       paramCardItem = paramCardItem.iterator();
@@ -54,12 +56,18 @@ public class DiscoverManager
         localEntityManager.update(localCardEntry2);
         SLog.a(this.jdField_a_of_type_JavaLangString, "update db cardId=%s id=%d", localCardEntry2.cardId, Long.valueOf(localCardEntry2.getId()));
       }
+      localEntityManager.getTransaction().commit();
+      localEntityManager.getTransaction().end();
+      return;
     }
     finally
     {
       localEntityManager.getTransaction().end();
     }
-    localEntityManager.getTransaction().end();
+    for (;;)
+    {
+      throw paramCardItem;
+    }
   }
   
   public DiscoverBannerVideoEntry a(String paramString)
@@ -99,11 +107,16 @@ public class DiscoverManager
         localEntityManager.persistOrReplace(localDiscoverBannerVideoEntry);
       }
       localEntityManager.getTransaction().commit();
+      localEntityManager.getTransaction().end();
       return;
     }
     finally
     {
       localEntityManager.getTransaction().end();
+    }
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
@@ -111,7 +124,7 @@ public class DiscoverManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.DiscoverManager
  * JD-Core Version:    0.7.0.1
  */

@@ -17,19 +17,19 @@ class VideoInviteUILock$1
       }
       if (this.jdField_a_of_type_ComTencentAvUiVideoInviteUILock.a.getIntent().getBooleanExtra("isDoubleVideoMeeting", false)) {
         this.jdField_a_of_type_ComTencentAvUiVideoInviteUILock.a("0X80051FE");
+      } else if (this.jdField_a_of_type_ComTencentAvUiVideoInviteUILock.a.b) {
+        this.jdField_a_of_type_ComTencentAvUiVideoInviteUILock.a("0X8004201");
+      } else {
+        this.jdField_a_of_type_ComTencentAvUiVideoInviteUILock.a("0X8004205");
       }
-      for (;;)
-      {
-        QLog.w("VideoInviteUILock", 1, "SlideAcceptListener, seq[" + this.jdField_a_of_type_Long + "]");
-        this.jdField_a_of_type_ComTencentAvUiVideoInviteUILock.a.d = true;
-        this.jdField_a_of_type_ComTencentAvUiVideoInviteUILock.a.c(this.jdField_a_of_type_Long);
-        return;
-        if (this.jdField_a_of_type_ComTencentAvUiVideoInviteUILock.a.b) {
-          this.jdField_a_of_type_ComTencentAvUiVideoInviteUILock.a("0X8004201");
-        } else {
-          this.jdField_a_of_type_ComTencentAvUiVideoInviteUILock.a("0X8004205");
-        }
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("SlideAcceptListener, seq[");
+      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append("]");
+      QLog.w("VideoInviteUILock", 1, localStringBuilder.toString());
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteUILock.a.d = true;
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteUILock.a.c(this.jdField_a_of_type_Long);
+      return;
     }
     if (this.jdField_a_of_type_ComTencentAvUiVideoInviteUILock.a.b)
     {
@@ -41,7 +41,7 @@ class VideoInviteUILock$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoInviteUILock.1
  * JD-Core Version:    0.7.0.1
  */

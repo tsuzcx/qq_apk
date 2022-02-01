@@ -53,12 +53,12 @@ public class AtTroopMemberInfo
       localAtTroopMemberInfo.textLen = ((short)((Integer)paramJSONObject.get("textLen")).intValue());
       return localAtTroopMemberInfo;
     }
-    catch (JSONException paramJSONObject)
+    catch (ClassCastException paramJSONObject)
     {
       QLog.e("AtTroopMemberInfo", 1, paramJSONObject, new Object[0]);
       return null;
     }
-    catch (ClassCastException paramJSONObject)
+    catch (JSONException paramJSONObject)
     {
       QLog.e("AtTroopMemberInfo", 1, paramJSONObject, new Object[0]);
     }
@@ -92,15 +92,16 @@ public class AtTroopMemberInfo
   
   public boolean readFrom(byte[] paramArrayOfByte, int paramInt)
   {
-    if ((paramArrayOfByte == null) || (paramInt < 0) || (paramArrayOfByte.length < paramInt + 11)) {
-      return false;
+    if ((paramArrayOfByte != null) && (paramInt >= 0) && (paramArrayOfByte.length >= paramInt + 11))
+    {
+      this.startPos = getShortData(paramArrayOfByte, paramInt + 0);
+      this.textLen = getShortData(paramArrayOfByte, paramInt + 2);
+      this.flag = paramArrayOfByte[(paramInt + 4)];
+      this.uin = getLongData(paramArrayOfByte, paramInt + 5);
+      this.wExtBufLen = getShortData(paramArrayOfByte, paramInt + 9);
+      return true;
     }
-    this.startPos = getShortData(paramArrayOfByte, paramInt + 0);
-    this.textLen = getShortData(paramArrayOfByte, paramInt + 2);
-    this.flag = paramArrayOfByte[(paramInt + 4)];
-    this.uin = getLongData(paramArrayOfByte, paramInt + 5);
-    this.wExtBufLen = getShortData(paramArrayOfByte, paramInt + 9);
-    return true;
+    return false;
   }
   
   public JSONObject toJsonObject()
@@ -115,25 +116,39 @@ public class AtTroopMemberInfo
   
   public String toString()
   {
-    return "flag:" + this.flag + " uin:" + this.uin + " startPos:" + this.startPos + " textLen:" + this.textLen + "\n";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("flag:");
+    localStringBuilder.append(this.flag);
+    localStringBuilder.append(" uin:");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append(" startPos:");
+    localStringBuilder.append(this.startPos);
+    localStringBuilder.append(" textLen:");
+    localStringBuilder.append(this.textLen);
+    localStringBuilder.append("\n");
+    return localStringBuilder.toString();
   }
   
   public boolean writeTo(byte[] paramArrayOfByte, int paramInt)
   {
-    if ((paramArrayOfByte == null) || (paramInt < 0) || (paramArrayOfByte.length < paramInt + 11)) {
-      return false;
+    if ((paramArrayOfByte != null) && (paramInt >= 0))
+    {
+      if (paramArrayOfByte.length < paramInt + 11) {
+        return false;
+      }
+      word2Byte(paramArrayOfByte, paramInt + 0, this.startPos);
+      word2Byte(paramArrayOfByte, paramInt + 2, this.textLen);
+      paramArrayOfByte[(paramInt + 4)] = this.flag;
+      dWord2Byte(paramArrayOfByte, paramInt + 5, this.uin);
+      word2Byte(paramArrayOfByte, paramInt + 9, (short)0);
+      return true;
     }
-    word2Byte(paramArrayOfByte, paramInt + 0, this.startPos);
-    word2Byte(paramArrayOfByte, paramInt + 2, this.textLen);
-    paramArrayOfByte[(paramInt + 4)] = this.flag;
-    dWord2Byte(paramArrayOfByte, paramInt + 5, this.uin);
-    word2Byte(paramArrayOfByte, paramInt + 9, (short)0);
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.AtTroopMemberInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@
         <FrameLayout android:id="@id/ah" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="18.0dip" android:minHeight="@dimen/aik" android:layout_below="@id/f9c">
             <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/ag" android:layout_width="fill_parent" android:layout_height="wrap_content" />
         </FrameLayout>
-        <com.tencent.mobileqq.widget.ProfileCardFavorShowView android:id="@id/e1j" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_below="@id/ah" />
+        <com.tencent.mobileqq.profilecard.bussiness.photowall.view.ProfileCardFavorShowView android:id="@id/e1j" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_below="@id/ah" />
         <View android:id="@id/e1i" android:layout_width="fill_parent" android:layout_height="53.0dip" android:layout_below="@id/e1j" />
     </RelativeLayout>
 </RelativeLayout>

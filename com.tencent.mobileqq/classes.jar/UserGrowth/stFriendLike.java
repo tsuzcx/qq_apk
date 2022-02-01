@@ -27,17 +27,19 @@ public final class stFriendLike
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.nick != null) {
-      paramJceOutputStream.write(this.nick, 0);
+    Object localObject = this.nick;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.schema != null) {
-      paramJceOutputStream.write(this.schema, 1);
+    localObject = this.schema;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stFriendLike
  * JD-Core Version:    0.7.0.1
  */

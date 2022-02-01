@@ -22,34 +22,34 @@ public class PathKeyframeAnimation
   
   public PointF getValue(Keyframe<PointF> paramKeyframe, float paramFloat)
   {
-    PathKeyframe localPathKeyframe = (PathKeyframe)paramKeyframe;
-    Path localPath = localPathKeyframe.getPath();
+    Object localObject = (PathKeyframe)paramKeyframe;
+    Path localPath = ((PathKeyframe)localObject).getPath();
     if (localPath == null) {
-      paramKeyframe = (PointF)paramKeyframe.startValue;
+      return (PointF)paramKeyframe.startValue;
     }
-    PointF localPointF;
-    do
+    if (this.valueCallback != null)
     {
-      return paramKeyframe;
-      if (this.valueCallback == null) {
-        break;
+      paramKeyframe = (PointF)this.valueCallback.getValueInternal(((PathKeyframe)localObject).startFrame, ((PathKeyframe)localObject).endFrame.floatValue(), ((PathKeyframe)localObject).startValue, ((PathKeyframe)localObject).endValue, getLinearCurrentKeyframeProgress(), paramFloat, getProgress());
+      if (paramKeyframe != null) {
+        return paramKeyframe;
       }
-      localPointF = (PointF)this.valueCallback.getValueInternal(localPathKeyframe.startFrame, localPathKeyframe.endFrame.floatValue(), localPathKeyframe.startValue, localPathKeyframe.endValue, getLinearCurrentKeyframeProgress(), paramFloat, getProgress());
-      paramKeyframe = localPointF;
-    } while (localPointF != null);
-    if (this.pathMeasureKeyframe != localPathKeyframe)
+    }
+    if (this.pathMeasureKeyframe != localObject)
     {
       this.pathMeasure.setPath(localPath, false);
-      this.pathMeasureKeyframe = localPathKeyframe;
+      this.pathMeasureKeyframe = ((PathKeyframe)localObject);
     }
-    this.pathMeasure.getPosTan(this.pathMeasure.getLength() * paramFloat, this.pos, null);
-    this.point.set(this.pos[0], this.pos[1]);
+    paramKeyframe = this.pathMeasure;
+    paramKeyframe.getPosTan(paramFloat * paramKeyframe.getLength(), this.pos, null);
+    paramKeyframe = this.point;
+    localObject = this.pos;
+    paramKeyframe.set(localObject[0], localObject[1]);
     return this.point;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.keyframe.PathKeyframeAnimation
  * JD-Core Version:    0.7.0.1
  */

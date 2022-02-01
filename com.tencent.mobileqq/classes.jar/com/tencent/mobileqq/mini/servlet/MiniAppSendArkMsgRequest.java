@@ -27,16 +27,20 @@ public class MiniAppSendArkMsgRequest
   
   public static MiniProgramShare.StSendArkMsgRsp onResponse(byte[] paramArrayOfByte)
   {
-    MiniProgramShare.StSendArkMsgRsp localStSendArkMsgRsp = new MiniProgramShare.StSendArkMsgRsp();
+    Object localObject = new MiniProgramShare.StSendArkMsgRsp();
     try
     {
-      localStSendArkMsgRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStSendArkMsgRsp;
+      ((MiniProgramShare.StSendArkMsgRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniAppSendArkMsgRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("MiniAppSendArkMsgRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -49,7 +53,7 @@ public class MiniAppSendArkMsgRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppSendArkMsgRequest
  * JD-Core Version:    0.7.0.1
  */

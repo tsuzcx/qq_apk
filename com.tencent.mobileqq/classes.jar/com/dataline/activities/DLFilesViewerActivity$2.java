@@ -12,20 +12,20 @@ class DLFilesViewerActivity$2
 {
   DLFilesViewerActivity$2(DLFilesViewerActivity paramDLFilesViewerActivity) {}
   
-  public void a(long paramLong, float paramFloat)
+  protected void a(long paramLong, float paramFloat)
   {
     super.a(paramLong, paramFloat);
     this.a.runOnUiThread(new DLFilesViewerActivity.2.1(this, paramLong, paramFloat));
   }
   
-  public void a(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
+  protected void a(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
   {
     super.a(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
     DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
     DLFilesViewerActivity.b(this.a);
   }
   
-  public void a(String paramString)
+  protected void a(String paramString)
   {
     super.a(paramString);
     Iterator localIterator = DLFilesViewerActivity.a(this.a).values().iterator();
@@ -41,21 +41,21 @@ class DLFilesViewerActivity$2
     DLFilesViewerActivity.b(this.a);
   }
   
-  public void a(boolean paramBoolean, long paramLong, String paramString)
+  protected void a(boolean paramBoolean, long paramLong, String paramString)
   {
     super.a(paramBoolean, paramLong, paramString);
     DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
     DLFilesViewerActivity.b(this.a);
   }
   
-  public void b(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
+  protected void b(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
   {
     super.b(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
     DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
     DLFilesViewerActivity.b(this.a);
   }
   
-  public void b(boolean paramBoolean, long paramLong, String paramString)
+  protected void b(boolean paramBoolean, long paramLong, String paramString)
   {
     super.a(paramBoolean, paramLong, paramString);
     DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
@@ -64,7 +64,7 @@ class DLFilesViewerActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.DLFilesViewerActivity.2
  * JD-Core Version:    0.7.0.1
  */

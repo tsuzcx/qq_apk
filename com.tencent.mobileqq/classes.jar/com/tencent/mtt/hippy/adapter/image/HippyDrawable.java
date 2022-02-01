@@ -1,19 +1,15 @@
 package com.tencent.mtt.hippy.adapter.image;
 
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.ImageDecoder;
 import android.graphics.Movie;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
-import android.util.Base64;
 import com.tencent.mtt.hippy.utils.ContextHolder;
 import com.tencent.mtt.supportui.adapters.image.IDrawableTarget;
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 
 public class HippyDrawable
   implements IDrawableTarget
@@ -64,336 +60,385 @@ public class HippyDrawable
   }
   
   /* Error */
-  public void setData(File paramFile)
+  public void setData(java.io.File paramFile)
   {
     // Byte code:
-    //   0: new 48	java/io/FileInputStream
-    //   3: dup
-    //   4: aload_1
-    //   5: invokespecial 50	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   8: astore_2
-    //   9: aload_2
-    //   10: astore_1
-    //   11: aload_2
-    //   12: invokevirtual 54	java/io/FileInputStream:available	()I
-    //   15: newarray byte
-    //   17: astore_3
-    //   18: aload_2
-    //   19: astore_1
-    //   20: aload_2
-    //   21: aload_3
-    //   22: invokevirtual 58	java/io/FileInputStream:read	([B)I
-    //   25: pop
-    //   26: aload_2
-    //   27: astore_1
-    //   28: aload_0
-    //   29: aload_3
-    //   30: invokevirtual 61	com/tencent/mtt/hippy/adapter/image/HippyDrawable:setData	([B)V
-    //   33: aload_2
-    //   34: ifnull +7 -> 41
-    //   37: aload_2
-    //   38: invokevirtual 64	java/io/FileInputStream:close	()V
-    //   41: return
-    //   42: astore_1
-    //   43: aload_1
-    //   44: invokevirtual 67	java/lang/Exception:printStackTrace	()V
-    //   47: return
-    //   48: astore_3
-    //   49: aconst_null
-    //   50: astore_2
-    //   51: aload_2
-    //   52: astore_1
-    //   53: aload_3
-    //   54: invokevirtual 67	java/lang/Exception:printStackTrace	()V
-    //   57: aload_2
-    //   58: ifnull -17 -> 41
-    //   61: aload_2
-    //   62: invokevirtual 64	java/io/FileInputStream:close	()V
-    //   65: return
-    //   66: astore_1
+    //   0: aconst_null
+    //   1: astore 4
+    //   3: aconst_null
+    //   4: astore_2
+    //   5: new 48	java/io/FileInputStream
+    //   8: dup
+    //   9: aload_1
+    //   10: invokespecial 50	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   13: astore_1
+    //   14: aload_1
+    //   15: invokevirtual 54	java/io/FileInputStream:available	()I
+    //   18: newarray byte
+    //   20: astore_2
+    //   21: aload_1
+    //   22: aload_2
+    //   23: invokevirtual 58	java/io/FileInputStream:read	([B)I
+    //   26: pop
+    //   27: aload_0
+    //   28: aload_2
+    //   29: invokevirtual 61	com/tencent/mtt/hippy/adapter/image/HippyDrawable:setData	([B)V
+    //   32: aload_1
+    //   33: invokevirtual 64	java/io/FileInputStream:close	()V
+    //   36: return
+    //   37: astore_2
+    //   38: goto +40 -> 78
+    //   41: astore_3
+    //   42: goto +15 -> 57
+    //   45: astore_3
+    //   46: aload_2
+    //   47: astore_1
+    //   48: aload_3
+    //   49: astore_2
+    //   50: goto +28 -> 78
+    //   53: astore_3
+    //   54: aload 4
+    //   56: astore_1
+    //   57: aload_1
+    //   58: astore_2
+    //   59: aload_3
+    //   60: invokevirtual 67	java/lang/Exception:printStackTrace	()V
+    //   63: aload_1
+    //   64: ifnull +13 -> 77
     //   67: aload_1
-    //   68: invokevirtual 67	java/lang/Exception:printStackTrace	()V
+    //   68: invokevirtual 64	java/io/FileInputStream:close	()V
     //   71: return
-    //   72: astore_2
-    //   73: aconst_null
-    //   74: astore_1
-    //   75: aload_1
-    //   76: ifnull +7 -> 83
-    //   79: aload_1
-    //   80: invokevirtual 64	java/io/FileInputStream:close	()V
-    //   83: aload_2
-    //   84: athrow
-    //   85: astore_1
-    //   86: aload_1
-    //   87: invokevirtual 67	java/lang/Exception:printStackTrace	()V
-    //   90: goto -7 -> 83
-    //   93: astore_2
-    //   94: goto -19 -> 75
-    //   97: astore_3
-    //   98: goto -47 -> 51
+    //   72: astore_1
+    //   73: aload_1
+    //   74: invokevirtual 67	java/lang/Exception:printStackTrace	()V
+    //   77: return
+    //   78: aload_1
+    //   79: ifnull +15 -> 94
+    //   82: aload_1
+    //   83: invokevirtual 64	java/io/FileInputStream:close	()V
+    //   86: goto +8 -> 94
+    //   89: astore_1
+    //   90: aload_1
+    //   91: invokevirtual 67	java/lang/Exception:printStackTrace	()V
+    //   94: aload_2
+    //   95: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	101	0	this	HippyDrawable
-    //   0	101	1	paramFile	File
-    //   8	54	2	localFileInputStream	java.io.FileInputStream
-    //   72	12	2	localObject1	Object
-    //   93	1	2	localObject2	Object
-    //   17	13	3	arrayOfByte	byte[]
-    //   48	6	3	localException1	Exception
-    //   97	1	3	localException2	Exception
+    //   0	96	0	this	HippyDrawable
+    //   0	96	1	paramFile	java.io.File
+    //   4	25	2	arrayOfByte	byte[]
+    //   37	10	2	localObject1	Object
+    //   49	46	2	localObject2	Object
+    //   41	1	3	localException1	Exception
+    //   45	4	3	localObject3	Object
+    //   53	7	3	localException2	Exception
+    //   1	54	4	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   37	41	42	java/lang/Exception
-    //   0	9	48	java/lang/Exception
-    //   61	65	66	java/lang/Exception
-    //   0	9	72	finally
-    //   79	83	85	java/lang/Exception
-    //   11	18	93	finally
-    //   20	26	93	finally
-    //   28	33	93	finally
-    //   53	57	93	finally
-    //   11	18	97	java/lang/Exception
-    //   20	26	97	java/lang/Exception
-    //   28	33	97	java/lang/Exception
+    //   14	32	37	finally
+    //   14	32	41	java/lang/Exception
+    //   5	14	45	finally
+    //   59	63	45	finally
+    //   5	14	53	java/lang/Exception
+    //   32	36	72	java/lang/Exception
+    //   67	71	72	java/lang/Exception
+    //   82	86	89	java/lang/Exception
   }
   
   /* Error */
-  public void setData(File paramFile, boolean paramBoolean)
+  public void setData(java.io.File paramFile, boolean paramBoolean)
   {
     // Byte code:
-    //   0: new 48	java/io/FileInputStream
-    //   3: dup
-    //   4: aload_1
-    //   5: invokespecial 50	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   8: astore_3
-    //   9: iload_2
-    //   10: ifeq +29 -> 39
-    //   13: aload_3
-    //   14: astore_1
-    //   15: aload_0
-    //   16: aload_3
-    //   17: invokestatic 76	android/graphics/Movie:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Movie;
-    //   20: putfield 33	com/tencent/mtt/hippy/adapter/image/HippyDrawable:mGifMovie	Landroid/graphics/Movie;
-    //   23: aload_3
-    //   24: astore_1
-    //   25: aload_0
-    //   26: aconst_null
-    //   27: putfield 23	com/tencent/mtt/hippy/adapter/image/HippyDrawable:mBitmap	Landroid/graphics/Bitmap;
-    //   30: aload_3
-    //   31: ifnull +7 -> 38
-    //   34: aload_3
-    //   35: invokevirtual 64	java/io/FileInputStream:close	()V
-    //   38: return
-    //   39: aload_3
-    //   40: astore_1
-    //   41: aload_0
-    //   42: aload_3
-    //   43: invokestatic 81	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
-    //   46: putfield 23	com/tencent/mtt/hippy/adapter/image/HippyDrawable:mBitmap	Landroid/graphics/Bitmap;
-    //   49: aload_3
-    //   50: astore_1
-    //   51: aload_0
-    //   52: aconst_null
-    //   53: putfield 33	com/tencent/mtt/hippy/adapter/image/HippyDrawable:mGifMovie	Landroid/graphics/Movie;
-    //   56: goto -26 -> 30
+    //   0: aconst_null
+    //   1: astore 5
+    //   3: aconst_null
+    //   4: astore 6
+    //   6: aconst_null
+    //   7: astore_3
+    //   8: new 48	java/io/FileInputStream
+    //   11: dup
+    //   12: aload_1
+    //   13: invokespecial 50	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   16: astore_1
+    //   17: iload_2
+    //   18: ifeq +19 -> 37
+    //   21: aload_0
+    //   22: aload_1
+    //   23: invokestatic 76	android/graphics/Movie:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Movie;
+    //   26: putfield 33	com/tencent/mtt/hippy/adapter/image/HippyDrawable:mGifMovie	Landroid/graphics/Movie;
+    //   29: aload_0
+    //   30: aconst_null
+    //   31: putfield 23	com/tencent/mtt/hippy/adapter/image/HippyDrawable:mBitmap	Landroid/graphics/Bitmap;
+    //   34: goto +16 -> 50
+    //   37: aload_0
+    //   38: aload_1
+    //   39: invokestatic 81	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
+    //   42: putfield 23	com/tencent/mtt/hippy/adapter/image/HippyDrawable:mBitmap	Landroid/graphics/Bitmap;
+    //   45: aload_0
+    //   46: aconst_null
+    //   47: putfield 33	com/tencent/mtt/hippy/adapter/image/HippyDrawable:mGifMovie	Landroid/graphics/Movie;
+    //   50: aload_1
+    //   51: invokevirtual 64	java/io/FileInputStream:close	()V
+    //   54: return
+    //   55: astore_3
+    //   56: goto +71 -> 127
     //   59: astore 4
-    //   61: aload_3
-    //   62: astore_1
-    //   63: aload 4
-    //   65: invokevirtual 82	java/lang/OutOfMemoryError:printStackTrace	()V
-    //   68: aload_3
-    //   69: ifnull -31 -> 38
-    //   72: aload_3
-    //   73: invokevirtual 64	java/io/FileInputStream:close	()V
-    //   76: return
-    //   77: astore_1
-    //   78: aload_1
-    //   79: invokevirtual 67	java/lang/Exception:printStackTrace	()V
-    //   82: return
+    //   61: goto +23 -> 84
+    //   64: astore 4
+    //   66: goto +39 -> 105
+    //   69: astore 4
+    //   71: aload_3
+    //   72: astore_1
+    //   73: aload 4
+    //   75: astore_3
+    //   76: goto +51 -> 127
+    //   79: astore 4
+    //   81: aload 5
     //   83: astore_1
     //   84: aload_1
-    //   85: invokevirtual 67	java/lang/Exception:printStackTrace	()V
-    //   88: return
-    //   89: astore 4
-    //   91: aconst_null
-    //   92: astore_3
-    //   93: aload_3
-    //   94: astore_1
-    //   95: aload 4
-    //   97: invokevirtual 67	java/lang/Exception:printStackTrace	()V
-    //   100: aload_3
-    //   101: ifnull -63 -> 38
-    //   104: aload_3
-    //   105: invokevirtual 64	java/io/FileInputStream:close	()V
-    //   108: return
-    //   109: astore_1
-    //   110: aload_1
-    //   111: invokevirtual 67	java/lang/Exception:printStackTrace	()V
-    //   114: return
-    //   115: astore_3
-    //   116: aconst_null
-    //   117: astore_1
-    //   118: aload_1
-    //   119: ifnull +7 -> 126
+    //   85: astore_3
+    //   86: aload 4
+    //   88: invokevirtual 67	java/lang/Exception:printStackTrace	()V
+    //   91: aload_1
+    //   92: ifnull +34 -> 126
+    //   95: aload_1
+    //   96: invokevirtual 64	java/io/FileInputStream:close	()V
+    //   99: return
+    //   100: astore 4
+    //   102: aload 6
+    //   104: astore_1
+    //   105: aload_1
+    //   106: astore_3
+    //   107: aload 4
+    //   109: invokevirtual 82	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   112: aload_1
+    //   113: ifnull +13 -> 126
+    //   116: aload_1
+    //   117: invokevirtual 64	java/io/FileInputStream:close	()V
+    //   120: return
+    //   121: astore_1
     //   122: aload_1
-    //   123: invokevirtual 64	java/io/FileInputStream:close	()V
-    //   126: aload_3
-    //   127: athrow
-    //   128: astore_1
-    //   129: aload_1
-    //   130: invokevirtual 67	java/lang/Exception:printStackTrace	()V
-    //   133: goto -7 -> 126
-    //   136: astore_3
-    //   137: goto -19 -> 118
-    //   140: astore 4
-    //   142: goto -49 -> 93
-    //   145: astore 4
-    //   147: aconst_null
-    //   148: astore_3
-    //   149: goto -88 -> 61
+    //   123: invokevirtual 67	java/lang/Exception:printStackTrace	()V
+    //   126: return
+    //   127: aload_1
+    //   128: ifnull +15 -> 143
+    //   131: aload_1
+    //   132: invokevirtual 64	java/io/FileInputStream:close	()V
+    //   135: goto +8 -> 143
+    //   138: astore_1
+    //   139: aload_1
+    //   140: invokevirtual 67	java/lang/Exception:printStackTrace	()V
+    //   143: aload_3
+    //   144: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	152	0	this	HippyDrawable
-    //   0	152	1	paramFile	File
-    //   0	152	2	paramBoolean	boolean
-    //   8	97	3	localFileInputStream	java.io.FileInputStream
-    //   115	12	3	localObject1	Object
-    //   136	1	3	localObject2	Object
-    //   148	1	3	localObject3	Object
-    //   59	5	4	localOutOfMemoryError1	OutOfMemoryError
-    //   89	7	4	localException1	Exception
-    //   140	1	4	localException2	Exception
-    //   145	1	4	localOutOfMemoryError2	OutOfMemoryError
+    //   0	145	0	this	HippyDrawable
+    //   0	145	1	paramFile	java.io.File
+    //   0	145	2	paramBoolean	boolean
+    //   7	1	3	localObject1	Object
+    //   55	17	3	localObject2	Object
+    //   75	69	3	localObject3	Object
+    //   59	1	4	localException1	Exception
+    //   64	1	4	localOutOfMemoryError1	OutOfMemoryError
+    //   69	5	4	localObject4	Object
+    //   79	8	4	localException2	Exception
+    //   100	8	4	localOutOfMemoryError2	OutOfMemoryError
+    //   1	81	5	localObject5	Object
+    //   4	99	6	localObject6	Object
     // Exception table:
     //   from	to	target	type
-    //   15	23	59	java/lang/OutOfMemoryError
-    //   25	30	59	java/lang/OutOfMemoryError
-    //   41	49	59	java/lang/OutOfMemoryError
-    //   51	56	59	java/lang/OutOfMemoryError
-    //   72	76	77	java/lang/Exception
-    //   34	38	83	java/lang/Exception
-    //   0	9	89	java/lang/Exception
-    //   104	108	109	java/lang/Exception
-    //   0	9	115	finally
-    //   122	126	128	java/lang/Exception
-    //   15	23	136	finally
-    //   25	30	136	finally
-    //   41	49	136	finally
-    //   51	56	136	finally
-    //   63	68	136	finally
-    //   95	100	136	finally
-    //   15	23	140	java/lang/Exception
-    //   25	30	140	java/lang/Exception
-    //   41	49	140	java/lang/Exception
-    //   51	56	140	java/lang/Exception
-    //   0	9	145	java/lang/OutOfMemoryError
+    //   21	34	55	finally
+    //   37	50	55	finally
+    //   21	34	59	java/lang/Exception
+    //   37	50	59	java/lang/Exception
+    //   21	34	64	java/lang/OutOfMemoryError
+    //   37	50	64	java/lang/OutOfMemoryError
+    //   8	17	69	finally
+    //   86	91	69	finally
+    //   107	112	69	finally
+    //   8	17	79	java/lang/Exception
+    //   8	17	100	java/lang/OutOfMemoryError
+    //   50	54	121	java/lang/Exception
+    //   95	99	121	java/lang/Exception
+    //   116	120	121	java/lang/Exception
+    //   131	135	138	java/lang/Exception
   }
   
+  /* Error */
   public void setData(String paramString)
   {
-    this.mSource = paramString;
-    if (this.mSource.startsWith("data:")) {}
-    for (;;)
-    {
-      try
-      {
-        int i = this.mSource.indexOf(";base64,");
-        if (i >= 0)
-        {
-          int j = ";base64,".length();
-          paramString = Base64.decode(this.mSource.substring(i + j), 0);
-          if (paramString != null) {
-            setData(paramString);
-          }
-        }
-        return;
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        return;
-      }
-      if (this.mSource.startsWith("file://"))
-      {
-        setData(new File(this.mSource.substring("file://".length())));
-        return;
-      }
-      if (this.mSource.startsWith("assets://"))
-      {
-        byte[] arrayOfByte = null;
-        Object localObject3 = null;
-        InputStream localInputStream = null;
-        Object localObject1 = arrayOfByte;
-        paramString = localObject3;
-        try
-        {
-          if (Build.VERSION.SDK_INT >= 28)
-          {
-            localObject1 = arrayOfByte;
-            paramString = localObject3;
-            setDataForTarge28Assets(this.mSource);
-          }
-          while (localInputStream != null)
-          {
-            try
-            {
-              localInputStream.close();
-              return;
-            }
-            catch (Exception paramString)
-            {
-              paramString.printStackTrace();
-              return;
-            }
-            localObject1 = arrayOfByte;
-            paramString = localObject3;
-            localInputStream = ContextHolder.getAppContext().getAssets().open(this.mSource.substring("assets://".length()));
-            localObject1 = localInputStream;
-            paramString = localInputStream;
-            arrayOfByte = new byte[localInputStream.available()];
-            localObject1 = localInputStream;
-            paramString = localInputStream;
-            localInputStream.read(arrayOfByte);
-            localObject1 = localInputStream;
-            paramString = localInputStream;
-            setData(arrayOfByte);
-          }
-        }
-        catch (Exception localException)
-        {
-          paramString = (String)localObject1;
-          localException.printStackTrace();
-          if (localObject1 != null) {
-            try
-            {
-              ((InputStream)localObject1).close();
-              return;
-            }
-            catch (Exception paramString)
-            {
-              paramString.printStackTrace();
-              return;
-            }
-          }
-        }
-        finally
-        {
-          if (paramString == null) {}
-        }
-      }
-    }
-    try
-    {
-      paramString.close();
-      throw localObject2;
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: aload_1
+    //   2: putfield 37	com/tencent/mtt/hippy/adapter/image/HippyDrawable:mSource	Ljava/lang/String;
+    //   5: aload_0
+    //   6: getfield 37	com/tencent/mtt/hippy/adapter/image/HippyDrawable:mSource	Ljava/lang/String;
+    //   9: ldc 85
+    //   11: invokevirtual 91	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   14: ifeq +49 -> 63
+    //   17: aload_0
+    //   18: getfield 37	com/tencent/mtt/hippy/adapter/image/HippyDrawable:mSource	Ljava/lang/String;
+    //   21: ldc 93
+    //   23: invokevirtual 97	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   26: istore_2
+    //   27: iload_2
+    //   28: iflt +238 -> 266
+    //   31: aload_0
+    //   32: getfield 37	com/tencent/mtt/hippy/adapter/image/HippyDrawable:mSource	Ljava/lang/String;
+    //   35: iload_2
+    //   36: bipush 8
+    //   38: iadd
+    //   39: invokevirtual 101	java/lang/String:substring	(I)Ljava/lang/String;
+    //   42: iconst_0
+    //   43: invokestatic 107	android/util/Base64:decode	(Ljava/lang/String;I)[B
+    //   46: astore_1
+    //   47: aload_1
+    //   48: ifnull +218 -> 266
+    //   51: aload_0
+    //   52: aload_1
+    //   53: invokevirtual 61	com/tencent/mtt/hippy/adapter/image/HippyDrawable:setData	([B)V
+    //   56: return
+    //   57: astore_1
+    //   58: aload_1
+    //   59: invokevirtual 67	java/lang/Exception:printStackTrace	()V
+    //   62: return
+    //   63: aload_0
+    //   64: getfield 37	com/tencent/mtt/hippy/adapter/image/HippyDrawable:mSource	Ljava/lang/String;
+    //   67: ldc 109
+    //   69: invokevirtual 91	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   72: ifeq +24 -> 96
+    //   75: aload_0
+    //   76: new 111	java/io/File
+    //   79: dup
+    //   80: aload_0
+    //   81: getfield 37	com/tencent/mtt/hippy/adapter/image/HippyDrawable:mSource	Ljava/lang/String;
+    //   84: bipush 7
+    //   86: invokevirtual 101	java/lang/String:substring	(I)Ljava/lang/String;
+    //   89: invokespecial 113	java/io/File:<init>	(Ljava/lang/String;)V
+    //   92: invokevirtual 115	com/tencent/mtt/hippy/adapter/image/HippyDrawable:setData	(Ljava/io/File;)V
+    //   95: return
+    //   96: aload_0
+    //   97: getfield 37	com/tencent/mtt/hippy/adapter/image/HippyDrawable:mSource	Ljava/lang/String;
+    //   100: ldc 117
+    //   102: invokevirtual 91	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   105: ifeq +161 -> 266
+    //   108: aconst_null
+    //   109: astore 5
+    //   111: aconst_null
+    //   112: astore 6
+    //   114: aconst_null
+    //   115: astore 4
+    //   117: aload 5
+    //   119: astore_1
+    //   120: aload 6
+    //   122: astore_3
+    //   123: getstatic 123	android/os/Build$VERSION:SDK_INT	I
+    //   126: bipush 28
+    //   128: if_icmplt +20 -> 148
+    //   131: aload 5
+    //   133: astore_1
+    //   134: aload 6
+    //   136: astore_3
+    //   137: aload_0
+    //   138: aload_0
+    //   139: getfield 37	com/tencent/mtt/hippy/adapter/image/HippyDrawable:mSource	Ljava/lang/String;
+    //   142: invokevirtual 126	com/tencent/mtt/hippy/adapter/image/HippyDrawable:setDataForTarge28Assets	(Ljava/lang/String;)V
+    //   145: goto +70 -> 215
+    //   148: aload 5
+    //   150: astore_1
+    //   151: aload 6
+    //   153: astore_3
+    //   154: invokestatic 132	com/tencent/mtt/hippy/utils/ContextHolder:getAppContext	()Landroid/content/Context;
+    //   157: invokevirtual 138	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   160: aload_0
+    //   161: getfield 37	com/tencent/mtt/hippy/adapter/image/HippyDrawable:mSource	Ljava/lang/String;
+    //   164: bipush 9
+    //   166: invokevirtual 101	java/lang/String:substring	(I)Ljava/lang/String;
+    //   169: invokevirtual 144	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   172: astore 4
+    //   174: aload 4
+    //   176: astore_1
+    //   177: aload 4
+    //   179: astore_3
+    //   180: aload 4
+    //   182: invokevirtual 147	java/io/InputStream:available	()I
+    //   185: newarray byte
+    //   187: astore 5
+    //   189: aload 4
+    //   191: astore_1
+    //   192: aload 4
+    //   194: astore_3
+    //   195: aload 4
+    //   197: aload 5
+    //   199: invokevirtual 148	java/io/InputStream:read	([B)I
+    //   202: pop
+    //   203: aload 4
+    //   205: astore_1
+    //   206: aload 4
+    //   208: astore_3
+    //   209: aload_0
+    //   210: aload 5
+    //   212: invokevirtual 61	com/tencent/mtt/hippy/adapter/image/HippyDrawable:setData	([B)V
+    //   215: aload 4
+    //   217: ifnull +49 -> 266
+    //   220: aload 4
+    //   222: invokevirtual 149	java/io/InputStream:close	()V
+    //   225: return
+    //   226: astore_3
+    //   227: goto +21 -> 248
+    //   230: astore 4
+    //   232: aload_3
+    //   233: astore_1
+    //   234: aload 4
+    //   236: invokevirtual 67	java/lang/Exception:printStackTrace	()V
+    //   239: aload_3
+    //   240: ifnull +26 -> 266
+    //   243: aload_3
+    //   244: invokevirtual 149	java/io/InputStream:close	()V
+    //   247: return
+    //   248: aload_1
+    //   249: ifnull +15 -> 264
+    //   252: aload_1
+    //   253: invokevirtual 149	java/io/InputStream:close	()V
+    //   256: goto +8 -> 264
+    //   259: astore_1
+    //   260: aload_1
+    //   261: invokevirtual 67	java/lang/Exception:printStackTrace	()V
+    //   264: aload_3
+    //   265: athrow
+    //   266: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	267	0	this	HippyDrawable
+    //   0	267	1	paramString	String
+    //   26	13	2	i	int
+    //   122	87	3	localObject1	Object
+    //   226	39	3	localObject2	Object
+    //   115	106	4	localInputStream	java.io.InputStream
+    //   230	5	4	localException	Exception
+    //   109	102	5	arrayOfByte	byte[]
+    //   112	40	6	localObject3	Object
+    // Exception table:
+    //   from	to	target	type
+    //   17	27	57	java/lang/Exception
+    //   31	47	57	java/lang/Exception
+    //   51	56	57	java/lang/Exception
+    //   220	225	57	java/lang/Exception
+    //   243	247	57	java/lang/Exception
+    //   123	131	226	finally
+    //   137	145	226	finally
+    //   154	174	226	finally
+    //   180	189	226	finally
+    //   195	203	226	finally
+    //   209	215	226	finally
+    //   234	239	226	finally
+    //   123	131	230	java/lang/Exception
+    //   137	145	230	java/lang/Exception
+    //   154	174	230	java/lang/Exception
+    //   180	189	230	java/lang/Exception
+    //   195	203	230	java/lang/Exception
+    //   209	215	230	java/lang/Exception
+    //   252	256	259	java/lang/Exception
   }
   
   public void setData(byte[] paramArrayOfByte)
@@ -409,12 +454,12 @@ public class HippyDrawable
       this.mBitmap = null;
       return;
     }
-    catch (OutOfMemoryError paramArrayOfByte)
+    catch (Exception paramArrayOfByte)
     {
       paramArrayOfByte.printStackTrace();
       return;
     }
-    catch (Exception paramArrayOfByte)
+    catch (OutOfMemoryError paramArrayOfByte)
     {
       paramArrayOfByte.printStackTrace();
     }
@@ -422,15 +467,16 @@ public class HippyDrawable
   
   public void setDataForTarge28Assets(String paramString)
   {
-    if (Build.VERSION.SDK_INT >= 28) {}
-    try
-    {
-      this.mBitmap = ImageDecoder.decodeBitmap(ImageDecoder.createSource(ContextHolder.getAppContext().getAssets(), paramString.substring("assets://".length())));
-      return;
-    }
-    catch (IOException paramString)
-    {
-      paramString.printStackTrace();
+    if (Build.VERSION.SDK_INT >= 28) {
+      try
+      {
+        this.mBitmap = ImageDecoder.decodeBitmap(ImageDecoder.createSource(ContextHolder.getAppContext().getAssets(), paramString.substring(9)));
+        return;
+      }
+      catch (IOException paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
   }
   
@@ -441,7 +487,7 @@ public class HippyDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.adapter.image.HippyDrawable
  * JD-Core Version:    0.7.0.1
  */

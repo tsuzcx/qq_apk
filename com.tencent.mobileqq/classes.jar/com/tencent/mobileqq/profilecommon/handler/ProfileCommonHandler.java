@@ -28,95 +28,103 @@ public class ProfileCommonHandler
   
   private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    boolean bool = paramFromServiceMsg.isSuccess();
-    int j = paramFromServiceMsg.getResultCode();
-    paramFromServiceMsg = null;
-    if (bool)
+    boolean bool2 = paramFromServiceMsg.isSuccess();
+    int k = paramFromServiceMsg.getResultCode();
+    Object localObject = null;
+    boolean bool1 = bool2;
+    paramFromServiceMsg = localObject;
+    int j = k;
+    int i;
+    if (bool2) {
+      i = k;
+    }
+    for (;;)
     {
-      i = j;
       try
       {
         paramObject = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])paramObject);
-        i = j;
-        j = paramObject.uint32_result.get();
-        if (j == 0)
+        i = k;
+        k = paramObject.uint32_result.get();
+        if (k != 0) {
+          break label289;
+        }
+        bool2 = true;
+        bool1 = bool2;
+        paramFromServiceMsg = localObject;
+        j = k;
+        if (bool2)
         {
-          bool = true;
-          if (!bool) {
-            break label238;
+          i = k;
+          bool1 = bool2;
+          paramFromServiceMsg = localObject;
+          j = k;
+          if (paramObject.bytes_bodybuffer.has())
+          {
+            i = k;
+            oidb_0x5eb.RspBody localRspBody = new oidb_0x5eb.RspBody();
+            i = k;
+            localRspBody.mergeFrom(paramObject.bytes_bodybuffer.get().toByteArray());
+            i = k;
+            bool1 = bool2;
+            paramFromServiceMsg = localObject;
+            j = k;
+            if (localRspBody.rpt_msg_uin_data.size() > 0)
+            {
+              i = k;
+              paramFromServiceMsg = (oidb_0x5eb.UdcUinData)localRspBody.rpt_msg_uin_data.get(0);
+              bool1 = bool2;
+              j = k;
+            }
           }
-          i = j;
-          if (!paramObject.bytes_bodybuffer.has()) {
-            break label238;
-          }
-          i = j;
-          oidb_0x5eb.RspBody localRspBody = new oidb_0x5eb.RspBody();
-          i = j;
-          localRspBody.mergeFrom(paramObject.bytes_bodybuffer.get().toByteArray());
-          i = j;
-          if (localRspBody.rpt_msg_uin_data.size() <= 0) {
-            break label238;
-          }
-          i = j;
-          paramObject = (oidb_0x5eb.UdcUinData)localRspBody.rpt_msg_uin_data.get(0);
-          paramFromServiceMsg = paramObject;
         }
       }
-      catch (Exception paramObject)
+      catch (Exception paramFromServiceMsg)
       {
-        for (;;)
-        {
-          QLog.e("ProfileCommonHandler", 1, "handleGetProfileInfo fail.", paramObject);
-          bool = false;
-          continue;
-          label238:
-          paramFromServiceMsg = null;
-        }
+        QLog.e("ProfileCommonHandler", 1, "handleGetProfileInfo fail.", paramFromServiceMsg);
+        bool1 = false;
+        j = i;
+        paramFromServiceMsg = localObject;
       }
-    }
-    for (int i = j;; i = j)
-    {
       if (QLog.isColorLevel()) {
-        QLog.d("ProfileCommonHandler", 2, String.format("handleGetProfileInfo success=%s resultCode=%s udcUinData=%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), paramFromServiceMsg }));
+        QLog.d("ProfileCommonHandler", 2, String.format("handleGetProfileInfo success=%s resultCode=%s udcUinData=%s", new Object[] { Boolean.valueOf(bool1), Integer.valueOf(j), paramFromServiceMsg }));
       }
       paramToServiceMsg = paramToServiceMsg.extraData;
-      ProfileCommonServiceImpl.getProfileCommonService(this.appRuntime).responseGetProfileDetail(paramToServiceMsg, bool, paramFromServiceMsg);
+      ProfileCommonServiceImpl.getProfileCommonService(this.appRuntime).responseGetProfileDetail(paramToServiceMsg, bool1, paramFromServiceMsg);
       return;
-      bool = false;
-      break;
+      label289:
+      bool2 = false;
     }
   }
   
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    boolean bool = paramFromServiceMsg.isSuccess();
-    int i = paramFromServiceMsg.getResultCode();
-    if (bool) {}
-    for (;;)
-    {
+    boolean bool2 = paramFromServiceMsg.isSuccess();
+    int j = paramFromServiceMsg.getResultCode();
+    boolean bool1 = bool2;
+    int i = j;
+    if (bool2) {
       try
       {
-        int j = ((oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])paramObject)).uint32_result.get();
-        if (j != 0) {
-          continue;
+        int k = ((oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])paramObject)).uint32_result.get();
+        i = k;
+        if (k == 0)
+        {
+          bool1 = true;
+          i = k;
         }
-        bool = true;
-        i = j;
       }
       catch (Exception paramFromServiceMsg)
       {
         QLog.e("ProfileCommonHandler", 1, "handleSetProfileInfo fail.", paramFromServiceMsg);
-        bool = false;
-        continue;
+        i = j;
+        bool1 = false;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileCommonHandler", 2, String.format("handleSetProfileInfo success=%s resultCode=%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) }));
-      }
-      paramToServiceMsg = paramToServiceMsg.extraData;
-      ProfileCommonServiceImpl.getProfileCommonService(this.appRuntime).responseSetProfileDetail(paramToServiceMsg, bool);
-      return;
-      bool = false;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCommonHandler", 2, String.format("handleSetProfileInfo success=%s resultCode=%s", new Object[] { Boolean.valueOf(bool1), Integer.valueOf(i) }));
+    }
+    paramToServiceMsg = paramToServiceMsg.extraData;
+    ProfileCommonServiceImpl.getProfileCommonService(this.appRuntime).responseSetProfileDetail(paramToServiceMsg, bool1);
   }
   
   public Set<String> getCommandList()
@@ -130,7 +138,7 @@ public class ProfileCommonHandler
     return this.allowCmdSet;
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return ProfileCommonObserver.class;
   }
@@ -138,22 +146,22 @@ public class ProfileCommonHandler
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     String str = paramFromServiceMsg.getServiceCmd();
-    if (msgCmdFilter(str)) {}
-    do
-    {
+    if (msgCmdFilter(str)) {
       return;
-      if ("OidbSvc.0x5eb_common".equals(str))
-      {
-        a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-    } while (!"OidbSvc.0x587_common".equals(str));
-    b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
+    if ("OidbSvc.0x5eb_common".equals(str))
+    {
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if ("OidbSvc.0x587_common".equals(str)) {
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecommon.handler.ProfileCommonHandler
  * JD-Core Version:    0.7.0.1
  */

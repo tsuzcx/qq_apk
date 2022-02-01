@@ -72,7 +72,7 @@ public class GdtVideoData
   
   public boolean isValid()
   {
-    return !TextUtils.isEmpty(getUrl());
+    return TextUtils.isEmpty(getUrl()) ^ true;
   }
   
   public boolean isVolumOpen()
@@ -136,19 +136,18 @@ public class GdtVideoData
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      if (paramString.startsWith("https")) {
+      if (paramString.startsWith("https"))
+      {
         this.url = paramString.replaceFirst("https", "http");
+        return;
       }
+      if (paramString.startsWith("HTTPS"))
+      {
+        this.url = paramString.replaceFirst("HTTPS", "http");
+        return;
+      }
+      this.url = paramString;
     }
-    else {
-      return;
-    }
-    if (paramString.startsWith("HTTPS"))
-    {
-      this.url = paramString.replaceFirst("HTTPS", "http");
-      return;
-    }
-    this.url = paramString;
   }
   
   public void setVideoDefaultBackgroundColor(int paramInt)
@@ -163,7 +162,7 @@ public class GdtVideoData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.views.video.GdtVideoData
  * JD-Core Version:    0.7.0.1
  */

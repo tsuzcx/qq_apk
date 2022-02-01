@@ -19,10 +19,12 @@ public class DressDescriptionItem
   public int compareTo(Object paramObject)
   {
     paramObject = (DressDescriptionItem)paramObject;
-    if (this.d < paramObject.d) {
+    int k = this.d;
+    int m = paramObject.d;
+    if (k < m) {
       return 1;
     }
-    if (this.d > paramObject.d) {
+    if (k > m) {
       return -1;
     }
     return 0;
@@ -30,7 +32,7 @@ public class DressDescriptionItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.DressDescriptionItem
  * JD-Core Version:    0.7.0.1
  */

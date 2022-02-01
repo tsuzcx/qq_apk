@@ -48,26 +48,26 @@ public class CapsuleButtonClickListener
   public void onMoreClick()
   {
     QMLog.i("CapsuleButton", "on more click");
-    if (TextUtils.isEmpty(LoginManager.getInstance().getAccount())) {
-      QMLog.e("CapsuleButton", "uin is empty, not show MoreClick. ");
-    }
-    do
+    if (TextUtils.isEmpty(LoginManager.getInstance().getAccount()))
     {
+      QMLog.e("CapsuleButton", "uin is empty, not show MoreClick. ");
       return;
-      ShareState localShareState = GetShareState.obtain(this.mMiniAppContext);
-      if (localShareState != null)
-      {
-        localShareState.launchFrom = 0;
-        localShareState.stagingJsonParams = null;
-      }
-      this.mShareProxy.showSharePanel(this.mMiniAppContext);
-    } while (this.mMiniAppContext.getMiniAppInfo() == null);
-    ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).onCapsuleButtonMoreClick(this.mMiniAppContext);
+    }
+    ShareState localShareState = GetShareState.obtain(this.mMiniAppContext);
+    if (localShareState != null)
+    {
+      localShareState.launchFrom = 0;
+      localShareState.stagingJsonParams = null;
+    }
+    this.mShareProxy.showSharePanel(this.mMiniAppContext);
+    if (this.mMiniAppContext.getMiniAppInfo() != null) {
+      ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).onCapsuleButtonMoreClick(this.mMiniAppContext);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.CapsuleButtonClickListener
  * JD-Core Version:    0.7.0.1
  */

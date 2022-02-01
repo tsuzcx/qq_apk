@@ -18,12 +18,13 @@ public final class Oidb_0x7e7$PlatformInfo
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "os_name", "build_no", "pub_no" }, new Object[] { localByteStringMicro, Long.valueOf(0L), Long.valueOf(0L) }, PlatformInfo.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "os_name", "build_no", "pub_no" }, new Object[] { localByteStringMicro, localLong, localLong }, PlatformInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x7e7.Oidb_0x7e7.PlatformInfo
  * JD-Core Version:    0.7.0.1
  */

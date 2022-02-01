@@ -9,28 +9,33 @@ public class ProcessUtil
   public static String a()
   {
     Activity localActivity = Foreground.getTopActivity();
-    String str;
     if (localActivity != null)
     {
-      str = localActivity.getClass().getName();
+      String str = localActivity.getClass().getName();
+      Object localObject = str;
       if ((localActivity instanceof SplashActivity))
       {
-        if (SplashActivity.currentFragment == 1) {
-          return str + "_" + ((SplashActivity)localActivity).getCurrentTab();
+        if (SplashActivity.currentFragment == 1)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append("_");
+          ((StringBuilder)localObject).append(((SplashActivity)localActivity).getCurrentTab());
+          return ((StringBuilder)localObject).toString();
         }
-        return str + "_ChatFragment";
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append("_ChatFragment");
+        localObject = ((StringBuilder)localObject).toString();
       }
+      return localObject;
     }
-    else
-    {
-      return "Null";
-    }
-    return str;
+    return "Null";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ProcessUtil
  * JD-Core Version:    0.7.0.1
  */

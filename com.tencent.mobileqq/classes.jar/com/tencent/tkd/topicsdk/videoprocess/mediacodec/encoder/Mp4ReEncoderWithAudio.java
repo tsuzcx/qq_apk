@@ -12,17 +12,30 @@ public class Mp4ReEncoderWithAudio
   
   public boolean a()
   {
-    boolean bool2 = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWVideoRecorder.a();
-    if ((this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWAudioRecoder == null) || (this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWAudioRecoder.a())) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      TLog.b("Mp4ReEncoderWithAudio", "startEncode," + bool2 + " " + bool1);
-      if ((!bool2) || (!bool1)) {
-        break;
-      }
-      return true;
+    boolean bool4 = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWVideoRecorder.a();
+    Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWAudioRecoder;
+    boolean bool3 = false;
+    boolean bool1;
+    if ((localObject != null) && (!((HWAudioRecoder)localObject).a())) {
+      bool1 = false;
+    } else {
+      bool1 = true;
     }
-    return false;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("startEncode,");
+    ((StringBuilder)localObject).append(bool4);
+    ((StringBuilder)localObject).append(" ");
+    ((StringBuilder)localObject).append(bool1);
+    TLog.b("Mp4ReEncoderWithAudio", ((StringBuilder)localObject).toString());
+    boolean bool2 = bool3;
+    if (bool4)
+    {
+      bool2 = bool3;
+      if (bool1) {
+        bool2 = true;
+      }
+    }
+    return bool2;
   }
   
   public void b()
@@ -30,10 +43,11 @@ public class Mp4ReEncoderWithAudio
     super.b();
     try
     {
-      if (this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWAudioRecoder != null) {
+      if (this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWAudioRecoder != null)
+      {
         this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWAudioRecoder.a();
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -44,14 +58,15 @@ public class Mp4ReEncoderWithAudio
   public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
     super.onFrameAvailable(paramSurfaceTexture);
-    if (this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWAudioRecoder != null) {
-      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWAudioRecoder.b();
+    paramSurfaceTexture = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWAudioRecoder;
+    if (paramSurfaceTexture != null) {
+      paramSurfaceTexture.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.mediacodec.encoder.Mp4ReEncoderWithAudio
  * JD-Core Version:    0.7.0.1
  */

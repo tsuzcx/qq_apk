@@ -11,38 +11,32 @@ class MemoryDayView$1
   
   public void a(View paramView, IntimateInfo.MemoryDayInfo paramMemoryDayInfo)
   {
-    int j;
-    int i;
     if (MemoryDayView.a(this.a) != null)
     {
-      j = MemoryDayView.a(this.a).getChildCount();
-      if (j > 0) {
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      if (i < j)
+      int j = MemoryDayView.a(this.a).getChildCount();
+      if (j > 0)
       {
-        paramView = MemoryDayView.a(this.a).getChildAt(i).getTag();
-        if (((paramView instanceof IntimateInfo.MemoryDayInfo)) && (((IntimateInfo.MemoryDayInfo)paramView).dateType == paramMemoryDayInfo.dateType)) {
-          MemoryDayView.a(this.a).removeViewAt(i);
+        int i = 0;
+        while (i < j)
+        {
+          paramView = MemoryDayView.a(this.a).getChildAt(i).getTag();
+          if (((paramView instanceof IntimateInfo.MemoryDayInfo)) && (((IntimateInfo.MemoryDayInfo)paramView).dateType == paramMemoryDayInfo.dateType))
+          {
+            MemoryDayView.a(this.a).removeViewAt(i);
+            break;
+          }
+          i += 1;
         }
       }
-      else
-      {
-        if (MemoryDayView.a(this.a).getChildCount() <= 0) {
-          MemoryDayView.a(this.a).setVisibility(8);
-        }
-        return;
+      if (MemoryDayView.a(this.a).getChildCount() <= 0) {
+        MemoryDayView.a(this.a).setVisibility(8);
       }
-      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.MemoryDayView.1
  * JD-Core Version:    0.7.0.1
  */

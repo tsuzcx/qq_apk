@@ -17,7 +17,7 @@ import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.security.InvalidParameterException;
 import java.text.DateFormatSymbols;
@@ -28,10 +28,10 @@ import java.util.HashMap;
 public class SimpleMonthView
   extends View
 {
-  protected static int a;
-  protected static int b;
-  protected static int c;
-  protected static int d;
+  protected static int a = 32;
+  protected static int b = 0;
+  protected static int c = 1;
+  protected static int d = 0;
   protected static int e = 10;
   protected static int f;
   protected static int g;
@@ -94,12 +94,6 @@ public class SimpleMonthView
   protected int y = 7;
   protected int z = this.y;
   
-  static
-  {
-    jdField_a_of_type_Int = 32;
-    jdField_c_of_type_Int = 1;
-  }
-  
   public SimpleMonthView(Context paramContext, TypedArray paramTypedArray)
   {
     super(paramContext);
@@ -143,11 +137,15 @@ public class SimpleMonthView
   private int a()
   {
     int i1 = b();
-    int i2 = (this.z + i1) / this.y;
-    if ((i1 + this.z) % this.y > 0) {}
-    for (i1 = 1;; i1 = 0) {
-      return i1 + i2;
+    int i3 = this.z;
+    int i4 = this.y;
+    int i2 = (i1 + i3) / i4;
+    if ((i1 + i3) % i4 > 0) {
+      i1 = 1;
+    } else {
+      i1 = 0;
     }
+    return i2 + i1;
   }
   
   private String a()
@@ -158,28 +156,24 @@ public class SimpleMonthView
   
   private void a(CalendarDay paramCalendarDay)
   {
-    int i1;
-    MessageRecord localMessageRecord;
     if ((this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerSimpleMonthView$OnDayClickListener != null) && (this.jdField_a_of_type_JavaUtilArrayList != null) && ((this.jdField_b_of_type_JavaLangBoolean.booleanValue()) || (paramCalendarDay.month != this.jdField_a_of_type_AndroidTextFormatTime.month) || (paramCalendarDay.year != this.jdField_a_of_type_AndroidTextFormatTime.year) || (paramCalendarDay.day >= this.jdField_a_of_type_AndroidTextFormatTime.monthDay)))
     {
-      i1 = 0;
-      if (i1 >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
-        break label136;
+      Object localObject2 = null;
+      int i1 = 0;
+      Object localObject1;
+      for (;;)
+      {
+        localObject1 = localObject2;
+        if (i1 >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+          break;
+        }
+        localObject1 = (MessageRecord)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+        if (new CalendarDay(((MessageRecord)localObject1).time * 1000L).day == paramCalendarDay.day) {
+          break;
+        }
+        i1 += 1;
       }
-      localMessageRecord = (MessageRecord)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-      if (new CalendarDay(localMessageRecord.time * 1000L).day != paramCalendarDay.day) {
-        break label129;
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerSimpleMonthView$OnDayClickListener.a(this, paramCalendarDay, localMessageRecord);
-      return;
-      label129:
-      i1 += 1;
-      break;
-      label136:
-      localMessageRecord = null;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerSimpleMonthView$OnDayClickListener.a(this, paramCalendarDay, localObject1);
     }
   }
   
@@ -190,35 +184,51 @@ public class SimpleMonthView
   
   private int b()
   {
-    if (this.R < this.x) {}
-    for (int i1 = this.R + this.y;; i1 = this.R) {
-      return i1 - this.x;
+    int i2 = this.R;
+    int i1 = i2;
+    if (i2 < this.x) {
+      i1 = i2 + this.y;
     }
+    return i1 - this.x;
   }
   
   private void b(Canvas paramCanvas)
   {
-    int i1 = ((this.C - this.i * 2) / this.y - f) / 2;
-    int i4 = h + this.P;
-    paramCanvas.drawText(a(), i1, i4, this.jdField_c_of_type_AndroidGraphicsPaint);
-    int i2 = this.C;
+    int i2 = ((this.C - this.i * 2) / this.y - f) / 2;
+    int i1 = h + this.P;
+    String str = a();
+    float f1 = i2;
+    paramCanvas.drawText(str, f1, i1, this.jdField_c_of_type_AndroidGraphicsPaint);
+    i2 = this.C;
     int i3 = this.i;
-    i4 = i4 + this.O + 6;
+    int i4 = this.O;
     this.jdField_b_of_type_AndroidGraphicsPaint.setColor(-2171170);
-    paramCanvas.drawLine(i1, i4, i3 * 2 + i2, i4, this.jdField_b_of_type_AndroidGraphicsPaint);
+    float f2 = i1 + i4 + 6;
+    paramCanvas.drawLine(f1, f2, i2 + i3 * 2, f2, this.jdField_b_of_type_AndroidGraphicsPaint);
   }
   
   public CalendarDay a(float paramFloat1, float paramFloat2)
   {
     int i1 = this.i;
-    if ((paramFloat1 < i1) || (paramFloat1 > this.C - this.i)) {}
-    do
+    float f1 = i1;
+    if (paramFloat1 >= f1)
     {
-      return null;
-      int i2 = (int)(paramFloat2 - g) / this.B;
-      i1 = (int)((paramFloat1 - i1) * this.y / (this.C - i1 - this.i)) - b() + 1 + i2 * this.y;
-    } while ((this.A > 11) || (this.A < 0) || (CalendarDay.getDaysInMonth(this.D, this.A) < i1) || (i1 < 1));
-    return new CalendarDay(this.D, this.A, i1);
+      int i2 = this.C;
+      if (paramFloat1 > i2 - i1) {
+        return null;
+      }
+      int i3 = (int)(paramFloat2 - g) / this.B;
+      i1 = (int)((paramFloat1 - f1) * this.y / (i2 - i1 - i1)) - b() + 1 + i3 * this.y;
+      i2 = this.A;
+      if ((i2 <= 11) && (i2 >= 0) && (CalendarDay.getDaysInMonth(this.D, i2) >= i1))
+      {
+        if (i1 < 1) {
+          return null;
+        }
+        return new CalendarDay(this.D, this.A, i1);
+      }
+    }
+    return null;
   }
   
   protected void a()
@@ -255,171 +265,147 @@ public class SimpleMonthView
   
   protected void a(Canvas paramCanvas)
   {
-    int i2 = (this.B + jdField_d_of_type_Int) / 2 - jdField_c_of_type_Int + g;
+    int i3 = (this.B + jdField_d_of_type_Int) / 2;
+    int i4 = jdField_c_of_type_Int;
+    int i6 = g;
     int i8 = (this.C - this.i * 2) / (this.y * 2);
-    int i6 = b();
+    int i5 = b();
     int i1;
-    int i4;
-    label88:
-    int i5;
-    label91:
-    label107:
-    Object localObject;
-    int i3;
-    if ((this.D == this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.year) && (this.A == this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.month))
-    {
+    if ((this.D == this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.year) && (this.A == this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.month)) {
       i1 = 1;
-      if (i1 == 0) {
-        break label622;
-      }
-      i4 = this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.day;
-      i5 = 1;
-      if (i5 > i4) {
-        break label841;
-      }
-      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-        break label856;
-      }
+    } else {
       i1 = 0;
-      if (i1 >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
-        break label856;
-      }
-      localObject = (MessageRecord)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-      if (new CalendarDay(((MessageRecord)localObject).time * 1000L).day != i5) {
-        break label631;
-      }
-      if (!QLog.isColorLevel()) {
-        break label850;
-      }
-      QLog.d("DatePickerView", 2, "hasMessage : " + this.D + "-" + (this.A + 1) + "-" + i5 + " , MessageRecord:" + localObject);
-      i3 = 1;
     }
-    for (;;)
+    int i2;
+    if (i1 != 0) {
+      i2 = this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.day;
+    } else {
+      i2 = this.z;
+    }
+    i4 = i3 - i4 + i6;
+    i3 = 1;
+    while (i3 <= i2)
     {
-      int i9 = (i6 * 2 + 1) * i8 + this.i;
-      label274:
-      int i7;
-      if (this.S == i5)
+      Object localObject;
+      if (this.jdField_a_of_type_JavaUtilArrayList != null)
+      {
+        i1 = 0;
+        while (i1 < this.jdField_a_of_type_JavaUtilArrayList.size())
+        {
+          localObject = (MessageRecord)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+          if (new CalendarDay(((MessageRecord)localObject).time * 1000L).day == i3)
+          {
+            if (QLog.isColorLevel())
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("hasMessage : ");
+              localStringBuilder.append(this.D);
+              localStringBuilder.append("-");
+              localStringBuilder.append(this.A + 1);
+              localStringBuilder.append("-");
+              localStringBuilder.append(i3);
+              localStringBuilder.append(" , MessageRecord:");
+              localStringBuilder.append(localObject);
+              QLog.d("DatePickerView", 2, localStringBuilder.toString());
+            }
+            i6 = 1;
+            break label299;
+          }
+          i1 += 1;
+        }
+      }
+      i6 = 0;
+      label299:
+      int i9 = (i5 * 2 + 1) * i8 + this.i;
+      if (this.S == i3)
       {
         localObject = this.jdField_d_of_type_AndroidGraphicsPaint;
-        if (this.jdField_c_of_type_Boolean)
-        {
+        if (this.jdField_c_of_type_Boolean) {
           i1 = this.J;
-          ((Paint)localObject).setColor(i1);
-          paramCanvas.drawCircle(i9, i2 - jdField_d_of_type_Int / 3, jdField_b_of_type_Int, this.jdField_d_of_type_AndroidGraphicsPaint);
+        } else {
+          i1 = this.I;
         }
+        ((Paint)localObject).setColor(i1);
+        paramCanvas.drawCircle(i9, i4 - jdField_d_of_type_Int / 3, jdField_b_of_type_Int, this.jdField_d_of_type_AndroidGraphicsPaint);
+      }
+      int i7;
+      if (((this.A == this.s) && (this.q == i3) && (this.u == this.D)) || ((this.A == this.t) && (this.r == i3) && (this.v == this.D))) {
+        i7 = 1;
+      } else {
+        i7 = 0;
+      }
+      if (i7 != 0)
+      {
+        localObject = this.jdField_d_of_type_AndroidGraphicsPaint;
+        if (i6 != 0) {
+          i1 = this.p;
+        } else {
+          i1 = this.p & 0xFFFFFF | 0x7F000000;
+        }
+        ((Paint)localObject).setColor(i1);
+        if (this.jdField_a_of_type_JavaLangBoolean.booleanValue())
+        {
+          i1 = jdField_b_of_type_Int;
+          float f1 = i9 - i1;
+          int i10 = jdField_d_of_type_Int;
+          paramCanvas.drawRoundRect(new RectF(f1, i4 - i10 / 3 - i1, i9 + i1, i4 - i10 / 3 + i1), 10.0F, 10.0F, this.jdField_d_of_type_AndroidGraphicsPaint);
+        }
+        else
+        {
+          paramCanvas.drawCircle(i9, i4 - jdField_d_of_type_Int / 3, jdField_b_of_type_Int, this.jdField_d_of_type_AndroidGraphicsPaint);
+        }
+      }
+      if ((this.jdField_a_of_type_Boolean) && (this.w == i3))
+      {
+        this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.j);
+        if (i7 != 0)
+        {
+          if (i6 != 0) {
+            i1 = this.p;
+          } else {
+            i1 = this.p & 0xFFFFFF | 0x7F000000;
+          }
+        }
+        else if (i6 != 0) {
+          i1 = this.m;
+        } else {
+          i1 = this.H;
+        }
+        this.jdField_d_of_type_AndroidGraphicsPaint.setColor(i1);
+        paramCanvas.drawText(HardCodeUtil.a(2131714038), i9, jdField_b_of_type_Int + i4 + jdField_d_of_type_Int / 2, this.jdField_d_of_type_AndroidGraphicsPaint);
       }
       else
       {
-        if (((this.A != this.s) || (this.q != i5) || (this.u != this.D)) && ((this.A != this.t) || (this.r != i5) || (this.v != this.D))) {
-          break label646;
-        }
-        i7 = 1;
-        label368:
-        if (i7 != 0)
-        {
-          localObject = this.jdField_d_of_type_AndroidGraphicsPaint;
-          if (i3 == 0) {
-            break label652;
-          }
-          i1 = this.p;
-          ((Paint)localObject).setColor(i1);
-          if (!this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {
-            break label668;
-          }
-          paramCanvas.drawRoundRect(new RectF(i9 - jdField_b_of_type_Int, i2 - jdField_d_of_type_Int / 3 - jdField_b_of_type_Int, jdField_b_of_type_Int + i9, i2 - jdField_d_of_type_Int / 3 + jdField_b_of_type_Int), 10.0F, 10.0F, this.jdField_d_of_type_AndroidGraphicsPaint);
-        }
-        label389:
-        label462:
-        if ((!this.jdField_a_of_type_Boolean) || (this.w != i5)) {
-          break label731;
-        }
-        this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.j);
-        if (i7 == 0) {
-          break label710;
-        }
-        if (i3 == 0) {
-          break label694;
-        }
-        i1 = this.p;
-        label504:
-        this.jdField_d_of_type_AndroidGraphicsPaint.setColor(i1);
-        paramCanvas.drawText(HardCodeUtil.a(2131714109), i9, jdField_b_of_type_Int + i2 + jdField_d_of_type_Int / 2, this.jdField_d_of_type_AndroidGraphicsPaint);
-        label541:
-        if (i7 == 0) {
-          break label745;
-        }
-        this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.n);
-        label557:
-        paramCanvas.drawText(Integer.toString(i5), i9, i2, this.jdField_b_of_type_AndroidGraphicsPaint);
-        i3 = i6 + 1;
-        if (i3 != this.y) {
-          break label842;
-        }
-        i3 = 0;
-        i1 = this.B + i2;
-      }
-      for (i2 = i3;; i2 = i3)
-      {
-        i5 += 1;
-        i6 = i2;
-        i2 = i1;
-        break label91;
-        i1 = 0;
-        break;
-        label622:
-        i4 = this.z;
-        break label88;
-        label631:
-        i1 += 1;
-        break label107;
-        i1 = this.I;
-        break label274;
-        label646:
-        i7 = 0;
-        break label368;
-        label652:
-        i1 = this.p & 0xFFFFFF | 0x7F000000;
-        break label389;
-        label668:
-        paramCanvas.drawCircle(i9, i2 - jdField_d_of_type_Int / 3, jdField_b_of_type_Int, this.jdField_d_of_type_AndroidGraphicsPaint);
-        break label462;
-        label694:
-        i1 = this.p & 0xFFFFFF | 0x7F000000;
-        break label504;
-        label710:
-        if (i3 != 0)
-        {
-          i1 = this.m;
-          break label504;
-        }
-        i1 = this.H;
-        break label504;
-        label731:
         this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.m);
-        break label541;
-        label745:
-        if (i3 == 0)
+      }
+      if (i7 != 0) {
+        this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.n);
+      }
+      for (;;)
+      {
+        break;
+        if (i6 == 0)
         {
           this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.H);
-          break label557;
         }
-        if ((this.jdField_b_of_type_JavaLangBoolean.booleanValue()) || (!a(i5, this.jdField_a_of_type_AndroidTextFormatTime)) || (this.jdField_a_of_type_AndroidTextFormatTime.month != this.A) || (this.jdField_a_of_type_AndroidTextFormatTime.year != this.D)) {
-          break label557;
+        else if ((!this.jdField_b_of_type_JavaLangBoolean.booleanValue()) && (a(i3, this.jdField_a_of_type_AndroidTextFormatTime)) && (this.jdField_a_of_type_AndroidTextFormatTime.month == this.A) && (this.jdField_a_of_type_AndroidTextFormatTime.year == this.D))
+        {
+          this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.o);
+          this.jdField_b_of_type_AndroidGraphicsPaint.setTypeface(Typeface.defaultFromStyle(2));
         }
-        this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.o);
-        this.jdField_b_of_type_AndroidGraphicsPaint.setTypeface(Typeface.defaultFromStyle(2));
-        break label557;
-        label841:
-        return;
-        label842:
-        i1 = i2;
       }
-      label850:
-      i3 = 1;
-      continue;
-      label856:
-      i3 = 0;
+      paramCanvas.drawText(Integer.toString(i3), i9, i4, this.jdField_b_of_type_AndroidGraphicsPaint);
+      i5 += 1;
+      i1 = i5;
+      i6 = i4;
+      if (i5 == this.y)
+      {
+        i6 = i4 + this.B;
+        i1 = 0;
+      }
+      i3 += 1;
+      i5 = i1;
+      i4 = i6;
     }
   }
   
@@ -429,18 +415,18 @@ public class SimpleMonthView
     requestLayout();
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     b(paramCanvas);
     a(paramCanvas);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     setMeasuredDimension(View.MeasureSpec.getSize(paramInt1), this.B * this.T + g + this.L);
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     this.C = paramInt1;
   }
@@ -457,22 +443,19 @@ public class SimpleMonthView
         invalidate();
       }
     }
-    for (;;)
+    else if ((this.jdField_c_of_type_Boolean) && (paramMotionEvent.getAction() != 2))
     {
-      if (paramMotionEvent.getAction() == 1)
-      {
-        paramMotionEvent = a(paramMotionEvent.getX(), paramMotionEvent.getY());
-        if (paramMotionEvent != null) {
-          a(paramMotionEvent);
-        }
-      }
-      return true;
-      if ((this.jdField_c_of_type_Boolean) && (paramMotionEvent.getAction() != 2))
-      {
-        this.jdField_c_of_type_Boolean = false;
-        invalidate();
+      this.jdField_c_of_type_Boolean = false;
+      invalidate();
+    }
+    if (paramMotionEvent.getAction() == 1)
+    {
+      paramMotionEvent = a(paramMotionEvent.getX(), paramMotionEvent.getY());
+      if (paramMotionEvent != null) {
+        a(paramMotionEvent);
       }
     }
+    return true;
   }
   
   public void setMessageRecords(ArrayList<MessageRecord> paramArrayList)
@@ -482,7 +465,6 @@ public class SimpleMonthView
   
   public void setMonthParams(HashMap<String, Integer> paramHashMap)
   {
-    int i1 = 0;
     if ((!paramHashMap.containsKey("month")) && (!paramHashMap.containsKey("year"))) {
       throw new InvalidParameterException("You must specify month and year for this view");
     }
@@ -490,8 +472,10 @@ public class SimpleMonthView
     if (paramHashMap.containsKey("height"))
     {
       this.B = ((Integer)paramHashMap.get("height")).intValue();
-      if (this.B < e) {
-        this.B = e;
+      i1 = this.B;
+      i2 = e;
+      if (i1 < i2) {
+        this.B = i2;
       }
     }
     if (paramHashMap.containsKey("selected_begin_day")) {
@@ -514,28 +498,28 @@ public class SimpleMonthView
     }
     this.A = ((Integer)paramHashMap.get("month")).intValue();
     this.D = ((Integer)paramHashMap.get("year")).intValue();
+    int i1 = 0;
     this.jdField_a_of_type_Boolean = false;
     this.w = -1;
     this.jdField_a_of_type_JavaUtilCalendar.set(2, this.A);
     this.jdField_a_of_type_JavaUtilCalendar.set(1, this.D);
     this.jdField_a_of_type_JavaUtilCalendar.set(5, 1);
     this.R = this.jdField_a_of_type_JavaUtilCalendar.get(7);
-    if (paramHashMap.containsKey("week_start")) {}
-    int i2;
-    for (this.x = ((Integer)paramHashMap.get("week_start")).intValue();; this.x = this.jdField_a_of_type_JavaUtilCalendar.getFirstDayOfWeek())
+    if (paramHashMap.containsKey("week_start")) {
+      this.x = ((Integer)paramHashMap.get("week_start")).intValue();
+    } else {
+      this.x = this.jdField_a_of_type_JavaUtilCalendar.getFirstDayOfWeek();
+    }
+    int i2 = CalendarDay.getDaysInMonth(this.D, this.A);
+    while (i1 < i2)
     {
-      i2 = CalendarDay.getDaysInMonth(this.D, this.A);
-      while (i1 < i2)
+      i1 += 1;
+      if ((this.D == this.jdField_a_of_type_AndroidTextFormatTime.year) && (this.A == this.jdField_a_of_type_AndroidTextFormatTime.month) && (i1 == this.jdField_a_of_type_AndroidTextFormatTime.monthDay))
       {
-        int i3 = i1 + 1;
-        if ((this.D == this.jdField_a_of_type_AndroidTextFormatTime.year) && (this.A == this.jdField_a_of_type_AndroidTextFormatTime.month) && (i3 == this.jdField_a_of_type_AndroidTextFormatTime.monthDay))
-        {
-          this.jdField_a_of_type_Boolean = true;
-          this.w = i3;
-        }
-        this.jdField_b_of_type_Boolean = a(i3, this.jdField_a_of_type_AndroidTextFormatTime);
-        i1 += 1;
+        this.jdField_a_of_type_Boolean = true;
+        this.w = i1;
       }
+      this.jdField_b_of_type_Boolean = a(i1, this.jdField_a_of_type_AndroidTextFormatTime);
     }
     i1 = i2;
     if (this.jdField_a_of_type_Boolean) {
@@ -558,7 +542,7 @@ public class SimpleMonthView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.datepicker.SimpleMonthView
  * JD-Core Version:    0.7.0.1
  */

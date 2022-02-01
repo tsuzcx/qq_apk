@@ -39,7 +39,18 @@ public class PreCacheInfo
   
   public String toString()
   {
-    return "getDataUrl:" + this.getDataUrl + "  preCacheKey:" + this.preCacheKey + "  expireTime:" + this.expireTime + "  cacheType:" + this.cacheType + "  useProxy:" + this.useProxy;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getDataUrl:");
+    localStringBuilder.append(this.getDataUrl);
+    localStringBuilder.append("  preCacheKey:");
+    localStringBuilder.append(this.preCacheKey);
+    localStringBuilder.append("  expireTime:");
+    localStringBuilder.append(this.expireTime);
+    localStringBuilder.append("  cacheType:");
+    localStringBuilder.append(this.cacheType);
+    localStringBuilder.append("  useProxy:");
+    localStringBuilder.append(this.useProxy);
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -53,7 +64,7 @@ public class PreCacheInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.PreCacheInfo
  * JD-Core Version:    0.7.0.1
  */

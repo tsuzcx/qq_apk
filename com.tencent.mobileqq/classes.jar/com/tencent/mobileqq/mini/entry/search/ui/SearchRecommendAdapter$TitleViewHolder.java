@@ -20,8 +20,8 @@ class SearchRecommendAdapter$TitleViewHolder
   public SearchRecommendAdapter$TitleViewHolder(View paramView)
   {
     super(paramView);
-    this.title = ((TextView)paramView.findViewById(2131371596));
-    this.refreshView = ((ImageView)paramView.findViewById(2131371595));
+    this.title = ((TextView)paramView.findViewById(2131371216));
+    this.refreshView = ((ImageView)paramView.findViewById(2131371215));
   }
   
   public void update(TitleInfo paramTitleInfo)
@@ -39,7 +39,7 @@ class SearchRecommendAdapter$TitleViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.ui.SearchRecommendAdapter.TitleViewHolder
  * JD-Core Version:    0.7.0.1
  */

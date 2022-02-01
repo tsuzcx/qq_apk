@@ -6,7 +6,7 @@ public final class JceCmd
   implements Serializable
 {
   public static final JceCmd Empty;
-  public static final JceCmd GetAppDetailForSdk;
+  public static final JceCmd GetAppDetailForSdk = new JceCmd(15, 16, "GetAppDetailForSdk");
   public static final JceCmd GetAppSimpleDetail;
   public static final JceCmd GetAppUpdate;
   public static final JceCmd GetConfig;
@@ -43,29 +43,22 @@ public final class JceCmd
   
   static
   {
-    if (!JceCmd.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a = bool;
-      __values = new JceCmd[16];
-      Empty = new JceCmd(0, 0, "Empty");
-      ReportLog = new JceCmd(1, 1, "ReportLog");
-      GetSettings = new JceCmd(2, 2, "GetSettings");
-      GetAppUpdate = new JceCmd(3, 3, "GetAppUpdate");
-      ReportApkFileInfo = new JceCmd(4, 4, "ReportApkFileInfo");
-      GetAppSimpleDetail = new JceCmd(5, 5, "GetAppSimpleDetail");
-      GetConfig = new JceCmd(6, 7, "GetConfig");
-      GetPush = new JceCmd(7, 8, "GetPush");
-      StatReport = new JceCmd(8, 9, "StatReport");
-      GetHalleyUrl = new JceCmd(9, 10, "GetHalleyUrl");
-      GetHotSdkUpdate = new JceCmd(10, 11, "GetHotSdkUpdate");
-      GetPkgInfo = new JceCmd(11, 12, "GetPkgInfo");
-      SDKDataReport = new JceCmd(12, 13, "SDKDataReport");
-      GetRecmdIdBatch = new JceCmd(13, 14, "GetRecmdIdBatch");
-      GetMobilePhoneQqApkInfo = new JceCmd(14, 15, "GetMobilePhoneQqApkInfo");
-      GetAppDetailForSdk = new JceCmd(15, 16, "GetAppDetailForSdk");
-      return;
-    }
+    __values = new JceCmd[16];
+    Empty = new JceCmd(0, 0, "Empty");
+    ReportLog = new JceCmd(1, 1, "ReportLog");
+    GetSettings = new JceCmd(2, 2, "GetSettings");
+    GetAppUpdate = new JceCmd(3, 3, "GetAppUpdate");
+    ReportApkFileInfo = new JceCmd(4, 4, "ReportApkFileInfo");
+    GetAppSimpleDetail = new JceCmd(5, 5, "GetAppSimpleDetail");
+    GetConfig = new JceCmd(6, 7, "GetConfig");
+    GetPush = new JceCmd(7, 8, "GetPush");
+    StatReport = new JceCmd(8, 9, "StatReport");
+    GetHalleyUrl = new JceCmd(9, 10, "GetHalleyUrl");
+    GetHotSdkUpdate = new JceCmd(10, 11, "GetHotSdkUpdate");
+    GetPkgInfo = new JceCmd(11, 12, "GetPkgInfo");
+    SDKDataReport = new JceCmd(12, 13, "SDKDataReport");
+    GetRecmdIdBatch = new JceCmd(13, 14, "GetRecmdIdBatch");
+    GetMobilePhoneQqApkInfo = new JceCmd(14, 15, "GetMobilePhoneQqApkInfo");
   }
   
   private JceCmd(int paramInt1, int paramInt2, String paramString)
@@ -78,33 +71,49 @@ public final class JceCmd
   public static JceCmd convert(int paramInt)
   {
     int i = 0;
-    while (i < __values.length)
+    for (;;)
     {
-      if (__values[i].value() == paramInt) {
+      localObject = __values;
+      if (i >= localObject.length) {
+        break;
+      }
+      if (localObject[i].value() == paramInt) {
         return __values[i];
       }
       i += 1;
     }
-    if (!a) {
-      throw new AssertionError();
+    if (a) {
+      return null;
     }
-    return null;
+    Object localObject = new AssertionError();
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
   }
   
   public static JceCmd convert(String paramString)
   {
     int i = 0;
-    while (i < __values.length)
+    for (;;)
     {
-      if (__values[i].toString().equals(paramString)) {
+      JceCmd[] arrayOfJceCmd = __values;
+      if (i >= arrayOfJceCmd.length) {
+        break;
+      }
+      if (arrayOfJceCmd[i].toString().equals(paramString)) {
         return __values[i];
       }
       i += 1;
     }
-    if (!a) {
-      throw new AssertionError();
+    if (a) {
+      return null;
     }
-    return null;
+    paramString = new AssertionError();
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   public String toString()
@@ -119,7 +128,7 @@ public final class JceCmd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistant.common.jce.JceCmd
  * JD-Core Version:    0.7.0.1
  */

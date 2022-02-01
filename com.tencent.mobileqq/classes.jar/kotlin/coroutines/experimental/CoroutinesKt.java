@@ -52,8 +52,10 @@ public final class CoroutinesKt
       paramFunction0 = paramFunction0.invoke();
       if (paramFunction0 != IntrinsicsKt.getCOROUTINE_SUSPENDED())
       {
-        if (paramContinuation != null) {
-          break label37;
+        if (paramContinuation != null)
+        {
+          paramContinuation.resume(paramFunction0);
+          return;
         }
         throw new TypeCastException("null cannot be cast to non-null type kotlin.coroutines.experimental.Continuation<kotlin.Any?>");
       }
@@ -62,9 +64,6 @@ public final class CoroutinesKt
     {
       paramContinuation.resumeWithException(paramFunction0);
     }
-    return;
-    label37:
-    paramContinuation.resume(paramFunction0);
   }
   
   @SinceKotlin(version="1.1")
@@ -106,7 +105,7 @@ public final class CoroutinesKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.coroutines.experimental.CoroutinesKt
  * JD-Core Version:    0.7.0.1
  */

@@ -63,19 +63,19 @@ public class TopGestureLayout
     }
   }
   
-  public void detachViewFromParent(int paramInt)
+  protected void detachViewFromParent(int paramInt)
   {
     reportTGRemoveException();
     super.detachViewFromParent(paramInt);
   }
   
-  public void detachViewFromParent(View paramView)
+  protected void detachViewFromParent(View paramView)
   {
     reportTGRemoveException();
     super.detachViewFromParent(paramView);
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
     if (paramCanvas == null) {
       return;
@@ -93,8 +93,9 @@ public class TopGestureLayout
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.mInterceptTouchEventListener != null) {
-      this.mInterceptTouchEventListener.OnDispatchTouchEvent(paramMotionEvent);
+    TopGestureLayout.InterceptTouchEventListener localInterceptTouchEventListener = this.mInterceptTouchEventListener;
+    if (localInterceptTouchEventListener != null) {
+      localInterceptTouchEventListener.OnDispatchTouchEvent(paramMotionEvent);
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
@@ -139,7 +140,7 @@ public class TopGestureLayout
     return this.mGestureFlag == 0;
   }
   
-  public boolean isInTwoFingerMode()
+  protected boolean isInTwoFingerMode()
   {
     if (this.mTopGestureDetector != null) {
       return FlingHelperUtils.utils.isInTwoFingerMode(this.mTopGestureDetector);
@@ -149,14 +150,17 @@ public class TopGestureLayout
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.mInterceptTouchFlag) {}
-    while ((this.mInterceptTouchEventListener != null) && (!this.mInterceptTouchEventListener.OnInterceptTouchEvent(paramMotionEvent))) {
+    if (!this.mInterceptTouchFlag) {
+      return false;
+    }
+    TopGestureLayout.InterceptTouchEventListener localInterceptTouchEventListener = this.mInterceptTouchEventListener;
+    if ((localInterceptTouchEventListener != null) && (!localInterceptTouchEventListener.OnInterceptTouchEvent(paramMotionEvent))) {
       return false;
     }
     return this.mTopGestureDetector.onTouchEvent(paramMotionEvent);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     this.isInLayout = true;
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
@@ -182,9 +186,10 @@ public class TopGestureLayout
   
   public void restoreGestureDetector()
   {
-    if (this.defaultGestureDetector != null)
+    GestureDetector localGestureDetector = this.defaultGestureDetector;
+    if (localGestureDetector != null)
     {
-      this.mTopGestureDetector = this.defaultGestureDetector;
+      this.mTopGestureDetector = localGestureDetector;
       return;
     }
     this.mTopGestureDetector = FlingHelperUtils.utils.newStickerDismissGestureDetectorInstance(this, getContext(), this.gestureListener);
@@ -197,12 +202,12 @@ public class TopGestureLayout
   
   public void setGestureFlag(int paramInt)
   {
-    if ((paramInt == 0) || (paramInt == -1))
+    if ((paramInt != 0) && (paramInt != -1))
     {
-      this.mGestureFlag = paramInt;
+      this.mGestureFlag = (paramInt | this.mGestureFlag & (paramInt ^ 0xFFFFFFFF));
       return;
     }
-    this.mGestureFlag = (this.mGestureFlag & (paramInt ^ 0xFFFFFFFF) | paramInt);
+    this.mGestureFlag = paramInt;
   }
   
   public void setInterceptScrollLRFlag(boolean paramBoolean)
@@ -252,7 +257,7 @@ public class TopGestureLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.fling.TopGestureLayout
  * JD-Core Version:    0.7.0.1
  */

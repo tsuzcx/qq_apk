@@ -15,19 +15,20 @@ public class RecentEmotion
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
-      do
-      {
-        return false;
-        if (paramObject == this) {
-          return true;
-        }
-      } while ((getClass() != paramObject.getClass()) || (!(paramObject instanceof RecentEmotion)));
-      paramObject = (RecentEmotion)paramObject;
-    } while ((!this.epId.equals(paramObject.epId)) || (!this.eId.equals(paramObject.eId)) || (!this.keyword.equals(paramObject.keyword)));
-    return true;
+    if (paramObject == null) {
+      return false;
+    }
+    if (paramObject == this) {
+      return true;
+    }
+    if (getClass() != paramObject.getClass()) {
+      return false;
+    }
+    if (!(paramObject instanceof RecentEmotion)) {
+      return false;
+    }
+    paramObject = (RecentEmotion)paramObject;
+    return (this.epId.equals(paramObject.epId)) && (this.eId.equals(paramObject.eId)) && (this.keyword.equals(paramObject.keyword));
   }
   
   public int hashCode()
@@ -44,12 +45,25 @@ public class RecentEmotion
   
   public String toString()
   {
-    return "RecentEmotion{keyword='" + this.keyword + '\'' + ", epId='" + this.epId + '\'' + ", eId='" + this.eId + '\'' + ", exposeNum=" + this.exposeNum + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RecentEmotion{keyword='");
+    localStringBuilder.append(this.keyword);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", epId='");
+    localStringBuilder.append(this.epId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", eId='");
+    localStringBuilder.append(this.eId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", exposeNum=");
+    localStringBuilder.append(this.exposeNum);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.RecentEmotion
  * JD-Core Version:    0.7.0.1
  */

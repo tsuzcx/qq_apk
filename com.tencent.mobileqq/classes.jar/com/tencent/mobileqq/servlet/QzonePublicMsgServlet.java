@@ -6,8 +6,8 @@ import android.os.Bundle;
 import com.tencent.mobileqq.observer.QZoneObserver;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qzonehub.api.impl.QZoneApiProxyImpl;
 import cooperation.qzone.GetQzonePublicMsgRequest;
-import cooperation.qzone.api.QZoneApiProxy;
 import java.util.HashMap;
 import java.util.Map;
 import mqq.app.AppRuntime;
@@ -33,14 +33,15 @@ public class QzonePublicMsgServlet
             if ((getAppRuntime() != null) && (getAppRuntime().getApplication() != null))
             {
               MobileQQ localMobileQQ = getAppRuntime().getApplication();
-              if ((paramFromServiceMsg.map_ext == null) || (!"1".equals(paramFromServiceMsg.map_ext.get("show_feeds")))) {
-                break label260;
-              }
-              bool = true;
-              if (paramFromServiceMsg.map_ext == null)
+              if ((paramFromServiceMsg.map_ext != null) && ("1".equals(paramFromServiceMsg.map_ext.get("show_feeds"))))
               {
-                paramIntent = null;
-                QZoneApiProxy.recordSubFeedConfig(localMobileQQ, bool, paramIntent);
+                bool = true;
+                if (paramFromServiceMsg.map_ext == null) {
+                  paramIntent = null;
+                } else {
+                  paramIntent = (String)paramFromServiceMsg.map_ext.get("title_name");
+                }
+                QZoneApiProxyImpl.recordSubFeedConfig(localMobileQQ, bool, paramIntent);
               }
             }
             else
@@ -48,13 +49,20 @@ public class QzonePublicMsgServlet
               paramIntent = new Bundle();
               paramIntent.putSerializable("data", paramFromServiceMsg);
               notifyObserver(null, 1004, true, paramIntent, QZoneObserver.class);
-              return;
             }
-            paramIntent = (String)paramFromServiceMsg.map_ext.get("title_name");
-            continue;
           }
+          else
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("QzonePublicMsgServlet", 2, "inform QzonePublicMsgServlet isSuccess false");
+            }
+            notifyObserver(null, 1004, false, new Bundle(), QZoneObserver.class);
+          }
+        }
+        else
+        {
           if (QLog.isColorLevel()) {
-            QLog.d("QzonePublicMsgServlet", 2, "inform QzonePublicMsgServlet isSuccess false");
+            QLog.d("QzonePublicMsgServlet", 2, "inform QzonePublicMsgServlet resultcode fail.");
           }
           notifyObserver(null, 1004, false, new Bundle(), QZoneObserver.class);
           return;
@@ -62,17 +70,13 @@ public class QzonePublicMsgServlet
       }
       catch (Throwable paramIntent)
       {
-        QLog.e("QzonePublicMsgServlet", 1, paramIntent + "onReceive error");
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append(paramIntent);
+        paramFromServiceMsg.append("onReceive error");
+        QLog.e("QzonePublicMsgServlet", 1, paramFromServiceMsg.toString());
         notifyObserver(null, 1004, false, new Bundle(), QZoneObserver.class);
         return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("QzonePublicMsgServlet", 2, "inform QzonePublicMsgServlet resultcode fail.");
-      }
-      notifyObserver(null, 1004, false, new Bundle(), QZoneObserver.class);
-      if (paramFromServiceMsg != null) {}
-      return;
-      label260:
       boolean bool = false;
     }
   }
@@ -88,17 +92,23 @@ public class QzonePublicMsgServlet
     paramIntent = (Intent)localObject;
     if (localObject == null)
     {
-      QLog.e("NotifyQZoneServer", 1, "onSend request encode result is null.cmd=" + localGetQzonePublicMsgRequest.uniKey());
+      paramIntent = new StringBuilder();
+      paramIntent.append("onSend request encode result is null.cmd=");
+      paramIntent.append(localGetQzonePublicMsgRequest.uniKey());
+      QLog.e("NotifyQZoneServer", 1, paramIntent.toString());
       paramIntent = new byte[4];
     }
     paramPacket.setTimeout(30000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + localGetQzonePublicMsgRequest.uniKey());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("SQQzoneSvc.");
+    ((StringBuilder)localObject).append(localGetQzonePublicMsgRequest.uniKey());
+    paramPacket.setSSOCommand(((StringBuilder)localObject).toString());
     paramPacket.putSendData(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.QzonePublicMsgServlet
  * JD-Core Version:    0.7.0.1
  */

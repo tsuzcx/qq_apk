@@ -19,7 +19,11 @@ class ClearCacheAction$1
   public void onPostRun()
   {
     AppLoaderFactory.g().getMiniCacheFreeManager().freeCache(BaseApplicationImpl.getApplication().getRuntime().getAccount(), new MiniAppInfo(), false);
-    QLog.d("ClearCacheAction", 1, "ClearCacheAction: appid:" + this.val$appId + " killSelf!!!");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ClearCacheAction: appid:");
+    localStringBuilder.append(this.val$appId);
+    localStringBuilder.append(" killSelf!!!");
+    QLog.d("ClearCacheAction", 1, localStringBuilder.toString());
     Process.killProcess(Process.myPid());
   }
   
@@ -27,7 +31,7 @@ class ClearCacheAction$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.push.ClearCacheAction.1
  * JD-Core Version:    0.7.0.1
  */

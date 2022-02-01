@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class stCollectionCardInfo
   extends JceStruct
@@ -34,17 +35,19 @@ public final class stCollectionCardInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.collectionList != null) {
-      paramJceOutputStream.write(this.collectionList, 0);
+    Object localObject = this.collectionList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 1);
+    localObject = this.title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stCollectionCardInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -16,28 +16,34 @@ class RegisterProxySvcPackHandler$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 101)
     {
-    }
-    do
-    {
-      return;
-      this.a.b();
-      return;
+      if (i != 102) {
+        return;
+      }
       if (QLog.isColorLevel()) {
         QLog.d("RegisterProxySvcPack", 2, new Object[] { "real notify pcStatus:", Integer.valueOf(RegisterProxySvcPackHandler.a(this.a)), " ,devStatus:", Integer.valueOf(RegisterProxySvcPackHandler.b(this.a)), " ,clientType:", Long.valueOf(RegisterProxySvcPackHandler.a(this.a)), " ,appid:", Long.valueOf(RegisterProxySvcPackHandler.b(this.a)) });
       }
-      this.a.notifyUI(2, true, new Object[] { Integer.valueOf(RegisterProxySvcPackHandler.b(this.a)) });
-    } while (RegisterProxySvcPackHandler.b(this.a) != 0);
-    if (!this.a.a.hasMessages(101)) {
-      this.a.a.sendEmptyMessageDelayed(101, 3000L);
+      paramMessage = this.a;
+      paramMessage.notifyUI(2, true, new Object[] { Integer.valueOf(RegisterProxySvcPackHandler.b(paramMessage)) });
+      if (RegisterProxySvcPackHandler.b(this.a) == 0)
+      {
+        if (!this.a.a.hasMessages(101)) {
+          this.a.a.sendEmptyMessageDelayed(101, 3000L);
+        }
+        NoDisturbUtil.a(false);
+      }
     }
-    NoDisturbUtil.a(false);
+    else
+    {
+      this.a.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.RegisterProxySvcPackHandler.1
  * JD-Core Version:    0.7.0.1
  */

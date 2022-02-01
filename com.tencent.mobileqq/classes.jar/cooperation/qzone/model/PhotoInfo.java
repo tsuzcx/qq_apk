@@ -7,7 +7,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.common.galleryactivity.GalleryImage;
-import cooperation.qzone.util.PanoramaUtil;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.panorama.IPanoramaUtil;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,9 +21,9 @@ public class PhotoInfo
   public static final Parcelable.Creator<PhotoInfo> CREATOR = new PhotoInfo.1();
   public static final int IMAGE_RESOLUTION_BIG = 1;
   public static final int IMAGE_RESOLUTION_ORIGINAL = 2;
-  public static int SHOW_GIF;
-  public static int SHOW_NEITHER_GIF_NOR_PLAY;
-  public static int SHOW_STATIC_PHOTO = 0;
+  public static int SHOW_GIF = 2;
+  public static int SHOW_NEITHER_GIF_NOR_PLAY = 1;
+  public static int SHOW_STATIC_PHOTO;
   public String albumId = "";
   public String albumName;
   public int albumPriv;
@@ -100,12 +101,6 @@ public class PhotoInfo
   public VideoInfo videodata = null;
   public int videoflag = 0;
   
-  static
-  {
-    SHOW_NEITHER_GIF_NOR_PLAY = 1;
-    SHOW_GIF = 2;
-  }
-  
   public int describeContents()
   {
     return 0;
@@ -128,8 +123,9 @@ public class PhotoInfo
   
   public Drawable getImageDrawable()
   {
-    if (this.imageDrawable != null) {
-      return (Drawable)this.imageDrawable.get();
+    WeakReference localWeakReference = this.imageDrawable;
+    if (localWeakReference != null) {
+      return (Drawable)localWeakReference.get();
     }
     return null;
   }
@@ -146,8 +142,9 @@ public class PhotoInfo
   
   public Drawable getThumbDrawable()
   {
-    if (this.thumbDrawable != null) {
-      return (Drawable)this.thumbDrawable.get();
+    WeakReference localWeakReference = this.thumbDrawable;
+    if (localWeakReference != null) {
+      return (Drawable)localWeakReference.get();
     }
     return null;
   }
@@ -164,11 +161,16 @@ public class PhotoInfo
   
   public boolean isPanorama()
   {
-    if (!PanoramaUtil.getInstance().isNeedShowPanorama()) {}
-    while ((this.flag != 32) && (this.flag != 16)) {
+    boolean bool2 = ((IPanoramaUtil)QRoute.api(IPanoramaUtil.class)).isNeedShowPanorama();
+    boolean bool1 = false;
+    if (!bool2) {
       return false;
     }
-    return true;
+    int i = this.flag;
+    if ((i == 32) || (i == 16)) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   public boolean isWebPic()
@@ -190,142 +192,264 @@ public class PhotoInfo
   
   public String toDebugString()
   {
-    return "PhotoInfo{\nalbumName='" + this.albumName + '\'' + '\n' + ", albumId='" + this.albumId + '\'' + '\n' + ", albumPriv=" + this.albumPriv + '\n' + ", currentUrl='" + this.currentUrl + '\'' + '\n' + ", bigUrl='" + this.bigUrl + '\'' + '\n' + ", orgUrl='" + this.orgUrl + '\'' + '\n' + ", desc='" + this.desc + '\'' + '\n' + ", praiseCount=" + this.praiseCount + '\n' + ", commentCount=" + this.commentCount + '\n' + ", hasPraise=" + this.hasPraise + '\n' + ", unikey='" + this.unikey + '\'' + '\n' + ", curkey='" + this.curkey + '\'' + '\n' + ", lloc='" + this.lloc + '\'' + '\n' + ", sloc='" + this.sloc + '\'' + '\n' + ", busi_param=" + this.busi_param + '\n' + ", mNeedEncodeGifPics=" + this.mNeedEncodeGifPics + '\n' + ", mNeedEncodeGifDelay=" + this.mNeedEncodeGifDelay + '\n' + ", photoType=" + this.photoType + '\n' + ", opsynflag=" + this.opsynflag + '\n' + ", isIndependentUgc=" + this.isIndependentUgc + '\n' + ", flag=" + this.flag + '\n' + ", isSelected=" + this.isSelected + '\n' + ", hasLoaded=" + this.hasLoaded + '\n' + ", hasShowHighScaleTips=" + this.hasShowHighScaleTips + '\n' + ", lastScale=" + this.lastScale + '\n' + ", hasLocalOrgFile=" + this.hasLocalOrgFile + '\n' + ", progress=" + this.progress + '\n' + ", hasPreDownload=" + this.hasPreDownload + '\n' + ", hasVisited=" + this.hasVisited + '\n' + ", tagList=" + this.tagList + '\n' + ", quanLoaded=" + this.quanLoaded + '\n' + ", isFakeFeed=" + this.isFakeFeed + '\n' + ", showGifState=" + this.showGifState + '\n' + ", ctime=" + this.ctime + '\n' + ", gpsInfo=" + this.gpsInfo + '\n' + ", date=" + this.date + '\n' + ", hasQRCode=" + this.hasQRCode + '\n' + ", opMask=" + this.opMask + '\n' + ", allow_share=" + this.allow_share + '\n' + ", videoflag=" + this.videoflag + '\n' + ", videodata=" + this.videodata.toDebugString() + '\n' + ", uploadtime=" + this.uploadtime + '\n' + ", photoOpmask=" + this.photoOpmask + '\n' + ", uploadOwner='" + this.uploadOwner + '\'' + '\n' + ", uploaduin=" + this.uploaduin + '\n' + ", appid=" + this.appid + '\n' + ", pssCellId='" + this.pssCellId + '\'' + '\n' + ", pssCellSubId='" + this.pssCellSubId + '\'' + '\n' + ", pssUgcKey='" + this.pssUgcKey + '\'' + '\n' + ", pssSubId=" + this.pssSubId + '\n' + ", pssCurLikeKey='" + this.pssCurLikeKey + '\'' + '\n' + ", pssOrgLikeKey='" + this.pssOrgLikeKey + '\'' + '\n' + ", pssBusiParam=" + this.pssBusiParam + '\n' + ", pssHasFeedPraise=" + this.pssHasFeedPraise + '\n' + ", shareWeixinUrl='" + this.shareWeixinUrl + '\'' + '\n' + ", shareQqUrl='" + this.shareQqUrl + '\'' + '\n' + ", shareTitle='" + this.shareTitle + '\'' + '\n' + ", shareSummary='" + this.shareSummary + '\'' + '\n' + ", sharePhotoUrl='" + this.sharePhotoUrl + '\'' + '\n' + ", shareSpaceRight=" + this.shareSpaceRight + '\n' + ", shareAlbumRight=" + this.shareAlbumRight + '\n' + ", hasCheckFace=" + this.hasCheckFace + '\n' + ", needShowFaceIcon=" + this.needShowFaceIcon + '\n' + ", mFaceList=" + this.mFaceList + '\n' + ", originSize=" + this.originSize + '\n' + ", fileSize=" + this.fileSize + '\n' + ", imageResolution=" + this.imageResolution + '\n' + ", appAdShow=" + this.appAdShow + '\n' + ", appAdText='" + this.appAdText + '\'' + '\n' + ", appAdSchema='" + this.appAdSchema + '\'' + '\n' + ", picInfoOpen=" + this.picInfoOpen + '\n' + ", thumbDrawable=" + this.thumbDrawable + '\n' + ", imageDrawable=" + this.imageDrawable + '\n' + ", heightWeightProportion=" + this.heightWeightProportion + '\n' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PhotoInfo{\nalbumName='");
+    localStringBuilder.append(this.albumName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", albumId='");
+    localStringBuilder.append(this.albumId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", albumPriv=");
+    localStringBuilder.append(this.albumPriv);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", currentUrl='");
+    localStringBuilder.append(this.currentUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", bigUrl='");
+    localStringBuilder.append(this.bigUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", orgUrl='");
+    localStringBuilder.append(this.orgUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", desc='");
+    localStringBuilder.append(this.desc);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", praiseCount=");
+    localStringBuilder.append(this.praiseCount);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", commentCount=");
+    localStringBuilder.append(this.commentCount);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", hasPraise=");
+    localStringBuilder.append(this.hasPraise);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", unikey='");
+    localStringBuilder.append(this.unikey);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", curkey='");
+    localStringBuilder.append(this.curkey);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", lloc='");
+    localStringBuilder.append(this.lloc);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", sloc='");
+    localStringBuilder.append(this.sloc);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", busi_param=");
+    localStringBuilder.append(this.busi_param);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", mNeedEncodeGifPics=");
+    localStringBuilder.append(this.mNeedEncodeGifPics);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", mNeedEncodeGifDelay=");
+    localStringBuilder.append(this.mNeedEncodeGifDelay);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", photoType=");
+    localStringBuilder.append(this.photoType);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", opsynflag=");
+    localStringBuilder.append(this.opsynflag);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", isIndependentUgc=");
+    localStringBuilder.append(this.isIndependentUgc);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", flag=");
+    localStringBuilder.append(this.flag);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", isSelected=");
+    localStringBuilder.append(this.isSelected);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", hasLoaded=");
+    localStringBuilder.append(this.hasLoaded);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", hasShowHighScaleTips=");
+    localStringBuilder.append(this.hasShowHighScaleTips);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", lastScale=");
+    localStringBuilder.append(this.lastScale);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", hasLocalOrgFile=");
+    localStringBuilder.append(this.hasLocalOrgFile);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", progress=");
+    localStringBuilder.append(this.progress);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", hasPreDownload=");
+    localStringBuilder.append(this.hasPreDownload);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", hasVisited=");
+    localStringBuilder.append(this.hasVisited);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", tagList=");
+    localStringBuilder.append(this.tagList);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", quanLoaded=");
+    localStringBuilder.append(this.quanLoaded);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", isFakeFeed=");
+    localStringBuilder.append(this.isFakeFeed);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", showGifState=");
+    localStringBuilder.append(this.showGifState);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", ctime=");
+    localStringBuilder.append(this.ctime);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", gpsInfo=");
+    localStringBuilder.append(this.gpsInfo);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", date=");
+    localStringBuilder.append(this.date);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", hasQRCode=");
+    localStringBuilder.append(this.hasQRCode);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", opMask=");
+    localStringBuilder.append(this.opMask);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", allow_share=");
+    localStringBuilder.append(this.allow_share);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", videoflag=");
+    localStringBuilder.append(this.videoflag);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", videodata=");
+    localStringBuilder.append(this.videodata.toDebugString());
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", uploadtime=");
+    localStringBuilder.append(this.uploadtime);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", photoOpmask=");
+    localStringBuilder.append(this.photoOpmask);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", uploadOwner='");
+    localStringBuilder.append(this.uploadOwner);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", uploaduin=");
+    localStringBuilder.append(this.uploaduin);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", appid=");
+    localStringBuilder.append(this.appid);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", pssCellId='");
+    localStringBuilder.append(this.pssCellId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", pssCellSubId='");
+    localStringBuilder.append(this.pssCellSubId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", pssUgcKey='");
+    localStringBuilder.append(this.pssUgcKey);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", pssSubId=");
+    localStringBuilder.append(this.pssSubId);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", pssCurLikeKey='");
+    localStringBuilder.append(this.pssCurLikeKey);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", pssOrgLikeKey='");
+    localStringBuilder.append(this.pssOrgLikeKey);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", pssBusiParam=");
+    localStringBuilder.append(this.pssBusiParam);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", pssHasFeedPraise=");
+    localStringBuilder.append(this.pssHasFeedPraise);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", shareWeixinUrl='");
+    localStringBuilder.append(this.shareWeixinUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", shareQqUrl='");
+    localStringBuilder.append(this.shareQqUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", shareTitle='");
+    localStringBuilder.append(this.shareTitle);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", shareSummary='");
+    localStringBuilder.append(this.shareSummary);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", sharePhotoUrl='");
+    localStringBuilder.append(this.sharePhotoUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", shareSpaceRight=");
+    localStringBuilder.append(this.shareSpaceRight);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", shareAlbumRight=");
+    localStringBuilder.append(this.shareAlbumRight);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", hasCheckFace=");
+    localStringBuilder.append(this.hasCheckFace);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", needShowFaceIcon=");
+    localStringBuilder.append(this.needShowFaceIcon);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", mFaceList=");
+    localStringBuilder.append(this.mFaceList);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", originSize=");
+    localStringBuilder.append(this.originSize);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", fileSize=");
+    localStringBuilder.append(this.fileSize);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", imageResolution=");
+    localStringBuilder.append(this.imageResolution);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", appAdShow=");
+    localStringBuilder.append(this.appAdShow);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", appAdText='");
+    localStringBuilder.append(this.appAdText);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", appAdSchema='");
+    localStringBuilder.append(this.appAdSchema);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", picInfoOpen=");
+    localStringBuilder.append(this.picInfoOpen);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", thumbDrawable=");
+    localStringBuilder.append(this.thumbDrawable);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", imageDrawable=");
+    localStringBuilder.append(this.imageDrawable);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", heightWeightProportion=");
+    localStringBuilder.append(this.heightWeightProportion);
+    localStringBuilder.append('\n');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int j = 1;
-    paramParcel.writeString(this.albumId);
-    paramParcel.writeInt(this.albumPriv);
-    paramParcel.writeString(this.currentUrl);
-    paramParcel.writeString(this.bigUrl);
-    paramParcel.writeString(this.orgUrl);
-    paramParcel.writeString(this.desc);
-    paramParcel.writeInt(this.praiseCount);
-    paramParcel.writeInt(this.commentCount);
-    int i;
-    if (this.hasPraise)
-    {
-      i = 1;
-      paramParcel.writeInt(i);
-      paramParcel.writeString(this.unikey);
-      paramParcel.writeString(this.curkey);
-      paramParcel.writeString(this.lloc);
-      paramParcel.writeString(this.sloc);
-      paramParcel.writeMap(this.busi_param);
-      paramParcel.writeList(this.mNeedEncodeGifPics);
-      paramParcel.writeInt(this.mNeedEncodeGifDelay);
-      paramParcel.writeInt(this.photoType);
-      paramParcel.writeInt(this.opsynflag);
-      paramParcel.writeInt(this.isIndependentUgc);
-      paramParcel.writeParcelable(this.gpsInfo, paramInt);
-      if (!this.isSelected) {
-        break label556;
-      }
-      i = 1;
-      label179:
-      paramParcel.writeInt(i);
-      paramParcel.writeLong(this.ctime);
-      paramParcel.writeLong(this.date);
-      paramParcel.writeTypedList(this.tagList);
-      if (!this.isFakeFeed) {
-        break label561;
-      }
-      i = 1;
-      label217:
-      paramParcel.writeInt(i);
-      paramParcel.writeInt(this.showGifState);
-      paramParcel.writeInt(this.flag);
-      paramParcel.writeInt(this.opMask);
-      paramParcel.writeInt(this.allow_share);
-      paramParcel.writeInt(this.videoflag);
-      paramParcel.writeParcelable(this.videodata, paramInt);
-      paramParcel.writeString(this.albumName);
-      paramParcel.writeInt(this.uploadtime);
-      paramParcel.writeInt(this.photoOpmask);
-      paramParcel.writeString(this.uploadOwner);
-      paramParcel.writeLong(this.uploaduin);
-      paramParcel.writeInt(this.appid);
-      paramParcel.writeString(this.pssCellId);
-      paramParcel.writeString(this.pssCellSubId);
-      paramParcel.writeString(this.pssUgcKey);
-      paramParcel.writeInt(this.pssSubId);
-      paramParcel.writeString(this.pssCurLikeKey);
-      paramParcel.writeString(this.pssOrgLikeKey);
-      paramParcel.writeMap(this.pssBusiParam);
-      if (!this.pssHasFeedPraise) {
-        break label566;
-      }
-      paramInt = 1;
-      label384:
-      paramParcel.writeInt(paramInt);
-      paramParcel.writeString(this.shareWeixinUrl);
-      paramParcel.writeString(this.shareQqUrl);
-      paramParcel.writeString(this.shareTitle);
-      paramParcel.writeString(this.shareSummary);
-      paramParcel.writeString(this.sharePhotoUrl);
-      paramParcel.writeInt(this.shareSpaceRight);
-      paramParcel.writeInt(this.shareAlbumRight);
-      if (!this.hasCheckFace) {
-        break label571;
-      }
-      paramInt = 1;
-      label454:
-      paramParcel.writeInt(paramInt);
-      paramParcel.writeSerializable(this.mFaceList);
-      if (!this.needShowFaceIcon) {
-        break label576;
-      }
-      paramInt = 1;
-      label476:
-      paramParcel.writeInt(paramInt);
-      paramParcel.writeLong(this.originSize);
-      if (!this.appAdShow) {
-        break label581;
-      }
-      paramInt = 1;
-      label498:
-      paramParcel.writeInt(paramInt);
-      paramParcel.writeString(this.appAdText);
-      paramParcel.writeString(this.appAdSchema);
-      if (!this.picInfoOpen) {
-        break label586;
-      }
-    }
-    label556:
-    label561:
-    label566:
-    label571:
-    label576:
-    label581:
-    label586:
-    for (paramInt = j;; paramInt = 0)
-    {
-      paramParcel.writeInt(paramInt);
-      paramParcel.writeList(this.picTaginfoList);
-      paramParcel.writeFloat(this.heightWeightProportion);
-      return;
-      i = 0;
-      break;
-      i = 0;
-      break label179;
-      i = 0;
-      break label217;
-      paramInt = 0;
-      break label384;
-      paramInt = 0;
-      break label454;
-      paramInt = 0;
-      break label476;
-      paramInt = 0;
-      break label498;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.model.PhotoInfo
  * JD-Core Version:    0.7.0.1
  */

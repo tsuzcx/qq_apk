@@ -111,32 +111,44 @@ public class OcrImageSectBean
   
   public void a(TextPaint paramTextPaint)
   {
-    if ((TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (a()) || (this.jdField_b_of_type_Float <= 0.0F)) {}
-    do
+    if ((!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!a()))
     {
-      return;
+      if (this.jdField_b_of_type_Float <= 0.0F) {
+        return;
+      }
       float f1 = paramTextPaint.measureText(this.jdField_b_of_type_JavaLangString);
       float f2 = paramTextPaint.measureText(this.jdField_a_of_type_JavaLangString);
       double d1 = this.jdField_b_of_type_Float;
-      this.jdField_a_of_type_Float = ((float)(Math.sqrt(f1 / f2) * d1));
+      double d2 = Math.sqrt(f1 / f2);
+      Double.isNaN(d1);
+      this.jdField_a_of_type_Float = ((float)(d1 * d2));
       if (this.jdField_a_of_type_Float > 30.0F) {
         this.jdField_a_of_type_Float = 30.0F;
       }
-    } while (this.jdField_a_of_type_Float >= 5.0F);
-    this.jdField_a_of_type_Float = 5.0F;
+      if (this.jdField_a_of_type_Float < 5.0F) {
+        this.jdField_a_of_type_Float = 5.0F;
+      }
+    }
   }
   
   public void a(PicOcrResultBean paramPicOcrResultBean)
   {
-    if ((paramPicOcrResultBean == null) || (this.f != paramPicOcrResultBean.jdField_b_of_type_Int)) {}
-    do
+    if (paramPicOcrResultBean != null)
     {
-      return;
+      if (this.f != paramPicOcrResultBean.jdField_b_of_type_Int) {
+        return;
+      }
       if ((paramPicOcrResultBean.jdField_a_of_type_JavaUtilArrayList != null) && (paramPicOcrResultBean.jdField_a_of_type_JavaUtilArrayList.size() == 4)) {
         b(paramPicOcrResultBean);
       }
-    } while (TextUtils.isEmpty(paramPicOcrResultBean.jdField_a_of_type_JavaLangString));
-    this.jdField_b_of_type_JavaLangString += paramPicOcrResultBean.jdField_a_of_type_JavaLangString;
+      if (!TextUtils.isEmpty(paramPicOcrResultBean.jdField_a_of_type_JavaLangString))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+        localStringBuilder.append(paramPicOcrResultBean.jdField_a_of_type_JavaLangString);
+        this.jdField_b_of_type_JavaLangString = localStringBuilder.toString();
+      }
+    }
   }
   
   public boolean a()
@@ -151,7 +163,7 @@ public class OcrImageSectBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.OcrImageSectBean
  * JD-Core Version:    0.7.0.1
  */

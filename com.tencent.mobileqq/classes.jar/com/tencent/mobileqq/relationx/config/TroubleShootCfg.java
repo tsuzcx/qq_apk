@@ -23,35 +23,36 @@ public class TroubleShootCfg
   public void a()
   {
     String str = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValueWithoutAccountManager(jdField_a_of_type_JavaLangString);
-    String[] arrayOfString;
     if (!TextUtils.isEmpty(str))
     {
-      arrayOfString = str.split("\\|");
-      if (arrayOfString.length < 1) {}
-    }
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[0]).intValue();
-        if (QLog.isColorLevel()) {
-          QLog.d("TroubleShootCfg", 2, String.format("loadConfig dpc=%s", new Object[] { str }));
+      String[] arrayOfString = str.split("\\|");
+      if (arrayOfString.length >= 1) {
+        try
+        {
+          this.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[0]).intValue();
         }
-        return;
+        catch (Exception localException)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("loadConfig exception :");
+          localStringBuilder.append(localException.getMessage());
+          QLog.d("TroubleShootCfg", 1, localStringBuilder.toString());
+          this.jdField_a_of_type_Int = 1;
+        }
       }
-      catch (Exception localException)
-      {
-        QLog.d("TroubleShootCfg", 1, "loadConfig exception :" + localException.getMessage());
-        this.jdField_a_of_type_Int = 1;
-        continue;
-      }
+    }
+    else
+    {
       this.jdField_a_of_type_Int = 1;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroubleShootCfg", 2, String.format("loadConfig dpc=%s", new Object[] { str }));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.config.TroubleShootCfg
  * JD-Core Version:    0.7.0.1
  */

@@ -4,11 +4,10 @@ import Wallet.AcsMsg;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.util.api.IQQComIPC;
+import com.tencent.mobileqq.qwallet.ipc.IComIPCUtils;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -38,7 +37,11 @@ public class QQReminderUtil
       paramString = new SimpleDateFormat(paramString, Locale.SIMPLIFIED_CHINESE).format(new Date(paramLong));
       return paramString;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label25:
+      break label25;
+    }
     return "";
   }
   
@@ -50,7 +53,11 @@ public class QQReminderUtil
     if (paramAcsMsg.type == 0) {
       return paramAcsMsg.msg_id;
     }
-    return paramAcsMsg.msg_id + "-" + paramAcsMsg.sub_time;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramAcsMsg.msg_id);
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramAcsMsg.sub_time);
+    return localStringBuilder.toString();
   }
   
   public static String a(AppRuntime paramAppRuntime)
@@ -62,22 +69,19 @@ public class QQReminderUtil
     {
       paramAppRuntime = paramAppRuntime.getApplicationContext();
       a = paramAppRuntime.getPackageManager().getPackageInfo(paramAppRuntime.getPackageName(), 0).versionName;
-      return a;
     }
     catch (Exception paramAppRuntime)
     {
-      for (;;)
-      {
-        a = "getVersionException";
-      }
+      label39:
+      break label39;
     }
+    a = "getVersionException";
+    return a;
   }
   
   public static void a(AcsMsg paramAcsMsg)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putSerializable("req_param", paramAcsMsg);
-    ((IQQComIPC)QRoute.api(IQQComIPC.class)).cancelAlarmNotifaction(localBundle);
+    ((IComIPCUtils)QRoute.api(IComIPCUtils.class)).cancelAlarmNotifaction(paramAcsMsg);
   }
   
   public static boolean a(long paramLong)
@@ -94,21 +98,17 @@ public class QQReminderUtil
   
   public static void b(AcsMsg paramAcsMsg)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putSerializable("req_param", paramAcsMsg);
-    ((IQQComIPC)QRoute.api(IQQComIPC.class)).removeMessageRecord(localBundle);
+    ((IComIPCUtils)QRoute.api(IComIPCUtils.class)).removeMessageRecord(paramAcsMsg);
   }
   
   public static void c(AcsMsg paramAcsMsg)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putSerializable("req_param", paramAcsMsg);
-    ((IQQComIPC)QRoute.api(IQQComIPC.class)).setAlarmNotifaction(localBundle);
+    ((IComIPCUtils)QRoute.api(IComIPCUtils.class)).setAlarmNotifaction(paramAcsMsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.reminder.util.QQReminderUtil
  * JD-Core Version:    0.7.0.1
  */

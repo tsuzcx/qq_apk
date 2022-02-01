@@ -25,35 +25,57 @@ public class ComparisonCompactor
   
   private String compactString(String paramString)
   {
-    String str = "[" + paramString.substring(this.fPrefix, paramString.length() - this.fSuffix + 1) + "]";
-    paramString = str;
-    if (this.fPrefix > 0) {
-      paramString = computeCommonPrefix() + str;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[");
+    ((StringBuilder)localObject).append(paramString.substring(this.fPrefix, paramString.length() - this.fSuffix + 1));
+    ((StringBuilder)localObject).append("]");
+    localObject = ((StringBuilder)localObject).toString();
+    paramString = (String)localObject;
+    if (this.fPrefix > 0)
+    {
+      paramString = new StringBuilder();
+      paramString.append(computeCommonPrefix());
+      paramString.append((String)localObject);
+      paramString = paramString.toString();
     }
-    str = paramString;
-    if (this.fSuffix > 0) {
-      str = paramString + computeCommonSuffix();
+    localObject = paramString;
+    if (this.fSuffix > 0)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(computeCommonSuffix());
+      localObject = ((StringBuilder)localObject).toString();
     }
-    return str;
+    return localObject;
   }
   
   private String computeCommonPrefix()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    if (this.fPrefix > this.fContextLength) {}
-    for (String str = "...";; str = "") {
-      return str + this.fExpected.substring(Math.max(0, this.fPrefix - this.fContextLength), this.fPrefix);
+    String str;
+    if (this.fPrefix > this.fContextLength) {
+      str = "...";
+    } else {
+      str = "";
     }
+    localStringBuilder.append(str);
+    localStringBuilder.append(this.fExpected.substring(Math.max(0, this.fPrefix - this.fContextLength), this.fPrefix));
+    return localStringBuilder.toString();
   }
   
   private String computeCommonSuffix()
   {
     int i = Math.min(this.fExpected.length() - this.fSuffix + 1 + this.fContextLength, this.fExpected.length());
-    StringBuilder localStringBuilder = new StringBuilder().append(this.fExpected.substring(this.fExpected.length() - this.fSuffix + 1, i));
-    if (this.fExpected.length() - this.fSuffix + 1 < this.fExpected.length() - this.fContextLength) {}
-    for (String str = "...";; str = "") {
-      return str;
+    StringBuilder localStringBuilder = new StringBuilder();
+    String str = this.fExpected;
+    localStringBuilder.append(str.substring(str.length() - this.fSuffix + 1, i));
+    if (this.fExpected.length() - this.fSuffix + 1 < this.fExpected.length() - this.fContextLength) {
+      str = "...";
+    } else {
+      str = "";
     }
+    localStringBuilder.append(str);
+    return localStringBuilder.toString();
   }
   
   private void findCommonPrefix()
@@ -62,7 +84,11 @@ public class ComparisonCompactor
     int i = Math.min(this.fExpected.length(), this.fActual.length());
     for (;;)
     {
-      if ((this.fPrefix >= i) || (this.fExpected.charAt(this.fPrefix) != this.fActual.charAt(this.fPrefix))) {
+      int j = this.fPrefix;
+      if (j >= i) {
+        break;
+      }
+      if (this.fExpected.charAt(j) != this.fActual.charAt(this.fPrefix)) {
         return;
       }
       this.fPrefix += 1;
@@ -75,29 +101,30 @@ public class ComparisonCompactor
     int j = this.fActual.length() - 1;
     for (;;)
     {
-      if ((j < this.fPrefix) || (i < this.fPrefix) || (this.fExpected.charAt(i) != this.fActual.charAt(j)))
-      {
-        this.fSuffix = (this.fExpected.length() - i);
-        return;
+      int k = this.fPrefix;
+      if ((j < k) || (i < k) || (this.fExpected.charAt(i) != this.fActual.charAt(j))) {
+        break;
       }
       j -= 1;
       i -= 1;
     }
+    this.fSuffix = (this.fExpected.length() - i);
   }
   
   public String compact(String paramString)
   {
-    if ((this.fExpected == null) || (this.fActual == null) || (areStringsEqual())) {
-      return Assert.format(paramString, this.fExpected, this.fActual);
+    if ((this.fExpected != null) && (this.fActual != null) && (!areStringsEqual()))
+    {
+      findCommonPrefix();
+      findCommonSuffix();
+      return Assert.format(paramString, compactString(this.fExpected), compactString(this.fActual));
     }
-    findCommonPrefix();
-    findCommonSuffix();
-    return Assert.format(paramString, compactString(this.fExpected), compactString(this.fActual));
+    return Assert.format(paramString, this.fExpected, this.fActual);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     junit.framework.ComparisonCompactor
  * JD-Core Version:    0.7.0.1
  */

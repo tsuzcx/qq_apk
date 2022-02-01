@@ -28,19 +28,21 @@ public final class articlesummary$PackVideoInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro7 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 48, 58, 66, 88, 98, 106, 114, 122 }, new String[] { "uint32_busi_type", "bytes_vid", "uint32_width", "uint32_height", "uint32_duration", "uint64_file_size", "bytes_video_url", "bytes_share_url", "uint64_third_uin", "bytes_third_uin_name", "bytes_third_name", "bytes_third_icon", "bytes_third_action" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro2, localByteStringMicro3, Long.valueOf(0L), localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, localByteStringMicro7 }, PackVideoInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 48, 58, 66, 88, 98, 106, 114, 122 }, new String[] { "uint32_busi_type", "bytes_vid", "uint32_width", "uint32_height", "uint32_duration", "uint64_file_size", "bytes_video_url", "bytes_share_url", "uint64_third_uin", "bytes_third_uin_name", "bytes_third_name", "bytes_third_icon", "bytes_third_action" }, new Object[] { localInteger, localByteStringMicro1, localInteger, localInteger, localInteger, localLong, localByteStringMicro2, localByteStringMicro3, localLong, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, localByteStringMicro7 }, PackVideoInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.articlesummary.articlesummary.PackVideoInfo
  * JD-Core Version:    0.7.0.1
  */

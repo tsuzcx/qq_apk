@@ -6,9 +6,21 @@ import java.io.File;
 
 public class NavigateBackUtils
 {
-  public static final String NAVIGATE_BACK_APPID_FILE_PATH = PATH_WXAPKG_ROOT + "navigateback_appid";
-  public static final String PATH_WXAPKG_ROOT = AppLoaderFactory.g().getContext().getFilesDir().getPath() + "/mini/";
+  public static final String NAVIGATE_BACK_APPID_FILE_PATH;
+  public static final String PATH_WXAPKG_ROOT;
   public static final String TAG = "NavigateBackUtils";
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppLoaderFactory.g().getContext().getFilesDir().getPath());
+    localStringBuilder.append("/mini/");
+    PATH_WXAPKG_ROOT = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(PATH_WXAPKG_ROOT);
+    localStringBuilder.append("navigateback_appid");
+    NAVIGATE_BACK_APPID_FILE_PATH = localStringBuilder.toString();
+  }
   
   public static void clearTag()
   {
@@ -33,86 +45,86 @@ public class NavigateBackUtils
     // Byte code:
     //   0: aload_0
     //   1: invokevirtual 68	java/io/File:exists	()Z
-    //   4: ifeq +63 -> 67
-    //   7: new 80	java/io/BufferedReader
-    //   10: dup
-    //   11: new 82	java/io/FileReader
+    //   4: ifeq +88 -> 92
+    //   7: aconst_null
+    //   8: astore_3
+    //   9: aconst_null
+    //   10: astore_1
+    //   11: new 80	java/io/BufferedReader
     //   14: dup
-    //   15: aload_0
-    //   16: invokespecial 84	java/io/FileReader:<init>	(Ljava/io/File;)V
-    //   19: invokespecial 87	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   22: astore_1
-    //   23: aload_1
-    //   24: astore_0
-    //   25: aload_1
-    //   26: invokevirtual 90	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   29: astore_2
-    //   30: aload_1
-    //   31: astore_0
-    //   32: aload_1
+    //   15: new 82	java/io/FileReader
+    //   18: dup
+    //   19: aload_0
+    //   20: invokespecial 84	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   23: invokespecial 87	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   26: astore_0
+    //   27: aload_0
+    //   28: invokevirtual 90	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   31: astore_1
+    //   32: aload_0
     //   33: invokevirtual 93	java/io/BufferedReader:close	()V
-    //   36: aload_1
-    //   37: ifnull +7 -> 44
+    //   36: aload_0
+    //   37: invokevirtual 93	java/io/BufferedReader:close	()V
     //   40: aload_1
-    //   41: invokevirtual 93	java/io/BufferedReader:close	()V
-    //   44: aload_2
-    //   45: areturn
-    //   46: astore_2
-    //   47: aconst_null
-    //   48: astore_1
-    //   49: aload_1
-    //   50: astore_0
-    //   51: ldc 10
-    //   53: ldc 95
-    //   55: aload_2
-    //   56: invokestatic 101	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   59: aload_1
-    //   60: ifnull +7 -> 67
-    //   63: aload_1
-    //   64: invokevirtual 93	java/io/BufferedReader:close	()V
-    //   67: ldc 103
-    //   69: areturn
-    //   70: astore_1
-    //   71: aconst_null
-    //   72: astore_0
-    //   73: aload_0
-    //   74: ifnull +7 -> 81
-    //   77: aload_0
-    //   78: invokevirtual 93	java/io/BufferedReader:close	()V
-    //   81: aload_1
-    //   82: athrow
-    //   83: astore_0
-    //   84: aload_2
-    //   85: areturn
-    //   86: astore_0
-    //   87: goto -20 -> 67
-    //   90: astore_0
-    //   91: goto -10 -> 81
-    //   94: astore_1
-    //   95: goto -22 -> 73
-    //   98: astore_2
-    //   99: goto -50 -> 49
+    //   41: areturn
+    //   42: astore_2
+    //   43: aload_0
+    //   44: astore_1
+    //   45: aload_2
+    //   46: astore_0
+    //   47: goto +35 -> 82
+    //   50: astore_2
+    //   51: goto +10 -> 61
+    //   54: astore_0
+    //   55: goto +27 -> 82
+    //   58: astore_2
+    //   59: aload_3
+    //   60: astore_0
+    //   61: aload_0
+    //   62: astore_1
+    //   63: ldc 10
+    //   65: ldc 95
+    //   67: aload_2
+    //   68: invokestatic 101	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   71: aload_0
+    //   72: ifnull +20 -> 92
+    //   75: aload_0
+    //   76: invokevirtual 93	java/io/BufferedReader:close	()V
+    //   79: goto +13 -> 92
+    //   82: aload_1
+    //   83: ifnull +7 -> 90
+    //   86: aload_1
+    //   87: invokevirtual 93	java/io/BufferedReader:close	()V
+    //   90: aload_0
+    //   91: athrow
+    //   92: ldc 103
+    //   94: areturn
+    //   95: astore_0
+    //   96: aload_1
+    //   97: areturn
+    //   98: astore_0
+    //   99: goto -7 -> 92
+    //   102: astore_1
+    //   103: goto -13 -> 90
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	102	0	paramFile	File
-    //   22	42	1	localBufferedReader	java.io.BufferedReader
-    //   70	12	1	localObject1	Object
-    //   94	1	1	localObject2	Object
-    //   29	16	2	str	String
-    //   46	39	2	localException1	java.lang.Exception
-    //   98	1	2	localException2	java.lang.Exception
+    //   0	106	0	paramFile	File
+    //   10	87	1	localObject1	Object
+    //   102	1	1	localException1	java.lang.Exception
+    //   42	4	2	localObject2	Object
+    //   50	1	2	localException2	java.lang.Exception
+    //   58	10	2	localException3	java.lang.Exception
+    //   8	52	3	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   7	23	46	java/lang/Exception
-    //   7	23	70	finally
-    //   40	44	83	java/lang/Exception
-    //   63	67	86	java/lang/Exception
-    //   77	81	90	java/lang/Exception
-    //   25	30	94	finally
-    //   32	36	94	finally
-    //   51	59	94	finally
-    //   25	30	98	java/lang/Exception
-    //   32	36	98	java/lang/Exception
+    //   27	36	42	finally
+    //   27	36	50	java/lang/Exception
+    //   11	27	54	finally
+    //   63	71	54	finally
+    //   11	27	58	java/lang/Exception
+    //   36	40	95	java/lang/Exception
+    //   75	79	98	java/lang/Exception
+    //   86	90	102	java/lang/Exception
   }
   
   public static void writeTagAppid(String paramString)
@@ -124,87 +136,81 @@ public class NavigateBackUtils
   private static void writeTagAppidInner(File paramFile, String paramString)
   {
     // Byte code:
-    //   0: new 110	java/io/BufferedWriter
-    //   3: dup
-    //   4: new 112	java/io/FileWriter
+    //   0: aconst_null
+    //   1: astore_3
+    //   2: aconst_null
+    //   3: astore_2
+    //   4: new 110	java/io/BufferedWriter
     //   7: dup
-    //   8: aload_0
-    //   9: invokespecial 113	java/io/FileWriter:<init>	(Ljava/io/File;)V
-    //   12: invokespecial 116	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
-    //   15: astore_2
-    //   16: aload_2
-    //   17: astore_0
-    //   18: aload_2
-    //   19: aload_1
-    //   20: invokevirtual 119	java/io/BufferedWriter:write	(Ljava/lang/String;)V
-    //   23: aload_2
-    //   24: astore_0
-    //   25: aload_2
+    //   8: new 112	java/io/FileWriter
+    //   11: dup
+    //   12: aload_0
+    //   13: invokespecial 113	java/io/FileWriter:<init>	(Ljava/io/File;)V
+    //   16: invokespecial 116	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
+    //   19: astore_0
+    //   20: aload_0
+    //   21: aload_1
+    //   22: invokevirtual 119	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   25: aload_0
     //   26: invokevirtual 120	java/io/BufferedWriter:close	()V
-    //   29: aload_2
-    //   30: ifnull +7 -> 37
-    //   33: aload_2
-    //   34: invokevirtual 120	java/io/BufferedWriter:close	()V
-    //   37: return
-    //   38: astore_3
-    //   39: aconst_null
-    //   40: astore_1
-    //   41: aload_1
-    //   42: astore_0
-    //   43: ldc 10
-    //   45: ldc 95
-    //   47: aload_3
-    //   48: invokestatic 101	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   51: aload_1
-    //   52: ifnull -15 -> 37
-    //   55: aload_1
-    //   56: invokevirtual 120	java/io/BufferedWriter:close	()V
-    //   59: return
-    //   60: astore_0
-    //   61: return
-    //   62: astore_1
-    //   63: aconst_null
-    //   64: astore_0
-    //   65: aload_0
-    //   66: ifnull +7 -> 73
-    //   69: aload_0
-    //   70: invokevirtual 120	java/io/BufferedWriter:close	()V
-    //   73: aload_1
-    //   74: athrow
-    //   75: astore_0
-    //   76: return
-    //   77: astore_0
-    //   78: goto -5 -> 73
-    //   81: astore_1
-    //   82: goto -17 -> 65
-    //   85: astore_3
-    //   86: aload_2
-    //   87: astore_1
-    //   88: goto -47 -> 41
+    //   29: aload_0
+    //   30: invokevirtual 120	java/io/BufferedWriter:close	()V
+    //   33: return
+    //   34: astore_1
+    //   35: aload_0
+    //   36: astore_2
+    //   37: aload_1
+    //   38: astore_0
+    //   39: goto +33 -> 72
+    //   42: astore_1
+    //   43: goto +10 -> 53
+    //   46: astore_0
+    //   47: goto +25 -> 72
+    //   50: astore_1
+    //   51: aload_3
+    //   52: astore_0
+    //   53: aload_0
+    //   54: astore_2
+    //   55: ldc 10
+    //   57: ldc 95
+    //   59: aload_1
+    //   60: invokestatic 101	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   63: aload_0
+    //   64: ifnull +7 -> 71
+    //   67: aload_0
+    //   68: invokevirtual 120	java/io/BufferedWriter:close	()V
+    //   71: return
+    //   72: aload_2
+    //   73: ifnull +7 -> 80
+    //   76: aload_2
+    //   77: invokevirtual 120	java/io/BufferedWriter:close	()V
+    //   80: aload_0
+    //   81: athrow
+    //   82: astore_0
+    //   83: return
+    //   84: astore_1
+    //   85: goto -5 -> 80
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	91	0	paramFile	File
-    //   0	91	1	paramString	String
-    //   15	72	2	localBufferedWriter	java.io.BufferedWriter
-    //   38	10	3	localException1	java.lang.Exception
-    //   85	1	3	localException2	java.lang.Exception
+    //   0	88	0	paramFile	File
+    //   0	88	1	paramString	String
+    //   3	74	2	localFile	File
+    //   1	51	3	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   0	16	38	java/lang/Exception
-    //   55	59	60	java/lang/Exception
-    //   0	16	62	finally
-    //   33	37	75	java/lang/Exception
-    //   69	73	77	java/lang/Exception
-    //   18	23	81	finally
-    //   25	29	81	finally
-    //   43	51	81	finally
-    //   18	23	85	java/lang/Exception
-    //   25	29	85	java/lang/Exception
+    //   20	29	34	finally
+    //   20	29	42	java/lang/Exception
+    //   4	20	46	finally
+    //   55	63	46	finally
+    //   4	20	50	java/lang/Exception
+    //   29	33	82	java/lang/Exception
+    //   67	71	82	java/lang/Exception
+    //   76	80	84	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.NavigateBackUtils
  * JD-Core Version:    0.7.0.1
  */

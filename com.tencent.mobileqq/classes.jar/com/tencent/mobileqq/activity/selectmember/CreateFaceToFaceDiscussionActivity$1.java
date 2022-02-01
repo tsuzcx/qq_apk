@@ -13,18 +13,18 @@ class CreateFaceToFaceDiscussionActivity$1
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((NetworkUtil.d(this.a.jdField_a_of_type_AndroidContentContext)) && (this.a.c) && (this.a.isResume()))
+    if ((NetworkUtil.isNetSupport(this.a.mContext)) && (this.a.isEnteredHall) && (this.a.isResume()))
     {
-      if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(0)) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+      if (this.a.mHandler.hasMessages(0)) {
+        this.a.mHandler.removeMessages(0);
       }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+      this.a.mHandler.sendEmptyMessage(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity.1
  * JD-Core Version:    0.7.0.1
  */

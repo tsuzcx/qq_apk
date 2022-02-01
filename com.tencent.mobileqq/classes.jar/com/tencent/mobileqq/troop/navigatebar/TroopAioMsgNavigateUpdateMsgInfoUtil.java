@@ -8,7 +8,8 @@ import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.nearby.NearbyFlowerUtil;
+import com.tencent.mobileqq.nearby.api.INearbyFlowerUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.troop.data.MessageInfo;
 import com.tencent.mobileqq.troop.data.MessageNavInfo;
 import com.tencent.mobileqq.troop.data.TroopAioAgent.Message;
@@ -18,49 +19,53 @@ public class TroopAioMsgNavigateUpdateMsgInfoUtil
 {
   private static int a(int paramInt, MessageRecord paramMessageRecord)
   {
+    boolean bool = ((INearbyFlowerUtil)QRoute.api(INearbyFlowerUtil.class)).isNearbyFlowerMsg(paramMessageRecord);
     int j = -1;
-    boolean bool = NearbyFlowerUtil.a(paramMessageRecord);
     int i;
-    if (paramInt != 27) {
+    if (paramInt != 26)
+    {
       i = 0;
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel())
+      if ((paramMessageRecord.msgtype == -2035) || (paramMessageRecord.msgtype == -2038) || (bool))
       {
-        StringBuilder localStringBuilder = new StringBuilder().append("getFlowersCounts, bizType = ").append(paramInt).append(", isNearbyFlowerMsg = ").append(bool).append(", msgType = ");
-        paramInt = j;
-        if (paramMessageRecord != null) {
-          paramInt = paramMessageRecord.msgtype;
+        if (!bool) {
+          break label95;
         }
-        QLog.d("Navigate.UpdateMsgInfoUtil", 2, paramInt + ", flowersCount = " + i);
+        if ((paramMessageRecord instanceof MessageForStructing))
+        {
+          i = ((INearbyFlowerUtil)QRoute.api(INearbyFlowerUtil.class)).getFlowerCount((MessageForStructing)paramMessageRecord);
+          break label110;
+        }
       }
-      return i;
-      if ((paramMessageRecord.msgtype != -2035) && (paramMessageRecord.msgtype != -2038) && (!bool))
+      label95:
+      while (!(paramMessageRecord instanceof MessageForDeliverGiftTips))
       {
         i = -1;
+        break;
       }
-      else
-      {
-        if (bool)
-        {
-          if ((paramMessageRecord instanceof MessageForStructing)) {
-            i = NearbyFlowerUtil.a((MessageForStructing)paramMessageRecord);
-          }
-        }
-        else
-        {
-          if ((paramMessageRecord instanceof MessageForDeliverGiftTips))
-          {
-            i = ((MessageForDeliverGiftTips)paramMessageRecord).giftCount;
-            continue;
-          }
-          i = -1;
-          continue;
-        }
-        i = -1;
-      }
+      i = ((MessageForDeliverGiftTips)paramMessageRecord).giftCount;
     }
+    label110:
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getFlowersCounts, bizType = ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", isNearbyFlowerMsg = ");
+      localStringBuilder.append(bool);
+      localStringBuilder.append(", msgType = ");
+      paramInt = j;
+      if (paramMessageRecord != null) {
+        paramInt = paramMessageRecord.msgtype;
+      }
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", flowersCount = ");
+      localStringBuilder.append(i);
+      QLog.d("Navigate.UpdateMsgInfoUtil", 2, localStringBuilder.toString());
+    }
+    return i;
   }
   
   @Nullable
@@ -86,10 +91,13 @@ public class TroopAioMsgNavigateUpdateMsgInfoUtil
   
   private static String a(String paramString, boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 3000) {
-      return TroopAioNavigateBarManager.a(paramString, i);
+    int i;
+    if (paramBoolean) {
+      i = 1;
+    } else {
+      i = 3000;
     }
+    return TroopAioNavigateBarManager.a(paramString, i);
   }
   
   private static void a(QQAppInterface paramQQAppInterface, String paramString, MessageInfo paramMessageInfo, MessageRecord paramMessageRecord, boolean paramBoolean)
@@ -98,24 +106,35 @@ public class TroopAioMsgNavigateUpdateMsgInfoUtil
     int i = a(j, paramMessageRecord);
     if (((!paramBoolean) && (!MessageNavInfo.a(j))) || (i == -1))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Navigate.UpdateMsgInfoUtil", 2, "isTroop = " + paramBoolean + ", bizType = " + j + ", flowers = " + i + ", troopCode = " + paramString + ", isTroop = " + paramBoolean);
+      if (QLog.isColorLevel())
+      {
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("isTroop = ");
+        paramQQAppInterface.append(paramBoolean);
+        paramQQAppInterface.append(", bizType = ");
+        paramQQAppInterface.append(j);
+        paramQQAppInterface.append(", flowers = ");
+        paramQQAppInterface.append(i);
+        paramQQAppInterface.append(", troopCode = ");
+        paramQQAppInterface.append(paramString);
+        paramQQAppInterface.append(", isTroop = ");
+        paramQQAppInterface.append(paramBoolean);
+        QLog.d("Navigate.UpdateMsgInfoUtil", 2, paramQQAppInterface.toString());
       }
       return;
     }
-    String str = a(paramString, paramBoolean);
+    paramString = a(paramString, paramBoolean);
     j = NavConstants.b(j);
-    paramString = null;
-    if (j == 102) {
-      paramString = paramMessageRecord;
+    if (j != 102) {
+      paramMessageRecord = null;
     }
     long l = TroopAioAgent.Message.a(j, paramMessageInfo.a.a, paramMessageInfo.a.b);
-    ((TroopAioNavigateBarManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_AIO_NAVIGATE_BAR)).a(str, j, paramMessageInfo.a.a, l, "", i, paramString);
+    ((TroopAioNavigateBarManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_AIO_NAVIGATE_BAR)).a(paramString, j, paramMessageInfo.a.a, l, "", i, paramMessageRecord);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.navigatebar.TroopAioMsgNavigateUpdateMsgInfoUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -13,8 +13,9 @@ class SwiftIphoneTitleBarUI$2
   
   public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    this.a.b = paramInt2;
-    this.a.a(this.a.b, this.a.f);
+    paramView = this.a;
+    paramView.b = paramInt2;
+    paramView.a(paramView.b, this.a.f);
     paramView = this.a.a.a();
     if ((paramView != null) && (!TextUtils.isEmpty(this.a.d))) {
       paramView.callJs(this.a.d, new String[] { String.valueOf(paramInt1), String.valueOf(paramInt2), String.valueOf(paramInt3), String.valueOf(paramInt4) });
@@ -23,7 +24,7 @@ class SwiftIphoneTitleBarUI$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.nearby;
 
 import android.content.Intent;
-import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.biz.webviewplugin.HotchatPlugin;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.nearby.api.INearbyAppInterface;
+import com.tencent.mobileqq.nearby.api.IOldBigDataChannelManager;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
@@ -33,7 +34,6 @@ import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.app.MSFServlet;
-import mqq.app.NewIntent;
 import mqq.app.Packet;
 import org.json.JSONObject;
 import tencent.im.cs.cmd0x6ff.subcmd0x501.ReqBody;
@@ -53,8 +53,8 @@ public class NearbyAlumniServlet
   extends MSFServlet
 {
   private static int jdField_a_of_type_Int = 0;
-  static final Object jdField_a_of_type_JavaLangObject = new Object();
-  static HashMap<String, Object> jdField_a_of_type_JavaUtilHashMap;
+  static final Object jdField_a_of_type_JavaLangObject = NearbyAlumniServletUtils.jdField_a_of_type_JavaLangObject;
+  static HashMap<String, Object> jdField_a_of_type_JavaUtilHashMap = NearbyAlumniServletUtils.jdField_a_of_type_JavaUtilHashMap;
   
   private static int a()
   {
@@ -66,9 +66,12 @@ public class NearbyAlumniServlet
   public static String a(int paramInt1, int paramInt2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramInt1 & 0xFF).append(".");
-    localStringBuilder.append(paramInt1 >> 8 & 0xFF).append(".");
-    localStringBuilder.append(paramInt1 >> 16 & 0xFF).append(".");
+    localStringBuilder.append(paramInt1 & 0xFF);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramInt1 >> 8 & 0xFF);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramInt1 >> 16 & 0xFF);
+    localStringBuilder.append(".");
     localStringBuilder.append(paramInt1 >> 24 & 0xFF);
     return a(localStringBuilder.toString(), paramInt2);
   }
@@ -76,231 +79,297 @@ public class NearbyAlumniServlet
   public static String a(String paramString, int paramInt)
   {
     StringBuffer localStringBuffer = new StringBuffer(200);
-    localStringBuffer.append("http://").append(paramString);
-    if (paramInt != 80) {
-      localStringBuffer.append(":").append(paramInt);
+    localStringBuffer.append("http://");
+    localStringBuffer.append(paramString);
+    if (paramInt != 80)
+    {
+      localStringBuffer.append(":");
+      localStringBuffer.append(paramInt);
     }
     localStringBuffer.append("/");
     return localStringBuffer.toString();
   }
   
-  private void a(Intent paramIntent, int paramInt, byte[] paramArrayOfByte1, byte[] arg4)
+  private void a(Intent paramIntent, int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyAlumniServlet", 2, "respGetNearbyAlumni, errorCode = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("respGetNearbyAlumni, errorCode = ");
+      localStringBuilder.append(paramInt);
+      QLog.i("NearbyAlumniServlet", 2, localStringBuilder.toString());
     }
     paramIntent.getStringExtra("param_req_json_string");
     String str2 = paramIntent.getStringExtra("param_callback_key");
     String str1 = paramIntent.getStringExtra("param_callback_id");
-    Object localObject1 = null;
-    paramIntent = localObject1;
+    StringBuilder localStringBuilder = null;
     int i = paramInt;
-    int k;
-    if (paramInt == 0) {
+    if (paramInt == 0) {}
+    label1161:
+    label1302:
+    for (;;)
+    {
       try
       {
-        k = paramArrayOfByte1.length;
-        if ((paramArrayOfByte1[0] != 40) || (paramArrayOfByte1[(k - 1)] != 41))
+        int k = paramArrayOfByte1.length;
+        if ((paramArrayOfByte1[0] == 40) && (paramArrayOfByte1[(k - 1)] == 41))
         {
-          paramIntent = "unexpected body data, len=" + k + ", data=";
+          paramIntent = new DataInputStream(new ByteArrayInputStream(paramArrayOfByte1));
+          paramIntent.readByte();
+          i = paramIntent.readInt();
+          int j = paramIntent.readInt();
+          if ((i <= k) && (j <= k))
+          {
+            if (QLog.isColorLevel())
+            {
+              paramArrayOfByte1 = new StringBuilder();
+              paramArrayOfByte1.append("respGetNearbyAlumni | headLen=");
+              paramArrayOfByte1.append(i);
+              paramArrayOfByte1.append(" | bodyLen=");
+              paramArrayOfByte1.append(j);
+              QLog.i("NearbyAlumniServlet", 2, paramArrayOfByte1.toString());
+            }
+            if (i > 0)
+            {
+              paramArrayOfByte1 = new byte[i];
+              paramIntent.read(paramArrayOfByte1);
+              Object localObject = new im_msg_head.Head();
+              ((im_msg_head.Head)localObject).mergeFrom(paramArrayOfByte1);
+              localObject = (im_msg_head.HttpConnHead)((im_msg_head.Head)localObject).msg_httpconn_head.get();
+              paramInt = ((im_msg_head.HttpConnHead)localObject).uint32_error_code.get();
+              if (!QLog.isDevelopLevel()) {
+                break label1302;
+              }
+              paramArrayOfByte1 = new StringBuilder();
+              paramArrayOfByte1.append("uint64_uin=");
+              paramArrayOfByte1.append(((im_msg_head.HttpConnHead)localObject).uint64_uin.get());
+              paramArrayOfByte1.append(", uint32_command=");
+              paramArrayOfByte1.append(((im_msg_head.HttpConnHead)localObject).uint32_command.get());
+              paramArrayOfByte1.append(", uint32_sub_command=");
+              paramArrayOfByte1.append(((im_msg_head.HttpConnHead)localObject).uint32_sub_command.get());
+              paramArrayOfByte1.append(", uint32_seq=");
+              paramArrayOfByte1.append(((im_msg_head.HttpConnHead)localObject).uint32_seq.get());
+              paramArrayOfByte1.append(", uint32_version=");
+              paramArrayOfByte1.append(((im_msg_head.HttpConnHead)localObject).uint32_version.get());
+              paramArrayOfByte1.append(", uint32_retry_times=");
+              paramArrayOfByte1.append(((im_msg_head.HttpConnHead)localObject).uint32_retry_times.get());
+              paramArrayOfByte1.append(", uint32_client_type=");
+              paramArrayOfByte1.append(((im_msg_head.HttpConnHead)localObject).uint32_client_type.get());
+              paramArrayOfByte1.append(", uint32_pub_no=");
+              paramArrayOfByte1.append(((im_msg_head.HttpConnHead)localObject).uint32_pub_no.get());
+              paramArrayOfByte1.append(", uint32_local_id=");
+              paramArrayOfByte1.append(((im_msg_head.HttpConnHead)localObject).uint32_local_id.get());
+              paramArrayOfByte1.append(", uint32_time_zone=");
+              paramArrayOfByte1.append(((im_msg_head.HttpConnHead)localObject).uint32_time_zone.get());
+              paramArrayOfByte1.append(", uint32_client_ip=");
+              paramArrayOfByte1.append(((im_msg_head.HttpConnHead)localObject).uint32_client_ip.get());
+              paramArrayOfByte1.append(", uint32_client_port=");
+              paramArrayOfByte1.append(((im_msg_head.HttpConnHead)localObject).uint32_client_port.get());
+              paramArrayOfByte1.append(", uint32_qzhttp_ip=");
+              paramArrayOfByte1.append(((im_msg_head.HttpConnHead)localObject).uint32_qzhttp_ip.get());
+              paramArrayOfByte1.append(", uint32_qzhttp_port=");
+              paramArrayOfByte1.append(((im_msg_head.HttpConnHead)localObject).uint32_qzhttp_port.get());
+              paramArrayOfByte1.append(", uint32_spp_ip=");
+              paramArrayOfByte1.append(((im_msg_head.HttpConnHead)localObject).uint32_spp_ip.get());
+              paramArrayOfByte1.append(", uint32_spp_port=");
+              paramArrayOfByte1.append(((im_msg_head.HttpConnHead)localObject).uint32_spp_port.get());
+              paramArrayOfByte1.append(", uint32_flag=");
+              paramArrayOfByte1.append(((im_msg_head.HttpConnHead)localObject).uint32_flag.get());
+              paramArrayOfByte1.append(", bytes_key=");
+              paramArrayOfByte1.append(((im_msg_head.HttpConnHead)localObject).bytes_key.get());
+              paramArrayOfByte1.append(", uint32_compress_type=");
+              paramArrayOfByte1.append(((im_msg_head.HttpConnHead)localObject).uint32_compress_type.get());
+              paramArrayOfByte1.append(", uint32_origin_size=");
+              paramArrayOfByte1.append(((im_msg_head.HttpConnHead)localObject).uint32_origin_size.get());
+              paramArrayOfByte1.append(", uint32_error_code=");
+              paramArrayOfByte1.append(((im_msg_head.HttpConnHead)localObject).uint32_error_code.get());
+              paramArrayOfByte1.append(", uint32_command_id=");
+              paramArrayOfByte1.append(((im_msg_head.HttpConnHead)localObject).uint32_command_id.get());
+              paramArrayOfByte1.append(", uint32_service_cmdid=");
+              paramArrayOfByte1.append(((im_msg_head.HttpConnHead)localObject).uint32_service_cmdid.get());
+              localObject = (im_msg_head.TransOidbHead)((im_msg_head.HttpConnHead)localObject).msg_oidbhead.get();
+              if (localObject != null)
+              {
+                paramArrayOfByte1.append(", TransOidbHead=[");
+                paramArrayOfByte1.append("uint32_command=");
+                paramArrayOfByte1.append(((im_msg_head.TransOidbHead)localObject).uint32_command.get());
+                paramArrayOfByte1.append("|uint32_service_type=");
+                paramArrayOfByte1.append(((im_msg_head.TransOidbHead)localObject).uint32_service_type.get());
+                paramArrayOfByte1.append("|uint32_result=");
+                paramArrayOfByte1.append(((im_msg_head.TransOidbHead)localObject).uint32_result.get());
+                paramArrayOfByte1.append("|str_error_msg=");
+                paramArrayOfByte1.append(((im_msg_head.TransOidbHead)localObject).str_error_msg.get());
+                paramArrayOfByte1.append("]");
+              }
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("HttpConnHead=");
+              ((StringBuilder)localObject).append(paramArrayOfByte1.toString());
+              QLog.i("NearbyAlumniServlet", 4, ((StringBuilder)localObject).toString());
+              break label1302;
+            }
+            i = paramInt;
+            if (j > 0)
+            {
+              i = paramInt;
+              if (paramInt == 0)
+              {
+                paramArrayOfByte1 = new byte[j];
+                paramIntent.read(paramArrayOfByte1);
+                paramIntent = new Cryptor().decrypt(paramArrayOfByte1, paramArrayOfByte2);
+                paramArrayOfByte1 = new oidb_cmd0x6b2.RspBody();
+                paramArrayOfByte1.mergeFrom(paramIntent);
+                paramIntent = paramArrayOfByte1.bytes_body.get().toStringUtf8();
+                break label1161;
+              }
+            }
+          }
+          else
+          {
+            paramIntent = new StringBuilder();
+            paramIntent.append("unexpected length, headLen=");
+            paramIntent.append(i);
+            paramIntent.append(", bodyLen=");
+            paramIntent.append(j);
+            throw new RuntimeException(paramIntent.toString());
+          }
+        }
+        else
+        {
+          paramIntent = new StringBuilder();
+          paramIntent.append("unexpected body data, len=");
+          paramIntent.append(k);
+          paramIntent.append(", data=");
+          paramIntent = paramIntent.toString();
           paramArrayOfByte1 = paramArrayOfByte1.toString();
-          ??? = new StringBuilder().append(paramIntent);
+          paramArrayOfByte2 = new StringBuilder();
+          paramArrayOfByte2.append(paramIntent);
           paramIntent = paramArrayOfByte1;
           if (paramArrayOfByte1.length() > 20) {
             paramIntent = paramArrayOfByte1.substring(0, 20);
           }
-          throw new RuntimeException(paramIntent);
+          paramArrayOfByte2.append(paramIntent);
+          throw new RuntimeException(paramArrayOfByte2.toString());
         }
       }
-      catch (Exception paramArrayOfByte1)
+      catch (Exception paramIntent)
       {
-        paramInt = -10;
-        paramIntent = localObject1;
-        i = paramInt;
         if (QLog.isColorLevel())
         {
-          QLog.i("NearbyAlumniServlet", 2, "respGetNearbyAlumni | Exception:" + paramArrayOfByte1.getMessage());
-          i = paramInt;
-          paramIntent = localObject1;
+          paramArrayOfByte1 = new StringBuilder();
+          paramArrayOfByte1.append("respGetNearbyAlumni | Exception:");
+          paramArrayOfByte1.append(paramIntent.getMessage());
+          QLog.i("NearbyAlumniServlet", 2, paramArrayOfByte1.toString());
         }
+        paramIntent = null;
+        paramInt = -10;
       }
-    }
-    for (;;)
-    {
-      paramArrayOfByte1 = null;
-      synchronized (jdField_a_of_type_JavaLangObject)
+      paramIntent = null;
+      paramInt = i;
+      paramArrayOfByte2 = jdField_a_of_type_JavaLangObject;
+      paramArrayOfByte1 = localStringBuilder;
+      try
       {
         if (jdField_a_of_type_JavaUtilHashMap != null) {
           paramArrayOfByte1 = jdField_a_of_type_JavaUtilHashMap.remove(str2);
         }
         if (NearbyUtils.b()) {
-          NearbyUtils.a("NearbyAlumniServlet", new Object[] { "respGetNearbyAlumni", Integer.valueOf(i), paramArrayOfByte1 });
+          NearbyUtils.a("NearbyAlumniServlet", new Object[] { "respGetNearbyAlumni", Integer.valueOf(paramInt), paramArrayOfByte1 });
         }
-        if ((paramArrayOfByte1 instanceof HotchatPlugin)) {
+        if ((paramArrayOfByte1 instanceof HotchatPlugin))
+        {
           paramArrayOfByte1 = (HotchatPlugin)paramArrayOfByte1;
-        }
-      }
-      try
-      {
-        ??? = new JSONObject();
-        ???.put("resultCode", i);
-        ???.put("data", paramIntent);
-        paramIntent = ???.toString();
-        paramArrayOfByte1.callJs(str1, new String[] { paramIntent });
-        return;
-        paramIntent = new DataInputStream(new ByteArrayInputStream(paramArrayOfByte1));
-        paramIntent.readByte();
-        i = paramIntent.readInt();
-        int j = paramIntent.readInt();
-        if ((i > k) || (j > k)) {
-          throw new RuntimeException("unexpected length, headLen=" + i + ", bodyLen=" + j);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("NearbyAlumniServlet", 2, "respGetNearbyAlumni | headLen=" + i + " | bodyLen=" + j);
-        }
-        if (i > 0)
-        {
-          paramArrayOfByte1 = new byte[i];
-          paramIntent.read(paramArrayOfByte1);
-          Object localObject2 = new im_msg_head.Head();
-          ((im_msg_head.Head)localObject2).mergeFrom(paramArrayOfByte1);
-          localObject2 = (im_msg_head.HttpConnHead)((im_msg_head.Head)localObject2).msg_httpconn_head.get();
-          i = ((im_msg_head.HttpConnHead)localObject2).uint32_error_code.get();
-          paramInt = i;
-          if (QLog.isDevelopLevel())
+          try
           {
-            paramArrayOfByte1 = new StringBuilder();
-            paramArrayOfByte1.append("uint64_uin=").append(((im_msg_head.HttpConnHead)localObject2).uint64_uin.get()).append(", uint32_command=").append(((im_msg_head.HttpConnHead)localObject2).uint32_command.get()).append(", uint32_sub_command=").append(((im_msg_head.HttpConnHead)localObject2).uint32_sub_command.get()).append(", uint32_seq=").append(((im_msg_head.HttpConnHead)localObject2).uint32_seq.get()).append(", uint32_version=").append(((im_msg_head.HttpConnHead)localObject2).uint32_version.get()).append(", uint32_retry_times=").append(((im_msg_head.HttpConnHead)localObject2).uint32_retry_times.get()).append(", uint32_client_type=").append(((im_msg_head.HttpConnHead)localObject2).uint32_client_type.get()).append(", uint32_pub_no=").append(((im_msg_head.HttpConnHead)localObject2).uint32_pub_no.get()).append(", uint32_local_id=").append(((im_msg_head.HttpConnHead)localObject2).uint32_local_id.get()).append(", uint32_time_zone=").append(((im_msg_head.HttpConnHead)localObject2).uint32_time_zone.get()).append(", uint32_client_ip=").append(((im_msg_head.HttpConnHead)localObject2).uint32_client_ip.get()).append(", uint32_client_port=").append(((im_msg_head.HttpConnHead)localObject2).uint32_client_port.get()).append(", uint32_qzhttp_ip=").append(((im_msg_head.HttpConnHead)localObject2).uint32_qzhttp_ip.get()).append(", uint32_qzhttp_port=").append(((im_msg_head.HttpConnHead)localObject2).uint32_qzhttp_port.get()).append(", uint32_spp_ip=").append(((im_msg_head.HttpConnHead)localObject2).uint32_spp_ip.get()).append(", uint32_spp_port=").append(((im_msg_head.HttpConnHead)localObject2).uint32_spp_port.get()).append(", uint32_flag=").append(((im_msg_head.HttpConnHead)localObject2).uint32_flag.get()).append(", bytes_key=").append(((im_msg_head.HttpConnHead)localObject2).bytes_key.get()).append(", uint32_compress_type=").append(((im_msg_head.HttpConnHead)localObject2).uint32_compress_type.get()).append(", uint32_origin_size=").append(((im_msg_head.HttpConnHead)localObject2).uint32_origin_size.get()).append(", uint32_error_code=").append(((im_msg_head.HttpConnHead)localObject2).uint32_error_code.get()).append(", uint32_command_id=").append(((im_msg_head.HttpConnHead)localObject2).uint32_command_id.get()).append(", uint32_service_cmdid=").append(((im_msg_head.HttpConnHead)localObject2).uint32_service_cmdid.get());
-            localObject2 = (im_msg_head.TransOidbHead)((im_msg_head.HttpConnHead)localObject2).msg_oidbhead.get();
-            if (localObject2 != null) {
-              paramArrayOfByte1.append(", TransOidbHead=[").append("uint32_command=").append(((im_msg_head.TransOidbHead)localObject2).uint32_command.get()).append("|uint32_service_type=").append(((im_msg_head.TransOidbHead)localObject2).uint32_service_type.get()).append("|uint32_result=").append(((im_msg_head.TransOidbHead)localObject2).uint32_result.get()).append("|str_error_msg=").append(((im_msg_head.TransOidbHead)localObject2).str_error_msg.get()).append("]");
-            }
-            QLog.i("NearbyAlumniServlet", 4, "HttpConnHead=" + paramArrayOfByte1.toString());
-            paramInt = i;
+            paramArrayOfByte2 = new JSONObject();
+            paramArrayOfByte2.put("resultCode", paramInt);
+            paramArrayOfByte2.put("data", paramIntent);
+            paramIntent = paramArrayOfByte2.toString();
           }
+          catch (Exception paramIntent)
+          {
+            paramIntent.printStackTrace();
+            paramIntent = "";
+          }
+          paramArrayOfByte1.callJs(str1, new String[] { paramIntent });
         }
-        if ((j > 0) && (paramInt == 0))
-        {
-          paramArrayOfByte1 = new byte[j];
-          paramIntent.read(paramArrayOfByte1);
-          paramIntent = new Cryptor().decrypt(paramArrayOfByte1, ???);
-          paramArrayOfByte1 = new oidb_cmd0x6b2.RspBody();
-          paramArrayOfByte1.mergeFrom(paramIntent);
-          paramIntent = paramArrayOfByte1.bytes_body.get().toStringUtf8();
-          i = paramInt;
-          continue;
-          paramIntent = finally;
-          throw paramIntent;
-        }
+        return;
       }
-      catch (Exception paramIntent)
-      {
-        for (;;)
-        {
-          paramIntent.printStackTrace();
-          paramIntent = "";
-          continue;
-          paramIntent = null;
-        }
-      }
+      finally {}
     }
   }
   
   private void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
+    Object localObject1;
     if (paramFromServiceMsg.isSuccess()) {
       localObject1 = new subcmd0x501.RspBody();
     }
-    try
+    for (;;)
     {
-      paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
-      localObject2 = new byte[paramFromServiceMsg.getInt() - 4];
-      paramFromServiceMsg.get((byte[])localObject2);
-      ((subcmd0x501.RspBody)localObject1).mergeFrom((byte[])localObject2);
-      localObject2 = (subcmd0x501.SubCmd0x501Rspbody)((subcmd0x501.RspBody)localObject1).msg_subcmd_0x501_rsp_body.get();
-      paramFromServiceMsg = ((subcmd0x501.SubCmd0x501Rspbody)localObject2).bytes_session_key.get();
-      if ((paramFromServiceMsg == null) || (paramFromServiceMsg.toByteArray().length <= 0)) {
-        break label341;
-      }
-      paramFromServiceMsg = paramFromServiceMsg.toByteArray();
-    }
-    catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-    {
-      for (;;)
+      try
       {
-        Object localObject2;
-        Object localObject3;
-        int i;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("NearbyAlumniServlet", 2, paramFromServiceMsg.getMessage());
-          continue;
-          localObject2 = null;
-          continue;
-          localObject1 = null;
-          continue;
-          paramFromServiceMsg = null;
+        paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
+        localObject2 = new byte[paramFromServiceMsg.getInt() - 4];
+        paramFromServiceMsg.get((byte[])localObject2);
+        ((subcmd0x501.RspBody)localObject1).mergeFrom((byte[])localObject2);
+        localObject2 = (subcmd0x501.SubCmd0x501Rspbody)((subcmd0x501.RspBody)localObject1).msg_subcmd_0x501_rsp_body.get();
+        paramFromServiceMsg = ((subcmd0x501.SubCmd0x501Rspbody)localObject2).bytes_session_key.get();
+        if ((paramFromServiceMsg == null) || (paramFromServiceMsg.toByteArray().length <= 0)) {
+          break label341;
         }
-      }
-    }
-    localObject1 = ((subcmd0x501.SubCmd0x501Rspbody)localObject2).bytes_httpconn_sig_session.get();
-    if ((localObject1 != null) && (((ByteStringMicro)localObject1).toByteArray().length > 0))
-    {
-      localObject1 = ((ByteStringMicro)localObject1).toByteArray();
-      localObject2 = ((subcmd0x501.SubCmd0x501Rspbody)localObject2).rpt_msg_httpconn_addrs.get();
-      if ((localObject2 != null) && (((List)localObject2).size() != 0))
-      {
+        paramFromServiceMsg = paramFromServiceMsg.toByteArray();
+        localObject1 = ((subcmd0x501.SubCmd0x501Rspbody)localObject2).bytes_httpconn_sig_session.get();
+        if ((localObject1 == null) || (((ByteStringMicro)localObject1).toByteArray().length <= 0)) {
+          break label346;
+        }
+        localObject1 = ((ByteStringMicro)localObject1).toByteArray();
+        localObject2 = ((subcmd0x501.SubCmd0x501Rspbody)localObject2).rpt_msg_httpconn_addrs.get();
+        if ((localObject2 == null) || (((List)localObject2).size() == 0)) {
+          break label352;
+        }
         localObject2 = ((List)localObject2).iterator();
-        do
+        if (!((Iterator)localObject2).hasNext()) {
+          break label352;
+        }
+        Object localObject3 = (subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)((Iterator)localObject2).next();
+        if (((subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)localObject3).uint32_service_type.get() != 5) {
+          continue;
+        }
+        List localList = ((subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)localObject3).rpt_msg_addrs.get();
+        if ((localList == null) || (localList.size() == 0)) {
+          break label352;
+        }
+        localObject3 = new String[localList.size()];
+        int i = 0;
+        localObject2 = localObject3;
+        if (i < localList.size())
         {
-          if (!((Iterator)localObject2).hasNext()) {
-            break;
-          }
-          localObject3 = (subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)((Iterator)localObject2).next();
-        } while (((subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)localObject3).uint32_service_type.get() != 5);
-        localObject3 = ((subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)localObject3).rpt_msg_addrs.get();
-        if ((localObject3 != null) && (((List)localObject3).size() != 0))
-        {
-          localObject2 = new String[((List)localObject3).size()];
-          i = 0;
-          while (i < ((List)localObject3).size())
-          {
-            subcmd0x501.SubCmd0x501Rspbody.IpAddr localIpAddr = (subcmd0x501.SubCmd0x501Rspbody.IpAddr)((List)localObject3).get(i);
-            localObject2[i] = a(localIpAddr.uint32_ip.get(), localIpAddr.uint32_port.get());
-            i += 1;
-          }
-          localObject3 = a();
-          if (localObject3 != null) {
-            ((OldBigDataChannelManager)localObject3).a(paramFromServiceMsg, (byte[])localObject1, (String[])localObject2);
-          }
-          a(paramIntent, null, true);
-          return;
+          localObject2 = (subcmd0x501.SubCmd0x501Rspbody.IpAddr)localList.get(i);
+          localObject3[i] = a(((subcmd0x501.SubCmd0x501Rspbody.IpAddr)localObject2).uint32_ip.get(), ((subcmd0x501.SubCmd0x501Rspbody.IpAddr)localObject2).uint32_port.get());
+          i += 1;
+          continue;
+        }
+        localObject3 = a();
+        if (localObject3 != null) {
+          ((IOldBigDataChannelManager)localObject3).saveSrvParam(paramFromServiceMsg, (byte[])localObject1, (String[])localObject2);
         }
       }
-    }
-  }
-  
-  public static void a(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString1, Object paramObject, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      throw new IllegalArgumentException("reqJsonStr can not be null!");
-    }
-    String str = String.valueOf(SystemClock.elapsedRealtime()) + "_" + paramString1;
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_JavaUtilHashMap == null) {
-        jdField_a_of_type_JavaUtilHashMap = new HashMap(1);
+      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("NearbyAlumniServlet", 2, paramFromServiceMsg.getMessage());
+        }
       }
-      jdField_a_of_type_JavaUtilHashMap.put(str, paramObject);
-      paramObject = new NewIntent(paramAppInterface.getApplication(), NearbyAlumniServlet.class);
-      paramObject.putExtra("param_cmd", paramInt1);
-      paramObject.putExtra("param_subcmd", paramInt2);
-      paramObject.putExtra("param_uin", Long.parseLong(paramAppInterface.getCurrentAccountUin()));
-      paramObject.putExtra("param_req_json_string", paramString1);
-      paramObject.putExtra("param_callback_key", str);
-      paramObject.putExtra("param_callback_id", paramString2);
-      paramAppInterface.startServlet(paramObject);
+      a(paramIntent, null, true);
       return;
+      label341:
+      paramFromServiceMsg = null;
+      continue;
+      label346:
+      localObject1 = null;
+      continue;
+      label352:
+      Object localObject2 = null;
     }
   }
   
@@ -333,11 +402,11 @@ public class NearbyAlumniServlet
     return true;
   }
   
-  protected OldBigDataChannelManager a()
+  protected IOldBigDataChannelManager a()
   {
     AppRuntime localAppRuntime = getAppRuntime();
-    if ((localAppRuntime instanceof NearbyAppInterface)) {
-      return (OldBigDataChannelManager)localAppRuntime.getManager(NearbyConstants.g);
+    if ((localAppRuntime instanceof INearbyAppInterface)) {
+      return (IOldBigDataChannelManager)localAppRuntime.getManager(NearbyConstants.g);
     }
     if ((localAppRuntime instanceof BrowserAppInterface)) {
       return ((BrowserAppInterface)localAppRuntime).a();
@@ -353,128 +422,127 @@ public class NearbyAlumniServlet
       NearbyUtils.a("NearbyAlumniServlet", new Object[] { "reqBigData", Integer.valueOf(i), Long.valueOf(l) });
     }
     Object localObject2 = paramIntent.getStringExtra("param_req_json_string");
-    if ((l == 0L) || (TextUtils.isEmpty((CharSequence)localObject2))) {}
-    Object localObject1;
-    label567:
-    do
+    if (l != 0L)
     {
-      do
-      {
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
         return;
-        Object localObject3 = a();
-        if (localObject3 == null) {
-          localObject1 = null;
-        }
-        while (localObject1 == null) {
-          if (paramBoolean)
-          {
-            a(null, -1, null, null);
-            return;
-            localObject1 = ((OldBigDataChannelManager)localObject3).a();
-          }
-          else
-          {
-            a(paramIntent, paramPacket);
-            return;
-          }
-        }
-        Object localObject4 = new oidb_cmd0x6b2.ReqBody();
-        ((oidb_cmd0x6b2.ReqBody)localObject4).bytes_body.set(ByteStringMicro.copyFromUtf8((String)localObject2));
-        localObject4 = new Cryptor().encrypt(((oidb_cmd0x6b2.ReqBody)localObject4).toByteArray(), (byte[])localObject1);
-        Object localObject5 = new im_msg_head.Head();
-        ((im_msg_head.Head)localObject5).uint32_head_type.set(4);
-        Object localObject6 = new im_msg_head.LoginSig();
-        ((im_msg_head.LoginSig)localObject6).uint32_type.set(22);
-        if (localObject3 == null) {
-          localObject2 = null;
-        }
-        for (;;)
+      }
+      Object localObject3 = a();
+      Object localObject1;
+      if (localObject3 == null) {
+        localObject1 = null;
+      } else {
+        localObject1 = ((IOldBigDataChannelManager)localObject3).getSrvKey();
+      }
+      if (localObject1 == null)
+      {
+        if (paramBoolean)
         {
-          if (localObject2 != null)
-          {
-            ((im_msg_head.LoginSig)localObject6).bytes_sig.set(ByteStringMicro.copyFrom((byte[])localObject2));
-            ((im_msg_head.Head)localObject5).msg_login_sig.set((MessageMicro)localObject6);
-            localObject2 = new im_msg_head.HttpConnHead();
-            ((im_msg_head.HttpConnHead)localObject2).uint64_uin.set(l);
-            ((im_msg_head.HttpConnHead)localObject2).uint32_command.set(1791);
-            ((im_msg_head.HttpConnHead)localObject2).uint32_sub_command.set(3088);
-            ((im_msg_head.HttpConnHead)localObject2).uint32_seq.set(a());
-            ((im_msg_head.HttpConnHead)localObject2).uint32_version.set(4643);
-            ((im_msg_head.HttpConnHead)localObject2).uint32_flag.set(1);
-            ((im_msg_head.HttpConnHead)localObject2).uint32_compress_type.set(0);
-            ((im_msg_head.HttpConnHead)localObject2).uint32_error_code.set(0);
-            localObject6 = new im_msg_head.TransOidbHead();
-            ((im_msg_head.TransOidbHead)localObject6).uint32_command.set(1714);
-            ((im_msg_head.TransOidbHead)localObject6).uint32_service_type.set(i);
-            ((im_msg_head.HttpConnHead)localObject2).msg_oidbhead.set((MessageMicro)localObject6);
-            ((im_msg_head.Head)localObject5).msg_httpconn_head.set((MessageMicro)localObject2);
-            localObject2 = ((im_msg_head.Head)localObject5).toByteArray();
-            localObject5 = new ByteArrayOutputStream();
-          }
-          try
-          {
-            localObject6 = new DataOutputStream((OutputStream)localObject5);
-            ((DataOutputStream)localObject6).write(40);
-            ((DataOutputStream)localObject6).writeInt(localObject2.length);
-            ((DataOutputStream)localObject6).writeInt(localObject4.length);
-            ((DataOutputStream)localObject6).write((byte[])localObject2);
-            ((DataOutputStream)localObject6).write((byte[])localObject4);
-            ((DataOutputStream)localObject6).write(41);
-            ((DataOutputStream)localObject6).flush();
-            if (localObject3 == null)
-            {
-              localObject2 = null;
-              if ((localObject2 != null) && (((String)localObject2).length() != 0)) {
-                break;
-              }
-              if (!paramBoolean) {
-                break label567;
-              }
-              a(null, -1, null, null);
-              return;
-              localObject2 = ((OldBigDataChannelManager)localObject3).b();
-              continue;
-              if (paramBoolean)
-              {
-                a(null, -1, null, null);
-                return;
-              }
-              a(paramIntent, paramPacket);
-            }
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.i("NearbyAlumniServlet", 2, localException.getMessage());
-              }
-              a(paramIntent, -10, null, null);
-              continue;
-              str = ((OldBigDataChannelManager)localObject3).a();
-            }
-            a(paramIntent, paramPacket);
-            return;
-          }
+          a(null, -1, null, null);
+          return;
         }
-        String str = str + "cgi-bin/httpconn";
-        localObject3 = ((ByteArrayOutputStream)localObject5).toByteArray();
-        paramPacket = new HttpNetReq();
-        paramPacket.mSendData = ((byte[])localObject3);
-        paramPacket.mCallback = new NearbyAlumniServlet.NearbyAlumniDownloadListener(this, paramIntent, (byte[])localObject1);
-        paramPacket.mReqUrl = str;
-        paramPacket.mHttpMethod = 1;
-        paramPacket.mFileType = 131080;
-        paramPacket.mReqProperties.put("Accept-Encoding", "identity");
-        paramPacket.mContinuErrorLimit = 2;
-        paramPacket.mExcuteTimeLimit = 15000L;
-        paramIntent = getAppRuntime();
-      } while (!(paramIntent instanceof AppInterface));
-      paramIntent = (AppInterface)paramIntent;
-      localObject1 = (IHttpEngineService)paramIntent.getRuntimeService(IHttpEngineService.class, "all");
-      ((IHttpEngineService)localObject1).sendReq(paramPacket);
-    } while (!NearbyUtils.b());
-    NearbyUtils.a("NearbyAlumniServlet", new Object[] { "getBigData", localObject1, paramIntent });
+        a(paramIntent, paramPacket);
+        return;
+      }
+      Object localObject4 = new oidb_cmd0x6b2.ReqBody();
+      ((oidb_cmd0x6b2.ReqBody)localObject4).bytes_body.set(ByteStringMicro.copyFromUtf8((String)localObject2));
+      localObject4 = new Cryptor().encrypt(((oidb_cmd0x6b2.ReqBody)localObject4).toByteArray(), (byte[])localObject1);
+      Object localObject5 = new im_msg_head.Head();
+      ((im_msg_head.Head)localObject5).uint32_head_type.set(4);
+      Object localObject6 = new im_msg_head.LoginSig();
+      ((im_msg_head.LoginSig)localObject6).uint32_type.set(22);
+      if (localObject3 == null) {
+        localObject2 = null;
+      } else {
+        localObject2 = ((IOldBigDataChannelManager)localObject3).getSrvSig();
+      }
+      if (localObject2 != null)
+      {
+        ((im_msg_head.LoginSig)localObject6).bytes_sig.set(ByteStringMicro.copyFrom((byte[])localObject2));
+        ((im_msg_head.Head)localObject5).msg_login_sig.set((MessageMicro)localObject6);
+        localObject2 = new im_msg_head.HttpConnHead();
+        ((im_msg_head.HttpConnHead)localObject2).uint64_uin.set(l);
+        ((im_msg_head.HttpConnHead)localObject2).uint32_command.set(1791);
+        ((im_msg_head.HttpConnHead)localObject2).uint32_sub_command.set(3088);
+        ((im_msg_head.HttpConnHead)localObject2).uint32_seq.set(a());
+        ((im_msg_head.HttpConnHead)localObject2).uint32_version.set(4643);
+        ((im_msg_head.HttpConnHead)localObject2).uint32_flag.set(1);
+        ((im_msg_head.HttpConnHead)localObject2).uint32_compress_type.set(0);
+        ((im_msg_head.HttpConnHead)localObject2).uint32_error_code.set(0);
+        localObject6 = new im_msg_head.TransOidbHead();
+        ((im_msg_head.TransOidbHead)localObject6).uint32_command.set(1714);
+        ((im_msg_head.TransOidbHead)localObject6).uint32_service_type.set(i);
+        ((im_msg_head.HttpConnHead)localObject2).msg_oidbhead.set((MessageMicro)localObject6);
+        ((im_msg_head.Head)localObject5).msg_httpconn_head.set((MessageMicro)localObject2);
+        localObject2 = ((im_msg_head.Head)localObject5).toByteArray();
+        localObject5 = new ByteArrayOutputStream();
+        try
+        {
+          localObject6 = new DataOutputStream((OutputStream)localObject5);
+          ((DataOutputStream)localObject6).write(40);
+          ((DataOutputStream)localObject6).writeInt(localObject2.length);
+          ((DataOutputStream)localObject6).writeInt(localObject4.length);
+          ((DataOutputStream)localObject6).write((byte[])localObject2);
+          ((DataOutputStream)localObject6).write((byte[])localObject4);
+          ((DataOutputStream)localObject6).write(41);
+          ((DataOutputStream)localObject6).flush();
+        }
+        catch (Exception localException)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("NearbyAlumniServlet", 2, localException.getMessage());
+          }
+          a(paramIntent, -10, null, null);
+        }
+        String str;
+        if (localObject3 == null) {
+          str = null;
+        } else {
+          str = ((IOldBigDataChannelManager)localObject3).getCircleSrvUrl();
+        }
+        if ((str != null) && (str.length() != 0))
+        {
+          paramPacket = new StringBuilder();
+          paramPacket.append(str);
+          paramPacket.append("cgi-bin/httpconn");
+          str = paramPacket.toString();
+          localObject3 = ((ByteArrayOutputStream)localObject5).toByteArray();
+          paramPacket = new HttpNetReq();
+          paramPacket.mSendData = ((byte[])localObject3);
+          paramPacket.mCallback = new NearbyAlumniServlet.NearbyAlumniDownloadListener(this, paramIntent, (byte[])localObject1);
+          paramPacket.mReqUrl = str;
+          paramPacket.mHttpMethod = 1;
+          paramPacket.mFileType = 131080;
+          paramPacket.mReqProperties.put("Accept-Encoding", "identity");
+          paramPacket.mContinuErrorLimit = 2;
+          paramPacket.mExcuteTimeLimit = 15000L;
+          paramIntent = getAppRuntime();
+          if ((paramIntent instanceof AppInterface))
+          {
+            paramIntent = (AppInterface)paramIntent;
+            localObject1 = (IHttpEngineService)paramIntent.getRuntimeService(IHttpEngineService.class, "all");
+            ((IHttpEngineService)localObject1).sendReq(paramPacket);
+            if (NearbyUtils.b()) {
+              NearbyUtils.a("NearbyAlumniServlet", new Object[] { "getBigData", localObject1, paramIntent });
+            }
+          }
+          return;
+        }
+        if (paramBoolean)
+        {
+          a(null, -1, null, null);
+          return;
+        }
+        a(paramIntent, paramPacket);
+        return;
+      }
+      if (paramBoolean)
+      {
+        a(null, -1, null, null);
+        return;
+      }
+      a(paramIntent, paramPacket);
+    }
   }
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
@@ -483,24 +551,25 @@ public class NearbyAlumniServlet
     if (str2 == null) {
       return;
     }
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
       boolean bool = paramFromServiceMsg.isSuccess();
-      localStringBuilder = new StringBuilder().append("resp:").append(str2).append(" is ");
-      if (!bool) {
-        break label98;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("resp:");
+      localStringBuilder.append(str2);
+      localStringBuilder.append(" is ");
+      String str1;
+      if (bool) {
+        str1 = "";
+      } else {
+        str1 = "not";
       }
+      localStringBuilder.append(str1);
+      localStringBuilder.append(" success");
+      QLog.i("NearbyAlumniServlet", 2, localStringBuilder.toString());
     }
-    label98:
-    for (String str1 = "";; str1 = "not")
-    {
-      QLog.i("NearbyAlumniServlet", 2, str1 + " success");
-      if (!str2.equals("HttpConn.0x6ff_501")) {
-        break;
-      }
+    if (str2.equals("HttpConn.0x6ff_501")) {
       a(paramIntent, paramFromServiceMsg);
-      return;
     }
   }
   
@@ -513,7 +582,7 @@ public class NearbyAlumniServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyAlumniServlet
  * JD-Core Version:    0.7.0.1
  */

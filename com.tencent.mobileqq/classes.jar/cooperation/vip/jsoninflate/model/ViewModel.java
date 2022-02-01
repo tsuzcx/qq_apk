@@ -22,7 +22,7 @@ public class ViewModel
 {
   protected int a;
   protected Handler a;
-  public View a;
+  protected View a;
   private ArrayList<ViewModel> a;
   protected int b;
   protected String c;
@@ -45,36 +45,38 @@ public class ViewModel
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    Drawable localDrawable = a(paramString);
-    if (localDrawable != null)
+    Object localObject = a(paramString);
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(localDrawable);
+      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable((Drawable)localObject);
       return;
     }
-    throw new RuntimeException(getClass().getName() + " set background drawable = null not match value = " + paramString);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(getClass().getName());
+    ((StringBuilder)localObject).append(" set background drawable = null not match value = ");
+    ((StringBuilder)localObject).append(paramString);
+    throw new RuntimeException(((StringBuilder)localObject).toString());
   }
   
   private int b(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return -2;
-      try
-      {
-        if ("fill".equals(paramString)) {
-          return -1;
-        }
-        if (!"fit".equals(paramString))
-        {
-          int i = a(paramString);
-          return i;
-        }
+    }
+    try
+    {
+      if ("fill".equals(paramString)) {
+        return -1;
       }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
+      if ("fit".equals(paramString)) {
+        return -2;
       }
+      int i = a(paramString);
+      return i;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
     return -2;
   }
@@ -89,42 +91,48 @@ public class ViewModel
     if (TextUtils.isEmpty(paramString)) {
       return 0;
     }
-    try
+    for (;;)
     {
-      int i;
-      if (paramString.endsWith("w")) {
-        i = Integer.parseInt(paramString.substring(0, paramString.indexOf("w"))) * a();
-      }
-      for (;;)
+      try
       {
-        return i / 10000;
-        if (paramString.endsWith("h"))
+        if (paramString.endsWith("w"))
         {
-          i = Integer.parseInt(paramString.substring(0, paramString.indexOf("h"))) * b();
+          i = Integer.parseInt(paramString.substring(0, paramString.indexOf("w")));
+          j = a();
+        }
+        else if (paramString.endsWith("h"))
+        {
+          i = Integer.parseInt(paramString.substring(0, paramString.indexOf("h")));
+          j = b();
         }
         else
         {
           i = Integer.parseInt(paramString);
-          int j = a();
-          i *= j;
+          j = a();
         }
       }
-      return 0;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      QLog.e("JsonInflateViewModel", 1, "getIntegerValue exception: value =  " + paramString);
+      catch (Exception localException)
+      {
+        int i;
+        int j;
+        localException.printStackTrace();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getIntegerValue exception: value =  ");
+        localStringBuilder.append(paramString);
+        QLog.e("JsonInflateViewModel", 1, localStringBuilder.toString());
+        return 0;
+      }
+      i = i * j / 10000;
+      return i;
     }
   }
   
   protected Drawable a(String paramString)
   {
-    ColorDrawable localColorDrawable = null;
     if (paramString.startsWith("#")) {
-      localColorDrawable = new ColorDrawable(Color.parseColor(paramString));
+      return new ColorDrawable(Color.parseColor(paramString));
     }
-    return localColorDrawable;
+    return null;
   }
   
   public View a()
@@ -144,68 +152,72 @@ public class ViewModel
   
   public ViewGroup.LayoutParams a(JSONObject paramJSONObject, ViewModel paramViewModel)
   {
-    if ((this.jdField_a_of_type_AndroidViewView == null) || (paramJSONObject == null) || (paramJSONObject.length() == 0)) {
-      return null;
-    }
-    Object localObject1 = paramJSONObject.optString("width");
-    Object localObject2 = paramJSONObject.optString("height");
-    this.jdField_a_of_type_Int = b((String)localObject1);
-    this.b = b((String)localObject2);
-    if (QLog.isColorLevel()) {
-      QLog.i("JsonInflateViewModel", 0, "class = " + this.jdField_a_of_type_AndroidViewView.getClass().getSimpleName() + " width = " + this.jdField_a_of_type_Int + " height = " + this.b);
-    }
-    localObject1 = a(this.jdField_a_of_type_Int, this.b);
-    localObject2 = paramJSONObject.keys();
-    while (((Iterator)localObject2).hasNext())
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (paramJSONObject != null) && (paramJSONObject.length() != 0))
     {
-      String str = (String)((Iterator)localObject2).next();
-      a(str, paramJSONObject.optString(str), (ViewGroup.LayoutParams)localObject1);
+      Object localObject1 = paramJSONObject.optString("width");
+      Object localObject2 = paramJSONObject.optString("height");
+      this.jdField_a_of_type_Int = b((String)localObject1);
+      this.b = b((String)localObject2);
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("class = ");
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_AndroidViewView.getClass().getSimpleName());
+        ((StringBuilder)localObject1).append(" width = ");
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject1).append(" height = ");
+        ((StringBuilder)localObject1).append(this.b);
+        QLog.i("JsonInflateViewModel", 0, ((StringBuilder)localObject1).toString());
+      }
+      localObject1 = a(this.jdField_a_of_type_Int, this.b);
+      localObject2 = paramJSONObject.keys();
+      while (((Iterator)localObject2).hasNext())
+      {
+        String str = (String)((Iterator)localObject2).next();
+        a(str, paramJSONObject.optString(str), (ViewGroup.LayoutParams)localObject1);
+      }
+      paramViewModel.a((ViewGroup.LayoutParams)localObject1, paramJSONObject);
+      return localObject1;
     }
-    paramViewModel.a((ViewGroup.LayoutParams)localObject1, paramJSONObject);
-    return localObject1;
+    return null;
   }
   
   public ViewModel a(String paramString)
   {
-    ViewModel localViewModel2 = null;
-    ViewModel localViewModel1 = localViewModel2;
-    if (!TextUtils.isEmpty(this.c))
+    boolean bool = TextUtils.isEmpty(this.c);
+    Object localObject1 = null;
+    Object localObject2 = null;
+    Iterator localIterator = null;
+    if (!bool)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-        break label25;
+      localObject2 = this.jdField_a_of_type_JavaUtilArrayList;
+      if (localObject2 == null) {
+        return null;
       }
-      localViewModel1 = localViewModel2;
-    }
-    label25:
-    do
-    {
-      return localViewModel1;
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+      if (((ArrayList)localObject2).size() == 0)
       {
-        if (this.c.equals(paramString)) {}
-        for (paramString = this;; paramString = null) {
-          return paramString;
+        localObject1 = localIterator;
+        if (this.c.equals(paramString)) {
+          localObject1 = this;
         }
+        return localObject1;
       }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      localViewModel1 = null;
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      localViewModel2 = (ViewModel)localIterator.next();
-      if (localViewModel2 == null) {
-        break label110;
-      }
-      localViewModel2 = localViewModel2.a(paramString);
-      localViewModel1 = localViewModel2;
-    } while (localViewModel2 != null);
-    localViewModel1 = localViewModel2;
-    label110:
-    for (;;)
-    {
-      break;
-      return localViewModel1;
+      localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      do
+      {
+        do
+        {
+          localObject2 = localObject1;
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localObject2 = (ViewModel)localIterator.next();
+        } while (localObject2 == null);
+        localObject2 = ((ViewModel)localObject2).a(paramString);
+        localObject1 = localObject2;
+      } while (localObject2 == null);
     }
+    return localObject2;
   }
   
   public void a() {}
@@ -243,37 +255,45 @@ public class ViewModel
       this.jdField_a_of_type_AndroidViewView.setId(Integer.parseInt(paramString2));
       return;
     }
-    QLog.e("JsonInflateViewModel", 1, this.c + " illegal attr :" + paramString1 + " = " + paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(" illegal attr :");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(" = ");
+    localStringBuilder.append(paramString2);
+    QLog.e("JsonInflateViewModel", 1, localStringBuilder.toString());
   }
   
   protected void a(String paramString1, String paramString2, ViewGroup.LayoutParams paramLayoutParams)
   {
     if ((paramLayoutParams instanceof ViewGroup.MarginLayoutParams))
     {
-      if (!"x".equals(paramString1)) {
-        break label30;
+      if ("x".equals(paramString1))
+      {
+        ((ViewGroup.MarginLayoutParams)paramLayoutParams).leftMargin = a(paramString2);
+        return;
       }
-      ((ViewGroup.MarginLayoutParams)paramLayoutParams).leftMargin = a(paramString2);
+      if ("y".equals(paramString1)) {
+        ((ViewGroup.MarginLayoutParams)paramLayoutParams).topMargin = a(paramString2);
+      }
     }
-    label30:
-    while (!"y".equals(paramString1)) {
-      return;
-    }
-    ((ViewGroup.MarginLayoutParams)paramLayoutParams).topMargin = a(paramString2);
   }
   
   public void a(JSONObject paramJSONObject)
   {
-    if ((this.jdField_a_of_type_AndroidViewView == null) || (paramJSONObject == null) || (paramJSONObject.length() == 0)) {
-      return;
-    }
-    Iterator localIterator = paramJSONObject.keys();
-    while (localIterator.hasNext())
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (paramJSONObject != null))
     {
-      String str = (String)localIterator.next();
-      a(str, paramJSONObject.optString(str));
+      if (paramJSONObject.length() == 0) {
+        return;
+      }
+      Iterator localIterator = paramJSONObject.keys();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        a(str, paramJSONObject.optString(str));
+      }
+      b();
     }
-    b();
   }
   
   protected int b()
@@ -326,7 +346,7 @@ public class ViewModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.jsoninflate.model.ViewModel
  * JD-Core Version:    0.7.0.1
  */

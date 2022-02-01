@@ -35,8 +35,9 @@ public class GeneralFeedItem
       localGeneralFeedItem.mUserUIItem.uid = QQStoryContext.a().b();
       localGeneralFeedItem.mUserUIItem.qq = PlayModeUtils.a().getCurrentAccountUin();
       localGeneralFeedItem.mUserUIItem.nickName = PlayModeUtils.a().getCurrentNickname();
-      localGeneralFeedItem.mUserUIItem.headUrl = "";
-      SLog.e("VideoListFeedItem", "create fake feed item while QQUserUIItem is null! use fake QQUserUIItem to instead.", new Object[] { localGeneralFeedItem.mUserUIItem.toString() });
+      paramString = localGeneralFeedItem.mUserUIItem;
+      paramString.headUrl = "";
+      SLog.e("VideoListFeedItem", "create fake feed item while QQUserUIItem is null! use fake QQUserUIItem to instead.", new Object[] { paramString.toString() });
     }
     localGeneralFeedItem.ownerId = localGeneralFeedItem.mUserUIItem.getUnionId();
     localGeneralFeedItem.mViewTotalTime = 0L;
@@ -61,10 +62,11 @@ public class GeneralFeedItem
   {
     super.copy(paramObject);
     paramObject = (GeneralFeedItem)paramObject;
-    if (paramObject.mUserUIItem != null)
+    QQUserUIItem localQQUserUIItem = paramObject.mUserUIItem;
+    if (localQQUserUIItem != null)
     {
-      this.mUserUIItem = paramObject.mUserUIItem;
-      AssertUtils.a(this.mUserUIItem);
+      this.mUserUIItem = localQQUserUIItem;
+      AssertUtils.checkNotNull(this.mUserUIItem);
     }
     this.wsSchemaForMain = paramObject.wsSchemaForMain;
     this.wsSchemaForMemories = paramObject.wsSchemaForMemories;
@@ -75,55 +77,47 @@ public class GeneralFeedItem
     this.feedId = paramString;
     super.setDate(String.valueOf(paramGeneralFeed.date.get()));
     this.mVideoSeq = paramGeneralFeed.seq.get();
-    if (paramGeneralFeed.is_end.get() == 1)
-    {
+    boolean bool;
+    if (paramGeneralFeed.is_end.get() == 1) {
       bool = true;
-      this.mIsVideoEnd = bool;
-      if (paramGeneralFeed.share_to_discover.get() != 1) {
-        break label255;
-      }
-      bool = true;
-      label61:
-      this.mIsContribute = bool;
-      this.mVideoNextCookie = paramGeneralFeed.next_cookie.get().toStringUtf8();
-      this.mVideoPullType = paramGeneralFeed.pull_type.get();
-      if (paramGeneralFeed.hasVideoTag.get() != 1) {
-        break label260;
-      }
-      bool = true;
-      label104:
-      this.mHasTag = bool;
-      if (paramGeneralFeed.has_public_video.get() != 1) {
-        break label265;
-      }
+    } else {
+      bool = false;
     }
-    label260:
-    label265:
-    for (boolean bool = true;; bool = false)
-    {
-      this.mHasPublicVideo = bool;
-      paramString = new QQUserUIItem();
-      paramString.convertFrom(paramGeneralFeed.user);
-      this.mUserUIItem = ((UserManager)SuperManager.a(2)).a(paramString);
-      AssertUtils.a(this.mUserUIItem);
-      this.ownerId = this.mUserUIItem.getUnionId();
-      if (paramGeneralFeed.qim_sync_wording.has()) {
-        this.mQimSyncWording = paramGeneralFeed.qim_sync_wording.get().toStringUtf8();
-      }
-      if (paramGeneralFeed.ws_schemas.size() == 2)
-      {
-        this.wsSchemaForMain = ((ByteStringMicro)paramGeneralFeed.ws_schemas.get(0)).toStringUtf8();
-        this.wsSchemaForMemories = ((ByteStringMicro)paramGeneralFeed.ws_schemas.get(1)).toStringUtf8();
-      }
-      return true;
+    this.mIsVideoEnd = bool;
+    if (paramGeneralFeed.share_to_discover.get() == 1) {
+      bool = true;
+    } else {
       bool = false;
-      break;
-      label255:
-      bool = false;
-      break label61;
-      bool = false;
-      break label104;
     }
+    this.mIsContribute = bool;
+    this.mVideoNextCookie = paramGeneralFeed.next_cookie.get().toStringUtf8();
+    this.mVideoPullType = paramGeneralFeed.pull_type.get();
+    if (paramGeneralFeed.hasVideoTag.get() == 1) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.mHasTag = bool;
+    if (paramGeneralFeed.has_public_video.get() == 1) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.mHasPublicVideo = bool;
+    paramString = new QQUserUIItem();
+    paramString.convertFrom(paramGeneralFeed.user);
+    this.mUserUIItem = ((UserManager)SuperManager.a(2)).a(paramString);
+    AssertUtils.checkNotNull(this.mUserUIItem);
+    this.ownerId = this.mUserUIItem.getUnionId();
+    if (paramGeneralFeed.qim_sync_wording.has()) {
+      this.mQimSyncWording = paramGeneralFeed.qim_sync_wording.get().toStringUtf8();
+    }
+    if (paramGeneralFeed.ws_schemas.size() == 2)
+    {
+      this.wsSchemaForMain = ((ByteStringMicro)paramGeneralFeed.ws_schemas.get(0)).toStringUtf8();
+      this.wsSchemaForMemories = ((ByteStringMicro)paramGeneralFeed.ws_schemas.get(1)).toStringUtf8();
+    }
+    return true;
   }
   
   public byte[] covertToByte()
@@ -172,8 +166,9 @@ public class GeneralFeedItem
       this.mUserUIItem.uid = QQStoryContext.a().b();
       this.mUserUIItem.qq = PlayModeUtils.a().getCurrentAccountUin();
       this.mUserUIItem.nickName = PlayModeUtils.a().getCurrentNickname();
-      this.mUserUIItem.headUrl = "";
-      SLog.e("VideoListFeedItem", "create fake feed item while QQUserUIItem is null! use fake QQUserUIItem to instead.", new Object[] { this.mUserUIItem.toString() });
+      QQUserUIItem localQQUserUIItem = this.mUserUIItem;
+      localQQUserUIItem.headUrl = "";
+      SLog.e("VideoListFeedItem", "create fake feed item while QQUserUIItem is null! use fake QQUserUIItem to instead.", new Object[] { localQQUserUIItem.toString() });
     }
   }
   
@@ -188,12 +183,15 @@ public class GeneralFeedItem
   
   public String toString()
   {
-    return "GeneralFeedItem{}" + super.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GeneralFeedItem{}");
+    localStringBuilder.append(super.toString());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem
  * JD-Core Version:    0.7.0.1
  */

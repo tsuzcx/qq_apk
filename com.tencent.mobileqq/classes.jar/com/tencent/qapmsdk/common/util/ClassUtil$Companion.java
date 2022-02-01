@@ -18,7 +18,11 @@ public final class ClassUtil$Companion
       Class.forName(paramString);
       return true;
     }
-    catch (ClassNotFoundException paramString) {}
+    catch (ClassNotFoundException paramString)
+    {
+      label13:
+      break label13;
+    }
     return false;
   }
   
@@ -30,7 +34,12 @@ public final class ClassUtil$Companion
     if (paramInteger != null)
     {
       int i = ((Number)paramInteger).intValue();
-      paramInteger = paramObject.getClass().getName() + '[' + i + ']';
+      paramInteger = new StringBuilder();
+      paramInteger.append(paramObject.getClass().getName());
+      paramInteger.append('[');
+      paramInteger.append(i);
+      paramInteger.append(']');
+      paramInteger = paramInteger.toString();
       if (paramInteger != null) {
         return paramInteger;
       }
@@ -43,8 +52,8 @@ public final class ClassUtil$Companion
   @JvmStatic
   public final boolean objectIsInstanceClass(@Nullable Object paramObject, @NotNull String paramString)
   {
-    boolean bool = false;
     Intrinsics.checkParameterIsNotNull(paramString, "className");
+    boolean bool = false;
     if (paramObject != null) {}
     try
     {
@@ -57,7 +66,7 @@ public final class ClassUtil$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.common.util.ClassUtil.Companion
  * JD-Core Version:    0.7.0.1
  */

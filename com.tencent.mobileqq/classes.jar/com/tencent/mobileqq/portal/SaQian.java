@@ -30,27 +30,35 @@ public class SaQian
     SaQian localSaQian = new SaQian();
     localSaQian.jdField_d_of_type_Int = paramInt;
     float f = paramBitmap.getHeight() / paramBitmap.getWidth();
-    if (paramInt == 0) {}
-    for (localSaQian.jdField_a_of_type_Int = AIOUtils.a(20.0F, paramResources);; localSaQian.jdField_a_of_type_Int = AIOUtils.a(14.0F, paramResources))
-    {
-      localSaQian.jdField_b_of_type_Int = ((int)(f * localSaQian.jdField_a_of_type_Int));
-      localSaQian.jdField_a_of_type_ArrayOfFloat = new float[2];
-      localSaQian.jdField_a_of_type_ArrayOfFloat[0] = paramFloat1;
-      localSaQian.jdField_a_of_type_ArrayOfFloat[1] = paramFloat2;
-      localSaQian.jdField_a_of_type_Float = ((float)Math.random() * AIOUtils.a(18.0F, paramResources) - AIOUtils.a(9.0F, paramResources));
-      localSaQian.jdField_a_of_type_Double = (Math.random() * 3.141592653589793D / 6.0D + 2.879793265790644D);
-      localSaQian.jdField_b_of_type_Float = (AIOUtils.a(40.0F, paramResources) + (float)Math.random() * AIOUtils.a(50.0F, paramResources));
-      localSaQian.jdField_c_of_type_Float = ((float)(localSaQian.jdField_b_of_type_Float * Math.cos(localSaQian.jdField_a_of_type_Double)));
-      localSaQian.jdField_d_of_type_Float = ((float)(localSaQian.jdField_b_of_type_Float * Math.sin(localSaQian.jdField_a_of_type_Double)));
-      localSaQian.jdField_c_of_type_Int = 256;
-      localSaQian.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-      return localSaQian;
+    if (paramInt == 0) {
+      localSaQian.jdField_a_of_type_Int = AIOUtils.b(20.0F, paramResources);
+    } else {
+      localSaQian.jdField_a_of_type_Int = AIOUtils.b(14.0F, paramResources);
     }
+    localSaQian.jdField_b_of_type_Int = ((int)(f * localSaQian.jdField_a_of_type_Int));
+    localSaQian.jdField_a_of_type_ArrayOfFloat = new float[2];
+    float[] arrayOfFloat = localSaQian.jdField_a_of_type_ArrayOfFloat;
+    arrayOfFloat[0] = paramFloat1;
+    arrayOfFloat[1] = paramFloat2;
+    localSaQian.jdField_a_of_type_Float = ((float)Math.random() * AIOUtils.b(18.0F, paramResources) - AIOUtils.b(9.0F, paramResources));
+    localSaQian.jdField_a_of_type_Double = (Math.random() * 3.141592653589793D / 6.0D + 2.879793265790644D);
+    localSaQian.jdField_b_of_type_Float = (AIOUtils.b(40.0F, paramResources) + (float)Math.random() * AIOUtils.b(50.0F, paramResources));
+    double d1 = localSaQian.jdField_b_of_type_Float;
+    double d2 = Math.cos(localSaQian.jdField_a_of_type_Double);
+    Double.isNaN(d1);
+    localSaQian.jdField_c_of_type_Float = ((float)(d1 * d2));
+    d1 = localSaQian.jdField_b_of_type_Float;
+    d2 = Math.sin(localSaQian.jdField_a_of_type_Double);
+    Double.isNaN(d1);
+    localSaQian.jdField_d_of_type_Float = ((float)(d1 * d2));
+    localSaQian.jdField_c_of_type_Int = 256;
+    localSaQian.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    return localSaQian;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.portal.SaQian
  * JD-Core Version:    0.7.0.1
  */

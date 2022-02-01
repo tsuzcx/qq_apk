@@ -12,21 +12,25 @@ class WakeManager$4
   public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_ComTencentMobileqqQassistantWakeWakeManager.jdField_a_of_type_Long > this.jdField_a_of_type_Long * 0.95D)
+    double d1 = l - this.jdField_a_of_type_ComTencentMobileqqQassistantWakeWakeManager.jdField_a_of_type_Long;
+    double d2 = this.jdField_a_of_type_Long;
+    Double.isNaN(d2);
+    if (d1 > d2 * 0.95D)
     {
-      this.jdField_a_of_type_ComTencentMobileqqQassistantWakeWakeManager.jdField_a_of_type_Long = l;
-      if (WakeManager.b(this.jdField_a_of_type_ComTencentMobileqqQassistantWakeWakeManager) != null)
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantWakeWakeManager;
+      ((WakeManager)localObject).jdField_a_of_type_Long = l;
+      if (WakeManager.b((WakeManager)localObject) != null)
       {
-        Message localMessage = WakeManager.b(this.jdField_a_of_type_ComTencentMobileqqQassistantWakeWakeManager).obtainMessage(1002);
-        localMessage.obj = paramArrayOfByte;
-        WakeManager.b(this.jdField_a_of_type_ComTencentMobileqqQassistantWakeWakeManager).sendMessage(localMessage);
+        localObject = WakeManager.b(this.jdField_a_of_type_ComTencentMobileqqQassistantWakeWakeManager).obtainMessage(1002);
+        ((Message)localObject).obj = paramArrayOfByte;
+        WakeManager.b(this.jdField_a_of_type_ComTencentMobileqqQassistantWakeWakeManager).sendMessage((Message)localObject);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.wake.WakeManager.4
  * JD-Core Version:    0.7.0.1
  */

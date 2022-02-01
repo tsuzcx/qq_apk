@@ -12,7 +12,7 @@ public class ChatHistoryTroopMemberFragment$SearchTextWatcher
   public void afterTextChanged(Editable paramEditable)
   {
     paramEditable = this.a.a.getText().toString().trim();
-    this.a.e(paramEditable);
+    this.a.d(paramEditable);
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -21,7 +21,7 @@ public class ChatHistoryTroopMemberFragment$SearchTextWatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.SearchTextWatcher
  * JD-Core Version:    0.7.0.1
  */

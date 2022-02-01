@@ -92,9 +92,10 @@ public class NativeButton
   
   public void onParseValueFinished()
   {
-    int i = 1;
     super.onParseValueFinished();
-    this.mNative.setClickable(true);
+    NativeButtonImp localNativeButtonImp = this.mNative;
+    int i = 1;
+    localNativeButtonImp.setClickable(true);
     this.mNative.setIncludeFontPadding(false);
     this.mNative.setPadding(this.mPaddingLeft, this.mPaddingTop, this.mPaddingRight, this.mPaddingBottom);
     this.mNative.setTextSize(0, this.mTextSize);
@@ -125,17 +126,12 @@ public class NativeButton
     }
     if (!TextUtils.isEmpty(this.mBtnText)) {
       setRealText(this.mBtnText);
+    } else if (!TextUtils.isEmpty(this.mText)) {
+      setRealText(this.mText);
+    } else {
+      setRealText("");
     }
-    for (;;)
-    {
-      refresh();
-      return;
-      if (!TextUtils.isEmpty(this.mText)) {
-        setRealText(this.mText);
-      } else {
-        setRealText("");
-      }
-    }
+    refresh();
   }
   
   public void reset()
@@ -158,18 +154,21 @@ public class NativeButton
   
   protected void setCompoundDrawableForStates()
   {
-    Object localObject = this.mNative.getContext();
+    Object localObject1 = this.mNative.getContext();
     if ((this.drawableLeftPath != null) && (getStatus(0).img != this.drawableLeftPath)) {
       getStatus(0).img = this.drawableLeftPath;
     }
-    localObject = DrawableUtil.getSelector(DrawableUtil.getDrawable((Context)localObject, getStatus(0).img, this.TRANSPARENT_PLACE_HOLDER, this.GRAY_PLACEHOLDER), DrawableUtil.getDrawable((Context)localObject, getStatus(1).img, this.TRANSPARENT_PLACE_HOLDER, this.GRAY_PLACEHOLDER), DrawableUtil.getDrawable((Context)localObject, getStatus(4).img, this.TRANSPARENT_PLACE_HOLDER, this.GRAY_PLACEHOLDER));
-    SpannableString localSpannableString = new SpannableString("l" + this.mText);
-    localSpannableString.setSpan(new NativeButton.CenterImageSpan(this, (Drawable)localObject), 0, 1, 33);
-    this.mBtnText = localSpannableString;
-    setText(localSpannableString);
+    localObject1 = DrawableUtil.getSelector(DrawableUtil.getDrawable((Context)localObject1, getStatus(0).img, this.TRANSPARENT_PLACE_HOLDER, this.GRAY_PLACEHOLDER), DrawableUtil.getDrawable((Context)localObject1, getStatus(1).img, this.TRANSPARENT_PLACE_HOLDER, this.GRAY_PLACEHOLDER), DrawableUtil.getDrawable((Context)localObject1, getStatus(4).img, this.TRANSPARENT_PLACE_HOLDER, this.GRAY_PLACEHOLDER));
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("l");
+    ((StringBuilder)localObject2).append(this.mText);
+    localObject2 = new SpannableString(((StringBuilder)localObject2).toString());
+    ((SpannableString)localObject2).setSpan(new NativeButton.CenterImageSpan(this, (Drawable)localObject1), 0, 1, 33);
+    this.mBtnText = ((CharSequence)localObject2);
+    setText((CharSequence)localObject2);
   }
   
-  public void setDrawableLeft(String paramString)
+  protected void setDrawableLeft(String paramString)
   {
     this.drawableLeftPath = paramString;
     setCompoundDrawableForStates();
@@ -207,7 +206,7 @@ public class NativeButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.NativeButton
  * JD-Core Version:    0.7.0.1
  */

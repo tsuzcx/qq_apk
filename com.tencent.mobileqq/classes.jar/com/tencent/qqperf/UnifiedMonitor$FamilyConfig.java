@@ -46,17 +46,18 @@ class UnifiedMonitor$FamilyConfig
       this.jdField_b_of_type_Float = 1.0F;
       this.jdField_b_of_type_Int = 2147483647;
     }
-    if (Math.random() <= this.jdField_a_of_type_Float) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
+    boolean bool;
+    if (Math.random() <= this.jdField_a_of_type_Float) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.jdField_a_of_type_Boolean = bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.UnifiedMonitor.FamilyConfig
  * JD-Core Version:    0.7.0.1
  */

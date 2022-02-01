@@ -16,13 +16,14 @@ class SDKAvatarSettingManager$4
     if (QLog.isColorLevel()) {
       QLog.w("SDKAvatarSettingManager", 2, "checkApiTimeOutRunnable -->preForward--checkapi timeout");
     }
-    this.this$0.b = true;
-    SDKAvatarSettingManager.a(this.this$0);
+    SDKAvatarSettingManager localSDKAvatarSettingManager = this.this$0;
+    localSDKAvatarSettingManager.b = true;
+    SDKAvatarSettingManager.a(localSDKAvatarSettingManager);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.SDKAvatarSettingManager.4
  * JD-Core Version:    0.7.0.1
  */

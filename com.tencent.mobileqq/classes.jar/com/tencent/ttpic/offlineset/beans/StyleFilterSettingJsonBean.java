@@ -27,16 +27,25 @@ public class StyleFilterSettingJsonBean
   
   private void updateMap(String paramString, Map<String, String> paramMap)
   {
-    if ((paramMap == null) || (paramMap.size() == 0)) {}
-    for (;;)
+    if (paramMap != null)
     {
-      return;
+      if (paramMap.size() == 0) {
+        return;
+      }
       paramMap = paramMap.entrySet().iterator();
-      if ((paramMap != null) && (paramMap.hasNext())) {
+      if (paramMap != null)
+      {
+        if (!paramMap.hasNext()) {
+          return;
+        }
         while (paramMap.hasNext())
         {
           Map.Entry localEntry = (Map.Entry)paramMap.next();
-          localEntry.setValue(paramString + File.separator + (String)localEntry.getValue());
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(File.separator);
+          localStringBuilder.append((String)localEntry.getValue());
+          localEntry.setValue(localStringBuilder.toString());
         }
       }
     }
@@ -44,7 +53,8 @@ public class StyleFilterSettingJsonBean
   
   public boolean isCurrentStyle(String paramString)
   {
-    return (this.id != null) && (paramString != null) && (this.id.equals(paramString));
+    String str = this.id;
+    return (str != null) && (paramString != null) && (str.equals(paramString));
   }
   
   public void updatePath(String paramString)
@@ -55,7 +65,7 @@ public class StyleFilterSettingJsonBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.offlineset.beans.StyleFilterSettingJsonBean
  * JD-Core Version:    0.7.0.1
  */

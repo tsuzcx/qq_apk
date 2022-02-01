@@ -27,10 +27,12 @@ public final class CloseGuard
   
   public static void setReporter(CloseGuard.Reporter paramReporter)
   {
-    if (paramReporter == null) {
-      throw new NullPointerException("reporter == null");
+    if (paramReporter != null)
+    {
+      REPORTER = paramReporter;
+      return;
     }
-    REPORTER = paramReporter;
+    throw new NullPointerException("reporter == null");
   }
   
   public void close()
@@ -40,26 +42,38 @@ public final class CloseGuard
   
   public void open(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("closer == null");
-    }
-    if ((this == NOOP) || (!ENABLED)) {
+    if (paramString != null)
+    {
+      if (this != NOOP)
+      {
+        if (!ENABLED) {
+          return;
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Explicit termination method '");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("' not called");
+        this.allocationSite = new Throwable(localStringBuilder.toString());
+      }
       return;
     }
-    this.allocationSite = new Throwable("Explicit termination method '" + paramString + "' not called");
+    throw new NullPointerException("closer == null");
   }
   
   public void warnIfOpen()
   {
-    if ((this.allocationSite == null) || (!ENABLED)) {
-      return;
+    if (this.allocationSite != null)
+    {
+      if (!ENABLED) {
+        return;
+      }
+      REPORTER.report("A resource was acquired at attached stack trace but never released. See java.io.Closeable for information on avoiding resource leaks.", this.allocationSite);
     }
-    REPORTER.report("A resource was acquired at attached stack trace but never released. See java.io.Closeable for information on avoiding resource leaks.", this.allocationSite);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.CloseGuard
  * JD-Core Version:    0.7.0.1
  */

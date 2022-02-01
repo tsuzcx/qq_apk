@@ -9,8 +9,19 @@ public class CodecConfigUtil
 {
   public static int a(AVTestforEncDecConfig.TestInfo paramTestInfo)
   {
-    if (Build.VERSION.SDK_INT < 16) {}
-    while ((paramTestInfo == null) || (Build.VERSION.SDK_INT < paramTestInfo.c) || (!a(paramTestInfo.jdField_a_of_type_JavaLangString, null)) || (ArrayUtils.contains(paramTestInfo.jdField_a_of_type_JavaUtilArrayList, Integer.valueOf(Build.VERSION.SDK_INT)))) {
+    if (Build.VERSION.SDK_INT < 16) {
+      return 0;
+    }
+    if (paramTestInfo == null) {
+      return 0;
+    }
+    if (Build.VERSION.SDK_INT < paramTestInfo.c) {
+      return 0;
+    }
+    if (!a(paramTestInfo.jdField_a_of_type_JavaLangString, null)) {
+      return 0;
+    }
+    if (ArrayUtils.contains(paramTestInfo.jdField_a_of_type_JavaUtilArrayList, Integer.valueOf(Build.VERSION.SDK_INT))) {
       return 0;
     }
     if ((paramTestInfo.d != 0) && (Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT >= paramTestInfo.d)) {
@@ -29,24 +40,20 @@ public class CodecConfigUtil
     {
       int k = paramArrayOfString.length;
       int i = 0;
-      for (;;)
+      while (i < k)
       {
-        if (i >= k) {
-          break label52;
-        }
         if (AVCoreUtil.strVersionToInt(paramArrayOfString[i]) == j) {
-          break;
+          return false;
         }
         i += 1;
       }
     }
-    label52:
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.mediacodec.config.CodecConfigUtil
  * JD-Core Version:    0.7.0.1
  */

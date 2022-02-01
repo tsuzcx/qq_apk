@@ -18,21 +18,22 @@ class WeakNetLearner$ProbeHandler
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      ((ProbeTask)paramMessage.obj).startProbe();
+      if (i != 2) {
+        return;
+      }
+      WeakNetLearner.access$002(this.this$0, null);
+      WeakNetLearner.access$100(this.this$0).quit();
       return;
     }
-    WeakNetLearner.access$002(this.this$0, null);
-    WeakNetLearner.access$100(this.this$0).quit();
+    ((ProbeTask)paramMessage.obj).startProbe();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.netprobe.WeakNetLearner.ProbeHandler
  * JD-Core Version:    0.7.0.1
  */

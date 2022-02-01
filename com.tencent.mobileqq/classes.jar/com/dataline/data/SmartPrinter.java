@@ -17,41 +17,51 @@ public class SmartPrinter
 {
   public boolean a(List<FileInfo> paramList, String paramString, QQAppInterface paramQQAppInterface)
   {
-    if (paramString == null) {}
-    for (;;)
-    {
+    boolean bool2 = false;
+    if (paramString == null) {
       return false;
-      try
+    }
+    try
+    {
+      paramString = new JSONObject(paramString);
+      paramString.getInt("printCopies");
+      paramString.getInt("duplexMode");
+      label32:
+      boolean bool1 = bool2;
+      if (paramList != null)
       {
-        paramString = new JSONObject(paramString);
-        paramString.getInt("printCopies");
-        paramString.getInt("duplexMode");
-        label29:
-        if ((paramList == null) || (this.a == 0L)) {
-          continue;
+        bool1 = bool2;
+        if (this.a != 0L)
+        {
+          paramString = new ArrayList();
+          paramList = paramList.iterator();
+          while (paramList.hasNext()) {
+            paramString.add(((FileInfo)paramList.next()).c());
+          }
+          paramQQAppInterface = (DeviceMsgHandle)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER);
+          paramList = new Bundle();
+          bool1 = true;
+          paramList.putInt("copies", 1);
+          paramList.putInt("duplexMode", 1);
+          paramQQAppInterface = paramQQAppInterface.a();
+          String str = DeviceMsgHandle.c;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(this.a);
+          localStringBuilder.append("");
+          paramQQAppInterface.a(str, localStringBuilder.toString(), paramString, paramList);
         }
-        paramString = new ArrayList();
-        paramList = paramList.iterator();
-        while (paramList.hasNext()) {
-          paramString.add(((FileInfo)paramList.next()).c());
-        }
-        paramList = (DeviceMsgHandle)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER);
-        paramQQAppInterface = new Bundle();
-        paramQQAppInterface.putInt("copies", 1);
-        paramQQAppInterface.putInt("duplexMode", 1);
-        paramList.a().a(DeviceMsgHandle.c, this.a + "", paramString, paramQQAppInterface);
-        return true;
       }
-      catch (JSONException paramString)
-      {
-        break label29;
-      }
+      return bool1;
+    }
+    catch (JSONException paramString)
+    {
+      break label32;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.data.SmartPrinter
  * JD-Core Version:    0.7.0.1
  */

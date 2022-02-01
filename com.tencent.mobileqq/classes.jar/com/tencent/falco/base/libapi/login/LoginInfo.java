@@ -46,8 +46,8 @@ public class LoginInfo
   
   public String toString()
   {
-    int i = 0;
     long l1 = this.uid;
+    int i = 0;
     long l2 = this.tinyid;
     String str1 = bytesToHexString(this.a2);
     String str2 = this.openId;
@@ -61,7 +61,7 @@ public class LoginInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.libapi.login.LoginInfo
  * JD-Core Version:    0.7.0.1
  */

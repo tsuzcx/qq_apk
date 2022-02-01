@@ -14,12 +14,12 @@ class ARTipsManager$8
   {
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
     this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F - f);
-    this.jdField_a_of_type_AndroidViewView.setTranslationY(f * AIOUtils.a(25.0F, ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager)));
+    this.jdField_a_of_type_AndroidViewView.setTranslationY(f * AIOUtils.b(25.0F, ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.activity.ARTipsManager.8
  * JD-Core Version:    0.7.0.1
  */

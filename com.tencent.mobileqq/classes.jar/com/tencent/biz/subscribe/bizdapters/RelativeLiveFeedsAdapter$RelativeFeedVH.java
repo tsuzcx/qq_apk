@@ -13,25 +13,30 @@ public class RelativeLiveFeedsAdapter$RelativeFeedVH
   public RelativeLiveFeedsAdapter$RelativeFeedVH(RelativeLiveFeedsAdapter paramRelativeLiveFeedsAdapter, View paramView)
   {
     super(paramView);
-    if (((paramView instanceof FrameLayout)) && (((FrameLayout)paramView).getChildCount() > 0))
+    if ((paramView instanceof FrameLayout))
     {
-      paramRelativeLiveFeedsAdapter = ((FrameLayout)paramView).getChildAt(0);
-      if ((paramRelativeLiveFeedsAdapter instanceof TextView)) {
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramRelativeLiveFeedsAdapter);
+      paramRelativeLiveFeedsAdapter = (FrameLayout)paramView;
+      if (paramRelativeLiveFeedsAdapter.getChildCount() > 0)
+      {
+        paramRelativeLiveFeedsAdapter = paramRelativeLiveFeedsAdapter.getChildAt(0);
+        if ((paramRelativeLiveFeedsAdapter instanceof TextView)) {
+          this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramRelativeLiveFeedsAdapter);
+        }
       }
     }
   }
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localTextView != null) {
+      localTextView.setText(paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.bizdapters.RelativeLiveFeedsAdapter.RelativeFeedVH
  * JD-Core Version:    0.7.0.1
  */

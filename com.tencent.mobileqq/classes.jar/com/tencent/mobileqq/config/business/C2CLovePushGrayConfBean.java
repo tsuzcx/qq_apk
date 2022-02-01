@@ -24,13 +24,16 @@ public class C2CLovePushGrayConfBean
     }
     try
     {
-      C2CLovePushGrayConfBean localC2CLovePushGrayConfBean = new C2CLovePushGrayConfBean();
-      localC2CLovePushGrayConfBean.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramString).optJSONObject("loverAIOPush");
-      return localC2CLovePushGrayConfBean;
+      localObject = new C2CLovePushGrayConfBean();
+      ((C2CLovePushGrayConfBean)localObject).jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramString).optJSONObject("loverAIOPush");
+      return localObject;
     }
     catch (Exception paramString)
     {
-      QLog.e("C2CLovePushGrayConfBean", 2, "C2CLovePushGrayConfBean onParsed erro " + paramString.toString());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("C2CLovePushGrayConfBean onParsed erro ");
+      ((StringBuilder)localObject).append(paramString.toString());
+      QLog.e("C2CLovePushGrayConfBean", 2, ((StringBuilder)localObject).toString());
     }
     return null;
   }
@@ -67,7 +70,7 @@ public class C2CLovePushGrayConfBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.C2CLovePushGrayConfBean
  * JD-Core Version:    0.7.0.1
  */

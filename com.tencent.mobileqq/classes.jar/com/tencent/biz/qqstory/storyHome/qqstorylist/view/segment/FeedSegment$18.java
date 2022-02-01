@@ -20,29 +20,23 @@ class FeedSegment$18
   public void run()
   {
     int i = 0;
-    for (;;)
+    while (i < this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getChildCount())
     {
-      if (i < this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getChildCount())
+      View localView = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getChildAt(i);
+      Object localObject = localView.getTag();
+      if ((localObject instanceof BaseViewHolder))
       {
-        View localView = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getChildAt(i);
-        Object localObject = localView.getTag();
-        if ((localObject instanceof BaseViewHolder))
+        localObject = (BaseViewHolder)localObject;
+        if (((BaseViewHolder)localObject).b < this.jdField_a_of_type_JavaUtilList.size())
         {
-          localObject = (BaseViewHolder)localObject;
-          if (((BaseViewHolder)localObject).b < this.jdField_a_of_type_JavaUtilList.size())
+          localObject = (StoryVideoItem)this.jdField_a_of_type_JavaUtilList.get(((BaseViewHolder)localObject).b);
+          if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, ((StoryVideoItem)localObject).mVid))
           {
-            localObject = (StoryVideoItem)this.jdField_a_of_type_JavaUtilList.get(((BaseViewHolder)localObject).b);
-            if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, ((StoryVideoItem)localObject).mVid))
-            {
-              SLog.a("Q.qqstory.home:FeedSegment", "broadcast close animation %s", this.jdField_a_of_type_JavaLangString);
-              StoryDispatcher.a().dispatch(new StoryPlayerActivity.ClosePlayerAnimationInfoEvent(new AnimationParam(localView), this.jdField_a_of_type_JavaLangString));
-            }
+            SLog.a("Q.qqstory.home:FeedSegment", "broadcast close animation %s", this.jdField_a_of_type_JavaLangString);
+            StoryDispatcher.a().dispatch(new StoryPlayerActivity.ClosePlayerAnimationInfoEvent(new AnimationParam(localView), this.jdField_a_of_type_JavaLangString));
+            return;
           }
         }
-      }
-      else
-      {
-        return;
       }
       i += 1;
     }
@@ -50,7 +44,7 @@ class FeedSegment$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment.18
  * JD-Core Version:    0.7.0.1
  */

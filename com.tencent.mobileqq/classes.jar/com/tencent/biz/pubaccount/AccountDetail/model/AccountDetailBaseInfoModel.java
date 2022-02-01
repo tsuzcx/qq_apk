@@ -1,11 +1,10 @@
-package com.tencent.biz.pubaccount.AccountDetail.model;
+package com.tencent.biz.pubaccount.accountdetail.model;
 
-import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
+import com.tencent.biz.pubaccount.accountdetail.api.impl.PublicAccountDetailImpl;
+import com.tencent.biz.pubaccount.api.IPublicAccountConfigAttr.PaConfigInfo;
+import com.tencent.biz.pubaccount.api.IPublicAccountDataManager;
 import com.tencent.biz.pubaccount.api.impl.PublicAccountServletImpl;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.mobileqq.data.PublicAccountInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.SetFunctionFlagRequset;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -16,34 +15,33 @@ import mqq.app.NewIntent;
 
 public class AccountDetailBaseInfoModel
 {
-  public static void a(QQAppInterface paramQQAppInterface, AccountDetail paramAccountDetail)
+  public static void a(QQAppInterface paramQQAppInterface, PublicAccountDetailImpl paramPublicAccountDetailImpl)
   {
     if (QLog.isColorLevel()) {
       QLog.d("AccountDetailBaseInfoModel", 2, "saveAccountDetailToDBAndCache");
     }
     EntityManager localEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    if ((paramAccountDetail != null) && (paramAccountDetail.getId() != -1L)) {
-      if (!localEntityManager.update(paramAccountDetail)) {
-        localEntityManager.drop(AccountDetail.class);
+    if ((paramPublicAccountDetailImpl != null) && (paramPublicAccountDetailImpl.getId() != -1L))
+    {
+      if (!localEntityManager.update(paramPublicAccountDetailImpl)) {
+        localEntityManager.drop(PublicAccountDetailImpl.class);
       }
     }
-    for (;;)
+    else {
+      localEntityManager.persist(paramPublicAccountDetailImpl);
+    }
+    localEntityManager.close();
+    paramQQAppInterface = (IPublicAccountDataManager)paramQQAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
+    if ((paramQQAppInterface != null) && (paramPublicAccountDetailImpl != null))
     {
-      localEntityManager.close();
-      paramQQAppInterface = (PublicAccountDataManager)paramQQAppInterface.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
-      if ((paramQQAppInterface != null) && (paramAccountDetail != null))
-      {
-        paramQQAppInterface.a(paramAccountDetail);
-        if (paramAccountDetail.followType == 1) {
-          paramQQAppInterface.a(PublicAccountInfo.createPublicAccount(paramAccountDetail, 0L));
-        }
+      paramQQAppInterface.saveAccountDetailInfoCache(paramPublicAccountDetailImpl);
+      if (paramPublicAccountDetailImpl.followType == 1) {
+        paramQQAppInterface.savePublicAccountInfo(PublicAccountInfo.createPublicAccount(paramPublicAccountDetailImpl, 0L));
       }
-      return;
-      localEntityManager.persist(paramAccountDetail);
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, PaConfigAttr.PaConfigInfo paramPaConfigInfo, int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, IPublicAccountConfigAttr.PaConfigInfo paramPaConfigInfo, int paramInt)
   {
     NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApp(), PublicAccountServletImpl.class);
     localNewIntent.putExtra("cmd", "set_function_flag");
@@ -60,7 +58,7 @@ public class AccountDetailBaseInfoModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailBaseInfoModel
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.model.AccountDetailBaseInfoModel
  * JD-Core Version:    0.7.0.1
  */

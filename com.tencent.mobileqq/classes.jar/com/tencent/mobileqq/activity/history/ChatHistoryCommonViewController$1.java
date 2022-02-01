@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.history;
 
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import androidx.viewpager.widget.ViewPager.SimpleOnPageChangeListener;
 import com.tencent.mobileqq.widget.QQViewPager;
 
 class ChatHistoryCommonViewController$1
@@ -10,8 +10,10 @@ class ChatHistoryCommonViewController$1
   
   public void onPageScrollStateChanged(int paramInt)
   {
-    if (paramInt == 1) {
-      this.a.b = this.a.a.getCurrentItem();
+    if (paramInt == 1)
+    {
+      ChatHistoryCommonViewController localChatHistoryCommonViewController = this.a;
+      localChatHistoryCommonViewController.b = localChatHistoryCommonViewController.a.getCurrentItem();
     }
   }
   
@@ -22,7 +24,7 @@ class ChatHistoryCommonViewController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryCommonViewController.1
  * JD-Core Version:    0.7.0.1
  */

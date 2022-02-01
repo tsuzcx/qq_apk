@@ -1,31 +1,28 @@
 package com.tencent.turingfd.sdk.xq;
 
-public enum Chamaeleon
+import android.os.Handler;
+import android.os.Message;
+import android.view.MotionEvent;
+
+public final class Chamaeleon
+  implements GalacticCore
 {
-  public final int value;
-  
-  static
+  public void a(String paramString, MotionEvent paramMotionEvent)
   {
-    Chamaeleon localChamaeleon = pj;
-    localChamaeleon = qj;
-    localChamaeleon = rj;
-    localChamaeleon = sj;
-    localChamaeleon = tj;
-  }
-  
-  public Chamaeleon(int paramInt)
-  {
-    this.value = paramInt;
-  }
-  
-  public String toString()
-  {
-    return name() + ":" + this.value;
+    paramString = Cygnus.obtain();
+    paramString.action = paramMotionEvent.getAction();
+    paramString.wh = paramMotionEvent.getDeviceId();
+    paramString.toolType = paramMotionEvent.getToolType(0);
+    paramString.xh = paramMotionEvent.getRawX();
+    paramString.yh = paramMotionEvent.getRawY();
+    paramString.pressure = paramMotionEvent.getPressure();
+    paramString.size = paramMotionEvent.getSize();
+    Crux.kh.obtainMessage(1, paramString).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Chamaeleon
  * JD-Core Version:    0.7.0.1
  */

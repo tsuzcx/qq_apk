@@ -1,25 +1,34 @@
 package com.tencent.mobileqq.activity;
 
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.tts.TTSController.OnTTSPlayListener;
+import com.tencent.mobileqq.business.sougou.HightlightHotWordText;
+import com.tencent.mobileqq.business.sougou.WordMatchManager.HotWordItem;
+import com.tencent.mobileqq.business.sougou.WordMatchManager.MatchCallback;
+import com.tencent.mobileqq.vas.ColorNickManager;
+import com.tencent.mobileqq.widget.ContainerView;
 
 class TextPreviewActivity$3
-  implements TTSController.OnTTSPlayListener
+  implements WordMatchManager.MatchCallback
 {
   TextPreviewActivity$3(TextPreviewActivity paramTextPreviewActivity) {}
   
-  public void a() {}
-  
-  public void b()
+  public void a(int paramInt, WordMatchManager.HotWordItem[] paramArrayOfHotWordItem)
   {
-    Message localMessage = this.a.a.obtainMessage(20);
-    this.a.a.sendMessage(localMessage);
+    HightlightHotWordText.a(this.a.app, this.a.e, paramArrayOfHotWordItem);
+    paramArrayOfHotWordItem = ColorNickManager.a(this.a.e, this.a.f, 30, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 13);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.a(this.a))
+    {
+      this.a.jdField_a_of_type_JavaLangCharSequence = paramArrayOfHotWordItem;
+      return;
+    }
+    TextPreviewActivity localTextPreviewActivity = this.a;
+    localTextPreviewActivity.jdField_a_of_type_JavaLangCharSequence = null;
+    localTextPreviewActivity.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.setText(paramArrayOfHotWordItem);
+    this.a.i = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TextPreviewActivity.3
  * JD-Core Version:    0.7.0.1
  */

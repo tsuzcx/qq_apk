@@ -12,15 +12,18 @@ public class RefreshVideoFileKeyRequest
 {
   public RefreshVideoFileKeyResponse a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspAuthKey localRspAuthKey = new qqstory_service.RspAuthKey();
+    Object localObject = new qqstory_service.RspAuthKey();
     try
     {
-      localRspAuthKey.mergeFrom(paramArrayOfByte);
-      return new RefreshVideoFileKeyResponse(localRspAuthKey);
+      ((qqstory_service.RspAuthKey)localObject).mergeFrom(paramArrayOfByte);
+      return new RefreshVideoFileKeyResponse((qqstory_service.RspAuthKey)localObject);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      SLog.d("Q.qqstory:RefreshVideoFileKeyRequest", "" + paramArrayOfByte);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(paramArrayOfByte);
+      SLog.d("Q.qqstory:RefreshVideoFileKeyRequest", ((StringBuilder)localObject).toString());
     }
     return null;
   }
@@ -30,14 +33,14 @@ public class RefreshVideoFileKeyRequest
     return StoryApi.a("StorySvc.video_apply_authkey");
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     return new byte[0];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.RefreshVideoFileKeyRequest
  * JD-Core Version:    0.7.0.1
  */

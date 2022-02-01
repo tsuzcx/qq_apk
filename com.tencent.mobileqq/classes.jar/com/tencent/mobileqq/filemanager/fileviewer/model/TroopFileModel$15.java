@@ -18,54 +18,65 @@ class TroopFileModel$15
   
   public void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, ByteStringMicro paramByteStringMicro1, String paramString4, ByteStringMicro paramByteStringMicro2, Bundle paramBundle)
   {
-    paramByteStringMicro2 = this.a.a.a();
-    paramByteStringMicro1 = FileManagerUtil.a(paramByteStringMicro1);
-    paramString2 = null;
-    paramString1 = paramString2;
-    if (paramBoolean)
+    paramString1 = this.a.a.a();
+    paramString2 = FileManagerUtil.a(paramByteStringMicro1);
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString2)))
     {
-      paramString1 = paramString2;
-      if (!TextUtils.isEmpty(paramByteStringMicro1))
-      {
-        paramInt1 = paramByteStringMicro2.zipType;
-        paramString1 = "http://" + paramString3 + ":" + paramInt3 + "/ftn_compress_getfile/rkey=" + paramByteStringMicro1 + "&filetype=" + paramInt1 + "&path=" + URLUtil.a(paramByteStringMicro2.zipInnerPath) + "&";
-      }
+      paramInt1 = paramString1.zipType;
+      paramByteStringMicro1 = new StringBuilder();
+      paramByteStringMicro1.append("http://");
+      paramByteStringMicro1.append(paramString3);
+      paramByteStringMicro1.append(":");
+      paramByteStringMicro1.append(paramInt3);
+      paramByteStringMicro1.append("/ftn_compress_getfile/rkey=");
+      paramByteStringMicro1.append(paramString2);
+      paramByteStringMicro1.append("&filetype=");
+      paramByteStringMicro1.append(paramInt1);
+      paramByteStringMicro1.append("&path=");
+      paramByteStringMicro1.append(URLUtil.a(paramString1.zipInnerPath));
+      paramByteStringMicro1.append("&");
+      paramString1 = paramByteStringMicro1.toString();
+    }
+    else
+    {
+      paramString1 = null;
     }
     if (!TextUtils.isEmpty(paramString1))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopFileModel<FileAssistant>", 1, "url = " + paramString1 + ", cookies = " + paramString4);
+      if (QLog.isColorLevel())
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("url = ");
+        paramString2.append(paramString1);
+        paramString2.append(", cookies = ");
+        paramString2.append(paramString4);
+        QLog.e("TroopFileModel<FileAssistant>", 1, paramString2.toString());
       }
       if (TroopFileModel.a(this.a) != null) {
         TroopFileModel.a(this.a).a(paramString1, paramString4);
       }
-      if (this.a.a.a() != null)
-      {
+      if (this.a.a.a() != null) {
         paramString1 = String.valueOf(this.a.a.a().TroopUin);
-        if (this.a.a.a() == null) {
-          break label291;
-        }
-        paramString2 = FileManagerUtil.b(this.a.a.a().nFileType);
-        label261:
-        ReportController.b(null, "dc00899", "Grp_files", "", "oper", "Clk_pre_video", 0, 0, paramString1, "", paramString2, "1");
+      } else {
+        paramString1 = "";
       }
-    }
-    label291:
-    do
-    {
+      if (this.a.a.a() != null) {
+        paramString2 = FileManagerUtil.b(this.a.a.a().nFileType);
+      } else {
+        paramString2 = "unknow";
+      }
+      ReportController.b(null, "dc00899", "Grp_files", "", "oper", "Clk_pre_video", 0, 0, paramString1, "", paramString2, "1");
       return;
-      paramString1 = "";
-      break;
-      paramString2 = "unknow";
-      break label261;
-      QLog.i("TroopFileModel<FileAssistant>", 1, "requestOnlinePreviewDownloadUrl_onGetFilePreviewResult error, url is null.");
-    } while (TroopFileModel.a(this.a) == null);
-    TroopFileModel.a(this.a).c();
+    }
+    QLog.i("TroopFileModel<FileAssistant>", 1, "requestOnlinePreviewDownloadUrl_onGetFilePreviewResult error, url is null.");
+    if (TroopFileModel.a(this.a) != null) {
+      TroopFileModel.a(this.a).c();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel.15
  * JD-Core Version:    0.7.0.1
  */

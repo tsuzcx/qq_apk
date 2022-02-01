@@ -20,19 +20,15 @@ class NearbyProcess$1
     try
     {
       this.a.jdField_a_of_type_ComTencentMobileqqNearbyIpcMainProcessInterface.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcessInterface);
-      if (QLog.isColorLevel()) {
-        QLog.i("nearby_ipc_log_tag", 2, "nearbyProcess onServiceConnected.");
-      }
-      return;
     }
     catch (RemoteException paramComponentName)
     {
-      for (;;)
-      {
-        if (QLog.isDevelopLevel()) {
-          paramComponentName.printStackTrace();
-        }
+      if (QLog.isDevelopLevel()) {
+        paramComponentName.printStackTrace();
       }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("nearby_ipc_log_tag", 2, "nearbyProcess onServiceConnected.");
     }
   }
   
@@ -53,7 +49,7 @@ class NearbyProcess$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.ipc.NearbyProcess.1
  * JD-Core Version:    0.7.0.1
  */

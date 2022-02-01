@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:paddingTop="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:layout_width="38.0dip" android:layout_height="38.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/wh" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="56.0dip" android:minHeight="@dimen/j2">
-        <TextView android:textSize="@dimen/j1" android:textColor="@color/skin_black" android:gravity="center_vertical" android:id="@id/wc" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:maxWidth="184.0dip" android:text="@string/wei" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-        <com.tencent.widget.Switch android:id="@id/wb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-    <TextView android:textSize="12.0sp" android:textColor="@color/skin_gray3" android:id="@id/wa" android:padding="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/weh" />
-</LinearLayout>
+    <FrameLayout android:gravity="center" android:layout_gravity="center" android:background="@drawable/gvb" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true">
+        <com.tencent.mobileqq.now.widget.CircleImageView android:layout_gravity="center" android:id="@id/n1_" android:layout_width="34.0dip" android:layout_height="34.0dip" android:src="@drawable/account_panel_add_icon" />
+    </FrameLayout>
+    <FrameLayout android:layout_gravity="bottom|center|right" android:background="@drawable/gvb" android:layout_width="14.0dip" android:layout_height="14.0dip">
+        <com.tencent.mobileqq.now.focusanchor.commonwidget.FrameAnimationView android:layout_gravity="center" android:id="@id/n1b" android:padding="2.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+</FrameLayout>

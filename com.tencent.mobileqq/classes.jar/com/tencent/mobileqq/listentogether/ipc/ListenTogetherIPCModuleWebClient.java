@@ -30,43 +30,52 @@ public class ListenTogetherIPCModuleWebClient
   
   private EIPCResult a(String arg1, Bundle paramBundle, int paramInt)
   {
-    if ((!"action_status_changed".equals(???)) || (paramBundle == null)) {}
-    for (;;)
+    if ("action_status_changed".equals(???))
     {
-      return null;
+      if (paramBundle == null) {
+        return null;
+      }
       paramBundle = paramBundle.getString("data");
+      Object localObject;
       try
       {
         paramBundle = new JSONObject(paramBundle);
-        if (QLog.isColorLevel()) {
-          QLog.d("ListenTogetherIPCModuleWebClient", 2, "statusChanged action:" + ??? + " data=" + paramBundle);
-        }
-        if (paramBundle != null) {
-          synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-          {
-            Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-            while (localIterator.hasNext())
-            {
-              ListenTogetherIPCModuleWebClient.ListenTogetherClient2WebCallback localListenTogetherClient2WebCallback = (ListenTogetherIPCModuleWebClient.ListenTogetherClient2WebCallback)localIterator.next();
-              if (localListenTogetherClient2WebCallback != null) {
-                localListenTogetherClient2WebCallback.a(paramBundle);
-              }
-            }
-          }
-        }
       }
       catch (JSONException paramBundle)
       {
-        for (;;)
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("statusChanged error:");
+        ((StringBuilder)localObject).append(paramBundle.getMessage());
+        QLog.i("ListenTogetherIPCModuleWebClient", 1, ((StringBuilder)localObject).toString());
+        paramBundle = null;
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("statusChanged action:");
+        ((StringBuilder)localObject).append(???);
+        ((StringBuilder)localObject).append(" data=");
+        ((StringBuilder)localObject).append(paramBundle);
+        QLog.d("ListenTogetherIPCModuleWebClient", 2, ((StringBuilder)localObject).toString());
+      }
+      if (paramBundle != null) {
+        synchronized (this.jdField_a_of_type_JavaUtilArrayList)
         {
-          QLog.i("ListenTogetherIPCModuleWebClient", 1, "statusChanged error:" + paramBundle.getMessage());
-          paramBundle = null;
+          localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            ListenTogetherIPCModuleWebClient.ListenTogetherClient2WebCallback localListenTogetherClient2WebCallback = (ListenTogetherIPCModuleWebClient.ListenTogetherClient2WebCallback)((Iterator)localObject).next();
+            if (localListenTogetherClient2WebCallback != null) {
+              localListenTogetherClient2WebCallback.a(paramBundle);
+            }
+          }
+          ??? = new EIPCResult();
+          ???.code = 0;
+          return ???;
         }
-        ??? = new EIPCResult();
-        ???.code = 0;
       }
     }
-    return ???;
+    return null;
   }
   
   public static void a(JSONObject paramJSONObject)
@@ -85,19 +94,23 @@ public class ListenTogetherIPCModuleWebClient
   
   public void a(ListenTogetherIPCModuleWebClient.ListenTogetherClient2WebCallback paramListenTogetherClient2WebCallback)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogetherIPCModuleWebClient", 2, "register callback:" + paramListenTogetherClient2WebCallback);
-    }
-    if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramListenTogetherClient2WebCallback)) {}
-    for (;;)
+    Object localObject;
+    if (QLog.isColorLevel())
     {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("register callback:");
+      ((StringBuilder)localObject).append(paramListenTogetherClient2WebCallback);
+      QLog.d("ListenTogetherIPCModuleWebClient", 2, ((StringBuilder)localObject).toString());
+    }
+    if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramListenTogetherClient2WebCallback)) {
       return;
-      if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-        ??? = a();
-      }
+    }
+    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+    {
+      localObject = a();
       try
       {
-        QIPCClientHelper.getInstance().register((QIPCModule)???);
+        QIPCClientHelper.getInstance().register((QIPCModule)localObject);
         this.jdField_a_of_type_Boolean = true;
         if (QLog.isColorLevel()) {
           QLog.d("ListenTogetherIPCModuleWebClient", 2, "register real");
@@ -105,72 +118,100 @@ public class ListenTogetherIPCModuleWebClient
       }
       catch (Exception localException)
       {
-        synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.add(paramListenTogetherClient2WebCallback);
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("ListenTogetherIPCModuleWebClient", 2, "register mListenTogetherClient2WebCallbacks.size:" + this.jdField_a_of_type_JavaUtilArrayList.size());
-          return;
-          localException = localException;
-          QLog.e("ListenTogetherIPCModuleWebClient", 1, "register ipc module error.", localException);
-        }
+        QLog.e("ListenTogetherIPCModuleWebClient", 1, "register ipc module error.", localException);
       }
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramListenTogetherClient2WebCallback);
+      if (QLog.isColorLevel())
+      {
+        paramListenTogetherClient2WebCallback = new StringBuilder();
+        paramListenTogetherClient2WebCallback.append("register mListenTogetherClient2WebCallbacks.size:");
+        paramListenTogetherClient2WebCallback.append(this.jdField_a_of_type_JavaUtilArrayList.size());
+        QLog.d("ListenTogetherIPCModuleWebClient", 2, paramListenTogetherClient2WebCallback.toString());
+      }
+      return;
     }
   }
   
   public void b(ListenTogetherIPCModuleWebClient.ListenTogetherClient2WebCallback paramListenTogetherClient2WebCallback)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogetherIPCModuleWebClient", 2, "unregister callback:" + paramListenTogetherClient2WebCallback + " mHasRegistered:" + this.jdField_a_of_type_Boolean);
-    }
-    if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramListenTogetherClient2WebCallback)) {}
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramListenTogetherClient2WebCallback);
-      if (QLog.isColorLevel()) {
-        QLog.d("ListenTogetherIPCModuleWebClient", 2, "unregister mListenTogetherClient2WebCallbacks.size:" + this.jdField_a_of_type_JavaUtilArrayList.size());
-      }
-      if ((!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) || (!this.jdField_a_of_type_Boolean)) {}
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("unregister callback:");
+      ((StringBuilder)???).append(paramListenTogetherClient2WebCallback);
+      ((StringBuilder)???).append(" mHasRegistered:");
+      ((StringBuilder)???).append(this.jdField_a_of_type_Boolean);
+      QLog.d("ListenTogetherIPCModuleWebClient", 2, ((StringBuilder)???).toString());
     }
-    try
-    {
-      if (QIPCClientHelper.getInstance().getClient() != null)
+    if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramListenTogetherClient2WebCallback)) {
+      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
       {
-        QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
-        this.jdField_a_of_type_Boolean = false;
-        if (QLog.isColorLevel()) {
-          QLog.d("ListenTogetherIPCModuleWebClient", 2, "unregister real");
+        this.jdField_a_of_type_JavaUtilArrayList.remove(paramListenTogetherClient2WebCallback);
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      paramListenTogetherClient2WebCallback = new StringBuilder();
+      paramListenTogetherClient2WebCallback.append("unregister mListenTogetherClient2WebCallbacks.size:");
+      paramListenTogetherClient2WebCallback.append(this.jdField_a_of_type_JavaUtilArrayList.size());
+      QLog.d("ListenTogetherIPCModuleWebClient", 2, paramListenTogetherClient2WebCallback.toString());
+    }
+    if ((this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) && (this.jdField_a_of_type_Boolean)) {
+      try
+      {
+        if (QIPCClientHelper.getInstance().getClient() != null)
+        {
+          QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
+          this.jdField_a_of_type_Boolean = false;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("ListenTogetherIPCModuleWebClient", 2, "unregister real");
+            return;
+          }
         }
       }
-      return;
+      catch (Exception paramListenTogetherClient2WebCallback)
+      {
+        QLog.e("ListenTogetherIPCModuleWebClient", 1, "unregister ipc module error.", paramListenTogetherClient2WebCallback);
+      }
     }
-    catch (Exception paramListenTogetherClient2WebCallback)
-    {
-      QLog.e("ListenTogetherIPCModuleWebClient", 1, "unregister ipc module error.", paramListenTogetherClient2WebCallback);
-    }
-    paramListenTogetherClient2WebCallback = finally;
-    throw paramListenTogetherClient2WebCallback;
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogetherIPCModuleWebClient", 2, "onCall, params=" + paramBundle + ", action=" + paramString + ", callBackId=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCall, params=");
+      localStringBuilder.append(paramBundle);
+      localStringBuilder.append(", action=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", callBackId=");
+      localStringBuilder.append(paramInt);
+      QLog.d("ListenTogetherIPCModuleWebClient", 2, localStringBuilder.toString());
     }
-    if (paramBundle == null) {
-      QLog.i("ListenTogetherIPCModuleWebClient", 1, "onCall, param is null, action=" + paramString + ", callBackId=" + paramInt);
-    }
-    while (!"action_status_changed".equals(paramString)) {
+    if (paramBundle == null)
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("onCall, param is null, action=");
+      paramBundle.append(paramString);
+      paramBundle.append(", callBackId=");
+      paramBundle.append(paramInt);
+      QLog.i("ListenTogetherIPCModuleWebClient", 1, paramBundle.toString());
       return null;
     }
-    return a(paramString, paramBundle, paramInt);
+    if ("action_status_changed".equals(paramString)) {
+      return a(paramString, paramBundle, paramInt);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ipc.ListenTogetherIPCModuleWebClient
  * JD-Core Version:    0.7.0.1
  */

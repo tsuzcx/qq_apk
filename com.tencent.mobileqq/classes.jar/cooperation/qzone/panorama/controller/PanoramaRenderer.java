@@ -40,26 +40,31 @@ public class PanoramaRenderer
   public void onDrawFrame(GL10 paramGL10)
   {
     GLES20.glClear(16384);
-    if ((this.builder != null) && (this.builder.isTextureChange()))
+    paramGL10 = this.builder;
+    if ((paramGL10 != null) && (paramGL10.isTextureChange()))
     {
       this.textureDrawable = this.builder.getTextureDrawable();
       TextureUtil.deleteTexture(this.textureId);
-      if (this.textureDrawable != null) {
-        this.textureId = TextureUtil.genTextureId(((BitmapDrawable)this.textureDrawable).getBitmap(), false);
+      paramGL10 = this.textureDrawable;
+      if (paramGL10 != null) {
+        this.textureId = TextureUtil.genTextureId(((BitmapDrawable)paramGL10).getBitmap(), false);
       }
-      if (this.onPanoramaLoadingListener != null) {
-        this.onPanoramaLoadingListener.onPanoramaLoad();
+      paramGL10 = this.onPanoramaLoadingListener;
+      if (paramGL10 != null) {
+        paramGL10.onPanoramaLoad();
       }
     }
-    if ((this.builder != null) && (this.builder.getPanoramaPieceManager() != null))
+    paramGL10 = this.builder;
+    if ((paramGL10 != null) && (paramGL10.getPanoramaPieceManager() != null))
     {
       this.builder.getPanoramaPieceManager().doProcess();
       this.cachePieceDataList = this.builder.getPanoramaPieceManager().getCachePieceDataList();
       this.shapeModel.setPieceDataList(this.cachePieceDataList);
     }
-    if (this.shapeModel != null)
+    paramGL10 = this.shapeModel;
+    if (paramGL10 != null)
     {
-      this.shapeModel.setTextureId(this.textureId);
+      paramGL10.setTextureId(this.textureId);
       this.shapeModel.touchOperation();
       this.shapeModel.onModelDraw();
     }
@@ -76,8 +81,9 @@ public class PanoramaRenderer
     GLES20.glViewport(0, 0, paramInt1, paramInt2);
     GLES20.glEnable(2884);
     float f = paramInt1 / paramInt2;
-    if (this.shapeModel != null) {
-      this.shapeModel.setScreenRatio(f);
+    paramGL10 = this.shapeModel;
+    if (paramGL10 != null) {
+      paramGL10.setScreenRatio(f);
     }
   }
   
@@ -86,32 +92,39 @@ public class PanoramaRenderer
     GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
     this.programId = ShaderUtil.getProgramId();
     GLES20.glUseProgram(this.programId);
-    if (this.shapeModel != null) {
-      this.shapeModel.initModel(this.programId);
+    paramGL10 = this.shapeModel;
+    if (paramGL10 != null) {
+      paramGL10.initModel(this.programId);
     }
     paramGL10 = this.builder.getPanoramaPieceManager();
-    if ((paramGL10 != null) && (this.shapeModel != null)) {
-      paramGL10.setSectorDegree(this.shapeModel.getSectorDegree());
+    if (paramGL10 != null)
+    {
+      paramEGLConfig = this.shapeModel;
+      if (paramEGLConfig != null) {
+        paramGL10.setSectorDegree(paramEGLConfig.getSectorDegree());
+      }
     }
   }
   
   public void setRotate(float paramFloat1, float paramFloat2)
   {
-    if (this.shapeModel != null) {
-      this.shapeModel.setRotate(paramFloat1, paramFloat2);
+    ShapeModel localShapeModel = this.shapeModel;
+    if (localShapeModel != null) {
+      localShapeModel.setRotate(paramFloat1, paramFloat2);
     }
   }
   
   public void setScale(float paramFloat)
   {
-    if (this.shapeModel != null) {
-      this.shapeModel.setScale(paramFloat);
+    ShapeModel localShapeModel = this.shapeModel;
+    if (localShapeModel != null) {
+      localShapeModel.setScale(paramFloat);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.panorama.controller.PanoramaRenderer
  * JD-Core Version:    0.7.0.1
  */

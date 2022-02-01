@@ -8,6 +8,7 @@ import com.tencent.biz.pubaccount.weishi_new.jump.WSClientJumpStrategy;
 import com.tencent.biz.pubaccount.weishi_new.jump.WSDownloadAppStrategy;
 import com.tencent.biz.pubaccount.weishi_new.jump.WSMiniAppJumpStrategy;
 import com.tencent.biz.pubaccount.weishi_new.jump.WSWebJumpStrategy;
+import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
 import com.tencent.biz.qqstory.utils.WeishiGuideUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 
@@ -16,16 +17,22 @@ public class WSJumpStrategyByPriorityFactory
 {
   public AbsWSJump a(IWSStSchemaJumpFactor paramIWSStSchemaJumpFactor)
   {
-    if ((WeishiGuideUtils.a(BaseApplicationImpl.getContext())) && (!TextUtils.isEmpty(paramIWSStSchemaJumpFactor.a().schema))) {
+    boolean bool = WeishiGuideUtils.a(BaseApplicationImpl.getContext());
+    if ((bool) && (!TextUtils.isEmpty(paramIWSStSchemaJumpFactor.a().schema))) {
       return new WSClientJumpStrategy(paramIWSStSchemaJumpFactor);
     }
     if (!TextUtils.isEmpty(paramIWSStSchemaJumpFactor.a().miniAppSchema)) {
       return new WSMiniAppJumpStrategy(paramIWSStSchemaJumpFactor);
     }
-    if (!TextUtils.isEmpty(paramIWSStSchemaJumpFactor.a().H5Url)) {
+    if (!TextUtils.isEmpty(paramIWSStSchemaJumpFactor.a().H5Url))
+    {
+      String str = paramIWSStSchemaJumpFactor.a().schema;
+      if ((paramIWSStSchemaJumpFactor.b()) && (!TextUtils.isEmpty(str)) && (!bool)) {
+        WeishiUtils.a(str);
+      }
       return new WSWebJumpStrategy(paramIWSStSchemaJumpFactor);
     }
-    if (WeishiGuideUtils.a(BaseApplicationImpl.getContext())) {
+    if (bool) {
       return new WSClientJumpStrategy(paramIWSStSchemaJumpFactor);
     }
     return new WSDownloadAppStrategy(paramIWSStSchemaJumpFactor);
@@ -33,7 +40,7 @@ public class WSJumpStrategyByPriorityFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.jump.factory.WSJumpStrategyByPriorityFactory
  * JD-Core Version:    0.7.0.1
  */

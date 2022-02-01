@@ -7,18 +7,20 @@ public class AECoderFactory
   
   public static AEDecoder createDecoder(String paramString)
   {
-    if (mAEDecoderFactory == null) {
+    AECoderFactory.AEDecoderFactory localAEDecoderFactory = mAEDecoderFactory;
+    if (localAEDecoderFactory == null) {
       return null;
     }
-    return mAEDecoderFactory.createDecoder(paramString);
+    return localAEDecoderFactory.createDecoder(paramString);
   }
   
   public static AEEncoder createEncoder(String paramString, int paramInt1, int paramInt2)
   {
-    if (mAEEncoderFactory == null) {
+    AECoderFactory.AEEncoderFactory localAEEncoderFactory = mAEEncoderFactory;
+    if (localAEEncoderFactory == null) {
       return null;
     }
-    return mAEEncoderFactory.createEncoder(paramString, paramInt1, paramInt2);
+    return localAEEncoderFactory.createEncoder(paramString, paramInt1, paramInt2);
   }
   
   public static void setAEDecoder(AECoderFactory.AEDecoderFactory paramAEDecoderFactory)
@@ -33,7 +35,7 @@ public class AECoderFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.video.AECoderFactory
  * JD-Core Version:    0.7.0.1
  */

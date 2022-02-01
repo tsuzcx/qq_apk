@@ -19,36 +19,37 @@ class TroopMemberHistoryFragment$LoadMsgThread
   
   public void run()
   {
-    long l1;
-    Message localMessage;
     if (!this.this$0.isDetached())
     {
-      l1 = System.currentTimeMillis();
-      List localList = this.this$0.a();
-      localMessage = this.this$0.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(0, localList);
+      long l1 = System.currentTimeMillis();
+      Object localObject = this.this$0.a();
+      Message localMessage = this.this$0.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(0, localObject);
       localMessage.arg1 = this.a;
-      if ((localList != null) && (!localList.isEmpty())) {
-        break label83;
-      }
-      localMessage.arg2 = 11;
-    }
-    for (;;)
-    {
-      this.this$0.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
-      return;
-      label83:
-      localMessage.arg2 = 10;
-      if (QLog.isColorLevel())
+      if ((localObject != null) && (!((List)localObject).isEmpty()))
       {
-        long l2 = System.currentTimeMillis();
-        QLog.d(TroopMemberHistoryFragment.jdField_a_of_type_JavaLangString, 2, "More messages loaded. Costs " + (l2 - l1) + " ms.");
+        localMessage.arg2 = 10;
+        if (QLog.isColorLevel())
+        {
+          long l2 = System.currentTimeMillis();
+          localObject = TroopMemberHistoryFragment.jdField_a_of_type_JavaLangString;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("More messages loaded. Costs ");
+          localStringBuilder.append(l2 - l1);
+          localStringBuilder.append(" ms.");
+          QLog.d((String)localObject, 2, localStringBuilder.toString());
+        }
       }
+      else
+      {
+        localMessage.arg2 = 11;
+      }
+      this.this$0.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment.LoadMsgThread
  * JD-Core Version:    0.7.0.1
  */

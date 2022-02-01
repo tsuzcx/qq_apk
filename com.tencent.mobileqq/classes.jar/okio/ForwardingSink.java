@@ -7,10 +7,12 @@ public abstract class ForwardingSink
   
   public ForwardingSink(Sink paramSink)
   {
-    if (paramSink == null) {
-      throw new IllegalArgumentException("delegate == null");
+    if (paramSink != null)
+    {
+      this.delegate = paramSink;
+      return;
     }
-    this.delegate = paramSink;
+    throw new IllegalArgumentException("delegate == null");
   }
   
   public void close()
@@ -35,7 +37,12 @@ public abstract class ForwardingSink
   
   public String toString()
   {
-    return getClass().getSimpleName() + "(" + this.delegate.toString() + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getClass().getSimpleName());
+    localStringBuilder.append("(");
+    localStringBuilder.append(this.delegate.toString());
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
   
   public void write(Buffer paramBuffer, long paramLong)
@@ -45,7 +52,7 @@ public abstract class ForwardingSink
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okio.ForwardingSink
  * JD-Core Version:    0.7.0.1
  */

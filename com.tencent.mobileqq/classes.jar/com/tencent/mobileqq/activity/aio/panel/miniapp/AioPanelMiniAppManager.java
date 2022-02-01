@@ -15,11 +15,11 @@ import com.tencent.mobileqq.config.business.MiniAppConfProcessor;
 import com.tencent.mobileqq.mini.api.IMiniAppService;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
 import com.tencent.mobileqq.simpleui.SimpleUIUtil;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.tianshu.api.IRedTouchManager;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.manager.Manager;
@@ -44,8 +44,12 @@ public class AioPanelMiniAppManager
   
   private void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AioPanelMiniAppManager", 2, "fetchDrawable: invoked.  url: " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("fetchDrawable: invoked.  url: ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.i("AioPanelMiniAppManager", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
     try
@@ -78,32 +82,29 @@ public class AioPanelMiniAppManager
     Object localObject = MiniAppConfProcessor.a();
     boolean bool1 = SimpleUIUtil.a();
     boolean bool2 = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
-    if (bool1) {
+    if (bool1)
+    {
       if (bool2) {
         localObject = ((MiniAppConfBean)localObject).f();
-      }
-    }
-    Drawable localDrawable;
-    for (;;)
-    {
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841450);
-      localURLDrawableOptions.mLoadingDrawable = localDrawable;
-      localURLDrawableOptions.mFailedDrawable = localDrawable;
-      try
-      {
-        localObject = URLDrawable.getDrawable((String)localObject, localURLDrawableOptions);
-        return localObject;
-      }
-      catch (Exception localException) {}
-      localObject = ((MiniAppConfBean)localObject).e();
-      continue;
-      if (bool2) {
-        localObject = ((MiniAppConfBean)localObject).d();
       } else {
-        localObject = ((MiniAppConfBean)localObject).c();
+        localObject = ((MiniAppConfBean)localObject).e();
       }
     }
+    else if (bool2) {
+      localObject = ((MiniAppConfBean)localObject).d();
+    } else {
+      localObject = ((MiniAppConfBean)localObject).c();
+    }
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    Drawable localDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841331);
+    localURLDrawableOptions.mLoadingDrawable = localDrawable;
+    localURLDrawableOptions.mFailedDrawable = localDrawable;
+    try
+    {
+      localObject = URLDrawable.getDrawable((String)localObject, localURLDrawableOptions);
+      return localObject;
+    }
+    catch (Exception localException) {}
     return localDrawable;
   }
   
@@ -112,13 +113,13 @@ public class AioPanelMiniAppManager
     MiniAppConfBean localMiniAppConfBean = MiniAppConfProcessor.a();
     boolean bool = TextUtils.isEmpty(localMiniAppConfBean.b());
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface)) {}
-    for (localObject = (QQAppInterface)localObject;; localObject = null)
-    {
-      if ((localObject != null) && (!bool)) {
-        a((QQAppInterface)localObject, localMiniAppConfBean);
-      }
-      return;
+    if ((localObject instanceof QQAppInterface)) {
+      localObject = (QQAppInterface)localObject;
+    } else {
+      localObject = null;
+    }
+    if ((localObject != null) && (!bool)) {
+      a((QQAppInterface)localObject, localMiniAppConfBean);
     }
   }
   
@@ -126,8 +127,8 @@ public class AioPanelMiniAppManager
   {
     String str = MiniAppConfProcessor.a().b();
     ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(paramContext, str, 2053, paramBaseChatPie.a(), null);
-    paramContext = (RedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH);
-    paramContext.a(paramContext.a("110000"), "");
+    paramContext = (IRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchManager.class, "");
+    paramContext.onRedTouchItemClick(paramContext.getAppInfoByPath("110000"), "");
     this.jdField_a_of_type_Boolean = true;
     ReportController.b(null, "dc00898", "", "", "0X800A120", "0X800A120", 0, 0, "", "", "", "");
   }
@@ -144,15 +145,31 @@ public class AioPanelMiniAppManager
   {
     MiniAppConfBean localMiniAppConfBean = MiniAppConfProcessor.a();
     boolean bool1 = TextUtils.isEmpty(localMiniAppConfBean.b());
-    boolean bool2 = a(localMiniAppConfBean.c());
-    boolean bool3 = a(localMiniAppConfBean.d());
-    boolean bool4 = a(localMiniAppConfBean.e());
-    boolean bool5 = a(localMiniAppConfBean.f());
-    if (bool1) {}
-    while ((!bool2) || (!bool3) || (!bool4) || (!bool5)) {
+    boolean bool3 = a(localMiniAppConfBean.c());
+    boolean bool4 = a(localMiniAppConfBean.d());
+    boolean bool5 = a(localMiniAppConfBean.e());
+    boolean bool6 = a(localMiniAppConfBean.f());
+    boolean bool2 = false;
+    if (bool1) {
       return false;
     }
-    return true;
+    bool1 = bool2;
+    if (bool3)
+    {
+      bool1 = bool2;
+      if (bool4)
+      {
+        bool1 = bool2;
+        if (bool5)
+        {
+          bool1 = bool2;
+          if (bool6) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public boolean b()
@@ -162,7 +179,7 @@ public class AioPanelMiniAppManager
       this.jdField_a_of_type_Boolean = false;
       return false;
     }
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = ((RedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).a("110000");
+    BusinessInfoCheckUpdate.AppInfo localAppInfo = ((IRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchManager.class, "")).getAppInfoByPath("110000");
     return (localAppInfo != null) && (localAppInfo.iNewFlag.get() == 1);
   }
   
@@ -173,7 +190,7 @@ public class AioPanelMiniAppManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.miniapp.AioPanelMiniAppManager
  * JD-Core Version:    0.7.0.1
  */

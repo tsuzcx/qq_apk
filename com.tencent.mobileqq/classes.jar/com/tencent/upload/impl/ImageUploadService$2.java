@@ -22,47 +22,59 @@ class ImageUploadService$2
       if ((paramString2 instanceof ImageUploadTask)) {
         ((ImageUploadTask)paramString2).compressEndTime = System.currentTimeMillis();
       }
-      UploadLog.d("ImageUploadService", "Image compress complete,  originPath: " + paramString2.getFilePath() + " tmpPath: " + paramString1);
-      if (!TextUtils.isEmpty(paramString1)) {
-        break label200;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Image compress complete,  originPath: ");
+      ((StringBuilder)localObject).append(paramString2.getFilePath());
+      ((StringBuilder)localObject).append(" tmpPath: ");
+      ((StringBuilder)localObject).append(paramString1);
+      UploadLog.d("ImageUploadService", ((StringBuilder)localObject).toString());
+      if (TextUtils.isEmpty(paramString1))
+      {
+        UploadLog.d("ImageUploadService", "targetFilePath is empty !");
+        paramString1 = paramString2.getFilePath();
       }
-      UploadLog.d("ImageUploadService", "targetFilePath is empty !");
-      paramString1 = paramString2.getFilePath();
-    }
-    for (;;)
-    {
+      else
+      {
+        localObject = new File(paramString1);
+        if (!((File)localObject).exists())
+        {
+          UploadLog.d("ImageUploadService", "targetFilePath file invalid !");
+          paramString1 = paramString2.getFilePath();
+        }
+        else if (((File)localObject).length() <= 0L)
+        {
+          UploadLog.d("ImageUploadService", "targetFilePath file size == 0 !");
+          paramString1 = paramString2.getFilePath();
+        }
+      }
       paramString2.setTmpFilePath(paramString1);
-      UploadLog.d("ImageUploadService", "taskId:" + paramString2.flowId + ", final upload targetFilePath:" + paramString1);
-      if (!paramString2.needWaitBatch()) {
-        break;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("taskId:");
+      ((StringBuilder)localObject).append(paramString2.flowId);
+      ((StringBuilder)localObject).append(", final upload targetFilePath:");
+      ((StringBuilder)localObject).append(paramString1);
+      UploadLog.d("ImageUploadService", ((StringBuilder)localObject).toString());
+      if (paramString2.needWaitBatch())
+      {
+        ImageUploadService.access$100(this.this$0).remove(paramInt);
+        ImageUploadService.access$200(this.this$0).add(paramString2);
+        if ((ImageUploadService.access$200(this.this$0).size() >= BaseUploadService.getBatchControlNumber()) || (ImageUploadService.access$100(this.this$0).size() == 0)) {
+          ImageUploadService.access$000(this.this$0);
+        }
+        return;
       }
+      this.this$0.mTaskManager.sendAsync(paramString2);
       ImageUploadService.access$100(this.this$0).remove(paramInt);
-      ImageUploadService.access$200(this.this$0).add(paramString2);
-      if ((ImageUploadService.access$200(this.this$0).size() >= BaseUploadService.getBatchControlNumber()) || (ImageUploadService.access$100(this.this$0).size() == 0)) {
-        ImageUploadService.access$000(this.this$0);
-      }
-      return;
-      label200:
-      File localFile = new File(paramString1);
-      if (!localFile.exists())
-      {
-        UploadLog.d("ImageUploadService", "targetFilePath file invalid !");
-        paramString1 = paramString2.getFilePath();
-      }
-      else if (localFile.length() <= 0L)
-      {
-        UploadLog.d("ImageUploadService", "targetFilePath file size == 0 !");
-        paramString1 = paramString2.getFilePath();
-      }
     }
-    this.this$0.mTaskManager.sendAsync(paramString2);
-    ImageUploadService.access$100(this.this$0).remove(paramInt);
   }
   
   public void onPidObtained(int paramInt)
   {
     ImageUploadService.access$302(this.this$0, paramInt);
-    UploadLog.d("ImageUploadService", "ImageProcessProxy Service return Pid: " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ImageProcessProxy Service return Pid: ");
+    localStringBuilder.append(paramInt);
+    UploadLog.d("ImageUploadService", localStringBuilder.toString());
   }
   
   public void onServiceConnected()
@@ -72,7 +84,7 @@ class ImageUploadService$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.impl.ImageUploadService.2
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ class ForwardRecentActivity$10$1
   
   public void run()
   {
-    ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity$10.a, this.jdField_a_of_type_AndroidContentIntent);
+    ForwardRecentActivity.access$1600(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity$10.a, this.jdField_a_of_type_AndroidContentIntent);
     this.jdField_a_of_type_AndroidContentIntent.setClass(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity$10.a, PhoneFrameActivity.class);
     this.jdField_a_of_type_AndroidContentIntent.putExtra("key_req_type", 2);
     Intent localIntent = this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity$10.a.getIntent();
@@ -25,12 +25,12 @@ class ForwardRecentActivity$10$1
     this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity$10.a.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 20000);
     ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity$10.a.app, "CliOper", "", "", "0X8007011", "0X8007011", 0, 0, "", "", "", "");
     this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity$10.a.getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity$10.a.app.getCurrentAccountUin(), 0).edit().putBoolean("forward_share_card", false).commit();
-    ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity$10.a).findViewById(2131369382).setVisibility(8);
+    ForwardRecentActivity.access$1700(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity$10.a).findViewById(2131369110).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardRecentActivity.10.1
  * JD-Core Version:    0.7.0.1
  */

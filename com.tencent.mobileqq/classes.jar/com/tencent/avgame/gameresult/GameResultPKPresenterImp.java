@@ -1,13 +1,13 @@
 package com.tencent.avgame.gameresult;
 
 import android.app.Activity;
-import com.tencent.avgame.app.AVGameAppInterface;
 import com.tencent.avgame.business.observer.UserInfoObserver;
 import com.tencent.avgame.floatwindow.FloatWindowController;
 import com.tencent.avgame.gamelogic.GameEngine;
 import com.tencent.avgame.gamelogic.data.EngineData;
 import com.tencent.avgame.gamelogic.data.SurvivalPkResultInfo;
-import com.tencent.avgame.videorecord.SimpleGameRoomStatusListener;
+import com.tencent.avgame.qav.videorecord.SimpleGameRoomStatusListener;
+import com.tencent.common.app.business.BaseAVGameAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class GameResultPKPresenterImp
@@ -20,7 +20,7 @@ public class GameResultPKPresenterImp
   public GameResultPKPresenterImp(IGameResultView paramIGameResultView)
   {
     this.jdField_a_of_type_ComTencentAvgameBusinessObserverUserInfoObserver = new GameResultPKPresenterImp.1(this);
-    this.jdField_a_of_type_ComTencentAvgameVideorecordSimpleGameRoomStatusListener = new GameResultPKPresenterImp.2(this);
+    this.jdField_a_of_type_ComTencentAvgameQavVideorecordSimpleGameRoomStatusListener = new GameResultPKPresenterImp.2(this);
     this.jdField_a_of_type_ComTencentAvgameGameresultIGameResultView = paramIGameResultView;
   }
   
@@ -41,16 +41,17 @@ public class GameResultPKPresenterImp
   {
     SurvivalPkResultInfo localSurvivalPkResultInfo = GameEngine.a().a().a();
     GameEngine.a().a().addObserver(this.jdField_a_of_type_ComTencentAvgameBusinessObserverUserInfoObserver, false);
-    if ((this.jdField_a_of_type_ComTencentAvgameGameresultIGameResultView instanceof GamePKResultFragment)) {
-      ((GamePKResultFragment)this.jdField_a_of_type_ComTencentAvgameGameresultIGameResultView).a(localSurvivalPkResultInfo);
+    IGameResultView localIGameResultView = this.jdField_a_of_type_ComTencentAvgameGameresultIGameResultView;
+    if ((localIGameResultView instanceof GamePKResultFragment)) {
+      ((GamePKResultFragment)localIGameResultView).a(localSurvivalPkResultInfo);
     }
-    GameEngine.a().a(this.jdField_a_of_type_ComTencentAvgameVideorecordSimpleGameRoomStatusListener);
+    GameEngine.a().a(this.jdField_a_of_type_ComTencentAvgameQavVideorecordSimpleGameRoomStatusListener);
   }
   
   public void c()
   {
     GameEngine.a().a().removeObserver(this.jdField_a_of_type_ComTencentAvgameBusinessObserverUserInfoObserver);
-    GameEngine.a().b(this.jdField_a_of_type_ComTencentAvgameVideorecordSimpleGameRoomStatusListener);
+    GameEngine.a().b(this.jdField_a_of_type_ComTencentAvgameQavVideorecordSimpleGameRoomStatusListener);
   }
   
   public void d()
@@ -82,14 +83,14 @@ public class GameResultPKPresenterImp
   public void g()
   {
     GameEngine.a().d();
-    AVGameAppInterface localAVGameAppInterface = GameEngine.a().a();
-    String str = localAVGameAppInterface.getCurrentAccountUin();
-    this.jdField_a_of_type_ComTencentAvgameGameresultIGameResultView.a(localAVGameAppInterface, 0L, str, 0, null, null);
+    BaseAVGameAppInterface localBaseAVGameAppInterface = GameEngine.a().a();
+    String str = localBaseAVGameAppInterface.getCurrentAccountUin();
+    this.jdField_a_of_type_ComTencentAvgameGameresultIGameResultView.a(localBaseAVGameAppInterface, 0L, str, 0, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameresult.GameResultPKPresenterImp
  * JD-Core Version:    0.7.0.1
  */

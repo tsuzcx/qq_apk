@@ -10,12 +10,13 @@ class SwitchRoomAdapter$1
   
   public void doQueryRoomList()
   {
-    this.this$0.queryAndUpdateRoomListFromServer(0, SwitchRoomAdapter.access$000(this.this$0).getLastIndex());
+    SwitchRoomAdapter localSwitchRoomAdapter = this.this$0;
+    localSwitchRoomAdapter.queryAndUpdateRoomListFromServer(0, SwitchRoomAdapter.access$000(localSwitchRoomAdapter).getLastIndex());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.pagelogic.widgets.SwitchRoomAdapter.1
  * JD-Core Version:    0.7.0.1
  */

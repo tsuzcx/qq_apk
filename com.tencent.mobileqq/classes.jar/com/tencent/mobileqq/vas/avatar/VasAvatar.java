@@ -43,11 +43,11 @@ public class VasAvatar
   
   public static String a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 200)
     {
-    default: 
-      return "small";
-    case 640: 
+      if (paramInt != 640) {
+        return "small";
+      }
       return "large";
     }
     return "medium";
@@ -55,20 +55,28 @@ public class VasAvatar
   
   public static boolean a(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 == 1) || (paramInt1 == 103)) {}
-    while ((paramInt1 == 32) && (paramInt2 == 200)) {
-      return true;
+    if (paramInt1 != 1)
+    {
+      if (paramInt1 == 103) {
+        return true;
+      }
+      return (paramInt1 == 32) && (paramInt2 == 200);
     }
-    return false;
+    return true;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout != null) {
-      this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.setGoneBelow(1);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout;
+    if (localObject != null) {
+      ((AvatarLayout)localObject).setGoneBelow(1);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqhead.VasFaceManager", 2, "show vas avatar of " + this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("show vas avatar of ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      QLog.d("Q.qqhead.VasFaceManager", 2, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -79,19 +87,21 @@ public class VasAvatar
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect != null)
+    MosaicEffect localMosaicEffect = this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect;
+    if (localMosaicEffect != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect.a(paramCanvas);
+      localMosaicEffect.a(paramCanvas);
       return;
     }
     super.draw(paramCanvas);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect != null)
+    MosaicEffect localMosaicEffect = this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect;
+    if (localMosaicEffect != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect.b(paramCanvas);
+      localMosaicEffect.b(paramCanvas);
       return;
     }
     super.onDraw(paramCanvas);
@@ -124,7 +134,7 @@ public class VasAvatar
     paramVasAvatarLoader.a(this);
   }
   
-  public void setLoaderForCmshow(AvatarLayout paramAvatarLayout, VasAvatarLoader paramVasAvatarLoader, int paramInt)
+  public void setLoaderForCmshow(AvatarLayout paramAvatarLayout, VasAvatarLoader paramVasAvatarLoader, int paramInt1, int paramInt2)
   {
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramVasAvatarLoader.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
     paramVasAvatarLoader.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
@@ -132,17 +142,19 @@ public class VasAvatar
     this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout = paramAvatarLayout;
     this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatarLoader = paramVasAvatarLoader;
     this.jdField_a_of_type_JavaLangString = paramVasAvatarLoader.jdField_a_of_type_JavaLangString;
-    paramVasAvatarLoader.a(this, paramInt);
+    paramVasAvatarLoader.a(this, paramInt1, paramInt2);
   }
   
   public void setMosaicEffect(MosaicEffect paramMosaicEffect)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect.a(null);
+    MosaicEffect localMosaicEffect = this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect;
+    if (localMosaicEffect != null) {
+      localMosaicEffect.a(null);
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect = paramMosaicEffect;
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect.a(this);
+    paramMosaicEffect = this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect;
+    if (paramMosaicEffect != null) {
+      paramMosaicEffect.a(this);
     }
     invalidate();
   }
@@ -165,7 +177,7 @@ public class VasAvatar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.avatar.VasAvatar
  * JD-Core Version:    0.7.0.1
  */

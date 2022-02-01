@@ -26,15 +26,16 @@ public final class cell_text
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.data != null) {
-      paramJceOutputStream.write(this.data, 0);
+    String str = this.data;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.type, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_text
  * JD-Core Version:    0.7.0.1
  */

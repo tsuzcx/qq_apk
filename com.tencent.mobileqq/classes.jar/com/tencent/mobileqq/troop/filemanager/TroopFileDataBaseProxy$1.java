@@ -11,22 +11,40 @@ class TroopFileDataBaseProxy$1
   
   public void onDeleteFinish(String paramString, int paramInt)
   {
-    TroopFileTransferUtil.Log.d("TroopFileDataBaseProxy", TroopFileTransferUtil.Log.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish[del]. table:" + paramString);
+    paramInt = TroopFileTransferUtil.Log.c;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString());
+    localStringBuilder.append("] addItem finish[del]. table:");
+    localStringBuilder.append(paramString);
+    TroopFileTransferUtil.Log.d("TroopFileDataBaseProxy", paramInt, localStringBuilder.toString());
   }
   
   public void onInsertFinish(String paramString)
   {
-    TroopFileTransferUtil.Log.d("TroopFileDataBaseProxy", TroopFileTransferUtil.Log.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish. table:" + paramString);
+    int i = TroopFileTransferUtil.Log.c;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString());
+    localStringBuilder.append("] addItem finish. table:");
+    localStringBuilder.append(paramString);
+    TroopFileTransferUtil.Log.d("TroopFileDataBaseProxy", i, localStringBuilder.toString());
   }
   
   public void onUpdateFinish(String paramString, int paramInt)
   {
-    TroopFileTransferUtil.Log.d("TroopFileDataBaseProxy", TroopFileTransferUtil.Log.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish[up]. table:" + paramString);
+    paramInt = TroopFileTransferUtil.Log.c;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString());
+    localStringBuilder.append("] addItem finish[up]. table:");
+    localStringBuilder.append(paramString);
+    TroopFileTransferUtil.Log.d("TroopFileDataBaseProxy", paramInt, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.TroopFileDataBaseProxy.1
  * JD-Core Version:    0.7.0.1
  */

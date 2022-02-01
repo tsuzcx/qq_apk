@@ -38,7 +38,10 @@ public class RGBToI420Filter
   {
     if (paramString == null)
     {
-      a(1, "Shader source ==null : shaderType =" + paramInt);
+      paramString = new StringBuilder();
+      paramString.append("Shader source ==null : shaderType =");
+      paramString.append(paramInt);
+      a(1, paramString.toString());
       return 0;
     }
     int k = GLES20.glCreateShader(paramInt);
@@ -50,8 +53,14 @@ public class RGBToI420Filter
       GLES20.glGetShaderiv(k, 35713, paramString, 0);
       if (paramString[0] == 0)
       {
-        a(1, "Could not compile shader:" + paramInt);
-        a(1, "GLES20 Error:" + GLES20.glGetShaderInfoLog(k));
+        paramString = new StringBuilder();
+        paramString.append("Could not compile shader:");
+        paramString.append(paramInt);
+        a(1, paramString.toString());
+        paramString = new StringBuilder();
+        paramString.append("GLES20 Error:");
+        paramString.append(GLES20.glGetShaderInfoLog(k));
+        a(1, paramString.toString());
         GLES20.glDeleteShader(k);
         return 0;
       }
@@ -62,13 +71,13 @@ public class RGBToI420Filter
   public static int a(String paramString1, String paramString2)
   {
     int k = a(35633, paramString1);
-    if (k == 0) {}
-    int m;
-    do
-    {
+    if (k == 0) {
       return 0;
-      m = a(35632, paramString2);
-    } while (m == 0);
+    }
+    int m = a(35632, paramString2);
+    if (m == 0) {
+      return 0;
+    }
     int n = GLES20.glCreateProgram();
     if (n != 0)
     {
@@ -79,7 +88,10 @@ public class RGBToI420Filter
       GLES20.glGetProgramiv(n, 35714, paramString1, 0);
       if (paramString1[0] != 1)
       {
-        a(1, "Could not link program:" + GLES20.glGetProgramInfoLog(n));
+        paramString1 = new StringBuilder();
+        paramString1.append("Could not link program:");
+        paramString1.append(GLES20.glGetProgramInfoLog(n));
+        a(1, paramString1.toString());
         GLES20.glDeleteProgram(n);
         return 0;
       }
@@ -89,7 +101,12 @@ public class RGBToI420Filter
   
   private static void a(int paramInt, Object paramObject)
   {
-    QLog.e("RGBToI420Filter", 1, "glError:" + paramInt + "---" + paramObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("glError:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("---");
+    localStringBuilder.append(paramObject);
+    QLog.e("RGBToI420Filter", 1, localStringBuilder.toString());
   }
   
   protected void a()
@@ -177,7 +194,7 @@ public class RGBToI420Filter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.effects.RGBToI420Filter
  * JD-Core Version:    0.7.0.1
  */

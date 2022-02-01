@@ -40,8 +40,9 @@ public class HippyViewGroup
   
   private void restoreLayerType()
   {
-    if (this.mOldLayerType > -1) {
-      setLayerType(this.mOldLayerType, null);
+    int i = this.mOldLayerType;
+    if (i > -1) {
+      setLayerType(i, null);
     }
   }
   
@@ -52,71 +53,62 @@ public class HippyViewGroup
     setChildrenDrawingOrderEnabled(this.mDrawingOrderHelper.a());
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
-    String str;
-    int i;
-    if (this.mOverflow != null)
+    Object localObject = this.mOverflow;
+    if (localObject != null)
     {
-      str = this.mOverflow;
-      switch (str.hashCode())
+      int i = ((String)localObject).hashCode();
+      if (i != -1217487446)
       {
-      default: 
-        i = -1;
-        switch (i)
+        if ((i == 466743410) && (((String)localObject).equals("visible")))
         {
-        default: 
-          label47:
-          restoreLayerType();
+          i = 0;
+          break label70;
         }
-        break;
       }
-    }
-    do
-    {
-      for (;;)
+      else if (((String)localObject).equals("hidden"))
       {
-        super.dispatchDraw(paramCanvas);
-        return;
-        if (!str.equals("visible")) {
-          break;
-        }
-        i = 0;
-        break label47;
-        if (!str.equals("hidden")) {
-          break;
-        }
         i = 1;
-        break label47;
-        if (this.mOverflowPath != null) {
-          this.mOverflowPath.rewind();
-        }
-        restoreLayerType();
+        break label70;
       }
-    } while (this.mBGDrawable == null);
-    float f2 = getWidth();
-    float f1 = getHeight();
-    float f5;
-    float f4;
-    float f3;
-    if ((this.mBGDrawable.getBorderWidthArray() != null) && (this.mBGDrawable.getBorderWidthArray()[0] != 0.0F))
-    {
-      f5 = this.mBGDrawable.getBorderWidthArray()[0];
-      f4 = 0.0F + f5;
-      f3 = 0.0F + f5;
-      f2 -= f5;
-      f1 -= f5;
+      i = -1;
+      label70:
+      if (i != 0) {
+        if (i == 1) {}
+      }
     }
     for (;;)
     {
-      if (this.mBGDrawable.getBorderRadiusArray() != null) {}
-      for (f5 = this.mBGDrawable.getBorderRadiusArray()[0];; f5 = 0.0F)
+      restoreLayerType();
+      break label340;
+      if (this.mBGDrawable != null)
       {
-        for (;;)
+        float f2 = getWidth();
+        float f3 = getHeight();
+        float f4;
+        float f1;
+        if ((this.mBGDrawable.getBorderWidthArray() != null) && (this.mBGDrawable.getBorderWidthArray()[0] != 0.0F))
         {
-          if (f5 <= 0.0F) {
-            break label368;
-          }
+          f4 = this.mBGDrawable.getBorderWidthArray()[0];
+          f1 = f4 + 0.0F;
+          f2 -= f4;
+          f3 -= f4;
+          f4 = f1;
+        }
+        else
+        {
+          f4 = 0.0F;
+          f1 = 0.0F;
+        }
+        float f5;
+        if (this.mBGDrawable.getBorderRadiusArray() != null) {
+          f5 = this.mBGDrawable.getBorderRadiusArray()[0];
+        } else {
+          f5 = 0.0F;
+        }
+        if (f5 > 0.0F)
+        {
           if (this.mOverflowPath == null) {
             this.mOverflowPath = new Path();
           }
@@ -124,7 +116,7 @@ public class HippyViewGroup
           if (this.mOverflowRect == null) {
             this.mOverflowRect = new RectF();
           }
-          this.mOverflowRect.set(f4, f3, f2, f1);
+          this.mOverflowRect.set(f4, f1, f2, f3);
           this.mOverflowPath.addRoundRect(this.mOverflowRect, f5, f5, Path.Direction.CW);
           if (Build.VERSION.SDK_INT < 21)
           {
@@ -133,25 +125,27 @@ public class HippyViewGroup
             }
             setLayerType(1, null);
           }
-          try
-          {
-            paramCanvas.clipPath(this.mOverflowPath);
-          }
-          catch (Throwable localThrowable)
-          {
-            restoreLayerType();
-          }
         }
-        break;
       }
-      label368:
-      break;
-      f3 = 0.0F;
-      f4 = 0.0F;
+      try
+      {
+        paramCanvas.clipPath(this.mOverflowPath);
+        break label340;
+        localObject = this.mOverflowPath;
+        if (localObject != null)
+        {
+          ((Path)localObject).rewind();
+          continue;
+          label340:
+          super.dispatchDraw(paramCanvas);
+          return;
+        }
+      }
+      catch (Throwable localThrowable) {}
     }
   }
   
-  public int getChildDrawingOrder(int paramInt1, int paramInt2)
+  protected int getChildDrawingOrder(int paramInt1, int paramInt2)
   {
     return this.mDrawingOrderHelper.a(paramInt1, paramInt2);
   }
@@ -186,32 +180,27 @@ public class HippyViewGroup
       if (this.mGestureDispatcher != null)
       {
         bool2 = bool1;
-        if (this.mGestureDispatcher.needHandle("onInterceptPullUpEvent")) {
-          switch (i)
-          {
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      bool2 = this.isHandlePullUp;
-      return bool2;
-      if (!this.isHandlePullUp)
-      {
-        if (this.mViewConfiguration == null) {
-          this.mViewConfiguration = new ViewConfiguration();
-        }
-        float f1 = paramMotionEvent.getX();
-        float f2 = this.mDownX;
-        float f3 = paramMotionEvent.getY() - this.mDownY;
-        if ((f3 < 0.0F) && (Math.abs(f1 - f2) < Math.abs(f3)) && (Math.abs(f3) > this.mViewConfiguration.getScaledTouchSlop()))
+        if (this.mGestureDispatcher.needHandle("onInterceptPullUpEvent"))
         {
-          this.mGestureDispatcher.handle("onTouchDown", this.mDownX, this.mDownY);
-          this.isHandlePullUp = true;
+          if ((i == 2) && (!this.isHandlePullUp))
+          {
+            if (this.mViewConfiguration == null) {
+              this.mViewConfiguration = new ViewConfiguration();
+            }
+            float f1 = paramMotionEvent.getX();
+            float f2 = this.mDownX;
+            float f3 = paramMotionEvent.getY() - this.mDownY;
+            if ((f3 < 0.0F) && (Math.abs(f1 - f2) < Math.abs(f3)) && (Math.abs(f3) > this.mViewConfiguration.getScaledTouchSlop()))
+            {
+              this.mGestureDispatcher.handle("onTouchDown", this.mDownX, this.mDownY);
+              this.isHandlePullUp = true;
+            }
+          }
+          bool2 = this.isHandlePullUp;
         }
       }
     }
+    return bool2;
   }
   
   public void removeView(View paramView)
@@ -231,38 +220,31 @@ public class HippyViewGroup
   public void setOverflow(String paramString)
   {
     this.mOverflow = paramString;
-    int i;
     if (!TextUtils.isEmpty(this.mOverflow))
     {
       paramString = this.mOverflow;
-      i = -1;
-      switch (paramString.hashCode())
+      int i = -1;
+      int j = paramString.hashCode();
+      if (j != -1217487446)
       {
-      default: 
-        switch (i)
-        {
+        if ((j == 466743410) && (paramString.equals("visible"))) {
+          i = 0;
         }
-        break;
+      }
+      else if (paramString.equals("hidden")) {
+        i = 1;
+      }
+      if (i != 0)
+      {
+        if (i == 1) {
+          setClipChildren(true);
+        }
+      }
+      else {
+        setClipChildren(false);
       }
     }
-    for (;;)
-    {
-      invalidate();
-      return;
-      if (!paramString.equals("visible")) {
-        break;
-      }
-      i = 0;
-      break;
-      if (!paramString.equals("hidden")) {
-        break;
-      }
-      i = 1;
-      break;
-      setClipChildren(false);
-      continue;
-      setClipChildren(true);
-    }
+    invalidate();
   }
   
   public void updateDrawingOrder()
@@ -274,7 +256,7 @@ public class HippyViewGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.view.HippyViewGroup
  * JD-Core Version:    0.7.0.1
  */

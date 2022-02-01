@@ -42,17 +42,19 @@ public final class mobile_search_word_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iRetCode, 0);
-    if (this.vec_tab != null) {
-      paramJceOutputStream.write(this.vec_tab, 1);
+    ArrayList localArrayList = this.vec_tab;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
-    if (this.vec_hotword != null) {
-      paramJceOutputStream.write(this.vec_hotword, 2);
+    localArrayList = this.vec_hotword;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_search_word_rsp
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,8 @@ package com.tencent.falco.base.datareport;
 
 import android.content.Context;
 import android.util.Log;
+import com.tencent.beacon.event.open.BeaconConfig;
+import com.tencent.beacon.event.open.BeaconConfig.Builder;
 import com.tencent.beacon.event.open.BeaconEvent.Builder;
 import com.tencent.beacon.event.open.BeaconReport;
 import com.tencent.beacon.event.open.EventResult;
@@ -16,7 +18,6 @@ import com.tencent.falco.base.libapi.log.LogInterface;
 import com.tencent.falco.base.libapi.login.LoginInfo;
 import com.tencent.falco.base.libapi.login.LoginServiceInterface;
 import com.tencent.falco.utils.LiveClientTypeUtil;
-import com.tencent.falco.utils.ThreadCenter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -40,58 +41,83 @@ public class DataReportService
     Collections.sort(localArrayList);
     StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
-    if (i < localArrayList.size())
+    while (i < localArrayList.size())
     {
       String str1 = (String)localArrayList.get(i);
       String str2 = (String)paramMap.get(str1);
-      if (i == localArrayList.size() - 1) {
-        localStringBuilder.append(str1).append("=").append(str2);
-      }
-      for (;;)
+      if (i == localArrayList.size() - 1)
       {
-        i += 1;
-        break;
-        localStringBuilder.append(str1).append("=").append(str2).append("&");
+        localStringBuilder.append(str1);
+        localStringBuilder.append("=");
+        localStringBuilder.append(str2);
       }
+      else
+      {
+        localStringBuilder.append(str1);
+        localStringBuilder.append("=");
+        localStringBuilder.append(str2);
+        localStringBuilder.append("&");
+      }
+      i += 1;
     }
     return localStringBuilder.toString();
   }
   
   private int getReportLoginType(LoginInfo paramLoginInfo)
   {
-    if ((paramLoginInfo != null) && (paramLoginInfo.loginType != null)) {}
-    switch (DataReportService.8.a[paramLoginInfo.loginType.ordinal()])
+    if ((paramLoginInfo != null) && (paramLoginInfo.loginType != null))
     {
-    default: 
-      return -1;
-    case 1: 
+      int i = DataReportService.6.$SwitchMap$com$tencent$falco$base$libapi$login$LoginType[paramLoginInfo.loginType.ordinal()];
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3) {
+            return -1;
+          }
+          return 2;
+        }
+        return 0;
+      }
       return 1;
-    case 2: 
-      return 0;
     }
-    return 2;
+    return -1;
   }
   
   private void initBeacon(Context paramContext)
   {
-    new Thread(new DataReportService.6(this, paramContext)).start();
+    BeaconConfig localBeaconConfig = BeaconConfig.builder().build();
+    BeaconReport localBeaconReport = BeaconReport.getInstance();
+    localBeaconReport.setLogAble(false);
+    localBeaconReport.setChannelID(this.adapter.getChannelId());
+    localBeaconReport.setAppVersion(this.adapter.getAppVersion());
+    localBeaconReport.start(paramContext, this.adapter.getAppKey(), localBeaconConfig);
+    initBeaconImei();
   }
   
   private void initBeaconImei()
   {
-    ThreadCenter.postDefaultUITask(new DataReportService.7(this));
+    BeaconReport.getInstance().getQimei(new DataReportService.5(this));
   }
   
   private void initTunnelBeacon()
   {
-    new Thread(new DataReportService.5(this)).start();
+    initBeaconImei();
   }
   
   private void sendBeaconEvent(BeaconEvent.Builder paramBuilder)
   {
     paramBuilder = paramBuilder.build();
     paramBuilder = BeaconReport.getInstance().report(paramBuilder);
-    Log.d("DataReportService", "EventResult{ eventID:" + paramBuilder.eventID + ", errorCode: " + paramBuilder.errorCode + ", errorMsg: " + paramBuilder.errMsg + "}");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EventResult{ eventID:");
+    localStringBuilder.append(paramBuilder.eventID);
+    localStringBuilder.append(", errorCode: ");
+    localStringBuilder.append(paramBuilder.errorCode);
+    localStringBuilder.append(", errorMsg: ");
+    localStringBuilder.append(paramBuilder.errMsg);
+    localStringBuilder.append("}");
+    Log.d("DataReportService", localStringBuilder.toString());
   }
   
   public void clearEventOutput() {}
@@ -111,34 +137,27 @@ public class DataReportService
       paramMap.put("appid", this.adapter.getAppInfo().getAppId());
       paramMap.put("appid_anchor", this.adapter.getAppInfo().getAppId());
       paramMap.put("client_type", String.valueOf(this.adapter.getAppInfo().getClientType()));
-      if (!this.adapter.isInRoom()) {
-        break label488;
+      if (this.adapter.isInRoom())
+      {
+        paramMap.put("appid_anchor", String.valueOf(LiveClientTypeUtil.getAppIdFromClientType(this.adapter.getAnchorClientType())));
+        if (!paramMap.containsKey("anchor")) {
+          paramMap.put("anchor", this.adapter.getAnchorId());
+        }
+        paramMap.put("nowid", this.adapter.getAnchorExplicitId());
+        if (!paramMap.containsKey("roomid")) {
+          paramMap.put("roomid", this.adapter.getRoomId());
+        }
+        if (!paramMap.containsKey("program_id")) {
+          paramMap.put("program_id", this.adapter.getProgramId());
+        }
+        if (!paramMap.containsKey("room_type")) {
+          paramMap.put("room_type", String.valueOf(this.adapter.getRoomType()));
+        }
+        if (!paramMap.containsKey("room_mode")) {
+          paramMap.put("room_mode", this.adapter.getRoomMode());
+        }
       }
-      paramMap.put("appid_anchor", String.valueOf(LiveClientTypeUtil.getAppIdFromClientType(this.adapter.getAnchorClientType())));
-      if (!paramMap.containsKey("anchor")) {
-        paramMap.put("anchor", this.adapter.getAnchorId());
-      }
-      paramMap.put("nowid", this.adapter.getAnchorExplicitId());
-      if (!paramMap.containsKey("roomid")) {
-        paramMap.put("roomid", this.adapter.getRoomId());
-      }
-      if (!paramMap.containsKey("program_id")) {
-        paramMap.put("program_id", this.adapter.getProgramId());
-      }
-      if (!paramMap.containsKey("room_type")) {
-        paramMap.put("room_type", String.valueOf(this.adapter.getRoomType()));
-      }
-      if (!paramMap.containsKey("room_mode")) {
-        paramMap.put("room_mode", this.adapter.getRoomMode());
-      }
-    }
-    for (;;)
-    {
-      paramMap.put("sdk_version", "1.5.4.117-release_qq_8.5.5");
-      paramMap.put("platform", "Android");
-      return paramMap;
-      label488:
-      if ((!this.adapter.getAppInfo().isLiteSdk()) && (this.adapter.isRoomAccessorNull()))
+      else if ((!this.adapter.getAppInfo().isLiteSdk()) && (this.adapter.isRoomAccessorNull()))
       {
         if (this.adapter.isOutRoomHasRoomInfo())
         {
@@ -149,7 +168,10 @@ public class DataReportService
           paramMap.put("anchor", String.valueOf(this.adapter.getLoginInfo().getLoginInfo().uid));
         }
       }
+      paramMap.put("sdk_version", "1.8.0.158-release_qq_8.6.5");
+      paramMap.put("platform", "Android");
     }
+    return paramMap;
   }
   
   public void init(DataReportInterface.DataReportAdapter paramDataReportAdapter)
@@ -217,21 +239,38 @@ public class DataReportService
     paramMap.put("page_module", "HostQuality");
     paramMap.put("page_module_desc", "中台主播质量");
     paramMap.put("act_type", paramString);
-    String str = paramString + "#" + "quality_page" + "#" + "HostQuality";
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("#");
+    ((StringBuilder)localObject).append("quality_page");
+    ((StringBuilder)localObject).append("#");
+    ((StringBuilder)localObject).append("HostQuality");
+    localObject = ((StringBuilder)localObject).toString();
+    LogInterface localLogInterface;
+    StringBuilder localStringBuilder;
     if (paramString.equals("startLive"))
     {
       this.mStartLiveTime = System.currentTimeMillis();
-      this.adapter.getLog().i("DataReportService", "reportAnchorQualityEvent start act_type =" + paramString, new Object[0]);
+      localLogInterface = this.adapter.getLog();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportAnchorQualityEvent start act_type =");
+      localStringBuilder.append(paramString);
+      localLogInterface.i("DataReportService", localStringBuilder.toString(), new Object[0]);
     }
-    for (;;)
+    else
     {
-      paramString = commonReport(paramMap);
-      mQualityThreadPool.submit(new DataReportService.3(this, str, paramBoolean, paramString));
-      return;
       long l = System.currentTimeMillis() - this.mStartLiveTime;
       paramMap.put("timelong", String.valueOf(l));
-      this.adapter.getLog().i("DataReportService", "reportAnchorQualityEvent act_type =" + paramString + ";time = " + l, new Object[0]);
+      localLogInterface = this.adapter.getLog();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportAnchorQualityEvent act_type =");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(";time = ");
+      localStringBuilder.append(l);
+      localLogInterface.i("DataReportService", localStringBuilder.toString(), new Object[0]);
     }
+    paramString = commonReport(paramMap);
+    mQualityThreadPool.submit(new DataReportService.3(this, (String)localObject, paramBoolean, paramString));
   }
   
   public void reportAudienceQualityEvent(String paramString, Map<String, String> paramMap, boolean paramBoolean)
@@ -240,7 +279,13 @@ public class DataReportService
     paramMap.put("page_desc", "质量上报页");
     paramMap.put("page_module", "audience");
     paramMap.put("page_module_desc", "中台观看质量");
-    paramString = paramString + "#" + "quality_page" + "#" + "audience";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("#");
+    localStringBuilder.append("quality_page");
+    localStringBuilder.append("#");
+    localStringBuilder.append("audience");
+    paramString = localStringBuilder.toString();
     paramMap = commonReport(paramMap);
     mQualityThreadPool.submit(new DataReportService.4(this, paramString, paramBoolean, paramMap));
   }
@@ -258,7 +303,13 @@ public class DataReportService
       paramMap.put("page_module", paramString2);
       paramMap.put("act_type", paramString3);
     }
-    reportEvent(paramString3 + "#" + paramString1 + "#" + paramString2, true, paramMap);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString3);
+    localStringBuilder.append("#");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("#");
+    localStringBuilder.append(paramString2);
+    reportEvent(localStringBuilder.toString(), true, paramMap);
   }
   
   public void reportEvent(String paramString, Map<String, String> paramMap, boolean paramBoolean)
@@ -287,19 +338,26 @@ public class DataReportService
     String str1 = (String)paramMap.get("act_type");
     String str2 = (String)paramMap.get("page");
     String str3 = (String)paramMap.get("page_module");
-    str1 = str1 + "#" + str2 + "#" + str3;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str1);
+    localStringBuilder.append("#");
+    localStringBuilder.append(str2);
+    localStringBuilder.append("#");
+    localStringBuilder.append(str3);
+    str1 = localStringBuilder.toString();
     paramMap = commonReport(paramMap);
     mQualityThreadPool.submit(new DataReportService.2(this, str1, paramBoolean, paramMap));
   }
   
   void setBeaconLogAble()
   {
-    if ((this.adapter.getHostProxy().getReportInterface() != null) && (this.adapter.getHostProxy().getReportInterface().isBeaconRealTimeDebug())) {}
-    for (boolean bool = true;; bool = false)
-    {
-      BeaconReport.getInstance().setLogAble(bool);
-      return;
+    boolean bool;
+    if ((this.adapter.getHostProxy().getReportInterface() != null) && (this.adapter.getHostProxy().getReportInterface().isBeaconRealTimeDebug())) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    BeaconReport.getInstance().setLogAble(bool);
   }
   
   public void setUserUid(String paramString)
@@ -309,7 +367,7 @@ public class DataReportService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.datareport.DataReportService
  * JD-Core Version:    0.7.0.1
  */

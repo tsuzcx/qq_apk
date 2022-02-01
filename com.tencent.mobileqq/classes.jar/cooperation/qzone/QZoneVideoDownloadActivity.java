@@ -1,23 +1,24 @@
 package cooperation.qzone;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.tencent.aelight.camera.download.api.AEResInfo;
+import com.tencent.aelight.camera.download.api.IAEDownloadCallBack;
+import com.tencent.aelight.camera.download.api.IAEResDownload;
+import com.tencent.aelight.camera.download.api.IAEResUtil;
+import com.tencent.aelight.camera.entry.api.AELaunchParamsBuilder;
+import com.tencent.aelight.camera.entry.api.IAECameraLauncher;
+import com.tencent.aelight.camera.util.api.IPicChooseJumpUtil;
 import com.tencent.av.camera.QavCameraUsage;
-import com.tencent.biz.qqstory.takevideo.EditLocalGifSource;
-import com.tencent.biz.qqstory.takevideo.EditVideoActivity;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
@@ -26,6 +27,7 @@ import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.shortvideo.ShortVideoErrorReport;
 import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
 import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.INet_ShortVideoResource;
@@ -36,29 +38,20 @@ import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import cooperation.qzone.util.QZLog;
 import cooperation.qzone.video.QzoneVideoBeaconReport;
-import dov.com.qq.im.ae.download.AEResInfo;
-import dov.com.qq.im.ae.download.AEResManager;
-import dov.com.qq.im.ae.download.AEResManager.AEDownloadCallBack;
-import dov.com.qq.im.ae.download.AEResUtil;
-import dov.com.qq.im.ae.entry.AECameraLauncher;
-import dov.com.qq.im.ae.entry.AELaunchParamsBuilder;
-import dov.com.qq.im.ae.util.PicChooseJumpUtil;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
 
 public class QZoneVideoDownloadActivity
   extends IphoneTitleBarActivity
-  implements ShortVideoResourceManager.INet_ShortVideoResource, ShortVideoResourceStatus.ISVConfig, AEResManager.AEDownloadCallBack
+  implements IAEDownloadCallBack, ShortVideoResourceManager.INet_ShortVideoResource, ShortVideoResourceStatus.ISVConfig
 {
   private static final String EXTRA_FROM_TAKE_PHOTO_USING_QQ_CAMERA = "extra_from_take_photo_using_qq_camera";
-  public static final String KEY_SUPPORTPIC = "support_pic";
-  public static final String KEY_SUPPORT_DYNAMIC_VIDEO = "support_dynamic_video";
   public static final int MSG_DOWNLOAD_PLUGIN_PROGRESS = 1004;
   public static final int MSG_DOWNLOAD_SO_ERROR = 1002;
   public static final int MSG_DOWNLOAD_SO_PROGRESS = 1001;
@@ -124,52 +117,52 @@ public class QZoneVideoDownloadActivity
   
   private boolean checkIsOK()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("checkIsOK()=");
-    if ((this.isAVCodecDownloadOk) && (this.isAEBaseSoDownloadOk) && (this.isLightBaseSoDownloadOk) && (this.isArtSoDownloadOk) && (this.isTrackingDownloadOk)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      VideoEnvironment.LogDownLoad("QZoneVideoDownloadActivity", bool, null);
-      if ((!this.isAVCodecDownloadOk) || (!this.isAEBaseSoDownloadOk) || (!this.isLightBaseSoDownloadOk) || (!this.isArtSoDownloadOk) || (!this.isTrackingDownloadOk)) {
-        break;
-      }
-      return true;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("checkIsOK()=");
+    boolean bool;
+    if ((this.isAVCodecDownloadOk) && (this.isAEBaseSoDownloadOk) && (this.isLightBaseSoDownloadOk) && (this.isArtSoDownloadOk)) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    return false;
+    localStringBuilder.append(bool);
+    VideoEnvironment.LogDownLoad("QZoneVideoDownloadActivity", localStringBuilder.toString(), null);
+    return (this.isAVCodecDownloadOk) && (this.isAEBaseSoDownloadOk) && (this.isLightBaseSoDownloadOk) && (this.isArtSoDownloadOk);
   }
   
   private void entrySourceReport()
   {
-    switch (this.entrySource)
+    int i = this.entrySource;
+    if (i != 1)
     {
-    }
-    do
-    {
-      do
-      {
+      if (i != 2) {
         return;
-        LpReportInfo_pf00064.allReport(612, 1, 1);
-      } while (!QLog.isColorLevel());
-      QLog.i("QZoneVideoDownloadActivity", 2, "entry source plus report");
-      return;
+      }
       LpReportInfo_pf00064.allReport(612, 1, 2);
-    } while (!QLog.isColorLevel());
-    QLog.i("QZoneVideoDownloadActivity", 2, "entry source quick left slide report");
+      if (QLog.isColorLevel()) {
+        QLog.i("QZoneVideoDownloadActivity", 2, "entry source quick left slide report");
+      }
+    }
+    else
+    {
+      LpReportInfo_pf00064.allReport(612, 1, 1);
+      if (QLog.isColorLevel()) {
+        QLog.i("QZoneVideoDownloadActivity", 2, "entry source plus report");
+      }
+    }
   }
   
   private String getDownloadErrorConfig(int paramInt)
   {
-    Object localObject;
-    if (this.downloadError == null) {
-      localObject = String.valueOf(paramInt);
+    Object localObject = this.downloadError;
+    if (localObject == null) {
+      return String.valueOf(paramInt);
     }
-    String str;
-    do
-    {
-      return localObject;
-      str = (String)this.downloadError.get(Integer.valueOf(paramInt));
-      localObject = str;
-    } while (!TextUtils.isEmpty(str));
-    return String.valueOf(paramInt);
+    localObject = (String)((HashMap)localObject).get(Integer.valueOf(paramInt));
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return String.valueOf(paramInt);
+    }
+    return localObject;
   }
   
   private void initDownloadErrorConfig()
@@ -177,78 +170,92 @@ public class QZoneVideoDownloadActivity
     if (this.downloadError == null) {
       this.downloadError = new HashMap();
     }
-    this.downloadError.put(Integer.valueOf(-1), HardCodeUtil.a(2131712541));
-    this.downloadError.put(Integer.valueOf(-2), HardCodeUtil.a(2131712448));
-    this.downloadError.put(Integer.valueOf(-2), HardCodeUtil.a(2131712514));
-    this.downloadError.put(Integer.valueOf(-3), HardCodeUtil.a(2131712564));
-    this.downloadError.put(Integer.valueOf(-4), HardCodeUtil.a(2131712530));
-    this.downloadError.put(Integer.valueOf(-100), HardCodeUtil.a(2131712535));
-    this.downloadError.put(Integer.valueOf(-101), HardCodeUtil.a(2131712509));
-    this.downloadError.put(Integer.valueOf(-105), HardCodeUtil.a(2131712543));
+    this.downloadError.put(Integer.valueOf(-1), HardCodeUtil.a(2131712516));
+    this.downloadError.put(Integer.valueOf(-2), HardCodeUtil.a(2131712423));
+    this.downloadError.put(Integer.valueOf(-2), HardCodeUtil.a(2131712489));
+    this.downloadError.put(Integer.valueOf(-3), HardCodeUtil.a(2131712539));
+    this.downloadError.put(Integer.valueOf(-4), HardCodeUtil.a(2131712505));
+    this.downloadError.put(Integer.valueOf(-100), HardCodeUtil.a(2131712510));
+    this.downloadError.put(Integer.valueOf(-101), HardCodeUtil.a(2131712484));
+    this.downloadError.put(Integer.valueOf(-105), HardCodeUtil.a(2131712518));
     this.downloadError.put(Integer.valueOf(-106), "MD5为空错误");
-    this.downloadError.put(Integer.valueOf(-107), HardCodeUtil.a(2131712556));
+    this.downloadError.put(Integer.valueOf(-107), HardCodeUtil.a(2131712531));
     this.downloadError.put(Integer.valueOf(-108), "MD5校验错误");
-    this.downloadError.put(Integer.valueOf(-117), HardCodeUtil.a(2131712458));
-    this.downloadError.put(Integer.valueOf(-118), HardCodeUtil.a(2131712434));
-    this.downloadError.put(Integer.valueOf(-125), HardCodeUtil.a(2131712538));
-    this.downloadError.put(Integer.valueOf(-126), HardCodeUtil.a(2131712508));
+    this.downloadError.put(Integer.valueOf(-117), HardCodeUtil.a(2131712433));
+    this.downloadError.put(Integer.valueOf(-118), HardCodeUtil.a(2131712409));
+    this.downloadError.put(Integer.valueOf(-125), HardCodeUtil.a(2131712513));
+    this.downloadError.put(Integer.valueOf(-126), HardCodeUtil.a(2131712483));
     this.downloadError.put(Integer.valueOf(-127), "UTF-8编码错误");
     this.downloadError.put(Integer.valueOf(-127), "UTF-8编码错误");
-    this.downloadError.put(Integer.valueOf(-128), HardCodeUtil.a(2131712437));
-    this.downloadError.put(Integer.valueOf(-1000), HardCodeUtil.a(2131712570));
-    this.downloadError.put(Integer.valueOf(-1500), HardCodeUtil.a(2131712555));
-    this.downloadError.put(Integer.valueOf(-1501), HardCodeUtil.a(2131712554));
+    this.downloadError.put(Integer.valueOf(-128), HardCodeUtil.a(2131712412));
+    this.downloadError.put(Integer.valueOf(-1000), HardCodeUtil.a(2131712545));
+    this.downloadError.put(Integer.valueOf(-1500), HardCodeUtil.a(2131712530));
+    this.downloadError.put(Integer.valueOf(-1501), HardCodeUtil.a(2131712529));
   }
   
   private boolean isAllReady(QQAppInterface paramQQAppInterface)
   {
     boolean bool2 = VideoEnvironment.checkAndLoadAVCodec();
-    int i = AEResUtil.a(AEResInfo.jdField_b_of_type_DovComQqImAeDownloadAEResInfo);
-    int j = AEResUtil.a(AEResInfo.c);
-    if ((i == 2) || (j == 2))
+    int i = ((IAEResUtil)QRoute.api(IAEResUtil.class)).getAEResStatus(AEResInfo.AE_RES_BASE_PACKAGE);
+    int j = ((IAEResUtil)QRoute.api(IAEResUtil.class)).getAEResStatus(AEResInfo.LIGHT_RES_BASE_PACKAGE);
+    paramQQAppInterface = (IAEResUtil)QRoute.api(IAEResUtil.class);
+    if (i != 2)
     {
-      i = 0;
-      paramQQAppInterface = new StringBuilder().append("isAllReady()=");
-      if ((!bool2) || (i == 0)) {
-        break label88;
+      paramQQAppInterface = (IAEResUtil)QRoute.api(IAEResUtil.class);
+      if (j != 2)
+      {
+        i = 1;
+        break label81;
       }
     }
-    label88:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      VideoEnvironment.LogDownLoad("QZoneVideoDownloadActivity", bool1, null);
-      if ((!bool2) || (i == 0)) {
-        break label94;
-      }
-      return true;
-      i = 1;
-      break;
+    i = 0;
+    label81:
+    paramQQAppInterface = new StringBuilder();
+    paramQQAppInterface.append("isAllReady()=");
+    boolean bool1;
+    if ((bool2) && (i != 0)) {
+      bool1 = true;
+    } else {
+      bool1 = false;
     }
-    label94:
-    return false;
+    paramQQAppInterface.append(bool1);
+    VideoEnvironment.LogDownLoad("QZoneVideoDownloadActivity", paramQQAppInterface.toString(), null);
+    return (bool2) && (i != 0);
   }
   
   private void onDownloadFinishAndJudge(String paramString1, int paramInt, String paramString2)
   {
     if ((paramString1.startsWith("new_qq_android_native_short_video_")) && (paramInt != 0))
     {
-      sendErrorMessage(HardCodeUtil.a(2131712529) + getDownloadErrorConfig(paramInt) + "]");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(HardCodeUtil.a(2131712504));
+      localStringBuilder.append(getDownloadErrorConfig(paramInt));
+      localStringBuilder.append("]");
+      sendErrorMessage(localStringBuilder.toString());
       ShortVideoErrorReport.b(2, paramInt);
     }
-    if ((paramString1.startsWith(AEResInfo.jdField_b_of_type_DovComQqImAeDownloadAEResInfo.jdField_b_of_type_JavaLangString)) && (paramInt != 0))
+    if ((paramString1.startsWith(AEResInfo.AE_RES_BASE_PACKAGE.resPrefix)) && (paramInt != 0))
     {
-      sendErrorMessage(HardCodeUtil.a(2131712441) + getDownloadErrorConfig(paramInt) + "]");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(HardCodeUtil.a(2131712416));
+      localStringBuilder.append(getDownloadErrorConfig(paramInt));
+      localStringBuilder.append("]");
+      sendErrorMessage(localStringBuilder.toString());
       ShortVideoErrorReport.b(2, paramInt);
     }
     if ((!isFinishing()) && (isAllReady(this.app)) && (checkIsOK())) {
       startQZoneVideo();
-    }
-    for (;;)
-    {
-      VideoEnvironment.LogDownLoad("QZoneVideoDownloadActivity", "name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
-      return;
+    } else {
       VideoEnvironment.LogDownLoad("QZoneVideoDownloadActivity", "!isFinishing() && isAllReady(app) && checkIsOK() = false", null);
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("name=");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(",result=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(",filePath=");
+    localStringBuilder.append(paramString2);
+    VideoEnvironment.LogDownLoad("QZoneVideoDownloadActivity", localStringBuilder.toString(), null);
   }
   
   private void sendErrorMessage(String paramString)
@@ -260,52 +267,28 @@ public class QZoneVideoDownloadActivity
   
   private void startDownloadConfig()
   {
-    if ((NetworkUtil.g(null)) && (this.app != null))
+    if ((NetworkUtil.isNetworkAvailable(null)) && (this.app != null))
     {
       this.aekitTotalLen = 0L;
       this.aekitCurOffset = 0L;
       this.avCodecTotalLen = 0L;
       this.avCodecCurOffset = 0L;
       ShortVideoResourceManager.b(this.app, this);
-      if (AEResUtil.a(AEResInfo.jdField_b_of_type_DovComQqImAeDownloadAEResInfo) == 2)
+      if (((IAEResUtil)QRoute.api(IAEResUtil.class)).getAEResStatus(AEResInfo.AE_RES_BASE_PACKAGE) == 2)
       {
         this.isAEBaseSoDownloadOk = false;
-        AEResManager.a().a(AEResInfo.jdField_b_of_type_DovComQqImAeDownloadAEResInfo, this, false);
+        ((IAEResDownload)QRoute.api(IAEResDownload.class)).requestDownload(AEResInfo.AE_RES_BASE_PACKAGE, this, false);
       }
-      if (AEResUtil.a(AEResInfo.c) == 2)
+      if (((IAEResUtil)QRoute.api(IAEResUtil.class)).getAEResStatus(AEResInfo.LIGHT_RES_BASE_PACKAGE) == 2)
       {
         this.isLightBaseSoDownloadOk = false;
-        AEResManager.a().a(AEResInfo.c, this, false);
+        ((IAEResDownload)QRoute.api(IAEResDownload.class)).requestDownload(AEResInfo.LIGHT_RES_BASE_PACKAGE, this, false);
       }
-      return;
     }
-    this.mHandler.sendEmptyMessage(1002);
-  }
-  
-  public static Intent startGifEditVideoActivity(Activity paramActivity, String paramString, ArrayList<String> paramArrayList, LocalMediaInfo paramLocalMediaInfo, long paramLong, int paramInt)
-  {
-    Intent localIntent = new Intent(paramActivity.getIntent());
-    Bundle localBundle = new Bundle();
-    localBundle.putString("extra_publish_text", HardCodeUtil.a(2131712563));
-    try
+    else
     {
-      paramString = new EditLocalGifSource(paramString, paramArrayList, paramLocalMediaInfo, paramLong);
-      paramString = new EditVideoParams(3, 4109, paramString, localBundle);
-      localIntent.putExtra("PhotoConst.PHOTO_SELECT_ACTIVITY_CLASS_NAME", paramActivity.getClass().getName());
-      localIntent.putExtra("PhotoConst.PHOTO_SELECT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
-      localIntent.putExtra(EditVideoParams.class.getName(), paramString);
-      localIntent.putExtra("op_type", "gif_edit");
-      if (paramInt == 3) {
-        localIntent.putExtra("op_department", "grp_qzone");
-      }
-      return localIntent;
+      this.mHandler.sendEmptyMessage(1002);
     }
-    catch (Exception paramString)
-    {
-      QLog.e("QZoneVideoDownloadActivity", 1, paramString, new Object[0]);
-      QQToast.a(paramActivity, HardCodeUtil.a(2131712567), 0).a();
-    }
-    return null;
   }
   
   private void startQZoneVideo()
@@ -315,89 +298,93 @@ public class QZoneVideoDownloadActivity
       if (QLog.isColorLevel()) {
         QLog.e("QZoneVideoDownloadActivity", 2, "startQZoneVideo, getAppRunime and uin are null");
       }
-      QQToast.a(this, HardCodeUtil.a(2131712524), 0).a();
+      QQToast.a(this, HardCodeUtil.a(2131712499), 0).a();
       QzoneVideoBeaconReport.reportVideoEvent(null, "qzone_video_recordtrim", "1000", null);
       finish();
       return;
     }
     Object localObject2 = QZoneHelper.UserInfo.getInstance();
-    Object localObject1;
-    Bundle localBundle;
-    if (TextUtils.isEmpty(this.uin))
-    {
+    if (TextUtils.isEmpty(this.uin)) {
       localObject1 = getAppRuntime().getAccount();
-      ((QZoneHelper.UserInfo)localObject2).qzone_uin = ((String)localObject1);
-      localObject1 = getIntent().getStringExtra("refer");
-      QLog.i("QZoneVideoDownloadActivity", 1, "isSupportRecord=" + this.isSupportRecord + ",isSupportTrim=" + this.isSupportTrim + ",isPreviewVideo" + this.isPreviewVideo + ",refer=" + (String)localObject1 + ",videoRefer=" + this.videoRefer);
-      localBundle = new Bundle();
-      if ((!getIntent().hasExtra("support_pic")) || (getIntent().getBooleanExtra("support_pic", false))) {
-        break label831;
-      }
-      localBundle.putBoolean("flow_camera_capture_mode", false);
-      localBundle.putBoolean("flow_camera_capture_mode", false);
-      label231:
-      if (getIntent().hasExtra("enable_local_button")) {
-        localBundle.putBoolean("enable_local_video", getIntent().getBooleanExtra("enable_local_button", true));
-      }
-      localBundle.putBoolean("flow_camera_video_mode", getIntent().getBooleanExtra("flow_camera_video_mode", true));
-      localBundle.putString("sv_config", getIntent().getStringExtra("sv_config"));
-      localBundle.putInt("UseQQCameraCompression", getIntent().getIntExtra("UseQQCameraCompression", 0));
-      localBundle.putBoolean("PeakConstants.ARG_BEAUTY", getIntent().getBooleanExtra("PeakConstants.ARG_BEAUTY", true));
-      localBundle.putBoolean("PeakConstants.ARG_SUPPORT_FILTER", getIntent().getBooleanExtra("PeakConstants.ARG_SUPPORT_FILTER", true));
-      localBundle.putBoolean("PeakConstants.ARG_SUPPORT_DD", getIntent().getBooleanExtra("PeakConstants.ARG_SUPPORT_DD", true));
-      localBundle.putBoolean("PeakConstants.ARG_UNFOLD_DD", getIntent().getBooleanExtra("PeakConstants.ARG_UNFOLD_DD", false));
-      localBundle.putString("PeakConstants.ARG_DD_CATEGORY_NAME", getIntent().getStringExtra("PeakConstants.ARG_DD_CATEGORY_NAME"));
-      localBundle.putString("PeakConstants.ARG_DD_ITEM_ID", getIntent().getStringExtra("PeakConstants.ARG_DD_ITEM_ID"));
-      localBundle.putBoolean("PeakConstants.ARG_UNFOLD_FILTER", getIntent().getBooleanExtra("PeakConstants.ARG_UNFOLD_FILTER", false));
-      localBundle.putString("PeakConstants.ARG_FILTER_CATEGORY_NAME", getIntent().getStringExtra("PeakConstants.ARG_FILTER_CATEGORY_NAME"));
-      localBundle.putString("PeakConstants.ARG_FILTER_ITEM_ID", getIntent().getStringExtra("PeakConstants.ARG_FILTER_ITEM_ID"));
-      localBundle.putInt("PeakConstants.ARG_FORCE_CAMERA", getIntent().getIntExtra("PeakConstants.ARG_FORCE_CAMERA", 0));
-      localBundle.putBoolean("extra_directly_back", getIntent().getBooleanExtra("extra_directly_back", false));
-      localBundle.putDouble("key_latitude", getIntent().getDoubleExtra("key_latitude", 4.9E-324D));
-      localBundle.putDouble("key_longtitude", getIntent().getDoubleExtra("key_longtitude", 4.9E-324D));
-      localBundle.putParcelable("key_qzone_topic", getIntent().getParcelableExtra("key_qzone_topic"));
-      if (this.entrySource != 3) {
-        break label853;
-      }
-      localBundle.putString("qcamera_photo_filepath", getIntent().getStringExtra("qcamera_photo_filepath"));
-      localBundle.putBoolean("support_pic", getIntent().getBooleanExtra("support_pic", false));
-      localBundle.putBoolean("go_publish_activity", getIntent().getBooleanExtra("go_publish_activity", false));
-      localBundle.putBoolean("enable_local_video", getIntent().getBooleanExtra("enable_local_video", false));
-      localBundle.putString("qzone_plugin_activity_name", getIntent().getStringExtra("qzone_plugin_activity_name"));
-      localBundle.putBoolean("extra_from_take_photo_using_qq_camera", getIntent().getBooleanExtra("extra_from_take_photo_using_qq_camera", false));
+    } else {
+      localObject1 = this.uin;
     }
-    for (;;)
+    ((QZoneHelper.UserInfo)localObject2).qzone_uin = ((String)localObject1);
+    Object localObject1 = getIntent().getStringExtra("refer");
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("isSupportRecord=");
+    ((StringBuilder)localObject3).append(this.isSupportRecord);
+    ((StringBuilder)localObject3).append(",isSupportTrim=");
+    ((StringBuilder)localObject3).append(this.isSupportTrim);
+    ((StringBuilder)localObject3).append(",isPreviewVideo");
+    ((StringBuilder)localObject3).append(this.isPreviewVideo);
+    ((StringBuilder)localObject3).append(",refer=");
+    ((StringBuilder)localObject3).append((String)localObject1);
+    ((StringBuilder)localObject3).append(",videoRefer=");
+    ((StringBuilder)localObject3).append(this.videoRefer);
+    QLog.i("QZoneVideoDownloadActivity", 1, ((StringBuilder)localObject3).toString());
+    localObject3 = new Bundle();
+    if ((getIntent().hasExtra("support_pic")) && (!getIntent().getBooleanExtra("support_pic", false)))
     {
-      if (!this.isSupportRecord) {
-        break label943;
-      }
-      QZoneHelper.forwardToQzoneVideoCaptureNew(this.app, this, (QZoneHelper.UserInfo)localObject2, 10009, this.isSupportTrim, this.isSupportPic, (String)localObject1, this.videoRefer, this.isQzoneVip, this.isEditVideo, this.topicId, this.enterPtu, this.donaXiaoCallback, this.dongXiaoId, this.enableInputText, this.enablePrivList, this.enableQzoneSync, this.enableOriginVideo, this.confirmText, this.enableEditButton, this.enableLocalButton, this.isGlanceVideo, this.entrySource, this.isGoPublish, localBundle);
+      ((Bundle)localObject3).putBoolean("flow_camera_capture_mode", false);
+      ((Bundle)localObject3).putBoolean("flow_camera_capture_mode", false);
+    }
+    else
+    {
+      ((Bundle)localObject3).putBoolean("flow_camera_capture_mode", getIntent().getBooleanExtra("flow_camera_capture_mode", true));
+    }
+    if (getIntent().hasExtra("enable_local_button")) {
+      ((Bundle)localObject3).putBoolean("enable_local_video", getIntent().getBooleanExtra("enable_local_button", true));
+    }
+    ((Bundle)localObject3).putBoolean("flow_camera_video_mode", getIntent().getBooleanExtra("flow_camera_video_mode", true));
+    ((Bundle)localObject3).putString("sv_config", getIntent().getStringExtra("sv_config"));
+    ((Bundle)localObject3).putInt("UseQQCameraCompression", getIntent().getIntExtra("UseQQCameraCompression", 0));
+    ((Bundle)localObject3).putBoolean("PeakConstants.ARG_BEAUTY", getIntent().getBooleanExtra("PeakConstants.ARG_BEAUTY", true));
+    ((Bundle)localObject3).putBoolean("PeakConstants.ARG_SUPPORT_FILTER", getIntent().getBooleanExtra("PeakConstants.ARG_SUPPORT_FILTER", true));
+    ((Bundle)localObject3).putBoolean("PeakConstants.ARG_SUPPORT_DD", getIntent().getBooleanExtra("PeakConstants.ARG_SUPPORT_DD", true));
+    ((Bundle)localObject3).putBoolean("PeakConstants.ARG_UNFOLD_DD", getIntent().getBooleanExtra("PeakConstants.ARG_UNFOLD_DD", false));
+    ((Bundle)localObject3).putString("PeakConstants.ARG_DD_CATEGORY_NAME", getIntent().getStringExtra("PeakConstants.ARG_DD_CATEGORY_NAME"));
+    ((Bundle)localObject3).putString("PeakConstants.ARG_DD_ITEM_ID", getIntent().getStringExtra("PeakConstants.ARG_DD_ITEM_ID"));
+    ((Bundle)localObject3).putBoolean("PeakConstants.ARG_UNFOLD_FILTER", getIntent().getBooleanExtra("PeakConstants.ARG_UNFOLD_FILTER", false));
+    ((Bundle)localObject3).putString("PeakConstants.ARG_FILTER_CATEGORY_NAME", getIntent().getStringExtra("PeakConstants.ARG_FILTER_CATEGORY_NAME"));
+    ((Bundle)localObject3).putString("PeakConstants.ARG_FILTER_ITEM_ID", getIntent().getStringExtra("PeakConstants.ARG_FILTER_ITEM_ID"));
+    ((Bundle)localObject3).putInt("PeakConstants.ARG_FORCE_CAMERA", getIntent().getIntExtra("PeakConstants.ARG_FORCE_CAMERA", 0));
+    ((Bundle)localObject3).putBoolean("extra_directly_back", getIntent().getBooleanExtra("extra_directly_back", false));
+    ((Bundle)localObject3).putDouble("key_latitude", getIntent().getDoubleExtra("key_latitude", 4.9E-324D));
+    ((Bundle)localObject3).putDouble("key_longtitude", getIntent().getDoubleExtra("key_longtitude", 4.9E-324D));
+    ((Bundle)localObject3).putParcelable("key_qzone_topic", getIntent().getParcelableExtra("key_qzone_topic"));
+    int i = this.entrySource;
+    if (i == 3)
+    {
+      ((Bundle)localObject3).putString("qcamera_photo_filepath", getIntent().getStringExtra("qcamera_photo_filepath"));
+      ((Bundle)localObject3).putBoolean("support_pic", getIntent().getBooleanExtra("support_pic", false));
+      ((Bundle)localObject3).putBoolean("go_publish_activity", getIntent().getBooleanExtra("go_publish_activity", false));
+      ((Bundle)localObject3).putBoolean("enable_local_video", getIntent().getBooleanExtra("enable_local_video", false));
+      ((Bundle)localObject3).putString("qzone_plugin_activity_name", getIntent().getStringExtra("qzone_plugin_activity_name"));
+      ((Bundle)localObject3).putBoolean("extra_from_take_photo_using_qq_camera", getIntent().getBooleanExtra("extra_from_take_photo_using_qq_camera", false));
+    }
+    else if (i == 5)
+    {
+      ((Bundle)localObject3).putBoolean("enable_local_video", getIntent().getBooleanExtra("enable_local_video", false));
+    }
+    else if (i == 7)
+    {
+      ((Bundle)localObject3).putInt("ability_flag", 3);
+      ((Bundle)localObject3).putBoolean("PeakConstants.ARG_ALBUM", false);
+    }
+    else if (i == 9)
+    {
+      ((Bundle)localObject3).putBoolean("PeakConstants.ARG_ALBUM", false);
+      ((Bundle)localObject3).putInt("ability_flag", 3);
+    }
+    if (this.isSupportRecord)
+    {
+      QZoneHelper.forwardToQzoneVideoCaptureNew(this.app, this, (QZoneHelper.UserInfo)localObject2, 10009, this.isSupportTrim, this.isSupportPic, (String)localObject1, this.videoRefer, this.isQzoneVip, this.isEditVideo, this.topicId, this.enterPtu, this.donaXiaoCallback, this.dongXiaoId, this.enableInputText, this.enablePrivList, this.enableQzoneSync, this.enableOriginVideo, this.confirmText, this.enableEditButton, this.enableLocalButton, this.isGlanceVideo, this.entrySource, this.isGoPublish, (Bundle)localObject3);
       QzoneVideoBeaconReport.reportVideoEvent(((QZoneHelper.UserInfo)localObject2).qzone_uin, "qzone_video_recordtrim", "0", "record");
       entrySourceReport();
       finish();
       return;
-      localObject1 = this.uin;
-      break;
-      label831:
-      localBundle.putBoolean("flow_camera_capture_mode", getIntent().getBooleanExtra("flow_camera_capture_mode", true));
-      break label231;
-      label853:
-      if (this.entrySource == 5)
-      {
-        localBundle.putBoolean("enable_local_video", getIntent().getBooleanExtra("enable_local_video", false));
-      }
-      else if (this.entrySource == 7)
-      {
-        localBundle.putInt("ability_flag", 3);
-        localBundle.putBoolean("PeakConstants.ARG_ALBUM", false);
-      }
-      else if (this.entrySource == 9)
-      {
-        localBundle.putBoolean("PeakConstants.ARG_ALBUM", false);
-        localBundle.putInt("ability_flag", 3);
-      }
     }
-    label943:
     if (this.isSupportTrim)
     {
       QZoneHelper.forwardToQzoneVideoTrim(this, (QZoneHelper.UserInfo)localObject2, this.videoPath, this.videoSize, 10009, this.filerType, (String)localObject1, this.videoRefer);
@@ -414,29 +401,11 @@ public class QZoneVideoDownloadActivity
       ((Intent)localObject1).putExtra("end_time", this.endTime);
       ((Intent)localObject1).putExtra("encode_video_params", this.mVideoExtras);
       startActivity((Intent)localObject1);
-      overridePendingTransition(2130771999, 2130772003);
+      overridePendingTransition(2130772011, 2130772015);
       finish();
       return;
     }
-    if (this.isSupportEditVideo)
-    {
-      localObject1 = (ArrayList)getIntent().getSerializableExtra("PhotoConst.GIF_PHOTO_PATHS");
-      int i = getIntent().getIntExtra("PhotoConst.GIF_DELAY", 150);
-      localObject1 = startGifEditVideoActivity(this, this.gifPath, (ArrayList)localObject1, this.mediaInfo, i, 3);
-      if (localObject1 != null)
-      {
-        ((Intent)localObject1).setClass(getApplicationContext(), EditVideoActivity.class);
-        ((Intent)localObject1).putExtras(getIntent());
-        QzonePluginProxyActivity.setActivityNameToIntent((Intent)localObject1, this.className);
-        ((Intent)localObject1).putExtra("PhotoConst.PHOTO_SELECT_ACTIVITY_CLASS_NAME", this.className);
-        ((Intent)localObject1).putExtra("cleartop", true);
-        ((Intent)localObject1).putExtra("PhotoConst.IS_CALL_IN_PLUGIN", true);
-        ((Intent)localObject1).putExtra("PhotoConst.PLUGIN_NAME", "QZone");
-        ((Intent)localObject1).putExtra("PhotoConst.PLUGIN_APK", "qzone_plugin.apk");
-        ((Intent)localObject1).putExtra("DirectBackToQzone", true);
-        startActivity((Intent)localObject1);
-      }
-      finish();
+    if (this.isSupportEditVideo) {
       return;
     }
     if (this.isSupportJumpToGifChooser)
@@ -452,30 +421,21 @@ public class QZoneVideoDownloadActivity
     finish();
   }
   
-  @Override
-  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
-  {
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
-    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
-    return bool;
-  }
-  
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
     if (this.app != null) {
       ShortVideoResourceManager.b(this.app, this);
     }
-    AEResManager.a().a(this);
+    ((IAEResDownload)QRoute.api(IAEResDownload.class)).removeCallBack(this);
   }
   
   public void initUI()
   {
-    setTitle(HardCodeUtil.a(2131712511));
-    this.mDownloadingBar = ((ProgressBar)findViewById(2131373289));
-    this.mDownloadingText = ((TextView)findViewById(2131373288));
-    this.mDownloadingImage = ((URLImageView)findViewById(2131373292));
+    setTitle(HardCodeUtil.a(2131712486));
+    this.mDownloadingBar = ((ProgressBar)findViewById(2131372869));
+    this.mDownloadingText = ((TextView)findViewById(2131372868));
+    this.mDownloadingImage = ((URLImageView)findViewById(2131372872));
     this.mDownloadingImage.setImageURL("https://qzs.qq.com/qzone/photo/v7/js/common/images/mini_video_cover_7.png");
   }
   
@@ -483,59 +443,88 @@ public class QZoneVideoDownloadActivity
   {
     if (paramBoolean)
     {
-      if (paramAEResInfo == AEResInfo.jdField_b_of_type_DovComQqImAeDownloadAEResInfo) {
+      if (paramAEResInfo == AEResInfo.AE_RES_BASE_PACKAGE) {
         this.isAEBaseSoDownloadOk = true;
+      } else if (paramAEResInfo == AEResInfo.LIGHT_RES_BASE_PACKAGE) {
+        this.isLightBaseSoDownloadOk = true;
       }
-      while ((!isFinishing()) && (isAllReady(this.app)) && (checkIsOK()))
+      if ((!isFinishing()) && (isAllReady(this.app)) && (checkIsOK()))
       {
         startQZoneVideo();
         return;
-        if (paramAEResInfo == AEResInfo.c) {
-          this.isLightBaseSoDownloadOk = true;
-        }
       }
       VideoEnvironment.LogDownLoad("QZoneVideoDownloadActivity", "!isFinishing() && isAllReady(app) && checkIsOK() = false", null);
       return;
     }
-    sendErrorMessage(HardCodeUtil.a(2131712478) + getDownloadErrorConfig(paramInt) + "]");
+    paramAEResInfo = new StringBuilder();
+    paramAEResInfo.append(HardCodeUtil.a(2131712453));
+    paramAEResInfo.append(getDownloadErrorConfig(paramInt));
+    paramAEResInfo.append("]");
+    sendErrorMessage(paramAEResInfo.toString());
     ShortVideoErrorReport.b(2, paramInt);
   }
   
   public void onAEProgressUpdate(AEResInfo paramAEResInfo, long paramLong1, long paramLong2)
   {
-    Message localMessage;
-    if (paramAEResInfo == AEResInfo.jdField_b_of_type_DovComQqImAeDownloadAEResInfo)
+    long l1;
+    long l2;
+    long l3;
+    int i;
+    Object localObject;
+    if (paramAEResInfo == AEResInfo.AE_RES_BASE_PACKAGE)
     {
       this.aekitCurOffset = paramLong1;
       this.aekitTotalLen = paramLong2;
-      if (this.avCodecTotalLen + this.aekitTotalLen + this.lightSDKTotalLen > 0L)
-      {
-        i = (int)((float)(this.avCodecCurOffset + this.aekitCurOffset + this.lightSDKCurOffset) * 100.0F / (float)(this.avCodecTotalLen + this.aekitTotalLen + this.lightSDKTotalLen));
-        localMessage = this.mHandler.obtainMessage(1004, i, 0);
-        this.mHandler.sendMessage(localMessage);
-        VideoEnvironment.LogDownLoad("QZoneVideoDownloadActivity", "packageIdx=" + paramAEResInfo.a + ",totalLen=" + paramLong2 + ",curOffset=" + paramLong1 + ",localProgress=" + i, null);
-      }
-    }
-    while (paramAEResInfo != AEResInfo.c) {
-      for (;;)
-      {
-        return;
+      l1 = this.avCodecTotalLen;
+      l2 = this.aekitTotalLen;
+      l3 = this.lightSDKTotalLen;
+      if (l1 + l2 + l3 > 0L) {
+        i = (int)((float)(this.avCodecCurOffset + this.aekitCurOffset + this.lightSDKCurOffset) * 100.0F / (float)(l1 + l2 + l3));
+      } else {
         i = 0;
       }
-    }
-    this.lightSDKCurOffset = paramLong1;
-    this.lightSDKTotalLen = paramLong2;
-    if (this.avCodecTotalLen + this.aekitTotalLen + this.lightSDKTotalLen > 0L) {}
-    for (int i = (int)((float)(this.avCodecCurOffset + this.aekitCurOffset + this.lightSDKCurOffset) * 100.0F / (float)(this.avCodecTotalLen + this.aekitTotalLen + this.lightSDKTotalLen));; i = 0)
-    {
-      localMessage = this.mHandler.obtainMessage(1004, i, 0);
-      this.mHandler.sendMessage(localMessage);
-      VideoEnvironment.LogDownLoad("QZoneVideoDownloadActivity", "packageIdx=" + paramAEResInfo.a + ",totalLen=" + paramLong2 + ",curOffset=" + paramLong1 + ",localProgress=" + i, null);
+      localObject = this.mHandler.obtainMessage(1004, i, 0);
+      this.mHandler.sendMessage((Message)localObject);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("packageIdx=");
+      ((StringBuilder)localObject).append(paramAEResInfo.index);
+      ((StringBuilder)localObject).append(",totalLen=");
+      ((StringBuilder)localObject).append(paramLong2);
+      ((StringBuilder)localObject).append(",curOffset=");
+      ((StringBuilder)localObject).append(paramLong1);
+      ((StringBuilder)localObject).append(",localProgress=");
+      ((StringBuilder)localObject).append(i);
+      VideoEnvironment.LogDownLoad("QZoneVideoDownloadActivity", ((StringBuilder)localObject).toString(), null);
       return;
+    }
+    if (paramAEResInfo == AEResInfo.LIGHT_RES_BASE_PACKAGE)
+    {
+      this.lightSDKCurOffset = paramLong1;
+      this.lightSDKTotalLen = paramLong2;
+      l1 = this.avCodecTotalLen;
+      l2 = this.aekitTotalLen;
+      l3 = this.lightSDKTotalLen;
+      if (l1 + l2 + l3 > 0L) {
+        i = (int)((float)(this.avCodecCurOffset + this.aekitCurOffset + this.lightSDKCurOffset) * 100.0F / (float)(l1 + l2 + l3));
+      } else {
+        i = 0;
+      }
+      localObject = this.mHandler.obtainMessage(1004, i, 0);
+      this.mHandler.sendMessage((Message)localObject);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("packageIdx=");
+      ((StringBuilder)localObject).append(paramAEResInfo.index);
+      ((StringBuilder)localObject).append(",totalLen=");
+      ((StringBuilder)localObject).append(paramLong2);
+      ((StringBuilder)localObject).append(",curOffset=");
+      ((StringBuilder)localObject).append(paramLong1);
+      ((StringBuilder)localObject).append(",localProgress=");
+      ((StringBuilder)localObject).append(i);
+      VideoEnvironment.LogDownLoad("QZoneVideoDownloadActivity", ((StringBuilder)localObject).toString(), null);
     }
   }
   
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     finish();
@@ -543,58 +532,64 @@ public class QZoneVideoDownloadActivity
   
   public void onConfigResult(int paramInt1, int paramInt2)
   {
-    VideoEnvironment.LogDownLoad("QZoneVideoDownloadActivity", "result=" + paramInt1 + ",serverError=" + paramInt2, null);
-    if ((paramInt1 == 1) || (paramInt1 == 0))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("result=");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(",serverError=");
+    ((StringBuilder)localObject).append(paramInt2);
+    VideoEnvironment.LogDownLoad("QZoneVideoDownloadActivity", ((StringBuilder)localObject).toString(), null);
+    if ((paramInt1 != 1) && (paramInt1 != 0))
     {
-      if (paramInt2 != 0)
-      {
-        sendErrorMessage(HardCodeUtil.a(2131712442) + getDownloadErrorConfig(paramInt2) + "]");
-        ShortVideoErrorReport.b(1, paramInt2);
-      }
-      ArrayList localArrayList;
-      do
-      {
-        return;
-        localArrayList = new ArrayList(1);
-        paramInt1 = ShortVideoResourceManager.a(this.app, localArrayList);
-        if (paramInt1 != 0) {
-          break;
-        }
-        VideoEnvironment.LogDownLoad("QZoneVideoDownloadActivity", "onConfigResult| check config success...", null);
-        this.isAVCodecDownloadOk = false;
-        ShortVideoResourceManager.a(this.app, localArrayList, this);
-        if (PtvFilterSoLoad.c())
-        {
-          this.isArtSoDownloadOk = false;
-          ShortVideoResourceManager.b(this.app, localArrayList, this);
-        }
-      } while (!PtvFilterSoLoad.g());
-      this.isTrackingDownloadOk = false;
-      ShortVideoResourceManager.c(this.app, localArrayList, this);
-      return;
-      sendErrorMessage(HardCodeUtil.a(2131712531) + getDownloadErrorConfig(paramInt1) + "]");
-      ShortVideoErrorReport.b(1, paramInt1);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131712441));
+      ((StringBuilder)localObject).append(getDownloadErrorConfig(paramInt2));
+      ((StringBuilder)localObject).append("]");
+      sendErrorMessage(((StringBuilder)localObject).toString());
+      ShortVideoErrorReport.b(1, paramInt2);
       return;
     }
-    sendErrorMessage(HardCodeUtil.a(2131712466) + getDownloadErrorConfig(paramInt2) + "]");
-    ShortVideoErrorReport.b(1, paramInt2);
+    if (paramInt2 != 0)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131712417));
+      ((StringBuilder)localObject).append(getDownloadErrorConfig(paramInt2));
+      ((StringBuilder)localObject).append("]");
+      sendErrorMessage(((StringBuilder)localObject).toString());
+      ShortVideoErrorReport.b(1, paramInt2);
+      return;
+    }
+    localObject = new ArrayList(1);
+    paramInt1 = ShortVideoResourceManager.a(this.app, (List)localObject);
+    if (paramInt1 == 0)
+    {
+      VideoEnvironment.LogDownLoad("QZoneVideoDownloadActivity", "onConfigResult| check config success...", null);
+      this.isAVCodecDownloadOk = false;
+      ShortVideoResourceManager.a(this.app, (List)localObject, this);
+      if (PtvFilterSoLoad.c())
+      {
+        this.isArtSoDownloadOk = false;
+        ShortVideoResourceManager.b(this.app, (List)localObject, this);
+      }
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131712506));
+      ((StringBuilder)localObject).append(getDownloadErrorConfig(paramInt1));
+      ((StringBuilder)localObject).append("]");
+      sendErrorMessage(((StringBuilder)localObject).toString());
+      ShortVideoErrorReport.b(1, paramInt1);
+    }
   }
   
-  @Override
-  public void onConfigurationChanged(Configuration paramConfiguration)
-  {
-    super.onConfigurationChanged(paramConfiguration);
-    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
-  }
-  
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     getWindow().getDecorView().setBackgroundColor(-16777216);
     Intent localIntent = getIntent();
     if (localIntent == null)
     {
-      Toast.makeText(getApplicationContext(), HardCodeUtil.a(2131712534), 1).show();
+      Toast.makeText(getApplicationContext(), HardCodeUtil.a(2131712509), 1).show();
       QzoneVideoBeaconReport.reportVideoEvent(null, "qzone_video_recordtrim", "1002", null);
       return;
     }
@@ -638,16 +633,16 @@ public class QZoneVideoDownloadActivity
     AppRuntime localAppRuntime = getAppRuntime();
     if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface)))
     {
-      int i;
+      if (TextUtils.isEmpty(this.uin)) {
+        paramBundle = getAppRuntime().getAccount();
+      } else {
+        paramBundle = this.uin;
+      }
+      this.uin = paramBundle;
       long l;
       Object localObject;
-      if (TextUtils.isEmpty(this.uin))
+      if (localIntent.getBooleanExtra("from_qcircle", false))
       {
-        paramBundle = getAppRuntime().getAccount();
-        this.uin = paramBundle;
-        if (!localIntent.getBooleanExtra("from_qcircle", false)) {
-          break label967;
-        }
         i = localIntent.getIntExtra("key_qcircle_entrance_type", 0);
         paramBundle = new Bundle();
         paramBundle.putString("PhotoConst.INIT_ACTIVITY_CLASS_NAME", "com.tencent.qcircle.QCirclePublishFeedActivity");
@@ -670,107 +665,98 @@ public class QZoneVideoDownloadActivity
         int j = localIntent.getIntExtra("BUNDLE_KEY_CIRCLE_HAS_PICKED_NUM", 0);
         paramBundle.putInt("BUNDLE_KEY_CIRCLE_HAS_PICKED_NUM", j);
         paramBundle.putBoolean("BUNDLE_KEY_CIRCLE_CAN_PICK_VIDEO", localIntent.getBooleanExtra("BUNDLE_KEY_CIRCLE_CAN_PICK_VIDEO", true));
-        if (j <= 0) {
-          break label914;
+        if (j > 0) {
+          paramBundle = new AELaunchParamsBuilder(paramBundle).canMixPickPhotoAndVideo(false).canSwitchSelectionMode(false).build();
+        } else {
+          paramBundle = new AELaunchParamsBuilder(paramBundle).canMixPickPhotoAndVideo(false).canSwitchSelectionMode(true).build();
         }
-        paramBundle = new AELaunchParamsBuilder(paramBundle).a(false).b(false).a();
-        label874:
-        if (i != 1) {
-          break label937;
+        if (i == 1)
+        {
+          localIntent = new Intent();
+          localIntent.putExtras(paramBundle);
+          ((IPicChooseJumpUtil)QRoute.api(IPicChooseJumpUtil.class)).jumpForAECircle(this, localIntent);
         }
-        localIntent = new Intent();
-        localIntent.putExtras(paramBundle);
-        PicChooseJumpUtil.a(this, localIntent);
-      }
-      for (;;)
-      {
+        else if (i == 2)
+        {
+          ((IAECameraLauncher)QRoute.api(IAECameraLauncher.class)).launchAECameraFromCircle(this, paramBundle);
+        }
+        else if ((i == 3) || (i == 0))
+        {
+          ((IAECameraLauncher)QRoute.api(IAECameraLauncher.class)).launchAEMutiCameraFromCircle(this, paramBundle);
+        }
         finish();
         return;
-        paramBundle = this.uin;
-        break;
-        label914:
-        paramBundle = new AELaunchParamsBuilder(paramBundle).a(false).b(true).a();
-        break label874;
-        label937:
-        if (i == 2) {
-          AECameraLauncher.b(this, paramBundle);
-        } else if ((i == 3) || (i == 0)) {
-          AECameraLauncher.c(this, paramBundle);
+      }
+      int i = this.doQZoneAlbumShortcut;
+      if ((i != 1) && (i != 2) && (i != 3))
+      {
+        paramBundle = (QQAppInterface)localAppRuntime;
+        if (paramBundle.isVideoChatting())
+        {
+          Toast.makeText(getApplicationContext(), HardCodeUtil.a(2131712501), 1).show();
+          QzoneVideoBeaconReport.reportVideoEvent(this.uin, "qzone_video_recordtrim", "1003", null);
+          finish();
+          return;
+        }
+        if (QavCameraUsage.b(BaseApplicationImpl.getContext()))
+        {
+          QzoneVideoBeaconReport.reportVideoEvent(this.uin, "qzone_video_recordtrim", "1004", null);
+          finish();
+          return;
+        }
+        if (!isAllReady(paramBundle))
+        {
+          setContentView(2131563087);
+          initUI();
+          this.mIsUIInited.set(true);
+          initDownloadErrorConfig();
+          startDownloadConfig();
+          return;
+        }
+        if (this.isSupportDynamicVideo)
+        {
+          setContentView(2131563087);
+          initUI();
         }
       }
-      label967:
-      if ((this.doQZoneAlbumShortcut == 1) || (this.doQZoneAlbumShortcut == 2) || (this.doQZoneAlbumShortcut == 3))
+      else
       {
         paramBundle = localIntent.getStringExtra("UploadPhoto.key_album_id");
         localObject = localIntent.getStringExtra("UploadPhoto.key_album_name");
         Bitmap localBitmap = (Bitmap)localIntent.getParcelableExtra("UploadPhoto.key_album_cover");
         l = localIntent.getLongExtra("UploadPhoto.key_album_owner_uin", 0L);
-        if (this.doQZoneAlbumShortcut == 1) {
+        i = this.doQZoneAlbumShortcut;
+        if (i == 1) {
           QZoneHelper.createAlbumShortCut((QQAppInterface)localAppRuntime, paramBundle, (String)localObject, localBitmap, l);
+        } else if ((i == 2) || (i == 3)) {
+          QZoneHelper.updateAlbumShortCut((QQAppInterface)localAppRuntime, paramBundle, (String)localObject, localBitmap, l);
         }
-        for (;;)
-        {
-          finish();
-          return;
-          if ((this.doQZoneAlbumShortcut == 2) || (this.doQZoneAlbumShortcut == 3)) {
-            QZoneHelper.updateAlbumShortCut((QQAppInterface)localAppRuntime, paramBundle, (String)localObject, localBitmap, l);
-          }
-        }
-      }
-      if (((QQAppInterface)localAppRuntime).isVideoChatting())
-      {
-        Toast.makeText(getApplicationContext(), HardCodeUtil.a(2131712526), 1).show();
-        QzoneVideoBeaconReport.reportVideoEvent(this.uin, "qzone_video_recordtrim", "1003", null);
         finish();
-        return;
-      }
-      if (QavCameraUsage.b(BaseApplicationImpl.getContext()))
-      {
-        QzoneVideoBeaconReport.reportVideoEvent(this.uin, "qzone_video_recordtrim", "1004", null);
-        finish();
-        return;
-      }
-      if (!isAllReady((QQAppInterface)localAppRuntime))
-      {
-        setContentView(2131563263);
-        initUI();
-        this.mIsUIInited.set(true);
-        initDownloadErrorConfig();
-        startDownloadConfig();
-        return;
-      }
-      if (this.isSupportDynamicVideo)
-      {
-        setContentView(2131563263);
-        initUI();
       }
     }
-    for (;;)
+    else if (QLog.isColorLevel())
     {
-      startQZoneVideo();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneVideoDownloadActivity", 2, "app is not QQAppInterface");
-      }
+      QLog.d("QZoneVideoDownloadActivity", 2, "app is not QQAppInterface");
     }
+    startQZoneVideo();
   }
   
   public void onDownloadFinish(String paramString1, int paramInt, String paramString2)
   {
-    VideoEnvironment.LogDownLoad("QZoneVideoDownloadActivity", "onDownloadFinish| name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onDownloadFinish| name=");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(",result=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(",filePath=");
+    localStringBuilder.append(paramString2);
+    VideoEnvironment.LogDownLoad("QZoneVideoDownloadActivity", localStringBuilder.toString(), null);
     if (paramString1.startsWith("new_qq_android_native_short_video_")) {
       this.isAVCodecDownloadOk = true;
+    } else if (paramString1.startsWith("new_qq_android_native_art_filter_")) {
+      this.isArtSoDownloadOk = true;
     }
-    for (;;)
-    {
-      onDownloadFinishAndJudge(paramString1, paramInt, paramString2);
-      return;
-      if (paramString1.startsWith("new_qq_android_native_art_filter_")) {
-        this.isArtSoDownloadOk = true;
-      } else if (paramString1.startsWith("new_qq_android_native_object_tracking_")) {
-        this.isTrackingDownloadOk = true;
-      }
-    }
+    onDownloadFinishAndJudge(paramString1, paramInt, paramString2);
   }
   
   public void onNetWorkNone()
@@ -784,22 +770,34 @@ public class QZoneVideoDownloadActivity
   {
     this.avCodecCurOffset = paramLong1;
     this.avCodecTotalLen = paramLong2;
-    if (this.avCodecTotalLen + this.aekitTotalLen > 0L) {}
-    for (int i = (int)((float)(this.avCodecCurOffset + this.aekitCurOffset) * 100.0F / (float)(this.avCodecTotalLen + this.aekitTotalLen));; i = 0)
-    {
-      if (paramString.startsWith("new_qq_android_native_short_video_"))
-      {
-        Message localMessage = this.mHandler.obtainMessage(1004, i, 0);
-        this.mHandler.sendMessage(localMessage);
-      }
-      VideoEnvironment.LogDownLoad("QZoneVideoDownloadActivity", "name=" + paramString + ",totalLen=" + paramLong2 + ",curOffset=" + paramLong1 + ",localProgress=" + i, null);
-      return;
+    long l1 = this.avCodecTotalLen;
+    long l2 = this.aekitTotalLen;
+    int i;
+    if (l1 + l2 > 0L) {
+      i = (int)((float)(this.avCodecCurOffset + this.aekitCurOffset) * 100.0F / (float)(l1 + l2));
+    } else {
+      i = 0;
     }
+    if (paramString.startsWith("new_qq_android_native_short_video_"))
+    {
+      localObject = this.mHandler.obtainMessage(1004, i, 0);
+      this.mHandler.sendMessage((Message)localObject);
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("name=");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(",totalLen=");
+    ((StringBuilder)localObject).append(paramLong2);
+    ((StringBuilder)localObject).append(",curOffset=");
+    ((StringBuilder)localObject).append(paramLong1);
+    ((StringBuilder)localObject).append(",localProgress=");
+    ((StringBuilder)localObject).append(i);
+    VideoEnvironment.LogDownLoad("QZoneVideoDownloadActivity", ((StringBuilder)localObject).toString(), null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.QZoneVideoDownloadActivity
  * JD-Core Version:    0.7.0.1
  */

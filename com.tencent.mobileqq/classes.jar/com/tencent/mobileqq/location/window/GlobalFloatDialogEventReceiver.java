@@ -14,22 +14,25 @@ public class GlobalFloatDialogEventReceiver
   
   private void b()
   {
-    if (this.a != null) {
-      this.a.b();
+    GlobalFloatDialog localGlobalFloatDialog = this.a;
+    if (localGlobalFloatDialog != null) {
+      localGlobalFloatDialog.b();
     }
   }
   
   private void c()
   {
-    if (this.a != null) {
-      this.a.d();
+    GlobalFloatDialog localGlobalFloatDialog = this.a;
+    if (localGlobalFloatDialog != null) {
+      localGlobalFloatDialog.d();
     }
   }
   
   private void d()
   {
-    if (this.a != null) {
-      this.a.c();
+    GlobalFloatDialog localGlobalFloatDialog = this.a;
+    if (localGlobalFloatDialog != null) {
+      localGlobalFloatDialog.c();
     }
   }
   
@@ -56,10 +59,11 @@ public class GlobalFloatDialogEventReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    do
+    if (paramIntent != null)
     {
-      return;
+      if (paramIntent.getAction() == null) {
+        return;
+      }
       if (QLog.isDevelopLevel()) {
         QLog.d("GlobalFloatDialogEventReceiver", 4, new Object[] { "action: ", paramIntent.getAction() });
       }
@@ -78,13 +82,15 @@ public class GlobalFloatDialogEventReceiver
         c();
         return;
       }
-    } while ((!"mqq.intent.action.ACCOUNT_CHANGED".equals(paramIntent.getAction())) && (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramIntent.getAction())) && (!"mqq.intent.action.ACCOUNT_EXPIRED".equals(paramIntent.getAction())) && (!"mqq.intent.action.FORCE_LOGOUT".equals(paramIntent.getAction())) && (!"mqq.intent.action.LOGOUT".equals(paramIntent.getAction())));
-    b();
+      if (("mqq.intent.action.ACCOUNT_CHANGED".equals(paramIntent.getAction())) || ("mqq.intent.action.ACCOUNT_KICKED".equals(paramIntent.getAction())) || ("mqq.intent.action.ACCOUNT_EXPIRED".equals(paramIntent.getAction())) || ("mqq.intent.action.FORCE_LOGOUT".equals(paramIntent.getAction())) || ("mqq.intent.action.LOGOUT".equals(paramIntent.getAction()))) {
+        b();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.window.GlobalFloatDialogEventReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -26,8 +26,10 @@ public class ReportDataModal$DataBaseHelper
     }
     catch (Exception paramSQLiteDatabase)
     {
-      LogUtility.e("cgi_report_debug", "ReportDataModal onCreate failed");
+      label27:
+      break label27;
     }
+    LogUtility.e("cgi_report_debug", "ReportDataModal onCreate failed");
   }
   
   public void onDowngrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
@@ -42,13 +44,21 @@ public class ReportDataModal$DataBaseHelper
     }
     catch (Exception paramSQLiteDatabase)
     {
-      LogUtility.e("cgi_report_debug", "ReportDataModal onUpgrade failed");
+      label25:
+      break label25;
     }
+    LogUtility.e("cgi_report_debug", "ReportDataModal onUpgrade failed");
   }
   
   public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
-    LogUtility.b("cgi_report_debug", "ReportDataModal onUpgrade oldVersion=" + paramInt1 + "  newVersion=" + paramInt2 + "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ReportDataModal onUpgrade oldVersion=");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("  newVersion=");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("");
+    LogUtility.b("cgi_report_debug", localStringBuilder.toString());
     if (paramInt1 != paramInt2) {}
     try
     {
@@ -60,13 +70,15 @@ public class ReportDataModal$DataBaseHelper
     }
     catch (Exception paramSQLiteDatabase)
     {
-      LogUtility.e("cgi_report_debug", "ReportDataModal onUpgrade failed");
+      label87:
+      break label87;
     }
+    LogUtility.e("cgi_report_debug", "ReportDataModal onUpgrade failed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.business.cgireport.ReportDataModal.DataBaseHelper
  * JD-Core Version:    0.7.0.1
  */

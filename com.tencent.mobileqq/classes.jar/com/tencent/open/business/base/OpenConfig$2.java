@@ -16,23 +16,22 @@ class OpenConfig$2
     try
     {
       JSONObject localJSONObject = HttpBaseUtil.a(HttpBaseUtil.a("https://qappcenterv6.3g.qq.com/cgi-bin/mapp/mapp_policy_config", "GET", this.a).a);
-      LogUtility.c("OpenConfig", localJSONObject.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateConfig=");
+      localStringBuilder.append(localJSONObject.toString());
+      LogUtility.c("TAMST_WAKE", localStringBuilder.toString());
       this.this$0.a(localJSONObject);
-      this.this$0.a = 0;
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        LogUtility.e("OpenConfig", localThrowable.getMessage());
-      }
+      LogUtility.e("OpenConfig", localThrowable.getMessage());
     }
+    this.this$0.a = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.business.base.OpenConfig.2
  * JD-Core Version:    0.7.0.1
  */

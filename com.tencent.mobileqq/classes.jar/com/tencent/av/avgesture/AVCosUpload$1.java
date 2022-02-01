@@ -15,18 +15,28 @@ class AVCosUpload$1
     try
     {
       String str1 = new SimpleDateFormat("yyyy-MM-dd_hh-mm-ss").format(new Date());
-      str1 = this.val$gestureType + "_" + str1 + "_" + UUID.randomUUID().toString() + ".jpeg";
-      String str2 = this.val$srcPath + str1;
-      if (AVCosUpload.access$000(this.this$0, str2, this.val$rgba, this.val$imageWidth, this.val$imageHeight))
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.val$gestureType);
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(str1);
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(UUID.randomUUID().toString());
+      ((StringBuilder)localObject).append(".jpeg");
+      str1 = ((StringBuilder)localObject).toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.val$srcPath);
+      ((StringBuilder)localObject).append(str1);
+      localObject = ((StringBuilder)localObject).toString();
+      if (AVCosUpload.access$000(this.this$0, (String)localObject, this.val$rgba, this.val$imageWidth, this.val$imageHeight))
       {
         if (AVGestureWrapper.mReport != null) {
           AVGestureWrapper.mReport.avGestureUploadReport("0X800839B", "0");
         }
-        String str3 = AVGestureWrapper.getMultiSign("", "", "", "");
-        AVCosUpload.access$100(this.this$0, str2, this.val$gestureType, str1, "", str3, 20971520, this.val$monitor);
+        String str2 = AVGestureWrapper.getMultiSign("", "", "", "");
+        AVCosUpload.access$100(this.this$0, (String)localObject, this.val$gestureType, str1, "", str2, 20971520, this.val$monitor);
         this.this$0.startUploadTimer(3);
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -37,7 +47,7 @@ class AVCosUpload$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.avgesture.AVCosUpload.1
  * JD-Core Version:    0.7.0.1
  */

@@ -26,18 +26,15 @@ public class MiscJavascriptInterface
   @NewJavascriptInterface
   public void callCgi(Map<String, String> paramMap)
   {
-    if ((getJsBizAdapter() == null) || (getJsBizAdapter().getHttp() == null)) {}
-    String str1;
-    String str2;
-    HttpInterface localHttpInterface;
-    LinkedHashMap localLinkedHashMap;
-    for (;;)
+    if (getJsBizAdapter() != null)
     {
-      return;
-      str1 = (String)paramMap.get("url");
-      str2 = (String)paramMap.get("method");
-      localHttpInterface = getJsBizAdapter().getHttp();
-      localLinkedHashMap = new LinkedHashMap();
+      if (getJsBizAdapter().getHttp() == null) {
+        return;
+      }
+      String str1 = (String)paramMap.get("url");
+      String str2 = (String)paramMap.get("method");
+      HttpInterface localHttpInterface = getJsBizAdapter().getHttp();
+      LinkedHashMap localLinkedHashMap = new LinkedHashMap();
       try
       {
         paramMap = new JSONObject((String)paramMap.get("params"));
@@ -47,7 +44,7 @@ public class MiscJavascriptInterface
           String str3 = (String)localIterator.next();
           localLinkedHashMap.put(str3, paramMap.getString(str3));
         }
-        if (!"POST".equals(str2)) {}
+        return;
       }
       catch (JSONException paramMap)
       {
@@ -57,14 +54,16 @@ public class MiscJavascriptInterface
           localHttpInterface.get(str1, localLinkedHashMap, new MiscJavascriptInterface.1(this));
           return;
         }
+        if ("POST".equals(str2)) {
+          localHttpInterface.post(str1, localLinkedHashMap, new MiscJavascriptInterface.2(this));
+        }
       }
     }
-    localHttpInterface.post(str1, localLinkedHashMap, new MiscJavascriptInterface.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.litepages.room.webmodule.js.MiscJavascriptInterface
  * JD-Core Version:    0.7.0.1
  */

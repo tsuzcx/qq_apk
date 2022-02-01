@@ -28,23 +28,22 @@ public class EmoticonFromGroupEntity
   
   public int compareTo(@NonNull Object paramObject)
   {
-    int i = 0;
     if ((paramObject instanceof EmoticonFromGroupEntity))
     {
       paramObject = (EmoticonFromGroupEntity)paramObject;
-      if (this.timestamp < paramObject.timestamp) {
-        i = 1;
+      long l1 = this.timestamp;
+      long l2 = paramObject.timestamp;
+      if (l1 < l2) {
+        return 1;
       }
-    }
-    while (!QLog.isColorLevel())
-    {
-      do
-      {
-        return i;
-      } while (this.timestamp == paramObject.timestamp);
+      if (l1 == l2) {
+        return 0;
+      }
       return -1;
     }
-    QLog.e("EmoticonFromGroupEntity", 2, "Class not correct in method compareTo.");
+    if (QLog.isColorLevel()) {
+      QLog.e("EmoticonFromGroupEntity", 2, "Class not correct in method compareTo.");
+    }
     return 0;
   }
   
@@ -65,12 +64,27 @@ public class EmoticonFromGroupEntity
   
   public String toString()
   {
-    return "md5:" + this.md5 + " thumbURL:" + this.thumbURL + " bigURL:" + this.bigURL + " timestamp:" + this.timestamp + " msgseq:" + this.msgseq + " troopUin:" + this.troopUin + " gifImg:" + this.gifImg;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("md5:");
+    localStringBuilder.append(this.md5);
+    localStringBuilder.append(" thumbURL:");
+    localStringBuilder.append(this.thumbURL);
+    localStringBuilder.append(" bigURL:");
+    localStringBuilder.append(this.bigURL);
+    localStringBuilder.append(" timestamp:");
+    localStringBuilder.append(this.timestamp);
+    localStringBuilder.append(" msgseq:");
+    localStringBuilder.append(this.msgseq);
+    localStringBuilder.append(" troopUin:");
+    localStringBuilder.append(this.troopUin);
+    localStringBuilder.append(" gifImg:");
+    localStringBuilder.append(this.gifImg);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.EmoticonFromGroupEntity
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,10 @@ public final class PreviewReportSession
     PreviewReportSession.Bean.access$102(localBean, this.frameCount);
     PreviewReportSession.Bean.access$202(localBean, this.totalRenderCount / this.frameCount);
     PreviewReportSession.Bean.access$302(localBean, this.frameCount);
-    Log.d("PreviewReportSession", "commit: bean = " + localBean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("commit: bean = ");
+    localStringBuilder.append(localBean);
+    Log.d("PreviewReportSession", localStringBuilder.toString());
     AVReportCenter.getInstance().commit(localBean, Boolean.valueOf(false));
   }
   
@@ -55,7 +58,7 @@ public final class PreviewReportSession
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tav.report.PreviewReportSession
  * JD-Core Version:    0.7.0.1
  */

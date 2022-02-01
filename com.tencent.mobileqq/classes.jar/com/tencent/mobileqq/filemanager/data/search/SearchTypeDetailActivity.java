@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.util.SparseArray;
 import android.view.MotionEvent;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -43,18 +43,18 @@ public class SearchTypeDetailActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_Int = super.getIntent().getIntExtra("qfile_search_param_type", -1);
     this.jdField_a_of_type_JavaLangString = super.getIntent().getStringExtra("qfile_search_param_uin");
     this.jdField_a_of_type_JavaUtilList = super.getIntent().getBundleExtra("qfile_search_param_others").getIntegerArrayList("qfile_search_param_others");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(3, HardCodeUtil.a(2131713622));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(2, HardCodeUtil.a(2131713626));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(0, HardCodeUtil.a(2131713625));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(1, HardCodeUtil.a(2131713624));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(11, HardCodeUtil.a(2131713623));
-    super.setContentView(2131559004);
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(3, HardCodeUtil.a(2131713589));
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(2, HardCodeUtil.a(2131713593));
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(0, HardCodeUtil.a(2131713592));
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(1, HardCodeUtil.a(2131713591));
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(11, HardCodeUtil.a(2131713590));
+    super.setContentView(2131558898);
     super.setTitle((CharSequence)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Int));
     paramBundle = getSupportFragmentManager().beginTransaction();
     ChatFileSearchFragment localChatFileSearchFragment = new ChatFileSearchFragment();
@@ -63,7 +63,7 @@ public class SearchTypeDetailActivity
     localChatFileSearchFragment.b = this.jdField_a_of_type_Int;
     localChatFileSearchFragment.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
     localChatFileSearchFragment.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    paramBundle.replace(2131365308, localChatFileSearchFragment);
+    paramBundle.replace(2131365183, localChatFileSearchFragment);
     paramBundle.commit();
     return true;
   }
@@ -77,7 +77,7 @@ public class SearchTypeDetailActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.SearchTypeDetailActivity
  * JD-Core Version:    0.7.0.1
  */

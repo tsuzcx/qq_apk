@@ -26,13 +26,15 @@ public final class oidb_0x885$PosAdInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 48, 56, 64 }, new String[] { "int32_ret", "bytes_msg", "enum_pos_layout", "uint64_pos_id", "rpt_msg_ad_info", "is_auto_play", "uint32_need_second_request", "uint32_is_second_request" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Long.valueOf(0L), null, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0) }, PosAdInfo.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 48, 56, 64 }, new String[] { "int32_ret", "bytes_msg", "enum_pos_layout", "uint64_pos_id", "rpt_msg_ad_info", "is_auto_play", "uint32_need_second_request", "uint32_is_second_request" }, new Object[] { localInteger, localByteStringMicro, localInteger, localLong, null, localLong, localInteger, localInteger }, PosAdInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x885.oidb_0x885.PosAdInfo
  * JD-Core Version:    0.7.0.1
  */

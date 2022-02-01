@@ -63,25 +63,26 @@ public class WebViewTitlerBar
   
   public CharSequence a()
   {
-    if (this.jdField_c_of_type_AndroidWidgetTextView != null) {
-      return this.jdField_c_of_type_AndroidWidgetTextView.getText();
+    TextView localTextView = this.jdField_c_of_type_AndroidWidgetTextView;
+    if (localTextView != null) {
+      return localTextView.getText();
     }
     return null;
   }
   
   void a()
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365278));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365288));
-    this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365286));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369534));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365153));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365163));
+    this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365161));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369249));
     this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.valueOf("END"));
     this.jdField_a_of_type_AndroidWidgetTextView.setMaxEms(9);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369530));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369487));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369518));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369501));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131363823);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369245));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369202));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369233));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369216));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131363751);
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -93,11 +94,13 @@ public class WebViewTitlerBar
     {
       this.jdField_a_of_type_AndroidViewView.getBackground().mutate().setAlpha(paramInt1);
       this.jdField_a_of_type_Int = paramInt1;
-    }
-    while (this.jdField_a_of_type_Int == paramInt1) {
       return;
     }
-    a(this.jdField_a_of_type_Int, paramInt1, paramInt2);
+    int i = this.jdField_a_of_type_Int;
+    if (i == paramInt1) {
+      return;
+    }
+    a(i, paramInt1, paramInt2);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
@@ -134,7 +137,7 @@ public class WebViewTitlerBar
   
   void a(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131563227, paramViewGroup, true);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131563051, paramViewGroup, true);
   }
   
   public void a(ImageView paramImageView)
@@ -144,17 +147,19 @@ public class WebViewTitlerBar
   
   public void a(CharSequence paramCharSequence)
   {
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null)
+    TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
+    if (localTextView != null)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+      localTextView.setText(paramCharSequence);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
     }
   }
   
   public void a(String paramString1, String paramString2, String paramString3)
   {
+    boolean bool = TextUtils.isEmpty(paramString2);
     int i = 0;
-    if (!TextUtils.isEmpty(paramString2))
+    if (!bool)
     {
       this.jdField_c_of_type_AndroidWidgetTextView.setText(paramString2);
       this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
@@ -171,8 +176,8 @@ public class WebViewTitlerBar
     }
     catch (Exception paramString2)
     {
-      label75:
-      break label75;
+      label79:
+      break label79;
     }
     this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(i);
     if (paramString1 != null)
@@ -187,12 +192,13 @@ public class WebViewTitlerBar
   public void a(boolean paramBoolean)
   {
     ImageView localImageView = this.jdField_b_of_type_AndroidWidgetImageView;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localImageView.setVisibility(i);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    } else {
+      i = 8;
     }
+    localImageView.setVisibility(i);
   }
   
   public ImageView b()
@@ -217,19 +223,16 @@ public class WebViewTitlerBar
   
   public void b(boolean paramBoolean)
   {
-    TextView localTextView;
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null)
+    TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
+    if (localTextView != null)
     {
-      localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
-      if (!paramBoolean) {
-        break label24;
+      int i;
+      if (paramBoolean) {
+        i = 0;
+      } else {
+        i = 4;
       }
-    }
-    label24:
-    for (int i = 0;; i = 4)
-    {
       localTextView.setVisibility(i);
-      return;
     }
   }
   
@@ -245,25 +248,22 @@ public class WebViewTitlerBar
   
   public void c(boolean paramBoolean)
   {
-    TextView localTextView;
-    if (this.jdField_c_of_type_AndroidWidgetTextView != null)
+    TextView localTextView = this.jdField_c_of_type_AndroidWidgetTextView;
+    if (localTextView != null)
     {
-      localTextView = this.jdField_c_of_type_AndroidWidgetTextView;
-      if (!paramBoolean) {
-        break label24;
+      int i;
+      if (paramBoolean) {
+        i = 0;
+      } else {
+        i = 8;
       }
-    }
-    label24:
-    for (int i = 0;; i = 8)
-    {
       localTextView.setVisibility(i);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.ui.WebViewTitlerBar
  * JD-Core Version:    0.7.0.1
  */

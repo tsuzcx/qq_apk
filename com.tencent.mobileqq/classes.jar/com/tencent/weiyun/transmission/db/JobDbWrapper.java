@@ -17,8 +17,9 @@ public final class JobDbWrapper
   
   public void beginTransaction()
   {
-    if (this.db != null) {
-      this.db.beginTransaction();
+    SQLiteDatabase localSQLiteDatabase = this.db;
+    if (localSQLiteDatabase != null) {
+      localSQLiteDatabase.beginTransaction();
     }
   }
   
@@ -29,53 +30,59 @@ public final class JobDbWrapper
   
   public int delete(String paramString1, String paramString2, String[] paramArrayOfString)
   {
-    if (this.db == null) {
+    SQLiteDatabase localSQLiteDatabase = this.db;
+    if (localSQLiteDatabase == null) {
       return 0;
     }
-    return this.db.delete(paramString1, paramString2, paramArrayOfString);
+    return localSQLiteDatabase.delete(paramString1, paramString2, paramArrayOfString);
   }
   
   public void endTransaction()
   {
-    if (this.db != null) {
-      this.db.endTransaction();
+    SQLiteDatabase localSQLiteDatabase = this.db;
+    if (localSQLiteDatabase != null) {
+      localSQLiteDatabase.endTransaction();
     }
   }
   
   public long insert(String paramString1, String paramString2, ContentValues paramContentValues)
   {
-    if (this.db == null) {
+    SQLiteDatabase localSQLiteDatabase = this.db;
+    if (localSQLiteDatabase == null) {
       return -1L;
     }
-    return this.db.insert(paramString1, paramString2, paramContentValues);
+    return localSQLiteDatabase.insert(paramString1, paramString2, paramContentValues);
   }
   
   public Cursor query(String paramString1, String[] paramArrayOfString1, String paramString2, String[] paramArrayOfString2, String paramString3, String paramString4, String paramString5)
   {
-    if (this.db == null) {
+    SQLiteDatabase localSQLiteDatabase = this.db;
+    if (localSQLiteDatabase == null) {
       return null;
     }
-    return this.db.query(paramString1, paramArrayOfString1, paramString2, paramArrayOfString2, paramString3, paramString4, paramString5);
+    return localSQLiteDatabase.query(paramString1, paramArrayOfString1, paramString2, paramArrayOfString2, paramString3, paramString4, paramString5);
   }
   
   public void setTransactionSuccessful()
   {
-    if (this.db != null) {
-      this.db.setTransactionSuccessful();
+    SQLiteDatabase localSQLiteDatabase = this.db;
+    if (localSQLiteDatabase != null) {
+      localSQLiteDatabase.setTransactionSuccessful();
     }
   }
   
   public int update(String paramString1, ContentValues paramContentValues, String paramString2, String[] paramArrayOfString)
   {
-    if (this.db == null) {
+    SQLiteDatabase localSQLiteDatabase = this.db;
+    if (localSQLiteDatabase == null) {
       return 0;
     }
-    return this.db.update(paramString1, paramContentValues, paramString2, paramArrayOfString);
+    return localSQLiteDatabase.update(paramString1, paramContentValues, paramString2, paramArrayOfString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weiyun.transmission.db.JobDbWrapper
  * JD-Core Version:    0.7.0.1
  */

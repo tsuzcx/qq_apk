@@ -7,15 +7,17 @@ public class MovieStickerTextModel
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (MovieStickerTextModel)paramObject;
-    } while ((this.stickerTextColor == paramObject.stickerTextColor) && (this.stickerTextContent.equals(paramObject.stickerTextContent)));
+      return (this.stickerTextColor == paramObject.stickerTextColor) && (this.stickerTextContent.equals(paramObject.stickerTextContent));
+    }
     return false;
   }
   
@@ -41,12 +43,19 @@ public class MovieStickerTextModel
   
   public String toString()
   {
-    return "MovieStickerTextModel{stickerTextContent='" + this.stickerTextContent + '\'' + ", stickerTextColor=" + this.stickerTextColor + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MovieStickerTextModel{stickerTextContent='");
+    localStringBuilder.append(this.stickerTextContent);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", stickerTextColor=");
+    localStringBuilder.append(this.stickerTextColor);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.template.movie.MovieStickerTextModel
  * JD-Core Version:    0.7.0.1
  */

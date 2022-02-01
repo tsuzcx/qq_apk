@@ -18,32 +18,41 @@ public class CameraFilterEngine
   private FloatBuffer createBuffer()
   {
     FloatBuffer localFloatBuffer = ByteBuffer.allocateDirect(vertexData.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    localFloatBuffer.put(vertexData, 0, vertexData.length).position(0);
+    float[] arrayOfFloat = vertexData;
+    localFloatBuffer.put(arrayOfFloat, 0, arrayOfFloat.length).position(0);
     return localFloatBuffer;
   }
   
   private int linkProgram(int paramInt1, int paramInt2)
   {
     int i = GLES20.glCreateProgram();
-    if (i == 0) {
-      throw new RuntimeException("Create Program Failed!" + GLES20.glGetError());
+    if (i != 0)
+    {
+      GLES20.glAttachShader(i, paramInt1);
+      GLES20.glAttachShader(i, paramInt2);
+      GLES20.glLinkProgram(i);
+      GLES20.glUseProgram(i);
+      return i;
     }
-    GLES20.glAttachShader(i, paramInt1);
-    GLES20.glAttachShader(i, paramInt2);
-    GLES20.glLinkProgram(i);
-    GLES20.glUseProgram(i);
-    return i;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Create Program Failed!");
+    localStringBuilder.append(GLES20.glGetError());
+    throw new RuntimeException(localStringBuilder.toString());
   }
   
   private int loadShader(int paramInt, String paramString)
   {
     paramInt = GLES20.glCreateShader(paramInt);
-    if (paramInt == 0) {
-      throw new RuntimeException("Create Shader Failed!" + GLES20.glGetError());
+    if (paramInt != 0)
+    {
+      GLES20.glShaderSource(paramInt, paramString);
+      GLES20.glCompileShader(paramInt);
+      return paramInt;
     }
-    GLES20.glShaderSource(paramInt, paramString);
-    GLES20.glCompileShader(paramInt);
-    return paramInt;
+    paramString = new StringBuilder();
+    paramString.append("Create Shader Failed!");
+    paramString.append(GLES20.glGetError());
+    throw new RuntimeException(paramString.toString());
   }
   
   public FloatBuffer getBuffer()
@@ -58,7 +67,7 @@ public class CameraFilterEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.camera.CameraFilterEngine
  * JD-Core Version:    0.7.0.1
  */

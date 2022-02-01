@@ -14,37 +14,40 @@ class TabPageIndicator$2
   
   public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TabPageIndicator", 2, "onClick() called with: view = [" + paramView + "]");
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onClick() called with: view = [");
+      ((StringBuilder)localObject1).append(paramView);
+      ((StringBuilder)localObject1).append("]");
+      QLog.d("TabPageIndicator", 2, ((StringBuilder)localObject1).toString());
     }
     TabPageIndicator.a(this.a, SystemClock.uptimeMillis());
-    Object localObject = paramView.getTag();
-    if ((localObject instanceof TabPageIndicator.MultiAIOHolder)) {}
-    for (localObject = (TabPageIndicator.MultiAIOHolder)localObject;; localObject = null)
+    Object localObject2 = paramView.getTag();
+    Object localObject1 = null;
+    if ((localObject2 instanceof TabPageIndicator.MultiAIOHolder)) {
+      localObject1 = (TabPageIndicator.MultiAIOHolder)localObject2;
+    }
+    if (localObject1 != null)
     {
-      if (localObject == null) {}
-      for (;;)
-      {
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        int i = TabPageIndicator.a(this.a).a();
-        int j = ((TabPageIndicator.MultiAIOHolder)localObject).jdField_a_of_type_Int;
-        this.a.setCurrentItem(j);
-        ((TabPageIndicator.MultiAIOHolder)localObject).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        TabPageIndicator.a(this.a).setCurrentItem(j);
-        if ((i == j) && (TabPageIndicator.a(this.a) != null)) {
-          TabPageIndicator.a(this.a).a(j);
-        }
-        if (TabPageIndicator.a(this.a) != null) {
-          TabPageIndicator.a(this.a).a(j);
-        }
+      int i = TabPageIndicator.a(this.a).a();
+      int j = ((TabPageIndicator.MultiAIOHolder)localObject1).jdField_a_of_type_Int;
+      this.a.setCurrentItem(j);
+      ((TabPageIndicator.MultiAIOHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      TabPageIndicator.a(this.a).setCurrentItem(j);
+      if ((i == j) && (TabPageIndicator.a(this.a) != null)) {
+        TabPageIndicator.a(this.a).a(j);
+      }
+      if (TabPageIndicator.a(this.a) != null) {
+        TabPageIndicator.a(this.a).a(j);
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.widget.TabPageIndicator.2
  * JD-Core Version:    0.7.0.1
  */

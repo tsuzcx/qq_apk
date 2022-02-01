@@ -2,7 +2,6 @@ package com.tencent.mobileqq.nearby.interestTag;
 
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.util.InputMethodUtil;
 
 class ChooseInterestTagActivity$7
@@ -14,15 +13,14 @@ class ChooseInterestTagActivity$7
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    EventCollector.getInstance().onListScrollStateChanged(paramAbsListView, paramInt);
     if (paramInt == 1) {
-      InputMethodUtil.b(ChooseInterestTagActivity.a(this.a));
+      InputMethodUtil.b(ChooseInterestTagActivity.access$2700(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.7
  * JD-Core Version:    0.7.0.1
  */

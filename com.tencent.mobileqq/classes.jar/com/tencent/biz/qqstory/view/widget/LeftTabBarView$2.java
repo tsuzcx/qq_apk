@@ -12,12 +12,13 @@ class LeftTabBarView$2
   public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
     super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (LeftTabBarView.a(this.a, paramView) == LeftTabBarView.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramAccessibilityNodeInfoCompat.setSelected(bool);
-      return;
+    boolean bool;
+    if (LeftTabBarView.a(this.a, paramView) == LeftTabBarView.a(this.a)) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    paramAccessibilityNodeInfoCompat.setSelected(bool);
   }
   
   public void sendAccessibilityEvent(View paramView, int paramInt)
@@ -27,7 +28,7 @@ class LeftTabBarView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.LeftTabBarView.2
  * JD-Core Version:    0.7.0.1
  */

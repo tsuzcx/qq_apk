@@ -23,39 +23,36 @@ public class QueryUinFlagRecevier
   
   private int a(ToServiceMsg paramToServiceMsg)
   {
-    int i = 0;
     try
     {
-      Object localObject = ByteBuffer.wrap(paramToServiceMsg.getWupBuffer());
+      localObject = ByteBuffer.wrap(paramToServiceMsg.getWupBuffer());
       paramToServiceMsg = new byte[((ByteBuffer)localObject).getInt() - 4];
       ((ByteBuffer)localObject).get(paramToServiceMsg);
       localObject = new oidb_sso.OIDBSSOPkg();
       ((oidb_sso.OIDBSSOPkg)localObject).mergeFrom(paramToServiceMsg);
-      int j = ((oidb_sso.OIDBSSOPkg)localObject).uint32_service_type.get();
-      i = j;
+      int i = ((oidb_sso.OIDBSSOPkg)localObject).uint32_service_type.get();
+      return i;
     }
     catch (Exception paramToServiceMsg)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "getServiceTypeFromToServiceMsg error:" + paramToServiceMsg.getMessage());
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getServiceTypeFromToServiceMsg error:");
+        ((StringBuilder)localObject).append(paramToServiceMsg.getMessage());
+        QLog.d("FriendListHandler.BaseHandlerReceiver", 2, ((StringBuilder)localObject).toString());
+      }
     }
-    return i;
     return 0;
   }
   
   private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    int i = a(paramToServiceMsg);
+    a(paramToServiceMsg);
     Bundle localBundle = new Bundle();
     localBundle.putLong("uin", paramToServiceMsg.extraData.getLong("uin"));
-    if (i == 147) {}
-    for (i = 72;; i = 71)
-    {
-      if ((paramObject == null) || (!paramFromServiceMsg.isSuccess()))
-      {
-        a(i, false, localBundle);
-        return;
-      }
+    if ((paramObject != null) && (paramFromServiceMsg.isSuccess())) {
       try
       {
         paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
@@ -63,32 +60,37 @@ public class QueryUinFlagRecevier
         if ((paramToServiceMsg.uint32_result.has()) && (paramToServiceMsg.uint32_result.get() == 0))
         {
           paramToServiceMsg = ByteBuffer.wrap(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
-          long l = paramToServiceMsg.getInt();
+          paramToServiceMsg.getInt();
           paramToServiceMsg.getShort();
           paramFromServiceMsg = new byte[4];
           paramToServiceMsg.get(paramFromServiceMsg);
-          l = Utils.a(paramFromServiceMsg, 0);
-          int j = paramToServiceMsg.get();
+          long l = Utils.a(paramFromServiceMsg, 0);
+          int i = paramToServiceMsg.get();
           localBundle.putLong("uin", l);
-          localBundle.putInt("safety_flag", j & 0x1F);
-          a(i, true, localBundle);
+          localBundle.putInt("safety_flag", i & 0x1F);
+          a(70, true, localBundle);
           return;
         }
       }
       catch (Exception paramToServiceMsg)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handle_oidb_0x476 error:" + paramToServiceMsg.getMessage());
+        if (QLog.isColorLevel())
+        {
+          paramFromServiceMsg = new StringBuilder();
+          paramFromServiceMsg.append("handle_oidb_0x476 error:");
+          paramFromServiceMsg.append(paramToServiceMsg.getMessage());
+          QLog.d("FriendListHandler.BaseHandlerReceiver", 2, paramFromServiceMsg.toString());
         }
-        a(i, false, localBundle);
+        a(70, false, localBundle);
         return;
       }
     }
+    a(70, false, localBundle);
   }
   
   public boolean a(String paramString)
   {
-    return ("OidbSvc.0x476_146".equals(paramString)) || ("OidbSvc.0x476_147".equals(paramString));
+    return "OidbSvc.0x476_146".equals(paramString);
   }
   
   public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -98,7 +100,7 @@ public class QueryUinFlagRecevier
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.friendlist.receiver.QueryUinFlagRecevier
  * JD-Core Version:    0.7.0.1
  */

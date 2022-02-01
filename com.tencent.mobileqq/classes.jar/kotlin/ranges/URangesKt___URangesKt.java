@@ -24,80 +24,88 @@ class URangesKt___URangesKt
   @SinceKotlin(version="1.3")
   public static final short coerceAtLeast-5PvTz6A(short paramShort1, short paramShort2)
   {
+    short s = paramShort1;
     if (Intrinsics.compare(paramShort1 & 0xFFFF, 0xFFFF & paramShort2) < 0) {
-      return paramShort2;
+      s = paramShort2;
     }
-    return paramShort1;
+    return s;
   }
   
   @ExperimentalUnsignedTypes
   @SinceKotlin(version="1.3")
   public static final int coerceAtLeast-J1ME1BU(int paramInt1, int paramInt2)
   {
+    int i = paramInt1;
     if (UnsignedKt.uintCompare(paramInt1, paramInt2) < 0) {
-      return paramInt2;
+      i = paramInt2;
     }
-    return paramInt1;
+    return i;
   }
   
   @ExperimentalUnsignedTypes
   @SinceKotlin(version="1.3")
   public static final byte coerceAtLeast-Kr8caGY(byte paramByte1, byte paramByte2)
   {
+    byte b = paramByte1;
     if (Intrinsics.compare(paramByte1 & 0xFF, paramByte2 & 0xFF) < 0) {
-      return paramByte2;
+      b = paramByte2;
     }
-    return paramByte1;
+    return b;
   }
   
   @ExperimentalUnsignedTypes
   @SinceKotlin(version="1.3")
   public static final long coerceAtLeast-eb3DHEI(long paramLong1, long paramLong2)
   {
+    long l = paramLong1;
     if (UnsignedKt.ulongCompare(paramLong1, paramLong2) < 0) {
-      return paramLong2;
+      l = paramLong2;
     }
-    return paramLong1;
+    return l;
   }
   
   @ExperimentalUnsignedTypes
   @SinceKotlin(version="1.3")
   public static final short coerceAtMost-5PvTz6A(short paramShort1, short paramShort2)
   {
+    short s = paramShort1;
     if (Intrinsics.compare(paramShort1 & 0xFFFF, 0xFFFF & paramShort2) > 0) {
-      return paramShort2;
+      s = paramShort2;
     }
-    return paramShort1;
+    return s;
   }
   
   @ExperimentalUnsignedTypes
   @SinceKotlin(version="1.3")
   public static final int coerceAtMost-J1ME1BU(int paramInt1, int paramInt2)
   {
+    int i = paramInt1;
     if (UnsignedKt.uintCompare(paramInt1, paramInt2) > 0) {
-      return paramInt2;
+      i = paramInt2;
     }
-    return paramInt1;
+    return i;
   }
   
   @ExperimentalUnsignedTypes
   @SinceKotlin(version="1.3")
   public static final byte coerceAtMost-Kr8caGY(byte paramByte1, byte paramByte2)
   {
+    byte b = paramByte1;
     if (Intrinsics.compare(paramByte1 & 0xFF, paramByte2 & 0xFF) > 0) {
-      return paramByte2;
+      b = paramByte2;
     }
-    return paramByte1;
+    return b;
   }
   
   @ExperimentalUnsignedTypes
   @SinceKotlin(version="1.3")
   public static final long coerceAtMost-eb3DHEI(long paramLong1, long paramLong2)
   {
+    long l = paramLong1;
     if (UnsignedKt.ulongCompare(paramLong1, paramLong2) > 0) {
-      return paramLong2;
+      l = paramLong2;
     }
-    return paramLong1;
+    return l;
   }
   
   @ExperimentalUnsignedTypes
@@ -105,86 +113,123 @@ class URangesKt___URangesKt
   public static final long coerceIn-JPwROB0(long paramLong, @NotNull ClosedRange<ULong> paramClosedRange)
   {
     Intrinsics.checkParameterIsNotNull(paramClosedRange, "range");
-    long l;
     if ((paramClosedRange instanceof ClosedFloatingPointRange)) {
-      l = ((ULong)RangesKt.coerceIn(ULong.box-impl(paramLong), (ClosedFloatingPointRange)paramClosedRange)).unbox-impl();
+      return ((ULong)RangesKt.coerceIn(ULong.box-impl(paramLong), (ClosedFloatingPointRange)paramClosedRange)).unbox-impl();
     }
-    do
+    if (!paramClosedRange.isEmpty())
     {
-      return l;
-      if (paramClosedRange.isEmpty()) {
-        throw ((Throwable)new IllegalArgumentException("Cannot coerce value to an empty range: " + paramClosedRange + '.'));
-      }
       if (UnsignedKt.ulongCompare(paramLong, ((ULong)paramClosedRange.getStart()).unbox-impl()) < 0) {
         return ((ULong)paramClosedRange.getStart()).unbox-impl();
       }
-      l = paramLong;
-    } while (UnsignedKt.ulongCompare(paramLong, ((ULong)paramClosedRange.getEndInclusive()).unbox-impl()) <= 0);
-    return ((ULong)paramClosedRange.getEndInclusive()).unbox-impl();
+      long l = paramLong;
+      if (UnsignedKt.ulongCompare(paramLong, ((ULong)paramClosedRange.getEndInclusive()).unbox-impl()) > 0) {
+        l = ((ULong)paramClosedRange.getEndInclusive()).unbox-impl();
+      }
+      return l;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Cannot coerce value to an empty range: ");
+    localStringBuilder.append(paramClosedRange);
+    localStringBuilder.append('.');
+    throw ((Throwable)new IllegalArgumentException(localStringBuilder.toString()));
   }
   
   @ExperimentalUnsignedTypes
   @SinceKotlin(version="1.3")
   public static final short coerceIn-VKSA0NQ(short paramShort1, short paramShort2, short paramShort3)
   {
-    if (Intrinsics.compare(paramShort2 & 0xFFFF, paramShort3 & 0xFFFF) > 0) {
-      throw ((Throwable)new IllegalArgumentException("Cannot coerce value to an empty range: maximum " + UShort.toString-impl(paramShort3) + " is less than minimum " + UShort.toString-impl(paramShort2) + '.'));
+    int i = paramShort2 & 0xFFFF;
+    int j = paramShort3 & 0xFFFF;
+    if (Intrinsics.compare(i, j) <= 0)
+    {
+      int k = 0xFFFF & paramShort1;
+      if (Intrinsics.compare(k, i) < 0) {
+        return paramShort2;
+      }
+      if (Intrinsics.compare(k, j) > 0) {
+        return paramShort3;
+      }
+      return paramShort1;
     }
-    if (Intrinsics.compare(paramShort1 & 0xFFFF, paramShort2 & 0xFFFF) < 0) {
-      return paramShort2;
-    }
-    if (Intrinsics.compare(paramShort1 & 0xFFFF, paramShort3 & 0xFFFF) > 0) {
-      return paramShort3;
-    }
-    return paramShort1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Cannot coerce value to an empty range: maximum ");
+    localStringBuilder.append(UShort.toString-impl(paramShort3));
+    localStringBuilder.append(" is less than minimum ");
+    localStringBuilder.append(UShort.toString-impl(paramShort2));
+    localStringBuilder.append('.');
+    throw ((Throwable)new IllegalArgumentException(localStringBuilder.toString()));
   }
   
   @ExperimentalUnsignedTypes
   @SinceKotlin(version="1.3")
   public static final int coerceIn-WZ9TVnA(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (UnsignedKt.uintCompare(paramInt2, paramInt3) > 0) {
-      throw ((Throwable)new IllegalArgumentException("Cannot coerce value to an empty range: maximum " + UInt.toString-impl(paramInt3) + " is less than minimum " + UInt.toString-impl(paramInt2) + '.'));
+    if (UnsignedKt.uintCompare(paramInt2, paramInt3) <= 0)
+    {
+      if (UnsignedKt.uintCompare(paramInt1, paramInt2) < 0) {
+        return paramInt2;
+      }
+      if (UnsignedKt.uintCompare(paramInt1, paramInt3) > 0) {
+        return paramInt3;
+      }
+      return paramInt1;
     }
-    if (UnsignedKt.uintCompare(paramInt1, paramInt2) < 0) {
-      return paramInt2;
-    }
-    if (UnsignedKt.uintCompare(paramInt1, paramInt3) > 0) {
-      return paramInt3;
-    }
-    return paramInt1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Cannot coerce value to an empty range: maximum ");
+    localStringBuilder.append(UInt.toString-impl(paramInt3));
+    localStringBuilder.append(" is less than minimum ");
+    localStringBuilder.append(UInt.toString-impl(paramInt2));
+    localStringBuilder.append('.');
+    throw ((Throwable)new IllegalArgumentException(localStringBuilder.toString()));
   }
   
   @ExperimentalUnsignedTypes
   @SinceKotlin(version="1.3")
   public static final byte coerceIn-b33U2AM(byte paramByte1, byte paramByte2, byte paramByte3)
   {
-    if (Intrinsics.compare(paramByte2 & 0xFF, paramByte3 & 0xFF) > 0) {
-      throw ((Throwable)new IllegalArgumentException("Cannot coerce value to an empty range: maximum " + UByte.toString-impl(paramByte3) + " is less than minimum " + UByte.toString-impl(paramByte2) + '.'));
+    int i = paramByte2 & 0xFF;
+    int j = paramByte3 & 0xFF;
+    if (Intrinsics.compare(i, j) <= 0)
+    {
+      int k = paramByte1 & 0xFF;
+      if (Intrinsics.compare(k, i) < 0) {
+        return paramByte2;
+      }
+      if (Intrinsics.compare(k, j) > 0) {
+        return paramByte3;
+      }
+      return paramByte1;
     }
-    if (Intrinsics.compare(paramByte1 & 0xFF, paramByte2 & 0xFF) < 0) {
-      return paramByte2;
-    }
-    if (Intrinsics.compare(paramByte1 & 0xFF, paramByte3 & 0xFF) > 0) {
-      return paramByte3;
-    }
-    return paramByte1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Cannot coerce value to an empty range: maximum ");
+    localStringBuilder.append(UByte.toString-impl(paramByte3));
+    localStringBuilder.append(" is less than minimum ");
+    localStringBuilder.append(UByte.toString-impl(paramByte2));
+    localStringBuilder.append('.');
+    throw ((Throwable)new IllegalArgumentException(localStringBuilder.toString()));
   }
   
   @ExperimentalUnsignedTypes
   @SinceKotlin(version="1.3")
   public static final long coerceIn-sambcqE(long paramLong1, long paramLong2, long paramLong3)
   {
-    if (UnsignedKt.ulongCompare(paramLong2, paramLong3) > 0) {
-      throw ((Throwable)new IllegalArgumentException("Cannot coerce value to an empty range: maximum " + ULong.toString-impl(paramLong3) + " is less than minimum " + ULong.toString-impl(paramLong2) + '.'));
+    if (UnsignedKt.ulongCompare(paramLong2, paramLong3) <= 0)
+    {
+      if (UnsignedKt.ulongCompare(paramLong1, paramLong2) < 0) {
+        return paramLong2;
+      }
+      if (UnsignedKt.ulongCompare(paramLong1, paramLong3) > 0) {
+        return paramLong3;
+      }
+      return paramLong1;
     }
-    if (UnsignedKt.ulongCompare(paramLong1, paramLong2) < 0) {
-      return paramLong2;
-    }
-    if (UnsignedKt.ulongCompare(paramLong1, paramLong3) > 0) {
-      return paramLong3;
-    }
-    return paramLong1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Cannot coerce value to an empty range: maximum ");
+    localStringBuilder.append(ULong.toString-impl(paramLong3));
+    localStringBuilder.append(" is less than minimum ");
+    localStringBuilder.append(ULong.toString-impl(paramLong2));
+    localStringBuilder.append('.');
+    throw ((Throwable)new IllegalArgumentException(localStringBuilder.toString()));
   }
   
   @ExperimentalUnsignedTypes
@@ -192,22 +237,25 @@ class URangesKt___URangesKt
   public static final int coerceIn-wuiCnnA(int paramInt, @NotNull ClosedRange<UInt> paramClosedRange)
   {
     Intrinsics.checkParameterIsNotNull(paramClosedRange, "range");
-    int i;
     if ((paramClosedRange instanceof ClosedFloatingPointRange)) {
-      i = ((UInt)RangesKt.coerceIn(UInt.box-impl(paramInt), (ClosedFloatingPointRange)paramClosedRange)).unbox-impl();
+      return ((UInt)RangesKt.coerceIn(UInt.box-impl(paramInt), (ClosedFloatingPointRange)paramClosedRange)).unbox-impl();
     }
-    do
+    if (!paramClosedRange.isEmpty())
     {
-      return i;
-      if (paramClosedRange.isEmpty()) {
-        throw ((Throwable)new IllegalArgumentException("Cannot coerce value to an empty range: " + paramClosedRange + '.'));
-      }
       if (UnsignedKt.uintCompare(paramInt, ((UInt)paramClosedRange.getStart()).unbox-impl()) < 0) {
         return ((UInt)paramClosedRange.getStart()).unbox-impl();
       }
-      i = paramInt;
-    } while (UnsignedKt.uintCompare(paramInt, ((UInt)paramClosedRange.getEndInclusive()).unbox-impl()) <= 0);
-    return ((UInt)paramClosedRange.getEndInclusive()).unbox-impl();
+      int i = paramInt;
+      if (UnsignedKt.uintCompare(paramInt, ((UInt)paramClosedRange.getEndInclusive()).unbox-impl()) > 0) {
+        i = ((UInt)paramClosedRange.getEndInclusive()).unbox-impl();
+      }
+      return i;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Cannot coerce value to an empty range: ");
+    localStringBuilder.append(paramClosedRange);
+    localStringBuilder.append('.');
+    throw ((Throwable)new IllegalArgumentException(localStringBuilder.toString()));
   }
   
   @ExperimentalUnsignedTypes
@@ -248,7 +296,7 @@ class URangesKt___URangesKt
   public static final boolean contains-ZsK3CEQ(@NotNull UIntRange paramUIntRange, short paramShort)
   {
     Intrinsics.checkParameterIsNotNull(paramUIntRange, "$this$contains");
-    return paramUIntRange.contains-WZ4Q5Ns(UInt.constructor-impl(0xFFFF & paramShort));
+    return paramUIntRange.contains-WZ4Q5Ns(UInt.constructor-impl(paramShort & 0xFFFF));
   }
   
   @ExperimentalUnsignedTypes
@@ -281,7 +329,7 @@ class URangesKt___URangesKt
   @NotNull
   public static final UIntProgression downTo-5PvTz6A(short paramShort1, short paramShort2)
   {
-    return UIntProgression.Companion.fromClosedRange-Nkh28Cs(UInt.constructor-impl(paramShort1 & 0xFFFF), UInt.constructor-impl(0xFFFF & paramShort2), -1);
+    return UIntProgression.Companion.fromClosedRange-Nkh28Cs(UInt.constructor-impl(paramShort1 & 0xFFFF), UInt.constructor-impl(paramShort2 & 0xFFFF), -1);
   }
   
   @ExperimentalUnsignedTypes
@@ -429,28 +477,19 @@ class URangesKt___URangesKt
   {
     Intrinsics.checkParameterIsNotNull(paramUIntProgression, "$this$step");
     boolean bool;
-    UIntProgression.Companion localCompanion;
-    int i;
-    int j;
-    if (paramInt > 0)
-    {
+    if (paramInt > 0) {
       bool = true;
-      RangesKt.checkStepIsPositive(bool, (Number)Integer.valueOf(paramInt));
-      localCompanion = UIntProgression.Companion;
-      i = paramUIntProgression.getFirst();
-      j = paramUIntProgression.getLast();
-      if (paramUIntProgression.getStep() <= 0) {
-        break label63;
-      }
-    }
-    for (;;)
-    {
-      return localCompanion.fromClosedRange-Nkh28Cs(i, j, paramInt);
+    } else {
       bool = false;
-      break;
-      label63:
+    }
+    RangesKt.checkStepIsPositive(bool, (Number)Integer.valueOf(paramInt));
+    UIntProgression.Companion localCompanion = UIntProgression.Companion;
+    int i = paramUIntProgression.getFirst();
+    int j = paramUIntProgression.getLast();
+    if (paramUIntProgression.getStep() <= 0) {
       paramInt = -paramInt;
     }
+    return localCompanion.fromClosedRange-Nkh28Cs(i, j, paramInt);
   }
   
   @ExperimentalUnsignedTypes
@@ -460,28 +499,19 @@ class URangesKt___URangesKt
   {
     Intrinsics.checkParameterIsNotNull(paramULongProgression, "$this$step");
     boolean bool;
-    ULongProgression.Companion localCompanion;
-    long l1;
-    long l2;
-    if (paramLong > 0L)
-    {
+    if (paramLong > 0L) {
       bool = true;
-      RangesKt.checkStepIsPositive(bool, (Number)Long.valueOf(paramLong));
-      localCompanion = ULongProgression.Companion;
-      l1 = paramULongProgression.getFirst();
-      l2 = paramULongProgression.getLast();
-      if (paramULongProgression.getStep() <= 0L) {
-        break label69;
-      }
-    }
-    for (;;)
-    {
-      return localCompanion.fromClosedRange-7ftBX0g(l1, l2, paramLong);
+    } else {
       bool = false;
-      break;
-      label69:
+    }
+    RangesKt.checkStepIsPositive(bool, (Number)Long.valueOf(paramLong));
+    ULongProgression.Companion localCompanion = ULongProgression.Companion;
+    long l1 = paramULongProgression.getFirst();
+    long l2 = paramULongProgression.getLast();
+    if (paramULongProgression.getStep() <= 0L) {
       paramLong = -paramLong;
     }
+    return localCompanion.fromClosedRange-7ftBX0g(l1, l2, paramLong);
   }
   
   @ExperimentalUnsignedTypes
@@ -489,10 +519,11 @@ class URangesKt___URangesKt
   @NotNull
   public static final UIntRange until-5PvTz6A(short paramShort1, short paramShort2)
   {
-    if (Intrinsics.compare(paramShort2 & 0xFFFF, 0) <= 0) {
+    paramShort2 &= 0xFFFF;
+    if (Intrinsics.compare(paramShort2, 0) <= 0) {
       return UIntRange.Companion.getEMPTY();
     }
-    return new UIntRange(UInt.constructor-impl(paramShort1 & 0xFFFF), UInt.constructor-impl(UInt.constructor-impl(0xFFFF & paramShort2) - 1), null);
+    return new UIntRange(UInt.constructor-impl(paramShort1 & 0xFFFF), UInt.constructor-impl(UInt.constructor-impl(paramShort2) - 1), null);
   }
   
   @ExperimentalUnsignedTypes
@@ -511,10 +542,11 @@ class URangesKt___URangesKt
   @NotNull
   public static final UIntRange until-Kr8caGY(byte paramByte1, byte paramByte2)
   {
-    if (Intrinsics.compare(paramByte2 & 0xFF, 0) <= 0) {
+    paramByte2 &= 0xFF;
+    if (Intrinsics.compare(paramByte2, 0) <= 0) {
       return UIntRange.Companion.getEMPTY();
     }
-    return new UIntRange(UInt.constructor-impl(paramByte1 & 0xFF), UInt.constructor-impl(UInt.constructor-impl(paramByte2 & 0xFF) - 1), null);
+    return new UIntRange(UInt.constructor-impl(paramByte1 & 0xFF), UInt.constructor-impl(UInt.constructor-impl(paramByte2) - 1), null);
   }
   
   @ExperimentalUnsignedTypes
@@ -530,7 +562,7 @@ class URangesKt___URangesKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.ranges.URangesKt___URangesKt
  * JD-Core Version:    0.7.0.1
  */

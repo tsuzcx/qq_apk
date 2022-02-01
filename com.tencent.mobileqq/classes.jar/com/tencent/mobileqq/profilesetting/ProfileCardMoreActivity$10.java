@@ -8,17 +8,20 @@ class ProfileCardMoreActivity$10
 {
   ProfileCardMoreActivity$10(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void onSetProfileDetail(boolean paramBoolean, int paramInt, Card paramCard)
+  protected void onSetProfileDetail(boolean paramBoolean, int paramInt, Card paramCard)
   {
-    if (((paramBoolean) && (paramInt == 0)) || ((!paramBoolean) && (paramInt == 34))) {
-      return;
+    if ((!paramBoolean) || (paramInt != 0))
+    {
+      if ((!paramBoolean) && (paramInt == 34)) {
+        return;
+      }
+      this.a.notifyUser(2131695119, 1);
     }
-    this.a.notifyUser(2131695129, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity.10
  * JD-Core Version:    0.7.0.1
  */

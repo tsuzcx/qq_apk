@@ -12,15 +12,13 @@ import java.util.Random;
 public class QQAudioReporter
 {
   private static Random a;
-  public static boolean a;
-  public static boolean b;
+  public static boolean a = false;
+  public static boolean b = false;
   private static boolean c = false;
   private static boolean d = false;
   
   static
   {
-    jdField_a_of_type_Boolean = false;
-    b = false;
     jdField_a_of_type_JavaUtilRandom = new Random();
   }
   
@@ -29,9 +27,19 @@ public class QQAudioReporter
     if (!d)
     {
       HashMap localHashMap = new HashMap();
-      localHashMap.put("param_type", paramInt + "");
-      localHashMap.put("param_version", Build.VERSION.SDK_INT + "");
-      localHashMap.put("param_deviceName", Build.MANUFACTURER + "_" + Build.MODEL);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("");
+      localHashMap.put("param_type", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(Build.VERSION.SDK_INT);
+      localStringBuilder.append("");
+      localHashMap.put("param_version", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(Build.MANUFACTURER);
+      localStringBuilder.append("_");
+      localStringBuilder.append(Build.MODEL);
+      localHashMap.put("param_deviceName", localStringBuilder.toString());
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "actRPPttPlayerType", true, 0L, 0L, localHashMap, "");
       d = true;
     }
@@ -39,90 +47,90 @@ public class QQAudioReporter
   
   public static void a(long paramLong1, int paramInt1, long paramLong2, int paramInt2)
   {
-    HashMap localHashMap;
     if (Math.abs(jdField_a_of_type_JavaUtilRandom.nextInt() % 100) < 10)
     {
       int i = QQAudioSystemInfo.d();
       int j = QQAudioSystemInfo.c();
       long l1 = QQAudioSystemInfo.c();
       long l2 = DeviceInfoUtil.a() / 1048576L;
-      localHashMap = new HashMap();
+      HashMap localHashMap = new HashMap();
       localHashMap.put("cpuArch", String.valueOf(i));
       localHashMap.put("numCores", String.valueOf(j));
       localHashMap.put("maxFreq", String.valueOf(l1));
       localHashMap.put("memory", String.valueOf(l2));
-      if (paramInt2 <= 2) {
-        break label172;
+      boolean bool;
+      if (paramInt2 > 2) {
+        bool = b;
+      } else {
+        bool = jdField_a_of_type_Boolean;
       }
-    }
-    label172:
-    for (boolean bool = b;; bool = jdField_a_of_type_Boolean)
-    {
       localHashMap.put("v7so", String.valueOf(bool));
       localHashMap.put("type", String.valueOf(paramInt2));
       localHashMap.put("maxFrameCost", String.valueOf(paramLong2));
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actPttProcessFrameCost", true, paramLong1, paramInt1, localHashMap, "");
-      return;
     }
   }
   
   public static void a(boolean paramBoolean)
   {
-    HashMap localHashMap;
     if (!c)
     {
-      localHashMap = new HashMap();
-      if (!paramBoolean) {
-        break label115;
+      HashMap localHashMap = new HashMap();
+      if (paramBoolean) {
+        localObject = "1";
+      } else {
+        localObject = "0";
       }
-    }
-    label115:
-    for (String str = "1";; str = "0")
-    {
-      localHashMap.put("param_succ_flag", str);
-      localHashMap.put("param_version", Build.VERSION.SDK_INT + "");
-      localHashMap.put("param_deviceName", Build.MANUFACTURER + "_" + Build.MODEL);
+      localHashMap.put("param_succ_flag", localObject);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(Build.VERSION.SDK_INT);
+      ((StringBuilder)localObject).append("");
+      localHashMap.put("param_version", ((StringBuilder)localObject).toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(Build.MANUFACTURER);
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(Build.MODEL);
+      localHashMap.put("param_deviceName", ((StringBuilder)localObject).toString());
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "actRPSonicSoLoadStatus", true, 0L, 0L, localHashMap, "");
       c = true;
-      return;
     }
   }
   
   public static void a(boolean paramBoolean, String paramString)
   {
+    boolean bool = paramString.equals("codecsilk");
     int i = 1;
-    if (paramString.equals("codecsilk")) {
+    if (bool)
+    {
       if (paramBoolean)
       {
         jdField_a_of_type_Boolean = true;
         i = 0;
       }
-    }
-    for (;;)
-    {
-      paramString = new HashMap();
-      paramString.put("param_FailCode", String.valueOf(i));
-      paramString.put(BaseConstants.RDM_NoChangeFailCode, "");
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actPttSoUpdate", false, 0L, 0L, paramString, "");
-      return;
-      jdField_a_of_type_Boolean = false;
-      continue;
-      if (paramBoolean)
-      {
-        b = true;
-        i = 2;
-      }
       else
       {
-        i = 3;
-        b = false;
+        jdField_a_of_type_Boolean = false;
       }
     }
+    else if (paramBoolean)
+    {
+      b = true;
+      i = 2;
+    }
+    else
+    {
+      i = 3;
+      b = false;
+    }
+    paramString = new HashMap();
+    paramString.put("param_FailCode", String.valueOf(i));
+    paramString.put(BaseConstants.RDM_NoChangeFailCode, "");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actPttSoUpdate", false, 0L, 0L, paramString, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.QQAudioReporter
  * JD-Core Version:    0.7.0.1
  */

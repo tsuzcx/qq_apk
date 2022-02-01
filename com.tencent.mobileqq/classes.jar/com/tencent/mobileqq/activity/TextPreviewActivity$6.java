@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.bubble.BubbleDiyFetcher;
+import com.tencent.mobileqq.hiboom.api.IHiBoomManager;
 
 class TextPreviewActivity$6
   implements Runnable
 {
-  TextPreviewActivity$6(TextPreviewActivity paramTextPreviewActivity, BubbleDiyFetcher paramBubbleDiyFetcher, String paramString) {}
+  TextPreviewActivity$6(TextPreviewActivity paramTextPreviewActivity, IHiBoomManager paramIHiBoomManager) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.a(this.this$0.app, this.jdField_a_of_type_JavaLangString, null);
+    this.a.loadHiBoomConfig(this.this$0.g, true, false, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TextPreviewActivity.6
  * JD-Core Version:    0.7.0.1
  */

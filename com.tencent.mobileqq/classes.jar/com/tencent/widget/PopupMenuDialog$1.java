@@ -11,15 +11,15 @@ class PopupMenuDialog$1
   
   public void onClick(View paramView)
   {
-    if (this.a.isShowing()) {
-      this.a.dismiss();
+    if (this.this$0.isShowing()) {
+      this.this$0.dismiss();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.PopupMenuDialog.1
  * JD-Core Version:    0.7.0.1
  */

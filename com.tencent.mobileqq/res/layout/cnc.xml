@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/bgq" android:paddingTop="@dimen/bgq" android:paddingRight="@dimen/bgq" android:paddingBottom="@dimen/bgq" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:layout_gravity="center" android:id="@id/c2a" android:layout_width="173.0dip" android:layout_height="205.0dip" android:src="@drawable/gto" android:scaleType="fitXY" />
-    <LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
-        <ImageView android:id="@id/nfj" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="4.0dip" android:src="@drawable/gu2" />
-        <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:layout_gravity="center_horizontal" android:id="@id/nzz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="暂无数据，请刷新页面" />
-    </LinearLayout>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="73.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="27.0dip">
+        <ImageView android:id="@id/odg" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/odh" android:visibility="gone" android:layout_width="6.0dip" android:layout_height="6.0dip" android:layout_marginLeft="-2.0dip" android:src="@drawable/gef" android:layout_toRightOf="@id/odg" android:layout_alignParentTop="true" />
+    </RelativeLayout>
+    <TextView android:textSize="12.0sp" android:textColor="#ff03081a" android:gravity="center|top" android:id="@id/odi" android:paddingLeft="2.0dip" android:paddingRight="2.0dip" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:singleLine="true" android:lineSpacingMultiplier="1.0" />
 </LinearLayout>

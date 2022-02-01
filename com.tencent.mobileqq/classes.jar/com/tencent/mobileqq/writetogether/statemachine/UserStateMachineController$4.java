@@ -28,13 +28,13 @@ class UserStateMachineController$4
     if (UserStateMachineController.a(this.a).a()) {
       UserStateMachineController.a(this.a).d();
     }
-    UserStateMachineController.a(this.a).a(WriteTogetherUtils.c(UserStateMachineController.a(this.a).getString(2131720464), UserStateMachineController.a(this.a).a()), 0);
+    UserStateMachineController.a(this.a).a(WriteTogetherUtils.c(UserStateMachineController.a(this.a).getString(2131720179), UserStateMachineController.a(this.a).a()), 0);
     UserStateMachineController.a(this.a).j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.statemachine.UserStateMachineController.4
  * JD-Core Version:    0.7.0.1
  */

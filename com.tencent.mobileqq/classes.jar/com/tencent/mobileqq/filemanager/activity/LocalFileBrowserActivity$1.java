@@ -12,20 +12,31 @@ class LocalFileBrowserActivity$1
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramInt1 <= 0) || (paramInt1 + paramInt2 >= paramInt3 - 1)) {}
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      if (paramInt1 != 0) {
-        URLDrawable.resume();
+    int j = 1;
+    int i = j;
+    if (paramInt1 > 0) {
+      if (paramInt1 + paramInt2 >= paramInt3 - 1) {
+        i = j;
+      } else {
+        i = 0;
       }
-      return;
+    }
+    if (i != 0) {
+      URLDrawable.resume();
     }
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectPhotoTrace", 2, LocalFileBrowserActivity.f + ",onScrollStateChanged() is called,scrollState is:" + paramInt + ",time is:" + System.currentTimeMillis());
+    if (QLog.isColorLevel())
+    {
+      paramAbsListView = new StringBuilder();
+      paramAbsListView.append(LocalFileBrowserActivity.e);
+      paramAbsListView.append(",onScrollStateChanged() is called,scrollState is:");
+      paramAbsListView.append(paramInt);
+      paramAbsListView.append(",time is:");
+      paramAbsListView.append(System.currentTimeMillis());
+      QLog.d("SelectPhotoTrace", 2, paramAbsListView.toString());
     }
     if (paramInt == 0)
     {
@@ -37,7 +48,7 @@ class LocalFileBrowserActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity.1
  * JD-Core Version:    0.7.0.1
  */

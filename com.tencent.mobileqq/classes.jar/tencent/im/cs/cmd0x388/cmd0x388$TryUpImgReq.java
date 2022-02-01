@@ -35,17 +35,19 @@ public final class cmd0x388$TryUpImgReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 50, 56, 64, 72, 80, 88, 96, 106, 112, 120, 128, 138, 144, 152, 162 }, new String[] { "uint64_group_code", "uint64_src_uin", "uint64_file_id", "bytes_file_md5", "uint64_file_size", "bytes_file_name", "uint32_src_term", "uint32_platform_type", "uint32_bu_type", "uint32_pic_width", "uint32_pic_height", "uint32_pic_type", "bytes_build_ver", "uint32_inner_ip", "uint32_app_pic_type", "uint32_original_pic", "bytes_file_index", "uint64_dst_uin", "uint32_srv_upload", "bytes_transfer_url" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro1, Long.valueOf(0L), localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro4, Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro5 }, TryUpImgReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 50, 56, 64, 72, 80, 88, 96, 106, 112, 120, 128, 138, 144, 152, 162 }, new String[] { "uint64_group_code", "uint64_src_uin", "uint64_file_id", "bytes_file_md5", "uint64_file_size", "bytes_file_name", "uint32_src_term", "uint32_platform_type", "uint32_bu_type", "uint32_pic_width", "uint32_pic_height", "uint32_pic_type", "bytes_build_ver", "uint32_inner_ip", "uint32_app_pic_type", "uint32_original_pic", "bytes_file_index", "uint64_dst_uin", "uint32_srv_upload", "bytes_transfer_url" }, new Object[] { localLong, localLong, localLong, localByteStringMicro1, localLong, localByteStringMicro2, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localByteStringMicro3, localInteger, localInteger, localInteger, localByteStringMicro4, localLong, localInteger, localByteStringMicro5 }, TryUpImgReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.cmd0x388.cmd0x388.TryUpImgReq
  * JD-Core Version:    0.7.0.1
  */

@@ -119,7 +119,7 @@ public class c
         localg.a(paramContext);
       }
     }
-    else
+    try
     {
       try
       {
@@ -131,23 +131,28 @@ public class c
           g.a().a(paramContext, "emergence_timestamp", l3);
           b(paramContext);
         }
-        for (;;)
+        else
         {
-          return;
           a(paramContext, c, new ArrayList());
         }
-        a(paramContext, f, new ArrayList());
-      }
-      catch (Exception localException)
-      {
-        a(paramContext, g, new ArrayList());
-        return;
       }
       finally
       {
-        g.a().c();
+        break label144;
       }
     }
+    catch (Exception localException)
+    {
+      label122:
+      break label122;
+    }
+    a(paramContext, g, new ArrayList());
+    g.a().c();
+    return;
+    label144:
+    g.a().c();
+    throw paramContext;
+    a(paramContext, f, new ArrayList());
   }
   
   public void a(Context paramContext, Integer paramInteger, Map<Integer, String> paramMap)
@@ -155,12 +160,13 @@ public class c
     TbsLog.e(a, "Dispatch emergency commands on tbs extension");
     QbSdk.a(paramContext, paramInteger, paramMap);
     paramContext = f.a(true);
-    if (paramContext == null) {}
-    do
-    {
+    if (paramContext == null) {
       return;
-      paramContext = paramContext.a();
-    } while (paramContext == null);
+    }
+    paramContext = paramContext.a();
+    if (paramContext == null) {
+      return;
+    }
     paramContext = paramContext.b();
     if (paramContext != null)
     {
@@ -173,7 +179,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.c
  * JD-Core Version:    0.7.0.1
  */

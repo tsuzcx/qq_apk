@@ -29,14 +29,11 @@ public class GameDataJsPlugin
   
   private boolean checkNavigationAppIdListForMiniGame(String paramString)
   {
-    if (StringUtil.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (StringUtil.isEmpty(paramString)) {
       return false;
-      Object localObject = GetGameInfoManager.obtain(this.mMiniAppContext).getMiniGamePkg();
-      if (localObject == null) {
-        continue;
-      }
+    }
+    Object localObject = GetGameInfoManager.obtain(this.mMiniAppContext).getMiniGamePkg();
+    if (localObject != null) {
       try
       {
         localObject = ((MiniGamePkg)localObject).mGameConfigJson.optJSONArray("navigateToMiniProgramAppIdList");
@@ -61,49 +58,45 @@ public class GameDataJsPlugin
   @JsEvent({"getLaunchOptionsSync"})
   public String getLaunchOptionsSync(RequestEvent paramRequestEvent)
   {
-    Object localObject2 = null;
     GameInfoManager localGameInfoManager = GetGameInfoManager.obtain(this.mMiniAppContext);
     GameInfoManager.LaunchOptions localLaunchOptions = localGameInfoManager.getLaunchOptions();
     JSONObject localJSONObject1 = new JSONObject();
     JSONObject localJSONObject2 = new JSONObject();
     try
     {
-      if (TextUtils.isEmpty(localLaunchOptions.fromMiniAppId))
-      {
+      boolean bool = TextUtils.isEmpty(localLaunchOptions.fromMiniAppId);
+      Object localObject2 = null;
+      if (bool) {
         localObject1 = null;
-        localJSONObject2.put("appId", localObject1);
-        if (!TextUtils.isEmpty(localLaunchOptions.navigateExtData)) {
-          break label182;
-        }
-        localObject1 = null;
-        label71:
-        localJSONObject2.put("extraData", localObject1);
-        localJSONObject1.put("scene", AppBrandUtil.getWikiScene(localLaunchOptions.scene));
-        localJSONObject1.put("query", localLaunchOptions.query);
-        if (!TextUtils.isEmpty(localLaunchOptions.shareTicket)) {
-          break label191;
-        }
-      }
-      label182:
-      label191:
-      for (Object localObject1 = localObject2;; localObject1 = localLaunchOptions.shareTicket)
-      {
-        localJSONObject1.put("shareTicket", localObject1);
-        localJSONObject1.put("referrerInfo", localJSONObject2);
-        localJSONObject1.put("extendData", localGameInfoManager.getExtendData());
-        localJSONObject1.put("entryDataHash", localLaunchOptions.entryDataHash);
-        return localJSONObject1.toString();
+      } else {
         localObject1 = localLaunchOptions.fromMiniAppId;
-        break;
-        localObject1 = localLaunchOptions.navigateExtData;
-        break label71;
       }
-      return paramRequestEvent.fail();
+      localJSONObject2.put("appId", localObject1);
+      if (TextUtils.isEmpty(localLaunchOptions.navigateExtData)) {
+        localObject1 = null;
+      } else {
+        localObject1 = localLaunchOptions.navigateExtData;
+      }
+      localJSONObject2.put("extraData", localObject1);
+      localJSONObject1.put("scene", AppBrandUtil.getWikiScene(localLaunchOptions.scene));
+      localJSONObject1.put("query", localLaunchOptions.query);
+      if (TextUtils.isEmpty(localLaunchOptions.shareTicket)) {
+        localObject1 = localObject2;
+      } else {
+        localObject1 = localLaunchOptions.shareTicket;
+      }
+      localJSONObject1.put("shareTicket", localObject1);
+      localJSONObject1.put("referrerInfo", localJSONObject2);
+      localJSONObject1.put("extendData", localGameInfoManager.getExtendData());
+      localJSONObject1.put("entryDataHash", localLaunchOptions.entryDataHash);
+      Object localObject1 = localJSONObject1.toString();
+      return localObject1;
     }
     catch (JSONException localJSONException)
     {
       QMLog.e("GameDataJsPlugin", "API_GET_LAUNCH_OPTIONS_SYNC exception: ", localJSONException);
     }
+    return paramRequestEvent.fail();
   }
   
   @JsEvent({"getOpenDataUserInfo"})
@@ -111,7 +104,7 @@ public class GameDataJsPlugin
   {
     try
     {
-      Object localObject = new JSONObject(paramRequestEvent.jsonParams);
+      localObject = new JSONObject(paramRequestEvent.jsonParams);
       JSONArray localJSONArray = ((JSONObject)localObject).optJSONArray("openIdList");
       localObject = ((JSONObject)localObject).optString("lang", "en");
       if ((localJSONArray != null) && (localJSONArray.length() > 0))
@@ -124,13 +117,17 @@ public class GameDataJsPlugin
           i += 1;
         }
         this.mChannelProxy.getUserInfoOpenData(this.mMiniAppInfo.appId, (String)localObject, arrayOfString, new GameDataJsPlugin.1(this, paramRequestEvent));
+        return;
       }
-      return;
     }
     catch (JSONException localJSONException)
     {
       paramRequestEvent.fail();
-      QMLog.e("GameDataJsPlugin", "handle event:" + paramRequestEvent.event + " error , ", localJSONException);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handle event:");
+      ((StringBuilder)localObject).append(paramRequestEvent.event);
+      ((StringBuilder)localObject).append(" error , ");
+      QMLog.e("GameDataJsPlugin", ((StringBuilder)localObject).toString(), localJSONException);
     }
   }
   
@@ -144,24 +141,25 @@ public class GameDataJsPlugin
       try
       {
         paramRequestEvent.put("inList", bool);
-        QMLog.d("GameDataJsPlugin", "navigateToMiniProgramConfig, callJs jsonObject = " + paramRequestEvent);
-        return paramRequestEvent.toString();
       }
       catch (JSONException localJSONException)
       {
-        for (;;)
-        {
-          QMLog.e("GameDataJsPlugin", localJSONException.getMessage(), localJSONException);
-          localJSONException.printStackTrace();
-        }
+        QMLog.e("GameDataJsPlugin", localJSONException.getMessage(), localJSONException);
+        localJSONException.printStackTrace();
       }
-      return "";
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("navigateToMiniProgramConfig, callJs jsonObject = ");
+      localStringBuilder.append(paramRequestEvent);
+      QMLog.d("GameDataJsPlugin", localStringBuilder.toString());
+      paramRequestEvent = paramRequestEvent.toString();
+      return paramRequestEvent;
     }
     catch (JSONException paramRequestEvent)
     {
       QMLog.e("GameDataJsPlugin", paramRequestEvent.getMessage(), paramRequestEvent);
       paramRequestEvent.printStackTrace();
     }
+    return "";
   }
   
   public boolean onInterceptJsEvent(RequestEvent paramRequestEvent)
@@ -190,7 +188,7 @@ public class GameDataJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.GameDataJsPlugin
  * JD-Core Version:    0.7.0.1
  */

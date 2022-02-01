@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.view.PagerAdapter;
 import android.text.TextUtils;
+import androidx.viewpager.widget.PagerAdapter;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.model.StoryPromoteTaskManager;
 import com.tencent.biz.qqstory.model.SuperManager;
@@ -74,65 +74,61 @@ public class PromoteWidgetController
       return;
     }
     this.jdField_a_of_type_Int = 0;
-    switch (i)
+    if (i != 74)
     {
-    default: 
-      SLog.a("PromoteWidgetController", "onViewHolderBindData() from(%d) mismatch, will not promote!", Integer.valueOf(i));
-      return;
+      if (i != 106)
+      {
+        SLog.a("PromoteWidgetController", "onViewHolderBindData() from(%d) mismatch, will not promote!", Integer.valueOf(i));
+        return;
+      }
+      this.jdField_a_of_type_Int = 1;
     }
-    for (this.jdField_a_of_type_Int = 1; TextUtils.equals(this.b, paramString); this.jdField_a_of_type_Int = 2)
+    else
+    {
+      this.jdField_a_of_type_Int = 2;
+    }
+    if (TextUtils.equals(this.b, paramString))
     {
       SLog.b("PromoteWidgetController", "onViewHolderBindData() not first bind");
       return;
     }
     int j = paramData.jdField_a_of_type_JavaUtilList.size();
     i = 0;
-    label153:
-    IDataProvider.GroupInfo localGroupInfo;
-    String str;
-    Object localObject;
-    label238:
-    ArrayList localArrayList;
-    if (i < j)
+    while (i < j)
     {
-      localGroupInfo = (IDataProvider.GroupInfo)paramData.jdField_a_of_type_JavaUtilList.get(i);
+      IDataProvider.GroupInfo localGroupInfo = (IDataProvider.GroupInfo)paramData.jdField_a_of_type_JavaUtilList.get(i);
       SLog.a("PromoteWidgetController", "onViewHolderBindData() [%d/%d]: %s", Integer.valueOf(i), Integer.valueOf(j), localGroupInfo);
-      str = localGroupInfo.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId.jdField_a_of_type_JavaLangString;
-      if (!(localGroupInfo.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId instanceof FeedIdBasePlayPageLoader.FeedBaseGroupId)) {
-        break label383;
+      String str = localGroupInfo.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId.jdField_a_of_type_JavaLangString;
+      Object localObject;
+      if ((localGroupInfo.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId instanceof FeedIdBasePlayPageLoader.FeedBaseGroupId))
+      {
+        localObject = ((FeedIdBasePlayPageLoader.FeedBaseGroupId)localGroupInfo.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId).a;
+        if (localObject != null) {
+          localObject = ((FeedIdListSeqInfo)localObject).b;
+        } else {
+          AssertUtils.fail("groupInfo FeedIdListSeqInfo is null!", new Object[0]);
+        }
       }
-      localObject = ((FeedIdBasePlayPageLoader.FeedBaseGroupId)localGroupInfo.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId).a;
-      if (localObject == null) {
-        break label374;
+      else
+      {
+        localObject = str;
       }
-      localObject = ((FeedIdListSeqInfo)localObject).b;
-      localArrayList = new ArrayList(new HashSet(localGroupInfo.jdField_a_of_type_JavaUtilMap.values()));
+      ArrayList localArrayList = new ArrayList(new HashSet(localGroupInfo.jdField_a_of_type_JavaUtilMap.values()));
       SLog.a("PromoteWidgetController", "onViewHolderBindData() [%d/%d]: groupId: %s, feedId: %s", Integer.valueOf(i), Integer.valueOf(j), str, localArrayList);
       if (TextUtils.equals(str, paramString))
       {
         SLog.d("PromoteWidgetController", "onViewHolderBindData() Find groupId: %s, feeds: %s, unionId: %s", new Object[] { str, localArrayList, localObject });
         if ((!localArrayList.isEmpty()) && (!TextUtils.equals(this.b, paramString)))
         {
-          if ((localArrayList.size() <= 1) || (this.jdField_a_of_type_Int != 2)) {
-            break label390;
+          if ((localArrayList.size() > 1) && (this.jdField_a_of_type_Int == 2)) {
+            SLog.d("PromoteWidgetController", "onViewHolderBindData(), feedIds size > 1, unexpected!");
+          } else {
+            a(localArrayList, (String)localObject, localGroupInfo.jdField_a_of_type_JavaUtilList.size());
           }
-          SLog.d("PromoteWidgetController", "onViewHolderBindData(), feedIds size > 1, unexpected!");
+          this.b = paramString;
         }
       }
-    }
-    for (;;)
-    {
-      this.b = paramString;
       i += 1;
-      break label153;
-      break;
-      label374:
-      AssertUtils.a("groupInfo FeedIdListSeqInfo is null!", new Object[0]);
-      label383:
-      localObject = str;
-      break label238;
-      label390:
-      a(localArrayList, (String)localObject, localGroupInfo.jdField_a_of_type_JavaUtilList.size());
     }
   }
   
@@ -157,35 +153,33 @@ public class PromoteWidgetController
     {
       SLog.a("PromoteWidgetController", "preloadWebProcessAndUrl() url is null! %s", localObject1);
       this.c = "";
-    }
-    for (;;)
-    {
       return false;
-      Object localObject2 = URLUtil.a((String)localObject1);
-      if (!((Map)localObject2).containsKey("sonic")) {
-        this.c = URLUtil.a((String)localObject1, "sonic", "1");
-      }
-      if (!((Map)localObject2).containsKey("vid")) {
-        this.c = URLUtil.a((String)localObject1, "vid", this.jdField_a_of_type_JavaLangString);
-      }
-      localObject1 = (IWebProcessManagerService)QQStoryContext.a().getRuntimeService(IWebProcessManagerService.class, "multi");
-      if (localObject1 != null)
-      {
-        if (((IWebProcessManagerService)localObject1).isNeedPreloadWebProcess()) {
-          ((IWebProcessManagerService)localObject1).startWebProcess(203, new PromoteWidgetController.2(this));
-        }
-        while (((ISonicPreloaderService)QRoute.api(ISonicPreloaderService.class)).enablePreloadSonic())
-        {
-          localObject2 = new SonicPreloadData(1003, this.c, true, 0L, 0);
-          ArrayList localArrayList = new ArrayList();
-          localArrayList.add(localObject2);
-          boolean bool = ((IWebProcessManagerService)localObject1).preloadSonicSession(localArrayList);
-          SLog.a("PromoteWidgetController", "preloadSonicSession() load url %s: return %b.", this.c, Boolean.valueOf(bool));
-          return bool;
-          this.jdField_a_of_type_Boolean = true;
-        }
-      }
     }
+    Object localObject2 = URLUtil.a((String)localObject1);
+    if (!((Map)localObject2).containsKey("sonic")) {
+      this.c = URLUtil.a((String)localObject1, "sonic", "1");
+    }
+    if (!((Map)localObject2).containsKey("vid")) {
+      this.c = URLUtil.a((String)localObject1, "vid", this.jdField_a_of_type_JavaLangString);
+    }
+    localObject1 = (IWebProcessManagerService)QQStoryContext.a().getRuntimeService(IWebProcessManagerService.class, "multi");
+    if (localObject1 == null) {
+      return false;
+    }
+    if (((IWebProcessManagerService)localObject1).isNeedPreloadWebProcess()) {
+      ((IWebProcessManagerService)localObject1).startWebProcess(203, new PromoteWidgetController.2(this));
+    } else {
+      this.jdField_a_of_type_Boolean = true;
+    }
+    if (!((ISonicPreloaderService)QRoute.api(ISonicPreloaderService.class)).enablePreloadSonic()) {
+      return false;
+    }
+    localObject2 = new SonicPreloadData(1003, this.c, true, 0L, 0);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(localObject2);
+    boolean bool = ((IWebProcessManagerService)localObject1).preloadSonicSession(localArrayList);
+    SLog.a("PromoteWidgetController", "preloadSonicSession() load url %s: return %b.", this.c, Boolean.valueOf(bool));
+    return bool;
   }
   
   protected boolean a(long paramLong)
@@ -209,7 +203,6 @@ public class PromoteWidgetController
   
   public boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, IVideoView paramIVideoView, boolean paramBoolean)
   {
-    boolean bool = false;
     SLog.a("PromoteWidgetController", "handleVideoCompletion(%s, %s, %b)", paramVideoViewVideoHolder, paramIVideoView, Boolean.valueOf(paramBoolean));
     paramVideoViewVideoHolder = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGlobalHolder.a();
     int i = 0;
@@ -221,40 +214,24 @@ public class PromoteWidgetController
       }
       i += 1;
     }
-    paramBoolean = bool;
     if (j >= 0)
     {
       this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGlobalHolder.a(j);
-      paramBoolean = bool;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder != null)
+      paramVideoViewVideoHolder = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder;
+      if ((paramVideoViewVideoHolder != null) && (paramVideoViewVideoHolder.a.a().getCount() - 1 == this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder.a.c()))
       {
-        paramBoolean = bool;
-        if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder.a.a().getCount() - 1 == this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder.a.c())
+        SLog.a("PromoteWidgetController", "handleVideoCompletion() match last video!! promoteTaskId: %d, fragmentLoaded: %b", Long.valueOf(this.jdField_a_of_type_Long), Boolean.valueOf(this.jdField_a_of_type_Boolean));
+        if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Long != -1L) && (!TextUtils.isEmpty(this.c)))
         {
-          SLog.a("PromoteWidgetController", "handleVideoCompletion() match last video!! promoteTaskId: %d, fragmentLoaded: %b", Long.valueOf(this.jdField_a_of_type_Long), Boolean.valueOf(this.jdField_a_of_type_Boolean));
-          paramBoolean = bool;
-          if (this.jdField_a_of_type_Boolean)
-          {
-            paramBoolean = bool;
-            if (this.jdField_a_of_type_Long != -1L)
-            {
-              paramBoolean = bool;
-              if (!TextUtils.isEmpty(this.c))
-              {
-                bool = a(this.jdField_a_of_type_Long);
-                paramBoolean = bool;
-                if (!bool)
-                {
-                  this.jdField_a_of_type_Long = -1L;
-                  paramBoolean = bool;
-                }
-              }
-            }
+          paramBoolean = a(this.jdField_a_of_type_Long);
+          if (!paramBoolean) {
+            this.jdField_a_of_type_Long = -1L;
           }
+          return paramBoolean;
         }
       }
     }
-    return paramBoolean;
+    return false;
   }
   
   public boolean b()
@@ -266,12 +243,13 @@ public class PromoteWidgetController
     this.b = "";
     this.jdField_a_of_type_Long = -1L;
     this.jdField_a_of_type_JavaLangString = "";
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder != null)
+    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder;
+    if (localObject != null)
     {
-      XViewPager localXViewPager = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder.a();
-      if (localXViewPager.c() < localXViewPager.a().getCount() - 1)
+      localObject = ((StoryPlayerGroupHolder)localObject).a();
+      if (((XViewPager)localObject).c() < ((XViewPager)localObject).a().getCount() - 1)
       {
-        localXViewPager.setCurrentItem(localXViewPager.c() + 1, true);
+        ((XViewPager)localObject).setCurrentItem(((XViewPager)localObject).c() + 1, true);
         return true;
       }
       this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGlobalHolder.a().finish();
@@ -298,7 +276,7 @@ public class PromoteWidgetController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.PromoteWidgetController
  * JD-Core Version:    0.7.0.1
  */

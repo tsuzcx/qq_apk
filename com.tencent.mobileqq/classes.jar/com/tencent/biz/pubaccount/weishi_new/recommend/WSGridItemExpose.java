@@ -22,7 +22,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Map<Ljava.lang.Integer;LUserGrowth.stSimpleMetaFeed;>;
-import java.util.Map<Ljava.lang.Integer;Ljava.lang.String;>;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.os.MqqHandler;
@@ -47,7 +46,12 @@ public class WSGridItemExpose
   {
     if ((paramstSimpleMetaFeed.video_type != 1) && (paramstSimpleMetaFeed.video_type != 6))
     {
-      WSLog.e("WSFeedsItemExposeLog", "[WSGridItemExpose.java][handleOnScrollForReport] mSubTabId:" + this.jdField_a_of_type_JavaLangString + ", position:" + paramInt);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[WSGridItemExpose.java][handleOnScrollForReport] mSubTabId:");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(", position:");
+      localStringBuilder.append(paramInt);
+      WSLog.e("WSFeedsItemExposeLog", localStringBuilder.toString());
       WSGridBeaconReport.a("gzh_exposure", paramstSimpleMetaFeed, paramstReportItem, 0, this.jdField_a_of_type_JavaLangString);
     }
     this.b.put(Integer.valueOf(paramInt), paramstSimpleMetaFeed);
@@ -66,15 +70,16 @@ public class WSGridItemExpose
     if ((localstH5OpInfo != null) && (localstH5OpInfo.type > 0))
     {
       stReportItem localstReportItem = UserActionReportPresenter.a(paramstSimpleMetaFeed, paramInteger.intValue());
-      if (localstH5OpInfo.type == 1) {}
-      for (localstReportItem.pagetype = 9;; localstReportItem.pagetype = 14)
-      {
-        localstReportItem.optype = 6;
-        WSReportDc00898.a(6, localstH5OpInfo.type, paramInteger.intValue(), paramstSimpleMetaFeed.h5_op_info.id);
-        WSGridBeaconReport.a("gzh_exposure", 0, paramstSimpleMetaFeed, this.jdField_a_of_type_JavaLangString);
-        WSLog.a("weishi-report", "luopan report H5");
-        return;
+      if (localstH5OpInfo.type == 1) {
+        localstReportItem.pagetype = 9;
+      } else {
+        localstReportItem.pagetype = 14;
       }
+      localstReportItem.optype = 6;
+      WSReportDc00898.a(6, localstH5OpInfo.type, paramInteger.intValue(), paramstSimpleMetaFeed.h5_op_info.id);
+      WSGridBeaconReport.a("gzh_exposure", 0, paramstSimpleMetaFeed, this.jdField_a_of_type_JavaLangString);
+      WSLog.a("weishi-report", "luopan report H5");
+      return;
     }
     if (paramstSimpleMetaFeed.video_type == 6)
     {
@@ -87,10 +92,11 @@ public class WSGridItemExpose
   
   public static void a(HashMap<Integer, stSimpleMetaFeed> paramHashMap, String paramString)
   {
-    if ((paramHashMap == null) || (paramHashMap.size() <= 0)) {}
-    for (;;)
+    if (paramHashMap != null)
     {
-      return;
+      if (paramHashMap.size() <= 0) {
+        return;
+      }
       paramHashMap = paramHashMap.entrySet().iterator();
       while (paramHashMap.hasNext())
       {
@@ -109,120 +115,114 @@ public class WSGridItemExpose
   
   private void a(Map<Integer, stSimpleMetaFeed> paramMap, Map<Integer, String> paramMap1)
   {
-    Object localObject2 = new StringBuilder();
     Object localObject1 = new StringBuilder();
-    Object localObject4;
+    StringBuilder localStringBuilder1 = new StringBuilder();
     Object localObject3;
+    Object localObject2;
     if (paramMap.size() > 0)
     {
       paramMap = paramMap.entrySet().iterator();
       while (paramMap.hasNext())
       {
-        localObject4 = (Map.Entry)paramMap.next();
-        localObject3 = (Integer)((Map.Entry)localObject4).getKey();
-        localObject4 = (stSimpleMetaFeed)((Map.Entry)localObject4).getValue();
-        a((stSimpleMetaFeed)localObject4, (Integer)localObject3);
-        localObject3 = WeishiUtils.a((stSimpleMetaFeed)localObject4);
+        localObject3 = (Map.Entry)paramMap.next();
+        localObject2 = (Integer)((Map.Entry)localObject3).getKey();
+        localObject3 = (stSimpleMetaFeed)((Map.Entry)localObject3).getValue();
+        a((stSimpleMetaFeed)localObject3, (Integer)localObject2);
+        localObject2 = WeishiUtils.a((stSimpleMetaFeed)localObject3);
+        if (!TextUtils.isEmpty((CharSequence)localObject2))
+        {
+          ((StringBuilder)localObject1).append((String)localObject2);
+          ((StringBuilder)localObject1).append("_");
+          localStringBuilder1.append("0");
+          localStringBuilder1.append("_");
+        }
+      }
+      paramMap = (Map<Integer, stSimpleMetaFeed>)localObject1;
+      if (((StringBuilder)localObject1).length() > 1) {
+        paramMap = new StringBuilder(((StringBuilder)localObject1).substring(0, ((StringBuilder)localObject1).length() - 1));
+      }
+      localObject1 = paramMap;
+      localObject2 = localStringBuilder1;
+      if (localStringBuilder1.length() > 1)
+      {
+        localObject2 = new StringBuilder(localStringBuilder1.substring(0, localStringBuilder1.length() - 1));
+        localObject1 = paramMap;
+      }
+    }
+    else
+    {
+      WSLog.c("weishi-report", "推荐上报的feeds为0个");
+      localObject2 = localStringBuilder1;
+    }
+    if (paramMap1.size() > 0)
+    {
+      localStringBuilder1 = new StringBuilder();
+      paramMap = paramMap1.entrySet().iterator();
+      while (paramMap.hasNext())
+      {
+        localObject3 = (Map.Entry)paramMap.next();
+        paramMap1 = (Integer)((Map.Entry)localObject3).getKey();
+        localObject3 = (String)((Map.Entry)localObject3).getValue();
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("898实时上报:");
+        localStringBuilder2.append((String)localObject3);
+        localStringBuilder2.append(", upos:");
+        localStringBuilder2.append(paramMap1);
+        WSLog.a("weishi-report", localStringBuilder2.toString());
         if (!TextUtils.isEmpty((CharSequence)localObject3))
         {
-          ((StringBuilder)localObject2).append((String)localObject3);
-          ((StringBuilder)localObject2).append("_");
-          ((StringBuilder)localObject1).append("0");
-          ((StringBuilder)localObject1).append("_");
+          localStringBuilder1.append((String)localObject3);
+          localStringBuilder1.append("_");
         }
       }
-      if (((StringBuilder)localObject2).length() <= 1) {
-        break label503;
+      paramMap = localStringBuilder1;
+      if (localStringBuilder1.length() > 1) {
+        paramMap = new StringBuilder(localStringBuilder1.substring(0, localStringBuilder1.length() - 1));
       }
+      paramMap1 = new HashMap();
+      paramMap1.put("feedid", paramMap.toString());
+      paramMap1.put("cover_type", ((StringBuilder)localObject1).toString());
+      paramMap1.put("dynamic_cover", ((StringBuilder)localObject2).toString());
+      paramMap = new JSONObject(paramMap1);
+      paramMap1 = new StringBuilder();
+      paramMap1.append("jsonObj:");
+      paramMap1.append(paramMap);
+      WSLog.c("weishi-report", paramMap1.toString());
+      WSReportDc00898.a(303, paramMap.toString());
+      return;
     }
-    label486:
-    label503:
-    for (paramMap = new StringBuilder(((StringBuilder)localObject2).substring(0, ((StringBuilder)localObject2).length() - 1));; paramMap = (Map<Integer, stSimpleMetaFeed>)localObject2)
-    {
-      if (((StringBuilder)localObject1).length() > 1)
-      {
-        localObject2 = new StringBuilder(((StringBuilder)localObject1).substring(0, ((StringBuilder)localObject1).length() - 1));
-        localObject1 = paramMap;
-        paramMap = (Map<Integer, stSimpleMetaFeed>)localObject2;
-      }
-      for (;;)
-      {
-        if (paramMap1.size() > 0)
-        {
-          localObject2 = new StringBuilder();
-          paramMap1 = paramMap1.entrySet().iterator();
-          for (;;)
-          {
-            if (paramMap1.hasNext())
-            {
-              localObject4 = (Map.Entry)paramMap1.next();
-              localObject3 = (Integer)((Map.Entry)localObject4).getKey();
-              localObject4 = (String)((Map.Entry)localObject4).getValue();
-              WSLog.a("weishi-report", "898实时上报:" + (String)localObject4 + ", upos:" + localObject3);
-              if (!TextUtils.isEmpty((CharSequence)localObject4))
-              {
-                ((StringBuilder)localObject2).append((String)localObject4);
-                ((StringBuilder)localObject2).append("_");
-                continue;
-                WSLog.c("weishi-report", "推荐上报的feeds为0个");
-                paramMap = (Map<Integer, stSimpleMetaFeed>)localObject1;
-                localObject1 = localObject2;
-                break;
-              }
-            }
-          }
-          if (((StringBuilder)localObject2).length() <= 1) {
-            break label486;
-          }
-        }
-        for (paramMap1 = new StringBuilder(((StringBuilder)localObject2).substring(0, ((StringBuilder)localObject2).length() - 1));; paramMap1 = (Map<Integer, String>)localObject2)
-        {
-          localObject2 = new HashMap();
-          ((Map)localObject2).put("feedid", paramMap1.toString());
-          ((Map)localObject2).put("cover_type", ((StringBuilder)localObject1).toString());
-          ((Map)localObject2).put("dynamic_cover", paramMap.toString());
-          paramMap = new JSONObject((Map)localObject2);
-          WSLog.c("weishi-report", "jsonObj:" + paramMap);
-          WSReportDc00898.a(303, paramMap.toString());
-          return;
-          WSLog.c("weishi-report", "898上报的feeds为0个");
-          return;
-        }
-        localObject2 = paramMap;
-        paramMap = (Map<Integer, stSimpleMetaFeed>)localObject1;
-        localObject1 = localObject2;
-      }
-    }
+    WSLog.c("weishi-report", "898上报的feeds为0个");
   }
   
   private static void b(stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt, String paramString)
   {
     if (paramstSimpleMetaFeed != null)
     {
-      localObject = paramstSimpleMetaFeed.cardInfo;
+      Object localObject = paramstSimpleMetaFeed.cardInfo;
       if (localObject != null)
       {
         localObject = ((stCardInfo)localObject).collectionCardInfo;
         if (localObject != null)
         {
           localObject = ((stCollectionCardInfo)localObject).collectionList;
-          if (localObject != null) {
-            break label40;
+          if (localObject == null) {
+            return;
           }
+          StringBuilder localStringBuilder = new StringBuilder();
+          int j;
+          for (int i = 0; i < ((ArrayList)localObject).size(); i = j)
+          {
+            j = i + 1;
+            localStringBuilder.append(j);
+            localStringBuilder.append("_");
+            localStringBuilder.append(((stCollection)((ArrayList)localObject).get(i)).cid);
+            localStringBuilder.append(",");
+          }
+          localObject = localStringBuilder.toString();
+          WSGridBeaconReport.a(paramInt, paramstSimpleMetaFeed, ((String)localObject).substring(0, ((String)localObject).length() - 1), paramString);
         }
       }
     }
-    return;
-    label40:
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < ((ArrayList)localObject).size())
-    {
-      localStringBuilder.append(i + 1).append("_").append(((stCollection)((ArrayList)localObject).get(i)).cid).append(",");
-      i += 1;
-    }
-    Object localObject = localStringBuilder.toString();
-    WSGridBeaconReport.a(paramInt, paramstSimpleMetaFeed, ((String)localObject).substring(0, ((String)localObject).length() - 1), paramString);
   }
   
   private void d()
@@ -239,8 +239,10 @@ public class WSGridItemExpose
     }
     catch (Exception localException)
     {
-      WSLog.b("WSFeedsItemExposeLog", "HandlerThread Exception.");
+      label46:
+      break label46;
     }
+    WSLog.b("WSFeedsItemExposeLog", "HandlerThread Exception.");
   }
   
   public int a()
@@ -255,10 +257,11 @@ public class WSGridItemExpose
   
   public void a(stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    if (localHandler == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new WSGridItemExpose.1(this, paramInt, paramstSimpleMetaFeed));
+    localHandler.post(new WSGridItemExpose.1(this, paramInt, paramstSimpleMetaFeed));
   }
   
   public void a(List<stSimpleMetaFeed> paramList, boolean paramBoolean, int paramInt)
@@ -266,20 +269,27 @@ public class WSGridItemExpose
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
       return;
     }
-    WSLog.e("WSFeedsItemExposeLog", "[WSGridItemExpose.java][exposeRefreshCard] mSubTabId:" + this.jdField_a_of_type_JavaLangString + ", lastVisiblePosition:" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSGridItemExpose.java][exposeRefreshCard] mSubTabId:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", lastVisiblePosition:");
+    localStringBuilder.append(paramInt);
+    WSLog.e("WSFeedsItemExposeLog", localStringBuilder.toString());
     this.jdField_a_of_type_AndroidOsHandler.post(new WSGridItemExpose.2(this, paramInt, paramList, paramBoolean));
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilWSHandlerThread != null)
+    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilWSHandlerThread;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilWSHandlerThread.a();
+      ((WSHandlerThread)localObject).a();
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilWSHandlerThread = null;
     }
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    localObject = this.jdField_a_of_type_AndroidOsHandler;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      ((Handler)localObject).removeCallbacksAndMessages(null);
       this.jdField_a_of_type_AndroidOsHandler = null;
     }
   }
@@ -291,7 +301,7 @@ public class WSGridItemExpose
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.WSGridItemExpose
  * JD-Core Version:    0.7.0.1
  */

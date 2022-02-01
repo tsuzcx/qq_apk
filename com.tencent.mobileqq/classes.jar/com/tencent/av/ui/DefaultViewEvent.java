@@ -23,7 +23,7 @@ public class DefaultViewEvent
       AVUtil.a(this.jdField_a_of_type_JavaLangString, 0);
     }
     if ((paramRelativeLayout instanceof QavMenuBaseView)) {
-      ((QavMenuBaseView)paramRelativeLayout).b(paramLong, paramBoolean);
+      ((QavMenuBaseView)paramRelativeLayout).a(paramLong, paramBoolean);
     }
   }
   
@@ -31,13 +31,13 @@ public class DefaultViewEvent
   {
     this.jdField_a_of_type_Boolean = false;
     if ((paramRelativeLayout instanceof QavMenuBaseView)) {
-      ((QavMenuBaseView)paramRelativeLayout).d(paramLong, paramBoolean);
+      ((QavMenuBaseView)paramRelativeLayout).c(paramLong, paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.DefaultViewEvent
  * JD-Core Version:    0.7.0.1
  */

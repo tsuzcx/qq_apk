@@ -41,21 +41,30 @@ public class SayHelloBoxItemBuilder$MsgHeaderAdapter
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (int i = 0;; i = this.jdField_a_of_type_JavaUtilList.size())
-    {
-      int j = i;
-      if (i > this.jdField_a_of_type_Int) {
-        j = this.jdField_a_of_type_Int;
-      }
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    int i;
+    if (localList == null) {
+      i = 0;
+    } else {
+      i = localList.size();
+    }
+    int j = this.jdField_a_of_type_Int;
+    if (i > j) {
       return j;
     }
+    return i;
   }
   
   public Object getItem(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (int i = 0; (paramInt > 0) && (paramInt < i); i = this.jdField_a_of_type_JavaUtilList.size()) {
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    int i;
+    if (localList == null) {
+      i = 0;
+    } else {
+      i = localList.size();
+    }
+    if ((paramInt > 0) && (paramInt < i)) {
       return this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
     return null;
@@ -68,28 +77,27 @@ public class SayHelloBoxItemBuilder$MsgHeaderAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    View localView = paramView;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561177, null);
-      paramView.setLayoutParams(new AbsListView.LayoutParams(this.b, this.b));
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561040, null);
+      int i = this.b;
+      localView.setLayoutParams(new AbsListView.LayoutParams(i, i));
     }
-    for (;;)
+    paramView = (CustomImgView)localView;
+    MessageRecord localMessageRecord = (MessageRecord)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if ((localMessageRecord != null) && (!TextUtils.isEmpty(localMessageRecord.senderuin)))
     {
-      CustomImgView localCustomImgView = (CustomImgView)paramView;
-      MessageRecord localMessageRecord = (MessageRecord)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      if ((localMessageRecord != null) && (!TextUtils.isEmpty(localMessageRecord.senderuin)))
-      {
-        localCustomImgView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityRecentSayHelloBoxItemBuilder.a.a(localMessageRecord.istroop, localMessageRecord.senderuin));
-        paramView.setTag(-1, localMessageRecord.senderuin);
-      }
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
+      paramView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityRecentSayHelloBoxItemBuilder.a.a(localMessageRecord.istroop, localMessageRecord.senderuin));
+      localView.setTag(-1, localMessageRecord.senderuin);
     }
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.SayHelloBoxItemBuilder.MsgHeaderAdapter
  * JD-Core Version:    0.7.0.1
  */

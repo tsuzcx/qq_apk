@@ -1,84 +1,65 @@
 package com.tencent.biz.troop;
 
+import NearbyGroup.RspGetAreaList;
+import NearbyGroup.RspGetGroupInArea;
+import NearbyGroup.RspGetNearbyGroup;
 import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbyVideoUtils;
-import com.tencent.mobileqq.nearby.business.NearbyCardHandler;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.LBSObserver;
+import tencent.im.oidb.cmd0x7f5.cmd0x7f5.GroupInfo;
 
 class TroopMemberApiService$11
-  extends TransProcessorHandler
+  extends LBSObserver
 {
   TroopMemberApiService$11(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, RspGetNearbyGroup paramRspGetNearbyGroup)
   {
-    FileMsg localFileMsg;
-    Bundle localBundle;
-    if ((TroopMemberApiService.k(this.a) instanceof QQAppInterface))
-    {
-      localFileMsg = (FileMsg)paramMessage.obj;
-      localBundle = new Bundle();
-      localBundle.putInt("seq", this.a.c);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 8);
+    localBundle.putInt("iFilterId", paramInt);
+    localBundle.putBoolean("isSuccess", paramBoolean1);
+    localBundle.putSerializable("data", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2), paramRspGetNearbyGroup });
+    localBundle.putSerializable("observer_type", Integer.valueOf(1));
+    this.a.a(3, localBundle);
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt, cmd0x7f5.GroupInfo paramGroupInfo)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 28);
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    if (paramGroupInfo != null) {
+      localBundle.putByteArray("groupInfo", paramGroupInfo.toByteArray());
     }
-    switch (paramMessage.what)
-    {
-    case 1004: 
-    default: 
-    case 1003: 
-      do
-      {
-        do
-        {
-          return;
-          if (localFileMsg.fileType != 64) {
-            break;
-          }
-          this.a.jdField_a_of_type_Int = NearbyPeoplePhotoUploadProcessor.mPhotoId;
-        } while (this.a.jdField_a_of_type_Int == this.a.jdField_b_of_type_Int);
-        this.a.jdField_b_of_type_Int = this.a.jdField_a_of_type_Int;
-        if (QLog.isColorLevel()) {
-          QLog.i("TroopMemberApiService", 2, "mPhotoUploadHandler.handleMessage(), static avatar upload success. photoId = " + this.a.jdField_a_of_type_Int);
-        }
-        paramMessage = (NearbyCardHandler)((QQAppInterface)TroopMemberApiService.l(this.a)).getBusinessHandler(BusinessHandlerFactory.NEARBY_CARD_HANDLER);
-        if (paramMessage != null) {
-          paramMessage.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, true);
-        }
-        localBundle.putInt("head_id", this.a.jdField_a_of_type_Int);
-        localBundle.putString("video_id", this.a.jdField_b_of_type_JavaLangString);
-        localBundle.putBoolean("isSuccess", true);
-        this.a.a(75, localBundle);
-        return;
-        if (localFileMsg.fileType == 39)
-        {
-          this.a.jdField_b_of_type_JavaLangString = ((NearbyPeoplePhotoUploadProcessor)localFileMsg.processor).mVideoId;
-          if (QLog.isColorLevel()) {
-            QLog.i("TroopMemberApiService", 2, "mPhotoUploadHandler.handleMessage(), big video upload success. videoId = " + this.a.jdField_b_of_type_JavaLangString);
-          }
-          NearbyVideoUtils.a((QQAppInterface)TroopMemberApiService.m(this.a), this.a.jdField_a_of_type_JavaLangString);
-          return;
-        }
-        localBundle.putBoolean("isSuccess", false);
-        this.a.a(75, localBundle);
-      } while (!QLog.isColorLevel());
-      QLog.i("TroopMemberApiService", 2, "mPhotoUploadHandler.handleMessage(), upload photo failed.");
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopMemberApiService", 2, "mPhotoUploadHandler.handleMessage(), upload photo failed. STATUS_SEND_ERROR");
-    }
-    localBundle.putBoolean("isSuccess", false);
-    this.a.a(75, localBundle);
+    localBundle.putInt("count", paramInt);
+    localBundle.putSerializable("observer_type", Integer.valueOf(1));
+    this.a.a(3, localBundle);
+  }
+  
+  protected void a(boolean paramBoolean1, RspGetAreaList paramRspGetAreaList, boolean paramBoolean2)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 12);
+    localBundle.putBoolean("isSuccess", paramBoolean1);
+    localBundle.putSerializable("data", new Object[] { Boolean.valueOf(paramBoolean2), paramRspGetAreaList });
+    localBundle.putSerializable("observer_type", Integer.valueOf(1));
+    this.a.a(3, localBundle);
+    localBundle.putSerializable("", paramRspGetAreaList);
+  }
+  
+  protected void a(boolean paramBoolean, RspGetGroupInArea paramRspGetGroupInArea)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 13);
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    localBundle.putSerializable("data", new Object[] { paramRspGetGroupInArea });
+    localBundle.putSerializable("observer_type", Integer.valueOf(1));
+    this.a.a(3, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiService.11
  * JD-Core Version:    0.7.0.1
  */

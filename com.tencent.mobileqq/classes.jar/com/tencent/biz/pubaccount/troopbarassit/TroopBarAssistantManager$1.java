@@ -11,7 +11,9 @@ class TroopBarAssistantManager$1
   {
     long l1 = Math.max(paramTroopBarData1.mLastMsgTime, paramTroopBarData1.mLastDraftTime);
     long l2 = Math.max(paramTroopBarData2.mLastMsgTime, paramTroopBarData2.mLastDraftTime);
-    if ((paramTroopBarData2.mIsSticky) && (!paramTroopBarData1.mIsSticky)) {}
+    boolean bool = paramTroopBarData2.mIsSticky;
+    int i = -1;
+    if ((bool) && (!paramTroopBarData1.mIsSticky)) {}
     do
     {
       do
@@ -24,20 +26,20 @@ class TroopBarAssistantManager$1
           break;
         }
       } while (paramTroopBarData2.mLastStickyTime > paramTroopBarData1.mLastStickyTime);
-      if (paramTroopBarData2.mLastStickyTime == paramTroopBarData1.mLastStickyTime) {
-        return 0;
+      if (paramTroopBarData2.mLastStickyTime != paramTroopBarData1.mLastStickyTime) {
+        return i;
       }
-      return -1;
+      break;
     } while (l1 < l2);
     if (l1 == l2) {
-      return 0;
+      i = 0;
     }
-    return -1;
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager.1
  * JD-Core Version:    0.7.0.1
  */

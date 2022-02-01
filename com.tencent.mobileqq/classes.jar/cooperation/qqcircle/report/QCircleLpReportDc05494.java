@@ -65,25 +65,23 @@ public class QCircleLpReportDc05494
   
   public static void report(ArrayList<QCircleTaskReportInfo> paramArrayList)
   {
-    if (paramArrayList == null) {
-      RFLog.e("QCircleReportHelper_QCircleLpReportDc05494", RFLog.CLR, "taskReportInfos == null");
-    }
-    for (;;)
+    if (paramArrayList == null)
     {
+      RFLog.e("QCircleReportHelper_QCircleLpReportDc05494", RFLog.CLR, "taskReportInfos == null");
       return;
-      int i = 0;
-      while (i < paramArrayList.size())
-      {
-        QCircleTaskReportInfo localQCircleTaskReportInfo = (QCircleTaskReportInfo)paramArrayList.get(i);
-        report(localQCircleTaskReportInfo.up_source, localQCircleTaskReportInfo.up_type, localQCircleTaskReportInfo.is_video, localQCircleTaskReportInfo.txtinfo, localQCircleTaskReportInfo.lloc, localQCircleTaskReportInfo.vid, localQCircleTaskReportInfo.client_compress_pic_size, localQCircleTaskReportInfo.feedid, localQCircleTaskReportInfo.total_upload_num, localQCircleTaskReportInfo.shooting_time, localQCircleTaskReportInfo.edited_pic_size, localQCircleTaskReportInfo.place, localQCircleTaskReportInfo.up_place, localQCircleTaskReportInfo.shoot_product, localQCircleTaskReportInfo.shoot_model, localQCircleTaskReportInfo.client_compress_pic_width, localQCircleTaskReportInfo.client_compress_pic_height, localQCircleTaskReportInfo.edited_pic_width, localQCircleTaskReportInfo.edited_pic_height, localQCircleTaskReportInfo.picture_format, localQCircleTaskReportInfo.feed_tag, localQCircleTaskReportInfo.author_uin, localQCircleTaskReportInfo.shoot_place);
-        i += 1;
-      }
+    }
+    int i = 0;
+    while (i < paramArrayList.size())
+    {
+      QCircleTaskReportInfo localQCircleTaskReportInfo = (QCircleTaskReportInfo)paramArrayList.get(i);
+      report(localQCircleTaskReportInfo.up_source, localQCircleTaskReportInfo.up_type, localQCircleTaskReportInfo.is_video, localQCircleTaskReportInfo.txtinfo, localQCircleTaskReportInfo.lloc, localQCircleTaskReportInfo.vid, localQCircleTaskReportInfo.client_compress_pic_size, localQCircleTaskReportInfo.feedid, localQCircleTaskReportInfo.total_upload_num, localQCircleTaskReportInfo.shooting_time, localQCircleTaskReportInfo.edited_pic_size, localQCircleTaskReportInfo.place, localQCircleTaskReportInfo.up_place, localQCircleTaskReportInfo.shoot_product, localQCircleTaskReportInfo.shoot_model, localQCircleTaskReportInfo.client_compress_pic_width, localQCircleTaskReportInfo.client_compress_pic_height, localQCircleTaskReportInfo.edited_pic_width, localQCircleTaskReportInfo.edited_pic_height, localQCircleTaskReportInfo.picture_format, localQCircleTaskReportInfo.feed_tag, localQCircleTaskReportInfo.author_uin, localQCircleTaskReportInfo.shoot_place);
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleLpReportDc05494
  * JD-Core Version:    0.7.0.1
  */

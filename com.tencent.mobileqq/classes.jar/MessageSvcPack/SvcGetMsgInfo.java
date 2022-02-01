@@ -86,25 +86,28 @@ public final class SvcGetMsgInfo
     paramJceOutputStream.write(this.shMsgSeq, 3);
     paramJceOutputStream.write(this.strMsg, 4);
     paramJceOutputStream.write(this.uRealMsgTime, 5);
-    if (this.vMsg != null) {
-      paramJceOutputStream.write(this.vMsg, 6);
+    byte[] arrayOfByte = this.vMsg;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 6);
     }
     paramJceOutputStream.write(this.uAppShareID, 7);
     paramJceOutputStream.write(this.cFlag, 8);
-    if (this.vAppShareCookie != null) {
-      paramJceOutputStream.write(this.vAppShareCookie, 9);
+    arrayOfByte = this.vAppShareCookie;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 9);
     }
     paramJceOutputStream.write(this.lMsgUid, 10);
     paramJceOutputStream.write(this.lToUin, 11);
     paramJceOutputStream.write(this.lLastChangeTime, 12);
-    if (this.vReserved != null) {
-      paramJceOutputStream.write(this.vReserved, 13);
+    arrayOfByte = this.vReserved;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 13);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.SvcGetMsgInfo
  * JD-Core Version:    0.7.0.1
  */

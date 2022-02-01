@@ -13,39 +13,49 @@ class MainAssistObserver$23
 {
   MainAssistObserver$23(MainAssistObserver paramMainAssistObserver) {}
   
-  public void a(boolean paramBoolean, OpenID paramOpenID)
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MainAssistObserver", 2, "-->onGetOpenId, isSuccess: " + paramBoolean + " data: " + paramOpenID.toString() + " mOpenId = " + this.a.jdField_b_of_type_JavaLangString);
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.isFinishing()) || (this.a.c)) {}
-    do
+    if (QLog.isColorLevel())
     {
-      do
-      {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("-->onGetOpenId, isSuccess: ");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(" data: ");
+      localStringBuilder.append(paramOpenID.toString());
+      localStringBuilder.append(" mOpenId = ");
+      localStringBuilder.append(this.a.jdField_b_of_type_JavaLangString);
+      QLog.i("MainAssistObserver", 2, localStringBuilder.toString());
+    }
+    if (!this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.isFinishing())
+    {
+      if (this.a.c) {
         return;
-        if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.hide();
-        }
-        if (this.a.jdField_b_of_type_AndroidOsHandler != null) {
-          this.a.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-        }
-        if ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null)) {
-          break;
-        }
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.hide();
+      }
+      if (this.a.jdField_b_of_type_AndroidOsHandler != null) {
+        this.a.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      }
+      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
+      {
         if (QLog.isColorLevel()) {
           QLog.d("MainAssistObserver", 2, "openIdObserver success");
         }
-      } while ((TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) || (paramOpenID.openID.equals(this.a.jdField_b_of_type_JavaLangString)));
-      this.a.i();
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("MainAssistObserver", 2, "openIdObserver fail");
+        if ((!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) && (!paramOpenID.openID.equals(this.a.jdField_b_of_type_JavaLangString))) {
+          this.a.i();
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.d("MainAssistObserver", 2, "openIdObserver fail");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.main.MainAssistObserver.23
  * JD-Core Version:    0.7.0.1
  */

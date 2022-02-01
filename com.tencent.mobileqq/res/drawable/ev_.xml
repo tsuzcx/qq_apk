@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:drawable="@drawable/hsf" />
-    <item android:state_pressed="true" android:drawable="@drawable/hsf" />
-    <item android:drawable="@drawable/hse" />
-</selector>
+    <solid android:color="#fff5f6fa" />
+    <corners android:radius="15.0dip" />
+    <gradient android:startColor="#ffff2151" android:endColor="#ffff6d6d" android:angle="270.0" android:centerX="0.5" android:centerY="0.5" />
+</shape>

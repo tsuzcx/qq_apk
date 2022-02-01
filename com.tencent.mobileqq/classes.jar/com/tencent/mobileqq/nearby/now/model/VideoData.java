@@ -3,13 +3,14 @@ package com.tencent.mobileqq.nearby.now.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.util.ArrayList;
 
 public class VideoData
   implements Parcelable
 {
   public static final Parcelable.Creator<VideoData> CREATOR = new VideoData.1();
-  public int a;
+  public static final int a;
   public long a;
   public LocationInfo a;
   public TopicInfo a;
@@ -41,6 +42,7 @@ public class VideoData
   public long h;
   public String h;
   public int i;
+  public long i;
   public String i;
   public int j;
   public String j;
@@ -48,6 +50,12 @@ public class VideoData
   public String k;
   public int l;
   public int m;
+  public int n;
+  
+  static
+  {
+    jdField_a_of_type_Int = ((IModelUtil)QRoute.api(IModelUtil.class)).getFeedsProtocolMediaInfoTextFeeds();
+  }
   
   public VideoData()
   {
@@ -58,51 +66,48 @@ public class VideoData
   
   public VideoData(Parcel paramParcel)
   {
+    boolean bool2 = false;
     this.jdField_c_of_type_Boolean = false;
     this.jdField_d_of_type_Boolean = false;
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.jdField_b_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_b_of_type_JavaLangString = paramParcel.readString();
     this.jdField_c_of_type_JavaLangString = paramParcel.readString();
     this.jdField_d_of_type_JavaLangString = paramParcel.readString();
     this.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
+    this.jdField_c_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_Long = paramParcel.readLong();
     this.jdField_f_of_type_JavaLangString = paramParcel.readString();
-    if (paramParcel.readByte() != 0)
-    {
+    if (paramParcel.readByte() != 0) {
       bool1 = true;
-      this.jdField_a_of_type_Boolean = bool1;
-      if (paramParcel.readByte() == 0) {
-        break label229;
-      }
-    }
-    label229:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.jdField_b_of_type_Boolean = bool1;
-      this.jdField_d_of_type_Int = paramParcel.readInt();
-      this.jdField_g_of_type_JavaLangString = paramParcel.readString();
-      this.h = paramParcel.readString();
-      this.jdField_c_of_type_Long = paramParcel.readLong();
-      this.jdField_e_of_type_Long = paramParcel.readLong();
-      this.jdField_j_of_type_JavaLangString = paramParcel.readString();
-      this.k = paramParcel.readString();
-      this.jdField_g_of_type_Long = paramParcel.readLong();
-      this.i = paramParcel.readInt();
-      this.jdField_j_of_type_Int = paramParcel.readInt();
-      this.jdField_e_of_type_Int = paramParcel.readInt();
-      this.jdField_f_of_type_Int = paramParcel.readInt();
-      return;
+    } else {
       bool1 = false;
-      break;
     }
+    this.jdField_a_of_type_Boolean = bool1;
+    boolean bool1 = bool2;
+    if (paramParcel.readByte() != 0) {
+      bool1 = true;
+    }
+    this.jdField_b_of_type_Boolean = bool1;
+    this.jdField_e_of_type_Int = paramParcel.readInt();
+    this.jdField_g_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_h_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_d_of_type_Long = paramParcel.readLong();
+    this.jdField_f_of_type_Long = paramParcel.readLong();
+    this.jdField_j_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_k_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_h_of_type_Long = paramParcel.readLong();
+    this.jdField_j_of_type_Int = paramParcel.readInt();
+    this.jdField_k_of_type_Int = paramParcel.readInt();
+    this.jdField_f_of_type_Int = paramParcel.readInt();
+    this.jdField_g_of_type_Int = paramParcel.readInt();
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString.equals(""));
+    String str = this.jdField_a_of_type_JavaLangString;
+    return (str == null) || (str.equals(""));
   }
   
   public int describeContents()
@@ -112,54 +117,59 @@ public class VideoData
   
   public String toString()
   {
-    return "VideoData{id='" + this.jdField_a_of_type_JavaLangString + '\'' + ", videoUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", coverUrl='" + this.jdField_c_of_type_JavaLangString + '\'' + ", doodleUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + ", headerUrl='" + this.jdField_f_of_type_JavaLangString + '\'' + ", anchorNickName='" + this.jdField_g_of_type_JavaLangString + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VideoData{id='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", videoUrl='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", coverUrl='");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", doodleUrl='");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", headerUrl='");
+    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", anchorNickName='");
+    localStringBuilder.append(this.jdField_g_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int n = 1;
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeInt(this.jdField_b_of_type_Int);
     paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
     paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
     paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
     paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
     paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
+    paramParcel.writeInt(this.jdField_c_of_type_Int);
     paramParcel.writeLong(this.jdField_a_of_type_Long);
     paramParcel.writeString(this.jdField_f_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      paramInt = 1;
-      paramParcel.writeByte((byte)paramInt);
-      if (!this.jdField_b_of_type_Boolean) {
-        break label206;
-      }
-    }
-    label206:
-    for (paramInt = n;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeInt(this.jdField_d_of_type_Int);
-      paramParcel.writeString(this.jdField_g_of_type_JavaLangString);
-      paramParcel.writeString(this.h);
-      paramParcel.writeLong(this.jdField_c_of_type_Long);
-      paramParcel.writeLong(this.jdField_e_of_type_Long);
-      paramParcel.writeString(this.jdField_j_of_type_JavaLangString);
-      paramParcel.writeString(this.k);
-      paramParcel.writeLong(this.jdField_g_of_type_Long);
-      paramParcel.writeInt(this.i);
-      paramParcel.writeInt(this.jdField_j_of_type_Int);
-      paramParcel.writeInt(this.jdField_e_of_type_Int);
-      paramParcel.writeInt(this.jdField_f_of_type_Int);
-      return;
-      paramInt = 0;
-      break;
-    }
+    paramParcel.writeByte((byte)this.jdField_a_of_type_Boolean);
+    paramParcel.writeByte((byte)this.jdField_b_of_type_Boolean);
+    paramParcel.writeInt(this.jdField_e_of_type_Int);
+    paramParcel.writeString(this.jdField_g_of_type_JavaLangString);
+    paramParcel.writeString(this.jdField_h_of_type_JavaLangString);
+    paramParcel.writeLong(this.jdField_d_of_type_Long);
+    paramParcel.writeLong(this.jdField_f_of_type_Long);
+    paramParcel.writeString(this.jdField_j_of_type_JavaLangString);
+    paramParcel.writeString(this.jdField_k_of_type_JavaLangString);
+    paramParcel.writeLong(this.jdField_h_of_type_Long);
+    paramParcel.writeInt(this.jdField_j_of_type_Int);
+    paramParcel.writeInt(this.jdField_k_of_type_Int);
+    paramParcel.writeInt(this.jdField_f_of_type_Int);
+    paramParcel.writeInt(this.jdField_g_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.model.VideoData
  * JD-Core Version:    0.7.0.1
  */

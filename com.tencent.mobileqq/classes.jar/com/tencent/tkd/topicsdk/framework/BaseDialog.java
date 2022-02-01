@@ -56,17 +56,19 @@ public abstract class BaseDialog
         Intrinsics.checkExpressionValueIsNotNull(localObject2, "decorView.context");
         ((LinearLayout)localObject1).setBackgroundColor(((Context)localObject2).getResources().getColor(R.color.a));
         paramBundle = paramBundle.getDecorView();
-        if (paramBundle == null) {
-          throw new TypeCastException("null cannot be cast to non-null type android.widget.FrameLayout");
+        if (paramBundle != null)
+        {
+          ((FrameLayout)paramBundle).addView((View)localObject1, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
+          return;
         }
-        ((FrameLayout)paramBundle).addView((View)localObject1, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
+        throw new TypeCastException("null cannot be cast to non-null type android.widget.FrameLayout");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.framework.BaseDialog
  * JD-Core Version:    0.7.0.1
  */

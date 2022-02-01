@@ -7,8 +7,9 @@ class HorizontalListView$2
   
   public void run()
   {
-    this.this$0.mTouchMode = -1;
-    HorizontalListView.access$100(this.this$0);
+    HorizontalListView localHorizontalListView = this.this$0;
+    localHorizontalListView.mTouchMode = -1;
+    HorizontalListView.access$100(localHorizontalListView);
     if (!this.this$0.mDataChanged) {
       this.val$performClick.run();
     }
@@ -17,7 +18,7 @@ class HorizontalListView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.HorizontalListView.2
  * JD-Core Version:    0.7.0.1
  */

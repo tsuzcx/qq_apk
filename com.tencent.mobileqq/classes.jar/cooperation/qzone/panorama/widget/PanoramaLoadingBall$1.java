@@ -21,20 +21,20 @@ class PanoramaLoadingBall$1
       if (PanoramaLoadingBall.access$000(this.this$0)) {
         PanoramaLoadingBall.access$102(this.this$0, 60.0F);
       }
-      if (PanoramaLoadingBall.access$200(this.this$0) == 0) {
-        this.this$0.setRotationX(PanoramaLoadingBall.access$100(this.this$0));
+      if (PanoramaLoadingBall.access$200(this.this$0) == 0)
+      {
+        paramMessage = this.this$0;
+        paramMessage.setRotationX(PanoramaLoadingBall.access$100(paramMessage));
+        return;
       }
+      paramMessage = this.this$0;
+      paramMessage.setRotationY(PanoramaLoadingBall.access$100(paramMessage));
     }
-    else
-    {
-      return;
-    }
-    this.this$0.setRotationY(PanoramaLoadingBall.access$100(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.panorama.widget.PanoramaLoadingBall.1
  * JD-Core Version:    0.7.0.1
  */

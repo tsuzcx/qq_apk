@@ -29,30 +29,28 @@ public class g
   
   public Response.Builder body(ResponseBody paramResponseBody)
   {
-    if (paramResponseBody != null) {}
-    try
-    {
-      Object localObject = paramResponseBody.source();
-      if (localObject != null)
+    if (paramResponseBody != null) {
+      try
       {
-        Buffer localBuffer = new Buffer();
-        ((BufferedSource)localObject).readAll(localBuffer);
-        localObject = this.a.body(new e(paramResponseBody, localBuffer));
-        return localObject;
+        Object localObject = paramResponseBody.source();
+        if (localObject != null)
+        {
+          Buffer localBuffer = new Buffer();
+          ((BufferedSource)localObject).readAll(localBuffer);
+          localObject = this.a.body(new e(paramResponseBody, localBuffer));
+          return localObject;
+        }
       }
-    }
-    catch (IOException localIOException)
-    {
-      Logger.INSTANCE.exception("QAPM_Impl_ResponseBuilderExtension", "IOException reading from source: ", localIOException);
-      return this.a.body(paramResponseBody);
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      for (;;)
+      catch (IllegalStateException localIllegalStateException)
       {
         Logger.INSTANCE.exception("QAPM_Impl_ResponseBuilderExtension", "IllegalStateException reading from source: ", localIllegalStateException);
       }
+      catch (IOException localIOException)
+      {
+        Logger.INSTANCE.exception("QAPM_Impl_ResponseBuilderExtension", "IOException reading from source: ", localIOException);
+      }
     }
+    return this.a.body(paramResponseBody);
   }
   
   public Response build()
@@ -117,7 +115,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.okhttp2.g
  * JD-Core Version:    0.7.0.1
  */

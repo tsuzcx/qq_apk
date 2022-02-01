@@ -9,7 +9,7 @@ class EmoticonPanelFavHelper$5
 {
   EmoticonPanelFavHelper$5(EmoticonPanelFavHelper paramEmoticonPanelFavHelper) {}
   
-  public void onUpdateFavData(boolean paramBoolean, Object paramObject)
+  protected void onUpdateFavData(boolean paramBoolean, Object paramObject)
   {
     if (paramBoolean) {
       this.this$0.updateFavEmoticonPanel();
@@ -21,7 +21,7 @@ class EmoticonPanelFavHelper$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelFavHelper.5
  * JD-Core Version:    0.7.0.1
  */

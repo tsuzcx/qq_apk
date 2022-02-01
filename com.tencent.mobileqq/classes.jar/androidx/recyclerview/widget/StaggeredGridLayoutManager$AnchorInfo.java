@@ -18,12 +18,13 @@ class StaggeredGridLayoutManager$AnchorInfo
   
   void assignCoordinateFromPadding()
   {
-    if (this.mLayoutFromEnd) {}
-    for (int i = this.this$0.mPrimaryOrientation.getEndAfterPadding();; i = this.this$0.mPrimaryOrientation.getStartAfterPadding())
-    {
-      this.mOffset = i;
-      return;
+    int i;
+    if (this.mLayoutFromEnd) {
+      i = this.this$0.mPrimaryOrientation.getEndAfterPadding();
+    } else {
+      i = this.this$0.mPrimaryOrientation.getStartAfterPadding();
     }
+    this.mOffset = i;
   }
   
   void assignCoordinateFromPadding(int paramInt)
@@ -43,15 +44,17 @@ class StaggeredGridLayoutManager$AnchorInfo
     this.mLayoutFromEnd = false;
     this.mInvalidateOffsets = false;
     this.mValid = false;
-    if (this.mSpanReferenceLines != null) {
-      Arrays.fill(this.mSpanReferenceLines, -1);
+    int[] arrayOfInt = this.mSpanReferenceLines;
+    if (arrayOfInt != null) {
+      Arrays.fill(arrayOfInt, -1);
     }
   }
   
   void saveSpanReferenceLines(StaggeredGridLayoutManager.Span[] paramArrayOfSpan)
   {
     int j = paramArrayOfSpan.length;
-    if ((this.mSpanReferenceLines == null) || (this.mSpanReferenceLines.length < j)) {
+    int[] arrayOfInt = this.mSpanReferenceLines;
+    if ((arrayOfInt == null) || (arrayOfInt.length < j)) {
       this.mSpanReferenceLines = new int[this.this$0.mSpans.length];
     }
     int i = 0;
@@ -64,7 +67,7 @@ class StaggeredGridLayoutManager$AnchorInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.StaggeredGridLayoutManager.AnchorInfo
  * JD-Core Version:    0.7.0.1
  */

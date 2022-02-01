@@ -69,19 +69,20 @@ public class SwipeBackLayout
   
   private void bringToBackground()
   {
-    if (this.mCallback != null)
+    SwipeBackLayout.Callback localCallback = this.mCallback;
+    if (localCallback != null)
     {
-      this.mCallback.onMoveAppBrandToBack();
+      localCallback.onMoveAppBrandToBack();
       resetCaptureViewState();
     }
   }
   
   private void drawScrim(Canvas paramCanvas, View paramView)
   {
-    int i = (int)(((this.mScrimColor & 0xFF000000) >>> 24) * this.mScrimOpacity);
-    int j = this.mScrimColor;
+    int i = this.mScrimColor;
+    int j = (int)(((0xFF000000 & i) >>> 24) * this.mScrimOpacity);
     paramCanvas.clipRect(0, 0, paramView.getLeft(), getHeight());
-    paramCanvas.drawColor(i << 24 | j & 0xFFFFFF);
+    paramCanvas.drawColor(i & 0xFFFFFF | j << 24);
   }
   
   private void drawShadow(Canvas paramCanvas, View paramView)
@@ -112,7 +113,8 @@ public class SwipeBackLayout
   {
     super.computeScroll();
     this.mScrimOpacity = (1.0F - this.mScrollPercent);
-    if ((this.mViewDragHelper != null) && (this.mViewDragHelper.continueSettling(true))) {
+    ViewDragHelper localViewDragHelper = this.mViewDragHelper;
+    if ((localViewDragHelper != null) && (localViewDragHelper.continueSettling(true))) {
       ViewCompat.postInvalidateOnAnimation(this);
     }
   }
@@ -128,30 +130,27 @@ public class SwipeBackLayout
       this.mDownX = j;
       this.mDownY = k;
     }
-    for (;;)
+    else if (i == 1)
     {
-      return super.dispatchTouchEvent(paramMotionEvent);
-      if (i == 1)
+      long l = SystemClock.uptimeMillis();
+      TouchInfo localTouchInfo = new TouchInfo(this.mDownX, this.mDownY, j, k, l - this.mDownTime);
+      touchInfoList.offer(localTouchInfo);
+      while (touchInfoList.size() > 10) {
+        touchInfoList.poll();
+      }
+      try
       {
-        long l = SystemClock.uptimeMillis();
-        TouchInfo localTouchInfo = new TouchInfo(this.mDownX, this.mDownY, j, k, l - this.mDownTime);
-        touchInfoList.offer(localTouchInfo);
-        while (touchInfoList.size() > 10) {
-          touchInfoList.poll();
-        }
-        try
-        {
-          ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).updateTouchInfoList(new ArrayList(touchInfoList));
-        }
-        catch (Throwable localThrowable)
-        {
-          QMLog.e("SwipeBackLayout", "dispatchTouchEvent-updateTouchInfoList-failed", localThrowable);
-        }
+        ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).updateTouchInfoList(new ArrayList(touchInfoList));
+      }
+      catch (Throwable localThrowable)
+      {
+        QMLog.e("SwipeBackLayout", "dispatchTouchEvent-updateTouchInfoList-failed", localThrowable);
       }
     }
+    return super.dispatchTouchEvent(paramMotionEvent);
   }
   
-  public boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
+  protected boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
   {
     return super.drawChild(paramCanvas, paramView, paramLong);
   }
@@ -161,7 +160,7 @@ public class SwipeBackLayout
     ThreadManager.getUIHandler().post(new SwipeBackLayout.1(this));
   }
   
-  public void onFinishInflate()
+  protected void onFinishInflate()
   {
     super.onFinishInflate();
     if (getChildCount() == 1)
@@ -174,49 +173,47 @@ public class SwipeBackLayout
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
     if (!this.mEnable) {
       return false;
     }
     int i = (int)paramMotionEvent.getX();
     int j = (int)paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
+    int k = paramMotionEvent.getAction();
+    boolean bool2 = true;
+    boolean bool1 = true;
+    if (k != 0)
     {
-    default: 
-      bool1 = false;
-    }
-    for (;;)
-    {
-      this.lastX = i;
-      this.lastY = j;
-      if (!bool1) {
-        break;
-      }
-      if ((this.mViewDragHelper == null) || (!this.mAllowedSliding)) {
-        break label181;
-      }
-      return this.mViewDragHelper.shouldInterceptTouchEvent(paramMotionEvent);
-      if (Math.abs(i) < DisplayUtil.getDensity(getContext()) * 30.0F) {}
-      for (bool1 = bool2;; bool1 = false)
-      {
-        this.mAllowedSliding = bool1;
-        break;
-      }
-      int k = this.lastX;
-      int m = this.lastY;
-      if (Math.abs(i - k) <= Math.abs(j - m))
+      if ((k == 1) || (k != 2)) {}
+      int m;
+      do
       {
         bool1 = false;
-        continue;
+        break;
+        k = this.lastX;
+        m = this.lastY;
+      } while (Math.abs(i - k) <= Math.abs(j - m));
+      bool1 = bool2;
+    }
+    else
+    {
+      if (Math.abs(i) >= DisplayUtil.getDensity(getContext()) * 30.0F) {
         bool1 = false;
       }
+      this.mAllowedSliding = bool1;
     }
-    label181:
+    this.lastX = i;
+    this.lastY = j;
+    if (!bool1) {
+      return false;
+    }
+    ViewDragHelper localViewDragHelper = this.mViewDragHelper;
+    if ((localViewDragHelper != null) && (this.mAllowedSliding)) {
+      return localViewDragHelper.shouldInterceptTouchEvent(paramMotionEvent);
+    }
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     this.mContentWidth = this.mContentView.getMeasuredWidth();
@@ -228,12 +225,14 @@ public class SwipeBackLayout
     if (!this.mEnable) {
       return false;
     }
-    if ((this.mPageGuestProxy != null) && (this.mAllowedSliding)) {
-      this.mPageGuestProxy.onProcessTouchEvent(paramMotionEvent);
+    Object localObject = this.mPageGuestProxy;
+    if ((localObject != null) && (this.mAllowedSliding)) {
+      ((PageGestureProxy)localObject).onProcessTouchEvent(paramMotionEvent);
     }
-    if ((this.mViewDragHelper != null) && (this.mAllowedSliding))
+    localObject = this.mViewDragHelper;
+    if ((localObject != null) && (this.mAllowedSliding))
     {
-      this.mViewDragHelper.processTouchEvent(paramMotionEvent);
+      ((ViewDragHelper)localObject).processTouchEvent(paramMotionEvent);
       ViewCompat.postInvalidateOnAnimation(this);
       return true;
     }
@@ -252,8 +251,9 @@ public class SwipeBackLayout
   
   public void setScrollDirection(int paramInt)
   {
-    if (this.mViewDragHelper != null) {
-      this.mViewDragHelper.setScrollDirection(paramInt);
+    ViewDragHelper localViewDragHelper = this.mViewDragHelper;
+    if (localViewDragHelper != null) {
+      localViewDragHelper.setScrollDirection(paramInt);
     }
   }
   
@@ -278,7 +278,7 @@ public class SwipeBackLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.swipe.SwipeBackLayout
  * JD-Core Version:    0.7.0.1
  */

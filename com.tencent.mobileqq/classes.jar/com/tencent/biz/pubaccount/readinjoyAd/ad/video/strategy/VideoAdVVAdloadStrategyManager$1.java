@@ -15,20 +15,23 @@ class VideoAdVVAdloadStrategyManager$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 4097) {
       return;
     }
-    VideoAdVVAdloadStrategyManager.a(this.a, VideoAdVVAdloadStrategyManager.a(this.a) + 500L);
-    QLog.d("VideoAdVVAdloadStrategyManager", 2, "start record playDurationTime:  " + VideoAdVVAdloadStrategyManager.a(this.a));
+    paramMessage = this.a;
+    VideoAdVVAdloadStrategyManager.a(paramMessage, VideoAdVVAdloadStrategyManager.a(paramMessage) + 500L);
+    paramMessage = new StringBuilder();
+    paramMessage.append("start record playDurationTime:  ");
+    paramMessage.append(VideoAdVVAdloadStrategyManager.a(this.a));
+    QLog.d("VideoAdVVAdloadStrategyManager", 2, paramMessage.toString());
     this.a.a();
-    VideoAdVVAdloadStrategyManager.a(this.a, VideoAdVVAdloadStrategyManager.a(this.a), false);
+    paramMessage = this.a;
+    VideoAdVVAdloadStrategyManager.a(paramMessage, VideoAdVVAdloadStrategyManager.a(paramMessage), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.video.strategy.VideoAdVVAdloadStrategyManager.1
  * JD-Core Version:    0.7.0.1
  */

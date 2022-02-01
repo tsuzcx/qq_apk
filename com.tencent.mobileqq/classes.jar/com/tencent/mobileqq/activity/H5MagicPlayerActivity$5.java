@@ -11,14 +11,18 @@ class H5MagicPlayerActivity$5
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_AndroidMediaSoundPool != null) && (this.this$0.jdField_a_of_type_AndroidMediaSoundPool.play(this.this$0.b, 1.0F, 1.0F, 0, this.this$0.jdField_a_of_type_Int - 1, 1.0F) == 0) && (QLog.isColorLevel())) {
-      QLog.d("SoundPoolUtil", 2, "play failure filepath=" + this.a);
+    if ((this.this$0.jdField_a_of_type_AndroidMediaSoundPool != null) && (this.this$0.jdField_a_of_type_AndroidMediaSoundPool.play(this.this$0.b, 1.0F, 1.0F, 0, this.this$0.jdField_a_of_type_Int - 1, 1.0F) == 0) && (QLog.isColorLevel()))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("play failure filepath=");
+      localStringBuilder.append(this.a);
+      QLog.d("SoundPoolUtil", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.H5MagicPlayerActivity.5
  * JD-Core Version:    0.7.0.1
  */

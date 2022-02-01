@@ -21,16 +21,21 @@ public class ByteData$e
     default: 
       return;
     case 162: 
-      ByteData.access$1000(this.a, Long.valueOf((String)locald.c).longValue());
+      ByteData.access$900(this.a, Long.valueOf((String)locald.c).longValue());
       return;
     }
-    ByteData.logCat("java_poxy", "cmd: " + locald.a + " reqType: " + locald.b);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("cmd: ");
+    localStringBuilder.append(locald.a);
+    localStringBuilder.append(" reqType: ");
+    localStringBuilder.append(locald.b);
+    ByteData.logCat("java_poxy", localStringBuilder.toString());
     ByteData.access$500(this.a, paramMessage.what, locald.a, locald.b, locald.c, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.secprotocol.ByteData.e
  * JD-Core Version:    0.7.0.1
  */

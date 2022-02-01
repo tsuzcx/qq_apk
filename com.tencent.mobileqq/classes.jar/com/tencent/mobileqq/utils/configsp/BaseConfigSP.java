@@ -12,28 +12,54 @@ public class BaseConfigSP
   {
     if ((AudioHelperUtil.b()) && (TextUtils.isEmpty(paramString2)))
     {
-      paramString2 = " getSP, 获取配置需要UIN, uin[" + paramString2 + "], spName[" + paramString3 + "]";
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" getSP, 获取配置需要UIN, uin[");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append("], spName[");
+      ((StringBuilder)localObject).append(paramString3);
+      ((StringBuilder)localObject).append("]");
+      paramString2 = ((StringBuilder)localObject).toString();
       QLog.w(paramString1, 1, paramString2, new Throwable("打印调用栈"));
-      throw new IllegalArgumentException(paramString1 + paramString2);
+      paramString3 = new StringBuilder();
+      paramString3.append(paramString1);
+      paramString3.append(paramString2);
+      throw new IllegalArgumentException(paramString3.toString());
     }
     Object localObject = BaseApplication.getContext();
     if (localObject != null)
     {
-      localObject = ((BaseApplication)localObject).getSharedPreferences(paramString3 + paramString2, 4);
-      if ((localObject == null) && (AudioHelperUtil.b())) {
-        QLog.w(paramString1, 1, "getSP, sp为null, uin[" + paramString2 + "], spName[" + paramString3 + "]", new Throwable("打印调用栈"));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString3);
+      localStringBuilder.append(paramString2);
+      localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 4);
+      if ((localObject == null) && (AudioHelperUtil.b()))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getSP, sp为null, uin[");
+        localStringBuilder.append(paramString2);
+        localStringBuilder.append("], spName[");
+        localStringBuilder.append(paramString3);
+        localStringBuilder.append("]");
+        QLog.w(paramString1, 1, localStringBuilder.toString(), new Throwable("打印调用栈"));
       }
       return localObject;
     }
-    if (AudioHelperUtil.b()) {
-      QLog.w(paramString1, 1, "getSP, BaseApplicationImpl为null, uin[" + paramString2 + "], spName[" + paramString3 + "]", new Throwable("打印调用栈"));
+    if (AudioHelperUtil.b())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getSP, BaseApplicationImpl为null, uin[");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append("], spName[");
+      ((StringBuilder)localObject).append(paramString3);
+      ((StringBuilder)localObject).append("]");
+      QLog.w(paramString1, 1, ((StringBuilder)localObject).toString(), new Throwable("打印调用栈"));
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.configsp.BaseConfigSP
  * JD-Core Version:    0.7.0.1
  */

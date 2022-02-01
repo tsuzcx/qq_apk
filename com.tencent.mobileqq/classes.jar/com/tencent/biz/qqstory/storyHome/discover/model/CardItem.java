@@ -32,69 +32,86 @@ public class CardItem
   {
     this.cardId = paramCardEntry.cardId;
     this.cardType = paramCardEntry.cardType;
-    switch (this.cardType)
+    int i = this.cardType;
+    if (i != 1)
     {
-    default: 
-      AssertUtils.a("not support this type %d for cardId %s", new Object[] { Integer.valueOf(this.cardType), this.cardId });
-      return;
-    case 1: 
-      this.normalCardInfo = new CardItem.NormalCardInfo(paramCardEntry.PBData);
-      return;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4)
+          {
+            AssertUtils.fail("not support this type %d for cardId %s", new Object[] { Integer.valueOf(i), this.cardId });
+            return;
+          }
+          this.gatherCardInfo = new CardItem.ActivityCardInfo(paramCardEntry.PBData);
+          return;
+        }
+        this.operationCardInfo = new CardItem.OperationCardInfo(paramCardEntry.PBData);
+        return;
+      }
       this.nearByCardInfo = new CardItem.NearbyCardInfo(paramCardEntry.PBData);
       return;
-    case 3: 
-      this.operationCardInfo = new CardItem.OperationCardInfo(paramCardEntry.PBData);
-      return;
     }
-    this.gatherCardInfo = new CardItem.ActivityCardInfo(paramCardEntry.PBData);
+    this.normalCardInfo = new CardItem.NormalCardInfo(paramCardEntry.PBData);
   }
   
   public CardItem(qqstory_struct.CardInfo paramCardInfo)
   {
     this.cardId = paramCardInfo.card_id.get().toStringUtf8();
     this.cardType = paramCardInfo.card_type.get();
-    switch (this.cardType)
+    int i = this.cardType;
+    if (i != 1)
     {
-    default: 
-      AssertUtils.a("not support this type %d for cardId %s", new Object[] { Integer.valueOf(this.cardType), this.cardId });
-      return;
-    case 1: 
-      this.normalCardInfo = new CardItem.NormalCardInfo(paramCardInfo.normal_card);
-      return;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4)
+          {
+            AssertUtils.fail("not support this type %d for cardId %s", new Object[] { Integer.valueOf(i), this.cardId });
+            return;
+          }
+          this.gatherCardInfo = new CardItem.ActivityCardInfo(paramCardInfo.gather_card);
+          return;
+        }
+        this.operationCardInfo = new CardItem.OperationCardInfo(paramCardInfo.operation_card);
+        return;
+      }
       this.nearByCardInfo = new CardItem.NearbyCardInfo(paramCardInfo.nearby_card);
       return;
-    case 3: 
-      this.operationCardInfo = new CardItem.OperationCardInfo(paramCardInfo.operation_card);
-      return;
     }
-    this.gatherCardInfo = new CardItem.ActivityCardInfo(paramCardInfo.gather_card);
+    this.normalCardInfo = new CardItem.NormalCardInfo(paramCardInfo.normal_card);
   }
   
   public CardItem(String paramString, CardItem.NormalCardInfo paramNormalCardInfo)
   {
-    if ((paramString == null) || (paramNormalCardInfo == null)) {
-      throw new IllegalArgumentException("parameter should not be null");
+    if ((paramString != null) && (paramNormalCardInfo != null))
+    {
+      this.cardId = paramString;
+      this.cardType = 1;
+      this.normalCardInfo = paramNormalCardInfo;
+      return;
     }
-    this.cardId = paramString;
-    this.cardType = 1;
-    this.normalCardInfo = paramNormalCardInfo;
+    throw new IllegalArgumentException("parameter should not be null");
   }
   
   @Nullable
   public CardItem.CardVideoInfo getCardVideoInfo()
   {
-    switch (this.cardType)
+    int i = this.cardType;
+    if (i != 1)
     {
-    default: 
-      return null;
-    case 1: 
-      return this.normalCardInfo.a();
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3) {
+          return null;
+        }
+        return this.operationCardInfo.a();
+      }
       return this.nearByCardInfo.a();
     }
-    return this.operationCardInfo.a();
+    return this.normalCardInfo.a();
   }
   
   @Nullable
@@ -111,34 +128,55 @@ public class CardItem
   {
     CardEntry localCardEntry = new CardEntry();
     localCardEntry.cardId = this.cardId;
-    localCardEntry.cardType = this.cardType;
-    switch (this.cardType)
+    int i = this.cardType;
+    localCardEntry.cardType = i;
+    if (i != 1)
     {
-    default: 
-      AssertUtils.a("not support this type %d for cardId %s", new Object[] { Integer.valueOf(this.cardType), this.cardId });
-      return localCardEntry;
-    case 1: 
-      localCardEntry.PBData = CardItem.NormalCardInfo.a(this.normalCardInfo).toByteArray();
-      return localCardEntry;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4)
+          {
+            AssertUtils.fail("not support this type %d for cardId %s", new Object[] { Integer.valueOf(i), this.cardId });
+            return localCardEntry;
+          }
+          localCardEntry.PBData = CardItem.ActivityCardInfo.a(this.gatherCardInfo).toByteArray();
+          return localCardEntry;
+        }
+        localCardEntry.PBData = CardItem.OperationCardInfo.a(this.operationCardInfo).toByteArray();
+        return localCardEntry;
+      }
       localCardEntry.PBData = CardItem.NearbyCardInfo.a(this.nearByCardInfo).toByteArray();
       return localCardEntry;
-    case 3: 
-      localCardEntry.PBData = CardItem.OperationCardInfo.a(this.operationCardInfo).toByteArray();
-      return localCardEntry;
     }
-    localCardEntry.PBData = CardItem.ActivityCardInfo.a(this.gatherCardInfo).toByteArray();
+    localCardEntry.PBData = CardItem.NormalCardInfo.a(this.normalCardInfo).toByteArray();
     return localCardEntry;
   }
   
   public String toString()
   {
-    return "CardItem{cardId='" + this.cardId + '\'' + ", cardType=" + this.cardType + ", gatherCardInfo=" + this.gatherCardInfo + ", nearByCardInfo=" + this.nearByCardInfo + ", normalCardInfo=" + this.normalCardInfo + ", operationCardInfo=" + this.operationCardInfo + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CardItem{cardId='");
+    localStringBuilder.append(this.cardId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", cardType=");
+    localStringBuilder.append(this.cardType);
+    localStringBuilder.append(", gatherCardInfo=");
+    localStringBuilder.append(this.gatherCardInfo);
+    localStringBuilder.append(", nearByCardInfo=");
+    localStringBuilder.append(this.nearByCardInfo);
+    localStringBuilder.append(", normalCardInfo=");
+    localStringBuilder.append(this.normalCardInfo);
+    localStringBuilder.append(", operationCardInfo=");
+    localStringBuilder.append(this.operationCardInfo);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.discover.model.CardItem
  * JD-Core Version:    0.7.0.1
  */

@@ -16,8 +16,12 @@ public class TroopStoryMemoriesListAdapter$GetFeedFeatureHelper
   
   public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("TroopStoryMemoriesListAdapter", 2, "start to send GetFeedFeature request: " + this.jdField_a_of_type_JavaUtilList);
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("start to send GetFeedFeature request: ");
+      localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+      QLog.d("TroopStoryMemoriesListAdapter", 2, localStringBuilder.toString());
     }
     GetFeedFeatureHandler.a(this.jdField_a_of_type_JavaUtilList);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
@@ -25,7 +29,7 @@ public class TroopStoryMemoriesListAdapter$GetFeedFeatureHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter.GetFeedFeatureHelper
  * JD-Core Version:    0.7.0.1
  */

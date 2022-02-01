@@ -30,10 +30,10 @@ public class LpReportInfo_dc02467
   public String getCurrentDate(Date paramDate)
   {
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-    if ((paramDate == null) || (localSimpleDateFormat == null)) {
-      return null;
+    if (paramDate != null) {
+      return localSimpleDateFormat.format(paramDate);
     }
-    return localSimpleDateFormat.format(paramDate);
+    return null;
   }
   
   public String getSimpleInfo()
@@ -44,29 +44,43 @@ public class LpReportInfo_dc02467
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    if (this.uin <= 1000L) {}
-    for (String str = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount();; str = String.valueOf(this.uin))
-    {
-      localHashMap.put("uin", str);
-      localHashMap.put("face_feature_size", String.valueOf(this.faceFeatureSize));
-      localHashMap.put("error_code", String.valueOf(this.errorCode));
-      localHashMap.put("response_success_size", String.valueOf(this.responseSuccessSize));
-      localHashMap.put("response_fail_size", String.valueOf(this.responseFailSize));
-      localHashMap.put("response_size", String.valueOf(this.responseSize));
-      localHashMap.put("request_time", this.requestTime);
-      localHashMap.put("response_time", this.responseTime);
-      return localHashMap;
+    long l = this.uin;
+    String str;
+    if (l <= 1000L) {
+      str = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount();
+    } else {
+      str = String.valueOf(l);
     }
+    localHashMap.put("uin", str);
+    localHashMap.put("face_feature_size", String.valueOf(this.faceFeatureSize));
+    localHashMap.put("error_code", String.valueOf(this.errorCode));
+    localHashMap.put("response_success_size", String.valueOf(this.responseSuccessSize));
+    localHashMap.put("response_fail_size", String.valueOf(this.responseFailSize));
+    localHashMap.put("response_size", String.valueOf(this.responseSize));
+    localHashMap.put("request_time", this.requestTime);
+    localHashMap.put("response_time", this.responseTime);
+    return localHashMap;
   }
   
   public String toString()
   {
-    return "uin = xxx faceSize = " + this.faceFeatureSize + " reqtime = " + this.requestTime + " restime = " + this.responseTime + "resSusSize = " + this.responseSuccessSize + " error = " + this.errorCode;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("uin = xxx faceSize = ");
+    localStringBuilder.append(this.faceFeatureSize);
+    localStringBuilder.append(" reqtime = ");
+    localStringBuilder.append(this.requestTime);
+    localStringBuilder.append(" restime = ");
+    localStringBuilder.append(this.responseTime);
+    localStringBuilder.append("resSusSize = ");
+    localStringBuilder.append(this.responseSuccessSize);
+    localStringBuilder.append(" error = ");
+    localStringBuilder.append(this.errorCode);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc02467
  * JD-Core Version:    0.7.0.1
  */

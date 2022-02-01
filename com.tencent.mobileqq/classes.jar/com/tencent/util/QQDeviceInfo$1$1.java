@@ -22,10 +22,15 @@ class QQDeviceInfo$1$1
       {
         QQDeviceInfo.access$002(paramComponentName.a());
         QQDeviceInfo.access$100("huawei_oaid", QQDeviceInfo.access$000());
-        if (QLog.isColorLevel()) {
-          QLog.d(QQDeviceInfo.TAG, 2, "huawei oaid = " + QQDeviceInfo.access$000());
+        if (QLog.isColorLevel())
+        {
+          paramComponentName = QQDeviceInfo.TAG;
+          paramIBinder = new StringBuilder();
+          paramIBinder.append("huawei oaid = ");
+          paramIBinder.append(QQDeviceInfo.access$000());
+          QLog.d(paramComponentName, 2, paramIBinder.toString());
+          return;
         }
-        return;
       }
       catch (SecurityException paramComponentName)
       {
@@ -46,7 +51,7 @@ class QQDeviceInfo$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.QQDeviceInfo.1.1
  * JD-Core Version:    0.7.0.1
  */

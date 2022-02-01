@@ -41,61 +41,74 @@ public class ReadInjoyHeaderAdDownloadView$SimpleRoundProgress
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int i = getWidth() / 2;
-    int j = (int)(i - this.jdField_a_of_type_Float / 2.0F);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Float);
+    float f1 = i;
+    float f2 = this.jdField_a_of_type_Float;
+    int j = (int)(f1 - f2 / 2.0F);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(f2);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    RectF localRectF;
-    switch (this.d)
+    int k = this.d;
+    if (k != 0)
     {
-    default: 
-      paramCanvas.drawCircle(i, i, j, this.jdField_a_of_type_AndroidGraphicsPaint);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_b_of_type_Float);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
-      localRectF = new RectF(i - j, i - j, i + j, j + i);
-      j = this.f * 360 / this.jdField_c_of_type_Int;
-      switch (this.d)
-      {
+      if (k == 1) {
+        this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
       }
-      break;
     }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-        float f1 = this.jdField_c_of_type_Float / 2.0F;
-        if (this.jdField_a_of_type_AndroidGraphicsRectF == null) {
-          this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(i - f1, i - f1, i + f1, f1 + i);
-        }
-        paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-      }
-      return;
+    else {
       this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-      break;
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-      break;
-      paramCanvas.drawArc(localRectF, this.e, j, false, this.jdField_a_of_type_AndroidGraphicsPaint);
-      continue;
-      paramCanvas.drawArc(localRectF, this.e, j, true, this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+    paramCanvas.drawCircle(f1, f1, j, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_b_of_type_Float);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
+    f2 = i - j;
+    float f3 = i + j;
+    RectF localRectF = new RectF(f2, f2, f3, f3);
+    i = this.f * 360 / this.jdField_c_of_type_Int;
+    j = this.d;
+    if (j != 0)
+    {
+      if (j == 1) {
+        paramCanvas.drawArc(localRectF, this.e, i, true, this.jdField_a_of_type_AndroidGraphicsPaint);
+      }
+    }
+    else {
+      paramCanvas.drawArc(localRectF, this.e, i, false, this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+      f3 = this.jdField_c_of_type_Float / 2.0F;
+      if (this.jdField_a_of_type_AndroidGraphicsRectF == null)
+      {
+        f2 = f1 - f3;
+        f1 += f3;
+        this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(f2, f2, f1, f1);
+      }
+      paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
   }
   
   public void setMax(int paramInt)
   {
-    if (paramInt < 0) {
+    if (paramInt >= 0) {
       try
       {
-        throw new IllegalArgumentException("max not less than 0");
+        this.jdField_c_of_type_Int = paramInt;
+        return;
       }
-      finally {}
+      finally
+      {
+        break label28;
+      }
     }
-    this.jdField_c_of_type_Int = paramInt;
+    throw new IllegalArgumentException("max not less than 0");
+    label28:
+    throw localObject;
   }
   
   public void setPauseWithoutInvalidate(boolean paramBoolean)
@@ -111,24 +124,31 @@ public class ReadInjoyHeaderAdDownloadView$SimpleRoundProgress
   
   public void setProgress(int paramInt)
   {
-    if (paramInt < 0) {
+    if (paramInt >= 0)
+    {
+      int i = paramInt;
       try
       {
-        throw new IllegalArgumentException("progress not less than 0");
+        if (paramInt > this.jdField_c_of_type_Int) {
+          i = this.jdField_c_of_type_Int;
+        }
+        this.f = i;
+        postInvalidate();
+        return;
       }
-      finally {}
+      finally
+      {
+        break label47;
+      }
     }
-    int i = paramInt;
-    if (paramInt > this.jdField_c_of_type_Int) {
-      i = this.jdField_c_of_type_Int;
-    }
-    this.f = i;
-    postInvalidate();
+    throw new IllegalArgumentException("progress not less than 0");
+    label47:
+    throw localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInjoyHeaderAdDownloadView.SimpleRoundProgress
  * JD-Core Version:    0.7.0.1
  */

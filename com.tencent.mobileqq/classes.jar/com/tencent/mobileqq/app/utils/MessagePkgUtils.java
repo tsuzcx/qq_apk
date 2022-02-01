@@ -10,10 +10,10 @@ public class MessagePkgUtils
 {
   public static Object a(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return null;
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0)) {
+      return new ObjectInputStream(new ByteArrayInputStream(paramArrayOfByte)).readObject();
     }
-    return new ObjectInputStream(new ByteArrayInputStream(paramArrayOfByte)).readObject();
+    return null;
   }
   
   public static byte[] a(Serializable paramSerializable)
@@ -28,7 +28,7 @@ public class MessagePkgUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.MessagePkgUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -22,8 +22,7 @@ final class TroopApplicationListUtil$3
     if ((paramMessage.obj instanceof WebSoCgiService.WebSoCgiState))
     {
       paramMessage = (WebSoCgiService.WebSoCgiState)paramMessage.obj;
-      if (paramMessage.c == 0)
-      {
+      if (paramMessage.c == 0) {
         try
         {
           if (paramMessage.d != null)
@@ -32,20 +31,22 @@ final class TroopApplicationListUtil$3
             int i = new JSONObject(paramMessage.d).optInt("ec", -1);
             TroopApplicationListUtil.showToast(i);
             paramMessage = new JSONObject();
-            if ((i == 0) || (i == 41012))
+            if ((i != 0) && (i != 41012))
+            {
+              paramMessage.put("errorCode", i);
+              this.val$listener.onReceiveResult(false, paramMessage);
+            }
+            else
             {
               paramMessage.put("errorCode", i);
               this.val$listener.onReceiveResult(true, paramMessage);
             }
-            for (;;)
-            {
-              TroopApplicationListUtil.access$000(i, this.val$groupUin, this.val$appId);
-              return;
-              paramMessage.put("errorCode", i);
-              this.val$listener.onReceiveResult(false, paramMessage);
-            }
+            TroopApplicationListUtil.access$000(i, this.val$groupUin, this.val$appId);
+            return;
           }
           new JSONObject().put("errMsg", "htmlBody is null");
+          this.val$listener.onReceiveResult(false, null);
+          return;
         }
         catch (JSONException paramMessage)
         {
@@ -53,10 +54,11 @@ final class TroopApplicationListUtil$3
           this.val$listener.onReceiveResult(false, null);
           return;
         }
-        this.val$listener.onReceiveResult(false, null);
-        return;
       }
-      QLog.e("TroopApplicationListUtil", 1, "handleMessage addMiniAppToTroopApplicationList ,resultCode : " + paramMessage.c);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleMessage addMiniAppToTroopApplicationList ,resultCode : ");
+      localStringBuilder.append(paramMessage.c);
+      QLog.e("TroopApplicationListUtil", 1, localStringBuilder.toString());
       this.val$listener.onReceiveResult(false, null);
       return;
     }
@@ -66,7 +68,7 @@ final class TroopApplicationListUtil$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.utils.TroopApplicationListUtil.3
  * JD-Core Version:    0.7.0.1
  */

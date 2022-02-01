@@ -4,7 +4,8 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import com.tencent.avgame.gamelogic.GameEngine;
+import com.tencent.avgame.data.FontStyleConfig;
+import com.tencent.avgame.gamelogic.IGameEngine;
 import com.tencent.avgame.gamelogic.ITopic;
 import com.tencent.avgame.gamelogic.data.TopicBase;
 import com.tencent.avgame.gameroom.festivalstage.questionoption.IQuestionOptionPresenter;
@@ -12,7 +13,6 @@ import com.tencent.avgame.gameroom.festivalstage.questionoption.QuestionOptionsV
 import com.tencent.avgame.gameroom.stage.IGameStagePresenter;
 import com.tencent.avgame.gameroom.stage.IGameStageView;
 import com.tencent.avgame.gameroom.stage.IStagePresenter;
-import com.tencent.avgame.gameroom.stage.util.FontStyleConfig;
 import com.tencent.avgame.gameroom.stage.util.IBaseCountDownClockView;
 import com.tencent.avgame.gameroom.stage.util.IBaseCountDownClockView.OnCountDownListener;
 import com.tencent.qphone.base.util.QLog;
@@ -68,8 +68,9 @@ public class BaseGuessClickStageView
     }
     this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter = this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsView.a();
     addView(this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsView, QuestionOptionsView.a());
-    if (this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter != null) {
-      this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter.a(this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter);
+    IStagePresenter localIStagePresenter = this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter;
+    if (localIStagePresenter != null) {
+      this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter.a(localIStagePresenter);
     }
   }
   
@@ -77,12 +78,13 @@ public class BaseGuessClickStageView
   
   protected void a(IStagePresenter paramIStagePresenter)
   {
-    if (this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter == null)
+    IQuestionOptionPresenter localIQuestionOptionPresenter = this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter;
+    if (localIQuestionOptionPresenter == null)
     {
       this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter = paramIStagePresenter;
       return;
     }
-    this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter.a(paramIStagePresenter);
+    localIQuestionOptionPresenter.a(paramIStagePresenter);
   }
   
   public void a(boolean paramBoolean) {}
@@ -96,29 +98,29 @@ public class BaseGuessClickStageView
   
   protected void b(ITopic paramITopic)
   {
-    if (!GameEngine.a().h())
-    {
-      if (paramITopic == null) {
-        break label88;
-      }
-      if (this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter == null) {
-        a();
-      }
-      this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsView.setVisibility(0);
-      if ((!this.jdField_a_of_type_Boolean) && (a() != null))
+    if (!IGameEngine.a().h()) {
+      if (paramITopic != null)
       {
-        ((IBaseCountDownClockView)a()).setOnTimeEndListener(this.jdField_a_of_type_ComTencentAvgameGameroomStageUtilIBaseCountDownClockView$OnCountDownListener);
-        this.jdField_a_of_type_Boolean = true;
+        if (this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter == null) {
+          a();
+        }
+        this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsView.setVisibility(0);
+        if ((!this.jdField_a_of_type_Boolean) && (a() != null))
+        {
+          ((IBaseCountDownClockView)a()).setOnTimeEndListener(this.jdField_a_of_type_ComTencentAvgameGameroomStageUtilIBaseCountDownClockView$OnCountDownListener);
+          this.jdField_a_of_type_Boolean = true;
+        }
+        if ((paramITopic instanceof TopicBase)) {
+          this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter.a((TopicBase)paramITopic);
+        }
       }
-      if ((paramITopic instanceof TopicBase)) {
-        this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter.a((TopicBase)paramITopic);
+      else
+      {
+        removeView(this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsView);
+        this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter = null;
+        this.jdField_a_of_type_Boolean = false;
       }
     }
-    return;
-    label88:
-    removeView(this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsView);
-    this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter = null;
-    this.jdField_a_of_type_Boolean = false;
   }
   
   public void b(IStagePresenter paramIStagePresenter) {}
@@ -133,7 +135,7 @@ public class BaseGuessClickStageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.stage.base.BaseGuessClickStageView
  * JD-Core Version:    0.7.0.1
  */

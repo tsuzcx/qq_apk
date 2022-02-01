@@ -25,8 +25,11 @@ public class BrightnessAdjustmentFilter
   private void setTextureParam(int paramInt1, int paramInt2)
   {
     paramInt2 += 2;
-    String str = "inputImageTexture" + paramInt2;
-    int i = GLES20.glGetUniformLocation(getProgramIds(), str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("inputImageTexture");
+    ((StringBuilder)localObject).append(paramInt2);
+    localObject = ((StringBuilder)localObject).toString();
+    int i = GLES20.glGetUniformLocation(getProgramIds(), (String)localObject);
     if (i >= 0)
     {
       GLES20.glActiveTexture(33984 + paramInt2);
@@ -86,23 +89,26 @@ public class BrightnessAdjustmentFilter
         i += 1;
       }
     }
-    if (paramArrayOfInt[''] == this.lastCurve['']) {}
-    for (paramBoolean = true;; paramBoolean = false)
+    if (paramArrayOfInt[''] == this.lastCurve['']) {
+      paramBoolean = true;
+    } else {
+      paramBoolean = false;
+    }
+    if ((this.lastStable) && (!paramBoolean)) {
+      this.counter = 5;
+    }
+    this.lastStable = paramBoolean;
+    if (!paramBoolean)
     {
-      if ((this.lastStable) && (!paramBoolean)) {
-        this.counter = 5;
-      }
-      this.lastStable = paramBoolean;
-      if (paramBoolean) {
-        break;
-      }
       this.counter = Math.max(1, this.counter - 1);
-      int[] arrayOfInt = new int[256];
+      int[] arrayOfInt1 = new int[256];
       i = j;
       while (i < 256)
       {
-        arrayOfInt[i] = ((paramArrayOfInt[i] - this.lastCurve[i]) / this.counter + this.lastCurve[i]);
-        this.lastCurve[i] = arrayOfInt[i];
+        j = paramArrayOfInt[i];
+        int[] arrayOfInt2 = this.lastCurve;
+        arrayOfInt1[i] = ((j - arrayOfInt2[i]) / this.counter + arrayOfInt2[i]);
+        arrayOfInt2[i] = arrayOfInt1[i];
         i += 1;
       }
     }
@@ -111,7 +117,7 @@ public class BrightnessAdjustmentFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.BrightnessAdjustmentFilter
  * JD-Core Version:    0.7.0.1
  */

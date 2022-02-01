@@ -42,8 +42,13 @@ public class ByteArrayPool
           return new byte[Math.max(paramInt, 0)];
         }
       }
-      finally {}
-      i += 1;
+      finally
+      {
+        continue;
+        throw localObject;
+        continue;
+        i += 1;
+      }
     }
   }
   
@@ -68,34 +73,36 @@ public class ByteArrayPool
   
   public void trim(TrimLevel paramTrimLevel)
   {
-    for (;;)
+    synchronized (this.bufferPool)
     {
-      synchronized (this.bufferPool)
+      int i = ByteArrayPool.2.$SwitchMap$com$tencent$tkd$comment$util$io$TrimLevel[paramTrimLevel.ordinal()];
+      if (i != 1)
       {
-        switch (ByteArrayPool.2.$SwitchMap$com$tencent$tkd$comment$util$io$TrimLevel[paramTrimLevel.ordinal()])
+        if (i == 2)
         {
-        case 1: 
-          return;
-          if (this.leftSize > this.maxTotalBufferSize) {
-            if ((this.bufferPool.size() > 0) && (this.leftSize > this.maxTotalBufferSize))
-            {
-              paramTrimLevel = (byte[])this.bufferPool.get(0);
-              this.bufferPool.remove(0);
-              this.leftSize -= paramTrimLevel.length;
-            }
-          }
-          break;
-        case 2: 
           this.bufferPool.clear();
           this.leftSize = 0;
         }
       }
+      else if (this.leftSize > this.maxTotalBufferSize) {
+        while ((this.bufferPool.size() > 0) && (this.leftSize > this.maxTotalBufferSize))
+        {
+          paramTrimLevel = (byte[])this.bufferPool.get(0);
+          this.bufferPool.remove(0);
+          this.leftSize -= paramTrimLevel.length;
+        }
+      }
+      return;
+    }
+    for (;;)
+    {
+      throw paramTrimLevel;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.comment.util.io.ByteArrayPool
  * JD-Core Version:    0.7.0.1
  */

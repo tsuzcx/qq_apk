@@ -28,8 +28,12 @@ public class QZoneService
   private Object a(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
   {
     paramFromServiceMsg = QZoneRequestEncoder.decodeCoverResponse(paramFromServiceMsg.getWupBuffer());
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qzonecover.", 2, "decodeGetQZoneCover|jceObj = " + paramFromServiceMsg);
+    if (QLog.isColorLevel())
+    {
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("decodeGetQZoneCover|jceObj = ");
+      paramToServiceMsg.append(paramFromServiceMsg);
+      QLog.i("Q.qzonecover.", 2, paramToServiceMsg.toString());
     }
     return paramFromServiceMsg;
   }
@@ -55,152 +59,137 @@ public class QZoneService
   private Object b(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
   {
     paramFromServiceMsg = QZoneGetPhotoWallRequest.decodePhotoWallResponse(paramFromServiceMsg.getWupBuffer());
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qzonephotowall", 2, "decodeGetQZonePhotoWall|jceObj = " + paramFromServiceMsg);
+    if (QLog.isColorLevel())
+    {
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("decodeGetQZonePhotoWall|jceObj = ");
+      paramToServiceMsg.append(paramFromServiceMsg);
+      QLog.i("Q.qzonephotowall", 2, paramToServiceMsg.toString());
     }
     return paramFromServiceMsg;
   }
   
   private byte[] b(ToServiceMsg paramToServiceMsg)
   {
-    long l4 = 0L;
     String str = (String)paramToServiceMsg.getAttribute("uin");
     Integer localInteger = (Integer)paramToServiceMsg.getAttribute("flag", Integer.valueOf(1));
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qzonecover.", 2, "handleGetQZoneCover|uin = " + str + ",flag=" + localInteger.intValue());
-    }
-    for (;;)
+    if (QLog.isColorLevel())
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleGetQZoneCover|uin = ");
+      localStringBuilder.append(str);
+      localStringBuilder.append(",flag=");
+      localStringBuilder.append(localInteger.intValue());
+      QLog.i("Q.qzonecover.", 2, localStringBuilder.toString());
+    }
+    long l4 = 0L;
+    long l1;
+    long l2;
+    try
+    {
+      l1 = Long.parseLong(str);
       try
       {
-        l1 = Long.parseLong(str);
+        l2 = Long.parseLong(paramToServiceMsg.getUin());
         l3 = l1;
       }
-      catch (Exception paramToServiceMsg)
-      {
-        try
-        {
-          l2 = Long.parseLong(paramToServiceMsg.getUin());
-          l3 = l1;
-          return new QZoneRequestEncoder(l3, l2, localInteger.intValue()).encode();
-        }
-        catch (Exception paramToServiceMsg)
-        {
-          long l1;
-          long l2;
-          long l3;
-          break label115;
-        }
-        paramToServiceMsg = paramToServiceMsg;
-        l1 = 0L;
-      }
-      label115:
+      catch (Exception paramToServiceMsg) {}
       l2 = l4;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("Q.qzonecover.", 2, paramToServiceMsg.toString());
-        l3 = l1;
-        l2 = l4;
-      }
     }
+    catch (Exception paramToServiceMsg)
+    {
+      l1 = 0L;
+    }
+    long l3 = l1;
+    if (QLog.isColorLevel())
+    {
+      QLog.i("Q.qzonecover.", 2, paramToServiceMsg.toString());
+      l3 = l1;
+      l2 = l4;
+    }
+    return new QZoneRequestEncoder(l3, l2, localInteger.intValue()).encode();
   }
   
   private Object c(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
   {
     paramFromServiceMsg = QZoneDelPhotoWallRequest.decodeDelResponse(paramFromServiceMsg.getWupBuffer());
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qzonephotowall", 2, "decodeDelQZonePhotoWall|jceObj = " + paramFromServiceMsg);
+    if (QLog.isColorLevel())
+    {
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("decodeDelQZonePhotoWall|jceObj = ");
+      paramToServiceMsg.append(paramFromServiceMsg);
+      QLog.i("Q.qzonephotowall", 2, paramToServiceMsg.toString());
     }
     return paramFromServiceMsg;
   }
   
   private byte[] c(ToServiceMsg paramToServiceMsg)
   {
-    long l4 = 0L;
     String str2 = (String)paramToServiceMsg.getAttribute("uin");
     String str1 = (String)paramToServiceMsg.getAttribute("photo_id");
     Long localLong = (Long)paramToServiceMsg.getAttribute("photo_time");
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qzonephotowall", 2, "handleDetQZonePhotoWall|uin = " + str2);
-    }
-    for (;;)
+    if (QLog.isColorLevel())
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleDetQZonePhotoWall|uin = ");
+      localStringBuilder.append(str2);
+      QLog.i("Q.qzonephotowall", 2, localStringBuilder.toString());
+    }
+    long l1;
+    try
+    {
+      l1 = Long.parseLong(str2);
       try
       {
-        l1 = Long.parseLong(str2);
-        l3 = l1;
+        l2 = Long.parseLong(paramToServiceMsg.getUin());
       }
-      catch (Exception paramToServiceMsg)
-      {
-        try
-        {
-          l2 = Long.parseLong(paramToServiceMsg.getUin());
-          l3 = l1;
-          return new QZoneDelPhotoWallRequest(l3, l2, str1, localLong).encode();
-        }
-        catch (Exception paramToServiceMsg)
-        {
-          long l1;
-          long l2;
-          long l3;
-          break label108;
-        }
-        paramToServiceMsg = paramToServiceMsg;
-        l1 = 0L;
-      }
-      label108:
-      l2 = l4;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("Q.qzonephotowall", 2, paramToServiceMsg.toString());
-        l3 = l1;
-        l2 = l4;
+      catch (Exception paramToServiceMsg) {}
+      if (!QLog.isColorLevel()) {
+        break label116;
       }
     }
+    catch (Exception paramToServiceMsg)
+    {
+      l1 = 0L;
+    }
+    QLog.i("Q.qzonephotowall", 2, paramToServiceMsg.toString());
+    label116:
+    long l2 = 0L;
+    return new QZoneDelPhotoWallRequest(l1, l2, str1, localLong).encode();
   }
   
   private byte[] d(ToServiceMsg paramToServiceMsg)
   {
-    long l4 = 0L;
     String str2 = (String)paramToServiceMsg.getAttribute("uin");
     String str1 = (String)paramToServiceMsg.getAttribute("attachInfo");
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qzonephotowall", 2, "handleGetQZonePhotoWall|uin = " + str2);
-    }
-    for (;;)
+    if (QLog.isColorLevel())
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleGetQZonePhotoWall|uin = ");
+      localStringBuilder.append(str2);
+      QLog.i("Q.qzonephotowall", 2, localStringBuilder.toString());
+    }
+    long l1;
+    try
+    {
+      l1 = Long.parseLong(str2);
       try
       {
-        l1 = Long.parseLong(str2);
-        l3 = l1;
+        l2 = Long.parseLong(paramToServiceMsg.getUin());
       }
-      catch (Exception paramToServiceMsg)
-      {
-        try
-        {
-          l2 = Long.parseLong(paramToServiceMsg.getUin());
-          l3 = l1;
-          return new QZoneGetPhotoWallRequest(l3, l2, str1).encode();
-        }
-        catch (Exception paramToServiceMsg)
-        {
-          long l1;
-          long l2;
-          long l3;
-          break label95;
-        }
-        paramToServiceMsg = paramToServiceMsg;
-        l1 = 0L;
-      }
-      label95:
-      l2 = l4;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("Q.qzonephotowall", 2, paramToServiceMsg.toString());
-        l3 = l1;
-        l2 = l4;
+      catch (Exception paramToServiceMsg) {}
+      if (!QLog.isColorLevel()) {
+        break label105;
       }
     }
+    catch (Exception paramToServiceMsg)
+    {
+      l1 = 0L;
+    }
+    QLog.i("Q.qzonephotowall", 2, paramToServiceMsg.toString());
+    label105:
+    long l2 = 0L;
+    return new QZoneGetPhotoWallRequest(l1, l2, str1).encode();
   }
   
   public String[] cmdHeaderPrefix()
@@ -211,18 +200,16 @@ public class QZoneService
   public Object decode(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
     String str = paramFromServiceMsg.getServiceCmd();
-    Object localObject = null;
     if ("SQQzoneSvc.getCover".equals(str)) {
-      localObject = a(paramFromServiceMsg, paramToServiceMsg);
+      return a(paramFromServiceMsg, paramToServiceMsg);
     }
-    do
-    {
-      return localObject;
-      if ("SQQzoneSvc.getPhotoWall".equals(str)) {
-        return b(paramFromServiceMsg, paramToServiceMsg);
-      }
-    } while (!"SQQzoneSvc.delPhotoWall".equals(str));
-    return c(paramFromServiceMsg, paramToServiceMsg);
+    if ("SQQzoneSvc.getPhotoWall".equals(str)) {
+      return b(paramFromServiceMsg, paramToServiceMsg);
+    }
+    if ("SQQzoneSvc.delPhotoWall".equals(str)) {
+      return c(paramFromServiceMsg, paramToServiceMsg);
+    }
+    return null;
   }
   
   public void decodeRespMsg(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg) {}
@@ -257,7 +244,7 @@ public class QZoneService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.qzone.QZoneService
  * JD-Core Version:    0.7.0.1
  */

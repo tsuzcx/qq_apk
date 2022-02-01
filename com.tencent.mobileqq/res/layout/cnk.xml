@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tencent="http://schemas.android.com/apk/res-auto">
-    <android.support.v7.widget.RecyclerView android:id="@id/m8c" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" />
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mobileqq.widget.QQViewPager android:id="@id/i24" android:focusable="true" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="145.0dip" />
-        <com.tencent.widget.CirclePageIndicator android:id="@id/nzm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="12.0dip" android:layout_alignBottom="@id/i24" android:layout_centerHorizontal="true" tencent:circle_radius="2.5dip" tencent:fillColor="#ffffffff" tencent:pageColor="#ff6c7481" tencent:snap="true" />
-        <RelativeLayout android:id="@id/mw5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="175.0dip">
-            <ImageView android:id="@id/mw4" android:layout_width="165.0dip" android:layout_height="165.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="16.0dip" android:layout_centerHorizontal="true" />
-            <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:id="@id/mw6" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginTop="8.0dip" android:text="暂未发现直播" android:layout_below="@id/mw4" android:layout_centerHorizontal="true" />
-        </RelativeLayout>
-    </RelativeLayout>
+<LinearLayout android:background="#48000000" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/ode" android:background="@drawable/eq8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="214.0dip">
+        <EditText android:textSize="14.0dip" android:textColorHint="@color/app" android:gravity="top" android:id="@id/ntb" android:background="@color/ajr" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="4.5dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="5.0dip" android:singleLine="true" android:maxLength="10" android:imeOptions="actionDone" android:textCursorDrawable="@drawable/f9_" />
+    </LinearLayout>
 </LinearLayout>

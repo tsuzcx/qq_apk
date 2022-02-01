@@ -1,5 +1,6 @@
 package com.tencent.qqlive.module.videoreport.dtreport.video.data;
 
+import android.view.View;
 import java.util.Map;
 
 public class VideoEntity$Builder
@@ -38,6 +39,7 @@ public class VideoEntity$Builder
     localVideoEntity.videoDuration = this.videoDuration;
     localVideoEntity.isBizReady = this.isBizReady;
     localVideoEntity.isIgnoreReport = this.isIgnoreReport;
+    localVideoEntity.videoView = this.videoView;
     return localVideoEntity;
   }
   
@@ -88,10 +90,16 @@ public class VideoEntity$Builder
     super.setVideoDuration(paramInt);
     return this;
   }
+  
+  public Builder setVideoView(View paramView)
+  {
+    super.setVideoView(paramView);
+    return this;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.video.data.VideoEntity.Builder
  * JD-Core Version:    0.7.0.1
  */

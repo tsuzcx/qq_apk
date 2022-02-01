@@ -50,7 +50,7 @@ public abstract interface IMavEngine
   
   public abstract int ignore(int paramInt1, long paramLong, int paramInt2);
   
-  public abstract void init(Context paramContext, long paramLong, int paramInt, String paramString1, SDKConfigInfo paramSDKConfigInfo, String paramString2, String paramString3);
+  public abstract void init(Context paramContext, long paramLong, int paramInt, String paramString1, SDKConfigInfo paramSDKConfigInfo, String paramString2, String paramString3, String paramString4);
   
   public abstract int invite(long[] paramArrayOfLong, int paramInt1, int paramInt2, int paramInt3);
   
@@ -64,7 +64,7 @@ public abstract interface IMavEngine
   
   public abstract byte[] postData(long paramLong, byte[] paramArrayOfByte);
   
-  public abstract int quit(int paramInt);
+  public abstract int quitRoom(int paramInt);
   
   public abstract int readDataFromTRAE(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
   
@@ -110,6 +110,8 @@ public abstract interface IMavEngine
   
   public abstract void setProcessDecoderFrameFunctionptr(long paramLong);
   
+  public abstract void setQosParams(String paramString);
+  
   public abstract int setShareEncParam(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8);
   
   public abstract void setVideoDataSendByDefault(boolean paramBoolean);
@@ -154,7 +156,7 @@ public abstract interface IMavEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avcore.engine.mav.IMavEngine
  * JD-Core Version:    0.7.0.1
  */

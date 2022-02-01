@@ -10,22 +10,28 @@ class SonicEngine$2
   
   public void onSessionStateChange(SonicSession paramSonicSession, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    SonicUtils.log("SonicSdk_SonicEngine", 3, "onSessionStateChange:session(" + paramSonicSession.sId + ") from state " + paramInt1 + " -> " + paramInt2);
-    switch (paramInt2)
+    paramBundle = new StringBuilder();
+    paramBundle.append("onSessionStateChange:session(");
+    paramBundle.append(paramSonicSession.sId);
+    paramBundle.append(") from state ");
+    paramBundle.append(paramInt1);
+    paramBundle.append(" -> ");
+    paramBundle.append(paramInt2);
+    SonicUtils.log("SonicSdk_SonicEngine", 3, paramBundle.toString());
+    if (paramInt2 != 1)
     {
-    case 2: 
-    default: 
-      return;
-    case 1: 
-      SonicEngine.access$000(this.this$0).put(paramSonicSession.id, paramSonicSession);
+      if (paramInt2 != 3) {
+        return;
+      }
+      SonicEngine.access$000(this.this$0).remove(paramSonicSession.id);
       return;
     }
-    SonicEngine.access$000(this.this$0).remove(paramSonicSession.id);
+    SonicEngine.access$000(this.this$0).put(paramSonicSession.id, paramSonicSession);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.sonic.sdk.SonicEngine.2
  * JD-Core Version:    0.7.0.1
  */

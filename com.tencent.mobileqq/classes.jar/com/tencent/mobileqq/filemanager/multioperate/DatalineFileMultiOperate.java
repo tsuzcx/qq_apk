@@ -49,20 +49,14 @@ public class DatalineFileMultiOperate
   {
     paramList1 = paramList1.iterator();
     long l = 0L;
-    if (paramList1.hasNext())
+    while (paramList1.hasNext())
     {
       paramList2 = (FileManagerEntity)paramList1.next();
-      if (FileUtils.b(paramList2.strFilePath)) {
-        break label50;
+      if (!FileUtils.fileExistsAndNotEmpty(paramList2.strFilePath)) {
+        l += paramList2.fileSize;
       }
-      l = paramList2.fileSize + l;
     }
-    label50:
-    for (;;)
-    {
-      break;
-      return l;
-    }
+    return l;
   }
   
   private List<List<FileManagerEntity>> a(List<FileManagerEntity> paramList)
@@ -117,52 +111,46 @@ public class DatalineFileMultiOperate
   
   private void a(List<ChatMessage> paramList)
   {
-    if (paramList.size() == 1) {
+    if (paramList.size() == 1)
+    {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a((MessageRecord)paramList.get(0), false);
-    }
-    while (paramList.size() <= 1) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramList, false);
+    if (paramList.size() > 1) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramList, false);
+    }
   }
   
   private void a(List<FileManagerEntity> paramList, QFileMultiOperateCallback paramQFileMultiOperateCallback)
   {
     paramList = a(paramList);
     paramQFileMultiOperateCallback = (List)paramList.get(1);
+    int i = 0;
     paramList = (List)paramList.get(0);
     paramQFileMultiOperateCallback = paramQFileMultiOperateCallback.iterator();
-    int i = 0;
-    if (paramQFileMultiOperateCallback.hasNext())
+    while (paramQFileMultiOperateCallback.hasNext())
     {
       FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramQFileMultiOperateCallback.next();
-      if (QfavBuilder.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, localFileManagerEntity, null, true)) {
-        break label208;
+      if (!QfavBuilder.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, localFileManagerEntity, null, true)) {
+        i = 1;
       }
-      i = 1;
     }
-    label208:
-    for (;;)
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      break;
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        long l = ((FileManagerEntity)paramList.next()).datalineEntitySessionId;
-        int j = DataLineMsgRecord.getDevTypeBySeId(l);
-        paramQFileMultiOperateCallback = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(j).a(l);
-        if ((paramQFileMultiOperateCallback != null) && (FileUtils.b(paramQFileMultiOperateCallback.path)) && (!QfavBuilder.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramQFileMultiOperateCallback.path))) {
-          i = 1;
-        }
+      long l = ((FileManagerEntity)paramList.next()).datalineEntitySessionId;
+      int j = DataLineMsgRecord.getDevTypeBySeId(l);
+      paramQFileMultiOperateCallback = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(j).a(l);
+      if ((paramQFileMultiOperateCallback != null) && (FileUtils.fileExistsAndNotEmpty(paramQFileMultiOperateCallback.path)) && (!QfavBuilder.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramQFileMultiOperateCallback.path))) {
+        i = 1;
       }
-      if (i != 0)
-      {
-        FileManagerUtil.c(this.jdField_a_of_type_AndroidContentContext.getString(2131698158));
-        return;
-      }
-      FMToastUtil.b(this.jdField_a_of_type_AndroidContentContext.getString(2131719640));
+    }
+    if (i != 0)
+    {
+      FileManagerUtil.a(this.jdField_a_of_type_AndroidContentContext.getString(2131698195));
       return;
     }
+    FMToastUtil.b(this.jdField_a_of_type_AndroidContentContext.getString(2131719359));
   }
   
   private void a(List<FileManagerEntity> paramList1, List<FileManagerEntity> paramList2)
@@ -172,7 +160,7 @@ public class DatalineFileMultiOperate
     while (paramList1.hasNext())
     {
       FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramList1.next();
-      if (FileUtils.b(localFileManagerEntity.getFilePath())) {
+      if (FileUtils.fileExistsAndNotEmpty(localFileManagerEntity.getFilePath())) {
         localFileManagerEngine.a(localFileManagerEntity.getFilePath(), "", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0, false);
       } else {
         localFileManagerEngine.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
@@ -184,7 +172,7 @@ public class DatalineFileMultiOperate
       long l = ((FileManagerEntity)paramList1.next()).datalineEntitySessionId;
       int i = DataLineMsgRecord.getDevTypeBySeId(l);
       paramList2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).a(l);
-      if ((paramList2 != null) && (FileUtils.b(paramList2.path)))
+      if ((paramList2 != null) && (FileUtils.fileExistsAndNotEmpty(paramList2.path)))
       {
         paramList2.nWeiyunSessionId = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(paramList2.path, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0, false).nSessionId;
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).d(paramList2.msgId);
@@ -199,9 +187,9 @@ public class DatalineFileMultiOperate
   
   private void b(List<FileManagerEntity> paramList, QFileMultiOperateCallback paramQFileMultiOperateCallback)
   {
-    if (!NetworkUtil.d(BaseApplication.getContext()))
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131694510, 1).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299166));
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131694475, 1).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299168));
       return;
     }
     paramQFileMultiOperateCallback = a(paramList);
@@ -209,16 +197,17 @@ public class DatalineFileMultiOperate
     paramQFileMultiOperateCallback = (List)paramQFileMultiOperateCallback.get(0);
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
+    long l1 = 0L;
     Iterator localIterator = paramList.iterator();
-    label95:
     FileManagerEntity localFileManagerEntity;
-    for (long l1 = 0L; localIterator.hasNext(); l1 = localFileManagerEntity.fileSize + l1)
+    while (localIterator.hasNext())
     {
       localFileManagerEntity = (FileManagerEntity)localIterator.next();
-      if ((localFileManagerEntity.cloudType == 0) || (localFileManagerEntity.status == 16)) {
-        break label95;
+      if ((localFileManagerEntity.cloudType != 0) && (localFileManagerEntity.status != 16))
+      {
+        localArrayList1.add(localFileManagerEntity);
+        l1 += localFileManagerEntity.fileSize;
       }
-      localArrayList1.add(localFileManagerEntity);
     }
     localIterator = paramQFileMultiOperateCallback.iterator();
     while (localIterator.hasNext())
@@ -227,7 +216,7 @@ public class DatalineFileMultiOperate
       long l2 = localFileManagerEntity.datalineEntitySessionId;
       int i = DataLineMsgRecord.getDevTypeBySeId(l2);
       DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).a(l2);
-      if ((localDataLineMsgRecord != null) && (FileUtils.b(localDataLineMsgRecord.path)))
+      if ((localDataLineMsgRecord != null) && (FileUtils.fileExistsAndNotEmpty(localDataLineMsgRecord.path)))
       {
         localArrayList2.add(localFileManagerEntity);
         l1 += localDataLineMsgRecord.filesize;
@@ -235,16 +224,16 @@ public class DatalineFileMultiOperate
     }
     if ((paramList.size() + paramQFileMultiOperateCallback.size() > 0) && (localArrayList1.size() + localArrayList2.size() == 0))
     {
-      FMToastUtil.a(2131692605);
+      FMToastUtil.a(2131692557);
       return;
     }
     if ((FileManagerUtil.a()) && (l1 > ((IFMConfig)QRoute.api(IFMConfig.class)).getFlowDialogSize()))
     {
-      FMDialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131692609, 2131692614, new DatalineFileMultiOperate.1(this, localArrayList1, localArrayList2));
+      FMDialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131692561, 2131692566, new DatalineFileMultiOperate.1(this, localArrayList1, localArrayList2));
       return;
     }
     a(localArrayList1, localArrayList2);
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131692733, 0).a();
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131692690, 0).a();
   }
   
   private void b(List<FileManagerEntity> paramList1, List<FileManagerEntity> paramList2)
@@ -302,9 +291,9 @@ public class DatalineFileMultiOperate
     List localList = a(paramList);
     paramList = (List)localList.get(1);
     localList = (List)localList.get(0);
-    if (!NetworkUtil.d(BaseApplication.getContext()))
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131694510, 1).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299166));
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131694475, 1).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299168));
       return;
     }
     long l = a(paramList, localList);
@@ -327,35 +316,45 @@ public class DatalineFileMultiOperate
   
   public void a(List<FileManagerEntity> paramList, int paramInt, QFileMultiOperateCallback paramQFileMultiOperateCallback)
   {
-    if ((paramList == null) || (paramList.size() == 0))
+    if ((paramList != null) && (paramList.size() != 0))
     {
-      QLog.e("DatalineFileMultiOperate", 1, "doFileMultiOperate no any file");
-      return;
-    }
-    switch (paramInt)
-    {
-    default: 
-      QLog.e("DatalineFileMultiOperate", 1, "doFileMultiOperate unkonw optype:" + paramInt);
-      return;
-    case 3: 
-      e(paramList, paramQFileMultiOperateCallback);
-      return;
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt != 4)
+            {
+              if (paramInt != 5)
+              {
+                paramList = new StringBuilder();
+                paramList.append("doFileMultiOperate unkonw optype:");
+                paramList.append(paramInt);
+                QLog.e("DatalineFileMultiOperate", 1, paramList.toString());
+                return;
+              }
+              a(paramList, paramQFileMultiOperateCallback);
+              return;
+            }
+            b(paramList, paramQFileMultiOperateCallback);
+            return;
+          }
+          e(paramList, paramQFileMultiOperateCallback);
+          return;
+        }
+        c(paramList, paramQFileMultiOperateCallback);
+        return;
+      }
       d(paramList, paramQFileMultiOperateCallback);
       return;
-    case 2: 
-      c(paramList, paramQFileMultiOperateCallback);
-      return;
-    case 4: 
-      b(paramList, paramQFileMultiOperateCallback);
-      return;
     }
-    a(paramList, paramQFileMultiOperateCallback);
+    QLog.e("DatalineFileMultiOperate", 1, "doFileMultiOperate no any file");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.multioperate.DatalineFileMultiOperate
  * JD-Core Version:    0.7.0.1
  */

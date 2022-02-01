@@ -48,8 +48,16 @@ public final class TCodecManager
   
   private CodecWrapper createDirectCodecWrapper(MediaFormat paramMediaFormat, TMediaCodec paramTMediaCodec)
   {
-    if (LogUtils.isLogEnable()) {
-      LogUtils.d("TCodecManager", "createDirectCodecWrapper mediaFormat:" + paramMediaFormat + " createBy:" + paramTMediaCodec.getCreateBy() + " nameOrType:" + paramTMediaCodec.getNameOrType());
+    if (LogUtils.isLogEnable())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("createDirectCodecWrapper mediaFormat:");
+      localStringBuilder.append(paramMediaFormat);
+      localStringBuilder.append(" createBy:");
+      localStringBuilder.append(paramTMediaCodec.getCreateBy());
+      localStringBuilder.append(" nameOrType:");
+      localStringBuilder.append(paramTMediaCodec.getNameOrType());
+      LogUtils.d("TCodecManager", localStringBuilder.toString());
     }
     if (paramTMediaCodec.getCreateBy() == TMediaCodec.CreateBy.CreateByName) {
       return new DirectCodecWrapper(MediaCodec.createByCodecName(paramTMediaCodec.getNameOrType()));
@@ -59,29 +67,51 @@ public final class TCodecManager
   
   private CodecWrapper createNewReuseCodecWrapper(MediaFormat paramMediaFormat, TMediaCodec paramTMediaCodec)
   {
-    if (LogUtils.isLogEnable()) {
-      LogUtils.d("TCodecManager", "createNewReuseCodecWrapper mediaFormat:" + paramMediaFormat + " createBy:" + paramTMediaCodec.getCreateBy() + " nameOrType:" + paramTMediaCodec.getNameOrType());
+    if (LogUtils.isLogEnable())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("createNewReuseCodecWrapper mediaFormat:");
+      ((StringBuilder)localObject).append(paramMediaFormat);
+      ((StringBuilder)localObject).append(" createBy:");
+      ((StringBuilder)localObject).append(paramTMediaCodec.getCreateBy());
+      ((StringBuilder)localObject).append(" nameOrType:");
+      ((StringBuilder)localObject).append(paramTMediaCodec.getNameOrType());
+      LogUtils.d("TCodecManager", ((StringBuilder)localObject).toString());
     }
-    String str = paramMediaFormat.getString("mime");
+    Object localObject = paramMediaFormat.getString("mime");
     FormatWrapper localFormatWrapper = FormatWrapper.create(paramMediaFormat);
     ReuseHelper.initFormatWrapper(localFormatWrapper, paramMediaFormat);
     if (paramTMediaCodec.getCreateBy() == TMediaCodec.CreateBy.CreateByName) {
-      return ReuseCodecWrapper.create(MediaCodec.createByCodecName(paramTMediaCodec.getNameOrType()), str, localFormatWrapper);
+      return ReuseCodecWrapper.create(MediaCodec.createByCodecName(paramTMediaCodec.getNameOrType()), (String)localObject, localFormatWrapper);
     }
-    return ReuseCodecWrapper.create(MediaCodec.createDecoderByType(str), str, localFormatWrapper);
+    return ReuseCodecWrapper.create(MediaCodec.createDecoderByType((String)localObject), (String)localObject, localFormatWrapper);
   }
   
   private CodecWrapper getCodec(MediaFormat paramMediaFormat, TMediaCodec paramTMediaCodec, Surface paramSurface)
   {
     boolean bool = paramTMediaCodec.isVideo();
-    if (LogUtils.isLogEnable()) {
-      LogUtils.d("TCodecManager", "getCodec isVideo:" + bool + " codecFinalReuseEnable:" + paramTMediaCodec.codecFinalReuseEnable);
+    if (LogUtils.isLogEnable())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getCodec isVideo:");
+      ((StringBuilder)localObject).append(bool);
+      ((StringBuilder)localObject).append(" codecFinalReuseEnable:");
+      ((StringBuilder)localObject).append(paramTMediaCodec.codecFinalReuseEnable);
+      LogUtils.d("TCodecManager", ((StringBuilder)localObject).toString());
     }
     if (!paramTMediaCodec.codecFinalReuseEnable)
     {
       paramTMediaCodec.isReUsed = false;
-      if (LogUtils.isLogEnable()) {
-        LogUtils.d("TCodecManager", "getCodec return DirectCodecWrapper for mediaFormat:" + paramMediaFormat + " codecFinalReuseEnable:" + false + " surface:" + paramSurface);
+      if (LogUtils.isLogEnable())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getCodec return DirectCodecWrapper for mediaFormat:");
+        ((StringBuilder)localObject).append(paramMediaFormat);
+        ((StringBuilder)localObject).append(" codecFinalReuseEnable:");
+        ((StringBuilder)localObject).append(false);
+        ((StringBuilder)localObject).append(" surface:");
+        ((StringBuilder)localObject).append(paramSurface);
+        LogUtils.d("TCodecManager", ((StringBuilder)localObject).toString());
       }
       return createDirectCodecWrapper(paramMediaFormat, paramTMediaCodec);
     }
@@ -91,22 +121,41 @@ public final class TCodecManager
     if (paramSurface != null)
     {
       localObject = paramSurface.setCanReuseType((FormatWrapper)localObject);
-      if ((localObject == ReuseHelper.ReuseType.KEEP_CODEC_RESULT_YES_WITHOUT_RECONFIGURATION) || (localObject == ReuseHelper.ReuseType.KEEP_CODEC_RESULT_YES_WITH_RECONFIGURATION))
+      if ((localObject != ReuseHelper.ReuseType.KEEP_CODEC_RESULT_YES_WITHOUT_RECONFIGURATION) && (localObject != ReuseHelper.ReuseType.KEEP_CODEC_RESULT_YES_WITH_RECONFIGURATION))
       {
-        if (LogUtils.isLogEnable()) {
-          LogUtils.d("TCodecManager", "getCodec reuse, isVideo:" + bool + " reuseType:" + localObject);
+        if ((localObject == ReuseHelper.ReuseType.KEEP_CODEC_RESULT_NO) && (LogUtils.isLogEnable()))
+        {
+          paramSurface = new StringBuilder();
+          paramSurface.append("getCodec not reuse, isVideo:");
+          paramSurface.append(bool);
+          paramSurface.append(" reuseType:");
+          paramSurface.append(localObject);
+          LogUtils.w("TCodecManager", paramSurface.toString());
+        }
+      }
+      else
+      {
+        if (LogUtils.isLogEnable())
+        {
+          paramMediaFormat = new StringBuilder();
+          paramMediaFormat.append("getCodec reuse, isVideo:");
+          paramMediaFormat.append(bool);
+          paramMediaFormat.append(" reuseType:");
+          paramMediaFormat.append(localObject);
+          LogUtils.d("TCodecManager", paramMediaFormat.toString());
         }
         paramSurface.attachThread();
         paramSurface.prepareToReUse();
         paramTMediaCodec.isReUsed = true;
         return paramSurface;
       }
-      if ((localObject == ReuseHelper.ReuseType.KEEP_CODEC_RESULT_NO) && (LogUtils.isLogEnable())) {
-        LogUtils.w("TCodecManager", "getCodec not reuse, isVideo:" + bool + " reuseType:" + localObject);
-      }
     }
-    if (LogUtils.isLogEnable()) {
-      LogUtils.d("TCodecManager", "getCodec not reuse, for can't find reUseAble CodecWrapper. isVideo:" + bool);
+    if (LogUtils.isLogEnable())
+    {
+      paramSurface = new StringBuilder();
+      paramSurface.append("getCodec not reuse, for can't find reUseAble CodecWrapper. isVideo:");
+      paramSurface.append(bool);
+      LogUtils.d("TCodecManager", paramSurface.toString());
     }
     paramTMediaCodec.isReUsed = false;
     paramMediaFormat = createNewReuseCodecWrapper(paramMediaFormat, paramTMediaCodec);
@@ -129,26 +178,28 @@ public final class TCodecManager
   
   private CodecWrapper obtainCodecWrapper(boolean paramBoolean, FormatWrapper paramFormatWrapper)
   {
+    CodecWrapperManager localCodecWrapperManager;
     if (paramBoolean) {
-      return this.mVideoCodecManager.obtainCodecWrapper(paramFormatWrapper);
+      localCodecWrapperManager = this.mVideoCodecManager;
+    } else {
+      localCodecWrapperManager = this.mAudioCodecManager;
     }
-    return this.mAudioCodecManager.obtainCodecWrapper(paramFormatWrapper);
+    return localCodecWrapperManager.obtainCodecWrapper(paramFormatWrapper);
   }
   
   private void onCodecRunning(CodecWrapper paramCodecWrapper)
   {
     if (isGlobalReuseEnable())
     {
-      if (!(paramCodecWrapper instanceof VideoCodecWrapper)) {
-        break label26;
+      if ((paramCodecWrapper instanceof VideoCodecWrapper))
+      {
+        this.mVideoCodecManager.transToRunning((ReuseCodecWrapper)paramCodecWrapper);
+        return;
       }
-      this.mVideoCodecManager.transToRunning((ReuseCodecWrapper)paramCodecWrapper);
+      if ((paramCodecWrapper instanceof AudioCodecWrapper)) {
+        this.mAudioCodecManager.transToRunning((ReuseCodecWrapper)paramCodecWrapper);
+      }
     }
-    label26:
-    while (!(paramCodecWrapper instanceof AudioCodecWrapper)) {
-      return;
-    }
-    this.mAudioCodecManager.transToRunning((ReuseCodecWrapper)paramCodecWrapper);
   }
   
   public static final void setIsDebug(boolean paramBoolean)
@@ -160,35 +211,59 @@ public final class TCodecManager
   @NonNull
   public final CodecWrapper configure(@NonNull MediaFormat paramMediaFormat, @Nullable Surface paramSurface, int paramInt, @Nullable MediaDescrambler paramMediaDescrambler, @NonNull TMediaCodec paramTMediaCodec)
   {
-    if (LogUtils.isLogEnable()) {
-      LogUtils.d("TCodecManager", "configureStart videoPoolInfo:" + this.mVideoCodecManager.getDumpInfo() + ", audioPoolInfo:" + this.mAudioCodecManager.getDumpInfo());
+    if (LogUtils.isLogEnable())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("configureStart videoPoolInfo:");
+      ((StringBuilder)localObject).append(this.mVideoCodecManager.getDumpInfo());
+      ((StringBuilder)localObject).append(", audioPoolInfo:");
+      ((StringBuilder)localObject).append(this.mAudioCodecManager.getDumpInfo());
+      LogUtils.d("TCodecManager", ((StringBuilder)localObject).toString());
     }
     this.mConfigMethodCalled = true;
-    CodecWrapper localCodecWrapper = getCodec(paramMediaFormat, paramTMediaCodec, paramSurface);
-    localCodecWrapper.setCodecCallback(paramTMediaCodec.getCodecCallback());
-    onCodecRunning(localCodecWrapper);
-    localCodecWrapper.configure(paramMediaFormat, paramSurface, paramInt, paramMediaDescrambler);
-    if (LogUtils.isLogEnable()) {
-      LogUtils.d("TCodecManager", "configureEnd   videoPoolInfo:" + this.mVideoCodecManager.getDumpInfo() + ", audioPoolInfo:" + this.mAudioCodecManager.getDumpInfo());
+    Object localObject = getCodec(paramMediaFormat, paramTMediaCodec, paramSurface);
+    ((CodecWrapper)localObject).setCodecCallback(paramTMediaCodec.getCodecCallback());
+    onCodecRunning((CodecWrapper)localObject);
+    ((CodecWrapper)localObject).configure(paramMediaFormat, paramSurface, paramInt, paramMediaDescrambler);
+    if (LogUtils.isLogEnable())
+    {
+      paramMediaFormat = new StringBuilder();
+      paramMediaFormat.append("configureEnd   videoPoolInfo:");
+      paramMediaFormat.append(this.mVideoCodecManager.getDumpInfo());
+      paramMediaFormat.append(", audioPoolInfo:");
+      paramMediaFormat.append(this.mAudioCodecManager.getDumpInfo());
+      LogUtils.d("TCodecManager", paramMediaFormat.toString());
     }
-    return localCodecWrapper;
+    return localObject;
   }
   
   @NonNull
   public final CodecWrapper configure(@NonNull MediaFormat paramMediaFormat, @Nullable Surface paramSurface, @Nullable MediaCrypto paramMediaCrypto, int paramInt, @NonNull TMediaCodec paramTMediaCodec)
   {
-    if (LogUtils.isLogEnable()) {
-      LogUtils.d("TCodecManager", "configureStart videoPoolInfo:" + this.mVideoCodecManager.getDumpInfo() + ", audioPoolInfo:" + this.mAudioCodecManager.getDumpInfo());
+    if (LogUtils.isLogEnable())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("configureStart videoPoolInfo:");
+      ((StringBuilder)localObject).append(this.mVideoCodecManager.getDumpInfo());
+      ((StringBuilder)localObject).append(", audioPoolInfo:");
+      ((StringBuilder)localObject).append(this.mAudioCodecManager.getDumpInfo());
+      LogUtils.d("TCodecManager", ((StringBuilder)localObject).toString());
     }
     this.mConfigMethodCalled = true;
-    CodecWrapper localCodecWrapper = getCodec(paramMediaFormat, paramTMediaCodec, paramSurface);
-    onCodecRunning(localCodecWrapper);
-    localCodecWrapper.setCodecCallback(paramTMediaCodec.getCodecCallback());
-    localCodecWrapper.configure(paramMediaFormat, paramSurface, paramMediaCrypto, paramInt);
-    if (LogUtils.isLogEnable()) {
-      LogUtils.d("TCodecManager", "configureEnd   videoPoolInfo:" + this.mVideoCodecManager.getDumpInfo() + ", audioPoolInfo:" + this.mAudioCodecManager.getDumpInfo());
+    Object localObject = getCodec(paramMediaFormat, paramTMediaCodec, paramSurface);
+    onCodecRunning((CodecWrapper)localObject);
+    ((CodecWrapper)localObject).setCodecCallback(paramTMediaCodec.getCodecCallback());
+    ((CodecWrapper)localObject).configure(paramMediaFormat, paramSurface, paramMediaCrypto, paramInt);
+    if (LogUtils.isLogEnable())
+    {
+      paramMediaFormat = new StringBuilder();
+      paramMediaFormat.append("configureEnd   videoPoolInfo:");
+      paramMediaFormat.append(this.mVideoCodecManager.getDumpInfo());
+      paramMediaFormat.append(", audioPoolInfo:");
+      paramMediaFormat.append(this.mAudioCodecManager.getDumpInfo());
+      LogUtils.d("TCodecManager", paramMediaFormat.toString());
     }
-    return localCodecWrapper;
+    return localObject;
   }
   
   @NonNull
@@ -211,8 +286,12 @@ public final class TCodecManager
     if (PreloadCodecManager.isInvalideMimeType(paramString2)) {
       localLinkedHashSet.add(paramString2);
     }
-    if (LogUtils.isLogEnable()) {
-      LogUtils.d("TCodecManager", "preloadCodec mimeTypeSet:" + localLinkedHashSet);
+    if (LogUtils.isLogEnable())
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("preloadCodec mimeTypeSet:");
+      paramString1.append(localLinkedHashSet);
+      LogUtils.d("TCodecManager", paramString1.toString());
     }
     this.mPreloadCodecManager.preload(localLinkedHashSet);
   }
@@ -221,32 +300,30 @@ public final class TCodecManager
   {
     if (isGlobalReuseEnable())
     {
-      if (!(paramCodecWrapper instanceof VideoCodecWrapper)) {
-        break label26;
+      if ((paramCodecWrapper instanceof VideoCodecWrapper))
+      {
+        this.mVideoCodecManager.transTokeep((ReuseCodecWrapper)paramCodecWrapper);
+        return;
       }
-      this.mVideoCodecManager.transTokeep((ReuseCodecWrapper)paramCodecWrapper);
+      if ((paramCodecWrapper instanceof AudioCodecWrapper)) {
+        this.mAudioCodecManager.transTokeep((ReuseCodecWrapper)paramCodecWrapper);
+      }
     }
-    label26:
-    while (!(paramCodecWrapper instanceof AudioCodecWrapper)) {
-      return;
-    }
-    this.mAudioCodecManager.transTokeep((ReuseCodecWrapper)paramCodecWrapper);
   }
   
   public final void removeCodecFromRunningPool(@NonNull CodecWrapper paramCodecWrapper)
   {
     if (isGlobalReuseEnable())
     {
-      if (!(paramCodecWrapper instanceof VideoCodecWrapper)) {
-        break label26;
+      if ((paramCodecWrapper instanceof VideoCodecWrapper))
+      {
+        this.mVideoCodecManager.removeFromRunning((ReuseCodecWrapper)paramCodecWrapper);
+        return;
       }
-      this.mVideoCodecManager.removeFromRunning((ReuseCodecWrapper)paramCodecWrapper);
+      if ((paramCodecWrapper instanceof AudioCodecWrapper)) {
+        this.mAudioCodecManager.removeFromRunning((ReuseCodecWrapper)paramCodecWrapper);
+      }
     }
-    label26:
-    while (!(paramCodecWrapper instanceof AudioCodecWrapper)) {
-      return;
-    }
-    this.mAudioCodecManager.removeFromRunning((ReuseCodecWrapper)paramCodecWrapper);
   }
   
   public boolean reuseEnable(TMediaCodec paramTMediaCodec, Surface paramSurface)
@@ -255,28 +332,36 @@ public final class TCodecManager
     boolean bool4 = paramTMediaCodec.isReuseEnable();
     boolean bool5 = paramTMediaCodec.isVideo();
     boolean bool1;
-    if ((bool3) && (bool4))
-    {
+    if ((bool3) && (bool4)) {
       bool1 = true;
-      if ((Build.VERSION.SDK_INT < 23) || (TUtils.codecNeedsSetOutputSurfaceWorkaround())) {
-        break label162;
-      }
-    }
-    label162:
-    for (boolean bool2 = true;; bool2 = false)
-    {
-      if (LogUtils.isLogEnable()) {
-        LogUtils.d("TCodecManager", "reuseEnable getCodec isVideo:" + bool5 + " reuseEnable:" + bool1 + ' ' + "globalReuseEnable:" + bool3 + " mediaCodecReuseEnable:" + bool4 + " canUseSetOutputSurfaceAPI:" + bool2 + " ,surface:" + paramSurface);
-      }
-      if ((!bool1) || (!bool5) || (!bool2) || (paramSurface == null)) {
-        break label168;
-      }
-      return true;
+    } else {
       bool1 = false;
-      break;
     }
-    label168:
-    return false;
+    boolean bool2;
+    if ((Build.VERSION.SDK_INT >= 23) && (!TUtils.codecNeedsSetOutputSurfaceWorkaround())) {
+      bool2 = true;
+    } else {
+      bool2 = false;
+    }
+    if (LogUtils.isLogEnable())
+    {
+      paramTMediaCodec = new StringBuilder();
+      paramTMediaCodec.append("reuseEnable getCodec isVideo:");
+      paramTMediaCodec.append(bool5);
+      paramTMediaCodec.append(" reuseEnable:");
+      paramTMediaCodec.append(bool1);
+      paramTMediaCodec.append(' ');
+      paramTMediaCodec.append("globalReuseEnable:");
+      paramTMediaCodec.append(bool3);
+      paramTMediaCodec.append(" mediaCodecReuseEnable:");
+      paramTMediaCodec.append(bool4);
+      paramTMediaCodec.append(" canUseSetOutputSurfaceAPI:");
+      paramTMediaCodec.append(bool2);
+      paramTMediaCodec.append(" ,surface:");
+      paramTMediaCodec.append(paramSurface);
+      LogUtils.d("TCodecManager", paramTMediaCodec.toString());
+    }
+    return (bool1) && (bool5) && (bool2) && (paramSurface != null);
   }
   
   public final void setGlobalReuseEnable(boolean paramBoolean)
@@ -312,7 +397,7 @@ public final class TCodecManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmediacodec.TCodecManager
  * JD-Core Version:    0.7.0.1
  */

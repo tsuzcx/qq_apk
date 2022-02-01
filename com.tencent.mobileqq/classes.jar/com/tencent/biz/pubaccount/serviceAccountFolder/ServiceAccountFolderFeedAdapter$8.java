@@ -1,12 +1,11 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder;
 
+import com.tencent.biz.pubaccount.accountdetail.api.IPublicAccountDetail;
+import com.tencent.biz.pubaccount.api.IPublicAccountDataManager;
 import com.tencent.biz.pubaccount.api.IPublicAccountManager;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.recent.RecentUtil;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.mobileqq.qroute.QRoute;
@@ -19,17 +18,17 @@ class ServiceAccountFolderFeedAdapter$8
   public void run()
   {
     ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).removeMsgID(ServiceAccountFolderFeedAdapter.a(this.this$0), this.jdField_a_of_type_JavaLangString);
-    Object localObject = (PublicAccountDataManager)ServiceAccountFolderFeedAdapter.a(this.this$0).getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
+    Object localObject = (IPublicAccountDataManager)ServiceAccountFolderFeedAdapter.a(this.this$0).getRuntimeService(IPublicAccountDataManager.class, "all");
     if (localObject != null)
     {
-      ((PublicAccountDataManager)localObject).c(this.jdField_a_of_type_JavaLangString);
-      ((PublicAccountDataManager)localObject).b(this.jdField_a_of_type_JavaLangString);
-      AccountDetail localAccountDetail = ((PublicAccountDataManager)localObject).a(this.jdField_a_of_type_JavaLangString);
-      if (localAccountDetail != null)
+      ((IPublicAccountDataManager)localObject).delPublicAccountInfoCache(this.jdField_a_of_type_JavaLangString);
+      ((IPublicAccountDataManager)localObject).delPublicAccountInfo(this.jdField_a_of_type_JavaLangString);
+      IPublicAccountDetail localIPublicAccountDetail = ((IPublicAccountDataManager)localObject).findAccountDetailInfo(this.jdField_a_of_type_JavaLangString);
+      if (localIPublicAccountDetail != null)
       {
-        ((PublicAccountDataManager)localObject).a(this.jdField_a_of_type_JavaLangString);
+        ((IPublicAccountDataManager)localObject).delAccountDetailInfoCache(this.jdField_a_of_type_JavaLangString);
         localObject = ServiceAccountFolderFeedAdapter.a(this.this$0).getEntityManagerFactory().createEntityManager();
-        ((EntityManager)localObject).remove(localAccountDetail);
+        ((EntityManager)localObject).remove(localIPublicAccountDetail.getEntity());
         ((EntityManager)localObject).close();
       }
     }
@@ -39,7 +38,7 @@ class ServiceAccountFolderFeedAdapter$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeedAdapter.8
  * JD-Core Version:    0.7.0.1
  */

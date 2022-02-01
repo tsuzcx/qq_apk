@@ -17,22 +17,57 @@ public class DeviceCapability
     String str = paramCodecTestInfo.a();
     paramVideoController = paramVideoController.a(paramLong, paramCodecTestInfo.a(), str.getBytes());
     long l2 = System.currentTimeMillis();
-    if (paramVideoController == null) {}
-    for (paramVideoController = "";; paramVideoController = new String(paramVideoController))
-    {
-      QLog.w("DeviceCapability", 1, "doCodecTest, codec[" + paramCodecTestInfo.jdField_a_of_type_Int + "], sampleMD5[" + paramCodecTestInfo.jdField_a_of_type_JavaLangString + "], cmdParams[" + str + "], result[" + paramVideoController + "], cost[" + (l2 - l1) + "], seq[" + paramLong + "]");
-      AndroidCodecUtil.a();
-      QLog.w("DeviceCapability", 1, "doCodecTest get_info_test numCores: " + VcSystemInfo.getNumCores() + ", cpu frep: " + VcSystemInfo.getMaxCpuFreq() + ", memory: " + VcSystemInfo.getMemoryTotal() + ", output format: " + AndroidCodec.getHwDetectOutputFormatForReport() + ", H264EncBaseLineLevel: " + AndroidCodecUtil.jdField_a_of_type_Int + ", H264DecBaseLineLevel: " + AndroidCodecUtil.b + ", H264EncHighProfileLevel: " + AndroidCodecUtil.c + ", H264DecHighProfileLevel: " + AndroidCodecUtil.d + ", H265EncLevel: " + AndroidCodecUtil.e + ", H265DecLevel: " + AndroidCodecUtil.f);
-      paramCodecTestInfo = new GlStringParser('=', ';');
-      paramCodecTestInfo.unflatten(paramVideoController);
-      paramCodecPlayerCallback.a(paramCodecTestInfo.getInt("i_resultCode", -99), "", 0, paramCodecTestInfo.getInt("i_delay", -99), null);
-      return;
+    if (paramVideoController == null) {
+      paramVideoController = "";
+    } else {
+      paramVideoController = new String(paramVideoController);
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("doCodecTest, codec[");
+    localStringBuilder.append(paramCodecTestInfo.jdField_a_of_type_Int);
+    localStringBuilder.append("], sampleMD5[");
+    localStringBuilder.append(paramCodecTestInfo.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("], cmdParams[");
+    localStringBuilder.append(str);
+    localStringBuilder.append("], result[");
+    localStringBuilder.append(paramVideoController);
+    localStringBuilder.append("], cost[");
+    localStringBuilder.append(l2 - l1);
+    localStringBuilder.append("], seq[");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("]");
+    QLog.w("DeviceCapability", 1, localStringBuilder.toString());
+    AndroidCodecUtil.a();
+    paramCodecTestInfo = new StringBuilder();
+    paramCodecTestInfo.append("doCodecTest get_info_test numCores: ");
+    paramCodecTestInfo.append(VcSystemInfo.getNumCores());
+    paramCodecTestInfo.append(", cpu frep: ");
+    paramCodecTestInfo.append(VcSystemInfo.getMaxCpuFreq());
+    paramCodecTestInfo.append(", memory: ");
+    paramCodecTestInfo.append(VcSystemInfo.getMemoryTotal());
+    paramCodecTestInfo.append(", output format: ");
+    paramCodecTestInfo.append(AndroidCodec.getHwDetectOutputFormatForReport());
+    paramCodecTestInfo.append(", H264EncBaseLineLevel: ");
+    paramCodecTestInfo.append(AndroidCodecUtil.jdField_a_of_type_Int);
+    paramCodecTestInfo.append(", H264DecBaseLineLevel: ");
+    paramCodecTestInfo.append(AndroidCodecUtil.b);
+    paramCodecTestInfo.append(", H264EncHighProfileLevel: ");
+    paramCodecTestInfo.append(AndroidCodecUtil.c);
+    paramCodecTestInfo.append(", H264DecHighProfileLevel: ");
+    paramCodecTestInfo.append(AndroidCodecUtil.d);
+    paramCodecTestInfo.append(", H265EncLevel: ");
+    paramCodecTestInfo.append(AndroidCodecUtil.e);
+    paramCodecTestInfo.append(", H265DecLevel: ");
+    paramCodecTestInfo.append(AndroidCodecUtil.f);
+    QLog.w("DeviceCapability", 1, paramCodecTestInfo.toString());
+    paramCodecTestInfo = new GlStringParser('=', ';');
+    paramCodecTestInfo.unflatten(paramVideoController);
+    paramCodecPlayerCallback.a(paramCodecTestInfo.getInt("i_resultCode", -99), "", 0, paramCodecTestInfo.getInt("i_delay", -99), null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.app.DeviceCapability
  * JD-Core Version:    0.7.0.1
  */

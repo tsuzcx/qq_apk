@@ -31,7 +31,7 @@ public class StructMsgItemLayout2
     paramContext = new TextViewWrapLayout(paramContext);
     paramContext.setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
     if (!TextUtils.isEmpty(this.c)) {
-      paramContext.setBackgroundResource(2130839575);
+      paramContext.setBackgroundResource(2130839433);
     }
     d(paramContext);
     return paramContext;
@@ -40,19 +40,20 @@ public class StructMsgItemLayout2
   private void a(Context paramContext, ViewGroup paramViewGroup)
   {
     Resources localResources = paramContext.getResources();
-    int m = localResources.getDimensionPixelSize(2131299069);
-    int n = localResources.getDimensionPixelSize(2131299070);
-    int i = AIOUtils.a(5.0F, localResources);
-    if (a(1)) {}
-    for (int j = a(paramContext, 10) + i;; j = i)
-    {
-      int k = i;
-      if (a(2)) {
-        k = i + a(paramContext, 10);
-      }
-      paramViewGroup.setPadding(m, j, n, k);
-      return;
+    int m = localResources.getDimensionPixelSize(2131299074);
+    int n = localResources.getDimensionPixelSize(2131299075);
+    int i = AIOUtils.b(5.0F, localResources);
+    int j;
+    if (a(1)) {
+      j = a(paramContext, 10) + i;
+    } else {
+      j = i;
     }
+    int k = i;
+    if (a(2)) {
+      k = i + a(paramContext, 10);
+    }
+    paramViewGroup.setPadding(m, j, n, k);
   }
   
   private void a(View paramView, int paramInt)
@@ -65,19 +66,23 @@ public class StructMsgItemLayout2
   
   private void a(ViewGroup paramViewGroup, View paramView, RelativeLayout.LayoutParams paramLayoutParams)
   {
-    if ((paramViewGroup == null) || (paramView == null) || (paramLayoutParams == null)) {
-      return;
+    if ((paramViewGroup != null) && (paramView != null))
+    {
+      if (paramLayoutParams == null) {
+        return;
+      }
+      paramViewGroup.addView(paramView, paramLayoutParams);
     }
-    paramViewGroup.addView(paramView, paramLayoutParams);
   }
   
   private void a(TextView paramTextView, int paramInt)
   {
-    if (paramTextView == null) {}
-    while (paramInt <= 0) {
+    if (paramTextView == null) {
       return;
     }
-    paramTextView.setMaxLines(paramInt);
+    if (paramInt > 0) {
+      paramTextView.setMaxLines(paramInt);
+    }
   }
   
   private void b(Context paramContext, ViewGroup paramViewGroup)
@@ -85,355 +90,356 @@ public class StructMsgItemLayout2
     if (!this.jdField_a_of_type_Boolean)
     {
       paramContext = paramContext.getResources();
-      int i = AIOUtils.a(11.0F, paramContext);
-      int j = AIOUtils.a(14.0F, paramContext);
-      paramViewGroup.setPadding(j, i, j, AIOUtils.a(12.0F, paramContext));
+      int i = AIOUtils.b(11.0F, paramContext);
+      int j = AIOUtils.b(14.0F, paramContext);
+      paramViewGroup.setPadding(j, i, j, AIOUtils.b(12.0F, paramContext));
     }
   }
   
-  public int b()
+  protected int b()
   {
     return 2;
   }
   
   public View b(Context paramContext, View paramView, Bundle paramBundle)
   {
-    Object localObject9 = paramContext.getResources();
+    Resources localResources = paramContext.getResources();
     this.jdField_a_of_type_Boolean = paramBundle.getBoolean("pre_dialog", false);
-    Object localObject8 = null;
-    Object localObject3 = null;
-    Object localObject5 = null;
-    Object localObject2 = null;
-    Object localObject7 = null;
-    Object localObject1 = null;
-    Object localObject6 = null;
-    Object localObject4 = null;
-    Object localObject10 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (((Iterator)localObject10).hasNext())
+    Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Object localObject2;
+    while (((Iterator)localObject1).hasNext())
     {
-      Object localObject11 = (AbsStructMsgElement)((Iterator)localObject10).next();
-      if ((localObject11 instanceof StructMsgItemCover))
+      localObject2 = (AbsStructMsgElement)((Iterator)localObject1).next();
+      if ((localObject2 instanceof StructMsgItemCover))
       {
-        localObject11 = (StructMsgItemCover)localObject11;
-        if (((StructMsgItemCover)localObject11).t == StructMsgItemCover.s) {
-          ((StructMsgItemCover)localObject11).t = StructMsgItemCover.q;
+        localObject2 = (StructMsgItemCover)localObject2;
+        if (((StructMsgItemCover)localObject2).t == StructMsgItemCover.s) {
+          ((StructMsgItemCover)localObject2).t = StructMsgItemCover.q;
         }
       }
     }
+    localObject1 = null;
+    Object localObject5;
+    Object localObject4;
+    Object localObject3;
+    Object localObject6;
+    Object localObject7;
     if ((paramView != null) && ((paramView instanceof TextViewWrapLayout)))
     {
-      localObject8 = (TextViewWrapLayout)paramView;
-      localObject9 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      paramView = (View)localObject4;
-      localObject5 = localObject2;
-      localObject7 = paramView;
-      localObject6 = localObject1;
-      localObject4 = localObject8;
-      if (!((Iterator)localObject9).hasNext()) {
-        break label966;
+      localObject5 = (TextViewWrapLayout)paramView;
+      localObject4 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject3 = null;
+      localObject2 = localObject3;
+      paramView = (View)localObject2;
+      while (((Iterator)localObject4).hasNext())
+      {
+        localObject6 = (AbsStructMsgElement)((Iterator)localObject4).next();
+        ((AbsStructMsgElement)localObject6).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+        localObject7 = ((AbsStructMsgElement)localObject6).jdField_a_of_type_JavaLangString;
+        if ((("picture".equals(localObject7)) || ("vote".equals(localObject7)) || ("video".equals(localObject7))) && (localObject3 == null))
+        {
+          localObject3 = ((AbsStructMsgElement)localObject6).a(paramContext, ((TextViewWrapLayout)localObject5).findViewById(2131368633), paramBundle);
+        }
+        else if (("title".equals(localObject7)) && (localObject1 == null))
+        {
+          if ((localObject6 instanceof StructMsgItemTitle)) {
+            ((StructMsgItemTitle)localObject6).a(a(), this.p);
+          }
+          localObject1 = (TextView)((AbsStructMsgElement)localObject6).a(paramContext, ((TextViewWrapLayout)localObject5).findViewById(2131379930), paramBundle);
+        }
+        else if (localObject2 == null)
+        {
+          if ((!"summary".equals(localObject7)) && (!"timer".equals(localObject7)))
+          {
+            if ("checklist".equals(localObject7)) {
+              paramView = (LinearLayout)((AbsStructMsgElement)localObject6).a(paramContext, ((TextViewWrapLayout)localObject5).findViewById(2131379570), paramBundle);
+            }
+          }
+          else {
+            localObject2 = (TextView)((AbsStructMsgElement)localObject6).a(paramContext, ((TextViewWrapLayout)localObject5).findViewById(2131379906), paramBundle);
+          }
+        }
       }
-      localObject4 = (AbsStructMsgElement)((Iterator)localObject9).next();
-      ((AbsStructMsgElement)localObject4).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-      localObject5 = ((AbsStructMsgElement)localObject4).jdField_a_of_type_JavaLangString;
-      if ((("picture".equals(localObject5)) || ("vote".equals(localObject5)) || ("video".equals(localObject5))) && (localObject3 == null)) {
-        localObject3 = ((AbsStructMsgElement)localObject4).a(paramContext, ((TextViewWrapLayout)localObject8).findViewById(2131368907), paramBundle);
-      }
+      localObject4 = localObject2;
+      localObject3 = localObject5;
+      localObject2 = localObject1;
+      localObject1 = localObject4;
     }
-    for (;;)
+    else
     {
-      break;
-      if (("title".equals(localObject5)) && (localObject2 == null))
+      TextViewWrapLayout localTextViewWrapLayout = a(paramContext);
+      Object localObject8 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject3 = null;
+      localObject2 = localObject3;
+      localObject1 = localObject2;
+      for (paramView = (View)localObject1; ((Iterator)localObject8).hasNext(); paramView = (View)localObject7)
       {
-        if ((localObject4 instanceof StructMsgItemTitle)) {
-          ((StructMsgItemTitle)localObject4).a(a(), this.p);
-        }
-        localObject2 = (TextView)((AbsStructMsgElement)localObject4).a(paramContext, ((TextViewWrapLayout)localObject8).findViewById(2131380651), paramBundle);
-      }
-      else if (localObject1 == null)
-      {
-        if (("summary".equals(localObject5)) || ("timer".equals(localObject5)))
+        AbsStructMsgElement localAbsStructMsgElement = (AbsStructMsgElement)((Iterator)localObject8).next();
+        localAbsStructMsgElement.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+        String str = localAbsStructMsgElement.jdField_a_of_type_JavaLangString;
+        if ((("picture".equals(str)) || ("vote".equals(str)) || ("video".equals(str))) && (localObject3 == null))
         {
-          localObject1 = (TextView)((AbsStructMsgElement)localObject4).a(paramContext, ((TextViewWrapLayout)localObject8).findViewById(2131380624), paramBundle);
+          localObject4 = localAbsStructMsgElement.a(paramContext, null, paramBundle);
+          localObject5 = localObject2;
+          localObject6 = localObject1;
+          localObject7 = paramView;
         }
-        else if ("checklist".equals(localObject5))
+        else if (("title".equals(str)) && (localObject2 == null))
         {
-          paramView = (LinearLayout)((AbsStructMsgElement)localObject4).a(paramContext, ((TextViewWrapLayout)localObject8).findViewById(2131380255), paramBundle);
-          continue;
-          localObject4 = a(paramContext);
-          localObject10 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-          localObject3 = localObject8;
-          localObject1 = localObject7;
-          paramView = (View)localObject6;
-          localObject2 = localObject5;
-          if (((Iterator)localObject10).hasNext())
+          if ((localAbsStructMsgElement instanceof StructMsgItemTitle))
           {
-            localObject5 = (AbsStructMsgElement)((Iterator)localObject10).next();
-            ((AbsStructMsgElement)localObject5).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-            localObject6 = ((AbsStructMsgElement)localObject5).jdField_a_of_type_JavaLangString;
-            if ((("picture".equals(localObject6)) || ("vote".equals(localObject6)) || ("video".equals(localObject6))) && (localObject3 == null)) {
-              localObject3 = ((AbsStructMsgElement)localObject5).a(paramContext, null, paramBundle);
-            }
+            ((StructMsgItemTitle)localAbsStructMsgElement).a(a(), this.p);
+            localObject2 = null;
           }
-          for (;;)
+          else
           {
-            break;
-            if (("title".equals(localObject6)) && (localObject2 == null))
+            localObject2 = null;
+          }
+          localObject5 = (TextView)localAbsStructMsgElement.a(paramContext, (View)localObject2, paramBundle);
+          localObject4 = localObject3;
+          localObject6 = localObject1;
+          localObject7 = paramView;
+        }
+        else
+        {
+          localObject4 = localObject3;
+          localObject5 = localObject2;
+          localObject6 = localObject1;
+          localObject7 = paramView;
+          if (localObject1 == null) {
+            if ((!"summary".equals(str)) && (!"timer".equals(str)))
             {
-              if ((localObject5 instanceof StructMsgItemTitle)) {
-                ((StructMsgItemTitle)localObject5).a(a(), this.p);
-              }
-              localObject2 = (TextView)((AbsStructMsgElement)localObject5).a(paramContext, null, paramBundle);
-            }
-            else if (localObject1 == null)
-            {
-              if (("summary".equals(localObject6)) || ("timer".equals(localObject6)))
+              localObject4 = localObject3;
+              localObject5 = localObject2;
+              localObject6 = localObject1;
+              localObject7 = paramView;
+              if ("checklist".equals(str))
               {
-                localObject1 = (TextView)((AbsStructMsgElement)localObject5).a(paramContext, null, paramBundle);
-              }
-              else if ("checklist".equals(localObject6))
-              {
-                paramView = (LinearLayout)((AbsStructMsgElement)localObject5).a(paramContext, null, paramBundle);
-                continue;
-                if (localObject3 == null)
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.e("StructMsg", 2, "generate 2 item failure.");
-                  }
-                  paramContext = null;
-                  return paramContext;
-                }
+                localObject7 = (LinearLayout)localAbsStructMsgElement.a(paramContext, null, paramBundle);
+                localObject4 = localObject3;
                 localObject5 = localObject2;
-                if (localObject2 == null)
-                {
-                  localObject5 = localObject2;
-                  if (localObject1 != null) {
-                    localObject5 = (TextView)new StructMsgItemTitle(((TextView)localObject1).getText().toString()).a(paramContext, null, paramBundle);
-                  }
-                }
-                if (localObject5 == null)
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.e("StructMsg", 2, "generate 2 item titleview failure.");
-                  }
-                  return null;
-                }
-                localObject6 = new RelativeLayout.LayoutParams(-1, -2);
-                ((RelativeLayout.LayoutParams)localObject6).topMargin = 0;
-                ((RelativeLayout.LayoutParams)localObject6).addRule(10);
-                localObject7 = new RelativeLayout.LayoutParams(-1, -2);
-                ((RelativeLayout.LayoutParams)localObject7).addRule(3, ((TextView)localObject5).getId());
-                label819:
-                label881:
-                int i;
-                label966:
-                label989:
-                int j;
-                if ((this.o == 1) || (this.o == 3)) {
-                  if (this.o == 1)
-                  {
-                    localObject2 = new RelativeLayout.LayoutParams(AIOUtils.a(50.0F, (Resources)localObject9), AIOUtils.a(50.0F, (Resources)localObject9));
-                    ((RelativeLayout.LayoutParams)localObject2).topMargin = AIOUtils.a(3.0F, (Resources)localObject9);
-                    ((RelativeLayout.LayoutParams)localObject2).addRule(9);
-                    ((RelativeLayout.LayoutParams)localObject2).addRule(10);
-                    localObject8 = new RelativeLayout(paramContext);
-                    localObject10 = new RelativeLayout.LayoutParams(-1, -2);
-                    if (this.o != 3) {
-                      break label1399;
-                    }
-                    ((RelativeLayout.LayoutParams)localObject10).topMargin = AIOUtils.a(12.0F, (Resources)localObject9);
-                    ((RelativeLayout.LayoutParams)localObject7).topMargin = 5;
-                    ((RelativeLayout.LayoutParams)localObject10).addRule(10);
-                    ((RelativeLayout.LayoutParams)localObject10).addRule(1, ((View)localObject3).getId());
-                    ((RelativeLayout.LayoutParams)localObject10).leftMargin = AIOUtils.a(10.0F, (Resources)localObject9);
-                    a((ViewGroup)localObject4, (View)localObject3, (RelativeLayout.LayoutParams)localObject2);
-                    a((ViewGroup)localObject8, (View)localObject5, (RelativeLayout.LayoutParams)localObject6);
-                    a((ViewGroup)localObject8, (View)localObject1, (RelativeLayout.LayoutParams)localObject7);
-                    a((ViewGroup)localObject8, paramView, (RelativeLayout.LayoutParams)localObject7);
-                    ((TextViewWrapLayout)localObject4).addView((View)localObject8, (ViewGroup.LayoutParams)localObject10);
-                    localObject6 = localObject1;
-                    localObject7 = paramView;
-                    if ((this.o != 1) && (this.o != 3)) {
-                      break label1713;
-                    }
-                    a(paramContext, (ViewGroup)localObject4);
-                    i = 0;
-                    int k = 0;
-                    j = i;
-                    if (localObject5 != null)
-                    {
-                      paramContext = ((TextView)localObject5).getTag();
-                      j = i;
-                      if ((paramContext instanceof StructMsgItemTitle))
-                      {
-                        paramContext = (StructMsgItemTitle)paramContext;
-                        j = i;
-                        if (paramContext != null)
-                        {
-                          if (TextUtils.isEmpty(paramContext.b())) {
-                            break label1723;
-                          }
-                          i = 1;
-                          label1047:
-                          j = i;
-                        }
-                      }
-                    }
-                    i = k;
-                    if (localObject6 != null)
-                    {
-                      paramContext = ((TextView)localObject6).getTag();
-                      i = k;
-                      if ((paramContext instanceof StructMsgItemSummary))
-                      {
-                        paramContext = (StructMsgItemSummary)paramContext;
-                        i = k;
-                        if (paramContext != null)
-                        {
-                          if (TextUtils.isEmpty(paramContext.b())) {
-                            break label1729;
-                          }
-                          i = 1;
-                        }
-                      }
-                    }
-                    label1103:
-                    if (localObject7 == null) {
-                      break label1809;
-                    }
-                    paramContext = ((LinearLayout)localObject7).getTag();
-                    if (!(paramContext instanceof StructMsgItemVote)) {
-                      break label1809;
-                    }
-                    paramContext = ((StructMsgItemVote)paramContext).jdField_a_of_type_JavaUtilArrayList;
-                    if ((paramContext == null) || (paramContext.isEmpty())) {
-                      break label1735;
-                    }
-                    i = 1;
-                  }
-                }
-                label1799:
-                label1809:
-                for (;;)
-                {
-                  label1143:
-                  if (j != 0)
-                  {
-                    a((TextView)localObject5, 2);
-                    a((View)localObject5, 0);
-                    a((TextView)localObject6, 2);
-                    if ((this.o == 1) || (this.o == 3))
-                    {
-                      ((TextView)localObject5).setTextSize(16.0F);
-                      if (i == 0) {
-                        break label1788;
-                      }
-                      a((View)localObject6, 0);
-                      if ((this.o != 1) && (this.o != 3)) {
-                        break label1799;
-                      }
-                      if (localObject6 != null) {
-                        ((TextView)localObject6).setSingleLine(true);
-                      }
-                      if (localObject5 != null)
-                      {
-                        ((TextView)localObject5).setSingleLine(true);
-                        ((TextView)localObject5).setMaxLines(1);
-                      }
-                    }
-                  }
-                  for (;;)
-                  {
-                    label1193:
-                    label1205:
-                    paramContext = (Context)localObject4;
-                    if (!AppSetting.d) {
-                      break;
-                    }
-                    paramContext = new StringBuilder();
-                    if (localObject5 != null) {
-                      paramContext.append(((TextView)localObject5).getText());
-                    }
-                    i = paramBundle.getInt("serviceID", 0);
-                    if ((localObject6 != null) && ((i == 32) || (i == 14) || (i == 15) || (i == 16) || (i == 17))) {
-                      paramContext.append(",").append(((TextView)localObject6).getText());
-                    }
-                    ((TextViewWrapLayout)localObject4).setContentDescription(paramContext.toString());
-                    return localObject4;
-                    localObject2 = new RelativeLayout.LayoutParams(AIOUtils.a(115.0F, (Resources)localObject9), AIOUtils.a(70.0F, (Resources)localObject9));
-                    ((RelativeLayout.LayoutParams)localObject2).topMargin = AIOUtils.a(3.0F, (Resources)localObject9);
-                    break label819;
-                    label1399:
-                    ((RelativeLayout.LayoutParams)localObject10).topMargin = AIOUtils.a(7.0F, (Resources)localObject9);
-                    ((RelativeLayout.LayoutParams)localObject7).topMargin = 0;
-                    break label881;
-                    if (!this.jdField_a_of_type_Boolean)
-                    {
-                      if (localObject1 != null) {
-                        ((TextView)localObject1).setLineSpacing(AIOUtils.a(1.0F, (Resources)localObject9), 1.0F);
-                      }
-                      localObject2 = new RelativeLayout.LayoutParams(AIOUtils.a(50.0F, (Resources)localObject9), AIOUtils.a(50.0F, (Resources)localObject9));
-                      ((RelativeLayout.LayoutParams)localObject2).topMargin = AIOUtils.a(7.0F, (Resources)localObject9);
-                      ((RelativeLayout.LayoutParams)localObject2).leftMargin = AIOUtils.a(10.0F, (Resources)localObject9);
-                      ((RelativeLayout.LayoutParams)localObject2).addRule(3, ((TextView)localObject5).getId());
-                      ((RelativeLayout.LayoutParams)localObject2).addRule(11);
-                      ((RelativeLayout.LayoutParams)localObject7).topMargin = AIOUtils.a(5.0F, (Resources)localObject9);
-                      ((RelativeLayout.LayoutParams)localObject7).addRule(0, ((View)localObject3).getId());
-                      a((ViewGroup)localObject4, (View)localObject5, (RelativeLayout.LayoutParams)localObject6);
-                      a((ViewGroup)localObject4, (View)localObject3, (RelativeLayout.LayoutParams)localObject2);
-                      a((ViewGroup)localObject4, (View)localObject1, (RelativeLayout.LayoutParams)localObject7);
-                      a((ViewGroup)localObject4, paramView, (RelativeLayout.LayoutParams)localObject7);
-                      localObject7 = paramView;
-                      localObject6 = localObject1;
-                      break label966;
-                    }
-                    localObject2 = new RelativeLayout.LayoutParams(AIOUtils.a(32.0F, (Resources)localObject9), AIOUtils.a(32.0F, (Resources)localObject9));
-                    ((RelativeLayout.LayoutParams)localObject2).leftMargin = AIOUtils.a(6.0F, (Resources)localObject9);
-                    ((RelativeLayout.LayoutParams)localObject2).addRule(11);
-                    ((RelativeLayout.LayoutParams)localObject2).addRule(15);
-                    i = ViewUtils.a(20.0F);
-                    ((RelativeLayout.LayoutParams)localObject6).topMargin = i;
-                    ((RelativeLayout.LayoutParams)localObject6).bottomMargin = i;
-                    ((RelativeLayout.LayoutParams)localObject6).addRule(0, ((View)localObject3).getId());
-                    ((RelativeLayout.LayoutParams)localObject6).addRule(9);
-                    ((RelativeLayout.LayoutParams)localObject6).addRule(15);
-                    a((ViewGroup)localObject4, (View)localObject3, (RelativeLayout.LayoutParams)localObject2);
-                    a((ViewGroup)localObject4, (View)localObject5, (RelativeLayout.LayoutParams)localObject6);
-                    localObject7 = paramView;
-                    localObject6 = localObject1;
-                    break label966;
-                    label1713:
-                    b(paramContext, (ViewGroup)localObject4);
-                    break label989;
-                    label1723:
-                    i = 0;
-                    break label1047;
-                    label1729:
-                    i = 0;
-                    break label1103;
-                    label1735:
-                    i = 0;
-                    break label1143;
-                    if (!this.jdField_a_of_type_Boolean) {}
-                    for (float f = 17.0F;; f = 14.0F)
-                    {
-                      ((TextView)localObject5).setTextSize(f);
-                      break;
-                    }
-                    a((View)localObject5, 8);
-                    a((TextView)localObject6, 4);
-                    break label1193;
-                    label1788:
-                    a((View)localObject6, 8);
-                    break label1205;
-                    a((TextView)localObject6, 3);
-                  }
-                }
+                localObject6 = localObject1;
               }
             }
+            else
+            {
+              localObject6 = (TextView)localAbsStructMsgElement.a(paramContext, null, paramBundle);
+              localObject7 = paramView;
+              localObject5 = localObject2;
+              localObject4 = localObject3;
+            }
           }
+        }
+        localObject3 = localObject4;
+        localObject2 = localObject5;
+        localObject1 = localObject6;
+      }
+      if (localObject3 == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("StructMsg", 2, "generate 2 item failure.");
+        }
+        return null;
+      }
+      if ((localObject2 == null) && (localObject1 != null)) {
+        localObject2 = (TextView)new StructMsgItemTitle(((TextView)localObject1).getText().toString()).a(paramContext, null, paramBundle);
+      }
+      if (localObject2 == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("StructMsg", 2, "generate 2 item titleview failure.");
+        }
+        return null;
+      }
+      localObject5 = new RelativeLayout.LayoutParams(-1, -2);
+      ((RelativeLayout.LayoutParams)localObject5).topMargin = 0;
+      ((RelativeLayout.LayoutParams)localObject5).addRule(10);
+      localObject6 = new RelativeLayout.LayoutParams(-1, -2);
+      ((RelativeLayout.LayoutParams)localObject6).addRule(3, ((TextView)localObject2).getId());
+      if ((this.o != 1) && (this.o != 3))
+      {
+        if (!this.jdField_a_of_type_Boolean)
+        {
+          if (localObject1 != null) {
+            ((TextView)localObject1).setLineSpacing(AIOUtils.b(1.0F, localResources), 1.0F);
+          }
+          localObject4 = new RelativeLayout.LayoutParams(AIOUtils.b(50.0F, localResources), AIOUtils.b(50.0F, localResources));
+          ((RelativeLayout.LayoutParams)localObject4).topMargin = AIOUtils.b(7.0F, localResources);
+          ((RelativeLayout.LayoutParams)localObject4).leftMargin = AIOUtils.b(10.0F, localResources);
+          ((RelativeLayout.LayoutParams)localObject4).addRule(3, ((TextView)localObject2).getId());
+          ((RelativeLayout.LayoutParams)localObject4).addRule(11);
+          ((RelativeLayout.LayoutParams)localObject6).topMargin = AIOUtils.b(5.0F, localResources);
+          ((RelativeLayout.LayoutParams)localObject6).addRule(0, ((View)localObject3).getId());
+          a(localTextViewWrapLayout, (View)localObject2, (RelativeLayout.LayoutParams)localObject5);
+          a(localTextViewWrapLayout, (View)localObject3, (RelativeLayout.LayoutParams)localObject4);
+          a(localTextViewWrapLayout, (View)localObject1, (RelativeLayout.LayoutParams)localObject6);
+          a(localTextViewWrapLayout, paramView, (RelativeLayout.LayoutParams)localObject6);
+          localObject3 = localTextViewWrapLayout;
+        }
+        else
+        {
+          localObject4 = new RelativeLayout.LayoutParams(AIOUtils.b(32.0F, localResources), AIOUtils.b(32.0F, localResources));
+          ((RelativeLayout.LayoutParams)localObject4).leftMargin = AIOUtils.b(6.0F, localResources);
+          ((RelativeLayout.LayoutParams)localObject4).addRule(11);
+          ((RelativeLayout.LayoutParams)localObject4).addRule(15);
+          int i = ViewUtils.a(20.0F);
+          ((RelativeLayout.LayoutParams)localObject5).topMargin = i;
+          ((RelativeLayout.LayoutParams)localObject5).bottomMargin = i;
+          ((RelativeLayout.LayoutParams)localObject5).addRule(0, ((View)localObject3).getId());
+          ((RelativeLayout.LayoutParams)localObject5).addRule(9);
+          ((RelativeLayout.LayoutParams)localObject5).addRule(15);
+          a(localTextViewWrapLayout, (View)localObject3, (RelativeLayout.LayoutParams)localObject4);
+          a(localTextViewWrapLayout, (View)localObject2, (RelativeLayout.LayoutParams)localObject5);
+          localObject3 = localTextViewWrapLayout;
+        }
+      }
+      else
+      {
+        if (this.o == 1)
+        {
+          localObject4 = new RelativeLayout.LayoutParams(AIOUtils.b(50.0F, localResources), AIOUtils.b(50.0F, localResources));
+          ((RelativeLayout.LayoutParams)localObject4).topMargin = AIOUtils.b(3.0F, localResources);
+        }
+        else
+        {
+          localObject4 = new RelativeLayout.LayoutParams(AIOUtils.b(115.0F, localResources), AIOUtils.b(70.0F, localResources));
+          ((RelativeLayout.LayoutParams)localObject4).topMargin = AIOUtils.b(3.0F, localResources);
+        }
+        ((RelativeLayout.LayoutParams)localObject4).addRule(9);
+        ((RelativeLayout.LayoutParams)localObject4).addRule(10);
+        localObject7 = new RelativeLayout(paramContext);
+        localObject8 = new RelativeLayout.LayoutParams(-1, -2);
+        if (this.o == 3)
+        {
+          ((RelativeLayout.LayoutParams)localObject8).topMargin = AIOUtils.b(12.0F, localResources);
+          ((RelativeLayout.LayoutParams)localObject6).topMargin = 5;
+        }
+        else
+        {
+          ((RelativeLayout.LayoutParams)localObject8).topMargin = AIOUtils.b(7.0F, localResources);
+          ((RelativeLayout.LayoutParams)localObject6).topMargin = 0;
+        }
+        ((RelativeLayout.LayoutParams)localObject8).addRule(10);
+        ((RelativeLayout.LayoutParams)localObject8).addRule(1, ((View)localObject3).getId());
+        ((RelativeLayout.LayoutParams)localObject8).leftMargin = AIOUtils.b(10.0F, localResources);
+        a(localTextViewWrapLayout, (View)localObject3, (RelativeLayout.LayoutParams)localObject4);
+        a((ViewGroup)localObject7, (View)localObject2, (RelativeLayout.LayoutParams)localObject5);
+        a((ViewGroup)localObject7, (View)localObject1, (RelativeLayout.LayoutParams)localObject6);
+        a((ViewGroup)localObject7, paramView, (RelativeLayout.LayoutParams)localObject6);
+        localTextViewWrapLayout.addView((View)localObject7, (ViewGroup.LayoutParams)localObject8);
+        localObject3 = localTextViewWrapLayout;
+      }
+    }
+    if ((this.o != 1) && (this.o != 3)) {
+      b(paramContext, (ViewGroup)localObject3);
+    } else {
+      a(paramContext, (ViewGroup)localObject3);
+    }
+    if (localObject2 != null)
+    {
+      paramContext = ((TextView)localObject2).getTag();
+      if ((paramContext instanceof StructMsgItemTitle))
+      {
+        paramContext = (StructMsgItemTitle)paramContext;
+        if (paramContext != null)
+        {
+          bool3 = TextUtils.isEmpty(paramContext.b()) ^ true;
+          break label1479;
         }
       }
     }
+    boolean bool3 = false;
+    label1479:
+    if (localObject1 != null)
+    {
+      paramContext = ((TextView)localObject1).getTag();
+      if ((paramContext instanceof StructMsgItemSummary))
+      {
+        paramContext = (StructMsgItemSummary)paramContext;
+        if (paramContext != null)
+        {
+          bool1 = TextUtils.isEmpty(paramContext.b()) ^ true;
+          break label1523;
+        }
+      }
+    }
+    boolean bool1 = false;
+    label1523:
+    boolean bool2 = bool1;
+    if (paramView != null)
+    {
+      paramContext = paramView.getTag();
+      bool2 = bool1;
+      if ((paramContext instanceof StructMsgItemVote))
+      {
+        paramContext = ((StructMsgItemVote)paramContext).jdField_a_of_type_JavaUtilArrayList;
+        if ((paramContext != null) && (!paramContext.isEmpty())) {
+          bool2 = true;
+        } else {
+          bool2 = false;
+        }
+      }
+    }
+    if (bool3)
+    {
+      a((TextView)localObject2, 2);
+      a((View)localObject2, 0);
+      a((TextView)localObject1, 2);
+      if ((this.o != 1) && (this.o != 3))
+      {
+        float f;
+        if (!this.jdField_a_of_type_Boolean) {
+          f = 17.0F;
+        } else {
+          f = 14.0F;
+        }
+        ((TextView)localObject2).setTextSize(f);
+      }
+      else
+      {
+        ((TextView)localObject2).setTextSize(16.0F);
+      }
+    }
+    else
+    {
+      a((View)localObject2, 8);
+      a((TextView)localObject1, 4);
+    }
+    if (bool2) {
+      a((View)localObject1, 0);
+    } else {
+      a((View)localObject1, 8);
+    }
+    if ((this.o != 1) && (this.o != 3))
+    {
+      a((TextView)localObject1, 3);
+    }
+    else
+    {
+      if (localObject1 != null) {
+        ((TextView)localObject1).setSingleLine(true);
+      }
+      if (localObject2 != null)
+      {
+        ((TextView)localObject2).setSingleLine(true);
+        ((TextView)localObject2).setMaxLines(1);
+      }
+    }
+    if (AppSetting.d)
+    {
+      paramContext = new StringBuilder();
+      if (localObject2 != null) {
+        paramContext.append(((TextView)localObject2).getText());
+      }
+      int j = paramBundle.getInt("serviceID", 0);
+      if ((localObject1 != null) && ((j == 32) || (j == 14) || (j == 15) || (j == 16) || (j == 17)))
+      {
+        paramContext.append(",");
+        paramContext.append(((TextView)localObject1).getText());
+      }
+      ((TextViewWrapLayout)localObject3).setContentDescription(paramContext.toString());
+    }
+    return localObject3;
   }
   
   public String b()
@@ -443,7 +449,7 @@ public class StructMsgItemLayout2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout2
  * JD-Core Version:    0.7.0.1
  */

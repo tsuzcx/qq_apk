@@ -22,18 +22,20 @@ public class HScrollView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 1)
     {
+      if (i == 2)
+      {
+        this.b = 2;
+        this.jdField_a_of_type_ComTencentMobileqqProfileViewHScrollView$ScrollViewListener.a(this.b);
+        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this);
+      }
     }
-    for (;;)
-    {
-      return super.onTouchEvent(paramMotionEvent);
-      this.b = 2;
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewHScrollView$ScrollViewListener.a(this.b);
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this);
-      continue;
+    else {
       this.jdField_a_of_type_AndroidOsHandler.post(this);
     }
+    return super.onTouchEvent(paramMotionEvent);
   }
   
   public void run()
@@ -41,15 +43,17 @@ public class HScrollView
     if (getScrollX() == this.jdField_a_of_type_Int)
     {
       this.b = 1;
-      if (this.jdField_a_of_type_ComTencentMobileqqProfileViewHScrollView$ScrollViewListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewHScrollView$ScrollViewListener.a(this.b);
+      localScrollViewListener = this.jdField_a_of_type_ComTencentMobileqqProfileViewHScrollView$ScrollViewListener;
+      if (localScrollViewListener != null) {
+        localScrollViewListener.a(this.b);
       }
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this);
       return;
     }
     this.b = 3;
-    if (this.jdField_a_of_type_ComTencentMobileqqProfileViewHScrollView$ScrollViewListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewHScrollView$ScrollViewListener.a(this.b);
+    HScrollView.ScrollViewListener localScrollViewListener = this.jdField_a_of_type_ComTencentMobileqqProfileViewHScrollView$ScrollViewListener;
+    if (localScrollViewListener != null) {
+      localScrollViewListener.a(this.b);
     }
     this.jdField_a_of_type_Int = getScrollX();
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 50L);
@@ -62,7 +66,7 @@ public class HScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.HScrollView
  * JD-Core Version:    0.7.0.1
  */

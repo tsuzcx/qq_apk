@@ -21,14 +21,13 @@ class MPFileVerifyPwdView$3
   
   public void onClick(View paramView)
   {
-    if (!NetworkUtil.d(BaseApplicationImpl.getContext())) {
-      FMToastUtil.a(BaseApplicationImpl.getContext().getString(2131694457));
-    }
-    for (;;)
+    if (!NetworkUtil.isNetSupport(BaseApplicationImpl.getContext()))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      FMToastUtil.a(BaseApplicationImpl.getContext().getString(2131694267));
+      FMToastUtil.a(BaseApplicationImpl.getContext().getString(2131694422));
+    }
+    else
+    {
+      FMToastUtil.a(BaseApplicationImpl.getContext().getString(2131694232));
       DataLineHandler localDataLineHandler = (DataLineHandler)MPFileVerifyPwdView.a(this.a).getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
       MPFileVerifyPwdView.a(this.a, localDataLineHandler.a().a(3));
       MPFileVerifyPwdView.b(this.a).setEnabled(false);
@@ -38,11 +37,12 @@ class MPFileVerifyPwdView$3
         MPFileVerifyPwdView.a(this.a).a(MPFileVerifyPwdView.a(this.a));
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView.3
  * JD-Core Version:    0.7.0.1
  */

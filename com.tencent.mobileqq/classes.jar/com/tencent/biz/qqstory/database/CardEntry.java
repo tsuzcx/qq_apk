@@ -21,12 +21,17 @@ public class CardEntry
   
   public static String getTypeSelection(int paramInt, long paramLong)
   {
-    return "cardListType=" + paramInt + " and topicId=" + paramLong;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("cardListType=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" and topicId=");
+    localStringBuilder.append(paramLong);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.CardEntry
  * JD-Core Version:    0.7.0.1
  */

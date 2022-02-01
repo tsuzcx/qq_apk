@@ -17,12 +17,15 @@ public class ClientOnlineRequest
   
   public String getCmdString()
   {
-    return "QzoneNewService." + uniKey();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QzoneNewService.");
+    localStringBuilder.append(uniKey());
+    return localStringBuilder.toString();
   }
   
   protected byte[] getEncodedUniParameter()
   {
-    return WupTool.encodeWup(this.req);
+    return WupTool.a(this.req);
   }
   
   public JceStruct getReq()
@@ -37,7 +40,7 @@ public class ClientOnlineRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.ClientOnlineRequest
  * JD-Core Version:    0.7.0.1
  */

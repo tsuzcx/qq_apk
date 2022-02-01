@@ -13,31 +13,35 @@ public final class r
   {
     try
     {
-      byte[] arrayOfByte = paramString1.getBytes("UTF-8");
-      paramString1 = paramString2;
-      if (TextUtils.isEmpty(paramString2)) {
-        paramString1 = "SHA-256";
+      paramString1 = paramString1.getBytes("UTF-8");
+      boolean bool = TextUtils.isEmpty(paramString2);
+      if (bool) {
+        paramString2 = "SHA-256";
       }
-      paramString1 = MessageDigest.getInstance(paramString1);
-      paramString1.update(arrayOfByte);
-      paramString1 = HEX.encodeHexString(paramString1.digest(), false);
+      paramString2 = MessageDigest.getInstance(paramString2);
+      paramString2.update(paramString1);
+      paramString1 = HEX.encodeHexString(paramString2.digest(), false);
       return paramString1;
     }
     catch (NoSuchAlgorithmException paramString1)
     {
-      HMSLog.e("SHACoder", "encrypt failed .");
-      return null;
+      break label49;
     }
     catch (UnsupportedEncodingException paramString1)
     {
-      HMSLog.e("SHACoder", "trans failed .");
+      label40:
+      label49:
+      break label40;
     }
+    HMSLog.e("SHACoder", "trans failed .");
+    return null;
+    HMSLog.e("SHACoder", "encrypt failed .");
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.opendevice.r
  * JD-Core Version:    0.7.0.1
  */

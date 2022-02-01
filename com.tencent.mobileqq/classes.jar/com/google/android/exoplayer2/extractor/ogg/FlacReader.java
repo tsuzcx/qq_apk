@@ -18,29 +18,44 @@ final class FlacReader
   private int getFlacFrameBlockSize(ParsableByteArray paramParsableByteArray)
   {
     int i = (paramParsableByteArray.data[2] & 0xFF) >> 4;
+    int j;
     switch (i)
     {
     default: 
       return -1;
-    case 1: 
-      return 192;
+    case 8: 
+    case 9: 
+    case 10: 
+    case 11: 
+    case 12: 
+    case 13: 
+    case 14: 
+    case 15: 
+      j = 256;
+      i -= 8;
+    case 6: 
+    case 7: 
     case 2: 
     case 3: 
     case 4: 
     case 5: 
-      return 576 << i - 2;
-    case 6: 
-    case 7: 
-      paramParsableByteArray.skipBytes(4);
-      paramParsableByteArray.readUtf8EncodedLong();
-      if (i == 6) {}
-      for (i = paramParsableByteArray.readUnsignedByte();; i = paramParsableByteArray.readUnsignedShort())
+      for (;;)
       {
+        return j << i;
+        paramParsableByteArray.skipBytes(4);
+        paramParsableByteArray.readUtf8EncodedLong();
+        if (i == 6) {
+          i = paramParsableByteArray.readUnsignedByte();
+        } else {
+          i = paramParsableByteArray.readUnsignedShort();
+        }
         paramParsableByteArray.setPosition(0);
         return i + 1;
+        j = 576;
+        i -= 2;
       }
     }
-    return 256 << i - 8;
+    return 192;
   }
   
   private static boolean isAudioPacket(byte[] paramArrayOfByte)
@@ -67,7 +82,6 @@ final class FlacReader
   
   protected boolean readHeaders(ParsableByteArray paramParsableByteArray, long paramLong, StreamReader.SetupData paramSetupData)
   {
-    boolean bool = false;
     byte[] arrayOfByte = paramParsableByteArray.data;
     if (this.streamInfo == null)
     {
@@ -76,24 +90,23 @@ final class FlacReader
       paramParsableByteArray[4] = -128;
       paramParsableByteArray = Collections.singletonList(paramParsableByteArray);
       paramSetupData.format = Format.createAudioSampleFormat(null, "audio/flac", null, -1, this.streamInfo.bitRate(), this.streamInfo.channels, this.streamInfo.sampleRate, paramParsableByteArray, null, 0, null);
-      bool = true;
     }
-    do
+    else if ((arrayOfByte[0] & 0x7F) == 3)
     {
-      return bool;
-      if ((arrayOfByte[0] & 0x7F) == 3)
+      this.flacOggSeeker = new FlacReader.FlacOggSeeker(this);
+      this.flacOggSeeker.parseSeekTable(paramParsableByteArray);
+    }
+    else if (isAudioPacket(arrayOfByte))
+    {
+      paramParsableByteArray = this.flacOggSeeker;
+      if (paramParsableByteArray != null)
       {
-        this.flacOggSeeker = new FlacReader.FlacOggSeeker(this);
-        this.flacOggSeeker.parseSeekTable(paramParsableByteArray);
-        break;
+        paramParsableByteArray.setFirstFrameOffset(paramLong);
+        paramSetupData.oggSeeker = this.flacOggSeeker;
       }
-      if (!isAudioPacket(arrayOfByte)) {
-        break;
-      }
-    } while (this.flacOggSeeker == null);
-    this.flacOggSeeker.setFirstFrameOffset(paramLong);
-    paramSetupData.oggSeeker = this.flacOggSeeker;
-    return false;
+      return false;
+    }
+    return true;
   }
   
   protected void reset(boolean paramBoolean)
@@ -108,7 +121,7 @@ final class FlacReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ogg.FlacReader
  * JD-Core Version:    0.7.0.1
  */

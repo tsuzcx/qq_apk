@@ -1,10 +1,6 @@
 package com.tencent.mobileqq.filemanager.offlinefile.OfflineFileUpload;
 
 import com.tencent.mobileqq.filemanager.app.FileTransferObserver;
-import com.tencent.mobileqq.transfile.NetResp;
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
-import java.io.IOException;
 
 public class OfflineFileUploader
   implements IOfflineFileHttpUploderSink
@@ -15,107 +11,151 @@ public class OfflineFileUploader
   String b;
   String c;
   
-  public long a(NetResp paramNetResp)
+  /* Error */
+  public long a(com.tencent.mobileqq.transfile.NetResp paramNetResp)
   {
-    paramNetResp = new ByteArrayInputStream(paramNetResp.mRespData);
-    DataInputStream localDataInputStream = new DataInputStream(paramNetResp);
-    try
-    {
-      localDataInputStream.skip(4L);
-      if (localDataInputStream.readInt() != 0) {
-        b();
-      }
-    }
-    catch (IOException localIOException)
-    {
-      int i;
-      int j;
-      long l;
-      localIOException.printStackTrace();
-    }
-    finally
-    {
-      try
-      {
-        paramNetResp.close();
-        localDataInputStream.close();
-        return -1L;
-        localObject = finally;
-        try
-        {
-          paramNetResp.close();
-          localDataInputStream.close();
-          throw localObject;
-        }
-        catch (Exception paramNetResp)
-        {
-          break label187;
-        }
-      }
-      catch (Exception paramNetResp)
-      {
-        break label172;
-      }
-    }
-    try
-    {
-      paramNetResp.close();
-      localDataInputStream.close();
-      return 0L;
-    }
-    catch (Exception paramNetResp) {}
-    localDataInputStream.skip(8L);
-    i = localDataInputStream.readByte();
-    if (i == 0)
-    {
-      i = localDataInputStream.readInt();
-      j = localDataInputStream.readInt();
-      l = j;
-      l = i | l << 32;
-      try
-      {
-        paramNetResp.close();
-        localDataInputStream.close();
-        return l;
-      }
-      catch (Exception paramNetResp)
-      {
-        return l;
-      }
-    }
-    if (i == 1)
-    {
-      a();
-      try
-      {
-        paramNetResp.close();
-        localDataInputStream.close();
-        return 0L;
-      }
-      catch (Exception paramNetResp)
-      {
-        return 0L;
-      }
-    }
-    b();
-    try
-    {
-      paramNetResp.close();
-      localDataInputStream.close();
-      return 0L;
-    }
-    catch (Exception paramNetResp)
-    {
-      return 0L;
-    }
-    label172:
-    label187:
-    return 0L;
+    // Byte code:
+    //   0: new 26	java/io/ByteArrayInputStream
+    //   3: dup
+    //   4: aload_1
+    //   5: getfield 32	com/tencent/mobileqq/transfile/NetResp:mRespData	[B
+    //   8: invokespecial 35	java/io/ByteArrayInputStream:<init>	([B)V
+    //   11: astore_1
+    //   12: new 37	java/io/DataInputStream
+    //   15: dup
+    //   16: aload_1
+    //   17: invokespecial 40	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   20: astore 6
+    //   22: aload 6
+    //   24: ldc2_w 41
+    //   27: invokevirtual 46	java/io/DataInputStream:skip	(J)J
+    //   30: pop2
+    //   31: aload 6
+    //   33: invokevirtual 50	java/io/DataInputStream:readInt	()I
+    //   36: ifeq +18 -> 54
+    //   39: aload_0
+    //   40: invokevirtual 52	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploader:b	()V
+    //   43: aload_1
+    //   44: invokevirtual 55	java/io/ByteArrayInputStream:close	()V
+    //   47: aload 6
+    //   49: invokevirtual 56	java/io/DataInputStream:close	()V
+    //   52: lconst_0
+    //   53: lreturn
+    //   54: aload 6
+    //   56: ldc2_w 57
+    //   59: invokevirtual 46	java/io/DataInputStream:skip	(J)J
+    //   62: pop2
+    //   63: aload 6
+    //   65: invokevirtual 62	java/io/DataInputStream:readByte	()B
+    //   68: istore_2
+    //   69: iload_2
+    //   70: ifne +37 -> 107
+    //   73: aload 6
+    //   75: invokevirtual 50	java/io/DataInputStream:readInt	()I
+    //   78: istore_2
+    //   79: aload 6
+    //   81: invokevirtual 50	java/io/DataInputStream:readInt	()I
+    //   84: istore_3
+    //   85: iload_3
+    //   86: i2l
+    //   87: bipush 32
+    //   89: lshl
+    //   90: iload_2
+    //   91: i2l
+    //   92: lor
+    //   93: lstore 4
+    //   95: aload_1
+    //   96: invokevirtual 55	java/io/ByteArrayInputStream:close	()V
+    //   99: aload 6
+    //   101: invokevirtual 56	java/io/DataInputStream:close	()V
+    //   104: lload 4
+    //   106: lreturn
+    //   107: iload_2
+    //   108: iconst_1
+    //   109: if_icmpne +18 -> 127
+    //   112: aload_0
+    //   113: invokevirtual 64	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploader:a	()V
+    //   116: aload_1
+    //   117: invokevirtual 55	java/io/ByteArrayInputStream:close	()V
+    //   120: aload 6
+    //   122: invokevirtual 56	java/io/DataInputStream:close	()V
+    //   125: lconst_0
+    //   126: lreturn
+    //   127: aload_0
+    //   128: invokevirtual 52	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploader:b	()V
+    //   131: aload_1
+    //   132: invokevirtual 55	java/io/ByteArrayInputStream:close	()V
+    //   135: aload 6
+    //   137: invokevirtual 56	java/io/DataInputStream:close	()V
+    //   140: lconst_0
+    //   141: lreturn
+    //   142: astore 7
+    //   144: goto +23 -> 167
+    //   147: astore 7
+    //   149: aload 7
+    //   151: invokevirtual 67	java/io/IOException:printStackTrace	()V
+    //   154: aload_1
+    //   155: invokevirtual 55	java/io/ByteArrayInputStream:close	()V
+    //   158: aload 6
+    //   160: invokevirtual 56	java/io/DataInputStream:close	()V
+    //   163: ldc2_w 68
+    //   166: lreturn
+    //   167: aload_1
+    //   168: invokevirtual 55	java/io/ByteArrayInputStream:close	()V
+    //   171: aload 6
+    //   173: invokevirtual 56	java/io/DataInputStream:close	()V
+    //   176: aload 7
+    //   178: athrow
+    //   179: astore_1
+    //   180: lconst_0
+    //   181: lreturn
+    //   182: astore_1
+    //   183: lload 4
+    //   185: lreturn
+    //   186: astore_1
+    //   187: lconst_0
+    //   188: lreturn
+    //   189: astore_1
+    //   190: lconst_0
+    //   191: lreturn
+    //   192: astore_1
+    //   193: goto -30 -> 163
+    //   196: astore_1
+    //   197: goto -21 -> 176
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	200	0	this	OfflineFileUploader
+    //   0	200	1	paramNetResp	com.tencent.mobileqq.transfile.NetResp
+    //   68	42	2	i	int
+    //   84	2	3	j	int
+    //   93	91	4	l	long
+    //   20	152	6	localDataInputStream	java.io.DataInputStream
+    //   142	1	7	localObject	Object
+    //   147	30	7	localIOException	java.io.IOException
+    // Exception table:
+    //   from	to	target	type
+    //   22	43	142	finally
+    //   54	69	142	finally
+    //   73	85	142	finally
+    //   112	116	142	finally
+    //   127	131	142	finally
+    //   149	154	142	finally
+    //   22	43	147	java/io/IOException
+    //   54	69	147	java/io/IOException
+    //   73	85	147	java/io/IOException
+    //   112	116	147	java/io/IOException
+    //   127	131	147	java/io/IOException
+    //   43	52	179	java/lang/Exception
+    //   95	104	182	java/lang/Exception
+    //   116	125	186	java/lang/Exception
+    //   131	140	189	java/lang/Exception
+    //   154	163	192	java/lang/Exception
+    //   167	176	196	java/lang/Exception
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver.ax_();
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver.a();
   }
   
   public void a(long paramLong1, long paramLong2)
@@ -130,192 +170,197 @@ public class OfflineFileUploader
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 81	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploader:b	Ljava/lang/String;
+    //   1: getfield 79	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploader:b	Ljava/lang/String;
     //   4: astore 6
     //   6: aload 6
     //   8: astore 5
     //   10: aload 6
     //   12: ifnonnull +9 -> 21
     //   15: aload_0
-    //   16: getfield 83	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploader:c	Ljava/lang/String;
+    //   16: getfield 81	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploader:c	Ljava/lang/String;
     //   19: astore 5
     //   21: aload_0
-    //   22: getfield 85	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploader:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   25: ifnull +26 -> 51
-    //   28: aload 5
-    //   30: ifnull +21 -> 51
-    //   33: aload_0
-    //   34: getfield 85	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploader:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   37: invokevirtual 90	java/lang/String:length	()I
-    //   40: ifeq +11 -> 51
-    //   43: aload 5
-    //   45: invokevirtual 90	java/lang/String:length	()I
-    //   48: ifne +23 -> 71
-    //   51: invokestatic 96	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   54: ifeq +11 -> 65
-    //   57: new 98	java/lang/NullPointerException
-    //   60: dup
-    //   61: invokespecial 99	java/lang/NullPointerException:<init>	()V
-    //   64: athrow
-    //   65: aload_0
-    //   66: invokevirtual 52	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploader:b	()V
-    //   69: aconst_null
-    //   70: areturn
-    //   71: aload 5
-    //   73: invokestatic 105	com/qq/taf/jce/HexUtil:hexStr2Bytes	(Ljava/lang/String;)[B
-    //   76: astore 7
-    //   78: aload_0
-    //   79: getfield 85	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploader:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   82: invokestatic 105	com/qq/taf/jce/HexUtil:hexStr2Bytes	(Ljava/lang/String;)[B
-    //   85: astore 8
-    //   87: aload 8
-    //   89: arraylength
-    //   90: iconst_2
-    //   91: iadd
-    //   92: iconst_2
-    //   93: iadd
-    //   94: aload 7
-    //   96: arraylength
-    //   97: iadd
-    //   98: bipush 20
-    //   100: iadd
-    //   101: aload_1
-    //   102: arraylength
-    //   103: iadd
-    //   104: istore 4
-    //   106: new 107	java/io/ByteArrayOutputStream
-    //   109: dup
-    //   110: iload 4
-    //   112: bipush 16
-    //   114: iadd
-    //   115: invokespecial 110	java/io/ByteArrayOutputStream:<init>	(I)V
-    //   118: astore 5
-    //   120: new 112	java/io/DataOutputStream
-    //   123: dup
-    //   124: aload 5
-    //   126: invokespecial 115	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   129: astore 6
+    //   22: getfield 83	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploader:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   25: astore 6
+    //   27: aload 6
+    //   29: ifnull +259 -> 288
+    //   32: aload 5
+    //   34: ifnull +254 -> 288
+    //   37: aload 6
+    //   39: invokevirtual 88	java/lang/String:length	()I
+    //   42: ifeq +246 -> 288
+    //   45: aload 5
+    //   47: invokevirtual 88	java/lang/String:length	()I
+    //   50: ifne +6 -> 56
+    //   53: goto +235 -> 288
+    //   56: aload 5
+    //   58: invokestatic 94	com/qq/taf/jce/HexUtil:hexStr2Bytes	(Ljava/lang/String;)[B
+    //   61: astore 7
+    //   63: aload_0
+    //   64: getfield 83	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploader:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   67: invokestatic 94	com/qq/taf/jce/HexUtil:hexStr2Bytes	(Ljava/lang/String;)[B
+    //   70: astore 8
+    //   72: aload 8
+    //   74: arraylength
+    //   75: iconst_2
+    //   76: iadd
+    //   77: iconst_2
+    //   78: iadd
+    //   79: aload 7
+    //   81: arraylength
+    //   82: iadd
+    //   83: bipush 20
+    //   85: iadd
+    //   86: aload_1
+    //   87: arraylength
+    //   88: iadd
+    //   89: istore 4
+    //   91: new 96	java/io/ByteArrayOutputStream
+    //   94: dup
+    //   95: iload 4
+    //   97: bipush 16
+    //   99: iadd
+    //   100: invokespecial 99	java/io/ByteArrayOutputStream:<init>	(I)V
+    //   103: astore 5
+    //   105: new 101	java/io/DataOutputStream
+    //   108: dup
+    //   109: aload 5
+    //   111: invokespecial 104	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   114: astore 6
+    //   116: aload 6
+    //   118: ldc 105
+    //   120: invokevirtual 108	java/io/DataOutputStream:writeInt	(I)V
+    //   123: aload 6
+    //   125: sipush 1007
+    //   128: invokevirtual 108	java/io/DataOutputStream:writeInt	(I)V
     //   131: aload 6
-    //   133: ldc 116
-    //   135: invokevirtual 119	java/io/DataOutputStream:writeInt	(I)V
-    //   138: aload 6
-    //   140: sipush 1007
-    //   143: invokevirtual 119	java/io/DataOutputStream:writeInt	(I)V
-    //   146: aload 6
-    //   148: iconst_0
-    //   149: invokevirtual 119	java/io/DataOutputStream:writeInt	(I)V
+    //   133: iconst_0
+    //   134: invokevirtual 108	java/io/DataOutputStream:writeInt	(I)V
+    //   137: aload 6
+    //   139: iload 4
+    //   141: invokevirtual 108	java/io/DataOutputStream:writeInt	(I)V
+    //   144: aload 6
+    //   146: aload 8
+    //   148: arraylength
+    //   149: invokevirtual 111	java/io/DataOutputStream:writeShort	(I)V
     //   152: aload 6
-    //   154: iload 4
-    //   156: invokevirtual 119	java/io/DataOutputStream:writeInt	(I)V
+    //   154: aload 8
+    //   156: invokevirtual 114	java/io/DataOutputStream:write	([B)V
     //   159: aload 6
-    //   161: aload 8
+    //   161: aload 7
     //   163: arraylength
-    //   164: invokevirtual 122	java/io/DataOutputStream:writeShort	(I)V
+    //   164: invokevirtual 111	java/io/DataOutputStream:writeShort	(I)V
     //   167: aload 6
-    //   169: aload 8
-    //   171: invokevirtual 125	java/io/DataOutputStream:write	([B)V
+    //   169: aload 7
+    //   171: invokevirtual 114	java/io/DataOutputStream:write	([B)V
     //   174: aload 6
-    //   176: aload 7
-    //   178: arraylength
-    //   179: invokevirtual 122	java/io/DataOutputStream:writeShort	(I)V
-    //   182: aload 6
-    //   184: aload 7
-    //   186: invokevirtual 125	java/io/DataOutputStream:write	([B)V
-    //   189: aload 6
-    //   191: aload_0
-    //   192: getfield 127	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploader:jdField_a_of_type_Long	J
-    //   195: ldc2_w 128
-    //   198: land
-    //   199: l2i
-    //   200: invokevirtual 119	java/io/DataOutputStream:writeInt	(I)V
-    //   203: aload 6
-    //   205: lload_2
-    //   206: ldc2_w 128
-    //   209: land
-    //   210: l2i
-    //   211: invokevirtual 119	java/io/DataOutputStream:writeInt	(I)V
-    //   214: aload 6
-    //   216: aload_1
-    //   217: arraylength
-    //   218: invokevirtual 119	java/io/DataOutputStream:writeInt	(I)V
-    //   221: aload 6
-    //   223: aload_0
-    //   224: getfield 127	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploader:jdField_a_of_type_Long	J
-    //   227: bipush 32
-    //   229: lshr
-    //   230: l2i
-    //   231: invokevirtual 119	java/io/DataOutputStream:writeInt	(I)V
-    //   234: aload 6
-    //   236: lload_2
-    //   237: bipush 32
-    //   239: lshr
-    //   240: l2i
-    //   241: invokevirtual 119	java/io/DataOutputStream:writeInt	(I)V
-    //   244: aload 6
-    //   246: aload_1
-    //   247: iconst_0
-    //   248: aload_1
-    //   249: arraylength
-    //   250: invokevirtual 132	java/io/DataOutputStream:write	([BII)V
-    //   253: aload 5
-    //   255: invokevirtual 136	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   258: astore_1
-    //   259: aload 5
-    //   261: invokevirtual 137	java/io/ByteArrayOutputStream:close	()V
-    //   264: aload 6
-    //   266: invokevirtual 138	java/io/DataOutputStream:close	()V
-    //   269: aload_1
-    //   270: areturn
-    //   271: astore 5
-    //   273: aload_1
-    //   274: areturn
-    //   275: astore_1
-    //   276: aload_0
-    //   277: invokevirtual 52	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploader:b	()V
-    //   280: aload 5
-    //   282: invokevirtual 137	java/io/ByteArrayOutputStream:close	()V
-    //   285: aload 6
-    //   287: invokevirtual 138	java/io/DataOutputStream:close	()V
-    //   290: aconst_null
-    //   291: areturn
-    //   292: astore_1
-    //   293: aload 5
-    //   295: invokevirtual 137	java/io/ByteArrayOutputStream:close	()V
-    //   298: aload 6
-    //   300: invokevirtual 138	java/io/DataOutputStream:close	()V
-    //   303: aload_1
-    //   304: athrow
-    //   305: astore 5
-    //   307: goto -4 -> 303
-    //   310: astore_1
-    //   311: goto -21 -> 290
+    //   176: aload_0
+    //   177: getfield 116	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploader:jdField_a_of_type_Long	J
+    //   180: ldc2_w 117
+    //   183: land
+    //   184: l2i
+    //   185: invokevirtual 108	java/io/DataOutputStream:writeInt	(I)V
+    //   188: aload 6
+    //   190: lload_2
+    //   191: ldc2_w 117
+    //   194: land
+    //   195: l2i
+    //   196: invokevirtual 108	java/io/DataOutputStream:writeInt	(I)V
+    //   199: aload 6
+    //   201: aload_1
+    //   202: arraylength
+    //   203: invokevirtual 108	java/io/DataOutputStream:writeInt	(I)V
+    //   206: aload 6
+    //   208: aload_0
+    //   209: getfield 116	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploader:jdField_a_of_type_Long	J
+    //   212: bipush 32
+    //   214: lshr
+    //   215: l2i
+    //   216: invokevirtual 108	java/io/DataOutputStream:writeInt	(I)V
+    //   219: aload 6
+    //   221: lload_2
+    //   222: bipush 32
+    //   224: lshr
+    //   225: l2i
+    //   226: invokevirtual 108	java/io/DataOutputStream:writeInt	(I)V
+    //   229: aload 6
+    //   231: aload_1
+    //   232: iconst_0
+    //   233: aload_1
+    //   234: arraylength
+    //   235: invokevirtual 121	java/io/DataOutputStream:write	([BII)V
+    //   238: aload 5
+    //   240: invokevirtual 125	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   243: astore_1
+    //   244: aload 5
+    //   246: invokevirtual 126	java/io/ByteArrayOutputStream:close	()V
+    //   249: aload 6
+    //   251: invokevirtual 127	java/io/DataOutputStream:close	()V
+    //   254: aload_1
+    //   255: areturn
+    //   256: astore_1
+    //   257: goto +19 -> 276
+    //   260: aload_0
+    //   261: invokevirtual 52	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploader:b	()V
+    //   264: aload 5
+    //   266: invokevirtual 126	java/io/ByteArrayOutputStream:close	()V
+    //   269: aload 6
+    //   271: invokevirtual 127	java/io/DataOutputStream:close	()V
+    //   274: aconst_null
+    //   275: areturn
+    //   276: aload 5
+    //   278: invokevirtual 126	java/io/ByteArrayOutputStream:close	()V
+    //   281: aload 6
+    //   283: invokevirtual 127	java/io/DataOutputStream:close	()V
+    //   286: aload_1
+    //   287: athrow
+    //   288: invokestatic 133	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   291: ifne +9 -> 300
+    //   294: aload_0
+    //   295: invokevirtual 52	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploader:b	()V
+    //   298: aconst_null
+    //   299: areturn
+    //   300: new 135	java/lang/NullPointerException
+    //   303: dup
+    //   304: invokespecial 136	java/lang/NullPointerException:<init>	()V
+    //   307: athrow
+    //   308: astore_1
+    //   309: goto -49 -> 260
+    //   312: astore 5
+    //   314: aload_1
+    //   315: areturn
+    //   316: astore_1
+    //   317: aconst_null
+    //   318: areturn
+    //   319: astore 5
+    //   321: goto -35 -> 286
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	314	0	this	OfflineFileUploader
-    //   0	314	1	paramArrayOfByte	byte[]
-    //   0	314	2	paramLong	long
-    //   104	51	4	i	int
-    //   8	252	5	localObject1	Object
-    //   271	23	5	localException1	Exception
-    //   305	1	5	localException2	Exception
-    //   4	295	6	localObject2	Object
-    //   76	109	7	arrayOfByte1	byte[]
-    //   85	85	8	arrayOfByte2	byte[]
+    //   0	324	0	this	OfflineFileUploader
+    //   0	324	1	paramArrayOfByte	byte[]
+    //   0	324	2	paramLong	long
+    //   89	51	4	i	int
+    //   8	269	5	localObject1	Object
+    //   312	1	5	localException1	java.lang.Exception
+    //   319	1	5	localException2	java.lang.Exception
+    //   4	278	6	localObject2	Object
+    //   61	109	7	arrayOfByte1	byte[]
+    //   70	85	8	arrayOfByte2	byte[]
     // Exception table:
     //   from	to	target	type
-    //   259	269	271	java/lang/Exception
-    //   131	259	275	java/io/IOException
-    //   131	259	292	finally
-    //   276	280	292	finally
-    //   293	303	305	java/lang/Exception
-    //   280	290	310	java/lang/Exception
+    //   116	244	256	finally
+    //   260	264	256	finally
+    //   116	244	308	java/io/IOException
+    //   244	254	312	java/lang/Exception
+    //   264	274	316	java/lang/Exception
+    //   276	286	319	java/lang/Exception
   }
   
   public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.offlinefile.OfflineFileUpload.OfflineFileUploader
  * JD-Core Version:    0.7.0.1
  */

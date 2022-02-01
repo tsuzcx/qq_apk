@@ -22,7 +22,10 @@ class VideoJsProxyDefault$5
     while (i < j)
     {
       String str = paramString[i];
-      QMLog.w("VideoJsProxyImpl", "onFailure: " + str);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onFailure: ");
+      localStringBuilder.append(str);
+      QMLog.w("VideoJsProxyImpl", localStringBuilder.toString());
       i += 1;
     }
     if (this.val$option.scale > 0)
@@ -36,13 +39,24 @@ class VideoJsProxyDefault$5
   
   public void onFinish(boolean paramBoolean)
   {
-    QMLog.d("VideoJsProxyImpl", "compress finish " + paramBoolean + " " + (System.currentTimeMillis() - this.val$now));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("compress finish ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(System.currentTimeMillis() - this.val$now);
+    QMLog.d("VideoJsProxyImpl", localStringBuilder.toString());
   }
   
   public void onProgress(String paramString, float paramFloat)
   {
-    if (paramFloat * 100.0F < 100.0F) {
-      VideoJsProxyDefault.access$800(this.this$0, "正在压缩 " + String.format(Locale.getDefault(), "%.0f%%", new Object[] { Float.valueOf(100.0F * paramFloat) }));
+    paramFloat *= 100.0F;
+    if (paramFloat < 100.0F)
+    {
+      paramString = this.this$0;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("正在压缩 ");
+      localStringBuilder.append(String.format(Locale.getDefault(), "%.0f%%", new Object[] { Float.valueOf(paramFloat) }));
+      VideoJsProxyDefault.access$800(paramString, localStringBuilder.toString());
     }
   }
   
@@ -53,8 +67,12 @@ class VideoJsProxyDefault$5
   
   public void onSuccess(String paramString)
   {
-    if (QMLog.isColorLevel()) {
-      QMLog.d("VideoJsProxyImpl", "compress success " + paramString);
+    if (QMLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("compress success ");
+      localStringBuilder.append(paramString);
+      QMLog.d("VideoJsProxyImpl", localStringBuilder.toString());
     }
     if (this.val$option.scale > 0)
     {
@@ -69,7 +87,7 @@ class VideoJsProxyDefault$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.proxy.VideoJsProxyDefault.5
  * JD-Core Version:    0.7.0.1
  */

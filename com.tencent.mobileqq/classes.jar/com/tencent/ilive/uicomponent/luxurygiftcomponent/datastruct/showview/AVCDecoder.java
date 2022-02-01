@@ -12,20 +12,18 @@ public class AVCDecoder
   
   public static final boolean isSupportAVCCodec(LuxuryGiftAdapter paramLuxuryGiftAdapter)
   {
-    if (!AVConfig.isSupportHardwareDecoder()) {
-      paramLuxuryGiftAdapter.getLogger().i("AVCDecoderHelper", "disable hardwareDecoder from Config.isSupportHardwareDecoder", new Object[0]);
-    }
-    do
+    if (!AVConfig.isSupportHardwareDecoder())
     {
+      paramLuxuryGiftAdapter.getLogger().i("AVCDecoderHelper", "disable hardwareDecoder from Config.isSupportHardwareDecoder", new Object[0]);
       return false;
-      paramLuxuryGiftAdapter.getLogger().i("AVCDecoderHelper", "isSupportAVCCodec in", new Object[0]);
-    } while (Build.VERSION.SDK_INT < 16);
-    return true;
+    }
+    paramLuxuryGiftAdapter.getLogger().i("AVCDecoderHelper", "isSupportAVCCodec in", new Object[0]);
+    return Build.VERSION.SDK_INT >= 16;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.uicomponent.luxurygiftcomponent.datastruct.showview.AVCDecoder
  * JD-Core Version:    0.7.0.1
  */

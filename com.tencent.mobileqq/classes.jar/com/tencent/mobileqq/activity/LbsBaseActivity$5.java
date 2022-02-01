@@ -12,15 +12,17 @@ class LbsBaseActivity$5
   
   public void onClick(View paramView)
   {
-    if ((LbsBaseActivity.b(this.a) != null) && (LbsBaseActivity.b(this.a).isShowing())) {
-      this.a.a(LbsBaseActivity.b(this.a));
+    if ((LbsBaseActivity.access$300(this.a) != null) && (LbsBaseActivity.access$300(this.a).isShowing()))
+    {
+      LbsBaseActivity localLbsBaseActivity = this.a;
+      localLbsBaseActivity.dialogDismiss(LbsBaseActivity.access$300(localLbsBaseActivity));
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LbsBaseActivity.5
  * JD-Core Version:    0.7.0.1
  */

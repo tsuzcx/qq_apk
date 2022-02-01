@@ -51,8 +51,9 @@ public final class PanSocialInfo
     paramJceOutputStream.write(this.uCharmLevel, 4);
     paramJceOutputStream.write(this.uNextLevelCharm, 5);
     paramJceOutputStream.write(this.uCurLevelCharm, 6);
-    if (this.strLevelType != null) {
-      paramJceOutputStream.write(this.strLevelType, 7);
+    String str = this.strLevelType;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
   }
 }

@@ -10,8 +10,12 @@ public class ObserverManager
   
   public void notifyChange(Object paramObject)
   {
-    if (QMLog.isColorLevel()) {
-      QMLog.d("MsgObserverManager", "notifyChange...msg=" + paramObject);
+    if (QMLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("notifyChange...msg=");
+      localStringBuilder.append(paramObject);
+      QMLog.d("MsgObserverManager", localStringBuilder.toString());
     }
     setChanged();
     if (paramObject != null)
@@ -24,7 +28,7 @@ public class ObserverManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.manager.ObserverManager
  * JD-Core Version:    0.7.0.1
  */

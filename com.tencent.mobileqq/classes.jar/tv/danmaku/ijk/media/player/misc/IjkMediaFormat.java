@@ -38,10 +38,11 @@ public class IjkMediaFormat
   @TargetApi(16)
   public int getInteger(String paramString)
   {
-    if (this.mMediaFormat == null) {
+    IjkMediaMeta.IjkStreamMeta localIjkStreamMeta = this.mMediaFormat;
+    if (localIjkStreamMeta == null) {
       return 0;
     }
-    return this.mMediaFormat.getInt(paramString);
+    return localIjkStreamMeta.getInt(paramString);
   }
   
   public String getString(String paramString)
@@ -57,7 +58,7 @@ public class IjkMediaFormat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tv.danmaku.ijk.media.player.misc.IjkMediaFormat
  * JD-Core Version:    0.7.0.1
  */

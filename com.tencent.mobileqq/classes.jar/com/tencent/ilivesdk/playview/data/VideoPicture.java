@@ -15,25 +15,15 @@ public class VideoPicture
   public VideoPicture(int paramInt1, int paramInt2, Bitmap.Config paramConfig)
   {
     this.pixelFormat = paramConfig;
-    int i;
-    if (paramConfig.equals(Bitmap.Config.RGB_565)) {
-      i = j;
+    boolean bool = paramConfig.equals(Bitmap.Config.RGB_565);
+    int i = 2;
+    if ((!bool) && (!paramConfig.equals(Bitmap.Config.ARGB_4444)) && (paramConfig.equals(Bitmap.Config.ARGB_8888))) {
+      i = 4;
     }
-    for (;;)
-    {
-      this.pixels = new byte[i * (paramInt1 * paramInt2)];
-      this.picture = ByteBuffer.wrap(this.pixels, 0, this.pixels.length);
-      this.got = 0;
-      return;
-      i = j;
-      if (!paramConfig.equals(Bitmap.Config.ARGB_4444))
-      {
-        i = j;
-        if (paramConfig.equals(Bitmap.Config.ARGB_8888)) {
-          i = 4;
-        }
-      }
-    }
+    this.pixels = new byte[paramInt1 * paramInt2 * i];
+    paramConfig = this.pixels;
+    this.picture = ByteBuffer.wrap(paramConfig, 0, paramConfig.length);
+    this.got = 0;
   }
   
   public void clear()
@@ -49,7 +39,7 @@ public class VideoPicture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.playview.data.VideoPicture
  * JD-Core Version:    0.7.0.1
  */

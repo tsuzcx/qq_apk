@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.app;
 
-import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoRoamingManager;
-import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmotionRoamingDBManager;
-import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.emosm.api.ICameraEmoRoamingManagerService;
+import com.tencent.mobileqq.emosm.api.ICameraEmotionRoamingDBManagerService;
+import com.tencent.mobileqq.emoticon.EmoticonOperateReport;
 import com.tencent.mobileqq.utils.FileUtils;
 import java.util.List;
 
@@ -13,16 +14,19 @@ class CameraEmoRoamingHandler$2
   
   public void run()
   {
-    FileUtils.c(AppConstants.SDCARD_IMG_CAMERA_EMO + ".nomedia");
-    ((CameraEmoRoamingManager)this.this$0.a.getManager(QQManagerFactory.CAMERA_EMOTION_MANAGER)).a(this.jdField_a_of_type_JavaLangString);
-    ((CameraEmotionRoamingDBManager)this.this$0.a.getManager(QQManagerFactory.CAMERA_EMOTION_DB_MANAGER)).a(this.jdField_a_of_type_JavaUtilList, this.b, null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_IMG_CAMERA_EMO);
+    localStringBuilder.append(".nomedia");
+    FileUtils.createFileIfNotExits(localStringBuilder.toString());
+    ((ICameraEmoRoamingManagerService)this.this$0.a.getRuntimeService(ICameraEmoRoamingManagerService.class, "")).updateListVersion(this.jdField_a_of_type_JavaLangString);
+    ((ICameraEmotionRoamingDBManagerService)this.this$0.a.getRuntimeService(ICameraEmotionRoamingDBManagerService.class, "")).updateLocalDBFromServer(this.jdField_a_of_type_JavaUtilList, this.b, null);
     this.this$0.a(2, true, 0);
-    EmoticonManager.e("0", 2);
+    EmoticonOperateReport.reportEmoticonOperateMonitorGetStatus("0", 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.CameraEmoRoamingHandler.2
  * JD-Core Version:    0.7.0.1
  */

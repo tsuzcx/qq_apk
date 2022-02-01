@@ -3,6 +3,7 @@ package com.tencent.mobileqq.shortvideo;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
+import com.tencent.av.business.manager.pendant.IPendantKind;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.util.JSONUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -13,29 +14,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 public class PtvTemplateManager$PtvTemplateInfo
+  implements IPendantKind
 {
-  public static final int AR_PARTICLE = 9;
   public static final int Category_BeautyMakeup = 3;
   public static final int Category_Face = 0;
   public static final int Category_FaceAndGesture = 2;
   public static final int Category_Gesture = 1;
-  public static final int D3D_TK = 1;
-  public static final int DG_FILTER = 3;
   public static final int DOODLE = 1;
-  public static final int DOV_DG_FILTER = 5;
-  public static final int DOV_FDG_FILTER = 6;
-  public static final int FDG_FILTER = 4;
-  public static final int FILTER = 0;
   public static int FUNC_REDBAG_GET = 1;
   public static final int LBS_MACDONALD = 1;
   public static final int LBS_NORMAL_FILTER = 0;
   public static final int NORMAL = 0;
-  public static final int OLD_FILTER = 22;
-  public static final int PORTRAIT_FILTER = 7;
-  public static final int PTU_FILTER = 21;
-  public static final int QQ_BIG_HEAD = 20;
   static final String SV_FILTER_DOWNLOAD_TIME = "sv_filter_download_time";
-  public static final int YSLD_FILTER = 2;
   public int activityType = 0;
   public String advertiseIconUrl;
   public String advertiseStr;
@@ -97,18 +87,20 @@ public class PtvTemplateManager$PtvTemplateInfo
   
   public static List<PtvTemplateInfo> convertFrom(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
-      try
-      {
-        paramString = convertFrom(new JSONArray(paramString));
-        return paramString;
+    }
+    try
+    {
+      paramString = convertFrom(new JSONArray(paramString));
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      if (QLog.isDevelopLevel()) {
+        paramString.printStackTrace();
       }
-      catch (JSONException paramString) {}
-    } while (!QLog.isDevelopLevel());
-    paramString.printStackTrace();
+    }
     return null;
   }
   
@@ -119,8 +111,6 @@ public class PtvTemplateManager$PtvTemplateInfo
     }
     for (;;)
     {
-      ArrayList localArrayList;
-      int i;
       try
       {
         int j = paramJSONArray.length();
@@ -129,55 +119,61 @@ public class PtvTemplateManager$PtvTemplateInfo
         }
         localArrayList = new ArrayList(j);
         i = 0;
-        if (i >= j) {
-          break label188;
-        }
-        PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateInfo)JSONUtils.a(paramJSONArray.getJSONObject(i), PtvTemplateInfo.class);
-        if (localPtvTemplateInfo == null) {
-          break label193;
-        }
-        try
+        if (i < j)
         {
-          Long.parseLong(localPtvTemplateInfo.id);
-          switch (localPtvTemplateInfo.kind)
-          {
-          case 2: 
-            localArrayList.add(localPtvTemplateInfo);
-          }
+          localPtvTemplateInfo = (PtvTemplateInfo)JSONUtils.a(paramJSONArray.getJSONObject(i), PtvTemplateInfo.class);
+          if (localPtvTemplateInfo == null) {}
         }
-        catch (Exception localException)
-        {
-          if (!QLog.isColorLevel()) {
-            break label193;
-          }
-        }
-        localArrayList.add(localPtvTemplateInfo);
       }
       catch (JSONException paramJSONArray)
       {
-        if (!QLog.isDevelopLevel()) {
-          continue;
+        ArrayList localArrayList;
+        int i;
+        PtvTemplateInfo localPtvTemplateInfo;
+        int k;
+        if (QLog.isDevelopLevel()) {
+          paramJSONArray.printStackTrace();
         }
-        paramJSONArray.printStackTrace();
         return null;
       }
-      QLog.e("PtvTemplateManager", 1, "templateId must be a numeric string!");
-      break label193;
-      if (!PtvTemplateManager.e())
+      try
       {
-        localArrayList.add(localException);
-        break label193;
-        localArrayList.add(localException);
-        break label193;
-        localArrayList.add(localException);
-        break label193;
-        label188:
-        return localArrayList;
+        Long.parseLong(localPtvTemplateInfo.id);
+        k = localPtvTemplateInfo.kind;
+        if (k != 0)
+        {
+          if (k != 1)
+          {
+            if (k != 2)
+            {
+              if ((k != 3) && (k != 4)) {
+                localArrayList.add(localPtvTemplateInfo);
+              } else {
+                localArrayList.add(localPtvTemplateInfo);
+              }
+            }
+            else {
+              localArrayList.add(localPtvTemplateInfo);
+            }
+          }
+          else if (!PtvTemplateManager.e()) {
+            localArrayList.add(localPtvTemplateInfo);
+          }
+        }
+        else {
+          localArrayList.add(localPtvTemplateInfo);
+        }
+      }
+      catch (Exception localException)
+      {
         continue;
       }
-      label193:
+      if (QLog.isColorLevel()) {
+        QLog.e("PtvTemplateManager", 1, "templateId must be a numeric string!");
+      }
       i += 1;
     }
+    return localArrayList;
   }
   
   public static boolean isFace(int paramInt)
@@ -187,7 +183,15 @@ public class PtvTemplateManager$PtvTemplateInfo
   
   public static boolean isGesture(int paramInt)
   {
-    return (paramInt == 2) || (paramInt == 1);
+    boolean bool = true;
+    if (paramInt != 2)
+    {
+      if (paramInt == 1) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   public void doDownloadDataReport()
@@ -197,21 +201,38 @@ public class PtvTemplateManager$PtvTemplateInfo
     HashMap localHashMap = new HashMap();
     localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
     localHashMap.put("MODEL", Build.MODEL);
-    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
-    localHashMap.put("timems", "" + (l1 - l2));
-    localHashMap.put("totalsize", "" + this.totalLen);
-    localHashMap.put("success", "" + this.usable);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(Build.VERSION.SDK_INT);
+    localHashMap.put("SDK_INT", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(l1 - l2);
+    localHashMap.put("timems", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(this.totalLen);
+    localHashMap.put("totalsize", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(this.usable);
+    localHashMap.put("success", localStringBuilder.toString());
     StatisticCollector.getInstance(VideoEnvironment.getContext()).collectPerformance(null, "sv_filter_download_time", true, 0L, 0L, localHashMap, "");
   }
   
   public String getLbsActivityType(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return "LBS_NORMAL_FILTER_" + paramInt;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("LBS_NORMAL_FILTER_");
+      localStringBuilder.append(paramInt);
+      return localStringBuilder.toString();
     }
-    return "LBS_MACDONALD_" + paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LBS_MACDONALD_");
+    localStringBuilder.append(paramInt);
+    return localStringBuilder.toString();
   }
   
   public boolean hasFace()
@@ -226,12 +247,25 @@ public class PtvTemplateManager$PtvTemplateInfo
   
   public String toString()
   {
-    return "PtvTemplateInfo{id='" + this.id + '\'' + ", name='" + this.name + '\'' + ", dooleInfos=" + this.doodleInfos + '\'' + ",usable=" + this.usable + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PtvTemplateInfo{id='");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", dooleInfos=");
+    localStringBuilder.append(this.doodleInfos);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(",usable=");
+    localStringBuilder.append(this.usable);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo
  * JD-Core Version:    0.7.0.1
  */

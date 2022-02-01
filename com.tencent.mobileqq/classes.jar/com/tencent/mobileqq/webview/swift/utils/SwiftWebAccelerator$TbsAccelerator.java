@@ -1,12 +1,14 @@
 package com.tencent.mobileqq.webview.swift.utils;
 
 import android.os.SystemClock;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.monitor.crash.catchedexception.CaughtExceptionReport;
 import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.smtt.sdk.WebAccelerator;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.MobileQQ;
 
 public class SwiftWebAccelerator$TbsAccelerator
 {
@@ -29,14 +31,20 @@ public class SwiftWebAccelerator$TbsAccelerator
     if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
     {
       long l = System.currentTimeMillis();
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("use_speedy_classloader", Boolean.valueOf(true));
-      localHashMap.put("use_dexloader_service", Boolean.valueOf(false));
-      QbSdk.initTbsSettings(localHashMap);
-      WebAccelerator.initTbsEnvironment(BaseApplicationImpl.sApplication.getApplicationContext(), 2);
+      Object localObject = new HashMap();
+      ((HashMap)localObject).put("use_speedy_classloader", Boolean.valueOf(true));
+      ((HashMap)localObject).put("use_dexloader_service", Boolean.valueOf(false));
+      QbSdk.initTbsSettings((Map)localObject);
+      WebAccelerator.initTbsEnvironment(MobileQQ.sMobileQQ.getApplicationContext(), 2);
+      if (MobileQQ.sProcessId == 1) {
+        CaughtExceptionReport.a(new RuntimeException("Webview init. "));
+      }
       com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics.E = SystemClock.elapsedRealtime();
       jdField_a_of_type_Long = System.currentTimeMillis() - l;
-      QLog.d("WebLog_SwiftWebAccelerator", 1, "WebAccelerator.initTbsEnvironment, cost=" + (System.currentTimeMillis() - l));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("WebAccelerator.initTbsEnvironment, cost=");
+      ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
+      QLog.d("WebLog_SwiftWebAccelerator", 1, ((StringBuilder)localObject).toString());
       return true;
     }
     return false;
@@ -44,7 +52,7 @@ public class SwiftWebAccelerator$TbsAccelerator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.TbsAccelerator
  * JD-Core Version:    0.7.0.1
  */

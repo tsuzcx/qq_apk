@@ -32,13 +32,14 @@ public final class msg_svc$PbSendMsgReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 50, 58, 64, 72, 82, 90, 98, 106, 112 }, new String[] { "routing_head", "content_head", "msg_body", "msg_seq", "msg_rand", "sync_cookie", "app_share", "msg_via", "data_statist", "multi_msg_assist", "input_notify_info", "msg_ctrl", "receipt_req", "multi_send_seq" }, new Object[] { null, null, null, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, null, Integer.valueOf(0), Integer.valueOf(0), null, null, null, null, Integer.valueOf(0) }, PbSendMsgReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 50, 58, 64, 72, 82, 90, 98, 106, 112 }, new String[] { "routing_head", "content_head", "msg_body", "msg_seq", "msg_rand", "sync_cookie", "app_share", "msg_via", "data_statist", "multi_msg_assist", "input_notify_info", "msg_ctrl", "receipt_req", "multi_send_seq" }, new Object[] { null, null, null, localInteger, localInteger, localByteStringMicro, null, localInteger, localInteger, null, null, null, null, localInteger }, PbSendMsgReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     msf.msgsvc.msg_svc.PbSendMsgReq
  * JD-Core Version:    0.7.0.1
  */

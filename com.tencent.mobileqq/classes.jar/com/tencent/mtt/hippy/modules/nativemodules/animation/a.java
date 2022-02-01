@@ -43,8 +43,9 @@ public abstract class a
   
   public void b(int paramInt)
   {
-    if (this.b != null) {
-      this.b.remove(Integer.valueOf(paramInt));
+    CopyOnWriteArrayList localCopyOnWriteArrayList = this.b;
+    if (localCopyOnWriteArrayList != null) {
+      localCopyOnWriteArrayList.remove(Integer.valueOf(paramInt));
     }
   }
   
@@ -70,72 +71,77 @@ public abstract class a
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    if (this.c == null) {}
-    for (;;)
-    {
+    paramAnimator = this.c;
+    if (paramAnimator == null) {
       return;
-      paramAnimator = this.c.iterator();
-      while (paramAnimator.hasNext()) {
-        ((a.a)paramAnimator.next()).onAnimationCancel(this);
-      }
+    }
+    paramAnimator = paramAnimator.iterator();
+    while (paramAnimator.hasNext()) {
+      ((a.a)paramAnimator.next()).onAnimationCancel(this);
     }
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.c == null) {}
-    for (;;)
-    {
+    paramAnimator = this.c;
+    if (paramAnimator == null) {
       return;
-      paramAnimator = this.c.iterator();
-      while (paramAnimator.hasNext()) {
-        ((a.a)paramAnimator.next()).onAnimationEnd(this);
-      }
     }
+    paramAnimator = paramAnimator.iterator();
+    while (paramAnimator.hasNext()) {
+      ((a.a)paramAnimator.next()).onAnimationEnd(this);
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
+  {
+    onAnimationEnd(paramAnimator);
   }
   
   public void onAnimationRepeat(Animator paramAnimator)
   {
-    if (this.c == null) {}
-    for (;;)
-    {
+    paramAnimator = this.c;
+    if (paramAnimator == null) {
       return;
-      paramAnimator = this.c.iterator();
-      while (paramAnimator.hasNext()) {
-        ((a.a)paramAnimator.next()).onAnimationRepeat(this);
-      }
+    }
+    paramAnimator = paramAnimator.iterator();
+    while (paramAnimator.hasNext()) {
+      ((a.a)paramAnimator.next()).onAnimationRepeat(this);
     }
   }
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    if (this.c == null) {}
-    for (;;)
-    {
+    paramAnimator = this.c;
+    if (paramAnimator == null) {
       return;
-      paramAnimator = this.c.iterator();
-      while (paramAnimator.hasNext()) {
-        ((a.a)paramAnimator.next()).onAnimationStart(this);
-      }
     }
+    paramAnimator = paramAnimator.iterator();
+    while (paramAnimator.hasNext()) {
+      ((a.a)paramAnimator.next()).onAnimationStart(this);
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator, boolean paramBoolean)
+  {
+    onAnimationStart(paramAnimator);
   }
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.c == null) {}
-    for (;;)
-    {
+    paramValueAnimator = this.c;
+    if (paramValueAnimator == null) {
       return;
-      paramValueAnimator = this.c.iterator();
-      while (paramValueAnimator.hasNext()) {
-        ((a.a)paramValueAnimator.next()).onAnimationUpdate(this);
-      }
+    }
+    paramValueAnimator = paramValueAnimator.iterator();
+    while (paramValueAnimator.hasNext()) {
+      ((a.a)paramValueAnimator.next()).onAnimationUpdate(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.animation.a
  * JD-Core Version:    0.7.0.1
  */

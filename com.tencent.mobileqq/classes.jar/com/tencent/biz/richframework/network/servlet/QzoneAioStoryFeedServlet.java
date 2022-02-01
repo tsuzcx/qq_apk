@@ -33,7 +33,12 @@ public class QzoneAioStoryFeedServlet
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("MMddHHmmss");
     Random localRandom = new Random();
     localRandom.setSeed(System.currentTimeMillis());
-    localStringBuilder.append(str).append("_").append(localSimpleDateFormat.format(new Date())).append(System.currentTimeMillis() % 1000L).append("_").append(localRandom.nextInt(90000) + 10000);
+    localStringBuilder.append(str);
+    localStringBuilder.append("_");
+    localStringBuilder.append(localSimpleDateFormat.format(new Date()));
+    localStringBuilder.append(System.currentTimeMillis() % 1000L);
+    localStringBuilder.append("_");
+    localStringBuilder.append(localRandom.nextInt(90000) + 10000);
     return localStringBuilder.toString();
   }
   
@@ -59,7 +64,11 @@ public class QzoneAioStoryFeedServlet
     }
     catch (Throwable paramIntent)
     {
-      RFLog.e("QzoneAioStoryFeedServlet", RFLog.USR, paramIntent + "onReceive error");
+      int i = RFLog.USR;
+      paramFromServiceMsg = new StringBuilder();
+      paramFromServiceMsg.append(paramIntent);
+      paramFromServiceMsg.append("onReceive error");
+      RFLog.e("QzoneAioStoryFeedServlet", i, paramFromServiceMsg.toString());
       notifyObserver(null, 1010, false, null, QZoneObserver.class);
     }
   }
@@ -68,27 +77,15 @@ public class QzoneAioStoryFeedServlet
   {
     long l1 = paramIntent.getLongExtra("key_last_aio_story_create_time", 0L);
     long l2 = paramIntent.getLongExtra("key_friend_uid", -1L);
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("key_ext");
-    Object localObject = null;
-    if (arrayOfByte != null) {
+    byte[] arrayOfByte1 = paramIntent.getByteArrayExtra("key_ext");
+    if (arrayOfByte1 != null)
+    {
       localObject = new COMM.StCommonExt();
-    }
-    try
-    {
-      ((COMM.StCommonExt)localObject).mergeFrom(arrayOfByte);
-      arrayOfByte = new QzoneAioStoryFeedRequest((COMM.StCommonExt)localObject, l1, l2).encode(paramIntent, -1, getTraceId());
-      localObject = arrayOfByte;
-      if (arrayOfByte == null) {
-        localObject = new byte[4];
+      try
+      {
+        ((COMM.StCommonExt)localObject).mergeFrom(arrayOfByte1);
       }
-      paramPacket.setSSOCommand("LightAppSvc.qq_story_client.GetUserNewestStory");
-      paramPacket.putSendData(WupUtil.a((byte[])localObject));
-      paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
         if (RFLog.isColorLevel()) {
           RFLog.e("QzoneAioStoryFeedServlet", RFLog.CLR, "onSend. mergeFrom exception!");
@@ -96,11 +93,23 @@ public class QzoneAioStoryFeedServlet
         localInvalidProtocolBufferMicroException.printStackTrace();
       }
     }
+    else
+    {
+      localObject = null;
+    }
+    byte[] arrayOfByte2 = new QzoneAioStoryFeedRequest((COMM.StCommonExt)localObject, l1, l2).encode(paramIntent, -1, getTraceId());
+    Object localObject = arrayOfByte2;
+    if (arrayOfByte2 == null) {
+      localObject = new byte[4];
+    }
+    paramPacket.setSSOCommand("LightAppSvc.qq_story_client.GetUserNewestStory");
+    paramPacket.putSendData(WupUtil.a((byte[])localObject));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.richframework.network.servlet.QzoneAioStoryFeedServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -23,12 +23,14 @@ public class ExecutorConfig$NetworkExecutorConfig
   
   static
   {
-    sThreadCountMap.append(0, Integer.valueOf(3));
+    SparseArray localSparseArray = sThreadCountMap;
+    Integer localInteger = Integer.valueOf(3);
+    localSparseArray.append(0, localInteger);
     sThreadCountMap.append(1, Integer.valueOf(5));
     sThreadCountMap.append(2, Integer.valueOf(4));
-    sThreadCountMap.append(3, Integer.valueOf(3));
+    sThreadCountMap.append(3, localInteger);
     sThreadCountMap.append(4, Integer.valueOf(2));
-    sThreadCountMap.append(5, Integer.valueOf(3));
+    sThreadCountMap.append(5, localInteger);
   }
   
   public ExecutorConfig$NetworkExecutorConfig(Context paramContext)
@@ -38,32 +40,38 @@ public class ExecutorConfig$NetworkExecutorConfig
   
   private static int getCurrentNetType(NetworkInfo paramNetworkInfo)
   {
-    if ((paramNetworkInfo == null) || (!paramNetworkInfo.isConnectedOrConnecting())) {
-      return 0;
-    }
-    switch (paramNetworkInfo.getType())
+    if ((paramNetworkInfo != null) && (paramNetworkInfo.isConnectedOrConnecting()))
     {
-    default: 
-      return 5;
-    case 0: 
-      switch (paramNetworkInfo.getSubtype())
+      int i = paramNetworkInfo.getType();
+      if (i != 0)
       {
-      case 7: 
-      case 8: 
-      case 9: 
-      case 10: 
-      case 11: 
-      default: 
-        return 5;
-      case 1: 
-      case 2: 
-        return 4;
+        if ((i != 1) && (i != 6) && (i != 9)) {
+          return 5;
+        }
+        return 1;
       }
-      break;
+      i = paramNetworkInfo.getSubtype();
+      switch (i)
+      {
+      default: 
+        switch (i)
+        {
+        default: 
+          return 5;
+        case 13: 
+        case 14: 
+        case 15: 
+          return 2;
+        }
+      case 3: 
+      case 4: 
+      case 5: 
+      case 6: 
+        return 3;
+      }
+      return 4;
     }
-    return 1;
-    return 2;
-    return 3;
+    return 0;
   }
   
   private int getThreadCount(NetworkInfo paramNetworkInfo)
@@ -80,14 +88,20 @@ public class ExecutorConfig$NetworkExecutorConfig
   {
     this.mNetworkInfo = ((ConnectivityManager)this.mApplication.getSystemService("connectivity")).getActiveNetworkInfo();
     int i = getThreadCount(this.mNetworkInfo);
-    SLog.d("ExecutorConfig", "network core = " + i);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("network core = ");
+    localStringBuilder.append(i);
+    SLog.d("ExecutorConfig", localStringBuilder.toString());
     return i;
   }
   
   public int getMaximum()
   {
     int i = getCore() * 2;
-    SLog.d("ExecutorConfig", "network max = " + i);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("network max = ");
+    localStringBuilder.append(i);
+    SLog.d("ExecutorConfig", localStringBuilder.toString());
     return i;
   }
   
@@ -98,7 +112,7 @@ public class ExecutorConfig$NetworkExecutorConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tribe.async.async.ExecutorConfig.NetworkExecutorConfig
  * JD-Core Version:    0.7.0.1
  */

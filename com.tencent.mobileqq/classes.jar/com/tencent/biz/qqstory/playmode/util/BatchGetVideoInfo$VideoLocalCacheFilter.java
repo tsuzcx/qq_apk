@@ -9,7 +9,7 @@ public abstract interface BatchGetVideoInfo$VideoLocalCacheFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.VideoLocalCacheFilter
  * JD-Core Version:    0.7.0.1
  */

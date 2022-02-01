@@ -11,7 +11,7 @@ import java.util.Iterator;
 
 public class VideoHoldViewPools
 {
-  public static final String a;
+  public static final String a = "VideoHoldViewPools";
   private final int jdField_a_of_type_Int = 15;
   private Context jdField_a_of_type_AndroidContentContext;
   private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
@@ -20,11 +20,6 @@ public class VideoHoldViewPools
   private int jdField_b_of_type_Int = 1000;
   private LongSparseArray<GLVideoView> jdField_b_of_type_ComTencentUtilLongSparseArray;
   private LongSparseArray<GLVideoView> c;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = VideoHoldViewPools.class.getSimpleName();
-  }
   
   public VideoHoldViewPools(Context paramContext, VideoAppInterface paramVideoAppInterface, GLViewGroup paramGLViewGroup)
   {
@@ -49,14 +44,15 @@ public class VideoHoldViewPools
   
   public GLVideoView a(long paramLong)
   {
-    boolean bool2 = false;
     Object localObject2 = (GLVideoView)this.jdField_a_of_type_ComTencentUtilLongSparseArray.a(paramLong);
+    boolean bool2 = true;
     Object localObject1 = localObject2;
-    boolean bool1;
+    boolean bool1 = bool2;
     if (localObject2 == null)
     {
       localObject2 = (GLVideoView)this.c.a(paramLong);
       localObject1 = localObject2;
+      bool1 = bool2;
       if (localObject2 == null)
       {
         localObject1 = localObject2;
@@ -69,11 +65,10 @@ public class VideoHoldViewPools
           this.c.a(i);
         }
         localObject2 = localObject1;
-        bool1 = bool2;
         if (localObject1 == null)
         {
           localObject2 = new GLVideoView(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, String.format("%s_%s", new Object[] { jdField_a_of_type_JavaLangString, Integer.valueOf(1000) }), 0L, false);
-          ((GLVideoView)localObject2).b(2130842327, 2130842326);
+          ((GLVideoView)localObject2).b(2130842225, 2130842224);
           ((GLVideoView)localObject2).a(String.valueOf(paramLong), 0);
           ((GLVideoView)localObject2).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
           ((GLVideoView)localObject2).a(true);
@@ -88,17 +83,13 @@ public class VideoHoldViewPools
           ((GLVideoView)localObject2).a(1);
           this.jdField_a_of_type_ComTencentUtilLongSparseArray.a(paramLong, localObject2);
           this.jdField_a_of_type_ComTencentAvOpenglUiGLViewGroup.a((GLView)localObject2);
-          bool1 = bool2;
         }
+        bool1 = false;
+        localObject1 = localObject2;
       }
     }
-    for (;;)
-    {
-      ((GLVideoView)localObject2).a(2, Boolean.valueOf(bool1));
-      return localObject2;
-      bool1 = true;
-      localObject2 = localObject1;
-    }
+    ((GLVideoView)localObject1).a(2, Boolean.valueOf(bool1));
+    return localObject1;
   }
   
   public void a(ArrayList<VideoMemberInfo> paramArrayList)
@@ -108,23 +99,18 @@ public class VideoHoldViewPools
       return;
     }
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       long l = this.jdField_a_of_type_ComTencentUtilLongSparseArray.a(i);
       GLVideoView localGLVideoView = (GLVideoView)this.jdField_a_of_type_ComTencentUtilLongSparseArray.a(i);
       if (a(paramArrayList, l)) {
         this.jdField_b_of_type_ComTencentUtilLongSparseArray.a(l, localGLVideoView);
+      } else if (this.c.a() + this.jdField_a_of_type_ComTencentUtilLongSparseArray.a() < 15) {
+        this.c.a(l, localGLVideoView);
+      } else {
+        this.jdField_a_of_type_ComTencentAvOpenglUiGLViewGroup.a(localGLVideoView);
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (this.c.a() + this.jdField_a_of_type_ComTencentUtilLongSparseArray.a() < 15) {
-          this.c.a(l, localGLVideoView);
-        } else {
-          this.jdField_a_of_type_ComTencentAvOpenglUiGLViewGroup.a(localGLVideoView);
-        }
-      }
+      i += 1;
     }
     paramArrayList = this.jdField_a_of_type_ComTencentUtilLongSparseArray;
     this.jdField_a_of_type_ComTencentUtilLongSparseArray = this.jdField_b_of_type_ComTencentUtilLongSparseArray;
@@ -134,7 +120,7 @@ public class VideoHoldViewPools
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoHoldViewPools
  * JD-Core Version:    0.7.0.1
  */

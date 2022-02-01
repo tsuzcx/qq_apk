@@ -5,8 +5,8 @@ import android.graphics.Bitmap.Config;
 
 public class YoutuFaceTracker
 {
-  private static long handle = 0L;
-  private static YoutuFaceTracker instance = null;
+  private static long handle;
+  private static YoutuFaceTracker instance;
   private long nativePtr;
   
   public YoutuFaceTracker()
@@ -62,7 +62,7 @@ public class YoutuFaceTracker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.youtufacetrack.YoutuFaceTracker
  * JD-Core Version:    0.7.0.1
  */

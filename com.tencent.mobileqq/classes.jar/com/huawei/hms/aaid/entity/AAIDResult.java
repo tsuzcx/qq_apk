@@ -5,7 +5,7 @@ import com.huawei.hms.core.aidl.IMessageEntity;
 public class AAIDResult
   implements IMessageEntity
 {
-  private String id;
+  public String id;
   
   public String getId()
   {
@@ -19,7 +19,7 @@ public class AAIDResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.aaid.entity.AAIDResult
  * JD-Core Version:    0.7.0.1
  */

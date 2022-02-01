@@ -37,12 +37,10 @@ public abstract interface AEFilterAVWrapper
   public abstract void c(int paramInt1, int paramInt2);
   
   public abstract boolean c();
-  
-  public abstract boolean d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.effects.AEFilterAVWrapper
  * JD-Core Version:    0.7.0.1
  */

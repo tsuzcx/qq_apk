@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.phone;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.phonecontact.observer.ContactBindObserver;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -13,34 +13,24 @@ class BindNumberActivity$5
 {
   BindNumberActivity$5(BindNumberActivity paramBindNumberActivity) {}
   
-  public void onBindMobile(boolean paramBoolean, Bundle paramBundle)
+  protected void onBindMobile(boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.f = false;
-    this.a.a();
-    this.a.b();
-    int i;
+    Object localObject = this.a;
+    ((BindNumberActivity)localObject).f = false;
+    ((BindNumberActivity)localObject).a();
+    this.a.dismissProgressDialog();
     if (paramBoolean)
     {
-      String str = ContactUtils.b();
-      if (!TextUtils.isEmpty(str)) {
-        ReportController.b(this.a.app, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
+      localObject = ContactUtils.a();
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        ReportController.b(this.a.app, "dc00898", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
       }
-      i = paramBundle.getInt("k_result");
-      if (paramBundle.getBoolean("k_buto_bind", false)) {
+      int i = paramBundle.getInt("k_result");
+      if (paramBundle.getBoolean("k_buto_bind", false))
+      {
         this.a.c();
       }
-    }
-    for (;;)
-    {
-      ContactUtils.a();
-      this.a.app.unRegistObserver(this.a.a);
-      this.a.a = null;
-      return;
-      if ((i == 104) || (i == 0))
-      {
-        this.a.b();
-      }
-      else
+      else if ((i != 104) && (i != 0))
       {
         if (i == 107)
         {
@@ -61,38 +51,48 @@ class BindNumberActivity$5
         }
         else
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("BindNumberActivity", 2, "bind error " + i);
+          if (QLog.isColorLevel())
+          {
+            paramBundle = new StringBuilder();
+            paramBundle.append("bind error ");
+            paramBundle.append(i);
+            QLog.d("BindNumberActivity", 2, paramBundle.toString());
           }
-          this.a.a(getBindErrorMessage(i));
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.d("BindNumberActivity", 2, "onBindMobile failed");
-          }
-          this.a.a(2131718550);
+          this.a.showToast(getBindErrorMessage(i));
         }
       }
+      else
+      {
+        this.a.b();
+      }
     }
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BindNumberActivity", 2, "onBindMobile failed");
+      }
+      this.a.showToast(2131718218);
+    }
+    ContactUtils.a();
+    this.a.app.unRegistObserver(this.a.a);
+    this.a.a = null;
   }
   
-  public void onRebindMobile(boolean paramBoolean, Bundle paramBundle)
+  protected void onRebindMobile(boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.b();
+    this.a.dismissProgressDialog();
     if (paramBoolean) {
       this.a.b();
+    } else {
+      this.a.showToast(2131718218);
     }
-    for (;;)
-    {
-      this.a.app.unRegistObserver(this.a.a);
-      this.a.a = null;
-      return;
-      this.a.a(2131718550);
-    }
+    this.a.app.unRegistObserver(this.a.a);
+    this.a.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.BindNumberActivity.5
  * JD-Core Version:    0.7.0.1
  */

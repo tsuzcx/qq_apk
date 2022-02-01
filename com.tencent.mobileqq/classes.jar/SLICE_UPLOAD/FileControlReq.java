@@ -94,30 +94,35 @@ public final class FileControlReq
     paramJceOutputStream.write(this.checksum, 3);
     paramJceOutputStream.write(this.check_type, 4);
     paramJceOutputStream.write(this.file_len, 5);
-    if (this.env != null) {
-      paramJceOutputStream.write(this.env, 6);
+    Object localObject = this.env;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
     paramJceOutputStream.write(this.model, 7);
-    if (this.biz_req != null) {
-      paramJceOutputStream.write(this.biz_req, 8);
+    localObject = this.biz_req;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 8);
     }
-    if (this.session != null) {
-      paramJceOutputStream.write(this.session, 9);
+    localObject = this.session;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
     paramJceOutputStream.write(this.need_ip_redirect, 10);
     paramJceOutputStream.write(this.asy_upload, 11);
-    if (this.dumpReq != null) {
-      paramJceOutputStream.write(this.dumpReq, 12);
+    localObject = this.dumpReq;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 12);
     }
     paramJceOutputStream.write(this.slice_size, 13);
-    if (this.extend_info != null) {
-      paramJceOutputStream.write(this.extend_info, 14);
+    localObject = this.extend_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 14);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SLICE_UPLOAD.FileControlReq
  * JD-Core Version:    0.7.0.1
  */

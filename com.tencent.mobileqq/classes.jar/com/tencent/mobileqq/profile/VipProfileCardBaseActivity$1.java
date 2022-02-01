@@ -12,31 +12,37 @@ class VipProfileCardBaseActivity$1
   
   public void handleMessage(Message paramMessage)
   {
-    if (!this.a.a(paramMessage)) {}
-    switch (paramMessage.what)
+    if (!this.a.a(paramMessage))
     {
-    case 5: 
-    case 8: 
-    default: 
-      return;
-    case 6: 
-      if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String)))
+      int i = paramMessage.what;
+      if (i != 5)
       {
-        Toast.makeText(this.a.a.getApplicationContext(), (String)paramMessage.obj, 0).show();
-        return;
+        if (i != 6)
+        {
+          if (i != 7)
+          {
+            if (i != 9) {
+              return;
+            }
+            this.a.d();
+            return;
+          }
+          Toast.makeText(this.a.a.getApplicationContext(), 2131695079, 0).show();
+          return;
+        }
+        if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String)))
+        {
+          Toast.makeText(this.a.a.getApplicationContext(), (String)paramMessage.obj, 0).show();
+          return;
+        }
+        Toast.makeText(this.a.a.getApplicationContext(), 2131695133, 0).show();
       }
-      Toast.makeText(this.a.a.getApplicationContext(), 2131695143, 0).show();
-      return;
-    case 7: 
-      Toast.makeText(this.a.a.getApplicationContext(), 2131695089, 0).show();
-      return;
     }
-    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.VipProfileCardBaseActivity.1
  * JD-Core Version:    0.7.0.1
  */

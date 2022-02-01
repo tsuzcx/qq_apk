@@ -55,8 +55,9 @@ public class VideoChannelProxy
   
   public void sendGetGatewayMsg()
   {
-    if (this.jdField_a_of_type_ComTencentQavChannelVideoChannelInterface != null) {
-      this.jdField_a_of_type_ComTencentQavChannelVideoChannelInterface.sendGetGatewayMsg();
+    VideoChannelInterface localVideoChannelInterface = this.jdField_a_of_type_ComTencentQavChannelVideoChannelInterface;
+    if (localVideoChannelInterface != null) {
+      localVideoChannelInterface.sendGetGatewayMsg();
     }
   }
   
@@ -64,8 +65,9 @@ public class VideoChannelProxy
   
   public void sendMultiVideoMsg(long paramLong1, long paramLong2, byte[] paramArrayOfByte)
   {
-    if (this.jdField_a_of_type_ComTencentQavChannelVideoChannelInterface != null) {
-      this.jdField_a_of_type_ComTencentQavChannelVideoChannelInterface.sendMultiVideoMsg(paramLong1, paramLong2, paramArrayOfByte);
+    VideoChannelInterface localVideoChannelInterface = this.jdField_a_of_type_ComTencentQavChannelVideoChannelInterface;
+    if (localVideoChannelInterface != null) {
+      localVideoChannelInterface.sendMultiVideoMsg(paramLong1, paramLong2, paramArrayOfByte);
     }
   }
   
@@ -73,7 +75,7 @@ public class VideoChannelProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qav.channel.VideoChannelProxy
  * JD-Core Version:    0.7.0.1
  */

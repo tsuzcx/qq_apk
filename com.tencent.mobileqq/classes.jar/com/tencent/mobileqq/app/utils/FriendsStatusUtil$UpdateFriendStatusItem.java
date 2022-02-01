@@ -25,8 +25,9 @@ public class FriendsStatusUtil$UpdateFriendStatusItem
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.b = paramParcel.readInt();
-    if (this.jdField_a_of_type_ArrayOfByte != null) {
-      paramParcel.readByteArray(this.jdField_a_of_type_ArrayOfByte);
+    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    if (arrayOfByte != null) {
+      paramParcel.readByteArray(arrayOfByte);
     }
   }
   
@@ -55,18 +56,21 @@ public class FriendsStatusUtil$UpdateFriendStatusItem
   
   public long a()
   {
-    if (this.jdField_a_of_type_ArrayOfByte == null) {}
-    do
-    {
+    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    long l = -1L;
+    if (arrayOfByte == null) {
       return -1L;
-      if (this.jdField_a_of_type_ArrayOfByte.length == 0) {
-        return 0L;
-      }
-      if (this.jdField_a_of_type_ArrayOfByte.length == 4) {
-        return MessageHandlerUtils.a(this.jdField_a_of_type_ArrayOfByte);
-      }
-    } while (this.jdField_a_of_type_ArrayOfByte.length != 8);
-    return MessageHandlerUtils.a(Arrays.copyOfRange(this.jdField_a_of_type_ArrayOfByte, 0, 4));
+    }
+    if (arrayOfByte.length == 0) {
+      return 0L;
+    }
+    if (arrayOfByte.length == 4) {
+      return MessageHandlerUtils.a(arrayOfByte);
+    }
+    if (arrayOfByte.length == 8) {
+      l = MessageHandlerUtils.a(Arrays.copyOfRange(arrayOfByte, 0, 4));
+    }
+    return l;
   }
   
   public void a(long paramLong)
@@ -74,10 +78,11 @@ public class FriendsStatusUtil$UpdateFriendStatusItem
     if (paramLong > 0L)
     {
       this.jdField_a_of_type_ArrayOfByte = new byte[4];
-      this.jdField_a_of_type_ArrayOfByte[0] = ((byte)(int)(paramLong >> 24 & 0xFF));
-      this.jdField_a_of_type_ArrayOfByte[1] = ((byte)(int)(paramLong >> 16 & 0xFF));
-      this.jdField_a_of_type_ArrayOfByte[2] = ((byte)(int)(paramLong >> 8 & 0xFF));
-      this.jdField_a_of_type_ArrayOfByte[3] = ((byte)(int)(paramLong & 0xFF));
+      byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+      arrayOfByte[0] = ((byte)(int)(paramLong >> 24 & 0xFF));
+      arrayOfByte[1] = ((byte)(int)(paramLong >> 16 & 0xFF));
+      arrayOfByte[2] = ((byte)(int)(paramLong >> 8 & 0xFF));
+      arrayOfByte[3] = ((byte)(int)(paramLong & 0xFF));
       return;
     }
     if (paramLong == 0L)
@@ -103,14 +108,15 @@ public class FriendsStatusUtil$UpdateFriendStatusItem
     this.jdField_a_of_type_ArrayOfByte = new byte[8];
     if (paramLong > 0L)
     {
-      this.jdField_a_of_type_ArrayOfByte[0] = ((byte)(int)(paramLong >> 24 & 0xFF));
-      this.jdField_a_of_type_ArrayOfByte[1] = ((byte)(int)(paramLong >> 16 & 0xFF));
-      this.jdField_a_of_type_ArrayOfByte[2] = ((byte)(int)(paramLong >> 8 & 0xFF));
-      this.jdField_a_of_type_ArrayOfByte[3] = ((byte)(int)(paramLong & 0xFF));
-      this.jdField_a_of_type_ArrayOfByte[4] = -1;
-      this.jdField_a_of_type_ArrayOfByte[5] = -1;
-      this.jdField_a_of_type_ArrayOfByte[6] = -1;
-      this.jdField_a_of_type_ArrayOfByte[7] = -1;
+      byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+      arrayOfByte[0] = ((byte)(int)(paramLong >> 24 & 0xFF));
+      arrayOfByte[1] = ((byte)(int)(paramLong >> 16 & 0xFF));
+      arrayOfByte[2] = ((byte)(int)(paramLong >> 8 & 0xFF));
+      arrayOfByte[3] = ((byte)(int)(paramLong & 0xFF));
+      arrayOfByte[4] = -1;
+      arrayOfByte[5] = -1;
+      arrayOfByte[6] = -1;
+      arrayOfByte[7] = -1;
     }
   }
   
@@ -129,7 +135,17 @@ public class FriendsStatusUtil$UpdateFriendStatusItem
   
   public String toString()
   {
-    return "item:serType=" + this.jdField_a_of_type_Int + " sns_type=" + this.b + " uin=" + this.jdField_a_of_type_JavaLangString + " serviceTime=" + this.jdField_a_of_type_ArrayOfByte + " identify=" + super.toString();
+    StringBuilder localStringBuilder = new StringBuilder("item:serType=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" sns_type=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(" uin=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" serviceTime=");
+    localStringBuilder.append(this.jdField_a_of_type_ArrayOfByte);
+    localStringBuilder.append(" identify=");
+    localStringBuilder.append(super.toString());
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -137,14 +153,15 @@ public class FriendsStatusUtil$UpdateFriendStatusItem
     paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
     paramParcel.writeInt(this.jdField_a_of_type_Int);
     paramParcel.writeInt(this.b);
-    if (this.jdField_a_of_type_ArrayOfByte != null) {
-      paramParcel.writeByteArray(this.jdField_a_of_type_ArrayOfByte);
+    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    if (arrayOfByte != null) {
+      paramParcel.writeByteArray(arrayOfByte);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.FriendsStatusUtil.UpdateFriendStatusItem
  * JD-Core Version:    0.7.0.1
  */

@@ -29,12 +29,12 @@ class SubscribePermissionSettingFragment$2
   public void onClickDetail(int paramInt)
   {
     SubscribeItemModel localSubscribeItemModel = (SubscribeItemModel)SubscribePermissionSettingFragment.access$000(this.this$0).get(paramInt);
-    new AuthDetailDialog(this.this$0.getActivity(), localSubscribeItemModel.getStSubscribeMessage(), -1, -1, 2).show();
+    new AuthDetailDialog(this.this$0.getBaseActivity(), localSubscribeItemModel.getStSubscribeMessage(), -1, -1, 2).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.activity.SubscribePermissionSettingFragment.2
  * JD-Core Version:    0.7.0.1
  */

@@ -8,6 +8,7 @@ import com.tencent.mobileqq.qcircle.api.IQCircleReportApi;
 import com.tencent.mobileqq.qcircle.api.event.QCircleFrameEvent;
 import com.tencent.mobileqq.qcircle.api.helper.QCircleRedDotDataHelper;
 import com.tencent.mobileqq.qroute.QRoute;
+import common.config.service.QzoneConfig;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
@@ -29,6 +30,7 @@ public class QCircleRedInfoBean
   private static final int REPORT_QQCIRCLE_RED_DOT_THRD_ACTION_ACTIVE = 1;
   private static final int REPORT_QQCIRCLE_RED_DOT_THRD_ACTION_ACTIVE_AND_NUM = 3;
   private static final int REPORT_QQCIRCLE_RED_DOT_THRD_ACTION_IDLE = 0;
+  private static final int REPORT_QQCIRCLE_RED_DOT_THRD_ACTION_NEW = 7;
   private static final int REPORT_QQCIRCLE_RED_DOT_THRD_ACTION_NONE = 4;
   private static final int REPORT_QQCIRCLE_RED_DOT_THRD_ACTION_NUM = 2;
   private static final int REPORT_QQCIRCLE_RED_DOT_THRD_ACTION_PYMK = 6;
@@ -55,24 +57,24 @@ public class QCircleRedInfoBean
   
   private int getQQCircleReportThrdAction()
   {
-    int i = 0;
+    int i;
     if ((this.mRedNum > 0) && (this.mIsShowActiveRedDot)) {
       i = 3;
+    } else if (this.mIsShowActiveRedDot) {
+      i = 1;
+    } else if (this.mRedNum > 0) {
+      i = 2;
+    } else if (this.mIsShowRecommendRedDot) {
+      i = 5;
+    } else if (this.mIsShowPymkRedDot) {
+      i = 6;
+    } else {
+      i = 4;
     }
-    do
-    {
-      return i;
-      if (this.mIsShowActiveRedDot) {
-        return 1;
-      }
-      if (this.mRedNum > 0) {
-        return 2;
-      }
-      if (this.mIsShowRecommendRedDot) {
-        return 5;
-      }
-    } while (!this.mIsShowPymkRedDot);
-    return 6;
+    if (QzoneConfig.getQQCircleShowGuideOnLebaEntrance()) {
+      i = 7;
+    }
+    return i;
   }
   
   private void isNeedSendRedNumChangeEvent(int paramInt)
@@ -117,6 +119,16 @@ public class QCircleRedInfoBean
   
   public boolean isShowActiveRedDot()
   {
+    return this.mIsShowActiveRedDot;
+  }
+  
+  public boolean isShowRecommendRedDot()
+  {
+    return this.mIsShowRecommendRedDot;
+  }
+  
+  public boolean isShowRedDot()
+  {
     return (this.mRedNum > 0) || (this.mIsShowActiveRedDot) || (this.mIsShowPymkRedDot) || (this.mIsShowRecommendRedDot);
   }
   
@@ -134,53 +146,53 @@ public class QCircleRedInfoBean
     boolean bool2 = QCircleRedDotDataHelper.isShowPymkRedDot(localRedPointInfo);
     boolean bool3 = QCircleRedDotDataHelper.isShowRecommendRedDot(localRedPointInfo, this.mRedEntranceType);
     setIsNeedReportFlag(localRedPointInfo, i, bool1, bool2, bool3);
-    if (bool2) {}
-    for (Object localObject1 = localRedPointInfo.pymkRedInfo.wording.get();; localObject1 = null)
+    Object localObject1;
+    if (bool2) {
+      localObject1 = localRedPointInfo.pymkRedInfo.wording.get();
+    } else {
+      localObject1 = null;
+    }
+    if (bool3)
     {
-      Object localObject2;
-      if (bool3)
+      localObject2 = localRedPointInfo.allPushInfo.wording.get();
+      localObject1 = localObject2;
+      if (localRedPointInfo.redJumpInfo.has())
       {
-        String str = localRedPointInfo.allPushInfo.wording.get();
-        localObject1 = str;
-        if (localRedPointInfo.redJumpInfo.has())
+        Object localObject3 = localRedPointInfo.redJumpInfo.redPointSources.get();
+        localObject1 = localObject2;
+        if (localObject3 != null)
         {
-          localObject2 = localRedPointInfo.redJumpInfo.redPointSources.get();
-          localObject1 = str;
-          if (localObject2 != null)
+          localObject1 = localObject2;
+          if (((List)localObject3).size() > 0)
           {
-            localObject1 = str;
-            if (((List)localObject2).size() > 0)
+            localObject1 = localObject2;
+            if (((List)localObject3).contains(Integer.valueOf(3)))
             {
-              localObject1 = str;
-              if (((List)localObject2).contains(Integer.valueOf(3)))
-              {
-                localObject2 = localRedPointInfo.redJumpInfo.jumpLink.get();
-                localObject1 = str;
-              }
+              localObject3 = localRedPointInfo.redJumpInfo.jumpLink.get();
+              localObject1 = localObject2;
+              localObject2 = localObject3;
+              break label208;
             }
           }
         }
       }
-      for (;;)
-      {
-        this.mRedNum = i;
-        this.mIsShowActiveRedDot = bool1;
-        this.mIsShowPymkRedDot = bool2;
-        this.mIsShowRecommendRedDot = bool3;
-        this.mRedDotJumpUrl = ((String)localObject2);
-        this.mRecommendRedDotWording = ((String)localObject1);
-        if ((this.mRedNum > 0) || (this.mIsShowActiveRedDot) || (this.mIsShowPymkRedDot) || (this.mIsShowRecommendRedDot))
-        {
-          this.mRedDotTransInfo = QCircleRedDotDataHelper.getTransInfo(localRedPointInfo);
-          this.mEntranceTabType = QCircleRedDotDataHelper.getEntranceATabType(localRedPointInfo);
-          return;
-        }
-        this.mRedDotTransInfo = null;
-        this.mEntranceTabType = -1;
-        return;
-        localObject2 = null;
-      }
     }
+    Object localObject2 = null;
+    label208:
+    this.mRedNum = i;
+    this.mIsShowActiveRedDot = bool1;
+    this.mIsShowPymkRedDot = bool2;
+    this.mIsShowRecommendRedDot = bool3;
+    this.mRedDotJumpUrl = ((String)localObject2);
+    this.mRecommendRedDotWording = ((String)localObject1);
+    if ((this.mRedNum <= 0) && (!this.mIsShowActiveRedDot) && (!this.mIsShowPymkRedDot) && (!this.mIsShowRecommendRedDot))
+    {
+      this.mRedDotTransInfo = null;
+      this.mEntranceTabType = -1;
+      return;
+    }
+    this.mRedDotTransInfo = QCircleRedDotDataHelper.getTransInfo(localRedPointInfo);
+    this.mEntranceTabType = QCircleRedDotDataHelper.getEntranceATabType(localRedPointInfo);
   }
   
   public void reportQQCircleClick()
@@ -199,6 +211,12 @@ public class QCircleRedInfoBean
   public void reportRedDotWhenValueChange()
   {
     int i = getQQCircleReportThrdAction();
+    if ((!QzoneConfig.getQQCircleEnableNoneRedpointReport()) && (i == 4)) {
+      return;
+    }
+    if ((!QzoneConfig.getQQCircleEnableHasRedpointReport()) && (i != 4)) {
+      return;
+    }
     if ((i != 0) && (this.mShouldReportRed))
     {
       HashMap localHashMap = new HashMap();
@@ -229,7 +247,7 @@ public class QCircleRedInfoBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.data.QCircleRedInfoBean
  * JD-Core Version:    0.7.0.1
  */

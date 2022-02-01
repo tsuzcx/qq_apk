@@ -379,20 +379,6 @@
 		<CoverURL>http://imgcache.qq.com/piao/pics/movies/$D/$U/$U_120_168.jpg</CoverURL>
 	</RichState>
 	<RichState>
-		<ActionId>15</ActionId>
-		<Display>true</Display>
-		<ActionName>读</ActionName>
-		<Describe>读书</Describe>
-		<IconURL>http://appimg1.3g.qq.com/msoft/mobileQQ_richstatus/doingV3/read.png</IconURL>
-		<TinyIcon>http://appimg1.3g.qq.com/msoft/mobileQQ_richstatus/doingV3/read30.png</TinyIcon>
-		<Type>4</Type>
-		<NativeList>com.qqreader.QRBridgeActivity</NativeList>
-		<ListParam>uin=$A</ListParam><!--手Q会用"key_params_qq"作为key，将此参数放到intent中-->
-		<NativeDetail>com.qqreader.QRBridgeActivity</NativeDetail>
-		<DetailParam>id=$U&amp;name=$N&amp;uin=$A</DetailParam><!--手Q会用"key_params_qq"作为key，将此参数放到intent中-->
-		<CoverURL>http://wfqqreader.3g.qq.com/cover/$T/$U/b_$U.jpg</CoverURL>
-	</RichState>	
-	<RichState>
 		<ActionId>3</ActionId>
 		<Display>true</Display>
 		<Describe>睡觉</Describe>

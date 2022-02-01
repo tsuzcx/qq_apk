@@ -12,41 +12,36 @@ class GlobalExitRoomDialog$1
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    boolean bool = true;
     paramContext = paramIntent.getAction();
     paramIntent = paramIntent.getStringExtra("process_name");
-    if (QLog.isColorLevel()) {
-      QLog.d("GlobalExitRoomManagement", 2, "onReceive action: " + paramContext + "  process_name:" + paramIntent);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReceive action: ");
+      localStringBuilder.append(paramContext);
+      localStringBuilder.append("  process_name:");
+      localStringBuilder.append(paramIntent);
+      QLog.d("GlobalExitRoomManagement", 2, localStringBuilder.toString());
     }
     int i;
-    if ((paramIntent != null) && (paramIntent.contains("openSdk")))
-    {
+    if ((paramIntent != null) && (paramIntent.contains("openSdk"))) {
       i = 1;
-      if (!"mqq.intent.action.QQ_BACKGROUND".equals(paramContext)) {
-        break label94;
-      }
-      GlobalExitRoomDialog.a(this.a, false);
-    }
-    label94:
-    while (!"mqq.intent.action.QQ_FOREGROUND".equals(paramContext))
-    {
-      return;
+    } else {
       i = 0;
-      break;
     }
-    paramContext = this.a;
-    if (i == 0) {}
-    for (;;)
+    if ("mqq.intent.action.QQ_BACKGROUND".equals(paramContext))
     {
-      GlobalExitRoomDialog.a(paramContext, bool);
+      GlobalExitRoomDialog.a(this.a, false);
       return;
-      bool = false;
+    }
+    if ("mqq.intent.action.QQ_FOREGROUND".equals(paramContext)) {
+      GlobalExitRoomDialog.a(this.a, i ^ 0x1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.globalmanage.GlobalExitRoomDialog.1
  * JD-Core Version:    0.7.0.1
  */

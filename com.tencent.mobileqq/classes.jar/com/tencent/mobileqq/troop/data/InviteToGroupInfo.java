@@ -37,7 +37,22 @@ public class InviteToGroupInfo
   
   public String toString()
   {
-    return "InviteToGroupInfo{groupCode='" + this.jdField_a_of_type_JavaLangString + '\'' + ", msg='" + this.b + '\'' + ", invitedUinInfos=" + this.jdField_a_of_type_JavaUtilArrayList + ", verifyType=" + this.jdField_a_of_type_Int + ", verifyToken='" + this.c + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("InviteToGroupInfo{groupCode='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", msg='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", invitedUinInfos=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuilder.append(", verifyType=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", verifyToken='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -51,7 +66,7 @@ public class InviteToGroupInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.InviteToGroupInfo
  * JD-Core Version:    0.7.0.1
  */

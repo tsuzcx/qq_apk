@@ -11,8 +11,13 @@ class VideoController$28
   public void run()
   {
     QLog.d(VideoController.jdField_a_of_type_JavaLangString, 1, "GAudioCtrl.quitRoom start.");
-    VideoController.b(this.this$0, this.this$0.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.quitRoom(this.a));
-    QLog.d(VideoController.jdField_a_of_type_JavaLangString, 1, "GAudioCtrl.quitRoom end. mQuitResult = " + VideoController.a(this.this$0));
+    ??? = this.this$0;
+    VideoController.b((VideoController)???, ((VideoController)???).jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.quitRoom(this.a));
+    ??? = VideoController.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GAudioCtrl.quitRoom end. mQuitResult = ");
+    localStringBuilder.append(VideoController.a(this.this$0));
+    QLog.d((String)???, 1, localStringBuilder.toString());
     synchronized (VideoController.a(this.this$0))
     {
       VideoController.a(this.this$0).notify();
@@ -22,7 +27,7 @@ class VideoController$28
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoController.28
  * JD-Core Version:    0.7.0.1
  */

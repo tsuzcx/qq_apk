@@ -11,13 +11,14 @@ final class PhoneNumQuickLoginManager$9
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
+    paramDialogInterface = this.a;
     int i = 1;
-    if (this.a == null)
+    if (paramDialogInterface == null)
     {
       QLog.d("PhoneNumQuickLoginManager", 1, "mask dialog dismiss, user click is null");
       return;
     }
-    if (this.a.booleanValue()) {
+    if (paramDialogInterface.booleanValue()) {
       i = 2;
     }
     PhoneNumQuickLoginManager.c(i);
@@ -25,7 +26,7 @@ final class PhoneNumQuickLoginManager$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.PhoneNumQuickLoginManager.9
  * JD-Core Version:    0.7.0.1
  */

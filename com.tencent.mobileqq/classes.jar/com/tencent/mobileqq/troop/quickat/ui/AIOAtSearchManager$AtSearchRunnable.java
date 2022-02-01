@@ -50,32 +50,39 @@ public class AIOAtSearchManager$AtSearchRunnable
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("AIOAtSearchManager", 2, "taa AtSearchRunnable start: " + System.currentTimeMillis());
-    }
-    if (this.jdField_a_of_type_Boolean) {}
-    do
+    if (QLog.isColorLevel())
     {
-      SearchTask.SearchResult localSearchResult;
-      do
-      {
-        do
-        {
-          return;
-        } while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null);
-        localSearchResult = new SearchTask(a(this.jdField_a_of_type_JavaUtilList)).a((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.c, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.b);
-      } while (this.jdField_a_of_type_Boolean);
-      Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-      localMessage.what = 1;
-      localMessage.obj = localSearchResult;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-    } while (!QLog.isColorLevel());
-    QLog.e("AIOAtSearchManager", 2, "taa AtSearchRunnable end: " + System.currentTimeMillis());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("taa AtSearchRunnable start: ");
+      ((StringBuilder)localObject).append(System.currentTimeMillis());
+      QLog.e("AIOAtSearchManager", 2, ((StringBuilder)localObject).toString());
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+      return;
+    }
+    Object localObject = new SearchTask(a(this.jdField_a_of_type_JavaUtilList)).a((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.c, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.b);
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+    localMessage.what = 1;
+    localMessage.obj = localObject;
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("taa AtSearchRunnable end: ");
+      ((StringBuilder)localObject).append(System.currentTimeMillis());
+      QLog.e("AIOAtSearchManager", 2, ((StringBuilder)localObject).toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.quickat.ui.AIOAtSearchManager.AtSearchRunnable
  * JD-Core Version:    0.7.0.1
  */

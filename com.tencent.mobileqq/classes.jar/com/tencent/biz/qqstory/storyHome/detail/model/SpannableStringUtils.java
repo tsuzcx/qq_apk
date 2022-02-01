@@ -58,365 +58,396 @@ public class SpannableStringUtils
   private static SpannableStringBuilder a(Context paramContext, CommentLikeFeedItem paramCommentLikeFeedItem, @NonNull CommentEntry paramCommentEntry, SpannableStringUtils.ClickNickCallback paramClickNickCallback, boolean paramBoolean)
   {
     paramContext = ((UserManager)SuperManager.a(2)).c(paramCommentEntry.authorUnionId);
-    String str3 = a(paramCommentLikeFeedItem, paramContext);
-    String str4 = a(paramCommentEntry.authorRole, paramContext);
-    String str5 = a(paramContext);
+    String str1 = a(paramCommentLikeFeedItem, paramContext);
+    String str2 = a(paramCommentEntry.authorRole, paramContext);
+    String str3 = a(paramContext);
+    boolean bool = android.text.TextUtils.isEmpty(str3);
+    Object localObject2 = paramCommentEntry.content;
+    paramCommentLikeFeedItem = null;
+    if (com.tencent.mobileqq.text.TextUtils.hasSysEmotion(paramCommentEntry.content)) {
+      paramCommentLikeFeedItem = EmotionCodecUtils.b(paramCommentEntry.content);
+    }
     int i;
-    String str6;
-    if (!android.text.TextUtils.isEmpty(str5))
+    if (paramBoolean) {
+      i = 2131714101;
+    } else {
+      i = 2131714104;
+    }
+    String str4 = HardCodeUtil.a(i);
+    Object localObject1 = "";
+    if ((bool ^ true)) {
+      paramContext = "V";
+    } else {
+      paramContext = "";
+    }
+    if (paramBoolean)
     {
-      i = 1;
-      str6 = paramCommentEntry.content;
-      if (!com.tencent.mobileqq.text.TextUtils.hasSysEmotion(paramCommentEntry.content)) {
-        break label511;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(str1);
+      ((StringBuilder)localObject1).append(paramContext);
+      ((StringBuilder)localObject1).append(str2);
+      localObject1 = ((StringBuilder)localObject1).toString();
+    }
+    if (paramCommentLikeFeedItem != null)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(str4);
+      ((StringBuilder)localObject2).append(": ");
+      ((StringBuilder)localObject2).append(paramCommentLikeFeedItem);
+      paramCommentLikeFeedItem = new QQTextBuilder(((StringBuilder)localObject2).toString(), 3, 16);
+    }
+    else
+    {
+      paramCommentLikeFeedItem = new StringBuilder();
+      paramCommentLikeFeedItem.append((String)localObject1);
+      paramCommentLikeFeedItem.append(str4);
+      paramCommentLikeFeedItem.append(": ");
+      paramCommentLikeFeedItem.append(localObject2);
+      paramCommentLikeFeedItem = new SpannableStringBuilder(paramCommentLikeFeedItem.toString());
+    }
+    if (paramBoolean)
+    {
+      i = str1.length();
+      a(paramCommentLikeFeedItem, 0, i);
+      if (StoryDepends.a()) {
+        b(paramCommentLikeFeedItem, 0, i, -16777216);
+      }
+      k = paramContext.length() + i;
+      if (i != k) {
+        a(paramCommentLikeFeedItem, str3, i, k);
+      }
+      a(paramCommentLikeFeedItem, 0, k, paramClickNickCallback, paramCommentEntry.authorUnionId, paramCommentEntry.authorRole);
+      j = k + str2.length();
+      i = j;
+      if (k != j)
+      {
+        b(paramCommentLikeFeedItem, k, j, -4473925);
+        i = j;
       }
     }
-    label84:
-    label93:
-    label125:
-    label511:
-    for (paramCommentLikeFeedItem = EmotionCodecUtils.b(paramCommentEntry.content);; paramCommentLikeFeedItem = null)
+    else
     {
-      String str1;
-      String str2;
-      if (paramBoolean)
-      {
-        paramContext = HardCodeUtil.a(2131714172);
-        if (i == 0) {
-          break label403;
-        }
-        str1 = "V";
-        if (!paramBoolean) {
-          break label410;
-        }
-        str2 = str3 + str1 + str4;
-        if (paramCommentLikeFeedItem == null) {
-          break label417;
-        }
+      i = 0;
+    }
+    int j = 0;
+    int k = str4.length() + i;
+    b(paramCommentLikeFeedItem, i, k, -4473925);
+    try
+    {
+      paramContext = paramCommentEntry.getExtraJson().optJSONArray("styles");
+      if (paramContext == null) {
+        break label506;
       }
-      for (paramCommentLikeFeedItem = new QQTextBuilder(str2 + paramContext + ": " + paramCommentLikeFeedItem, 3, 16);; paramCommentLikeFeedItem = new SpannableStringBuilder(str2 + paramContext + ": " + str6))
+      k += 2;
+      i = j;
+      while (i < paramContext.length())
       {
-        for (;;)
-        {
-          i = 0;
-          if (paramBoolean)
-          {
-            i = str3.length();
-            a(paramCommentLikeFeedItem, 0, i);
-            if (StoryDepends.a()) {
-              b(paramCommentLikeFeedItem, 0, i, -16777216);
-            }
-            int k = i + str1.length();
-            if (i != k) {
-              a(paramCommentLikeFeedItem, str5, i, k);
-            }
-            a(paramCommentLikeFeedItem, 0, k, paramClickNickCallback, paramCommentEntry.authorUnionId, paramCommentEntry.authorRole);
-            j = str4.length() + k;
-            i = j;
-            if (k != j)
-            {
-              b(paramCommentLikeFeedItem, k, j, -4473925);
-              i = j;
-            }
-          }
-          int j = paramContext.length() + i;
-          b(paramCommentLikeFeedItem, i, j, -4473925);
-          try
-          {
-            paramContext = paramCommentEntry.getExtraJson().optJSONArray("styles");
-            if (paramContext == null) {
-              break label472;
-            }
-            j += ": ".length();
-            i = 0;
-            while (i < paramContext.length())
-            {
-              paramCommentEntry = paramContext.optJSONObject(i);
-              if (paramCommentEntry.optInt("type") == 1) {
-                b(paramCommentLikeFeedItem, paramCommentEntry.optInt("start") + j, paramCommentEntry.optInt("end") + j, -605655);
-              }
-              i += 1;
-            }
-            i = 0;
-          }
-          catch (Exception paramContext)
-          {
-            if (!QLog.isColorLevel()) {
-              break label472;
-            }
-            QLog.e("Q.qqstory.detail.SpannableStringUtils", 2, "styles error.");
-            paramCommentLikeFeedItem.append(" ").append("I");
-            a(paramCommentLikeFeedItem, paramCommentLikeFeedItem.length() - "I".length(), paramCommentLikeFeedItem.length(), 2130846811, 15, 15, 3);
-            return paramCommentLikeFeedItem;
-          }
+        paramCommentEntry = paramContext.optJSONObject(i);
+        if (paramCommentEntry.optInt("type") == 1) {
+          b(paramCommentLikeFeedItem, paramCommentEntry.optInt("start") + k, paramCommentEntry.optInt("end") + k, -605655);
         }
-        paramContext = HardCodeUtil.a(2131714175);
-        break label84;
-        str1 = "";
-        break label93;
-        str2 = "";
-        break label125;
+        i += 1;
       }
     }
+    catch (Exception paramContext)
+    {
+      label492:
+      break label492;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.qqstory.detail.SpannableStringUtils", 2, "styles error.");
+    }
+    label506:
+    paramCommentLikeFeedItem.append(" ").append("I");
+    a(paramCommentLikeFeedItem, paramCommentLikeFeedItem.length() - 1, paramCommentLikeFeedItem.length(), 2130846691, 15, 15, 3);
+    return paramCommentLikeFeedItem;
   }
   
   private static SpannableStringBuilder a(@NonNull CommentEntry paramCommentEntry)
   {
-    String str2 = paramCommentEntry.content;
-    String str1 = null;
+    Object localObject = paramCommentEntry.content;
     if (com.tencent.mobileqq.text.TextUtils.hasSysEmotion(paramCommentEntry.content)) {
-      str1 = EmotionCodecUtils.b(paramCommentEntry.content);
+      paramCommentEntry = EmotionCodecUtils.b(paramCommentEntry.content);
+    } else {
+      paramCommentEntry = null;
     }
-    String str3 = HardCodeUtil.a(2131714173);
-    if (str1 != null) {}
-    for (paramCommentEntry = new QQTextBuilder(str3 + ": " + str1, 3, 16);; paramCommentEntry = new SpannableStringBuilder(str3 + ": " + str2))
+    String str = HardCodeUtil.a(2131714102);
+    if (paramCommentEntry != null)
     {
-      b(paramCommentEntry, 0, str3.length(), -4473925);
-      return paramCommentEntry;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(": ");
+      ((StringBuilder)localObject).append(paramCommentEntry);
+      paramCommentEntry = new QQTextBuilder(((StringBuilder)localObject).toString(), 3, 16);
     }
+    else
+    {
+      paramCommentEntry = new StringBuilder();
+      paramCommentEntry.append(str);
+      paramCommentEntry.append(": ");
+      paramCommentEntry.append(localObject);
+      paramCommentEntry = new SpannableStringBuilder(paramCommentEntry.toString());
+    }
+    b(paramCommentEntry, 0, str.length(), -4473925);
+    return paramCommentEntry;
   }
   
   private static SpannableStringBuilder a(CommentLikeFeedItem paramCommentLikeFeedItem, @NonNull CommentEntry paramCommentEntry, SpannableStringUtils.ClickNickCallback paramClickNickCallback)
   {
     Object localObject1 = (UserManager)SuperManager.a(2);
     Object localObject3 = ((UserManager)localObject1).c(paramCommentEntry.authorUnionId);
-    String str2 = a(paramCommentLikeFeedItem, (QQUserUIItem)localObject3);
-    String str3 = a(paramCommentEntry.authorRole, (QQUserUIItem)localObject3);
+    String str4 = a(paramCommentLikeFeedItem, (QQUserUIItem)localObject3);
+    String str5 = a(paramCommentEntry.authorRole, (QQUserUIItem)localObject3);
+    boolean bool = paramCommentEntry.isReply();
+    String str2 = "";
+    String str1 = null;
     Object localObject2;
-    String str1;
-    if (paramCommentEntry.isReply())
+    if (bool)
     {
       localObject2 = ((UserManager)localObject1).c(paramCommentEntry.replierUnionId);
-      str1 = a(paramCommentLikeFeedItem, (QQUserUIItem)localObject2);
-      localObject1 = a(paramCommentEntry.replierRole, (QQUserUIItem)localObject2);
+      localObject1 = a(paramCommentLikeFeedItem, (QQUserUIItem)localObject2);
+      str3 = a(paramCommentEntry.replierRole, (QQUserUIItem)localObject2);
+      paramCommentLikeFeedItem = (CommentLikeFeedItem)localObject2;
+      localObject2 = str3;
     }
-    for (paramCommentLikeFeedItem = (CommentLikeFeedItem)localObject2;; paramCommentLikeFeedItem = null)
+    else
     {
-      String str4 = a((QQUserUIItem)localObject3);
-      String str5 = a(paramCommentLikeFeedItem);
-      int i;
-      int j;
-      label120:
-      String str7;
-      String str6;
-      if (!android.text.TextUtils.isEmpty(str4))
-      {
-        i = 1;
-        if ((!paramCommentEntry.isReply()) || (android.text.TextUtils.isEmpty(str5))) {
-          break label409;
-        }
-        j = 1;
-        str7 = paramCommentEntry.content;
-        paramCommentLikeFeedItem = null;
-        if (com.tencent.mobileqq.text.TextUtils.hasSysEmotion(paramCommentEntry.content)) {
-          paramCommentLikeFeedItem = EmotionCodecUtils.b(paramCommentEntry.content);
-        }
-        str6 = HardCodeUtil.a(2131714178);
-        if (i == 0) {
-          break label415;
-        }
-        localObject2 = "V";
-        label161:
-        if (j == 0) {
-          break label422;
-        }
-        localObject3 = "V";
-        label170:
-        if (!android.text.TextUtils.isEmpty(str1)) {
-          break label475;
-        }
-        if (paramCommentLikeFeedItem == null) {
-          break label429;
-        }
-      }
-      label409:
-      label415:
-      label422:
-      label429:
-      for (paramCommentLikeFeedItem = new QQTextBuilder(str2 + (String)localObject2 + str3 + ": " + paramCommentLikeFeedItem, 3, 16);; paramCommentLikeFeedItem = new SpannableStringBuilder(str2 + (String)localObject2 + str3 + ": " + str7))
-      {
-        j = str2.length();
-        a(paramCommentLikeFeedItem, 0, j);
-        if (StoryDepends.a()) {
-          b(paramCommentLikeFeedItem, 0, j, -16777216);
-        }
-        i = j + ((String)localObject2).length();
-        if (j != i) {
-          a(paramCommentLikeFeedItem, str4, j, i);
-        }
-        a(paramCommentLikeFeedItem, 0, i, paramClickNickCallback, paramCommentEntry.authorUnionId, paramCommentEntry.authorRole);
-        j = str3.length() + i;
-        paramClickNickCallback = paramCommentLikeFeedItem;
-        if (i != j)
-        {
-          b(paramCommentLikeFeedItem, i, j, -4473925);
-          paramClickNickCallback = paramCommentLikeFeedItem;
-        }
-        if (paramCommentEntry.status == 2)
-        {
-          paramClickNickCallback.append(" ");
-          paramCommentLikeFeedItem = HardCodeUtil.a(2131714177);
-          i = paramClickNickCallback.length();
-          j = paramCommentLikeFeedItem.length();
-          paramClickNickCallback.append(paramCommentLikeFeedItem);
-          b(paramClickNickCallback, i, j + i, -48606);
-          i = paramClickNickCallback.length();
-          j = "[icon]  ".length();
-          paramClickNickCallback.append("[icon]  ");
-          a(paramClickNickCallback, i, j + i, 2130849040);
-        }
-        return paramClickNickCallback;
-        i = 0;
-        break;
-        j = 0;
-        break label120;
-        localObject2 = "";
-        break label161;
-        localObject3 = "";
-        break label170;
-      }
-      label475:
-      if (paramCommentLikeFeedItem != null) {}
-      for (paramCommentLikeFeedItem = new QQTextBuilder(str2 + (String)localObject2 + str3 + str6 + str1 + (String)localObject3 + (String)localObject1 + ": " + paramCommentLikeFeedItem, 3, 14);; paramCommentLikeFeedItem = new SpannableStringBuilder(str2 + (String)localObject2 + str3 + str6 + str1 + (String)localObject3 + (String)localObject1 + ": " + str7))
-      {
-        j = str2.length();
-        a(paramCommentLikeFeedItem, 0, j);
-        if (StoryDepends.a()) {
-          b(paramCommentLikeFeedItem, 0, j, -16777216);
-        }
-        i = j + ((String)localObject2).length();
-        if (j != i) {
-          a(paramCommentLikeFeedItem, str4, j, i);
-        }
-        a(paramCommentLikeFeedItem, 0, i, paramClickNickCallback, paramCommentEntry.authorUnionId, paramCommentEntry.authorRole);
-        j = str3.length() + i;
-        if (i != j) {
-          b(paramCommentLikeFeedItem, i, j, -4473925);
-        }
-        j += str6.length();
-        i = j + str1.length();
-        a(paramCommentLikeFeedItem, j, i);
-        if (StoryDepends.a()) {
-          b(paramCommentLikeFeedItem, j, i, -16777216);
-        }
-        j = i + ((String)localObject3).length();
-        if (i != j) {
-          a(paramCommentLikeFeedItem, str5, i, j);
-        }
-        a(paramCommentLikeFeedItem, i - str1.length(), j, paramClickNickCallback, paramCommentEntry.replierUnionId, paramCommentEntry.replierRole);
-        i = ((String)localObject1).length() + j;
-        paramClickNickCallback = paramCommentLikeFeedItem;
-        if (j == i) {
-          break;
-        }
-        b(paramCommentLikeFeedItem, j, i, -4473925);
-        paramClickNickCallback = paramCommentLikeFeedItem;
-        break;
-      }
-      localObject1 = "";
-      str1 = null;
+      localObject2 = "";
+      localObject1 = null;
+      paramCommentLikeFeedItem = (CommentLikeFeedItem)localObject1;
     }
+    String str3 = a((QQUserUIItem)localObject3);
+    localObject3 = a(paramCommentLikeFeedItem);
+    bool = android.text.TextUtils.isEmpty(str3);
+    int i = 1;
+    if ((!paramCommentEntry.isReply()) || (android.text.TextUtils.isEmpty((CharSequence)localObject3))) {
+      i = 0;
+    }
+    Object localObject4 = paramCommentEntry.content;
+    paramCommentLikeFeedItem = str1;
+    if (com.tencent.mobileqq.text.TextUtils.hasSysEmotion(paramCommentEntry.content)) {
+      paramCommentLikeFeedItem = EmotionCodecUtils.b(paramCommentEntry.content);
+    }
+    String str6 = HardCodeUtil.a(2131714107);
+    if ((bool ^ true)) {
+      str1 = "V";
+    } else {
+      str1 = "";
+    }
+    if (i != 0) {
+      str2 = "V";
+    }
+    int j;
+    if (android.text.TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      if (paramCommentLikeFeedItem != null)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(str4);
+        ((StringBuilder)localObject1).append(str1);
+        ((StringBuilder)localObject1).append(str5);
+        ((StringBuilder)localObject1).append(": ");
+        ((StringBuilder)localObject1).append(paramCommentLikeFeedItem);
+        paramCommentLikeFeedItem = new QQTextBuilder(((StringBuilder)localObject1).toString(), 3, 16);
+      }
+      else
+      {
+        paramCommentLikeFeedItem = new StringBuilder();
+        paramCommentLikeFeedItem.append(str4);
+        paramCommentLikeFeedItem.append(str1);
+        paramCommentLikeFeedItem.append(str5);
+        paramCommentLikeFeedItem.append(": ");
+        paramCommentLikeFeedItem.append(localObject4);
+        paramCommentLikeFeedItem = new SpannableStringBuilder(paramCommentLikeFeedItem.toString());
+      }
+      j = str4.length();
+      a(paramCommentLikeFeedItem, 0, j);
+      if (StoryDepends.a()) {
+        b(paramCommentLikeFeedItem, 0, j, -16777216);
+      }
+      i = str1.length() + j;
+      if (j != i) {
+        a(paramCommentLikeFeedItem, str3, j, i);
+      }
+      a(paramCommentLikeFeedItem, 0, i, paramClickNickCallback, paramCommentEntry.authorUnionId, paramCommentEntry.authorRole);
+      j = str5.length() + i;
+      paramClickNickCallback = paramCommentLikeFeedItem;
+      if (i != j)
+      {
+        b(paramCommentLikeFeedItem, i, j, -4473925);
+        paramClickNickCallback = paramCommentLikeFeedItem;
+      }
+    }
+    else
+    {
+      if (paramCommentLikeFeedItem != null)
+      {
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append(str4);
+        ((StringBuilder)localObject4).append(str1);
+        ((StringBuilder)localObject4).append(str5);
+        ((StringBuilder)localObject4).append(str6);
+        ((StringBuilder)localObject4).append((String)localObject1);
+        ((StringBuilder)localObject4).append(str2);
+        ((StringBuilder)localObject4).append((String)localObject2);
+        ((StringBuilder)localObject4).append(": ");
+        ((StringBuilder)localObject4).append(paramCommentLikeFeedItem);
+        paramCommentLikeFeedItem = new QQTextBuilder(((StringBuilder)localObject4).toString(), 3, 14);
+      }
+      else
+      {
+        paramCommentLikeFeedItem = new StringBuilder();
+        paramCommentLikeFeedItem.append(str4);
+        paramCommentLikeFeedItem.append(str1);
+        paramCommentLikeFeedItem.append(str5);
+        paramCommentLikeFeedItem.append(str6);
+        paramCommentLikeFeedItem.append((String)localObject1);
+        paramCommentLikeFeedItem.append(str2);
+        paramCommentLikeFeedItem.append((String)localObject2);
+        paramCommentLikeFeedItem.append(": ");
+        paramCommentLikeFeedItem.append(localObject4);
+        paramCommentLikeFeedItem = new SpannableStringBuilder(paramCommentLikeFeedItem.toString());
+      }
+      j = str4.length();
+      a(paramCommentLikeFeedItem, 0, j);
+      if (StoryDepends.a()) {
+        b(paramCommentLikeFeedItem, 0, j, -16777216);
+      }
+      i = str1.length() + j;
+      if (j != i) {
+        a(paramCommentLikeFeedItem, str3, j, i);
+      }
+      a(paramCommentLikeFeedItem, 0, i, paramClickNickCallback, paramCommentEntry.authorUnionId, paramCommentEntry.authorRole);
+      j = str5.length() + i;
+      if (i != j) {
+        b(paramCommentLikeFeedItem, i, j, -4473925);
+      }
+      j += str6.length();
+      i = ((String)localObject1).length() + j;
+      a(paramCommentLikeFeedItem, j, i);
+      if (StoryDepends.a()) {
+        b(paramCommentLikeFeedItem, j, i, -16777216);
+      }
+      j = str2.length() + i;
+      if (i != j) {
+        a(paramCommentLikeFeedItem, (String)localObject3, i, j);
+      }
+      a(paramCommentLikeFeedItem, i - ((String)localObject1).length(), j, paramClickNickCallback, paramCommentEntry.replierUnionId, paramCommentEntry.replierRole);
+      i = ((String)localObject2).length() + j;
+      if (j != i) {
+        b(paramCommentLikeFeedItem, j, i, -4473925);
+      }
+      paramClickNickCallback = paramCommentLikeFeedItem;
+    }
+    if (paramCommentEntry.status == 2)
+    {
+      paramClickNickCallback.append(" ");
+      paramCommentLikeFeedItem = HardCodeUtil.a(2131714106);
+      i = paramClickNickCallback.length();
+      j = paramCommentLikeFeedItem.length();
+      paramClickNickCallback.append(paramCommentLikeFeedItem);
+      b(paramClickNickCallback, i, j + i, -48606);
+      i = paramClickNickCallback.length();
+      paramClickNickCallback.append("[icon]  ");
+      a(paramClickNickCallback, i, i + 8, 2130848920);
+    }
+    return paramClickNickCallback;
   }
   
   public static SpannableStringBuilder a(CommentLikeFeedItem paramCommentLikeFeedItem, List<LikeEntry> paramList, SpannableStringUtils.ClickNickCallback paramClickNickCallback)
   {
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    String str1 = paramCommentLikeFeedItem.feedId + "_" + paramList.hashCode();
-    Object localObject = StoryQQTextCacher.a().a(str1);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramCommentLikeFeedItem.feedId);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramList.hashCode());
+    String str2 = ((StringBuilder)localObject).toString();
+    localObject = StoryQQTextCacher.a().a(str2);
     if ((localObject != null) && ((localObject instanceof SpannableStringBuilder))) {
       return new SpannableStringBuilder((CharSequence)localObject);
     }
-    boolean bool;
-    if ((paramCommentLikeFeedItem.getOwner() != null) && (paramCommentLikeFeedItem.getOwner().getRelationType() == 2))
+    boolean bool2;
+    if ((paramCommentLikeFeedItem.getOwner() != null) && (paramCommentLikeFeedItem.getOwner().getRelationType() == 2)) {
+      bool2 = true;
+    } else {
+      bool2 = false;
+    }
+    String str1 = null;
+    localObject = str1;
+    if ((paramCommentLikeFeedItem.getOwner() instanceof QQUserUIItem))
     {
-      bool = true;
-      if (!(paramCommentLikeFeedItem.getOwner() instanceof QQUserUIItem)) {
-        break label424;
-      }
       paramCommentLikeFeedItem = (QQUserUIItem)paramCommentLikeFeedItem.getOwner();
-      if (!bool) {
-        break label424;
+      localObject = str1;
+      if (bool2) {
+        localObject = paramCommentLikeFeedItem.qq;
       }
     }
-    label261:
-    label392:
-    label424:
-    for (paramCommentLikeFeedItem = paramCommentLikeFeedItem.qq;; paramCommentLikeFeedItem = null)
+    int i = 0;
+    int j = 1;
+    while (i < paramList.size())
     {
-      int i = 1;
-      int j = 0;
-      for (;;)
+      LikeEntry localLikeEntry = (LikeEntry)paramList.get(i);
+      paramCommentLikeFeedItem = ((UserManager)SuperManager.a(2)).c(localLikeEntry.unionId);
+      if ((paramCommentLikeFeedItem != null) && (paramCommentLikeFeedItem.isAvailable()))
       {
-        if (j < paramList.size())
-        {
-          LikeEntry localLikeEntry = (LikeEntry)paramList.get(j);
-          localObject = ((UserManager)SuperManager.a(2)).c(localLikeEntry.unionId);
-          if ((localObject == null) || (!((QQUserUIItem)localObject).isAvailable()))
-          {
-            i = 0;
-            j += 1;
-            continue;
-            bool = false;
-            break;
-          }
-          String str2 = a((QQUserUIItem)localObject);
-          int k;
-          label220:
-          String str3;
-          StringBuilder localStringBuilder;
-          if (!android.text.TextUtils.isEmpty(str2))
-          {
-            k = 1;
-            str3 = a(localLikeEntry.unionId, localLikeEntry.uin, bool, paramCommentLikeFeedItem);
-            localStringBuilder = new StringBuilder().append(str3);
-            if (k == 0) {
-              break label385;
-            }
-            localObject = "V";
-            localStringBuilder = localStringBuilder.append((String)localObject);
-            if (j != paramList.size() - 1) {
-              break label392;
-            }
-          }
-          for (localObject = "";; localObject = ", ")
-          {
-            localObject = (String)localObject;
-            int m = localSpannableStringBuilder.length();
-            int n = ((String)localObject).length() + m;
-            localSpannableStringBuilder.append((CharSequence)localObject);
-            int i1 = str3.length() + m;
-            if (k != 0) {
-              a(localSpannableStringBuilder, str2, i1, i1 + 1);
-            }
-            a(localSpannableStringBuilder, m, n);
-            a(localSpannableStringBuilder, m, n, paramClickNickCallback, localLikeEntry.unionId);
-            break;
-            k = 0;
-            break label220;
-            localObject = "";
-            break label261;
-          }
+        String str3 = a(paramCommentLikeFeedItem);
+        boolean bool1 = android.text.TextUtils.isEmpty(str3) ^ true;
+        String str4 = a(localLikeEntry.unionId, localLikeEntry.uin, bool2, (String)localObject);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str4);
+        str1 = "";
+        if (bool1) {
+          paramCommentLikeFeedItem = "V";
+        } else {
+          paramCommentLikeFeedItem = "";
         }
+        localStringBuilder.append(paramCommentLikeFeedItem);
+        if (i == paramList.size() - 1) {
+          paramCommentLikeFeedItem = str1;
+        } else {
+          paramCommentLikeFeedItem = ", ";
+        }
+        localStringBuilder.append(paramCommentLikeFeedItem);
+        paramCommentLikeFeedItem = localStringBuilder.toString();
+        int k = localSpannableStringBuilder.length();
+        int m = paramCommentLikeFeedItem.length() + k;
+        localSpannableStringBuilder.append(paramCommentLikeFeedItem);
+        int n = str4.length() + k;
+        if (bool1) {
+          a(localSpannableStringBuilder, str3, n, n + 1);
+        }
+        a(localSpannableStringBuilder, k, m);
+        a(localSpannableStringBuilder, k, m, paramClickNickCallback, localLikeEntry.unionId);
       }
-      if (i != 0) {
-        StoryQQTextCacher.a().a(str1, localSpannableStringBuilder);
+      else
+      {
+        j = 0;
       }
-      return new SpannableStringBuilder(localSpannableStringBuilder);
+      i += 1;
     }
+    if (j != 0) {
+      StoryQQTextCacher.a().a(str2, localSpannableStringBuilder);
+    }
+    return new SpannableStringBuilder(localSpannableStringBuilder);
   }
   
   private static String a(int paramInt, QQUserUIItem paramQQUserUIItem)
   {
-    if ((paramInt == 0) || (paramInt == 2)) {
-      return "";
+    if (paramInt != 0)
+    {
+      if (paramInt == 2) {
+        return "";
+      }
+      if (paramQQUserUIItem == null) {
+        return "";
+      }
+      if (android.text.TextUtils.isEmpty(paramQQUserUIItem.nickPostfix)) {
+        return "";
+      }
+      return paramQQUserUIItem.nickPostfix;
     }
-    if (paramQQUserUIItem == null) {
-      return "";
-    }
-    if (android.text.TextUtils.isEmpty(paramQQUserUIItem.nickPostfix)) {
-      return "";
-    }
-    return paramQQUserUIItem.nickPostfix;
+    return "";
   }
   
   private static String a(QQUserUIItem paramQQUserUIItem)
@@ -429,34 +460,40 @@ public class SpannableStringUtils
   
   private static String a(CommentLikeFeedItem paramCommentLikeFeedItem, QQUserUIItem paramQQUserUIItem)
   {
-    int i;
-    if ((paramCommentLikeFeedItem instanceof VideoListFeedItem))
+    boolean bool = paramCommentLikeFeedItem instanceof VideoListFeedItem;
+    Object localObject = null;
+    int j;
+    if (bool)
     {
-      paramCommentLikeFeedItem = (VideoListFeedItem)paramCommentLikeFeedItem;
-      if ((paramCommentLikeFeedItem != null) && (paramCommentLikeFeedItem.getOwner() != null) && (paramCommentLikeFeedItem.getOwner().getRelationType() == 2))
-      {
+      VideoListFeedItem localVideoListFeedItem = (VideoListFeedItem)paramCommentLikeFeedItem;
+      int i;
+      if ((localVideoListFeedItem != null) && (localVideoListFeedItem.getOwner() != null) && (localVideoListFeedItem.getOwner().getRelationType() == 2)) {
         i = 1;
-        if ((i == 0) || (!(paramCommentLikeFeedItem.getOwner() instanceof QQUserUIItem))) {
-          break label93;
-        }
-        paramCommentLikeFeedItem = ((QQUserUIItem)paramCommentLikeFeedItem.getOwner()).qq;
+      } else {
+        i = 0;
       }
-    }
-    for (;;)
-    {
+      j = i;
+      paramCommentLikeFeedItem = localObject;
       if (i != 0)
       {
-        return ((TroopNickNameManager)SuperManager.a(23)).a(paramQQUserUIItem, paramCommentLikeFeedItem, false, false);
-        i = 0;
-        break;
+        j = i;
+        paramCommentLikeFeedItem = localObject;
+        if ((localVideoListFeedItem.getOwner() instanceof QQUserUIItem))
+        {
+          paramCommentLikeFeedItem = ((QQUserUIItem)localVideoListFeedItem.getOwner()).qq;
+          j = i;
+        }
       }
-      return PlayModeUtils.a(paramQQUserUIItem);
-      label93:
-      paramCommentLikeFeedItem = null;
-      continue;
-      paramCommentLikeFeedItem = null;
-      i = 0;
     }
+    else
+    {
+      j = 0;
+      paramCommentLikeFeedItem = localObject;
+    }
+    if (j != 0) {
+      return ((TroopNickNameManager)SuperManager.a(23)).a(paramQQUserUIItem, paramCommentLikeFeedItem, false, false);
+    }
+    return PlayModeUtils.a(paramQQUserUIItem);
   }
   
   public static String a(String paramString1, String paramString2, boolean paramBoolean, String paramString3)
@@ -491,19 +528,14 @@ public class SpannableStringUtils
     ((Drawable)localObject).setBounds(0, 0, paramInt4, paramInt5);
     if (paramInt6 == 1) {
       localObject = new ImageSpan((Drawable)localObject, 1);
+    } else if (paramInt6 == 0) {
+      localObject = new ImageSpan((Drawable)localObject, 0);
+    } else if (paramInt6 == 3) {
+      localObject = new AlignImageSpan((Drawable)localObject);
+    } else {
+      localObject = new VerticalImageSpan((Drawable)localObject);
     }
-    for (;;)
-    {
-      paramSpannableStringBuilder.setSpan(localObject, paramInt1, paramInt2, 33);
-      return;
-      if (paramInt6 == 0) {
-        localObject = new ImageSpan((Drawable)localObject, 0);
-      } else if (paramInt6 == 3) {
-        localObject = new AlignImageSpan((Drawable)localObject);
-      } else {
-        localObject = new VerticalImageSpan((Drawable)localObject);
-      }
-    }
+    paramSpannableStringBuilder.setSpan(localObject, paramInt1, paramInt2, 33);
   }
   
   public static void a(SpannableStringBuilder paramSpannableStringBuilder, int paramInt1, int paramInt2, SpannableStringUtils.ClickNickCallback paramClickNickCallback, String paramString)
@@ -546,111 +578,122 @@ public class SpannableStringUtils
   
   private static SpannableStringBuilder b(@NonNull CommentEntry paramCommentEntry)
   {
-    String str = HardCodeUtil.a(2131714174);
+    String str = HardCodeUtil.a(2131714103);
     int i = Integer.parseInt(paramCommentEntry.content);
-    paramCommentEntry = new SpannableStringBuilder(str + ": " + "A");
+    paramCommentEntry = new StringBuilder();
+    paramCommentEntry.append(str);
+    paramCommentEntry.append(": ");
+    paramCommentEntry.append("A");
+    paramCommentEntry = new SpannableStringBuilder(paramCommentEntry.toString());
     int j = str.length();
     b(paramCommentEntry, 0, j, -4473925);
-    j += ": ".length();
-    int k = "A".length() + j;
-    switch (i)
+    j += 2;
+    int k = j + 1;
+    if (i != 1)
     {
-    default: 
-      return paramCommentEntry;
-    case 1: 
-      a(paramCommentEntry, j, k, 2130844727, 37, 16);
-      return paramCommentEntry;
-    case 2: 
-      a(paramCommentEntry, j, k, 2130844729, 37, 16);
-      return paramCommentEntry;
-    case 3: 
-      a(paramCommentEntry, j, k, 2130844728, 37, 16);
-      return paramCommentEntry;
-    case 4: 
-      a(paramCommentEntry, j, k, 2130844726, 37, 16);
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4)
+          {
+            if (i != 5) {
+              return paramCommentEntry;
+            }
+            a(paramCommentEntry, j, k, 2130844609, 37, 16);
+            return paramCommentEntry;
+          }
+          a(paramCommentEntry, j, k, 2130844610, 37, 16);
+          return paramCommentEntry;
+        }
+        a(paramCommentEntry, j, k, 2130844612, 37, 16);
+        return paramCommentEntry;
+      }
+      a(paramCommentEntry, j, k, 2130844613, 37, 16);
       return paramCommentEntry;
     }
-    a(paramCommentEntry, j, k, 2130844725, 37, 16);
+    a(paramCommentEntry, j, k, 2130844611, 37, 16);
     return paramCommentEntry;
   }
   
   private static SpannableStringBuilder b(CommentLikeFeedItem paramCommentLikeFeedItem, @NonNull CommentEntry paramCommentEntry, SpannableStringUtils.ClickNickCallback paramClickNickCallback)
   {
-    String str1 = null;
     Object localObject1 = (UserManager)SuperManager.a(2);
-    Object localObject2;
-    String str2;
-    if (paramCommentEntry.isReply())
+    boolean bool = paramCommentEntry.isReply();
+    Object localObject4 = "";
+    Object localObject3 = null;
+    if (bool)
     {
       localObject2 = ((UserManager)localObject1).c(paramCommentEntry.replierUnionId);
       localObject1 = a(paramCommentLikeFeedItem, (QQUserUIItem)localObject2);
-      str2 = a(paramCommentEntry.replierRole, (QQUserUIItem)localObject2);
-      paramCommentLikeFeedItem = (CommentLikeFeedItem)localObject2;
-      localObject2 = str2;
+      paramCommentLikeFeedItem = a(paramCommentEntry.replierRole, (QQUserUIItem)localObject2);
     }
-    for (;;)
+    else
     {
-      str2 = a(paramCommentLikeFeedItem);
-      int i;
-      String str4;
-      String str3;
-      if ((paramCommentEntry.isReply()) && (!android.text.TextUtils.isEmpty(str2)))
-      {
-        i = 1;
-        str4 = paramCommentEntry.content;
-        paramCommentLikeFeedItem = str1;
-        if (com.tencent.mobileqq.text.TextUtils.hasSysEmotion(paramCommentEntry.content)) {
-          paramCommentLikeFeedItem = EmotionCodecUtils.b(paramCommentEntry.content);
-        }
-        str3 = HardCodeUtil.a(2131714166);
-        if (i == 0) {
-          break label153;
-        }
-        str1 = "V";
-      }
-      for (;;)
-      {
-        if (android.text.TextUtils.isEmpty((CharSequence)localObject1))
-        {
-          if (paramCommentLikeFeedItem != null)
-          {
-            paramCommentEntry = new QQTextBuilder(paramCommentLikeFeedItem, 3, 16);
-            return paramCommentEntry;
-            i = 0;
-            break;
-            label153:
-            str1 = "";
-            continue;
-          }
-          return new SpannableStringBuilder(str4);
-        }
-      }
-      if (paramCommentLikeFeedItem != null) {}
-      for (paramCommentLikeFeedItem = new QQTextBuilder(str3 + (String)localObject1 + str1 + (String)localObject2 + ": " + paramCommentLikeFeedItem, 3, 14);; paramCommentLikeFeedItem = new SpannableStringBuilder(str3 + (String)localObject1 + str1 + (String)localObject2 + ": " + str4))
-      {
-        int j = str3.length();
-        i = ((String)localObject1).length() + j;
-        a(paramCommentLikeFeedItem, j, i);
-        if (StoryDepends.a()) {
-          b(paramCommentLikeFeedItem, j, i, -16777216);
-        }
-        j = str1.length() + i;
-        if (i != j) {
-          a(paramCommentLikeFeedItem, str2, i, j);
-        }
-        a(paramCommentLikeFeedItem, i - ((String)localObject1).length(), j, paramClickNickCallback, paramCommentEntry.replierUnionId, paramCommentEntry.replierRole);
-        i = ((String)localObject2).length() + j;
-        paramCommentEntry = paramCommentLikeFeedItem;
-        if (j == i) {
-          break;
-        }
-        b(paramCommentLikeFeedItem, j, i, -4473925);
-        return paramCommentLikeFeedItem;
-      }
-      localObject2 = "";
-      paramCommentLikeFeedItem = null;
+      paramCommentLikeFeedItem = "";
       localObject1 = null;
+      localObject2 = localObject1;
     }
+    String str1 = a((QQUserUIItem)localObject2);
+    if ((paramCommentEntry.isReply()) && (!android.text.TextUtils.isEmpty(str1))) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    String str3 = paramCommentEntry.content;
+    if (com.tencent.mobileqq.text.TextUtils.hasSysEmotion(paramCommentEntry.content)) {
+      localObject3 = EmotionCodecUtils.b(paramCommentEntry.content);
+    }
+    String str2 = HardCodeUtil.a(2131714095);
+    Object localObject2 = localObject4;
+    if (i != 0) {
+      localObject2 = "V";
+    }
+    if (android.text.TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      if (localObject3 != null) {
+        return new QQTextBuilder((CharSequence)localObject3, 3, 16);
+      }
+      return new SpannableStringBuilder(str3);
+    }
+    if (localObject3 != null)
+    {
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append(str2);
+      ((StringBuilder)localObject4).append((String)localObject1);
+      ((StringBuilder)localObject4).append((String)localObject2);
+      ((StringBuilder)localObject4).append(paramCommentLikeFeedItem);
+      ((StringBuilder)localObject4).append(": ");
+      ((StringBuilder)localObject4).append((String)localObject3);
+      localObject3 = new QQTextBuilder(((StringBuilder)localObject4).toString(), 3, 14);
+    }
+    else
+    {
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append(str2);
+      ((StringBuilder)localObject3).append((String)localObject1);
+      ((StringBuilder)localObject3).append((String)localObject2);
+      ((StringBuilder)localObject3).append(paramCommentLikeFeedItem);
+      ((StringBuilder)localObject3).append(": ");
+      ((StringBuilder)localObject3).append(str3);
+      localObject3 = new SpannableStringBuilder(((StringBuilder)localObject3).toString());
+    }
+    int j = str2.length();
+    int i = ((String)localObject1).length() + j;
+    a((SpannableStringBuilder)localObject3, j, i);
+    if (StoryDepends.a()) {
+      b((SpannableStringBuilder)localObject3, j, i, -16777216);
+    }
+    j = ((String)localObject2).length() + i;
+    if (i != j) {
+      a((SpannableStringBuilder)localObject3, str1, i, j);
+    }
+    a((SpannableStringBuilder)localObject3, i - ((String)localObject1).length(), j, paramClickNickCallback, paramCommentEntry.replierUnionId, paramCommentEntry.replierRole);
+    i = paramCommentLikeFeedItem.length() + j;
+    if (j != i) {
+      b((SpannableStringBuilder)localObject3, j, i, -4473925);
+    }
+    return localObject3;
   }
   
   private static void b(SpannableStringBuilder paramSpannableStringBuilder, int paramInt1, int paramInt2, int paramInt3)
@@ -664,200 +707,222 @@ public class SpannableStringUtils
     String str1 = a(paramCommentLikeFeedItem, paramContext);
     String str2 = a(paramCommentEntry.authorRole, paramContext);
     String str3 = a(paramContext);
-    int i;
-    int j;
-    if (!android.text.TextUtils.isEmpty(str3))
-    {
-      i = 1;
-      j = paramCommentEntry.atVideoShootTime;
-      paramContext = null;
-      if (j > 0) {
-        paramContext = new SimpleDateFormat("HH:mm").format(Long.valueOf(j * 1000L));
-      }
-      if (!android.text.TextUtils.isEmpty(paramContext)) {
-        break label337;
-      }
-      paramContext = HardCodeUtil.a(2131714167);
-      label100:
-      if (i == 0) {
-        break label370;
-      }
+    boolean bool = android.text.TextUtils.isEmpty(str3);
+    int i = paramCommentEntry.atVideoShootTime;
+    paramContext = null;
+    if (i > 0) {
+      paramContext = new SimpleDateFormat("HH:mm").format(Long.valueOf(i * 1000L));
     }
-    label337:
-    label370:
-    for (paramCommentLikeFeedItem = "V";; paramCommentLikeFeedItem = "")
+    if (android.text.TextUtils.isEmpty(paramContext))
     {
-      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(str1 + paramCommentLikeFeedItem + str2 + ":" + paramContext + "A");
-      j = str1.length();
-      a(localSpannableStringBuilder, 0, j);
-      if (StoryDepends.a()) {
-        b(localSpannableStringBuilder, 0, j, -16777216);
-      }
-      i = j + paramCommentLikeFeedItem.length();
-      if (j != i) {
-        a(localSpannableStringBuilder, str3, j, i);
-      }
-      a(localSpannableStringBuilder, 0, i, paramClickNickCallback, paramCommentEntry.authorUnionId, paramCommentEntry.authorRole);
-      j = i + str2.length();
-      if (i != j) {
-        b(localSpannableStringBuilder, i, j, -4473925);
-      }
-      i = ":".length() + j + paramContext.length();
-      if (j != i) {
-        b(localSpannableStringBuilder, j, i, -16777216);
-      }
-      j = "A".length() + i;
-      if (i != j) {
-        a(localSpannableStringBuilder, i, j, 2130846811, 15, 15, 3);
-      }
-      return localSpannableStringBuilder;
-      i = 0;
-      break;
-      paramContext = " @" + paramContext + HardCodeUtil.a(2131714167);
-      break label100;
+      paramContext = HardCodeUtil.a(2131714096);
     }
+    else
+    {
+      paramCommentLikeFeedItem = new StringBuilder();
+      paramCommentLikeFeedItem.append(" @");
+      paramCommentLikeFeedItem.append(paramContext);
+      paramCommentLikeFeedItem.append(HardCodeUtil.a(2131714096));
+      paramContext = paramCommentLikeFeedItem.toString();
+    }
+    if ((bool ^ true)) {
+      paramCommentLikeFeedItem = "V";
+    } else {
+      paramCommentLikeFeedItem = "";
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(str1);
+    ((StringBuilder)localObject).append(paramCommentLikeFeedItem);
+    ((StringBuilder)localObject).append(str2);
+    ((StringBuilder)localObject).append(":");
+    ((StringBuilder)localObject).append(paramContext);
+    ((StringBuilder)localObject).append("A");
+    localObject = new SpannableStringBuilder(((StringBuilder)localObject).toString());
+    int j = str1.length();
+    a((SpannableStringBuilder)localObject, 0, j);
+    if (StoryDepends.a()) {
+      b((SpannableStringBuilder)localObject, 0, j, -16777216);
+    }
+    i = paramCommentLikeFeedItem.length() + j;
+    if (j != i) {
+      a((SpannableStringBuilder)localObject, str3, j, i);
+    }
+    a((SpannableStringBuilder)localObject, 0, i, paramClickNickCallback, paramCommentEntry.authorUnionId, paramCommentEntry.authorRole);
+    j = str2.length() + i;
+    if (i != j) {
+      b((SpannableStringBuilder)localObject, i, j, -4473925);
+    }
+    i = j + 1 + paramContext.length();
+    if (j != i) {
+      b((SpannableStringBuilder)localObject, j, i, -16777216);
+    }
+    j = i + 1;
+    if (i != j) {
+      a((SpannableStringBuilder)localObject, i, j, 2130846691, 15, 15, 3);
+    }
+    return localObject;
   }
   
   private static SpannableStringBuilder c(@NonNull CommentEntry paramCommentEntry)
   {
     int i = paramCommentEntry.atVideoShootTime;
-    paramCommentEntry = null;
     if (i > 0) {
       paramCommentEntry = new SimpleDateFormat("HH:mm").format(Long.valueOf(i * 1000L));
+    } else {
+      paramCommentEntry = null;
     }
-    if (android.text.TextUtils.isEmpty(paramCommentEntry)) {}
-    for (paramCommentEntry = HardCodeUtil.a(2131714171);; paramCommentEntry = "@" + paramCommentEntry + HardCodeUtil.a(2131714169))
+    if (android.text.TextUtils.isEmpty(paramCommentEntry))
     {
-      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramCommentEntry + "A");
-      i = paramCommentEntry.length();
-      int j = "A".length() + i;
-      if (i != j) {
-        a(localSpannableStringBuilder, i, j, 2130846811, 15, 15);
-      }
-      return localSpannableStringBuilder;
+      paramCommentEntry = HardCodeUtil.a(2131714100);
     }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("@");
+      ((StringBuilder)localObject).append(paramCommentEntry);
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131714098));
+      paramCommentEntry = ((StringBuilder)localObject).toString();
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramCommentEntry);
+    ((StringBuilder)localObject).append("A");
+    localObject = new SpannableStringBuilder(((StringBuilder)localObject).toString());
+    i = paramCommentEntry.length();
+    int j = i + 1;
+    if (i != j) {
+      a((SpannableStringBuilder)localObject, i, j, 2130846691, 15, 15);
+    }
+    return localObject;
   }
   
   private static SpannableStringBuilder c(CommentLikeFeedItem paramCommentLikeFeedItem, @NonNull CommentEntry paramCommentEntry, SpannableStringUtils.ClickNickCallback paramClickNickCallback)
   {
-    Object localObject = ((UserManager)SuperManager.a(2)).c(paramCommentEntry.authorUnionId);
-    String str1 = a(paramCommentLikeFeedItem, (QQUserUIItem)localObject);
-    String str2 = a(paramCommentEntry.authorRole, (QQUserUIItem)localObject);
-    String str3 = a((QQUserUIItem)localObject);
-    int i;
-    String str5;
-    String str4;
-    if (!android.text.TextUtils.isEmpty(str3))
-    {
-      i = 1;
-      str5 = paramCommentEntry.content;
-      localObject = null;
-      if (com.tencent.mobileqq.text.TextUtils.hasSysEmotion(paramCommentEntry.content)) {
-        localObject = EmotionCodecUtils.b(paramCommentEntry.content);
-      }
-      str4 = HardCodeUtil.a(2131714170);
-      if (i == 0) {
-        break label272;
-      }
+    Object localObject1 = ((UserManager)SuperManager.a(2)).c(paramCommentEntry.authorUnionId);
+    String str1 = a(paramCommentLikeFeedItem, (QQUserUIItem)localObject1);
+    String str2 = a(paramCommentEntry.authorRole, (QQUserUIItem)localObject1);
+    String str3 = a((QQUserUIItem)localObject1);
+    boolean bool = android.text.TextUtils.isEmpty(str3);
+    Object localObject2 = paramCommentEntry.content;
+    localObject1 = null;
+    if (com.tencent.mobileqq.text.TextUtils.hasSysEmotion(paramCommentEntry.content)) {
+      localObject1 = EmotionCodecUtils.b(paramCommentEntry.content);
+    }
+    String str4 = HardCodeUtil.a(2131714099);
+    if ((bool ^ true)) {
       paramCommentLikeFeedItem = "V";
-      label95:
-      if (localObject == null) {
-        break label278;
-      }
-    }
-    label272:
-    label278:
-    for (localObject = new QQTextBuilder(str1 + paramCommentLikeFeedItem + str2 + str4 + ": " + (String)localObject, 3, 16);; localObject = new SpannableStringBuilder(str1 + paramCommentLikeFeedItem + str2 + str4 + ": " + str5))
-    {
-      int j = str1.length();
-      a((SpannableStringBuilder)localObject, 0, j);
-      if (StoryDepends.a()) {
-        b((SpannableStringBuilder)localObject, 0, j, -16777216);
-      }
-      i = paramCommentLikeFeedItem.length() + j;
-      if (j != i) {
-        a((SpannableStringBuilder)localObject, str3, j, i);
-      }
-      a((SpannableStringBuilder)localObject, 0, i, paramClickNickCallback, paramCommentEntry.authorUnionId, paramCommentEntry.authorRole);
-      j = str2.length() + i;
-      if (i != j) {
-        b((SpannableStringBuilder)localObject, i, j, -4473925);
-      }
-      b((SpannableStringBuilder)localObject, j, str4.length() + j, -4473925);
-      return localObject;
-      i = 0;
-      break;
+    } else {
       paramCommentLikeFeedItem = "";
-      break label95;
     }
+    if (localObject1 != null)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(str1);
+      ((StringBuilder)localObject2).append(paramCommentLikeFeedItem);
+      ((StringBuilder)localObject2).append(str2);
+      ((StringBuilder)localObject2).append(str4);
+      ((StringBuilder)localObject2).append(": ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      localObject1 = new QQTextBuilder(((StringBuilder)localObject2).toString(), 3, 16);
+    }
+    else
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(str1);
+      ((StringBuilder)localObject1).append(paramCommentLikeFeedItem);
+      ((StringBuilder)localObject1).append(str2);
+      ((StringBuilder)localObject1).append(str4);
+      ((StringBuilder)localObject1).append(": ");
+      ((StringBuilder)localObject1).append(localObject2);
+      localObject1 = new SpannableStringBuilder(((StringBuilder)localObject1).toString());
+    }
+    int j = str1.length();
+    a((SpannableStringBuilder)localObject1, 0, j);
+    if (StoryDepends.a()) {
+      b((SpannableStringBuilder)localObject1, 0, j, -16777216);
+    }
+    int i = paramCommentLikeFeedItem.length() + j;
+    if (j != i) {
+      a((SpannableStringBuilder)localObject1, str3, j, i);
+    }
+    a((SpannableStringBuilder)localObject1, 0, i, paramClickNickCallback, paramCommentEntry.authorUnionId, paramCommentEntry.authorRole);
+    j = str2.length() + i;
+    if (i != j) {
+      b((SpannableStringBuilder)localObject1, i, j, -4473925);
+    }
+    b((SpannableStringBuilder)localObject1, j, str4.length() + j, -4473925);
+    return localObject1;
   }
   
   private static SpannableStringBuilder d(CommentLikeFeedItem paramCommentLikeFeedItem, @NonNull CommentEntry paramCommentEntry, SpannableStringUtils.ClickNickCallback paramClickNickCallback)
   {
-    Object localObject = ((UserManager)SuperManager.a(2)).c(paramCommentEntry.authorUnionId);
-    String str1 = a(paramCommentLikeFeedItem, (QQUserUIItem)localObject);
-    String str2 = a(paramCommentEntry.authorRole, (QQUserUIItem)localObject);
-    localObject = a((QQUserUIItem)localObject);
-    int i;
-    label52:
-    String str3;
-    if (!android.text.TextUtils.isEmpty((CharSequence)localObject))
-    {
-      i = 1;
-      str3 = HardCodeUtil.a(2131714176);
-      if (i == 0) {
-        break label312;
-      }
+    Object localObject1 = ((UserManager)SuperManager.a(2)).c(paramCommentEntry.authorUnionId);
+    String str1 = a(paramCommentLikeFeedItem, (QQUserUIItem)localObject1);
+    String str2 = a(paramCommentEntry.authorRole, (QQUserUIItem)localObject1);
+    localObject1 = a((QQUserUIItem)localObject1);
+    boolean bool = android.text.TextUtils.isEmpty((CharSequence)localObject1);
+    String str3 = HardCodeUtil.a(2131714105);
+    if ((bool ^ true)) {
+      paramCommentLikeFeedItem = "V";
+    } else {
+      paramCommentLikeFeedItem = "";
     }
-    SpannableStringBuilder localSpannableStringBuilder;
-    int k;
-    int j;
-    label312:
-    for (paramCommentLikeFeedItem = "V";; paramCommentLikeFeedItem = "")
+    int i = Integer.parseInt(paramCommentEntry.content);
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(str1);
+    ((StringBuilder)localObject2).append(paramCommentLikeFeedItem);
+    ((StringBuilder)localObject2).append(str2);
+    ((StringBuilder)localObject2).append(str3);
+    ((StringBuilder)localObject2).append(": ");
+    ((StringBuilder)localObject2).append("A");
+    localObject2 = new SpannableStringBuilder(((StringBuilder)localObject2).toString());
+    int k = str1.length();
+    a((SpannableStringBuilder)localObject2, 0, k);
+    if (StoryDepends.a()) {
+      b((SpannableStringBuilder)localObject2, 0, k, -16777216);
+    }
+    int j = paramCommentLikeFeedItem.length() + k;
+    if (k != j) {
+      a((SpannableStringBuilder)localObject2, (String)localObject1, k, j);
+    }
+    a((SpannableStringBuilder)localObject2, 0, j, paramClickNickCallback, paramCommentEntry.authorUnionId, paramCommentEntry.authorRole);
+    k = str2.length() + j;
+    if (j != k) {
+      b((SpannableStringBuilder)localObject2, j, k, -4473925);
+    }
+    j = str3.length() + k;
+    b((SpannableStringBuilder)localObject2, k, j, -4473925);
+    j += 2;
+    k = j + 1;
+    if (i != 1)
     {
-      i = Integer.parseInt(paramCommentEntry.content);
-      localSpannableStringBuilder = new SpannableStringBuilder(str1 + paramCommentLikeFeedItem + str2 + str3 + ": " + "A");
-      k = str1.length();
-      a(localSpannableStringBuilder, 0, k);
-      if (StoryDepends.a()) {
-        b(localSpannableStringBuilder, 0, k, -16777216);
-      }
-      j = k + paramCommentLikeFeedItem.length();
-      if (k != j) {
-        a(localSpannableStringBuilder, (String)localObject, k, j);
-      }
-      a(localSpannableStringBuilder, 0, j, paramClickNickCallback, paramCommentEntry.authorUnionId, paramCommentEntry.authorRole);
-      k = str2.length() + j;
-      if (j != k) {
-        b(localSpannableStringBuilder, j, k, -4473925);
-      }
-      j = str3.length() + k;
-      b(localSpannableStringBuilder, k, j, -4473925);
-      j = ": ".length() + j;
-      k = "A".length() + j;
-      switch (i)
+      if (i != 2)
       {
-      default: 
-        return localSpannableStringBuilder;
-        i = 0;
-        break label52;
+        if (i != 3)
+        {
+          if (i != 4)
+          {
+            if (i != 5) {
+              return localObject2;
+            }
+            a((SpannableStringBuilder)localObject2, j, k, 2130844609, 37, 16, 3);
+            return localObject2;
+          }
+          a((SpannableStringBuilder)localObject2, j, k, 2130844610, 37, 16, 3);
+          return localObject2;
+        }
+        a((SpannableStringBuilder)localObject2, j, k, 2130844612, 37, 16, 3);
+        return localObject2;
       }
+      a((SpannableStringBuilder)localObject2, j, k, 2130844613, 37, 16, 3);
+      return localObject2;
     }
-    a(localSpannableStringBuilder, j, k, 2130844727, 37, 16, 3);
-    return localSpannableStringBuilder;
-    a(localSpannableStringBuilder, j, k, 2130844729, 37, 16, 3);
-    return localSpannableStringBuilder;
-    a(localSpannableStringBuilder, j, k, 2130844728, 37, 16, 3);
-    return localSpannableStringBuilder;
-    a(localSpannableStringBuilder, j, k, 2130844726, 37, 16, 3);
-    return localSpannableStringBuilder;
-    a(localSpannableStringBuilder, j, k, 2130844725, 37, 16, 3);
-    return localSpannableStringBuilder;
+    a((SpannableStringBuilder)localObject2, j, k, 2130844611, 37, 16, 3);
+    return localObject2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.model.SpannableStringUtils
  * JD-Core Version:    0.7.0.1
  */

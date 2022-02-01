@@ -38,8 +38,12 @@ public abstract class Action
   
   protected void a(int paramInt, float paramFloat)
   {
-    if ((paramInt >= this.jdField_c_of_type_Int) && (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionActionAction$OnActionEndListener != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionActionAction$OnActionEndListener.a();
+    if (paramInt >= this.jdField_c_of_type_Int)
+    {
+      Action.OnActionEndListener localOnActionEndListener = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionActionAction$OnActionEndListener;
+      if (localOnActionEndListener != null) {
+        localOnActionEndListener.a();
+      }
     }
   }
   
@@ -54,23 +58,24 @@ public abstract class Action
       return false;
     }
     int i = (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-    float f = i / this.jdField_c_of_type_Int;
-    if (this.e == 1) {
-      f = i * i / (this.jdField_c_of_type_Int * this.jdField_c_of_type_Int);
-    }
-    for (;;)
+    float f2 = i;
+    int j = this.jdField_c_of_type_Int;
+    float f1 = f2 / j;
+    int k = this.e;
+    if (k == 1)
     {
-      a(i, f);
-      if (i >= this.jdField_c_of_type_Int) {
-        b();
-      }
-      return true;
-      if (this.e == 2)
-      {
-        f = i / this.jdField_c_of_type_Int;
-        f *= (2.0F - f);
-      }
+      f1 = i * i / (j * j);
     }
+    else if (k == 2)
+    {
+      f1 = f2 / j;
+      f1 *= (2.0F - f1);
+    }
+    a(i, f1);
+    if (i >= this.jdField_c_of_type_Int) {
+      b();
+    }
+    return true;
   }
   
   public void b()
@@ -90,7 +95,7 @@ public abstract class Action
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.action.Action
  * JD-Core Version:    0.7.0.1
  */

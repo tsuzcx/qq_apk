@@ -17,54 +17,77 @@ class AvatarPendantActivity$17
   public void onDone(DownloadTask paramDownloadTask)
   {
     super.onDone(paramDownloadTask);
-    if (QLog.isColorLevel()) {
-      QLog.d("AvatarPendantActivity", 2, "download onDone status=" + paramDownloadTask.a() + ",errCode=" + paramDownloadTask.jdField_a_of_type_Int);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("download onDone status=");
+      ((StringBuilder)localObject).append(paramDownloadTask.a());
+      ((StringBuilder)localObject).append(",errCode=");
+      ((StringBuilder)localObject).append(paramDownloadTask.jdField_a_of_type_Int);
+      QLog.d("AvatarPendantActivity", 2, ((StringBuilder)localObject).toString());
     }
     int i = paramDownloadTask.jdField_a_of_type_JavaLangString.indexOf("?");
-    String str;
-    if (i == -1)
-    {
-      str = paramDownloadTask.jdField_a_of_type_JavaLangString;
-      if (!AvatarPendantUtil.jdField_a_of_type_JavaLangString.equals(str)) {
-        break label297;
-      }
-      if ((paramDownloadTask.jdField_a_of_type_Int != 0) || (paramDownloadTask.f != 200)) {
-        break label244;
-      }
-      str = AvatarPendantUtil.b + "/icon.zip";
-      localFile = new File(AvatarPendantUtil.c);
-      if (DownloaderFactory.a(new File(str), localFile, false)) {
-        break label215;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AvatarPendantActivity", 2, "unzip avatarPendantMarketIcon fail: " + paramDownloadTask.f + ", url: " + paramDownloadTask.jdField_a_of_type_JavaLangString);
-      }
-      FileUtils.a(AvatarPendantUtil.b);
+    if (i == -1) {
+      localObject = paramDownloadTask.jdField_a_of_type_JavaLangString;
+    } else {
+      localObject = paramDownloadTask.jdField_a_of_type_JavaLangString.substring(0, i);
     }
-    label215:
-    label244:
-    while (!QLog.isColorLevel())
+    if (AvatarPendantUtil.jdField_a_of_type_JavaLangString.equals(localObject))
     {
-      File localFile;
-      return;
-      str = paramDownloadTask.jdField_a_of_type_JavaLangString.substring(0, i);
-      break;
-      this.a.a.sendEmptyMessage(1001);
-      this.a.a.sendEmptyMessage(1000);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("AvatarPendantActivity", 2, "download avatarPendantMarketIcon fail: " + paramDownloadTask.f + ", url: " + paramDownloadTask.jdField_a_of_type_JavaLangString);
+      if ((paramDownloadTask.jdField_a_of_type_Int == 0) && (paramDownloadTask.f == 200))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(AvatarPendantUtil.b);
+        ((StringBuilder)localObject).append("/icon.zip");
+        localObject = ((StringBuilder)localObject).toString();
+        File localFile = new File(AvatarPendantUtil.c);
+        if (!DownloaderFactory.a(new File((String)localObject), localFile, false))
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("unzip avatarPendantMarketIcon fail: ");
+            ((StringBuilder)localObject).append(paramDownloadTask.f);
+            ((StringBuilder)localObject).append(", url: ");
+            ((StringBuilder)localObject).append(paramDownloadTask.jdField_a_of_type_JavaLangString);
+            QLog.d("AvatarPendantActivity", 2, ((StringBuilder)localObject).toString());
+          }
+          FileUtils.deleteDirectory(AvatarPendantUtil.b);
+          return;
+        }
+        this.a.a.sendEmptyMessage(1001);
+        this.a.a.sendEmptyMessage(1000);
+        return;
       }
-      FileUtils.a(AvatarPendantUtil.b);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("download avatarPendantMarketIcon fail: ");
+        ((StringBuilder)localObject).append(paramDownloadTask.f);
+        ((StringBuilder)localObject).append(", url: ");
+        ((StringBuilder)localObject).append(paramDownloadTask.jdField_a_of_type_JavaLangString);
+        QLog.d("AvatarPendantActivity", 2, ((StringBuilder)localObject).toString());
+      }
+      FileUtils.deleteDirectory(AvatarPendantUtil.b);
       return;
     }
-    label297:
-    QLog.e("AvatarPendantActivity", 2, "onDone unkonw url: " + paramDownloadTask.jdField_a_of_type_JavaLangString + ",errCode:" + paramDownloadTask.jdField_a_of_type_Int + ",httpCode:" + paramDownloadTask.f);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onDone unkonw url: ");
+      ((StringBuilder)localObject).append(paramDownloadTask.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(",errCode:");
+      ((StringBuilder)localObject).append(paramDownloadTask.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(",httpCode:");
+      ((StringBuilder)localObject).append(paramDownloadTask.f);
+      QLog.e("AvatarPendantActivity", 2, ((StringBuilder)localObject).toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.17
  * JD-Core Version:    0.7.0.1
  */

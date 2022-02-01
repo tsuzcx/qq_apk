@@ -21,6 +21,8 @@ import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.mobileqq.structmsg.StructMsgFactory;
+import com.tencent.mobileqq.teamwork.api.ITeamWorkFileImportHandler;
+import com.tencent.mobileqq.teamwork.bean.TeamWorkFileImportInfo;
 import com.tencent.qphone.base.util.QLog;
 
 public class TeamWorkSender
@@ -39,57 +41,71 @@ public class TeamWorkSender
   
   private AbsStructMsg a(Context paramContext, String paramString)
   {
-    String str3 = FileManagerUtil.a(paramString);
-    String str1 = FileUtil.a(paramString);
-    if (TeamWorkUtils.jdField_a_of_type_JavaLangString.indexOf(str1) < 0)
+    Object localObject2 = FileManagerUtil.a(paramString);
+    String str = FileUtil.a(paramString);
+    if (".doc|.docx|.xls|.xlsx|".indexOf(str) < 0)
     {
-      QLog.e("TeamWorkSender", 1, paramString + " is not docs support file");
+      paramContext = new StringBuilder();
+      paramContext.append(paramString);
+      paramContext.append(" is not docs support file");
+      QLog.e("TeamWorkSender", 1, paramContext.toString());
       return null;
     }
-    if (".doc|.docx".contains(str1)) {
-      paramString = HardCodeUtil.a(2131714670);
-    }
-    for (str1 = "https://pub.idqqimg.com/pc/misc/files/20180403/29c998e16c094b10a96b3e0d1589c2f6.png";; str1 = "https://pub.idqqimg.com/pc/misc/files/20180403/da40f07bd79e4796b712b44023911be0.png")
+    if (".doc|.docx".contains(str))
     {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("key_flag_from_plugin", true);
-      localIntent.setClass(paramContext, ForwardRecentActivity.class);
-      localIntent.putExtra("isFromShare", true);
-      localIntent.putExtra("forward_type", 1001);
-      localIntent.putExtra("pluginName", "web_share");
-      localIntent.putExtra("req_type", 95);
-      localIntent.putExtra("image_url_remote", str1);
-      localIntent.putExtra("pubUin", "");
-      localIntent.putExtra("struct_uin", "");
-      String str2 = str3;
-      if (str3 != null)
-      {
-        str2 = str3;
-        if (str3.length() > 45) {
-          str2 = str3.substring(0, 45) + "…";
-        }
-      }
-      localIntent.putExtra("title", str2);
-      str3 = paramString;
-      if (paramString != null)
-      {
-        str3 = paramString;
-        if (paramString.length() > 60) {
-          str3 = paramString.substring(0, 60) + "…";
-        }
-      }
-      localIntent.putExtra("desc", str3);
-      localIntent.putExtra("forward_thumb", str1);
-      localIntent.putExtra("struct_share_key_content_action", "web");
-      localIntent.putExtra("req_share_id", -1L);
-      localIntent.putExtra("struct_share_key_source_action", "web");
-      localIntent.putExtra("struct_share_key_source_url", "https://docs.qq.com/desktop/m/index.html?_wv=2");
-      localIntent.putExtra("struct_share_key_source_icon", "https://docs.qq.com/desktop/favicon.ico");
-      localIntent.putExtra("app_name", HardCodeUtil.a(2131714689));
-      localIntent.putExtra("brief_key", paramContext.getString(2131696382, new Object[] { str2 }));
-      return StructMsgFactory.a(localIntent.getExtras());
-      paramString = HardCodeUtil.a(2131714666);
+      paramString = HardCodeUtil.a(2131714599);
+      str = "https://pub.idqqimg.com/pc/misc/files/20180403/29c998e16c094b10a96b3e0d1589c2f6.png";
     }
+    else
+    {
+      paramString = HardCodeUtil.a(2131714595);
+      str = "https://pub.idqqimg.com/pc/misc/files/20180403/da40f07bd79e4796b712b44023911be0.png";
+    }
+    Intent localIntent = new Intent();
+    localIntent.putExtra("key_flag_from_plugin", true);
+    localIntent.setClass(paramContext, ForwardRecentActivity.class);
+    localIntent.putExtra("isFromShare", true);
+    localIntent.putExtra("forward_type", 1001);
+    localIntent.putExtra("pluginName", "web_share");
+    localIntent.putExtra("req_type", 95);
+    localIntent.putExtra("image_url_remote", str);
+    localIntent.putExtra("pubUin", "");
+    localIntent.putExtra("struct_uin", "");
+    Object localObject1 = localObject2;
+    if (localObject2 != null)
+    {
+      localObject1 = localObject2;
+      if (((String)localObject2).length() > 45)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(((String)localObject2).substring(0, 45));
+        ((StringBuilder)localObject1).append("…");
+        localObject1 = ((StringBuilder)localObject1).toString();
+      }
+    }
+    localIntent.putExtra("title", (String)localObject1);
+    localObject2 = paramString;
+    if (paramString != null)
+    {
+      localObject2 = paramString;
+      if (paramString.length() > 60)
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(paramString.substring(0, 60));
+        ((StringBuilder)localObject2).append("…");
+        localObject2 = ((StringBuilder)localObject2).toString();
+      }
+    }
+    localIntent.putExtra("desc", (String)localObject2);
+    localIntent.putExtra("forward_thumb", str);
+    localIntent.putExtra("struct_share_key_content_action", "web");
+    localIntent.putExtra("req_share_id", -1L);
+    localIntent.putExtra("struct_share_key_source_action", "web");
+    localIntent.putExtra("struct_share_key_source_url", "https://docs.qq.com/desktop/m/index.html?_wv=2");
+    localIntent.putExtra("struct_share_key_source_icon", "https://docs.qq.com/desktop/favicon.ico");
+    localIntent.putExtra("app_name", HardCodeUtil.a(2131714618));
+    localIntent.putExtra("brief_key", paramContext.getString(2131696401, new Object[] { localObject1 }));
+    return StructMsgFactory.a(localIntent.getExtras());
   }
   
   private TeamWorkFileImportInfo a(MessageRecord paramMessageRecord)
@@ -121,8 +137,10 @@ public class TeamWorkSender
     }
     catch (Exception paramMessageRecord)
     {
-      QLog.e("TeamWorkSender", 1, "parse mr info is error");
+      label260:
+      break label260;
     }
+    QLog.e("TeamWorkSender", 1, "parse mr info is error");
     return null;
   }
   
@@ -162,37 +180,36 @@ public class TeamWorkSender
   
   private String a(int paramInt)
   {
-    HardCodeUtil.a(2131714668);
+    HardCodeUtil.a(2131714597);
     switch (paramInt)
     {
     case -109: 
     case -105: 
     case -104: 
     default: 
-      return HardCodeUtil.a(2131714644);
+      return HardCodeUtil.a(2131714573);
     case -102: 
     case -101: 
     case -100: 
-      return HardCodeUtil.a(2131714634);
+      return HardCodeUtil.a(2131714563);
     case -103: 
-      return HardCodeUtil.a(2131714664);
-    case -116: 
-    case -106: 
-      return HardCodeUtil.a(2131714662);
+      return HardCodeUtil.a(2131714593);
     case -107: 
-      return HardCodeUtil.a(2131714626);
+      return HardCodeUtil.a(2131714555);
     case -108: 
-      return HardCodeUtil.a(2131714678);
+      return HardCodeUtil.a(2131714607);
     case -110: 
-      return HardCodeUtil.a(2131714665);
+      return HardCodeUtil.a(2131714594);
     case -111: 
-      return HardCodeUtil.a(2131714647);
+      return HardCodeUtil.a(2131714576);
+    case -114: 
+      return HardCodeUtil.a(2131714616);
     case -115: 
     case -113: 
     case -112: 
-      return HardCodeUtil.a(2131714631);
+      return HardCodeUtil.a(2131714560);
     }
-    return HardCodeUtil.a(2131714687);
+    return HardCodeUtil.a(2131714591);
   }
   
   private void a()
@@ -205,29 +222,30 @@ public class TeamWorkSender
     paramMessageRecord.saveExtInfoToExtStr("fileName", paramTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString);
     paramMessageRecord.saveExtInfoToExtStr("filePath", paramTeamWorkFileImportInfo.c);
     paramMessageRecord.saveExtInfoToExtStr("peerUin", paramTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString);
-    if (paramTeamWorkFileImportInfo.jdField_d_of_type_JavaLangString != null) {}
-    for (String str = paramTeamWorkFileImportInfo.jdField_d_of_type_JavaLangString;; str = "")
-    {
-      paramMessageRecord.saveExtInfoToExtStr("troopFilePath", str);
-      paramMessageRecord.saveExtInfoToExtStr("troopUin", paramTeamWorkFileImportInfo.jdField_e_of_type_JavaLangString);
-      paramMessageRecord.saveExtInfoToExtStr("entranceFrom", String.valueOf(paramTeamWorkFileImportInfo.jdField_d_of_type_Int));
-      paramMessageRecord.saveExtInfoToExtStr("fileImportType", String.valueOf(paramTeamWorkFileImportInfo.jdField_j_of_type_Int));
-      paramMessageRecord.saveExtInfoToExtStr("fileSize", String.valueOf(paramTeamWorkFileImportInfo.jdField_d_of_type_Long));
-      paramMessageRecord.saveExtInfoToExtStr("isFromAIO", String.valueOf(paramTeamWorkFileImportInfo.jdField_b_of_type_Boolean));
-      paramMessageRecord.saveExtInfoToExtStr("isMessageConvert", String.valueOf(paramTeamWorkFileImportInfo.f));
-      paramMessageRecord.saveExtInfoToExtStr("isNeedDownLoadUrl", String.valueOf(paramTeamWorkFileImportInfo.jdField_a_of_type_Boolean));
-      paramMessageRecord.saveExtInfoToExtStr("isOpenTeamWork", String.valueOf(paramTeamWorkFileImportInfo.jdField_d_of_type_Boolean));
-      paramMessageRecord.saveExtInfoToExtStr("isUserClick", String.valueOf(paramTeamWorkFileImportInfo.jdField_e_of_type_Boolean));
-      paramMessageRecord.saveExtInfoToExtStr("msgUniseq", String.valueOf(paramTeamWorkFileImportInfo.jdField_a_of_type_Long));
-      paramMessageRecord.saveExtInfoToExtStr("nFileType", String.valueOf(paramTeamWorkFileImportInfo.jdField_e_of_type_Int));
-      paramMessageRecord.saveExtInfoToExtStr("nSessionId", String.valueOf(paramTeamWorkFileImportInfo.jdField_b_of_type_Long));
-      paramMessageRecord.saveExtInfoToExtStr("peerType", String.valueOf(paramTeamWorkFileImportInfo.jdField_a_of_type_Int));
-      paramMessageRecord.saveExtInfoToExtStr("troopFileBusId", String.valueOf(paramTeamWorkFileImportInfo.jdField_b_of_type_Int));
-      paramMessageRecord.saveExtInfoToExtStr("structUniseq", String.valueOf(paramTeamWorkFileImportInfo.jdField_e_of_type_Long));
-      paramMessageRecord.saveExtInfoToExtStr("strSendUin", paramTeamWorkFileImportInfo.jdField_j_of_type_JavaLangString);
-      paramMessageRecord.saveExtInfoToExtStr("import_file_message_flag", "import_file_message_flag_value");
-      return;
+    String str;
+    if (paramTeamWorkFileImportInfo.jdField_d_of_type_JavaLangString != null) {
+      str = paramTeamWorkFileImportInfo.jdField_d_of_type_JavaLangString;
+    } else {
+      str = "";
     }
+    paramMessageRecord.saveExtInfoToExtStr("troopFilePath", str);
+    paramMessageRecord.saveExtInfoToExtStr("troopUin", paramTeamWorkFileImportInfo.jdField_e_of_type_JavaLangString);
+    paramMessageRecord.saveExtInfoToExtStr("entranceFrom", String.valueOf(paramTeamWorkFileImportInfo.jdField_d_of_type_Int));
+    paramMessageRecord.saveExtInfoToExtStr("fileImportType", String.valueOf(paramTeamWorkFileImportInfo.jdField_j_of_type_Int));
+    paramMessageRecord.saveExtInfoToExtStr("fileSize", String.valueOf(paramTeamWorkFileImportInfo.jdField_d_of_type_Long));
+    paramMessageRecord.saveExtInfoToExtStr("isFromAIO", String.valueOf(paramTeamWorkFileImportInfo.jdField_b_of_type_Boolean));
+    paramMessageRecord.saveExtInfoToExtStr("isMessageConvert", String.valueOf(paramTeamWorkFileImportInfo.f));
+    paramMessageRecord.saveExtInfoToExtStr("isNeedDownLoadUrl", String.valueOf(paramTeamWorkFileImportInfo.jdField_a_of_type_Boolean));
+    paramMessageRecord.saveExtInfoToExtStr("isOpenTeamWork", String.valueOf(paramTeamWorkFileImportInfo.jdField_d_of_type_Boolean));
+    paramMessageRecord.saveExtInfoToExtStr("isUserClick", String.valueOf(paramTeamWorkFileImportInfo.jdField_e_of_type_Boolean));
+    paramMessageRecord.saveExtInfoToExtStr("msgUniseq", String.valueOf(paramTeamWorkFileImportInfo.jdField_a_of_type_Long));
+    paramMessageRecord.saveExtInfoToExtStr("nFileType", String.valueOf(paramTeamWorkFileImportInfo.jdField_e_of_type_Int));
+    paramMessageRecord.saveExtInfoToExtStr("nSessionId", String.valueOf(paramTeamWorkFileImportInfo.jdField_b_of_type_Long));
+    paramMessageRecord.saveExtInfoToExtStr("peerType", String.valueOf(paramTeamWorkFileImportInfo.jdField_a_of_type_Int));
+    paramMessageRecord.saveExtInfoToExtStr("troopFileBusId", String.valueOf(paramTeamWorkFileImportInfo.jdField_b_of_type_Int));
+    paramMessageRecord.saveExtInfoToExtStr("structUniseq", String.valueOf(paramTeamWorkFileImportInfo.jdField_e_of_type_Long));
+    paramMessageRecord.saveExtInfoToExtStr("strSendUin", paramTeamWorkFileImportInfo.jdField_j_of_type_JavaLangString);
+    paramMessageRecord.saveExtInfoToExtStr("import_file_message_flag", "import_file_message_flag_value");
   }
   
   private void a(AbsStructMsg paramAbsStructMsg, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, String paramString, int paramInt)
@@ -237,31 +255,40 @@ public class TeamWorkSender
     MobileQQService.seq = i + 1;
     long l = i;
     QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (TextUtils.isEmpty(paramString)) {}
-    for (String str1 = str2;; str1 = paramString)
+    String str1;
+    if (TextUtils.isEmpty(paramString)) {
+      str1 = str2;
+    } else {
+      str1 = paramString;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing = MessageRecordFactory.a(localQQAppInterface, str2, paramString, str1, paramInt, l, paramAbsStructMsg);
+    paramTeamWorkFileImportInfo.jdField_e_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq;
+    a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing, paramTeamWorkFileImportInfo);
+    paramString = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing;
+    paramString.issend = 1;
+    paramString.extraflag = 32772;
+    paramAbsStructMsg.addFlag(1);
+    paramAbsStructMsg.addFlag(2);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing, 0);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing, str2);
+    paramAbsStructMsg = (ITeamWorkFileImportHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_FILE_IMPORT_HANDLER);
+    if (!TextUtils.isEmpty(paramAbsStructMsg.getUrlFromConvertedMap(paramTeamWorkFileImportInfo))) {
+      paramAbsStructMsg.getUrlFromConvertedMap(paramTeamWorkFileImportInfo);
+    }
+    if (!paramAbsStructMsg.isFileImporting(paramTeamWorkFileImportInfo))
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing = MessageRecordFactory.a(localQQAppInterface, str2, paramString, str1, paramInt, l, paramAbsStructMsg);
-      paramTeamWorkFileImportInfo.jdField_e_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq;
-      a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing, paramTeamWorkFileImportInfo);
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.issend = 1;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.extraflag = 32772;
-      paramAbsStructMsg.addFlag(1);
-      paramAbsStructMsg.addFlag(2);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing, 0);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing, str2);
-      paramAbsStructMsg = (TeamWorkFileImportHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_FILE_IMPORT_HANDLER);
-      if (!TextUtils.isEmpty(paramAbsStructMsg.a(paramTeamWorkFileImportInfo))) {
-        paramAbsStructMsg.a(paramTeamWorkFileImportInfo);
-      }
-      if (!paramAbsStructMsg.a(paramTeamWorkFileImportInfo))
+      paramAbsStructMsg.addFileImportJob(paramTeamWorkFileImportInfo);
+      paramAbsStructMsg = new StringBuilder();
+      paramAbsStructMsg.append("start import file:");
+      paramAbsStructMsg.append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq);
+      QLog.i("TeamWorkSender", 1, paramAbsStructMsg.toString());
+      if (QLog.isColorLevel())
       {
-        paramAbsStructMsg.a(paramTeamWorkFileImportInfo);
-        QLog.i("TeamWorkSender", 1, "start import file:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq);
-        if (QLog.isColorLevel()) {
-          QLog.i("TeamWorkSender", 1, "start Import File: " + paramTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString);
-        }
+        paramAbsStructMsg = new StringBuilder();
+        paramAbsStructMsg.append("start Import File: ");
+        paramAbsStructMsg.append(paramTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString);
+        QLog.i("TeamWorkSender", 1, paramAbsStructMsg.toString());
       }
-      return;
     }
   }
   
@@ -269,9 +296,10 @@ public class TeamWorkSender
   {
     this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = a(BaseActivity.sTopActivity, paramFileManagerEntity.fileName);
     paramFileManagerEntity = a(paramFileManagerEntity);
-    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg != null)
+    paramString1 = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
+    if (paramString1 != null)
     {
-      a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg, paramFileManagerEntity, paramString2, paramInt);
+      a(paramString1, paramFileManagerEntity, paramString2, paramInt);
       FileManagerReporter.a("0X800942C");
     }
   }
@@ -283,9 +311,10 @@ public class TeamWorkSender
     paramString1 = a(paramString1);
     paramString1.jdField_a_of_type_Int = paramInt;
     paramString1.jdField_a_of_type_JavaLangString = paramString3;
-    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg != null)
+    paramString2 = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
+    if (paramString2 != null)
     {
-      a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg, paramString1, paramString3, paramInt);
+      a(paramString2, paramString1, paramString3, paramInt);
       FileManagerReporter.a("0X800942C");
     }
   }
@@ -301,20 +330,23 @@ public class TeamWorkSender
     if (paramSessionInfo.jdField_e_of_type_Long == 0L) {
       paramSessionInfo.jdField_e_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.uniseq;
     }
-    TeamWorkFileImportHandler localTeamWorkFileImportHandler = (TeamWorkFileImportHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_FILE_IMPORT_HANDLER);
-    if (!TextUtils.isEmpty(localTeamWorkFileImportHandler.a(paramSessionInfo))) {
-      localTeamWorkFileImportHandler.a(paramSessionInfo);
+    ITeamWorkFileImportHandler localITeamWorkFileImportHandler = (ITeamWorkFileImportHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_FILE_IMPORT_HANDLER);
+    if (!TextUtils.isEmpty(localITeamWorkFileImportHandler.getUrlFromConvertedMap(paramSessionInfo))) {
+      localITeamWorkFileImportHandler.getUrlFromConvertedMap(paramSessionInfo);
     }
-    if (!localTeamWorkFileImportHandler.a(paramSessionInfo)) {
-      localTeamWorkFileImportHandler.a(paramSessionInfo);
+    if (!localITeamWorkFileImportHandler.isFileImporting(paramSessionInfo)) {
+      localITeamWorkFileImportHandler.addFileImportJob(paramSessionInfo);
     }
-    QLog.i("TeamWorkSender", 1, "structsg resend:" + paramMessageForStructing.uniseq);
+    paramSessionInfo = new StringBuilder();
+    paramSessionInfo.append("structsg resend:");
+    paramSessionInfo.append(paramMessageForStructing.uniseq);
+    QLog.i("TeamWorkSender", 1, paramSessionInfo.toString());
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkSender
  * JD-Core Version:    0.7.0.1
  */

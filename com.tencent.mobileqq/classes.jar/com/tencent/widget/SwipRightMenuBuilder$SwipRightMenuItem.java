@@ -4,31 +4,46 @@ import android.view.View;
 
 public class SwipRightMenuBuilder$SwipRightMenuItem
 {
-  public int a;
-  public View a;
-  public int b;
-  public int c;
-  public int d;
+  public int menuHeight;
+  public int menuId;
+  public int menuType;
+  public View menuView;
+  public int menuWidth;
   
-  public void a()
+  public void reset()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.b = -1;
-    this.c = 0;
-    this.d = 0;
-    this.jdField_a_of_type_AndroidViewView = null;
+    this.menuType = -1;
+    this.menuId = -1;
+    this.menuWidth = 0;
+    this.menuHeight = 0;
+    this.menuView = null;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[").append("menuType = ").append(this.jdField_a_of_type_Int).append(",").append("menuId = ").append(this.b).append(",").append("menuWidth = ").append(this.c).append(",").append("menuHeight = ").append(this.d).append(",").append("menuView = ").append(this.jdField_a_of_type_AndroidViewView).append("]");
+    localStringBuilder.append("[");
+    localStringBuilder.append("menuType = ");
+    localStringBuilder.append(this.menuType);
+    localStringBuilder.append(",");
+    localStringBuilder.append("menuId = ");
+    localStringBuilder.append(this.menuId);
+    localStringBuilder.append(",");
+    localStringBuilder.append("menuWidth = ");
+    localStringBuilder.append(this.menuWidth);
+    localStringBuilder.append(",");
+    localStringBuilder.append("menuHeight = ");
+    localStringBuilder.append(this.menuHeight);
+    localStringBuilder.append(",");
+    localStringBuilder.append("menuView = ");
+    localStringBuilder.append(this.menuView);
+    localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.SwipRightMenuBuilder.SwipRightMenuItem
  * JD-Core Version:    0.7.0.1
  */

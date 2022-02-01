@@ -26,15 +26,16 @@ public final class CKV_PlayInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.sSongId != null) {
-      paramJceOutputStream.write(this.sSongId, 0);
+    String str = this.sSongId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.iLstPlayTime, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VIP.CKV_PlayInfo
  * JD-Core Version:    0.7.0.1
  */

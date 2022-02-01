@@ -12,8 +12,14 @@ class LBSDetetor$LBSDetectorObserver
   
   public void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LBSDetetor", 2, "onGetLBSTemplateIds:" + paramBoolean + " req:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGetLBSTemplateIds:");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(" req:");
+      localStringBuilder.append(paramInt);
+      QLog.d("LBSDetetor", 2, localStringBuilder.toString());
     }
     if ((LBSDetetor.a(this.a) != null) && (LBSDetetor.a(this.a).hasMessages(paramInt))) {
       LBSDetetor.a(this.a, paramBoolean, paramArrayList, paramInt);
@@ -22,7 +28,7 @@ class LBSDetetor$LBSDetectorObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.LBSDetetor.LBSDetectorObserver
  * JD-Core Version:    0.7.0.1
  */

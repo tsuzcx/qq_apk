@@ -19,44 +19,47 @@ class SmartDeviceProxyMgr$4
   public void handleMessage(Message paramMessage)
   {
     Object localObject = (FileMsg)paramMessage.obj;
-    if ((localObject == null) || (((FileMsg)localObject).fileType != 24)) {}
-    while (((FileMsg)localObject).commandId != 7) {
-      return;
-    }
-    switch (paramMessage.what)
+    if (localObject != null)
     {
-    case 1001: 
-    case 1002: 
-    case 1004: 
-    default: 
-      return;
-    case 1003: 
-      paramMessage = new Intent();
-      paramMessage.setAction("onFaceTransferComplete");
-      localBundle = new Bundle();
-      localBundle.putLong("uniseq", ((FileMsg)localObject).uniseq);
-      localBundle.putString("fileUrl", ((FileMsg)localObject).fileUrl);
-      localObject = ((FileMsg)localObject).fileUrl;
-      if (localObject != null)
-      {
-        localObject = ((String)localObject).split("/");
-        localBundle.putString("uuId", localObject[(localObject.length - 2)]);
+      if (((FileMsg)localObject).fileType != 24) {
+        return;
       }
-      paramMessage.putExtras(localBundle);
-      BaseApplicationImpl.getApplication().sendBroadcast(paramMessage, "com.tencent.smartdevice.permission.broadcast");
-      return;
+      if (((FileMsg)localObject).commandId != 7) {
+        return;
+      }
+      Bundle localBundle;
+      switch (paramMessage.what)
+      {
+      default: 
+      case 1005: 
+        paramMessage = new Intent();
+        paramMessage.setAction("onFaceTransferError");
+        localBundle = new Bundle();
+        localBundle.putLong("uniseq", ((FileMsg)localObject).uniseq);
+        paramMessage.putExtras(localBundle);
+        BaseApplicationImpl.getApplication().sendBroadcast(paramMessage, "com.tencent.smartdevice.permission.broadcast");
+        return;
+      case 1003: 
+        paramMessage = new Intent();
+        paramMessage.setAction("onFaceTransferComplete");
+        localBundle = new Bundle();
+        localBundle.putLong("uniseq", ((FileMsg)localObject).uniseq);
+        localBundle.putString("fileUrl", ((FileMsg)localObject).fileUrl);
+        localObject = ((FileMsg)localObject).fileUrl;
+        if (localObject != null)
+        {
+          localObject = ((String)localObject).split("/");
+          localBundle.putString("uuId", localObject[(localObject.length - 2)]);
+        }
+        paramMessage.putExtras(localBundle);
+        BaseApplicationImpl.getApplication().sendBroadcast(paramMessage, "com.tencent.smartdevice.permission.broadcast");
+      }
     }
-    paramMessage = new Intent();
-    paramMessage.setAction("onFaceTransferError");
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("uniseq", ((FileMsg)localObject).uniseq);
-    paramMessage.putExtras(localBundle);
-    BaseApplicationImpl.getApplication().sendBroadcast(paramMessage, "com.tencent.smartdevice.permission.broadcast");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.devicemgr.SmartDeviceProxyMgr.4
  * JD-Core Version:    0.7.0.1
  */

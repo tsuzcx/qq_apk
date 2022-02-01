@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.troop.shortcutbar.importantmsg;
 
+import android.os.SystemClock;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
@@ -25,30 +26,35 @@ public class ImportantMsgProcessor
   private void a(ArrayList<ImportantMsgItem.MsgInfo> paramArrayList)
   {
     paramArrayList = ImportantMsgUtil.a(paramArrayList);
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarIShortcutBarDataProvider != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarIShortcutBarDataProvider.a(2, paramArrayList);
+    IShortcutBarDataProvider localIShortcutBarDataProvider = this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarIShortcutBarDataProvider;
+    if (localIShortcutBarDataProvider != null) {
+      localIShortcutBarDataProvider.a(2, paramArrayList);
     }
   }
   
   private void c(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
+    if (paramObject == null) {
+      return;
+    }
+    if ((paramObject instanceof ImportantMsgItem))
     {
-      do
-      {
+      paramObject = (ImportantMsgItem)paramObject;
+      if (paramObject.troopUin != this.jdField_a_of_type_Long) {
         return;
-        if (!(paramObject instanceof ImportantMsgItem)) {
-          break;
-        }
-        paramObject = (ImportantMsgItem)paramObject;
-      } while (paramObject.troopUin != this.jdField_a_of_type_Long);
+      }
       a(paramObject.getMsgInfoList());
       return;
-    } while ((!(paramObject instanceof HashMap)) || (!((HashMap)paramObject).containsKey(Long.valueOf(this.jdField_a_of_type_Long))));
-    QLog.i("ImportantMsgProcessor", 2, "updateInternal seqChange: mTroopUin:" + this.jdField_a_of_type_Long);
-    paramObject = (ImportantMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_IMPORTANT_MSG_MANAGER);
-    paramObject.a(this.jdField_a_of_type_Long, new ImportantMsgProcessor.3(this, paramObject));
+    }
+    if (((paramObject instanceof HashMap)) && (((HashMap)paramObject).containsKey(Long.valueOf(this.jdField_a_of_type_Long))))
+    {
+      paramObject = new StringBuilder();
+      paramObject.append("updateInternal seqChange: mTroopUin:");
+      paramObject.append(this.jdField_a_of_type_Long);
+      QLog.i("ImportantMsgProcessor", 2, paramObject.toString());
+      paramObject = (ImportantMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_IMPORTANT_MSG_MANAGER);
+      paramObject.a(this.jdField_a_of_type_Long, new ImportantMsgProcessor.3(this, paramObject));
+    }
   }
   
   private void e()
@@ -60,8 +66,14 @@ public class ImportantMsgProcessor
   
   private void f()
   {
-    ImportantMsgManager localImportantMsgManager = (ImportantMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_IMPORTANT_MSG_MANAGER);
-    localImportantMsgManager.a(this.jdField_a_of_type_Long, new ImportantMsgProcessor.2(this, localImportantMsgManager));
+    Object localObject = (ImportantMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_IMPORTANT_MSG_MANAGER);
+    long l = SystemClock.uptimeMillis();
+    ((ImportantMsgManager)localObject).a(this.jdField_a_of_type_Long, new ImportantMsgProcessor.2(this, (ImportantMsgManager)localObject));
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("initData Time = ");
+    ((StringBuilder)localObject).append(SystemClock.uptimeMillis() - l);
+    ((StringBuilder)localObject).append("ms");
+    QLog.i("ImportantMsgProcessor", 2, ((StringBuilder)localObject).toString());
   }
   
   private void g()
@@ -80,16 +92,20 @@ public class ImportantMsgProcessor
   
   public void a(Object paramObject)
   {
-    if ((paramObject == null) || (!(paramObject instanceof ImportantMsgInfo))) {
-      return;
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a() != null))
+    if (paramObject != null)
     {
-      paramObject = (ImportantMsgInfo)paramObject;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(String.valueOf(this.jdField_a_of_type_Long), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().a);
-      return;
+      if (!(paramObject instanceof ImportantMsgInfo)) {
+        return;
+      }
+      BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+      if ((localBaseChatPie != null) && (localBaseChatPie.a() != null))
+      {
+        paramObject = (ImportantMsgInfo)paramObject;
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getLastMessage(String.valueOf(this.jdField_a_of_type_Long), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().a);
+        return;
+      }
+      QLog.i("ImportantMsgProcessor", 2, "mChatPie == null or mChatPie.getSessionInfo() == null");
     }
-    QLog.i("ImportantMsgProcessor", 2, "mChatPie == null or mChatPie.getSessionInfo() == null");
   }
   
   public void b()
@@ -99,11 +115,14 @@ public class ImportantMsgProcessor
   
   public void b(Object paramObject)
   {
-    if ((paramObject == null) || (!(paramObject instanceof ImportantMsgInfo))) {
-      return;
+    if (paramObject != null)
+    {
+      if (!(paramObject instanceof ImportantMsgInfo)) {
+        return;
+      }
+      paramObject = (ImportantMsgInfo)paramObject;
+      ((ImportantMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_IMPORTANT_MSG_MANAGER)).a(this.jdField_a_of_type_Long, new ArrayList(Arrays.asList(new Long[] { Long.valueOf(paramObject.a()) })), 1);
     }
-    paramObject = (ImportantMsgInfo)paramObject;
-    ((ImportantMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_IMPORTANT_MSG_MANAGER)).a(this.jdField_a_of_type_Long, new ArrayList(Arrays.asList(new Long[] { Long.valueOf(paramObject.a()) })), 1);
   }
   
   public void c() {}
@@ -112,7 +131,7 @@ public class ImportantMsgProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.ImportantMsgProcessor
  * JD-Core Version:    0.7.0.1
  */

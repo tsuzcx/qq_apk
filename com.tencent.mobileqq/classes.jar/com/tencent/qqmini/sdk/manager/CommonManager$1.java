@@ -13,21 +13,22 @@ class CommonManager$1
   
   public void onCacheUpdated(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((paramBoolean1) && (paramBoolean2)) {}
-    try
-    {
-      MiniSDK.notifyPeriodicCacheUpdate(AppLoaderFactory.g().getContext(), this.val$miniAppConfig);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QMLog.e("CommonManager", "", localThrowable);
+    if ((paramBoolean1) && (paramBoolean2)) {
+      try
+      {
+        MiniSDK.notifyPeriodicCacheUpdate(AppLoaderFactory.g().getContext(), this.val$miniAppConfig);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        QMLog.e("CommonManager", "", localThrowable);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.CommonManager.1
  * JD-Core Version:    0.7.0.1
  */

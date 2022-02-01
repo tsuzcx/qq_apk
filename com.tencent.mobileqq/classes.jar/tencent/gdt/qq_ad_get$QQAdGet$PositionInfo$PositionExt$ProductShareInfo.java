@@ -14,7 +14,7 @@ public final class qq_ad_get$QQAdGet$PositionInfo$PositionExt$ProductShareInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.gdt.qq_ad_get.QQAdGet.PositionInfo.PositionExt.ProductShareInfo
  * JD-Core Version:    0.7.0.1
  */

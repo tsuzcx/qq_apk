@@ -35,28 +35,26 @@ public class GetDiscoverBannerVideoResponse
         this.jdField_b_of_type_JavaUtilList.add(localVideoTarget.feed_id.get().toStringUtf8());
       }
     }
-    if (paramRspBannerVideoList.is_end.has()) {
-      if (paramRspBannerVideoList.is_end.get() != 1) {
-        break label202;
-      }
-    }
-    label202:
-    for (boolean bool = true;; bool = false)
+    if (paramRspBannerVideoList.is_end.has())
     {
+      int i = paramRspBannerVideoList.is_end.get();
+      boolean bool = true;
+      if (i != 1) {
+        bool = false;
+      }
       this.jdField_a_of_type_Boolean = bool;
-      if (paramRspBannerVideoList.next_cookie.has()) {
-        this.jdField_a_of_type_JavaLangString = paramRspBannerVideoList.next_cookie.get().toStringUtf8();
-      }
-      if (paramRspBannerVideoList.total_count.has()) {
-        this.jdField_b_of_type_Int = paramRspBannerVideoList.total_count.get();
-      }
-      return;
+    }
+    if (paramRspBannerVideoList.next_cookie.has()) {
+      this.jdField_a_of_type_JavaLangString = paramRspBannerVideoList.next_cookie.get().toStringUtf8();
+    }
+    if (paramRspBannerVideoList.total_count.has()) {
+      this.jdField_b_of_type_Int = paramRspBannerVideoList.total_count.get();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.GetDiscoverBannerVideoResponse
  * JD-Core Version:    0.7.0.1
  */

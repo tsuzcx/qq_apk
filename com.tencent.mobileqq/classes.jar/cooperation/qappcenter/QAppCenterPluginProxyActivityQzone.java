@@ -28,7 +28,7 @@ public class QAppCenterPluginProxyActivityQzone
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
     QAppCenterPluginProxyActivityTools.a(this);
     Intent localIntent = getIntent();
@@ -38,13 +38,13 @@ public class QAppCenterPluginProxyActivityQzone
     super.onCreate(paramBundle);
   }
   
-  public void onPause()
+  protected void onPause()
   {
     super.onPause();
     a = false;
   }
   
-  public void onResume()
+  protected void onResume()
   {
     super.onResume();
     a = true;
@@ -52,7 +52,7 @@ public class QAppCenterPluginProxyActivityQzone
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qappcenter.QAppCenterPluginProxyActivityQzone
  * JD-Core Version:    0.7.0.1
  */

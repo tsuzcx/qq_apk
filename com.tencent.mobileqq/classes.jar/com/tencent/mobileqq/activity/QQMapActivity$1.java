@@ -15,28 +15,28 @@ class QQMapActivity$1
   
   public void onGlobalLayout()
   {
-    int i = this.a.jdField_c_of_type_AndroidWidgetLinearLayout.getWidth();
+    int i = this.a.mTopLineLay.getWidth();
     if (i > 0)
     {
       int j = DisplayUtil.a(this.a, 10.0F);
       Object localObject = new Paint();
       ((Paint)localObject).setTextSize(DisplayUtil.a(this.a, 14.0F));
       ((Paint)localObject).setAntiAlias(true);
-      int k = (int)(((Paint)localObject).measureText(this.a.e.getText().toString()) + 1.0F);
+      int k = (int)(((Paint)localObject).measureText(this.a.mDistanceTxt.getText().toString()) + 1.0F);
       ((Paint)localObject).setTextSize(DisplayUtil.a(this.a, 20.0F));
-      if ((int)(((Paint)localObject).measureText(this.a.jdField_c_of_type_AndroidWidgetTextView.getText().toString()) + 1.0F) + (k + j) > i)
+      if (k + j + (int)(((Paint)localObject).measureText(this.a.mAddrTxt.getText().toString()) + 1.0F) > i)
       {
-        localObject = this.a.jdField_c_of_type_AndroidWidgetTextView.getLayoutParams();
+        localObject = this.a.mAddrTxt.getLayoutParams();
         ((ViewGroup.LayoutParams)localObject).width = (i - j - k);
-        this.a.jdField_c_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        this.a.mAddrTxt.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
-      this.a.jdField_c_of_type_AndroidWidgetLinearLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      this.a.mTopLineLay.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQMapActivity.1
  * JD-Core Version:    0.7.0.1
  */

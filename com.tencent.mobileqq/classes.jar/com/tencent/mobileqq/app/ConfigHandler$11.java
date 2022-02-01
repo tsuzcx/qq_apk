@@ -14,29 +14,32 @@ class ConfigHandler$11
   public void run()
   {
     Object localObject = UpgradeController.a().a();
-    if ((localObject == null) || (((UpgradeDetailWrapper)localObject).a == null)) {
-      return;
-    }
-    boolean bool = SPSettings.b();
-    int i = SPSettings.b();
-    int j = ((UpgradeDetailWrapper)localObject).a.a;
-    if ((bool) && (j == i)) {}
-    for (i = 1;; i = 0)
+    if (localObject != null)
     {
-      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (i != 0) {
-        break;
+      if (((UpgradeDetailWrapper)localObject).a == null) {
+        return;
       }
-      UpgradeController.a().a((QQAppInterface)localObject, true);
-      SPSettings.b(j);
-      SPSettings.b(true);
-      return;
+      boolean bool = SPSettings.b();
+      int i = SPSettings.b();
+      int j = ((UpgradeDetailWrapper)localObject).a.a;
+      if ((bool) && (j == i)) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (i == 0)
+      {
+        UpgradeController.a().a((QQAppInterface)localObject, true);
+        SPSettings.b(j);
+        SPSettings.b(true);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConfigHandler.11
  * JD-Core Version:    0.7.0.1
  */

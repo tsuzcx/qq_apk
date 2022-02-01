@@ -25,12 +25,13 @@ public class BatchGetFeedLikeRequest
   public BatchGetFeedLikeRequest(List<String> paramList, boolean paramBoolean)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      this.c = i;
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 1;
+    } else {
+      i = 2;
     }
+    this.c = i;
   }
   
   public BaseResponse a(byte[] paramArrayOfByte)
@@ -39,15 +40,12 @@ public class BatchGetFeedLikeRequest
     try
     {
       localRspBatchFeedLike.mergeFrom(paramArrayOfByte);
-      return new BatchGetFeedLikeRequest.BatchGetFeedLikeResp(localRspBatchFeedLike);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      paramArrayOfByte.printStackTrace();
     }
+    return new BatchGetFeedLikeRequest.BatchGetFeedLikeResp(localRspBatchFeedLike);
   }
   
   public String a()
@@ -55,7 +53,7 @@ public class BatchGetFeedLikeRequest
     return jdField_a_of_type_JavaLangString;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqBatchFeedLike localReqBatchFeedLike = new qqstory_service.ReqBatchFeedLike();
     List localList = a(this.jdField_a_of_type_JavaUtilList);
@@ -66,7 +64,7 @@ public class BatchGetFeedLikeRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.BatchGetFeedLikeRequest
  * JD-Core Version:    0.7.0.1
  */

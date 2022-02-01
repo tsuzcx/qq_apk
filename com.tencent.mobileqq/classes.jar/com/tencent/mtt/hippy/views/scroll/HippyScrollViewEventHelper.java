@@ -40,7 +40,7 @@ public class HippyScrollViewEventHelper
     emitScrollEvent(paramViewGroup, "onScroll");
   }
   
-  public static void emitScrollEvent(ViewGroup paramViewGroup, String paramString)
+  protected static void emitScrollEvent(ViewGroup paramViewGroup, String paramString)
   {
     if (paramViewGroup == null) {
       return;
@@ -54,34 +54,29 @@ public class HippyScrollViewEventHelper
     localHippyMap2.pushDouble("x", PixelUtil.px2dp(paramViewGroup.getScrollX()));
     localHippyMap2.pushDouble("y", PixelUtil.px2dp(paramViewGroup.getScrollY()));
     HippyMap localHippyMap3 = new HippyMap();
-    if (paramViewGroup.getChildCount() > 0)
-    {
-      f = paramViewGroup.getChildAt(0).getWidth();
-      label108:
-      localHippyMap3.pushDouble("width", PixelUtil.px2dp(f));
-      if (paramViewGroup.getChildCount() <= 0) {
-        break label295;
-      }
+    int i;
+    if (paramViewGroup.getChildCount() > 0) {
+      i = paramViewGroup.getChildAt(0).getWidth();
+    } else {
+      i = paramViewGroup.getWidth();
     }
-    label295:
-    for (float f = paramViewGroup.getChildAt(0).getHeight();; f = paramViewGroup.getHeight())
-    {
-      localHippyMap3.pushDouble("height", PixelUtil.px2dp(f));
-      HippyMap localHippyMap4 = new HippyMap();
-      localHippyMap4.pushDouble("width", PixelUtil.px2dp(paramViewGroup.getWidth()));
-      localHippyMap4.pushDouble("height", PixelUtil.px2dp(paramViewGroup.getHeight()));
-      HippyMap localHippyMap5 = new HippyMap();
-      localHippyMap5.pushMap("contentInset", localHippyMap1);
-      localHippyMap5.pushMap("contentOffset", localHippyMap2);
-      localHippyMap5.pushMap("contentSize", localHippyMap3);
-      localHippyMap5.pushMap("layoutMeasurement", localHippyMap4);
-      if ((paramViewGroup == null) || (!(paramViewGroup.getContext() instanceof HippyInstanceContext))) {
-        break;
-      }
+    localHippyMap3.pushDouble("width", PixelUtil.px2dp(i));
+    if (paramViewGroup.getChildCount() > 0) {
+      i = paramViewGroup.getChildAt(0).getHeight();
+    } else {
+      i = paramViewGroup.getHeight();
+    }
+    localHippyMap3.pushDouble("height", PixelUtil.px2dp(i));
+    HippyMap localHippyMap4 = new HippyMap();
+    localHippyMap4.pushDouble("width", PixelUtil.px2dp(paramViewGroup.getWidth()));
+    localHippyMap4.pushDouble("height", PixelUtil.px2dp(paramViewGroup.getHeight()));
+    HippyMap localHippyMap5 = new HippyMap();
+    localHippyMap5.pushMap("contentInset", localHippyMap1);
+    localHippyMap5.pushMap("contentOffset", localHippyMap2);
+    localHippyMap5.pushMap("contentSize", localHippyMap3);
+    localHippyMap5.pushMap("layoutMeasurement", localHippyMap4);
+    if ((paramViewGroup != null) && ((paramViewGroup.getContext() instanceof HippyInstanceContext))) {
       ((EventDispatcher)((HippyInstanceContext)paramViewGroup.getContext()).getEngineContext().getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveUIComponentEvent(paramViewGroup.getId(), paramString, localHippyMap5);
-      return;
-      f = paramViewGroup.getWidth();
-      break label108;
     }
   }
   
@@ -97,7 +92,7 @@ public class HippyScrollViewEventHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.scroll.HippyScrollViewEventHelper
  * JD-Core Version:    0.7.0.1
  */

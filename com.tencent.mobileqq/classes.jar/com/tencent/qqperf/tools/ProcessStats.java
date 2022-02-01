@@ -4,8 +4,6 @@ import android.annotation.SuppressLint;
 import android.os.Build.VERSION;
 import android.os.Looper;
 import android.os.Process;
-import android.os.SystemClock;
-import com.tencent.commonsdk.pool.ByteArrayPool;
 import com.tencent.commonsdk.pool.RecyclablePool;
 import com.tencent.commonsdk.util.StringUtils;
 import java.io.File;
@@ -13,7 +11,6 @@ import java.io.FileNotFoundException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -52,14 +49,13 @@ public class ProcessStats
   public static final int a()
   {
     if (jdField_b_of_type_Int == -1) {
-      if (Build.VERSION.SDK_INT < 17) {
-        break label28;
+      if (Build.VERSION.SDK_INT >= 17) {
+        jdField_b_of_type_Int = Runtime.getRuntime().availableProcessors();
+      } else {
+        jdField_b_of_type_Int = b();
       }
     }
-    label28:
-    for (jdField_b_of_type_Int = Runtime.getRuntime().availableProcessors();; jdField_b_of_type_Int = b()) {
-      return jdField_b_of_type_Int;
-    }
+    return jdField_b_of_type_Int;
   }
   
   public static long a(String paramString)
@@ -68,8 +64,7 @@ public class ProcessStats
     if (paramString == null) {
       return -1L;
     }
-    long l = ((Long)paramString[1]).longValue();
-    return ((Long)paramString[2]).longValue() + l;
+    return ((Long)paramString[1]).longValue() + ((Long)paramString[2]).longValue();
   }
   
   public static ProcessStats.Stats a()
@@ -81,23 +76,33 @@ public class ProcessStats
   {
     try
     {
-      if (paramString.equals("-2")) {
+      boolean bool = paramString.equals("-2");
+      if (bool) {
         return new RandomAccessFile("/proc/stat", "r");
       }
-      if (paramString.equals("-1"))
+      bool = paramString.equals("-1");
+      if (bool)
       {
-        paramString = new RandomAccessFile("/proc/" + Process.myPid() + "/stat", "r");
-        return paramString;
+        paramString = new StringBuilder();
+        paramString.append("/proc/");
+        paramString.append(Process.myPid());
+        paramString.append("/stat");
+        return new RandomAccessFile(paramString.toString(), "r");
       }
-    }
-    catch (FileNotFoundException paramString)
-    {
-      paramString.printStackTrace();
-      return null;
-      paramString = new RandomAccessFile("/proc/" + Process.myPid() + "/task/" + paramString + "/stat", "r");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("/proc/");
+      localStringBuilder.append(Process.myPid());
+      localStringBuilder.append("/task/");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("/stat");
+      paramString = new RandomAccessFile(localStringBuilder.toString(), "r");
       return paramString;
     }
     catch (OutOfMemoryError paramString)
+    {
+      paramString.printStackTrace();
+    }
+    catch (FileNotFoundException paramString)
     {
       paramString.printStackTrace();
     }
@@ -114,238 +119,209 @@ public class ProcessStats
     //   5: bipush 110
     //   7: imul
     //   8: invokespecial 151	java/lang/StringBuilder:<init>	(I)V
-    //   11: astore_3
+    //   11: astore_1
     //   12: ldc 118
     //   14: getstatic 35	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ComTencentQqperfToolsProcessStats$Stats	Lcom/tencent/qqperf/tools/ProcessStats$Stats;
     //   17: iconst_0
     //   18: invokestatic 154	com/tencent/qqperf/tools/ProcessStats:a	(Ljava/lang/String;Lcom/tencent/qqperf/tools/ProcessStats$Stats;Z)V
-    //   21: ldc 156
-    //   23: new 120	java/lang/StringBuilder
-    //   26: dup
-    //   27: invokespecial 121	java/lang/StringBuilder:<init>	()V
-    //   30: ldc 158
+    //   21: new 120	java/lang/StringBuilder
+    //   24: dup
+    //   25: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   28: astore_2
+    //   29: aload_2
+    //   30: ldc 156
     //   32: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: getstatic 35	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ComTencentQqperfToolsProcessStats$Stats	Lcom/tencent/qqperf/tools/ProcessStats$Stats;
-    //   38: getfield 159	com/tencent/qqperf/tools/ProcessStats$Stats:jdField_a_of_type_Long	J
-    //   41: invokevirtual 162	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   44: ldc 164
-    //   46: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   49: getstatic 35	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ComTencentQqperfToolsProcessStats$Stats	Lcom/tencent/qqperf/tools/ProcessStats$Stats;
-    //   52: getfield 165	com/tencent/qqperf/tools/ProcessStats$Stats:jdField_b_of_type_Long	J
-    //   55: invokevirtual 162	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   58: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   61: invokestatic 171	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
+    //   35: pop
+    //   36: aload_2
+    //   37: getstatic 35	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ComTencentQqperfToolsProcessStats$Stats	Lcom/tencent/qqperf/tools/ProcessStats$Stats;
+    //   40: getfield 157	com/tencent/qqperf/tools/ProcessStats$Stats:jdField_a_of_type_Long	J
+    //   43: invokevirtual 160	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   46: pop
+    //   47: aload_2
+    //   48: ldc 162
+    //   50: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   53: pop
+    //   54: aload_2
+    //   55: getstatic 35	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ComTencentQqperfToolsProcessStats$Stats	Lcom/tencent/qqperf/tools/ProcessStats$Stats;
+    //   58: getfield 163	com/tencent/qqperf/tools/ProcessStats$Stats:jdField_b_of_type_Long	J
+    //   61: invokevirtual 160	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   64: pop
-    //   65: new 173	java/io/BufferedReader
-    //   68: dup
-    //   69: new 175	java/io/InputStreamReader
-    //   72: dup
-    //   73: invokestatic 72	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
-    //   76: new 120	java/lang/StringBuilder
-    //   79: dup
-    //   80: invokespecial 121	java/lang/StringBuilder:<init>	()V
-    //   83: ldc 177
-    //   85: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   88: iload_0
-    //   89: invokevirtual 135	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   92: ldc 179
-    //   94: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   97: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   100: invokevirtual 183	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
-    //   103: invokevirtual 189	java/lang/Process:getInputStream	()Ljava/io/InputStream;
-    //   106: invokespecial 192	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   109: invokespecial 195	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   112: astore_1
-    //   113: aload_1
-    //   114: invokevirtual 198	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   117: astore_2
-    //   118: aload_2
-    //   119: ifnull +46 -> 165
-    //   122: aload_3
-    //   123: aload_2
-    //   124: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   127: ldc 200
-    //   129: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   132: pop
-    //   133: goto -20 -> 113
-    //   136: astore_1
-    //   137: iconst_0
-    //   138: ifeq +11 -> 149
-    //   141: new 202	java/lang/NullPointerException
-    //   144: dup
-    //   145: invokespecial 203	java/lang/NullPointerException:<init>	()V
-    //   148: athrow
-    //   149: iconst_0
-    //   150: ifeq +11 -> 161
-    //   153: new 202	java/lang/NullPointerException
-    //   156: dup
-    //   157: invokespecial 203	java/lang/NullPointerException:<init>	()V
-    //   160: athrow
-    //   161: aconst_null
-    //   162: astore_2
-    //   163: aload_2
-    //   164: areturn
-    //   165: ldc 118
-    //   167: getstatic 35	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ComTencentQqperfToolsProcessStats$Stats	Lcom/tencent/qqperf/tools/ProcessStats$Stats;
-    //   170: iconst_0
-    //   171: invokestatic 154	com/tencent/qqperf/tools/ProcessStats:a	(Ljava/lang/String;Lcom/tencent/qqperf/tools/ProcessStats$Stats;Z)V
-    //   174: ldc 156
-    //   176: new 120	java/lang/StringBuilder
-    //   179: dup
-    //   180: invokespecial 121	java/lang/StringBuilder:<init>	()V
-    //   183: ldc 158
-    //   185: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   188: getstatic 35	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ComTencentQqperfToolsProcessStats$Stats	Lcom/tencent/qqperf/tools/ProcessStats$Stats;
-    //   191: getfield 159	com/tencent/qqperf/tools/ProcessStats$Stats:jdField_a_of_type_Long	J
-    //   194: invokevirtual 162	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   197: ldc 164
-    //   199: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   202: getstatic 35	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ComTencentQqperfToolsProcessStats$Stats	Lcom/tencent/qqperf/tools/ProcessStats$Stats;
-    //   205: getfield 165	com/tencent/qqperf/tools/ProcessStats$Stats:jdField_b_of_type_Long	J
-    //   208: invokevirtual 162	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   211: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   214: invokestatic 171	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
-    //   217: pop
-    //   218: aload_3
-    //   219: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   222: astore_1
-    //   223: iconst_0
-    //   224: ifeq +11 -> 235
-    //   227: new 202	java/lang/NullPointerException
-    //   230: dup
-    //   231: invokespecial 203	java/lang/NullPointerException:<init>	()V
-    //   234: athrow
-    //   235: aload_1
-    //   236: astore_2
-    //   237: iconst_0
-    //   238: ifeq -75 -> 163
-    //   241: new 202	java/lang/NullPointerException
-    //   244: dup
-    //   245: invokespecial 203	java/lang/NullPointerException:<init>	()V
-    //   248: athrow
-    //   249: astore_2
-    //   250: aload_1
-    //   251: areturn
-    //   252: astore_1
-    //   253: iconst_0
-    //   254: ifeq +11 -> 265
-    //   257: new 202	java/lang/NullPointerException
-    //   260: dup
-    //   261: invokespecial 203	java/lang/NullPointerException:<init>	()V
-    //   264: athrow
-    //   265: iconst_0
-    //   266: ifeq +11 -> 277
-    //   269: new 202	java/lang/NullPointerException
-    //   272: dup
-    //   273: invokespecial 203	java/lang/NullPointerException:<init>	()V
-    //   276: athrow
-    //   277: aload_1
-    //   278: athrow
-    //   279: astore_2
-    //   280: goto -45 -> 235
-    //   283: astore_1
-    //   284: goto -135 -> 149
-    //   287: astore_1
-    //   288: goto -127 -> 161
-    //   291: astore_2
-    //   292: goto -27 -> 265
-    //   295: astore_2
-    //   296: goto -19 -> 277
+    //   65: ldc 165
+    //   67: aload_2
+    //   68: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   71: invokestatic 171	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
+    //   74: pop
+    //   75: invokestatic 72	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
+    //   78: astore_2
+    //   79: new 120	java/lang/StringBuilder
+    //   82: dup
+    //   83: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   86: astore_3
+    //   87: aload_3
+    //   88: ldc 173
+    //   90: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   93: pop
+    //   94: aload_3
+    //   95: iload_0
+    //   96: invokevirtual 135	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   99: pop
+    //   100: aload_3
+    //   101: ldc 175
+    //   103: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   106: pop
+    //   107: new 177	java/io/BufferedReader
+    //   110: dup
+    //   111: new 179	java/io/InputStreamReader
+    //   114: dup
+    //   115: aload_2
+    //   116: aload_3
+    //   117: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   120: invokevirtual 183	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
+    //   123: invokevirtual 189	java/lang/Process:getInputStream	()Ljava/io/InputStream;
+    //   126: invokespecial 192	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   129: invokespecial 195	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   132: astore_2
+    //   133: aload_2
+    //   134: invokevirtual 198	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   137: astore_3
+    //   138: aload_3
+    //   139: ifnull +19 -> 158
+    //   142: aload_1
+    //   143: aload_3
+    //   144: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   147: pop
+    //   148: aload_1
+    //   149: ldc 200
+    //   151: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   154: pop
+    //   155: goto -22 -> 133
+    //   158: ldc 118
+    //   160: getstatic 35	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ComTencentQqperfToolsProcessStats$Stats	Lcom/tencent/qqperf/tools/ProcessStats$Stats;
+    //   163: iconst_0
+    //   164: invokestatic 154	com/tencent/qqperf/tools/ProcessStats:a	(Ljava/lang/String;Lcom/tencent/qqperf/tools/ProcessStats$Stats;Z)V
+    //   167: new 120	java/lang/StringBuilder
+    //   170: dup
+    //   171: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   174: astore_2
+    //   175: aload_2
+    //   176: ldc 156
+    //   178: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   181: pop
+    //   182: aload_2
+    //   183: getstatic 35	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ComTencentQqperfToolsProcessStats$Stats	Lcom/tencent/qqperf/tools/ProcessStats$Stats;
+    //   186: getfield 157	com/tencent/qqperf/tools/ProcessStats$Stats:jdField_a_of_type_Long	J
+    //   189: invokevirtual 160	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   192: pop
+    //   193: aload_2
+    //   194: ldc 162
+    //   196: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   199: pop
+    //   200: aload_2
+    //   201: getstatic 35	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ComTencentQqperfToolsProcessStats$Stats	Lcom/tencent/qqperf/tools/ProcessStats$Stats;
+    //   204: getfield 163	com/tencent/qqperf/tools/ProcessStats$Stats:jdField_b_of_type_Long	J
+    //   207: invokevirtual 160	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   210: pop
+    //   211: ldc 165
+    //   213: aload_2
+    //   214: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   217: invokestatic 171	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
+    //   220: pop
+    //   221: aload_1
+    //   222: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   225: astore_1
+    //   226: aload_1
+    //   227: areturn
+    //   228: astore_1
+    //   229: aload_1
+    //   230: athrow
+    //   231: aconst_null
+    //   232: areturn
+    //   233: astore_1
+    //   234: goto -3 -> 231
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	299	0	paramInt	int
-    //   112	2	1	localBufferedReader	java.io.BufferedReader
-    //   136	1	1	localException1	Exception
-    //   222	29	1	str1	String
-    //   252	26	1	localObject	Object
-    //   283	1	1	localException2	Exception
-    //   287	1	1	localException3	Exception
-    //   117	120	2	str2	String
-    //   249	1	2	localException4	Exception
-    //   279	1	2	localException5	Exception
-    //   291	1	2	localException6	Exception
-    //   295	1	2	localException7	Exception
-    //   11	208	3	localStringBuilder	StringBuilder
+    //   0	237	0	paramInt	int
+    //   11	216	1	localObject1	Object
+    //   228	2	1	localObject2	Object
+    //   233	1	1	localException	Exception
+    //   28	186	2	localObject3	Object
+    //   86	58	3	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   0	113	136	java/lang/Exception
-    //   113	118	136	java/lang/Exception
-    //   122	133	136	java/lang/Exception
-    //   165	223	136	java/lang/Exception
-    //   241	249	249	java/lang/Exception
-    //   0	113	252	finally
-    //   113	118	252	finally
-    //   122	133	252	finally
-    //   165	223	252	finally
-    //   227	235	279	java/lang/Exception
-    //   141	149	283	java/lang/Exception
-    //   153	161	287	java/lang/Exception
-    //   257	265	291	java/lang/Exception
-    //   269	277	295	java/lang/Exception
+    //   0	133	228	finally
+    //   133	138	228	finally
+    //   142	155	228	finally
+    //   158	226	228	finally
+    //   0	133	233	java/lang/Exception
+    //   133	138	233	java/lang/Exception
+    //   142	155	233	java/lang/Exception
+    //   158	226	233	java/lang/Exception
   }
   
   public static final List<String> a(int paramInt, boolean paramBoolean)
   {
     Object localObject1 = new HashMap();
-    Object localObject2;
     int i;
-    Object localObject3;
     if (paramBoolean)
     {
       localObject1 = Thread.currentThread().getThreadGroup();
-      localObject2 = new Thread[((ThreadGroup)localObject1).activeCount()];
-      ((ThreadGroup)localObject1).enumerate((Thread[])localObject2);
-      localObject1 = new HashMap(localObject2.length);
-      int j = localObject2.length;
+      localObject3 = new Thread[((ThreadGroup)localObject1).activeCount()];
+      ((ThreadGroup)localObject1).enumerate((Thread[])localObject3);
+      localObject2 = new HashMap(localObject3.length);
+      int j = localObject3.length;
       i = 0;
-      while (i < j)
+      for (;;)
       {
-        localObject3 = localObject2[i];
-        if (localObject3 != null) {
-          ((Map)localObject1).put(((Thread)localObject3).getName(), localObject3);
+        localObject1 = localObject2;
+        if (i >= j) {
+          break;
+        }
+        localObject1 = localObject3[i];
+        if (localObject1 != null) {
+          ((Map)localObject2).put(((Thread)localObject1).getName(), localObject1);
         }
         i += 1;
       }
     }
-    for (;;)
+    Object localObject2 = new ArrayList(jdField_a_of_type_JavaUtilMap.size() / 2);
+    Object localObject3 = jdField_a_of_type_JavaUtilMap.keySet().iterator();
+    while (((Iterator)localObject3).hasNext())
     {
-      localObject2 = new ArrayList(jdField_a_of_type_JavaUtilMap.size() / 2);
-      localObject3 = jdField_a_of_type_JavaUtilMap.keySet().iterator();
-      while (((Iterator)localObject3).hasNext())
+      Object localObject4 = (String)((Iterator)localObject3).next();
+      ProcessStats.Stats localStats = (ProcessStats.Stats)jdField_a_of_type_JavaUtilMap.get(localObject4);
+      if (localStats.jdField_a_of_type_Int >= paramInt)
       {
-        Object localObject4 = (String)((Iterator)localObject3).next();
-        ProcessStats.Stats localStats = (ProcessStats.Stats)jdField_a_of_type_JavaUtilMap.get(localObject4);
-        if (localStats.jdField_a_of_type_Int >= paramInt)
+        if (paramBoolean) {
+          i = 300;
+        } else {
+          i = 50;
+        }
+        StringBuilder localStringBuilder = new StringBuilder(i);
+        localStringBuilder.append(localStats.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append("_");
+        localStringBuilder.append((String)localObject4);
+        localStringBuilder.append(":");
+        localStringBuilder.append(localStats.jdField_a_of_type_Int);
+        localStringBuilder.append("\r\n");
+        if (paramBoolean)
         {
-          if (paramBoolean) {}
-          StringBuilder localStringBuilder;
-          for (i = 300;; i = 50)
-          {
-            localStringBuilder = new StringBuilder(i);
-            localStringBuilder.append(localStats.jdField_a_of_type_JavaLangString).append("_").append((String)localObject4).append(":").append(localStats.jdField_a_of_type_Int).append("\r\n");
-            if (!paramBoolean) {
-              break;
-            }
-            localObject4 = (Thread)((Map)localObject1).get(localStats.jdField_a_of_type_JavaLangString);
-            if (localObject4 != null) {
-              localStringBuilder.append(Arrays.toString(((Thread)localObject4).getStackTrace()));
-            }
-            localObject4 = StringUtils.getStringValue(localStringBuilder);
-            if (localObject4 == null) {
-              break label308;
-            }
-            ((List)localObject2).add(StringUtils.newStringWithData((char[])localObject4));
-            break;
+          localObject4 = (Thread)((Map)localObject1).get(localStats.jdField_a_of_type_JavaLangString);
+          if (localObject4 != null) {
+            localStringBuilder.append(Arrays.toString(((Thread)localObject4).getStackTrace()));
           }
-          label308:
-          ((List)localObject2).add(localStringBuilder.toString());
+          localObject4 = StringUtils.getStringValue(localStringBuilder);
+          if (localObject4 != null) {
+            ((List)localObject2).add(StringUtils.newStringWithData((char[])localObject4));
+          } else {
+            ((List)localObject2).add(localStringBuilder.toString());
+          }
         }
       }
-      if (paramBoolean) {
-        ((List)localObject2).add(Arrays.toString(Looper.getMainLooper().getThread().getStackTrace()));
-      }
-      return localObject2;
     }
+    if (paramBoolean) {
+      ((List)localObject2).add(Arrays.toString(Looper.getMainLooper().getThread().getStackTrace()));
+    }
+    return localObject2;
   }
   
   public static void a(ProcessStats.Stats paramStats)
@@ -355,145 +331,228 @@ public class ProcessStats
   
   private static void a(String paramString, ProcessStats.Stats paramStats, boolean paramBoolean)
   {
-    try
+    for (;;)
     {
-      Object[] arrayOfObject = a(paramString);
-      long l1;
-      if (arrayOfObject != null)
+      try
       {
-        paramString = (String)arrayOfObject[0];
-        l1 = ((Long)arrayOfObject[1]).longValue();
-      }
-      for (long l2 = ((Long)arrayOfObject[2]).longValue();; l2 = -100L)
-      {
-        if (paramBoolean)
-        {
-          paramStats.jdField_a_of_type_Long = l1;
-          paramStats.jdField_b_of_type_Long = l2;
-          paramStats.jdField_a_of_type_JavaLangString = paramString;
-          return;
-        }
-        if (paramStats.jdField_a_of_type_Long == -100L)
-        {
-          paramStats.jdField_c_of_type_Long = -100L;
-          paramStats.d = -100L;
-          return;
-        }
-        paramStats.jdField_c_of_type_Long = (l1 - paramStats.jdField_a_of_type_Long);
-        paramStats.d = (l2 - paramStats.jdField_b_of_type_Long);
-        return;
-        l1 = -100L;
+        Object[] arrayOfObject = a(paramString);
         paramString = null;
+        if (arrayOfObject != null)
+        {
+          paramString = (String)arrayOfObject[0];
+          l1 = ((Long)arrayOfObject[1]).longValue();
+          l2 = ((Long)arrayOfObject[2]).longValue();
+          if (paramBoolean)
+          {
+            paramStats.jdField_a_of_type_Long = l1;
+            paramStats.jdField_b_of_type_Long = l2;
+            paramStats.jdField_a_of_type_JavaLangString = paramString;
+            return;
+          }
+          if (paramStats.jdField_a_of_type_Long == -100L)
+          {
+            paramStats.jdField_c_of_type_Long = -100L;
+            paramStats.d = -100L;
+            return;
+          }
+          paramStats.jdField_c_of_type_Long = (l1 - paramStats.jdField_a_of_type_Long);
+          paramStats.d = (l2 - paramStats.jdField_b_of_type_Long);
+          return;
+        }
       }
-      return;
+      catch (Exception paramString)
+      {
+        return;
+      }
+      long l1 = -100L;
+      long l2 = l1;
     }
-    catch (Exception paramString) {}
   }
   
+  /* Error */
   public static void a(boolean paramBoolean)
   {
-    byte[] arrayOfByte = ByteArrayPool.getGenericInstance().getBuf(1024);
-    try
-    {
-      localObject1 = a("-2");
-      if (localObject1 == null) {
-        break label117;
-      }
-      jdField_b_of_type_Long = ((Long)localObject1[1]).longValue();
-      jdField_c_of_type_Long = ((Long)localObject1[2]).longValue();
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Object localObject1;
-        localException.printStackTrace();
-        return;
-        jdField_b_of_type_Long = -1L;
-        jdField_c_of_type_Long = -1L;
-      }
-    }
-    finally
-    {
-      ByteArrayPool.getGenericInstance().returnBuf(arrayOfByte);
-    }
-    a("-1", jdField_a_of_type_ComTencentQqperfToolsProcessStats$Stats, true);
-    if (paramBoolean)
-    {
-      localObject1 = jdField_a_of_type_JavaUtilMap.values().iterator();
-      while (((Iterator)localObject1).hasNext()) {
-        a((ProcessStats.Stats)((Iterator)localObject1).next());
-      }
-      label117:
-      jdField_a_of_type_JavaUtilMap.clear();
-      String[] arrayOfString = a(Process.myPid());
-      if (arrayOfString != null)
-      {
-        int j = arrayOfString.length;
-        int i = 0;
-        while (i < j)
-        {
-          String str = arrayOfString[i];
-          ProcessStats.Stats localStats = a();
-          a(str, localStats, true);
-          jdField_a_of_type_JavaUtilMap.put(str, localStats);
-          i += 1;
-        }
-      }
-    }
-    ByteArrayPool.getGenericInstance().returnBuf(arrayOfByte);
+    // Byte code:
+    //   0: invokestatic 319	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   3: sipush 1024
+    //   6: invokevirtual 323	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
+    //   9: astore_3
+    //   10: ldc 101
+    //   12: invokestatic 82	com/tencent/qqperf/tools/ProcessStats:a	(Ljava/lang/String;)[Ljava/lang/Object;
+    //   15: astore 4
+    //   17: aload 4
+    //   19: ifnull +32 -> 51
+    //   22: aload 4
+    //   24: iconst_1
+    //   25: aaload
+    //   26: checkcast 86	java/lang/Long
+    //   29: invokevirtual 90	java/lang/Long:longValue	()J
+    //   32: putstatic 46	com/tencent/qqperf/tools/ProcessStats:jdField_b_of_type_Long	J
+    //   35: aload 4
+    //   37: iconst_2
+    //   38: aaload
+    //   39: checkcast 86	java/lang/Long
+    //   42: invokevirtual 90	java/lang/Long:longValue	()J
+    //   45: putstatic 48	com/tencent/qqperf/tools/ProcessStats:jdField_c_of_type_Long	J
+    //   48: goto +15 -> 63
+    //   51: ldc2_w 83
+    //   54: putstatic 46	com/tencent/qqperf/tools/ProcessStats:jdField_b_of_type_Long	J
+    //   57: ldc2_w 83
+    //   60: putstatic 48	com/tencent/qqperf/tools/ProcessStats:jdField_c_of_type_Long	J
+    //   63: ldc 118
+    //   65: getstatic 35	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ComTencentQqperfToolsProcessStats$Stats	Lcom/tencent/qqperf/tools/ProcessStats$Stats;
+    //   68: iconst_1
+    //   69: invokestatic 154	com/tencent/qqperf/tools/ProcessStats:a	(Ljava/lang/String;Lcom/tencent/qqperf/tools/ProcessStats$Stats;Z)V
+    //   72: iload_0
+    //   73: ifeq +128 -> 201
+    //   76: getstatic 42	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   79: invokeinterface 327 1 0
+    //   84: invokeinterface 330 1 0
+    //   89: astore 4
+    //   91: aload 4
+    //   93: invokeinterface 252 1 0
+    //   98: ifeq +19 -> 117
+    //   101: aload 4
+    //   103: invokeinterface 256 1 0
+    //   108: checkcast 20	com/tencent/qqperf/tools/ProcessStats$Stats
+    //   111: invokestatic 332	com/tencent/qqperf/tools/ProcessStats:a	(Lcom/tencent/qqperf/tools/ProcessStats$Stats;)V
+    //   114: goto -23 -> 91
+    //   117: getstatic 42	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   120: invokeinterface 335 1 0
+    //   125: invokestatic 132	android/os/Process:myPid	()I
+    //   128: i2l
+    //   129: invokestatic 338	com/tencent/qqperf/tools/ProcessStats:a	(J)[Ljava/lang/String;
+    //   132: astore 4
+    //   134: aload 4
+    //   136: ifnull +65 -> 201
+    //   139: aload 4
+    //   141: arraylength
+    //   142: istore_2
+    //   143: iconst_0
+    //   144: istore_1
+    //   145: iload_1
+    //   146: iload_2
+    //   147: if_icmpge +54 -> 201
+    //   150: aload 4
+    //   152: iload_1
+    //   153: aaload
+    //   154: astore 5
+    //   156: invokestatic 33	com/tencent/qqperf/tools/ProcessStats:a	()Lcom/tencent/qqperf/tools/ProcessStats$Stats;
+    //   159: astore 6
+    //   161: aload 5
+    //   163: aload 6
+    //   165: iconst_1
+    //   166: invokestatic 154	com/tencent/qqperf/tools/ProcessStats:a	(Ljava/lang/String;Lcom/tencent/qqperf/tools/ProcessStats$Stats;Z)V
+    //   169: getstatic 42	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   172: aload 5
+    //   174: aload 6
+    //   176: invokeinterface 230 3 0
+    //   181: pop
+    //   182: iload_1
+    //   183: iconst_1
+    //   184: iadd
+    //   185: istore_1
+    //   186: goto -41 -> 145
+    //   189: astore 4
+    //   191: goto +18 -> 209
+    //   194: astore 4
+    //   196: aload 4
+    //   198: invokevirtual 339	java/lang/Exception:printStackTrace	()V
+    //   201: invokestatic 319	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   204: aload_3
+    //   205: invokevirtual 343	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   208: return
+    //   209: invokestatic 319	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   212: aload_3
+    //   213: invokevirtual 343	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   216: goto +6 -> 222
+    //   219: aload 4
+    //   221: athrow
+    //   222: goto -3 -> 219
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	225	0	paramBoolean	boolean
+    //   144	42	1	i	int
+    //   142	6	2	j	int
+    //   9	204	3	arrayOfByte	byte[]
+    //   15	136	4	localObject1	Object
+    //   189	1	4	localObject2	Object
+    //   194	26	4	localException	Exception
+    //   154	19	5	str	String
+    //   159	16	6	localStats	ProcessStats.Stats
+    // Exception table:
+    //   from	to	target	type
+    //   10	17	189	finally
+    //   22	48	189	finally
+    //   51	63	189	finally
+    //   63	72	189	finally
+    //   76	91	189	finally
+    //   91	114	189	finally
+    //   117	134	189	finally
+    //   139	143	189	finally
+    //   156	182	189	finally
+    //   196	201	189	finally
+    //   10	17	194	java/lang/Exception
+    //   22	48	194	java/lang/Exception
+    //   51	63	194	java/lang/Exception
+    //   63	72	194	java/lang/Exception
+    //   76	91	194	java/lang/Exception
+    //   91	114	194	java/lang/Exception
+    //   117	134	194	java/lang/Exception
+    //   139	143	194	java/lang/Exception
+    //   156	182	194	java/lang/Exception
   }
   
   /* Error */
   public static Object[] a(String paramString)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore_1
-    //   2: aload_0
-    //   3: invokestatic 348	com/tencent/qqperf/tools/ProcessStats:a	(Ljava/lang/String;)Ljava/io/RandomAccessFile;
-    //   6: astore 21
-    //   8: invokestatic 322	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   11: sipush 1024
-    //   14: invokevirtual 326	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
-    //   17: astore 22
-    //   19: aload 21
-    //   21: lconst_0
-    //   22: invokevirtual 352	java/io/RandomAccessFile:seek	(J)V
-    //   25: aload 21
-    //   27: aload 22
-    //   29: invokevirtual 356	java/io/RandomAccessFile:read	([B)I
-    //   32: istore 4
+    //   0: aload_0
+    //   1: invokestatic 345	com/tencent/qqperf/tools/ProcessStats:a	(Ljava/lang/String;)Ljava/io/RandomAccessFile;
+    //   4: astore 21
+    //   6: invokestatic 319	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   9: sipush 1024
+    //   12: invokevirtual 323	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
+    //   15: astore 22
+    //   17: aload 21
+    //   19: lconst_0
+    //   20: invokevirtual 349	java/io/RandomAccessFile:seek	(J)V
+    //   23: aload 21
+    //   25: aload 22
+    //   27: invokevirtual 353	java/io/RandomAccessFile:read	([B)I
+    //   30: istore 4
+    //   32: iconst_0
+    //   33: istore_1
     //   34: iconst_0
     //   35: istore_3
-    //   36: goto +663 -> 699
+    //   36: goto +626 -> 662
     //   39: iload_2
     //   40: istore_1
     //   41: iload_2
     //   42: iload 4
-    //   44: if_icmpge +691 -> 735
+    //   44: if_icmpge +654 -> 698
     //   47: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
     //   50: iload_3
     //   51: iload_2
     //   52: iastore
     //   53: iload_2
     //   54: istore_1
-    //   55: goto +680 -> 735
+    //   55: goto +643 -> 698
     //   58: iload_1
     //   59: iload 4
-    //   61: if_icmpge +696 -> 757
+    //   61: if_icmpge +659 -> 720
     //   64: getstatic 52	com/tencent/qqperf/tools/ProcessStats:jdField_b_of_type_ArrayOfInt	[I
     //   67: iload_3
     //   68: iload_1
     //   69: iastore
-    //   70: goto +687 -> 757
+    //   70: goto +650 -> 720
     //   73: iload_3
     //   74: bipush 17
-    //   76: if_icmpne +558 -> 634
+    //   76: if_icmpne +531 -> 607
     //   79: ldc 101
     //   81: aload_0
     //   82: invokevirtual 107	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   85: ifne +236 -> 321
+    //   85: ifne +213 -> 298
     //   88: new 103	java/lang/String
     //   91: dup
     //   92: aload 22
@@ -511,7 +570,7 @@ public class ProcessStats
     //   111: isub
     //   112: iconst_1
     //   113: isub
-    //   114: invokespecial 359	java/lang/String:<init>	([BII)V
+    //   114: invokespecial 356	java/lang/String:<init>	([BII)V
     //   117: astore 23
     //   119: new 103	java/lang/String
     //   122: dup
@@ -526,8 +585,8 @@ public class ProcessStats
     //   140: bipush 13
     //   142: iaload
     //   143: isub
-    //   144: invokespecial 359	java/lang/String:<init>	([BII)V
-    //   147: invokestatic 362	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   144: invokespecial 356	java/lang/String:<init>	([BII)V
+    //   147: invokestatic 359	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   150: lstore 5
     //   152: new 103	java/lang/String
     //   155: dup
@@ -542,8 +601,8 @@ public class ProcessStats
     //   173: bipush 15
     //   175: iaload
     //   176: isub
-    //   177: invokespecial 359	java/lang/String:<init>	([BII)V
-    //   180: invokestatic 362	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   177: invokespecial 356	java/lang/String:<init>	([BII)V
+    //   180: invokestatic 359	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   183: lstore 7
     //   185: new 103	java/lang/String
     //   188: dup
@@ -558,8 +617,8 @@ public class ProcessStats
     //   206: bipush 14
     //   208: iaload
     //   209: isub
-    //   210: invokespecial 359	java/lang/String:<init>	([BII)V
-    //   213: invokestatic 362	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   210: invokespecial 356	java/lang/String:<init>	([BII)V
+    //   213: invokestatic 359	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   216: lstore 9
     //   218: new 103	java/lang/String
     //   221: dup
@@ -574,338 +633,320 @@ public class ProcessStats
     //   239: bipush 16
     //   241: iaload
     //   242: isub
-    //   243: invokespecial 359	java/lang/String:<init>	([BII)V
-    //   246: invokestatic 362	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   243: invokespecial 356	java/lang/String:<init>	([BII)V
+    //   246: invokestatic 359	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   249: lstore 11
-    //   251: aload 23
-    //   253: ifnull +50 -> 303
-    //   256: iconst_3
-    //   257: anewarray 4	java/lang/Object
-    //   260: astore_0
+    //   251: iconst_3
+    //   252: anewarray 4	java/lang/Object
+    //   255: astore_0
+    //   256: aload_0
+    //   257: iconst_0
+    //   258: aload 23
+    //   260: aastore
     //   261: aload_0
-    //   262: iconst_0
-    //   263: aload 23
-    //   265: aastore
-    //   266: aload_0
-    //   267: iconst_1
-    //   268: lload 5
-    //   270: lload 7
-    //   272: ladd
-    //   273: invokestatic 366	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   276: aastore
-    //   277: aload_0
-    //   278: iconst_2
-    //   279: lload 9
-    //   281: lload 11
-    //   283: ladd
-    //   284: invokestatic 366	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   287: aastore
-    //   288: invokestatic 322	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   291: aload 22
-    //   293: invokevirtual 340	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   296: aload 21
-    //   298: invokevirtual 369	java/io/RandomAccessFile:close	()V
-    //   301: aload_0
-    //   302: areturn
-    //   303: invokestatic 322	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   306: aload 22
-    //   308: invokevirtual 340	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   311: aload 21
-    //   313: invokevirtual 369	java/io/RandomAccessFile:close	()V
-    //   316: aconst_null
-    //   317: areturn
-    //   318: astore_0
-    //   319: aconst_null
-    //   320: areturn
-    //   321: new 103	java/lang/String
-    //   324: dup
-    //   325: aload 22
-    //   327: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
-    //   330: iconst_4
-    //   331: iaload
-    //   332: getstatic 52	com/tencent/qqperf/tools/ProcessStats:jdField_b_of_type_ArrayOfInt	[I
-    //   335: iconst_4
-    //   336: iaload
-    //   337: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
-    //   340: iconst_4
-    //   341: iaload
-    //   342: isub
-    //   343: invokespecial 359	java/lang/String:<init>	([BII)V
-    //   346: invokestatic 362	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   349: lstore 5
-    //   351: new 103	java/lang/String
-    //   354: dup
-    //   355: aload 22
-    //   357: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
-    //   360: iconst_1
-    //   361: iaload
-    //   362: getstatic 52	com/tencent/qqperf/tools/ProcessStats:jdField_b_of_type_ArrayOfInt	[I
-    //   365: iconst_1
-    //   366: iaload
-    //   367: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
-    //   370: iconst_1
-    //   371: iaload
-    //   372: isub
-    //   373: invokespecial 359	java/lang/String:<init>	([BII)V
-    //   376: invokestatic 362	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   379: lstore 7
-    //   381: new 103	java/lang/String
-    //   384: dup
-    //   385: aload 22
-    //   387: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
-    //   390: iconst_2
-    //   391: iaload
-    //   392: getstatic 52	com/tencent/qqperf/tools/ProcessStats:jdField_b_of_type_ArrayOfInt	[I
-    //   395: iconst_2
-    //   396: iaload
-    //   397: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
-    //   400: iconst_2
-    //   401: iaload
-    //   402: isub
-    //   403: invokespecial 359	java/lang/String:<init>	([BII)V
-    //   406: invokestatic 362	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   409: lstore 9
-    //   411: new 103	java/lang/String
-    //   414: dup
-    //   415: aload 22
-    //   417: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
-    //   420: iconst_3
-    //   421: iaload
-    //   422: getstatic 52	com/tencent/qqperf/tools/ProcessStats:jdField_b_of_type_ArrayOfInt	[I
-    //   425: iconst_3
-    //   426: iaload
-    //   427: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
-    //   430: iconst_3
-    //   431: iaload
-    //   432: isub
-    //   433: invokespecial 359	java/lang/String:<init>	([BII)V
-    //   436: invokestatic 362	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   439: lstore 11
-    //   441: new 103	java/lang/String
-    //   444: dup
-    //   445: aload 22
-    //   447: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
-    //   450: iconst_5
-    //   451: iaload
-    //   452: getstatic 52	com/tencent/qqperf/tools/ProcessStats:jdField_b_of_type_ArrayOfInt	[I
-    //   455: iconst_5
-    //   456: iaload
-    //   457: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
-    //   460: iconst_5
-    //   461: iaload
-    //   462: isub
-    //   463: invokespecial 359	java/lang/String:<init>	([BII)V
-    //   466: invokestatic 362	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   469: lstore 13
-    //   471: new 103	java/lang/String
-    //   474: dup
-    //   475: aload 22
-    //   477: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
-    //   480: bipush 6
-    //   482: iaload
-    //   483: getstatic 52	com/tencent/qqperf/tools/ProcessStats:jdField_b_of_type_ArrayOfInt	[I
-    //   486: bipush 6
-    //   488: iaload
-    //   489: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
-    //   492: bipush 6
-    //   494: iaload
-    //   495: isub
-    //   496: invokespecial 359	java/lang/String:<init>	([BII)V
-    //   499: invokestatic 362	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   502: lstore 15
-    //   504: new 103	java/lang/String
-    //   507: dup
-    //   508: aload 22
-    //   510: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
-    //   513: bipush 7
-    //   515: iaload
-    //   516: getstatic 52	com/tencent/qqperf/tools/ProcessStats:jdField_b_of_type_ArrayOfInt	[I
-    //   519: bipush 7
-    //   521: iaload
-    //   522: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
-    //   525: bipush 7
-    //   527: iaload
-    //   528: isub
-    //   529: invokespecial 359	java/lang/String:<init>	([BII)V
-    //   532: invokestatic 362	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   535: lstore 17
-    //   537: new 103	java/lang/String
-    //   540: dup
-    //   541: aload 22
-    //   543: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
-    //   546: bipush 8
-    //   548: iaload
-    //   549: getstatic 52	com/tencent/qqperf/tools/ProcessStats:jdField_b_of_type_ArrayOfInt	[I
-    //   552: bipush 8
-    //   554: iaload
-    //   555: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
-    //   558: bipush 8
-    //   560: iaload
-    //   561: isub
-    //   562: invokespecial 359	java/lang/String:<init>	([BII)V
-    //   565: invokestatic 362	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   568: lstore 19
-    //   570: iconst_3
-    //   571: anewarray 4	java/lang/Object
-    //   574: astore_0
-    //   575: aload_0
-    //   576: iconst_0
-    //   577: ldc_w 371
-    //   580: aastore
-    //   581: aload_0
-    //   582: iconst_1
-    //   583: lload 5
-    //   585: invokestatic 366	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   588: aastore
-    //   589: aload_0
-    //   590: iconst_2
-    //   591: lload 7
-    //   593: lload 9
-    //   595: ladd
-    //   596: lload 11
-    //   598: ladd
-    //   599: lload 13
-    //   601: ladd
-    //   602: lload 15
-    //   604: ladd
-    //   605: lload 17
-    //   607: ladd
-    //   608: lload 19
-    //   610: ladd
-    //   611: invokestatic 366	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   614: aastore
-    //   615: invokestatic 322	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   618: aload 22
-    //   620: invokevirtual 340	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   623: aload 21
-    //   625: invokevirtual 369	java/io/RandomAccessFile:close	()V
-    //   628: aload_0
-    //   629: areturn
-    //   630: astore 21
-    //   632: aload_0
-    //   633: areturn
-    //   634: invokestatic 322	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   637: aload 22
-    //   639: invokevirtual 340	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   642: aload 21
-    //   644: invokevirtual 369	java/io/RandomAccessFile:close	()V
-    //   647: aconst_null
+    //   262: iconst_1
+    //   263: lload 5
+    //   265: lload 7
+    //   267: ladd
+    //   268: invokestatic 363	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   271: aastore
+    //   272: aload_0
+    //   273: iconst_2
+    //   274: lload 9
+    //   276: lload 11
+    //   278: ladd
+    //   279: invokestatic 363	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   282: aastore
+    //   283: invokestatic 319	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   286: aload 22
+    //   288: invokevirtual 343	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   291: aload 21
+    //   293: invokevirtual 366	java/io/RandomAccessFile:close	()V
+    //   296: aload_0
+    //   297: areturn
+    //   298: new 103	java/lang/String
+    //   301: dup
+    //   302: aload 22
+    //   304: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
+    //   307: iconst_4
+    //   308: iaload
+    //   309: getstatic 52	com/tencent/qqperf/tools/ProcessStats:jdField_b_of_type_ArrayOfInt	[I
+    //   312: iconst_4
+    //   313: iaload
+    //   314: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
+    //   317: iconst_4
+    //   318: iaload
+    //   319: isub
+    //   320: invokespecial 356	java/lang/String:<init>	([BII)V
+    //   323: invokestatic 359	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   326: lstore 5
+    //   328: new 103	java/lang/String
+    //   331: dup
+    //   332: aload 22
+    //   334: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
+    //   337: iconst_1
+    //   338: iaload
+    //   339: getstatic 52	com/tencent/qqperf/tools/ProcessStats:jdField_b_of_type_ArrayOfInt	[I
+    //   342: iconst_1
+    //   343: iaload
+    //   344: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
+    //   347: iconst_1
+    //   348: iaload
+    //   349: isub
+    //   350: invokespecial 356	java/lang/String:<init>	([BII)V
+    //   353: invokestatic 359	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   356: lstore 7
+    //   358: new 103	java/lang/String
+    //   361: dup
+    //   362: aload 22
+    //   364: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
+    //   367: iconst_2
+    //   368: iaload
+    //   369: getstatic 52	com/tencent/qqperf/tools/ProcessStats:jdField_b_of_type_ArrayOfInt	[I
+    //   372: iconst_2
+    //   373: iaload
+    //   374: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
+    //   377: iconst_2
+    //   378: iaload
+    //   379: isub
+    //   380: invokespecial 356	java/lang/String:<init>	([BII)V
+    //   383: invokestatic 359	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   386: lstore 9
+    //   388: new 103	java/lang/String
+    //   391: dup
+    //   392: aload 22
+    //   394: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
+    //   397: iconst_3
+    //   398: iaload
+    //   399: getstatic 52	com/tencent/qqperf/tools/ProcessStats:jdField_b_of_type_ArrayOfInt	[I
+    //   402: iconst_3
+    //   403: iaload
+    //   404: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
+    //   407: iconst_3
+    //   408: iaload
+    //   409: isub
+    //   410: invokespecial 356	java/lang/String:<init>	([BII)V
+    //   413: invokestatic 359	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   416: lstore 11
+    //   418: new 103	java/lang/String
+    //   421: dup
+    //   422: aload 22
+    //   424: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
+    //   427: iconst_5
+    //   428: iaload
+    //   429: getstatic 52	com/tencent/qqperf/tools/ProcessStats:jdField_b_of_type_ArrayOfInt	[I
+    //   432: iconst_5
+    //   433: iaload
+    //   434: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
+    //   437: iconst_5
+    //   438: iaload
+    //   439: isub
+    //   440: invokespecial 356	java/lang/String:<init>	([BII)V
+    //   443: invokestatic 359	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   446: lstore 13
+    //   448: new 103	java/lang/String
+    //   451: dup
+    //   452: aload 22
+    //   454: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
+    //   457: bipush 6
+    //   459: iaload
+    //   460: getstatic 52	com/tencent/qqperf/tools/ProcessStats:jdField_b_of_type_ArrayOfInt	[I
+    //   463: bipush 6
+    //   465: iaload
+    //   466: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
+    //   469: bipush 6
+    //   471: iaload
+    //   472: isub
+    //   473: invokespecial 356	java/lang/String:<init>	([BII)V
+    //   476: invokestatic 359	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   479: lstore 15
+    //   481: new 103	java/lang/String
+    //   484: dup
+    //   485: aload 22
+    //   487: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
+    //   490: bipush 7
+    //   492: iaload
+    //   493: getstatic 52	com/tencent/qqperf/tools/ProcessStats:jdField_b_of_type_ArrayOfInt	[I
+    //   496: bipush 7
+    //   498: iaload
+    //   499: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
+    //   502: bipush 7
+    //   504: iaload
+    //   505: isub
+    //   506: invokespecial 356	java/lang/String:<init>	([BII)V
+    //   509: invokestatic 359	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   512: lstore 17
+    //   514: new 103	java/lang/String
+    //   517: dup
+    //   518: aload 22
+    //   520: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
+    //   523: bipush 8
+    //   525: iaload
+    //   526: getstatic 52	com/tencent/qqperf/tools/ProcessStats:jdField_b_of_type_ArrayOfInt	[I
+    //   529: bipush 8
+    //   531: iaload
+    //   532: getstatic 50	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ArrayOfInt	[I
+    //   535: bipush 8
+    //   537: iaload
+    //   538: isub
+    //   539: invokespecial 356	java/lang/String:<init>	([BII)V
+    //   542: invokestatic 359	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   545: lstore 19
+    //   547: iconst_3
+    //   548: anewarray 4	java/lang/Object
+    //   551: astore_0
+    //   552: aload_0
+    //   553: iconst_0
+    //   554: ldc_w 368
+    //   557: aastore
+    //   558: aload_0
+    //   559: iconst_1
+    //   560: lload 5
+    //   562: invokestatic 363	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   565: aastore
+    //   566: aload_0
+    //   567: iconst_2
+    //   568: lload 7
+    //   570: lload 9
+    //   572: ladd
+    //   573: lload 11
+    //   575: ladd
+    //   576: lload 13
+    //   578: ladd
+    //   579: lload 15
+    //   581: ladd
+    //   582: lload 17
+    //   584: ladd
+    //   585: lload 19
+    //   587: ladd
+    //   588: invokestatic 363	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   591: aastore
+    //   592: invokestatic 319	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   595: aload 22
+    //   597: invokevirtual 343	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   600: aload 21
+    //   602: invokevirtual 366	java/io/RandomAccessFile:close	()V
+    //   605: aload_0
+    //   606: areturn
+    //   607: invokestatic 319	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   610: aload 22
+    //   612: invokevirtual 343	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   615: aload 21
+    //   617: invokevirtual 366	java/io/RandomAccessFile:close	()V
+    //   620: goto +19 -> 639
+    //   623: astore_0
+    //   624: invokestatic 319	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   627: aload 22
+    //   629: invokevirtual 343	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   632: aload 21
+    //   634: invokevirtual 366	java/io/RandomAccessFile:close	()V
+    //   637: aload_0
+    //   638: athrow
+    //   639: aconst_null
+    //   640: areturn
+    //   641: astore_0
+    //   642: goto -35 -> 607
+    //   645: astore 21
+    //   647: aload_0
     //   648: areturn
-    //   649: astore_0
-    //   650: invokestatic 322	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   653: aload 22
-    //   655: invokevirtual 340	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   658: aload 21
-    //   660: invokevirtual 369	java/io/RandomAccessFile:close	()V
-    //   663: goto -16 -> 647
-    //   666: astore_0
-    //   667: goto -20 -> 647
-    //   670: astore_0
-    //   671: invokestatic 322	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   674: aload 22
-    //   676: invokevirtual 340	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   679: aload 21
-    //   681: invokevirtual 369	java/io/RandomAccessFile:close	()V
-    //   684: aload_0
-    //   685: athrow
-    //   686: astore 21
-    //   688: aload_0
-    //   689: areturn
-    //   690: astore_0
-    //   691: goto -44 -> 647
-    //   694: astore 21
-    //   696: goto -12 -> 684
-    //   699: iload_1
-    //   700: iload 4
-    //   702: if_icmpge -629 -> 73
-    //   705: iload_3
-    //   706: bipush 17
-    //   708: if_icmpge -635 -> 73
-    //   711: iload_1
-    //   712: istore_2
-    //   713: iload_2
-    //   714: iload 4
-    //   716: if_icmpge -677 -> 39
-    //   719: aload 22
-    //   721: iload_2
-    //   722: baload
-    //   723: bipush 32
-    //   725: if_icmpne -686 -> 39
-    //   728: iload_2
-    //   729: iconst_1
-    //   730: iadd
-    //   731: istore_2
-    //   732: goto -19 -> 713
-    //   735: iload_1
-    //   736: iload 4
-    //   738: if_icmpge -680 -> 58
-    //   741: aload 22
-    //   743: iload_1
-    //   744: baload
-    //   745: bipush 32
-    //   747: if_icmpeq -689 -> 58
-    //   750: iload_1
-    //   751: iconst_1
-    //   752: iadd
-    //   753: istore_1
-    //   754: goto -19 -> 735
-    //   757: iload_3
-    //   758: iconst_1
-    //   759: iadd
-    //   760: istore_3
-    //   761: goto -62 -> 699
+    //   649: astore 21
+    //   651: aload_0
+    //   652: areturn
+    //   653: astore_0
+    //   654: goto -15 -> 639
+    //   657: astore 21
+    //   659: goto -22 -> 637
+    //   662: iload_1
+    //   663: iload 4
+    //   665: if_icmpge -592 -> 73
+    //   668: iload_3
+    //   669: bipush 17
+    //   671: if_icmpge -598 -> 73
+    //   674: iload_1
+    //   675: istore_2
+    //   676: iload_2
+    //   677: iload 4
+    //   679: if_icmpge -640 -> 39
+    //   682: aload 22
+    //   684: iload_2
+    //   685: baload
+    //   686: bipush 32
+    //   688: if_icmpne -649 -> 39
+    //   691: iload_2
+    //   692: iconst_1
+    //   693: iadd
+    //   694: istore_2
+    //   695: goto -19 -> 676
+    //   698: iload_1
+    //   699: iload 4
+    //   701: if_icmpge -643 -> 58
+    //   704: aload 22
+    //   706: iload_1
+    //   707: baload
+    //   708: bipush 32
+    //   710: if_icmpeq -652 -> 58
+    //   713: iload_1
+    //   714: iconst_1
+    //   715: iadd
+    //   716: istore_1
+    //   717: goto -19 -> 698
+    //   720: iload_3
+    //   721: iconst_1
+    //   722: iadd
+    //   723: istore_3
+    //   724: goto -62 -> 662
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	764	0	paramString	String
-    //   1	753	1	i	int
-    //   39	693	2	j	int
-    //   35	726	3	k	int
-    //   32	707	4	m	int
-    //   150	434	5	l1	long
-    //   183	409	7	l2	long
-    //   216	378	9	l3	long
-    //   249	348	11	l4	long
-    //   469	131	13	l5	long
-    //   502	101	15	l6	long
-    //   535	71	17	l7	long
-    //   568	41	19	l8	long
-    //   6	618	21	localRandomAccessFile	RandomAccessFile
-    //   630	50	21	localException1	Exception
-    //   686	1	21	localException2	Exception
-    //   694	1	21	localException3	Exception
-    //   17	725	22	arrayOfByte	byte[]
-    //   117	147	23	str	String
+    //   0	727	0	paramString	String
+    //   33	684	1	i	int
+    //   39	656	2	j	int
+    //   35	689	3	k	int
+    //   30	672	4	m	int
+    //   150	411	5	l1	long
+    //   183	386	7	l2	long
+    //   216	355	9	l3	long
+    //   249	325	11	l4	long
+    //   446	131	13	l5	long
+    //   479	101	15	l6	long
+    //   512	71	17	l7	long
+    //   545	41	19	l8	long
+    //   4	629	21	localRandomAccessFile	RandomAccessFile
+    //   645	1	21	localException1	Exception
+    //   649	1	21	localException2	Exception
+    //   657	1	21	localException3	Exception
+    //   15	690	22	arrayOfByte	byte[]
+    //   117	142	23	str	String
     // Exception table:
     //   from	to	target	type
-    //   311	316	318	java/lang/Exception
-    //   623	628	630	java/lang/Exception
-    //   19	34	649	java/lang/Exception
-    //   47	53	649	java/lang/Exception
-    //   64	70	649	java/lang/Exception
-    //   79	251	649	java/lang/Exception
-    //   256	261	649	java/lang/Exception
-    //   266	288	649	java/lang/Exception
-    //   321	575	649	java/lang/Exception
-    //   581	615	649	java/lang/Exception
-    //   658	663	666	java/lang/Exception
-    //   19	34	670	finally
-    //   47	53	670	finally
-    //   64	70	670	finally
-    //   79	251	670	finally
-    //   256	261	670	finally
-    //   266	288	670	finally
-    //   321	575	670	finally
-    //   581	615	670	finally
-    //   296	301	686	java/lang/Exception
-    //   642	647	690	java/lang/Exception
-    //   679	684	694	java/lang/Exception
+    //   17	32	623	finally
+    //   47	53	623	finally
+    //   64	70	623	finally
+    //   79	256	623	finally
+    //   261	283	623	finally
+    //   298	552	623	finally
+    //   558	592	623	finally
+    //   17	32	641	java/lang/Exception
+    //   47	53	641	java/lang/Exception
+    //   64	70	641	java/lang/Exception
+    //   79	256	641	java/lang/Exception
+    //   261	283	641	java/lang/Exception
+    //   298	552	641	java/lang/Exception
+    //   558	592	641	java/lang/Exception
+    //   291	296	645	java/lang/Exception
+    //   600	605	649	java/lang/Exception
+    //   615	620	653	java/lang/Exception
+    //   632	637	657	java/lang/Exception
   }
   
   private static final String[] a(long paramLong)
   {
-    File localFile = new File("/proc/" + paramLong + "/task");
-    if ((localFile.exists()) && (localFile.isDirectory())) {
-      return localFile.list();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("/proc/");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append("/task");
+    localObject = new File(((StringBuilder)localObject).toString());
+    if ((((File)localObject).exists()) && (((File)localObject).isDirectory())) {
+      return ((File)localObject).list();
     }
     return null;
   }
@@ -917,58 +958,158 @@ public class ProcessStats
       int i = new File("/sys/devices/system/cpu/").listFiles(new ProcessStats.1CpuFilter()).length;
       return i;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label24:
+      break label24;
+    }
     return 1;
   }
   
+  /* Error */
   public static void b(boolean paramBoolean)
   {
-    byte[] arrayOfByte = ByteArrayPool.getGenericInstance().getBuf(1024);
-    for (;;)
-    {
-      try
-      {
-        Object localObject1 = a("-2");
-        if (localObject1 != null)
-        {
-          l1 = ((Long)localObject1[1]).longValue();
-          l2 = ((Long)localObject1[2]).longValue();
-          l1 = l1 + l2 - jdField_c_of_type_Long - jdField_b_of_type_Long;
-          a("-1", jdField_a_of_type_ComTencentQqperfToolsProcessStats$Stats, false);
-          if (paramBoolean)
-          {
-            localObject1 = jdField_a_of_type_JavaUtilMap.keySet().iterator();
-            if (((Iterator)localObject1).hasNext())
-            {
-              String str = (String)((Iterator)localObject1).next();
-              ProcessStats.Stats localStats = (ProcessStats.Stats)jdField_a_of_type_JavaUtilMap.get(str);
-              a(str, localStats, false);
-              localStats.jdField_a_of_type_Int = ((int)(100L * (localStats.d + localStats.jdField_c_of_type_Long) / l1));
-              continue;
-            }
-          }
-        }
-        long l1 = -1L;
-      }
-      catch (Exception localException)
-      {
-        return;
-        jdField_a_of_type_Int = (int)(100L * (l2 - jdField_c_of_type_Long) / l1);
-        jdField_a_of_type_ComTencentQqperfToolsProcessStats$Stats.jdField_a_of_type_Int = ((int)(100L * (jdField_a_of_type_ComTencentQqperfToolsProcessStats$Stats.d + jdField_a_of_type_ComTencentQqperfToolsProcessStats$Stats.jdField_c_of_type_Long) / l1));
-        jdField_a_of_type_Long = SystemClock.uptimeMillis();
-        return;
-      }
-      finally
-      {
-        ByteArrayPool.getGenericInstance().returnBuf(arrayOfByte);
-      }
-      long l2 = -1L;
-    }
+    // Byte code:
+    //   0: invokestatic 319	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   3: sipush 1024
+    //   6: invokevirtual 323	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
+    //   9: astore 5
+    //   11: ldc 101
+    //   13: invokestatic 82	com/tencent/qqperf/tools/ProcessStats:a	(Ljava/lang/String;)[Ljava/lang/Object;
+    //   16: astore 6
+    //   18: ldc2_w 83
+    //   21: lstore_1
+    //   22: aload 6
+    //   24: ifnull +216 -> 240
+    //   27: aload 6
+    //   29: iconst_1
+    //   30: aaload
+    //   31: checkcast 86	java/lang/Long
+    //   34: invokevirtual 90	java/lang/Long:longValue	()J
+    //   37: lstore_3
+    //   38: aload 6
+    //   40: iconst_2
+    //   41: aaload
+    //   42: checkcast 86	java/lang/Long
+    //   45: invokevirtual 90	java/lang/Long:longValue	()J
+    //   48: lstore_1
+    //   49: goto +3 -> 52
+    //   52: lload_3
+    //   53: lload_1
+    //   54: ladd
+    //   55: getstatic 48	com/tencent/qqperf/tools/ProcessStats:jdField_c_of_type_Long	J
+    //   58: lsub
+    //   59: getstatic 46	com/tencent/qqperf/tools/ProcessStats:jdField_b_of_type_Long	J
+    //   62: lsub
+    //   63: lstore_3
+    //   64: ldc 118
+    //   66: getstatic 35	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ComTencentQqperfToolsProcessStats$Stats	Lcom/tencent/qqperf/tools/ProcessStats$Stats;
+    //   69: iconst_0
+    //   70: invokestatic 154	com/tencent/qqperf/tools/ProcessStats:a	(Ljava/lang/String;Lcom/tencent/qqperf/tools/ProcessStats$Stats;Z)V
+    //   73: iload_0
+    //   74: ifeq +89 -> 163
+    //   77: getstatic 42	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   80: invokeinterface 240 1 0
+    //   85: invokeinterface 246 1 0
+    //   90: astore 6
+    //   92: aload 6
+    //   94: invokeinterface 252 1 0
+    //   99: ifeq +64 -> 163
+    //   102: aload 6
+    //   104: invokeinterface 256 1 0
+    //   109: checkcast 103	java/lang/String
+    //   112: astore 7
+    //   114: getstatic 42	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   117: aload 7
+    //   119: invokeinterface 260 2 0
+    //   124: checkcast 20	com/tencent/qqperf/tools/ProcessStats$Stats
+    //   127: astore 8
+    //   129: aload 7
+    //   131: aload 8
+    //   133: iconst_0
+    //   134: invokestatic 154	com/tencent/qqperf/tools/ProcessStats:a	(Ljava/lang/String;Lcom/tencent/qqperf/tools/ProcessStats$Stats;Z)V
+    //   137: aload 8
+    //   139: aload 8
+    //   141: getfield 312	com/tencent/qqperf/tools/ProcessStats$Stats:d	J
+    //   144: aload 8
+    //   146: getfield 310	com/tencent/qqperf/tools/ProcessStats$Stats:jdField_c_of_type_Long	J
+    //   149: ladd
+    //   150: ldc2_w 395
+    //   153: lmul
+    //   154: lload_3
+    //   155: ldiv
+    //   156: l2i
+    //   157: putfield 261	com/tencent/qqperf/tools/ProcessStats$Stats:jdField_a_of_type_Int	I
+    //   160: goto -68 -> 92
+    //   163: lload_1
+    //   164: getstatic 48	com/tencent/qqperf/tools/ProcessStats:jdField_c_of_type_Long	J
+    //   167: lsub
+    //   168: ldc2_w 395
+    //   171: lmul
+    //   172: lload_3
+    //   173: ldiv
+    //   174: l2i
+    //   175: putstatic 30	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_Int	I
+    //   178: getstatic 35	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ComTencentQqperfToolsProcessStats$Stats	Lcom/tencent/qqperf/tools/ProcessStats$Stats;
+    //   181: getstatic 35	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ComTencentQqperfToolsProcessStats$Stats	Lcom/tencent/qqperf/tools/ProcessStats$Stats;
+    //   184: getfield 312	com/tencent/qqperf/tools/ProcessStats$Stats:d	J
+    //   187: getstatic 35	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_ComTencentQqperfToolsProcessStats$Stats	Lcom/tencent/qqperf/tools/ProcessStats$Stats;
+    //   190: getfield 310	com/tencent/qqperf/tools/ProcessStats$Stats:jdField_c_of_type_Long	J
+    //   193: ladd
+    //   194: ldc2_w 395
+    //   197: lmul
+    //   198: lload_3
+    //   199: ldiv
+    //   200: l2i
+    //   201: putfield 261	com/tencent/qqperf/tools/ProcessStats$Stats:jdField_a_of_type_Int	I
+    //   204: invokestatic 401	android/os/SystemClock:uptimeMillis	()J
+    //   207: putstatic 28	com/tencent/qqperf/tools/ProcessStats:jdField_a_of_type_Long	J
+    //   210: goto +16 -> 226
+    //   213: astore 6
+    //   215: invokestatic 319	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   218: aload 5
+    //   220: invokevirtual 343	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   223: aload 6
+    //   225: athrow
+    //   226: invokestatic 319	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   229: aload 5
+    //   231: invokevirtual 343	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   234: return
+    //   235: astore 6
+    //   237: goto -11 -> 226
+    //   240: ldc2_w 83
+    //   243: lstore_3
+    //   244: goto -192 -> 52
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	247	0	paramBoolean	boolean
+    //   21	143	1	l1	long
+    //   37	207	3	l2	long
+    //   9	221	5	arrayOfByte	byte[]
+    //   16	87	6	localObject1	Object
+    //   213	11	6	localObject2	Object
+    //   235	1	6	localException	Exception
+    //   112	18	7	str	String
+    //   127	18	8	localStats	ProcessStats.Stats
+    // Exception table:
+    //   from	to	target	type
+    //   11	18	213	finally
+    //   27	49	213	finally
+    //   52	73	213	finally
+    //   77	92	213	finally
+    //   92	160	213	finally
+    //   163	210	213	finally
+    //   11	18	235	java/lang/Exception
+    //   27	49	235	java/lang/Exception
+    //   52	73	235	java/lang/Exception
+    //   77	92	235	java/lang/Exception
+    //   92	160	235	java/lang/Exception
+    //   163	210	235	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.tools.ProcessStats
  * JD-Core Version:    0.7.0.1
  */

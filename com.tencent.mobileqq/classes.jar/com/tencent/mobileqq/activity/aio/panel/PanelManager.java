@@ -3,29 +3,41 @@ package com.tencent.mobileqq.activity.aio.panel;
 import android.content.Context;
 import android.support.v4.util.SparseArrayCompat;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.core.FriendChatPie;
-import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
-import com.tencent.mobileqq.activity.aio.panel.miniapp.AioShortcutBarProvider;
-import com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie;
-import com.tencent.mobileqq.apollo.api.aio.panel.ICmGamePanelProvider;
-import com.tencent.mobileqq.emosm.AIOEmoticonUIHelper;
-import com.tencent.mobileqq.qroute.QRoute;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.aio.voicetextpanel.view.BaseVoicetoTextView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.IKeyboardHiddenCallback;
 import com.tencent.widget.XPanelContainer;
 import com.tencent.widget.XPanelContainer.PanelCallback;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class PanelManager
   implements XPanelContainer.PanelCallback
 {
   private Context jdField_a_of_type_AndroidContentContext;
   private SparseArrayCompat<PanelProvider<? extends View>> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
   private XPanelContainer jdField_a_of_type_ComTencentWidgetXPanelContainer;
+  private List<PanelListener> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public PanelManager(Context paramContext, BaseChatPie paramBaseChatPie)
+  public PanelManager(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+  }
+  
+  public int a()
+  {
+    XPanelContainer localXPanelContainer = this.jdField_a_of_type_ComTencentWidgetXPanelContainer;
+    if (localXPanelContainer != null) {
+      return localXPanelContainer.a();
+    }
+    return 0;
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
   }
   
   public View a(int paramInt)
@@ -37,35 +49,36 @@ public class PanelManager
     return null;
   }
   
+  public <T extends PanelProvider<? extends View>> T a(int paramInt)
+  {
+    return (PanelProvider)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt);
+  }
+  
+  public XPanelContainer a()
+  {
+    return this.jdField_a_of_type_ComTencentWidgetXPanelContainer;
+  }
+  
   public void a()
   {
-    a(new PlusPanelProvider(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie));
-    a(new PokeAndEmoPanelProvider(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie));
-    a(new HongbaoPanelProvider(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie));
-    a(new ArkAppManagerPanelProvider(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie));
-    a(new PhotoListPanelProvider(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie));
-    a(new RelateEmoPanelProvider(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie));
-    Object localObject = (ICmGamePanelProvider)QRoute.api(ICmGamePanelProvider.class);
-    if (localObject != null)
-    {
-      ((ICmGamePanelProvider)localObject).init(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
-      a((PanelProvider)localObject);
-    }
-    if (((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof TroopChatPie)) || ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof FriendChatPie)) || ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof LimitChatPie))) {
-      a(new AioShortcutBarProvider(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie));
-    }
-    a(new QQAssistantProvider());
-    localObject = (AIOEmoticonUIHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(105);
-    if (localObject != null) {
-      a((PanelProvider)localObject);
+    XPanelContainer localXPanelContainer = this.jdField_a_of_type_ComTencentWidgetXPanelContainer;
+    if (localXPanelContainer != null) {
+      localXPanelContainer.d();
     }
   }
   
   public void a(int paramInt)
   {
-    PanelProvider localPanelProvider = (PanelProvider)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt);
-    if (localPanelProvider != null) {
-      localPanelProvider.onPanelIconClick(this.jdField_a_of_type_ComTencentWidgetXPanelContainer);
+    int i = 0;
+    while (i < this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size())
+    {
+      localObject = this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat;
+      ((PanelProvider)((SparseArrayCompat)localObject).get(((SparseArrayCompat)localObject).keyAt(i))).onPanelIconClickBeforeCreate(paramInt);
+      i += 1;
+    }
+    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((PanelListener)((Iterator)localObject).next()).onPanelIconClickBeforeCreate(paramInt);
     }
   }
   
@@ -74,19 +87,89 @@ public class PanelManager
     int i = 0;
     while (i < this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size())
     {
-      ((PanelProvider)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.keyAt(i))).onPanelChanged(paramInt1, paramInt2);
+      localObject = this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat;
+      ((PanelProvider)((SparseArrayCompat)localObject).get(((SparseArrayCompat)localObject).keyAt(i))).onPanelChanged(paramInt1, paramInt2);
       i += 1;
+    }
+    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((PanelListener)((Iterator)localObject).next()).onPanelChanged(paramInt1, paramInt2);
     }
   }
   
-  void a(PanelProvider<? extends View> paramPanelProvider)
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(paramInt, paramBoolean);
+  }
+  
+  public void a(PanelListener paramPanelListener)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(paramPanelListener);
+  }
+  
+  public void a(PanelProvider<? extends View> paramPanelProvider)
   {
     this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.put(paramPanelProvider.getPanelId(), paramPanelProvider);
+  }
+  
+  public void a(IKeyboardHiddenCallback paramIKeyboardHiddenCallback)
+  {
+    this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(paramIKeyboardHiddenCallback);
   }
   
   public void a(XPanelContainer paramXPanelContainer)
   {
     this.jdField_a_of_type_ComTencentWidgetXPanelContainer = paramXPanelContainer;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    XPanelContainer localXPanelContainer = this.jdField_a_of_type_ComTencentWidgetXPanelContainer;
+    if (localXPanelContainer != null) {
+      localXPanelContainer.a(paramBoolean);
+    }
+  }
+  
+  public void a(boolean paramBoolean, Context paramContext, View paramView)
+  {
+    if (this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() == 1)
+    {
+      paramContext = (InputMethodManager)paramContext.getSystemService("input_method");
+      if (paramContext.isActive(paramView)) {
+        if (paramBoolean) {
+          this.jdField_a_of_type_ComTencentWidgetXPanelContainer.b();
+        } else {
+          this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
+        }
+      }
+      if (((this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() instanceof BaseVoicetoTextView)) && (paramContext.isActive()))
+      {
+        if (paramBoolean)
+        {
+          this.jdField_a_of_type_ComTencentWidgetXPanelContainer.b();
+          return;
+        }
+        this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
+      }
+      return;
+    }
+    paramContext = this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
+    if ((paramContext != null) && (paramContext.getVisibility() == 0))
+    {
+      if (QLog.isColorLevel())
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("hideAllPanels  curPanel = ");
+        paramContext.append(this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a());
+        QLog.d("PanelManager", 2, paramContext.toString());
+      }
+      if (paramBoolean)
+      {
+        this.jdField_a_of_type_ComTencentWidgetXPanelContainer.b();
+        return;
+      }
+      this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
+    }
   }
   
   public boolean a(int paramInt)
@@ -107,19 +190,47 @@ public class PanelManager
     return null;
   }
   
+  public void b(int paramInt)
+  {
+    PanelProvider localPanelProvider = (PanelProvider)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt);
+    if (localPanelProvider != null) {
+      localPanelProvider.onPanelIconClick(this.jdField_a_of_type_ComTencentWidgetXPanelContainer);
+    }
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    int i = 0;
+    while (i < this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size())
+    {
+      localObject = this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat;
+      ((PanelProvider)((SparseArrayCompat)localObject).get(((SparseArrayCompat)localObject).keyAt(i))).postOnPanelChanged(paramInt1, paramInt2);
+      i += 1;
+    }
+    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((PanelListener)((Iterator)localObject).next()).postOnPanelChanged(paramInt1, paramInt2);
+    }
+  }
+  
   public void s()
   {
     int i = 0;
     while (i < this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size())
     {
-      ((PanelProvider)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.keyAt(i))).onHideAllPanel();
+      localObject = this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat;
+      ((PanelProvider)((SparseArrayCompat)localObject).get(((SparseArrayCompat)localObject).keyAt(i))).onHideAllPanel();
       i += 1;
+    }
+    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((PanelListener)((Iterator)localObject).next()).onHideAllPanel();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.PanelManager
  * JD-Core Version:    0.7.0.1
  */

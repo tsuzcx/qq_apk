@@ -31,55 +31,58 @@ public class GLTextureMediaPlayer
   public void release()
   {
     super.release();
-    if (this.videoRenderer != null) {
-      this.videoRenderer.release();
+    Object localObject = this.videoRenderer;
+    if (localObject != null) {
+      ((TextureSurfaceRenderer)localObject).release();
     }
-    if (this.videoSurface != null) {
-      this.videoSurface.release();
+    localObject = this.videoSurface;
+    if (localObject != null) {
+      ((Surface)localObject).release();
     }
     this.videoRenderer = null;
   }
   
   public void setSurfaceTexture(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    if (this.videoRenderer != null) {
-      this.videoRenderer.release();
+    Object localObject = this.videoRenderer;
+    if (localObject != null) {
+      ((TextureSurfaceRenderer)localObject).release();
     }
-    Object localObject = new CountDownLatch(1);
+    localObject = new CountDownLatch(1);
     this.videoRenderer = new VideoTextureRenderer((CountDownLatch)localObject, paramSurfaceTexture, paramInt1, paramInt2);
     paramSurfaceTexture = null;
     if (Build.VERSION.SDK_INT >= 14) {}
-    for (;;)
+    label140:
+    try
     {
-      try
-      {
-        ((CountDownLatch)localObject).await(800L, TimeUnit.MILLISECONDS);
-        localObject = this.videoRenderer.getSurfaceTexture();
-        paramSurfaceTexture = (SurfaceTexture)localObject;
-        if (localObject != null)
-        {
-          this.videoSurface = new Surface((SurfaceTexture)localObject);
-          this.mBackEndMediaPlayer.setSurface(this.videoSurface);
-          paramSurfaceTexture = (SurfaceTexture)localObject;
-        }
-        if (paramSurfaceTexture != null) {
-          break;
-        }
-        PlayerUtils.log(6, "GLTextureMediaPlayer", "SurfaceTexture is not available,timeout");
-        throw new GLTextureMediaPlayer.GLTextureTimeoutException("init VideoTextureRenderer timeout");
+      ((CountDownLatch)localObject).await(800L, TimeUnit.MILLISECONDS);
+      localObject = this.videoRenderer.getSurfaceTexture();
+      paramSurfaceTexture = (SurfaceTexture)localObject;
+      if (localObject == null) {
+        break label140;
       }
-      catch (InterruptedException paramSurfaceTexture)
-      {
-        PlayerUtils.log(6, "GLTextureMediaPlayer", "SurfaceTexture is not available,interrupted");
-        throw new GLTextureMediaPlayer.GLTextureTimeoutException("init VideoTextureRenderer timeout");
-      }
-      PlayerUtils.log(5, "GLTextureMediaPlayer", "SurfaceTexture is not supported");
+      this.videoSurface = new Surface((SurfaceTexture)localObject);
+      this.mBackEndMediaPlayer.setSurface(this.videoSurface);
+      paramSurfaceTexture = (SurfaceTexture)localObject;
     }
+    catch (InterruptedException paramSurfaceTexture)
+    {
+      label113:
+      break label113;
+    }
+    PlayerUtils.log(6, "GLTextureMediaPlayer", "SurfaceTexture is not available,interrupted");
+    throw new GLTextureMediaPlayer.GLTextureTimeoutException("init VideoTextureRenderer timeout");
+    PlayerUtils.log(5, "GLTextureMediaPlayer", "SurfaceTexture is not supported");
+    if (paramSurfaceTexture != null) {
+      return;
+    }
+    PlayerUtils.log(6, "GLTextureMediaPlayer", "SurfaceTexture is not available,timeout");
+    throw new GLTextureMediaPlayer.GLTextureTimeoutException("init VideoTextureRenderer timeout");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.player.GLTextureMediaPlayer
  * JD-Core Version:    0.7.0.1
  */

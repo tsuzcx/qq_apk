@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/od" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/o7r" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.tavcut.view.TAVCutVideoView android:id="@id/o8k" android:background="#ffededf3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="100.0dip" android:layout_weight="1.0" />
-    <LinearLayout android:orientation="vertical" android:id="@id/ne_" android:layout_width="fill_parent" android:layout_height="210.0dip">
-        <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
-        <FrameLayout android:id="@id/myh" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="80.0dip" />
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="100.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip">
-            <TextView android:textSize="17.0sp" android:textColor="@color/bp" android:id="@id/ocb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/w_c" />
-            <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
-            <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center" android:id="@id/ofd" android:paddingLeft="18.0dip" android:paddingRight="18.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="拖动选择封面" />
-            <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
-            <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="@color/bp" android:id="@id/ocl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/w_d" />
+    <LinearLayout android:orientation="vertical" android:background="@drawable/e7m" android:paddingLeft="8.0dip" android:paddingTop="6.0dip" android:paddingBottom="8.0dip" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:adjustViewBounds="true" android:minWidth="172.0dip">
+        <TextView android:textSize="12.0sp" android:textColor="#ff7a7a8d" android:id="@id/o7u" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/xao" android:singleLine="true" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14.0dip">
+            <ImageView android:id="@id/o7t" android:focusable="false" android:layout_width="48.0dip" android:layout_height="48.0dip" android:scaleType="centerCrop" />
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="24.0dip">
+                <TextView android:textSize="15.0sp" android:textColor="#ff03081a" android:ellipsize="middle" android:id="@id/o7v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:maxWidth="155.0dip" android:text="乌云碎大石鸟的动态" android:singleLine="true" />
+                <TextView android:textSize="12.0sp" android:textColor="#ff7a7a8d" android:ellipsize="end" android:id="@id/o7s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:maxWidth="155.0dip" android:text="萌翻世界的皮神又要降临啦啦啦啦啦啦啦拉拉" android:singleLine="true" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+    <ImageView android:id="@id/fx8" android:layout_width="23.5dip" android:layout_height="12.5dip" android:layout_marginLeft="9.5dip" android:layout_marginTop="-6.0dip" android:src="@drawable/gcp" />
 </LinearLayout>

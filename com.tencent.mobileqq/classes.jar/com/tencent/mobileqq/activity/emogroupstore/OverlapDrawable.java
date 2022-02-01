@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
+import com.tencent.mobileqq.emosm.favroaming.IEmoticonFromGroupManager;
 import com.tencent.mobileqq.vas.VasExtensionManager;
 import java.util.Iterator;
 import java.util.List;
@@ -41,7 +41,8 @@ public class OverlapDrawable
       localDrawable = ((VasExtensionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a.a(localDrawable, this.jdField_a_of_type_Int);
       if (localDrawable != null)
       {
-        localDrawable.setBounds(0, 0, this.b, this.b);
+        int i = this.b;
+        localDrawable.setBounds(0, 0, i, i);
         localDrawable.draw(paramCanvas);
         paramCanvas.translate(this.jdField_a_of_type_Int, 0.0F);
       }
@@ -59,7 +60,7 @@ public class OverlapDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.OverlapDrawable
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ApkUpdateSDK
 {
-  private static ApkUpdateSDK instance = null;
+  private static ApkUpdateSDK instance;
   
   public static String about()
   {
@@ -98,7 +98,7 @@ public class ApkUpdateSDK
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.apkupdate.ApkUpdateSDK
  * JD-Core Version:    0.7.0.1
  */

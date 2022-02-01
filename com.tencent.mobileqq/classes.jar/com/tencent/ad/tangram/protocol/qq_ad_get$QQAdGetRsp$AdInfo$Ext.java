@@ -3,6 +3,7 @@ package com.tencent.ad.tangram.protocol;
 public final class qq_ad_get$QQAdGetRsp$AdInfo$Ext
 {
   public boolean disable_auto_download = false;
+  public boolean disable_video_on_top = false;
   public qq_ad_get.QQAdGetRsp.AdInfo.ExpParam[] exp_map;
   public boolean is_app_preorder = false;
   public int landing_page_style = 0;

@@ -67,6 +67,7 @@ public class WnsConfig
   public static final String MINI_APP_USE_DOWNLOAD_OPTIMIZE = "mini_app_use_download_optimize";
   public static final String MINI_APP_WHITE_SCREEN_SHOT_MAX_HEIGHT = "mini_app_white_screen_shot_max_height";
   public static final String MINI_APP_WHITE_SCREEN_SHOT_MAX_WIDTH = "mini_app_white_screen_shot_max_width";
+  public static final String MINI_GAME_CAPSULE_RESTART_FREE_CACHE = "mini_game_capsule_restart_free_cache";
   public static final String MINI_GAME_CAPSULE_SHOW_RESTART_BTN = "mini_game_capsule_show_restart_btn";
   public static final String MINI_GAME_EXIT_CONFIRM_ANIMATION_EXPOSURE_TIMES_THRESHOLD = "mini_game_exit_confirm_animation_expoure_times_threshold";
   public static final String MINI_GAME_EXIT_CONFIRM_ANIMATION_IMAGE_URL = "mini_game_exit_confirm_animation_image_url";
@@ -208,12 +209,13 @@ public class WnsConfig
   public static float getConfig(String paramString1, String paramString2, float paramFloat)
   {
     WnsConfigProxy localWnsConfigProxy = (WnsConfigProxy)ProxyManager.get(WnsConfigProxy.class);
-    if (localWnsConfigProxy == null) {}
-    do
-    {
+    if (localWnsConfigProxy == null) {
       return paramFloat;
-      paramString1 = localWnsConfigProxy.getConfig(paramString1, paramString2);
-    } while (paramString1 == null);
+    }
+    paramString1 = localWnsConfigProxy.getConfig(paramString1, paramString2);
+    if (paramString1 == null) {
+      return paramFloat;
+    }
     try
     {
       float f = Float.valueOf(paramString1).floatValue();
@@ -226,12 +228,13 @@ public class WnsConfig
   public static int getConfig(String paramString1, String paramString2, int paramInt)
   {
     WnsConfigProxy localWnsConfigProxy = (WnsConfigProxy)ProxyManager.get(WnsConfigProxy.class);
-    if (localWnsConfigProxy == null) {}
-    do
-    {
+    if (localWnsConfigProxy == null) {
       return paramInt;
-      paramString1 = localWnsConfigProxy.getConfig(paramString1, paramString2);
-    } while (paramString1 == null);
+    }
+    paramString1 = localWnsConfigProxy.getConfig(paramString1, paramString2);
+    if (paramString1 == null) {
+      return paramInt;
+    }
     try
     {
       int i = Integer.parseInt(paramString1);
@@ -244,12 +247,13 @@ public class WnsConfig
   public static long getConfig(String paramString1, String paramString2, long paramLong)
   {
     WnsConfigProxy localWnsConfigProxy = (WnsConfigProxy)ProxyManager.get(WnsConfigProxy.class);
-    if (localWnsConfigProxy == null) {}
-    do
-    {
+    if (localWnsConfigProxy == null) {
       return paramLong;
-      paramString1 = localWnsConfigProxy.getConfig(paramString1, paramString2);
-    } while (paramString1 == null);
+    }
+    paramString1 = localWnsConfigProxy.getConfig(paramString1, paramString2);
+    if (paramString1 == null) {
+      return paramLong;
+    }
     try
     {
       long l = Long.valueOf(paramString1).longValue();
@@ -271,24 +275,26 @@ public class WnsConfig
   public static final String getConfig(String paramString1, String paramString2, String paramString3)
   {
     WnsConfigProxy localWnsConfigProxy = (WnsConfigProxy)ProxyManager.get(WnsConfigProxy.class);
-    if (localWnsConfigProxy == null) {}
-    do
-    {
+    if (localWnsConfigProxy == null) {
       return paramString3;
-      paramString1 = localWnsConfigProxy.getConfig(paramString1, paramString2);
-    } while (TextUtils.isEmpty(paramString1));
+    }
+    paramString1 = localWnsConfigProxy.getConfig(paramString1, paramString2);
+    if (TextUtils.isEmpty(paramString1)) {
+      return paramString3;
+    }
     return paramString1;
   }
   
   public static boolean getConfig(String paramString1, String paramString2, boolean paramBoolean)
   {
     WnsConfigProxy localWnsConfigProxy = (WnsConfigProxy)ProxyManager.get(WnsConfigProxy.class);
-    if (localWnsConfigProxy == null) {}
-    do
-    {
+    if (localWnsConfigProxy == null) {
       return paramBoolean;
-      paramString1 = localWnsConfigProxy.getConfig(paramString1, paramString2);
-    } while (paramString1 == null);
+    }
+    paramString1 = localWnsConfigProxy.getConfig(paramString1, paramString2);
+    if (paramString1 == null) {
+      return paramBoolean;
+    }
     try
     {
       boolean bool = Boolean.parseBoolean(paramString1);
@@ -300,7 +306,7 @@ public class WnsConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.WnsConfig
  * JD-Core Version:    0.7.0.1
  */

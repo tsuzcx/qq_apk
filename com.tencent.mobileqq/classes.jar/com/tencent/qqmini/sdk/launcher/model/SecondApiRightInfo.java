@@ -20,7 +20,17 @@ public class SecondApiRightInfo
   
   public String toString()
   {
-    return "SecondApiRightInfo{apiName='" + this.apiName + '\'' + ", secondName='" + this.secondName + '\'' + ", right=" + this.right + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SecondApiRightInfo{apiName='");
+    localStringBuilder.append(this.apiName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", secondName='");
+    localStringBuilder.append(this.secondName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", right=");
+    localStringBuilder.append(this.right);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -32,7 +42,7 @@ public class SecondApiRightInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.SecondApiRightInfo
  * JD-Core Version:    0.7.0.1
  */

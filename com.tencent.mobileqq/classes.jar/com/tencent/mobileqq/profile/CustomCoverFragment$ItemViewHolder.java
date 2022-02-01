@@ -18,16 +18,16 @@ class CustomCoverFragment$ItemViewHolder
   {
     super(paramView);
     paramView.setTag(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368754));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379105));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131364232));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368486));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378475));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131364149));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramCustomCoverFragment.a);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramCustomCoverFragment.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.CustomCoverFragment.ItemViewHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -19,28 +19,22 @@ class ArrayStream$ArrayDataPusher<R>
     Object[] arrayOfObject = this.mArray;
     int j = arrayOfObject.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      Object localObject;
-      if (i < j)
-      {
-        localObject = arrayOfObject[i];
-        if (!isCanceled()) {}
-      }
-      else
-      {
-        paramObserver.onComplete();
-        return;
+      Object localObject = arrayOfObject[i];
+      if (isCanceled()) {
+        break;
       }
       AssertUtils.checkNotNull(localObject);
       paramObserver.onNext(localObject);
       i += 1;
     }
+    paramObserver.onComplete();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tribe.async.reactive.ArrayStream.ArrayDataPusher
  * JD-Core Version:    0.7.0.1
  */

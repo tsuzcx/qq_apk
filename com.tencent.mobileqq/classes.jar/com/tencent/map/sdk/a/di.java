@@ -48,29 +48,56 @@ public final class di
   
   private Date a(dt paramdt)
   {
-    Date localDate2;
-    synchronized (this.b)
+    for (;;)
     {
       try
       {
-        Date localDate1 = this.b.parse(paramdt.c());
-        return localDate1;
+        synchronized (this.b)
+        {
+          localDate = this.b.parse(paramdt.c());
+          return localDate;
+        }
       }
-      catch (ParseException localParseException1) {}
+      catch (ParseException localParseException2)
+      {
+        Date localDate;
+        continue;
+      }
+      try
+      {
+        localDate = this.a.parse(paramdt.c());
+        return localDate;
+      }
+      catch (ParseException localParseException3)
+      {
+        continue;
+      }
+      try
+      {
+        localDate = this.c.parse(paramdt.c());
+        return localDate;
+      }
+      catch (ParseException localParseException1)
+      {
+        throw new eb(paramdt.c(), localParseException1);
+      }
     }
+    throw paramdt;
   }
   
   public final String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(di.class.getSimpleName());
-    localStringBuilder.append('(').append(this.b.getClass().getSimpleName()).append(')');
+    localStringBuilder.append('(');
+    localStringBuilder.append(this.b.getClass().getSimpleName());
+    localStringBuilder.append(')');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.di
  * JD-Core Version:    0.7.0.1
  */

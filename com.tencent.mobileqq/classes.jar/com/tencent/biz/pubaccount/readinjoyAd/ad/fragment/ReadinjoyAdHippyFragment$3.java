@@ -14,8 +14,14 @@ class ReadinjoyAdHippyFragment$3
     if (paramInt != -11) {
       ReadinjoyAdHippyFragment.c(this.a);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadinjoyAdMiniGameFragment", 2, "Hippy: initHippy error statusCode=" + paramInt + ", msg=" + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Hippy: initHippy error statusCode=");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", msg=");
+      localStringBuilder.append(paramString);
+      QLog.d("ReadinjoyAdMiniGameFragment", 2, localStringBuilder.toString());
     }
   }
   
@@ -29,7 +35,7 @@ class ReadinjoyAdHippyFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.fragment.ReadinjoyAdHippyFragment.3
  * JD-Core Version:    0.7.0.1
  */

@@ -31,14 +31,15 @@ public final class s_part_error
   {
     paramJceOutputStream.write(this.is_happen, 0);
     paramJceOutputStream.write(this.part_error_place, 1);
-    if (this.part_error_msg != null) {
-      paramJceOutputStream.write(this.part_error_msg, 2);
+    String str = this.part_error_msg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.s_part_error
  * JD-Core Version:    0.7.0.1
  */

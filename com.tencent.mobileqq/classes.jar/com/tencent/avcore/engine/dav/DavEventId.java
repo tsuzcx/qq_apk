@@ -16,6 +16,7 @@ public abstract interface DavEventId
   public static final int EM_SDK_EVENT_ID_MOBILE_P2P_VIDEO_REQ_AUTO_ACCEPT = 123;
   public static final int EM_SDK_EVENT_ID_NETWORK_CHECK_REQ = 118;
   public static final int EM_SDK_EVENT_ID_NETWORK_QUALITY_CHANGED = 124;
+  public static final int EM_SDK_EVENT_ID_NOTIFY_AI_DENOISE_TIPS = 127;
   public static final int EM_SDK_EVENT_ID_PSTN_CALL = 95;
   public static final int EM_SDK_EVENT_ID_RECV_AVFUNCHATRMSG = 111;
   public static final int EM_SDK_EVENT_ID_REOPEN_CAMERA_NFPS = 116;
@@ -73,7 +74,7 @@ public abstract interface DavEventId
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avcore.engine.dav.DavEventId
  * JD-Core Version:    0.7.0.1
  */

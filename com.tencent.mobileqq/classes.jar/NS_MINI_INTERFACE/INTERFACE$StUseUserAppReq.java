@@ -13,7 +13,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class INTERFACE$StUseUserAppReq
   extends MessageMicro<StUseUserAppReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 33, 40, 48, 58, 66 }, new String[] { "extInfo", "appId", "verType", "useTime", "source", "needRecommend", "oldRecommendList", "channelInfo" }, new Object[] { null, "", Integer.valueOf(0), Double.valueOf(0.0D), Integer.valueOf(0), Integer.valueOf(0), null, null }, StUseUserAppReq.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField appId = PBField.initString("");
   public INTERFACE.StCurrChannelInfo channelInfo = new INTERFACE.StCurrChannelInfo();
   public COMM.StCommonExt extInfo = new COMM.StCommonExt();
@@ -22,10 +22,16 @@ public final class INTERFACE$StUseUserAppReq
   public final PBInt32Field source = PBField.initInt32(0);
   public final PBDoubleField useTime = PBField.initDouble(0.0D);
   public final PBEnumField verType = PBField.initEnum(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 33, 40, 48, 58, 66 }, new String[] { "extInfo", "appId", "verType", "useTime", "source", "needRecommend", "oldRecommendList", "channelInfo" }, new Object[] { null, "", localInteger, Double.valueOf(0.0D), localInteger, localInteger, null, null }, StUseUserAppReq.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MINI_INTERFACE.INTERFACE.StUseUserAppReq
  * JD-Core Version:    0.7.0.1
  */

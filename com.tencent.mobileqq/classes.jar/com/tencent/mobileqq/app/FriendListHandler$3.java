@@ -15,14 +15,19 @@ class FriendListHandler$3
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendListHandler", 2, "cancelMayKnowRecommend|uin = " + this.val$uin);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("cancelMayKnowRecommend|uin = ");
+      ((StringBuilder)localObject).append(this.val$uin);
+      QLog.d("FriendListHandler", 2, ((StringBuilder)localObject).toString());
     }
     ((MayknowRecommendManager)this.this$0.app.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER)).b(this.val$uin);
-    this.this$0.notifyUI(93, true, this.val$uin);
+    this.this$0.notifyUI(91, true, this.val$uin);
     try
     {
-      Object localObject = new oidb_0xc36.ReqBody();
+      localObject = new oidb_0xc36.ReqBody();
       ArrayList localArrayList = new ArrayList(1);
       localArrayList.add(Long.valueOf(Long.parseLong(this.val$uin)));
       ((oidb_0xc36.ReqBody)localObject).rpt_uint64_uins.set(localArrayList);
@@ -33,14 +38,15 @@ class FriendListHandler$3
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("FriendListHandler", 2, "cancelMayKnowRecommend", localException);
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendListHandler", 2, "cancelMayKnowRecommend", localException);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.FriendListHandler.3
  * JD-Core Version:    0.7.0.1
  */

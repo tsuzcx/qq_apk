@@ -63,13 +63,13 @@ final class ApplicationInfoLoader
   private static String getNetworkPolicy(ApplicationInfo paramApplicationInfo, Context paramContext)
   {
     paramApplicationInfo = paramApplicationInfo.metaData;
-    if (paramApplicationInfo == null) {}
-    int i;
-    do
-    {
+    if (paramApplicationInfo == null) {
       return null;
-      i = paramApplicationInfo.getInt("io.flutter.network-policy", 0);
-    } while (i <= 0);
+    }
+    int i = paramApplicationInfo.getInt("io.flutter.network-policy", 0);
+    if (i <= 0) {
+      return null;
+    }
     paramApplicationInfo = new JSONArray();
     try
     {
@@ -82,11 +82,7 @@ final class ApplicationInfoLoader
       }
       return paramApplicationInfo.toString();
     }
-    catch (XmlPullParserException paramApplicationInfo)
-    {
-      return null;
-    }
-    catch (IOException paramApplicationInfo) {}
+    catch (IOException|XmlPullParserException paramApplicationInfo) {}
     return null;
   }
   
@@ -102,10 +98,13 @@ final class ApplicationInfoLoader
   public static FlutterApplicationInfo load(@NonNull Context paramContext)
   {
     ApplicationInfo localApplicationInfo = getApplicationInfo(paramContext);
-    if (Build.VERSION.SDK_INT >= 23) {}
-    for (boolean bool = NetworkSecurityPolicy.getInstance().isCleartextTrafficPermitted();; bool = true) {
-      return new FlutterApplicationInfo(getString(localApplicationInfo.metaData, PUBLIC_AOT_SHARED_LIBRARY_NAME), getString(localApplicationInfo.metaData, PUBLIC_VM_SNAPSHOT_DATA_KEY), getString(localApplicationInfo.metaData, PUBLIC_ISOLATE_SNAPSHOT_DATA_KEY), getString(localApplicationInfo.metaData, PUBLIC_FLUTTER_ASSETS_DIR_KEY), getNetworkPolicy(localApplicationInfo, paramContext), localApplicationInfo.nativeLibraryDir, bool);
+    boolean bool;
+    if (Build.VERSION.SDK_INT >= 23) {
+      bool = NetworkSecurityPolicy.getInstance().isCleartextTrafficPermitted();
+    } else {
+      bool = true;
     }
+    return new FlutterApplicationInfo(getString(localApplicationInfo.metaData, PUBLIC_AOT_SHARED_LIBRARY_NAME), getString(localApplicationInfo.metaData, PUBLIC_VM_SNAPSHOT_DATA_KEY), getString(localApplicationInfo.metaData, PUBLIC_ISOLATE_SNAPSHOT_DATA_KEY), getString(localApplicationInfo.metaData, PUBLIC_FLUTTER_ASSETS_DIR_KEY), getNetworkPolicy(localApplicationInfo, paramContext), localApplicationInfo.nativeLibraryDir, bool);
   }
   
   private static void parseDomain(XmlResourceParser paramXmlResourceParser, JSONArray paramJSONArray, boolean paramBoolean)
@@ -155,12 +154,16 @@ final class ApplicationInfoLoader
   private static void skipTag(XmlResourceParser paramXmlResourceParser)
   {
     String str = paramXmlResourceParser.getName();
-    for (int i = paramXmlResourceParser.getEventType(); (i != 3) || (paramXmlResourceParser.getName() != str); i = paramXmlResourceParser.next()) {}
+    for (int i = paramXmlResourceParser.getEventType();; i = paramXmlResourceParser.next()) {
+      if ((i == 3) && (paramXmlResourceParser.getName() == str)) {
+        return;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.loader.ApplicationInfoLoader
  * JD-Core Version:    0.7.0.1
  */

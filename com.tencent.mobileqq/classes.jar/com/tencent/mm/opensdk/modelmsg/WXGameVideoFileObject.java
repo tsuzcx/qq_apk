@@ -35,27 +35,35 @@ public class WXGameVideoFileObject
   
   public boolean checkArgs()
   {
-    if ((this.filePath == null) || (this.filePath.length() == 0))
-    {
-      Log.e("MicroMsg.SDK.WXGameVideoFileObject", "checkArgs fail, filePath is null");
-      return false;
+    String str = this.filePath;
+    if ((str != null) && (str.length() != 0)) {
+      if (getFileSize(this.filePath) > 104857600) {
+        str = "checkArgs fail, video file size is too large";
+      }
     }
-    if (getFileSize(this.filePath) > 104857600)
+    for (;;)
     {
-      Log.e("MicroMsg.SDK.WXGameVideoFileObject", "checkArgs fail, video file size is too large");
+      Log.e("MicroMsg.SDK.WXGameVideoFileObject", str);
       return false;
+      str = this.videoUrl;
+      if ((str != null) && (str.length() > 10240))
+      {
+        str = "checkArgs fail, videoUrl is too long";
+      }
+      else
+      {
+        str = this.thumbUrl;
+        if ((str != null) && (str.length() > 10240))
+        {
+          str = "checkArgs fail, thumbUrl is too long";
+        }
+        else
+        {
+          return true;
+          str = "checkArgs fail, filePath is null";
+        }
+      }
     }
-    if ((this.videoUrl != null) && (this.videoUrl.length() > 10240))
-    {
-      Log.e("MicroMsg.SDK.WXGameVideoFileObject", "checkArgs fail, videoUrl is too long");
-      return false;
-    }
-    if ((this.thumbUrl != null) && (this.thumbUrl.length() > 10240))
-    {
-      Log.e("MicroMsg.SDK.WXGameVideoFileObject", "checkArgs fail, thumbUrl is too long");
-      return false;
-    }
-    return true;
   }
   
   public void serialize(Bundle paramBundle)
@@ -79,7 +87,7 @@ public class WXGameVideoFileObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXGameVideoFileObject
  * JD-Core Version:    0.7.0.1
  */

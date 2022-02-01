@@ -30,13 +30,14 @@ public final class FeedCloudMeta$StShare
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 50, 58, 66, 74, 82, 90, 98, 106, 112 }, new String[] { "title", "desc", "type", "url", "author", "poster", "cover", "video", "shorturl", "shareCardInfo", "shareQzoneInfo", "busiData", "images", "publishTotalUser" }, new Object[] { "", "", Integer.valueOf(0), "", null, null, null, null, "", "", null, localByteStringMicro, null, Integer.valueOf(0) }, StShare.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 50, 58, 66, 74, 82, 90, 98, 106, 112 }, new String[] { "title", "desc", "type", "url", "author", "poster", "cover", "video", "shorturl", "shareCardInfo", "shareQzoneInfo", "busiData", "images", "publishTotalUser" }, new Object[] { "", "", localInteger, "", null, null, null, null, "", "", null, localByteStringMicro, null, localInteger }, StShare.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     feedcloud.FeedCloudMeta.StShare
  * JD-Core Version:    0.7.0.1
  */

@@ -2,9 +2,11 @@ package com.tencent.mobileqq.profilecard.vas.component.background;
 
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.config.business.qvip.QVipSDKConfig;
-import com.tencent.mobileqq.config.business.qvip.QVipSDKProcessor;
-import com.tencent.mobileqq.vas.gldrawable.GLDrawableWraper;
+import com.tencent.android.gldrawable.api.GLDrawableApi;
+import com.tencent.android.gldrawable.api.IFactoryStub;
+import com.tencent.android.gldrawable.api.IGLDrawable;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipSDKConfig;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipSDKProcessor;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -32,7 +34,7 @@ class VasProfileBackgroundComponent$UseEtcDrawable
     if ((this.bgDrawable == null) && (TextUtils.isEmpty(this.dynamicFileDirectory)) && (QVipSDKProcessor.c().b()))
     {
       String str = this.backgroundFile.getAbsolutePath();
-      if ((VasProfileBackgroundComponent.access$100(this.this$0) != null) && (TextUtils.equals(VasProfileBackgroundComponent.access$200(this.this$0), str)) && (GLDrawableWraper.a(VasProfileBackgroundComponent.access$100(this.this$0))))
+      if ((VasProfileBackgroundComponent.access$100(this.this$0) != null) && (TextUtils.equals(VasProfileBackgroundComponent.access$200(this.this$0), str)) && ((VasProfileBackgroundComponent.access$100(this.this$0) instanceof IGLDrawable)))
       {
         if (QLog.isColorLevel()) {
           QLog.i(this.this$0.getTAG(), 2, "initProfileCardBackground: use old etc-drawable");
@@ -40,10 +42,13 @@ class VasProfileBackgroundComponent$UseEtcDrawable
         this.myResult = true;
         return this;
       }
-      this.bgDrawable = GLDrawableWraper.a().a(this.backgroundFile, true);
-      if (this.bgDrawable != null)
+      this.bgDrawable = GLDrawableApi.factory().fromFile(this.backgroundFile);
+      Drawable localDrawable = this.bgDrawable;
+      if (localDrawable != null)
       {
-        GLDrawableWraper.a().a(this.bgDrawable, true);
+        if ((localDrawable instanceof IGLDrawable)) {
+          ((IGLDrawable)localDrawable).setLockWH(true);
+        }
         VasProfileBackgroundComponent.access$202(this.this$0, str);
         if (QLog.isColorLevel()) {
           QLog.i(this.this$0.getTAG(), 2, "initProfileCardBackground use new etc-drawable");
@@ -61,7 +66,7 @@ class VasProfileBackgroundComponent$UseEtcDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.component.background.VasProfileBackgroundComponent.UseEtcDrawable
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ import java.nio.ByteBuffer;
 @TargetApi(18)
 public class MyRecorder
 {
-  private static final String TAG = MyRecorder.class.getSimpleName();
+  private static final String TAG = "MyRecorder";
   private int index;
   private MediaCodec.BufferInfo mBufferInfo = null;
   private MediaCodec mMediaCodec = null;
@@ -36,81 +36,85 @@ public class MyRecorder
       return;
     }
     if (paramBoolean) {}
-    int i;
-    label149:
-    label341:
-    do
+    try
     {
-      MediaFormat localMediaFormat;
-      for (;;)
+      this.mMediaCodec.signalEndOfInputStream();
+      ByteBuffer[] arrayOfByteBuffer = this.mMediaCodec.getOutputBuffers();
+      int i;
+      label346:
+      do
       {
-        try
+        Object localObject;
+        for (;;)
         {
-          this.mMediaCodec.signalEndOfInputStream();
-          ByteBuffer[] arrayOfByteBuffer = this.mMediaCodec.getOutputBuffers();
           i = this.mMediaCodec.dequeueOutputBuffer(this.mBufferInfo, 0L);
           if (i == -1)
           {
-            if (paramBoolean) {
-              continue;
-            }
-            return;
+            if (paramBoolean) {}
           }
-          if (i == -3)
+          else if (i == -3)
           {
             arrayOfByteBuffer = this.mMediaCodec.getOutputBuffers();
-            continue;
           }
-          if (i != -2) {
-            break label149;
-          }
-          if (this.mMuxerStarted)
+          else if (i == -2)
           {
-            LogUtils.e(TAG, "format changed twice");
-            this.mMediaCodec.releaseOutputBuffer(i, false);
-            continue;
+            if (this.mMuxerStarted)
+            {
+              LogUtils.e(TAG, "format changed twice");
+              this.mMediaCodec.releaseOutputBuffer(i, false);
+            }
+            else
+            {
+              localObject = this.mMediaCodec.getOutputFormat();
+              this.mTrackIndex = this.mMediaMuxer.addTrack((MediaFormat)localObject);
+              this.mMediaMuxer.start();
+              this.mMuxerStarted = true;
+            }
           }
-          localMediaFormat = this.mMediaCodec.getOutputFormat();
-        }
-        catch (RuntimeException localRuntimeException)
-        {
-          LogUtils.e(TAG, localRuntimeException.toString());
-          return;
-        }
-        this.mTrackIndex = this.mMediaMuxer.addTrack(localMediaFormat);
-        this.mMediaMuxer.start();
-        this.mMuxerStarted = true;
-        continue;
-        localMediaFormat = localRuntimeException[i];
-        if (localMediaFormat == null)
-        {
-          LogUtils.e(TAG, "encoderOutputBuffer " + i + " was null");
-          this.mMediaCodec.releaseOutputBuffer(i, false);
-        }
-        else
-        {
-          if ((this.mBufferInfo.flags & 0x2) != 0) {
-            this.mBufferInfo.size = 0;
+          else
+          {
+            localObject = arrayOfByteBuffer[i];
+            if (localObject == null)
+            {
+              localObject = TAG;
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("encoderOutputBuffer ");
+              localStringBuilder.append(i);
+              localStringBuilder.append(" was null");
+              LogUtils.e((String)localObject, localStringBuilder.toString());
+              this.mMediaCodec.releaseOutputBuffer(i, false);
+            }
+            else
+            {
+              if ((this.mBufferInfo.flags & 0x2) != 0) {
+                this.mBufferInfo.size = 0;
+              }
+              if (this.mBufferInfo.size == 0) {
+                break label346;
+              }
+              if (this.mMuxerStarted) {
+                break;
+              }
+              LogUtils.e(TAG, "muxer hasn't started");
+              this.mMediaCodec.releaseOutputBuffer(i, false);
+            }
           }
-          if (this.mBufferInfo.size == 0) {
-            break label341;
-          }
-          if (this.mMuxerStarted) {
-            break;
-          }
-          LogUtils.e(TAG, "muxer hasn't started");
-          this.mMediaCodec.releaseOutputBuffer(i, false);
         }
-      }
-      localMediaFormat.position(this.mBufferInfo.offset);
-      localMediaFormat.limit(this.mBufferInfo.offset + this.mBufferInfo.size);
-      if (Float.compare(this.mPlayRate, 1.0F) != 0) {
-        this.mBufferInfo.presentationTimeUs = (((float)this.mBufferInfo.presentationTimeUs * this.mPlayRate));
-      }
-      this.mMediaMuxer.writeSampleData(this.mTrackIndex, localMediaFormat, this.mBufferInfo);
-      this.mMediaCodec.releaseOutputBuffer(i, false);
-      i = this.mBufferInfo.flags;
-    } while ((i & 0x4) == 0);
+        ((ByteBuffer)localObject).position(this.mBufferInfo.offset);
+        ((ByteBuffer)localObject).limit(this.mBufferInfo.offset + this.mBufferInfo.size);
+        if (Float.compare(this.mPlayRate, 1.0F) != 0) {
+          this.mBufferInfo.presentationTimeUs = (((float)this.mBufferInfo.presentationTimeUs * this.mPlayRate));
+        }
+        this.mMediaMuxer.writeSampleData(this.mTrackIndex, (ByteBuffer)localObject, this.mBufferInfo);
+        this.mMediaCodec.releaseOutputBuffer(i, false);
+        i = this.mBufferInfo.flags;
+      } while ((i & 0x4) == 0);
+      return;
+    }
+    catch (RuntimeException localRuntimeException)
+    {
+      LogUtils.e(TAG, localRuntimeException.toString());
+    }
   }
   
   private boolean isValid()
@@ -135,37 +139,34 @@ public class MyRecorder
   
   public boolean prepareEncoder(int paramInt1, int paramInt2)
   {
-    if (this.mMediaCodec != null) {
-      LogUtils.e(TAG, "prepareEncoder called twice?");
-    }
-    for (;;)
+    if (this.mMediaCodec != null)
     {
+      LogUtils.e(TAG, "prepareEncoder called twice?");
       return true;
-      this.mBufferInfo = new MediaCodec.BufferInfo();
-      try
-      {
-        MediaFormat localMediaFormat = MediaFormat.createVideoFormat(VideoParam.mMime, paramInt1, paramInt2);
-        localMediaFormat.setInteger("color-format", 2130708361);
-        localMediaFormat.setInteger("bitrate", RenderLevelHelper.getRenderLevel().bps);
-        localMediaFormat.setInteger("frame-rate", 18);
-        localMediaFormat.setInteger("i-frame-interval", VideoParam.mIfi);
-        this.mMediaCodec = MediaCodec.createEncoderByType(VideoParam.mMime);
-        if (this.mMediaCodec != null) {
-          this.mMediaCodec.configure(localMediaFormat, null, null, 1);
-        }
-        this.mMediaMuxer = new MediaMuxer(this.mOutput, 0);
-        this.mMuxerStarted = false;
-        if ((this.mSurface == null) && (this.mMediaCodec != null))
-        {
-          this.mSurface = this.mMediaCodec.createInputSurface();
-          return true;
-        }
+    }
+    this.mBufferInfo = new MediaCodec.BufferInfo();
+    try
+    {
+      MediaFormat localMediaFormat = MediaFormat.createVideoFormat(VideoParam.mMime, paramInt1, paramInt2);
+      localMediaFormat.setInteger("color-format", 2130708361);
+      localMediaFormat.setInteger("bitrate", RenderLevelHelper.getRenderLevel().bps);
+      localMediaFormat.setInteger("frame-rate", 18);
+      localMediaFormat.setInteger("i-frame-interval", VideoParam.mIfi);
+      this.mMediaCodec = MediaCodec.createEncoderByType(VideoParam.mMime);
+      if (this.mMediaCodec != null) {
+        this.mMediaCodec.configure(localMediaFormat, null, null, 1);
       }
-      catch (Exception localException)
-      {
-        releaseEncoder();
-        localException.printStackTrace();
+      this.mMediaMuxer = new MediaMuxer(this.mOutput, 0);
+      this.mMuxerStarted = false;
+      if ((this.mSurface == null) && (this.mMediaCodec != null)) {
+        this.mSurface = this.mMediaCodec.createInputSurface();
       }
+      return true;
+    }
+    catch (Exception localException)
+    {
+      releaseEncoder();
+      localException.printStackTrace();
     }
     return false;
   }
@@ -191,8 +192,10 @@ public class MyRecorder
     }
     catch (RuntimeException localRuntimeException)
     {
-      LogUtils.e(TAG, "releaseEncoder error!");
+      label58:
+      break label58;
     }
+    LogUtils.e(TAG, "releaseEncoder error!");
   }
   
   public void setPlayRate(float paramFloat)
@@ -202,8 +205,9 @@ public class MyRecorder
   
   public void start()
   {
-    if (this.mMediaCodec != null) {
-      this.mMediaCodec.start();
+    MediaCodec localMediaCodec = this.mMediaCodec;
+    if (localMediaCodec != null) {
+      localMediaCodec.start();
     }
   }
   
@@ -215,15 +219,18 @@ public class MyRecorder
   
   public void swapBuffers()
   {
-    if ((!isRecording()) || (!isValid())) {
-      return;
+    if (isRecording())
+    {
+      if (!isValid()) {
+        return;
+      }
+      drainEncoder(false);
     }
-    drainEncoder(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.recorder.MyRecorder
  * JD-Core Version:    0.7.0.1
  */

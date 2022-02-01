@@ -9,12 +9,12 @@ class DynamicNowManager$CustomizedChannelImpl
 {
   public void onSendTask(Bundle paramBundle, CommonCallback<Bundle> paramCommonCallback)
   {
-    PluginManagerInterfaceImpl.a().a(paramBundle, paramCommonCallback);
+    PluginManagerInterfaceImpl.a().b(paramBundle, paramCommonCallback);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.DynamicNowManager.CustomizedChannelImpl
  * JD-Core Version:    0.7.0.1
  */

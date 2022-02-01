@@ -22,10 +22,19 @@ class QQAppInterface$12
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
         localObject = new StringBuilder((String)localObject);
-        ((StringBuilder)localObject).append(File.separatorChar).append("voice").append(File.separatorChar).append("tab").append(this.val$tabIndex).append(".mp3");
+        ((StringBuilder)localObject).append(File.separatorChar);
+        ((StringBuilder)localObject).append("voice");
+        ((StringBuilder)localObject).append(File.separatorChar);
+        ((StringBuilder)localObject).append("tab");
+        ((StringBuilder)localObject).append(this.val$tabIndex);
+        ((StringBuilder)localObject).append(".mp3");
         File localFile = new File(((StringBuilder)localObject).toString());
-        if (QLog.isColorLevel()) {
-          QLog.d("playThemeVoice", 2, "Uri:" + ((StringBuilder)localObject).toString());
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Uri:");
+          localStringBuilder.append(((StringBuilder)localObject).toString());
+          QLog.d("playThemeVoice", 2, localStringBuilder.toString());
         }
         if (localFile.exists()) {
           AudioUtil.a(Uri.fromFile(localFile), false, false);
@@ -36,7 +45,7 @@ class QQAppInterface$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQAppInterface.12
  * JD-Core Version:    0.7.0.1
  */

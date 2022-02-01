@@ -8,8 +8,6 @@ import com.tencent.image.ApngImage;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.mobileqq.vas.gldrawable.GLDrawableProxy.GLDrawableLoader;
-import com.tencent.mobileqq.vas.gldrawable.GLDrawableWraper;
 import com.tencent.mobileqq.vas.updatesystem.VasUpdateUtil;
 import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.mobileqq.vip.DownloaderFactory;
@@ -32,41 +30,28 @@ public class VasApngDownloader
   
   public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    Object localObject1 = null;
-    if ((paramDownloadParams.mExtraInfo instanceof Bundle))
+    boolean bool = ApngDrawable.isApngFile(paramFile);
+    Object localObject = null;
+    if (bool)
     {
-      Object localObject2 = (Bundle)paramDownloadParams.mExtraInfo;
-      if (((Bundle)localObject2).getBoolean("key_use_gldrawable", false))
+      if ((paramFile.exists()) && (paramDownloadParams.useApngImage))
       {
-        boolean bool = ((Bundle)localObject2).getBoolean("key_use_cache", false);
-        GLDrawableWraper.a().a(null);
-        localObject2 = GLDrawableWraper.a().a(paramFile, bool);
-        if (localObject2 != null) {
-          paramURLDrawableHandler = (URLDrawableHandler)localObject2;
+        paramURLDrawableHandler = localObject;
+        if ((paramDownloadParams.mExtraInfo instanceof Bundle)) {
+          paramURLDrawableHandler = (Bundle)paramDownloadParams.mExtraInfo;
+        }
+        paramURLDrawableHandler = new VasApngDownloader.VasApngImage(paramFile, true, paramURLDrawableHandler);
+        paramDownloadParams = paramURLDrawableHandler;
+        if (paramURLDrawableHandler.firstFrame == null)
+        {
+          ChatBackgroundManager.a(paramFile.getAbsolutePath());
+          return paramURLDrawableHandler;
         }
       }
-    }
-    do
-    {
-      do
+      else
       {
-        return paramURLDrawableHandler;
-        if (!ApngDrawable.isApngFile(paramFile)) {
-          break;
-        }
-        paramURLDrawableHandler = localObject1;
-      } while (!paramFile.exists());
-      paramURLDrawableHandler = localObject1;
-    } while (!paramDownloadParams.useApngImage);
-    if ((paramDownloadParams.mExtraInfo instanceof Bundle)) {}
-    for (paramDownloadParams = (Bundle)paramDownloadParams.mExtraInfo;; paramDownloadParams = null)
-    {
-      paramDownloadParams = new VasApngDownloader.VasApngImage(paramFile, true, paramDownloadParams);
-      paramURLDrawableHandler = paramDownloadParams;
-      if (paramDownloadParams.firstFrame != null) {
-        break;
+        paramDownloadParams = null;
       }
-      ChatBackgroundManager.a(paramFile.getAbsolutePath());
       return paramDownloadParams;
     }
     if (paramFile == null)
@@ -84,46 +69,57 @@ public class VasApngDownloader
     }
     paramURLDrawableHandler = paramDownloadParams.url.getHost();
     File localFile = new File(paramURLDrawableHandler);
-    label42:
-    long l;
-    int i;
-    if ((paramDownloadParams.mExtraInfo instanceof Bundle))
-    {
+    if ((paramDownloadParams.mExtraInfo instanceof Bundle)) {
       paramOutputStream = (Bundle)paramDownloadParams.mExtraInfo;
-      if (paramOutputStream == null) {
-        break label420;
-      }
+    } else {
+      paramOutputStream = null;
+    }
+    int i = 0;
+    int j = 0;
+    long l;
+    if (paramOutputStream != null)
+    {
       l = paramOutputStream.getLong("bundle_key_bid", 0L);
       paramOutputStream = paramOutputStream.getString("bundle_key_scid");
-      if ((l == 0L) || (TextUtils.isEmpty(paramOutputStream))) {
-        break label95;
-      }
-      i = 1;
-    }
-    for (;;)
-    {
-      if (localFile.exists())
+      i = j;
+      if (l != 0L)
       {
-        return localFile;
-        paramOutputStream = null;
-        break label42;
-        label95:
-        i = 0;
-        continue;
+        i = j;
+        if (!TextUtils.isEmpty(paramOutputStream)) {
+          i = 1;
+        }
       }
+    }
+    else
+    {
+      paramOutputStream = null;
+      l = 0L;
+    }
+    if (!localFile.exists())
+    {
       if (i != 0)
       {
         VasUpdateUtil.a(BaseApplicationImpl.sApplication.getRuntime(), l, paramOutputStream, null, true, null);
         if (!QLog.isColorLevel()) {
-          break;
+          break label492;
         }
-        QLog.e("vasapngdownloader", 2, "downloadImage method err, scid=" + paramOutputStream + ", path=" + paramURLDrawableHandler);
+        paramDownloadParams = new StringBuilder();
+        paramDownloadParams.append("downloadImage method err, scid=");
+        paramDownloadParams.append(paramOutputStream);
+        paramDownloadParams.append(", path=");
+        paramDownloadParams.append(paramURLDrawableHandler);
+        QLog.e("vasapngdownloader", 2, paramDownloadParams.toString());
         return null;
       }
       paramDownloadParams = paramDownloadParams.url.getFile();
       if (TextUtils.isEmpty(paramDownloadParams))
       {
-        QLog.e("vasapngdownloader", 2, "downloadImage url err, url=" + paramDownloadParams + ", path=" + paramURLDrawableHandler);
+        paramOutputStream = new StringBuilder();
+        paramOutputStream.append("downloadImage url err, url=");
+        paramOutputStream.append(paramDownloadParams);
+        paramOutputStream.append(", path=");
+        paramOutputStream.append(paramURLDrawableHandler);
+        QLog.e("vasapngdownloader", 2, paramOutputStream.toString());
         return null;
       }
       paramOutputStream = paramDownloadParams;
@@ -132,35 +128,54 @@ public class VasApngDownloader
       }
       if (!paramOutputStream.startsWith("http"))
       {
-        if (!QLog.isColorLevel()) {
-          break;
+        if (QLog.isColorLevel())
+        {
+          paramDownloadParams = new StringBuilder();
+          paramDownloadParams.append("downloadImage url has no http err, url=");
+          paramDownloadParams.append(paramOutputStream);
+          paramDownloadParams.append(", path=");
+          paramDownloadParams.append(paramURLDrawableHandler);
+          QLog.e("vasapngdownloader", 2, paramDownloadParams.toString());
         }
-        QLog.e("vasapngdownloader", 2, "downloadImage url has no http err, url=" + paramOutputStream + ", path=" + paramURLDrawableHandler);
         return null;
       }
       paramDownloadParams = new DownloadTask(paramOutputStream, localFile);
       paramDownloadParams.h = true;
       i = DownloaderFactory.a(paramDownloadParams, BaseApplicationImpl.sApplication.getRuntime());
-      if (i == 0)
-      {
-        if (localFile.exists()) {
-          return localFile;
-        }
-        QLog.e("vasapngdownloader", 2, "downloadImage file not exists, url=" + paramOutputStream + ", path=" + paramURLDrawableHandler + ", ret:" + i);
-        return null;
+      if (i != 0) {
+        break label434;
       }
-      QLog.e("vasapngdownloader", 1, "downloadImage Error url=" + paramOutputStream + ", path=" + paramURLDrawableHandler + ", ret:" + i);
-      return null;
-      label420:
-      i = 0;
-      paramOutputStream = null;
-      l = 0L;
+      if (!localFile.exists()) {}
     }
+    else
+    {
+      return localFile;
+    }
+    paramDownloadParams = new StringBuilder();
+    paramDownloadParams.append("downloadImage file not exists, url=");
+    paramDownloadParams.append(paramOutputStream);
+    paramDownloadParams.append(", path=");
+    paramDownloadParams.append(paramURLDrawableHandler);
+    paramDownloadParams.append(", ret:");
+    paramDownloadParams.append(i);
+    QLog.e("vasapngdownloader", 2, paramDownloadParams.toString());
+    return null;
+    label434:
+    paramDownloadParams = new StringBuilder();
+    paramDownloadParams.append("downloadImage Error url=");
+    paramDownloadParams.append(paramOutputStream);
+    paramDownloadParams.append(", path=");
+    paramDownloadParams.append(paramURLDrawableHandler);
+    paramDownloadParams.append(", ret:");
+    paramDownloadParams.append(i);
+    QLog.e("vasapngdownloader", 1, paramDownloadParams.toString());
+    label492:
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.VasApngDownloader
  * JD-Core Version:    0.7.0.1
  */

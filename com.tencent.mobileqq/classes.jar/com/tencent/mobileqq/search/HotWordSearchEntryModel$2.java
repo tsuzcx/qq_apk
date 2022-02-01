@@ -19,17 +19,16 @@ class HotWordSearchEntryModel$2
       SearchUtils.a(this.jdField_a_of_type_ComTencentMobileqqSearchHotWordSearchEntryModel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqSearchHotWordSearchEntryModel.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$TitleHeaderItem.d);
       SearchUtils.a("hot_list", "clk_title", new String[] { String.valueOf(1), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqSearchHotWordSearchEntryModel.jdField_a_of_type_Int) });
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       SearchUtils.a("hot_list", "clk_title", new String[] { String.valueOf(2), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqSearchHotWordSearchEntryModel.jdField_a_of_type_Int) });
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.HotWordSearchEntryModel.2
  * JD-Core Version:    0.7.0.1
  */

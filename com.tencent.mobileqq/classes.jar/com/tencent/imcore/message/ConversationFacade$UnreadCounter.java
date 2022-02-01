@@ -36,90 +36,82 @@ class ConversationFacade$UnreadCounter
   {
     if (paramLong > this.jdField_a_of_type_Long)
     {
-      if (UinTypeUtil.k(paramMessageRecord.msgtype)) {
-        this.b -= 1;
-      }
-    }
-    else {
-      return;
-    }
-    if ((ConversationFacade.a(this.jdField_a_of_type_Int)) && (ConversationFacade.a.b(paramMessageRecord)))
-    {
-      this.b -= 1;
-      return;
-    }
-    String str;
-    if (paramMessageRecord.isLongMsg())
-    {
-      if ((this.jdField_a_of_type_JavaUtilMap != null) && (this.jdField_a_of_type_JavaUtilMap.containsKey(UinTypeUtil.a(paramMessageRecord))) && (ConversationFacade.a(this.jdField_a_of_type_ComTencentImcoreMessageConversationFacade, paramMessageRecord, (Set)this.jdField_a_of_type_JavaUtilMap.get(UinTypeUtil.a(paramMessageRecord)))))
+      if (UinTypeUtil.k(paramMessageRecord.msgtype))
       {
         this.b -= 1;
         return;
       }
-      if (this.jdField_a_of_type_JavaUtilSet == null) {
-        this.jdField_a_of_type_JavaUtilSet = new HashSet();
-      }
-      str = UinTypeUtil.a(paramMessageRecord);
-      if (!ConversationFacade.a.f(paramMessageRecord)) {
-        break label269;
-      }
-      if (ConversationFacade.a.a(ConversationFacade.a(this.jdField_a_of_type_ComTencentImcoreMessageConversationFacade), paramMessageRecord))
+      if ((ConversationFacade.a(this.jdField_a_of_type_Int)) && (ConversationFacade.a.b(paramMessageRecord)))
       {
         this.b -= 1;
         return;
       }
-      if (this.jdField_a_of_type_JavaUtilSet.contains(str))
+      if (paramMessageRecord.isLongMsg())
       {
-        this.b -= 1;
-        return;
+        Object localObject = this.jdField_a_of_type_JavaUtilMap;
+        if ((localObject != null) && (((Map)localObject).containsKey(UinTypeUtil.a(paramMessageRecord))) && (ConversationFacade.a(this.jdField_a_of_type_ComTencentImcoreMessageConversationFacade, paramMessageRecord, (Set)this.jdField_a_of_type_JavaUtilMap.get(UinTypeUtil.a(paramMessageRecord)))))
+        {
+          this.b -= 1;
+          return;
+        }
+        if (this.jdField_a_of_type_JavaUtilSet == null) {
+          this.jdField_a_of_type_JavaUtilSet = new HashSet();
+        }
+        localObject = UinTypeUtil.a(paramMessageRecord);
+        if (ConversationFacade.a.f(paramMessageRecord))
+        {
+          if (ConversationFacade.a.a(ConversationFacade.a(this.jdField_a_of_type_ComTencentImcoreMessageConversationFacade), paramMessageRecord))
+          {
+            this.b -= 1;
+            return;
+          }
+          if (this.jdField_a_of_type_JavaUtilSet.contains(localObject))
+          {
+            this.b -= 1;
+            return;
+          }
+          this.jdField_a_of_type_JavaUtilSet.add(localObject);
+        }
+        else if (this.jdField_a_of_type_JavaUtilSet.contains(localObject))
+        {
+          this.jdField_a_of_type_JavaUtilSet.remove(localObject);
+        }
       }
-      this.jdField_a_of_type_JavaUtilSet.add(str);
-    }
-    for (;;)
-    {
       this.c += this.jdField_a_of_type_ComTencentImcoreMessageConversationFacade.a(paramMessageRecord);
       this.d += this.jdField_a_of_type_ComTencentImcoreMessageConversationFacade.b(paramMessageRecord);
-      return;
-      label269:
-      if (this.jdField_a_of_type_JavaUtilSet.contains(str)) {
-        this.jdField_a_of_type_JavaUtilSet.remove(str);
-      }
     }
   }
   
   private void b(MessageRecord paramMessageRecord, long paramLong)
   {
-    if (paramLong <= this.jdField_a_of_type_Long)
-    {
-      if (!paramMessageRecord.isLongMsg()) {
-        break label143;
+    if (paramLong <= this.jdField_a_of_type_Long) {
+      if (paramMessageRecord.isLongMsg())
+      {
+        if (this.jdField_a_of_type_JavaUtilMap == null) {
+          this.jdField_a_of_type_JavaUtilMap = new HashMap();
+        }
+        Object localObject = UinTypeUtil.a(paramMessageRecord);
+        if (this.jdField_a_of_type_JavaUtilMap.containsKey(UinTypeUtil.a(paramMessageRecord)))
+        {
+          localObject = (Set)this.jdField_a_of_type_JavaUtilMap.get(localObject);
+          if ((localObject != null) && (!((Set)localObject).isEmpty()) && (!ConversationFacade.a(this.jdField_a_of_type_ComTencentImcoreMessageConversationFacade, paramMessageRecord, (Set)localObject))) {
+            ((Set)localObject).add(paramMessageRecord);
+          }
+        }
+        else
+        {
+          HashSet localHashSet = new HashSet();
+          localHashSet.add(paramMessageRecord);
+          this.jdField_a_of_type_JavaUtilMap.put(localObject, localHashSet);
+        }
       }
-      if (this.jdField_a_of_type_JavaUtilMap == null) {
-        this.jdField_a_of_type_JavaUtilMap = new HashMap();
-      }
-      localObject = UinTypeUtil.a(paramMessageRecord);
-      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(UinTypeUtil.a(paramMessageRecord))) {
-        break label110;
-      }
-      localObject = (Set)this.jdField_a_of_type_JavaUtilMap.get(localObject);
-      if ((localObject != null) && (!((Set)localObject).isEmpty()) && (!ConversationFacade.a(this.jdField_a_of_type_ComTencentImcoreMessageConversationFacade, paramMessageRecord, (Set)localObject))) {
-        ((Set)localObject).add(paramMessageRecord);
+      else if ((UinTypeUtil.f(paramMessageRecord.msgtype)) && (!paramMessageRecord.isread))
+      {
+        this.b += 1;
+        this.c += this.jdField_a_of_type_ComTencentImcoreMessageConversationFacade.a(paramMessageRecord);
+        this.d += this.jdField_a_of_type_ComTencentImcoreMessageConversationFacade.b(paramMessageRecord);
       }
     }
-    label110:
-    while ((!UinTypeUtil.f(paramMessageRecord.msgtype)) || (paramMessageRecord.isread))
-    {
-      Object localObject;
-      return;
-      HashSet localHashSet = new HashSet();
-      localHashSet.add(paramMessageRecord);
-      this.jdField_a_of_type_JavaUtilMap.put(localObject, localHashSet);
-      return;
-    }
-    label143:
-    this.b += 1;
-    this.c += this.jdField_a_of_type_ComTencentImcoreMessageConversationFacade.a(paramMessageRecord);
-    this.d += this.jdField_a_of_type_ComTencentImcoreMessageConversationFacade.b(paramMessageRecord);
   }
   
   public int a()
@@ -130,16 +122,17 @@ class ConversationFacade$UnreadCounter
   public UnreadCounter a()
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-      if (ConversationFacade.a(this.jdField_a_of_type_Int)) {}
-      for (long l = localMessageRecord.shmsgseq;; l = localMessageRecord.time)
-      {
-        b(localMessageRecord, l);
-        a(localMessageRecord, l);
-        break;
+      long l;
+      if (ConversationFacade.a(this.jdField_a_of_type_Int)) {
+        l = localMessageRecord.shmsgseq;
+      } else {
+        l = localMessageRecord.time;
       }
+      b(localMessageRecord, l);
+      a(localMessageRecord, l);
     }
     return this;
   }
@@ -156,7 +149,7 @@ class ConversationFacade$UnreadCounter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ConversationFacade.UnreadCounter
  * JD-Core Version:    0.7.0.1
  */

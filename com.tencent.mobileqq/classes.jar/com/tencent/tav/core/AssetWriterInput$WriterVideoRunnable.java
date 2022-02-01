@@ -18,9 +18,9 @@ class AssetWriterInput$WriterVideoRunnable
   @RequiresApi(api=18)
   public void run()
   {
-    if (AssetWriterInput.access$500(this.this$0) != null) {}
-    for (;;)
+    if (AssetWriterInput.access$500(this.this$0) != null)
     {
+      Object localObject;
       try
       {
         AssetWriterInput.access$300(this.this$0).writeVideoSample();
@@ -29,26 +29,32 @@ class AssetWriterInput$WriterVideoRunnable
             AssetWriterInput.access$300(this.this$0).endWriteVideoSample();
           }
         }
-        if (AssetWriterInput.access$400(this.this$0) != null) {
-          AssetWriterInput.access$400(this.this$0).onProgressChanged(this.this$0, AssetWriterInput.access$300(this.this$0).getVideoPresentationTimeUs());
-        }
-        return;
       }
       catch (Throwable localThrowable)
       {
-        if (!(localThrowable instanceof ExportRuntimeException)) {}
+        if ((localThrowable instanceof ExportRuntimeException)) {
+          localObject = ((ExportRuntimeException)localThrowable).getErrorStatus();
+        } else {
+          localObject = new ExportErrorStatus(-121, (Throwable)localObject);
+        }
+        if (AssetWriterInput.access$400(this.this$0) != null)
+        {
+          AssetWriterInput.access$400(this.this$0).onError((ExportErrorStatus)localObject);
+          return;
+        }
       }
-      for (ExportErrorStatus localExportErrorStatus = ((ExportRuntimeException)localThrowable).getErrorStatus(); AssetWriterInput.access$400(this.this$0) != null; localExportErrorStatus = new ExportErrorStatus(-121, localExportErrorStatus))
+      if (AssetWriterInput.access$400(this.this$0) != null)
       {
-        AssetWriterInput.access$400(this.this$0).onError(localExportErrorStatus);
-        return;
+        localObject = AssetWriterInput.access$400(this.this$0);
+        AssetWriterInput localAssetWriterInput = this.this$0;
+        ((AssetWriterInput.WriterProgressListener)localObject).onProgressChanged(localAssetWriterInput, AssetWriterInput.access$300(localAssetWriterInput).getVideoPresentationTimeUs());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tav.core.AssetWriterInput.WriterVideoRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -20,12 +20,20 @@ public class StatConstants
   public static final String MTA_SERVER_HOST = "pingma.qq.com";
   public static final int MTA_SERVER_PORT = 80;
   public static final String MTA_STAT_URL = "/mstat/report";
-  public static final String MTA_STORAGE_PRE_TAG = "tencent.mta" + File.separator + "data";
+  public static final String MTA_STORAGE_PRE_TAG;
   public static final int SDK_ONLINE_CONFIG_TYPE = 1;
   public static final int STAT_DB_VERSION = 3;
   public static final int USER_ONLINE_CONFIG_TYPE = 2;
   public static final String VERSION = "2.4.2";
   public static final int XG_PRO_VERSION = 1;
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder("tencent.mta");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("data");
+    MTA_STORAGE_PRE_TAG = localStringBuilder.toString();
+  }
 }
 
 

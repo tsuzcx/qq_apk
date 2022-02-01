@@ -24,28 +24,29 @@ public class BaseChatPie$SaveInputTypeTask
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    Object localObject;
-    do
+    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localObject == null) {
+      return;
+    }
+    localObject = (QQAppInterface)((WeakReference)localObject).get();
+    if (localObject != null)
     {
-      do
-      {
-        return;
-        localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      } while (localObject == null);
       localObject = (FriendsManager)((QQAppInterface)localObject).getManager(QQManagerFactory.FRIENDS_MANAGER);
-      if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity instanceof ExtensionInfo))
+      Entity localEntity = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity;
+      if ((localEntity instanceof ExtensionInfo))
       {
-        ((FriendsManager)localObject).a((ExtensionInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity);
+        ((FriendsManager)localObject).a((ExtensionInfo)localEntity);
         return;
       }
-    } while (!(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity instanceof NoC2CExtensionInfo));
-    ((FriendsManager)localObject).a((NoC2CExtensionInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity, true);
+      if ((localEntity instanceof NoC2CExtensionInfo)) {
+        ((FriendsManager)localObject).a((NoC2CExtensionInfo)localEntity, true);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.SaveInputTypeTask
  * JD-Core Version:    0.7.0.1
  */

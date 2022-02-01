@@ -24,13 +24,14 @@ public final class ReportTrace$ReportHead
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 50, 56, 66, 72 }, new String[] { "appid", "platform", "ver", "os_ver", "model", "udid", "ip_type", "client_ip", "conn_type" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), "", "", "", "", Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, ReportHead.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 50, 56, 66, 72 }, new String[] { "appid", "platform", "ver", "os_ver", "model", "udid", "ip_type", "client_ip", "conn_type" }, new Object[] { localInteger, localInteger, "", "", "", "", localInteger, localByteStringMicro, localInteger }, ReportHead.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.ReportTrace.ReportHead
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ class QQSettingSettingActivity$6
 {
   QQSettingSettingActivity$6(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
     QQSettingSettingActivity.a(this.a, paramUpgradeDetailWrapper);
     QQSettingSettingActivity.d(this.a);
@@ -16,7 +16,7 @@ class QQSettingSettingActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingSettingActivity.6
  * JD-Core Version:    0.7.0.1
  */

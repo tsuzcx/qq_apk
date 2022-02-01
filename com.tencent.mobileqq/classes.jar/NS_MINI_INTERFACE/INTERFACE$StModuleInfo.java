@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class INTERFACE$StModuleInfo
   extends MessageMicro<StModuleInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 48, 56, 66, 74, 80, 90, 98, 106, 112, 122, 128 }, new String[] { "title", "userAppList", "moduleType", "useOld", "jumpMoreApp", "isFinished", "appTotalNum", "desc", "ranks", "freshInternal", "titleIcon", "backgroundPic", "dittoDsl", "subTypes", "jumpLink", "PopupType" }, new Object[] { "", null, Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), "", null, Integer.valueOf(0), "", "", "", Integer.valueOf(0), "", Integer.valueOf(0) }, StModuleInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBEnumField PopupType = PBField.initEnum(0);
   public final PBInt32Field appTotalNum = PBField.initInt32(0);
   public final PBStringField backgroundPic = PBField.initString("");
@@ -28,10 +28,16 @@ public final class INTERFACE$StModuleInfo
   public final PBStringField titleIcon = PBField.initString("");
   public final PBInt32Field useOld = PBField.initInt32(0);
   public final PBRepeatMessageField<INTERFACE.StUserAppInfo> userAppList = PBField.initRepeatMessage(INTERFACE.StUserAppInfo.class);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 48, 56, 66, 74, 80, 90, 98, 106, 112, 122, 128 }, new String[] { "title", "userAppList", "moduleType", "useOld", "jumpMoreApp", "isFinished", "appTotalNum", "desc", "ranks", "freshInternal", "titleIcon", "backgroundPic", "dittoDsl", "subTypes", "jumpLink", "PopupType" }, new Object[] { "", null, localInteger, localInteger, null, localInteger, localInteger, "", null, localInteger, "", "", "", localInteger, "", localInteger }, StModuleInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MINI_INTERFACE.INTERFACE.StModuleInfo
  * JD-Core Version:    0.7.0.1
  */

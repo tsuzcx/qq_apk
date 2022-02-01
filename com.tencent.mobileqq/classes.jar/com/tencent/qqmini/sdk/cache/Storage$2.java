@@ -9,28 +9,32 @@ class Storage$2
   
   public void run()
   {
-    String str = DiskLruCacheUtil.encode(this.val$data, this.val$type);
-    if ((str != null) && (str.length() > 1048576) && (this.val$callback != null)) {
-      this.val$callback.onFailed(this.val$key, "size limit reached");
+    Object localObject = DiskLruCacheUtil.encode(this.val$data, this.val$type);
+    if ((localObject != null) && (((String)localObject).length() > 1048576))
+    {
+      Storage.StorageCallback localStorageCallback = this.val$callback;
+      if (localStorageCallback != null) {
+        localStorageCallback.onFailed(this.val$key, "size limit reached");
+      }
     }
     if (Storage.access$000(this.this$0) != null)
     {
       if (Storage.access$000(this.this$0).isClosed()) {
         Storage.access$100(this.this$0);
       }
-      Storage.access$200(this.this$0, str, this.val$callback, this.val$key);
-    }
-    do
-    {
+      Storage.access$200(this.this$0, (String)localObject, this.val$callback, this.val$key);
       return;
-      QMLog.e("Storage", "mDiskCache.isClosed(): ");
-    } while (this.val$callback == null);
-    this.val$callback.onFailed(this.val$key, "can not write");
+    }
+    QMLog.e("Storage", "mDiskCache.isClosed(): ");
+    localObject = this.val$callback;
+    if (localObject != null) {
+      ((Storage.StorageCallback)localObject).onFailed(this.val$key, "can not write");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.cache.Storage.2
  * JD-Core Version:    0.7.0.1
  */

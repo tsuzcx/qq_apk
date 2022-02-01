@@ -21,12 +21,47 @@ public class C2CShortcutAppInfo
   
   public String toString()
   {
-    return "C2CShortcutAppInfo{appId=" + this.jdField_a_of_type_JavaLangString + ", type=" + this.jdField_a_of_type_Long + ", name='" + this.jdField_b_of_type_JavaLangString + '\'' + ", iconUrl='" + this.jdField_c_of_type_JavaLangString + '\'' + ", jumpUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + ", desc='" + this.e + '\'' + ", cmdTrace='" + this.f + '\'' + ", redPoint=" + this.jdField_a_of_type_Int + ", showFrame=" + this.jdField_b_of_type_Int + ", playingNum=" + this.jdField_c_of_type_Int + ", canSendArkMsg=" + this.jdField_a_of_type_Boolean + ", arkLabelWording=" + this.g + ", labels=" + this.jdField_a_of_type_JavaUtilArrayList + ", jumpType=" + this.jdField_d_of_type_Int + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("C2CShortcutAppInfo{appId=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", name='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", iconUrl='");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", jumpUrl='");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", desc='");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", cmdTrace='");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", redPoint=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", showFrame=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", playingNum=");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(", canSendArkMsg=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", arkLabelWording=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", labels=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuilder.append(", jumpType=");
+    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.c2cshortcutbar.C2CShortcutAppInfo
  * JD-Core Version:    0.7.0.1
  */

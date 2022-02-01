@@ -10,12 +10,12 @@ class ChooseInterestTagActivity$9
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    ChooseInterestTagActivity.a(this.a).post(new ChooseInterestTagActivity.9.1(this, paramInt1));
+    ChooseInterestTagActivity.access$2700(this.a).post(new ChooseInterestTagActivity.9.1(this, paramInt1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.9
  * JD-Core Version:    0.7.0.1
  */

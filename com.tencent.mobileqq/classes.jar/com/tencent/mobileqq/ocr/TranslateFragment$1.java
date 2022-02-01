@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.ocr;
 
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.ocr.data.TranslateResult;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
@@ -22,19 +21,20 @@ class TranslateFragment$1
     }
     TranslateFragment.a(this.a).runOnUiThread(new TranslateFragment.1.1(this, paramBoolean, paramTranslateResult));
     HashMap localHashMap = new HashMap();
-    if (paramTranslateResult != null) {}
-    for (int i = paramTranslateResult.b;; i = 2000)
-    {
-      localHashMap.put("errCode", String.valueOf(i));
-      localHashMap.put("type", String.valueOf(paramInt));
-      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "SCAN_TRANSLATE_RESULT", paramBoolean, 0L, 0L, localHashMap, "", false);
-      return;
+    int i;
+    if (paramTranslateResult != null) {
+      i = paramTranslateResult.b;
+    } else {
+      i = 2000;
     }
+    localHashMap.put("errCode", String.valueOf(i));
+    localHashMap.put("type", String.valueOf(paramInt));
+    StatisticCollector.getInstance(TranslateFragment.a(this.a)).collectPerformance("", "SCAN_TRANSLATE_RESULT", paramBoolean, 0L, 0L, localHashMap, "", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.TranslateFragment.1
  * JD-Core Version:    0.7.0.1
  */

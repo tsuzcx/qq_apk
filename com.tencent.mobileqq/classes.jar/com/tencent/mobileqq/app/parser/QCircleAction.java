@@ -4,10 +4,11 @@ import android.content.Context;
 import com.tencent.mobileqq.activity.qcircle.utils.QCircleUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.qcircle.api.IQCircleService;
+import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.qphone.base.util.QLog;
 
 public class QCircleAction
-  extends JumpActionBase
+  extends JumpAction
 {
   public QCircleAction(QQAppInterface paramQQAppInterface, Context paramContext)
   {
@@ -23,15 +24,18 @@ public class QCircleAction
     }
     catch (Exception localException)
     {
-      QLog.e("QCircleAction", 1, "doAction error: " + localException.getMessage());
-      a("QCircleAction");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doAction error: ");
+      localStringBuilder.append(localException.getMessage());
+      QLog.e("QCircleAction", 1, localStringBuilder.toString());
+      b_("QCircleAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QCircleAction
  * JD-Core Version:    0.7.0.1
  */

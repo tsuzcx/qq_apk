@@ -16,26 +16,35 @@ class SubscribeQRCodeShareHelper$8
     SubscribeQRCodeShareHelper.d(this.this$0);
     if ((SubscribeQRCodeShareHelper.a(this.this$0) != null) && (!SubscribeQRCodeShareHelper.a(this.this$0).isFinishing()) && (SubscribeQRCodeShareHelper.a(this.this$0)))
     {
-      String str2 = SubscribeQRCodeShareHelper.a(this.this$0, SubscribeQRCodeShareHelper.a(this.this$0));
+      Object localObject1 = this.this$0;
+      Object localObject2 = SubscribeQRCodeShareHelper.a((SubscribeQRCodeShareHelper)localObject1, SubscribeQRCodeShareHelper.a((SubscribeQRCodeShareHelper)localObject1));
       Bitmap localBitmap = SubscribeQRCodeShareHelper.b(this.this$0).a();
       SubscribeQRCodeShareHelper.b(this.this$0, String.valueOf(System.currentTimeMillis()));
-      QLog.i("SubscribeQRCodeShareHelper", 2, "path : " + str2);
-      String str1 = str2;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("path : ");
+      ((StringBuilder)localObject1).append((String)localObject2);
+      QLog.i("SubscribeQRCodeShareHelper", 2, ((StringBuilder)localObject1).toString());
+      localObject1 = localObject2;
       if (SubscribeQRCodeShareHelper.b(this.this$0))
       {
-        str1 = str2;
-        if (SubscribeQRCodeShareHelper.c(this.this$0)) {
-          str1 = SubscribeQRCodeShareHelper.a(this.this$0, SubscribeQRCodeShareHelper.a(this.this$0), str2);
+        localObject1 = localObject2;
+        if (SubscribeQRCodeShareHelper.c(this.this$0))
+        {
+          localObject1 = this.this$0;
+          localObject1 = SubscribeQRCodeShareHelper.a((SubscribeQRCodeShareHelper)localObject1, SubscribeQRCodeShareHelper.a((SubscribeQRCodeShareHelper)localObject1), (String)localObject2);
         }
       }
-      QLog.i("SubscribeQRCodeShareHelper", 2, "fileProviderPath : " + str1);
-      WXShareHelper.a().a(str1, localBitmap, ScreenUtil.dip2px(270.0F) / 2, this.a, SubscribeQRCodeShareHelper.c(this.this$0));
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("fileProviderPath : ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.i("SubscribeQRCodeShareHelper", 2, ((StringBuilder)localObject2).toString());
+      WXShareHelper.a().a((String)localObject1, localBitmap, ScreenUtil.dip2px(270.0F) / 2, this.a, SubscribeQRCodeShareHelper.c(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.8
  * JD-Core Version:    0.7.0.1
  */

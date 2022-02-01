@@ -2,8 +2,8 @@
 <RelativeLayout android:id="@id/g6f" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <include android:id="@id/a2f" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/zo" />
-    <ViewStub android:id="@id/nrx" android:layout="@layout/cnu" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ViewStub android:id="@id/nrz" android:layout="@layout/cnw" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/nuq" android:layout="@layout/cn1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/nus" android:layout="@layout/cn2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <RelativeLayout android:id="@id/g7p" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <include android:id="@id/m1m" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" layout="@layout/c9z" />
     <include android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" layout="@layout/z_" />
@@ -24,6 +24,6 @@
     <ViewStub android:id="@id/cp4" android:layout="@layout/a69" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <ViewStub android:id="@id/m0w" android:layout="@layout/c9w" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <ViewStub android:id="@id/m0y" android:visibility="gone" android:layout="@layout/c9y" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <include android:visibility="gone" layout="@layout/cnt" />
+    <include android:visibility="gone" layout="@layout/cn0" />
     <View android:id="@id/m18" android:background="@color/aly" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </RelativeLayout>

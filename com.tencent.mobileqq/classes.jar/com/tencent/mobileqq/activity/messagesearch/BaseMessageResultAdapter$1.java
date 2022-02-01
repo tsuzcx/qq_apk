@@ -18,22 +18,38 @@ class BaseMessageResultAdapter$1
   
   public void run()
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.i(BaseMessageResultAdapter.b(), 2, "loadMessageResult, run(), keyword = " + this.jdField_a_of_type_JavaLangString + ", loadType = " + this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      ??? = BaseMessageResultAdapter.b();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("loadMessageResult, run(), keyword = ");
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(", loadType = ");
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+      QLog.i((String)???, 2, ((StringBuilder)localObject2).toString());
     }
     ??? = null;
-    Object localObject2;
-    Object localObject4;
-    if (this.jdField_a_of_type_Int == 1)
+    int i = this.jdField_a_of_type_Int;
+    boolean bool1 = true;
+    if (i == 1)
     {
       ??? = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
       HistoryChatMsgSearchKeyUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
-      localObject2 = new ArrayList();
-      localObject4 = this.this$0.b((ChatHistorySearchData)???, (ArrayList)localObject2);
-      if (QLog.isColorLevel()) {
-        QLog.i(BaseMessageResultAdapter.b(), 2, "loadMessageResult, get: messageItems[] = " + localObject2);
-      }
+    }
+    else if (i == 2)
+    {
+      ??? = this.this$0.jdField_a_of_type_ComTencentMobileqqDataChatHistorySearchData;
+    }
+    Object localObject2 = new ArrayList();
+    Object localObject4 = this.this$0.b((ChatHistorySearchData)???, (ArrayList)localObject2);
+    Object localObject5;
+    if (QLog.isColorLevel())
+    {
+      ??? = BaseMessageResultAdapter.b();
+      localObject5 = new StringBuilder();
+      ((StringBuilder)localObject5).append("loadMessageResult, get: messageItems[] = ");
+      ((StringBuilder)localObject5).append(localObject2);
+      QLog.i((String)???, 2, ((StringBuilder)localObject5).toString());
     }
     for (;;)
     {
@@ -41,13 +57,16 @@ class BaseMessageResultAdapter$1
       {
         if (this.this$0.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString))
         {
-          if (this.jdField_a_of_type_Int != 1) {
-            continue;
-          }
-          localBaseMessageResultAdapter = this.this$0;
-          if (((ArrayList)localObject2).size() < 20)
+          i = this.jdField_a_of_type_Int;
+          boolean bool2 = false;
+          if (i == 1)
           {
-            localBaseMessageResultAdapter.jdField_a_of_type_Boolean = bool;
+            localObject5 = this.this$0;
+            bool1 = bool2;
+            if (((ArrayList)localObject2).size() < 20) {
+              bool1 = true;
+            }
+            ((BaseMessageResultAdapter)localObject5).jdField_a_of_type_Boolean = bool1;
             this.this$0.jdField_a_of_type_ComTencentMobileqqDataChatHistorySearchData = ((ChatHistorySearchData)localObject4);
             localObject2 = this.this$0.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(2, localObject2);
             ((Message)localObject2).arg1 = 1;
@@ -57,43 +76,33 @@ class BaseMessageResultAdapter$1
             ((Message)localObject2).setData((Bundle)localObject4);
             ((Message)localObject2).sendToTarget();
           }
-        }
-        else
-        {
-          return;
-          if (this.jdField_a_of_type_Int != 2) {
-            break;
+          else if (this.jdField_a_of_type_Int == 2)
+          {
+            localObject5 = this.this$0;
+            if (((ArrayList)localObject2).size() >= 20) {
+              break label495;
+            }
+            ((BaseMessageResultAdapter)localObject5).jdField_a_of_type_Boolean = bool1;
+            this.this$0.jdField_a_of_type_ComTencentMobileqqDataChatHistorySearchData = ((ChatHistorySearchData)localObject4);
+            localObject2 = this.this$0.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(2, localObject2);
+            ((Message)localObject2).arg1 = 2;
+            localObject4 = new Bundle();
+            ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);
+            ((Bundle)localObject4).putString("searchKeyword", this.jdField_a_of_type_JavaLangString);
+            ((Message)localObject2).setData((Bundle)localObject4);
+            ((Message)localObject2).sendToTarget();
           }
-          ??? = this.this$0.jdField_a_of_type_ComTencentMobileqqDataChatHistorySearchData;
-          break;
         }
-        bool = false;
-        continue;
-        if (this.jdField_a_of_type_Int != 2) {
-          continue;
-        }
-        BaseMessageResultAdapter localBaseMessageResultAdapter = this.this$0;
-        if (((ArrayList)localObject2).size() < 20)
-        {
-          bool = true;
-          localBaseMessageResultAdapter.jdField_a_of_type_Boolean = bool;
-          this.this$0.jdField_a_of_type_ComTencentMobileqqDataChatHistorySearchData = ((ChatHistorySearchData)localObject4);
-          localObject2 = this.this$0.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(2, localObject2);
-          ((Message)localObject2).arg1 = 2;
-          localObject4 = new Bundle();
-          ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);
-          ((Bundle)localObject4).putString("searchKeyword", this.jdField_a_of_type_JavaLangString);
-          ((Message)localObject2).setData((Bundle)localObject4);
-          ((Message)localObject2).sendToTarget();
-        }
+        return;
       }
-      bool = false;
+      label495:
+      bool1 = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.BaseMessageResultAdapter.1
  * JD-Core Version:    0.7.0.1
  */

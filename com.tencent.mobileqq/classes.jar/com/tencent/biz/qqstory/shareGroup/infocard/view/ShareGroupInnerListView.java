@@ -43,15 +43,17 @@ public class ShareGroupInnerListView
   public void setData(VideoCollectionItem paramVideoCollectionItem)
   {
     this.jdField_a_of_type_JavaLangString = paramVideoCollectionItem.collectionId;
-    if (paramVideoCollectionItem.collectionCount > paramVideoCollectionItem.videoVidList.size()) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if (paramVideoCollectionItem.collectionCount > paramVideoCollectionItem.videoVidList.size()) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    setLoadMoreComplete(bool);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewAdapterMemoriesInnerListAdapter.a(paramVideoCollectionItem.collectionVideoUIItemList, paramVideoCollectionItem.collectionId);
+    int i = this.b / this.c;
+    if (paramVideoCollectionItem.collectionVideoUIItemList.size() >= i)
     {
-      setLoadMoreComplete(bool);
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewAdapterMemoriesInnerListAdapter.a(paramVideoCollectionItem.collectionVideoUIItemList, paramVideoCollectionItem.collectionId);
-      int i = this.b / this.c;
-      if (paramVideoCollectionItem.collectionVideoUIItemList.size() < i) {
-        break;
-      }
       setOverScrollMode(0);
       return;
     }
@@ -65,7 +67,7 @@ public class ShareGroupInnerListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupInnerListView
  * JD-Core Version:    0.7.0.1
  */

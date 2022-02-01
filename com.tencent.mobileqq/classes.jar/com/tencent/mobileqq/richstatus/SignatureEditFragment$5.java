@@ -2,7 +2,8 @@ package com.tencent.mobileqq.richstatus;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 
 class SignatureEditFragment$5
   implements DialogInterface.OnClickListener
@@ -11,13 +12,14 @@ class SignatureEditFragment$5
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    VasWebviewUtil.reportCommercialDrainage("signature_update", "click_know", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
     paramDialogInterface.dismiss();
+    this.a.getQBaseActivity().finish();
+    VasWebviewUtil.a("signature_update", "click_close", "click_close", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureEditFragment.5
  * JD-Core Version:    0.7.0.1
  */

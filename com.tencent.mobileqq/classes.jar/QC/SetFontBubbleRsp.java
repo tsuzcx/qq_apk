@@ -37,20 +37,23 @@ public final class SetFontBubbleRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stRet != null) {
-      paramJceOutputStream.write(this.stRet, 0);
+    Object localObject = this.stRet;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.stFontRsp != null) {
-      paramJceOutputStream.write(this.stFontRsp, 1);
+    localObject = this.stFontRsp;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.stBubbleRsp != null) {
-      paramJceOutputStream.write(this.stBubbleRsp, 2);
+    localObject = this.stBubbleRsp;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.SetFontBubbleRsp
  * JD-Core Version:    0.7.0.1
  */

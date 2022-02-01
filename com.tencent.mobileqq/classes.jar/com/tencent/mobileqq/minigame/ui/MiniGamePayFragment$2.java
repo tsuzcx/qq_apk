@@ -23,50 +23,57 @@ class MiniGamePayFragment$2
       try
       {
         paramJSONObject.put("resultCode", -4);
-        paramJSONObject.put("resultMsg", HardCodeUtil.a(2131706859));
-        if (paramJSONObject != null) {}
-        for (paramJSONObject = paramJSONObject.toString(); paramJSONObject != null; paramJSONObject = "")
+        paramJSONObject.put("resultMsg", HardCodeUtil.a(2131706881));
+        paramJSONObject = paramJSONObject.toString();
+        if (paramJSONObject != null)
         {
           MiniGamePayFragment.access$000(this.this$0, this.val$event, paramJSONObject, this.val$seq);
           return;
         }
-        QLog.d("PayJsPlugin_in_MiniGamePayFragment", 1, "invokeMidasConsume receive isSuc= " + paramBoolean + " ret=" + String.valueOf(paramJSONObject));
       }
       catch (JSONException paramJSONObject)
       {
         QLog.e("PayJsPlugin_in_MiniGamePayFragment", 1, "invokeMidasConsume JSONException ", paramJSONObject);
-        return;
       }
+      return;
     }
-    else
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("invokeMidasConsume receive isSuc= ");
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append(" ret=");
+    ((StringBuilder)localObject).append(String.valueOf(paramJSONObject));
+    QLog.d("PayJsPlugin_in_MiniGamePayFragment", 1, ((StringBuilder)localObject).toString());
+    try
     {
-      try
-      {
-        MiniAppMidasPay.StGamePayRsp localStGamePayRsp = (MiniAppMidasPay.StGamePayRsp)paramJSONObject.get("response");
-        int i = paramJSONObject.getInt("resultCode");
-        paramJSONObject = paramJSONObject.getString("errMsg");
-        JSONObject localJSONObject1 = new JSONObject();
-        JSONObject localJSONObject2 = new JSONObject();
-        JSONObject localJSONObject3 = new JSONObject(new HashMap());
-        localJSONObject2.put("attachInfo", localStGamePayRsp.extInfo.attachInfo.get());
-        localJSONObject2.put("mapInfo", localJSONObject3);
-        localJSONObject1.put("resultCode", i);
-        localJSONObject1.put("extInfo", localJSONObject2);
-        localJSONObject1.put("resultMsg", paramJSONObject);
-        QLog.d("PayJsPlugin_in_MiniGamePayFragment", 1, "invokeMidasConsume receive isSuc= " + paramBoolean + " resObj=" + localJSONObject1.toString());
-        MiniGamePayFragment.access$000(this.this$0, this.val$event, localJSONObject1.toString(), this.val$seq);
-        return;
-      }
-      catch (Throwable paramJSONObject)
-      {
-        QLog.e("PayJsPlugin_in_MiniGamePayFragment", 1, "invokeMidasConsume JSONException ", paramJSONObject);
-      }
+      localObject = (MiniAppMidasPay.StGamePayRsp)paramJSONObject.get("response");
+      int i = paramJSONObject.getInt("resultCode");
+      String str = paramJSONObject.getString("errMsg");
+      paramJSONObject = new JSONObject();
+      JSONObject localJSONObject1 = new JSONObject();
+      JSONObject localJSONObject2 = new JSONObject(new HashMap());
+      localJSONObject1.put("attachInfo", ((MiniAppMidasPay.StGamePayRsp)localObject).extInfo.attachInfo.get());
+      localJSONObject1.put("mapInfo", localJSONObject2);
+      paramJSONObject.put("resultCode", i);
+      paramJSONObject.put("extInfo", localJSONObject1);
+      paramJSONObject.put("resultMsg", str);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("invokeMidasConsume receive isSuc= ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(" resObj=");
+      ((StringBuilder)localObject).append(paramJSONObject.toString());
+      QLog.d("PayJsPlugin_in_MiniGamePayFragment", 1, ((StringBuilder)localObject).toString());
+      MiniGamePayFragment.access$000(this.this$0, this.val$event, paramJSONObject.toString(), this.val$seq);
+      return;
+    }
+    catch (Throwable paramJSONObject)
+    {
+      QLog.e("PayJsPlugin_in_MiniGamePayFragment", 1, "invokeMidasConsume JSONException ", paramJSONObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.MiniGamePayFragment.2
  * JD-Core Version:    0.7.0.1
  */

@@ -11,14 +11,18 @@ class GroupTeamWorkListActivity$17
   public void a(boolean paramBoolean, int paramInt, String paramString)
   {
     GroupTeamWorkListActivity.a(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.i("GroupTeamWorkListActivity", 2, " onDeletePad success: " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append(" onDeletePad success: ");
+      paramString.append(paramBoolean);
+      QLog.i("GroupTeamWorkListActivity", 2, paramString.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity.17
  * JD-Core Version:    0.7.0.1
  */

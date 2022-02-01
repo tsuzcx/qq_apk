@@ -14,15 +14,16 @@ public class CallbackManager
   
   static CallbackManager getInstance()
   {
-    if (sCallbackManager == null) {}
-    try
-    {
-      if (sCallbackManager == null) {
-        sCallbackManager = new CallbackManager();
+    if (sCallbackManager == null) {
+      try
+      {
+        if (sCallbackManager == null) {
+          sCallbackManager = new CallbackManager();
+        }
       }
-      return sCallbackManager;
+      finally {}
     }
-    finally {}
+    return sCallbackManager;
   }
   
   @Nullable
@@ -50,15 +51,15 @@ public class CallbackManager
       return 0L;
     }
     paramObject = (Long)getInstance().mObjectMap.get(Integer.valueOf(System.identityHashCode(paramObject)));
-    if (paramObject == null) {}
-    for (long l = 0L;; l = paramObject.longValue()) {
-      return l;
+    if (paramObject == null) {
+      return 0L;
     }
+    return paramObject.longValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dartnative.dart_native.CallbackManager
  * JD-Core Version:    0.7.0.1
  */

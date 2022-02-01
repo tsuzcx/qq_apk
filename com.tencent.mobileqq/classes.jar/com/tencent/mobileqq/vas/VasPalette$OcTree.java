@@ -28,73 +28,57 @@ public class VasPalette$OcTree
     byte b = 1;
     while (b <= 8)
     {
-      int i;
-      int j;
-      label55:
-      int k;
-      label65:
-      VasPalette.OcNode localOcNode2;
-      boolean bool;
-      if ((m & paramInt) == 0)
-      {
+      boolean bool = false;
+      if ((m & paramInt) == 0) {
         i = 0;
-        if ((n & paramInt) != 0) {
-          break label247;
-        }
+      } else {
+        i = 1;
+      }
+      int j;
+      if ((n & paramInt) == 0) {
         j = 0;
-        if ((i1 & paramInt) != 0) {
-          break label253;
-        }
+      } else {
+        j = 1;
+      }
+      int k;
+      if ((i1 & paramInt) == 0) {
         k = 0;
-        i = i * 4 + j * 2 + k;
-        if (localOcNode1.jdField_a_of_type_AndroidUtilSparseArray == null) {
-          localOcNode1.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-        }
-        if (localOcNode1.jdField_a_of_type_AndroidUtilSparseArray.get(i) == null)
-        {
-          localOcNode2 = VasPalette.OcNode.a(i, b);
-          localOcNode1.jdField_a_of_type_AndroidUtilSparseArray.put(i, localOcNode2);
-          if (b != 8) {
-            break label259;
-          }
+      } else {
+        k = 1;
+      }
+      int i = i * 4 + j * 2 + k;
+      if (localOcNode1.jdField_a_of_type_AndroidUtilSparseArray == null) {
+        localOcNode1.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+      }
+      if (localOcNode1.jdField_a_of_type_AndroidUtilSparseArray.get(i) == null)
+      {
+        VasPalette.OcNode localOcNode2 = VasPalette.OcNode.a(i, b);
+        localOcNode1.jdField_a_of_type_AndroidUtilSparseArray.put(i, localOcNode2);
+        if (b == 8) {
           bool = true;
-          label136:
-          localOcNode2.jdField_a_of_type_Boolean = bool;
-          if (!localOcNode2.jdField_a_of_type_Boolean) {
-            break label265;
-          }
+        }
+        localOcNode2.jdField_a_of_type_Boolean = bool;
+        if (localOcNode2.jdField_a_of_type_Boolean)
+        {
           this.jdField_a_of_type_JavaUtilList.add(localOcNode2);
         }
-      }
-      for (;;)
-      {
-        localOcNode1 = (VasPalette.OcNode)localOcNode1.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-        if (!localOcNode1.jdField_a_of_type_Boolean) {
-          break label313;
+        else
+        {
+          if (this.jdField_a_of_type_AndroidUtilSparseArray.get(b) == null) {
+            this.jdField_a_of_type_AndroidUtilSparseArray.put(b, new ArrayList());
+          }
+          ((List)this.jdField_a_of_type_AndroidUtilSparseArray.get(b)).add(localOcNode2);
         }
+      }
+      localOcNode1 = (VasPalette.OcNode)localOcNode1.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+      if (localOcNode1.jdField_a_of_type_Boolean)
+      {
         localOcNode1.jdField_a_of_type_Long += m;
         localOcNode1.b += n;
         localOcNode1.c += i1;
         localOcNode1.jdField_a_of_type_Int += 1;
         return localOcNode1;
-        i = 1;
-        break;
-        label247:
-        j = 1;
-        break label55;
-        label253:
-        k = 1;
-        break label65;
-        label259:
-        bool = false;
-        break label136;
-        label265:
-        if (this.jdField_a_of_type_AndroidUtilSparseArray.get(b) == null) {
-          this.jdField_a_of_type_AndroidUtilSparseArray.put(b, new ArrayList());
-        }
-        ((List)this.jdField_a_of_type_AndroidUtilSparseArray.get(b)).add(localOcNode2);
       }
-      label313:
       b = (byte)(b + 1);
       paramInt >>= 1;
     }
@@ -135,7 +119,7 @@ public class VasPalette$OcTree
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasPalette.OcTree
  * JD-Core Version:    0.7.0.1
  */

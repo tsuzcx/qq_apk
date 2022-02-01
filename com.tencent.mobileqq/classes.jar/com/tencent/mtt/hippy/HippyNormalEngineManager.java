@@ -17,15 +17,6 @@ public final class HippyNormalEngineManager
   public void destroyEngine()
   {
     super.destroyEngine();
-    synchronized (this.mLock)
-    {
-      if (this.mThreadExecutor != null)
-      {
-        this.mThreadExecutor.destroy();
-        this.mThreadExecutor = null;
-      }
-      return;
-    }
   }
   
   public int getBridgeType()
@@ -35,21 +26,22 @@ public final class HippyNormalEngineManager
   
   public ThreadExecutor getThreadExecutor()
   {
-    if (this.mThreadExecutor == null) {}
-    synchronized (this.mLock)
-    {
-      if (this.mThreadExecutor == null)
+    if (this.mThreadExecutor == null) {
+      synchronized (this.mLock)
       {
-        this.mThreadExecutor = new ThreadExecutor();
-        this.mThreadExecutor.setUncaughtExceptionHandler(this);
+        if (this.mThreadExecutor == null)
+        {
+          this.mThreadExecutor = new ThreadExecutor(-1);
+          this.mThreadExecutor.setUncaughtExceptionHandler(this);
+        }
       }
-      return this.mThreadExecutor;
     }
+    return this.mThreadExecutor;
   }
   
-  public void handleThreadUncaughtException(Thread arg1, Throwable paramThrowable)
+  public void handleThreadUncaughtException(Thread arg1, Throwable paramThrowable, Integer paramInteger)
   {
-    super.handleThreadUncaughtException(???, paramThrowable);
+    super.handleThreadUncaughtException(???, paramThrowable, paramInteger);
     if ((this.mDebugMode) && (this.mDevSupportManager != null)) {
       synchronized (this.mLock)
       {
@@ -62,10 +54,24 @@ public final class HippyNormalEngineManager
       }
     }
   }
+  
+  protected void onDestroy()
+  {
+    super.onDestroy();
+    synchronized (this.mLock)
+    {
+      if (this.mThreadExecutor != null)
+      {
+        this.mThreadExecutor.destroy();
+        this.mThreadExecutor = null;
+      }
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.HippyNormalEngineManager
  * JD-Core Version:    0.7.0.1
  */

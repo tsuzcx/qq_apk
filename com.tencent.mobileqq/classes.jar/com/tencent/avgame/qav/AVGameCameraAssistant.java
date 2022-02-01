@@ -8,6 +8,7 @@ import com.tencent.av.CameraDataProcess;
 import com.tencent.av.camera.CameraListener;
 import com.tencent.av.camera.CameraObserver;
 import com.tencent.av.camera.CameraUtils;
+import com.tencent.av.camera.api.ICameraManagerApi;
 import com.tencent.av.opengl.effects.EffectCtrlBase;
 import com.tencent.av.utils.FramePerfData;
 import com.tencent.avgame.app.AVGameAppInterface;
@@ -16,7 +17,7 @@ import com.tencent.avgame.business.observer.ObserverCenter;
 import com.tencent.avgame.session.AVGameSession;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.QQAudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.WeakReferenceHandler;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -28,7 +29,7 @@ public class AVGameCameraAssistant
 {
   private long jdField_a_of_type_Long = 0L;
   private CameraObserver jdField_a_of_type_ComTencentAvCameraCameraObserver = new AVGameCameraAssistant.4(this);
-  private final CameraUtils jdField_a_of_type_ComTencentAvCameraCameraUtils;
+  private final ICameraManagerApi jdField_a_of_type_ComTencentAvCameraApiICameraManagerApi;
   private IPCEventObserver jdField_a_of_type_ComTencentAvgameBusinessObserverIPCEventObserver = null;
   private final AVGameBusinessCtrl jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl;
   private AVGameCameraAssistant.ClearCacheTask jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant$ClearCacheTask = null;
@@ -42,20 +43,26 @@ public class AVGameCameraAssistant
   {
     this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAVGameAppInterface);
     this.jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl = paramAVGameBusinessCtrl;
-    this.jdField_a_of_type_ComTencentAvCameraCameraUtils = CameraUtils.a(BaseApplicationImpl.getContext());
-    this.jdField_a_of_type_ComTencentAvCameraCameraUtils.a(this);
+    this.jdField_a_of_type_ComTencentAvCameraApiICameraManagerApi = CameraUtils.a(BaseApplicationImpl.getContext());
+    this.jdField_a_of_type_ComTencentAvCameraApiICameraManagerApi.setCameraListener(this);
     this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_ComTencentAvCameraCameraUtils.a(this.jdField_a_of_type_ComTencentAvCameraCameraObserver);
+    this.jdField_a_of_type_ComTencentAvCameraApiICameraManagerApi.addObserver(this.jdField_a_of_type_ComTencentAvCameraCameraObserver);
   }
   
   private void a(boolean paramBoolean)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("AVGameCameraAssistant", 2, "clearEffectCtrl, exit[" + paramBoolean + "]");
-    }
-    if (this.jdField_a_of_type_ComTencentAvgameQavAVGameEffectCtrl != null)
+    if (QLog.isDevelopLevel())
     {
-      this.jdField_a_of_type_ComTencentAvgameQavAVGameEffectCtrl.a();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("clearEffectCtrl, exit[");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("AVGameCameraAssistant", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentAvgameQavAVGameEffectCtrl;
+    if (localObject != null)
+    {
+      ((AVGameEffectCtrl)localObject).a();
       this.jdField_a_of_type_ComTencentAvgameQavAVGameEffectCtrl.a(paramBoolean);
       this.jdField_a_of_type_ComTencentAvgameQavAVGameEffectCtrl = null;
     }
@@ -73,43 +80,45 @@ public class AVGameCameraAssistant
   
   private void g()
   {
-    if (this.jdField_a_of_type_ComTencentAvgameQavAVGameEffectCtrl == null) {}
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentAvgameQavAVGameEffectCtrl == null)
+    if (this.jdField_a_of_type_ComTencentAvgameQavAVGameEffectCtrl == null) {
+      try
       {
-        AVGameEffectCtrl localAVGameEffectCtrl = new AVGameEffectCtrl(this);
-        localAVGameEffectCtrl.b();
-        this.jdField_a_of_type_ComTencentAvgameQavAVGameEffectCtrl = localAVGameEffectCtrl;
-        a(this.jdField_a_of_type_ComTencentAvgameQavAVGameEffectCtrl);
+        if (this.jdField_a_of_type_ComTencentAvgameQavAVGameEffectCtrl == null)
+        {
+          AVGameEffectCtrl localAVGameEffectCtrl = new AVGameEffectCtrl(this);
+          localAVGameEffectCtrl.b();
+          this.jdField_a_of_type_ComTencentAvgameQavAVGameEffectCtrl = localAVGameEffectCtrl;
+          a(this.jdField_a_of_type_ComTencentAvgameQavAVGameEffectCtrl);
+        }
+        if (QLog.isDevelopLevel())
+        {
+          QLog.i("AVGameCameraAssistant", 2, "initEffectCtrl");
+          return;
+        }
       }
-      if (QLog.isDevelopLevel()) {
-        QLog.i("AVGameCameraAssistant", 2, "initEffectCtrl");
-      }
-      return;
+      finally {}
     }
-    finally {}
   }
   
   public int a(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
   {
     AVGameSession localAVGameSession = this.jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl.a();
+    int i = 0;
     if (localAVGameSession != null)
     {
-      int i = localAVGameSession.jdField_a_of_type_Int;
+      i = localAVGameSession.jdField_a_of_type_Int;
       if (paramBoolean1)
       {
         localAVGameSession.b(3);
         localAVGameSession.jdField_a_of_type_Int = 4;
         localAVGameSession.a(1, false);
       }
-      while (localAVGameSession.d != 2) {
-        return i;
+      else if (localAVGameSession.d == 2)
+      {
+        AVGameBusinessCtrl.b().c();
       }
-      AVGameBusinessCtrl.b().c();
-      return i;
     }
-    return 0;
+    return i;
   }
   
   public void a()
@@ -146,15 +155,21 @@ public class AVGameCameraAssistant
   
   public void a(AVGameCameraAssistant.CameraEventListener paramCameraEventListener)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("AVGameCameraAssistant", 4, "addCameraListener, cameraListener[" + paramCameraEventListener + "]");
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("addCameraListener, cameraListener[");
+      localStringBuilder.append(paramCameraEventListener);
+      localStringBuilder.append("]");
+      QLog.i("AVGameCameraAssistant", 4, localStringBuilder.toString());
     }
     try
     {
-      if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(paramCameraEventListener)) {
+      if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(paramCameraEventListener))
+      {
         this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramCameraEventListener);
+        return;
       }
-      return;
     }
     catch (Throwable paramCameraEventListener)
     {
@@ -168,36 +183,48 @@ public class AVGameCameraAssistant
       return;
     }
     paramAVGameSession.b(2);
-    long l = AudioHelper.b();
-    if (QLog.isColorLevel()) {
-      QLog.i("AVGameCameraAssistant", 2, "openCamera, seq[" + l + "]");
+    long l = QQAudioHelper.b();
+    if (QLog.isColorLevel())
+    {
+      paramAVGameSession = new StringBuilder();
+      paramAVGameSession.append("openCamera, seq[");
+      paramAVGameSession.append(l);
+      paramAVGameSession.append("]");
+      QLog.i("AVGameCameraAssistant", 2, paramAVGameSession.toString());
     }
-    this.jdField_a_of_type_ComTencentAvCameraCameraUtils.a(l);
+    this.jdField_a_of_type_ComTencentAvCameraApiICameraManagerApi.openCamera(l);
   }
   
   public void a(String paramString)
   {
-    if (!EffectCtrlBase.b()) {}
-    long l1;
-    long l2;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while ((AVGameAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get() == null);
-        if (this.jdField_a_of_type_ComTencentAvgameQavAVGameEffectCtrl == null) {
-          g();
-        }
-      } while ((this.jdField_a_of_type_ComTencentAvgameQavAVGameEffectCtrl != null) && (this.jdField_a_of_type_ComTencentAvgameQavAVGameEffectCtrl.f()));
-      l1 = SystemClock.elapsedRealtime();
-      l2 = Math.abs(l1 - this.jdField_a_of_type_Long);
-    } while (l2 < 2000L);
+    if (!EffectCtrlBase.b()) {
+      return;
+    }
+    if ((AVGameAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get() == null) {
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentAvgameQavAVGameEffectCtrl == null) {
+      g();
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentAvgameQavAVGameEffectCtrl;
+    if ((localObject != null) && (((AVGameEffectCtrl)localObject).f())) {
+      return;
+    }
+    long l1 = SystemClock.elapsedRealtime();
+    long l2 = Math.abs(l1 - this.jdField_a_of_type_Long);
+    if (l2 < 2000L) {
+      return;
+    }
     this.jdField_a_of_type_Long = l1;
-    if (QLog.isColorLevel()) {
-      QLog.i("AVGameCameraAssistant", 2, "startCheckEffect, from[" + paramString + "], interval[" + l2 + "]");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startCheckEffect, from[");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("], interval[");
+      ((StringBuilder)localObject).append(l2);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("AVGameCameraAssistant", 2, ((StringBuilder)localObject).toString());
     }
     ThreadManager.excute(new AVGameCameraAssistant.3(this), 16, null, true);
   }
@@ -211,8 +238,13 @@ public class AVGameCameraAssistant
   
   public void b(AVGameCameraAssistant.CameraEventListener paramCameraEventListener)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("AVGameCameraAssistant", 4, "removeCameraListener, cameraListener[" + paramCameraEventListener + "]");
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("removeCameraListener, cameraListener[");
+      localStringBuilder.append(paramCameraEventListener);
+      localStringBuilder.append("]");
+      QLog.i("AVGameCameraAssistant", 4, localStringBuilder.toString());
     }
     try
     {
@@ -231,16 +263,21 @@ public class AVGameCameraAssistant
       return;
     }
     paramAVGameSession.b(5);
-    long l = AudioHelper.b();
-    if (QLog.isColorLevel()) {
-      QLog.i("AVGameCameraAssistant", 2, "openCamera, seq[" + l + "]");
+    long l = QQAudioHelper.b();
+    if (QLog.isColorLevel())
+    {
+      paramAVGameSession = new StringBuilder();
+      paramAVGameSession.append("openCamera, seq[");
+      paramAVGameSession.append(l);
+      paramAVGameSession.append("]");
+      QLog.i("AVGameCameraAssistant", 2, paramAVGameSession.toString());
     }
-    this.jdField_a_of_type_ComTencentAvCameraCameraUtils.a(l, true);
+    this.jdField_a_of_type_ComTencentAvCameraApiICameraManagerApi.closeCamera(l, true);
   }
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentAvCameraCameraUtils.b(this.jdField_a_of_type_ComTencentAvCameraCameraObserver);
+    this.jdField_a_of_type_ComTencentAvCameraApiICameraManagerApi.deleteObserver(this.jdField_a_of_type_ComTencentAvCameraCameraObserver);
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
     f();
     a(true);
@@ -252,9 +289,10 @@ public class AVGameCameraAssistant
   {
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant$ClearCacheTask != null)
+    AVGameCameraAssistant.ClearCacheTask localClearCacheTask = this.jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant$ClearCacheTask;
+    if (localClearCacheTask != null)
     {
-      this.jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant$ClearCacheTask.jdField_a_of_type_Boolean = true;
+      localClearCacheTask.jdField_a_of_type_Boolean = true;
       this.jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant$ClearCacheTask = null;
     }
     a("beforeOpenCamera");
@@ -262,19 +300,15 @@ public class AVGameCameraAssistant
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
+    if (paramMessage.what == 1) {
       a("MSG_CHECK_PTV_SO");
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.qav.AVGameCameraAssistant
  * JD-Core Version:    0.7.0.1
  */

@@ -29,15 +29,18 @@ public class StStoryFeedUtil
   
   public static META.StStoryFeed getOriginalData(byte[] paramArrayOfByte)
   {
-    META.StStoryFeed localStStoryFeed = new META.StStoryFeed();
+    Object localObject = new META.StStoryFeed();
     try
     {
-      localStStoryFeed.mergeFrom(paramArrayOfByte);
-      return localStStoryFeed;
+      ((META.StStoryFeed)localObject).mergeFrom(paramArrayOfByte);
+      return localObject;
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      QLog.i("StStoryFeedUtil", 2, "getOriginal data fail!" + paramArrayOfByte.toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getOriginal data fail!");
+      ((StringBuilder)localObject).append(paramArrayOfByte.toString());
+      QLog.i("StStoryFeedUtil", 2, ((StringBuilder)localObject).toString());
       paramArrayOfByte.printStackTrace();
     }
     return new META.StStoryFeed();
@@ -53,19 +56,22 @@ public class StStoryFeedUtil
       {
         if (paramArrayList.hasNext())
         {
-          byte[] arrayOfByte = (byte[])paramArrayList.next();
-          if (arrayOfByte == null) {
+          Object localObject = (byte[])paramArrayList.next();
+          if (localObject == null) {
             continue;
           }
           META.StStoryFeed localStStoryFeed = new META.StStoryFeed();
           try
           {
-            localStStoryFeed.mergeFrom(arrayOfByte);
+            localStStoryFeed.mergeFrom((byte[])localObject);
             localArrayList.add(localStStoryFeed);
           }
           catch (InvalidProtocolBufferMicroException paramArrayList)
           {
-            QLog.i("StStoryFeedUtil", 2, "getOriginalList fail!" + paramArrayList.toString());
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("getOriginalList fail!");
+            ((StringBuilder)localObject).append(paramArrayList.toString());
+            QLog.i("StStoryFeedUtil", 2, ((StringBuilder)localObject).toString());
             paramArrayList.printStackTrace();
           }
         }
@@ -76,7 +82,7 @@ public class StStoryFeedUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.StStoryFeedUtil
  * JD-Core Version:    0.7.0.1
  */

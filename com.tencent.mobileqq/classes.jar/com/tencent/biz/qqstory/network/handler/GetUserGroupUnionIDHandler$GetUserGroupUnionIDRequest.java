@@ -46,16 +46,17 @@ public class GetUserGroupUnionIDHandler$GetUserGroupUnionIDRequest
     return jdField_a_of_type_JavaLangString;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqConvertGroupId localReqConvertGroupId = new qqstory_service.ReqConvertGroupId();
     localReqConvertGroupId.convert_from.set(this.c);
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if (localObject != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        String str = (String)localIterator.next();
+        String str = (String)((Iterator)localObject).next();
         qqstory_struct.GroupId localGroupId = new qqstory_struct.GroupId();
         localGroupId.group_uin.set(Long.valueOf(str).longValue());
         localReqConvertGroupId.group_req_list.add(localGroupId);
@@ -66,7 +67,7 @@ public class GetUserGroupUnionIDHandler$GetUserGroupUnionIDRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetUserGroupUnionIDHandler.GetUserGroupUnionIDRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -36,10 +36,11 @@ public class VSBaseServlet
     }
     if ((paramIntent instanceof VSBaseRequest))
     {
-      ((VSBaseRequest)paramIntent).setSsoResultCode(paramFromServiceMsg.getResultCode());
-      ((VSBaseRequest)paramIntent).setSsoFailMsg(paramFromServiceMsg.getBusinessFailMsg());
-      ((VSBaseRequest)paramIntent).setNetworkTimeCost(System.currentTimeMillis() - paramIntent.getSendTimeStamp());
-      ((VSBaseRequest)paramIntent).setSsoSeq(paramFromServiceMsg.getRequestSsoSeq());
+      VSBaseRequest localVSBaseRequest = (VSBaseRequest)paramIntent;
+      localVSBaseRequest.setSsoResultCode(paramFromServiceMsg.getResultCode());
+      localVSBaseRequest.setSsoFailMsg(paramFromServiceMsg.getBusinessFailMsg());
+      localVSBaseRequest.setNetworkTimeCost(System.currentTimeMillis() - paramIntent.getSendTimeStamp());
+      localVSBaseRequest.setSsoSeq(paramFromServiceMsg.getRequestSsoSeq());
     }
     VSNetworkHelper.getDispatchObserver().onReceive(paramIntent.getContextHashCode(), paramFromServiceMsg.isSuccess(), paramIntent, paramFromServiceMsg.getWupBuffer());
   }
@@ -61,7 +62,7 @@ public class VSBaseServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.richframework.network.servlet.VSBaseServlet
  * JD-Core Version:    0.7.0.1
  */

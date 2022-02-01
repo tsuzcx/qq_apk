@@ -20,41 +20,35 @@ class EcshopReportHandler$1
     super.onMessageRecordAdded(paramList);
     EcshopReportHandler localEcshopReportHandler = (EcshopReportHandler)EcshopReportHandler.a(this.a).getBusinessHandler(BusinessHandlerFactory.EC_SHOP_REPORT_HANDLER);
     EcShopAssistantManager localEcShopAssistantManager = (EcShopAssistantManager)EcshopReportHandler.a(this.a).getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
-    if ((localEcshopReportHandler == null) || (localEcShopAssistantManager == null)) {
-      return;
-    }
-    paramList = new ArrayList(paramList).iterator();
-    label166:
-    label169:
-    for (;;)
+    if (localEcshopReportHandler != null)
     {
-      label64:
-      MessageRecord localMessageRecord;
-      if (paramList.hasNext())
-      {
-        localMessageRecord = (MessageRecord)paramList.next();
-        if ((!"2".equals(localMessageRecord.getExtInfoFromExtStr("inter_num"))) && ((localMessageRecord.istroop != 1008) || (!ServiceAccountFolderManager.e(EcshopReportHandler.a(this.a), localMessageRecord.senderuin)))) {
-          break label166;
-        }
+      if (localEcShopAssistantManager == null) {
+        return;
       }
-      for (int i = 1;; i = 0)
+      paramList = new ArrayList(paramList).iterator();
+      while (paramList.hasNext())
       {
-        if ((i == 0) && (!localEcShopAssistantManager.a(localMessageRecord.senderuin))) {
-          break label169;
+        MessageRecord localMessageRecord = (MessageRecord)paramList.next();
+        int i;
+        if ((!"2".equals(localMessageRecord.getExtInfoFromExtStr("inter_num"))) && ((localMessageRecord.istroop != 1008) || (!ServiceAccountFolderManager.c(EcshopReportHandler.a(this.a), localMessageRecord.senderuin)))) {
+          i = 0;
+        } else {
+          i = 1;
         }
-        if (i != 0) {
-          localEcshopReportHandler.a(localMessageRecord);
+        if ((i != 0) || (localEcShopAssistantManager.a(localMessageRecord.senderuin)))
+        {
+          if (i != 0) {
+            localEcshopReportHandler.a(localMessageRecord);
+          }
+          localEcshopReportHandler.b(localMessageRecord);
         }
-        localEcshopReportHandler.b(localMessageRecord);
-        break label64;
-        break;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.EcshopReportHandler.1
  * JD-Core Version:    0.7.0.1
  */

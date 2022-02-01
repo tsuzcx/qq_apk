@@ -45,11 +45,16 @@ final class OperatorWindowWithTime$InexactSubscriber
       ArrayList localArrayList = new ArrayList(this.chunks);
       this.chunks.clear();
       ??? = localArrayList.iterator();
-      if (((Iterator)???).hasNext()) {
+      while (((Iterator)???).hasNext()) {
         ((OperatorWindowWithTime.CountedSerializedSubject)((Iterator)???).next()).consumer.onCompleted();
       }
+      this.child.onCompleted();
+      return;
     }
-    this.child.onCompleted();
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public void onError(Throwable paramThrowable)
@@ -63,22 +68,26 @@ final class OperatorWindowWithTime$InexactSubscriber
       ArrayList localArrayList = new ArrayList(this.chunks);
       this.chunks.clear();
       ??? = localArrayList.iterator();
-      if (((Iterator)???).hasNext()) {
+      while (((Iterator)???).hasNext()) {
         ((OperatorWindowWithTime.CountedSerializedSubject)((Iterator)???).next()).consumer.onError(paramThrowable);
       }
+      this.child.onError(paramThrowable);
+      return;
     }
-    this.child.onError(paramThrowable);
+    for (;;)
+    {
+      throw paramThrowable;
+    }
   }
   
   public void onNext(T paramT)
   {
-    Object localObject2;
     synchronized (this.guard)
     {
       if (this.done) {
         return;
       }
-      localObject2 = new ArrayList(this.chunks);
+      Object localObject2 = new ArrayList(this.chunks);
       Iterator localIterator = this.chunks.iterator();
       while (localIterator.hasNext())
       {
@@ -89,15 +98,20 @@ final class OperatorWindowWithTime$InexactSubscriber
           localIterator.remove();
         }
       }
-    }
-    ??? = ((List)localObject2).iterator();
-    while (((Iterator)???).hasNext())
-    {
-      localObject2 = (OperatorWindowWithTime.CountedSerializedSubject)((Iterator)???).next();
-      ((OperatorWindowWithTime.CountedSerializedSubject)localObject2).consumer.onNext(paramT);
-      if (((OperatorWindowWithTime.CountedSerializedSubject)localObject2).count == this.this$0.size) {
-        ((OperatorWindowWithTime.CountedSerializedSubject)localObject2).consumer.onCompleted();
+      ??? = ((List)localObject2).iterator();
+      while (((Iterator)???).hasNext())
+      {
+        localObject2 = (OperatorWindowWithTime.CountedSerializedSubject)((Iterator)???).next();
+        ((OperatorWindowWithTime.CountedSerializedSubject)localObject2).consumer.onNext(paramT);
+        if (((OperatorWindowWithTime.CountedSerializedSubject)localObject2).count == this.this$0.size) {
+          ((OperatorWindowWithTime.CountedSerializedSubject)localObject2).consumer.onCompleted();
+        }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramT;
     }
   }
   
@@ -120,40 +134,47 @@ final class OperatorWindowWithTime$InexactSubscriber
         return;
       }
       this.chunks.add(localCountedSerializedSubject);
+      try
+      {
+        this.child.onNext(localCountedSerializedSubject.producer);
+        this.worker.schedule(new OperatorWindowWithTime.InexactSubscriber.2(this, localCountedSerializedSubject), this.this$0.timespan, this.this$0.unit);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        onError(localThrowable);
+        return;
+      }
     }
   }
   
   void terminateChunk(OperatorWindowWithTime.CountedSerializedSubject<T> paramCountedSerializedSubject)
   {
-    for (;;)
+    int i;
+    synchronized (this.guard)
     {
-      synchronized (this.guard)
-      {
-        if (this.done) {
-          return;
-        }
-        Iterator localIterator = this.chunks.iterator();
-        if (localIterator.hasNext())
-        {
-          if ((OperatorWindowWithTime.CountedSerializedSubject)localIterator.next() != paramCountedSerializedSubject) {
-            continue;
-          }
-          i = 1;
-          localIterator.remove();
-          if (i == 0) {
-            break;
-          }
-          paramCountedSerializedSubject.consumer.onCompleted();
-          return;
-        }
+      if (this.done) {
+        return;
       }
-      int i = 0;
+      Iterator localIterator = this.chunks.iterator();
+      do
+      {
+        if (!localIterator.hasNext()) {
+          break;
+        }
+      } while ((OperatorWindowWithTime.CountedSerializedSubject)localIterator.next() != paramCountedSerializedSubject);
+      i = 1;
+      localIterator.remove();
+      if (i != 0) {
+        paramCountedSerializedSubject.consumer.onCompleted();
+      }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorWindowWithTime.InexactSubscriber
  * JD-Core Version:    0.7.0.1
  */

@@ -6,24 +6,25 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
 import com.tencent.mobileqq.profilecard.base.component.AbsProfileContentComponent;
 import com.tencent.mobileqq.profilecard.base.component.IProfileActivityDelegate;
+import com.tencent.mobileqq.profilecard.base.config.IProfileConfig;
 import com.tencent.mobileqq.profilecard.base.framework.IComponentCenter;
 import com.tencent.mobileqq.profilecard.bussiness.anonymous.bean.AnonymousQuestion;
 import com.tencent.mobileqq.profilecard.bussiness.anonymous.handler.AnonymousObserver;
-import com.tencent.mobileqq.profilecard.bussiness.anonymous.manager.AnonymousRedPointUtils;
+import com.tencent.mobileqq.profilecard.bussiness.anonymous.utils.AnonymousRedPointUtils;
 import com.tencent.mobileqq.profilecard.bussiness.anonymous.views.AnonymousView;
-import com.tencent.mobileqq.profilesetting.ProfileSettingUtils;
-import com.tencent.mobileqq.profilesetting.ProfileSettingUtils.Companion;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
+import com.tencent.mobileqq.profilecard.utils.ProfilePAUtils;
+import com.tencent.mobileqq.profilesetting.api.IProfileSettingApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.ProfileConfigHelper;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,14 +42,15 @@ public class ProfileAnonymousComponent
   
   private List<AnonymousQuestion> buildRecyclerAdapterData(List<AnonymousQuestion> paramList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
+    boolean bool1 = isHost();
+    boolean bool2 = QLog.isColorLevel();
     int j = 0;
-    boolean bool = isHost();
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileAnonymousComponent", 0, String.format("buildRecyclerAdapterData() isHost=%b, hasQuestion=%b , hasAnswer=%b ,hasMoreQues=%b ,", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) }));
+    if (bool2) {
+      QLog.d("ProfileAnonymousComponent", 2, String.format("buildRecyclerAdapterData() isHost=%b, hasQuestion=%b , hasAnswer=%b ,hasMoreQues=%b ,", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) }));
     }
     ArrayList localArrayList = new ArrayList();
     AnonymousQuestion localAnonymousQuestion = new AnonymousQuestion();
-    if (bool)
+    if (bool1)
     {
       if (paramBoolean1)
       {
@@ -73,202 +75,178 @@ public class ProfileAnonymousComponent
           {
             localAnonymousQuestion.uiState = 3;
             localArrayList.add(localAnonymousQuestion);
+            return localArrayList;
           }
+        }
+        else
+        {
+          localAnonymousQuestion.uiState = 2;
+          localArrayList.add(localAnonymousQuestion);
           return localArrayList;
         }
-        localAnonymousQuestion.uiState = 2;
+      }
+      else
+      {
+        localAnonymousQuestion.uiState = 1;
         localArrayList.add(localAnonymousQuestion);
         return localArrayList;
       }
-      localAnonymousQuestion.uiState = 1;
-      localArrayList.add(localAnonymousQuestion);
-      return localArrayList;
     }
-    if ((paramBoolean1) && (paramBoolean2))
+    else
     {
-      localAnonymousQuestion.uiState = 5;
+      if ((paramBoolean1) && (paramBoolean2))
+      {
+        localAnonymousQuestion.uiState = 5;
+        localArrayList.add(localAnonymousQuestion);
+        localArrayList.addAll(paramList);
+        return localArrayList;
+      }
+      localAnonymousQuestion.uiState = 4;
       localArrayList.add(localAnonymousQuestion);
-      localArrayList.addAll(paramList);
-      return localArrayList;
     }
-    localAnonymousQuestion.uiState = 4;
-    localArrayList.add(localAnonymousQuestion);
     return localArrayList;
   }
   
   private boolean isHost()
   {
-    return ((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0;
+    return ((ProfileCardInfo)this.mData).allInOne.pa == 0;
   }
   
   private boolean makeOrRefreshAnonymous(Card paramCard)
   {
-    boolean bool4 = true;
-    ProfileAnonymousAnswerInfo localProfileAnonymousAnswerInfo = (ProfileAnonymousAnswerInfo)((ProfileCardInfo)this.mData).a(ProfileAnonymousAnswerInfo.class);
-    boolean bool2;
-    label60:
-    boolean bool5;
-    if ((this.mConfigHelper == null) || (this.mConfigHelper.a(13)))
-    {
-      bool1 = true;
-      if (ProfileSettingUtils.a.a(42425, paramCard, this.mApp) == 1) {
-        break label183;
-      }
-      bool2 = true;
-      bool5 = ProfileActivity.AllInOne.b(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
-      if ((paramCard == null) || (localProfileAnonymousAnswerInfo == null) || (!localProfileAnonymousAnswerInfo.needForbidEntry)) {
-        break label188;
-      }
-    }
-    label183:
-    label188:
-    for (boolean bool3 = true;; bool3 = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileAnonymousComponent", 0, String.format("makeOrRefreshAnonymous() configEnable=%b, visible=%b , isFriend=%b ,isForbidEntry=%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool5), Boolean.valueOf(bool3) }));
-      }
-      if ((!bool3) && (bool1) && (bool2) && (bool5)) {
-        break label194;
-      }
-      if (this.mViewContainer == null) {
-        break label397;
-      }
-      this.mViewContainer = null;
-      return true;
+    ProfileAnonymousAnswerInfo localProfileAnonymousAnswerInfo = (ProfileAnonymousAnswerInfo)((ProfileCardInfo)this.mData).getBusinessInfo(ProfileAnonymousAnswerInfo.class);
+    Object localObject = this.mConfigHelper;
+    boolean bool5 = false;
+    boolean bool6 = false;
+    boolean bool4 = false;
+    if ((localObject != null) && (!this.mConfigHelper.isSwitchEnable(13))) {
       bool1 = false;
-      break;
+    } else {
+      bool1 = true;
+    }
+    boolean bool2;
+    if (((IProfileSettingApi)QRoute.api(IProfileSettingApi.class)).getProfileDisplaySettingStateFromCard(42425, paramCard, this.mApp) != 1) {
+      bool2 = true;
+    } else {
       bool2 = false;
-      break label60;
     }
-    label194:
-    Object localObject;
-    label296:
-    label307:
-    String str;
-    if (this.mViewContainer == null)
+    boolean bool7 = ProfilePAUtils.isPaTypeFriend(((ProfileCardInfo)this.mData).allInOne);
+    boolean bool3;
+    if ((paramCard != null) && (localProfileAnonymousAnswerInfo != null) && (localProfileAnonymousAnswerInfo.needForbidEntry)) {
+      bool3 = true;
+    } else {
+      bool3 = false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileAnonymousComponent", 2, String.format("makeOrRefreshAnonymous() configEnable=%b, visible=%b , isFriend=%b ,isForbidEntry=%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool7), Boolean.valueOf(bool3) }));
+    }
+    if ((!bool3) && (bool1) && (bool2) && (bool7))
     {
-      this.anonymousView = new AnonymousView(this.mActivity);
-      this.anonymousView.setTitle(this.mActivity.getString(2131698562));
-      paramCard = this.anonymousView;
-      localObject = this.mApp;
-      if (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate != null)
+      bool1 = bool5;
+      if (this.mViewContainer == null)
       {
-        bool1 = true;
-        paramCard.initData((QQAppInterface)localObject, bool1, ((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+        this.anonymousView = new AnonymousView(this.mActivity);
+        this.anonymousView.setTitle(this.mActivity.getString(2131698628));
+        paramCard = this.anonymousView;
+        localObject = this.mApp;
+        bool1 = bool4;
+        if (((ProfileCardInfo)this.mData).currentTemplate != null) {
+          bool1 = true;
+        }
+        paramCard.initData((AppInterface)localObject, bool1, ((ProfileCardInfo)this.mData).allInOne.uin);
         this.mViewContainer = this.anonymousView;
-        if (!isHost()) {
-          break label361;
+        if (isHost()) {
+          paramCard = "";
+        } else {
+          paramCard = ((ProfileCardInfo)this.mData).allInOne.uin;
         }
-        paramCard = "";
-        if (!isHost()) {
-          break label378;
+        if (isHost()) {
+          localObject = "0X800B461";
+        } else {
+          localObject = "0X800B462";
         }
-        localObject = "0X800B461";
-        if (!isHost()) {
-          break label385;
+        String str;
+        if (isHost()) {
+          str = "0X800B461";
+        } else {
+          str = "0X800B462";
         }
-        str = "0X800B461";
-        label318:
         ReportController.b(null, "dc00898", "", paramCard, (String)localObject, str, 0, 0, "", "", "", "");
+        bool1 = true;
       }
-    }
-    for (boolean bool1 = bool4;; bool1 = false)
-    {
       refreshAnonymousUI(localProfileAnonymousAnswerInfo, this.anonymousView);
       return bool1;
-      bool1 = false;
-      break;
-      label361:
-      paramCard = ((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString;
-      break label296;
-      label378:
-      localObject = "0X800B462";
-      break label307;
-      label385:
-      str = "0X800B462";
-      break label318;
     }
-    label397:
-    return false;
+    boolean bool1 = bool6;
+    if (this.mViewContainer != null)
+    {
+      this.mViewContainer = null;
+      bool1 = true;
+    }
+    return bool1;
   }
   
   private void refreshAnonymousUI(ProfileAnonymousAnswerInfo paramProfileAnonymousAnswerInfo, AnonymousView paramAnonymousView)
   {
     updateItemTheme(paramAnonymousView, true);
     boolean bool1;
-    boolean bool2;
-    label39:
-    boolean bool3;
-    label63:
-    int i;
-    label78:
-    int j;
-    if ((paramProfileAnonymousAnswerInfo != null) && (paramProfileAnonymousAnswerInfo.mTotalQuestionCount > 0))
-    {
+    if ((paramProfileAnonymousAnswerInfo != null) && (paramProfileAnonymousAnswerInfo.mTotalQuestionCount > 0)) {
       bool1 = true;
-      if ((paramProfileAnonymousAnswerInfo == null) || (paramProfileAnonymousAnswerInfo.mAnonymousQuestions.size() <= 0)) {
-        break label279;
-      }
-      bool2 = true;
-      if ((!bool2) || (paramProfileAnonymousAnswerInfo.mTotalQuestionCount <= paramProfileAnonymousAnswerInfo.mAnonymousQuestions.size())) {
-        break label285;
-      }
-      bool3 = true;
-      label91:
-      Object localObject;
-      if (bool1)
-      {
-        if (!isHost()) {
-          break label291;
-        }
-        i = 2131698565;
-        if (!isHost()) {
-          break label298;
-        }
-        j = paramProfileAnonymousAnswerInfo.mTotalQuestionCount;
-        if (j > 0)
-        {
-          localObject = String.format(this.mActivity.getString(i), new Object[] { Integer.valueOf(j) });
-          TextView localTextView = new TextView(this.mActivity);
-          localTextView.setText((CharSequence)localObject);
-          paramAnonymousView.mTitleExtContainer.removeAllViews();
-          paramAnonymousView.mTitleExtContainer.addView(localTextView);
-          paramAnonymousView.mTitleExtContainer.setVisibility(0);
-          updateItemTheme(null, localTextView);
-        }
-      }
-      if ((AnonymousRedPointUtils.showProfileRedPointGuide(this.mApp)) && (isHost()))
-      {
-        localObject = paramAnonymousView.getResources().getDrawable(2130850830);
-        ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getMinimumWidth(), ((Drawable)localObject).getMinimumHeight());
-        paramAnonymousView.mTitleText.setCompoundDrawables(null, null, (Drawable)localObject, null);
-        paramAnonymousView.mTitleText.setCompoundDrawablePadding(Utils.dp2px(4.0D));
-      }
-      if (paramProfileAnonymousAnswerInfo == null) {
-        break label307;
-      }
-    }
-    label279:
-    label285:
-    label291:
-    label298:
-    label307:
-    for (paramProfileAnonymousAnswerInfo = paramProfileAnonymousAnswerInfo.mAnonymousQuestions;; paramProfileAnonymousAnswerInfo = new ArrayList())
-    {
-      paramAnonymousView.show(buildRecyclerAdapterData(paramProfileAnonymousAnswerInfo, bool1, bool2, bool3));
-      updateItemTheme(null, null);
-      return;
+    } else {
       bool1 = false;
-      break;
-      bool2 = false;
-      break label39;
-      bool3 = false;
-      break label63;
-      i = 2131698568;
-      break label78;
-      j = paramProfileAnonymousAnswerInfo.mAnsweredQuestionCount;
-      break label91;
     }
+    boolean bool2;
+    if ((paramProfileAnonymousAnswerInfo != null) && (paramProfileAnonymousAnswerInfo.mAnonymousQuestions.size() > 0)) {
+      bool2 = true;
+    } else {
+      bool2 = false;
+    }
+    boolean bool3;
+    if ((bool2) && (paramProfileAnonymousAnswerInfo.mTotalQuestionCount > paramProfileAnonymousAnswerInfo.mAnonymousQuestions.size())) {
+      bool3 = true;
+    } else {
+      bool3 = false;
+    }
+    Object localObject;
+    if (bool1)
+    {
+      int i;
+      if (isHost()) {
+        i = 2131698631;
+      } else {
+        i = 2131698634;
+      }
+      int j;
+      if (isHost()) {
+        j = paramProfileAnonymousAnswerInfo.mTotalQuestionCount;
+      } else {
+        j = paramProfileAnonymousAnswerInfo.mAnsweredQuestionCount;
+      }
+      if (j > 0)
+      {
+        localObject = String.format(this.mActivity.getString(i), new Object[] { Integer.valueOf(j) });
+        TextView localTextView = new TextView(this.mActivity);
+        localTextView.setText((CharSequence)localObject);
+        paramAnonymousView.mTitleExtContainer.removeAllViews();
+        paramAnonymousView.mTitleExtContainer.addView(localTextView);
+        paramAnonymousView.mTitleExtContainer.setVisibility(0);
+        updateItemTheme(null, localTextView);
+      }
+    }
+    if ((AnonymousRedPointUtils.showProfileRedPointGuide(this.mApp)) && (isHost()))
+    {
+      localObject = paramAnonymousView.getResources().getDrawable(2130850766);
+      ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getMinimumWidth(), ((Drawable)localObject).getMinimumHeight());
+      paramAnonymousView.mTitleText.setCompoundDrawables(null, null, (Drawable)localObject, null);
+      paramAnonymousView.mTitleText.setCompoundDrawablePadding(Utils.a(4.0F, paramAnonymousView.getResources()));
+    }
+    if (paramProfileAnonymousAnswerInfo != null) {
+      paramProfileAnonymousAnswerInfo = paramProfileAnonymousAnswerInfo.mAnonymousQuestions;
+    } else {
+      paramProfileAnonymousAnswerInfo = new ArrayList();
+    }
+    paramAnonymousView.show(buildRecyclerAdapterData(paramProfileAnonymousAnswerInfo, bool1, bool2, bool3));
+    updateItemTheme(null, null);
   }
   
   public String getComponentName()
@@ -294,30 +272,30 @@ public class ProfileAnonymousComponent
     }
   }
   
-  public void onCreate(BaseActivity paramBaseActivity, Bundle paramBundle)
+  public void onCreate(QBaseActivity paramQBaseActivity, Bundle paramBundle)
   {
-    super.onCreate(paramBaseActivity, paramBundle);
+    super.onCreate(paramQBaseActivity, paramBundle);
     this.mApp.addObserver(this.anonymousObserver);
   }
   
   public boolean onDataUpdate(ProfileCardInfo paramProfileCardInfo)
   {
-    boolean bool = super.onDataUpdate(paramProfileCardInfo);
-    return makeOrRefreshAnonymous(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqDataCard) | bool;
+    return super.onDataUpdate(paramProfileCardInfo) | makeOrRefreshAnonymous(((ProfileCardInfo)this.mData).card);
   }
   
   public void onDestroy()
   {
     this.mApp.removeObserver(this.anonymousObserver);
-    if (this.anonymousView != null) {
-      this.anonymousView.destroy();
+    AnonymousView localAnonymousView = this.anonymousView;
+    if (localAnonymousView != null) {
+      localAnonymousView.destroy();
     }
     super.onDestroy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.anonymous.ProfileAnonymousComponent
  * JD-Core Version:    0.7.0.1
  */

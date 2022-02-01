@@ -12,12 +12,13 @@ final class dc$a
   
   public final int a(String paramString)
   {
-    int i = 0;
     int k = paramString.length();
+    int i = 0;
     int j = 0;
     while (i < k)
     {
-      j = j * this.b + paramString.charAt(i);
+      int m = this.b;
+      j = paramString.charAt(i) + m * j;
       i += 1;
     }
     return this.a - 1 & j;
@@ -25,7 +26,7 @@ final class dc$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.dc.a
  * JD-Core Version:    0.7.0.1
  */

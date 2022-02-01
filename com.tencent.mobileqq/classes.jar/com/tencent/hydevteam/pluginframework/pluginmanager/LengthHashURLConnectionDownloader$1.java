@@ -15,19 +15,22 @@ class LengthHashURLConnectionDownloader$1
   
   public double getProgress()
   {
-    double d = 0.0D;
-    if ((this.a != 0.0D) && (!isDone())) {
-      d = this.b.get() / this.a;
+    if ((this.a != 0.0D) && (!isDone()))
+    {
+      double d1 = this.b.get();
+      double d2 = this.a;
+      Double.isNaN(d1);
+      return d1 / d2;
     }
-    while (!isDone()) {
-      return d;
+    if (isDone()) {
+      return 1.0D;
     }
-    return 1.0D;
+    return 0.0D;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hydevteam.pluginframework.pluginmanager.LengthHashURLConnectionDownloader.1
  * JD-Core Version:    0.7.0.1
  */

@@ -7,9 +7,14 @@ import android.text.TextUtils;
 import android.view.View;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.app.FavEmoRoamingHandler;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emoticonview.api.IFavoriteEmotionService;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.emosm.api.IFavroamingDBManagerService;
+import com.tencent.mobileqq.emosm.favroaming.FavEmoSendControl;
+import com.tencent.mobileqq.emosm.favroaming.FavEmoSingleSend;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.FavEmoRoamingHandlerProxy;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.FavroamingDBManagerServiceProxy;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -22,73 +27,93 @@ class FavoriteEmotionAdapter$1
   
   public boolean shouldInterceptClickEvent(View paramView, EmoticonInfo paramEmoticonInfo)
   {
-    if ((paramEmoticonInfo == null) || (paramView == null)) {
-      return false;
-    }
-    if (TextUtils.isEmpty(paramEmoticonInfo.action))
+    if (paramEmoticonInfo != null)
     {
-      Object localObject = FavoriteEmotionAdapter.access$000(this.this$0, paramEmoticonInfo);
-      int i = FavoriteEmotionAdapter.access$100(this.this$0, paramEmoticonInfo);
-      if ((((String)localObject).equals("needUpload")) || (((String)localObject).equals("needDel"))) {
-        return true;
+      if (paramView == null) {
+        return false;
       }
-      if (((String)localObject).equals("failed"))
+      if (TextUtils.isEmpty(paramEmoticonInfo.action))
       {
-        paramView = ((IFavoriteEmotionService)QRoute.api(IFavoriteEmotionService.class)).getEmoticonDataList(this.this$0.app);
-        if ((paramView != null) && (paramView.size() > 0))
+        Object localObject = FavoriteEmotionAdapter.access$000(this.this$0, paramEmoticonInfo);
+        int i = FavoriteEmotionAdapter.access$100(this.this$0, paramEmoticonInfo);
+        if (!((String)localObject).equals("needUpload"))
         {
-          paramView = paramView.iterator();
-          while (paramView.hasNext())
+          if (((String)localObject).equals("needDel")) {
+            return true;
+          }
+          if (((String)localObject).equals("failed"))
           {
-            localObject = (CustomEmotionData)paramView.next();
-            if (((CustomEmotionData)localObject).emoId == i)
+            paramView = ((FavroamingDBManagerServiceProxy)this.this$0.app.getRuntimeService(IFavroamingDBManagerService.class)).getEmoticonDataList();
+            if ((paramView != null) && (paramView.size() > 0))
             {
-              QLog.d("FavoriteEmotionAdapter", 1, new Object[] { "resend, emoId:", Integer.valueOf(((CustomEmotionData)localObject).emoId) });
-              if ((((CustomEmotionData)localObject).emoOriginalPath != null) && (!((IFavoriteEmotionService)QRoute.api(IFavoriteEmotionService.class)).checkPicFavEnable(((CustomEmotionData)localObject).emoOriginalPath)))
+              paramView = paramView.iterator();
+              while (paramView.hasNext())
               {
-                ((IFavoriteEmotionService)QRoute.api(IFavoriteEmotionService.class)).notifyUI(this.this$0.app);
+                localObject = (CustomEmotionData)paramView.next();
+                if (((CustomEmotionData)localObject).emoId == i)
+                {
+                  QLog.d("FavoriteEmotionAdapter", 1, new Object[] { "resend, emoId:", Integer.valueOf(((CustomEmotionData)localObject).emoId) });
+                  if ((((CustomEmotionData)localObject).emoOriginalPath != null) && (!FavEmoSendControl.a(((CustomEmotionData)localObject).emoOriginalPath)))
+                  {
+                    ((FavEmoRoamingHandlerProxy)this.this$0.app.getBusinessHandler(FavEmoRoamingHandler.a)).notifyUI(2, true, Integer.valueOf(1));
+                  }
+                  else
+                  {
+                    ((CustomEmotionData)localObject).RomaingType = "needUpload";
+                    FavoriteEmotionAdapter.access$200(this.this$0, paramEmoticonInfo, "needUpload");
+                    ((FavEmoRoamingHandlerProxy)this.this$0.app.getBusinessHandler(FavEmoRoamingHandler.a)).notifyUI(2, true, null);
+                    com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoAllSend.b = false;
+                    ThreadManager.excute(new FavEmoSingleSend((CustomEmotionData)localObject, true), 64, null, false);
+                  }
+                }
               }
-              else
+            }
+            return true;
+          }
+          localObject = (URLImageView)paramView.findViewById(2131378202);
+          paramView = (URLImageView)paramView.findViewById(2131374391);
+          if ((((URLImageView)localObject).getDrawable() instanceof URLDrawable))
+          {
+            URLDrawable localURLDrawable = (URLDrawable)((URLImageView)localObject).getDrawable();
+            if ((localURLDrawable.getStatus() != 3) && (localURLDrawable.getStatus() != 2))
+            {
+              if (localURLDrawable.getStatus() == 0)
               {
-                ((CustomEmotionData)localObject).RomaingType = "needUpload";
-                FavoriteEmotionAdapter.access$200(this.this$0, paramEmoticonInfo, "needUpload");
-                ((IFavoriteEmotionService)QRoute.api(IFavoriteEmotionService.class)).dealResendCameraEmotion(this.this$0.app, localObject);
+                if (QLog.isColorLevel())
+                {
+                  paramView = new StringBuilder();
+                  paramView.append("now  favorite EmoticonInfo loading ");
+                  paramView.append(paramEmoticonInfo.toString());
+                  QLog.i("FavoriteEmotionAdapter", 2, paramView.toString());
+                }
+                return true;
               }
+            }
+            else
+            {
+              if (QLog.isColorLevel())
+              {
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append("now  favorite EmoticonInfo loading failed, restart download ");
+                localStringBuilder.append(paramEmoticonInfo.toString());
+                QLog.i("FavoriteEmotionAdapter", 2, localStringBuilder.toString());
+              }
+              ((URLImageView)localObject).setVisibility(8);
+              paramView.setVisibility(0);
+              localURLDrawable.restartDownload();
+              if (!(paramView.getDrawable() instanceof Animatable))
+              {
+                paramEmoticonInfo = (Animatable)BaseApplication.getContext().getResources().getDrawable(2130846461);
+                paramView.setImageDrawable((Drawable)paramEmoticonInfo);
+                paramEmoticonInfo.start();
+                return true;
+              }
+              ((Animatable)paramView.getDrawable()).start();
             }
           }
         }
-        return true;
-      }
-      localObject = (URLImageView)paramView.findViewById(2131378813);
-      paramView = (URLImageView)paramView.findViewById(2131374857);
-      if ((((URLImageView)localObject).getDrawable() instanceof URLDrawable))
-      {
-        URLDrawable localURLDrawable = (URLDrawable)((URLImageView)localObject).getDrawable();
-        if ((localURLDrawable.getStatus() == 3) || (localURLDrawable.getStatus() == 2))
+        else
         {
-          if (QLog.isColorLevel()) {
-            QLog.i("FavoriteEmotionAdapter", 2, "now  favorite EmoticonInfo loading failed, restart download " + paramEmoticonInfo.toString());
-          }
-          ((URLImageView)localObject).setVisibility(8);
-          paramView.setVisibility(0);
-          localURLDrawable.restartDownload();
-          if (!(paramView.getDrawable() instanceof Animatable))
-          {
-            paramEmoticonInfo = (Animatable)BaseApplication.getContext().getResources().getDrawable(2130846582);
-            paramView.setImageDrawable((Drawable)paramEmoticonInfo);
-            paramEmoticonInfo.start();
-          }
-          for (;;)
-          {
-            return true;
-            ((Animatable)paramView.getDrawable()).start();
-          }
-        }
-        if (localURLDrawable.getStatus() == 0)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("FavoriteEmotionAdapter", 2, "now  favorite EmoticonInfo loading " + paramEmoticonInfo.toString());
-          }
           return true;
         }
       }
@@ -98,7 +123,7 @@ class FavoriteEmotionAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.FavoriteEmotionAdapter.1
  * JD-Core Version:    0.7.0.1
  */

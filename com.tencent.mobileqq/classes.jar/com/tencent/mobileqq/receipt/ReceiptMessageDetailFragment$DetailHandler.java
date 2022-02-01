@@ -25,96 +25,95 @@ class ReceiptMessageDetailFragment$DetailHandler
   public void handleMessage(Message paramMessage)
   {
     ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.a.get();
-    if ((localReceiptMessageDetailFragment == null) || (!localReceiptMessageDetailFragment.isAdded())) {}
-    label124:
-    int i;
-    label126:
-    do
+    if (localReceiptMessageDetailFragment != null)
     {
-      return;
-      switch (paramMessage.what)
+      if (!localReceiptMessageDetailFragment.isAdded()) {
+        return;
+      }
+      int i = paramMessage.what;
+      if (i != 10)
       {
-      case 8: 
-      case 9: 
-      case 12: 
-      case 13: 
-      case 14: 
-      case 15: 
-      case 16: 
-      case 17: 
-      case 18: 
-      case 19: 
-      default: 
-        i = 0;
+        if (i != 11)
+        {
+          if (i != 20)
+          {
+            switch (i)
+            {
+            default: 
+              break;
+            case 7: 
+              ReceiptMessageDetailFragment.k(localReceiptMessageDetailFragment);
+              break;
+            case 6: 
+              i = PttItemBuilder.a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment));
+              localReceiptMessageDetailFragment.a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), i, false);
+              break;
+            case 5: 
+              QQToast.a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).getApp(), 1, 2131698575, 0).a(localReceiptMessageDetailFragment);
+              break;
+            case 4: 
+              ReceiptMessageDetailFragment.h(localReceiptMessageDetailFragment);
+              break;
+            case 3: 
+              if (!(paramMessage.obj instanceof MessageForPtt)) {
+                return;
+              }
+              ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment, 3);
+              ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, (MessageForPtt)paramMessage.obj);
+              ReceiptMessageDetailFragment.h(localReceiptMessageDetailFragment);
+              break;
+            case 2: 
+              if (!(paramMessage.obj instanceof MessageForPic)) {
+                return;
+              }
+              ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment, 2);
+              ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, (MessageForPic)paramMessage.obj);
+              break;
+            case 1: 
+              if (!(paramMessage.obj instanceof MessageForText)) {
+                return;
+              }
+              ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment, 1);
+              ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, (MessageForText)paramMessage.obj);
+              i = 1;
+              break;
+            }
+            ReceiptMessageDetailFragment.i(localReceiptMessageDetailFragment);
+          }
+          else
+          {
+            ReceiptMessageDetailFragment.j(localReceiptMessageDetailFragment);
+          }
+        }
+        else {
+          ReceiptMessageDetailFragment.l(localReceiptMessageDetailFragment);
+        }
       }
-    } while (i == 0);
-    localReceiptMessageDetailFragment.stopTitleProgress();
-    ReceiptMessageDetailFragment.m(localReceiptMessageDetailFragment);
-    if ((ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a == 0) && (!ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment)))
-    {
-      if (!ReceiptMessageDetailFragment.b(localReceiptMessageDetailFragment)) {
-        break label399;
+      else {
+        ThreadManager.post(new ReceiptMessageDetailFragment.DetailHandler.1(this, localReceiptMessageDetailFragment), 8, null, false);
       }
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, 1, true);
-    }
-    while (ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment))
-    {
-      ReceiptMessageDetailFragment.h(localReceiptMessageDetailFragment);
-      return;
-      if (!(paramMessage.obj instanceof MessageForText)) {
-        break;
+      i = 0;
+      if (i != 0)
+      {
+        localReceiptMessageDetailFragment.stopTitleProgress();
+        ReceiptMessageDetailFragment.m(localReceiptMessageDetailFragment);
+        if ((ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a == 0) && (!ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment))) {
+          if (ReceiptMessageDetailFragment.b(localReceiptMessageDetailFragment)) {
+            ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, 1, true);
+          } else {
+            ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, 0, true);
+          }
+        }
+        if (ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment)) {
+          ReceiptMessageDetailFragment.h(localReceiptMessageDetailFragment);
+        }
       }
-      ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment, 1);
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, (MessageForText)paramMessage.obj);
-      i = 1;
-      break label126;
-      if (!(paramMessage.obj instanceof MessageForPic)) {
-        break;
-      }
-      ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment, 2);
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, (MessageForPic)paramMessage.obj);
-      i = 1;
-      break label126;
-      if (!(paramMessage.obj instanceof MessageForPtt)) {
-        break;
-      }
-      ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment, 3);
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, (MessageForPtt)paramMessage.obj);
-      ReceiptMessageDetailFragment.h(localReceiptMessageDetailFragment);
-      i = 1;
-      break label126;
-      ReceiptMessageDetailFragment.i(localReceiptMessageDetailFragment);
-      i = 0;
-      break label126;
-      ReceiptMessageDetailFragment.j(localReceiptMessageDetailFragment);
-      i = 0;
-      break label126;
-      ReceiptMessageDetailFragment.h(localReceiptMessageDetailFragment);
-      i = 0;
-      break label126;
-      QQToast.a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).getApp(), 1, 2131698509, 0).a(localReceiptMessageDetailFragment);
-      i = 0;
-      break label126;
-      i = PttItemBuilder.a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment));
-      localReceiptMessageDetailFragment.a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), i, false);
-      i = 0;
-      break label126;
-      ReceiptMessageDetailFragment.k(localReceiptMessageDetailFragment);
-      i = 0;
-      break label126;
-      ThreadManager.post(new ReceiptMessageDetailFragment.DetailHandler.1(this, localReceiptMessageDetailFragment), 8, null, false);
-      i = 0;
-      break label126;
-      ReceiptMessageDetailFragment.l(localReceiptMessageDetailFragment);
-      break label124;
-      label399:
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, 0, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment.DetailHandler
  * JD-Core Version:    0.7.0.1
  */

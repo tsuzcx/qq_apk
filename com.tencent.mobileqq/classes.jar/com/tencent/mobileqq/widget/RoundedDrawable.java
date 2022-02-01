@@ -81,41 +81,45 @@ public class RoundedDrawable
     }
     catch (Throwable paramDrawable)
     {
-      QLog.e("RoundedDrawable", 1, "Failed to create bitmap from drawable!");
+      label76:
+      break label76;
     }
+    QLog.e("RoundedDrawable", 1, "Failed to create bitmap from drawable!");
     return null;
   }
   
   public static Drawable a(Drawable paramDrawable)
   {
-    if ((paramDrawable == null) || ((paramDrawable instanceof RoundedDrawable))) {}
-    Object localObject;
-    do
+    Object localObject = paramDrawable;
+    if (paramDrawable != null)
     {
-      return paramDrawable;
+      if ((paramDrawable instanceof RoundedDrawable)) {
+        return paramDrawable;
+      }
       if ((paramDrawable instanceof LayerDrawable))
       {
         localObject = paramDrawable.mutate().getConstantState();
         if (localObject != null) {
           paramDrawable = ((Drawable.ConstantState)localObject).newDrawable();
         }
-        for (;;)
+        paramDrawable = (LayerDrawable)paramDrawable;
+        int j = paramDrawable.getNumberOfLayers();
+        int i = 0;
+        while (i < j)
         {
-          paramDrawable = (LayerDrawable)paramDrawable;
-          int j = paramDrawable.getNumberOfLayers();
-          int i = 0;
-          while (i < j)
-          {
-            localObject = paramDrawable.getDrawable(i);
-            paramDrawable.setDrawableByLayerId(paramDrawable.getId(i), a((Drawable)localObject));
-            i += 1;
-          }
+          localObject = paramDrawable.getDrawable(i);
+          paramDrawable.setDrawableByLayerId(paramDrawable.getId(i), a((Drawable)localObject));
+          i += 1;
         }
         return paramDrawable;
       }
-      localObject = a(paramDrawable);
-    } while (localObject == null);
-    return new RoundedDrawable((Bitmap)localObject);
+      Bitmap localBitmap = a(paramDrawable);
+      localObject = paramDrawable;
+      if (localBitmap != null) {
+        localObject = new RoundedDrawable(localBitmap);
+      }
+    }
+    return localObject;
   }
   
   public static RoundedDrawable a(Bitmap paramBitmap)
@@ -128,176 +132,209 @@ public class RoundedDrawable
   
   private void a()
   {
-    float f1 = 0.0F;
-    switch (RoundedDrawable.1.a[this.jdField_a_of_type_AndroidWidgetImageView$ScaleType.ordinal()])
+    int i = RoundedDrawable.1.a[this.jdField_a_of_type_AndroidWidgetImageView$ScaleType.ordinal()];
+    Object localObject;
+    float f1;
+    if (i != 1)
     {
-    case 4: 
-    default: 
-      this.d.set(this.c);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setRectToRect(this.c, this.jdField_a_of_type_AndroidGraphicsRectF, Matrix.ScaleToFit.CENTER);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.d);
-      this.d.inset(this.jdField_b_of_type_Float / 2.0F, this.jdField_b_of_type_Float / 2.0F);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setRectToRect(this.c, this.d, Matrix.ScaleToFit.FILL);
+      float f2;
+      float f3;
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 5)
+          {
+            if (i != 6)
+            {
+              if (i != 7)
+              {
+                this.d.set(this.c);
+                this.jdField_a_of_type_AndroidGraphicsMatrix.setRectToRect(this.c, this.jdField_a_of_type_AndroidGraphicsRectF, Matrix.ScaleToFit.CENTER);
+                this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.d);
+                localObject = this.d;
+                f1 = this.jdField_b_of_type_Float;
+                ((RectF)localObject).inset(f1 / 2.0F, f1 / 2.0F);
+                this.jdField_a_of_type_AndroidGraphicsMatrix.setRectToRect(this.c, this.d, Matrix.ScaleToFit.FILL);
+              }
+              else
+              {
+                this.d.set(this.jdField_a_of_type_AndroidGraphicsRectF);
+                localObject = this.d;
+                f1 = this.jdField_b_of_type_Float;
+                ((RectF)localObject).inset(f1 / 2.0F, f1 / 2.0F);
+                this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
+                this.jdField_a_of_type_AndroidGraphicsMatrix.setRectToRect(this.c, this.d, Matrix.ScaleToFit.FILL);
+              }
+            }
+            else
+            {
+              this.d.set(this.c);
+              this.jdField_a_of_type_AndroidGraphicsMatrix.setRectToRect(this.c, this.jdField_a_of_type_AndroidGraphicsRectF, Matrix.ScaleToFit.START);
+              this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.d);
+              localObject = this.d;
+              f1 = this.jdField_b_of_type_Float;
+              ((RectF)localObject).inset(f1 / 2.0F, f1 / 2.0F);
+              this.jdField_a_of_type_AndroidGraphicsMatrix.setRectToRect(this.c, this.d, Matrix.ScaleToFit.FILL);
+            }
+          }
+          else
+          {
+            this.d.set(this.c);
+            this.jdField_a_of_type_AndroidGraphicsMatrix.setRectToRect(this.c, this.jdField_a_of_type_AndroidGraphicsRectF, Matrix.ScaleToFit.END);
+            this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.d);
+            localObject = this.d;
+            f1 = this.jdField_b_of_type_Float;
+            ((RectF)localObject).inset(f1 / 2.0F, f1 / 2.0F);
+            this.jdField_a_of_type_AndroidGraphicsMatrix.setRectToRect(this.c, this.d, Matrix.ScaleToFit.FILL);
+          }
+        }
+        else
+        {
+          this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
+          if ((this.jdField_a_of_type_Int <= this.jdField_a_of_type_AndroidGraphicsRectF.width()) && (this.jdField_b_of_type_Int <= this.jdField_a_of_type_AndroidGraphicsRectF.height())) {
+            f1 = 1.0F;
+          } else {
+            f1 = Math.min(this.jdField_a_of_type_AndroidGraphicsRectF.width() / this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsRectF.height() / this.jdField_b_of_type_Int);
+          }
+          f2 = (int)((this.jdField_a_of_type_AndroidGraphicsRectF.width() - this.jdField_a_of_type_Int * f1) * 0.5F + 0.5F);
+          f3 = (int)((this.jdField_a_of_type_AndroidGraphicsRectF.height() - this.jdField_b_of_type_Int * f1) * 0.5F + 0.5F);
+          this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(f1, f1);
+          this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(f2, f3);
+          this.d.set(this.c);
+          this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.d);
+          localObject = this.d;
+          f1 = this.jdField_b_of_type_Float;
+          ((RectF)localObject).inset(f1 / 2.0F, f1 / 2.0F);
+          this.jdField_a_of_type_AndroidGraphicsMatrix.setRectToRect(this.c, this.d, Matrix.ScaleToFit.FILL);
+        }
+      }
+      else
+      {
+        this.d.set(this.jdField_a_of_type_AndroidGraphicsRectF);
+        localObject = this.d;
+        f1 = this.jdField_b_of_type_Float;
+        ((RectF)localObject).inset(f1 / 2.0F, f1 / 2.0F);
+        this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
+        f2 = this.jdField_a_of_type_Int;
+        f3 = this.d.height();
+        float f4 = this.d.width();
+        float f5 = this.jdField_b_of_type_Int;
+        f1 = 0.0F;
+        if (f2 * f3 > f4 * f5)
+        {
+          f2 = this.d.height() / this.jdField_b_of_type_Int;
+          f3 = (this.d.width() - this.jdField_a_of_type_Int * f2) * 0.5F;
+        }
+        else
+        {
+          f2 = this.d.width() / this.jdField_a_of_type_Int;
+          f1 = (this.d.height() - this.jdField_b_of_type_Int * f2) * 0.5F;
+          f3 = 0.0F;
+        }
+        this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(f2, f2);
+        localObject = this.jdField_a_of_type_AndroidGraphicsMatrix;
+        f2 = (int)(f3 + 0.5F);
+        f3 = this.jdField_b_of_type_Float;
+        ((Matrix)localObject).postTranslate(f2 + f3 / 2.0F, (int)(f1 + 0.5F) + f3 / 2.0F);
+      }
     }
-    for (;;)
+    else
     {
-      this.jdField_b_of_type_AndroidGraphicsRectF.set(this.d);
-      this.jdField_a_of_type_Boolean = true;
-      return;
       this.d.set(this.jdField_a_of_type_AndroidGraphicsRectF);
-      this.d.inset(this.jdField_b_of_type_Float / 2.0F, this.jdField_b_of_type_Float / 2.0F);
+      localObject = this.d;
+      f1 = this.jdField_b_of_type_Float;
+      ((RectF)localObject).inset(f1 / 2.0F, f1 / 2.0F);
       this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
       this.jdField_a_of_type_AndroidGraphicsMatrix.setTranslate((int)((this.d.width() - this.jdField_a_of_type_Int) * 0.5F + 0.5F), (int)((this.d.height() - this.jdField_b_of_type_Int) * 0.5F + 0.5F));
-      continue;
-      this.d.set(this.jdField_a_of_type_AndroidGraphicsRectF);
-      this.d.inset(this.jdField_b_of_type_Float / 2.0F, this.jdField_b_of_type_Float / 2.0F);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-      float f3;
-      float f2;
-      if (this.jdField_a_of_type_Int * this.d.height() > this.d.width() * this.jdField_b_of_type_Int)
-      {
-        f3 = this.d.height() / this.jdField_b_of_type_Int;
-        f2 = (this.d.width() - this.jdField_a_of_type_Int * f3) * 0.5F;
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(f3, f3);
-        this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate((int)(f2 + 0.5F) + this.jdField_b_of_type_Float / 2.0F, (int)(f1 + 0.5F) + this.jdField_b_of_type_Float / 2.0F);
-        break;
-        f3 = this.d.width() / this.jdField_a_of_type_Int;
-        f1 = this.d.height();
-        float f4 = this.jdField_b_of_type_Int;
-        f2 = 0.0F;
-        f1 = (f1 - f4 * f3) * 0.5F;
-      }
-      this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-      if ((this.jdField_a_of_type_Int <= this.jdField_a_of_type_AndroidGraphicsRectF.width()) && (this.jdField_b_of_type_Int <= this.jdField_a_of_type_AndroidGraphicsRectF.height())) {}
-      for (f1 = 1.0F;; f1 = Math.min(this.jdField_a_of_type_AndroidGraphicsRectF.width() / this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsRectF.height() / this.jdField_b_of_type_Int))
-      {
-        f2 = (int)((this.jdField_a_of_type_AndroidGraphicsRectF.width() - this.jdField_a_of_type_Int * f1) * 0.5F + 0.5F);
-        f3 = (int)((this.jdField_a_of_type_AndroidGraphicsRectF.height() - this.jdField_b_of_type_Int * f1) * 0.5F + 0.5F);
-        this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(f1, f1);
-        this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(f2, f3);
-        this.d.set(this.c);
-        this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.d);
-        this.d.inset(this.jdField_b_of_type_Float / 2.0F, this.jdField_b_of_type_Float / 2.0F);
-        this.jdField_a_of_type_AndroidGraphicsMatrix.setRectToRect(this.c, this.d, Matrix.ScaleToFit.FILL);
-        break;
-      }
-      this.d.set(this.c);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setRectToRect(this.c, this.jdField_a_of_type_AndroidGraphicsRectF, Matrix.ScaleToFit.END);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.d);
-      this.d.inset(this.jdField_b_of_type_Float / 2.0F, this.jdField_b_of_type_Float / 2.0F);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setRectToRect(this.c, this.d, Matrix.ScaleToFit.FILL);
-      continue;
-      this.d.set(this.c);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setRectToRect(this.c, this.jdField_a_of_type_AndroidGraphicsRectF, Matrix.ScaleToFit.START);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.d);
-      this.d.inset(this.jdField_b_of_type_Float / 2.0F, this.jdField_b_of_type_Float / 2.0F);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setRectToRect(this.c, this.d, Matrix.ScaleToFit.FILL);
-      continue;
-      this.d.set(this.jdField_a_of_type_AndroidGraphicsRectF);
-      this.d.inset(this.jdField_b_of_type_Float / 2.0F, this.jdField_b_of_type_Float / 2.0F);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setRectToRect(this.c, this.d, Matrix.ScaleToFit.FILL);
     }
+    this.jdField_b_of_type_AndroidGraphicsRectF.set(this.d);
+    this.jdField_a_of_type_Boolean = true;
   }
   
   private void a(Canvas paramCanvas)
   {
-    if (b(this.jdField_a_of_type_ArrayOfBoolean)) {}
-    float f1;
-    float f4;
-    float f5;
-    do
+    if (b(this.jdField_a_of_type_ArrayOfBoolean)) {
+      return;
+    }
+    if (this.jdField_a_of_type_Float == 0.0F) {
+      return;
+    }
+    float f1 = this.jdField_b_of_type_AndroidGraphicsRectF.left;
+    float f2 = this.jdField_b_of_type_AndroidGraphicsRectF.top;
+    float f3 = this.jdField_b_of_type_AndroidGraphicsRectF.width() + f1;
+    float f4 = this.jdField_b_of_type_AndroidGraphicsRectF.height() + f2;
+    float f5 = this.jdField_a_of_type_Float;
+    if (this.jdField_a_of_type_ArrayOfBoolean[0] == 0)
     {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_Float == 0.0F);
-      f1 = this.jdField_b_of_type_AndroidGraphicsRectF.left;
-      float f2 = this.jdField_b_of_type_AndroidGraphicsRectF.top;
-      float f3 = this.jdField_b_of_type_AndroidGraphicsRectF.width() + f1;
-      f4 = this.jdField_b_of_type_AndroidGraphicsRectF.height() + f2;
-      f5 = this.jdField_a_of_type_Float;
-      if (this.jdField_a_of_type_ArrayOfBoolean[0] == 0)
-      {
-        this.e.set(f1, f2, f1 + f5, f2 + f5);
-        paramCanvas.drawRect(this.e, this.jdField_a_of_type_AndroidGraphicsPaint);
-      }
-      if (this.jdField_a_of_type_ArrayOfBoolean[1] == 0)
-      {
-        this.e.set(f3 - f5, f2, f3, f5);
-        paramCanvas.drawRect(this.e, this.jdField_a_of_type_AndroidGraphicsPaint);
-      }
-      if (this.jdField_a_of_type_ArrayOfBoolean[2] == 0)
-      {
-        this.e.set(f3 - f5, f4 - f5, f3, f4);
-        paramCanvas.drawRect(this.e, this.jdField_a_of_type_AndroidGraphicsPaint);
-      }
-    } while (this.jdField_a_of_type_ArrayOfBoolean[3] != 0);
-    this.e.set(f1, f4 - f5, f5 + f1, f4);
-    paramCanvas.drawRect(this.e, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.e.set(f1, f2, f1 + f5, f2 + f5);
+      paramCanvas.drawRect(this.e, this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+    if (this.jdField_a_of_type_ArrayOfBoolean[1] == 0)
+    {
+      this.e.set(f3 - f5, f2, f3, f5);
+      paramCanvas.drawRect(this.e, this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+    if (this.jdField_a_of_type_ArrayOfBoolean[2] == 0)
+    {
+      this.e.set(f3 - f5, f4 - f5, f3, f4);
+      paramCanvas.drawRect(this.e, this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+    if (this.jdField_a_of_type_ArrayOfBoolean[3] == 0)
+    {
+      this.e.set(f1, f4 - f5, f5 + f1, f4);
+      paramCanvas.drawRect(this.e, this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
   }
   
   private static boolean a(boolean[] paramArrayOfBoolean)
   {
-    boolean bool2 = false;
     int j = paramArrayOfBoolean.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (paramArrayOfBoolean[i] != 0) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
+      if (paramArrayOfBoolean[i] != 0) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   private void b(Canvas paramCanvas)
   {
-    if (b(this.jdField_a_of_type_ArrayOfBoolean)) {}
-    float f1;
-    float f4;
-    float f5;
-    float f6;
-    do
+    if (b(this.jdField_a_of_type_ArrayOfBoolean)) {
+      return;
+    }
+    if (this.jdField_a_of_type_Float == 0.0F) {
+      return;
+    }
+    float f1 = this.jdField_b_of_type_AndroidGraphicsRectF.left;
+    float f2 = this.jdField_b_of_type_AndroidGraphicsRectF.top;
+    float f3 = f1 + this.jdField_b_of_type_AndroidGraphicsRectF.width();
+    float f4 = f2 + this.jdField_b_of_type_AndroidGraphicsRectF.height();
+    float f5 = this.jdField_a_of_type_Float;
+    float f6 = this.jdField_b_of_type_Float / 2.0F;
+    if (this.jdField_a_of_type_ArrayOfBoolean[0] == 0)
     {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_Float == 0.0F);
-      f1 = this.jdField_b_of_type_AndroidGraphicsRectF.left;
-      float f2 = this.jdField_b_of_type_AndroidGraphicsRectF.top;
-      float f3 = f1 + this.jdField_b_of_type_AndroidGraphicsRectF.width();
-      f4 = f2 + this.jdField_b_of_type_AndroidGraphicsRectF.height();
-      f5 = this.jdField_a_of_type_Float;
-      f6 = this.jdField_b_of_type_Float / 2.0F;
-      if (this.jdField_a_of_type_ArrayOfBoolean[0] == 0)
-      {
-        paramCanvas.drawLine(f1 - f6, f2, f1 + f5, f2, this.jdField_b_of_type_AndroidGraphicsPaint);
-        paramCanvas.drawLine(f1, f2 - f6, f1, f2 + f5, this.jdField_b_of_type_AndroidGraphicsPaint);
-      }
-      if (this.jdField_a_of_type_ArrayOfBoolean[1] == 0)
-      {
-        paramCanvas.drawLine(f3 - f5 - f6, f2, f3, f2, this.jdField_b_of_type_AndroidGraphicsPaint);
-        paramCanvas.drawLine(f3, f2 - f6, f3, f2 + f5, this.jdField_b_of_type_AndroidGraphicsPaint);
-      }
-      if (this.jdField_a_of_type_ArrayOfBoolean[2] == 0)
-      {
-        paramCanvas.drawLine(f3 - f5 - f6, f4, f3 + f6, f4, this.jdField_b_of_type_AndroidGraphicsPaint);
-        paramCanvas.drawLine(f3, f4 - f5, f3, f4, this.jdField_b_of_type_AndroidGraphicsPaint);
-      }
-    } while (this.jdField_a_of_type_ArrayOfBoolean[3] != 0);
-    paramCanvas.drawLine(f1 - f6, f4, f1 + f5, f4, this.jdField_b_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawLine(f1, f4 - f5, f1, f4, this.jdField_b_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawLine(f1 - f6, f2, f1 + f5, f2, this.jdField_b_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawLine(f1, f2 - f6, f1, f2 + f5, this.jdField_b_of_type_AndroidGraphicsPaint);
+    }
+    if (this.jdField_a_of_type_ArrayOfBoolean[1] == 0)
+    {
+      paramCanvas.drawLine(f3 - f5 - f6, f2, f3, f2, this.jdField_b_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawLine(f3, f2 - f6, f3, f2 + f5, this.jdField_b_of_type_AndroidGraphicsPaint);
+    }
+    if (this.jdField_a_of_type_ArrayOfBoolean[2] == 0)
+    {
+      paramCanvas.drawLine(f3 - f5 - f6, f4, f3 + f6, f4, this.jdField_b_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawLine(f3, f4 - f5, f3, f4, this.jdField_b_of_type_AndroidGraphicsPaint);
+    }
+    if (this.jdField_a_of_type_ArrayOfBoolean[3] == 0)
+    {
+      paramCanvas.drawLine(f1 - f6, f4, f1 + f5, f4, this.jdField_b_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawLine(f1, f4 - f5, f1, f4, this.jdField_b_of_type_AndroidGraphicsPaint);
+    }
   }
   
   private static boolean b(boolean[] paramArrayOfBoolean)
@@ -323,78 +360,74 @@ public class RoundedDrawable
   
   public RoundedDrawable a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    int j = 1;
     Object localObject = new HashSet(4);
     ((Set)localObject).add(Float.valueOf(paramFloat1));
     ((Set)localObject).add(Float.valueOf(paramFloat2));
     ((Set)localObject).add(Float.valueOf(paramFloat3));
     ((Set)localObject).add(Float.valueOf(paramFloat4));
     ((Set)localObject).remove(Float.valueOf(0.0F));
-    if (((Set)localObject).size() > 1) {
-      throw new IllegalArgumentException("Multiple nonzero corner radii not yet supported.");
-    }
-    if (!((Set)localObject).isEmpty())
+    if (((Set)localObject).size() <= 1)
     {
-      float f = ((Float)((Set)localObject).iterator().next()).floatValue();
-      if ((Float.isInfinite(f)) || (Float.isNaN(f)) || (f < 0.0F)) {
-        throw new IllegalArgumentException("Invalid radius value: " + f);
+      if (!((Set)localObject).isEmpty())
+      {
+        float f = ((Float)((Set)localObject).iterator().next()).floatValue();
+        if ((!Float.isInfinite(f)) && (!Float.isNaN(f)) && (f >= 0.0F))
+        {
+          this.jdField_a_of_type_Float = f;
+        }
+        else
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("Invalid radius value: ");
+          ((StringBuilder)localObject).append(f);
+          throw new IllegalArgumentException(((StringBuilder)localObject).toString());
+        }
       }
-      this.jdField_a_of_type_Float = f;
+      else
+      {
+        this.jdField_a_of_type_Float = 0.0F;
+      }
       localObject = this.jdField_a_of_type_ArrayOfBoolean;
-      if (paramFloat1 <= 0.0F) {
-        break label280;
+      int j = 0;
+      if (paramFloat1 > 0.0F) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      i = 1;
-      label199:
       localObject[0] = i;
       localObject = this.jdField_a_of_type_ArrayOfBoolean;
-      if (paramFloat2 <= 0.0F) {
-        break label286;
+      if (paramFloat2 > 0.0F) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      i = 1;
-      label220:
       localObject[1] = i;
       localObject = this.jdField_a_of_type_ArrayOfBoolean;
-      if (paramFloat3 <= 0.0F) {
-        break label292;
+      if (paramFloat3 > 0.0F) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      i = 1;
-      label241:
       localObject[2] = i;
       localObject = this.jdField_a_of_type_ArrayOfBoolean;
-      if (paramFloat4 <= 0.0F) {
-        break label298;
+      int i = j;
+      if (paramFloat4 > 0.0F) {
+        i = 1;
       }
-    }
-    label280:
-    label286:
-    label292:
-    label298:
-    for (int i = j;; i = 0)
-    {
       localObject[3] = i;
       return this;
-      this.jdField_a_of_type_Float = 0.0F;
-      break;
-      i = 0;
-      break label199;
-      i = 0;
-      break label220;
-      i = 0;
-      break label241;
     }
+    throw new IllegalArgumentException("Multiple nonzero corner radii not yet supported.");
   }
   
   public RoundedDrawable a(ColorStateList paramColorStateList)
   {
-    if (paramColorStateList != null) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
-      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(getState(), -16777216));
-      return this;
+    if (paramColorStateList == null) {
       paramColorStateList = ColorStateList.valueOf(0);
     }
+    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
+    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(getState(), -16777216));
+    return this;
   }
   
   public RoundedDrawable a(Shader.TileMode paramTileMode)
@@ -450,36 +483,36 @@ public class RoundedDrawable
       this.jdField_a_of_type_AndroidGraphicsPaint.setShader(localBitmapShader);
       this.jdField_a_of_type_Boolean = false;
     }
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.jdField_b_of_type_Boolean)
+    {
       if (this.jdField_b_of_type_Float > 0.0F)
       {
         paramCanvas.drawOval(this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
         paramCanvas.drawOval(this.d, this.jdField_b_of_type_AndroidGraphicsPaint);
-      }
-    }
-    do
-    {
-      return;
-      paramCanvas.drawOval(this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-      return;
-      if (a(this.jdField_a_of_type_ArrayOfBoolean))
-      {
-        float f = this.jdField_a_of_type_Float;
-        if (this.jdField_b_of_type_Float > 0.0F)
-        {
-          paramCanvas.drawRoundRect(this.jdField_b_of_type_AndroidGraphicsRectF, f, f, this.jdField_a_of_type_AndroidGraphicsPaint);
-          paramCanvas.drawRoundRect(this.d, f, f, this.jdField_b_of_type_AndroidGraphicsPaint);
-          a(paramCanvas);
-          b(paramCanvas);
-          return;
-        }
-        paramCanvas.drawRoundRect(this.jdField_b_of_type_AndroidGraphicsRectF, f, f, this.jdField_a_of_type_AndroidGraphicsPaint);
-        a(paramCanvas);
         return;
       }
-      paramCanvas.drawRect(this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-    } while (this.jdField_b_of_type_Float <= 0.0F);
-    paramCanvas.drawRect(this.d, this.jdField_b_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawOval(this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+      return;
+    }
+    if (a(this.jdField_a_of_type_ArrayOfBoolean))
+    {
+      float f = this.jdField_a_of_type_Float;
+      if (this.jdField_b_of_type_Float > 0.0F)
+      {
+        paramCanvas.drawRoundRect(this.jdField_b_of_type_AndroidGraphicsRectF, f, f, this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawRoundRect(this.d, f, f, this.jdField_b_of_type_AndroidGraphicsPaint);
+        a(paramCanvas);
+        b(paramCanvas);
+        return;
+      }
+      paramCanvas.drawRoundRect(this.jdField_b_of_type_AndroidGraphicsRectF, f, f, this.jdField_a_of_type_AndroidGraphicsPaint);
+      a(paramCanvas);
+      return;
+    }
+    paramCanvas.drawRect(this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+    if (this.jdField_b_of_type_Float > 0.0F) {
+      paramCanvas.drawRect(this.d, this.jdField_b_of_type_AndroidGraphicsPaint);
+    }
   }
   
   public int getAlpha()
@@ -556,7 +589,7 @@ public class RoundedDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.RoundedDrawable
  * JD-Core Version:    0.7.0.1
  */

@@ -29,16 +29,17 @@ final class MatroskaExtractor$TrueHdSampleRechunker
   
   public void sampleMetadata(MatroskaExtractor.Track paramTrack, long paramLong)
   {
-    if (!this.foundSyncframe) {}
-    do
-    {
+    if (!this.foundSyncframe) {
       return;
-      int i = this.sampleCount;
-      this.sampleCount = (i + 1);
-      if (i == 0) {
-        this.timeUs = paramLong;
-      }
-    } while (this.sampleCount < 8);
+    }
+    int i = this.sampleCount;
+    this.sampleCount = (i + 1);
+    if (i == 0) {
+      this.timeUs = paramLong;
+    }
+    if (this.sampleCount < 8) {
+      return;
+    }
     paramTrack.output.sampleMetadata(this.timeUs, this.blockFlags, this.chunkSize, 0, paramTrack.cryptoData);
     this.sampleCount = 0;
   }
@@ -65,7 +66,7 @@ final class MatroskaExtractor$TrueHdSampleRechunker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.mkv.MatroskaExtractor.TrueHdSampleRechunker
  * JD-Core Version:    0.7.0.1
  */

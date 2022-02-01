@@ -66,7 +66,16 @@ public class MsgBackupUserData
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("--UserData--");
-    localStringBuilder.append(", ip: ").append(this.jdField_a_of_type_JavaLangString).append(",ports: ").append(this.jdField_a_of_type_JavaUtilList).append(",bssid: ").append(this.c).append(", ssid: ").append(this.b).append(", platfrom: ").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", ip: ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",ports: ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(",bssid: ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", ssid: ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", platfrom: ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
     return localStringBuilder.toString();
   }
   
@@ -81,7 +90,7 @@ public class MsgBackupUserData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.data.MsgBackupUserData
  * JD-Core Version:    0.7.0.1
  */

@@ -6,6 +6,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -108,69 +109,71 @@ public final class mobile_count_rsp_new
   
   static
   {
-    Object localObject = new ArrayList();
-    ((ArrayList)localObject).add(new entrance_cfg());
-    cache_mapEntranceCfg.put(Integer.valueOf(0), localObject);
+    Object localObject1 = Integer.valueOf(0);
+    Object localObject2 = new ArrayList();
+    ((ArrayList)localObject2).add(new entrance_cfg());
+    cache_mapEntranceCfg.put(localObject1, localObject2);
     cache_stMapCountInfo = new HashMap();
-    localObject = new count_info();
-    cache_stMapCountInfo.put(Integer.valueOf(0), localObject);
+    localObject2 = new count_info();
+    cache_stMapCountInfo.put(localObject1, localObject2);
     cache_stBanInfo = new ban_info();
     cache_stBirthInfo = new birth_info();
     cache_stYellowInfo = new yellow_info();
     cache_mapBuf = new HashMap();
-    localObject = new s_comm_data();
-    cache_mapBuf.put(Long.valueOf(0L), localObject);
+    localObject2 = Long.valueOf(0L);
+    Object localObject3 = new s_comm_data();
+    cache_mapBuf.put(localObject2, localObject3);
     cache_masterinfo = new master_info();
     cache_vecOperateInfo = new ArrayList();
-    localObject = new operat_data();
-    cache_vecOperateInfo.add(localObject);
+    localObject3 = new operat_data();
+    cache_vecOperateInfo.add(localObject3);
     cache_mapLastGetTime = new HashMap();
-    cache_mapLastGetTime.put(Long.valueOf(0L), Long.valueOf(0L));
+    cache_mapLastGetTime.put(localObject2, localObject2);
     cache_stMasterInfo = new master_info();
     cache_stMedalInfo = new medal_info();
     cache_jumpType = 0;
     cache_stMedalBanner = new medal_banner();
     cache_mapYYIconInfo = new HashMap();
-    localObject = new yy_icon();
-    cache_mapYYIconInfo.put(Integer.valueOf(0), localObject);
+    localObject3 = new yy_icon();
+    cache_mapYYIconInfo.put(localObject1, localObject3);
     cache_stuStarInfo = new star_info();
     cache_stuCombineDiamondInfo = new combine_diamond_info();
     cache_extendinfo = new HashMap();
-    cache_extendinfo.put(Integer.valueOf(0), "");
+    cache_extendinfo.put(localObject1, "");
     cache_QzmallProfileDecoGetRsp = (byte[])new byte[1];
     ((byte[])cache_QzmallProfileDecoGetRsp)[0] = 0;
     cache_isShowNewFeedBanner = 0;
     cache_mapFeedsTabInfo = new HashMap();
-    localObject = new mobile_feeds_tab_info();
-    cache_mapFeedsTabInfo.put(Integer.valueOf(0), localObject);
+    localObject3 = new mobile_feeds_tab_info();
+    cache_mapFeedsTabInfo.put(localObject1, localObject3);
     cache_map_strAdvUrl = new HashMap();
-    cache_map_strAdvUrl.put(Integer.valueOf(0), "");
+    cache_map_strAdvUrl.put(localObject1, "");
     cache_mapTransData = new HashMap();
-    localObject = (byte[])new byte[1];
-    ((byte[])localObject)[0] = 0;
-    cache_mapTransData.put("", localObject);
+    localObject1 = (byte[])new byte[1];
+    ((byte[])localObject1)[0] = 0;
+    cache_mapTransData.put("", localObject1);
     cache_mapExtendinfo = new HashMap();
     cache_mapExtendinfo.put("", "");
     cache_vertVideoDisplay = new stVerticalVideoDisplay();
     cache_snnComment = new stNuanNuanComment();
     cache_mapDyncShowTime = new HashMap();
-    cache_mapDyncShowTime.put(Long.valueOf(0L), Long.valueOf(0L));
+    cache_mapDyncShowTime.put(localObject2, localObject2);
     cache_vec_reportid = new ArrayList();
     cache_vec_reportid.add("");
     cache_vec_blackReportPid = new ArrayList();
     cache_vec_blackReportPid.add("");
     cache_sContentOpComment = new stNuanNuanComment();
     cache_vec_soft_infos = new ArrayList();
-    localObject = new stSoftInfo();
-    cache_vec_soft_infos.add(localObject);
+    localObject1 = new stSoftInfo();
+    cache_vec_soft_infos.add(localObject1);
     cache_plusRecom = new stPlusRecomInfo();
     cache_cancellation_status = 0;
     cache_veckuolieHotTag = new ArrayList();
     cache_veckuolieHotTag.add("");
     cache_mapAutoTransData = new HashMap();
-    localObject = (byte[])new byte[1];
-    ((byte[])localObject)[0] = 0;
-    cache_mapAutoTransData.put("", localObject);
+    localObject1 = (byte[])new byte[1];
+    ((byte[])localObject1)[0] = 0;
+    cache_mapAutoTransData.put("", localObject1);
   }
   
   public mobile_count_rsp_new() {}
@@ -303,146 +306,184 @@ public final class mobile_count_rsp_new
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.mapEntranceCfg != null) {
-      paramJceOutputStream.write(this.mapEntranceCfg, 0);
+    Object localObject = this.mapEntranceCfg;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 0);
     }
-    if (this.stMapCountInfo != null) {
-      paramJceOutputStream.write(this.stMapCountInfo, 1);
+    localObject = this.stMapCountInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 1);
     }
-    if (this.stBanInfo != null) {
-      paramJceOutputStream.write(this.stBanInfo, 2);
+    localObject = this.stBanInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.stBirthInfo != null) {
-      paramJceOutputStream.write(this.stBirthInfo, 3);
+    localObject = this.stBirthInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.strNick != null) {
-      paramJceOutputStream.write(this.strNick, 4);
+    localObject = this.strNick;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.iNextTimeout, 5);
-    if (this.stYellowInfo != null) {
-      paramJceOutputStream.write(this.stYellowInfo, 6);
+    localObject = this.stYellowInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
-    if (this.strDeviceName != null) {
-      paramJceOutputStream.write(this.strDeviceName, 7);
+    localObject = this.strDeviceName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.mapBuf != null) {
-      paramJceOutputStream.write(this.mapBuf, 8);
+    localObject = this.mapBuf;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 8);
     }
-    if (this.masterinfo != null) {
-      paramJceOutputStream.write(this.masterinfo, 9);
+    localObject = this.masterinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 9);
     }
-    if (this.vecOperateInfo != null) {
-      paramJceOutputStream.write(this.vecOperateInfo, 10);
+    localObject = this.vecOperateInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 10);
     }
-    if (this.mapLastGetTime != null) {
-      paramJceOutputStream.write(this.mapLastGetTime, 11);
+    localObject = this.mapLastGetTime;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 11);
     }
-    if (this.sTransParam != null) {
-      paramJceOutputStream.write(this.sTransParam, 12);
+    localObject = this.sTransParam;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
-    if (this.stMasterInfo != null) {
-      paramJceOutputStream.write(this.stMasterInfo, 13);
+    localObject = this.stMasterInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 13);
     }
-    if (this.stMedalInfo != null) {
-      paramJceOutputStream.write(this.stMedalInfo, 14);
+    localObject = this.stMedalInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 14);
     }
     paramJceOutputStream.write(this.jumpType, 15);
-    if (this.stMedalBanner != null) {
-      paramJceOutputStream.write(this.stMedalBanner, 16);
+    localObject = this.stMedalBanner;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 16);
     }
-    if (this.mapYYIconInfo != null) {
-      paramJceOutputStream.write(this.mapYYIconInfo, 17);
+    localObject = this.mapYYIconInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 17);
     }
-    if (this.stuStarInfo != null) {
-      paramJceOutputStream.write(this.stuStarInfo, 18);
+    localObject = this.stuStarInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 18);
     }
-    if (this.stuCombineDiamondInfo != null) {
-      paramJceOutputStream.write(this.stuCombineDiamondInfo, 19);
+    localObject = this.stuCombineDiamondInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 19);
     }
-    if (this.extendinfo != null) {
-      paramJceOutputStream.write(this.extendinfo, 20);
+    localObject = this.extendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 20);
     }
-    if (this.undealCountTime != null) {
-      paramJceOutputStream.write(this.undealCountTime, 21);
+    localObject = this.undealCountTime;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 21);
     }
     paramJceOutputStream.write(this.isPreLoad, 22);
     paramJceOutputStream.write(this.switchTimeout, 23);
     paramJceOutputStream.write(this.isLiveShow, 24);
     paramJceOutputStream.write(this.isShowNewStyles, 25);
-    if (this.QzmallProfileDecoGetRsp != null) {
-      paramJceOutputStream.write(this.QzmallProfileDecoGetRsp, 26);
+    localObject = this.QzmallProfileDecoGetRsp;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 26);
     }
     paramJceOutputStream.write(this.isShowNewFeedBanner, 27);
     paramJceOutputStream.write(this.isPlusRedBous, 28);
     paramJceOutputStream.write(this.isVistorRedBous, 29);
-    if (this.strRedBousUrl != null) {
-      paramJceOutputStream.write(this.strRedBousUrl, 30);
+    localObject = this.strRedBousUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 30);
     }
     paramJceOutputStream.write(this.isSetMemorySeal, 31);
     paramJceOutputStream.write(this.isNotRegisterQzone, 32);
     paramJceOutputStream.write(this.isOpenFeedUpdate, 33);
-    if (this.mapFeedsTabInfo != null) {
-      paramJceOutputStream.write(this.mapFeedsTabInfo, 34);
+    localObject = this.mapFeedsTabInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 34);
     }
     paramJceOutputStream.write(this.isUpdateFeed, 35);
-    if (this.sqDyncFeedsJson != null) {
-      paramJceOutputStream.write(this.sqDyncFeedsJson, 36);
+    localObject = this.sqDyncFeedsJson;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 36);
     }
-    if (this.map_strAdvUrl != null) {
-      paramJceOutputStream.write(this.map_strAdvUrl, 37);
+    localObject = this.map_strAdvUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 37);
     }
-    if (this.mapTransData != null) {
-      paramJceOutputStream.write(this.mapTransData, 38);
+    localObject = this.mapTransData;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 38);
     }
-    if (this.mapExtendinfo != null) {
-      paramJceOutputStream.write(this.mapExtendinfo, 39);
+    localObject = this.mapExtendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 39);
     }
     paramJceOutputStream.write(this.grayOperateMask, 40);
-    if (this.vertVideoDisplay != null) {
-      paramJceOutputStream.write(this.vertVideoDisplay, 41);
+    localObject = this.vertVideoDisplay;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 41);
     }
     paramJceOutputStream.write(this.isGetActiveWeiShi, 42);
-    if (this.snnComment != null) {
-      paramJceOutputStream.write(this.snnComment, 43);
+    localObject = this.snnComment;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 43);
     }
-    if (this.mapDyncShowTime != null) {
-      paramJceOutputStream.write(this.mapDyncShowTime, 44);
+    localObject = this.mapDyncShowTime;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 44);
     }
     paramJceOutputStream.write(this.operate_newyear_mask, 45);
-    if (this.strABTestId != null) {
-      paramJceOutputStream.write(this.strABTestId, 46);
+    localObject = this.strABTestId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 46);
     }
     paramJceOutputStream.write(this.operate_nbp_type, 47);
-    if (this.vec_reportid != null) {
-      paramJceOutputStream.write(this.vec_reportid, 48);
+    localObject = this.vec_reportid;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 48);
     }
     paramJceOutputStream.write(this.report_nexttime, 49);
     paramJceOutputStream.write(this.report_counts, 50);
     paramJceOutputStream.write(this.report_sq_switch, 51);
-    if (this.vec_blackReportPid != null) {
-      paramJceOutputStream.write(this.vec_blackReportPid, 52);
+    localObject = this.vec_blackReportPid;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 52);
     }
-    if (this.sContentOpComment != null) {
-      paramJceOutputStream.write(this.sContentOpComment, 53);
+    localObject = this.sContentOpComment;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 53);
     }
-    if (this.vec_soft_infos != null) {
-      paramJceOutputStream.write(this.vec_soft_infos, 54);
+    localObject = this.vec_soft_infos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 54);
     }
-    if (this.plusRecom != null) {
-      paramJceOutputStream.write(this.plusRecom, 55);
+    localObject = this.plusRecom;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 55);
     }
     paramJceOutputStream.write(this.cancellation_status, 56);
-    if (this.veckuolieHotTag != null) {
-      paramJceOutputStream.write(this.veckuolieHotTag, 57);
+    localObject = this.veckuolieHotTag;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 57);
     }
-    if (this.mapAutoTransData != null) {
-      paramJceOutputStream.write(this.mapAutoTransData, 58);
+    localObject = this.mapAutoTransData;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 58);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_UNDEAL_COUNT.mobile_count_rsp_new
  * JD-Core Version:    0.7.0.1
  */

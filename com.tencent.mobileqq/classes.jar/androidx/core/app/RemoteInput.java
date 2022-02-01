@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Map<Ljava.lang.String;Landroid.net.Uri;>;
 import java.util.Set;
 
 public final class RemoteInput
@@ -45,25 +46,29 @@ public final class RemoteInput
     this.mEditChoicesBeforeSending = paramInt;
     this.mExtras = paramBundle;
     this.mAllowedDataTypes = paramSet;
-    if ((getEditChoicesBeforeSending() == 2) && (!getAllowFreeFormInput())) {
+    if (getEditChoicesBeforeSending() == 2)
+    {
+      if (getAllowFreeFormInput()) {
+        return;
+      }
       throw new IllegalArgumentException("setEditChoicesBeforeSending requires setAllowFreeFormInput");
     }
   }
   
   public static void addDataResultToIntent(RemoteInput paramRemoteInput, Intent paramIntent, Map<String, Uri> paramMap)
   {
-    if (Build.VERSION.SDK_INT >= 26) {
+    if (Build.VERSION.SDK_INT >= 26)
+    {
       android.app.RemoteInput.addDataResultToIntent(fromCompat(paramRemoteInput), paramIntent, paramMap);
-    }
-    while (Build.VERSION.SDK_INT < 16) {
       return;
     }
-    Intent localIntent = getClipDataIntentFromIntent(paramIntent);
-    if (localIntent == null) {
-      localIntent = new Intent();
-    }
-    for (;;)
+    if (Build.VERSION.SDK_INT >= 16)
     {
+      Object localObject2 = getClipDataIntentFromIntent(paramIntent);
+      Object localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = new Intent();
+      }
       Iterator localIterator = paramMap.entrySet().iterator();
       while (localIterator.hasNext())
       {
@@ -72,83 +77,78 @@ public final class RemoteInput
         Uri localUri = (Uri)paramMap.getValue();
         if (str != null)
         {
-          Bundle localBundle = localIntent.getBundleExtra(getExtraResultsKeyForData(str));
-          paramMap = localBundle;
-          if (localBundle == null) {
+          localObject2 = ((Intent)localObject1).getBundleExtra(getExtraResultsKeyForData(str));
+          paramMap = (Map<String, Uri>)localObject2;
+          if (localObject2 == null) {
             paramMap = new Bundle();
           }
           paramMap.putString(paramRemoteInput.getResultKey(), localUri.toString());
-          localIntent.putExtra(getExtraResultsKeyForData(str), paramMap);
+          ((Intent)localObject1).putExtra(getExtraResultsKeyForData(str), paramMap);
         }
       }
-      paramIntent.setClipData(ClipData.newIntent("android.remoteinput.results", localIntent));
-      return;
+      paramIntent.setClipData(ClipData.newIntent("android.remoteinput.results", (Intent)localObject1));
     }
   }
   
   public static void addResultsToIntent(RemoteInput[] paramArrayOfRemoteInput, Intent paramIntent, Bundle paramBundle)
   {
-    int i = 0;
-    if (Build.VERSION.SDK_INT >= 26) {
+    if (Build.VERSION.SDK_INT >= 26)
+    {
       android.app.RemoteInput.addResultsToIntent(fromCompat(paramArrayOfRemoteInput), paramIntent, paramBundle);
-    }
-    int j;
-    Object localObject2;
-    do
-    {
       return;
-      if (Build.VERSION.SDK_INT >= 20)
-      {
-        localObject1 = getResultsFromIntent(paramIntent);
-        j = getResultsSource(paramIntent);
-        if (localObject1 == null) {}
-        for (;;)
-        {
-          int k = paramArrayOfRemoteInput.length;
-          i = 0;
-          while (i < k)
-          {
-            localObject1 = paramArrayOfRemoteInput[i];
-            localObject2 = getDataResultsFromIntent(paramIntent, ((RemoteInput)localObject1).getResultKey());
-            android.app.RemoteInput.addResultsToIntent(fromCompat(new RemoteInput[] { localObject1 }), paramIntent, paramBundle);
-            if (localObject2 != null) {
-              addDataResultToIntent((RemoteInput)localObject1, paramIntent, (Map)localObject2);
-            }
-            i += 1;
-          }
-          ((Bundle)localObject1).putAll(paramBundle);
-          paramBundle = (Bundle)localObject1;
-        }
-        setResultsSource(paramIntent, j);
-        return;
-      }
-    } while (Build.VERSION.SDK_INT < 16);
-    Object localObject1 = getClipDataIntentFromIntent(paramIntent);
-    if (localObject1 == null) {
-      localObject1 = new Intent();
     }
-    for (;;)
+    int j = Build.VERSION.SDK_INT;
+    int i = 0;
+    Object localObject1;
+    Object localObject2;
+    if (j >= 20)
     {
-      localObject2 = ((Intent)localObject1).getBundleExtra("android.remoteinput.resultsData");
+      localObject1 = getResultsFromIntent(paramIntent);
+      j = getResultsSource(paramIntent);
+      if (localObject1 != null)
+      {
+        ((Bundle)localObject1).putAll(paramBundle);
+        paramBundle = (Bundle)localObject1;
+      }
+      int k = paramArrayOfRemoteInput.length;
+      i = 0;
+      while (i < k)
+      {
+        localObject1 = paramArrayOfRemoteInput[i];
+        localObject2 = getDataResultsFromIntent(paramIntent, ((RemoteInput)localObject1).getResultKey());
+        android.app.RemoteInput.addResultsToIntent(fromCompat(new RemoteInput[] { localObject1 }), paramIntent, paramBundle);
+        if (localObject2 != null) {
+          addDataResultToIntent((RemoteInput)localObject1, paramIntent, (Map)localObject2);
+        }
+        i += 1;
+      }
+      setResultsSource(paramIntent, j);
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      localObject2 = getClipDataIntentFromIntent(paramIntent);
+      localObject1 = localObject2;
       if (localObject2 == null) {
+        localObject1 = new Intent();
+      }
+      Object localObject3 = ((Intent)localObject1).getBundleExtra("android.remoteinput.resultsData");
+      localObject2 = localObject3;
+      if (localObject3 == null) {
         localObject2 = new Bundle();
       }
-      for (;;)
+      j = paramArrayOfRemoteInput.length;
+      while (i < j)
       {
-        j = paramArrayOfRemoteInput.length;
-        while (i < j)
-        {
-          RemoteInput localRemoteInput = paramArrayOfRemoteInput[i];
-          Object localObject3 = paramBundle.get(localRemoteInput.getResultKey());
-          if ((localObject3 instanceof CharSequence)) {
-            ((Bundle)localObject2).putCharSequence(localRemoteInput.getResultKey(), (CharSequence)localObject3);
-          }
-          i += 1;
+        localObject3 = paramArrayOfRemoteInput[i];
+        Object localObject4 = paramBundle.get(((RemoteInput)localObject3).getResultKey());
+        if ((localObject4 instanceof CharSequence)) {
+          ((Bundle)localObject2).putCharSequence(((RemoteInput)localObject3).getResultKey(), (CharSequence)localObject4);
         }
-        ((Intent)localObject1).putExtra("android.remoteinput.resultsData", (Bundle)localObject2);
-        paramIntent.setClipData(ClipData.newIntent("android.remoteinput.results", (Intent)localObject1));
-        return;
+        i += 1;
       }
+      ((Intent)localObject1).putExtra("android.remoteinput.resultsData", (Bundle)localObject2);
+      paramIntent.setClipData(ClipData.newIntent("android.remoteinput.results", (Intent)localObject1));
     }
   }
   
@@ -182,119 +182,113 @@ public final class RemoteInput
   private static Intent getClipDataIntentFromIntent(Intent paramIntent)
   {
     paramIntent = paramIntent.getClipData();
-    if (paramIntent == null) {}
-    ClipDescription localClipDescription;
-    do
-    {
+    if (paramIntent == null) {
       return null;
-      localClipDescription = paramIntent.getDescription();
-    } while ((!localClipDescription.hasMimeType("text/vnd.android.intent")) || (!localClipDescription.getLabel().equals("android.remoteinput.results")));
+    }
+    ClipDescription localClipDescription = paramIntent.getDescription();
+    if (!localClipDescription.hasMimeType("text/vnd.android.intent")) {
+      return null;
+    }
+    if (!localClipDescription.getLabel().toString().contentEquals("android.remoteinput.results")) {
+      return null;
+    }
     return paramIntent.getItemAt(0).getIntent();
   }
   
   public static Map<String, Uri> getDataResultsFromIntent(Intent paramIntent, String paramString)
   {
-    String str1 = null;
     if (Build.VERSION.SDK_INT >= 26) {
-      localObject = android.app.RemoteInput.getDataResultsFromIntent(paramIntent, paramString);
+      return android.app.RemoteInput.getDataResultsFromIntent(paramIntent, paramString);
     }
-    Intent localIntent;
-    do
+    if (Build.VERSION.SDK_INT >= 16)
     {
-      do
+      paramIntent = getClipDataIntentFromIntent(paramIntent);
+      if (paramIntent == null) {
+        return null;
+      }
+      HashMap localHashMap = new HashMap();
+      Iterator localIterator = paramIntent.getExtras().keySet().iterator();
+      while (localIterator.hasNext())
       {
-        return localObject;
-        localObject = str1;
-      } while (Build.VERSION.SDK_INT < 16);
-      localIntent = getClipDataIntentFromIntent(paramIntent);
-      localObject = str1;
-    } while (localIntent == null);
-    paramIntent = new HashMap();
-    Object localObject = localIntent.getExtras().keySet().iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      String str2 = (String)((Iterator)localObject).next();
-      if (str2.startsWith("android.remoteinput.dataTypeResultsData"))
-      {
-        str1 = str2.substring("android.remoteinput.dataTypeResultsData".length());
-        if (!str1.isEmpty())
+        String str2 = (String)localIterator.next();
+        if (str2.startsWith("android.remoteinput.dataTypeResultsData"))
         {
-          str2 = localIntent.getBundleExtra(str2).getString(paramString);
-          if ((str2 != null) && (!str2.isEmpty())) {
-            paramIntent.put(str1, Uri.parse(str2));
+          String str1 = str2.substring(39);
+          if (!str1.isEmpty())
+          {
+            str2 = paramIntent.getBundleExtra(str2).getString(paramString);
+            if ((str2 != null) && (!str2.isEmpty())) {
+              localHashMap.put(str1, Uri.parse(str2));
+            }
           }
         }
       }
-    }
-    if (paramIntent.isEmpty()) {
-      paramIntent = null;
-    }
-    for (;;)
-    {
+      paramIntent = localHashMap;
+      if (localHashMap.isEmpty()) {
+        paramIntent = null;
+      }
       return paramIntent;
     }
+    return null;
   }
   
   private static String getExtraResultsKeyForData(String paramString)
   {
-    return "android.remoteinput.dataTypeResultsData" + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("android.remoteinput.dataTypeResultsData");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   public static Bundle getResultsFromIntent(Intent paramIntent)
   {
-    Object localObject2 = null;
-    Object localObject1;
     if (Build.VERSION.SDK_INT >= 20) {
-      localObject1 = android.app.RemoteInput.getResultsFromIntent(paramIntent);
+      return android.app.RemoteInput.getResultsFromIntent(paramIntent);
     }
-    do
+    if (Build.VERSION.SDK_INT >= 16)
     {
-      do
-      {
-        return localObject1;
-        localObject1 = localObject2;
-      } while (Build.VERSION.SDK_INT < 16);
       paramIntent = getClipDataIntentFromIntent(paramIntent);
-      localObject1 = localObject2;
-    } while (paramIntent == null);
-    return (Bundle)paramIntent.getExtras().getParcelable("android.remoteinput.resultsData");
+      if (paramIntent == null) {
+        return null;
+      }
+      return (Bundle)paramIntent.getExtras().getParcelable("android.remoteinput.resultsData");
+    }
+    return null;
   }
   
   public static int getResultsSource(@NonNull Intent paramIntent)
   {
-    int j = 0;
-    int i;
     if (Build.VERSION.SDK_INT >= 28) {
-      i = android.app.RemoteInput.getResultsSource(paramIntent);
+      return android.app.RemoteInput.getResultsSource(paramIntent);
     }
-    do
+    if (Build.VERSION.SDK_INT >= 16)
     {
-      do
-      {
-        return i;
-        i = j;
-      } while (Build.VERSION.SDK_INT < 16);
       paramIntent = getClipDataIntentFromIntent(paramIntent);
-      i = j;
-    } while (paramIntent == null);
-    return paramIntent.getExtras().getInt("android.remoteinput.resultsSource", 0);
+      if (paramIntent == null) {
+        return 0;
+      }
+      return paramIntent.getExtras().getInt("android.remoteinput.resultsSource", 0);
+    }
+    return 0;
   }
   
   public static void setResultsSource(@NonNull Intent paramIntent, int paramInt)
   {
-    if (Build.VERSION.SDK_INT >= 28) {
+    if (Build.VERSION.SDK_INT >= 28)
+    {
       android.app.RemoteInput.setResultsSource(paramIntent, paramInt);
-    }
-    while (Build.VERSION.SDK_INT < 16) {
       return;
     }
-    Intent localIntent2 = getClipDataIntentFromIntent(paramIntent);
-    Intent localIntent1 = localIntent2;
-    if (localIntent2 == null) {
-      localIntent1 = new Intent();
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      Intent localIntent2 = getClipDataIntentFromIntent(paramIntent);
+      Intent localIntent1 = localIntent2;
+      if (localIntent2 == null) {
+        localIntent1 = new Intent();
+      }
+      localIntent1.putExtra("android.remoteinput.resultsSource", paramInt);
+      paramIntent.setClipData(ClipData.newIntent("android.remoteinput.results", localIntent1));
     }
-    localIntent1.putExtra("android.remoteinput.resultsSource", paramInt);
-    paramIntent.setClipData(ClipData.newIntent("android.remoteinput.results", localIntent1));
   }
   
   public boolean getAllowFreeFormInput()
@@ -339,7 +333,7 @@ public final class RemoteInput
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.RemoteInput
  * JD-Core Version:    0.7.0.1
  */

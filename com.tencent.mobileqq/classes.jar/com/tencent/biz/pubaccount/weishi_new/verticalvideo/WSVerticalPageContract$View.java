@@ -2,20 +2,26 @@ package com.tencent.biz.pubaccount.weishi_new.verticalvideo;
 
 import UserGrowth.stGlobalConfig;
 import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import android.widget.TextView;
 import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
 import com.tencent.biz.pubaccount.weishi_new.presenter.view.IWSView;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.choicepanel.IWSEpisodeChoiceView;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalItemData;
+import com.tencent.mobileqq.kandian.biz.video.playfeeds.view.VideoFeedsRecyclerView;
 import java.util.List;
 
 public abstract interface WSVerticalPageContract$View
   extends IWSView<List<WSVerticalItemData>>
 {
-  public abstract VideoFeedsRecyclerView a();
+  public abstract TextView a();
   
   public abstract WSPlayerManager a();
   
   public abstract WSVerticalPageAdapter a();
+  
+  public abstract IWSEpisodeChoiceView a();
+  
+  public abstract VideoFeedsRecyclerView a();
   
   public abstract String a();
   
@@ -27,11 +33,13 @@ public abstract interface WSVerticalPageContract$View
   
   public abstract void a(stGlobalConfig paramstGlobalConfig);
   
+  public abstract void a(WSVerticalItemData paramWSVerticalItemData);
+  
   public abstract void a(List<WSVerticalItemData> paramList);
   
   public abstract String b();
   
-  public abstract void b(Object paramObject);
+  public abstract void b(List<WSVerticalItemData> paramList);
   
   public abstract boolean b();
   
@@ -43,7 +51,7 @@ public abstract interface WSVerticalPageContract$View
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageContract.View
  * JD-Core Version:    0.7.0.1
  */

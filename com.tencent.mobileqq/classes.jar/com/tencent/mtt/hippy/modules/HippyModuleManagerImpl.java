@@ -6,6 +6,7 @@ import android.os.Looper;
 import android.os.Message;
 import com.tencent.mtt.hippy.HippyAPIProvider;
 import com.tencent.mtt.hippy.HippyEngineContext;
+import com.tencent.mtt.hippy.annotation.HippyNativeModule;
 import com.tencent.mtt.hippy.annotation.HippyNativeModule.Thread;
 import com.tencent.mtt.hippy.bridge.c;
 import com.tencent.mtt.hippy.common.HippyArray;
@@ -13,8 +14,11 @@ import com.tencent.mtt.hippy.common.HippyHandlerThread;
 import com.tencent.mtt.hippy.common.Provider;
 import com.tencent.mtt.hippy.common.ThreadExecutor;
 import com.tencent.mtt.hippy.modules.javascriptmodules.HippyJavaScriptModule;
+import com.tencent.mtt.hippy.modules.javascriptmodules.HippyJavaScriptModuleInvocationHandler;
+import com.tencent.mtt.hippy.modules.nativemodules.HippyNativeModuleBase;
 import com.tencent.mtt.hippy.modules.nativemodules.HippyNativeModuleInfo;
 import com.tencent.mtt.hippy.modules.nativemodules.HippyNativeModuleInfo.HippyNativeMethod;
+import java.lang.reflect.Proxy;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -55,53 +59,73 @@ public class HippyModuleManagerImpl
         {
           Object localObject4 = (Class)((Iterator)localObject3).next();
           localObject4 = new HippyNativeModuleInfo((Class)localObject4, (Provider)((Map)localObject2).get(localObject4));
-          if (this.mNativeModuleInfo.containsKey(((HippyNativeModuleInfo)localObject4).getName())) {
-            throw new RuntimeException("There is already a native module named : " + ((HippyNativeModuleInfo)localObject4).getName());
+          String[] arrayOfString = ((HippyNativeModuleInfo)localObject4).getNames();
+          if ((arrayOfString != null) && (arrayOfString.length > 0))
+          {
+            int i = 0;
+            while (i < arrayOfString.length)
+            {
+              String str = arrayOfString[i];
+              if (!this.mNativeModuleInfo.containsKey(str)) {
+                this.mNativeModuleInfo.put(str, localObject4);
+              }
+              i += 1;
+            }
           }
-          this.mNativeModuleInfo.put(((HippyNativeModuleInfo)localObject4).getName(), localObject4);
+          if (!this.mNativeModuleInfo.containsKey(((HippyNativeModuleInfo)localObject4).getName())) {
+            this.mNativeModuleInfo.put(((HippyNativeModuleInfo)localObject4).getName(), localObject4);
+          }
         }
       }
       localObject1 = ((HippyAPIProvider)localObject1).getJavaScriptModules();
       if ((localObject1 != null) && (((List)localObject1).size() > 0))
       {
-        localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
+        localObject2 = ((List)localObject1).iterator();
+        while (((Iterator)localObject2).hasNext())
         {
-          localObject2 = (Class)((Iterator)localObject1).next();
-          localObject3 = getJavaScriptModuleName((Class)localObject2);
-          if (this.mJsModules.containsKey(localObject3)) {
-            throw new RuntimeException("There is already a javascript module named : " + (String)localObject3);
+          localObject3 = (Class)((Iterator)localObject2).next();
+          localObject1 = getJavaScriptModuleName((Class)localObject3);
+          if (this.mJsModules.containsKey(localObject1)) {
+            break label348;
           }
-          this.mJsModules.put(localObject2, null);
+          this.mJsModules.put(localObject3, null);
         }
+        continue;
+        label348:
+        paramHippyEngineContext = new StringBuilder();
+        paramHippyEngineContext.append("There is already a javascript module named : ");
+        paramHippyEngineContext.append((String)localObject1);
+        throw new RuntimeException(paramHippyEngineContext.toString());
       }
     }
   }
   
   private Handler getBridgeThreadHandler()
   {
-    if (this.mBridgeThreadHandler == null) {}
-    try
-    {
-      if (this.mBridgeThreadHandler == null) {
-        this.mBridgeThreadHandler = new Handler(this.mContext.getThreadExecutor().getJsBridgeThread().getLooper(), this);
+    if (this.mBridgeThreadHandler == null) {
+      try
+      {
+        if (this.mBridgeThreadHandler == null) {
+          this.mBridgeThreadHandler = new Handler(this.mContext.getThreadExecutor().getJsBridgeThread().getLooper(), this);
+        }
       }
-      return this.mBridgeThreadHandler;
+      finally {}
     }
-    finally {}
+    return this.mBridgeThreadHandler;
   }
   
   private Handler getDomThreadHandler()
   {
-    if (this.mDomThreadHandler == null) {}
-    try
-    {
-      if (this.mDomThreadHandler == null) {
-        this.mDomThreadHandler = new Handler(this.mContext.getThreadExecutor().getDomThread().getLooper(), this);
+    if (this.mDomThreadHandler == null) {
+      try
+      {
+        if (this.mDomThreadHandler == null) {
+          this.mDomThreadHandler = new Handler(this.mContext.getThreadExecutor().getDomThread().getLooper(), this);
+        }
       }
-      return this.mDomThreadHandler;
+      finally {}
     }
-    finally {}
+    return this.mDomThreadHandler;
   }
   
   private String getJavaScriptModuleName(Class paramClass)
@@ -117,15 +141,16 @@ public class HippyModuleManagerImpl
   
   private Handler getUIThreadHandler()
   {
-    if (this.mUIThreadHandler == null) {}
-    try
-    {
-      if (this.mUIThreadHandler == null) {
-        this.mUIThreadHandler = new Handler(Looper.getMainLooper(), this);
+    if (this.mUIThreadHandler == null) {
+      try
+      {
+        if (this.mUIThreadHandler == null) {
+          this.mUIThreadHandler = new Handler(Looper.getMainLooper(), this);
+        }
       }
-      return this.mUIThreadHandler;
+      finally {}
     }
-    finally {}
+    return this.mUIThreadHandler;
   }
   
   public void callNatives(c paramc)
@@ -139,20 +164,19 @@ public class HippyModuleManagerImpl
       new PromiseImpl(this.mContext, paramc.a, paramc.b, paramc.c).doCallback(1, "module can not be found");
       return;
     }
-    if (((HippyNativeModuleInfo)localObject).getThread() == HippyNativeModule.Thread.DOM)
-    {
+    if (((HippyNativeModuleInfo)localObject).getThread() == HippyNativeModule.Thread.DOM) {
       localObject = getDomThreadHandler();
-      ((Handler)localObject).sendMessage(((Handler)localObject).obtainMessage(1, paramc));
-      return;
     }
-    if (((HippyNativeModuleInfo)localObject).getThread() == HippyNativeModule.Thread.MAIN)
+    for (;;)
     {
-      localObject = getUIThreadHandler();
       ((Handler)localObject).sendMessage(((Handler)localObject).obtainMessage(1, paramc));
       return;
+      if (((HippyNativeModuleInfo)localObject).getThread() == HippyNativeModule.Thread.MAIN) {
+        localObject = getUIThreadHandler();
+      } else {
+        localObject = getBridgeThreadHandler();
+      }
     }
-    localObject = getBridgeThreadHandler();
-    ((Handler)localObject).sendMessage(((Handler)localObject).obtainMessage(1, paramc));
   }
   
   public void destroy()
@@ -166,38 +190,50 @@ public class HippyModuleManagerImpl
     if (this.mUIThreadHandler != null) {
       this.mUIThreadHandler.removeMessages(1);
     }
-    if (this.mANRMonitor != null) {
-      this.mANRMonitor.checkMonitor();
+    Object localObject = this.mANRMonitor;
+    if (localObject != null) {
+      ((HippyModuleANRMonitor)localObject).checkMonitor();
     }
     this.isDestroyed = true;
     Iterator localIterator = this.mNativeModuleInfo.entrySet().iterator();
     while (localIterator.hasNext())
     {
-      Object localObject = (Map.Entry)localIterator.next();
+      localObject = (Map.Entry)localIterator.next();
       if (localObject != null)
       {
         localObject = (HippyNativeModuleInfo)((Map.Entry)localObject).getValue();
-        if (localObject != null) {
+        if ((localObject != null) && (((HippyNativeModuleInfo)localObject).shouldDestroy()))
+        {
+          ((HippyNativeModuleInfo)localObject).onDestroy();
+          Handler localHandler;
           if (((HippyNativeModuleInfo)localObject).getThread() == HippyNativeModule.Thread.DOM)
           {
             if (this.mDomThreadHandler != null)
             {
               localObject = this.mDomThreadHandler.obtainMessage(2, localObject);
-              this.mDomThreadHandler.sendMessage((Message)localObject);
+              localHandler = this.mDomThreadHandler;
             }
           }
-          else if (((HippyNativeModuleInfo)localObject).getThread() == HippyNativeModule.Thread.MAIN)
-          {
-            if (this.mUIThreadHandler != null)
+          else {
+            for (;;)
             {
-              localObject = this.mUIThreadHandler.obtainMessage(2, localObject);
-              this.mUIThreadHandler.sendMessage((Message)localObject);
+              localHandler.sendMessage((Message)localObject);
+              break;
+              if (((HippyNativeModuleInfo)localObject).getThread() == HippyNativeModule.Thread.MAIN)
+              {
+                if (this.mUIThreadHandler == null) {
+                  break;
+                }
+                localObject = this.mUIThreadHandler.obtainMessage(2, localObject);
+                localHandler = this.mUIThreadHandler;
+                continue;
+              }
+              if (this.mBridgeThreadHandler == null) {
+                break;
+              }
+              localObject = this.mBridgeThreadHandler.obtainMessage(2, localObject);
+              localHandler = this.mBridgeThreadHandler;
             }
-          }
-          else if (this.mBridgeThreadHandler != null)
-          {
-            localObject = this.mBridgeThreadHandler.obtainMessage(2, localObject);
-            this.mBridgeThreadHandler.sendMessage((Message)localObject);
           }
         }
       }
@@ -223,143 +259,54 @@ public class HippyModuleManagerImpl
         paramString3.doCallback(1, "module function can not be found");
         return;
       }
+      paramString2.invoke(this.mContext, paramString1.getInstance(), paramHippyArray, paramString3);
+      return;
     }
     catch (Throwable paramString1)
     {
       paramString3.doCallback(1, paramString1.getMessage());
-      return;
     }
-    paramString2.invoke(this.mContext, paramString1.getInstance(), paramHippyArray, paramString3);
   }
   
-  /* Error */
   public <T extends HippyJavaScriptModule> T getJavaScriptModule(Class<T> paramClass)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 51	com/tencent/mtt/hippy/modules/HippyModuleManagerImpl:mJsModules	Ljava/util/HashMap;
-    //   6: aload_1
-    //   7: invokevirtual 205	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   10: checkcast 298	com/tencent/mtt/hippy/modules/javascriptmodules/HippyJavaScriptModule
-    //   13: astore_2
-    //   14: aload_2
-    //   15: ifnull +9 -> 24
-    //   18: aload_2
-    //   19: astore_1
-    //   20: aload_0
-    //   21: monitorexit
-    //   22: aload_1
-    //   23: areturn
-    //   24: aload_1
-    //   25: invokevirtual 302	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
-    //   28: astore_2
-    //   29: aload_2
-    //   30: ifnonnull +8 -> 38
-    //   33: aconst_null
-    //   34: astore_1
-    //   35: goto -15 -> 20
-    //   38: new 304	com/tencent/mtt/hippy/modules/javascriptmodules/HippyJavaScriptModuleInvocationHandler
-    //   41: dup
-    //   42: aload_0
-    //   43: getfield 37	com/tencent/mtt/hippy/modules/HippyModuleManagerImpl:mContext	Lcom/tencent/mtt/hippy/HippyEngineContext;
-    //   46: aload_0
-    //   47: aload_1
-    //   48: invokespecial 137	com/tencent/mtt/hippy/modules/HippyModuleManagerImpl:getJavaScriptModuleName	(Ljava/lang/Class;)Ljava/lang/String;
-    //   51: invokespecial 307	com/tencent/mtt/hippy/modules/javascriptmodules/HippyJavaScriptModuleInvocationHandler:<init>	(Lcom/tencent/mtt/hippy/HippyEngineContext;Ljava/lang/String;)V
-    //   54: astore_3
-    //   55: aload_2
-    //   56: iconst_1
-    //   57: anewarray 88	java/lang/Class
-    //   60: dup
-    //   61: iconst_0
-    //   62: aload_1
-    //   63: aastore
-    //   64: aload_3
-    //   65: invokestatic 313	java/lang/reflect/Proxy:newProxyInstance	(Ljava/lang/ClassLoader;[Ljava/lang/Class;Ljava/lang/reflect/InvocationHandler;)Ljava/lang/Object;
-    //   68: checkcast 298	com/tencent/mtt/hippy/modules/javascriptmodules/HippyJavaScriptModule
-    //   71: astore_2
-    //   72: aload_0
-    //   73: getfield 51	com/tencent/mtt/hippy/modules/HippyModuleManagerImpl:mJsModules	Ljava/util/HashMap;
-    //   76: aload_1
-    //   77: invokevirtual 316	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   80: pop
-    //   81: aload_0
-    //   82: getfield 51	com/tencent/mtt/hippy/modules/HippyModuleManagerImpl:mJsModules	Ljava/util/HashMap;
-    //   85: aload_1
-    //   86: aload_2
-    //   87: invokevirtual 128	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   90: pop
-    //   91: aload_2
-    //   92: astore_1
-    //   93: goto -73 -> 20
-    //   96: astore_1
-    //   97: aload_0
-    //   98: monitorexit
-    //   99: aload_1
-    //   100: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	101	0	this	HippyModuleManagerImpl
-    //   0	101	1	paramClass	Class<T>
-    //   13	79	2	localObject	Object
-    //   54	11	3	localHippyJavaScriptModuleInvocationHandler	com.tencent.mtt.hippy.modules.javascriptmodules.HippyJavaScriptModuleInvocationHandler
-    // Exception table:
-    //   from	to	target	type
-    //   2	14	96	finally
-    //   24	29	96	finally
-    //   38	91	96	finally
+    try
+    {
+      Object localObject = (HippyJavaScriptModule)this.mJsModules.get(paramClass);
+      if (localObject != null) {
+        return localObject;
+      }
+      localObject = paramClass.getClassLoader();
+      if (localObject == null) {
+        return null;
+      }
+      HippyJavaScriptModuleInvocationHandler localHippyJavaScriptModuleInvocationHandler = new HippyJavaScriptModuleInvocationHandler(this.mContext, getJavaScriptModuleName(paramClass));
+      localObject = (HippyJavaScriptModule)Proxy.newProxyInstance((ClassLoader)localObject, new Class[] { paramClass }, localHippyJavaScriptModuleInvocationHandler);
+      this.mJsModules.remove(paramClass);
+      this.mJsModules.put(paramClass, localObject);
+      return localObject;
+    }
+    finally {}
   }
   
-  /* Error */
-  public <T extends com.tencent.mtt.hippy.modules.nativemodules.HippyNativeModuleBase> T getNativeModule(Class<T> paramClass)
+  public <T extends HippyNativeModuleBase> T getNativeModule(Class<T> paramClass)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: ldc_w 321
-    //   6: invokevirtual 325	java/lang/Class:getAnnotation	(Ljava/lang/Class;)Ljava/lang/annotation/Annotation;
-    //   9: checkcast 321	com/tencent/mtt/hippy/annotation/HippyNativeModule
-    //   12: astore_1
-    //   13: aload_1
-    //   14: ifnull +35 -> 49
-    //   17: aload_1
-    //   18: invokeinterface 328 1 0
-    //   23: astore_1
-    //   24: aload_0
-    //   25: getfield 49	com/tencent/mtt/hippy/modules/HippyModuleManagerImpl:mNativeModuleInfo	Ljava/util/HashMap;
-    //   28: aload_1
-    //   29: invokevirtual 205	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   32: checkcast 90	com/tencent/mtt/hippy/modules/nativemodules/HippyNativeModuleInfo
-    //   35: astore_1
-    //   36: aload_1
-    //   37: ifnull +12 -> 49
-    //   40: aload_1
-    //   41: invokevirtual 288	com/tencent/mtt/hippy/modules/nativemodules/HippyNativeModuleInfo:getInstance	()Lcom/tencent/mtt/hippy/modules/nativemodules/HippyNativeModuleBase;
-    //   44: astore_1
-    //   45: aload_0
-    //   46: monitorexit
-    //   47: aload_1
-    //   48: areturn
-    //   49: aconst_null
-    //   50: astore_1
-    //   51: goto -6 -> 45
-    //   54: astore_1
-    //   55: aload_0
-    //   56: monitorexit
-    //   57: aload_1
-    //   58: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	59	0	this	HippyModuleManagerImpl
-    //   0	59	1	paramClass	Class<T>
-    // Exception table:
-    //   from	to	target	type
-    //   2	13	54	finally
-    //   17	36	54	finally
-    //   40	45	54	finally
+    try
+    {
+      paramClass = (HippyNativeModule)paramClass.getAnnotation(HippyNativeModule.class);
+      if (paramClass != null)
+      {
+        paramClass = paramClass.name();
+        paramClass = (HippyNativeModuleInfo)this.mNativeModuleInfo.get(paramClass);
+        if (paramClass != null)
+        {
+          paramClass = paramClass.getInstance();
+          return paramClass;
+        }
+      }
+      return null;
+    }
+    finally {}
   }
   
   /* Error */
@@ -367,137 +314,200 @@ public class HippyModuleManagerImpl
   {
     // Byte code:
     //   0: aload_1
-    //   1: getfield 335	android/os/Message:what	I
-    //   4: tableswitch	default:+24 -> 28, 1:+26->30, 2:+186->190
-    //   29: ireturn
-    //   30: aconst_null
-    //   31: astore 5
-    //   33: iconst_m1
-    //   34: istore 4
-    //   36: aload_1
-    //   37: getfield 339	android/os/Message:obj	Ljava/lang/Object;
-    //   40: checkcast 200	com/tencent/mtt/hippy/bridge/c
-    //   43: astore_1
-    //   44: iload 4
-    //   46: istore_2
-    //   47: iload 4
-    //   49: istore_3
+    //   1: getfield 343	android/os/Message:what	I
+    //   4: istore_2
+    //   5: iload_2
+    //   6: iconst_1
+    //   7: if_icmpeq +64 -> 71
+    //   10: iload_2
+    //   11: iconst_2
+    //   12: if_icmpeq +5 -> 17
+    //   15: iconst_0
+    //   16: ireturn
+    //   17: aload_1
+    //   18: getfield 347	android/os/Message:obj	Ljava/lang/Object;
+    //   21: checkcast 90	com/tencent/mtt/hippy/modules/nativemodules/HippyNativeModuleInfo
+    //   24: invokevirtual 349	com/tencent/mtt/hippy/modules/nativemodules/HippyNativeModuleInfo:destroy	()V
+    //   27: iconst_1
+    //   28: ireturn
+    //   29: astore_1
+    //   30: new 126	java/lang/StringBuilder
+    //   33: dup
+    //   34: invokespecial 127	java/lang/StringBuilder:<init>	()V
+    //   37: astore 5
+    //   39: aload 5
+    //   41: ldc_w 351
+    //   44: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   47: pop
+    //   48: aload 5
     //   50: aload_1
-    //   51: getfield 343	com/tencent/mtt/hippy/bridge/c:d	Lcom/tencent/mtt/hippy/common/HippyArray;
-    //   54: astore 5
-    //   56: iload 4
-    //   58: istore_2
-    //   59: iload 4
-    //   61: istore_3
-    //   62: aload_0
-    //   63: getfield 44	com/tencent/mtt/hippy/modules/HippyModuleManagerImpl:mANRMonitor	Lcom/tencent/mtt/hippy/modules/HippyModuleANRMonitor;
-    //   66: aload_1
-    //   67: getfield 204	com/tencent/mtt/hippy/bridge/c:a	Ljava/lang/String;
-    //   70: aload_1
-    //   71: getfield 210	com/tencent/mtt/hippy/bridge/c:b	Ljava/lang/String;
-    //   74: invokevirtual 347	com/tencent/mtt/hippy/modules/HippyModuleANRMonitor:startMonitor	(Ljava/lang/String;Ljava/lang/String;)I
-    //   77: istore 4
-    //   79: iload 4
-    //   81: istore_2
-    //   82: iload 4
-    //   84: istore_3
-    //   85: aload_0
-    //   86: aload_1
-    //   87: getfield 204	com/tencent/mtt/hippy/bridge/c:a	Ljava/lang/String;
-    //   90: aload_1
-    //   91: getfield 210	com/tencent/mtt/hippy/bridge/c:b	Ljava/lang/String;
-    //   94: aload_1
-    //   95: getfield 213	com/tencent/mtt/hippy/bridge/c:c	Ljava/lang/String;
-    //   98: aload 5
-    //   100: invokevirtual 349	com/tencent/mtt/hippy/modules/HippyModuleManagerImpl:doCallNatives	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mtt/hippy/common/HippyArray;)V
-    //   103: aload_1
-    //   104: ifnull +7 -> 111
-    //   107: aload_1
-    //   108: invokevirtual 351	com/tencent/mtt/hippy/bridge/c:a	()V
-    //   111: iload 4
-    //   113: iflt +12 -> 125
-    //   116: aload_0
-    //   117: getfield 44	com/tencent/mtt/hippy/modules/HippyModuleManagerImpl:mANRMonitor	Lcom/tencent/mtt/hippy/modules/HippyModuleANRMonitor;
-    //   120: iload 4
-    //   122: invokevirtual 354	com/tencent/mtt/hippy/modules/HippyModuleANRMonitor:endMonitor	(I)V
-    //   125: iconst_1
-    //   126: ireturn
+    //   51: invokevirtual 302	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   54: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   57: pop
+    //   58: ldc_w 353
+    //   61: aload 5
+    //   63: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   66: invokestatic 359	com/tencent/mtt/hippy/utils/LogUtils:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   69: iconst_1
+    //   70: ireturn
+    //   71: iconst_m1
+    //   72: istore_3
+    //   73: aload_1
+    //   74: getfield 347	android/os/Message:obj	Ljava/lang/Object;
+    //   77: checkcast 202	com/tencent/mtt/hippy/bridge/c
+    //   80: astore 5
+    //   82: iload_3
+    //   83: istore_2
+    //   84: aload 5
+    //   86: astore_1
+    //   87: iload_3
+    //   88: istore 4
+    //   90: aload 5
+    //   92: getfield 362	com/tencent/mtt/hippy/bridge/c:d	Lcom/tencent/mtt/hippy/common/HippyArray;
+    //   95: astore 6
+    //   97: iload_3
+    //   98: istore_2
+    //   99: aload 5
+    //   101: astore_1
+    //   102: iload_3
+    //   103: istore 4
+    //   105: aload_0
+    //   106: getfield 44	com/tencent/mtt/hippy/modules/HippyModuleManagerImpl:mANRMonitor	Lcom/tencent/mtt/hippy/modules/HippyModuleANRMonitor;
+    //   109: aload 5
+    //   111: getfield 206	com/tencent/mtt/hippy/bridge/c:a	Ljava/lang/String;
+    //   114: aload 5
+    //   116: getfield 212	com/tencent/mtt/hippy/bridge/c:b	Ljava/lang/String;
+    //   119: invokevirtual 366	com/tencent/mtt/hippy/modules/HippyModuleANRMonitor:startMonitor	(Ljava/lang/String;Ljava/lang/String;)I
+    //   122: istore_3
+    //   123: iload_3
+    //   124: istore_2
+    //   125: aload 5
     //   127: astore_1
-    //   128: iconst_m1
-    //   129: istore_2
-    //   130: aconst_null
-    //   131: astore_1
-    //   132: aload_1
-    //   133: ifnull +7 -> 140
-    //   136: aload_1
-    //   137: invokevirtual 351	com/tencent/mtt/hippy/bridge/c:a	()V
-    //   140: iload_2
-    //   141: iflt -16 -> 125
-    //   144: aload_0
-    //   145: getfield 44	com/tencent/mtt/hippy/modules/HippyModuleManagerImpl:mANRMonitor	Lcom/tencent/mtt/hippy/modules/HippyModuleANRMonitor;
-    //   148: iload_2
-    //   149: invokevirtual 354	com/tencent/mtt/hippy/modules/HippyModuleANRMonitor:endMonitor	(I)V
-    //   152: goto -27 -> 125
-    //   155: astore 6
+    //   128: iload_3
+    //   129: istore 4
+    //   131: aload_0
+    //   132: aload 5
+    //   134: getfield 206	com/tencent/mtt/hippy/bridge/c:a	Ljava/lang/String;
+    //   137: aload 5
+    //   139: getfield 212	com/tencent/mtt/hippy/bridge/c:b	Ljava/lang/String;
+    //   142: aload 5
+    //   144: getfield 215	com/tencent/mtt/hippy/bridge/c:c	Ljava/lang/String;
+    //   147: aload 6
+    //   149: invokevirtual 368	com/tencent/mtt/hippy/modules/HippyModuleManagerImpl:doCallNatives	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mtt/hippy/common/HippyArray;)V
+    //   152: aload 5
+    //   154: ifnull +8 -> 162
     //   157: aload 5
-    //   159: astore_1
-    //   160: iload 4
-    //   162: istore_2
-    //   163: aload 6
-    //   165: astore 5
-    //   167: aload_1
-    //   168: ifnull +7 -> 175
-    //   171: aload_1
-    //   172: invokevirtual 351	com/tencent/mtt/hippy/bridge/c:a	()V
-    //   175: iload_2
-    //   176: iflt +11 -> 187
-    //   179: aload_0
-    //   180: getfield 44	com/tencent/mtt/hippy/modules/HippyModuleManagerImpl:mANRMonitor	Lcom/tencent/mtt/hippy/modules/HippyModuleANRMonitor;
-    //   183: iload_2
-    //   184: invokevirtual 354	com/tencent/mtt/hippy/modules/HippyModuleANRMonitor:endMonitor	(I)V
-    //   187: aload 5
-    //   189: athrow
-    //   190: aload_1
-    //   191: getfield 339	android/os/Message:obj	Ljava/lang/Object;
-    //   194: checkcast 90	com/tencent/mtt/hippy/modules/nativemodules/HippyNativeModuleInfo
-    //   197: invokevirtual 356	com/tencent/mtt/hippy/modules/nativemodules/HippyNativeModuleInfo:destroy	()V
-    //   200: iconst_1
-    //   201: ireturn
-    //   202: astore_1
-    //   203: goto -3 -> 200
-    //   206: astore 5
-    //   208: goto -41 -> 167
-    //   211: astore 5
-    //   213: iload_3
-    //   214: istore_2
-    //   215: goto -83 -> 132
+    //   159: invokevirtual 370	com/tencent/mtt/hippy/bridge/c:a	()V
+    //   162: iload_3
+    //   163: iflt +115 -> 278
+    //   166: goto +104 -> 270
+    //   169: astore 5
+    //   171: goto +109 -> 280
+    //   174: astore 6
+    //   176: iload 4
+    //   178: istore_3
+    //   179: goto +17 -> 196
+    //   182: astore 5
+    //   184: aconst_null
+    //   185: astore_1
+    //   186: iload_3
+    //   187: istore_2
+    //   188: goto +92 -> 280
+    //   191: astore 6
+    //   193: aconst_null
+    //   194: astore 5
+    //   196: iload_3
+    //   197: istore_2
+    //   198: aload 5
+    //   200: astore_1
+    //   201: new 126	java/lang/StringBuilder
+    //   204: dup
+    //   205: invokespecial 127	java/lang/StringBuilder:<init>	()V
+    //   208: astore 7
+    //   210: iload_3
+    //   211: istore_2
+    //   212: aload 5
+    //   214: astore_1
+    //   215: aload 7
+    //   217: ldc_w 351
+    //   220: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   223: pop
+    //   224: iload_3
+    //   225: istore_2
+    //   226: aload 5
+    //   228: astore_1
+    //   229: aload 7
+    //   231: aload 6
+    //   233: invokevirtual 302	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   236: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   239: pop
+    //   240: iload_3
+    //   241: istore_2
+    //   242: aload 5
+    //   244: astore_1
+    //   245: ldc_w 353
+    //   248: aload 7
+    //   250: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   253: invokestatic 359	com/tencent/mtt/hippy/utils/LogUtils:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   256: aload 5
+    //   258: ifnull +8 -> 266
+    //   261: aload 5
+    //   263: invokevirtual 370	com/tencent/mtt/hippy/bridge/c:a	()V
+    //   266: iload_3
+    //   267: iflt +11 -> 278
+    //   270: aload_0
+    //   271: getfield 44	com/tencent/mtt/hippy/modules/HippyModuleManagerImpl:mANRMonitor	Lcom/tencent/mtt/hippy/modules/HippyModuleANRMonitor;
+    //   274: iload_3
+    //   275: invokevirtual 373	com/tencent/mtt/hippy/modules/HippyModuleANRMonitor:endMonitor	(I)V
+    //   278: iconst_1
+    //   279: ireturn
+    //   280: aload_1
+    //   281: ifnull +7 -> 288
+    //   284: aload_1
+    //   285: invokevirtual 370	com/tencent/mtt/hippy/bridge/c:a	()V
+    //   288: iload_2
+    //   289: iflt +11 -> 300
+    //   292: aload_0
+    //   293: getfield 44	com/tencent/mtt/hippy/modules/HippyModuleManagerImpl:mANRMonitor	Lcom/tencent/mtt/hippy/modules/HippyModuleANRMonitor;
+    //   296: iload_2
+    //   297: invokevirtual 373	com/tencent/mtt/hippy/modules/HippyModuleANRMonitor:endMonitor	(I)V
+    //   300: aload 5
+    //   302: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	218	0	this	HippyModuleManagerImpl
-    //   0	218	1	paramMessage	Message
-    //   46	169	2	i	int
-    //   49	165	3	j	int
-    //   34	127	4	k	int
-    //   31	157	5	localObject1	Object
-    //   206	1	5	localObject2	Object
-    //   211	1	5	localThrowable	Throwable
-    //   155	9	6	localObject3	Object
+    //   0	303	0	this	HippyModuleManagerImpl
+    //   0	303	1	paramMessage	Message
+    //   4	293	2	i	int
+    //   72	203	3	j	int
+    //   88	89	4	k	int
+    //   37	121	5	localObject1	Object
+    //   169	1	5	localObject2	Object
+    //   182	1	5	localObject3	Object
+    //   194	107	5	localObject4	Object
+    //   95	53	6	localHippyArray	HippyArray
+    //   174	1	6	localThrowable1	Throwable
+    //   191	41	6	localThrowable2	Throwable
+    //   208	41	7	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   36	44	127	java/lang/Throwable
-    //   36	44	155	finally
-    //   190	200	202	java/lang/Throwable
-    //   50	56	206	finally
-    //   62	79	206	finally
-    //   85	103	206	finally
-    //   50	56	211	java/lang/Throwable
-    //   62	79	211	java/lang/Throwable
-    //   85	103	211	java/lang/Throwable
+    //   17	27	29	java/lang/Throwable
+    //   90	97	169	finally
+    //   105	123	169	finally
+    //   131	152	169	finally
+    //   201	210	169	finally
+    //   215	224	169	finally
+    //   229	240	169	finally
+    //   245	256	169	finally
+    //   90	97	174	java/lang/Throwable
+    //   105	123	174	java/lang/Throwable
+    //   131	152	174	java/lang/Throwable
+    //   73	82	182	finally
+    //   73	82	191	java/lang/Throwable
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.HippyModuleManagerImpl
  * JD-Core Version:    0.7.0.1
  */

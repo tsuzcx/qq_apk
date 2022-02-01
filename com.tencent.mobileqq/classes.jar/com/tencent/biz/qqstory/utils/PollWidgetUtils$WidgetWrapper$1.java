@@ -24,9 +24,9 @@ class PollWidgetUtils$WidgetWrapper$1
     }
     paramWidgetElement = this.a.a();
     int j = paramWidgetElement.length;
-    for (;;)
+    while (i < j)
     {
-      if ((i >= j) || (paramWidgetElement[i].a())) {
+      if (paramWidgetElement[i].a()) {
         return;
       }
       i += 1;
@@ -35,7 +35,7 @@ class PollWidgetUtils$WidgetWrapper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.PollWidgetUtils.WidgetWrapper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -25,30 +25,30 @@ class QZoneShareActivity$7$1$1
     try
     {
       l1 = Long.parseLong(QZoneShareActivity.access$300(this.this$2.this$1.this$0).shareUin);
-      long l2 = l1;
-      if (l1 <= 0L) {
-        l2 = this.this$2.this$1.this$0.app.getLongAccountUin();
-      }
-      localObject = new NewIntent(this.this$2.this$1.this$0, QzoneShareServlet.class);
-      ((NewIntent)localObject).putExtra("reason", this.val$content);
-      ((NewIntent)localObject).putExtra("uin", l2);
-      ((NewIntent)localObject).putExtra("sharedata", QZoneShareActivity.access$300(this.this$2.this$1.this$0));
-      BaseApplicationImpl.getApplication().getRuntime().startServlet((NewIntent)localObject);
-      QLog.e("QZoneShare", 1, "startShare()");
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        long l1 = 0L;
-      }
+      long l1;
+      label108:
+      long l2;
+      break label108;
     }
+    l1 = 0L;
+    l2 = l1;
+    if (l1 <= 0L) {
+      l2 = this.this$2.this$1.this$0.app.getLongAccountUin();
+    }
+    localObject = new NewIntent(this.this$2.this$1.this$0, QzoneShareServlet.class);
+    ((NewIntent)localObject).putExtra("reason", this.val$content);
+    ((NewIntent)localObject).putExtra("uin", l2);
+    ((NewIntent)localObject).putExtra("sharedata", QZoneShareActivity.access$300(this.this$2.this$1.this$0));
+    BaseApplicationImpl.getApplication().getRuntime().startServlet((NewIntent)localObject);
+    QLog.e("QZoneShare", 1, "startShare()");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.share.QZoneShareActivity.7.1.1
  * JD-Core Version:    0.7.0.1
  */

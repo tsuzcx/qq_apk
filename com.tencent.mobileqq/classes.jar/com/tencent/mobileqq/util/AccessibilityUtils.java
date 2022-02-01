@@ -22,16 +22,16 @@ public class AccessibilityUtils
       localAccessibilityEvent.getText().add(paramString);
       paramView.getParent().requestSendAccessibilityEvent(paramView, localAccessibilityEvent);
     }
-    for (;;)
+    else
     {
-      return true;
       QQTextToSpeechHelper.a(paramString);
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.AccessibilityUtils
  * JD-Core Version:    0.7.0.1
  */

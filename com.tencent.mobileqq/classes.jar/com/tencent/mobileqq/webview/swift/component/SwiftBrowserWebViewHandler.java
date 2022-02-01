@@ -5,13 +5,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class SwiftBrowserWebViewHandler
 {
-  static SwiftBrowserWebViewHandler jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserWebViewHandler = null;
+  static SwiftBrowserWebViewHandler jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserWebViewHandler;
   final CopyOnWriteArrayList<SwiftBrowserWebViewHandler.AsyncInitWebViewCallback> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
   final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserWebViewHandler
  * JD-Core Version:    0.7.0.1
  */

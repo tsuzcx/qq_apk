@@ -24,15 +24,17 @@ public class RoundedBitmapDisplayer
   
   public void display(Bitmap paramBitmap, ImageAware paramImageAware, LoadedFrom paramLoadedFrom)
   {
-    if (!(paramImageAware instanceof ImageViewAware)) {
-      throw new IllegalArgumentException("ImageAware should wrap ImageView. ImageViewAware is expected.");
+    if ((paramImageAware instanceof ImageViewAware))
+    {
+      paramImageAware.setImageDrawable(new RoundedBitmapDisplayer.RoundedDrawable(paramBitmap, this.cornerRadius, this.margin));
+      return;
     }
-    paramImageAware.setImageDrawable(new RoundedBitmapDisplayer.RoundedDrawable(paramBitmap, this.cornerRadius, this.margin));
+    throw new IllegalArgumentException("ImageAware should wrap ImageView. ImageViewAware is expected.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer
  * JD-Core Version:    0.7.0.1
  */

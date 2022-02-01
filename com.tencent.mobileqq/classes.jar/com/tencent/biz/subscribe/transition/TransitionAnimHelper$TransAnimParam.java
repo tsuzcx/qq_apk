@@ -29,15 +29,12 @@ public class TransitionAnimHelper$TransAnimParam
       localJSONObject.put("image_url", this.jdField_a_of_type_JavaLangString);
       localJSONObject.put("image_width", this.jdField_a_of_type_Int);
       localJSONObject.put("image_height", this.jdField_b_of_type_Int);
-      return localJSONObject.toString();
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    return localJSONObject.toString();
   }
   
   public void a(String paramString)
@@ -58,7 +55,7 @@ public class TransitionAnimHelper$TransAnimParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.transition.TransitionAnimHelper.TransAnimParam
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.avgame.videorecord;
 
 import android.os.Handler;
 import com.tencent.avgame.gamelogic.data.EngineData;
+import com.tencent.avgame.qav.videorecord.SimpleGameRoomStatusListener;
 import com.tencent.qav.log.AVLog;
 
 class GuessVideoGameRecordCtrl$1
@@ -11,7 +12,13 @@ class GuessVideoGameRecordCtrl$1
   
   public boolean a(int paramInt, String paramString, EngineData paramEngineData)
   {
-    AVLog.c(this.a.a, "onRoomSelfExit " + paramInt + " " + paramString);
+    paramEngineData = this.a.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onRoomSelfExit ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(paramString);
+    AVLog.c(paramEngineData, localStringBuilder.toString());
     GuessVideoGameRecordCtrl.a(this.a).removeCallbacksAndMessages(null);
     GuessVideoGameRecordCtrl.a(this.a).sendEmptyMessage(2);
     return true;
@@ -19,7 +26,7 @@ class GuessVideoGameRecordCtrl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.videorecord.GuessVideoGameRecordCtrl.1
  * JD-Core Version:    0.7.0.1
  */

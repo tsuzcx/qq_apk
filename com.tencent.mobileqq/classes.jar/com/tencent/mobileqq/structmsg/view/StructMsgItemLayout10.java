@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.structmsg.view;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -27,7 +26,7 @@ public class StructMsgItemLayout10
       if (paramViewHolder.a != null)
       {
         paramBundle = new RelativeLayout.LayoutParams(-1, -1);
-        paramViewHolder.a.setId(2131363093);
+        paramViewHolder.a.setId(2131363033);
         paramBundle.addRule(9, -1);
         ((RelativeLayout)paramView).addView(paramViewHolder.a);
       }
@@ -35,100 +34,95 @@ public class StructMsgItemLayout10
       {
         paramBundle = new RelativeLayout.LayoutParams(-1, -2);
         paramBundle.addRule(9);
-        if (FontSettingManager.getFontLevel() <= 16.0F) {
-          break label146;
+        int i;
+        if (FontSettingManager.getFontLevel() > 16.0F) {
+          i = AIOUtils.b(5.0F, paramContext);
+        } else {
+          i = AIOUtils.b(10.0F, paramContext);
         }
+        paramBundle.setMargins(AIOUtils.b(20.0F, paramContext), 0, AIOUtils.b(20.0F, paramContext), i);
+        paramBundle.addRule(12);
+        ((RelativeLayout)paramView).addView(paramViewHolder.b, paramBundle);
       }
-    }
-    label146:
-    for (int i = AIOUtils.a(5.0F, paramContext);; i = AIOUtils.a(10.0F, paramContext))
-    {
-      paramBundle.setMargins(AIOUtils.a(20.0F, paramContext), 0, AIOUtils.a(20.0F, paramContext), i);
-      paramBundle.addRule(12);
-      ((RelativeLayout)paramView).addView(paramViewHolder.b, paramBundle);
-      return;
     }
   }
   
-  public int b()
+  protected int b()
   {
     return 10;
   }
   
   public View b(Context paramContext, View paramView, Bundle paramBundle)
   {
-    StructMsgItemLayout10.ViewHolder localViewHolder;
-    Object localObject1;
+    Object localObject3;
+    Object localObject4;
     if ((paramView != null) && ((paramView instanceof RelativeLayout)) && ((paramView.getTag() instanceof StructMsgItemLayout10.ViewHolder)))
     {
-      localViewHolder = (StructMsgItemLayout10.ViewHolder)paramView.getTag();
-      localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject3 = (StructMsgItemLayout10.ViewHolder)paramView.getTag();
+      localObject4 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     }
     for (;;)
     {
-      AbsStructMsgElement localAbsStructMsgElement;
-      Object localObject2;
-      String str;
+      Object localObject2 = localObject3;
+      Object localObject1 = paramView;
+      Object localObject5;
       int j;
       int i;
-      if (((Iterator)localObject1).hasNext())
+      if (((Iterator)localObject4).hasNext())
       {
-        localAbsStructMsgElement = (AbsStructMsgElement)((Iterator)localObject1).next();
-        localAbsStructMsgElement.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-        localObject2 = localAbsStructMsgElement.jdField_a_of_type_JavaLangString;
+        localObject1 = (AbsStructMsgElement)((Iterator)localObject4).next();
+        ((AbsStructMsgElement)localObject1).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+        localObject2 = ((AbsStructMsgElement)localObject1).jdField_a_of_type_JavaLangString;
         if ("title".equals(localObject2))
         {
-          localObject2 = (StructMsgItemTitle)localAbsStructMsgElement;
-          str = ((StructMsgItemTitle)localObject2).c();
+          localObject2 = (StructMsgItemTitle)localObject1;
+          localObject5 = ((StructMsgItemTitle)localObject2).c();
           j = ((StructMsgItemTitle)localObject2).f();
           i = j;
-          if (TextUtils.isEmpty(str)) {}
+          if (TextUtils.isEmpty((CharSequence)localObject5)) {}
         }
       }
       try
       {
-        i = Integer.parseInt(str);
+        i = Integer.parseInt((String)localObject5);
         f = FontSettingManager.getFontLevel() / 16.0F;
-        if (i * f > 36.0F) {
-          ((StructMsgItemTitle)localObject2).c("" + (int)(36.0F / f));
-        }
-        for (;;)
+        if (i * f > 36.0F)
         {
-          localViewHolder.b = localAbsStructMsgElement.a(paramContext, localViewHolder.b, paramBundle);
-          break;
-          ((StructMsgItemTitle)localObject2).c(str);
+          localObject5 = new StringBuilder();
+          ((StringBuilder)localObject5).append("");
+          ((StringBuilder)localObject5).append((int)(36.0F / f));
+          ((StructMsgItemTitle)localObject2).c(((StringBuilder)localObject5).toString());
         }
+        else
+        {
+          ((StructMsgItemTitle)localObject2).c((String)localObject5);
+        }
+        ((StructMsgItemLayout10.ViewHolder)localObject3).b = ((AbsStructMsgElement)localObject1).a(paramContext, ((StructMsgItemLayout10.ViewHolder)localObject3).b, paramBundle);
+        continue;
         if (!"paaudio".equals(localObject2)) {
           continue;
         }
-        localViewHolder.a = localAbsStructMsgElement.a(paramContext, localViewHolder.a, paramBundle);
+        ((StructMsgItemLayout10.ViewHolder)localObject3).a = ((AbsStructMsgElement)localObject1).a(paramContext, ((StructMsgItemLayout10.ViewHolder)localObject3).a, paramBundle);
         continue;
-        paramContext = localViewHolder;
-        if (paramContext.b != null) {
-          ((TextView)paramContext.b).setMaxLines(1);
-        }
-        paramView.setTag(paramContext);
-        return paramView;
-        localObject1 = paramContext.getResources();
-        localViewHolder = new StructMsgItemLayout10.ViewHolder();
-        paramView = new RelativeLayout(paramContext);
-        i = AIOUtils.a(15.0F, (Resources)localObject1);
-        paramView.setPadding(i, i, i, i);
-        i = (int)((BaseChatItemLayout.b - AIOUtils.a(46.0F, (Resources)localObject1)) * 26.0F / 63.0F);
-        paramView.setLayoutParams(new RelativeLayout.LayoutParams(-1, AIOUtils.a(30.0F, (Resources)localObject1) + i));
-        localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        if (((Iterator)localObject1).hasNext())
+        paramView = paramContext.getResources();
+        localObject2 = new StructMsgItemLayout10.ViewHolder();
+        localObject1 = new RelativeLayout(paramContext);
+        i = AIOUtils.b(15.0F, paramView);
+        ((View)localObject1).setPadding(i, i, i, i);
+        ((View)localObject1).setLayoutParams(new RelativeLayout.LayoutParams(-1, (int)((BaseChatItemLayout.b - AIOUtils.b(46.0F, paramView)) * 26.0F / 63.0F) + AIOUtils.b(30.0F, paramView)));
+        paramView = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        if (paramView.hasNext())
         {
-          localAbsStructMsgElement = (AbsStructMsgElement)((Iterator)localObject1).next();
-          localAbsStructMsgElement.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-          localObject2 = localAbsStructMsgElement.jdField_a_of_type_JavaLangString;
-          if ("title".equals(localObject2))
+          localObject3 = (AbsStructMsgElement)paramView.next();
+          ((AbsStructMsgElement)localObject3).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+          localObject4 = ((AbsStructMsgElement)localObject3).jdField_a_of_type_JavaLangString;
+          if ("title".equals(localObject4))
           {
-            localObject2 = (StructMsgItemTitle)localAbsStructMsgElement;
-            str = ((StructMsgItemTitle)localObject2).c();
-            j = ((StructMsgItemTitle)localObject2).f();
+            localObject4 = (StructMsgItemTitle)localObject3;
+            localObject5 = ((StructMsgItemTitle)localObject4).c();
+            j = ((StructMsgItemTitle)localObject4).f();
             i = j;
-            if (TextUtils.isEmpty(str)) {}
+            if (TextUtils.isEmpty((CharSequence)localObject5)) {}
           }
         }
       }
@@ -138,25 +132,31 @@ public class StructMsgItemLayout10
         {
           for (;;)
           {
-            i = Integer.parseInt(str);
+            i = Integer.parseInt((String)localObject5);
             float f = FontSettingManager.getFontLevel() / 16.0F;
-            if (i * f > 36.0F) {
-              ((StructMsgItemTitle)localObject2).c("" + (int)(36.0F / f));
-            }
-            for (;;)
+            if (i * f > 36.0F)
             {
-              localViewHolder.b = localAbsStructMsgElement.a(paramContext, localViewHolder.b, paramBundle);
-              break;
-              ((StructMsgItemTitle)localObject2).c(str);
+              localObject5 = new StringBuilder();
+              ((StringBuilder)localObject5).append("");
+              ((StringBuilder)localObject5).append((int)(36.0F / f));
+              ((StructMsgItemTitle)localObject4).c(((StringBuilder)localObject5).toString());
             }
-            if ("paaudio".equals(localObject2))
+            else
             {
-              localViewHolder.a = localAbsStructMsgElement.a(paramContext, localViewHolder.a, paramBundle);
-              continue;
-              a(paramContext, paramView, localViewHolder, paramBundle);
-              paramContext = localViewHolder;
+              ((StructMsgItemTitle)localObject4).c((String)localObject5);
+            }
+            ((StructMsgItemLayout10.ViewHolder)localObject2).b = ((AbsStructMsgElement)localObject3).a(paramContext, ((StructMsgItemLayout10.ViewHolder)localObject2).b, paramBundle);
+            continue;
+            if ("paaudio".equals(localObject4)) {
+              ((StructMsgItemLayout10.ViewHolder)localObject2).a = ((AbsStructMsgElement)localObject3).a(paramContext, ((StructMsgItemLayout10.ViewHolder)localObject2).a, paramBundle);
             }
           }
+          a(paramContext, (View)localObject1, (StructMsgItemLayout10.ViewHolder)localObject2, paramBundle);
+          if (((StructMsgItemLayout10.ViewHolder)localObject2).b != null) {
+            ((TextView)((StructMsgItemLayout10.ViewHolder)localObject2).b).setMaxLines(1);
+          }
+          ((View)localObject1).setTag(localObject2);
+          return localObject1;
           localException1 = localException1;
           i = j;
         }
@@ -178,7 +178,7 @@ public class StructMsgItemLayout10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout10
  * JD-Core Version:    0.7.0.1
  */

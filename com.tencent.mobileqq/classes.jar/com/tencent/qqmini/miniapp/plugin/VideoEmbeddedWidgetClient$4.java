@@ -12,7 +12,12 @@ class VideoEmbeddedWidgetClient$4
   
   public void onVideoSizeChanged(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {
-    QMLog.i("miniapp-embedded", "onVideoSizeChanged : w - " + paramInt1 + "; h - " + paramInt2);
+    paramIMediaPlayer = new StringBuilder();
+    paramIMediaPlayer.append("onVideoSizeChanged : w - ");
+    paramIMediaPlayer.append(paramInt1);
+    paramIMediaPlayer.append("; h - ");
+    paramIMediaPlayer.append(paramInt2);
+    QMLog.i("miniapp-embedded", paramIMediaPlayer.toString());
     VideoEmbeddedWidgetClient.access$202(this.this$0, paramInt1);
     VideoEmbeddedWidgetClient.access$302(this.this$0, paramInt2);
     if (VideoEmbeddedWidgetClient.access$400(this.this$0) != null)
@@ -25,7 +30,7 @@ class VideoEmbeddedWidgetClient$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.VideoEmbeddedWidgetClient.4
  * JD-Core Version:    0.7.0.1
  */

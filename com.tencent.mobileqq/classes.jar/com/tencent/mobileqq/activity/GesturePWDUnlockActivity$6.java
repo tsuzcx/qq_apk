@@ -10,19 +10,24 @@ class GesturePWDUnlockActivity$6
 {
   GesturePWDUnlockActivity$6(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(this.a.app.getCurrentAccountUin()))) {}
-    while (this.a.a == null) {
-      return;
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
+    {
+      if (!paramString.equals(this.a.app.getCurrentAccountUin())) {
+        return;
+      }
+      if (this.a.mFaceImageView != null)
+      {
+        paramString = this.a.app.getFaceBitmap(this.a.app.getCurrentAccountUin(), (byte)3, false);
+        this.a.mFaceImageView.setImageBitmap(paramString);
+      }
     }
-    paramString = this.a.app.getFaceBitmap(this.a.app.getCurrentAccountUin(), (byte)3, false);
-    this.a.a.setImageBitmap(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GesturePWDUnlockActivity.6
  * JD-Core Version:    0.7.0.1
  */

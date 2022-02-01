@@ -31,14 +31,15 @@ public final class BindUinResult
   {
     paramJceOutputStream.write(this.lUin, 0);
     paramJceOutputStream.write(this.iResult, 1);
-    if (this.strResult != null) {
-      paramJceOutputStream.write(this.strResult, 2);
+    String str = this.strResult;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.BindUinResult
  * JD-Core Version:    0.7.0.1
  */

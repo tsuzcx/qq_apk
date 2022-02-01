@@ -26,269 +26,274 @@ public class ShortVideoUtils$VideoFileSaveRunnable
   public void run()
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 5
-    //   3: aload_0
-    //   4: getfield 30	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mVideoPath	Ljava/lang/String;
-    //   7: invokestatic 48	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   10: ifne +13 -> 23
-    //   13: aload_0
-    //   14: getfield 30	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mVideoPath	Ljava/lang/String;
-    //   17: invokestatic 54	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Z
-    //   20: ifne +47 -> 67
-    //   23: invokestatic 60	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   26: ifeq +31 -> 57
-    //   29: ldc 62
-    //   31: iconst_2
-    //   32: new 64	java/lang/StringBuilder
-    //   35: dup
-    //   36: invokespecial 65	java/lang/StringBuilder:<init>	()V
-    //   39: ldc 67
-    //   41: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   44: aload_0
-    //   45: getfield 30	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mVideoPath	Ljava/lang/String;
-    //   48: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   51: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   54: invokestatic 79	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   57: aload_0
-    //   58: getfield 32	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mHandler	Lmqq/os/MqqHandler;
-    //   61: iconst_1
-    //   62: invokevirtual 85	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
-    //   65: pop
-    //   66: return
-    //   67: new 87	java/io/File
-    //   70: dup
-    //   71: aload_0
-    //   72: getfield 30	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mVideoPath	Ljava/lang/String;
-    //   75: invokespecial 90	java/io/File:<init>	(Ljava/lang/String;)V
-    //   78: astore 6
-    //   80: invokestatic 95	com/tencent/util/VersionUtils:b	()Z
-    //   83: ifeq +74 -> 157
-    //   86: getstatic 100	android/os/Environment:DIRECTORY_MOVIES	Ljava/lang/String;
-    //   89: invokestatic 104	android/os/Environment:getExternalStoragePublicDirectory	(Ljava/lang/String;)Ljava/io/File;
-    //   92: astore_2
-    //   93: aload_2
-    //   94: invokevirtual 107	java/io/File:mkdirs	()Z
-    //   97: pop
-    //   98: aload_0
-    //   99: getfield 28	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mbKeepUniqueName	Z
-    //   102: ifeq +69 -> 171
-    //   105: aload_0
-    //   106: getfield 34	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mUniqueName	Ljava/lang/String;
-    //   109: astore_3
-    //   110: new 87	java/io/File
-    //   113: dup
-    //   114: aload_2
-    //   115: aload_3
-    //   116: invokespecial 110	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   119: astore_3
+    //   0: aload_0
+    //   1: getfield 30	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mVideoPath	Ljava/lang/String;
+    //   4: invokestatic 48	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   7: ifne +348 -> 355
+    //   10: aload_0
+    //   11: getfield 30	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mVideoPath	Ljava/lang/String;
+    //   14: invokestatic 54	com/tencent/mobileqq/utils/FileUtils:fileExists	(Ljava/lang/String;)Z
+    //   17: ifne +6 -> 23
+    //   20: goto +335 -> 355
+    //   23: new 56	java/io/File
+    //   26: dup
+    //   27: aload_0
+    //   28: getfield 30	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mVideoPath	Ljava/lang/String;
+    //   31: invokespecial 59	java/io/File:<init>	(Ljava/lang/String;)V
+    //   34: astore 4
+    //   36: invokestatic 65	com/tencent/util/VersionUtils:b	()Z
+    //   39: ifeq +13 -> 52
+    //   42: getstatic 70	android/os/Environment:DIRECTORY_MOVIES	Ljava/lang/String;
+    //   45: invokestatic 74	android/os/Environment:getExternalStoragePublicDirectory	(Ljava/lang/String;)Ljava/io/File;
+    //   48: astore_2
+    //   49: goto +14 -> 63
+    //   52: new 56	java/io/File
+    //   55: dup
+    //   56: getstatic 79	com/tencent/mobileqq/app/AppConstants:SDCARD_VIDEO	Ljava/lang/String;
+    //   59: invokespecial 59	java/io/File:<init>	(Ljava/lang/String;)V
+    //   62: astore_2
+    //   63: aload_2
+    //   64: invokevirtual 82	java/io/File:mkdirs	()Z
+    //   67: pop
+    //   68: aload_0
+    //   69: getfield 28	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mbKeepUniqueName	Z
+    //   72: ifeq +11 -> 83
+    //   75: aload_0
+    //   76: getfield 34	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mUniqueName	Ljava/lang/String;
+    //   79: astore_3
+    //   80: goto +11 -> 91
+    //   83: aload_0
+    //   84: getfield 34	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mUniqueName	Ljava/lang/String;
+    //   87: invokestatic 88	com/tencent/mobileqq/shortvideo/ShortVideoUtils:getShortVideoSaveFileName	(Ljava/lang/String;)Ljava/lang/String;
+    //   90: astore_3
+    //   91: new 56	java/io/File
+    //   94: dup
+    //   95: aload_2
+    //   96: aload_3
+    //   97: invokespecial 91	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   100: astore_2
+    //   101: aload_0
+    //   102: getfield 36	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mNeedReplace	Z
+    //   105: ifne +33 -> 138
+    //   108: aload_2
+    //   109: invokevirtual 94	java/io/File:exists	()Z
+    //   112: ifeq +26 -> 138
+    //   115: aload_0
+    //   116: getfield 32	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mHandler	Lmqq/os/MqqHandler;
+    //   119: iconst_3
     //   120: aload_0
-    //   121: getfield 36	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mNeedReplace	Z
-    //   124: ifne +58 -> 182
-    //   127: aload_3
-    //   128: invokevirtual 113	java/io/File:exists	()Z
-    //   131: ifeq +51 -> 182
-    //   134: aload_0
-    //   135: getfield 32	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mHandler	Lmqq/os/MqqHandler;
-    //   138: iconst_3
-    //   139: aload_0
-    //   140: getfield 30	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mVideoPath	Ljava/lang/String;
-    //   143: invokevirtual 117	mqq/os/MqqHandler:obtainMessage	(ILjava/lang/Object;)Landroid/os/Message;
-    //   146: astore_2
-    //   147: aload_0
-    //   148: getfield 32	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mHandler	Lmqq/os/MqqHandler;
-    //   151: aload_2
-    //   152: invokevirtual 121	mqq/os/MqqHandler:sendMessage	(Landroid/os/Message;)Z
-    //   155: pop
-    //   156: return
-    //   157: new 87	java/io/File
-    //   160: dup
-    //   161: getstatic 126	com/tencent/mobileqq/app/AppConstants:SDCARD_VIDEO	Ljava/lang/String;
-    //   164: invokespecial 90	java/io/File:<init>	(Ljava/lang/String;)V
-    //   167: astore_2
-    //   168: goto -75 -> 93
-    //   171: aload_0
-    //   172: getfield 34	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mUniqueName	Ljava/lang/String;
-    //   175: invokestatic 132	com/tencent/mobileqq/shortvideo/ShortVideoUtils:getShortVideoSaveFileName	(Ljava/lang/String;)Ljava/lang/String;
-    //   178: astore_3
-    //   179: goto -69 -> 110
-    //   182: new 134	java/io/FileOutputStream
-    //   185: dup
-    //   186: aload_3
-    //   187: invokespecial 137	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   190: astore 4
-    //   192: new 139	java/io/FileInputStream
-    //   195: dup
-    //   196: aload 6
-    //   198: invokespecial 140	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   201: astore_2
-    //   202: ldc 141
-    //   204: newarray byte
-    //   206: astore 5
-    //   208: aload_2
-    //   209: aload 5
-    //   211: invokevirtual 145	java/io/FileInputStream:read	([B)I
-    //   214: istore_1
-    //   215: iload_1
-    //   216: iconst_m1
-    //   217: if_icmpeq +73 -> 290
-    //   220: aload 4
-    //   222: aload 5
-    //   224: iconst_0
-    //   225: iload_1
-    //   226: invokevirtual 149	java/io/FileOutputStream:write	([BII)V
-    //   229: aload 4
-    //   231: invokevirtual 152	java/io/FileOutputStream:flush	()V
-    //   234: goto -26 -> 208
-    //   237: astore 5
-    //   239: aload 4
-    //   241: astore_3
-    //   242: aload 5
-    //   244: astore 4
-    //   246: invokestatic 60	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   249: ifeq +13 -> 262
-    //   252: ldc 62
-    //   254: iconst_2
-    //   255: ldc 154
-    //   257: aload 4
-    //   259: invokestatic 157	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   262: aload_0
-    //   263: getfield 32	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mHandler	Lmqq/os/MqqHandler;
-    //   266: iconst_1
-    //   267: invokevirtual 85	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
-    //   270: pop
-    //   271: aload_3
-    //   272: ifnull +7 -> 279
-    //   275: aload_3
-    //   276: invokevirtual 160	java/io/FileOutputStream:close	()V
-    //   279: aload_2
-    //   280: ifnull -214 -> 66
-    //   283: aload_2
-    //   284: invokevirtual 161	java/io/FileInputStream:close	()V
-    //   287: return
-    //   288: astore_2
-    //   289: return
-    //   290: aload_0
-    //   291: getfield 32	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mHandler	Lmqq/os/MqqHandler;
-    //   294: iconst_2
-    //   295: aload_3
-    //   296: invokevirtual 164	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   299: invokevirtual 117	mqq/os/MqqHandler:obtainMessage	(ILjava/lang/Object;)Landroid/os/Message;
-    //   302: astore_3
-    //   303: aload_0
-    //   304: getfield 32	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mHandler	Lmqq/os/MqqHandler;
+    //   121: getfield 30	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mVideoPath	Ljava/lang/String;
+    //   124: invokevirtual 100	mqq/os/MqqHandler:obtainMessage	(ILjava/lang/Object;)Landroid/os/Message;
+    //   127: astore_2
+    //   128: aload_0
+    //   129: getfield 32	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mHandler	Lmqq/os/MqqHandler;
+    //   132: aload_2
+    //   133: invokevirtual 104	mqq/os/MqqHandler:sendMessage	(Landroid/os/Message;)Z
+    //   136: pop
+    //   137: return
+    //   138: aconst_null
+    //   139: astore_3
+    //   140: new 106	java/io/FileOutputStream
+    //   143: dup
+    //   144: aload_2
+    //   145: invokespecial 109	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   148: astore 5
+    //   150: new 111	java/io/FileInputStream
+    //   153: dup
+    //   154: aload 4
+    //   156: invokespecial 112	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   159: astore_3
+    //   160: ldc 113
+    //   162: newarray byte
+    //   164: astore 4
+    //   166: aload_3
+    //   167: aload 4
+    //   169: invokevirtual 117	java/io/FileInputStream:read	([B)I
+    //   172: istore_1
+    //   173: iload_1
+    //   174: iconst_m1
+    //   175: if_icmpeq +20 -> 195
+    //   178: aload 5
+    //   180: aload 4
+    //   182: iconst_0
+    //   183: iload_1
+    //   184: invokevirtual 121	java/io/FileOutputStream:write	([BII)V
+    //   187: aload 5
+    //   189: invokevirtual 124	java/io/FileOutputStream:flush	()V
+    //   192: goto -26 -> 166
+    //   195: aload_0
+    //   196: getfield 32	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mHandler	Lmqq/os/MqqHandler;
+    //   199: iconst_2
+    //   200: aload_2
+    //   201: invokevirtual 128	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   204: invokevirtual 100	mqq/os/MqqHandler:obtainMessage	(ILjava/lang/Object;)Landroid/os/Message;
+    //   207: astore_2
+    //   208: aload_0
+    //   209: getfield 32	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mHandler	Lmqq/os/MqqHandler;
+    //   212: aload_2
+    //   213: invokevirtual 104	mqq/os/MqqHandler:sendMessage	(Landroid/os/Message;)Z
+    //   216: pop
+    //   217: aload 5
+    //   219: invokevirtual 131	java/io/FileOutputStream:close	()V
+    //   222: aload_3
+    //   223: astore_2
+    //   224: aload_2
+    //   225: invokevirtual 132	java/io/FileInputStream:close	()V
+    //   228: return
+    //   229: astore_2
+    //   230: aload 5
+    //   232: astore 4
+    //   234: goto +98 -> 332
+    //   237: astore 4
+    //   239: aload_3
+    //   240: astore_2
+    //   241: goto +17 -> 258
+    //   244: astore_2
+    //   245: aconst_null
+    //   246: astore_3
+    //   247: aload 5
+    //   249: astore 4
+    //   251: goto +81 -> 332
+    //   254: astore 4
+    //   256: aconst_null
+    //   257: astore_2
+    //   258: aload 5
+    //   260: astore_3
+    //   261: goto +17 -> 278
+    //   264: astore_2
+    //   265: aconst_null
+    //   266: astore 4
+    //   268: aload 4
+    //   270: astore_3
+    //   271: goto +61 -> 332
+    //   274: astore 4
+    //   276: aconst_null
+    //   277: astore_2
+    //   278: invokestatic 137	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   281: ifeq +13 -> 294
+    //   284: ldc 139
+    //   286: iconst_2
+    //   287: ldc 141
+    //   289: aload 4
+    //   291: invokestatic 145	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   294: aload_0
+    //   295: getfield 32	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mHandler	Lmqq/os/MqqHandler;
+    //   298: iconst_1
+    //   299: invokevirtual 149	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
+    //   302: pop
+    //   303: aload_3
+    //   304: ifnull +10 -> 314
     //   307: aload_3
-    //   308: invokevirtual 121	mqq/os/MqqHandler:sendMessage	(Landroid/os/Message;)Z
-    //   311: pop
-    //   312: aload 4
-    //   314: ifnull +8 -> 322
-    //   317: aload 4
-    //   319: invokevirtual 160	java/io/FileOutputStream:close	()V
-    //   322: aload_2
-    //   323: ifnull -257 -> 66
-    //   326: aload_2
-    //   327: invokevirtual 161	java/io/FileInputStream:close	()V
-    //   330: return
+    //   308: invokevirtual 131	java/io/FileOutputStream:close	()V
+    //   311: goto +3 -> 314
+    //   314: aload_2
+    //   315: ifnull +6 -> 321
+    //   318: goto -94 -> 224
+    //   321: return
+    //   322: astore 5
+    //   324: aload_3
+    //   325: astore 4
+    //   327: aload_2
+    //   328: astore_3
+    //   329: aload 5
     //   331: astore_2
-    //   332: return
-    //   333: astore_3
-    //   334: aconst_null
-    //   335: astore_2
-    //   336: aconst_null
-    //   337: astore 4
-    //   339: aload 4
-    //   341: ifnull +8 -> 349
-    //   344: aload 4
-    //   346: invokevirtual 160	java/io/FileOutputStream:close	()V
-    //   349: aload_2
-    //   350: ifnull +7 -> 357
+    //   332: aload 4
+    //   334: ifnull +11 -> 345
+    //   337: aload 4
+    //   339: invokevirtual 131	java/io/FileOutputStream:close	()V
+    //   342: goto +3 -> 345
+    //   345: aload_3
+    //   346: ifnull +7 -> 353
+    //   349: aload_3
+    //   350: invokevirtual 132	java/io/FileInputStream:close	()V
     //   353: aload_2
-    //   354: invokevirtual 161	java/io/FileInputStream:close	()V
-    //   357: aload_3
-    //   358: athrow
-    //   359: astore_3
-    //   360: goto -38 -> 322
-    //   363: astore_3
-    //   364: goto -85 -> 279
-    //   367: astore 4
-    //   369: goto -20 -> 349
-    //   372: astore_2
-    //   373: goto -16 -> 357
-    //   376: astore_3
-    //   377: aconst_null
-    //   378: astore_2
-    //   379: goto -40 -> 339
-    //   382: astore_3
-    //   383: goto -44 -> 339
-    //   386: astore 5
-    //   388: aload_3
-    //   389: astore 4
-    //   391: aload 5
-    //   393: astore_3
-    //   394: goto -55 -> 339
-    //   397: astore 4
-    //   399: aconst_null
-    //   400: astore_2
-    //   401: aload 5
-    //   403: astore_3
-    //   404: goto -158 -> 246
-    //   407: astore 5
-    //   409: aconst_null
-    //   410: astore_2
-    //   411: aload 4
+    //   354: athrow
+    //   355: invokestatic 137	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   358: ifeq +37 -> 395
+    //   361: new 151	java/lang/StringBuilder
+    //   364: dup
+    //   365: invokespecial 152	java/lang/StringBuilder:<init>	()V
+    //   368: astore_2
+    //   369: aload_2
+    //   370: ldc 154
+    //   372: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   375: pop
+    //   376: aload_2
+    //   377: aload_0
+    //   378: getfield 30	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mVideoPath	Ljava/lang/String;
+    //   381: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   384: pop
+    //   385: ldc 139
+    //   387: iconst_2
+    //   388: aload_2
+    //   389: invokevirtual 161	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   392: invokestatic 164	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   395: aload_0
+    //   396: getfield 32	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mHandler	Lmqq/os/MqqHandler;
+    //   399: iconst_1
+    //   400: invokevirtual 149	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
+    //   403: pop
+    //   404: return
+    //   405: astore_2
+    //   406: aload_3
+    //   407: astore_2
+    //   408: goto -184 -> 224
+    //   411: astore_2
+    //   412: return
     //   413: astore_3
-    //   414: aload 5
-    //   416: astore 4
-    //   418: goto -172 -> 246
+    //   414: goto -100 -> 314
+    //   417: astore 4
+    //   419: goto -74 -> 345
+    //   422: astore_3
+    //   423: goto -70 -> 353
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	421	0	this	VideoFileSaveRunnable
-    //   214	12	1	i	int
-    //   92	192	2	localObject1	Object
-    //   288	39	2	localIOException1	java.io.IOException
-    //   331	1	2	localIOException2	java.io.IOException
-    //   335	19	2	localObject2	Object
-    //   372	1	2	localIOException3	java.io.IOException
-    //   378	33	2	localObject3	Object
-    //   109	199	3	localObject4	Object
-    //   333	25	3	localObject5	Object
-    //   359	1	3	localIOException4	java.io.IOException
-    //   363	1	3	localIOException5	java.io.IOException
-    //   376	1	3	localObject6	Object
-    //   382	7	3	localObject7	Object
-    //   393	21	3	localObject8	Object
-    //   190	155	4	localObject9	Object
-    //   367	1	4	localIOException6	java.io.IOException
-    //   389	1	4	localObject10	Object
-    //   397	15	4	localException1	java.lang.Exception
-    //   416	1	4	localException2	java.lang.Exception
-    //   1	222	5	arrayOfByte	byte[]
-    //   237	6	5	localException3	java.lang.Exception
-    //   386	16	5	localObject11	Object
-    //   407	8	5	localException4	java.lang.Exception
-    //   78	119	6	localFile	java.io.File
+    //   0	426	0	this	VideoFileSaveRunnable
+    //   172	12	1	i	int
+    //   48	177	2	localObject1	Object
+    //   229	1	2	localObject2	Object
+    //   240	1	2	localObject3	Object
+    //   244	1	2	localObject4	Object
+    //   257	1	2	localObject5	Object
+    //   264	1	2	localObject6	Object
+    //   277	112	2	localObject7	Object
+    //   405	1	2	localIOException1	java.io.IOException
+    //   407	1	2	localObject8	Object
+    //   411	1	2	localIOException2	java.io.IOException
+    //   79	328	3	localObject9	Object
+    //   413	1	3	localIOException3	java.io.IOException
+    //   422	1	3	localIOException4	java.io.IOException
+    //   34	199	4	localObject10	Object
+    //   237	1	4	localException1	java.lang.Exception
+    //   249	1	4	localObject11	Object
+    //   254	1	4	localException2	java.lang.Exception
+    //   266	3	4	localObject12	Object
+    //   274	16	4	localException3	java.lang.Exception
+    //   325	13	4	localObject13	Object
+    //   417	1	4	localIOException5	java.io.IOException
+    //   148	111	5	localFileOutputStream	java.io.FileOutputStream
+    //   322	8	5	localObject14	Object
     // Exception table:
     //   from	to	target	type
-    //   202	208	237	java/lang/Exception
-    //   208	215	237	java/lang/Exception
-    //   220	234	237	java/lang/Exception
-    //   290	312	237	java/lang/Exception
-    //   283	287	288	java/io/IOException
-    //   326	330	331	java/io/IOException
-    //   182	192	333	finally
-    //   317	322	359	java/io/IOException
-    //   275	279	363	java/io/IOException
-    //   344	349	367	java/io/IOException
-    //   353	357	372	java/io/IOException
-    //   192	202	376	finally
-    //   202	208	382	finally
-    //   208	215	382	finally
-    //   220	234	382	finally
-    //   290	312	382	finally
-    //   246	262	386	finally
-    //   262	271	386	finally
-    //   182	192	397	java/lang/Exception
-    //   192	202	407	java/lang/Exception
+    //   160	166	229	finally
+    //   166	173	229	finally
+    //   178	192	229	finally
+    //   195	217	229	finally
+    //   160	166	237	java/lang/Exception
+    //   166	173	237	java/lang/Exception
+    //   178	192	237	java/lang/Exception
+    //   195	217	237	java/lang/Exception
+    //   150	160	244	finally
+    //   150	160	254	java/lang/Exception
+    //   140	150	264	finally
+    //   140	150	274	java/lang/Exception
+    //   278	294	322	finally
+    //   294	303	322	finally
+    //   217	222	405	java/io/IOException
+    //   224	228	411	java/io/IOException
+    //   307	311	413	java/io/IOException
+    //   337	342	417	java/io/IOException
+    //   349	353	422	java/io/IOException
   }
   
   public void setKeepUniqueName(boolean paramBoolean)
@@ -298,7 +303,7 @@ public class ShortVideoUtils$VideoFileSaveRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable
  * JD-Core Version:    0.7.0.1
  */

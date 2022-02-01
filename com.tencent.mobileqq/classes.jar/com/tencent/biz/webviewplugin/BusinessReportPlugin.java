@@ -24,15 +24,19 @@ public class BusinessReportPlugin
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    try
-    {
-      this.jdField_a_of_type_AndroidOsHandler.post(new BusinessReportPlugin.1(this, paramString));
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("BusinessReporter", 1, "Report Error:" + paramString);
+    if (this.jdField_a_of_type_Boolean) {
+      try
+      {
+        this.jdField_a_of_type_AndroidOsHandler.post(new BusinessReportPlugin.1(this, paramString));
+        return;
+      }
+      catch (Exception paramString)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Report Error:");
+        localStringBuilder.append(paramString);
+        QLog.e("BusinessReporter", 1, localStringBuilder.toString());
+      }
     }
   }
   
@@ -46,7 +50,7 @@ public class BusinessReportPlugin
     return 8L;
   }
   
-  public Object handleEvent(String paramString, long paramLong)
+  protected Object handleEvent(String paramString, long paramLong)
   {
     if (paramLong == 8L) {
       a(paramString);
@@ -61,7 +65,7 @@ public class BusinessReportPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.BusinessReportPlugin
  * JD-Core Version:    0.7.0.1
  */

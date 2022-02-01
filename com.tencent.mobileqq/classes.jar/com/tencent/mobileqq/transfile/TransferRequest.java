@@ -81,53 +81,113 @@ public class TransferRequest
   
   public String getKey()
   {
-    if (this.mKey == null)
+    String str = this.mKey;
+    Object localObject = str;
+    if (str == null)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.mPeerUin);
-      localStringBuilder.append("_");
-      localStringBuilder.append(this.mFileType);
-      localStringBuilder.append("_");
-      localStringBuilder.append(this.mUniseq);
-      localStringBuilder.append("_");
-      localStringBuilder.append(this.mSubMsgId);
-      return localStringBuilder.toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.mPeerUin);
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(this.mFileType);
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(this.mUniseq);
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(this.mSubMsgId);
+      localObject = ((StringBuilder)localObject).toString();
     }
-    return this.mKey;
+    return localObject;
   }
   
   public String getKeyForTransfer()
   {
-    return this.mPeerUin + this.mUniseq;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mPeerUin);
+    localStringBuilder.append(this.mUniseq);
+    return localStringBuilder.toString();
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder("TransferRequest\n");
-    localStringBuilder.append("mUniseq=" + this.mUniseq);
-    localStringBuilder.append(",mMd5=" + this.mMd5);
-    localStringBuilder.append(",mIsIp=" + this.mIsUp);
-    localStringBuilder.append(",mUinType=" + this.mUinType);
-    localStringBuilder.append(",mFileType=" + this.mFileType);
-    localStringBuilder.append(",mSelfUin=" + this.mSelfUin);
-    localStringBuilder.append(",mPeerUin=" + this.mPeerUin);
-    localStringBuilder.append(",mSecondId=" + this.mSecondId);
-    localStringBuilder.append(",mServerPath=" + this.mServerPath);
-    localStringBuilder.append(",mLocalPath=" + this.mLocalPath);
-    localStringBuilder.append(",mBusiType=" + this.mBusiType);
-    localStringBuilder.append(",mGroupFileID=" + this.mGroupFileID);
-    localStringBuilder.append(",mExtraObj={" + this.mExtraObj + "}");
-    localStringBuilder.append(",mPrioty=" + this.mPrioty);
-    localStringBuilder.append(",mLogicCallBack=" + this.mUpCallBack);
-    localStringBuilder.append(",bEnableEnc=" + this.bEnableEnc);
-    localStringBuilder.append(",isQzonePic=" + this.isQzonePic);
-    localStringBuilder.append(",pcmForVadPath=" + this.pcmForVadPath);
-    return localStringBuilder.toString();
+    StringBuilder localStringBuilder1 = new StringBuilder("TransferRequest\n");
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("mUniseq=");
+    localStringBuilder2.append(this.mUniseq);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",mMd5=");
+    localStringBuilder2.append(this.mMd5);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",mIsIp=");
+    localStringBuilder2.append(this.mIsUp);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",mUinType=");
+    localStringBuilder2.append(this.mUinType);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",mFileType=");
+    localStringBuilder2.append(this.mFileType);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",mSelfUin=");
+    localStringBuilder2.append(this.mSelfUin);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",mPeerUin=");
+    localStringBuilder2.append(this.mPeerUin);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",mSecondId=");
+    localStringBuilder2.append(this.mSecondId);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",mServerPath=");
+    localStringBuilder2.append(this.mServerPath);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",mLocalPath=");
+    localStringBuilder2.append(this.mLocalPath);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",mBusiType=");
+    localStringBuilder2.append(this.mBusiType);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",mGroupFileID=");
+    localStringBuilder2.append(this.mGroupFileID);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",mExtraObj={");
+    localStringBuilder2.append(this.mExtraObj);
+    localStringBuilder2.append("}");
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",mPrioty=");
+    localStringBuilder2.append(this.mPrioty);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",mLogicCallBack=");
+    localStringBuilder2.append(this.mUpCallBack);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",bEnableEnc=");
+    localStringBuilder2.append(this.bEnableEnc);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",isQzonePic=");
+    localStringBuilder2.append(this.isQzonePic);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",pcmForVadPath=");
+    localStringBuilder2.append(this.pcmForVadPath);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    return localStringBuilder1.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.TransferRequest
  * JD-Core Version:    0.7.0.1
  */

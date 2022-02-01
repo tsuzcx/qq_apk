@@ -20,16 +20,12 @@ class VoIPJsPlugin$3$1
     {
       localJSONObject.put("errCode", paramInt);
       localJSONObject.put("errMsg", paramString);
-      this.this$1.val$req.jsService.evaluateSubscribeJS("onVoIPChatInterrupted", localJSONObject.toString(), 0);
-      return;
     }
     catch (JSONException paramString)
     {
-      for (;;)
-      {
-        QMLog.e("[mini] VoIPJsPlugin", "JSONException", paramString);
-      }
+      QMLog.e("[mini] VoIPJsPlugin", "JSONException", paramString);
     }
+    this.this$1.val$req.jsService.evaluateSubscribeJS("onVoIPChatInterrupted", localJSONObject.toString(), 0);
   }
   
   public void onRoomMemberChange(JSONArray paramJSONArray)
@@ -39,16 +35,12 @@ class VoIPJsPlugin$3$1
     {
       localJSONObject.put("openIdList", paramJSONArray);
       localJSONObject.put("errCode", 0);
-      this.this$1.val$req.jsService.evaluateSubscribeJS("onVoIPChatMembersChanged", localJSONObject.toString(), 0);
-      return;
     }
     catch (JSONException paramJSONArray)
     {
-      for (;;)
-      {
-        QMLog.e("[mini] VoIPJsPlugin", "JSONException", paramJSONArray);
-      }
+      QMLog.e("[mini] VoIPJsPlugin", "JSONException", paramJSONArray);
     }
+    this.this$1.val$req.jsService.evaluateSubscribeJS("onVoIPChatMembersChanged", localJSONObject.toString(), 0);
   }
   
   public void onRoomMemberSpeaking(JSONArray paramJSONArray)
@@ -58,21 +50,17 @@ class VoIPJsPlugin$3$1
     {
       localJSONObject.put("openIdList", paramJSONArray);
       localJSONObject.put("errCode", 0);
-      this.this$1.val$req.jsService.evaluateSubscribeJS("onVoIPChatSpeakersChanged", localJSONObject.toString(), 0);
-      return;
     }
     catch (JSONException paramJSONArray)
     {
-      for (;;)
-      {
-        QMLog.e("[mini] VoIPJsPlugin", "JSONException", paramJSONArray);
-      }
+      QMLog.e("[mini] VoIPJsPlugin", "JSONException", paramJSONArray);
     }
+    this.this$1.val$req.jsService.evaluateSubscribeJS("onVoIPChatSpeakersChanged", localJSONObject.toString(), 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.VoIPJsPlugin.3.1
  * JD-Core Version:    0.7.0.1
  */

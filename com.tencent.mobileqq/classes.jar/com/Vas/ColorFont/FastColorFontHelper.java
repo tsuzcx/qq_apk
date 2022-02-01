@@ -21,15 +21,16 @@ public class FastColorFontHelper
   
   public static FastColorFontHelper a()
   {
-    if (jdField_a_of_type_ComVasColorFontFastColorFontHelper == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComVasColorFontFastColorFontHelper == null) {
-        jdField_a_of_type_ComVasColorFontFastColorFontHelper = new FastColorFontHelper();
+    if (jdField_a_of_type_ComVasColorFontFastColorFontHelper == null) {
+      try
+      {
+        if (jdField_a_of_type_ComVasColorFontFastColorFontHelper == null) {
+          jdField_a_of_type_ComVasColorFontFastColorFontHelper = new FastColorFontHelper();
+        }
       }
-      return jdField_a_of_type_ComVasColorFontFastColorFontHelper;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComVasColorFontFastColorFontHelper;
   }
   
   public int a(int paramInt)
@@ -57,27 +58,46 @@ public class FastColorFontHelper
     if (TextUtils.isEmpty((String)this.jdField_a_of_type_ComVasColorFontFastColorFontHelper$FontLruCache.get(Integer.valueOf(paramInt))))
     {
       this.jdField_a_of_type_ComVasColorFontFastColorFontHelper$FontLruCache.put(Integer.valueOf(paramInt), paramString);
-      int[] arrayOfInt = new int[5];
+      localObject = new int[5];
       long l1 = System.currentTimeMillis();
-      int i = this.jdField_a_of_type_ComVasColorFontFreeTypeLib.initColorFont(paramInt, paramString, arrayOfInt);
+      int i = this.jdField_a_of_type_ComVasColorFontFreeTypeLib.initColorFont(paramInt, paramString, (int[])localObject);
       long l2 = System.currentTimeMillis();
-      FastColorFontLog.a("FastColorFontHelper", "initColorFont cost:" + (l2 - l1) + " fontId=" + paramInt + "  fontWidth:" + arrayOfInt[1] + "  fontHeight:" + arrayOfInt[2] + "  lineSpace:" + arrayOfInt[0] + "  path=" + paramString);
-      if (i / 100 >= 2)
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initColorFont cost:");
+      localStringBuilder.append(l2 - l1);
+      localStringBuilder.append(" fontId=");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("  fontWidth:");
+      localStringBuilder.append(localObject[1]);
+      localStringBuilder.append("  fontHeight:");
+      localStringBuilder.append(localObject[2]);
+      localStringBuilder.append("  lineSpace:");
+      localStringBuilder.append(localObject[0]);
+      localStringBuilder.append("  path=");
+      localStringBuilder.append(paramString);
+      FastColorFontLog.a("FastColorFontHelper", localStringBuilder.toString());
+      int j = i / 100;
+      if (j >= 2)
       {
-        FastColorFontCache.b(paramInt, i / 100);
+        FastColorFontCache.b(paramInt, j);
         FastColorFontCache.c(paramInt, i % 100);
-        FastColorFontCache.a(paramInt, arrayOfInt[0]);
-        FastColorFontCache.e(paramInt, arrayOfInt[1]);
-        FastColorFontCache.d(paramInt, arrayOfInt[2]);
-        FastColorFontCache.f(paramInt, arrayOfInt[3]);
-        FastColorFontCache.g(paramInt, arrayOfInt[4]);
+        FastColorFontCache.a(paramInt, localObject[0]);
+        FastColorFontCache.e(paramInt, localObject[1]);
+        FastColorFontCache.d(paramInt, localObject[2]);
+        FastColorFontCache.f(paramInt, localObject[3]);
+        FastColorFontCache.g(paramInt, localObject[4]);
       }
       if ((paramInt >= 8388608) || (paramInt <= -8388608)) {
         FastColorFontLog.b("FastColorFontHelper", "为了缓存不出现问题，字体id最好限制在3个字节以内！");
       }
       return i;
     }
-    FastColorFontLog.a("FastColorFontHelper", "该字体已经初始化  fontId=" + paramInt + "  path=" + paramString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("该字体已经初始化  fontId=");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("  path=");
+    ((StringBuilder)localObject).append(paramString);
+    FastColorFontLog.a("FastColorFontHelper", ((StringBuilder)localObject).toString());
     return 0;
   }
   
@@ -148,7 +168,7 @@ public class FastColorFontHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.Vas.ColorFont.FastColorFontHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -19,20 +19,20 @@ class SCFChannel$1$4
     Object localObject = new Bundle();
     ((Bundle)localObject).putString("KEY_UIN", this.jdField_a_of_type_JavaLangString);
     localObject = QIPCClientHelper.getInstance().getClient().callServer("FriendQIPCModule", "ACTION_GET_SCF_RING_NAME", (Bundle)localObject);
-    if (((EIPCResult)localObject).isSuccess()) {}
-    for (localObject = ((EIPCResult)localObject).data.getString("KEY_SCF_RING_NAME");; localObject = "")
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("flutter.SCFSettingChannel", 2, String.format("getSpecialRing, ringName: %s", new Object[] { localObject }));
-      }
-      ThreadManager.getUIHandler().post(new SCFChannel.1.4.1(this, (String)localObject));
-      return;
+    if (((EIPCResult)localObject).isSuccess()) {
+      localObject = ((EIPCResult)localObject).data.getString("KEY_SCF_RING_NAME");
+    } else {
+      localObject = "";
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("flutter.SCFSettingChannel", 2, String.format("getSpecialRing, ringName: %s", new Object[] { localObject }));
+    }
+    ThreadManager.getUIHandler().post(new SCFChannel.1.4.1(this, (String)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.relation.SCFChannel.1.4
  * JD-Core Version:    0.7.0.1
  */

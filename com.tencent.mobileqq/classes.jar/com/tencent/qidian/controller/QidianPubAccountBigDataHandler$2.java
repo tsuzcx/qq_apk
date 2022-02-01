@@ -11,24 +11,21 @@ class QidianPubAccountBigDataHandler$2
   public void run()
   {
     this.this$0.a(this.a);
-    PubAccountNavigationMenu localPubAccountNavigationMenu = (PubAccountNavigationMenu)this.this$0.a.get(Long.valueOf(this.a));
-    if (localPubAccountNavigationMenu == null)
+    PubAccountNavigationMenu localPubAccountNavigationMenu2 = (PubAccountNavigationMenu)this.this$0.a.get(Long.valueOf(this.a));
+    PubAccountNavigationMenu localPubAccountNavigationMenu1 = localPubAccountNavigationMenu2;
+    if (localPubAccountNavigationMenu2 == null)
     {
-      localPubAccountNavigationMenu = new PubAccountNavigationMenu();
-      localPubAccountNavigationMenu.version = 0;
-      localPubAccountNavigationMenu.puin = this.a;
-      localPubAccountNavigationMenu.xml = "";
+      localPubAccountNavigationMenu1 = new PubAccountNavigationMenu();
+      localPubAccountNavigationMenu1.version = 0;
+      localPubAccountNavigationMenu1.puin = this.a;
+      localPubAccountNavigationMenu1.xml = "";
     }
-    for (;;)
-    {
-      QidianPubAccountBigDataHandler.a(this.this$0, this.a, localPubAccountNavigationMenu, this.b);
-      return;
-    }
+    QidianPubAccountBigDataHandler.a(this.this$0, this.a, localPubAccountNavigationMenu1, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qidian.controller.QidianPubAccountBigDataHandler.2
  * JD-Core Version:    0.7.0.1
  */

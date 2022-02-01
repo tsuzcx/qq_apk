@@ -45,33 +45,31 @@ public class MiniProgramLpReportDC04682
   
   public static void report(MiniAppInfo paramMiniAppInfo, JSONObject paramJSONObject)
   {
-    StringBuilder localStringBuilder;
     if (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion())
     {
-      localStringBuilder = new StringBuilder().append("report mobile game ad with args: ");
-      if (paramJSONObject == null) {
-        break label111;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("report mobile game ad with args: ");
+      if (paramJSONObject != null) {
+        localObject = paramJSONObject.toString();
+      } else {
+        localObject = "empty";
       }
+      localStringBuilder.append((String)localObject);
+      QMLog.d("MiniProgramLpReportDC04682", localStringBuilder.toString());
     }
-    label111:
-    for (Object localObject = paramJSONObject.toString();; localObject = "empty")
-    {
-      QMLog.d("MiniProgramLpReportDC04682", (String)localObject);
-      localObject = new ArrayList();
-      ((List)localObject).addAll(newCommonInfoEntries(paramMiniAppInfo));
-      ((List)localObject).addAll(newMobileGameAdReportEntries(paramJSONObject));
-      if (!QUAUtil.isQQApp()) {
-        ((List)localObject).addAll(MiniProgramReportHelper.newThirdSourceEntries());
-      }
-      paramMiniAppInfo = MiniProgramReportHelper.newSingleReportData(7, (List)localObject, null);
-      MiniProgramReporter.getInstance().addData(paramMiniAppInfo);
-      return;
+    Object localObject = new ArrayList();
+    ((List)localObject).addAll(newCommonInfoEntries(paramMiniAppInfo));
+    ((List)localObject).addAll(newMobileGameAdReportEntries(paramJSONObject));
+    if (!QUAUtil.isQQApp()) {
+      ((List)localObject).addAll(MiniProgramReportHelper.newThirdSourceEntries());
     }
+    paramMiniAppInfo = MiniProgramReportHelper.newSingleReportData(7, (List)localObject, null);
+    MiniProgramReporter.getInstance().addData(paramMiniAppInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.MiniProgramLpReportDC04682
  * JD-Core Version:    0.7.0.1
  */

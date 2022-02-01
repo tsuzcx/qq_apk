@@ -15,24 +15,25 @@ class DatalineFileBubbleModel$4
   public void run()
   {
     String str = FilePicURLDrawlableHelper.a(this.a.path);
-    if (FileUtil.b(str)) {
-      this.a.thumbPath = str;
-    }
-    do
+    if (FileUtil.a(str))
     {
+      this.a.thumbPath = str;
       return;
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inJustDecodeBounds = true;
-      FilePicURLDrawlableHelper.a(this.a.path, localOptions);
-      FilePicURLDrawlableHelper.a(this.a.path, str, 1);
-    } while (!FileUtil.b(str));
-    this.a.thumbPath = str;
-    this.this$0.a.getFileManagerNotifyCenter().a(true, 0, null);
+    }
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inJustDecodeBounds = true;
+    FilePicURLDrawlableHelper.a(this.a.path, localOptions);
+    FilePicURLDrawlableHelper.a(this.a.path, str, 1);
+    if (FileUtil.a(str))
+    {
+      this.a.thumbPath = str;
+      this.this$0.a.getFileManagerNotifyCenter().a(true, 0, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.bubble.DatalineFileBubbleModel.4
  * JD-Core Version:    0.7.0.1
  */

@@ -29,12 +29,19 @@ public abstract class eb
   
   public String toString()
   {
-    return "[name=" + this.a + ",desc=" + this.b + ",enabled=" + this.c + "]";
+    StringBuilder localStringBuilder = new StringBuilder("[name=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(",desc=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",enabled=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.eb
  * JD-Core Version:    0.7.0.1
  */

@@ -18,8 +18,13 @@ public class c
   
   public void a(String paramString)
   {
-    if (e()) {
-      this.a.a(new g(paramString, paramString + "#onStart", l.a.a.a()));
+    if (e())
+    {
+      e locale = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("#onStart");
+      locale.a(new g(paramString, localStringBuilder.toString(), l.a.a.a()));
     }
   }
   
@@ -28,7 +33,11 @@ public class c
     if (e())
     {
       this.a.a(paramString1, 500L, l.b.c);
-      this.a.a(new g(paramString1, paramString1 + paramString2, l.a.a.a()));
+      e locale = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(paramString2);
+      locale.a(new g(paramString1, localStringBuilder.toString(), l.a.a.a()));
     }
   }
   
@@ -41,8 +50,13 @@ public class c
   
   public void b(String paramString)
   {
-    if (e()) {
-      this.a.a(new g(paramString, paramString + "#onResume", l.a.a.a()));
+    if (e())
+    {
+      e locale = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("#onResume");
+      locale.a(new g(paramString, localStringBuilder.toString(), l.a.a.a()));
     }
   }
   
@@ -68,7 +82,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.appstate.c
  * JD-Core Version:    0.7.0.1
  */

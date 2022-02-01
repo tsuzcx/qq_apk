@@ -9,20 +9,20 @@ public class EnterpriseQQObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, paramObject);
+      if (paramInt != 2) {
+        return;
+      }
+      b(paramBoolean, paramObject);
       return;
     }
-    b(paramBoolean, paramObject);
+    a(paramBoolean, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.EnterpriseQQObserver
  * JD-Core Version:    0.7.0.1
  */

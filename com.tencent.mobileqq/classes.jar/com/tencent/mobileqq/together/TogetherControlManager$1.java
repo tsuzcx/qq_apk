@@ -23,18 +23,15 @@ class TogetherControlManager$1
         this.a.a.add(paramGetAdsRsp);
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
         URLDrawable.getDrawable(paramGetAdsRsp.c, localURLDrawableOptions).startDownload();
+        return;
       }
+      QLog.d("TogetherControlManager", 2, "ongetAdvs banner is null");
     }
-    else
-    {
-      return;
-    }
-    QLog.d("TogetherControlManager", 2, "ongetAdvs banner is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.together.TogetherControlManager.1
  * JD-Core Version:    0.7.0.1
  */

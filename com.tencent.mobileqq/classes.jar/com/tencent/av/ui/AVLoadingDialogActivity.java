@@ -10,8 +10,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.MotionEvent;
 import android.widget.TextView;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
@@ -21,17 +21,26 @@ public class AVLoadingDialogActivity
   extends BaseActivity
 {
   BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new AVLoadingDialogActivity.1(this);
-  Handler jdField_a_of_type_AndroidOsHandler = new AVLoadingDialogActivity.MyHandler(this.jdField_a_of_type_JavaLangString);
-  final String jdField_a_of_type_JavaLangString = "AVLoadingDialogActivity_" + AudioHelper.b();
+  Handler jdField_a_of_type_AndroidOsHandler;
+  final String jdField_a_of_type_JavaLangString;
+  
+  public AVLoadingDialogActivity()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AVLoadingDialogActivity_");
+    localStringBuilder.append(AudioHelper.b());
+    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    this.jdField_a_of_type_AndroidOsHandler = new AVLoadingDialogActivity.MyHandler(this.jdField_a_of_type_JavaLangString);
+  }
   
   Dialog a()
   {
-    ReportDialog localReportDialog = new ReportDialog(this, 2131755842);
-    localReportDialog.setContentView(2131559683);
+    ReportDialog localReportDialog = new ReportDialog(this, 2131756189);
+    localReportDialog.setContentView(2131559561);
     localReportDialog.setCancelable(false);
-    TextView localTextView = (TextView)localReportDialog.findViewById(2131373066);
+    TextView localTextView = (TextView)localReportDialog.findViewById(2131372646);
     if (localTextView != null) {
-      localTextView.setText(2131695876);
+      localTextView.setText(2131695888);
     }
     return localReportDialog;
   }
@@ -45,7 +54,7 @@ public class AVLoadingDialogActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
     paramBundle = new IntentFilter();
@@ -53,16 +62,20 @@ public class AVLoadingDialogActivity
     registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
     QLog.d(this.jdField_a_of_type_JavaLangString, 1, "avideo doOnCreate");
     paramBundle = getIntent();
-    String str = this.jdField_a_of_type_JavaLangString + ".doOnCreate";
-    if (paramBundle != null) {}
-    for (paramBundle = paramBundle.getExtras();; paramBundle = null)
-    {
-      AudioHelper.a(str, paramBundle);
-      return bool;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(".doOnCreate");
+    localObject = ((StringBuilder)localObject).toString();
+    if (paramBundle != null) {
+      paramBundle = paramBundle.getExtras();
+    } else {
+      paramBundle = null;
     }
+    AudioHelper.a((String)localObject, paramBundle);
+    return bool;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
     QLog.d(this.jdField_a_of_type_JavaLangString, 1, "doOnDestroy");
@@ -71,7 +84,7 @@ public class AVLoadingDialogActivity
     unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
     QLog.d(this.jdField_a_of_type_JavaLangString, 1, "doOnResume");
@@ -96,22 +109,20 @@ public class AVLoadingDialogActivity
   
   protected Dialog onCreateDialog(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 0) {
       return null;
     }
     return a();
   }
   
-  public void requestWindowFeature(Intent paramIntent)
+  protected void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.AVLoadingDialogActivity
  * JD-Core Version:    0.7.0.1
  */

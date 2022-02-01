@@ -22,20 +22,21 @@ public class GetQzonePublicMsgRequest
   public static mobile_get_qzone_public_msg_rsp onResponse(byte[] paramArrayOfByte, int[] paramArrayOfInt)
   {
     if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
+      return null;
     }
-    do
-    {
-      return paramArrayOfByte;
-      paramArrayOfInt = (mobile_get_qzone_public_msg_rsp)decode(paramArrayOfByte, "getQzonePublicMsg", paramArrayOfInt);
-      paramArrayOfByte = paramArrayOfInt;
-    } while (paramArrayOfInt != null);
-    return null;
+    paramArrayOfByte = (mobile_get_qzone_public_msg_rsp)decode(paramArrayOfByte, "getQzonePublicMsg", paramArrayOfInt);
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    return paramArrayOfByte;
   }
   
   public String getCmdString()
   {
-    return "QzoneNewService." + uniKey();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QzoneNewService.");
+    localStringBuilder.append(uniKey());
+    return localStringBuilder.toString();
   }
   
   public JceStruct getReq()
@@ -50,7 +51,7 @@ public class GetQzonePublicMsgRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.GetQzonePublicMsgRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -12,8 +12,13 @@ class MultiAIOFragment$9
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioFragment", 2, "onActionUpNotFling() called with: initialVelocity = [" + paramInt + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActionUpNotFling() called with: initialVelocity = [");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("]");
+      QLog.d("MultiAioFragment", 2, localStringBuilder.toString());
     }
     MultiAIOFragment.a(this.a).setViewPagerBusy(true);
     MultiAIOFragment.a(this.a).c(paramInt);
@@ -24,7 +29,7 @@ class MultiAIOFragment$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.MultiAIOFragment.9
  * JD-Core Version:    0.7.0.1
  */

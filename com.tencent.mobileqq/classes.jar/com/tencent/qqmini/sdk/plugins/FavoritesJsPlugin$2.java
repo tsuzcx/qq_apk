@@ -12,7 +12,10 @@ final class FavoritesJsPlugin$2
   
   public void onCmdResult(boolean paramBoolean, Bundle paramBundle)
   {
-    QMLog.d("FavoritesJsPlugin", "sendAddFavoritesToQQ done succ = " + paramBoolean);
+    paramBundle = new StringBuilder();
+    paramBundle.append("sendAddFavoritesToQQ done succ = ");
+    paramBundle.append(paramBoolean);
+    QMLog.d("FavoritesJsPlugin", paramBundle.toString());
     if (paramBoolean)
     {
       this.val$req.ok();
@@ -25,7 +28,7 @@ final class FavoritesJsPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.FavoritesJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

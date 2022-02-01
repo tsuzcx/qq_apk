@@ -13,19 +13,18 @@ class LiveRoomDownloadManager$1
     super.onDone(paramDownloadTask);
     if (this.val$callback != null)
     {
-      if (paramDownloadTask.a() == 3) {
+      if (paramDownloadTask.a() == 3)
+      {
         this.val$callback.onSuccess(paramDownloadTask.a(), paramDownloadTask.a);
+        return;
       }
+      this.val$callback.onFailure(paramDownloadTask.a(), paramDownloadTask.a);
     }
-    else {
-      return;
-    }
-    this.val$callback.onFailure(paramDownloadTask.a(), paramDownloadTask.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomDownloadManager.1
  * JD-Core Version:    0.7.0.1
  */

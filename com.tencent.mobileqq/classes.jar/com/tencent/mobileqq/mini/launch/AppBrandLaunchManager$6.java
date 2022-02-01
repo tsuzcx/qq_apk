@@ -14,20 +14,29 @@ class AppBrandLaunchManager$6
   
   public void run()
   {
-    if (this.val$appConfig.config == null) {
-      QLog.e("miniapp-process_AppBrandLaunchManager", 1, "启动失败, Appid 为空 appConfig.config==null Activity=" + this.val$activity);
-    }
-    for (;;)
+    StringBuilder localStringBuilder;
+    if (this.val$appConfig.config == null)
     {
-      QQToast.a(AppBrandLaunchManager.access$000(this.this$0), HardCodeUtil.a(2131700680), 2000).a();
-      return;
-      QLog.e("miniapp-process_AppBrandLaunchManager", 1, "启动失败, Appid 为空" + this.val$appConfig.config.toString() + " Activity=" + this.val$activity);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("启动失败, Appid 为空 appConfig.config==null Activity=");
+      localStringBuilder.append(this.val$activity);
+      QLog.e("miniapp-process_AppBrandLaunchManager", 1, localStringBuilder.toString());
     }
+    else
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("启动失败, Appid 为空");
+      localStringBuilder.append(this.val$appConfig.config.toString());
+      localStringBuilder.append(" Activity=");
+      localStringBuilder.append(this.val$activity);
+      QLog.e("miniapp-process_AppBrandLaunchManager", 1, localStringBuilder.toString());
+    }
+    QQToast.a(AppBrandLaunchManager.access$000(this.this$0), HardCodeUtil.a(2131700821), 2000).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandLaunchManager.6
  * JD-Core Version:    0.7.0.1
  */

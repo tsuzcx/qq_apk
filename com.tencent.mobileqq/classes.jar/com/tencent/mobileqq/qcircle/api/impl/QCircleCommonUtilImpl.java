@@ -38,8 +38,12 @@ public class QCircleCommonUtilImpl
     if (((SharedPreferences)localObject).contains("version"))
     {
       localObject = ((SharedPreferences)localObject).getString("version", "");
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        return " " + (String)localObject;
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" ");
+        localStringBuilder.append((String)localObject);
+        return localStringBuilder.toString();
       }
     }
     return "";
@@ -67,7 +71,7 @@ public class QCircleCommonUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.impl.QCircleCommonUtilImpl
  * JD-Core Version:    0.7.0.1
  */

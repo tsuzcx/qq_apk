@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/NativeAd/report/bean/CommonReportObj;", "Lcom/tencent/biz/pubaccount/NativeAd/report/IReportObj;", "()V", "action", "", "actionEntity", "", "Ljava/lang/Integer;", "actionTime", "", "Ljava/lang/Long;", "adSlot", "adSlotOffTop", "clickPos", "exposeDuration", "exposePercent", "exposeType", "jumpMode", "refreshSeriesNum", "sceneAdNumber", "sceneSeriesNum", "sceneTraceID", "splashClickDuration", "statisticsSource", "uiType", "getKey", "parseAdReportData", "", "adReportData", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData;", "setActionEntity", "Lcom/tencent/biz/pubaccount/NativeAd/report/constant/ActionEntity;", "toJsonObject", "Lorg/json/JSONObject;", "valid", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/NativeAd/report/bean/CommonReportObj;", "Lcom/tencent/biz/pubaccount/NativeAd/report/IReportObj;", "()V", "action", "", "actionEntity", "", "Ljava/lang/Integer;", "actionTime", "", "Ljava/lang/Long;", "adSlot", "adSlotOffTop", "clickPos", "exposeDuration", "exposePercent", "exposeType", "jumpMode", "refreshSeriesNum", "sceneAdNumber", "sceneSeriesNum", "sceneTraceID", "splashClickDuration", "statisticsSource", "uiType", "getKey", "parseAdReportData", "", "adReportData", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData;", "setActionEntity", "Lcom/tencent/biz/pubaccount/NativeAd/report/constant/ActionEntity;", "toJsonObject", "Lorg/json/JSONObject;", "valid", "", "kandian_ad_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class CommonReportObj
   extends IReportObj
 {
@@ -61,9 +61,9 @@ public final class CommonReportObj
     ReportExKt.a(localJSONObject, "statisticsSource", this.jdField_b_of_type_JavaLangString);
     ReportExKt.a(localJSONObject, "jumpMode", this.j);
     ReportExKt.a(localJSONObject, "actionEntity", this.k);
-    ReportExKt.a(localJSONObject, "sceneTraceID", this.jdField_c_of_type_JavaLangString);
-    ReportExKt.a(localJSONObject, "sceneSeriesNum", this.l);
-    ReportExKt.a(localJSONObject, "refreshSeriesNum", this.m);
+    ReportExKt.a(localJSONObject, "scene_trace_id", this.jdField_c_of_type_JavaLangString);
+    ReportExKt.a(localJSONObject, "scene_series_num", this.l);
+    ReportExKt.a(localJSONObject, "refresh_series_num", this.m);
     return localJSONObject;
   }
   
@@ -86,10 +86,20 @@ public final class CommonReportObj
       localObject = AdReportUtil.a(paramAdReportData);
       Intrinsics.checkExpressionValueIsNotNull(localObject, "AdReportUtil.parseActionEntity(adReportData)");
       localObject = Integer.valueOf(((ActionEntity)localObject).getValue());
-      this.k = ((Integer)localObject);
-      if ((localReportAction != ReportAction.CLICK) && (localReportAction != ReportAction.CLOSE)) {
-        break label307;
-      }
+    }
+    else
+    {
+      localObject = paramAdReportData.a();
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "adReportData.actionEntity");
+      localObject = Integer.valueOf(((ActionEntity)localObject).getValue());
+    }
+    this.k = ((Integer)localObject);
+    if ((localReportAction != ReportAction.CLICK) && (localReportAction != ReportAction.CLOSE))
+    {
+      this.j = Integer.valueOf(0);
+    }
+    else
+    {
       this.f = Integer.valueOf(paramAdReportData.d());
       if ((paramAdReportData.a() != null) && (paramAdReportData.a().mSoftAdType != 0) && (paramAdReportData.a().adClickPos != null))
       {
@@ -98,51 +108,37 @@ public final class CommonReportObj
         this.f = Integer.valueOf(((AdClickPos)localObject).getValue());
       }
       this.j = AdReportUtil.a(paramAdReportData);
-      label151:
-      if (localReportAction == ReportAction.EXPOSE)
-      {
-        if (paramAdReportData.b()) {
-          break label326;
-        }
-        localObject = paramAdReportData.a();
-        if (localObject != null) {
-          break label318;
-        }
-        label174:
-        this.e = Integer.valueOf(1);
-        this.i = Integer.valueOf(50);
-      }
     }
-    for (this.h = Integer.valueOf(1000);; this.h = Integer.valueOf(0))
+    if (localReportAction == ReportAction.EXPOSE)
     {
+      if (!paramAdReportData.b())
+      {
+        localObject = paramAdReportData.a();
+        if ((localObject == null) || (((Integer)localObject).intValue() != 2))
+        {
+          this.e = Integer.valueOf(1);
+          this.i = Integer.valueOf(50);
+          this.h = Integer.valueOf(1000);
+          break label278;
+        }
+      }
+      this.e = Integer.valueOf(2);
+      this.i = Integer.valueOf(1);
+      this.h = Integer.valueOf(0);
+      label278:
       if (paramAdReportData.a() != null) {
         this.jdField_c_of_type_JavaLangInteger = Integer.valueOf(paramAdReportData.a().mAdKdPos + 1);
       }
-      paramAdReportData = AdSessionManager.a();
-      Intrinsics.checkExpressionValueIsNotNull(paramAdReportData, "AdSessionManager.getInstance()");
-      this.jdField_c_of_type_JavaLangString = paramAdReportData.a();
-      paramAdReportData = AdSessionManager.a();
-      Intrinsics.checkExpressionValueIsNotNull(paramAdReportData, "AdSessionManager.getInstance()");
-      this.m = Integer.valueOf(paramAdReportData.a());
-      paramAdReportData = AdSessionManager.a();
-      Intrinsics.checkExpressionValueIsNotNull(paramAdReportData, "AdSessionManager.getInstance()");
-      this.l = Integer.valueOf(paramAdReportData.b());
-      return;
-      localObject = paramAdReportData.a();
-      Intrinsics.checkExpressionValueIsNotNull(localObject, "adReportData.actionEntity");
-      localObject = Integer.valueOf(((ActionEntity)localObject).getValue());
-      break;
-      label307:
-      this.j = Integer.valueOf(0);
-      break label151;
-      label318:
-      if (((Integer)localObject).intValue() != 2) {
-        break label174;
-      }
-      label326:
-      this.e = Integer.valueOf(2);
-      this.i = Integer.valueOf(1);
     }
+    paramAdReportData = AdSessionManager.a();
+    Intrinsics.checkExpressionValueIsNotNull(paramAdReportData, "AdSessionManager.getInstance()");
+    this.jdField_c_of_type_JavaLangString = paramAdReportData.a();
+    paramAdReportData = AdSessionManager.a();
+    Intrinsics.checkExpressionValueIsNotNull(paramAdReportData, "AdSessionManager.getInstance()");
+    this.m = Integer.valueOf(paramAdReportData.a());
+    paramAdReportData = AdSessionManager.a();
+    Intrinsics.checkExpressionValueIsNotNull(paramAdReportData, "AdSessionManager.getInstance()");
+    this.l = Integer.valueOf(paramAdReportData.b());
   }
   
   public boolean a()
@@ -152,7 +148,7 @@ public final class CommonReportObj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.report.bean.CommonReportObj
  * JD-Core Version:    0.7.0.1
  */

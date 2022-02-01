@@ -27,34 +27,21 @@ public final class a
   
   private boolean i(String paramString)
   {
-    boolean bool2 = false;
     AuthInfo localAuthInfo = this.aG.x().a();
-    boolean bool1 = bool2;
-    if (localAuthInfo != null)
+    if ((localAuthInfo != null) && (paramString.startsWith(localAuthInfo.getRedirectUrl())))
     {
-      bool1 = bool2;
-      if (paramString.startsWith(localAuthInfo.getRedirectUrl()))
-      {
-        paramString = e.f(paramString);
-        bool1 = bool2;
-        if (paramString != null)
-        {
-          bool1 = bool2;
-          if (!TextUtils.isEmpty(paramString.getString("access_token"))) {
-            bool1 = true;
-          }
-        }
+      paramString = e.f(paramString);
+      if ((paramString != null) && (!TextUtils.isEmpty(paramString.getString("access_token")))) {
+        return true;
       }
     }
-    return bool1;
+    return false;
   }
   
   public final void onPageFinished(WebView paramWebView, String paramString)
   {
     super.onPageFinished(paramWebView, paramString);
     paramWebView = this.aG.x().a();
-    String str2;
-    String str3;
     if ((paramWebView != null) && (paramString.startsWith(paramWebView.getRedirectUrl())))
     {
       paramWebView = this.aG.x().u();
@@ -64,33 +51,32 @@ public final class a
         if (this.aH != null)
         {
           paramString = e.f(paramString);
-          if (paramString == null) {
-            break label188;
+          if (paramString != null)
+          {
+            String str1 = paramString.getString("error");
+            String str2 = paramString.getString("error_code");
+            String str3 = paramString.getString("error_description");
+            if ((TextUtils.isEmpty(str1)) && (TextUtils.isEmpty(str2)))
+            {
+              paramString = Oauth2AccessToken.parseAccessToken(paramString);
+              AccessTokenHelper.writeAccessToken(this.aE, paramString);
+              this.aH.onComplete(paramString);
+            }
+            else
+            {
+              this.aH.onError(new UiError(-1, str2, str3));
+            }
           }
-          String str1 = paramString.getString("error");
-          str2 = paramString.getString("error_code");
-          str3 = paramString.getString("error_description");
-          if ((!TextUtils.isEmpty(str1)) || (!TextUtils.isEmpty(str2))) {
-            break label164;
+          else
+          {
+            this.aH.onError(new UiError(-1, "bundle is null", "parse url error"));
           }
-          paramString = Oauth2AccessToken.parseAccessToken(paramString);
-          AccessTokenHelper.writeAccessToken(this.aE, paramString);
-          this.aH.onComplete(paramString);
+          this.aD.b(paramWebView);
         }
       }
-    }
-    for (;;)
-    {
-      this.aD.b(paramWebView);
       if (this.aF != null) {
         this.aF.t();
       }
-      return;
-      label164:
-      this.aH.onError(new UiError(-1, str2, str3));
-      continue;
-      label188:
-      this.aH.onError(new UiError(-1, "bundle is null", "parse url error"));
     }
   }
   

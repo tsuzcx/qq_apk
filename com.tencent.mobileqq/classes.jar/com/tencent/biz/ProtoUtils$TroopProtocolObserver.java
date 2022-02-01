@@ -15,83 +15,82 @@ import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 public abstract class ProtoUtils$TroopProtocolObserver
   implements BusinessObserver
 {
-  public boolean a;
-  public int b;
-  public WeakReference<AppRuntime> b;
+  public static final int ERROR_GENERAL = -1;
+  public static final int PB_OBSERVER = 2;
+  public static final int SSO_OBSERVER = 1;
+  public WeakReference<AppRuntime> mApp = new WeakReference(null);
+  public boolean mIsOnUIThread;
+  public int mType = 1;
   
   public ProtoUtils$TroopProtocolObserver()
   {
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(null);
-    this.a = true;
+    this.mIsOnUIThread = true;
   }
   
   public ProtoUtils$TroopProtocolObserver(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(null);
-    this.a = paramBoolean;
+    this.mIsOnUIThread = paramBoolean;
   }
   
-  private void a(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  private void onReceiveReal(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (!paramBoolean) {
-      a(-1, null, paramBundle);
-    }
-    label163:
-    do
+    if (!paramBoolean)
     {
-      for (;;)
-      {
-        return;
-        Object localObject = paramBundle.getByteArray("data");
-        if (this.jdField_b_of_type_Int != 1) {
-          break label163;
-        }
-        oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-        try
-        {
-          localObject = (oidb_sso.OIDBSSOPkg)localOIDBSSOPkg.mergeFrom((byte[])localObject);
-          if ((((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get() == 0) || (!a(((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get(), ((oidb_sso.OIDBSSOPkg)localObject).str_error_msg.get(), paramBundle))) {
-            if ((!((oidb_sso.OIDBSSOPkg)localObject).uint32_result.has()) || (!((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.has()) || (((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.get() == null))
-            {
-              a(-1, null, paramBundle);
-              return;
-            }
-          }
-        }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-        {
-          a(-1, null, paramBundle);
-          return;
-        }
-      }
-      a(localInvalidProtocolBufferMicroException.uint32_result.get(), localInvalidProtocolBufferMicroException.bytes_bodybuffer.get().toByteArray(), paramBundle);
+      onResult(-1, null, paramBundle);
       return;
-    } while (this.jdField_b_of_type_Int != 2);
-    a(0, localInvalidProtocolBufferMicroException, paramBundle);
+    }
+    Object localObject = paramBundle.getByteArray("data");
+    paramInt = this.mType;
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg;
+    if (paramInt == 1) {
+      localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    }
+    try
+    {
+      localObject = (oidb_sso.OIDBSSOPkg)localOIDBSSOPkg.mergeFrom((byte[])localObject);
+      if ((((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get() != 0) && (onError(((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get(), ((oidb_sso.OIDBSSOPkg)localObject).str_error_msg.get(), paramBundle))) {
+        return;
+      }
+      if ((((oidb_sso.OIDBSSOPkg)localObject).uint32_result.has()) && (((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.has()) && (((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.get() != null))
+      {
+        onResult(((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get(), ((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.get().toByteArray(), paramBundle);
+        return;
+      }
+      onResult(-1, null, paramBundle);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    {
+      label159:
+      break label159;
+    }
+    onResult(-1, null, paramBundle);
+    return;
+    if (paramInt == 2) {
+      onResult(0, (byte[])localObject, paramBundle);
+    }
   }
   
-  public abstract void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
-  
-  public boolean a(int paramInt, String paramString, Bundle paramBundle)
+  public boolean onError(int paramInt, String paramString, Bundle paramBundle)
   {
     return false;
   }
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.a)
+    if (this.mIsOnUIThread)
     {
-      a(paramInt, paramBoolean, paramBundle);
+      onReceiveReal(paramInt, paramBoolean, paramBundle);
       return;
     }
     ThreadManager.post(new ProtoUtils.TroopProtocolObserver.1(this, paramInt, paramBoolean, paramBundle), 5, null, false);
   }
+  
+  public abstract void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.ProtoUtils.TroopProtocolObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -18,13 +18,14 @@ public final class nearbybanner$ClientInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32 }, new String[] { "uint32_lcd_height", "uint32_lcd_width", "bytes_client_version", "uint32_os" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, ClientInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32 }, new String[] { "uint32_lcd_height", "uint32_lcd_width", "bytes_client_version", "uint32_os" }, new Object[] { localInteger, localInteger, localByteStringMicro, localInteger }, ClientInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.group.nearbybanner.nearbybanner.ClientInfo
  * JD-Core Version:    0.7.0.1
  */

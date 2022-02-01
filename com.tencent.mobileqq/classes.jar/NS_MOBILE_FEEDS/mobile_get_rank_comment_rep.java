@@ -35,14 +35,15 @@ public final class mobile_get_rank_comment_rep
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.icount, 0);
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 1);
+    Map localMap = this.busi_param;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_get_rank_comment_rep
  * JD-Core Version:    0.7.0.1
  */

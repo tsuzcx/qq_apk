@@ -33,25 +33,20 @@ public class RetentionReport
         localObject = ((String)localObject).split(",");
         int j = localObject.length;
         int i = 0;
-        for (;;)
+        while (i < j)
         {
-          if (i < j)
-          {
-            CharSequence localCharSequence = localObject[i];
-            if (!TextUtils.isEmpty(localCharSequence)) {}
+          CharSequence localCharSequence = localObject[i];
+          if (!TextUtils.isEmpty(localCharSequence)) {
             try
             {
               blackCache.add(localCharSequence);
-              i += 1;
             }
             catch (Exception localException)
             {
-              for (;;)
-              {
-                QZLog.e("Retention.Report", "meetConditon error", localException);
-              }
+              QZLog.e("Retention.Report", "meetConditon error", localException);
             }
           }
+          i += 1;
         }
       }
     }
@@ -60,21 +55,22 @@ public class RetentionReport
   
   public static void mtaReport(String paramString, HashMap<String, String> paramHashMap)
   {
+    Object localObject = paramHashMap;
     if (paramHashMap == null) {}
-    for (;;)
+    try
     {
-      try
-      {
-        paramHashMap = new HashMap();
-        paramHashMap.put("function_id", paramString);
-        StatisticCollector.getInstance(MobileQQ.sMobileQQ).collectPerformance(null, "qzone_retention_" + paramString, true, 0L, 0L, paramHashMap, null);
-        return;
-      }
-      catch (Exception paramString)
-      {
-        QZLog.e("Retention.Report", "统计率上报失败", paramString);
-        return;
-      }
+      localObject = new HashMap();
+      ((HashMap)localObject).put("function_id", paramString);
+      paramHashMap = StatisticCollector.getInstance(MobileQQ.sMobileQQ);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("qzone_retention_");
+      localStringBuilder.append(paramString);
+      paramHashMap.collectPerformance(null, localStringBuilder.toString(), true, 0L, 0L, (HashMap)localObject, null);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QZLog.e("Retention.Report", "统计率上报失败", paramString);
     }
   }
   
@@ -92,7 +88,7 @@ public class RetentionReport
   {
     if (meetConditon(paramString))
     {
-      i = QzoneConfig.getInstance().getConfig("ClientReport", "retention_report", 0);
+      int i = QzoneConfig.getInstance().getConfig("ClientReport", "retention_report", 0);
       if ((i == 0) || (i == 2)) {
         mtaReport(paramString, paramHashMap);
       }
@@ -103,17 +99,15 @@ public class RetentionReport
         QZLog.i("Retention.Report", 2, new Object[] { "RetentionReport, functionid:", paramString });
       }
     }
-    while (!QZLog.isColorLevel())
+    else if (QZLog.isColorLevel())
     {
-      int i;
-      return;
+      QZLog.i("Retention.Report", 2, new Object[] { "not meet condition, functionid:", paramString });
     }
-    QZLog.i("Retention.Report", 2, new Object[] { "not meet condition, functionid:", paramString });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.retention.RetentionReport
  * JD-Core Version:    0.7.0.1
  */

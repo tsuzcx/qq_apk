@@ -51,7 +51,13 @@ public class NotificationService
   {
     NotificationChannel localNotificationChannel = new NotificationChannel(paramNotificationChannelConstant.getId(), paramNotificationChannelConstant.getName(), 3);
     this.mNotificationManager.createNotificationChannel(localNotificationChannel);
-    this.mAdapter.getLogger().i("NotificationService", "创建通知渠道, id = " + paramNotificationChannelConstant.getId() + ", name = " + paramNotificationChannelConstant.getName(), new Object[0]);
+    LogInterface localLogInterface = this.mAdapter.getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("创建通知渠道, id = ");
+    localStringBuilder.append(paramNotificationChannelConstant.getId());
+    localStringBuilder.append(", name = ");
+    localStringBuilder.append(paramNotificationChannelConstant.getName());
+    localLogInterface.i("NotificationService", localStringBuilder.toString(), new Object[0]);
     return localNotificationChannel;
   }
   
@@ -104,7 +110,7 @@ public class NotificationService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.notification.NotificationService
  * JD-Core Version:    0.7.0.1
  */

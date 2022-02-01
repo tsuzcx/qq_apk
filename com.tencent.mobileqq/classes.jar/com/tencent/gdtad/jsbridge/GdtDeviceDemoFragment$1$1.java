@@ -14,19 +14,19 @@ class GdtDeviceDemoFragment$1$1
   {
     Object localObject = new GdtDeviceInfoHelper.Params();
     ((GdtDeviceInfoHelper.Params)localObject).a = "d61533";
-    localObject = GdtDeviceInfoHelper.a(this.a.a.getActivity(), (GdtDeviceInfoHelper.Params)localObject);
+    localObject = GdtDeviceInfoHelper.a(this.a.a.getBaseActivity(), (GdtDeviceInfoHelper.Params)localObject);
     GdtDeviceDemoFragment localGdtDeviceDemoFragment = this.a.a;
-    if (localObject != null) {}
-    for (localObject = GdtJsonPbUtil.a(((GdtDeviceInfoHelper.Result)localObject).a).toString();; localObject = null)
-    {
-      GdtDeviceDemoFragment.a(localGdtDeviceDemoFragment, String.format("getDeviceInfo %s", new Object[] { localObject }));
-      return;
+    if (localObject != null) {
+      localObject = GdtJsonPbUtil.a(((GdtDeviceInfoHelper.Result)localObject).a).toString();
+    } else {
+      localObject = null;
     }
+    GdtDeviceDemoFragment.a(localGdtDeviceDemoFragment, String.format("getDeviceInfo %s", new Object[] { localObject }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtDeviceDemoFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

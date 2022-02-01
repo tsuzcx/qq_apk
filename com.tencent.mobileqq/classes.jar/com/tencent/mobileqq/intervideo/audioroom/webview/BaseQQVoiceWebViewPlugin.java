@@ -39,34 +39,37 @@ public abstract class BaseQQVoiceWebViewPlugin
   }
   
   @Deprecated
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((paramString2 == null) || (!paramString2.equalsIgnoreCase(getNamespace()))) {
-      return false;
+    if ((paramString2 != null) && (paramString2.equalsIgnoreCase(getNamespace())))
+    {
+      this.a = paramJsBridgeListener;
+      return handleJsRequest(paramString1, paramString2, paramString3, paramVarArgs);
     }
-    this.a = paramJsBridgeListener;
-    return handleJsRequest(paramString1, paramString2, paramString3, paramVarArgs);
+    return false;
   }
   
   protected abstract boolean handleJsRequest(String paramString1, String paramString2, String paramString3, String... paramVarArgs);
   
   protected void onJsComplete(Object paramObject)
   {
-    if (this.a != null) {
-      this.a.a(paramObject);
+    JsBridgeListener localJsBridgeListener = this.a;
+    if (localJsBridgeListener != null) {
+      localJsBridgeListener.a(paramObject);
     }
   }
   
   protected void onJsError(String paramString)
   {
-    if (this.a != null) {
-      this.a.a(paramString);
+    JsBridgeListener localJsBridgeListener = this.a;
+    if (localJsBridgeListener != null) {
+      localJsBridgeListener.a(paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.audioroom.webview.BaseQQVoiceWebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

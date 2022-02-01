@@ -82,46 +82,62 @@ public class OkHttpClient
     this.internalCache = paramBuilder.internalCache;
     this.socketFactory = paramBuilder.socketFactory;
     Object localObject = this.connectionSpecs.iterator();
-    int i = 0;
-    if (((Iterator)localObject).hasNext())
+    for (int i = 0;; i = 1)
     {
+      if (!((Iterator)localObject).hasNext()) {
+        break label155;
+      }
       ConnectionSpec localConnectionSpec = (ConnectionSpec)((Iterator)localObject).next();
-      if ((i != 0) || (localConnectionSpec.isTls())) {}
-      for (i = 1;; i = 0) {
+      if ((i == 0) && (!localConnectionSpec.isTls())) {
         break;
       }
     }
-    if ((paramBuilder.sslSocketFactory != null) || (i == 0)) {
-      this.sslSocketFactory = paramBuilder.sslSocketFactory;
-    }
-    for (this.certificateChainCleaner = paramBuilder.certificateChainCleaner;; this.certificateChainCleaner = CertificateChainCleaner.get((X509TrustManager)localObject))
+    label155:
+    if ((paramBuilder.sslSocketFactory == null) && (i != 0))
     {
-      if (this.sslSocketFactory != null) {
-        Platform.get().configureSslSocketFactory(this.sslSocketFactory);
-      }
-      this.hostnameVerifier = paramBuilder.hostnameVerifier;
-      this.certificatePinner = paramBuilder.certificatePinner.withCertificateChainCleaner(this.certificateChainCleaner);
-      this.proxyAuthenticator = paramBuilder.proxyAuthenticator;
-      this.authenticator = paramBuilder.authenticator;
-      this.connectionPool = paramBuilder.connectionPool;
-      this.dns = paramBuilder.dns;
-      this.followSslRedirects = paramBuilder.followSslRedirects;
-      this.followRedirects = paramBuilder.followRedirects;
-      this.retryOnConnectionFailure = paramBuilder.retryOnConnectionFailure;
-      this.callTimeout = paramBuilder.callTimeout;
-      this.connectTimeout = paramBuilder.connectTimeout;
-      this.readTimeout = paramBuilder.readTimeout;
-      this.writeTimeout = paramBuilder.writeTimeout;
-      this.pingInterval = paramBuilder.pingInterval;
-      if (!this.interceptors.contains(null)) {
-        break;
-      }
-      throw new IllegalStateException("Null interceptor: " + this.interceptors);
       localObject = Util.platformTrustManager();
       this.sslSocketFactory = newSslSocketFactory((X509TrustManager)localObject);
+      this.certificateChainCleaner = CertificateChainCleaner.get((X509TrustManager)localObject);
     }
-    if (this.networkInterceptors.contains(null)) {
-      throw new IllegalStateException("Null network interceptor: " + this.networkInterceptors);
+    else
+    {
+      this.sslSocketFactory = paramBuilder.sslSocketFactory;
+      this.certificateChainCleaner = paramBuilder.certificateChainCleaner;
+    }
+    if (this.sslSocketFactory != null) {
+      Platform.get().configureSslSocketFactory(this.sslSocketFactory);
+    }
+    this.hostnameVerifier = paramBuilder.hostnameVerifier;
+    this.certificatePinner = paramBuilder.certificatePinner.withCertificateChainCleaner(this.certificateChainCleaner);
+    this.proxyAuthenticator = paramBuilder.proxyAuthenticator;
+    this.authenticator = paramBuilder.authenticator;
+    this.connectionPool = paramBuilder.connectionPool;
+    this.dns = paramBuilder.dns;
+    this.followSslRedirects = paramBuilder.followSslRedirects;
+    this.followRedirects = paramBuilder.followRedirects;
+    this.retryOnConnectionFailure = paramBuilder.retryOnConnectionFailure;
+    this.callTimeout = paramBuilder.callTimeout;
+    this.connectTimeout = paramBuilder.connectTimeout;
+    this.readTimeout = paramBuilder.readTimeout;
+    this.writeTimeout = paramBuilder.writeTimeout;
+    this.pingInterval = paramBuilder.pingInterval;
+    if (!this.interceptors.contains(null))
+    {
+      if (!this.networkInterceptors.contains(null)) {
+        return;
+      }
+      paramBuilder = new StringBuilder();
+      paramBuilder.append("Null network interceptor: ");
+      paramBuilder.append(this.networkInterceptors);
+      throw new IllegalStateException(paramBuilder.toString());
+    }
+    paramBuilder = new StringBuilder();
+    paramBuilder.append("Null interceptor: ");
+    paramBuilder.append(this.interceptors);
+    paramBuilder = new IllegalStateException(paramBuilder.toString());
+    for (;;)
+    {
+      throw paramBuilder;
     }
   }
   
@@ -218,8 +234,9 @@ public class OkHttpClient
   
   InternalCache internalCache()
   {
-    if (this.cache != null) {
-      return this.cache.internalCache;
+    Cache localCache = this.cache;
+    if (localCache != null) {
+      return localCache.internalCache;
     }
     return this.internalCache;
   }
@@ -299,7 +316,7 @@ public class OkHttpClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.OkHttpClient
  * JD-Core Version:    0.7.0.1
  */

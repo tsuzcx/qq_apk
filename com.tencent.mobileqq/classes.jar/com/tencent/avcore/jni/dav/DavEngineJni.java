@@ -57,102 +57,116 @@ public class DavEngineJni
       this.mSysInfo.setScreenSize(i, j);
       this.mSysInfo.setDispSize(i, j);
     }
-    AVCoreLog.e("DavEngineJni", "DavEngineJni, callback[" + paramIDavNetChannel + "], context[" + paramAVCoreSystemInfo + "]");
+    paramIDavAdapter = new StringBuilder();
+    paramIDavAdapter.append("DavEngineJni, callback[");
+    paramIDavAdapter.append(paramIDavNetChannel);
+    paramIDavAdapter.append("], context[");
+    paramIDavAdapter.append(paramAVCoreSystemInfo);
+    paramIDavAdapter.append("]");
+    AVCoreLog.e("DavEngineJni", paramIDavAdapter.toString());
   }
   
   private static native void cacheMethodIds();
   
   private void callbackDataTransfered(int paramInt, long paramLong)
   {
-    if (this.mEventListener != null) {
-      this.mEventListener.dataTransferred(paramInt, paramLong);
+    IDavEventListener localIDavEventListener = this.mEventListener;
+    if (localIDavEventListener != null) {
+      localIDavEventListener.dataTransferred(paramInt, paramLong);
     }
   }
   
   private int callbackGetAPAndGateWayIP()
   {
-    int i = -1;
-    if (this.mEventListener != null) {
-      i = this.mEventListener.getAPAndGateWayIP();
+    IDavEventListener localIDavEventListener = this.mEventListener;
+    if (localIDavEventListener != null) {
+      return localIDavEventListener.getAPAndGateWayIP();
     }
-    return i;
+    return -1;
   }
   
   private String callbackGetCustomInfo(long paramLong, String paramString)
   {
-    if (this.mAdapter != null) {
-      return this.mAdapter.getCustomInfo(paramLong, paramString);
+    IDavAdapter localIDavAdapter = this.mAdapter;
+    if (localIDavAdapter != null) {
+      return localIDavAdapter.getCustomInfo(paramLong, paramString);
     }
     return "";
   }
   
   private long callbackGetMSFInviteMessageTimeStamp(long paramLong)
   {
-    long l = 0L;
-    if (this.mEventListener != null) {
-      l = this.mEventListener.getMSFInviteMessageTimeStamp(paramLong);
+    IDavEventListener localIDavEventListener = this.mEventListener;
+    if (localIDavEventListener != null) {
+      return localIDavEventListener.getMSFInviteMessageTimeStamp(paramLong);
     }
-    return l;
+    return 0L;
   }
   
   private int callbackIsOfflineSession(long paramLong)
   {
-    int i = 0;
-    if (this.mEventListener != null) {
-      i = this.mEventListener.isOfflineSession(String.valueOf(paramLong));
+    IDavEventListener localIDavEventListener = this.mEventListener;
+    if (localIDavEventListener != null) {
+      return localIDavEventListener.isOfflineSession(String.valueOf(paramLong));
     }
-    return i;
+    return 0;
   }
   
   private void callbackOnEvent(int paramInt1, byte[] paramArrayOfByte1, long paramLong1, long paramLong2, long paramLong3, long paramLong4, String paramString, int paramInt2, int paramInt3, long paramLong5, byte[] paramArrayOfByte2)
   {
-    if (this.mEventListener == null) {
-      AVCoreLog.printErrorLog("DavEngineJni", "mEventListener is null");
-    }
-    do
+    Object localObject = this.mEventListener;
+    if (localObject == null)
     {
+      AVCoreLog.printErrorLog("DavEngineJni", "mEventListener is null");
       return;
-      if (paramInt1 == 117)
-      {
-        this.mEventListener.onRecordAudio(paramArrayOfByte1, paramInt2, paramInt3);
-        return;
-      }
-    } while (this.mEventHandler == null);
-    DavNativeEventParams localDavNativeEventParams = new DavNativeEventParams();
-    localDavNativeEventParams.detail = paramArrayOfByte1;
-    localDavNativeEventParams.info = paramLong1;
-    localDavNativeEventParams.fromUin = paramLong2;
-    localDavNativeEventParams.extraParam0 = paramLong3;
-    localDavNativeEventParams.extraParam1 = paramLong4;
-    localDavNativeEventParams.extraParam2 = paramString;
-    localDavNativeEventParams.extraParam3 = paramInt2;
-    localDavNativeEventParams.extraParam4 = paramInt3;
-    localDavNativeEventParams.extraParam5 = paramLong5;
-    localDavNativeEventParams.extraBuf = paramArrayOfByte2;
-    paramArrayOfByte1 = this.mEventHandler.obtainMessage(paramInt1, 0, 0, localDavNativeEventParams);
-    this.mEventHandler.sendMessage(paramArrayOfByte1);
+    }
+    if (paramInt1 == 117)
+    {
+      ((IDavEventListener)localObject).onRecordAudio(paramArrayOfByte1, paramInt2, paramInt3);
+      return;
+    }
+    if (this.mEventHandler != null)
+    {
+      localObject = new DavNativeEventParams();
+      ((DavNativeEventParams)localObject).detail = paramArrayOfByte1;
+      ((DavNativeEventParams)localObject).info = paramLong1;
+      ((DavNativeEventParams)localObject).fromUin = paramLong2;
+      ((DavNativeEventParams)localObject).extraParam0 = paramLong3;
+      ((DavNativeEventParams)localObject).extraParam1 = paramLong4;
+      ((DavNativeEventParams)localObject).extraParam2 = paramString;
+      ((DavNativeEventParams)localObject).extraParam3 = paramInt2;
+      ((DavNativeEventParams)localObject).extraParam4 = paramInt3;
+      ((DavNativeEventParams)localObject).extraParam5 = paramLong5;
+      ((DavNativeEventParams)localObject).extraBuf = paramArrayOfByte2;
+      paramArrayOfByte1 = this.mEventHandler.obtainMessage(paramInt1, 0, 0, localObject);
+      this.mEventHandler.sendMessage(paramArrayOfByte1);
+    }
   }
   
   private void callbackSendConfigReq(byte[] paramArrayOfByte)
   {
-    if (this.mNetChannel != null) {
-      this.mNetChannel.sendGetVideoConfig(paramArrayOfByte);
-    }
-    while (!AVCoreLog.isColorLevel()) {
+    IDavNetChannel localIDavNetChannel = this.mNetChannel;
+    if (localIDavNetChannel != null)
+    {
+      localIDavNetChannel.sendGetVideoConfig(paramArrayOfByte);
       return;
     }
-    AVCoreLog.i("DavEngineJni", "callbackSendConfigReq, net channel is null.");
+    if (AVCoreLog.isColorLevel()) {
+      AVCoreLog.i("DavEngineJni", "callbackSendConfigReq, net channel is null.");
+    }
   }
   
   private void callbackTcpSendSharpCMD(byte[] paramArrayOfByte, long paramLong)
   {
-    if (this.mNetChannel != null) {
-      this.mNetChannel.sendSharpVideoMsg(paramLong, paramArrayOfByte);
-    }
-    while (!AVCoreLog.isColorLevel()) {
+    IDavNetChannel localIDavNetChannel = this.mNetChannel;
+    if (localIDavNetChannel != null)
+    {
+      localIDavNetChannel.sendSharpVideoMsg(paramLong, paramArrayOfByte);
       return;
     }
-    AVCoreLog.i("DavEngineJni", "callbackTcpSendSharpCMD, net channel is null.");
+    if (AVCoreLog.isColorLevel()) {
+      AVCoreLog.i("DavEngineJni", "callbackTcpSendSharpCMD, net channel is null.");
+    }
   }
   
   private void changePreviewSize(int paramInt1, int paramInt2)
@@ -160,21 +174,37 @@ public class DavEngineJni
     if (this.mGlStringParser == null) {
       this.mGlStringParser = new GlStringParser('=', ';');
     }
-    if (this.mAdapter != null) {}
-    for (Object localObject = this.mAdapter.getContext();; localObject = null)
-    {
-      localObject = CameraConfigHelper.getInstance((Context)localObject).getCameraParameters();
-      this.mGlStringParser.unflatten((String)localObject);
-      localObject = this.mGlStringParser.get("preview-size-values");
-      if ((localObject != null) && (((String)localObject).contains(paramInt1 + "x" + paramInt2))) {
-        break;
-      }
-      if (AVCoreLog.isColorLevel()) {
-        AVCoreLog.e("DavEngineJni", "changePreviewSize, 不包含该分辨率, w[" + paramInt1 + "], h[" + paramInt2 + "]");
-      }
-      return;
+    Object localObject = this.mAdapter;
+    if (localObject != null) {
+      localObject = ((IDavAdapter)localObject).getContext();
+    } else {
+      localObject = null;
     }
-    postInNativeEventHandler(new DavEngineJni.1(this, paramInt1, paramInt2), 0L);
+    localObject = CameraConfigHelper.getInstance((Context)localObject).getCameraParameters();
+    this.mGlStringParser.unflatten((String)localObject);
+    localObject = this.mGlStringParser.get("preview-size-values");
+    if (localObject != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append("x");
+      localStringBuilder.append(paramInt2);
+      if (((String)localObject).contains(localStringBuilder.toString()))
+      {
+        postInNativeEventHandler(new DavEngineJni.1(this, paramInt1, paramInt2), 0L);
+        return;
+      }
+    }
+    if (AVCoreLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("changePreviewSize, 不包含该分辨率, w[");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append("], h[");
+      ((StringBuilder)localObject).append(paramInt2);
+      ((StringBuilder)localObject).append("]");
+      AVCoreLog.e("DavEngineJni", ((StringBuilder)localObject).toString());
+    }
   }
   
   private int getCameraFacing()
@@ -245,10 +275,13 @@ public class DavEngineJni
   
   private String queryCameraParameters()
   {
-    if (this.mAdapter != null) {}
-    for (Context localContext = this.mAdapter.getContext();; localContext = null) {
-      return CameraConfigHelper.getInstance(localContext).getCameraParameters();
+    Object localObject = this.mAdapter;
+    if (localObject != null) {
+      localObject = ((IDavAdapter)localObject).getContext();
+    } else {
+      localObject = null;
     }
+    return CameraConfigHelper.getInstance((Context)localObject).getCameraParameters();
   }
   
   private native int setNetIpAndPort(String paramString, int paramInt);
@@ -289,7 +322,7 @@ public class DavEngineJni
   
   native int ignore(long paramLong);
   
-  native int init(Context paramContext, long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, int paramInt, String paramString12, SDKConfigInfo paramSDKConfigInfo, boolean paramBoolean1, boolean paramBoolean2, String paramString13, String paramString14, String paramString15);
+  native int init(Context paramContext, long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, int paramInt, String paramString12, SDKConfigInfo paramSDKConfigInfo, boolean paramBoolean1, boolean paramBoolean2, String paramString13, String paramString14, String paramString15, String paramString16);
   
   public void initContext()
   {
@@ -298,8 +331,12 @@ public class DavEngineJni
     this.mAdapter.initClientLogReport();
     if (getSdkVersion() < 18)
     {
-      if (AVCoreLog.isColorLevel()) {
-        AVCoreLog.e("DavEngineJni", "sdk version: " + getSdkVersion());
+      if (AVCoreLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("sdk version: ");
+        localStringBuilder.append(getSdkVersion());
+        AVCoreLog.e("DavEngineJni", localStringBuilder.toString());
       }
       throw new UnsatisfiedLinkError();
     }
@@ -330,14 +367,13 @@ public class DavEngineJni
   {
     if (paramRunnable != null)
     {
-      if (paramLong <= 0L) {
+      if (paramLong <= 0L)
+      {
         this.mEventHandler.post(paramRunnable);
+        return;
       }
+      this.mEventHandler.postDelayed(paramRunnable, paramLong);
     }
-    else {
-      return;
-    }
-    this.mEventHandler.postDelayed(paramRunnable, paramLong);
   }
   
   native AVCorePbInfo processQCallPush(byte[] paramArrayOfByte, AVCorePbInfo paramAVCorePbInfo);
@@ -429,6 +465,8 @@ public class DavEngineJni
   
   native int setProductId(int paramInt);
   
+  native void setQosParams(String paramString);
+  
   native int setSelfUin(long paramLong);
   
   native void setVideoJitterLength(int paramInt);
@@ -467,7 +505,7 @@ public class DavEngineJni
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avcore.jni.dav.DavEngineJni
  * JD-Core Version:    0.7.0.1
  */

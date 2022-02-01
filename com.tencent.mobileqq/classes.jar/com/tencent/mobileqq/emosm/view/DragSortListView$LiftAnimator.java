@@ -19,14 +19,15 @@ class DragSortListView$LiftAnimator
       d();
       return;
     }
-    this.this$0.f = ((int)(this.b * paramFloat2 + (1.0F - paramFloat2) * this.a));
-    this.this$0.a.y = (this.this$0.k - this.this$0.f);
+    DragSortListView localDragSortListView = this.this$0;
+    localDragSortListView.f = ((int)(this.b * paramFloat2 + (1.0F - paramFloat2) * this.a));
+    localDragSortListView.a.y = (this.this$0.k - this.this$0.f);
     this.this$0.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.view.DragSortListView.LiftAnimator
  * JD-Core Version:    0.7.0.1
  */

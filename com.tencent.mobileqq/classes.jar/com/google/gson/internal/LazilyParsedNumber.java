@@ -24,25 +24,25 @@ public final class LazilyParsedNumber
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1;
+    boolean bool = true;
     if (this == paramObject) {
-      bool1 = true;
+      return true;
     }
-    do
+    if ((paramObject instanceof LazilyParsedNumber))
     {
-      do
+      Object localObject = (LazilyParsedNumber)paramObject;
+      paramObject = this.value;
+      localObject = ((LazilyParsedNumber)localObject).value;
+      if (paramObject != localObject)
       {
-        return bool1;
-        bool1 = bool2;
-      } while (!(paramObject instanceof LazilyParsedNumber));
-      paramObject = (LazilyParsedNumber)paramObject;
-      if (this.value == paramObject.value) {
-        break;
+        if (paramObject.equals(localObject)) {
+          return true;
+        }
+        bool = false;
       }
-      bool1 = bool2;
-    } while (!this.value.equals(paramObject.value));
-    return true;
+      return bool;
+    }
+    return false;
   }
   
   public float floatValue()
@@ -64,12 +64,19 @@ public final class LazilyParsedNumber
     }
     catch (NumberFormatException localNumberFormatException1)
     {
-      try
-      {
-        long l = Long.parseLong(this.value);
-        return (int)l;
-      }
-      catch (NumberFormatException localNumberFormatException2) {}
+      label10:
+      long l;
+      label21:
+      break label10;
+    }
+    try
+    {
+      l = Long.parseLong(this.value);
+      return (int)l;
+    }
+    catch (NumberFormatException localNumberFormatException2)
+    {
+      break label21;
     }
     return new BigDecimal(this.value).intValue();
   }
@@ -81,7 +88,11 @@ public final class LazilyParsedNumber
       long l = Long.parseLong(this.value);
       return l;
     }
-    catch (NumberFormatException localNumberFormatException) {}
+    catch (NumberFormatException localNumberFormatException)
+    {
+      label10:
+      break label10;
+    }
     return new BigDecimal(this.value).longValue();
   }
   
@@ -92,7 +103,7 @@ public final class LazilyParsedNumber
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.internal.LazilyParsedNumber
  * JD-Core Version:    0.7.0.1
  */

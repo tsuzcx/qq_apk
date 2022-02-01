@@ -19,7 +19,7 @@ public class QQProgressNotifier
   implements DialogInterface.OnCancelListener, Handler.Callback
 {
   int a;
-  public QQProgressDialog a;
+  protected QQProgressDialog a;
   protected final WeakReference<Activity> a;
   protected final ArrayList<DialogInterface.OnCancelListener> a;
   protected final Handler b;
@@ -69,91 +69,90 @@ public class QQProgressNotifier
     }
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
     {
-      if (this.jdField_a_of_type_Int > 0) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(localActivity, 0, this.jdField_a_of_type_Int, 17);
+      int i = this.jdField_a_of_type_Int;
+      if (i > 0) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(localActivity, 0, i, 17);
+      } else {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(localActivity, localActivity.getResources().getDimensionPixelSize(2131299168));
+      }
+    }
+    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnCancelListener(null);
+    } else {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnCancelListener(this);
+    }
+    if (paramInt1 == 0)
+    {
+      if ((paramString != null) && (!"".equals(paramString.trim()))) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(paramString);
+      } else {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(localActivity.getString(2131718766));
+      }
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(false);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(true);
+      if (localActivity.isFinishing())
+      {
+        if (QLog.isDevelopLevel())
+        {
+          paramString = new StringBuilder();
+          paramString.append("[");
+          paramString.append(localActivity.isFinishing());
+          paramString.append("]");
+          QLog.d("QQProgressNotifier", 4, paramString.toString());
+        }
+      }
+      else {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
       }
     }
     else
     {
-      label159:
-      if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-        break label302;
+      if ((paramInt1 != 2) && (paramInt1 != 4) && (paramInt1 != 6))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(paramString);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.d(2130839588);
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnCancelListener(null);
-      label177:
-      if (paramInt1 != 0) {
-        break label332;
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(paramString);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.d(2130839573);
       }
-      if ((paramString != null) && (!"".equals(paramString.trim()))) {
-        break label313;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(localActivity.getString(2131719050));
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(false);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(true);
-      if (!localActivity.isFinishing()) {
-        break label324;
-      }
-      if (!QLog.isDevelopLevel()) {
-        break;
-      }
-      QLog.d("QQProgressNotifier", 4, "[" + localActivity.isFinishing() + "]");
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(localActivity, localActivity.getResources().getDimensionPixelSize(2131299166));
-      break label159;
-      label302:
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnCancelListener(this);
-      break label177;
-      label313:
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(paramString);
-    }
-    label324:
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-    return;
-    label332:
-    if ((paramInt1 == 2) || (paramInt1 == 4) || (paramInt1 == 6))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(paramString);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.d(2130839715);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(true);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(false);
-      if (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())
-      {
-        if (!localActivity.isFinishing()) {
-          break label497;
+      if (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) {
+        if (localActivity.isFinishing())
+        {
+          if (QLog.isDevelopLevel())
+          {
+            paramString = new StringBuilder();
+            paramString.append("[");
+            paramString.append(localActivity.isFinishing());
+            paramString.append("]");
+            QLog.d("QQProgressNotifier", 4, paramString.toString());
+          }
         }
-        if (QLog.isDevelopLevel()) {
-          QLog.d("QQProgressNotifier", 4, "[" + localActivity.isFinishing() + "]");
+        else {
+          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
         }
       }
       paramString = Message.obtain();
       paramString.what = 2;
       paramString.arg1 = paramInt1;
       paramOnCancelListener = this.b;
-      if (paramInt2 <= 0) {
-        break label507;
+      long l;
+      if (paramInt2 > 0) {
+        l = paramInt2;
+      } else {
+        l = 1000L;
       }
-    }
-    label439:
-    label497:
-    label507:
-    for (long l = paramInt2;; l = 1000L)
-    {
       paramOnCancelListener.sendMessageDelayed(paramString, l);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(paramString);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.d(2130839730);
-      break;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-      break label439;
     }
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing());
+    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    return (localQQProgressDialog != null) && (localQQProgressDialog.isShowing());
   }
   
   public void b()
@@ -165,16 +164,12 @@ public class QQProgressNotifier
       if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
       }
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      localThrowable.printStackTrace();
     }
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
   }
   
   public void b(int paramInt1, int paramInt2, int paramInt3)
@@ -192,37 +187,37 @@ public class QQProgressNotifier
   
   public boolean handleMessage(Message paramMessage)
   {
-    if (paramMessage.what == 1) {
-      a(paramMessage.arg1, (String)paramMessage.obj, paramMessage.arg2);
-    }
-    do
+    if (paramMessage.what == 1)
     {
-      do
+      a(paramMessage.arg1, (String)paramMessage.obj, paramMessage.arg2);
+      return true;
+    }
+    if (paramMessage.what == 2)
+    {
+      b();
+      if ((paramMessage.arg1 == 3) || (paramMessage.arg1 == 4) || (paramMessage.arg1 == 6) || (paramMessage.arg1 == 5))
       {
-        do
+        Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if (localActivity != null)
         {
-          return true;
-        } while (paramMessage.what != 2);
-        b();
-      } while ((paramMessage.arg1 != 3) && (paramMessage.arg1 != 4) && (paramMessage.arg1 != 6) && (paramMessage.arg1 != 5));
-      Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localActivity != null)
-      {
-        if ((paramMessage.arg1 == 6) || (paramMessage.arg1 == 5))
-        {
-          paramMessage = new Intent();
-          paramMessage.putExtra("isNeedFinish", true);
-          localActivity.setResult(-1, paramMessage);
-        }
-        for (;;)
-        {
+          if ((paramMessage.arg1 != 6) && (paramMessage.arg1 != 5))
+          {
+            localActivity.setResult(-1);
+          }
+          else
+          {
+            paramMessage = new Intent();
+            paramMessage.putExtra("isNeedFinish", true);
+            localActivity.setResult(-1, paramMessage);
+          }
           localActivity.finish();
           return true;
-          localActivity.setResult(-1);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("QQProgressNotifier", 2, "handleMessage baseActivity is null");
         }
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("QQProgressNotifier", 2, "handleMessage baseActivity is null");
+    }
     return true;
   }
   
@@ -247,7 +242,7 @@ public class QQProgressNotifier
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQProgressNotifier
  * JD-Core Version:    0.7.0.1
  */

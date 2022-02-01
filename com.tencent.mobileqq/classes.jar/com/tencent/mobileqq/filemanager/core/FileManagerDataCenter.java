@@ -3,37 +3,29 @@ package com.tencent.mobileqq.filemanager.core;
 import android.content.BroadcastReceiver;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.imcore.message.Message;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SVIPHandler;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForFile;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.TransFileInfo;
+import com.tencent.mobileqq.filemanager.api.IQQFileSelectorUtil;
 import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
-import com.tencent.mobileqq.service.MobileQQService;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.service.message.MessageRecordFactory;
-import com.tencent.mobileqq.service.message.MessageUtils;
-import com.tencent.mobileqq.transfile.TransfileUtile;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qlink.QlinkHelper;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
-import java.util.Set;
 
 public class FileManagerDataCenter
 {
@@ -49,20 +41,27 @@ public class FileManagerDataCenter
   
   private TransFileInfo a(MessageRecord paramMessageRecord)
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramMessageRecord != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    if ((paramMessageRecord != null) && (localObject != null)) {
+      localObject = (TransFileInfo)((EntityManager)localObject).find(TransFileInfo.class, new String[] { String.valueOf(paramMessageRecord.time), String.valueOf(paramMessageRecord.msgseq), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramMessageRecord.frienduin });
+    } else {
+      localObject = null;
+    }
+    if ((localObject == null) && (paramMessageRecord != null) && (QLog.isColorLevel()))
     {
-      localObject1 = localObject2;
-      if (localEntityManager != null) {
-        localObject1 = (TransFileInfo)localEntityManager.find(TransFileInfo.class, new String[] { String.valueOf(paramMessageRecord.time), String.valueOf(paramMessageRecord.msgseq), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramMessageRecord.frienduin });
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("get TransferInfo null, time[");
+      localStringBuilder.append(String.valueOf(paramMessageRecord.time));
+      localStringBuilder.append("],msgseq[");
+      localStringBuilder.append(String.valueOf(paramMessageRecord.msgseq));
+      localStringBuilder.append("],uin[");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      localStringBuilder.append("], frienduin[");
+      localStringBuilder.append(paramMessageRecord.frienduin);
+      localStringBuilder.append("]");
+      QLog.e("FileManagerDataCenter<FileAssistant>", 2, localStringBuilder.toString());
     }
-    if ((localObject1 == null) && (paramMessageRecord != null) && (QLog.isColorLevel())) {
-      QLog.e("FileManagerDataCenter<FileAssistant>", 2, "get TransferInfo null, time[" + String.valueOf(paramMessageRecord.time) + "],msgseq[" + String.valueOf(paramMessageRecord.msgseq) + "],uin[" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "], frienduin[" + paramMessageRecord.frienduin + "]");
-    }
-    return localObject1;
+    return localObject;
   }
   
   private void a(Bundle paramBundle)
@@ -72,33 +71,35 @@ public class FileManagerDataCenter
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2)
   {
-    Iterator localIterator = paramQQAppInterface.getMessageFacade().b(paramString, paramInt1).iterator();
+    Iterator localIterator = paramQQAppInterface.getMessageFacade().a(paramString, paramInt1).iterator();
     while (localIterator.hasNext())
     {
       MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
       if (paramInt2 == localMessageRecord.msgtype) {
-        switch (paramInt2)
+        if (paramInt2 != -3011)
         {
-        default: 
-          paramQQAppInterface.getMessageFacade().a(paramString, paramInt1, paramInt2, localMessageRecord.uniseq);
-          break;
-        case -3010: 
-          paramQQAppInterface.getMessageFacade().a(paramString, paramInt1, paramInt2, localMessageRecord.uniseq);
-          break;
-        case -4020: 
-          paramQQAppInterface.getMessageFacade().a(paramString, paramInt1, paramInt2, localMessageRecord.uniseq);
-          break;
-        case -4022: 
-          paramQQAppInterface.getMessageFacade().a(paramString, paramInt1, paramInt2, localMessageRecord.uniseq);
-          break;
-        case -4021: 
-          paramQQAppInterface.getMessageFacade().a(paramString, paramInt1, paramInt2, localMessageRecord.uniseq);
-          break;
-        case -3011: 
-          if (!QlinkHelper.a()) {
+          if (paramInt2 != -3010) {
+            switch (paramInt2)
+            {
+            default: 
+              paramQQAppInterface.getMessageFacade().a(paramString, paramInt1, paramInt2, localMessageRecord.uniseq);
+              break;
+            case -4020: 
+              paramQQAppInterface.getMessageFacade().a(paramString, paramInt1, paramInt2, localMessageRecord.uniseq);
+              break;
+            case -4021: 
+              paramQQAppInterface.getMessageFacade().a(paramString, paramInt1, paramInt2, localMessageRecord.uniseq);
+              break;
+            case -4022: 
+              paramQQAppInterface.getMessageFacade().a(paramString, paramInt1, paramInt2, localMessageRecord.uniseq);
+              break;
+            }
+          } else {
             paramQQAppInterface.getMessageFacade().a(paramString, paramInt1, paramInt2, localMessageRecord.uniseq);
           }
-          break;
+        }
+        else if (!QlinkHelper.a()) {
+          paramQQAppInterface.getMessageFacade().a(paramString, paramInt1, paramInt2, localMessageRecord.uniseq);
         }
       }
     }
@@ -112,81 +113,78 @@ public class FileManagerDataCenter
   public int a(String paramString1, int paramInt1, String paramString2, long paramLong, int paramInt2, String paramString3, Bundle paramBundle)
   {
     if (paramString2 == null) {}
-    for (;;)
+    try
     {
-      try
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("FileManagerDataCenter<FileAssistant>", 2, " insertExternalFileToFM. sourceId:" + paramInt2);
-        }
-        paramInt1 = -1;
-        return paramInt1;
+        paramString1 = new StringBuilder();
+        paramString1.append(" insertExternalFileToFM. sourceId:");
+        paramString1.append(paramInt2);
+        QLog.e("FileManagerDataCenter<FileAssistant>", 2, paramString1.toString());
       }
-      finally {}
+      return -1;
+    }
+    finally {}
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append(" insertExternalFileToFM. filePath:");
+      paramString1.append(paramString2);
+      paramString1.append(" size:");
+      paramString1.append(paramLong);
+      paramString1.append(" sourceId:");
+      paramString1.append(paramInt2);
+      QLog.i("FileManagerDataCenter<FileAssistant>", 2, paramString1.toString());
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
+    {
       if (QLog.isColorLevel()) {
-        QLog.i("FileManagerDataCenter<FileAssistant>", 2, " insertExternalFileToFM. filePath:" + paramString2 + " size:" + paramLong + " sourceId:" + paramInt2);
+        QLog.e("FileManagerDataCenter<FileAssistant>", 2, " insertExternalFileToFM. but app = null");
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
+      return -2;
+    }
+    long l = MessageRecordFactory.a(-1000).uniseq;
+    paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().b(l, AppConstants.FM_EXTERNAL_SAVEFILE_UIN, 0);
+    if (paramString1 == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FileManagerDataCenter<FileAssistant>", 2, " insertExternalFileToFM. but entry = null");
+      }
+      return -3;
+    }
+    paramString1.setCloudType(3);
+    paramString1.fileName = FileManagerUtil.a(paramString2);
+    if (0L == paramLong) {
+      paramString1.fileSize = FileManagerUtil.a(paramString2);
+    } else {
+      paramString1.fileSize = paramLong;
+    }
+    paramString1.setFilePath(paramString2);
+    paramString1.nOpType = paramInt2;
+    paramString1.peerNick = null;
+    paramString1.peerType = 0;
+    paramString1.peerUin = AppConstants.FM_EXTERNAL_SAVEFILE_UIN;
+    paramString1.srvTime = (MessageCache.a() * 1000L);
+    paramString1.status = 1;
+    paramString1.Uuid = null;
+    paramString1.isReaded = true;
+    paramString1.bSend = false;
+    if (paramBundle != null) {
+      if (paramBundle.getBoolean("FILE_TMP_IS_ZIPINNER_FILE"))
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("FileManagerDataCenter<FileAssistant>", 2, " insertExternalFileToFM. but app = null");
-        }
+        paramString3 = paramBundle.getString("FILE_TMP_SERVER_PATH");
+        String str = paramBundle.getString("FILE_TMP_DIR_PATH");
+        paramLong = paramBundle.getLong("FILE_TMP_RELATED_ID");
+        paramBundle = paramBundle.getString("FILE_TMP_ZIP_FILEID");
+        paramString1.isZipInnerFile = true;
+        paramString1.nRelatedSessionId = paramLong;
+        paramString1.zipInnerPath = str;
+        paramString1.strServerPath = paramString3;
+        paramString1.zipFileId = paramBundle;
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().g(paramString1);
       }
       else
       {
-        long l = MessageRecordFactory.a(-1000).uniseq;
-        paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().b(l, AppConstants.FM_EXTERNAL_SAVEFILE_UIN, 0);
-        if (paramString1 == null)
-        {
-          if (!QLog.isColorLevel()) {
-            break label449;
-          }
-          QLog.e("FileManagerDataCenter<FileAssistant>", 2, " insertExternalFileToFM. but entry = null");
-          break label449;
-        }
-        paramString1.setCloudType(3);
-        paramString1.fileName = FileManagerUtil.a(paramString2);
-        if (0L == paramLong)
-        {
-          paramString1.fileSize = FileManagerUtil.a(paramString2);
-          paramString1.setFilePath(paramString2);
-          paramString1.nOpType = paramInt2;
-          paramString1.peerNick = null;
-          paramString1.peerType = 0;
-          paramString1.peerUin = AppConstants.FM_EXTERNAL_SAVEFILE_UIN;
-          paramString1.srvTime = (MessageCache.a() * 1000L);
-          paramString1.status = 1;
-          paramString1.Uuid = null;
-          paramString1.isReaded = true;
-          paramString1.bSend = false;
-          if (paramBundle != null)
-          {
-            if (paramBundle.getBoolean("FILE_TMP_IS_ZIPINNER_FILE"))
-            {
-              paramString3 = paramBundle.getString("FILE_TMP_SERVER_PATH");
-              String str = paramBundle.getString("FILE_TMP_DIR_PATH");
-              paramLong = paramBundle.getLong("FILE_TMP_RELATED_ID");
-              paramBundle = paramBundle.getString("FILE_TMP_ZIP_FILEID");
-              paramString1.isZipInnerFile = true;
-              paramString1.nRelatedSessionId = paramLong;
-              paramString1.zipInnerPath = str;
-              paramString1.strServerPath = paramString3;
-              paramString1.zipFileId = paramBundle;
-              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().g(paramString1);
-            }
-          }
-          else
-          {
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramString1);
-            FileManagerUtil.c(paramString2);
-            paramInt1 = 0;
-          }
-        }
-        else
-        {
-          paramString1.fileSize = paramLong;
-          continue;
-        }
         paramString3 = paramBundle.getString("FILE_TMP_SERVER_PATH");
         if (!TextUtils.isEmpty(paramString3))
         {
@@ -195,17 +193,14 @@ public class FileManagerDataCenter
           paramString1.bDelInAio = true;
         }
         paramInt1 = paramBundle.getInt("FILE_FROM", -1);
-        if (paramInt1 == -1) {
-          continue;
+        if (paramInt1 != -1) {
+          paramString1.nOpType = paramInt1;
         }
-        paramString1.nOpType = paramInt1;
-        continue;
       }
-      paramInt1 = -2;
-      continue;
-      label449:
-      paramInt1 = -3;
     }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramString1);
+    FileManagerUtil.c(paramString2);
+    return 0;
   }
   
   public long a(int paramInt, long paramLong1, long paramLong2, long paramLong3, long paramLong4)
@@ -215,27 +210,38 @@ public class FileManagerDataCenter
   
   public long a(String paramString, long paramLong1, long paramLong2, int paramInt)
   {
+    long l = 0L;
     if (paramLong1 <= 0L) {
       return 0L;
     }
     EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    if (QLog.isColorLevel()) {
-      QLog.d("FileManagerDataCenter<FileAssistant>", 2, "strUin[" + FileManagerUtil.e(paramString) + "], peeryType[" + String.valueOf(paramInt) + "], uniseq[" + String.valueOf(paramLong2) + "]");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("strUin[");
+      ((StringBuilder)localObject).append(FileManagerUtil.d(paramString));
+      ((StringBuilder)localObject).append("], peeryType[");
+      ((StringBuilder)localObject).append(String.valueOf(paramInt));
+      ((StringBuilder)localObject).append("], uniseq[");
+      ((StringBuilder)localObject).append(String.valueOf(paramLong2));
+      ((StringBuilder)localObject).append("]");
+      QLog.d("FileManagerDataCenter<FileAssistant>", 2, ((StringBuilder)localObject).toString());
     }
-    MessageRecord localMessageRecord = null;
+    Object localObject = null;
     if (paramLong2 > 0L) {
-      localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(paramString, paramInt, paramLong2);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(paramString, paramInt, paramLong2);
     }
-    if (localMessageRecord != null)
+    paramLong2 = l;
+    if (localObject != null)
     {
-      paramString = (TransFileInfo)localEntityManager.find(TransFileInfo.class, new String[] { String.valueOf(localMessageRecord.time), String.valueOf(localMessageRecord.msgseq), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString });
-      if (paramString == null) {}
+      paramString = (TransFileInfo)localEntityManager.find(TransFileInfo.class, new String[] { String.valueOf(((MessageRecord)localObject).time), String.valueOf(((MessageRecord)localObject).msgseq), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString });
+      paramLong2 = l;
+      if (paramString != null) {
+        paramLong2 = paramString.transferedSize * 100L / paramLong1;
+      }
     }
-    for (paramLong1 = paramString.transferedSize * 100L / paramLong1;; paramLong1 = 0L)
-    {
-      localEntityManager.close();
-      return paramLong1;
-    }
+    localEntityManager.close();
+    return paramLong2;
   }
   
   public long a(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
@@ -245,72 +251,7 @@ public class FileManagerDataCenter
   
   public long a(String paramString1, String paramString2, int paramInt1, int paramInt2, Map<String, String> paramMap, String paramString3, long paramLong1, long paramLong2, long paramLong3)
   {
-    MessageRecord localMessageRecord = MessageRecordFactory.a(paramInt2);
-    localMessageRecord.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    localMessageRecord.frienduin = paramString1;
-    localMessageRecord.senderuin = paramString2;
-    localMessageRecord.msg = paramString3;
-    localMessageRecord.msgtype = paramInt2;
-    localMessageRecord.isread = true;
-    long l;
-    if (paramString2.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()))
-    {
-      paramInt2 = 1;
-      localMessageRecord.issend = paramInt2;
-      localMessageRecord.istroop = paramInt1;
-      if (paramLong2 <= 0L) {
-        break label214;
-      }
-      l = paramLong2;
-      label92:
-      localMessageRecord.msgseq = l;
-      if (paramLong2 <= 0L) {
-        break label231;
-      }
-      label106:
-      localMessageRecord.shmsgseq = paramLong2;
-      if (paramLong1 <= 0L) {
-        break label250;
-      }
-      label120:
-      localMessageRecord.msgUid = paramLong1;
-      if (paramLong3 <= 0L) {
-        break label258;
-      }
-    }
-    for (;;)
-    {
-      localMessageRecord.time = paramLong3;
-      if ((paramMap == null) || (paramMap.size() <= 0)) {
-        break label266;
-      }
-      paramString1 = paramMap.keySet().iterator();
-      while (paramString1.hasNext())
-      {
-        paramString2 = (String)paramString1.next();
-        localMessageRecord.saveExtInfoToExtStr(paramString2, (String)paramMap.get(paramString2));
-      }
-      paramInt2 = 0;
-      break;
-      label214:
-      paramInt1 = MobileQQService.seq;
-      MobileQQService.seq = paramInt1 + 1;
-      l = paramInt1;
-      break label92;
-      label231:
-      paramLong2 = Math.abs(new Random().nextInt());
-      break label106;
-      label250:
-      paramLong1 = FileManagerUtil.b();
-      break label120;
-      label258:
-      paramLong3 = MessageCache.a();
-    }
-    label266:
-    localMessageRecord.extraflag |= 0xFFFF7FFF;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(localMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    QLog.i("FileManagerDataCenter<FileAssistant>", 1, "Inser msg to AIO, msgInfo: mrUinseq[" + String.valueOf(localMessageRecord.uniseq) + "], selfuin[" + FileManagerUtil.e(localMessageRecord.selfuin) + "], frienduin[" + FileManagerUtil.e(localMessageRecord.frienduin) + "], senderuin[" + FileManagerUtil.e(localMessageRecord.senderuin) + "], issend[" + String.valueOf(localMessageRecord.issend) + "], istroop[" + String.valueOf(localMessageRecord.istroop) + "], shmsgseq[" + String.valueOf(localMessageRecord.shmsgseq) + "], msgUid[" + String.valueOf(localMessageRecord.msgUid) + "], time[" + String.valueOf(localMessageRecord.time) + "], msgtype[" + String.valueOf(paramString3) + "]");
-    return localMessageRecord.uniseq;
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public long a(String paramString1, String paramString2, boolean paramBoolean1, String paramString3, long paramLong1, boolean paramBoolean2, int paramInt, String paramString4, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6)
@@ -320,162 +261,72 @@ public class FileManagerDataCenter
   
   public long a(String paramString1, String paramString2, boolean paramBoolean1, String paramString3, long paramLong1, boolean paramBoolean2, int paramInt1, String paramString4, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, int paramInt2)
   {
-    MessageRecord localMessageRecord = MessageRecordFactory.a(-2005);
-    localMessageRecord.uniseq = paramLong3;
-    localMessageRecord.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    localMessageRecord.frienduin = paramString1;
-    localMessageRecord.senderuin = paramString2;
-    String str;
-    if (paramString4 != null)
-    {
-      str = paramString4;
-      if (paramString4.length() >= 1) {}
-    }
-    else
-    {
-      str = TransfileUtile.makeTransFileProtocolData(paramString3, paramLong1, 0, paramBoolean2);
-    }
-    localMessageRecord.msg = str;
-    localMessageRecord.msgtype = -2005;
-    localMessageRecord.isread = paramBoolean2;
-    int i;
-    if (paramBoolean1)
-    {
-      i = 1;
-      localMessageRecord.issend = i;
-      localMessageRecord.istroop = paramInt1;
-      localMessageRecord.msgseq = paramLong2;
-      localMessageRecord.shmsgseq = MessageUtils.a(paramLong2, paramInt1);
-      paramLong1 = paramLong4;
-      if (paramLong4 == 0L) {
-        paramLong1 = MessageUtils.a(MessageUtils.a());
-      }
-      localMessageRecord.msgUid = paramLong1;
-      localMessageRecord.time = paramLong6;
-      if (paramInt1 == 3000) {
-        localMessageRecord.shmsgseq = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramString1, paramInt1).shmsgseq;
-      }
-      if (!localMessageRecord.isSend()) {
-        break label511;
-      }
-      ((SVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(localMessageRecord);
-    }
-    for (;;)
-    {
-      if (!paramBoolean1) {
-        localMessageRecord.saveExtInfoToExtStr("dataline_msg_device_type", "65793");
-      }
-      localMessageRecord.vipBubbleDiyTextId = paramInt2;
-      if (TextUtils.isEmpty(((MessageForFile)localMessageRecord).fileName)) {
-        ((MessageForFile)localMessageRecord).fileName = FileManagerUtil.a(paramString3);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(localMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString2, paramString1, paramInt1);
-      QLog.i("FileManagerDataCenter<FileAssistant>", 1, "Inser msg to AIO, msgInfo: mrUinseq[" + String.valueOf(localMessageRecord.uniseq) + "], selfuin[" + FileManagerUtil.e(localMessageRecord.selfuin) + "], frienduin[" + FileManagerUtil.e(localMessageRecord.frienduin) + "], senderuin[" + FileManagerUtil.e(localMessageRecord.senderuin) + "], issend[" + String.valueOf(localMessageRecord.issend) + "], istroop[" + String.valueOf(localMessageRecord.istroop) + "], shmsgseq[" + String.valueOf(localMessageRecord.shmsgseq) + "], msgUid[" + String.valueOf(localMessageRecord.msgUid) + "], time[" + String.valueOf(localMessageRecord.time) + "], vipBubbleID[" + String.valueOf(paramLong5) + "], vipBubbleDiyTextID[" + String.valueOf(paramInt2) + "]");
-      return localMessageRecord.uniseq;
-      i = 0;
-      break;
-      label511:
-      if (paramLong5 != -1L) {
-        localMessageRecord.vipBubbleID = paramLong5;
-      } else {
-        localMessageRecord.vipBubbleID = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramString1);
-      }
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public MessageRecord a(String paramString1, String paramString2, boolean paramBoolean, int paramInt, FileManagerEntity paramFileManagerEntity)
   {
-    int i = 0;
-    MessageRecord localMessageRecord = MessageRecordFactory.a(-2005);
-    localMessageRecord.uniseq = paramFileManagerEntity.uniseq;
-    localMessageRecord.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    localMessageRecord.frienduin = paramString1;
-    localMessageRecord.senderuin = paramString2;
-    localMessageRecord.msg = TransfileUtile.makeTransFileProtocolData(paramFileManagerEntity.strFilePath, paramFileManagerEntity.fileSize, 0, true);
-    localMessageRecord.msgtype = -2005;
-    localMessageRecord.isread = true;
-    if (paramBoolean) {
-      i = 1;
-    }
-    localMessageRecord.issend = i;
-    localMessageRecord.istroop = paramFileManagerEntity.peerType;
-    localMessageRecord.msgseq = paramFileManagerEntity.msgSeq;
-    localMessageRecord.shmsgseq = MessageUtils.a(paramFileManagerEntity.msgSeq, paramFileManagerEntity.peerType);
-    long l;
-    if (paramFileManagerEntity.msgUid == 0L)
-    {
-      l = MessageUtils.a(MessageUtils.a());
-      localMessageRecord.msgUid = l;
-      localMessageRecord.time = paramFileManagerEntity.msgTime;
-      if (paramFileManagerEntity.peerType == 3000) {
-        localMessageRecord.shmsgseq = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramString1, paramFileManagerEntity.peerType).shmsgseq;
-      }
-      if (!localMessageRecord.isSend()) {
-        break label494;
-      }
-      ((SVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(localMessageRecord);
-    }
-    for (;;)
-    {
-      localMessageRecord.vipBubbleDiyTextId = -1;
-      ((MessageForFile)localMessageRecord).fileName = paramFileManagerEntity.fileName;
-      localMessageRecord.saveExtInfoToExtStr("dataline_msg_device_type", paramInt + "");
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(localMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString2, paramString1, paramFileManagerEntity.peerType);
-      if (QLog.isColorLevel()) {
-        QLog.i("FileManagerDataCenter<FileAssistant>", 1, "Inser msg to AIO, msgInfo: mrUinseq[" + String.valueOf(localMessageRecord.uniseq) + "], sessionid[" + paramFileManagerEntity.nSessionId + "], fileName[" + paramFileManagerEntity.fileName + "], frienduin[" + FileManagerUtil.e(localMessageRecord.frienduin) + "], senderuin[" + FileManagerUtil.e(localMessageRecord.senderuin) + "], issend[" + String.valueOf(localMessageRecord.issend) + "], shmsgseq[" + String.valueOf(localMessageRecord.shmsgseq) + "], msgUid[" + String.valueOf(localMessageRecord.msgUid) + "], time[" + String.valueOf(localMessageRecord.time) + "]");
-      }
-      return localMessageRecord;
-      l = paramFileManagerEntity.msgUid;
-      break;
-      label494:
-      localMessageRecord.vipBubbleID = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramString1);
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public FilePreViewControllerBase a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFilePreViewControllerBase == null) {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFilePreViewControllerBase == null)
+    {
       QLog.e("FileManagerDataCenter<FileAssistant>", 1, "getTmpController mTmpController is null");
     }
-    for (;;)
+    else
     {
-      FilePreViewControllerBase localFilePreViewControllerBase = this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFilePreViewControllerBase;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFilePreViewControllerBase = null;
-      return localFilePreViewControllerBase;
-      QLog.d("FileManagerDataCenter<FileAssistant>", 1, "getTmpController " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFilePreViewControllerBase.getClass().getName());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getTmpController ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFilePreViewControllerBase.getClass().getName());
+      QLog.d("FileManagerDataCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
     }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFilePreViewControllerBase;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFilePreViewControllerBase = null;
+    return localObject;
   }
   
   public FileManagerEntity a(long paramLong)
   {
     if (paramLong == -1L)
     {
-      QLog.e("FileManagerDataCenter<FileAssistant>", 1, "QueryFileEntityBySessionId nSessionId[" + paramLong + "] is error");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("QueryFileEntityBySessionId nSessionId[");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("] is error");
+      QLog.e("FileManagerDataCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
       return null;
     }
-    FileManagerProxy localFileManagerProxy = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy();
-    if (localFileManagerProxy == null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy();
+    if (localObject == null)
     {
-      QLog.e("FileManagerDataCenter<FileAssistant>", 1, "QueryFileEntityBySessionId get FileManagerProxy null! nSessionId[" + paramLong + "]");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("QueryFileEntityBySessionId get FileManagerProxy null! nSessionId[");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("]");
+      QLog.e("FileManagerDataCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
       return null;
     }
-    FileManagerEntity localFileManagerEntity = localFileManagerProxy.a(paramLong);
+    FileManagerEntity localFileManagerEntity = ((FileManagerProxy)localObject).a(paramLong);
     if (localFileManagerEntity != null)
     {
-      localFileManagerProxy.a(localFileManagerEntity);
-      FileCategoryUtil.a(localFileManagerEntity);
+      ((FileManagerProxy)localObject).a(localFileManagerEntity);
+      ((IQQFileSelectorUtil)QRoute.api(IQQFileSelectorUtil.class)).upDataApkPathForPackageName(localFileManagerEntity);
       return localFileManagerEntity;
     }
     localFileManagerEntity = (FileManagerEntity)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().find(FileManagerEntity.class, String.valueOf(paramLong));
     if (localFileManagerEntity != null)
     {
-      localFileManagerProxy.a(localFileManagerEntity);
-      FileCategoryUtil.a(localFileManagerEntity);
+      ((FileManagerProxy)localObject).a(localFileManagerEntity);
+      ((IQQFileSelectorUtil)QRoute.api(IQQFileSelectorUtil.class)).upDataApkPathForPackageName(localFileManagerEntity);
       return localFileManagerEntity;
     }
-    QLog.e("FileManagerDataCenter<FileAssistant>", 1, "QueryFileEntityBySessionId get entry null! nSessionId[" + paramLong + "]");
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("QueryFileEntityBySessionId get entry null! nSessionId[");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append("]");
+    QLog.e("FileManagerDataCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
     return null;
   }
   
@@ -484,7 +335,17 @@ public class FileManagerDataCenter
     FileManagerEntity localFileManagerEntity = a(paramLong1);
     if (localFileManagerEntity != null)
     {
-      QLog.i("FileManagerDataCenter<FileAssistant>", 1, "getFileEntityBySessionid for queryall, FileManagerEntity exist, sessionId[" + String.valueOf(localFileManagerEntity.nSessionId) + "], uniseq[" + String.valueOf(localFileManagerEntity.uniseq) + "], strUin[" + FileManagerUtil.e(localFileManagerEntity.peerUin) + "], peerType[" + String.valueOf(localFileManagerEntity.peerType) + "]");
+      paramString = new StringBuilder();
+      paramString.append("getFileEntityBySessionid for queryall, FileManagerEntity exist, sessionId[");
+      paramString.append(String.valueOf(localFileManagerEntity.nSessionId));
+      paramString.append("], uniseq[");
+      paramString.append(String.valueOf(localFileManagerEntity.uniseq));
+      paramString.append("], strUin[");
+      paramString.append(FileManagerUtil.d(localFileManagerEntity.peerUin));
+      paramString.append("], peerType[");
+      paramString.append(String.valueOf(localFileManagerEntity.peerType));
+      paramString.append("]");
+      QLog.i("FileManagerDataCenter<FileAssistant>", 1, paramString.toString());
       return localFileManagerEntity;
     }
     localFileManagerEntity = new FileManagerEntity();
@@ -495,7 +356,17 @@ public class FileManagerDataCenter
     localFileManagerEntity.selfUin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
     localFileManagerEntity.isReaded = false;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().a(localFileManagerEntity);
-    QLog.i("FileManagerDataCenter<FileAssistant>", 1, "getFileEntityBySessionid, new a FileManagerEntity, sessionId[" + String.valueOf(localFileManagerEntity.nSessionId) + "], uniseq[" + String.valueOf(paramLong2) + "], strUin[" + FileManagerUtil.e(paramString) + "], peerType[" + String.valueOf(paramInt) + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getFileEntityBySessionid, new a FileManagerEntity, sessionId[");
+    localStringBuilder.append(String.valueOf(localFileManagerEntity.nSessionId));
+    localStringBuilder.append("], uniseq[");
+    localStringBuilder.append(String.valueOf(paramLong2));
+    localStringBuilder.append("], strUin[");
+    localStringBuilder.append(FileManagerUtil.d(paramString));
+    localStringBuilder.append("], peerType[");
+    localStringBuilder.append(String.valueOf(paramInt));
+    localStringBuilder.append("]");
+    QLog.i("FileManagerDataCenter<FileAssistant>", 1, localStringBuilder.toString());
     return localFileManagerEntity;
   }
   
@@ -508,51 +379,82 @@ public class FileManagerDataCenter
   {
     if (paramString == null)
     {
-      QLog.e("FileManagerDataCenter<FileAssistant>", 1, "QueryFileEntityByUniseq  strUin is null, uniseq[" + paramLong + "], peerType[" + paramInt + "]");
+      paramString = new StringBuilder();
+      paramString.append("QueryFileEntityByUniseq  strUin is null, uniseq[");
+      paramString.append(paramLong);
+      paramString.append("], peerType[");
+      paramString.append(paramInt);
+      paramString.append("]");
+      QLog.e("FileManagerDataCenter<FileAssistant>", 1, paramString.toString());
       return null;
     }
     if (paramLong <= 0L)
     {
-      QLog.e("FileManagerDataCenter<FileAssistant>", 1, "QueryFileEntityByUniseq uniseq[" + paramLong + "] is error, strUin[" + FileManagerUtil.e(paramString) + "], peerType[" + paramInt + "]");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("QueryFileEntityByUniseq uniseq[");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("] is error, strUin[");
+      ((StringBuilder)localObject).append(FileManagerUtil.d(paramString));
+      ((StringBuilder)localObject).append("], peerType[");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("]");
+      QLog.e("FileManagerDataCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
       return null;
     }
-    FileManagerProxy localFileManagerProxy = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy();
-    if (localFileManagerProxy == null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy();
+    if (localObject == null)
     {
-      QLog.e("FileManagerDataCenter<FileAssistant>", 1, "QueryFileEntityByUniseq get FileManagerProxy null! strUin[" + FileManagerUtil.e(paramString) + "], uniseq[" + paramLong + "], peerType[" + paramInt + "]");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("QueryFileEntityByUniseq get FileManagerProxy null! strUin[");
+      ((StringBuilder)localObject).append(FileManagerUtil.d(paramString));
+      ((StringBuilder)localObject).append("], uniseq[");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("], peerType[");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("]");
+      QLog.e("FileManagerDataCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
       return null;
     }
-    FileManagerEntity localFileManagerEntity = localFileManagerProxy.a(paramLong, paramString, paramInt);
+    FileManagerEntity localFileManagerEntity = ((FileManagerProxy)localObject).a(paramLong, paramString, paramInt);
     if (localFileManagerEntity != null)
     {
-      FileCategoryUtil.a(localFileManagerEntity);
+      ((IQQFileSelectorUtil)QRoute.api(IQQFileSelectorUtil.class)).upDataApkPathForPackageName(localFileManagerEntity);
       return localFileManagerEntity;
     }
-    return localFileManagerProxy.b(paramLong, paramString, paramInt);
+    return ((FileManagerProxy)localObject).b(paramLong, paramString, paramInt);
   }
   
   public FileManagerEntity a(long paramLong1, String paramString, int paramInt, long paramLong2)
   {
-    if (-1L != paramLong2) {}
-    for (FileManagerEntity localFileManagerEntity1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramLong2);; localFileManagerEntity1 = null)
-    {
-      FileManagerEntity localFileManagerEntity2 = localFileManagerEntity1;
-      if (localFileManagerEntity1 == null)
-      {
-        localFileManagerEntity2 = localFileManagerEntity1;
-        if (paramLong1 > 0L) {
-          localFileManagerEntity2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramLong1, paramString, paramInt);
-        }
-      }
-      if (localFileManagerEntity2 == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("FileManagerDataCenter<FileAssistant>", 2, "why sessionId[" + String.valueOf(paramLong2) + "] and uniseq[" + String.valueOf(paramLong1) + "] is wrong");
-        }
-        return null;
-      }
-      return localFileManagerEntity2;
+    FileManagerEntity localFileManagerEntity1;
+    if (-1L != paramLong2) {
+      localFileManagerEntity1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramLong2);
+    } else {
+      localFileManagerEntity1 = null;
     }
+    FileManagerEntity localFileManagerEntity2 = localFileManagerEntity1;
+    if (localFileManagerEntity1 == null)
+    {
+      localFileManagerEntity2 = localFileManagerEntity1;
+      if (paramLong1 > 0L) {
+        localFileManagerEntity2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramLong1, paramString, paramInt);
+      }
+    }
+    if (localFileManagerEntity2 == null)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("why sessionId[");
+        paramString.append(String.valueOf(paramLong2));
+        paramString.append("] and uniseq[");
+        paramString.append(String.valueOf(paramLong1));
+        paramString.append("] is wrong");
+        QLog.e("FileManagerDataCenter<FileAssistant>", 2, paramString.toString());
+      }
+      return null;
+    }
+    return localFileManagerEntity2;
   }
   
   public FileManagerEntity a(String paramString)
@@ -562,52 +464,67 @@ public class FileManagerDataCenter
   
   public FileManagerEntity a(String paramString, long paramLong)
   {
-    if ((paramString == null) || (paramLong <= 0L)) {
-      return null;
-    }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy();
-    if (localObject == null)
+    if (paramString != null)
     {
-      QLog.e("FileManagerDataCenter<FileAssistant>", 1, "QueryFileEntityByOLfileSessionId get FileManagerProxy null! nOLfileSessionId[" + paramLong + "]");
-      return null;
-    }
-    FileManagerEntity localFileManagerEntity1 = ((FileManagerProxy)localObject).a(paramString, paramLong);
-    if (localFileManagerEntity1 != null) {
-      return localFileManagerEntity1;
-    }
-    localObject = "select * from " + FileManagerEntity.tableName() + " where (nOLfileSessionId = " + paramLong + " or (nSessionId = " + paramLong + " and nOLfileSessionId = 0)) order by srvTime desc";
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    localObject = localEntityManager.rawQuery(FileManagerEntity.class, (String)localObject, null);
-    FileManagerEntity localFileManagerEntity2;
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      Iterator localIterator = ((List)localObject).iterator();
-      do
+      if (paramLong <= 0L) {
+        return null;
+      }
+      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy();
+      if (localObject1 == null)
       {
-        do
+        paramString = new StringBuilder();
+        paramString.append("QueryFileEntityByOLfileSessionId get FileManagerProxy null! nOLfileSessionId[");
+        paramString.append(paramLong);
+        paramString.append("]");
+        QLog.e("FileManagerDataCenter<FileAssistant>", 1, paramString.toString());
+        return null;
+      }
+      FileManagerEntity localFileManagerEntity = ((FileManagerProxy)localObject1).a(paramString, paramLong);
+      if (localFileManagerEntity != null) {
+        return localFileManagerEntity;
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("select * from ");
+      ((StringBuilder)localObject1).append(FileManagerEntity.tableName());
+      ((StringBuilder)localObject1).append(" where (nOLfileSessionId = ");
+      ((StringBuilder)localObject1).append(paramLong);
+      ((StringBuilder)localObject1).append(" or (nSessionId = ");
+      ((StringBuilder)localObject1).append(paramLong);
+      ((StringBuilder)localObject1).append(" and nOLfileSessionId = 0)) order by srvTime desc");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+      Object localObject2 = localEntityManager.rawQuery(FileManagerEntity.class, (String)localObject1, null);
+      localObject1 = localFileManagerEntity;
+      if (localObject2 != null)
+      {
+        localObject1 = localFileManagerEntity;
+        if (((List)localObject2).size() > 0)
         {
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localFileManagerEntity2 = (FileManagerEntity)localIterator.next();
-        } while (!paramString.equalsIgnoreCase(localFileManagerEntity2.peerUin));
-        localObject = localFileManagerEntity2;
-        if (paramLong == localFileManagerEntity2.nOLfileSessionId) {
-          break;
+          localObject2 = ((List)localObject2).iterator();
+          do
+          {
+            localObject1 = localFileManagerEntity;
+            if (!((Iterator)localObject2).hasNext()) {
+              break;
+            }
+            localObject1 = (FileManagerEntity)((Iterator)localObject2).next();
+          } while ((!paramString.equalsIgnoreCase(((FileManagerEntity)localObject1).peerUin)) || ((paramLong != ((FileManagerEntity)localObject1).nOLfileSessionId) && ((paramLong != ((FileManagerEntity)localObject1).nSessionId) || (0L != ((FileManagerEntity)localObject1).nOLfileSessionId))));
         }
-      } while ((paramLong != localFileManagerEntity2.nSessionId) || (0L != localFileManagerEntity2.nOLfileSessionId));
-    }
-    for (localObject = localFileManagerEntity2;; localObject = localFileManagerEntity1)
-    {
-      if ((localObject != null) && (0L == ((FileManagerEntity)localObject).nOLfileSessionId))
+      }
+      if ((localObject1 != null) && (0L == ((FileManagerEntity)localObject1).nOLfileSessionId))
       {
-        QLog.i("FileManagerDataCenter<FileAssistant>", 1, "QueryOLfileSessionEntity find a old ver data. nOLfileSessionId[" + paramLong + "]");
-        ((FileManagerEntity)localObject).nOLfileSessionId = paramLong;
-        c((FileManagerEntity)localObject);
+        paramString = new StringBuilder();
+        paramString.append("QueryOLfileSessionEntity find a old ver data. nOLfileSessionId[");
+        paramString.append(paramLong);
+        paramString.append("]");
+        QLog.i("FileManagerDataCenter<FileAssistant>", 1, paramString.toString());
+        ((FileManagerEntity)localObject1).nOLfileSessionId = paramLong;
+        c((FileManagerEntity)localObject1);
       }
       localEntityManager.close();
-      return localObject;
+      return localObject1;
     }
+    return null;
   }
   
   public List<FileManagerEntity> a(String paramString, long paramLong)
@@ -654,8 +571,13 @@ public class FileManagerDataCenter
     FileManagerEntity localFileManagerEntity = a(paramLong);
     if (localFileManagerEntity == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("FileManagerDataCenter<FileAssistant>", 2, "sessionnid[" + String.valueOf(paramLong) + "] item is not exist!may be is deleted!");
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("sessionnid[");
+        paramString.append(String.valueOf(paramLong));
+        paramString.append("] item is not exist!may be is deleted!");
+        QLog.w("FileManagerDataCenter<FileAssistant>", 2, paramString.toString());
       }
       return;
     }
@@ -664,106 +586,69 @@ public class FileManagerDataCenter
   
   public void a(long paramLong1, String paramString, int paramInt, long paramLong2)
   {
-    FileManagerEntity localFileManagerEntity = a(paramLong1, paramString, paramInt, -1L);
-    if (localFileManagerEntity == null)
+    Object localObject = a(paramLong1, paramString, paramInt, -1L);
+    if (localObject == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileManagerDataCenter<FileAssistant>", 2, "updateFileManagerTime error, entity is null,uinseq[" + String.valueOf(paramLong1) + "], frienduin[" + String.valueOf(paramString) + "], istroop[" + String.valueOf(paramInt) + "], time[" + String.valueOf(paramLong2) + "]");
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("updateFileManagerTime error, entity is null,uinseq[");
+        ((StringBuilder)localObject).append(String.valueOf(paramLong1));
+        ((StringBuilder)localObject).append("], frienduin[");
+        ((StringBuilder)localObject).append(String.valueOf(paramString));
+        ((StringBuilder)localObject).append("], istroop[");
+        ((StringBuilder)localObject).append(String.valueOf(paramInt));
+        ((StringBuilder)localObject).append("], time[");
+        ((StringBuilder)localObject).append(String.valueOf(paramLong2));
+        ((StringBuilder)localObject).append("]");
+        QLog.e("FileManagerDataCenter<FileAssistant>", 2, ((StringBuilder)localObject).toString());
       }
       return;
     }
-    localFileManagerEntity.srvTime = (1000L * paramLong2);
-    c(localFileManagerEntity);
+    ((FileManagerEntity)localObject).srvTime = (paramLong2 * 1000L);
+    c((FileManagerEntity)localObject);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(true, 3, null);
   }
   
   public void a(FilePreViewControllerBase paramFilePreViewControllerBase)
   {
-    QLog.d("FileManagerDataCenter<FileAssistant>", 1, "regTmpController" + paramFilePreViewControllerBase.getClass().getName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("regTmpController");
+    localStringBuilder.append(paramFilePreViewControllerBase.getClass().getName());
+    QLog.d("FileManagerDataCenter<FileAssistant>", 1, localStringBuilder.toString());
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFilePreViewControllerBase = paramFilePreViewControllerBase;
   }
   
-  /* Error */
   public void a(FileManagerEntity paramFileManagerEntity)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 21	com/tencent/mobileqq/filemanager/core/FileManagerDataCenter:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   6: invokevirtual 301	com/tencent/mobileqq/app/QQAppInterface:getFileManagerProxy	()Lcom/tencent/mobileqq/filemanager/data/FileManagerProxy;
-    //   9: astore_2
-    //   10: aload_2
-    //   11: ifnonnull +69 -> 80
-    //   14: ldc 76
-    //   16: iconst_1
-    //   17: new 78	java/lang/StringBuilder
-    //   20: dup
-    //   21: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   24: ldc_w 703
-    //   27: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: aload_1
-    //   31: getfield 550	com/tencent/mobileqq/filemanager/data/FileManagerEntity:nSessionId	J
-    //   34: invokevirtual 175	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   37: ldc_w 343
-    //   40: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   43: aload_1
-    //   44: getfield 533	com/tencent/mobileqq/filemanager/data/FileManagerEntity:uniseq	J
-    //   47: invokevirtual 175	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   50: ldc_w 705
-    //   53: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   56: aload_1
-    //   57: getfield 237	com/tencent/mobileqq/filemanager/data/FileManagerEntity:peerUin	Ljava/lang/String;
-    //   60: invokestatic 336	com/tencent/mobileqq/filemanager/util/FileManagerUtil:e	(Ljava/lang/String;)Ljava/lang/String;
-    //   63: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   66: ldc 93
-    //   68: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   71: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   74: invokestatic 100	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   77: aload_0
-    //   78: monitorexit
-    //   79: return
-    //   80: invokestatic 74	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   83: ifeq +32 -> 115
-    //   86: ldc 76
-    //   88: iconst_2
-    //   89: new 78	java/lang/StringBuilder
-    //   92: dup
-    //   93: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   96: ldc_w 707
-    //   99: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   102: aload_1
-    //   103: invokestatic 710	com/tencent/mobileqq/filemanager/util/FileManagerUtil:a	(Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;)Ljava/lang/String;
-    //   106: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   109: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   112: invokestatic 180	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   115: aload_2
-    //   116: aload_1
-    //   117: invokevirtual 712	com/tencent/mobileqq/filemanager/data/FileManagerProxy:b	(Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;)V
-    //   120: aload_0
-    //   121: getfield 21	com/tencent/mobileqq/filemanager/core/FileManagerDataCenter:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   124: invokevirtual 674	com/tencent/mobileqq/app/QQAppInterface:getFileManagerNotifyCenter	()Lcom/tencent/mobileqq/filemanager/core/FileManagerNotifyCenter;
-    //   127: iconst_1
-    //   128: iconst_3
-    //   129: aconst_null
-    //   130: invokevirtual 679	com/tencent/mobileqq/filemanager/core/FileManagerNotifyCenter:a	(ZILjava/lang/Object;)V
-    //   133: goto -56 -> 77
-    //   136: astore_1
-    //   137: aload_0
-    //   138: monitorexit
-    //   139: aload_1
-    //   140: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	141	0	this	FileManagerDataCenter
-    //   0	141	1	paramFileManagerEntity	FileManagerEntity
-    //   9	107	2	localFileManagerProxy	FileManagerProxy
-    // Exception table:
-    //   from	to	target	type
-    //   2	10	136	finally
-    //   14	77	136	finally
-    //   80	115	136	finally
-    //   115	133	136	finally
+    try
+    {
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy();
+      if (localObject == null)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("insertToFMList get FileManagerProxy null! nSessionId[");
+        ((StringBuilder)localObject).append(paramFileManagerEntity.nSessionId);
+        ((StringBuilder)localObject).append("], uniseq[");
+        ((StringBuilder)localObject).append(paramFileManagerEntity.uniseq);
+        ((StringBuilder)localObject).append("], peerUin[");
+        ((StringBuilder)localObject).append(FileManagerUtil.d(paramFileManagerEntity.peerUin));
+        ((StringBuilder)localObject).append("]");
+        QLog.e("FileManagerDataCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("insert FM List:");
+        localStringBuilder.append(FileManagerUtil.a(paramFileManagerEntity));
+        QLog.i("FileManagerDataCenter<FileAssistant>", 2, localStringBuilder.toString());
+      }
+      ((FileManagerProxy)localObject).b(paramFileManagerEntity);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(true, 3, null);
+      return;
+    }
+    finally {}
   }
   
   public void a(String paramString, int paramInt)
@@ -776,8 +661,15 @@ public class FileManagerDataCenter
     FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramLong);
     if (localFileManagerEntity == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileManagerDataCenter<FileAssistant>", 2, "Save of2of [" + String.valueOf(paramBoolean1) + "],query FileManagerEntity renturn null, SessionId[" + String.valueOf(paramLong) + "], ");
+      if (QLog.isColorLevel())
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("Save of2of [");
+        paramString1.append(String.valueOf(paramBoolean1));
+        paramString1.append("],query FileManagerEntity renturn null, SessionId[");
+        paramString1.append(String.valueOf(paramLong));
+        paramString1.append("], ");
+        QLog.e("FileManagerDataCenter<FileAssistant>", 2, paramString1.toString());
       }
       return;
     }
@@ -829,8 +721,17 @@ public class FileManagerDataCenter
     if (localObject2 == null) {
       return false;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("FileManagerDataCenter<FileAssistant>", 2, "strUin[" + FileManagerUtil.e(((FileManagerEntity)localObject2).peerUin) + "], peeryType[" + String.valueOf(((FileManagerEntity)localObject2).peerType) + "], uniseq[" + String.valueOf(((FileManagerEntity)localObject2).uniseq) + "]");
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("strUin[");
+      ((StringBuilder)localObject1).append(FileManagerUtil.d(((FileManagerEntity)localObject2).peerUin));
+      ((StringBuilder)localObject1).append("], peeryType[");
+      ((StringBuilder)localObject1).append(String.valueOf(((FileManagerEntity)localObject2).peerType));
+      ((StringBuilder)localObject1).append("], uniseq[");
+      ((StringBuilder)localObject1).append(String.valueOf(((FileManagerEntity)localObject2).uniseq));
+      ((StringBuilder)localObject1).append("]");
+      QLog.d("FileManagerDataCenter<FileAssistant>", 2, ((StringBuilder)localObject1).toString());
     }
     Object localObject1 = null;
     if (-1L != ((FileManagerEntity)localObject2).uniseq) {
@@ -850,26 +751,32 @@ public class FileManagerDataCenter
   public boolean a(FileManagerEntity paramFileManagerEntity)
   {
     if (paramFileManagerEntity == null) {}
-    for (;;)
+    try
     {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("FileManagerDataCenter<FileAssistant>", 2, "setFMDelete FileManagerEntity is null!!!");
-        }
-        bool = false;
-        return bool;
+      if (QLog.isColorLevel()) {
+        QLog.e("FileManagerDataCenter<FileAssistant>", 2, "setFMDelete FileManagerEntity is null!!!");
       }
-      finally {}
-      paramFileManagerEntity.bDelInFM = true;
-      boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().a(paramFileManagerEntity, true);
+      return false;
     }
+    finally {}
+    paramFileManagerEntity.bDelInFM = true;
+    boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().a(paramFileManagerEntity, true);
+    return bool;
   }
   
   public boolean a(String paramString, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FileManagerDataCenter<FileAssistant>", 2, "SetRead: strUin[" + FileManagerUtil.e(paramString) + "], peeryType[" + paramInt + "], uniseq[" + paramLong + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("SetRead: strUin[");
+      localStringBuilder.append(FileManagerUtil.d(paramString));
+      localStringBuilder.append("], peeryType[");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("], uniseq[");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append("]");
+      QLog.d("FileManagerDataCenter<FileAssistant>", 2, localStringBuilder.toString());
     }
     paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(paramString, paramInt, paramLong);
     if (paramString != null)
@@ -898,29 +805,59 @@ public class FileManagerDataCenter
     }
     if (paramLong > 0L)
     {
-      FileManagerEntity localFileManagerEntity = ((FileManagerProxy)localObject).a(paramLong, paramString, paramInt);
+      localFileManagerEntity = ((FileManagerProxy)localObject).a(paramLong, paramString, paramInt);
       if (localFileManagerEntity != null)
       {
-        QLog.i("FileManagerDataCenter<FileAssistant>", 1, "getFileEntityByUniseq for memory, FileManagerEntity exist, sessionId[" + String.valueOf(localFileManagerEntity.nSessionId) + "], uniseq[" + String.valueOf(localFileManagerEntity.uniseq) + "], strUin[" + FileManagerUtil.e(localFileManagerEntity.peerUin) + "], peerType[" + String.valueOf(localFileManagerEntity.peerType) + "]");
+        paramString = new StringBuilder();
+        paramString.append("getFileEntityByUniseq for memory, FileManagerEntity exist, sessionId[");
+        paramString.append(String.valueOf(localFileManagerEntity.nSessionId));
+        paramString.append("], uniseq[");
+        paramString.append(String.valueOf(localFileManagerEntity.uniseq));
+        paramString.append("], strUin[");
+        paramString.append(FileManagerUtil.d(localFileManagerEntity.peerUin));
+        paramString.append("], peerType[");
+        paramString.append(String.valueOf(localFileManagerEntity.peerType));
+        paramString.append("]");
+        QLog.i("FileManagerDataCenter<FileAssistant>", 1, paramString.toString());
         return localFileManagerEntity;
       }
-      localObject = ((FileManagerProxy)localObject).b(paramLong, paramString, paramInt);
-      if (localObject != null)
+      localFileManagerEntity = ((FileManagerProxy)localObject).b(paramLong, paramString, paramInt);
+      if (localFileManagerEntity != null)
       {
-        QLog.i("FileManagerDataCenter<FileAssistant>", 1, "getFileEntityByUniseq for db, FileManagerEntity exist, sessionId[" + String.valueOf(((FileManagerEntity)localObject).nSessionId) + "], uniseq[" + String.valueOf(((FileManagerEntity)localObject).uniseq) + "], strUin[" + FileManagerUtil.e(((FileManagerEntity)localObject).peerUin) + "], peerType[" + String.valueOf(((FileManagerEntity)localObject).peerType) + "]");
-        return localObject;
+        paramString = new StringBuilder();
+        paramString.append("getFileEntityByUniseq for db, FileManagerEntity exist, sessionId[");
+        paramString.append(String.valueOf(localFileManagerEntity.nSessionId));
+        paramString.append("], uniseq[");
+        paramString.append(String.valueOf(localFileManagerEntity.uniseq));
+        paramString.append("], strUin[");
+        paramString.append(FileManagerUtil.d(localFileManagerEntity.peerUin));
+        paramString.append("], peerType[");
+        paramString.append(String.valueOf(localFileManagerEntity.peerType));
+        paramString.append("]");
+        QLog.i("FileManagerDataCenter<FileAssistant>", 1, paramString.toString());
+        return localFileManagerEntity;
       }
     }
-    localObject = new FileManagerEntity();
-    ((FileManagerEntity)localObject).nSessionId = FileManagerUtil.a().longValue();
-    ((FileManagerEntity)localObject).uniseq = paramLong;
-    ((FileManagerEntity)localObject).peerUin = paramString;
-    ((FileManagerEntity)localObject).peerType = paramInt;
-    ((FileManagerEntity)localObject).selfUin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
-    ((FileManagerEntity)localObject).isReaded = false;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().a((FileManagerEntity)localObject);
-    QLog.i("FileManagerDataCenter<FileAssistant>", 1, "getFileEntityByUniseq, new a FileManagerEntity, sessionId[" + String.valueOf(((FileManagerEntity)localObject).nSessionId) + "], uniseq[" + String.valueOf(paramLong) + "], strUin[" + FileManagerUtil.e(paramString) + "], peerType[" + String.valueOf(paramInt) + "]");
-    return localObject;
+    FileManagerEntity localFileManagerEntity = new FileManagerEntity();
+    localFileManagerEntity.nSessionId = FileManagerUtil.a().longValue();
+    localFileManagerEntity.uniseq = paramLong;
+    localFileManagerEntity.peerUin = paramString;
+    localFileManagerEntity.peerType = paramInt;
+    localFileManagerEntity.selfUin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
+    localFileManagerEntity.isReaded = false;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().a(localFileManagerEntity);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getFileEntityByUniseq, new a FileManagerEntity, sessionId[");
+    ((StringBuilder)localObject).append(String.valueOf(localFileManagerEntity.nSessionId));
+    ((StringBuilder)localObject).append("], uniseq[");
+    ((StringBuilder)localObject).append(String.valueOf(paramLong));
+    ((StringBuilder)localObject).append("], strUin[");
+    ((StringBuilder)localObject).append(FileManagerUtil.d(paramString));
+    ((StringBuilder)localObject).append("], peerType[");
+    ((StringBuilder)localObject).append(String.valueOf(paramInt));
+    ((StringBuilder)localObject).append("]");
+    QLog.i("FileManagerDataCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
+    return localFileManagerEntity;
   }
   
   public FileManagerEntity b(String paramString)
@@ -935,7 +872,7 @@ public class FileManagerDataCenter
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().b();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().a();
   }
   
   public void b(long paramLong)
@@ -958,27 +895,34 @@ public class FileManagerDataCenter
   
   public void b(FileManagerEntity paramFileManagerEntity)
   {
-    for (;;)
+    try
     {
-      FileManagerProxy localFileManagerProxy;
-      try
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy();
+      if (localObject == null)
       {
-        localFileManagerProxy = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy();
-        if (localFileManagerProxy == null)
-        {
-          QLog.e("FileManagerDataCenter<FileAssistant>", 1, "insertToFMListAddOrReplaceDB get FileManagerProxy null! nSessionId[" + paramFileManagerEntity.nSessionId + "], uniseq[" + paramFileManagerEntity.uniseq + "], peerUin[" + FileManagerUtil.e(paramFileManagerEntity.peerUin) + "]");
-          return;
-        }
-        if ((FileManagerEntity)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().find(FileManagerEntity.class, String.valueOf(paramFileManagerEntity.nSessionId)) == null)
-        {
-          localFileManagerProxy.b(paramFileManagerEntity);
-          continue;
-        }
-        localFileManagerProxy.c(paramFileManagerEntity);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("insertToFMListAddOrReplaceDB get FileManagerProxy null! nSessionId[");
+        ((StringBuilder)localObject).append(paramFileManagerEntity.nSessionId);
+        ((StringBuilder)localObject).append("], uniseq[");
+        ((StringBuilder)localObject).append(paramFileManagerEntity.uniseq);
+        ((StringBuilder)localObject).append("], peerUin[");
+        ((StringBuilder)localObject).append(FileManagerUtil.d(paramFileManagerEntity.peerUin));
+        ((StringBuilder)localObject).append("]");
+        QLog.e("FileManagerDataCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
+        return;
       }
-      finally {}
-      localFileManagerProxy.e(paramFileManagerEntity);
+      if ((FileManagerEntity)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().find(FileManagerEntity.class, String.valueOf(paramFileManagerEntity.nSessionId)) == null)
+      {
+        ((FileManagerProxy)localObject).b(paramFileManagerEntity);
+      }
+      else
+      {
+        ((FileManagerProxy)localObject).c(paramFileManagerEntity);
+        ((FileManagerProxy)localObject).e(paramFileManagerEntity);
+      }
+      return;
     }
+    finally {}
   }
   
   public boolean b(long paramLong)
@@ -997,21 +941,18 @@ public class FileManagerDataCenter
   public boolean b(FileManagerEntity paramFileManagerEntity)
   {
     if (paramFileManagerEntity == null) {}
-    for (;;)
+    try
     {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("FileManagerDataCenter<FileAssistant>", 2, "setAioDelete FileManagerEntity is null!!!");
-        }
-        bool = false;
-        return bool;
+      if (QLog.isColorLevel()) {
+        QLog.e("FileManagerDataCenter<FileAssistant>", 2, "setAioDelete FileManagerEntity is null!!!");
       }
-      finally {}
-      paramFileManagerEntity.bDelInAio = true;
-      paramFileManagerEntity.uniseq = -1L;
-      boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().a(paramFileManagerEntity, true);
+      return false;
     }
+    finally {}
+    paramFileManagerEntity.bDelInAio = true;
+    paramFileManagerEntity.uniseq = -1L;
+    boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().a(paramFileManagerEntity, true);
+    return bool;
   }
   
   public FileManagerEntity c(String paramString)
@@ -1021,7 +962,7 @@ public class FileManagerDataCenter
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().a();
+    ThreadManager.executeOnSubThread(new FileManagerDataCenter.2(this));
   }
   
   public void c(FileManagerEntity paramFileManagerEntity)
@@ -1036,7 +977,7 @@ public class FileManagerDataCenter
   
   public void d()
   {
-    ThreadManager.executeOnSubThread(new FileManagerDataCenter.2(this));
+    ThreadManager.executeOnSubThread(new FileManagerDataCenter.4(this));
   }
   
   public void d(FileManagerEntity paramFileManagerEntity)
@@ -1051,17 +992,12 @@ public class FileManagerDataCenter
   
   public void e()
   {
-    ThreadManager.executeOnSubThread(new FileManagerDataCenter.4(this));
-  }
-  
-  public void f()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().e();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.FileManagerDataCenter
  * JD-Core Version:    0.7.0.1
  */

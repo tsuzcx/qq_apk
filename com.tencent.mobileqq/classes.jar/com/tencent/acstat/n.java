@@ -18,26 +18,37 @@ final class n
         StatServiceImpl.f().error("The event_id of StatService.trackCustomBeginEvent() can not be null or empty.");
         return;
       }
-      if (StatConfig.isDebugEnable()) {
-        StatServiceImpl.f().i("add begin key:" + this.b);
+      if (StatConfig.isDebugEnable())
+      {
+        localStatLogger = StatServiceImpl.f();
+        localStringBuilder = new StringBuilder("add begin key:");
+        localStringBuilder.append(this.b);
+        localStatLogger.i(localStringBuilder.toString());
       }
       if (StatServiceImpl.j().containsKey(this.b))
       {
-        StatServiceImpl.f().warn("Duplicate CustomEvent key: " + this.b.toString() + ", trackCustomBeginKVEvent() repeated?");
+        localStatLogger = StatServiceImpl.f();
+        localStringBuilder = new StringBuilder("Duplicate CustomEvent key: ");
+        localStringBuilder.append(this.b.toString());
+        localStringBuilder.append(", trackCustomBeginKVEvent() repeated?");
+        localStatLogger.warn(localStringBuilder.toString());
         return;
       }
+      if (StatServiceImpl.j().size() <= StatConfig.getMaxParallelTimmingEvents())
+      {
+        StatServiceImpl.j().put(this.b, Long.valueOf(System.currentTimeMillis()));
+        return;
+      }
+      StatLogger localStatLogger = StatServiceImpl.f();
+      StringBuilder localStringBuilder = new StringBuilder("The number of timedEvent exceeds the maximum value ");
+      localStringBuilder.append(Integer.toString(StatConfig.getMaxParallelTimmingEvents()));
+      localStatLogger.error(localStringBuilder.toString());
+      return;
     }
     catch (Throwable localThrowable)
     {
       StatServiceImpl.f().e(localThrowable);
-      return;
     }
-    if (StatServiceImpl.j().size() <= StatConfig.getMaxParallelTimmingEvents())
-    {
-      StatServiceImpl.j().put(this.b, Long.valueOf(System.currentTimeMillis()));
-      return;
-    }
-    StatServiceImpl.f().error("The number of timedEvent exceeds the maximum value " + Integer.toString(StatConfig.getMaxParallelTimmingEvents()));
   }
 }
 

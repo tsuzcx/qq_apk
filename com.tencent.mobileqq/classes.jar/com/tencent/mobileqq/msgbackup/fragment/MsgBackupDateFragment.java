@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,10 +16,11 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
+import com.tencent.mobileqq.fragment.QIphoneTitleBarFragment;
 import com.tencent.mobileqq.widget.DispatchActionMoveScrollView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -28,17 +28,14 @@ import com.tencent.widget.ActionSheet;
 import java.util.Calendar;
 
 public class MsgBackupDateFragment
-  extends IphoneTitleBarFragment
+  extends QIphoneTitleBarFragment
   implements View.OnClickListener
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long = 0L;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new MsgBackupDateFragment.1(this);
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   RadioGroup.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetRadioGroup$OnCheckedChangeListener = new MsgBackupDateFragment.3(this);
   private RadioGroup jdField_a_of_type_AndroidWidgetRadioGroup;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
   private IphonePickerView jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView;
   private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
   private String jdField_a_of_type_JavaLangString;
@@ -46,21 +43,24 @@ public class MsgBackupDateFragment
   private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long = 0L;
-  View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new MsgBackupDateFragment.2(this);
+  View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new MsgBackupDateFragment.1(this);
   RadioGroup.OnCheckedChangeListener jdField_b_of_type_AndroidWidgetRadioGroup$OnCheckedChangeListener = new MsgBackupDateFragment.4(this);
   private RadioGroup jdField_b_of_type_AndroidWidgetRadioGroup;
   private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
   private String jdField_b_of_type_JavaLangString;
   private Calendar jdField_b_of_type_JavaUtilCalendar;
-  private boolean jdField_b_of_type_Boolean = false;
   private int jdField_c_of_type_Int;
+  View.OnClickListener jdField_c_of_type_AndroidViewView$OnClickListener = new MsgBackupDateFragment.2(this);
+  private RelativeLayout jdField_c_of_type_AndroidWidgetRelativeLayout;
   private boolean jdField_c_of_type_Boolean = false;
-  private int d;
+  private int jdField_d_of_type_Int;
+  private boolean jdField_d_of_type_Boolean = false;
   private int e;
   private int f;
-  private int g;
-  private int h;
+  private int jdField_g_of_type_Int;
+  private TextView jdField_g_of_type_AndroidWidgetTextView;
+  private int jdField_h_of_type_Int;
+  private TextView jdField_h_of_type_AndroidWidgetTextView;
   private int i;
   private int j;
   private int k;
@@ -81,71 +81,39 @@ public class MsgBackupDateFragment
     if (paramInt == 1)
     {
       this.jdField_a_of_type_JavaLangString = String.format("%d.%d.%d", new Object[] { Integer.valueOf(this.m), Integer.valueOf(this.n), Integer.valueOf(this.o) });
-      this.jdField_b_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-      a(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_JavaLangString);
+      this.jdField_c_of_type_Boolean = true;
+      this.jdField_g_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+      a(this.jdField_g_of_type_AndroidWidgetTextView, this.jdField_a_of_type_JavaLangString);
       localCalendar = Calendar.getInstance();
       localCalendar.set(this.m, this.n - 1, this.o, 0, 0, 0);
       this.jdField_a_of_type_Long = (localCalendar.getTimeInMillis() / 1000L);
+      return;
     }
-    do
+    if (paramInt == 2)
     {
-      do
-      {
-        return;
-      } while (paramInt != 2);
       this.jdField_b_of_type_JavaLangString = String.format("%d.%d.%d", new Object[] { Integer.valueOf(this.m), Integer.valueOf(this.n), Integer.valueOf(this.o) });
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
-      a(this.jdField_b_of_type_AndroidWidgetTextView, this.jdField_b_of_type_JavaLangString);
-      this.jdField_c_of_type_Boolean = true;
+      this.jdField_h_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
+      a(this.jdField_h_of_type_AndroidWidgetTextView, this.jdField_b_of_type_JavaLangString);
+      this.jdField_d_of_type_Boolean = true;
       localCalendar = Calendar.getInstance();
       localCalendar.set(this.m, this.n - 1, this.o, 23, 59, 59);
       this.jdField_b_of_type_Long = (localCalendar.getTimeInMillis() / 1000L);
-    } while ((!this.jdField_b_of_type_Boolean) || (!this.jdField_c_of_type_Boolean));
-    setRightButtonEnable(true);
+      if ((this.jdField_c_of_type_Boolean) && (this.jdField_d_of_type_Boolean)) {
+        i_(true);
+      }
+    }
   }
   
   private void a(View paramView, String paramString)
   {
-    if (AppSetting.d) {
+    if (AppSetting.jdField_d_of_type_Boolean) {
       paramView.setContentDescription(paramString);
     }
-  }
-  
-  private void b()
-  {
-    if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_b_of_type_Long != 0L))
-    {
-      ((RadioButton)this.jdField_a_of_type_AndroidWidgetRadioGroup.findViewById(2131365563)).setChecked(true);
-      Calendar localCalendar = Calendar.getInstance();
-      localCalendar.setTimeInMillis(this.jdField_a_of_type_Long * 1000L);
-      this.jdField_a_of_type_JavaLangString = String.format("%d.%d.%d", new Object[] { Integer.valueOf(localCalendar.get(1)), Integer.valueOf(localCalendar.get(2) + 1), Integer.valueOf(localCalendar.get(5)) });
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-      a(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_JavaLangString);
-      localCalendar.setTimeInMillis(this.jdField_b_of_type_Long * 1000L);
-      this.jdField_b_of_type_JavaLangString = String.format("%d.%d.%d", new Object[] { Integer.valueOf(localCalendar.get(1)), Integer.valueOf(localCalendar.get(2) + 1), Integer.valueOf(localCalendar.get(5)) });
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
-      a(this.jdField_b_of_type_AndroidWidgetTextView, this.jdField_b_of_type_JavaLangString);
-      setRightButtonEnable(true);
-      if (this.p != 1) {
-        break label246;
-      }
-      this.jdField_b_of_type_AndroidWidgetRadioGroup.check(2131365310);
-    }
-    label246:
-    while (this.p != 2)
-    {
-      return;
-      ((RadioButton)this.jdField_a_of_type_AndroidWidgetRadioGroup.findViewById(2131365562)).setChecked(true);
-      break;
-    }
-    this.jdField_b_of_type_AndroidWidgetRadioGroup.check(2131365311);
   }
   
   private void b(int paramInt)
   {
     Calendar localCalendar1;
-    label115:
     Calendar localCalendar2;
     if (paramInt == 1)
     {
@@ -161,74 +129,65 @@ public class MsgBackupDateFragment
         this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(0, this.jdField_a_of_type_Int);
         this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, this.jdField_b_of_type_Int);
         this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.jdField_c_of_type_Int);
-        break label216;
-        if (this.jdField_c_of_type_Boolean)
+      }
+      else if (localCalendar1.after(this.jdField_a_of_type_JavaUtilCalendar))
+      {
+        this.jdField_a_of_type_Int = (this.j - this.q);
+        this.jdField_b_of_type_Int = (this.k - 1);
+        this.jdField_c_of_type_Int = (this.l - 1);
+        this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(0, this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, this.jdField_b_of_type_Int);
+        this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.jdField_c_of_type_Int);
+      }
+      if (this.jdField_d_of_type_Boolean)
+      {
+        localCalendar2 = Calendar.getInstance();
+        localCalendar2.setTimeInMillis(this.jdField_b_of_type_Long * 1000L);
+        if (localCalendar1.after(localCalendar2))
         {
-          localCalendar2 = Calendar.getInstance();
-          localCalendar2.setTimeInMillis(this.jdField_b_of_type_Long * 1000L);
-          if (localCalendar1.after(localCalendar2))
-          {
-            this.jdField_a_of_type_Int = (localCalendar2.get(1) - this.q);
-            this.jdField_b_of_type_Int = localCalendar2.get(2);
-            this.jdField_c_of_type_Int = (localCalendar2.get(5) - 1);
-            this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(0, this.jdField_a_of_type_Int);
-            this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, this.jdField_b_of_type_Int);
-            this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.jdField_c_of_type_Int);
-          }
+          this.jdField_a_of_type_Int = (localCalendar2.get(1) - this.q);
+          this.jdField_b_of_type_Int = localCalendar2.get(2);
+          this.jdField_c_of_type_Int = (localCalendar2.get(5) - 1);
+          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(0, this.jdField_a_of_type_Int);
+          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, this.jdField_b_of_type_Int);
+          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.jdField_c_of_type_Int);
         }
       }
     }
-    label591:
-    for (;;)
+    else
     {
-      label216:
-      return;
-      if (!localCalendar1.after(this.jdField_a_of_type_JavaUtilCalendar)) {
-        break label115;
-      }
-      this.jdField_a_of_type_Int = (this.j - this.q);
-      this.jdField_b_of_type_Int = (this.k - 1);
-      this.jdField_c_of_type_Int = (this.l - 1);
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(0, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.jdField_c_of_type_Int);
-      break label115;
       localCalendar1 = Calendar.getInstance();
-      localCalendar1.set(1, this.q + this.d);
+      localCalendar1.set(1, this.q + this.jdField_d_of_type_Int);
       localCalendar1.set(2, this.e);
       localCalendar1.set(5, this.f + 1);
       if (localCalendar1.before(this.jdField_b_of_type_JavaUtilCalendar))
       {
-        this.d = 0;
+        this.jdField_d_of_type_Int = 0;
         this.e = (this.r - 1);
         this.f = (this.s - 1);
-        this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(0, this.d);
+        this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(0, this.jdField_d_of_type_Int);
         this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, this.e);
         this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.f);
       }
-      for (;;)
+      else if (localCalendar1.after(this.jdField_a_of_type_JavaUtilCalendar))
       {
-        if (paramInt != 2) {
-          break label591;
-        }
-        localCalendar2 = Calendar.getInstance();
-        localCalendar2.setTimeInMillis(this.jdField_a_of_type_Long * 1000L);
-        if (!localCalendar1.before(localCalendar2)) {
-          break;
-        }
-        this.d = (localCalendar2.get(1) - this.q);
-        this.e = localCalendar2.get(2);
-        this.f = (localCalendar2.get(5) - 1);
-        this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(0, this.d);
+        this.jdField_d_of_type_Int = (this.j - this.q);
+        this.e = (this.k - 1);
+        this.f = (this.l - 1);
+        this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(0, this.jdField_d_of_type_Int);
         this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, this.e);
         this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.f);
-        return;
-        if (localCalendar1.after(this.jdField_a_of_type_JavaUtilCalendar))
+      }
+      if (paramInt == 2)
+      {
+        localCalendar2 = Calendar.getInstance();
+        localCalendar2.setTimeInMillis(this.jdField_a_of_type_Long * 1000L);
+        if (localCalendar1.before(localCalendar2))
         {
-          this.d = (this.j - this.q);
-          this.e = (this.k - 1);
-          this.f = (this.l - 1);
-          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(0, this.d);
+          this.jdField_d_of_type_Int = (localCalendar2.get(1) - this.q);
+          this.e = localCalendar2.get(2);
+          this.f = (localCalendar2.get(5) - 1);
+          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(0, this.jdField_d_of_type_Int);
           this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, this.e);
           this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.f);
         }
@@ -237,6 +196,37 @@ public class MsgBackupDateFragment
   }
   
   private void c()
+  {
+    if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_b_of_type_Long != 0L))
+    {
+      ((RadioButton)this.jdField_a_of_type_AndroidWidgetRadioGroup.findViewById(2131365406)).setChecked(true);
+      Calendar localCalendar = Calendar.getInstance();
+      localCalendar.setTimeInMillis(this.jdField_a_of_type_Long * 1000L);
+      this.jdField_a_of_type_JavaLangString = String.format("%d.%d.%d", new Object[] { Integer.valueOf(localCalendar.get(1)), Integer.valueOf(localCalendar.get(2) + 1), Integer.valueOf(localCalendar.get(5)) });
+      this.jdField_g_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+      a(this.jdField_g_of_type_AndroidWidgetTextView, this.jdField_a_of_type_JavaLangString);
+      localCalendar.setTimeInMillis(this.jdField_b_of_type_Long * 1000L);
+      this.jdField_b_of_type_JavaLangString = String.format("%d.%d.%d", new Object[] { Integer.valueOf(localCalendar.get(1)), Integer.valueOf(localCalendar.get(2) + 1), Integer.valueOf(localCalendar.get(5)) });
+      this.jdField_h_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
+      a(this.jdField_h_of_type_AndroidWidgetTextView, this.jdField_b_of_type_JavaLangString);
+      i_(true);
+    }
+    else
+    {
+      ((RadioButton)this.jdField_a_of_type_AndroidWidgetRadioGroup.findViewById(2131365405)).setChecked(true);
+    }
+    int i1 = this.p;
+    if (i1 == 1)
+    {
+      this.jdField_b_of_type_AndroidWidgetRadioGroup.check(2131365185);
+      return;
+    }
+    if (i1 == 2) {
+      this.jdField_b_of_type_AndroidWidgetRadioGroup.check(2131365186);
+    }
+  }
+  
+  private void d()
   {
     this.jdField_a_of_type_Long = 0L;
     this.jdField_b_of_type_Long = 0L;
@@ -251,8 +241,16 @@ public class MsgBackupDateFragment
         this.t = ((Intent)localObject).getIntExtra("backup_select_from", 0);
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.BackupAndMigrateDateFragment", 2, "startTime = " + this.jdField_a_of_type_Long + ", endTime = " + this.jdField_b_of_type_Long + ", mCurContentType = " + this.p);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startTime = ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(", endTime = ");
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_Long);
+      ((StringBuilder)localObject).append(", mCurContentType = ");
+      ((StringBuilder)localObject).append(this.p);
+      QLog.d("MsgBackup.BackupAndMigrateDateFragment", 2, ((StringBuilder)localObject).toString());
     }
     this.jdField_a_of_type_JavaUtilCalendar = Calendar.getInstance();
     this.jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(System.currentTimeMillis());
@@ -274,50 +272,50 @@ public class MsgBackupDateFragment
     this.jdField_a_of_type_Int = (this.j - this.q);
     this.jdField_b_of_type_Int = (this.k - 1);
     this.jdField_c_of_type_Int = (this.l - 1);
-    this.g = this.jdField_a_of_type_Int;
-    this.h = this.jdField_b_of_type_Int;
+    this.jdField_g_of_type_Int = this.jdField_a_of_type_Int;
+    this.jdField_h_of_type_Int = this.jdField_b_of_type_Int;
     this.i = this.jdField_c_of_type_Int;
     if (QLog.isColorLevel()) {
       QLog.d("MsgBackup.BackupAndMigrateDateFragment", 2, String.format("initData date range: %s-%s-%s to %s-%s-%s", new Object[] { Integer.valueOf(this.q), Integer.valueOf(this.r), Integer.valueOf(this.s), Integer.valueOf(this.j), Integer.valueOf(this.k), Integer.valueOf(this.l) }));
     }
   }
   
-  private void d()
-  {
-    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)this.mContentView.findViewById(2131363435));
-    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetRadioGroup$OnCheckedChangeListener);
-    this.jdField_b_of_type_AndroidWidgetRadioGroup = ((RadioGroup)this.mContentView.findViewById(2131363432));
-    this.jdField_b_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(this.jdField_b_of_type_AndroidWidgetRadioGroup$OnCheckedChangeListener);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.mContentView.findViewById(2131365573));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.mContentView.findViewById(2131363433));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131365566));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.mContentView.findViewById(2131363434));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131365567));
-  }
-  
   private void e()
   {
-    setTitle(getActivity().getString(2131690618));
-    setRightButton(2131690616, this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    setLeftButton(2131690615, this.jdField_b_of_type_AndroidViewView$OnClickListener);
+    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)this.jdField_b_of_type_AndroidViewView.findViewById(2131363362));
+    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetRadioGroup$OnCheckedChangeListener);
+    this.jdField_b_of_type_AndroidWidgetRadioGroup = ((RadioGroup)this.jdField_b_of_type_AndroidViewView.findViewById(2131363359));
+    this.jdField_b_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(this.jdField_b_of_type_AndroidWidgetRadioGroup$OnCheckedChangeListener);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131365416));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131363360));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
+    this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131365409));
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131363361));
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
+    this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131365410));
   }
   
   private void f()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    a(getActivity().getString(2131690546));
+    c(2131690544, this.jdField_b_of_type_AndroidViewView$OnClickListener);
+    a(2131690543, this.jdField_c_of_type_AndroidViewView$OnClickListener);
+  }
+  
+  private void g()
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+    if (localObject != null) {
+      ((ActionSheet)localObject).dismiss();
     }
-    Object localObject;
     if (this.jdField_a_of_type_ComTencentWidgetActionSheet == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = ((IphonePickerView)getActivity().getLayoutInflater().inflate(2131561289, null));
+      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = ((IphonePickerView)getActivity().getLayoutInflater().inflate(2131561132, null));
       this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(new MsgBackupDateFragment.DateAdapter(this, null));
       this.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.createMenuSheet(getActivity());
       this.jdField_a_of_type_ComTencentWidgetActionSheet.setCloseAutoRead(true);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.setActionContentView(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView, null);
-      localObject = (DispatchActionMoveScrollView)this.jdField_a_of_type_ComTencentWidgetActionSheet.findViewById(2131361983);
+      localObject = (DispatchActionMoveScrollView)this.jdField_a_of_type_ComTencentWidgetActionSheet.findViewById(2131361999);
       ((DispatchActionMoveScrollView)localObject).jdField_a_of_type_Boolean = true;
       ((DispatchActionMoveScrollView)localObject).setBackgroundResource(17170445);
       if (Build.VERSION.SDK_INT >= 11)
@@ -329,87 +327,93 @@ public class MsgBackupDateFragment
       }
       this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(new MsgBackupDateFragment.5(this));
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null)
+    localObject = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView;
+    int i1;
+    if (localObject != null)
     {
-      localObject = (TextView)this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.findViewById(2131377716);
-      Button localButton = (Button)this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.findViewById(2131379363);
-      ((Button)this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.findViewById(2131379364)).setText(HardCodeUtil.a(2131706933));
+      localObject = (TextView)((IphonePickerView)localObject).findViewById(2131377144);
+      Button localButton = (Button)this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.findViewById(2131378713);
+      ((Button)this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.findViewById(2131378714)).setText(HardCodeUtil.a(2131706955));
       localButton.setVisibility(0);
       localButton.setOnClickListener(new MsgBackupDateFragment.6(this));
-      if (this.u == 1)
+      i1 = this.u;
+      if (i1 == 1)
       {
-        ((TextView)localObject).setText(HardCodeUtil.a(2131706921));
+        ((TextView)localObject).setText(HardCodeUtil.a(2131706943));
+        ((TextView)localObject).setVisibility(0);
+        ((TextView)localObject).setCompoundDrawables(null, null, null, null);
+      }
+      else if (i1 == 2)
+      {
+        ((TextView)localObject).setText(HardCodeUtil.a(2131706944));
         ((TextView)localObject).setVisibility(0);
         ((TextView)localObject).setCompoundDrawables(null, null, null, null);
       }
     }
-    else if ((!this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) && (this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null))
+    if (!this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())
     {
-      if (this.u != 1) {
-        break label414;
-      }
-      if (!this.jdField_b_of_type_Boolean) {
-        break label375;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(0, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.jdField_c_of_type_Int);
-    }
-    for (;;)
-    {
-      label375:
-      try
+      localObject = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView;
+      if (localObject != null)
       {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
-        return;
-      }
-      catch (Exception localException) {}
-      if (this.u != 2) {
-        break;
-      }
-      ((TextView)localObject).setText(HardCodeUtil.a(2131706922));
-      ((TextView)localObject).setVisibility(0);
-      ((TextView)localObject).setCompoundDrawables(null, null, null, null);
-      break;
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(0, this.g);
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, this.h);
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.i);
-      continue;
-      label414:
-      if (this.u == 2) {
-        if (this.jdField_c_of_type_Boolean)
+        i1 = this.u;
+        if (i1 == 1)
         {
-          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(0, this.d);
-          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, this.e);
-          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.f);
+          if (this.jdField_c_of_type_Boolean)
+          {
+            ((IphonePickerView)localObject).setSelection(0, this.jdField_a_of_type_Int);
+            this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, this.jdField_b_of_type_Int);
+            this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.jdField_c_of_type_Int);
+          }
+          else
+          {
+            ((IphonePickerView)localObject).setSelection(0, this.jdField_g_of_type_Int);
+            this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, this.jdField_h_of_type_Int);
+            this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.i);
+          }
         }
-        else
-        {
-          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(0, this.g);
-          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, this.h);
-          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.i);
+        else if (i1 == 2) {
+          if (this.jdField_d_of_type_Boolean)
+          {
+            ((IphonePickerView)localObject).setSelection(0, this.jdField_d_of_type_Int);
+            this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, this.e);
+            this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.f);
+          }
+          else
+          {
+            ((IphonePickerView)localObject).setSelection(0, this.jdField_g_of_type_Int);
+            this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, this.jdField_h_of_type_Int);
+            this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.i);
+          }
         }
       }
     }
+    try
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
+      return;
+    }
+    catch (Exception localException) {}
   }
   
-  private void g()
+  private void h()
   {
-    if (this.u == 1)
+    int i1 = this.u;
+    if (i1 == 1)
     {
       this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
       this.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(1);
       this.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
-    }
-    while (this.u != 2) {
       return;
     }
-    this.d = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
-    this.e = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(1);
-    this.f = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
+    if (i1 == 2)
+    {
+      this.jdField_d_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
+      this.e = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(1);
+      this.f = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
+    }
   }
   
-  private void h()
+  private void i()
   {
     if (this.u == 1)
     {
@@ -421,7 +425,7 @@ public class MsgBackupDateFragment
       this.o = localCalendar.get(5);
       return;
     }
-    this.m = (this.q + this.d);
+    this.m = (this.q + this.jdField_d_of_type_Int);
     Calendar localCalendar = Calendar.getInstance();
     localCalendar.set(this.m, this.e, this.f + 1);
     this.m = localCalendar.get(1);
@@ -429,67 +433,84 @@ public class MsgBackupDateFragment
     this.o = localCalendar.get(5);
   }
   
+  protected int a()
+  {
+    return 2131561437;
+  }
+  
   public void a()
   {
     if (getActivity() != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup.BackupAndMigrateDateFragment", 2, "date fragment finish called! before is correct date time-------> startTime = " + this.jdField_a_of_type_Long + ", endtime = " + this.jdField_b_of_type_Long + ", contentType = " + this.p);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("date fragment finish called! before is correct date time-------> startTime = ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+        ((StringBuilder)localObject).append(", endtime = ");
+        ((StringBuilder)localObject).append(this.jdField_b_of_type_Long);
+        ((StringBuilder)localObject).append(", contentType = ");
+        ((StringBuilder)localObject).append(this.p);
+        QLog.d("MsgBackup.BackupAndMigrateDateFragment", 2, ((StringBuilder)localObject).toString());
       }
-      if (this.jdField_a_of_type_Long >= this.jdField_b_of_type_Long) {
-        this.jdField_a_of_type_Long = this.jdField_b_of_type_Long;
+      long l1 = this.jdField_a_of_type_Long;
+      long l2 = this.jdField_b_of_type_Long;
+      if (l1 >= l2) {
+        this.jdField_a_of_type_Long = l2;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup.BackupAndMigrateDateFragment", 2, "date fragment finish called! after is correct date time-------> startTime = " + this.jdField_a_of_type_Long + ", endtime = " + this.jdField_b_of_type_Long + ", contentType = " + this.p);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("date fragment finish called! after is correct date time-------> startTime = ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+        ((StringBuilder)localObject).append(", endtime = ");
+        ((StringBuilder)localObject).append(this.jdField_b_of_type_Long);
+        ((StringBuilder)localObject).append(", contentType = ");
+        ((StringBuilder)localObject).append(this.p);
+        QLog.d("MsgBackup.BackupAndMigrateDateFragment", 2, ((StringBuilder)localObject).toString());
       }
-      Intent localIntent = new Intent();
-      localIntent.putExtra("session_start_time", this.jdField_a_of_type_Long);
-      localIntent.putExtra("session_end_time", this.jdField_b_of_type_Long);
-      localIntent.putExtra("session_start_time_str", this.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("session_end_time_str", this.jdField_b_of_type_JavaLangString);
-      localIntent.putExtra("session_content_type", this.p);
-      getActivity().setResult(0, localIntent);
+      Object localObject = new Intent();
+      ((Intent)localObject).putExtra("session_start_time", this.jdField_a_of_type_Long);
+      ((Intent)localObject).putExtra("session_end_time", this.jdField_b_of_type_Long);
+      ((Intent)localObject).putExtra("session_start_time_str", this.jdField_a_of_type_JavaLangString);
+      ((Intent)localObject).putExtra("session_end_time_str", this.jdField_b_of_type_JavaLangString);
+      ((Intent)localObject).putExtra("session_content_type", this.p);
+      getActivity().setResult(0, (Intent)localObject);
       getActivity().finish();
     }
   }
   
-  public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
+  protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    super.a(paramLayoutInflater, paramViewGroup, paramBundle);
+    f();
     e();
     d();
     c();
-    b();
-  }
-  
-  public int getContentLayoutId()
-  {
-    return 2131561595;
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i1 = paramView.getId();
+    if ((i1 != 2131365409) && (i1 != 2131363360))
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.u = 1;
-      f();
-      continue;
-      if ((this.jdField_b_of_type_Boolean) || ((this.jdField_a_of_type_Long != 0L) && (this.jdField_a_of_type_JavaLangString != null)))
+      if (((i1 == 2131363361) || (i1 == 2131365410)) && ((this.jdField_c_of_type_Boolean) || ((this.jdField_a_of_type_Long != 0L) && (this.jdField_a_of_type_JavaLangString != null))))
       {
         this.u = 2;
-        f();
+        g();
       }
     }
+    else
+    {
+      this.u = 1;
+      g();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment
  * JD-Core Version:    0.7.0.1
  */

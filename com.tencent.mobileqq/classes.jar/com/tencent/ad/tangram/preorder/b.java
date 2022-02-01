@@ -28,12 +28,19 @@ final class b
   
   static void fetchAdInfo(WeakReference<Context> paramWeakReference, String paramString)
   {
-    if (paramWeakReference != null) {}
-    for (Object localObject = (Context)paramWeakReference.get(); !AdNet.isNetValid((Context)localObject); localObject = null) {
+    if (paramWeakReference != null) {
+      localObject = (Context)paramWeakReference.get();
+    } else {
+      localObject = null;
+    }
+    if (!AdNet.isNetValid((Context)localObject)) {
       return;
     }
     AdAppPreOrderManager.INSTANCE.setTaskStatusAndCommit(paramString, 4);
-    localObject = "https://fv.gdt.qq.com/msg?id=" + paramString;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("https://fv.gdt.qq.com/msg?id=");
+    ((StringBuilder)localObject).append(paramString);
+    localObject = ((StringBuilder)localObject).toString();
     AdHttp.Params localParams = new AdHttp.Params();
     localParams.setUrl((String)localObject);
     localParams.method = "GET";
@@ -52,43 +59,56 @@ final class b
   
   public static void runTask(Context paramContext, AdAppPreOrderTask paramAdAppPreOrderTask, boolean paramBoolean)
   {
-    if (paramAdAppPreOrderTask.status == 2) {
-      fetchAdInfo(new WeakReference(paramContext), paramAdAppPreOrderTask.taskId);
-    }
-    do
+    if (paramAdAppPreOrderTask.status == 2)
     {
-      do
-      {
-        return;
-        if (paramAdAppPreOrderTask.status != 6) {
-          break;
-        }
-      } while ((paramAdAppPreOrderTask.content != null) || (!paramBoolean));
       fetchAdInfo(new WeakReference(paramContext), paramAdAppPreOrderTask.taskId);
       return;
-    } while ((paramAdAppPreOrderTask.status == 4) || (paramAdAppPreOrderTask.status == 7) || (paramAdAppPreOrderTask.status == 8));
-    if (paramAdAppPreOrderTask.status == 5)
+    }
+    if (paramAdAppPreOrderTask.status == 6)
     {
-      if (AdAppUtil.isInstalled(paramContext, paramAdAppPreOrderTask.content.ad_info.app_info.app_package_name))
-      {
-        AdAppPreOrderManager.INSTANCE.setTaskFinishedAndCommit(paramAdAppPreOrderTask.taskId, 19);
+      if ((paramAdAppPreOrderTask.content == null) && (paramBoolean)) {
+        fetchAdInfo(new WeakReference(paramContext), paramAdAppPreOrderTask.taskId);
+      }
+    }
+    else
+    {
+      if (paramAdAppPreOrderTask.status == 4) {
         return;
       }
-      startDownload(paramAdAppPreOrderTask);
-      return;
+      if (paramAdAppPreOrderTask.status != 7)
+      {
+        if (paramAdAppPreOrderTask.status == 8) {
+          return;
+        }
+        if (paramAdAppPreOrderTask.status == 5)
+        {
+          if (AdAppUtil.isInstalled(paramContext, paramAdAppPreOrderTask.content.ad_info.app_info.app_package_name))
+          {
+            AdAppPreOrderManager.INSTANCE.setTaskFinishedAndCommit(paramAdAppPreOrderTask.taskId, 19);
+            return;
+          }
+          startDownload(paramAdAppPreOrderTask);
+          return;
+        }
+        if ((paramAdAppPreOrderTask.status != 9) && (paramAdAppPreOrderTask.status != 11))
+        {
+          AdLog.i("AdAppPreOrderManagerForPreDownload", String.format("runTask error, taskId:%s status%d ", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status) }));
+          return;
+        }
+        startDownload(paramAdAppPreOrderTask);
+      }
     }
-    if ((paramAdAppPreOrderTask.status == 9) || (paramAdAppPreOrderTask.status == 11))
-    {
-      startDownload(paramAdAppPreOrderTask);
-      return;
-    }
-    AdLog.i("AdAppPreOrderManagerForPreDownload", String.format("runTask error, taskId:%s status%d ", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status) }));
   }
   
   private static void startDownload(AdAppPreOrderTask paramAdAppPreOrderTask)
   {
-    if (paramAdAppPreOrderTask.isDownloadLaunched) {}
-    while ((!canStartDownload(paramAdAppPreOrderTask.taskId)) || (!startDownloadInternal(paramAdAppPreOrderTask))) {
+    if (paramAdAppPreOrderTask.isDownloadLaunched) {
+      return;
+    }
+    if (!canStartDownload(paramAdAppPreOrderTask.taskId)) {
+      return;
+    }
+    if (!startDownloadInternal(paramAdAppPreOrderTask)) {
       return;
     }
     AdAppPreOrderManager localAdAppPreOrderManager = AdAppPreOrderManager.INSTANCE;

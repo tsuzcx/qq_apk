@@ -13,7 +13,7 @@ public class FaceParam
   implements Parcelable
 {
   public static final Parcelable.Creator<FaceParam> CREATOR = new FaceParam.1();
-  private static final String TAG = FaceParam.class.getSimpleName();
+  private static final String TAG = "FaceParam";
   public int height = 0;
   public Rect mEye = null;
   public Rect mFace = null;
@@ -33,24 +33,26 @@ public class FaceParam
     this.height = paramParcel.readInt();
     this.mLeftEyeCenter = new Point(paramParcel.readInt(), paramParcel.readInt());
     this.mRightEyeCenter = new Point(paramParcel.readInt(), paramParcel.readInt());
-    ClassLoader localClassLoader = Rect.class.getClassLoader();
-    this.mFace = ((Rect)paramParcel.readParcelable(localClassLoader));
-    this.mLeftEye = ((Rect)paramParcel.readParcelable(localClassLoader));
-    this.mRightEye = ((Rect)paramParcel.readParcelable(localClassLoader));
-    this.mEye = ((Rect)paramParcel.readParcelable(localClassLoader));
-    this.mMouth = ((Rect)paramParcel.readParcelable(localClassLoader));
+    Object localObject1 = Rect.class.getClassLoader();
+    this.mFace = ((Rect)paramParcel.readParcelable((ClassLoader)localObject1));
+    this.mLeftEye = ((Rect)paramParcel.readParcelable((ClassLoader)localObject1));
+    this.mRightEye = ((Rect)paramParcel.readParcelable((ClassLoader)localObject1));
+    this.mEye = ((Rect)paramParcel.readParcelable((ClassLoader)localObject1));
+    this.mMouth = ((Rect)paramParcel.readParcelable((ClassLoader)localObject1));
     if (paramParcel.readInt() == 1)
     {
       paramParcel = paramParcel.createIntArray();
       if ((paramParcel != null) && (paramParcel.length >= 2))
       {
-        int i = paramParcel.length / 2;
-        this.mFaceOutline = ((int[][])Array.newInstance(Integer.TYPE, new int[] { i, 2 }));
-        i = 0;
+        this.mFaceOutline = ((int[][])Array.newInstance(Integer.TYPE, new int[] { paramParcel.length / 2, 2 }));
+        int i = 0;
         while (i < paramParcel.length / 2)
         {
-          this.mFaceOutline[i][0] = paramParcel[(i * 2)];
-          this.mFaceOutline[i][1] = paramParcel[(i * 2 + 1)];
+          localObject1 = this.mFaceOutline;
+          Object localObject2 = localObject1[i];
+          int j = i * 2;
+          localObject2[0] = paramParcel[j];
+          localObject1[i][1] = paramParcel[(j + 1)];
           i += 1;
         }
       }
@@ -65,32 +67,76 @@ public class FaceParam
   public NormalizedFaceParam normalizeFace()
   {
     NormalizedFaceParam localNormalizedFaceParam = new NormalizedFaceParam();
-    localNormalizedFaceParam.setX(this.mFace.left * 1.0D / this.width);
-    localNormalizedFaceParam.setY(this.mFace.top * 1.0D / this.height);
-    localNormalizedFaceParam.setW(this.mFace.right * 1.0D / this.width - localNormalizedFaceParam.getX());
-    localNormalizedFaceParam.setH(this.mFace.bottom * 1.0D / this.height - localNormalizedFaceParam.getY());
-    Log.d("NewEnhance_Batch", "Face normalized(" + localNormalizedFaceParam.getX() + ", " + localNormalizedFaceParam.getY() + ", " + localNormalizedFaceParam.getW() + ", " + localNormalizedFaceParam.getH() + ")");
+    double d1 = this.mFace.left;
+    Double.isNaN(d1);
+    double d2 = this.width;
+    Double.isNaN(d2);
+    localNormalizedFaceParam.setX(d1 * 1.0D / d2);
+    d1 = this.mFace.top;
+    Double.isNaN(d1);
+    d2 = this.height;
+    Double.isNaN(d2);
+    localNormalizedFaceParam.setY(d1 * 1.0D / d2);
+    d1 = this.mFace.right;
+    Double.isNaN(d1);
+    d2 = this.width;
+    Double.isNaN(d2);
+    localNormalizedFaceParam.setW(d1 * 1.0D / d2 - localNormalizedFaceParam.getX());
+    d1 = this.mFace.bottom;
+    Double.isNaN(d1);
+    d2 = this.height;
+    Double.isNaN(d2);
+    localNormalizedFaceParam.setH(d1 * 1.0D / d2 - localNormalizedFaceParam.getY());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Face normalized(");
+    localStringBuilder.append(localNormalizedFaceParam.getX());
+    localStringBuilder.append(", ");
+    localStringBuilder.append(localNormalizedFaceParam.getY());
+    localStringBuilder.append(", ");
+    localStringBuilder.append(localNormalizedFaceParam.getW());
+    localStringBuilder.append(", ");
+    localStringBuilder.append(localNormalizedFaceParam.getH());
+    localStringBuilder.append(")");
+    Log.d("NewEnhance_Batch", localStringBuilder.toString());
     return localNormalizedFaceParam;
   }
   
   public void printFaceDes()
   {
-    Object localObject1 = "\n****************FaceFeature******************:\n" + String.format("ImageSize:(%d, %d)\n", new Object[] { Integer.valueOf(this.width), Integer.valueOf(this.height) });
-    Object localObject2 = (String)localObject1 + String.format("FaceRect:(%d, %d, %d, %d)\n", new Object[] { Integer.valueOf(this.mFace.left), Integer.valueOf(this.mFace.top), Integer.valueOf(this.mFace.width()), Integer.valueOf(this.mFace.height()) });
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("\n****************FaceFeature******************:\n");
+    ((StringBuilder)localObject1).append(String.format("ImageSize:(%d, %d)\n", new Object[] { Integer.valueOf(this.width), Integer.valueOf(this.height) }));
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(String.format("FaceRect:(%d, %d, %d, %d)\n", new Object[] { Integer.valueOf(this.mFace.left), Integer.valueOf(this.mFace.top), Integer.valueOf(this.mFace.width()), Integer.valueOf(this.mFace.height()) }));
+    localObject2 = ((StringBuilder)localObject2).toString();
     localObject1 = localObject2;
     if (this.mFaceOutline != null)
     {
-      localObject1 = (String)localObject2 + "LandMark:";
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append((String)localObject2);
+      ((StringBuilder)localObject1).append("LandMark:");
+      localObject1 = ((StringBuilder)localObject1).toString();
       localObject2 = this.mFaceOutline;
       int i = 0;
       while (i < localObject2.length)
       {
-        localObject1 = (String)localObject1 + String.format("(%d, %d)", new Object[] { Integer.valueOf(localObject2[i][0]), Integer.valueOf(localObject2[i][1]) });
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject1);
+        localStringBuilder.append(String.format("(%d, %d)", new Object[] { Integer.valueOf(localObject2[i][0]), Integer.valueOf(localObject2[i][1]) }));
+        localObject1 = localStringBuilder.toString();
         i += 1;
       }
-      localObject1 = (String)localObject1 + "\n";
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("\n");
+      localObject1 = ((StringBuilder)localObject2).toString();
     }
-    localObject1 = (String)localObject1 + "*********************************************\n";
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("*********************************************\n");
+    localObject1 = ((StringBuilder)localObject2).toString();
     LogUtils.e(TAG, (String)localObject1);
   }
   
@@ -139,9 +185,9 @@ public class FaceParam
     ((Rect)localObject).top = ((int)(((Rect)localObject).top * paramFloat2));
     ((Rect)localObject).right = ((int)(((Rect)localObject).right * paramFloat1));
     ((Rect)localObject).bottom = ((int)(((Rect)localObject).bottom * paramFloat2));
-    if (this.mFaceOutline != null)
+    localObject = this.mFaceOutline;
+    if (localObject != null)
     {
-      localObject = this.mFaceOutline;
       int i = 0;
       while (i < localObject.length)
       {
@@ -170,10 +216,15 @@ public class FaceParam
       paramParcel.writeInt(1);
       int[] arrayOfInt = new int[this.mFaceOutline.length * 2];
       paramInt = 0;
-      while (paramInt < this.mFaceOutline.length)
+      for (;;)
       {
-        arrayOfInt[(paramInt * 2)] = this.mFaceOutline[paramInt][0];
-        arrayOfInt[(paramInt * 2 + 1)] = this.mFaceOutline[paramInt][1];
+        int[][] arrayOfInt1 = this.mFaceOutline;
+        if (paramInt >= arrayOfInt1.length) {
+          break;
+        }
+        int i = paramInt * 2;
+        arrayOfInt[i] = arrayOfInt1[paramInt][0];
+        arrayOfInt[(i + 1)] = arrayOfInt1[paramInt][1];
         paramInt += 1;
       }
       paramParcel.writeIntArray(arrayOfInt);
@@ -184,7 +235,7 @@ public class FaceParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.facebeauty.FaceParam
  * JD-Core Version:    0.7.0.1
  */

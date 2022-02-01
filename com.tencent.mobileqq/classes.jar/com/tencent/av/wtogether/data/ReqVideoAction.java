@@ -62,7 +62,19 @@ public class ReqVideoAction
   
   public String toString()
   {
-    return "VideoAction{seq: " + this.jdField_a_of_type_Long + ", action: " + this.jdField_a_of_type_Int + ", curPlayTimeMs: " + this.jdField_b_of_type_Long + ", curPlayRate: " + this.jdField_a_of_type_Float + ", curPlayState: " + this.jdField_b_of_type_Int + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VideoAction{seq: ");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", action: ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", curPlayTimeMs: ");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", curPlayRate: ");
+    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(", curPlayState: ");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -76,7 +88,7 @@ public class ReqVideoAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.data.ReqVideoAction
  * JD-Core Version:    0.7.0.1
  */

@@ -68,10 +68,14 @@ public class TTEngine
   @TritonKeep
   @NativeFieldProxy(getter=true, setter=false)
   private long nativeTTAppHandle;
-  private final String tag = "TTEngine@" + Integer.toHexString(System.identityHashCode(this));
+  private final String tag;
   
   public TTEngine(PlatformConfig paramPlatformConfig, EngineContext paramEngineContext, List<NativeLibraryLoadStatistic> paramList)
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TTEngine@");
+    localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
+    this.tag = localStringBuilder.toString();
     this.mPlatformConfig = paramPlatformConfig;
     this.mEngineContext = paramEngineContext;
     this.mNativeLibraryLoadStatistics.addAll(paramList);
@@ -105,27 +109,34 @@ public class TTEngine
     try
     {
       this.mEngineInitStartTime = SystemClock.uptimeMillis();
-      Logger.i(this.tag, "initEngine load triton version : " + JNICaller.TTEngine.nativeGetTTVersion() + " classLoader:" + getClass().getClassLoader());
+      Object localObject1 = this.tag;
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("initEngine load triton version : ");
+      ((StringBuilder)localObject3).append(JNICaller.TTEngine.nativeGetTTVersion());
+      ((StringBuilder)localObject3).append(" classLoader:");
+      ((StringBuilder)localObject3).append(getClass().getClassLoader());
+      Logger.i((String)localObject1, ((StringBuilder)localObject3).toString());
       this.mEngineContext.getStatisticsManager().getTargetFPSHolder().setValue(Float.valueOf(getScreenRefreshRate(this.mContext)));
-      if (!JNICaller.TTEngine.nativeEnvInit(this))
+      if (JNICaller.TTEngine.nativeEnvInit(this))
       {
-        Logger.e(this.tag, "initEngine nativeEnvInit fail!");
-        onInitFinish(ErrorCodes.NATIVE_FUNCTION_CALL);
-        throw new TritonInitException("initEngine nativeEnvInit fail!", ErrorCodes.NATIVE_FUNCTION_CALL);
+        this.mInspectorBridge = new InspectorBridge(getEngineContext().getLifeCycleOwner());
+        this.mJankCanary = new JankCanaryAgent(TTAppAgent.nativeGetInstance(this.nativeTTAppHandle, 1), new TTEngine.3(this), this.mEngineContext.getMainThreadExecutor(), getEngineContext().getStatisticsManager().getJankTraceLevelHolder(), getEngineContext().getStatisticsManager().getTraceInfoCallbackHolder());
+        localObject1 = new ValueHolder(Boolean.valueOf(false), getEngineContext());
+        ((ValueHolder)localObject1).observe(new TTEngine.4(this));
+        this.mTouchEventManager = new TouchProviderBridge(this.mJankCanary, getEngineContext().getLifeCycleOwner(), getEngineContext().getStatisticsManager().getLastClicksHolder(), getEngineContext().getStatisticsManager().getLastClickInfoHolder());
+        localObject3 = getEngineContext().getStatisticsManager();
+        this.mRenderContext = new RenderContext(new TTEngine.5(this), getEngineContext().getLifeCycleOwner(), this.nativeTTAppHandle, ((StatisticsManagerImpl)localObject3).getCurrentFPSHolder(), ((StatisticsManagerImpl)localObject3).getLastBlackScreenTimeMillisHolder(), (ValueHolder)localObject1, ((StatisticsManagerImpl)localObject3).getAccumulatedDrawCallsHolder(), getEngineContext().getScreenShotCallbackHolder(), this.mContext, this.mPlatformConfig.getWorkerExecutor(), this.mPlatformConfig.getMainThreadExecutor(), this.mTouchEventManager, this.mPlatformConfig.getEnableOpenGlEs3());
+        this.mEngineInitLoadSoEndTime = SystemClock.uptimeMillis();
+        this.mScriptEngine = new ScriptService(this, this.mEngineContext.getStatisticsManager().getTargetFPSHolder(), this.mEngineContext.getStatisticsManager().getFrameCallbackHolder(), this.mEngineContext.getStatisticsManager().getAccumulatedDrawCallsHolder(), this.mEngineContext.getStatisticsManager().getCurrentDrawCallsHolder(), this.mEngineContext.getStatisticsManager().getAccumulatedFramesHolder(), this.mPlatformConfig.getDebugConfig().getDebugEnabled());
+        this.mScriptEngine.awaitStart();
+        this.mInitJSContext = true;
+        return;
       }
+      Logger.e(this.tag, "initEngine nativeEnvInit fail!");
+      onInitFinish(ErrorCodes.NATIVE_FUNCTION_CALL);
+      throw new TritonInitException("initEngine nativeEnvInit fail!", ErrorCodes.NATIVE_FUNCTION_CALL);
     }
     finally {}
-    this.mInspectorBridge = new InspectorBridge(getEngineContext().getLifeCycleOwner());
-    this.mJankCanary = new JankCanaryAgent(TTAppAgent.nativeGetInstance(this.nativeTTAppHandle, 1), new TTEngine.3(this), this.mEngineContext.getMainThreadExecutor(), getEngineContext().getStatisticsManager().getJankTraceLevelHolder(), getEngineContext().getStatisticsManager().getTraceInfoCallbackHolder());
-    ValueHolder localValueHolder = new ValueHolder(Boolean.valueOf(false), getEngineContext());
-    localValueHolder.observe(new TTEngine.4(this));
-    this.mTouchEventManager = new TouchProviderBridge(this.mJankCanary, getEngineContext().getLifeCycleOwner(), getEngineContext().getStatisticsManager().getLastClicksHolder(), getEngineContext().getStatisticsManager().getLastClickInfoHolder());
-    StatisticsManagerImpl localStatisticsManagerImpl = getEngineContext().getStatisticsManager();
-    this.mRenderContext = new RenderContext(new TTEngine.5(this), getEngineContext().getLifeCycleOwner(), this.nativeTTAppHandle, localStatisticsManagerImpl.getCurrentFPSHolder(), localStatisticsManagerImpl.getLastBlackScreenTimeMillisHolder(), localValueHolder, localStatisticsManagerImpl.getAccumulatedDrawCallsHolder(), getEngineContext().getScreenShotCallbackHolder(), this.mContext, this.mPlatformConfig.getWorkerExecutor(), this.mPlatformConfig.getMainThreadExecutor(), this.mTouchEventManager, this.mPlatformConfig.getEnableOpenGlEs3());
-    this.mEngineInitLoadSoEndTime = SystemClock.uptimeMillis();
-    this.mScriptEngine = new ScriptService(this, this.mEngineContext.getStatisticsManager().getTargetFPSHolder(), this.mEngineContext.getStatisticsManager().getFrameCallbackHolder(), this.mEngineContext.getStatisticsManager().getAccumulatedDrawCallsHolder(), this.mEngineContext.getStatisticsManager().getCurrentDrawCallsHolder(), this.mEngineContext.getStatisticsManager().getAccumulatedFramesHolder(), this.mPlatformConfig.getDebugConfig().getDebugEnabled());
-    this.mScriptEngine.awaitStart();
-    this.mInitJSContext = true;
   }
   
   public static native void nativeFontManagerInit(AssetManager paramAssetManager, String paramString);
@@ -223,7 +234,11 @@ public class TTEngine
   
   public void onDestroy()
   {
-    Logger.i(this.tag, "~TTEngine " + this);
+    String str = this.tag;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("~TTEngine ");
+    localStringBuilder.append(this);
+    Logger.i(str, localStringBuilder.toString());
     this.mInitJSContext = false;
     if (this.mRenderContext != null) {
       this.mRenderContext.onDestroy();
@@ -264,7 +279,13 @@ public class TTEngine
       this.mEngineContext.getLock().lock();
       if (this.mEngineContext.getEngineState() == EngineState.DESTROYED)
       {
-        Logger.w(this.tag, "postRunnable after engine is destroyed " + paramRunnable + " to " + this);
+        String str = this.tag;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("postRunnable after engine is destroyed ");
+        localStringBuilder.append(paramRunnable);
+        localStringBuilder.append(" to ");
+        localStringBuilder.append(this);
+        Logger.w(str, localStringBuilder.toString());
         return false;
       }
       JNICaller.TTEngine.postRunnableDelayedWithPriority(this, new TTEngine.6(this, paramRunnable), paramLong, 0);
@@ -294,12 +315,16 @@ public class TTEngine
   
   public String toString()
   {
-    return super.toString() + " " + this.mEngineContext.getId();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.mEngineContext.getId());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.engine.TTEngine
  * JD-Core Version:    0.7.0.1
  */

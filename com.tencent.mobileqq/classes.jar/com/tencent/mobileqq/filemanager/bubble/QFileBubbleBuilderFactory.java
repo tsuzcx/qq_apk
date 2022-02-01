@@ -23,111 +23,117 @@ public class QFileBubbleBuilderFactory
 {
   public static int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
+    boolean bool = paramChatMessage.isMultiMsg;
     int j = -1;
     int i;
-    if (paramChatMessage.isMultiMsg) {
+    if (bool)
+    {
       i = FileManagerUtil.a(paramChatMessage);
     }
-    while ((paramChatMessage instanceof MessageForFile)) {
-      if (i == 0)
+    else if ((paramChatMessage instanceof MessageForFile))
+    {
+      paramQQAppInterface = paramQQAppInterface.getFileManagerDataCenter().a(paramChatMessage.uniseq, paramChatMessage.frienduin, paramChatMessage.istroop);
+      i = j;
+      if (paramQQAppInterface != null)
       {
-        return 61;
-        if ((paramChatMessage instanceof MessageForFile))
-        {
-          paramQQAppInterface = paramQQAppInterface.getFileManagerDataCenter().a(paramChatMessage.uniseq, paramChatMessage.frienduin, paramChatMessage.istroop);
-          i = j;
-          if (paramQQAppInterface != null)
-          {
-            i = j;
-            if (paramQQAppInterface.cloudType != 0) {
-              i = FileManagerUtil.a(paramQQAppInterface.fileName);
-            }
-          }
-        }
-        else if ((paramChatMessage instanceof MessageForTroopFile))
-        {
-          i = FileManagerUtil.a(((MessageForTroopFile)paramChatMessage).fileName);
-        }
-        else
-        {
-          i = j;
-          if ((paramChatMessage instanceof MessageForDLFile)) {
-            i = FileManagerUtil.a(((MessageForDLFile)paramChatMessage).fileName);
-          }
+        i = j;
+        if (paramQQAppInterface.cloudType != 0) {
+          i = FileManagerUtil.a(paramQQAppInterface.fileName);
         }
       }
-      else
+    }
+    else if ((paramChatMessage instanceof MessageForTroopFile))
+    {
+      i = FileManagerUtil.a(((MessageForTroopFile)paramChatMessage).fileName);
+    }
+    else
+    {
+      i = j;
+      if ((paramChatMessage instanceof MessageForDLFile)) {
+        i = FileManagerUtil.a(((MessageForDLFile)paramChatMessage).fileName);
+      }
+    }
+    if ((paramChatMessage instanceof MessageForFile)) {
+      if (i != 0) {}
+    }
+    do
+    {
+      return 61;
+      if (i != 2) {
+        break label184;
+      }
+      return 65;
+      if (!(paramChatMessage instanceof MessageForTroopFile)) {
+        break;
+      }
+    } while (i == 0);
+    if (i == 2)
+    {
+      return 65;
+      if ((paramChatMessage instanceof MessageForDLFile))
       {
+        if (i == 0) {
+          return 121;
+        }
         if (i == 2) {
-          return 65;
+          return 122;
         }
-        return 3;
+        return 120;
       }
     }
-    if ((paramChatMessage instanceof MessageForTroopFile))
-    {
-      if (i == 0) {
-        return 61;
-      }
-      if (i == 2) {
-        return 65;
-      }
-      return 3;
-    }
-    if ((paramChatMessage instanceof MessageForDLFile))
-    {
-      if (i == 0) {
-        return 121;
-      }
-      if (i == 2) {
-        return 122;
-      }
-      return 120;
-    }
+    label184:
     return 3;
   }
   
   public static QFileItemBuilder a(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner, int paramInt, ChatMessage paramChatMessage)
   {
-    if ((paramInt == 3) || (paramInt == 120)) {
-      paramBaseAdapter = new QFileSimpleItemBuilder(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    }
-    for (;;)
+    if ((paramInt != 3) && (paramInt != 120))
     {
-      paramChatMessage = a(paramQQAppInterface, paramContext, paramSessionInfo, paramChatMessage);
-      paramAIOAnimationConatiner = paramChatMessage;
-      if (paramChatMessage == null)
+      if ((paramInt != 61) && (paramInt != 121))
       {
-        QLog.e("QFileBubbleBuilderFactory", 1, "getFileBubbleItemBuilder error, bubbleModel is not.");
-        paramAIOAnimationConatiner = new DefaultBubbleModel(paramQQAppInterface, paramContext, paramSessionInfo);
+        if ((paramInt != 65) && (paramInt != 122))
+        {
+          QLog.e("QFileBubbleBuilderFactory", 1, "");
+          paramBaseAdapter = new QFileSimpleItemBuilder(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+        }
+        else
+        {
+          paramBaseAdapter = new QFileVideoItemBuilder(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+        }
       }
-      paramBaseAdapter.a(paramAIOAnimationConatiner);
-      return paramBaseAdapter;
-      if ((paramInt == 61) || (paramInt == 121))
-      {
+      else {
         paramBaseAdapter = new QFileImageItemBuilder(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
       }
-      else if ((paramInt == 65) || (paramInt == 122))
-      {
-        paramBaseAdapter = new QFileVideoItemBuilder(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-      }
-      else
-      {
-        QLog.e("QFileBubbleBuilderFactory", 1, "");
-        paramBaseAdapter = new QFileSimpleItemBuilder(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-      }
     }
+    else {
+      paramBaseAdapter = new QFileSimpleItemBuilder(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+    }
+    paramChatMessage = a(paramQQAppInterface, paramContext, paramSessionInfo, paramChatMessage);
+    paramAIOAnimationConatiner = paramChatMessage;
+    if (paramChatMessage == null)
+    {
+      QLog.e("QFileBubbleBuilderFactory", 1, "getFileBubbleItemBuilder error, bubbleModel is not.");
+      paramAIOAnimationConatiner = new DefaultBubbleModel(paramQQAppInterface, paramContext, paramSessionInfo);
+    }
+    paramBaseAdapter.a(paramAIOAnimationConatiner);
+    return paramBaseAdapter;
   }
   
   public static QFileBubbleModel a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, ChatMessage paramChatMessage)
   {
     if (paramChatMessage.isMultiMsg)
     {
-      String str = paramChatMessage.getExtInfoFromExtStr("_m_ForwardFileType");
-      if (!TextUtils.isEmpty(str))
+      Object localObject = paramChatMessage.getExtInfoFromExtStr("_m_ForwardFileType");
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        QLog.e("QFileBubbleBuilderFactory", 1, "getFileBubbleModel, fileType[" + str + "] extInfo[" + paramChatMessage.extStr + "]");
-        int i = Integer.parseInt(str);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getFileBubbleModel, fileType[");
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("] extInfo[");
+        localStringBuilder.append(paramChatMessage.extStr);
+        localStringBuilder.append("]");
+        QLog.e("QFileBubbleBuilderFactory", 1, localStringBuilder.toString());
+        int i = Integer.parseInt((String)localObject);
         if (i == 3) {
           return new TroopFileBubbleModel(paramQQAppInterface, paramContext, paramSessionInfo);
         }
@@ -137,10 +143,20 @@ public class QFileBubbleBuilderFactory
         if (i == 2) {
           return new OfflineFileBubbleModel(paramQQAppInterface, paramContext, paramSessionInfo);
         }
-        QLog.e("QFileBubbleBuilderFactory", 1, "getFileBubbleModel error, not support fileType. fileType[" + str + "] extInfo[" + paramChatMessage.extStr + "]");
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getFileBubbleModel error, not support fileType. fileType[");
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("] extInfo[");
+        localStringBuilder.append(paramChatMessage.extStr);
+        localStringBuilder.append("]");
+        QLog.e("QFileBubbleBuilderFactory", 1, localStringBuilder.toString());
         return new DefaultBubbleModel(paramQQAppInterface, paramContext, paramSessionInfo);
       }
-      QLog.e("QFileBubbleBuilderFactory", 1, "getFileBubbleModel error,multi file not exist fileType. extInfo[" + paramChatMessage.extStr + "]");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getFileBubbleModel error,multi file not exist fileType. extInfo[");
+      ((StringBuilder)localObject).append(paramChatMessage.extStr);
+      ((StringBuilder)localObject).append("]");
+      QLog.e("QFileBubbleBuilderFactory", 1, ((StringBuilder)localObject).toString());
       return new DefaultBubbleModel(paramQQAppInterface, paramContext, paramSessionInfo);
     }
     if ((paramChatMessage instanceof MessageForFile)) {
@@ -158,7 +174,7 @@ public class QFileBubbleBuilderFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.bubble.QFileBubbleBuilderFactory
  * JD-Core Version:    0.7.0.1
  */

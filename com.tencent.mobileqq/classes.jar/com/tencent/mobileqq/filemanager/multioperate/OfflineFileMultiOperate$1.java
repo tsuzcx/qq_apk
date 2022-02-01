@@ -18,31 +18,38 @@ class OfflineFileMultiOperate$1
   {
     if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
       OfflineFileMultiOperate.a(this.this$0).getMessageFacade().a((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(0), false);
+    } else if (this.jdField_a_of_type_JavaUtilList.size() > 1) {
+      OfflineFileMultiOperate.a(this.this$0).getMessageFacade().a(this.jdField_a_of_type_JavaUtilList, false);
     }
-    while ((this.b != null) && (this.b.size() > 0))
+    Object localObject = this.b;
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      Iterator localIterator = this.b.iterator();
-      while (localIterator.hasNext())
+      localObject = this.b.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+        FileManagerEntity localFileManagerEntity = (FileManagerEntity)((Iterator)localObject).next();
         localFileManagerEntity.bDelInAio = true;
-        if (QLog.isDevelopLevel()) {
-          QLog.d("OfflineFileMultiOperate", 1, "ChatHistory entity[" + localFileManagerEntity.getId() + "] del File:" + localFileManagerEntity.nSessionId);
+        if (QLog.isDevelopLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("ChatHistory entity[");
+          localStringBuilder.append(localFileManagerEntity.getId());
+          localStringBuilder.append("] del File:");
+          localStringBuilder.append(localFileManagerEntity.nSessionId);
+          QLog.d("OfflineFileMultiOperate", 1, localStringBuilder.toString());
         }
         OfflineFileMultiOperate.a(this.this$0).getFileManagerEngine().b(localFileManagerEntity.nSessionId);
       }
-      if (this.jdField_a_of_type_JavaUtilList.size() > 1) {
-        OfflineFileMultiOperate.a(this.this$0).getMessageFacade().a(this.jdField_a_of_type_JavaUtilList, false);
-      }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultioperateQFileMultiOperateCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultioperateQFileMultiOperateCallback.a(3, 0);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultioperateQFileMultiOperateCallback;
+    if (localObject != null) {
+      ((QFileMultiOperateCallback)localObject).a(3, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.multioperate.OfflineFileMultiOperate.1
  * JD-Core Version:    0.7.0.1
  */

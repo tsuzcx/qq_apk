@@ -17,18 +17,34 @@ class TeamWorkForceShare$ImageRequestTask$1
   
   public void onFileDownloadFailed(int paramInt)
   {
-    QLog.d(TeamWorkForceShare.a(), 1, "download failed, code = " + paramInt + ", url = " + TeamWorkForceShare.ImageRequestTask.a(this.a));
+    String str = TeamWorkForceShare.a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("download failed, code = ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", url = ");
+    localStringBuilder.append(TeamWorkForceShare.ImageRequestTask.a(this.a));
+    QLog.d(str, 1, localStringBuilder.toString());
     TeamWorkForceShare.ImageRequestTask.a(this.a, true);
   }
   
   public void onFileDownloadStarted()
   {
-    QLog.d(TeamWorkForceShare.a(), 1, "start download, url = " + TeamWorkForceShare.ImageRequestTask.a(this.a));
+    String str = TeamWorkForceShare.a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("start download, url = ");
+    localStringBuilder.append(TeamWorkForceShare.ImageRequestTask.a(this.a));
+    QLog.d(str, 1, localStringBuilder.toString());
   }
   
   public void onFileDownloadSucceed(long paramLong)
   {
-    QLog.d(TeamWorkForceShare.a(), 1, "download success, size = " + paramLong + ", url = " + TeamWorkForceShare.ImageRequestTask.a(this.a));
+    String str = TeamWorkForceShare.a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("download success, size = ");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(", url = ");
+    localStringBuilder.append(TeamWorkForceShare.ImageRequestTask.a(this.a));
+    QLog.d(str, 1, localStringBuilder.toString());
     TeamWorkForceShare.ImageRequestTask.a(this.a, true);
   }
   
@@ -36,7 +52,7 @@ class TeamWorkForceShare$ImageRequestTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkForceShare.ImageRequestTask.1
  * JD-Core Version:    0.7.0.1
  */

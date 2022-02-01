@@ -13,14 +13,18 @@ final class TypeAdapters$14
   public Number read(JsonReader paramJsonReader)
   {
     JsonToken localJsonToken = paramJsonReader.peek();
-    switch (TypeAdapters.36.$SwitchMap$com$google$gson$stream$JsonToken[localJsonToken.ordinal()])
+    int i = TypeAdapters.36.$SwitchMap$com$google$gson$stream$JsonToken[localJsonToken.ordinal()];
+    if ((i != 1) && (i != 3))
     {
-    case 2: 
-    default: 
-      throw new JsonSyntaxException("Expecting number, got: " + localJsonToken);
-    case 4: 
-      paramJsonReader.nextNull();
-      return null;
+      if (i == 4)
+      {
+        paramJsonReader.nextNull();
+        return null;
+      }
+      paramJsonReader = new StringBuilder();
+      paramJsonReader.append("Expecting number, got: ");
+      paramJsonReader.append(localJsonToken);
+      throw new JsonSyntaxException(paramJsonReader.toString());
     }
     return new LazilyParsedNumber(paramJsonReader.nextString());
   }
@@ -32,7 +36,7 @@ final class TypeAdapters$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.internal.bind.TypeAdapters.14
  * JD-Core Version:    0.7.0.1
  */

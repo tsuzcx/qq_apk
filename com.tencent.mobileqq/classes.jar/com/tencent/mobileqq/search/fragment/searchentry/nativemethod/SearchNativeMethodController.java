@@ -46,11 +46,16 @@ public class SearchNativeMethodController
     {
       initMethodList();
       Iterator localIterator = this.nativeMethodList.iterator();
-      if (localIterator.hasNext())
+      while (localIterator.hasNext())
       {
         SearchNativeMethodBase localSearchNativeMethodBase = (SearchNativeMethodBase)localIterator.next();
         paramHippyQQEngine.registerNativeMethod(localSearchNativeMethodBase.getModuleName(), localSearchNativeMethodBase.getFuncName(), localSearchNativeMethodBase);
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramHippyQQEngine;
     }
   }
   
@@ -59,18 +64,23 @@ public class SearchNativeMethodController
     synchronized (this.lock)
     {
       Iterator localIterator = this.nativeMethodList.iterator();
-      if (localIterator.hasNext())
+      while (localIterator.hasNext())
       {
         SearchNativeMethodBase localSearchNativeMethodBase = (SearchNativeMethodBase)localIterator.next();
         paramHippyQQEngine.unRegisterNativeMethod(localSearchNativeMethodBase.getModuleName(), localSearchNativeMethodBase.getFuncName());
       }
+      this.nativeMethodList.clear();
+      return;
     }
-    this.nativeMethodList.clear();
+    for (;;)
+    {
+      throw paramHippyQQEngine;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.nativemethod.SearchNativeMethodController
  * JD-Core Version:    0.7.0.1
  */

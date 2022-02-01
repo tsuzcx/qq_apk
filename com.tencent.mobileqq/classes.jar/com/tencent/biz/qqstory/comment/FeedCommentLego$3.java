@@ -18,12 +18,16 @@ class FeedCommentLego$3
   
   public void a(int paramInt, Bundle paramBundle)
   {
-    a(-1, HardCodeUtil.a(2131704421));
+    a(-1, HardCodeUtil.a(2131704511));
   }
   
   public void a(int paramInt, String paramString)
   {
-    QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131704444) + paramInt, 0).a();
+    BaseApplication localBaseApplication = BaseApplication.getContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(HardCodeUtil.a(2131704534));
+    localStringBuilder.append(paramInt);
+    QQToast.a(localBaseApplication, 1, localStringBuilder.toString(), 0).a();
     this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
     this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.e();
     if (QLog.isColorLevel()) {
@@ -38,7 +42,7 @@ class FeedCommentLego$3
     this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.jdField_a_of_type_ComTencentBizQqstoryModelCommentManager.d(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
     StoryFailCommentCacher.a().a();
     this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.a(false, null);
-    QQToast.a(BaseApplication.getContext(), 2, HardCodeUtil.a(2131704445), 0).a();
+    QQToast.a(BaseApplication.getContext(), 2, HardCodeUtil.a(2131704535), 0).a();
     FeedCommentLego.a(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.jdField_a_of_type_Int, 2, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.feedId, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.commentId);
   }
   
@@ -46,7 +50,7 @@ class FeedCommentLego$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedCommentLego.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.fragment;
 
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class TroopRemarkEditFragment$7
@@ -12,8 +12,10 @@ class TroopRemarkEditFragment$7
   
   public void onClick(View paramView)
   {
-    if (TroopRemarkEditFragment.a(this.a) != null) {
-      TroopRemarkEditFragment.a(this.a, TroopRemarkEditFragment.a(this.a));
+    if (TroopRemarkEditFragment.a(this.a) != null)
+    {
+      TroopRemarkEditFragment localTroopRemarkEditFragment = this.a;
+      TroopRemarkEditFragment.a(localTroopRemarkEditFragment, TroopRemarkEditFragment.a(localTroopRemarkEditFragment));
     }
     this.a.getActivity().finish();
     EventCollector.getInstance().onViewClicked(paramView);
@@ -21,7 +23,7 @@ class TroopRemarkEditFragment$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.fragment.TroopRemarkEditFragment.7
  * JD-Core Version:    0.7.0.1
  */

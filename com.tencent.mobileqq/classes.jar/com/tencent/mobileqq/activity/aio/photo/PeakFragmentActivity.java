@@ -4,22 +4,19 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.MotionEvent;
 import com.tencent.common.app.AppInterface;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.NativeVideoImage;
-import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.simpleui.SimpleUIUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class PeakFragmentActivity
-  extends FragmentActivity
+  extends QBaseActivity
 {
   protected AppInterface appInterface;
   protected boolean mNeedPauseRichMedia = true;
-  @Deprecated
-  protected PeakAppInterface mPeakApp;
   
   protected void adjustStatusBar()
   {
@@ -35,13 +32,10 @@ public class PeakFragmentActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.getIntent().putExtra("fling_action_key", 0);
     super.doOnCreate(paramBundle);
-    if ((getAppRuntime() instanceof PeakAppInterface)) {
-      this.mPeakApp = ((PeakAppInterface)getAppRuntime());
-    }
     if ((getAppRuntime() instanceof AppInterface)) {
       this.appInterface = ((AppInterface)getAppRuntime());
     }
@@ -49,7 +43,7 @@ public class PeakFragmentActivity
     return true;
   }
   
-  public void doOnPause()
+  protected void doOnPause()
   {
     super.doOnPause();
     if (this.mNeedPauseRichMedia)
@@ -59,26 +53,25 @@ public class PeakFragmentActivity
     }
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
     NativeVideoImage.resumeAll();
     AbstractGifImage.resumeAll();
   }
   
-  public String getModuleId()
+  protected String getModuleId()
   {
     return "peak";
   }
   
   public int getStatusBarHeight()
   {
-    int i = 0;
-    int j = getResources().getIdentifier("status_bar_height", "dimen", "android");
-    if (j > 0) {
-      i = getResources().getDimensionPixelSize(j);
+    int i = getResources().getIdentifier("status_bar_height", "dimen", "android");
+    if (i > 0) {
+      return getResources().getDimensionPixelSize(i);
     }
-    return i;
+    return 0;
   }
   
   @Override
@@ -90,7 +83,7 @@ public class PeakFragmentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.PeakFragmentActivity
  * JD-Core Version:    0.7.0.1
  */

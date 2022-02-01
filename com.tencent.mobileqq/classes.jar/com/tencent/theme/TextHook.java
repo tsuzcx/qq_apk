@@ -20,6 +20,7 @@ import com.tencent.theme.font.OppoFontHook;
 import com.tencent.theme.utils.BrandUtil;
 import java.io.File;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -27,6 +28,7 @@ import java.util.Map;
 
 public class TextHook
 {
+  public static final String TAG = "TextHook";
   private static String[] a = { "", "qzone" };
   private static TextHook b = new TextHook();
   private static String c = "";
@@ -47,12 +49,13 @@ public class TextHook
         this.g.hookFont();
       }
       replaceSystemDefaultFont(paramTypeface);
-      b(paramTypeface);
+      c(paramTypeface);
       Field localField = Typeface.class.getDeclaredField("sSystemFontMap");
       localField.setAccessible(true);
       HashMap localHashMap = new HashMap((Map)localField.get(null));
       localHashMap.put("sans-serif", paramTypeface);
       localField.set(null, localHashMap);
+      b(paramTypeface);
       return;
     }
     catch (Exception paramTypeface)
@@ -80,23 +83,33 @@ public class TextHook
   {
     if (!this.h)
     {
-      if (!BrandUtil.isMiui()) {
-        break label30;
-      }
-      this.g = new MiuiFontHook();
-    }
-    for (;;)
-    {
-      this.h = true;
-      return;
-      label30:
-      if (BrandUtil.isOppo()) {
+      if (BrandUtil.isMiui()) {
+        this.g = new MiuiFontHook();
+      } else if (BrandUtil.isOppo()) {
         this.g = new OppoFontHook();
       }
+      this.h = true;
     }
   }
   
   private void b(Typeface paramTypeface)
+  {
+    try
+    {
+      Field localField = Typeface.class.getDeclaredField("native_instance");
+      localField.setAccessible(true);
+      Method localMethod = Typeface.class.getDeclaredMethod("nativeSetDefault", new Class[] { Long.TYPE });
+      localMethod.setAccessible(true);
+      localMethod.invoke(paramTypeface, new Object[] { localField.get(paramTypeface) });
+      return;
+    }
+    catch (Exception paramTypeface)
+    {
+      h.a("TextHook", 1, "nativeSetDefault error", paramTypeface);
+    }
+  }
+  
+  private void c(Typeface paramTypeface)
   {
     try
     {
@@ -131,38 +144,37 @@ public class TextHook
       TextHook localTextHook = b;
       return localTextHook;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label6:
+      break label6;
+    }
     return b;
   }
   
   public static String getProcessName(Context paramContext)
   {
-    for (;;)
+    try
     {
-      try
+      int i = Process.myPid();
+      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = null;
+      Iterator localIterator = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
+      paramContext = localRunningAppProcessInfo;
+      while (localIterator.hasNext())
       {
-        int i = Process.myPid();
-        Object localObject = null;
-        Iterator localIterator = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
-        paramContext = (Context)localObject;
-        localObject = paramContext;
-        if (localIterator.hasNext())
-        {
-          localObject = (ActivityManager.RunningAppProcessInfo)localIterator.next();
-          if (((ActivityManager.RunningAppProcessInfo)localObject).pid == i) {
-            paramContext = ((ActivityManager.RunningAppProcessInfo)localObject).processName;
-          }
-        }
-        else
-        {
-          return localObject;
+        localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)localIterator.next();
+        if (localRunningAppProcessInfo.pid == i) {
+          paramContext = localRunningAppProcessInfo.processName;
         }
       }
-      catch (Exception paramContext)
-      {
-        localObject = "";
-      }
+      return paramContext;
     }
+    catch (Exception paramContext)
+    {
+      label63:
+      break label63;
+    }
+    return "";
   }
   
   public static int getTypefaceStyle(Typeface paramTypeface)
@@ -190,23 +202,26 @@ public class TextHook
         }
         paramContext = getProcessName(paramContext);
         if (paramContext == null) {
-          break label90;
+          return false;
         }
-        paramContext = paramContext.split(":");
-        if (paramContext.length > 1)
+        String[] arrayOfString = paramContext.split(":");
+        paramContext = "";
+        if (arrayOfString.length > 1) {
+          paramContext = arrayOfString[1];
+        }
+        arrayOfString = a;
+        int j = arrayOfString.length;
+        i = 0;
+        if (i < j)
         {
-          paramContext = paramContext[1];
-          String[] arrayOfString = a;
-          int j = arrayOfString.length;
-          i = 0;
-          if (i < j)
+          if (paramContext.equals(arrayOfString[i]))
           {
-            if (!paramContext.equals(arrayOfString[i])) {
-              break label92;
-            }
             f = Boolean.valueOf(true);
             return true;
           }
+        }
+        else
+        {
           f = Boolean.valueOf(false);
           return false;
         }
@@ -215,11 +230,6 @@ public class TextHook
       {
         return false;
       }
-      paramContext = "";
-      continue;
-      label90:
-      return false;
-      label92:
       i += 1;
     }
   }
@@ -235,17 +245,15 @@ public class TextHook
       paramContext = paramContext.getPaint().getTypeface();
       Typeface localTypeface = getInstance().d;
       if (paramContext == localTypeface) {
-        break label50;
+        return false;
       }
     }
     catch (Exception paramContext)
     {
-      label44:
-      break label44;
+      label46:
+      break label46;
     }
     return true;
-    label50:
-    return false;
   }
   
   public static void saveLastPath(Context paramContext, String paramString)
@@ -278,42 +286,43 @@ public class TextHook
         if (!f.booleanValue()) {
           return;
         }
-        if (!(paramView instanceof ISkinIgnoreTypeface)) {
-          if ((paramView instanceof TextView))
-          {
-            paramView = (TextView)paramView;
-            if (paramView.getTypeface() != localTypeface) {
-              paramView.setTypeface(localTypeface, getTypefaceStyle(paramView.getTypeface()));
-            }
+        if ((paramView instanceof ISkinIgnoreTypeface)) {
+          return;
+        }
+        if ((paramView instanceof TextView))
+        {
+          paramView = (TextView)paramView;
+          if (paramView.getTypeface() != localTypeface) {
+            paramView.setTypeface(localTypeface, getTypefaceStyle(paramView.getTypeface()));
           }
-          else if ((paramView instanceof ISkinTypeface))
+        }
+        else if ((paramView instanceof ISkinTypeface))
+        {
+          Paint localPaint = ((ISkinTypeface)paramView).getPaint();
+          if ((localPaint != null) && (localPaint.getTypeface() != localTypeface))
           {
-            Paint localPaint = ((ISkinTypeface)paramView).getPaint();
-            if ((localPaint != null) && (localPaint.getTypeface() != localTypeface))
-            {
-              localPaint.setTypeface(localTypeface);
-              paramView.requestLayout();
-              paramView.invalidate();
-            }
+            localPaint.setTypeface(localTypeface);
+            paramView.requestLayout();
+            paramView.invalidate();
           }
-          else
+        }
+        else
+        {
+          if ((paramView instanceof ISkinSetTypeface))
           {
-            if ((paramView instanceof ISkinSetTypeface))
+            ((ISkinSetTypeface)paramView).setTypeface(localTypeface);
+            paramView.requestLayout();
+            paramView.invalidate();
+            return;
+          }
+          if ((paramView instanceof ViewGroup))
+          {
+            paramView = (ViewGroup)paramView;
+            int i = 0;
+            while (i < paramView.getChildCount())
             {
-              ((ISkinSetTypeface)paramView).setTypeface(localTypeface);
-              paramView.requestLayout();
-              paramView.invalidate();
-              return;
-            }
-            if ((paramView instanceof ViewGroup))
-            {
-              paramView = (ViewGroup)paramView;
-              int i = 0;
-              while (i < paramView.getChildCount())
-              {
-                updateFont(paramView.getChildAt(i));
-                i += 1;
-              }
+              updateFont(paramView.getChildAt(i));
+              i += 1;
             }
           }
         }
@@ -361,17 +370,26 @@ public class TextHook
       Typeface localTypeface = this.e;
       return localTypeface;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label7:
+      break label7;
+    }
     return null;
   }
   
   public boolean isDefault()
   {
+    boolean bool = true;
     try
     {
-      boolean bool;
-      if (this.d != null) {
+      if (this.d != null)
+      {
         bool = this.e.equals(this.d);
+        if (bool) {
+          return true;
+        }
+        bool = false;
       }
       return bool;
     }
@@ -424,12 +442,9 @@ public class TextHook
       {
         paramContext.printStackTrace();
       }
+      return false;
     }
-    catch (Exception paramContext)
-    {
-      label47:
-      break label47;
-    }
+    catch (Exception paramContext) {}
     return false;
   }
   
@@ -447,7 +462,7 @@ public class TextHook
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.theme.TextHook
  * JD-Core Version:    0.7.0.1
  */

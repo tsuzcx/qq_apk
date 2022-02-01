@@ -30,39 +30,43 @@ public class WebHistoryItem
   
   public Bitmap getFavicon()
   {
-    if (this.a != null) {
-      return this.a.getFavicon();
+    IX5WebHistoryItem localIX5WebHistoryItem = this.a;
+    if (localIX5WebHistoryItem != null) {
+      return localIX5WebHistoryItem.getFavicon();
     }
     return this.b.getFavicon();
   }
   
   public String getOriginalUrl()
   {
-    if (this.a != null) {
-      return this.a.getOriginalUrl();
+    IX5WebHistoryItem localIX5WebHistoryItem = this.a;
+    if (localIX5WebHistoryItem != null) {
+      return localIX5WebHistoryItem.getOriginalUrl();
     }
     return this.b.getOriginalUrl();
   }
   
   public String getTitle()
   {
-    if (this.a != null) {
-      return this.a.getTitle();
+    IX5WebHistoryItem localIX5WebHistoryItem = this.a;
+    if (localIX5WebHistoryItem != null) {
+      return localIX5WebHistoryItem.getTitle();
     }
     return this.b.getTitle();
   }
   
   public String getUrl()
   {
-    if (this.a != null) {
-      return this.a.getUrl();
+    IX5WebHistoryItem localIX5WebHistoryItem = this.a;
+    if (localIX5WebHistoryItem != null) {
+      return localIX5WebHistoryItem.getUrl();
     }
     return this.b.getUrl();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebHistoryItem
  * JD-Core Version:    0.7.0.1
  */

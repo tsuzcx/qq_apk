@@ -18,7 +18,11 @@ final class FileTreeWalk$FileTreeWalkIterator$SingleFileState
     if (_Assertions.ENABLED)
     {
       boolean bool = localObject.isFile();
-      if ((_Assertions.ENABLED) && (!bool)) {
+      if (_Assertions.ENABLED)
+      {
+        if (bool) {
+          return;
+        }
         throw ((Throwable)new AssertionError("rootFile must be verified to be file beforehand."));
       }
     }
@@ -36,7 +40,7 @@ final class FileTreeWalk$FileTreeWalkIterator$SingleFileState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.io.FileTreeWalk.FileTreeWalkIterator.SingleFileState
  * JD-Core Version:    0.7.0.1
  */

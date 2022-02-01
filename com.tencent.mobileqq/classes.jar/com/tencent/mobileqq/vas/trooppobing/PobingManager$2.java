@@ -7,16 +7,20 @@ final class PobingManager$2
 {
   PobingManager$2()
   {
-    put(Integer.valueOf(2000), Integer.valueOf(2000));
-    put(Integer.valueOf(2001), Integer.valueOf(2001));
-    put(Integer.valueOf(2002), Integer.valueOf(2002));
-    put(Integer.valueOf(2003), Integer.valueOf(2003));
-    put(Integer.valueOf(2004), Integer.valueOf(2003));
+    Integer localInteger = Integer.valueOf(2000);
+    put(localInteger, localInteger);
+    localInteger = Integer.valueOf(2001);
+    put(localInteger, localInteger);
+    localInteger = Integer.valueOf(2002);
+    put(localInteger, localInteger);
+    localInteger = Integer.valueOf(2003);
+    put(localInteger, localInteger);
+    put(Integer.valueOf(2004), localInteger);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.trooppobing.PobingManager.2
  * JD-Core Version:    0.7.0.1
  */

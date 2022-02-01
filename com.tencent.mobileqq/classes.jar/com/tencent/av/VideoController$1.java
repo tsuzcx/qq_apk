@@ -1,8 +1,6 @@
 package com.tencent.av;
 
-import android.content.Context;
 import com.tencent.av.app.SessionInfo;
-import com.tencent.av.utils.PopupDialog;
 import com.tencent.qphone.base.util.QLog;
 
 class VideoController$1
@@ -15,31 +13,26 @@ class VideoController$1
     if (QLog.isColorLevel()) {
       QLog.d(VideoController.jdField_a_of_type_JavaLangString, 2, "networkBrokenRunnable");
     }
-    if (this.this$0.l())
+    VideoController localVideoController;
+    if ((this.this$0.a().f > 0) && (this.this$0.a().f <= 4))
     {
-      Context localContext = this.this$0.a();
-      PopupDialog.b(localContext, 230, null, localContext.getString(2131720500), 0, 2131720534, new VideoController.1.1(this), null);
+      localVideoController = this.this$0;
+      localVideoController.a(localVideoController.a().c, 215);
+      this.this$0.b(215);
+      localVideoController = this.this$0;
+      localVideoController.b(localVideoController.a().c, 9);
     }
-    for (;;)
+    else
     {
-      VideoController.a(this.this$0, false);
-      return;
-      if ((this.this$0.a().g > 0) && (this.this$0.a().g <= 4))
-      {
-        this.this$0.a(this.this$0.a().d, 215);
-        this.this$0.b(215);
-        this.this$0.b(this.this$0.a().d, 9);
-      }
-      else
-      {
-        this.this$0.onGAudioSDKError(this.this$0.b, this.this$0.jdField_a_of_type_Long, 15, 0);
-      }
+      localVideoController = this.this$0;
+      localVideoController.onGAudioSDKError(localVideoController.b, this.this$0.jdField_a_of_type_Long, 15, 0);
     }
+    VideoController.a(this.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoController.1
  * JD-Core Version:    0.7.0.1
  */

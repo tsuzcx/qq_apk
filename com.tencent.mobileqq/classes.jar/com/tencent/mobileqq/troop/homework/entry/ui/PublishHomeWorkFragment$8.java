@@ -11,14 +11,16 @@ class PublishHomeWorkFragment$8
   
   public void a(View paramView, boolean paramBoolean)
   {
-    if (paramBoolean) {
-      this.a.a(this.a.a.a());
+    if (paramBoolean)
+    {
+      paramView = this.a;
+      paramView.c(paramView.a.a());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment.8
  * JD-Core Version:    0.7.0.1
  */

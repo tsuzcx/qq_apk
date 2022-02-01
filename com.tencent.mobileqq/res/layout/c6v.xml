@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout android:id="@id/li2" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="16.0dip" android:textColor="#ffcccccc" android:layout_gravity="center" android:id="@id/mwb" android:padding="10.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="网络异常，请稍后重试" />
+    <TextView android:textSize="16.0dip" android:textColor="#ffcccccc" android:layout_gravity="center" android:id="@id/myv" android:padding="10.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="网络异常，请稍后重试" />
     <com.tencent.biz.subscribe.part.block.BlockContainer android:id="@id/m61" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="8.5dip" android:layout_marginRight="8.5dip" />
-    <LinearLayout android:layout_gravity="bottom|center" android:orientation="vertical" android:id="@id/mnz" android:background="#e6f5f6fa" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="62.0dip" />
-    <LinearLayout android:gravity="center" android:layout_gravity="bottom|center" android:id="@id/mny" android:background="@drawable/idc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="12.0dip">
-        <TextView android:gravity="center" android:id="@id/o8z" android:background="@color/aju" android:layout_width="wrap_content" android:layout_height="39.0dip" android:text="发现更多精彩内容" android:drawableRight="@drawable/idd" android:drawablePadding="4.0px" />
+    <LinearLayout android:layout_gravity="bottom|center" android:orientation="vertical" android:id="@id/mof" android:background="#e6f5f6fa" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="62.0dip" />
+    <LinearLayout android:gravity="center" android:layout_gravity="bottom|center" android:id="@id/moe" android:background="@drawable/iga" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="12.0dip">
+        <TextView android:gravity="center" android:id="@id/obd" android:background="@color/aju" android:layout_width="wrap_content" android:layout_height="39.0dip" android:text="发现更多精彩内容" android:drawableRight="@drawable/igb" android:drawablePadding="4.0px" />
     </LinearLayout>
 </FrameLayout>

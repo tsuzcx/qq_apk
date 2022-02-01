@@ -22,7 +22,11 @@ public final class EAN13Reader
       }
       i += 1;
     }
-    throw NotFoundException.getNotFoundInstance();
+    paramStringBuilder = NotFoundException.getNotFoundInstance();
+    for (;;)
+    {
+      throw paramStringBuilder;
+    }
   }
   
   protected int decodeMiddle(BitArray paramBitArray, int[] paramArrayOfInt, StringBuilder paramStringBuilder)
@@ -49,7 +53,7 @@ public final class EAN13Reader
       }
       m = k;
       if (i1 >= 10) {
-        m = k | 1 << 5 - j;
+        m = 1 << 5 - j | k;
       }
       j += 1;
     }
@@ -78,7 +82,7 @@ public final class EAN13Reader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.zxing.oned.EAN13Reader
  * JD-Core Version:    0.7.0.1
  */

@@ -107,41 +107,19 @@ public class MediaPlayerProxy
     this.mBackEndMediaPlayer.prepareAsync();
   }
   
-  /* Error */
   public void release()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 75	tv/danmaku/ijk/media/player/MediaPlayerProxy:mIsReleased	Z
-    //   6: istore_1
-    //   7: iload_1
-    //   8: ifeq +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: aload_0
-    //   15: getfield 17	tv/danmaku/ijk/media/player/MediaPlayerProxy:mBackEndMediaPlayer	Ltv/danmaku/ijk/media/player/IMediaPlayer;
-    //   18: invokeinterface 77 1 0
-    //   23: aload_0
-    //   24: iconst_1
-    //   25: putfield 75	tv/danmaku/ijk/media/player/MediaPlayerProxy:mIsReleased	Z
-    //   28: goto -17 -> 11
-    //   31: astore_2
-    //   32: aload_0
-    //   33: monitorexit
-    //   34: aload_2
-    //   35: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	36	0	this	MediaPlayerProxy
-    //   6	2	1	bool	boolean
-    //   31	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	31	finally
-    //   14	28	31	finally
+    try
+    {
+      boolean bool = this.mIsReleased;
+      if (bool) {
+        return;
+      }
+      this.mBackEndMediaPlayer.release();
+      this.mIsReleased = true;
+      return;
+    }
+    finally {}
   }
   
   public void reset()
@@ -335,7 +313,7 @@ public class MediaPlayerProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tv.danmaku.ijk.media.player.MediaPlayerProxy
  * JD-Core Version:    0.7.0.1
  */

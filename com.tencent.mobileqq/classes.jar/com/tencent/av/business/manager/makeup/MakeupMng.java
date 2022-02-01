@@ -6,7 +6,7 @@ import com.tencent.av.business.manager.EffectMutexManager;
 import com.tencent.av.business.manager.pendant.EffectPendantBase;
 import com.tencent.av.business.manager.pendant.EffectPendantBase.Pendant;
 import com.tencent.av.business.manager.pendant.PendantItem;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -19,8 +19,8 @@ public class MakeupMng
   public static final String[] b;
   public final ConcurrentHashMap<String, Integer> a;
   public int b;
+  public String b;
   private int c;
-  public String d = null;
   
   static
   {
@@ -31,6 +31,7 @@ public class MakeupMng
   {
     super(paramVideoAppInterface);
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_b_of_type_JavaLangString = null;
     this.jdField_b_of_type_Int = 0;
     this.jdField_c_of_type_Int = 0;
     this.jdField_c_of_type_ArrayOfJavaLangString = jdField_b_of_type_ArrayOfJavaLangString;
@@ -43,14 +44,15 @@ public class MakeupMng
   
   public int a(String paramString)
   {
-    Integer localInteger = null;
     if (!TextUtils.isEmpty(paramString)) {
-      localInteger = (Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      paramString = (Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    } else {
+      paramString = null;
     }
-    if (localInteger == null) {
+    if (paramString == null) {
       return 50;
     }
-    return localInteger.intValue();
+    return paramString.intValue();
   }
   
   public EffectPendantBase.Pendant a(int paramInt1, int paramInt2)
@@ -65,23 +67,34 @@ public class MakeupMng
     return localPendant;
   }
   
-  public List<PendantItem> a(int paramInt, String paramString)
+  protected List<PendantItem> a(int paramInt, String paramString)
   {
-    Object localObject = super.a(paramInt, paramString);
+    Object localObject1 = super.a(paramInt, paramString);
     ArrayList localArrayList = new ArrayList();
-    if ((localObject != null) && (((List)localObject).size() > 0))
+    Object localObject2;
+    if ((localObject1 != null) && (((List)localObject1).size() > 0))
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        PendantItem localPendantItem = (PendantItem)((Iterator)localObject).next();
-        if (localPendantItem != null) {
-          localArrayList.add(localPendantItem);
+        localObject2 = (PendantItem)((Iterator)localObject1).next();
+        if (localObject2 != null) {
+          localArrayList.add(localObject2);
         }
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.i(this.jdField_a_of_type_JavaLangString, 2, "parse, cid[" + paramInt + "], config[" + paramString + "], size[" + localArrayList.size() + "]");
+    if (QLog.isColorLevel())
+    {
+      localObject1 = this.jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("parse, cid[");
+      ((StringBuilder)localObject2).append(paramInt);
+      ((StringBuilder)localObject2).append("], config[");
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append("], size[");
+      ((StringBuilder)localObject2).append(localArrayList.size());
+      ((StringBuilder)localObject2).append("]");
+      QLog.i((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
     return localArrayList;
   }
@@ -89,89 +102,111 @@ public class MakeupMng
   public void a(int paramInt, String paramString)
   {
     long l = AudioHelper.b();
-    if (QLog.isDevelopLevel()) {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 4, "MuteByOthers, fromMuteKey[" + paramInt + "], seq[" + l + "], data[" + paramString + "]");
-    }
-    if (paramInt == 3004) {}
-    do
+    if (QLog.isDevelopLevel())
     {
-      do
-      {
-        return;
-        if (paramInt == 3002)
-        {
-          if (this.jdField_c_of_type_Int == 3003) {
-            a(l, this.d);
-          }
-          this.jdField_c_of_type_Int = 3002;
-          return;
-        }
-        if (paramInt != 3003) {
-          break;
-        }
-      } while (!"creativecop".equals(paramString));
-      this.jdField_c_of_type_Int = 3003;
-      a(l, null);
+      String str = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("MuteByOthers, fromMuteKey[");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("], seq[");
+      localStringBuilder.append(l);
+      localStringBuilder.append("], data[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("]");
+      QLog.w(str, 4, localStringBuilder.toString());
+    }
+    if (paramInt == 3004) {
       return;
-    } while (paramInt != 3005);
-    this.jdField_c_of_type_Int = 3005;
-    a(l, null);
+    }
+    if (paramInt == 3002)
+    {
+      if (this.jdField_c_of_type_Int == 3003) {
+        a(l, this.jdField_b_of_type_JavaLangString);
+      }
+      this.jdField_c_of_type_Int = 3002;
+      return;
+    }
+    if (paramInt == 3003) {
+      return;
+    }
+    if (paramInt == 3005)
+    {
+      this.jdField_c_of_type_Int = 3005;
+      a(l, null);
+    }
   }
   
   public void a(long paramLong, String paramString)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i(this.jdField_a_of_type_JavaLangString, 4, "clearMuteFlag, muteFlag[" + this.jdField_c_of_type_Int + "], from[" + paramString + "], cur[" + this.d + "], value[" + this.jdField_b_of_type_Int + "]");
+    if (QLog.isDevelopLevel())
+    {
+      String str = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("clearMuteFlag, muteFlag[");
+      localStringBuilder.append(this.jdField_c_of_type_Int);
+      localStringBuilder.append("], from[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("], cur[");
+      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append("], value[");
+      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append("]");
+      QLog.i(str, 4, localStringBuilder.toString());
     }
-    if ((this.jdField_c_of_type_Int == 3003) || (this.jdField_c_of_type_Int == 3005)) {
-      a(paramLong, this.d);
+    int i = this.jdField_c_of_type_Int;
+    if ((i == 3003) || (i == 3005)) {
+      a(paramLong, this.jdField_b_of_type_JavaLangString);
     }
     this.jdField_c_of_type_Int = 0;
   }
   
   public void a(String paramString, int paramInt, boolean paramBoolean)
   {
-    if (a()) {}
-    do
+    if (b()) {
+      return;
+    }
+    if ((!TextUtils.equals(paramString, this.jdField_b_of_type_JavaLangString)) || (paramInt != this.jdField_b_of_type_Int))
     {
-      do
-      {
-        return;
-      } while ((TextUtils.equals(paramString, this.d)) && (paramInt == this.jdField_b_of_type_Int));
-      this.d = paramString;
+      this.jdField_b_of_type_JavaLangString = paramString;
       this.jdField_b_of_type_Int = paramInt;
-    } while (TextUtils.isEmpty(this.d));
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(this.d, Integer.valueOf(paramInt));
+      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(this.jdField_b_of_type_JavaLangString, Integer.valueOf(paramInt));
+      }
+    }
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  protected void a(String paramString, boolean paramBoolean)
   {
     super.a(paramString, paramBoolean);
-    PendantItem localPendantItem = (PendantItem)a();
-    if (localPendantItem == null)
+    Object localObject = (PendantItem)a();
+    if (localObject == null)
     {
-      this.d = null;
+      this.jdField_b_of_type_JavaLangString = null;
       this.jdField_b_of_type_Int = 50;
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.i(this.jdField_a_of_type_JavaLangString, 2, "onDestroyUI, peerUin[" + paramString + "], quit[" + paramBoolean + "], item[" + a() + "]");
-      }
-      return;
-      this.d = localPendantItem.getId();
+      this.jdField_b_of_type_JavaLangString = ((PendantItem)localObject).getId();
     }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_c_of_type_Int == 3002) || (this.jdField_c_of_type_Int == 3003);
+    if (QLog.isColorLevel())
+    {
+      localObject = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDestroyUI, peerUin[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("], quit[");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("], item[");
+      localStringBuilder.append(a());
+      localStringBuilder.append("]");
+      QLog.i((String)localObject, 2, localStringBuilder.toString());
+    }
   }
   
   public boolean a(long paramLong, PendantItem paramPendantItem)
   {
     boolean bool = super.a(paramLong, paramPendantItem);
-    if ((!a()) && (bool) && (paramPendantItem != null) && (!TextUtils.isEmpty(paramPendantItem.getId())) && (!TextUtils.equals("0", paramPendantItem.getId())))
+    if ((!b()) && (bool) && (paramPendantItem != null) && (!TextUtils.isEmpty(paramPendantItem.getId())) && (!TextUtils.equals("0", paramPendantItem.getId())))
     {
       EffectMutexManager localEffectMutexManager = (EffectMutexManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(12);
       if (localEffectMutexManager != null) {
@@ -185,10 +220,16 @@ public class MakeupMng
   {
     return 3004;
   }
+  
+  public boolean b()
+  {
+    int i = this.jdField_c_of_type_Int;
+    return (i == 3002) || (i == 3003);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.makeup.MakeupMng
  * JD-Core Version:    0.7.0.1
  */

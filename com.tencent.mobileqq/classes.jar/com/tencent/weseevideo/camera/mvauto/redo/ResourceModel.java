@@ -92,28 +92,24 @@ public final class ResourceModel
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof ResourceModel))
       {
         paramObject = (ResourceModel)paramObject;
-        if ((!Intrinsics.areEqual(this.selectUuid, paramObject.selectUuid)) || (this.flashing != paramObject.flashing) || (!Intrinsics.areEqual(this.data, paramObject.data)) || (!Intrinsics.areEqual(this.backupData, paramObject.backupData)) || (!Intrinsics.areEqual(this.transitionData, paramObject.transitionData)) || (this.transitionPosition != paramObject.transitionPosition) || (this.smartCutType != paramObject.smartCutType)) {}
+        if ((Intrinsics.areEqual(this.selectUuid, paramObject.selectUuid)) && (this.flashing == paramObject.flashing) && (Intrinsics.areEqual(this.data, paramObject.data)) && (Intrinsics.areEqual(this.backupData, paramObject.backupData)) && (Intrinsics.areEqual(this.transitionData, paramObject.transitionData)) && (this.transitionPosition == paramObject.transitionPosition) && (this.smartCutType == paramObject.smartCutType)) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public final long getAllVideoDuration()
   {
-    Object localObject = (Iterable)this.data;
-    long l = 0L;
-    localObject = ((Iterable)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      l = ((CutModelKt)((Iterator)localObject).next()).getResource().getScaleDuration() + l;
-    }
+    Iterator localIterator = ((Iterable)this.data).iterator();
+    for (long l = 0L; localIterator.hasNext(); l += ((CutModelKt)localIterator.next()).getResource().getScaleDuration()) {}
     return l;
   }
   
@@ -173,19 +169,16 @@ public final class ResourceModel
   public final CutModelKt getSelectedClip()
   {
     Iterator localIterator = ((Iterable)this.data).iterator();
-    Object localObject;
-    do
+    while (localIterator.hasNext())
     {
-      if (!localIterator.hasNext()) {
-        break;
-      }
       localObject = localIterator.next();
-    } while (!Intrinsics.areEqual(((CutModelKt)localObject).getUuid(), this.selectUuid));
-    for (;;)
-    {
-      return (CutModelKt)localObject;
-      localObject = null;
+      if (Intrinsics.areEqual(((CutModelKt)localObject).getUuid(), this.selectUuid)) {
+        break label51;
+      }
     }
+    Object localObject = null;
+    label51:
+    return (CutModelKt)localObject;
   }
   
   public final int getSmartCutType()
@@ -212,12 +205,28 @@ public final class ResourceModel
   @NotNull
   public String toString()
   {
-    return "ResourceModel(selectUuid=" + this.selectUuid + ", flashing=" + this.flashing + ", data=" + this.data + ", backupData=" + this.backupData + ", transitionData=" + this.transitionData + ", transitionPosition=" + this.transitionPosition + ", smartCutType=" + this.smartCutType + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ResourceModel(selectUuid=");
+    localStringBuilder.append(this.selectUuid);
+    localStringBuilder.append(", flashing=");
+    localStringBuilder.append(this.flashing);
+    localStringBuilder.append(", data=");
+    localStringBuilder.append(this.data);
+    localStringBuilder.append(", backupData=");
+    localStringBuilder.append(this.backupData);
+    localStringBuilder.append(", transitionData=");
+    localStringBuilder.append(this.transitionData);
+    localStringBuilder.append(", transitionPosition=");
+    localStringBuilder.append(this.transitionPosition);
+    localStringBuilder.append(", smartCutType=");
+    localStringBuilder.append(this.smartCutType);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.camera.mvauto.redo.ResourceModel
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager;
 import com.tencent.mobileqq.service.message.MessageProtoCodec;
 
 public class SubType0xf9
-  implements Msg0X210SubTypeDecoder
+  implements Msg0X210SubTypeDecoder<OnLinePushMessageProcessor>
 {
   public static void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, int paramInt, MsgInfo paramMsgInfo)
   {
@@ -19,14 +19,14 @@ public class SubType0xf9
   
   public MessageRecord a(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    a(paramOnLinePushMessageProcessor.a(), paramMsgType0x210.vProtobuf, 1, paramMsgInfo);
-    MessageProtoCodec.a(paramOnLinePushMessageProcessor.a().getMsgHandler(), paramMsgInfo.lFromUin, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid, paramMsgInfo.shMsgType);
+    a((QQAppInterface)paramOnLinePushMessageProcessor.a(), paramMsgType0x210.vProtobuf, 1, paramMsgInfo);
+    MessageProtoCodec.a(paramMsgInfo.lFromUin, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid, paramMsgInfo.shMsgType, paramOnLinePushMessageProcessor.a());
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0xf9
  * JD-Core Version:    0.7.0.1
  */

@@ -53,7 +53,7 @@ public class GLES11Id
   
   public void glGenBuffers(int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    localObject = sLock;
+    Object localObject = sLock;
     for (;;)
     {
       int i = paramInt1 - 1;
@@ -65,7 +65,16 @@ public class GLES11Id
         paramArrayOfInt[(paramInt2 + i)] = paramInt1;
         paramInt1 = i;
       }
-      finally {}
+      finally
+      {
+        break label53;
+      }
+    }
+    return;
+    label53:
+    for (;;)
+    {
+      throw paramArrayOfInt;
     }
   }
 }

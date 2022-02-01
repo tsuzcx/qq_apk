@@ -10,7 +10,7 @@ import com.tencent.mobileqq.data.ChatMessage;
 public class ImageSupplier
   extends ItemBuilderSupplier
 {
-  public ChatItemBuilder b(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  protected ChatItemBuilder b(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
     if (paramChatMessage.msgtype == -7008) {
       return new FakeEmotionBuilder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
@@ -20,7 +20,7 @@ public class ImageSupplier
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.supplier.ImageSupplier
  * JD-Core Version:    0.7.0.1
  */

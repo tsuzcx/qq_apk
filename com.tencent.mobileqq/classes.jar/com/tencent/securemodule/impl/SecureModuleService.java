@@ -18,7 +18,7 @@ import java.util.List;
 public class SecureModuleService
   implements ISecureModuleService
 {
-  private static SecureModuleService mInstance = null;
+  private static SecureModuleService mInstance;
   private Context mContext;
   private SecureModuleService.DownLoadBroadcastReceiver mDownLoadBroadcastReceiver;
   private List<SecureModuleService.CloudScanBroadcastReceiver> mObserverList;
@@ -50,17 +50,20 @@ public class SecureModuleService
   
   public static SecureModuleService getInstance(Context paramContext)
   {
-    if (mInstance == null) {
-      return new SecureModuleService(paramContext);
+    SecureModuleService localSecureModuleService2 = mInstance;
+    SecureModuleService localSecureModuleService1 = localSecureModuleService2;
+    if (localSecureModuleService2 == null) {
+      localSecureModuleService1 = new SecureModuleService(paramContext);
     }
-    return mInstance;
+    return localSecureModuleService1;
   }
   
   private void removeDownloadReceiver()
   {
-    if (this.mDownLoadBroadcastReceiver != null)
+    SecureModuleService.DownLoadBroadcastReceiver localDownLoadBroadcastReceiver = this.mDownLoadBroadcastReceiver;
+    if (localDownLoadBroadcastReceiver != null)
     {
-      this.mContext.unregisterReceiver(this.mDownLoadBroadcastReceiver);
+      this.mContext.unregisterReceiver(localDownLoadBroadcastReceiver);
       this.mDownLoadBroadcastReceiver = null;
     }
   }
@@ -87,13 +90,14 @@ public class SecureModuleService
     }
     Object localObject = new Intent("1000011");
     ((Intent)localObject).setClass(this.mContext, SecureService.class);
-    if (paramApkDownLoadListener != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ((Intent)localObject).putExtra("key_download_listener", bool);
-      this.mContext.startService((Intent)localObject);
-      return;
+    boolean bool;
+    if (paramApkDownLoadListener != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    ((Intent)localObject).putExtra("key_download_listener", bool);
+    this.mContext.startService((Intent)localObject);
   }
   
   public int register(ProductInfo paramProductInfo)
@@ -112,27 +116,19 @@ public class SecureModuleService
   {
     Object localObject = this.mObserverList.iterator();
     int i = 0;
-    if (((Iterator)localObject).hasNext())
-    {
-      if (!((SecureModuleService.CloudScanBroadcastReceiver)((Iterator)localObject).next()).a(paramCloudScanListener)) {
-        break label102;
+    while (((Iterator)localObject).hasNext()) {
+      if (((SecureModuleService.CloudScanBroadcastReceiver)((Iterator)localObject).next()).a(paramCloudScanListener)) {
+        i = 1;
       }
-      i = 1;
     }
-    label102:
-    for (;;)
+    if (i == 0)
     {
-      break;
-      if (i == 0)
-      {
-        paramCloudScanListener = new SecureModuleService.CloudScanBroadcastReceiver(this, paramCloudScanListener);
-        this.mObserverList.add(paramCloudScanListener);
-        localObject = new IntentFilter();
-        ((IntentFilter)localObject).addAction("1000030");
-        ((IntentFilter)localObject).addAction("1000031");
-        paramContext.registerReceiver(paramCloudScanListener, (IntentFilter)localObject);
-      }
-      return;
+      paramCloudScanListener = new SecureModuleService.CloudScanBroadcastReceiver(this, paramCloudScanListener);
+      this.mObserverList.add(paramCloudScanListener);
+      localObject = new IntentFilter();
+      ((IntentFilter)localObject).addAction("1000030");
+      ((IntentFilter)localObject).addAction("1000031");
+      paramContext.registerReceiver(paramCloudScanListener, (IntentFilter)localObject);
     }
   }
   
@@ -143,32 +139,25 @@ public class SecureModuleService
   
   public void unregisterCloudScanListener(Context paramContext, CloudScanListener paramCloudScanListener)
   {
-    Object localObject = null;
     Iterator localIterator = this.mObserverList.iterator();
-    if (localIterator.hasNext())
+    Object localObject = null;
+    while (localIterator.hasNext())
     {
       SecureModuleService.CloudScanBroadcastReceiver localCloudScanBroadcastReceiver = (SecureModuleService.CloudScanBroadcastReceiver)localIterator.next();
-      if (!localCloudScanBroadcastReceiver.a(paramCloudScanListener)) {
-        break label71;
+      if (localCloudScanBroadcastReceiver.a(paramCloudScanListener)) {
+        localObject = localCloudScanBroadcastReceiver;
       }
-      localObject = localCloudScanBroadcastReceiver;
     }
-    label71:
-    for (;;)
+    if (localObject != null)
     {
-      break;
-      if (localObject != null)
-      {
-        this.mObserverList.remove(localObject);
-        paramContext.unregisterReceiver(localObject);
-      }
-      return;
+      this.mObserverList.remove(localObject);
+      paramContext.unregisterReceiver(localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.securemodule.impl.SecureModuleService
  * JD-Core Version:    0.7.0.1
  */

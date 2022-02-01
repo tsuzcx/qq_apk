@@ -52,12 +52,11 @@ public class RichTextParser
   public static CertifiedAccountMeta.StUser a(String paramString1, String paramString2)
   {
     int j = paramString1.indexOf("uin:");
-    int k = "uin:".length();
     int i = paramString1.indexOf(paramString2);
     if (i == -1) {
       return new CertifiedAccountMeta.StUser();
     }
-    String str = paramString1.substring(j + k, i);
+    String str = paramString1.substring(j + 4, i);
     j = paramString1.length();
     paramString1 = paramString1.substring(i + paramString2.length(), j - 1);
     try
@@ -67,8 +66,8 @@ public class RichTextParser
     }
     catch (Exception paramString2)
     {
-      label72:
-      break label72;
+      label64:
+      break label64;
     }
     paramString2 = new CertifiedAccountMeta.StUser();
     paramString2.nick.set(paramString1);
@@ -119,16 +118,16 @@ public class RichTextParser
   
   public static ArrayList<CertifiedAccountMeta.StUser> a(Context paramContext, RichTextParser.RichSpannableStringBuilder paramRichSpannableStringBuilder, int paramInt, UserNameSapn.OnUserNameClickListener paramOnUserNameClickListener)
   {
+    boolean bool = TextUtils.isEmpty(paramRichSpannableStringBuilder);
     paramContext = null;
-    Object localObject1 = null;
-    if (TextUtils.isEmpty(paramRichSpannableStringBuilder)) {}
+    if (bool) {
+      return null;
+    }
+    Matcher localMatcher = Patterns.c.matcher(paramRichSpannableStringBuilder);
+    int i = 0;
     Object localObject2;
     for (;;)
     {
-      return localObject1;
-      Matcher localMatcher = Patterns.c.matcher(paramRichSpannableStringBuilder);
-      int i = 0;
-      localObject1 = paramContext;
       localObject2 = paramContext;
       try
       {
@@ -141,26 +140,34 @@ public class RichTextParser
           localObject2 = paramContext;
           int k = localMatcher.end();
           localObject2 = paramContext;
-          localObject1 = localMatcher.group();
+          Object localObject1 = localMatcher.group();
           localObject2 = paramContext;
           CertifiedAccountMeta.StUser localStUser = a((String)localObject1, ",nickname:");
           localObject2 = paramContext;
-          String str1 = localStUser.id.get();
+          String str = localStUser.id.get();
           localObject2 = paramContext;
-          String str2 = "@" + localStUser.nick + " ";
+          Object localObject3 = new StringBuilder();
           localObject2 = paramContext;
-          paramRichSpannableStringBuilder.replace(j, k - i, str2);
+          ((StringBuilder)localObject3).append("@");
           localObject2 = paramContext;
-          i += ((String)localObject1).length() - str2.length();
+          ((StringBuilder)localObject3).append(localStUser.nick);
           localObject2 = paramContext;
-          k = str2.length() + j;
+          ((StringBuilder)localObject3).append(" ");
+          localObject2 = paramContext;
+          localObject3 = ((StringBuilder)localObject3).toString();
+          localObject2 = paramContext;
+          paramRichSpannableStringBuilder.replace(j, k - i, (CharSequence)localObject3);
+          localObject2 = paramContext;
+          i += ((String)localObject1).length() - ((String)localObject3).length();
+          localObject2 = paramContext;
+          k = ((String)localObject3).length() + j;
           if (paramInt != -2147483648)
           {
             localObject2 = paramContext;
             paramRichSpannableStringBuilder.setSpan(new ForegroundColorSpan(paramInt), j, k, 33);
           }
           localObject2 = paramContext;
-          paramRichSpannableStringBuilder.setSpan(new UserNameSapn(str1, paramInt, paramOnUserNameClickListener), j, k, 33);
+          paramRichSpannableStringBuilder.setSpan(new UserNameSapn(str, paramInt, paramOnUserNameClickListener), j, k, 33);
           localObject2 = paramContext;
           paramRichSpannableStringBuilder.setSpan(new StyleSpan(1), j, k, 33);
           localObject1 = paramContext;
@@ -173,6 +180,10 @@ public class RichTextParser
           ((ArrayList)localObject1).add(localStUser);
           paramContext = (Context)localObject1;
         }
+        else
+        {
+          return paramContext;
+        }
       }
       catch (Exception paramContext) {}
     }
@@ -181,16 +192,17 @@ public class RichTextParser
   
   private static HashMap<String, ImageSpan> a(RichTextParser.TextImageSpanConfig paramTextImageSpanConfig)
   {
-    int i = 0;
     paramTextImageSpanConfig = paramTextImageSpanConfig.jdField_a_of_type_JavaLangCharSequence;
     if ((paramTextImageSpanConfig != null) && ((paramTextImageSpanConfig instanceof Spannable)))
     {
       paramTextImageSpanConfig = (Spannable)paramTextImageSpanConfig;
-      paramTextImageSpanConfig = (ImageSpan[])paramTextImageSpanConfig.getSpans(0, paramTextImageSpanConfig.length(), ImageSpan.class);
+      int j = paramTextImageSpanConfig.length();
+      int i = 0;
+      paramTextImageSpanConfig = (ImageSpan[])paramTextImageSpanConfig.getSpans(0, j, ImageSpan.class);
       if (paramTextImageSpanConfig != null)
       {
         HashMap localHashMap = new HashMap();
-        int j = paramTextImageSpanConfig.length;
+        j = paramTextImageSpanConfig.length;
         while (i < j)
         {
           Object localObject = paramTextImageSpanConfig[i];
@@ -205,67 +217,59 @@ public class RichTextParser
   
   private static void a(Context paramContext, SpannableStringBuilder paramSpannableStringBuilder)
   {
-    if ((TextUtils.isEmpty(paramSpannableStringBuilder)) || (paramContext == null)) {
-      return;
-    }
-    Matcher localMatcher = Patterns.i.matcher(paramSpannableStringBuilder);
-    int i = 0;
-    label23:
-    int j;
-    int k;
-    String str2;
-    int n;
-    String str1;
-    int m;
-    Object localObject;
-    if (localMatcher.find())
+    if (!TextUtils.isEmpty(paramSpannableStringBuilder))
     {
-      j = localMatcher.start() - i;
-      k = localMatcher.end();
-      str2 = localMatcher.group();
-      n = str2.indexOf(",color:");
-      int i1 = ",color:".length();
-      int i2 = str2.indexOf(",useDefaultFont:");
-      str1 = "";
-      m = str2.indexOf("text:");
-      if (m == -1) {
-        break label270;
+      if (paramContext == null) {
+        return;
       }
-      localObject = str2.substring(i1 + n, i2);
-      n = str2.indexOf(",color:");
-      str1 = str2.substring("text:".length() + m, n);
-      localObject = (Integer)jdField_a_of_type_JavaUtilMap.get(localObject);
-      if (localObject == null) {
-        break label264;
+      Matcher localMatcher = Patterns.i.matcher(paramSpannableStringBuilder);
+      int i = 0;
+      while (localMatcher.find())
+      {
+        int k = localMatcher.start() - i;
+        int j = localMatcher.end();
+        String str2 = localMatcher.group();
+        int m = str2.indexOf(",color:");
+        int n = str2.indexOf(",useDefaultFont:");
+        ColorStateList localColorStateList = null;
+        int i1 = str2.indexOf("text:");
+        Object localObject;
+        if (i1 != -1)
+        {
+          localObject = str2.substring(m + 7, n);
+          String str1 = str2.substring(i1 + 5, str2.indexOf(",color:"));
+          Integer localInteger = (Integer)jdField_a_of_type_JavaUtilMap.get(localObject);
+          localObject = str1;
+          if (localInteger != null)
+          {
+            localColorStateList = paramContext.getResources().getColorStateList(localInteger.intValue());
+            localObject = str1;
+          }
+        }
+        else
+        {
+          localObject = "";
+        }
+        paramSpannableStringBuilder.replace(k, j - i, (CharSequence)localObject);
+        j = i + (str2.length() - ((String)localObject).length());
+        m = ((String)localObject).length();
+        i = j;
+        if (localColorStateList != null)
+        {
+          paramSpannableStringBuilder.setSpan(new TextAppearanceSpan(null, 1, (int)(paramContext.getResources().getDisplayMetrics().density * 14.0F), localColorStateList, null), k, m + k, 33);
+          i = j;
+        }
       }
-      localObject = paramContext.getResources().getColorStateList(((Integer)localObject).intValue());
-    }
-    for (;;)
-    {
-      paramSpannableStringBuilder.replace(j, k - i, str1);
-      k = str2.length();
-      m = str1.length();
-      n = str1.length();
-      if (localObject != null) {
-        paramSpannableStringBuilder.setSpan(new TextAppearanceSpan(null, 1, (int)(14.0F * paramContext.getResources().getDisplayMetrics().density), (ColorStateList)localObject, null), j, j + n, 33);
-      }
-      i += k - m;
-      break label23;
-      break;
-      label264:
-      localObject = null;
-      continue;
-      label270:
-      localObject = null;
     }
   }
   
   public static void a(Context paramContext, RichTextParser.RichSpannableStringBuilder paramRichSpannableStringBuilder, ColorStateList paramColorStateList, UserNameSapn.OnUserNameClickListener paramOnUserNameClickListener)
   {
-    if ((TextUtils.isEmpty(paramRichSpannableStringBuilder)) || (paramContext == null)) {}
-    for (;;)
+    if (!TextUtils.isEmpty(paramRichSpannableStringBuilder))
     {
-      return;
+      if (paramContext == null) {
+        return;
+      }
       Matcher localMatcher = Patterns.jdField_a_of_type_JavaUtilRegexPattern.matcher(paramRichSpannableStringBuilder);
       int i = 0;
       while (localMatcher.find())
@@ -282,7 +286,7 @@ public class RichTextParser
         int m = ((String)localObject).length();
         int n = j + ((String)localObject).length();
         if (paramColorStateList != null) {
-          paramRichSpannableStringBuilder.setSpan(new TextAppearanceSpan(null, 1, (int)(14.0F * paramContext.getResources().getDisplayMetrics().density), paramColorStateList, null), j, n, 33);
+          paramRichSpannableStringBuilder.setSpan(new TextAppearanceSpan(null, 1, (int)(paramContext.getResources().getDisplayMetrics().density * 14.0F), paramColorStateList, null), j, n, 33);
         }
         paramRichSpannableStringBuilder.setSpan(new UserNameSapn(str2, paramColorStateList, paramOnUserNameClickListener), j, n, 33);
         i += k - m;
@@ -301,16 +305,12 @@ public class RichTextParser
       return;
     }
     Matcher localMatcher = Patterns.g.matcher(paramRichSpannableStringBuilder);
-    label14:
-    int i;
-    int j;
-    String str;
-    if (localMatcher.find())
+    while (localMatcher.find())
     {
       paramRichSpannableStringBuilder.c = true;
-      i = localMatcher.start();
-      j = localMatcher.end();
-      str = paramRichSpannableStringBuilder.subSequence(i, j).toString();
+      int i = localMatcher.start();
+      int j = localMatcher.end();
+      String str = paramRichSpannableStringBuilder.subSequence(i, j).toString();
       paramCharSequence = null;
       paramHashMap = paramCharSequence;
       if (paramBoolean)
@@ -321,65 +321,66 @@ public class RichTextParser
         }
       }
       paramCharSequence = paramHashMap;
-      if (paramHashMap == null)
-      {
-        if (QQSysFaceUtil.getLocalIdFromEMCode(str) == -1) {
-          break label157;
+      if (paramHashMap == null) {
+        if (QQSysFaceUtil.getLocalIdFromEMCode(str) != -1)
+        {
+          paramCharSequence = QQSysFaceUtil.getFaceDrawable(QQSysFaceUtil.getLocalIdFromEMCode(str));
         }
-        paramCharSequence = QQSysFaceUtil.getFaceDrawable(QQSysFaceUtil.getLocalIdFromEMCode(str));
+        else if (QQEmojiUtil.getLocalIdFromEMCode(str) != -1)
+        {
+          paramCharSequence = QQEmojiUtil.getEmojiDrawable(QQEmojiUtil.getLocalIdFromEMCode(str));
+        }
+        else
+        {
+          int k = str.indexOf("[em]") + 4;
+          int m = str.indexOf("[/em]");
+          if (k != -1)
+          {
+            if (m == -1) {
+              return;
+            }
+            paramHashMap = str.substring(k, m);
+          }
+        }
       }
-    }
-    for (;;)
-    {
+      try
+      {
+        paramCharSequence = QzoneEmotionUtils.getEmoUrlFromConfig(paramHashMap);
+      }
+      catch (Exception paramCharSequence)
+      {
+        label191:
+        break label191;
+      }
+      paramCharSequence = new StringBuilder();
+      paramCharSequence.append("https://qzonestyle.gtimg.cn/qzone/em/");
+      paramCharSequence.append(paramHashMap);
+      paramCharSequence.append(".gif");
+      paramCharSequence = paramCharSequence.toString();
+      paramHashMap = URLDrawable.URLDrawableOptions.obtain();
+      paramHashMap.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130848488);
+      paramHashMap = URLDrawable.getDrawable(paramCharSequence, paramHashMap);
+      paramCharSequence = paramHashMap;
+      if (paramHashMap != null)
+      {
+        paramCharSequence = paramHashMap;
+        if (paramURLDrawableListener != null)
+        {
+          paramHashMap.setURLDrawableListener(paramURLDrawableListener);
+          paramCharSequence = paramHashMap;
+          break label277;
+          return;
+        }
+      }
+      label277:
       if (paramCharSequence != null)
       {
         if (paramBoolean) {
           jdField_a_of_type_JavaUtilHashMap.put(str, paramCharSequence);
         }
         paramCharSequence = a(paramTextImageSpanConfig, paramCharSequence);
-        if (paramCharSequence == null) {
-          break label14;
-        }
-        paramRichSpannableStringBuilder.setSpan(paramCharSequence, i, j, 33);
-        break label14;
-        break;
-        label157:
-        if (QQEmojiUtil.getLocalIdFromEMCode(str) == -1) {
-          break label178;
-        }
-        paramCharSequence = QQEmojiUtil.getEmojiDrawable(QQEmojiUtil.getLocalIdFromEMCode(str));
-        continue;
-      }
-      break label14;
-      label178:
-      int k = str.indexOf("[em]") + "[em]".length();
-      int m = str.indexOf("[/em]");
-      if ((k == -1) || (m == -1)) {
-        break;
-      }
-      paramHashMap = str.substring(k, m);
-      try
-      {
-        paramCharSequence = QzoneEmotionUtils.getEmoUrlFromConfig(paramHashMap);
-        paramHashMap = URLDrawable.URLDrawableOptions.obtain();
-        paramHashMap.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130848609);
-        paramHashMap = URLDrawable.getDrawable(paramCharSequence, paramHashMap);
-        paramCharSequence = paramHashMap;
-        if (paramHashMap == null) {
-          continue;
-        }
-        paramCharSequence = paramHashMap;
-        if (paramURLDrawableListener == null) {
-          continue;
-        }
-        paramHashMap.setURLDrawableListener(paramURLDrawableListener);
-        paramCharSequence = paramHashMap;
-      }
-      catch (Exception paramCharSequence)
-      {
-        for (;;)
-        {
-          paramCharSequence = "https://qzonestyle.gtimg.cn/qzone/em/" + paramHashMap + ".gif";
+        if (paramCharSequence != null) {
+          paramRichSpannableStringBuilder.setSpan(paramCharSequence, i, j, 33);
         }
       }
     }
@@ -391,85 +392,74 @@ public class RichTextParser
       return;
     }
     Matcher localMatcher = jdField_a_of_type_JavaUtilRegexPattern.matcher(paramRichSpannableStringBuilder);
-    for (;;)
+    try
     {
-      try
+      while (localMatcher.find())
       {
-        if (!localMatcher.find()) {
-          break;
-        }
-        str2 = localMatcher.group(1);
-        if (!str2.startsWith("https://qzonestyle.gtimg.cn/")) {
-          continue;
-        }
-        str3 = localMatcher.group(2);
-        str4 = localMatcher.group(3);
-        i = localMatcher.start();
-        j = localMatcher.end();
-        str1 = paramRichSpannableStringBuilder.subSequence(i, j).toString();
-        paramCharSequence = null;
-        if (jdField_a_of_type_JavaUtilHashMap.containsKey(str1)) {
-          paramCharSequence = (Drawable)jdField_a_of_type_JavaUtilHashMap.get(str1);
-        }
-        paramHashMap = paramCharSequence;
-        if (paramCharSequence == null) {
-          paramCharSequence = URLDrawable.URLDrawableOptions.obtain();
-        }
-      }
-      catch (Exception paramTextImageSpanConfig)
-      {
-        String str2;
-        String str3;
-        String str4;
-        int i;
-        int j;
-        String str1;
-        int k;
-        int m;
-        paramTextImageSpanConfig.printStackTrace();
-        return;
-      }
-      try
-      {
-        k = Integer.parseInt(str4);
-        m = Integer.parseInt(str3);
-        if ((k > 0) && (m > 0))
+        String str2 = localMatcher.group(1);
+        if (str2.startsWith("https://qzonestyle.gtimg.cn/"))
         {
-          paramCharSequence.mRequestHeight = k;
-          paramCharSequence.mRequestWidth = m;
-        }
-      }
-      catch (Exception paramHashMap)
-      {
-        QLog.e("RichTextParser", 1, paramHashMap, new Object[0]);
-        continue;
-      }
-      paramCharSequence.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130848609);
-      paramCharSequence = URLDrawable.getDrawable(str2, paramCharSequence);
-      paramHashMap = paramCharSequence;
-      if (paramCharSequence != null)
-      {
-        paramHashMap = paramCharSequence;
-        if (paramURLDrawableListener != null)
-        {
-          paramCharSequence.setURLDrawableListener(paramURLDrawableListener);
+          String str3 = localMatcher.group(2);
+          String str4 = localMatcher.group(3);
+          int i = localMatcher.start();
+          int j = localMatcher.end();
+          String str1 = paramRichSpannableStringBuilder.subSequence(i, j).toString();
+          paramCharSequence = null;
+          if (jdField_a_of_type_JavaUtilHashMap.containsKey(str1)) {
+            paramCharSequence = (Drawable)jdField_a_of_type_JavaUtilHashMap.get(str1);
+          }
           paramHashMap = paramCharSequence;
+          if (paramCharSequence == null)
+          {
+            paramCharSequence = URLDrawable.URLDrawableOptions.obtain();
+            try
+            {
+              int k = Integer.parseInt(str4);
+              int m = Integer.parseInt(str3);
+              if ((k > 0) && (m > 0))
+              {
+                paramCharSequence.mRequestHeight = k;
+                paramCharSequence.mRequestWidth = m;
+              }
+            }
+            catch (Exception paramHashMap)
+            {
+              QLog.e("RichTextParser", 1, paramHashMap, new Object[0]);
+            }
+            paramCharSequence.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130848488);
+            paramCharSequence = URLDrawable.getDrawable(str2, paramCharSequence);
+            paramHashMap = paramCharSequence;
+            if (paramCharSequence != null)
+            {
+              paramHashMap = paramCharSequence;
+              if (paramURLDrawableListener != null)
+              {
+                paramCharSequence.setURLDrawableListener(paramURLDrawableListener);
+                paramHashMap = paramCharSequence;
+              }
+            }
+          }
+          if (paramHashMap != null)
+          {
+            jdField_a_of_type_JavaUtilHashMap.put(str1, paramHashMap);
+            paramCharSequence = a(paramTextImageSpanConfig, paramHashMap);
+            if (paramCharSequence != null) {
+              paramRichSpannableStringBuilder.setSpan(paramCharSequence, i, j, 33);
+            }
+          }
         }
       }
-      if (paramHashMap != null)
-      {
-        jdField_a_of_type_JavaUtilHashMap.put(str1, paramHashMap);
-        paramCharSequence = a(paramTextImageSpanConfig, paramHashMap);
-        if (paramCharSequence != null) {
-          paramRichSpannableStringBuilder.setSpan(paramCharSequence, i, j, 33);
-        }
-      }
+      return;
+    }
+    catch (Exception paramTextImageSpanConfig)
+    {
+      paramTextImageSpanConfig.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.textview.RichTextParser
  * JD-Core Version:    0.7.0.1
  */

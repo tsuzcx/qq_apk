@@ -2,7 +2,6 @@ package com.tencent.mobileqq.activity.aio.rebuild.msglist;
 
 import android.graphics.drawable.Drawable;
 import android.os.SystemClock;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,13 +9,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.imcore.message.PublicAccountRefresher;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.RefreshMessageContext;
+import com.tencent.imcore.message.RefreshMessageContext;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.activity.aio.ChatAdapter1;
 import com.tencent.mobileqq.activity.aio.ChatContext;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.AIOContext;
 import com.tencent.mobileqq.activity.aio.coreui.msglist.ListUI;
 import com.tencent.mobileqq.activity.aio.rebuild.PAContext;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.qphone.base.util.QLog;
@@ -40,14 +40,14 @@ public class PAListUI
   
   public void a()
   {
-    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.jdField_a_of_type_AndroidSupportV4AppFragmentActivity).inflate(2131559747, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131376859));
-    if (!((PAContext)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext).g()) {
+    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a()).inflate(2131559623, null);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131376350));
+    if (!((PAContext)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext).l()) {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131376853));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131376851));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_b_of_type_AndroidViewView.findViewById(2131376854));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131376344));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131376342));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_b_of_type_AndroidViewView.findViewById(2131376345));
   }
   
   public void a(long paramLong)
@@ -64,7 +64,7 @@ public class PAListUI
   
   public void a(boolean paramBoolean)
   {
-    if (((PAContext)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext).f())
+    if (((PAContext)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext).k())
     {
       if (paramBoolean)
       {
@@ -75,13 +75,16 @@ public class PAListUI
           }
           this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setOverScrollHeader(this.jdField_b_of_type_AndroidViewView);
         }
-        return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setOverscrollHeader((Drawable)null);
-      this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setOverScrollHeader((View)null);
-      return;
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setOverscrollHeader((Drawable)null);
+        this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setOverScrollHeader((View)null);
+      }
     }
-    super.a(paramBoolean);
+    else {
+      super.a(paramBoolean);
+    }
   }
   
   public void b(int paramInt)
@@ -100,7 +103,7 @@ public class PAListUI
   public void c()
   {
     super.c();
-    this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext.jdField_a_of_type_ComTencentImcoreMessageIMessageRefresher = new PublicAccountRefresher(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a());
+    this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext.jdField_a_of_type_ComTencentImcoreMessageIMessageRefresher = new PublicAccountRefresher(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().getMessageFacade().a());
   }
   
   public void c(int paramInt)
@@ -110,19 +113,22 @@ public class PAListUI
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      switch (paramInt)
+      if (paramInt != 0)
       {
+        if (paramInt != 1)
+        {
+          if (paramInt == 2) {
+            this.jdField_b_of_type_AndroidWidgetTextView.setText(2131695220);
+          }
+        }
+        else {
+          this.jdField_b_of_type_AndroidWidgetTextView.setText(2131719247);
+        }
       }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new PAListUI.1(this));
-        return;
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131719535);
-        continue;
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131719529);
-        continue;
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131695224);
+      else {
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131719253);
       }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().runOnUiThread(new PAListUI.1(this));
       return;
     }
     catch (Exception localException) {}
@@ -130,15 +136,15 @@ public class PAListUI
   
   public void onNotCompleteVisable(int paramInt, View paramView, ListView paramListView)
   {
-    if (((PAContext)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext).f()) {
-      b(2131695229);
+    if (((PAContext)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext).k()) {
+      b(2131695225);
     }
   }
   
   public void onViewCompleteVisable(int paramInt, View paramView, ListView paramListView)
   {
-    if (((PAContext)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext).f()) {
-      b(2131695241);
+    if (((PAContext)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext).k()) {
+      b(2131695237);
     }
   }
   
@@ -147,7 +153,7 @@ public class PAListUI
     if (QLog.isColorLevel()) {
       QLog.d("PAListUI", 2, "listView onViewCompleteVisableAndReleased");
     }
-    if (!((PAContext)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext).f()) {
+    if (!((PAContext)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext).k()) {
       return super.onViewCompleteVisableAndReleased(paramInt, paramView, paramListView);
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.getCount() > 0))
@@ -155,17 +161,17 @@ public class PAListUI
       this.jdField_a_of_type_Boolean = true;
       a(System.currentTimeMillis());
       this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      ((ChatContext)this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext.jdField_a_of_type_JavaLangObject).a(this.jdField_a_of_type_Long);
-      this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext.e = false;
-      this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext.f = true;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 21, this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext);
+      ((ChatContext)this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext.jdField_a_of_type_JavaLangObject).a(this.jdField_a_of_type_Long);
+      this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext.e = false;
+      this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext.f = true;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().jdField_a_of_type_Int, 21, this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.PAListUI
  * JD-Core Version:    0.7.0.1
  */

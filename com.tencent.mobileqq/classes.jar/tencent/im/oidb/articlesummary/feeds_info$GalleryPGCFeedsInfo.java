@@ -19,14 +19,15 @@ public final class feeds_info$GalleryPGCFeedsInfo
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 24, 32, 42, 402 }, new String[] { "uint64_pic_count", "uint64_source", "uint64_sub_source", "bytes_report_exdata", "bytes_gallery_url" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2 }, GalleryPGCFeedsInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 24, 32, 42, 402 }, new String[] { "uint64_pic_count", "uint64_source", "uint64_sub_source", "bytes_report_exdata", "bytes_gallery_url" }, new Object[] { localLong, localLong, localLong, localByteStringMicro1, localByteStringMicro2 }, GalleryPGCFeedsInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.articlesummary.feeds_info.GalleryPGCFeedsInfo
  * JD-Core Version:    0.7.0.1
  */

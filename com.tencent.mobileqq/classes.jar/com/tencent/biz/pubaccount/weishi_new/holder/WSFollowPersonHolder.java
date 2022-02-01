@@ -3,7 +3,6 @@ package com.tencent.biz.pubaccount.weishi_new.holder;
 import UserGrowth.stFeed;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -26,7 +25,7 @@ public class WSFollowPersonHolder
   
   private WSFollowPersonHolder(ViewGroup paramViewGroup, WSFollowAdapter paramWSFollowAdapter)
   {
-    super(paramViewGroup, 2131560526);
+    super(paramViewGroup, 2131560413);
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowAdapter = paramWSFollowAdapter;
     b();
   }
@@ -38,18 +37,18 @@ public class WSFollowPersonHolder
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131368051));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)a(2131376728));
-    TextView localTextView1 = (TextView)a(2131382044);
-    TextView localTextView2 = (TextView)a(2131382043);
-    ImageView localImageView = (ImageView)a(2131382014);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)getView(2131367803));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)getView(2131376226));
+    TextView localTextView1 = (TextView)getView(2131381247);
+    TextView localTextView2 = (TextView)getView(2131381246);
+    ImageView localImageView = (ImageView)getView(2131381219);
     localTextView2.setVisibility(8);
     localImageView.setVisibility(8);
-    localTextView1.setText(2131720708);
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(a(), 0, false);
+    localTextView1.setText(2131720432);
+    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getContext(), 0, false);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setHasFixedSize(true);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSRecommendFollowAdapter = new WSRecommendFollowAdapter(a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowAdapter);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSRecommendFollowAdapter = new WSRecommendFollowAdapter(getContext(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowAdapter);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSRecommendFollowAdapter);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new WSItemDecoration());
   }
@@ -61,18 +60,24 @@ public class WSFollowPersonHolder
   
   public void a()
   {
-    if ((this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager == null) || (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSRecommendFollowAdapter == null)) {}
-    for (;;)
+    Object localObject = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
+    if (localObject != null)
     {
-      return;
-      int i = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findFirstVisibleItemPosition();
+      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSRecommendFollowAdapter == null) {
+        return;
+      }
+      int i = ((LinearLayoutManager)localObject).findFirstVisibleItemPosition();
       int j = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findLastVisibleItemPosition();
-      if ((i >= 0) && (j < this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSRecommendFollowAdapter.b().size())) {
+      if (i >= 0)
+      {
+        if (j >= this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSRecommendFollowAdapter.getDataList().size()) {
+          return;
+        }
         while (i <= j)
         {
-          RecyclerView.ViewHolder localViewHolder = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.findViewHolderForAdapterPosition(i);
-          if ((localViewHolder instanceof WSRecommendFollowHolder)) {
-            ((WSRecommendFollowHolder)localViewHolder).b();
+          localObject = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.findViewHolderForAdapterPosition(i);
+          if ((localObject instanceof WSRecommendFollowHolder)) {
+            ((WSRecommendFollowHolder)localObject).b();
           }
           i += 1;
         }
@@ -89,12 +94,12 @@ public class WSFollowPersonHolder
     }
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSRecommendFollowAdapter.a(paramstFeed);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSRecommendFollowAdapter.a(paramstFeed.person_meta);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSRecommendFollowAdapter.fillList(paramstFeed.person_meta);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.holder.WSFollowPersonHolder
  * JD-Core Version:    0.7.0.1
  */

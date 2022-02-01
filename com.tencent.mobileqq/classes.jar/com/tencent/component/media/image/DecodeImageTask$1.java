@@ -9,6 +9,7 @@ import com.tencent.component.media.image.drawable.BitmapImageDrawable;
 import com.tencent.component.media.image.drawable.SpecifiedBitmapDrawable;
 import com.tencent.component.media.image.image.BitmapImage;
 import com.tencent.component.media.image.image.FeedsBitmapImage;
+import com.tencent.component.media.image.image.Image;
 import com.tencent.component.media.utils.BaseHandler;
 import com.tencent.component.media.utils.ImageManagerLog;
 import java.util.HashMap;
@@ -30,51 +31,81 @@ class DecodeImageTask$1
     int i = ImageManagerEnv.g().getModelIdFromUrl(this.val$key.url);
     if (i < 0)
     {
-      ImageManagerLog.e(DecodeImageTask.access$100(), "super resolution. invalid modelId. url=" + this.val$key.url);
+      localObject1 = DecodeImageTask.access$100();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("super resolution. invalid modelId. url=");
+      ((StringBuilder)localObject2).append(this.val$key.url);
+      ImageManagerLog.e((String)localObject1, ((StringBuilder)localObject2).toString());
       return;
     }
     Object localObject1 = Runtime.getRuntime();
     long l = ((Runtime)localObject1).maxMemory() - ((Runtime)localObject1).totalMemory() + ((Runtime)localObject1).freeMemory();
-    ImageManagerLog.w(DecodeImageTask.access$100(), "super resolution. freeMemory=" + l);
+    localObject1 = DecodeImageTask.access$100();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("super resolution. freeMemory=");
+    ((StringBuilder)localObject2).append(l);
+    ImageManagerLog.w((String)localObject1, ((StringBuilder)localObject2).toString());
     if (l / 1024L / 1024L < ImageManagerEnv.g().getSuperResolutionMemoryThreshold())
     {
       ImageManagerLog.w(DecodeImageTask.access$100(), "super resolution. Low memory, ignore super resolution.");
       return;
     }
-    ImageManagerLog.w(DecodeImageTask.access$100(), "super resolution. using model modelId=" + i + " url=" + this.val$key.url);
+    localObject1 = DecodeImageTask.access$100();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("super resolution. using model modelId=");
+    ((StringBuilder)localObject2).append(i);
+    ((StringBuilder)localObject2).append(" url=");
+    ((StringBuilder)localObject2).append(this.val$key.url);
+    ImageManagerLog.w((String)localObject1, ((StringBuilder)localObject2).toString());
     l = System.currentTimeMillis();
     localObject1 = ImageManagerEnv.g().doSuperResolution(this.val$bitmap, i);
     l = System.currentTimeMillis() - l;
     if (ImageManagerEnv.g().isHighScaleUrl(this.val$key.url))
     {
-      ImageManagerLog.w(DecodeImageTask.access$100(), "high scale super resolution. Total function cost=" + l);
+      localObject2 = DecodeImageTask.access$100();
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("high scale super resolution. Total function cost=");
+      ((StringBuilder)localObject3).append(l);
+      ImageManagerLog.w((String)localObject2, ((StringBuilder)localObject3).toString());
       ImageManagerEnv.g().reportImageTimeCostMTA("qzone_image_decode", "image_time_cost", "super_resolution_total_procedure_high_scale", (int)l);
     }
-    Object localObject2;
-    for (;;)
+    else
     {
-      localObject2 = new HashMap();
-      ((HashMap)localObject2).put("PhoneType", Build.MODEL);
-      ((HashMap)localObject2).put("sdk", String.valueOf(Build.VERSION.SDK_INT));
-      ((HashMap)localObject2).put("modelId", String.valueOf(i));
-      ((HashMap)localObject2).put("timeCost", String.valueOf(l));
-      ((HashMap)localObject2).put("isHighScale", String.valueOf(ImageManagerEnv.g().isHighScaleUrl(this.val$key.url)));
-      ImageManagerEnv.g().statisticCollectorReport("qzone_super_resolution", (HashMap)localObject2);
-      if (localObject1 != null) {
-        break;
-      }
-      ImageManagerLog.w(DecodeImageTask.access$100(), "super resolution. superResolutionBitmap == null after process. url=" + this.val$key.url);
-      return;
-      ImageManagerLog.w(DecodeImageTask.access$100(), "super resolution. Total function cost=" + l);
+      localObject2 = DecodeImageTask.access$100();
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("super resolution. Total function cost=");
+      ((StringBuilder)localObject3).append(l);
+      ImageManagerLog.w((String)localObject2, ((StringBuilder)localObject3).toString());
       ImageManagerEnv.g().reportImageTimeCostMTA("qzone_image_decode", "image_time_cost", "super_resolution_total_procedure", (int)l);
+    }
+    localObject2 = new HashMap();
+    ((HashMap)localObject2).put("PhoneType", Build.MODEL);
+    ((HashMap)localObject2).put("sdk", String.valueOf(Build.VERSION.SDK_INT));
+    ((HashMap)localObject2).put("modelId", String.valueOf(i));
+    ((HashMap)localObject2).put("timeCost", String.valueOf(l));
+    ((HashMap)localObject2).put("isHighScale", String.valueOf(ImageManagerEnv.g().isHighScaleUrl(this.val$key.url)));
+    ImageManagerEnv.g().statisticCollectorReport("qzone_super_resolution", (HashMap)localObject2);
+    if (localObject1 == null)
+    {
+      localObject1 = DecodeImageTask.access$100();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("super resolution. superResolutionBitmap == null after process. url=");
+      ((StringBuilder)localObject2).append(this.val$key.url);
+      ImageManagerLog.w((String)localObject1, ((StringBuilder)localObject2).toString());
+      return;
     }
     l = System.currentTimeMillis();
     ImageManager.getInstance().saveSuperResImage((Bitmap)localObject1, this.val$key);
-    BitmapImage localBitmapImage = new BitmapImage(BitmapReference.getBitmapReference((Bitmap)localObject1));
+    Object localObject3 = new BitmapImage(BitmapReference.getBitmapReference((Bitmap)localObject1));
+    Object localObject4;
     if ((this.val$key.options != null) && (this.val$key.options.extraProcessor != null))
     {
-      localObject2 = new BitmapImageDrawable(localBitmapImage, this.val$finalClipw, this.val$finalCliph);
-      ImageManagerLog.w(DecodeImageTask.access$100(), "super resolution. check high scale after sr. url=" + this.val$key.url);
+      localObject2 = new BitmapImageDrawable((BitmapImage)localObject3, this.val$finalClipw, this.val$finalCliph);
+      localObject1 = DecodeImageTask.access$100();
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append("super resolution. check high scale after sr. url=");
+      ((StringBuilder)localObject4).append(this.val$key.url);
+      ImageManagerLog.w((String)localObject1, ((StringBuilder)localObject4).toString());
       localObject1 = localObject2;
       if (DecodeImageTask.access$200((Drawable)localObject2)) {
         localObject1 = DecodeImageTask.access$300((Drawable)localObject2);
@@ -84,41 +115,42 @@ class DecodeImageTask$1
       {
         localObject2 = ((SpecifiedBitmapDrawable)localObject1).getBitmapRef();
         ImageManager.getInstance().putDrawableInMemoryCache(this.val$key, this.val$hashCodeEx, new FeedsBitmapImage((BitmapReference)localObject2), (Drawable)localObject1, this.val$key.options);
-        if (this.val$key.listener != null) {
-          DecodeImageTask.access$400().post(new DecodeImageTask.1.1(this, (Drawable)localObject1));
-        }
-        label670:
-        l = System.currentTimeMillis() - l;
-        if (!ImageManagerEnv.g().isHighScaleUrl(this.val$key.url)) {
-          break label849;
-        }
-        ImageManagerEnv.g().reportImageTimeCostMTA("qzone_image_decode", "image_time_cost", "post_process_after_super_resolution_high_scale", (int)l);
+      }
+      else
+      {
+        localObject2 = ImageManager.getInstance();
+        localObject4 = this.val$key;
+        ((ImageManager)localObject2).putDrawableInMemoryCache((ImageKey)localObject4, this.val$hashCodeEx, (Image)localObject3, (Drawable)localObject1, ((ImageKey)localObject4).options);
+      }
+      if (this.val$key.listener != null) {
+        DecodeImageTask.access$400().post(new DecodeImageTask.1.1(this, (Drawable)localObject1));
       }
     }
-    for (;;)
+    else
     {
-      ImageTracer.reportDownloadTime(this.val$key.url, true);
-      ImageTracer.reportDecodeTime(this.val$key.url, true);
-      ImageTracer.endSuperResolution(this.val$key.url);
-      ProgressTracer.print(9, this.val$key.urlKey);
-      return;
-      ImageManager.getInstance().putDrawableInMemoryCache(this.val$key, this.val$hashCodeEx, localBitmapImage, (Drawable)localObject1, this.val$key.options);
-      break;
-      localObject1 = new SpecifiedBitmapDrawable(localBitmapImage.getBitmap());
-      ImageManager.getInstance().putDrawableInMemoryCache(this.val$key, this.val$hashCodeEx, localBitmapImage, (Drawable)localObject1, this.val$key.options);
-      if (this.val$key.listener == null) {
-        break label670;
+      localObject1 = new SpecifiedBitmapDrawable(((BitmapImage)localObject3).getBitmap());
+      localObject2 = ImageManager.getInstance();
+      localObject4 = this.val$key;
+      ((ImageManager)localObject2).putDrawableInMemoryCache((ImageKey)localObject4, this.val$hashCodeEx, (Image)localObject3, (Drawable)localObject1, ((ImageKey)localObject4).options);
+      if (this.val$key.listener != null) {
+        DecodeImageTask.access$400().post(new DecodeImageTask.1.2(this, (Drawable)localObject1));
       }
-      DecodeImageTask.access$400().post(new DecodeImageTask.1.2(this, (Drawable)localObject1));
-      break label670;
-      label849:
+    }
+    l = System.currentTimeMillis() - l;
+    if (ImageManagerEnv.g().isHighScaleUrl(this.val$key.url)) {
+      ImageManagerEnv.g().reportImageTimeCostMTA("qzone_image_decode", "image_time_cost", "post_process_after_super_resolution_high_scale", (int)l);
+    } else {
       ImageManagerEnv.g().reportImageTimeCostMTA("qzone_image_decode", "image_time_cost", "post_process_after_super_resolution", (int)l);
     }
+    ImageTracer.reportDownloadTime(this.val$key.url, true);
+    ImageTracer.reportDecodeTime(this.val$key.url, true);
+    ImageTracer.endSuperResolution(this.val$key.url);
+    ProgressTracer.print(9, this.val$key.urlKey);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.image.DecodeImageTask.1
  * JD-Core Version:    0.7.0.1
  */

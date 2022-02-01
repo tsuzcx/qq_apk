@@ -14,24 +14,26 @@ import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.OkHttpClient.Builder;
 import okhttp3.Request.Builder;
+import org.json.JSONObject;
 
 public class OkHttpHelper
 {
   private static final int DEFAULT_TIMEOUT_SECOND = 3;
-  private static volatile OkHttpHelper sInstance = null;
+  private static volatile OkHttpHelper sInstance;
   private OkHttpClient mClient = new OkHttpClient();
   
   public static OkHttpHelper getsInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new OkHttpHelper();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new OkHttpHelper();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public OkHttpClient getOkHttpClient()
@@ -46,77 +48,81 @@ public class OkHttpHelper
   
   public void postRequestWithFormBody(String paramString, Map<String, String> paramMap, int paramInt, Callback paramCallback)
   {
-    if ((paramMap == null) || (paramMap.isEmpty()))
-    {
-      ABTestLog.warn("post request body is null, please check it!", new Object[0]);
-      paramCallback.onFailure(null, new IOException("body params is null"));
-      return;
-    }
-    try
-    {
-      FormBody.Builder localBuilder = new FormBody.Builder();
-      paramMap = paramMap.entrySet().iterator();
-      while (paramMap.hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)paramMap.next();
-        localBuilder.add((String)localEntry.getKey(), (String)localEntry.getValue());
-      }
-      paramMap = localBuilder.build();
-    }
-    catch (Exception paramString)
-    {
-      ABTestLog.error(paramString.getMessage(), new Object[0]);
-      return;
-    }
-    paramString = new Request.Builder().url(paramString).post(paramMap).build();
-    if (this.mClient == null)
-    {
-      ABTestLog.warn("mClient is null and reset init mClient", new Object[0]);
-      this.mClient = new OkHttpClient();
-    }
-    for (;;)
-    {
-      this.mClient.newBuilder().connectTimeout(paramInt, TimeUnit.SECONDS).readTimeout(paramInt, TimeUnit.SECONDS).writeTimeout(paramInt, TimeUnit.SECONDS).build().newCall(paramString).enqueue(paramCallback);
-      return;
-      do
-      {
-        paramInt = 3;
-        break;
-      } while (paramInt <= 0);
-    }
-  }
-  
-  public void postRequestWithJSONBody(String paramString, Object paramObject, int paramInt, Callback paramCallback)
-  {
+    if ((paramMap != null) && (!paramMap.isEmpty())) {}
     for (;;)
     {
       try
       {
-        paramObject = FormBody.create(MediaType.parse("application/json; charset=utf-8"), paramObject.toString());
-        paramString = new Request.Builder().url(paramString).post(paramObject).build();
+        FormBody.Builder localBuilder = new FormBody.Builder();
+        paramMap = paramMap.entrySet().iterator();
+        if (paramMap.hasNext())
+        {
+          Map.Entry localEntry = (Map.Entry)paramMap.next();
+          localBuilder.add((String)localEntry.getKey(), (String)localEntry.getValue());
+          continue;
+        }
+        paramMap = localBuilder.build();
+        paramString = new Request.Builder().url(paramString).post(paramMap).build();
         if (this.mClient != null) {
-          break label126;
+          break label233;
         }
         ABTestLog.warn("mClient is null and reset init mClient", new Object[0]);
         this.mClient = new OkHttpClient();
       }
       catch (Exception paramString)
       {
+        long l;
         ABTestLog.error(paramString.getMessage(), new Object[0]);
         return;
       }
-      this.mClient.newBuilder().connectTimeout(paramInt, TimeUnit.SECONDS).readTimeout(paramInt, TimeUnit.SECONDS).writeTimeout(paramInt, TimeUnit.SECONDS).build().newCall(paramString).enqueue(paramCallback);
+      paramMap = this.mClient.newBuilder();
+      l = paramInt;
+      paramMap.connectTimeout(l, TimeUnit.SECONDS).readTimeout(l, TimeUnit.SECONDS).writeTimeout(l, TimeUnit.SECONDS).build().newCall(paramString).enqueue(paramCallback);
       return;
-      paramInt = 3;
-      continue;
-      label126:
-      if (paramInt <= 0) {}
+      ABTestLog.warn("post request body is null, please check it!", new Object[0]);
+      paramCallback.onFailure(null, new IOException("body params is null"));
+      return;
+      label233:
+      if (paramInt <= 0) {
+        paramInt = 3;
+      }
+    }
+  }
+  
+  public void postRequestWithJSONBody(String paramString, JSONObject paramJSONObject, int paramInt, Callback paramCallback)
+  {
+    for (;;)
+    {
+      try
+      {
+        paramJSONObject = FormBody.create(MediaType.parse("application/json; charset=utf-8"), paramJSONObject.toString());
+        paramString = new Request.Builder().url(paramString).post(paramJSONObject).build();
+        if (this.mClient != null) {
+          break label127;
+        }
+        ABTestLog.warn("mClient is null and reset init mClient", new Object[0]);
+        this.mClient = new OkHttpClient();
+      }
+      catch (Exception paramString)
+      {
+        long l;
+        ABTestLog.error(paramString.getMessage(), new Object[0]);
+        return;
+      }
+      paramJSONObject = this.mClient.newBuilder();
+      l = paramInt;
+      paramJSONObject.connectTimeout(l, TimeUnit.SECONDS).readTimeout(l, TimeUnit.SECONDS).writeTimeout(l, TimeUnit.SECONDS).build().newCall(paramString).enqueue(paramCallback);
+      return;
+      label127:
+      if (paramInt <= 0) {
+        paramInt = 3;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.abtestsdk.utils.OkHttpHelper
  * JD-Core Version:    0.7.0.1
  */

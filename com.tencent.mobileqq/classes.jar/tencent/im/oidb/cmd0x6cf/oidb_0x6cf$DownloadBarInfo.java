@@ -21,16 +21,17 @@ public final class oidb_0x6cf$DownloadBarInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 50, 58 }, new String[] { "uint32_appear_time", "bytes_logo_url", "bytes_download_button_text", "bytes_open_button_text", "uint32_button_bg_color", "msg_url_jump_info", "bytes_common_data" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0), null, localByteStringMicro4 }, DownloadBarInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 50, 58 }, new String[] { "uint32_appear_time", "bytes_logo_url", "bytes_download_button_text", "bytes_open_button_text", "uint32_button_bg_color", "msg_url_jump_info", "bytes_common_data" }, new Object[] { localInteger, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localInteger, null, localByteStringMicro4 }, DownloadBarInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x6cf.oidb_0x6cf.DownloadBarInfo
  * JD-Core Version:    0.7.0.1
  */

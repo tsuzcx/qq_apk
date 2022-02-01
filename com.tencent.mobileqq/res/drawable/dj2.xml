@@ -1,5 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient android:startColor="#00000000" android:endColor="#f2000000" android:angle="270.0" android:type="linear" android:centerColor="#b3000000" />
-</shape>
+<animated-rotate android:drawable="@drawable/gst" android:pivotX="50.0%" android:pivotY="50.0%"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

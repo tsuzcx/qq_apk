@@ -15,8 +15,9 @@ public enum AdProgressDialog
   
   private AdProgressDialogAdapter getAdapter()
   {
-    if (this.adapter != null) {
-      return (AdProgressDialogAdapter)this.adapter.get();
+    WeakReference localWeakReference = this.adapter;
+    if (localWeakReference != null) {
+      return (AdProgressDialogAdapter)localWeakReference.get();
     }
     return null;
   }
@@ -32,10 +33,12 @@ public enum AdProgressDialog
   public boolean isShowing(Context paramContext)
   {
     AdProgressDialogAdapter localAdProgressDialogAdapter = getAdapter();
-    if (localAdProgressDialogAdapter != null) {}
-    for (paramContext = Boolean.valueOf(localAdProgressDialogAdapter.isShowing(paramContext));; paramContext = null) {
-      return paramContext.booleanValue();
+    if (localAdProgressDialogAdapter != null) {
+      paramContext = Boolean.valueOf(localAdProgressDialogAdapter.isShowing(paramContext));
+    } else {
+      paramContext = null;
     }
+    return paramContext.booleanValue();
   }
   
   public void setAdapter(WeakReference<AdProgressDialogAdapter> paramWeakReference)

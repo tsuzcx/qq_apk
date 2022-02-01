@@ -40,21 +40,20 @@ public class ContainerView$NoSelLinkMovementMethod
       localObject = (ClickableSpan[])paramSpannable.getSpans(j, j, ClickableSpan.class);
       if (localObject.length != 0)
       {
-        if (i == 1) {
-          localObject[0].onClick(paramTextView);
-        }
-        for (;;)
+        if (i == 1)
         {
+          localObject[0].onClick(paramTextView);
           return true;
-          if (i == 0)
-          {
-            Rect localRect = new Rect();
-            paramTextView.getGlobalVisibleRect(localRect);
-            if (localRect.contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY())) {
-              Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]));
-            }
+        }
+        if (i == 0)
+        {
+          Rect localRect = new Rect();
+          paramTextView.getGlobalVisibleRect(localRect);
+          if (localRect.contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY())) {
+            Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]));
           }
         }
+        return true;
       }
     }
     return Touch.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
@@ -62,7 +61,7 @@ public class ContainerView$NoSelLinkMovementMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ContainerView.NoSelLinkMovementMethod
  * JD-Core Version:    0.7.0.1
  */

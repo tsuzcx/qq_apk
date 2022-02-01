@@ -10,12 +10,13 @@ class GameRoomFragment$17
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GameRoomFragment.a(this.a, true, "3");
+    GameRoomFragment.a(this.a, true, "2");
+    GameRoomFragment.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.GameRoomFragment.17
  * JD-Core Version:    0.7.0.1
  */

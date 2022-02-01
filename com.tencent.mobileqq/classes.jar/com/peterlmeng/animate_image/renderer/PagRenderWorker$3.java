@@ -15,22 +15,21 @@ class PagRenderWorker$3
   
   public void run()
   {
-    try
+    for (;;)
     {
-      PagRenderWorker.access$200(this.this$0, this);
-      PagRenderWorker localPagRenderWorker;
-      if (PagRenderWorker.access$000(this.this$0) != null)
+      try
       {
-        localPagRenderWorker = this.this$0;
-        if ((!PagRenderWorker.access$300(this.this$0)) || (!PagRenderWorker.access$000(this.this$0).isRunning())) {
-          break label174;
+        PagRenderWorker.access$200(this.this$0, this);
+        if (PagRenderWorker.access$000(this.this$0) != null)
+        {
+          PagRenderWorker localPagRenderWorker = this.this$0;
+          if ((!PagRenderWorker.access$300(this.this$0)) || (!PagRenderWorker.access$000(this.this$0).isRunning())) {
+            break label188;
+          }
+          bool = true;
+          PagRenderWorker.access$302(localPagRenderWorker, bool);
+          PagRenderWorker.access$000(this.this$0).cancel();
         }
-      }
-      label174:
-      for (boolean bool = true;; bool = false)
-      {
-        PagRenderWorker.access$302(localPagRenderWorker, bool);
-        PagRenderWorker.access$000(this.this$0).cancel();
         if (this.this$0.surfaceTexture != null)
         {
           if ((Build.VERSION.SDK_INT >= 26) && (!this.this$0.surfaceTexture.isReleased())) {
@@ -47,20 +46,22 @@ class PagRenderWorker$3
         {
           this.this$0.pagPlayer.release();
           this.this$0.pagPlayer = null;
+          return;
         }
-        return;
+      }
+      catch (Exception localException)
+      {
+        LogUtils.b("PagRenderWorker", localException.getMessage());
       }
       return;
-    }
-    catch (Exception localException)
-    {
-      LogUtils.b("PagRenderWorker", localException.getMessage());
+      label188:
+      boolean bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.peterlmeng.animate_image.renderer.PagRenderWorker.3
  * JD-Core Version:    0.7.0.1
  */

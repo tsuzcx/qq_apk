@@ -5,7 +5,8 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.unique;
-import com.tencent.mobileqq.utils.QAVHrMeeting;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.troop.api.troopmemberlist.ITroopMemberListActivityApi;
 import com.tencent.qphone.base.util.QLog;
 
 public class DiscussionInfo
@@ -53,7 +54,7 @@ public class DiscussionInfo
     return false;
   }
   
-  public boolean entityByCursor(Cursor paramCursor)
+  protected boolean entityByCursor(Cursor paramCursor)
   {
     this.uin = paramCursor.getString(paramCursor.getColumnIndex("uin"));
     this.infoSeq = paramCursor.getLong(paramCursor.getColumnIndex("infoSeq"));
@@ -67,26 +68,32 @@ public class DiscussionInfo
     this.mCompareSpell = paramCursor.getString(paramCursor.getColumnIndex("mCompareSpell"));
     this.groupCode = paramCursor.getLong(paramCursor.getColumnIndex("groupCode"));
     this.groupUin = paramCursor.getLong(paramCursor.getColumnIndex("groupUin"));
-    if (paramCursor.getInt(paramCursor.getColumnIndex("hasCollect")) != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.hasCollect = bool;
-      this.inheritOwnerUin = paramCursor.getString(paramCursor.getColumnIndex("inheritOwnerUin"));
-      this.createFrom = paramCursor.getInt(paramCursor.getColumnIndex("createFrom"));
-      this.uiControlFlag = paramCursor.getLong(paramCursor.getColumnIndex("uiControlFlag"));
-      this.mOrigin = paramCursor.getLong(paramCursor.getColumnIndex("mOrigin"));
-      this.mOriginExtra = paramCursor.getLong(paramCursor.getColumnIndex("mOriginExtra"));
-      this.mSelfRight = paramCursor.getInt(paramCursor.getColumnIndex("mSelfRight"));
-      if (QLog.isDevelopLevel()) {
-        QLog.w("DiscussionInfo", 1, "DiscussionInfo, " + this);
-      }
-      return true;
+    boolean bool;
+    if (paramCursor.getInt(paramCursor.getColumnIndex("hasCollect")) != 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.hasCollect = bool;
+    this.inheritOwnerUin = paramCursor.getString(paramCursor.getColumnIndex("inheritOwnerUin"));
+    this.createFrom = paramCursor.getInt(paramCursor.getColumnIndex("createFrom"));
+    this.uiControlFlag = paramCursor.getLong(paramCursor.getColumnIndex("uiControlFlag"));
+    this.mOrigin = paramCursor.getLong(paramCursor.getColumnIndex("mOrigin"));
+    this.mOriginExtra = paramCursor.getLong(paramCursor.getColumnIndex("mOriginExtra"));
+    this.mSelfRight = paramCursor.getInt(paramCursor.getColumnIndex("mSelfRight"));
+    if (QLog.isDevelopLevel())
+    {
+      paramCursor = new StringBuilder();
+      paramCursor.append("DiscussionInfo, ");
+      paramCursor.append(this);
+      QLog.w("DiscussionInfo", 1, paramCursor.toString());
+    }
+    return true;
   }
   
   public int getHrExtra()
   {
-    return QAVHrMeeting.a(this.mOriginExtra);
+    return ((ITroopMemberListActivityApi)QRoute.api(ITroopMemberListActivityApi.class)).hrExtra(this.mOriginExtra);
   }
   
   public boolean hasRenamed()
@@ -96,26 +103,25 @@ public class DiscussionInfo
   
   public boolean isDiscussHrMeeting()
   {
-    return QAVHrMeeting.b(this.mOrigin);
+    return ((ITroopMemberListActivityApi)QRoute.api(ITroopMemberListActivityApi.class)).isHRConf(this.mOrigin);
   }
   
   public boolean isHidden()
   {
-    return ((this.mOrigin & 0x2) == 2L) && (getHrExtra() == 1) && (QAVHrMeeting.a(this.mSelfRight));
+    return ((this.mOrigin & 0x2) == 2L) && (getHrExtra() == 1) && (((ITroopMemberListActivityApi)QRoute.api(ITroopMemberListActivityApi.class)).isNoRight(this.mSelfRight));
   }
   
   public boolean isOwnerOrInheritOwner(String paramString)
   {
-    if ((!TextUtils.isEmpty(this.inheritOwnerUin)) && (!"0".equals(this.inheritOwnerUin)) && (paramString.equals(this.inheritOwnerUin))) {}
-    while ((!TextUtils.isEmpty(this.ownerUin)) && (!"0".equals(this.ownerUin)) && (paramString.equals(this.ownerUin))) {
+    if ((!TextUtils.isEmpty(this.inheritOwnerUin)) && (!"0".equals(this.inheritOwnerUin)) && (paramString.equals(this.inheritOwnerUin))) {
       return true;
     }
-    return false;
+    return (!TextUtils.isEmpty(this.ownerUin)) && (!"0".equals(this.ownerUin)) && (paramString.equals(this.ownerUin));
   }
   
   public boolean isPSTNConf()
   {
-    return QAVHrMeeting.a(this.mOrigin);
+    return ((ITroopMemberListActivityApi)QRoute.api(ITroopMemberListActivityApi.class)).isPSTNConf(this.mOrigin);
   }
   
   public boolean isUIControlFlag_Hidden_RecentUser()
@@ -130,12 +136,26 @@ public class DiscussionInfo
   
   public String toString()
   {
-    return "uin[" + this.uin + "], discussionName[" + this.discussionName + "], mOrigin[" + this.mOrigin + "], mOriginExtra[" + this.mOriginExtra + "], mSelfRight[" + this.mSelfRight + "], isHidden[" + isHidden() + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("uin[");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append("], discussionName[");
+    localStringBuilder.append(this.discussionName);
+    localStringBuilder.append("], mOrigin[");
+    localStringBuilder.append(this.mOrigin);
+    localStringBuilder.append("], mOriginExtra[");
+    localStringBuilder.append(this.mOriginExtra);
+    localStringBuilder.append("], mSelfRight[");
+    localStringBuilder.append(this.mSelfRight);
+    localStringBuilder.append("], isHidden[");
+    localStringBuilder.append(isHidden());
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.DiscussionInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.simpleui;
 
-import com.tencent.mobileqq.theme.ThemeSwitchCallback;
+import com.tencent.mobileqq.vas.theme.ThemeSwitchCallback;
 import com.tencent.qphone.base.util.QLog;
 
 public class SimpleUIHandler$EmptyThemeSwitchCallback
@@ -17,13 +17,14 @@ public class SimpleUIHandler$EmptyThemeSwitchCallback
       return true;
     }
     this.mHandled = true;
-    SimpleUIHandler.a(this.this$0, SimpleUIHandler.a(this.this$0), -2147483648, SimpleUIHandler.b(this.this$0), -2147483648, null, -2147483648);
+    SimpleUIHandler localSimpleUIHandler = this.this$0;
+    SimpleUIHandler.a(localSimpleUIHandler, SimpleUIHandler.a(localSimpleUIHandler), -2147483648, SimpleUIHandler.b(this.this$0), -2147483648, null, -2147483648);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.simpleui.SimpleUIHandler.EmptyThemeSwitchCallback
  * JD-Core Version:    0.7.0.1
  */

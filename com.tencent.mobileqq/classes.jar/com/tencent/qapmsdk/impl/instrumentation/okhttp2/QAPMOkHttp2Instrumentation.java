@@ -38,21 +38,23 @@ public class QAPMOkHttp2Instrumentation
   
   public static boolean isSpecificOkhttp()
   {
+    boolean bool2 = true;
     try
     {
       Object localObject = Version.userAgent();
+      boolean bool1 = bool2;
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
         localObject = ((String)localObject).split("/");
-        if (localObject != null) {
-          break label24;
+        if (localObject == null) {
+          return true;
+        }
+        bool1 = bool2;
+        if (!localObject[1].startsWith("2.4.")) {
+          bool1 = false;
         }
       }
-      label24:
-      while (localObject[1].startsWith("2.4.")) {
-        return true;
-      }
-      return false;
+      return bool1;
     }
     catch (Throwable localThrowable) {}
     return true;
@@ -82,19 +84,18 @@ public class QAPMOkHttp2Instrumentation
   {
     paramURL = paramOkUrlFactory.open(paramURL);
     if ((paramURL instanceof HttpsURLConnection)) {
-      paramOkUrlFactory = new e((HttpsURLConnection)paramURL);
+      return new e((HttpsURLConnection)paramURL);
     }
-    do
-    {
-      return paramOkUrlFactory;
-      paramOkUrlFactory = paramURL;
-    } while (!(paramURL instanceof HttpURLConnection));
-    return new d(paramURL);
+    paramOkUrlFactory = paramURL;
+    if ((paramURL instanceof HttpURLConnection)) {
+      paramOkUrlFactory = new d(paramURL);
+    }
+    return paramOkUrlFactory;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.okhttp2.QAPMOkHttp2Instrumentation
  * JD-Core Version:    0.7.0.1
  */

@@ -12,14 +12,15 @@ final class MultiAIOStarter$1
   
   public void a(Intent paramIntent)
   {
-    if ((this.a instanceof ChatActivity)) {
-      ((ChatActivity)this.a).a(paramIntent);
+    Context localContext = this.a;
+    if ((localContext instanceof ChatActivity)) {
+      ((ChatActivity)localContext).switchToAio(paramIntent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.MultiAIOStarter.1
  * JD-Core Version:    0.7.0.1
  */

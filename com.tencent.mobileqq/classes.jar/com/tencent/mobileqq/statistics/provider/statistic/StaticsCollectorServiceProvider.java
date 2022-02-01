@@ -29,29 +29,22 @@ public class StaticsCollectorServiceProvider
   
   public boolean a(String paramString)
   {
-    boolean bool2 = false;
     String[] arrayOfString = this.a;
     int j = arrayOfString.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (TextUtils.equals(arrayOfString[i], paramString)) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
+      if (TextUtils.equals(arrayOfString[i], paramString)) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.provider.statistic.StaticsCollectorServiceProvider
  * JD-Core Version:    0.7.0.1
  */

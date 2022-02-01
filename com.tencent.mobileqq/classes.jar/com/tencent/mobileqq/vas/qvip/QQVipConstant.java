@@ -9,39 +9,41 @@ public class QQVipConstant
 {
   public static String a(MessageRecord paramMessageRecord)
   {
-    String str2 = "";
-    String str1 = str2;
+    Object localObject1 = "";
     try
     {
-      Object localObject = paramMessageRecord.extStr;
-      paramMessageRecord = str2;
-      str1 = str2;
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        str1 = str2;
-        localObject = new JSONObject((String)localObject);
-        str1 = str2;
-        str2 = ((JSONObject)localObject).optString("public_account_msg_id", "");
-        paramMessageRecord = str2;
-        str1 = str2;
-        if (TextUtils.isEmpty(str2))
-        {
-          str1 = str2;
-          paramMessageRecord = ((JSONObject)localObject).optString("pa_msgId", "");
-        }
+      Object localObject2 = paramMessageRecord.extStr;
+      paramMessageRecord = (MessageRecord)localObject1;
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
+        return paramMessageRecord;
       }
-      return paramMessageRecord;
+      localObject2 = new JSONObject((String)localObject2);
+      paramMessageRecord = ((JSONObject)localObject2).optString("public_account_msg_id", "");
+      try
+      {
+        if (TextUtils.isEmpty(paramMessageRecord))
+        {
+          localObject1 = ((JSONObject)localObject2).optString("pa_msgId", "");
+          return localObject1;
+        }
+        return paramMessageRecord;
+      }
+      catch (Throwable localThrowable1) {}
+      localObject1 = new StringBuilder();
     }
-    catch (Throwable paramMessageRecord)
+    catch (Throwable localThrowable2)
     {
-      QLog.e("QQVipConstant", 1, "getPAMsgId error =" + paramMessageRecord.toString());
+      paramMessageRecord = (MessageRecord)localObject1;
     }
-    return str1;
+    ((StringBuilder)localObject1).append("getPAMsgId error =");
+    ((StringBuilder)localObject1).append(localThrowable2.toString());
+    QLog.e("QQVipConstant", 1, ((StringBuilder)localObject1).toString());
+    return paramMessageRecord;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.QQVipConstant
  * JD-Core Version:    0.7.0.1
  */

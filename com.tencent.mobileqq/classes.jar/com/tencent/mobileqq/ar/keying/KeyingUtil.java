@@ -15,7 +15,7 @@ public class KeyingUtil
   
   static
   {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131705975);
+    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131706027);
     b = "    //抠像逻辑片段\n";
     c = "    //用户定义，抠像后逻辑片段\n";
     d = "}\n";
@@ -24,17 +24,26 @@ public class KeyingUtil
   
   public static int a(int paramInt, String paramString)
   {
-    int i = GLES20.glCreateShader(paramInt);
-    a("glCreateShader type=" + paramInt);
-    GLES20.glShaderSource(i, paramString);
-    GLES20.glCompileShader(i);
+    int j = GLES20.glCreateShader(paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("glCreateShader type=");
+    localStringBuilder.append(paramInt);
+    a(localStringBuilder.toString());
+    GLES20.glShaderSource(j, paramString);
+    GLES20.glCompileShader(j);
     paramString = new int[1];
-    GLES20.glGetShaderiv(i, 35713, paramString, 0);
+    GLES20.glGetShaderiv(j, 35713, paramString, 0);
+    int i = j;
     if (paramString[0] == 0)
     {
-      Log.e("KeyingUtil", "Could not compile shader " + paramInt + ":" + GLES20.glGetShaderInfoLog(i));
-      GLES20.glDeleteShader(i);
-      return 0;
+      paramString = new StringBuilder();
+      paramString.append("Could not compile shader ");
+      paramString.append(paramInt);
+      paramString.append(":");
+      paramString.append(GLES20.glGetShaderInfoLog(j));
+      Log.e("KeyingUtil", paramString.toString());
+      GLES20.glDeleteShader(j);
+      i = 0;
     }
     return i;
   }
@@ -42,13 +51,13 @@ public class KeyingUtil
   public static int a(String paramString1, String paramString2)
   {
     int i = a(35633, paramString1);
-    if (i == 0) {}
-    int j;
-    do
-    {
+    if (i == 0) {
       return 0;
-      j = a(35632, paramString2);
-    } while (j == 0);
+    }
+    int j = a(35632, paramString2);
+    if (j == 0) {
+      return 0;
+    }
     int k = GLES20.glCreateProgram();
     a("glCreateProgram");
     if (k == 0) {
@@ -63,7 +72,10 @@ public class KeyingUtil
     GLES20.glGetProgramiv(k, 35714, paramString1, 0);
     if (paramString1[0] != 1)
     {
-      Log.e("KeyingUtil", "Could not link program:" + GLES20.glGetProgramInfoLog(k));
+      paramString1 = new StringBuilder();
+      paramString1.append("Could not link program:");
+      paramString1.append(GLES20.glGetProgramInfoLog(k));
+      Log.e("KeyingUtil", paramString1.toString());
       GLES20.glDeleteProgram(k);
       return 0;
     }
@@ -72,23 +84,26 @@ public class KeyingUtil
   
   public static String a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      if (QLog.isDevelopLevel()) {
-        throw new IllegalArgumentException("invalid textureType!");
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            if (!QLog.isDevelopLevel()) {
+              return "";
+            }
+            throw new IllegalArgumentException("invalid textureType!");
+          }
+          return "#define TEXTURE_TYPE_Y_UV\n";
+        }
+        return "#define TEXTURE_TYPE_Y_U_V\n";
       }
-      break;
-    case 1: 
-      return "#define TEXTURE_TYPE_OES\n";
-    case 2: 
       return "#define TEXTURE_TYPE_SAMPLER2D\n";
-    case 3: 
-      return "#define TEXTURE_TYPE_Y_U_V\n";
-    case 4: 
-      return "#define TEXTURE_TYPE_Y_UV\n";
     }
-    return "";
+    return "#define TEXTURE_TYPE_OES\n";
   }
   
   public static void a(String paramString)
@@ -96,15 +111,20 @@ public class KeyingUtil
     if (QLog.isColorLevel())
     {
       int i = GLES20.glGetError();
-      if (i != 0) {
-        Log.e("KeyingUtil", paramString + ": glError 0x" + Integer.toHexString(i));
+      if (i != 0)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(": glError 0x");
+        localStringBuilder.append(Integer.toHexString(i));
+        Log.e("KeyingUtil", localStringBuilder.toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.keying.KeyingUtil
  * JD-Core Version:    0.7.0.1
  */

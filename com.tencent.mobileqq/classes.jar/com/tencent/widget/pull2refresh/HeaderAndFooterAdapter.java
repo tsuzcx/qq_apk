@@ -10,95 +10,137 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public abstract class HeaderAndFooterAdapter<M, VH extends BaseViewHolder<M>>
   extends RecyclerView.Adapter<BaseViewHolder<M>>
 {
-  protected Context a;
-  protected View a;
-  protected BaseAdapter.OnItemClickListener a;
-  protected BaseAdapter.OnItemLongClickListener a;
-  protected View b;
+  private static final String TAG = "HeaderAndFooterAdapter";
+  public static final int VIEW_TYPE_FOOTER = 1025;
+  public static final int VIEW_TYPE_HEADER = 1024;
+  protected Context context;
+  protected View footerView;
+  protected View headerView;
+  protected BaseAdapter.OnItemClickListener mOnItemClickListener;
+  protected BaseAdapter.OnItemLongClickListener mOnItemLongClickListener;
   
   public HeaderAndFooterAdapter(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.context = paramContext;
   }
   
-  public abstract VH a(ViewGroup paramViewGroup, int paramInt);
-  
-  public void a(View paramView)
+  public void addFooterView(View paramView)
   {
     if (paramView == null)
     {
       Log.w("HeaderAndFooterAdapter", "add the footer view is null");
       return;
     }
-    this.b = paramView;
+    this.footerView = paramView;
     notifyDataSetChanged();
   }
   
-  public void a(BaseAdapter.OnItemClickListener paramOnItemClickListener)
+  public void addHeaderView(View paramView)
   {
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshBaseAdapter$OnItemClickListener = paramOnItemClickListener;
-  }
-  
-  public abstract void a(VH paramVH, int paramInt);
-  
-  public final BaseViewHolder b(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (paramInt == 1024) {
-      paramViewGroup = new BaseViewHolder(this.jdField_a_of_type_AndroidViewView);
-    }
-    for (;;)
+    if (paramView == null)
     {
-      if (this.jdField_a_of_type_ComTencentWidgetPull2refreshBaseAdapter$OnItemClickListener != null) {
-        paramViewGroup.itemView.setOnClickListener(new HeaderAndFooterAdapter.1(this, paramViewGroup));
-      }
-      if (this.jdField_a_of_type_ComTencentWidgetPull2refreshBaseAdapter$OnItemLongClickListener != null) {
-        paramViewGroup.itemView.setOnLongClickListener(new HeaderAndFooterAdapter.2(this, paramViewGroup));
-      }
-      return paramViewGroup;
-      if (paramInt == 1025) {
-        paramViewGroup = new BaseViewHolder(this.b);
-      } else {
-        paramViewGroup = a(paramViewGroup, paramInt);
-      }
+      Log.w("HeaderAndFooterAdapter", "add the header view is null");
+      return;
     }
+    this.headerView = paramView;
+    notifyDataSetChanged();
   }
   
-  public final void b(BaseViewHolder paramBaseViewHolder, int paramInt)
+  public int getExtraViewCount()
   {
-    switch (paramBaseViewHolder.getItemViewType())
-    {
-    default: 
-      a(paramBaseViewHolder, paramInt);
-    }
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramBaseViewHolder, paramInt, getItemId(paramInt));
-  }
-  
-  public int c()
-  {
-    int i = 0;
-    if (this.jdField_a_of_type_AndroidViewView != null) {
+    int i;
+    if (this.headerView != null) {
       i = 1;
+    } else {
+      i = 0;
     }
     int j = i;
-    if (this.b != null) {
+    if (this.footerView != null) {
       j = i + 1;
     }
     return j;
   }
   
-  public int d()
+  public int getFooterExtraViewCount()
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
+    if (this.footerView == null) {
+      return 0;
+    }
+    return 1;
+  }
+  
+  public int getHeaderExtraViewCount()
+  {
+    if (this.headerView == null) {
       return 0;
     }
     return 1;
   }
   
   public abstract long getItemId(int paramInt);
+  
+  public abstract void onBindCustomViewHolder(VH paramVH, int paramInt);
+  
+  public final void onBindViewHolder(BaseViewHolder paramBaseViewHolder, int paramInt)
+  {
+    int i = paramBaseViewHolder.getItemViewType();
+    if ((i != 1024) && (i != 1025)) {
+      onBindCustomViewHolder(paramBaseViewHolder, paramInt);
+    }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramBaseViewHolder, paramInt, getItemId(paramInt));
+  }
+  
+  public abstract VH onCreateCustomViewHolder(ViewGroup paramViewGroup, int paramInt);
+  
+  public final BaseViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (paramInt == 1024) {
+      paramViewGroup = new BaseViewHolder(this.headerView);
+    } else if (paramInt == 1025) {
+      paramViewGroup = new BaseViewHolder(this.footerView);
+    } else {
+      paramViewGroup = onCreateCustomViewHolder(paramViewGroup, paramInt);
+    }
+    if (this.mOnItemClickListener != null) {
+      paramViewGroup.itemView.setOnClickListener(new HeaderAndFooterAdapter.1(this, paramViewGroup));
+    }
+    if (this.mOnItemLongClickListener != null) {
+      paramViewGroup.itemView.setOnLongClickListener(new HeaderAndFooterAdapter.2(this, paramViewGroup));
+    }
+    return paramViewGroup;
+  }
+  
+  public void removeFooterView()
+  {
+    if (this.footerView != null)
+    {
+      this.footerView = null;
+      notifyDataSetChanged();
+    }
+  }
+  
+  public void removeHeaderView()
+  {
+    if (this.headerView != null)
+    {
+      this.headerView = null;
+      notifyDataSetChanged();
+    }
+  }
+  
+  public void setOnItemClickListener(BaseAdapter.OnItemClickListener paramOnItemClickListener)
+  {
+    this.mOnItemClickListener = paramOnItemClickListener;
+  }
+  
+  public void setOnItemLongClickListener(BaseAdapter.OnItemLongClickListener paramOnItemLongClickListener)
+  {
+    this.mOnItemLongClickListener = paramOnItemLongClickListener;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.pull2refresh.HeaderAndFooterAdapter
  * JD-Core Version:    0.7.0.1
  */

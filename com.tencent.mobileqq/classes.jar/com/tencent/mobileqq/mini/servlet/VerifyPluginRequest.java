@@ -23,16 +23,20 @@ public class VerifyPluginRequest
   
   public static INTERFACE.StVerifyPluginRsp onResponse(byte[] paramArrayOfByte)
   {
-    INTERFACE.StVerifyPluginRsp localStVerifyPluginRsp = new INTERFACE.StVerifyPluginRsp();
+    Object localObject = new INTERFACE.StVerifyPluginRsp();
     try
     {
-      localStVerifyPluginRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStVerifyPluginRsp;
+      ((INTERFACE.StVerifyPluginRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("VerifyPluginRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("VerifyPluginRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -45,7 +49,7 @@ public class VerifyPluginRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.VerifyPluginRequest
  * JD-Core Version:    0.7.0.1
  */

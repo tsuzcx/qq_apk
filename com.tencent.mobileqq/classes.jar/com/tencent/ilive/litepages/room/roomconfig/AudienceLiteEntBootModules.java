@@ -2,7 +2,7 @@ package com.tencent.ilive.litepages.room.roomconfig;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import com.tencent.ilive.audiencepages.room.bizmodule.AVPlayerModule;
+import com.tencent.ilive.audiencepages.room.bizmodule.AVPreloadPlayerModule;
 import com.tencent.ilive.audiencepages.room.bizmodule.AudioFocusListenerModule;
 import com.tencent.ilive.audiencepages.room.roomconfig.AudienceBaseBootModules;
 import com.tencent.ilive.base.bizmodule.BizModuleBaseAdapter;
@@ -22,7 +22,7 @@ public class AudienceLiteEntBootModules
   protected LiteRoomCloseBtnModule roomCloseBtnModule;
   protected LiteRoomWebModule roomWebModule;
   
-  public BizModuleBaseAdapter getBizModuleAdapter()
+  protected BizModuleBaseAdapter getBizModuleAdapter()
   {
     return null;
   }
@@ -37,22 +37,22 @@ public class AudienceLiteEntBootModules
     return 0;
   }
   
-  public int getScreenOrientation()
+  protected int getScreenOrientation()
   {
     return 1;
   }
   
-  public void onCreateBottomBizModules()
+  protected void onCreateBottomBizModules()
   {
-    addBottomLayoutBizModules(new AVPlayerModule());
+    addBottomLayoutBizModules(new AVPreloadPlayerModule());
   }
   
-  public ViewGroup onCreateBottomLayout()
+  protected ViewGroup onCreateBottomLayout()
   {
-    return (ViewGroup)LayoutInflater.from(this.context).inflate(2131559363, null);
+    return (ViewGroup)LayoutInflater.from(this.context).inflate(2131559238, null);
   }
   
-  public void onCreateNormalBizModules()
+  protected void onCreateNormalBizModules()
   {
     this.audioFocusListenerModule = new AudioFocusListenerModule();
     this.audLiteFloatWindowModule = new AudLiteFloatWindowModule();
@@ -74,17 +74,17 @@ public class AudienceLiteEntBootModules
     addNormalLayoutBizModules(this.luxuryGiftModule, false);
   }
   
-  public ViewGroup onCreateNormalLayout()
+  protected ViewGroup onCreateNormalLayout()
   {
-    this.normalLayout = ((ViewGroup)LayoutInflater.from(this.context).inflate(2131559365, null));
+    this.normalLayout = ((ViewGroup)LayoutInflater.from(this.context).inflate(2131559240, null));
     return this.normalLayout;
   }
   
-  public void onCreateTopBizModules() {}
+  protected void onCreateTopBizModules() {}
   
-  public ViewGroup onCreateTopLayout()
+  protected ViewGroup onCreateTopLayout()
   {
-    return (ViewGroup)LayoutInflater.from(this.context).inflate(2131559364, null);
+    return (ViewGroup)LayoutInflater.from(this.context).inflate(2131559239, null);
   }
   
   public void setRoomBizContext(RoomBizContext paramRoomBizContext)
@@ -94,7 +94,7 @@ public class AudienceLiteEntBootModules
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.litepages.room.roomconfig.AudienceLiteEntBootModules
  * JD-Core Version:    0.7.0.1
  */

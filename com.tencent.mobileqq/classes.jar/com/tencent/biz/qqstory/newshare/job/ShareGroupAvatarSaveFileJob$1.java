@@ -9,12 +9,13 @@ class ShareGroupAvatarSaveFileJob$1
   
   public void run()
   {
-    ShareGroupAvatarSaveFileJob.a(this.this$0, ShareGroupAvatarSaveFileJob.a(this.this$0, this.a));
+    ShareGroupAvatarSaveFileJob localShareGroupAvatarSaveFileJob = this.this$0;
+    ShareGroupAvatarSaveFileJob.a(localShareGroupAvatarSaveFileJob, ShareGroupAvatarSaveFileJob.a(localShareGroupAvatarSaveFileJob, this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.job.ShareGroupAvatarSaveFileJob.1
  * JD-Core Version:    0.7.0.1
  */

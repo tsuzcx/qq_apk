@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.olympic.activity;
 
 import android.graphics.Bitmap;
-import com.tencent.av.ui.redbag.RedBagUtil;
+import com.tencent.av.VideoUtils;
 import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
 import com.tencent.mobileqq.dinifly.LottieImageAsset;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.QQAudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -15,28 +15,36 @@ class PromotionGuide$1$1
   
   public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    Object localObject = null;
     paramLottieImageAsset = paramLottieImageAsset.getFileName();
-    String str = this.a.jdField_a_of_type_JavaLangString + "guide_images" + File.separator + paramLottieImageAsset;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.a.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append("guide_images");
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(paramLottieImageAsset);
+    paramLottieImageAsset = ((StringBuilder)localObject).toString();
     try
     {
-      paramLottieImageAsset = RedBagUtil.a(str, this.a.jdField_a_of_type_Int, this.a.b);
-      return paramLottieImageAsset;
+      localObject = VideoUtils.a(paramLottieImageAsset, this.a.jdField_a_of_type_Int, this.a.b);
+      return localObject;
     }
     catch (Exception localException)
     {
-      do
+      if (QQAudioHelper.c())
       {
-        paramLottieImageAsset = localObject;
-      } while (!AudioHelper.e());
-      QLog.w(PromotionGuide.jdField_a_of_type_JavaLangString, 1, "PromotionGuide Exception, imagePath[" + str + "]", localException);
+        String str = PromotionGuide.jdField_a_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("PromotionGuide Exception, imagePath[");
+        localStringBuilder.append(paramLottieImageAsset);
+        localStringBuilder.append("]");
+        QLog.w(str, 1, localStringBuilder.toString(), localException);
+      }
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.activity.PromotionGuide.1.1
  * JD-Core Version:    0.7.0.1
  */

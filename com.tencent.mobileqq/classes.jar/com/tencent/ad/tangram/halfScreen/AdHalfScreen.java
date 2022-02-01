@@ -20,8 +20,9 @@ public enum AdHalfScreen
   
   public static AdHalfScreenAdapter getAdapter()
   {
-    if (INSTANCE.mAdapter != null) {
-      return (AdHalfScreenAdapter)INSTANCE.mAdapter.get();
+    WeakReference localWeakReference = INSTANCE.mAdapter;
+    if (localWeakReference != null) {
+      return (AdHalfScreenAdapter)localWeakReference.get();
     }
     return null;
   }
@@ -47,6 +48,20 @@ public enum AdHalfScreen
     localParams.webUrl = paramString;
     localParams.extrasForIntent = paramBundle;
     return localAdHalfScreenAdapter.show(localParams);
+  }
+  
+  public static AdError showWithoutAd(WeakReference<Activity> paramWeakReference, String paramString)
+  {
+    AdHalfScreenAdapter localAdHalfScreenAdapter = getAdapter();
+    if (localAdHalfScreenAdapter == null)
+    {
+      AdLog.e("AdHalfScreen", "showWithoutAd error");
+      return new AdError(306);
+    }
+    AdHalfScreenAdapter.Params localParams = new AdHalfScreenAdapter.Params();
+    localParams.activity = paramWeakReference;
+    localParams.webUrl = paramString;
+    return localAdHalfScreenAdapter.showWithoutAd(localParams);
   }
 }
 

@@ -5,7 +5,7 @@ import com.tencent.ttpic.baseutils.log.LogUtils;
 public class VoiceChanger
 {
   public static final double FRAME_DURATION = 0.02D;
-  private static final String TAG = VoiceChanger.class.getSimpleName();
+  private static final String TAG = "VoiceChanger";
   private long changer;
   private int environment;
   private int frameLength;
@@ -17,7 +17,9 @@ public class VoiceChanger
   {
     this.outputPath = paramString;
     this.sampleRate = paramInt1;
-    this.frameLength = ((int)(paramInt1 * 0.02D));
+    double d = paramInt1;
+    Double.isNaN(d);
+    this.frameLength = ((int)(d * 0.02D));
     this.voiceKind = paramInt2;
     this.environment = paramInt3;
     this.changer = initVoiceChanger(paramInt1, paramInt2, paramInt3);
@@ -40,8 +42,9 @@ public class VoiceChanger
     int i = 0;
     while (i < j)
     {
-      arrayOfByte[(i * 2)] = ((byte)(paramArrayOfShort[i] & 0xFF));
-      arrayOfByte[(i * 2 + 1)] = ((byte)(paramArrayOfShort[i] >> 8));
+      int k = i * 2;
+      arrayOfByte[k] = ((byte)(paramArrayOfShort[i] & 0xFF));
+      arrayOfByte[(k + 1)] = ((byte)(paramArrayOfShort[i] >> 8));
       paramArrayOfShort[i] = 0;
       i += 1;
     }
@@ -57,8 +60,9 @@ public class VoiceChanger
     int i = 0;
     while (i < j)
     {
-      arrayOfByte[(i * 2)] = ((byte)(paramArrayOfShort[i] >> 8));
-      arrayOfByte[(i * 2 + 1)] = ((byte)(paramArrayOfShort[i] >> 0));
+      int k = i * 2;
+      arrayOfByte[k] = ((byte)(paramArrayOfShort[i] >> 8));
+      arrayOfByte[(k + 1)] = ((byte)(paramArrayOfShort[i] >> 0));
       i += 1;
     }
     return arrayOfByte;
@@ -69,24 +73,20 @@ public class VoiceChanger
     byte[] arrayOfByte = new byte[2];
     if (paramBoolean)
     {
-      s = arrayOfByte.length - 1;
-      i = paramShort;
-      paramShort = s;
-      while (paramShort >= 0)
+      i = arrayOfByte.length - 1;
+      while (i >= 0)
       {
-        arrayOfByte[paramShort] = ((byte)(i & 0xFF));
-        i = (short)(i >> 8);
-        paramShort -= 1;
+        arrayOfByte[i] = ((byte)(paramShort & 0xFF));
+        paramShort = (short)(paramShort >> 8);
+        i -= 1;
       }
     }
-    short s = 0;
-    int i = paramShort;
-    paramShort = s;
-    while (paramShort < arrayOfByte.length)
+    int i = 0;
+    while (i < arrayOfByte.length)
     {
-      arrayOfByte[paramShort] = ((byte)(i & 0xFF));
-      i = (short)(i >> 8);
-      paramShort += 1;
+      arrayOfByte[i] = ((byte)(paramShort & 0xFF));
+      paramShort = (short)(paramShort >> 8);
+      i += 1;
     }
     return arrayOfByte;
   }
@@ -133,7 +133,7 @@ public class VoiceChanger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.voicechanger.common.audio.VoiceChanger
  * JD-Core Version:    0.7.0.1
  */

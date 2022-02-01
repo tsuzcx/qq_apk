@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.script;
 
-import com.tencent.mobileqq.apollo.api.impl.listener.ITraceSpanMessage;
+import com.tencent.mobileqq.apollo.listener.ITraceSpanMessage;
 import org.jetbrains.annotations.Nullable;
 
 class SpriteScriptManager$2
@@ -15,7 +15,7 @@ class SpriteScriptManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteScriptManager.2
  * JD-Core Version:    0.7.0.1
  */

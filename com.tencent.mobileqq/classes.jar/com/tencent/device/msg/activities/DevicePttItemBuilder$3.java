@@ -15,18 +15,27 @@ class DevicePttItemBuilder$3
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FileTrans", 2, "downloadPtt istroop" + this.a.istroop + " itemType " + this.a.itemType + " uniseq:" + this.a.uniseq);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("downloadPtt istroop");
+      ((StringBuilder)localObject).append(this.a.istroop);
+      ((StringBuilder)localObject).append(" itemType ");
+      ((StringBuilder)localObject).append(this.a.itemType);
+      ((StringBuilder)localObject).append(" uniseq:");
+      ((StringBuilder)localObject).append(this.a.uniseq);
+      QLog.d("FileTrans", 2, ((StringBuilder)localObject).toString());
     }
-    DeviceAVFileMsgObserver localDeviceAVFileMsgObserver = ((DeviceMsgHandle)this.this$0.a.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).a();
-    if ((this.a instanceof MessageForDevPtt)) {
-      localDeviceAVFileMsgObserver.a((MessageForDevPtt)this.a);
+    Object localObject = ((DeviceMsgHandle)this.this$0.a.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).a();
+    MessageForPtt localMessageForPtt = this.a;
+    if ((localMessageForPtt instanceof MessageForDevPtt)) {
+      ((DeviceAVFileMsgObserver)localObject).a((MessageForDevPtt)localMessageForPtt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.msg.activities.DevicePttItemBuilder.3
  * JD-Core Version:    0.7.0.1
  */

@@ -14,18 +14,22 @@ public class GetAnchorInfoCase
   protected void executeRoomUseCase(RoomEngine paramRoomEngine, Long paramLong)
   {
     this.roomService = ((RoomServiceInterface)paramRoomEngine.getService(RoomServiceInterface.class));
-    if ((this.roomService == null) || (this.roomService.getLiveInfo() == null)) {}
-    do
+    paramRoomEngine = this.roomService;
+    if (paramRoomEngine != null)
     {
-      return;
+      if (paramRoomEngine.getLiveInfo() == null) {
+        return;
+      }
       paramRoomEngine = this.roomService.getLiveInfo().anchorInfo;
-    } while (paramRoomEngine == null);
-    post(paramRoomEngine);
+      if (paramRoomEngine != null) {
+        post(paramRoomEngine);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.domain.usecase.GetAnchorInfoCase
  * JD-Core Version:    0.7.0.1
  */

@@ -47,7 +47,9 @@ public class QFileMsgForwardManager
   
   private QFileMsgForwardManager.FileUploadTask a(String paramString1, int paramInt, String paramString2, MessageRecord paramMessageRecord)
   {
-    if (TextUtils.isEmpty(paramString2))
+    boolean bool = TextUtils.isEmpty(paramString2);
+    Object localObject = null;
+    if (bool)
     {
       QLog.i("FileMultiMsgManager<FileAssistant>", 1, "createUploadTask: forwardRequestSeq is null");
       return null;
@@ -58,91 +60,100 @@ public class QFileMsgForwardManager
       return null;
     }
     paramString2 = new QFileMsgForwardManager.FileUploadTask(this, paramString2, paramString1, paramInt, paramMessageRecord);
-    paramString1 = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
-    if ((a(paramString1)) || (b(paramMessageRecord))) {
-      if (paramInt == 0) {
-        paramString1 = new QFileMsgForwardManager.BuddyUploadTaskExcuter(this, paramMessageRecord);
-      }
-    }
-    for (;;)
+    String str = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
+    if ((!a(str)) && (!b(paramMessageRecord)))
     {
-      label86:
-      paramString2.a = paramString1;
-      return paramString2;
-      if (paramInt == 3000)
+      try
       {
-        paramString1 = new QFileMsgForwardManager.DiscUploadTaskExcuter(this, paramMessageRecord);
-      }
-      else if (paramInt == 1)
-      {
-        paramString1 = new QFileMsgForwardManager.TroopUploadTaskExcuter(this, paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName"), paramString1, null);
-      }
-      else
-      {
-        do
+        int j = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileType"));
+        if (j != 1)
         {
-          do
+          if (j != 2)
           {
-            try
+            int i = 3;
+            if (j != 3)
             {
-              int i = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileType"));
-              switch (i)
-              {
-              default: 
-                paramString1 = null;
-              }
+              paramString1 = localObject;
             }
-            catch (NumberFormatException paramString1)
+            else
             {
-              QLog.e("FileMultiMsgManager<FileAssistant>", 1, paramString1.toString());
+              if (paramInt == 0)
+              {
+                paramInt = i;
+              }
+              else if (paramInt == 3000)
+              {
+                paramInt = 106;
+              }
+              else
+              {
+                if (paramInt != 1) {
+                  break label169;
+                }
+                paramInt = 102;
+              }
+              paramString1 = new QFileMsgForwardManager.Troop2XXXTaskExcuter(this, paramMessageRecord, paramInt, null);
+              break label372;
+              label169:
               return null;
             }
-            if (paramInt == 0)
-            {
-              paramString1 = new QFileMsgForwardManager.Buddy2BuddyTaskExcuter(this, paramMessageRecord);
-              break;
-            }
-            if (paramInt == 3000)
-            {
-              paramString1 = new QFileMsgForwardManager.Buddy2DiscTaskExcuter(this, paramMessageRecord);
-              break;
-            }
-          } while (paramInt != 1);
-          paramString1 = new QFileMsgForwardManager.Buddy2TroopTaskExcuter(this, paramMessageRecord);
-          break;
-          if (paramInt == 0)
+          }
+          else if (paramInt == 0)
           {
             paramString1 = new QFileMsgForwardManager.Disc2BuddyTaskExcuter(this, paramMessageRecord);
-            break;
           }
-          if (paramInt == 3000)
+          else if (paramInt == 3000)
           {
             paramString1 = new QFileMsgForwardManager.Disc2DiscTaskExcuter(this, paramMessageRecord);
-            break;
           }
-        } while (paramInt != 1);
-        paramString1 = new QFileMsgForwardManager.Disc2TroopTaskExcuter(this, paramMessageRecord);
-      }
-    }
-    if (paramInt == 0) {
-      paramInt = 3;
-    }
-    for (;;)
-    {
-      paramString1 = new QFileMsgForwardManager.Troop2XXXTaskExcuter(this, paramMessageRecord, paramInt, null);
-      break label86;
-      if (paramInt == 3000)
-      {
-        paramInt = 106;
-      }
-      else
-      {
-        if (paramInt != 1) {
-          break;
+          else
+          {
+            paramString1 = localObject;
+            if (paramInt == 1) {
+              paramString1 = new QFileMsgForwardManager.Disc2TroopTaskExcuter(this, paramMessageRecord);
+            }
+          }
         }
-        paramInt = 102;
+        else if (paramInt == 0)
+        {
+          paramString1 = new QFileMsgForwardManager.Buddy2BuddyTaskExcuter(this, paramMessageRecord);
+        }
+        else if (paramInt == 3000)
+        {
+          paramString1 = new QFileMsgForwardManager.Buddy2DiscTaskExcuter(this, paramMessageRecord);
+        }
+        else
+        {
+          paramString1 = localObject;
+          if (paramInt == 1) {
+            paramString1 = new QFileMsgForwardManager.Buddy2TroopTaskExcuter(this, paramMessageRecord);
+          }
+        }
+      }
+      catch (NumberFormatException paramString1)
+      {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, paramString1.toString());
+        return null;
       }
     }
+    else if (paramInt == 0)
+    {
+      paramString1 = new QFileMsgForwardManager.BuddyUploadTaskExcuter(this, paramMessageRecord);
+    }
+    else if (paramInt == 3000)
+    {
+      paramString1 = new QFileMsgForwardManager.DiscUploadTaskExcuter(this, paramMessageRecord);
+    }
+    else
+    {
+      paramString1 = localObject;
+      if (paramInt == 1) {
+        paramString1 = new QFileMsgForwardManager.TroopUploadTaskExcuter(this, paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName"), str, null);
+      }
+    }
+    label372:
+    paramString2.a = paramString1;
+    return paramString2;
   }
   
   private static void a(MessageRecord paramMessageRecord, Bundle paramBundle)
@@ -175,49 +186,58 @@ public class QFileMsgForwardManager
   
   private boolean a(String paramString)
   {
-    boolean bool2 = false;
+    boolean bool2 = FileUtils.fileExistsAndNotEmpty(paramString);
     boolean bool1 = false;
-    if (!FileUtils.b(paramString))
+    if (!bool2)
     {
-      bool2 = bool1;
       if (QLog.isColorLevel())
       {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, "filePath[" + paramString + "] file is not existed");
-        bool2 = bool1;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("filePath[");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("] file is not existed");
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, localStringBuilder.toString());
       }
+      return false;
     }
-    do
+    if (FileManagerUtil.a(paramString) <= 10485760L) {
+      bool1 = true;
+    }
+    if (QLog.isColorLevel())
     {
-      return bool2;
-      bool1 = bool2;
-      if (FileManagerUtil.a(paramString) <= 10485760L) {
-        bool1 = true;
-      }
-      bool2 = bool1;
-    } while (!QLog.isColorLevel());
-    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "file is isSmall:" + bool1);
+      paramString = new StringBuilder();
+      paramString.append("file is isSmall:");
+      paramString.append(bool1);
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, paramString.toString());
+    }
     return bool1;
   }
   
   private static String b(long paramLong, boolean paramBoolean)
   {
     if (paramBoolean) {
-      return BaseActivity.sTopActivity.app.getApplication().getResources().getString(2131692477);
+      return BaseActivity.sTopActivity.app.getApplication().getResources().getString(2131692413);
     }
     if (paramLong > 10485760L) {
-      return BaseActivity.sTopActivity.app.getApplication().getResources().getString(2131692479);
+      return BaseActivity.sTopActivity.app.getApplication().getResources().getString(2131692415);
     }
-    return BaseActivity.sTopActivity.app.getApplication().getResources().getString(2131692516);
+    return BaseActivity.sTopActivity.app.getApplication().getResources().getString(2131692454);
   }
   
   private static void b(QQAppInterface paramQQAppInterface, long paramLong1, int paramInt1, String paramString, long paramLong2, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean, Bundle paramBundle, QFileMsgForwardManager.OnUploadCallback paramOnUploadCallback)
   {
     if (paramOnUploadCallback == null)
     {
-      QLog.e("FileMultiMsgManager<FileAssistant>", 1, "sendFeeds but callback is null fileid " + paramString);
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("sendFeeds but callback is null fileid ");
+      paramQQAppInterface.append(paramString);
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, paramQQAppInterface.toString());
       return;
     }
-    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "sendFeeds will call reqFeeds fileid " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("sendFeeds will call reqFeeds fileid ");
+    localStringBuilder.append(paramString);
+    QLog.d("FileMultiMsgManager<FileAssistant>", 1, localStringBuilder.toString());
     TroopFileProtocol.a(paramQQAppInterface, paramLong1, paramInt1, paramString, paramInt2, paramInt3, paramInt4, paramInt5, paramBoolean, paramBundle, new QFileMsgForwardManager.5(paramString, paramOnUploadCallback, paramLong2));
   }
   
@@ -246,40 +266,38 @@ public class QFileMsgForwardManager
   
   public void a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    if (QFileUtils.a(paramMessageRecord1)) {
-      paramMessageRecord2.extStr = paramMessageRecord1.extStr;
-    }
-    for (;;)
+    int i;
+    if (QFileUtils.a(paramMessageRecord1))
     {
-      int i;
+      paramMessageRecord2.extStr = paramMessageRecord1.extStr;
+      i = -1;
       try
       {
-        i = Integer.parseInt(paramMessageRecord1.getExtInfoFromExtStr("_m_ForwardFileType"));
-        switch (i)
-        {
-        default: 
-          paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardSenderUin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-          paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFileStatus", "4");
-          paramMessageRecord2.removeExtInfoToExtStr("_m_ForwardFaildReason");
-          paramMessageRecord2.removeExtInfoToExtStr("_m_ForwardLasSuccess");
-          return;
-        }
+        int j = Integer.parseInt(paramMessageRecord1.getExtInfoFromExtStr("_m_ForwardFileType"));
+        i = j;
       }
       catch (NumberFormatException localNumberFormatException)
       {
         QLog.e("FileMultiMsgManager<FileAssistant>", 1, localNumberFormatException.toString());
-        i = -1;
-        continue;
-        paramMessageRecord1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramMessageRecord1.uniseq, paramMessageRecord1.frienduin, paramMessageRecord1.istroop);
-        if (paramMessageRecord1 == null) {
-          continue;
-        }
-        paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFilePath", paramMessageRecord1.getFilePath());
-        continue;
-        paramMessageRecord1 = (MessageForTroopFile)FileManagerUtil.a((ChatMessage)paramMessageRecord1);
-        paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFilePath", TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageRecord1).a);
-        continue;
       }
+      if ((i != 1) && (i != 2))
+      {
+        if (i == 3)
+        {
+          paramMessageRecord1 = (MessageForTroopFile)FileManagerUtil.a((ChatMessage)paramMessageRecord1);
+          paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFilePath", TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageRecord1).a);
+        }
+      }
+      else
+      {
+        paramMessageRecord1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramMessageRecord1.uniseq, paramMessageRecord1.frienduin, paramMessageRecord1.istroop);
+        if (paramMessageRecord1 != null) {
+          paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFilePath", paramMessageRecord1.getFilePath());
+        }
+      }
+    }
+    else
+    {
       long l;
       Object localObject;
       if ((paramMessageRecord1 instanceof MessageForFile))
@@ -303,28 +321,25 @@ public class QFileMsgForwardManager
             paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardReceiverUin", ((FileManagerEntity)localObject).peerUin);
             paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFileType", "1");
           }
-          for (;;)
+          else if (((FileManagerEntity)localObject).peerType == 3000)
           {
-            if (((FileManagerEntity)localObject).status != 3) {
-              break label451;
-            }
+            paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardReceiverUin", ((FileManagerEntity)localObject).peerUin);
+            paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFileType", "2");
+          }
+          else if (((FileManagerEntity)localObject).peerType == 1)
+          {
+            paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFileType", "3");
+          }
+          if (((FileManagerEntity)localObject).status == 3) {
             paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardStatusPaused", "1");
-            break;
-            if (((FileManagerEntity)localObject).peerType == 3000)
-            {
-              paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardReceiverUin", ((FileManagerEntity)localObject).peerUin);
-              paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFileType", "2");
-            }
-            else if (((FileManagerEntity)localObject).peerType == 1)
-            {
-              paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFileType", "3");
-            }
           }
         }
         else
         {
-          label451:
-          QLog.e("FileMultiMsgManager<FileAssistant>", 1, "cann't find Entity by msg:" + paramMessageRecord1.uniseq);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("cann't find Entity by msg:");
+          ((StringBuilder)localObject).append(paramMessageRecord1.uniseq);
+          QLog.e("FileMultiMsgManager<FileAssistant>", 1, ((StringBuilder)localObject).toString());
         }
       }
       else if ((paramMessageRecord1 instanceof MessageForTroopFile))
@@ -372,6 +387,10 @@ public class QFileMsgForwardManager
         }
       }
     }
+    paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardSenderUin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFileStatus", "4");
+    paramMessageRecord2.removeExtInfoToExtStr("_m_ForwardFaildReason");
+    paramMessageRecord2.removeExtInfoToExtStr("_m_ForwardLasSuccess");
   }
   
   public void a(QFileMsgForwardRequest paramQFileMsgForwardRequest, HashMap<String, ArrayList<MessageRecord>> paramHashMap)
@@ -384,7 +403,7 @@ public class QFileMsgForwardManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager
  * JD-Core Version:    0.7.0.1
  */

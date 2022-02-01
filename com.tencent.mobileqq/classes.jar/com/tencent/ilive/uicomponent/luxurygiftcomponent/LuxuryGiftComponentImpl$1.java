@@ -13,7 +13,11 @@ class LuxuryGiftComponentImpl$1
   
   public void onGetLuxuryGiftInfo(LuxuryGiftInfo paramLuxuryGiftInfo)
   {
-    this.this$0.getLuxuryGiftAdapter().getLogger().e("LuxuryGiftComponentImpl", " info=" + paramLuxuryGiftInfo, new Object[0]);
+    LogInterface localLogInterface = this.this$0.getLuxuryGiftAdapter().getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" info=");
+    localStringBuilder.append(paramLuxuryGiftInfo);
+    localLogInterface.e("LuxuryGiftComponentImpl", localStringBuilder.toString(), new Object[0]);
     if (paramLuxuryGiftInfo == null)
     {
       LuxuryGiftComponentImpl.access$000(this.this$0);
@@ -24,7 +28,7 @@ class LuxuryGiftComponentImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.uicomponent.luxurygiftcomponent.LuxuryGiftComponentImpl.1
  * JD-Core Version:    0.7.0.1
  */

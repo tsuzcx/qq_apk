@@ -54,62 +54,80 @@ public class QZoneLayoutTemplate1
   
   private int a(float paramFloat)
   {
-    return (int)(getContext().getResources().getDisplayMetrics().density * paramFloat + 0.5F);
+    return (int)(paramFloat * getContext().getResources().getDisplayMetrics().density + 0.5F);
   }
   
   public void addView(View paramView)
   {
     super.addView(paramView);
     this.jdField_a_of_type_JavaUtilList.add(paramView);
-    paramView.setPadding(this.d, this.d, this.d, this.d);
+    int i = this.d;
+    paramView.setPadding(i, i, i, i);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     paramInt1 = this.jdField_a_of_type_Int / 3;
     if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
       ((View)this.jdField_a_of_type_JavaUtilList.get(0)).layout(0, 0, paramInt1, paramInt1);
     }
+    Object localObject;
     if (this.jdField_a_of_type_JavaUtilList.size() > 1)
     {
-      ((View)this.jdField_a_of_type_JavaUtilList.get(1)).layout(this.c + paramInt1, 0, paramInt1 * 2 + this.c, paramInt1);
-      this.jdField_b_of_type_AndroidWidgetImageView.layout(paramInt1 * 2 + this.c * 2, 0, this.jdField_a_of_type_Int, paramInt1);
+      localObject = (View)this.jdField_a_of_type_JavaUtilList.get(1);
+      paramInt2 = this.c;
+      paramInt3 = paramInt1 * 2;
+      ((View)localObject).layout(paramInt1 + paramInt2, 0, paramInt2 + paramInt3, paramInt1);
+      this.jdField_b_of_type_AndroidWidgetImageView.layout(paramInt3 + this.c * 2, 0, this.jdField_a_of_type_Int, paramInt1);
     }
     if (this.jdField_a_of_type_JavaUtilList.size() > 2)
     {
-      ((View)this.jdField_a_of_type_JavaUtilList.get(2)).layout(this.jdField_a_of_type_Int - paramInt1 * 2 - this.c, this.c + paramInt1, this.jdField_a_of_type_Int - paramInt1 - this.c, this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_AndroidWidgetImageView.layout(0, this.c + paramInt1, paramInt1 - this.c * 2, this.jdField_b_of_type_Int);
+      localObject = (View)this.jdField_a_of_type_JavaUtilList.get(2);
+      paramInt2 = this.jdField_a_of_type_Int;
+      paramInt3 = this.c;
+      ((View)localObject).layout(paramInt2 - paramInt1 * 2 - paramInt3, paramInt1 + paramInt3, paramInt2 - paramInt1 - paramInt3, this.jdField_b_of_type_Int);
+      localObject = this.jdField_a_of_type_AndroidWidgetImageView;
+      paramInt2 = this.c;
+      ((ImageView)localObject).layout(0, paramInt1 + paramInt2, paramInt1 - paramInt2 * 2, this.jdField_b_of_type_Int);
     }
-    if (this.jdField_a_of_type_JavaUtilList.size() > 3) {
-      ((View)this.jdField_a_of_type_JavaUtilList.get(3)).layout(this.jdField_a_of_type_Int - paramInt1, paramInt1 + this.c, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    if (this.jdField_a_of_type_JavaUtilList.size() > 3)
+    {
+      localObject = (View)this.jdField_a_of_type_JavaUtilList.get(3);
+      paramInt2 = this.jdField_a_of_type_Int;
+      ((View)localObject).layout(paramInt2 - paramInt1, paramInt1 + this.c, paramInt2, this.jdField_b_of_type_Int);
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     this.jdField_a_of_type_Int = View.MeasureSpec.getSize(paramInt1);
-    this.jdField_b_of_type_Int = (this.jdField_a_of_type_Int * 2 / 3 + this.c);
-    paramInt1 = this.jdField_a_of_type_Int / 3;
-    this.jdField_b_of_type_AndroidWidgetImageView.measure(View.MeasureSpec.makeMeasureSpec(this.jdField_a_of_type_Int - paramInt1 * 2 - this.c * 2, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824));
-    this.jdField_a_of_type_AndroidWidgetImageView.measure(View.MeasureSpec.makeMeasureSpec(this.jdField_a_of_type_Int - paramInt1 * 2 - this.c * 2, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824));
+    paramInt1 = this.jdField_a_of_type_Int;
+    int i = paramInt1 * 2 / 3;
+    paramInt2 = this.c;
+    this.jdField_b_of_type_Int = (i + paramInt2);
+    i = paramInt1 / 3;
+    ImageView localImageView = this.jdField_b_of_type_AndroidWidgetImageView;
+    int j = i * 2;
+    localImageView.measure(View.MeasureSpec.makeMeasureSpec(paramInt1 - j - paramInt2 * 2, 1073741824), View.MeasureSpec.makeMeasureSpec(i, 1073741824));
+    this.jdField_a_of_type_AndroidWidgetImageView.measure(View.MeasureSpec.makeMeasureSpec(this.jdField_a_of_type_Int - j - this.c * 2, 1073741824), View.MeasureSpec.makeMeasureSpec(i, 1073741824));
     if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
-      ((View)this.jdField_a_of_type_JavaUtilList.get(0)).measure(View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824));
+      ((View)this.jdField_a_of_type_JavaUtilList.get(0)).measure(View.MeasureSpec.makeMeasureSpec(i, 1073741824), View.MeasureSpec.makeMeasureSpec(i, 1073741824));
     }
     if (this.jdField_a_of_type_JavaUtilList.size() > 1) {
-      ((View)this.jdField_a_of_type_JavaUtilList.get(1)).measure(View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824));
+      ((View)this.jdField_a_of_type_JavaUtilList.get(1)).measure(View.MeasureSpec.makeMeasureSpec(i, 1073741824), View.MeasureSpec.makeMeasureSpec(i, 1073741824));
     }
     if (this.jdField_a_of_type_JavaUtilList.size() > 2) {
-      ((View)this.jdField_a_of_type_JavaUtilList.get(2)).measure(View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824));
+      ((View)this.jdField_a_of_type_JavaUtilList.get(2)).measure(View.MeasureSpec.makeMeasureSpec(i, 1073741824), View.MeasureSpec.makeMeasureSpec(i, 1073741824));
     }
     if (this.jdField_a_of_type_JavaUtilList.size() > 3) {
-      ((View)this.jdField_a_of_type_JavaUtilList.get(3)).measure(View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824));
+      ((View)this.jdField_a_of_type_JavaUtilList.get(3)).measure(View.MeasureSpec.makeMeasureSpec(i, 1073741824), View.MeasureSpec.makeMeasureSpec(i, 1073741824));
     }
     if (this.jdField_a_of_type_JavaUtilList.size() > 2)
     {
       setMeasuredDimension(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
       return;
     }
-    setMeasuredDimension(this.jdField_a_of_type_Int, paramInt1);
+    setMeasuredDimension(this.jdField_a_of_type_Int, i);
   }
   
   public void removeAllViewsInLayout()
@@ -167,7 +185,7 @@ public class QZoneLayoutTemplate1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.diy.template.QZoneLayoutTemplate1
  * JD-Core Version:    0.7.0.1
  */

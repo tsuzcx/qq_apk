@@ -24,22 +24,29 @@ public class ReadInjoyIMAXAdFragment$ProgressUIHandler
     if (localReadInjoyIMAXAdFragment == null) {
       return;
     }
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != -2) {
       return;
     }
-    long l1;
     if (ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment) != null)
     {
-      l1 = ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment).getCurrentPostion();
+      long l1 = ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment).getCurrentPostion();
       long l2 = ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment).getDuration();
       if (l1 >= l2 - 300L)
       {
         ReadInjoyIMAXAdFragment.b(localReadInjoyIMAXAdFragment, true);
         int i = (int)(l2 - l1);
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInjoyIMAXAdFragment", 2, "onVideoEndSoon: pos=" + l1 + ", duration=" + l2 + ", remainDuration=" + i + ", mHasCallEndingSoon=" + ReadInjoyIMAXAdFragment.c(localReadInjoyIMAXAdFragment));
+        if (QLog.isColorLevel())
+        {
+          paramMessage = new StringBuilder();
+          paramMessage.append("onVideoEndSoon: pos=");
+          paramMessage.append(l1);
+          paramMessage.append(", duration=");
+          paramMessage.append(l2);
+          paramMessage.append(", remainDuration=");
+          paramMessage.append(i);
+          paramMessage.append(", mHasCallEndingSoon=");
+          paramMessage.append(ReadInjoyIMAXAdFragment.c(localReadInjoyIMAXAdFragment));
+          QLog.d("ReadInjoyIMAXAdFragment", 2, paramMessage.toString());
         }
         if (!ReadInjoyIMAXAdFragment.c(localReadInjoyIMAXAdFragment))
         {
@@ -49,35 +56,37 @@ public class ReadInjoyIMAXAdFragment$ProgressUIHandler
           }
           ReadInjoyIMAXAdFragment.d(localReadInjoyIMAXAdFragment);
         }
-        ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment, l1);
       }
+      else if ((l1 <= 500L) && (l1 >= 0L) && (ReadInjoyIMAXAdFragment.d(localReadInjoyIMAXAdFragment)))
+      {
+        if (QLog.isColorLevel())
+        {
+          paramMessage = new StringBuilder();
+          paramMessage.append("onVideoReplayOnLoop: pos=");
+          paramMessage.append(l1);
+          QLog.d("ReadInjoyIMAXAdFragment", 2, paramMessage.toString());
+        }
+        ReadInjoyIMAXAdFragment.c(localReadInjoyIMAXAdFragment, false);
+        ReadInjoyIMAXAdFragment.b(localReadInjoyIMAXAdFragment, false);
+        if (ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment) != null)
+        {
+          ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment).pause();
+          ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment).post(new ReadInjoyIMAXAdFragment.ProgressUIHandler.1(this));
+        }
+      }
+      ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment, l1);
     }
-    for (;;)
+    else
     {
-      ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment).sendEmptyMessageDelayed(-2, 100);
-      return;
-      if ((l1 > 500L) || (l1 < 0L) || (!ReadInjoyIMAXAdFragment.d(localReadInjoyIMAXAdFragment))) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInjoyIMAXAdFragment", 2, "onVideoReplayOnLoop: pos=" + l1);
-      }
-      ReadInjoyIMAXAdFragment.c(localReadInjoyIMAXAdFragment, false);
-      ReadInjoyIMAXAdFragment.b(localReadInjoyIMAXAdFragment, false);
-      if (ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment) == null) {
-        break;
-      }
-      ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment).pause();
-      ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment).post(new ReadInjoyIMAXAdFragment.ProgressUIHandler.1(this));
-      break;
       ReadInjoyIMAXAdFragment.f(localReadInjoyIMAXAdFragment, ReadInjoyIMAXAdFragment.f(localReadInjoyIMAXAdFragment) + 100);
       ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment, ReadInjoyIMAXAdFragment.f(localReadInjoyIMAXAdFragment));
     }
+    ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment).sendEmptyMessageDelayed(-2, 100);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.ProgressUIHandler
  * JD-Core Version:    0.7.0.1
  */

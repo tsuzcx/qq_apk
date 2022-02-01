@@ -13,7 +13,6 @@ public class IoUtils
 {
   private static final int BUFF_SIZE = 4096;
   private static final int MAX_SIZE = 16777216;
-  private static final String TAG = "IoUtils";
   
   public static void close(Cursor paramCursor)
   {
@@ -67,13 +66,14 @@ public class IoUtils
     {
       i = paramInputStream.read(arrayOfByte);
       if (-1 == i) {
-        break;
+        return l;
       }
       if (l > 16777216L) {
-        throw new IOException("input data too large for byte.");
+        break;
       }
       paramOutputStream.write(arrayOfByte, 0, i);
     }
+    throw new IOException("input data too large for byte.");
     return l;
   }
   
@@ -86,7 +86,7 @@ public class IoUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.framework.common.IoUtils
  * JD-Core Version:    0.7.0.1
  */

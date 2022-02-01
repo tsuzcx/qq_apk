@@ -14,27 +14,34 @@ class QRDisplayActivity$28
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramView.getId())
+    paramInt = paramView.getId();
+    if (paramInt != 7)
     {
+      if (paramInt != 8)
+      {
+        if (paramInt == 10)
+        {
+          QidCardManager.QidCardReport.b("0X800B974");
+          QidCardManager.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.app, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity, 1);
+        }
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.b(8);
+        ReportController.b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.app, "CliOper", "", "", "0X800AEB7", "0X800AEB7", 0, 0, "", "", "", "");
+      }
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      QidCardManager.QidCardReport.b("0X800B974");
-      QidCardManager.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.app, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity, 1);
-      continue;
       ReportController.b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.app, "CliOper", "", "", "0X800AEB6", "0X800AEB6", 0, 0, "", "", "", "");
       this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.b(7);
-      continue;
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.b(8);
-      ReportController.b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.app, "CliOper", "", "", "0X800AEB7", "0X800AEB7", 0, 0, "", "", "", "");
     }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.28
  * JD-Core Version:    0.7.0.1
  */

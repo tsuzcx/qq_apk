@@ -23,14 +23,15 @@ public class PTFilter$PTSmoothSkin
   
   public void setBeautyLevel(int paramInt)
   {
-    this.mBeautyParam.smoothLevel = paramInt;
-    Map localMap = this.mBeautyParam.getSmoothMap();
-    this.mFilter.setParameterDic(localMap);
+    Object localObject = this.mBeautyParam;
+    ((CameraFilterParamSDK)localObject).smoothLevel = paramInt;
+    localObject = ((CameraFilterParamSDK)localObject).getSmoothMap();
+    this.mFilter.setParameterDic((Map)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.PTFilter.PTSmoothSkin
  * JD-Core Version:    0.7.0.1
  */

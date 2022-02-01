@@ -8,7 +8,7 @@ import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 import com.tencent.mobileqq.activity.pendant.PendantMarketConfig.EntryConfig;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class AvatarPendantAdapter$1
@@ -26,19 +26,16 @@ class AvatarPendantAdapter$1
       ((AvatarPendantActivity)this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_AndroidContentContext).a = -1L;
     }
     if (this.jdField_a_of_type_Int == 1) {
-      VasWebviewUtil.reportCommercialDrainage("", "faceaddon", "0X8008486", "", 1, 0, 0, "", "", "");
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      VasWebviewUtil.a("", "faceaddon", "0X8008486", "", 1, 0, 0, "", "", "");
+    } else {
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006334", "0X8006334", 0, 0, "", "", "", "");
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.AvatarPendantAdapter.1
  * JD-Core Version:    0.7.0.1
  */

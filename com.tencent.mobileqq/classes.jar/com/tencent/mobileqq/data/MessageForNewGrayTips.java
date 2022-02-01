@@ -31,12 +31,13 @@ public class MessageForNewGrayTips
       return;
     }
     paramQQAppInterface = new SpannableString(this.msg);
-    if ((this.spans != null) && (this.spans.size() != 0))
+    Object localObject = this.spans;
+    if ((localObject != null) && (((ArrayList)localObject).size() != 0))
     {
-      Iterator localIterator = this.spans.iterator();
-      while (localIterator.hasNext())
+      localObject = this.spans.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        GrayTipsSpan localGrayTipsSpan = (GrayTipsSpan)localIterator.next();
+        GrayTipsSpan localGrayTipsSpan = (GrayTipsSpan)((Iterator)localObject).next();
         try
         {
           paramQQAppInterface.setSpan(new DatingCommentTextView.TouchableSpan(new MessageForNewGrayTips.1(this, localGrayTipsSpan), -12541697), localGrayTipsSpan.begin, localGrayTipsSpan.end, 33);
@@ -53,64 +54,60 @@ public class MessageForNewGrayTips
   
   public void click(View paramView, String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      Object localObject = JumpParser.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramView.getContext(), paramString);
-      if (localObject != null) {
-        ((JumpAction)localObject).a();
-      }
-      while ((this.msgtype == -2037) && ((paramView.getContext() instanceof BaseActivity)))
-      {
-        ReportController.b(((BaseActivity)paramView.getContext()).app, "CliOper", "", "", "0X80060B7", "0X80060B7", 0, 0, "", "", "", "");
-        return;
-        localObject = new Intent(paramView.getContext(), QQBrowserActivity.class);
-        ((Intent)localObject).putExtra("url", URLUtil.guessUrl(paramString));
-        paramView.getContext().startActivity((Intent)localObject);
-      }
+    }
+    Object localObject = JumpParser.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramView.getContext(), paramString);
+    if (localObject != null)
+    {
+      ((JumpAction)localObject).a();
+    }
+    else
+    {
+      localObject = new Intent(paramView.getContext(), QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", URLUtil.guessUrl(paramString));
+      paramView.getContext().startActivity((Intent)localObject);
+    }
+    if ((this.msgtype == -2037) && ((paramView.getContext() instanceof BaseActivity))) {
+      ReportController.b(((BaseActivity)paramView.getContext()).app, "CliOper", "", "", "0X80060B7", "0X80060B7", 0, 0, "", "", "", "");
     }
   }
   
   protected void doParse()
   {
+    Object localObject;
     try
     {
       GrayTipsInfo localGrayTipsInfo = (GrayTipsInfo)MessagePkgUtils.a(this.msgData);
-      if (localGrayTipsInfo != null)
-      {
-        this.msg = localGrayTipsInfo.text;
-        this.spans = localGrayTipsInfo.spans;
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-        Object localObject = null;
-      }
-    }
-  }
-  
-  public void prewrite()
-  {
-    GrayTipsInfo localGrayTipsInfo;
-    if (this.msg != null)
-    {
-      localGrayTipsInfo = new GrayTipsInfo();
-      localGrayTipsInfo.text = this.msg;
-      localGrayTipsInfo.spans = this.spans;
-    }
-    try
-    {
-      this.msgData = MessagePkgUtils.a(localGrayTipsInfo);
-      return;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
+      localObject = null;
+    }
+    if (localObject != null)
+    {
+      this.msg = localObject.text;
+      this.spans = localObject.spans;
+    }
+  }
+  
+  protected void prewrite()
+  {
+    if (this.msg != null)
+    {
+      GrayTipsInfo localGrayTipsInfo = new GrayTipsInfo();
+      localGrayTipsInfo.text = this.msg;
+      localGrayTipsInfo.spans = this.spans;
+      try
+      {
+        this.msgData = MessagePkgUtils.a(localGrayTipsInfo);
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
     }
   }
   
@@ -121,7 +118,7 @@ public class MessageForNewGrayTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForNewGrayTips
  * JD-Core Version:    0.7.0.1
  */

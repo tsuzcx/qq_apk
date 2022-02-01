@@ -14,7 +14,15 @@ final class AudioDataService$1
   
   public void onError(boolean paramBoolean, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioMediaServiceAdapter.a().i("AudioDataService", "requestUserId2TinyId onError:isTimeout" + paramBoolean + ";code=" + paramInt + ";msg=" + paramString, new Object[0]);
+    LogInterface localLogInterface = this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioMediaServiceAdapter.a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("requestUserId2TinyId onError:isTimeout");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(";code=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(";msg=");
+    localStringBuilder.append(paramString);
+    localLogInterface.i("AudioDataService", localStringBuilder.toString(), new Object[0]);
     this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceServiceRequestTinyId2UserIdCallback.a(paramInt);
   }
   
@@ -25,7 +33,11 @@ final class AudioDataService$1
       ILiveChannel.UserId2TinyIdRsp localUserId2TinyIdRsp = new ILiveChannel.UserId2TinyIdRsp();
       localUserId2TinyIdRsp.mergeFrom(paramArrayOfByte);
       int i = localUserId2TinyIdRsp.result.get();
-      this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioMediaServiceAdapter.a().i("AudioDataService", "requestUserId2TinyId success,  errCode=" + i, new Object[0]);
+      paramArrayOfByte = this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioMediaServiceAdapter.a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("requestUserId2TinyId success,  errCode=");
+      localStringBuilder.append(i);
+      paramArrayOfByte.i("AudioDataService", localStringBuilder.toString(), new Object[0]);
       if (i == 0)
       {
         this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceServiceRequestTinyId2UserIdCallback.a(localUserId2TinyIdRsp.userid.get(), localUserId2TinyIdRsp.tinyid.get());
@@ -43,7 +55,7 @@ final class AudioDataService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.audiomediaservice.service.AudioDataService.1
  * JD-Core Version:    0.7.0.1
  */

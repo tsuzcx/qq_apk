@@ -15,23 +15,31 @@ class LiteSDKForCrossProcess$MyEIPCOnGetConnectionListener
     if (paramEIPCConnection == null) {
       return;
     }
-    QLog.i("LiteSDKForCrossProcess", 1, "ilive onConnectBind, [" + paramEIPCConnection.procName + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ilive onConnectBind, [");
+    localStringBuilder.append(paramEIPCConnection.procName);
+    localStringBuilder.append("]");
+    QLog.i("LiteSDKForCrossProcess", 1, localStringBuilder.toString());
   }
   
   public void onConnectUnbind(EIPCConnection paramEIPCConnection)
   {
-    if (paramEIPCConnection == null) {}
-    do
-    {
+    if (paramEIPCConnection == null) {
       return;
-      QLog.i("LiteSDKForCrossProcess", 1, "ilive onConnectUnbind, [" + paramEIPCConnection.procName + "]");
-    } while (!TextUtils.equals(paramEIPCConnection.procName, "com.tencent.mobileqq:tool"));
-    LiteSDKForCrossProcess.a(this.a, 2);
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ilive onConnectUnbind, [");
+    localStringBuilder.append(paramEIPCConnection.procName);
+    localStringBuilder.append("]");
+    QLog.i("LiteSDKForCrossProcess", 1, localStringBuilder.toString());
+    if (TextUtils.equals(paramEIPCConnection.procName, "com.tencent.mobileqq:tool")) {
+      LiteSDKForCrossProcess.a(this.a, 2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.sdkimpl.ipc.LiteSDKForCrossProcess.MyEIPCOnGetConnectionListener
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import com.tencent.common.app.InnerFrame;
 import com.tencent.common.app.InnerFrameManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.open.agent.datamodel.Friend;
 import com.tencent.open.agent.datamodel.FriendDataManager;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ public abstract class OpenFrame
 {
   protected LayoutInflater a;
   protected InnerFrameManager a;
-  protected QQAppInterface a;
+  protected BaseQQAppInterface a;
   protected FriendChooser a;
   protected FriendDataManager a;
   
@@ -43,7 +43,7 @@ public abstract class OpenFrame
     super.a(paramBundle);
     this.jdField_a_of_type_ComTencentOpenAgentFriendChooser = ((FriendChooser)super.a());
     this.jdField_a_of_type_ComTencentCommonAppInnerFrameManager = super.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = super.a();
+    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = super.a();
     this.jdField_a_of_type_AndroidViewLayoutInflater = this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getLayoutInflater();
     this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager = FriendDataManager.a();
   }
@@ -52,7 +52,7 @@ public abstract class OpenFrame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.OpenFrame
  * JD-Core Version:    0.7.0.1
  */

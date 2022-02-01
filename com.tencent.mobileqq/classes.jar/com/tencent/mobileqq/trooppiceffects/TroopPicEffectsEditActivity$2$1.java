@@ -15,7 +15,7 @@ class TroopPicEffectsEditActivity$2$1
   {
     paramDialogInterface = String.format("https://qun.qq.com/qunpay/gifts/buy.html?_bid=2204&_wvSb=1&from=7&troopUin=%s", new Object[] { this.a.a.b });
     Intent localIntent = new Intent(this.a.a, QQBrowserActivity.class);
-    localIntent.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131715552));
+    localIntent.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131715474));
     localIntent.putExtra("hide_more_button", true);
     localIntent.putExtra("hide_operation_bar", true);
     localIntent.putExtra("url", this.a.a.a(paramDialogInterface));
@@ -24,7 +24,7 @@ class TroopPicEffectsEditActivity$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity.2.1
  * JD-Core Version:    0.7.0.1
  */

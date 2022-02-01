@@ -24,7 +24,7 @@ public abstract class BaseFacePreloadExpandableListAdapter
   private final Context jdField_a_of_type_AndroidContentContext;
   private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private IFaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = null;
-  public ExpandableListView a;
+  protected ExpandableListView a;
   
   public BaseFacePreloadExpandableListAdapter(Context paramContext, QQAppInterface paramQQAppInterface, ExpandableListView paramExpandableListView)
   {
@@ -34,94 +34,90 @@ public abstract class BaseFacePreloadExpandableListAdapter
     this.jdField_a_of_type_ComTencentWidgetExpandableListView = paramExpandableListView;
     this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = ((IQQAvatarService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.setDecodeTaskCompletionListener(this);
-    ImageUtil.c();
+    ImageUtil.f();
   }
   
-  protected void a(FacePreloadBaseAdapter.ViewHolder paramViewHolder, Bitmap paramBitmap)
+  protected void a(FacePreloadHolder.ViewHolder paramViewHolder, Bitmap paramBitmap)
   {
     a(paramViewHolder, paramBitmap, true);
   }
   
-  protected void a(FacePreloadBaseAdapter.ViewHolder paramViewHolder, Bitmap paramBitmap, boolean paramBoolean)
+  protected void a(FacePreloadHolder.ViewHolder paramViewHolder, Bitmap paramBitmap, boolean paramBoolean)
   {
     if (paramViewHolder.jdField_c_of_type_AndroidWidgetImageView == null) {
       return;
     }
     if (AppConstants.DATALINE_PC_UIN.equals(paramViewHolder.a))
     {
-      paramViewHolder.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130844376);
+      paramViewHolder.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130844282);
       return;
     }
     if (AppConstants.DATALINE_IPAD_UIN.equals(paramViewHolder.a))
     {
-      paramViewHolder.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130844371);
+      paramViewHolder.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130844277);
       return;
     }
     if (AppConstants.DATALINE_PRINTER_UIN.equals(paramViewHolder.a))
     {
-      paramViewHolder.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130844379);
+      paramViewHolder.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130844285);
       return;
     }
     if (AppConstants.SMARTDEVICE_SEARCH_UIN.equals(paramViewHolder.a))
     {
-      paramViewHolder.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130839708);
+      paramViewHolder.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130839566);
       return;
     }
+    Bitmap localBitmap = paramBitmap;
     if (paramBitmap == null) {
-      paramBitmap = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCache(paramViewHolder.jdField_c_of_type_Int, paramViewHolder.a);
+      localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCache(paramViewHolder.jdField_c_of_type_Int, paramViewHolder.a);
     }
-    for (;;)
+    paramBitmap = localBitmap;
+    if (localBitmap == null)
     {
-      Bitmap localBitmap = paramBitmap;
-      if (paramBitmap == null)
+      if (paramBoolean) {
+        localBitmap = ImageUtil.f();
+      }
+      paramBitmap = localBitmap;
+      if (!this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing())
       {
-        if (paramBoolean) {
-          paramBitmap = ImageUtil.c();
-        }
-        localBitmap = paramBitmap;
-        if (!this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing())
-        {
-          this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(paramViewHolder.a, paramViewHolder.jdField_c_of_type_Int, false);
-          localBitmap = paramBitmap;
-        }
+        this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(paramViewHolder.a, paramViewHolder.jdField_c_of_type_Int, false);
+        paramBitmap = localBitmap;
       }
-      if (localBitmap == null) {
-        break;
-      }
-      paramViewHolder.jdField_c_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap));
-      return;
+    }
+    if (paramBitmap != null) {
+      paramViewHolder.jdField_c_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
     }
   }
   
-  public void a(String paramString, Bitmap paramBitmap)
+  protected void a(String paramString, Bitmap paramBitmap)
   {
     int j = this.jdField_a_of_type_ComTencentWidgetExpandableListView.getChildCount();
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       Object localObject = this.jdField_a_of_type_ComTencentWidgetExpandableListView.getChildAt(i).getTag();
-      if ((localObject != null) && ((localObject instanceof FacePreloadBaseAdapter.ViewHolder)))
+      if ((localObject != null) && ((localObject instanceof FacePreloadHolder.ViewHolder)))
       {
-        localObject = (FacePreloadBaseAdapter.ViewHolder)localObject;
-        if (paramString != null) {
-          break label69;
+        localObject = (FacePreloadHolder.ViewHolder)localObject;
+        if (paramString == null)
+        {
+          a((FacePreloadHolder.ViewHolder)localObject, null, false);
         }
-        a((FacePreloadBaseAdapter.ViewHolder)localObject, null, false);
+        else if (paramString.equals(((FacePreloadHolder.ViewHolder)localObject).a))
+        {
+          ((FacePreloadHolder.ViewHolder)localObject).jdField_c_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+          return;
+        }
       }
-      label69:
-      while (!paramString.equals(((FacePreloadBaseAdapter.ViewHolder)localObject).a))
-      {
-        i += 1;
-        break;
-      }
-      ((FacePreloadBaseAdapter.ViewHolder)localObject).jdField_c_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+      i += 1;
     }
   }
   
-  public void b()
+  public void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.destory();
+    IFaceDecoder localIFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+    if (localIFaceDecoder != null) {
+      localIFaceDecoder.destory();
     }
   }
   
@@ -197,18 +193,19 @@ public abstract class BaseFacePreloadExpandableListAdapter
     {
       this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.cancelPendingRequests();
       this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.pause();
-    }
-    while (!this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.cancelPendingRequests();
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.resume();
-    a(null, null);
+    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing())
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.cancelPendingRequests();
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.resume();
+      a(null, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.BaseFacePreloadExpandableListAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -71,41 +71,51 @@ public class TrafficMonitor
       l4 = TrafficStats.getTotalTxBytes() - this.deviceTxBytesOnAppStart;
       i = (int)(((Long)paramMessage.obj).longValue() / 1000L);
       paramMessage = new StringBuilder(50);
-      paramMessage.append("on startup ").append(i);
+      paramMessage.append("on startup ");
+      paramMessage.append(i);
       paramMessage.append("secs, network:");
-      paramMessage.append(l1 / 1000L).append("/").append(l3 / 1000L).append("|");
-      paramMessage.append(l2 / 1000L).append("/").append(l4 / 1000L);
+      paramMessage.append(l1 / 1000L);
+      paramMessage.append("/");
+      paramMessage.append(l3 / 1000L);
+      paramMessage.append("|");
+      paramMessage.append(l2 / 1000L);
+      paramMessage.append("/");
+      paramMessage.append(l4 / 1000L);
       Logger.INSTANCE.i(new String[] { "QAPM_battery_TrafficMonitor", paramMessage.toString() });
       BatteryLog.writeCommonLogByMonitor(new String[] { "nt|fg|", String.valueOf(i), "|", String.valueOf(l1), "|", String.valueOf(l2), "|", String.valueOf(l3), "|", String.valueOf(l4) });
       if (i == 1800) {
         BatteryLog.writeReportLogByMonitor(new String[] { "fg30Trf", "|", String.valueOf(l1), "|", String.valueOf(l2), "|", String.valueOf(l3), "|", String.valueOf(l4) });
       }
     }
-    for (;;)
+    else if (paramMessage.what == 3)
     {
-      return false;
-      if (paramMessage.what == 3)
+      this.bgCollectCount -= 1L;
+      if (System.currentTimeMillis() - this.enterBgTimeStamp < this.dumpQqBgInterval + 2000L)
       {
-        this.bgCollectCount -= 1L;
-        if (System.currentTimeMillis() - this.enterBgTimeStamp < this.dumpQqBgInterval + 2000L)
-        {
-          l1 = TrafficStats.getUidRxBytes(this.uid) - this.qqRxBytesOnEnterBg;
-          l2 = TrafficStats.getUidTxBytes(this.uid) - this.qqTxBytesOnEnterBg;
-          l3 = TrafficStats.getTotalRxBytes() - this.deviceRxBytesOnEnterBg;
-          l4 = TrafficStats.getTotalTxBytes() - this.deviceTxBytesOnEnterBg;
-          i = (int)(this.dumpQqBgInterval / 1000L);
-          paramMessage = new StringBuilder(50);
-          paramMessage.append("onBG").append(i).append("secs, network:");
-          paramMessage.append(l1 / 1000L).append("/").append(l3 / 1000L).append("|");
-          paramMessage.append(l2 / 1000L).append("/").append(l4 / 1000L);
-          Logger.INSTANCE.i(new String[] { "QAPM_battery_TrafficMonitor", paramMessage.toString() });
-          BatteryLog.writeCommonLogByMonitor(new String[] { "nt|bg|", String.valueOf(i), "|", String.valueOf(l1), "|", String.valueOf(l2), "|", String.valueOf(l3), "|", String.valueOf(l4) });
-          if (i == 300) {
-            BatteryLog.writeReportLogByMonitor(new String[] { "bg5Trf", "|", String.valueOf(l1), "|", String.valueOf(l2), "|", String.valueOf(l3), "|", String.valueOf(l4) });
-          }
+        l1 = TrafficStats.getUidRxBytes(this.uid) - this.qqRxBytesOnEnterBg;
+        l2 = TrafficStats.getUidTxBytes(this.uid) - this.qqTxBytesOnEnterBg;
+        l3 = TrafficStats.getTotalRxBytes() - this.deviceRxBytesOnEnterBg;
+        l4 = TrafficStats.getTotalTxBytes() - this.deviceTxBytesOnEnterBg;
+        i = (int)(this.dumpQqBgInterval / 1000L);
+        paramMessage = new StringBuilder(50);
+        paramMessage.append("onBG");
+        paramMessage.append(i);
+        paramMessage.append("secs, network:");
+        paramMessage.append(l1 / 1000L);
+        paramMessage.append("/");
+        paramMessage.append(l3 / 1000L);
+        paramMessage.append("|");
+        paramMessage.append(l2 / 1000L);
+        paramMessage.append("/");
+        paramMessage.append(l4 / 1000L);
+        Logger.INSTANCE.i(new String[] { "QAPM_battery_TrafficMonitor", paramMessage.toString() });
+        BatteryLog.writeCommonLogByMonitor(new String[] { "nt|bg|", String.valueOf(i), "|", String.valueOf(l1), "|", String.valueOf(l2), "|", String.valueOf(l3), "|", String.valueOf(l4) });
+        if (i == 300) {
+          BatteryLog.writeReportLogByMonitor(new String[] { "bg5Trf", "|", String.valueOf(l1), "|", String.valueOf(l2), "|", String.valueOf(l3), "|", String.valueOf(l4) });
         }
       }
     }
+    return false;
   }
   
   public void onAppBackground()
@@ -132,38 +142,36 @@ public class TrafficMonitor
   
   public void onProcessStart()
   {
-    if (BaseInfo.app == null) {}
-    for (;;)
-    {
+    if (BaseInfo.app == null) {
       return;
-      try
+    }
+    try
+    {
+      this.uid = BaseInfo.app.getPackageManager().getApplicationInfo(BaseInfo.app.getPackageName(), 128).uid;
+      if (this.uid != 0)
       {
-        this.uid = BaseInfo.app.getPackageManager().getApplicationInfo(BaseInfo.app.getPackageName(), 128).uid;
-        if (this.uid != 0)
-        {
-          this.qqRxBytesOnAppStart = TrafficStats.getUidRxBytes(this.uid);
-          this.qqTxBytesOnAppStart = TrafficStats.getUidTxBytes(this.uid);
-          this.deviceRxBytesOnAppStart = TrafficStats.getTotalRxBytes();
-          this.deviceTxBytesOnAppStart = TrafficStats.getTotalTxBytes();
-          Message localMessage = this.subHandler.obtainMessage(0, Long.valueOf(this.dumpQqProcessInterval1));
-          this.subHandler.sendMessageDelayed(localMessage, this.dumpQqProcessInterval1);
-          localMessage = this.subHandler.obtainMessage(0, Long.valueOf(this.dumpQqProcessInterval2));
-          this.subHandler.sendMessageDelayed(localMessage, this.dumpQqProcessInterval2);
-          localMessage = this.subHandler.obtainMessage(0, Long.valueOf(this.dumpQqProcessInterval3));
-          this.subHandler.sendMessageDelayed(localMessage, this.dumpQqProcessInterval3);
-          return;
-        }
+        this.qqRxBytesOnAppStart = TrafficStats.getUidRxBytes(this.uid);
+        this.qqTxBytesOnAppStart = TrafficStats.getUidTxBytes(this.uid);
+        this.deviceRxBytesOnAppStart = TrafficStats.getTotalRxBytes();
+        this.deviceTxBytesOnAppStart = TrafficStats.getTotalTxBytes();
+        Message localMessage = this.subHandler.obtainMessage(0, Long.valueOf(this.dumpQqProcessInterval1));
+        this.subHandler.sendMessageDelayed(localMessage, this.dumpQqProcessInterval1);
+        localMessage = this.subHandler.obtainMessage(0, Long.valueOf(this.dumpQqProcessInterval2));
+        this.subHandler.sendMessageDelayed(localMessage, this.dumpQqProcessInterval2);
+        localMessage = this.subHandler.obtainMessage(0, Long.valueOf(this.dumpQqProcessInterval3));
+        this.subHandler.sendMessageDelayed(localMessage, this.dumpQqProcessInterval3);
+        return;
       }
-      catch (Throwable localThrowable)
-      {
-        Logger.INSTANCE.exception("QAPM_battery_TrafficMonitor", localThrowable);
-      }
+    }
+    catch (Throwable localThrowable)
+    {
+      Logger.INSTANCE.exception("QAPM_battery_TrafficMonitor", localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.qqbattery.monitor.TrafficMonitor
  * JD-Core Version:    0.7.0.1
  */

@@ -13,20 +13,23 @@ public class NativeBitmap
   
   public static long getBitmapPixelDataMemoryPtr(Bitmap paramBitmap)
   {
-    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
-      return 0L;
-    }
-    try
+    if (paramBitmap != null)
     {
-      long l = nativeGetBitmapPixelDataMemoryPtr(paramBitmap);
-      return l;
-    }
-    catch (Throwable paramBitmap)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getBitmapPixelDataMemoryPtr error:");
-      localStringBuilder.append(paramBitmap.getMessage());
-      Log.e("NativeBitmap", localStringBuilder.toString());
+      if (paramBitmap.isRecycled()) {
+        return 0L;
+      }
+      try
+      {
+        long l = nativeGetBitmapPixelDataMemoryPtr(paramBitmap);
+        return l;
+      }
+      catch (Throwable paramBitmap)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getBitmapPixelDataMemoryPtr error:");
+        localStringBuilder.append(paramBitmap.getMessage());
+        Log.e("NativeBitmap", localStringBuilder.toString());
+      }
     }
     return 0L;
   }
@@ -53,14 +56,9 @@ public class NativeBitmap
   
   public static void init(String paramString)
   {
-    if (!TextUtils.isEmpty(paramString))
+    if ((!TextUtils.isEmpty(paramString)) && (new File(paramString).exists()))
     {
-      if (new File(paramString).exists())
-      {
-        System.load(paramString);
-        return;
-      }
-      System.loadLibrary("qflutter-resource-loader");
+      System.load(paramString);
       return;
     }
     System.loadLibrary("qflutter-resource-loader");
@@ -72,7 +70,7 @@ public class NativeBitmap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.nativebmp.NativeBitmap
  * JD-Core Version:    0.7.0.1
  */

@@ -22,6 +22,7 @@ import com.tencent.mtt.hippy.views.common.CommonBorder;
 import com.tencent.mtt.hippy.views.common.CommonBorder.BorderRadiusDirection;
 import com.tencent.mtt.hippy.views.common.CommonBorder.BorderWidthDirection;
 import com.tencent.mtt.hippy.views.view.HippyViewGroupController;
+import com.tencent.mtt.supportui.views.IShadow;
 import java.util.Map;
 
 public abstract class HippyViewController<T extends View,  extends HippyViewBase>
@@ -79,6 +80,11 @@ public abstract class HippyViewController<T extends View,  extends HippyViewBase
     return new StyleNode();
   }
   
+  protected StyleNode createNode(boolean paramBoolean, int paramInt)
+  {
+    return null;
+  }
+  
   public RenderNode createRenderNode(int paramInt, HippyMap paramHippyMap, String paramString, HippyRootView paramHippyRootView, ControllerManager paramControllerManager, boolean paramBoolean)
   {
     return new RenderNode(paramInt, paramHippyMap, paramString, paramHippyRootView, paramControllerManager, paramBoolean);
@@ -86,36 +92,42 @@ public abstract class HippyViewController<T extends View,  extends HippyViewBase
   
   public View createView(HippyRootView paramHippyRootView, int paramInt, HippyEngineContext paramHippyEngineContext, String paramString, HippyMap paramHippyMap)
   {
+    paramHippyEngineContext = null;
+    Object localObject2 = null;
     if (paramHippyRootView != null)
     {
       paramHippyEngineContext = paramHippyRootView.getContext();
+      Object localObject1 = localObject2;
       if ((paramHippyEngineContext instanceof HippyInstanceContext))
       {
         paramHippyEngineContext = ((HippyInstanceContext)paramHippyEngineContext).getNativeParams();
+        localObject1 = localObject2;
         if (paramHippyEngineContext != null)
         {
           paramHippyEngineContext = paramHippyEngineContext.get("CustomViewCreator");
-          if (!(paramHippyEngineContext instanceof HippyCustomViewCreator)) {}
-        }
-      }
-      for (View localView = ((HippyCustomViewCreator)paramHippyEngineContext).createCustomView(paramString, paramHippyRootView.getContext(), paramHippyMap);; localView = null)
-      {
-        paramHippyEngineContext = localView;
-        if (localView == null)
-        {
-          localView = createViewImpl(paramHippyRootView.getContext(), paramHippyMap);
-          paramHippyEngineContext = localView;
-          if (localView == null) {
-            paramHippyEngineContext = createViewImpl(paramHippyRootView.getContext());
+          localObject1 = localObject2;
+          if ((paramHippyEngineContext instanceof HippyCustomViewCreator)) {
+            localObject1 = ((HippyCustomViewCreator)paramHippyEngineContext).createCustomView(paramString, paramHippyRootView.getContext(), paramHippyMap);
           }
         }
-        LogUtils.d("HippyViewController", "createView id " + paramInt);
-        paramHippyEngineContext.setId(paramInt);
-        paramHippyEngineContext.setTag(HippyTag.createTagMap(paramString, paramHippyMap));
-        return paramHippyEngineContext;
       }
+      paramHippyEngineContext = (HippyEngineContext)localObject1;
+      if (localObject1 == null)
+      {
+        localObject1 = createViewImpl(paramHippyRootView.getContext(), paramHippyMap);
+        paramHippyEngineContext = (HippyEngineContext)localObject1;
+        if (localObject1 == null) {
+          paramHippyEngineContext = createViewImpl(paramHippyRootView.getContext());
+        }
+      }
+      paramHippyRootView = new StringBuilder();
+      paramHippyRootView.append("createView id ");
+      paramHippyRootView.append(paramInt);
+      LogUtils.d("HippyViewController", paramHippyRootView.toString());
+      paramHippyEngineContext.setId(paramInt);
+      paramHippyEngineContext.setTag(HippyTag.createTagMap(paramString, paramHippyMap));
     }
-    return null;
+    return paramHippyEngineContext;
   }
   
   @Deprecated
@@ -301,15 +313,14 @@ public abstract class HippyViewController<T extends View,  extends HippyViewBase
   {
     if (!handleGestureBySelf())
     {
-      if (paramBoolean) {
+      if (paramBoolean)
+      {
         paramT.setOnClickListener(NativeGestureDispatcher.getOnClickListener());
+        return;
       }
+      paramT.setOnClickListener(null);
+      paramT.setClickable(false);
     }
-    else {
-      return;
-    }
-    paramT.setOnClickListener(null);
-    paramT.setClickable(false);
   }
   
   @HippyControllerProps(name="customProp")
@@ -342,15 +353,17 @@ public abstract class HippyViewController<T extends View,  extends HippyViewBase
   {
     if (paramBoolean)
     {
-      if (((HippyViewBase)paramT).getGestureDispatcher() == null) {
-        ((HippyViewBase)paramT).setGestureDispatcher(new NativeGestureDispatcher(paramT));
+      HippyViewBase localHippyViewBase = (HippyViewBase)paramT;
+      if (localHippyViewBase.getGestureDispatcher() == null) {
+        localHippyViewBase.setGestureDispatcher(new NativeGestureDispatcher(paramT));
       }
-      ((HippyViewBase)paramT).getGestureDispatcher().addGestureType(paramString);
-    }
-    while (((HippyViewBase)paramT).getGestureDispatcher() == null) {
+      localHippyViewBase.getGestureDispatcher().addGestureType(paramString);
       return;
     }
-    ((HippyViewBase)paramT).getGestureDispatcher().removeGestureType(paramString);
+    paramT = (HippyViewBase)paramT;
+    if (paramT.getGestureDispatcher() != null) {
+      paramT.getGestureDispatcher().removeGestureType(paramString);
+    }
   }
   
   @HippyControllerProps(defaultNumber=0.0D, defaultType="number", name="borderLeftWidth")
@@ -366,15 +379,14 @@ public abstract class HippyViewController<T extends View,  extends HippyViewBase
   {
     if (!handleGestureBySelf())
     {
-      if (paramBoolean) {
+      if (paramBoolean)
+      {
         paramT.setOnLongClickListener(NativeGestureDispatcher.getOnLongClickListener());
+        return;
       }
+      paramT.setOnLongClickListener(null);
+      paramT.setLongClickable(false);
     }
-    else {
-      return;
-    }
-    paramT.setOnLongClickListener(null);
-    paramT.setLongClickable(false);
   }
   
   @HippyControllerProps(defaultType="boolean", name="nextFocusDownId")
@@ -428,6 +440,67 @@ public abstract class HippyViewController<T extends View,  extends HippyViewBase
   {
     if ((paramT instanceof CommonBorder)) {
       ((CommonBorder)paramT).setBorderWidth(paramFloat, CommonBorder.BorderWidthDirection.RIGHT.ordinal());
+    }
+  }
+  
+  @HippyControllerProps(defaultNumber=0.0D, defaultType="number", name="shadowColor")
+  public void setShadowColor(T paramT, int paramInt)
+  {
+    if ((paramT instanceof IShadow)) {
+      ((IShadow)paramT).setShadowColor(paramInt);
+    }
+  }
+  
+  @HippyControllerProps(defaultType="map", name="shadowOffset")
+  public void setShadowOffset(T paramT, HippyMap paramHippyMap)
+  {
+    if ((paramHippyMap != null) && ((paramT instanceof IShadow)))
+    {
+      float f1 = paramHippyMap.getInt("x");
+      float f2 = paramHippyMap.getInt("y");
+      paramT = (IShadow)paramT;
+      paramT.setShadowOffsetX(f1);
+      paramT.setShadowOffsetY(f2);
+    }
+  }
+  
+  @HippyControllerProps(defaultNumber=0.0D, defaultType="number", name="shadowOffsetX")
+  public void setShadowOffsetX(T paramT, float paramFloat)
+  {
+    if ((paramT instanceof IShadow)) {
+      ((IShadow)paramT).setShadowOffsetX(paramFloat);
+    }
+  }
+  
+  @HippyControllerProps(defaultNumber=0.0D, defaultType="number", name="shadowOffsetY")
+  public void setShadowOffsetY(T paramT, float paramFloat)
+  {
+    if ((paramT instanceof IShadow)) {
+      ((IShadow)paramT).setShadowOffsetY(paramFloat);
+    }
+  }
+  
+  @HippyControllerProps(defaultNumber=0.0D, defaultType="number", name="shadowOpacity")
+  public void setShadowOpacity(T paramT, float paramFloat)
+  {
+    if ((paramT instanceof IShadow)) {
+      ((IShadow)paramT).setShadowOpacity(paramFloat);
+    }
+  }
+  
+  @HippyControllerProps(defaultNumber=0.0D, defaultType="number", name="shadowRadius")
+  public void setShadowRadius(T paramT, float paramFloat)
+  {
+    if ((paramT instanceof IShadow)) {
+      ((IShadow)paramT).setShadowRadius(paramFloat);
+    }
+  }
+  
+  @HippyControllerProps(defaultNumber=0.0D, defaultType="number", name="shadowSpread")
+  public void setShadowSpread(T paramT, float paramFloat)
+  {
+    if ((paramT instanceof IShadow)) {
+      ((IShadow)paramT).setShadowSpread(paramFloat);
     }
   }
   
@@ -522,14 +595,14 @@ public abstract class HippyViewController<T extends View,  extends HippyViewBase
     {
       paramb.measure(View.MeasureSpec.makeMeasureSpec(paramInt4, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt5, 1073741824));
       if (!shouldInterceptLayout(paramb, paramInt2, paramInt3, paramInt4, paramInt5)) {
-        paramb.layout(paramInt2, paramInt3, paramInt2 + paramInt4, paramInt3 + paramInt5);
+        paramb.layout(paramInt2, paramInt3, paramInt4 + paramInt2, paramInt5 + paramInt3);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.HippyViewController
  * JD-Core Version:    0.7.0.1
  */

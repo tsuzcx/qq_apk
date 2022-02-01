@@ -33,39 +33,38 @@ public class NumRedMsgHandler
     int i;
     if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {
       i = 1;
+    } else {
+      i = 0;
     }
-    for (;;)
+    paramFromServiceMsg = (NumRedMsgManager)this.a.getManager(QQManagerFactory.NUMREDMSG_MANAGER);
+    if (i != 0)
     {
-      paramFromServiceMsg = (NumRedMsgManager)this.a.getManager(QQManagerFactory.NUMREDMSG_MANAGER);
-      if (i != 0)
+      NumRedMsg.NumMsgRspBody localNumMsgRspBody = new NumRedMsg.NumMsgRspBody();
+      try
       {
-        NumRedMsg.NumMsgRspBody localNumMsgRspBody = new NumRedMsg.NumMsgRspBody();
-        try
-        {
-          localNumMsgRspBody.mergeFrom((byte[])paramObject);
-          if (localNumMsgRspBody.i_retcode.get() == 0)
-          {
-            paramFromServiceMsg.a(localNumMsgRspBody, paramToServiceMsg, true);
-            return;
-            i = 0;
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramObject)
-        {
-          for (;;)
-          {
-            paramObject.printStackTrace();
-            if (QLog.isColorLevel()) {
-              QLog.i("NumRedMsgHandler", 2, "mergeFrom failed");
-            }
-          }
-          if (QLog.isColorLevel()) {
-            QLog.i("NumRedMsgHandler", 2, "rsp code != 0 , error msg == " + localNumMsgRspBody.str_errmsg.get());
-          }
-          paramFromServiceMsg.a(localNumMsgRspBody, paramToServiceMsg, false);
-          return;
+        localNumMsgRspBody.mergeFrom((byte[])paramObject);
+      }
+      catch (InvalidProtocolBufferMicroException paramObject)
+      {
+        paramObject.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.i("NumRedMsgHandler", 2, "mergeFrom failed");
         }
       }
+      if (localNumMsgRspBody.i_retcode.get() == 0)
+      {
+        paramFromServiceMsg.a(localNumMsgRspBody, paramToServiceMsg, true);
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        paramObject = new StringBuilder();
+        paramObject.append("rsp code != 0 , error msg == ");
+        paramObject.append(localNumMsgRspBody.str_errmsg.get());
+        QLog.i("NumRedMsgHandler", 2, paramObject.toString());
+      }
+      paramFromServiceMsg.a(localNumMsgRspBody, paramToServiceMsg, false);
+      return;
     }
     paramFromServiceMsg.a(null, paramToServiceMsg, false);
   }
@@ -75,7 +74,7 @@ public class NumRedMsgHandler
     NumRedMsg.NumMsgReqBody localNumMsgReqBody = new NumRedMsg.NumMsgReqBody();
     localNumMsgReqBody.i_proto_ver.set(1);
     localNumMsgReqBody.ui_plat_id.set(109);
-    localNumMsgReqBody.str_client_ver.set("8.5.5.5105");
+    localNumMsgReqBody.str_client_ver.set("8.7.0.5295");
     localNumMsgReqBody.ui64_uin.set(Long.parseLong(this.a.getCurrentAccountUin()));
     ArrayList localArrayList = new ArrayList();
     localArrayList.addAll(paramList);
@@ -109,7 +108,7 @@ public class NumRedMsgHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.NumRedMsgHandler
  * JD-Core Version:    0.7.0.1
  */

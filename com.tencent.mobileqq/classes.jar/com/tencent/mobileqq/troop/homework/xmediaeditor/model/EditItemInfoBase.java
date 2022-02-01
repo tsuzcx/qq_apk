@@ -15,8 +15,6 @@ public abstract class EditItemInfoBase
     return this.a;
   }
   
-  public void a(String paramString) {}
-  
   public boolean a()
   {
     return this.b;
@@ -24,17 +22,20 @@ public abstract class EditItemInfoBase
   
   public abstract int b();
   
+  public void c(String paramString) {}
+  
   public String toString()
   {
-    if (this.a != null) {
-      return this.a.toString();
+    JSONObject localJSONObject = this.a;
+    if (localJSONObject != null) {
+      return localJSONObject.toString();
     }
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.model.EditItemInfoBase
  * JD-Core Version:    0.7.0.1
  */

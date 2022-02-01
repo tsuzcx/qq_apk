@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -7,7 +8,6 @@ import android.os.Handler.Callback;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.view.View;
-import com.tencent.mobileqq.activity.EmosmActivity;
 import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 import com.tencent.mobileqq.activity.aio.core.AIOContext;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
@@ -18,8 +18,14 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.emosm.AIOEmoticonUIHelper;
+import com.tencent.mobileqq.emoticonview.api.IReportWorkerService;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
+import com.tencent.mobileqq.qroute.route.URIRequest;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.text.TextUtils;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XPanelContainer;
@@ -37,7 +43,7 @@ public class AIOEmoticonPanelHelper
     paramBaseChatPie.b().a().a(this);
   }
   
-  private EmoticonMainPanel tryGetEmoticonMainPanel()
+  private IEmoticonMainPanel tryGetEmoticonMainPanel()
   {
     Object localObject = tryGetChatPie();
     if (localObject != null)
@@ -61,14 +67,13 @@ public class AIOEmoticonPanelHelper
   public void doOnEmoticonPanelFullScreen()
   {
     BaseChatPie localBaseChatPie = tryGetChatPie();
-    if (localBaseChatPie == null) {}
-    View localView;
-    do
-    {
+    if (localBaseChatPie == null) {
       return;
-      localView = localBaseChatPie.a().a();
-    } while ((!(localView instanceof EmoticonMainPanel)) || (localView.getVisibility() != 0));
-    localBaseChatPie.a().a();
+    }
+    View localView = localBaseChatPie.a().a();
+    if (((localView instanceof IEmoticonMainPanel)) && (localView.getVisibility() == 0)) {
+      localBaseChatPie.a().a();
+    }
   }
   
   public void emoticonMall()
@@ -85,71 +90,105 @@ public class AIOEmoticonPanelHelper
   public void gotoEmoMallPage(int paramInt)
   {
     BaseChatPie localBaseChatPie = tryGetChatPie();
-    if (localBaseChatPie == null) {}
-    do
-    {
+    if (localBaseChatPie == null) {
       return;
-      EmojiHomeUiPlugin.openEmojiHomePage(localBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, localBaseChatPie.a().getAccount(), paramInt);
-      if (6 == paramInt)
-      {
-        ReportController.b(null, "CliOper", "", "", "MbGuanli", "MbDianjiTianjia", 0, 0, "", "", "", "");
-        return;
-      }
-    } while (9 != paramInt);
-    ReportController.b(null, "CliOper", "", "", "MbGuanli", "MbGiftClick", 0, 0, "", "", "", "");
+    }
+    EmojiHomeUiPlugin.openEmojiHomePage(localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localBaseChatPie.a().getAccount(), paramInt);
+    if (6 == paramInt)
+    {
+      ReportController.b(null, "CliOper", "", "", "MbGuanli", "MbDianjiTianjia", 0, 0, "", "", "", "");
+      return;
+    }
+    if (9 == paramInt) {
+      ReportController.b(null, "CliOper", "", "", "MbGuanli", "MbGiftClick", 0, 0, "", "", "", "");
+    }
   }
   
   public boolean handleMessage(Message paramMessage)
   {
     Object localObject = tryGetEmoticonMainPanel();
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 10)
     {
-    default: 
-      return false;
-    case 22: 
-      showEmoticonPanel((String)paramMessage.obj);
-      return true;
-    case 10: 
-      if (localObject != null) {
-        ((EmoticonMainPanel)localObject).updateFavEmoticonPanel();
+      if (i != 41)
+      {
+        if (i != 53)
+        {
+          if (i != 55)
+          {
+            if (i != 91)
+            {
+              if (i != 21)
+              {
+                if (i != 22) {
+                  return false;
+                }
+                showEmoticonPanel((String)paramMessage.obj);
+                return true;
+              }
+              if (localObject != null) {
+                ((IEmoticonMainPanel)localObject).updateMagicPanel();
+              }
+              return true;
+            }
+            if (localObject != null) {
+              ((IEmoticonMainPanel)localObject).updateSystemAndEmojiPanel();
+            }
+            return true;
+          }
+          localObject = tryGetChatPie();
+          if (localObject != null) {
+            reportClassicAndSmallEmoticon((String)paramMessage.obj, true, ((BaseChatPie)localObject).a());
+          }
+          return true;
+        }
+        showManagerFavEmoticonTips();
+        return true;
       }
-      return true;
-    case 41: 
       if (localObject != null) {
-        ((EmoticonMainPanel)localObject).updateLastEmoticonPanel();
-      }
-      return true;
-    case 91: 
-      if (localObject != null) {
-        ((EmoticonMainPanel)localObject).updateSystemAndEmojiPanel();
-      }
-      return true;
-    case 21: 
-      if (localObject != null) {
-        ((EmoticonMainPanel)localObject).updateMagicPanel();
+        ((IEmoticonMainPanel)localObject).updateLastEmoticonPanel();
       }
       return true;
     }
-    localObject = tryGetChatPie();
     if (localObject != null) {
-      reportClassicAndSmallEmoticon((String)paramMessage.obj, true, ((BaseChatPie)localObject).a());
+      ((IEmoticonMainPanel)localObject).updateFavEmoticonPanel();
     }
     return true;
   }
   
   public int[] interestedIn()
   {
-    return new int[] { 14, 8, 6 };
+    return new int[] { 15, 9, 7 };
   }
   
   public boolean isEmoPgkForward()
   {
     BaseChatPie localBaseChatPie = tryGetChatPie();
-    if (localBaseChatPie == null) {}
-    while ((localBaseChatPie.jdField_a_of_type_AndroidContentContext == null) || (localBaseChatPie.a() == null) || (localBaseChatPie.a().getIntent() == null) || (localBaseChatPie.a().getIntent().getExtras() == null) || (!localBaseChatPie.a().getIntent().getExtras().containsKey("FORWARD_EMOPGK_ID"))) {
+    boolean bool2 = false;
+    if (localBaseChatPie == null) {
       return false;
     }
-    return true;
+    boolean bool1 = bool2;
+    if (localBaseChatPie.jdField_a_of_type_AndroidContentContext != null)
+    {
+      bool1 = bool2;
+      if (localBaseChatPie.a() != null)
+      {
+        bool1 = bool2;
+        if (localBaseChatPie.a().getIntent() != null)
+        {
+          bool1 = bool2;
+          if (localBaseChatPie.a().getIntent().getExtras() != null)
+          {
+            bool1 = bool2;
+            if (localBaseChatPie.a().getIntent().getExtras().containsKey("FORWARD_EMOPGK_ID")) {
+              bool1 = true;
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public void onHidePopup(EmoticonInfo paramEmoticonInfo) {}
@@ -164,7 +203,7 @@ public class AIOEmoticonPanelHelper
   public void onShowPopup(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable)
   {
     paramEmoticonInfo1 = tryGetChatPie();
-    if ((paramEmoticonInfo1 != null) && (paramEmoticonInfo2.type == 6) && ((paramEmoticonInfo2 instanceof PicEmoticonInfo)) && (((PicEmoticonInfo)paramEmoticonInfo2).isSound())) {
+    if ((paramEmoticonInfo1 != null) && (paramEmoticonInfo2.type == 6) && ((paramEmoticonInfo2 instanceof IPicEmoticonInfo)) && (((IPicEmoticonInfo)paramEmoticonInfo2).isSound())) {
       MediaPlayerManager.a(paramEmoticonInfo1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(true);
     }
   }
@@ -175,14 +214,15 @@ public class AIOEmoticonPanelHelper
     if (localBaseChatPie == null) {
       return;
     }
-    ThreadManager.post(new ReportWorker(paramString, paramBoolean, tryGetEmoticonMainPanel(), paramQQAppInterface, localBaseChatPie.b()), 2, null, false);
+    IEmoticonMainPanel localIEmoticonMainPanel = tryGetEmoticonMainPanel();
+    ThreadManager.post(((IReportWorkerService)QRoute.api(IReportWorkerService.class)).createReportWorker(paramString, paramBoolean, localIEmoticonMainPanel, paramQQAppInterface, localBaseChatPie.b()), 2, null, false);
   }
   
   public void send()
   {
     BaseChatPie localBaseChatPie = tryGetChatPie();
     if (localBaseChatPie != null) {
-      localBaseChatPie.ao();
+      localBaseChatPie.R();
     }
   }
   
@@ -190,7 +230,7 @@ public class AIOEmoticonPanelHelper
   {
     BaseChatPie localBaseChatPie = tryGetChatPie();
     if ((paramEmoticonInfo != null) && (localBaseChatPie != null)) {
-      paramEmoticonInfo.send(localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx, localBaseChatPie.a());
+      paramEmoticonInfo.send(localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx, localBaseChatPie.a());
     }
     if ((localBaseChatPie instanceof FriendChatPie)) {
       ((FriendChatPie)localBaseChatPie).a(paramEmoticonInfo);
@@ -199,112 +239,121 @@ public class AIOEmoticonPanelHelper
   
   public void setting()
   {
-    BaseChatPie localBaseChatPie = tryGetChatPie();
-    if (localBaseChatPie != null)
+    Object localObject = tryGetChatPie();
+    if (localObject != null)
     {
-      Intent localIntent = new Intent(localBaseChatPie.jdField_a_of_type_AndroidContentContext, EmosmActivity.class);
-      localIntent.putExtra("extra_launch_source", 1);
-      localIntent.putExtra("extra_launch_mode", 2);
-      localBaseChatPie.a().startActivity(localIntent);
+      localObject = new ActivityURIRequest(((BaseChatPie)localObject).a(), "/base/activity/EmosmActivity");
+      ((ActivityURIRequest)localObject).extra().putInt("extra_launch_source", 1);
+      ((ActivityURIRequest)localObject).extra().putInt("extra_launch_mode", 2);
+      QRoute.startUri((URIRequest)localObject);
       ReportController.b(null, "CliOper", "", "", "MbGuanli", "MbDianjiGuanli", 0, 0, "", "", "", "");
     }
   }
   
   public void showEmoticonPanel(int paramInt)
   {
-    BaseChatPie localBaseChatPie = tryGetChatPie();
-    if (localBaseChatPie == null) {}
-    AIOEmoticonUIHelper localAIOEmoticonUIHelper;
-    do
-    {
+    Object localObject = tryGetChatPie();
+    if (localObject == null) {
       return;
-      localAIOEmoticonUIHelper = (AIOEmoticonUIHelper)localBaseChatPie.a(105);
-    } while (localAIOEmoticonUIHelper == null);
-    long l = System.currentTimeMillis();
-    EmoticonMainPanel localEmoticonMainPanel = localAIOEmoticonUIHelper.c();
-    if ((localEmoticonMainPanel != null) && (localEmoticonMainPanel.getVisibility() == 0))
-    {
-      localEmoticonMainPanel.initEmoticonView(paramInt);
-      localBaseChatPie.a().a(3);
     }
-    for (;;)
-    {
-      localAIOEmoticonUIHelper.jdField_a_of_type_Int = -1;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("AIOEmoticonPanelHalper", 2, "[Performance] showEmoticonPanel, duration=" + (System.currentTimeMillis() - l));
+    AIOEmoticonUIHelper localAIOEmoticonUIHelper = (AIOEmoticonUIHelper)((BaseChatPie)localObject).a(105);
+    if (localAIOEmoticonUIHelper == null) {
       return;
-      if (localEmoticonMainPanel == null)
-      {
-        localAIOEmoticonUIHelper.jdField_a_of_type_Int = paramInt;
-        localBaseChatPie.a().a(3);
-        if (localEmoticonMainPanel != null) {
-          localEmoticonMainPanel.preloadWebProcess();
-        }
+    }
+    long l = System.currentTimeMillis();
+    IEmoticonMainPanel localIEmoticonMainPanel = localAIOEmoticonUIHelper.c();
+    if ((localIEmoticonMainPanel != null) && (localIEmoticonMainPanel.getVisibility() == 0))
+    {
+      localIEmoticonMainPanel.initEmoticonView(paramInt);
+      ((BaseChatPie)localObject).a().a(3);
+    }
+    else if (localIEmoticonMainPanel == null)
+    {
+      localAIOEmoticonUIHelper.jdField_a_of_type_Int = paramInt;
+      ((BaseChatPie)localObject).a().a(3);
+      if (localIEmoticonMainPanel != null) {
+        localIEmoticonMainPanel.preloadWebProcess();
       }
-      else
-      {
-        localEmoticonMainPanel.initEmoticonView(paramInt);
-        localBaseChatPie.a().a(3);
-        localEmoticonMainPanel.preloadWebProcess();
-      }
+    }
+    else
+    {
+      localIEmoticonMainPanel.initEmoticonView(paramInt);
+      ((BaseChatPie)localObject).a().a(3);
+      localIEmoticonMainPanel.preloadWebProcess();
+    }
+    localAIOEmoticonUIHelper.jdField_a_of_type_Int = -1;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[Performance] showEmoticonPanel, duration=");
+      ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
+      QLog.d("AIOEmoticonPanelHalper", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   public void showEmoticonPanel(String paramString)
   {
     BaseChatPie localBaseChatPie = tryGetChatPie();
-    if (localBaseChatPie == null) {}
-    AIOEmoticonUIHelper localAIOEmoticonUIHelper;
-    do
-    {
+    if (localBaseChatPie == null) {
       return;
-      localAIOEmoticonUIHelper = (AIOEmoticonUIHelper)localBaseChatPie.a(105);
-    } while (localAIOEmoticonUIHelper == null);
+    }
+    AIOEmoticonUIHelper localAIOEmoticonUIHelper = (AIOEmoticonUIHelper)localBaseChatPie.a(105);
+    if (localAIOEmoticonUIHelper == null) {
+      return;
+    }
     long l = System.currentTimeMillis();
-    EmoticonMainPanel localEmoticonMainPanel = localAIOEmoticonUIHelper.c();
-    if ((localEmoticonMainPanel != null) && (localEmoticonMainPanel.getVisibility() == 0))
+    IEmoticonMainPanel localIEmoticonMainPanel = localAIOEmoticonUIHelper.c();
+    if ((localIEmoticonMainPanel != null) && (localIEmoticonMainPanel.getVisibility() == 0))
     {
-      localEmoticonMainPanel.initEmoticonView(paramString);
+      localIEmoticonMainPanel.initEmoticonView(paramString);
       localBaseChatPie.a().a(3);
     }
-    for (;;)
+    else if (localIEmoticonMainPanel == null)
     {
-      localAIOEmoticonUIHelper.jdField_a_of_type_JavaLangString = null;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("AIOEmoticonPanelHalper", 2, "[Performance] showEmoticonPanel, duration=" + (System.currentTimeMillis() - l));
-      return;
-      if (localEmoticonMainPanel == null)
-      {
-        localAIOEmoticonUIHelper.jdField_a_of_type_JavaLangString = paramString;
-        localBaseChatPie.a().a(3);
-        if (localEmoticonMainPanel != null) {
-          localEmoticonMainPanel.preloadWebProcess();
-        }
-      }
-      else if (paramString != null)
-      {
-        localEmoticonMainPanel.initEmoticonView(paramString);
-        localBaseChatPie.a().a(3);
-        localEmoticonMainPanel.preloadWebProcess();
+      localAIOEmoticonUIHelper.jdField_a_of_type_JavaLangString = paramString;
+      localBaseChatPie.a().a(3);
+      if (localIEmoticonMainPanel != null) {
+        localIEmoticonMainPanel.preloadWebProcess();
       }
     }
+    else if (paramString != null)
+    {
+      localIEmoticonMainPanel.initEmoticonView(paramString);
+      localBaseChatPie.a().a(3);
+      localIEmoticonMainPanel.preloadWebProcess();
+    }
+    localAIOEmoticonUIHelper.jdField_a_of_type_JavaLangString = null;
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("[Performance] showEmoticonPanel, duration=");
+      paramString.append(System.currentTimeMillis() - l);
+      QLog.d("AIOEmoticonPanelHalper", 2, paramString.toString());
+    }
+  }
+  
+  public void showManagerFavEmoticonTips()
+  {
+    Object localObject = tryGetChatPie();
+    if (localObject == null) {
+      return;
+    }
+    localObject = ((BaseChatPie)localObject).jdField_a_of_type_AndroidContentContext;
+    DialogUtil.a((Context)localObject, 230, null, ((Context)localObject).getString(2131689649), 2131692133, 2131692132, new AIOEmoticonPanelHelper.1(this, (Context)localObject), new AIOEmoticonPanelHelper.2(this)).show();
   }
   
   public BaseChatPie tryGetChatPie()
   {
-    if ((this.mBaseChatPieReference == null) || (this.mBaseChatPieReference.isEnqueued())) {
-      return null;
+    WeakReference localWeakReference = this.mBaseChatPieReference;
+    if ((localWeakReference != null) && (!localWeakReference.isEnqueued())) {
+      return (BaseChatPie)this.mBaseChatPieReference.get();
     }
-    return (BaseChatPie)this.mBaseChatPieReference.get();
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.AIOEmoticonPanelHelper
  * JD-Core Version:    0.7.0.1
  */

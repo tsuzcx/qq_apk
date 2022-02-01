@@ -46,15 +46,12 @@ public class IcsLinearLayout
     if (a(j))
     {
       localView = getChildAt(j - 1);
-      if (localView != null) {
-        break label119;
+      if (localView == null) {
+        i = getHeight() - getPaddingBottom() - this.b;
+      } else {
+        i = localView.getBottom();
       }
-    }
-    label119:
-    for (i = getHeight() - getPaddingBottom() - this.b;; i = localView.getBottom())
-    {
       a(paramCanvas, i);
-      return;
     }
   }
   
@@ -66,10 +63,11 @@ public class IcsLinearLayout
   
   private boolean a(int paramInt)
   {
-    if ((paramInt == 0) || (paramInt == getChildCount())) {}
-    for (;;)
+    if (paramInt != 0)
     {
-      return false;
+      if (paramInt == getChildCount()) {
+        return false;
+      }
       if ((this.c & 0x2) != 0)
       {
         paramInt -= 1;
@@ -82,6 +80,7 @@ public class IcsLinearLayout
         }
       }
     }
+    return false;
   }
   
   private void b(Canvas paramCanvas)
@@ -102,15 +101,12 @@ public class IcsLinearLayout
     if (a(j))
     {
       localView = getChildAt(j - 1);
-      if (localView != null) {
-        break label119;
+      if (localView == null) {
+        i = getWidth() - getPaddingRight() - this.jdField_a_of_type_Int;
+      } else {
+        i = localView.getRight();
       }
-    }
-    label119:
-    for (i = getWidth() - getPaddingRight() - this.jdField_a_of_type_Int;; i = localView.getRight())
-    {
       b(paramCanvas, i);
-      return;
     }
   }
   
@@ -120,82 +116,68 @@ public class IcsLinearLayout
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
   }
   
-  public void measureChildWithMargins(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void measureChildWithMargins(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int i = indexOfChild(paramView);
     int j = getOrientation();
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
-    if (a(i))
-    {
+    if (a(i)) {
       if (j == 1) {
         localLayoutParams.topMargin = this.b;
+      } else {
+        localLayoutParams.leftMargin = this.jdField_a_of_type_Int;
       }
     }
-    else
-    {
-      int k = getChildCount();
-      if ((i == k - 1) && (a(k)))
-      {
-        if (j != 1) {
-          break label109;
-        }
+    int k = getChildCount();
+    if ((i == k - 1) && (a(k))) {
+      if (j == 1) {
         localLayoutParams.bottomMargin = this.b;
+      } else {
+        localLayoutParams.rightMargin = this.jdField_a_of_type_Int;
       }
     }
-    for (;;)
-    {
-      super.measureChildWithMargins(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
-      return;
-      localLayoutParams.leftMargin = this.jdField_a_of_type_Int;
-      break;
-      label109:
-      localLayoutParams.rightMargin = this.jdField_a_of_type_Int;
-    }
+    super.measureChildWithMargins(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-    {
-      if (getOrientation() != 1) {
-        break label26;
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
+      if (getOrientation() == 1) {
+        a(paramCanvas);
+      } else {
+        b(paramCanvas);
       }
-      a(paramCanvas);
     }
-    for (;;)
-    {
-      super.onDraw(paramCanvas);
-      return;
-      label26:
-      b(paramCanvas);
-    }
+    super.onDraw(paramCanvas);
   }
   
   public void setDividerDrawable(Drawable paramDrawable)
   {
-    boolean bool = false;
     if (paramDrawable == this.jdField_a_of_type_AndroidGraphicsDrawableDrawable) {
       return;
     }
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    if (paramDrawable != null) {
-      this.jdField_a_of_type_Int = (paramDrawable.getIntrinsicWidth() - 2);
-    }
-    for (this.b = paramDrawable.getIntrinsicHeight();; this.b = 0)
+    boolean bool = false;
+    if (paramDrawable != null)
     {
-      if (paramDrawable == null) {
-        bool = true;
-      }
-      setWillNotDraw(bool);
-      requestLayout();
-      return;
-      this.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Int = (paramDrawable.getIntrinsicWidth() - 2);
+      this.b = paramDrawable.getIntrinsicHeight();
     }
+    else
+    {
+      this.jdField_a_of_type_Int = 0;
+      this.b = 0;
+    }
+    if (paramDrawable == null) {
+      bool = true;
+    }
+    setWillNotDraw(bool);
+    requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.widget.IcsLinearLayout
  * JD-Core Version:    0.7.0.1
  */

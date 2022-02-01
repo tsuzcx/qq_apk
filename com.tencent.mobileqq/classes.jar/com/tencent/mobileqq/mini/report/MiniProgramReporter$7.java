@@ -11,12 +11,13 @@ class MiniProgramReporter$7
   
   public void run()
   {
-    if (this.val$data != null)
+    Object localObject = this.val$data;
+    if (localObject != null)
     {
-      Iterator localIterator = this.val$data.iterator();
-      while (localIterator.hasNext())
+      localObject = ((Collection)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        APP_REPORT_TRANSFER.SingleDcData localSingleDcData = (APP_REPORT_TRANSFER.SingleDcData)localIterator.next();
+        APP_REPORT_TRANSFER.SingleDcData localSingleDcData = (APP_REPORT_TRANSFER.SingleDcData)((Iterator)localObject).next();
         this.this$0.addData(localSingleDcData);
       }
     }
@@ -25,7 +26,7 @@ class MiniProgramReporter$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramReporter.7
  * JD-Core Version:    0.7.0.1
  */

@@ -46,61 +46,62 @@ public class FillContent
     this.name = paramShapeFill.getName();
     this.hidden = paramShapeFill.isHidden();
     this.lottieDrawable = paramLottieDrawable;
-    if ((paramShapeFill.getColor() == null) || (paramShapeFill.getOpacity() == null))
+    if ((paramShapeFill.getColor() != null) && (paramShapeFill.getOpacity() != null))
     {
-      this.colorAnimation = null;
-      this.opacityAnimation = null;
+      this.path.setFillType(paramShapeFill.getFillType());
+      this.colorAnimation = paramShapeFill.getColor().createAnimation();
+      this.colorAnimation.addUpdateListener(this);
+      paramBaseLayer.addAnimation(this.colorAnimation);
+      this.opacityAnimation = paramShapeFill.getOpacity().createAnimation();
+      this.opacityAnimation.addUpdateListener(this);
+      paramBaseLayer.addAnimation(this.opacityAnimation);
       return;
     }
-    this.path.setFillType(paramShapeFill.getFillType());
-    this.colorAnimation = paramShapeFill.getColor().createAnimation();
-    this.colorAnimation.addUpdateListener(this);
-    paramBaseLayer.addAnimation(this.colorAnimation);
-    this.opacityAnimation = paramShapeFill.getOpacity().createAnimation();
-    this.opacityAnimation.addUpdateListener(this);
-    paramBaseLayer.addAnimation(this.opacityAnimation);
+    this.colorAnimation = null;
+    this.opacityAnimation = null;
   }
   
   public <T> void addValueCallback(T paramT, @Nullable LottieValueCallback<T> paramLottieValueCallback)
   {
-    if (paramT == LottieProperty.COLOR) {
-      this.colorAnimation.setValueCallback(paramLottieValueCallback);
-    }
-    do
+    if (paramT == LottieProperty.COLOR)
     {
+      this.colorAnimation.setValueCallback(paramLottieValueCallback);
       return;
-      if (paramT == LottieProperty.OPACITY)
+    }
+    if (paramT == LottieProperty.OPACITY)
+    {
+      this.opacityAnimation.setValueCallback(paramLottieValueCallback);
+      return;
+    }
+    if (paramT == LottieProperty.COLOR_FILTER)
+    {
+      if (paramLottieValueCallback == null)
       {
-        this.opacityAnimation.setValueCallback(paramLottieValueCallback);
+        this.colorFilterAnimation = null;
         return;
       }
-    } while (paramT != LottieProperty.COLOR_FILTER);
-    if (paramLottieValueCallback == null)
-    {
-      this.colorFilterAnimation = null;
-      return;
+      this.colorFilterAnimation = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
+      this.colorFilterAnimation.addUpdateListener(this);
+      this.layer.addAnimation(this.colorFilterAnimation);
     }
-    this.colorFilterAnimation = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
-    this.colorFilterAnimation.addUpdateListener(this);
-    this.layer.addAnimation(this.colorFilterAnimation);
   }
   
   public void draw(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
   {
-    int i = 0;
     if (this.hidden) {
       return;
     }
     L.beginSection("FillContent#draw");
     this.paint.setColor(((ColorKeyframeAnimation)this.colorAnimation).getIntValue());
-    float f = paramInt / 255.0F;
-    paramInt = (int)(((Integer)this.opacityAnimation.getValue()).intValue() * f / 100.0F * 255.0F);
-    this.paint.setAlpha(MiscUtils.clamp(paramInt, 0, 255));
-    if (this.colorFilterAnimation != null) {
-      this.paint.setColorFilter((ColorFilter)this.colorFilterAnimation.getValue());
+    int i = (int)(paramInt / 255.0F * ((Integer)this.opacityAnimation.getValue()).intValue() / 100.0F * 255.0F);
+    Object localObject = this.paint;
+    paramInt = 0;
+    ((Paint)localObject).setAlpha(MiscUtils.clamp(i, 0, 255));
+    localObject = this.colorFilterAnimation;
+    if (localObject != null) {
+      this.paint.setColorFilter((ColorFilter)((BaseKeyframeAnimation)localObject).getValue());
     }
     this.path.reset();
-    paramInt = i;
     while (paramInt < this.paths.size())
     {
       this.path.addPath(((PathContent)this.paths.get(paramInt)).getPath(), paramMatrix);
@@ -153,7 +154,7 @@ public class FillContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.content.FillContent
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.weishi_new.baseui.AbsWsUIGroup;
 import com.tencent.biz.pubaccount.weishi_new.holder.WSFollowFeedHolder;
-import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
+import com.tencent.biz.pubaccount.weishi_new.image.WSPicLoader;
 import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
 import com.tencent.mobileqq.utils.ViewUtils;
 import java.util.ArrayList;
@@ -40,16 +40,20 @@ public class WSJoinGroupController
   
   private void g()
   {
-    if ((this.jdField_a_of_type_AndroidAppActivity == null) || (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder == null)) {
-      return;
+    if (this.jdField_a_of_type_AndroidAppActivity != null)
+    {
+      Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder;
+      if (localObject == null) {
+        return;
+      }
+      ((WSFollowFeedHolder)localObject).b();
+      localObject = new BottomDialog(this.jdField_a_of_type_AndroidAppActivity);
+      GroupDlgView localGroupDlgView = new GroupDlgView(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder);
+      ((BottomDialog)localObject).setContentView(localGroupDlgView);
+      localGroupDlgView.a(a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder.a()));
+      ((BottomDialog)localObject).show();
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder.a();
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder.b();
-    BottomDialog localBottomDialog = new BottomDialog(this.jdField_a_of_type_AndroidAppActivity);
-    GroupDlgView localGroupDlgView = new GroupDlgView(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder);
-    localBottomDialog.setContentView(localGroupDlgView);
-    localGroupDlgView.a(a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder.a()));
-    localBottomDialog.show();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder.a();
   }
   
   public List<GroupEntity> a(stFeed paramstFeed)
@@ -68,24 +72,25 @@ public class WSJoinGroupController
     return localArrayList;
   }
   
-  public void a() {}
+  protected void a() {}
   
-  public int b()
+  protected int b()
   {
-    return 2131560529;
+    return 2131560416;
   }
   
-  public void b() {}
+  protected void b() {}
   
-  public void c() {}
+  protected void c() {}
   
-  public void e()
+  protected void e()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131369331));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView = ((RoundImageView)a(2131369329));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131369330));
-    Drawable localDrawable = a().getDrawable(2130842871);
-    localDrawable.setBounds(new Rect(0, 0, e, e));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131369063));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView = ((RoundImageView)a(2131369061));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131369062));
+    Drawable localDrawable = a().getDrawable(2130842771);
+    int i = e;
+    localDrawable.setBounds(new Rect(0, 0, i, i));
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(d);
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, localDrawable, null);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new WSJoinGroupController.1(this));
@@ -94,14 +99,15 @@ public class WSJoinGroupController
   public void f()
   {
     stFeed localstFeed = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder.a();
-    if ((this.jdField_a_of_type_AndroidAppActivity != null) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) && (localstFeed != null) && (localstFeed.feed != null) && (localstFeed.feed.qqGroups != null) && (localstFeed.feed.qqGroups.size() > 0)) {
-      WeishiUtils.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView, ((stQQGroupInfo)localstFeed.feed.qqGroups.get(0)).groupAvatar);
+    Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
+    if ((localActivity != null) && (!localActivity.isFinishing()) && (localstFeed != null) && (localstFeed.feed != null) && (localstFeed.feed.qqGroups != null) && (localstFeed.feed.qqGroups.size() > 0)) {
+      WSPicLoader.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView, ((stQQGroupInfo)localstFeed.feed.qqGroups.get(0)).groupAvatar);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.follow.joinGroup.WSJoinGroupController
  * JD-Core Version:    0.7.0.1
  */

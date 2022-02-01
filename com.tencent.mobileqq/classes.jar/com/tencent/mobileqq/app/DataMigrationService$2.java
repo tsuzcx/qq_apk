@@ -14,16 +14,26 @@ class DataMigrationService$2
   
   public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DataMigrationService", 2, "sendActionAfterGetTicket| OnException=" + paramErrMsg + ", cmd=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramWUserSigInfo = new StringBuilder();
+      paramWUserSigInfo.append("sendActionAfterGetTicket| OnException=");
+      paramWUserSigInfo.append(paramErrMsg);
+      paramWUserSigInfo.append(", cmd=");
+      paramWUserSigInfo.append(paramInt);
+      QLog.d("DataMigrationService", 2, paramWUserSigInfo.toString());
     }
     DataMigrationService.a(this.jdField_a_of_type_ComTencentMobileqqAppDataMigrationService, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Int, null, this.jdField_b_of_type_Int);
   }
   
   public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DataMigrationService", 2, "sendActionAfterGetTicket| onGetA1WithA1 ret=" + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      paramArrayOfByte1 = new StringBuilder();
+      paramArrayOfByte1.append("sendActionAfterGetTicket| onGetA1WithA1 ret=");
+      paramArrayOfByte1.append(paramInt2);
+      QLog.d("DataMigrationService", 2, paramArrayOfByte1.toString());
     }
     if (paramInt2 != 0)
     {
@@ -39,7 +49,7 @@ class DataMigrationService$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.DataMigrationService.2
  * JD-Core Version:    0.7.0.1
  */

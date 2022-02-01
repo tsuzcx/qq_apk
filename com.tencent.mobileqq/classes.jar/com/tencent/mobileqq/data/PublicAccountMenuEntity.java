@@ -9,12 +9,16 @@ public class PublicAccountMenuEntity
   extends Entity
 {
   public byte[] data = null;
-  public long savedDateTime = 0L;
-  public int seqno = 0;
+  public long savedDateTime;
+  public int seqno;
   @unique
   public String uin;
   
-  public PublicAccountMenuEntity() {}
+  public PublicAccountMenuEntity()
+  {
+    this.seqno = 0;
+    this.savedDateTime = 0L;
+  }
   
   public PublicAccountMenuEntity(String paramString, mobileqq_mp.GetPublicAccountMenuResponse paramGetPublicAccountMenuResponse)
   {
@@ -23,6 +27,9 @@ public class PublicAccountMenuEntity
   
   public PublicAccountMenuEntity(String paramString, mobileqq_mp.GetPublicAccountMenuResponse paramGetPublicAccountMenuResponse, long paramLong)
   {
+    int i = 0;
+    this.seqno = 0;
+    this.savedDateTime = 0L;
     this.uin = paramString;
     this.data = paramGetPublicAccountMenuResponse.toByteArray();
     this.savedDateTime = paramLong;
@@ -42,7 +49,7 @@ public class PublicAccountMenuEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.PublicAccountMenuEntity
  * JD-Core Version:    0.7.0.1
  */

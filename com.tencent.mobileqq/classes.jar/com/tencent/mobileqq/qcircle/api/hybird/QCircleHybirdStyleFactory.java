@@ -13,45 +13,48 @@ public class QCircleHybirdStyleFactory
   
   public static QCircleHybirdStyleFactory a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new QCircleHybirdStyleFactory();
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new QCircleHybirdStyleFactory();
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   public static void a(Intent paramIntent, String paramString)
   {
-    if (paramIntent == null) {
-      RFLog.e("QCircleHybirdStyleFactory", RFLog.USR, "getIntentByParseUrl intent is null");
-    }
-    for (;;)
+    if (paramIntent == null)
     {
+      RFLog.e("QCircleHybirdStyleFactory", RFLog.USR, "getIntentByParseUrl intent is null");
       return;
-      try
+    }
+    try
+    {
+      paramString = Uri.parse(paramString);
+      if (paramString != null)
       {
-        paramString = Uri.parse(paramString);
-        if (paramString != null)
+        if ("1".equals(paramString.getQueryParameter("show_right_cancel"))) {
+          paramIntent.putExtra("rightTopCancel", true);
+        }
+        if ("1".equals(paramString.getQueryParameter("move_web_view_top")))
         {
-          if ("1".equals(paramString.getQueryParameter("show_right_cancel"))) {
-            paramIntent.putExtra("rightTopCancel", true);
-          }
-          if ("1".equals(paramString.getQueryParameter("move_web_view_top")))
-          {
-            paramIntent.putExtra("webViewMoveTop", true);
-            return;
-          }
+          paramIntent.putExtra("webViewMoveTop", true);
+          return;
         }
       }
-      catch (Exception paramIntent)
-      {
-        RFLog.e("QCircleHybirdStyleFactory", RFLog.USR, "getStyleFromUrl error " + paramIntent.getMessage());
-        paramIntent.printStackTrace();
-      }
+    }
+    catch (Exception paramIntent)
+    {
+      int i = RFLog.USR;
+      paramString = new StringBuilder();
+      paramString.append("getStyleFromUrl error ");
+      paramString.append(paramIntent.getMessage());
+      RFLog.e("QCircleHybirdStyleFactory", i, paramString.toString());
+      paramIntent.printStackTrace();
     }
   }
   
@@ -61,11 +64,10 @@ public class QCircleHybirdStyleFactory
     try
     {
       paramString = Uri.parse(paramString);
-      boolean bool1 = bool2;
       if (paramString != null)
       {
         paramString = paramString.getQueryParameter("_wv");
-        bool1 = bool2;
+        boolean bool1 = bool2;
         if (!TextUtils.isEmpty(paramString))
         {
           long l = Long.parseLong(paramString);
@@ -74,12 +76,16 @@ public class QCircleHybirdStyleFactory
             bool1 = true;
           }
         }
+        return bool1;
       }
-      return bool1;
     }
     catch (Exception paramString)
     {
-      RFLog.e("QCircleHybirdStyleFactory", RFLog.USR, "getStyleFromUrl error " + paramString.getMessage());
+      int i = RFLog.USR;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getStyleFromUrl error ");
+      localStringBuilder.append(paramString.getMessage());
+      RFLog.e("QCircleHybirdStyleFactory", i, localStringBuilder.toString());
       paramString.printStackTrace();
     }
     return false;
@@ -93,10 +99,10 @@ public class QCircleHybirdStyleFactory
       RFLog.d("QCircleHybirdStyleFactory", RFLog.USR, "context is null return default");
       return localQCircleWebViewTitleStyle;
     }
-    localQCircleWebViewTitleStyle.b = paramContext.getResources().getColor(2131166268);
-    localQCircleWebViewTitleStyle.c = paramContext.getResources().getColor(2131166268);
-    localQCircleWebViewTitleStyle.d = paramContext.getResources().getColor(2131165357);
-    localQCircleWebViewTitleStyle.e = paramContext.getResources().getColor(2131165357);
+    localQCircleWebViewTitleStyle.b = paramContext.getResources().getColor(2131166279);
+    localQCircleWebViewTitleStyle.c = paramContext.getResources().getColor(2131166279);
+    localQCircleWebViewTitleStyle.d = paramContext.getResources().getColor(2131165327);
+    localQCircleWebViewTitleStyle.e = paramContext.getResources().getColor(2131165327);
     return localQCircleWebViewTitleStyle;
   }
   
@@ -109,15 +115,20 @@ public class QCircleHybirdStyleFactory
       if (paramString != null)
       {
         paramString = paramString.getQueryParameter("left_back_icon");
-        if (!TextUtils.isEmpty(paramString)) {
+        if (!TextUtils.isEmpty(paramString))
+        {
           paramContext.a = Integer.parseInt(paramString);
+          return paramContext;
         }
       }
-      return paramContext;
     }
     catch (Exception paramString)
     {
-      RFLog.e("QCircleHybirdStyleFactory", RFLog.USR, "getStyleFromUrl error " + paramString.getMessage());
+      int i = RFLog.USR;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getStyleFromUrl error ");
+      localStringBuilder.append(paramString.getMessage());
+      RFLog.e("QCircleHybirdStyleFactory", i, localStringBuilder.toString());
       paramString.printStackTrace();
     }
     return paramContext;
@@ -125,7 +136,7 @@ public class QCircleHybirdStyleFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.hybird.QCircleHybirdStyleFactory
  * JD-Core Version:    0.7.0.1
  */

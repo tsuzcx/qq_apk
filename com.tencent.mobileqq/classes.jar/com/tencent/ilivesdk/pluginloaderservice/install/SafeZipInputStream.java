@@ -17,9 +17,16 @@ public final class SafeZipInputStream
     ZipEntry localZipEntry = super.getNextEntry();
     if (localZipEntry != null)
     {
-      String str = localZipEntry.getName();
-      if ((str != null) && ((str.contains("../")) || (str.contains("..\\")))) {
-        throw new SecurityException("非法entry路径:" + localZipEntry.getName());
+      Object localObject = localZipEntry.getName();
+      if (localObject != null)
+      {
+        if ((!((String)localObject).contains("../")) && (!((String)localObject).contains("..\\"))) {
+          return localZipEntry;
+        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("非法entry路径:");
+        ((StringBuilder)localObject).append(localZipEntry.getName());
+        throw new SecurityException(((StringBuilder)localObject).toString());
       }
     }
     return localZipEntry;
@@ -27,7 +34,7 @@ public final class SafeZipInputStream
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.pluginloaderservice.install.SafeZipInputStream
  * JD-Core Version:    0.7.0.1
  */

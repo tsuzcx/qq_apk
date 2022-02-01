@@ -50,50 +50,60 @@ public class AppShortcutBarScrollView
   
   private void a(MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    }
-    int i;
-    int j;
-    int k;
-    int m;
-    do
-    {
-      return;
-      this.jdField_a_of_type_Float = paramMotionEvent.getX();
-      return;
-      if (a()) {
-        a();
-      }
-      this.b = true;
-      return;
-      if (this.b)
+      if (i != 1)
       {
-        this.jdField_a_of_type_Float = paramMotionEvent.getX();
-        this.b = false;
+        if (i != 2) {
+          return;
+        }
+        if (this.b)
+        {
+          this.jdField_a_of_type_Float = paramMotionEvent.getX();
+          this.b = false;
+        }
+        float f1 = this.jdField_a_of_type_Float;
+        float f2 = paramMotionEvent.getX();
+        double d = f1 - f2;
+        Double.isNaN(d);
+        i = (int)(d / 2.5D);
+        this.jdField_a_of_type_Float = f2;
+        if (b())
+        {
+          if (this.jdField_a_of_type_AndroidGraphicsRect.isEmpty()) {
+            this.jdField_a_of_type_AndroidGraphicsRect.set(this.jdField_a_of_type_AndroidViewView.getLeft(), this.jdField_a_of_type_AndroidViewView.getTop(), this.jdField_a_of_type_AndroidViewView.getRight(), this.jdField_a_of_type_AndroidViewView.getBottom());
+          }
+          int j = this.jdField_a_of_type_AndroidViewView.getMeasuredWidth();
+          int k = getWidth();
+          int m = getScrollX();
+          if (((m == 0) && (i < 0)) || ((j - k == m) && (i > 0)))
+          {
+            paramMotionEvent = this.jdField_a_of_type_AndroidViewView;
+            paramMotionEvent.layout(paramMotionEvent.getLeft() - i, this.jdField_a_of_type_AndroidViewView.getTop(), this.jdField_a_of_type_AndroidViewView.getRight() - i, this.jdField_a_of_type_AndroidViewView.getBottom());
+          }
+        }
+        else
+        {
+          scrollBy(i, 0);
+        }
       }
-      float f1 = this.jdField_a_of_type_Float;
-      float f2 = paramMotionEvent.getX();
-      i = (int)((f1 - f2) / 2.5D);
-      this.jdField_a_of_type_Float = f2;
-      if (!b()) {
-        break;
+      else
+      {
+        if (a()) {
+          a();
+        }
+        this.b = true;
       }
-      if (this.jdField_a_of_type_AndroidGraphicsRect.isEmpty()) {
-        this.jdField_a_of_type_AndroidGraphicsRect.set(this.jdField_a_of_type_AndroidViewView.getLeft(), this.jdField_a_of_type_AndroidViewView.getTop(), this.jdField_a_of_type_AndroidViewView.getRight(), this.jdField_a_of_type_AndroidViewView.getBottom());
-      }
-      j = this.jdField_a_of_type_AndroidViewView.getMeasuredWidth();
-      k = getWidth();
-      m = getScrollX();
-    } while (((m != 0) || (i >= 0)) && ((j - k != m) || (i <= 0)));
-    this.jdField_a_of_type_AndroidViewView.layout(this.jdField_a_of_type_AndroidViewView.getLeft() - i, this.jdField_a_of_type_AndroidViewView.getTop(), this.jdField_a_of_type_AndroidViewView.getRight() - i, this.jdField_a_of_type_AndroidViewView.getBottom());
-    return;
-    scrollBy(i, 0);
+    }
+    else {
+      this.jdField_a_of_type_Float = paramMotionEvent.getX();
+    }
   }
   
   private boolean a()
   {
-    return !this.jdField_a_of_type_AndroidGraphicsRect.isEmpty();
+    return this.jdField_a_of_type_AndroidGraphicsRect.isEmpty() ^ true;
   }
   
   private boolean b()
@@ -104,7 +114,7 @@ public class AppShortcutBarScrollView
     return (k == 0) || (i - j == k);
   }
   
-  public void onFinishInflate()
+  protected void onFinishInflate()
   {
     if (getChildCount() > 0) {
       this.jdField_a_of_type_AndroidViewView = getChildAt(0);
@@ -112,11 +122,12 @@ public class AppShortcutBarScrollView
     super.onFinishInflate();
   }
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetAppShortcutBarScrollView$OnScrollChangedListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetAppShortcutBarScrollView$OnScrollChangedListener.a();
+    AppShortcutBarScrollView.OnScrollChangedListener localOnScrollChangedListener = this.jdField_a_of_type_ComTencentMobileqqWidgetAppShortcutBarScrollView$OnScrollChangedListener;
+    if (localOnScrollChangedListener != null) {
+      localOnScrollChangedListener.a();
     }
   }
   
@@ -141,7 +152,7 @@ public class AppShortcutBarScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AppShortcutBarScrollView
  * JD-Core Version:    0.7.0.1
  */

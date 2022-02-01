@@ -9,15 +9,15 @@ class HighlightModel$1
   
   public int a(String paramString1, String paramString2)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return 0;
+    if ((paramString1 != null) && (paramString2 != null)) {
+      return paramString2.length() - paramString1.length();
     }
-    return paramString2.length() - paramString1.length();
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.ui.HighlightModel.1
  * JD-Core Version:    0.7.0.1
  */

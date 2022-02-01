@@ -17,7 +17,9 @@ public class Logger
   
   public static void w(String paramString1, String paramString2)
   {
-    Log.w("epic." + paramString1, paramString2);
+    StringBuilder localStringBuilder = new StringBuilder("epic.");
+    localStringBuilder.append(paramString1);
+    Log.w(localStringBuilder.toString(), paramString2);
   }
 }
 

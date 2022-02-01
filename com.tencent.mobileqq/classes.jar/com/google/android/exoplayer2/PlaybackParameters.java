@@ -11,54 +11,54 @@ public final class PlaybackParameters
   
   public PlaybackParameters(float paramFloat1, float paramFloat2)
   {
-    if (paramFloat1 > 0.0F)
-    {
+    boolean bool2 = true;
+    boolean bool1;
+    if (paramFloat1 > 0.0F) {
       bool1 = true;
-      Assertions.checkArgument(bool1);
-      if (paramFloat2 <= 0.0F) {
-        break label59;
-      }
-    }
-    label59:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      Assertions.checkArgument(bool1);
-      this.speed = paramFloat1;
-      this.pitch = paramFloat2;
-      this.scaledUsPerMs = Math.round(1000.0F * paramFloat1);
-      return;
+    } else {
       bool1 = false;
-      break;
     }
+    Assertions.checkArgument(bool1);
+    if (paramFloat2 > 0.0F) {
+      bool1 = bool2;
+    } else {
+      bool1 = false;
+    }
+    Assertions.checkArgument(bool1);
+    this.speed = paramFloat1;
+    this.pitch = paramFloat2;
+    this.scaledUsPerMs = Math.round(paramFloat1 * 1000.0F);
   }
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (PlaybackParameters)paramObject;
-    } while ((this.speed == paramObject.speed) && (this.pitch == paramObject.pitch));
+      return (this.speed == paramObject.speed) && (this.pitch == paramObject.pitch);
+    }
     return false;
   }
   
   public long getMediaTimeUsForPlayoutTimeMs(long paramLong)
   {
-    return this.scaledUsPerMs * paramLong;
+    return paramLong * this.scaledUsPerMs;
   }
   
   public int hashCode()
   {
-    return (Float.floatToRawIntBits(this.speed) + 527) * 31 + Float.floatToRawIntBits(this.pitch);
+    return (527 + Float.floatToRawIntBits(this.speed)) * 31 + Float.floatToRawIntBits(this.pitch);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.PlaybackParameters
  * JD-Core Version:    0.7.0.1
  */

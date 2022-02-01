@@ -41,21 +41,20 @@ class TavImageGeneratorProxy
   
   private void b(@Nullable Bitmap paramBitmap, SendMsgTavEvent paramSendMsgTavEvent)
   {
-    if (paramBitmap == null) {
-      a("generate cover filed");
-    }
-    String str;
-    do
+    if (paramBitmap == null)
     {
+      a("generate cover filed");
       return;
-      str = paramSendMsgTavEvent.a().getString("type");
-      if ("object".equals(str))
-      {
-        b(paramBitmap);
-        return;
-      }
-    } while (!"filePath".equals(str));
-    c(paramBitmap, paramSendMsgTavEvent);
+    }
+    String str = paramSendMsgTavEvent.a().getString("type");
+    if ("object".equals(str))
+    {
+      b(paramBitmap);
+      return;
+    }
+    if ("filePath".equals(str)) {
+      c(paramBitmap, paramSendMsgTavEvent);
+    }
   }
   
   private void c(Bitmap paramBitmap, SendMsgTavEvent paramSendMsgTavEvent)
@@ -95,7 +94,7 @@ class TavImageGeneratorProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavImageGeneratorProxy
  * JD-Core Version:    0.7.0.1
  */

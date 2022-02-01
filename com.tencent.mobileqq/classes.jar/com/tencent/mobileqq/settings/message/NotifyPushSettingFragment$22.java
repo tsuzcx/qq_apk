@@ -11,36 +11,37 @@ class NotifyPushSettingFragment$22
   
   public boolean handleMessage(Message paramMessage)
   {
-    for (;;)
+    try
     {
-      try
+      int i = paramMessage.what;
+      if (i != 10000)
       {
-        int i = paramMessage.what;
-        switch (i)
+        if (i != 10001)
         {
-        case 10002: 
-        case 10003: 
-        default: 
-          bool = false;
-          return bool;
+          if (i != 10004) {
+            return false;
+          }
+          NotifyPushSettingFragment.g(this.a).setChecked(((Boolean)paramMessage.obj).booleanValue());
+        }
+        else
+        {
+          paramMessage = (String)paramMessage.obj;
+          NotifyPushSettingFragment.a(this.a, paramMessage);
         }
       }
-      finally {}
-      boolean bool = ((Boolean)paramMessage.obj).booleanValue();
-      NotifyPushSettingFragment.f(this.a).setChecked(bool);
-      break label119;
-      paramMessage = (String)paramMessage.obj;
-      NotifyPushSettingFragment.a(this.a, paramMessage);
-      break label119;
-      NotifyPushSettingFragment.g(this.a).setChecked(((Boolean)paramMessage.obj).booleanValue());
-      label119:
-      bool = true;
+      else
+      {
+        boolean bool = ((Boolean)paramMessage.obj).booleanValue();
+        NotifyPushSettingFragment.f(this.a).setChecked(bool);
+      }
+      return true;
     }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.NotifyPushSettingFragment.22
  * JD-Core Version:    0.7.0.1
  */

@@ -37,11 +37,15 @@ public class PTSBoringView
       PTSLog.i("PTSBoringView", "[bindData] is not debug version.");
       return;
     }
-    if (this.textView != null) {
-      this.textView.setText("custom view");
+    Object localObject = this.textView;
+    if (localObject != null) {
+      ((TextView)localObject).setText("custom view");
     }
     setBackgroundColor(-1294411560);
-    PTSLog.i("PTSBoringView", "[bindData], nodeKey = " + this.nodeKey);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[bindData], nodeKey = ");
+    ((StringBuilder)localObject).append(this.nodeKey);
+    PTSLog.i("PTSBoringView", ((StringBuilder)localObject).toString());
   }
   
   private void drawDashBorder(Canvas paramCanvas)
@@ -101,7 +105,7 @@ public class PTSBoringView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.ui.view.PTSBoringView
  * JD-Core Version:    0.7.0.1
  */

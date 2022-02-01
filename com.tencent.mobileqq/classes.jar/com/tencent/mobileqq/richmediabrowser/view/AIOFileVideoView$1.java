@@ -1,29 +1,22 @@
 package com.tencent.mobileqq.richmediabrowser.view;
 
-import com.tencent.mobileqq.filemanager.fileviewer.controller.IQRMenuItemController;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richmediabrowser.presenter.AIOFileVideoPresenter;
 
 class AIOFileVideoView$1
-  implements IQRMenuItemController
+  implements DialogInterface.OnClickListener
 {
-  public void a(String paramString, List<ShareActionSheetBuilder.ActionSheetItem> paramList)
+  AIOFileVideoView$1(AIOFileVideoView paramAIOFileVideoView) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView.jdField_a_of_type_JavaUtilArrayList != null) && (paramList != null) && (!paramList.isEmpty()))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.refresh();
-      }
-    }
+    this.a.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.view.AIOFileVideoView.1
  * JD-Core Version:    0.7.0.1
  */

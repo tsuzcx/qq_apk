@@ -64,75 +64,82 @@ public class MutilayoutSlideDetectListView
       this.jdField_a_of_type_AndroidViewGestureDetector.setIsLongpressEnabled(false);
     }
     this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-    label88:
-    int i;
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    default: 
-    case 0: 
-      for (;;)
+      if (i == 1) {
+        this.b = false;
+      }
+    }
+    else
+    {
+      this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
+      this.jdField_e_of_type_Boolean = false;
+      i = a(this.jdField_a_of_type_Int);
+      if ((this.jdField_a_of_type_AndroidViewView != null) && (a(i) == this.jdField_a_of_type_AndroidViewView))
       {
-        if (this.jdField_e_of_type_Boolean == true)
+        if (paramMotionEvent.getX() >= this.jdField_a_of_type_AndroidViewView.getWidth() - this.d)
         {
-          return false;
-          this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
-          this.jdField_e_of_type_Boolean = false;
-          i = a(this.jdField_a_of_type_Int);
-          if ((this.jdField_a_of_type_AndroidViewView != null) && (a(i) == this.jdField_a_of_type_AndroidViewView))
+          if ((this.jdField_e_of_type_Int > 0) && (this.jdField_a_of_type_AndroidViewView.getHeight() > 0))
           {
-            if (paramMotionEvent.getX() < this.jdField_a_of_type_AndroidViewView.getWidth() - this.d) {
-              continue;
-            }
-            if ((this.jdField_e_of_type_Int <= 0) || (this.jdField_a_of_type_AndroidViewView.getHeight() <= 0)) {
-              break label372;
-            }
-            View localView1 = a(this.jdField_a_of_type_AndroidViewView);
-            if (localView1 != null)
+            Object localObject = a(this.jdField_a_of_type_AndroidViewView);
+            if (localObject != null)
             {
-              View localView2 = (View)localView1.getParent();
-              i = a(localView1);
-              i = localView2.getHeight() / 2 + i;
+              View localView = (View)((View)localObject).getParent();
+              i = a((View)localObject) + localView.getHeight() / 2;
               int j = this.jdField_e_of_type_Int / 2;
               int k = this.jdField_e_of_type_Int / 2;
               if ((this.jdField_a_of_type_Int <= j + i) && (this.jdField_a_of_type_Int >= i - k)) {
-                break label372;
+                break label319;
               }
-              if (QLog.isColorLevel()) {
-                QLog.d("SlideDetectListView", 2, "accurate in delete:ycenter:" + i + ",motionheight:" + this.jdField_a_of_type_AndroidViewView.getHeight() + "deleareaHeight:" + this.jdField_e_of_type_Int);
+              if (QLog.isColorLevel())
+              {
+                localObject = new StringBuilder();
+                ((StringBuilder)localObject).append("accurate in delete:ycenter:");
+                ((StringBuilder)localObject).append(i);
+                ((StringBuilder)localObject).append(",motionheight:");
+                ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidViewView.getHeight());
+                ((StringBuilder)localObject).append("deleareaHeight:");
+                ((StringBuilder)localObject).append(this.jdField_e_of_type_Int);
+                QLog.d("SlideDetectListView", 2, ((StringBuilder)localObject).toString());
               }
-              i = 0;
             }
+            i = 0;
+            break label321;
+          }
+          label319:
+          i = 1;
+          label321:
+          if (i != 0)
+          {
+            this.jdField_e_of_type_Boolean = true;
+            return false;
           }
         }
       }
-    }
-    while (i != 0)
-    {
-      this.jdField_e_of_type_Boolean = true;
-      return false;
-      i = 0;
-      continue;
-      if (this.jdField_a_of_type_Boolean != true) {
-        break;
+      else if (this.jdField_a_of_type_Boolean == true) {
+        return true;
       }
-      return true;
-      this.b = false;
-      break;
-      if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Boolean == true)) {
+    }
+    if (this.jdField_e_of_type_Boolean == true) {
+      return false;
+    }
+    if (this.jdField_a_of_type_Int != 0)
+    {
+      if (this.jdField_a_of_type_Boolean == true) {
         return true;
       }
       if (this.b) {
-        break label88;
+        return false;
       }
       return super.onInterceptTouchEvent(paramMotionEvent);
-      label372:
-      i = 1;
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.MutilayoutSlideDetectListView
  * JD-Core Version:    0.7.0.1
  */

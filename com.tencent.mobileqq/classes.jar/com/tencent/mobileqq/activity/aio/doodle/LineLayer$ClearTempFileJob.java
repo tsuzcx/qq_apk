@@ -8,26 +8,36 @@ import java.io.File;
 class LineLayer$ClearTempFileJob
   implements Runnable
 {
-  public final String a = AppConstants.SCRIBBLE_FILE_DIR + "temp" + File.separator;
+  public final String a;
   
-  public LineLayer$ClearTempFileJob(LineLayer paramLineLayer) {}
+  public LineLayer$ClearTempFileJob(LineLayer paramLineLayer)
+  {
+    paramLineLayer = new StringBuilder();
+    paramLineLayer.append(AppConstants.SCRIBBLE_FILE_DIR);
+    paramLineLayer.append("temp");
+    paramLineLayer.append(File.separator);
+    this.a = paramLineLayer.toString();
+  }
   
   public void run()
   {
     try
     {
-      FileUtils.a(this.a, true);
+      FileUtils.delete(this.a, true);
       return;
     }
     catch (Exception localException)
     {
-      QLog.d("ClearTempFileJobdownloading", 2, "makedir execption: " + localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("makedir execption: ");
+      localStringBuilder.append(localException);
+      QLog.d("ClearTempFileJobdownloading", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.LineLayer.ClearTempFileJob
  * JD-Core Version:    0.7.0.1
  */

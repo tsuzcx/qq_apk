@@ -64,217 +64,258 @@ public class AnimationView
   
   private void a(Canvas paramCanvas)
   {
-    switch (this.jdField_a_of_type_Int)
+    int i = this.jdField_a_of_type_Int;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      if ((this.jdField_a_of_type_AndroidGraphicsRect == null) || (this.jdField_b_of_type_AndroidGraphicsRect == null) || (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null))
+      if (i != 2)
       {
-        this.jdField_a_of_type_Int = 3;
-        this.jdField_e_of_type_Boolean = false;
-        if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister != null) {
-          this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister.f();
+        if (i != 3) {
+          return;
         }
-        super.onDraw(paramCanvas);
-        return;
+        this.jdField_e_of_type_Boolean = false;
+        localObject = this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister;
+        if (localObject != null) {
+          ((AnimationLister)localObject).f();
+        }
+        paramCanvas.save();
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_b_of_type_AndroidGraphicsRect);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+        paramCanvas.restore();
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_c_of_type_AndroidGraphicsRect);
+      }
+    }
+    else
+    {
+      if ((this.jdField_a_of_type_AndroidGraphicsRect == null) || (this.jdField_b_of_type_AndroidGraphicsRect == null) || (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {
+        break label890;
       }
       this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
       this.jdField_a_of_type_Int = 2;
       paramCanvas.save();
-    case 2: 
-      float f1 = (float)(SystemClock.uptimeMillis() - this.jdField_b_of_type_Long) / (float)this.jdField_c_of_type_Long;
-      if (f1 >= 1.0F) {
-        this.jdField_a_of_type_Int = 3;
-      }
-      f1 = Math.min(f1, 1.0F);
-      f1 = 1.0F - this.jdField_a_of_type_AndroidViewAnimationAccelerateDecelerateInterpolator.getInterpolation(f1);
-      Rect localRect1 = this.jdField_a_of_type_AndroidGraphicsRect;
-      Rect localRect2 = this.jdField_b_of_type_AndroidGraphicsRect;
-      int[] arrayOfInt = new int[2];
-      getLocationInWindow(arrayOfInt);
-      localRect2 = new Rect(localRect2.left + arrayOfInt[0], localRect2.top + arrayOfInt[1], localRect2.right + arrayOfInt[0], localRect2.bottom + arrayOfInt[1]);
-      int i = localRect2.width();
-      int j = localRect2.height();
-      float f2 = localRect1.width();
-      float f3 = localRect1.height();
-      float f4 = f2 / i;
-      float f5 = f3 / j;
-      paramCanvas.save();
-      if (this.jdField_c_of_type_Int == 1)
-      {
-        paramCanvas.translate((localRect1.left - arrayOfInt[0] - (localRect2.left - arrayOfInt[0]) * f5) * f1, (localRect1.top - arrayOfInt[1] - (localRect2.top - arrayOfInt[1]) * f5) * f1);
-        paramCanvas.scale(1.0F - (1.0F - f5) * f1, 1.0F - (1.0F - f5) * f1);
-        if (this.jdField_a_of_type_Boolean)
-        {
-          f2 = (i - j) / 2.0F;
-          paramCanvas.translate(-f2 * f1, 0.0F);
-          paramCanvas.clipRect(localRect2.left - arrayOfInt[0] + f2 * f1, localRect2.top - arrayOfInt[1], localRect2.right - arrayOfInt[0] - f1 * f2, localRect2.bottom - arrayOfInt[1]);
-        }
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_b_of_type_AndroidGraphicsRect);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-        paramCanvas.restore();
-        invalidate();
-        return;
-        paramCanvas.clipRect(localRect2.left - arrayOfInt[0], localRect2.top - arrayOfInt[1], localRect2.right - arrayOfInt[0] - f1 * (i - f2 / f5), localRect2.bottom - arrayOfInt[1]);
-        continue;
-        if (this.jdField_c_of_type_Int == 2)
-        {
-          paramCanvas.translate((localRect1.left - arrayOfInt[0] - (localRect2.left - arrayOfInt[0]) * f4) * f1, (localRect1.top - arrayOfInt[1] - (localRect2.top - arrayOfInt[1]) * f4) * f1);
-          paramCanvas.scale(1.0F - (1.0F - f4) * f1, 1.0F - (1.0F - f4) * f1);
-          if (this.jdField_a_of_type_Boolean)
-          {
-            f2 = (j - i) / 2.0F;
-            paramCanvas.translate(0.0F, -f2 * f1);
-            paramCanvas.clipRect(localRect2.left - arrayOfInt[0], localRect2.top - arrayOfInt[1] + f2 * f1, localRect2.right - arrayOfInt[0], localRect2.bottom - arrayOfInt[1] - f1 * f2);
-          }
-          else
-          {
-            paramCanvas.clipRect(localRect2.left - arrayOfInt[0], localRect2.top - arrayOfInt[1], localRect2.right - arrayOfInt[0], localRect2.bottom - arrayOfInt[1] - f1 * (j - f3 / f4));
-          }
-        }
-        else
-        {
-          paramCanvas.translate((localRect1.left - arrayOfInt[0] - (localRect2.left - arrayOfInt[0]) * f4) * f1, (localRect1.top - arrayOfInt[1] - (localRect2.top - arrayOfInt[1]) * f5) * f1);
-          paramCanvas.scale(1.0F - (1.0F - f4) * f1, 1.0F - f1 * (1.0F - f5));
-        }
-      }
     }
-    this.jdField_e_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister != null) {
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister.f();
+    float f1 = (float)(SystemClock.uptimeMillis() - this.jdField_b_of_type_Long) / (float)this.jdField_c_of_type_Long;
+    if (f1 >= 1.0F) {
+      this.jdField_a_of_type_Int = 3;
     }
+    f1 = Math.min(f1, 1.0F);
+    f1 = 1.0F - this.jdField_a_of_type_AndroidViewAnimationAccelerateDecelerateInterpolator.getInterpolation(f1);
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsRect;
+    Rect localRect = this.jdField_b_of_type_AndroidGraphicsRect;
+    int[] arrayOfInt = new int[2];
+    getLocationInWindow(arrayOfInt);
+    localRect = new Rect(localRect.left + arrayOfInt[0], localRect.top + arrayOfInt[1], localRect.right + arrayOfInt[0], localRect.bottom + arrayOfInt[1]);
+    i = localRect.width();
+    int j = localRect.height();
+    float f2 = ((Rect)localObject).width();
+    float f3 = ((Rect)localObject).height();
+    float f4 = i;
+    float f5 = f2 / f4;
+    float f6 = j;
+    float f7 = f3 / f6;
     paramCanvas.save();
+    int k = this.jdField_c_of_type_Int;
+    if (k == 1)
+    {
+      paramCanvas.translate((((Rect)localObject).left - arrayOfInt[0] - (localRect.left - arrayOfInt[0]) * f7) * f1, (((Rect)localObject).top - arrayOfInt[1] - (localRect.top - arrayOfInt[1]) * f7) * f1);
+      f3 = 1.0F - (1.0F - f7) * f1;
+      paramCanvas.scale(f3, f3);
+      if (this.jdField_a_of_type_Boolean)
+      {
+        f3 = (i - j) / 2.0F;
+        paramCanvas.translate(-f3 * f1, 0.0F);
+        f2 = localRect.left - arrayOfInt[0];
+        f1 = f3 * f1;
+        paramCanvas.clipRect(f2 + f1, localRect.top - arrayOfInt[1], localRect.right - arrayOfInt[0] - f1, localRect.bottom - arrayOfInt[1]);
+      }
+      else
+      {
+        paramCanvas.clipRect(localRect.left - arrayOfInt[0], localRect.top - arrayOfInt[1], localRect.right - arrayOfInt[0] - (f4 - f2 / f7) * f1, localRect.bottom - arrayOfInt[1]);
+      }
+    }
+    else if (k == 2)
+    {
+      paramCanvas.translate((((Rect)localObject).left - arrayOfInt[0] - (localRect.left - arrayOfInt[0]) * f5) * f1, (((Rect)localObject).top - arrayOfInt[1] - (localRect.top - arrayOfInt[1]) * f5) * f1);
+      f2 = 1.0F - (1.0F - f5) * f1;
+      paramCanvas.scale(f2, f2);
+      if (this.jdField_a_of_type_Boolean)
+      {
+        f4 = (j - i) / 2.0F;
+        paramCanvas.translate(0.0F, -f4 * f1);
+        f2 = localRect.left - arrayOfInt[0];
+        f3 = localRect.top - arrayOfInt[1];
+        f1 = f4 * f1;
+        paramCanvas.clipRect(f2, f3 + f1, localRect.right - arrayOfInt[0], localRect.bottom - arrayOfInt[1] - f1);
+      }
+      else
+      {
+        paramCanvas.clipRect(localRect.left - arrayOfInt[0], localRect.top - arrayOfInt[1], localRect.right - arrayOfInt[0], localRect.bottom - arrayOfInt[1] - (f6 - f3 / f5) * f1);
+      }
+    }
+    else
+    {
+      paramCanvas.translate((((Rect)localObject).left - arrayOfInt[0] - (localRect.left - arrayOfInt[0]) * f5) * f1, (((Rect)localObject).top - arrayOfInt[1] - (localRect.top - arrayOfInt[1]) * f7) * f1);
+      paramCanvas.scale(1.0F - (1.0F - f5) * f1, 1.0F - (1.0F - f7) * f1);
+    }
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_b_of_type_AndroidGraphicsRect);
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
     paramCanvas.restore();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_c_of_type_AndroidGraphicsRect);
+    invalidate();
+    return;
+    label890:
+    this.jdField_a_of_type_Int = 3;
+    this.jdField_e_of_type_Boolean = false;
+    localObject = this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister;
+    if (localObject != null) {
+      ((AnimationLister)localObject).f();
+    }
+    super.onDraw(paramCanvas);
   }
   
   private void b(Canvas paramCanvas)
   {
-    switch (this.jdField_b_of_type_Int)
+    int i = this.jdField_b_of_type_Int;
+    if (i != 1)
     {
-    default: 
-    case 1: 
-      do
+      if (i != 2)
       {
-        return;
-        if ((this.jdField_a_of_type_AndroidGraphicsRect != null) && (this.jdField_b_of_type_AndroidGraphicsRect != null) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)) {
-          break;
+        if (i != 3) {
+          return;
         }
-        this.jdField_b_of_type_Int = 3;
+        paramCanvas = this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister;
+        if (paramCanvas != null) {
+          paramCanvas.i();
+        }
         this.jdField_f_of_type_Boolean = false;
-        super.onDraw(paramCanvas);
-      } while (this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister == null);
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister.i();
-      return;
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_c_of_type_AndroidGraphicsRect);
+      }
+    }
+    else
+    {
+      if ((this.jdField_a_of_type_AndroidGraphicsRect == null) || (this.jdField_b_of_type_AndroidGraphicsRect == null) || (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {
+        break label952;
+      }
       this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
       this.jdField_b_of_type_Int = 2;
-    case 2: 
-      float f1 = (float)(SystemClock.uptimeMillis() - this.jdField_b_of_type_Long) / (float)this.jdField_c_of_type_Long;
-      if (f1 >= 1.0F) {
-        this.jdField_b_of_type_Int = 3;
-      }
-      f1 = Math.min(f1, 1.0F);
-      f1 = this.jdField_a_of_type_ComTencentUtilViscousFluidInterpolator.getInterpolation(f1);
-      Rect localRect1 = this.jdField_a_of_type_AndroidGraphicsRect;
-      Rect localRect2 = this.jdField_b_of_type_AndroidGraphicsRect;
-      int[] arrayOfInt = new int[2];
-      getLocationInWindow(arrayOfInt);
-      localRect2 = new Rect(localRect2.left + arrayOfInt[0], localRect2.top + arrayOfInt[1], localRect2.right + arrayOfInt[0], localRect2.bottom + arrayOfInt[1]);
-      int i = localRect2.right - localRect2.left;
-      int j = localRect2.bottom - localRect2.top;
-      float f2 = localRect1.right - localRect1.left + this.jdField_d_of_type_Int;
-      float f3 = localRect1.bottom - localRect1.top + this.jdField_e_of_type_Int;
-      float f4 = f2 / i;
-      float f5 = f3 / j;
-      paramCanvas.save();
-      if (this.jdField_c_of_type_Int == 1)
+    }
+    float f1 = (float)(SystemClock.uptimeMillis() - this.jdField_b_of_type_Long) / (float)this.jdField_c_of_type_Long;
+    if (f1 >= 1.0F) {
+      this.jdField_b_of_type_Int = 3;
+    }
+    f1 = Math.min(f1, 1.0F);
+    f1 = this.jdField_a_of_type_ComTencentUtilViscousFluidInterpolator.getInterpolation(f1);
+    Rect localRect1 = this.jdField_a_of_type_AndroidGraphicsRect;
+    Rect localRect2 = this.jdField_b_of_type_AndroidGraphicsRect;
+    int[] arrayOfInt = new int[2];
+    getLocationInWindow(arrayOfInt);
+    localRect2 = new Rect(localRect2.left + arrayOfInt[0], localRect2.top + arrayOfInt[1], localRect2.right + arrayOfInt[0], localRect2.bottom + arrayOfInt[1]);
+    i = localRect2.right - localRect2.left;
+    int j = localRect2.bottom - localRect2.top;
+    float f2 = localRect1.right - localRect1.left + this.jdField_d_of_type_Int;
+    float f3 = localRect1.bottom - localRect1.top + this.jdField_e_of_type_Int;
+    float f4 = i;
+    float f5 = f2 / f4;
+    float f6 = j;
+    float f7 = f3 / f6;
+    paramCanvas.save();
+    int k = this.jdField_c_of_type_Int;
+    if (k == 1)
+    {
+      paramCanvas.translate((localRect1.left - arrayOfInt[0] - this.jdField_d_of_type_Int - (localRect2.left - arrayOfInt[0]) * f7) * f1, (localRect1.top - arrayOfInt[1] - this.jdField_e_of_type_Int - (localRect2.top - arrayOfInt[1]) * f7) * f1);
+      f3 = 1.0F - (1.0F - f7) * f1;
+      paramCanvas.scale(f3, f3);
+      if (this.jdField_a_of_type_Boolean)
       {
-        paramCanvas.translate((localRect1.left - arrayOfInt[0] - this.jdField_d_of_type_Int - (localRect2.left - arrayOfInt[0]) * f5) * f1, (localRect1.top - arrayOfInt[1] - this.jdField_e_of_type_Int - (localRect2.top - arrayOfInt[1]) * f5) * f1);
-        paramCanvas.scale(1.0F - (1.0F - f5) * f1, 1.0F - (1.0F - f5) * f1);
-        if (this.jdField_a_of_type_Boolean)
-        {
-          f2 = (i - j) / 2.0F;
-          paramCanvas.translate(-f2 * f1, 0.0F);
-          paramCanvas.clipRect(localRect2.left - arrayOfInt[0] + f2 * f1, localRect2.top - arrayOfInt[1], localRect2.right - arrayOfInt[0] - f1 * f2, localRect2.bottom - arrayOfInt[1]);
-        }
+        f3 = (i - j) / 2.0F;
+        paramCanvas.translate(-f3 * f1, 0.0F);
+        f2 = localRect2.left - arrayOfInt[0];
+        f1 = f3 * f1;
+        paramCanvas.clipRect(f2 + f1, localRect2.top - arrayOfInt[1], localRect2.right - arrayOfInt[0] - f1, localRect2.bottom - arrayOfInt[1]);
       }
-      for (;;)
+      else
       {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_b_of_type_AndroidGraphicsRect);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-        paramCanvas.restore();
-        invalidate();
-        return;
-        paramCanvas.clipRect(localRect2.left - arrayOfInt[0] + this.jdField_d_of_type_Int / (1.0F - (1.0F - f5) * f1) * f1, localRect2.top - arrayOfInt[1] + this.jdField_e_of_type_Int / (1.0F - (1.0F - f5) * f1) * f1, localRect2.right - arrayOfInt[0] - f1 * (i - f2 / f5), localRect2.bottom - arrayOfInt[1]);
-        continue;
-        if (this.jdField_c_of_type_Int == 2)
-        {
-          paramCanvas.translate((localRect1.left - arrayOfInt[0] - this.jdField_d_of_type_Int - (localRect2.left - arrayOfInt[0]) * f4) * f1, (localRect1.top - arrayOfInt[1] - this.jdField_e_of_type_Int - (localRect2.top - arrayOfInt[1]) * f4) * f1);
-          paramCanvas.scale(1.0F - (1.0F - f4) * f1, 1.0F - (1.0F - f4) * f1);
-          if (this.jdField_a_of_type_Boolean)
-          {
-            f2 = (j - i) / 2.0F;
-            paramCanvas.translate(0.0F, -f2 * f1);
-            paramCanvas.clipRect(localRect2.left - arrayOfInt[0], localRect2.top - arrayOfInt[1] + f2 * f1, localRect2.right - arrayOfInt[0], localRect2.bottom - arrayOfInt[1] - f1 * f2);
-          }
-          else
-          {
-            paramCanvas.clipRect(localRect2.left - arrayOfInt[0] + this.jdField_d_of_type_Int / (1.0F - (1.0F - f4) * f1) * f1, localRect2.top - arrayOfInt[1] + this.jdField_e_of_type_Int / (1.0F - (1.0F - f4) * f1) * f1, localRect2.right - arrayOfInt[0], localRect2.bottom - arrayOfInt[1] - f1 * (j - f3 / f4));
-          }
-        }
-        else
-        {
-          paramCanvas.translate((localRect1.left - arrayOfInt[0] - (localRect2.left - arrayOfInt[0]) * f4) * f1, (localRect1.top - arrayOfInt[1] - (localRect2.top - arrayOfInt[1]) * f5) * f1);
-          paramCanvas.scale(1.0F - (1.0F - f4) * f1, 1.0F - f1 * (1.0F - f5));
-        }
+        paramCanvas.clipRect(localRect2.left - arrayOfInt[0] + this.jdField_d_of_type_Int / f3 * f1, localRect2.top - arrayOfInt[1] + this.jdField_e_of_type_Int / f3 * f1, localRect2.right - arrayOfInt[0] - (f4 - f2 / f7) * f1, localRect2.bottom - arrayOfInt[1]);
       }
     }
-    if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister != null) {
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister.i();
+    else if (k == 2)
+    {
+      paramCanvas.translate((localRect1.left - arrayOfInt[0] - this.jdField_d_of_type_Int - (localRect2.left - arrayOfInt[0]) * f5) * f1, (localRect1.top - arrayOfInt[1] - this.jdField_e_of_type_Int - (localRect2.top - arrayOfInt[1]) * f5) * f1);
+      f2 = 1.0F - (1.0F - f5) * f1;
+      paramCanvas.scale(f2, f2);
+      if (this.jdField_a_of_type_Boolean)
+      {
+        f4 = (j - i) / 2.0F;
+        paramCanvas.translate(0.0F, -f4 * f1);
+        f2 = localRect2.left - arrayOfInt[0];
+        f3 = localRect2.top - arrayOfInt[1];
+        f1 = f4 * f1;
+        paramCanvas.clipRect(f2, f3 + f1, localRect2.right - arrayOfInt[0], localRect2.bottom - arrayOfInt[1] - f1);
+      }
+      else
+      {
+        paramCanvas.clipRect(localRect2.left - arrayOfInt[0] + this.jdField_d_of_type_Int / f2 * f1, localRect2.top - arrayOfInt[1] + this.jdField_e_of_type_Int / f2 * f1, localRect2.right - arrayOfInt[0], localRect2.bottom - arrayOfInt[1] - (f6 - f3 / f5) * f1);
+      }
     }
+    else
+    {
+      paramCanvas.translate((localRect1.left - arrayOfInt[0] - (localRect2.left - arrayOfInt[0]) * f5) * f1, (localRect1.top - arrayOfInt[1] - (localRect2.top - arrayOfInt[1]) * f7) * f1);
+      paramCanvas.scale(1.0F - (1.0F - f5) * f1, 1.0F - (1.0F - f7) * f1);
+    }
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_b_of_type_AndroidGraphicsRect);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+    paramCanvas.restore();
+    invalidate();
+    return;
+    label952:
+    this.jdField_b_of_type_Int = 3;
     this.jdField_f_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_c_of_type_AndroidGraphicsRect);
+    super.onDraw(paramCanvas);
+    paramCanvas = this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister;
+    if (paramCanvas != null) {
+      paramCanvas.i();
+    }
   }
   
   private void c(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     paramCanvas.save();
-    float f1;
     if (this.jdField_a_of_type_Long > 0L)
     {
       long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
       this.jdField_e_of_type_Float = ((float)l / (float)this.jdField_c_of_type_Long);
-      if (!this.jdField_d_of_type_Boolean) {
-        break label468;
+      if (this.jdField_d_of_type_Boolean) {
+        this.jdField_e_of_type_Float = this.jdField_a_of_type_AndroidViewAnimationAccelerateDecelerateInterpolator.getInterpolation(this.jdField_e_of_type_Float);
+      } else {
+        this.jdField_e_of_type_Float = this.jdField_a_of_type_ComTencentUtilViscousFluidInterpolator.getInterpolation(this.jdField_e_of_type_Float);
       }
-      this.jdField_e_of_type_Float = this.jdField_a_of_type_AndroidViewAnimationAccelerateDecelerateInterpolator.getInterpolation(this.jdField_e_of_type_Float);
-      f1 = 1.0F - this.jdField_e_of_type_Float;
-      if (this.jdField_b_of_type_Boolean)
-      {
-        if (l > this.jdField_c_of_type_Long) {
-          break label486;
+      float f1 = 1.0F - this.jdField_e_of_type_Float;
+      if (this.jdField_b_of_type_Boolean) {
+        if (l <= this.jdField_c_of_type_Long)
+        {
+          this.jdField_a_of_type_Float = (this.jdField_d_of_type_AndroidGraphicsRect.top * f1 + this.jdField_e_of_type_AndroidGraphicsRect.top * this.jdField_e_of_type_Float);
+          this.jdField_b_of_type_Float = (this.jdField_d_of_type_AndroidGraphicsRect.bottom * f1 + this.jdField_e_of_type_AndroidGraphicsRect.bottom * this.jdField_e_of_type_Float);
+          this.jdField_c_of_type_Float = (this.jdField_d_of_type_AndroidGraphicsRect.left * f1 + this.jdField_e_of_type_AndroidGraphicsRect.left * this.jdField_e_of_type_Float);
+          this.jdField_d_of_type_Float = (this.jdField_d_of_type_AndroidGraphicsRect.right * f1 + this.jdField_e_of_type_AndroidGraphicsRect.right * this.jdField_e_of_type_Float);
+          this.jdField_f_of_type_AndroidGraphicsRect.set((int)this.jdField_c_of_type_Float, (int)this.jdField_a_of_type_Float, (int)this.jdField_d_of_type_Float, (int)this.jdField_b_of_type_Float);
+          this.jdField_a_of_type_Float = (this.jdField_a_of_type_AndroidGraphicsRect.top * f1 + this.jdField_b_of_type_AndroidGraphicsRect.top * this.jdField_e_of_type_Float);
+          this.jdField_b_of_type_Float = (this.jdField_a_of_type_AndroidGraphicsRect.bottom * f1 + this.jdField_b_of_type_AndroidGraphicsRect.bottom * this.jdField_e_of_type_Float);
+          this.jdField_c_of_type_Float = (this.jdField_a_of_type_AndroidGraphicsRect.left * f1 + this.jdField_b_of_type_AndroidGraphicsRect.left * this.jdField_e_of_type_Float);
+          this.jdField_d_of_type_Float = (this.jdField_a_of_type_AndroidGraphicsRect.right * f1 + this.jdField_b_of_type_AndroidGraphicsRect.right * this.jdField_e_of_type_Float);
+          this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_c_of_type_Float, this.jdField_a_of_type_Float, this.jdField_d_of_type_Float, this.jdField_b_of_type_Float);
         }
-        this.jdField_a_of_type_Float = (this.jdField_d_of_type_AndroidGraphicsRect.top * f1 + this.jdField_e_of_type_AndroidGraphicsRect.top * this.jdField_e_of_type_Float);
-        this.jdField_b_of_type_Float = (this.jdField_d_of_type_AndroidGraphicsRect.bottom * f1 + this.jdField_e_of_type_AndroidGraphicsRect.bottom * this.jdField_e_of_type_Float);
-        this.jdField_c_of_type_Float = (this.jdField_d_of_type_AndroidGraphicsRect.left * f1 + this.jdField_e_of_type_AndroidGraphicsRect.left * this.jdField_e_of_type_Float);
-        this.jdField_d_of_type_Float = (this.jdField_d_of_type_AndroidGraphicsRect.right * f1 + this.jdField_e_of_type_AndroidGraphicsRect.right * this.jdField_e_of_type_Float);
-        this.jdField_f_of_type_AndroidGraphicsRect.set((int)this.jdField_c_of_type_Float, (int)this.jdField_a_of_type_Float, (int)this.jdField_d_of_type_Float, (int)this.jdField_b_of_type_Float);
-        this.jdField_a_of_type_Float = (this.jdField_a_of_type_AndroidGraphicsRect.top * f1 + this.jdField_b_of_type_AndroidGraphicsRect.top * this.jdField_e_of_type_Float);
-        this.jdField_b_of_type_Float = (this.jdField_a_of_type_AndroidGraphicsRect.bottom * f1 + this.jdField_b_of_type_AndroidGraphicsRect.bottom * this.jdField_e_of_type_Float);
-        this.jdField_c_of_type_Float = (this.jdField_a_of_type_AndroidGraphicsRect.left * f1 + this.jdField_b_of_type_AndroidGraphicsRect.left * this.jdField_e_of_type_Float);
-        this.jdField_d_of_type_Float = (this.jdField_a_of_type_AndroidGraphicsRect.right * f1 + this.jdField_b_of_type_AndroidGraphicsRect.right * this.jdField_e_of_type_Float);
-        this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_c_of_type_Float, this.jdField_a_of_type_Float, this.jdField_d_of_type_Float, this.jdField_b_of_type_Float);
+        else
+        {
+          this.jdField_b_of_type_Boolean = false;
+          AnimationLister localAnimationLister = this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister;
+          if (localAnimationLister != null) {
+            if (this.jdField_d_of_type_Boolean) {
+              localAnimationLister.f();
+            } else {
+              localAnimationLister.i();
+            }
+          }
+        }
       }
-    }
-    for (;;)
-    {
       f1 = this.jdField_a_of_type_AndroidGraphicsRectF.width() / this.jdField_f_of_type_AndroidGraphicsRect.width();
       float f2 = this.jdField_a_of_type_AndroidGraphicsRectF.height() / this.jdField_f_of_type_AndroidGraphicsRect.height();
       paramCanvas.translate(this.jdField_a_of_type_AndroidGraphicsRectF.left - this.jdField_f_of_type_AndroidGraphicsRect.left * f1, this.jdField_a_of_type_AndroidGraphicsRectF.top - this.jdField_f_of_type_AndroidGraphicsRect.top * f2);
@@ -282,21 +323,8 @@ public class AnimationView
       paramCanvas.clipRect(this.jdField_f_of_type_AndroidGraphicsRect);
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
       invalidate();
-      paramCanvas.restore();
-      return;
-      label468:
-      this.jdField_e_of_type_Float = this.jdField_a_of_type_ComTencentUtilViscousFluidInterpolator.getInterpolation(this.jdField_e_of_type_Float);
-      break;
-      label486:
-      this.jdField_b_of_type_Boolean = false;
-      if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister != null) {
-        if (this.jdField_d_of_type_Boolean) {
-          this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister.f();
-        } else {
-          this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister.i();
-        }
-      }
     }
+    paramCanvas.restore();
   }
   
   public void a(Drawable paramDrawable, Rect paramRect1, Rect paramRect2, int paramInt1, int paramInt2, int paramInt3, long paramLong)
@@ -311,8 +339,9 @@ public class AnimationView
     this.jdField_d_of_type_Int = paramInt2;
     this.jdField_e_of_type_Int = paramInt3;
     this.jdField_c_of_type_Long = paramLong;
-    if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister != null) {
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister.h();
+    paramDrawable = this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister;
+    if (paramDrawable != null) {
+      paramDrawable.h();
     }
     invalidate();
   }
@@ -327,8 +356,9 @@ public class AnimationView
     this.jdField_b_of_type_AndroidGraphicsRect = paramRect2;
     this.jdField_c_of_type_Int = paramInt;
     this.jdField_c_of_type_Long = paramLong;
-    if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister != null) {
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister.g();
+    paramDrawable = this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister;
+    if (paramDrawable != null) {
+      paramDrawable.g();
     }
     invalidate();
   }
@@ -348,8 +378,9 @@ public class AnimationView
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
     this.jdField_c_of_type_Long = paramLong;
     a();
-    if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister != null) {
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister.g();
+    paramDrawable = this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister;
+    if (paramDrawable != null) {
+      paramDrawable.g();
     }
   }
   
@@ -368,12 +399,13 @@ public class AnimationView
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
     this.jdField_c_of_type_Long = paramLong;
     a();
-    if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister != null) {
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister.h();
+    paramDrawable = this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister;
+    if (paramDrawable != null) {
+      paramDrawable.h();
     }
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     if (this.jdField_c_of_type_Boolean)
     {
@@ -400,7 +432,7 @@ public class AnimationView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.common.galleryactivity.AnimationView
  * JD-Core Version:    0.7.0.1
  */

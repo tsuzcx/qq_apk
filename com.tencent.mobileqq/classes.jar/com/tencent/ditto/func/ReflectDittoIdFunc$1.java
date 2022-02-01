@@ -28,24 +28,30 @@ class ReflectDittoIdFunc$1
       ReflectDittoIdFunc.access$000(this.this$0).invoke(this.val$view, new Object[] { paramDittoArea, paramMotionEvent, paramObject });
       return;
     }
-    catch (IllegalAccessException paramMotionEvent)
-    {
-      DittoLog.e("DITTO_UI", "getClickListener dittoArea:" + paramDittoArea.getId(), paramMotionEvent);
-      throw new RuntimeException(paramMotionEvent.getMessage());
-    }
     catch (InvocationTargetException paramMotionEvent)
     {
-      DittoLog.e("DITTO_UI", "getClickListener dittoArea:" + paramDittoArea.getId(), paramMotionEvent);
+      paramObject = new StringBuilder();
+      paramObject.append("getClickListener dittoArea:");
+      paramObject.append(paramDittoArea.getId());
+      DittoLog.e("DITTO_UI", paramObject.toString(), paramMotionEvent);
       if ((paramMotionEvent.getCause() instanceof RuntimeException)) {
         throw ((RuntimeException)paramMotionEvent.getCause());
       }
+      throw new RuntimeException(paramMotionEvent.getMessage());
+    }
+    catch (IllegalAccessException paramMotionEvent)
+    {
+      paramObject = new StringBuilder();
+      paramObject.append("getClickListener dittoArea:");
+      paramObject.append(paramDittoArea.getId());
+      DittoLog.e("DITTO_UI", paramObject.toString(), paramMotionEvent);
       throw new RuntimeException(paramMotionEvent.getMessage());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ditto.func.ReflectDittoIdFunc.1
  * JD-Core Version:    0.7.0.1
  */

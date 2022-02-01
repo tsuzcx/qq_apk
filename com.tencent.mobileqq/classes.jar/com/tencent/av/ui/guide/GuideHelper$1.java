@@ -12,14 +12,18 @@ class GuideHelper$1
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QLog.w("GuideHelper", 1, "onTouch to hide, seq[" + this.jdField_a_of_type_Long + "]");
+    paramView = new StringBuilder();
+    paramView.append("onTouch to hide, seq[");
+    paramView.append(this.jdField_a_of_type_Long);
+    paramView.append("]");
+    QLog.w("GuideHelper", 1, paramView.toString());
     GuideHelper.a(this.jdField_a_of_type_ComTencentAvUiGuideGuideHelper, this.jdField_a_of_type_Long);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.guide.GuideHelper.1
  * JD-Core Version:    0.7.0.1
  */

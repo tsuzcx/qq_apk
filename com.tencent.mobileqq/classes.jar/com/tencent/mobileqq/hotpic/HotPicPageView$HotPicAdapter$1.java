@@ -20,19 +20,26 @@ class HotPicPageView$HotPicAdapter$1
         this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
       }
     }
-    do
+    else
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("HotPicManagerHotPicPageView", 2, "onFileDownloadFailed:" + this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.picIndex + " GetUrlFailed msg:" + paramHotVideoGetUrlResult.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onFileDownloadFailed:");
+        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.picIndex);
+        localStringBuilder.append(" GetUrlFailed msg:");
+        localStringBuilder.append(paramHotVideoGetUrlResult.jdField_a_of_type_JavaLangString);
+        QLog.d("HotPicManagerHotPicPageView", 2, localStringBuilder.toString());
       }
-    } while (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a() != this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData);
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a(-10);
+      if (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a() == this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData) {
+        this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a(-10);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicPageView.HotPicAdapter.1
  * JD-Core Version:    0.7.0.1
  */

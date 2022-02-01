@@ -39,14 +39,30 @@ public class ArModelResource
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("ArModelResource{");
-    localStringBuffer.append("modelResourceSize='").append(this.jdField_a_of_type_Long).append('\'');
-    localStringBuffer.append(", modelResourceMD5=").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", modelResourceUrl=").append(this.b).append('\'');
-    localStringBuffer.append(", modelResourceBgMusic=").append(this.c).append('\'');
-    localStringBuffer.append(", modelConfigFile=").append(this.d).append('\'');
-    localStringBuffer.append(", modelRepeatTimes=").append(this.jdField_a_of_type_Int).append('\'');
-    localStringBuffer.append(", videoLayout=").append(this.e).append('\'');
-    localStringBuffer.append(", zipFileName=").append(this.f).append('\'');
+    localStringBuffer.append("modelResourceSize='");
+    localStringBuffer.append(this.jdField_a_of_type_Long);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", modelResourceMD5=");
+    localStringBuffer.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", modelResourceUrl=");
+    localStringBuffer.append(this.b);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", modelResourceBgMusic=");
+    localStringBuffer.append(this.c);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", modelConfigFile=");
+    localStringBuffer.append(this.d);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", modelRepeatTimes=");
+    localStringBuffer.append(this.jdField_a_of_type_Int);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", videoLayout=");
+    localStringBuffer.append(this.e);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", zipFileName=");
+    localStringBuffer.append(this.f);
+    localStringBuffer.append('\'');
     localStringBuffer.append('}');
     return localStringBuffer.toString();
   }
@@ -65,7 +81,7 @@ public class ArModelResource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.ArModelResource
  * JD-Core Version:    0.7.0.1
  */

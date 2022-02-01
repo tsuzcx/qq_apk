@@ -1,7 +1,7 @@
 package com.tencent.qqmini.miniapp.plugin;
 
 import android.os.Bundle;
-import com.tencent.qqmini.miniapp.widget.media.live.TXLivePushListenerReflect.ITXLivePushListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.TXLivePushListenerReflect.ITXLivePushListener;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,27 +38,32 @@ class LivePusherEmbeddedWidgetClient$3
       localJSONObject2.put("VIDEO_DROP", paramBundle.getInt("VIDEO_DROP"));
       localJSONObject2.put("SERVER_IP", paramBundle.getString("SERVER_IP"));
       localJSONObject2.put("AUDIO_PLAY_INFO", paramBundle.getString("AUDIO_PLAY_INFO"));
-      LivePusherEmbeddedWidgetClient.access$300(this.this$0, "onXWebLivePusherNetStatus", localJSONObject1.toString(), LivePusherEmbeddedWidgetClient.access$200(this.this$0));
-      return;
-    }
-    catch (JSONException paramBundle)
-    {
+      try
+      {
+        LivePusherEmbeddedWidgetClient.access$300(this.this$0, "onXWebLivePusherNetStatus", localJSONObject1.toString(), LivePusherEmbeddedWidgetClient.access$200(this.this$0));
+        return;
+      }
+      catch (JSONException paramBundle) {}
       paramBundle.printStackTrace();
     }
+    catch (JSONException paramBundle) {}
   }
   
   public void onPushEvent(int paramInt, Bundle paramBundle)
   {
-    QMLog.e("miniapp-embedded-live-pusher", "onPushEvent i:" + paramInt);
-    JSONObject localJSONObject = new JSONObject();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onPushEvent i:");
+    ((StringBuilder)localObject).append(paramInt);
+    QMLog.e("miniapp-embedded-live-pusher", ((StringBuilder)localObject).toString());
+    localObject = new JSONObject();
     try
     {
-      localJSONObject.put("viewId", LivePusherEmbeddedWidgetClient.access$100(this.this$0));
-      localJSONObject.put("errCode", paramInt);
+      ((JSONObject)localObject).put("viewId", LivePusherEmbeddedWidgetClient.access$100(this.this$0));
+      ((JSONObject)localObject).put("errCode", paramInt);
       if (paramBundle != null) {
-        localJSONObject.put("errMsg", paramBundle.getString("EVT_MSG"));
+        ((JSONObject)localObject).put("errMsg", paramBundle.getString("EVT_MSG"));
       }
-      LivePusherEmbeddedWidgetClient.access$300(this.this$0, "onXWebLivePusherEvent", localJSONObject.toString(), LivePusherEmbeddedWidgetClient.access$200(this.this$0));
+      LivePusherEmbeddedWidgetClient.access$300(this.this$0, "onXWebLivePusherEvent", ((JSONObject)localObject).toString(), LivePusherEmbeddedWidgetClient.access$200(this.this$0));
       return;
     }
     catch (JSONException paramBundle)
@@ -69,7 +74,7 @@ class LivePusherEmbeddedWidgetClient$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.LivePusherEmbeddedWidgetClient.3
  * JD-Core Version:    0.7.0.1
  */

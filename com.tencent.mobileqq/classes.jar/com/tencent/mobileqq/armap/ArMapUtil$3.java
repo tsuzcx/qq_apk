@@ -9,19 +9,21 @@ final class ArMapUtil$3
 {
   public void run()
   {
-    if (this.a == null) {}
-    for (int i = 0;; i = this.a.length)
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("preloadFileCount", String.valueOf(i));
-      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "ARMAP_OFFLINE_ENTER", true, 0L, 0L, localHashMap, "", false);
-      return;
+    Object localObject = this.a;
+    int i;
+    if (localObject == null) {
+      i = 0;
+    } else {
+      i = localObject.length;
     }
+    localObject = new HashMap();
+    ((HashMap)localObject).put("preloadFileCount", String.valueOf(i));
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "ARMAP_OFFLINE_ENTER", true, 0L, 0L, (HashMap)localObject, "", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ArMapUtil.3
  * JD-Core Version:    0.7.0.1
  */

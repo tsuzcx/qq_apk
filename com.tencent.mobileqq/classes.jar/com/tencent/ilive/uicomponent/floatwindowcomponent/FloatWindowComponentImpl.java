@@ -78,11 +78,12 @@ public class FloatWindowComponentImpl
   
   public void show(int paramInt)
   {
-    if (this.activity == null) {
+    Activity localActivity = this.activity;
+    if (localActivity == null) {
       return;
     }
     this.isCalledShow = true;
-    int i = UIUtil.dp2px(this.activity, -12.0F);
+    int i = UIUtil.dp2px(localActivity, -12.0F);
     int j = UIUtil.dp2px(this.activity, -100.0F);
     int k = UIUtil.dp2px(this.activity, 12.0F);
     int m = UIUtil.dp2px(this.activity, 12.0F);
@@ -92,7 +93,7 @@ public class FloatWindowComponentImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.uicomponent.floatwindowcomponent.FloatWindowComponentImpl
  * JD-Core Version:    0.7.0.1
  */

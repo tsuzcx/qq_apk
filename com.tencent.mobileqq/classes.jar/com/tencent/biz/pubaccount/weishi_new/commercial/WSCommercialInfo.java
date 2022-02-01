@@ -7,7 +7,7 @@ import UserGrowth.stSchema;
 public class WSCommercialInfo
   extends AbsWSRichWidgetData
 {
-  private final stBusinessIconInfo a;
+  protected final stBusinessIconInfo a;
   
   public WSCommercialInfo(stBusinessIconInfo paramstBusinessIconInfo)
   {
@@ -17,39 +17,43 @@ public class WSCommercialInfo
   
   public stSchema a()
   {
-    if (this.a == null) {
+    stBusinessIconInfo localstBusinessIconInfo = this.a;
+    if (localstBusinessIconInfo == null) {
       return null;
     }
-    return this.a.schema;
+    return localstBusinessIconInfo.schema;
   }
   
   public String a()
   {
-    if ((this.a == null) || (this.a.button == null)) {
-      return null;
+    stBusinessIconInfo localstBusinessIconInfo = this.a;
+    if ((localstBusinessIconInfo != null) && (localstBusinessIconInfo.button != null)) {
+      return this.a.button.buttonIcon;
     }
-    return this.a.button.buttonIcon;
-  }
-  
-  public int b()
-  {
-    if (this.a == null) {
-      return 0;
-    }
-    return this.a.type;
+    return null;
   }
   
   public String b()
   {
-    if ((this.a == null) || (this.a.button == null)) {
-      return null;
+    stBusinessIconInfo localstBusinessIconInfo = this.a;
+    if ((localstBusinessIconInfo != null) && (localstBusinessIconInfo.button != null)) {
+      return this.a.button.buttonText;
     }
-    return this.a.button.buttonText;
+    return null;
+  }
+  
+  public int d()
+  {
+    stBusinessIconInfo localstBusinessIconInfo = this.a;
+    if (localstBusinessIconInfo == null) {
+      return 0;
+    }
+    return localstBusinessIconInfo.type;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.commercial.WSCommercialInfo
  * JD-Core Version:    0.7.0.1
  */

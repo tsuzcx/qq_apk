@@ -14,7 +14,7 @@ import mqq.app.AppRuntime;
 class QZoneReport$QzoneGetPublicMsgObserver
   extends QZoneObserver
 {
-  public void onGetQzonePublicMsg(boolean paramBoolean, Bundle paramBundle)
+  protected void e(boolean paramBoolean, Bundle paramBundle)
   {
     paramBundle = paramBundle.getSerializable("data");
     if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof mobile_get_qzone_public_msg_rsp)))
@@ -22,28 +22,38 @@ class QZoneReport$QzoneGetPublicMsgObserver
       int i = QZoneReport.a().decrementAndGet();
       QZoneReport.a(0);
       AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      localAppRuntime.getPreferences().edit().putInt(localAppRuntime.getAccount() + "_" + "qzone_xp_req_left", i).apply();
+      SharedPreferences.Editor localEditor = localAppRuntime.getPreferences().edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localAppRuntime.getAccount());
+      localStringBuilder.append("_");
+      localStringBuilder.append("qzone_xp_req_left");
+      localEditor.putInt(localStringBuilder.toString(), i).apply();
       QZoneReport.b(((mobile_get_qzone_public_msg_rsp)paramBundle).next_req_tmstamp);
-      if (QLog.isColorLevel()) {
-        QLog.i("QZoneReport", 2, "next req time: " + QZoneReport.b() + ", left: " + i);
+      if (QLog.isColorLevel())
+      {
+        paramBundle = new StringBuilder();
+        paramBundle.append("next req time: ");
+        paramBundle.append(QZoneReport.b());
+        paramBundle.append(", left: ");
+        paramBundle.append(i);
+        QLog.i("QZoneReport", 2, paramBundle.toString());
       }
       ReportController.b(null, "CliOper", "", "", "0X800915D", "0X800915D", 0, 0, "", "", "", "");
     }
-    for (;;)
+    else
     {
-      QZoneReport.a().set(false);
-      BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(QZoneReport.a());
-      return;
       QZoneReport.c();
       if (QLog.isColorLevel()) {
         QLog.w("QZoneReport", 2, "qzone report failed");
       }
     }
+    QZoneReport.a().set(false);
+    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(QZoneReport.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.QZoneReport.QzoneGetPublicMsgObserver
  * JD-Core Version:    0.7.0.1
  */

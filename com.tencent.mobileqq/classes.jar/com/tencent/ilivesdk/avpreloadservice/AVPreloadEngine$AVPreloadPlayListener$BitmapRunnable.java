@@ -25,12 +25,13 @@ class AVPreloadEngine$AVPreloadPlayListener$BitmapRunnable
       {
         AVPreloadTaskInterface localAVPreloadTaskInterface = AVPreloadEngine.AVPreloadPlayListener.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine$AVPreloadPlayListener);
         Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-        if (this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() > this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) {}
-        for (boolean bool = true;; bool = false)
-        {
-          localPreloadResultListener.a(localAVPreloadTaskInterface, localBitmap, bool);
-          break;
+        boolean bool;
+        if (localBitmap.getWidth() > this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) {
+          bool = true;
+        } else {
+          bool = false;
         }
+        localPreloadResultListener.a(localAVPreloadTaskInterface, localBitmap, bool);
       }
     }
     this.jdField_a_of_type_AndroidGraphicsBitmap = null;
@@ -38,7 +39,7 @@ class AVPreloadEngine$AVPreloadPlayListener$BitmapRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadservice.AVPreloadEngine.AVPreloadPlayListener.BitmapRunnable
  * JD-Core Version:    0.7.0.1
  */

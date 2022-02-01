@@ -11,6 +11,7 @@ public class QCircleScheme
   public static final String Q_CIRCLE_ACTION_OPEN_FLUTTER_TRANVIEW = "openfluttertranview";
   public static final String Q_CIRCLE_ACTION_OPEN_FOLDER_PAGE = "openfolder";
   public static final String Q_CIRCLE_ACTION_OPEN_HIPPY = "openhippy";
+  public static final String Q_CIRCLE_ACTION_OPEN_MESSAGE_BOX_PAGE = "openmessagelist";
   public static final String Q_CIRCLE_ACTION_OPEN_MESSAGE_PAGE = "opennoticelist";
   public static final String Q_CIRCLE_ACTION_OPEN_POLYMERIZE = "openpolymerize";
   public static final String Q_CIRCLE_ACTION_OPEN_POLYMERIZE_DETAIL = "openpolymerizedetail";
@@ -22,7 +23,7 @@ public class QCircleScheme
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.constant.QCircleScheme
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.mobileqq.onlinestatus.config;
 
 import com.tencent.mobileqq.onlinestatus.OnlineStatusItem;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
@@ -39,18 +40,19 @@ public class AutoStatusElement
   public List<AutoStatusItem> a(boolean paramBoolean)
   {
     ArrayList localArrayList = new ArrayList();
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if (localObject == null) {
       return localArrayList;
     }
     if (paramBoolean)
     {
-      localArrayList.addAll(this.jdField_a_of_type_JavaUtilList);
+      localArrayList.addAll((Collection)localObject);
       return localArrayList;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      AutoStatusItem localAutoStatusItem = (AutoStatusItem)localIterator.next();
+      AutoStatusItem localAutoStatusItem = (AutoStatusItem)((Iterator)localObject).next();
       if (!localAutoStatusItem.b) {
         localArrayList.add(localAutoStatusItem);
       }
@@ -60,7 +62,7 @@ public class AutoStatusElement
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.config.AutoStatusElement
  * JD-Core Version:    0.7.0.1
  */

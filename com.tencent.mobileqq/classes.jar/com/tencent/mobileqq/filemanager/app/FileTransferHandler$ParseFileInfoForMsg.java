@@ -32,14 +32,19 @@ class FileTransferHandler$ParseFileInfoForMsg
   
   private boolean a(msg_comm.Msg paramMsg)
   {
-    if ((!paramMsg.msg_body.has()) || (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.has()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileTransferHandler<FileAssistant>", 2, "<---decodeC2CMsgPkg_OfflineFile return null:hasBody:" + paramMsg.msg_body.has() + "hasRichT:" + ((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.has());
-      }
-      return true;
+    if ((paramMsg.msg_body.has()) && (((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.has())) {
+      return false;
     }
-    return false;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("<---decodeC2CMsgPkg_OfflineFile return null:hasBody:");
+      localStringBuilder.append(paramMsg.msg_body.has());
+      localStringBuilder.append("hasRichT:");
+      localStringBuilder.append(((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.has());
+      QLog.e("FileTransferHandler<FileAssistant>", 2, localStringBuilder.toString());
+    }
+    return true;
   }
   
   private boolean a(im_msg_body.RichText paramRichText)
@@ -84,50 +89,47 @@ class FileTransferHandler$ParseFileInfoForMsg
       }
       this.jdField_a_of_type_TencentImMsgIm_msg_body$NotOnlineFile = ((im_msg_body.NotOnlineFile)((im_msg_body.RichText)localObject).not_online_file.get());
     }
-    label222:
-    label229:
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_Boolean = false;
-      return this;
       if ((this.jdField_a_of_type_Int != 529) || (this.b != 4)) {
-        break;
+        break label246;
       }
+    }
+    try
+    {
+      localObject = ((im_msg_body.MsgBody)this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg.msg_body.get()).msg_content.get().toByteArray();
+      SubMsgType0x4.MsgBody localMsgBody = new SubMsgType0x4.MsgBody();
       try
       {
-        localObject = ((im_msg_body.MsgBody)this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg.msg_body.get()).msg_content.get().toByteArray();
-        SubMsgType0x4.MsgBody localMsgBody = new SubMsgType0x4.MsgBody();
-        this.jdField_a_of_type_TencentImMsgIm_msg_body$NotOnlineFile = ((im_msg_body.NotOnlineFile)localInvalidProtocolBufferMicroException.msg_not_online_file.get());
+        localObject = (SubMsgType0x4.MsgBody)localMsgBody.mergeFrom((byte[])localObject);
+        if (a((SubMsgType0x4.MsgBody)localObject))
+        {
+          this.jdField_a_of_type_Boolean = true;
+          return this;
+        }
+        this.jdField_a_of_type_TencentImMsgIm_msg_body$NotOnlineFile = ((im_msg_body.NotOnlineFile)((SubMsgType0x4.MsgBody)localObject).msg_not_online_file.get());
+        this.jdField_a_of_type_Boolean = false;
+        return this;
       }
-      catch (Exception localException)
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
-        try
-        {
-          localObject = (SubMsgType0x4.MsgBody)localMsgBody.mergeFrom((byte[])localObject);
-          if (!a((SubMsgType0x4.MsgBody)localObject)) {
-            break label229;
-          }
-          this.jdField_a_of_type_Boolean = true;
-          return this;
-        }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-        {
-          if (!QLog.isColorLevel()) {
-            break label222;
-          }
-          QLog.e("FileTransferHandler<FileAssistant>", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : subMsgType[0x4] failed", localInvalidProtocolBufferMicroException);
-          this.jdField_a_of_type_Boolean = true;
-          return this;
-        }
-        localException = localException;
         if (QLog.isColorLevel()) {
-          QLog.e("FileTransferHandler<FileAssistant>", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : failed.", localException);
+          QLog.e("FileTransferHandler<FileAssistant>", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : subMsgType[0x4] failed", localInvalidProtocolBufferMicroException);
         }
         this.jdField_a_of_type_Boolean = true;
         return this;
       }
+      this.jdField_a_of_type_Boolean = true;
     }
-    this.jdField_a_of_type_Boolean = true;
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FileTransferHandler<FileAssistant>", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : failed.", localException);
+      }
+      this.jdField_a_of_type_Boolean = true;
+      return this;
+    }
+    label246:
     return this;
   }
   
@@ -143,7 +145,7 @@ class FileTransferHandler$ParseFileInfoForMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.FileTransferHandler.ParseFileInfoForMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -17,23 +17,31 @@ public class GLAnimScaleResume
   
   protected void performDraw(GL10 paramGL10, long paramLong)
   {
-    float f2 = this.mXScaleEnd - this.mXScaleStart;
-    float f1 = this.mYScaleEnd - this.mYScaleStart;
-    if (paramLong < this.a) {
-      f2 = this.mXScaleStart + f2 * (float)paramLong / (float)this.a;
-    }
-    for (f1 = this.mYScaleStart + f1 * (float)paramLong / (float)this.a;; f1 = this.mYScaleEnd - f1 * (float)paramLong / (float)this.b)
+    float f1 = this.mXScaleEnd - this.mXScaleStart;
+    float f2 = this.mYScaleEnd - this.mYScaleStart;
+    long l = this.a;
+    float f4;
+    float f3;
+    if (paramLong < l)
     {
-      paramGL10.glScalef(f2, f1, 1.0F);
-      return;
-      paramLong -= this.a;
-      f2 = this.mXScaleEnd - f2 * (float)paramLong / (float)this.b;
+      f4 = this.mXScaleStart;
+      f3 = (float)paramLong;
+      f1 = f4 + f1 * f3 / (float)this.a;
+      f2 = this.mYScaleStart + f2 * f3 / (float)this.a;
     }
+    else
+    {
+      f4 = this.mXScaleEnd;
+      f3 = (float)(paramLong - l);
+      f1 = f4 - f1 * f3 / (float)this.b;
+      f2 = this.mYScaleEnd - f2 * f3 / (float)this.b;
+    }
+    paramGL10.glScalef(f1, f2, 1.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.core.functions.animation.GLAnimScaleResume
  * JD-Core Version:    0.7.0.1
  */

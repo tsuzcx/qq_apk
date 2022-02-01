@@ -108,10 +108,15 @@ public class AEResourceDict
   
   public static String getSHA1(String paramString1, String paramString2)
   {
-    if ((TextUtils.equals(paramString1, "armeabi")) || (TextUtils.equals(paramString1, "armeabi-v7a")) || (TextUtils.equals(paramString1, "arm64-v8a"))) {
-      return (String)resourceTagMap.get(paramString1 + "/" + paramString2);
+    if ((!TextUtils.equals(paramString1, "armeabi")) && (!TextUtils.equals(paramString1, "armeabi-v7a")) && (!TextUtils.equals(paramString1, "arm64-v8a"))) {
+      return null;
     }
-    return null;
+    HashMap localHashMap = resourceTagMap;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("/");
+    localStringBuilder.append(paramString2);
+    return (String)localHashMap.get(localStringBuilder.toString());
   }
   
   public static boolean isValidSHA1(String paramString1, String paramString2)
@@ -119,11 +124,13 @@ public class AEResourceDict
     String str1 = getSHA1("armeabi", paramString1);
     String str2 = getSHA1("armeabi-v7a", paramString1);
     paramString1 = getSHA1("arm64-v8a", paramString1);
-    if ((TextUtils.isEmpty(str1)) && (TextUtils.isEmpty(str2)) && (TextUtils.isEmpty(paramString1))) {}
-    while ((TextUtils.equals(paramString2, str1)) || (TextUtils.equals(paramString2, str2)) || (TextUtils.equals(paramString2, paramString1))) {
+    if ((TextUtils.isEmpty(str1)) && (TextUtils.isEmpty(str2)) && (TextUtils.isEmpty(paramString1))) {
       return true;
     }
-    return false;
+    if ((!TextUtils.equals(paramString2, str1)) && (!TextUtils.equals(paramString2, str2))) {
+      return TextUtils.equals(paramString2, paramString1);
+    }
+    return true;
   }
 }
 

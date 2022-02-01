@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.proteus;
 
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.proteus.data.ReadInjoyAdBrandOptimizationCell;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItem;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.data.ReadInjoyAdBrandOptimizationCell;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdBrandOptimizationView;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdUtilService;
+import com.tencent.mobileqq.kandian.biz.pts.ProteusItem;
+import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
+import com.tencent.mobileqq.kandian.repo.feeds.entity.api.IReadInJoyModel;
+import com.tencent.mobileqq.qroute.QRoute;
 import org.json.JSONObject;
 
 public class AdBrandOptimizationProteusItem
@@ -20,18 +20,17 @@ public class AdBrandOptimizationProteusItem
     return null;
   }
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  public JSONObject a(int paramInt, AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return ReadInjoyAdBrandOptimizationCell.a(paramBaseArticleInfo);
+    return ReadInjoyAdBrandOptimizationCell.a(paramAbsBaseArticleInfo);
   }
   
   public void a(int paramInt1, Container paramContainer, IReadInJoyModel paramIReadInJoyModel, int paramInt2)
   {
     paramContainer = paramContainer.getVirtualView();
-    Object localObject;
-    if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.a() != null) && (AdvertisementInfo.isAdvertisementInfo(paramIReadInJoyModel.a())))
+    if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.a() != null) && (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramIReadInJoyModel.a())))
     {
-      localObject = paramContainer.findViewBaseByName("id_article_brand_optimization");
+      Object localObject = paramContainer.findViewBaseByName("id_article_brand_optimization");
       TemplateBean localTemplateBean = paramIReadInJoyModel.a().mProteusTemplateBean;
       paramContainer = null;
       if (localTemplateBean != null) {
@@ -41,15 +40,14 @@ public class AdBrandOptimizationProteusItem
       {
         localObject = (ReadInJoyAdBrandOptimizationView)localObject;
         ((ReadInJoyAdBrandOptimizationView)localObject).a(paramIReadInJoyModel);
-        if (paramContainer == null) {
-          break label96;
+        if (paramContainer != null)
+        {
+          ((ReadInJoyAdBrandOptimizationView)localObject).a(true);
+          return;
         }
-        ((ReadInJoyAdBrandOptimizationView)localObject).a(true);
+        ((ReadInJoyAdBrandOptimizationView)localObject).a(false);
       }
     }
-    return;
-    label96:
-    ((ReadInJoyAdBrandOptimizationView)localObject).a(false);
   }
   
   public boolean a(int paramInt, Container paramContainer, IReadInJoyModel paramIReadInJoyModel, ViewBase paramViewBase)
@@ -59,7 +57,7 @@ public class AdBrandOptimizationProteusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.AdBrandOptimizationProteusItem
  * JD-Core Version:    0.7.0.1
  */

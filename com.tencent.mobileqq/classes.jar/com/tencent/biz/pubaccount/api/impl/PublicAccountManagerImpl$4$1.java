@@ -14,35 +14,44 @@ class PublicAccountManagerImpl$4$1
   
   public void onLocationFinish(int paramInt, SosoLbsInfo paramSosoLbsInfo)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null)) {}
-    try
-    {
-      if (paramSosoLbsInfo.mLocation != null)
+    if ((paramInt == 0) && (paramSosoLbsInfo != null)) {
+      try
       {
-        double d1 = paramSosoLbsInfo.mLocation.mLat02;
-        double d2 = paramSosoLbsInfo.mLocation.mLon02;
-        String str1 = "";
-        if (paramSosoLbsInfo.mLocation.address != null) {
-          str1 = "" + paramSosoLbsInfo.mLocation.address;
+        if (paramSosoLbsInfo.mLocation != null)
+        {
+          double d1 = paramSosoLbsInfo.mLocation.mLat02;
+          double d2 = paramSosoLbsInfo.mLocation.mLon02;
+          Object localObject1 = "";
+          if (paramSosoLbsInfo.mLocation.address != null)
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("");
+            ((StringBuilder)localObject1).append(paramSosoLbsInfo.mLocation.address);
+            localObject1 = ((StringBuilder)localObject1).toString();
+          }
+          Object localObject2 = localObject1;
+          if (paramSosoLbsInfo.mLocation.name != null)
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append((String)localObject1);
+            ((StringBuilder)localObject2).append(paramSosoLbsInfo.mLocation.name);
+            localObject2 = ((StringBuilder)localObject2).toString();
+          }
+          this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountManagerImpl$4.this$0.reportClickTypeMenuEvent(true, d1, d2, (String)localObject2, null, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+          return;
         }
-        String str2 = str1;
-        if (paramSosoLbsInfo.mLocation.name != null) {
-          str2 = str1 + paramSosoLbsInfo.mLocation.name;
-        }
-        this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountManagerImpl$4.this$0.reportClickTypeMenuEvent(true, d1, d2, str2, null, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
       }
-      return;
-    }
-    catch (Exception paramSosoLbsInfo)
-    {
-      paramSosoLbsInfo.printStackTrace();
-      this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountManagerImpl$4.this$0.reportClickTypeMenuEvent(false, 0.0D, 0.0D, null, null, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+      catch (Exception paramSosoLbsInfo)
+      {
+        paramSosoLbsInfo.printStackTrace();
+        this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountManagerImpl$4.this$0.reportClickTypeMenuEvent(false, 0.0D, 0.0D, null, null, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountManagerImpl.4.1
  * JD-Core Version:    0.7.0.1
  */

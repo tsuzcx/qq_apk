@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class RecyclerViewBase$RecycledViewPool
 {
-  public int DEFAULT_MAX_SCRAP = 14;
+  public int DEFAULT_MAX_SCRAP = 7;
   int mAttachCount = 0;
   protected SparseIntArray mMaxScrap = new SparseIntArray();
   public SparseArray<RecyclerViewBase.ViewHolderArrayList> mScrap = new SparseArray();
@@ -38,30 +38,38 @@ public class RecyclerViewBase$RecycledViewPool
     ArrayList localArrayList = (ArrayList)this.mScrap.get(paramInt);
     if ((localArrayList != null) && (!localArrayList.isEmpty()))
     {
-      Log.d("RecyclerViewBase", "getRecycledView--> scrapHeap.size : " + localArrayList.size());
-      RecyclerViewBase.ViewHolder localViewHolder2 = (RecyclerViewBase.ViewHolder)localArrayList.get(localArrayList.size() - 1);
-      RecyclerViewBase.ViewHolder localViewHolder1 = localViewHolder2;
-      if (!TextUtils.isEmpty(paramString)) {
-        paramInt = 0;
-      }
-      for (;;)
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getRecycledView--> scrapHeap.size : ");
+      ((StringBuilder)localObject1).append(localArrayList.size());
+      Log.d("RecyclerViewBase", ((StringBuilder)localObject1).toString());
+      Object localObject2 = (RecyclerViewBase.ViewHolder)localArrayList.get(localArrayList.size() - 1);
+      localObject1 = localObject2;
+      if (!TextUtils.isEmpty(paramString))
       {
-        localViewHolder1 = localViewHolder2;
-        if (paramInt < localArrayList.size())
+        paramInt = 0;
+        for (;;)
         {
-          localViewHolder1 = (RecyclerViewBase.ViewHolder)localArrayList.get(paramInt);
-          if (TextUtils.equals(paramString, localViewHolder1.mHolderReuseKey)) {
-            Log.d("RecyclerViewBase", "getRecycledView-->reqReuseKey: " + paramString + ",found key:" + localViewHolder1.mHolderReuseKey);
+          localObject1 = localObject2;
+          if (paramInt >= localArrayList.size()) {
+            break;
           }
+          localObject1 = (RecyclerViewBase.ViewHolder)localArrayList.get(paramInt);
+          if (TextUtils.equals(paramString, ((RecyclerViewBase.ViewHolder)localObject1).mHolderReuseKey))
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("getRecycledView-->reqReuseKey: ");
+            ((StringBuilder)localObject2).append(paramString);
+            ((StringBuilder)localObject2).append(",found key:");
+            ((StringBuilder)localObject2).append(((RecyclerViewBase.ViewHolder)localObject1).mHolderReuseKey);
+            Log.d("RecyclerViewBase", ((StringBuilder)localObject2).toString());
+            break;
+          }
+          paramInt += 1;
         }
-        else
-        {
-          localViewHolder1.mHolderReuseKey = paramString;
-          localArrayList.remove(localViewHolder1);
-          return localViewHolder1;
-        }
-        paramInt += 1;
       }
+      ((RecyclerViewBase.ViewHolder)localObject1).mHolderReuseKey = paramString;
+      localArrayList.remove(localObject1);
+      return localObject1;
     }
     return null;
   }
@@ -135,7 +143,7 @@ public class RecyclerViewBase$RecycledViewPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.supportui.views.recyclerview.RecyclerViewBase.RecycledViewPool
  * JD-Core Version:    0.7.0.1
  */

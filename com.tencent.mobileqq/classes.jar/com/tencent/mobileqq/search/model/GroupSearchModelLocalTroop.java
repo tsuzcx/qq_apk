@@ -2,11 +2,11 @@ package com.tencent.mobileqq.search.model;
 
 import android.view.View;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.search.SearchEntryConfigManager;
 import com.tencent.mobileqq.search.activity.ContactSearchActivity;
 import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.base.api.SearchEntryConfigManager;
+import com.tencent.mobileqq.search.base.util.SearchConfigManager;
 import com.tencent.mobileqq.search.report.UniteSearchReportController;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
 import com.tencent.mobileqq.search.util.SearchUtils;
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class GroupSearchModelLocalTroop
   
   static
   {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131705406);
+    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131705479);
   }
   
   public GroupSearchModelLocalTroop(List<ISearchResultModel> paramList, String paramString, int paramInt)
@@ -51,7 +51,10 @@ public class GroupSearchModelLocalTroop
     SearchUtils.a(this.b, 20, 0, paramView);
     if ((paramView.getContext() instanceof UniteSearchActivity))
     {
-      SearchUtils.a("all_result", "more_contact", new String[] { "" + this.b });
+      paramView = new StringBuilder();
+      paramView.append("");
+      paramView.append(this.b);
+      SearchUtils.a("all_result", "more_contact", new String[] { paramView.toString() });
       if (SearchConfigManager.needSeparate) {
         SearchUtils.a("search", "group", "more", 0, 0, new String[] { SearchUtils.a(this.jdField_a_of_type_Int) });
       }
@@ -71,7 +74,7 @@ public class GroupSearchModelLocalTroop
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.GroupSearchModelLocalTroop
  * JD-Core Version:    0.7.0.1
  */

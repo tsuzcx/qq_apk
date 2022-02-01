@@ -37,6 +37,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.ArrayList<Lcom.tencent.mobileqq.data.ChatMessage;>;
 import java.util.HashMap;
+import java.util.HashMap<Ljava.lang.String;Ljava.util.ArrayList<Lcom.tencent.mobileqq.data.MessageRecord;>;>;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -91,72 +92,83 @@ public class MultiMsgController
   
   public HashMap<String, ArrayList<MessageRecord>> a(QQAppInterface paramQQAppInterface, MessageForStructing paramMessageForStructing, @NonNull ArrayList<ChatMessage> paramArrayList, HashMap<String, String> paramHashMap, HashMap<String, ArrayList<MessageRecord>> paramHashMap1)
   {
-    Object localObject1 = paramHashMap1;
+    Object localObject2;
     if (paramHashMap1 == null) {
-      localObject1 = new HashMap();
+      localObject2 = new HashMap();
+    } else {
+      localObject2 = paramHashMap1;
     }
     ArrayList localArrayList1 = new ArrayList();
-    Iterator localIterator1 = paramArrayList.iterator();
-    int j;
-    for (int i = 0; localIterator1.hasNext(); i = j + 1)
+    paramArrayList = paramArrayList.iterator();
+    int i = 0;
+    while (paramArrayList.hasNext())
     {
-      paramArrayList = (MessageRecord)localIterator1.next();
-      localArrayList1.add(paramArrayList);
-      MultiMsgUtil.a(paramArrayList, (String)paramHashMap.get(MsgProxyUtils.a(paramArrayList)), paramMessageForStructing);
-      j = i;
-      if (MultiMsgUtil.a((ChatMessage)paramArrayList))
+      paramHashMap1 = (MessageRecord)paramArrayList.next();
+      localArrayList1.add(paramHashMap1);
+      MultiMsgUtil.a(paramHashMap1, (String)paramHashMap.get(MsgProxyUtils.a(paramHashMap1)), paramMessageForStructing);
+      if (MultiMsgUtil.a((ChatMessage)paramHashMap1))
       {
-        j = 0;
-        int k = 0;
-        MessageForStructing localMessageForStructing = (MessageForStructing)paramArrayList;
-        HashMap localHashMap = paramQQAppInterface.getMultiMessageProxy().a(localMessageForStructing);
+        Object localObject1 = (MessageForStructing)paramHashMap1;
+        HashMap localHashMap = paramQQAppInterface.getMultiMessageProxy().a((MessageRecord)localObject1);
+        int j;
         if (localHashMap.size() > 0)
         {
-          Iterator localIterator2 = localHashMap.keySet().iterator();
-          j = k;
-          while (localIterator2.hasNext())
+          Iterator localIterator1 = localHashMap.keySet().iterator();
+          j = 0;
+          paramHashMap1 = paramArrayList;
+          while (localIterator1.hasNext())
           {
-            paramArrayList = (String)localIterator2.next();
+            paramArrayList = (String)localIterator1.next();
             ArrayList localArrayList2 = (ArrayList)localHashMap.get(paramArrayList);
             j = localArrayList2.size();
-            paramHashMap1 = paramArrayList;
+            Object localObject3 = paramArrayList;
             if (paramArrayList.equalsIgnoreCase("MultiMsg"))
             {
-              paramHashMap1 = String.valueOf(((HashMap)localObject1).size());
-              localMessageForStructing.structingMsg.mFileName = paramHashMap1;
-              localMessageForStructing.doPrewrite();
+              localObject3 = String.valueOf(((HashMap)localObject2).size());
+              ((MessageForStructing)localObject1).structingMsg.mFileName = ((String)localObject3);
+              ((MessageForStructing)localObject1).doPrewrite();
             }
-            Iterator localIterator3 = localArrayList2.iterator();
-            while (localIterator3.hasNext())
+            Iterator localIterator2 = localArrayList2.iterator();
+            paramArrayList = (ArrayList<ChatMessage>)localObject1;
+            localObject1 = paramHashMap1;
+            while (localIterator2.hasNext())
             {
-              MessageRecord localMessageRecord = (MessageRecord)localIterator3.next();
-              Object localObject2 = localMessageRecord.getExtInfoFromExtStr("self_nickname");
-              paramArrayList = (ArrayList<ChatMessage>)localObject2;
-              if (TextUtils.isEmpty((CharSequence)localObject2)) {
-                paramArrayList = MultiMsgManager.a().a(localMessageRecord.senderuin, localMessageRecord.msgseq, paramQQAppInterface);
+              MessageRecord localMessageRecord = (MessageRecord)localIterator2.next();
+              paramHashMap1 = localMessageRecord.getExtInfoFromExtStr("self_nickname");
+              if (TextUtils.isEmpty(paramHashMap1)) {
+                paramHashMap1 = MultiMsgManager.a().a(localMessageRecord.senderuin, localMessageRecord.msgseq, paramQQAppInterface);
               }
-              if (paramArrayList != null)
+              Object localObject4;
+              if (paramHashMap1 != null)
               {
-                localObject2 = paramArrayList;
-                if (paramArrayList.trim().length() != 0) {}
+                localObject4 = paramHashMap1;
+                if (paramHashMap1.trim().length() != 0) {}
               }
               else
               {
-                localObject2 = MultiMsgUtil.a(localMessageRecord.senderuin);
+                localObject4 = MultiMsgUtil.a(localMessageRecord.senderuin);
               }
-              MultiMsgUtil.a(localMessageRecord, (String)localObject2, paramMessageForStructing);
+              MultiMsgUtil.a(localMessageRecord, (String)localObject4, paramMessageForStructing);
             }
-            ((HashMap)localObject1).put(paramHashMap1, localArrayList2);
+            ((HashMap)localObject2).put(localObject3, localArrayList2);
+            paramHashMap1 = (HashMap<String, ArrayList<MessageRecord>>)localObject1;
+            localObject1 = paramArrayList;
           }
+          paramArrayList = paramHashMap1;
         }
-        j = i + j;
+        else
+        {
+          j = 0;
+        }
+        i += j;
       }
+      i += 1;
     }
     paramMessageForStructing.structingMsg.mTSum = i;
     paramMessageForStructing.doPrewrite();
-    ((HashMap)localObject1).put("MultiMsg", localArrayList1);
+    ((HashMap)localObject2).put("MultiMsg", localArrayList1);
     MultiMsgUtil.b("step.preHandle.mTSum = %d", new Object[] { Integer.valueOf(i) });
-    return localObject1;
+    return localObject2;
   }
   
   public void a()
@@ -188,29 +200,32 @@ public class MultiMsgController
   public void a(QQAppInterface paramQQAppInterface, MultiMsgRequest paramMultiMsgRequest)
   {
     List localList = paramMultiMsgRequest.jdField_b_of_type_JavaUtilList;
-    if ((localList == null) || (localList.size() == 0)) {
-      return;
-    }
-    Iterator localIterator = localList.iterator();
-    while (localIterator.hasNext())
+    if (localList != null)
     {
-      MessageForStructing localMessageForStructing = (MessageForStructing)localIterator.next();
-      TransferRequest localTransferRequest = new TransferRequest();
-      localTransferRequest.mIsUp = false;
-      localTransferRequest.mFileType = 131078;
-      localTransferRequest.resIdStr = localMessageForStructing.structingMsg.mResid;
-      localTransferRequest.mSelfUin = localMessageForStructing.selfuin;
-      localTransferRequest.mPeerUin = localMessageForStructing.frienduin;
-      localTransferRequest.mSecondId = localMessageForStructing.frienduin;
-      localTransferRequest.mUinType = localMessageForStructing.istroop;
-      localTransferRequest.mUniseq = localMessageForStructing.uniseq;
-      localTransferRequest.mBusiType = 1035;
-      localTransferRequest.mDownCallBack = this;
-      localTransferRequest.mRichTag = paramMultiMsgRequest.a();
-      ((ITransFileController)paramQQAppInterface.getRuntimeService(ITransFileController.class)).transferAsync(localTransferRequest);
-      MultiMsgUtil.b("downloadNestMultiMsg mUniseq = %d,resIdStr = %s", new Object[] { Long.valueOf(localTransferRequest.mUniseq), localTransferRequest.resIdStr });
+      if (localList.size() == 0) {
+        return;
+      }
+      Iterator localIterator = localList.iterator();
+      while (localIterator.hasNext())
+      {
+        MessageForStructing localMessageForStructing = (MessageForStructing)localIterator.next();
+        TransferRequest localTransferRequest = new TransferRequest();
+        localTransferRequest.mIsUp = false;
+        localTransferRequest.mFileType = 131078;
+        localTransferRequest.resIdStr = localMessageForStructing.structingMsg.mResid;
+        localTransferRequest.mSelfUin = localMessageForStructing.selfuin;
+        localTransferRequest.mPeerUin = localMessageForStructing.frienduin;
+        localTransferRequest.mSecondId = localMessageForStructing.frienduin;
+        localTransferRequest.mUinType = localMessageForStructing.istroop;
+        localTransferRequest.mUniseq = localMessageForStructing.uniseq;
+        localTransferRequest.mBusiType = 1035;
+        localTransferRequest.mDownCallBack = this;
+        localTransferRequest.mRichTag = paramMultiMsgRequest.a();
+        ((ITransFileController)paramQQAppInterface.getRuntimeService(ITransFileController.class)).transferAsync(localTransferRequest);
+        MultiMsgUtil.b("downloadNestMultiMsg mUniseq = %d,resIdStr = %s", new Object[] { Long.valueOf(localTransferRequest.mUniseq), localTransferRequest.resIdStr });
+      }
+      MultiMsgUtil.b("downloadNestMultiMsg msgSize = %d ", new Object[] { Integer.valueOf(localList.size()) });
     }
-    MultiMsgUtil.b("downloadNestMultiMsg msgSize = %d ", new Object[] { Integer.valueOf(localList.size()) });
   }
   
   protected void a(MultiMsgRequest paramMultiMsgRequest)
@@ -281,68 +296,62 @@ public class MultiMsgController
   
   public void a(DownCallBack.DownResult paramDownResult)
   {
-    Object localObject1 = null;
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {}
-    QQAppInterface localQQAppInterface;
-    Object localObject2;
-    long l;
-    MultiMsgRequest localMultiMsgRequest;
-    List localList;
-    do
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      return;
+    }
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localQQAppInterface == null) {
+      return;
+    }
+    Object localObject1 = paramDownResult.d;
+    long l = paramDownResult.jdField_a_of_type_Long;
+    MultiMsgRequest localMultiMsgRequest = (MultiMsgRequest)this.jdField_a_of_type_JavaUtilMap.get(localObject1);
+    MultiMsgUtil.b("onDownloadResp: mUniseq = %d,resIdStr = %s,errcode = %d", new Object[] { Long.valueOf(l), paramDownResult.e, Integer.valueOf(paramDownResult.jdField_b_of_type_Int) });
+    if (localMultiMsgRequest == null) {
+      return;
+    }
+    List localList = localMultiMsgRequest.jdField_b_of_type_JavaUtilList;
+    if (localList == null) {
+      return;
+    }
+    try
     {
-      do
+      Iterator localIterator = localList.iterator();
+      localObject1 = null;
+      Object localObject2;
+      while (localIterator.hasNext())
       {
-        do
-        {
-          return;
-          localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        } while (localQQAppInterface == null);
-        localObject2 = paramDownResult.d;
-        l = paramDownResult.jdField_a_of_type_Long;
-        localMultiMsgRequest = (MultiMsgRequest)this.jdField_a_of_type_JavaUtilMap.get(localObject2);
-        MultiMsgUtil.b("onDownloadResp: mUniseq = %d,resIdStr = %s,errcode = %d", new Object[] { Long.valueOf(l), paramDownResult.e, Integer.valueOf(paramDownResult.jdField_b_of_type_Int) });
-      } while (localMultiMsgRequest == null);
-      localList = localMultiMsgRequest.jdField_b_of_type_JavaUtilList;
-    } while (localList == null);
-    label288:
-    for (;;)
-    {
-      try
-      {
-        Iterator localIterator = localList.iterator();
-        if (localIterator.hasNext())
-        {
-          localObject2 = (MessageForStructing)localIterator.next();
-          if (((MessageForStructing)localObject2).uniseq != l) {
-            break label288;
-          }
+        localObject2 = (MessageForStructing)localIterator.next();
+        if (((MessageForStructing)localObject2).uniseq == l) {
           localObject1 = localObject2;
-          break label288;
-        }
-        if (localObject1 == null) {
-          return;
         }
       }
-      finally {}
+      if (localObject1 == null) {
+        return;
+      }
       if (paramDownResult.jdField_b_of_type_Int == 0)
       {
         localList.remove(localObject1);
         localObject2 = new HashMap();
-        localQQAppInterface.getProxyManager().a().a(paramDownResult.jdField_a_of_type_ArrayOfByte, (HashMap)localObject2, localObject1, null);
+        localQQAppInterface.getProxyManager().a().a(paramDownResult.jdField_a_of_type_ArrayOfByte, (HashMap)localObject2, (MessageRecord)localObject1, null);
       }
-      for (;;)
+      else
       {
-        if ((localList != null) && (localList.size() != 0)) {
-          break;
-        }
-        e(localMultiMsgRequest);
-        return;
-        paramDownResult = localQQAppInterface.getMultiMessageProxy().a(localObject1, MultiMsgConstant.b, false);
+        paramDownResult = localQQAppInterface.getMultiMessageProxy().a((MessageRecord)localObject1, MultiMsgConstant.b, false);
         int i = localMultiMsgRequest.jdField_a_of_type_JavaUtilList.indexOf(localObject1);
         if (i >= 0) {
           localMultiMsgRequest.jdField_a_of_type_JavaUtilList.set(i, (ChatMessage)paramDownResult);
         }
       }
+      if ((localList == null) || (localList.size() == 0)) {
+        e(localMultiMsgRequest);
+      }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramDownResult;
     }
   }
   
@@ -353,8 +362,14 @@ public class MultiMsgController
     ArrayList localArrayList = new ArrayList();
     List localList = paramMultiMsgRequest.jdField_a_of_type_JavaUtilList;
     Iterator localIterator = localList.iterator();
-    while (localIterator.hasNext())
+    boolean bool1;
+    for (;;)
     {
+      boolean bool2 = localIterator.hasNext();
+      bool1 = false;
+      if (!bool2) {
+        break;
+      }
       ChatMessage localChatMessage = (ChatMessage)localIterator.next();
       if (MultiMsgUtil.a(localChatMessage))
       {
@@ -366,16 +381,16 @@ public class MultiMsgController
         }
         else if (paramQQAppInterface.getMultiMessageProxy().a((MessageRecord)localObject).size() == 0)
         {
-          localArrayList.add((MessageForStructing)localChatMessage);
+          localArrayList.add(localObject);
         }
       }
     }
     if (localArrayList.size() > 0)
     {
+      bool1 = true;
       paramMultiMsgRequest.jdField_b_of_type_JavaUtilList = localArrayList;
-      return true;
     }
-    return false;
+    return bool1;
   }
   
   protected void b(MultiMsgRequest paramMultiMsgRequest)
@@ -408,42 +423,31 @@ public class MultiMsgController
   
   public void b(UpCallBack.SendResult paramSendResult)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
       return;
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    } while (localQQAppInterface == null);
-    label769:
-    for (;;)
+    }
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localQQAppInterface == null) {
+      return;
+    }
+    int j = 0;
+    try
     {
-      Object localObject1;
-      try
+      long l = ((Long)paramSendResult.jdField_a_of_type_JavaLangObject).longValue();
+      Object localObject2 = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+      Object localObject1 = null;
+      while (((Iterator)localObject2).hasNext())
       {
-        long l = ((Long)paramSendResult.jdField_a_of_type_JavaLangObject).longValue();
-        localObject1 = null;
-        localObject2 = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-        if (((Iterator)localObject2).hasNext())
-        {
-          localObject3 = (String)((Iterator)localObject2).next();
-          if (((MultiMsgRequest)this.jdField_a_of_type_JavaUtilMap.get(localObject3)).jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq != l) {
-            break label769;
-          }
+        localObject3 = (String)((Iterator)localObject2).next();
+        if (((MultiMsgRequest)this.jdField_a_of_type_JavaUtilMap.get(localObject3)).jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq == l) {
           localObject1 = (MultiMsgRequest)this.jdField_a_of_type_JavaUtilMap.get(localObject3);
-          continue;
-        }
-        if (localObject1 == null) {
-          break;
         }
       }
-      catch (Exception paramSendResult)
-      {
-        QLog.e("MultiMsg_TAG", 1, paramSendResult, new Object[0]);
+      if (localObject1 == null) {
         return;
       }
       this.jdField_a_of_type_JavaUtilMap.remove(((MultiMsgRequest)localObject1).a());
-      Object localObject2 = ((MultiMsgRequest)localObject1).jdField_a_of_type_ComTencentMobileqqDataMessageForStructing;
+      localObject2 = ((MultiMsgRequest)localObject1).jdField_a_of_type_ComTencentMobileqqDataMessageForStructing;
       Object localObject3 = ((MultiMsgRequest)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
       int i = ((MultiMsgRequest)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
       if (((MultiMsgRequest)localObject1).jdField_b_of_type_Int == 2)
@@ -455,102 +459,110 @@ public class MultiMsgController
         }
         i = ((MultiMsgRequest)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.g;
         new MultiMsgManager.MsgForwardWXUploadCallback(localQQAppInterface, (MessageRecord)localObject2, (String)localObject3, i, (ArrayList)((MultiMsgRequest)localObject1).jdField_a_of_type_JavaUtilHashMap.get("MultiMsg"), (HashMap)((MultiMsgRequest)localObject1).jdField_a_of_type_JavaUtilMap).b(paramSendResult);
-        MultiMsgUtil.a("step.onUploadPbFinish:resultCode = %d,uniseq = %d,request.finishMask = %d,request.result = %d ", new Object[] { Integer.valueOf(paramSendResult.jdField_a_of_type_Int), Long.valueOf(((MessageForStructing)localObject2).uniseq), Integer.valueOf(((MultiMsgRequest)localObject1).a()), Integer.valueOf(((MultiMsgRequest)localObject1).b()) });
-        if (i != 0) {
-          break label563;
-        }
-        i = 1;
       }
-      for (;;)
+      else if (paramSendResult.jdField_a_of_type_Int == 0)
       {
-        label331:
-        paramSendResult = ((MessageForStructing)localObject2).frienduin;
-        int m = ((MessageForStructing)localObject2).structingMsg.mTSum;
-        int n = ((MultiMsgRequest)localObject1).c;
-        int i1 = ((MultiMsgRequest)localObject1).d;
-        int i2 = ((MultiMsgRequest)localObject1).e;
-        int i3 = ((MultiMsgRequest)localObject1).f;
-        localObject1 = ((MultiMsgRequest)localObject1).jdField_a_of_type_JavaUtilHashMap;
-        localObject2 = ((HashMap)localObject1).keySet().iterator();
-        int k = 0;
-        int j = 0;
-        label648:
+        ((MessageForStructing)localObject2).structingMsg.mResid = paramSendResult.c;
+        ((MessageForStructing)localObject2).structingMsg.mFileName = String.valueOf(((MessageForStructing)localObject2).uniseq);
+        localQQAppInterface.getMessageFacade().a((String)localObject3, i, ((MessageForStructing)localObject2).uniseq, ((MessageForStructing)localObject2).structingMsg.getBytes());
+        localQQAppInterface.getMessageFacade().b((MessageRecord)localObject2, null);
+      }
+      else
+      {
+        ((MultiMsgRequest)localObject1).a(1, 65536);
+        c((MultiMsgRequest)localObject1);
+      }
+      MultiMsgUtil.a("step.onUploadPbFinish:resultCode = %d,uniseq = %d,request.finishMask = %d,request.result = %d ", new Object[] { Integer.valueOf(paramSendResult.jdField_a_of_type_Int), Long.valueOf(((MessageForStructing)localObject2).uniseq), Integer.valueOf(((MultiMsgRequest)localObject1).a()), Integer.valueOf(((MultiMsgRequest)localObject1).b()) });
+      if (i == 0) {}
+      do
+      {
+        i = 1;
+        break label472;
+        if ((i == 3000) || (i == 1)) {
+          break label470;
+        }
+        if ((i == 1000) || (i == 1004)) {
+          break;
+        }
+      } while (!ChatActivityUtils.a(localQQAppInterface, ((MultiMsgRequest)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo));
+      i = 4;
+      break label472;
+      i = 3;
+      break label472;
+      label470:
+      i = 2;
+      label472:
+      paramSendResult = ((MessageForStructing)localObject2).frienduin;
+      int i1 = ((MessageForStructing)localObject2).structingMsg.mTSum;
+      int i2 = ((MultiMsgRequest)localObject1).c;
+      int i3 = ((MultiMsgRequest)localObject1).d;
+      int i4 = ((MultiMsgRequest)localObject1).e;
+      int i5 = ((MultiMsgRequest)localObject1).f;
+      localObject1 = ((MultiMsgRequest)localObject1).jdField_a_of_type_JavaUtilHashMap;
+      localObject2 = ((HashMap)localObject1).keySet().iterator();
+      int n = 0;
+      if (((Iterator)localObject2).hasNext())
+      {
+        localObject3 = ((ArrayList)((HashMap)localObject1).get((String)((Iterator)localObject2).next())).iterator();
+        int m = j;
+        int k = n;
         for (;;)
         {
-          if (!((Iterator)localObject2).hasNext()) {
-            break label651;
+          n = k;
+          j = m;
+          if (!((Iterator)localObject3).hasNext()) {
+            break;
           }
-          localObject3 = ((ArrayList)((HashMap)localObject1).get((String)((Iterator)localObject2).next())).iterator();
-          for (;;)
-          {
-            if (!((Iterator)localObject3).hasNext()) {
-              break label648;
-            }
-            MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject3).next();
-            if (localMessageRecord.msgtype == -2022)
-            {
-              j += 1;
-              continue;
-              if (paramSendResult.jdField_a_of_type_Int == 0)
-              {
-                ((MessageForStructing)localObject2).structingMsg.mResid = paramSendResult.c;
-                ((MessageForStructing)localObject2).structingMsg.mFileName = String.valueOf(((MessageForStructing)localObject2).uniseq);
-                localQQAppInterface.getMessageFacade().a((String)localObject3, i, ((MessageForStructing)localObject2).uniseq, ((MessageForStructing)localObject2).structingMsg.getBytes());
-                localQQAppInterface.getMessageFacade().b((MessageRecord)localObject2, null);
-                break;
-              }
-              ((MultiMsgRequest)localObject1).a(1, 65536);
-              c((MultiMsgRequest)localObject1);
-              break;
-              label563:
-              if ((i == 3000) || (i == 1))
-              {
-                i = 2;
-                break label331;
-              }
-              if ((i == 1000) || (i == 1004))
-              {
-                i = 3;
-                break label331;
-              }
-              if (!ChatActivityUtils.a(localQQAppInterface, ((MultiMsgRequest)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) {
-                break label764;
-              }
-              i = 4;
-              break label331;
-            }
-            if ((localMessageRecord.msgtype == -2005) || (localMessageRecord.msgtype == -2017)) {
-              k += 1;
-            }
+          localObject4 = (MessageRecord)((Iterator)localObject3).next();
+          if (((MessageRecord)localObject4).msgtype == -2022) {
+            m += 1;
+          } else if ((((MessageRecord)localObject4).msgtype == -2005) || (((MessageRecord)localObject4).msgtype == -2017)) {
+            k += 1;
           }
         }
-        label651:
-        ReportController.b(localQQAppInterface, "CliOper", "", paramSendResult, "0X8009AC0", "0X8009AC0", i, 0, m + "", n + i1 + i2 + i3 + "", "" + j, "" + k);
-        return;
-        label764:
-        i = 1;
       }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(i1);
+      ((StringBuilder)localObject1).append("");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(i2 + i3 + i4 + i5);
+      ((StringBuilder)localObject2).append("");
+      localObject2 = ((StringBuilder)localObject2).toString();
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("");
+      ((StringBuilder)localObject3).append(j);
+      localObject3 = ((StringBuilder)localObject3).toString();
+      Object localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append("");
+      ((StringBuilder)localObject4).append(n);
+      ReportController.b(localQQAppInterface, "CliOper", "", paramSendResult, "0X8009AC0", "0X8009AC0", i, 0, (String)localObject1, (String)localObject2, (String)localObject3, ((StringBuilder)localObject4).toString());
+      return;
+    }
+    catch (Exception paramSendResult)
+    {
+      QLog.e("MultiMsg_TAG", 1, paramSendResult, new Object[0]);
     }
   }
   
   protected void c(MultiMsgRequest paramMultiMsgRequest)
   {
-    if (paramMultiMsgRequest == null) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    } while (localQQAppInterface == null);
+    if (paramMultiMsgRequest == null) {
+      return;
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      return;
+    }
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localQQAppInterface == null) {
+      return;
+    }
     MessageForStructing localMessageForStructing = paramMultiMsgRequest.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing;
     String str = paramMultiMsgRequest.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
     int i = paramMultiMsgRequest.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
     localMessageForStructing.extraflag = 32768;
     localQQAppInterface.getMsgCache().a(str, i, localMessageForStructing.uniseq);
-    paramMultiMsgRequest = localQQAppInterface.getMessageFacade().a(str, i);
+    paramMultiMsgRequest = localQQAppInterface.getMessageFacade().getLastMessage(str, i);
     if ((paramMultiMsgRequest != null) && (paramMultiMsgRequest.uniseq == localMessageForStructing.uniseq)) {
       paramMultiMsgRequest.extraflag = 32768;
     }
@@ -562,13 +574,13 @@ public class MultiMsgController
   
   public void e(MultiMsgRequest paramMultiMsgRequest)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {}
-    Object localObject;
-    do
-    {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
       return;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    } while (localObject == null);
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localObject == null) {
+      return;
+    }
     if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramMultiMsgRequest.a())) {
       this.jdField_a_of_type_JavaUtilMap.put(paramMultiMsgRequest.a(), paramMultiMsgRequest);
     }
@@ -577,36 +589,37 @@ public class MultiMsgController
       a((QQAppInterface)localObject, paramMultiMsgRequest);
       return;
     }
-    if (paramMultiMsgRequest.jdField_a_of_type_Int == 0) {}
-    for (int i = 0;; i = 2)
-    {
-      localObject = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(i);
-      ((android.os.Message)localObject).obj = paramMultiMsgRequest;
-      ((android.os.Message)localObject).sendToTarget();
-      return;
+    int i;
+    if (paramMultiMsgRequest.jdField_a_of_type_Int == 0) {
+      i = 0;
+    } else {
+      i = 2;
     }
+    localObject = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(i);
+    ((android.os.Message)localObject).obj = paramMultiMsgRequest;
+    ((android.os.Message)localObject).sendToTarget();
   }
   
   public void f(MultiMsgRequest paramMultiMsgRequest)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {}
-    Object localObject1;
-    do
-    {
-      do
-      {
-        return;
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      } while (localObject1 == null);
-      Object localObject3 = paramMultiMsgRequest.jdField_a_of_type_JavaUtilList;
-      HashMap localHashMap = (HashMap)paramMultiMsgRequest.jdField_a_of_type_JavaUtilMap;
-      localObject2 = paramMultiMsgRequest.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing;
-      localObject3 = a((QQAppInterface)localObject1, (MessageForStructing)localObject2, (ArrayList)localObject3, localHashMap, null);
-      localObject1 = ((QQAppInterface)localObject1).getProxyManager().a().a((MessageRecord)localObject2, (HashMap)localObject3, null, true, true);
-      paramMultiMsgRequest.jdField_a_of_type_JavaUtilHashMap = ((HashMap)localObject1);
-    } while (((HashMap)localObject1).size() == 0);
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      return;
+    }
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localObject1 == null) {
+      return;
+    }
+    Object localObject3 = paramMultiMsgRequest.jdField_a_of_type_JavaUtilList;
+    HashMap localHashMap = (HashMap)paramMultiMsgRequest.jdField_a_of_type_JavaUtilMap;
+    Object localObject2 = paramMultiMsgRequest.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing;
+    localObject3 = a((QQAppInterface)localObject1, (MessageForStructing)localObject2, (ArrayList)localObject3, localHashMap, null);
+    localObject1 = ((QQAppInterface)localObject1).getProxyManager().a().a((MessageRecord)localObject2, (HashMap)localObject3, null, true, true);
+    paramMultiMsgRequest.jdField_a_of_type_JavaUtilHashMap = ((HashMap)localObject1);
+    if (((HashMap)localObject1).size() == 0) {
+      return;
+    }
     paramMultiMsgRequest.a(15);
-    Object localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
+    localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((IMultiMsgRichProcessor)((Iterator)localObject2).next()).a(paramMultiMsgRequest, (HashMap)localObject1, this);
     }
@@ -615,13 +628,13 @@ public class MultiMsgController
   
   protected void g(MultiMsgRequest paramMultiMsgRequest)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
       return;
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    } while (localQQAppInterface == null);
+    }
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localQQAppInterface == null) {
+      return;
+    }
     byte[] arrayOfByte = localQQAppInterface.getProxyManager().a().a(paramMultiMsgRequest.jdField_a_of_type_JavaUtilHashMap, (HashMap)paramMultiMsgRequest.jdField_a_of_type_JavaUtilMap, true);
     if (arrayOfByte == null)
     {
@@ -655,25 +668,34 @@ public class MultiMsgController
   public boolean handleMessage(android.os.Message paramMessage)
   {
     MultiMsgRequest localMultiMsgRequest = (MultiMsgRequest)paramMessage.obj;
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != -1)
     {
+      if (i != 0)
+      {
+        if (i != 1)
+        {
+          if (i == 3) {
+            a(localMultiMsgRequest);
+          }
+        }
+        else {
+          g(localMultiMsgRequest);
+        }
+      }
+      else {
+        f(localMultiMsgRequest);
+      }
     }
-    for (;;)
-    {
-      return false;
+    else {
       d(localMultiMsgRequest);
-      continue;
-      f(localMultiMsgRequest);
-      continue;
-      g(localMultiMsgRequest);
-      continue;
-      a(localMultiMsgRequest);
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.MultiMsgController
  * JD-Core Version:    0.7.0.1
  */

@@ -19,107 +19,95 @@ public class GiftMessageUtils
   public static int a(MessageRecord paramMessageRecord, int paramInt)
   {
     paramMessageRecord = a(paramMessageRecord);
-    int j;
+    int j = 0;
+    int i = 0;
     if (paramMessageRecord != null)
     {
       paramMessageRecord = paramMessageRecord.iterator();
-      int i = 0;
-      j = i;
-      if (!paramMessageRecord.hasNext()) {
-        break label62;
+      for (;;)
+      {
+        j = i;
+        if (!paramMessageRecord.hasNext()) {
+          break;
+        }
+        GiftMessageUtils.GiftInfo localGiftInfo = (GiftMessageUtils.GiftInfo)paramMessageRecord.next();
+        if (localGiftInfo.a == paramInt) {
+          i += localGiftInfo.b;
+        }
       }
-      GiftMessageUtils.GiftInfo localGiftInfo = (GiftMessageUtils.GiftInfo)paramMessageRecord.next();
-      if (localGiftInfo.a != paramInt) {
-        break label64;
-      }
-      i = localGiftInfo.b + i;
     }
-    label62:
-    label64:
-    for (;;)
-    {
-      break;
-      j = 0;
-      return j;
-    }
+    return j;
   }
   
   public static List<GiftMessageUtils.GiftInfo> a(MessageRecord paramMessageRecord)
   {
-    ArrayList localArrayList;
-    String str;
-    int j;
-    int i;
-    if (((paramMessageRecord instanceof MessageForStructing)) && ((((MessageForStructing)paramMessageRecord).structingMsg instanceof AbsShareMsg)) && (((MessageForStructing)paramMessageRecord).structingMsg.mMsgServiceID == 52))
+    if ((paramMessageRecord instanceof MessageForStructing))
     {
-      paramMessageRecord = (AbsShareMsg)((MessageForStructing)paramMessageRecord).structingMsg;
-      localArrayList = new ArrayList();
-      Iterator localIterator = paramMessageRecord.iterator();
-      for (;;)
+      paramMessageRecord = (MessageForStructing)paramMessageRecord;
+      if (((paramMessageRecord.structingMsg instanceof AbsShareMsg)) && (paramMessageRecord.structingMsg.mMsgServiceID == 52))
       {
-        if (localIterator.hasNext())
+        paramMessageRecord = (AbsShareMsg)paramMessageRecord.structingMsg;
+        ArrayList localArrayList = new ArrayList();
+        Iterator localIterator = paramMessageRecord.iterator();
+        while (localIterator.hasNext())
         {
           paramMessageRecord = (AbsStructMsgElement)localIterator.next();
           if (paramMessageRecord != null)
           {
-            str = HardCodeUtil.a(2131705285);
-            j = 1;
+            String str = HardCodeUtil.a(2131705359);
+            int i = 1;
+            int m = 1;
+            int k = 0;
+            int j;
             if ((paramMessageRecord instanceof StructMsgItemLayout12))
             {
-              i = ((StructMsgItemLayout12)paramMessageRecord).a.getInt("count");
-              j = 1;
+              j = ((StructMsgItemLayout12)paramMessageRecord).a.getInt("count");
               paramMessageRecord = str;
             }
+            else
+            {
+              Object localObject = paramMessageRecord.h;
+              paramMessageRecord = str;
+              j = k;
+              if (localObject != null)
+              {
+                paramMessageRecord = str;
+                i = m;
+                try
+                {
+                  localObject = new JSONObject((String)localObject);
+                  paramMessageRecord = str;
+                  i = m;
+                  str = ((JSONObject)localObject).getString("giftName");
+                  paramMessageRecord = str;
+                  i = m;
+                  j = ((JSONObject)localObject).getInt("giftType");
+                  paramMessageRecord = str;
+                  i = j;
+                  m = ((JSONObject)localObject).getInt("giftCount");
+                  paramMessageRecord = str;
+                  i = j;
+                  j = m;
+                }
+                catch (JSONException localJSONException)
+                {
+                  localJSONException.printStackTrace();
+                  j = k;
+                }
+              }
+            }
+            localArrayList.add(new GiftMessageUtils.GiftInfo(paramMessageRecord, i, j));
           }
         }
-      }
-    }
-    for (;;)
-    {
-      localArrayList.add(new GiftMessageUtils.GiftInfo(paramMessageRecord, j, i));
-      break;
-      Object localObject = paramMessageRecord.h;
-      if (localObject != null)
-      {
-        i = j;
-        paramMessageRecord = str;
-        try
-        {
-          localObject = new JSONObject((String)localObject);
-          i = j;
-          paramMessageRecord = str;
-          str = ((JSONObject)localObject).getString("giftName");
-          i = j;
-          paramMessageRecord = str;
-          j = ((JSONObject)localObject).getInt("giftType");
-          i = j;
-          paramMessageRecord = str;
-          int k = ((JSONObject)localObject).getInt("giftCount");
-          i = k;
-          paramMessageRecord = str;
-        }
-        catch (JSONException localJSONException)
-        {
-          localJSONException.printStackTrace();
-          j = i;
-          i = 0;
-        }
-        continue;
         return localArrayList;
-        return null;
-      }
-      else
-      {
-        i = 0;
-        j = 1;
-        paramMessageRecord = localJSONException;
       }
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.GiftMessageUtils
  * JD-Core Version:    0.7.0.1
  */

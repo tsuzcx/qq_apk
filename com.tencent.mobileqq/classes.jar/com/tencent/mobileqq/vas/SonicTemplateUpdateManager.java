@@ -22,6 +22,7 @@ import java.util.Map;
 import java.util.Set;
 import mqq.app.MobileQQ;
 import mqq.manager.Manager;
+import org.jetbrains.annotations.Nullable;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -35,13 +36,37 @@ public class SonicTemplateUpdateManager
     this.a = paramQQAppInterface;
   }
   
+  @Nullable
+  private JSONArray a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SonicTemplateUpdateManager", 2, "parseJson begin");
+    }
+    Object localObject = a();
+    if (localObject == null)
+    {
+      QLog.e("SonicTemplateUpdateManager", 1, "parseJson rootObj = null");
+      return null;
+    }
+    localObject = ((JSONObject)localObject).optJSONArray("sonicTemplateUpdate");
+    if ((localObject != null) && (((JSONArray)localObject).length() >= 1)) {
+      return localObject;
+    }
+    QLog.e("SonicTemplateUpdateManager", 1, "parseJson configs = null or len < 1");
+    return null;
+  }
+  
   private JSONObject a()
   {
-    File localFile = new File(this.a.getApplication().getFilesDir() + File.separator + "sonicTemplateUpdate.json");
-    if (localFile.exists()) {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.a.getApplication().getFilesDir());
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append("sonicTemplateUpdate.json");
+    localObject = new File(((StringBuilder)localObject).toString());
+    if (((File)localObject).exists()) {
       try
       {
-        JSONObject localJSONObject = new JSONObject(FileUtils.a(localFile));
+        JSONObject localJSONObject = new JSONObject(FileUtils.readFileContent((File)localObject));
         return localJSONObject;
       }
       catch (Throwable localThrowable)
@@ -49,36 +74,76 @@ public class SonicTemplateUpdateManager
         if (QLog.isColorLevel()) {
           QLog.e("SonicTemplateUpdateManager", 2, "getJsonOOM,json_name:sonicTemplateUpdate.json", localThrowable);
         }
-        localFile.delete();
+        ((File)localObject).delete();
       }
-    }
-    for (;;)
-    {
-      return null;
+    } else {
       ((IVasQuickUpdateService)this.a.getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(1001L, "sonicTemplateUpdate.json", "getJSONFromLocal");
+    }
+    return null;
+  }
+  
+  private void a(JSONArray paramJSONArray, int paramInt, Map<String, Long> paramMap)
+  {
+    int i = 0;
+    while (i < paramInt)
+    {
+      JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
+      if (a(localJSONObject))
+      {
+        String str = localJSONObject.optString("url");
+        if (!TextUtils.isEmpty(str))
+        {
+          Object localObject = null;
+          if (WebAccelerateHelper.getSonicEngine() != null) {
+            localObject = SonicEngine.makeSessionId(str, true);
+          }
+          if (localObject == null)
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("parseJsonRunnable sonicSessionId = null, url = ");
+            ((StringBuilder)localObject).append(str);
+            QLog.e("SonicTemplateUpdateManager", 1, ((StringBuilder)localObject).toString());
+          }
+          else
+          {
+            paramMap.put(localObject, Long.valueOf(localJSONObject.optLong("templateUpdateTime")));
+          }
+        }
+      }
+      i += 1;
     }
   }
   
   private boolean a(JSONObject paramJSONObject)
   {
     boolean bool = VipGrayConfigHelper.a().a(this.a, paramJSONObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("SonicTemplateUpdateManager", 2, "isConfigValid isValid = " + bool);
+    if (QLog.isColorLevel())
+    {
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("isConfigValid isValid = ");
+      paramJSONObject.append(bool);
+      QLog.d("SonicTemplateUpdateManager", 2, paramJSONObject.toString());
     }
     return bool;
   }
   
   public void a()
   {
-    if (Looper.getMainLooper() == Looper.myLooper()) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if (Looper.getMainLooper() == Looper.myLooper()) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SonicTemplateUpdateManager", 2, "parseJson isMainThread = " + bool);
-      }
-      if (!bool) {
-        break;
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parseJson isMainThread = ");
+      localStringBuilder.append(bool);
+      QLog.d("SonicTemplateUpdateManager", 2, localStringBuilder.toString());
+    }
+    if (bool)
+    {
       ThreadManager.post(new SonicTemplateUpdateManager.1(this), 5, null, true);
       return;
     }
@@ -87,92 +152,58 @@ public class SonicTemplateUpdateManager
   
   public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SonicTemplateUpdateManager", 2, "parseJson begin");
-    }
     Object localObject1 = a();
-    if (localObject1 == null)
-    {
-      QLog.e("SonicTemplateUpdateManager", 1, "parseJson rootObj = null");
+    if (localObject1 == null) {
       return;
     }
-    Object localObject4 = ((JSONObject)localObject1).optJSONArray("sonicTemplateUpdate");
-    if ((localObject4 == null) || (((JSONArray)localObject4).length() < 1))
+    try
     {
-      QLog.e("SonicTemplateUpdateManager", 1, "parseJson configs = null or len < 1");
-      return;
-    }
-    for (;;)
-    {
-      try
+      int i = ((JSONArray)localObject1).length();
+      localObject2 = new HashMap();
+      a((JSONArray)localObject1, i, (Map)localObject2);
+      if (((Map)localObject2).size() > 0)
       {
-        int j = ((JSONArray)localObject4).length();
-        localObject3 = new HashMap();
-        i = 0;
-        if (i >= j) {
-          break label222;
+        if (QLog.isColorLevel()) {
+          QLog.d("SonicTemplateUpdateManager", 2, "parseJsonRunnable ready remove expire sonic template");
         }
-        localObject5 = ((JSONArray)localObject4).getJSONObject(i);
-        if (!a((JSONObject)localObject5)) {
-          break label441;
-        }
-        String str = ((JSONObject)localObject5).optString("url");
-        if (TextUtils.isEmpty(str)) {
-          break label441;
-        }
-        localObject1 = null;
-        if (WebAccelerateHelper.getSonicEngine() != null) {
-          localObject1 = SonicEngine.makeSessionId(str, true);
-        }
-        if (localObject1 == null) {
-          QLog.e("SonicTemplateUpdateManager", 1, "parseJsonRunnable sonicSessionId = null, url = " + str);
-        }
-      }
-      catch (Exception localException)
-      {
-        QLog.e("SonicTemplateUpdateManager", 1, "parseJsonRunnable exception e = " + localException.getMessage());
-        return;
-      }
-      ((Map)localObject3).put(localException, Long.valueOf(((JSONObject)localObject5).optLong("templateUpdateTime")));
-      break label441;
-      label222:
-      if (((Map)localObject3).size() <= 0) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("SonicTemplateUpdateManager", 2, "parseJsonRunnable ready remove expire sonic template");
-      }
-      if (!((IWebProcessPreload)QRoute.api(IWebProcessPreload.class)).isWebProcessExist())
-      {
-        localObject2 = WebAccelerateHelper.getSonicEngine();
-        if (localObject2 == null) {
-          break;
-        }
-        ((SonicEngine)localObject2).removeExpiredSessionCache((Map)localObject3);
-        return;
-      }
-      QLog.d("SonicTemplateUpdateManager", 1, "parseJsonRunnable WebProcess Exist");
-      Object localObject2 = new Intent(BaseApplicationImpl.getApplication(), WebProcessReceiver.class);
-      ((Intent)localObject2).setAction("action_delete_sonic_templateinfo");
-      localObject4 = ((Map)localObject3).keySet();
-      Object localObject3 = ((Map)localObject3).values();
-      localObject4 = (String[])((Set)localObject4).toArray(new String[((Set)localObject4).size()]);
-      Object localObject5 = new long[((Collection)localObject3).size()];
-      localObject3 = ((Collection)localObject3).iterator();
-      int i = 0;
-      while (((Iterator)localObject3).hasNext()) {
-        if (i < localObject5.length)
+        if (!((IWebProcessPreload)QRoute.api(IWebProcessPreload.class)).isWebProcessExist())
         {
-          localObject5[i] = ((Long)((Iterator)localObject3).next()).longValue();
-          i += 1;
+          localObject1 = WebAccelerateHelper.getSonicEngine();
+          if (localObject1 != null) {
+            ((SonicEngine)localObject1).removeExpiredSessionCache((Map)localObject2);
+          }
+        }
+        else
+        {
+          QLog.d("SonicTemplateUpdateManager", 1, "parseJsonRunnable WebProcess Exist");
+          localObject1 = new Intent(BaseApplicationImpl.getApplication(), WebProcessReceiver.class);
+          ((Intent)localObject1).setAction("action_delete_sonic_templateinfo");
+          Object localObject3 = ((Map)localObject2).keySet();
+          localObject2 = ((Map)localObject2).values();
+          localObject3 = (String[])((Set)localObject3).toArray(new String[((Set)localObject3).size()]);
+          long[] arrayOfLong = new long[((Collection)localObject2).size()];
+          localObject2 = ((Collection)localObject2).iterator();
+          i = 0;
+          while (((Iterator)localObject2).hasNext()) {
+            if (i < arrayOfLong.length)
+            {
+              arrayOfLong[i] = ((Long)((Iterator)localObject2).next()).longValue();
+              i += 1;
+            }
+          }
+          ((Intent)localObject1).putExtra("com.tencent.mobileqq.webprocess.sonic_template_delete_sessionId", (String[])localObject3);
+          ((Intent)localObject1).putExtra("com.tencent.mobileqq.webprocess.sonic_template_delete_updateTime", arrayOfLong);
+          BaseApplicationImpl.getApplication().sendBroadcast((Intent)localObject1, "com.tencent.msg.permission.pushnotify");
+          return;
         }
       }
-      ((Intent)localObject2).putExtra("com.tencent.mobileqq.webprocess.sonic_template_delete_sessionId", (String[])localObject4);
-      ((Intent)localObject2).putExtra("com.tencent.mobileqq.webprocess.sonic_template_delete_updateTime", (long[])localObject5);
-      BaseApplicationImpl.getApplication().sendBroadcast((Intent)localObject2, "com.tencent.msg.permission.pushnotify");
-      return;
-      label441:
-      i += 1;
+    }
+    catch (Exception localException)
+    {
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("parseJsonRunnable exception e = ");
+      ((StringBuilder)localObject2).append(localException.getMessage());
+      QLog.e("SonicTemplateUpdateManager", 1, ((StringBuilder)localObject2).toString());
     }
   }
   
@@ -180,7 +211,7 @@ public class SonicTemplateUpdateManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.SonicTemplateUpdateManager
  * JD-Core Version:    0.7.0.1
  */

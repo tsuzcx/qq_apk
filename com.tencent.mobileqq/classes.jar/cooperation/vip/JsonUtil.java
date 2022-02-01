@@ -12,27 +12,25 @@ public class JsonUtil
 {
   public static ArrayList<Object> a(JSONArray paramJSONArray)
   {
-    if ((paramJSONArray == null) || (paramJSONArray.length() == 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    if (i < paramJSONArray.length())
+    if ((paramJSONArray != null) && (paramJSONArray.length() != 0))
     {
-      Object localObject = paramJSONArray.opt(i);
-      if (localObject == null) {}
-      for (;;)
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      while (i < paramJSONArray.length())
       {
-        i += 1;
-        break;
-        if (localObject.getClass() == JSONObject.class) {
-          localArrayList.add(a((JSONObject)localObject));
-        } else if (localObject.getClass() == JSONArray.class) {
-          localArrayList.add(a((JSONArray)localObject));
+        Object localObject = paramJSONArray.opt(i);
+        if (localObject != null) {
+          if (localObject.getClass() == JSONObject.class) {
+            localArrayList.add(a((JSONObject)localObject));
+          } else if (localObject.getClass() == JSONArray.class) {
+            localArrayList.add(a((JSONArray)localObject));
+          }
         }
+        i += 1;
       }
+      return localArrayList;
     }
-    return localArrayList;
+    return null;
   }
   
   public static Map<String, Object> a(String paramString)
@@ -62,15 +60,18 @@ public class JsonUtil
     Iterator localIterator = paramJSONObject.keys();
     while (localIterator.hasNext())
     {
-      String str = localIterator.next() + "";
-      Object localObject = paramJSONObject.get(str);
-      if (localObject != null) {
-        if (localObject.getClass() == JSONObject.class) {
-          localLinkedHashMap.put(str, a((JSONObject)localObject));
-        } else if (localObject.getClass() == JSONArray.class) {
-          localLinkedHashMap.put(str, a((JSONArray)localObject));
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(localIterator.next());
+      ((StringBuilder)localObject1).append("");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      Object localObject2 = paramJSONObject.get((String)localObject1);
+      if (localObject2 != null) {
+        if (localObject2.getClass() == JSONObject.class) {
+          localLinkedHashMap.put(localObject1, a((JSONObject)localObject2));
+        } else if (localObject2.getClass() == JSONArray.class) {
+          localLinkedHashMap.put(localObject1, a((JSONArray)localObject2));
         } else {
-          localLinkedHashMap.put(str, localObject);
+          localLinkedHashMap.put(localObject1, localObject2);
         }
       }
     }
@@ -79,7 +80,7 @@ public class JsonUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.JsonUtil
  * JD-Core Version:    0.7.0.1
  */

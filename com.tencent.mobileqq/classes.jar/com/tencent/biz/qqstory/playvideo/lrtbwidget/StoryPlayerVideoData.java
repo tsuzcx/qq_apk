@@ -28,40 +28,28 @@ public class StoryPlayerVideoData
   
   public static StoryPlayerVideoData a(String paramString1, String paramString2, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (paramString1 != null) {
-      if (paramString2 == null) {
-        break label31;
-      }
-    }
-    for (;;)
-    {
-      paramString1 = new StoryPlayerVideoData(paramString1, paramString2);
-      paramString1.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-      return paramString1;
+    if (paramString1 == null) {
       paramString1 = "ERROR_NO_VID";
-      break;
-      label31:
+    }
+    if (paramString2 == null) {
       paramString2 = "ERROR_NO_FEED";
     }
+    paramString1 = new StoryPlayerVideoData(paramString1, paramString2);
+    paramString1.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    return paramString1;
   }
   
   public static StoryPlayerVideoData a(String paramString1, String paramString2, String paramString3)
   {
-    if (paramString1 != null) {
-      if (paramString2 == null) {
-        break label31;
-      }
-    }
-    for (;;)
-    {
-      paramString1 = new StoryPlayerVideoData(paramString1, paramString2);
-      paramString1.c = paramString3;
-      return paramString1;
+    if (paramString1 == null) {
       paramString1 = "LOADING_NO_VID";
-      break;
-      label31:
+    }
+    if (paramString2 == null) {
       paramString2 = "LOADING_NO_FEED";
     }
+    paramString1 = new StoryPlayerVideoData(paramString1, paramString2);
+    paramString1.c = paramString3;
+    return paramString1;
   }
   
   public ErrorMessage a()
@@ -106,36 +94,45 @@ public class StoryPlayerVideoData
   
   public String toString()
   {
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    StringBuilder localStringBuilder2 = localStringBuilder1.append("VideoData{").append("msgTabNodeType=");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VideoData{");
+    localStringBuilder.append("msgTabNodeType=");
+    MsgTabNodeInfo localMsgTabNodeInfo = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo;
     int i;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo == null)
-    {
+    if (localMsgTabNodeInfo == null) {
       i = 0;
-      localStringBuilder2.append(i).append(",");
-      if (!a()) {
-        break label89;
-      }
-      localStringBuilder1.append("loadingMessage='").append(this.c).append('\'');
+    } else {
+      i = localMsgTabNodeInfo.a;
     }
-    for (;;)
+    localStringBuilder.append(i);
+    localStringBuilder.append(",");
+    if (a())
     {
-      localStringBuilder1.append("}");
-      return localStringBuilder1.toString();
-      i = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.a;
-      break;
-      label89:
-      if (b()) {
-        localStringBuilder1.append("errorMessage=").append(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
-      } else {
-        localStringBuilder1.append("vid='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", feedId='").append(this.b).append('\'');
-      }
+      localStringBuilder.append("loadingMessage='");
+      localStringBuilder.append(this.c);
+      localStringBuilder.append('\'');
     }
+    else if (b())
+    {
+      localStringBuilder.append("errorMessage=");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    }
+    else
+    {
+      localStringBuilder.append("vid='");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append('\'');
+      localStringBuilder.append(", feedId='");
+      localStringBuilder.append(this.b);
+      localStringBuilder.append('\'');
+    }
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerVideoData
  * JD-Core Version:    0.7.0.1
  */

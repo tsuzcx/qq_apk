@@ -8,28 +8,28 @@ public class NowProxyParamParser
 {
   public static long a(Bundle paramBundle)
   {
-    if (paramBundle == null) {}
-    do
-    {
+    long l = 0L;
+    if (paramBundle == null) {
       return 0L;
-      paramBundle = paramBundle.getString("roomid", "");
-    } while (TextUtils.isEmpty(paramBundle));
-    return Long.parseLong(paramBundle);
+    }
+    paramBundle = paramBundle.getString("roomid", "");
+    if (!TextUtils.isEmpty(paramBundle)) {
+      l = Long.parseLong(paramBundle);
+    }
+    return l;
   }
   
   public static String a(Bundle paramBundle)
   {
     if (paramBundle == null) {
-      paramBundle = "";
+      return "";
     }
-    String str;
-    do
-    {
-      return paramBundle;
-      str = paramBundle.getString("roomtype");
-      paramBundle = str;
-    } while (!TextUtils.isEmpty(str));
-    return "0";
+    String str = paramBundle.getString("roomtype");
+    paramBundle = str;
+    if (TextUtils.isEmpty(str)) {
+      paramBundle = "0";
+    }
+    return paramBundle;
   }
   
   public static boolean a(Bundle paramBundle)
@@ -82,7 +82,7 @@ public class NowProxyParamParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.NowProxyParamParser
  * JD-Core Version:    0.7.0.1
  */

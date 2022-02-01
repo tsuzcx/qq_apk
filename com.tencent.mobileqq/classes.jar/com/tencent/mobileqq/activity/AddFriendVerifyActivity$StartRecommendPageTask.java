@@ -13,10 +13,18 @@ class AddFriendVerifyActivity$StartRecommendPageTask
   
   public AddFriendVerifyActivity$StartRecommendPageTask(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString)
   {
-    if (paramAddFriendVerifyActivity.getIntent().getIntExtra("friend_setting", 0) != 0) {
+    Object localObject = paramAddFriendVerifyActivity.getIntent();
+    int i = 0;
+    if (((Intent)localObject).getIntExtra("friend_setting", 0) != 0) {
       i = 1;
     }
-    this.jdField_a_of_type_JavaLangString = (paramString + "?_wv=1031&troopUin=" + paramAddFriendVerifyActivity.jdField_a_of_type_JavaLangString + "&isVerify=" + i);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("?_wv=1031&troopUin=");
+    ((StringBuilder)localObject).append(paramAddFriendVerifyActivity.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append("&isVerify=");
+    ((StringBuilder)localObject).append(i);
+    this.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
   }
   
   public void run()
@@ -36,14 +44,14 @@ class AddFriendVerifyActivity$StartRecommendPageTask
     ((Intent)localObject).putExtra("show_right_close_button", true);
     ((Intent)localObject).putExtra("finish_animation_up_down", true);
     this.this$0.startActivity((Intent)localObject);
-    this.this$0.overridePendingTransition(2130771999, 2130771992);
+    this.this$0.overridePendingTransition(2130772011, 2130772004);
     AddFriendVerifyActivity.a(this.this$0, false);
     this.this$0.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.StartRecommendPageTask
  * JD-Core Version:    0.7.0.1
  */

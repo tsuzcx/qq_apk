@@ -46,14 +46,17 @@ public class PluginInstaller
       LogUtil.a("PluginInstaller", "unpackFile: delete config.json file.", new Object[0]);
       localFile.delete();
     }
-    if (!FileUtil.a(paramFile1, paramFile2)) {
+    if (!FileUtil.a(paramFile1, paramFile2))
+    {
       LogUtil.a("PluginInstaller", "unpackFile: unpack file fail.", new Object[0]);
-    }
-    while ((!localFile.exists()) || (!localFile.isFile())) {
       return null;
     }
-    LogUtil.a("PluginInstaller", "unpackFile: success return config.json file.", new Object[0]);
-    return localFile;
+    if ((localFile.exists()) && (localFile.isFile()))
+    {
+      LogUtil.a("PluginInstaller", "unpackFile: success return config.json file.", new Object[0]);
+      return localFile;
+    }
+    return null;
   }
   
   private File a(File paramFile, String paramString)
@@ -99,24 +102,24 @@ public class PluginInstaller
   
   private boolean a()
   {
-    if ((new File(this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceAbstractPlugin.e()).exists()) && (!new File(this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceAbstractPlugin.i(), this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceAbstractPlugin.k()).exists())) {
-      LogUtil.b("PluginInstaller", "isNeedToInstall: the copied file had not exists.", new Object[0]);
-    }
-    do
+    if ((new File(this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceAbstractPlugin.e()).exists()) && (!new File(this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceAbstractPlugin.i(), this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceAbstractPlugin.k()).exists()))
     {
+      LogUtil.b("PluginInstaller", "isNeedToInstall: the copied file had not exists.", new Object[0]);
       return true;
-      if (this.jdField_a_of_type_JavaIoFile.getAbsolutePath().equals(this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceAbstractPlugin.h()))
-      {
-        LogUtil.b("PluginInstaller", "isNeedToInstall: the updater plugin had in installPath.", new Object[0]);
-        return true;
-      }
-      if (this.jdField_a_of_type_JavaIoFile.getAbsolutePath().equals(this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceAbstractPlugin.e()))
-      {
-        LogUtil.b("PluginInstaller", "isNeedToInstall: the plugin had been installed in installPath .", new Object[0]);
-        return false;
-      }
-    } while (!this.jdField_a_of_type_JavaIoFile.getAbsolutePath().equals(this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceAbstractPlugin.b()));
-    LogUtil.b("PluginInstaller", "isNeedToInstall: is local plugin file need to install .", new Object[0]);
+    }
+    if (this.jdField_a_of_type_JavaIoFile.getAbsolutePath().equals(this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceAbstractPlugin.h()))
+    {
+      LogUtil.b("PluginInstaller", "isNeedToInstall: the updater plugin had in installPath.", new Object[0]);
+      return true;
+    }
+    if (this.jdField_a_of_type_JavaIoFile.getAbsolutePath().equals(this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceAbstractPlugin.e()))
+    {
+      LogUtil.b("PluginInstaller", "isNeedToInstall: the plugin had been installed in installPath .", new Object[0]);
+      return false;
+    }
+    if (this.jdField_a_of_type_JavaIoFile.getAbsolutePath().equals(this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceAbstractPlugin.b())) {
+      LogUtil.b("PluginInstaller", "isNeedToInstall: is local plugin file need to install .", new Object[0]);
+    }
     return true;
   }
   
@@ -242,23 +245,24 @@ public class PluginInstaller
   
   public IPlugin a()
   {
-    if ((this.jdField_a_of_type_JavaIoFile == null) || (!this.jdField_a_of_type_JavaIoFile.exists()))
+    File localFile = this.jdField_a_of_type_JavaIoFile;
+    if ((localFile != null) && (localFile.exists()))
     {
-      LogUtil.b("PluginInstaller", "install: the to install file had not exists.", new Object[0]);
-      return null;
+      if (a())
+      {
+        LogUtil.b("PluginInstaller", "install: need to install.", new Object[0]);
+        return b();
+      }
+      a(new File(this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceAbstractPlugin.j()));
+      return this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceAbstractPlugin;
     }
-    if (a())
-    {
-      LogUtil.b("PluginInstaller", "install: need to install.", new Object[0]);
-      return b();
-    }
-    a(new File(this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceAbstractPlugin.j()));
-    return this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceAbstractPlugin;
+    LogUtil.b("PluginInstaller", "install: the to install file had not exists.", new Object[0]);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.pluginloaderservice.install.PluginInstaller
  * JD-Core Version:    0.7.0.1
  */

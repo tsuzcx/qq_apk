@@ -22,164 +22,195 @@ public class c
     Object localObject = b(paramArrayOfByte);
     int j = localObject[0];
     int i = localObject[1];
-    if (j == -1009) {}
-    do
-    {
+    if (j == -1009) {
       return j;
-      if (i + 2 > paramArrayOfByte.length) {
-        return -1009;
-      }
-      paramk.d = (util.buf_to_int16(paramArrayOfByte, i) & 0xFFFF);
-      int k = i + 2;
-      if (k + 2 > paramArrayOfByte.length) {
-        return -1009;
-      }
-      i = util.buf_to_int16(paramArrayOfByte, k);
-      k += 2;
-      if (k + i > paramArrayOfByte.length) {
-        return -1009;
-      }
-      localObject = new byte[i];
-      System.arraycopy(paramArrayOfByte, k, localObject, 0, i);
-      k += i;
-      if (k + 1 > paramArrayOfByte.length) {
-        return -1009;
-      }
-      i = util.buf_to_int8(paramArrayOfByte, k);
-      k += 1;
-      if (k + i > paramArrayOfByte.length) {
-        return -1009;
-      }
-      paramk.e = new byte[i];
-      System.arraycopy(paramArrayOfByte, k, paramk.e, 0, i);
-      k += i;
-      if (k + 2 > paramArrayOfByte.length) {
-        return -1009;
-      }
-      i = util.buf_to_int16(paramArrayOfByte, k);
-      k += 2;
-      if (k + i > paramArrayOfByte.length) {
-        return -1009;
-      }
-      paramk.f = new byte[i];
-      System.arraycopy(paramArrayOfByte, k, paramk.f, 0, i);
-      k += i;
-      i = j;
-      if (paramInt == 3)
-      {
-        i = j;
-        if (k + 2 <= paramArrayOfByte.length)
-        {
-          paramInt = util.buf_to_int16(paramArrayOfByte, k);
-          i = k + 2;
-          util.LOGI("reg cmd 0x3 has " + paramInt + " tlv");
-          i = f.a(paramInt, paramArrayOfByte, i, paramArrayOfByte.length - i, paramk.C);
-          if (i != 0)
-          {
-            util.LOGI("parser tlv failed " + i, "");
-            return -1009;
-          }
-          util.LOGI("reg cmd 0x3 tlv map size " + paramk.C.size());
-        }
-      }
-      j = i;
-    } while (localObject.length <= 0);
-    switch (paramk.d)
+    }
+    int k = i + 2;
+    if (k > paramArrayOfByte.length) {
+      return -1009;
+    }
+    paramk.d = (util.buf_to_int16(paramArrayOfByte, i) & 0xFFFF);
+    i = k + 2;
+    if (i > paramArrayOfByte.length) {
+      return -1009;
+    }
+    int m = util.buf_to_int16(paramArrayOfByte, k);
+    k = i + m;
+    if (k > paramArrayOfByte.length) {
+      return -1009;
+    }
+    localObject = new byte[m];
+    System.arraycopy(paramArrayOfByte, i, localObject, 0, m);
+    i = k + 1;
+    if (i > paramArrayOfByte.length) {
+      return -1009;
+    }
+    m = util.buf_to_int8(paramArrayOfByte, k);
+    k = i + m;
+    if (k > paramArrayOfByte.length) {
+      return -1009;
+    }
+    paramk.e = new byte[m];
+    System.arraycopy(paramArrayOfByte, i, paramk.e, 0, m);
+    i = k + 2;
+    if (i > paramArrayOfByte.length) {
+      return -1009;
+    }
+    m = util.buf_to_int16(paramArrayOfByte, k);
+    k = i + m;
+    if (k > paramArrayOfByte.length) {
+      return -1009;
+    }
+    paramk.f = new byte[m];
+    System.arraycopy(paramArrayOfByte, i, paramk.f, 0, m);
+    i = j;
+    if (paramInt == 3)
     {
-    default: 
-      util.LOGW("unhandle return code int parse_checkvalid_rsp", "", "");
+      paramInt = k + 2;
+      i = j;
+      if (paramInt <= paramArrayOfByte.length)
+      {
+        i = util.buf_to_int16(paramArrayOfByte, k);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("reg cmd 0x3 has ");
+        localStringBuilder.append(i);
+        localStringBuilder.append(" tlv");
+        util.LOGI(localStringBuilder.toString());
+        i = f.a(i, paramArrayOfByte, paramInt, paramArrayOfByte.length - paramInt, paramk.C);
+        if (i != 0)
+        {
+          paramArrayOfByte = new StringBuilder();
+          paramArrayOfByte.append("parser tlv failed ");
+          paramArrayOfByte.append(i);
+          util.LOGI(paramArrayOfByte.toString(), "");
+          return -1009;
+        }
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("reg cmd 0x3 tlv map size ");
+        paramArrayOfByte.append(paramk.C.size());
+        util.LOGI(paramArrayOfByte.toString());
+      }
+    }
+    if (localObject.length <= 0) {
       return i;
-    case 0: 
-      if (4 > localObject.length) {
-        return -1009;
+    }
+    paramInt = paramk.d;
+    if (paramInt != 0)
+    {
+      if (paramInt != 31)
+      {
+        if ((paramInt != 44) && (paramInt != 51)) {
+          if (paramInt != 2)
+          {
+            if (paramInt != 3) {
+              if (paramInt != 4)
+              {
+                if (paramInt != 5)
+                {
+                  if ((paramInt != 6) && (paramInt != 58))
+                  {
+                    if (paramInt != 59)
+                    {
+                      util.LOGW("unhandle return code int parse_checkvalid_rsp", "", "");
+                      return i;
+                    }
+                    if (2 > localObject.length) {
+                      return -1009;
+                    }
+                    paramInt = util.buf_to_int16((byte[])localObject, 0);
+                    if (2 + paramInt > localObject.length) {
+                      return -1009;
+                    }
+                    paramk.s = new byte[paramInt];
+                    System.arraycopy(localObject, 2, paramk.s, 0, paramInt);
+                    return i;
+                  }
+                }
+                else
+                {
+                  if (2 > localObject.length) {
+                    return -1009;
+                  }
+                  paramk.t = util.buf_to_int16((byte[])localObject, 0);
+                  if (4 > localObject.length) {
+                    return -1009;
+                  }
+                  paramk.u = util.buf_to_int16((byte[])localObject, 2);
+                  return i;
+                }
+              }
+              else
+              {
+                if (2 > localObject.length) {
+                  return -1009;
+                }
+                paramk.t = util.buf_to_int16((byte[])localObject, 0);
+                if (4 > localObject.length) {
+                  return -1009;
+                }
+                paramk.u = util.buf_to_int16((byte[])localObject, 2);
+                return i;
+              }
+            }
+          }
+          else
+          {
+            if (1 > localObject.length) {
+              return -1009;
+            }
+            paramInt = util.buf_to_int8((byte[])localObject, 0);
+            j = 1 + paramInt;
+            if (j > localObject.length) {
+              return -1009;
+            }
+            paramk.o = new byte[paramInt];
+            System.arraycopy(localObject, 1, paramk.o, 0, paramInt);
+            paramInt = j + 1;
+            k = util.buf_to_int8((byte[])localObject, j);
+            j = paramInt + k;
+            if (j > localObject.length) {
+              return -1009;
+            }
+            paramk.p = new byte[k];
+            System.arraycopy(localObject, paramInt, paramk.p, 0, k);
+            paramInt = util.buf_to_int16((byte[])localObject, j);
+            j += 2;
+            if (j + paramInt > localObject.length) {
+              return -1009;
+            }
+            paramk.q = new byte[paramInt];
+            System.arraycopy(localObject, j, paramk.q, 0, paramInt);
+            return i;
+          }
+        }
+        if (2 > localObject.length) {
+          return -1009;
+        }
+        paramInt = util.buf_to_int16((byte[])localObject, 0);
+        if (2 + paramInt > localObject.length) {
+          return -1009;
+        }
+        paramk.r = new byte[paramInt];
+        System.arraycopy(localObject, 2, paramk.r, 0, paramInt);
+        return i;
       }
-      paramk.m = util.buf_to_int32((byte[])localObject, 0);
-      if (5 > localObject.length) {
-        return -1009;
-      }
-      paramInt = util.buf_to_int8((byte[])localObject, 4);
-      if (paramInt + 5 > localObject.length) {
-        return -1009;
-      }
-      paramk.n = new byte[paramInt];
-      System.arraycopy(localObject, 5, paramk.n, 0, paramInt);
-      return i;
-    case 2: 
-      if (1 > localObject.length) {
-        return -1009;
-      }
-      paramInt = util.buf_to_int8((byte[])localObject, 0);
-      if (paramInt + 1 > localObject.length) {
-        return -1009;
-      }
-      paramk.o = new byte[paramInt];
-      System.arraycopy(localObject, 1, paramk.o, 0, paramInt);
-      j = paramInt + 1;
-      paramInt = j + 1;
-      j = util.buf_to_int8((byte[])localObject, j);
-      if (paramInt + j > localObject.length) {
-        return -1009;
-      }
-      paramk.p = new byte[j];
-      System.arraycopy(localObject, paramInt, paramk.p, 0, j);
-      j += paramInt;
-      paramInt = util.buf_to_int16((byte[])localObject, j);
-      j += 2;
-      if (j + paramInt > localObject.length) {
-        return -1009;
-      }
-      paramk.q = new byte[paramInt];
-      System.arraycopy(localObject, j, paramk.q, 0, paramInt);
-      return i;
-    case 3: 
-    case 6: 
-    case 44: 
-    case 51: 
-    case 58: 
-      if (2 > localObject.length) {
-        return -1009;
-      }
-      paramInt = util.buf_to_int16((byte[])localObject, 0);
-      if (paramInt + 2 > localObject.length) {
-        return -1009;
-      }
-      paramk.r = new byte[paramInt];
-      System.arraycopy(localObject, 2, paramk.r, 0, paramInt);
-      return i;
-    case 59: 
-      if (2 > localObject.length) {
-        return -1009;
-      }
-      paramInt = util.buf_to_int16((byte[])localObject, 0);
-      if (paramInt + 2 > localObject.length) {
-        return -1009;
-      }
-      paramk.s = new byte[paramInt];
-      System.arraycopy(localObject, 2, paramk.s, 0, paramInt);
-      return i;
-    case 4: 
-      if (2 > localObject.length) {
-        return -1009;
-      }
-      paramk.t = util.buf_to_int16((byte[])localObject, 0);
-      if (4 > localObject.length) {
-        return -1009;
-      }
-      paramk.u = util.buf_to_int16((byte[])localObject, 2);
-      return i;
-    case 31: 
       paramk.t = 0;
       paramk.u = 0;
       return i;
     }
-    if (2 > localObject.length) {
-      return -1009;
-    }
-    paramk.t = util.buf_to_int16((byte[])localObject, 0);
     if (4 > localObject.length) {
       return -1009;
     }
-    paramk.u = util.buf_to_int16((byte[])localObject, 2);
+    paramk.m = util.buf_to_int32((byte[])localObject, 0);
+    if (5 > localObject.length) {
+      return -1009;
+    }
+    paramInt = util.buf_to_int8((byte[])localObject, 4);
+    if (5 + paramInt > localObject.length) {
+      return -1009;
+    }
+    paramk.n = new byte[paramInt];
+    System.arraycopy(localObject, 5, paramk.n, 0, paramInt);
     return i;
   }
   
@@ -191,49 +222,52 @@ public class c
   public static int b(byte[] paramArrayOfByte, k paramk)
   {
     int[] arrayOfInt = b(paramArrayOfByte);
-    int i = arrayOfInt[0];
-    int j = arrayOfInt[1];
-    if (i == -1009) {}
-    do
+    int j = arrayOfInt[0];
+    int i = arrayOfInt[1];
+    if (j == -1009) {
+      return j;
+    }
+    j = i + 2;
+    if (j > paramArrayOfByte.length) {
+      return -1009;
+    }
+    paramk.d = util.buf_to_int16(paramArrayOfByte, i);
+    i = j + 1;
+    if (i > paramArrayOfByte.length) {
+      return -1009;
+    }
+    int k = util.buf_to_int8(paramArrayOfByte, j);
+    j = i + k;
+    if (j > paramArrayOfByte.length) {
+      return -1009;
+    }
+    paramk.e = new byte[k];
+    System.arraycopy(paramArrayOfByte, i, paramk.e, 0, k);
+    i = j + 2;
+    if (i > paramArrayOfByte.length) {
+      return -1009;
+    }
+    k = util.buf_to_int16(paramArrayOfByte, j);
+    j = i + k;
+    if (j > paramArrayOfByte.length) {
+      return -1009;
+    }
+    paramk.f = new byte[k];
+    System.arraycopy(paramArrayOfByte, i, paramk.f, 0, k);
+    i = j + 2;
+    if (i > paramArrayOfByte.length) {
+      return 0;
+    }
+    i = f.a(util.buf_to_int16(paramArrayOfByte, j), paramArrayOfByte, i, paramArrayOfByte.length - i, paramk.C);
+    if (i != 0)
     {
-      return i;
-      if (j + 2 > paramArrayOfByte.length) {
-        return -1009;
-      }
-      paramk.d = util.buf_to_int16(paramArrayOfByte, j);
-      j += 2;
-      if (j + 1 > paramArrayOfByte.length) {
-        return -1009;
-      }
-      i = util.buf_to_int8(paramArrayOfByte, j);
-      j += 1;
-      if (j + i > paramArrayOfByte.length) {
-        return -1009;
-      }
-      paramk.e = new byte[i];
-      System.arraycopy(paramArrayOfByte, j, paramk.e, 0, i);
-      j += i;
-      if (j + 2 > paramArrayOfByte.length) {
-        return -1009;
-      }
-      i = util.buf_to_int16(paramArrayOfByte, j);
-      j += 2;
-      if (j + i > paramArrayOfByte.length) {
-        return -1009;
-      }
-      paramk.f = new byte[i];
-      System.arraycopy(paramArrayOfByte, j, paramk.f, 0, i);
-      j += i;
-      if (j + 2 > paramArrayOfByte.length) {
-        return 0;
-      }
-      i = util.buf_to_int16(paramArrayOfByte, j);
-      j += 2;
-      j = f.a(i, paramArrayOfByte, j, paramArrayOfByte.length - j, paramk.C);
-      i = j;
-    } while (j == 0);
-    util.LOGI("parser tlv failed " + j, "");
-    return -1009;
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("parser tlv failed ");
+      paramArrayOfByte.append(i);
+      util.LOGI(paramArrayOfByte.toString(), "");
+      return -1009;
+    }
+    return i;
   }
   
   private static int[] b(byte[] paramArrayOfByte)
@@ -253,11 +287,11 @@ public class c
     if (8 > paramArrayOfByte.length) {
       return new int[] { -1009, 7 };
     }
-    int i = util.buf_to_int8(paramArrayOfByte, 7);
-    if (i + 8 > paramArrayOfByte.length) {
+    int i = 8 + util.buf_to_int8(paramArrayOfByte, 7);
+    if (i > paramArrayOfByte.length) {
       return new int[] { -1009, 8 };
     }
-    return new int[] { 0, i + 8 };
+    return new int[] { 0, i };
   }
   
   public static int c(byte[] paramArrayOfByte, k paramk)
@@ -268,66 +302,67 @@ public class c
     if (i == -1009) {
       return i;
     }
-    if (j + 2 > paramArrayOfByte.length) {
+    int k = j + 2;
+    if (k > paramArrayOfByte.length) {
       return -1009;
     }
     paramk.d = util.buf_to_int16(paramArrayOfByte, j);
-    int k = j + 2;
-    if (k + 2 > paramArrayOfByte.length) {
+    j = k + 2;
+    if (j > paramArrayOfByte.length) {
       return -1009;
     }
-    j = util.buf_to_int16(paramArrayOfByte, k);
-    k += 2;
-    if (k + j > paramArrayOfByte.length) {
+    int m = util.buf_to_int16(paramArrayOfByte, k);
+    k = j + m;
+    if (k > paramArrayOfByte.length) {
       return -1009;
     }
-    byte[] arrayOfByte = new byte[j];
-    System.arraycopy(paramArrayOfByte, k, arrayOfByte, 0, j);
-    j += k;
+    byte[] arrayOfByte = new byte[m];
+    System.arraycopy(paramArrayOfByte, j, arrayOfByte, 0, m);
     if (paramk.d == 0)
     {
-      if ((paramk.j == null) || (paramk.j.length <= 0)) {}
-      for (localObject = k.a.getBytes();; localObject = MD5.toMD5Byte(paramk.j))
-      {
-        localObject = cryptor.decrypt(arrayOfByte, 0, arrayOfByte.length, (byte[])localObject);
-        if (localObject != null) {
-          break;
-        }
+      if ((paramk.j != null) && (paramk.j.length > 0)) {
+        localObject = MD5.toMD5Byte(paramk.j);
+      } else {
+        localObject = k.a.getBytes();
+      }
+      localObject = cryptor.decrypt(arrayOfByte, 0, arrayOfByte.length, (byte[])localObject);
+      if (localObject == null) {
         return -1009;
       }
       if (1 > localObject.length) {
         return -1009;
       }
-      i = util.buf_to_int8((byte[])localObject, 0);
-      if (i + 1 > localObject.length) {
+      i = 1 + util.buf_to_int8((byte[])localObject, 0);
+      if (i > localObject.length) {
         return -1009;
       }
-      i += 1;
-      if (i + 8 > localObject.length) {
+      j = i + 8;
+      if (j > localObject.length) {
         return -1009;
       }
       paramk.v = util.buf_to_int64((byte[])localObject, i);
-      k = i + 8;
-      if (k + 2 > localObject.length) {
+      i = j + 2;
+      if (i > localObject.length) {
         return -1009;
       }
-      i = util.buf_to_int16((byte[])localObject, k);
-      k += 2;
-      if (k + i > localObject.length) {
+      m = util.buf_to_int16((byte[])localObject, j);
+      j = i + m;
+      if (j > localObject.length) {
         return -1009;
       }
-      paramk.w = new byte[i];
-      System.arraycopy(localObject, k, paramk.w, 0, i);
-      k += i;
-      if (k + 2 > localObject.length) {
+      paramk.w = new byte[m];
+      System.arraycopy(localObject, i, paramk.w, 0, m);
+      i = j + 2;
+      if (i > localObject.length) {
         return -1009;
       }
-      i = util.buf_to_int16((byte[])localObject, k);
-      k += 2;
-      i = f.a(i, (byte[])localObject, k, localObject.length - k, paramk.C);
-      if (i != 0)
+      j = f.a(util.buf_to_int16((byte[])localObject, j), (byte[])localObject, i, localObject.length - i, paramk.C);
+      if (j != 0)
       {
-        util.LOGI("parse tlv failed " + i, "");
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("parse tlv failed ");
+        paramArrayOfByte.append(j);
+        util.LOGI(paramArrayOfByte.toString(), "");
         return -1009;
       }
       localObject = (tlv_t)paramk.C.get(new Integer(7));
@@ -335,31 +370,34 @@ public class c
         paramk.x = ((tlv_t)localObject).get_data();
       }
       localObject = (tlv_t)paramk.C.get(new Integer(12));
-      if (localObject != null) {
+      i = j;
+      if (localObject != null)
+      {
         k.z = util.buf_to_int64(((tlv_t)localObject).get_data(), 0);
+        i = j;
       }
     }
-    if (j + 1 > paramArrayOfByte.length) {
+    j = k + 1;
+    if (j > paramArrayOfByte.length) {
       return -1009;
     }
-    k = util.buf_to_int8(paramArrayOfByte, j);
-    j += 1;
+    m = util.buf_to_int8(paramArrayOfByte, k);
+    k = j + m;
+    if (k > paramArrayOfByte.length) {
+      return -1009;
+    }
+    paramk.e = new byte[m];
+    System.arraycopy(paramArrayOfByte, j, paramk.e, 0, m);
+    j = k + 2;
+    if (j > paramArrayOfByte.length) {
+      return -1009;
+    }
+    k = util.buf_to_int16(paramArrayOfByte, k);
     if (j + k > paramArrayOfByte.length) {
       return -1009;
     }
-    paramk.e = new byte[k];
-    System.arraycopy(paramArrayOfByte, j, paramk.e, 0, k);
-    k += j;
-    if (k + 2 > paramArrayOfByte.length) {
-      return -1009;
-    }
-    j = util.buf_to_int16(paramArrayOfByte, k);
-    k += 2;
-    if (k + j > paramArrayOfByte.length) {
-      return -1009;
-    }
-    paramk.f = new byte[j];
-    System.arraycopy(paramArrayOfByte, k, paramk.f, 0, j);
+    paramk.f = new byte[k];
+    System.arraycopy(paramArrayOfByte, j, paramk.f, 0, k);
     return i;
   }
   
@@ -368,41 +406,45 @@ public class c
     Object localObject = b(paramArrayOfByte);
     int i = localObject[0];
     int j = localObject[1];
-    if (i == -1009) {}
-    int k;
-    do
+    if (i == -1009) {
+      return i;
+    }
+    int k = j + 2;
+    if (k > paramArrayOfByte.length) {
+      return -1009;
+    }
+    paramk.d = util.buf_to_int16(paramArrayOfByte, j);
+    j = k + 2;
+    if (j > paramArrayOfByte.length) {
+      return -1009;
+    }
+    int m = util.buf_to_int16(paramArrayOfByte, k);
+    k = j + m;
+    if (k > paramArrayOfByte.length) {
+      return -1009;
+    }
+    paramk.f = new byte[m];
+    System.arraycopy(paramArrayOfByte, j, paramk.f, 0, m);
+    j = k + 2;
+    if (j <= paramArrayOfByte.length)
     {
-      do
-      {
-        return i;
-        if (j + 2 > paramArrayOfByte.length) {
-          return -1009;
-        }
-        paramk.d = util.buf_to_int16(paramArrayOfByte, j);
-        k = j + 2;
-        if (k + 2 > paramArrayOfByte.length) {
-          return -1009;
-        }
-        j = util.buf_to_int16(paramArrayOfByte, k);
-        k += 2;
-        if (k + j > paramArrayOfByte.length) {
-          return -1009;
-        }
-        paramk.f = new byte[j];
-        System.arraycopy(paramArrayOfByte, k, paramk.f, 0, j);
-        k += j;
-      } while (k + 2 > paramArrayOfByte.length);
-      j = util.buf_to_int16(paramArrayOfByte, k);
-      k += 2;
-      if (k + j > paramArrayOfByte.length) {
+      k = util.buf_to_int16(paramArrayOfByte, k);
+      if (j + k > paramArrayOfByte.length) {
         return -1009;
       }
-    } while (j <= 0);
-    localObject = new byte[j + 2];
-    System.arraycopy(paramArrayOfByte, k, localObject, 1, j);
-    localObject[0] = 40;
-    localObject[(j + 1)] = 41;
-    paramk.f = new String(paramk.f).replace("。", new String((byte[])localObject) + "。").getBytes();
+      if (k > 0)
+      {
+        localObject = new byte[k + 2];
+        System.arraycopy(paramArrayOfByte, j, localObject, 1, k);
+        localObject[0] = 40;
+        localObject[(k + 1)] = 41;
+        paramArrayOfByte = new String(paramk.f);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(new String((byte[])localObject));
+        localStringBuilder.append("。");
+        paramk.f = paramArrayOfByte.replace("。", localStringBuilder.toString()).getBytes();
+      }
+    }
     return i;
   }
   
@@ -434,7 +476,10 @@ public class c
         i = f.a(util.buf_to_int16(arrayOfByte, 0), arrayOfByte, 2, arrayOfByte.length - 2, paramk.C);
         if (i != 0)
         {
-          util.LOGI("parser tlv failed " + i, "");
+          paramArrayOfByte = new StringBuilder();
+          paramArrayOfByte.append("parser tlv failed ");
+          paramArrayOfByte.append(i);
+          util.LOGI(paramArrayOfByte.toString(), "");
           return -1009;
         }
       }
@@ -444,19 +489,27 @@ public class c
       if (i != 0)
       {
         paramk.f = new byte[i];
-        if (((DataInputStream)localObject).read(paramk.f) != i) {
-          throw new Exception("msg len " + i + " error");
+        if (((DataInputStream)localObject).read(paramk.f) != i)
+        {
+          paramArrayOfByte = new StringBuilder();
+          paramArrayOfByte.append("msg len ");
+          paramArrayOfByte.append(i);
+          paramArrayOfByte.append(" error");
+          throw new Exception(paramArrayOfByte.toString());
         }
       }
+      ((DataInputStream)localObject).close();
+      paramArrayOfByte.close();
+      return 0;
     }
     catch (Exception paramArrayOfByte)
     {
-      util.LOGI("parse0x10Rsp failed " + paramArrayOfByte.getMessage(), "");
-      return -1009;
+      paramk = new StringBuilder();
+      paramk.append("parse0x10Rsp failed ");
+      paramk.append(paramArrayOfByte.getMessage());
+      util.LOGI(paramk.toString(), "");
     }
-    ((DataInputStream)localObject).close();
-    paramArrayOfByte.close();
-    return 0;
+    return -1009;
   }
   
   public static int f(byte[] paramArrayOfByte, k paramk)
@@ -487,7 +540,10 @@ public class c
         i = f.a(util.buf_to_int16(arrayOfByte, 0), arrayOfByte, 2, arrayOfByte.length - 2, paramk.C);
         if (i != 0)
         {
-          util.LOGI("parser tlv failed " + i, "");
+          paramArrayOfByte = new StringBuilder();
+          paramArrayOfByte.append("parser tlv failed ");
+          paramArrayOfByte.append(i);
+          util.LOGI(paramArrayOfByte.toString(), "");
           return -1009;
         }
       }
@@ -497,19 +553,27 @@ public class c
       if (i != 0)
       {
         paramk.f = new byte[i];
-        if (((DataInputStream)localObject).read(paramk.f) != i) {
-          throw new Exception("msg len " + i + " error");
+        if (((DataInputStream)localObject).read(paramk.f) != i)
+        {
+          paramArrayOfByte = new StringBuilder();
+          paramArrayOfByte.append("msg len ");
+          paramArrayOfByte.append(i);
+          paramArrayOfByte.append(" error");
+          throw new Exception(paramArrayOfByte.toString());
         }
       }
+      ((DataInputStream)localObject).close();
+      paramArrayOfByte.close();
+      return 0;
     }
     catch (Exception paramArrayOfByte)
     {
-      util.LOGI("parse0x11Rsp failed " + paramArrayOfByte.getMessage(), "");
-      return -1009;
+      paramk = new StringBuilder();
+      paramk.append("parse0x11Rsp failed ");
+      paramk.append(paramArrayOfByte.getMessage());
+      util.LOGI(paramk.toString(), "");
     }
-    ((DataInputStream)localObject).close();
-    paramArrayOfByte.close();
-    return 0;
+    return -1009;
   }
   
   public int a()
@@ -527,8 +591,7 @@ public class c
     util.int8_to_buf(arrayOfByte, 7, 4);
     util.int32_to_buf(arrayOfByte, 8, 0);
     System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 12, paramArrayOfByte.length);
-    int i = paramArrayOfByte.length + 12;
-    util.int8_to_buf(arrayOfByte, i, 3);
+    util.int8_to_buf(arrayOfByte, 12 + paramArrayOfByte.length, 3);
     return arrayOfByte;
   }
   
@@ -543,7 +606,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.a.c
  * JD-Core Version:    0.7.0.1
  */

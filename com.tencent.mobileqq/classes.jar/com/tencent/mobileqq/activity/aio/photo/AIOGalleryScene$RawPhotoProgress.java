@@ -18,21 +18,29 @@ final class AIOGalleryScene$RawPhotoProgress
   
   public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOGalleryScene", 2, "rawPhotoBtn decode onLoadCanceled URL():" + paramURLDrawable.getURL());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("rawPhotoBtn decode onLoadCanceled URL():");
+      localStringBuilder.append(paramURLDrawable.getURL());
+      QLog.d("AIOGalleryScene", 2, localStringBuilder.toString());
     }
-    this.a.a(false);
+    this.a.c(false);
     this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene$RawPhotoProgress = null;
   }
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOGalleryScene", 2, "rawPhotoBtn decode onLoadFialed URL():" + paramURLDrawable.getURL());
+    if (QLog.isColorLevel())
+    {
+      paramThrowable = new StringBuilder();
+      paramThrowable.append("rawPhotoBtn decode onLoadFialed URL():");
+      paramThrowable.append(paramURLDrawable.getURL());
+      QLog.d("AIOGalleryScene", 2, paramThrowable.toString());
     }
-    QQToast.a(AIOGalleryScene.b(this.a), AIOGalleryScene.c(this.a).getString(2131695008), 0).a();
-    this.a.c(true);
-    this.a.a(false);
+    QQToast.a(AIOGalleryScene.b(this.a), AIOGalleryScene.c(this.a).getString(2131694998), 0).a();
+    this.a.d(true);
+    this.a.c(false);
     this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene$RawPhotoProgress = null;
   }
   
@@ -40,21 +48,25 @@ final class AIOGalleryScene$RawPhotoProgress
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOGalleryScene", 2, "rawPhotoBtn decode onLoadSuccessed URL():" + paramURLDrawable.getURL());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("rawPhotoBtn decode onLoadSuccessed URL():");
+      localStringBuilder.append(paramURLDrawable.getURL());
+      QLog.d("AIOGalleryScene", 2, localStringBuilder.toString());
     }
+    this.a.d(false);
     this.a.c(false);
-    this.a.a(false);
     this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.b.b = paramURLDrawable.getExifOrientation();
     this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a(paramURLDrawable, AIOGalleryScene.c(this.a).getSelectedItemPosition());
     this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.notifyDataSetChanged();
-    AIOGalleryScene.d(this.a).e();
+    AIOGalleryScene.d(this.a).reset();
     this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene$RawPhotoProgress = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.RawPhotoProgress
  * JD-Core Version:    0.7.0.1
  */

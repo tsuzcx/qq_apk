@@ -60,23 +60,25 @@ public class RecommendListManager
   public void b()
   {
     int j = this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a();
-    LogUtility.c("RecommendListManager", "-->notifyDataSetChanged() count = " + j);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("-->notifyDataSetChanged() count = ");
+    ((StringBuilder)localObject).append(j);
+    LogUtility.c("RecommendListManager", ((StringBuilder)localObject).toString());
     int i = j;
     if (j > 5) {
       i = 5;
     }
     j = 0;
-    if (j < i)
+    while (j < i)
     {
-      Object localObject = super.getChildAt(j);
-      if ((localObject instanceof ViewStub)) {
+      localObject = super.getChildAt(j);
+      if ((localObject instanceof ViewStub))
+      {
         ((View)localObject).setVisibility(0);
       }
-      for (;;)
+      else
       {
-        j += 1;
-        break;
-        localObject = (CheckBox)((View)localObject).findViewById(2131364726);
+        localObject = (CheckBox)((View)localObject).findViewById(2131364613);
         Friend localFriend = this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(j);
         if (this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(localFriend.a)) {
           ((CheckBox)localObject).setChecked(true);
@@ -84,104 +86,96 @@ public class RecommendListManager
           ((CheckBox)localObject).setChecked(false);
         }
       }
+      j += 1;
     }
   }
   
   public void onClick(View paramView)
   {
-    int i;
-    CheckBox localCheckBox;
-    switch (paramView.getId())
-    {
-    default: 
-      i = -1;
-      LogUtility.c("RecommendListManager", "-->onClick() position = " + i + " v.getId() = " + paramView.getId());
-      if ((i != -1) && (i < this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a()))
-      {
-        localCheckBox = (CheckBox)paramView.findViewById(2131364726);
-        Friend localFriend = this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(i);
-        this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(localFriend);
-        if (!this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(localFriend.a)) {
-          break label176;
-        }
-        localCheckBox.setChecked(true);
-      }
-      break;
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    int i = paramView.getId();
+    if (i == 2131376243) {
       i = 0;
-      break;
+    } else if (i == 2131376244) {
       i = 1;
-      break;
+    } else if (i == 2131376245) {
       i = 2;
-      break;
+    } else if (i == 2131376246) {
       i = 3;
-      break;
+    } else if (i == 2131376247) {
       i = 4;
-      break;
-      label176:
-      localCheckBox.setChecked(false);
+    } else {
+      i = -1;
     }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("-->onClick() position = ");
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append(" v.getId() = ");
+    ((StringBuilder)localObject).append(paramView.getId());
+    LogUtility.c("RecommendListManager", ((StringBuilder)localObject).toString());
+    if ((i != -1) && (i < this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a()))
+    {
+      localObject = (CheckBox)paramView.findViewById(2131364613);
+      Friend localFriend = this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(i);
+      this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(localFriend);
+      if (this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(localFriend.a)) {
+        ((CheckBox)localObject).setChecked(true);
+      } else {
+        ((CheckBox)localObject).setChecked(false);
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onInflate(ViewStub paramViewStub, View paramView)
   {
-    int i = -1;
-    Object localObject;
-    ImageView localImageView;
-    switch (paramView.getId())
-    {
-    default: 
-      LogUtility.c("RecommendListManager", "-->onInflate() position = " + i);
-      paramView.setOnClickListener(this);
-      paramViewStub = this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(i);
-      if ((paramViewStub.d == null) || ("".equals(paramViewStub.d))) {
-        paramViewStub.d = QZonePortraitData.a(this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(), paramViewStub.a);
-      }
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramViewStub.d, paramView);
-      localObject = (CheckBox)paramView.findViewById(2131364726);
-      localImageView = (ImageView)paramView.findViewById(2131368603);
-      paramView = (TextView)paramView.findViewById(2131372115);
-      if (this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(paramViewStub.a))
-      {
-        ((CheckBox)localObject).setChecked(true);
-        label180:
-        localObject = ImageLoader.a().a(paramViewStub.d);
-        if (localObject != null) {
-          break label277;
-        }
-        localImageView.setImageResource(2130840452);
-        ImageLoader.a().a(paramViewStub.d, this);
-      }
-      break;
-    }
-    for (;;)
-    {
-      if ((paramViewStub.c != null) && (!"".equals(paramViewStub.c))) {
-        break label287;
-      }
-      paramView.setText(paramViewStub.b);
-      return;
+    int i = paramView.getId();
+    if (i == 2131376243) {
       i = 0;
-      break;
+    } else if (i == 2131376244) {
       i = 1;
-      break;
+    } else if (i == 2131376245) {
       i = 2;
-      break;
+    } else if (i == 2131376246) {
       i = 3;
-      break;
+    } else if (i == 2131376247) {
       i = 4;
-      break;
+    } else {
+      i = -1;
+    }
+    paramViewStub = new StringBuilder();
+    paramViewStub.append("-->onInflate() position = ");
+    paramViewStub.append(i);
+    LogUtility.c("RecommendListManager", paramViewStub.toString());
+    paramView.setOnClickListener(this);
+    paramViewStub = this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(i);
+    if ((paramViewStub.d == null) || ("".equals(paramViewStub.d))) {
+      paramViewStub.d = QZonePortraitData.a(this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(), paramViewStub.a);
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramViewStub.d, paramView);
+    Object localObject = (CheckBox)paramView.findViewById(2131364613);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131368343);
+    paramView = (TextView)paramView.findViewById(2131371697);
+    if (this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(paramViewStub.a)) {
+      ((CheckBox)localObject).setChecked(true);
+    } else {
       ((CheckBox)localObject).setChecked(false);
-      break label180;
-      label277:
+    }
+    localObject = ImageLoader.a().a(paramViewStub.d);
+    if (localObject == null)
+    {
+      localImageView.setImageResource(2130840321);
+      ImageLoader.a().a(paramViewStub.d, this);
+    }
+    else
+    {
       localImageView.setImageBitmap((Bitmap)localObject);
     }
-    label287:
-    paramView.setText(paramViewStub.c);
+    if ((paramViewStub.c != null) && (!"".equals(paramViewStub.c)))
+    {
+      paramView.setText(paramViewStub.c);
+      return;
+    }
+    paramView.setText(paramViewStub.b);
   }
   
   public void setActivity(FriendChooser paramFriendChooser)
@@ -191,7 +185,7 @@ public class RecommendListManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.RecommendListManager
  * JD-Core Version:    0.7.0.1
  */

@@ -51,14 +51,15 @@ public final class RespondHeader
     paramJceOutputStream.write(this.svrSeqNo, 4);
     paramJceOutputStream.write(this.result, 5);
     paramJceOutputStream.write(this.ksid, 6);
-    if (this.tips != null) {
-      paramJceOutputStream.write(this.tips, 7);
+    String str = this.tips;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.RespondHeader
  * JD-Core Version:    0.7.0.1
  */

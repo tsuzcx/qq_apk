@@ -4,8 +4,6 @@ import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -14,45 +12,46 @@ import android.webkit.URLUtil;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import com.huawei.secure.android.common.util.LogsUtil;
+import com.tencent.qqlive.module.videoreport.inject.webview.dtwebview.DtWebView;
 import java.util.Arrays;
 import java.util.Map;
 
 public class SafeWebView
-  extends WebView
+  extends DtWebView
 {
   private static final String TAG = "SafeWebView";
-  private String G;
-  private String[] H;
-  private String[] I;
+  private String I;
   private String[] J;
-  private WebViewLoadCallBack K;
+  private String[] K;
+  private String[] L;
+  private WebViewLoadCallBack M;
   
   public SafeWebView(Context paramContext)
   {
     super(paramContext);
-    i();
+    h();
   }
   
   public SafeWebView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    i();
+    h();
   }
   
   public SafeWebView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    i();
+    h();
   }
   
   @TargetApi(21)
   public SafeWebView(Context paramContext, AttributeSet paramAttributeSet, int paramInt1, int paramInt2)
   {
     super(paramContext, paramAttributeSet, paramInt1, paramInt2);
-    i();
+    h();
   }
   
-  private void i()
+  private void h()
   {
     SafeWebSettings.initWebviewAndSettings(this);
     setWebViewClient(null);
@@ -65,40 +64,43 @@ public class SafeWebView
   
   public String getDefaultErrorPage()
   {
-    return this.G;
+    return this.I;
   }
   
   public WebViewLoadCallBack getWebViewLoadCallBack()
   {
-    return this.K;
+    return this.M;
   }
   
   @Deprecated
   @TargetApi(9)
   public String[] getWhitelist()
   {
-    if (this.H == null) {
+    String[] arrayOfString = this.J;
+    if (arrayOfString == null) {
       return null;
     }
-    return (String[])Arrays.copyOf(this.H, this.H.length);
+    return (String[])Arrays.copyOf(arrayOfString, arrayOfString.length);
   }
   
   @Deprecated
   public String[] getWhitelistNotMathcSubDomain()
   {
-    if (this.I == null) {
+    String[] arrayOfString = this.K;
+    if (arrayOfString == null) {
       return null;
     }
-    return (String[])Arrays.copyOf(this.I, this.I.length);
+    return (String[])Arrays.copyOf(arrayOfString, arrayOfString.length);
   }
   
   @TargetApi(9)
   public String[] getWhitelistWithPath()
   {
-    if (this.J == null) {
+    String[] arrayOfString = this.L;
+    if (arrayOfString == null) {
       return null;
     }
-    return (String[])Arrays.copyOf(this.J, this.J.length);
+    return (String[])Arrays.copyOf(arrayOfString, arrayOfString.length);
   }
   
   @TargetApi(9)
@@ -129,14 +131,16 @@ public class SafeWebView
     if (isHttpUrl(paramString1))
     {
       Log.e("SafeWebView", "loadDataWithBaseURL: http url , not safe");
-      if (!TextUtils.isEmpty(this.G)) {
-        super.loadDataWithBaseURL(this.G, paramString2, paramString3, paramString4, paramString5);
-      }
-      while (getWebViewLoadCallBack() == null) {
+      if (!TextUtils.isEmpty(this.I))
+      {
+        super.loadDataWithBaseURL(this.I, paramString2, paramString3, paramString4, paramString5);
         return;
       }
-      Log.e("SafeWebView", "WebViewLoadCallBack");
-      getWebViewLoadCallBack().onCheckError(paramString1, WebViewLoadCallBack.ErrorCode.HTTP_URL);
+      if (getWebViewLoadCallBack() != null)
+      {
+        Log.e("SafeWebView", "WebViewLoadCallBack");
+        getWebViewLoadCallBack().onCheckError(paramString1, WebViewLoadCallBack.ErrorCode.HTTP_URL);
+      }
       return;
     }
     super.loadDataWithBaseURL(paramString1, paramString2, paramString3, paramString4, paramString5);
@@ -147,14 +151,16 @@ public class SafeWebView
     if (isHttpUrl(paramString))
     {
       Log.e("SafeWebView", "loadUrl: http url , not safe");
-      if (!TextUtils.isEmpty(this.G)) {
-        super.loadUrl(this.G);
-      }
-      while (getWebViewLoadCallBack() == null) {
+      if (!TextUtils.isEmpty(this.I))
+      {
+        super.loadUrl(this.I);
         return;
       }
-      Log.e("SafeWebView", "WebViewLoadCallBack");
-      getWebViewLoadCallBack().onCheckError(paramString, WebViewLoadCallBack.ErrorCode.HTTP_URL);
+      if (getWebViewLoadCallBack() != null)
+      {
+        Log.e("SafeWebView", "WebViewLoadCallBack");
+        getWebViewLoadCallBack().onCheckError(paramString, WebViewLoadCallBack.ErrorCode.HTTP_URL);
+      }
       return;
     }
     super.loadUrl(paramString);
@@ -165,14 +171,16 @@ public class SafeWebView
     if (isHttpUrl(paramString))
     {
       Log.e("SafeWebView", "loadUrl: http url , not safe");
-      if (!TextUtils.isEmpty(this.G)) {
-        super.loadUrl(this.G, paramMap);
-      }
-      while (getWebViewLoadCallBack() == null) {
+      if (!TextUtils.isEmpty(this.I))
+      {
+        super.loadUrl(this.I, paramMap);
         return;
       }
-      Log.e("SafeWebView", "WebViewLoadCallBack");
-      getWebViewLoadCallBack().onCheckError(paramString, WebViewLoadCallBack.ErrorCode.HTTP_URL);
+      if (getWebViewLoadCallBack() != null)
+      {
+        Log.e("SafeWebView", "WebViewLoadCallBack");
+        getWebViewLoadCallBack().onCheckError(paramString, WebViewLoadCallBack.ErrorCode.HTTP_URL);
+      }
       return;
     }
     super.loadUrl(paramString, paramMap);
@@ -183,14 +191,16 @@ public class SafeWebView
     LogsUtil.e("SafeWebView", "onCheckError url is not in white list ", paramString);
     paramWebView.stopLoading();
     String str = getDefaultErrorPage();
-    if (!TextUtils.isEmpty(str)) {
+    if (!TextUtils.isEmpty(str))
+    {
       paramWebView.loadUrl(str);
-    }
-    while (getWebViewLoadCallBack() == null) {
       return;
     }
-    Log.e("SafeWebView", "onPageStarted WebViewLoadCallBack");
-    getWebViewLoadCallBack().onCheckError(paramString, WebViewLoadCallBack.ErrorCode.URL_NOT_IN_WHITE_LIST);
+    if (getWebViewLoadCallBack() != null)
+    {
+      Log.e("SafeWebView", "onPageStarted WebViewLoadCallBack");
+      getWebViewLoadCallBack().onCheckError(paramString, WebViewLoadCallBack.ErrorCode.URL_NOT_IN_WHITE_LIST);
+    }
   }
   
   public void postUrl(String paramString, byte[] paramArrayOfByte)
@@ -198,14 +208,16 @@ public class SafeWebView
     if (isHttpUrl(paramString))
     {
       Log.e("SafeWebView", "postUrl: http url , not safe");
-      if (!TextUtils.isEmpty(this.G)) {
-        super.postUrl(this.G, paramArrayOfByte);
-      }
-      while (getWebViewLoadCallBack() == null) {
+      if (!TextUtils.isEmpty(this.I))
+      {
+        super.postUrl(this.I, paramArrayOfByte);
         return;
       }
-      Log.e("SafeWebView", "WebViewLoadCallBack");
-      getWebViewLoadCallBack().onCheckError(paramString, WebViewLoadCallBack.ErrorCode.HTTP_URL);
+      if (getWebViewLoadCallBack() != null)
+      {
+        Log.e("SafeWebView", "WebViewLoadCallBack");
+        getWebViewLoadCallBack().onCheckError(paramString, WebViewLoadCallBack.ErrorCode.HTTP_URL);
+      }
       return;
     }
     super.postUrl(paramString, paramArrayOfByte);
@@ -213,7 +225,7 @@ public class SafeWebView
   
   public void setDefaultErrorPage(String paramString)
   {
-    this.G = paramString;
+    this.I = paramString;
   }
   
   public void setWebViewClient(WebViewClient paramWebViewClient)
@@ -228,44 +240,44 @@ public class SafeWebView
   
   public void setWebViewLoadCallBack(WebViewLoadCallBack paramWebViewLoadCallBack)
   {
-    this.K = paramWebViewLoadCallBack;
+    this.M = paramWebViewLoadCallBack;
   }
   
   @Deprecated
   @TargetApi(9)
   public void setWhitelist(String[] paramArrayOfString)
   {
-    if (paramArrayOfString == null) {}
-    for (paramArrayOfString = null;; paramArrayOfString = (String[])Arrays.copyOf(paramArrayOfString, paramArrayOfString.length))
-    {
-      this.H = paramArrayOfString;
-      return;
+    if (paramArrayOfString == null) {
+      paramArrayOfString = null;
+    } else {
+      paramArrayOfString = (String[])Arrays.copyOf(paramArrayOfString, paramArrayOfString.length);
     }
+    this.J = paramArrayOfString;
   }
   
   @Deprecated
   public void setWhitelistNotMathcSubDomain(String[] paramArrayOfString)
   {
-    if (paramArrayOfString == null) {}
-    for (paramArrayOfString = null;; paramArrayOfString = (String[])Arrays.copyOf(paramArrayOfString, paramArrayOfString.length))
-    {
-      this.I = paramArrayOfString;
-      return;
+    if (paramArrayOfString == null) {
+      paramArrayOfString = null;
+    } else {
+      paramArrayOfString = (String[])Arrays.copyOf(paramArrayOfString, paramArrayOfString.length);
     }
+    this.K = paramArrayOfString;
   }
   
   @TargetApi(9)
   public void setWhitelistWithPath(String[] paramArrayOfString)
   {
-    if (paramArrayOfString == null) {}
-    for (paramArrayOfString = null;; paramArrayOfString = (String[])Arrays.copyOf(paramArrayOfString, paramArrayOfString.length))
-    {
-      this.J = paramArrayOfString;
-      return;
+    if (paramArrayOfString == null) {
+      paramArrayOfString = null;
+    } else {
+      paramArrayOfString = (String[])Arrays.copyOf(paramArrayOfString, paramArrayOfString.length);
     }
+    this.L = paramArrayOfString;
   }
   
-  protected final void showNoticeWhenSSLErrorOccurred(@Nullable String paramString1, @NonNull String paramString2, @NonNull String paramString3, @NonNull String paramString4, @NonNull SslErrorHandler paramSslErrorHandler)
+  protected final void showNoticeWhenSSLErrorOccurred(String paramString1, String paramString2, String paramString3, String paramString4, SslErrorHandler paramSslErrorHandler)
   {
     AlertDialog.Builder localBuilder = new AlertDialog.Builder(getContext());
     if (!TextUtils.isEmpty(paramString1)) {
@@ -281,7 +293,7 @@ public class SafeWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.secure.android.common.webview.SafeWebView
  * JD-Core Version:    0.7.0.1
  */

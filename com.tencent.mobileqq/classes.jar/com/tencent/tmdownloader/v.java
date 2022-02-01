@@ -18,40 +18,42 @@ class v
   public void run()
   {
     long l = System.currentTimeMillis();
-    ArrayList localArrayList = a.a().c();
-    this.a.mServiceDownloadTaskManager = new c(localArrayList);
+    Object localObject = a.a().c();
+    this.a.mServiceDownloadTaskManager = new c((ArrayList)localObject);
     try
     {
       this.a.mServiceDownloadTaskManager.a(this.a);
       this.a.mServiceDownloadTaskManager.a();
-      label50:
       if (GlobalUtil.getInstance().getContext() == null) {
         GlobalUtil.getInstance().setContext(this.a);
       }
+    }
+    catch (Throwable localThrowable1)
+    {
       try
       {
         ApkDownloadManager.getInstance().init();
         PackageInstallReceiver.a().a(this.a);
         b.a();
         label89:
-        aa.a("Load downloadInfo end, timeCost = " + (System.currentTimeMillis() - l));
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Load downloadInfo end, timeCost = ");
+        ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
+        aa.a(((StringBuilder)localObject).toString());
         ab.c("TMADownloadSDKService", "<onCreate>exit");
         return;
+        localThrowable1 = localThrowable1;
       }
-      catch (Throwable localThrowable1)
+      catch (Throwable localThrowable2)
       {
         break label89;
       }
-    }
-    catch (Throwable localThrowable2)
-    {
-      break label50;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmdownloader.v
  * JD-Core Version:    0.7.0.1
  */

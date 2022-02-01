@@ -42,7 +42,8 @@ public class BaibianFilter
       super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
       return;
     }
-    if (paramBoolean) {
+    if (paramBoolean)
+    {
       if ((this.resName != null) || (this.fragmentShaderId != 0))
       {
         this.glslProgramShader = BaseFilter.getFragmentShader(this.fragmentShaderId);
@@ -52,35 +53,31 @@ public class BaibianFilter
         addParam(new UniformParam.FloatParam("inputV", this.inputV));
       }
     }
-    for (;;)
+    else
     {
-      super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
-      return;
       this.glslProgramShader = "precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n";
-      BaseFilter localBaseFilter2 = getmNextFilter();
-      Object localObject = new BaseFilter(BaseFilter.getFragmentShader(68));
-      ((BaseFilter)localObject).addParam(new UniformParam.FloatParam("blurSize", this.blurSize));
-      setNextFilter((BaseFilter)localObject, null);
+      BaseFilter localBaseFilter3 = getmNextFilter();
+      BaseFilter localBaseFilter2 = new BaseFilter(BaseFilter.getFragmentShader(68));
+      localBaseFilter2.addParam(new UniformParam.FloatParam("blurSize", this.blurSize));
+      setNextFilter(localBaseFilter2, null);
       BaseFilter localBaseFilter1 = new BaseFilter(BaseFilter.getFragmentShader(69));
       localBaseFilter1.addParam(new UniformParam.FloatParam("blurSize", this.blurSize));
       localBaseFilter1.addParam(new UniformParam.FloatParam("intensity", this.intensity * 3.5F));
-      ((BaseFilter)localObject).setNextFilter(localBaseFilter1, new int[] { this.srcTextureIndex + 1 });
-      if (this.resName == null)
-      {
-        localObject = localBaseFilter1;
-        if (this.fragmentShaderId == 0) {}
+      localBaseFilter2.setNextFilter(localBaseFilter1, new int[] { this.srcTextureIndex + 1 });
+      if ((this.resName == null) && (this.fragmentShaderId == 0)) {
+        break label373;
       }
-      else
-      {
-        localObject = new BaseFilter(BaseFilter.getFragmentShader(this.fragmentShaderId));
-        ((BaseFilter)localObject).addParam(new TextureResParam("inputImageTexture2", this.resName, 33986));
-        ((BaseFilter)localObject).addParam(new UniformParam.FloatParam("inputH", this.inputH));
-        ((BaseFilter)localObject).addParam(new UniformParam.FloatParam("inputS", this.inputS));
-        ((BaseFilter)localObject).addParam(new UniformParam.FloatParam("inputV", this.inputV));
-        localBaseFilter1.setNextFilter((BaseFilter)localObject, null);
-      }
-      ((BaseFilter)localObject).getLastFilter().setNextFilter(localBaseFilter2, null);
+      localBaseFilter2 = new BaseFilter(BaseFilter.getFragmentShader(this.fragmentShaderId));
+      localBaseFilter2.addParam(new TextureResParam("inputImageTexture2", this.resName, 33986));
+      localBaseFilter2.addParam(new UniformParam.FloatParam("inputH", this.inputH));
+      localBaseFilter2.addParam(new UniformParam.FloatParam("inputS", this.inputS));
+      localBaseFilter2.addParam(new UniformParam.FloatParam("inputV", this.inputV));
+      localBaseFilter1.setNextFilter(localBaseFilter2, null);
+      localBaseFilter1 = localBaseFilter2;
+      label373:
+      localBaseFilter1.getLastFilter().setNextFilter(localBaseFilter3, null);
     }
+    super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
   }
   
   public void setParameterDic(Map<String, Object> paramMap)
@@ -95,7 +92,7 @@ public class BaibianFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.filter.art.BaibianFilter
  * JD-Core Version:    0.7.0.1
  */

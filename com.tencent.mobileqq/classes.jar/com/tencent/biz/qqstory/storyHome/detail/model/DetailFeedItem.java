@@ -42,18 +42,21 @@ public class DetailFeedItem
   
   private int a(int paramInt, boolean paramBoolean)
   {
-    int i = -1;
-    if (paramBoolean) {
+    int i = 1;
+    if (paramBoolean)
+    {
       if (paramInt != -1) {
-        i = paramInt + 1;
+        return 1 + paramInt;
       }
     }
-    while (paramInt <= 0)
+    else
     {
-      return i;
-      return 1;
+      if (paramInt > 0) {
+        return paramInt - 1;
+      }
+      i = -1;
     }
-    return paramInt - 1;
+    return i;
   }
   
   public int a(boolean paramBoolean)
@@ -135,24 +138,33 @@ public class DetailFeedItem
   
   public void a(int paramInt)
   {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+    Object localObject = this.jdField_b_of_type_JavaUtilList.iterator();
     CommentEntry localCommentEntry;
-    while (localIterator.hasNext())
+    StringBuilder localStringBuilder;
+    while (((Iterator)localObject).hasNext())
     {
-      localCommentEntry = (CommentEntry)localIterator.next();
+      localCommentEntry = (CommentEntry)((Iterator)localObject).next();
       if (localCommentEntry.commentId == paramInt)
       {
-        this.jdField_b_of_type_JavaUtilHashSet.remove(localCommentEntry.authorUnionId + localCommentEntry.fakeId);
+        localObject = this.jdField_b_of_type_JavaUtilHashSet;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localCommentEntry.authorUnionId);
+        localStringBuilder.append(localCommentEntry.fakeId);
+        ((HashSet)localObject).remove(localStringBuilder.toString());
         this.jdField_b_of_type_JavaUtilList.remove(localCommentEntry);
       }
     }
-    localIterator = this.jdField_d_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    localObject = this.jdField_d_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      localCommentEntry = (CommentEntry)localIterator.next();
+      localCommentEntry = (CommentEntry)((Iterator)localObject).next();
       if (localCommentEntry.commentId == paramInt)
       {
-        this.jdField_d_of_type_JavaUtilHashSet.remove(localCommentEntry.authorUnionId + localCommentEntry.fakeId);
+        localObject = this.jdField_d_of_type_JavaUtilHashSet;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localCommentEntry.authorUnionId);
+        localStringBuilder.append(localCommentEntry.fakeId);
+        ((HashSet)localObject).remove(localStringBuilder.toString());
         this.jdField_d_of_type_JavaUtilList.remove(localCommentEntry);
       }
     }
@@ -160,45 +172,61 @@ public class DetailFeedItem
   
   public void a(CommentEntry paramCommentEntry, boolean paramBoolean)
   {
+    HashSet localHashSet;
+    StringBuilder localStringBuilder;
     if (paramBoolean)
     {
       this.jdField_b_of_type_JavaUtilList.add(paramCommentEntry);
-      this.jdField_b_of_type_JavaUtilHashSet.add(paramCommentEntry.authorUnionId + paramCommentEntry.fakeId);
-      if (paramCommentEntry.type != 1)
-      {
-        if (!paramBoolean) {
-          break label144;
-        }
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount = a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount, true);
-      }
+      localHashSet = this.jdField_b_of_type_JavaUtilHashSet;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramCommentEntry.authorUnionId);
+      localStringBuilder.append(paramCommentEntry.fakeId);
+      localHashSet.add(localStringBuilder.toString());
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount = a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount, true);
-      return;
       this.jdField_d_of_type_JavaUtilList.add(paramCommentEntry);
-      this.jdField_d_of_type_JavaUtilHashSet.add(paramCommentEntry.authorUnionId + paramCommentEntry.fakeId);
-      break;
-      label144:
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount = a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount, true);
+      localHashSet = this.jdField_d_of_type_JavaUtilHashSet;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramCommentEntry.authorUnionId);
+      localStringBuilder.append(paramCommentEntry.fakeId);
+      localHashSet.add(localStringBuilder.toString());
+    }
+    if (paramCommentEntry.type != 1)
+    {
+      if (paramBoolean)
+      {
+        paramCommentEntry = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+        paramCommentEntry.mFanCommentCount = a(paramCommentEntry.mFanCommentCount, true);
+      }
+      else
+      {
+        paramCommentEntry = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+        paramCommentEntry.mFriendCommentCount = a(paramCommentEntry.mFriendCommentCount, true);
+      }
+      paramCommentEntry = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+      paramCommentEntry.mCommentCount = a(paramCommentEntry.mCommentCount, true);
     }
   }
   
   public void a(LikeEntry paramLikeEntry, boolean paramBoolean)
   {
-    if (a()) {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendLikeCount = a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendLikeCount, true);
-    }
-    for (;;)
+    if (a())
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount = a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount, true);
-      this.jdField_c_of_type_JavaUtilList.add(paramLikeEntry);
-      this.jdField_c_of_type_JavaUtilHashSet.add(paramLikeEntry.unionId);
-      this.jdField_e_of_type_JavaUtilList.add(paramLikeEntry);
-      this.jdField_e_of_type_JavaUtilHashSet.add(paramLikeEntry.unionId);
-      return;
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanLikeCount = a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanLikeCount, true);
+      localCommentLikeFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+      localCommentLikeFeedItem.mFriendLikeCount = a(localCommentLikeFeedItem.mFriendLikeCount, true);
     }
+    else
+    {
+      localCommentLikeFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+      localCommentLikeFeedItem.mFanLikeCount = a(localCommentLikeFeedItem.mFanLikeCount, true);
+    }
+    CommentLikeFeedItem localCommentLikeFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+    localCommentLikeFeedItem.mLikeCount = a(localCommentLikeFeedItem.mLikeCount, true);
+    this.jdField_c_of_type_JavaUtilList.add(paramLikeEntry);
+    this.jdField_c_of_type_JavaUtilHashSet.add(paramLikeEntry.unionId);
+    this.jdField_e_of_type_JavaUtilList.add(paramLikeEntry);
+    this.jdField_e_of_type_JavaUtilHashSet.add(paramLikeEntry.unionId);
   }
   
   public void a(StoryVideoItem paramStoryVideoItem)
@@ -211,13 +239,10 @@ public class DetailFeedItem
   {
     if (paramInt < 0) {
       this.jdField_a_of_type_JavaUtilList.add(paramStoryVideoItem);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaUtilHashSet.add(paramStoryVideoItem.mVid);
-      return;
+    } else {
       this.jdField_a_of_type_JavaUtilList.add(paramInt, paramStoryVideoItem);
     }
+    this.jdField_a_of_type_JavaUtilHashSet.add(paramStoryVideoItem.mVid);
   }
   
   public void a(List<StoryVideoItem> paramList, boolean paramBoolean)
@@ -257,37 +282,43 @@ public class DetailFeedItem
       localList = this.jdField_d_of_type_JavaUtilList;
       localHashSet = this.jdField_d_of_type_JavaUtilHashSet;
     }
-    for (;;)
+    CommentEntry localCommentEntry;
+    StringBuilder localStringBuilder;
+    if (paramBoolean1)
     {
-      CommentEntry localCommentEntry;
-      if (paramBoolean1)
-      {
-        localIterator = localList.iterator();
-        while (localIterator.hasNext())
-        {
-          localCommentEntry = (CommentEntry)localIterator.next();
-          if (localCommentEntry.status == 0)
-          {
-            localHashSet.remove(localCommentEntry.authorUnionId + localCommentEntry.fakeId);
-            localIterator.remove();
-          }
-        }
-        SLog.a("Q.qqstory.detail.DetailFeedItem", "comment list's size is %d after clear.", Integer.valueOf(localList.size()));
-      }
-      Iterator localIterator = paramList.iterator();
+      localIterator = localList.iterator();
       while (localIterator.hasNext())
       {
         localCommentEntry = (CommentEntry)localIterator.next();
-        if (!localHashSet.contains(localCommentEntry.authorUnionId + localCommentEntry.fakeId))
+        if (localCommentEntry.status == 0)
         {
-          localHashSet.add(localCommentEntry.authorUnionId + localCommentEntry.fakeId);
-          localList.add(localCommentEntry);
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(localCommentEntry.authorUnionId);
+          localStringBuilder.append(localCommentEntry.fakeId);
+          localHashSet.remove(localStringBuilder.toString());
+          localIterator.remove();
         }
       }
-      Collections.sort(localList, new DetailFeedItem.CommentComp(this));
-      SLog.a("Q.qqstory.detail.DetailFeedItem", "comment list's size is %d after add %d comments.", Integer.valueOf(localList.size()), Integer.valueOf(paramList.size()));
-      return;
+      SLog.a("Q.qqstory.detail.DetailFeedItem", "comment list's size is %d after clear.", Integer.valueOf(localList.size()));
     }
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
+    {
+      localCommentEntry = (CommentEntry)localIterator.next();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localCommentEntry.authorUnionId);
+      localStringBuilder.append(localCommentEntry.fakeId);
+      if (!localHashSet.contains(localStringBuilder.toString()))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localCommentEntry.authorUnionId);
+        localStringBuilder.append(localCommentEntry.fakeId);
+        localHashSet.add(localStringBuilder.toString());
+        localList.add(localCommentEntry);
+      }
+    }
+    Collections.sort(localList, new DetailFeedItem.CommentComp(this));
+    SLog.a("Q.qqstory.detail.DetailFeedItem", "comment list's size is %d after add %d comments.", Integer.valueOf(localList.size()), Integer.valueOf(paramList.size()));
   }
   
   public void a(boolean paramBoolean)
@@ -331,11 +362,19 @@ public class DetailFeedItem
   
   public boolean a()
   {
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem == null) || (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner() == null)) {}
-    while (!(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem instanceof VideoListFeedItem)) {
-      return false;
+    CommentLikeFeedItem localCommentLikeFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+    if (localCommentLikeFeedItem != null)
+    {
+      if (localCommentLikeFeedItem.getOwner() == null) {
+        return false;
+      }
+      localCommentLikeFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+      if (!(localCommentLikeFeedItem instanceof VideoListFeedItem)) {
+        return false;
+      }
+      return localCommentLikeFeedItem.getOwner().isMe();
     }
-    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isMe();
+    return false;
   }
   
   public boolean a(boolean paramBoolean)
@@ -369,72 +408,87 @@ public class DetailFeedItem
   
   public void b(CommentEntry paramCommentEntry, boolean paramBoolean)
   {
-    Iterator localIterator;
+    Object localObject;
+    StringBuilder localStringBuilder;
     if (paramBoolean)
     {
-      localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        if (((CommentEntry)localIterator.next()).equals(paramCommentEntry)) {
-          localIterator.remove();
+      localObject = this.jdField_b_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (((CommentEntry)((Iterator)localObject).next()).equals(paramCommentEntry)) {
+          ((Iterator)localObject).remove();
         }
       }
-      this.jdField_b_of_type_JavaUtilHashSet.remove(paramCommentEntry.authorUnionId + paramCommentEntry.fakeId);
-      if (paramCommentEntry.type != 1)
-      {
-        if (!paramBoolean) {
-          break label210;
-        }
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount = a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount, false);
-      }
+      localObject = this.jdField_b_of_type_JavaUtilHashSet;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramCommentEntry.authorUnionId);
+      localStringBuilder.append(paramCommentEntry.fakeId);
+      ((HashSet)localObject).remove(localStringBuilder.toString());
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount = a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount, false);
-      return;
-      localIterator = this.jdField_d_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        if (((CommentEntry)localIterator.next()).equals(paramCommentEntry)) {
-          localIterator.remove();
+      localObject = this.jdField_d_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (((CommentEntry)((Iterator)localObject).next()).equals(paramCommentEntry)) {
+          ((Iterator)localObject).remove();
         }
       }
-      this.jdField_d_of_type_JavaUtilHashSet.remove(paramCommentEntry.authorUnionId + paramCommentEntry.fakeId);
-      break;
-      label210:
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount = a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount, false);
+      localObject = this.jdField_d_of_type_JavaUtilHashSet;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramCommentEntry.authorUnionId);
+      localStringBuilder.append(paramCommentEntry.fakeId);
+      ((HashSet)localObject).remove(localStringBuilder.toString());
+    }
+    if (paramCommentEntry.type != 1)
+    {
+      if (paramBoolean)
+      {
+        paramCommentEntry = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+        paramCommentEntry.mFanCommentCount = a(paramCommentEntry.mFanCommentCount, false);
+      }
+      else
+      {
+        paramCommentEntry = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+        paramCommentEntry.mFriendCommentCount = a(paramCommentEntry.mFriendCommentCount, false);
+      }
+      paramCommentEntry = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+      paramCommentEntry.mCommentCount = a(paramCommentEntry.mCommentCount, false);
     }
   }
   
   public void b(LikeEntry paramLikeEntry, boolean paramBoolean)
   {
-    if (a()) {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendLikeCount = a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendLikeCount, false);
-    }
-    for (;;)
+    if (a())
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount = a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount, false);
-      Iterator localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
-      LikeEntry localLikeEntry;
-      while (localIterator.hasNext())
+      localObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+      ((CommentLikeFeedItem)localObject).mFriendLikeCount = a(((CommentLikeFeedItem)localObject).mFriendLikeCount, false);
+    }
+    else
+    {
+      localObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+      ((CommentLikeFeedItem)localObject).mFanLikeCount = a(((CommentLikeFeedItem)localObject).mFanLikeCount, false);
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+    ((CommentLikeFeedItem)localObject).mLikeCount = a(((CommentLikeFeedItem)localObject).mLikeCount, false);
+    localObject = this.jdField_c_of_type_JavaUtilList.iterator();
+    LikeEntry localLikeEntry;
+    while (((Iterator)localObject).hasNext())
+    {
+      localLikeEntry = (LikeEntry)((Iterator)localObject).next();
+      if (localLikeEntry.unionId.equals(paramLikeEntry.unionId))
       {
-        localLikeEntry = (LikeEntry)localIterator.next();
-        if (localLikeEntry.unionId.equals(paramLikeEntry.unionId))
-        {
-          this.jdField_c_of_type_JavaUtilHashSet.remove(localLikeEntry.unionId);
-          this.jdField_c_of_type_JavaUtilList.remove(localLikeEntry);
-        }
+        this.jdField_c_of_type_JavaUtilHashSet.remove(localLikeEntry.unionId);
+        this.jdField_c_of_type_JavaUtilList.remove(localLikeEntry);
       }
-      localIterator = this.jdField_e_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
+    }
+    localObject = this.jdField_e_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      localLikeEntry = (LikeEntry)((Iterator)localObject).next();
+      if (localLikeEntry.unionId.equals(paramLikeEntry.unionId))
       {
-        localLikeEntry = (LikeEntry)localIterator.next();
-        if (localLikeEntry.unionId.equals(paramLikeEntry.unionId))
-        {
-          this.jdField_e_of_type_JavaUtilHashSet.remove(localLikeEntry.unionId);
-          this.jdField_e_of_type_JavaUtilList.remove(localLikeEntry);
-        }
+        this.jdField_e_of_type_JavaUtilHashSet.remove(localLikeEntry.unionId);
+        this.jdField_e_of_type_JavaUtilList.remove(localLikeEntry);
       }
-      return;
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanLikeCount = a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanLikeCount, false);
     }
   }
   
@@ -455,24 +509,20 @@ public class DetailFeedItem
       localList = this.jdField_e_of_type_JavaUtilList;
       localHashSet = this.jdField_e_of_type_JavaUtilHashSet;
     }
-    for (;;)
+    if (paramBoolean1)
     {
-      if (paramBoolean1)
+      localList.clear();
+      localHashSet.clear();
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      LikeEntry localLikeEntry = (LikeEntry)paramList.next();
+      if (!localHashSet.contains(localLikeEntry.unionId))
       {
-        localList.clear();
-        localHashSet.clear();
+        localHashSet.add(localLikeEntry.unionId);
+        localList.add(localLikeEntry);
       }
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        LikeEntry localLikeEntry = (LikeEntry)paramList.next();
-        if (!localHashSet.contains(localLikeEntry.unionId))
-        {
-          localHashSet.add(localLikeEntry.unionId);
-          localList.add(localLikeEntry);
-        }
-      }
-      return;
     }
   }
   
@@ -488,34 +538,36 @@ public class DetailFeedItem
   
   public boolean b()
   {
-    if (!a()) {}
-    label105:
-    label106:
-    for (;;)
-    {
+    boolean bool2 = a();
+    boolean bool1 = false;
+    if (!bool2) {
       return false;
-      if (((VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem).mHasPublicVideo) {
-        return true;
-      }
-      int i;
-      if (this.jdField_c_of_type_JavaUtilList.size() > 0)
+    }
+    if (((VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem).mHasPublicVideo) {
+      return true;
+    }
+    int i;
+    if (this.jdField_c_of_type_JavaUtilList.size() > 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    int j = i;
+    if (i != 0)
+    {
+      j = i;
+      if (this.jdField_c_of_type_JavaUtilList.size() == 1)
       {
-        i = 1;
-        if ((i == 0) || (this.jdField_c_of_type_JavaUtilList.size() != 1) || (!QQStoryContext.a().a(((LikeEntry)this.jdField_c_of_type_JavaUtilList.get(0)).unionId))) {
-          break label105;
+        j = i;
+        if (QQStoryContext.a().a(((LikeEntry)this.jdField_c_of_type_JavaUtilList.get(0)).unionId)) {
+          j = 0;
         }
-        i = 0;
-      }
-      for (;;)
-      {
-        if ((this.jdField_b_of_type_JavaUtilList.size() <= 0) && (i == 0)) {
-          break label106;
-        }
-        return true;
-        i = 0;
-        break;
       }
     }
+    if ((this.jdField_b_of_type_JavaUtilList.size() > 0) || (j != 0)) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   public void c(CommentEntry paramCommentEntry, boolean paramBoolean)
@@ -555,12 +607,34 @@ public class DetailFeedItem
   
   public String toString()
   {
-    return "DetailFeedItem{mFeedBasicItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem + ", mVideoItemList=" + this.jdField_a_of_type_JavaUtilList.size() + ", mFeedCommentList=" + this.jdField_b_of_type_JavaUtilList.size() + ", mCommentCookie=" + this.jdField_a_of_type_JavaLangString + ", mCommentIsEnd=" + this.jdField_a_of_type_Boolean + ", mLikeEntryList=" + this.jdField_c_of_type_JavaUtilList.size() + ", mFriendCommentList=" + this.jdField_d_of_type_JavaUtilList.size() + ", mFriendCommentCookie=" + this.jdField_b_of_type_JavaLangString + ", mFriendCommentIsEnd=" + this.jdField_b_of_type_Boolean + ", mFriendLikeList=" + this.jdField_e_of_type_JavaUtilList.size() + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DetailFeedItem{mFeedBasicItem=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
+    localStringBuilder.append(", mVideoItemList=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.size());
+    localStringBuilder.append(", mFeedCommentList=");
+    localStringBuilder.append(this.jdField_b_of_type_JavaUtilList.size());
+    localStringBuilder.append(", mCommentCookie=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", mCommentIsEnd=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", mLikeEntryList=");
+    localStringBuilder.append(this.jdField_c_of_type_JavaUtilList.size());
+    localStringBuilder.append(", mFriendCommentList=");
+    localStringBuilder.append(this.jdField_d_of_type_JavaUtilList.size());
+    localStringBuilder.append(", mFriendCommentCookie=");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", mFriendCommentIsEnd=");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(", mFriendLikeList=");
+    localStringBuilder.append(this.jdField_e_of_type_JavaUtilList.size());
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedItem
  * JD-Core Version:    0.7.0.1
  */

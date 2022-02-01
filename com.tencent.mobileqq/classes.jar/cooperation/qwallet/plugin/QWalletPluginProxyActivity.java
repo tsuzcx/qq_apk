@@ -4,39 +4,27 @@ import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.qwallet.temp.IQWalletTemp;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.pluginsdk.DebugHelper;
 import com.tencent.mobileqq.pluginsdk.IPluginActivity;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
+import com.tencent.mobileqq.qqpay.ui.R.string;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 public class QWalletPluginProxyActivity
   extends PluginProxyActivity
-  implements IQWalletPluginProxyActivity
+  implements IActivity
 {
-  public static final String ACTION_KEY_EVENT = "action_key_event";
-  public static final String ACTION_QWALLET_PATTERN_LOCK_COLSEALL = "pluginsdk_QWallet_PatternLock_closeAll";
-  public static final String ACTION_TOUCH_EVENT = "action_touch_event";
-  public static final String ACTION_TOUCH_START = "action_touch_start";
-  public static final String EXTRA_KEY_EVENT = "extra_key_event";
-  public static final String PARAM_DISABLE_PATTERN_LOCK = "pluginsdk_disable_PatternLock";
-  public static final String PARAM_IS_USE_QWALLET_PATTERN_LOCK = "pluginsdk_is_Use_QWallet_PatternLock";
-  public static final String PARAM_QWALLET_PLOCK_BG_INTVERAL_TIME = "pluginsdk_is_QWallet_PLock_Bg_interval_time";
   private static final String TAG = "QWalletPluginProxyActivity";
-  public static boolean mIsEnterPayBridge = false;
   protected static long mQWalletPLockBgIntervalTime = -1L;
-  public static int sEnterQWalletPluginCount;
-  public static long sReporteSeq;
   private long lastTipsTime;
   protected boolean mIsPause = false;
   protected boolean mIsStartTouchEvent = false;
@@ -50,153 +38,84 @@ public class QWalletPluginProxyActivity
   
   public static void handleNoCatchCrash(String paramString)
   {
-    int i = 0;
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return;
-      if (sEnterQWalletPluginCount > 0)
-      {
-        sEnterQWalletPluginCount = 0;
-        StringBuilder localStringBuilder = new StringBuilder().append("seq=").append(sReporteSeq).append("&from=");
-        if (mIsEnterPayBridge) {
-          i = 1;
-        }
-        VACDReportUtil.a(i, "qqwallet", "crash", "NoCatch", null, 668815, paramString);
-      }
-    } while (sReporteSeq <= 0L);
-    VACDReportUtil.endReport(sReporteSeq, "crash", null, 668815, paramString);
-    sReporteSeq = 0L;
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e0expr(TypeTransformer.java:441)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:710)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  /* Error */
   private void initPatterLock()
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_1
-    //   2: aload_0
-    //   3: invokevirtual 134	cooperation/qwallet/plugin/QWalletPluginProxyActivity:getIntent	()Landroid/content/Intent;
-    //   6: ldc 136
-    //   8: invokevirtual 142	android/content/Intent:getBundleExtra	(Ljava/lang/String;)Landroid/os/Bundle;
-    //   11: astore_2
-    //   12: aload_2
-    //   13: ifnull +31 -> 44
-    //   16: getstatic 63	cooperation/qwallet/plugin/QWalletPluginProxyActivity:mQWalletPLockBgIntervalTime	J
-    //   19: lconst_0
-    //   20: lcmp
-    //   21: ifge +15 -> 36
-    //   24: aload_2
-    //   25: ldc 31
-    //   27: ldc2_w 60
-    //   30: invokevirtual 148	android/os/Bundle:getLong	(Ljava/lang/String;J)J
-    //   33: putstatic 63	cooperation/qwallet/plugin/QWalletPluginProxyActivity:mQWalletPLockBgIntervalTime	J
-    //   36: aload_2
-    //   37: ldc 28
-    //   39: iconst_0
-    //   40: invokevirtual 152	android/os/Bundle:getBoolean	(Ljava/lang/String;Z)Z
-    //   43: istore_1
-    //   44: iload_1
-    //   45: ifne +14 -> 59
-    //   48: aload_0
-    //   49: invokevirtual 134	cooperation/qwallet/plugin/QWalletPluginProxyActivity:getIntent	()Landroid/content/Intent;
-    //   52: ldc 28
-    //   54: iconst_0
-    //   55: invokevirtual 155	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
-    //   58: pop
-    //   59: getstatic 63	cooperation/qwallet/plugin/QWalletPluginProxyActivity:mQWalletPLockBgIntervalTime	J
-    //   62: lconst_0
-    //   63: lcmp
-    //   64: ifge +18 -> 82
-    //   67: aload_0
-    //   68: invokevirtual 134	cooperation/qwallet/plugin/QWalletPluginProxyActivity:getIntent	()Landroid/content/Intent;
-    //   71: ldc 31
-    //   73: ldc2_w 60
-    //   76: invokevirtual 158	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
-    //   79: putstatic 63	cooperation/qwallet/plugin/QWalletPluginProxyActivity:mQWalletPLockBgIntervalTime	J
-    //   82: aload_0
-    //   83: new 160	cooperation/qwallet/plugin/QWalletPluginProxyActivity$MyBroadcastReceiver
-    //   86: dup
-    //   87: aload_0
-    //   88: aconst_null
-    //   89: invokespecial 163	cooperation/qwallet/plugin/QWalletPluginProxyActivity$MyBroadcastReceiver:<init>	(Lcooperation/qwallet/plugin/QWalletPluginProxyActivity;Lcooperation/qwallet/plugin/QWalletPluginProxyActivity$1;)V
-    //   92: putfield 165	cooperation/qwallet/plugin/QWalletPluginProxyActivity:myReceiver	Lcooperation/qwallet/plugin/QWalletPluginProxyActivity$MyBroadcastReceiver;
-    //   95: new 167	android/content/IntentFilter
-    //   98: dup
-    //   99: invokespecial 168	android/content/IntentFilter:<init>	()V
-    //   102: astore_2
-    //   103: aload_2
-    //   104: ldc 13
-    //   106: invokevirtual 171	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
-    //   109: aload_0
-    //   110: aload_0
-    //   111: getfield 165	cooperation/qwallet/plugin/QWalletPluginProxyActivity:myReceiver	Lcooperation/qwallet/plugin/QWalletPluginProxyActivity$MyBroadcastReceiver;
-    //   114: aload_2
-    //   115: invokevirtual 175	cooperation/qwallet/plugin/QWalletPluginProxyActivity:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
-    //   118: pop
-    //   119: return
-    //   120: astore_2
-    //   121: getstatic 180	com/tencent/mobileqq/pluginsdk/DebugHelper:sDebug	Z
-    //   124: ifeq -42 -> 82
-    //   127: ldc 182
-    //   129: ldc 184
-    //   131: aload_2
-    //   132: invokestatic 188	com/tencent/mobileqq/pluginsdk/DebugHelper:log	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   135: goto -53 -> 82
-    //   138: astore_2
-    //   139: getstatic 180	com/tencent/mobileqq/pluginsdk/DebugHelper:sDebug	Z
-    //   142: ifeq +11 -> 153
-    //   145: ldc 182
-    //   147: ldc 184
-    //   149: aload_2
-    //   150: invokestatic 188	com/tencent/mobileqq/pluginsdk/DebugHelper:log	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   153: invokestatic 194	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   156: ifeq -74 -> 82
-    //   159: ldc 195
-    //   161: iconst_2
-    //   162: ldc 197
-    //   164: invokestatic 201	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   167: goto -85 -> 82
-    //   170: astore_2
-    //   171: getstatic 180	com/tencent/mobileqq/pluginsdk/DebugHelper:sDebug	Z
-    //   174: ifeq -55 -> 119
-    //   177: ldc 182
-    //   179: ldc 203
-    //   181: aload_2
-    //   182: invokestatic 188	com/tencent/mobileqq/pluginsdk/DebugHelper:log	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   185: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	186	0	this	QWalletPluginProxyActivity
-    //   1	44	1	bool	boolean
-    //   11	104	2	localObject	Object
-    //   120	12	2	localException1	Exception
-    //   138	12	2	localOutOfMemoryError	java.lang.OutOfMemoryError
-    //   170	12	2	localException2	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   2	12	120	java/lang/Exception
-    //   16	36	120	java/lang/Exception
-    //   36	44	120	java/lang/Exception
-    //   48	59	120	java/lang/Exception
-    //   59	82	120	java/lang/Exception
-    //   2	12	138	java/lang/OutOfMemoryError
-    //   16	36	138	java/lang/OutOfMemoryError
-    //   36	44	138	java/lang/OutOfMemoryError
-    //   48	59	138	java/lang/OutOfMemoryError
-    //   59	82	138	java/lang/OutOfMemoryError
-    //   82	119	170	java/lang/Exception
+    for (;;)
+    {
+      try
+      {
+        Bundle localBundle = getIntent().getBundleExtra("pluginsdk_inner_intent_extras");
+        if (localBundle == null) {
+          break label187;
+        }
+        if (mQWalletPLockBgIntervalTime < 0L) {
+          mQWalletPLockBgIntervalTime = localBundle.getLong("pluginsdk_is_QWallet_PLock_Bg_interval_time", -1L);
+        }
+        bool = localBundle.getBoolean("pluginsdk_is_Use_QWallet_PatternLock", false);
+        if (!bool) {
+          getIntent().getBooleanExtra("pluginsdk_is_Use_QWallet_PatternLock", false);
+        }
+        if (mQWalletPLockBgIntervalTime < 0L) {
+          mQWalletPLockBgIntervalTime = getIntent().getLongExtra("pluginsdk_is_QWallet_PLock_Bg_interval_time", -1L);
+        }
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        if (DebugHelper.sDebug) {
+          DebugHelper.log("plugin_tag", "qwallet read data exception.", localOutOfMemoryError);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.e("initPatterLock", 2, "OutOfMemoryError");
+        }
+      }
+      catch (Exception localException1)
+      {
+        if (DebugHelper.sDebug) {
+          DebugHelper.log("plugin_tag", "qwallet read data exception.", localException1);
+        }
+      }
+      try
+      {
+        this.myReceiver = new QWalletPluginProxyActivity.MyBroadcastReceiver(this, null);
+        IntentFilter localIntentFilter = new IntentFilter();
+        localIntentFilter.addAction("pluginsdk_QWallet_PatternLock_closeAll");
+        registerReceiver(this.myReceiver, localIntentFilter);
+        return;
+      }
+      catch (Exception localException2)
+      {
+        if (DebugHelper.sDebug) {
+          DebugHelper.log("plugin_tag", "register exception.", localException2);
+        }
+        return;
+      }
+      label187:
+      boolean bool = false;
+    }
   }
   
   private boolean isStackLocked(ActivityManager paramActivityManager)
   {
     Class localClass = Class.forName("android.app.ActivityManager");
     int i = localClass.getDeclaredField("LOCK_TASK_MODE_NONE").getInt(ActivityManager.class);
+    boolean bool2 = false;
     paramActivityManager = localClass.getDeclaredMethod("getLockTaskModeState", new Class[0]).invoke(paramActivityManager, new Object[0]);
-    if ((paramActivityManager != null) && ((paramActivityManager instanceof Integer))) {
-      return ((Integer)paramActivityManager).intValue() != i;
+    boolean bool1 = bool2;
+    if (paramActivityManager != null)
+    {
+      bool1 = bool2;
+      if ((paramActivityManager instanceof Integer))
+      {
+        bool1 = bool2;
+        if (((Integer)paramActivityManager).intValue() != i) {
+          bool1 = true;
+        }
+      }
     }
-    return false;
+    return bool1;
   }
   
   protected static void openUrl(BasePluginActivity paramBasePluginActivity, String paramString)
@@ -212,16 +131,7 @@ public class QWalletPluginProxyActivity
     }
   }
   
-  @Override
-  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
-  {
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
-    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
-    return bool;
-  }
-  
-  public boolean enablePatternLock()
+  protected boolean enablePatternLock()
   {
     Bundle localBundle = getInnerBundle();
     if (localBundle != null)
@@ -254,7 +164,7 @@ public class QWalletPluginProxyActivity
         if (l - this.lastTipsTime > 3000L)
         {
           this.lastTipsTime = l;
-          QQToast.a(this, HardCodeUtil.a(2131711415), 0).a();
+          QQToast.a(this, HardCodeUtil.a(R.string.bS), 0).a();
         }
         return;
       }
@@ -268,77 +178,39 @@ public class QWalletPluginProxyActivity
   
   protected Bundle getInnerBundle()
   {
-    if (this.mPluginActivity == null) {
+    Object localObject1 = this.mPluginActivity;
+    Object localObject2 = null;
+    if (localObject1 == null) {
       return null;
     }
+    localObject1 = localObject2;
     if ((this.mPluginActivity instanceof BasePluginActivity))
     {
-      localObject = (BasePluginActivity)this.mPluginActivity;
-      if (((BasePluginActivity)localObject).getIntent() == null) {}
+      BasePluginActivity localBasePluginActivity = (BasePluginActivity)this.mPluginActivity;
+      localObject1 = localObject2;
+      if (localBasePluginActivity.getIntent() != null) {
+        localObject1 = localBasePluginActivity.getIntent().getExtras();
+      }
     }
-    for (Object localObject = ((BasePluginActivity)localObject).getIntent().getExtras();; localObject = null) {
-      return localObject;
-    }
+    return localObject1;
   }
   
   public String getPluginID()
   {
-    return "qwallet_plugin.apk";
+    return ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).getQWalletPluginId();
   }
   
-  public Class<? extends PluginProxyActivity> getProxyActivity(String paramString)
+  protected Class<? extends PluginProxyActivity> getProxyActivity(String paramString)
   {
     return QWalletPluginProxyActivity.class;
   }
   
-  public void handleCrash(Bundle paramBundle, Throwable paramThrowable)
+  protected void handleCrash(Bundle paramBundle, Throwable paramThrowable)
   {
-    int j = 0;
-    long l;
-    if (paramBundle != null)
-    {
-      l = paramBundle.getLong("report_seq", 0L);
-      if (l <= 0L)
-      {
-        paramBundle = paramBundle.getBundle("QWalletExtra.PayBridge.PayBundle");
-        if (paramBundle != null) {
-          l = paramBundle.getLong("vacreport_key_seq", 0L);
-        }
-      }
-    }
-    for (;;)
-    {
-      paramBundle = new StringBuilder(256);
-      if (paramThrowable != null)
-      {
-        paramBundle.append(paramThrowable.toString());
-        if (paramThrowable.getStackTrace() != null)
-        {
-          paramThrowable = paramThrowable.getStackTrace();
-          i = 0;
-          while ((i < paramThrowable.length) && (i < 16))
-          {
-            paramBundle.append("\n ");
-            paramBundle.append(paramThrowable[i].toString());
-            i += 1;
-          }
-        }
-      }
-      paramBundle = paramBundle.toString();
-      paramThrowable = new StringBuilder().append("seq=").append(sReporteSeq).append("&from=");
-      int i = j;
-      if (mIsEnterPayBridge) {
-        i = 1;
-      }
-      VACDReportUtil.a(i, "qqwallet", "crash", "Catch", null, 668814, paramBundle);
-      VACDReportUtil.endReport(l, "crash", null, 668814, paramBundle);
-      return;
-      continue;
-      l = 0L;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e0expr(TypeTransformer.java:441)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:710)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  public boolean isPatternLockOpened()
+  protected boolean isPatternLockOpened()
   {
     Bundle localBundle = getInnerBundle();
     if (localBundle != null)
@@ -355,53 +227,54 @@ public class QWalletPluginProxyActivity
   
   public final boolean isResume()
   {
-    return !this.mIsPause;
+    return this.mIsPause ^ true;
   }
   
-  public boolean isWrapContent()
+  protected boolean isWrapContent()
   {
-    boolean bool = false;
     if (super.getIntent() != null) {
-      bool = super.getIntent().getBooleanExtra("QWalletExtra.isFling", false);
+      return super.getIntent().getBooleanExtra("QWalletExtra.isFling", false);
     }
-    return bool;
+    return false;
   }
   
-  @Override
-  public void onConfigurationChanged(Configuration paramConfiguration)
-  {
-    super.onConfigurationChanged(paramConfiguration);
-    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
-  }
-  
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletPluginProxyActivity", 2, "onCreate mLaunchActivity : " + this.mLaunchActivity);
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("onCreate mLaunchActivity : ");
+      paramBundle.append(this.mLaunchActivity);
+      QLog.d("QWalletPluginProxyActivity", 2, paramBundle.toString());
     }
     initPatterLock();
-    if (this.mPluginActivity != null) {
+    if (this.mPluginActivity != null)
+    {
       this.mRealActivity = this.mPluginActivity;
-    }
-    try
-    {
-      this.touchEventStartReceiver = new QWalletPluginProxyActivity.TouchEventStartReceiver(this);
-      paramBundle = new IntentFilter();
-      paramBundle.addAction("action_touch_start");
-      registerReceiver(this.touchEventStartReceiver, paramBundle);
-      return;
-    }
-    catch (Exception paramBundle)
-    {
-      paramBundle.printStackTrace();
+      try
+      {
+        this.touchEventStartReceiver = new QWalletPluginProxyActivity.TouchEventStartReceiver(this);
+        paramBundle = new IntentFilter();
+        paramBundle.addAction("action_touch_start");
+        registerReceiver(this.touchEventStartReceiver, paramBundle);
+        return;
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle.printStackTrace();
+      }
     }
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletPluginProxyActivity", 2, "onDestroy mLaunchActivity : " + this.mLaunchActivity);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDestroy mLaunchActivity : ");
+      localStringBuilder.append(this.mLaunchActivity);
+      QLog.d("QWalletPluginProxyActivity", 2, localStringBuilder.toString());
     }
     super.onDestroy();
     try
@@ -420,8 +293,8 @@ public class QWalletPluginProxyActivity
       {
         unregisterReceiver(this.touchEventStartReceiver);
         this.touchEventStartReceiver = null;
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -429,38 +302,54 @@ public class QWalletPluginProxyActivity
     }
   }
   
-  public void onPause()
+  protected void onPause()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletPluginProxyActivity", 2, "onPause mLaunchActivity : " + this.mLaunchActivity);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPause mLaunchActivity : ");
+      localStringBuilder.append(this.mLaunchActivity);
+      QLog.d("QWalletPluginProxyActivity", 2, localStringBuilder.toString());
     }
     this.mIsPause = true;
     super.onPause();
   }
   
-  public void onResume()
+  protected void onResume()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletPluginProxyActivity", 2, "onResume mLaunchActivity : " + this.mLaunchActivity);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onResume mLaunchActivity : ");
+      localStringBuilder.append(this.mLaunchActivity);
+      QLog.d("QWalletPluginProxyActivity", 2, localStringBuilder.toString());
     }
     this.mIsPause = false;
     this.mResumeStartTime = System.currentTimeMillis();
     super.onResume();
   }
   
-  public void onStart()
+  protected void onStart()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletPluginProxyActivity", 2, "onStart mLaunchActivity : " + this.mLaunchActivity);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onStart mLaunchActivity : ");
+      localStringBuilder.append(this.mLaunchActivity);
+      QLog.d("QWalletPluginProxyActivity", 2, localStringBuilder.toString());
     }
     this.mIsStop = false;
     super.onStart();
   }
   
-  public void onStop()
+  protected void onStop()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletPluginProxyActivity", 2, "onStop mLaunchActivity : " + this.mLaunchActivity);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onStop mLaunchActivity : ");
+      localStringBuilder.append(this.mLaunchActivity);
+      QLog.d("QWalletPluginProxyActivity", 2, localStringBuilder.toString());
     }
     this.mQWalletPLockLastBgTime = System.currentTimeMillis();
     this.mIsStop = true;
@@ -491,7 +380,7 @@ public class QWalletPluginProxyActivity
     }
   }
   
-  public void startUnlockActivity(boolean paramBoolean)
+  protected void startUnlockActivity(boolean paramBoolean)
   {
     Bundle localBundle = getInnerBundle();
     if ((localBundle != null) && (localBundle.getBoolean("pluginsdk_is_Use_QWallet_PatternLock", false)))
@@ -504,7 +393,7 @@ public class QWalletPluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qwallet.plugin.QWalletPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

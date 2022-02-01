@@ -20,30 +20,33 @@ class DownloadUrlManager$6
   
   public void a(@NonNull GetVideoFullInfoListRequest paramGetVideoFullInfoListRequest, @Nullable GetVideoFullInfoListResponse paramGetVideoFullInfoListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    SLog.d("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url response " + paramGetVideoFullInfoListResponse);
-    if ((paramErrorMessage.isFail()) || (paramGetVideoFullInfoListResponse == null))
+    paramGetVideoFullInfoListRequest = new StringBuilder();
+    paramGetVideoFullInfoListRequest.append("pullNewVideoInfoIfNecessary: request video url response ");
+    paramGetVideoFullInfoListRequest.append(paramGetVideoFullInfoListResponse);
+    SLog.d("Q.qqstory.DownloadUrlManager", paramGetVideoFullInfoListRequest.toString());
+    if ((!paramErrorMessage.isFail()) && (paramGetVideoFullInfoListResponse != null))
     {
-      SLog.e("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url response error!");
+      paramGetVideoFullInfoListRequest = (StoryManager)SuperManager.a(5);
+      if (paramGetVideoFullInfoListResponse.a != null)
+      {
+        paramErrorMessage = paramGetVideoFullInfoListResponse.a.iterator();
+        while (paramErrorMessage.hasNext()) {
+          ((StoryVideoItem)paramErrorMessage.next()).mBasicInfoState = 1;
+        }
+      }
+      paramGetVideoFullInfoListResponse.a = paramGetVideoFullInfoListRequest.a(paramGetVideoFullInfoListResponse.a);
+      ((DownloadUrlManager)SuperManager.a(28)).a(paramGetVideoFullInfoListResponse.b);
+      this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager.c(this.jdField_a_of_type_JavaLangString, 0);
       this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager$PullNewVideoInfoCallBack.a(true);
       return;
     }
-    paramGetVideoFullInfoListRequest = (StoryManager)SuperManager.a(5);
-    if (paramGetVideoFullInfoListResponse.a != null)
-    {
-      paramErrorMessage = paramGetVideoFullInfoListResponse.a.iterator();
-      while (paramErrorMessage.hasNext()) {
-        ((StoryVideoItem)paramErrorMessage.next()).mBasicInfoState = 1;
-      }
-    }
-    paramGetVideoFullInfoListResponse.a = paramGetVideoFullInfoListRequest.a(paramGetVideoFullInfoListResponse.a);
-    ((DownloadUrlManager)SuperManager.a(28)).a(paramGetVideoFullInfoListResponse.b);
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager.c(this.jdField_a_of_type_JavaLangString, 0);
+    SLog.e("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url response error!");
     this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager$PullNewVideoInfoCallBack.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.download.DownloadUrlManager.6
  * JD-Core Version:    0.7.0.1
  */

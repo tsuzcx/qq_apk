@@ -34,83 +34,115 @@ public class PaiYiPaiManager
       QLog.d("PaiYiPaiManager", 2, "updateModified() called");
     }
     String str = this.a.getCurrentAccountUin();
-    BaseApplicationImpl.getApplication().getSharedPreferences("pai_yi_pai_profile_info_" + str, 0).edit().putBoolean("modified", true).apply();
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pai_yi_pai_profile_info_");
+    localStringBuilder.append(str);
+    localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 0).edit().putBoolean("modified", true).apply();
   }
   
   public void a(MessageForGrayTips.HightlightClickableSpan paramHightlightClickableSpan)
   {
-    int i = 1;
     Context localContext = paramHightlightClickableSpan.getContext();
     if ((localContext instanceof ChatHistoryActivity))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PaiYiPaiManager", 2, "onClickDoubleTapTips() no action for " + localContext);
+      if (QLog.isColorLevel())
+      {
+        paramHightlightClickableSpan = new StringBuilder();
+        paramHightlightClickableSpan.append("onClickDoubleTapTips() no action for ");
+        paramHightlightClickableSpan.append(localContext);
+        QLog.d("PaiYiPaiManager", 2, paramHightlightClickableSpan.toString());
       }
       return;
     }
     localContext.startActivity(new Intent(localContext, QQSettingSettingActivity.class));
-    if (SettingsConfigHelper.a(this.a))
-    {
+    if (SettingsConfigHelper.a(this.a)) {
       PublicFragmentActivity.a(localContext, new Intent(), AssistantSettingFragment.class);
-      paramHightlightClickableSpan.clickWebMsg("https://zb.vip.qq.com/v2/pages/nudgeMall?_wv=2");
-      if (paramHightlightClickableSpan.getMessage().istroop != 0) {
-        break label142;
-      }
-    }
-    for (;;)
-    {
-      ReportController.b(null, "dc00898", "", "", "0X800B3A4", "0X800B3A4", i, 0, "", "", "", "");
-      return;
+    } else {
       localContext.startActivity(new Intent(localContext, NotifyPushSettingActivity.class));
-      break;
-      label142:
-      if (paramHightlightClickableSpan.getMessage().istroop == 1) {
-        i = 2;
-      } else {
-        i = 10;
-      }
     }
+    paramHightlightClickableSpan.clickWebMsg("https://zb.vip.qq.com/v2/pages/nudgeMall?_wv=2");
+    int i;
+    if (paramHightlightClickableSpan.getMessage().istroop == 0) {
+      i = 1;
+    } else if (paramHightlightClickableSpan.getMessage().istroop == 1) {
+      i = 2;
+    } else {
+      i = 10;
+    }
+    ReportController.b(null, "dc00898", "", "", "0X800B3A4", "0X800B3A4", i, 0, "", "", "", "");
   }
   
   public void a(short paramShort)
   {
-    Object localObject = this.a.getCurrentAccountUin();
-    localObject = BaseApplicationImpl.getApplication().getSharedPreferences("pai_yi_pai_profile_info_" + (String)localObject, 0);
-    short s = ((SharedPreferences)localObject).getInt("switch", 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("PaiYiPaiManager", 2, "onUpdateSwitch() called with: isClosed = [" + paramShort + "], currentSwitch = [" + s + "]");
+    Object localObject1 = this.a.getCurrentAccountUin();
+    Object localObject2 = BaseApplicationImpl.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pai_yi_pai_profile_info_");
+    localStringBuilder.append((String)localObject1);
+    localObject1 = ((BaseApplicationImpl)localObject2).getSharedPreferences(localStringBuilder.toString(), 0);
+    short s = ((SharedPreferences)localObject1).getInt("switch", 0);
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("onUpdateSwitch() called with: isClosed = [");
+      ((StringBuilder)localObject2).append(paramShort);
+      ((StringBuilder)localObject2).append("], currentSwitch = [");
+      ((StringBuilder)localObject2).append(s);
+      ((StringBuilder)localObject2).append("]");
+      QLog.d("PaiYiPaiManager", 2, ((StringBuilder)localObject2).toString());
     }
     if (s != paramShort)
     {
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putInt("switch", paramShort);
-      ((SharedPreferences.Editor)localObject).apply();
+      localObject1 = ((SharedPreferences)localObject1).edit();
+      ((SharedPreferences.Editor)localObject1).putInt("switch", paramShort);
+      ((SharedPreferences.Editor)localObject1).apply();
     }
   }
   
   public boolean a()
   {
-    String str = this.a.getCurrentAccountUin();
-    boolean bool = BaseApplicationImpl.getApplication().getSharedPreferences("pai_yi_pai_profile_info_" + str, 0).getBoolean("modified", false);
-    if (QLog.isColorLevel()) {
-      QLog.d("PaiYiPaiManager", 2, "isModified() isModified = [" + bool + "]");
+    Object localObject = this.a.getCurrentAccountUin();
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pai_yi_pai_profile_info_");
+    localStringBuilder.append((String)localObject);
+    boolean bool = localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 0).getBoolean("modified", false);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isModified() isModified = [");
+      ((StringBuilder)localObject).append(bool);
+      ((StringBuilder)localObject).append("]");
+      QLog.d("PaiYiPaiManager", 2, ((StringBuilder)localObject).toString());
     }
     return bool;
   }
   
   public void b(short paramShort)
   {
-    Object localObject = this.a.getCurrentAccountUin();
-    localObject = BaseApplicationImpl.getApplication().getSharedPreferences("pai_yi_pai_profile_info_" + (String)localObject, 0);
-    short s = ((SharedPreferences)localObject).getInt("action", 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("PaiYiPaiManager", 2, "onUpdateAction() called with: action = [" + paramShort + "], currentAction = [" + s + "]");
+    Object localObject1 = this.a.getCurrentAccountUin();
+    Object localObject2 = BaseApplicationImpl.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pai_yi_pai_profile_info_");
+    localStringBuilder.append((String)localObject1);
+    localObject1 = ((BaseApplicationImpl)localObject2).getSharedPreferences(localStringBuilder.toString(), 0);
+    short s = ((SharedPreferences)localObject1).getInt("action", 0);
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("onUpdateAction() called with: action = [");
+      ((StringBuilder)localObject2).append(paramShort);
+      ((StringBuilder)localObject2).append("], currentAction = [");
+      ((StringBuilder)localObject2).append(s);
+      ((StringBuilder)localObject2).append("]");
+      QLog.d("PaiYiPaiManager", 2, ((StringBuilder)localObject2).toString());
     }
     if (s != paramShort)
     {
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putInt("action", paramShort);
-      ((SharedPreferences.Editor)localObject).apply();
+      localObject1 = ((SharedPreferences)localObject1).edit();
+      ((SharedPreferences.Editor)localObject1).putInt("action", paramShort);
+      ((SharedPreferences.Editor)localObject1).apply();
     }
     if ((paramShort != 0) || (s != 0)) {
       a();
@@ -119,17 +151,28 @@ public class PaiYiPaiManager
   
   public void c(short paramShort)
   {
-    Object localObject = this.a.getCurrentAccountUin();
-    localObject = BaseApplicationImpl.getApplication().getSharedPreferences("pai_yi_pai_profile_info_" + (String)localObject, 0);
-    short s = ((SharedPreferences)localObject).getInt("effect", 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("PaiYiPaiManager", 2, "onUpdateEffect() called with: effect = [" + paramShort + "], currentEffect = [" + s + "]");
+    Object localObject1 = this.a.getCurrentAccountUin();
+    Object localObject2 = BaseApplicationImpl.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pai_yi_pai_profile_info_");
+    localStringBuilder.append((String)localObject1);
+    localObject1 = ((BaseApplicationImpl)localObject2).getSharedPreferences(localStringBuilder.toString(), 0);
+    short s = ((SharedPreferences)localObject1).getInt("effect", 0);
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("onUpdateEffect() called with: effect = [");
+      ((StringBuilder)localObject2).append(paramShort);
+      ((StringBuilder)localObject2).append("], currentEffect = [");
+      ((StringBuilder)localObject2).append(s);
+      ((StringBuilder)localObject2).append("]");
+      QLog.d("PaiYiPaiManager", 2, ((StringBuilder)localObject2).toString());
     }
     if (s != paramShort)
     {
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putInt("effect", paramShort);
-      ((SharedPreferences.Editor)localObject).apply();
+      localObject1 = ((SharedPreferences)localObject1).edit();
+      ((SharedPreferences.Editor)localObject1).putInt("effect", paramShort);
+      ((SharedPreferences.Editor)localObject1).apply();
     }
     if ((paramShort != 0) || (s != 0)) {
       a();
@@ -140,7 +183,7 @@ public class PaiYiPaiManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.avatardoubletap.PaiYiPaiManager
  * JD-Core Version:    0.7.0.1
  */

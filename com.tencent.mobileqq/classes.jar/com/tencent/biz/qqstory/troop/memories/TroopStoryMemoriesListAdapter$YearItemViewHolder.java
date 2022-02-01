@@ -11,8 +11,8 @@ class TroopStoryMemoriesListAdapter$YearItemViewHolder
   
   public TroopStoryMemoriesListAdapter$YearItemViewHolder(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131382102));
-    this.b = ((TextView)paramView.findViewById(2131381305));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131381304));
+    this.b = ((TextView)paramView.findViewById(2131380561));
   }
   
   public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
@@ -22,7 +22,7 @@ class TroopStoryMemoriesListAdapter$YearItemViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter.YearItemViewHolder
  * JD-Core Version:    0.7.0.1
  */

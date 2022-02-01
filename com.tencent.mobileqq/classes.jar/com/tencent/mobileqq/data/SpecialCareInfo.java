@@ -40,16 +40,18 @@ public class SpecialCareInfo
   {
     try
     {
-      localObject = super.clone();
+      Object localObject = super.clone();
       return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      do
+      if (QLog.isColorLevel())
       {
-        Object localObject = this;
-      } while (!QLog.isColorLevel());
-      QLog.d("Q.contacttab.", 2, "SpecialCareInfo clone failed." + localCloneNotSupportedException.toString());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("SpecialCareInfo clone failed.");
+        localStringBuilder.append(localCloneNotSupportedException.toString());
+        QLog.d("Q.contacttab.", 2, localStringBuilder.toString());
+      }
     }
     return this;
   }
@@ -63,13 +65,27 @@ public class SpecialCareInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("\n SpecialCareInfo");
-    localStringBuilder.append("\n |-").append("uin:").append(this.uin);
-    localStringBuilder.append("\n |-").append("status:").append(getStatus());
-    localStringBuilder.append("\n |-").append("dateTime:").append(this.dateTime);
-    localStringBuilder.append("\n |-").append("globalSwitch:").append(this.globalSwitch);
-    localStringBuilder.append("\n |-").append("specialRingSwitch:").append(this.specialRingSwitch);
-    localStringBuilder.append("\n |-").append("friendRingId:").append(this.friendRingId);
-    localStringBuilder.append("\n |-").append("qzoneSwitch:").append(this.qzoneSwitch);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("uin:");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("status:");
+    localStringBuilder.append(getStatus());
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("dateTime:");
+    localStringBuilder.append(this.dateTime);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("globalSwitch:");
+    localStringBuilder.append(this.globalSwitch);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("specialRingSwitch:");
+    localStringBuilder.append(this.specialRingSwitch);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("friendRingId:");
+    localStringBuilder.append(this.friendRingId);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("qzoneSwitch:");
+    localStringBuilder.append(this.qzoneSwitch);
     return localStringBuilder.toString();
   }
   
@@ -85,7 +101,7 @@ public class SpecialCareInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.SpecialCareInfo
  * JD-Core Version:    0.7.0.1
  */

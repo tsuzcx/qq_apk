@@ -13,26 +13,12 @@ class GdtInterstitialNotifyReg$7
   {
     String str = GdtInterstitialNotifyReg.a(this.a);
     WeakReference localWeakReference = GdtInterstitialNotifyReg.a(this.a);
-    if ((TextUtils.isEmpty(str)) || (localWeakReference == null) || (localWeakReference.get() == null))
+    if ((!TextUtils.isEmpty(str)) && (localWeakReference != null) && (localWeakReference.get() != null))
     {
-      GdtLog.d("GdtInterstitialNotifyReg", "receiveReport");
-      return;
-    }
-    int i;
-    if ("ark_interstitial_video_onprogress".equals(str)) {
-      i = 1;
-    }
-    for (;;)
-    {
-      if (i != -2147483648) {
-        ((GdtInterstitialFragment)localWeakReference.get()).a(i);
-      }
-      if (!"ark_interstitial_onexposure".equals(str)) {
-        break;
-      }
-      ((GdtInterstitialFragment)localWeakReference.get()).b();
-      return;
-      if ("ark_interstitial_video_onload".equals(str)) {
+      int i;
+      if ("ark_interstitial_video_onprogress".equals(str)) {
+        i = 1;
+      } else if ("ark_interstitial_video_onload".equals(str)) {
         i = 2;
       } else if ("ark_interstitial_video_onplaying".equals(str)) {
         i = 3;
@@ -45,12 +31,20 @@ class GdtInterstitialNotifyReg$7
       } else {
         i = -2147483648;
       }
+      if (i != -2147483648) {
+        ((GdtInterstitialFragment)localWeakReference.get()).a(i);
+      }
+      if ("ark_interstitial_onexposure".equals(str)) {
+        ((GdtInterstitialFragment)localWeakReference.get()).b();
+      }
+      return;
     }
+    GdtLog.d("GdtInterstitialNotifyReg", "receiveReport");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtInterstitialNotifyReg.7
  * JD-Core Version:    0.7.0.1
  */

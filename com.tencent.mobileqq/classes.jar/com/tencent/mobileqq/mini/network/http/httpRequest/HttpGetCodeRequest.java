@@ -25,52 +25,55 @@ public class HttpGetCodeRequest
     this.req.appid.set(paramString);
   }
   
-  public byte[] getBusiBuf()
+  protected byte[] getBusiBuf()
   {
     return this.req.toByteArray();
   }
   
-  public String getCmdName()
+  protected String getCmdName()
   {
     return "GetCode";
   }
   
-  public String getModule()
+  protected String getModule()
   {
     return "mini_program_auth";
   }
   
-  public JSONObject onResponse(int paramInt, byte[] paramArrayOfByte)
+  protected JSONObject onResponse(int paramInt, byte[] paramArrayOfByte)
   {
     if (paramArrayOfByte == null) {
       return null;
     }
     PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-    INTERFACE.StGetCodeRsp localStGetCodeRsp = new INTERFACE.StGetCodeRsp();
+    Object localObject = new INTERFACE.StGetCodeRsp();
     try
     {
       localStQWebRsp.mergeFrom(WupUtil.b(paramArrayOfByte));
-      localStGetCodeRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-      QLog.d("HttpGetCodeRequest", 1, "[miniapp-http].onResponse, retCode: " + localStQWebRsp.retCode.get() + ", errMsg: " + localStQWebRsp.errMsg.get().toStringUtf8());
-      if (localStGetCodeRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("code", localStGetCodeRsp.code.get());
-        return paramArrayOfByte;
-      }
-      QLog.e("HttpGetCodeRequest", 1, "onResponse, rsp is null.");
-      return null;
+      ((INTERFACE.StGetCodeRsp)localObject).mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("[miniapp-http].onResponse, retCode: ");
+      paramArrayOfByte.append(localStQWebRsp.retCode.get());
+      paramArrayOfByte.append(", errMsg: ");
+      paramArrayOfByte.append(localStQWebRsp.errMsg.get().toStringUtf8());
+      QLog.d("HttpGetCodeRequest", 1, paramArrayOfByte.toString());
+      paramArrayOfByte = new JSONObject();
+      paramArrayOfByte.put("code", ((INTERFACE.StGetCodeRsp)localObject).code.get());
+      return paramArrayOfByte;
     }
     catch (Exception paramArrayOfByte)
     {
-      QLog.e("HttpGetCodeRequest", 1, "onResponse, exception: " + Log.getStackTraceString(paramArrayOfByte));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onResponse, exception: ");
+      ((StringBuilder)localObject).append(Log.getStackTraceString(paramArrayOfByte));
+      QLog.e("HttpGetCodeRequest", 1, ((StringBuilder)localObject).toString());
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.network.http.httpRequest.HttpGetCodeRequest
  * JD-Core Version:    0.7.0.1
  */

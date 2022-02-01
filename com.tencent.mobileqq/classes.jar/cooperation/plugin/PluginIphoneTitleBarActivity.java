@@ -37,10 +37,10 @@ public class PluginIphoneTitleBarActivity
   protected float b;
   protected View.OnClickListener c = new PluginIphoneTitleBarActivity.1(this);
   public RelativeLayout e;
-  public ImageView f;
+  protected ImageView f;
   protected TextView h;
-  public TextView i;
-  public TextView j;
+  protected TextView i;
+  protected TextView j;
   protected TextView k;
   protected TextView l;
   public View r;
@@ -55,18 +55,19 @@ public class PluginIphoneTitleBarActivity
   @TargetApi(11)
   public static void f(View paramView)
   {
-    if (paramView == null) {}
-    while (Build.VERSION.SDK_INT <= 10) {
+    if (paramView == null) {
       return;
     }
-    paramView.setLayerType(1, null);
+    if (Build.VERSION.SDK_INT > 10) {
+      paramView.setLayerType(1, null);
+    }
   }
   
   protected View a()
   {
-    this.j = ((TextView)findViewById(2131369518));
-    this.f = ((ImageView)findViewById(2131369501));
-    this.l = ((TextView)findViewById(2131380175));
+    this.j = ((TextView)findViewById(2131369233));
+    this.f = ((ImageView)findViewById(2131369216));
+    this.l = ((TextView)findViewById(2131379495));
     f(this.j);
     f(this.f);
     return this.j;
@@ -74,10 +75,11 @@ public class PluginIphoneTitleBarActivity
   
   protected String a()
   {
-    if ((this.i == null) || (this.i.getText() == null) || (this.i.getText().length() == 0)) {
-      return getString(2131690778);
+    TextView localTextView = this.i;
+    if ((localTextView != null) && (localTextView.getText() != null) && (this.i.getText().length() != 0)) {
+      return this.i.getText().toString();
     }
-    return this.i.getText().toString();
+    return getString(2131690706);
   }
   
   protected void a(int paramInt, View.OnClickListener paramOnClickListener)
@@ -87,10 +89,10 @@ public class PluginIphoneTitleBarActivity
   
   protected void a(Intent paramIntent)
   {
-    ((FrameLayout)findViewById(16908290)).setForeground(getResources().getDrawable(2130850513));
+    ((FrameLayout)findViewById(16908290)).setForeground(getResources().getDrawable(2130850439));
     if (this.h == null)
     {
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131377159));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131376636));
       f(this.jdField_a_of_type_AndroidViewViewGroup);
       b();
       c();
@@ -106,7 +108,7 @@ public class PluginIphoneTitleBarActivity
     {
       requestWindowFeature(7);
       super.setContentView(paramView);
-      getWindow().setFeatureInt(7, 2131559052);
+      getWindow().setFeatureInt(7, 2131558946);
       a(getIntent());
       return;
     }
@@ -133,10 +135,11 @@ public class PluginIphoneTitleBarActivity
   
   protected View b()
   {
-    this.h = ((TextView)findViewById(2131369487));
-    if (this.h != null)
+    this.h = ((TextView)findViewById(2131369202));
+    TextView localTextView = this.h;
+    if (localTextView != null)
     {
-      this.h.setOnClickListener(this.c);
+      localTextView.setOnClickListener(this.c);
       f(this.h);
     }
     return this.h;
@@ -144,36 +147,34 @@ public class PluginIphoneTitleBarActivity
   
   protected void b(Intent paramIntent)
   {
-    TextView localTextView;
-    if ((this.h != null) && ((this.h instanceof TextView)) && (paramIntent != null) && (paramIntent.getExtras() != null))
+    Object localObject = this.h;
+    if ((localObject != null) && ((localObject instanceof TextView)) && (paramIntent != null) && (paramIntent.getExtras() != null))
     {
-      localTextView = this.h;
-      String str = paramIntent.getExtras().getString("leftViewText");
-      paramIntent = str;
-      if (str == null) {
-        paramIntent = getString(2131690778);
+      TextView localTextView = this.h;
+      localObject = paramIntent.getExtras().getString("leftViewText");
+      paramIntent = (Intent)localObject;
+      if (localObject == null) {
+        paramIntent = getString(2131690706);
       }
-      if (this.jdField_r_of_type_Boolean) {
+      if (this.jdField_r_of_type_Boolean)
+      {
         localTextView.setText("  ");
+        return;
       }
+      localTextView.setText(paramIntent);
     }
-    else
-    {
-      return;
-    }
-    localTextView.setText(paramIntent);
   }
   
   protected View c()
   {
-    this.i = ((TextView)findViewById(2131369534));
+    this.i = ((TextView)findViewById(2131369249));
     return this.i;
   }
   
   protected void c(int paramInt, View.OnClickListener paramOnClickListener)
   {
     this.h.setVisibility(8);
-    this.h = ((TextView)findViewById(2131369489));
+    this.h = ((TextView)findViewById(2131369204));
     f(this.h);
     this.h.setVisibility(0);
     this.h.setText(paramInt);
@@ -209,29 +210,35 @@ public class PluginIphoneTitleBarActivity
     super.setContentView(paramView);
   }
   
-  public boolean e()
+  protected boolean e()
   {
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839549);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839406);
       this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = this.i.getCompoundDrawables();
       this.jdField_a_of_type_Int = this.i.getCompoundDrawablePadding();
       this.i.setCompoundDrawablePadding(10);
-      this.i.setCompoundDrawablesWithIntrinsicBounds(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[1], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[2], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[3]);
+      TextView localTextView = this.i;
+      Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      Drawable[] arrayOfDrawable = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
+      localTextView.setCompoundDrawablesWithIntrinsicBounds(localDrawable, arrayOfDrawable[1], arrayOfDrawable[2], arrayOfDrawable[3]);
       ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).start();
       return true;
     }
     return false;
   }
   
-  public boolean f()
+  protected boolean f()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    if (localObject != null)
     {
-      ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).stop();
+      ((Animatable)localObject).stop();
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
       this.i.setCompoundDrawablePadding(this.jdField_a_of_type_Int);
-      this.i.setCompoundDrawablesWithIntrinsicBounds(this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[0], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[1], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[2], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[3]);
+      localObject = this.i;
+      Drawable[] arrayOfDrawable = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
+      ((TextView)localObject).setCompoundDrawablesWithIntrinsicBounds(arrayOfDrawable[0], arrayOfDrawable[1], arrayOfDrawable[2], arrayOfDrawable[3]);
       return true;
     }
     return false;
@@ -244,30 +251,27 @@ public class PluginIphoneTitleBarActivity
   
   protected void h(int paramInt)
   {
-    TextView localTextView;
-    String str1;
-    if ((this.h != null) && ((this.h instanceof TextView)))
+    Object localObject = this.h;
+    if ((localObject != null) && ((localObject instanceof TextView)))
     {
-      String str2 = getString(paramInt);
-      localTextView = this.h;
-      if (str2 != null)
+      String str = getString(paramInt);
+      TextView localTextView = this.h;
+      if (str != null)
       {
-        str1 = str2;
-        if (!"".equals(str2)) {}
+        localObject = str;
+        if (!"".equals(str)) {}
       }
       else
       {
-        str1 = getString(2131690778);
+        localObject = getString(2131690706);
       }
-      if (this.jdField_r_of_type_Boolean) {
+      if (this.jdField_r_of_type_Boolean)
+      {
         localTextView.setText("  ");
+        return;
       }
+      localTextView.setText((CharSequence)localObject);
     }
-    else
-    {
-      return;
-    }
-    localTextView.setText(str1);
   }
   
   public void m_(int paramInt)
@@ -287,79 +291,78 @@ public class PluginIphoneTitleBarActivity
   
   public void setContentView(int paramInt)
   {
-    int m = 1;
     Object localObject1 = getIntent();
-    if (localObject1 != null) {}
-    for (boolean bool = ((Intent)localObject1).getBooleanExtra("showTitleBar", true);; bool = true)
+    int m = 1;
+    boolean bool;
+    if (localObject1 != null) {
+      bool = ((Intent)localObject1).getBooleanExtra("showTitleBar", true);
+    } else {
+      bool = true;
+    }
+    if (!this.v)
     {
-      if (!this.v)
-      {
-        if (bool) {
-          requestWindowFeature(7);
-        }
-        super.setContentView(paramInt);
-        if (bool) {
-          getWindow().setFeatureInt(7, 2131559052);
-        }
+      if (bool) {
+        requestWindowFeature(7);
       }
-      for (;;)
+      super.setContentView(paramInt);
+      if (bool) {
+        getWindow().setFeatureInt(7, 2131558946);
+      }
+    }
+    else if (bool)
+    {
+      Object localObject3 = LayoutInflater.from(this);
+      localObject1 = ((LayoutInflater)localObject3).inflate(2131558948, null);
+      try
       {
-        this.b = getResources().getDisplayMetrics().density;
-        if (bool) {
-          a(getIntent());
-        }
-        return;
-        if (bool)
+        localObject3 = ((LayoutInflater)localObject3).inflate(paramInt, (ViewGroup)localObject1, false);
+        this.e = ((RelativeLayout)((View)localObject1).findViewById(2131378893));
+        if (ImmersiveUtils.isSupporImmersive() == 1)
         {
-          Object localObject2 = LayoutInflater.from(this);
-          localObject1 = ((LayoutInflater)localObject2).inflate(2131559054, null);
-          try
-          {
-            localObject2 = ((LayoutInflater)localObject2).inflate(paramInt, (ViewGroup)localObject1, false);
-            this.e = ((RelativeLayout)((View)localObject1).findViewById(2131379546));
-            if (ImmersiveUtils.isSupporImmersive() == 1)
-            {
-              this.e.setFitsSystemWindows(true);
-              this.e.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
-            }
-            localObject1 = new RelativeLayout.LayoutParams(-1, -1);
-            ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131377159);
-            this.e.addView((View)localObject2, (ViewGroup.LayoutParams)localObject1);
-            this.mContentView = ((View)localObject2);
-            super.setContentView(this.e);
-            m = 0;
-          }
-          catch (InflateException localInflateException)
-          {
-            for (;;)
-            {
-              localInflateException.printStackTrace();
-            }
-          }
-          catch (RuntimeException localRuntimeException)
-          {
-            for (;;)
-            {
-              localRuntimeException.printStackTrace();
-            }
-          }
-          if (m == 0) {
-            continue;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.e("IphoneTitleBarActivity", 2, "layout with merge ,use framelayout to immersive" + getComponentName());
-          }
-          super.setContentView(paramInt);
-          getWindow().setFeatureInt(7, 2131559052);
-          if (this.jdField_r_of_type_AndroidViewView != null) {
-            this.jdField_r_of_type_AndroidViewView.setVisibility(0);
-          }
-          this.b = getResources().getDisplayMetrics().density;
-          a(getIntent());
-          return;
+          this.e.setFitsSystemWindows(true);
+          this.e.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
+        }
+        localObject1 = new RelativeLayout.LayoutParams(-1, -1);
+        ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131376636);
+        this.e.addView((View)localObject3, (ViewGroup.LayoutParams)localObject1);
+        this.mContentView = ((View)localObject3);
+        super.setContentView(this.e);
+        m = 0;
+      }
+      catch (RuntimeException localRuntimeException)
+      {
+        localRuntimeException.printStackTrace();
+      }
+      catch (InflateException localInflateException)
+      {
+        localInflateException.printStackTrace();
+      }
+      if (m != 0)
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("layout with merge ,use framelayout to immersive");
+          ((StringBuilder)localObject2).append(getComponentName());
+          QLog.e("IphoneTitleBarActivity", 2, ((StringBuilder)localObject2).toString());
         }
         super.setContentView(paramInt);
+        getWindow().setFeatureInt(7, 2131558946);
+        Object localObject2 = this.jdField_r_of_type_AndroidViewView;
+        if (localObject2 != null) {
+          ((View)localObject2).setVisibility(0);
+        }
+        this.b = getResources().getDisplayMetrics().density;
+        a(getIntent());
       }
+    }
+    else
+    {
+      super.setContentView(paramInt);
+    }
+    this.b = getResources().getDisplayMetrics().density;
+    if (bool) {
+      a(getIntent());
     }
   }
   
@@ -375,16 +378,17 @@ public class PluginIphoneTitleBarActivity
   
   public void setTitle(CharSequence paramCharSequence)
   {
-    if ((this.i != null) && ((this.i instanceof TextView)))
+    TextView localTextView = this.i;
+    if ((localTextView != null) && ((localTextView instanceof TextView)))
     {
-      this.i.setText(paramCharSequence);
+      localTextView.setText(paramCharSequence);
       super.setTitle(paramCharSequence);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.plugin.PluginIphoneTitleBarActivity
  * JD-Core Version:    0.7.0.1
  */

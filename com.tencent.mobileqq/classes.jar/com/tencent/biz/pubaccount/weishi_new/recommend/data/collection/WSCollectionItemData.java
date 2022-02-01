@@ -21,31 +21,34 @@ public class WSCollectionItemData
   
   public String a()
   {
-    if (this.jdField_a_of_type_UserGrowthStCollection != null) {
-      return this.jdField_a_of_type_UserGrowthStCollection.cover;
+    stCollection localstCollection = this.jdField_a_of_type_UserGrowthStCollection;
+    if (localstCollection != null) {
+      return localstCollection.cover;
     }
     return "";
   }
   
   public String b()
   {
-    if (this.jdField_a_of_type_UserGrowthStCollection != null) {
-      return this.jdField_a_of_type_UserGrowthStCollection.name;
+    stCollection localstCollection = this.jdField_a_of_type_UserGrowthStCollection;
+    if (localstCollection != null) {
+      return localstCollection.name;
     }
     return "";
   }
   
   public String c()
   {
-    if (this.jdField_a_of_type_UserGrowthStCollection != null) {
-      return this.jdField_a_of_type_UserGrowthStCollection.subTitle;
+    stCollection localstCollection = this.jdField_a_of_type_UserGrowthStCollection;
+    if (localstCollection != null) {
+      return localstCollection.subTitle;
     }
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.data.collection.WSCollectionItemData
  * JD-Core Version:    0.7.0.1
  */

@@ -13,23 +13,28 @@ public class VoIPJsPlugin$JSONParser<T>
     if (!TextUtils.isEmpty(paramString)) {
       try
       {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        QMLog.e("[mini] VoIPJsPlugin", "JSON is empty");
-      }
-      catch (JSONException paramClass)
-      {
+        Object localObject = new JSONObject(paramString);
         try
         {
-          paramString = JsonORM.parseFrom(localJSONObject, paramClass);
+          paramString = JsonORM.parseFrom((JSONObject)localObject, paramClass);
           return paramString;
         }
         catch (Exception paramString)
         {
-          QMLog.e("[mini] VoIPJsPlugin", "JSONParser error! failed parse to " + paramClass, paramString);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("JSONParser error! failed parse to ");
+          ((StringBuilder)localObject).append(paramClass);
+          QMLog.e("[mini] VoIPJsPlugin", ((StringBuilder)localObject).toString(), paramString);
           return null;
         }
-        paramClass = paramClass;
-        QMLog.e("[mini] VoIPJsPlugin", "JSONParser error! not a valid JSON " + paramString, paramClass);
+        QMLog.e("[mini] VoIPJsPlugin", "JSON is empty");
+      }
+      catch (JSONException paramClass)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("JSONParser error! not a valid JSON ");
+        ((StringBuilder)localObject).append(paramString);
+        QMLog.e("[mini] VoIPJsPlugin", ((StringBuilder)localObject).toString(), paramClass);
         return null;
       }
     }
@@ -46,19 +51,20 @@ public class VoIPJsPlugin$JSONParser<T>
       }
       catch (Exception paramJSONObject)
       {
-        QMLog.e("[mini] VoIPJsPlugin", "JsonORM error! failed parse to " + paramClass, paramJSONObject);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("JsonORM error! failed parse to ");
+        localStringBuilder.append(paramClass);
+        QMLog.e("[mini] VoIPJsPlugin", localStringBuilder.toString(), paramJSONObject);
       }
-    }
-    for (;;)
-    {
-      return null;
+    } else {
       QMLog.e("[mini] VoIPJsPlugin", "JSON obj is empty");
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.VoIPJsPlugin.JSONParser
  * JD-Core Version:    0.7.0.1
  */

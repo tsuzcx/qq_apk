@@ -6,7 +6,7 @@ import android.view.MotionEvent;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
 
@@ -35,22 +35,25 @@ public class FloatWindowBaseLayout
   
   private void a()
   {
-    this.e = AIOUtils.a(3.0F, getResources());
+    this.e = ViewUtils.a(3.0F);
     this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)getContext().getSystemService("window"));
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams();
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.format = -3;
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.flags = 808;
-    if (Build.VERSION.SDK_INT >= 26) {}
-    for (this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.type = 2038;; this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.type = 2002)
-    {
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.systemUiVisibility = 5892;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.gravity = 85;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.setTitle("FloatWindowBaseLayout");
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x = 0;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = 0;
-      b();
-      return;
+    WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+    localLayoutParams.format = -3;
+    localLayoutParams.flags = 808;
+    if (Build.VERSION.SDK_INT >= 26) {
+      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.type = 2038;
+    } else {
+      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.type = 2002;
     }
+    localLayoutParams = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+    localLayoutParams.systemUiVisibility = 5892;
+    localLayoutParams.gravity = 85;
+    localLayoutParams.setTitle("FloatWindowBaseLayout");
+    localLayoutParams = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+    localLayoutParams.x = 0;
+    localLayoutParams.y = 0;
+    b();
   }
   
   private void b()
@@ -78,114 +81,57 @@ public class FloatWindowBaseLayout
   {
     if ((paramInt1 != this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x) || (paramInt2 != this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y))
     {
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x = paramInt1;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = paramInt2;
+      WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+      localLayoutParams.x = paramInt1;
+      localLayoutParams.y = paramInt2;
     }
   }
   
-  /* Error */
   public boolean a()
   {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_1
-    //   2: invokestatic 147	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   5: ifeq +31 -> 36
-    //   8: ldc 86
-    //   10: iconst_2
-    //   11: new 149	java/lang/StringBuilder
-    //   14: dup
-    //   15: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   18: ldc 152
-    //   20: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   23: aload_0
-    //   24: getfield 21	com/tencent/avgame/floatwindow/FloatWindowBaseLayout:jdField_a_of_type_Boolean	Z
-    //   27: invokevirtual 159	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   30: invokevirtual 163	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   33: invokestatic 166	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   36: aload_0
-    //   37: monitorenter
-    //   38: aload_0
-    //   39: getfield 21	com/tencent/avgame/floatwindow/FloatWindowBaseLayout:jdField_a_of_type_Boolean	Z
-    //   42: istore_2
-    //   43: iload_2
-    //   44: ifne +60 -> 104
-    //   47: aload_0
-    //   48: getfield 58	com/tencent/avgame/floatwindow/FloatWindowBaseLayout:jdField_a_of_type_AndroidViewWindowManager	Landroid/view/WindowManager;
-    //   51: aload_0
-    //   52: aload_0
-    //   53: getfield 64	com/tencent/avgame/floatwindow/FloatWindowBaseLayout:jdField_a_of_type_AndroidViewWindowManager$LayoutParams	Landroid/view/WindowManager$LayoutParams;
-    //   56: invokeinterface 170 3 0
-    //   61: aload_0
-    //   62: iconst_1
-    //   63: putfield 21	com/tencent/avgame/floatwindow/FloatWindowBaseLayout:jdField_a_of_type_Boolean	Z
-    //   66: aload_0
-    //   67: monitorexit
-    //   68: iload_1
-    //   69: ireturn
-    //   70: astore_3
-    //   71: ldc 86
-    //   73: iconst_1
-    //   74: new 149	java/lang/StringBuilder
-    //   77: dup
-    //   78: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   81: ldc 172
-    //   83: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   86: aload_3
-    //   87: invokevirtual 175	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   90: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   93: invokevirtual 163	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   96: invokestatic 177	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   99: iconst_0
-    //   100: istore_1
-    //   101: goto -35 -> 66
-    //   104: aload_0
-    //   105: getfield 58	com/tencent/avgame/floatwindow/FloatWindowBaseLayout:jdField_a_of_type_AndroidViewWindowManager	Landroid/view/WindowManager;
-    //   108: aload_0
-    //   109: aload_0
-    //   110: getfield 64	com/tencent/avgame/floatwindow/FloatWindowBaseLayout:jdField_a_of_type_AndroidViewWindowManager$LayoutParams	Landroid/view/WindowManager$LayoutParams;
-    //   113: invokeinterface 180 3 0
-    //   118: goto -52 -> 66
-    //   121: astore_3
-    //   122: ldc 86
-    //   124: iconst_1
-    //   125: new 149	java/lang/StringBuilder
-    //   128: dup
-    //   129: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   132: ldc 182
-    //   134: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   137: aload_3
-    //   138: invokevirtual 175	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   141: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   144: invokevirtual 163	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   147: invokestatic 177	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   150: iconst_0
-    //   151: istore_1
-    //   152: goto -86 -> 66
-    //   155: astore_3
-    //   156: aload_0
-    //   157: monitorexit
-    //   158: aload_3
-    //   159: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	160	0	this	FloatWindowBaseLayout
-    //   1	151	1	bool1	boolean
-    //   42	2	2	bool2	boolean
-    //   70	17	3	localThrowable1	Throwable
-    //   121	17	3	localThrowable2	Throwable
-    //   155	4	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   47	66	70	java/lang/Throwable
-    //   104	118	121	java/lang/Throwable
-    //   38	43	155	finally
-    //   47	66	155	finally
-    //   66	68	155	finally
-    //   71	99	155	finally
-    //   104	118	155	finally
-    //   122	150	155	finally
-    //   156	158	155	finally
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("showOrUpdate mAdded: ");
+      localStringBuilder1.append(this.jdField_a_of_type_Boolean);
+      QLog.d("FloatWindowBaseLayout", 2, localStringBuilder1.toString());
+    }
+    try
+    {
+      boolean bool2 = this.jdField_a_of_type_Boolean;
+      boolean bool1 = false;
+      StringBuilder localStringBuilder2;
+      if (!bool2) {
+        try
+        {
+          this.jdField_a_of_type_AndroidViewWindowManager.addView(this, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+          this.jdField_a_of_type_Boolean = true;
+        }
+        catch (Throwable localThrowable1)
+        {
+          localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("showOrUpdate addView error:");
+          localStringBuilder2.append(localThrowable1.getMessage());
+          QLog.e("FloatWindowBaseLayout", 1, localStringBuilder2.toString());
+          break label175;
+        }
+      }
+      try
+      {
+        this.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+        bool1 = true;
+      }
+      catch (Throwable localThrowable2)
+      {
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("showOrUpdate updateViewLayout error: ");
+        localStringBuilder2.append(localThrowable2.getMessage());
+        QLog.e("FloatWindowBaseLayout", 1, localStringBuilder2.toString());
+      }
+      label175:
+      return bool1;
+    }
+    finally {}
   }
   
   public int b()
@@ -195,33 +141,39 @@ public class FloatWindowBaseLayout
   
   public boolean b()
   {
-    boolean bool2 = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatWindowBaseLayout", 2, "hide: " + this.jdField_a_of_type_Boolean);
-    }
-    boolean bool1;
-    try
+    if (QLog.isColorLevel())
     {
-      boolean bool3 = this.jdField_a_of_type_Boolean;
-      bool1 = bool2;
-      if (bool3) {}
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("hide: ");
+      localStringBuilder1.append(this.jdField_a_of_type_Boolean);
+      QLog.d("FloatWindowBaseLayout", 2, localStringBuilder1.toString());
+    }
+    for (;;)
+    {
       try
       {
-        this.jdField_a_of_type_AndroidViewWindowManager.removeView(this);
-        this.jdField_a_of_type_Boolean = false;
-        bool1 = bool2;
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
+        boolean bool2 = this.jdField_a_of_type_Boolean;
+        bool1 = false;
+        if (bool2)
         {
-          QLog.e("FloatWindowBaseLayout", 1, "hide removeView error: " + localThrowable.getMessage());
-          bool1 = false;
+          try
+          {
+            this.jdField_a_of_type_AndroidViewWindowManager.removeView(this);
+            this.jdField_a_of_type_Boolean = false;
+          }
+          catch (Throwable localThrowable)
+          {
+            StringBuilder localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append("hide removeView error: ");
+            localStringBuilder2.append(localThrowable.getMessage());
+            QLog.e("FloatWindowBaseLayout", 1, localStringBuilder2.toString());
+          }
+          return bool1;
         }
       }
-      return bool1;
+      finally {}
+      boolean bool1 = true;
     }
-    finally {}
   }
   
   public int c()
@@ -236,65 +188,86 @@ public class FloatWindowBaseLayout
   
   public void d()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatWindowBaseLayout", 2, "applyChanges: " + this.jdField_a_of_type_Boolean);
-    }
-    if (this.jdField_a_of_type_Boolean) {}
-    try
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
-      return;
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("applyChanges: ");
+      localStringBuilder1.append(this.jdField_a_of_type_Boolean);
+      QLog.d("FloatWindowBaseLayout", 2, localStringBuilder1.toString());
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("FloatWindowBaseLayout", 1, "applyChanges updateViewLayout error: " + localThrowable.getMessage());
+    if (this.jdField_a_of_type_Boolean) {
+      try
+      {
+        this.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("applyChanges updateViewLayout error: ");
+        localStringBuilder2.append(localThrowable.getMessage());
+        QLog.e("FloatWindowBaseLayout", 1, localStringBuilder2.toString());
+      }
     }
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
     float f1 = paramMotionEvent.getRawX();
     float f2 = paramMotionEvent.getRawY();
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    boolean bool = false;
+    if (i != 0)
     {
-    default: 
-      bool1 = false;
-    case 0: 
-    case 2: 
-      for (;;)
-      {
-        this.jdField_a_of_type_Float = f1;
-        this.jdField_b_of_type_Float = f2;
-        return bool1;
-        this.jdField_c_of_type_Float = f1;
-        this.d = f2;
-        this.jdField_b_of_type_Boolean = false;
-        this.jdField_c_of_type_Boolean = true;
-        bool1 = super.dispatchTouchEvent(paramMotionEvent);
-        continue;
-        if ((Math.abs(f1 - this.jdField_c_of_type_Float) > this.e) && (Math.abs(f2 - this.d) > this.e) && (this.jdField_c_of_type_Boolean) && (!this.jdField_b_of_type_Boolean)) {
-          this.jdField_b_of_type_Boolean = true;
+      if (i != 1) {
+        if (i != 2)
+        {
+          if (i != 3) {
+            break label245;
+          }
         }
-        if ((this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatPositionChangeCallback != null) && (this.jdField_b_of_type_Boolean)) {
-          this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatPositionChangeCallback.a((int)(f1 - this.jdField_a_of_type_Float), (int)(f2 - this.jdField_b_of_type_Float));
-        }
-        if (!this.jdField_b_of_type_Boolean) {
-          bool1 = super.dispatchTouchEvent(paramMotionEvent);
+        else
+        {
+          if ((Math.abs(f1 - this.jdField_c_of_type_Float) > this.e) && (Math.abs(f2 - this.d) > this.e) && (this.jdField_c_of_type_Boolean) && (!this.jdField_b_of_type_Boolean)) {
+            this.jdField_b_of_type_Boolean = true;
+          }
+          localFloatPositionChangeCallback = this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatPositionChangeCallback;
+          if ((localFloatPositionChangeCallback != null) && (this.jdField_b_of_type_Boolean)) {
+            localFloatPositionChangeCallback.a((int)(f1 - this.jdField_a_of_type_Float), (int)(f2 - this.jdField_b_of_type_Float));
+          }
+          if (this.jdField_b_of_type_Boolean)
+          {
+            bool = true;
+            break label245;
+          }
+          bool = super.dispatchTouchEvent(paramMotionEvent);
+          break label245;
         }
       }
-    }
-    if ((this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatPositionChangeCallback != null) && (this.jdField_b_of_type_Boolean)) {
-      this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatPositionChangeCallback.b();
-    }
-    if (this.jdField_b_of_type_Boolean) {}
-    for (bool1 = bool2;; bool1 = super.dispatchTouchEvent(paramMotionEvent))
-    {
+      FloatPositionChangeCallback localFloatPositionChangeCallback = this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatPositionChangeCallback;
+      if ((localFloatPositionChangeCallback != null) && (this.jdField_b_of_type_Boolean)) {
+        localFloatPositionChangeCallback.b();
+      }
+      if (this.jdField_b_of_type_Boolean) {
+        bool = true;
+      } else {
+        bool = super.dispatchTouchEvent(paramMotionEvent);
+      }
       this.jdField_b_of_type_Boolean = false;
       this.jdField_c_of_type_Boolean = false;
-      break;
     }
+    else
+    {
+      this.jdField_c_of_type_Float = f1;
+      this.d = f2;
+      this.jdField_b_of_type_Boolean = false;
+      this.jdField_c_of_type_Boolean = true;
+      bool = super.dispatchTouchEvent(paramMotionEvent);
+    }
+    label245:
+    this.jdField_a_of_type_Float = f1;
+    this.jdField_b_of_type_Float = f2;
+    return bool;
   }
   
   public int e()
@@ -314,7 +287,7 @@ public class FloatWindowBaseLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.floatwindow.FloatWindowBaseLayout
  * JD-Core Version:    0.7.0.1
  */

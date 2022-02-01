@@ -13,23 +13,23 @@ class FileBrowserManager$2
   
   public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    if (paramActionSheetItem == null) {}
-    do
-    {
+    if (paramActionSheetItem == null) {
       return;
-      FileBrowserManager.a(this.a).dismiss();
-      if (paramActionSheetItem.listener != null)
-      {
-        paramActionSheetItem.listener.onClick(null);
-        return;
-      }
-    } while (FileBrowserManager.a(this.a) == null);
-    FileBrowserManager.a(this.a).a(paramActionSheetItem);
+    }
+    FileBrowserManager.a(this.a).dismiss();
+    if (paramActionSheetItem.listener != null)
+    {
+      paramActionSheetItem.listener.onClick(null);
+      return;
+    }
+    if (FileBrowserManager.a(this.a) != null) {
+      FileBrowserManager.a(this.a).a(paramActionSheetItem);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileBrowserManager.2
  * JD-Core Version:    0.7.0.1
  */

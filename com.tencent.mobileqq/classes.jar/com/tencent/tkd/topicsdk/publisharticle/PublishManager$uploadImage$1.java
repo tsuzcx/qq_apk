@@ -4,6 +4,7 @@ import com.tencent.tkd.topicsdk.bean.GlobalPublisherConfig;
 import com.tencent.tkd.topicsdk.bean.ImageInfo;
 import com.tencent.tkd.topicsdk.bean.PublishArticleInfo;
 import com.tencent.tkd.topicsdk.framework.TLog;
+import com.tencent.tkd.topicsdk.framework.TopicSDKHelperKt;
 import com.tencent.tkd.topicsdk.framework.Uploader;
 import com.tencent.tkd.topicsdk.interfaces.IUploadListener;
 import kotlin.Metadata;
@@ -31,10 +32,13 @@ public final class PublishManager$uploadImage$1
   public void b(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "url");
-    TLog.a("PublishManager", "图片上传成功,url=" + paramString);
-    PublishManager.PublishTask localPublishTask = PublishManager.a(PublishManager.a, this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPublishArticleInfo.getPublishId());
-    if (localPublishTask != null) {
-      localPublishTask.a((Uploader)null);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("图片上传成功,url=");
+    ((StringBuilder)localObject).append(paramString);
+    TLog.a("PublishManager", ((StringBuilder)localObject).toString());
+    localObject = PublishManager.a(PublishManager.a, this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPublishArticleInfo.getPublishId());
+    if (localObject != null) {
+      ((PublishManager.PublishTask)localObject).a((Uploader)null);
     }
     this.jdField_a_of_type_ComTencentTkdTopicsdkBeanImageInfo.setUrl(paramString);
     paramString = this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPublishArticleInfo;
@@ -52,12 +56,13 @@ public final class PublishManager$uploadImage$1
   public void c(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "errMsg");
+    TopicSDKHelperKt.a("图片上传失败");
     PublishManager.a.c(this.jdField_a_of_type_ComTencentTkdTopicsdkBeanGlobalPublisherConfig, this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPublishArticleInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.publisharticle.PublishManager.uploadImage.1
  * JD-Core Version:    0.7.0.1
  */

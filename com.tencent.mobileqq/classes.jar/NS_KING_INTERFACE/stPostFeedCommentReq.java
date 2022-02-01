@@ -13,8 +13,8 @@ public final class stPostFeedCommentReq
   extends JceStruct
   implements Cloneable
 {
-  static stMetaComment cache_comment;
-  static ArrayList<stMetaReportDataItem> cache_data;
+  static stMetaComment cache_comment = new stMetaComment();
+  static ArrayList<stMetaReportDataItem> cache_data = new ArrayList();
   public stMetaComment comment = null;
   public ArrayList<stMetaReportDataItem> data = null;
   public String feed_id = "";
@@ -22,16 +22,8 @@ public final class stPostFeedCommentReq
   
   static
   {
-    if (!stPostFeedCommentReq.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      cache_comment = new stMetaComment();
-      cache_data = new ArrayList();
-      stMetaReportDataItem localstMetaReportDataItem = new stMetaReportDataItem();
-      cache_data.add(localstMetaReportDataItem);
-      return;
-    }
+    stMetaReportDataItem localstMetaReportDataItem = new stMetaReportDataItem();
+    cache_data.add(localstMetaReportDataItem);
   }
   
   public stPostFeedCommentReq() {}
@@ -57,18 +49,17 @@ public final class stPostFeedCommentReq
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -91,13 +82,28 @@ public final class stPostFeedCommentReq
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (stPostFeedCommentReq)paramObject;
-    } while ((!JceUtil.equals(this.feed_id, paramObject.feed_id)) || (!JceUtil.equals(this.comment, paramObject.comment)) || (!JceUtil.equals(this.data, paramObject.data)) || (!JceUtil.equals(this.hadMancheked, paramObject.hadMancheked)));
-    return true;
+    }
+    paramObject = (stPostFeedCommentReq)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.feed_id, paramObject.feed_id))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.comment, paramObject.comment))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.data, paramObject.data))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.hadMancheked, paramObject.hadMancheked)) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -170,15 +176,16 @@ public final class stPostFeedCommentReq
   {
     paramJceOutputStream.write(this.feed_id, 0);
     paramJceOutputStream.write(this.comment, 1);
-    if (this.data != null) {
-      paramJceOutputStream.write(this.data, 2);
+    ArrayList localArrayList = this.data;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
     paramJceOutputStream.write(this.hadMancheked, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_INTERFACE.stPostFeedCommentReq
  * JD-Core Version:    0.7.0.1
  */

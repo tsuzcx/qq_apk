@@ -88,15 +88,12 @@ class UDPJsPlugin$UDPTask
         this.receiveBuffer.flip();
         onReceive(this.receiveByteArray, this.receiveBuffer.limit(), paramSelectionKey);
       }
-      return true;
     }
-    catch (IOException paramSelectionKey)
+    catch (Exception paramSelectionKey)
     {
-      for (;;)
-      {
-        onError(paramSelectionKey.getMessage());
-      }
+      onError(paramSelectionKey.getMessage());
     }
+    return true;
   }
   
   void onClose()
@@ -139,27 +136,22 @@ class UDPJsPlugin$UDPTask
       localJSONObject.put("event", "message");
       NativeBuffer.packNativeBuffer(this.jsService, paramArrayOfByte, 0, paramInt, NativeBuffer.TYPE_BUFFER_NATIVE, "message", localJSONObject);
       paramArrayOfByte = new JSONObject();
-      InetAddress localInetAddress;
       if ((paramSocketAddress instanceof InetSocketAddress))
       {
         paramSocketAddress = (InetSocketAddress)paramSocketAddress;
-        localInetAddress = paramSocketAddress.getAddress();
-        if (!(localInetAddress instanceof Inet4Address)) {
-          break label146;
+        InetAddress localInetAddress = paramSocketAddress.getAddress();
+        boolean bool = localInetAddress instanceof Inet4Address;
+        if (bool) {
+          paramArrayOfByte.put("family", "IPv4");
+        } else {
+          paramArrayOfByte.put("family", "IPv6");
         }
-        paramArrayOfByte.put("family", "IPv4");
-      }
-      for (;;)
-      {
         paramArrayOfByte.put("address", localInetAddress.getHostAddress());
         paramArrayOfByte.put("port", paramSocketAddress.getPort());
-        paramArrayOfByte.put("size", paramInt);
-        localJSONObject.put("remoteInfo", paramArrayOfByte);
-        UDPJsPlugin.access$500(this.this$0, "onUDPTaskEventCallback", localJSONObject.toString());
-        return;
-        label146:
-        paramArrayOfByte.put("family", "IPv6");
       }
+      paramArrayOfByte.put("size", paramInt);
+      localJSONObject.put("remoteInfo", paramArrayOfByte);
+      UDPJsPlugin.access$500(this.this$0, "onUDPTaskEventCallback", localJSONObject.toString());
       return;
     }
     catch (JSONException paramArrayOfByte) {}
@@ -175,7 +167,7 @@ class UDPJsPlugin$UDPTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.UDPJsPlugin.UDPTask
  * JD-Core Version:    0.7.0.1
  */

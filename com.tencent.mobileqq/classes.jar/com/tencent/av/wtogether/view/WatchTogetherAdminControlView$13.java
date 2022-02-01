@@ -20,13 +20,13 @@ class WatchTogetherAdminControlView$13
     }
     WatchTogetherAdminControlView.c(this.this$0);
     SessionInfo localSessionInfo = SessionMgr.a().a();
-    WTEntranceHelper.a((Activity)WatchTogetherAdminControlView.a(this.this$0).getContext(), 2, localSessionInfo.j, localSessionInfo.d);
+    WTEntranceHelper.a((Activity)WatchTogetherAdminControlView.a(this.this$0).getContext(), 2, localSessionInfo.k, localSessionInfo.c);
     AVUtil.a("0X800B630", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.wtogether.view.WatchTogetherAdminControlView.13
  * JD-Core Version:    0.7.0.1
  */

@@ -17,40 +17,38 @@ public class NetworkUtil
     Network[] arrayOfNetwork = paramConnectivityManagerDelegate.getAllNetworksUnfiltered();
     int m = arrayOfNetwork.length;
     int i = 0;
-    int j = 0;
-    if (i < m)
+    int k;
+    for (int j = 0; i < m; j = k)
     {
       Network localNetwork = arrayOfNetwork[i];
-      int k;
-      if (localNetwork.equals(paramNetwork)) {
+      if (localNetwork.equals(paramNetwork))
+      {
         k = j;
       }
-      for (;;)
+      else
       {
-        i += 1;
-        j = k;
-        break;
         NetworkCapabilities localNetworkCapabilities = paramConnectivityManagerDelegate.getNetworkCapabilities(localNetwork);
         k = j;
-        if (localNetworkCapabilities != null)
-        {
-          k = j;
-          if (localNetworkCapabilities.hasCapability(12)) {
-            if (localNetworkCapabilities.hasTransport(4))
-            {
-              k = j;
-              if (paramConnectivityManagerDelegate.vpnAccessible(localNetwork)) {
-                return new Network[] { localNetwork };
-              }
+        if (localNetworkCapabilities != null) {
+          if (!localNetworkCapabilities.hasCapability(12))
+          {
+            k = j;
+          }
+          else if (localNetworkCapabilities.hasTransport(4))
+          {
+            k = j;
+            if (paramConnectivityManagerDelegate.vpnAccessible(localNetwork)) {
+              return new Network[] { localNetwork };
             }
-            else
-            {
-              arrayOfNetwork[j] = localNetwork;
-              k = j + 1;
-            }
+          }
+          else
+          {
+            arrayOfNetwork[j] = localNetwork;
+            k = j + 1;
           }
         }
       }
+      i += 1;
     }
     return (Network[])Arrays.copyOf(arrayOfNetwork, j);
   }
@@ -75,7 +73,7 @@ public class NetworkUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.net.NetworkUtil
  * JD-Core Version:    0.7.0.1
  */

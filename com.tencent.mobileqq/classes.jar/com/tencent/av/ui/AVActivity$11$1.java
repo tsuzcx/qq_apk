@@ -10,10 +10,10 @@ class AVActivity$11$1
   
   public void run()
   {
-    if ((this.a.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.a.jdField_a_of_type_ComTencentAvVideoController.a().g != 4) && (this.a.a.b == 1) && (!this.a.a.jdField_a_of_type_Boolean))
+    if ((this.a.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.a.jdField_a_of_type_ComTencentAvVideoController.a().f != 4) && (this.a.a.b == 1) && (!this.a.a.jdField_a_of_type_Boolean))
     {
       this.a.a.b(false);
-      this.a.a.f(false);
+      this.a.a.e(false);
       if ((this.a.a.jdField_a_of_type_ComTencentAvUiVideoControlUI != null) && ((this.a.a.jdField_a_of_type_ComTencentAvUiVideoControlUI instanceof DoubleVideoCtrlUI)))
       {
         ((DoubleVideoCtrlUI)this.a.a.jdField_a_of_type_ComTencentAvUiVideoControlUI).a();
@@ -25,7 +25,7 @@ class AVActivity$11$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.AVActivity.11.1
  * JD-Core Version:    0.7.0.1
  */

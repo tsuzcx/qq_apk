@@ -1,32 +1,63 @@
 package com.tencent.mobileqq.apollo.store.webview;
 
-import com.tencent.mobileqq.apollo.api.res.IApolloResDownloader.OnApolloDownLoadListener;
-import com.tencent.mobileqq.app.HardCodeUtil;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.CmShowRscDownloader;
+import com.tencent.mobileqq.apollo.res.api.ICmShowRscCacheManager;
+import com.tencent.mobileqq.apollo.res.api.impl.CmShowRscCacheManagerImpl;
+import com.tencent.mobileqq.apollo.res.api.impl.CmShowRscUpdateHandlerImpl.ContentUpdateCheckResult;
+import com.tencent.mobileqq.apollo.res.api.impl.CmShowRscUpdateHandlerImpl.OnCheckContentListener;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 class ApolloPluginRscLoader$9
-  implements IApolloResDownloader.OnApolloDownLoadListener
+  implements CmShowRscUpdateHandlerImpl.OnCheckContentListener
 {
-  ApolloPluginRscLoader$9(ApolloPluginRscLoader paramApolloPluginRscLoader, File paramFile, String paramString) {}
+  ApolloPluginRscLoader$9(ApolloPluginRscLoader paramApolloPluginRscLoader, int paramInt, String paramString, AppInterface paramAppInterface, File paramFile) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void a(boolean paramBoolean, CmShowRscUpdateHandlerImpl.ContentUpdateCheckResult paramContentUpdateCheckResult)
   {
-    if (paramBoolean)
+    Object localObject1 = ((CmShowRscCacheManagerImpl)QRoute.api(ICmShowRscCacheManager.class)).getRscItem(8, this.jdField_a_of_type_Int);
+    paramContentUpdateCheckResult = new StringBuilder();
+    paramContentUpdateCheckResult.append("downloadApolloRes onCheckFinish success:");
+    paramContentUpdateCheckResult.append(paramBoolean);
+    paramContentUpdateCheckResult.append(" downloadItem:");
+    if (localObject1 == null) {
+      paramBoolean = true;
+    } else {
+      paramBoolean = false;
+    }
+    paramContentUpdateCheckResult.append(paramBoolean);
+    QLog.i("[cmshow]ApolloPluginRscLoader", 1, paramContentUpdateCheckResult.toString());
+    paramContentUpdateCheckResult = ApolloPluginRscLoader.a(this.jdField_a_of_type_JavaLangString);
+    if (TextUtils.isEmpty(paramContentUpdateCheckResult))
     {
-      if (this.jdField_a_of_type_JavaIoFile.exists())
-      {
-        this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloPluginRscLoader.a(this.jdField_a_of_type_JavaLangString, 0, paramInt2 + HardCodeUtil.a(2131700587));
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloPluginRscLoader.a(this.jdField_a_of_type_JavaLangString, 2, paramInt2 + HardCodeUtil.a(2131700563));
+      paramContentUpdateCheckResult = new StringBuilder();
+      paramContentUpdateCheckResult.append("getApolloRsc error callbackId is null resourceUrl:");
+      paramContentUpdateCheckResult.append(this.jdField_a_of_type_JavaLangString);
+      QLog.e("[cmshow]ApolloPluginRscLoader", 1, paramContentUpdateCheckResult.toString());
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloPluginRscLoader.a(this.jdField_a_of_type_JavaLangString, 2, paramInt2 + HardCodeUtil.a(2131700584));
+    if (localObject1 == null)
+    {
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloPluginRscLoader;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject2).append(" json里无此id");
+      ((ApolloPluginRscLoader)localObject1).a(paramContentUpdateCheckResult, 2, ((StringBuilder)localObject2).toString());
+      return;
+    }
+    Object localObject2 = new ArrayList();
+    ((List)localObject2).add(localObject1);
+    CmShowRscDownloader.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "", new ApolloPluginRscLoader.9.1(this, paramContentUpdateCheckResult), (List)localObject2, false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.webview.ApolloPluginRscLoader.9
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,8 @@ import android.os.Build.VERSION;
 import android.view.View;
 import androidx.annotation.RequiresApi;
 import com.tencent.av.audioprocess.AudioProcess;
-import com.tencent.av.audioprocess.AudioProcess.OnRecord;
+import com.tencent.av.audioprocess.AudioProcessCallback.OnRecord;
+import com.tencent.av.audioprocess.api.IAudioProcessApi;
 import com.tencent.av.ui.funchat.record.QavRecordDpc;
 import com.tencent.av.ui.funchat.record.QavRecordListener;
 import com.tencent.avgame.gameroom.stage.IStageRecordPresenter;
@@ -16,10 +17,10 @@ import mqq.util.WeakReference;
 
 @RequiresApi(api=16)
 public abstract class GameVideoRecordBaseCtrl
-  implements AudioProcess.OnRecord, QavRecordListener, IStageRecordPresenter
+  implements AudioProcessCallback.OnRecord, QavRecordListener, IStageRecordPresenter
 {
   public int a;
-  private AudioProcess a;
+  private IAudioProcessApi a;
   protected QavRecordDpc a;
   public String a;
   protected WeakReference<Context> a;
@@ -33,7 +34,10 @@ public abstract class GameVideoRecordBaseCtrl
       this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramContext);
     }
     this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc = QavRecordDpc.a();
-    this.jdField_a_of_type_JavaLangString = (a() + "_Base");
+    paramContext = new StringBuilder();
+    paramContext.append(a());
+    paramContext.append("_Base");
+    this.jdField_a_of_type_JavaLangString = paramContext.toString();
   }
   
   protected abstract String a();
@@ -44,22 +48,35 @@ public abstract class GameVideoRecordBaseCtrl
   
   public boolean a()
   {
-    if (Build.VERSION.SDK_INT >= 18) {}
-    for (boolean bool = true;; bool = false)
-    {
-      AVLog.d(this.jdField_a_of_type_JavaLangString, "isDeviceSupport, sdk:" + Build.VERSION.SDK_INT);
-      return bool;
+    boolean bool;
+    if (Build.VERSION.SDK_INT >= 18) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    String str = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isDeviceSupport, sdk:");
+    localStringBuilder.append(Build.VERSION.SDK_INT);
+    AVLog.d(str, localStringBuilder.toString());
+    return bool;
   }
   
   public String b()
   {
-    String str = BaseApplicationImpl.getApplication().getFilesDir() + File.separator + "QQGameVideo" + File.separator + System.currentTimeMillis() + ".mp4";
-    File localFile = new File(str).getParentFile();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(BaseApplicationImpl.getApplication().getFilesDir());
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append("QQGameVideo");
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(System.currentTimeMillis());
+    ((StringBuilder)localObject).append(".mp4");
+    localObject = ((StringBuilder)localObject).toString();
+    File localFile = new File((String)localObject).getParentFile();
     if (!localFile.exists()) {
       localFile.mkdirs();
     }
-    return str;
+    return localObject;
   }
   
   public void b() {}
@@ -68,47 +85,48 @@ public abstract class GameVideoRecordBaseCtrl
   
   public boolean b()
   {
-    boolean bool = true;
-    if ((!a()) || (!c())) {
+    boolean bool;
+    if ((a()) && (c())) {
+      bool = true;
+    } else {
       bool = false;
     }
-    AVLog.d(this.jdField_a_of_type_JavaLangString, "isSupportRecord. isSupport = " + bool);
+    String str = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isSupportRecord. isSupport = ");
+    localStringBuilder.append(bool);
+    AVLog.d(str, localStringBuilder.toString());
     return bool;
   }
   
   public String c()
   {
-    String str = BaseApplicationImpl.getApplication().getFilesDir() + File.separator + "QQGameVideo" + File.separator + System.currentTimeMillis() + ".jpg";
-    File localFile = new File(str).getParentFile();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(BaseApplicationImpl.getApplication().getFilesDir());
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append("QQGameVideo");
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(System.currentTimeMillis());
+    ((StringBuilder)localObject).append(".jpg");
+    localObject = ((StringBuilder)localObject).toString();
+    File localFile = new File((String)localObject).getParentFile();
     if (!localFile.exists()) {
       localFile.mkdirs();
     }
-    return str;
+    return localObject;
   }
   
   public void c() {}
   
   public boolean c()
   {
-    if (this.jdField_a_of_type_Int == 0)
+    int i = this.jdField_a_of_type_Int;
+    boolean bool = true;
+    if (i == 0)
     {
-      if (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.r <= this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.d) {
-        break label92;
-      }
-      this.jdField_a_of_type_Int = 2;
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.jdField_a_of_type_Int != 1) {
-        this.jdField_a_of_type_Int = 4;
-      }
-      AVLog.d(this.jdField_a_of_type_JavaLangString, "isPerformanceSupport=" + this.jdField_a_of_type_Int);
-      if ((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 1)) {
-        break;
-      }
-      return true;
-      label92:
-      if ((this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.r == this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.d) && (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.s >= this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.e)) {
+      if (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.r > this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.d) {
+        this.jdField_a_of_type_Int = 2;
+      } else if ((this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.r == this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.d) && (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.s >= this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.e)) {
         this.jdField_a_of_type_Int = 2;
       } else if (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.r > this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.b) {
         this.jdField_a_of_type_Int = 1;
@@ -117,8 +135,24 @@ public abstract class GameVideoRecordBaseCtrl
       } else {
         this.jdField_a_of_type_Int = 3;
       }
+      if (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.jdField_a_of_type_Int != 1) {
+        this.jdField_a_of_type_Int = 4;
+      }
+      String str = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isPerformanceSupport=");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      AVLog.d(str, localStringBuilder.toString());
     }
-    return false;
+    i = this.jdField_a_of_type_Int;
+    if (i != 2)
+    {
+      if (i == 1) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   public boolean d()
@@ -135,8 +169,8 @@ public abstract class GameVideoRecordBaseCtrl
     }
     AVLog.d(this.jdField_a_of_type_JavaLangString, "startRecord");
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentAvAudioprocessAudioProcess = AudioProcess.a();
-    this.jdField_a_of_type_ComTencentAvAudioprocessAudioProcess.a(7, this);
+    this.jdField_a_of_type_ComTencentAvAudioprocessApiIAudioProcessApi = AudioProcess.a();
+    this.jdField_a_of_type_ComTencentAvAudioprocessApiIAudioProcessApi.startRecord(7, this);
     return true;
   }
   
@@ -156,10 +190,11 @@ public abstract class GameVideoRecordBaseCtrl
       return;
     }
     this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentAvAudioprocessAudioProcess != null)
+    IAudioProcessApi localIAudioProcessApi = this.jdField_a_of_type_ComTencentAvAudioprocessApiIAudioProcessApi;
+    if (localIAudioProcessApi != null)
     {
-      this.jdField_a_of_type_ComTencentAvAudioprocessAudioProcess.f();
-      this.jdField_a_of_type_ComTencentAvAudioprocessAudioProcess = null;
+      localIAudioProcessApi.stopRecord();
+      this.jdField_a_of_type_ComTencentAvAudioprocessApiIAudioProcessApi = null;
     }
     AVLog.d(this.jdField_a_of_type_JavaLangString, "endRecord");
   }
@@ -170,7 +205,7 @@ public abstract class GameVideoRecordBaseCtrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.videorecord.GameVideoRecordBaseCtrl
  * JD-Core Version:    0.7.0.1
  */

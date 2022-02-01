@@ -28,7 +28,11 @@ public final class NativeBufferManager
       int i = createNativeBuffer(this.scriptRuntimeHandle, paramArrayOfByte, paramLong1, paramLong2);
       return i;
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError) {}
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      label23:
+      break label23;
+    }
     return createNativeBuffer(this.scriptRuntimeHandle, paramArrayOfByte, paramLong1, paramLong2);
   }
   
@@ -40,13 +44,17 @@ public final class NativeBufferManager
       byte[] arrayOfByte = getNativeBuffer(this.scriptRuntimeHandle, paramInt);
       return arrayOfByte;
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError) {}
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      label12:
+      break label12;
+    }
     return getNativeBuffer(this.scriptRuntimeHandle, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.script.NativeBufferManager
  * JD-Core Version:    0.7.0.1
  */

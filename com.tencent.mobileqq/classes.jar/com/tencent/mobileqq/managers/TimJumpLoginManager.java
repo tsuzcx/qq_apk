@@ -36,7 +36,7 @@ import org.json.JSONArray;
 public class TimJumpLoginManager
   implements Handler.Callback, Manager
 {
-  public static String a;
+  public static String a = "TimJumpLoginManager";
   public int a;
   private long jdField_a_of_type_Long = -1L;
   private Handler jdField_a_of_type_AndroidOsHandler = null;
@@ -48,11 +48,6 @@ public class TimJumpLoginManager
   public int c = 5;
   public int d = 24;
   private int e = 0;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "TimJumpLoginManager";
-  }
   
   public TimJumpLoginManager(QQAppInterface paramQQAppInterface)
   {
@@ -67,202 +62,218 @@ public class TimJumpLoginManager
   
   private boolean a()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.jdField_a_of_type_Boolean)
+    {
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "switchKey false");
       }
-    }
-    label182:
-    label482:
-    for (;;)
-    {
       return false;
-      if (this.e > this.c)
+    }
+    Object localObject2;
+    if (this.e > this.c)
+    {
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel())
-        {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "showCount = " + this.e + ", showTipTotalCount = " + this.c);
-          return false;
-        }
+        localObject1 = jdField_a_of_type_JavaLangString;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("showCount = ");
+        ((StringBuilder)localObject2).append(this.e);
+        ((StringBuilder)localObject2).append(", showTipTotalCount = ");
+        ((StringBuilder)localObject2).append(this.c);
+        QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
       }
-      else if (System.currentTimeMillis() - this.jdField_a_of_type_Long < this.d * 60 * 60 * 1000)
+      return false;
+    }
+    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < this.d * 60 * 60 * 1000)
+    {
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel())
-        {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "lastShowTime = " + this.jdField_a_of_type_Long + ", showTipHourInterval = " + this.d);
-          return false;
-        }
+        localObject1 = jdField_a_of_type_JavaLangString;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("lastShowTime = ");
+        ((StringBuilder)localObject2).append(this.jdField_a_of_type_Long);
+        ((StringBuilder)localObject2).append(", showTipHourInterval = ");
+        ((StringBuilder)localObject2).append(this.d);
+        QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
       }
-      else
+      return false;
+    }
+    Object localObject1 = Calendar.getInstance();
+    int j = ((Calendar)localObject1).get(7);
+    if (this.jdField_a_of_type_OrgJsonJSONArray != null)
+    {
+      i = 0;
+      while (i < this.jdField_a_of_type_OrgJsonJSONArray.length())
       {
-        Object localObject = Calendar.getInstance();
-        int j = ((Calendar)localObject).get(7);
-        if (this.jdField_a_of_type_OrgJsonJSONArray != null)
+        if (j - 1 == this.jdField_a_of_type_OrgJsonJSONArray.optInt(i))
         {
-          i = 0;
-          if (i < this.jdField_a_of_type_OrgJsonJSONArray.length()) {
-            if (j - 1 != this.jdField_a_of_type_OrgJsonJSONArray.optInt(i)) {}
-          }
+          i = 1;
+          break label261;
         }
-        for (int i = 1;; i = 0)
-        {
-          if (i == 0) {
-            break label482;
-          }
-          i = ((Calendar)localObject).get(11);
-          if ((this.jdField_b_of_type_OrgJsonJSONArray == null) || (this.jdField_b_of_type_OrgJsonJSONArray.length() != 2)) {
-            break;
-          }
-          j = this.jdField_b_of_type_OrgJsonJSONArray.optInt(0);
-          int k = this.jdField_b_of_type_OrgJsonJSONArray.optInt(1);
-          if ((i < j) || (i >= k)) {
-            break;
-          }
-          if (!com.tencent.util.pm.PackageUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "com.tencent.tim"))
-          {
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "tim not installed");
-            return false;
-            i += 1;
-            break label182;
-          }
-          localObject = new File(Environment.getExternalStorageDirectory().getPath() + "/tencent/msflogs/com/tencent/tim");
-          if ((((File)localObject).exists()) && (System.currentTimeMillis() - ((File)localObject).lastModified() < this.jdField_b_of_type_Int * 60 * 60 * 1000))
-          {
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "timLogFile.lastModified() = " + ((File)localObject).lastModified() + ", androidLimit = " + this.jdField_b_of_type_Int);
-            return false;
-          }
-          if ((BaseActivity.sTopActivity instanceof SplashActivity))
-          {
-            localObject = (SplashActivity)BaseActivity.sTopActivity;
-            if (SplashActivity.currentFragment != 1) {}
-          }
-          for (i = 1;; i = 0)
-          {
-            if (i == 0)
-            {
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d(jdField_a_of_type_JavaLangString, 2, "is not in main tab");
-              return false;
-            }
-            return true;
-          }
-        }
+        i += 1;
       }
     }
+    int i = 0;
+    label261:
+    if (i == 0) {
+      return false;
+    }
+    i = ((Calendar)localObject1).get(11);
+    localObject1 = this.jdField_b_of_type_OrgJsonJSONArray;
+    if ((localObject1 != null) && (((JSONArray)localObject1).length() == 2))
+    {
+      j = this.jdField_b_of_type_OrgJsonJSONArray.optInt(0);
+      int k = this.jdField_b_of_type_OrgJsonJSONArray.optInt(1);
+      if (i >= j)
+      {
+        if (i >= k) {
+          return false;
+        }
+        if (!com.tencent.util.pm.PackageUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "com.tencent.tim"))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "tim not installed");
+          }
+          return false;
+        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(Environment.getExternalStorageDirectory().getPath());
+        ((StringBuilder)localObject1).append("/tencent/msflogs/com/tencent/tim");
+        localObject1 = new File(((StringBuilder)localObject1).toString());
+        if ((((File)localObject1).exists()) && (System.currentTimeMillis() - ((File)localObject1).lastModified() < this.jdField_b_of_type_Int * 60 * 60 * 1000))
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject2 = jdField_a_of_type_JavaLangString;
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("timLogFile.lastModified() = ");
+            localStringBuilder.append(((File)localObject1).lastModified());
+            localStringBuilder.append(", androidLimit = ");
+            localStringBuilder.append(this.jdField_b_of_type_Int);
+            QLog.d((String)localObject2, 2, localStringBuilder.toString());
+          }
+          return false;
+        }
+        if ((BaseActivity.sTopActivity instanceof SplashActivity))
+        {
+          localObject1 = (SplashActivity)BaseActivity.sTopActivity;
+          if (SplashActivity.currentFragment == 1)
+          {
+            i = 1;
+            break label537;
+          }
+        }
+        i = 0;
+        label537:
+        if (i == 0)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "is not in main tab");
+          }
+          return false;
+        }
+        return true;
+      }
+    }
+    return false;
   }
   
   private void b()
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isLogin()) {}
-    Object localObject1;
-    label123:
-    do
-    {
+    if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isLogin()) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "showTimLoginDialog");
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "showTimLoginDialog");
+    }
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("tim_login_shared_pre_");
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+    localObject1 = ((BaseApplication)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 0);
+    try
+    {
+      localObject2 = ((SharedPreferences)localObject1).getString("tim_login_sd", "");
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+        this.jdField_a_of_type_OrgJsonJSONArray = new JSONArray((String)localObject2);
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("tim_login_shared_pre_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), 0);
-      try
-      {
-        localObject2 = ((SharedPreferences)localObject1).getString("tim_login_sd", "");
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          this.jdField_a_of_type_OrgJsonJSONArray = new JSONArray((String)localObject2);
-        }
-        localObject2 = ((SharedPreferences)localObject1).getString("tim_login_st", "");
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          this.jdField_b_of_type_OrgJsonJSONArray = new JSONArray((String)localObject2);
-        }
+      localObject2 = ((SharedPreferences)localObject1).getString("tim_login_st", "");
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+        this.jdField_b_of_type_OrgJsonJSONArray = new JSONArray((String)localObject2);
       }
-      catch (Exception localException2)
-      {
-        Object localObject2;
-        int i;
-        String str4;
-        String str2;
-        String str5;
-        String str6;
-        Object localObject3;
-        String str3;
-        JSONArray localJSONArray;
-        String str1;
-        break label123;
-      }
-      this.jdField_b_of_type_Int = ((SharedPreferences)localObject1).getInt("tim_login_l", 72);
-      this.c = ((SharedPreferences)localObject1).getInt("tim_login_tc", 5);
-      this.d = ((SharedPreferences)localObject1).getInt("tim_login_sti", 24);
-      this.jdField_a_of_type_Long = ((SharedPreferences)localObject1).getLong("tim_login_lct", 0L);
-      this.e = ((SharedPreferences)localObject1).getInt("tim_login_sc", 0);
-    } while (!a());
+    }
+    catch (Exception localException2)
+    {
+      label131:
+      int i;
+      String str1;
+      String str4;
+      String str5;
+      break label131;
+    }
+    this.jdField_b_of_type_Int = ((SharedPreferences)localObject1).getInt("tim_login_l", 72);
+    this.c = ((SharedPreferences)localObject1).getInt("tim_login_tc", 5);
+    this.d = ((SharedPreferences)localObject1).getInt("tim_login_sti", 24);
+    this.jdField_a_of_type_Long = ((SharedPreferences)localObject1).getLong("tim_login_lct", 0L);
+    this.e = ((SharedPreferences)localObject1).getInt("tim_login_sc", 0);
+    if (!a()) {
+      return;
+    }
     localObject2 = ((SharedPreferences)localObject1).edit();
     i = this.e + 1;
     this.e = i;
     ((SharedPreferences.Editor)localObject2).putInt("tim_login_sc", i);
     ((SharedPreferences.Editor)localObject2).putLong("tim_login_lct", System.currentTimeMillis());
     ((SharedPreferences.Editor)localObject2).commit();
-    localObject2 = HardCodeUtil.a(2131714856);
-    str4 = "登录TIM";
-    str2 = HardCodeUtil.a(2131714855);
-    str5 = ((SharedPreferences)localObject1).getString("tim_login_t", "QQ办公简洁版");
-    str6 = ((SharedPreferences)localObject1).getString("tim_login_c", (String)localObject2);
-    localObject2 = str2;
+    localObject2 = HardCodeUtil.a(2131714786);
+    str3 = "登录TIM";
+    str1 = HardCodeUtil.a(2131714785);
+    str4 = ((SharedPreferences)localObject1).getString("tim_login_t", "QQ办公简洁版");
+    str5 = ((SharedPreferences)localObject1).getString("tim_login_c", (String)localObject2);
+    localObject2 = str1;
     try
     {
       localObject1 = ((SharedPreferences)localObject1).getString("tim_login_btns", "");
-      localObject3 = str2;
-      str3 = str4;
-      localObject2 = str2;
+      str2 = str3;
+      localObject3 = str1;
+      localObject2 = str1;
       if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        localObject2 = str2;
-        localJSONArray = new JSONArray((String)localObject1);
-        localObject3 = str2;
-        str3 = str4;
-        if (localJSONArray != null)
+        localObject2 = str1;
+        JSONArray localJSONArray = new JSONArray((String)localObject1);
+        str2 = str3;
+        localObject3 = str1;
+        localObject2 = str1;
+        if (localJSONArray.length() == 2)
         {
-          localObject3 = str2;
-          str3 = str4;
-          localObject2 = str2;
-          if (localJSONArray.length() == 2)
+          localObject1 = str1;
+          localObject2 = str1;
+          if (!TextUtils.isEmpty(localJSONArray.optString(0)))
           {
-            localObject1 = str2;
-            localObject2 = str2;
-            if (!TextUtils.isEmpty(localJSONArray.optString(0)))
-            {
-              localObject2 = str2;
-              localObject1 = localJSONArray.optString(0);
-            }
-            localObject3 = localObject1;
-            str3 = str4;
+            localObject2 = str1;
+            localObject1 = localJSONArray.optString(0);
+          }
+          str2 = str3;
+          localObject3 = localObject1;
+          localObject2 = localObject1;
+          if (!TextUtils.isEmpty(localJSONArray.optString(1)))
+          {
             localObject2 = localObject1;
-            if (!TextUtils.isEmpty(localJSONArray.optString(1)))
-            {
-              localObject2 = localObject1;
-              str3 = localJSONArray.optString(1);
-              localObject3 = localObject1;
-            }
+            str2 = localJSONArray.optString(1);
+            localObject3 = localObject1;
           }
         }
       }
-      localObject1 = str3;
     }
     catch (Exception localException1)
     {
       for (;;)
       {
-        str1 = "登录TIM";
-        localObject3 = localObject2;
+        String str2 = str3;
+        Object localObject3 = localException2;
       }
     }
-    DialogUtil.a(BaseActivity.sTopActivity, 230, str5, str6, (String)localObject3, (String)localObject1, new TimJumpLoginManager.1(this), new TimJumpLoginManager.2(this)).show();
+    DialogUtil.a(BaseActivity.sTopActivity, 230, str4, str5, (String)localObject3, str2, new TimJumpLoginManager.1(this), new TimJumpLoginManager.2(this)).show();
     ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80085D9", "0X80085D9", 0, 0, "", "", "", "");
   }
   
@@ -271,14 +282,29 @@ public class TimJumpLoginManager
     if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(10011)) {
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(10011);
     }
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("tim_login_shared_pre_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), 0);
-    this.jdField_a_of_type_Boolean = localSharedPreferences.getBoolean("tim_login_s", false);
-    this.jdField_a_of_type_Int = localSharedPreferences.getInt("tim_login_tal", 60);
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "switchKey = " + this.jdField_a_of_type_Boolean + ", showTipTimeIntervalAfterLogined = " + this.jdField_a_of_type_Int);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("tim_login_shared_pre_");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+    localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
+    this.jdField_a_of_type_Boolean = ((SharedPreferences)localObject).getBoolean("tim_login_s", false);
+    this.jdField_a_of_type_Int = ((SharedPreferences)localObject).getInt("tim_login_tal", 60);
+    if (QLog.isColorLevel())
+    {
+      localObject = jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("switchKey = ");
+      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(", showTipTimeIntervalAfterLogined = ");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int >= 0)) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(10011, this.jdField_a_of_type_Int * 1000);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      int i = this.jdField_a_of_type_Int;
+      if (i >= 0) {
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(10011, i * 1000);
+      }
     }
   }
   
@@ -286,74 +312,82 @@ public class TimJumpLoginManager
   {
     if (!com.tencent.mobileqq.utils.PackageUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "com.tencent.tim", "775E696D09856872FDD8AB4F3F06B1E0"))
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, 2131719897, 0).a();
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, 2131719629, 0).a();
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "jumpTimLogin tim not install ");
       }
       return;
     }
-    String str = com.tencent.mobileqq.utils.PackageUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "com.tencent.tim");
+    Object localObject1 = com.tencent.mobileqq.utils.PackageUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "com.tencent.tim");
     int i = TencentDocConvertConfigProcessor.a().b();
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "jumpTimLogin tim timVersion=" + str + "tim limit version = " + i);
-    }
-    int j;
-    do
+    if (QLog.isColorLevel())
     {
-      QQProgressDialog localQQProgressDialog;
-      try
+      localObject2 = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("jumpTimLogin tim timVersion=");
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append("tim limit version = ");
+      localStringBuilder.append(i);
+      QLog.d((String)localObject2, 2, localStringBuilder.toString());
+    }
+    try
+    {
+      int j = Integer.parseInt(((String)localObject1).replace(".", ""));
+      if (j == 0)
       {
-        j = Integer.parseInt(str.replace(".", ""));
-        if (j != 0) {
-          continue;
-        }
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, 2131719897, 0).a();
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, 2131719629, 0).a();
         return;
       }
-      catch (Exception localException)
+      if (j < i)
       {
-        localQQProgressDialog = new QQProgressDialog(BaseActivity.sTopActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources().getDimensionPixelOffset(2131299166));
-        localQQProgressDialog.a(HardCodeUtil.a(2131714854));
-        localQQProgressDialog.show();
-        WtloginHelper localWtloginHelper = new WtloginHelper(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext());
-        localWtloginHelper.SetTimeOut(20);
-        localWtloginHelper.SetMsfTransportFlag(1);
-        localWtloginHelper.SetListener(new TimJumpLoginManager.3(this, localQQProgressDialog, localWtloginHelper, paramBundle));
-        paramBundle = util.getPkgSigFromApkName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "com.tencent.tim");
-        i = localWtloginHelper.GetA1WithA1(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 16L, 16L, "com.tencent.tim".getBytes(), 1L, 16L, 16L, "8.5.5".getBytes(), paramBundle, new WUserSigInfo(), new WFastLoginInfo());
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, 2131719630, 0).a();
+        return;
       }
-      if (i == -1001) {
-        break;
+    }
+    catch (Exception localException)
+    {
+      label202:
+      break label202;
+    }
+    localObject1 = new QQProgressDialog(BaseActivity.sTopActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources().getDimensionPixelOffset(2131299168));
+    ((QQProgressDialog)localObject1).a(HardCodeUtil.a(2131714784));
+    ((QQProgressDialog)localObject1).show();
+    Object localObject2 = new WtloginHelper(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext());
+    ((WtloginHelper)localObject2).SetTimeOut(20);
+    ((WtloginHelper)localObject2).SetMsfTransportFlag(1);
+    ((WtloginHelper)localObject2).SetListener(new TimJumpLoginManager.3(this, (QQProgressDialog)localObject1, (WtloginHelper)localObject2, paramBundle));
+    paramBundle = util.getPkgSigFromApkName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "com.tencent.tim");
+    i = ((WtloginHelper)localObject2).GetA1WithA1(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 16L, 16L, "com.tencent.tim".getBytes(), 1L, 16L, 16L, "8.7.0".getBytes(), paramBundle, new WUserSigInfo(), new WFastLoginInfo());
+    if (i != -1001)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramBundle = jdField_a_of_type_JavaLangString;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("jumpTimLogin GetA1WithA1, retCode = ");
+        ((StringBuilder)localObject2).append(i);
+        QLog.d(paramBundle, 2, ((StringBuilder)localObject2).toString());
       }
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "jumpTimLogin GetA1WithA1, retCode = " + i);
+      if (((QQProgressDialog)localObject1).isShowing()) {
+        ((QQProgressDialog)localObject1).dismiss();
       }
-      if ((localQQProgressDialog != null) && (localQQProgressDialog.isShowing())) {
-        localQQProgressDialog.dismiss();
-      }
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, 2131719896, 0).a();
-      return;
-    } while (j >= i);
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, 2131719898, 0).a();
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, 2131719628, 0).a();
+    }
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
+    if (paramMessage.what == 10011) {
       b();
     }
+    return true;
   }
   
   public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.managers.TimJumpLoginManager
  * JD-Core Version:    0.7.0.1
  */

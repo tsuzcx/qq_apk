@@ -31,51 +31,51 @@ public class ItemCountView
   
   private void a(Context paramContext)
   {
-    paramContext = View.inflate(paramContext, 2131559440, this);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramContext.findViewById(2131363573));
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramContext.findViewById(2131376827));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131372115));
+    paramContext = View.inflate(paramContext, 2131559314, this);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramContext.findViewById(2131363496));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramContext.findViewById(2131376319));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131371697));
   }
   
   public void setBg(Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_ComTencentImageURLImageView != null) {
-      this.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable(paramDrawable);
+    URLImageView localURLImageView = this.jdField_a_of_type_ComTencentImageURLImageView;
+    if (localURLImageView != null) {
+      localURLImageView.setBackgroundDrawable(paramDrawable);
     }
   }
   
   public void setRedCount(boolean paramBoolean, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+    if (localObject != null)
     {
-      if (!paramBoolean) {
-        break label45;
+      if (paramBoolean)
+      {
+        if (paramInt > 99) {
+          localObject = "99+";
+        } else {
+          localObject = String.valueOf(paramInt);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setVisibility(0);
+        this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setText((CharSequence)localObject);
+        return;
       }
-      if (paramInt <= 99) {
-        break label37;
-      }
+      ((DragTextView)localObject).setVisibility(8);
     }
-    label37:
-    for (String str = "99+";; str = String.valueOf(paramInt))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setText(str);
-      return;
-    }
-    label45:
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setVisibility(8);
   }
   
   public void setTitle(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localTextView != null) {
+      localTextView.setText(paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shopping.ItemCountView
  * JD-Core Version:    0.7.0.1
  */

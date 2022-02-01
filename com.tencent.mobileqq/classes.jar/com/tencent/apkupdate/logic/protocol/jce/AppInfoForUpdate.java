@@ -39,13 +39,15 @@ public final class AppInfoForUpdate
     paramJceOutputStream.write(this.packageName, 0);
     paramJceOutputStream.write(this.signatureMd5, 1);
     paramJceOutputStream.write(this.versionCode, 2);
-    if (this.manifestMd5 != null) {
-      paramJceOutputStream.write(this.manifestMd5, 3);
+    String str = this.manifestMd5;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.appId, 4);
     paramJceOutputStream.write(this.appType, 5);
-    if (this.versionName != null) {
-      paramJceOutputStream.write(this.versionName, 6);
+    str = this.versionName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
     paramJceOutputStream.write(this.actionFlag, 7);
     paramJceOutputStream.write(this.grayVersionCode, 8);
@@ -55,7 +57,7 @@ public final class AppInfoForUpdate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.apkupdate.logic.protocol.jce.AppInfoForUpdate
  * JD-Core Version:    0.7.0.1
  */

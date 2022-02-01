@@ -12,20 +12,25 @@ class ForwardTroopMemberControllerForMiniPie$4
   
   public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    QLog.i("ForwardTroopMemberControllerForMiniPie", 1, "onScrollStateChanged state: " + paramInt);
-    if (paramInt != 0) {
+    paramRecyclerView = new StringBuilder();
+    paramRecyclerView.append("onScrollStateChanged state: ");
+    paramRecyclerView.append(paramInt);
+    QLog.i("ForwardTroopMemberControllerForMiniPie", 1, paramRecyclerView.toString());
+    if (paramInt != 0)
+    {
       ForwardTroopMemberControllerForMiniPie.a(this.a).pause();
-    }
-    while (!ForwardTroopMemberControllerForMiniPie.a(this.a).isPausing()) {
       return;
     }
-    ForwardTroopMemberControllerForMiniPie.a(this.a).resume();
-    ForwardTroopMemberControllerForMiniPie.a(this.a).notifyDataSetChanged();
+    if (ForwardTroopMemberControllerForMiniPie.a(this.a).isPausing())
+    {
+      ForwardTroopMemberControllerForMiniPie.a(this.a).resume();
+      ForwardTroopMemberControllerForMiniPie.a(this.a).notifyDataSetChanged();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardTroopMemberControllerForMiniPie.4
  * JD-Core Version:    0.7.0.1
  */

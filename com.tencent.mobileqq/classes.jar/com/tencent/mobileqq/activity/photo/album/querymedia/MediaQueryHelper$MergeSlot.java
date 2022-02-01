@@ -16,28 +16,24 @@ class MediaQueryHelper$MergeSlot
   
   public boolean next()
   {
-    boolean bool1;
     if (this.mOffset >= this.mCursor.getCount() - 1) {
-      bool1 = false;
+      return false;
     }
-    boolean bool2;
-    do
+    ICursor localICursor = this.mCursor;
+    int i = this.mOffset + 1;
+    this.mOffset = i;
+    boolean bool = localICursor.moveToPosition(i);
+    if (bool)
     {
-      return bool1;
-      ICursor localICursor = this.mCursor;
-      int i = this.mOffset + 1;
-      this.mOffset = i;
-      bool2 = localICursor.moveToPosition(i);
-      bool1 = bool2;
-    } while (!bool2);
-    this.mImage = this.mCursor.makeMediaInfo();
-    this.need = this.mCursor.needMedia(this.mImage);
-    return bool2;
+      this.mImage = this.mCursor.makeMediaInfo();
+      this.need = this.mCursor.needMedia(this.mImage);
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.querymedia.MediaQueryHelper.MergeSlot
  * JD-Core Version:    0.7.0.1
  */

@@ -25,12 +25,13 @@ public final class mutualmark$SpecialWordAttribute
   {
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 56, 66, 74 }, new String[] { "bytes_card_id", "bytes_card_color", "uint64_set_uin", "uint64_last_set_time", "uint64_last_on_time", "uint64_last_off_time", "uint64_word_light_up_time", "msg_min_special_word_card_get_info", "msg_max_special_word_card_get_info" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), null, null }, SpecialWordAttribute.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 56, 66, 74 }, new String[] { "bytes_card_id", "bytes_card_color", "uint64_set_uin", "uint64_last_set_time", "uint64_last_on_time", "uint64_last_off_time", "uint64_word_light_up_time", "msg_min_special_word_card_get_info", "msg_max_special_word_card_get_info" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localLong, localLong, localLong, localLong, localLong, null, null }, SpecialWordAttribute.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.mutualmark.mutualmark.SpecialWordAttribute
  * JD-Core Version:    0.7.0.1
  */

@@ -57,24 +57,29 @@ public class AutoLocationInterface
   
   public void a(int paramInt)
   {
-    if ((paramInt <= 0) || (paramInt > Constant.H * 2)) {}
-    for (this.c = Constant.H;; this.c = paramInt)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AutoLocationInterface", 2, new Object[] { "[status][distance] setDistanceReqTime ", Integer.valueOf(this.c) });
-      }
-      return;
+    if ((paramInt > 0) && (paramInt <= Constant.H * 2)) {
+      this.c = paramInt;
+    } else {
+      this.c = Constant.H;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoLocationInterface", 2, new Object[] { "[status][distance] setDistanceReqTime ", Integer.valueOf(this.c) });
     }
   }
   
   public void a(Location paramLocation, Double paramDouble, boolean paramBoolean)
   {
-    if (paramLocation.jdField_a_of_type_Float > this.jdField_a_of_type_Int + this.jdField_a_of_type_Float)
+    float f1 = paramLocation.jdField_a_of_type_Float;
+    float f2 = this.jdField_a_of_type_Int;
+    float f3 = this.jdField_a_of_type_Float;
+    if (f1 > f2 + f3)
     {
       this.b += 1;
       if (this.b > 8L)
       {
-        this.jdField_a_of_type_Float = ((float)(this.jdField_a_of_type_Float + 10.0D));
+        double d = f3;
+        Double.isNaN(d);
+        this.jdField_a_of_type_Float = ((float)(d + 10.0D));
         this.b = 0;
       }
       if (QLog.isColorLevel()) {
@@ -83,8 +88,12 @@ public class AutoLocationInterface
       return;
     }
     this.b = 0;
-    if ((paramBoolean) && (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationAutoLocationInterface$AutoLocationCallback != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationAutoLocationInterface$AutoLocationCallback.a(paramLocation);
+    if (paramBoolean)
+    {
+      paramDouble = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationAutoLocationInterface$AutoLocationCallback;
+      if (paramDouble != null) {
+        paramDouble.a(paramLocation);
+      }
     }
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
   }
@@ -99,29 +108,42 @@ public class AutoLocationInterface
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.d("AutoLocationInterface", 2, new Object[] { "unKnow msg:", Integer.valueOf(paramMessage.what) });
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (QLog.isColorLevel())
+          {
+            QLog.d("AutoLocationInterface", 2, new Object[] { "unKnow msg:", Integer.valueOf(paramMessage.what) });
+            return false;
+          }
+        }
+        else
+        {
+          d();
+          return false;
+        }
       }
-      return false;
-    case 1: 
-      c();
-      return false;
-    case 2: 
-      d();
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, Constant.H);
-      return false;
+      else
+      {
+        d();
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, Constant.H);
+        return false;
+      }
     }
-    d();
+    else {
+      c();
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.auto.location.AutoLocationInterface
  * JD-Core Version:    0.7.0.1
  */

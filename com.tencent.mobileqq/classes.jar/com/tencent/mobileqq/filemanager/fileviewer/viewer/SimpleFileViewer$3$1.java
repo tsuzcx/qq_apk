@@ -2,25 +2,25 @@ package com.tencent.mobileqq.filemanager.fileviewer.viewer;
 
 import android.widget.ImageView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanageraux.util.TencentDocConvertABTestUtil.DocClickTypeRunnable;
 import com.tencent.mobileqq.teamwork.TeamWorkConvertUtils;
+import com.tencent.mobileqq.teamwork.api.ITencentDocConvertABTestUtil.DocClickTypeRunnable;
 
 class SimpleFileViewer$3$1
-  implements TencentDocConvertABTestUtil.DocClickTypeRunnable
+  implements ITencentDocConvertABTestUtil.DocClickTypeRunnable
 {
   SimpleFileViewer$3$1(SimpleFileViewer.3 param3, QQAppInterface paramQQAppInterface) {}
   
   public void a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 1: 
-      TeamWorkConvertUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.this$0.a, "FileBrowserViewBase", this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.a, new SimpleFileViewer.3.1.1(this));
+      if (paramInt != 2) {
+        return;
+      }
+      SimpleFileViewer.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.this$0, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.a);
       return;
     }
-    SimpleFileViewer.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.this$0, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.a);
+    TeamWorkConvertUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.this$0.a, "FileBrowserViewBase", this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.a, new SimpleFileViewer.3.1.1(this));
   }
   
   public void a(ImageView paramImageView)
@@ -30,7 +30,7 @@ class SimpleFileViewer$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer.3.1
  * JD-Core Version:    0.7.0.1
  */

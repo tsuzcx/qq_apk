@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class BottomCell
   extends JceStruct
@@ -40,20 +41,23 @@ public final class BottomCell
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.total, 0);
-    if (this.userAvatar != null) {
-      paramJceOutputStream.write(this.userAvatar, 1);
+    Object localObject = this.userAvatar;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.content != null) {
-      paramJceOutputStream.write(this.content, 2);
+    localObject = this.content;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.jumpUrl != null) {
-      paramJceOutputStream.write(this.jumpUrl, 3);
+    localObject = this.jumpUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QZONE_MQMSG.BottomCell
  * JD-Core Version:    0.7.0.1
  */

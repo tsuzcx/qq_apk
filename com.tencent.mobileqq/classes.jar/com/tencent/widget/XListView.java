@@ -51,11 +51,11 @@ public class XListView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.mOverscrollDistance = 2147483647;
-    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.bo);
-    setMaxHeight(localTypedArray.getDimensionPixelSize(R.styleable.ar, -1));
+    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.cc);
+    setMaxHeight(localTypedArray.getDimensionPixelSize(R.styleable.cB, -1));
     localTypedArray.recycle();
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.bf);
-    boolean bool = paramContext.getBoolean(R.styleable.ag, false);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.bT);
+    boolean bool = paramContext.getBoolean(R.styleable.cl, false);
     paramContext.recycle();
     setEdgeEffectEnabled(bool);
     this.mRoundPath = new Path();
@@ -71,52 +71,66 @@ public class XListView
     int j = getHeight();
     this.mLastRadius = this.mRadius;
     this.mRoundPath.reset();
-    switch (this.mRoundMode)
+    int k = this.mRoundMode;
+    if (k != 1)
     {
-    default: 
-      return;
-    case 1: 
-      this.mRoundPath.addRoundRect(new RectF(0.0F, 0.0F, i, j), this.mRadius, this.mRadius, Path.Direction.CW);
-      return;
-    case 2: 
+      if (k != 2)
+      {
+        if (k != 3)
+        {
+          if (k != 4)
+          {
+            if (k != 5) {
+              return;
+            }
+            localPath = this.mRoundPath;
+            localRectF = new RectF(0.0F, 0.0F, i, j);
+            i = this.mRadius;
+            f1 = i;
+            f2 = i;
+            f3 = i;
+            f4 = i;
+            localDirection = Path.Direction.CW;
+            localPath.addRoundRect(localRectF, new float[] { 0.0F, 0.0F, 0.0F, 0.0F, f1, f2, f3, f4 }, localDirection);
+            return;
+          }
+          localPath = this.mRoundPath;
+          localRectF = new RectF(0.0F, 0.0F, i, j);
+          i = this.mRadius;
+          f1 = i;
+          f2 = i;
+          f3 = i;
+          f4 = i;
+          localDirection = Path.Direction.CW;
+          localPath.addRoundRect(localRectF, new float[] { 0.0F, 0.0F, f1, f2, f3, f4, 0.0F, 0.0F }, localDirection);
+          return;
+        }
+        localPath = this.mRoundPath;
+        localRectF = new RectF(0.0F, 0.0F, i, j);
+        i = this.mRadius;
+        f1 = i;
+        f2 = i;
+        f3 = i;
+        f4 = i;
+        localDirection = Path.Direction.CW;
+        localPath.addRoundRect(localRectF, new float[] { f1, f2, f3, f4, 0.0F, 0.0F, 0.0F, 0.0F }, localDirection);
+        return;
+      }
       localPath = this.mRoundPath;
       localRectF = new RectF(0.0F, 0.0F, i, j);
-      f1 = this.mRadius;
-      f2 = this.mRadius;
-      f3 = this.mRadius;
-      f4 = this.mRadius;
-      localDirection = Path.Direction.CW;
+      i = this.mRadius;
+      float f1 = i;
+      float f2 = i;
+      float f3 = i;
+      float f4 = i;
+      Path.Direction localDirection = Path.Direction.CW;
       localPath.addRoundRect(localRectF, new float[] { f1, f2, 0.0F, 0.0F, 0.0F, 0.0F, f3, f4 }, localDirection);
-      return;
-    case 3: 
-      localPath = this.mRoundPath;
-      localRectF = new RectF(0.0F, 0.0F, i, j);
-      f1 = this.mRadius;
-      f2 = this.mRadius;
-      f3 = this.mRadius;
-      f4 = this.mRadius;
-      localDirection = Path.Direction.CW;
-      localPath.addRoundRect(localRectF, new float[] { f1, f2, f3, f4, 0.0F, 0.0F, 0.0F, 0.0F }, localDirection);
-      return;
-    case 4: 
-      localPath = this.mRoundPath;
-      localRectF = new RectF(0.0F, 0.0F, i, j);
-      f1 = this.mRadius;
-      f2 = this.mRadius;
-      f3 = this.mRadius;
-      f4 = this.mRadius;
-      localDirection = Path.Direction.CW;
-      localPath.addRoundRect(localRectF, new float[] { 0.0F, 0.0F, f1, f2, f3, f4, 0.0F, 0.0F }, localDirection);
       return;
     }
     Path localPath = this.mRoundPath;
     RectF localRectF = new RectF(0.0F, 0.0F, i, j);
-    float f1 = this.mRadius;
-    float f2 = this.mRadius;
-    float f3 = this.mRadius;
-    float f4 = this.mRadius;
-    Path.Direction localDirection = Path.Direction.CW;
-    localPath.addRoundRect(localRectF, new float[] { 0.0F, 0.0F, 0.0F, 0.0F, f1, f2, f3, f4 }, localDirection);
+    i = this.mRadius;
+    localPath.addRoundRect(localRectF, i, i, Path.Direction.CW);
   }
   
   private int getWindowOrientation()
@@ -129,23 +143,23 @@ public class XListView
   
   private void notifySizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, int paramInt5)
   {
-    if (this.mOnSizeChangeListener != null) {
-      this.mOnSizeChangeListener.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean, paramInt5);
+    OnSizeChangeListener localOnSizeChangeListener = this.mOnSizeChangeListener;
+    if (localOnSizeChangeListener != null) {
+      localOnSizeChangeListener.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean, paramInt5);
     }
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
-    if (this.mDrawFinishedListener != null) {
-      this.mDrawFinishedListener.drawFinished();
+    paramCanvas = this.mDrawFinishedListener;
+    if (paramCanvas != null) {
+      paramCanvas.drawFinished();
     }
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool3 = false;
-    boolean bool1;
     if (this.mInterceptor != null)
     {
       MotionEvent localMotionEvent = MotionEvent.obtain(paramMotionEvent);
@@ -153,36 +167,34 @@ public class XListView
       {
         bool1 = this.mInterceptor.intercept(this, localMotionEvent);
         localMotionEvent.recycle();
+        break label41;
       }
     }
-    for (;;)
+    boolean bool1 = false;
+    label41:
+    boolean bool4 = true;
+    boolean bool3 = bool4;
+    if (!bool1) {}
+    try
     {
-      if (!bool1) {
-        try
-        {
-          bool2 = super.dispatchTouchEvent(paramMotionEvent);
-          if (!bool1)
-          {
-            bool1 = bool3;
-            if (!bool2) {}
-          }
-          else
-          {
-            bool1 = true;
-          }
-          return bool1;
-        }
-        catch (RuntimeException paramMotionEvent)
-        {
-          for (;;)
-          {
-            boolean bool2 = false;
-          }
-        }
-      }
-      return true;
-      bool1 = false;
+      bool2 = super.dispatchTouchEvent(paramMotionEvent);
     }
+    catch (RuntimeException paramMotionEvent)
+    {
+      boolean bool2;
+      label61:
+      break label61;
+    }
+    bool2 = false;
+    bool3 = bool4;
+    if (!bool1)
+    {
+      if (bool2) {
+        return true;
+      }
+      bool3 = false;
+    }
+    return bool3;
   }
   
   public void draw(Canvas paramCanvas)
@@ -199,43 +211,45 @@ public class XListView
     super.draw(paramCanvas);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     int i;
     if (this.mMaxHeight > 0)
     {
       int j = View.MeasureSpec.getMode(paramInt2);
+      int k = View.MeasureSpec.getSize(paramInt2);
+      int m = this.mMaxHeight;
       i = paramInt2;
-      if (View.MeasureSpec.getSize(paramInt2) > this.mMaxHeight)
+      if (k > m)
       {
         i = paramInt2;
         if (j != 0) {
-          i = View.MeasureSpec.makeMeasureSpec(this.mMaxHeight, j);
+          i = View.MeasureSpec.makeMeasureSpec(m, j);
         }
       }
     }
-    for (;;)
+    else
     {
-      super.onMeasure(paramInt1, i);
-      return;
       i = paramInt2;
       if (this.wrapByScroll) {
         i = View.MeasureSpec.makeMeasureSpec(536870911, -2147483648);
       }
     }
+    super.onMeasure(paramInt1, i);
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     int i = getWindowOrientation();
-    if (this.mOrientation != i) {}
-    for (boolean bool = true;; bool = false)
-    {
-      notifySizeChanged(paramInt1, paramInt2, paramInt3, paramInt4, bool, i);
-      this.mOrientation = i;
-      return;
+    boolean bool;
+    if (this.mOrientation != i) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    notifySizeChanged(paramInt1, paramInt2, paramInt3, paramInt4, bool, i);
+    this.mOrientation = i;
   }
   
   public void setCornerRadiusAndMode(int paramInt1, int paramInt2)
@@ -279,7 +293,7 @@ public class XListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.XListView
  * JD-Core Version:    0.7.0.1
  */

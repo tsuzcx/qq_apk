@@ -15,20 +15,15 @@ class ChatHistoryEmotionBaseFragment$2$1
   {
     if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
       this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment$2.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(0), false);
+    } else if (this.jdField_a_of_type_JavaUtilList.size() > 1) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment$2.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaUtilList, false);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment$2.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(2);
-      return;
-      if (this.jdField_a_of_type_JavaUtilList.size() > 1) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment$2.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaUtilList, false);
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment$2.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment.2.1
  * JD-Core Version:    0.7.0.1
  */

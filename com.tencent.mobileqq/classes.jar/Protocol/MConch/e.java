@@ -33,20 +33,23 @@ public final class e
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.bt != 0L) {
-      paramJceOutputStream.write(this.bt, 0);
+    long l = this.bt;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 0);
     }
-    if (this.bu != 0L) {
-      paramJceOutputStream.write(this.bu, 1);
+    l = this.bu;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 1);
     }
-    if (this.bw != null) {
-      paramJceOutputStream.write(this.bw, 2);
+    ArrayList localArrayList = this.bw;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Protocol.MConch.e
  * JD-Core Version:    0.7.0.1
  */

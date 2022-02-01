@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 class VipSpecialSoundWebViewPlugin$1
-  implements QvipSpecialSoundManager.CallBack
+  implements CallBack
 {
   VipSpecialSoundWebViewPlugin$1(VipSpecialSoundWebViewPlugin paramVipSpecialSoundWebViewPlugin, String paramString) {}
   
@@ -15,8 +15,11 @@ class VipSpecialSoundWebViewPlugin$1
     if (paramBoolean) {}
     try
     {
-      Object localObject = "key_special_sound_list" + this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin.mRuntime.a().getCurrentAccountUin();
-      localObject = (List)QvipSpecialSoundManager.a.get(localObject);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("key_special_sound_list");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin.mRuntime.a().getCurrentAccountUin());
+      localObject = ((StringBuilder)localObject).toString();
+      localObject = (List)QvipSpecialConstants.a.get(localObject);
       VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, this.jdField_a_of_type_JavaLangString, (List)localObject);
       return;
     }
@@ -39,7 +42,7 @@ class VipSpecialSoundWebViewPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.VipSpecialSoundWebViewPlugin.1
  * JD-Core Version:    0.7.0.1
  */

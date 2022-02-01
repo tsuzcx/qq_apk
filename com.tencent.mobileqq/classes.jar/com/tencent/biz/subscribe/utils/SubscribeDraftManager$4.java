@@ -10,24 +10,28 @@ class SubscribeDraftManager$4
   
   public void run()
   {
-    Pair localPair = SubscribeDraftManager.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b);
-    if (localPair != null)
+    Object localObject = SubscribeDraftManager.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b);
+    if (localObject != null)
     {
-      FileUtils.e((String)localPair.first);
-      FileUtils.e((String)localPair.second);
-      if (this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener != null) {
-        this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener.a(2, true, this.b, new Object[0]);
+      FileUtils.deleteFile((String)((Pair)localObject).first);
+      FileUtils.deleteFile((String)((Pair)localObject).second);
+      localObject = this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener;
+      if (localObject != null) {
+        ((SubscribeDraftManager.SubDraftListener)localObject).a(2, true, this.b, new Object[0]);
       }
     }
-    while (this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener == null) {
-      return;
+    else
+    {
+      localObject = this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener;
+      if (localObject != null) {
+        ((SubscribeDraftManager.SubDraftListener)localObject).a(2, false, this.b, new Object[0]);
+      }
     }
-    this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener.a(2, false, this.b, new Object[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.utils.SubscribeDraftManager.4
  * JD-Core Version:    0.7.0.1
  */

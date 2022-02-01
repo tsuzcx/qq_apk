@@ -14,37 +14,36 @@ class OrientationDetector$3
       if (OrientationDetector.access$700(this.this$0) == null) {
         return;
       }
-    }
-    try
-    {
-      if (this.val$enable)
+      try
       {
-        if (OrientationDetector.access$700(this.this$0).canDetectOrientation()) {
-          OrientationDetector.access$700(this.this$0).enable();
-        }
-        if (!this.val$isDestory) {}
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      synchronized (OrientationDetector.access$600(this.this$0))
-      {
-        for (;;)
+        if (this.val$enable)
         {
-          OrientationDetector.access$702(this.this$0, null);
-          return;
-          localObject3 = finally;
-          throw localObject3;
+          if (OrientationDetector.access$700(this.this$0).canDetectOrientation()) {
+            OrientationDetector.access$700(this.this$0).enable();
+          }
+        }
+        else {
           OrientationDetector.access$700(this.this$0).disable();
         }
-        localThrowable = localThrowable;
       }
+      catch (Throwable localThrowable)
+      {
+        label66:
+        break label66;
+      }
+      if (this.val$isDestory) {
+        synchronized (OrientationDetector.access$600(this.this$0))
+        {
+          OrientationDetector.access$702(this.this$0, null);
+        }
+      }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.utils.OrientationDetector.3
  * JD-Core Version:    0.7.0.1
  */

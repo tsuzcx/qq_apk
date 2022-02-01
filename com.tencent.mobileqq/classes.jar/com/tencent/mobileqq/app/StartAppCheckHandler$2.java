@@ -16,9 +16,7 @@ class StartAppCheckHandler$2
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 2) {
       return;
     }
     paramMessage = (StartAppCheckHandler.PendingAPP)paramMessage.obj;
@@ -28,7 +26,7 @@ class StartAppCheckHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.StartAppCheckHandler.2
  * JD-Core Version:    0.7.0.1
  */

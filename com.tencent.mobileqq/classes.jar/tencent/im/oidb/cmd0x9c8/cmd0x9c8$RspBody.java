@@ -16,16 +16,22 @@ public final class cmd0x9c8$RspBody
   public static final int STR_ERROR_FIELD_NUMBER = 5;
   public static final int UINT32_NEXT_POS_FIELD_NUMBER = 3;
   public static final int UINT32_TAG_TYPE_FIELD_NUMBER = 1;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42 }, new String[] { "uint32_tag_type", "rpt_msg_tag_list", "uint32_next_pos", "rpt_msg_sel_list", "str_error" }, new Object[] { Integer.valueOf(0), null, Integer.valueOf(0), null, "" }, RspBody.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBRepeatMessageField<appoint_define.InterestItem> rpt_msg_sel_list = PBField.initRepeatMessage(appoint_define.InterestItem.class);
   public final PBRepeatMessageField<appoint_define.InterestItem> rpt_msg_tag_list = PBField.initRepeatMessage(appoint_define.InterestItem.class);
   public final PBStringField str_error = PBField.initString("");
   public final PBUInt32Field uint32_next_pos = PBField.initUInt32(0);
   public final PBUInt32Field uint32_tag_type = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42 }, new String[] { "uint32_tag_type", "rpt_msg_tag_list", "uint32_next_pos", "rpt_msg_sel_list", "str_error" }, new Object[] { localInteger, null, localInteger, null, "" }, RspBody.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x9c8.cmd0x9c8.RspBody
  * JD-Core Version:    0.7.0.1
  */

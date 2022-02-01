@@ -14,7 +14,10 @@ final class LogUploadUtil$1
     {
       long l = System.currentTimeMillis();
       LogUploadUtil.a(LogUploadUtil.a(), LogUploadUtil.b());
-      Log.i("FileUtil", "compress time " + (System.currentTimeMillis() - l));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("compress time ");
+      localStringBuilder.append(System.currentTimeMillis() - l);
+      Log.i("FileUtil", localStringBuilder.toString());
       FileUploadUtil.a(this.a, LogUploadUtil.b());
       return;
     }
@@ -26,7 +29,7 @@ final class LogUploadUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.LogUploadUtil.1
  * JD-Core Version:    0.7.0.1
  */

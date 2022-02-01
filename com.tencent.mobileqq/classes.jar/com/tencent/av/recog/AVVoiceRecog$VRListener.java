@@ -14,60 +14,73 @@ class AVVoiceRecog$VRListener
   
   public void onGetError(int paramInt)
   {
-    QLog.d("AVVoiceRecog", 2, "onGetError. err = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onGetError. err = ");
+    localStringBuilder.append(paramInt);
+    QLog.d("AVVoiceRecog", 2, localStringBuilder.toString());
   }
   
   public void onGetResult(VoiceRecognizerResult paramVoiceRecognizerResult)
   {
-    if ((!AVVoiceRecog.a(this.a)) || (AVVoiceRecog.b(this.a))) {
-      QLog.i("AVVoiceRecog", 1, "onGetResult. discard. !mIsInitAndStart || mIsPause.");
-    }
-    label162:
-    for (;;)
+    if ((AVVoiceRecog.a(this.a)) && (!AVVoiceRecog.b(this.a)))
     {
-      return;
       if (paramVoiceRecognizerResult.isHalf)
       {
         QLog.i("AVVoiceRecog", 1, "onGetResult. result.isHalf.");
         return;
       }
-      if (TextUtils.isEmpty(paramVoiceRecognizerResult.text)) {
+      if (TextUtils.isEmpty(paramVoiceRecognizerResult.text))
+      {
         QLog.i("AVVoiceRecog", 1, "onGetResult. result.text == null.");
       }
-      for (;;)
+      else
       {
-        if (!paramVoiceRecognizerResult.isEnd) {
-          break label162;
-        }
-        int i = VoiceRecognizer.shareInstance().startReceiving();
-        if (i >= 0) {
-          break;
-        }
-        QLog.i("AVVoiceRecog", 1, "restart falied. ret = " + i);
-        return;
-        QLog.i("AVVoiceRecog", 1, "onGetResult. result.text = " + paramVoiceRecognizerResult.text);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onGetResult. result.text = ");
+        localStringBuilder.append(paramVoiceRecognizerResult.text);
+        QLog.i("AVVoiceRecog", 1, localStringBuilder.toString());
         if (AVVoiceRecog.a(this.a) != null) {
           AVVoiceRecog.a(this.a).a(paramVoiceRecognizerResult.text);
         }
       }
+      if (paramVoiceRecognizerResult.isEnd)
+      {
+        int i = VoiceRecognizer.shareInstance().startReceiving();
+        if (i < 0)
+        {
+          paramVoiceRecognizerResult = new StringBuilder();
+          paramVoiceRecognizerResult.append("restart falied. ret = ");
+          paramVoiceRecognizerResult.append(i);
+          QLog.i("AVVoiceRecog", 1, paramVoiceRecognizerResult.toString());
+        }
+      }
+      return;
     }
+    QLog.i("AVVoiceRecog", 1, "onGetResult. discard. !mIsInitAndStart || mIsPause.");
   }
   
   public void onGetVoiceRecordState(VoiceRecordState paramVoiceRecordState)
   {
-    QLog.d("AVVoiceRecog", 2, "onGetVoiceRecordState. state = " + paramVoiceRecordState);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onGetVoiceRecordState. state = ");
+    localStringBuilder.append(paramVoiceRecordState);
+    QLog.d("AVVoiceRecog", 2, localStringBuilder.toString());
   }
   
   public void onVolumeChanged(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVVoiceRecog", 2, "onVolumeChanged. volume = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onVolumeChanged. volume = ");
+      localStringBuilder.append(paramInt);
+      QLog.d("AVVoiceRecog", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.recog.AVVoiceRecog.VRListener
  * JD-Core Version:    0.7.0.1
  */

@@ -18,15 +18,16 @@ public class SpacesItemDecoration
   
   public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    paramRect.top = this.a;
+    int i = this.a;
+    paramRect.top = i;
     paramRect.bottom = 0;
-    paramRect.left = (this.a / 2);
-    paramRect.right = (this.a / 2);
+    paramRect.left = (i / 2);
+    paramRect.right = (i / 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.widget.SpacesItemDecoration
  * JD-Core Version:    0.7.0.1
  */

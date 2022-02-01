@@ -17,14 +17,13 @@ class StringsKt__StringNumberConversionsJVMKt
 {
   private static final <T> T screenFloatValue$StringsKt__StringNumberConversionsJVMKt(String paramString, Function1<? super String, ? extends T> paramFunction1)
   {
+    Object localObject = null;
     try
     {
-      if (ScreenFloatValueRegEx.value.matches((CharSequence)paramString))
-      {
-        paramString = paramFunction1.invoke(paramString);
-        return paramString;
+      if (ScreenFloatValueRegEx.value.matches((CharSequence)paramString)) {
+        localObject = paramFunction1.invoke(paramString);
       }
-      return null;
+      return localObject;
     }
     catch (NumberFormatException paramString) {}
     return null;
@@ -49,14 +48,13 @@ class StringsKt__StringNumberConversionsJVMKt
   public static final BigDecimal toBigDecimalOrNull(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "$this$toBigDecimalOrNull");
+    BigDecimal localBigDecimal = null;
     try
     {
-      if (ScreenFloatValueRegEx.value.matches((CharSequence)paramString))
-      {
-        paramString = new BigDecimal(paramString);
-        return paramString;
+      if (ScreenFloatValueRegEx.value.matches((CharSequence)paramString)) {
+        localBigDecimal = new BigDecimal(paramString);
       }
-      return null;
+      return localBigDecimal;
     }
     catch (NumberFormatException paramString) {}
     return null;
@@ -68,14 +66,13 @@ class StringsKt__StringNumberConversionsJVMKt
   {
     Intrinsics.checkParameterIsNotNull(paramString, "$this$toBigDecimalOrNull");
     Intrinsics.checkParameterIsNotNull(paramMathContext, "mathContext");
+    BigDecimal localBigDecimal = null;
     try
     {
-      if (ScreenFloatValueRegEx.value.matches((CharSequence)paramString))
-      {
-        paramString = new BigDecimal(paramString, paramMathContext);
-        return paramString;
+      if (ScreenFloatValueRegEx.value.matches((CharSequence)paramString)) {
+        localBigDecimal = new BigDecimal(paramString, paramMathContext);
       }
-      return null;
+      return localBigDecimal;
     }
     catch (NumberFormatException paramString) {}
     return null;
@@ -107,32 +104,31 @@ class StringsKt__StringNumberConversionsJVMKt
   @Nullable
   public static final BigInteger toBigIntegerOrNull(@NotNull String paramString, int paramInt)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramString, "$this$toBigIntegerOrNull");
     CharsKt.checkRadix(paramInt);
     int j = paramString.length();
-    switch (j)
+    if (j != 0)
     {
-    default: 
-      if (paramString.charAt(0) == '-') {
-        i = 1;
-      }
-      break;
-    }
-    while (i < j)
-    {
-      if (CharsKt.digitOf(paramString.charAt(i), paramInt) < 0)
+      int i = 0;
+      if (j != 1)
       {
-        return null;
-        return null;
-        if (CharsKt.digitOf(paramString.charAt(0), paramInt) >= 0) {
-          break;
+        if (paramString.charAt(0) == '-') {
+          i = 1;
         }
+        while (i < j)
+        {
+          if (CharsKt.digitOf(paramString.charAt(i), paramInt) < 0) {
+            return null;
+          }
+          i += 1;
+        }
+      }
+      if (CharsKt.digitOf(paramString.charAt(0), paramInt) < 0) {
         return null;
       }
-      i += 1;
+      return new BigInteger(paramString, CharsKt.checkRadix(paramInt));
     }
-    return new BigInteger(paramString, CharsKt.checkRadix(paramInt));
+    return null;
   }
   
   @InlineOnly
@@ -165,14 +161,15 @@ class StringsKt__StringNumberConversionsJVMKt
   public static final Double toDoubleOrNull(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "$this$toDoubleOrNull");
+    Double localDouble = null;
     try
     {
       if (ScreenFloatValueRegEx.value.matches((CharSequence)paramString))
       {
         double d = Double.parseDouble(paramString);
-        return Double.valueOf(d);
+        localDouble = Double.valueOf(d);
       }
-      return null;
+      return localDouble;
     }
     catch (NumberFormatException paramString) {}
     return null;
@@ -189,14 +186,15 @@ class StringsKt__StringNumberConversionsJVMKt
   public static final Float toFloatOrNull(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "$this$toFloatOrNull");
+    Float localFloat = null;
     try
     {
       if (ScreenFloatValueRegEx.value.matches((CharSequence)paramString))
       {
         float f = Float.parseFloat(paramString);
-        return Float.valueOf(f);
+        localFloat = Float.valueOf(f);
       }
-      return null;
+      return localFloat;
     }
     catch (NumberFormatException paramString) {}
     return null;
@@ -279,7 +277,7 @@ class StringsKt__StringNumberConversionsJVMKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.text.StringsKt__StringNumberConversionsJVMKt
  * JD-Core Version:    0.7.0.1
  */

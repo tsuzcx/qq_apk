@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/kj1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <RelativeLayout android:id="@id/kqp" android:background="#1affffff" android:paddingLeft="@dimen/mw" android:paddingRight="@dimen/mw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="42.0dip">
+            <ImageView android:id="@id/kr5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/dmw" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="15.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/kr6" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/guo" android:maxLines="1" android:drawablePadding="@dimen/ms" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/es" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="42.0dip">
+            <ProgressBar android:id="@id/et" android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:progressDrawable="@drawable/y_" android:thumb="@android:color/transparent" android:paddingStart="0.0dip" android:paddingEnd="0.0dip" style="@style/rx" />
+            <TextView android:textSize="15.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center|left" android:id="@id/ev" android:paddingLeft="@dimen/mw" android:paddingRight="@dimen/mw" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/q1w" android:singleLine="true" android:includeFontPadding="false" android:layout_centerHorizontal="true" />
+            <ImageView android:id="@id/eu" android:layout_width="wrap_content" android:layout_height="42.0dip" android:layout_marginRight="@dimen/mw" android:src="@drawable/dmp" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+</merge>

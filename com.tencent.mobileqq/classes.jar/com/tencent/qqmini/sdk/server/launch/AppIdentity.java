@@ -39,10 +39,12 @@ public final class AppIdentity
     if (!(paramObject instanceof AppIdentity)) {
       return false;
     }
-    if ((Intrinsics.areEqual(this.appId, ((AppIdentity)paramObject).appId) ^ true)) {
+    String str = this.appId;
+    paramObject = (AppIdentity)paramObject;
+    if ((Intrinsics.areEqual(str, paramObject.appId) ^ true)) {
       return false;
     }
-    return this.verType == ((AppIdentity)paramObject).verType;
+    return this.verType == paramObject.verType;
   }
   
   @NotNull
@@ -70,18 +72,34 @@ public final class AppIdentity
   @NotNull
   public final String toSimpleString()
   {
-    return "(appId='" + this.appId + "', name='" + this.name + "')";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("(appId='");
+    localStringBuilder.append(this.appId);
+    localStringBuilder.append("', name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append("')");
+    return localStringBuilder.toString();
   }
   
   @NotNull
   public String toString()
   {
-    return "AppIdentity(appId='" + this.appId + "', name='" + this.name + "', verType=" + this.verType + ", version='" + this.version + "')";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AppIdentity(appId='");
+    localStringBuilder.append(this.appId);
+    localStringBuilder.append("', name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append("', verType=");
+    localStringBuilder.append(this.verType);
+    localStringBuilder.append(", version='");
+    localStringBuilder.append(this.version);
+    localStringBuilder.append("')");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.server.launch.AppIdentity
  * JD-Core Version:    0.7.0.1
  */

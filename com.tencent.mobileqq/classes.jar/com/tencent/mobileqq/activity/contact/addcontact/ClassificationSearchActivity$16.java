@@ -11,22 +11,23 @@ class ClassificationSearchActivity$16
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
+      if (i != 2) {
+        return;
+      }
       paramMessage = (List)paramMessage.obj;
-      this.a.a(paramMessage, true);
+      this.a.a(paramMessage, false);
       return;
     }
     paramMessage = (List)paramMessage.obj;
-    this.a.a(paramMessage, false);
+    this.a.a(paramMessage, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity.16
  * JD-Core Version:    0.7.0.1
  */

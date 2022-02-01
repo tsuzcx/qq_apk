@@ -11,9 +11,7 @@ class PermissionPrivacyFragment$1
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 2) {
       return;
     }
     PermissionPrivacyFragment.a(this.a);
@@ -21,7 +19,7 @@ class PermissionPrivacyFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.settings.fragment.PermissionPrivacyFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -31,46 +31,47 @@ public class QuestionClassInfoItem
     if (paramQuestionClassInfoItem == null) {
       return;
     }
-    String str;
-    if (paramQuestionClassInfoItem.question_class.has())
-    {
-      str = paramQuestionClassInfoItem.question_class.get();
-      this.a = str;
-      if (!paramQuestionClassInfoItem.question_class_name_url.has()) {
-        break label81;
-      }
-      str = paramQuestionClassInfoItem.question_class_name_url.get();
-      label46:
-      this.b = str;
-      if (!paramQuestionClassInfoItem.question_class_bg_url.has()) {
-        break label87;
-      }
+    boolean bool = paramQuestionClassInfoItem.question_class.has();
+    String str2 = "";
+    if (bool) {
+      str1 = paramQuestionClassInfoItem.question_class.get();
+    } else {
+      str1 = "";
     }
-    label81:
-    label87:
-    for (paramQuestionClassInfoItem = paramQuestionClassInfoItem.question_class_bg_url.get();; paramQuestionClassInfoItem = "")
-    {
-      this.c = paramQuestionClassInfoItem;
-      return;
-      str = "";
-      break;
-      str = "";
-      break label46;
+    this.a = str1;
+    if (paramQuestionClassInfoItem.question_class_name_url.has()) {
+      str1 = paramQuestionClassInfoItem.question_class_name_url.get();
+    } else {
+      str1 = "";
     }
+    this.b = str1;
+    String str1 = str2;
+    if (paramQuestionClassInfoItem.question_class_bg_url.has()) {
+      str1 = paramQuestionClassInfoItem.question_class_bg_url.get();
+    }
+    this.c = str1;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("name").append("=").append(this.a).append("|");
-    localStringBuilder.append("nameImageUrl").append("=").append(this.b).append("|");
-    localStringBuilder.append("backgroundImageUrl").append("=").append(this.c);
+    localStringBuilder.append("name");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("|");
+    localStringBuilder.append("nameImageUrl");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("|");
+    localStringBuilder.append("backgroundImageUrl");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.c);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.data.QuestionClassInfoItem
  * JD-Core Version:    0.7.0.1
  */

@@ -15,29 +15,26 @@ class QWalletLockScreenActivity$ScreenBroadcastReceiver
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     this.action = paramIntent.getAction();
-    if ("android.intent.action.SCREEN_ON".equals(this.action)) {
+    if ("android.intent.action.SCREEN_ON".equals(this.action))
+    {
       if (QLog.isColorLevel()) {
         QLog.d("Q.qwallet.push", 2, "QWalletLockScreenActivity ACTION_SCREEN_ON");
       }
     }
-    do
+    else if ("android.intent.action.SCREEN_OFF".equals(this.action))
     {
-      do
-      {
-        return;
-        if (!"android.intent.action.SCREEN_OFF".equals(this.action)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("Q.qwallet.push", 2, "QWalletLockScreenActivity ACTION_SCREEN_OFF");
-      return;
-    } while ((!"android.intent.action.USER_PRESENT".equals(this.action)) || (!QLog.isColorLevel()));
-    QLog.d("Q.qwallet.push", 2, "QWalletLockScreenActivity ACTION_USER_PRESENT");
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qwallet.push", 2, "QWalletLockScreenActivity ACTION_SCREEN_OFF");
+      }
+    }
+    else if (("android.intent.action.USER_PRESENT".equals(this.action)) && (QLog.isColorLevel())) {
+      QLog.d("Q.qwallet.push", 2, "QWalletLockScreenActivity ACTION_USER_PRESENT");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qwallet.plugin.QWalletLockScreenActivity.ScreenBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

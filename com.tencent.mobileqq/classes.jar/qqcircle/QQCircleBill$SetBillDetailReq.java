@@ -27,13 +27,14 @@ public final class QQCircleBill$SetBillDetailReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40, 48, 58, 66, 74 }, new String[] { "extInfo", "billid", "billType", "giftData", "payMoney", "opTime", "toUID", "feed", "busiData" }, new Object[] { null, "", Integer.valueOf(0), null, Integer.valueOf(0), Long.valueOf(0L), "", null, localByteStringMicro }, SetBillDetailReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40, 48, 58, 66, 74 }, new String[] { "extInfo", "billid", "billType", "giftData", "payMoney", "opTime", "toUID", "feed", "busiData" }, new Object[] { null, "", localInteger, null, localInteger, Long.valueOf(0L), "", null, localByteStringMicro }, SetBillDetailReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qqcircle.QQCircleBill.SetBillDetailReq
  * JD-Core Version:    0.7.0.1
  */

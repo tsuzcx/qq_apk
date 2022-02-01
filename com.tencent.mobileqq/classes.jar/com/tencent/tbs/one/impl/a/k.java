@@ -21,20 +21,34 @@ public final class k
   
   private void a()
   {
-    if ((this.b != null) && (!this.b.a())) {
+    k.a locala = this.b;
+    if (locala != null)
+    {
+      if (locala.a()) {
+        return;
+      }
       throw new IOException("Aborted");
     }
   }
   
   private void b()
   {
-    if ((this.d > 0L) && (this.b != null))
+    long l = this.d;
+    if (l > 0L)
     {
-      int i = (int)(this.a / this.d * 100.0D);
-      if (i - this.e >= 2)
+      k.a locala = this.b;
+      if (locala != null)
       {
-        this.e = i;
-        this.b.a(i);
+        double d1 = this.a;
+        double d2 = l;
+        Double.isNaN(d1);
+        Double.isNaN(d2);
+        int i = (int)(d1 / d2 * 100.0D);
+        if (i - this.e >= 2)
+        {
+          this.e = i;
+          locala.a(i);
+        }
       }
     }
   }
@@ -125,7 +139,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.a.k
  * JD-Core Version:    0.7.0.1
  */

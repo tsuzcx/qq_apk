@@ -9,57 +9,32 @@ public final class nb
   {
     if ("authorization".equals(paramString)) {
       paramString = new my();
-    }
-    for (;;)
-    {
-      if (paramString != null)
-      {
-        return paramString;
-        if ("blockroutedata".equals(paramString))
-        {
-          paramString = new na();
-          continue;
-        }
-        if ("indoordata".equals(paramString))
-        {
-          paramString = new nd();
-          continue;
-        }
-        if ("mapdata".equals(paramString))
-        {
-          paramString = new ng();
-          continue;
-        }
-        if ("overseadata".equals(paramString))
-        {
-          paramString = new nh();
-          continue;
-        }
-        if ("rttdata".equals(paramString))
-        {
-          paramString = new ni();
-          continue;
-        }
-        if ("sketchdata".equals(paramString))
-        {
-          paramString = new nj();
-          continue;
-        }
-        if ("statistic".equals(paramString)) {
-          paramString = new nk();
-        }
-      }
-      else
-      {
-        return null;
-      }
+    } else if ("blockroutedata".equals(paramString)) {
+      paramString = new na();
+    } else if ("indoordata".equals(paramString)) {
+      paramString = new nd();
+    } else if ("mapdata".equals(paramString)) {
+      paramString = new ng();
+    } else if ("overseadata".equals(paramString)) {
+      paramString = new nh();
+    } else if ("rttdata".equals(paramString)) {
+      paramString = new ni();
+    } else if ("sketchdata".equals(paramString)) {
+      paramString = new nj();
+    } else if ("statistic".equals(paramString)) {
+      paramString = new nk();
+    } else {
       paramString = null;
     }
+    if (paramString != null) {
+      return paramString;
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.nb
  * JD-Core Version:    0.7.0.1
  */

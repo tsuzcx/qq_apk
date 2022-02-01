@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="#b0000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@drawable/efk" android:paddingLeft="16.0dip" android:paddingTop="0.0dip" android:paddingRight="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/nai" android:layout_width="260.0dip" android:layout_height="@dimen/nb" android:src="@drawable/i60" android:scaleType="fitXY" android:layout_above="@id/naj" android:layout_centerHorizontal="true" />
-    <ImageView android:id="@id/nba" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/i6q" android:layout_above="@id/naj" android:layout_alignLeft="@id/naj" android:layout_centerHorizontal="true" />
-    <ImageView android:id="@id/nah" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="-30.0dip" android:src="@drawable/i6f" android:layout_alignTop="@id/naj" android:layout_alignRight="@id/naj" />
-    <ImageView android:id="@id/naj" android:paddingBottom="@dimen/mw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/i6p" android:layout_above="@id/nam" android:layout_centerHorizontal="true" />
-    <ImageView android:id="@id/nak" android:background="@drawable/i3a" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true" />
-    <ImageView android:layout_gravity="center_horizontal" android:id="@id/nam" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/i3_" android:layout_centerInParent="true" android:layout_centerHorizontal="true" />
-    <ImageView android:id="@id/nal" android:background="@drawable/i34" android:clickable="true" android:layout_width="46.0dip" android:layout_height="46.0dip" android:layout_margin="@dimen/ne" android:layout_below="@id/nam" android:layout_centerHorizontal="true" />
-    <Button android:id="@id/mng" android:background="@color/ajr" android:layout_width="@dimen/mq" android:layout_height="@dimen/mq" android:layout_centerInParent="true" />
-</RelativeLayout>
+    <ImageView android:layout_gravity="center_horizontal" android:id="@id/o61" android:paddingTop="13.0dip" android:paddingBottom="13.0dip" android:clickable="true" android:layout_width="35.0dip" android:layout_height="36.0dip" android:src="@drawable/i43" />
+    <com.tencent.mobileqq.vas.avatar.VasAvatar android:layout_gravity="center_horizontal" android:id="@id/o63" android:layout_width="90.0dip" android:layout_height="90.0dip" android:layout_marginTop="20.0dip" android:scaleType="fitXY" />
+    <TextView android:textSize="17.0sp" android:textColor="#ff000000" android:layout_gravity="center_horizontal" android:id="@id/o64" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="" android:singleLine="true" />
+    <TextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="#ff000000" android:layout_gravity="center_horizontal" android:id="@id/o66" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="@string/yfz" />
+    <TextView android:textSize="14.0sp" android:textColor="#ff5b6175" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/o65" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:text="@string/yfy" android:lineSpacingExtra="8.0dip" />
+    <Button android:textSize="17.0dip" android:id="@id/o62" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginTop="30.0dip" android:text="@string/yfx" android:singleLine="true" style="@style/b9" />
+</LinearLayout>

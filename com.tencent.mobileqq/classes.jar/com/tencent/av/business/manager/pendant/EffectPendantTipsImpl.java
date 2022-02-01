@@ -24,12 +24,20 @@ public class EffectPendantTipsImpl
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.MOUTH_OPEN.value, 2131695457);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.EYEBROWS_RAISE.value, 2131695455);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.BLINK.value, 2131695454);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.HEAD_SHAKE.value, 2131695458);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.KISS.value, 2131695456);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(100, 2131695445);
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.MOUTH_OPEN.value, 2131695468);
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.EYEBROWS_RAISE.value, 2131695466);
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.BLINK.value, 2131695465);
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.HEAD_SHAKE.value, 2131695469);
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.KISS.value, 2131695467);
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(100, 2131695455);
+  }
+  
+  private void c(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.post(new EffectPendantTipsImpl.5(this, paramString));
   }
   
   public String a(Context paramContext, int paramInt)
@@ -46,7 +54,12 @@ public class EffectPendantTipsImpl
     if (paramInt == 0) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new EffectPendantTipsImpl.3(this, paramInt));
+    this.jdField_a_of_type_AndroidOsHandler.post(new EffectPendantTipsImpl.2(this, paramInt));
+  }
+  
+  public void a(int paramInt, EffectPendantTips.ClearErrorTipsCallback paramClearErrorTipsCallback)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new EffectPendantTipsImpl.3(this, paramClearErrorTipsCallback), paramInt);
   }
   
   public void a(Drawable paramDrawable, String paramString)
@@ -54,25 +67,35 @@ public class EffectPendantTipsImpl
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new EffectPendantTipsImpl.2(this, paramString, paramDrawable));
+    this.jdField_a_of_type_AndroidOsHandler.post(new EffectPendantTipsImpl.1(this, paramString, paramDrawable));
   }
   
   public void a(VideoAppInterface paramVideoAppInterface)
   {
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    if (QLog.isColorLevel()) {
-      QLog.i("EffectPendantTipsImpl", 2, "setTipsManager, app[" + paramVideoAppInterface + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setTipsManager, app[");
+      localStringBuilder.append(paramVideoAppInterface);
+      localStringBuilder.append("]");
+      QLog.i("EffectPendantTipsImpl", 2, localStringBuilder.toString());
     }
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new EffectPendantTipsImpl.1(this, paramString));
+    c(paramString);
   }
   
   public void b(int paramInt)
   {
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(new EffectPendantTipsImpl.4(this), paramInt);
+  }
+  
+  public void b(String paramString)
+  {
+    c(paramString);
   }
   
   public void c(int paramInt)
@@ -82,7 +105,7 @@ public class EffectPendantTipsImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.pendant.EffectPendantTipsImpl
  * JD-Core Version:    0.7.0.1
  */

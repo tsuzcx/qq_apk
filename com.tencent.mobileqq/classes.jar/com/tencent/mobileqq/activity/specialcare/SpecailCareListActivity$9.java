@@ -16,8 +16,9 @@ class SpecailCareListActivity$9
   {
     this.a.c.clearAnimation();
     ((FrameLayout)this.a.getWindow().getDecorView()).removeView(this.a.c);
-    this.a.c = null;
-    if (this.a.a != null)
+    paramAnimation = this.a;
+    paramAnimation.c = null;
+    if (paramAnimation.a != null)
     {
       this.a.a.a();
       this.a.a = null;
@@ -30,7 +31,7 @@ class SpecailCareListActivity$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity.9
  * JD-Core Version:    0.7.0.1
  */

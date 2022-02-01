@@ -14,14 +14,19 @@ class TbsLogClient$a
   
   public void run()
   {
-    if (this.b.b != null) {
-      this.b.b.append(this.a + "\n");
+    if (this.b.b != null)
+    {
+      TextView localTextView = this.b.b;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.a);
+      localStringBuilder.append("\n");
+      localTextView.append(localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.utils.TbsLogClient.a
  * JD-Core Version:    0.7.0.1
  */

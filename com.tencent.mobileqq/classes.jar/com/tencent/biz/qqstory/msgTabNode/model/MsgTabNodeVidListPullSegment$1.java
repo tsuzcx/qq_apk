@@ -20,56 +20,68 @@ class MsgTabNodeVidListPullSegment$1
   
   public void a(@NonNull MsgTabNodeVidListRequest paramMsgTabNodeVidListRequest, @Nullable MsgTabNodeVidListRequest.MsgTabNodeVidListResponse paramMsgTabNodeVidListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if ((paramMsgTabNodeVidListResponse == null) || (paramErrorMessage.isFail()))
+    if ((paramMsgTabNodeVidListResponse != null) && (!paramErrorMessage.isFail()))
     {
-      SLog.e("Q.qqstory.msgTab.jobPullVidList", "pull failed, err=" + paramErrorMessage.getErrorMessage() + " node:" + this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo);
-      MsgTabNodeVidListPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeVidListPullSegment, paramErrorMessage);
-      return;
-    }
-    if (paramMsgTabNodeVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.video_list.size() == 0)
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_Int != 5)
+      if (paramMsgTabNodeVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.video_list.size() == 0)
       {
-        SLog.e("Q.qqstory.msgTab.jobPullVidList", "pull failed, ERROR_NODE_VIDEOINFO_VIDLIST_IS_NULL, info=" + this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo + ", err=ERROR_NODE_VIDEOINFO_VIDLIST_IS_NULL, " + paramErrorMessage.getErrorMessage());
-        MsgTabNodeVidListPullSegment.b(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeVidListPullSegment, new ErrorMessage(103, paramErrorMessage.getErrorMessage()));
+        if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_Int != 5)
+        {
+          paramMsgTabNodeVidListRequest = new StringBuilder();
+          paramMsgTabNodeVidListRequest.append("pull failed, ERROR_NODE_VIDEOINFO_VIDLIST_IS_NULL, info=");
+          paramMsgTabNodeVidListRequest.append(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo);
+          paramMsgTabNodeVidListRequest.append(", err=ERROR_NODE_VIDEOINFO_VIDLIST_IS_NULL, ");
+          paramMsgTabNodeVidListRequest.append(paramErrorMessage.getErrorMessage());
+          SLog.e("Q.qqstory.msgTab.jobPullVidList", paramMsgTabNodeVidListRequest.toString());
+          MsgTabNodeVidListPullSegment.b(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeVidListPullSegment, new ErrorMessage(103, paramErrorMessage.getErrorMessage()));
+          return;
+        }
+        MsgTabNodeVidListPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeVidListPullSegment, MsgTabNodeVidListPullSegment.a(paramMsgTabNodeVidListResponse.jdField_a_of_type_JavaUtilList));
         return;
       }
-      MsgTabNodeVidListPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeVidListPullSegment, MsgTabNodeVidListPullSegment.a(paramMsgTabNodeVidListResponse.jdField_a_of_type_JavaUtilList));
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.jobPullVidList", 2, "pull succeed, info=" + this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo);
-    }
-    MsgTabStoryManager.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo, paramMsgTabNodeVidListResponse.jdField_a_of_type_ArrayOfByte);
-    paramMsgTabNodeVidListRequest = MsgTabNodeVidListPullSegment.a(paramMsgTabNodeVidListResponse.jdField_a_of_type_JavaUtilList);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_Int == 12) {}
-    MsgTabNodeVidListPullSegment.b(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeVidListPullSegment, paramMsgTabNodeVidListRequest);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_Int == 12) {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeVidListPullSegment.a != null)
+      if (QLog.isColorLevel())
       {
-        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeVidListPullSegment.a.c = paramMsgTabNodeVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.cookie.get();
-        paramMsgTabNodeVidListRequest = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeVidListPullSegment.a;
-        if (paramMsgTabNodeVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.is_end.get() <= 0) {
-          break label345;
+        paramMsgTabNodeVidListRequest = new StringBuilder();
+        paramMsgTabNodeVidListRequest.append("pull succeed, info=");
+        paramMsgTabNodeVidListRequest.append(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo);
+        QLog.d("Q.qqstory.msgTab.jobPullVidList", 2, paramMsgTabNodeVidListRequest.toString());
+      }
+      MsgTabStoryManager.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo, paramMsgTabNodeVidListResponse.jdField_a_of_type_ArrayOfByte);
+      paramMsgTabNodeVidListRequest = MsgTabNodeVidListPullSegment.a(paramMsgTabNodeVidListResponse.jdField_a_of_type_JavaUtilList);
+      int i = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_Int;
+      MsgTabNodeVidListPullSegment.b(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeVidListPullSegment, paramMsgTabNodeVidListRequest);
+      if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_Int == 12)
+      {
+        if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeVidListPullSegment.a != null)
+        {
+          this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeVidListPullSegment.a.c = paramMsgTabNodeVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.cookie.get();
+          paramMsgTabNodeVidListRequest = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeVidListPullSegment.a;
+          boolean bool;
+          if (paramMsgTabNodeVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.is_end.get() > 0) {
+            bool = true;
+          } else {
+            bool = false;
+          }
+          paramMsgTabNodeVidListRequest.a = bool;
         }
+        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.i = paramMsgTabNodeVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.cookie.get();
       }
-    }
-    label345:
-    for (boolean bool = true;; bool = false)
-    {
-      paramMsgTabNodeVidListRequest.a = bool;
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.i = paramMsgTabNodeVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.cookie.get();
-      if (!QLog.isColorLevel()) {
-        break;
+      if (QLog.isColorLevel()) {
+        SLog.a("Q.qqstory.msgTab.jobPullVidList", "MsgTabNodeVidListPullSegment::runSegment() use net resp %s, %s", this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_JavaLangString, paramMsgTabNodeVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList);
       }
-      SLog.a("Q.qqstory.msgTab.jobPullVidList", "MsgTabNodeVidListPullSegment::runSegment() use net resp %s, %s", this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_JavaLangString, paramMsgTabNodeVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList);
       return;
     }
+    paramMsgTabNodeVidListRequest = new StringBuilder();
+    paramMsgTabNodeVidListRequest.append("pull failed, err=");
+    paramMsgTabNodeVidListRequest.append(paramErrorMessage.getErrorMessage());
+    paramMsgTabNodeVidListRequest.append(" node:");
+    paramMsgTabNodeVidListRequest.append(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo);
+    SLog.e("Q.qqstory.msgTab.jobPullVidList", paramMsgTabNodeVidListRequest.toString());
+    MsgTabNodeVidListPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeVidListPullSegment, paramErrorMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeVidListPullSegment.1
  * JD-Core Version:    0.7.0.1
  */

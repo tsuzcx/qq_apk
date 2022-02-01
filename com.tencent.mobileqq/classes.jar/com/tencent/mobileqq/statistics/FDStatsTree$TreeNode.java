@@ -45,15 +45,20 @@ public class FDStatsTree$TreeNode
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("id: ").append(this.jdField_a_of_type_Int).append(" ");
-    localStringBuilder.append("char: ").append(this.jdField_a_of_type_Char).append(" ");
-    localStringBuilder.append("cnt: ").append(this.b);
+    localStringBuilder.append("id: ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("char: ");
+    localStringBuilder.append(this.jdField_a_of_type_Char);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("cnt: ");
+    localStringBuilder.append(this.b);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.FDStatsTree.TreeNode
  * JD-Core Version:    0.7.0.1
  */

@@ -26,13 +26,16 @@ public final class oidb_cmd0x977$ReqFollowPara
   
   static
   {
+    Integer localInteger1 = Integer.valueOf(0);
+    Integer localInteger2 = Integer.valueOf(1);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 80, 90, 96, 104, 112, 120, 128, 136 }, new String[] { "op_type", "uint32_req_count", "bytes_cookie", "uint64_dst_uin", "uint32_follow_list_type", "rpt_uin_list", "rpt_subscribe_list", "uint32_need_kd_user_info", "uint32_no_check_friends" }, new Object[] { Integer.valueOf(1), Integer.valueOf(0), localByteStringMicro, Long.valueOf(0L), Integer.valueOf(1), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0) }, ReqFollowPara.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 80, 90, 96, 104, 112, 120, 128, 136 }, new String[] { "op_type", "uint32_req_count", "bytes_cookie", "uint64_dst_uin", "uint32_follow_list_type", "rpt_uin_list", "rpt_subscribe_list", "uint32_need_kd_user_info", "uint32_no_check_friends" }, new Object[] { localInteger2, localInteger1, localByteStringMicro, localLong, localInteger2, localLong, localLong, localInteger1, localInteger1 }, ReqFollowPara.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x977.oidb_cmd0x977.ReqFollowPara
  * JD-Core Version:    0.7.0.1
  */

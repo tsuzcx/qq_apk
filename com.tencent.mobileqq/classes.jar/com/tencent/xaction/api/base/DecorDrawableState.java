@@ -2,18 +2,20 @@ package com.tencent.xaction.api.base;
 
 import androidx.annotation.Keep;
 import com.tencent.xaction.api.IDrawable;
+import com.tencent.xaction.api.util.ScreenUnit;
+import com.tencent.xaction.api.util.ScreenUnit.Companion;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/base/DecorDrawableState;", "", "()V", "fp", "", "getFp", "()Ljava/lang/String;", "setFp", "(Ljava/lang/String;)V", "g", "", "getG", "()I", "setG", "(I)V", "isAssets", "", "()Z", "setAssets", "(Z)V", "mirror", "getMirror", "setMirror", "path", "getPath", "setPath", "root", "getRoot", "setRoot", "type", "getType", "setType", "buildDrawable", "Lcom/tencent/xaction/api/IDrawable;", "clazz", "Ljava/lang/Class;", "Lcom/tencent/xaction/api/base/DecorDrawable;", "XActionEngine_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/base/DecorDrawableState;", "", "()V", "fp", "", "getFp", "()Ljava/lang/String;", "setFp", "(Ljava/lang/String;)V", "g", "", "getG", "()I", "setG", "(I)V", "isAssets", "", "()Z", "setAssets", "(Z)V", "mirror", "getMirror", "setMirror", "path", "getPath", "setPath", "root", "getRoot", "setRoot", "type", "getType", "setType", "buildDrawable", "Lcom/tencent/xaction/api/IDrawable;", "clazz", "Ljava/lang/Class;", "Lcom/tencent/xaction/api/base/DecorDrawable;", "XActionCore_release"}, k=1, mv={1, 1, 16})
 @Keep
 public abstract class DecorDrawableState
 {
   @NotNull
   private String fp = "";
-  private int g = -1;
+  private int g = ScreenUnit.a.a();
   private boolean isAssets;
   private boolean mirror;
   @NotNull
@@ -118,7 +120,7 @@ public abstract class DecorDrawableState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.xaction.api.base.DecorDrawableState
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class GVideoLoadingUI
   implements View.OnClickListener
@@ -26,10 +25,11 @@ public class GVideoLoadingUI
   
   public static String a(long paramLong)
   {
-    if (paramLong > 107374182.40000001D) {
+    double d1 = paramLong;
+    if (d1 > 107374182.40000001D) {
       return String.format("%.1f G", new Object[] { Float.valueOf((float)paramLong / 1024.0F / 1024.0F / 1024.0F) });
     }
-    if (paramLong > 104857.60000000001D) {
+    if (d1 > 104857.60000000001D) {
       return String.format("%.1f M", new Object[] { Float.valueOf((float)paramLong / 1024.0F / 1024.0F) });
     }
     return String.format("%.1f K", new Object[] { Float.valueOf((float)paramLong / 1024.0F) });
@@ -47,27 +47,24 @@ public class GVideoLoadingUI
     this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
     if (paramLong == 0L) {
       this.e.setVisibility(4);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
-      return;
+    } else {
       this.e.setText(String.format("%1$s/%2$s", new Object[] { a(paramInt * paramLong / 100L), a(paramLong) }));
     }
+    this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
   }
   
   public void a(Activity paramActivity, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131368189));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368196));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368197));
-    this.c = ((TextView)paramView.findViewById(2131368190));
-    this.d = ((TextView)paramView.findViewById(2131368195));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131368191));
-    this.e = ((TextView)paramView.findViewById(2131368192));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131368193));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131368194));
-    this.f = ((TextView)paramView.findViewById(2131368188));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367940));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367947));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367948));
+    this.c = ((TextView)paramView.findViewById(2131367941));
+    this.d = ((TextView)paramView.findViewById(2131367946));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367942));
+    this.e = ((TextView)paramView.findViewById(2131367943));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131367944));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131367945));
+    this.f = ((TextView)paramView.findViewById(2131367939));
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
@@ -103,12 +100,11 @@ public class GVideoLoadingUI
     if ((paramView == this.jdField_a_of_type_AndroidWidgetLinearLayout) || (paramView == this.jdField_a_of_type_AndroidWidgetTextView)) {
       this.jdField_a_of_type_AndroidAppActivity.finish();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.GVideoLoadingUI
  * JD-Core Version:    0.7.0.1
  */

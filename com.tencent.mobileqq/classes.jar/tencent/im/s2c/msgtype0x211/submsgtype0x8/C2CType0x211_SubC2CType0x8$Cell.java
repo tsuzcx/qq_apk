@@ -13,16 +13,22 @@ public final class C2CType0x211_SubC2CType0x8$Cell
   public static final int INT32_MCC_FIELD_NUMBER = 1;
   public static final int INT32_MNC_FIELD_NUMBER = 2;
   public static final int INT32_RSSI_FIELD_NUMBER = 5;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40 }, new String[] { "int32_mcc", "int32_mnc", "int32_lac", "int32_cellid", "int32_rssi" }, new Object[] { Integer.valueOf(-1), Integer.valueOf(-1), Integer.valueOf(-1), Integer.valueOf(-1), Integer.valueOf(0) }, Cell.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field int32_cellid = PBField.initInt32(-1);
   public final PBInt32Field int32_lac = PBField.initInt32(-1);
   public final PBInt32Field int32_mcc = PBField.initInt32(-1);
   public final PBInt32Field int32_mnc = PBField.initInt32(-1);
   public final PBInt32Field int32_rssi = PBField.initInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(-1);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40 }, new String[] { "int32_mcc", "int32_mnc", "int32_lac", "int32_cellid", "int32_rssi" }, new Object[] { localInteger, localInteger, localInteger, localInteger, Integer.valueOf(0) }, Cell.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x211.submsgtype0x8.C2CType0x211_SubC2CType0x8.Cell
  * JD-Core Version:    0.7.0.1
  */

@@ -29,41 +29,48 @@ public class LightFaceData
   
   public void revertFaceFeaturePoint()
   {
-    if ((this.imageSize == null) || (this.mLightFaceFeatureList == null) || (this.mLightFaceFeatureList.size() == 0)) {
-      return;
-    }
-    int j = this.imageSize[1];
-    Iterator localIterator = this.mLightFaceFeatureList.iterator();
-    while (localIterator.hasNext())
+    if (this.imageSize != null)
     {
-      LightFaceFeature localLightFaceFeature = (LightFaceFeature)localIterator.next();
-      if (localLightFaceFeature == null) {
-        break;
-      }
-      int i = 1;
-      while (i < localLightFaceFeature.facePoints.length)
+      Object localObject = this.mLightFaceFeatureList;
+      if (localObject != null)
       {
-        localLightFaceFeature.facePoints[i] = (j - localLightFaceFeature.facePoints[i]);
-        i += 2;
-      }
-      i = 1;
-      while (i < localLightFaceFeature.faceFeaturePoints.length)
-      {
-        localLightFaceFeature.faceFeaturePoints[i] = (j - localLightFaceFeature.faceFeaturePoints[i]);
-        i += 2;
-      }
-      i = 1;
-      while (i < localLightFaceFeature.faceFeature256Points.length)
-      {
-        localLightFaceFeature.faceFeature256Points[i] = (j - localLightFaceFeature.faceFeature256Points[i]);
-        i += 2;
+        if (((List)localObject).size() == 0) {
+          return;
+        }
+        int j = this.imageSize[1];
+        localObject = this.mLightFaceFeatureList.iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          LightFaceFeature localLightFaceFeature = (LightFaceFeature)((Iterator)localObject).next();
+          if (localLightFaceFeature == null) {
+            return;
+          }
+          int i = 1;
+          while (i < localLightFaceFeature.facePoints.length)
+          {
+            localLightFaceFeature.facePoints[i] = (j - localLightFaceFeature.facePoints[i]);
+            i += 2;
+          }
+          i = 1;
+          while (i < localLightFaceFeature.faceFeaturePoints.length)
+          {
+            localLightFaceFeature.faceFeaturePoints[i] = (j - localLightFaceFeature.faceFeaturePoints[i]);
+            i += 2;
+          }
+          i = 1;
+          while (i < localLightFaceFeature.faceFeature256Points.length)
+          {
+            localLightFaceFeature.faceFeature256Points[i] = (j - localLightFaceFeature.faceFeature256Points[i]);
+            i += 2;
+          }
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.light.bean.LightFaceData
  * JD-Core Version:    0.7.0.1
  */

@@ -31,36 +31,38 @@ public class ThreadManager
   
   public static Handler getSubThreadHandler()
   {
-    if (SUB_HANDLER == null) {}
-    try
-    {
-      if (SUB_HANDLER == null)
+    if (SUB_HANDLER == null) {
+      try
       {
-        HandlerThread localHandlerThread = new HandlerThread("MINIAPP_SUB", 10);
-        localHandlerThread.start();
-        SUB_HANDLER = new Handler(localHandlerThread.getLooper());
+        if (SUB_HANDLER == null)
+        {
+          HandlerThread localHandlerThread = new HandlerThread("MINIAPP_SUB", 10);
+          localHandlerThread.start();
+          SUB_HANDLER = new Handler(localHandlerThread.getLooper());
+        }
       }
-      return SUB_HANDLER;
+      finally {}
     }
-    finally {}
+    return SUB_HANDLER;
   }
   
   public static Handler getUIHandler()
   {
-    if (UI_HANDLER == null) {}
-    try
-    {
-      if (UI_HANDLER == null) {
-        UI_HANDLER = new Handler(Looper.getMainLooper());
+    if (UI_HANDLER == null) {
+      try
+      {
+        if (UI_HANDLER == null) {
+          UI_HANDLER = new Handler(Looper.getMainLooper());
+        }
       }
-      return UI_HANDLER;
+      finally {}
     }
-    finally {}
+    return UI_HANDLER;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.manager.ThreadManager
  * JD-Core Version:    0.7.0.1
  */

@@ -71,53 +71,51 @@ public final class Ac3Extractor
   {
     ParsableByteArray localParsableByteArray = new ParsableByteArray(10);
     int i = 0;
-    paramExtractorInput.peekFully(localParsableByteArray.data, 0, 10);
-    localParsableByteArray.setPosition(0);
-    int j;
-    int k;
-    if (localParsableByteArray.readUnsignedInt24() != ID3_TAG)
-    {
-      paramExtractorInput.resetPeekPosition();
-      paramExtractorInput.advancePeekPosition(i);
-      j = 0;
-      k = i;
-    }
     for (;;)
     {
-      label62:
-      paramExtractorInput.peekFully(localParsableByteArray.data, 0, 5);
+      paramExtractorInput.peekFully(localParsableByteArray.data, 0, 10);
       localParsableByteArray.setPosition(0);
-      if (localParsableByteArray.readUnsignedShort() != 2935)
+      if (localParsableByteArray.readUnsignedInt24() != ID3_TAG)
       {
         paramExtractorInput.resetPeekPosition();
-        k += 1;
-        if (k - i < 8192) {}
-      }
-      int m;
-      do
-      {
-        return false;
-        localParsableByteArray.skipBytes(3);
-        j = localParsableByteArray.readSynchSafeInt();
-        i += j + 10;
-        paramExtractorInput.advancePeekPosition(j);
-        break;
-        paramExtractorInput.advancePeekPosition(k);
-        j = 0;
-        break label62;
-        j += 1;
-        if (j >= 4) {
-          return true;
+        paramExtractorInput.advancePeekPosition(i);
+        j = i;
+        int k = 0;
+        for (;;)
+        {
+          paramExtractorInput.peekFully(localParsableByteArray.data, 0, 5);
+          localParsableByteArray.setPosition(0);
+          if (localParsableByteArray.readUnsignedShort() != 2935)
+          {
+            paramExtractorInput.resetPeekPosition();
+            j += 1;
+            if (j - i >= 8192) {
+              return false;
+            }
+            paramExtractorInput.advancePeekPosition(j);
+            break;
+          }
+          k += 1;
+          if (k >= 4) {
+            return true;
+          }
+          int m = Ac3Util.parseAc3SyncframeSize(localParsableByteArray.data);
+          if (m == -1) {
+            return false;
+          }
+          paramExtractorInput.advancePeekPosition(m - 5);
         }
-        m = Ac3Util.parseAc3SyncframeSize(localParsableByteArray.data);
-      } while (m == -1);
-      paramExtractorInput.advancePeekPosition(m - 5);
+      }
+      localParsableByteArray.skipBytes(3);
+      int j = localParsableByteArray.readSynchSafeInt();
+      i += j + 10;
+      paramExtractorInput.advancePeekPosition(j);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ts.Ac3Extractor
  * JD-Core Version:    0.7.0.1
  */

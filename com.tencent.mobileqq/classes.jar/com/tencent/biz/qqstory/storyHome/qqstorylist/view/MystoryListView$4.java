@@ -9,14 +9,15 @@ class MystoryListView$4
   {
     if (this.this$0.a != null)
     {
-      this.this$0.postDelayed(this.this$0.a, 100L);
+      MystoryListView localMystoryListView = this.this$0;
+      localMystoryListView.postDelayed(localMystoryListView.a, 100L);
       this.this$0.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView.4
  * JD-Core Version:    0.7.0.1
  */

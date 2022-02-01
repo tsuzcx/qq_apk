@@ -7,7 +7,7 @@ class ArkVsync$2
   
   public void run()
   {
-    ArkVsync.ENV.logI("ArkApp.ArkVsync", "removeFrameCallback, stop vsync");
+    Logger.logI("ArkApp.ArkVsync", "removeFrameCallback, stop vsync");
     this.this$0.mImpl.stop();
   }
 }

@@ -22,30 +22,45 @@ class DBFixDialogUI$4
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    paramDialogInterface = this.a.jdField_a_of_type_AndroidContentContext.getDatabasePath(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + ".db");
-    boolean bool = false;
-    if ((paramDialogInterface.exists()) && ((float)paramDialogInterface.length() * 1.7F > FileUtils.a()))
+    paramDialogInterface = this.a.jdField_a_of_type_AndroidContentContext;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    ((StringBuilder)localObject1).append(".db");
+    paramDialogInterface = paramDialogInterface.getDatabasePath(((StringBuilder)localObject1).toString());
+    boolean bool;
+    if ((paramDialogInterface.exists()) && ((float)paramDialogInterface.length() * 1.7F > FileUtils.getAvailableInnernalMemorySize()))
     {
       bool = true;
       DBFixDialogUI.a(this.a);
-      paramDialogInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0);
-      String str = paramDialogInterface.getString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, "");
-      paramDialogInterface.edit().putString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, str + "_MemoryAlert").commit();
+      localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0);
+      paramDialogInterface = new StringBuilder();
+      paramDialogInterface.append(this.a.jdField_a_of_type_JavaLangString);
+      paramDialogInterface.append(DBFixManager.l);
+      paramDialogInterface = ((SharedPreferences)localObject1).getString(paramDialogInterface.toString(), "");
+      localObject1 = ((SharedPreferences)localObject1).edit();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.a.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(DBFixManager.l);
+      localObject2 = ((StringBuilder)localObject2).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramDialogInterface);
+      localStringBuilder.append("_MemoryAlert");
+      ((SharedPreferences.Editor)localObject1).putString((String)localObject2, localStringBuilder.toString()).commit();
     }
-    for (;;)
+    else
     {
-      paramDialogInterface = new HashMap();
-      paramDialogInterface.put("isMemAlert", String.valueOf(bool));
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, DBFixManager.n, true, -1L, 0L, paramDialogInterface, null, false);
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_JavaLangString, DBFixDialogUI.c, DBFixDialogUI.c, 0, 0, "", "", "", "");
-      return;
       DBFixDialogUI.b(this.a);
+      bool = false;
     }
+    paramDialogInterface = new HashMap();
+    paramDialogInterface.put("isMemAlert", String.valueOf(bool));
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, DBFixManager.o, true, -1L, 0L, paramDialogInterface, null, false);
+    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_JavaLangString, DBFixDialogUI.c, DBFixDialogUI.c, 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.database.corrupt.DBFixDialogUI.4
  * JD-Core Version:    0.7.0.1
  */

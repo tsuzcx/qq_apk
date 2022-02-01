@@ -1,7 +1,7 @@
 package com.tencent.tkd.weibo.data;
 
-import com.tencent.tkd.weibo.bean.AtPersonItem;
-import com.tencent.tkd.weibo.bean.TweetTopicItem;
+import com.tencent.tkd.topicsdk.bean.AtPersonItem;
+import com.tencent.tkd.topicsdk.bean.TweetTopicItem;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -13,7 +13,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/weibo/data/DataTransferManager;", "", "()V", "contactFlagListenerList", "", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "hasFollowFlag", "hasFansFlag", "", "Lcom/tencent/tkd/weibo/data/ContactFlagListener;", "value", "getHasFansFlag", "()I", "setHasFansFlag", "(I)V", "getHasFollowFlag", "setHasFollowFlag", "mIDataTransfer", "Lcom/tencent/tkd/weibo/data/IDataTransfer;", "addContactFlagListener", "listener", "getMyFansList", "cookie", "", "callback", "Lkotlin/Function5;", "errorCode", "", "errorMsg", "cookieStr", "", "isEnd", "", "Lcom/tencent/tkd/weibo/bean/AtPersonItem;", "followList", "Lcom/tencent/tkd/weibo/data/ContactCallback;", "getMyFollowList", "getTweetHotTopicList", "pageNum", "Lcom/tencent/tkd/weibo/bean/TweetTopicItem;", "topicList", "Lcom/tencent/tkd/weibo/data/TopicCallback;", "getTweetRecentTopicList", "getTweetSearchTopicList", "wording", "init", "dataTransfer", "removeContactFlagListener", "sendAtContactFlagEvent", "tkd-weibo-component_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/weibo/data/DataTransferManager;", "", "()V", "contactFlagListenerList", "", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "hasFollowFlag", "hasFansFlag", "", "Lcom/tencent/tkd/weibo/data/ContactFlagListener;", "value", "getHasFansFlag", "()I", "setHasFansFlag", "(I)V", "getHasFollowFlag", "setHasFollowFlag", "mIDataTransfer", "Lcom/tencent/tkd/weibo/data/IDataTransfer;", "addContactFlagListener", "listener", "getMyFansList", "cookie", "", "callback", "Lkotlin/Function5;", "errorCode", "", "errorMsg", "cookieStr", "", "isEnd", "", "Lcom/tencent/tkd/topicsdk/bean/AtPersonItem;", "followList", "Lcom/tencent/tkd/weibo/data/ContactCallback;", "getMyFollowList", "getTweetHotTopicList", "pageNum", "Lcom/tencent/tkd/topicsdk/bean/TweetTopicItem;", "topicList", "Lcom/tencent/tkd/weibo/data/TopicCallback;", "getTweetRecentTopicList", "getTweetSearchTopicList", "wording", "init", "dataTransfer", "removeContactFlagListener", "sendAtContactFlagEvent", "tkd-weibo-component_release"}, k=1, mv={1, 1, 16})
 public final class DataTransferManager
 {
   private static int jdField_a_of_type_Int = -1;
@@ -79,6 +79,16 @@ public final class DataTransferManager
     jdField_a_of_type_JavaUtilList.add(paramFunction2);
   }
   
+  public final void a(@NotNull Function5<? super Integer, ? super String, ? super byte[], ? super Boolean, ? super List<TweetTopicItem>, Unit> paramFunction5)
+  {
+    Intrinsics.checkParameterIsNotNull(paramFunction5, "callback");
+    IDataTransfer localIDataTransfer = jdField_a_of_type_ComTencentTkdWeiboDataIDataTransfer;
+    if (localIDataTransfer == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mIDataTransfer");
+    }
+    localIDataTransfer.a((IDataTransfer.TopicCallback)new DataTransferManagerKt.sam.com_tencent_tkd_weibo_data_IDataTransfer_TopicCallback.0(paramFunction5));
+  }
+  
   public final void a(@Nullable byte[] paramArrayOfByte, @NotNull Function5<? super Integer, ? super String, ? super byte[], ? super Boolean, ? super List<AtPersonItem>, Unit> paramFunction5)
   {
     Intrinsics.checkParameterIsNotNull(paramFunction5, "callback");
@@ -115,7 +125,7 @@ public final class DataTransferManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.weibo.data.DataTransferManager
  * JD-Core Version:    0.7.0.1
  */

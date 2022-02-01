@@ -12,7 +12,10 @@ public class MiniAppSSOCmdHelper
   {
     if (paramClass == null)
     {
-      QLog.e("MiniAppSSOCmdHelper", 2, "sendSSOCmdRequest response class is null, not send sso request for " + paramString1);
+      paramString2 = new StringBuilder();
+      paramString2.append("sendSSOCmdRequest response class is null, not send sso request for ");
+      paramString2.append(paramString1);
+      QLog.e("MiniAppSSOCmdHelper", 2, paramString2.toString());
       return;
     }
     MiniAppSSOCmdObserver.defaultObserver().sendSSOCmdRequest(paramString1, paramString2, paramREQUEST, new MiniAppSSOCmdHelper.1(paramMiniAppCmdCallback, paramClass));
@@ -20,7 +23,7 @@ public class MiniAppSSOCmdHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppSSOCmdHelper
  * JD-Core Version:    0.7.0.1
  */

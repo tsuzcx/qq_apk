@@ -12,8 +12,14 @@ class MsgBackupManager$2
   public void a(boolean paramBoolean, Object paramObject)
   {
     super.a(paramBoolean, paramObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.BackupAndMigrateManager", 2, "onGetQrResponse: " + paramObject + ", isSuccess: " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGetQrResponse: ");
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append(", isSuccess: ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("MsgBackup.BackupAndMigrateManager", 2, localStringBuilder.toString());
     }
     if ((paramBoolean) && ((paramObject instanceof MsgBackupGetQrRsp))) {
       MsgBackupManager.a(this.a, (MsgBackupGetQrRsp)paramObject);
@@ -22,7 +28,7 @@ class MsgBackupManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.controller.MsgBackupManager.2
  * JD-Core Version:    0.7.0.1
  */

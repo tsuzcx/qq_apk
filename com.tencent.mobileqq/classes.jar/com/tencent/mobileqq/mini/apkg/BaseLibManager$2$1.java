@@ -16,39 +16,52 @@ class BaseLibManager$2$1
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "[MiniEng] updateBaseLib response. isSuc=" + paramBoolean + " rsp=" + paramJSONObject);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[MiniEng] updateBaseLib response. isSuc=");
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append(" rsp=");
+    ((StringBuilder)localObject).append(paramJSONObject);
+    QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, ((StringBuilder)localObject).toString());
     if ((paramBoolean) && (paramJSONObject != null))
     {
       ThreadManagerV2.executeOnFileThread(new BaseLibManager.2.1.1(this, paramJSONObject));
-      Object localObject = BaseLibInfo.fromJSON(paramJSONObject.optJSONObject(BaseLibInfo.getKey(1)));
+      localObject = BaseLibInfo.fromJSON(paramJSONObject.optJSONObject(BaseLibInfo.getKey(1)));
       if (BaseLibManager.access$000(this.this$1.this$0, (BaseLibInfo)localObject).booleanValue())
       {
         paramJSONObject = ((BaseLibInfo)localObject).baseLibVersion;
         localObject = ((BaseLibInfo)localObject).baseLibUrl;
-        QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "[MiniEng] updateBaseLib end : version : " + paramJSONObject + "; url : " + (String)localObject);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[MiniEng] updateBaseLib end : version : ");
+        localStringBuilder.append(paramJSONObject);
+        localStringBuilder.append("; url : ");
+        localStringBuilder.append((String)localObject);
+        QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, localStringBuilder.toString());
         this.this$1.this$0.doDownloadBaselib((String)localObject, paramJSONObject, this.val$baseLibUrl, this.val$baseLibVersion, null);
         paramJSONObject = AppBrandProxy.g().getMiniAppConfig();
         if ((paramJSONObject != null) && (paramJSONObject.config != null) && (!TextUtils.isEmpty(paramJSONObject.config.appId))) {
           MiniAppStartState.setBaseLibDownload(paramJSONObject.config.appId, false);
         }
       }
-      do
+      else
       {
-        return;
         QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "[MiniEng] updateBaseLib, no update");
         BaseLibManager.access$200(this.this$1.this$0, 1);
         paramJSONObject = AppBrandProxy.g().getMiniAppConfig();
-      } while ((paramJSONObject == null) || (paramJSONObject.config == null) || (TextUtils.isEmpty(paramJSONObject.config.appId)));
-      MiniAppStartState.setBaseLibDownload(paramJSONObject.config.appId, true);
-      return;
+        if ((paramJSONObject != null) && (paramJSONObject.config != null) && (!TextUtils.isEmpty(paramJSONObject.config.appId))) {
+          MiniAppStartState.setBaseLibDownload(paramJSONObject.config.appId, true);
+        }
+      }
     }
-    QLog.e("miniapp-process_BaseLibManager[MiniEng]", 1, "[MiniEng] updateBaseLib failed!");
-    BaseLibManager.access$200(this.this$1.this$0, 1100);
+    else
+    {
+      QLog.e("miniapp-process_BaseLibManager[MiniEng]", 1, "[MiniEng] updateBaseLib failed!");
+      BaseLibManager.access$200(this.this$1.this$0, 1100);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.BaseLibManager.2.1
  * JD-Core Version:    0.7.0.1
  */

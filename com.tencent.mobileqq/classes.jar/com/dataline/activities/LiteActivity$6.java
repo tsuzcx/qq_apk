@@ -12,8 +12,10 @@ class LiteActivity$6
   
   public void a(int paramInt)
   {
-    if (this.a.isFinishing()) {}
-    while ((Build.VERSION.SDK_INT >= 17) && (this.a.isDestroyed())) {
+    if (this.a.isFinishing()) {
+      return;
+    }
+    if ((Build.VERSION.SDK_INT >= 17) && (this.a.isDestroyed())) {
       return;
     }
     if (paramInt > 0)
@@ -27,7 +29,7 @@ class LiteActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.LiteActivity.6
  * JD-Core Version:    0.7.0.1
  */

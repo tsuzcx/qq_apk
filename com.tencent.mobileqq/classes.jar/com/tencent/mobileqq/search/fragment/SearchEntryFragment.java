@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.search.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -12,35 +10,45 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import androidx.annotation.NonNull;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyTabTopSearchHeaderController;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BaseFragment;
+import com.tencent.mobileqq.app.QBaseFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.kandian.biz.search.entity.ReadInJoySearchWord;
+import com.tencent.mobileqq.qcircle.api.IQCircleReportApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.search.BaseSearchEntryModel;
 import com.tencent.mobileqq.search.HistorySearchEntryModel;
 import com.tencent.mobileqq.search.HistorySearchEntryModel.OnHistorySearchCountListener;
 import com.tencent.mobileqq.search.HotWordSearchEntryModel;
-import com.tencent.mobileqq.search.SearchEntryConfigManager;
 import com.tencent.mobileqq.search.SearchWordHistoryEntryModel;
 import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.base.api.SearchEntryConfigManager;
 import com.tencent.mobileqq.search.fragment.searchentry.ISearchEntryFragment;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.HotSearchItem;
 import com.tencent.mobileqq.search.model.SearchEntryDataModel;
 import com.tencent.mobileqq.search.util.SearchConfigUtils;
 import com.tencent.mobileqq.search.util.SearchUtils;
 import com.tencent.mobileqq.studymode.StudyModeManager;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import com.tencent.widget.ScrollView;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CopyOnWriteArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class SearchEntryFragment
-  extends ReportV4Fragment
+  extends BaseFragment
   implements HistorySearchEntryModel.OnHistorySearchCountListener, ISearchEntryFragment
 {
   private int jdField_a_of_type_Int;
@@ -54,29 +62,218 @@ public class SearchEntryFragment
   
   public static int a(int paramInt)
   {
-    switch (paramInt)
+    int i = 2;
+    if (paramInt != 1)
     {
-    default: 
-      return 0;
-    case 1: 
-      return 1;
-    case 2: 
-      return 2;
-    case 3: 
-      return 21;
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 10) {
+            return 0;
+          }
+          return 25;
+        }
+        return 21;
+      }
     }
-    return 25;
+    else {
+      i = 1;
+    }
+    return i;
   }
   
   private void a()
   {
-    InputMethodManager localInputMethodManager = (InputMethodManager)getActivity().getSystemService("input_method");
+    InputMethodManager localInputMethodManager = (InputMethodManager)getBaseActivity().getSystemService("input_method");
     if (localInputMethodManager != null) {
       localInputMethodManager.hideSoftInputFromWindow(this.jdField_a_of_type_AndroidWidgetLinearLayout.getWindowToken(), 2);
     }
   }
   
+  private void a(SearchEntryDataModel paramSearchEntryDataModel)
+  {
+    if ((paramSearchEntryDataModel instanceof HotWordSearchEntryDataModel))
+    {
+      paramSearchEntryDataModel = ((HotWordSearchEntryDataModel)paramSearchEntryDataModel).a;
+      int i = 0;
+      while (i < paramSearchEntryDataModel.size())
+      {
+        try
+        {
+          JSONObject localJSONObject = new JSONObject(((HotWordSearchEntryDataModel.HotSearchItem)paramSearchEntryDataModel.get(i)).sExtInfo);
+          HashMap localHashMap = new HashMap();
+          localHashMap.put("ext5", localJSONObject.optString("ext5"));
+          localHashMap.put("ext6", localJSONObject.optString("ext6"));
+          localHashMap.put("ext7", localJSONObject.optString("ext7"));
+          localHashMap.put("ext8", localJSONObject.optString("ext8"));
+          ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504("", 104, 1, 1, localHashMap, null, null);
+        }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  private void a(List<SearchEntryDataModel> paramList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    boolean bool = SearchEntryConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a(this.jdField_a_of_type_JavaLangString), paramBoolean1);
+    int j = 0;
+    int i;
+    Object localObject;
+    if (bool)
+    {
+      b();
+      i = 0;
+      while (i < paramList.size())
+      {
+        if (((((SearchEntryDataModel)paramList.get(i)).c == 1) || (((SearchEntryDataModel)paramList.get(i)).c == 8)) && (paramBoolean2) && (!paramBoolean3))
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("refreshDataModels net, ignore hotWord: ");
+            ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+            QLog.d("SearchEntryFragment", 2, ((StringBuilder)localObject).toString());
+          }
+        }
+        else
+        {
+          localObject = BaseSearchEntryModel.a(((SearchEntryDataModel)paramList.get(i)).c, a(this.jdField_a_of_type_JavaLangString), paramBoolean1);
+          if (localObject != null)
+          {
+            if (i == 0) {
+              ((BaseSearchEntryModel)localObject).jdField_a_of_type_Boolean = false;
+            }
+            this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(((BaseSearchEntryModel)localObject).a(getBaseActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, null));
+            this.jdField_a_of_type_JavaUtilList.add(localObject);
+            ((BaseSearchEntryModel)localObject).a((SearchEntryDataModel)paramList.get(i));
+          }
+        }
+        i += 1;
+      }
+      if ("kSearchReadInJoyTab".equals(this.jdField_a_of_type_JavaLangString))
+      {
+        this.jdField_a_of_type_JavaUtilList.add(new SearchWordHistoryEntryModel(a(this.jdField_a_of_type_JavaLangString)));
+        localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+        List localList = this.jdField_a_of_type_JavaUtilList;
+        ((LinearLayout)localObject).addView(((BaseSearchEntryModel)localList.get(localList.size() - 1)).a(getBaseActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, null));
+        localObject = this.jdField_a_of_type_JavaUtilList;
+        ((BaseSearchEntryModel)((List)localObject).get(((List)localObject).size() - 1)).a();
+      }
+      localObject = new View(getBaseActivity());
+      ((View)localObject).setLayoutParams(new LinearLayout.LayoutParams(-1, UIUtils.a(getBaseActivity(), 80.0F)));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
+      i = j;
+    }
+    else
+    {
+      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      for (;;)
+      {
+        i = j;
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+        ((BaseSearchEntryModel)((Iterator)localObject).next()).a();
+      }
+    }
+    while (i < paramList.size())
+    {
+      if (((SearchEntryDataModel)paramList.get(i)).c == 8) {
+        a((SearchEntryDataModel)paramList.get(i));
+      }
+      i += 1;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramList = new StringBuilder();
+      paramList.append("refreshDataModels,  mModelList.size = ");
+      paramList.append(this.jdField_a_of_type_JavaLangString);
+      paramList.append(this.jdField_a_of_type_JavaUtilList.size());
+      paramList.append(", needRefreshModelList = ");
+      paramList.append(bool);
+      QLog.d("SearchEntryFragment", 2, paramList.toString());
+    }
+  }
+  
+  private void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    b();
+    Object localObject1 = SearchEntryConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a(this.jdField_a_of_type_JavaLangString), paramBoolean1);
+    Object localObject2;
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("refreshDataModels modelIdList = ");
+      ((StringBuilder)localObject2).append(localObject1);
+      QLog.d("SearchEntryFragment", 2, ((StringBuilder)localObject2).toString());
+    }
+    if ((localObject1 != null) && (localObject1.length > 0))
+    {
+      int i = 0;
+      while (i < localObject1.length)
+      {
+        if (((localObject1[i] == 1) || (localObject1[i] == 8)) && (paramBoolean2) && (!paramBoolean3))
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("refreshDataModels local, ignore hotWord: ");
+            ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+            QLog.d("SearchEntryFragment", 2, ((StringBuilder)localObject2).toString());
+          }
+        }
+        else if ((localObject1[i] != 0) || (!"kSearchReadInJoyTab".equals(this.jdField_a_of_type_JavaLangString)))
+        {
+          localObject2 = BaseSearchEntryModel.a(localObject1[i], a(this.jdField_a_of_type_JavaLangString), paramBoolean1);
+          if (localObject2 != null)
+          {
+            if (i == 0) {
+              ((BaseSearchEntryModel)localObject2).jdField_a_of_type_Boolean = false;
+            }
+            this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(((BaseSearchEntryModel)localObject2).a(getBaseActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, null));
+            this.jdField_a_of_type_JavaUtilList.add(localObject2);
+            ((BaseSearchEntryModel)localObject2).a();
+          }
+        }
+        i += 1;
+      }
+    }
+    if ("kSearchReadInJoyTab".equals(this.jdField_a_of_type_JavaLangString))
+    {
+      this.jdField_a_of_type_JavaUtilList.add(new SearchWordHistoryEntryModel(a(this.jdField_a_of_type_JavaLangString)));
+      localObject1 = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+      localObject2 = this.jdField_a_of_type_JavaUtilList;
+      ((LinearLayout)localObject1).addView(((BaseSearchEntryModel)((List)localObject2).get(((List)localObject2).size() - 1)).a(getBaseActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, null));
+      localObject1 = this.jdField_a_of_type_JavaUtilList;
+      ((BaseSearchEntryModel)((List)localObject1).get(((List)localObject1).size() - 1)).a();
+    }
+    localObject1 = new View(getBaseActivity());
+    ((View)localObject1).setLayoutParams(new LinearLayout.LayoutParams(-1, UIUtils.a(getBaseActivity(), 80.0F)));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
+  }
+  
   private void b()
+  {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((BaseSearchEntryModel)localIterator.next()).b();
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if (("kSearchMessageTab".equals(this.jdField_a_of_type_JavaLangString)) || ("kSearchContactTab".equals(this.jdField_a_of_type_JavaLangString)) || ("kSearchDynamicTab".equals(this.jdField_a_of_type_JavaLangString)))
+    {
+      this.jdField_a_of_type_JavaUtilList.add(new HistorySearchEntryModel(a(this.jdField_a_of_type_JavaLangString), this));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(((BaseSearchEntryModel)this.jdField_a_of_type_JavaUtilList.get(0)).a(getBaseActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, null));
+      ((BaseSearchEntryModel)this.jdField_a_of_type_JavaUtilList.get(0)).a();
+    }
+  }
+  
+  private void c()
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
@@ -90,40 +287,53 @@ public class SearchEntryFragment
   
   public int a(String paramString)
   {
-    if ("kSearchMessageTab".equals(paramString)) {}
-    do
-    {
+    if ("kSearchMessageTab".equals(paramString)) {
       return 1;
-      if ("kSearchContactTab".equals(paramString)) {
-        return 2;
-      }
-      if ("kSearchDynamicTab".equals(paramString)) {
-        return 3;
-      }
-      if ("kSearchWebTitle".equals(paramString)) {
-        return 3;
-      }
-    } while (!"kSearchReadInJoyTab".equals(paramString));
-    return 10;
+    }
+    if ("kSearchContactTab".equals(paramString)) {
+      return 2;
+    }
+    if ("kSearchDynamicTab".equals(paramString)) {
+      return 3;
+    }
+    if ("kSearchWebTitle".equals(paramString)) {
+      return 3;
+    }
+    if ("kSearchReadInJoyTab".equals(paramString)) {
+      return 10;
+    }
+    return 1;
   }
   
   public void a(int paramInt)
   {
     boolean bool = ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
-    if ((isDetached()) || (getView() == null)) {}
-    while (!QLog.isColorLevel()) {
-      return;
+    if (!isDetached())
+    {
+      if (getView() == null) {
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onHistoryCount, isNightMode = ");
+        localStringBuilder.append(bool);
+        localStringBuilder.append(", count = ");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(", mTabType = ");
+        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        QLog.d("SearchEntryFragment", 2, localStringBuilder.toString());
+      }
     }
-    QLog.d("SearchEntryFragment", 2, "onHistoryCount, isNightMode = " + bool + ", count = " + paramInt + ", mTabType = " + this.jdField_a_of_type_JavaLangString);
   }
   
   public void afterTextChanged(Editable paramEditable)
   {
-    b();
+    c();
   }
   
   @NonNull
-  public Fragment getFragment()
+  public QBaseFragment getFragment()
   {
     return this;
   }
@@ -136,21 +346,21 @@ public class SearchEntryFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = getActivity().getAppRuntime();
+    paramLayoutInflater = getBaseActivity().getAppRuntime();
     if ((paramLayoutInflater instanceof QQAppInterface)) {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramLayoutInflater);
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getActivity());
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getBaseActivity());
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
     mIsModelsReported.clear();
     refreshDataModels(null, UniteSearchActivity.a(this.jdField_a_of_type_Int, this.b));
-    paramLayoutInflater = new ScrollView(getActivity());
+    paramLayoutInflater = new ScrollView(getBaseActivity());
     paramLayoutInflater.setOverScrollMode(0);
     paramLayoutInflater.setVerticalScrollBarEnabled(false);
     paramLayoutInflater.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
     paramLayoutInflater.setOnTouchListener(new SearchEntryFragment.1(this));
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
@@ -158,7 +368,7 @@ public class SearchEntryFragment
   {
     super.onDestroy();
     AbstractGifImage.pauseAll();
-    b();
+    c();
   }
   
   public void onDestroyView()
@@ -174,9 +384,9 @@ public class SearchEntryFragment
   {
     super.onPause();
     AbstractGifImage.pauseAll();
-    b();
+    c();
     if ((TextUtils.equals(SearchEntryConfigManager.b, "Recom_word")) && (!this.jdField_a_of_type_Boolean)) {
-      ReadInJoyTabTopSearchHeaderController.jdField_a_of_type_Int += SearchEntryConfigManager.jdField_a_of_type_Int;
+      ReadInJoySearchWord.jdField_a_of_type_Int += SearchEntryConfigManager.jdField_a_of_type_Int;
     }
   }
   
@@ -211,147 +421,40 @@ public class SearchEntryFragment
   
   public void refreshDataModels(List<SearchEntryDataModel> paramList, boolean paramBoolean)
   {
-    if (getActivity() == null) {
+    if (getBaseActivity() == null)
+    {
       QLog.e("SearchEntryFragment", 1, "in refreshDataModels() getActivity() is null.");
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("SearchEntryFragment", 2, "refreshDataModels,  mTabType = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramList);
-        }
-        if ((getActivity() != null) && (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (!isDetached())) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("SearchEntryFragment", 2, "refreshDataModels,  fragment is in a invalid state");
       return;
-    } while (StudyModeManager.a());
-    boolean bool2 = SearchUtils.b(this.jdField_a_of_type_Int);
-    if (bool2) {}
-    for (boolean bool1 = SearchConfigUtils.a(this.jdField_a_of_type_Int);; bool1 = false)
+    }
+    if (QLog.isColorLevel())
     {
-      Object localObject;
-      int i;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("refreshDataModels,  mTabType = ");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(", result = ");
+      localStringBuilder.append(paramList);
+      QLog.d("SearchEntryFragment", 2, localStringBuilder.toString());
+    }
+    if ((getBaseActivity() != null) && (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (!isDetached()))
+    {
+      if (StudyModeManager.a()) {
+        return;
+      }
+      boolean bool2 = SearchUtils.b(this.jdField_a_of_type_Int);
+      boolean bool1 = false;
+      if (bool2) {
+        bool1 = SearchConfigUtils.a(this.jdField_a_of_type_Int);
+      }
       if (paramList != null)
       {
-        boolean bool3 = SearchEntryConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a(this.jdField_a_of_type_JavaLangString), paramBoolean);
-        if (bool3)
-        {
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-          localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-          while (((Iterator)localObject).hasNext()) {
-            ((BaseSearchEntryModel)((Iterator)localObject).next()).b();
-          }
-          this.jdField_a_of_type_JavaUtilList.clear();
-          if (("kSearchMessageTab".equals(this.jdField_a_of_type_JavaLangString)) || ("kSearchContactTab".equals(this.jdField_a_of_type_JavaLangString)) || ("kSearchDynamicTab".equals(this.jdField_a_of_type_JavaLangString)))
-          {
-            this.jdField_a_of_type_JavaUtilList.add(new HistorySearchEntryModel(a(this.jdField_a_of_type_JavaLangString), this));
-            this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(((BaseSearchEntryModel)this.jdField_a_of_type_JavaUtilList.get(0)).a(getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, null));
-            ((BaseSearchEntryModel)this.jdField_a_of_type_JavaUtilList.get(0)).a();
-          }
-          i = 0;
-          if (i < paramList.size())
-          {
-            if ((((SearchEntryDataModel)paramList.get(i)).c == 1) && (bool2) && (!bool1)) {
-              if (QLog.isColorLevel()) {
-                QLog.d("SearchEntryFragment", 2, "refreshDataModels net, ignore hotWord: " + this.jdField_a_of_type_Int);
-              }
-            }
-            for (;;)
-            {
-              i += 1;
-              break;
-              localObject = BaseSearchEntryModel.a(((SearchEntryDataModel)paramList.get(i)).c, a(this.jdField_a_of_type_JavaLangString), paramBoolean);
-              if (localObject != null)
-              {
-                if (i == 0) {
-                  ((BaseSearchEntryModel)localObject).jdField_a_of_type_Boolean = false;
-                }
-                this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(((BaseSearchEntryModel)localObject).a(getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, null));
-                this.jdField_a_of_type_JavaUtilList.add(localObject);
-                ((BaseSearchEntryModel)localObject).a((SearchEntryDataModel)paramList.get(i));
-              }
-            }
-          }
-          if ("kSearchReadInJoyTab".equals(this.jdField_a_of_type_JavaLangString))
-          {
-            this.jdField_a_of_type_JavaUtilList.add(new SearchWordHistoryEntryModel(a(this.jdField_a_of_type_JavaLangString)));
-            this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(((BaseSearchEntryModel)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1)).a(getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, null));
-            ((BaseSearchEntryModel)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1)).a();
-          }
-          paramList = new View(getActivity());
-          paramList.setLayoutParams(new LinearLayout.LayoutParams(-1, UIUtils.a(getActivity(), 80.0F)));
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramList);
-        }
-        while (QLog.isColorLevel())
-        {
-          QLog.d("SearchEntryFragment", 2, "refreshDataModels,  mModelList.size = " + this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_JavaUtilList.size() + ", needRefreshModelList = " + bool3);
-          return;
-          paramList = this.jdField_a_of_type_JavaUtilList.iterator();
-          while (paramList.hasNext()) {
-            ((BaseSearchEntryModel)paramList.next()).a();
-          }
-        }
+        a(paramList, paramBoolean, bool2, bool1);
+        return;
       }
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-      paramList = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramList.hasNext()) {
-        ((BaseSearchEntryModel)paramList.next()).b();
-      }
-      this.jdField_a_of_type_JavaUtilList.clear();
-      if (("kSearchMessageTab".equals(this.jdField_a_of_type_JavaLangString)) || ("kSearchContactTab".equals(this.jdField_a_of_type_JavaLangString)) || ("kSearchDynamicTab".equals(this.jdField_a_of_type_JavaLangString)))
-      {
-        this.jdField_a_of_type_JavaUtilList.add(new HistorySearchEntryModel(a(this.jdField_a_of_type_JavaLangString), this));
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(((BaseSearchEntryModel)this.jdField_a_of_type_JavaUtilList.get(0)).a(getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, null));
-        ((BaseSearchEntryModel)this.jdField_a_of_type_JavaUtilList.get(0)).a();
-      }
-      paramList = SearchEntryConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a(this.jdField_a_of_type_JavaLangString), paramBoolean);
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchEntryFragment", 2, "refreshDataModels modelIdList = " + paramList);
-      }
-      if ((paramList != null) && (paramList.length > 0))
-      {
-        i = 0;
-        if (i < paramList.length)
-        {
-          if ((paramList[i] == 1) && (bool2) && (!bool1)) {
-            if (QLog.isColorLevel()) {
-              QLog.d("SearchEntryFragment", 2, "refreshDataModels local, ignore hotWord: " + this.jdField_a_of_type_Int);
-            }
-          }
-          for (;;)
-          {
-            i += 1;
-            break;
-            if ((paramList[i] != 0) || (!"kSearchReadInJoyTab".equals(this.jdField_a_of_type_JavaLangString)))
-            {
-              localObject = BaseSearchEntryModel.a(paramList[i], a(this.jdField_a_of_type_JavaLangString), paramBoolean);
-              if (localObject != null)
-              {
-                if (i == 0) {
-                  ((BaseSearchEntryModel)localObject).jdField_a_of_type_Boolean = false;
-                }
-                this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(((BaseSearchEntryModel)localObject).a(getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, null));
-                this.jdField_a_of_type_JavaUtilList.add(localObject);
-                ((BaseSearchEntryModel)localObject).a();
-              }
-            }
-          }
-        }
-      }
-      if ("kSearchReadInJoyTab".equals(this.jdField_a_of_type_JavaLangString))
-      {
-        this.jdField_a_of_type_JavaUtilList.add(new SearchWordHistoryEntryModel(a(this.jdField_a_of_type_JavaLangString)));
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(((BaseSearchEntryModel)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1)).a(getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, null));
-        ((BaseSearchEntryModel)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1)).a();
-      }
-      paramList = new View(getActivity());
-      paramList.setLayoutParams(new LinearLayout.LayoutParams(-1, UIUtils.a(getActivity(), 80.0F)));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramList);
+      a(paramBoolean, bool2, bool1);
       return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchEntryFragment", 2, "refreshDataModels,  fragment is in a invalid state");
     }
   }
   
@@ -370,7 +473,7 @@ public class SearchEntryFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.SearchEntryFragment
  * JD-Core Version:    0.7.0.1
  */

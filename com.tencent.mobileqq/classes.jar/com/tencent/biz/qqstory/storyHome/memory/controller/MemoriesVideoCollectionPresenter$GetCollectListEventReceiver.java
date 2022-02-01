@@ -34,12 +34,11 @@ class MemoriesVideoCollectionPresenter$GetCollectListEventReceiver
         paramMemoriesVideoCollectionPresenter.b = paramGetCollectionListEvent.jdField_a_of_type_Boolean;
       }
     }
-    for (;;)
+    else
     {
-      MemoriesVideoCollectionPresenter.a(paramMemoriesVideoCollectionPresenter).a(paramGetCollectionListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
-      return;
       paramMemoriesVideoCollectionPresenter.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramGetCollectionListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage;
     }
+    MemoriesVideoCollectionPresenter.a(paramMemoriesVideoCollectionPresenter).a(paramGetCollectionListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
   }
   
   public Class acceptEventClass()
@@ -49,7 +48,7 @@ class MemoriesVideoCollectionPresenter$GetCollectListEventReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesVideoCollectionPresenter.GetCollectListEventReceiver
  * JD-Core Version:    0.7.0.1
  */

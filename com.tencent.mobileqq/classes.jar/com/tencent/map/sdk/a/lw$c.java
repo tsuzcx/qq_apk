@@ -33,14 +33,15 @@ public final class lw$c
       if ((this.a != null) && (this.b != null)) {
         this.c.a.a(this.a, this.b);
       }
-      return;
     }
-    this.c.a.s();
+    else {
+      this.c.a.s();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.lw.c
  * JD-Core Version:    0.7.0.1
  */

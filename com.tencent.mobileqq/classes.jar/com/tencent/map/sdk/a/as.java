@@ -17,62 +17,62 @@ import java.util.zip.Deflater;
 public final class as
 {
   public static String b;
-  public ThreadPoolExecutor a = (ThreadPoolExecutor)Executors.newCachedThreadPool(new ae("halley_" + ac.c() + "_" + "BusinessTaskPool"));
+  public ThreadPoolExecutor a;
+  
+  private as()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("halley_");
+    localStringBuilder.append(ac.c());
+    localStringBuilder.append("_");
+    localStringBuilder.append("BusinessTaskPool");
+    this.a = ((ThreadPoolExecutor)Executors.newCachedThreadPool(new ae(localStringBuilder.toString())));
+  }
   
   public static int a(String paramString, int paramInt)
   {
-    int j = 1;
     if (paramString.equals("HLDisconnEvent")) {
       return -2;
     }
+    int j = 1;
     int i;
     if (paramInt != 0)
     {
-      if ((paramInt == -4) || (paramInt == -3) || (paramInt == -288))
-      {
+      if ((paramInt != -4) && (paramInt != -3) && (paramInt != -288)) {
+        i = 0;
+      } else {
         i = 1;
-        if (i == 0) {
-          break label96;
-        }
+      }
+      if (i == 0)
+      {
+        paramString = "self_report_fail_denominator_value";
+        break label63;
       }
     }
-    else
+    paramString = "self_report_succ_denominator_value";
+    label63:
+    if (paramInt != 0)
     {
-      paramString = "self_report_succ_denominator_value";
-      label46:
-      if (paramInt != 0)
+      i = j;
+      if (paramInt != -4)
       {
         i = j;
-        if (paramInt != -4)
-        {
-          i = j;
-          if (paramInt != -3)
-          {
-            if (paramInt != -288) {
-              break label102;
-            }
+        if (paramInt != -3) {
+          if (paramInt == -288) {
             i = j;
+          } else {
+            i = 0;
           }
         }
-        label75:
-        if (i == 0) {
-          break label107;
-        }
+      }
+      if (i == 0)
+      {
+        paramInt = 2;
+        break label112;
       }
     }
-    label96:
-    label102:
-    label107:
-    for (paramInt = 100;; paramInt = 2)
-    {
-      return a(paramString, 0, 2147483647, paramInt);
-      i = 0;
-      break;
-      paramString = "self_report_fail_denominator_value";
-      break label46;
-      i = 0;
-      break label75;
-    }
+    paramInt = 100;
+    label112:
+    return a(paramString, 0, 2147483647, paramInt);
   }
   
   public static int a(String paramString, int paramInt1, int paramInt2, int paramInt3)
@@ -88,11 +88,11 @@ public final class as
     }
     catch (Throwable paramString)
     {
-      for (;;)
-      {
-        int i = paramInt3;
-      }
+      int i;
+      label38:
+      break label38;
     }
+    i = paramInt3;
     return dg.a(i, paramInt1, paramInt2, paramInt3);
   }
   
@@ -116,20 +116,28 @@ public final class as
   
   public static boolean a(String paramString)
   {
-    if ((paramString.startsWith(":")) || (!paramString.contains(":"))) {}
-    for (;;)
+    if (!paramString.startsWith(":"))
     {
-      return false;
+      if (!paramString.contains(":")) {
+        return false;
+      }
       paramString = paramString.split(":")[0];
-      try
+    }
+    try
+    {
+      int i = Integer.parseInt(paramString, 16);
+      if (i >= 0)
       {
-        int i = Integer.parseInt(paramString, 16);
-        if ((i >= 0) && (i <= 65535) && ((i >> 13 ^ 0x1) == 0)) {
+        if (i > 65535) {
+          return false;
+        }
+        if ((i >> 13 ^ 0x1) == 0) {
           return true;
         }
       }
-      catch (NumberFormatException paramString) {}
+      return false;
     }
+    catch (NumberFormatException paramString) {}
     return false;
   }
   
@@ -159,37 +167,38 @@ public final class as
       {
         paramString.printStackTrace();
       }
-      return true;
-    }
-    catch (Throwable paramString)
-    {
       try
       {
         paramString.printStackTrace();
+        return true;
       }
-      catch (Throwable paramString)
-      {
-        return false;
-      }
+      catch (Throwable paramString) {}
     }
+    catch (Throwable paramString) {}
+    return false;
   }
   
   public static byte[] a(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return paramArrayOfByte;
+    Object localObject = paramArrayOfByte;
+    if (paramArrayOfByte != null)
+    {
+      if (paramArrayOfByte.length == 0) {
+        return paramArrayOfByte;
+      }
+      localObject = new ByteArrayOutputStream();
+      Deflater localDeflater = new Deflater();
+      localDeflater.setInput(paramArrayOfByte);
+      localDeflater.finish();
+      paramArrayOfByte = new byte[256];
+      while (!localDeflater.finished()) {
+        ((ByteArrayOutputStream)localObject).write(paramArrayOfByte, 0, localDeflater.deflate(paramArrayOfByte));
+      }
+      localDeflater.finish();
+      localDeflater.end();
+      localObject = ((ByteArrayOutputStream)localObject).toByteArray();
     }
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    Deflater localDeflater = new Deflater();
-    localDeflater.setInput(paramArrayOfByte);
-    localDeflater.finish();
-    paramArrayOfByte = new byte[256];
-    while (!localDeflater.finished()) {
-      localByteArrayOutputStream.write(paramArrayOfByte, 0, localDeflater.deflate(paramArrayOfByte));
-    }
-    localDeflater.finish();
-    localDeflater.end();
-    return localByteArrayOutputStream.toByteArray();
+    return localObject;
   }
   
   private static String b(String paramString, int paramInt)
@@ -201,26 +210,34 @@ public final class as
   
   public static boolean b(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    paramString = paramString.split("\\.");
+    if (paramString.length != 4) {
+      return false;
+    }
+    int j = paramString.length;
+    int i = 0;
     for (;;)
     {
-      return false;
-      paramString = paramString.split("\\.");
-      int i;
       String str;
-      if (paramString.length == 4)
-      {
-        int j = paramString.length;
-        i = 0;
-        if (i < j) {
-          str = paramString[i];
-        }
+      if (i < j) {
+        str = paramString[i];
       }
       try
       {
         int k = Integer.parseInt(str);
-        if ((k >= 0) && (k <= 255)) {
+        if (k >= 0)
+        {
+          if (k > 255) {
+            return false;
+          }
           i += 1;
+        }
+        else
+        {
+          return false;
         }
       }
       catch (NumberFormatException paramString) {}
@@ -232,91 +249,89 @@ public final class as
   public static boolean c(String paramString)
   {
     boolean bool = paramString.contains("::");
-    if ((bool) && (paramString.indexOf("::") != paramString.lastIndexOf("::"))) {}
-    label123:
-    do
+    if ((bool) && (paramString.indexOf("::") != paramString.lastIndexOf("::"))) {
+      return false;
+    }
+    if (((paramString.startsWith(":")) && (!paramString.startsWith("::"))) || ((paramString.endsWith(":")) && (!paramString.endsWith("::")))) {
+      return false;
+    }
+    String[] arrayOfString = paramString.split(":");
+    Object localObject = arrayOfString;
+    if (bool)
     {
-      for (;;)
+      localObject = new ArrayList(Arrays.asList(arrayOfString));
+      if (paramString.endsWith("::")) {
+        ((List)localObject).add("");
+      } else if ((paramString.startsWith("::")) && (!((List)localObject).isEmpty())) {
+        ((List)localObject).remove(0);
+      }
+      localObject = (String[])((List)localObject).toArray(new String[((List)localObject).size()]);
+    }
+    if (localObject.length > 8) {
+      return false;
+    }
+    int k = 0;
+    int j = 0;
+    int i = 0;
+    for (;;)
+    {
+      if (k < localObject.length)
       {
-        return false;
-        int j;
-        int i;
-        if (((!paramString.startsWith(":")) || (paramString.startsWith("::"))) && ((!paramString.endsWith(":")) || (paramString.endsWith("::"))))
+        paramString = localObject[k];
+        if (paramString.length() == 0)
         {
-          String[] arrayOfString = paramString.split(":");
-          Object localObject = arrayOfString;
-          int k;
-          if (bool)
-          {
-            localObject = new ArrayList(Arrays.asList(arrayOfString));
-            if (paramString.endsWith("::"))
-            {
-              ((List)localObject).add("");
-              localObject = (String[])((List)localObject).toArray(new String[((List)localObject).size()]);
-            }
+          int m = i + 1;
+          i = m;
+          if (m > 1) {
+            return false;
           }
-          else
+        }
+        else
+        {
+          if ((k == localObject.length - 1) && (paramString.contains(".")))
           {
-            if (localObject.length > 8) {
-              continue;
-            }
-            k = 0;
-            j = 0;
-            i = 0;
-            if (k >= localObject.length) {
-              break label295;
-            }
-            paramString = localObject[k];
-            if (paramString.length() != 0) {
-              break label230;
-            }
-            i += 1;
-            if (i > 1) {
-              continue;
-            }
-            j += 1;
-          }
-          for (;;)
-          {
-            k += 1;
-            break label159;
-            if ((!paramString.startsWith("::")) || (((List)localObject).isEmpty())) {
-              break label123;
-            }
-            ((List)localObject).remove(0);
-            break label123;
-            if ((k != localObject.length - 1) || (!paramString.contains("."))) {
-              break label265;
-            }
             if (!b(paramString)) {
-              break;
+              return false;
             }
             j += 2;
             i = 0;
+            break label302;
           }
-          if (paramString.length() > 4) {}
-        }
-        try
-        {
-          i = Integer.parseInt(paramString, 16);
-          if ((i >= 0) && (i <= 65535)) {
-            i = 0;
+          if (paramString.length() > 4) {
+            return false;
           }
         }
-        catch (NumberFormatException paramString) {}
       }
-    } while ((j > 8) || ((j < 8) && (!bool)));
-    label159:
-    label230:
-    return true;
-    label265:
-    label295:
+      try
+      {
+        i = Integer.parseInt(paramString, 16);
+        if (i >= 0)
+        {
+          if (i > 65535) {
+            return false;
+          }
+          i = 0;
+          j += 1;
+          label302:
+          k += 1;
+        }
+        else
+        {
+          return false;
+        }
+      }
+      catch (NumberFormatException paramString) {}
+    }
+    if (j <= 8) {
+      return (j >= 8) || (bool);
+    }
+    return false;
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.as
  * JD-Core Version:    0.7.0.1
  */

@@ -29,19 +29,21 @@ public class CommonImageView
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.a != null)
+    MosaicEffect localMosaicEffect = this.a;
+    if (localMosaicEffect != null)
     {
-      this.a.a(paramCanvas);
+      localMosaicEffect.a(paramCanvas);
       return;
     }
     super.draw(paramCanvas);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
-    if (this.a != null)
+    MosaicEffect localMosaicEffect = this.a;
+    if (localMosaicEffect != null)
     {
-      this.a.b(paramCanvas);
+      localMosaicEffect.b(paramCanvas);
       return;
     }
     super.onDraw(paramCanvas);
@@ -72,7 +74,7 @@ public class CommonImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CommonImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.homework.entry.ui;
 
-import android.widget.EditText;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.InputMethodUtil;
 
@@ -11,18 +11,19 @@ class SubmitHomeWorkFragment$6
   
   public void run()
   {
-    EditText localEditText = this.this$0.a(this.this$0.a);
+    Object localObject = this.this$0;
+    localObject = ((SubmitHomeWorkFragment)localObject).a(((SubmitHomeWorkFragment)localObject).c);
     if (QLog.isColorLevel()) {
       QLog.d("SubmitHomeWorkFragment", 2, "弹起键盘");
     }
-    if (localEditText != null) {
-      InputMethodUtil.a(localEditText);
+    if (localObject != null) {
+      InputMethodUtil.a((View)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment.6
  * JD-Core Version:    0.7.0.1
  */

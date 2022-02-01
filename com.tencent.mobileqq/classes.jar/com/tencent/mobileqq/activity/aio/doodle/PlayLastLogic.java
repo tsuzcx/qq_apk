@@ -4,6 +4,7 @@ import android.graphics.Rect;
 import android.os.Handler;
 import android.os.Looper;
 import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.doodle.IDoodleMsgLayout;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.Collection;
@@ -16,14 +17,14 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class PlayLastLogic
 {
-  private static PlayLastLogic jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePlayLastLogic = null;
+  private static PlayLastLogic jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePlayLastLogic;
   private static String jdField_a_of_type_JavaLangString = "PlayLastLogic";
   public int a;
   private long jdField_a_of_type_Long = -1L;
   private Handler jdField_a_of_type_AndroidOsHandler = null;
   private Runnable jdField_a_of_type_JavaLangRunnable;
-  private WeakReference<DoodleMsgLayout> jdField_a_of_type_JavaLangRefWeakReference;
-  private Map<Integer, PlayLastLogic.MsgInfo> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private WeakReference<BaseDoodleMsgLayout> jdField_a_of_type_JavaLangRefWeakReference;
+  private Map<Integer, MsgInfo> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int = -1;
   private long jdField_b_of_type_Long = -1L;
@@ -42,63 +43,101 @@ public class PlayLastLogic
   
   private int a(int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "checkPlayable: bRealPlay:" + paramBoolean);
-    }
-    PlayLastLogic.MsgInfo localMsgInfo = (PlayLastLogic.MsgInfo)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-    if (localMsgInfo != null)
+    boolean bool = QLog.isColorLevel();
+    int i = 2;
+    Object localObject2;
+    if (bool)
     {
-      Object localObject = localMsgInfo.jdField_a_of_type_JavaLangRefWeakReference;
-      if (localObject != null)
+      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("checkPlayable: bRealPlay:");
+      ((StringBuilder)localObject2).append(paramBoolean);
+      QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
+    }
+    Object localObject1 = (MsgInfo)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+    if (localObject1 != null)
+    {
+      localObject2 = ((MsgInfo)localObject1).jdField_a_of_type_JavaLangRefWeakReference;
+      if (localObject2 != null)
       {
-        localObject = (DoodleMsgLayout)((WeakReference)localObject).get();
-        if (localObject != null)
+        localObject2 = (BaseDoodleMsgLayout)((WeakReference)localObject2).get();
+        if (localObject2 != null)
         {
-          Rect localRect = new Rect();
-          if ((((DoodleMsgLayout)localObject).getGlobalVisibleRect(localRect)) && (localRect.height() > ((DoodleMsgLayout)localObject).getHeight() * 0.9D))
+          Object localObject3 = new Rect();
+          if (((BaseDoodleMsgLayout)localObject2).getGlobalVisibleRect((Rect)localObject3))
           {
-            if ((!((DoodleMsgLayout)localObject).b()) && (this.jdField_a_of_type_Long != localMsgInfo.jdField_b_of_type_Long) && (((DoodleMsgLayout)localObject).a()))
+            double d1 = ((Rect)localObject3).height();
+            double d2 = ((BaseDoodleMsgLayout)localObject2).getHeight();
+            Double.isNaN(d2);
+            if (d1 > d2 * 0.9D)
             {
-              if (paramBoolean)
+              if ((!((BaseDoodleMsgLayout)localObject2).b()) && (this.jdField_a_of_type_Long != ((MsgInfo)localObject1).jdField_b_of_type_Long) && (((BaseDoodleMsgLayout)localObject2).a()))
               {
-                a((DoodleMsgLayout)localObject, false);
-                if (localMsgInfo.jdField_b_of_type_Long == this.jdField_c_of_type_Long) {
-                  this.jdField_a_of_type_Boolean = true;
+                if (paramBoolean)
+                {
+                  a((BaseDoodleMsgLayout)localObject2, false);
+                  if (((MsgInfo)localObject1).jdField_b_of_type_Long == this.jdField_c_of_type_Long) {
+                    this.jdField_a_of_type_Boolean = true;
+                  }
                 }
+                if (QLog.isColorLevel())
+                {
+                  localObject1 = jdField_a_of_type_JavaLangString;
+                  localObject2 = new StringBuilder();
+                  ((StringBuilder)localObject2).append("checkPlayable: lastID:");
+                  ((StringBuilder)localObject2).append(this.jdField_b_of_type_Long);
+                  ((StringBuilder)localObject2).append("lasUniID");
+                  ((StringBuilder)localObject2).append(this.jdField_c_of_type_Long);
+                  ((StringBuilder)localObject2).append(" lastMsgPlayed:");
+                  ((StringBuilder)localObject2).append(this.jdField_a_of_type_Boolean);
+                  ((StringBuilder)localObject2).append(" playedID:");
+                  ((StringBuilder)localObject2).append(this.jdField_a_of_type_Long);
+                  QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
+                }
+                return 1;
               }
-              if (!QLog.isColorLevel()) {
-                break label367;
+              if (QLog.isColorLevel())
+              {
+                localObject3 = jdField_a_of_type_JavaLangString;
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append("checkPlayable: can not play:");
+                localStringBuilder.append(((MsgInfo)localObject1).jdField_a_of_type_Long);
+                localStringBuilder.append("uniID:");
+                localStringBuilder.append(((MsgInfo)localObject1).jdField_b_of_type_Long);
+                localStringBuilder.append(" mPlayedID:");
+                localStringBuilder.append(this.jdField_a_of_type_Long);
+                QLog.d((String)localObject3, 2, localStringBuilder.toString());
               }
-              QLog.d(jdField_a_of_type_JavaLangString, 2, "checkPlayable: lastID:" + this.jdField_b_of_type_Long + "lasUniID" + this.jdField_c_of_type_Long + " lastMsgPlayed:" + this.jdField_a_of_type_Boolean + " playedID:" + this.jdField_a_of_type_Long);
-              return 1;
+              paramInt = i;
+              if (!((BaseDoodleMsgLayout)localObject2).b()) {
+                return paramInt;
+              }
+              return 3;
             }
-            if (QLog.isColorLevel()) {
-              QLog.d(jdField_a_of_type_JavaLangString, 2, "checkPlayable: can not play:" + localMsgInfo.jdField_a_of_type_Long + "uniID:" + localMsgInfo.jdField_b_of_type_Long + " mPlayedID:" + this.jdField_a_of_type_Long);
-            }
-            if (!((DoodleMsgLayout)localObject).b()) {
-              break label365;
-            }
-            return 3;
           }
-          if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "checkPlayable: invisible MsgID:" + localMsgInfo.jdField_a_of_type_Long + "uniID:" + localMsgInfo.jdField_b_of_type_Long);
+          if (QLog.isColorLevel())
+          {
+            localObject2 = jdField_a_of_type_JavaLangString;
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("checkPlayable: invisible MsgID:");
+            ((StringBuilder)localObject3).append(((MsgInfo)localObject1).jdField_a_of_type_Long);
+            ((StringBuilder)localObject3).append("uniID:");
+            ((StringBuilder)localObject3).append(((MsgInfo)localObject1).jdField_b_of_type_Long);
+            QLog.d((String)localObject2, 2, ((StringBuilder)localObject3).toString());
           }
         }
       }
     }
-    return 0;
-    label365:
-    return 2;
-    label367:
-    return 1;
+    paramInt = 0;
+    return paramInt;
   }
   
   public static long a(ChatMessage paramChatMessage)
   {
-    if ((paramChatMessage.istroop == 1) || (paramChatMessage.istroop == 3000)) {
-      return paramChatMessage.shmsgseq;
+    if ((paramChatMessage.istroop != 1) && (paramChatMessage.istroop != 3000)) {
+      return paramChatMessage.time;
     }
-    return paramChatMessage.time;
+    return paramChatMessage.shmsgseq;
   }
   
   public static PlayLastLogic a()
@@ -115,40 +154,36 @@ public class PlayLastLogic
   
   private void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_JavaUtilMap.size() == 0) {}
-    for (;;)
-    {
+    if (this.jdField_a_of_type_JavaUtilMap.size() == 0) {
       return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        PlayLastLogic.MsgInfo localMsgInfo = (PlayLastLogic.MsgInfo)((Map.Entry)localIterator.next()).getValue();
-        if ((localMsgInfo == null) || (localMsgInfo.jdField_a_of_type_Int < paramInt1) || (localMsgInfo.jdField_a_of_type_Int > paramInt2)) {
-          localIterator.remove();
-        }
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      MsgInfo localMsgInfo = (MsgInfo)((Map.Entry)localIterator.next()).getValue();
+      if ((localMsgInfo == null) || (localMsgInfo.jdField_a_of_type_Int < paramInt1) || (localMsgInfo.jdField_a_of_type_Int > paramInt2)) {
+        localIterator.remove();
       }
     }
   }
   
   private void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_JavaUtilMap.size() == 0) {}
-    for (;;)
-    {
+    if (this.jdField_a_of_type_JavaUtilMap.size() == 0) {
       return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-      while (localIterator.hasNext())
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (MsgInfo)localIterator.next();
+      if ((localObject != null) && (((MsgInfo)localObject).jdField_a_of_type_Int >= this.d) && (((MsgInfo)localObject).jdField_a_of_type_Int <= this.e))
       {
-        Object localObject = (PlayLastLogic.MsgInfo)localIterator.next();
-        if ((localObject != null) && (((PlayLastLogic.MsgInfo)localObject).jdField_a_of_type_Int >= this.d) && (((PlayLastLogic.MsgInfo)localObject).jdField_a_of_type_Int <= this.e))
+        localObject = ((MsgInfo)localObject).jdField_a_of_type_JavaLangRefWeakReference;
+        if (localObject != null)
         {
-          localObject = ((PlayLastLogic.MsgInfo)localObject).jdField_a_of_type_JavaLangRefWeakReference;
-          if (localObject != null)
-          {
-            localObject = (DoodleMsgLayout)((WeakReference)localObject).get();
-            if (localObject != null) {
-              ((DoodleMsgLayout)localObject).b(paramBoolean);
-            }
+          localObject = (IDoodleMsgLayout)((WeakReference)localObject).get();
+          if (localObject != null) {
+            ((IDoodleMsgLayout)localObject).b(paramBoolean);
           }
         }
       }
@@ -160,53 +195,53 @@ public class PlayLastLogic
     Object localObject;
     if (paramBoolean)
     {
-      if ((this.jdField_a_of_type_Boolean) || (this.jdField_b_of_type_Long < 0L)) {
-        return;
-      }
-      do
+      if (!this.jdField_a_of_type_Boolean)
       {
+        if (this.jdField_b_of_type_Long < 0L) {
+          return;
+        }
+        this.jdField_a_of_type_Boolean = true;
+        localObject = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+        MsgInfo localMsgInfo;
         do
         {
-          do
-          {
-            this.jdField_a_of_type_Boolean = true;
-            localObject = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-          } while (!((Iterator)localObject).hasNext());
-          PlayLastLogic.MsgInfo localMsgInfo = (PlayLastLogic.MsgInfo)((Iterator)localObject).next();
-          if (localMsgInfo.jdField_b_of_type_Long != this.jdField_c_of_type_Long) {
+          if (!((Iterator)localObject).hasNext()) {
             break;
           }
-          localObject = localMsgInfo.jdField_a_of_type_JavaLangRefWeakReference;
-        } while (localObject == null);
-        localObject = (DoodleMsgLayout)((WeakReference)localObject).get();
-      } while (localObject == null);
-      ((DoodleMsgLayout)localObject).d();
-      return;
-    }
-    int i = this.e;
-    label115:
-    if (i >= this.d) {
-      if (i != paramInt) {
-        break label135;
+          localMsgInfo = (MsgInfo)((Iterator)localObject).next();
+        } while (localMsgInfo.jdField_b_of_type_Long != this.jdField_c_of_type_Long);
+        localObject = localMsgInfo.jdField_a_of_type_JavaLangRefWeakReference;
+        if (localObject == null) {
+          return;
+        }
+        localObject = (IDoodleMsgLayout)((WeakReference)localObject).get();
+        if (localObject == null) {
+          return;
+        }
+        ((IDoodleMsgLayout)localObject).d();
       }
     }
-    for (;;)
+    else
     {
-      i -= 1;
-      break label115;
-      break;
-      label135:
-      localObject = (PlayLastLogic.MsgInfo)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
-      if ((localObject != null) && ((((PlayLastLogic.MsgInfo)localObject).jdField_a_of_type_Long > this.jdField_b_of_type_Long) || (((PlayLastLogic.MsgInfo)localObject).jdField_b_of_type_Long == this.jdField_c_of_type_Long)))
+      int i = this.e;
+      while (i >= this.d)
       {
-        localObject = ((PlayLastLogic.MsgInfo)localObject).jdField_a_of_type_JavaLangRefWeakReference;
-        if (localObject != null)
+        if (i != paramInt)
         {
-          localObject = (DoodleMsgLayout)((WeakReference)localObject).get();
-          if (localObject != null) {
-            ((DoodleMsgLayout)localObject).d();
+          localObject = (MsgInfo)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
+          if ((localObject != null) && ((((MsgInfo)localObject).jdField_a_of_type_Long > this.jdField_b_of_type_Long) || (((MsgInfo)localObject).jdField_b_of_type_Long == this.jdField_c_of_type_Long)))
+          {
+            localObject = ((MsgInfo)localObject).jdField_a_of_type_JavaLangRefWeakReference;
+            if (localObject != null)
+            {
+              localObject = (IDoodleMsgLayout)((WeakReference)localObject).get();
+              if (localObject != null) {
+                ((IDoodleMsgLayout)localObject).d();
+              }
+            }
           }
         }
+        i -= 1;
       }
     }
   }
@@ -232,8 +267,13 @@ public class PlayLastLogic
   
   private void b(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "restartPlayTimer:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      String str = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("restartPlayTimer:");
+      localStringBuilder.append(paramInt);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
       this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
@@ -252,29 +292,43 @@ public class PlayLastLogic
   
   private void b(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "strategy2 :" + paramBoolean + " StartPos:" + this.d + "EndPos:" + this.e);
+    if (QLog.isColorLevel())
+    {
+      String str = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("strategy2 :");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(" StartPos:");
+      localStringBuilder.append(this.d);
+      localStringBuilder.append("EndPos:");
+      localStringBuilder.append(this.e);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
-    int k;
-    int i;
-    if (this.f == 0)
+    int i = this.f;
+    int k = -1;
+    int m;
+    if (i == 0)
     {
       j = this.e;
-      while (j >= this.d)
+      for (;;)
       {
-        k = a(j, paramBoolean);
-        if (k > 0)
+        i = k;
+        if (j < this.d) {
+          break;
+        }
+        m = a(j, paramBoolean);
+        if (m > 0)
         {
           i = j;
-          if (k != 1)
-          {
-            if (k != 3) {
-              break;
-            }
-            i = j;
+          if (m == 1) {
+            break;
           }
-          a(false, i);
-          return;
+          i = k;
+          if (m != 3) {
+            break;
+          }
+          i = j;
+          break;
         }
         j -= 1;
       }
@@ -282,26 +336,27 @@ public class PlayLastLogic
     int j = this.d;
     for (;;)
     {
-      if (j <= this.e)
-      {
-        k = a(j, paramBoolean);
-        if (k <= 0) {
-          break label169;
-        }
-        i = j;
-        if (k == 1) {
-          break;
-        }
-        i = j;
-        if (k == 3) {
-          break;
-        }
+      i = k;
+      if (j > this.e) {
+        break;
       }
-      i = -1;
-      break;
-      label169:
+      m = a(j, paramBoolean);
+      if (m > 0)
+      {
+        i = j;
+        if (m != 1)
+        {
+          i = k;
+          if (m != 3) {
+            break;
+          }
+          i = j;
+        }
+        break;
+      }
       j += 1;
     }
+    a(false, i);
   }
   
   public void a()
@@ -337,204 +392,230 @@ public class PlayLastLogic
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    int k = 0;
-    int j = 0;
-    if ((paramInt1 == 0) && (paramInt3 > 0)) {
-      paramInt2 -= 1;
-    }
-    for (;;)
+    int i = paramInt2;
+    if (paramInt1 == 0)
     {
-      int i = paramInt2;
-      if (paramInt1 + paramInt2 == paramInt5)
-      {
-        i = paramInt2;
-        if (paramInt4 > 0) {
-          i = paramInt2 - 1;
-        }
+      i = paramInt2;
+      if (paramInt3 > 0) {
+        i = paramInt2 - 1;
       }
-      paramInt1 -= paramInt3;
-      if ((this.h != paramInt8) || (this.g != paramInt7))
-      {
-        this.h = paramInt8;
-        this.g = paramInt7;
-        this.f = 0;
-        this.jdField_c_of_type_Int = paramInt6;
-        this.jdField_b_of_type_Int = paramInt1;
-        if (paramInt1 < 0) {
-          paramInt1 = j;
-        }
-        for (;;)
-        {
-          this.d = paramInt1;
-          this.e = (i + this.d - 1);
-          if (this.e < this.d) {
-            this.e = this.d;
-          }
-          return;
-        }
+    }
+    paramInt2 = i;
+    if (paramInt1 + i == paramInt5)
+    {
+      paramInt2 = i;
+      if (paramInt4 > 0) {
+        paramInt2 = i - 1;
       }
-      if (paramInt1 > this.jdField_b_of_type_Int)
+    }
+    paramInt1 -= paramInt3;
+    if ((this.h == paramInt8) && (this.g == paramInt7))
+    {
+      paramInt3 = this.jdField_b_of_type_Int;
+      if (paramInt1 > paramInt3)
       {
         this.f = 0;
-        label153:
-        this.jdField_c_of_type_Int = paramInt6;
-        this.jdField_b_of_type_Int = paramInt1;
-        if (paramInt1 >= 0) {
-          break label259;
-        }
-        paramInt1 = k;
       }
-      label259:
-      for (;;)
+      else if (paramInt1 < paramInt3)
       {
-        this.d = paramInt1;
-        this.e = (i + this.d - 1);
-        if (this.e >= this.d) {
-          break;
-        }
-        this.e = this.d;
-        return;
-        if (paramInt1 < this.jdField_b_of_type_Int)
-        {
-          this.f = 1;
-          break label153;
-        }
-        if (paramInt6 < this.jdField_c_of_type_Int)
-        {
-          this.f = 0;
-          break label153;
-        }
-        if (paramInt6 <= this.jdField_c_of_type_Int) {
-          break label153;
-        }
         this.f = 1;
-        break label153;
       }
+      else
+      {
+        paramInt3 = this.jdField_c_of_type_Int;
+        if (paramInt6 < paramInt3) {
+          this.f = 0;
+        } else if (paramInt6 > paramInt3) {
+          this.f = 1;
+        }
+      }
+      this.jdField_c_of_type_Int = paramInt6;
+      this.jdField_b_of_type_Int = paramInt1;
+      paramInt3 = paramInt1;
+      if (paramInt1 < 0) {
+        paramInt3 = 0;
+      }
+      this.d = paramInt3;
+      paramInt1 = this.d;
+      this.e = (paramInt2 + paramInt1 - 1);
+      if (this.e < paramInt1) {
+        this.e = paramInt1;
+      }
+      return;
+    }
+    this.h = paramInt8;
+    this.g = paramInt7;
+    this.f = 0;
+    this.jdField_c_of_type_Int = paramInt6;
+    this.jdField_b_of_type_Int = paramInt1;
+    paramInt3 = paramInt1;
+    if (paramInt1 < 0) {
+      paramInt3 = 0;
+    }
+    this.d = paramInt3;
+    paramInt1 = this.d;
+    this.e = (paramInt2 + paramInt1 - 1);
+    if (this.e < paramInt1) {
+      this.e = paramInt1;
     }
   }
   
-  public void a(long paramLong1, long paramLong2, int paramInt, DoodleMsgLayout paramDoodleMsgLayout)
+  public void a(long paramLong1, long paramLong2, int paramInt, BaseDoodleMsgLayout paramBaseDoodleMsgLayout)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "registLayout:" + paramLong2 + " pos:" + paramInt + " uniid:" + paramLong1);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("registLayout:");
+      localStringBuilder.append(paramLong2);
+      localStringBuilder.append(" pos:");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" uniid:");
+      localStringBuilder.append(paramLong1);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), new PlayLastLogic.MsgInfo(this, paramLong1, paramLong2, paramInt, paramDoodleMsgLayout));
+    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), new MsgInfo(paramLong1, paramLong2, paramInt, paramBaseDoodleMsgLayout));
     boolean bool;
-    if (this.jdField_a_of_type_Int != 0)
-    {
+    if (this.jdField_a_of_type_Int != 0) {
       bool = true;
-      paramDoodleMsgLayout.b(bool);
-      if (!a(paramLong1, paramLong2)) {
-        break label182;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "registLayout: is new msg, lastID:" + this.jdField_b_of_type_Long + " uniID:" + paramLong1);
-      }
-      if (this.jdField_a_of_type_Int != 0) {
-        break label176;
-      }
-      b(1000);
-    }
-    label176:
-    label182:
-    while (!QLog.isColorLevel())
-    {
-      return;
+    } else {
       bool = false;
-      break;
+    }
+    paramBaseDoodleMsgLayout.b(bool);
+    if (a(paramLong1, paramLong2))
+    {
+      if (QLog.isColorLevel())
+      {
+        paramBaseDoodleMsgLayout = jdField_a_of_type_JavaLangString;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("registLayout: is new msg, lastID:");
+        ((StringBuilder)localObject).append(this.jdField_b_of_type_Long);
+        ((StringBuilder)localObject).append(" uniID:");
+        ((StringBuilder)localObject).append(paramLong1);
+        QLog.d(paramBaseDoodleMsgLayout, 2, ((StringBuilder)localObject).toString());
+      }
+      if (this.jdField_a_of_type_Int == 0)
+      {
+        b(1000);
+        return;
+      }
       this.jdField_a_of_type_Boolean = true;
       return;
     }
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "registLayout: is old msg, lastID:" + this.jdField_b_of_type_Long + " uniID:" + paramLong1 + " lastMsgPlayed:" + this.jdField_a_of_type_Boolean + " playedID:" + this.jdField_a_of_type_Long);
+    if (QLog.isColorLevel())
+    {
+      paramBaseDoodleMsgLayout = jdField_a_of_type_JavaLangString;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("registLayout: is old msg, lastID:");
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_Long);
+      ((StringBuilder)localObject).append(" uniID:");
+      ((StringBuilder)localObject).append(paramLong1);
+      ((StringBuilder)localObject).append(" lastMsgPlayed:");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(" playedID:");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      QLog.d(paramBaseDoodleMsgLayout, 2, ((StringBuilder)localObject).toString());
+    }
   }
   
-  public void a(DoodleMsgLayout paramDoodleMsgLayout, boolean paramBoolean)
+  public void a(BaseDoodleMsgLayout paramBaseDoodleMsgLayout, boolean paramBoolean)
   {
-    if (paramDoodleMsgLayout == null) {}
-    do
-    {
-      do
-      {
-        return;
-        if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-        {
-          localObject = (DoodleMsgLayout)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-          if ((localObject != null) && (((DoodleMsgLayout)localObject).b()))
-          {
-            if ((paramBoolean) && (localObject == paramDoodleMsgLayout))
-            {
-              ((DoodleMsgLayout)localObject).d();
-              return;
-            }
-            if ((!paramBoolean) && (localObject == paramDoodleMsgLayout)) {
-              break;
-            }
-            ((DoodleMsgLayout)localObject).d();
-          }
-        }
-        this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDoodleMsgLayout);
-        paramDoodleMsgLayout.c();
-        Object localObject = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          PlayLastLogic.MsgInfo localMsgInfo = (PlayLastLogic.MsgInfo)((Iterator)localObject).next();
-          if ((localMsgInfo.jdField_a_of_type_JavaLangRefWeakReference != null) && (localMsgInfo.jdField_a_of_type_JavaLangRefWeakReference.get() == paramDoodleMsgLayout))
-          {
-            this.jdField_a_of_type_Long = localMsgInfo.jdField_b_of_type_Long;
-            if (QLog.isColorLevel()) {
-              QLog.d(jdField_a_of_type_JavaLangString, 2, "playLayout: lastPlayedID:" + this.jdField_a_of_type_Long);
-            }
-          }
-        }
-      } while (!paramBoolean);
-      b(-1);
+    if (paramBaseDoodleMsgLayout == null) {
       return;
-    } while (!QLog.isColorLevel());
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "playLayout: same layout, ans is playing, return:");
+    }
+    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localObject != null)
+    {
+      localObject = (BaseDoodleMsgLayout)((WeakReference)localObject).get();
+      if ((localObject != null) && (((BaseDoodleMsgLayout)localObject).b()))
+      {
+        if ((paramBoolean) && (localObject == paramBaseDoodleMsgLayout))
+        {
+          ((BaseDoodleMsgLayout)localObject).d();
+          return;
+        }
+        if ((!paramBoolean) && (localObject == paramBaseDoodleMsgLayout))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "playLayout: same layout, ans is playing, return:");
+          }
+          return;
+        }
+        ((BaseDoodleMsgLayout)localObject).d();
+      }
+    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseDoodleMsgLayout);
+    paramBaseDoodleMsgLayout.c();
+    localObject = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      MsgInfo localMsgInfo = (MsgInfo)((Iterator)localObject).next();
+      if ((localMsgInfo.jdField_a_of_type_JavaLangRefWeakReference != null) && (localMsgInfo.jdField_a_of_type_JavaLangRefWeakReference.get() == paramBaseDoodleMsgLayout))
+      {
+        this.jdField_a_of_type_Long = localMsgInfo.jdField_b_of_type_Long;
+        if (QLog.isColorLevel())
+        {
+          paramBaseDoodleMsgLayout = jdField_a_of_type_JavaLangString;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("playLayout: lastPlayedID:");
+          ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+          QLog.d(paramBaseDoodleMsgLayout, 2, ((StringBuilder)localObject).toString());
+        }
+      }
+    }
+    if (paramBoolean) {
+      b(-1);
+    }
   }
   
   public void a(List<ChatMessage> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    long l1 = a((ChatMessage)paramList.get(paramList.size() - 1));
-    long l2 = b((ChatMessage)paramList.get(paramList.size() - 1));
-    if ((l1 > this.jdField_b_of_type_Long) && (this.jdField_c_of_type_Long != l2))
+    if (paramList != null)
     {
-      a(true, -1);
-      if (this.jdField_b_of_type_Long >= 0L) {
-        break label192;
+      if (paramList.size() == 0) {
+        return;
       }
-    }
-    label192:
-    for (this.jdField_a_of_type_Boolean = ((ChatMessage)paramList.get(paramList.size() - 1)).isread;; this.jdField_a_of_type_Boolean = false)
-    {
-      this.jdField_b_of_type_Long = l1;
-      this.jdField_c_of_type_Long = l2;
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "setLastMsgID: a new msg");
+      long l1 = a((ChatMessage)paramList.get(paramList.size() - 1));
+      long l2 = b((ChatMessage)paramList.get(paramList.size() - 1));
+      if ((l1 > this.jdField_b_of_type_Long) && (this.jdField_c_of_type_Long != l2))
+      {
+        a(true, -1);
+        if (this.jdField_b_of_type_Long < 0L) {
+          this.jdField_a_of_type_Boolean = ((ChatMessage)paramList.get(paramList.size() - 1)).isread;
+        } else {
+          this.jdField_a_of_type_Boolean = false;
+        }
+        this.jdField_b_of_type_Long = l1;
+        this.jdField_c_of_type_Long = l2;
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "setLastMsgID: a new msg");
+        }
       }
-      if (!QLog.isColorLevel()) {
-        break;
+      if (QLog.isColorLevel())
+      {
+        paramList = jdField_a_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setLastMsgID:");
+        localStringBuilder.append(this.jdField_b_of_type_Long);
+        localStringBuilder.append(" :");
+        localStringBuilder.append(this.jdField_c_of_type_Long);
+        QLog.d(paramList, 2, localStringBuilder.toString());
       }
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "setLastMsgID:" + this.jdField_b_of_type_Long + " :" + this.jdField_c_of_type_Long);
-      return;
     }
   }
   
   public boolean a(long paramLong1, long paramLong2)
   {
-    if ((paramLong2 > this.jdField_b_of_type_Long) && (paramLong1 != this.jdField_c_of_type_Long)) {}
-    while ((this.jdField_c_of_type_Long == paramLong1) && (!this.jdField_a_of_type_Boolean)) {
+    if ((paramLong2 > this.jdField_b_of_type_Long) && (paramLong1 != this.jdField_c_of_type_Long)) {
       return true;
     }
-    return false;
+    return (this.jdField_c_of_type_Long == paramLong1) && (!this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.PlayLastLogic
  * JD-Core Version:    0.7.0.1
  */

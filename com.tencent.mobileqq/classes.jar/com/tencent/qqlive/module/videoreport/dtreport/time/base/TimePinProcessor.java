@@ -19,49 +19,50 @@ public class TimePinProcessor
   public TimePinProcessor(boolean paramBoolean, long paramLong)
   {
     this.mIsInForeground = paramBoolean;
-    this.mPinDeviation = (2L * paramLong);
+    this.mPinDeviation = (paramLong * 2L);
     reset();
   }
   
   private void printErrorLog(long paramLong)
   {
-    if (VideoReport.isDebugMode()) {
-      Log.i("TimePinProcessor", "心跳间隔异常，expected interval = " + (float)this.mPinDeviation / 2.0F + ", actual interval = " + paramLong);
+    if (VideoReport.isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("心跳间隔异常，expected interval = ");
+      localStringBuilder.append((float)this.mPinDeviation / 2.0F);
+      localStringBuilder.append(", actual interval = ");
+      localStringBuilder.append(paramLong);
+      Log.i("TimePinProcessor", localStringBuilder.toString());
     }
   }
   
   private void triggerTiming()
   {
-    for (;;)
+    try
     {
-      try
-      {
-        boolean bool = this.mIsTimeForbidden;
-        if (bool) {
-          return;
-        }
-        if (this.mProcessorState == 0)
-        {
-          long l2 = SystemClock.elapsedRealtime() - this.mStartTime;
-          long l1 = l2;
-          if (l2 > this.mPinDeviation)
-          {
-            l1 = this.mPinDeviation;
-            printErrorLog(l1);
-          }
-          if (this.mIsInForeground)
-          {
-            this.mForegroundDuration = (l1 + this.mForegroundDuration);
-            this.mStartTime = SystemClock.elapsedRealtime();
-          }
-          else
-          {
-            this.mBackgroundDuration = (l1 + this.mBackgroundDuration);
-          }
-        }
+      boolean bool = this.mIsTimeForbidden;
+      if (bool) {
+        return;
       }
-      finally {}
+      if (this.mProcessorState == 0)
+      {
+        long l2 = SystemClock.elapsedRealtime() - this.mStartTime;
+        long l1 = l2;
+        if (l2 > this.mPinDeviation)
+        {
+          l1 = this.mPinDeviation;
+          printErrorLog(l1);
+        }
+        if (this.mIsInForeground) {
+          this.mForegroundDuration += l1;
+        } else {
+          this.mBackgroundDuration += l1;
+        }
+        this.mStartTime = SystemClock.elapsedRealtime();
+      }
+      return;
     }
+    finally {}
   }
   
   public void forbidTiming(boolean paramBoolean)
@@ -171,7 +172,7 @@ public class TimePinProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.time.base.TimePinProcessor
  * JD-Core Version:    0.7.0.1
  */

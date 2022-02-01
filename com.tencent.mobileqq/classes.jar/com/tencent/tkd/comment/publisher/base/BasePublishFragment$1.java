@@ -2,11 +2,10 @@ package com.tencent.tkd.comment.publisher.base;
 
 import android.app.Dialog;
 import android.content.Context;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import com.tencent.tkd.comment.util.CommonUtil;
 
 class BasePublishFragment$1
-  extends ReportDialog
+  extends Dialog
 {
   BasePublishFragment$1(BasePublishFragment paramBasePublishFragment, Context paramContext, int paramInt)
   {
@@ -27,7 +26,7 @@ class BasePublishFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.base.BasePublishFragment.1
  * JD-Core Version:    0.7.0.1
  */

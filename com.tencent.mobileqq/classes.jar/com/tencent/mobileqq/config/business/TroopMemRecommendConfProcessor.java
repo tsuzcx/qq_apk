@@ -17,15 +17,19 @@ public class TroopMemRecommendConfProcessor
   @NonNull
   public static TroopMemRecommendConfBean a()
   {
-    TroopMemRecommendConfBean localTroopMemRecommendConfBean2 = (TroopMemRecommendConfBean)QConfigManager.a().a(550);
-    TroopMemRecommendConfBean localTroopMemRecommendConfBean1 = localTroopMemRecommendConfBean2;
-    if (localTroopMemRecommendConfBean2 == null) {
-      localTroopMemRecommendConfBean1 = new TroopMemRecommendConfBean();
+    Object localObject2 = (TroopMemRecommendConfBean)QConfigManager.a().a(550);
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new TroopMemRecommendConfBean();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberRecommend.ConfProcessor", 2, "loadConfig(): bean = " + localTroopMemRecommendConfBean1.toString());
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("loadConfig(): bean = ");
+      ((StringBuilder)localObject2).append(((TroopMemRecommendConfBean)localObject1).toString());
+      QLog.d("TroopMemberRecommend.ConfProcessor", 2, ((StringBuilder)localObject2).toString());
     }
-    return localTroopMemRecommendConfBean1;
+    return localObject1;
   }
   
   @NonNull
@@ -49,8 +53,12 @@ public class TroopMemRecommendConfProcessor
       if (((QQAppInterface)localObject).isCreateManager(QQManagerFactory.TROOP_MEMBER_RECOMMEND_MANAGER))
       {
         ((TroopMemberRecommendManager)((QQAppInterface)localObject).getManager(QQManagerFactory.TROOP_MEMBER_RECOMMEND_MANAGER)).a = paramTroopMemRecommendConfBean;
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopMemberRecommend.ConfProcessor", 2, "onUpdate bean = " + paramTroopMemRecommendConfBean.toString());
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("onUpdate bean = ");
+          ((StringBuilder)localObject).append(paramTroopMemRecommendConfBean.toString());
+          QLog.d("TroopMemberRecommend.ConfProcessor", 2, ((StringBuilder)localObject).toString());
         }
       }
     }
@@ -78,8 +86,12 @@ public class TroopMemRecommendConfProcessor
   
   public void onReqFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberRecommend.ConfProcessor", 2, "onReqFailed " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqFailed ");
+      localStringBuilder.append(paramInt);
+      QLog.d("TroopMemberRecommend.ConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -90,7 +102,7 @@ public class TroopMemRecommendConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.TroopMemRecommendConfProcessor
  * JD-Core Version:    0.7.0.1
  */

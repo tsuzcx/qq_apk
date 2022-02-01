@@ -13,57 +13,64 @@ public class cl
   public static NetworkInfo.DetailedState a(NetworkInfo.DetailedState paramDetailedState, WifiInfo paramWifiInfo)
   {
     if (paramDetailedState == null) {
-      paramWifiInfo = null;
+      return null;
     }
-    SupplicantState localSupplicantState;
-    label59:
-    do
+    if ((paramWifiInfo != null) && (cb.l(b(paramWifiInfo))))
     {
-      do
+      SupplicantState localSupplicantState = paramWifiInfo.getSupplicantState();
+      if (paramDetailedState == NetworkInfo.DetailedState.DISCONNECTED)
       {
-        do
+        if (!a(localSupplicantState))
         {
-          return paramWifiInfo;
-          if ((paramWifiInfo == null) || (!cb.l(b(paramWifiInfo)))) {
-            return NetworkInfo.DetailedState.DISCONNECTED;
-          }
-          localSupplicantState = paramWifiInfo.getSupplicantState();
-          if (paramDetailedState != NetworkInfo.DetailedState.DISCONNECTED) {
-            break label59;
-          }
-          if (a(localSupplicantState)) {
-            break;
-          }
           paramWifiInfo = paramDetailedState;
-        } while (localSupplicantState != SupplicantState.COMPLETED);
-        return WifiInfo.getDetailedStateOf(localSupplicantState);
+          if (localSupplicantState != SupplicantState.COMPLETED) {}
+        }
+        else
+        {
+          return WifiInfo.getDetailedStateOf(localSupplicantState);
+        }
+      }
+      else
+      {
         paramWifiInfo = paramDetailedState;
-      } while (paramDetailedState != NetworkInfo.DetailedState.CONNECTED);
-      paramWifiInfo = paramDetailedState;
-    } while (localSupplicantState == SupplicantState.COMPLETED);
-    return WifiInfo.getDetailedStateOf(localSupplicantState);
+        if (paramDetailedState == NetworkInfo.DetailedState.CONNECTED)
+        {
+          paramWifiInfo = paramDetailedState;
+          if (localSupplicantState != SupplicantState.COMPLETED) {
+            paramWifiInfo = WifiInfo.getDetailedStateOf(localSupplicantState);
+          }
+        }
+      }
+      return paramWifiInfo;
+    }
+    return NetworkInfo.DetailedState.DISCONNECTED;
   }
   
   public static NetworkInfo.DetailedState a(NetworkInfo paramNetworkInfo, WifiInfo paramWifiInfo)
   {
-    if ((paramNetworkInfo == null) || (paramNetworkInfo.getType() != 1)) {
-      return NetworkInfo.DetailedState.DISCONNECTED;
-    }
-    if (paramNetworkInfo.getState() == NetworkInfo.State.DISCONNECTED) {
-      return NetworkInfo.DetailedState.DISCONNECTED;
-    }
-    if (paramNetworkInfo != null) {}
-    for (paramNetworkInfo = paramNetworkInfo.getDetailedState();; paramNetworkInfo = null) {
+    if ((paramNetworkInfo != null) && (paramNetworkInfo.getType() == 1))
+    {
+      if (paramNetworkInfo.getState() == NetworkInfo.State.DISCONNECTED) {
+        return NetworkInfo.DetailedState.DISCONNECTED;
+      }
+      if (paramNetworkInfo != null) {
+        paramNetworkInfo = paramNetworkInfo.getDetailedState();
+      } else {
+        paramNetworkInfo = null;
+      }
       return a(paramNetworkInfo, paramWifiInfo);
     }
+    return NetworkInfo.DetailedState.DISCONNECTED;
   }
   
   public static NetworkInfo.DetailedState a(SupplicantState paramSupplicantState, WifiInfo paramWifiInfo)
   {
-    if (paramSupplicantState != null) {}
-    for (paramSupplicantState = WifiInfo.getDetailedStateOf(paramSupplicantState);; paramSupplicantState = null) {
-      return a(paramSupplicantState, paramWifiInfo);
+    if (paramSupplicantState != null) {
+      paramSupplicantState = WifiInfo.getDetailedStateOf(paramSupplicantState);
+    } else {
+      paramSupplicantState = null;
     }
+    return a(paramSupplicantState, paramWifiInfo);
   }
   
   public static boolean a(SupplicantState paramSupplicantState)
@@ -86,33 +93,29 @@ public class cl
   
   public static String b(WifiInfo paramWifiInfo)
   {
-    Object localObject;
     if (paramWifiInfo == null) {
-      localObject = "";
+      return "";
     }
-    WifiConfiguration localWifiConfiguration;
-    do
+    String str = cb.j(paramWifiInfo.getSSID());
+    Object localObject = str;
+    if (!cb.l(str))
     {
-      String str;
-      do
-      {
-        return localObject;
-        str = cb.j(paramWifiInfo.getSSID());
-        localObject = str;
-      } while (cb.l(str));
       localObject = bw.as().at();
-      localWifiConfiguration = null;
+      WifiConfiguration localWifiConfiguration = null;
       if (paramWifiInfo.getNetworkId() != bx.gI) {
         localWifiConfiguration = bw.a(paramWifiInfo.getNetworkId(), (List)localObject);
       }
       localObject = str;
-    } while (localWifiConfiguration == null);
-    return cb.j(localWifiConfiguration.SSID);
+      if (localWifiConfiguration != null) {
+        localObject = cb.j(localWifiConfiguration.SSID);
+      }
+    }
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.cl
  * JD-Core Version:    0.7.0.1
  */

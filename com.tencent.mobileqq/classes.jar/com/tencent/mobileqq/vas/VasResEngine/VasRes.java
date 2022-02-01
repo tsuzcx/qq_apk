@@ -31,15 +31,16 @@ public class VasRes
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResAdapter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResAdapter.c();
+    VasResAdapter localVasResAdapter = this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResAdapter;
+    if (localVasResAdapter != null) {
+      localVasResAdapter.b();
     }
   }
   
   public void a(VasResAdapter paramVasResAdapter)
   {
     this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResAdapter = paramVasResAdapter;
-    this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResAdapter.b();
+    this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResAdapter.a();
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -47,21 +48,22 @@ public class VasRes
     if (this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResAdapter == null) {
       return false;
     }
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 10002)
     {
-    }
-    for (;;)
-    {
+      if (i != 10003) {
+        return true;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResAdapter.a();
       return true;
-      this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResAdapter.a(paramMessage.arg1, (Bundle)paramMessage.obj);
-      return true;
-      this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResAdapter.b();
     }
+    this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResAdapter.a(paramMessage.arg1, (Bundle)paramMessage.obj);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasResEngine.VasRes
  * JD-Core Version:    0.7.0.1
  */

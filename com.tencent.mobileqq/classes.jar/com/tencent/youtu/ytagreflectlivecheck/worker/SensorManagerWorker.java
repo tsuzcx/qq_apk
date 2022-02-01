@@ -22,7 +22,10 @@ public class SensorManagerWorker
   {
     if (this.mLightSensorListener != null)
     {
-      Log.d("MicroMsg.LightSensor", "Light lux: " + SensorManagerWorker.LightSensorListener.access$300(this.mLightSensorListener));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Light lux: ");
+      localStringBuilder.append(SensorManagerWorker.LightSensorListener.access$300(this.mLightSensorListener));
+      Log.d("MicroMsg.LightSensor", localStringBuilder.toString());
       return SensorManagerWorker.LightSensorListener.access$300(this.mLightSensorListener);
     }
     return -1.0F;
@@ -51,16 +54,20 @@ public class SensorManagerWorker
   
   public void stop()
   {
-    if ((!this.mHasStarted) || (this.mSensorManager == null)) {
-      return;
+    if (this.mHasStarted)
+    {
+      SensorManager localSensorManager = this.mSensorManager;
+      if (localSensorManager == null) {
+        return;
+      }
+      this.mHasStarted = false;
+      localSensorManager.unregisterListener(this.mLightSensorListener);
     }
-    this.mHasStarted = false;
-    this.mSensorManager.unregisterListener(this.mLightSensorListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.youtu.ytagreflectlivecheck.worker.SensorManagerWorker
  * JD-Core Version:    0.7.0.1
  */

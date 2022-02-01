@@ -42,34 +42,43 @@ class IntimateContentItemNewDnaView$FriendDnaRvAdapter
   {
     try
     {
-      SpannableString localSpannableString = new SpannableString(paramString);
-      Object localObject = paramString.getBytes();
+      localObject1 = new SpannableString(paramString);
+      Object localObject2 = paramString.getBytes();
       byte[] arrayOfByte = new byte[paramInt2];
-      System.arraycopy(localObject, paramInt1, arrayOfByte, 0, paramInt2);
-      localObject = new String(arrayOfByte);
-      paramInt1 = paramString.indexOf((String)localObject);
-      paramInt2 = ((String)localObject).length();
-      if ((TextUtils.equals(paramString, (CharSequence)localObject)) && (paramString.length() == ((String)localObject).length()))
+      System.arraycopy(localObject2, paramInt1, arrayOfByte, 0, paramInt2);
+      localObject2 = new String(arrayOfByte);
+      paramInt2 = paramString.indexOf((String)localObject2);
+      paramInt1 = ((String)localObject2).length();
+      if ((TextUtils.equals(paramString, (CharSequence)localObject2)) && (paramString.length() == ((String)localObject2).length()))
       {
-        localSpannableString = new SpannableString(paramString);
-        localSpannableString.setSpan(new StyleSpan(0), 0, paramString.length(), 33);
-        localSpannableString.setSpan(new AbsoluteSizeSpan(ViewUtils.a(17.0F)), 0, paramString.length(), 33);
-        return localSpannableString;
+        localObject1 = new SpannableString(paramString);
+        ((SpannableString)localObject1).setSpan(new StyleSpan(0), 0, paramString.length(), 33);
+        ((SpannableString)localObject1).setSpan(new AbsoluteSizeSpan(ViewUtils.a(17.0F)), 0, paramString.length(), 33);
+        return localObject1;
       }
-      paramInt2 += paramInt1;
-      int i = paramString.length() - paramInt2;
-      localSpannableString.setSpan(new StyleSpan(0), 0, 0 + paramInt1, 33);
-      localSpannableString.setSpan(new TopAlignSuperscriptSpan(0.3F), 0, 0 + paramInt1, 33);
-      localSpannableString.setSpan(new AbsoluteSizeSpan(ViewUtils.a(10.0F)), 0, paramInt1 + 0, 33);
-      localSpannableString.setSpan(new StyleSpan(0), paramInt2, paramInt2 + i, 33);
-      localSpannableString.setSpan(new TopAlignSuperscriptSpan(0.3F), paramInt2, paramInt2 + i, 33);
-      localSpannableString.setSpan(new AbsoluteSizeSpan(ViewUtils.a(10.0F)), paramInt2, paramInt2 + i, 33);
-      return localSpannableString;
+      paramInt1 += paramInt2;
+      int i = paramString.length();
+      paramString = new StyleSpan(0);
+      paramInt2 += 0;
+      ((SpannableString)localObject1).setSpan(paramString, 0, paramInt2, 33);
+      ((SpannableString)localObject1).setSpan(new TopAlignSuperscriptSpan(0.3F), 0, paramInt2, 33);
+      ((SpannableString)localObject1).setSpan(new AbsoluteSizeSpan(ViewUtils.a(10.0F)), 0, paramInt2, 33);
+      paramString = new StyleSpan(0);
+      paramInt2 = i - paramInt1 + paramInt1;
+      ((SpannableString)localObject1).setSpan(paramString, paramInt1, paramInt2, 33);
+      ((SpannableString)localObject1).setSpan(new TopAlignSuperscriptSpan(0.3F), paramInt1, paramInt2, 33);
+      ((SpannableString)localObject1).setSpan(new AbsoluteSizeSpan(ViewUtils.a(10.0F)), paramInt1, paramInt2, 33);
+      return localObject1;
     }
     catch (Exception paramString)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("IntimateContentItemNewDnaView", 2, "getSpecialContent fail:" + paramString.toString());
+      Object localObject1;
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getSpecialContent fail:");
+        ((StringBuilder)localObject1).append(paramString.toString());
+        QLog.d("IntimateContentItemNewDnaView", 2, ((StringBuilder)localObject1).toString());
       }
     }
     return null;
@@ -77,52 +86,52 @@ class IntimateContentItemNewDnaView$FriendDnaRvAdapter
   
   private void a(int paramInt, IntimateContentItemNewDnaView.FriendDnaViewHolder paramFriendDnaViewHolder)
   {
-    if ((this.jdField_a_of_type_JavaUtilList.size() == 1) || (this.jdField_a_of_type_JavaUtilList.size() == 2))
+    if ((this.jdField_a_of_type_JavaUtilList.size() != 1) && (this.jdField_a_of_type_JavaUtilList.size() != 2))
     {
-      a(paramFriendDnaViewHolder, -7.0F, 0.0F, -7.0F, -15.0F);
-      return;
-    }
-    if (this.jdField_a_of_type_JavaUtilList.size() % 2 == 0)
-    {
-      if ((paramInt == 0) || (paramInt == 1))
+      if (this.jdField_a_of_type_JavaUtilList.size() % 2 == 0)
       {
+        if ((paramInt != 0) && (paramInt != 1))
+        {
+          if (((paramInt == this.jdField_a_of_type_JavaUtilList.size() - 1) || (paramInt == this.jdField_a_of_type_JavaUtilList.size() - 2)) && (this.jdField_a_of_type_JavaUtilList.size() >= 5))
+          {
+            a(paramFriendDnaViewHolder, -7.0F, -4.3F, -7.0F, -22.0F);
+            return;
+          }
+          if ((paramInt != this.jdField_a_of_type_JavaUtilList.size() - 1) && (paramInt != this.jdField_a_of_type_JavaUtilList.size() - 2))
+          {
+            a(paramFriendDnaViewHolder, -7.0F, -3.0F, -7.0F, -22.0F);
+            return;
+          }
+          a(paramFriendDnaViewHolder, -7.0F, -3.0F, -7.0F, -15.0F);
+          return;
+        }
         a(paramFriendDnaViewHolder, -7.0F, 0.0F, -7.0F, -22.0F);
         return;
       }
-      if (((paramInt == this.jdField_a_of_type_JavaUtilList.size() - 1) || (paramInt == this.jdField_a_of_type_JavaUtilList.size() - 2)) && (this.jdField_a_of_type_JavaUtilList.size() >= 5))
+      if ((paramInt != 0) && (paramInt != 1))
       {
-        a(paramFriendDnaViewHolder, -7.0F, -4.3F, -7.0F, -22.0F);
+        if ((paramInt == this.jdField_a_of_type_JavaUtilList.size() - 1) && (this.jdField_a_of_type_JavaUtilList.size() >= 5))
+        {
+          a(paramFriendDnaViewHolder, -7.0F, -4.3F, -7.0F, -22.0F);
+          return;
+        }
+        if (paramInt == this.jdField_a_of_type_JavaUtilList.size() - 1)
+        {
+          a(paramFriendDnaViewHolder, -7.0F, -3.0F, -7.0F, -15.0F);
+          return;
+        }
+        if (paramInt == this.jdField_a_of_type_JavaUtilList.size() - 2)
+        {
+          a(paramFriendDnaViewHolder, -7.0F, -3.0F, -7.0F, -22.0F);
+          return;
+        }
+        a(paramFriendDnaViewHolder, -7.0F, -3.0F, -7.0F, -22.0F);
         return;
       }
-      if ((paramInt == this.jdField_a_of_type_JavaUtilList.size() - 1) || (paramInt == this.jdField_a_of_type_JavaUtilList.size() - 2))
-      {
-        a(paramFriendDnaViewHolder, -7.0F, -3.0F, -7.0F, -15.0F);
-        return;
-      }
-      a(paramFriendDnaViewHolder, -7.0F, -3.0F, -7.0F, -22.0F);
-      return;
-    }
-    if ((paramInt == 0) || (paramInt == 1))
-    {
       a(paramFriendDnaViewHolder, -7.0F, 0.0F, -7.0F, -22.0F);
       return;
     }
-    if ((paramInt == this.jdField_a_of_type_JavaUtilList.size() - 1) && (this.jdField_a_of_type_JavaUtilList.size() >= 5))
-    {
-      a(paramFriendDnaViewHolder, -7.0F, -4.3F, -7.0F, -22.0F);
-      return;
-    }
-    if (paramInt == this.jdField_a_of_type_JavaUtilList.size() - 1)
-    {
-      a(paramFriendDnaViewHolder, -7.0F, -3.0F, -7.0F, -15.0F);
-      return;
-    }
-    if (paramInt == this.jdField_a_of_type_JavaUtilList.size() - 2)
-    {
-      a(paramFriendDnaViewHolder, -7.0F, -3.0F, -7.0F, -22.0F);
-      return;
-    }
-    a(paramFriendDnaViewHolder, -7.0F, -3.0F, -7.0F, -22.0F);
+    a(paramFriendDnaViewHolder, -7.0F, 0.0F, -7.0F, -15.0F);
   }
   
   private void a(LinearLayout paramLinearLayout, ArrayList<NewDnaInfo.DnaDetail> paramArrayList)
@@ -138,7 +147,7 @@ class IntimateContentItemNewDnaView$FriendDnaRvAdapter
         localTextView.setTextSize(1, 22.0F);
         localTextView.setSingleLine(true);
         localTextView.setEllipsize(TextUtils.TruncateAt.END);
-        localTextView.setTextColor(ContextCompat.getColor(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemNewDnaView.a, 2131166811));
+        localTextView.setTextColor(ContextCompat.getColor(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemNewDnaView.a, 2131166827));
         LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
         localLayoutParams.setMargins(0, ViewUtils.b(2.0F), 0, 0);
         localTextView.setLayoutParams(localLayoutParams);
@@ -183,49 +192,44 @@ class IntimateContentItemNewDnaView$FriendDnaRvAdapter
     if (!TextUtils.isEmpty(((NewDnaInfo)localObject).jdField_a_of_type_JavaLangString)) {
       paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(((NewDnaInfo)localObject).jdField_a_of_type_JavaLangString);
     }
-    if ((((NewDnaInfo)localObject).jdField_a_of_type_JavaUtilArrayList != null) && (((NewDnaInfo)localObject).jdField_a_of_type_JavaUtilArrayList.size() > 0))
-    {
+    if ((((NewDnaInfo)localObject).jdField_a_of_type_JavaUtilArrayList != null) && (((NewDnaInfo)localObject).jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
       a(paramViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout, ((NewDnaInfo)localObject).jdField_a_of_type_JavaUtilArrayList);
-      paramViewHolder.jdField_a_of_type_ComTencentWidgetRoundRectImageView.setCornerRadiusAndMode(ViewUtils.b(15.0F), 1);
-      if (!IntimateContentItemNewDnaView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemNewDnaView)) {
-        break label163;
-      }
+    } else {
+      paramViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
+    }
+    paramViewHolder.jdField_a_of_type_ComTencentWidgetRoundRectImageView.setCornerRadiusAndMode(ViewUtils.b(15.0F), 1);
+    if (IntimateContentItemNewDnaView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemNewDnaView))
+    {
       paramViewHolder.jdField_a_of_type_ComTencentWidgetRoundRectImageView.setVisibility(8);
     }
-    for (;;)
+    else if (!TextUtils.isEmpty(((NewDnaInfo)localObject).c))
     {
-      a(paramInt, paramViewHolder);
-      return;
-      paramViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-      break;
-      label163:
-      if (!TextUtils.isEmpty(((NewDnaInfo)localObject).c))
-      {
-        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mRequestWidth = paramViewHolder.jdField_a_of_type_ComTencentWidgetRoundRectImageView.getWidth();
-        localURLDrawableOptions.mRequestHeight = paramViewHolder.jdField_a_of_type_ComTencentWidgetRoundRectImageView.getHeight();
-        localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(0);
-        localURLDrawableOptions.mFailedDrawable = new ColorDrawable(0);
-        localObject = URLDrawable.getDrawable(((NewDnaInfo)localObject).c, localURLDrawableOptions);
-        paramViewHolder.jdField_a_of_type_ComTencentWidgetRoundRectImageView.setImageDrawable((Drawable)localObject);
-        paramViewHolder.jdField_a_of_type_ComTencentWidgetRoundRectImageView.setVisibility(0);
-      }
-      else
-      {
-        paramViewHolder.jdField_a_of_type_ComTencentWidgetRoundRectImageView.setVisibility(8);
-      }
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mRequestWidth = paramViewHolder.jdField_a_of_type_ComTencentWidgetRoundRectImageView.getWidth();
+      localURLDrawableOptions.mRequestHeight = paramViewHolder.jdField_a_of_type_ComTencentWidgetRoundRectImageView.getHeight();
+      localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(0);
+      localURLDrawableOptions.mFailedDrawable = new ColorDrawable(0);
+      localObject = URLDrawable.getDrawable(((NewDnaInfo)localObject).c, localURLDrawableOptions);
+      paramViewHolder.jdField_a_of_type_ComTencentWidgetRoundRectImageView.setImageDrawable((Drawable)localObject);
+      paramViewHolder.jdField_a_of_type_ComTencentWidgetRoundRectImageView.setVisibility(0);
     }
+    else
+    {
+      paramViewHolder.jdField_a_of_type_ComTencentWidgetRoundRectImageView.setVisibility(8);
+    }
+    a(paramInt, paramViewHolder);
   }
   
   @NonNull
   public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup paramViewGroup, int paramInt)
   {
-    return new IntimateContentItemNewDnaView.FriendDnaViewHolder(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemNewDnaView, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemNewDnaView.a).inflate(2131559387, null));
+    paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemNewDnaView;
+    return new IntimateContentItemNewDnaView.FriendDnaViewHolder(paramViewGroup, LayoutInflater.from(paramViewGroup.a).inflate(2131559262, null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemNewDnaView.FriendDnaRvAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -12,21 +12,19 @@ class DiscussionListAdapter2$2
   public void onClick(View paramView)
   {
     Object localObject = paramView.getTag();
-    if (!(localObject instanceof DiscussionListAdapter2.ViewTag)) {}
-    for (;;)
+    if ((localObject instanceof DiscussionListAdapter2.ViewTag))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       localObject = (DiscussionListAdapter2.ViewTag)localObject;
       if ((((DiscussionListAdapter2.ViewTag)localObject).a != null) && (this.a.a != null)) {
         this.a.a.a(((DiscussionListAdapter2.ViewTag)localObject).a);
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.DiscussionListAdapter2.2
  * JD-Core Version:    0.7.0.1
  */

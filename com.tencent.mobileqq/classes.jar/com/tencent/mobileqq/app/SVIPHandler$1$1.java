@@ -17,7 +17,7 @@ class SVIPHandler$1$1
   {
     try
     {
-      String str1 = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppSVIPHandler$1.this$0.b());
+      String str = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppSVIPHandler$1.this$0.b());
       if ((paramObject instanceof List))
       {
         paramObject = (List)paramObject;
@@ -26,32 +26,54 @@ class SVIPHandler$1$1
           paramObject = paramObject.iterator();
           while (paramObject.hasNext())
           {
-            Object localObject = (BubbleDiyEntity)paramObject.next();
-            String str2;
-            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).topLeftId))
+            Object localObject1 = (BubbleDiyEntity)paramObject.next();
+            paramBoolean = TextUtils.isEmpty(((BubbleDiyEntity)localObject1).topLeftId);
+            Object localObject2;
+            if (!paramBoolean)
             {
-              str2 = "BubbleDiyFetcher_" + str1 + "_TL_" + ((BubbleDiyEntity)localObject).topLeftId;
-              this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b.add(str2);
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("BubbleDiyFetcher_");
+              ((StringBuilder)localObject2).append(str);
+              ((StringBuilder)localObject2).append("_TL_");
+              ((StringBuilder)localObject2).append(((BubbleDiyEntity)localObject1).topLeftId);
+              localObject2 = ((StringBuilder)localObject2).toString();
+              this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b.add(localObject2);
             }
-            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).topRightId))
+            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject1).topRightId))
             {
-              str2 = "BubbleDiyFetcher_" + str1 + "_TR_" + ((BubbleDiyEntity)localObject).topRightId;
-              this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b.add(str2);
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("BubbleDiyFetcher_");
+              ((StringBuilder)localObject2).append(str);
+              ((StringBuilder)localObject2).append("_TR_");
+              ((StringBuilder)localObject2).append(((BubbleDiyEntity)localObject1).topRightId);
+              localObject2 = ((StringBuilder)localObject2).toString();
+              this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b.add(localObject2);
             }
-            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).bottomRightId))
+            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject1).bottomRightId))
             {
-              str2 = "BubbleDiyFetcher_" + str1 + "_BR_" + ((BubbleDiyEntity)localObject).bottomRightId;
-              this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b.add(str2);
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("BubbleDiyFetcher_");
+              ((StringBuilder)localObject2).append(str);
+              ((StringBuilder)localObject2).append("_BR_");
+              ((StringBuilder)localObject2).append(((BubbleDiyEntity)localObject1).bottomRightId);
+              localObject2 = ((StringBuilder)localObject2).toString();
+              this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b.add(localObject2);
             }
-            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).bottomLeftId))
+            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject1).bottomLeftId))
             {
-              localObject = "BubbleDiyFetcher_" + str1 + "_BL_" + ((BubbleDiyEntity)localObject).bottomLeftId;
-              this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b.add(localObject);
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("BubbleDiyFetcher_");
+              ((StringBuilder)localObject2).append(str);
+              ((StringBuilder)localObject2).append("_BL_");
+              ((StringBuilder)localObject2).append(((BubbleDiyEntity)localObject1).bottomLeftId);
+              localObject1 = ((StringBuilder)localObject2).toString();
+              this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b.add(localObject1);
             }
           }
+          this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b();
+          return;
         }
       }
-      return;
     }
     catch (Exception paramObject)
     {
@@ -59,12 +81,11 @@ class SVIPHandler$1$1
         QLog.e("SVIPHandler", 2, paramObject.getMessage());
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.SVIPHandler.1.1
  * JD-Core Version:    0.7.0.1
  */

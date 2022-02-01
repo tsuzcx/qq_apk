@@ -16,14 +16,15 @@ final class DarkModeManager$4
       QLog.d("DarkModeManager", 2, "showThemeDarkModeTips");
     }
     DarkModeManager.a(false);
-    if (this.a != null) {
-      this.a.onConfirm();
+    paramDialogInterface = this.a;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.onConfirm();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.theme.DarkModeManager.4
  * JD-Core Version:    0.7.0.1
  */

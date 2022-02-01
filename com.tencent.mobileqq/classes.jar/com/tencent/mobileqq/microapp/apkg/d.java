@@ -18,32 +18,43 @@ final class d
   {
     if ((paramInt == 0) && (this.a != paramMiniAppConfig.config.mini_version))
     {
-      if (this.b != null) {
-        this.b.onCheckForUpdate(true);
+      paramString1 = this.b;
+      if (paramString1 != null) {
+        paramString1.onCheckForUpdate(true);
       }
-      if (new File(g.a(paramMiniAppConfig.config)).exists()) {
-        if (this.b != null) {
-          this.b.onUpdateSucc(true);
+      if (new File(g.a(paramMiniAppConfig.config)).exists())
+      {
+        paramMiniAppConfig = this.b;
+        if (paramMiniAppConfig != null) {
+          paramMiniAppConfig.onUpdateSucc(true);
         }
       }
+      else
+      {
+        paramString1 = g.a(paramMiniAppConfig.config);
+        paramString2 = ManagerProxy.getPreloadManager(ApkgConfigManager.access$100(this.c));
+        DownloadParam localDownloadParam = new DownloadParam();
+        localDownloadParam.headers = new LinkedList();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramMiniAppConfig.config.apkg_url);
+        localStringBuilder.append("?sign=");
+        localStringBuilder.append(URLEncoder.encode(paramMiniAppConfig.config.cos_sign));
+        localDownloadParam.url = localStringBuilder.toString();
+        paramString2.getResPath(localDownloadParam, new e(this, paramString1));
+      }
     }
-    while (this.b == null)
+    else
     {
-      return;
-      paramString1 = g.a(paramMiniAppConfig.config);
-      paramString2 = ManagerProxy.getPreloadManager(ApkgConfigManager.access$100(this.c));
-      DownloadParam localDownloadParam = new DownloadParam();
-      localDownloadParam.headers = new LinkedList();
-      localDownloadParam.url = (paramMiniAppConfig.config.apkg_url + "?sign=" + URLEncoder.encode(paramMiniAppConfig.config.cos_sign));
-      paramString2.getResPath(localDownloadParam, new e(this, paramString1));
-      return;
+      paramMiniAppConfig = this.b;
+      if (paramMiniAppConfig != null) {
+        paramMiniAppConfig.onCheckForUpdate(false);
+      }
     }
-    this.b.onCheckForUpdate(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.apkg.d
  * JD-Core Version:    0.7.0.1
  */

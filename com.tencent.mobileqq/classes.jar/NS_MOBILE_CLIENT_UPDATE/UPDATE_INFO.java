@@ -61,30 +61,36 @@ public final class UPDATE_INFO
   {
     paramJceOutputStream.write(this.app, 0);
     paramJceOutputStream.write(this.ver, 1);
-    if (this.name != null) {
-      paramJceOutputStream.write(this.name, 2);
+    Object localObject = this.name;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.extra_info != null) {
-      paramJceOutputStream.write(this.extra_info, 3);
+    localObject = this.extra_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
-    if (this.id != null) {
-      paramJceOutputStream.write(this.id, 4);
+    localObject = this.id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.mainVersion != null) {
-      paramJceOutputStream.write(this.mainVersion, 5);
+    localObject = this.mainVersion;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.md5 != null) {
-      paramJceOutputStream.write(this.md5, 6);
+    localObject = this.md5;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.plugin_info != null) {
-      paramJceOutputStream.write(this.plugin_info, 7);
+    localObject = this.plugin_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 7);
     }
     paramJceOutputStream.write(this.actype, 8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_CLIENT_UPDATE.UPDATE_INFO
  * JD-Core Version:    0.7.0.1
  */

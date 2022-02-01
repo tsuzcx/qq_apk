@@ -10,7 +10,7 @@ public abstract class PostHttpRequest
   
   protected abstract void onFinished(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt);
   
-  public boolean sendRequest(byte[] paramArrayOfByte)
+  protected boolean sendRequest(byte[] paramArrayOfByte)
   {
     if (paramArrayOfByte == null) {
       return false;
@@ -23,14 +23,16 @@ public abstract class PostHttpRequest
     }
     catch (OutOfMemoryError paramArrayOfByte)
     {
-      ab.e("PostHttpRequest", "<sendRequest>low memory!");
+      label35:
+      break label35;
     }
+    ab.e("PostHttpRequest", "<sendRequest>low memory!");
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistantbase.network.PostHttpRequest
  * JD-Core Version:    0.7.0.1
  */

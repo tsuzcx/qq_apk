@@ -25,7 +25,6 @@ import com.huawei.hms.common.internal.ConnectionErrorMessages;
 import com.huawei.hms.common.internal.DialogRedirect;
 import com.huawei.hms.common.internal.Preconditions;
 import com.huawei.hms.support.log.HMSLog;
-import com.huawei.hms.update.manager.HMSPublishStateHolder;
 import com.huawei.hms.update.manager.UpdateManager;
 import com.huawei.hms.update.ui.UpdateBean;
 import com.huawei.hms.utils.Checker;
@@ -38,7 +37,7 @@ import com.huawei.hms.utils.Util;
 final class b
   extends HuaweiApiAvailability
 {
-  private static final b a = new b();
+  private static final b b = new b();
   
   protected static int a(Activity paramActivity)
   {
@@ -79,18 +78,14 @@ final class b
     if (!Util.isAvailableLibExist(paramActivity.getApplicationContext())) {
       return null;
     }
-    switch (paramInt)
+    if ((paramInt != 1) && (paramInt != 2))
     {
-    case 3: 
-    case 4: 
-    case 5: 
-    default: 
-      return null;
-    case 1: 
-    case 2: 
-      return UpdateManager.startUpdateIntent(paramActivity);
+      if (paramInt != 6) {
+        return null;
+      }
+      return BridgeActivity.getIntentStartBridgeActivity(paramActivity, BindingFailedResolution.class.getName());
     }
-    return BridgeActivity.getIntentStartBridgeActivity(paramActivity, BindingFailedResolution.class.getName());
+    return UpdateManager.startUpdateIntent(paramActivity);
   }
   
   private static Intent a(Activity paramActivity, String paramString)
@@ -103,11 +98,6 @@ final class b
     return BridgeActivity.getIntentStartBridgeActivity(paramContext, paramString);
   }
   
-  public static b a()
-  {
-    return a;
-  }
-  
   private static void a(Activity paramActivity, Dialog paramDialog, String paramString, DialogInterface.OnCancelListener paramOnCancelListener)
   {
     Checker.checkNonNull(paramActivity, "activity must not be null.");
@@ -117,136 +107,174 @@ final class b
   private void a(Object paramObject)
   {
     AvailabilityException localAvailabilityException = new AvailabilityException();
-    if ((paramObject instanceof HuaweiApi)) {}
-    for (paramObject = localAvailabilityException.getConnectionResult((HuaweiApi)paramObject); paramObject.getErrorCode() != 0; paramObject = localAvailabilityException.getConnectionResult((HuaweiApiCallable)paramObject))
-    {
-      HMSLog.i("HuaweiApiAvailabilityImpl", "The service is unavailable: " + localAvailabilityException.getMessage());
-      throw localAvailabilityException;
+    if ((paramObject instanceof HuaweiApi)) {
+      paramObject = localAvailabilityException.getConnectionResult((HuaweiApi)paramObject);
+    } else {
+      paramObject = localAvailabilityException.getConnectionResult((HuaweiApiCallable)paramObject);
     }
+    if (paramObject.getErrorCode() == 0) {
+      return;
+    }
+    paramObject = new StringBuilder();
+    paramObject.append("The service is unavailable: ");
+    paramObject.append(localAvailabilityException.getMessage());
+    HMSLog.i("HuaweiApiAvailabilityImpl", paramObject.toString());
+    throw localAvailabilityException;
   }
   
-  public PendingIntent a(Context paramContext, int paramInt)
+  public static b getInstance()
   {
-    HMSLog.i("HuaweiApiAvailabilityImpl", "Enter getResolveErrorPendingIntent, errorCode: " + paramInt);
-    PendingIntent localPendingIntent = null;
-    Intent localIntent = b(paramContext, paramInt);
-    if (localIntent != null) {
-      localPendingIntent = PendingIntent.getActivity(paramContext, 0, localIntent, 134217728);
-    }
-    return localPendingIntent;
+    return b;
   }
   
-  public Intent b(Context paramContext, int paramInt)
+  public Intent a(Context paramContext, int paramInt)
   {
-    HMSLog.i("HuaweiApiAvailabilityImpl", "Enter getResolveErrorIntent, errorCode: " + paramInt);
-    switch (paramInt)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Enter getResolveErrorIntent, errorCode: ");
+    ((StringBuilder)localObject).append(paramInt);
+    HMSLog.i("HuaweiApiAvailabilityImpl", ((StringBuilder)localObject).toString());
+    if ((paramInt != 1) && (paramInt != 2))
     {
-    case 3: 
-    case 4: 
-    case 5: 
-    default: 
-      return null;
-    case 1: 
-    case 2: 
-      UpdateBean localUpdateBean = new UpdateBean();
-      localUpdateBean.setHmsOrApkUpgrade(true);
-      localUpdateBean.setClientPackageName(HMSPackageManager.getInstance(paramContext).getHMSPackageName());
-      localUpdateBean.setClientVersionCode(HuaweiApiAvailability.getServicesVersionCode());
-      localUpdateBean.setClientAppId("C10132067");
-      if (ResourceLoaderUtil.getmContext() == null) {
-        ResourceLoaderUtil.setmContext(paramContext.getApplicationContext());
+      if (paramInt != 6) {
+        return null;
       }
-      localUpdateBean.setClientAppName(ResourceLoaderUtil.getString("hms_update_title"));
-      return UpdateManager.getStartUpdateIntent(paramContext, localUpdateBean);
+      return a(paramContext, BindingFailedResolution.class.getName());
     }
-    return a(paramContext, BindingFailedResolution.class.getName());
+    localObject = new UpdateBean();
+    ((UpdateBean)localObject).setHmsOrApkUpgrade(true);
+    ((UpdateBean)localObject).setClientPackageName(HMSPackageManager.getInstance(paramContext.getApplicationContext()).getHMSPackageName());
+    ((UpdateBean)localObject).setClientVersionCode(HuaweiApiAvailability.getServicesVersionCode());
+    ((UpdateBean)localObject).setClientAppId("C10132067");
+    if (ResourceLoaderUtil.getmContext() == null) {
+      ResourceLoaderUtil.setmContext(paramContext.getApplicationContext());
+    }
+    ((UpdateBean)localObject).setClientAppName(ResourceLoaderUtil.getString("hms_update_title"));
+    return UpdateManager.getStartUpdateIntent(paramContext, (UpdateBean)localObject);
+  }
+  
+  public PendingIntent b(Context paramContext, int paramInt)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Enter getResolveErrorPendingIntent, errorCode: ");
+    ((StringBuilder)localObject).append(paramInt);
+    HMSLog.i("HuaweiApiAvailabilityImpl", ((StringBuilder)localObject).toString());
+    localObject = a(paramContext, paramInt);
+    if (localObject != null) {
+      return PendingIntent.getActivity(paramContext, 0, (Intent)localObject, 134217728);
+    }
+    return null;
   }
   
   public Task<Void> checkApiAccessible(HuaweiApi<?> paramHuaweiApi, HuaweiApi<?>... paramVarArgs)
   {
-    localTask = new TaskCompletionSource().getTask();
+    Task localTask = new TaskCompletionSource().getTask();
     if (paramHuaweiApi != null) {}
     try
     {
       a(paramHuaweiApi);
-      if (paramVarArgs != null)
-      {
-        int j = paramVarArgs.length;
-        int i = 0;
-        while (i < j)
-        {
-          a(paramVarArgs[i]);
-          i += 1;
-        }
+      if (paramVarArgs == null) {
+        break label88;
       }
-      return localTask;
+      int j = paramVarArgs.length;
+      int i = 0;
+      while (i < j)
+      {
+        a(paramVarArgs[i]);
+        i += 1;
+      }
     }
-    catch (AvailabilityException paramHuaweiApi)
+    catch (AvailabilityException paramVarArgs)
     {
-      HMSLog.i("HuaweiApiAvailabilityImpl", "checkApi has AvailabilityException " + paramHuaweiApi.getMessage());
+      label54:
+      break label54;
     }
+    paramHuaweiApi = new StringBuilder();
+    paramHuaweiApi.append("checkApi has AvailabilityException ");
+    paramHuaweiApi.append(paramVarArgs.getMessage());
+    HMSLog.i("HuaweiApiAvailabilityImpl", paramHuaweiApi.toString());
+    label88:
+    return localTask;
   }
   
   public Task<Void> checkApiAccessible(HuaweiApiCallable paramHuaweiApiCallable, HuaweiApiCallable... paramVarArgs)
   {
-    localTask = new TaskCompletionSource().getTask();
+    Task localTask = new TaskCompletionSource().getTask();
     if (paramHuaweiApiCallable != null) {}
     try
     {
       a(paramHuaweiApiCallable);
-      if (paramVarArgs != null)
-      {
-        int j = paramVarArgs.length;
-        int i = 0;
-        while (i < j)
-        {
-          a(paramVarArgs[i]);
-          i += 1;
-        }
+      if (paramVarArgs == null) {
+        break label88;
       }
-      return localTask;
+      int j = paramVarArgs.length;
+      int i = 0;
+      while (i < j)
+      {
+        a(paramVarArgs[i]);
+        i += 1;
+      }
     }
-    catch (AvailabilityException paramHuaweiApiCallable)
+    catch (AvailabilityException paramVarArgs)
     {
-      HMSLog.i("HuaweiApiAvailabilityImpl", "HuaweiApiCallable checkApi has AvailabilityException " + paramHuaweiApiCallable.getMessage());
+      label54:
+      break label54;
     }
+    paramHuaweiApiCallable = new StringBuilder();
+    paramHuaweiApiCallable.append("HuaweiApiCallable checkApi has AvailabilityException ");
+    paramHuaweiApiCallable.append(paramVarArgs.getMessage());
+    HMSLog.i("HuaweiApiAvailabilityImpl", paramHuaweiApiCallable.toString());
+    label88:
+    return localTask;
   }
   
   public PendingIntent getErrPendingIntent(Context paramContext, int paramInt1, int paramInt2)
   {
-    HMSLog.i("HuaweiApiAvailabilityImpl", "Enter getResolveErrorPendingIntent, errorCode: " + paramInt1 + " requestCode: " + paramInt2);
-    PendingIntent localPendingIntent = null;
-    Intent localIntent = b(paramContext, paramInt1);
-    if (localIntent != null) {
-      localPendingIntent = PendingIntent.getActivity(paramContext, paramInt2, localIntent, 134217728);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Enter getResolveErrorPendingIntent, errorCode: ");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(" requestCode: ");
+    ((StringBuilder)localObject).append(paramInt2);
+    HMSLog.i("HuaweiApiAvailabilityImpl", ((StringBuilder)localObject).toString());
+    localObject = a(paramContext, paramInt1);
+    if (localObject != null) {
+      return PendingIntent.getActivity(paramContext, paramInt2, (Intent)localObject, 134217728);
     }
-    return localPendingIntent;
+    return null;
   }
   
   public PendingIntent getErrPendingIntent(Context paramContext, ConnectionResult paramConnectionResult)
   {
     Preconditions.checkNotNull(paramContext);
     Preconditions.checkNotNull(paramConnectionResult);
-    return a(paramContext, paramConnectionResult.getErrorCode());
+    return b(paramContext, paramConnectionResult.getErrorCode());
   }
   
   public Dialog getErrorDialog(Activity paramActivity, int paramInt1, int paramInt2)
   {
     Checker.checkNonNull(paramActivity, "activity must not be null.");
-    HMSLog.i("HuaweiApiAvailabilityImpl", "Enter getErrorDialog, errorCode: " + paramInt1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Enter getErrorDialog, errorCode: ");
+    localStringBuilder.append(paramInt1);
+    HMSLog.i("HuaweiApiAvailabilityImpl", localStringBuilder.toString());
     return getErrorDialog(paramActivity, paramInt1, paramInt2, null);
   }
   
   public Dialog getErrorDialog(Activity paramActivity, int paramInt1, int paramInt2, DialogInterface.OnCancelListener paramOnCancelListener)
   {
     Checker.checkNonNull(paramActivity, "activity must not be null.");
-    HMSLog.i("HuaweiApiAvailabilityImpl", "Enter getErrorDialog, errorCode: " + paramInt1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Enter getErrorDialog, errorCode: ");
+    localStringBuilder.append(paramInt1);
+    HMSLog.i("HuaweiApiAvailabilityImpl", localStringBuilder.toString());
     return a(paramActivity, paramInt1, DialogRedirect.getInstance(paramActivity, a(paramActivity, paramInt1), paramInt2), paramOnCancelListener);
   }
   
   public String getErrorString(int paramInt)
   {
-    HMSLog.i("HuaweiApiAvailabilityImpl", "Enter getErrorString, errorCode: " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Enter getErrorString, errorCode: ");
+    localStringBuilder.append(paramInt);
+    HMSLog.i("HuaweiApiAvailabilityImpl", localStringBuilder.toString());
     return ConnectionResult.a(paramInt);
   }
   
@@ -261,7 +289,7 @@ final class b
     Intent localIntent2 = BridgeActivity.getIntentStartBridgeActivity(paramActivity, ResolutionDelegate.class.getName());
     if (localIntent1 != null)
     {
-      ForegroundIntentBuilder.registerResponseCallback("CALLBACK_METHOD", new b.1(this, (TaskCompletionSource[])localObject));
+      ForegroundIntentBuilder.registerResponseCallback("CALLBACK_METHOD", new b.a(this, (TaskCompletionSource[])localObject));
       localObject = new Bundle();
       ((Bundle)localObject).putParcelable("resolution", localIntent1);
       localIntent2.putExtras((Bundle)localObject);
@@ -287,52 +315,43 @@ final class b
   
   public Intent getResolveErrorIntent(Activity paramActivity, int paramInt)
   {
-    HMSLog.i("HuaweiApiAvailabilityImpl", "Enter getResolveErrorIntent, errorCode: " + paramInt);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Enter getResolveErrorIntent, errorCode: ");
+    ((StringBuilder)localObject).append(paramInt);
+    HMSLog.i("HuaweiApiAvailabilityImpl", ((StringBuilder)localObject).toString());
     if (!Util.isAvailableLibExist(paramActivity.getApplicationContext())) {
       return null;
     }
-    switch (paramInt)
+    if ((paramInt != 1) && (paramInt != 2))
     {
-    case 3: 
-    case 4: 
-    case 5: 
-    default: 
-      return null;
-    case 1: 
-    case 2: 
-      UpdateBean localUpdateBean = new UpdateBean();
-      localUpdateBean.setHmsOrApkUpgrade(true);
-      if (HMSPublishStateHolder.getPublishState() == 0) {
-        localUpdateBean.setClientPackageName(HMSPackageManager.getInstance(paramActivity.getApplicationContext()).getHMSPackageName());
+      if (paramInt != 6) {
+        return null;
       }
-      for (;;)
-      {
-        localUpdateBean.setClientVersionCode(HuaweiApiAvailability.getServicesVersionCode());
-        localUpdateBean.setClientAppId("C10132067");
-        if (ResourceLoaderUtil.getmContext() == null) {
-          ResourceLoaderUtil.setmContext(paramActivity.getApplicationContext());
-        }
-        localUpdateBean.setClientAppName(ResourceLoaderUtil.getString("hms_update_title"));
-        return UpdateManager.getStartUpdateIntent(paramActivity, localUpdateBean);
-        if (HMSPublishStateHolder.getPublishState() == 1) {
-          localUpdateBean.setClientPackageName("com.huawei.hms");
-        } else {
-          localUpdateBean.setClientPackageName("com.huawei.hwid");
-        }
-      }
+      return a(paramActivity, BindingFailedResolution.class.getName());
     }
-    return a(paramActivity, BindingFailedResolution.class.getName());
+    localObject = new UpdateBean();
+    ((UpdateBean)localObject).setHmsOrApkUpgrade(true);
+    ((UpdateBean)localObject).setClientPackageName(HMSPackageManager.getInstance(paramActivity.getApplicationContext()).getHMSPackageName());
+    ((UpdateBean)localObject).setClientVersionCode(HuaweiApiAvailability.getServicesVersionCode());
+    ((UpdateBean)localObject).setClientAppId("C10132067");
+    if (ResourceLoaderUtil.getmContext() == null) {
+      ResourceLoaderUtil.setmContext(paramActivity.getApplicationContext());
+    }
+    ((UpdateBean)localObject).setClientAppName(ResourceLoaderUtil.getString("hms_update_title"));
+    return UpdateManager.getStartUpdateIntent(paramActivity, (UpdateBean)localObject);
   }
   
   public PendingIntent getResolveErrorPendingIntent(Activity paramActivity, int paramInt)
   {
-    HMSLog.i("HuaweiApiAvailabilityImpl", "Enter getResolveErrorPendingIntent, errorCode: " + paramInt);
-    PendingIntent localPendingIntent = null;
-    Intent localIntent = getResolveErrorIntent(paramActivity, paramInt);
-    if (localIntent != null) {
-      localPendingIntent = PendingIntent.getActivity(paramActivity, 0, localIntent, 134217728);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Enter getResolveErrorPendingIntent, errorCode: ");
+    ((StringBuilder)localObject).append(paramInt);
+    HMSLog.i("HuaweiApiAvailabilityImpl", ((StringBuilder)localObject).toString());
+    localObject = getResolveErrorIntent(paramActivity, paramInt);
+    if (localObject != null) {
+      return PendingIntent.getActivity(paramActivity, 0, (Intent)localObject, 134217728);
     }
-    return localPendingIntent;
+    return null;
   }
   
   public int isHuaweiMobileNoticeAvailable(Context paramContext)
@@ -373,15 +392,7 @@ final class b
     if (paramPendingIntent != null) {
       return true;
     }
-    switch (paramInt)
-    {
-    case 3: 
-    case 4: 
-    case 5: 
-    default: 
-      return false;
-    }
-    return true;
+    return (paramInt == 1) || (paramInt == 2) || (paramInt == 6);
   }
   
   public void popupErrNotification(Context paramContext, ConnectionResult paramConnectionResult)
@@ -399,26 +410,43 @@ final class b
   public void resolveError(Activity paramActivity, int paramInt1, int paramInt2, PendingIntent paramPendingIntent)
   {
     Checker.checkNonNull(paramActivity, "activity must not be null.");
-    if (paramPendingIntent != null) {
-      HMSLog.i("HuaweiApiAvailabilityImpl", "Enter resolveError, parm pindingIntent is not null. and.errorCode: " + paramInt1);
-    }
-    for (;;)
+    StringBuilder localStringBuilder;
+    if (paramPendingIntent != null)
     {
-      if (paramPendingIntent != null) {
-        HMSLog.i("HuaweiApiAvailabilityImpl", "In resolveError, start pingding intent.errorCode: " + paramInt1);
-      }
-      try
-      {
-        paramActivity.startIntentSenderForResult(paramPendingIntent.getIntentSender(), paramInt2, null, 0, 0, 0);
-        return;
-      }
-      catch (IntentSender.SendIntentException paramActivity)
-      {
-        HMSLog.e("HuaweiApiAvailabilityImpl", "Enter resolveError, start pingding intent failed.errorCode: " + paramInt1);
-      }
-      HMSLog.i("HuaweiApiAvailabilityImpl", "Enter resolveError, parm pindingIntent is  null. get pendingintent from error code.and.errorCode: " + paramInt1);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Enter resolveError, param pendingIntent is not null. and.errorCode: ");
+      localStringBuilder.append(paramInt1);
+      HMSLog.i("HuaweiApiAvailabilityImpl", localStringBuilder.toString());
+    }
+    else
+    {
+      paramPendingIntent = new StringBuilder();
+      paramPendingIntent.append("Enter resolveError, param pendingIntent is  null. get pendingIntent from error code.and.errorCode: ");
+      paramPendingIntent.append(paramInt1);
+      HMSLog.i("HuaweiApiAvailabilityImpl", paramPendingIntent.toString());
       paramPendingIntent = getResolveErrorPendingIntent(paramActivity, paramInt1);
     }
+    if (paramPendingIntent != null)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("In resolveError, start pingding intent.errorCode: ");
+      localStringBuilder.append(paramInt1);
+      HMSLog.i("HuaweiApiAvailabilityImpl", localStringBuilder.toString());
+    }
+    try
+    {
+      paramActivity.startIntentSenderForResult(paramPendingIntent.getIntentSender(), paramInt2, null, 0, 0, 0);
+      return;
+    }
+    catch (IntentSender.SendIntentException paramActivity)
+    {
+      label148:
+      break label148;
+    }
+    paramActivity = new StringBuilder();
+    paramActivity.append("Enter resolveError, start pendingIntent failed.errorCode: ");
+    paramActivity.append(paramInt1);
+    HMSLog.e("HuaweiApiAvailabilityImpl", paramActivity.toString());
   }
   
   public boolean showErrorDialogFragment(Activity paramActivity, int paramInt1, int paramInt2)
@@ -444,7 +472,10 @@ final class b
   public void showErrorNotification(Context paramContext, int paramInt)
   {
     Checker.checkNonNull(paramContext, "context must not be null.");
-    HMSLog.i("HuaweiApiAvailabilityImpl", "Enter showErrorNotification, errorCode: " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Enter showErrorNotification, errorCode: ");
+    localStringBuilder.append(paramInt);
+    HMSLog.i("HuaweiApiAvailabilityImpl", localStringBuilder.toString());
     paramContext = getErrorDialog((Activity)paramContext, paramInt, 0);
     if (paramContext == null)
     {
@@ -456,7 +487,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.api.b
  * JD-Core Version:    0.7.0.1
  */

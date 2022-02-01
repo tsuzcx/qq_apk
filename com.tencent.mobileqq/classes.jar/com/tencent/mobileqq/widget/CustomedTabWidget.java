@@ -36,30 +36,32 @@ public class CustomedTabWidget
   public CustomedTabWidget(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)inflate(paramContext, 2131563022, null));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)inflate(paramContext, 2131562844, null));
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidWidgetImageView.getBackground();
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130850803);
-    this.c = paramContext.getResources().getDrawable(2130850802);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130850729);
+    this.c = paramContext.getResources().getDrawable(2130850728);
     this.jdField_b_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
     this.jdField_a_of_type_ComTencentMobileqqWidgetCustomedTabWidget$MyHandler = new CustomedTabWidget.MyHandler(this);
   }
   
   private void a(int paramInt)
   {
-    if (paramInt == this.jdField_b_of_type_Int) {}
-    do
-    {
+    if (paramInt == this.jdField_b_of_type_Int) {
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetCustomedTabWidget$OnSwitchTabListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetCustomedTabWidget$OnSwitchTabListener.a(paramInt);
-      }
-      getChildAt(this.jdField_b_of_type_Int).setSelected(false);
-      this.jdField_b_of_type_Int = paramInt;
-      getChildAt(this.jdField_b_of_type_Int).setSelected(true);
-      getChildAt(this.jdField_b_of_type_Int).getHitRect(this.jdField_a_of_type_AndroidGraphicsRect);
-    } while ((this.jdField_a_of_type_AndroidGraphicsRect.left == this.jdField_b_of_type_AndroidGraphicsRect.left) && (this.jdField_a_of_type_AndroidGraphicsRect.right == this.jdField_b_of_type_AndroidGraphicsRect.right));
-    this.jdField_a_of_type_Float = ((this.jdField_a_of_type_AndroidGraphicsRect.left - this.jdField_b_of_type_AndroidGraphicsRect.left) / 4);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCustomedTabWidget$MyHandler.sendEmptyMessage(0);
+    }
+    CustomedTabWidget.OnSwitchTabListener localOnSwitchTabListener = this.jdField_a_of_type_ComTencentMobileqqWidgetCustomedTabWidget$OnSwitchTabListener;
+    if (localOnSwitchTabListener != null) {
+      localOnSwitchTabListener.a(paramInt);
+    }
+    getChildAt(this.jdField_b_of_type_Int).setSelected(false);
+    this.jdField_b_of_type_Int = paramInt;
+    getChildAt(this.jdField_b_of_type_Int).setSelected(true);
+    getChildAt(this.jdField_b_of_type_Int).getHitRect(this.jdField_a_of_type_AndroidGraphicsRect);
+    if ((this.jdField_a_of_type_AndroidGraphicsRect.left != this.jdField_b_of_type_AndroidGraphicsRect.left) || (this.jdField_a_of_type_AndroidGraphicsRect.right != this.jdField_b_of_type_AndroidGraphicsRect.right))
+    {
+      this.jdField_a_of_type_Float = ((this.jdField_a_of_type_AndroidGraphicsRect.left - this.jdField_b_of_type_AndroidGraphicsRect.left) / 4);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetCustomedTabWidget$MyHandler.sendEmptyMessage(0);
+    }
   }
   
   private void a(View paramView)
@@ -101,18 +103,18 @@ public class CustomedTabWidget
     a(paramView);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     this.c.setBounds(0, getHeight() - 6, getWidth(), getHeight());
     this.c.draw(paramCanvas);
     int i = getWidth() / getChildCount();
     int j = this.jdField_b_of_type_AndroidGraphicsRect.centerX() - i / 2;
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(j, this.jdField_b_of_type_AndroidGraphicsRect.bottom - (int)(4.0F * this.jdField_b_of_type_Float), i + j, this.jdField_b_of_type_AndroidGraphicsRect.bottom);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(j, this.jdField_b_of_type_AndroidGraphicsRect.bottom - (int)(this.jdField_b_of_type_Float * 4.0F), i + j, this.jdField_b_of_type_AndroidGraphicsRect.bottom);
     this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     getChildAt(this.jdField_b_of_type_Int).getHitRect(this.jdField_a_of_type_AndroidGraphicsRect);
@@ -135,7 +137,7 @@ public class CustomedTabWidget
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CustomedTabWidget
  * JD-Core Version:    0.7.0.1
  */

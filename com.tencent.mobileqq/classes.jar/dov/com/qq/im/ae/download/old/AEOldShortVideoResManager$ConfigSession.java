@@ -9,21 +9,24 @@ public class AEOldShortVideoResManager$ConfigSession
   
   String a()
   {
-    switch (this.a)
+    int i = this.a;
+    if (i != 0)
     {
-    default: 
-      return "UNKNOWN_STATUS";
-    case 0: 
-      return "CONFIG_REQUEST_OK";
-    case 1: 
+      if (i != 1)
+      {
+        if (i != 2) {
+          return "UNKNOWN_STATUS";
+        }
+        return "CONFIG_SEND_REQ";
+      }
       return "CONFIG_START_SERVLET";
     }
-    return "CONFIG_SEND_REQ";
+    return "CONFIG_REQUEST_OK";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.download.old.AEOldShortVideoResManager.ConfigSession
  * JD-Core Version:    0.7.0.1
  */

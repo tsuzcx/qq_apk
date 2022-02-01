@@ -25,7 +25,7 @@ public final class publicaccount_recommend$BusinessRecommend
   public static final int SI_FIELD_NUMBER = 9;
   public static final int SOURCE_FIELD_NUMBER = 2;
   public static final int UIN_FIELD_NUMBER = 3;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 58, 64, 74, 82, 90, 98, 106, 112, 120 }, new String[] { "id", "source", "uin", "name", "account", "desc", "nameAccount", "kfuin", "si", "cs", "category", "ic", "isverified", "filter", "account_flag" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), "", "", "", "", Long.valueOf(0L), "", "", "", "", "", Integer.valueOf(0), Integer.valueOf(0) }, BusinessRecommend.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField account = PBField.initString("");
   public final PBUInt32Field account_flag = PBField.initUInt32(0);
   public final PBStringField category = PBField.initString("");
@@ -41,10 +41,16 @@ public final class publicaccount_recommend$BusinessRecommend
   public final PBStringField si = PBField.initString("");
   public final PBUInt32Field source = PBField.initUInt32(0);
   public final PBUInt64Field uin = PBField.initUInt64(0L);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 58, 64, 74, 82, 90, 98, 106, 112, 120 }, new String[] { "id", "source", "uin", "name", "account", "desc", "nameAccount", "kfuin", "si", "cs", "category", "ic", "isverified", "filter", "account_flag" }, new Object[] { localInteger, localInteger, Long.valueOf(0L), "", "", "", "", Long.valueOf(0L), "", "", "", "", "", localInteger, localInteger }, BusinessRecommend.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mp.publicaccount_recommend.BusinessRecommend
  * JD-Core Version:    0.7.0.1
  */

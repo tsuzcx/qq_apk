@@ -16,19 +16,28 @@ class AVGameServerIPCModule$GameResultCallback
   
   public void a(String paramString1, int paramInt, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AVGameServerIPCModule_GameRC", 2, "GameResultCallback onReslut, playId[" + paramString1 + "], fileType[" + paramInt + "], url[" + paramString2 + "]");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("GameResultCallback onReslut, playId[");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append("], fileType[");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("], url[");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("AVGameServerIPCModule_GameRC", 2, ((StringBuilder)localObject).toString());
     }
-    AVGameServerIPCModule localAVGameServerIPCModule = (AVGameServerIPCModule)this.a.get();
-    if (localAVGameServerIPCModule == null) {
+    Object localObject = (AVGameServerIPCModule)this.a.get();
+    if (localObject == null) {
       return;
     }
-    localAVGameServerIPCModule.a(true, paramString1, paramInt, paramString2);
+    ((AVGameServerIPCModule)localObject).a(true, paramString1, paramInt, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.ipc.AVGameServerIPCModule.GameResultCallback
  * JD-Core Version:    0.7.0.1
  */

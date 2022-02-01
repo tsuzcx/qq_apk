@@ -39,34 +39,38 @@ public class SaveCaptureImageUitl
     if (paramIMiniAppContext == null) {
       return null;
     }
-    Object localObject;
-    int j;
+    int i;
+    double d;
     if (paramIMiniAppContext.getAttachedActivity() != null)
     {
       localObject = paramIMiniAppContext.getAttachedActivity().getResources().getDisplayMetrics();
-      j = ((DisplayMetrics)localObject).widthPixels;
+      i = ((DisplayMetrics)localObject).widthPixels;
+      d = ((DisplayMetrics)localObject).widthPixels;
+      Double.isNaN(d);
     }
-    for (int i = (int)(((DisplayMetrics)localObject).widthPixels * 0.8D);; i = (int)(DeviceInfoUtil.getHeight() * 0.8D))
+    else
     {
-      paramBitmap = ImageUtil.cutOutImg(Bitmap.createBitmap(paramBitmap), j, i);
-      localObject = ImageUtil.compressImage(paramBitmap, 1044480);
-      paramIMiniAppContext = new File(((MiniAppFileManager)paramIMiniAppContext.getManager(MiniAppFileManager.class)).getTmpPath("png"));
-      boolean bool = ImageUtil.saveBitmapToFile((byte[])localObject, paramIMiniAppContext);
-      if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {
-        paramBitmap.recycle();
-      }
-      if (!bool) {
-        break;
-      }
+      i = (int)DeviceInfoUtil.getWidth();
+      d = DeviceInfoUtil.getHeight();
+      Double.isNaN(d);
+    }
+    int j = (int)(d * 0.8D);
+    paramBitmap = ImageUtil.cutOutImg(Bitmap.createBitmap(paramBitmap), i, j);
+    Object localObject = ImageUtil.compressImage(paramBitmap, 1044480);
+    paramIMiniAppContext = new File(((MiniAppFileManager)paramIMiniAppContext.getManager(MiniAppFileManager.class)).getTmpPath("png"));
+    boolean bool = ImageUtil.saveBitmapToFile((byte[])localObject, paramIMiniAppContext);
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {
+      paramBitmap.recycle();
+    }
+    if (bool) {
       return paramIMiniAppContext.getAbsolutePath();
-      j = (int)DeviceInfoUtil.getWidth();
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.SaveCaptureImageUitl
  * JD-Core Version:    0.7.0.1
  */

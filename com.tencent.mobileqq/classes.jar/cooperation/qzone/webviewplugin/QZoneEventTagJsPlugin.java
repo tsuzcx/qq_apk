@@ -1,9 +1,9 @@
 package cooperation.qzone.webviewplugin;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.addfriend.api.IAddFriendApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
@@ -59,10 +59,11 @@ public class QZoneEventTagJsPlugin
     try
     {
       this.callback = new JSONObject(paramString).optString("callback");
-      if (!TextUtils.isEmpty(this.callback)) {
+      if (!TextUtils.isEmpty(this.callback))
+      {
         RemoteHandleManager.getInstance().getSender().getHistoryEventTag();
+        return;
       }
-      return;
     }
     catch (JSONException paramString)
     {
@@ -79,7 +80,8 @@ public class QZoneEventTagJsPlugin
       int i = paramWebViewPlugin.optInt("sourceId", 3011);
       int j = paramWebViewPlugin.optInt("subSourceId", 21);
       paramWebViewPlugin = paramPluginRuntime.a();
-      paramWebViewPlugin.startActivity(AddFriendLogicActivity.a(paramWebViewPlugin, 1, String.valueOf(l), "", i, j, null, null, null, null, null));
+      paramPluginRuntime = ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).startAddFriend(paramWebViewPlugin, 1, String.valueOf(l), "", i, j, null, null, null, null, null);
+      ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).launchAddFriend(paramWebViewPlugin, paramPluginRuntime);
       return;
     }
     catch (JSONException paramWebViewPlugin)
@@ -159,92 +161,93 @@ public class QZoneEventTagJsPlugin
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((!paramString2.equals(PKG_NAME)) || (this.parentPlugin == null) || (this.parentPlugin.mRuntime == null)) {
-      bool1 = false;
-    }
-    do
+    if ((paramString2.equals(PKG_NAME)) && (this.parentPlugin != null))
     {
-      do
+      if (this.parentPlugin.mRuntime == null) {
+        return false;
+      }
+      if (paramString3.equals(ADDFRIENDS))
       {
-        return bool1;
-        if (!paramString3.equals(ADDFRIENDS)) {
-          break;
+        if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
+          openAddFriendActivity(this.parentPlugin, this.parentPlugin.mRuntime, paramVarArgs);
         }
-        bool1 = bool2;
-      } while (paramVarArgs == null);
-      bool1 = bool2;
-    } while (paramVarArgs.length <= 0);
-    openAddFriendActivity(this.parentPlugin, this.parentPlugin.mRuntime, paramVarArgs);
-    return true;
-    if ("getHistoryEventTag".equals(paramString3))
-    {
-      RemoteHandleManager.getInstance().addWebEventListener(this);
-      getHistoryEventTag(paramVarArgs[0]);
-      return true;
-    }
-    if ("setHistoryEventTag".equals(paramString3))
-    {
-      setHistoryEventTag(paramVarArgs[0]);
-      return true;
-    }
-    if ("selectEventTag".equals(paramString3))
-    {
-      selectEventTag(paramVarArgs[0]);
-      return true;
+        return true;
+      }
+      if ("getHistoryEventTag".equals(paramString3))
+      {
+        RemoteHandleManager.getInstance().addWebEventListener(this);
+        getHistoryEventTag(paramVarArgs[0]);
+        return true;
+      }
+      if ("setHistoryEventTag".equals(paramString3))
+      {
+        setHistoryEventTag(paramVarArgs[0]);
+        return true;
+      }
+      if ("selectEventTag".equals(paramString3))
+      {
+        selectEventTag(paramVarArgs[0]);
+        return true;
+      }
     }
     return false;
   }
   
   public void onWebEvent(String paramString, Bundle paramBundle)
   {
-    if ((paramBundle == null) || (!"cmd.getHistoryEventTag".equals(paramString))) {}
-    do
+    if (paramBundle != null)
     {
-      return;
-      if (!paramBundle.containsKey("data")) {
-        break;
-      }
-      paramString = paramBundle.getBundle("data");
-      if (paramString == null)
-      {
-        QLog.e("QZoneEventTagJsPlugin", 1, "call js function,bundle is empty");
+      if (!"cmd.getHistoryEventTag".equals(paramString)) {
         return;
       }
-      try
+      if (paramBundle.containsKey("data"))
       {
-        paramBundle = paramString.getParcelableArrayList("event_tag");
-        paramString = new JSONArray();
-        paramBundle = paramBundle.iterator();
-        while (paramBundle.hasNext())
+        paramString = paramBundle.getBundle("data");
+        if (paramString == null)
         {
-          PublishEventTag localPublishEventTag = (PublishEventTag)paramBundle.next();
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("uin", localPublishEventTag.uin);
-          localJSONObject.put("time", localPublishEventTag.time);
-          localJSONObject.put("title", localPublishEventTag.title);
-          localJSONObject.put("picUrl", localPublishEventTag.picUrl);
-          localJSONObject.put("id", localPublishEventTag.id);
-          paramString.put(localJSONObject);
+          QLog.e("QZoneEventTagJsPlugin", 1, "call js function,bundle is empty");
+          return;
         }
-        paramBundle = new JSONObject();
+        try
+        {
+          paramBundle = paramString.getParcelableArrayList("event_tag");
+          paramString = new JSONArray();
+          paramBundle = paramBundle.iterator();
+          while (paramBundle.hasNext())
+          {
+            PublishEventTag localPublishEventTag = (PublishEventTag)paramBundle.next();
+            JSONObject localJSONObject = new JSONObject();
+            localJSONObject.put("uin", localPublishEventTag.uin);
+            localJSONObject.put("time", localPublishEventTag.time);
+            localJSONObject.put("title", localPublishEventTag.title);
+            localJSONObject.put("picUrl", localPublishEventTag.picUrl);
+            localJSONObject.put("id", localPublishEventTag.id);
+            paramString.put(localJSONObject);
+          }
+          paramBundle = new JSONObject();
+          paramBundle.put("list", paramString);
+          if (this.callback == null) {
+            return;
+          }
+          this.parentPlugin.callJs(this.callback, new String[] { paramBundle.toString() });
+          return;
+        }
+        catch (JSONException paramString)
+        {
+          QLog.e("QZoneEventTagJsPlugin", 1, "onWebEvent error", paramString);
+          return;
+        }
       }
-      catch (JSONException paramString)
+      else
       {
-        QLog.e("QZoneEventTagJsPlugin", 1, "onWebEvent error", paramString);
-        return;
+        errorCallBack(this.callback);
       }
-      paramBundle.put("list", paramString);
-    } while (this.callback == null);
-    this.parentPlugin.callJs(this.callback, new String[] { paramBundle.toString() });
-    return;
-    errorCallBack(this.callback);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneEventTagJsPlugin
  * JD-Core Version:    0.7.0.1
  */

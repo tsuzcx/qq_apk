@@ -16,7 +16,10 @@ public class AVSDKLogger
   
   public static String getLogDir()
   {
-    Log.d("AVSDKLogger", "getLogDir: " + s_LogDir);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getLogDir: ");
+    localStringBuilder.append(s_LogDir);
+    Log.d("AVSDKLogger", localStringBuilder.toString());
     return s_LogDir;
   }
   
@@ -60,13 +63,15 @@ public class AVSDKLogger
       Log.e("AVSDKLogger", "log dir not exist");
       localFile.mkdirs();
     }
-    for (;;)
+    else
     {
-      s_LogDir = paramString;
-      Log.d("AVSDKLogger", "setLogDir: " + s_LogDir);
-      return;
       Log.i("AVSDKLogger", "log dir exist");
     }
+    s_LogDir = paramString;
+    paramString = new StringBuilder();
+    paramString.append("setLogDir: ");
+    paramString.append(s_LogDir);
+    Log.d("AVSDKLogger", paramString.toString());
   }
   
   public static native int setLogLevel(int paramInt);

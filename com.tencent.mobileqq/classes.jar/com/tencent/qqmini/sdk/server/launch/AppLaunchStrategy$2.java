@@ -9,18 +9,12 @@ class AppLaunchStrategy$2
   
   public void run()
   {
-    AppLaunchStrategy localAppLaunchStrategy = this.this$0;
-    if (!this.val$currAppConfig.isEngineTypeMiniGame()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localAppLaunchStrategy.preloadExtraMiniApp(bool);
-      return;
-    }
+    this.this$0.preloadExtraMiniApp(this.val$currAppConfig.isEngineTypeMiniGame() ^ true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.server.launch.AppLaunchStrategy.2
  * JD-Core Version:    0.7.0.1
  */

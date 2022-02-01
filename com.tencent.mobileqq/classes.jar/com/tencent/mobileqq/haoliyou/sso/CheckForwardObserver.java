@@ -13,46 +13,37 @@ public class CheckForwardObserver
   
   private void a(boolean paramBoolean, Bundle paramBundle)
   {
-    int j = 0;
-    int i;
-    if (paramBundle != null) {
-      i = paramBundle.getInt("req_id");
-    }
-    for (;;)
+    Object localObject1 = null;
+    if (paramBundle != null)
     {
+      i = paramBundle.getInt("req_id");
       synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
       {
-        localObject1 = (WeakReference)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-        if (localObject1 == null) {
-          break label149;
-        }
-        localObject2 = (OnCheckShareListener)((WeakReference)localObject1).get();
-        localObject1 = localObject2;
-        if (localObject2 == null)
+        localObject2 = (WeakReference)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+        if (localObject2 != null)
         {
-          this.jdField_a_of_type_AndroidUtilSparseArray.delete(i);
-          return;
+          localObject2 = (OnCheckShareListener)((WeakReference)localObject2).get();
+          localObject1 = localObject2;
+          if (localObject2 == null)
+          {
+            this.jdField_a_of_type_AndroidUtilSparseArray.delete(i);
+            return;
+          }
         }
         i = paramBundle.getInt("result");
         j = paramBundle.getInt("jump_result");
         ??? = paramBundle.getString("jump_url");
         localObject2 = paramBundle.getString("ext_info");
         paramBundle = (Bundle)???;
-        if (localObject1 == null) {
-          break label148;
-        }
-        ((OnCheckShareListener)localObject1).a(paramBoolean, i, j, paramBundle, (String)localObject2);
-        return;
       }
-      Object localObject1 = null;
-      Object localObject2 = null;
-      paramBundle = null;
-      i = 0;
-      continue;
-      label148:
-      return;
-      label149:
-      localObject1 = null;
+    }
+    localObject1 = null;
+    paramBundle = localObject1;
+    Object localObject2 = paramBundle;
+    int i = 0;
+    int j = 0;
+    if (localObject1 != null) {
+      localObject1.onResponse(paramBoolean, i, j, paramBundle, (String)localObject2);
     }
   }
   
@@ -71,9 +62,7 @@ public class CheckForwardObserver
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 1) {
       return;
     }
     a(paramBoolean, paramBundle);
@@ -81,7 +70,7 @@ public class CheckForwardObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.haoliyou.sso.CheckForwardObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -32,13 +32,13 @@ public class ZhituPanelView$ZhituViewHolder
   {
     super(paramView);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView = ((BubbleImageView)paramView.findViewById(2131377055));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView = ((BubbleImageView)paramView.findViewById(2131376533));
     this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.d(false);
     this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setRadius(5.0F);
     this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.b = false;
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131377056));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131376534));
     paramView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)paramView.findViewById(2131377057));
+    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)paramView.findViewById(2131376535));
     this.jdField_a_of_type_AndroidWidgetRadioButton.setOnCheckedChangeListener(this);
     if (paramZhituPanelView.a() == 1)
     {
@@ -50,25 +50,16 @@ public class ZhituPanelView$ZhituViewHolder
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView.a() == 1) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      if (paramBoolean) {
-        onClick(paramCompoundButton);
-      }
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView.a() != 1) && (paramBoolean)) {
+      onClick(paramCompoundButton);
     }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
   
   public void onClick(View paramView)
   {
     Object localObject = (ZhituPicData)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localObject == null) || (((ZhituPicData)localObject).jdField_a_of_type_JavaLangString == null) || (((ZhituPicData)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituReportData == null) || (ZhituPanelView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView).a == null)) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    if ((localObject != null) && (((ZhituPicData)localObject).jdField_a_of_type_JavaLangString != null) && (((ZhituPicData)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituReportData != null) && (ZhituPanelView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView).a != null)) {
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView.a() == 1)
       {
         ZhituPanelView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView, (ZhituPicData)localObject);
@@ -99,11 +90,12 @@ public class ZhituPanelView$ZhituViewHolder
         }
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituPanelView.ZhituViewHolder
  * JD-Core Version:    0.7.0.1
  */

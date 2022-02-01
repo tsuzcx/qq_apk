@@ -8,7 +8,7 @@ import android.view.MotionEvent;
 import android.view.ViewParent;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 
@@ -37,33 +37,34 @@ public class EmotionKeywordLayout
   public EmotionKeywordLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.mHeight = AIOUtils.a(81.0F, paramContext.getResources());
+    this.mHeight = Utils.a(81.0F, paramContext.getResources());
   }
   
   private void initUIView()
   {
     if (this.mTitleContainer == null) {
-      this.mTitleContainer = ((LinearLayout)findViewById(2131366261));
+      this.mTitleContainer = ((LinearLayout)findViewById(2131366149));
     }
     if (this.mTitleView == null) {
-      this.mTitleView = ((TextView)findViewById(2131366260));
+      this.mTitleView = ((TextView)findViewById(2131366148));
     }
     if (this.mEmotionView == null) {
-      this.mEmotionView = ((EmotionKeywordHorizonListView)findViewById(2131366290));
+      this.mEmotionView = ((EmotionKeywordHorizonListView)findViewById(2131366178));
     }
     if (this.mAnimationContainer == null) {
-      this.mAnimationContainer = ((LinearLayout)findViewById(2131362736));
+      this.mAnimationContainer = ((LinearLayout)findViewById(2131362692));
     }
   }
   
   private void updateHeight()
   {
-    if (this.mTitleContainer.getVisibility() == 0) {}
-    for (int i = 100;; i = 81)
-    {
-      this.mHeight = AIOUtils.a(i, getResources());
-      return;
+    int i;
+    if (this.mTitleContainer.getVisibility() == 0) {
+      i = 100;
+    } else {
+      i = 81;
     }
+    this.mHeight = Utils.a(i, getResources());
   }
   
   public void hide()
@@ -72,17 +73,20 @@ public class EmotionKeywordLayout
       QLog.d("EmotionKeywordLayout", 2, "hide");
     }
     initUIView();
-    if (getVisibility() == 8) {}
-    do
-    {
+    if (getVisibility() == 8) {
       return;
-      if (!this.mEnableAnim)
-      {
-        setVisibility(8);
-        return;
-      }
-    } while ((this.mHideAnim != null) && (this.mHideAnim.isRunning()));
-    if ((this.mShowAnim != null) && (this.mShowAnim.isRunning())) {
+    }
+    if (!this.mEnableAnim)
+    {
+      setVisibility(8);
+      return;
+    }
+    ValueAnimator localValueAnimator = this.mHideAnim;
+    if ((localValueAnimator != null) && (localValueAnimator.isRunning())) {
+      return;
+    }
+    localValueAnimator = this.mShowAnim;
+    if ((localValueAnimator != null) && (localValueAnimator.isRunning())) {
       this.mShowAnim.cancel();
     }
     if (this.mHideAnim == null)
@@ -100,14 +104,10 @@ public class EmotionKeywordLayout
     int i = paramMotionEvent.getAction() & 0xFF;
     if (i == 0) {
       getParent().requestDisallowInterceptTouchEvent(true);
+    } else if ((i == 1) || (i == 3)) {
+      getParent().requestDisallowInterceptTouchEvent(false);
     }
-    for (;;)
-    {
-      return super.onInterceptTouchEvent(paramMotionEvent);
-      if ((i == 1) || (i == 3)) {
-        getParent().requestDisallowInterceptTouchEvent(false);
-      }
-    }
+    return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
   public void setEnableAnim(boolean paramBoolean)
@@ -123,8 +123,9 @@ public class EmotionKeywordLayout
   public void setVisibility(int paramInt)
   {
     super.setVisibility(paramInt);
-    if (this.mOnVisibilityListener != null) {
-      this.mOnVisibilityListener.onVisibilityChanged(paramInt);
+    EmotionKeywordLayout.OnVisibilityListener localOnVisibilityListener = this.mOnVisibilityListener;
+    if (localOnVisibilityListener != null) {
+      localOnVisibilityListener.onVisibilityChanged(paramInt);
     }
   }
   
@@ -138,21 +139,23 @@ public class EmotionKeywordLayout
     {
       this.mTitleView.setText("");
       this.mTitleContainer.setVisibility(8);
-      updateHeight();
-      if (getVisibility() != 0) {
-        break label74;
-      }
     }
-    label74:
-    do
+    else
     {
-      return;
       this.mTitleView.setText(paramString);
       this.mTitleContainer.setVisibility(0);
-      break;
-      setVisibility(0);
-    } while ((this.mShowAnim != null) && (this.mShowAnim.isRunning()));
-    if ((this.mHideAnim != null) && (this.mHideAnim.isRunning())) {
+    }
+    updateHeight();
+    if (getVisibility() == 0) {
+      return;
+    }
+    setVisibility(0);
+    paramString = this.mShowAnim;
+    if ((paramString != null) && (paramString.isRunning())) {
+      return;
+    }
+    paramString = this.mHideAnim;
+    if ((paramString != null) && (paramString.isRunning())) {
       this.mHideAnim.cancel();
     }
     if (this.mShowAnim == null)
@@ -168,7 +171,7 @@ public class EmotionKeywordLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionKeywordLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.history;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
+import androidx.fragment.app.FragmentManager;
 import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsBaseFragment;
 import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsBaseFragment.FragmentLifeListener;
 import com.tencent.mobileqq.activity.contacts.base.tabs.CustomFragmentStatePagerAdapter;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BaseFragment;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -68,18 +68,10 @@ public class ChatHistoryViewPagerAdapter
     return null;
   }
   
-  public Fragment a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.history.ViewPagerAdapter", 2, "getItem:" + paramInt);
-    }
-    return a(paramInt, true);
-  }
-  
   public ChatHistoryBaseFragment a(int paramInt, boolean paramBoolean)
   {
     ChatHistoryTabs.ChatHistoryTabInfo localChatHistoryTabInfo = a(paramInt);
-    Object localObject1 = null;
+    Object localObject1;
     if (localChatHistoryTabInfo != null)
     {
       Object localObject2 = a(localChatHistoryTabInfo.a);
@@ -93,30 +85,52 @@ public class ChatHistoryViewPagerAdapter
           ((ChatHistoryBaseFragment)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
           ((ChatHistoryBaseFragment)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
           ((ChatHistoryBaseFragment)localObject1).a(paramInt);
-          ((ChatHistoryBaseFragment)localObject1).b(this.jdField_a_of_type_JavaLangString);
+          ((ChatHistoryBaseFragment)localObject1).a(this.jdField_a_of_type_JavaLangString);
           ((ChatHistoryBaseFragment)localObject1).b(localChatHistoryTabInfo.a);
           ((ChatHistoryBaseFragment)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseViewController);
           localObject2 = new Bundle();
           ((Bundle)localObject2).putBoolean("should_restore_from_kill", false);
           ((ChatHistoryBaseFragment)localObject1).setArguments((Bundle)localObject2);
           this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
+          return localObject1;
         }
       }
+    }
+    else
+    {
+      localObject1 = null;
     }
     return localObject1;
   }
   
+  public BaseFragment a(int paramInt)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getItem:");
+      localStringBuilder.append(paramInt);
+      QLog.d("Q.history.ViewPagerAdapter", 2, localStringBuilder.toString());
+    }
+    return a(paramInt, true);
+  }
+  
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.history.ViewPagerAdapter", 2, "doOnDestroy  mFragmentsCache.size() = " + this.jdField_a_of_type_JavaUtilArrayList.size());
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("doOnDestroy  mFragmentsCache.size() = ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilArrayList.size());
+      QLog.d("Q.history.ViewPagerAdapter", 2, ((StringBuilder)localObject).toString());
     }
     int i = 0;
     while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      ChatHistoryBaseFragment localChatHistoryBaseFragment = (ChatHistoryBaseFragment)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (localChatHistoryBaseFragment != null) {
-        localChatHistoryBaseFragment.g();
+      localObject = (ChatHistoryBaseFragment)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      if (localObject != null) {
+        ((ChatHistoryBaseFragment)localObject).g();
       }
       i += 1;
     }
@@ -125,51 +139,69 @@ public class ChatHistoryViewPagerAdapter
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.history.ViewPagerAdapter", 2, "remove fragment cache :" + paramInt);
-    }
-    ChatHistoryBaseFragment localChatHistoryBaseFragment = a(paramInt);
-    if (localChatHistoryBaseFragment != null)
+    if (QLog.isColorLevel())
     {
-      localChatHistoryBaseFragment.g();
-      this.jdField_a_of_type_JavaUtilArrayList.remove(localChatHistoryBaseFragment);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("remove fragment cache :");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("Q.history.ViewPagerAdapter", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = a(paramInt);
+    if (localObject != null)
+    {
+      ((ChatHistoryBaseFragment)localObject).g();
+      this.jdField_a_of_type_JavaUtilArrayList.remove(localObject);
     }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.history.ViewPagerAdapter", 2, "onPageSelected. curPos:" + paramInt1 + " prePos:" + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onPageSelected. curPos:");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(" prePos:");
+      ((StringBuilder)localObject).append(paramInt2);
+      QLog.d("Q.history.ViewPagerAdapter", 2, ((StringBuilder)localObject).toString());
     }
-    ChatHistoryBaseFragment localChatHistoryBaseFragment = a(paramInt1, false);
-    if (localChatHistoryBaseFragment != null) {
-      localChatHistoryBaseFragment.a(true);
+    Object localObject = a(paramInt1, false);
+    if (localObject != null) {
+      ((ChatHistoryBaseFragment)localObject).a(true);
     }
-    localChatHistoryBaseFragment = a(paramInt2, false);
-    if (localChatHistoryBaseFragment != null) {
-      localChatHistoryBaseFragment.a(false);
+    localObject = a(paramInt2, false);
+    if (localObject != null) {
+      ((ChatHistoryBaseFragment)localObject).a(false);
     }
   }
   
   public void b(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.history.ViewPagerAdapter", 2, "doOnResume:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("doOnResume:");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("Q.history.ViewPagerAdapter", 2, ((StringBuilder)localObject).toString());
     }
-    ChatHistoryBaseFragment localChatHistoryBaseFragment = a(paramInt, false);
-    if (localChatHistoryBaseFragment != null) {
-      localChatHistoryBaseFragment.e();
+    Object localObject = a(paramInt, false);
+    if ((localObject != null) && (((ChatHistoryBaseFragment)localObject).isAdded())) {
+      ((ChatHistoryBaseFragment)localObject).e();
     }
   }
   
   public void c(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.history.ViewPagerAdapter", 2, "doOnPause:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("doOnPause:");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("Q.history.ViewPagerAdapter", 2, ((StringBuilder)localObject).toString());
     }
-    ChatHistoryBaseFragment localChatHistoryBaseFragment = a(paramInt, false);
-    if (localChatHistoryBaseFragment != null) {
-      localChatHistoryBaseFragment.f();
+    Object localObject = a(paramInt, false);
+    if ((localObject != null) && (((ChatHistoryBaseFragment)localObject).isAdded())) {
+      ((ChatHistoryBaseFragment)localObject).f();
     }
   }
   
@@ -180,7 +212,10 @@ public class ChatHistoryViewPagerAdapter
   
   public int getItemPosition(Object paramObject)
   {
-    QLog.d("Q.history.ViewPagerAdapter", 2, "getItemPosition " + paramObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getItemPosition ");
+    localStringBuilder.append(paramObject);
+    QLog.d("Q.history.ViewPagerAdapter", 2, localStringBuilder.toString());
     paramObject = (ContactsBaseFragment)paramObject;
     if (paramObject != null)
     {
@@ -192,7 +227,12 @@ public class ChatHistoryViewPagerAdapter
           QLog.d("Q.history.ViewPagerAdapter", 2, "getItemPosition POSITION_UNCHANGED");
           return -1;
         }
-        QLog.d("Q.history.ViewPagerAdapter", 2, "getItemPosition newPos" + i + " oldPos:" + paramObject.b());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getItemPosition newPos");
+        localStringBuilder.append(i);
+        localStringBuilder.append(" oldPos:");
+        localStringBuilder.append(paramObject.b());
+        QLog.d("Q.history.ViewPagerAdapter", 2, localStringBuilder.toString());
         paramObject.e(i);
         return i;
       }
@@ -203,7 +243,7 @@ public class ChatHistoryViewPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryViewPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

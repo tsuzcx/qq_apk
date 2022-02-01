@@ -15,22 +15,32 @@ class NativeAppBrandRuntime$2$2
   
   public void on(Map paramMap, BasicMessageChannel.Reply paramReply)
   {
-    String str = QUAUtil.getWebViewUA() + " tissue";
-    paramMap = "";
-    HashMap localHashMap = new HashMap();
-    BaselibLoader.BaselibContent localBaselibContent = this.this$1.this$0.getBaselibContent();
-    if (localBaselibContent != null) {
-      paramMap = localBaselibContent.miniappWebviewStr;
+    paramMap = new StringBuilder();
+    paramMap.append(QUAUtil.getWebViewUA());
+    paramMap.append(" tissue");
+    String str = paramMap.toString();
+    Object localObject = new HashMap();
+    paramMap = this.this$1.this$0.getBaselibContent();
+    if (paramMap != null) {
+      paramMap = paramMap.miniappWebviewStr;
+    } else {
+      paramMap = "";
     }
-    localHashMap.put("customUserAgent", str);
-    QMLog.w("miniapp-start-TISSUE", "systemUA" + str);
-    QMLog.w("miniapp-start-TISSUE", " miniapp launch" + NativeAppBrandRuntime.access$100(this.this$1.this$0).appId);
+    ((Map)localObject).put("customUserAgent", str);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("systemUA");
+    ((StringBuilder)localObject).append(str);
+    QMLog.w("miniapp-start-TISSUE", ((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(" miniapp launch");
+    ((StringBuilder)localObject).append(NativeAppBrandRuntime.access$100(this.this$1.this$0).appId);
+    QMLog.w("miniapp-start-TISSUE", ((StringBuilder)localObject).toString());
     paramReply.reply(new NativeAppBrandRuntime.2.2.1(this, str, paramMap));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.flutter.core.NativeAppBrandRuntime.2.2
  * JD-Core Version:    0.7.0.1
  */

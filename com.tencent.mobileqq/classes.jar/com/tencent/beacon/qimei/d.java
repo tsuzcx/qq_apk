@@ -1,39 +1,41 @@
 package com.tencent.beacon.qimei;
 
-import com.tencent.beacon.core.d.g;
+import java.util.List;
 
 class d
-  implements g
+  implements Runnable
 {
-  d(e parame) {}
+  d(QimeiSDK paramQimeiSDK, IAsyncQimeiListener paramIAsyncQimeiListener) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, boolean paramBoolean)
+  public void run()
   {
-    paramBoolean = true;
-    if (paramInt != 103)
+    synchronized (QimeiSDK.access$000(this.b))
     {
-      com.tencent.beacon.core.e.d.i("[qimei] qimei req unmatch key: %d", new Object[] { Integer.valueOf(paramInt) });
-      return;
-    }
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {}
-    for (;;)
-    {
-      com.tencent.beacon.core.e.d.a("[qimei] query qimei finish, result: " + paramBoolean, new Object[0]);
-      if (!paramBoolean) {
-        break;
+      Qimei localQimei = this.b.getQimei();
+      if (localQimei != null)
+      {
+        boolean bool = localQimei.isEmpty();
+        if (!bool)
+        {
+          try
+          {
+            this.a.onQimeiDispatch(localQimei);
+          }
+          catch (Throwable localThrowable)
+          {
+            this.b.logQimeiCallbackError(localThrowable);
+          }
+          return;
+        }
       }
-      com.tencent.beacon.core.e.d.d("[qimei] process CMD_RESPONSE_GEN_QIMEI", new Object[0]);
-      this.a.a(paramArrayOfByte);
-      com.tencent.beacon.core.a.d.a().a(112, false);
-      i.a(e.a(this.a), System.currentTimeMillis());
+      QimeiSDK.access$000(this.b).add(this.a);
       return;
-      paramBoolean = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.beacon.qimei.d
  * JD-Core Version:    0.7.0.1
  */

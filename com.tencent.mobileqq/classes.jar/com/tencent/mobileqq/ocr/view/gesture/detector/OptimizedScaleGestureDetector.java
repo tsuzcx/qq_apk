@@ -35,12 +35,13 @@ public class OptimizedScaleGestureDetector
   
   public float getScaleFactor()
   {
-    float f2 = 1.0F;
     float f3 = super.getScaleFactor();
     if (a())
     {
-      float f1;
-      if ((this.a <= this.b) || (f3 <= 1.0F))
+      float f1 = this.a;
+      float f4 = this.b;
+      float f2 = 1.0F;
+      if ((f1 <= f4) || (f3 <= 1.0F))
       {
         f1 = f2;
         if (this.a < this.b)
@@ -71,7 +72,7 @@ public class OptimizedScaleGestureDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.gesture.detector.OptimizedScaleGestureDetector
  * JD-Core Version:    0.7.0.1
  */

@@ -13,22 +13,21 @@ class DataHandler
   private void parseItems(JSONArray paramJSONArray)
   {
     int i = 0;
-    for (;;)
+    while (i < paramJSONArray.length())
     {
-      if (i < paramJSONArray.length()) {
-        try
-        {
-          parseOneItem(paramJSONArray.getJSONObject(i));
-          i += 1;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            LogUtil.e(TAG, "parseItems error, index:" + i, localJSONException);
-          }
-        }
+      try
+      {
+        parseOneItem(paramJSONArray.getJSONObject(i));
       }
+      catch (JSONException localJSONException)
+      {
+        String str = TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("parseItems error, index:");
+        localStringBuilder.append(i);
+        LogUtil.e(str, localStringBuilder.toString(), localJSONException);
+      }
+      i += 1;
     }
   }
   
@@ -37,8 +36,9 @@ class DataHandler
     Object localObject = paramJSONObject.getString("group");
     localObject = ConfigManager.get().getCacheByOriginGroupName((String)localObject);
     paramJSONObject = paramJSONObject.getString("key_values");
-    if (this.mCallback != null) {
-      this.mCallback.onConfigGroupParsed((CacheContent)localObject, paramJSONObject);
+    DataHandler.ConfigGroupParseCallback localConfigGroupParseCallback = this.mCallback;
+    if (localConfigGroupParseCallback != null) {
+      localConfigGroupParseCallback.onConfigGroupParsed((CacheContent)localObject, paramJSONObject);
     }
   }
   
@@ -46,15 +46,21 @@ class DataHandler
   {
     try
     {
-      paramString = new JSONObject(paramString);
-      int i = paramString.getInt("ret_code");
-      String str = paramString.getString("ret_msg");
+      Object localObject = new JSONObject(paramString);
+      int i = ((JSONObject)localObject).getInt("ret_code");
+      paramString = ((JSONObject)localObject).getString("ret_msg");
       if (i != 0)
       {
-        LogUtil.e(TAG, "parseServerResult failed, resultCode:" + i + " resultMsg:" + str);
+        localObject = TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("parseServerResult failed, resultCode:");
+        localStringBuilder.append(i);
+        localStringBuilder.append(" resultMsg:");
+        localStringBuilder.append(paramString);
+        LogUtil.e((String)localObject, localStringBuilder.toString());
         return;
       }
-      parseItems(paramString.getJSONObject("config").getJSONArray("items"));
+      parseItems(((JSONObject)localObject).getJSONObject("config").getJSONArray("items"));
       return;
     }
     catch (JSONException paramString)
@@ -70,7 +76,7 @@ class DataHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.config.DataHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -16,36 +16,54 @@ public class ShortVideoPTVItemBuilder$EncodeHandler
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    }
-    int i;
-    do
-    {
-      do
+      StringBuilder localStringBuilder;
+      if (i != 2)
       {
-        return;
+        if (i != 3) {
+          return;
+        }
+        i = paramMessage.arg1;
+        if (paramMessage.arg1 != 0) {
+          return;
+        }
+        paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("ret is ");
+          localStringBuilder.append(i);
+          QLog.i("ShortVideoPTVItemBuilder", 2, localStringBuilder.toString());
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("targetFile is ");
+          localStringBuilder.append(paramMessage);
+          QLog.i("ShortVideoPTVItemBuilder", 2, localStringBuilder.toString());
+        }
+      }
+      else
+      {
         i = paramMessage.arg1;
         paramMessage = paramMessage.getData();
-      } while (!QLog.isColorLevel());
-      QLog.i("ShortVideoPTVItemBuilder", 2, "ret is " + i);
-      QLog.i("ShortVideoPTVItemBuilder", 2, "data is " + paramMessage);
-      return;
-      i = paramMessage.arg1;
-      switch (paramMessage.arg1)
-      {
-      default: 
-        return;
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("ret is ");
+          localStringBuilder.append(i);
+          QLog.i("ShortVideoPTVItemBuilder", 2, localStringBuilder.toString());
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("data is ");
+          localStringBuilder.append(paramMessage);
+          QLog.i("ShortVideoPTVItemBuilder", 2, localStringBuilder.toString());
+        }
       }
-      paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
-    } while (!QLog.isColorLevel());
-    QLog.i("ShortVideoPTVItemBuilder", 2, "ret is " + i);
-    QLog.i("ShortVideoPTVItemBuilder", 2, "targetFile is " + paramMessage);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoPTVItemBuilder.EncodeHandler
  * JD-Core Version:    0.7.0.1
  */

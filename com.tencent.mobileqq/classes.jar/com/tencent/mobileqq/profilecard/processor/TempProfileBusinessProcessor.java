@@ -37,11 +37,8 @@ import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.SVIPHandler;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.app.friendlist.FriendListHandlerUtil;
-import com.tencent.mobileqq.config.business.qvip.QVipProfileFootPrintConfig;
-import com.tencent.mobileqq.config.business.qvip.QVipProfileFootPrintProcessor;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.data.DiscussionMemberInfo;
 import com.tencent.mobileqq.data.ExtensionInfo;
@@ -52,14 +49,12 @@ import com.tencent.mobileqq.friend.api.IFriendExtensionService;
 import com.tencent.mobileqq.medalwall.MedalID;
 import com.tencent.mobileqq.medalwall.MedalWallMng;
 import com.tencent.mobileqq.mini.api.IMiniAppService;
-import com.tencent.mobileqq.model.PhoneContactManager;
-import com.tencent.mobileqq.nearby.NearByGeneralManager;
-import com.tencent.mobileqq.nearby.NearbyCardManager;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
+import com.tencent.mobileqq.nearby.INearByGeneralManager;
+import com.tencent.mobileqq.nearby.INearbyCardManager;
+import com.tencent.mobileqq.nearby.api.INearbySPUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -68,16 +63,12 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
 import com.tencent.mobileqq.profile.PersonalityLabel.ProfilePersonalityLabelInfo;
 import com.tencent.mobileqq.profile.ProfileCardManager;
-import com.tencent.mobileqq.profile.lifeachivement.LifeAchivementData;
-import com.tencent.mobileqq.profilecard.bussiness.achievement.ProfileLifeAchievementInfo;
-import com.tencent.mobileqq.profilecard.bussiness.anonymous.ProfileAnonymousAnswerInfo;
-import com.tencent.mobileqq.profilecard.bussiness.anonymous.bean.AnonymousQuestion;
 import com.tencent.mobileqq.profilecard.bussiness.miniapp.ProfileMiniAppInfo;
 import com.tencent.mobileqq.profilecard.entity.BusinessReqBuffer;
 import com.tencent.mobileqq.profilecard.entity.BusinessRespBuffer;
-import com.tencent.mobileqq.profilecard.entity.IProfileBusinessInfo;
 import com.tencent.mobileqq.profilesetting.ProfileSettingUtils;
 import com.tencent.mobileqq.profilesetting.ProfileSettingUtils.Companion;
 import com.tencent.mobileqq.qroute.QRoute;
@@ -88,9 +79,12 @@ import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.mobileqq.vas.ColorNickManager;
 import com.tencent.mobileqq.vas.VasExtensionManager;
-import com.tencent.mobileqq.vas.VasMonitorDT;
 import com.tencent.mobileqq.vas.VasMonitorHandler;
 import com.tencent.mobileqq.vas.avatar.VasFaceManager;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipProfileFootPrintConfig;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipProfileFootPrintProcessor;
+import com.tencent.mobileqq.vas.svip.api.ISVIPHandler;
+import com.tencent.mobileqq.vas.util.VasMonitorDT;
 import com.tencent.pb.profilecard.SummaryCardBusiEntry.CommonReq;
 import com.tencent.pb.profilecard.SummaryCardBusiEntry.VisitorCountReq;
 import com.tencent.pb.profilecard.SummaryCardBusiEntry.VisitorCountRsp;
@@ -117,12 +111,6 @@ import mqq.app.MobileQQ;
 import mqq.app.Packet;
 import mqq.manager.TicketManager;
 import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.UdcUinData;
-import tencent.im.oidb.cmd0xe5b.oidb_0xe5b.LifeAchievementItem;
-import tencent.im.oidb.cmd0xe5b.oidb_0xe5b.ReqBody;
-import tencent.im.oidb.cmd0xe5b.oidb_0xe5b.RspBody;
-import tencent.im.oidb.cmd0xec4.oidb_0xec4.Quest;
-import tencent.im.oidb.cmd0xec4.oidb_0xec4.ReqBody;
-import tencent.im.oidb.cmd0xec4.oidb_0xec4.RspBody;
 
 @KeepClassConstructor
 public class TempProfileBusinessProcessor
@@ -172,123 +160,6 @@ public class TempProfileBusinessProcessor
     localVaProfileGateReq.stPrivilegeReq.set((MessageMicro)localObject2);
     localVaProfileGateReq.stGiftReq.set(localGetGiftListReq);
     return localVaProfileGateReq;
-  }
-  
-  private void handleGetAnonymousInfo(Card paramCard, SparseArray<BusinessRespBuffer> paramSparseArray)
-  {
-    boolean bool = false;
-    paramSparseArray = (BusinessRespBuffer)paramSparseArray.get(19);
-    if (QLog.isColorLevel()) {
-      QLog.d("TempProfileBusinessProcessor", 2, "handleGetAnonymousInfo start vvResp = " + paramSparseArray);
-    }
-    if ((paramSparseArray != null) && (paramSparseArray.buffer != null)) {}
-    for (;;)
-    {
-      int i;
-      try
-      {
-        localObject = new oidb_0xec4.RspBody();
-        ((oidb_0xec4.RspBody)localObject).mergeFrom(paramSparseArray.buffer);
-        paramSparseArray = new ProfileAnonymousAnswerInfo();
-        paramSparseArray.mTotalQuestionCount = ((oidb_0xec4.RspBody)localObject).uint32_total_quest_num.get();
-        paramSparseArray.mHasFetchOver = ((oidb_0xec4.RspBody)localObject).bool_is_fetch_over.get();
-        if (!((oidb_0xec4.RspBody)localObject).uint32_ret.has()) {
-          break label270;
-        }
-        i = ((oidb_0xec4.RspBody)localObject).uint32_ret.get();
-      }
-      catch (Exception paramCard)
-      {
-        Object localObject;
-        long l;
-        AnonymousQuestion localAnonymousQuestion;
-        QLog.e("TempProfileBusinessProcessor", 1, "handleGetAnonymousInfo fail.", paramCard);
-      }
-      paramSparseArray.needForbidEntry = bool;
-      paramSparseArray.mAnsweredQuestionCount = ((oidb_0xec4.RspBody)localObject).uint32_answered_quest_num.get();
-      if (((oidb_0xec4.RspBody)localObject).msg_quest.has())
-      {
-        l = Long.parseLong(paramCard.uin);
-        ArrayList localArrayList = new ArrayList();
-        localObject = ((oidb_0xec4.RspBody)localObject).msg_quest.get().iterator();
-        if (((Iterator)localObject).hasNext())
-        {
-          localAnonymousQuestion = AnonymousQuestion.convertQuest((oidb_0xec4.Quest)((Iterator)localObject).next(), l);
-          if ((localAnonymousQuestion == null) || (TextUtils.isEmpty(localAnonymousQuestion.mQuest)) || (TextUtils.isEmpty(localAnonymousQuestion.mAnswer))) {
-            continue;
-          }
-          localArrayList.add(localAnonymousQuestion);
-          continue;
-          return;
-          label270:
-          i = -1;
-        }
-        else
-        {
-          paramSparseArray.mAnonymousQuestions.addAll(localArrayList);
-        }
-      }
-      else
-      {
-        if (QLog.isColorLevel())
-        {
-          int j = paramSparseArray.mTotalQuestionCount;
-          int k = paramSparseArray.mAnsweredQuestionCount;
-          QLog.d("TempProfileBusinessProcessor", 2, String.format("handleGetAnonymousInfo total=%s fetchOver=%s questionSize=%s retCode=%s needForbidEntry=%b answeredCount=%s", new Object[] { Integer.valueOf(j), Boolean.valueOf(paramSparseArray.mHasFetchOver), Integer.valueOf(paramSparseArray.mAnonymousQuestions.size()), Integer.valueOf(i), Boolean.valueOf(bool), Integer.valueOf(k) }));
-        }
-        paramCard.putBusinessInfo(paramSparseArray);
-        return;
-      }
-      if (i == 10001) {
-        bool = true;
-      }
-    }
-  }
-  
-  private void handleGetLifeAchievementInfo(Card paramCard, SparseArray<BusinessRespBuffer> paramSparseArray)
-  {
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.profilecard.SummaryCard", 2, "handleGetLifeAchievementInfo vvRespList=" + paramSparseArray);
-    }
-    Object localObject = (BusinessRespBuffer)paramSparseArray.get(18);
-    if ((localObject != null) && (((BusinessRespBuffer)localObject).buffer != null)) {
-      paramSparseArray = new oidb_0xe5b.RspBody();
-    }
-    try
-    {
-      paramSparseArray.mergeFrom(((BusinessRespBuffer)localObject).buffer);
-      localObject = new ProfileLifeAchievementInfo();
-      ((ProfileLifeAchievementInfo)localObject).lifeAchievementTotalCount = paramSparseArray.uint32_achievement_totalcount.get();
-      ((ProfileLifeAchievementInfo)localObject).lifeAchievementOpenId = paramSparseArray.str_achievement_openid.get();
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.profilecard.SummaryCard", 2, String.format(Locale.getDefault(), "handleGetLifeAchievementInfo totalCount=%s openId=%s", new Object[] { Integer.valueOf(((ProfileLifeAchievementInfo)localObject).lifeAchievementTotalCount), ((ProfileLifeAchievementInfo)localObject).lifeAchievementOpenId }));
-      }
-      ((ProfileLifeAchievementInfo)localObject).lifeAchievementList = new ArrayList();
-      if (paramSparseArray.rpt_life_ach_item != null) {
-        while (i < paramSparseArray.rpt_life_ach_item.size())
-        {
-          LifeAchivementData localLifeAchivementData = new LifeAchivementData();
-          localLifeAchivementData.jdField_b_of_type_Int = ((oidb_0xe5b.LifeAchievementItem)paramSparseArray.rpt_life_ach_item.get(i)).uint32_achievement_id.get();
-          localLifeAchivementData.jdField_a_of_type_JavaLangString = ((oidb_0xe5b.LifeAchievementItem)paramSparseArray.rpt_life_ach_item.get(i)).str_achievement_title.get();
-          localLifeAchivementData.jdField_b_of_type_JavaLangString = ((oidb_0xe5b.LifeAchievementItem)paramSparseArray.rpt_life_ach_item.get(i)).str_achievement_icon.get();
-          localLifeAchivementData.jdField_a_of_type_Boolean = ((oidb_0xe5b.LifeAchievementItem)paramSparseArray.rpt_life_ach_item.get(i)).bool_has_praised.get();
-          localLifeAchivementData.c = ((oidb_0xe5b.LifeAchievementItem)paramSparseArray.rpt_life_ach_item.get(i)).uint32_praise_num.get();
-          if (QLog.isColorLevel()) {
-            QLog.i("Q.profilecard.SummaryCard", 2, String.format(Locale.getDefault(), "handleGetLifeAchievementInfo id=%s title=%s iconUrl=%s hasPraised=%s praiseNum=%s", new Object[] { Integer.valueOf(localLifeAchivementData.jdField_b_of_type_Int), localLifeAchivementData.jdField_a_of_type_JavaLangString, localLifeAchivementData.jdField_b_of_type_JavaLangString, Boolean.valueOf(localLifeAchivementData.jdField_a_of_type_Boolean), Integer.valueOf(localLifeAchivementData.c) }));
-          }
-          ((ProfileLifeAchievementInfo)localObject).lifeAchievementList.add(localLifeAchivementData);
-          i += 1;
-        }
-      }
-      paramCard.putBusinessInfo((IProfileBusinessInfo)localObject);
-      return;
-    }
-    catch (Exception paramCard)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("TempProfileBusinessProcessor", 2, "handleGetLifeAchievementInfo onResponse fail." + paramCard);
-    }
   }
   
   private void handleGetSummaryCardForBaseInfoPrivacy(QQAppInterface paramQQAppInterface, Card paramCard, oidb_0x5eb.UdcUinData paramUdcUinData)
@@ -343,12 +214,6 @@ public class TempProfileBusinessProcessor
   
   private void handleGetSummaryCardForMedalWall(RespSummaryCard paramRespSummaryCard, Card paramCard)
   {
-    int n;
-    int i1;
-    int j;
-    int i;
-    label192:
-    int k;
     if (paramRespSummaryCard.stMedalWallInfo != null)
     {
       Object localObject;
@@ -360,80 +225,72 @@ public class TempProfileBusinessProcessor
       }
       paramCard.iMedalCount = paramRespSummaryCard.stMedalWallInfo.iMedalCount;
       boolean bool;
-      MedalID localMedalID;
-      if (paramRespSummaryCard.stMedalWallInfo.iOpenFlag == 1)
-      {
+      if (paramRespSummaryCard.stMedalWallInfo.iOpenFlag == 1) {
         bool = true;
-        paramCard.medalSwitchDisable = bool;
-        n = paramRespSummaryCard.stMedalWallInfo.iNewCount;
-        i1 = paramRespSummaryCard.stMedalWallInfo.iUpgradeCount;
-        paramRespSummaryCard = paramRespSummaryCard.stMedalWallInfo.strPromptParams;
-        if (((n <= 0) && (i1 <= 0)) || (TextUtils.isEmpty(paramRespSummaryCard)) || (!Utils.a(paramCard.uin, this.appRuntime.getAccount()))) {
-          break label418;
-        }
-        localObject = ((MedalWallMng)this.appRuntime.getManager(QQManagerFactory.MEDAL_WALL_MNG)).a(paramRespSummaryCard);
-        if ((localObject == null) || (((ArrayList)localObject).size() <= 0)) {
-          break label310;
-        }
-        localObject = ((ArrayList)localObject).iterator();
-        j = 0;
-        i = 0;
-        do
-        {
-          m = j;
-          k = i;
-          if (!((Iterator)localObject).hasNext()) {
-            break;
-          }
-          localMedalID = (MedalID)((Iterator)localObject).next();
-        } while (localMedalID == null);
-        if ((localMedalID.jdField_b_of_type_Int != 1) && (localMedalID.jdField_b_of_type_Int != 255)) {
-          break label277;
-        }
-        k = j;
-        j = i + 1;
-      }
-      for (i = k;; i = k)
-      {
-        k = j;
-        j = i;
-        i = k;
-        break label192;
+      } else {
         bool = false;
-        break;
-        label277:
-        if ((localMedalID.jdField_b_of_type_Int != 2) && (localMedalID.jdField_b_of_type_Int != 3)) {
-          break label405;
-        }
-        k = j + 1;
-        j = i;
       }
-      label310:
-      int m = 0;
-      k = 0;
-      i = m;
-      j = k;
-      if (QLog.isColorLevel())
+      paramCard.medalSwitchDisable = bool;
+      int n = paramRespSummaryCard.stMedalWallInfo.iNewCount;
+      int i1 = paramRespSummaryCard.stMedalWallInfo.iUpgradeCount;
+      paramRespSummaryCard = paramRespSummaryCard.stMedalWallInfo.strPromptParams;
+      int m;
+      int i;
+      if (n <= 0)
       {
-        QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "summary card server[%d, %d] compute[%d, %d]", new Object[] { Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(k), Integer.valueOf(m) }));
-        j = k;
-        i = m;
+        m = n;
+        i = i1;
+        if (i1 <= 0) {}
       }
-    }
-    for (;;)
-    {
-      paramCard.iNewCount = j;
+      else
+      {
+        m = n;
+        i = i1;
+        if (!TextUtils.isEmpty(paramRespSummaryCard))
+        {
+          m = n;
+          i = i1;
+          if (Utils.a(paramCard.uin, this.appRuntime.getAccount()))
+          {
+            localObject = ((MedalWallMng)this.appRuntime.getManager(QQManagerFactory.MEDAL_WALL_MNG)).a(paramRespSummaryCard);
+            if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+            {
+              localObject = ((ArrayList)localObject).iterator();
+              int k = 0;
+              i = 0;
+              for (;;)
+              {
+                m = k;
+                j = i;
+                if (!((Iterator)localObject).hasNext()) {
+                  break;
+                }
+                MedalID localMedalID = (MedalID)((Iterator)localObject).next();
+                if (localMedalID != null) {
+                  if ((localMedalID.b != 1) && (localMedalID.b != 255))
+                  {
+                    if ((localMedalID.b == 2) || (localMedalID.b == 3)) {
+                      i += 1;
+                    }
+                  }
+                  else {
+                    k += 1;
+                  }
+                }
+              }
+            }
+            m = 0;
+            int j = 0;
+            if (QLog.isColorLevel()) {
+              QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "summary card server[%d, %d] compute[%d, %d]", new Object[] { Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(m), Integer.valueOf(j) }));
+            }
+            i = j;
+          }
+        }
+      }
+      paramCard.iNewCount = m;
       paramCard.iUpgradeCount = i;
       paramCard.strPromptParams = paramRespSummaryCard;
-      return;
-      label405:
-      k = i;
-      i = j;
-      j = k;
-      break;
-      label418:
-      i = i1;
-      j = n;
     }
   }
   
@@ -450,9 +307,12 @@ public class TempProfileBusinessProcessor
       String str3 = ConditionSearchManager.a(paramRespSummaryCard.stDateCard.uHomeCity);
       paramRespSummaryCard = ConditionSearchManager.a(paramRespSummaryCard.stDateCard.uHomeZone);
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(str1).append("-");
-      localStringBuilder.append(str2).append("-");
-      localStringBuilder.append(str3).append("-");
+      localStringBuilder.append(str1);
+      localStringBuilder.append("-");
+      localStringBuilder.append(str2);
+      localStringBuilder.append("-");
+      localStringBuilder.append(str3);
+      localStringBuilder.append("-");
       localStringBuilder.append(paramRespSummaryCard);
       paramCard.strHometownCodes = localStringBuilder.toString();
       if (!TextUtils.isEmpty(paramCard.strHometownCodes)) {
@@ -465,7 +325,7 @@ public class TempProfileBusinessProcessor
   {
     if (paramString.equals(this.appRuntime.getAccount()))
     {
-      paramString = (NearbyCardManager)this.appRuntime.getManager(QQManagerFactory.NEARBY_CARD_MANAGER);
+      paramString = (INearbyCardManager)this.appRuntime.getManager(QQManagerFactory.NEARBY_CARD_MANAGER);
       if (paramString != null)
       {
         paramString.b(paramRespSummaryCard.bSex);
@@ -502,134 +362,125 @@ public class TempProfileBusinessProcessor
     paramCard.strQzoneFeedsDesc = paramRespSummaryCard.strQzoneFeedsDesc;
     paramCard.strSpaceName = paramRespSummaryCard.strSpaceName;
     paramCard.strQzoneHeader = paramRespSummaryCard.strQzoneHeader;
-    String str1;
+    String str2;
     if (paramRespSummaryCard.mapQzoneEx != null)
     {
-      str1 = paramRespSummaryCard.strRemark;
-      if (TextUtils.isEmpty(paramRespSummaryCard.strRemark)) {
-        str1 = (String)paramRespSummaryCard.mapQzoneEx.get("real_name");
-      }
-      if (!TextUtils.isEmpty(str1))
-      {
-        String str2 = str1;
-        if (paramCard.strQzoneHeader != null)
+      String str1 = (String)paramRespSummaryCard.mapQzoneEx.get("enlarge_qzone");
+      if (!TextUtils.isEmpty(str1)) {
+        try
         {
-          str2 = str1;
-          if (paramCard.strQzoneHeader.length() > 10)
-          {
-            str2 = str1;
-            if (str1 != null)
-            {
-              str2 = str1;
-              if (str1.length() > 5) {
-                str2 = str1.substring(0, 5) + "...";
-              }
-            }
-          }
+          paramCard.enlargeQzonePic = Integer.parseInt(str1);
         }
-        paramCard.strQzoneHeader = (str2 + paramCard.strQzoneHeader);
+        catch (NumberFormatException localNumberFormatException1)
+        {
+          QLog.w("TempProfileBusinessProcessor", 1, "strEnlargQzone is not a integer:", localNumberFormatException1);
+        }
+      } else {
+        paramCard.enlargeQzonePic = 0;
       }
-      str1 = (String)paramRespSummaryCard.mapQzoneEx.get("enlarge_qzone");
-      if (TextUtils.isEmpty(str1)) {
-        break label312;
-      }
+      str2 = (String)paramRespSummaryCard.mapQzoneEx.get("show_publish_button");
+      if (TextUtils.isEmpty(str2)) {}
     }
     for (;;)
     {
       try
       {
-        paramCard.enlargeQzonePic = Integer.parseInt(str1);
-        str1 = (String)paramRespSummaryCard.mapQzoneEx.get("show_publish_button");
-        if (TextUtils.isEmpty(str1)) {
-          break label346;
+        if (Integer.parseInt(str2) != 1) {
+          break label245;
         }
-        try
-        {
-          if (Integer.parseInt(str1) != 1) {
-            break label320;
-          }
-          bool = true;
-          paramCard.showPublishButton = bool;
-        }
-        catch (NumberFormatException localNumberFormatException2)
-        {
-          boolean bool;
-          QLog.w("TempProfileBusinessProcessor", 1, "show_publish_button is not a integer:", localNumberFormatException2);
-          paramCard.showPublishButton = false;
-          continue;
-        }
-        paramCard.vQzoneCoverInfo = paramRespSummaryCard.vQzoneCoverInfo;
-        if (!paramCard.isPhotoUseCache())
-        {
-          paramCard.qzonePhotoList.clear();
-          paramRespSummaryCard = paramRespSummaryCard.oLatestPhotos;
-          if ((paramRespSummaryCard != null) && (paramRespSummaryCard.vPhotos != null)) {
-            paramCard.addQZonePhotoList(paramRespSummaryCard);
-          }
-        }
-        return;
+        bool = true;
+        paramCard.showPublishButton = bool;
       }
-      catch (NumberFormatException localNumberFormatException1)
+      catch (NumberFormatException localNumberFormatException2)
       {
-        QLog.w("TempProfileBusinessProcessor", 1, "strEnlargQzone is not a integer:", localNumberFormatException1);
-        continue;
+        QLog.w("TempProfileBusinessProcessor", 1, "show_publish_button is not a integer:", localNumberFormatException2);
+        paramCard.showPublishButton = false;
       }
-      label312:
-      paramCard.enlargeQzonePic = 0;
-      continue;
-      label320:
-      bool = false;
-      continue;
-      label346:
       paramCard.showPublishButton = false;
+      paramCard.vQzoneCoverInfo = paramRespSummaryCard.vQzoneCoverInfo;
+      if (!paramCard.isPhotoUseCache())
+      {
+        paramCard.qzonePhotoList.clear();
+        paramRespSummaryCard = paramRespSummaryCard.oLatestPhotos;
+        if ((paramRespSummaryCard != null) && (paramRespSummaryCard.vPhotos != null)) {
+          try
+          {
+            paramCard.addQZonePhotoList(paramRespSummaryCard);
+            return;
+          }
+          catch (OutOfMemoryError paramRespSummaryCard)
+          {
+            paramCard = new StringBuilder();
+            paramCard.append("card.addQZonePhotoList(albumInfo)  OOM !");
+            paramCard.append(paramRespSummaryCard.getMessage());
+            QLog.e("TempProfileBusinessProcessor", 1, paramCard.toString());
+          }
+        }
+      }
+      return;
+      label245:
+      boolean bool = false;
     }
   }
   
   private void handleGetSummaryCardForTemplate(RespSummaryCard paramRespSummaryCard, String paramString, Card paramCard, long paramLong)
   {
-    HashMap localHashMap;
-    if ((0x20 & paramLong) != 0L)
+    if ((paramLong & 0x20) != 0L)
     {
-      localHashMap = new HashMap();
-      if (paramRespSummaryCard.vRespTemplateInfo == null) {
-        break label243;
-      }
-      paramRespSummaryCard = (SSummaryCardRsp)Packet.decodePacket(paramRespSummaryCard.vRespTemplateInfo, "rsp", new SSummaryCardRsp());
-      updateCardTemplate(paramCard, paramString, paramRespSummaryCard);
-      if ((paramRespSummaryCard != null) && (!TextUtils.isEmpty(paramRespSummaryCard.urlprefix)))
+      HashMap localHashMap = new HashMap();
+      if (paramRespSummaryCard.vRespTemplateInfo != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("TempProfileBusinessProcessor", 2, "handleGetSummaryCard: defaultCardUrlPrefix=" + paramRespSummaryCard.urlprefix + " defId=" + paramRespSummaryCard.profileid);
+        paramRespSummaryCard = (SSummaryCardRsp)Packet.decodePacket(paramRespSummaryCard.vRespTemplateInfo, "rsp", new SSummaryCardRsp());
+        updateCardTemplate(paramCard, paramString, paramRespSummaryCard);
+        if ((paramRespSummaryCard != null) && (!TextUtils.isEmpty(paramRespSummaryCard.urlprefix)))
+        {
+          if (QLog.isColorLevel())
+          {
+            paramString = new StringBuilder();
+            paramString.append("handleGetSummaryCard: defaultCardUrlPrefix=");
+            paramString.append(paramRespSummaryCard.urlprefix);
+            paramString.append(" defId=");
+            paramString.append(paramRespSummaryCard.profileid);
+            QLog.d("TempProfileBusinessProcessor", 2, paramString.toString());
+          }
+          ProfileCardManager.a = paramRespSummaryCard.urlprefix;
         }
-        ProfileCardManager.jdField_a_of_type_JavaLangString = paramRespSummaryCard.urlprefix;
+        if ((paramRespSummaryCard != null) && (paramRespSummaryCard.stRecom != null))
+        {
+          paramLong = paramRespSummaryCard.stRecom.iRecomCard;
+          paramString = new StringBuilder();
+          paramString.append(ProfileCardManager.a);
+          paramString.append(paramRespSummaryCard.stRecom.strRecomUrl);
+          paramString = paramString.toString();
+          paramRespSummaryCard = paramRespSummaryCard.stRecom.strDesc;
+          if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(paramRespSummaryCard))) {
+            BaseApplicationImpl.getApplication().getSharedPreferences("profile_sp", 0).edit().putLong("recommend_id", paramLong).putString("recommend_url", paramString).putString("recommend_desc", paramRespSummaryCard).commit();
+          }
+        }
       }
-      if ((paramRespSummaryCard != null) && (paramRespSummaryCard.stRecom != null))
+      else
       {
-        paramLong = paramRespSummaryCard.stRecom.iRecomCard;
-        paramString = ProfileCardManager.jdField_a_of_type_JavaLangString + paramRespSummaryCard.stRecom.strRecomUrl;
-        paramRespSummaryCard = paramRespSummaryCard.stRecom.strDesc;
-        if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(paramRespSummaryCard))) {
-          BaseApplicationImpl.getApplication().getSharedPreferences("profile_sp", 0).edit().putLong("recommend_id", paramLong).putString("recommend_url", paramString).putString("recommend_desc", paramRespSummaryCard).commit();
-        }
+        localHashMap.put("param_FailCode", "-100");
+        StatisticCollector.getInstance(this.appRuntime.getApplication()).collectPerformance(paramString, "profileCardGet", false, 0L, 0L, null, "", false);
       }
     }
-    return;
-    label243:
-    localHashMap.put("param_FailCode", "-100");
-    StatisticCollector.getInstance(this.appRuntime.getApplication()).collectPerformance(paramString, "profileCardGet", false, 0L, 0L, null, "", false);
   }
   
   private void handleGetSummaryCardForUdcInner(String paramString, Card paramCard, oidb_0x5eb.UdcUinData paramUdcUinData)
   {
-    boolean bool2 = true;
     Friends localFriends = ((FriendsManager)this.appRuntime.getManager(QQManagerFactory.FRIENDS_MANAGER)).d(paramString);
     int i;
+    StringBuilder localStringBuilder;
     if ((paramString.equals(this.appRuntime.getAccount())) && (paramUdcUinData.int32_history_num_flag.has()))
     {
       i = paramUdcUinData.int32_history_num_flag.get();
-      SharedPreUtils.F(this.appRuntime.getApplication(), this.appRuntime.getAccount(), i);
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.profilecard.SummaryCard", 2, "history_num_flag= " + i);
+      SharedPreUtils.C(this.appRuntime.getApplication(), this.appRuntime.getAccount(), i);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("history_num_flag= ");
+        localStringBuilder.append(i);
+        QLog.i("Q.profilecard.SummaryCard", 2, localStringBuilder.toString());
       }
     }
     long l;
@@ -638,8 +489,12 @@ public class TempProfileBusinessProcessor
       l = paramUdcUinData.uint64_game_appid.get();
       paramCard.namePlateOfKingGameId = l;
       localFriends.namePlateOfKingGameId = l;
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.profilecard.SummaryCard", 2, "namePlateOfKingGameId= " + l);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("namePlateOfKingGameId= ");
+        localStringBuilder.append(l);
+        QLog.i("Q.profilecard.SummaryCard", 2, localStringBuilder.toString());
       }
     }
     if (paramUdcUinData.uint64_game_last_login_time.has())
@@ -647,8 +502,12 @@ public class TempProfileBusinessProcessor
       l = paramUdcUinData.uint64_game_last_login_time.get();
       paramCard.namePlateOfKingLoginTime = l;
       localFriends.namePlateOfKingLoginTime = l;
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.profilecard.SummaryCard", 2, "namePlateOfKingLoginTime= " + l);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("namePlateOfKingLoginTime= ");
+        localStringBuilder.append(l);
+        QLog.i("Q.profilecard.SummaryCard", 2, localStringBuilder.toString());
       }
     }
     if (paramUdcUinData.uint32_plate_of_king_dan.has())
@@ -656,51 +515,67 @@ public class TempProfileBusinessProcessor
       i = paramUdcUinData.uint32_plate_of_king_dan.get();
       paramCard.namePlateOfKingDan = i;
       localFriends.namePlateOfKingDan = i;
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.profilecard.SummaryCard", 2, "namePlateOfKingDan= " + i);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("namePlateOfKingDan= ");
+        localStringBuilder.append(i);
+        QLog.i("Q.profilecard.SummaryCard", 2, localStringBuilder.toString());
       }
     }
     if (paramUdcUinData.uint32_plate_of_king_dan_display_switch.has())
     {
       i = paramUdcUinData.uint32_plate_of_king_dan_display_switch.get();
-      if (i != 1) {
-        break label604;
+      boolean bool2 = true;
+      boolean bool1;
+      if (i == 1) {
+        bool1 = true;
+      } else {
+        bool1 = false;
       }
-      bool1 = true;
       paramCard.namePlateOfKingDanDisplatSwitch = bool1;
-      if (i != 1) {
-        break label610;
+      if (i == 1) {
+        bool1 = bool2;
+      } else {
+        bool1 = false;
+      }
+      localFriends.namePlateOfKingDanDisplatSwitch = bool1;
+      if ((!TextUtils.isEmpty(paramString)) && (this.appRuntime.getAccount().equals(paramString)))
+      {
+        paramCard = this.appRuntime.getApplication().getSharedPreferences("sp_plate_of_king", 0).edit();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("plate_of_king_display_switch_");
+        localStringBuilder.append(this.appRuntime.getAccount());
+        paramCard.putBoolean(localStringBuilder.toString(), localFriends.namePlateOfKingDanDisplatSwitch).apply();
+      }
+      if (QLog.isColorLevel())
+      {
+        paramCard = new StringBuilder();
+        paramCard.append("namePlateOfKingDanDisplatSwitch= ");
+        paramCard.append(i);
+        QLog.i("Q.profilecard.SummaryCard", 2, paramCard.toString());
       }
     }
-    label604:
-    label610:
-    for (boolean bool1 = bool2;; bool1 = false)
+    if (paramUdcUinData.uint32_suspend_effect_id.has())
     {
-      localFriends.namePlateOfKingDanDisplatSwitch = bool1;
-      if ((!TextUtils.isEmpty(paramString)) && (this.appRuntime.getAccount().equals(paramString))) {
-        this.appRuntime.getApplication().getSharedPreferences("sp_plate_of_king", 0).edit().putBoolean("plate_of_king_display_switch_" + this.appRuntime.getAccount(), localFriends.namePlateOfKingDanDisplatSwitch).apply();
+      i = paramUdcUinData.uint32_suspend_effect_id.get();
+      if (i >= 0) {
+        ((ISVIPHandler)((AppInterface)this.appRuntime).getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(paramString, i);
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.profilecard.SummaryCard", 2, "namePlateOfKingDanDisplatSwitch= " + i);
-      }
-      if (paramUdcUinData.uint32_suspend_effect_id.has())
+      if (QLog.isColorLevel())
       {
-        i = paramUdcUinData.uint32_suspend_effect_id.get();
-        if (i >= 0) {
-          ((SVIPHandler)((AppInterface)this.appRuntime).getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(paramString, i);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.profilecard.SummaryCard", 2, "uin " + paramString + " colorScreenid= " + i);
-        }
+        paramCard = new StringBuilder();
+        paramCard.append("uin ");
+        paramCard.append(paramString);
+        paramCard.append(" colorScreenid= ");
+        paramCard.append(i);
+        QLog.i("Q.profilecard.SummaryCard", 2, paramCard.toString());
       }
-      if (paramUdcUinData.uint32_vas_face_id.has())
-      {
-        i = paramUdcUinData.uint32_vas_face_id.get();
-        ((VasExtensionManager)this.appRuntime.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a.b(paramString, i);
-      }
-      return;
-      bool1 = false;
-      break;
+    }
+    if (paramUdcUinData.uint32_vas_face_id.has())
+    {
+      i = paramUdcUinData.uint32_vas_face_id.get();
+      ((VasExtensionManager)this.appRuntime.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a.b(paramString, i);
     }
   }
   
@@ -713,113 +588,116 @@ public class TempProfileBusinessProcessor
       paramCard.extendFriendFlag = i;
       SharedPreUtils.a(this.appRuntime.getAccount(), "extend_friend_config_785").edit().putInt("sp_extend_friend_flag", i).apply();
     }
+    boolean bool;
     if (paramUdcUinData.uint32_extend_friend_card_shown.has())
     {
-      if (paramUdcUinData.uint32_extend_friend_card_shown.get() == 0)
-      {
+      if (paramUdcUinData.uint32_extend_friend_card_shown.get() == 0) {
         bool = true;
-        paramCard.isShowCard = bool;
+      } else {
+        bool = false;
+      }
+      paramCard.isShowCard = bool;
+    }
+    if (paramUdcUinData.uint32_stranger_vote_switch.has())
+    {
+      if (paramUdcUinData.uint32_stranger_vote_switch.get() == 0) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      paramCard.strangerVoteOpen = bool;
+      if (paramString.equals(this.appRuntime.getAccount())) {
+        ((INearByGeneralManager)this.appRuntime.getManager(QQManagerFactory.NEARBY_GENERAL_MANAGER)).b(paramCard.strangerVoteOpen);
       }
     }
-    else
+    StringBuilder localStringBuilder;
+    if (paramUdcUinData.uint32_school_status_flag.has())
     {
-      if (paramUdcUinData.uint32_stranger_vote_switch.has())
+      i = paramUdcUinData.uint32_school_status_flag.get();
+      if (QLog.isColorLevel())
       {
-        if (paramUdcUinData.uint32_stranger_vote_switch.get() != 0) {
-          break label672;
-        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("uin ");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" uint32_school_status_flag=");
+        localStringBuilder.append(i);
+        QLog.i("Q.profilecard.SummaryCard", 2, localStringBuilder.toString());
+      }
+      paramCard.newSchoolStatusFlagForGuide = i;
+    }
+    if (paramUdcUinData.uint32_flag_is_pretty_group_owner.has())
+    {
+      if (paramUdcUinData.uint32_flag_is_pretty_group_owner.get() == 1) {
         bool = true;
-        label110:
-        paramCard.strangerVoteOpen = bool;
-        if (paramString.equals(this.appRuntime.getAccount())) {
-          ((NearByGeneralManager)this.appRuntime.getManager(QQManagerFactory.NEARBY_GENERAL_MANAGER)).b(paramCard.strangerVoteOpen);
-        }
+      } else {
+        bool = false;
       }
-      if (paramUdcUinData.uint32_school_status_flag.has())
-      {
-        i = paramUdcUinData.uint32_school_status_flag.get();
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.profilecard.SummaryCard", 2, "uin " + paramString + " uint32_school_status_flag=" + i);
-        }
-        paramCard.newSchoolStatusFlagForGuide = i;
-      }
-      if (paramUdcUinData.uint32_flag_is_pretty_group_owner.has())
-      {
-        if (paramUdcUinData.uint32_flag_is_pretty_group_owner.get() != 1) {
-          break label678;
-        }
+      paramCard.isPrettyGroupOwner = bool;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("uin ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" is pretty troop owner:");
+      localStringBuilder.append(paramCard.isPrettyGroupOwner);
+      QLog.e("vip_pretty.", 1, localStringBuilder.toString());
+    }
+    if (paramUdcUinData.uint32_flag_hide_pretty_group_owner_identity.has())
+    {
+      if (paramUdcUinData.uint32_flag_hide_pretty_group_owner_identity.get() == 1) {
         bool = true;
-        label243:
-        paramCard.isPrettyGroupOwner = bool;
-        QLog.e("vip_pretty.", 1, "uin " + paramString + " is pretty troop owner:" + paramCard.isPrettyGroupOwner);
+      } else {
+        bool = false;
       }
-      if (paramUdcUinData.uint32_flag_hide_pretty_group_owner_identity.has())
-      {
-        if (paramUdcUinData.uint32_flag_hide_pretty_group_owner_identity.get() != 1) {
-          break label684;
-        }
-        bool = true;
-        label313:
-        paramCard.isHidePrettyGroutIdentity = bool;
-        QLog.e("vip_pretty.", 1, "uin " + paramString + " is pretty hide troop owner identity:" + paramCard.isHidePrettyGroutIdentity);
-      }
-      if (paramUdcUinData.uint32_profile_sticky_note_switch.has())
-      {
-        i = paramUdcUinData.uint32_profile_sticky_note_switch.get();
-        paramCard.switchStickyNote = ((short)i);
-        if (QLog.isColorLevel()) {
-          QLog.d("TempProfileBusinessProcessor", 2, String.format("handleGetSummaryCard uin=%s sticky_note_switch=%s", new Object[] { paramString, Integer.valueOf(i) }));
-        }
-      }
-      if (paramUdcUinData.uint32_flag_school_verified.has()) {
-        if (paramUdcUinData.uint32_flag_school_verified.get() != 1) {
-          break label690;
-        }
+      paramCard.isHidePrettyGroutIdentity = bool;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("uin ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" is pretty hide troop owner identity:");
+      localStringBuilder.append(paramCard.isHidePrettyGroutIdentity);
+      QLog.e("vip_pretty.", 1, localStringBuilder.toString());
+    }
+    if (paramUdcUinData.uint32_profile_sticky_note_switch.has())
+    {
+      i = paramUdcUinData.uint32_profile_sticky_note_switch.get();
+      paramCard.switchStickyNote = ((short)i);
+      if (QLog.isColorLevel()) {
+        QLog.d("TempProfileBusinessProcessor", 2, String.format("handleGetSummaryCard uin=%s sticky_note_switch=%s", new Object[] { paramString, Integer.valueOf(i) }));
       }
     }
-    label672:
-    label678:
-    label684:
-    label690:
-    for (boolean bool = true;; bool = false)
+    if (paramUdcUinData.uint32_flag_school_verified.has())
     {
+      if (paramUdcUinData.uint32_flag_school_verified.get() == 1) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       paramCard.schoolVerifiedFlag = bool;
       if (QLog.isColorLevel()) {
         QLog.d("TempProfileBusinessProcessor", 2, String.format("handleGetSummaryCard uin=%s schoolVerifiedFlag=%s", new Object[] { paramString, Boolean.valueOf(paramCard.schoolVerifiedFlag) }));
       }
-      if (paramUdcUinData.uint32_profile_qqcircle_switch.has())
-      {
-        i = paramUdcUinData.uint32_profile_qqcircle_switch.get();
-        paramCard.switchQQCircle = ((short)i);
-        if (QLog.isColorLevel()) {
-          QLog.d("TempProfileBusinessProcessor", 2, String.format("handleGetSummaryCard uin=%s qqcircle_switch=%s", new Object[] { paramString, Integer.valueOf(i) }));
-        }
+    }
+    if (paramUdcUinData.uint32_profile_qqcircle_switch.has())
+    {
+      i = paramUdcUinData.uint32_profile_qqcircle_switch.get();
+      paramCard.switchQQCircle = ((short)i);
+      if (QLog.isColorLevel()) {
+        QLog.d("TempProfileBusinessProcessor", 2, String.format("handleGetSummaryCard uin=%s qqcircle_switch=%s", new Object[] { paramString, Integer.valueOf(i) }));
       }
-      if (paramUdcUinData.uint32_profile_life_achievement_switch.has())
-      {
-        i = paramUdcUinData.uint32_profile_life_achievement_switch.get();
-        paramCard.switchLifeAchievement = ((short)i);
-        if (QLog.isColorLevel()) {
-          QLog.d("TempProfileBusinessProcessor", 2, String.format("handleGetSummaryCard uin=%s switch_life_achievement=%s", new Object[] { paramString, Integer.valueOf(i) }));
-        }
+    }
+    if (paramUdcUinData.uint32_profile_life_achievement_switch.has())
+    {
+      i = paramUdcUinData.uint32_profile_life_achievement_switch.get();
+      paramCard.switchLifeAchievement = ((short)i);
+      if (QLog.isColorLevel()) {
+        QLog.d("TempProfileBusinessProcessor", 2, String.format("handleGetSummaryCard uin=%s switch_life_achievement=%s", new Object[] { paramString, Integer.valueOf(i) }));
       }
-      if (paramUdcUinData.uint32_profile_weishi_switch.has())
-      {
-        i = paramUdcUinData.uint32_profile_weishi_switch.get();
-        paramCard.switchWeiShi = ((short)i);
-        if (QLog.isColorLevel()) {
-          QLog.d("TempProfileBusinessProcessor", 2, String.format("handleGetSummaryCard uin=%s switchWeishi=%s", new Object[] { paramString, Integer.valueOf(i) }));
-        }
+    }
+    if (paramUdcUinData.uint32_profile_weishi_switch.has())
+    {
+      i = paramUdcUinData.uint32_profile_weishi_switch.get();
+      paramCard.switchWeiShi = ((short)i);
+      if (QLog.isColorLevel()) {
+        QLog.d("TempProfileBusinessProcessor", 2, String.format("handleGetSummaryCard uin=%s switchWeishi=%s", new Object[] { paramString, Integer.valueOf(i) }));
       }
-      return;
-      bool = false;
-      break;
-      bool = false;
-      break label110;
-      bool = false;
-      break label243;
-      bool = false;
-      break label313;
     }
   }
   
@@ -831,8 +709,6 @@ public class TempProfileBusinessProcessor
     if (paramRespSummaryCard.i0x6d4Success != 0) {
       QLog.e("TempProfileBusinessProcessor", 1, String.format("handleGetSummaryCardForVote 0x6d4 fail. resultCode=%d", new Object[] { Integer.valueOf(paramRespSummaryCard.i0x6d4Success) }));
     }
-    label174:
-    EntityManager localEntityManager;
     if (!setCardHotValue(paramCard, paramSparseArray))
     {
       if (paramRespSummaryCard.i0x6d4Success == 0)
@@ -840,142 +716,136 @@ public class TempProfileBusinessProcessor
         paramCard.lVoteCount = paramRespSummaryCard.iVoteCount;
         paramCard.iVoteIncrement = paramRespSummaryCard.iLastestVoteCount;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("TempProfileBusinessProcessor", 2, String.format("handleGetSummaryCard lVoteCount=%d iVoteIncrement=%d", new Object[] { Long.valueOf(paramCard.lVoteCount), Integer.valueOf(paramCard.iVoteIncrement) }));
-      }
-      if (paramRespSummaryCard.i0x6d4Success == 0)
-      {
-        paramCard.strVoteLimitedNotice = paramRespSummaryCard.strVoteLimitedNotice;
-        paramCard.bHaveVotedCnt = paramRespSummaryCard.bHaveVotedCnt;
-        paramCard.bAvailVoteCnt = paramRespSummaryCard.bAvailVoteCnt;
-        if (paramCard.bHaveVotedCnt <= 0) {
-          break label336;
-        }
-        paramCard.bVoted = 1;
-        if (paramString.equals(this.appRuntime.getAccount()))
-        {
-          paramCard.setLastPraiseInfoList(paramRespSummaryCard.vPraiseList);
-          NearbySPUtil.a(this.appRuntime.getAccount(), paramCard.lVoteCount, paramCard.iVoteIncrement);
-          localEntityManager = this.appRuntime.getEntityManagerFactory().createEntityManager();
-          paramSparseArray = (NearbyPeopleCard)localEntityManager.find(NearbyPeopleCard.class, "uin=?", new String[] { paramString });
-          paramRespHead = paramSparseArray;
-          if (paramSparseArray == null) {
-            paramRespHead = new NearbyPeopleCard();
-          }
-          paramRespHead.likeCount = ((int)paramCard.lVoteCount);
-          paramRespHead.likeCountInc = paramCard.iVoteIncrement;
-          paramRespHead.praiseList = paramRespSummaryCard.vPraiseList;
-          if (paramRespHead.getStatus() != 1000) {
-            break label345;
-          }
-          localEntityManager.persistOrReplace(paramRespHead);
-        }
-      }
     }
-    for (;;)
-    {
-      localEntityManager.close();
-      return;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
+    else if (QLog.isColorLevel()) {
       QLog.d("TempProfileBusinessProcessor", 2, "handleGetSummaryCard hot value cover vote.");
-      break;
-      label336:
-      paramCard.bVoted = 0;
-      break label174;
-      label345:
-      if ((paramRespHead.getStatus() == 1001) || (paramRespHead.getStatus() == 1002)) {
-        localEntityManager.update(paramRespHead);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TempProfileBusinessProcessor", 2, String.format("handleGetSummaryCard lVoteCount=%d iVoteIncrement=%d", new Object[] { Long.valueOf(paramCard.lVoteCount), Integer.valueOf(paramCard.iVoteIncrement) }));
+    }
+    if (paramRespSummaryCard.i0x6d4Success == 0)
+    {
+      paramCard.strVoteLimitedNotice = paramRespSummaryCard.strVoteLimitedNotice;
+      paramCard.bHaveVotedCnt = paramRespSummaryCard.bHaveVotedCnt;
+      paramCard.bAvailVoteCnt = paramRespSummaryCard.bAvailVoteCnt;
+      if (paramCard.bHaveVotedCnt > 0) {
+        paramCard.bVoted = 1;
+      } else {
+        paramCard.bVoted = 0;
+      }
+      if (paramString.equals(this.appRuntime.getAccount()))
+      {
+        paramCard.setLastPraiseInfoList(paramRespSummaryCard.vPraiseList);
+        ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setVoteInfo(this.appRuntime.getAccount(), paramCard.lVoteCount, paramCard.iVoteIncrement);
+        EntityManager localEntityManager = this.appRuntime.getEntityManagerFactory().createEntityManager();
+        paramSparseArray = (NearbyPeopleCard)localEntityManager.find(NearbyPeopleCard.class, "uin=?", new String[] { paramString });
+        paramRespHead = paramSparseArray;
+        if (paramSparseArray == null) {
+          paramRespHead = new NearbyPeopleCard();
+        }
+        paramRespHead.likeCount = ((int)paramCard.lVoteCount);
+        paramRespHead.likeCountInc = paramCard.iVoteIncrement;
+        paramRespHead.praiseList = paramRespSummaryCard.vPraiseList;
+        if (paramRespHead.getStatus() == 1000) {
+          localEntityManager.persistOrReplace(paramRespHead);
+        } else if ((paramRespHead.getStatus() == 1001) || (paramRespHead.getStatus() == 1002)) {
+          localEntityManager.update(paramRespHead);
+        }
+        localEntityManager.close();
       }
     }
   }
   
   private boolean handleMiniAppPlayingInfo(Card paramCard, SparseArray<BusinessRespBuffer> paramSparseArray, long paramLong1, long paramLong2)
   {
-    int j = 0;
     ProfileMiniAppInfo localProfileMiniAppInfo = new ProfileMiniAppInfo();
     Object localObject1 = (BusinessRespBuffer)paramSparseArray.get(17);
-    if ((localObject1 != null) && (((BusinessRespBuffer)localObject1).buffer != null)) {
-      if (paramLong1 != paramLong2) {
-        break label413;
+    int j = 0;
+    int i;
+    if ((localObject1 != null) && (((BusinessRespBuffer)localObject1).buffer != null))
+    {
+      if (paramLong1 == paramLong2) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (i != 0) {
+        paramSparseArray = new INTERFACE.StGetUserAppListRsp();
       }
     }
-    label413:
-    for (int i = 1;; i = 0)
+    for (;;)
     {
-      if (i != 0)
+      try
       {
-        paramSparseArray = new INTERFACE.StGetUserAppListRsp();
-        try
+        paramSparseArray.mergeFrom(((BusinessRespBuffer)localObject1).buffer);
+        Object localObject2 = paramSparseArray.userAppList.get();
+        if ((localObject2 != null) && (((List)localObject2).size() >= 1))
         {
-          paramSparseArray.mergeFrom(((BusinessRespBuffer)localObject1).buffer);
-          if (paramSparseArray != null)
+          localObject1 = new ArrayList();
+          localObject2 = ((List)localObject2).iterator();
+          if (((Iterator)localObject2).hasNext())
           {
-            Object localObject2 = paramSparseArray.userAppList.get();
-            if ((localObject2 == null) || (((List)localObject2).size() < 1))
-            {
-              localProfileMiniAppInfo.isShowMiniPlaying = false;
-              return true;
-            }
-            localObject1 = new ArrayList();
-            localObject2 = ((List)localObject2).iterator();
-            while (((Iterator)localObject2).hasNext()) {
-              ((ArrayList)localObject1).add(((INTERFACE.StUserAppInfo)((Iterator)localObject2).next()).appInfo.get());
-            }
+            ((ArrayList)localObject1).add(((INTERFACE.StUserAppInfo)((Iterator)localObject2).next()).appInfo.get());
+            continue;
           }
-          localProfileMiniAppInfo.isShowMiniPlaying = true;
+          localProfileMiniAppInfo.miniAppInfoArrayList = ((ArrayList)localObject1);
+          if ((paramSparseArray.extInfo == null) || (paramSparseArray.extInfo.mapInfo == null)) {
+            break label398;
+          }
+          i = j;
+          if (i >= paramSparseArray.extInfo.mapInfo.size()) {
+            break label398;
+          }
+          localObject1 = (COMM.Entry)paramSparseArray.extInfo.mapInfo.get(i);
+          if (!"jumpUrl".equals(((COMM.Entry)localObject1).key.get())) {
+            break label421;
+          }
+          localProfileMiniAppInfo.tabJumpUrl = ((COMM.Entry)localObject1).value.get();
+          break label421;
         }
-        catch (Exception paramSparseArray)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("TempProfileBusinessProcessor", 2, "onResponse fail." + paramSparseArray);
-          }
+        localProfileMiniAppInfo.isShowMiniPlaying = false;
+        return true;
+      }
+      catch (Exception paramSparseArray)
+      {
+        if (!QLog.isColorLevel()) {
+          break label398;
         }
       }
-      for (;;)
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onResponse fail.");
+      ((StringBuilder)localObject1).append(paramSparseArray);
+      QLog.d("TempProfileBusinessProcessor", 2, ((StringBuilder)localObject1).toString());
+      break label398;
+      paramSparseArray = new MISC.StGetFriendPlayListV2Rsp();
+      try
       {
-        paramCard.putBusinessInfo(localProfileMiniAppInfo);
-        return true;
-        localProfileMiniAppInfo.miniAppInfoArrayList = ((ArrayList)localObject1);
-        if ((paramSparseArray.extInfo != null) && (paramSparseArray.extInfo.mapInfo != null))
+        paramSparseArray.mergeFrom(((BusinessRespBuffer)localObject1).buffer);
+        localProfileMiniAppInfo.appPlayingInfos = paramSparseArray.appPlayingInfos.get();
+        if ((localProfileMiniAppInfo.appPlayingInfos != null) && (localProfileMiniAppInfo.appPlayingInfos.size() >= 1))
         {
-          i = j;
-          while (i < paramSparseArray.extInfo.mapInfo.size())
-          {
-            localObject1 = (COMM.Entry)paramSparseArray.extInfo.mapInfo.get(i);
-            if ("jumpUrl".equals(((COMM.Entry)localObject1).key.get())) {
-              localProfileMiniAppInfo.tabJumpUrl = ((COMM.Entry)localObject1).value.get();
-            }
-            i += 1;
-          }
-          continue;
-          paramSparseArray = new MISC.StGetFriendPlayListV2Rsp();
-          try
-          {
-            paramSparseArray.mergeFrom(((BusinessRespBuffer)localObject1).buffer);
-            if (paramSparseArray == null) {
-              continue;
-            }
-            localProfileMiniAppInfo.appPlayingInfos = paramSparseArray.appPlayingInfos.get();
-            if ((localProfileMiniAppInfo.appPlayingInfos != null) && (localProfileMiniAppInfo.appPlayingInfos.size() >= 1)) {
-              break label377;
-            }
-            localProfileMiniAppInfo.isShowMiniPlaying = false;
-            return true;
-          }
-          catch (InvalidProtocolBufferMicroException paramSparseArray)
-          {
-            paramSparseArray.printStackTrace();
-          }
-          continue;
-          label377:
           localProfileMiniAppInfo.guestJumpUrl = paramSparseArray.moreJumpLink.get();
           localProfileMiniAppInfo.guestAppTotal = paramSparseArray.total.get();
-          continue;
+        }
+        else
+        {
           localProfileMiniAppInfo.isShowMiniPlaying = false;
+          return true;
         }
       }
+      catch (InvalidProtocolBufferMicroException paramSparseArray)
+      {
+        paramSparseArray.printStackTrace();
+      }
+      label398:
+      localProfileMiniAppInfo.isShowMiniPlaying = true;
+      break label413;
+      localProfileMiniAppInfo.isShowMiniPlaying = false;
+      label413:
+      paramCard.putBusinessInfo(localProfileMiniAppInfo);
+      return true;
+      label421:
+      i += 1;
     }
   }
   
@@ -985,521 +855,584 @@ public class TempProfileBusinessProcessor
     // Byte code:
     //   0: aload_2
     //   1: bipush 16
-    //   3: invokevirtual 143	android/util/SparseArray:get	(I)Ljava/lang/Object;
-    //   6: checkcast 145	com/tencent/mobileqq/profilecard/entity/BusinessRespBuffer
+    //   3: invokevirtual 1065	android/util/SparseArray:get	(I)Ljava/lang/Object;
+    //   6: checkcast 1067	com/tencent/mobileqq/profilecard/entity/BusinessRespBuffer
     //   9: astore 5
     //   11: aload 5
-    //   13: ifnull +964 -> 977
+    //   13: ifnull +1019 -> 1032
     //   16: aload 5
-    //   18: getfield 175	com/tencent/mobileqq/profilecard/entity/BusinessRespBuffer:buffer	[B
-    //   21: ifnull +956 -> 977
-    //   24: new 1305	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp
+    //   18: getfield 1070	com/tencent/mobileqq/profilecard/entity/BusinessRespBuffer:buffer	[B
+    //   21: ifnull +1011 -> 1032
+    //   24: new 1165	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp
     //   27: dup
-    //   28: invokespecial 1306	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:<init>	()V
+    //   28: invokespecial 1166	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:<init>	()V
     //   31: astore_2
     //   32: aload_2
     //   33: aload 5
-    //   35: getfield 175	com/tencent/mobileqq/profilecard/entity/BusinessRespBuffer:buffer	[B
-    //   38: invokevirtual 1307	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   35: getfield 1070	com/tencent/mobileqq/profilecard/entity/BusinessRespBuffer:buffer	[B
+    //   38: invokevirtual 1167	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   41: pop
     //   42: aload_2
-    //   43: getfield 1311	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:iRetCode	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   46: invokevirtual 1314	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   49: ifne +872 -> 921
+    //   43: getfield 1171	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:iRetCode	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   46: invokevirtual 1174	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   49: ifne +883 -> 932
     //   52: aload_2
-    //   53: getfield 1317	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:lhLogoLv	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   56: invokevirtual 1318	com/tencent/mobileqq/pb/PBInt32Field:has	()Z
+    //   53: getfield 1177	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:lhLogoLv	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   56: invokevirtual 1178	com/tencent/mobileqq/pb/PBInt32Field:has	()Z
     //   59: ifeq +14 -> 73
     //   62: aload_1
     //   63: aload_2
-    //   64: getfield 1317	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:lhLogoLv	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   67: invokevirtual 1314	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   70: putfield 1321	com/tencent/mobileqq/data/Card:lhLevel	I
+    //   64: getfield 1177	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:lhLogoLv	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   67: invokevirtual 1174	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   70: putfield 1181	com/tencent/mobileqq/data/Card:lhLevel	I
     //   73: aload_0
     //   74: aload_1
     //   75: aload_2
-    //   76: invokespecial 1325	com/tencent/mobileqq/profilecard/processor/TempProfileBusinessProcessor:parseQidInfo	(Lcom/tencent/mobileqq/data/Card;Lcom/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp;)V
+    //   76: invokespecial 1185	com/tencent/mobileqq/profilecard/processor/TempProfileBusinessProcessor:parseQidInfo	(Lcom/tencent/mobileqq/data/Card;Lcom/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp;)V
     //   79: aload_2
-    //   80: getfield 1329	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:stPrivilegeRsp	Lcom/tencent/pb/profilecard/VaProfileGate$PrivilegeBaseInfoRsp;
+    //   80: getfield 1189	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:stPrivilegeRsp	Lcom/tencent/pb/profilecard/VaProfileGate$PrivilegeBaseInfoRsp;
     //   83: astore 5
     //   85: aload_2
-    //   86: getfield 1333	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:stGiftRsp	Lcom/tencent/pb/profilecard/VaProfileGate$GetGiftListRsp;
+    //   86: getfield 1193	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:stGiftRsp	Lcom/tencent/pb/profilecard/VaProfileGate$GetGiftListRsp;
     //   89: astore 6
     //   91: iconst_0
     //   92: istore_3
     //   93: iload_3
     //   94: aload_2
-    //   95: getfield 1334	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:rpt_task_item	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   98: invokevirtual 370	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
+    //   95: getfield 1194	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:rpt_task_item	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   98: invokevirtual 1109	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
     //   101: if_icmpge +37 -> 138
     //   104: aload_2
-    //   105: getfield 1334	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:rpt_task_item	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   105: getfield 1194	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:rpt_task_item	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
     //   108: iload_3
-    //   109: invokevirtual 376	com/tencent/mobileqq/pb/PBRepeatMessageField:get	(I)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   109: invokevirtual 1112	com/tencent/mobileqq/pb/PBRepeatMessageField:get	(I)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   112: checkcast 62	com/tencent/pb/profilecard/VaProfileGate$CommTaskInfo
     //   115: astore 7
     //   117: iconst_4
     //   118: aload 7
     //   120: getfield 66	com/tencent/pb/profilecard/VaProfileGate$CommTaskInfo:uint32_appid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   123: invokevirtual 191	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   126: if_icmpne +863 -> 989
+    //   123: invokevirtual 155	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   126: if_icmpne +938 -> 1064
     //   129: aload 7
     //   131: aload_1
-    //   132: invokestatic 1339	com/tencent/mobileqq/profile/musicbox/ProfileMusicBox:a	(Lcom/tencent/pb/profilecard/VaProfileGate$CommTaskInfo;Lcom/tencent/mobileqq/data/Card;)V
-    //   135: goto +854 -> 989
+    //   132: invokestatic 1199	com/tencent/mobileqq/profile/musicbox/ProfileMusicBox:a	(Lcom/tencent/pb/profilecard/VaProfileGate$CommTaskInfo;Lcom/tencent/mobileqq/data/Card;)V
+    //   135: goto +929 -> 1064
     //   138: aload_1
     //   139: aload 6
-    //   141: getfield 1344	com/tencent/pb/profilecard/VaProfileGate$GetGiftListRsp:desc	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   144: invokevirtual 348	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   147: putfield 1347	com/tencent/mobileqq/data/Card:presentDesc	Ljava/lang/String;
+    //   141: getfield 1204	com/tencent/pb/profilecard/VaProfileGate$GetGiftListRsp:desc	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   144: invokevirtual 1124	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   147: putfield 1207	com/tencent/mobileqq/data/Card:presentDesc	Ljava/lang/String;
     //   150: aload_1
     //   151: aload 6
-    //   153: getfield 1350	com/tencent/pb/profilecard/VaProfileGate$GetGiftListRsp:custom_url	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   156: invokevirtual 348	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   159: putfield 1353	com/tencent/mobileqq/data/Card:presentCustourl	Ljava/lang/String;
+    //   153: getfield 1210	com/tencent/pb/profilecard/VaProfileGate$GetGiftListRsp:custom_url	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   156: invokevirtual 1124	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   159: putfield 1213	com/tencent/mobileqq/data/Card:presentCustourl	Ljava/lang/String;
     //   162: aload_1
     //   163: aload 6
-    //   165: getfield 1356	com/tencent/pb/profilecard/VaProfileGate$GetGiftListRsp:is_on	Lcom/tencent/mobileqq/pb/PBBoolField;
-    //   168: invokevirtual 203	com/tencent/mobileqq/pb/PBBoolField:get	()Z
-    //   171: putfield 1359	com/tencent/mobileqq/data/Card:presentSwitch	Z
+    //   165: getfield 1217	com/tencent/pb/profilecard/VaProfileGate$GetGiftListRsp:is_on	Lcom/tencent/mobileqq/pb/PBBoolField;
+    //   168: invokevirtual 1221	com/tencent/mobileqq/pb/PBBoolField:get	()Z
+    //   171: putfield 1224	com/tencent/mobileqq/data/Card:presentSwitch	Z
     //   174: aload_1
     //   175: aload 6
-    //   177: getfield 1363	com/tencent/pb/profilecard/VaProfileGate$GetGiftListRsp:gift_url	Lcom/tencent/mobileqq/pb/PBRepeatField;
-    //   180: invokevirtual 1366	com/tencent/mobileqq/pb/PBRepeatField:get	()Ljava/util/List;
-    //   183: putfield 1369	com/tencent/mobileqq/data/Card:presentUrl	Ljava/util/List;
+    //   177: getfield 1228	com/tencent/pb/profilecard/VaProfileGate$GetGiftListRsp:gift_url	Lcom/tencent/mobileqq/pb/PBRepeatField;
+    //   180: invokevirtual 1231	com/tencent/mobileqq/pb/PBRepeatField:get	()Ljava/util/List;
+    //   183: putfield 1234	com/tencent/mobileqq/data/Card:presentUrl	Ljava/util/List;
     //   186: aload 6
-    //   188: getfield 1356	com/tencent/pb/profilecard/VaProfileGate$GetGiftListRsp:is_on	Lcom/tencent/mobileqq/pb/PBBoolField;
-    //   191: invokevirtual 203	com/tencent/mobileqq/pb/PBBoolField:get	()Z
-    //   194: ifeq +151 -> 345
+    //   188: getfield 1217	com/tencent/pb/profilecard/VaProfileGate$GetGiftListRsp:is_on	Lcom/tencent/mobileqq/pb/PBBoolField;
+    //   191: invokevirtual 1221	com/tencent/mobileqq/pb/PBBoolField:get	()Z
+    //   194: ifeq +42 -> 236
     //   197: aload_0
-    //   198: getfield 525	com/tencent/mobileqq/profilecard/processor/TempProfileBusinessProcessor:appRuntime	Lmqq/app/AppRuntime;
-    //   201: ldc_w 884
-    //   204: ldc_w 884
-    //   207: ldc_w 884
-    //   210: ldc_w 1371
-    //   213: ldc_w 1371
+    //   198: getfield 284	com/tencent/mobileqq/profilecard/processor/TempProfileBusinessProcessor:appRuntime	Lmqq/app/AppRuntime;
+    //   201: ldc_w 695
+    //   204: ldc_w 695
+    //   207: ldc_w 695
+    //   210: ldc_w 1236
+    //   213: ldc_w 1236
     //   216: iconst_0
     //   217: iconst_0
-    //   218: ldc_w 884
-    //   221: ldc_w 884
-    //   224: ldc_w 884
-    //   227: ldc_w 884
-    //   230: invokestatic 1376	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   233: aload_1
-    //   234: getfield 1369	com/tencent/mobileqq/data/Card:presentUrl	Ljava/util/List;
-    //   237: invokeinterface 307 1 0
-    //   242: ifle +172 -> 414
-    //   245: aload_1
-    //   246: iconst_1
-    //   247: putfield 1379	com/tencent/mobileqq/data/Card:showPresent	Z
-    //   250: aload_0
-    //   251: aload_1
-    //   252: aload_2
-    //   253: aload 5
-    //   255: invokespecial 1383	com/tencent/mobileqq/profilecard/processor/TempProfileBusinessProcessor:parseIPrivilegeInfo	(Lcom/tencent/mobileqq/data/Card;Lcom/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp;Lcom/tencent/pb/profilecard/VaProfileGate$PrivilegeBaseInfoRsp;)V
-    //   258: aload_2
-    //   259: getfield 1384	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:rpt_oidb_flag	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   262: invokevirtual 226	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
-    //   265: ifeq +512 -> 777
-    //   268: aload_2
-    //   269: getfield 1384	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:rpt_oidb_flag	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   272: invokevirtual 239	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   275: astore 6
-    //   277: iconst_0
-    //   278: istore_3
-    //   279: iload_3
-    //   280: aload 6
-    //   282: invokeinterface 307 1 0
-    //   287: if_icmpge +490 -> 777
-    //   290: aload 6
-    //   292: iload_3
-    //   293: invokeinterface 1385 2 0
-    //   298: checkcast 23	com/tencent/pb/profilecard/VaProfileGate$OidbFlagInfo
-    //   301: astore 7
-    //   303: aload 7
-    //   305: getfield 28	com/tencent/pb/profilecard/VaProfileGate$OidbFlagInfo:uint32_fieled	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   308: invokevirtual 191	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   311: ldc 29
-    //   313: if_icmpne +142 -> 455
-    //   316: aload 7
-    //   318: getfield 1388	com/tencent/pb/profilecard/VaProfileGate$OidbFlagInfo:byets_value	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   321: invokevirtual 1391	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   324: invokevirtual 1394	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   327: astore 7
-    //   329: aload_1
-    //   330: aload 7
-    //   332: invokestatic 729	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   335: putfield 1397	com/tencent/mobileqq/data/Card:mQQLevelType	I
-    //   338: iload_3
-    //   339: iconst_1
-    //   340: iadd
-    //   341: istore_3
-    //   342: goto -63 -> 279
-    //   345: aload_0
-    //   346: getfield 525	com/tencent/mobileqq/profilecard/processor/TempProfileBusinessProcessor:appRuntime	Lmqq/app/AppRuntime;
-    //   349: ldc_w 884
-    //   352: ldc_w 884
-    //   355: ldc_w 884
-    //   358: ldc_w 1399
-    //   361: ldc_w 1399
-    //   364: iconst_0
-    //   365: iconst_0
-    //   366: ldc_w 884
-    //   369: ldc_w 884
-    //   372: ldc_w 884
-    //   375: ldc_w 884
-    //   378: invokestatic 1376	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   381: goto -148 -> 233
-    //   384: astore_1
-    //   385: ldc_w 1401
-    //   388: iconst_1
-    //   389: new 153	java/lang/StringBuilder
-    //   392: dup
-    //   393: invokespecial 154	java/lang/StringBuilder:<init>	()V
-    //   396: ldc_w 1403
-    //   399: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   402: aload_1
-    //   403: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   406: invokevirtual 167	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   409: invokestatic 1067	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   412: iconst_0
-    //   413: ireturn
-    //   414: aload_1
-    //   415: iconst_0
-    //   416: putfield 1379	com/tencent/mobileqq/data/Card:showPresent	Z
-    //   419: goto -169 -> 250
-    //   422: astore 8
-    //   424: ldc_w 1401
-    //   427: iconst_2
-    //   428: new 153	java/lang/StringBuilder
-    //   431: dup
-    //   432: invokespecial 154	java/lang/StringBuilder:<init>	()V
-    //   435: ldc_w 1405
-    //   438: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   441: aload 7
-    //   443: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   446: invokevirtual 167	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   449: invokestatic 1067	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   452: goto -114 -> 338
-    //   455: aload 7
-    //   457: getfield 28	com/tencent/pb/profilecard/VaProfileGate$OidbFlagInfo:uint32_fieled	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   460: invokevirtual 191	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   463: ldc 40
-    //   465: if_icmpne +61 -> 526
-    //   468: aload 7
-    //   470: getfield 1388	com/tencent/pb/profilecard/VaProfileGate$OidbFlagInfo:byets_value	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   473: invokevirtual 1391	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   476: invokevirtual 1394	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   479: astore 7
-    //   481: aload_1
-    //   482: aload 7
-    //   484: invokestatic 1411	java/lang/Short:parseShort	(Ljava/lang/String;)S
-    //   487: putfield 1414	com/tencent/mobileqq/data/Card:switchMusicBox	S
-    //   490: goto -152 -> 338
-    //   493: astore 8
-    //   495: ldc_w 1401
-    //   498: iconst_2
-    //   499: new 153	java/lang/StringBuilder
-    //   502: dup
-    //   503: invokespecial 154	java/lang/StringBuilder:<init>	()V
-    //   506: ldc_w 1416
-    //   509: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   512: aload 7
-    //   514: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   517: invokevirtual 167	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   520: invokestatic 1067	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   523: goto -185 -> 338
-    //   526: aload 7
-    //   528: getfield 28	com/tencent/pb/profilecard/VaProfileGate$OidbFlagInfo:uint32_fieled	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   531: invokevirtual 191	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   534: ldc 41
-    //   536: if_icmpne +61 -> 597
-    //   539: aload 7
-    //   541: getfield 1388	com/tencent/pb/profilecard/VaProfileGate$OidbFlagInfo:byets_value	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   544: invokevirtual 1391	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   547: invokevirtual 1394	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   550: astore 7
-    //   552: aload_1
-    //   553: aload 7
-    //   555: invokestatic 1411	java/lang/Short:parseShort	(Ljava/lang/String;)S
-    //   558: putfield 1419	com/tencent/mobileqq/data/Card:nameplateVipType	I
-    //   561: goto -223 -> 338
-    //   564: astore 8
-    //   566: ldc_w 1401
-    //   569: iconst_2
-    //   570: new 153	java/lang/StringBuilder
-    //   573: dup
-    //   574: invokespecial 154	java/lang/StringBuilder:<init>	()V
-    //   577: ldc_w 1421
-    //   580: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   583: aload 7
-    //   585: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   588: invokevirtual 167	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   591: invokestatic 1067	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   594: goto -256 -> 338
-    //   597: aload 7
-    //   599: getfield 28	com/tencent/pb/profilecard/VaProfileGate$OidbFlagInfo:uint32_fieled	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   602: invokevirtual 191	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   605: ldc 42
-    //   607: if_icmpne +61 -> 668
-    //   610: aload 7
-    //   612: getfield 1388	com/tencent/pb/profilecard/VaProfileGate$OidbFlagInfo:byets_value	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   615: invokevirtual 1391	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   618: invokevirtual 1394	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   621: astore 7
-    //   623: aload_1
-    //   624: aload 7
-    //   626: invokestatic 1411	java/lang/Short:parseShort	(Ljava/lang/String;)S
-    //   629: putfield 1424	com/tencent/mobileqq/data/Card:grayNameplateFlag	I
-    //   632: goto -294 -> 338
-    //   635: astore 8
-    //   637: ldc_w 1401
-    //   640: iconst_2
-    //   641: new 153	java/lang/StringBuilder
-    //   644: dup
-    //   645: invokespecial 154	java/lang/StringBuilder:<init>	()V
-    //   648: ldc_w 1426
-    //   651: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   654: aload 7
-    //   656: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   659: invokevirtual 167	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   662: invokestatic 1067	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   665: goto -327 -> 338
-    //   668: aload 7
-    //   670: getfield 28	com/tencent/pb/profilecard/VaProfileGate$OidbFlagInfo:uint32_fieled	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   673: invokevirtual 191	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   676: istore 4
-    //   678: iload 4
-    //   680: sipush 27375
-    //   683: if_icmpne -345 -> 338
-    //   686: new 1428	gxh_message/Dialogue
-    //   689: dup
-    //   690: invokespecial 1429	gxh_message/Dialogue:<init>	()V
-    //   693: astore 8
-    //   695: aload 8
-    //   697: aload 7
-    //   699: getfield 1388	com/tencent/pb/profilecard/VaProfileGate$OidbFlagInfo:byets_value	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   702: invokevirtual 1391	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   705: invokevirtual 1430	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   708: invokevirtual 1431	gxh_message/Dialogue:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   711: pop
-    //   712: aload 8
-    //   714: getfield 1434	gxh_message/Dialogue:short_nameplate_itemid	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   717: invokevirtual 1318	com/tencent/mobileqq/pb/PBInt32Field:has	()Z
-    //   720: ifeq +276 -> 996
-    //   723: aload 8
-    //   725: getfield 1434	gxh_message/Dialogue:short_nameplate_itemid	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   728: invokevirtual 1314	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   731: istore 4
-    //   733: aload_1
-    //   734: iload 4
-    //   736: putfield 1437	com/tencent/mobileqq/data/Card:nameplateExtId	I
-    //   739: goto -401 -> 338
-    //   742: astore 7
-    //   744: ldc 9
-    //   746: iconst_1
-    //   747: new 153	java/lang/StringBuilder
-    //   750: dup
-    //   751: invokespecial 154	java/lang/StringBuilder:<init>	()V
-    //   754: ldc_w 1439
-    //   757: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   760: aload 7
-    //   762: invokevirtual 1442	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   765: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   768: invokevirtual 167	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   771: invokestatic 171	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   774: goto -436 -> 338
-    //   777: aload_2
-    //   778: getfield 1445	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:st_vip_care	Lcom/tencent/pb/profilecard/VaProfileGate$GetVipCareRsp;
-    //   781: invokevirtual 1448	com/tencent/pb/profilecard/VaProfileGate$GetVipCareRsp:has	()Z
-    //   784: ifeq +65 -> 849
-    //   787: aload_2
-    //   788: getfield 1445	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:st_vip_care	Lcom/tencent/pb/profilecard/VaProfileGate$GetVipCareRsp;
-    //   791: invokevirtual 1449	com/tencent/pb/profilecard/VaProfileGate$GetVipCareRsp:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   794: checkcast 1447	com/tencent/pb/profilecard/VaProfileGate$GetVipCareRsp
-    //   797: astore 6
-    //   799: aload 6
-    //   801: getfield 1452	com/tencent/pb/profilecard/VaProfileGate$GetVipCareRsp:uint32_buss	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   804: invokevirtual 191	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   807: istore_3
-    //   808: aload 6
-    //   810: getfield 1455	com/tencent/pb/profilecard/VaProfileGate$GetVipCareRsp:uint32_notice	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   813: invokevirtual 191	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   816: istore 4
-    //   818: iload_3
-    //   819: ifeq +30 -> 849
-    //   822: iload 4
-    //   824: ifeq +25 -> 849
-    //   827: aload_0
-    //   828: getfield 525	com/tencent/mobileqq/profilecard/processor/TempProfileBusinessProcessor:appRuntime	Lmqq/app/AppRuntime;
-    //   831: getstatic 997	com/tencent/mobileqq/app/QQManagerFactory:VAS_EXTENSION_MANAGER	I
-    //   834: invokevirtual 544	mqq/app/AppRuntime:getManager	(I)Lmqq/manager/Manager;
-    //   837: checkcast 999	com/tencent/mobileqq/vas/VasExtensionManager
-    //   840: iload_3
-    //   841: iconst_4
-    //   842: ishl
-    //   843: iload 4
-    //   845: ior
-    //   846: invokevirtual 1456	com/tencent/mobileqq/vas/VasExtensionManager:a	(I)V
-    //   849: aload_2
-    //   850: getfield 1460	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:qq_value	Lcom/tencent/pb/profilecard/VaProfileGate$QQValueInfoItem;
-    //   853: invokevirtual 1463	com/tencent/pb/profilecard/VaProfileGate$QQValueInfoItem:has	()Z
-    //   856: ifeq +20 -> 876
-    //   859: invokestatic 1468	com/tencent/mobileqq/vas/qqvaluecard/QQValueInfoManage:a	()Lcom/tencent/mobileqq/vas/qqvaluecard/QQValueInfoManage;
-    //   862: aload_1
-    //   863: getfield 230	com/tencent/mobileqq/data/Card:uin	Ljava/lang/String;
-    //   866: aload_2
-    //   867: getfield 1460	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:qq_value	Lcom/tencent/pb/profilecard/VaProfileGate$QQValueInfoItem;
-    //   870: invokevirtual 1469	com/tencent/pb/profilecard/VaProfileGate$QQValueInfoItem:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   873: invokevirtual 1472	com/tencent/mobileqq/vas/qqvaluecard/QQValueInfoManage:b	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   876: aload_2
-    //   877: getfield 1329	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:stPrivilegeRsp	Lcom/tencent/pb/profilecard/VaProfileGate$PrivilegeBaseInfoRsp;
-    //   880: invokevirtual 1475	com/tencent/pb/profilecard/VaProfileGate$PrivilegeBaseInfoRsp:has	()Z
-    //   883: ifne +15 -> 898
-    //   886: ldc_w 1401
-    //   889: iconst_1
-    //   890: ldc_w 1477
-    //   893: invokestatic 1067	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   896: iconst_0
-    //   897: ireturn
-    //   898: aload 5
-    //   900: getfield 1480	com/tencent/pb/profilecard/VaProfileGate$PrivilegeBaseInfoRsp:uIsGrayUsr	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   903: invokevirtual 191	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   906: ifne +69 -> 975
-    //   909: ldc_w 1401
-    //   912: iconst_1
-    //   913: ldc_w 1482
-    //   916: invokestatic 1067	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   919: iconst_0
-    //   920: ireturn
-    //   921: ldc_w 1401
-    //   924: iconst_1
-    //   925: new 153	java/lang/StringBuilder
-    //   928: dup
-    //   929: invokespecial 154	java/lang/StringBuilder:<init>	()V
-    //   932: ldc_w 1484
-    //   935: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   938: aload_2
-    //   939: getfield 1311	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:iRetCode	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   942: invokevirtual 1314	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   945: invokevirtual 808	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   948: ldc_w 1486
-    //   951: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   954: aload_2
-    //   955: getfield 1489	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:sRetMsg	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   958: invokevirtual 1391	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   961: invokevirtual 1394	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   964: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   967: invokevirtual 167	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   970: invokestatic 1067	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   973: iconst_0
-    //   974: ireturn
-    //   975: iconst_1
-    //   976: ireturn
-    //   977: ldc_w 1401
-    //   980: iconst_1
-    //   981: ldc_w 1491
-    //   984: invokestatic 1067	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   987: iconst_0
-    //   988: ireturn
-    //   989: iload_3
-    //   990: iconst_1
-    //   991: iadd
-    //   992: istore_3
-    //   993: goto -900 -> 93
-    //   996: iconst_0
-    //   997: istore 4
-    //   999: goto -266 -> 733
+    //   218: ldc_w 695
+    //   221: ldc_w 695
+    //   224: ldc_w 695
+    //   227: ldc_w 695
+    //   230: invokestatic 1241	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   233: goto +39 -> 272
+    //   236: aload_0
+    //   237: getfield 284	com/tencent/mobileqq/profilecard/processor/TempProfileBusinessProcessor:appRuntime	Lmqq/app/AppRuntime;
+    //   240: ldc_w 695
+    //   243: ldc_w 695
+    //   246: ldc_w 695
+    //   249: ldc_w 1243
+    //   252: ldc_w 1243
+    //   255: iconst_0
+    //   256: iconst_0
+    //   257: ldc_w 695
+    //   260: ldc_w 695
+    //   263: ldc_w 695
+    //   266: ldc_w 695
+    //   269: invokestatic 1241	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   272: aload_1
+    //   273: getfield 1234	com/tencent/mobileqq/data/Card:presentUrl	Ljava/util/List;
+    //   276: invokeinterface 1084 1 0
+    //   281: ifle +11 -> 292
+    //   284: aload_1
+    //   285: iconst_1
+    //   286: putfield 1246	com/tencent/mobileqq/data/Card:showPresent	Z
+    //   289: goto +8 -> 297
+    //   292: aload_1
+    //   293: iconst_0
+    //   294: putfield 1246	com/tencent/mobileqq/data/Card:showPresent	Z
+    //   297: aload_0
+    //   298: aload_1
+    //   299: aload_2
+    //   300: aload 5
+    //   302: invokespecial 1250	com/tencent/mobileqq/profilecard/processor/TempProfileBusinessProcessor:parseIPrivilegeInfo	(Lcom/tencent/mobileqq/data/Card;Lcom/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp;Lcom/tencent/pb/profilecard/VaProfileGate$PrivilegeBaseInfoRsp;)V
+    //   305: aload_2
+    //   306: getfield 1251	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:rpt_oidb_flag	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   309: invokevirtual 1252	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
+    //   312: ifeq +476 -> 788
+    //   315: aload_2
+    //   316: getfield 1251	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:rpt_oidb_flag	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   319: invokevirtual 1083	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   322: astore 6
+    //   324: iconst_0
+    //   325: istore_3
+    //   326: iload_3
+    //   327: aload 6
+    //   329: invokeinterface 1084 1 0
+    //   334: if_icmpge +454 -> 788
+    //   337: aload 6
+    //   339: iload_3
+    //   340: invokeinterface 1253 2 0
+    //   345: checkcast 23	com/tencent/pb/profilecard/VaProfileGate$OidbFlagInfo
+    //   348: astore 7
+    //   350: aload 7
+    //   352: getfield 28	com/tencent/pb/profilecard/VaProfileGate$OidbFlagInfo:uint32_fieled	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   355: invokevirtual 155	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   358: ldc 29
+    //   360: if_icmpne +69 -> 429
+    //   363: aload 7
+    //   365: getfield 1256	com/tencent/pb/profilecard/VaProfileGate$OidbFlagInfo:byets_value	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   368: invokevirtual 1259	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   371: invokevirtual 1262	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   374: astore 7
+    //   376: aload_1
+    //   377: aload 7
+    //   379: invokestatic 525	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   382: putfield 1265	com/tencent/mobileqq/data/Card:mQQLevelType	I
+    //   385: goto +692 -> 1077
+    //   388: new 228	java/lang/StringBuilder
+    //   391: dup
+    //   392: invokespecial 229	java/lang/StringBuilder:<init>	()V
+    //   395: astore 8
+    //   397: aload 8
+    //   399: ldc_w 1267
+    //   402: invokevirtual 406	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   405: pop
+    //   406: aload 8
+    //   408: aload 7
+    //   410: invokevirtual 406	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   413: pop
+    //   414: ldc_w 1269
+    //   417: iconst_2
+    //   418: aload 8
+    //   420: invokevirtual 245	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   423: invokestatic 578	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   426: goto +651 -> 1077
+    //   429: aload 7
+    //   431: getfield 28	com/tencent/pb/profilecard/VaProfileGate$OidbFlagInfo:uint32_fieled	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   434: invokevirtual 155	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   437: ldc 40
+    //   439: if_icmpne +69 -> 508
+    //   442: aload 7
+    //   444: getfield 1256	com/tencent/pb/profilecard/VaProfileGate$OidbFlagInfo:byets_value	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   447: invokevirtual 1259	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   450: invokevirtual 1262	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   453: astore 7
+    //   455: aload_1
+    //   456: aload 7
+    //   458: invokestatic 1275	java/lang/Short:parseShort	(Ljava/lang/String;)S
+    //   461: putfield 1278	com/tencent/mobileqq/data/Card:switchMusicBox	S
+    //   464: goto +613 -> 1077
+    //   467: new 228	java/lang/StringBuilder
+    //   470: dup
+    //   471: invokespecial 229	java/lang/StringBuilder:<init>	()V
+    //   474: astore 8
+    //   476: aload 8
+    //   478: ldc_w 1280
+    //   481: invokevirtual 406	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   484: pop
+    //   485: aload 8
+    //   487: aload 7
+    //   489: invokevirtual 406	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   492: pop
+    //   493: ldc_w 1269
+    //   496: iconst_2
+    //   497: aload 8
+    //   499: invokevirtual 245	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   502: invokestatic 578	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   505: goto +572 -> 1077
+    //   508: aload 7
+    //   510: getfield 28	com/tencent/pb/profilecard/VaProfileGate$OidbFlagInfo:uint32_fieled	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   513: invokevirtual 155	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   516: ldc 41
+    //   518: if_icmpne +69 -> 587
+    //   521: aload 7
+    //   523: getfield 1256	com/tencent/pb/profilecard/VaProfileGate$OidbFlagInfo:byets_value	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   526: invokevirtual 1259	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   529: invokevirtual 1262	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   532: astore 7
+    //   534: aload_1
+    //   535: aload 7
+    //   537: invokestatic 1275	java/lang/Short:parseShort	(Ljava/lang/String;)S
+    //   540: putfield 1283	com/tencent/mobileqq/data/Card:nameplateVipType	I
+    //   543: goto +534 -> 1077
+    //   546: new 228	java/lang/StringBuilder
+    //   549: dup
+    //   550: invokespecial 229	java/lang/StringBuilder:<init>	()V
+    //   553: astore 8
+    //   555: aload 8
+    //   557: ldc_w 1285
+    //   560: invokevirtual 406	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   563: pop
+    //   564: aload 8
+    //   566: aload 7
+    //   568: invokevirtual 406	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   571: pop
+    //   572: ldc_w 1269
+    //   575: iconst_2
+    //   576: aload 8
+    //   578: invokevirtual 245	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   581: invokestatic 578	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   584: goto +493 -> 1077
+    //   587: aload 7
+    //   589: getfield 28	com/tencent/pb/profilecard/VaProfileGate$OidbFlagInfo:uint32_fieled	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   592: invokevirtual 155	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   595: ldc 42
+    //   597: if_icmpne +69 -> 666
+    //   600: aload 7
+    //   602: getfield 1256	com/tencent/pb/profilecard/VaProfileGate$OidbFlagInfo:byets_value	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   605: invokevirtual 1259	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   608: invokevirtual 1262	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   611: astore 7
+    //   613: aload_1
+    //   614: aload 7
+    //   616: invokestatic 1275	java/lang/Short:parseShort	(Ljava/lang/String;)S
+    //   619: putfield 1288	com/tencent/mobileqq/data/Card:grayNameplateFlag	I
+    //   622: goto +455 -> 1077
+    //   625: new 228	java/lang/StringBuilder
+    //   628: dup
+    //   629: invokespecial 229	java/lang/StringBuilder:<init>	()V
+    //   632: astore 8
+    //   634: aload 8
+    //   636: ldc_w 1290
+    //   639: invokevirtual 406	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   642: pop
+    //   643: aload 8
+    //   645: aload 7
+    //   647: invokevirtual 406	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   650: pop
+    //   651: ldc_w 1269
+    //   654: iconst_2
+    //   655: aload 8
+    //   657: invokevirtual 245	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   660: invokestatic 578	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   663: goto +414 -> 1077
+    //   666: aload 7
+    //   668: getfield 28	com/tencent/pb/profilecard/VaProfileGate$OidbFlagInfo:uint32_fieled	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   671: invokevirtual 155	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   674: istore 4
+    //   676: iload 4
+    //   678: sipush 27375
+    //   681: if_icmpne +396 -> 1077
+    //   684: new 1292	gxh_message/Dialogue
+    //   687: dup
+    //   688: invokespecial 1293	gxh_message/Dialogue:<init>	()V
+    //   691: astore 8
+    //   693: aload 8
+    //   695: aload 7
+    //   697: getfield 1256	com/tencent/pb/profilecard/VaProfileGate$OidbFlagInfo:byets_value	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   700: invokevirtual 1259	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   703: invokevirtual 1294	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   706: invokevirtual 1295	gxh_message/Dialogue:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   709: pop
+    //   710: aload 8
+    //   712: getfield 1298	gxh_message/Dialogue:short_nameplate_itemid	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   715: invokevirtual 1178	com/tencent/mobileqq/pb/PBInt32Field:has	()Z
+    //   718: ifeq +353 -> 1071
+    //   721: aload 8
+    //   723: getfield 1298	gxh_message/Dialogue:short_nameplate_itemid	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   726: invokevirtual 1174	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   729: istore 4
+    //   731: goto +3 -> 734
+    //   734: aload_1
+    //   735: iload 4
+    //   737: putfield 1301	com/tencent/mobileqq/data/Card:nameplateExtId	I
+    //   740: goto +337 -> 1077
+    //   743: astore 7
+    //   745: new 228	java/lang/StringBuilder
+    //   748: dup
+    //   749: invokespecial 229	java/lang/StringBuilder:<init>	()V
+    //   752: astore 8
+    //   754: aload 8
+    //   756: ldc_w 1303
+    //   759: invokevirtual 406	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   762: pop
+    //   763: aload 8
+    //   765: aload 7
+    //   767: invokevirtual 1304	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   770: invokevirtual 406	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   773: pop
+    //   774: ldc 9
+    //   776: iconst_1
+    //   777: aload 8
+    //   779: invokevirtual 245	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   782: invokestatic 618	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   785: goto +292 -> 1077
+    //   788: aload_2
+    //   789: getfield 1307	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:st_vip_care	Lcom/tencent/pb/profilecard/VaProfileGate$GetVipCareRsp;
+    //   792: invokevirtual 1310	com/tencent/pb/profilecard/VaProfileGate$GetVipCareRsp:has	()Z
+    //   795: ifeq +65 -> 860
+    //   798: aload_2
+    //   799: getfield 1307	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:st_vip_care	Lcom/tencent/pb/profilecard/VaProfileGate$GetVipCareRsp;
+    //   802: invokevirtual 1311	com/tencent/pb/profilecard/VaProfileGate$GetVipCareRsp:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   805: checkcast 1309	com/tencent/pb/profilecard/VaProfileGate$GetVipCareRsp
+    //   808: astore 6
+    //   810: aload 6
+    //   812: getfield 1314	com/tencent/pb/profilecard/VaProfileGate$GetVipCareRsp:uint32_buss	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   815: invokevirtual 155	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   818: istore_3
+    //   819: aload 6
+    //   821: getfield 1317	com/tencent/pb/profilecard/VaProfileGate$GetVipCareRsp:uint32_notice	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   824: invokevirtual 155	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   827: istore 4
+    //   829: iload_3
+    //   830: ifeq +30 -> 860
+    //   833: iload 4
+    //   835: ifeq +25 -> 860
+    //   838: aload_0
+    //   839: getfield 284	com/tencent/mobileqq/profilecard/processor/TempProfileBusinessProcessor:appRuntime	Lmqq/app/AppRuntime;
+    //   842: getstatic 810	com/tencent/mobileqq/app/QQManagerFactory:VAS_EXTENSION_MANAGER	I
+    //   845: invokevirtual 303	mqq/app/AppRuntime:getManager	(I)Lmqq/manager/Manager;
+    //   848: checkcast 812	com/tencent/mobileqq/vas/VasExtensionManager
+    //   851: iload 4
+    //   853: iload_3
+    //   854: iconst_4
+    //   855: ishl
+    //   856: ior
+    //   857: invokevirtual 1318	com/tencent/mobileqq/vas/VasExtensionManager:a	(I)V
+    //   860: aload_2
+    //   861: getfield 1322	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:qq_value	Lcom/tencent/pb/profilecard/VaProfileGate$QQValueInfoItem;
+    //   864: invokevirtual 1325	com/tencent/pb/profilecard/VaProfileGate$QQValueInfoItem:has	()Z
+    //   867: ifeq +20 -> 887
+    //   870: invokestatic 1330	com/tencent/mobileqq/vas/qqvaluecard/QQValueInfoManage:a	()Lcom/tencent/mobileqq/vas/qqvaluecard/QQValueInfoManage;
+    //   873: aload_1
+    //   874: getfield 280	com/tencent/mobileqq/data/Card:uin	Ljava/lang/String;
+    //   877: aload_2
+    //   878: getfield 1322	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:qq_value	Lcom/tencent/pb/profilecard/VaProfileGate$QQValueInfoItem;
+    //   881: invokevirtual 1331	com/tencent/pb/profilecard/VaProfileGate$QQValueInfoItem:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   884: invokevirtual 1334	com/tencent/mobileqq/vas/qqvaluecard/QQValueInfoManage:b	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   887: aload_2
+    //   888: getfield 1189	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:stPrivilegeRsp	Lcom/tencent/pb/profilecard/VaProfileGate$PrivilegeBaseInfoRsp;
+    //   891: invokevirtual 1337	com/tencent/pb/profilecard/VaProfileGate$PrivilegeBaseInfoRsp:has	()Z
+    //   894: ifne +15 -> 909
+    //   897: ldc_w 1269
+    //   900: iconst_1
+    //   901: ldc_w 1339
+    //   904: invokestatic 578	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   907: iconst_0
+    //   908: ireturn
+    //   909: aload 5
+    //   911: getfield 1342	com/tencent/pb/profilecard/VaProfileGate$PrivilegeBaseInfoRsp:uIsGrayUsr	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   914: invokevirtual 155	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   917: ifne +167 -> 1084
+    //   920: ldc_w 1269
+    //   923: iconst_1
+    //   924: ldc_w 1344
+    //   927: invokestatic 578	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   930: iconst_0
+    //   931: ireturn
+    //   932: new 228	java/lang/StringBuilder
+    //   935: dup
+    //   936: invokespecial 229	java/lang/StringBuilder:<init>	()V
+    //   939: astore_1
+    //   940: aload_1
+    //   941: ldc_w 1346
+    //   944: invokevirtual 406	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   947: pop
+    //   948: aload_1
+    //   949: aload_2
+    //   950: getfield 1171	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:iRetCode	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   953: invokevirtual 1174	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   956: invokevirtual 616	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   959: pop
+    //   960: aload_1
+    //   961: ldc_w 1348
+    //   964: invokevirtual 406	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   967: pop
+    //   968: aload_1
+    //   969: aload_2
+    //   970: getfield 1351	com/tencent/pb/profilecard/VaProfileGate$VaProfileGateRsp:sRetMsg	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   973: invokevirtual 1259	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   976: invokevirtual 1262	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   979: invokevirtual 406	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   982: pop
+    //   983: ldc_w 1269
+    //   986: iconst_1
+    //   987: aload_1
+    //   988: invokevirtual 245	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   991: invokestatic 578	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   994: iconst_0
+    //   995: ireturn
+    //   996: astore_1
+    //   997: new 228	java/lang/StringBuilder
+    //   1000: dup
+    //   1001: invokespecial 229	java/lang/StringBuilder:<init>	()V
+    //   1004: astore_2
+    //   1005: aload_2
+    //   1006: ldc_w 1353
+    //   1009: invokevirtual 406	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1012: pop
+    //   1013: aload_2
+    //   1014: aload_1
+    //   1015: invokevirtual 1138	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1018: pop
+    //   1019: ldc_w 1269
+    //   1022: iconst_1
+    //   1023: aload_2
+    //   1024: invokevirtual 245	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1027: invokestatic 578	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1030: iconst_0
+    //   1031: ireturn
+    //   1032: ldc_w 1269
+    //   1035: iconst_1
+    //   1036: ldc_w 1355
+    //   1039: invokestatic 578	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1042: iconst_0
+    //   1043: ireturn
+    //   1044: astore 8
+    //   1046: goto -658 -> 388
+    //   1049: astore 8
+    //   1051: goto -584 -> 467
+    //   1054: astore 8
+    //   1056: goto -510 -> 546
+    //   1059: astore 8
+    //   1061: goto -436 -> 625
+    //   1064: iload_3
+    //   1065: iconst_1
+    //   1066: iadd
+    //   1067: istore_3
+    //   1068: goto -975 -> 93
+    //   1071: iconst_0
+    //   1072: istore 4
+    //   1074: goto -340 -> 734
+    //   1077: iload_3
+    //   1078: iconst_1
+    //   1079: iadd
+    //   1080: istore_3
+    //   1081: goto -755 -> 326
+    //   1084: iconst_1
+    //   1085: ireturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1002	0	this	TempProfileBusinessProcessor
-    //   0	1002	1	paramCard	Card
-    //   0	1002	2	paramSparseArray	SparseArray<BusinessRespBuffer>
-    //   92	901	3	i	int
-    //   676	322	4	j	int
-    //   9	890	5	localObject1	Object
-    //   89	720	6	localObject2	Object
-    //   115	583	7	localObject3	Object
-    //   742	19	7	localException	Exception
-    //   422	1	8	localNumberFormatException1	NumberFormatException
-    //   493	1	8	localNumberFormatException2	NumberFormatException
-    //   564	1	8	localNumberFormatException3	NumberFormatException
-    //   635	1	8	localNumberFormatException4	NumberFormatException
-    //   693	31	8	localDialogue	gxh_message.Dialogue
+    //   0	1086	0	this	TempProfileBusinessProcessor
+    //   0	1086	1	paramCard	Card
+    //   0	1086	2	paramSparseArray	SparseArray<BusinessRespBuffer>
+    //   92	989	3	i	int
+    //   674	399	4	j	int
+    //   9	901	5	localObject1	Object
+    //   89	731	6	localObject2	Object
+    //   115	581	7	localObject3	Object
+    //   743	23	7	localException	Exception
+    //   395	383	8	localObject4	Object
+    //   1044	1	8	localNumberFormatException1	NumberFormatException
+    //   1049	1	8	localNumberFormatException2	NumberFormatException
+    //   1054	1	8	localNumberFormatException3	NumberFormatException
+    //   1059	1	8	localNumberFormatException4	NumberFormatException
     // Exception table:
     //   from	to	target	type
-    //   32	73	384	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   73	91	384	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   93	135	384	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   138	233	384	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   233	250	384	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   250	277	384	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   279	329	384	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   329	338	384	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   345	381	384	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   414	419	384	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   424	452	384	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   455	481	384	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   481	490	384	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   495	523	384	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   526	552	384	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   552	561	384	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   566	594	384	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   597	623	384	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   623	632	384	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   637	665	384	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   668	678	384	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   686	733	384	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   733	739	384	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   744	774	384	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   777	818	384	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   827	849	384	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   849	876	384	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   876	896	384	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   898	919	384	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   921	973	384	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   329	338	422	java/lang/NumberFormatException
-    //   481	490	493	java/lang/NumberFormatException
-    //   552	561	564	java/lang/NumberFormatException
-    //   623	632	635	java/lang/NumberFormatException
-    //   686	733	742	java/lang/Exception
-    //   733	739	742	java/lang/Exception
+    //   684	731	743	java/lang/Exception
+    //   734	740	743	java/lang/Exception
+    //   32	73	996	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   73	91	996	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   93	135	996	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   138	233	996	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   236	272	996	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   272	289	996	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   292	297	996	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   297	324	996	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   326	376	996	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   376	385	996	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   388	426	996	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   429	455	996	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   455	464	996	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   467	505	996	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   508	534	996	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   534	543	996	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   546	584	996	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   587	613	996	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   613	622	996	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   625	663	996	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   666	676	996	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   684	731	996	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   734	740	996	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   745	785	996	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   788	829	996	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   838	860	996	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   860	887	996	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   887	907	996	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   909	930	996	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   932	994	996	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   376	385	1044	java/lang/NumberFormatException
+    //   455	464	1049	java/lang/NumberFormatException
+    //   534	543	1054	java/lang/NumberFormatException
+    //   613	622	1059	java/lang/NumberFormatException
   }
   
   private void notifyContactChange(Friends paramFriends)
   {
-    PhoneContactManager localPhoneContactManager = (PhoneContactManager)this.appRuntime.getManager(QQManagerFactory.CONTACT_MANAGER);
-    if ((localPhoneContactManager != null) && (localPhoneContactManager.a(paramFriends.uin) != null)) {
-      localPhoneContactManager.f();
+    IPhoneContactService localIPhoneContactService = (IPhoneContactService)this.appRuntime.getRuntimeService(IPhoneContactService.class, "");
+    if ((localIPhoneContactService != null) && (localIPhoneContactService.queryPhoneContactByUin(paramFriends.uin) != null)) {
+      localIPhoneContactService.notifyContactChanged();
     }
   }
   
   private void parseIPrivilegeInfo(Card paramCard, VaProfileGate.VaProfileGateRsp paramVaProfileGateRsp, VaProfileGate.PrivilegeBaseInfoRsp paramPrivilegeBaseInfoRsp)
   {
-    if ((paramVaProfileGateRsp.stPrivilegeRsp.has()) && (paramPrivilegeBaseInfoRsp.uIsGrayUsr.get() != 0))
+    Object localObject = paramPrivilegeBaseInfoRsp;
+    if ((paramVaProfileGateRsp.stPrivilegeRsp.has()) && (((VaProfileGate.PrivilegeBaseInfoRsp)localObject).uIsGrayUsr.get() != 0))
     {
-      paramCard.privilegePromptStr = paramPrivilegeBaseInfoRsp.strMsg.get().toStringUtf8();
-      paramCard.privilegeJumpUrl = paramPrivilegeBaseInfoRsp.strJumpUrl.get().toStringUtf8();
-      paramVaProfileGateRsp = new ArrayList();
+      paramCard.privilegePromptStr = ((VaProfileGate.PrivilegeBaseInfoRsp)localObject).strMsg.get().toStringUtf8();
+      paramCard.privilegeJumpUrl = ((VaProfileGate.PrivilegeBaseInfoRsp)localObject).strJumpUrl.get().toStringUtf8();
+      ArrayList localArrayList = new ArrayList();
       int i = 0;
-      while (i < paramPrivilegeBaseInfoRsp.vOpenPriv.size())
+      while (i < ((VaProfileGate.PrivilegeBaseInfoRsp)localObject).vOpenPriv.size())
       {
-        localObject = (VaProfileGate.PrivilegeInfo)paramPrivilegeBaseInfoRsp.vOpenPriv.get(i);
-        paramVaProfileGateRsp.add(new PrivilegeInfo(((VaProfileGate.PrivilegeInfo)localObject).iType.get(), ((VaProfileGate.PrivilegeInfo)localObject).iSort.get(), ((VaProfileGate.PrivilegeInfo)localObject).iFeeType.get(), ((VaProfileGate.PrivilegeInfo)localObject).iLevel.get(), ((VaProfileGate.PrivilegeInfo)localObject).iFlag.get(), ((VaProfileGate.PrivilegeInfo)localObject).strIconUrl.get().toStringUtf8(), ((VaProfileGate.PrivilegeInfo)localObject).strDeluxeIconUrl.get().toStringUtf8(), ((VaProfileGate.PrivilegeInfo)localObject).strJumpUrl.get().toStringUtf8(), ((VaProfileGate.PrivilegeInfo)localObject).iIsBig.get(), ((VaProfileGate.PrivilegeInfo)localObject).iIsRemind.get(), ((VaProfileGate.PrivilegeInfo)localObject).iRemindTime.get(), ((VaProfileGate.PrivilegeInfo)localObject).strTipsIconUrl.get(), ((VaProfileGate.PrivilegeInfo)localObject).iTipsTimes.get()));
+        paramVaProfileGateRsp = (VaProfileGate.PrivilegeInfo)((VaProfileGate.PrivilegeBaseInfoRsp)localObject).vOpenPriv.get(i);
+        localArrayList.add(new PrivilegeInfo(paramVaProfileGateRsp.iType.get(), paramVaProfileGateRsp.iSort.get(), paramVaProfileGateRsp.iFeeType.get(), paramVaProfileGateRsp.iLevel.get(), paramVaProfileGateRsp.iFlag.get(), paramVaProfileGateRsp.strIconUrl.get().toStringUtf8(), paramVaProfileGateRsp.strDeluxeIconUrl.get().toStringUtf8(), paramVaProfileGateRsp.strJumpUrl.get().toStringUtf8(), paramVaProfileGateRsp.iIsBig.get(), paramVaProfileGateRsp.iIsRemind.get(), paramVaProfileGateRsp.iRemindTime.get(), paramVaProfileGateRsp.strTipsIconUrl.get(), paramVaProfileGateRsp.iTipsTimes.get()));
         i += 1;
       }
-      Object localObject = new ArrayList();
+      localObject = new ArrayList();
       i = 0;
-      while (i < paramPrivilegeBaseInfoRsp.vClosePriv.size())
+      for (;;)
       {
-        VaProfileGate.PrivilegeInfo localPrivilegeInfo = (VaProfileGate.PrivilegeInfo)paramPrivilegeBaseInfoRsp.vClosePriv.get(i);
-        ((ArrayList)localObject).add(new PrivilegeInfo(localPrivilegeInfo.iType.get(), localPrivilegeInfo.iSort.get(), localPrivilegeInfo.iFeeType.get(), localPrivilegeInfo.iLevel.get(), localPrivilegeInfo.iFlag.get(), localPrivilegeInfo.strIconUrl.get().toStringUtf8(), localPrivilegeInfo.strDeluxeIconUrl.get().toStringUtf8(), localPrivilegeInfo.strJumpUrl.get().toStringUtf8(), localPrivilegeInfo.iIsBig.get(), localPrivilegeInfo.iIsRemind.get(), localPrivilegeInfo.iRemindTime.get(), localPrivilegeInfo.strTipsIconUrl.get(), localPrivilegeInfo.iTipsTimes.get()));
+        paramVaProfileGateRsp = paramPrivilegeBaseInfoRsp;
+        if (i >= paramVaProfileGateRsp.vClosePriv.size()) {
+          break;
+        }
+        paramVaProfileGateRsp = (VaProfileGate.PrivilegeInfo)paramVaProfileGateRsp.vClosePriv.get(i);
+        ((ArrayList)localObject).add(new PrivilegeInfo(paramVaProfileGateRsp.iType.get(), paramVaProfileGateRsp.iSort.get(), paramVaProfileGateRsp.iFeeType.get(), paramVaProfileGateRsp.iLevel.get(), paramVaProfileGateRsp.iFlag.get(), paramVaProfileGateRsp.strIconUrl.get().toStringUtf8(), paramVaProfileGateRsp.strDeluxeIconUrl.get().toStringUtf8(), paramVaProfileGateRsp.strJumpUrl.get().toStringUtf8(), paramVaProfileGateRsp.iIsBig.get(), paramVaProfileGateRsp.iIsRemind.get(), paramVaProfileGateRsp.iRemindTime.get(), paramVaProfileGateRsp.strTipsIconUrl.get(), paramVaProfileGateRsp.iTipsTimes.get()));
         i += 1;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("DIYProfileTemplate.TempProfileBusinessProcessor", 1, "save privilege open list=" + paramVaProfileGateRsp.size() + " close list=" + ((ArrayList)localObject).size());
+      if (QLog.isColorLevel())
+      {
+        paramVaProfileGateRsp = new StringBuilder();
+        paramVaProfileGateRsp.append("save privilege open list=");
+        paramVaProfileGateRsp.append(localArrayList.size());
+        paramVaProfileGateRsp.append(" close list=");
+        paramVaProfileGateRsp.append(((ArrayList)localObject).size());
+        QLog.d("DIYProfileTemplate.TempProfileBusinessProcessor", 1, paramVaProfileGateRsp.toString());
       }
-      paramCard.savePrivilegeOpenedInfo(paramVaProfileGateRsp);
+      paramCard.savePrivilegeOpenedInfo(localArrayList);
       paramCard.savePrivilegeClosedInfo((List)localObject);
     }
   }
@@ -1530,126 +1463,122 @@ public class TempProfileBusinessProcessor
     Friends localFriends = localFriendsManager.d(paramString);
     localFriends.name = paramCard.strNick;
     localFriends.remark = paramCard.strReMark;
-    byte b;
-    if ((1L & paramLong) != 0L)
-    {
+    if ((1L & paramLong) != 0L) {
       paramString = paramCard.strShowName;
-      localFriends.alias = paramString;
-      if (paramCard.shGender != 0) {
-        break label127;
-      }
-      b = 1;
-    }
-    for (;;)
-    {
-      localFriends.gender = b;
-      localFriends.age = paramCard.age;
-      updateVipInfo(paramRespSummaryCard, paramCard, localFriends);
-      updateSpecialFlag(paramCard, paramLong, localFriends);
-      localFriendsManager.a(localFriends);
-      notifyContactChange(localFriends);
-      return;
+    } else {
       paramString = localFriends.alias;
-      break;
-      label127:
+    }
+    localFriends.alias = paramString;
+    int i = paramCard.shGender;
+    byte b = 1;
+    if (i != 0) {
       if (paramCard.shGender == 1) {
         b = 2;
       } else {
         b = 0;
       }
     }
+    localFriends.gender = b;
+    localFriends.age = paramCard.age;
+    updateVipInfo(paramRespSummaryCard, paramCard, localFriends);
+    updateSpecialFlag(paramCard, paramLong, localFriends);
+    localFriendsManager.a(localFriends);
+    notifyContactChange(localFriends);
   }
   
   private void updateRichSign(RespSummaryCard paramRespSummaryCard, String paramString, long paramLong, ExtensionInfo paramExtensionInfo)
   {
-    if (((0x4 & paramLong) != 0L) && (paramExtensionInfo.richTime != paramRespSummaryCard.uSignModifyTime))
+    if (((paramLong & 0x4) != 0L) && (paramExtensionInfo.richTime != paramRespSummaryCard.uSignModifyTime))
     {
       ExtensionRichStatus.a(paramExtensionInfo, paramRespSummaryCard.vRichSign, paramRespSummaryCard.uSignModifyTime);
       ((FriendListHandler)((AppInterface)this.appRuntime).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getRichStatus(new String[] { paramString });
-      if (QLog.isColorLevel()) {
-        QLog.d("TempProfileBusinessProcessor", 2, "insertSignMsgIfNeeded from cardHandler uin = " + paramString + " result = " + paramExtensionInfo.isAdded2C2C);
+      if (QLog.isColorLevel())
+      {
+        paramRespSummaryCard = new StringBuilder();
+        paramRespSummaryCard.append("insertSignMsgIfNeeded from cardHandler uin = ");
+        paramRespSummaryCard.append(paramString);
+        paramRespSummaryCard.append(" result = ");
+        paramRespSummaryCard.append(paramExtensionInfo.isAdded2C2C);
+        QLog.d("TempProfileBusinessProcessor", 2, paramRespSummaryCard.toString());
       }
     }
   }
   
   private void updateSpecialFlag(Card paramCard, long paramLong, Friends paramFriends)
   {
-    if ((0x8 & paramLong) != 0L) {
-      if ((paramCard.lUserFlag & 1L) == 0L) {
-        break label85;
-      }
-    }
-    label85:
-    for (paramFriends.cSpecialFlag = ((byte)(paramFriends.cSpecialFlag | 0x1));; paramFriends.cSpecialFlag = ((byte)(paramFriends.cSpecialFlag & 0xFFFFFFFE)))
+    if ((paramLong & 0x8) != 0L)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("TempProfileBusinessProcessor", 2, "cardhandler uin=" + paramFriends.uin + ", cSpecialFlag=" + paramFriends.cSpecialFlag);
+      if ((paramCard.lUserFlag & 1L) != 0L) {
+        paramFriends.cSpecialFlag = ((byte)(paramFriends.cSpecialFlag | 0x1));
+      } else {
+        paramFriends.cSpecialFlag = ((byte)(paramFriends.cSpecialFlag & 0xFFFFFFFE));
       }
-      return;
+      if (QLog.isColorLevel())
+      {
+        paramCard = new StringBuilder();
+        paramCard.append("cardhandler uin=");
+        paramCard.append(paramFriends.uin);
+        paramCard.append(", cSpecialFlag=");
+        paramCard.append(paramFriends.cSpecialFlag);
+        QLog.i("TempProfileBusinessProcessor", 2, paramCard.toString());
+      }
     }
   }
   
   private void updateTroopInfo(long paramLong, int paramInt, RespSummaryCard paramRespSummaryCard, String paramString)
   {
-    TroopManager localTroopManager;
     if (paramLong > 0L)
     {
-      localTroopManager = (TroopManager)this.appRuntime.getManager(QQManagerFactory.TROOP_MANAGER);
-      if ((paramInt != 2) && (paramInt != 5) && (paramInt != 7)) {
-        break label192;
-      }
-      paramString = localTroopManager.b(String.valueOf(paramLong));
-      if (paramString != null)
+      TroopManager localTroopManager = (TroopManager)this.appRuntime.getManager(QQManagerFactory.TROOP_MANAGER);
+      Object localObject;
+      if ((paramInt != 2) && (paramInt != 5) && (paramInt != 7))
       {
-        if (paramString.troopname == null) {
-          break label164;
-        }
-        if (!paramString.troopname.equals(paramRespSummaryCard.strGroupName))
+        if (paramInt == 4)
         {
-          paramString.troopname = paramRespSummaryCard.strGroupName;
-          localTroopManager.b(paramString);
+          localObject = (DiscussionManager)this.appRuntime.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+          paramString = ((DiscussionManager)localObject).a(String.valueOf(paramLong), paramString);
+          if (paramString != null)
+          {
+            paramString.memberName = paramRespSummaryCard.strNick;
+            if ((paramRespSummaryCard.strAutoRemark != null) && (paramRespSummaryCard.strAutoRemark.length() > 0) && (!paramRespSummaryCard.strAutoRemark.equals(paramString.inteRemark)))
+            {
+              paramString.inteRemark = paramRespSummaryCard.strAutoRemark;
+              if (paramRespSummaryCard.strAutoRemark.equals(paramRespSummaryCard.strNick)) {
+                paramString.inteRemarkSource = 129L;
+              } else {
+                paramString.inteRemarkSource = 128L;
+              }
+            }
+            ((DiscussionManager)localObject).a(paramString);
+          }
         }
       }
-    }
-    Object localObject;
-    label164:
-    label192:
-    do
-    {
-      do
+      else
       {
-        for (;;)
+        paramString = localTroopManager.b(String.valueOf(paramLong));
+        if (paramString != null)
         {
+          if (paramString.troopname != null)
+          {
+            if (!paramString.troopname.equals(paramRespSummaryCard.strGroupName))
+            {
+              paramString.troopname = paramRespSummaryCard.strGroupName;
+              localTroopManager.b(paramString);
+            }
+          }
+          else if (paramRespSummaryCard.strGroupName != null)
+          {
+            paramString.troopname = paramRespSummaryCard.strGroupName;
+            localTroopManager.b(paramString);
+          }
           localObject = ColorNickManager.b(paramRespSummaryCard.strGroupNick.getBytes());
           paramString = (String)localObject;
           if (localObject == null) {
             paramString = paramRespSummaryCard.strGroupNick;
           }
           localTroopManager.a(String.valueOf(paramLong), String.valueOf(paramRespSummaryCard.lUIN), paramString, -100, paramRespSummaryCard.strNick, null, -100, -100, -100, -100L, -100L);
-          return;
-          if (paramRespSummaryCard.strGroupName != null)
-          {
-            paramString.troopname = paramRespSummaryCard.strGroupName;
-            localTroopManager.b(paramString);
-          }
         }
-      } while (paramInt != 4);
-      localObject = (DiscussionManager)this.appRuntime.getManager(QQManagerFactory.DISCUSSION_MANAGER);
-      paramString = ((DiscussionManager)localObject).a(String.valueOf(paramLong), paramString);
-    } while (paramString == null);
-    paramString.memberName = paramRespSummaryCard.strNick;
-    if ((paramRespSummaryCard.strAutoRemark != null) && (paramRespSummaryCard.strAutoRemark.length() > 0) && (!paramRespSummaryCard.strAutoRemark.equals(paramString.inteRemark)))
-    {
-      paramString.inteRemark = paramRespSummaryCard.strAutoRemark;
-      if (!paramRespSummaryCard.strAutoRemark.equals(paramRespSummaryCard.strNick)) {
-        break label317;
       }
-    }
-    label317:
-    for (paramString.inteRemarkSource = 129L;; paramString.inteRemarkSource = 128L)
-    {
-      ((DiscussionManager)localObject).a(paramString);
-      return;
     }
   }
   
@@ -1717,13 +1646,14 @@ public class TempProfileBusinessProcessor
       {
         handleGetSummaryCardForBaseInfoPrivacy((QQAppInterface)this.appRuntime, paramCard, paramUdcUinData);
         handleGetSummaryCardForBusinessSwitch((QQAppInterface)this.appRuntime, paramCard, paramUdcUinData);
+        return;
       }
-      return;
     }
     catch (Exception paramBundle)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("TempProfileBusinessProcessor", 2, paramBundle.toString());
+      if (QLog.isColorLevel()) {
+        QLog.i("TempProfileBusinessProcessor", 2, paramBundle.toString());
+      }
     }
   }
   
@@ -1762,15 +1692,13 @@ public class TempProfileBusinessProcessor
     handleGetSummaryCardForVote(paramRespHead, paramRespSummaryCard, paramSparseArray, String.valueOf(l2), paramCard);
     handleGetSummaryCardForPrivilege(paramRespSummaryCard, paramSparseArray, paramCard);
     handleMiniAppPlayingInfo(paramCard, paramSparseArray, l2, l1);
-    handleGetLifeAchievementInfo(paramCard, paramSparseArray);
-    handleGetAnonymousInfo(paramCard, paramSparseArray);
   }
   
   public void onRequestProfileCard(Bundle paramBundle, ArrayList<BusinessReqBuffer> paramArrayList, ArrayList<Integer> paramArrayList1)
   {
     long l1 = paramBundle.getLong("selfUin", 0L);
     long l2 = paramBundle.getLong("targetUin", 0L);
-    Object localObject = new SSummaryCardQueryReq(1, l1, l2, "8.5.5", paramBundle.getInt("comeFromType", 0), 109L);
+    Object localObject = new SSummaryCardQueryReq(1, l1, l2, "8.7.0", paramBundle.getInt("comeFromType", 0), 109L);
     UniPacket localUniPacket = new UniPacket(true);
     localUniPacket.setEncodeName("utf-8");
     localUniPacket.setFuncName("query");
@@ -1795,57 +1723,44 @@ public class TempProfileBusinessProcessor
       paramArrayList.add(new BusinessReqBuffer(15, ((SummaryCardBusiEntry.CommonReq)localObject).toByteArray()));
     }
     paramArrayList.add(new BusinessReqBuffer(16, buildVaProfileGateReq(l2).toByteArray()));
-    paramBundle = new oidb_0xe5b.ReqBody();
-    paramBundle.uint64_uin.set(l2);
-    paramBundle.uint32_max_count.set(10);
-    paramBundle.bool_req_achievement_content.set(false);
-    paramArrayList.add(new BusinessReqBuffer(18, paramBundle.toByteArray()));
-    paramBundle = new oidb_0xec4.ReqBody();
-    paramBundle.uint64_uin.set(l2);
-    paramBundle.uint64_quest_num.set(10L);
-    paramBundle.uint32_fetch_type.set(1);
-    paramArrayList.add(new BusinessReqBuffer(19, paramBundle.toByteArray()));
     if (l1 == l2) {
       paramArrayList.add(new BusinessReqBuffer(17, ((IMiniAppService)QRoute.api(IMiniAppService.class)).getGetUserAppListRequestBusiBuf(l1, 5L)));
-    }
-    for (;;)
-    {
-      if (l1 == l2)
-      {
-        paramArrayList1.add(Integer.valueOf(42104));
-        paramArrayList1.add(Integer.valueOf(41611));
-        paramArrayList1.add(Integer.valueOf(41610));
-        paramArrayList1.add(Integer.valueOf(41607));
-        paramArrayList1.add(Integer.valueOf(41609));
-        paramArrayList1.add(Integer.valueOf(41618));
-        paramArrayList1.add(Integer.valueOf(41619));
-        paramArrayList1.add(Integer.valueOf(41614));
-        paramArrayList1.add(Integer.valueOf(41613));
-        paramArrayList1.add(Integer.valueOf(41622));
-        paramArrayList1.add(Integer.valueOf(41623));
-        paramArrayList1.add(Integer.valueOf(40272));
-      }
-      paramArrayList1.add(Integer.valueOf(27225));
-      paramArrayList1.add(Integer.valueOf(27224));
-      paramArrayList1.add(Integer.valueOf(42122));
-      paramArrayList1.add(Integer.valueOf(42121));
-      paramArrayList1.add(Integer.valueOf(42167));
-      paramArrayList1.add(Integer.valueOf(42172));
-      paramArrayList1.add(Integer.valueOf(40324));
-      paramArrayList1.add(Integer.valueOf(42284));
-      paramArrayList1.add(Integer.valueOf(42326));
-      paramArrayList1.add(Integer.valueOf(42325));
-      paramArrayList1.add(Integer.valueOf(42356));
-      paramArrayList1.add(Integer.valueOf(42363));
-      paramArrayList1.add(Integer.valueOf(42361));
-      paramArrayList1.add(Integer.valueOf(42367));
-      paramArrayList1.add(Integer.valueOf(42377));
-      paramArrayList1.add(Integer.valueOf(42425));
-      paramArrayList1.add(Integer.valueOf(42505));
-      paramArrayList1.add(Integer.valueOf(42488));
-      return;
+    } else {
       paramArrayList.add(new BusinessReqBuffer(17, ((IMiniAppService)QRoute.api(IMiniAppService.class)).getGetFriendPlayListV2RequestBusiBuf(String.valueOf(l2), 1)));
     }
+    if (l1 == l2)
+    {
+      paramArrayList1.add(Integer.valueOf(42104));
+      paramArrayList1.add(Integer.valueOf(41611));
+      paramArrayList1.add(Integer.valueOf(41610));
+      paramArrayList1.add(Integer.valueOf(41607));
+      paramArrayList1.add(Integer.valueOf(41609));
+      paramArrayList1.add(Integer.valueOf(41618));
+      paramArrayList1.add(Integer.valueOf(41619));
+      paramArrayList1.add(Integer.valueOf(41614));
+      paramArrayList1.add(Integer.valueOf(41613));
+      paramArrayList1.add(Integer.valueOf(41622));
+      paramArrayList1.add(Integer.valueOf(41623));
+      paramArrayList1.add(Integer.valueOf(40272));
+    }
+    paramArrayList1.add(Integer.valueOf(27225));
+    paramArrayList1.add(Integer.valueOf(27224));
+    paramArrayList1.add(Integer.valueOf(42122));
+    paramArrayList1.add(Integer.valueOf(42121));
+    paramArrayList1.add(Integer.valueOf(42167));
+    paramArrayList1.add(Integer.valueOf(42172));
+    paramArrayList1.add(Integer.valueOf(40324));
+    paramArrayList1.add(Integer.valueOf(42284));
+    paramArrayList1.add(Integer.valueOf(42326));
+    paramArrayList1.add(Integer.valueOf(42325));
+    paramArrayList1.add(Integer.valueOf(42356));
+    paramArrayList1.add(Integer.valueOf(42363));
+    paramArrayList1.add(Integer.valueOf(42361));
+    paramArrayList1.add(Integer.valueOf(42367));
+    paramArrayList1.add(Integer.valueOf(42377));
+    paramArrayList1.add(Integer.valueOf(42425));
+    paramArrayList1.add(Integer.valueOf(42505));
+    paramArrayList1.add(Integer.valueOf(42488));
   }
   
   public boolean setCardHotValue(Card paramCard, SparseArray<BusinessRespBuffer> paramSparseArray)
@@ -1860,19 +1775,16 @@ public class TempProfileBusinessProcessor
         try
         {
           paramSparseArray.mergeFrom(((BusinessRespBuffer)localObject).buffer);
-          if (paramSparseArray.hotValue.get() > 0)
-          {
-            paramCard.lVoteCount = paramSparseArray.hotValue.get();
-            paramCard.iVoteIncrement = paramSparseArray.redValue.get();
-            return true;
-          }
         }
         catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
         {
-          for (;;)
-          {
-            localInvalidProtocolBufferMicroException.printStackTrace();
-          }
+          localInvalidProtocolBufferMicroException.printStackTrace();
+        }
+        if (paramSparseArray.hotValue.get() > 0)
+        {
+          paramCard.lVoteCount = paramSparseArray.hotValue.get();
+          paramCard.iVoteIncrement = paramSparseArray.redValue.get();
+          return true;
         }
       }
     }
@@ -1884,92 +1796,119 @@ public class TempProfileBusinessProcessor
     HashMap localHashMap = new HashMap();
     if (paramSSummaryCardRsp != null)
     {
-      if (paramSSummaryCardRsp.res < 0)
+      int i = paramSSummaryCardRsp.res;
+      Object localObject = "";
+      if (i < 0)
       {
-        QLog.e("DIYProfileTemplate.protocol/SummaryCard", 1, "getSummaryCard template error! res =" + paramSSummaryCardRsp.res);
-        VasMonitorHandler.a(this.appRuntime, "individual_v2_personalcard_get_fail", "" + paramSSummaryCardRsp.res, "personalcard get template = null", null, 0.0F);
-        VasMonitorDT.a("individual_v2_personalcard_get_fail", "" + paramSSummaryCardRsp.res);
+        paramCard = new StringBuilder();
+        paramCard.append("getSummaryCard template error! res =");
+        paramCard.append(paramSSummaryCardRsp.res);
+        QLog.e("DIYProfileTemplate.protocol/SummaryCard", 1, paramCard.toString());
+        paramCard = this.appRuntime;
+        paramString = new StringBuilder();
+        paramString.append("");
+        paramString.append(paramSSummaryCardRsp.res);
+        VasMonitorHandler.a(paramCard, "individual_v2_personalcard_get_fail", paramString.toString(), "personalcard get template = null", null, 0.0F);
+        paramCard = new StringBuilder();
+        paramCard.append("");
+        paramCard.append(paramSSummaryCardRsp.res);
+        VasMonitorDT.a("individual_v2_personalcard_get_fail", paramCard.toString());
         return;
       }
-      if (!QLog.isColorLevel()) {}
-      for (;;)
+      if (QLog.isColorLevel())
       {
-        paramCard.templateRet = paramSSummaryCardRsp.res;
-        paramCard.lCurrentStyleId = paramSSummaryCardRsp.styleid;
-        paramCard.backgroundUrl = paramSSummaryCardRsp.bgurl;
-        paramCard.lCurrentBgId = paramSSummaryCardRsp.bgid;
-        paramCard.backgroundColor = paramSSummaryCardRsp.color;
-        paramCard.dynamicCardFlag = paramSSummaryCardRsp.dynamicCardFlag;
-        paramCard.strZipUrl = paramSSummaryCardRsp.strZipUrl;
-        paramCard.strActiveUrl = paramSSummaryCardRsp.strActiveCardUrl;
-        paramCard.strDrawerCardUrl = paramSSummaryCardRsp.strDrawerCard;
-        paramCard.strWzryHeroUrl = paramSSummaryCardRsp.strWzryHeroUrl;
-        paramCard.strExtInfo = paramSSummaryCardRsp.extInfo;
-        paramCard.cardType = paramSSummaryCardRsp.cardType;
-        paramCard.diyDefaultText = paramSSummaryCardRsp.strDiyDefaultText;
-        paramCard.defaultCardId = paramSSummaryCardRsp.profileid;
-        Object localObject;
-        if (paramSSummaryCardRsp.stDiyComplicated == null)
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("updateCardTemplate res=");
+        localStringBuilder.append(paramSSummaryCardRsp.res);
+        localStringBuilder.append(" styleid=");
+        localStringBuilder.append(paramSSummaryCardRsp.styleid);
+        localStringBuilder.append(" bgid=");
+        localStringBuilder.append(paramSSummaryCardRsp.bgid);
+        localStringBuilder.append(" strDrawerCardUrl=");
+        localStringBuilder.append(paramSSummaryCardRsp.strDrawerCard);
+        QLog.w("DIYProfileTemplate.protocol/SummaryCard", 1, localStringBuilder.toString());
+        if ((paramSSummaryCardRsp.stDiyComplicated != null) && (paramSSummaryCardRsp.stDiyComplicated.detail != null) && (paramSSummaryCardRsp.stDiyComplicated.detail.length() > 850))
         {
-          localObject = "";
-          paramCard.diyComplicatedInfo = ((String)localObject);
-          paramCard.cardId = paramSSummaryCardRsp.cardid;
-          localObject = paramSSummaryCardRsp.bgtype;
-          if (localObject != null) {
-            paramCard.setBgType(localObject);
-          }
-          if ((paramSSummaryCardRsp.label != null) && (paramSSummaryCardRsp.label.label != null)) {
-            paramCard.setLabelList(paramSSummaryCardRsp.label.label);
-          }
-          paramCard.setWzryHonorInfo(paramSSummaryCardRsp.wzryInfo);
-          if (paramSSummaryCardRsp.stDiyText != null)
-          {
-            paramCard.diyTextFontId = paramSSummaryCardRsp.stDiyText.iFontId;
-            paramCard.diyText = paramSSummaryCardRsp.stDiyText.strText;
-            paramCard.diyTextScale = paramSSummaryCardRsp.stDiyText.fScaling;
-            paramCard.diyTextDegree = paramSSummaryCardRsp.stDiyText.fRotationAngle;
-            paramCard.diyTextTransparency = paramSSummaryCardRsp.stDiyText.fTransparency;
-            if (!TextUtils.isEmpty(paramSSummaryCardRsp.stDiyText.strPoint))
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("stDiyComplicated(1)=");
+          localStringBuilder.append(paramSSummaryCardRsp.stDiyComplicated.detail.substring(0, 840));
+          QLog.w("DIYProfileTemplate.protocol/SummaryCard", 1, localStringBuilder.toString());
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("stDiyComplicated(2)=");
+          localStringBuilder.append(paramSSummaryCardRsp.stDiyComplicated.detail.substring(830, paramSSummaryCardRsp.stDiyComplicated.detail.length() - 1));
+          QLog.w("DIYProfileTemplate.protocol/SummaryCard", 1, localStringBuilder.toString());
+        }
+        else
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("stDiyComplicated=");
+          localStringBuilder.append(paramSSummaryCardRsp.stDiyComplicated);
+          QLog.w("DIYProfileTemplate.protocol/SummaryCard", 1, localStringBuilder.toString());
+        }
+      }
+      paramCard.templateRet = paramSSummaryCardRsp.res;
+      paramCard.lCurrentStyleId = paramSSummaryCardRsp.styleid;
+      paramCard.backgroundUrl = paramSSummaryCardRsp.bgurl;
+      paramCard.lCurrentBgId = paramSSummaryCardRsp.bgid;
+      paramCard.backgroundColor = paramSSummaryCardRsp.color;
+      paramCard.dynamicCardFlag = paramSSummaryCardRsp.dynamicCardFlag;
+      paramCard.strZipUrl = paramSSummaryCardRsp.strZipUrl;
+      paramCard.strActiveUrl = paramSSummaryCardRsp.strActiveCardUrl;
+      paramCard.strDrawerCardUrl = paramSSummaryCardRsp.strDrawerCard;
+      paramCard.strWzryHeroUrl = paramSSummaryCardRsp.strWzryHeroUrl;
+      paramCard.strExtInfo = paramSSummaryCardRsp.extInfo;
+      paramCard.cardType = paramSSummaryCardRsp.cardType;
+      paramCard.diyDefaultText = paramSSummaryCardRsp.strDiyDefaultText;
+      paramCard.defaultCardId = paramSSummaryCardRsp.profileid;
+      if (paramSSummaryCardRsp.stDiyComplicated != null) {
+        localObject = paramSSummaryCardRsp.stDiyComplicated.detail;
+      }
+      paramCard.diyComplicatedInfo = ((String)localObject);
+      paramCard.cardId = paramSSummaryCardRsp.cardid;
+      localObject = paramSSummaryCardRsp.bgtype;
+      if (localObject != null) {
+        paramCard.setBgType(localObject);
+      }
+      if ((paramSSummaryCardRsp.label != null) && (paramSSummaryCardRsp.label.label != null)) {
+        paramCard.setLabelList(paramSSummaryCardRsp.label.label);
+      }
+      paramCard.setWzryHonorInfo(paramSSummaryCardRsp.wzryInfo);
+      if (paramSSummaryCardRsp.stDiyText != null)
+      {
+        paramCard.diyTextFontId = paramSSummaryCardRsp.stDiyText.iFontId;
+        paramCard.diyText = paramSSummaryCardRsp.stDiyText.strText;
+        paramCard.diyTextScale = paramSSummaryCardRsp.stDiyText.fScaling;
+        paramCard.diyTextDegree = paramSSummaryCardRsp.stDiyText.fRotationAngle;
+        paramCard.diyTextTransparency = paramSSummaryCardRsp.stDiyText.fTransparency;
+        if (!TextUtils.isEmpty(paramSSummaryCardRsp.stDiyText.strPoint))
+        {
+          localObject = paramSSummaryCardRsp.stDiyText.strPoint.split("_");
+          if (localObject.length >= 4) {
+            try
             {
-              localObject = paramSSummaryCardRsp.stDiyText.strPoint.split("_");
-              if (localObject.length < 4) {}
+              paramCard.diyTextLocX = Float.parseFloat(localObject[0]);
+              paramCard.diyTextLocY = Float.parseFloat(localObject[1]);
+              paramCard.diyTextWidth = Float.parseFloat(localObject[2]);
+              paramCard.diyTextHeight = Float.parseFloat(localObject[3]);
+            }
+            catch (Exception localException)
+            {
+              QLog.e("Card", 1, "set card with diy text response:", localException);
             }
           }
         }
-        try
-        {
-          paramCard.diyTextLocX = Float.parseFloat(localObject[0]);
-          paramCard.diyTextLocY = Float.parseFloat(localObject[1]);
-          paramCard.diyTextWidth = Float.parseFloat(localObject[2]);
-          paramCard.diyTextHeight = Float.parseFloat(localObject[3]);
-          localHashMap.put("param_FailCode", "0");
-          localHashMap.put("param_templateRet", String.valueOf(paramSSummaryCardRsp.res));
-          if (QLog.isColorLevel()) {
-            QLog.i("protocol/SummaryCard", 2, "updateCardTemplate templateInfo-->" + paramCard.getProfileCardDesc());
-          }
-          StatisticCollector.getInstance(this.appRuntime.getApplication()).collectPerformance(paramString, "profileCardGet", true, 0L, 0L, localHashMap, "", false);
-          return;
-          QLog.w("DIYProfileTemplate.protocol/SummaryCard", 1, "updateCardTemplate res=" + paramSSummaryCardRsp.res + " styleid=" + paramSSummaryCardRsp.styleid + " bgid=" + paramSSummaryCardRsp.bgid + " strDrawerCardUrl=" + paramSSummaryCardRsp.strDrawerCard);
-          if ((paramSSummaryCardRsp.stDiyComplicated != null) && (paramSSummaryCardRsp.stDiyComplicated.detail != null) && (paramSSummaryCardRsp.stDiyComplicated.detail.length() > 850))
-          {
-            QLog.w("DIYProfileTemplate.protocol/SummaryCard", 1, "stDiyComplicated(1)=" + paramSSummaryCardRsp.stDiyComplicated.detail.substring(0, 840));
-            QLog.w("DIYProfileTemplate.protocol/SummaryCard", 1, "stDiyComplicated(2)=" + paramSSummaryCardRsp.stDiyComplicated.detail.substring(830, paramSSummaryCardRsp.stDiyComplicated.detail.length() - 1));
-          }
-          else
-          {
-            QLog.w("DIYProfileTemplate.protocol/SummaryCard", 1, "stDiyComplicated=" + paramSSummaryCardRsp.stDiyComplicated);
-            continue;
-            localObject = paramSSummaryCardRsp.stDiyComplicated.detail;
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            QLog.e("Card", 1, "set card with diy text response:", localException);
-          }
-        }
       }
+      localHashMap.put("param_FailCode", "0");
+      localHashMap.put("param_templateRet", String.valueOf(paramSSummaryCardRsp.res));
+      if (QLog.isColorLevel())
+      {
+        paramSSummaryCardRsp = new StringBuilder();
+        paramSSummaryCardRsp.append("updateCardTemplate templateInfo-->");
+        paramSSummaryCardRsp.append(paramCard.getProfileCardDesc());
+        QLog.i("protocol/SummaryCard", 2, paramSSummaryCardRsp.toString());
+      }
+      StatisticCollector.getInstance(this.appRuntime.getApplication()).collectPerformance(paramString, "profileCardGet", true, 0L, 0L, localHashMap, "", false);
+      return;
     }
     QLog.i("protocol/SummaryCard", 1, "updateCardTemplate templateInfo is null");
     VasMonitorHandler.a(this.appRuntime, "individual_v2_personalcard_get_fail", "personalcard_get_template_null", "personalcard get template = null", null, 0.0F);
@@ -1981,7 +1920,7 @@ public class TempProfileBusinessProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.processor.TempProfileBusinessProcessor
  * JD-Core Version:    0.7.0.1
  */

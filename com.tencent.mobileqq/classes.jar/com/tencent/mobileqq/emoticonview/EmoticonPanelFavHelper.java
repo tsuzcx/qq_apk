@@ -2,30 +2,35 @@ package com.tencent.mobileqq.emoticonview;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Handler;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.FavEmoRoamingObserver;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.data.CustomEmotionData;
 import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.api.IFavroamingDBManagerService;
+import com.tencent.mobileqq.emosm.api.IFavroamingManagerService;
+import com.tencent.mobileqq.emosm.favroaming.FavEmoConstant;
 import com.tencent.mobileqq.emosm.favroaming.SyncListener;
+import com.tencent.mobileqq.emosm.vipcomic.VipComicMqqHandler;
+import com.tencent.mobileqq.emoticon.api.IEmojiManagerService;
 import com.tencent.mobileqq.emoticonview.ipc.QQEmoticonMainPanelApp;
-import com.tencent.mobileqq.emoticonview.ipc.proxy.EmojiManagerProxy;
-import com.tencent.mobileqq.emoticonview.ipc.proxy.FavroamingManagerProxy;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.EmojiManagerServiceProxy;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.FavroamingDBManagerServiceProxy;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.FavroamingManagerServiceProxy;
 import com.tencent.mobileqq.emoticonview.ipc.proxy.VipComicMqqHandlerProxy;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 
 public class EmoticonPanelFavHelper
-  extends AbstractEmoticonPanelHelper
+  extends AbstractEmoticonPanelHelper<EmoticonPanelController>
 {
-  private static final String LOG_TAG = "EmoticonPanelFavHelper";
+  public static final String LOG_TAG = "EmoticonPanelFavHelper";
   protected QQEmoticonMainPanelApp app;
   Runnable comicEmoticon = new EmoticonPanelFavHelper.3(this);
   FavEmoRoamingObserver favEmoRoamingObserver = new EmoticonPanelFavHelper.5(this);
@@ -36,60 +41,81 @@ public class EmoticonPanelFavHelper
     super(paramEmoticonPanelController);
   }
   
-  void RoamTenEmoticon()
+  protected void applyFavEmoticonSharePref(SharedPreferences paramSharedPreferences, String paramString)
   {
-    QQEmoticonMainPanelApp localQQEmoticonMainPanelApp = this.mPanelController.app;
-    Object localObject = this.mPanelController.panelDataList;
-    int j = this.mPanelController.businessType;
-    if (localQQEmoticonMainPanelApp != null)
-    {
-      EmojiManagerProxy localEmojiManagerProxy = (EmojiManagerProxy)localQQEmoticonMainPanelApp.getManager(QQManagerFactory.CHAT_EMOTION_MANAGER);
-      if (!localEmojiManagerProxy.haveInitFav())
-      {
-        localEmojiManagerProxy.setHaveInitFav(true);
-        if (QLog.isColorLevel()) {
-          QLog.d("EmoticonPanelFavHelper", 2, "doSyncFavEmotion");
-        }
-        doSyncFavEmotion();
-      }
-      if (!localEmojiManagerProxy.haveInitSmallAndNormal())
-      {
-        localObject = new ArrayList((Collection)localObject);
-        if (QLog.isColorLevel()) {
-          QLog.d("EmoticonPanelFavHelper", 2, "newPanelDataList.size() = " + ((ArrayList)localObject).size());
-        }
-        localObject = ((ArrayList)localObject).iterator();
-        int i = 0;
-        while (((Iterator)localObject).hasNext())
-        {
-          EmoticonPackage localEmoticonPackage = ((EmotionPanelInfo)((Iterator)localObject).next()).emotionPkg;
-          i += 1;
-          if ((localEmoticonPackage != null) && ((localEmoticonPackage.jobType == 0) || (localEmoticonPackage.jobType == 4)) && (localEmoticonPackage.status != 2))
-          {
-            localEmojiManagerProxy.setHaveInitSmallAndNormal(true);
-            if (i <= 10) {
-              EmoticonUtils.downloadNormalEmotion(localQQEmoticonMainPanelApp, localEmoticonPackage, j);
-            }
-          }
-        }
-      }
+    if (paramSharedPreferences == null) {
+      return;
     }
+    paramSharedPreferences = paramSharedPreferences.edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("local_overflow");
+    localStringBuilder.append(paramString);
+    paramSharedPreferences.putBoolean(localStringBuilder.toString(), true).apply();
   }
   
   void doSyncFavEmotion()
   {
-    QQEmoticonMainPanelApp localQQEmoticonMainPanelApp = this.mPanelController.app;
-    Object localObject = this.mPanelController.context;
+    QQEmoticonMainPanelApp localQQEmoticonMainPanelApp = ((EmoticonPanelController)this.mPanelController).app;
+    Object localObject = ((EmoticonPanelController)this.mPanelController).context;
     if (localQQEmoticonMainPanelApp == null) {
       return;
     }
     localObject = ((Context)localObject).getSharedPreferences("mobileQQ", 0);
     String str = localQQEmoticonMainPanelApp.getCurrentUin();
-    boolean bool = ((SharedPreferences)localObject).getBoolean("local_overflow" + str, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonPanelFavHelper", 2, "isDelOverflow=" + bool);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("local_overflow");
+    localStringBuilder.append(str);
+    boolean bool = ((SharedPreferences)localObject).getBoolean(localStringBuilder.toString(), false);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isDelOverflow=");
+      localStringBuilder.append(bool);
+      QLog.d("EmoticonPanelFavHelper", 2, localStringBuilder.toString());
     }
     ThreadManager.post(new EmoticonPanelFavHelper.2(this, localQQEmoticonMainPanelApp, bool, (SharedPreferences)localObject, str), 5, null, false);
+  }
+  
+  protected void downloadSmallAndNormalEmotion(QQEmoticonMainPanelApp paramQQEmoticonMainPanelApp, List<EmotionPanelInfo> paramList, int paramInt, EmojiManagerServiceProxy paramEmojiManagerServiceProxy)
+  {
+    paramList = new ArrayList(paramList);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("newPanelDataList.size() = ");
+      ((StringBuilder)localObject).append(paramList.size());
+      QLog.d("EmoticonPanelFavHelper", 2, ((StringBuilder)localObject).toString());
+    }
+    paramList = paramList.iterator();
+    int i = 0;
+    while (paramList.hasNext())
+    {
+      localObject = ((EmotionPanelInfo)paramList.next()).emotionPkg;
+      int j = i + 1;
+      i = j;
+      if (localObject != null) {
+        if (((EmoticonPackage)localObject).jobType != 0)
+        {
+          i = j;
+          if (((EmoticonPackage)localObject).jobType != 4) {}
+        }
+        else
+        {
+          i = j;
+          if (((EmoticonPackage)localObject).status != 2)
+          {
+            paramEmojiManagerServiceProxy.setHaveInitSmallAndNormal(true);
+            i = j;
+            if (j <= 10)
+            {
+              EmoticonUtils.downloadNormalEmotion(paramQQEmoticonMainPanelApp, (EmoticonPackage)localObject, paramInt);
+              i = j;
+            }
+          }
+        }
+      }
+    }
   }
   
   public String getTag()
@@ -99,7 +125,7 @@ public class EmoticonPanelFavHelper
   
   public void initBefore()
   {
-    this.app = this.mPanelController.app;
+    this.app = ((EmoticonPanelController)this.mPanelController).app;
   }
   
   public int[] interestedIn()
@@ -109,14 +135,15 @@ public class EmoticonPanelFavHelper
   
   public void onAttachedToWindow()
   {
-    if (this.app != null) {
-      this.app.addObserver(this.favEmoRoamingObserver);
+    QQEmoticonMainPanelApp localQQEmoticonMainPanelApp = this.app;
+    if (localQQEmoticonMainPanelApp != null) {
+      localQQEmoticonMainPanelApp.addObserver(this.favEmoRoamingObserver);
     }
   }
   
   public void onDestory()
   {
-    QQEmoticonMainPanelApp localQQEmoticonMainPanelApp = this.mPanelController.app;
+    QQEmoticonMainPanelApp localQQEmoticonMainPanelApp = ((EmoticonPanelController)this.mPanelController).app;
     if (localQQEmoticonMainPanelApp != null) {
       localQQEmoticonMainPanelApp.removeObserver(this.favEmoRoamingObserver);
     }
@@ -125,31 +152,107 @@ public class EmoticonPanelFavHelper
   
   public void onDetachedFromWindow()
   {
-    if (this.app != null) {
-      this.app.removeObserver(this.favEmoRoamingObserver);
+    QQEmoticonMainPanelApp localQQEmoticonMainPanelApp = this.app;
+    if (localQQEmoticonMainPanelApp != null) {
+      localQQEmoticonMainPanelApp.removeObserver(this.favEmoRoamingObserver);
+    }
+  }
+  
+  protected void realDoSyncFavEmoticon(boolean paramBoolean, QQEmoticonMainPanelApp paramQQEmoticonMainPanelApp, SharedPreferences paramSharedPreferences, String paramString)
+  {
+    if (!paramBoolean)
+    {
+      paramQQEmoticonMainPanelApp = (FavroamingDBManagerServiceProxy)paramQQEmoticonMainPanelApp.getRuntimeService(IFavroamingDBManagerService.class);
+      List localList1 = paramQQEmoticonMainPanelApp.getEmoticonDataList();
+      if ((localList1 != null) && (localList1.size() > FavEmoConstant.a))
+      {
+        List localList2 = localList1.subList(0, localList1.size() - FavEmoConstant.a);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("delListOverflow=");
+          localStringBuilder.append(localList2.toString());
+          localStringBuilder.append("emolist.size=");
+          localStringBuilder.append(localList1.size());
+          QLog.d("EmoticonPanelFavHelper", 2, localStringBuilder.toString());
+        }
+        paramQQEmoticonMainPanelApp.delOverflow(localList2);
+        updateFavEmoticonPanel();
+      }
+      applyFavEmoticonSharePref(paramSharedPreferences, paramString);
+      startSyncFavEmoticon();
+      return;
+    }
+    startSyncFavEmoticon();
+  }
+  
+  protected void realUpdateFavEmoticonPanel()
+  {
+    List localList = ((EmoticonPanelController)this.mPanelController).getPanelDataList();
+    if (localList != null)
+    {
+      int i = 0;
+      while (i < localList.size())
+      {
+        localEmotionPanelInfo = (EmotionPanelInfo)localList.get(i);
+        if ((localEmotionPanelInfo != null) && (localEmotionPanelInfo.type == 4)) {
+          break label62;
+        }
+        i += 1;
+      }
+    }
+    EmotionPanelInfo localEmotionPanelInfo = null;
+    label62:
+    if ((localEmotionPanelInfo != null) && (((EmoticonPanelController)this.mPanelController).getPageAdapter() != null)) {
+      ((EmoticonPanelController)this.mPanelController).getPageAdapter().refreshListViewAdapter(localEmotionPanelInfo);
+    }
+  }
+  
+  public void roamTenEmoticon()
+  {
+    QQEmoticonMainPanelApp localQQEmoticonMainPanelApp = ((EmoticonPanelController)this.mPanelController).app;
+    List localList = ((EmoticonPanelController)this.mPanelController).getPanelDataList();
+    int i = ((EmoticonPanelController)this.mPanelController).getBusinessType();
+    if (localQQEmoticonMainPanelApp != null)
+    {
+      EmojiManagerServiceProxy localEmojiManagerServiceProxy = (EmojiManagerServiceProxy)localQQEmoticonMainPanelApp.getRuntimeService(IEmojiManagerService.class);
+      if (!localEmojiManagerServiceProxy.haveInitFav())
+      {
+        localEmojiManagerServiceProxy.setHaveInitFav(true);
+        if (QLog.isColorLevel()) {
+          QLog.d("EmoticonPanelFavHelper", 2, "doSyncFavEmotion");
+        }
+        doSyncFavEmotion();
+      }
+      if (!localEmojiManagerServiceProxy.haveInitSmallAndNormal()) {
+        downloadSmallAndNormalEmotion(localQQEmoticonMainPanelApp, localList, i, localEmojiManagerServiceProxy);
+      }
     }
   }
   
   void startSyncFavEmoticon()
   {
-    Object localObject = this.mPanelController.context;
-    QQEmoticonMainPanelApp localQQEmoticonMainPanelApp = this.mPanelController.app;
-    if ((!NetworkUtil.d((Context)localObject)) || (localQQEmoticonMainPanelApp == null)) {}
-    VipComicMqqHandlerProxy localVipComicMqqHandlerProxy;
-    do
+    Object localObject = ((EmoticonPanelController)this.mPanelController).context;
+    QQEmoticonMainPanelApp localQQEmoticonMainPanelApp = ((EmoticonPanelController)this.mPanelController).app;
+    if (NetworkUtil.isNetSupport((Context)localObject))
     {
-      return;
-      localObject = (FavroamingManagerProxy)localQQEmoticonMainPanelApp.getManager(QQManagerFactory.FAV_ROAMING_MANAGER);
-      localVipComicMqqHandlerProxy = (VipComicMqqHandlerProxy)localQQEmoticonMainPanelApp.getBusinessHandler(BusinessHandlerFactory.MQQ_COMIC_HANDLER);
-    } while (!((FavroamingManagerProxy)localObject).isInSyncing());
-    localVipComicMqqHandlerProxy.getMyComicFavorEmotIcons();
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonPanelFavHelper", 2, "comicHandler.GetMyComicFavorEmotIcons");
+      if (localQQEmoticonMainPanelApp == null) {
+        return;
+      }
+      localObject = (FavroamingManagerServiceProxy)localQQEmoticonMainPanelApp.getRuntimeService(IFavroamingManagerService.class);
+      VipComicMqqHandlerProxy localVipComicMqqHandlerProxy = (VipComicMqqHandlerProxy)localQQEmoticonMainPanelApp.getBusinessHandler(VipComicMqqHandler.a);
+      if (((FavroamingManagerServiceProxy)localObject).isInSyncing())
+      {
+        localVipComicMqqHandlerProxy.getMyComicFavorEmotIcons();
+        if (QLog.isColorLevel()) {
+          QLog.d("EmoticonPanelFavHelper", 2, "comicHandler.GetMyComicFavorEmotIcons");
+        }
+        ((FavroamingManagerServiceProxy)localObject).addSyncListener(this.sListener);
+        ((FavroamingManagerServiceProxy)localObject).syncLocalDel();
+        this.comicEmoticon.run();
+        ReportController.b(localQQEmoticonMainPanelApp.getQQAppInterface(), "CliOper", "", "", "0X8005CED", "0X8005CED", 0, 0, "", "", "", "");
+      }
     }
-    ((FavroamingManagerProxy)localObject).addSyncListener(this.sListener);
-    ((FavroamingManagerProxy)localObject).syncLocalDel();
-    this.comicEmoticon.run();
-    ReportController.b(localQQEmoticonMainPanelApp.getQQAppInterface(), "CliOper", "", "", "0X8005CED", "0X8005CED", 0, 0, "", "", "", "");
   }
   
   public void updateFavEmoticonPanel()
@@ -162,7 +265,7 @@ public class EmoticonPanelFavHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelFavHelper
  * JD-Core Version:    0.7.0.1
  */

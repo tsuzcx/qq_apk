@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class MusicInfo
   extends JceStruct
@@ -52,31 +53,37 @@ public final class MusicInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strSongId != null) {
-      paramJceOutputStream.write(this.strSongId, 0);
+    Object localObject = this.strSongId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.strName != null) {
-      paramJceOutputStream.write(this.strName, 1);
+    localObject = this.strName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.strAlbumName != null) {
-      paramJceOutputStream.write(this.strAlbumName, 2);
+    localObject = this.strAlbumName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.vecSingerList != null) {
-      paramJceOutputStream.write(this.vecSingerList, 3);
+    localObject = this.vecSingerList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
-    if (this.strPic != null) {
-      paramJceOutputStream.write(this.strPic, 4);
+    localObject = this.strPic;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.iAccess, 5);
-    if (this.strUrl != null) {
-      paramJceOutputStream.write(this.strUrl, 6);
+    localObject = this.strUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
     paramJceOutputStream.write(this.lDuration, 7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QZONE_BG_MUSIC.MusicInfo
  * JD-Core Version:    0.7.0.1
  */

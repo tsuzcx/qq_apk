@@ -1,6 +1,6 @@
 package com.tencent.gdtad.jsbridge;
 
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.ad.tangram.statistics.AdAnalysisHelperForUtil;
 import com.tencent.gdtad.log.GdtLog;
 import com.tencent.gdtad.util.GdtDeviceUtil;
 import org.json.JSONException;
@@ -12,47 +12,44 @@ class GdtCarrierJsCallHandler
   public boolean a(GdtAdWebPlugin paramGdtAdWebPlugin, String paramString, String... paramVarArgs)
   {
     Object localObject = null;
-    if (paramGdtAdWebPlugin != null) {}
-    for (paramVarArgs = paramGdtAdWebPlugin.a(); (paramGdtAdWebPlugin == null) || (paramVarArgs == null); paramVarArgs = null)
-    {
-      GdtLog.d("GdtCarrierJsCallHandler", "handleJsCallRequest error");
-      return true;
+    if (paramGdtAdWebPlugin != null) {
+      paramVarArgs = paramGdtAdWebPlugin.a();
+    } else {
+      paramVarArgs = null;
     }
-    JSONObject localJSONObject = new JSONObject();
-    try
+    if ((paramGdtAdWebPlugin != null) && (paramVarArgs != null))
     {
-      localJSONObject.put("carrier", GdtDeviceUtil.a(paramVarArgs));
-    }
-    catch (JSONException localJSONException)
-    {
+      JSONObject localJSONObject = new JSONObject();
       try
       {
-        for (;;)
-        {
-          paramGdtAdWebPlugin.callJs(paramString, new String[] { localJSONObject.toString() });
-          paramString = localObject;
-          if (paramGdtAdWebPlugin != null) {
-            paramString = paramGdtAdWebPlugin.a();
-          }
-          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getCarrier", paramString);
-          return true;
-          localJSONException = localJSONException;
-          GdtLog.d("GdtCarrierJsCallHandler", "handleJsCallRequest error", localJSONException);
-        }
+        localJSONObject.put("carrier", GdtDeviceUtil.a(paramVarArgs));
+      }
+      catch (JSONException localJSONException)
+      {
+        GdtLog.d("GdtCarrierJsCallHandler", "handleJsCallRequest error", localJSONException);
+      }
+      try
+      {
+        paramGdtAdWebPlugin.callJs(paramString, new String[] { localJSONObject.toString() });
       }
       catch (Throwable paramString)
       {
-        for (;;)
-        {
-          GdtLog.d("GdtCarrierJsCallHandler", "handleJsCallRequest error", paramString);
-        }
+        GdtLog.d("GdtCarrierJsCallHandler", "handleJsCallRequest error", paramString);
       }
+      paramString = localObject;
+      if (paramGdtAdWebPlugin != null) {
+        paramString = paramGdtAdWebPlugin.a();
+      }
+      AdAnalysisHelperForUtil.reportForJSBridgeInvoked(paramVarArgs, false, "getCarrier", paramString);
+      return true;
     }
+    GdtLog.d("GdtCarrierJsCallHandler", "handleJsCallRequest error");
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtCarrierJsCallHandler
  * JD-Core Version:    0.7.0.1
  */

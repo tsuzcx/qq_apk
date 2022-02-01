@@ -30,7 +30,7 @@ public class ExtendButton
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void dispatchSetSelected(boolean paramBoolean)
+  protected void dispatchSetSelected(boolean paramBoolean)
   {
     if ((paramBoolean) && (this.mAncestorHaveOneSelected))
     {
@@ -79,7 +79,7 @@ public class ExtendButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.widget.ExtendButton
  * JD-Core Version:    0.7.0.1
  */

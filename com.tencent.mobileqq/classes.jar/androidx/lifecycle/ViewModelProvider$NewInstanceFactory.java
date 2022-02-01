@@ -24,19 +24,25 @@ public class ViewModelProvider$NewInstanceFactory
       ViewModel localViewModel = (ViewModel)paramClass.newInstance();
       return localViewModel;
     }
-    catch (InstantiationException localInstantiationException)
-    {
-      throw new RuntimeException("Cannot create an instance of " + paramClass, localInstantiationException);
-    }
     catch (IllegalAccessException localIllegalAccessException)
     {
-      throw new RuntimeException("Cannot create an instance of " + paramClass, localIllegalAccessException);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Cannot create an instance of ");
+      localStringBuilder.append(paramClass);
+      throw new RuntimeException(localStringBuilder.toString(), localIllegalAccessException);
+    }
+    catch (InstantiationException localInstantiationException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Cannot create an instance of ");
+      localStringBuilder.append(paramClass);
+      throw new RuntimeException(localStringBuilder.toString(), localInstantiationException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.lifecycle.ViewModelProvider.NewInstanceFactory
  * JD-Core Version:    0.7.0.1
  */

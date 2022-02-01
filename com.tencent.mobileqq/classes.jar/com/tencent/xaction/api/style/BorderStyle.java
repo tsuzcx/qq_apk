@@ -12,7 +12,7 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/style/BorderStyle;", "", "()V", "mViewData", "Lcom/tencent/xaction/api/data/ViewData;", "draw", "", "canvas", "Landroid/graphics/Canvas;", "setStyle", "viewData", "XActionEngine_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/style/BorderStyle;", "", "()V", "mViewData", "Lcom/tencent/xaction/api/data/ViewData;", "draw", "", "canvas", "Landroid/graphics/Canvas;", "setStyle", "viewData", "XActionCore_release"}, k=1, mv={1, 1, 16})
 @Keep
 public final class BorderStyle
 {
@@ -28,52 +28,62 @@ public final class BorderStyle
       if (localObject1 != null)
       {
         localObject1 = ((Style)localObject1).getBorders();
-        if (localObject1 != null) {
-          break label48;
+        break label42;
+      }
+    }
+    localObject1 = null;
+    label42:
+    if (localObject1 == null) {
+      return;
+    }
+    localObject1 = new Paint();
+    Object localObject2 = this.mViewData;
+    if (localObject2 == null) {
+      Intrinsics.throwNpe();
+    }
+    localObject2 = ((ViewData)localObject2).getSt().getBorders();
+    if (localObject2 == null) {
+      Intrinsics.throwNpe();
+    }
+    int j = localObject2.length;
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject3 = localObject2[i];
+      ((Paint)localObject1).setColor(-16776961);
+      ((Paint)localObject1).setStrokeWidth(ScreenUnit.a.a(localObject3.getW()));
+      ((Paint)localObject1).setStyle(Paint.Style.STROKE);
+      int k = paramCanvas.getWidth();
+      int m = paramCanvas.getHeight();
+      int n = localObject3.getOrientation();
+      if (n != 1)
+      {
+        float f;
+        if (n != 2)
+        {
+          if (n != 4)
+          {
+            if (n == 8) {
+              paramCanvas.drawLine(0.0F, 0.0F, 0.0F, m, (Paint)localObject1);
+            }
+          }
+          else
+          {
+            f = m;
+            paramCanvas.drawLine(0.0F, f, k, f, (Paint)localObject1);
+          }
+        }
+        else
+        {
+          f = k;
+          paramCanvas.drawLine(f, 0.0F, f, m, (Paint)localObject1);
         }
       }
-    }
-    label48:
-    Object localObject2;
-    int j;
-    int i;
-    do
-    {
-      return;
-      localObject1 = null;
-      break;
-      localObject1 = new Paint();
-      localObject2 = this.mViewData;
-      if (localObject2 == null) {
-        Intrinsics.throwNpe();
+      else
+      {
+        paramCanvas.drawLine(0.0F, 0.0F, k, 0.0F, (Paint)localObject1);
       }
-      localObject2 = ((ViewData)localObject2).getSt().getBorders();
-      if (localObject2 == null) {
-        Intrinsics.throwNpe();
-      }
-      j = localObject2.length;
-      i = 0;
-    } while (i >= j);
-    Object localObject3 = localObject2[i];
-    ((Paint)localObject1).setColor(-16776961);
-    ((Paint)localObject1).setStrokeWidth(ScreenUnit.a.a(localObject3.getW()));
-    ((Paint)localObject1).setStyle(Paint.Style.STROKE);
-    int k = paramCanvas.getWidth();
-    int m = paramCanvas.getHeight();
-    switch (localObject3.getOrientation())
-    {
-    }
-    for (;;)
-    {
       i += 1;
-      break;
-      paramCanvas.drawLine(0.0F, 0.0F, k, 0.0F, (Paint)localObject1);
-      continue;
-      paramCanvas.drawLine(k, 0.0F, k, m, (Paint)localObject1);
-      continue;
-      paramCanvas.drawLine(0.0F, m, k, m, (Paint)localObject1);
-      continue;
-      paramCanvas.drawLine(0.0F, 0.0F, 0.0F, m, (Paint)localObject1);
     }
   }
   
@@ -85,7 +95,7 @@ public final class BorderStyle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.xaction.api.style.BorderStyle
  * JD-Core Version:    0.7.0.1
  */

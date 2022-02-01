@@ -57,28 +57,31 @@ public class QQFacePlugin
       if ((!TextUtils.isEmpty(str)) && (paramMethodCall != null)) {
         QQFaceLoader.instance().removeCache(str, paramMethodCall.intValue());
       }
-      paramResult.success(null);
-      return;
     }
-    if ("clearCache".equals(str))
+    else
     {
+      if (!"clearCache".equals(str)) {
+        break label141;
+      }
       QQFaceLoader.instance().clearCache();
-      paramResult.success(null);
-      return;
     }
+    paramResult.success(null);
+    return;
+    label141:
     paramResult.notImplemented();
   }
   
   public void updateHead(QQFaceFlutterData paramQQFaceFlutterData)
   {
-    if (this.mMethodChannel != null) {
-      this.mMethodChannel.invokeMethod("onNativeUpdate", paramQQFaceFlutterData.toMap(), null);
+    MethodChannel localMethodChannel = this.mMethodChannel;
+    if (localMethodChannel != null) {
+      localMethodChannel.invokeMethod("onNativeUpdate", paramQQFaceFlutterData.toMap(), null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.qflutter.qqface.QQFacePlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -26,7 +26,7 @@ public class PluginLoadDialog
 {
   public PluginLoadDialog(Context paramContext, String paramString)
   {
-    super(paramContext, 2131755845);
+    super(paramContext, 2131756192);
     a(paramContext, paramString);
   }
   
@@ -35,20 +35,20 @@ public class PluginLoadDialog
   {
     super.requestWindowFeature(1);
     Object localObject1 = LayoutInflater.from(paramContext);
-    View localView = ((LayoutInflater)localObject1).inflate(2131559054, null);
+    View localView = ((LayoutInflater)localObject1).inflate(2131558948, null);
     try
     {
-      Object localObject2 = ((LayoutInflater)localObject1).inflate(2131562017, (ViewGroup)localView, false);
-      localObject1 = (RelativeLayout)localView.findViewById(2131379546);
+      Object localObject2 = ((LayoutInflater)localObject1).inflate(2131561850, (ViewGroup)localView, false);
+      localObject1 = (RelativeLayout)localView.findViewById(2131378893);
       Object localObject3 = new RelativeLayout.LayoutParams(-1, -1);
-      ((RelativeLayout.LayoutParams)localObject3).addRule(3, 2131377159);
+      ((RelativeLayout.LayoutParams)localObject3).addRule(3, 2131376636);
       ((RelativeLayout)localObject1).addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
-      localObject2 = (TextView)localView.findViewById(2131369487);
+      localObject2 = (TextView)localView.findViewById(2131369202);
       IphoneTitleBarActivity.setLayerType((View)localObject2);
       if (localObject2 != null) {
-        ((TextView)localObject2).setText(HardCodeUtil.a(2131708266));
+        ((TextView)localObject2).setText(HardCodeUtil.a(2131708275));
       }
-      localObject3 = (TextView)localView.findViewById(2131369534);
+      localObject3 = (TextView)localView.findViewById(2131369249);
       IphoneTitleBarActivity.setLayerType((View)localObject2);
       if (localObject3 != null) {
         ((TextView)localObject3).setText(paramString);
@@ -62,7 +62,7 @@ public class PluginLoadDialog
       if (ImmersiveUtils.isSupporImmersive() == 1)
       {
         paramString.addFlags(67108864);
-        new SystemBarCompact(this, true, paramContext.getResources().getColor(2131167091)).init();
+        new SystemBarCompact(this, true, paramContext.getResources().getColor(2131167114)).init();
         localView.setFitsSystemWindows(true);
         localView.setPadding(0, ImmersiveUtils.getStatusBarHeight(paramContext), 0, 0);
       }
@@ -70,17 +70,19 @@ public class PluginLoadDialog
     }
     catch (InflateException paramContext)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QQWIFIPluginLoadDialog", 2, "layout with merge ,use framelayout to immersive");
-      }
-      super.setContentView(2131562017);
-      getWindow().setFeatureInt(7, 2131559052);
+      label218:
+      break label218;
     }
+    if (QLog.isColorLevel()) {
+      QLog.e("QQWIFIPluginLoadDialog", 2, "layout with merge ,use framelayout to immersive");
+    }
+    super.setContentView(2131561850);
+    getWindow().setFeatureInt(7, 2131558946);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.pluginbridge.PluginLoadDialog
  * JD-Core Version:    0.7.0.1
  */

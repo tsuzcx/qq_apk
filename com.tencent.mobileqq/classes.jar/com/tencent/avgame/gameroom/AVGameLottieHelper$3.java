@@ -3,22 +3,22 @@ package com.tencent.avgame.gameroom;
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qav.thread.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 
 final class AVGameLottieHelper$3
   implements OnCompositionLoadedListener
 {
-  AVGameLottieHelper$3(int paramInt1, Context paramContext, int paramInt2, int paramInt3, String paramString, AVGameLottieHelper.LottieDrawableLoadedListener paramLottieDrawableLoadedListener) {}
+  AVGameLottieHelper$3(int paramInt1, int paramInt2, int paramInt3, Context paramContext, String paramString, AVGameLottieHelper.LottieDrawableLoadedListener paramLottieDrawableLoadedListener) {}
   
   public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    int i = AIOUtils.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int j = AIOUtils.a(this.b, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int i = ViewUtils.a(this.jdField_a_of_type_Int);
+    int j = ViewUtils.a(this.b);
     if (paramLottieComposition == null)
     {
       QLog.w("AVGameLottieHelper", 1, "onCompositionLoaded, fail");
@@ -37,7 +37,7 @@ final class AVGameLottieHelper$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.AVGameLottieHelper.3
  * JD-Core Version:    0.7.0.1
  */

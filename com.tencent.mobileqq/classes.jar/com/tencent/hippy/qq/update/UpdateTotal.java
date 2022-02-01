@@ -1,12 +1,13 @@
 package com.tencent.hippy.qq.update;
 
+import com.tencent.hippy.qq.api.PackageUpdateListener;
 import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
 
 public class UpdateTotal
   extends UpdateBase
 {
-  public UpdateTotal(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, HippyQQUpdateManager.PackageUpdateListener paramPackageUpdateListener)
+  public UpdateTotal(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, PackageUpdateListener paramPackageUpdateListener)
   {
     super(paramString1, paramString2, paramString3, paramString4, paramInt, paramPackageUpdateListener);
   }
@@ -30,7 +31,7 @@ public class UpdateTotal
     this.mModuleFilePath = localFile.getAbsolutePath();
     try
     {
-      FileUtils.a(paramFile.getAbsolutePath(), this.mModuleFilePath, false);
+      FileUtils.uncompressZip(paramFile.getAbsolutePath(), this.mModuleFilePath, false);
       return true;
     }
     catch (Exception paramFile)
@@ -42,7 +43,7 @@ public class UpdateTotal
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.update.UpdateTotal
  * JD-Core Version:    0.7.0.1
  */

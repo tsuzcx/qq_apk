@@ -6,21 +6,26 @@ public enum f
   
   public static f a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      throw new IllegalArgumentException("Unknown enum value: " + paramInt);
-    case 0: 
-      return a;
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt == 2) {
+          return c;
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Unknown enum value: ");
+        localStringBuilder.append(paramInt);
+        throw new IllegalArgumentException(localStringBuilder.toString());
+      }
       return b;
     }
-    return c;
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.dom.a.f
  * JD-Core Version:    0.7.0.1
  */

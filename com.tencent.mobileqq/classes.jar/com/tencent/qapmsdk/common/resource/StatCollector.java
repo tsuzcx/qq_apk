@@ -23,39 +23,36 @@ public final class StatCollector
     if (Intrinsics.areEqual(paramString, "/proc/stat"))
     {
       localRandomAccessFile = this.curSysStat;
-      if (localRandomAccessFile != null)
-      {
+      if (localRandomAccessFile != null) {
         paramString = localRandomAccessFile;
-        this.curSysStat = paramString;
-        paramString = this.curSysStat;
+      } else {
+        paramString = openFile(paramString);
       }
+      this.curSysStat = paramString;
+      paramString = this.curSysStat;
     }
-    for (;;)
+    else if (Intrinsics.areEqual(paramString, ResourceConstant.Companion.getPID_STATS_PATH()))
     {
-      if (paramString == null) {
-        break label139;
+      localRandomAccessFile = this.curPidStat;
+      if (localRandomAccessFile != null) {
+        paramString = localRandomAccessFile;
+      } else {
+        paramString = openFile(paramString);
       }
-      paramString.seek(0L);
-      if (paramString.read(getBufferBytes(), 0, getBufferBytes().length) != -1) {
-        break label139;
-      }
-      throw ((Throwable)new IOException("read sys stats error"));
-      paramString = openFile(paramString);
-      break;
-      if (Intrinsics.areEqual(paramString, ResourceConstant.Companion.getPID_STATS_PATH()))
-      {
-        localRandomAccessFile = this.curPidStat;
-        if (localRandomAccessFile != null) {}
-        for (paramString = localRandomAccessFile;; paramString = openFile(paramString))
-        {
-          this.curPidStat = paramString;
-          paramString = this.curPidStat;
-          break;
-        }
-      }
+      this.curPidStat = paramString;
+      paramString = this.curPidStat;
+    }
+    else
+    {
       paramString = null;
     }
-    label139:
+    if (paramString != null)
+    {
+      paramString.seek(0L);
+      if (paramString.read(getBufferBytes(), 0, getBufferBytes().length) == -1) {
+        throw ((Throwable)new IOException("read sys stats error"));
+      }
+    }
     setCurIndex(0);
     setReachedEof(false);
     setValid(true);
@@ -72,229 +69,240 @@ public final class StatCollector
     //   3: invokevirtual 121	com/tencent/qapmsdk/common/resource/StatCollector:isValid	()Z
     //   6: istore_1
     //   7: iload_1
-    //   8: ifne +11 -> 19
-    //   11: aconst_null
-    //   12: astore 16
-    //   14: aload_0
-    //   15: monitorexit
-    //   16: aload 16
-    //   18: areturn
-    //   19: aload_0
-    //   20: getfield 48	com/tencent/qapmsdk/common/resource/StatCollector:bytes	[J
-    //   23: lconst_0
-    //   24: invokestatic 124	java/util/Arrays:fill	([JJ)V
-    //   27: aload_0
-    //   28: invokevirtual 127	com/tencent/qapmsdk/common/resource/StatCollector:getCanReadSys	()Z
-    //   31: ifeq +109 -> 140
-    //   34: aload_0
-    //   35: ldc 61
-    //   37: invokespecial 129	com/tencent/qapmsdk/common/resource/StatCollector:initFile	(Ljava/lang/String;)V
-    //   40: aload_0
-    //   41: invokevirtual 132	com/tencent/qapmsdk/common/resource/StatCollector:peek	()Z
-    //   44: ifeq +96 -> 140
-    //   47: aload_0
-    //   48: bipush 32
-    //   50: invokevirtual 136	com/tencent/qapmsdk/common/resource/StatCollector:skipPast	(C)V
-    //   53: aload_0
-    //   54: bipush 32
-    //   56: invokevirtual 136	com/tencent/qapmsdk/common/resource/StatCollector:skipPast	(C)V
-    //   59: aload_0
-    //   60: invokevirtual 140	com/tencent/qapmsdk/common/resource/StatCollector:readNumber	()J
-    //   63: lstore_2
-    //   64: aload_0
-    //   65: invokevirtual 140	com/tencent/qapmsdk/common/resource/StatCollector:readNumber	()J
-    //   68: lstore 4
-    //   70: aload_0
-    //   71: invokevirtual 140	com/tencent/qapmsdk/common/resource/StatCollector:readNumber	()J
-    //   74: lstore 6
-    //   76: aload_0
-    //   77: invokevirtual 140	com/tencent/qapmsdk/common/resource/StatCollector:readNumber	()J
-    //   80: lstore 8
-    //   82: aload_0
-    //   83: invokevirtual 140	com/tencent/qapmsdk/common/resource/StatCollector:readNumber	()J
-    //   86: lstore 10
-    //   88: aload_0
-    //   89: invokevirtual 140	com/tencent/qapmsdk/common/resource/StatCollector:readNumber	()J
-    //   92: lstore 12
-    //   94: aload_0
-    //   95: invokevirtual 140	com/tencent/qapmsdk/common/resource/StatCollector:readNumber	()J
-    //   98: lstore 14
-    //   100: aload_0
-    //   101: getfield 48	com/tencent/qapmsdk/common/resource/StatCollector:bytes	[J
-    //   104: iconst_0
-    //   105: lload_2
-    //   106: lload 4
-    //   108: ladd
-    //   109: lload 6
-    //   111: ladd
-    //   112: lload 8
-    //   114: ladd
-    //   115: lload 10
-    //   117: ladd
-    //   118: lload 12
-    //   120: ladd
-    //   121: lload 14
-    //   123: ladd
-    //   124: lastore
-    //   125: aload_0
-    //   126: getfield 48	com/tencent/qapmsdk/common/resource/StatCollector:bytes	[J
-    //   129: iconst_1
-    //   130: aload_0
-    //   131: getfield 48	com/tencent/qapmsdk/common/resource/StatCollector:bytes	[J
-    //   134: iconst_0
-    //   135: laload
-    //   136: lload 8
-    //   138: lsub
-    //   139: lastore
-    //   140: aload_0
-    //   141: invokevirtual 143	com/tencent/qapmsdk/common/resource/StatCollector:getCanReadPid	()Z
-    //   144: ifeq +118 -> 262
-    //   147: aload_0
-    //   148: getstatic 96	com/tencent/qapmsdk/common/resource/ResourceConstant:Companion	Lcom/tencent/qapmsdk/common/resource/ResourceConstant$Companion;
-    //   151: invokevirtual 102	com/tencent/qapmsdk/common/resource/ResourceConstant$Companion:getPID_STATS_PATH	()Ljava/lang/String;
-    //   154: invokespecial 129	com/tencent/qapmsdk/common/resource/StatCollector:initFile	(Ljava/lang/String;)V
-    //   157: aload_0
-    //   158: bipush 32
-    //   160: bipush 13
-    //   162: invokevirtual 147	com/tencent/qapmsdk/common/resource/StatCollector:continueSkipPast	(CI)V
-    //   165: aload_0
-    //   166: invokevirtual 150	com/tencent/qapmsdk/common/resource/StatCollector:getReachedEof	()Z
-    //   169: ifne +31 -> 200
-    //   172: aload_0
-    //   173: invokevirtual 121	com/tencent/qapmsdk/common/resource/StatCollector:isValid	()Z
-    //   176: ifeq +24 -> 200
-    //   179: aload_0
-    //   180: invokevirtual 140	com/tencent/qapmsdk/common/resource/StatCollector:readNumber	()J
-    //   183: lstore_2
-    //   184: aload_0
-    //   185: invokevirtual 140	com/tencent/qapmsdk/common/resource/StatCollector:readNumber	()J
-    //   188: lstore 4
-    //   190: aload_0
-    //   191: getfield 48	com/tencent/qapmsdk/common/resource/StatCollector:bytes	[J
-    //   194: iconst_2
-    //   195: lload_2
-    //   196: lload 4
-    //   198: ladd
-    //   199: lastore
-    //   200: aload_0
-    //   201: bipush 32
-    //   203: iconst_4
-    //   204: invokevirtual 147	com/tencent/qapmsdk/common/resource/StatCollector:continueSkipPast	(CI)V
-    //   207: aload_0
-    //   208: invokevirtual 150	com/tencent/qapmsdk/common/resource/StatCollector:getReachedEof	()Z
-    //   211: ifne +20 -> 231
-    //   214: aload_0
-    //   215: invokevirtual 121	com/tencent/qapmsdk/common/resource/StatCollector:isValid	()Z
-    //   218: ifeq +13 -> 231
-    //   221: aload_0
-    //   222: getfield 48	com/tencent/qapmsdk/common/resource/StatCollector:bytes	[J
-    //   225: iconst_3
-    //   226: aload_0
-    //   227: invokevirtual 140	com/tencent/qapmsdk/common/resource/StatCollector:readNumber	()J
-    //   230: lastore
-    //   231: aload_0
-    //   232: bipush 32
-    //   234: iconst_3
-    //   235: invokevirtual 147	com/tencent/qapmsdk/common/resource/StatCollector:continueSkipPast	(CI)V
-    //   238: aload_0
-    //   239: invokevirtual 150	com/tencent/qapmsdk/common/resource/StatCollector:getReachedEof	()Z
-    //   242: ifne +20 -> 262
-    //   245: aload_0
-    //   246: invokevirtual 121	com/tencent/qapmsdk/common/resource/StatCollector:isValid	()Z
-    //   249: ifeq +13 -> 262
-    //   252: aload_0
-    //   253: getfield 48	com/tencent/qapmsdk/common/resource/StatCollector:bytes	[J
-    //   256: iconst_4
-    //   257: aload_0
-    //   258: invokevirtual 140	com/tencent/qapmsdk/common/resource/StatCollector:readNumber	()J
-    //   261: lastore
-    //   262: aload_0
-    //   263: iconst_1
-    //   264: invokevirtual 115	com/tencent/qapmsdk/common/resource/StatCollector:setValid	(Z)V
-    //   267: aload_0
-    //   268: getfield 48	com/tencent/qapmsdk/common/resource/StatCollector:bytes	[J
-    //   271: astore 16
-    //   273: goto -259 -> 14
-    //   276: astore 16
-    //   278: aload_0
-    //   279: iconst_1
-    //   280: invokevirtual 115	com/tencent/qapmsdk/common/resource/StatCollector:setValid	(Z)V
-    //   283: aload_0
-    //   284: iconst_2
-    //   285: anewarray 71	java/io/RandomAccessFile
-    //   288: dup
-    //   289: iconst_0
-    //   290: aload_0
-    //   291: getfield 104	com/tencent/qapmsdk/common/resource/StatCollector:curPidStat	Ljava/io/RandomAccessFile;
-    //   294: aastore
-    //   295: dup
-    //   296: iconst_1
-    //   297: aload_0
-    //   298: getfield 69	com/tencent/qapmsdk/common/resource/StatCollector:curSysStat	Ljava/io/RandomAccessFile;
-    //   301: aastore
-    //   302: invokestatic 156	kotlin/collections/CollectionsKt:listOf	([Ljava/lang/Object;)Ljava/util/List;
-    //   305: invokevirtual 160	com/tencent/qapmsdk/common/resource/StatCollector:closeFile	(Ljava/util/List;)V
-    //   308: getstatic 166	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
-    //   311: iconst_2
-    //   312: anewarray 168	java/lang/String
-    //   315: dup
-    //   316: iconst_0
-    //   317: ldc 33
-    //   319: aastore
-    //   320: dup
-    //   321: iconst_1
-    //   322: new 170	java/lang/StringBuilder
-    //   325: dup
-    //   326: invokespecial 171	java/lang/StringBuilder:<init>	()V
-    //   329: aload 16
-    //   331: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   334: ldc 177
-    //   336: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   339: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   342: aastore
-    //   343: invokevirtual 187	com/tencent/qapmsdk/common/logger/Logger:d	([Ljava/lang/String;)V
-    //   346: aconst_null
-    //   347: astore 16
-    //   349: goto -335 -> 14
-    //   352: astore 16
-    //   354: aload_0
-    //   355: monitorexit
-    //   356: aload 16
-    //   358: athrow
+    //   8: ifne +7 -> 15
+    //   11: aload_0
+    //   12: monitorexit
+    //   13: aconst_null
+    //   14: areturn
+    //   15: aload_0
+    //   16: getfield 48	com/tencent/qapmsdk/common/resource/StatCollector:bytes	[J
+    //   19: lconst_0
+    //   20: invokestatic 124	java/util/Arrays:fill	([JJ)V
+    //   23: aload_0
+    //   24: invokevirtual 127	com/tencent/qapmsdk/common/resource/StatCollector:getCanReadSys	()Z
+    //   27: ifeq +109 -> 136
+    //   30: aload_0
+    //   31: ldc 61
+    //   33: invokespecial 129	com/tencent/qapmsdk/common/resource/StatCollector:initFile	(Ljava/lang/String;)V
+    //   36: aload_0
+    //   37: invokevirtual 132	com/tencent/qapmsdk/common/resource/StatCollector:peek	()Z
+    //   40: ifeq +96 -> 136
+    //   43: aload_0
+    //   44: bipush 32
+    //   46: invokevirtual 136	com/tencent/qapmsdk/common/resource/StatCollector:skipPast	(C)V
+    //   49: aload_0
+    //   50: bipush 32
+    //   52: invokevirtual 136	com/tencent/qapmsdk/common/resource/StatCollector:skipPast	(C)V
+    //   55: aload_0
+    //   56: invokevirtual 140	com/tencent/qapmsdk/common/resource/StatCollector:readNumber	()J
+    //   59: lstore_2
+    //   60: aload_0
+    //   61: invokevirtual 140	com/tencent/qapmsdk/common/resource/StatCollector:readNumber	()J
+    //   64: lstore 4
+    //   66: aload_0
+    //   67: invokevirtual 140	com/tencent/qapmsdk/common/resource/StatCollector:readNumber	()J
+    //   70: lstore 6
+    //   72: aload_0
+    //   73: invokevirtual 140	com/tencent/qapmsdk/common/resource/StatCollector:readNumber	()J
+    //   76: lstore 8
+    //   78: aload_0
+    //   79: invokevirtual 140	com/tencent/qapmsdk/common/resource/StatCollector:readNumber	()J
+    //   82: lstore 10
+    //   84: aload_0
+    //   85: invokevirtual 140	com/tencent/qapmsdk/common/resource/StatCollector:readNumber	()J
+    //   88: lstore 12
+    //   90: aload_0
+    //   91: invokevirtual 140	com/tencent/qapmsdk/common/resource/StatCollector:readNumber	()J
+    //   94: lstore 14
+    //   96: aload_0
+    //   97: getfield 48	com/tencent/qapmsdk/common/resource/StatCollector:bytes	[J
+    //   100: iconst_0
+    //   101: lload_2
+    //   102: lload 4
+    //   104: ladd
+    //   105: lload 6
+    //   107: ladd
+    //   108: lload 8
+    //   110: ladd
+    //   111: lload 10
+    //   113: ladd
+    //   114: lload 12
+    //   116: ladd
+    //   117: lload 14
+    //   119: ladd
+    //   120: lastore
+    //   121: aload_0
+    //   122: getfield 48	com/tencent/qapmsdk/common/resource/StatCollector:bytes	[J
+    //   125: iconst_1
+    //   126: aload_0
+    //   127: getfield 48	com/tencent/qapmsdk/common/resource/StatCollector:bytes	[J
+    //   130: iconst_0
+    //   131: laload
+    //   132: lload 8
+    //   134: lsub
+    //   135: lastore
+    //   136: aload_0
+    //   137: invokevirtual 143	com/tencent/qapmsdk/common/resource/StatCollector:getCanReadPid	()Z
+    //   140: ifeq +118 -> 258
+    //   143: aload_0
+    //   144: getstatic 78	com/tencent/qapmsdk/common/resource/ResourceConstant:Companion	Lcom/tencent/qapmsdk/common/resource/ResourceConstant$Companion;
+    //   147: invokevirtual 84	com/tencent/qapmsdk/common/resource/ResourceConstant$Companion:getPID_STATS_PATH	()Ljava/lang/String;
+    //   150: invokespecial 129	com/tencent/qapmsdk/common/resource/StatCollector:initFile	(Ljava/lang/String;)V
+    //   153: aload_0
+    //   154: bipush 32
+    //   156: bipush 13
+    //   158: invokevirtual 147	com/tencent/qapmsdk/common/resource/StatCollector:continueSkipPast	(CI)V
+    //   161: aload_0
+    //   162: invokevirtual 150	com/tencent/qapmsdk/common/resource/StatCollector:getReachedEof	()Z
+    //   165: ifne +31 -> 196
+    //   168: aload_0
+    //   169: invokevirtual 121	com/tencent/qapmsdk/common/resource/StatCollector:isValid	()Z
+    //   172: ifeq +24 -> 196
+    //   175: aload_0
+    //   176: invokevirtual 140	com/tencent/qapmsdk/common/resource/StatCollector:readNumber	()J
+    //   179: lstore_2
+    //   180: aload_0
+    //   181: invokevirtual 140	com/tencent/qapmsdk/common/resource/StatCollector:readNumber	()J
+    //   184: lstore 4
+    //   186: aload_0
+    //   187: getfield 48	com/tencent/qapmsdk/common/resource/StatCollector:bytes	[J
+    //   190: iconst_2
+    //   191: lload_2
+    //   192: lload 4
+    //   194: ladd
+    //   195: lastore
+    //   196: aload_0
+    //   197: bipush 32
+    //   199: iconst_4
+    //   200: invokevirtual 147	com/tencent/qapmsdk/common/resource/StatCollector:continueSkipPast	(CI)V
+    //   203: aload_0
+    //   204: invokevirtual 150	com/tencent/qapmsdk/common/resource/StatCollector:getReachedEof	()Z
+    //   207: ifne +20 -> 227
+    //   210: aload_0
+    //   211: invokevirtual 121	com/tencent/qapmsdk/common/resource/StatCollector:isValid	()Z
+    //   214: ifeq +13 -> 227
+    //   217: aload_0
+    //   218: getfield 48	com/tencent/qapmsdk/common/resource/StatCollector:bytes	[J
+    //   221: iconst_3
+    //   222: aload_0
+    //   223: invokevirtual 140	com/tencent/qapmsdk/common/resource/StatCollector:readNumber	()J
+    //   226: lastore
+    //   227: aload_0
+    //   228: bipush 32
+    //   230: iconst_3
+    //   231: invokevirtual 147	com/tencent/qapmsdk/common/resource/StatCollector:continueSkipPast	(CI)V
+    //   234: aload_0
+    //   235: invokevirtual 150	com/tencent/qapmsdk/common/resource/StatCollector:getReachedEof	()Z
+    //   238: ifne +20 -> 258
+    //   241: aload_0
+    //   242: invokevirtual 121	com/tencent/qapmsdk/common/resource/StatCollector:isValid	()Z
+    //   245: ifeq +13 -> 258
+    //   248: aload_0
+    //   249: getfield 48	com/tencent/qapmsdk/common/resource/StatCollector:bytes	[J
+    //   252: iconst_4
+    //   253: aload_0
+    //   254: invokevirtual 140	com/tencent/qapmsdk/common/resource/StatCollector:readNumber	()J
+    //   257: lastore
+    //   258: aload_0
+    //   259: iconst_1
+    //   260: invokevirtual 115	com/tencent/qapmsdk/common/resource/StatCollector:setValid	(Z)V
+    //   263: aload_0
+    //   264: getfield 48	com/tencent/qapmsdk/common/resource/StatCollector:bytes	[J
+    //   267: astore 16
+    //   269: aload_0
+    //   270: monitorexit
+    //   271: aload 16
+    //   273: areturn
+    //   274: astore 16
+    //   276: aload_0
+    //   277: iconst_1
+    //   278: invokevirtual 115	com/tencent/qapmsdk/common/resource/StatCollector:setValid	(Z)V
+    //   281: aload_0
+    //   282: iconst_2
+    //   283: anewarray 88	java/io/RandomAccessFile
+    //   286: dup
+    //   287: iconst_0
+    //   288: aload_0
+    //   289: getfield 86	com/tencent/qapmsdk/common/resource/StatCollector:curPidStat	Ljava/io/RandomAccessFile;
+    //   292: aastore
+    //   293: dup
+    //   294: iconst_1
+    //   295: aload_0
+    //   296: getfield 69	com/tencent/qapmsdk/common/resource/StatCollector:curSysStat	Ljava/io/RandomAccessFile;
+    //   299: aastore
+    //   300: invokestatic 156	kotlin/collections/CollectionsKt:listOf	([Ljava/lang/Object;)Ljava/util/List;
+    //   303: invokevirtual 160	com/tencent/qapmsdk/common/resource/StatCollector:closeFile	(Ljava/util/List;)V
+    //   306: getstatic 166	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
+    //   309: astore 17
+    //   311: new 168	java/lang/StringBuilder
+    //   314: dup
+    //   315: invokespecial 169	java/lang/StringBuilder:<init>	()V
+    //   318: astore 18
+    //   320: aload 18
+    //   322: aload 16
+    //   324: invokevirtual 173	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   327: pop
+    //   328: aload 18
+    //   330: ldc 175
+    //   332: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   335: pop
+    //   336: aload 17
+    //   338: iconst_2
+    //   339: anewarray 180	java/lang/String
+    //   342: dup
+    //   343: iconst_0
+    //   344: ldc 33
+    //   346: aastore
+    //   347: dup
+    //   348: iconst_1
+    //   349: aload 18
+    //   351: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   354: aastore
+    //   355: invokevirtual 187	com/tencent/qapmsdk/common/logger/Logger:d	([Ljava/lang/String;)V
+    //   358: aload_0
+    //   359: monitorexit
+    //   360: aconst_null
+    //   361: areturn
+    //   362: astore 16
+    //   364: aload_0
+    //   365: monitorexit
+    //   366: aload 16
+    //   368: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	359	0	this	StatCollector
+    //   0	369	0	this	StatCollector
     //   6	2	1	bool	boolean
-    //   63	133	2	l1	long
-    //   68	129	4	l2	long
-    //   74	36	6	l3	long
-    //   80	57	8	l4	long
-    //   86	30	10	l5	long
-    //   92	27	12	l6	long
-    //   98	24	14	l7	long
-    //   12	260	16	arrayOfLong	long[]
-    //   276	54	16	localIOException	IOException
-    //   347	1	16	localObject1	java.lang.Object
-    //   352	5	16	localObject2	java.lang.Object
+    //   59	133	2	l1	long
+    //   64	129	4	l2	long
+    //   70	36	6	l3	long
+    //   76	57	8	l4	long
+    //   82	30	10	l5	long
+    //   88	27	12	l6	long
+    //   94	24	14	l7	long
+    //   267	5	16	arrayOfLong	long[]
+    //   274	49	16	localIOException	IOException
+    //   362	5	16	localObject	java.lang.Object
+    //   309	28	17	localLogger	com.tencent.qapmsdk.common.logger.Logger
+    //   318	32	18	localStringBuilder	java.lang.StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   27	140	276	java/io/IOException
-    //   140	200	276	java/io/IOException
-    //   200	231	276	java/io/IOException
-    //   231	262	276	java/io/IOException
-    //   2	7	352	finally
-    //   19	27	352	finally
-    //   27	140	352	finally
-    //   140	200	352	finally
-    //   200	231	352	finally
-    //   231	262	352	finally
-    //   262	273	352	finally
-    //   278	346	352	finally
+    //   23	136	274	java/io/IOException
+    //   136	196	274	java/io/IOException
+    //   196	227	274	java/io/IOException
+    //   227	258	274	java/io/IOException
+    //   2	7	362	finally
+    //   15	23	362	finally
+    //   23	136	362	finally
+    //   136	196	362	finally
+    //   196	227	362	finally
+    //   227	258	362	finally
+    //   258	269	362	finally
+    //   276	358	362	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.common.resource.StatCollector
  * JD-Core Version:    0.7.0.1
  */

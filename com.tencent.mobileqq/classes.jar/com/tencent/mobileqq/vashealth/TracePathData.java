@@ -20,13 +20,24 @@ public class TracePathData
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("startTime: ").append(this.startTime).append("endTime: ").append(this.endTime).append(",distance: ").append(this.distance).append(", totalTime: ").append(this.totalTime).append(", isStop: ").append(this.isStop).append(",totalSteps:").append(this.totalSteps);
+    localStringBuilder.append("startTime: ");
+    localStringBuilder.append(this.startTime);
+    localStringBuilder.append("endTime: ");
+    localStringBuilder.append(this.endTime);
+    localStringBuilder.append(",distance: ");
+    localStringBuilder.append(this.distance);
+    localStringBuilder.append(", totalTime: ");
+    localStringBuilder.append(this.totalTime);
+    localStringBuilder.append(", isStop: ");
+    localStringBuilder.append(this.isStop);
+    localStringBuilder.append(",totalSteps:");
+    localStringBuilder.append(this.totalSteps);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.TracePathData
  * JD-Core Version:    0.7.0.1
  */

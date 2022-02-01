@@ -71,7 +71,10 @@ public class TroopAppShortcutContainer$AppsListViewAdapter
   public int getCount()
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
-    for (int i = 0; localIterator.hasNext(); i = ((ArrayList)((Map.Entry)localIterator.next()).getValue()).size() + i) {}
+    int i = 0;
+    while (localIterator.hasNext()) {
+      i += ((ArrayList)((Map.Entry)localIterator.next()).getValue()).size();
+    }
     return i;
   }
   
@@ -92,12 +95,13 @@ public class TroopAppShortcutContainer$AppsListViewAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     Object localObject = a(paramInt);
-    if (localObject != null) {}
-    for (localObject = ((AppsBaseBuilder)localObject).a(paramInt, paramView, paramViewGroup);; localObject = null)
-    {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localObject;
+    if (localObject != null) {
+      localObject = ((AppsBaseBuilder)localObject).a(paramInt, paramView, paramViewGroup);
+    } else {
+      localObject = null;
     }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localObject;
   }
   
   public int getViewTypeCount()
@@ -107,7 +111,7 @@ public class TroopAppShortcutContainer$AppsListViewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.TroopAppShortcutContainer.AppsListViewAdapter
  * JD-Core Version:    0.7.0.1
  */

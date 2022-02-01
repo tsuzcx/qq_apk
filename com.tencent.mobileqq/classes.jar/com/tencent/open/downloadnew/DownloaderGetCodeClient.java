@@ -15,7 +15,7 @@ import mqq.os.MqqHandler;
 
 public class DownloaderGetCodeClient
 {
-  private static volatile DownloaderGetCodeClient jdField_a_of_type_ComTencentOpenDownloadnewDownloaderGetCodeClient = null;
+  private static volatile DownloaderGetCodeClient jdField_a_of_type_ComTencentOpenDownloadnewDownloaderGetCodeClient;
   private EIPCResultCallback jdField_a_of_type_EipcEIPCResultCallback = new DownloaderGetCodeClient.2(this);
   private Map<String, Boolean> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   private ConcurrentHashMap<String, List<ApkGetCodeListener>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
@@ -23,37 +23,45 @@ public class DownloaderGetCodeClient
   
   public static DownloaderGetCodeClient a()
   {
-    if (jdField_a_of_type_ComTencentOpenDownloadnewDownloaderGetCodeClient == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentOpenDownloadnewDownloaderGetCodeClient == null) {
-        jdField_a_of_type_ComTencentOpenDownloadnewDownloaderGetCodeClient = new DownloaderGetCodeClient();
+    if (jdField_a_of_type_ComTencentOpenDownloadnewDownloaderGetCodeClient == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentOpenDownloadnewDownloaderGetCodeClient == null) {
+          jdField_a_of_type_ComTencentOpenDownloadnewDownloaderGetCodeClient = new DownloaderGetCodeClient();
+        }
       }
-      return jdField_a_of_type_ComTencentOpenDownloadnewDownloaderGetCodeClient;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentOpenDownloadnewDownloaderGetCodeClient;
   }
   
   private String a(String paramString, int paramInt)
   {
-    return paramString + "_" + paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt);
+    return localStringBuilder.toString();
   }
   
   private void a(String paramString, ApkGetCodeListener paramApkGetCodeListener)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramApkGetCodeListener == null)) {}
-    List localList1;
-    do
+    if (!TextUtils.isEmpty(paramString))
     {
-      return;
+      if (paramApkGetCodeListener == null) {
+        return;
+      }
       List localList2 = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      localList1 = localList2;
+      List localList1 = localList2;
       if (localList2 == null) {
         localList1 = Collections.synchronizedList(new ArrayList());
       }
-    } while (localList1.contains(paramApkGetCodeListener));
-    localList1.add(paramApkGetCodeListener);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localList1);
+      if (localList1.contains(paramApkGetCodeListener)) {
+        return;
+      }
+      localList1.add(paramApkGetCodeListener);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localList1);
+    }
   }
   
   public void a(String paramString, int paramInt, ApkGetCodeListener paramApkGetCodeListener)
@@ -62,7 +70,12 @@ public class DownloaderGetCodeClient
     paramApkGetCodeListener = new Bundle();
     paramApkGetCodeListener.putString("PackageName", paramString);
     paramApkGetCodeListener.putInt("VersionCode", paramInt);
-    LogUtility.c("DownloaderGetCodeClient", paramString + "_" + paramInt + " begin getApkCode ......");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" begin getApkCode ......");
+    LogUtility.c("DownloaderGetCodeClient", localStringBuilder.toString());
     this.jdField_a_of_type_JavaUtilMap.put(a(paramString, paramInt), Boolean.valueOf(true));
     QIPCClientHelper.getInstance().callServer("Module_DownloaderGetCodeServer", "DownloaderWriteCodeIPC_Action__GetCode", paramApkGetCodeListener, this.jdField_a_of_type_EipcEIPCResultCallback);
     ThreadManager.getSubThreadHandler().postDelayed(new DownloaderGetCodeClient.1(this, paramString, paramInt, paramApkGetCodeListener), 3000L);
@@ -78,7 +91,7 @@ public class DownloaderGetCodeClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloaderGetCodeClient
  * JD-Core Version:    0.7.0.1
  */

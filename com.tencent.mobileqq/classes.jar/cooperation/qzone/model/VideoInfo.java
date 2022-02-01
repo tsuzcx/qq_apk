@@ -83,7 +83,9 @@ public class VideoInfo
   {
     if (paramLong >= 60000L)
     {
-      int k = (int)Math.round(paramLong % 60000L * 1.0D / 1000.0D);
+      d = paramLong % 60000L;
+      Double.isNaN(d);
+      int k = (int)Math.round(d * 1.0D / 1000.0D);
       int j = 0;
       i = k;
       if (k >= 60)
@@ -91,17 +93,37 @@ public class VideoInfo
         j = k / 60;
         i = k % 60;
       }
-      StringBuilder localStringBuilder = new StringBuilder().append(paramLong / 60000L + j).append(":");
-      if (i > 9) {}
-      for (Object localObject = Integer.valueOf(i);; localObject = "0" + i) {
-        return localObject;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramLong / 60000L + j);
+      localStringBuilder.append(":");
+      if (i > 9)
+      {
+        localObject = Integer.valueOf(i);
       }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("0");
+        ((StringBuilder)localObject).append(i);
+        localObject = ((StringBuilder)localObject).toString();
+      }
+      localStringBuilder.append(localObject);
+      return localStringBuilder.toString();
     }
-    int i = (int)Math.round(paramLong * 1.0D / 1000.0D);
-    if (i > 9) {
-      return "0:" + i;
+    double d = paramLong;
+    Double.isNaN(d);
+    int i = (int)Math.round(d * 1.0D / 1000.0D);
+    if (i > 9)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("0:");
+      ((StringBuilder)localObject).append(i);
+      return ((StringBuilder)localObject).toString();
     }
-    return "0:0" + i;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("0:0");
+    ((StringBuilder)localObject).append(i);
+    return ((StringBuilder)localObject).toString();
   }
   
   private PictureUrl getUrlByPriority(PictureUrl[] paramArrayOfPictureUrl)
@@ -129,31 +151,33 @@ public class VideoInfo
     l1 %= 60L;
     long l2 = paramLong / 60L;
     paramLong %= 60L;
+    String str = ":%d";
     if (l2 > 0L)
     {
-      localStringBuilder = new StringBuilder().append("%d");
-      if (paramLong >= 10L)
-      {
-        str = ":%d";
-        str = str;
-        localStringBuilder = new StringBuilder().append(str);
-        if (l1 < 10L) {
-          break label162;
-        }
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("%d");
+      if (paramLong >= 10L) {
+        localObject1 = ":%d";
+      } else {
+        localObject1 = ":0%d";
       }
-      label162:
-      for (str = ":%d";; str = ":0%d")
-      {
-        return String.format(str, new Object[] { Long.valueOf(l2), Long.valueOf(paramLong), Long.valueOf(l1) });
+      ((StringBuilder)localObject2).append((String)localObject1);
+      localObject2 = ((StringBuilder)localObject2).toString();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append((String)localObject2);
+      if (l1 < 10L) {
         str = ":0%d";
-        break;
       }
+      ((StringBuilder)localObject1).append(str);
+      return String.format(((StringBuilder)localObject1).toString(), new Object[] { Long.valueOf(l2), Long.valueOf(paramLong), Long.valueOf(l1) });
     }
-    StringBuilder localStringBuilder = new StringBuilder().append("%d");
-    if (l1 >= 10L) {}
-    for (String str = ":%d";; str = ":0%d") {
-      return String.format(str, new Object[] { Long.valueOf(paramLong), Long.valueOf(l1) });
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("%d");
+    if (l1 < 10L) {
+      str = ":0%d";
     }
+    ((StringBuilder)localObject1).append(str);
+    return String.format(((StringBuilder)localObject1).toString(), new Object[] { Long.valueOf(paramLong), Long.valueOf(l1) });
   }
   
   public void calcuShowVideoTime(long paramLong)
@@ -188,22 +212,57 @@ public class VideoInfo
   
   public boolean isAutoPlay()
   {
-    return ((this.playType & 0x1) != 0) || (this.videoShowType == 1);
+    int i = this.playType;
+    boolean bool = true;
+    if ((i & 0x1) == 0)
+    {
+      if (this.videoShowType == 1) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   public boolean isCircle()
   {
-    return ((this.playType & 0x2) != 0) && ((this.validVideoTime <= 0L) || (this.validVideoTime >= this.videoTime));
+    if ((this.playType & 0x2) != 0)
+    {
+      long l = this.validVideoTime;
+      if ((l <= 0L) || (l >= this.videoTime)) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public boolean isErrorState()
   {
-    return (this.videoStatus == 1) || (this.videoStatus == 7) || (this.videoStatus == 3) || (this.videoStatus == 6);
+    int i = this.videoStatus;
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (i != 1)
+    {
+      bool1 = bool2;
+      if (i != 7)
+      {
+        bool1 = bool2;
+        if (i != 3)
+        {
+          if (i == 6) {
+            return true;
+          }
+          bool1 = false;
+        }
+      }
+    }
+    return bool1;
   }
   
   public boolean isOpenWithFloat()
   {
-    return (this.actionType == 19) || (this.actionType == 3);
+    int i = this.actionType;
+    return (i == 19) || (i == 3);
   }
   
   public boolean isTranscoding()
@@ -213,115 +272,217 @@ public class VideoInfo
   
   public boolean isVideoUrlIntact()
   {
-    return (this.videoUrl != null) && (!TextUtils.isEmpty(this.videoUrl.url)) && (this.videoUrl.url.contains("https://")) && (!this.videoUrl.url.startsWith("?sid"));
+    VideoUrl localVideoUrl = this.videoUrl;
+    return (localVideoUrl != null) && (!TextUtils.isEmpty(localVideoUrl.url)) && (this.videoUrl.url.contains("https://")) && (!this.videoUrl.url.startsWith("?sid"));
   }
   
   public String toDebugString()
   {
-    return "VideoInfo{\nvideoId='" + this.videoId + '\'' + '\n' + ", videoUrl=" + this.videoUrl + '\n' + ", originUrl=" + this.originUrl + '\n' + ", bigUrl=" + this.bigUrl + '\n' + ", currentUrl=" + this.currentUrl + '\n' + ", coverUrl=" + this.coverUrl + '\n' + ", actionType=" + this.actionType + '\n' + ", actionUrl='" + this.actionUrl + '\'' + '\n' + ", nativeLikeUrl='" + this.nativeLikeUrl + '\'' + '\n' + ", highBrUrl=" + this.highBrUrl + '\n' + ", lowBrUrl=" + this.lowBrUrl + '\n' + ", originVideoUrl=" + this.originVideoUrl + '\n' + ", h265NormalUrl=" + this.h265NormalUrl + '\n' + ", originVideoSize=" + this.originVideoSize + '\n' + ", fileType=" + this.fileType + '\n' + ", videoType=" + this.videoType + '\n' + ", videoTime=" + this.videoTime + '\n' + ", showVideoTime='" + this.showVideoTime + '\'' + '\n' + ", playType=" + this.playType + '\n' + ", videoShowType=" + this.videoShowType + '\n' + ", hasVideoPlayed=" + this.hasVideoPlayed + '\n' + ", videoStatus=" + this.videoStatus + '\n' + ", lastUseTime=" + this.lastUseTime + '\n' + ", width=" + this.width + '\n' + ", height=" + this.height + '\n' + ", toast='" + this.toast + '\'' + '\n' + ", isFakeFeed=" + this.isFakeFeed + '\n' + ", isFloatFirst=" + this.isFloatFirst + '\n' + ", isFeedFirst=" + this.isFeedFirst + '\n' + ", isFeedFirstComplete=" + this.isFeedFirstComplete + '\n' + ", isFeedComplete=" + this.isFeedComplete + '\n' + ", isTranscoding=" + this.isTranscoding + '\n' + ", isUploading=" + this.isUploading + '\n' + ", videoFloatReportParam=" + this.videoFloatReportParam + '\n' + ", videoRemark=" + this.videoRemark + '\n' + ", validVideoTime=" + this.validVideoTime + '\n' + ", validVideoTimeDesc='" + this.validVideoTimeDesc + '\'' + '\n' + ", isCircle=" + this.isCircle + '\n' + ", isAutoPlay=" + this.isAutoPlay + '\n' + ", writeFrom=" + this.writeFrom + '\n' + ", desc='" + this.desc + '\'' + '\n' + ", videoSource=" + this.videoSource + '\n' + ", advDelayTime=" + this.advDelayTime + '\n' + ", isGetRecommAfterPlay=" + this.isGetRecommAfterPlay + '\n' + ", shootTime=" + this.shootTime + '\n' + ", videoplaycnt=" + this.videoplaycnt + '\n' + ", allowShowPasterVideoAdv=" + this.allowShowPasterVideoAdv + '\n' + ", needDeleteLocal=" + this.needDeleteLocal + '\n' + ", scrollToNextDelayTime=" + this.scrollToNextDelayTime + '\n' + ", seekPosition=" + this.seekPosition + '\n' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VideoInfo{\nvideoId='");
+    localStringBuilder.append(this.videoId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", videoUrl=");
+    localStringBuilder.append(this.videoUrl);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", originUrl=");
+    localStringBuilder.append(this.originUrl);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", bigUrl=");
+    localStringBuilder.append(this.bigUrl);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", currentUrl=");
+    localStringBuilder.append(this.currentUrl);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", coverUrl=");
+    localStringBuilder.append(this.coverUrl);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", actionType=");
+    localStringBuilder.append(this.actionType);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", actionUrl='");
+    localStringBuilder.append(this.actionUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", nativeLikeUrl='");
+    localStringBuilder.append(this.nativeLikeUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", highBrUrl=");
+    localStringBuilder.append(this.highBrUrl);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", lowBrUrl=");
+    localStringBuilder.append(this.lowBrUrl);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", originVideoUrl=");
+    localStringBuilder.append(this.originVideoUrl);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", h265NormalUrl=");
+    localStringBuilder.append(this.h265NormalUrl);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", originVideoSize=");
+    localStringBuilder.append(this.originVideoSize);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", fileType=");
+    localStringBuilder.append(this.fileType);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", videoType=");
+    localStringBuilder.append(this.videoType);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", videoTime=");
+    localStringBuilder.append(this.videoTime);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", showVideoTime='");
+    localStringBuilder.append(this.showVideoTime);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", playType=");
+    localStringBuilder.append(this.playType);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", videoShowType=");
+    localStringBuilder.append(this.videoShowType);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", hasVideoPlayed=");
+    localStringBuilder.append(this.hasVideoPlayed);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", videoStatus=");
+    localStringBuilder.append(this.videoStatus);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", lastUseTime=");
+    localStringBuilder.append(this.lastUseTime);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", width=");
+    localStringBuilder.append(this.width);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", height=");
+    localStringBuilder.append(this.height);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", toast='");
+    localStringBuilder.append(this.toast);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", isFakeFeed=");
+    localStringBuilder.append(this.isFakeFeed);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", isFloatFirst=");
+    localStringBuilder.append(this.isFloatFirst);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", isFeedFirst=");
+    localStringBuilder.append(this.isFeedFirst);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", isFeedFirstComplete=");
+    localStringBuilder.append(this.isFeedFirstComplete);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", isFeedComplete=");
+    localStringBuilder.append(this.isFeedComplete);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", isTranscoding=");
+    localStringBuilder.append(this.isTranscoding);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", isUploading=");
+    localStringBuilder.append(this.isUploading);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", videoFloatReportParam=");
+    localStringBuilder.append(this.videoFloatReportParam);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", videoRemark=");
+    localStringBuilder.append(this.videoRemark);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", validVideoTime=");
+    localStringBuilder.append(this.validVideoTime);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", validVideoTimeDesc='");
+    localStringBuilder.append(this.validVideoTimeDesc);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", isCircle=");
+    localStringBuilder.append(this.isCircle);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", isAutoPlay=");
+    localStringBuilder.append(this.isAutoPlay);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", writeFrom=");
+    localStringBuilder.append(this.writeFrom);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", desc='");
+    localStringBuilder.append(this.desc);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", videoSource=");
+    localStringBuilder.append(this.videoSource);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", advDelayTime=");
+    localStringBuilder.append(this.advDelayTime);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", isGetRecommAfterPlay=");
+    localStringBuilder.append(this.isGetRecommAfterPlay);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", shootTime=");
+    localStringBuilder.append(this.shootTime);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", videoplaycnt=");
+    localStringBuilder.append(this.videoplaycnt);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", allowShowPasterVideoAdv=");
+    localStringBuilder.append(this.allowShowPasterVideoAdv);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", needDeleteLocal=");
+    localStringBuilder.append(this.needDeleteLocal);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", scrollToNextDelayTime=");
+    localStringBuilder.append(this.scrollToNextDelayTime);
+    localStringBuilder.append('\n');
+    localStringBuilder.append(", seekPosition=");
+    localStringBuilder.append(this.seekPosition);
+    localStringBuilder.append('\n');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public String toString()
   {
-    return "VideoInfo [videoId=" + this.videoId + ", videoUrl=" + this.videoUrl + ", bigUrl=" + this.bigUrl + ", actionType=" + this.actionType + ", actionUrl=" + this.actionUrl + ", highBrUrl=" + this.highBrUrl + ", lowBrUrl=" + this.lowBrUrl + ", fileType=" + this.fileType + ", videoType=" + this.videoType + ",videoShowType=" + this.videoShowType + ", videoTime=" + this.videoTime + ", videoStatus=" + this.videoStatus + ", originVideoUrl=" + this.originVideoUrl + ", originVideoSize=" + this.originVideoSize + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VideoInfo [videoId=");
+    localStringBuilder.append(this.videoId);
+    localStringBuilder.append(", videoUrl=");
+    localStringBuilder.append(this.videoUrl);
+    localStringBuilder.append(", bigUrl=");
+    localStringBuilder.append(this.bigUrl);
+    localStringBuilder.append(", actionType=");
+    localStringBuilder.append(this.actionType);
+    localStringBuilder.append(", actionUrl=");
+    localStringBuilder.append(this.actionUrl);
+    localStringBuilder.append(", highBrUrl=");
+    localStringBuilder.append(this.highBrUrl);
+    localStringBuilder.append(", lowBrUrl=");
+    localStringBuilder.append(this.lowBrUrl);
+    localStringBuilder.append(", fileType=");
+    localStringBuilder.append(this.fileType);
+    localStringBuilder.append(", videoType=");
+    localStringBuilder.append(this.videoType);
+    localStringBuilder.append(",videoShowType=");
+    localStringBuilder.append(this.videoShowType);
+    localStringBuilder.append(", videoTime=");
+    localStringBuilder.append(this.videoTime);
+    localStringBuilder.append(", videoStatus=");
+    localStringBuilder.append(this.videoStatus);
+    localStringBuilder.append(", originVideoUrl=");
+    localStringBuilder.append(this.originVideoUrl);
+    localStringBuilder.append(", originVideoSize=");
+    localStringBuilder.append(this.originVideoSize);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int j = 1;
-    paramParcel.writeString(this.videoId);
-    paramParcel.writeParcelable(this.videoUrl, paramInt);
-    paramParcel.writeParcelable(this.originUrl, paramInt);
-    paramParcel.writeParcelable(this.bigUrl, paramInt);
-    paramParcel.writeParcelable(this.currentUrl, paramInt);
-    paramParcel.writeParcelable(this.coverUrl, paramInt);
-    paramParcel.writeInt(this.actionType);
-    paramParcel.writeString(this.actionUrl);
-    paramParcel.writeParcelable(this.highBrUrl, paramInt);
-    paramParcel.writeParcelable(this.lowBrUrl, paramInt);
-    paramParcel.writeParcelable(this.originVideoUrl, paramInt);
-    paramParcel.writeParcelable(this.h265NormalUrl, paramInt);
-    paramParcel.writeList(this.videoRateList);
-    paramParcel.writeInt(this.currentVideoRate);
-    paramParcel.writeLong(this.originVideoSize);
-    paramParcel.writeInt(this.fileType);
-    paramParcel.writeInt(this.videoType);
-    paramParcel.writeLong(this.videoTime);
-    paramParcel.writeString(this.showVideoTime);
-    paramParcel.writeByte(this.playType);
-    paramParcel.writeInt(this.videoShowType);
-    paramParcel.writeInt(this.videoStatus);
-    paramParcel.writeLong(this.lastUseTime);
-    paramParcel.writeInt(this.width);
-    paramParcel.writeInt(this.height);
-    paramParcel.writeString(this.toast);
-    int i;
-    if (this.isFakeFeed)
-    {
-      i = 1;
-      paramParcel.writeInt(i);
-      paramParcel.writeParcelable(this.videoRemark, paramInt);
-      paramParcel.writeLong(this.validVideoTime);
-      paramParcel.writeString(this.validVideoTimeDesc);
-      if (!this.isCircle) {
-        break label442;
-      }
-      paramInt = 1;
-      label268:
-      paramParcel.writeInt(paramInt);
-      if (!this.isAutoPlay) {
-        break label447;
-      }
-      paramInt = 1;
-      label282:
-      paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.writeFrom);
-      paramParcel.writeString(this.desc);
-      paramParcel.writeInt(this.videoSource);
-      paramParcel.writeInt(this.advDelayTime);
-      paramParcel.writeInt(this.isGetRecommAfterPlay);
-      paramParcel.writeLong(this.shootTime);
-      paramParcel.writeInt(this.videoplaycnt);
-      if (!this.allowShowPasterVideoAdv) {
-        break label452;
-      }
-      paramInt = 1;
-      label352:
-      paramParcel.writeInt(paramInt);
-      if (!this.needDeleteLocal) {
-        break label457;
-      }
-    }
-    label442:
-    label447:
-    label452:
-    label457:
-    for (paramInt = j;; paramInt = 0)
-    {
-      paramParcel.writeInt(paramInt);
-      paramParcel.writeLong(this.seekPosition);
-      paramParcel.writeString(this.lloc);
-      paramParcel.writeString(this.albumid);
-      paramParcel.writeInt(this.pull_weishi_mask);
-      paramParcel.writeString(this.weishi_download_url);
-      paramParcel.writeString(this.weishi_pull_schema);
-      paramParcel.writeString(this.weishi_clipbrd);
-      paramParcel.writeString(this.pull_weishi_alg_id);
-      return;
-      i = 0;
-      break;
-      paramInt = 0;
-      break label268;
-      paramInt = 0;
-      break label282;
-      paramInt = 0;
-      break label352;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.model.VideoInfo
  * JD-Core Version:    0.7.0.1
  */

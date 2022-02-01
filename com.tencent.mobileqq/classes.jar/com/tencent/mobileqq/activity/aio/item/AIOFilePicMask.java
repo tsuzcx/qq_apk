@@ -26,14 +26,16 @@ public class AIOFilePicMask
   
   public void draw(Canvas paramCanvas)
   {
-    Rect localRect = getBounds();
-    int i = localRect.width();
-    int j = localRect.height();
+    Object localObject = getBounds();
+    int i = ((Rect)localObject).width();
+    int j = ((Rect)localObject).height();
     if ((i > 0) && (j > 0))
     {
       paramCanvas.save();
-      jdField_a_of_type_AndroidGraphicsRectF.set(localRect);
-      paramCanvas.drawRoundRect(jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+      jdField_a_of_type_AndroidGraphicsRectF.set((Rect)localObject);
+      localObject = jdField_a_of_type_AndroidGraphicsRectF;
+      float f = this.jdField_a_of_type_Float;
+      paramCanvas.drawRoundRect((RectF)localObject, f, f, this.jdField_a_of_type_AndroidGraphicsPaint);
       paramCanvas.restore();
     }
   }
@@ -55,7 +57,7 @@ public class AIOFilePicMask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.AIOFilePicMask
  * JD-Core Version:    0.7.0.1
  */

@@ -13,16 +13,28 @@ public class PluginRemoteService$Sub1
   public IBinder onBind(Intent paramIntent)
   {
     int i = paramIntent.getIntExtra("key_binder_type", -1);
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "PluginRemoteService$Sub1.onBind. " + i + ", " + Binder.getCallingPid() + ", " + this);
+    if (QLog.isColorLevel())
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("PluginRemoteService$Sub1.onBind. ");
+      paramIntent.append(i);
+      paramIntent.append(", ");
+      paramIntent.append(Binder.getCallingPid());
+      paramIntent.append(", ");
+      paramIntent.append(this);
+      QLog.d("plugin_tag", 2, paramIntent.toString());
     }
     return PluginCommunicationHandler.getInstance().getBinder();
   }
   
   public void onCreate()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("plugin_tag", 2, "PluginRemoteService$Sub1.onCreate " + this);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PluginRemoteService$Sub1.onCreate ");
+      localStringBuilder.append(this);
+      QLog.i("plugin_tag", 2, localStringBuilder.toString());
     }
     super.onCreate();
     MobileQQ.sMobileQQ.waitAppRuntime(null);
@@ -31,22 +43,32 @@ public class PluginRemoteService$Sub1
   public void onDestroy()
   {
     super.onDestroy();
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "PluginRemoteService$Sub1.onDestroy. " + this);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PluginRemoteService$Sub1.onDestroy. ");
+      localStringBuilder.append(this);
+      QLog.d("plugin_tag", 2, localStringBuilder.toString());
     }
   }
   
   public boolean onUnbind(Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "PluginRemoteService$Sub1.onUnbind. " + Binder.getCallingPid() + ", " + this);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PluginRemoteService$Sub1.onUnbind. ");
+      localStringBuilder.append(Binder.getCallingPid());
+      localStringBuilder.append(", ");
+      localStringBuilder.append(this);
+      QLog.d("plugin_tag", 2, localStringBuilder.toString());
     }
     return super.onUnbind(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.ipc.PluginRemoteService.Sub1
  * JD-Core Version:    0.7.0.1
  */

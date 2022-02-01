@@ -23,14 +23,15 @@ public final class oidb_0xc35$ExposeItem
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 58, 66 }, new String[] { "uint64_friend", "uint32_page_id", "uint32_entrance_Id", "uint32_action_id", "uint32_expose_count", "uint32_expose_time", "bytes_algo_buffer", "bytes_addition" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2 }, ExposeItem.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 58, 66 }, new String[] { "uint64_friend", "uint32_page_id", "uint32_entrance_Id", "uint32_action_id", "uint32_expose_count", "uint32_expose_time", "bytes_algo_buffer", "bytes_addition" }, new Object[] { Long.valueOf(0L), localInteger, localInteger, localInteger, localInteger, localInteger, localByteStringMicro1, localByteStringMicro2 }, ExposeItem.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.oidb_0xc35.ExposeItem
  * JD-Core Version:    0.7.0.1
  */

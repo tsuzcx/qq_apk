@@ -52,24 +52,25 @@ public class ExtendGridView
   
   public int a()
   {
-    if (getWidth() > 0) {}
-    for (int i = getWidth();; i = getMeasuredWidth())
-    {
-      int j = i;
-      if (i <= 0) {
-        j = this.d;
-      }
-      i = getHorizontalSpacing();
-      int k = getPaddingLeft();
-      int m = getPaddingRight();
-      int n = getNumColumns();
-      j = (j - (k + m) - i * (n - 1)) / n;
-      i = j;
-      if (j < 0) {
-        i = -2;
-      }
-      return i;
+    if (getWidth() > 0) {
+      i = getWidth();
+    } else {
+      i = getMeasuredWidth();
     }
+    int j = i;
+    if (i <= 0) {
+      j = this.d;
+    }
+    int i = getHorizontalSpacing();
+    int k = getPaddingLeft();
+    int m = getPaddingRight();
+    int n = getNumColumns();
+    j = (j - (k + m) - (n - 1) * i) / n;
+    i = j;
+    if (j < 0) {
+      i = -2;
+    }
+    return i;
   }
   
   public int getHorizontalSpacing()
@@ -88,13 +89,13 @@ public class ExtendGridView
   }
   
   @TargetApi(8)
-  public void onConfigurationChanged(Configuration paramConfiguration)
+  protected void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
     a();
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     if (this.jdField_a_of_type_Boolean) {
       paramInt2 = View.MeasureSpec.makeMeasureSpec(536870911, -2147483648);
@@ -150,7 +151,7 @@ public class ExtendGridView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.ExtendGridView
  * JD-Core Version:    0.7.0.1
  */

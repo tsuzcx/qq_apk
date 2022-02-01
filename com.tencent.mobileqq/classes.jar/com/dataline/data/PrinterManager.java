@@ -14,6 +14,7 @@ import com.tencent.mobileqq.util.SharePreferenceUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import mqq.app.MobileQQ;
 
 public class PrinterManager
 {
@@ -61,15 +62,20 @@ public class PrinterManager
   private void a(int paramInt)
   {
     a();
-    if (this.jdField_a_of_type_ComDatalineDataPrinterManager$PrinterUpdateObserver != null) {
-      this.jdField_a_of_type_ComDatalineDataPrinterManager$PrinterUpdateObserver.a(paramInt);
+    PrinterManager.PrinterUpdateObserver localPrinterUpdateObserver = this.jdField_a_of_type_ComDatalineDataPrinterManager$PrinterUpdateObserver;
+    if (localPrinterUpdateObserver != null) {
+      localPrinterUpdateObserver.a(paramInt);
     }
   }
   
   public PrinterEntity a()
   {
     String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    str = SharePreferenceUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), str + "_last_printer");
+    MobileQQ localMobileQQ = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("_last_printer");
+    str = SharePreferenceUtils.a(localMobileQQ, localStringBuilder.toString());
     a();
     return b(str);
   }
@@ -92,18 +98,18 @@ public class PrinterManager
   
   public PrinterEntity a(String paramString)
   {
-    PCQQPrinter localPCQQPrinter = null;
     if (paramString != null)
     {
-      localPCQQPrinter = new PCQQPrinter();
+      PCQQPrinter localPCQQPrinter = new PCQQPrinter();
       localPCQQPrinter.jdField_a_of_type_Int = 1;
       localPCQQPrinter.jdField_a_of_type_Long = 0L;
       localPCQQPrinter.jdField_a_of_type_JavaLangString = paramString;
       localPCQQPrinter.c = true;
       localPCQQPrinter.b = true;
       localPCQQPrinter.jdField_a_of_type_Boolean = true;
+      return localPCQQPrinter;
     }
-    return localPCQQPrinter;
+    return null;
   }
   
   public List<PrinterEntity> a()
@@ -124,9 +130,10 @@ public class PrinterManager
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localQQAppInterface != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver);
+      localQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentDeviceDevicemgrSmartDeviceObserver);
     }
     this.jdField_a_of_type_ComDatalineDataPrinterManager$PrinterUpdateObserver = null;
@@ -134,9 +141,10 @@ public class PrinterManager
   
   public void a(PrinterManager.PrinterUpdateObserver paramPrinterUpdateObserver)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localQQAppInterface != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver);
+      localQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentDeviceDevicemgrSmartDeviceObserver);
     }
     this.jdField_a_of_type_ComDatalineDataPrinterManager$PrinterUpdateObserver = paramPrinterUpdateObserver;
@@ -148,7 +156,11 @@ public class PrinterManager
       return;
     }
     String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    SharePreferenceUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), str + "_last_printer", paramString);
+    MobileQQ localMobileQQ = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("_last_printer");
+    SharePreferenceUtils.a(localMobileQQ, localStringBuilder.toString(), paramString);
   }
   
   public boolean a()
@@ -194,7 +206,7 @@ public class PrinterManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.data.PrinterManager
  * JD-Core Version:    0.7.0.1
  */

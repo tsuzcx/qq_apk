@@ -51,15 +51,20 @@ public class ViolaUtils
   
   public static void addViewParentToView(ViewGroup paramViewGroup, View paramView, int paramInt)
   {
-    if ((paramViewGroup == null) || (paramView == null)) {}
-    while (!(paramView.getParent() instanceof ViewGroup)) {
-      return;
+    if (paramViewGroup != null)
+    {
+      if (paramView == null) {
+        return;
+      }
+      if ((paramView.getParent() instanceof ViewGroup))
+      {
+        paramView = (ViewGroup)paramView.getParent();
+        if ((paramView.getParent() instanceof ViewGroup)) {
+          ((ViewGroup)paramView.getParent()).removeView(paramView);
+        }
+        paramViewGroup.addView(paramView, paramInt);
+      }
     }
-    paramView = (ViewGroup)paramView.getParent();
-    if ((paramView.getParent() instanceof ViewGroup)) {
-      ((ViewGroup)paramView.getParent()).removeView(paramView);
-    }
-    paramViewGroup.addView(paramView, paramInt);
   }
   
   /* Error */
@@ -67,193 +72,225 @@ public class ViolaUtils
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore_3
-    //   2: aconst_null
-    //   3: astore_1
-    //   4: aload_0
-    //   5: ifnull +237 -> 242
-    //   8: new 66	java/io/ByteArrayOutputStream
-    //   11: dup
-    //   12: invokespecial 67	java/io/ByteArrayOutputStream:<init>	()V
-    //   15: astore_2
-    //   16: aload_2
-    //   17: astore_1
-    //   18: aload_0
-    //   19: getstatic 73	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
-    //   22: bipush 100
-    //   24: aload_2
-    //   25: invokevirtual 79	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   28: pop
+    //   1: astore_1
+    //   2: aload_0
+    //   3: ifnull +218 -> 221
+    //   6: new 66	java/io/ByteArrayOutputStream
+    //   9: dup
+    //   10: invokespecial 67	java/io/ByteArrayOutputStream:<init>	()V
+    //   13: astore_2
+    //   14: aload_2
+    //   15: astore_1
+    //   16: aload_0
+    //   17: getstatic 73	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   20: bipush 100
+    //   22: aload_2
+    //   23: invokevirtual 79	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   26: pop
+    //   27: aload_2
+    //   28: astore_1
     //   29: aload_2
-    //   30: astore_1
-    //   31: aload_2
-    //   32: invokevirtual 82	java/io/ByteArrayOutputStream:flush	()V
+    //   30: invokevirtual 82	java/io/ByteArrayOutputStream:flush	()V
+    //   33: aload_2
+    //   34: astore_1
     //   35: aload_2
-    //   36: astore_1
-    //   37: aload_2
-    //   38: invokevirtual 85	java/io/ByteArrayOutputStream:close	()V
+    //   36: invokevirtual 85	java/io/ByteArrayOutputStream:close	()V
+    //   39: aload_2
+    //   40: astore_1
     //   41: aload_2
-    //   42: astore_1
-    //   43: aload_2
-    //   44: invokevirtual 89	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   47: iconst_0
-    //   48: invokestatic 95	android/util/Base64:encodeToString	([BI)Ljava/lang/String;
-    //   51: astore_0
-    //   52: aload_0
-    //   53: astore_1
-    //   54: aload_2
-    //   55: ifnull +13 -> 68
-    //   58: aload_2
-    //   59: invokevirtual 82	java/io/ByteArrayOutputStream:flush	()V
-    //   62: aload_2
-    //   63: invokevirtual 85	java/io/ByteArrayOutputStream:close	()V
-    //   66: aload_0
-    //   67: astore_1
-    //   68: aload_1
-    //   69: areturn
-    //   70: astore_1
-    //   71: ldc 15
-    //   73: bipush 6
-    //   75: new 97	java/lang/StringBuilder
-    //   78: dup
-    //   79: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   82: ldc 100
-    //   84: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   87: aload_1
-    //   88: invokevirtual 107	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   91: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   94: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   97: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   100: aload_0
-    //   101: areturn
-    //   102: astore_0
-    //   103: aconst_null
-    //   104: astore_2
-    //   105: aload_2
-    //   106: astore_1
-    //   107: ldc 15
-    //   109: bipush 6
-    //   111: new 97	java/lang/StringBuilder
-    //   114: dup
-    //   115: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   118: ldc 116
-    //   120: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   123: aload_0
-    //   124: invokevirtual 107	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   127: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   130: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   133: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   136: aload_3
-    //   137: astore_1
-    //   138: aload_2
-    //   139: ifnull -71 -> 68
-    //   142: aload_2
-    //   143: invokevirtual 82	java/io/ByteArrayOutputStream:flush	()V
-    //   146: aload_2
-    //   147: invokevirtual 85	java/io/ByteArrayOutputStream:close	()V
-    //   150: aconst_null
-    //   151: areturn
-    //   152: astore_0
-    //   153: ldc 15
-    //   155: bipush 6
-    //   157: new 97	java/lang/StringBuilder
-    //   160: dup
-    //   161: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   164: ldc 100
-    //   166: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   169: aload_0
-    //   170: invokevirtual 107	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   173: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   176: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   179: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   182: aconst_null
-    //   183: areturn
-    //   184: astore_0
-    //   185: aconst_null
-    //   186: astore_1
-    //   187: aload_1
-    //   188: ifnull +11 -> 199
-    //   191: aload_1
-    //   192: invokevirtual 82	java/io/ByteArrayOutputStream:flush	()V
-    //   195: aload_1
-    //   196: invokevirtual 85	java/io/ByteArrayOutputStream:close	()V
-    //   199: aload_0
-    //   200: athrow
-    //   201: astore_1
-    //   202: ldc 15
-    //   204: bipush 6
-    //   206: new 97	java/lang/StringBuilder
-    //   209: dup
-    //   210: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   213: ldc 100
-    //   215: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   218: aload_1
-    //   219: invokevirtual 107	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   222: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   225: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   228: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   231: goto -32 -> 199
-    //   234: astore_0
-    //   235: goto -48 -> 187
-    //   238: astore_0
-    //   239: goto -134 -> 105
-    //   242: aconst_null
-    //   243: astore_2
-    //   244: aload_1
-    //   245: astore_0
-    //   246: goto -194 -> 52
+    //   42: invokevirtual 89	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   45: iconst_0
+    //   46: invokestatic 95	android/util/Base64:encodeToString	([BI)Ljava/lang/String;
+    //   49: astore_0
+    //   50: aload_2
+    //   51: astore_1
+    //   52: goto +171 -> 223
+    //   55: astore_0
+    //   56: goto +112 -> 168
+    //   59: astore_0
+    //   60: goto +12 -> 72
+    //   63: astore_0
+    //   64: aconst_null
+    //   65: astore_1
+    //   66: goto +102 -> 168
+    //   69: astore_0
+    //   70: aconst_null
+    //   71: astore_2
+    //   72: aload_2
+    //   73: astore_1
+    //   74: new 97	java/lang/StringBuilder
+    //   77: dup
+    //   78: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   81: astore_3
+    //   82: aload_2
+    //   83: astore_1
+    //   84: aload_3
+    //   85: ldc 100
+    //   87: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   90: pop
+    //   91: aload_2
+    //   92: astore_1
+    //   93: aload_3
+    //   94: aload_0
+    //   95: invokevirtual 107	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   98: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   101: pop
+    //   102: aload_2
+    //   103: astore_1
+    //   104: ldc 15
+    //   106: bipush 6
+    //   108: aload_3
+    //   109: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   112: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
+    //   115: aload_2
+    //   116: ifnull +50 -> 166
+    //   119: aload_2
+    //   120: invokevirtual 82	java/io/ByteArrayOutputStream:flush	()V
+    //   123: aload_2
+    //   124: invokevirtual 85	java/io/ByteArrayOutputStream:close	()V
+    //   127: goto +39 -> 166
+    //   130: astore_0
+    //   131: new 97	java/lang/StringBuilder
+    //   134: dup
+    //   135: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   138: astore_1
+    //   139: aload_1
+    //   140: ldc 116
+    //   142: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   145: pop
+    //   146: aload_1
+    //   147: aload_0
+    //   148: invokevirtual 107	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   151: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   154: pop
+    //   155: ldc 15
+    //   157: bipush 6
+    //   159: aload_1
+    //   160: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   163: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
+    //   166: aconst_null
+    //   167: areturn
+    //   168: aload_1
+    //   169: ifnull +50 -> 219
+    //   172: aload_1
+    //   173: invokevirtual 82	java/io/ByteArrayOutputStream:flush	()V
+    //   176: aload_1
+    //   177: invokevirtual 85	java/io/ByteArrayOutputStream:close	()V
+    //   180: goto +39 -> 219
+    //   183: astore_1
+    //   184: new 97	java/lang/StringBuilder
+    //   187: dup
+    //   188: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   191: astore_2
+    //   192: aload_2
+    //   193: ldc 116
+    //   195: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   198: pop
+    //   199: aload_2
+    //   200: aload_1
+    //   201: invokevirtual 107	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   204: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   207: pop
+    //   208: ldc 15
+    //   210: bipush 6
+    //   212: aload_2
+    //   213: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   216: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
+    //   219: aload_0
+    //   220: athrow
+    //   221: aconst_null
+    //   222: astore_0
+    //   223: aload_1
+    //   224: ifnull +49 -> 273
+    //   227: aload_1
+    //   228: invokevirtual 82	java/io/ByteArrayOutputStream:flush	()V
+    //   231: aload_1
+    //   232: invokevirtual 85	java/io/ByteArrayOutputStream:close	()V
+    //   235: aload_0
+    //   236: areturn
+    //   237: astore_1
+    //   238: new 97	java/lang/StringBuilder
+    //   241: dup
+    //   242: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   245: astore_2
+    //   246: aload_2
+    //   247: ldc 116
+    //   249: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   252: pop
+    //   253: aload_2
+    //   254: aload_1
+    //   255: invokevirtual 107	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   258: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   261: pop
+    //   262: ldc 15
+    //   264: bipush 6
+    //   266: aload_2
+    //   267: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   270: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
+    //   273: aload_0
+    //   274: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	249	0	paramBitmap	Bitmap
-    //   3	66	1	localObject1	Object
-    //   70	18	1	localException1	Exception
-    //   106	90	1	localObject2	Object
-    //   201	44	1	localException2	Exception
-    //   15	229	2	localByteArrayOutputStream	java.io.ByteArrayOutputStream
-    //   1	136	3	localObject3	Object
+    //   0	275	0	paramBitmap	Bitmap
+    //   1	176	1	localObject1	Object
+    //   183	49	1	localException1	Exception
+    //   237	18	1	localException2	Exception
+    //   13	254	2	localObject2	Object
+    //   81	28	3	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   58	66	70	java/lang/Exception
-    //   8	16	102	java/lang/Exception
-    //   142	150	152	java/lang/Exception
-    //   8	16	184	finally
-    //   191	199	201	java/lang/Exception
-    //   18	29	234	finally
-    //   31	35	234	finally
-    //   37	41	234	finally
-    //   43	52	234	finally
-    //   107	136	234	finally
-    //   18	29	238	java/lang/Exception
-    //   31	35	238	java/lang/Exception
-    //   37	41	238	java/lang/Exception
-    //   43	52	238	java/lang/Exception
+    //   16	27	55	finally
+    //   29	33	55	finally
+    //   35	39	55	finally
+    //   41	50	55	finally
+    //   74	82	55	finally
+    //   84	91	55	finally
+    //   93	102	55	finally
+    //   104	115	55	finally
+    //   16	27	59	java/lang/Exception
+    //   29	33	59	java/lang/Exception
+    //   35	39	59	java/lang/Exception
+    //   41	50	59	java/lang/Exception
+    //   6	14	63	finally
+    //   6	14	69	java/lang/Exception
+    //   119	127	130	java/lang/Exception
+    //   172	180	183	java/lang/Exception
+    //   227	235	237	java/lang/Exception
   }
   
   public static void bringIndexToRootView(VComponent paramVComponent, VComponentContainer paramVComponentContainer)
   {
-    if ((paramVComponent == null) || (paramVComponentContainer == null) || (paramVComponent.mHost == null) || (paramVComponentContainer.mHost == null)) {}
-    while ((paramVComponent.mDomObj == null) || (paramVComponentContainer.mDomObj == null)) {
-      return;
-    }
-    Object localObject1 = new int[2];
-    paramVComponentContainer.mHost.getLocationInWindow((int[])localObject1);
-    Object localObject2 = new int[2];
-    paramVComponent.mHost.getLocationInWindow((int[])localObject2);
-    float f1 = localObject2[0] - localObject1[0];
-    float f2 = localObject2[1] - localObject1[1];
-    localObject1 = paramVComponent.mHost.getLayoutParams();
-    if ((localObject1 instanceof ViewGroup.MarginLayoutParams))
+    if ((paramVComponent != null) && (paramVComponentContainer != null) && (paramVComponent.mHost != null))
     {
-      localObject2 = (ViewGroup.MarginLayoutParams)localObject1;
-      ((ViewGroup.MarginLayoutParams)localObject2).leftMargin = ((int)f1);
-      ((ViewGroup.MarginLayoutParams)localObject2).topMargin = ((int)f2);
+      if (paramVComponentContainer.mHost == null) {
+        return;
+      }
+      if (paramVComponent.mDomObj == null) {
+        return;
+      }
+      if (paramVComponentContainer.mDomObj == null) {
+        return;
+      }
+      Object localObject1 = new int[2];
+      paramVComponentContainer.mHost.getLocationInWindow((int[])localObject1);
+      Object localObject2 = new int[2];
+      paramVComponent.mHost.getLocationInWindow((int[])localObject2);
+      float f1 = localObject2[0] - localObject1[0];
+      float f2 = localObject2[1] - localObject1[1];
+      localObject1 = paramVComponent.mHost.getLayoutParams();
+      if ((localObject1 instanceof ViewGroup.MarginLayoutParams))
+      {
+        localObject2 = (ViewGroup.MarginLayoutParams)localObject1;
+        ((ViewGroup.MarginLayoutParams)localObject2).leftMargin = ((int)f1);
+        ((ViewGroup.MarginLayoutParams)localObject2).topMargin = ((int)f2);
+      }
+      localObject2 = paramVComponent.getParent();
+      if (localObject2 != null) {
+        ((VComponentContainer)localObject2).remove(paramVComponent, false, true);
+      }
+      paramVComponent.mHost.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      paramVComponentContainer.addComponentView(paramVComponent, -1);
     }
-    localObject2 = paramVComponent.getParent();
-    if (localObject2 != null) {
-      ((VComponentContainer)localObject2).remove(paramVComponent, false, true);
-    }
-    paramVComponent.mHost.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-    paramVComponentContainer.addComponentView(paramVComponent, -1);
   }
   
   public static HashMap<String, String> copyMap(HashMap<String, String> paramHashMap)
@@ -273,65 +310,54 @@ public class ViolaUtils
   
   public static JSONObject deepMergeJSON(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
   {
-    for (;;)
+    try
     {
-      Object localObject1;
-      Object localObject2;
-      try
+      Iterator localIterator = paramJSONObject1.keys();
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = paramJSONObject1.keys();
-        localObject1 = paramJSONObject2;
-        if (localIterator.hasNext())
-        {
-          localObject1 = (String)localIterator.next();
-          localObject2 = paramJSONObject1.get((String)localObject1);
-          if (!paramJSONObject2.has((String)localObject1)) {
-            paramJSONObject2.put((String)localObject1, localObject2);
-          }
-        }
-        else
-        {
-          return localObject1;
+        String str = (String)localIterator.next();
+        Object localObject = paramJSONObject1.get(str);
+        if (!paramJSONObject2.has(str)) {
+          paramJSONObject2.put(str, localObject);
+        } else if ((localObject instanceof JSONObject)) {
+          deepMergeJSON((JSONObject)localObject, paramJSONObject2.getJSONObject(str));
+        } else {
+          paramJSONObject2.put(str, localObject);
         }
       }
-      catch (JSONException paramJSONObject1)
-      {
-        ViolaLogUtils.e("ViolaUtils", "deepMergeJSON e :" + paramJSONObject1.getMessage());
-        localObject1 = null;
-      }
-      if ((localObject2 instanceof JSONObject)) {
-        deepMergeJSON((JSONObject)localObject2, paramJSONObject2.getJSONObject((String)localObject1));
-      } else {
-        paramJSONObject2.put((String)localObject1, localObject2);
-      }
+      return paramJSONObject2;
     }
+    catch (JSONException paramJSONObject1)
+    {
+      paramJSONObject2 = new StringBuilder();
+      paramJSONObject2.append("deepMergeJSON e :");
+      paramJSONObject2.append(paramJSONObject1.getMessage());
+      ViolaLogUtils.e("ViolaUtils", paramJSONObject2.toString());
+    }
+    return null;
   }
   
   public static String encode(char[] paramArrayOfChar)
   {
-    int j = 0;
     StringBuilder localStringBuilder = new StringBuilder();
-    int m = paramArrayOfChar.length;
-    int k = 0;
-    if (k < m)
+    int k = paramArrayOfChar.length;
+    int j = 0;
+    while (j < k)
     {
-      int i = paramArrayOfChar[k];
+      int i = paramArrayOfChar[j];
       if (i < 256)
       {
         localStringBuilder.append(i);
-        j += 1;
       }
-      for (;;)
+      else
       {
-        k += 1;
-        break;
         localStringBuilder.append("\\u");
         localStringBuilder.append(Character.forDigit(i >>> 12 & 0xF, 16));
         localStringBuilder.append(Character.forDigit(i >>> 8 & 0xF, 16));
         localStringBuilder.append(Character.forDigit(i >>> 4 & 0xF, 16));
         localStringBuilder.append(Character.forDigit(i & 0xF, 16));
-        j += 5;
       }
+      j += 1;
     }
     return localStringBuilder.toString();
   }
@@ -343,325 +369,343 @@ public class ViolaUtils
   
   public static float fastGetFloat(String paramString, int paramInt)
   {
-    int j = 1;
-    int m = 0;
-    String str;
-    float f1;
-    int i;
     if (!TextUtils.isEmpty(paramString))
     {
-      str = paramString;
-      if (paramString.endsWith("%"))
+      boolean bool = paramString.endsWith("%");
+      int k = 0;
+      String str = paramString;
+      if (bool)
       {
         str = paramString.substring(0, paramString.indexOf("%"));
         try
         {
           f1 = Float.parseFloat(str);
-          f1 /= 100.0F;
-          return f1;
+          return f1 / 100.0F;
         }
         catch (NumberFormatException paramString)
         {
-          ViolaLogUtils.e("ViolaUtils", "fastGetFloat NumberFormatException  % e:" + paramString.getMessage());
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("fastGetFloat NumberFormatException  % e:");
+          localStringBuilder.append(paramString.getMessage());
+          ViolaLogUtils.e("ViolaUtils", localStringBuilder.toString());
         }
       }
-      if (str.charAt(0) == '-') {
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      f1 = 0.0F;
-      int k;
-      for (;;)
+      int i;
+      int j;
+      if (str.charAt(0) == '-')
       {
-        if (j < str.length())
-        {
-          k = str.charAt(j);
-          if ((k >= 48) && (k <= 57))
-          {
-            f1 = f1 * 10.0F + k - 48.0F;
-            j += 1;
-            continue;
-            if (str.charAt(0) != '+') {
-              break label325;
-            }
-            i = 1;
-            break;
-          }
+        i = 1;
+        j = 0;
+      }
+      else
+      {
+        if (str.charAt(0) == '+') {
+          i = 1;
+        } else {
+          i = 0;
         }
+        j = 1;
+      }
+      float f1 = 0.0F;
+      int m;
+      while (i < str.length())
+      {
+        m = str.charAt(i);
+        if ((m < 48) || (m > 57)) {
+          break;
+        }
+        f1 = f1 * 10.0F + m - 48.0F;
+        i += 1;
       }
       float f2 = f1;
-      if (j < str.length())
+      if (i < str.length())
       {
-        if (str.charAt(j) == '.')
+        if (str.charAt(i) == '.')
         {
-          k = j + 1;
-          int n = 10;
-          j = m;
-          m = n;
-          while ((k < str.length()) && (j < paramInt))
+          int n = i + 1;
+          m = 10;
+          i = k;
+          k = n;
+          for (;;)
           {
+            f2 = f1;
+            if (k >= str.length()) {
+              break;
+            }
+            f2 = f1;
+            if (i >= paramInt) {
+              break;
+            }
             n = str.charAt(k);
-            if ((n < 48) || (n > 57)) {
+            f2 = f1;
+            if (n < 48) {
+              break;
+            }
+            f2 = f1;
+            if (n > 57) {
               break;
             }
             f1 += (n - 48) / m;
             m *= 10;
             k += 1;
-            j += 1;
+            i += 1;
           }
-          f2 = f1;
         }
+        throw new NumberFormatException("Illegal separator");
       }
-      else
-      {
-        f1 = f2;
-        if (i != 0) {
-          break;
-        }
-        return f2 * -1.0F;
+      f1 = f2;
+      if (j == 0) {
+        f1 = f2 * -1.0F;
       }
-      throw new NumberFormatException("Illegal separator");
-      throw new NumberFormatException("NullNumber");
-      label325:
-      i = 1;
-      j = 0;
+      return f1;
+    }
+    paramString = new NumberFormatException("NullNumber");
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
   public static void fastblur(Bitmap paramBitmap, int paramInt)
   {
-    if (paramInt < 1) {
+    int i7 = paramInt;
+    if (i7 < 1) {
       return;
     }
-    int i12 = paramBitmap.getWidth();
-    int i13 = paramBitmap.getHeight();
-    int[] arrayOfInt1 = new int[i12 * i13];
-    paramBitmap.getPixels(arrayOfInt1, 0, i12, 0, 0, i12, i13);
-    int i11 = i12 - 1;
-    int i14 = i13 - 1;
-    int i = i12 * i13;
-    int i15 = paramInt + paramInt + 1;
+    int i19 = paramBitmap.getWidth();
+    int j = paramBitmap.getHeight();
+    int i = i19 * j;
     int[] arrayOfInt2 = new int[i];
+    paramBitmap.getPixels(arrayOfInt2, 0, i19, 0, 0, i19, j);
+    int i20 = i19 - 1;
+    int k = j - 1;
+    int i17 = i7 + i7 + 1;
     int[] arrayOfInt3 = new int[i];
     int[] arrayOfInt4 = new int[i];
-    int[] arrayOfInt5 = new int[Math.max(i12, i13)];
-    i = i15 + 1 >> 1;
-    int j = i * i;
-    int[] arrayOfInt6 = new int[j * 256];
-    int i17 = arrayOfInt6.length;
+    int[] arrayOfInt5 = new int[i];
+    int[] arrayOfInt1 = new int[Math.max(i19, j)];
+    i = i17 + 1 >> 1;
+    int m = i * i;
+    int n = m * 256;
+    int[] arrayOfInt6 = new int[n];
+    int i11 = arrayOfInt6.length;
     i = 0;
-    while (i < j * 256)
+    while (i < n)
     {
-      arrayOfInt6[i] = (i / j);
+      arrayOfInt6[i] = (i / m);
       i += 1;
     }
-    int[][] arrayOfInt = (int[][])Array.newInstance(Integer.TYPE, new int[] { i15, 3 });
-    int i16 = paramInt + 1;
-    int i7 = 0;
-    i = 0;
-    int i6 = 0;
-    int i8;
-    int m;
-    int n;
+    int[][] arrayOfInt = (int[][])Array.newInstance(Integer.TYPE, new int[] { i17, 3 });
+    int i8 = i7 + 1;
+    int i10 = 0;
+    int i12 = 0;
+    int i9 = 0;
+    i = k;
+    int i13;
+    int i6;
+    int i5;
+    int i4;
     int i1;
     int i2;
     int i3;
-    int i4;
-    int i5;
-    int k;
-    int i9;
+    int i14;
     int[] arrayOfInt7;
-    int i10;
+    int i15;
+    int i16;
+    while (i10 < j)
+    {
+      i13 = -i7;
+      i6 = 0;
+      i5 = 0;
+      i4 = 0;
+      n = 0;
+      m = 0;
+      k = 0;
+      i1 = 0;
+      i2 = 0;
+      i3 = 0;
+      while (i13 <= i7)
+      {
+        i14 = arrayOfInt2[(i12 + Math.min(i20, Math.max(i13, 0)))];
+        arrayOfInt7 = arrayOfInt[(i13 + i7)];
+        arrayOfInt7[0] = ((i14 & 0xFF0000) >> 16);
+        arrayOfInt7[1] = ((i14 & 0xFF00) >> 8);
+        arrayOfInt7[2] = (i14 & 0xFF);
+        i14 = i8 - Math.abs(i13);
+        i6 += arrayOfInt7[0] * i14;
+        i5 += arrayOfInt7[1] * i14;
+        i4 += arrayOfInt7[2] * i14;
+        if (i13 > 0)
+        {
+          i1 += arrayOfInt7[0];
+          i2 += arrayOfInt7[1];
+          i3 += arrayOfInt7[2];
+        }
+        else
+        {
+          n += arrayOfInt7[0];
+          m += arrayOfInt7[1];
+          k += arrayOfInt7[2];
+        }
+        i13 += 1;
+      }
+      i15 = i6;
+      int i18 = 0;
+      i16 = i7;
+      i6 = i3;
+      i13 = i2;
+      i14 = i1;
+      i1 = i16;
+      i3 = i5;
+      i2 = i4;
+      i5 = i15;
+      i4 = i18;
+      while (i4 < i19) {
+        if ((i5 < i11) && (i3 < i11))
+        {
+          if (i2 >= i11) {
+            return;
+          }
+          arrayOfInt3[i12] = arrayOfInt6[i5];
+          arrayOfInt4[i12] = arrayOfInt6[i3];
+          arrayOfInt5[i12] = arrayOfInt6[i2];
+          arrayOfInt7 = arrayOfInt[((i1 - i7 + i17) % i17)];
+          i18 = arrayOfInt7[0];
+          i16 = arrayOfInt7[1];
+          i15 = arrayOfInt7[2];
+          if (i10 == 0) {
+            arrayOfInt1[i4] = Math.min(i4 + i7 + 1, i20);
+          }
+          int i21 = arrayOfInt2[(i9 + arrayOfInt1[i4])];
+          arrayOfInt7[0] = ((i21 & 0xFF0000) >> 16);
+          arrayOfInt7[1] = ((i21 & 0xFF00) >> 8);
+          arrayOfInt7[2] = (i21 & 0xFF);
+          i14 += arrayOfInt7[0];
+          i13 += arrayOfInt7[1];
+          i6 += arrayOfInt7[2];
+          i5 = i5 - n + i14;
+          i3 = i3 - m + i13;
+          i2 = i2 - k + i6;
+          i1 = (i1 + 1) % i17;
+          arrayOfInt7 = arrayOfInt[(i1 % i17)];
+          n = n - i18 + arrayOfInt7[0];
+          m = m - i16 + arrayOfInt7[1];
+          k = k - i15 + arrayOfInt7[2];
+          i14 -= arrayOfInt7[0];
+          i13 -= arrayOfInt7[1];
+          i6 -= arrayOfInt7[2];
+          i12 += 1;
+          i4 += 1;
+        }
+        else
+        {
+          return;
+        }
+      }
+      i9 += i19;
+      i10 += 1;
+    }
+    i9 = j;
+    m = 0;
+    j = i;
+    k = i17;
+    i = m;
     for (;;)
     {
-      if (i6 >= i13) {
-        break label743;
+      i10 = paramInt;
+      if (i >= i19) {
+        break;
       }
-      j = 0;
-      i8 = -paramInt;
-      m = 0;
-      n = 0;
-      i1 = 0;
-      i2 = 0;
-      i3 = 0;
+      i11 = -i10;
+      i12 = i11 * i19;
+      i7 = 0;
       i4 = 0;
       i5 = 0;
-      k = 0;
-      if (i8 <= paramInt)
+      i3 = 0;
+      i2 = 0;
+      i1 = 0;
+      i6 = 0;
+      m = 0;
+      n = 0;
+      while (i11 <= i10)
       {
-        i9 = arrayOfInt1[(Math.min(i11, Math.max(i8, 0)) + i)];
-        arrayOfInt7 = arrayOfInt[(i8 + paramInt)];
-        arrayOfInt7[0] = ((0xFF0000 & i9) >> 16);
-        arrayOfInt7[1] = ((0xFF00 & i9) >> 8);
-        arrayOfInt7[2] = (i9 & 0xFF);
-        i9 = i16 - Math.abs(i8);
-        i5 += arrayOfInt7[0] * i9;
-        i4 += arrayOfInt7[1] * i9;
-        i3 += i9 * arrayOfInt7[2];
-        if (i8 > 0)
+        i14 = Math.max(0, i12) + i;
+        arrayOfInt7 = arrayOfInt[(i11 + i10)];
+        arrayOfInt7[0] = arrayOfInt3[i14];
+        arrayOfInt7[1] = arrayOfInt4[i14];
+        arrayOfInt7[2] = arrayOfInt5[i14];
+        i15 = i8 - Math.abs(i11);
+        i7 += arrayOfInt3[i14] * i15;
+        i13 = i4 + arrayOfInt4[i14] * i15;
+        i5 += arrayOfInt5[i14] * i15;
+        if (i11 > 0)
         {
-          m += arrayOfInt7[0];
-          k += arrayOfInt7[1];
-          j += arrayOfInt7[2];
-        }
-        for (;;)
-        {
-          i8 += 1;
-          break;
-          i2 += arrayOfInt7[0];
-          i1 += arrayOfInt7[1];
+          i6 += arrayOfInt7[0];
+          m += arrayOfInt7[1];
           n += arrayOfInt7[2];
         }
-      }
-      i8 = i4;
-      i10 = 0;
-      i4 = paramInt;
-      i9 = i5;
-      i5 = i3;
-      i3 = i10;
-      for (;;)
-      {
-        if (i3 >= i12) {
-          break label727;
-        }
-        if ((i9 >= i17) || (i8 >= i17) || (i5 >= i17)) {
-          break;
-        }
-        arrayOfInt2[i] = arrayOfInt6[i9];
-        arrayOfInt3[i] = arrayOfInt6[i8];
-        arrayOfInt4[i] = arrayOfInt6[i5];
-        arrayOfInt7 = arrayOfInt[((i4 - paramInt + i15) % i15)];
-        int i19 = arrayOfInt7[0];
-        int i18 = arrayOfInt7[1];
-        i10 = arrayOfInt7[2];
-        if (i6 == 0) {
-          arrayOfInt5[i3] = Math.min(i3 + paramInt + 1, i11);
-        }
-        int i20 = arrayOfInt1[(arrayOfInt5[i3] + i7)];
-        arrayOfInt7[0] = ((0xFF0000 & i20) >> 16);
-        arrayOfInt7[1] = ((0xFF00 & i20) >> 8);
-        arrayOfInt7[2] = (i20 & 0xFF);
-        m += arrayOfInt7[0];
-        k += arrayOfInt7[1];
-        j += arrayOfInt7[2];
-        i9 = i9 - i2 + m;
-        i8 = i8 - i1 + k;
-        i5 = i5 - n + j;
-        i4 = (i4 + 1) % i15;
-        arrayOfInt7 = arrayOfInt[(i4 % i15)];
-        i2 = i2 - i19 + arrayOfInt7[0];
-        i1 = i1 - i18 + arrayOfInt7[1];
-        n = n - i10 + arrayOfInt7[2];
-        m -= arrayOfInt7[0];
-        k -= arrayOfInt7[1];
-        j -= arrayOfInt7[2];
-        i += 1;
-        i3 += 1;
-      }
-      label727:
-      i7 += i12;
-      i6 += 1;
-    }
-    label743:
-    i = 0;
-    while (i < i12)
-    {
-      i5 = 0;
-      i7 = -paramInt * i12;
-      i6 = -paramInt;
-      i3 = 0;
-      n = 0;
-      i1 = 0;
-      i2 = 0;
-      j = 0;
-      m = 0;
-      k = 0;
-      i4 = 0;
-      if (i6 <= paramInt)
-      {
-        i8 = Math.max(0, i7) + i;
-        arrayOfInt7 = arrayOfInt[(i6 + paramInt)];
-        arrayOfInt7[0] = arrayOfInt2[i8];
-        arrayOfInt7[1] = arrayOfInt3[i8];
-        arrayOfInt7[2] = arrayOfInt4[i8];
-        i9 = i16 - Math.abs(i6);
-        i10 = arrayOfInt2[i8];
-        i11 = arrayOfInt3[i8];
-        i17 = arrayOfInt4[i8];
-        if (i6 > 0)
+        else
         {
           i3 += arrayOfInt7[0];
-          i4 += arrayOfInt7[1];
-          i5 += arrayOfInt7[2];
+          i2 += arrayOfInt7[1];
+          i1 += arrayOfInt7[2];
         }
-        for (;;)
-        {
-          i8 = i7;
-          if (i6 < i14) {
-            i8 = i7 + i12;
-          }
-          i6 += 1;
-          j = i17 * i9 + j;
-          m = i11 * i9 + m;
-          k = i10 * i9 + k;
-          i7 = i8;
-          break;
-          i2 += arrayOfInt7[0];
-          i1 += arrayOfInt7[1];
-          n += arrayOfInt7[2];
+        i4 = i12;
+        if (i11 < j) {
+          i4 = i12 + i19;
         }
+        i11 += 1;
+        i12 = i4;
+        i4 = i13;
       }
-      i9 = m;
-      i10 = k;
-      i11 = 0;
-      k = i;
-      i6 = i5;
-      i7 = i4;
-      i8 = i3;
-      m = n;
-      n = i1;
-      i1 = i2;
-      i2 = paramInt;
-      i5 = i10;
-      i4 = i9;
-      i3 = j;
-      j = i11;
-      while (j < i13)
+      i11 = i;
+      i12 = i6;
+      i15 = 0;
+      i13 = i10;
+      i6 = i7;
+      i14 = i2;
+      i7 = n;
+      i10 = m;
+      i2 = i13;
+      m = i1;
+      n = i14;
+      i1 = i3;
+      i3 = i5;
+      i5 = i15;
+      while (i5 < i9)
       {
-        arrayOfInt1[k] = (0xFF000000 | arrayOfInt6[i5] << 16 | arrayOfInt6[i4] << 8 | arrayOfInt6[i3]);
-        arrayOfInt7 = arrayOfInt[((i2 - paramInt + i15) % i15)];
-        i11 = arrayOfInt7[0];
-        i10 = arrayOfInt7[1];
-        i9 = arrayOfInt7[2];
+        arrayOfInt2[i11] = (arrayOfInt6[i6] << 16 | 0xFF000000 | arrayOfInt6[i4] << 8 | arrayOfInt6[i3]);
+        arrayOfInt7 = arrayOfInt[((i2 - paramInt + k) % k)];
+        i15 = arrayOfInt7[0];
+        i14 = arrayOfInt7[1];
+        i13 = arrayOfInt7[2];
         if (i == 0) {
-          arrayOfInt5[j] = (Math.min(j + i16, i14) * i12);
+          arrayOfInt1[i5] = (Math.min(i5 + i8, j) * i19);
         }
-        i17 = arrayOfInt5[j] + i;
-        arrayOfInt7[0] = arrayOfInt2[i17];
-        arrayOfInt7[1] = arrayOfInt3[i17];
-        arrayOfInt7[2] = arrayOfInt4[i17];
-        i8 += arrayOfInt7[0];
-        i7 += arrayOfInt7[1];
-        i6 += arrayOfInt7[2];
-        i5 = i5 - i1 + i8;
-        i4 = i4 - n + i7;
-        i3 = i3 - m + i6;
-        i2 = (i2 + 1) % i15;
+        i16 = arrayOfInt1[i5] + i;
+        arrayOfInt7[0] = arrayOfInt3[i16];
+        arrayOfInt7[1] = arrayOfInt4[i16];
+        arrayOfInt7[2] = arrayOfInt5[i16];
+        i12 += arrayOfInt7[0];
+        i10 += arrayOfInt7[1];
+        i7 += arrayOfInt7[2];
+        i6 = i6 - i1 + i12;
+        i4 = i4 - n + i10;
+        i3 = i3 - m + i7;
+        i2 = (i2 + 1) % k;
         arrayOfInt7 = arrayOfInt[i2];
-        i1 = i1 - i11 + arrayOfInt7[0];
-        n = n - i10 + arrayOfInt7[1];
-        m = m - i9 + arrayOfInt7[2];
-        i8 -= arrayOfInt7[0];
-        i7 -= arrayOfInt7[1];
-        i6 -= arrayOfInt7[2];
-        k += i12;
-        j += 1;
+        i1 = i1 - i15 + arrayOfInt7[0];
+        n = n - i14 + arrayOfInt7[1];
+        m = m - i13 + arrayOfInt7[2];
+        i12 -= arrayOfInt7[0];
+        i10 -= arrayOfInt7[1];
+        i7 -= arrayOfInt7[2];
+        i11 += i19;
+        i5 += 1;
       }
       i += 1;
     }
-    paramBitmap.setPixels(arrayOfInt1, 0, i12, 0, 0, i12, i13);
+    paramBitmap.setPixels(arrayOfInt2, 0, i19, 0, 0, i19, i9);
   }
   
   public static int fetchFromSparseArray(@Nullable SparseIntArray paramSparseIntArray, int paramInt1, int paramInt2)
@@ -674,24 +718,34 @@ public class ViolaUtils
   
   public static VComponent findComponent(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
-    do
+    if (!TextUtils.isEmpty(paramString1))
     {
-      return null;
+      if (TextUtils.isEmpty(paramString2)) {
+        return null;
+      }
       paramString1 = ViolaSDKManager.getInstance().getDomManager().getDomContext(paramString1);
-    } while (paramString1 == null);
-    return paramString1.getComponent(paramString2);
+      if (paramString1 == null) {
+        return null;
+      }
+      return paramString1.getComponent(paramString2);
+    }
+    return null;
   }
   
   public static DomObject findDomObject(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
-    do
+    if (!TextUtils.isEmpty(paramString1))
     {
-      return null;
+      if (TextUtils.isEmpty(paramString2)) {
+        return null;
+      }
       paramString1 = ViolaSDKManager.getInstance().getDomManager().getDomContext(paramString1);
-    } while (paramString1 == null);
-    return paramString1.getDomByRef(paramString2);
+      if (paramString1 == null) {
+        return null;
+      }
+      return paramString1.getDomByRef(paramString2);
+    }
+    return null;
   }
   
   public static void fireContentSizeChange(DomObject paramDomObject, float paramFloat1, float paramFloat2)
@@ -699,48 +753,62 @@ public class ViolaUtils
     if (paramDomObject == null) {
       return;
     }
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONObject localJSONObject2 = new JSONObject();
-    JSONObject localJSONObject3 = new JSONObject();
+    Object localObject1 = new JSONObject();
+    Object localObject2 = new JSONObject();
+    JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject2.put("width", FlexConvertUtils.px2dip(paramFloat1) + "dp");
-      localJSONObject2.put("height", FlexConvertUtils.px2dip(paramFloat2) + "dp");
-      localJSONObject1.put("contentSize", localJSONObject2);
-      localJSONObject3.put("width", FlexConvertUtils.px2dip(paramDomObject.getLayoutWidth()) + "dp");
-      localJSONObject3.put("height", FlexConvertUtils.px2dip(paramDomObject.getLayoutHeight()) + "dp");
-      localJSONObject3.put("x", FlexConvertUtils.px2dip(paramDomObject.getLayoutX()) + "dp");
-      localJSONObject3.put("y", FlexConvertUtils.px2dip(paramDomObject.getLayoutX()) + "dp");
-      localJSONObject1.put("frame", localJSONObject3);
-      paramDomObject.fireEvent("contentSizeChanged", localJSONObject1);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(FlexConvertUtils.px2dip(paramFloat1));
+      localStringBuilder.append("dp");
+      ((JSONObject)localObject2).put("width", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(FlexConvertUtils.px2dip(paramFloat2));
+      localStringBuilder.append("dp");
+      ((JSONObject)localObject2).put("height", localStringBuilder.toString());
+      ((JSONObject)localObject1).put("contentSize", localObject2);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(FlexConvertUtils.px2dip(paramDomObject.getLayoutWidth()));
+      ((StringBuilder)localObject2).append("dp");
+      localJSONObject.put("width", ((StringBuilder)localObject2).toString());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(FlexConvertUtils.px2dip(paramDomObject.getLayoutHeight()));
+      ((StringBuilder)localObject2).append("dp");
+      localJSONObject.put("height", ((StringBuilder)localObject2).toString());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(FlexConvertUtils.px2dip(paramDomObject.getLayoutX()));
+      ((StringBuilder)localObject2).append("dp");
+      localJSONObject.put("x", ((StringBuilder)localObject2).toString());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(FlexConvertUtils.px2dip(paramDomObject.getLayoutX()));
+      ((StringBuilder)localObject2).append("dp");
+      localJSONObject.put("y", ((StringBuilder)localObject2).toString());
+      ((JSONObject)localObject1).put("frame", localJSONObject);
+      paramDomObject.fireEvent("contentSizeChanged", (JSONObject)localObject1);
       return;
     }
     catch (JSONException paramDomObject)
     {
-      ViolaLogUtils.d("ViolaUtils", "fireContentSizeChange error: " + paramDomObject.getMessage());
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("fireContentSizeChange error: ");
+      ((StringBuilder)localObject1).append(paramDomObject.getMessage());
+      ViolaLogUtils.d("ViolaUtils", ((StringBuilder)localObject1).toString());
     }
   }
   
   public static boolean getBoolean(Object paramObject)
   {
-    boolean bool2 = true;
-    boolean bool1;
     if ((paramObject instanceof Boolean)) {
-      bool1 = ((Boolean)paramObject).booleanValue();
+      return ((Boolean)paramObject).booleanValue();
     }
-    do
-    {
-      do
-      {
-        return bool1;
-        if (!(paramObject instanceof String)) {
-          break;
-        }
-        bool1 = bool2;
-      } while ("true".equals(paramObject));
-      bool1 = bool2;
-    } while (getInt(paramObject, 0) != 0);
-    return false;
+    if (((paramObject instanceof String)) && ("true".equals(paramObject))) {
+      return true;
+    }
+    boolean bool = false;
+    if (getInt(paramObject, 0) != 0) {
+      bool = true;
+    }
+    return bool;
   }
   
   @Nullable
@@ -750,11 +818,15 @@ public class ViolaUtils
     if ((paramView instanceof BorderDrawable)) {
       return (BorderDrawable)paramView;
     }
-    if (((paramView instanceof LayerDrawable)) && (((LayerDrawable)paramView).getNumberOfLayers() > 1))
+    if ((paramView instanceof LayerDrawable))
     {
-      paramView = ((LayerDrawable)paramView).getDrawable(0);
-      if ((paramView instanceof BorderDrawable)) {
-        return (BorderDrawable)paramView;
+      paramView = (LayerDrawable)paramView;
+      if (paramView.getNumberOfLayers() > 1)
+      {
+        paramView = paramView.getDrawable(0);
+        if ((paramView instanceof BorderDrawable)) {
+          return (BorderDrawable)paramView;
+        }
       }
     }
     return null;
@@ -763,21 +835,20 @@ public class ViolaUtils
   @Nullable
   public static BorderDrawable getBorderDrawable(@NonNull VComponent paramVComponent)
   {
-    Object localObject = getBorderDrawable(paramVComponent.getHostView());
-    if (localObject != null) {}
-    BorderDrawable localBorderDrawable;
-    do
-    {
-      return localObject;
-      localBorderDrawable = paramVComponent.getOrCreateBorder();
-      localObject = localBorderDrawable;
-    } while (localBorderDrawable == null);
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      paramVComponent.getHostView().setBackground(localBorderDrawable);
+    BorderDrawable localBorderDrawable = getBorderDrawable(paramVComponent.getHostView());
+    if (localBorderDrawable != null) {
       return localBorderDrawable;
     }
-    paramVComponent.getHostView().setBackgroundDrawable(localBorderDrawable);
+    localBorderDrawable = paramVComponent.getOrCreateBorder();
+    if (localBorderDrawable != null)
+    {
+      if (Build.VERSION.SDK_INT >= 16)
+      {
+        paramVComponent.getHostView().setBackground(localBorderDrawable);
+        return localBorderDrawable;
+      }
+      paramVComponent.getHostView().setBackgroundDrawable(localBorderDrawable);
+    }
     return localBorderDrawable;
   }
   
@@ -796,56 +867,84 @@ public class ViolaUtils
     if (paramObject == null) {
       return 0.0D;
     }
-    String str = paramObject.toString().trim();
-    double d;
-    if (str.endsWith("px")) {
-      try
-      {
-        d = Double.parseDouble(str);
-        return d;
-      }
-      catch (NumberFormatException localNumberFormatException1)
-      {
-        ViolaLogUtils.e("ViolaUtils", "Argument format error! value is " + paramObject);
-        return 0.0D;
-      }
-      catch (Exception localException1)
-      {
-        ViolaLogUtils.e("ViolaUtils", "Argument error! value is " + paramObject);
-        return 0.0D;
-      }
-    }
-    if (localException1.endsWith("px")) {
-      try
-      {
-        d = Double.parseDouble(localException1.substring(0, localException1.indexOf("px")));
-        return d;
-      }
-      catch (NumberFormatException localNumberFormatException2)
-      {
-        ViolaLogUtils.e("ViolaUtils", "Argument format error! value is " + paramObject);
-        return 0.0D;
-      }
-      catch (Exception localException2)
-      {
-        ViolaLogUtils.e("ViolaUtils", "Argument error! value is " + paramObject);
-        return 0.0D;
-      }
-    }
+    Object localObject = paramObject.toString().trim();
+    if (((String)localObject).endsWith("px")) {}
     try
     {
-      d = Double.parseDouble(localException2);
+      d = Double.parseDouble((String)localObject);
+      return d;
+    }
+    catch (NumberFormatException localNumberFormatException1)
+    {
+      double d;
+      break label64;
+    }
+    catch (Exception localException1)
+    {
+      label31:
+      break label31;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Argument error! value is ");
+    ((StringBuilder)localObject).append(paramObject);
+    ViolaLogUtils.e("ViolaUtils", ((StringBuilder)localObject).toString());
+    return 0.0D;
+    label64:
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Argument format error! value is ");
+    ((StringBuilder)localObject).append(paramObject);
+    ViolaLogUtils.e("ViolaUtils", ((StringBuilder)localObject).toString());
+    return 0.0D;
+    if (((String)localObject).endsWith("px")) {}
+    try
+    {
+      d = Double.parseDouble(((String)localObject).substring(0, ((String)localObject).indexOf("px")));
+      return d;
+    }
+    catch (NumberFormatException localNumberFormatException2)
+    {
+      break label158;
+    }
+    catch (Exception localException2)
+    {
+      label125:
+      break label125;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Argument error! value is ");
+    ((StringBuilder)localObject).append(paramObject);
+    ViolaLogUtils.e("ViolaUtils", ((StringBuilder)localObject).toString());
+    return 0.0D;
+    label158:
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Argument format error! value is ");
+    ((StringBuilder)localObject).append(paramObject);
+    ViolaLogUtils.e("ViolaUtils", ((StringBuilder)localObject).toString());
+    return 0.0D;
+    try
+    {
+      d = Double.parseDouble((String)localObject);
       return d;
     }
     catch (NumberFormatException localNumberFormatException3)
     {
-      ViolaLogUtils.e("ViolaUtils", "Argument format error! value is " + paramObject);
-      return 0.0D;
+      break label231;
     }
     catch (Exception localException3)
     {
-      ViolaLogUtils.e("ViolaUtils", "Argument error! value is " + paramObject);
+      label198:
+      break label198;
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Argument error! value is ");
+    ((StringBuilder)localObject).append(paramObject);
+    ViolaLogUtils.e("ViolaUtils", ((StringBuilder)localObject).toString());
+    return 0.0D;
+    label231:
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Argument format error! value is ");
+    ((StringBuilder)localObject).append(paramObject);
+    ViolaLogUtils.e("ViolaUtils", ((StringBuilder)localObject).toString());
     return 0.0D;
   }
   
@@ -854,20 +953,25 @@ public class ViolaUtils
     if (paramObject == null) {
       return paramFloat;
     }
-    String str2 = paramObject.toString().trim();
-    String str1 = str2;
+    String str = paramObject.toString().trim();
+    Object localObject = str;
     try
     {
-      if (str2.endsWith("dp")) {
-        str1 = str2.substring(0, str2.indexOf("dp"));
+      if (str.endsWith("dp")) {
+        localObject = str.substring(0, str.indexOf("dp"));
       }
-      float f = Float.parseFloat(str1);
+      float f = Float.parseFloat((String)localObject);
       return f;
     }
     catch (Exception localException)
     {
-      ViolaLogUtils.e("ViolaUtils", "Argument error! value is " + paramObject);
+      label51:
+      break label51;
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Argument error! value is ");
+    ((StringBuilder)localObject).append(paramObject);
+    ViolaLogUtils.e("ViolaUtils", ((StringBuilder)localObject).toString());
     return paramFloat;
   }
   
@@ -907,75 +1011,111 @@ public class ViolaUtils
     if (paramObject == null) {
       return paramFloat.floatValue();
     }
-    String str = paramObject.toString().trim();
-    if (("auto".equals(str)) || ("undefined".equals(str)) || (TextUtils.isEmpty(str))) {
-      return paramFloat.floatValue();
+    Object localObject = paramObject.toString().trim();
+    if (("auto".equals(localObject)) || ("undefined".equals(localObject)) || (TextUtils.isEmpty((CharSequence)localObject)) || (((String)localObject).endsWith("px"))) {}
+    try
+    {
+      f = Float.parseFloat(((String)localObject).substring(0, ((String)localObject).indexOf("px")));
+      return f;
     }
-    if (str.endsWith("px")) {}
-    for (;;)
+    catch (NumberFormatException localNumberFormatException1)
     {
       float f;
-      try
-      {
-        f = Float.parseFloat(str.substring(0, str.indexOf("px")));
-        return f;
-      }
-      catch (NumberFormatException localNumberFormatException1)
-      {
-        ViolaLogUtils.e("ViolaUtils", "Argument format error! value is " + paramObject);
-        return paramFloat.floatValue();
-      }
-      catch (Exception localException1)
-      {
-        ViolaLogUtils.e("ViolaUtils", "Argument error! value is " + paramObject);
-        continue;
-      }
-      if (localException1.endsWith("dp")) {
-        try
-        {
-          int i = FlexConvertUtils.dip2px(Float.parseFloat(localException1.substring(0, localException1.indexOf("dp"))));
-          return i;
-        }
-        catch (NumberFormatException localNumberFormatException2)
-        {
-          ViolaLogUtils.e("ViolaUtils", "Argument format error! value is " + paramObject);
-        }
-        catch (Exception localException2)
-        {
-          ViolaLogUtils.e("ViolaUtils", "Argument error! value is " + paramObject);
-        }
-      } else {
-        try
-        {
-          f = Float.parseFloat(localException2);
-          return f;
-        }
-        catch (NumberFormatException localNumberFormatException3)
-        {
-          ViolaLogUtils.e("ViolaUtils", "Argument format error! value is " + paramObject);
-        }
-        catch (Exception localException3)
-        {
-          ViolaLogUtils.e("ViolaUtils", "Argument error! value is " + paramObject);
-        }
-      }
+      break label120;
     }
+    catch (Exception localException1)
+    {
+      label82:
+      break label82;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Argument error! value is ");
+    ((StringBuilder)localObject).append(paramObject);
+    ViolaLogUtils.e("ViolaUtils", ((StringBuilder)localObject).toString());
+    break label350;
+    label120:
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Argument format error! value is ");
+    ((StringBuilder)localObject).append(paramObject);
+    ViolaLogUtils.e("ViolaUtils", ((StringBuilder)localObject).toString());
+    break label350;
+    if (((String)localObject).endsWith("dp")) {}
+    try
+    {
+      int i = FlexConvertUtils.dip2px(Float.parseFloat(((String)localObject).substring(0, ((String)localObject).indexOf("dp"))));
+      return i;
+    }
+    catch (NumberFormatException localNumberFormatException2)
+    {
+      break label231;
+    }
+    catch (Exception localException2)
+    {
+      label193:
+      break label193;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Argument error! value is ");
+    ((StringBuilder)localObject).append(paramObject);
+    ViolaLogUtils.e("ViolaUtils", ((StringBuilder)localObject).toString());
+    break label350;
+    label231:
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Argument format error! value is ");
+    ((StringBuilder)localObject).append(paramObject);
+    ViolaLogUtils.e("ViolaUtils", ((StringBuilder)localObject).toString());
+    try
+    {
+      f = Float.parseFloat((String)localObject);
+      return f;
+    }
+    catch (NumberFormatException localNumberFormatException3)
+    {
+      break label315;
+    }
+    catch (Exception localException3)
+    {
+      label277:
+      break label277;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Argument error! value is ");
+    ((StringBuilder)localObject).append(paramObject);
+    ViolaLogUtils.e("ViolaUtils", ((StringBuilder)localObject).toString());
+    break label350;
+    label315:
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Argument format error! value is ");
+    ((StringBuilder)localObject).append(paramObject);
+    ViolaLogUtils.e("ViolaUtils", ((StringBuilder)localObject).toString());
+    label350:
+    return paramFloat.floatValue();
+    return paramFloat.floatValue();
   }
   
   public static float getFloatCompactWithPercent(Object paramObject, float paramFloat)
   {
-    if (paramObject == null) {
-      return (int)paramFloat;
+    int i;
+    if (paramObject == null)
+    {
+      i = (int)paramFloat;
+      return i;
     }
     if ((paramObject instanceof String))
     {
       paramObject = (String)paramObject;
       if (paramObject.endsWith("%")) {
-        return (int)(fastGetFloat(paramObject) * paramFloat);
+        paramFloat = fastGetFloat(paramObject) * paramFloat;
       }
-      return (int)getFloat(paramObject);
     }
-    return (int)getFloat(paramObject);
+    for (;;)
+    {
+      i = (int)paramFloat;
+      break;
+      paramFloat = getFloat(paramObject);
+      continue;
+      paramFloat = getFloat(paramObject);
+    }
   }
   
   public static float getFloatSafely(float paramFloat)
@@ -994,91 +1134,117 @@ public class ViolaUtils
   
   public static int getInt(Object paramObject, @Nullable int paramInt)
   {
-    if (paramObject == null) {}
-    String str;
-    do
-    {
+    if (paramObject == null) {
       return paramInt;
-      str = paramObject.toString().trim();
-    } while (("auto".equals(str)) || ("undefined".equals(str)) || (TextUtils.isEmpty(str)));
-    int i;
-    if (str.endsWith("px")) {
-      try
-      {
-        i = Integer.parseInt(str.substring(0, str.indexOf("px")));
-        return i;
-      }
-      catch (NumberFormatException localNumberFormatException1)
-      {
-        ViolaLogUtils.e("ViolaUtils", "Argument format error! value is " + paramObject);
-        return paramInt;
-      }
-      catch (Exception localException1)
-      {
-        ViolaLogUtils.e("ViolaUtils", "Argument error! value is " + paramObject);
-        return paramInt;
-      }
     }
-    if (localException1.endsWith("dp")) {
-      try
-      {
-        i = FlexConvertUtils.dip2px(Integer.parseInt(localException1.substring(0, localException1.indexOf("dp"))));
-        return i;
-      }
-      catch (NumberFormatException localNumberFormatException2)
-      {
-        ViolaLogUtils.e("ViolaUtils", "Argument format error! value is " + paramObject);
+    Object localObject = paramObject.toString().trim();
+    if ((!"auto".equals(localObject)) && (!"undefined".equals(localObject)))
+    {
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
         return paramInt;
       }
-      catch (Exception localException2)
-      {
-        ViolaLogUtils.e("ViolaUtils", "Argument error! value is " + paramObject);
-        return paramInt;
-      }
+      if (!((String)localObject).endsWith("px")) {}
     }
     try
     {
-      i = Integer.parseInt(localException2);
+      i = Integer.parseInt(((String)localObject).substring(0, ((String)localObject).indexOf("px")));
+      return i;
+    }
+    catch (NumberFormatException localNumberFormatException1)
+    {
+      int i;
+      break label104;
+    }
+    catch (Exception localException1)
+    {
+      label71:
+      break label71;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Argument error! value is ");
+    ((StringBuilder)localObject).append(paramObject);
+    ViolaLogUtils.e("ViolaUtils", ((StringBuilder)localObject).toString());
+    return paramInt;
+    label104:
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Argument format error! value is ");
+    ((StringBuilder)localObject).append(paramObject);
+    ViolaLogUtils.e("ViolaUtils", ((StringBuilder)localObject).toString());
+    return paramInt;
+    if (((String)localObject).endsWith("dp")) {}
+    try
+    {
+      i = FlexConvertUtils.dip2px(Integer.parseInt(((String)localObject).substring(0, ((String)localObject).indexOf("dp"))));
+      return i;
+    }
+    catch (NumberFormatException localNumberFormatException2)
+    {
+      break label201;
+    }
+    catch (Exception localException2)
+    {
+      label168:
+      break label168;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Argument error! value is ");
+    ((StringBuilder)localObject).append(paramObject);
+    ViolaLogUtils.e("ViolaUtils", ((StringBuilder)localObject).toString());
+    return paramInt;
+    label201:
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Argument format error! value is ");
+    ((StringBuilder)localObject).append(paramObject);
+    ViolaLogUtils.e("ViolaUtils", ((StringBuilder)localObject).toString());
+    return paramInt;
+    try
+    {
+      i = Integer.parseInt((String)localObject);
       return i;
     }
     catch (NumberFormatException localNumberFormatException3)
     {
-      ViolaLogUtils.e("ViolaUtils", "Argument format error! value is " + paramObject);
-      return paramInt;
+      break label274;
     }
     catch (Exception localException3)
     {
-      ViolaLogUtils.e("ViolaUtils", "Argument error! value is " + paramObject);
+      label241:
+      break label241;
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Argument error! value is ");
+    ((StringBuilder)localObject).append(paramObject);
+    ViolaLogUtils.e("ViolaUtils", ((StringBuilder)localObject).toString());
+    return paramInt;
+    label274:
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Argument format error! value is ");
+    ((StringBuilder)localObject).append(paramObject);
+    ViolaLogUtils.e("ViolaUtils", ((StringBuilder)localObject).toString());
     return paramInt;
   }
   
   public static float getLayoutPositionInList(String paramString1, String paramString2, boolean paramBoolean)
   {
-    float f1 = 0.0F;
-    float f2 = 0.0F;
     paramString1 = findDomObject(paramString1, paramString2);
+    float f2 = 0.0F;
     if (paramString1 == null) {
-      f1 = f2;
+      return 0.0F;
     }
-    do
+    float f1 = 0.0F;
+    while ((paramString1 != null) && (!paramString1.getType().equals("list")))
     {
-      return f1;
-      f2 = 0.0F;
-      if ((paramString1 != null) && (!paramString1.getType().equals("list")))
-      {
-        if (paramBoolean) {
-          f1 += paramString1.getLayoutY();
-        }
-        for (;;)
-        {
-          paramString1 = paramString1.getDomParent();
-          break;
-          f2 += paramString1.getLayoutX();
-        }
+      if (paramBoolean) {
+        f2 += paramString1.getLayoutY();
+      } else {
+        f1 += paramString1.getLayoutX();
       }
-    } while (paramBoolean);
-    return f2;
+      paramString1 = paramString1.getDomParent();
+    }
+    if (paramBoolean) {
+      return f2;
+    }
+    return f1;
   }
   
   public static float getLayoutXInList(String paramString1, String paramString2)
@@ -1093,60 +1259,48 @@ public class ViolaUtils
   
   public static float getListContentHeight(DomObject paramDomObject)
   {
-    float f1 = 0.0F;
-    float f2 = 0.0F;
+    float f = 0.0F;
     if (paramDomObject == null) {
-      return f2;
+      return 0.0F;
     }
     if ("horizontal".equals(paramDomObject.getAttributes().get("direction"))) {
       return paramDomObject.getLayoutHeight();
     }
     int j = paramDomObject.getDomChildCount();
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      f2 = f1;
-      if (i >= j) {
-        break;
-      }
       DomObject localDomObject = paramDomObject.getChild(i);
-      f2 = f1;
       if (localDomObject == null) {
-        break;
+        return f;
       }
-      f2 = localDomObject.getLayoutHeight();
+      f += localDomObject.getLayoutHeight();
       i += 1;
-      f1 = f2 + f1;
     }
+    return f;
   }
   
   public static float getListContentWidth(DomObject paramDomObject)
   {
-    float f1 = 0.0F;
-    float f2 = 0.0F;
+    float f = 0.0F;
     if (paramDomObject == null) {
-      return f2;
+      return 0.0F;
     }
     if (!"horizontal".equals(paramDomObject.getAttributes().get("direction"))) {
       return paramDomObject.getLayoutWidth();
     }
     int j = paramDomObject.getDomChildCount();
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      f2 = f1;
-      if (i >= j) {
-        break;
-      }
       DomObject localDomObject = paramDomObject.getChild(i);
-      f2 = f1;
       if (localDomObject == null) {
-        break;
+        return f;
       }
-      f2 = localDomObject.getLayoutWidth();
+      f += localDomObject.getLayoutWidth();
       i += 1;
-      f1 = f2 + f1;
     }
+    return f;
   }
   
   public static long getLong(Object paramObject)
@@ -1154,56 +1308,84 @@ public class ViolaUtils
     if (paramObject == null) {
       return 0L;
     }
-    String str = paramObject.toString().trim();
-    long l;
-    if (str.endsWith("px")) {
-      try
-      {
-        l = Long.parseLong(str);
-        return l;
-      }
-      catch (NumberFormatException localNumberFormatException1)
-      {
-        ViolaLogUtils.e("ViolaUtils", "Argument format error! value is " + paramObject);
-        return 0L;
-      }
-      catch (Exception localException1)
-      {
-        ViolaLogUtils.e("ViolaUtils", "Argument error! value is " + paramObject);
-        return 0L;
-      }
-    }
-    if (localException1.endsWith("dp")) {
-      try
-      {
-        int i = FlexConvertUtils.dip2px((float)Long.parseLong(localException1.substring(0, localException1.indexOf("dp"))));
-        return i;
-      }
-      catch (NumberFormatException localNumberFormatException2)
-      {
-        ViolaLogUtils.e("ViolaUtils", "Argument format error! value is " + paramObject);
-        return 0L;
-      }
-      catch (Exception localException2)
-      {
-        ViolaLogUtils.e("ViolaUtils", "Argument error! value is " + paramObject);
-        return 0L;
-      }
-    }
+    Object localObject = paramObject.toString().trim();
+    if (((String)localObject).endsWith("px")) {}
     try
     {
-      l = Long.parseLong(localException2);
+      l = Long.parseLong((String)localObject);
+      return l;
+    }
+    catch (NumberFormatException localNumberFormatException1)
+    {
+      long l;
+      break label71;
+    }
+    catch (Exception localException1)
+    {
+      label34:
+      break label34;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Argument error! value is ");
+    ((StringBuilder)localObject).append(paramObject);
+    ViolaLogUtils.e("ViolaUtils", ((StringBuilder)localObject).toString());
+    return 0L;
+    label71:
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Argument format error! value is ");
+    ((StringBuilder)localObject).append(paramObject);
+    ViolaLogUtils.e("ViolaUtils", ((StringBuilder)localObject).toString());
+    return 0L;
+    if (((String)localObject).endsWith("dp")) {}
+    try
+    {
+      int i = FlexConvertUtils.dip2px((float)Long.parseLong(((String)localObject).substring(0, ((String)localObject).indexOf("dp"))));
+      return i;
+    }
+    catch (NumberFormatException localNumberFormatException2)
+    {
+      break label181;
+    }
+    catch (Exception localException2)
+    {
+      label144:
+      break label144;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Argument error! value is ");
+    ((StringBuilder)localObject).append(paramObject);
+    ViolaLogUtils.e("ViolaUtils", ((StringBuilder)localObject).toString());
+    return 0L;
+    label181:
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Argument format error! value is ");
+    ((StringBuilder)localObject).append(paramObject);
+    ViolaLogUtils.e("ViolaUtils", ((StringBuilder)localObject).toString());
+    return 0L;
+    try
+    {
+      l = Long.parseLong((String)localObject);
       return l;
     }
     catch (NumberFormatException localNumberFormatException3)
     {
-      ViolaLogUtils.e("ViolaUtils", "Argument format error! value is " + paramObject);
-      return 0L;
+      break label263;
     }
     catch (Exception localException3)
     {
-      ViolaLogUtils.e("ViolaUtils", "Argument error! value is " + paramObject);
+      label226:
+      break label226;
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Argument error! value is ");
+    ((StringBuilder)localObject).append(paramObject);
+    ViolaLogUtils.e("ViolaUtils", ((StringBuilder)localObject).toString());
+    return 0L;
+    label263:
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Argument format error! value is ");
+    ((StringBuilder)localObject).append(paramObject);
+    ViolaLogUtils.e("ViolaUtils", ((StringBuilder)localObject).toString());
     return 0L;
   }
   
@@ -1227,7 +1409,11 @@ public class ViolaUtils
       {
         String str = Uri.parse(paramString).getQueryParameter("v_tid");
         paramString = Uri.parse(paramString).getQueryParameter("v_bundleName");
-        return str + "_" + paramString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append("_");
+        localStringBuilder.append(paramString);
+        return localStringBuilder.toString();
       }
       if (paramString.indexOf(".js") != -1)
       {
@@ -1247,14 +1433,14 @@ public class ViolaUtils
   
   public static int getScreenOrientation(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 8)
     {
-    default: 
-      return paramInt;
-    case 8: 
-      return 2;
+      if (paramInt != 9) {
+        return paramInt;
+      }
+      return 3;
     }
-    return 3;
+    return 2;
   }
   
   public static String getString(@Nullable Object paramObject, @Nullable String paramString)
@@ -1262,29 +1448,35 @@ public class ViolaUtils
     if (paramObject == null) {
       return paramString;
     }
-    if ((paramObject instanceof String)) {}
-    for (paramObject = (String)paramObject;; paramObject = paramObject.toString()) {
-      return paramObject;
+    if ((paramObject instanceof String)) {
+      return (String)paramObject;
     }
+    return paramObject.toString();
   }
   
   public static String getVueDomFromJsSource(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
-    int i;
-    int j;
-    int k;
-    do
+    if (!TextUtils.isEmpty(paramString1))
     {
-      do
-      {
+      if (TextUtils.isEmpty(paramString2)) {
         return null;
-      } while (!paramString1.contains(paramString2));
-      i = paramString2.length();
-      j = paramString1.indexOf(paramString2);
-      k = paramString1.lastIndexOf(paramString2);
-    } while ((j == k) || (j + i > paramString1.length()));
-    return paramString1.substring(j + i, k);
+      }
+      if (!paramString1.contains(paramString2)) {
+        return null;
+      }
+      int j = paramString2.length();
+      int k = paramString1.indexOf(paramString2);
+      int i = paramString1.lastIndexOf(paramString2);
+      if (k != i)
+      {
+        j = k + j;
+        if (j > paramString1.length()) {
+          return null;
+        }
+        return paramString1.substring(j, i);
+      }
+    }
+    return null;
   }
   
   private static boolean internalStyleOrAttrChange(DomObject paramDomObject, JSONObject paramJSONObject, String paramString)
@@ -1292,26 +1484,21 @@ public class ViolaUtils
     if (paramJSONObject == null) {
       return false;
     }
-    if (AssocioationEvents.ASSOCIOATION_PROPS_KEY_STYLE.equals(paramString))
-    {
+    if (AssocioationEvents.ASSOCIOATION_PROPS_KEY_STYLE.equals(paramString)) {
       paramDomObject = paramDomObject.getStyle();
-      paramString = paramJSONObject.keys();
+    } else {
+      paramDomObject = paramDomObject.getAttributes();
     }
-    for (;;)
+    paramString = paramJSONObject.keys();
+    while (paramString.hasNext())
     {
-      if (paramString.hasNext())
-      {
-        String str = (String)paramString.next();
-        Object localObject = paramDomObject.get(str);
-        if (localObject == null)
-        {
-          return true;
-          paramDomObject = paramDomObject.getAttributes();
-          break;
-        }
-        if (!localObject.equals(paramJSONObject.opt(str))) {
-          return true;
-        }
+      String str = (String)paramString.next();
+      Object localObject = paramDomObject.get(str);
+      if (localObject == null) {
+        return true;
+      }
+      if (!localObject.equals(paramJSONObject.opt(str))) {
+        return true;
       }
     }
     return false;
@@ -1319,40 +1506,49 @@ public class ViolaUtils
   
   public static boolean isRefresh(DomObject paramDomObject)
   {
-    if (paramDomObject == null) {
+    boolean bool = false;
+    if (paramDomObject == null)
+    {
       ViolaLogUtils.e("ViolaUtils", "judge isRefresh domObject is null");
-    }
-    while ((!"refresh".equals(paramDomObject.getType())) && (!"kdrefresh".equals(paramDomObject.getType())) && (!"header-view".equals(paramDomObject.getType())) && (!"kbrefresh".equals(paramDomObject.getType()))) {
       return false;
     }
-    return true;
+    if (("refresh".equals(paramDomObject.getType())) || ("kdrefresh".equals(paramDomObject.getType())) || ("header-view".equals(paramDomObject.getType())) || ("kbrefresh".equals(paramDomObject.getType()))) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean isStyleOrAttrChange(String paramString1, String paramString2, JSONObject paramJSONObject)
   {
-    if (paramJSONObject == null) {}
-    do
-    {
+    boolean bool = false;
+    if (paramJSONObject == null) {
       return false;
-      paramString1 = findDomObject(paramString2, paramString1);
-    } while ((paramString1 == null) || ((!internalStyleOrAttrChange(paramString1, paramJSONObject.optJSONObject(AssocioationEvents.ASSOCIOATION_PROPS_KEY_STYLE), AssocioationEvents.ASSOCIOATION_PROPS_KEY_STYLE)) && (!internalStyleOrAttrChange(paramString1, paramJSONObject.optJSONObject(AssocioationEvents.ASSOCIOATION_PROPS_KEY_ATTR), AssocioationEvents.ASSOCIOATION_PROPS_KEY_ATTR))));
-    return true;
+    }
+    paramString1 = findDomObject(paramString2, paramString1);
+    if (paramString1 == null) {
+      return false;
+    }
+    if ((internalStyleOrAttrChange(paramString1, paramJSONObject.optJSONObject(AssocioationEvents.ASSOCIOATION_PROPS_KEY_STYLE), AssocioationEvents.ASSOCIOATION_PROPS_KEY_STYLE)) || (internalStyleOrAttrChange(paramString1, paramJSONObject.optJSONObject(AssocioationEvents.ASSOCIOATION_PROPS_KEY_ATTR), AssocioationEvents.ASSOCIOATION_PROPS_KEY_ATTR))) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean isSystemAutoRotateOpen(Context paramContext)
   {
-    boolean bool = true;
     try
     {
       int i = Settings.System.getInt(paramContext.getContentResolver(), "accelerometer_rotation");
       if (i == 0) {
-        bool = false;
+        return false;
       }
-      return bool;
     }
     catch (Exception paramContext)
     {
-      ViolaLogUtils.e("ViolaUtils", "initUI() Settings.System.ACCELEROMETER_ROTATION ERROR=" + paramContext.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initUI() Settings.System.ACCELEROMETER_ROTATION ERROR=");
+      localStringBuilder.append(paramContext.getMessage());
+      ViolaLogUtils.e("ViolaUtils", localStringBuilder.toString());
     }
     return true;
   }
@@ -1364,7 +1560,11 @@ public class ViolaUtils
       paramString.getBytes("utf-8");
       return true;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label10:
+      break label10;
+    }
     return false;
   }
   
@@ -1380,40 +1580,32 @@ public class ViolaUtils
   
   public static Map json2HashMap(JSONObject paramJSONObject)
   {
-    if (paramJSONObject != null) {
-      try
+    if (paramJSONObject != null) {}
+    try
+    {
+      HashMap localHashMap = new HashMap();
+      Iterator localIterator = paramJSONObject.keys();
+      while (localIterator.hasNext())
       {
-        HashMap localHashMap = new HashMap();
-        Iterator localIterator = paramJSONObject.keys();
-        Object localObject;
-        for (;;)
-        {
-          localObject = localHashMap;
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localObject = localIterator.next().toString();
-          localHashMap.put(localObject, paramJSONObject.get((String)localObject));
-        }
-        return localObject;
+        String str = localIterator.next().toString();
+        localHashMap.put(str, paramJSONObject.get(str));
       }
-      catch (JSONException paramJSONObject)
-      {
-        localObject = null;
-      }
+      return localHashMap;
     }
+    catch (JSONException paramJSONObject) {}
+    return null;
     return null;
   }
   
   public static void log(String paramString1, int paramInt, String paramString2)
   {
-    switch (paramInt)
+    if (paramInt != 4)
     {
-    case 5: 
-    default: 
-      Log.d(paramString1, paramString2);
-      return;
-    case 6: 
+      if (paramInt != 6)
+      {
+        Log.d(paramString1, paramString2);
+        return;
+      }
       Log.e(paramString1, paramString2);
       return;
     }
@@ -1428,7 +1620,7 @@ public class ViolaUtils
     if (paramInt2 == 0) {
       return paramInt1 & 0xFFFFFF;
     }
-    return ((paramInt2 >> 7) + paramInt2) * (paramInt1 >>> 24) >> 8 << 24 | paramInt1 & 0xFFFFFF;
+    return paramInt1 & 0xFFFFFF | (paramInt1 >>> 24) * (paramInt2 + (paramInt2 >> 7)) >> 8 << 24;
   }
   
   private static int parsePercent(String paramString, int paramInt)
@@ -1449,347 +1641,429 @@ public class ViolaUtils
   public static String readAssetsFile(Context paramContext, String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 7
-    //   3: aload_0
-    //   4: invokevirtual 789	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   7: astore_0
+    //   0: aload_0
+    //   1: invokevirtual 789	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   4: astore_0
+    //   5: aconst_null
+    //   6: astore 7
     //   8: aload_0
     //   9: aload_1
     //   10: invokevirtual 795	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   13: astore_0
-    //   14: new 797	java/io/InputStreamReader
-    //   17: dup
-    //   18: aload_0
-    //   19: invokespecial 800	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   22: astore_3
-    //   23: new 802	java/io/BufferedInputStream
-    //   26: dup
-    //   27: aload_0
-    //   28: invokespecial 803	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   31: astore 6
-    //   33: aload_3
-    //   34: astore 5
-    //   36: aload 6
-    //   38: astore 4
-    //   40: aload_0
-    //   41: invokevirtual 808	java/io/InputStream:available	()I
-    //   44: istore_2
-    //   45: iload_2
-    //   46: sipush 12288
-    //   49: if_icmple +234 -> 283
-    //   52: aload_3
-    //   53: astore 5
-    //   55: aload 6
-    //   57: astore 4
-    //   59: sipush 4096
-    //   62: newarray char
-    //   64: astore_0
-    //   65: aload_3
+    //   13: astore 5
+    //   15: new 797	java/io/InputStreamReader
+    //   18: dup
+    //   19: aload 5
+    //   21: invokespecial 800	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   24: astore_0
+    //   25: new 802	java/io/BufferedInputStream
+    //   28: dup
+    //   29: aload 5
+    //   31: invokespecial 803	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   34: astore 6
+    //   36: aload_0
+    //   37: astore_3
+    //   38: aload 6
+    //   40: astore 4
+    //   42: aload 5
+    //   44: invokevirtual 808	java/io/InputStream:available	()I
+    //   47: istore_2
+    //   48: iload_2
+    //   49: sipush 12288
+    //   52: if_icmple +90 -> 142
+    //   55: aload_0
+    //   56: astore_3
+    //   57: aload 6
+    //   59: astore 4
+    //   61: sipush 4096
+    //   64: newarray char
     //   66: astore 5
-    //   68: aload 6
-    //   70: astore 4
-    //   72: new 97	java/lang/StringBuilder
-    //   75: dup
-    //   76: sipush 12288
-    //   79: invokespecial 811	java/lang/StringBuilder:<init>	(I)V
-    //   82: astore 8
-    //   84: aload_3
-    //   85: astore 5
-    //   87: aload 6
-    //   89: astore 4
-    //   91: aload_3
+    //   68: aload_0
+    //   69: astore_3
+    //   70: aload 6
+    //   72: astore 4
+    //   74: new 97	java/lang/StringBuilder
+    //   77: dup
+    //   78: sipush 12288
+    //   81: invokespecial 811	java/lang/StringBuilder:<init>	(I)V
+    //   84: astore 8
+    //   86: aload_0
+    //   87: astore_3
+    //   88: aload 6
+    //   90: astore 4
     //   92: aload_0
-    //   93: invokevirtual 815	java/io/InputStreamReader:read	([C)I
-    //   96: istore_2
-    //   97: iconst_m1
-    //   98: iload_2
-    //   99: if_icmpeq +105 -> 204
-    //   102: aload_3
-    //   103: astore 5
-    //   105: aload 6
-    //   107: astore 4
-    //   109: aload 8
-    //   111: aload_0
-    //   112: iconst_0
-    //   113: iload_2
-    //   114: invokevirtual 818	java/lang/StringBuilder:append	([CII)Ljava/lang/StringBuilder;
-    //   117: pop
-    //   118: goto -34 -> 84
-    //   121: astore 4
-    //   123: aload 6
-    //   125: astore_0
-    //   126: aload 4
-    //   128: astore 6
-    //   130: aload_3
-    //   131: astore 5
-    //   133: aload_0
-    //   134: astore 4
-    //   136: ldc 15
-    //   138: bipush 6
-    //   140: new 97	java/lang/StringBuilder
-    //   143: dup
-    //   144: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   147: ldc_w 820
-    //   150: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   153: aload_1
-    //   154: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   157: ldc_w 822
-    //   160: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   163: aload 6
-    //   165: invokevirtual 107	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   168: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   171: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   174: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   177: aload_0
-    //   178: ifnull +7 -> 185
-    //   181: aload_0
-    //   182: invokevirtual 823	java/io/BufferedInputStream:close	()V
-    //   185: aload 7
-    //   187: astore 4
-    //   189: aload_3
-    //   190: ifnull +11 -> 201
-    //   193: aload_3
-    //   194: invokevirtual 824	java/io/InputStreamReader:close	()V
-    //   197: aload 7
-    //   199: astore 4
-    //   201: aload 4
-    //   203: areturn
-    //   204: aload_3
-    //   205: astore 5
-    //   207: aload 6
-    //   209: astore 4
-    //   211: aload 8
-    //   213: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   216: astore_0
-    //   217: aload 6
-    //   219: ifnull +8 -> 227
-    //   222: aload 6
-    //   224: invokevirtual 823	java/io/BufferedInputStream:close	()V
-    //   227: aload_0
-    //   228: astore 4
-    //   230: aload_3
-    //   231: ifnull -30 -> 201
-    //   234: aload_3
-    //   235: invokevirtual 824	java/io/InputStreamReader:close	()V
-    //   238: aload_0
-    //   239: areturn
-    //   240: astore_3
-    //   241: ldc 15
-    //   243: bipush 6
-    //   245: new 97	java/lang/StringBuilder
-    //   248: dup
-    //   249: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   252: ldc_w 826
-    //   255: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   258: aload_1
-    //   259: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   262: ldc_w 822
-    //   265: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   268: aload_3
-    //   269: invokevirtual 107	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   272: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   275: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   278: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   281: aload_0
-    //   282: areturn
-    //   283: aload_3
-    //   284: astore 5
-    //   286: aload 6
-    //   288: astore 4
-    //   290: iload_2
-    //   291: newarray char
-    //   293: astore_0
-    //   294: aload_3
-    //   295: astore 5
-    //   297: aload 6
-    //   299: astore 4
-    //   301: new 216	java/lang/String
-    //   304: dup
-    //   305: aload_0
-    //   306: iconst_0
-    //   307: aload_3
-    //   308: aload_0
-    //   309: invokevirtual 815	java/io/InputStreamReader:read	([C)I
-    //   312: invokespecial 829	java/lang/String:<init>	([CII)V
-    //   315: astore_0
-    //   316: goto -99 -> 217
-    //   319: astore 4
-    //   321: ldc 15
-    //   323: bipush 6
-    //   325: new 97	java/lang/StringBuilder
-    //   328: dup
-    //   329: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   332: ldc_w 826
-    //   335: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   338: aload_1
-    //   339: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   342: ldc_w 822
-    //   345: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   348: aload 4
-    //   350: invokevirtual 107	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   353: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   356: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   359: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   362: goto -135 -> 227
-    //   365: astore_0
-    //   366: ldc 15
-    //   368: bipush 6
-    //   370: new 97	java/lang/StringBuilder
-    //   373: dup
-    //   374: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   377: ldc_w 826
-    //   380: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   383: aload_1
-    //   384: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   387: ldc_w 822
-    //   390: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   393: aload_0
-    //   394: invokevirtual 107	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   397: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   400: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   403: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   406: goto -221 -> 185
-    //   409: astore_0
-    //   410: ldc 15
-    //   412: bipush 6
-    //   414: new 97	java/lang/StringBuilder
-    //   417: dup
-    //   418: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   421: ldc_w 826
-    //   424: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   427: aload_1
-    //   428: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   431: ldc_w 822
-    //   434: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   93: aload 5
+    //   95: invokevirtual 815	java/io/InputStreamReader:read	([C)I
+    //   98: istore_2
+    //   99: iconst_m1
+    //   100: iload_2
+    //   101: if_icmpeq +22 -> 123
+    //   104: aload_0
+    //   105: astore_3
+    //   106: aload 6
+    //   108: astore 4
+    //   110: aload 8
+    //   112: aload 5
+    //   114: iconst_0
+    //   115: iload_2
+    //   116: invokevirtual 818	java/lang/StringBuilder:append	([CII)Ljava/lang/StringBuilder;
+    //   119: pop
+    //   120: goto -34 -> 86
+    //   123: aload_0
+    //   124: astore_3
+    //   125: aload 6
+    //   127: astore 4
+    //   129: aload 8
+    //   131: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   134: astore 5
+    //   136: aload 5
+    //   138: astore_3
+    //   139: goto +41 -> 180
+    //   142: aload_0
+    //   143: astore_3
+    //   144: aload 6
+    //   146: astore 4
+    //   148: iload_2
+    //   149: newarray char
+    //   151: astore 5
+    //   153: aload_0
+    //   154: astore_3
+    //   155: aload 6
+    //   157: astore 4
+    //   159: new 216	java/lang/String
+    //   162: dup
+    //   163: aload 5
+    //   165: iconst_0
+    //   166: aload_0
+    //   167: aload 5
+    //   169: invokevirtual 815	java/io/InputStreamReader:read	([C)I
+    //   172: invokespecial 821	java/lang/String:<init>	([CII)V
+    //   175: astore 5
+    //   177: aload 5
+    //   179: astore_3
+    //   180: aload 6
+    //   182: invokevirtual 822	java/io/BufferedInputStream:close	()V
+    //   185: goto +62 -> 247
+    //   188: astore 4
+    //   190: new 97	java/lang/StringBuilder
+    //   193: dup
+    //   194: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   197: astore 5
+    //   199: aload 5
+    //   201: ldc_w 824
+    //   204: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   207: pop
+    //   208: aload 5
+    //   210: aload_1
+    //   211: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   214: pop
+    //   215: aload 5
+    //   217: ldc_w 826
+    //   220: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   223: pop
+    //   224: aload 5
+    //   226: aload 4
+    //   228: invokevirtual 107	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   231: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   234: pop
+    //   235: ldc 15
+    //   237: bipush 6
+    //   239: aload 5
+    //   241: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   244: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
+    //   247: aload_0
+    //   248: invokevirtual 827	java/io/InputStreamReader:close	()V
+    //   251: aload_3
+    //   252: areturn
+    //   253: astore 4
+    //   255: new 97	java/lang/StringBuilder
+    //   258: dup
+    //   259: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   262: astore_0
+    //   263: aload_0
+    //   264: ldc_w 824
+    //   267: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   270: pop
+    //   271: aload_0
+    //   272: aload_1
+    //   273: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   276: pop
+    //   277: aload_0
+    //   278: ldc_w 826
+    //   281: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   284: pop
+    //   285: aload_0
+    //   286: aload 4
+    //   288: invokevirtual 107	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   291: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   294: pop
+    //   295: ldc 15
+    //   297: bipush 6
+    //   299: aload_0
+    //   300: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   303: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
+    //   306: aload_3
+    //   307: areturn
+    //   308: astore_3
+    //   309: aload_0
+    //   310: astore 5
+    //   312: aload 6
+    //   314: astore_0
+    //   315: aload_3
+    //   316: astore 6
+    //   318: goto +41 -> 359
+    //   321: astore 5
+    //   323: aconst_null
+    //   324: astore 4
+    //   326: goto +222 -> 548
+    //   329: astore 6
+    //   331: aconst_null
+    //   332: astore_3
+    //   333: aload_0
+    //   334: astore 5
+    //   336: aload_3
+    //   337: astore_0
+    //   338: goto +21 -> 359
+    //   341: astore 5
+    //   343: aconst_null
+    //   344: astore_0
+    //   345: aload_0
+    //   346: astore 4
+    //   348: goto +200 -> 548
+    //   351: astore 6
+    //   353: aconst_null
+    //   354: astore 5
+    //   356: aload 5
+    //   358: astore_0
+    //   359: aload 5
+    //   361: astore_3
+    //   362: aload_0
+    //   363: astore 4
+    //   365: new 97	java/lang/StringBuilder
+    //   368: dup
+    //   369: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   372: astore 8
+    //   374: aload 5
+    //   376: astore_3
+    //   377: aload_0
+    //   378: astore 4
+    //   380: aload 8
+    //   382: ldc_w 829
+    //   385: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   388: pop
+    //   389: aload 5
+    //   391: astore_3
+    //   392: aload_0
+    //   393: astore 4
+    //   395: aload 8
+    //   397: aload_1
+    //   398: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   401: pop
+    //   402: aload 5
+    //   404: astore_3
+    //   405: aload_0
+    //   406: astore 4
+    //   408: aload 8
+    //   410: ldc_w 826
+    //   413: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   416: pop
+    //   417: aload 5
+    //   419: astore_3
+    //   420: aload_0
+    //   421: astore 4
+    //   423: aload 8
+    //   425: aload 6
+    //   427: invokevirtual 107	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   430: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   433: pop
+    //   434: aload 5
+    //   436: astore_3
     //   437: aload_0
-    //   438: invokevirtual 107	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   441: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   444: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   447: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   450: aconst_null
-    //   451: areturn
-    //   452: astore_0
-    //   453: aconst_null
-    //   454: astore_3
-    //   455: aconst_null
-    //   456: astore 4
-    //   458: aload 4
-    //   460: ifnull +8 -> 468
-    //   463: aload 4
-    //   465: invokevirtual 823	java/io/BufferedInputStream:close	()V
-    //   468: aload_3
-    //   469: ifnull +7 -> 476
+    //   438: astore 4
+    //   440: ldc 15
+    //   442: bipush 6
+    //   444: aload 8
+    //   446: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   449: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
+    //   452: aload_0
+    //   453: ifnull +61 -> 514
+    //   456: aload_0
+    //   457: invokevirtual 822	java/io/BufferedInputStream:close	()V
+    //   460: goto +54 -> 514
+    //   463: astore_0
+    //   464: new 97	java/lang/StringBuilder
+    //   467: dup
+    //   468: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   471: astore_3
     //   472: aload_3
-    //   473: invokevirtual 824	java/io/InputStreamReader:close	()V
-    //   476: aload_0
-    //   477: athrow
-    //   478: astore 4
-    //   480: ldc 15
-    //   482: bipush 6
-    //   484: new 97	java/lang/StringBuilder
-    //   487: dup
-    //   488: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   491: ldc_w 826
-    //   494: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   497: aload_1
-    //   498: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   501: ldc_w 822
-    //   504: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   507: aload 4
-    //   509: invokevirtual 107	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   512: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   515: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   518: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   521: goto -53 -> 468
-    //   524: astore_3
-    //   525: ldc 15
-    //   527: bipush 6
-    //   529: new 97	java/lang/StringBuilder
-    //   532: dup
-    //   533: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   536: ldc_w 826
-    //   539: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   542: aload_1
-    //   543: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   546: ldc_w 822
-    //   549: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   552: aload_3
-    //   553: invokevirtual 107	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   556: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   559: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   562: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   565: goto -89 -> 476
-    //   568: astore_0
-    //   569: aconst_null
-    //   570: astore 4
-    //   572: goto -114 -> 458
-    //   575: astore_0
-    //   576: aload 5
-    //   578: astore_3
-    //   579: goto -121 -> 458
-    //   582: astore 6
-    //   584: aconst_null
-    //   585: astore_3
-    //   586: aconst_null
-    //   587: astore_0
-    //   588: goto -458 -> 130
-    //   591: astore 6
-    //   593: aconst_null
-    //   594: astore_0
-    //   595: goto -465 -> 130
+    //   473: ldc_w 824
+    //   476: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   479: pop
+    //   480: aload_3
+    //   481: aload_1
+    //   482: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   485: pop
+    //   486: aload_3
+    //   487: ldc_w 826
+    //   490: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   493: pop
+    //   494: aload_3
+    //   495: aload_0
+    //   496: invokevirtual 107	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   499: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   502: pop
+    //   503: ldc 15
+    //   505: bipush 6
+    //   507: aload_3
+    //   508: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   511: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
+    //   514: aload 5
+    //   516: ifnull +26 -> 542
+    //   519: aload 5
+    //   521: invokevirtual 827	java/io/InputStreamReader:close	()V
+    //   524: aconst_null
+    //   525: areturn
+    //   526: astore 4
+    //   528: new 97	java/lang/StringBuilder
+    //   531: dup
+    //   532: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   535: astore_0
+    //   536: aload 7
+    //   538: astore_3
+    //   539: goto -276 -> 263
+    //   542: aconst_null
+    //   543: areturn
+    //   544: astore 5
+    //   546: aload_3
+    //   547: astore_0
+    //   548: aload 4
+    //   550: ifnull +68 -> 618
+    //   553: aload 4
+    //   555: invokevirtual 822	java/io/BufferedInputStream:close	()V
+    //   558: goto +60 -> 618
+    //   561: astore_3
+    //   562: new 97	java/lang/StringBuilder
+    //   565: dup
+    //   566: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   569: astore 4
+    //   571: aload 4
+    //   573: ldc_w 824
+    //   576: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   579: pop
+    //   580: aload 4
+    //   582: aload_1
+    //   583: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   586: pop
+    //   587: aload 4
+    //   589: ldc_w 826
+    //   592: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   595: pop
+    //   596: aload 4
+    //   598: aload_3
+    //   599: invokevirtual 107	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   602: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   605: pop
+    //   606: ldc 15
+    //   608: bipush 6
+    //   610: aload 4
+    //   612: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   615: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
+    //   618: aload_0
+    //   619: ifnull +61 -> 680
+    //   622: aload_0
+    //   623: invokevirtual 827	java/io/InputStreamReader:close	()V
+    //   626: goto +54 -> 680
+    //   629: astore_0
+    //   630: new 97	java/lang/StringBuilder
+    //   633: dup
+    //   634: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   637: astore_3
+    //   638: aload_3
+    //   639: ldc_w 824
+    //   642: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   645: pop
+    //   646: aload_3
+    //   647: aload_1
+    //   648: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   651: pop
+    //   652: aload_3
+    //   653: ldc_w 826
+    //   656: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   659: pop
+    //   660: aload_3
+    //   661: aload_0
+    //   662: invokevirtual 107	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   665: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   668: pop
+    //   669: ldc 15
+    //   671: bipush 6
+    //   673: aload_3
+    //   674: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   677: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
+    //   680: goto +6 -> 686
+    //   683: aload 5
+    //   685: athrow
+    //   686: goto -3 -> 683
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	598	0	paramContext	Context
-    //   0	598	1	paramString	String
-    //   44	247	2	i	int
-    //   22	213	3	localInputStreamReader	java.io.InputStreamReader
-    //   240	68	3	localException1	Exception
-    //   454	19	3	localObject1	Object
-    //   524	29	3	localException2	Exception
-    //   578	8	3	localObject2	Object
-    //   38	70	4	localObject3	Object
-    //   121	6	4	localException3	Exception
-    //   134	166	4	localObject4	Object
-    //   319	30	4	localException4	Exception
-    //   456	8	4	localObject5	Object
-    //   478	30	4	localException5	Exception
-    //   570	1	4	localObject6	Object
-    //   34	543	5	localObject7	Object
-    //   31	267	6	localObject8	Object
-    //   582	1	6	localException6	Exception
-    //   591	1	6	localException7	Exception
-    //   1	197	7	localObject9	Object
-    //   82	130	8	localStringBuilder	StringBuilder
+    //   0	689	0	paramContext	Context
+    //   0	689	1	paramString	String
+    //   47	102	2	i	int
+    //   37	270	3	localObject1	Object
+    //   308	8	3	localException1	Exception
+    //   332	215	3	localObject2	Object
+    //   561	38	3	localException2	Exception
+    //   637	37	3	localStringBuilder1	StringBuilder
+    //   40	118	4	localObject3	Object
+    //   188	39	4	localException3	Exception
+    //   253	34	4	localException4	Exception
+    //   324	115	4	localContext1	Context
+    //   526	28	4	localException5	Exception
+    //   569	42	4	localStringBuilder2	StringBuilder
+    //   13	298	5	localObject4	Object
+    //   321	1	5	localObject5	Object
+    //   334	1	5	localContext2	Context
+    //   341	1	5	localObject6	Object
+    //   354	166	5	localObject7	Object
+    //   544	140	5	localObject8	Object
+    //   34	283	6	localObject9	Object
+    //   329	1	6	localException6	Exception
+    //   351	75	6	localException7	Exception
+    //   6	531	7	localObject10	Object
+    //   84	361	8	localStringBuilder3	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   40	45	121	java/lang/Exception
-    //   59	65	121	java/lang/Exception
-    //   72	84	121	java/lang/Exception
-    //   91	97	121	java/lang/Exception
-    //   109	118	121	java/lang/Exception
-    //   211	217	121	java/lang/Exception
-    //   290	294	121	java/lang/Exception
-    //   301	316	121	java/lang/Exception
-    //   234	238	240	java/lang/Exception
-    //   222	227	319	java/lang/Exception
-    //   181	185	365	java/lang/Exception
-    //   193	197	409	java/lang/Exception
-    //   8	23	452	finally
-    //   463	468	478	java/lang/Exception
-    //   472	476	524	java/lang/Exception
-    //   23	33	568	finally
-    //   40	45	575	finally
-    //   59	65	575	finally
-    //   72	84	575	finally
-    //   91	97	575	finally
-    //   109	118	575	finally
-    //   136	177	575	finally
-    //   211	217	575	finally
-    //   290	294	575	finally
-    //   301	316	575	finally
-    //   8	23	582	java/lang/Exception
-    //   23	33	591	java/lang/Exception
+    //   180	185	188	java/lang/Exception
+    //   247	251	253	java/lang/Exception
+    //   42	48	308	java/lang/Exception
+    //   61	68	308	java/lang/Exception
+    //   74	86	308	java/lang/Exception
+    //   92	99	308	java/lang/Exception
+    //   110	120	308	java/lang/Exception
+    //   129	136	308	java/lang/Exception
+    //   148	153	308	java/lang/Exception
+    //   159	177	308	java/lang/Exception
+    //   25	36	321	finally
+    //   25	36	329	java/lang/Exception
+    //   8	25	341	finally
+    //   8	25	351	java/lang/Exception
+    //   456	460	463	java/lang/Exception
+    //   519	524	526	java/lang/Exception
+    //   42	48	544	finally
+    //   61	68	544	finally
+    //   74	86	544	finally
+    //   92	99	544	finally
+    //   110	120	544	finally
+    //   129	136	544	finally
+    //   148	153	544	finally
+    //   159	177	544	finally
+    //   365	374	544	finally
+    //   380	389	544	finally
+    //   395	402	544	finally
+    //   408	417	544	finally
+    //   423	434	544	finally
+    //   440	452	544	finally
+    //   553	558	561	java/lang/Exception
+    //   622	626	629	java/lang/Exception
   }
   
   public static String readFile(File paramFile)
@@ -1802,409 +2076,465 @@ public class ViolaUtils
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 10
+    //   1: astore 11
     //   3: aconst_null
-    //   4: astore 9
-    //   6: aload_0
-    //   7: ifnonnull +19 -> 26
-    //   10: ldc_w 839
-    //   13: ldc_w 841
-    //   16: invokestatic 236	com/tencent/viola/utils/ViolaLogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   19: aload 9
-    //   21: astore 5
-    //   23: aload 5
-    //   25: areturn
-    //   26: aload_0
-    //   27: invokevirtual 846	java/io/File:exists	()Z
-    //   30: ifeq +10 -> 40
-    //   33: aload_0
-    //   34: invokevirtual 849	java/io/File:canRead	()Z
-    //   37: ifne +47 -> 84
-    //   40: ldc_w 839
-    //   43: new 97	java/lang/StringBuilder
-    //   46: dup
-    //   47: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   50: ldc_w 851
-    //   53: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   56: aload_0
-    //   57: invokevirtual 846	java/io/File:exists	()Z
-    //   60: invokevirtual 854	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   63: ldc_w 856
-    //   66: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   69: aload_0
-    //   70: invokevirtual 849	java/io/File:canRead	()Z
-    //   73: invokevirtual 854	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   76: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   79: invokestatic 236	com/tencent/viola/utils/ViolaLogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   82: aconst_null
-    //   83: areturn
-    //   84: new 802	java/io/BufferedInputStream
-    //   87: dup
-    //   88: new 858	java/io/FileInputStream
-    //   91: dup
-    //   92: aload_0
-    //   93: invokespecial 861	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   96: invokespecial 803	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   99: astore 5
-    //   101: new 797	java/io/InputStreamReader
-    //   104: dup
-    //   105: aload 5
-    //   107: ldc_w 863
-    //   110: invokespecial 866	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
-    //   113: astore 8
-    //   115: aload 8
-    //   117: astore 7
-    //   119: aload 5
-    //   121: astore 6
-    //   123: iload_1
-    //   124: istore_3
-    //   125: aload_0
-    //   126: invokevirtual 868	java/io/File:length	()J
-    //   129: l2i
-    //   130: istore 4
-    //   132: iload 4
-    //   134: sipush 12288
-    //   137: if_icmple +259 -> 396
-    //   140: iload_1
-    //   141: istore_2
-    //   142: iload_1
-    //   143: iconst_m1
-    //   144: if_icmpne +29 -> 173
-    //   147: aload 8
-    //   149: astore 7
-    //   151: aload 5
-    //   153: astore 6
-    //   155: iload_1
-    //   156: istore_3
-    //   157: iload 4
-    //   159: sipush 6144
-    //   162: idiv
-    //   163: istore_1
-    //   164: iload_1
-    //   165: bipush 12
-    //   167: if_icmpge +166 -> 333
-    //   170: bipush 12
-    //   172: istore_2
-    //   173: aload 8
-    //   175: astore 7
-    //   177: aload 5
-    //   179: astore 6
-    //   181: iload_2
-    //   182: istore_3
-    //   183: sipush 4096
-    //   186: newarray char
-    //   188: astore 11
-    //   190: aload 8
-    //   192: astore 7
-    //   194: aload 5
-    //   196: astore 6
-    //   198: iload_2
-    //   199: istore_3
-    //   200: new 97	java/lang/StringBuilder
-    //   203: dup
-    //   204: iload_2
-    //   205: sipush 1024
-    //   208: imul
-    //   209: invokespecial 811	java/lang/StringBuilder:<init>	(I)V
-    //   212: astore 12
-    //   214: aload 8
-    //   216: astore 7
-    //   218: aload 5
-    //   220: astore 6
-    //   222: iload_2
-    //   223: istore_3
+    //   4: astore 10
+    //   6: aconst_null
+    //   7: astore 9
+    //   9: aload_0
+    //   10: ifnonnull +14 -> 24
+    //   13: ldc_w 839
+    //   16: ldc_w 841
+    //   19: invokestatic 242	com/tencent/viola/utils/ViolaLogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   22: aconst_null
+    //   23: areturn
+    //   24: aload_0
+    //   25: invokevirtual 846	java/io/File:exists	()Z
+    //   28: ifeq +601 -> 629
+    //   31: aload_0
+    //   32: invokevirtual 849	java/io/File:canRead	()Z
+    //   35: ifne +6 -> 41
+    //   38: goto +591 -> 629
+    //   41: new 802	java/io/BufferedInputStream
+    //   44: dup
+    //   45: new 851	java/io/FileInputStream
+    //   48: dup
+    //   49: aload_0
+    //   50: invokespecial 854	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   53: invokespecial 803	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   56: astore 5
+    //   58: new 797	java/io/InputStreamReader
+    //   61: dup
+    //   62: aload 5
+    //   64: ldc_w 856
+    //   67: invokespecial 859	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   70: astore 8
+    //   72: aload 5
+    //   74: astore 6
+    //   76: aload 8
+    //   78: astore 7
+    //   80: iload_1
+    //   81: istore_3
+    //   82: aload_0
+    //   83: invokevirtual 861	java/io/File:length	()J
+    //   86: l2i
+    //   87: istore 4
+    //   89: iload 4
+    //   91: sipush 12288
+    //   94: if_icmple +150 -> 244
+    //   97: iload_1
+    //   98: istore_2
+    //   99: iload_1
+    //   100: iconst_m1
+    //   101: if_icmpne +32 -> 133
+    //   104: aload 5
+    //   106: astore 6
+    //   108: aload 8
+    //   110: astore 7
+    //   112: iload_1
+    //   113: istore_3
+    //   114: iload 4
+    //   116: sipush 6144
+    //   119: idiv
+    //   120: istore_1
+    //   121: iload_1
+    //   122: bipush 12
+    //   124: if_icmpge +620 -> 744
+    //   127: bipush 12
+    //   129: istore_2
+    //   130: goto +3 -> 133
+    //   133: aload 5
+    //   135: astore 6
+    //   137: aload 8
+    //   139: astore 7
+    //   141: iload_2
+    //   142: istore_3
+    //   143: sipush 4096
+    //   146: newarray char
+    //   148: astore 12
+    //   150: aload 5
+    //   152: astore 6
+    //   154: aload 8
+    //   156: astore 7
+    //   158: iload_2
+    //   159: istore_3
+    //   160: new 97	java/lang/StringBuilder
+    //   163: dup
+    //   164: iload_2
+    //   165: sipush 1024
+    //   168: imul
+    //   169: invokespecial 811	java/lang/StringBuilder:<init>	(I)V
+    //   172: astore 13
+    //   174: aload 5
+    //   176: astore 6
+    //   178: aload 8
+    //   180: astore 7
+    //   182: iload_2
+    //   183: istore_3
+    //   184: aload 8
+    //   186: aload 12
+    //   188: invokevirtual 815	java/io/InputStreamReader:read	([C)I
+    //   191: istore_1
+    //   192: iconst_m1
+    //   193: iload_1
+    //   194: if_icmpeq +26 -> 220
+    //   197: aload 5
+    //   199: astore 6
+    //   201: aload 8
+    //   203: astore 7
+    //   205: iload_2
+    //   206: istore_3
+    //   207: aload 13
+    //   209: aload 12
+    //   211: iconst_0
+    //   212: iload_1
+    //   213: invokevirtual 818	java/lang/StringBuilder:append	([CII)Ljava/lang/StringBuilder;
+    //   216: pop
+    //   217: goto -43 -> 174
+    //   220: aload 5
+    //   222: astore 6
     //   224: aload 8
-    //   226: aload 11
-    //   228: invokevirtual 815	java/io/InputStreamReader:read	([C)I
-    //   231: istore_1
-    //   232: iconst_m1
-    //   233: iload_1
-    //   234: if_icmpeq +113 -> 347
-    //   237: aload 8
-    //   239: astore 7
-    //   241: aload 5
-    //   243: astore 6
-    //   245: iload_2
-    //   246: istore_3
-    //   247: aload 12
-    //   249: aload 11
-    //   251: iconst_0
+    //   226: astore 7
+    //   228: iload_2
+    //   229: istore_3
+    //   230: aload 13
+    //   232: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   235: astore 12
+    //   237: aload 12
+    //   239: astore 6
+    //   241: goto +52 -> 293
+    //   244: aload 5
+    //   246: astore 6
+    //   248: aload 8
+    //   250: astore 7
     //   252: iload_1
-    //   253: invokevirtual 818	java/lang/StringBuilder:append	([CII)Ljava/lang/StringBuilder;
-    //   256: pop
-    //   257: goto -43 -> 214
-    //   260: astore 6
-    //   262: aload 8
-    //   264: astore_0
-    //   265: aload 6
-    //   267: astore 8
-    //   269: aload_0
-    //   270: astore 7
-    //   272: aload 5
-    //   274: astore 6
-    //   276: ldc_w 839
-    //   279: new 97	java/lang/StringBuilder
-    //   282: dup
-    //   283: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   286: ldc_w 870
-    //   289: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   292: aload 8
-    //   294: invokevirtual 871	java/lang/Exception:toString	()Ljava/lang/String;
-    //   297: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   300: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   303: invokestatic 236	com/tencent/viola/utils/ViolaLogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   306: aload 5
-    //   308: ifnull +8 -> 316
-    //   311: aload 5
-    //   313: invokevirtual 823	java/io/BufferedInputStream:close	()V
-    //   316: aload 9
-    //   318: astore 5
-    //   320: aload_0
-    //   321: ifnull -298 -> 23
-    //   324: aload_0
-    //   325: invokevirtual 824	java/io/InputStreamReader:close	()V
-    //   328: aconst_null
-    //   329: areturn
-    //   330: astore_0
-    //   331: aconst_null
-    //   332: areturn
-    //   333: iload_1
-    //   334: istore_2
-    //   335: iload_1
-    //   336: bipush 60
-    //   338: if_icmple -165 -> 173
-    //   341: bipush 60
-    //   343: istore_2
-    //   344: goto -171 -> 173
-    //   347: aload 8
-    //   349: astore 7
-    //   351: aload 5
-    //   353: astore 6
-    //   355: iload_2
-    //   356: istore_3
-    //   357: aload 12
-    //   359: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   362: astore 11
-    //   364: aload 11
-    //   366: astore_0
-    //   367: aload 5
-    //   369: ifnull +8 -> 377
-    //   372: aload 5
-    //   374: invokevirtual 823	java/io/BufferedInputStream:close	()V
-    //   377: aload_0
-    //   378: astore 5
-    //   380: aload 8
-    //   382: ifnull -359 -> 23
-    //   385: aload 8
-    //   387: invokevirtual 824	java/io/InputStreamReader:close	()V
-    //   390: aload_0
-    //   391: areturn
-    //   392: astore 5
-    //   394: aload_0
-    //   395: areturn
-    //   396: aload 8
-    //   398: astore 7
-    //   400: aload 5
+    //   253: istore_3
+    //   254: iload 4
+    //   256: newarray char
+    //   258: astore 12
+    //   260: aload 5
+    //   262: astore 6
+    //   264: aload 8
+    //   266: astore 7
+    //   268: iload_1
+    //   269: istore_3
+    //   270: new 216	java/lang/String
+    //   273: dup
+    //   274: aload 12
+    //   276: iconst_0
+    //   277: aload 8
+    //   279: aload 12
+    //   281: invokevirtual 815	java/io/InputStreamReader:read	([C)I
+    //   284: invokespecial 821	java/lang/String:<init>	([CII)V
+    //   287: astore 12
+    //   289: aload 12
+    //   291: astore 6
+    //   293: aload 5
+    //   295: invokevirtual 822	java/io/BufferedInputStream:close	()V
+    //   298: aload 8
+    //   300: astore_0
+    //   301: aload_0
+    //   302: invokevirtual 827	java/io/InputStreamReader:close	()V
+    //   305: aload 6
+    //   307: areturn
+    //   308: astore 6
+    //   310: aload 8
+    //   312: astore_0
+    //   313: aload 6
+    //   315: astore 8
+    //   317: goto +183 -> 500
+    //   320: astore_0
+    //   321: aconst_null
+    //   322: astore 7
+    //   324: goto +280 -> 604
+    //   327: aconst_null
+    //   328: astore 6
+    //   330: aload 5
+    //   332: astore 9
+    //   334: aload 6
+    //   336: astore 5
+    //   338: goto +28 -> 366
+    //   341: astore 8
+    //   343: aconst_null
+    //   344: astore_0
+    //   345: goto +155 -> 500
+    //   348: astore_0
+    //   349: aconst_null
+    //   350: astore 5
+    //   352: aload 5
+    //   354: astore 7
+    //   356: goto +248 -> 604
+    //   359: aconst_null
+    //   360: astore 9
+    //   362: aload 9
+    //   364: astore 5
+    //   366: aload 9
+    //   368: astore 6
+    //   370: aload 5
+    //   372: astore 7
+    //   374: new 97	java/lang/StringBuilder
+    //   377: dup
+    //   378: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   381: astore 8
+    //   383: aload 9
+    //   385: astore 6
+    //   387: aload 5
+    //   389: astore 7
+    //   391: aload 8
+    //   393: ldc_w 863
+    //   396: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   399: pop
+    //   400: aload 9
     //   402: astore 6
-    //   404: iload_1
-    //   405: istore_3
-    //   406: iload 4
-    //   408: newarray char
-    //   410: astore 11
-    //   412: aload 8
-    //   414: astore 7
-    //   416: aload 5
-    //   418: astore 6
-    //   420: iload_1
-    //   421: istore_3
-    //   422: new 216	java/lang/String
-    //   425: dup
-    //   426: aload 11
-    //   428: iconst_0
+    //   404: aload 5
+    //   406: astore 7
+    //   408: aload 8
+    //   410: aload_0
+    //   411: invokevirtual 866	java/io/File:getName	()Ljava/lang/String;
+    //   414: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   417: pop
+    //   418: aload 9
+    //   420: astore 6
+    //   422: aload 5
+    //   424: astore 7
+    //   426: ldc_w 839
     //   429: aload 8
-    //   431: aload 11
-    //   433: invokevirtual 815	java/io/InputStreamReader:read	([C)I
-    //   436: invokespecial 829	java/lang/String:<init>	([CII)V
-    //   439: astore 11
-    //   441: aload 11
-    //   443: astore_0
-    //   444: goto -77 -> 367
-    //   447: astore 5
-    //   449: aconst_null
-    //   450: astore 8
-    //   452: aconst_null
-    //   453: astore 5
-    //   455: aload 8
-    //   457: astore 7
-    //   459: aload 5
-    //   461: astore 6
-    //   463: ldc_w 839
-    //   466: new 97	java/lang/StringBuilder
-    //   469: dup
-    //   470: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   473: ldc_w 873
-    //   476: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   479: aload_0
-    //   480: invokevirtual 876	java/io/File:getName	()Ljava/lang/String;
-    //   483: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   486: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   489: invokestatic 441	com/tencent/viola/utils/ViolaLogUtils:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   492: aload 10
-    //   494: astore 6
-    //   496: iload_1
-    //   497: iconst_m1
-    //   498: if_icmpne +21 -> 519
-    //   501: aload 8
-    //   503: astore 7
-    //   505: aload 5
-    //   507: astore 6
-    //   509: aload_0
-    //   510: bipush 6
-    //   512: invokestatic 835	com/tencent/viola/utils/ViolaUtils:readFileToStringEx	(Ljava/io/File;I)Ljava/lang/String;
-    //   515: astore_0
-    //   516: aload_0
-    //   517: astore 6
-    //   519: aload 5
-    //   521: ifnull +8 -> 529
-    //   524: aload 5
-    //   526: invokevirtual 823	java/io/BufferedInputStream:close	()V
-    //   529: aload 6
-    //   531: astore 5
-    //   533: aload 8
-    //   535: ifnull -512 -> 23
-    //   538: aload 8
-    //   540: invokevirtual 824	java/io/InputStreamReader:close	()V
-    //   543: aload 6
-    //   545: areturn
-    //   546: astore_0
-    //   547: aload 6
-    //   549: areturn
-    //   550: astore_0
-    //   551: aconst_null
-    //   552: astore 7
-    //   554: aconst_null
-    //   555: astore 5
-    //   557: aload 5
-    //   559: ifnull +8 -> 567
-    //   562: aload 5
-    //   564: invokevirtual 823	java/io/BufferedInputStream:close	()V
-    //   567: aload 7
-    //   569: ifnull +8 -> 577
-    //   572: aload 7
-    //   574: invokevirtual 824	java/io/InputStreamReader:close	()V
-    //   577: aload_0
-    //   578: athrow
-    //   579: astore 5
-    //   581: goto -204 -> 377
-    //   584: astore 5
-    //   586: goto -270 -> 316
-    //   589: astore_0
-    //   590: goto -61 -> 529
-    //   593: astore 5
-    //   595: goto -28 -> 567
-    //   598: astore 5
-    //   600: goto -23 -> 577
-    //   603: astore_0
-    //   604: aconst_null
-    //   605: astore 7
-    //   607: goto -50 -> 557
-    //   610: astore_0
-    //   611: aload 6
-    //   613: astore 5
-    //   615: goto -58 -> 557
-    //   618: astore 6
-    //   620: aconst_null
-    //   621: astore 8
-    //   623: goto -168 -> 455
-    //   626: astore 6
-    //   628: iload_3
-    //   629: istore_1
-    //   630: goto -175 -> 455
-    //   633: astore 8
-    //   635: aconst_null
-    //   636: astore_0
-    //   637: aconst_null
-    //   638: astore 5
-    //   640: goto -371 -> 269
-    //   643: astore 8
-    //   645: aconst_null
-    //   646: astore_0
-    //   647: goto -378 -> 269
+    //   431: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   434: invokestatic 441	com/tencent/viola/utils/ViolaLogUtils:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   437: aload 11
+    //   439: astore 6
+    //   441: iload_1
+    //   442: iconst_m1
+    //   443: if_icmpne +21 -> 464
+    //   446: aload 9
+    //   448: astore 6
+    //   450: aload 5
+    //   452: astore 7
+    //   454: aload_0
+    //   455: bipush 6
+    //   457: invokestatic 835	com/tencent/viola/utils/ViolaUtils:readFileToStringEx	(Ljava/io/File;I)Ljava/lang/String;
+    //   460: astore_0
+    //   461: aload_0
+    //   462: astore 6
+    //   464: aload 9
+    //   466: ifnull +11 -> 477
+    //   469: aload 9
+    //   471: invokevirtual 822	java/io/BufferedInputStream:close	()V
+    //   474: goto +3 -> 477
+    //   477: aload 6
+    //   479: astore 7
+    //   481: aload 5
+    //   483: ifnull +113 -> 596
+    //   486: aload 5
+    //   488: astore_0
+    //   489: goto -188 -> 301
+    //   492: astore 8
+    //   494: aconst_null
+    //   495: astore 5
+    //   497: aload 5
+    //   499: astore_0
+    //   500: aload 5
+    //   502: astore 6
+    //   504: aload_0
+    //   505: astore 7
+    //   507: new 97	java/lang/StringBuilder
+    //   510: dup
+    //   511: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   514: astore 11
+    //   516: aload 5
+    //   518: astore 6
+    //   520: aload_0
+    //   521: astore 7
+    //   523: aload 11
+    //   525: ldc_w 868
+    //   528: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   531: pop
+    //   532: aload 5
+    //   534: astore 6
+    //   536: aload_0
+    //   537: astore 7
+    //   539: aload 11
+    //   541: aload 8
+    //   543: invokevirtual 869	java/lang/Exception:toString	()Ljava/lang/String;
+    //   546: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   549: pop
+    //   550: aload 5
+    //   552: astore 6
+    //   554: aload_0
+    //   555: astore 7
+    //   557: ldc_w 839
+    //   560: aload 11
+    //   562: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   565: invokestatic 242	com/tencent/viola/utils/ViolaLogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   568: aload 5
+    //   570: ifnull +11 -> 581
+    //   573: aload 5
+    //   575: invokevirtual 822	java/io/BufferedInputStream:close	()V
+    //   578: goto +3 -> 581
+    //   581: aload 10
+    //   583: astore 7
+    //   585: aload_0
+    //   586: ifnull +10 -> 596
+    //   589: aload 9
+    //   591: astore 6
+    //   593: goto -292 -> 301
+    //   596: aload 7
+    //   598: areturn
+    //   599: astore_0
+    //   600: aload 6
+    //   602: astore 5
+    //   604: aload 5
+    //   606: ifnull +11 -> 617
+    //   609: aload 5
+    //   611: invokevirtual 822	java/io/BufferedInputStream:close	()V
+    //   614: goto +3 -> 617
+    //   617: aload 7
+    //   619: ifnull +8 -> 627
+    //   622: aload 7
+    //   624: invokevirtual 827	java/io/InputStreamReader:close	()V
+    //   627: aload_0
+    //   628: athrow
+    //   629: new 97	java/lang/StringBuilder
+    //   632: dup
+    //   633: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   636: astore 5
+    //   638: aload 5
+    //   640: ldc_w 871
+    //   643: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   646: pop
+    //   647: aload 5
+    //   649: aload_0
+    //   650: invokevirtual 846	java/io/File:exists	()Z
+    //   653: invokevirtual 874	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   656: pop
+    //   657: aload 5
+    //   659: ldc_w 876
+    //   662: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   665: pop
+    //   666: aload 5
+    //   668: aload_0
+    //   669: invokevirtual 849	java/io/File:canRead	()Z
+    //   672: invokevirtual 874	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   675: pop
+    //   676: ldc_w 839
+    //   679: aload 5
+    //   681: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   684: invokestatic 242	com/tencent/viola/utils/ViolaLogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   687: aconst_null
+    //   688: areturn
+    //   689: astore 5
+    //   691: goto -332 -> 359
+    //   694: astore 6
+    //   696: goto -369 -> 327
+    //   699: astore 6
+    //   701: aload 5
+    //   703: astore 9
+    //   705: aload 8
+    //   707: astore 5
+    //   709: iload_3
+    //   710: istore_1
+    //   711: goto -345 -> 366
+    //   714: astore_0
+    //   715: aload 8
+    //   717: astore_0
+    //   718: goto -417 -> 301
+    //   721: astore_0
+    //   722: aload 6
+    //   724: areturn
+    //   725: astore_0
+    //   726: goto -249 -> 477
+    //   729: astore 5
+    //   731: goto -150 -> 581
+    //   734: astore 5
+    //   736: goto -119 -> 617
+    //   739: astore 5
+    //   741: goto -114 -> 627
+    //   744: iload_1
+    //   745: istore_2
+    //   746: iload_1
+    //   747: bipush 60
+    //   749: if_icmple -616 -> 133
+    //   752: bipush 60
+    //   754: istore_2
+    //   755: goto -622 -> 133
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	650	0	paramFile	File
-    //   0	650	1	paramInt	int
-    //   141	215	2	i	int
-    //   124	505	3	j	int
-    //   130	277	4	k	int
-    //   21	358	5	localObject1	Object
-    //   392	25	5	localException1	Exception
-    //   447	1	5	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   453	110	5	localObject2	Object
-    //   579	1	5	localException2	Exception
-    //   584	1	5	localException3	Exception
-    //   593	1	5	localException4	Exception
-    //   598	1	5	localException5	Exception
-    //   613	26	5	localObject3	Object
-    //   121	123	6	localObject4	Object
-    //   260	6	6	localException6	Exception
-    //   274	338	6	localObject5	Object
-    //   618	1	6	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   626	1	6	localOutOfMemoryError3	java.lang.OutOfMemoryError
-    //   117	489	7	localObject6	Object
-    //   113	509	8	localObject7	Object
-    //   633	1	8	localException7	Exception
-    //   643	1	8	localException8	Exception
-    //   4	313	9	localObject8	Object
-    //   1	492	10	localObject9	Object
-    //   188	254	11	localObject10	Object
-    //   212	146	12	localStringBuilder	StringBuilder
+    //   0	758	0	paramFile	File
+    //   0	758	1	paramInt	int
+    //   98	657	2	i	int
+    //   81	629	3	j	int
+    //   87	168	4	k	int
+    //   56	624	5	localObject1	Object
+    //   689	13	5	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   707	1	5	localObject2	Object
+    //   729	1	5	localException1	Exception
+    //   734	1	5	localException2	Exception
+    //   739	1	5	localException3	Exception
+    //   74	232	6	localObject3	Object
+    //   308	6	6	localException4	Exception
+    //   328	273	6	localObject4	Object
+    //   694	1	6	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   699	24	6	localOutOfMemoryError3	java.lang.OutOfMemoryError
+    //   78	545	7	localObject5	Object
+    //   70	246	8	localObject6	Object
+    //   341	1	8	localException5	Exception
+    //   381	49	8	localStringBuilder1	StringBuilder
+    //   492	224	8	localException6	Exception
+    //   7	697	9	localObject7	Object
+    //   4	578	10	localObject8	Object
+    //   1	560	11	localStringBuilder2	StringBuilder
+    //   148	142	12	localObject9	Object
+    //   172	59	13	localStringBuilder3	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   125	132	260	java/lang/Exception
-    //   157	164	260	java/lang/Exception
-    //   183	190	260	java/lang/Exception
-    //   200	214	260	java/lang/Exception
-    //   224	232	260	java/lang/Exception
-    //   247	257	260	java/lang/Exception
-    //   357	364	260	java/lang/Exception
-    //   406	412	260	java/lang/Exception
-    //   422	441	260	java/lang/Exception
-    //   324	328	330	java/lang/Exception
-    //   385	390	392	java/lang/Exception
-    //   84	101	447	java/lang/OutOfMemoryError
-    //   538	543	546	java/lang/Exception
-    //   84	101	550	finally
-    //   372	377	579	java/lang/Exception
-    //   311	316	584	java/lang/Exception
-    //   524	529	589	java/lang/Exception
-    //   562	567	593	java/lang/Exception
-    //   572	577	598	java/lang/Exception
-    //   101	115	603	finally
-    //   125	132	610	finally
-    //   157	164	610	finally
-    //   183	190	610	finally
-    //   200	214	610	finally
-    //   224	232	610	finally
-    //   247	257	610	finally
-    //   276	306	610	finally
-    //   357	364	610	finally
-    //   406	412	610	finally
-    //   422	441	610	finally
-    //   463	492	610	finally
-    //   509	516	610	finally
-    //   101	115	618	java/lang/OutOfMemoryError
-    //   125	132	626	java/lang/OutOfMemoryError
-    //   157	164	626	java/lang/OutOfMemoryError
-    //   183	190	626	java/lang/OutOfMemoryError
-    //   200	214	626	java/lang/OutOfMemoryError
-    //   224	232	626	java/lang/OutOfMemoryError
-    //   247	257	626	java/lang/OutOfMemoryError
-    //   357	364	626	java/lang/OutOfMemoryError
-    //   406	412	626	java/lang/OutOfMemoryError
-    //   422	441	626	java/lang/OutOfMemoryError
-    //   84	101	633	java/lang/Exception
-    //   101	115	643	java/lang/Exception
+    //   82	89	308	java/lang/Exception
+    //   114	121	308	java/lang/Exception
+    //   143	150	308	java/lang/Exception
+    //   160	174	308	java/lang/Exception
+    //   184	192	308	java/lang/Exception
+    //   207	217	308	java/lang/Exception
+    //   230	237	308	java/lang/Exception
+    //   254	260	308	java/lang/Exception
+    //   270	289	308	java/lang/Exception
+    //   58	72	320	finally
+    //   58	72	341	java/lang/Exception
+    //   41	58	348	finally
+    //   41	58	492	java/lang/Exception
+    //   82	89	599	finally
+    //   114	121	599	finally
+    //   143	150	599	finally
+    //   160	174	599	finally
+    //   184	192	599	finally
+    //   207	217	599	finally
+    //   230	237	599	finally
+    //   254	260	599	finally
+    //   270	289	599	finally
+    //   374	383	599	finally
+    //   391	400	599	finally
+    //   408	418	599	finally
+    //   426	437	599	finally
+    //   454	461	599	finally
+    //   507	516	599	finally
+    //   523	532	599	finally
+    //   539	550	599	finally
+    //   557	568	599	finally
+    //   41	58	689	java/lang/OutOfMemoryError
+    //   58	72	694	java/lang/OutOfMemoryError
+    //   82	89	699	java/lang/OutOfMemoryError
+    //   114	121	699	java/lang/OutOfMemoryError
+    //   143	150	699	java/lang/OutOfMemoryError
+    //   160	174	699	java/lang/OutOfMemoryError
+    //   184	192	699	java/lang/OutOfMemoryError
+    //   207	217	699	java/lang/OutOfMemoryError
+    //   230	237	699	java/lang/OutOfMemoryError
+    //   254	260	699	java/lang/OutOfMemoryError
+    //   270	289	699	java/lang/OutOfMemoryError
+    //   293	298	714	java/lang/Exception
+    //   301	305	721	java/lang/Exception
+    //   469	474	725	java/lang/Exception
+    //   573	578	729	java/lang/Exception
+    //   609	614	734	java/lang/Exception
+    //   622	627	739	java/lang/Exception
   }
   
   public static void reportNVCost(long paramLong)
@@ -2233,11 +2563,9 @@ public class ViolaUtils
   
   public static String[] splitTemplateAndData(String paramString)
   {
-    int i = 0;
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    String[] arrayOfString;
     for (;;)
     {
       Object localObject;
@@ -2247,85 +2575,87 @@ public class ViolaUtils
         paramString = ((JSONObject)localObject).optString("template");
         localObject = ((JSONObject)localObject).optString("data");
         if (paramString == null) {
-          break label112;
+          break label117;
         }
         i = 1;
       }
       catch (JSONException paramString)
       {
-        ViolaLogUtils.e("ViolaUtils", "getVueDomFromJsSource error: " + paramString.getMessage());
+        String[] arrayOfString;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getVueDomFromJsSource error: ");
+        ((StringBuilder)localObject).append(paramString.getMessage());
+        ViolaLogUtils.e("ViolaUtils", ((StringBuilder)localObject).toString());
         return null;
       }
-      arrayOfString = new String[i];
-      if (i == 2)
+      arrayOfString = new String[j];
+      if (j == 2)
       {
         arrayOfString[0] = paramString;
         arrayOfString[1] = localObject;
-        break;
+        return arrayOfString;
       }
-      if (i != 1) {
-        break;
+      if (j == 1) {
+        arrayOfString[0] = paramString;
       }
-      arrayOfString[0] = paramString;
-      break;
-      label112:
-      while (localObject == null) {
-        break;
+      return arrayOfString;
+      label117:
+      int i = 0;
+      int j = i;
+      if (localObject != null) {
+        j = i + 1;
       }
-      i += 1;
     }
-    return arrayOfString;
   }
   
   public static String splittBodyEncodeUrl(JSONObject paramJSONObject)
   {
-    Object localObject2;
+    Object localObject2 = null;
+    StringBuffer localStringBuffer = null;
     if (paramJSONObject != null)
     {
       Iterator localIterator = paramJSONObject.keys();
-      StringBuffer localStringBuffer = null;
-      localObject2 = localStringBuffer;
-      if (localIterator.hasNext())
+      for (;;)
       {
         localObject2 = localStringBuffer;
-        for (;;)
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject2 = localStringBuffer;
+        try
         {
-          Object localObject1;
-          try
+          localObject3 = (String)localIterator.next();
+          localObject2 = localStringBuffer;
+          String str = paramJSONObject.getString((String)localObject3);
+          if (localStringBuffer == null)
           {
-            String str1 = (String)localIterator.next();
-            localObject2 = localStringBuffer;
-            String str2 = paramJSONObject.getString(str1);
-            if (localStringBuffer != null) {
-              break label126;
-            }
             localObject2 = localStringBuffer;
             localStringBuffer = new StringBuffer();
-            localObject2 = localStringBuffer;
-            localStringBuffer.append(str1);
-            localObject2 = localStringBuffer;
-            localStringBuffer.append("=");
-            localObject2 = localStringBuffer;
-            localStringBuffer.append(str2);
           }
-          catch (JSONException localJSONException)
+          else
           {
-            log("ViolaUtils", 6, "splittBodyEncodeUrl error : " + localJSONException.getMessage());
-            localObject1 = localObject2;
+            localObject2 = localStringBuffer;
+            localStringBuffer.append("&");
           }
-          break;
-          label126:
-          localObject2 = localObject1;
-          localObject1.append("&");
+          localObject2 = localStringBuffer;
+          localStringBuffer.append((String)localObject3);
+          localObject2 = localStringBuffer;
+          localStringBuffer.append("=");
+          localObject2 = localStringBuffer;
+          localStringBuffer.append(str);
+        }
+        catch (JSONException localJSONException)
+        {
+          Object localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("splittBodyEncodeUrl error : ");
+          ((StringBuilder)localObject3).append(localJSONException.getMessage());
+          log("ViolaUtils", 6, ((StringBuilder)localObject3).toString());
+          Object localObject1 = localObject2;
         }
       }
     }
-    else
-    {
-      localObject2 = null;
-    }
     if (localObject2 != null) {
-      return ((StringBuffer)localObject2).toString();
+      return localObject2.toString();
     }
     return "";
   }
@@ -2333,68 +2663,69 @@ public class ViolaUtils
   public static String splittUrlForHttpGet(JSONObject paramJSONObject, String paramString)
   {
     Object localObject2 = paramString;
+    Object localObject3;
     if (paramJSONObject != null)
     {
       Iterator localIterator = paramJSONObject.keys();
       Object localObject1 = null;
-      if (localIterator.hasNext())
+      while (localIterator.hasNext())
       {
         localObject2 = localObject1;
-        for (;;)
+        try
         {
-          try
+          Object localObject4 = (String)localIterator.next();
+          localObject2 = localObject1;
+          String str = paramJSONObject.getString((String)localObject4);
+          if (localObject1 == null)
           {
-            str1 = (String)localIterator.next();
-            localObject2 = localObject1;
-            str2 = paramJSONObject.getString(str1);
-            if (localObject1 != null) {
-              break label169;
-            }
             localObject2 = localObject1;
             localObject1 = new StringBuffer();
-          }
-          catch (JSONException localJSONException2)
-          {
             try
             {
-              String str1;
-              String str2;
-              if ((TextUtils.isEmpty(paramString)) || (paramString.contains("?"))) {
-                break label158;
+              if ((!TextUtils.isEmpty(paramString)) && (!paramString.contains("?"))) {
+                ((StringBuffer)localObject1).append("?");
+              } else {
+                ((StringBuffer)localObject1).append("&");
               }
-              ((StringBuffer)localObject1).append("?");
-              localObject2 = localObject1;
-              ((StringBuffer)localObject1).append(str1);
-              localObject2 = localObject1;
-              ((StringBuffer)localObject1).append("=");
-              localObject2 = localObject1;
-              ((StringBuffer)localObject1).append(str2);
             }
             catch (JSONException localJSONException1)
             {
-              break label125;
+              localObject4 = localJSONException1;
+              break label153;
             }
-            localJSONException2 = localJSONException2;
-            localObject1 = localObject2;
-            localObject2 = localJSONException2;
           }
-          label125:
-          log("ViolaUtils", 6, "splittUrlForHttpGet error : " + ((JSONException)localObject2).getMessage());
-          break;
-          label158:
-          ((StringBuffer)localObject1).append("&");
-          continue;
-          label169:
-          localObject2 = localObject1;
-          ((StringBuffer)localObject1).append("&");
+          else
+          {
+            localObject3 = localObject1;
+            ((StringBuffer)localObject1).append("&");
+          }
+          localObject3 = localObject1;
+          ((StringBuffer)localObject1).append((String)localObject4);
+          localObject3 = localObject1;
+          ((StringBuffer)localObject1).append("=");
+          localObject3 = localObject1;
+          ((StringBuffer)localObject1).append(str);
+        }
+        catch (JSONException localJSONException2)
+        {
+          localObject1 = localObject3;
+          label153:
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("splittUrlForHttpGet error : ");
+          ((StringBuilder)localObject3).append(localJSONException2.getMessage());
+          log("ViolaUtils", 6, ((StringBuilder)localObject3).toString());
         }
       }
-      localObject2 = paramString;
-      if (localObject1 != null) {
-        localObject2 = paramString + ((StringBuffer)localObject1).toString();
+      localObject3 = paramString;
+      if (localObject1 != null)
+      {
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append(paramString);
+        paramJSONObject.append(((StringBuffer)localObject1).toString());
+        localObject3 = paramJSONObject.toString();
       }
     }
-    return localObject2;
+    return localObject3;
   }
   
   public static void updateSparseArray(@NonNull SparseIntArray paramSparseIntArray, int paramInt1, int paramInt2)
@@ -2413,223 +2744,245 @@ public class ViolaUtils
   
   public static float viscousFluid(float paramFloat)
   {
-    paramFloat = 8.0F * paramFloat;
-    if (paramFloat < 1.0F) {}
-    for (paramFloat -= 1.0F - (float)Math.exp(-paramFloat);; paramFloat = (1.0F - (float)Math.exp(1.0F - paramFloat)) * (1.0F - 0.3678795F) + 0.3678795F) {
-      return paramFloat * sViscousFluidNormalize;
+    paramFloat *= 8.0F;
+    if (paramFloat < 1.0F) {
+      paramFloat -= 1.0F - (float)Math.exp(-paramFloat);
+    } else {
+      paramFloat = (1.0F - (float)Math.exp(1.0F - paramFloat)) * 0.6321206F + 0.3678795F;
     }
+    return paramFloat * sViscousFluidNormalize;
   }
   
   /* Error */
   public static boolean writeFile(String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore_2
-    //   2: new 843	java/io/File
-    //   5: dup
-    //   6: aload_1
-    //   7: invokespecial 955	java/io/File:<init>	(Ljava/lang/String;)V
-    //   10: astore 7
-    //   12: aconst_null
-    //   13: astore 5
-    //   15: aconst_null
-    //   16: astore 6
-    //   18: aload 5
-    //   20: astore 4
-    //   22: aload 7
-    //   24: invokevirtual 846	java/io/File:exists	()Z
-    //   27: ifne +74 -> 101
-    //   30: aload 5
-    //   32: astore 4
-    //   34: aload 7
-    //   36: invokevirtual 958	java/io/File:createNewFile	()Z
-    //   39: istore_3
-    //   40: iload_3
-    //   41: ifne +60 -> 101
-    //   44: iconst_0
-    //   45: ifeq +11 -> 56
-    //   48: new 960	java/lang/NullPointerException
-    //   51: dup
-    //   52: invokespecial 961	java/lang/NullPointerException:<init>	()V
-    //   55: athrow
-    //   56: iload_2
-    //   57: ireturn
-    //   58: astore_0
-    //   59: ldc 15
-    //   61: bipush 6
-    //   63: new 97	java/lang/StringBuilder
-    //   66: dup
-    //   67: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   70: ldc_w 963
-    //   73: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   76: aload_1
-    //   77: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   80: ldc_w 822
-    //   83: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   86: aload_0
-    //   87: invokevirtual 964	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   90: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   93: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   96: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   99: iconst_0
-    //   100: ireturn
-    //   101: aload 5
-    //   103: astore 4
-    //   105: new 966	java/io/FileOutputStream
-    //   108: dup
-    //   109: aload 7
-    //   111: invokespecial 967	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   114: astore 5
-    //   116: aload 5
-    //   118: aload_0
-    //   119: invokevirtual 969	java/lang/String:getBytes	()[B
-    //   122: invokevirtual 973	java/io/FileOutputStream:write	([B)V
-    //   125: aload 5
-    //   127: invokevirtual 974	java/io/FileOutputStream:flush	()V
-    //   130: iconst_1
-    //   131: istore_2
-    //   132: aload 5
-    //   134: ifnull -78 -> 56
-    //   137: aload 5
-    //   139: invokevirtual 975	java/io/FileOutputStream:close	()V
-    //   142: iconst_1
-    //   143: ireturn
-    //   144: astore_0
-    //   145: ldc 15
-    //   147: bipush 6
-    //   149: new 97	java/lang/StringBuilder
-    //   152: dup
-    //   153: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   156: ldc_w 963
-    //   159: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   162: aload_1
-    //   163: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   166: ldc_w 822
+    //   0: new 843	java/io/File
+    //   3: dup
+    //   4: aload_1
+    //   5: invokespecial 956	java/io/File:<init>	(Ljava/lang/String;)V
+    //   8: astore 5
+    //   10: aconst_null
+    //   11: astore 4
+    //   13: aconst_null
+    //   14: astore_3
+    //   15: aload_3
+    //   16: astore_2
+    //   17: aload 5
+    //   19: invokevirtual 846	java/io/File:exists	()Z
+    //   22: ifne +15 -> 37
+    //   25: aload_3
+    //   26: astore_2
+    //   27: aload 5
+    //   29: invokevirtual 959	java/io/File:createNewFile	()Z
+    //   32: ifne +5 -> 37
+    //   35: iconst_0
+    //   36: ireturn
+    //   37: aload_3
+    //   38: astore_2
+    //   39: new 961	java/io/FileOutputStream
+    //   42: dup
+    //   43: aload 5
+    //   45: invokespecial 962	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   48: astore_3
+    //   49: aload_3
+    //   50: aload_0
+    //   51: invokevirtual 964	java/lang/String:getBytes	()[B
+    //   54: invokevirtual 968	java/io/FileOutputStream:write	([B)V
+    //   57: aload_3
+    //   58: invokevirtual 969	java/io/FileOutputStream:flush	()V
+    //   61: aload_3
+    //   62: invokevirtual 970	java/io/FileOutputStream:close	()V
+    //   65: iconst_1
+    //   66: ireturn
+    //   67: astore_0
+    //   68: new 97	java/lang/StringBuilder
+    //   71: dup
+    //   72: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   75: astore_2
+    //   76: aload_2
+    //   77: ldc_w 972
+    //   80: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   83: pop
+    //   84: aload_2
+    //   85: aload_1
+    //   86: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   89: pop
+    //   90: aload_2
+    //   91: ldc_w 826
+    //   94: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   97: pop
+    //   98: aload_2
+    //   99: aload_0
+    //   100: invokevirtual 973	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   103: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   106: pop
+    //   107: ldc 15
+    //   109: bipush 6
+    //   111: aload_2
+    //   112: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   115: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
+    //   118: iconst_1
+    //   119: ireturn
+    //   120: astore_0
+    //   121: aload_3
+    //   122: astore_2
+    //   123: goto +150 -> 273
+    //   126: astore_2
+    //   127: aload_3
+    //   128: astore_0
+    //   129: aload_2
+    //   130: astore_3
+    //   131: goto +11 -> 142
+    //   134: astore_0
+    //   135: goto +138 -> 273
+    //   138: astore_3
+    //   139: aload 4
+    //   141: astore_0
+    //   142: aload_0
+    //   143: astore_2
+    //   144: new 97	java/lang/StringBuilder
+    //   147: dup
+    //   148: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   151: astore 4
+    //   153: aload_0
+    //   154: astore_2
+    //   155: aload 4
+    //   157: ldc_w 975
+    //   160: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   163: pop
+    //   164: aload_0
+    //   165: astore_2
+    //   166: aload 4
+    //   168: aload_1
     //   169: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   172: aload_0
-    //   173: invokevirtual 964	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   176: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   179: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   182: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   185: iconst_1
-    //   186: ireturn
-    //   187: astore 5
-    //   189: aload 6
-    //   191: astore_0
-    //   192: aload_0
-    //   193: astore 4
-    //   195: ldc 15
-    //   197: bipush 6
-    //   199: new 97	java/lang/StringBuilder
-    //   202: dup
-    //   203: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   206: ldc_w 977
-    //   209: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   212: aload_1
-    //   213: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   216: ldc_w 822
-    //   219: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   222: aload 5
-    //   224: invokevirtual 964	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   227: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   230: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   233: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   236: aload_0
-    //   237: ifnull -181 -> 56
-    //   240: aload_0
-    //   241: invokevirtual 975	java/io/FileOutputStream:close	()V
-    //   244: iconst_0
-    //   245: ireturn
-    //   246: astore_0
-    //   247: ldc 15
-    //   249: bipush 6
-    //   251: new 97	java/lang/StringBuilder
-    //   254: dup
-    //   255: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   258: ldc_w 963
-    //   261: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   264: aload_1
-    //   265: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   268: ldc_w 822
-    //   271: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   274: aload_0
-    //   275: invokevirtual 964	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   278: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   281: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   284: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   287: iconst_0
-    //   288: ireturn
-    //   289: astore_0
-    //   290: aload 4
-    //   292: ifnull +8 -> 300
-    //   295: aload 4
-    //   297: invokevirtual 975	java/io/FileOutputStream:close	()V
-    //   300: aload_0
-    //   301: athrow
-    //   302: astore 4
-    //   304: ldc 15
-    //   306: bipush 6
-    //   308: new 97	java/lang/StringBuilder
-    //   311: dup
-    //   312: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   315: ldc_w 963
-    //   318: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   321: aload_1
-    //   322: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   325: ldc_w 822
-    //   328: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   331: aload 4
-    //   333: invokevirtual 964	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   336: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   339: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   342: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
-    //   345: goto -45 -> 300
-    //   348: astore_0
-    //   349: aload 5
-    //   351: astore 4
-    //   353: goto -63 -> 290
-    //   356: astore 4
-    //   358: aload 5
-    //   360: astore_0
-    //   361: aload 4
-    //   363: astore 5
-    //   365: goto -173 -> 192
+    //   172: pop
+    //   173: aload_0
+    //   174: astore_2
+    //   175: aload 4
+    //   177: ldc_w 826
+    //   180: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   183: pop
+    //   184: aload_0
+    //   185: astore_2
+    //   186: aload 4
+    //   188: aload_3
+    //   189: invokevirtual 973	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   192: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   195: pop
+    //   196: aload_0
+    //   197: astore_2
+    //   198: ldc 15
+    //   200: bipush 6
+    //   202: aload 4
+    //   204: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   207: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
+    //   210: aload_0
+    //   211: ifnull +60 -> 271
+    //   214: aload_0
+    //   215: invokevirtual 970	java/io/FileOutputStream:close	()V
+    //   218: iconst_0
+    //   219: ireturn
+    //   220: astore_0
+    //   221: new 97	java/lang/StringBuilder
+    //   224: dup
+    //   225: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   228: astore_2
+    //   229: aload_2
+    //   230: ldc_w 972
+    //   233: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   236: pop
+    //   237: aload_2
+    //   238: aload_1
+    //   239: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   242: pop
+    //   243: aload_2
+    //   244: ldc_w 826
+    //   247: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   250: pop
+    //   251: aload_2
+    //   252: aload_0
+    //   253: invokevirtual 973	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   256: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   259: pop
+    //   260: ldc 15
+    //   262: bipush 6
+    //   264: aload_2
+    //   265: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   268: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
+    //   271: iconst_0
+    //   272: ireturn
+    //   273: aload_2
+    //   274: ifnull +61 -> 335
+    //   277: aload_2
+    //   278: invokevirtual 970	java/io/FileOutputStream:close	()V
+    //   281: goto +54 -> 335
+    //   284: astore_2
+    //   285: new 97	java/lang/StringBuilder
+    //   288: dup
+    //   289: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   292: astore_3
+    //   293: aload_3
+    //   294: ldc_w 972
+    //   297: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   300: pop
+    //   301: aload_3
+    //   302: aload_1
+    //   303: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   306: pop
+    //   307: aload_3
+    //   308: ldc_w 826
+    //   311: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   314: pop
+    //   315: aload_3
+    //   316: aload_2
+    //   317: invokevirtual 973	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   320: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   323: pop
+    //   324: ldc 15
+    //   326: bipush 6
+    //   328: aload_3
+    //   329: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   332: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
+    //   335: aload_0
+    //   336: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	368	0	paramString1	String
-    //   0	368	1	paramString2	String
-    //   1	131	2	bool1	boolean
-    //   39	2	3	bool2	boolean
-    //   20	276	4	localObject1	Object
-    //   302	30	4	localThrowable1	java.lang.Throwable
-    //   351	1	4	localThrowable2	java.lang.Throwable
-    //   356	6	4	localThrowable3	java.lang.Throwable
-    //   13	125	5	localFileOutputStream	java.io.FileOutputStream
-    //   187	172	5	localThrowable4	java.lang.Throwable
-    //   363	1	5	localObject2	Object
-    //   16	174	6	localObject3	Object
-    //   10	100	7	localFile	File
+    //   0	337	0	paramString1	String
+    //   0	337	1	paramString2	String
+    //   16	107	2	localObject1	Object
+    //   126	4	2	localThrowable1	java.lang.Throwable
+    //   143	135	2	localObject2	Object
+    //   284	33	2	localThrowable2	java.lang.Throwable
+    //   14	117	3	localObject3	Object
+    //   138	51	3	localThrowable3	java.lang.Throwable
+    //   292	37	3	localStringBuilder1	StringBuilder
+    //   11	192	4	localStringBuilder2	StringBuilder
+    //   8	36	5	localFile	File
     // Exception table:
     //   from	to	target	type
-    //   48	56	58	java/lang/Throwable
-    //   137	142	144	java/lang/Throwable
-    //   22	30	187	java/lang/Throwable
-    //   34	40	187	java/lang/Throwable
-    //   105	116	187	java/lang/Throwable
-    //   240	244	246	java/lang/Throwable
-    //   22	30	289	finally
-    //   34	40	289	finally
-    //   105	116	289	finally
-    //   195	236	289	finally
-    //   295	300	302	java/lang/Throwable
-    //   116	130	348	finally
-    //   116	130	356	java/lang/Throwable
+    //   61	65	67	java/lang/Throwable
+    //   49	61	120	finally
+    //   49	61	126	java/lang/Throwable
+    //   17	25	134	finally
+    //   27	35	134	finally
+    //   39	49	134	finally
+    //   144	153	134	finally
+    //   155	164	134	finally
+    //   166	173	134	finally
+    //   175	184	134	finally
+    //   186	196	134	finally
+    //   198	210	134	finally
+    //   17	25	138	java/lang/Throwable
+    //   27	35	138	java/lang/Throwable
+    //   39	49	138	java/lang/Throwable
+    //   214	218	220	java/lang/Throwable
+    //   277	281	284	java/lang/Throwable
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.utils.ViolaUtils
  * JD-Core Version:    0.7.0.1
  */

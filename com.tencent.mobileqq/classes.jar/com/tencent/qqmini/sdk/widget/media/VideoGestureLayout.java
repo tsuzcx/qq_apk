@@ -53,7 +53,10 @@ public class VideoGestureLayout
   public void setProgress(int paramInt)
   {
     this.pb.setProgress(paramInt);
-    Log.d("VideoGestureLayout", "setProgress: " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setProgress: ");
+    localStringBuilder.append(paramInt);
+    Log.d("VideoGestureLayout", localStringBuilder.toString());
   }
   
   public void show()
@@ -65,7 +68,7 @@ public class VideoGestureLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.media.VideoGestureLayout
  * JD-Core Version:    0.7.0.1
  */

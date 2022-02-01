@@ -27,42 +27,51 @@ public class IliveCommonHandler
     try
     {
       localGetLiveGroupTipsRsp.mergeFrom((byte[])paramObject);
-      if (QLog.isColorLevel()) {
-        QLog.i("IliveCommonHandler", 2, "handleGetIliveGroupTipsData, isSuccess = " + paramFromServiceMsg.isSuccess());
-      }
-      paramToServiceMsg = (String)paramToServiceMsg.getAttribute("source");
-      if (paramFromServiceMsg.isSuccess())
-      {
-        notifyUI(1, true, new Object[] { paramToServiceMsg, IliveGroupTipsEntity.a(localGetLiveGroupTipsRsp) });
-        return;
-      }
     }
     catch (InvalidProtocolBufferMicroException paramObject)
     {
-      for (;;)
-      {
-        paramObject.printStackTrace();
-      }
-      notifyUI(1, false, new Object[] { paramToServiceMsg });
+      paramObject.printStackTrace();
     }
+    if (QLog.isColorLevel())
+    {
+      paramObject = new StringBuilder();
+      paramObject.append("handleGetIliveGroupTipsData, isSuccess = ");
+      paramObject.append(paramFromServiceMsg.isSuccess());
+      QLog.i("IliveCommonHandler", 2, paramObject.toString());
+    }
+    paramToServiceMsg = (String)paramToServiceMsg.getAttribute("source");
+    if (paramFromServiceMsg.isSuccess())
+    {
+      notifyUI(1, true, new Object[] { paramToServiceMsg, IliveGroupTipsEntity.a(localGetLiveGroupTipsRsp) });
+      return;
+    }
+    notifyUI(1, false, new Object[] { paramToServiceMsg });
   }
   
   public void a(String paramString1, String paramString2, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IliveCommonHandler", 2, "sendPbRequest. IliveGroup troopUin = " + paramString2 + " anchorUid = " + paramString1 + " source = " + paramString3);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("sendPbRequest. IliveGroup troopUin = ");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(" anchorUid = ");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(" source = ");
+      ((StringBuilder)localObject).append(paramString3);
+      QLog.d("IliveCommonHandler", 2, ((StringBuilder)localObject).toString());
     }
-    LiveGroupTips.GetLiveGroupTipsReq localGetLiveGroupTipsReq = new LiveGroupTips.GetLiveGroupTipsReq();
-    localGetLiveGroupTipsReq.anchor_uid.set(paramString1);
-    localGetLiveGroupTipsReq.group_id.set(Long.parseLong(paramString2));
+    Object localObject = new LiveGroupTips.GetLiveGroupTipsReq();
+    ((LiveGroupTips.GetLiveGroupTipsReq)localObject).anchor_uid.set(paramString1);
+    ((LiveGroupTips.GetLiveGroupTipsReq)localObject).group_id.set(Long.parseLong(paramString2));
     paramString1 = createToServiceMsg("QQLive.GetLiveGroupTips");
-    paramString1.putWupBuffer(localGetLiveGroupTipsReq.toByteArray());
+    paramString1.putWupBuffer(((LiveGroupTips.GetLiveGroupTipsReq)localObject).toByteArray());
     paramString1.setTimeout(10000L);
     paramString1.addAttribute("source", paramString3);
     super.sendPbReq(paramString1);
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return IliveGroupObserver.class;
   }
@@ -76,7 +85,7 @@ public class IliveCommonHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.group.IliveCommonHandler
  * JD-Core Version:    0.7.0.1
  */

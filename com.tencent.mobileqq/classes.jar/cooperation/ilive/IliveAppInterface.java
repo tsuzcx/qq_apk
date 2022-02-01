@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.app.business.BaseToolAppInterface;
+import com.tencent.falco.base.floatwindow.widget.LiveFloatWindowManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -32,30 +33,38 @@ public class IliveAppInterface
     if (paramIntent == null) {
       return false;
     }
-    QLog.e("IliveAppInterface", 1, "exitBrowserRunTime: receiveAction: " + paramIntent);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("exitBrowserRunTime: receiveAction: ");
+    localStringBuilder.append(paramIntent);
+    QLog.e("IliveAppInterface", 1, localStringBuilder.toString());
     if (paramIntent.equals("com.tencent.process.exit"))
     {
-      paramContext = (ActivityManager)paramContext.getSystemService("activity");
+      paramIntent = (ActivityManager)paramContext.getSystemService("activity");
+      paramContext = null;
       try
       {
-        paramContext = paramContext.getRunningTasks(1);
-        if ((paramContext != null) && (paramContext.size() >= 1))
-        {
-          paramContext = ((ActivityManager.RunningTaskInfo)paramContext.get(0)).topActivity.getClassName();
-          if (QLog.isColorLevel()) {
-            QLog.d("IliveAppInterface", 2, "runningActivity=" + paramContext);
-          }
-          if ((paramContext != null) && (paramContext.length() > 0) && ((paramContext.contains("cooperation.ilive.activity")) || (paramContext.contains("com.tencent.ilive.audiencepages.room.AudienceRoomActivity")))) {
-            return true;
-          }
-        }
+        paramIntent = paramIntent.getRunningTasks(1);
+        paramContext = paramIntent;
       }
-      catch (SecurityException paramContext)
+      catch (SecurityException paramIntent)
       {
-        for (;;)
+        paramIntent.printStackTrace();
+      }
+      if ((paramContext != null) && (paramContext.size() >= 1))
+      {
+        paramContext = ((ActivityManager.RunningTaskInfo)paramContext.get(0)).topActivity.getClassName();
+        boolean bool = LiveFloatWindowManager.getInstance().appFloatIsShow("FloatWindowComponentImpl");
+        if (QLog.isColorLevel())
         {
-          paramContext.printStackTrace();
-          paramContext = null;
+          paramIntent = new StringBuilder();
+          paramIntent.append("runningActivity = ");
+          paramIntent.append(paramContext);
+          paramIntent.append(" isFloatWindowShow = ");
+          paramIntent.append(bool);
+          QLog.d("IliveAppInterface", 2, paramIntent.toString());
+        }
+        if ((paramContext != null) && (paramContext.length() > 0) && ((paramContext.contains("cooperation.ilive.activity")) || (paramContext.contains("com.tencent.ilive.audiencepages.room.AudienceRoomActivity")) || (paramContext.contains("com.tencent.ilive.audiencepages.room.MultiAudienceRoomActivity")) || (bool))) {
+          return true;
         }
       }
     }
@@ -79,10 +88,10 @@ public class IliveAppInterface
   
   public EntityManagerFactory getEntityManagerFactory(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory == null) {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory = QQEntityManagerFactoryProxy.a(getAccount(), super.getEntityManagerFactory());
+    if (this.a == null) {
+      this.a = QQEntityManagerFactoryProxy.a(getAccount(), super.getEntityManagerFactory());
     }
-    return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
+    return this.a;
   }
   
   public void onBeforeExitProc()
@@ -110,7 +119,7 @@ public class IliveAppInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.IliveAppInterface
  * JD-Core Version:    0.7.0.1
  */

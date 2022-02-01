@@ -20,79 +20,73 @@ class QavPanelSoundWaveView$1
       this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, 200L);
       return;
     }
-    Object localObject;
-    float f;
-    int j;
     if (!this.this$0.jdField_a_of_type_Boolean)
     {
       localObject = this.this$0;
       ((QavPanelSoundWaveView)localObject).c += -this.this$0.jdField_a_of_type_Float * 0.00048F;
-      localObject = this.this$0.getContext();
-      if (!(localObject instanceof BaseActivity)) {
-        break label330;
-      }
-      localObject = ((BaseActivity)localObject).getAppRuntime();
-      if (!(localObject instanceof VideoAppInterface)) {
-        break label330;
-      }
-      localObject = ((VideoAppInterface)localObject).a();
-      f = ((VideoController)localObject).i() * 0.05F;
-      if ((((VideoController)localObject).a().d != 3) && (!((VideoController)localObject).a().l())) {
-        break label325;
-      }
-      j = 1;
     }
-    for (;;)
+    else
     {
-      if ((j != 0) && (!this.this$0.jdField_a_of_type_Boolean))
+      localObject = this.this$0;
+      ((QavPanelSoundWaveView)localObject).c += -this.this$0.jdField_a_of_type_Float * 0.00067F;
+    }
+    Object localObject = this.this$0.getContext();
+    if ((localObject instanceof BaseActivity))
+    {
+      localObject = ((BaseActivity)localObject).getAppRuntime();
+      if ((localObject instanceof VideoAppInterface))
+      {
+        localObject = ((VideoAppInterface)localObject).a();
+        f1 = ((VideoController)localObject).h() * 0.05F;
+        if ((((VideoController)localObject).a().d != 3) && (!((VideoController)localObject).a().j()))
+        {
+          i = 0;
+          break label196;
+        }
+        i = 1;
+        break label196;
+      }
+    }
+    int i = 0;
+    float f1 = 1.0F;
+    label196:
+    float f2 = f1;
+    if (i != 0)
+    {
+      f2 = f1;
+      if (!this.this$0.jdField_a_of_type_Boolean)
       {
         this.this$0.c = 0.0F;
-        f = 0.0F;
+        f2 = 0.0F;
       }
-      for (;;)
-      {
-        localObject = this.this$0.jdField_a_of_type_JavaUtilList.iterator();
-        int i = 1;
-        label190:
-        if (((Iterator)localObject).hasNext())
-        {
-          QavPanelWave localQavPanelWave = (QavPanelWave)((Iterator)localObject).next();
-          localQavPanelWave.a(this.this$0.c, f);
-          if (i == 0) {
-            break label319;
-          }
-          if (Float.compare(localQavPanelWave.d, 0.0F) == 0) {
-            i = 1;
-          }
-        }
-        label319:
-        for (;;)
-        {
-          break label190;
-          localObject = this.this$0;
-          ((QavPanelSoundWaveView)localObject).c += -this.this$0.jdField_a_of_type_Float * 0.00067F;
-          break;
-          i = 0;
-          continue;
-          if ((j == 0) || (i == 0)) {
-            this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, 66L);
-          }
-          this.this$0.invalidate();
-          return;
-        }
-      }
-      label325:
-      j = 0;
-      continue;
-      label330:
-      j = 0;
-      f = 1.0F;
     }
+    localObject = this.this$0.jdField_a_of_type_JavaUtilList.iterator();
+    int j = 1;
+    for (;;)
+    {
+      if (!((Iterator)localObject).hasNext()) {
+        break label302;
+      }
+      QavPanelWave localQavPanelWave = (QavPanelWave)((Iterator)localObject).next();
+      localQavPanelWave.a(this.this$0.c, f2);
+      if (j != 0)
+      {
+        if (Float.compare(localQavPanelWave.d, 0.0F) == 0) {
+          break;
+        }
+        j = 0;
+      }
+    }
+    label302:
+    if ((i == 0) || (j == 0)) {
+      this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, 66L);
+    }
+    this.this$0.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.QavPanelSoundWaveView.1
  * JD-Core Version:    0.7.0.1
  */

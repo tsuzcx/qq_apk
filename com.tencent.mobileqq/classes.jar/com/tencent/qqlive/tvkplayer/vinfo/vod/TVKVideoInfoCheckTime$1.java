@@ -18,16 +18,22 @@ class TVKVideoInfoCheckTime$1
   {
     long l1 = SystemClock.elapsedRealtime();
     long l2 = TVKVideoInfoCheckTime.access$200(this.this$0);
-    if ((paramIOException instanceof ITVKHttpProcessor.InvalidResponseCodeException)) {}
-    for (int i = ((ITVKHttpProcessor.InvalidResponseCodeException)paramIOException).responseCode;; i = TVKVideoInfoErrorCodeUtil.getErrCodeByThrowable(paramIOException.getCause()))
-    {
-      TVKLogUtil.i("MediaPlayerMgr[TVKVideoInfoCheckTime]", "[videoInfo][checktime] failed, time cost:" + (l1 - l2) + "ms error:" + paramIOException.toString());
-      if ((i >= 16) && (i <= 20)) {
-        TVKVideoInfoCheckTime.access$502(this.this$0, true);
-      }
-      TVKVideoInfoCheckTime.access$400(this.this$0);
-      return;
+    int i;
+    if ((paramIOException instanceof ITVKHttpProcessor.InvalidResponseCodeException)) {
+      i = ((ITVKHttpProcessor.InvalidResponseCodeException)paramIOException).responseCode;
+    } else {
+      i = TVKVideoInfoErrorCodeUtil.getErrCodeByThrowable(paramIOException.getCause());
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[videoInfo][checktime] failed, time cost:");
+    localStringBuilder.append(l1 - l2);
+    localStringBuilder.append("ms error:");
+    localStringBuilder.append(paramIOException.toString());
+    TVKLogUtil.i("MediaPlayerMgr[TVKVideoInfoCheckTime]", localStringBuilder.toString());
+    if ((i >= 16) && (i <= 20)) {
+      TVKVideoInfoCheckTime.access$502(this.this$0, true);
+    }
+    TVKVideoInfoCheckTime.access$400(this.this$0);
   }
   
   public void onSuccess(ITVKHttpProcessor.HttpResponse paramHttpResponse)
@@ -35,7 +41,12 @@ class TVKVideoInfoCheckTime$1
     paramHttpResponse = new String(paramHttpResponse.mData);
     long l1 = SystemClock.elapsedRealtime();
     long l2 = TVKVideoInfoCheckTime.access$200(this.this$0);
-    TVKLogUtil.i("MediaPlayerMgr[TVKVideoInfoCheckTime]", "[VideoInfo][checkTime]success xml:" + paramHttpResponse + " timecost:" + (l1 - l2));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[VideoInfo][checkTime]success xml:");
+    localStringBuilder.append(paramHttpResponse);
+    localStringBuilder.append(" timecost:");
+    localStringBuilder.append(l1 - l2);
+    TVKLogUtil.i("MediaPlayerMgr[TVKVideoInfoCheckTime]", localStringBuilder.toString());
     if ((TextUtils.isEmpty(paramHttpResponse)) || (!TVKVideoInfoCheckTime.access$300(this.this$0, paramHttpResponse))) {
       TVKVideoInfoCheckTime.access$400(this.this$0);
     }
@@ -43,7 +54,7 @@ class TVKVideoInfoCheckTime$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.vod.TVKVideoInfoCheckTime.1
  * JD-Core Version:    0.7.0.1
  */

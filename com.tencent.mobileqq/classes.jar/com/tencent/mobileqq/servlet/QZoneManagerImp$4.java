@@ -13,33 +13,43 @@ class QZoneManagerImp$4
   public void run()
   {
     long l = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneManagerImp..UndealCount", 2, "sendGetFeedByTime.click leba.nowtime: " + l + ",QZoneNotifyServlet.lastGetFeedTime: " + QZoneNotifyServlet.c + ",config interval:" + QZoneHelper.getUpdateCountIntervalWhenClickFeedTab() + "difference: " + (l - QZoneNotifyServlet.c));
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("sendGetFeedByTime.click leba.nowtime: ");
+      ((StringBuilder)localObject).append(l);
+      ((StringBuilder)localObject).append(",QZoneNotifyServlet.lastGetFeedTime: ");
+      ((StringBuilder)localObject).append(QZoneNotifyServlet.c);
+      ((StringBuilder)localObject).append(",config interval:");
+      ((StringBuilder)localObject).append(QZoneHelper.getUpdateCountIntervalWhenClickFeedTab());
+      ((StringBuilder)localObject).append("difference: ");
+      ((StringBuilder)localObject).append(l - QZoneNotifyServlet.c);
+      QLog.d("QZoneManagerImp..UndealCount", 2, ((StringBuilder)localObject).toString());
     }
-    QQAppInterface localQQAppInterface;
     if (l - QZoneNotifyServlet.c > QZoneHelper.getUpdateCountIntervalWhenClickFeedTab())
     {
-      localQQAppInterface = QZoneManagerImp.a(this.this$0);
-      if ((localQQAppInterface != null) && (localQQAppInterface.getApplication() != null)) {
-        break label103;
+      localObject = QZoneManagerImp.a(this.this$0);
+      if (localObject != null)
+      {
+        if (((QQAppInterface)localObject).getApplication() == null) {
+          return;
+        }
+        NewIntent localNewIntent = new NewIntent(((QQAppInterface)localObject).getApplication(), QZoneNotifyServlet.class);
+        localNewIntent.setAction("Qzone_Get_NewAndUnread_Count");
+        localNewIntent.putExtra("qzone_send_by_time", this.a);
+        localNewIntent.putExtra("scene", 103);
+        ((QQAppInterface)localObject).startServlet(localNewIntent);
+        if (QLog.isColorLevel()) {
+          QLog.d("QZoneManagerImp..UndealCount", 2, "sendGetFeedByTime.click leba.");
+        }
       }
     }
-    label103:
-    do
-    {
-      return;
-      NewIntent localNewIntent = new NewIntent(localQQAppInterface.getApplication(), QZoneNotifyServlet.class);
-      localNewIntent.setAction("Qzone_Get_NewAndUnread_Count");
-      localNewIntent.putExtra("qzone_send_by_time", this.a);
-      localNewIntent.putExtra("scene", 103);
-      localQQAppInterface.startServlet(localNewIntent);
-    } while (!QLog.isColorLevel());
-    QLog.d("QZoneManagerImp..UndealCount", 2, "sendGetFeedByTime.click leba.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.QZoneManagerImp.4
  * JD-Core Version:    0.7.0.1
  */

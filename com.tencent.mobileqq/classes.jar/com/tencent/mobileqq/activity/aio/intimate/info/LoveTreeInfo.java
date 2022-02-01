@@ -42,7 +42,6 @@ public class LoveTreeInfo
   
   public static LoveTreeInfo a(oidb_0xcf4.LoveTreeInfo paramLoveTreeInfo)
   {
-    boolean bool = true;
     if (paramLoveTreeInfo == null) {
       return null;
     }
@@ -50,30 +49,28 @@ public class LoveTreeInfo
     if (paramLoveTreeInfo.str_use_tree_icon.has()) {
       localLoveTreeInfo.jdField_a_of_type_JavaLangString = paramLoveTreeInfo.str_use_tree_icon.get();
     }
-    if (paramLoveTreeInfo.uint32_lack_water_flag.has()) {
-      if (paramLoveTreeInfo.uint32_lack_water_flag.get() != 1) {
-        break label149;
-      }
-    }
-    for (;;)
+    if (paramLoveTreeInfo.uint32_lack_water_flag.has())
     {
+      int i = paramLoveTreeInfo.uint32_lack_water_flag.get();
+      boolean bool = true;
+      if (i != 1) {
+        bool = false;
+      }
       localLoveTreeInfo.jdField_a_of_type_Boolean = bool;
-      if (paramLoveTreeInfo.str_drop_icon.has()) {
-        localLoveTreeInfo.b = paramLoveTreeInfo.str_drop_icon.get();
-      }
-      if (paramLoveTreeInfo.str_jump_url.has()) {
-        localLoveTreeInfo.c = paramLoveTreeInfo.str_jump_url.get();
-      }
-      if (paramLoveTreeInfo.str_jump_h5_url.has()) {
-        localLoveTreeInfo.d = paramLoveTreeInfo.str_jump_h5_url.get();
-      }
-      if (paramLoveTreeInfo.uint32_level.has()) {
-        localLoveTreeInfo.jdField_a_of_type_Int = paramLoveTreeInfo.uint32_level.get();
-      }
-      return localLoveTreeInfo;
-      label149:
-      bool = false;
     }
+    if (paramLoveTreeInfo.str_drop_icon.has()) {
+      localLoveTreeInfo.b = paramLoveTreeInfo.str_drop_icon.get();
+    }
+    if (paramLoveTreeInfo.str_jump_url.has()) {
+      localLoveTreeInfo.c = paramLoveTreeInfo.str_jump_url.get();
+    }
+    if (paramLoveTreeInfo.str_jump_h5_url.has()) {
+      localLoveTreeInfo.d = paramLoveTreeInfo.str_jump_h5_url.get();
+    }
+    if (paramLoveTreeInfo.uint32_level.has()) {
+      localLoveTreeInfo.jdField_a_of_type_Int = paramLoveTreeInfo.uint32_level.get();
+    }
+    return localLoveTreeInfo;
   }
   
   public String a()
@@ -98,22 +95,37 @@ public class LoveTreeInfo
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
     return localJSONObject.toString();
   }
   
   public String toString()
   {
-    return "LoveTreeInfo{treeIconUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", canWatering=" + this.jdField_a_of_type_Boolean + ", wateringAnimUrl='" + this.b + '\'' + ", miniAppUrl='" + this.c + '\'' + ", h5Url='" + this.d + '\'' + ", level=" + this.jdField_a_of_type_Int + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LoveTreeInfo{treeIconUrl='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", canWatering=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", wateringAnimUrl='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", miniAppUrl='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", h5Url='");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", level=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.info.LoveTreeInfo
  * JD-Core Version:    0.7.0.1
  */

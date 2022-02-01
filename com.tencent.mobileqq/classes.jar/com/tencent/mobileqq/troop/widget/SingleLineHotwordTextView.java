@@ -50,55 +50,66 @@ public class SingleLineHotwordTextView
   
   public static int a(String paramString1, String paramString2, int paramInt, TextPaint paramTextPaint, String paramString3)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return 0;
-    }
-    paramString1 = new StringBuilder(paramString1);
-    if (!TextUtils.isEmpty(paramString3)) {
-      paramString1.append(".").append(paramString3);
-    }
-    paramString1 = paramString1.toString();
-    int k = paramString1.toLowerCase().indexOf(paramString2.toLowerCase());
-    if (k != -1)
+    boolean bool = TextUtils.isEmpty(paramString1);
+    int j = 0;
+    int k = 0;
+    int i = j;
+    if (!bool)
     {
-      int m = paramString1.length();
-      if (paramTextPaint.measureText(paramString1, 0, m) <= paramInt) {
+      if (TextUtils.isEmpty(paramString2)) {
         return 0;
       }
-      if (k == 0) {
-        return 2;
-      }
-      float[] arrayOfFloat = new float[m];
-      paramTextPaint.getTextWidths(paramString1, 0, m, arrayOfFloat);
-      int i = (int)(paramInt - paramTextPaint.measureText("…"));
-      paramInt = i;
-      if (!TextUtils.isEmpty(paramString3)) {
-        paramInt = (int)(i - paramTextPaint.measureText(paramString3));
-      }
-      int n = paramString2.length();
-      i = 0;
-      int j = 0;
-      while (i < k + n)
+      paramString1 = new StringBuilder(paramString1);
+      if (!TextUtils.isEmpty(paramString3))
       {
-        j = (int)(j + arrayOfFloat[i]);
-        i += 1;
+        paramString1.append(".");
+        paramString1.append(paramString3);
       }
-      if (j < paramInt) {
-        return 2;
-      }
-      j = 0;
-      i = k;
-      while (i < m)
+      paramString1 = paramString1.toString();
+      int m = paramString1.toLowerCase().indexOf(paramString2.toLowerCase());
+      i = j;
+      if (m != -1)
       {
-        j = (int)(j + arrayOfFloat[i]);
-        i += 1;
+        int n = paramString1.length();
+        float f1 = paramTextPaint.measureText(paramString1, 0, n);
+        float f2 = paramInt;
+        if (f1 <= f2) {
+          return 0;
+        }
+        if (m == 0) {}
+        float[] arrayOfFloat;
+        do
+        {
+          return 2;
+          arrayOfFloat = new float[n];
+          paramTextPaint.getTextWidths(paramString1, 0, n, arrayOfFloat);
+          i = (int)(f2 - paramTextPaint.measureText("…"));
+          paramInt = i;
+          if (!TextUtils.isEmpty(paramString3)) {
+            paramInt = (int)(i - paramTextPaint.measureText(paramString3));
+          }
+          int i1 = paramString2.length();
+          j = 0;
+          i = 0;
+          while (j < i1 + m)
+          {
+            i = (int)(i + arrayOfFloat[j]);
+            j += 1;
+          }
+          j = m;
+        } while (i < paramInt);
+        while (j < n)
+        {
+          k = (int)(k + arrayOfFloat[j]);
+          j += 1;
+        }
+        if (k < paramInt) {
+          return 1;
+        }
+        i = 3;
       }
-      if (j < paramInt) {
-        return 1;
-      }
-      return 3;
     }
-    return 0;
+    return i;
   }
   
   public static SpannableString a(String paramString, ArrayList<String> paramArrayList, int paramInt)
@@ -129,122 +140,130 @@ public class SingleLineHotwordTextView
   
   public static String a(int paramInt1, String paramString1, String paramString2, int paramInt2, TextPaint paramTextPaint, String paramString3)
   {
-    int k = 0;
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
-    String str1;
-    int j;
-    do
+    String str = paramString1;
+    if (!TextUtils.isEmpty(paramString1))
     {
-      return paramString1;
+      if (TextUtils.isEmpty(paramString2)) {
+        return paramString1;
+      }
       paramString1 = new StringBuilder(paramString1);
-      if (!TextUtils.isEmpty(paramString3)) {
-        paramString1.append(".").append(paramString3);
-      }
-      str1 = paramString1.toString();
-      j = str1.toLowerCase().indexOf(paramString2.toLowerCase());
-      paramString1 = str1;
-    } while (j == -1);
-    int n = str1.length();
-    float[] arrayOfFloat = new float[n];
-    paramTextPaint.getTextWidths(str1, 0, n, arrayOfFloat);
-    String str2;
-    if (paramInt1 == 2)
-    {
-      str2 = "." + paramString3;
-      if (TextUtils.isEmpty(paramString3)) {
-        break label549;
-      }
-      paramString1 = str1.substring(0, str1.lastIndexOf(str2));
-    }
-    for (paramInt1 = (int)(0 + paramTextPaint.measureText(str2));; paramInt1 = 0)
-    {
-      int i = (int)(paramInt1 + paramTextPaint.measureText("…"));
-      paramInt1 = 0;
-      label179:
-      if (paramInt1 < n)
+      if (!TextUtils.isEmpty(paramString3))
       {
-        i = (int)(i + arrayOfFloat[paramInt1]);
-        if (i <= paramInt2) {}
+        paramString1.append(".");
+        paramString1.append(paramString3);
       }
-      for (;;)
+      paramString1 = paramString1.toString();
+      int n = paramString1.toLowerCase().indexOf(paramString2.toLowerCase());
+      if (n == -1) {
+        return paramString1;
+      }
+      int m = paramString1.length();
+      float[] arrayOfFloat = new float[m];
+      int k = 0;
+      paramTextPaint.getTextWidths(paramString1, 0, m, arrayOfFloat);
+      int i;
+      if (paramInt1 == 2)
       {
-        paramString2 = paramString1.substring(0, paramInt1) + "…";
-        paramString1 = paramString2;
-        if (TextUtils.isEmpty(paramString3)) {
-          break;
+        paramString2 = new StringBuilder();
+        paramString2.append(".");
+        paramString2.append(paramString3);
+        paramString2 = paramString2.toString();
+        if (!TextUtils.isEmpty(paramString3))
+        {
+          paramString1 = paramString1.substring(0, paramString1.lastIndexOf(paramString2));
+          paramInt1 = (int)(0 + paramTextPaint.measureText(paramString2));
         }
-        return paramString2 + str2;
-        paramInt1 += 1;
-        break label179;
+        else
+        {
+          paramInt1 = 0;
+        }
+        i = (int)(paramInt1 + paramTextPaint.measureText("…"));
+        paramInt1 = 0;
+        while (paramInt1 < m)
+        {
+          i = (int)(i + arrayOfFloat[paramInt1]);
+          if (i > paramInt2) {
+            break label221;
+          }
+          paramInt1 += 1;
+        }
+        paramInt1 = m;
+        label221:
+        paramTextPaint = new StringBuilder();
+        paramTextPaint.append(paramString1.substring(0, paramInt1));
+        paramTextPaint.append("…");
+        paramString1 = paramTextPaint.toString();
+        str = paramString1;
+        if (!TextUtils.isEmpty(paramString3))
+        {
+          paramTextPaint = new StringBuilder();
+          paramTextPaint.append(paramString1);
+          paramTextPaint.append(paramString2);
+          return paramTextPaint.toString();
+        }
+      }
+      else
+      {
+        i = 1;
+        int j;
         if (paramInt1 == 1)
         {
           i = (int)(0 + paramTextPaint.measureText("…"));
-          paramInt1 = n - 1;
+          paramInt1 = m - 1;
           for (;;)
           {
             j = k;
-            if (paramInt1 > 0)
-            {
-              i = (int)(i + arrayOfFloat[paramInt1]);
-              if (i > paramInt2) {
-                j = paramInt1 + 1;
-              }
+            if (paramInt1 <= 0) {
+              break;
             }
-            else
+            i = (int)(i + arrayOfFloat[paramInt1]);
+            if (i > paramInt2)
             {
-              return "…" + str1.substring(j, n);
+              j = paramInt1 + 1;
+              break;
             }
             paramInt1 -= 1;
           }
+          paramString2 = new StringBuilder();
+          paramString2.append("…");
+          paramString2.append(paramString1.substring(j, m));
+          return paramString2.toString();
         }
-        paramString1 = str1;
-        if (paramInt1 != 3) {
-          break;
-        }
-        i = paramString2.length() + j;
-        paramInt1 = (int)(0 + (paramTextPaint.measureText("…") * 2.0F + paramTextPaint.measureText(str1.substring(j, i))));
-        k = 1;
-        if ((j > 0) && (i < n))
+        str = paramString1;
+        if (paramInt1 == 3)
         {
-          int m;
-          if (k != 0)
+          j = paramString2.length() + n;
+          paramInt1 = (int)(0 + (paramTextPaint.measureText("…") * 2.0F + paramTextPaint.measureText(paramString1.substring(n, j))));
+          k = n;
+          while ((k > 0) && (j < m))
           {
-            paramInt1 = (int)(paramInt1 + arrayOfFloat[(j - 1)]);
-            if (paramInt1 >= paramInt2) {
-              break label510;
+            if (i != 0)
+            {
+              paramInt1 = (int)(paramInt1 + arrayOfFloat[(k - 1)]);
+              if (paramInt1 >= paramInt2) {
+                break;
+              }
+              k -= 1;
             }
-            m = j - 1;
-            j = i;
-            i = m;
-            label449:
-            if (k != 0) {
-              break label504;
+            else
+            {
+              paramInt1 = (int)(paramInt1 + arrayOfFloat[j]);
+              if (paramInt1 >= paramInt2) {
+                break;
+              }
+              j += 1;
             }
+            i ^= 0x1;
           }
-          label504:
-          for (k = 1;; k = 0)
-          {
-            m = i;
-            i = j;
-            j = m;
-            break;
-            paramInt1 = (int)(paramInt1 + arrayOfFloat[i]);
-            if (paramInt1 >= paramInt2) {
-              break label510;
-            }
-            m = j;
-            j = i + 1;
-            i = m;
-            break label449;
-          }
+          paramString2 = new StringBuilder();
+          paramString2.append("…");
+          paramString2.append(paramString1.substring(k, j));
+          paramString2.append("…");
+          str = paramString2.toString();
         }
-        label510:
-        return "…" + str1.substring(j, i) + "…";
-        paramInt1 = n;
       }
-      label549:
-      paramString1 = str1;
     }
+    return str;
   }
   
   protected static String a(String paramString, ArrayList<String> paramArrayList)
@@ -254,7 +273,7 @@ public class SingleLineHotwordTextView
     {
       int j = paramArrayList.size();
       int i = 0;
-      if (i < j)
+      while (i < j)
       {
         String str2 = (String)paramArrayList.get(i);
         String str1 = str2;
@@ -264,205 +283,256 @@ public class SingleLineHotwordTextView
         localStringBuilder.append(str1);
         if (i != j - 1) {
           localStringBuilder.append("|");
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
+        } else {
           localStringBuilder.append("]");
         }
+        i += 1;
       }
     }
-    return ("&&text=[" + paramString + "]").toLowerCase();
+    localStringBuilder.append("&&text=[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString().toLowerCase();
   }
   
   public static void a()
   {
-    if (jdField_a_of_type_JavaUtilHashMap != null) {
-      jdField_a_of_type_JavaUtilHashMap.clear();
+    HashMap localHashMap = jdField_a_of_type_JavaUtilHashMap;
+    if (localHashMap != null) {
+      localHashMap.clear();
     }
   }
   
   protected int a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
   {
+    boolean bool = TextUtils.isEmpty(paramString1);
     int j = -1;
     int i = j;
-    String str;
-    if (!TextUtils.isEmpty(paramString1))
+    Object localObject;
+    if (!bool)
     {
       i = j;
       if (!TextUtils.isEmpty(paramString2))
       {
-        str = paramString1.toLowerCase();
-        if (paramInt != 1) {
-          break label187;
+        localObject = paramString1.toLowerCase();
+        if (paramInt == 1)
+        {
+          if (!paramString2.toLowerCase().contains((CharSequence)localObject))
+          {
+            i = j;
+            break label112;
+          }
+          if ((paramString3 == null) || (!paramString3.toLowerCase().contains((CharSequence)localObject)))
+          {
+            if ((paramString4 != null) && (paramString4.toLowerCase().contains((CharSequence)localObject)))
+            {
+              i = 2;
+              break label112;
+            }
+            i = 3;
+            break label112;
+          }
         }
-        if (paramString2.toLowerCase().contains(str)) {
-          break label135;
-        }
-        i = j;
+        i = 1;
       }
     }
-    for (;;)
+    label112:
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SingleLineHotwordTextView", 2, "getTargetType targetType = " + i + ", hotword = " + paramString1 + ", text = " + paramString2 + ", fileName = " + paramString3 + ", extension = " + paramString4 + ", contentType = " + paramInt);
-      }
-      return i;
-      label135:
-      if ((paramString3 != null) && (paramString3.toLowerCase().contains(str)))
-      {
-        i = 1;
-      }
-      else if ((paramString4 != null) && (paramString4.toLowerCase().contains(str)))
-      {
-        i = 2;
-      }
-      else
-      {
-        i = 3;
-        continue;
-        label187:
-        i = 1;
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getTargetType targetType = ");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(", hotword = ");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(", text = ");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(", fileName = ");
+      ((StringBuilder)localObject).append(paramString3);
+      ((StringBuilder)localObject).append(", extension = ");
+      ((StringBuilder)localObject).append(paramString4);
+      ((StringBuilder)localObject).append(", contentType = ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("SingleLineHotwordTextView", 2, ((StringBuilder)localObject).toString());
     }
+    return i;
   }
   
   public String a(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    String str;
     if (paramString1 == null) {
-      str = null;
+      return null;
     }
-    do
+    if (paramString2 == null) {
+      return paramString1;
+    }
+    if (paramString1.length() <= paramInt1) {
+      return paramString1;
+    }
+    paramInt2 = paramString1.toLowerCase().indexOf(paramString2.toLowerCase());
+    if (paramInt2 == -1)
     {
-      do
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString1.substring(0, paramInt1));
+      paramString2.append("…");
+      return paramString2.toString();
+    }
+    String str = paramString1;
+    if (paramString2.length() < paramString1.length())
+    {
+      if (paramString2.length() + paramInt2 == paramString1.length())
       {
-        do
-        {
-          return str;
-          str = paramString1;
-        } while (paramString2 == null);
-        str = paramString1;
-      } while (paramString1.length() <= paramInt1);
-      paramInt2 = paramString1.toLowerCase().indexOf(paramString2.toLowerCase());
-      if (paramInt2 == -1) {
-        return paramString1.substring(0, paramInt1) + "…";
+        paramString2 = new StringBuilder();
+        paramString2.append("…");
+        paramString2.append(paramString1.substring(paramString1.length() - paramInt1, paramString1.length()));
+        return paramString2.toString();
       }
-      str = paramString1;
-    } while (paramString2.length() >= paramString1.length());
-    if (paramString2.length() + paramInt2 == paramString1.length()) {
-      return "…" + paramString1.substring(paramString1.length() - paramInt1, paramString1.length());
+      if (paramInt2 == 0)
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append(paramString1.substring(0, paramInt2 + paramInt1));
+        paramString2.append("…");
+        return paramString2.toString();
+      }
+      if (paramString1.length() - paramInt2 > paramInt1 - 1)
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("…");
+        paramString2.append(paramString1.substring(paramInt2, paramInt1 + paramInt2));
+        paramString2.append("…");
+        return paramString2.toString();
+      }
+      paramString2 = new StringBuilder();
+      paramString2.append("….");
+      paramString2.append(paramString1.substring(paramString1.length() - paramInt1, paramString1.length()));
+      str = paramString2.toString();
     }
-    if (paramInt2 == 0) {
-      return paramString1.substring(0, paramInt2 + paramInt1) + "…";
-    }
-    if (paramString1.length() - paramInt2 > paramInt1 - 1) {
-      return "…" + paramString1.substring(paramInt2, paramInt2 + paramInt1) + "…";
-    }
-    return "…." + paramString1.substring(paramString1.length() - paramInt1, paramString1.length());
+    return str;
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
       return;
     }
-    Object localObject;
-    label52:
-    long l;
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-    {
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0)) {
       localObject = (String)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break label127;
-      }
-      if (this.jdField_a_of_type_JavaLangString == null)
-      {
-        this.jdField_a_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-        this.jdField_b_of_type_JavaLangString = null;
-      }
-      l = System.currentTimeMillis();
-      if (!jdField_a_of_type_JavaUtilHashMap.containsKey(this.jdField_d_of_type_JavaLangString)) {
-        break label129;
-      }
+    } else {
+      localObject = null;
+    }
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return;
+    }
+    if (this.jdField_a_of_type_JavaLangString == null)
+    {
+      this.jdField_a_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+      this.jdField_b_of_type_JavaLangString = null;
+    }
+    long l = System.currentTimeMillis();
+    if (jdField_a_of_type_JavaUtilHashMap.containsKey(this.jdField_d_of_type_JavaLangString))
+    {
       localObject = (SpannableString)jdField_a_of_type_JavaUtilHashMap.get(this.jdField_d_of_type_JavaLangString);
     }
-    for (;;)
+    else
     {
-      super.setText((CharSequence)localObject, TextView.BufferType.SPANNABLE);
-      return;
-      localObject = null;
-      break label52;
-      label127:
-      break;
-      label129:
       paramInt1 = getWidth();
       TextPaint localTextPaint = getPaint();
       paramInt2 = a(this.jdField_a_of_type_JavaLangString, (String)localObject, paramInt1, localTextPaint, this.jdField_b_of_type_JavaLangString);
       String str = a(paramInt2, this.jdField_a_of_type_JavaLangString, (String)localObject, paramInt1, localTextPaint, this.jdField_b_of_type_JavaLangString);
       localObject = a(str, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_d_of_type_Int);
       jdField_a_of_type_JavaUtilHashMap.put(this.jdField_d_of_type_JavaLangString, localObject);
-      if (QLog.isColorLevel()) {
-        QLog.d("SingleLineHotwordTextView", 2, "type = " + paramInt2 + ", displayText = " + str + ", text = " + this.jdField_c_of_type_JavaLangString + ", viewWidth = " + paramInt1 + ", new = " + localTextPaint.measureText(str) + ", old = " + localTextPaint.measureText(this.jdField_c_of_type_JavaLangString) + ", onLayout t = " + (System.currentTimeMillis() - l));
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("type = ");
+        localStringBuilder.append(paramInt2);
+        localStringBuilder.append(", displayText = ");
+        localStringBuilder.append(str);
+        localStringBuilder.append(", text = ");
+        localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+        localStringBuilder.append(", viewWidth = ");
+        localStringBuilder.append(paramInt1);
+        localStringBuilder.append(", new = ");
+        localStringBuilder.append(localTextPaint.measureText(str));
+        localStringBuilder.append(", old = ");
+        localStringBuilder.append(localTextPaint.measureText(this.jdField_c_of_type_JavaLangString));
+        localStringBuilder.append(", onLayout t = ");
+        localStringBuilder.append(System.currentTimeMillis() - l);
+        QLog.d("SingleLineHotwordTextView", 2, localStringBuilder.toString());
       }
     }
+    super.setText((CharSequence)localObject, TextView.BufferType.SPANNABLE);
   }
   
   public void setContentType(int paramInt1, int paramInt2)
   {
     this.jdField_a_of_type_Int = paramInt2;
     this.jdField_b_of_type_Int = paramInt1;
-    if (QLog.isColorLevel()) {
-      QLog.d("SingleLineHotwordTextView", 2, "setContentType text = " + this.jdField_c_of_type_JavaLangString);
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("setContentType text = ");
+      ((StringBuilder)localObject1).append(this.jdField_c_of_type_JavaLangString);
+      QLog.d("SingleLineHotwordTextView", 2, ((StringBuilder)localObject1).toString());
     }
-    String str2 = this.jdField_c_of_type_JavaLangString;
-    this.jdField_a_of_type_JavaLangString = str2;
+    Object localObject2 = this.jdField_c_of_type_JavaLangString;
+    this.jdField_a_of_type_JavaLangString = ((String)localObject2);
     this.jdField_b_of_type_JavaLangString = null;
-    String str1;
     if (paramInt1 == 1)
     {
-      str1 = FileUtil.a(str2);
-      if (!TextUtils.isEmpty(str1))
+      localObject1 = FileUtil.a((String)localObject2);
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        paramInt1 = str2.toLowerCase().lastIndexOf(str1.toLowerCase());
+        paramInt1 = ((String)localObject2).toLowerCase().lastIndexOf(((String)localObject1).toLowerCase());
         if (paramInt1 > -1)
         {
-          this.jdField_a_of_type_JavaLangString = str2.substring(0, paramInt1);
-          this.jdField_b_of_type_JavaLangString = str1;
-          if (str1.length() > 1) {
-            this.jdField_b_of_type_JavaLangString = str1.substring(1);
+          this.jdField_a_of_type_JavaLangString = ((String)localObject2).substring(0, paramInt1);
+          this.jdField_b_of_type_JavaLangString = ((String)localObject1);
+          if (((String)localObject1).length() > 1) {
+            this.jdField_b_of_type_JavaLangString = ((String)localObject1).substring(1);
           }
         }
-        if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {
-          break label273;
+        localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
+        if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0)) {
+          localObject1 = (String)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+        } else {
+          localObject1 = null;
         }
-        str1 = (String)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-        this.jdField_c_of_type_Int = a(str1, str2, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int);
-        if (this.jdField_c_of_type_Int != 3) {
-          break label278;
+        this.jdField_c_of_type_Int = a((String)localObject1, (String)localObject2, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int);
+        paramInt1 = this.jdField_c_of_type_Int;
+        if (paramInt1 == 3)
+        {
+          localObject1 = new StringBuffer(this.jdField_a_of_type_JavaLangString);
+          ((StringBuffer)localObject1).append(".");
+          ((StringBuffer)localObject1).append(this.jdField_b_of_type_JavaLangString);
+          this.jdField_a_of_type_JavaLangString = ((StringBuffer)localObject1).toString();
+          this.jdField_b_of_type_JavaLangString = null;
         }
-        this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "." + this.jdField_b_of_type_JavaLangString);
-        this.jdField_b_of_type_JavaLangString = null;
+        else
+        {
+          this.jdField_b_of_type_JavaLangString = a(this.jdField_b_of_type_JavaLangString, (String)localObject1, this.jdField_a_of_type_Int, paramInt1);
+          if (this.jdField_c_of_type_Int == 2)
+          {
+            localObject2 = this.jdField_a_of_type_JavaUtilArrayList;
+            if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0) && (localObject1 != null) && (((String)localObject1).length() > this.jdField_a_of_type_Int))
+            {
+              this.jdField_a_of_type_JavaUtilArrayList.remove(0);
+              this.jdField_a_of_type_JavaUtilArrayList.add(0, this.jdField_b_of_type_JavaLangString);
+            }
+          }
+        }
       }
     }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SingleLineHotwordTextView", 2, "setContentType name = " + this.jdField_a_of_type_JavaLangString + ", extension = " + this.jdField_b_of_type_JavaLangString);
-      }
-      return;
-      label273:
-      str1 = null;
-      break;
-      label278:
-      this.jdField_b_of_type_JavaLangString = a(this.jdField_b_of_type_JavaLangString, str1, this.jdField_a_of_type_Int, this.jdField_c_of_type_Int);
-      if ((this.jdField_c_of_type_Int == 2) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (str1 != null) && (str1.length() > this.jdField_a_of_type_Int))
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(0);
-        this.jdField_a_of_type_JavaUtilArrayList.add(0, this.jdField_b_of_type_JavaLangString);
-      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("setContentType name = ");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(", extension = ");
+      ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
+      QLog.d("SingleLineHotwordTextView", 2, ((StringBuilder)localObject1).toString());
     }
   }
   
@@ -470,15 +540,18 @@ public class SingleLineHotwordTextView
   {
     if (TextUtils.isEmpty(paramString))
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList != null)
+      paramString = this.jdField_a_of_type_JavaUtilArrayList;
+      if (paramString != null)
       {
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
+        paramString.clear();
         this.jdField_a_of_type_JavaUtilArrayList = null;
       }
-      return;
     }
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+    else
+    {
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+    }
   }
   
   public void setHotword(ArrayList<String> paramArrayList, int paramInt)
@@ -494,8 +567,12 @@ public class SingleLineHotwordTextView
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SingleLineHotwordTextView", 2, "setText text = " + paramCharSequence);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setText text = ");
+      localStringBuilder.append(paramCharSequence);
+      QLog.d("SingleLineHotwordTextView", 2, localStringBuilder.toString());
     }
     this.jdField_c_of_type_JavaLangString = paramCharSequence.toString();
     this.jdField_a_of_type_JavaLangString = null;
@@ -514,7 +591,7 @@ public class SingleLineHotwordTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.SingleLineHotwordTextView
  * JD-Core Version:    0.7.0.1
  */

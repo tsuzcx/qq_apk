@@ -48,7 +48,10 @@ public class RoundCornerLinearLayout
   {
     this.mPath.reset();
     this.mRectF.set(0.0F, 0.0F, getWidth(), getHeight());
-    this.mPath.addRoundRect(this.mRectF, this.mRadius, this.mRadius, Path.Direction.CW);
+    Path localPath = this.mPath;
+    RectF localRectF = this.mRectF;
+    float f = this.mRadius;
+    localPath.addRoundRect(localRectF, f, f, Path.Direction.CW);
     paramCanvas.clipPath(this.mPath);
     super.dispatchDraw(paramCanvas);
   }
@@ -60,7 +63,7 @@ public class RoundCornerLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.widget.RoundCornerLinearLayout
  * JD-Core Version:    0.7.0.1
  */

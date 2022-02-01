@@ -15,48 +15,51 @@ public class FixLengthQueue
   
   public void add(long paramLong)
   {
-    this.longs[this.start] = paramLong;
-    this.start += 1;
+    long[] arrayOfLong = this.longs;
+    int i = this.start;
+    arrayOfLong[i] = paramLong;
+    this.start = (i + 1);
     if (this.start >= this.length) {
       this.start = 0;
     }
-    if (this.size < this.length) {
-      this.size += 1;
+    i = this.size;
+    if (i < this.length) {
+      this.size = (i + 1);
     }
   }
   
   public long getEnd()
   {
-    if (this.size == 0) {
+    int j = this.size;
+    if (j == 0) {
       return 0L;
     }
-    if (this.size == this.length)
+    int i = this.length;
+    if (j == i)
     {
-      if (this.start == 0) {
-        return this.longs[(this.length - 1)];
+      j = this.start;
+      if (j == 0) {
+        return this.longs[(i - 1)];
       }
-      return this.longs[(this.start - 1)];
+      return this.longs[(j - 1)];
     }
-    return this.longs[(this.size - 1)];
+    return this.longs[(j - 1)];
   }
   
   public long getFirst()
   {
-    long l2 = 0L;
-    long l1;
-    if (this.size != this.length) {
-      l1 = this.longs[0];
+    int i = this.size;
+    int j = this.length;
+    if (i != j) {
+      return this.longs[0];
     }
-    do
-    {
-      do
-      {
-        return l1;
-        l1 = l2;
-      } while (this.size == 0);
-      l1 = l2;
-    } while (this.size != this.length);
-    return this.longs[this.start];
+    if (i == 0) {
+      return 0L;
+    }
+    if (i == j) {
+      return this.longs[this.start];
+    }
+    return 0L;
   }
   
   public void refreash()
@@ -67,7 +70,7 @@ public class FixLengthQueue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.doublescrollview.FixLengthQueue
  * JD-Core Version:    0.7.0.1
  */

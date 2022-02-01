@@ -35,22 +35,20 @@ public final class DBHandler
     if (access$getDatabase$p(this) != null)
     {
       SQLiteDatabase localSQLiteDatabase = access$getDatabase$p(this);
-      if ((localSQLiteDatabase == null) || (localSQLiteDatabase.isOpen())) {}
+      if ((localSQLiteDatabase == null) || (localSQLiteDatabase.isOpen())) {
+        try
+        {
+          int i = ((Number)paramFunction0.invoke()).intValue();
+          return i;
+        }
+        catch (Exception paramFunction0)
+        {
+          Logger.INSTANCE.exception("QAPM_db_persist_DBHandler", (Throwable)paramFunction0);
+          return -1;
+        }
+      }
     }
-    else
-    {
-      return -2;
-    }
-    try
-    {
-      int i = ((Number)paramFunction0.invoke()).intValue();
-      return i;
-    }
-    catch (Exception paramFunction0)
-    {
-      Logger.INSTANCE.exception("QAPM_db_persist_DBHandler", (Throwable)paramFunction0);
-    }
-    return -1;
+    return -2;
   }
   
   private final Object sqlSearch(Function0<? extends Object> paramFunction0)
@@ -58,20 +56,18 @@ public final class DBHandler
     if (access$getDatabase$p(this) != null)
     {
       SQLiteDatabase localSQLiteDatabase = access$getDatabase$p(this);
-      if ((localSQLiteDatabase == null) || (localSQLiteDatabase.isOpen())) {}
-    }
-    else
-    {
-      return null;
-    }
-    try
-    {
-      paramFunction0 = paramFunction0.invoke();
-      return paramFunction0;
-    }
-    catch (Exception paramFunction0)
-    {
-      Logger.INSTANCE.exception("QAPM_db_persist_DBHandler", (Throwable)paramFunction0);
+      if ((localSQLiteDatabase != null) && (!localSQLiteDatabase.isOpen())) {
+        return null;
+      }
+      try
+      {
+        paramFunction0 = paramFunction0.invoke();
+        return paramFunction0;
+      }
+      catch (Exception paramFunction0)
+      {
+        Logger.INSTANCE.exception("QAPM_db_persist_DBHandler", (Throwable)paramFunction0);
+      }
     }
     return null;
   }
@@ -89,31 +85,28 @@ public final class DBHandler
   public final int delete(@NotNull String paramString1, @Nullable String paramString2, @Nullable String[] paramArrayOfString)
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "table");
-    SQLiteDatabase localSQLiteDatabase;
     if (access$getDatabase$p(this) != null)
     {
-      localSQLiteDatabase = access$getDatabase$p(this);
-      if ((localSQLiteDatabase == null) || (localSQLiteDatabase.isOpen())) {}
-    }
-    else
-    {
-      return -2;
-    }
-    try
-    {
-      localSQLiteDatabase = this.database;
-      if (localSQLiteDatabase != null)
-      {
-        int i = localSQLiteDatabase.delete(paramString1, paramString2, paramArrayOfString);
-        return i;
+      SQLiteDatabase localSQLiteDatabase = access$getDatabase$p(this);
+      if ((localSQLiteDatabase == null) || (localSQLiteDatabase.isOpen())) {
+        try
+        {
+          localSQLiteDatabase = this.database;
+          if (localSQLiteDatabase != null)
+          {
+            int i = localSQLiteDatabase.delete(paramString1, paramString2, paramArrayOfString);
+            return i;
+          }
+          return 0;
+        }
+        catch (Exception paramString1)
+        {
+          Logger.INSTANCE.exception("QAPM_db_persist_DBHandler", (Throwable)paramString1);
+          return -1;
+        }
       }
-      return 0;
     }
-    catch (Exception paramString1)
-    {
-      Logger.INSTANCE.exception("QAPM_db_persist_DBHandler", (Throwable)paramString1);
-    }
-    return -1;
+    return -2;
   }
   
   public final int deleteAllSentOrOverTime(@NotNull String paramString, boolean paramBoolean)
@@ -135,60 +128,57 @@ public final class DBHandler
   {
     Intrinsics.checkParameterIsNotNull(paramBaseTable, "table");
     Intrinsics.checkParameterIsNotNull(paramFunction0, "block");
-    SQLiteDatabase localSQLiteDatabase;
-    if (access$getDatabase$p(this) != null)
+    SQLiteDatabase localSQLiteDatabase = access$getDatabase$p(this);
+    int j = -2;
+    int i = j;
+    if (localSQLiteDatabase != null)
     {
       localSQLiteDatabase = access$getDatabase$p(this);
-      if ((localSQLiteDatabase == null) || (localSQLiteDatabase.isOpen())) {
-        break label41;
+      if ((localSQLiteDatabase != null) && (!localSQLiteDatabase.isOpen())) {
+        return -2;
       }
-    }
-    for (;;)
-    {
-      return -2;
       try
       {
-        label41:
         localSQLiteDatabase = this.database;
+        i = j;
         if (localSQLiteDatabase != null)
         {
-          int i = paramBaseTable.insert(localSQLiteDatabase, paramFunction0);
+          i = paramBaseTable.insert(localSQLiteDatabase, paramFunction0);
           return i;
         }
       }
       catch (Exception paramBaseTable)
       {
         Logger.INSTANCE.exception("QAPM_db_persist_DBHandler", (Throwable)paramBaseTable);
+        i = -1;
       }
     }
-    return -1;
+    return i;
   }
   
   public final void open()
   {
-    Object localObject;
-    if (this.database != null)
+    Object localObject1 = this.database;
+    if ((localObject1 == null) || ((localObject1 != null) && (!((SQLiteDatabase)localObject1).isOpen()))) {}
+    for (;;)
     {
-      localObject = this.database;
-      if ((localObject == null) || (((SQLiteDatabase)localObject).isOpen())) {
-        break label42;
-      }
-    }
-    try
-    {
-      localObject = this.dbHelper;
-      if (localObject != null) {}
-      for (localObject = ((DBHelper)localObject).getWritableDatabase();; localObject = null)
+      try
       {
-        this.database = ((SQLiteDatabase)localObject);
-        label42:
+        localObject1 = this.dbHelper;
+        if (localObject1 == null) {
+          break label57;
+        }
+        localObject1 = ((DBHelper)localObject1).getWritableDatabase();
+        this.database = ((SQLiteDatabase)localObject1);
         return;
       }
+      catch (SQLiteException localSQLiteException)
+      {
+        Logger.INSTANCE.exception("QAPM_db_persist_DBHandler", (Throwable)localSQLiteException);
+      }
       return;
-    }
-    catch (SQLiteException localSQLiteException)
-    {
-      Logger.INSTANCE.exception("QAPM_db_persist_DBHandler", (Throwable)localSQLiteException);
+      label57:
+      Object localObject2 = null;
     }
   }
   
@@ -197,29 +187,25 @@ public final class DBHandler
   {
     Intrinsics.checkParameterIsNotNull(paramBaseTable, "table");
     Intrinsics.checkParameterIsNotNull(paramFunction0, "block");
-    SQLiteDatabase localSQLiteDatabase;
     if (access$getDatabase$p(this) != null)
     {
-      localSQLiteDatabase = access$getDatabase$p(this);
-      if ((localSQLiteDatabase == null) || (localSQLiteDatabase.isOpen())) {}
-    }
-    else
-    {
-      return null;
-    }
-    try
-    {
-      localSQLiteDatabase = this.database;
-      if (localSQLiteDatabase != null)
-      {
-        paramBaseTable = paramBaseTable.search(localSQLiteDatabase, paramFunction0);
-        return paramBaseTable;
+      SQLiteDatabase localSQLiteDatabase = access$getDatabase$p(this);
+      if ((localSQLiteDatabase != null) && (!localSQLiteDatabase.isOpen())) {
+        return null;
       }
-      return null;
-    }
-    catch (Exception paramBaseTable)
-    {
-      Logger.INSTANCE.exception("QAPM_db_persist_DBHandler", (Throwable)paramBaseTable);
+      try
+      {
+        localSQLiteDatabase = this.database;
+        if (localSQLiteDatabase != null)
+        {
+          paramBaseTable = paramBaseTable.search(localSQLiteDatabase, paramFunction0);
+          return paramBaseTable;
+        }
+      }
+      catch (Exception paramBaseTable)
+      {
+        Logger.INSTANCE.exception("QAPM_db_persist_DBHandler", (Throwable)paramBaseTable);
+      }
     }
     return null;
   }
@@ -231,47 +217,42 @@ public final class DBHandler
   
   public final int updateStatus(@NotNull String paramString, long paramLong, int paramInt)
   {
-    int i = -1;
     Intrinsics.checkParameterIsNotNull(paramString, "table");
-    Object localObject;
     if (access$getDatabase$p(this) != null)
     {
-      localObject = access$getDatabase$p(this);
-      if ((localObject == null) || (((SQLiteDatabase)localObject).isOpen())) {}
-    }
-    else
-    {
-      paramInt = -2;
-    }
-    for (;;)
-    {
-      i = paramInt;
-      label43:
-      return i;
-      try
-      {
-        if ((paramInt != DBDataStatus.TO_SEND.getValue()) && (paramInt != DBDataStatus.SENT.getValue())) {
-          break label43;
+      Object localObject = access$getDatabase$p(this);
+      if ((localObject == null) || (((SQLiteDatabase)localObject).isOpen())) {
+        try
+        {
+          if ((paramInt != DBDataStatus.TO_SEND.getValue()) && (paramInt != DBDataStatus.SENT.getValue())) {
+            return -1;
+          }
+          localObject = new ContentValues();
+          ((ContentValues)localObject).put("status", Integer.valueOf(paramInt));
+          SQLiteDatabase localSQLiteDatabase = this.database;
+          if (localSQLiteDatabase != null)
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("_id=");
+            localStringBuilder.append(paramLong);
+            paramInt = localSQLiteDatabase.update(paramString, (ContentValues)localObject, localStringBuilder.toString(), null);
+            return paramInt;
+          }
+          return 0;
         }
-        localObject = new ContentValues();
-        ((ContentValues)localObject).put("status", Integer.valueOf(paramInt));
-        SQLiteDatabase localSQLiteDatabase = this.database;
-        if (localSQLiteDatabase != null) {}
-        for (paramInt = localSQLiteDatabase.update(paramString, (ContentValues)localObject, "_id=" + paramLong, null);; paramInt = 0) {
-          break;
+        catch (Exception paramString)
+        {
+          Logger.INSTANCE.exception("QAPM_db_persist_DBHandler", (Throwable)paramString);
+          return -1;
         }
       }
-      catch (Exception paramString)
-      {
-        Logger.INSTANCE.exception("QAPM_db_persist_DBHandler", (Throwable)paramString);
-        paramInt = -1;
-      }
     }
+    return -2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.base.dbpersist.DBHandler
  * JD-Core Version:    0.7.0.1
  */

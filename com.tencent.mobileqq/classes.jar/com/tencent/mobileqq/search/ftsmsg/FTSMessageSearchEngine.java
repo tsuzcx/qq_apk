@@ -4,34 +4,32 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Pair;
 import com.tencent.imcore.message.UinTypeUtil;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.DiscussionManager;
-import com.tencent.mobileqq.app.GlobalSearchHandler;
 import com.tencent.mobileqq.app.GlobalSearchObserver;
 import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.proxy.FTSDBManager;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.app.proxy.RecentUserProxy;
-import com.tencent.mobileqq.app.proxy.fts.FTSMsgOperator;
 import com.tencent.mobileqq.data.DiscussionInfo;
 import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.data.fts.FTSMessage;
 import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.fts.api.IFTSDBRuntimeService;
+import com.tencent.mobileqq.fts.data.msg.FTSMessage;
+import com.tencent.mobileqq.fts.query.QueryArgs;
+import com.tencent.mobileqq.fts.query.QueryArgs.Builder;
+import com.tencent.mobileqq.fts.v1.FTSEntity;
+import com.tencent.mobileqq.fts.v1.utils.TextMsgExts;
 import com.tencent.mobileqq.mqsafeedit.BaseApplication;
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
-import com.tencent.mobileqq.search.SearchEntryConfigManager;
+import com.tencent.mobileqq.search.base.api.SearchEntryConfigManager;
+import com.tencent.mobileqq.search.base.engine.ISearchListener;
+import com.tencent.mobileqq.search.base.model.SearchRequest;
 import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchEngine;
 import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchResultDetailModel;
 import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchResultModel;
-import com.tencent.mobileqq.search.searchengine.ISearchListener;
-import com.tencent.mobileqq.search.searchengine.SearchRequest;
 import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.fts.FTSMessageCodec.TextMsgExts;
 import com.tencent.mobileqq.utils.fts.SQLiteFTSUtils;
 import com.tencent.mobileqq.utils.fts.SQLiteFTSUtils.MsgSearchContactInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -94,61 +92,66 @@ public class FTSMessageSearchEngine
   
   private ArrayList<FTSMessageSearchEngine.FTSSearchResultItem> a(ArrayList<FTSEntity> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
-      return new ArrayList();
-    }
-    Object localObject1 = new HashMap();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
+    if ((paramArrayList != null) && (!paramArrayList.isEmpty()))
     {
-      FTSMessage localFTSMessage = (FTSMessage)paramArrayList.next();
-      if ((localFTSMessage != null) && (localFTSMessage.msgExts != null))
+      Object localObject1 = new HashMap();
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
       {
-        int i = localFTSMessage.istroop;
-        Object localObject2 = String.valueOf(localFTSMessage.uin);
-        String str = UinTypeUtil.a((String)localObject2, i);
-        if (!((HashMap)localObject1).containsKey(str))
+        FTSMessage localFTSMessage = (FTSMessage)paramArrayList.next();
+        if ((localFTSMessage != null) && (localFTSMessage.msgExts != null))
         {
-          FTSMessageSearchEngine.FTSSearchResultItem localFTSSearchResultItem = new FTSMessageSearchEngine.FTSSearchResultItem();
-          localFTSSearchResultItem.jdField_a_of_type_JavaUtilList = new ArrayList();
-          localFTSSearchResultItem.jdField_a_of_type_JavaUtilList.add(localFTSMessage);
-          localFTSSearchResultItem.jdField_a_of_type_Int = localFTSMessage.mSearchScene;
-          localFTSSearchResultItem.b = localFTSMessage.mProximity;
-          localFTSSearchResultItem.c = a((String)localObject2, i);
-          localFTSSearchResultItem.jdField_a_of_type_Long = ((FTSMessageCodec.TextMsgExts)localFTSMessage.msgExts).time;
-          localFTSSearchResultItem.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-          localFTSSearchResultItem.jdField_a_of_type_JavaUtilHashSet.add(Long.valueOf(localFTSMessage.mOId));
-          localFTSSearchResultItem.d = localFTSMessage.searchStrategy;
-          localFTSSearchResultItem.e = localFTSMessage.senderNum;
-          localFTSSearchResultItem.f = localFTSMessage.friendNum;
-          localFTSSearchResultItem.g = localFTSMessage.friendIndex;
-          ((HashMap)localObject1).put(str, localFTSSearchResultItem);
-        }
-        else
-        {
-          localObject2 = (FTSMessageSearchEngine.FTSSearchResultItem)((HashMap)localObject1).get(str);
-          if (((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).jdField_a_of_type_JavaUtilHashSet.add(Long.valueOf(localFTSMessage.mOId)))
+          int i = localFTSMessage.istroop;
+          Object localObject2 = String.valueOf(localFTSMessage.uin);
+          String str = UinTypeUtil.a((String)localObject2, i);
+          if (!((HashMap)localObject1).containsKey(str))
           {
-            if (localFTSMessage.mSearchScene == ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).jdField_a_of_type_Int)
+            FTSMessageSearchEngine.FTSSearchResultItem localFTSSearchResultItem = new FTSMessageSearchEngine.FTSSearchResultItem();
+            localFTSSearchResultItem.jdField_a_of_type_JavaUtilList = new ArrayList();
+            localFTSSearchResultItem.jdField_a_of_type_JavaUtilList.add(localFTSMessage);
+            localFTSSearchResultItem.jdField_a_of_type_Int = localFTSMessage.mSearchScene;
+            localFTSSearchResultItem.b = localFTSMessage.mProximity;
+            localFTSSearchResultItem.c = a((String)localObject2, i);
+            localFTSSearchResultItem.jdField_a_of_type_Long = ((TextMsgExts)localFTSMessage.msgExts).time;
+            localFTSSearchResultItem.jdField_a_of_type_JavaUtilHashSet = new HashSet();
+            localFTSSearchResultItem.jdField_a_of_type_JavaUtilHashSet.add(Long.valueOf(localFTSMessage.mOId));
+            localFTSSearchResultItem.d = localFTSMessage.searchStrategy;
+            localFTSSearchResultItem.e = localFTSMessage.senderNum;
+            localFTSSearchResultItem.f = localFTSMessage.friendNum;
+            localFTSSearchResultItem.g = localFTSMessage.friendIndex;
+            ((HashMap)localObject1).put(str, localFTSSearchResultItem);
+          }
+          else
+          {
+            localObject2 = (FTSMessageSearchEngine.FTSSearchResultItem)((HashMap)localObject1).get(str);
+            if (((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).jdField_a_of_type_JavaUtilHashSet.add(Long.valueOf(localFTSMessage.mOId)))
             {
-              if (localFTSMessage.mProximity < ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).b) {
+              if (localFTSMessage.mSearchScene == ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).jdField_a_of_type_Int)
+              {
+                if (localFTSMessage.mProximity < ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).b) {
+                  ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).b = localFTSMessage.mProximity;
+                }
+                if (((TextMsgExts)localFTSMessage.msgExts).time > ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).jdField_a_of_type_Long) {
+                  ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).jdField_a_of_type_Long = ((TextMsgExts)localFTSMessage.msgExts).time;
+                }
+                if (localFTSMessage.senderNum > ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).e) {
+                  ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).e = localFTSMessage.senderNum;
+                }
+                if (localFTSMessage.friendNum > ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).f) {
+                  ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).f = localFTSMessage.friendNum;
+                }
+                if (localFTSMessage.friendIndex > ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).g) {
+                  ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).g = localFTSMessage.friendIndex;
+                }
+              }
+              else if (localFTSMessage.mSearchScene < ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).jdField_a_of_type_Int)
+              {
                 ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).b = localFTSMessage.mProximity;
-              }
-              if (((FTSMessageCodec.TextMsgExts)localFTSMessage.msgExts).time > ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).jdField_a_of_type_Long) {
-                ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).jdField_a_of_type_Long = ((FTSMessageCodec.TextMsgExts)localFTSMessage.msgExts).time;
-              }
-              if (localFTSMessage.senderNum > ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).e) {
+                ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).jdField_a_of_type_Long = ((TextMsgExts)localFTSMessage.msgExts).time;
                 ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).e = localFTSMessage.senderNum;
-              }
-              if (localFTSMessage.friendNum > ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).f) {
                 ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).f = localFTSMessage.friendNum;
-              }
-              if (localFTSMessage.friendIndex > ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).g) {
                 ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).g = localFTSMessage.friendIndex;
               }
-            }
-            for (;;)
-            {
               if (localFTSMessage.mSearchScene < ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).jdField_a_of_type_Int) {
                 ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).jdField_a_of_type_Int = localFTSMessage.mSearchScene;
               }
@@ -156,35 +159,26 @@ public class FTSMessageSearchEngine
                 ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).d = localFTSMessage.searchStrategy;
               }
               ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).jdField_a_of_type_JavaUtilList.add(localFTSMessage);
-              break;
-              if (localFTSMessage.mSearchScene < ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).jdField_a_of_type_Int)
-              {
-                ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).b = localFTSMessage.mProximity;
-                ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).jdField_a_of_type_Long = ((FTSMessageCodec.TextMsgExts)localFTSMessage.msgExts).time;
-                ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).e = localFTSMessage.senderNum;
-                ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).f = localFTSMessage.friendNum;
-                ((FTSMessageSearchEngine.FTSSearchResultItem)localObject2).g = localFTSMessage.friendIndex;
-              }
             }
           }
         }
       }
+      paramArrayList = new ArrayList();
+      localObject1 = ((HashMap)localObject1).entrySet().iterator();
+      while (((Iterator)localObject1).hasNext()) {
+        paramArrayList.add(((Map.Entry)((Iterator)localObject1).next()).getValue());
+      }
+      Collections.sort(paramArrayList, new FTSMessageSearchEngine.7(this));
+      return paramArrayList;
     }
-    paramArrayList = new ArrayList();
-    localObject1 = ((HashMap)localObject1).entrySet().iterator();
-    while (((Iterator)localObject1).hasNext()) {
-      paramArrayList.add(((Map.Entry)((Iterator)localObject1).next()).getValue());
-    }
-    Collections.sort(paramArrayList, new FTSMessageSearchEngine.7(this));
-    return paramArrayList;
+    return new ArrayList();
   }
   
   private List<FTSEntitySearchResultModel> a(String paramString1, String paramString2, String paramString3, boolean paramBoolean1, ArrayList<FTSEntity> paramArrayList, boolean paramBoolean2)
   {
     Object localObject1 = new HashMap();
     paramArrayList = paramArrayList.iterator();
-    int i = 0;
-    Object localObject3;
+    int i;
     Object localObject4;
     Object localObject5;
     while (paramArrayList.hasNext())
@@ -192,17 +186,17 @@ public class FTSMessageSearchEngine
       localObject2 = (FTSMessage)paramArrayList.next();
       if ((localObject2 != null) && (((FTSMessage)localObject2).msgExts != null))
       {
-        int j = ((FTSMessage)localObject2).istroop;
+        i = ((FTSMessage)localObject2).istroop;
         localObject3 = String.valueOf(((FTSMessage)localObject2).uin);
-        localObject4 = UinTypeUtil.a((String)localObject3, j);
+        localObject4 = UinTypeUtil.a((String)localObject3, i);
         if (!((HashMap)localObject1).containsKey(localObject4))
         {
           localObject5 = new FTSMessageSearchEngine.FTSSearchResultItem();
           ((FTSMessageSearchEngine.FTSSearchResultItem)localObject5).jdField_a_of_type_JavaUtilList = new ArrayList();
           ((FTSMessageSearchEngine.FTSSearchResultItem)localObject5).jdField_a_of_type_JavaUtilList.add(localObject2);
           ((FTSMessageSearchEngine.FTSSearchResultItem)localObject5).b = ((FTSMessage)localObject2).mProximity;
-          ((FTSMessageSearchEngine.FTSSearchResultItem)localObject5).c = a((String)localObject3, j);
-          ((FTSMessageSearchEngine.FTSSearchResultItem)localObject5).jdField_a_of_type_Long = ((FTSMessageCodec.TextMsgExts)((FTSMessage)localObject2).msgExts).time;
+          ((FTSMessageSearchEngine.FTSSearchResultItem)localObject5).c = a((String)localObject3, i);
+          ((FTSMessageSearchEngine.FTSSearchResultItem)localObject5).jdField_a_of_type_Long = ((TextMsgExts)((FTSMessage)localObject2).msgExts).time;
           ((FTSMessageSearchEngine.FTSSearchResultItem)localObject5).jdField_a_of_type_JavaUtilHashSet = new HashSet();
           ((FTSMessageSearchEngine.FTSSearchResultItem)localObject5).jdField_a_of_type_JavaUtilHashSet.add(Long.valueOf(((FTSMessage)localObject2).mOId));
           ((FTSMessageSearchEngine.FTSSearchResultItem)localObject5).d = ((FTSMessage)localObject2).searchStrategy;
@@ -211,17 +205,13 @@ public class FTSMessageSearchEngine
         else
         {
           localObject3 = (FTSMessageSearchEngine.FTSSearchResultItem)((HashMap)localObject1).get(localObject4);
-          if (!((FTSMessageSearchEngine.FTSSearchResultItem)localObject3).jdField_a_of_type_JavaUtilHashSet.add(Long.valueOf(((FTSMessage)localObject2).mOId)))
-          {
-            i = 1;
-          }
-          else
+          if (((FTSMessageSearchEngine.FTSSearchResultItem)localObject3).jdField_a_of_type_JavaUtilHashSet.add(Long.valueOf(((FTSMessage)localObject2).mOId)))
           {
             if (((FTSMessage)localObject2).mProximity < ((FTSMessageSearchEngine.FTSSearchResultItem)localObject3).b) {
               ((FTSMessageSearchEngine.FTSSearchResultItem)localObject3).b = ((FTSMessage)localObject2).mProximity;
             }
-            if (((FTSMessageCodec.TextMsgExts)((FTSMessage)localObject2).msgExts).time > ((FTSMessageSearchEngine.FTSSearchResultItem)localObject3).jdField_a_of_type_Long) {
-              ((FTSMessageSearchEngine.FTSSearchResultItem)localObject3).jdField_a_of_type_Long = ((FTSMessageCodec.TextMsgExts)((FTSMessage)localObject2).msgExts).time;
+            if (((TextMsgExts)((FTSMessage)localObject2).msgExts).time > ((FTSMessageSearchEngine.FTSSearchResultItem)localObject3).jdField_a_of_type_Long) {
+              ((FTSMessageSearchEngine.FTSSearchResultItem)localObject3).jdField_a_of_type_Long = ((TextMsgExts)((FTSMessage)localObject2).msgExts).time;
             }
             if (((FTSMessage)localObject2).searchStrategy < ((FTSMessageSearchEngine.FTSSearchResultItem)localObject3).d) {
               ((FTSMessageSearchEngine.FTSSearchResultItem)localObject3).d = ((FTSMessage)localObject2).searchStrategy;
@@ -231,7 +221,6 @@ public class FTSMessageSearchEngine
         }
       }
     }
-    if (i != 0) {}
     paramArrayList = new ArrayList();
     localObject1 = ((HashMap)localObject1).entrySet().iterator();
     while (((Iterator)localObject1).hasNext()) {
@@ -240,33 +229,30 @@ public class FTSMessageSearchEngine
     Collections.sort(paramArrayList, new FTSMessageSearchEngine.4(this));
     localObject1 = SQLiteFTSUtils.a(paramString2);
     Object localObject2 = new ArrayList();
-    if (paramArrayList != null)
+    Object localObject3 = paramArrayList.iterator();
+    do
     {
-      localObject3 = paramArrayList.iterator();
-      while (((Iterator)localObject3).hasNext())
+      do
       {
-        localObject4 = (FTSMessageSearchEngine.FTSSearchResultItem)((Iterator)localObject3).next();
-        if (a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(((FTSMessage)((FTSMessageSearchEngine.FTSSearchResultItem)localObject4).jdField_a_of_type_JavaUtilList.get(0)).uin), ((FTSMessage)((FTSMessageSearchEngine.FTSSearchResultItem)localObject4).jdField_a_of_type_JavaUtilList.get(0)).istroop))
-        {
-          localObject5 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-          if (paramString1 == null) {}
-          for (paramArrayList = paramString2;; paramArrayList = paramString1)
-          {
-            paramArrayList = new FTSMessageSearchResultModel((QQAppInterface)localObject5, paramArrayList, paramString2, (ArrayList)localObject1, ((FTSMessageSearchEngine.FTSSearchResultItem)localObject4).jdField_a_of_type_JavaUtilList, paramString3, null);
-            paramArrayList.jdField_a_of_type_Int = ((FTSMessageSearchEngine.FTSSearchResultItem)localObject4).d;
-            paramArrayList.b = ((FTSMessageSearchEngine.FTSSearchResultItem)localObject4).e;
-            paramArrayList.c = ((FTSMessageSearchEngine.FTSSearchResultItem)localObject4).f;
-            paramArrayList.d = ((FTSMessageSearchEngine.FTSSearchResultItem)localObject4).g;
-            ((List)localObject2).add(paramArrayList);
-            i = SearchEntryConfigManager.a("fts_native_chathistory_maxnum", 3);
-            if ((!paramBoolean1) || (((List)localObject2).size() < i + 1)) {
-              break;
-            }
-            return localObject2;
-          }
+        if (!((Iterator)localObject3).hasNext()) {
+          break;
         }
+        localObject4 = (FTSMessageSearchEngine.FTSSearchResultItem)((Iterator)localObject3).next();
+      } while (!a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(((FTSMessage)((FTSMessageSearchEngine.FTSSearchResultItem)localObject4).jdField_a_of_type_JavaUtilList.get(0)).uin), ((FTSMessage)((FTSMessageSearchEngine.FTSSearchResultItem)localObject4).jdField_a_of_type_JavaUtilList.get(0)).istroop));
+      localObject5 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      if (paramString1 == null) {
+        paramArrayList = paramString2;
+      } else {
+        paramArrayList = paramString1;
       }
-    }
+      paramArrayList = new FTSMessageSearchResultModel((QQAppInterface)localObject5, paramArrayList, paramString2, (ArrayList)localObject1, ((FTSMessageSearchEngine.FTSSearchResultItem)localObject4).jdField_a_of_type_JavaUtilList, paramString3, null);
+      paramArrayList.jdField_a_of_type_Int = ((FTSMessageSearchEngine.FTSSearchResultItem)localObject4).d;
+      paramArrayList.b = ((FTSMessageSearchEngine.FTSSearchResultItem)localObject4).e;
+      paramArrayList.c = ((FTSMessageSearchEngine.FTSSearchResultItem)localObject4).f;
+      paramArrayList.d = ((FTSMessageSearchEngine.FTSSearchResultItem)localObject4).g;
+      ((List)localObject2).add(paramArrayList);
+      i = SearchEntryConfigManager.a("fts_native_chathistory_maxnum", 3);
+    } while ((!paramBoolean1) || (((List)localObject2).size() < i + 1));
     return localObject2;
   }
   
@@ -279,23 +265,14 @@ public class FTSMessageSearchEngine
     {
       localObject2 = new HashSet();
       paramArrayList = paramArrayList.iterator();
-      int i = 0;
-      for (;;)
+      while (paramArrayList.hasNext())
       {
-        j = i;
-        if (!paramArrayList.hasNext()) {
-          break;
-        }
         FTSEntity localFTSEntity = (FTSEntity)paramArrayList.next();
-        if (!((HashSet)localObject2).add(Long.valueOf(localFTSEntity.mOId))) {
-          i = 1;
-        } else {
+        if (((HashSet)localObject2).add(Long.valueOf(localFTSEntity.mOId))) {
           ((ArrayList)localObject1).add(localFTSEntity);
         }
       }
     }
-    int j = 0;
-    if (j != 0) {}
     Collections.sort((List)localObject1, this.jdField_a_of_type_JavaUtilComparator);
     paramArrayList = new ArrayList();
     localObject1 = ((ArrayList)localObject1).iterator();
@@ -325,10 +302,7 @@ public class FTSMessageSearchEngine
         return false;
       }
     }
-    else if (paramInt == 0)
-    {
-      return true;
-    }
+    else if (paramInt != 0) {}
     return true;
   }
   
@@ -352,14 +326,16 @@ public class FTSMessageSearchEngine
     }
     com.tencent.mobileqq.utils.fts.SQLiteFTSUtils.FtsItemClickEvent.e = System.nanoTime();
     com.tencent.mobileqq.utils.fts.SQLiteFTSUtils.FtsItemClickEvent.f = 0L;
-    if (paramSearchRequest.jdField_a_of_type_AndroidOsBundle != null) {}
-    for (boolean bool = paramSearchRequest.jdField_a_of_type_AndroidOsBundle.getBoolean("fts_search_is_limited", true);; bool = true)
-    {
-      if (SQLiteFTSUtils.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) == 1) {
-        return b(paramSearchRequest, bool);
-      }
-      return a(paramSearchRequest, bool);
+    boolean bool;
+    if (paramSearchRequest.jdField_a_of_type_AndroidOsBundle != null) {
+      bool = paramSearchRequest.jdField_a_of_type_AndroidOsBundle.getBoolean("fts_search_is_limited", true);
+    } else {
+      bool = true;
     }
+    if (SQLiteFTSUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) == 1) {
+      return b(paramSearchRequest, bool);
+    }
+    return a(paramSearchRequest, bool);
   }
   
   public List<FTSEntitySearchResultModel> a(SearchRequest arg1, boolean paramBoolean)
@@ -367,564 +343,922 @@ public class FTSMessageSearchEngine
     if (QLog.isColorLevel()) {
       QLog.d("FTSMessageSearchEngine", 2, "========== search message use FTSMessageSearchEngine");
     }
-    int j;
-    int k;
-    label42:
-    int m;
-    label49:
-    String str;
-    Object localObject1;
-    int i;
-    label93:
-    boolean bool;
-    Object localObject5;
-    int n;
-    if (TextUtils.isEmpty(???.jdField_a_of_type_JavaLangString))
-    {
+    int i1 = TextUtils.isEmpty(???.jdField_a_of_type_JavaLangString) ^ true;
+    if (TextUtils.isEmpty(???.jdField_a_of_type_JavaLangString)) {
       j = 0;
-      if (!TextUtils.isEmpty(???.jdField_a_of_type_JavaLangString)) {
-        break label872;
-      }
-      k = 0;
-      if (!paramBoolean) {
-        break label884;
-      }
-      m = 1;
-      com.tencent.mobileqq.utils.fts.SQLiteFTSUtils.FtsItemClickEvent.jdField_a_of_type_Int = j;
-      com.tencent.mobileqq.utils.fts.SQLiteFTSUtils.FtsItemClickEvent.b = k;
-      str = ???.jdField_a_of_type_JavaLangString;
-      if (QLog.isColorLevel())
-      {
-        localObject1 = new StringBuilder().append("keyword bytes length: ");
-        if (str != null) {
-          break label890;
-        }
+    } else {
+      j = ???.jdField_a_of_type_JavaLangString.length();
+    }
+    int k;
+    if (paramBoolean) {
+      k = 1;
+    } else {
+      k = 2;
+    }
+    com.tencent.mobileqq.utils.fts.SQLiteFTSUtils.FtsItemClickEvent.jdField_a_of_type_Int = i1;
+    com.tencent.mobileqq.utils.fts.SQLiteFTSUtils.FtsItemClickEvent.b = j;
+    Object localObject1 = ???.jdField_a_of_type_JavaLangString;
+    Object localObject3;
+    int i;
+    if (QLog.isColorLevel())
+    {
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("keyword bytes length: ");
+      if (localObject1 == null) {
         i = 0;
-        QLog.i("FTSMessageSearchEngine", 2, i);
+      } else {
+        i = ((String)localObject1).getBytes().length;
       }
-      bool = false;
-      if ((???.jdField_a_of_type_AndroidOsBundle == null) || (!???.jdField_a_of_type_AndroidOsBundle.containsKey("search_restrict_mem"))) {
-        break label900;
-      }
-      localObject5 = ???.jdField_a_of_type_AndroidOsBundle.getString("search_restrict_mem");
-      localObject1 = ???.jdField_a_of_type_AndroidOsBundle.getString("search_restrict_uin");
+      ((StringBuilder)localObject3).append(i);
+      QLog.i("FTSMessageSearchEngine", 2, ((StringBuilder)localObject3).toString());
+    }
+    boolean bool;
+    int m;
+    if ((???.jdField_a_of_type_AndroidOsBundle != null) && (???.jdField_a_of_type_AndroidOsBundle.containsKey("search_restrict_mem")))
+    {
+      localObject3 = ???.jdField_a_of_type_AndroidOsBundle.getString("search_restrict_mem");
+      localObject4 = ???.jdField_a_of_type_AndroidOsBundle.getString("search_restrict_uin");
       bool = ???.jdField_a_of_type_AndroidOsBundle.getBoolean("search_restrict_empty");
       i = ???.jdField_a_of_type_AndroidOsBundle.getInt("search_restrict_uintype");
-      n = 1;
-    }
-    for (;;)
-    {
-      long l4;
-      long l5;
-      long l2;
-      long l1;
-      if (n == 0)
-      {
-        if (paramBoolean)
-        {
-          jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-          b.clear();
-        }
-      }
-      else
-      {
-        l4 = System.nanoTime();
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFTSDBManager().b(1);
-        l5 = System.nanoTime();
-        if (n == 0) {
-          break label1326;
-        }
-        if (!bool) {
-          break label1222;
-        }
-        ??? = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFTSDBManager().a().a(Long.valueOf((String)localObject1).longValue(), null);
-        l2 = 0L;
-        i = 0;
-        l1 = 0L;
-      }
-      for (;;)
-      {
-        long l6 = System.nanoTime();
-        localObject1 = null;
-        long l3;
-        if (??? != null)
-        {
-          l3 = System.nanoTime();
-          if (n == 0)
-          {
-            bool = true;
-            label290:
-            localObject1 = a(str, str, (String)localObject5, paramBoolean, ???, bool);
-            l3 = (System.nanoTime() - l3) / 1000000L;
-            l1 += l3;
-            if (n != 0) {
-              break label1479;
-            }
-            if (!paramBoolean) {
-              break label1449;
-            }
-            if (???.size() >= 2000) {
-              break label1443;
-            }
-            bool = true;
-            label347:
-            if (bool)
-            {
-              jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, Boolean.valueOf(bool));
-              b.put(str, new SoftReference(???));
-            }
-          }
-        }
-        label411:
-        label1443:
-        label1449:
-        for (;;)
-        {
-          label383:
-          long l7 = System.nanoTime();
-          localObject5 = new HashMap();
-          label435:
-          label461:
-          long l8;
-          if (localObject1 != null)
-          {
-            i1 = ((List)localObject1).size();
-            ((HashMap)localObject5).put("queryConversationSize", Integer.toString(i1));
-            if (??? == null) {
-              break label1488;
-            }
-            i1 = ???.size();
-            ((HashMap)localObject5).put("resultSize", Integer.toString(i1));
-            if (str == null) {
-              break label1494;
-            }
-            i1 = str.length();
-            ((HashMap)localObject5).put("keyLength", Integer.toString(i1));
-            StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "SearchMessageStatistic_FTS", true, (l7 - l5) / 1000000L, 0L, (HashMap)localObject5, null);
-            l8 = System.nanoTime();
-            if (QLog.isColorLevel()) {
-              if (??? == null) {
-                break label1500;
-              }
-            }
-          }
-          label1222:
-          label1479:
-          label1488:
-          label1494:
-          label1500:
-          for (int i1 = ???.size();; i1 = 0)
-          {
-            QLog.d("FTSMessageSearchEngine", 2, String.format("fts search,size:%d, refresh time: %dms, query time: %dms, convert time: %dms, report time: %dms", new Object[] { Integer.valueOf(i1), Long.valueOf((l5 - l4) / 1000000L), Long.valueOf((l6 - l5) / 1000000L), Long.valueOf((l7 - l6) / 1000000L), Long.valueOf((l8 - l7) / 1000000L) }));
-            if (n == 0)
-            {
-              ??? = new HashMap();
-              ???.put("keyNum", String.valueOf(j));
-              ???.put("firstKeyLen", String.valueOf(k));
-              ???.put("searchPage", String.valueOf(m));
-              ???.put("useCache", String.valueOf(0));
-              ???.put("searchCost", String.valueOf(l1));
-              ???.put("singleSearchResultNum", String.valueOf(i));
-              ???.put("singleSearchCost", String.valueOf(l2));
-              ???.put("groupSortCost", String.valueOf(l3));
-              StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actFtsSearchEvent", true, l1, 0L, ???, null);
-            }
-            ??? = (SearchRequest)localObject1;
-            if (n == 0) {
-              if (localObject1 != null)
-              {
-                ??? = (SearchRequest)localObject1;
-                if (!((List)localObject1).isEmpty()) {}
-              }
-              else
-              {
-                ??? = (SearchRequest)localObject1;
-                if (!TextUtils.isEmpty(str))
-                {
-                  ??? = (SearchRequest)localObject1;
-                  if (str.getBytes().length < 255)
-                  {
-                    j = 0;
-                    ??? = Pattern.compile("[一-龥]*").matcher(str);
-                    do
-                    {
-                      i = j;
-                      if (!???.find()) {
-                        break;
-                      }
-                    } while (???.group().length() < 4);
-                    i = 1;
-                    ??? = (SearchRequest)localObject1;
-                    if (i != 0)
-                    {
-                      this.e.put(str, new Object());
-                      ??? = a(str, paramBoolean);
-                    }
-                  }
-                }
-              }
-            }
-            return ???;
-            j = 1;
-            break;
-            label872:
-            k = ???.jdField_a_of_type_JavaLangString.length();
-            break label42;
-            label884:
-            m = 2;
-            break label49;
-            label890:
-            i = str.getBytes().length;
-            break label93;
-            if (!TextUtils.isEmpty(???.jdField_a_of_type_JavaLangString)) {
-              break label1523;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("FTSMessageSearchEngine", 2, "========== search message use FTSMessageSearchEngine, keyword is null");
-            }
-            return new ArrayList();
-            ArrayList localArrayList;
-            do
-            {
-              synchronized (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
-              {
-                for (;;)
-                {
-                  if (!jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().contains(str)) {
-                    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-                  }
-                  synchronized (b)
-                  {
-                    if (!b.keySet().contains(str)) {
-                      b.clear();
-                    }
-                  }
-                }
-              }
-              localArrayList = (ArrayList)((SoftReference)b.get(str)).get();
-            } while (localArrayList == null);
-            i = localArrayList.size();
-            l1 = System.nanoTime();
-            localObject4 = a(str, str, null, paramBoolean, localArrayList, true);
-            l1 = (System.nanoTime() - l1) / 1000000L;
-            l2 = 0L + l1;
-            localObject5 = new HashMap();
-            ((HashMap)localObject5).put("keyNum", String.valueOf(j));
-            ((HashMap)localObject5).put("firstKeyLen", String.valueOf(k));
-            ((HashMap)localObject5).put("searchPage", String.valueOf(m));
-            ((HashMap)localObject5).put("useCache", String.valueOf(1));
-            ((HashMap)localObject5).put("searchCost", String.valueOf(l2));
-            ((HashMap)localObject5).put("singleSearchResultNum", String.valueOf(i));
-            ((HashMap)localObject5).put("singleSearchCost", String.valueOf(0L));
-            ((HashMap)localObject5).put("groupSortCost", String.valueOf(l1));
-            StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actFtsSearchEvent", true, l2, 0L, (HashMap)localObject5, null);
-            return localObject4;
-            ??? = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFTSDBManager().a().a(str, FTSMessage.class, false, false, Long.valueOf((String)localObject4).longValue(), null);
-            if (i == -1) {
-              break label1512;
-            }
-            localObject4 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFTSDBManager().a().a(str, FTSMessage.class, false, false, Long.valueOf((String)localObject4).longValue(), i);
-            if ((??? != null) && (localObject4 != null)) {
-              ???.addAll((Collection)localObject4);
-            }
-            for (;;)
-            {
-              l2 = 0L;
-              i = 0;
-              l1 = 0L;
-              break;
-              if (??? != null) {
-                localObject4 = ???;
-              }
-              ??? = (SearchRequest)localObject4;
-            }
-            l1 = System.nanoTime();
-            ??? = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFTSDBManager().a().a(str, FTSMessage.class, paramBoolean, false);
-            if ((??? != null) && (!???.isEmpty()))
-            {
-              localObject4 = ???.iterator();
-              while (((Iterator)localObject4).hasNext()) {
-                ((FTSMessage)((Iterator)localObject4).next()).searchStrategy = 1;
-              }
-            }
-            l1 = (System.nanoTime() - l1) / 1000000L;
-            if (??? == null) {}
-            for (i = 0;; i = ???.size())
-            {
-              l2 = l1;
-              l1 = 0L + l1;
-              break;
-            }
-            bool = false;
-            break label290;
-            bool = false;
-            break label347;
-            jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, Boolean.valueOf(true));
-            b.put(str, new SoftReference(???));
-            break label383;
-            i1 = 0;
-            break label411;
-            i1 = 0;
-            break label435;
-            i1 = 0;
-            break label461;
-          }
-          label1326:
-          l3 = 0L;
-        }
-        label900:
-        label1512:
-        l2 = 0L;
-        i = 0;
-        l1 = 0L;
-      }
-      label1523:
-      i = -1;
-      n = 0;
-      localObject5 = null;
-      Object localObject4 = null;
-    }
-  }
-  
-  public List<FTSEntitySearchResultModel> a(String paramString, boolean paramBoolean)
-  {
-    if (!NetworkUtil.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) {
-      return null;
-    }
-    ??? = (GlobalSearchHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.GLOBAL_SEARCH_HANDLER);
-    Object localObject2 = new ArrayList();
-    ((ArrayList)localObject2).add(paramString);
-    ((GlobalSearchHandler)???).a((ArrayList)localObject2);
-    ??? = this.e.get(paramString);
-    if (??? != null) {
-      try
-      {
-        ???.wait(5000L);
-        synchronized (this.jdField_a_of_type_JavaLangObject)
-        {
-          if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString)) {
-            break label148;
-          }
-          return null;
-        }
-        return null;
-      }
-      catch (InterruptedException paramString)
-      {
-        paramString.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.w("FTSMessageSearchEngine", 2, "searchByWaitServerSeg Exception: ", paramString);
-        }
-        return null;
-      }
-      finally {}
-    }
-    label148:
-    ??? = (StringBuilder)this.d.get(paramString);
-    String str;
-    if (??? != null)
-    {
-      str = ((StringBuilder)???).toString().trim();
-      if (str.length() == 0) {
-        return null;
-      }
+      m = 1;
     }
     else
     {
-      return null;
-    }
-    int i;
-    int j;
-    if (TextUtils.isEmpty(str))
-    {
-      i = 0;
-      if (!TextUtils.isEmpty(str)) {
-        break label351;
-      }
-      j = 0;
-      label212:
-      if (!paramBoolean) {
-        break label361;
-      }
-    }
-    long l4;
-    long l5;
-    long l6;
-    ArrayList localArrayList;
-    label351:
-    label361:
-    for (int k = 1;; k = 2)
-    {
-      l4 = 0L;
-      com.tencent.mobileqq.utils.fts.SQLiteFTSUtils.FtsItemClickEvent.jdField_a_of_type_Int = i;
-      com.tencent.mobileqq.utils.fts.SQLiteFTSUtils.FtsItemClickEvent.b = j;
-      if (!paramBoolean) {
-        break label367;
-      }
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-      b.clear();
-      l5 = System.nanoTime();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFTSDBManager().a().d();
-      l6 = System.nanoTime();
-      l1 = System.nanoTime();
-      localArrayList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFTSDBManager().a().a(str, FTSMessage.class, paramBoolean, false);
-      if ((localArrayList == null) || (localArrayList.isEmpty())) {
-        break label655;
-      }
-      ??? = localArrayList.iterator();
-      while (((Iterator)???).hasNext()) {
-        ((FTSMessage)((Iterator)???).next()).searchStrategy = 1;
-      }
-      i = 1;
-      break;
-      j = str.length();
-      break label212;
-    }
-    label367:
-    do
-    {
-      synchronized (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+      if (TextUtils.isEmpty(???.jdField_a_of_type_JavaLangString))
       {
-        for (;;)
+        if (QLog.isColorLevel()) {
+          QLog.d("FTSMessageSearchEngine", 2, "========== search message use FTSMessageSearchEngine, keyword is null");
+        }
+        return new ArrayList();
+      }
+      m = 0;
+      i = -1;
+      localObject4 = null;
+      bool = false;
+      localObject3 = null;
+    }
+    long l3 = 0L;
+    Object localObject5;
+    if (m == 0) {
+      if (paramBoolean)
+      {
+        jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+        b.clear();
+      }
+      else
+      {
+        synchronized (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
         {
-          if (!jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().contains(paramString)) {
+          if (!jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().contains(localObject1)) {
             jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
           }
           synchronized (b)
           {
-            if (!b.keySet().contains(paramString)) {
+            if (!b.keySet().contains(localObject1))
+            {
               b.clear();
+            }
+            else
+            {
+              localObject5 = (ArrayList)((SoftReference)b.get(localObject1)).get();
+              if (localObject5 != null)
+              {
+                i = ((ArrayList)localObject5).size();
+                l1 = System.nanoTime();
+                localObject1 = a((String)localObject1, (String)localObject1, null, paramBoolean, (ArrayList)localObject5, true);
+                l1 = (System.nanoTime() - l1) / 1000000L;
+                l2 = l1 + 0L;
+                localObject3 = new HashMap();
+                ((HashMap)localObject3).put("keyNum", String.valueOf(i1));
+                ((HashMap)localObject3).put("firstKeyLen", String.valueOf(j));
+                ((HashMap)localObject3).put("searchPage", String.valueOf(k));
+                ((HashMap)localObject3).put("useCache", String.valueOf(1));
+                ((HashMap)localObject3).put("searchCost", String.valueOf(l2));
+                ((HashMap)localObject3).put("singleSearchResultNum", String.valueOf(i));
+                ((HashMap)localObject3).put("singleSearchCost", String.valueOf(0L));
+                ((HashMap)localObject3).put("groupSortCost", String.valueOf(l1));
+                StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actFtsSearchEvent", true, l2, 0L, (HashMap)localObject3, null);
+                return localObject1;
+              }
             }
           }
         }
       }
-      localObject2 = (ArrayList)((SoftReference)b.get(paramString)).get();
-    } while (localObject2 == null);
-    int m = ((ArrayList)localObject2).size();
-    long l1 = System.nanoTime();
-    paramString = a(paramString, str, null, paramBoolean, (ArrayList)localObject2, true);
-    l1 = (System.nanoTime() - l1) / 1000000L;
-    long l2 = 0L + l1;
-    localObject2 = new HashMap();
-    ((HashMap)localObject2).put("keyNum", String.valueOf(i));
-    ((HashMap)localObject2).put("firstKeyLen", String.valueOf(j));
-    ((HashMap)localObject2).put("searchPage", String.valueOf(k));
-    ((HashMap)localObject2).put("useCache", String.valueOf(1));
-    ((HashMap)localObject2).put("searchCost", String.valueOf(l2));
-    ((HashMap)localObject2).put("singleSearchResultNum", String.valueOf(m));
-    ((HashMap)localObject2).put("singleSearchCost", String.valueOf(0L));
-    ((HashMap)localObject2).put("groupSortCost", String.valueOf(l1));
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actFtsSearchEvent", true, l2, 0L, (HashMap)localObject2, null);
-    return paramString;
-    label655:
-    long l7 = (System.nanoTime() - l1) / 1000000L;
-    long l3;
-    long l8;
-    if (localArrayList == null)
+    }
+    long l6 = System.nanoTime();
+    ((IFTSDBRuntimeService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IFTSDBRuntimeService.class, "")).refreshFTS(1);
+    long l7 = System.nanoTime();
+    if (m != 0)
     {
-      m = 0;
-      l3 = 0L + l7;
-      l8 = System.nanoTime();
-      localObject2 = null;
-      ??? = localObject2;
-      l2 = l4;
-      l1 = l3;
-      if (localArrayList == null) {
-        break label1235;
+      if (bool) {
+        ??? = (ArrayList)new QueryArgs.Builder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(Long.valueOf((String)localObject4).longValue()).a().a();
       }
-      ??? = localObject2;
-      l2 = l4;
-      l1 = l3;
-      if (localArrayList.isEmpty()) {
-        break label1235;
-      }
-      l1 = System.nanoTime();
-      ??? = a(paramString, str, null, paramBoolean, localArrayList, false);
-      l2 = (System.nanoTime() - l1) / 1000000L;
-      l3 += l2;
-      if (!paramBoolean) {
-        break label1202;
-      }
-      if (localArrayList.size() >= 2000) {
-        break label1197;
-      }
-      paramBoolean = true;
-      label781:
-      if (paramBoolean)
+      for (;;)
       {
-        jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(paramBoolean));
-        b.put(paramString, new SoftReference(localArrayList));
-      }
-      l1 = l2;
-      l2 = l3;
-      label822:
-      l3 = System.nanoTime();
-      paramString = new HashMap();
-      if (??? == null) {
-        break label1250;
-      }
-      n = ((List)???).size();
-      label849:
-      paramString.put("queryConversationSize", Integer.toString(n));
-      if (localArrayList == null) {
-        break label1256;
-      }
-      n = localArrayList.size();
-      label874:
-      paramString.put("resultSize", Integer.toString(n));
-      if (str == null) {
-        break label1262;
-      }
-      n = str.length();
-      label899:
-      paramString.put("keyLength", Integer.toString(n));
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "SearchMessageStatistic_FTS", true, (l3 - l6) / 1000000L, 0L, paramString, null);
-      l4 = System.nanoTime();
-      if (QLog.isColorLevel()) {
-        if (localArrayList == null) {
-          break label1268;
+        l2 = 0L;
+        l1 = 0L;
+        i = 0;
+        break;
+        localObject5 = (ArrayList)new QueryArgs.Builder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(Long.valueOf((String)localObject4).longValue()).a(str).a(FTSMessage.class).a(false).b(false).a(null).a().a();
+        ??? = (SearchRequest)localObject5;
+        if (i != -1)
+        {
+          ??? = (ArrayList)new QueryArgs.Builder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(str).a(Long.valueOf((String)localObject4).longValue(), i).a(FTSMessage.class).b(false).a(false).a().a();
+          if ((localObject5 != null) && (??? != null))
+          {
+            ((ArrayList)localObject5).addAll(???);
+            ??? = (SearchRequest)localObject5;
+          }
+          else if (localObject5 != null)
+          {
+            ??? = (SearchRequest)localObject5;
+          }
         }
       }
     }
-    label1197:
-    label1202:
-    label1235:
-    label1250:
-    label1256:
-    label1262:
-    label1268:
-    for (int n = localArrayList.size();; n = 0)
+    long l1 = System.nanoTime();
+    ??? = (ArrayList)new QueryArgs.Builder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(str).a(FTSMessage.class).a(paramBoolean).b(false).a().a();
+    if ((??? != null) && (!???.isEmpty()))
     {
-      QLog.d("FTSMessageSearchEngine", 2, String.format("fts search,size:%d, refresh time: %dms, query time: %dms, convert time: %dms, report time: %dms", new Object[] { Integer.valueOf(n), Long.valueOf((l6 - l5) / 1000000L), Long.valueOf((l8 - l6) / 1000000L), Long.valueOf((l3 - l8) / 1000000L), Long.valueOf((l4 - l3) / 1000000L) }));
-      localObject2 = new HashMap();
-      ((HashMap)localObject2).put("keyNum", String.valueOf(i));
-      ((HashMap)localObject2).put("firstKeyLen", String.valueOf(j));
-      ((HashMap)localObject2).put("searchPage", String.valueOf(k));
-      ((HashMap)localObject2).put("useCache", String.valueOf(0));
-      ((HashMap)localObject2).put("searchCost", String.valueOf(l2));
-      ((HashMap)localObject2).put("singleSearchResultNum", String.valueOf(m));
-      ((HashMap)localObject2).put("singleSearchCost", String.valueOf(l7));
-      ((HashMap)localObject2).put("groupSortCost", String.valueOf(l1));
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actFtsSearchEvent", true, l2, 0L, paramString, null);
-      return ???;
-      m = localArrayList.size();
-      break;
-      paramBoolean = false;
-      break label781;
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(true));
-      b.put(paramString, new SoftReference(localArrayList));
-      l1 = l3;
-      l3 = l1;
-      l1 = l2;
-      l2 = l3;
-      break label822;
-      n = 0;
-      break label849;
-      n = 0;
-      break label874;
-      n = 0;
-      break label899;
+      localObject4 = ???.iterator();
+      while (((Iterator)localObject4).hasNext()) {
+        ((FTSMessage)((Iterator)localObject4).next()).searchStrategy = 1;
+      }
     }
+    l1 = (System.nanoTime() - l1) / 1000000L;
+    if (??? == null) {
+      i = 0;
+    } else {
+      i = ???.size();
+    }
+    long l2 = l1;
+    l1 = 0L + l1;
+    Object localObject4 = null;
+    long l8 = System.nanoTime();
+    if (??? != null)
+    {
+      l3 = System.nanoTime();
+      localObject4 = str;
+      localObject5 = a(str, str, (String)localObject3, paramBoolean, ???, m ^ 0x1);
+      l4 = (System.nanoTime() - l3) / 1000000L;
+      l5 = l1 + l4;
+      localObject3 = localObject5;
+      l3 = l4;
+      l1 = l5;
+      if (m == 0) {
+        if (paramBoolean)
+        {
+          if (???.size() < 2000) {
+            bool = true;
+          } else {
+            bool = false;
+          }
+          localObject3 = localObject5;
+          l3 = l4;
+          l1 = l5;
+          if (bool)
+          {
+            jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject4, Boolean.valueOf(bool));
+            b.put(localObject4, new SoftReference(???));
+            localObject3 = localObject5;
+            l3 = l4;
+            l1 = l5;
+          }
+        }
+        else
+        {
+          jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject4, Boolean.valueOf(true));
+          b.put(localObject4, new SoftReference(???));
+          localObject3 = localObject5;
+          l3 = l4;
+          l1 = l5;
+        }
+      }
+    }
+    else
+    {
+      localObject3 = localObject4;
+    }
+    long l4 = System.nanoTime();
+    localObject4 = new HashMap();
+    int n;
+    if (localObject3 != null) {
+      n = ((List)localObject3).size();
+    } else {
+      n = 0;
+    }
+    ((HashMap)localObject4).put("queryConversationSize", Integer.toString(n));
+    if (??? != null) {
+      n = ???.size();
+    } else {
+      n = 0;
+    }
+    ((HashMap)localObject4).put("resultSize", Integer.toString(n));
+    if (str != null) {
+      n = str.length();
+    } else {
+      n = 0;
+    }
+    ((HashMap)localObject4).put("keyLength", Integer.toString(n));
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "SearchMessageStatistic_FTS", true, (l4 - l7) / 1000000L, 0L, (HashMap)localObject4, null);
+    long l5 = System.nanoTime();
+    if (QLog.isColorLevel())
+    {
+      if (??? != null) {
+        n = ???.size();
+      } else {
+        n = 0;
+      }
+      QLog.d("FTSMessageSearchEngine", 2, String.format("fts search,size:%d, refresh time: %dms, query time: %dms, convert time: %dms, report time: %dms", new Object[] { Integer.valueOf(n), Long.valueOf((l7 - l6) / 1000000L), Long.valueOf((l8 - l7) / 1000000L), Long.valueOf((l4 - l8) / 1000000L), Long.valueOf((l5 - l4) / 1000000L) }));
+    }
+    if (m == 0)
+    {
+      ??? = new HashMap();
+      ???.put("keyNum", String.valueOf(i1));
+      ???.put("firstKeyLen", String.valueOf(j));
+      ???.put("searchPage", String.valueOf(k));
+      ???.put("useCache", String.valueOf(0));
+      ???.put("searchCost", String.valueOf(l1));
+      ???.put("singleSearchResultNum", String.valueOf(i));
+      ???.put("singleSearchCost", String.valueOf(l2));
+      ???.put("groupSortCost", String.valueOf(l3));
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actFtsSearchEvent", true, l1, 0L, ???, null);
+    }
+    int j = 0;
+    if ((m == 0) && ((localObject3 == null) || (((List)localObject3).isEmpty())) && (!TextUtils.isEmpty(str)) && (str.getBytes().length < 255))
+    {
+      ??? = Pattern.compile("[一-龥]*").matcher(str);
+      do
+      {
+        i = j;
+        if (!???.find()) {
+          break;
+        }
+      } while (???.group().length() < 4);
+      i = 1;
+      if (i != 0)
+      {
+        this.e.put(str, new Object());
+        return a(str, paramBoolean);
+      }
+    }
+    return localObject3;
+  }
+  
+  /* Error */
+  public List<FTSEntitySearchResultModel> a(String paramString, boolean paramBoolean)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 65	com/tencent/mobileqq/search/ftsmsg/FTSMessageSearchEngine:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   4: invokevirtual 609	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   7: invokestatic 615	com/tencent/mobileqq/utils/NetworkUtil:isNetSupport	(Landroid/content/Context;)Z
+    //   10: istore 8
+    //   12: aconst_null
+    //   13: astore 25
+    //   15: iload 8
+    //   17: ifne +5 -> 22
+    //   20: aconst_null
+    //   21: areturn
+    //   22: aload_0
+    //   23: getfield 65	com/tencent/mobileqq/search/ftsmsg/FTSMessageSearchEngine:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   26: getstatic 620	com/tencent/mobileqq/app/BusinessHandlerFactory:GLOBAL_SEARCH_HANDLER	Ljava/lang/String;
+    //   29: invokevirtual 624	com/tencent/mobileqq/app/QQAppInterface:getBusinessHandler	(Ljava/lang/String;)Lcom/tencent/mobileqq/app/BusinessHandler;
+    //   32: checkcast 626	com/tencent/mobileqq/app/GlobalSearchHandler
+    //   35: astore 26
+    //   37: new 88	java/util/ArrayList
+    //   40: dup
+    //   41: invokespecial 143	java/util/ArrayList:<init>	()V
+    //   44: astore 27
+    //   46: aload 27
+    //   48: aload_1
+    //   49: invokevirtual 230	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   52: pop
+    //   53: aload 26
+    //   55: aload 27
+    //   57: invokevirtual 629	com/tencent/mobileqq/app/GlobalSearchHandler:a	(Ljava/util/ArrayList;)V
+    //   60: aload_0
+    //   61: getfield 56	com/tencent/mobileqq/search/ftsmsg/FTSMessageSearchEngine:e	Ljava/util/concurrent/ConcurrentHashMap;
+    //   64: aload_1
+    //   65: invokevirtual 336	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   68: astore 26
+    //   70: aload 26
+    //   72: ifnull +1208 -> 1280
+    //   75: aload 26
+    //   77: monitorenter
+    //   78: aload 26
+    //   80: ldc2_w 630
+    //   83: invokevirtual 635	java/lang/Object:wait	(J)V
+    //   86: aload 26
+    //   88: monitorexit
+    //   89: aload_0
+    //   90: getfield 43	com/tencent/mobileqq/search/ftsmsg/FTSMessageSearchEngine:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   93: astore 26
+    //   95: aload 26
+    //   97: monitorenter
+    //   98: aload_0
+    //   99: getfield 636	com/tencent/mobileqq/search/ftsmsg/FTSMessageSearchEngine:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   102: aload_1
+    //   103: invokestatic 640	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+    //   106: ifne +8 -> 114
+    //   109: aload 26
+    //   111: monitorexit
+    //   112: aconst_null
+    //   113: areturn
+    //   114: aload 26
+    //   116: monitorexit
+    //   117: aload_0
+    //   118: getfield 54	com/tencent/mobileqq/search/ftsmsg/FTSMessageSearchEngine:d	Ljava/util/concurrent/ConcurrentHashMap;
+    //   121: aload_1
+    //   122: invokevirtual 336	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   125: checkcast 397	java/lang/StringBuilder
+    //   128: astore 26
+    //   130: aload 26
+    //   132: ifnull +1104 -> 1236
+    //   135: aload 26
+    //   137: invokevirtual 415	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   140: invokevirtual 643	java/lang/String:trim	()Ljava/lang/String;
+    //   143: astore 27
+    //   145: aload 27
+    //   147: invokevirtual 393	java/lang/String:length	()I
+    //   150: ifne +5 -> 155
+    //   153: aconst_null
+    //   154: areturn
+    //   155: aload 27
+    //   157: invokestatic 334	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   160: iconst_1
+    //   161: ixor
+    //   162: istore 7
+    //   164: aload 27
+    //   166: invokestatic 334	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   169: ifeq +8 -> 177
+    //   172: iconst_0
+    //   173: istore_3
+    //   174: goto +9 -> 183
+    //   177: aload 27
+    //   179: invokevirtual 393	java/lang/String:length	()I
+    //   182: istore_3
+    //   183: iload_2
+    //   184: ifeq +9 -> 193
+    //   187: iconst_1
+    //   188: istore 4
+    //   190: goto +6 -> 196
+    //   193: iconst_2
+    //   194: istore 4
+    //   196: iload 7
+    //   198: putstatic 394	com/tencent/mobileqq/utils/fts/SQLiteFTSUtils$FtsItemClickEvent:jdField_a_of_type_Int	I
+    //   201: iload_3
+    //   202: putstatic 395	com/tencent/mobileqq/utils/fts/SQLiteFTSUtils$FtsItemClickEvent:b	I
+    //   205: lconst_0
+    //   206: lstore 9
+    //   208: iload_2
+    //   209: ifeq +18 -> 227
+    //   212: getstatic 30	com/tencent/mobileqq/search/ftsmsg/FTSMessageSearchEngine:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   215: invokevirtual 443	java/util/concurrent/ConcurrentHashMap:clear	()V
+    //   218: getstatic 32	com/tencent/mobileqq/search/ftsmsg/FTSMessageSearchEngine:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   221: invokevirtual 443	java/util/concurrent/ConcurrentHashMap:clear	()V
+    //   224: goto +279 -> 503
+    //   227: getstatic 30	com/tencent/mobileqq/search/ftsmsg/FTSMessageSearchEngine:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   230: astore 26
+    //   232: aload 26
+    //   234: monitorenter
+    //   235: getstatic 30	com/tencent/mobileqq/search/ftsmsg/FTSMessageSearchEngine:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   238: invokevirtual 446	java/util/concurrent/ConcurrentHashMap:keySet	()Ljava/util/Set;
+    //   241: aload_1
+    //   242: invokeinterface 449 2 0
+    //   247: ifne +9 -> 256
+    //   250: getstatic 30	com/tencent/mobileqq/search/ftsmsg/FTSMessageSearchEngine:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   253: invokevirtual 443	java/util/concurrent/ConcurrentHashMap:clear	()V
+    //   256: aload 26
+    //   258: monitorexit
+    //   259: getstatic 32	com/tencent/mobileqq/search/ftsmsg/FTSMessageSearchEngine:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   262: astore 26
+    //   264: aload 26
+    //   266: monitorenter
+    //   267: getstatic 32	com/tencent/mobileqq/search/ftsmsg/FTSMessageSearchEngine:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   270: invokevirtual 446	java/util/concurrent/ConcurrentHashMap:keySet	()Ljava/util/Set;
+    //   273: aload_1
+    //   274: invokeinterface 449 2 0
+    //   279: ifne +12 -> 291
+    //   282: getstatic 32	com/tencent/mobileqq/search/ftsmsg/FTSMessageSearchEngine:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   285: invokevirtual 443	java/util/concurrent/ConcurrentHashMap:clear	()V
+    //   288: goto +212 -> 500
+    //   291: getstatic 32	com/tencent/mobileqq/search/ftsmsg/FTSMessageSearchEngine:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   294: aload_1
+    //   295: invokevirtual 336	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   298: checkcast 451	java/lang/ref/SoftReference
+    //   301: invokevirtual 453	java/lang/ref/SoftReference:get	()Ljava/lang/Object;
+    //   304: checkcast 88	java/util/ArrayList
+    //   307: astore 28
+    //   309: aload 28
+    //   311: ifnull +189 -> 500
+    //   314: aload 28
+    //   316: invokevirtual 454	java/util/ArrayList:size	()I
+    //   319: istore 5
+    //   321: invokestatic 348	java/lang/System:nanoTime	()J
+    //   324: lstore 9
+    //   326: aload_0
+    //   327: aload_1
+    //   328: aload 27
+    //   330: aconst_null
+    //   331: iload_2
+    //   332: aload 28
+    //   334: iconst_1
+    //   335: invokespecial 456	com/tencent/mobileqq/search/ftsmsg/FTSMessageSearchEngine:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/util/ArrayList;Z)Ljava/util/List;
+    //   338: astore_1
+    //   339: invokestatic 348	java/lang/System:nanoTime	()J
+    //   342: lload 9
+    //   344: lsub
+    //   345: ldc2_w 457
+    //   348: ldiv
+    //   349: lstore 9
+    //   351: lload 9
+    //   353: lconst_0
+    //   354: ladd
+    //   355: lstore 11
+    //   357: new 94	java/util/HashMap
+    //   360: dup
+    //   361: invokespecial 95	java/util/HashMap:<init>	()V
+    //   364: astore 25
+    //   366: aload 25
+    //   368: ldc_w 460
+    //   371: iload 7
+    //   373: invokestatic 463	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   376: invokevirtual 213	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   379: pop
+    //   380: aload 25
+    //   382: ldc_w 465
+    //   385: iload_3
+    //   386: invokestatic 463	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   389: invokevirtual 213	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   392: pop
+    //   393: aload 25
+    //   395: ldc_w 467
+    //   398: iload 4
+    //   400: invokestatic 463	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   403: invokevirtual 213	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   406: pop
+    //   407: aload 25
+    //   409: ldc_w 469
+    //   412: iconst_1
+    //   413: invokestatic 463	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   416: invokevirtual 213	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   419: pop
+    //   420: aload 25
+    //   422: ldc_w 471
+    //   425: lload 11
+    //   427: invokestatic 130	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   430: invokevirtual 213	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   433: pop
+    //   434: aload 25
+    //   436: ldc_w 473
+    //   439: iload 5
+    //   441: invokestatic 463	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   444: invokevirtual 213	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   447: pop
+    //   448: aload 25
+    //   450: ldc_w 475
+    //   453: lconst_0
+    //   454: invokestatic 130	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   457: invokevirtual 213	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   460: pop
+    //   461: aload 25
+    //   463: ldc_w 477
+    //   466: lload 9
+    //   468: invokestatic 130	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   471: invokevirtual 213	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   474: pop
+    //   475: invokestatic 483	com/tencent/mobileqq/mqsafeedit/BaseApplication:getContext	()Landroid/content/Context;
+    //   478: invokestatic 489	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
+    //   481: aconst_null
+    //   482: ldc_w 491
+    //   485: iconst_1
+    //   486: lload 11
+    //   488: lconst_0
+    //   489: aload 25
+    //   491: aconst_null
+    //   492: invokevirtual 495	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
+    //   495: aload 26
+    //   497: monitorexit
+    //   498: aload_1
+    //   499: areturn
+    //   500: aload 26
+    //   502: monitorexit
+    //   503: invokestatic 348	java/lang/System:nanoTime	()J
+    //   506: lstore 13
+    //   508: aload_0
+    //   509: getfield 65	com/tencent/mobileqq/search/ftsmsg/FTSMessageSearchEngine:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   512: ldc_w 497
+    //   515: ldc_w 499
+    //   518: invokevirtual 503	com/tencent/mobileqq/app/QQAppInterface:getRuntimeService	(Ljava/lang/Class;Ljava/lang/String;)Lmqq/app/api/IRuntimeService;
+    //   521: checkcast 497	com/tencent/mobileqq/fts/api/IFTSDBRuntimeService
+    //   524: iconst_1
+    //   525: invokeinterface 647 2 0
+    //   530: invokeinterface 651 1 0
+    //   535: invokestatic 348	java/lang/System:nanoTime	()J
+    //   538: lstore 15
+    //   540: invokestatic 348	java/lang/System:nanoTime	()J
+    //   543: lstore 11
+    //   545: new 509	com/tencent/mobileqq/fts/query/QueryArgs$Builder
+    //   548: dup
+    //   549: aload_0
+    //   550: getfield 65	com/tencent/mobileqq/search/ftsmsg/FTSMessageSearchEngine:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   553: invokespecial 512	com/tencent/mobileqq/fts/query/QueryArgs$Builder:<init>	(Lmqq/app/AppRuntime;)V
+    //   556: aload 27
+    //   558: invokevirtual 532	com/tencent/mobileqq/fts/query/QueryArgs$Builder:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/fts/query/QueryArgs$Builder;
+    //   561: ldc 112
+    //   563: invokevirtual 535	com/tencent/mobileqq/fts/query/QueryArgs$Builder:a	(Ljava/lang/Class;)Lcom/tencent/mobileqq/fts/query/QueryArgs$Builder;
+    //   566: iload_2
+    //   567: invokevirtual 538	com/tencent/mobileqq/fts/query/QueryArgs$Builder:a	(Z)Lcom/tencent/mobileqq/fts/query/QueryArgs$Builder;
+    //   570: iconst_0
+    //   571: invokevirtual 540	com/tencent/mobileqq/fts/query/QueryArgs$Builder:b	(Z)Lcom/tencent/mobileqq/fts/query/QueryArgs$Builder;
+    //   574: invokevirtual 524	com/tencent/mobileqq/fts/query/QueryArgs$Builder:a	()Lcom/tencent/mobileqq/fts/query/QueryArgs;
+    //   577: invokevirtual 529	com/tencent/mobileqq/fts/query/QueryArgs:a	()Ljava/util/List;
+    //   580: checkcast 88	java/util/ArrayList
+    //   583: astore 26
+    //   585: aload 26
+    //   587: ifnull +48 -> 635
+    //   590: aload 26
+    //   592: invokevirtual 92	java/util/ArrayList:isEmpty	()Z
+    //   595: ifne +40 -> 635
+    //   598: aload 26
+    //   600: invokevirtual 99	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   603: astore 28
+    //   605: aload 28
+    //   607: invokeinterface 104 1 0
+    //   612: ifeq +23 -> 635
+    //   615: aload 28
+    //   617: invokeinterface 108 1 0
+    //   622: checkcast 110	com/tencent/mobileqq/fts/v1/FTSEntity
+    //   625: checkcast 112	com/tencent/mobileqq/fts/data/msg/FTSMessage
+    //   628: iconst_1
+    //   629: putfield 190	com/tencent/mobileqq/fts/data/msg/FTSMessage:searchStrategy	I
+    //   632: goto -27 -> 605
+    //   635: invokestatic 348	java/lang/System:nanoTime	()J
+    //   638: lload 11
+    //   640: lsub
+    //   641: ldc2_w 457
+    //   644: ldiv
+    //   645: lstore 17
+    //   647: aload 26
+    //   649: ifnonnull +9 -> 658
+    //   652: iconst_0
+    //   653: istore 5
+    //   655: goto +10 -> 665
+    //   658: aload 26
+    //   660: invokevirtual 454	java/util/ArrayList:size	()I
+    //   663: istore 5
+    //   665: lconst_0
+    //   666: lload 17
+    //   668: ladd
+    //   669: lstore 11
+    //   671: invokestatic 348	java/lang/System:nanoTime	()J
+    //   674: lstore 19
+    //   676: aload 26
+    //   678: ifnull +151 -> 829
+    //   681: aload 26
+    //   683: invokevirtual 92	java/util/ArrayList:isEmpty	()Z
+    //   686: ifne +143 -> 829
+    //   689: invokestatic 348	java/lang/System:nanoTime	()J
+    //   692: lstore 9
+    //   694: aload_0
+    //   695: aload_1
+    //   696: aload 27
+    //   698: aconst_null
+    //   699: iload_2
+    //   700: aload 26
+    //   702: iconst_0
+    //   703: invokespecial 456	com/tencent/mobileqq/search/ftsmsg/FTSMessageSearchEngine:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/util/ArrayList;Z)Ljava/util/List;
+    //   706: astore 25
+    //   708: invokestatic 348	java/lang/System:nanoTime	()J
+    //   711: lload 9
+    //   713: lsub
+    //   714: ldc2_w 457
+    //   717: ldiv
+    //   718: lstore 9
+    //   720: lload 11
+    //   722: lload 9
+    //   724: ladd
+    //   725: lstore 11
+    //   727: iload_2
+    //   728: ifeq +66 -> 794
+    //   731: aload 26
+    //   733: invokevirtual 454	java/util/ArrayList:size	()I
+    //   736: sipush 2000
+    //   739: if_icmpge +8 -> 747
+    //   742: iconst_1
+    //   743: istore_2
+    //   744: goto +5 -> 749
+    //   747: iconst_0
+    //   748: istore_2
+    //   749: iload_2
+    //   750: ifeq +38 -> 788
+    //   753: getstatic 30	com/tencent/mobileqq/search/ftsmsg/FTSMessageSearchEngine:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   756: aload_1
+    //   757: iload_2
+    //   758: invokestatic 553	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   761: invokevirtual 554	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   764: pop
+    //   765: getstatic 32	com/tencent/mobileqq/search/ftsmsg/FTSMessageSearchEngine:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   768: aload_1
+    //   769: new 451	java/lang/ref/SoftReference
+    //   772: dup
+    //   773: aload 26
+    //   775: invokespecial 557	java/lang/ref/SoftReference:<init>	(Ljava/lang/Object;)V
+    //   778: invokevirtual 554	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   781: pop
+    //   782: aload 25
+    //   784: astore_1
+    //   785: goto +47 -> 832
+    //   788: aload 25
+    //   790: astore_1
+    //   791: goto +41 -> 832
+    //   794: getstatic 30	com/tencent/mobileqq/search/ftsmsg/FTSMessageSearchEngine:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   797: aload_1
+    //   798: iconst_1
+    //   799: invokestatic 553	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   802: invokevirtual 554	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   805: pop
+    //   806: getstatic 32	com/tencent/mobileqq/search/ftsmsg/FTSMessageSearchEngine:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   809: aload_1
+    //   810: new 451	java/lang/ref/SoftReference
+    //   813: dup
+    //   814: aload 26
+    //   816: invokespecial 557	java/lang/ref/SoftReference:<init>	(Ljava/lang/Object;)V
+    //   819: invokevirtual 554	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   822: pop
+    //   823: aload 25
+    //   825: astore_1
+    //   826: goto +6 -> 832
+    //   829: aload 25
+    //   831: astore_1
+    //   832: invokestatic 348	java/lang/System:nanoTime	()J
+    //   835: lstore 21
+    //   837: new 94	java/util/HashMap
+    //   840: dup
+    //   841: invokespecial 95	java/util/HashMap:<init>	()V
+    //   844: astore 25
+    //   846: aload_1
+    //   847: ifnull +14 -> 861
+    //   850: aload_1
+    //   851: invokeinterface 274 1 0
+    //   856: istore 6
+    //   858: goto +6 -> 864
+    //   861: iconst_0
+    //   862: istore 6
+    //   864: aload 25
+    //   866: ldc_w 559
+    //   869: iload 6
+    //   871: invokestatic 563	java/lang/Integer:toString	(I)Ljava/lang/String;
+    //   874: invokevirtual 213	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   877: pop
+    //   878: aload 26
+    //   880: ifnull +13 -> 893
+    //   883: aload 26
+    //   885: invokevirtual 454	java/util/ArrayList:size	()I
+    //   888: istore 6
+    //   890: goto +6 -> 896
+    //   893: iconst_0
+    //   894: istore 6
+    //   896: aload 25
+    //   898: ldc_w 565
+    //   901: iload 6
+    //   903: invokestatic 563	java/lang/Integer:toString	(I)Ljava/lang/String;
+    //   906: invokevirtual 213	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   909: pop
+    //   910: aload 27
+    //   912: ifnull +13 -> 925
+    //   915: aload 27
+    //   917: invokevirtual 393	java/lang/String:length	()I
+    //   920: istore 6
+    //   922: goto +6 -> 928
+    //   925: iconst_0
+    //   926: istore 6
+    //   928: aload 25
+    //   930: ldc_w 567
+    //   933: iload 6
+    //   935: invokestatic 563	java/lang/Integer:toString	(I)Ljava/lang/String;
+    //   938: invokevirtual 213	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   941: pop
+    //   942: invokestatic 483	com/tencent/mobileqq/mqsafeedit/BaseApplication:getContext	()Landroid/content/Context;
+    //   945: invokestatic 489	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
+    //   948: aconst_null
+    //   949: ldc_w 569
+    //   952: iconst_1
+    //   953: lload 21
+    //   955: lload 15
+    //   957: lsub
+    //   958: ldc2_w 457
+    //   961: ldiv
+    //   962: lconst_0
+    //   963: aload 25
+    //   965: aconst_null
+    //   966: invokevirtual 495	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
+    //   969: invokestatic 348	java/lang/System:nanoTime	()J
+    //   972: lstore 23
+    //   974: invokestatic 381	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   977: ifeq +106 -> 1083
+    //   980: aload 26
+    //   982: ifnull +13 -> 995
+    //   985: aload 26
+    //   987: invokevirtual 454	java/util/ArrayList:size	()I
+    //   990: istore 6
+    //   992: goto +6 -> 998
+    //   995: iconst_0
+    //   996: istore 6
+    //   998: ldc_w 383
+    //   1001: iconst_2
+    //   1002: ldc_w 571
+    //   1005: iconst_5
+    //   1006: anewarray 40	java/lang/Object
+    //   1009: dup
+    //   1010: iconst_0
+    //   1011: iload 6
+    //   1013: invokestatic 574	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1016: aastore
+    //   1017: dup
+    //   1018: iconst_1
+    //   1019: lload 15
+    //   1021: lload 13
+    //   1023: lsub
+    //   1024: ldc2_w 457
+    //   1027: ldiv
+    //   1028: invokestatic 186	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1031: aastore
+    //   1032: dup
+    //   1033: iconst_2
+    //   1034: lload 19
+    //   1036: lload 15
+    //   1038: lsub
+    //   1039: ldc2_w 457
+    //   1042: ldiv
+    //   1043: invokestatic 186	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1046: aastore
+    //   1047: dup
+    //   1048: iconst_3
+    //   1049: lload 21
+    //   1051: lload 19
+    //   1053: lsub
+    //   1054: ldc2_w 457
+    //   1057: ldiv
+    //   1058: invokestatic 186	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1061: aastore
+    //   1062: dup
+    //   1063: iconst_4
+    //   1064: lload 23
+    //   1066: lload 21
+    //   1068: lsub
+    //   1069: ldc2_w 457
+    //   1072: ldiv
+    //   1073: invokestatic 186	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1076: aastore
+    //   1077: invokestatic 578	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   1080: invokestatic 388	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1083: new 94	java/util/HashMap
+    //   1086: dup
+    //   1087: invokespecial 95	java/util/HashMap:<init>	()V
+    //   1090: astore 26
+    //   1092: aload 26
+    //   1094: ldc_w 460
+    //   1097: iload 7
+    //   1099: invokestatic 463	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   1102: invokevirtual 213	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   1105: pop
+    //   1106: aload 26
+    //   1108: ldc_w 465
+    //   1111: iload_3
+    //   1112: invokestatic 463	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   1115: invokevirtual 213	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   1118: pop
+    //   1119: aload 26
+    //   1121: ldc_w 467
+    //   1124: iload 4
+    //   1126: invokestatic 463	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   1129: invokevirtual 213	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   1132: pop
+    //   1133: aload 26
+    //   1135: ldc_w 469
+    //   1138: iconst_0
+    //   1139: invokestatic 463	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   1142: invokevirtual 213	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   1145: pop
+    //   1146: aload 26
+    //   1148: ldc_w 471
+    //   1151: lload 11
+    //   1153: invokestatic 130	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   1156: invokevirtual 213	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   1159: pop
+    //   1160: aload 26
+    //   1162: ldc_w 473
+    //   1165: iload 5
+    //   1167: invokestatic 463	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   1170: invokevirtual 213	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   1173: pop
+    //   1174: aload 26
+    //   1176: ldc_w 475
+    //   1179: lload 17
+    //   1181: invokestatic 130	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   1184: invokevirtual 213	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   1187: pop
+    //   1188: aload 26
+    //   1190: ldc_w 477
+    //   1193: lload 9
+    //   1195: invokestatic 130	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   1198: invokevirtual 213	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   1201: pop
+    //   1202: invokestatic 483	com/tencent/mobileqq/mqsafeedit/BaseApplication:getContext	()Landroid/content/Context;
+    //   1205: invokestatic 489	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
+    //   1208: aconst_null
+    //   1209: ldc_w 491
+    //   1212: iconst_1
+    //   1213: lload 11
+    //   1215: lconst_0
+    //   1216: aload 25
+    //   1218: aconst_null
+    //   1219: invokevirtual 495	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
+    //   1222: aload_1
+    //   1223: areturn
+    //   1224: astore_1
+    //   1225: aload 26
+    //   1227: monitorexit
+    //   1228: aload_1
+    //   1229: athrow
+    //   1230: astore_1
+    //   1231: aload 26
+    //   1233: monitorexit
+    //   1234: aload_1
+    //   1235: athrow
+    //   1236: aconst_null
+    //   1237: areturn
+    //   1238: astore_1
+    //   1239: aload 26
+    //   1241: monitorexit
+    //   1242: aload_1
+    //   1243: athrow
+    //   1244: astore_1
+    //   1245: goto +30 -> 1275
+    //   1248: astore_1
+    //   1249: aload_1
+    //   1250: invokevirtual 654	java/lang/InterruptedException:printStackTrace	()V
+    //   1253: invokestatic 381	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1256: ifeq +14 -> 1270
+    //   1259: ldc_w 383
+    //   1262: iconst_2
+    //   1263: ldc_w 656
+    //   1266: aload_1
+    //   1267: invokestatic 660	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1270: aload 26
+    //   1272: monitorexit
+    //   1273: aconst_null
+    //   1274: areturn
+    //   1275: aload 26
+    //   1277: monitorexit
+    //   1278: aload_1
+    //   1279: athrow
+    //   1280: aconst_null
+    //   1281: areturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	1282	0	this	FTSMessageSearchEngine
+    //   0	1282	1	paramString	String
+    //   0	1282	2	paramBoolean	boolean
+    //   173	939	3	i	int
+    //   188	937	4	j	int
+    //   319	847	5	k	int
+    //   856	156	6	m	int
+    //   162	936	7	n	int
+    //   10	6	8	bool	boolean
+    //   206	988	9	l1	long
+    //   355	859	11	l2	long
+    //   506	516	13	l3	long
+    //   538	499	15	l4	long
+    //   645	535	17	l5	long
+    //   674	378	19	l6	long
+    //   835	232	21	l7	long
+    //   972	93	23	l8	long
+    //   13	1204	25	localObject1	Object
+    //   44	872	27	localObject3	Object
+    //   307	309	28	localObject4	Object
+    // Exception table:
+    //   from	to	target	type
+    //   267	288	1224	finally
+    //   291	309	1224	finally
+    //   314	351	1224	finally
+    //   357	498	1224	finally
+    //   500	503	1224	finally
+    //   1225	1228	1224	finally
+    //   235	256	1230	finally
+    //   256	259	1230	finally
+    //   1231	1234	1230	finally
+    //   98	112	1238	finally
+    //   114	117	1238	finally
+    //   1239	1242	1238	finally
+    //   78	86	1244	finally
+    //   86	89	1244	finally
+    //   1249	1270	1244	finally
+    //   1270	1273	1244	finally
+    //   1275	1278	1244	finally
+    //   78	86	1248	java/lang/InterruptedException
   }
   
   public void a(SearchRequest paramSearchRequest, ISearchListener<FTSEntitySearchResultModel> paramISearchListener)
@@ -945,7 +1279,7 @@ public class FTSMessageSearchEngine
       QLog.d("FTSMessageSearchEngine", 2, "========== search message use FTSMessageSearchEngine");
     }
     long l1 = System.nanoTime();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFTSDBManager().b(1);
+    ((IFTSDBRuntimeService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IFTSDBRuntimeService.class, "")).refreshFTS(1);
     long l2 = System.nanoTime();
     Object localObject = paramSearchRequest.jdField_a_of_type_JavaLangString;
     if (paramSearchRequest.jdField_a_of_type_AndroidOsBundle == null) {
@@ -953,439 +1287,431 @@ public class FTSMessageSearchEngine
     }
     long l3 = paramSearchRequest.jdField_a_of_type_AndroidOsBundle.getLong("uin");
     int i = paramSearchRequest.jdField_a_of_type_AndroidOsBundle.getInt("uinType");
-    paramSearchRequest = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFTSDBManager().a().a((String)localObject, FTSMessage.class, false, false, l3, i);
+    paramSearchRequest = (ArrayList)new QueryArgs.Builder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a((String)localObject).a(FTSMessage.class).a(false).b(false).a(l3, i).a().a();
     l3 = System.nanoTime();
     localObject = a((String)localObject, paramSearchRequest);
     long l4 = System.nanoTime();
-    if (paramSearchRequest != null) {}
-    for (i = paramSearchRequest.size();; i = 0)
-    {
-      QLog.d("FTSMessageSearchEngine", 2, String.format("fts searchDetail,size:%d, refresh time: %dms, query time: %dms, convert time: %dms", new Object[] { Integer.valueOf(i), Long.valueOf((l2 - l1) / 1000000L), Long.valueOf((l3 - l2) / 1000000L), Long.valueOf((l4 - l3) / 1000000L) }));
-      return localObject;
+    if (paramSearchRequest != null) {
+      i = paramSearchRequest.size();
+    } else {
+      i = 0;
     }
+    QLog.d("FTSMessageSearchEngine", 2, String.format("fts searchDetail,size:%d, refresh time: %dms, query time: %dms, convert time: %dms", new Object[] { Integer.valueOf(i), Long.valueOf((l2 - l1) / 1000000L), Long.valueOf((l3 - l2) / 1000000L), Long.valueOf((l4 - l3) / 1000000L) }));
+    return localObject;
   }
   
   public List<FTSEntitySearchResultModel> b(SearchRequest arg1, boolean paramBoolean)
   {
+    Object localObject1 = this;
     if (QLog.isColorLevel()) {
       QLog.d("FTSMessageSearchEngine", 2, "========== search message use FTSMessageSearchEngine");
     }
     String str = ???.jdField_a_of_type_JavaLangString;
-    Object localObject3;
+    int i;
     if (QLog.isColorLevel())
     {
-      localObject3 = new StringBuilder().append("keyword bytes length: ");
-      if (str != null) {
-        break label165;
-      }
-      i = 0;
-    }
-    int j;
-    for (;;)
-    {
-      QLog.i("FTSMessageSearchEngine", 2, i);
-      localObject3 = this.jdField_a_of_type_JavaLangObject;
-      j = 0;
-      i = j;
-      try
-      {
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-        {
-          i = j;
-          if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, str)) {
-            i = 1;
-          }
-        }
-        if (i != 0)
-        {
-          localObject4 = this.e.get(this.jdField_a_of_type_JavaLangString);
-          if (localObject4 == null) {}
-        }
-        label165:
-        try
-        {
-          localObject4.notify();
-          this.jdField_a_of_type_JavaLangString = str;
-          if (!TextUtils.isEmpty(str)) {
-            break;
-          }
-          return a(???, paramBoolean);
-        }
-        finally {}
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("keyword bytes length: ");
+      if (str == null) {
+        i = 0;
+      } else {
         i = str.getBytes().length;
       }
-      finally {}
+      ((StringBuilder)???).append(i);
+      QLog.i("FTSMessageSearchEngine", 2, ((StringBuilder)???).toString());
     }
-    Object localObject4 = SQLiteFTSUtils.a(str);
-    if ((((ArrayList)localObject4).size() == 0) || (((ArrayList)localObject4).size() == 1)) {
-      return a(???, paramBoolean);
-    }
-    if ((???.jdField_a_of_type_AndroidOsBundle != null) && (???.jdField_a_of_type_AndroidOsBundle.containsKey("search_restrict_mem"))) {
-      return a(???, paramBoolean);
-    }
-    int i7 = ((ArrayList)localObject4).size();
-    int i8 = ((String)((ArrayList)localObject4).get(0)).length();
-    int n;
-    int m;
-    int k;
-    long l5;
-    int i1;
-    if (paramBoolean)
+    synchronized (((FTSMessageSearchEngine)localObject1).jdField_a_of_type_JavaLangObject)
     {
-      n = 1;
-      j = 0;
-      m = 0;
-      com.tencent.mobileqq.utils.fts.SQLiteFTSUtils.FtsItemClickEvent.jdField_a_of_type_Int = i7;
-      com.tencent.mobileqq.utils.fts.SQLiteFTSUtils.FtsItemClickEvent.b = i8;
-      if (!paramBoolean) {
-        break label445;
-      }
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-      c.clear();
-      localObject3 = new ArrayList();
-      k = 0;
-      l1 = System.nanoTime();
-      ??? = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFTSDBManager().a().a(str, FTSMessage.class, false, false, 1);
-      l5 = (System.nanoTime() - l1) / 1000000L;
-      if (??? != null) {
-        break label790;
-      }
-      i1 = 0;
-      label362:
-      if ((??? != null) && (!???.isEmpty())) {
-        break label799;
-      }
-    }
-    Object localObject5;
-    Object localObject6;
-    label445:
-    HashMap localHashMap;
-    label790:
-    label799:
-    for (int i2 = 0;; i2 = 1)
-    {
-      i = k;
-      if (??? == null) {
-        break label814;
-      }
-      i = k;
-      if (???.isEmpty()) {
-        break label814;
-      }
-      localObject5 = ???.iterator();
-      while (((Iterator)localObject5).hasNext())
+      if ((!TextUtils.isEmpty(((FTSMessageSearchEngine)localObject1).jdField_a_of_type_JavaLangString)) && (!TextUtils.equals(((FTSMessageSearchEngine)localObject1).jdField_a_of_type_JavaLangString, str)))
       {
-        localObject6 = (FTSEntity)((Iterator)localObject5).next();
-        ((FTSEntity)localObject6).mSearchScene = 0;
-        ((FTSMessage)localObject6).searchStrategy = 2;
-      }
-      n = 2;
-      break;
-      do
-      {
-        synchronized (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+        i = 1;
+        Object localObject5;
+        if (i != 0)
         {
-          for (;;)
+          localObject5 = ((FTSMessageSearchEngine)localObject1).e.get(((FTSMessageSearchEngine)localObject1).jdField_a_of_type_JavaLangString);
+          if (localObject5 != null) {
+            try
+            {
+              localObject5.notify();
+            }
+            finally {}
+          }
+        }
+        ((FTSMessageSearchEngine)localObject1).jdField_a_of_type_JavaLangString = str;
+        if (TextUtils.isEmpty(str)) {
+          return a(???, paramBoolean);
+        }
+        ??? = SQLiteFTSUtils.a(str);
+        if ((((ArrayList)???).size() != 0) && (((ArrayList)???).size() != 1))
+        {
+          if ((???.jdField_a_of_type_AndroidOsBundle != null) && (???.jdField_a_of_type_AndroidOsBundle.containsKey("search_restrict_mem"))) {
+            return a(???, paramBoolean);
+          }
+          int n = ((ArrayList)???).size();
+          int i7 = ((String)((ArrayList)???).get(0)).length();
+          int i2;
+          if (paramBoolean) {
+            i2 = 1;
+          } else {
+            i2 = 2;
+          }
+          com.tencent.mobileqq.utils.fts.SQLiteFTSUtils.FtsItemClickEvent.jdField_a_of_type_Int = n;
+          com.tencent.mobileqq.utils.fts.SQLiteFTSUtils.FtsItemClickEvent.b = i7;
+          if (paramBoolean)
+          {
+            jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+            c.clear();
+          }
+          synchronized (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
           {
             if (!jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().contains(str)) {
               jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
             }
             synchronized (c)
             {
-              if (!c.keySet().contains(str)) {
+              if (!c.keySet().contains(str))
+              {
                 c.clear();
               }
-            }
-          }
-        }
-        localObject3 = (ArrayList)((SoftReference)c.get(localObject2)).get();
-      } while (localObject3 == null);
-      localHashMap = new HashMap();
-      localHashMap.put("keyNum", String.valueOf(i7));
-      localHashMap.put("firstKeyLen", String.valueOf(i8));
-      localHashMap.put("searchPage", String.valueOf(n));
-      localHashMap.put("useCache", String.valueOf(1));
-      localHashMap.put("searchCost", String.valueOf(0L));
-      localHashMap.put("andSearchResultNum", String.valueOf(0));
-      localHashMap.put("andSearchCost", String.valueOf(0L));
-      localHashMap.put("senderSearchResultNum", String.valueOf(0));
-      localHashMap.put("senderSearchCost", String.valueOf(0L));
-      localHashMap.put("fallSearchResultNum", String.valueOf(0));
-      localHashMap.put("fallSearchCost", String.valueOf(0L));
-      localHashMap.put("groupSortCost", String.valueOf(0L));
-      localHashMap.put("contactSearchCost", String.valueOf(0L));
-      localHashMap.put("contactNum", String.valueOf(0));
-      localHashMap.put("friendNum", String.valueOf(0));
-      localHashMap.put("isMyself", String.valueOf(0));
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actFtsSearchEvent", true, 0L, 0L, localHashMap, null);
-      return localObject3;
-      i1 = ???.size();
-      break label362;
-    }
-    ((ArrayList)localObject3).addAll(???);
-    int i = 1;
-    label814:
-    localObject4 = (String)((ArrayList)localObject4).get(0);
-    ??? = localHashMap.substring(localHashMap.indexOf((String)localObject4) + ((String)localObject4).length()).trim();
-    long l1 = System.nanoTime();
-    localObject4 = SQLiteFTSUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject4);
-    long l6 = (System.nanoTime() - l1) / 1000000L;
-    int i4;
-    int i3;
-    if ((localObject4 != null) && (!((ArrayList)localObject4).isEmpty()))
-    {
-      i4 = ((ArrayList)localObject4).size();
-      localObject5 = ((ArrayList)localObject4).iterator();
-      while (((Iterator)localObject5).hasNext())
-      {
-        localObject6 = (SQLiteFTSUtils.MsgSearchContactInfo)((Iterator)localObject5).next();
-        if ((((SQLiteFTSUtils.MsgSearchContactInfo)localObject6).jdField_a_of_type_Int != 0) && (((SQLiteFTSUtils.MsgSearchContactInfo)localObject6).jdField_a_of_type_Int != 1004)) {
-          break label2300;
-        }
-        j += 1;
-      }
-      i3 = j;
-    }
-    for (;;)
-    {
-      l1 = 0L + l5 + l6;
-      long l2;
-      Object localObject7;
-      long l3;
-      long l4;
-      if ((localObject4 != null) && (!((ArrayList)localObject4).isEmpty()))
-      {
-        int i5 = 0;
-        j = 0;
-        l2 = 0L;
-        k = i;
-        if (i5 < ((ArrayList)localObject4).size())
-        {
-          localObject5 = ((SQLiteFTSUtils.MsgSearchContactInfo)((ArrayList)localObject4).get(i5)).jdField_a_of_type_JavaLangString;
-          int i9 = ((SQLiteFTSUtils.MsgSearchContactInfo)((ArrayList)localObject4).get(i5)).jdField_a_of_type_Int;
-          localObject6 = ((SQLiteFTSUtils.MsgSearchContactInfo)((ArrayList)localObject4).get(i5)).jdField_a_of_type_AndroidUtilPair;
-          int i6 = m;
-          if (TextUtils.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (CharSequence)localObject5)) {
-            i6 = 1;
-          }
-          i = k;
-          if (!TextUtils.equals((CharSequence)localObject5, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin()))
-          {
-            i = k;
-            if (SQLiteFTSUtils.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) == 1)
-            {
-              localObject7 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFTSDBManager().a().a(???, FTSMessage.class, false, false, Long.valueOf((String)localObject5).longValue(), i9);
-              i = k;
-              if (localObject7 != null)
+              else
               {
-                i = k;
-                if (!((ArrayList)localObject7).isEmpty())
+                localObject5 = (ArrayList)((SoftReference)c.get(str)).get();
+                if (localObject5 != null)
                 {
-                  Iterator localIterator = ((ArrayList)localObject7).iterator();
-                  while (localIterator.hasNext())
-                  {
-                    FTSEntity localFTSEntity = (FTSEntity)localIterator.next();
-                    localFTSEntity.mSearchScene = k;
-                    ((FTSMessage)localFTSEntity).searchStrategy = 3;
-                  }
-                  i = k + 1;
-                  ((ArrayList)localObject3).addAll((Collection)localObject7);
+                  localObject1 = new HashMap();
+                  ((HashMap)localObject1).put("keyNum", String.valueOf(n));
+                  ((HashMap)localObject1).put("firstKeyLen", String.valueOf(i7));
+                  ((HashMap)localObject1).put("searchPage", String.valueOf(i2));
+                  ((HashMap)localObject1).put("useCache", String.valueOf(1));
+                  ((HashMap)localObject1).put("searchCost", String.valueOf(0L));
+                  ((HashMap)localObject1).put("andSearchResultNum", String.valueOf(0));
+                  ((HashMap)localObject1).put("andSearchCost", String.valueOf(0L));
+                  ((HashMap)localObject1).put("senderSearchResultNum", String.valueOf(0));
+                  ((HashMap)localObject1).put("senderSearchCost", String.valueOf(0L));
+                  ((HashMap)localObject1).put("fallSearchResultNum", String.valueOf(0));
+                  ((HashMap)localObject1).put("fallSearchCost", String.valueOf(0L));
+                  ((HashMap)localObject1).put("groupSortCost", String.valueOf(0L));
+                  ((HashMap)localObject1).put("contactSearchCost", String.valueOf(0L));
+                  ((HashMap)localObject1).put("contactNum", String.valueOf(0));
+                  ((HashMap)localObject1).put("friendNum", String.valueOf(0));
+                  ((HashMap)localObject1).put("isMyself", String.valueOf(0));
+                  StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actFtsSearchEvent", true, 0L, 0L, (HashMap)localObject1, null);
+                  return localObject5;
                 }
               }
-            }
-          }
-          l3 = l2;
-          m = j;
-          l4 = l1;
-          if (i9 != 1)
-          {
-            if (i9 == 3000) {
-              k = i;
-            }
-            for (;;)
-            {
-              i5 += 1;
-              m = i6;
-              break;
-              if (i9 != 0)
+              localObject5 = new ArrayList();
+              long l1 = System.nanoTime();
+              ??? = (ArrayList)new QueryArgs.Builder(((FTSMessageSearchEngine)localObject1).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(str).a(FTSMessage.class).b(false).a(false).b(1).a().a();
+              long l6 = (System.nanoTime() - l1) / 1000000L;
+              int i3;
+              if (??? == null) {
+                i3 = 0;
+              } else {
+                i3 = ???.size();
+              }
+              int i4;
+              if ((??? != null) && (!???.isEmpty())) {
+                i4 = 1;
+              } else {
+                i4 = 0;
+              }
+              Object localObject7;
+              if ((??? != null) && (!???.isEmpty()))
               {
-                l3 = l2;
-                m = j;
-                l4 = l1;
-                if (i9 != 1004) {
-                  break label2267;
+                localObject6 = ???.iterator();
+                while (((Iterator)localObject6).hasNext())
+                {
+                  localObject7 = (FTSEntity)((Iterator)localObject6).next();
+                  ((FTSEntity)localObject7).mSearchScene = 0;
+                  ((FTSMessage)localObject7).searchStrategy = 2;
+                }
+                ((ArrayList)localObject5).addAll(???);
+                i = 1;
+              }
+              else
+              {
+                i = 0;
+              }
+              ??? = (String)((ArrayList)???).get(0);
+              ??? = str.substring(str.indexOf((String)???) + ((String)???).length()).trim();
+              l1 = System.nanoTime();
+              localObject1 = SQLiteFTSUtils.a(((FTSMessageSearchEngine)localObject1).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)???);
+              long l7 = (System.nanoTime() - l1) / 1000000L;
+              int i5;
+              int j;
+              int k;
+              if ((localObject1 != null) && (!((ArrayList)localObject1).isEmpty()))
+              {
+                i5 = ((ArrayList)localObject1).size();
+                ??? = ((ArrayList)localObject1).iterator();
+                for (j = 0; ((Iterator)???).hasNext(); j = k)
+                {
+                  localObject6 = (SQLiteFTSUtils.MsgSearchContactInfo)((Iterator)???).next();
+                  if (((SQLiteFTSUtils.MsgSearchContactInfo)localObject6).jdField_a_of_type_Int != 0)
+                  {
+                    k = j;
+                    if (((SQLiteFTSUtils.MsgSearchContactInfo)localObject6).jdField_a_of_type_Int != 1004) {}
+                  }
+                  else
+                  {
+                    k = j + 1;
+                  }
                 }
               }
-              l3 = System.nanoTime();
-              localObject5 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFTSDBManager().a().a(???, FTSMessage.class, false, false, Long.valueOf((String)localObject5).longValue(), (Pair)localObject6);
-              l2 += (System.nanoTime() - l3) / 1000000L;
-              if (localObject5 == null)
+              else
+              {
+                j = 0;
+                i5 = 0;
+              }
+              l1 = 0L + l6 + l7;
+              int m;
+              long l2;
+              int i1;
+              Object localObject8;
+              long l3;
+              if ((localObject1 != null) && (!((ArrayList)localObject1).isEmpty()))
+              {
+                k = i;
+                int i6 = 0;
+                m = 0;
+                i = 0;
+                l2 = 0L;
+                for (;;)
+                {
+                  ??? = this;
+                  if (i6 >= ((ArrayList)localObject1).size()) {
+                    break;
+                  }
+                  localObject6 = ((SQLiteFTSUtils.MsgSearchContactInfo)((ArrayList)localObject1).get(i6)).jdField_a_of_type_JavaLangString;
+                  int i8 = ((SQLiteFTSUtils.MsgSearchContactInfo)((ArrayList)localObject1).get(i6)).jdField_a_of_type_Int;
+                  localObject7 = ((SQLiteFTSUtils.MsgSearchContactInfo)((ArrayList)localObject1).get(i6)).jdField_a_of_type_AndroidUtilPair;
+                  if (TextUtils.equals(((FTSMessageSearchEngine)???).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (CharSequence)localObject6)) {
+                    i1 = 1;
+                  } else {
+                    i1 = m;
+                  }
+                  if ((!TextUtils.equals((CharSequence)localObject6, ((FTSMessageSearchEngine)???).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin())) && (SQLiteFTSUtils.c(((FTSMessageSearchEngine)???).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) == 1))
+                  {
+                    localObject8 = (ArrayList)new QueryArgs.Builder(((FTSMessageSearchEngine)???).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(str).a(FTSMessage.class).b(false).a(false).a(Long.valueOf((String)localObject6).longValue(), i8).a().a();
+                    m = k;
+                    if (localObject8 != null)
+                    {
+                      m = k;
+                      if (!((ArrayList)localObject8).isEmpty())
+                      {
+                        Iterator localIterator = ((ArrayList)localObject8).iterator();
+                        while (localIterator.hasNext())
+                        {
+                          FTSEntity localFTSEntity = (FTSEntity)localIterator.next();
+                          localFTSEntity.mSearchScene = k;
+                          ((FTSMessage)localFTSEntity).searchStrategy = 3;
+                        }
+                        m = k + 1;
+                        ((ArrayList)localObject5).addAll((Collection)localObject8);
+                      }
+                    }
+                  }
+                  else
+                  {
+                    m = k;
+                  }
+                  k = i1;
+                  i1 = i;
+                  l3 = l1;
+                  l4 = l2;
+                  if (i8 != 1) {
+                    if (i8 == 3000)
+                    {
+                      i1 = i;
+                      l3 = l1;
+                      l4 = l2;
+                    }
+                    else
+                    {
+                      if (i8 != 0)
+                      {
+                        i1 = i;
+                        l3 = l1;
+                        l4 = l2;
+                        if (i8 != 1004) {
+                          break label1596;
+                        }
+                      }
+                      l3 = System.nanoTime();
+                      ??? = (ArrayList)new QueryArgs.Builder(((FTSMessageSearchEngine)???).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(str).a(Long.valueOf((String)localObject6).longValue()).b(false).a(false).a((Pair)localObject7).a(FTSMessage.class).a().a();
+                      l2 += (System.nanoTime() - l3) / 1000000L;
+                      if (??? == null) {
+                        i1 = 0;
+                      } else {
+                        i1 = ((ArrayList)???).size();
+                      }
+                      i += i1;
+                      l1 += l2;
+                      i1 = i;
+                      l3 = l1;
+                      l4 = l2;
+                      if (??? != null)
+                      {
+                        i1 = i;
+                        l3 = l1;
+                        l4 = l2;
+                        if (!((ArrayList)???).isEmpty())
+                        {
+                          localObject6 = ((ArrayList)???).iterator();
+                          while (((Iterator)localObject6).hasNext())
+                          {
+                            localObject7 = (FTSEntity)((Iterator)localObject6).next();
+                            ((FTSEntity)localObject7).mSearchScene = m;
+                            localObject7 = (FTSMessage)localObject7;
+                            ((FTSMessage)localObject7).searchStrategy = 3;
+                            ((FTSMessage)localObject7).senderNum = i5;
+                            ((FTSMessage)localObject7).friendNum = j;
+                            if (k == 1) {
+                              i1 = 0;
+                            } else {
+                              i1 = i6 + 1;
+                            }
+                            ((FTSMessage)localObject7).friendIndex = i1;
+                          }
+                          i1 = k;
+                          k = m + 1;
+                          ((ArrayList)localObject5).addAll((Collection)???);
+                          break label1615;
+                        }
+                      }
+                    }
+                  }
+                  label1596:
+                  l2 = l4;
+                  l1 = l3;
+                  i = i1;
+                  i1 = k;
+                  k = m;
+                  label1615:
+                  i6 += 1;
+                  m = i1;
+                }
+                i1 = k;
+                k = i;
+              }
+              else
               {
                 k = 0;
-                j += k;
-                l1 += l2;
-                l3 = l2;
-                m = j;
-                l4 = l1;
-                if (localObject5 == null) {
-                  break label2267;
-                }
-                l3 = l2;
-                m = j;
-                l4 = l1;
-                if (((ArrayList)localObject5).isEmpty()) {
-                  break label2267;
-                }
-                localObject6 = ((ArrayList)localObject5).iterator();
-                label1392:
-                if (!((Iterator)localObject6).hasNext()) {
-                  break label1494;
-                }
-                localObject7 = (FTSEntity)((Iterator)localObject6).next();
-                ((FTSEntity)localObject7).mSearchScene = i;
-                ((FTSMessage)localObject7).searchStrategy = 3;
-                ((FTSMessage)localObject7).senderNum = i4;
-                ((FTSMessage)localObject7).friendNum = i3;
-                localObject7 = (FTSMessage)localObject7;
-                if (i6 != 1) {
-                  break label1485;
-                }
+                l2 = 0L;
+                m = 0;
+                i1 = i;
               }
-              label1485:
-              for (k = 0;; k = i5 + 1)
+              if ((i4 == 0) && (((ArrayList)localObject5).isEmpty()))
               {
-                ((FTSMessage)localObject7).friendIndex = k;
-                break label1392;
-                k = ((ArrayList)localObject5).size();
-                break;
+                l3 = System.nanoTime();
+                localObject1 = (ArrayList)new QueryArgs.Builder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(str).a(FTSMessage.class).a(false).b(false).b(0).a().a();
+                l4 = (System.nanoTime() - l3) / 1000000L;
+                if (localObject1 == null) {
+                  i = 0;
+                } else {
+                  i = ((ArrayList)localObject1).size();
+                }
+                long l5 = l1 + l4;
+                i4 = i;
+                l1 = l5;
+                l3 = l4;
+                if (localObject1 != null)
+                {
+                  i4 = i;
+                  l1 = l5;
+                  l3 = l4;
+                  if (!((ArrayList)localObject1).isEmpty())
+                  {
+                    ??? = ((ArrayList)localObject1).iterator();
+                    while (((Iterator)???).hasNext())
+                    {
+                      localObject6 = (FTSEntity)((Iterator)???).next();
+                      ((FTSEntity)localObject6).mSearchScene = i1;
+                      ((FTSMessage)localObject6).searchStrategy = 4;
+                    }
+                    ((ArrayList)localObject5).addAll((Collection)localObject1);
+                    i4 = i;
+                    l1 = l5;
+                    l3 = l4;
+                  }
+                }
               }
-              label1494:
-              k = i + 1;
-              ((ArrayList)localObject3).addAll((Collection)localObject5);
-            }
-          }
-        }
-        else
-        {
-          i = k;
-          k = j;
-          j = m;
-        }
-      }
-      for (m = i;; m = i)
-      {
-        if ((i2 == 0) && (((ArrayList)localObject3).isEmpty()))
-        {
-          l3 = System.nanoTime();
-          localObject4 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFTSDBManager().a().a(localHashMap, FTSMessage.class, false, false, 0);
-          l3 = (System.nanoTime() - l3) / 1000000L;
-          if (localObject4 == null) {
-            i = 0;
-          }
-          while ((localObject4 != null) && (!((ArrayList)localObject4).isEmpty()))
-          {
-            localObject5 = ((ArrayList)localObject4).iterator();
-            for (;;)
-            {
-              if (((Iterator)localObject5).hasNext())
+              else
               {
-                localObject6 = (FTSEntity)((Iterator)localObject5).next();
-                ((FTSEntity)localObject6).mSearchScene = m;
-                ((FTSMessage)localObject6).searchStrategy = 4;
-                continue;
-                i = ((ArrayList)localObject4).size();
-                break;
+                i4 = 0;
+                l3 = 0L;
               }
-            }
-            ((ArrayList)localObject3).addAll((Collection)localObject4);
-          }
-          l4 = l1 + l3;
-          l1 = l3;
-          l3 = l4;
-        }
-        for (;;)
-        {
-          localObject4 = new ArrayList();
-          l4 = System.nanoTime();
-          localObject5 = a((ArrayList)localObject3);
-          l4 = (System.nanoTime() - l4) / 1000000L;
-          l3 += l4;
-          localObject3 = SQLiteFTSUtils.a(localHashMap);
-          localObject5 = ((ArrayList)localObject5).iterator();
-          while (((Iterator)localObject5).hasNext())
-          {
-            localObject6 = (FTSMessageSearchEngine.FTSSearchResultItem)((Iterator)localObject5).next();
-            localObject7 = (FTSMessage)((FTSMessageSearchEngine.FTSSearchResultItem)localObject6).jdField_a_of_type_JavaUtilList.get(0);
-            if (a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(((FTSMessage)localObject7).uin), ((FTSMessage)localObject7).istroop))
-            {
-              localObject7 = new FTSMessageSearchResultModel(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localHashMap, localHashMap, (ArrayList)localObject3, ((FTSMessageSearchEngine.FTSSearchResultItem)localObject6).jdField_a_of_type_JavaUtilList, null, null);
-              ((FTSMessageSearchResultModel)localObject7).jdField_a_of_type_Int = ((FTSMessageSearchEngine.FTSSearchResultItem)localObject6).d;
-              ((FTSMessageSearchResultModel)localObject7).b = ((FTSMessageSearchEngine.FTSSearchResultItem)localObject6).e;
-              ((FTSMessageSearchResultModel)localObject7).c = ((FTSMessageSearchEngine.FTSSearchResultItem)localObject6).f;
-              ((FTSMessageSearchResultModel)localObject7).d = ((FTSMessageSearchEngine.FTSSearchResultItem)localObject6).g;
-              ((ArrayList)localObject4).add(localObject7);
-            }
-          }
-          jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localHashMap, Boolean.valueOf(true));
-          jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(???, Boolean.valueOf(true));
-          c.put(localHashMap, new SoftReference(localObject4));
-          ??? = new HashMap();
-          ???.put("keyNum", String.valueOf(i7));
-          ???.put("firstKeyLen", String.valueOf(i8));
-          ???.put("searchPage", String.valueOf(n));
-          ???.put("useCache", String.valueOf(0));
-          ???.put("searchCost", String.valueOf(l3));
-          ???.put("andSearchResultNum", String.valueOf(i1));
-          ???.put("andSearchCost", String.valueOf(l5));
-          ???.put("senderSearchResultNum", String.valueOf(k));
-          ???.put("senderSearchCost", String.valueOf(l2));
-          ???.put("fallSearchResultNum", String.valueOf(i));
-          ???.put("fallSearchCost", String.valueOf(l1));
-          ???.put("groupSortCost", String.valueOf(l4));
-          ???.put("contactSearchCost", String.valueOf(l6));
-          ???.put("contactNum", String.valueOf(i4));
-          ???.put("friendNum", String.valueOf(i3));
-          ???.put("isMyself", String.valueOf(j));
-          StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actFtsSearchEvent", true, l3, 0L, ???, null);
-          if (((localObject4 == null) || (((ArrayList)localObject4).isEmpty())) && (!TextUtils.isEmpty(localHashMap)) && (localHashMap.getBytes().length < 255))
-          {
-            j = 0;
-            ??? = Pattern.compile("[一-龥]*").matcher(localHashMap);
-            do
-            {
-              i = j;
-              if (!???.find()) {
-                break;
+              Object localObject6 = new ArrayList();
+              long l4 = System.nanoTime();
+              localObject1 = a((ArrayList)localObject5);
+              l4 = (System.nanoTime() - l4) / 1000000L;
+              l1 += l4;
+              localObject5 = SQLiteFTSUtils.a(str);
+              localObject1 = ((ArrayList)localObject1).iterator();
+              for (;;)
+              {
+                ??? = this;
+                if (!((Iterator)localObject1).hasNext()) {
+                  break;
+                }
+                localObject7 = (FTSMessageSearchEngine.FTSSearchResultItem)((Iterator)localObject1).next();
+                localObject8 = (FTSMessage)((FTSMessageSearchEngine.FTSSearchResultItem)localObject7).jdField_a_of_type_JavaUtilList.get(0);
+                if (a(((FTSMessageSearchEngine)???).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(((FTSMessage)localObject8).uin), ((FTSMessage)localObject8).istroop))
+                {
+                  ??? = new FTSMessageSearchResultModel(((FTSMessageSearchEngine)???).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, str, (ArrayList)localObject5, ((FTSMessageSearchEngine.FTSSearchResultItem)localObject7).jdField_a_of_type_JavaUtilList, null, null);
+                  ((FTSMessageSearchResultModel)???).jdField_a_of_type_Int = ((FTSMessageSearchEngine.FTSSearchResultItem)localObject7).d;
+                  ((FTSMessageSearchResultModel)???).b = ((FTSMessageSearchEngine.FTSSearchResultItem)localObject7).e;
+                  ((FTSMessageSearchResultModel)???).c = ((FTSMessageSearchEngine.FTSSearchResultItem)localObject7).f;
+                  ((FTSMessageSearchResultModel)???).d = ((FTSMessageSearchEngine.FTSSearchResultItem)localObject7).g;
+                  ((ArrayList)localObject6).add(???);
+                }
               }
-            } while (???.group().length() < 4);
-            i = 1;
-            if (i != 0)
-            {
-              this.e.put(localHashMap, new Object());
-              return a(localHashMap, paramBoolean);
+              localObject1 = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+              i = 1;
+              ((ConcurrentHashMap)localObject1).put(str, Boolean.valueOf(true));
+              jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(???, Boolean.valueOf(true));
+              c.put(str, new SoftReference(localObject6));
+              ??? = new HashMap();
+              ???.put("keyNum", String.valueOf(n));
+              ???.put("firstKeyLen", String.valueOf(i7));
+              ???.put("searchPage", String.valueOf(i2));
+              ???.put("useCache", String.valueOf(0));
+              ???.put("searchCost", String.valueOf(l1));
+              ???.put("andSearchResultNum", String.valueOf(i3));
+              ???.put("andSearchCost", String.valueOf(l6));
+              ???.put("senderSearchResultNum", String.valueOf(k));
+              ???.put("senderSearchCost", String.valueOf(l2));
+              ???.put("fallSearchResultNum", String.valueOf(i4));
+              ???.put("fallSearchCost", String.valueOf(l3));
+              ???.put("groupSortCost", String.valueOf(l4));
+              ???.put("contactSearchCost", String.valueOf(l7));
+              ???.put("contactNum", String.valueOf(i5));
+              ???.put("friendNum", String.valueOf(j));
+              ???.put("isMyself", String.valueOf(m));
+              StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actFtsSearchEvent", true, l1, 0L, ???, null);
+              if ((((ArrayList)localObject6).isEmpty()) && (!TextUtils.isEmpty(str)) && (str.getBytes().length < 255))
+              {
+                ??? = Pattern.compile("[一-龥]*").matcher(str);
+                while (???.find()) {
+                  if (???.group().length() >= 4) {
+                    break label2405;
+                  }
+                }
+                i = 0;
+                label2405:
+                if (i != 0)
+                {
+                  this.e.put(str, new Object());
+                  return a(str, paramBoolean);
+                }
+                return localObject6;
+              }
+              return localObject6;
             }
-            return localObject4;
           }
-          return localObject4;
-          l4 = 0L;
-          i = 0;
-          l3 = l1;
-          l1 = l4;
         }
-        label2267:
-        l1 = l4;
-        k = i;
-        l2 = l3;
-        j = m;
-        break;
-        j = 0;
-        l2 = 0L;
-        k = 0;
+        return a(???, paramBoolean);
       }
-      label2300:
-      break;
-      i3 = 0;
-      i4 = 0;
     }
   }
   
@@ -1406,7 +1732,7 @@ public class FTSMessageSearchEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine
  * JD-Core Version:    0.7.0.1
  */

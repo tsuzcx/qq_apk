@@ -5,10 +5,12 @@ import com.tencent.av.AVLog;
 import com.tencent.av.AVPathUtil;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.business.manager.EffectMutexManager;
+import com.tencent.av.business.manager.material.EffectMaterialManager;
 import com.tencent.av.business.manager.panorama.PanoramaSensorManager;
+import com.tencent.av.business.processor.PendantConfigFileProcessor;
 import com.tencent.av.opengl.effects.AEFilterSupport;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.utils.SecUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.filter.FabbyMvPart;
@@ -22,7 +24,7 @@ import java.util.List;
 public class EffectPendantTools
   extends EffectPendantBase
 {
-  public String d = null;
+  public String b = null;
   
   public EffectPendantTools(VideoAppInterface paramVideoAppInterface)
   {
@@ -31,41 +33,40 @@ public class EffectPendantTools
   
   public static int a(PendantItem paramPendantItem, boolean paramBoolean)
   {
-    if ((paramPendantItem != null) || (paramBoolean)) {}
-    switch (AEFilterSupport.a())
+    int i = 4;
+    if ((paramPendantItem != null) || (paramBoolean))
     {
-    case 5: 
-    case 6: 
-    default: 
+      int j = AEFilterSupport.a();
+      if (j == 3) {
+        break label34;
+      }
+      if (j == 4) {
+        return i;
+      }
+      if (j == 7) {}
+    }
+    else
+    {
       return 0;
-    case 3: 
-      return 3;
-    case 4: 
-      return 4;
     }
     return 5;
+    label34:
+    i = 3;
+    return i;
   }
   
   public static boolean a(VideoMaterial paramVideoMaterial)
   {
-    if (paramVideoMaterial != null)
+    if ((paramVideoMaterial != null) && (paramVideoMaterial.getFabbyParts() != null))
     {
-      if (paramVideoMaterial.getFabbyParts() != null)
+      paramVideoMaterial = paramVideoMaterial.getFabbyParts().getParts().iterator();
+      while (paramVideoMaterial.hasNext())
       {
-        paramVideoMaterial = paramVideoMaterial.getFabbyParts().getParts().iterator();
-        FabbyMvPart localFabbyMvPart;
-        do
-        {
-          if (!paramVideoMaterial.hasNext()) {
-            break;
-          }
-          localFabbyMvPart = (FabbyMvPart)paramVideoMaterial.next();
-        } while ((localFabbyMvPart.bgItem == null) || (localFabbyMvPart.bgItem.name == null) || (!localFabbyMvPart.bgItem.name.endsWith("_360")));
-        return true;
+        FabbyMvPart localFabbyMvPart = (FabbyMvPart)paramVideoMaterial.next();
+        if ((localFabbyMvPart.bgItem != null) && (localFabbyMvPart.bgItem.name != null) && (localFabbyMvPart.bgItem.name.endsWith("_360"))) {
+          return true;
+        }
       }
-    }
-    else {
-      return false;
     }
     return false;
   }
@@ -91,146 +92,171 @@ public class EffectPendantTools
   public void a(int paramInt, String paramString)
   {
     long l = AudioHelper.b();
-    if (QLog.isDevelopLevel()) {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 4, "MuteByOthers, seq[" + l + "], fromMuteKey[" + paramInt + "], data[" + paramString + "]");
-    }
-    if (paramInt == b()) {}
-    do
+    if (QLog.isDevelopLevel())
     {
-      do
-      {
-        return;
-        if (paramInt != 3003) {
-          break;
-        }
-      } while (!"creativecop".equals(paramString));
-      a(l, "0");
+      String str = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("MuteByOthers, seq[");
+      localStringBuilder.append(l);
+      localStringBuilder.append("], fromMuteKey[");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("], data[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("]");
+      QLog.w(str, 4, localStringBuilder.toString());
+    }
+    if (paramInt == b()) {
       return;
-    } while ((paramInt != 3001) && (paramInt != 3004) && (paramInt != 3005));
-    a(l, "0");
+    }
+    if (paramInt == 3003) {
+      return;
+    }
+    if ((paramInt == 3001) || (paramInt == 3004) || (paramInt == 3005)) {
+      a(l, "0");
+    }
   }
   
-  public void a(long paramLong, int paramInt, String paramString1, String paramString2)
+  protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
+    if ((paramInt != 2) && (paramInt != 3)) {
       return;
-      paramString1 = (PendantItem)a();
-    } while ((paramString1 == null) || (TextUtils.isEmpty(paramString1.getId())));
-    a(paramLong, null);
+    }
+    paramString1 = (PendantItem)a();
+    if ((paramString1 != null) && (!TextUtils.isEmpty(paramString1.getId()))) {
+      a(paramLong, null);
+    }
+  }
+  
+  protected boolean a()
+  {
+    return true;
   }
   
   public boolean a(long paramLong, PendantItem paramPendantItem)
   {
     boolean bool = super.a(paramLong, paramPendantItem);
+    Object localObject1;
     if ((bool) && (paramPendantItem != null) && (!TextUtils.equals("0", paramPendantItem.getId())))
     {
-      localObject = (EffectMutexManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(12);
-      if (localObject != null) {
-        ((EffectMutexManager)localObject).a(3002, paramPendantItem.getId());
+      localObject1 = (EffectMutexManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(12);
+      if (localObject1 != null) {
+        ((EffectMutexManager)localObject1).a(3002, paramPendantItem.getId());
       }
     }
-    String str = this.jdField_a_of_type_JavaLangString;
-    if (paramPendantItem == null) {}
-    for (Object localObject = null;; localObject = paramPendantItem.getId())
+    Object localObject2 = this.jdField_a_of_type_JavaLangString;
+    if (paramPendantItem == null) {
+      localObject1 = null;
+    } else {
+      localObject1 = paramPendantItem.getId();
+    }
+    EffectPendantTools.DataReport.a((String)localObject2, (String)localObject1);
+    if (QLog.isColorLevel())
     {
-      EffectPendantTools.DataReport.a(str, (String)localObject);
-      if (QLog.isColorLevel()) {
-        QLog.i(this.jdField_a_of_type_JavaLangString, 2, "setCurrentItem, item[" + paramPendantItem + "]");
-      }
-      return bool;
+      localObject1 = this.jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("setCurrentItem, item[");
+      ((StringBuilder)localObject2).append(paramPendantItem);
+      ((StringBuilder)localObject2).append("]");
+      QLog.i((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
+    return bool;
   }
   
   protected boolean a(PendantItem paramPendantItem)
   {
-    int j = 1;
-    if ((a() <= 0) || (paramPendantItem == null) || (TextUtils.isEmpty(paramPendantItem.getId())))
+    if ((a() > 0) && (paramPendantItem != null) && (!TextUtils.isEmpty(paramPendantItem.getId())))
     {
-      AVLog.printErrorLog(this.jdField_a_of_type_JavaLangString, "isTemplateUsable:" + a() + "|");
-      return false;
-    }
-    if (TextUtils.isEmpty(paramPendantItem.getResurl())) {
-      return true;
-    }
-    File localFile = new File(a(paramPendantItem));
-    boolean bool = localFile.exists();
-    Object localObject1;
-    long l1;
-    Object localObject2;
-    if (!bool)
-    {
-      localObject1 = AVPathUtil.b() + paramPendantItem.getName();
-      localFile = new File((String)localObject1);
-      if (localFile.exists())
-      {
-        l1 = System.currentTimeMillis();
-        localObject1 = SecUtil.getFileMd5((String)localObject1);
-        long l2 = System.currentTimeMillis();
-        localObject2 = paramPendantItem.getMd5();
-        AVLog.printColorLog(this.jdField_a_of_type_JavaLangString, "isTemplateUsable :" + (String)localObject1 + "|" + (String)localObject2 + "|" + (l2 - l1));
-        bool = ((String)localObject2).equalsIgnoreCase((String)localObject1);
+      if (TextUtils.isEmpty(paramPendantItem.getResUrl())) {
+        return true;
       }
-    }
-    for (;;)
-    {
-      int i;
+      localObject1 = new File(a(paramPendantItem));
+      boolean bool = ((File)localObject1).exists();
+      Object localObject3;
+      Object localObject2;
+      long l1;
+      if (!bool)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(AVPathUtil.b());
+        ((StringBuilder)localObject1).append(paramPendantItem.getName());
+        localObject3 = ((StringBuilder)localObject1).toString();
+        localObject2 = new File((String)localObject3);
+        localObject1 = localObject2;
+        if (((File)localObject2).exists())
+        {
+          l1 = System.currentTimeMillis();
+          localObject1 = SecUtil.getFileMd5((String)localObject3);
+          long l2 = System.currentTimeMillis();
+          localObject3 = paramPendantItem.getMd5();
+          String str = this.jdField_a_of_type_JavaLangString;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("isTemplateUsable :");
+          localStringBuilder.append((String)localObject1);
+          localStringBuilder.append("|");
+          localStringBuilder.append((String)localObject3);
+          localStringBuilder.append("|");
+          localStringBuilder.append(l2 - l1);
+          AVLog.printColorLog(str, localStringBuilder.toString());
+          bool = ((String)localObject3).equalsIgnoreCase((String)localObject1);
+          localObject1 = localObject2;
+        }
+      }
       if (bool)
       {
-        localObject1 = c(paramPendantItem);
-        localObject2 = new File((String)localObject1, "params.json");
-        l1 = ((File)localObject2).length();
-        if (((((File)localObject2).exists()) && (l1 < 1L)) || (!((File)localObject2).exists()))
-        {
+        localObject2 = c(paramPendantItem);
+        localObject3 = new File((String)localObject2, "params.json");
+        l1 = ((File)localObject3).length();
+        int i;
+        if (((((File)localObject3).exists()) && (l1 < 1L)) || (!((File)localObject3).exists())) {
           i = 1;
-          if (i == 0) {
-            break label369;
-          }
-          localObject1 = new File((String)localObject1, "params.dat");
-          l1 = ((File)localObject1).length();
-          if (((File)localObject1).exists())
-          {
-            i = j;
-            if (l1 < 1L) {}
-          }
-          else
-          {
-            if (((File)localObject1).exists()) {
-              break label361;
-            }
-            i = j;
-          }
+        } else {
+          i = 0;
         }
-      }
-      label361:
-      label369:
-      for (;;)
-      {
+        int j = i;
         if (i != 0)
         {
-          ThreadManager.post(new EffectPendantTools.1(this, localFile, paramPendantItem), 5, null, false);
-          return false;
-          i = 0;
-          break;
-          i = 0;
-          continue;
+          localObject2 = new File((String)localObject2, "params.dat");
+          l1 = ((File)localObject2).length();
+          if (((((File)localObject2).exists()) && (l1 < 1L)) || (!((File)localObject2).exists())) {
+            j = 1;
+          } else {
+            j = 0;
+          }
         }
-        return bool;
+        if (j != 0)
+        {
+          ThreadManager.post(new EffectPendantTools.1(this, (File)localObject1, paramPendantItem), 5, null, false);
+          return false;
+        }
       }
+      return bool;
     }
+    paramPendantItem = this.jdField_a_of_type_JavaLangString;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("isTemplateUsable:");
+    ((StringBuilder)localObject1).append(a());
+    ((StringBuilder)localObject1).append("|");
+    AVLog.printErrorLog(paramPendantItem, ((StringBuilder)localObject1).toString());
+    return false;
   }
   
   public int b()
   {
     return 3002;
   }
+  
+  protected void b()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
+    {
+      this.jdField_a_of_type_JavaUtilList = ((PendantConfigFileProcessor)((EffectMaterialManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(15)).a(1)).a(AVPathUtil.g(), "pendant_update_template.json", "pendant_default_template.json");
+      a(this.jdField_a_of_type_JavaUtilList);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.pendant.EffectPendantTools
  * JD-Core Version:    0.7.0.1
  */

@@ -19,8 +19,8 @@ public class WnsCollector
   
   public WnsCollector()
   {
-    WnsCondition localWnsCondition = new WnsCondition(QZoneConfigHelper.getAccReportInterval(), QZoneConfigHelper.getAccReportCount(), true);
-    LinearSampler localLinearSampler = new LinearSampler(QZoneConfigHelper.getAccReportSamples());
+    WnsCondition localWnsCondition = new WnsCondition(QZoneConfigHelper.d(), QZoneConfigHelper.c(), true);
+    LinearSampler localLinearSampler = new LinearSampler(QZoneConfigHelper.a());
     HttpAssembler localHttpAssembler = new HttpAssembler();
     localHttpAssembler.setPublicField(this.publicShareInfo);
     WapProxyHttpDeliverer localWapProxyHttpDeliverer = new WapProxyHttpDeliverer("https://wspeed.qq.com/w.cgi");
@@ -47,12 +47,14 @@ public class WnsCollector
     localStatistic.setValue(WnsKeys.ODetails, "");
     localStatistic.setValue(WnsKeys.Timestamp, Long.valueOf(System.currentTimeMillis() / 1000L));
     Key localKey = WnsKeys.Frequency;
-    if (getSampler() == null) {}
-    for (int i = 1;; i = getSampler().getFrequency())
-    {
-      localStatistic.setValue(localKey, Integer.valueOf(i));
-      return localStatistic;
+    int i;
+    if (getSampler() == null) {
+      i = 1;
+    } else {
+      i = getSampler().getFrequency();
     }
+    localStatistic.setValue(localKey, Integer.valueOf(i));
+    return localStatistic;
   }
   
   public Statistic getPublicShareInfo()
@@ -74,7 +76,7 @@ public class WnsCollector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.statistic.access.WnsCollector
  * JD-Core Version:    0.7.0.1
  */

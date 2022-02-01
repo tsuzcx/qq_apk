@@ -9,9 +9,9 @@ public final class GetOnlineInfoResp
 {
   static int cache_eIconType;
   static int cache_eNetworkType;
-  static int cache_result = 0;
+  static int cache_result;
   static byte[] cache_vecExtOnlineBusinessInfo;
-  static byte[] cache_vecMusicInfo;
+  static byte[] cache_vecMusicInfo = (byte[])new byte[1];
   static byte[] cache_vecPoiInfo;
   public long dwInterval = 30L;
   public long dwStatus = 20L;
@@ -32,9 +32,6 @@ public final class GetOnlineInfoResp
   
   static
   {
-    cache_eNetworkType = 0;
-    cache_eIconType = 0;
-    cache_vecMusicInfo = (byte[])new byte[1];
     ((byte[])cache_vecMusicInfo)[0] = 0;
     cache_vecPoiInfo = (byte[])new byte[1];
     ((byte[])cache_vecPoiInfo)[0] = 0;
@@ -95,28 +92,33 @@ public final class GetOnlineInfoResp
     paramJceOutputStream.write(this.eIconType, 6);
     paramJceOutputStream.write(this.dwInterval, 7);
     paramJceOutputStream.write(this.dwUin, 8);
-    if (this.strTermDesc != null) {
-      paramJceOutputStream.write(this.strTermDesc, 9);
+    Object localObject = this.strTermDesc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.strCustomOnlineStatusDesc != null) {
-      paramJceOutputStream.write(this.strCustomOnlineStatusDesc, 10);
+    localObject = this.strCustomOnlineStatusDesc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
     paramJceOutputStream.write(this.uExtOnlineStatus, 11);
     paramJceOutputStream.write(this.iBatteryStatus, 12);
-    if (this.vecMusicInfo != null) {
-      paramJceOutputStream.write(this.vecMusicInfo, 13);
+    localObject = this.vecMusicInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 13);
     }
-    if (this.vecPoiInfo != null) {
-      paramJceOutputStream.write(this.vecPoiInfo, 14);
+    localObject = this.vecPoiInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 14);
     }
-    if (this.vecExtOnlineBusinessInfo != null) {
-      paramJceOutputStream.write(this.vecExtOnlineBusinessInfo, 15);
+    localObject = this.vecExtOnlineBusinessInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 15);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     friendlist.GetOnlineInfoResp
  * JD-Core Version:    0.7.0.1
  */

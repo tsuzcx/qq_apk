@@ -32,43 +32,46 @@ public class AdClickUtil$Params
   
   public boolean isValid()
   {
-    boolean bool3 = true;
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.activity != null)
+    Object localObject = this.activity;
+    boolean bool3 = false;
+    boolean bool2 = bool3;
+    if (localObject != null)
     {
-      bool1 = bool2;
-      if (this.activity.get() != null)
+      bool2 = bool3;
+      if (((WeakReference)localObject).get() != null)
       {
-        bool1 = bool2;
-        if (this.ad != null)
+        localObject = this.ad;
+        bool2 = bool3;
+        if (localObject != null)
         {
-          if (this.ad.isValid()) {
-            break label52;
+          if (!((Ad)localObject).isValid()) {
+            return false;
           }
-          bool1 = bool2;
+          boolean bool1;
+          if ((!TextUtils.isEmpty(this.ad.getTraceId())) && (!TextUtils.isEmpty(this.ad.getUrlForEffect())) && (!TextUtils.isEmpty(this.ad.getUrlForAction())) && (!TextUtils.isEmpty(this.ad.getUrlForLandingPage()))) {
+            bool1 = true;
+          } else {
+            bool1 = false;
+          }
+          if (this.isAppPreOrderPublished) {
+            return bool1;
+          }
+          bool2 = bool3;
+          if (bool1)
+          {
+            bool2 = bool3;
+            if (!TextUtils.isEmpty(this.ad.getUrlForImpression()))
+            {
+              bool2 = bool3;
+              if (!TextUtils.isEmpty(this.ad.getUrlForClick())) {
+                bool2 = true;
+              }
+            }
+          }
         }
       }
     }
-    bool2 = bool1;
-    label52:
-    label114:
-    do
-    {
-      return bool2;
-      if ((TextUtils.isEmpty(this.ad.getTraceId())) || (TextUtils.isEmpty(this.ad.getUrlForEffect())) || (TextUtils.isEmpty(this.ad.getUrlForAction())) || (TextUtils.isEmpty(this.ad.getUrlForLandingPage()))) {
-        break;
-      }
-      bool1 = true;
-      bool2 = bool1;
-    } while (this.isAppPreOrderPublished);
-    if ((bool1) && (!TextUtils.isEmpty(this.ad.getUrlForImpression())) && (!TextUtils.isEmpty(this.ad.getUrlForClick()))) {}
-    for (bool1 = bool3;; bool1 = false)
-    {
-      break;
-      bool1 = false;
-      break label114;
-    }
+    return bool2;
   }
 }
 

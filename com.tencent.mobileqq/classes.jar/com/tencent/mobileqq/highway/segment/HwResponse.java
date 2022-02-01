@@ -30,7 +30,40 @@ public class HwResponse
   public String dumpRespInfo()
   {
     StringBuilder localStringBuilder = new StringBuilder(" REQTRACE_RSP");
-    localStringBuilder.append(" B_ID:").append(this.mBuCmdId).append(" T_ID:").append(this.mTransId).append(" Seq:").append(this.hwSeq).append(" Cmd:").append(this.cmd).append(" Err_C:").append(this.errCode).append(" Err_B:").append(this.buzRetCode).append(" Err_H:").append(this.retCode).append(" COST_Switch:").append(this.switchCost).append("ms").append(" COST_REQ:").append(this.reqCost).append("ms").append(" COST_HT:").append(this.htCost).append("ms").append(" COST_CACHE:").append(this.cacheCost).append("ms").append(" FIN:").append(this.isFinish).append(" Retry:").append(this.shouldRetry).append(" RespLen:").append(this.respLength).append(" isIpv6:").append(this.isIpv6);
+    localStringBuilder.append(" B_ID:");
+    localStringBuilder.append(this.mBuCmdId);
+    localStringBuilder.append(" T_ID:");
+    localStringBuilder.append(this.mTransId);
+    localStringBuilder.append(" Seq:");
+    localStringBuilder.append(this.hwSeq);
+    localStringBuilder.append(" Cmd:");
+    localStringBuilder.append(this.cmd);
+    localStringBuilder.append(" Err_C:");
+    localStringBuilder.append(this.errCode);
+    localStringBuilder.append(" Err_B:");
+    localStringBuilder.append(this.buzRetCode);
+    localStringBuilder.append(" Err_H:");
+    localStringBuilder.append(this.retCode);
+    localStringBuilder.append(" COST_Switch:");
+    localStringBuilder.append(this.switchCost);
+    localStringBuilder.append("ms");
+    localStringBuilder.append(" COST_REQ:");
+    localStringBuilder.append(this.reqCost);
+    localStringBuilder.append("ms");
+    localStringBuilder.append(" COST_HT:");
+    localStringBuilder.append(this.htCost);
+    localStringBuilder.append("ms");
+    localStringBuilder.append(" COST_CACHE:");
+    localStringBuilder.append(this.cacheCost);
+    localStringBuilder.append("ms");
+    localStringBuilder.append(" FIN:");
+    localStringBuilder.append(this.isFinish);
+    localStringBuilder.append(" Retry:");
+    localStringBuilder.append(this.shouldRetry);
+    localStringBuilder.append(" RespLen:");
+    localStringBuilder.append(this.respLength);
+    localStringBuilder.append(" isIpv6:");
+    localStringBuilder.append(this.isIpv6);
     return localStringBuilder.toString();
   }
   
@@ -43,7 +76,7 @@ public class HwResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.segment.HwResponse
  * JD-Core Version:    0.7.0.1
  */

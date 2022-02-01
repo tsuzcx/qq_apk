@@ -6,8 +6,9 @@ public class ThreadRegulatorProxy
   
   public static void checkInNextBusiness()
   {
-    if (proxy != null) {
-      proxy.checkInNextBusiness();
+    ThreadRegulatorProxy.Proxy localProxy = proxy;
+    if (localProxy != null) {
+      localProxy.checkInNextBusiness();
     }
   }
   
@@ -18,7 +19,7 @@ public class ThreadRegulatorProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.imcore.proxy.db.ThreadRegulatorProxy
  * JD-Core Version:    0.7.0.1
  */

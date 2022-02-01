@@ -35,16 +35,17 @@ public final class SubMsgType0x7$MsgBody$NFCNotify
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 37, 40, 50, 58, 64, 74, 80, 88, 96, 104, 162, 168, 176, 184 }, new String[] { "uint64_sessionid", "str_file_name", "bytes_file_md5", "fixed32_ip", "uint32_port", "bytes_url_notify", "bytes_tokenkey", "uint64_file_len", "bytes_originfile_md5", "uint32_originfiletype", "uint32_group_id", "uint32_group_size", "uint32_group_curindex", "msg_ActionInfo", "uint32_batchID", "uint32_groupflag", "bool_file_assist" }, new Object[] { Long.valueOf(0L), "", localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3, Long.valueOf(0L), localByteStringMicro4, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(false) }, NFCNotify.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 37, 40, 50, 58, 64, 74, 80, 88, 96, 104, 162, 168, 176, 184 }, new String[] { "uint64_sessionid", "str_file_name", "bytes_file_md5", "fixed32_ip", "uint32_port", "bytes_url_notify", "bytes_tokenkey", "uint64_file_len", "bytes_originfile_md5", "uint32_originfiletype", "uint32_group_id", "uint32_group_size", "uint32_group_curindex", "msg_ActionInfo", "uint32_batchID", "uint32_groupflag", "bool_file_assist" }, new Object[] { Long.valueOf(0L), "", localByteStringMicro1, localInteger, localInteger, localByteStringMicro2, localByteStringMicro3, Long.valueOf(0L), localByteStringMicro4, localInteger, localInteger, localInteger, localInteger, null, localInteger, localInteger, Boolean.valueOf(false) }, NFCNotify.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.NFCNotify
  * JD-Core Version:    0.7.0.1
  */

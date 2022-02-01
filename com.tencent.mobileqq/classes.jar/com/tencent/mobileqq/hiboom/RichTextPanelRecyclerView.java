@@ -31,16 +31,18 @@ public class RichTextPanelRecyclerView
     if (paramMotionEvent.getAction() != 0) {
       return super.dispatchTouchEvent(paramMotionEvent);
     }
-    if (this.a != null) {
-      this.a.a(this, paramMotionEvent);
+    RichTextPanelScrollListener localRichTextPanelScrollListener = this.a;
+    if (localRichTextPanelScrollListener != null) {
+      localRichTextPanelScrollListener.a(this, paramMotionEvent);
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.a != null) {
-      this.a.a(this, paramMotionEvent);
+    RichTextPanelScrollListener localRichTextPanelScrollListener = this.a;
+    if (localRichTextPanelScrollListener != null) {
+      localRichTextPanelScrollListener.a(this, paramMotionEvent);
     }
     return super.onTouchEvent(paramMotionEvent);
   }
@@ -56,7 +58,7 @@ public class RichTextPanelRecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.RichTextPanelRecyclerView
  * JD-Core Version:    0.7.0.1
  */

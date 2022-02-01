@@ -2,7 +2,6 @@ package cooperation.qzone;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.qzone.report.lp.LpReportInfo_dc00321;
 
 class QZoneLiveVideoBaseDownLoadActivty$3
@@ -20,12 +19,11 @@ class QZoneLiveVideoBaseDownLoadActivty$3
       this.this$0.updateTextProgress(false, false);
       this.this$0.installPlugin();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty.3
  * JD-Core Version:    0.7.0.1
  */

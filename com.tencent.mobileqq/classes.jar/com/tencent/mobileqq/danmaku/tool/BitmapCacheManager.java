@@ -21,8 +21,7 @@ public class BitmapCacheManager
   public BitmapCacheManager()
   {
     DisplayMetrics localDisplayMetrics = DanmakuDependImp.a().a().a().getDisplayMetrics();
-    int i = localDisplayMetrics.widthPixels;
-    this.jdField_a_of_type_Int = (localDisplayMetrics.heightPixels * i * 8);
+    this.jdField_a_of_type_Int = (localDisplayMetrics.widthPixels * localDisplayMetrics.heightPixels * 8);
   }
   
   private void b(Bitmap paramBitmap)
@@ -45,44 +44,33 @@ public class BitmapCacheManager
   public Bitmap a(int paramInt1, int paramInt2)
   {
     this.c += 1;
-    Object localObject1 = null;
     Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
-    Object localObject2;
-    if (localIterator.hasNext())
+    label21:
+    Bitmap localBitmap;
+    for (Object localObject = null; localIterator.hasNext(); localObject = localBitmap)
     {
-      Bitmap localBitmap = (Bitmap)localIterator.next();
-      if ((localBitmap.getWidth() >= paramInt1) && (localBitmap.getHeight() >= paramInt2)) {
-        if (localObject1 == null) {
-          localObject2 = localBitmap;
-        }
-      }
-      for (;;)
-      {
-        localObject1 = localObject2;
-        break;
-        localObject2 = localBitmap;
-        if (localObject1.getHeight() * localObject1.getWidth() < localBitmap.getHeight() * localBitmap.getWidth()) {
-          localObject2 = localObject1;
-        }
+      localBitmap = (Bitmap)localIterator.next();
+      if ((localBitmap.getWidth() < paramInt1) || (localBitmap.getHeight() < paramInt2) || ((localObject != null) && (localObject.getHeight() * localObject.getWidth() < localBitmap.getHeight() * localBitmap.getWidth()))) {
+        break label21;
       }
     }
-    if (localObject1 != null)
+    if (localObject != null)
     {
-      this.jdField_a_of_type_JavaUtilLinkedList.remove(localObject1);
-      this.b -= localObject1.getRowBytes() * localObject1.getHeight();
-      return localObject1;
+      this.jdField_a_of_type_JavaUtilLinkedList.remove(localObject);
+      this.b -= localObject.getRowBytes() * localObject.getHeight();
+      return localObject;
     }
     try
     {
       this.d += 1;
-      localObject2 = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_4444);
-      return localObject2;
+      localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_4444);
+      return localBitmap;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
       Logger.a("BitmapCacheManager", "create bitmap out of memory", localOutOfMemoryError);
     }
-    return localObject1;
+    return localObject;
   }
   
   public void a()
@@ -103,31 +91,22 @@ public class BitmapCacheManager
   
   public void a(Bitmap paramBitmap)
   {
-    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {}
-    for (;;)
+    if (paramBitmap != null)
     {
-      return;
+      if (paramBitmap.isRecycled()) {
+        return;
+      }
       this.b += paramBitmap.getRowBytes() * paramBitmap.getHeight();
       this.jdField_a_of_type_JavaUtilLinkedList.addLast(paramBitmap);
       while (this.b > this.jdField_a_of_type_Int)
       {
         paramBitmap = null;
         Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
-        if (localIterator.hasNext())
+        while (localIterator.hasNext())
         {
-          Bitmap localBitmap2 = (Bitmap)localIterator.next();
-          Bitmap localBitmap1;
-          if (paramBitmap == null) {
-            localBitmap1 = localBitmap2;
-          }
-          for (;;)
-          {
-            paramBitmap = localBitmap1;
-            break;
-            localBitmap1 = localBitmap2;
-            if (paramBitmap.getHeight() * paramBitmap.getWidth() < localBitmap2.getHeight() * localBitmap2.getWidth()) {
-              localBitmap1 = paramBitmap;
-            }
+          Bitmap localBitmap = (Bitmap)localIterator.next();
+          if ((paramBitmap == null) || (paramBitmap.getHeight() * paramBitmap.getWidth() >= localBitmap.getHeight() * localBitmap.getWidth())) {
+            paramBitmap = localBitmap;
           }
         }
         if (paramBitmap != null) {
@@ -149,7 +128,7 @@ public class BitmapCacheManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.tool.BitmapCacheManager
  * JD-Core Version:    0.7.0.1
  */

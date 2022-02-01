@@ -2,7 +2,6 @@ package com.tencent.mobileqq.data;
 
 import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import cooperation.qzone.QUA;
 import cooperation.qzone.QZoneCommonRequest;
 import cooperation.qzone.statistic.StatisticCollector;
@@ -10,6 +9,7 @@ import cooperation.qzone.statistic.access.WnsKeys;
 import cooperation.qzone.statistic.access.concept.Statistic;
 import cooperation.qzone.util.NetworkState;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
 import mqq.app.Servlet;
 
@@ -34,9 +34,12 @@ public class QzoneCommonIntent
     localStatistic.setValue(WnsKeys.CommandId, paramQZoneCommonRequest.getCmdString());
     localStatistic.setValue(WnsKeys.APN, NetworkState.getAPN());
     localStatistic.setValue(WnsKeys.ResultCode_i, Integer.valueOf(paramInt));
-    localStatistic.setValue(WnsKeys.ToUIN, Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin()));
+    paramQZoneCommonRequest = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if (paramQZoneCommonRequest != null) {
+      localStatistic.setValue(WnsKeys.ToUIN, Long.valueOf(paramQZoneCommonRequest.getLongAccountUin()));
+    }
     localStatistic.setValue(WnsKeys.Qua, QUA.getQUA3());
-    localStatistic.setValue(WnsKeys.Build, "5105");
+    localStatistic.setValue(WnsKeys.Build, "5295");
     if ((paramInt != 0) && (!TextUtils.isEmpty(paramString)))
     {
       localStatistic.setValue(WnsKeys.Detail, paramString);
@@ -55,10 +58,12 @@ public class QzoneCommonIntent
   
   public RespProcessor getProcessor()
   {
-    if (this.processor == null) {
-      return defaultProcessor;
+    RespProcessor localRespProcessor2 = this.processor;
+    RespProcessor localRespProcessor1 = localRespProcessor2;
+    if (localRespProcessor2 == null) {
+      localRespProcessor1 = defaultProcessor;
     }
-    return this.processor;
+    return localRespProcessor1;
   }
   
   public QZoneCommonRequest getRequest()
@@ -73,7 +78,7 @@ public class QzoneCommonIntent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.QzoneCommonIntent
  * JD-Core Version:    0.7.0.1
  */

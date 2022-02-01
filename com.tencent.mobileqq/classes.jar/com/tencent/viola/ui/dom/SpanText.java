@@ -39,23 +39,28 @@ public class SpanText
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("SpanText:[");
-    localStringBuilder.append("\n |-").append("spanType :").append(this.spanType);
-    if ("image".equals(this.spanType)) {
-      localStringBuilder.append("\n |-").append("src :").append(this.src);
-    }
-    for (;;)
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("spanType :");
+    localStringBuilder.append(this.spanType);
+    if ("image".equals(this.spanType))
     {
-      localStringBuilder.append("]");
-      return localStringBuilder.toString();
-      if ("text".equals(this.spanType)) {
-        localStringBuilder.append("\n |-").append("text :").append(this.text);
-      }
+      localStringBuilder.append("\n |-");
+      localStringBuilder.append("src :");
+      localStringBuilder.append(this.src);
     }
+    else if ("text".equals(this.spanType))
+    {
+      localStringBuilder.append("\n |-");
+      localStringBuilder.append("text :");
+      localStringBuilder.append(this.text);
+    }
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.dom.SpanText
  * JD-Core Version:    0.7.0.1
  */

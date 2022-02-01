@@ -41,7 +41,10 @@ public class LazyInitObserver
       return;
     }
     this.mHasNotified = true;
-    Log.d("LazyInitSequence", "mark and post to proceed: delay " + paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mark and post to proceed: delay ");
+    localStringBuilder.append(paramLong);
+    Log.d("LazyInitSequence", localStringBuilder.toString());
     proceedPendingTasksDelay(paramLong);
   }
   
@@ -54,8 +57,13 @@ public class LazyInitObserver
         ThreadUtils.runOnUiThread((Runnable)localIterator.next());
       }
       this.mPendingTasks.clear();
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   private void proceedPendingTasksDelay(long paramLong)
@@ -65,9 +73,7 @@ public class LazyInitObserver
   
   private void registerFirstDraw()
   {
-    switch (VideoReportInner.getInstance().getConfiguration().getLazyInitType())
-    {
-    default: 
+    if (VideoReportInner.getInstance().getConfiguration().getLazyInitType() != 0) {
       return;
     }
     markToProceed(0L);
@@ -90,21 +96,19 @@ public class LazyInitObserver
   public boolean mayProceedOnMain(@Nullable Runnable paramRunnable)
   {
     if (paramRunnable == null) {}
-    for (;;)
+    try
     {
-      try
-      {
-        bool = this.mCanProceed;
-        return bool;
-      }
-      finally {}
-      if (!this.mCanProceed)
-      {
-        this.mPendingTasks.remove(paramRunnable);
-        this.mPendingTasks.add(paramRunnable);
-      }
-      boolean bool = this.mCanProceed;
+      bool = this.mCanProceed;
+      return bool;
     }
+    finally {}
+    if (!this.mCanProceed)
+    {
+      this.mPendingTasks.remove(paramRunnable);
+      this.mPendingTasks.add(paramRunnable);
+    }
+    boolean bool = this.mCanProceed;
+    return bool;
   }
   
   public void onInitialized()
@@ -124,12 +128,12 @@ public class LazyInitObserver
   
   public boolean shouldInterceptTask(Runnable paramRunnable)
   {
-    return !mayProceedOnMain(paramRunnable);
+    return mayProceedOnMain(paramRunnable) ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.lazy.LazyInitObserver
  * JD-Core Version:    0.7.0.1
  */

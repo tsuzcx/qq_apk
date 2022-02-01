@@ -31,6 +31,8 @@ public final class UrlQuery$UrlQueryReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
@@ -39,12 +41,12 @@ public final class UrlQuery$UrlQueryReq
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro7 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro8 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 58, 66, 90, 98, 106, 170, 176, 184, 192, 200 }, new String[] { "uint64_uin", "uint32_appid", "uint32_subappid", "uint32_os_type", "bytes_app_name", "bytes_device_name", "bytes_imei", "bytes_guid", "bytes_url", "bytes_qq_pf_to", "bytes_refer", "bytes_plateform", "uint32_msg_type", "uint32_msg_from", "uint32_send_uin", "uint32_msg_chatid" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, localByteStringMicro7, localByteStringMicro8, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L) }, UrlQueryReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 58, 66, 90, 98, 106, 170, 176, 184, 192, 200 }, new String[] { "uint64_uin", "uint32_appid", "uint32_subappid", "uint32_os_type", "bytes_app_name", "bytes_device_name", "bytes_imei", "bytes_guid", "bytes_url", "bytes_qq_pf_to", "bytes_refer", "bytes_plateform", "uint32_msg_type", "uint32_msg_from", "uint32_send_uin", "uint32_msg_chatid" }, new Object[] { localLong, localInteger, localInteger, localInteger, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, localByteStringMicro7, localByteStringMicro8, localInteger, localInteger, localLong, localLong }, UrlQueryReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.webview.UrlQuery.UrlQueryReq
  * JD-Core Version:    0.7.0.1
  */

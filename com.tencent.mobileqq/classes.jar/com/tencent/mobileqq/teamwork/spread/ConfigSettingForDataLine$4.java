@@ -12,13 +12,17 @@ class ConfigSettingForDataLine$4
 {
   public void run()
   {
-    this.this$0.a.getApp().getSharedPreferences(this.this$0.a.getCurrentAccountUin() + "_m_str_teamwork_dataline_tips_sp", 0).edit().putInt("file_str_key_max_count_local", ConfigSettingForDataLine.a(this.this$0)).commit();
-    FMToastUtil.d(HardCodeUtil.a(2131702482));
+    BaseApplication localBaseApplication = this.this$0.a.getApp();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.this$0.a.getCurrentAccountUin());
+    localStringBuilder.append("_m_str_teamwork_dataline_tips_sp");
+    localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0).edit().putInt("file_str_key_max_count_local", ConfigSettingForDataLine.a(this.this$0)).commit();
+    FMToastUtil.d(HardCodeUtil.a(2131702614));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.ConfigSettingForDataLine.4
  * JD-Core Version:    0.7.0.1
  */

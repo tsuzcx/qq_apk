@@ -17,6 +17,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public class u
   implements ITMAssistantDownloadClientListener
@@ -43,15 +44,18 @@ public class u
   
   private TMAssistantDownloadTaskInfo a(String paramString)
   {
-    if ((paramString == null) || (this.c.size() == 0)) {
-      return null;
-    }
-    Iterator localIterator = this.c.iterator();
-    while (localIterator.hasNext())
+    if (paramString != null)
     {
-      TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = (TMAssistantDownloadTaskInfo)localIterator.next();
-      if (paramString.equals(localTMAssistantDownloadTaskInfo.mUrl)) {
-        return localTMAssistantDownloadTaskInfo;
+      if (this.c.size() == 0) {
+        return null;
+      }
+      Iterator localIterator = this.c.iterator();
+      while (localIterator.hasNext())
+      {
+        TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = (TMAssistantDownloadTaskInfo)localIterator.next();
+        if (paramString.equals(localTMAssistantDownloadTaskInfo.mUrl)) {
+          return localTMAssistantDownloadTaskInfo;
+        }
       }
     }
     return null;
@@ -60,17 +64,15 @@ public class u
   private void a(TMAssistantDownloadTaskInfo paramTMAssistantDownloadTaskInfo)
   {
     ab.c("TMAssistantDownloadQQGameClient", "syncDownloadTaskInfo......");
-    if (paramTMAssistantDownloadTaskInfo == null) {}
-    for (;;)
-    {
+    if (paramTMAssistantDownloadTaskInfo == null) {
       return;
-      Iterator localIterator = this.b.iterator();
-      while (localIterator.hasNext())
-      {
-        e locale = (e)((WeakReference)localIterator.next()).get();
-        if (locale != null) {
-          locale.a(paramTMAssistantDownloadTaskInfo);
-        }
+    }
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext())
+    {
+      e locale = (e)((WeakReference)localIterator.next()).get();
+      if (locale != null) {
+        locale.a(paramTMAssistantDownloadTaskInfo);
       }
     }
   }
@@ -83,7 +85,10 @@ public class u
     this.e = new TMAssistantDownloadClient(this.f, this.g);
     if (this.e.initTMAssistantDownloadSDK())
     {
-      ab.c("TMAssistantDownloadQQGameClient", "TMAssistantDownloadQQGameClient registerDownloadTaskListener......." + this.e);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("TMAssistantDownloadQQGameClient registerDownloadTaskListener.......");
+      localStringBuilder.append(this.e);
+      ab.c("TMAssistantDownloadQQGameClient", localStringBuilder.toString());
       this.e.registerDownloadTaskListener(this);
       return;
     }
@@ -92,8 +97,13 @@ public class u
   
   private void b(TMAssistantDownloadTaskInfo paramTMAssistantDownloadTaskInfo)
   {
-    if (paramTMAssistantDownloadTaskInfo == null) {}
-    while ((paramTMAssistantDownloadTaskInfo.mState != 4) || (TextUtils.isEmpty(paramTMAssistantDownloadTaskInfo.mSavePath))) {
+    if (paramTMAssistantDownloadTaskInfo == null) {
+      return;
+    }
+    if (paramTMAssistantDownloadTaskInfo.mState != 4) {
+      return;
+    }
+    if (TextUtils.isEmpty(paramTMAssistantDownloadTaskInfo.mSavePath)) {
       return;
     }
     a.a(paramTMAssistantDownloadTaskInfo.mSavePath);
@@ -119,23 +129,25 @@ public class u
         return true;
       }
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label65:
+      break label65;
+    }
     return false;
   }
   
   private void c(List<TMAssistantDownloadTaskInfo> paramList)
   {
-    if (paramList == null) {}
-    for (;;)
-    {
+    if (paramList == null) {
       return;
-      Iterator localIterator = this.b.iterator();
-      while (localIterator.hasNext())
-      {
-        e locale = (e)((WeakReference)localIterator.next()).get();
-        if (locale != null) {
-          locale.a(this.d, paramList);
-        }
+    }
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext())
+    {
+      e locale = (e)((WeakReference)localIterator.next()).get();
+      if (locale != null) {
+        locale.a(this.d, paramList);
       }
     }
   }
@@ -143,116 +155,146 @@ public class u
   public List<TMAssistantDownloadTaskInfo> a(List<String> paramList)
   {
     if (paramList == null) {}
+    try
+    {
+      paramList = this.c;
+      return paramList;
+    }
+    finally
+    {
+      break label125;
+    }
+    this.d.clear();
+    this.d.addAll(paramList);
+    this.c.clear();
+    paramList = this.d.iterator();
+    while (paramList.hasNext())
+    {
+      Object localObject = (String)paramList.next();
+      localObject = this.e.getDownloadTaskInfosByVia((String)localObject);
+      if (localObject != null) {
+        this.c.addAll((Collection)localObject);
+      }
+    }
+    c(this.c);
+    paramList = this.c;
+    return paramList;
+    label125:
     for (;;)
     {
-      try
-      {
-        paramList = this.c;
-        return paramList;
-      }
-      finally {}
-      this.d.clear();
-      this.d.addAll(paramList);
-      this.c.clear();
-      paramList = this.d.iterator();
-      if (paramList.hasNext())
-      {
-        Object localObject = (String)paramList.next();
-        localObject = this.e.getDownloadTaskInfosByVia((String)localObject);
-        if (localObject != null) {
-          this.c.addAll((Collection)localObject);
-        }
-      }
-      else
-      {
-        c(this.c);
-        paramList = this.c;
-      }
+      throw paramList;
     }
   }
   
   public void a()
   {
-    if (this.e != null)
+    TMAssistantDownloadClient localTMAssistantDownloadClient = this.e;
+    if (localTMAssistantDownloadClient != null)
     {
-      this.e.unInitTMAssistantDownloadSDK();
+      localTMAssistantDownloadClient.unInitTMAssistantDownloadSDK();
       this.e = null;
     }
   }
   
   public void a(BatchSDKDownloadActionResponse paramBatchSDKDownloadActionResponse)
   {
-    for (;;)
+    try
     {
-      try
+      if (this.e == null) {
+        b();
+      }
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("batchDownloadTaskAction downloadClient:");
+      ((StringBuilder)localObject1).append(this.e);
+      ab.c("TMAssistantDownloadQQGameClient", ((StringBuilder)localObject1).toString());
+      if (paramBatchSDKDownloadActionResponse == null) {
+        return;
+      }
+      Object localObject2;
+      switch (paramBatchSDKDownloadActionResponse.batchRequestType)
       {
-        if (this.e == null) {
-          b();
-        }
-        ab.c("TMAssistantDownloadQQGameClient", "batchDownloadTaskAction downloadClient:" + this.e);
-        if (paramBatchSDKDownloadActionResponse == null) {
-          return;
-        }
-        switch (paramBatchSDKDownloadActionResponse.batchRequestType)
+      case 6: 
+        paramBatchSDKDownloadActionResponse = paramBatchSDKDownloadActionResponse.batchData.iterator();
+        while (paramBatchSDKDownloadActionResponse.hasNext())
         {
-        case 2: 
-          ab.c("TMAssistantDownloadQQGameClient", "batchDownloadTaskAction undo anythings......");
-          continue;
-          paramBatchSDKDownloadActionResponse = paramBatchSDKDownloadActionResponse.batchData.iterator();
+          localObject1 = (IPCSDKDownloadInfo)paramBatchSDKDownloadActionResponse.next();
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("batchDownloadTaskAction open package:");
+          ((StringBuilder)localObject2).append(((IPCSDKDownloadInfo)localObject1).packageName);
+          ab.c("TMAssistantDownloadQQGameClient", ((StringBuilder)localObject2).toString());
+          if (!TextUtils.isEmpty(((IPCSDKDownloadInfo)localObject1).packageName)) {
+            b(((IPCSDKDownloadInfo)localObject1).packageName);
+          }
         }
-      }
-      finally {}
-      IPCSDKDownloadInfo localIPCSDKDownloadInfo;
-      while (paramBatchSDKDownloadActionResponse.hasNext())
-      {
-        localIPCSDKDownloadInfo = (IPCSDKDownloadInfo)paramBatchSDKDownloadActionResponse.next();
-        ab.c("TMAssistantDownloadQQGameClient", "batchDownloadTaskAction PAUSE url:" + localIPCSDKDownloadInfo.url);
-        this.e.pauseDownloadTask(localIPCSDKDownloadInfo.url);
-      }
-      continue;
-      paramBatchSDKDownloadActionResponse = paramBatchSDKDownloadActionResponse.batchData.iterator();
-      while (paramBatchSDKDownloadActionResponse.hasNext())
-      {
-        localIPCSDKDownloadInfo = (IPCSDKDownloadInfo)paramBatchSDKDownloadActionResponse.next();
-        ab.c("TMAssistantDownloadQQGameClient", "batchDownloadTaskAction start url:" + localIPCSDKDownloadInfo.url);
-        HashMap localHashMap = new HashMap();
-        this.e.startDownloadTask(localIPCSDKDownloadInfo.url, "application/vnd.android.package-archive", localHashMap);
-      }
-      continue;
-      paramBatchSDKDownloadActionResponse = paramBatchSDKDownloadActionResponse.batchData.iterator();
-      while (paramBatchSDKDownloadActionResponse.hasNext())
-      {
-        localIPCSDKDownloadInfo = (IPCSDKDownloadInfo)paramBatchSDKDownloadActionResponse.next();
-        ab.c("TMAssistantDownloadQQGameClient", "batchDownloadTaskAction cancel url:" + localIPCSDKDownloadInfo.url);
-        this.e.cancelDownloadTask(localIPCSDKDownloadInfo.url);
-      }
-      continue;
-      paramBatchSDKDownloadActionResponse = paramBatchSDKDownloadActionResponse.batchData.iterator();
-      while (paramBatchSDKDownloadActionResponse.hasNext())
-      {
-        localIPCSDKDownloadInfo = (IPCSDKDownloadInfo)paramBatchSDKDownloadActionResponse.next();
-        ab.c("TMAssistantDownloadQQGameClient", "batchDownloadTaskAction delete url:" + localIPCSDKDownloadInfo.url);
-        this.e.deleteDownloadTask(localIPCSDKDownloadInfo.url);
-      }
-      continue;
-      paramBatchSDKDownloadActionResponse = paramBatchSDKDownloadActionResponse.batchData.iterator();
-      while (paramBatchSDKDownloadActionResponse.hasNext())
-      {
-        localIPCSDKDownloadInfo = (IPCSDKDownloadInfo)paramBatchSDKDownloadActionResponse.next();
-        ab.c("TMAssistantDownloadQQGameClient", "batchDownloadTaskAction install package:" + localIPCSDKDownloadInfo.packageName);
-        b(this.e.getDownloadTaskState(localIPCSDKDownloadInfo.url));
-      }
-      continue;
-      paramBatchSDKDownloadActionResponse = paramBatchSDKDownloadActionResponse.batchData.iterator();
-      while (paramBatchSDKDownloadActionResponse.hasNext())
-      {
-        localIPCSDKDownloadInfo = (IPCSDKDownloadInfo)paramBatchSDKDownloadActionResponse.next();
-        ab.c("TMAssistantDownloadQQGameClient", "batchDownloadTaskAction open package:" + localIPCSDKDownloadInfo.packageName);
-        if (!TextUtils.isEmpty(localIPCSDKDownloadInfo.packageName)) {
-          b(localIPCSDKDownloadInfo.packageName);
+      case 5: 
+        paramBatchSDKDownloadActionResponse = paramBatchSDKDownloadActionResponse.batchData.iterator();
+        while (paramBatchSDKDownloadActionResponse.hasNext())
+        {
+          localObject1 = (IPCSDKDownloadInfo)paramBatchSDKDownloadActionResponse.next();
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("batchDownloadTaskAction install package:");
+          ((StringBuilder)localObject2).append(((IPCSDKDownloadInfo)localObject1).packageName);
+          ab.c("TMAssistantDownloadQQGameClient", ((StringBuilder)localObject2).toString());
+          b(this.e.getDownloadTaskState(((IPCSDKDownloadInfo)localObject1).url));
+        }
+      case 4: 
+        paramBatchSDKDownloadActionResponse = paramBatchSDKDownloadActionResponse.batchData.iterator();
+        while (paramBatchSDKDownloadActionResponse.hasNext())
+        {
+          localObject1 = (IPCSDKDownloadInfo)paramBatchSDKDownloadActionResponse.next();
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("batchDownloadTaskAction delete url:");
+          ((StringBuilder)localObject2).append(((IPCSDKDownloadInfo)localObject1).url);
+          ab.c("TMAssistantDownloadQQGameClient", ((StringBuilder)localObject2).toString());
+          this.e.deleteDownloadTask(((IPCSDKDownloadInfo)localObject1).url);
+        }
+      case 3: 
+        paramBatchSDKDownloadActionResponse = paramBatchSDKDownloadActionResponse.batchData.iterator();
+        while (paramBatchSDKDownloadActionResponse.hasNext())
+        {
+          localObject1 = (IPCSDKDownloadInfo)paramBatchSDKDownloadActionResponse.next();
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("batchDownloadTaskAction cancel url:");
+          ((StringBuilder)localObject2).append(((IPCSDKDownloadInfo)localObject1).url);
+          ab.c("TMAssistantDownloadQQGameClient", ((StringBuilder)localObject2).toString());
+          this.e.cancelDownloadTask(((IPCSDKDownloadInfo)localObject1).url);
+        }
+      case 2: 
+        paramBatchSDKDownloadActionResponse = paramBatchSDKDownloadActionResponse.batchData.iterator();
+        while (paramBatchSDKDownloadActionResponse.hasNext())
+        {
+          localObject1 = (IPCSDKDownloadInfo)paramBatchSDKDownloadActionResponse.next();
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("batchDownloadTaskAction PAUSE url:");
+          ((StringBuilder)localObject2).append(((IPCSDKDownloadInfo)localObject1).url);
+          ab.c("TMAssistantDownloadQQGameClient", ((StringBuilder)localObject2).toString());
+          this.e.pauseDownloadTask(((IPCSDKDownloadInfo)localObject1).url);
+        }
+      case 1: 
+        paramBatchSDKDownloadActionResponse = paramBatchSDKDownloadActionResponse.batchData.iterator();
+        while (paramBatchSDKDownloadActionResponse.hasNext())
+        {
+          localObject1 = (IPCSDKDownloadInfo)paramBatchSDKDownloadActionResponse.next();
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("batchDownloadTaskAction start url:");
+          ((StringBuilder)localObject2).append(((IPCSDKDownloadInfo)localObject1).url);
+          ab.c("TMAssistantDownloadQQGameClient", ((StringBuilder)localObject2).toString());
+          localObject2 = new HashMap();
+          this.e.startDownloadTask(((IPCSDKDownloadInfo)localObject1).url, "application/vnd.android.package-archive", (Map)localObject2);
         }
       }
     }
+    finally
+    {
+      for (;;)
+      {
+        for (;;)
+        {
+          throw paramBatchSDKDownloadActionResponse;
+        }
+      }
+    }
+    ab.c("TMAssistantDownloadQQGameClient", "batchDownloadTaskAction undo anythings......");
   }
   
   public void a(SubScribeSDKDownloadTaskByViaResponse paramSubScribeSDKDownloadTaskByViaResponse)
@@ -270,74 +312,66 @@ public class u
   
   public boolean a(e parame)
   {
-    for (;;)
+    try
     {
-      Object localObject;
-      try
+      ab.c("TMAssistantDownloadQQGameClient", "enter");
+      if (parame == null)
       {
-        ab.c("TMAssistantDownloadQQGameClient", "enter");
-        if (parame == null)
-        {
-          ab.c("TMAssistantDownloadQQGameClient", "listener == null");
-          ab.c("TMAssistantDownloadQQGameClient", "returnValue: false");
-          ab.c("TMAssistantDownloadQQGameClient", "exit");
-          bool = false;
-          return bool;
-        }
-        localObject = this.a.poll();
-        if (localObject != null)
-        {
-          ab.c("TMAssistantDownloadQQGameClient", "registerDownloadTaskListener removed listener!!!!");
-          this.b.remove(localObject);
-          continue;
-        }
-        localObject = this.b.iterator();
+        ab.c("TMAssistantDownloadQQGameClient", "listener == null");
+        ab.c("TMAssistantDownloadQQGameClient", "returnValue: false");
+        ab.c("TMAssistantDownloadQQGameClient", "exit");
+        return false;
       }
-      finally {}
       for (;;)
       {
-        if (((Iterator)localObject).hasNext()) {
-          if ((e)((WeakReference)((Iterator)localObject).next()).get() == parame)
-          {
-            ab.c("TMAssistantDownloadQQGameClient", "returnValue: true");
-            ab.c("TMAssistantDownloadQQGameClient", "exit");
-            bool = true;
-            break;
-          }
+        localObject = this.a.poll();
+        if (localObject == null) {
+          break;
+        }
+        ab.c("TMAssistantDownloadQQGameClient", "registerDownloadTaskListener removed listener!!!!");
+        this.b.remove(localObject);
+      }
+      Object localObject = this.b.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if ((e)((WeakReference)((Iterator)localObject).next()).get() == parame)
+        {
+          ab.c("TMAssistantDownloadQQGameClient", "returnValue: true");
+          ab.c("TMAssistantDownloadQQGameClient", "exit");
+          return true;
         }
       }
       parame = new WeakReference(parame, this.a);
       this.b.add(parame);
       ab.c("TMAssistantDownloadQQGameClient", "returnValue: true");
       ab.c("TMAssistantDownloadQQGameClient", "exit");
-      boolean bool = true;
+      return true;
+    }
+    finally {}
+    for (;;)
+    {
+      throw parame;
     }
   }
   
   public void b(List<String> paramList)
   {
-    if (paramList != null) {}
-    for (;;)
-    {
+    if (paramList != null) {
       try
       {
-        int i = paramList.size();
-        if (i == 0) {
-          return;
-        }
-        this.d.removeAll(paramList);
-        ArrayList localArrayList = new ArrayList();
-        Iterator localIterator = this.c.iterator();
-        if (localIterator.hasNext())
+        if (paramList.size() != 0)
         {
-          TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = (TMAssistantDownloadTaskInfo)localIterator.next();
-          if (paramList.contains(localTMAssistantDownloadTaskInfo.mVia)) {
-            localArrayList.add(localTMAssistantDownloadTaskInfo);
+          this.d.removeAll(paramList);
+          ArrayList localArrayList = new ArrayList();
+          Iterator localIterator = this.c.iterator();
+          while (localIterator.hasNext())
+          {
+            TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = (TMAssistantDownloadTaskInfo)localIterator.next();
+            if (paramList.contains(localTMAssistantDownloadTaskInfo.mVia)) {
+              localArrayList.add(localTMAssistantDownloadTaskInfo);
+            }
           }
-        }
-        else
-        {
           this.c.removeAll(localArrayList);
+          return;
         }
       }
       finally {}
@@ -354,23 +388,20 @@ public class u
       paramTMAssistantDownloadClient.mReceiveDataLen = paramLong1;
       paramTMAssistantDownloadClient.mTotalDataLen = paramLong2;
       a(paramTMAssistantDownloadClient);
-    }
-    for (;;)
-    {
       return;
-      try
+    }
+    try
+    {
+      paramTMAssistantDownloadClient = this.e.getDownloadTaskState(paramString);
+      if (paramTMAssistantDownloadClient != null)
       {
-        paramTMAssistantDownloadClient = this.e.getDownloadTaskState(paramString);
-        if (paramTMAssistantDownloadClient != null)
-        {
-          a(paramTMAssistantDownloadClient);
-          return;
-        }
+        a(paramTMAssistantDownloadClient);
+        return;
       }
-      catch (Exception paramTMAssistantDownloadClient)
-      {
-        paramTMAssistantDownloadClient.printStackTrace();
-      }
+    }
+    catch (Exception paramTMAssistantDownloadClient)
+    {
+      paramTMAssistantDownloadClient.printStackTrace();
     }
   }
   
@@ -382,23 +413,20 @@ public class u
     {
       paramTMAssistantDownloadClient.mState = paramInt1;
       a(paramTMAssistantDownloadClient);
-    }
-    for (;;)
-    {
       return;
-      try
+    }
+    try
+    {
+      paramTMAssistantDownloadClient = this.e.getDownloadTaskState(paramString1);
+      if (paramTMAssistantDownloadClient != null)
       {
-        paramTMAssistantDownloadClient = this.e.getDownloadTaskState(paramString1);
-        if (paramTMAssistantDownloadClient != null)
-        {
-          a(paramTMAssistantDownloadClient);
-          return;
-        }
+        a(paramTMAssistantDownloadClient);
+        return;
       }
-      catch (Exception paramTMAssistantDownloadClient)
-      {
-        paramTMAssistantDownloadClient.printStackTrace();
-      }
+    }
+    catch (Exception paramTMAssistantDownloadClient)
+    {
+      paramTMAssistantDownloadClient.printStackTrace();
     }
   }
   
@@ -416,7 +444,7 @@ public class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmdownloader.u
  * JD-Core Version:    0.7.0.1
  */

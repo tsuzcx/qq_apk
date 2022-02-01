@@ -25,7 +25,7 @@ public class PluginConst$AdConst
   public static final String ERROR_MSG_NO_AD;
   public static final String ERROR_MSG_PARAM_ERROR;
   public static final String ERROR_MSG_REJECTED;
-  public static final String ERROR_MSG_SERVICE_FAIL = HardCodeUtil.a(2131708243);
+  public static final String ERROR_MSG_SERVICE_FAIL = HardCodeUtil.a(2131708252);
   public static final int KErrAdBlocked = -100100009;
   public static final int KErrAdDeleted = -100100002;
   public static final int KErrAdGdtNoData = -100100008;
@@ -38,15 +38,15 @@ public class PluginConst$AdConst
   
   static
   {
-    ERROR_MSG_PARAM_ERROR = HardCodeUtil.a(2131708249);
-    ERROR_MSG_INVALID_ADUNITID = HardCodeUtil.a(2131708247);
-    ERROR_MSG_INNER_ERROR = HardCodeUtil.a(2131708250);
-    ERROR_MSG_NO_AD = HardCodeUtil.a(2131708246);
-    ERROR_MSG_IN_REVIEW = HardCodeUtil.a(2131708244);
-    ERROR_MSG_REJECTED = HardCodeUtil.a(2131708245);
-    ERROR_MSG_BANNED = HardCodeUtil.a(2131708248);
-    ERROR_MSG_CLOSED = HardCodeUtil.a(2131708242);
-    ERROR_MSG_INVALID_POSITION = HardCodeUtil.a(2131694157);
+    ERROR_MSG_PARAM_ERROR = HardCodeUtil.a(2131708258);
+    ERROR_MSG_INVALID_ADUNITID = HardCodeUtil.a(2131708256);
+    ERROR_MSG_INNER_ERROR = HardCodeUtil.a(2131708259);
+    ERROR_MSG_NO_AD = HardCodeUtil.a(2131708255);
+    ERROR_MSG_IN_REVIEW = HardCodeUtil.a(2131708253);
+    ERROR_MSG_REJECTED = HardCodeUtil.a(2131708254);
+    ERROR_MSG_BANNED = HardCodeUtil.a(2131708257);
+    ERROR_MSG_CLOSED = HardCodeUtil.a(2131708251);
+    ERROR_MSG_INVALID_POSITION = HardCodeUtil.a(2131694112);
   }
   
   public static int getRetCodeByServerResult(int paramInt)
@@ -61,13 +61,13 @@ public class PluginConst$AdConst
     case -100100002: 
     case -100100001: 
       return 1008;
+    case -100100006: 
+    case -100100005: 
+      return 1001;
     case -100100007: 
     case -100100004: 
     case -100100003: 
       return 1002;
-    case -100100006: 
-    case -100100005: 
-      return 1001;
     case -100100008: 
       return 1004;
     }
@@ -76,7 +76,7 @@ public class PluginConst$AdConst
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst
  * JD-Core Version:    0.7.0.1
  */

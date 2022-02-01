@@ -12,7 +12,6 @@ import cooperation.qzone.util.QZLog;
 import cooperation.vip.vipcomponent.QQUnionIconInfo;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map<Ljava.lang.String;Lcooperation.vip.vipcomponent.QQUnionIconInfo;>;
 
 public class VipResources
 {
@@ -147,12 +146,10 @@ public class VipResources
     if (a.containsKey(Integer.valueOf(paramInt1))) {
       return ZipResDownloadManager.a().a("https://qzonestyle.gtimg.cn/qzone/qzact/act/external/qzone_vip_icon/qzone_yellow_icon_v8.zip", paramInt2, (String)a.get(Integer.valueOf(paramInt1)), paramZipResLoadListener);
     }
-    switch (paramInt1)
-    {
-    default: 
+    if (paramInt1 != 1) {
       return null;
     }
-    return BaseApplicationImpl.getContext().getResources().getDrawable(2130849701);
+    return BaseApplicationImpl.getContext().getResources().getDrawable(2130849598);
   }
   
   public static Drawable a(String paramString, int paramInt1, int paramInt2, int paramInt3, ZipResLoadListener paramZipResLoadListener)
@@ -162,21 +159,32 @@ public class VipResources
   
   public static Drawable a(String paramString, int paramInt1, int paramInt2, int paramInt3, ZipResLoadListener paramZipResLoadListener, int paramInt4)
   {
-    switch (paramInt4)
+    if (paramInt4 != 0)
     {
-    }
-    for (;;)
-    {
-      return null;
-      ZipResDownloadManager.a().a(paramString, paramInt1, "border", paramZipResLoadListener);
-      continue;
-      switch (paramInt3)
-      {
+      if (paramInt4 == 1) {
+        ZipResDownloadManager.a().a(paramString, paramInt1, "border", paramZipResLoadListener);
       }
     }
-    return ZipResDownloadManager.a().a(paramString, paramInt1, "head", paramZipResLoadListener);
-    return ZipResDownloadManager.a().a(paramString, paramInt1, "bottom_lv" + paramInt2, paramZipResLoadListener);
-    return ZipResDownloadManager.a().a(paramString, paramInt1, "right", paramZipResLoadListener);
+    else {
+      switch (paramInt3)
+      {
+      default: 
+        break;
+      case 7: 
+        ZipResDownloadManager localZipResDownloadManager = ZipResDownloadManager.a();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("bottom_lv");
+        localStringBuilder.append(paramInt2);
+        return localZipResDownloadManager.a(paramString, paramInt1, localStringBuilder.toString(), paramZipResLoadListener);
+      case 5: 
+      case 6: 
+      case 8: 
+        return ZipResDownloadManager.a().a(paramString, paramInt1, "right", paramZipResLoadListener);
+      case 4: 
+        return ZipResDownloadManager.a().a(paramString, paramInt1, "head", paramZipResLoadListener);
+      }
+    }
+    return null;
   }
   
   public static Drawable a(String paramString, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, int paramInt4, ZipResLoadListener paramZipResLoadListener)
@@ -190,72 +198,80 @@ public class VipResources
   
   public static QQUnionIconInfo a(int paramInt1, int paramInt2)
   {
-    int i = -1;
+    String str = null;
     if (paramInt2 <= 0) {
       return null;
     }
     QQUnionIconInfo localQQUnionIconInfo = new QQUnionIconInfo();
-    String str;
+    int i = -1;
     switch (paramInt1)
     {
     default: 
-      str = null;
       paramInt2 = -1;
       paramInt1 = i;
-    }
-    for (;;)
-    {
-      localQQUnionIconInfo.mIconUrl = str;
-      localQQUnionIconInfo.mIconWidth = paramInt2;
-      localQQUnionIconInfo.mIconHeight = paramInt1;
-      return localQQUnionIconInfo;
-      str = QzoneConfig.getInstance().getConfig("H5Url", "union_vip_head_icon_url", "https://qzonestyle.gtimg.cn/qzone/qzact/act/external/bigVip/headaz/lv{level}.zip").replace("{level}", String.valueOf(paramInt2));
-      paramInt2 = 52;
-      paramInt1 = 54;
-      continue;
-      str = QzoneConfig.getInstance().getConfig("H5Url", "union_vip_feed_icon_url", "https://qzonestyle.gtimg.cn/qzone/qzact/act/external/bigVip/feedaz/lv{level}.zip").replace("{level}", String.valueOf(paramInt2));
-      paramInt2 = 94;
-      paramInt1 = 44;
-      continue;
+      break;
+    case 7: 
       str = QzoneConfig.getInstance().getConfig("H5Url", "union_vip_widget_url", "https://qzonestyle.gtimg.cn/qzone/qzact/act/external/bigVip/widget/LV{level}.png").replace("{level}", String.valueOf(paramInt2));
-      paramInt2 = 49;
-      paramInt1 = 50;
+      paramInt1 = 49;
+      paramInt2 = 50;
+      break;
+    case 5: 
+    case 6: 
+    case 8: 
+      str = QzoneConfig.getInstance().getConfig("H5Url", "union_vip_feed_icon_url", "https://qzonestyle.gtimg.cn/qzone/qzact/act/external/bigVip/feedaz/lv{level}.zip").replace("{level}", String.valueOf(paramInt2));
+      paramInt1 = 94;
+      paramInt2 = 44;
+      break;
+    case 4: 
+      str = QzoneConfig.getInstance().getConfig("H5Url", "union_vip_head_icon_url", "https://qzonestyle.gtimg.cn/qzone/qzact/act/external/bigVip/headaz/lv{level}.zip").replace("{level}", String.valueOf(paramInt2));
+      paramInt1 = 52;
+      paramInt2 = 54;
     }
+    localQQUnionIconInfo.mIconUrl = str;
+    localQQUnionIconInfo.mIconWidth = paramInt1;
+    localQQUnionIconInfo.mIconHeight = paramInt2;
+    return localQQUnionIconInfo;
   }
   
   public static QQUnionIconInfo a(int paramInt1, int paramInt2, Map<String, QQUnionIconInfo> paramMap)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
     if (paramMap != null) {
       switch (paramInt1)
       {
       default: 
-        localObject1 = localObject2;
+        break;
+      case 7: 
+        paramMap = (QQUnionIconInfo)paramMap.get("widget_icon");
+        break;
+      case 5: 
+      case 6: 
+      case 8: 
+        paramMap = (QQUnionIconInfo)paramMap.get("feed_icon");
+        break;
+      case 4: 
+        paramMap = (QQUnionIconInfo)paramMap.get("head_icon");
+        break;
       }
     }
-    for (;;)
+    paramMap = null;
+    Object localObject;
+    if ((paramMap != null) && (!TextUtils.isEmpty(paramMap.mIconUrl)) && (paramMap.mIconWidth > 0))
     {
-      if ((localObject1 != null) && (!TextUtils.isEmpty(((QQUnionIconInfo)localObject1).mIconUrl)) && (((QQUnionIconInfo)localObject1).mIconWidth > 0))
-      {
-        paramMap = (Map<String, QQUnionIconInfo>)localObject1;
-        if (((QQUnionIconInfo)localObject1).mIconHeight > 0) {}
-      }
-      else
-      {
-        QZLog.i("QQUnionVip", 1, "current getQQUnionVipUrl = null use default location = " + paramInt1);
-        paramMap = a(paramInt1, paramInt2);
-      }
-      if ((paramMap != null) && (!TextUtils.isEmpty(paramMap.mIconUrl)) && (paramMap.mIconUrl.contains("{platform}"))) {
-        paramMap.mIconUrl = paramMap.mIconUrl.replace("{platform}", "az");
-      }
-      return paramMap;
-      localObject1 = (QQUnionIconInfo)paramMap.get("head_icon");
-      continue;
-      localObject1 = (QQUnionIconInfo)paramMap.get("feed_icon");
-      continue;
-      localObject1 = (QQUnionIconInfo)paramMap.get("widget_icon");
+      localObject = paramMap;
+      if (paramMap.mIconHeight > 0) {}
     }
+    else
+    {
+      paramMap = new StringBuilder();
+      paramMap.append("current getQQUnionVipUrl = null use default location = ");
+      paramMap.append(paramInt1);
+      QZLog.i("QQUnionVip", 1, paramMap.toString());
+      localObject = a(paramInt1, paramInt2);
+    }
+    if ((localObject != null) && (!TextUtils.isEmpty(((QQUnionIconInfo)localObject).mIconUrl)) && (((QQUnionIconInfo)localObject).mIconUrl.contains("{platform}"))) {
+      ((QQUnionIconInfo)localObject).mIconUrl = ((QQUnionIconInfo)localObject).mIconUrl.replace("{platform}", "az");
+    }
+    return localObject;
   }
   
   public static QQUnionIconInfo a(int paramInt, UserClientShowInfo paramUserClientShowInfo)
@@ -268,27 +284,53 @@ public class VipResources
   
   public static String a(int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3)
   {
-    Object localObject = "";
+    Object localObject1;
     switch (paramInt3)
     {
     default: 
-      return localObject;
-    case 4: 
-    case 7: 
-      if (paramInt1 == 2) {}
-      for (String str = "" + "svip_widget_lv" + paramInt2;; str = "" + "vip_widget_lv" + paramInt2)
+      return "";
+    case 5: 
+    case 6: 
+    case 8: 
+      if (paramInt1 == 2)
       {
-        localObject = str;
-        if (!paramBoolean) {
-          break;
-        }
-        return str + "nian";
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("");
+        ((StringBuilder)localObject1).append("svip_feed_lv");
+        ((StringBuilder)localObject1).append(paramInt2);
+        return ((StringBuilder)localObject1).toString();
       }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("");
+      ((StringBuilder)localObject1).append("vip_feed_lv");
+      ((StringBuilder)localObject1).append(paramInt2);
+      return ((StringBuilder)localObject1).toString();
     }
-    if (paramInt1 == 2) {
-      return "" + "svip_feed_lv" + paramInt2;
+    if (paramInt1 == 2)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("");
+      ((StringBuilder)localObject1).append("svip_widget_lv");
+      ((StringBuilder)localObject1).append(paramInt2);
+      localObject1 = ((StringBuilder)localObject1).toString();
     }
-    return "" + "vip_feed_lv" + paramInt2;
+    else
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("");
+      ((StringBuilder)localObject1).append("vip_widget_lv");
+      ((StringBuilder)localObject1).append(paramInt2);
+      localObject1 = ((StringBuilder)localObject1).toString();
+    }
+    Object localObject2 = localObject1;
+    if (paramBoolean)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("nian");
+      localObject2 = ((StringBuilder)localObject2).toString();
+    }
+    return localObject2;
   }
   
   public static void a(Context paramContext, String paramString)
@@ -298,7 +340,7 @@ public class VipResources
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.vipcomponent.util.VipResources
  * JD-Core Version:    0.7.0.1
  */

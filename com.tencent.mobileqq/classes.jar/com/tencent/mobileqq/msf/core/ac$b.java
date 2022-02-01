@@ -31,251 +31,248 @@ class ac$b
   public void run()
   {
     int j;
-    long l;
+    Object localObject6;
+    Object localObject7;
+    int i1;
+    int m;
+    int n;
+    int i2;
+    label1145:
+    Object localObject3;
+    label1700:
+    label1711:
     synchronized (ac.a(this.a))
     {
       j = this.a.h.size();
-      i = j;
+      int i = j;
       if (j > this.a.j) {
         i = this.a.j;
       }
-      l = SystemClock.elapsedRealtime();
-      if (this.a.L >= l)
+      long l = SystemClock.elapsedRealtime();
+      if (this.a.L >= l) {
+        ac.b(this.a).postDelayed(this.a.i, this.a.m);
+      } else {
+        ac.a(this.a, false);
+      }
+      if ((!ac.c(this.a)) && (this.a.h.size() - this.a.k > 0))
       {
         ac.b(this.a).postDelayed(this.a.i, this.a.m);
-        if ((!ac.c(this.a)) && (this.a.h.size() - this.a.k > 0))
-        {
-          ac.b(this.a).postDelayed(this.a.i, this.a.m);
-          ac.a(this.a, true);
-        }
-        if (QLog.isDevelopLevel()) {
-          QLog.d("MSF.C.NetConnTag", 4, "delayWaitSendList size is " + this.a.h.size() + ", " + i + " sso package should be merged.");
-        }
-        if (i <= 0) {
-          break label1622;
-        }
+        ac.a(this.a, true);
+      }
+      if (QLog.isDevelopLevel())
+      {
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("delayWaitSendList size is ");
+        ((StringBuilder)???).append(this.a.h.size());
+        ((StringBuilder)???).append(", ");
+        ((StringBuilder)???).append(i);
+        ((StringBuilder)???).append(" sso package should be merged.");
+        QLog.d("MSF.C.NetConnTag", 4, ((StringBuilder)???).toString());
+      }
+      Object localObject4 = null;
+      if (i > 0)
+      {
         j = i;
-      }
-      try
-      {
-        if (i > this.a.h.size()) {
-          j = this.a.h.size();
-        }
-        if (j != 1) {
-          break label348;
-        }
-        ??? = (ToServiceMsg)this.a.h.peek();
-        if ((??? == null) || (((ToServiceMsg)???).getWupBuffer().length >= this.a.o)) {
-          break label348;
-        }
-        ac localac = this.a;
-        localac.l -= ((ToServiceMsg)???).getWupBuffer().length;
-        ac.a(this.a, (ToServiceMsg)this.a.h.poll());
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
+        try
         {
-          synchronized (ac.a(this.a))
+          if (i > this.a.h.size()) {
+            j = this.a.h.size();
+          }
+          if (j == 1)
           {
-            if ((this.a.l >= this.a.k) && (!ac.c(this.a)))
+            ??? = (ToServiceMsg)this.a.h.peek();
+            if ((??? != null) && (((ToServiceMsg)???).getWupBuffer().length < this.a.o))
             {
-              ac.a(this.a, true);
-              ac.b(this.a).post(this.a.i);
-              if (i1 > 0)
-              {
-                this.a.e.put(Integer.valueOf(((ToServiceMsg)???).getRequestSsoSeq()), localArrayList);
-                this.a.f.put(Integer.valueOf(((ToServiceMsg)???).getRequestSsoSeq()), localObject6);
-                localObject5 = ((SSOLoginMerge.BusiBuffData)localObject5).toByteArray();
-                localObject6 = new ByteArrayOutputStream();
-                j.a((byte[])localObject5, (OutputStream)localObject6);
-                localObject6 = ac.b(((ByteArrayOutputStream)localObject6).toByteArray());
-                ((ToServiceMsg)???).putWupBuffer((byte[])localObject6);
-                ((ToServiceMsg)???).getAttributes().put("mergeCount", Integer.valueOf(i1));
-                ((ToServiceMsg)???).getAttributes().put("noRespCount", Integer.valueOf(j));
-                if (QLog.isDevelopLevel()) {
-                  QLog.d("MSF.C.NetConnTag", 4, "Delay ToServiceMsg ssoseq: " + ((ToServiceMsg)???).getRequestSsoSeq() + " delayWaitSendList buffer size is " + localObject5.length + ", zip size is " + localObject6.length);
-                }
-              }
-              if (??? == null) {
-                continue;
-              }
-              ((ToServiceMsg)???).addAttribute("__timestamp_addSendQueue", Long.valueOf(System.currentTimeMillis()));
-              ac.a(this.a, (ToServiceMsg)???);
+              localObject4 = this.a;
+              ((ac)localObject4).l -= ((ToServiceMsg)???).getWupBuffer().length;
+              ac.a(this.a, (ToServiceMsg)this.a.h.poll());
               return;
-              localException = localException;
-              QLog.d("MSF.C.NetConnTag", 1, "add delayMsg to send error, close LoginMerge. " + localException, localException);
-              this.a.r = false;
-              if (this.a.h.size() <= 0) {
-                continue;
-              }
-              localToServiceMsg1 = (ToServiceMsg)this.a.h.poll();
-              if (localToServiceMsg1 == null) {
-                continue;
-              }
-              ac.a(this.a, localToServiceMsg1);
-              continue;
-              if ("RegPrxySvc.getOffMsg".equals(localToServiceMsg2.getServiceCmd()))
-              {
-                localToServiceMsg1.getAttributes().put("infoLoginMsg", localToServiceMsg2);
-                continue;
-              }
-              if (!"RegPrxySvc.infoSync".equals(localToServiceMsg2.getServiceCmd())) {
-                continue;
-              }
-              localToServiceMsg1.getAttributes().put("infoLoginMsg", localToServiceMsg2);
-              continue;
-              ??? = this.a;
-              ((ac)???).l -= localToServiceMsg2.getWupBuffer().length;
-              if (n == 0)
-              {
-                localToServiceMsg1.setUin(localToServiceMsg2.getUin());
-                localBusiBuffItem = new SSOLoginMerge.BusiBuffItem();
-                localBusiBuffItem.SeqNo.set(localToServiceMsg2.getRequestSsoSeq());
-                localBusiBuffItem.ServiceCmd.set(localToServiceMsg2.getServiceCmd());
-                if (localToServiceMsg2.getWupBuffer().length < 4)
-                {
-                  localBusiBuffItem.BusiBuffLen.set(ac.b(localToServiceMsg2.getWupBuffer()).length);
-                  if (localToServiceMsg2.getWupBuffer().length < 4) {
-                    continue;
-                  }
-                  ??? = new byte[localToServiceMsg2.getWupBuffer().length - 4];
-                  System.arraycopy(localToServiceMsg2.getWupBuffer(), 4, ???, 0, ???.length);
-                  localBusiBuffItem.BusiBuff.set(ByteStringMicro.copyFrom((byte[])???));
-                  localBusiBuffItem.NeedResp.set(localToServiceMsg2.isNeedCallback());
-                  ((SSOLoginMerge.BusiBuffData)localObject5).BusiBuffVec.add(localBusiBuffItem);
-                  localArrayList.add(Integer.valueOf(localToServiceMsg2.getRequestSsoSeq()));
-                  ((ArrayList)localObject6).add(localToServiceMsg2);
-                  this.a.d.put(Integer.valueOf(localToServiceMsg2.getRequestSsoSeq()), localToServiceMsg2);
-                  localToServiceMsg2.getAttributes().put("__extraTimeoutSeq", Integer.valueOf(ac.t().incrementAndGet()));
-                  if (localToServiceMsg2.getTimeout() != -1L) {
-                    continue;
-                  }
-                  localToServiceMsg2.setTimeout(30000L);
-                  ??? = this.a.D.msfAlarmer.a(localToServiceMsg2, localToServiceMsg2.getTimeout());
-                  localToServiceMsg2.addAttribute("to_timeoutCallbacker", ???);
-                  i1 = j;
-                  i2 = i;
-                  if (!a.x()) {
-                    break;
-                  }
-                  l = localToServiceMsg2.getTimeout() - a.A();
-                  i1 = j;
-                  i2 = i;
-                  if (l <= 0L) {
-                    break;
-                  }
-                  localToServiceMsg2.addAttribute("to_predetect_timeoutCallbacker", this.a.D.msfAlarmer.b(localToServiceMsg2, l));
-                  i1 = j;
-                  i2 = i;
-                  break;
-                }
-              }
-              else
-              {
-                if (localToServiceMsg1.getUin().equals(localToServiceMsg2.getUin())) {
-                  continue;
-                }
-                this.a.h.addFirst(localToServiceMsg2);
-                ??? = this.a;
-                i = ((ac)???).l;
-                ((ac)???).l = (localToServiceMsg2.getWupBuffer().length + i);
-                i1 = k;
-                continue;
-              }
-              localBusiBuffItem.BusiBuffLen.set(localToServiceMsg2.getWupBuffer().length);
-              continue;
-              ??? = localToServiceMsg2.getWupBuffer();
-              continue;
-              ??? = this.a.D.msfAlarmer.a(localToServiceMsg2, localToServiceMsg2.getTimeout());
-              continue;
-            }
-            if ((!ac.c(this.a)) && (this.a.h.size() >= this.a.j))
-            {
-              ac.a(this.a, true);
-              ac.b(this.a).post(this.a.i);
             }
           }
-          if ((!ac.c(this.a)) && (!this.a.h.isEmpty()))
+          localObject4 = new ToServiceMsg("MSF SSOPackageMerge", ac.d(this.a), "SSO.LoginMerge");
+          ((ToServiceMsg)localObject4).setAppId(MsfCore.mobileQQAppid);
+          ((ToServiceMsg)localObject4).setMsfCommand(MsfCommand.unknown);
+          if (((ToServiceMsg)localObject4).getRequestSsoSeq() == -1) {
+            ((ToServiceMsg)localObject4).setRequestSsoSeq(MsfCore.getNextSeq());
+          }
+          ((ToServiceMsg)localObject4).setTimeout(30000L);
+          ((ToServiceMsg)localObject4).setNeedCallback(false);
+          localObject6 = new ArrayList();
+          ??? = new ArrayList();
+          localObject7 = new SSOLoginMerge.BusiBuffData();
+          i = j;
+          k = i;
+          if (i <= this.a.h.size()) {
+            break label1700;
+          }
+          k = this.a.h.size();
+        }
+        catch (Exception localException)
+        {
+          int k;
+          ToServiceMsg localToServiceMsg;
+          SSOLoginMerge.BusiBuffItem localBusiBuffItem;
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("add delayMsg to send error, close LoginMerge. ");
+          ((StringBuilder)localObject4).append(localException);
+          QLog.d("MSF.C.NetConnTag", 1, ((StringBuilder)localObject4).toString(), localException);
+          this.a.r = false;
+          while (this.a.h.size() > 0)
+          {
+            localObject3 = (ToServiceMsg)this.a.h.poll();
+            if (localObject3 != null) {
+              ac.a(this.a, (ToServiceMsg)localObject3);
+            }
+          }
+        }
+        i1 = k;
+        i = j;
+        if (m < k)
+        {
+          localToServiceMsg = (ToServiceMsg)this.a.h.poll();
+          i1 = n;
+          i2 = j;
+          if (localToServiceMsg == null) {
+            break label1711;
+          }
+          if ("RegPrxySvc.infoLogin".equals(localToServiceMsg.getServiceCmd())) {
+            ((ToServiceMsg)localObject4).getAttributes().put("infoLoginMsg", localToServiceMsg);
+          } else if ("RegPrxySvc.getOffMsg".equals(localToServiceMsg.getServiceCmd())) {
+            ((ToServiceMsg)localObject4).getAttributes().put("infoLoginMsg", localToServiceMsg);
+          } else if ("RegPrxySvc.infoSync".equals(localToServiceMsg.getServiceCmd())) {
+            ((ToServiceMsg)localObject4).getAttributes().put("infoLoginMsg", localToServiceMsg);
+          }
+          i = j;
+          if (!localToServiceMsg.isNeedCallback()) {
+            i = j + 1;
+          }
+          j = n + localToServiceMsg.getWupBuffer().length;
+          if ((j >= this.a.k) && (m != 0))
+          {
+            this.a.h.addFirst(localToServiceMsg);
+            i1 = m;
+          }
+          else
+          {
+            ??? = this.a;
+            ((ac)???).l -= localToServiceMsg.getWupBuffer().length;
+            if (m == 0)
+            {
+              ((ToServiceMsg)localObject4).setUin(localToServiceMsg.getUin());
+            }
+            else if (!((ToServiceMsg)localObject4).getUin().equals(localToServiceMsg.getUin()))
+            {
+              this.a.h.addFirst(localToServiceMsg);
+              ??? = this.a;
+              ((ac)???).l += localToServiceMsg.getWupBuffer().length;
+              i1 = k;
+              break label1145;
+            }
+            localBusiBuffItem = new SSOLoginMerge.BusiBuffItem();
+            localBusiBuffItem.SeqNo.set(localToServiceMsg.getRequestSsoSeq());
+            localBusiBuffItem.ServiceCmd.set(localToServiceMsg.getServiceCmd());
+            if (localToServiceMsg.getWupBuffer().length < 4) {
+              localBusiBuffItem.BusiBuffLen.set(ac.b(localToServiceMsg.getWupBuffer()).length);
+            } else {
+              localBusiBuffItem.BusiBuffLen.set(localToServiceMsg.getWupBuffer().length);
+            }
+            if (localToServiceMsg.getWupBuffer().length >= 4)
+            {
+              ??? = new byte[localToServiceMsg.getWupBuffer().length - 4];
+              System.arraycopy(localToServiceMsg.getWupBuffer(), 4, ???, 0, ???.length);
+            }
+            else
+            {
+              ??? = localToServiceMsg.getWupBuffer();
+            }
+            localBusiBuffItem.BusiBuff.set(ByteStringMicro.copyFrom((byte[])???));
+            localBusiBuffItem.NeedResp.set(localToServiceMsg.isNeedCallback());
+            ((SSOLoginMerge.BusiBuffData)localObject7).BusiBuffVec.add(localBusiBuffItem);
+            ((ArrayList)localObject6).add(Integer.valueOf(localToServiceMsg.getRequestSsoSeq()));
+            ((ArrayList)???).add(localToServiceMsg);
+            this.a.d.put(Integer.valueOf(localToServiceMsg.getRequestSsoSeq()), localToServiceMsg);
+            localToServiceMsg.getAttributes().put("__extraTimeoutSeq", Integer.valueOf(ac.t().incrementAndGet()));
+            if (localToServiceMsg.getTimeout() == -1L)
+            {
+              localToServiceMsg.setTimeout(30000L);
+              ??? = this.a.D.msfAlarmer.a(localToServiceMsg, localToServiceMsg.getTimeout());
+            }
+            else
+            {
+              ??? = this.a.D.msfAlarmer.a(localToServiceMsg, localToServiceMsg.getTimeout());
+            }
+            localToServiceMsg.addAttribute("to_timeoutCallbacker", ???);
+            i1 = j;
+            i2 = i;
+            if (!a.x()) {
+              break label1711;
+            }
+            l = localToServiceMsg.getTimeout() - a.A();
+            i1 = j;
+            i2 = i;
+            if (l <= 0L) {
+              break label1711;
+            }
+            localToServiceMsg.addAttribute("to_predetect_timeoutCallbacker", this.a.D.msfAlarmer.b(localToServiceMsg, l));
+            i1 = j;
+            i2 = i;
+            break label1711;
+          }
+        }
+        synchronized (ac.a(this.a))
+        {
+          if ((this.a.l >= this.a.k) && (!ac.c(this.a)))
+          {
+            ac.a(this.a, true);
+            ac.b(this.a).post(this.a.i);
+          }
+          else if ((!ac.c(this.a)) && (this.a.h.size() >= this.a.j))
+          {
+            ac.a(this.a, true);
+            ac.b(this.a).post(this.a.i);
+          }
+          else if ((!ac.c(this.a)) && (!this.a.h.isEmpty()))
           {
             ac.b(this.a).postDelayed(this.a.i, this.a.m);
             ac.a(this.a, true);
           }
+          if (i1 > 0)
+          {
+            this.a.e.put(Integer.valueOf(((ToServiceMsg)localObject4).getRequestSsoSeq()), localObject6);
+            this.a.f.put(Integer.valueOf(((ToServiceMsg)localObject4).getRequestSsoSeq()), ???);
+            ??? = ((SSOLoginMerge.BusiBuffData)localObject7).toByteArray();
+            localObject6 = new ByteArrayOutputStream();
+            j.a((byte[])???, (OutputStream)localObject6);
+            localObject6 = ac.b(((ByteArrayOutputStream)localObject6).toByteArray());
+            ((ToServiceMsg)localObject4).putWupBuffer((byte[])localObject6);
+            ((ToServiceMsg)localObject4).getAttributes().put("mergeCount", Integer.valueOf(i1));
+            ((ToServiceMsg)localObject4).getAttributes().put("noRespCount", Integer.valueOf(i));
+            if (QLog.isDevelopLevel())
+            {
+              localObject7 = new StringBuilder();
+              ((StringBuilder)localObject7).append("Delay ToServiceMsg ssoseq: ");
+              ((StringBuilder)localObject7).append(((ToServiceMsg)localObject4).getRequestSsoSeq());
+              ((StringBuilder)localObject7).append(" delayWaitSendList buffer size is ");
+              ((StringBuilder)localObject7).append(???.length);
+              ((StringBuilder)localObject7).append(", zip size is ");
+              ((StringBuilder)localObject7).append(localObject6.length);
+              QLog.d("MSF.C.NetConnTag", 4, ((StringBuilder)localObject7).toString());
+            }
+          }
+          if (localObject4 != null)
+          {
+            ((ToServiceMsg)localObject4).addAttribute("__timestamp_addSendQueue", Long.valueOf(System.currentTimeMillis()));
+            ac.a(this.a, (ToServiceMsg)localObject4);
+            return;
+          }
         }
-        int k = i;
       }
-      ac.a(this.a, false);
-    }
-    label348:
-    ??? = new ToServiceMsg("MSF SSOPackageMerge", ac.d(this.a), "SSO.LoginMerge");
-    ((ToServiceMsg)???).setAppId(MsfCore.mobileQQAppid);
-    ((ToServiceMsg)???).setMsfCommand(MsfCommand.unknown);
-    if (((ToServiceMsg)???).getRequestSsoSeq() == -1) {
-      ((ToServiceMsg)???).setRequestSsoSeq(MsfCore.getNextSeq());
-    }
-    ((ToServiceMsg)???).setTimeout(30000L);
-    ((ToServiceMsg)???).setNeedCallback(false);
-    ArrayList localArrayList = new ArrayList();
-    Object localObject6 = new ArrayList();
-    Object localObject5 = new SSOLoginMerge.BusiBuffData();
-    int i = j;
-    if (i > this.a.h.size()) {
-      k = this.a.h.size();
-    }
-    for (;;)
-    {
-      int i1 = k;
-      j = i;
-      ToServiceMsg localToServiceMsg2;
-      int i2;
-      if (n < k)
-      {
-        localToServiceMsg2 = (ToServiceMsg)this.a.h.poll();
-        i1 = i;
-        i2 = m;
-        if (localToServiceMsg2 == null) {
-          break label1648;
-        }
-        if (!"RegPrxySvc.infoLogin".equals(localToServiceMsg2.getServiceCmd())) {
-          break label956;
-        }
-        ((ToServiceMsg)???).getAttributes().put("infoLoginMsg", localToServiceMsg2);
-        j = i;
-        if (!localToServiceMsg2.isNeedCallback()) {
-          j = i + 1;
-        }
-        i = m + localToServiceMsg2.getWupBuffer().length;
-        if ((i < this.a.k) || (n == 0)) {
-          break label1016;
-        }
-        this.a.h.addFirst(localToServiceMsg2);
-        i1 = n;
-      }
-      ToServiceMsg localToServiceMsg1;
-      label956:
-      label1016:
-      SSOLoginMerge.BusiBuffItem localBusiBuffItem;
-      label1622:
-      localObject5 = null;
-      localObject6 = null;
-      localArrayList = null;
-      Object localObject3 = null;
-      break;
-      int m = 0;
-      i = 0;
-      int n = 0;
-      continue;
-      label1648:
-      n += 1;
-      m = i2;
-      i = i1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.ac.b
  * JD-Core Version:    0.7.0.1
  */

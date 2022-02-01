@@ -39,14 +39,14 @@ public final class GalleryView$mAdapter$1
       Intrinsics.checkExpressionValueIsNotNull(localObject, "mList[position]");
       paramViewGroup.invoke(localObject, localPhotoView);
     }
-    for (;;)
+    else
     {
-      localPhotoView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-      localPhotoView.setOnClickListener(GalleryView.a(this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorGalleryView));
-      localPhotoView.setOnLongClickListener((View.OnLongClickListener)new GalleryView.mAdapter.1.instantiateItem.1(this, paramInt));
-      return localPhotoView;
       localPhotoView.setImageURI(Uri.parse((String)GalleryView.a(this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorGalleryView).get(paramInt)));
     }
+    localPhotoView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    localPhotoView.setOnClickListener(GalleryView.a(this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorGalleryView));
+    localPhotoView.setOnLongClickListener((View.OnLongClickListener)new GalleryView.mAdapter.1.instantiateItem.1(this, paramInt));
+    return localPhotoView;
   }
   
   public void a(@NotNull ViewGroup paramViewGroup, int paramInt, @NotNull Object paramObject)
@@ -73,7 +73,7 @@ public final class GalleryView$mAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.GalleryView.mAdapter.1
  * JD-Core Version:    0.7.0.1
  */

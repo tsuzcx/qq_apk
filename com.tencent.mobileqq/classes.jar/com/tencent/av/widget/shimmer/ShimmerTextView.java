@@ -41,7 +41,8 @@ public class ShimmerTextView
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper != null) && (this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper.a());
+    ShimmerViewHelper localShimmerViewHelper = this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper;
+    return (localShimmerViewHelper != null) && (localShimmerViewHelper.a());
   }
   
   public void onAttachedToWindow()
@@ -59,20 +60,22 @@ public class ShimmerTextView
   @SuppressLint({"WrongCall", "DrawAllocation"})
   public void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper != null) {
-      this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper.b();
+    ShimmerViewHelper localShimmerViewHelper = this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper;
+    if (localShimmerViewHelper != null) {
+      localShimmerViewHelper.b();
     }
     super.onDraw(paramCanvas);
     if (a()) {
-      postDelayed(new ShimmerTextView.onDrawRunnable(this), 40L);
+      postDelayed(new ShimmerTextView.OnDrawRunnable(this), 40L);
     }
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper != null) {
-      this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper.a();
+    ShimmerViewHelper localShimmerViewHelper = this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper;
+    if (localShimmerViewHelper != null) {
+      localShimmerViewHelper.a();
     }
   }
   
@@ -105,22 +108,24 @@ public class ShimmerTextView
   public void setTextColor(int paramInt)
   {
     super.setTextColor(paramInt);
-    if (this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper != null) {
-      this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper.a(getCurrentTextColor());
+    ShimmerViewHelper localShimmerViewHelper = this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper;
+    if (localShimmerViewHelper != null) {
+      localShimmerViewHelper.a(getCurrentTextColor());
     }
   }
   
   public void setTextColor(ColorStateList paramColorStateList)
   {
     super.setTextColor(paramColorStateList);
-    if (this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper != null) {
-      this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper.a(getCurrentTextColor());
+    paramColorStateList = this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper;
+    if (paramColorStateList != null) {
+      paramColorStateList.a(getCurrentTextColor());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.widget.shimmer.ShimmerTextView
  * JD-Core Version:    0.7.0.1
  */

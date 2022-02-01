@@ -23,32 +23,41 @@ public final class Size
   
   public boolean equals(Object paramObject)
   {
-    boolean bool = true;
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      if (this == paramObject) {
-        return true;
-      }
-    } while (!(paramObject instanceof Size));
-    paramObject = (Size)paramObject;
-    if ((this.a == paramObject.a) && (this.b == paramObject.b)) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
     }
+    if (this == paramObject) {
+      return true;
+    }
+    boolean bool1 = bool2;
+    if ((paramObject instanceof Size))
+    {
+      paramObject = (Size)paramObject;
+      bool1 = bool2;
+      if (this.a == paramObject.a)
+      {
+        bool1 = bool2;
+        if (this.b == paramObject.b) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public String toString()
   {
-    return this.a + "x" + this.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("x");
+    localStringBuilder.append(this.b);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.Size
  * JD-Core Version:    0.7.0.1
  */

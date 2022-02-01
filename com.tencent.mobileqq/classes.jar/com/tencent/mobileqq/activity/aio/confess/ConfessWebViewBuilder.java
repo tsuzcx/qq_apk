@@ -93,6 +93,14 @@ public class ConfessWebViewBuilder
     }
   }
   
+  public void destroy()
+  {
+    Share localShare = this.jdField_a_of_type_ComTencentBizWebviewpluginShare;
+    if (localShare != null) {
+      localShare.destroy();
+    }
+  }
+  
   public String getCurrentUrl()
   {
     String str2 = this.mUrl;
@@ -102,15 +110,13 @@ public class ConfessWebViewBuilder
       str1 = str2;
       if (this.mWebview != null)
       {
-        if (TextUtils.isEmpty(this.mWebview.getUrl())) {
-          break label46;
+        if (!TextUtils.isEmpty(this.mWebview.getUrl())) {
+          return this.mWebview.getUrl();
         }
-        str1 = this.mWebview.getUrl();
+        str1 = this.mInActivity.getIntent().getStringExtra("url");
       }
     }
     return str1;
-    label46:
-    return this.mInActivity.getIntent().getStringExtra("url");
   }
   
   public Activity getHostActivity()
@@ -123,6 +129,11 @@ public class ConfessWebViewBuilder
     return this.mWebview;
   }
   
+  public String getShareUrl()
+  {
+    return b().getShareUrl();
+  }
+  
   public CustomWebView getWebView()
   {
     return this.mWebview;
@@ -132,8 +143,6 @@ public class ConfessWebViewBuilder
   {
     return null;
   }
-  
-  public void hideQQBrowserButton() {}
   
   public boolean isActivityResume()
   {
@@ -148,28 +157,38 @@ public class ConfessWebViewBuilder
   public final int pluginStartActivityForResult(WebViewPlugin paramWebViewPlugin, Intent paramIntent, byte paramByte)
   {
     paramByte = switchRequestCode(paramWebViewPlugin, (byte)1);
-    if (paramByte == -1) {
-      if (QLog.isColorLevel()) {
+    if (paramByte == -1)
+    {
+      if (QLog.isColorLevel())
+      {
         QLog.d("AbsWebView", 2, "pluginStartActivityForResult not handled");
+        return paramByte;
       }
     }
-    while (this.mInActivity == null) {
-      return paramByte;
+    else if (this.mInActivity != null) {
+      this.mInActivity.startActivityForResult(paramIntent, 15001);
     }
-    this.mInActivity.startActivityForResult(paramIntent, 15001);
     return paramByte;
   }
   
-  public void setBottomBarVisible(boolean paramBoolean) {}
+  public void reset()
+  {
+    b().reset();
+  }
   
   public boolean setShareUrl(String paramString)
   {
-    return b().a(paramString);
+    return b().setShareUrl(paramString);
   }
   
   public boolean setSummary(String paramString1, String paramString2, String paramString3, String paramString4, Bundle paramBundle)
   {
-    return b().a(paramString1, paramString2, paramString3, paramString4, paramBundle);
+    return b().setSummary(paramString1, paramString2, paramString3, paramString4, paramBundle);
+  }
+  
+  public boolean shareStructMsgForH5(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
+  {
+    return false;
   }
   
   public void showActionSheet()
@@ -180,27 +199,32 @@ public class ConfessWebViewBuilder
   public final int switchRequestCode(WebViewPlugin paramWebViewPlugin, byte paramByte)
   {
     CustomWebView localCustomWebView = paramWebViewPlugin.mRuntime.a();
-    if (localCustomWebView == null) {}
-    int i;
-    do
+    if (localCustomWebView == null) {
+      return -1;
+    }
+    if (localCustomWebView.getPluginEngine() == null) {
+      return -1;
+    }
+    int i = WebViewUtil.a(paramWebViewPlugin);
+    if (i == -1)
     {
-      do
+      if (QLog.isColorLevel())
       {
-        return -1;
-      } while (localCustomWebView.getPluginEngine() == null);
-      i = WebViewUtil.a(paramWebViewPlugin);
-      if (i != -1) {
-        break;
+        paramWebViewPlugin = new StringBuilder();
+        paramWebViewPlugin.append("switchRequestCode failed: webView index=");
+        paramWebViewPlugin.append(0);
+        paramWebViewPlugin.append(", pluginIndex=");
+        paramWebViewPlugin.append(i);
+        QLog.d("AbsWebView", 2, paramWebViewPlugin.toString());
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("AbsWebView", 2, "switchRequestCode failed: webView index=" + 0 + ", pluginIndex=" + i);
-    return -1;
+      return -1;
+    }
     return i << 8 & 0xFF00 | 0x0 | paramByte & 0xFF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.confess.ConfessWebViewBuilder
  * JD-Core Version:    0.7.0.1
  */

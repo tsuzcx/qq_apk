@@ -50,11 +50,13 @@ public class QQTextEjectaFilter
   
   private void initTexture()
   {
-    if (this.mRenderFBO != null) {
-      this.mRenderFBO.destroy();
+    Object localObject = this.mRenderFBO;
+    if (localObject != null) {
+      ((RenderBuffer)localObject).destroy();
     }
-    if (this.textureRender != null) {
-      this.textureRender.release();
+    localObject = this.textureRender;
+    if (localObject != null) {
+      ((TextureRender)localObject).release();
     }
     this.glImage = new GLImage();
     this.mRenderFBO = new RenderBuffer(this.videoWidth, this.videoHeight, 33986);
@@ -63,113 +65,109 @@ public class QQTextEjectaFilter
   
   public boolean isFilterWork()
   {
-    return (this.tex != null) && (this.tex.length > 0);
+    int[] arrayOfInt = this.tex;
+    return (arrayOfInt != null) && (arrayOfInt.length > 0);
   }
   
   public void onDrawFrame()
   {
-    if (this.mEjectaTextureCallBack != null) {
-      this.tex = this.mEjectaTextureCallBack.onDrawFrame();
+    Object localObject1 = this.mEjectaTextureCallBack;
+    if (localObject1 != null) {
+      this.tex = ((QQTextEjectaFilter.EjectaTextureCallBack)localObject1).onDrawFrame();
     }
-    if ((this.tex == null) || (this.tex.length == 0))
+    localObject1 = this.tex;
+    if ((localObject1 != null) && (localObject1.length != 0)) {}
+    try
     {
-      this.mOutputTextureID = this.mInputTextureID;
-      return;
+      i = getBgImageTextrueId();
+      if ((i != 0) && (this.blurTex == 0))
+      {
+        if (this.compose == null)
+        {
+          this.compose = new GaussianBlurFilterCompose();
+          this.compose.init(this.videoWidth, this.videoHeight);
+        }
+        this.compose.drawTexture(i);
+        this.blurTex = this.compose.getTextureId();
+      }
+      this.mRenderFBO.bind();
+      if (this.mIsNeedCameraTexture)
+      {
+        this.textureRender.drawTexture(3553, this.mInputTextureID, null, null);
+      }
+      else
+      {
+        GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
+        GLES20.glClear(16384);
+      }
+      if (i == 0) {
+        break label417;
+      }
+      if (this.blurTex != 0) {
+        this.textureRender.drawTexture(3553, this.blurTex, this.textureMatrix, null);
+      }
+      float f = this.videoWidth / this.glImage.getWidth() * this.glImage.getHeight() / this.videoHeight;
+      Matrix.setIdentityM(this.mvpMatrix, 0);
+      Matrix.scaleM(this.mvpMatrix, 0, 1.0F, f, 1.0F);
+      this.textureRender.drawTexture(3553, i, this.textureMatrix, this.mvpMatrix);
     }
-    for (;;)
+    catch (Throwable localThrowable)
     {
-      try
+      for (;;)
       {
-        i = getBgImageTextrueId();
-        if ((i != 0) && (this.blurTex == 0))
-        {
-          if (this.compose == null)
-          {
-            this.compose = new GaussianBlurFilterCompose();
-            this.compose.init(this.videoWidth, this.videoHeight);
-          }
-          this.compose.drawTexture(i);
-          this.blurTex = this.compose.getTextureId();
-        }
-        this.mRenderFBO.bind();
-        if (this.mIsNeedCameraTexture)
-        {
-          this.textureRender.drawTexture(3553, this.mInputTextureID, null, null);
-          if (i == 0) {
-            break label417;
-          }
-          if (this.blurTex != 0) {
-            this.textureRender.drawTexture(3553, this.blurTex, this.textureMatrix, null);
-          }
-          float f = this.videoWidth / this.glImage.getWidth() * this.glImage.getHeight() / this.videoHeight;
-          Matrix.setIdentityM(this.mvpMatrix, 0);
-          Matrix.scaleM(this.mvpMatrix, 0, 1.0F, f, 1.0F);
-          this.textureRender.drawTexture(3553, i, this.textureMatrix, this.mvpMatrix);
-          break label417;
-          if (j >= this.tex.length) {
-            break label394;
-          }
-          if (this.tex[j] <= 0) {
-            break label422;
-          }
-          if (j >= this.mIsNeedReverseTexture.length) {
-            break label383;
-          }
-          if (this.mIsNeedReverseTexture[j] == 1)
-          {
-            i = 1;
-            GLES20.glEnable(3042);
-            GLES20.glBlendFunc(1, 771);
-            TextureRender localTextureRender = this.textureRender;
-            int k = this.tex[j];
-            if (i == 0) {
-              break label388;
-            }
-            float[] arrayOfFloat = this.textureMatrix;
-            localTextureRender.drawTexture(3553, k, arrayOfFloat, null);
-            GLES20.glDisable(3042);
-            break label422;
-          }
-        }
-        else
-        {
-          GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
-          GLES20.glClear(16384);
-          continue;
-        }
-        i = 0;
+        TextureRender localTextureRender;
+        int k;
+        continue;
+        int i = 0;
+        continue;
+        int j = 0;
+        continue;
+        Object localObject2 = null;
+        continue;
+        i += 1;
       }
-      catch (Throwable localThrowable)
+    }
+    if (i < this.tex.length)
+    {
+      if (this.tex[i] <= 0) {
+        break label433;
+      }
+      if ((i < this.mIsNeedReverseTexture.length) && (this.mIsNeedReverseTexture[i] == 1))
       {
-        this.mRenderFBO.unbind();
-        this.mOutputTextureID = this.mRenderFBO.getTexId();
-        return;
+        j = 1;
+        GLES20.glEnable(3042);
+        GLES20.glBlendFunc(1, 771);
+        localTextureRender = this.textureRender;
+        k = this.tex[i];
+        if (j == 0) {
+          break label427;
+        }
+        localObject1 = this.textureMatrix;
+        localTextureRender.drawTexture(3553, k, (float[])localObject1, null);
+        GLES20.glDisable(3042);
+        break label433;
       }
-      continue;
-      label383:
-      int i = 0;
-      continue;
-      label388:
-      Object localObject = null;
-      continue;
-      label394:
+    }
+    else
+    {
       GLES20.glGetError();
       this.mRenderFBO.unbind();
       this.mOutputTextureID = this.mRenderFBO.getTexId();
       return;
-      label417:
-      int j = 0;
-      continue;
-      label422:
-      j += 1;
+      this.mRenderFBO.unbind();
+      this.mOutputTextureID = this.mRenderFBO.getTexId();
+      return;
+      this.mOutputTextureID = this.mInputTextureID;
+      return;
     }
   }
   
   public void onSurfaceDestroy()
   {
     super.onSurfaceDestroy();
-    if (this.compose != null) {
-      this.compose.destroy();
+    GaussianBlurFilterCompose localGaussianBlurFilterCompose = this.compose;
+    if (localGaussianBlurFilterCompose != null) {
+      localGaussianBlurFilterCompose.destroy();
     }
   }
   
@@ -199,7 +197,7 @@ public class QQTextEjectaFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQTextEjectaFilter
  * JD-Core Version:    0.7.0.1
  */

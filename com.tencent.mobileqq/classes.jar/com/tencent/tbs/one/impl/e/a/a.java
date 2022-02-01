@@ -35,23 +35,22 @@ public final class a
   {
     this.b = paramContext;
     this.c = paramString1;
-    paramContext = parama.d;
-    if (TextUtils.isEmpty(paramContext)) {}
-    for (;;)
-    {
-      this.d = paramString2;
-      this.e = parama.a;
-      this.f = parama.c;
-      this.g = paramFile;
-      this.p = paramBundle;
-      this.o = parama;
-      this.h = com.tencent.tbs.one.impl.common.f.a(this.b, this.b, paramString1, parama.a, parama.c);
-      return;
-      paramString2 = paramContext;
+    String str = parama.d;
+    paramContext = str;
+    if (TextUtils.isEmpty(str)) {
+      paramContext = paramString2;
     }
+    this.d = paramContext;
+    this.e = parama.a;
+    this.f = parama.c;
+    this.g = paramFile;
+    this.p = paramBundle;
+    this.o = parama;
+    paramContext = this.b;
+    this.h = com.tencent.tbs.one.impl.common.f.a(paramContext, paramContext, paramString1, parama.a, parama.c);
   }
   
-  public final void a()
+  protected final void a()
   {
     Context localContext = this.b;
     String str1 = this.c;
@@ -77,66 +76,56 @@ public final class a
   
   public final void a(int paramInt, String paramString, Throwable paramThrowable)
   {
-    if (paramInt == 219)
-    {
+    if (paramInt == 219) {
       if (d()) {
         h.a(1017, this.e);
+      } else {
+        h.a(1007, this.e);
       }
     }
-    else
-    {
-      if (!d()) {
-        break label72;
-      }
+    if (d()) {
       h.a(1014, this.e);
-    }
-    for (;;)
-    {
-      com.tencent.tbs.one.impl.e.f.a(this.g, System.currentTimeMillis());
-      super.a(paramInt, paramString, paramThrowable);
-      return;
-      h.a(1007, this.e);
-      break;
-      label72:
+    } else {
       h.a(1004, this.e);
     }
+    com.tencent.tbs.one.impl.e.f.a(this.g, System.currentTimeMillis());
+    super.a(paramInt, paramString, paramThrowable);
   }
   
   public final void b()
   {
     super.b();
-    if (this.i != null) {
-      this.i.b();
+    Object localObject = this.i;
+    if (localObject != null) {
+      ((com.tencent.tbs.one.impl.d.a)localObject).b();
     }
     if (this.j != 0)
     {
-      TBSOneRuntimeExtension localTBSOneRuntimeExtension = com.tencent.tbs.one.impl.common.a.b(this.b, this.c);
-      if (localTBSOneRuntimeExtension != null) {
-        localTBSOneRuntimeExtension.cancel(this.j);
+      localObject = com.tencent.tbs.one.impl.common.a.b(this.b, this.c);
+      if (localObject != null) {
+        ((TBSOneRuntimeExtension)localObject).cancel(this.j);
       }
     }
   }
   
   final boolean c()
   {
-    boolean bool = false;
-    if (this.p != null) {
-      bool = this.p.getBoolean("is_ignore_wifi_state", false);
+    Bundle localBundle = this.p;
+    if (localBundle != null) {
+      return localBundle.getBoolean("is_ignore_wifi_state", false);
     }
-    return bool;
+    return false;
   }
   
   final boolean d()
   {
-    if (this.p != null) {
-      return this.p.getInt("info_from", -1) == 1;
-    }
-    return false;
+    Bundle localBundle = this.p;
+    return (localBundle != null) && (localBundle.getInt("info_from", -1) == 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.e.a.a
  * JD-Core Version:    0.7.0.1
  */

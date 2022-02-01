@@ -17,32 +17,38 @@ class Camera2Control$3
   {
     try
     {
-      Camera2Utils.a(1, "[Camera2]Image Capture cost:" + (float)(System.currentTimeMillis() - Camera2Control.a(this.a)) / 1000.0F);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[Camera2]Image Capture cost:");
+      ((StringBuilder)localObject).append((float)(System.currentTimeMillis() - Camera2Control.a(this.a)) / 1000.0F);
+      Camera2Utils.a(1, ((StringBuilder)localObject).toString());
       Camera2Support.a(2, Camera2Control.a(this.a).a * Camera2Control.a(this.a).b, System.currentTimeMillis() - Camera2Control.a(this.a));
       paramImageReader = paramImageReader.acquireNextImage();
       if (paramImageReader != null)
       {
-        ByteBuffer localByteBuffer = paramImageReader.getPlanes()[0].getBuffer();
-        byte[] arrayOfByte = new byte[localByteBuffer.remaining()];
-        localByteBuffer.get(arrayOfByte);
+        localObject = paramImageReader.getPlanes()[0].getBuffer();
+        byte[] arrayOfByte = new byte[((ByteBuffer)localObject).remaining()];
+        ((ByteBuffer)localObject).get(arrayOfByte);
         if ((Camera2Control.a(this.a) != null) && (Camera2Control.a(this.a) != null))
         {
           Camera2Control.a(this.a).a = Camera2Control.a(this.a).a;
           Camera2Control.a(this.a).post(new Camera2Control.ImageSaveServer(arrayOfByte, Camera2Control.a(this.a)));
         }
         paramImageReader.close();
+        return;
       }
-      return;
     }
     catch (Exception paramImageReader)
     {
-      Camera2Utils.a(1, "[Camera2] onImageAvailable mImageReader exception:" + paramImageReader);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[Camera2] onImageAvailable mImageReader exception:");
+      ((StringBuilder)localObject).append(paramImageReader);
+      Camera2Utils.a(1, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.camera2.Camera2Control.3
  * JD-Core Version:    0.7.0.1
  */

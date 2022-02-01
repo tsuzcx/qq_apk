@@ -16,14 +16,14 @@ class MultiForwardChatPie$6
     MultiForwardChatPie.a(this.this$0).setVisibility(8);
     MultiForwardChatPie.a(this.this$0).setVisibility(0);
     MultiForwardChatPie.a(this.this$0).setVisibility(0);
-    this.this$0.e.setText(this.this$0.g);
+    this.this$0.jdField_e_of_type_AndroidWidgetTextView.setText(this.this$0.jdField_e_of_type_JavaLangString);
     MultiForwardChatPie.a(this.this$0).a(MultiForwardChatPie.a(this.this$0), this.a);
-    this.this$0.F();
+    this.this$0.u();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie.6
  * JD-Core Version:    0.7.0.1
  */

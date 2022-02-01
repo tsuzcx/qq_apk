@@ -9,7 +9,7 @@ public abstract interface SafeParcelable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.internal.safeparcel.SafeParcelable
  * JD-Core Version:    0.7.0.1
  */

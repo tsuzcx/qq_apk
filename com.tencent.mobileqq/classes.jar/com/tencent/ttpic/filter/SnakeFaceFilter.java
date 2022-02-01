@@ -36,22 +36,36 @@ public class SnakeFaceFilter
   
   private void adjustPoints(int paramInt)
   {
-    if ((this.srcPoints == null) || (this.dstPoints == null) || (this.srcPoints.length != this.dstPoints.length)) {}
-    for (;;)
+    Object localObject = this.srcPoints;
+    if (localObject != null)
     {
-      return;
-      int i = 0;
-      while (i < paramInt)
+      PointF[] arrayOfPointF = this.dstPoints;
+      if (arrayOfPointF != null)
       {
-        PointF localPointF = this.srcPoints[i];
-        localPointF.x = ((float)(localPointF.x + 0.02D));
-        localPointF = this.srcPoints[i];
-        localPointF.y = ((float)(localPointF.y + 0.02D));
-        localPointF = this.dstPoints[i];
-        localPointF.x = ((float)(localPointF.x + 0.02D));
-        localPointF = this.dstPoints[i];
-        localPointF.y = ((float)(localPointF.y + 0.02D));
-        i += 1;
+        if (localObject.length != arrayOfPointF.length) {
+          return;
+        }
+        int i = 0;
+        while (i < paramInt)
+        {
+          localObject = this.srcPoints[i];
+          double d = ((PointF)localObject).x;
+          Double.isNaN(d);
+          ((PointF)localObject).x = ((float)(d + 0.02D));
+          localObject = this.srcPoints[i];
+          d = ((PointF)localObject).y;
+          Double.isNaN(d);
+          ((PointF)localObject).y = ((float)(d + 0.02D));
+          localObject = this.dstPoints[i];
+          d = ((PointF)localObject).x;
+          Double.isNaN(d);
+          ((PointF)localObject).x = ((float)(d + 0.02D));
+          localObject = this.dstPoints[i];
+          d = ((PointF)localObject).y;
+          Double.isNaN(d);
+          ((PointF)localObject).y = ((float)(d + 0.02D));
+          i += 1;
+        }
       }
     }
   }
@@ -85,22 +99,35 @@ public class SnakeFaceFilter
     PointF localPointF1 = paramArrayOfPointF2[0];
     PointF localPointF2 = paramArrayOfPointF2[9];
     PointF localPointF3 = paramArrayOfPointF2[18];
+    int k = 1;
     int i = 1;
-    while (i <= 9)
+    int j;
+    float f1;
+    float f2;
+    float f3;
+    float f4;
+    for (;;)
     {
-      paramArrayOfPointF2[i] = new PointF((localPointF1.x * (9 - i) + localPointF2.x * i) / 9.0F, (localPointF1.y * (9 - i) + localPointF2.y * i) / 9.0F);
-      paramArrayOfPointF2[(18 - i)] = new PointF((localPointF3.x * (9 - i) + localPointF2.x * i) / 9.0F, (localPointF3.y * (9 - i) + localPointF2.y * i) / 9.0F);
+      j = k;
+      if (i > 9) {
+        break;
+      }
+      f1 = localPointF1.x;
+      f2 = 9 - i;
+      f3 = localPointF2.x;
+      f4 = i;
+      paramArrayOfPointF2[i] = new PointF((f1 * f2 + f3 * f4) / 9.0F, (localPointF1.y * f2 + localPointF2.y * f4) / 9.0F);
+      paramArrayOfPointF2[(18 - i)] = new PointF((localPointF3.x * f2 + localPointF2.x * f4) / 9.0F, (localPointF3.y * f2 + localPointF2.y * f4) / 9.0F);
       i += 1;
     }
-    i = 1;
-    while (i < 18)
+    while (j < 18)
     {
-      float f1 = paramArrayOfPointF2[i].x;
-      float f2 = paramArrayOfPointF1[i].x;
-      float f3 = paramArrayOfPointF2[i].y;
-      float f4 = paramArrayOfPointF1[i].y;
-      paramArrayOfPointF2[i] = new PointF((f1 - f2) * 0.3F + paramArrayOfPointF1[i].x, (f3 - f4) * 0.3F + paramArrayOfPointF1[i].y);
-      i += 1;
+      f1 = paramArrayOfPointF2[j].x;
+      f2 = paramArrayOfPointF1[j].x;
+      f3 = paramArrayOfPointF2[j].y;
+      f4 = paramArrayOfPointF1[j].y;
+      paramArrayOfPointF2[j] = new PointF(paramArrayOfPointF1[j].x + (f1 - f2) * 0.3F, paramArrayOfPointF1[j].y + (f3 - f4) * 0.3F);
+      j += 1;
     }
   }
   
@@ -129,92 +156,122 @@ public class SnakeFaceFilter
   
   public void updatePreview(Object paramObject)
   {
-    int j = 0;
     if ((paramObject instanceof PTDetectInfo))
     {
       paramObject = VideoMaterial.copyList(((PTDetectInfo)paramObject).facePoints);
-      if ((paramObject != null) && (paramObject.size() >= 90)) {
-        break label68;
-      }
-      this.srcPoints = new PointF[0];
-      this.dstPoints = new PointF[0];
-    }
-    for (int i = 0;; i = 102)
-    {
-      adjustPoints(i);
-      updateGLParams(i);
-      return;
-      label68:
-      VideoMaterial.flipYPoints(paramObject, (int)(this.height * this.mFaceDetScale));
-      i = 0;
-      while (i < 90)
+      int k = 102;
+      int j = 0;
+      int i;
+      if ((paramObject != null) && (paramObject.size() >= 90))
       {
-        if (this.pSrc[i] == null) {
-          this.pSrc[i] = new PointF();
+        double d1 = this.height;
+        double d2 = this.mFaceDetScale;
+        Double.isNaN(d1);
+        VideoMaterial.flipYPoints(paramObject, (int)(d1 * d2));
+        i = 0;
+        Object localObject;
+        while (i < 90)
+        {
+          localObject = this.pSrc;
+          if (localObject[i] == null) {
+            localObject[i] = new PointF();
+          }
+          localObject = this.pDst;
+          if (localObject[i] == null) {
+            localObject[i] = new PointF();
+          }
+          localObject = this.pSrc[i];
+          PointF localPointF = this.pDst[i];
+          f1 = ((PointF)paramObject.get(i)).x;
+          localPointF.x = f1;
+          ((PointF)localObject).x = f1;
+          localObject = this.pSrc[i];
+          localPointF = this.pDst[i];
+          f1 = ((PointF)paramObject.get(i)).y;
+          localPointF.y = f1;
+          ((PointF)localObject).y = f1;
+          i += 1;
         }
-        if (this.pDst[i] == null) {
-          this.pDst[i] = new PointF();
+        float f1 = this.pSrc[9].x;
+        float f2 = this.pSrc[64].x;
+        float f3 = this.pSrc[9].y;
+        float f4 = this.pSrc[64].y;
+        paramObject = this.pDst[9];
+        paramObject.x += (f1 - f2) * 0.05F;
+        paramObject = this.pDst[9];
+        paramObject.y += (f3 - f4) * 0.05F;
+        refineSnakeFacePoint(this.pSrc, this.pDst);
+        refineSnakeEyePoint(this.pSrc, this.pDst);
+        paramObject = this.srcPoints;
+        if ((paramObject == null) || (paramObject.length != 102)) {
+          this.srcPoints = new PointF[102];
         }
-        PointF localPointF1 = this.pSrc[i];
-        PointF localPointF2 = this.pDst[i];
-        f1 = ((PointF)paramObject.get(i)).x;
-        localPointF2.x = f1;
-        localPointF1.x = f1;
-        localPointF1 = this.pSrc[i];
-        localPointF2 = this.pDst[i];
-        f1 = ((PointF)paramObject.get(i)).y;
-        localPointF2.y = f1;
-        localPointF1.y = f1;
-        i += 1;
-      }
-      float f1 = this.pSrc[9].x;
-      float f2 = this.pSrc[64].x;
-      float f3 = this.pSrc[9].y;
-      float f4 = this.pSrc[64].y;
-      paramObject = this.pDst[9];
-      paramObject.x = ((f1 - f2) * 0.05F + paramObject.x);
-      paramObject = this.pDst[9];
-      paramObject.y = ((f3 - f4) * 0.05F + paramObject.y);
-      refineSnakeFacePoint(this.pSrc, this.pDst);
-      refineSnakeEyePoint(this.pSrc, this.pDst);
-      if ((this.srcPoints == null) || (this.srcPoints.length != 102)) {
-        this.srcPoints = new PointF[102];
-      }
-      if (this.dstPoints != null)
-      {
-        i = j;
-        if (this.dstPoints.length == 102) {}
+        paramObject = this.dstPoints;
+        if (paramObject != null)
+        {
+          i = j;
+          if (paramObject.length == 102) {}
+        }
+        else
+        {
+          this.dstPoints = new PointF[102];
+          i = j;
+        }
+        for (;;)
+        {
+          j = 83;
+          if (i >= 83) {
+            break;
+          }
+          this.srcPoints[i] = this.pSrc[i];
+          this.dstPoints[i] = this.pDst[i];
+          i += 1;
+        }
+        while (j < 101)
+        {
+          i = j - 83;
+          paramObject = this.srcPoints;
+          f1 = this.pSrc[i].x;
+          localObject = this.pSrc;
+          int m = i + 1;
+          paramObject[j] = new PointF((f1 + localObject[m].x) / 2.0F, (this.pSrc[i].y + this.pSrc[m].y) / 2.0F);
+          this.dstPoints[j] = new PointF((this.pDst[i].x + this.pDst[m].x) / 2.0F, (this.pDst[i].y + this.pDst[m].y) / 2.0F);
+          j += 1;
+        }
+        paramObject = this.srcPoints;
+        d1 = this.width;
+        d2 = this.mFaceDetScale;
+        Double.isNaN(d1);
+        f1 = (float)(d1 * d2);
+        d1 = this.height;
+        d2 = this.mFaceDetScale;
+        Double.isNaN(d1);
+        paramObject[101] = new PointF(f1, (float)(d1 * d2));
+        paramObject = this.dstPoints;
+        d1 = this.width;
+        d2 = this.mFaceDetScale;
+        Double.isNaN(d1);
+        f1 = (float)(d1 * d2);
+        d1 = this.height;
+        d2 = this.mFaceDetScale;
+        Double.isNaN(d1);
+        paramObject[101] = new PointF(f1, (float)(d1 * d2));
+        i = k;
       }
       else
       {
-        this.dstPoints = new PointF[102];
-        i = j;
+        this.srcPoints = new PointF[0];
+        this.dstPoints = new PointF[0];
+        i = 0;
       }
-      while (i < 83)
-      {
-        this.srcPoints[i] = this.pSrc[i];
-        this.dstPoints[i] = this.pDst[i];
-        i += 1;
-      }
-      i = 83;
-      while (i < 101)
-      {
-        j = i - 83;
-        this.srcPoints[i] = new PointF((this.pSrc[j].x + this.pSrc[(j + 1)].x) / 2.0F, (this.pSrc[j].y + this.pSrc[(j + 1)].y) / 2.0F);
-        paramObject = this.dstPoints;
-        f1 = (this.pDst[j].x + this.pDst[(j + 1)].x) / 2.0F;
-        f2 = this.pDst[j].y;
-        paramObject[i] = new PointF(f1, (this.pDst[(j + 1)].y + f2) / 2.0F);
-        i += 1;
-      }
-      this.srcPoints[101] = new PointF((float)(this.width * this.mFaceDetScale), (float)(this.height * this.mFaceDetScale));
-      this.dstPoints[101] = new PointF((float)(this.width * this.mFaceDetScale), (float)(this.height * this.mFaceDetScale));
+      adjustPoints(i);
+      updateGLParams(i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.SnakeFaceFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -55,52 +55,77 @@ class ExposureRecorderImpl
   public boolean isExposed(long paramLong)
   {
     boolean bool = this.mExposedId.containsKey(Long.valueOf(paramLong));
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("ExposureRecorderImpl", "isExposed: uniqueId = " + paramLong + ", contains = " + bool);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isExposed: uniqueId = ");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(", contains = ");
+      localStringBuilder.append(bool);
+      Log.d("ExposureRecorderImpl", localStringBuilder.toString());
     }
     return bool;
   }
   
   public void markExposed(ExposureElementInfo paramExposureElementInfo)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("ExposureRecorderImpl", "markExposed: exposureElementInfo = " + paramExposureElementInfo);
-    }
-    if (paramExposureElementInfo == null) {}
-    View localView;
-    do
+    if (VideoReportInner.getInstance().isDebugMode())
     {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("markExposed: exposureElementInfo = ");
+      ((StringBuilder)localObject).append(paramExposureElementInfo);
+      Log.d("ExposureRecorderImpl", ((StringBuilder)localObject).toString());
+    }
+    if (paramExposureElementInfo == null) {
       return;
-      localView = paramExposureElementInfo.getView();
-    } while (localView == null);
-    long l = ReportUtils.calcElementUniqueId(localView);
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("ExposureRecorderImpl", "markExposed: identifier = " + DataRWProxy.getInnerParam(localView, "element_identifier") + "， uniqueId = " + l);
+    }
+    Object localObject = paramExposureElementInfo.getView();
+    if (localObject == null) {
+      return;
+    }
+    long l = ReportUtils.calcElementUniqueId((View)localObject);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("markExposed: identifier = ");
+      localStringBuilder.append(DataRWProxy.getInnerParam(localObject, "element_identifier"));
+      localStringBuilder.append("， uniqueId = ");
+      localStringBuilder.append(l);
+      Log.d("ExposureRecorderImpl", localStringBuilder.toString());
     }
     this.mExposedId.put(Long.valueOf(l), new IExposureRecorder.ExposureInfoWrapper(paramExposureElementInfo, SystemClock.elapsedRealtime()));
   }
   
   public void markUnexposed(long paramLong)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("ExposureRecorderImpl", "markUnexposed: target = " + paramLong);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("markUnexposed: target = ");
+      localStringBuilder.append(paramLong);
+      Log.d("ExposureRecorderImpl", localStringBuilder.toString());
     }
     removeRecords(paramLong);
   }
   
   public void markUnexposed(Collection<Long> paramCollection)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("ExposureRecorderImpl", "markUnexposed: targets=" + paramCollection);
+    Object localObject;
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("markUnexposed: targets=");
+      ((StringBuilder)localObject).append(paramCollection);
+      Log.d("ExposureRecorderImpl", ((StringBuilder)localObject).toString());
     }
     if (paramCollection != null)
     {
       paramCollection = paramCollection.iterator();
       while (paramCollection.hasNext())
       {
-        Long localLong = (Long)paramCollection.next();
-        if (localLong != null) {
-          removeRecords(localLong.longValue());
+        localObject = (Long)paramCollection.next();
+        if (localObject != null) {
+          removeRecords(((Long)localObject).longValue());
         }
       }
     }
@@ -113,23 +138,29 @@ class ExposureRecorderImpl
   
   public void updateAreaInfo(long paramLong, AreaInfo paramAreaInfo)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("ExposureRecorderImpl", "updateAreaInfo: uniqueId = " + paramLong + ", areaInfo = " + paramAreaInfo);
-    }
-    IExposureRecorder.ExposureInfoWrapper localExposureInfoWrapper = (IExposureRecorder.ExposureInfoWrapper)this.mExposedId.get(Long.valueOf(paramLong));
-    if (localExposureInfoWrapper == null) {}
-    AreaInfo localAreaInfo;
-    do
+    if (VideoReportInner.getInstance().isDebugMode())
     {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateAreaInfo: uniqueId = ");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(", areaInfo = ");
+      ((StringBuilder)localObject).append(paramAreaInfo);
+      Log.d("ExposureRecorderImpl", ((StringBuilder)localObject).toString());
+    }
+    Object localObject = (IExposureRecorder.ExposureInfoWrapper)this.mExposedId.get(Long.valueOf(paramLong));
+    if (localObject == null) {
       return;
-      localAreaInfo = localExposureInfoWrapper.areaInfo;
-    } while ((localAreaInfo != null) && (localAreaInfo.exposureRate > paramAreaInfo.exposureRate));
-    localExposureInfoWrapper.areaInfo = paramAreaInfo;
+    }
+    AreaInfo localAreaInfo = ((IExposureRecorder.ExposureInfoWrapper)localObject).areaInfo;
+    if ((localAreaInfo != null) && (localAreaInfo.exposureRate > paramAreaInfo.exposureRate)) {
+      return;
+    }
+    ((IExposureRecorder.ExposureInfoWrapper)localObject).areaInfo = paramAreaInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.report.element.ExposureRecorderImpl
  * JD-Core Version:    0.7.0.1
  */

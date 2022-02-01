@@ -3,6 +3,7 @@ package com.tencent.mobileqq.troop.api.impl;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
 import com.tencent.commonsdk.cache.QQConcurrentHashMap;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
@@ -12,11 +13,14 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityTransaction;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.troop.api.IBizTroopInfoService;
 import com.tencent.mobileqq.troop.api.IHotChatService;
-import com.tencent.mobileqq.troop.api.ITroopHandlerService;
+import com.tencent.mobileqq.troop.api.ITroopHandlerNameApi;
 import com.tencent.mobileqq.troop.api.ITroopInfoService;
 import com.tencent.mobileqq.troop.data.ShowExternalTroop;
+import com.tencent.mobileqq.troop.troopmanager.api.ITroopManagerBizHandler;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -24,6 +28,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
@@ -51,19 +56,19 @@ public class BizTroopInfoServiceImpl
   private String getTroopNameByID(String paramString)
   {
     String str = ((IHotChatService)this.app.getRuntimeService(IHotChatService.class, "")).getHotChatName(paramString);
-    if (!TextUtils.isEmpty(str)) {}
-    TroopInfo localTroopInfo;
-    do
+    if (!TextUtils.isEmpty(str)) {
+      return str;
+    }
+    TroopInfo localTroopInfo = ((ITroopInfoService)this.app.getRuntimeService(ITroopInfoService.class, "")).findTroopInfo(paramString);
+    str = paramString;
+    if (localTroopInfo != null)
     {
-      do
-      {
-        return str;
-        localTroopInfo = ((ITroopInfoService)this.app.getRuntimeService(ITroopInfoService.class, "")).findTroopInfo(paramString);
-        str = paramString;
-      } while (localTroopInfo == null);
       str = paramString;
-    } while (localTroopInfo.getTroopDisplayName() == null);
-    return localTroopInfo.getTroopDisplayName();
+      if (localTroopInfo.getTroopDisplayName() != null) {
+        str = localTroopInfo.getTroopDisplayName();
+      }
+    }
+    return str;
   }
   
   private void scheduleFetchExpiredSurveyList()
@@ -72,69 +77,71 @@ public class BizTroopInfoServiceImpl
       QLog.d(".troop.survey", 2, "[TroopManager]scheduleFetchExpiredSurveyList()");
     }
     int i = (int)NetConnInfoCenter.getServerTime();
-    Iterator localIterator = this.mMapOfSurveyList.values().iterator();
-    long l1;
-    for (long l2 = 2147483647L; localIterator.hasNext(); l2 = l1)
+    Object localObject = this.mMapOfSurveyList.values().iterator();
+    long l = 2147483647L;
+    while (((Iterator)localObject).hasNext())
     {
-      oidb_cmd0xb36.RspBody localRspBody = (oidb_cmd0xb36.RspBody)localIterator.next();
-      l1 = l2;
-      if (localRspBody.toast.has())
+      oidb_cmd0xb36.RspBody localRspBody = (oidb_cmd0xb36.RspBody)((Iterator)localObject).next();
+      if ((localRspBody.toast.has()) && (localRspBody.toast.expired.has()))
       {
-        l1 = l2;
-        if (localRspBody.toast.expired.has())
+        int j = localRspBody.toast.expired.get();
+        if (j > i)
         {
-          int j = localRspBody.toast.expired.get();
-          l1 = l2;
-          if (j > i)
-          {
-            l2 = Math.max(60L, Math.min(l2, j - i));
-            l1 = l2;
-            if (QLog.isColorLevel())
-            {
-              QLog.d(".troop.survey", 2, new Object[] { "survey id=", Long.valueOf(localRspBody.toast.id.get()), " not expired, will schedule request in ", Long.valueOf(l2), " seconds" });
-              l1 = l2;
-            }
+          l = Math.max(60L, Math.min(l, j - i));
+          if (QLog.isColorLevel()) {
+            QLog.d(".troop.survey", 2, new Object[] { "survey id=", Long.valueOf(localRspBody.toast.id.get()), " not expired, will schedule request in ", Long.valueOf(l), " seconds" });
           }
         }
       }
     }
-    if (l2 != 2147483647L)
+    if (l != 2147483647L)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(".troop.survey", 2, new Object[] { "Will request survey toast info in ", Long.valueOf(l2), " seconds!" });
+        QLog.d(".troop.survey", 2, new Object[] { "Will request survey toast info in ", Long.valueOf(l), " seconds!" });
       }
       ThreadManager.getSubThreadHandler().removeCallbacks(this.mSurveyListCheckRunnable);
-      ThreadManager.getSubThreadHandler().postDelayed(this.mSurveyListCheckRunnable, Math.min(l2 * 1000L, 2147483647L));
-    }
-    while (!QLog.isColorLevel()) {
+      ThreadManager.getSubThreadHandler().postDelayed(this.mSurveyListCheckRunnable, Math.min(l * 1000L, 2147483647L));
       return;
     }
-    QLog.d(".troop.survey", 2, String.valueOf(this.mMapOfSurveyList.size()) + " surveys, all of them expired");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(String.valueOf(this.mMapOfSurveyList.size()));
+      ((StringBuilder)localObject).append(" surveys, all of them expired");
+      QLog.d(".troop.survey", 2, ((StringBuilder)localObject).toString());
+    }
   }
   
   private void updateActiveTroop(String paramString)
   {
-    TroopInfo localTroopInfo = ((ITroopInfoService)this.app.getRuntimeService(ITroopInfoService.class, "")).findTroopInfo(paramString);
-    if ((localTroopInfo == null) || (localTroopInfo.eliminated != 1))
+    Object localObject = ((ITroopInfoService)this.app.getRuntimeService(ITroopInfoService.class, "")).findTroopInfo(paramString);
+    if ((localObject != null) && (((TroopInfo)localObject).eliminated == 1))
     {
-      QLog.i("troop_ext", 1, "onTroopReceiveOrSendMsg troopInfo is null or not eliminated. troopUin: " + paramString);
+      long l = NetConnInfoCenter.getServerTime();
+      localObject = this.mActiveTroopMap;
+      if ((localObject != null) && (((Map)localObject).containsKey(paramString)))
+      {
+        if (l - ((Long)this.mActiveTroopMap.get(paramString)).longValue() < 60L) {
+          QLog.i("troop_ext", 1, "onTroopReceiveOrSendMsg current time - time < 60s.");
+        }
+      }
+      else
+      {
+        if (this.mActiveTroopMap == null) {
+          this.mActiveTroopMap = new ConcurrentHashMap();
+        }
+        this.mActiveTroopMap.put(paramString, Long.valueOf(l));
+      }
+      localObject = this.app;
+      if ((localObject instanceof AppInterface)) {
+        ((ITroopManagerBizHandler)((AppInterface)localObject).getBusinessHandler(((ITroopHandlerNameApi)QRoute.api(ITroopHandlerNameApi.class)).getTroopManagerBizHandlerName())).c(paramString);
+      }
       return;
     }
-    long l = NetConnInfoCenter.getServerTime();
-    if ((this.mActiveTroopMap != null) && (this.mActiveTroopMap.containsKey(paramString)))
-    {
-      if (l - ((Long)this.mActiveTroopMap.get(paramString)).longValue() < 60L) {
-        QLog.i("troop_ext", 1, "onTroopReceiveOrSendMsg current time - time < 60s.");
-      }
-    }
-    else
-    {
-      if (this.mActiveTroopMap == null) {
-        this.mActiveTroopMap = new ConcurrentHashMap();
-      }
-      this.mActiveTroopMap.put(paramString, Long.valueOf(l));
-    }
-    ((ITroopHandlerService)this.app.getRuntimeService(ITroopHandlerService.class, "")).activeExtTroop(paramString);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onTroopReceiveOrSendMsg troopInfo is null or not eliminated. troopUin: ");
+    ((StringBuilder)localObject).append(paramString);
+    QLog.i("troop_ext", 1, ((StringBuilder)localObject).toString());
   }
   
   public boolean addShowExternalTroop(String paramString, long paramLong)
@@ -160,11 +167,18 @@ public class BizTroopInfoServiceImpl
   
   public int getAssociatedTroopCount(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ((this.mAssocitedTroopCountCache == null) || (!this.mAssocitedTroopCountCache.containsKey(paramString))) {
+    if (TextUtils.isEmpty(paramString)) {
       return 0;
     }
-    return ((Integer)this.mAssocitedTroopCountCache.get(paramString)).intValue();
+    ConcurrentHashMap localConcurrentHashMap = this.mAssocitedTroopCountCache;
+    if (localConcurrentHashMap != null)
+    {
+      if (!localConcurrentHashMap.containsKey(paramString)) {
+        return 0;
+      }
+      return ((Integer)this.mAssocitedTroopCountCache.get(paramString)).intValue();
+    }
+    return 0;
   }
   
   public String getCurrentOpenTroop()
@@ -174,23 +188,29 @@ public class BizTroopInfoServiceImpl
   
   public ConcurrentHashMap<String, Entity> getShowExternalTroopLazyCache()
   {
-    int j = 0;
     if (this.mShowExternalTroopCache == null)
     {
-      ArrayList localArrayList = (ArrayList)this.em.query(ShowExternalTroop.class, false, null, null, null, null, null, null);
-      if (localArrayList != null) {}
-      for (int i = localArrayList.size();; i = 0)
-      {
-        this.mShowExternalTroopCache = new QQConcurrentHashMap(1015, i, 70);
-        while (j < i)
-        {
-          ShowExternalTroop localShowExternalTroop = (ShowExternalTroop)localArrayList.get(j);
-          this.mShowExternalTroopCache.put(localShowExternalTroop.troopUin, localShowExternalTroop);
-          j += 1;
-        }
+      Object localObject = (ArrayList)this.em.query(ShowExternalTroop.class, false, null, null, null, null, null, null);
+      int j = 0;
+      int i;
+      if (localObject != null) {
+        i = ((ArrayList)localObject).size();
+      } else {
+        i = 0;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("BizTroopInfoService", 2, "load mShowExternalTroopCache info: size = " + i);
+      this.mShowExternalTroopCache = new QQConcurrentHashMap(1015, i, 70);
+      while (j < i)
+      {
+        ShowExternalTroop localShowExternalTroop = (ShowExternalTroop)((ArrayList)localObject).get(j);
+        this.mShowExternalTroopCache.put(localShowExternalTroop.troopUin, localShowExternalTroop);
+        j += 1;
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("load mShowExternalTroopCache info: size = ");
+        ((StringBuilder)localObject).append(i);
+        QLog.d("BizTroopInfoService", 2, ((StringBuilder)localObject).toString());
       }
     }
     return this.mShowExternalTroopCache;
@@ -239,14 +259,21 @@ public class BizTroopInfoServiceImpl
   
   public boolean isFansTroop(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
+    boolean bool1 = TextUtils.isEmpty(paramString);
+    boolean bool2 = false;
+    if (bool1) {
       return false;
     }
     paramString = ((ITroopInfoService)this.app.getRuntimeService(ITroopInfoService.class, "")).findTroopInfo(paramString);
-    if ((paramString != null) && (paramString.isFansTroop())) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    bool1 = bool2;
+    if (paramString != null)
+    {
+      bool1 = bool2;
+      if (paramString.isFansTroop()) {
+        bool1 = true;
+      }
     }
+    return bool1;
   }
   
   public boolean isShowExternalTroop(String paramString)
@@ -263,8 +290,12 @@ public class BizTroopInfoServiceImpl
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BizTroopInfoService", 2, "isTroopAIOOpen : " + this.isTroopAIOOpen);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isTroopAIOOpen : ");
+        localStringBuilder.append(this.isTroopAIOOpen);
+        QLog.d("BizTroopInfoService", 2, localStringBuilder.toString());
       }
       boolean bool = this.isTroopAIOOpen;
       return bool;
@@ -276,8 +307,12 @@ public class BizTroopInfoServiceImpl
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BizTroopInfoService", 2, "isTroopConfessPanelOpen isConfessPanelOpen: " + this.isConfessPanelOpen);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isTroopConfessPanelOpen isConfessPanelOpen: ");
+        localStringBuilder.append(this.isConfessPanelOpen);
+        QLog.d("BizTroopInfoService", 2, localStringBuilder.toString());
       }
       boolean bool = this.isConfessPanelOpen;
       return bool;
@@ -309,127 +344,80 @@ public class BizTroopInfoServiceImpl
     this.mPrepareShowExternalTroop = paramMap;
   }
   
-  /* Error */
   public void refreshShowExternalTroop()
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_1
-    //   2: aload_0
-    //   3: invokevirtual 276	com/tencent/mobileqq/troop/api/impl/BizTroopInfoServiceImpl:getShowExternalTroopLazyCache	()Ljava/util/concurrent/ConcurrentHashMap;
-    //   6: astore_3
-    //   7: aload_0
-    //   8: getfield 311	com/tencent/mobileqq/troop/api/impl/BizTroopInfoServiceImpl:em	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   11: invokevirtual 431	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   14: astore_2
-    //   15: aload_2
-    //   16: astore_1
-    //   17: aload_1
-    //   18: ifnull +142 -> 160
-    //   21: aload_1
-    //   22: invokevirtual 436	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
-    //   25: aload_0
-    //   26: getfield 311	com/tencent/mobileqq/troop/api/impl/BizTroopInfoServiceImpl:em	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   29: ldc_w 279
-    //   32: invokevirtual 440	com/tencent/mobileqq/persistence/EntityManager:drop	(Ljava/lang/Class;)Z
-    //   35: pop
-    //   36: aload_3
-    //   37: invokevirtual 441	java/util/concurrent/ConcurrentHashMap:clear	()V
-    //   40: aload_0
-    //   41: getfield 423	com/tencent/mobileqq/troop/api/impl/BizTroopInfoServiceImpl:mPrepareShowExternalTroop	Ljava/util/Map;
-    //   44: ifnull +112 -> 156
-    //   47: aload_0
-    //   48: getfield 423	com/tencent/mobileqq/troop/api/impl/BizTroopInfoServiceImpl:mPrepareShowExternalTroop	Ljava/util/Map;
-    //   51: invokeinterface 445 1 0
-    //   56: invokeinterface 448 1 0
-    //   61: astore_2
-    //   62: aload_2
-    //   63: invokeinterface 132 1 0
-    //   68: ifeq +88 -> 156
-    //   71: aload_2
-    //   72: invokeinterface 136 1 0
-    //   77: checkcast 222	java/lang/String
-    //   80: astore 4
-    //   82: aload 4
-    //   84: aload_0
-    //   85: aload 4
-    //   87: invokespecial 281	com/tencent/mobileqq/troop/api/impl/BizTroopInfoServiceImpl:getTroopNameByID	(Ljava/lang/String;)Ljava/lang/String;
-    //   90: aload_0
-    //   91: getfield 423	com/tencent/mobileqq/troop/api/impl/BizTroopInfoServiceImpl:mPrepareShowExternalTroop	Ljava/util/Map;
-    //   94: aload 4
-    //   96: invokeinterface 256 2 0
-    //   101: checkcast 181	java/lang/Long
-    //   104: invokevirtual 259	java/lang/Long:longValue	()J
-    //   107: invokestatic 285	com/tencent/mobileqq/troop/data/ShowExternalTroop:createShowExternalTroop	(Ljava/lang/String;Ljava/lang/String;J)Lcom/tencent/mobileqq/troop/data/ShowExternalTroop;
-    //   110: astore 5
-    //   112: aload_3
-    //   113: aload 4
-    //   115: aload 5
-    //   117: invokevirtual 286	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   120: pop
-    //   121: aload_0
-    //   122: getfield 62	com/tencent/mobileqq/troop/api/impl/BizTroopInfoServiceImpl:app	Lmqq/app/AppRuntime;
-    //   125: ldc 83
-    //   127: ldc 66
-    //   129: invokevirtual 72	mqq/app/AppRuntime:getRuntimeService	(Ljava/lang/Class;Ljava/lang/String;)Lmqq/app/api/IRuntimeService;
-    //   132: checkcast 83	com/tencent/mobileqq/troop/api/ITroopInfoService
-    //   135: aload 5
-    //   137: invokeinterface 290 2 0
-    //   142: pop
-    //   143: goto -81 -> 62
-    //   146: astore_2
-    //   147: aload_1
-    //   148: ifnull +7 -> 155
-    //   151: aload_1
-    //   152: invokevirtual 451	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   155: return
-    //   156: aload_1
-    //   157: invokevirtual 454	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
-    //   160: aload_1
-    //   161: ifnull -6 -> 155
-    //   164: aload_1
-    //   165: invokevirtual 451	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   168: return
-    //   169: astore_1
-    //   170: aconst_null
-    //   171: astore_3
-    //   172: aload_1
-    //   173: astore_2
-    //   174: aload_3
-    //   175: ifnull +7 -> 182
-    //   178: aload_3
-    //   179: invokevirtual 451	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   182: aload_2
-    //   183: athrow
-    //   184: astore_2
-    //   185: aload_1
-    //   186: astore_3
-    //   187: goto -13 -> 174
-    //   190: astore_2
-    //   191: goto -44 -> 147
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	194	0	this	BizTroopInfoServiceImpl
-    //   1	164	1	localObject1	Object
-    //   169	17	1	localObject2	Object
-    //   14	58	2	localObject3	Object
-    //   146	1	2	localThrowable1	java.lang.Throwable
-    //   173	10	2	localObject4	Object
-    //   184	1	2	localObject5	Object
-    //   190	1	2	localThrowable2	java.lang.Throwable
-    //   6	181	3	localObject6	Object
-    //   80	34	4	str	String
-    //   110	26	5	localShowExternalTroop	ShowExternalTroop
-    // Exception table:
-    //   from	to	target	type
-    //   21	62	146	java/lang/Throwable
-    //   62	143	146	java/lang/Throwable
-    //   156	160	146	java/lang/Throwable
-    //   7	15	169	finally
-    //   21	62	184	finally
-    //   62	143	184	finally
-    //   156	160	184	finally
-    //   7	15	190	java/lang/Throwable
+    ConcurrentHashMap localConcurrentHashMap = getShowExternalTroopLazyCache();
+    Object localObject1 = null;
+    Object localObject3 = null;
+    try
+    {
+      try
+      {
+        EntityTransaction localEntityTransaction = this.em.getTransaction();
+        if (localEntityTransaction != null)
+        {
+          localObject3 = localEntityTransaction;
+          localObject1 = localEntityTransaction;
+          localEntityTransaction.begin();
+          localObject3 = localEntityTransaction;
+          localObject1 = localEntityTransaction;
+          this.em.drop(ShowExternalTroop.class);
+          localObject3 = localEntityTransaction;
+          localObject1 = localEntityTransaction;
+          localConcurrentHashMap.clear();
+          localObject3 = localEntityTransaction;
+          localObject1 = localEntityTransaction;
+          if (this.mPrepareShowExternalTroop != null)
+          {
+            localObject3 = localEntityTransaction;
+            localObject1 = localEntityTransaction;
+            Iterator localIterator = this.mPrepareShowExternalTroop.keySet().iterator();
+            for (;;)
+            {
+              localObject3 = localEntityTransaction;
+              localObject1 = localEntityTransaction;
+              if (!localIterator.hasNext()) {
+                break;
+              }
+              localObject3 = localEntityTransaction;
+              localObject1 = localEntityTransaction;
+              String str = (String)localIterator.next();
+              localObject3 = localEntityTransaction;
+              localObject1 = localEntityTransaction;
+              ShowExternalTroop localShowExternalTroop = ShowExternalTroop.createShowExternalTroop(str, getTroopNameByID(str), ((Long)this.mPrepareShowExternalTroop.get(str)).longValue());
+              localObject3 = localEntityTransaction;
+              localObject1 = localEntityTransaction;
+              localConcurrentHashMap.put(str, localShowExternalTroop);
+              localObject3 = localEntityTransaction;
+              localObject1 = localEntityTransaction;
+              ((ITroopInfoService)this.app.getRuntimeService(ITroopInfoService.class, "")).updateEntity(localShowExternalTroop);
+            }
+          }
+          localObject3 = localEntityTransaction;
+          localObject1 = localEntityTransaction;
+          localEntityTransaction.commit();
+        }
+        if (localEntityTransaction == null) {
+          break label228;
+        }
+        localObject1 = localEntityTransaction;
+      }
+      finally
+      {
+        if (localObject3 != null) {
+          localObject3.end();
+        }
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      label220:
+      break label220;
+    }
+    if (localObject2 != null) {
+      localObject2.end();
+    }
+    label228:
   }
   
   public boolean removeShowExternalTroop(String paramString)
@@ -478,8 +466,12 @@ public class BizTroopInfoServiceImpl
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BizTroopInfoService", 2, "setTroopAIOOpen flag: " + paramBoolean);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setTroopAIOOpen flag: ");
+        localStringBuilder.append(paramBoolean);
+        QLog.d("BizTroopInfoService", 2, localStringBuilder.toString());
       }
       this.isTroopAIOOpen = paramBoolean;
       return;
@@ -491,8 +483,12 @@ public class BizTroopInfoServiceImpl
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BizTroopInfoService", 2, "setTroopConfessPanelOpen flag: " + paramBoolean);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setTroopConfessPanelOpen flag: ");
+        localStringBuilder.append(paramBoolean);
+        QLog.d("BizTroopInfoService", 2, localStringBuilder.toString());
       }
       this.isConfessPanelOpen = paramBoolean;
       return;
@@ -502,27 +498,27 @@ public class BizTroopInfoServiceImpl
   
   public void updateTroopSurveyList(oidb_cmd0xb36.RspBody paramRspBody)
   {
-    if ((paramRspBody == null) || (!paramRspBody.group_id.has())) {
-      if (paramRspBody == null) {
-        QLog.e(".troop.survey", 1, "[TroopManager]updateTroopSurveyList() body is null!");
-      }
-    }
-    for (;;)
+    if ((paramRspBody != null) && (paramRspBody.group_id.has()))
     {
-      scheduleFetchExpiredSurveyList();
-      return;
-      QLog.e(".troop.survey", 1, "[TroopManager]updateTroopSurveyList() IllegaleArgument!");
-      continue;
       if (QLog.isColorLevel()) {
         QLog.d(".troop.survey", 2, "[TroopManager]updateTroopSurveyList() body ready!");
       }
       this.mMapOfSurveyList.put(String.valueOf(paramRspBody.group_id.get()), paramRspBody);
     }
+    else if (paramRspBody == null)
+    {
+      QLog.e(".troop.survey", 1, "[TroopManager]updateTroopSurveyList() body is null!");
+    }
+    else
+    {
+      QLog.e(".troop.survey", 1, "[TroopManager]updateTroopSurveyList() IllegaleArgument!");
+    }
+    scheduleFetchExpiredSurveyList();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.impl.BizTroopInfoServiceImpl
  * JD-Core Version:    0.7.0.1
  */

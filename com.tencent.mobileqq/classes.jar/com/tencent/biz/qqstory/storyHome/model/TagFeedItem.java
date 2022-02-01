@@ -47,29 +47,27 @@ public class TagFeedItem
   
   public void covertFrom(String paramString, qqstory_struct.TagFeed paramTagFeed)
   {
-    boolean bool = true;
     this.feedId = paramString;
     this.date = String.valueOf(paramTagFeed.date.get());
     super.setDate(this.date);
     this.mVideoSeq = paramTagFeed.seq.get();
-    if (paramTagFeed.is_end.get() == 1) {}
-    for (;;)
-    {
-      this.mIsVideoEnd = bool;
-      this.mVideoNextCookie = paramTagFeed.next_cookie.get().toStringUtf8();
-      this.tagItem = new TagItem((qqstory_struct.TagItem)paramTagFeed.tag_item.get());
-      this.videoCount = paramTagFeed.video_total.get();
-      this.schema = paramTagFeed.schema.get().toStringUtf8();
-      this.content = paramTagFeed.content.get().toStringUtf8();
-      this.blurb = paramTagFeed.blur.get().toStringUtf8();
-      this.recommendId = paramTagFeed.recommend_id.get();
-      this.recommendTitle = paramTagFeed.title_wording.get().toStringUtf8();
-      this.mOwner = new TagUserItem();
-      this.mOwner.convertFrom((qqstory_struct.TagItem)paramTagFeed.tag_item.get());
-      this.ownerId = this.mOwner.getUnionId();
-      return;
+    int i = paramTagFeed.is_end.get();
+    boolean bool = true;
+    if (i != 1) {
       bool = false;
     }
+    this.mIsVideoEnd = bool;
+    this.mVideoNextCookie = paramTagFeed.next_cookie.get().toStringUtf8();
+    this.tagItem = new TagItem((qqstory_struct.TagItem)paramTagFeed.tag_item.get());
+    this.videoCount = paramTagFeed.video_total.get();
+    this.schema = paramTagFeed.schema.get().toStringUtf8();
+    this.content = paramTagFeed.content.get().toStringUtf8();
+    this.blurb = paramTagFeed.blur.get().toStringUtf8();
+    this.recommendId = paramTagFeed.recommend_id.get();
+    this.recommendTitle = paramTagFeed.title_wording.get().toStringUtf8();
+    this.mOwner = new TagUserItem();
+    this.mOwner.convertFrom((qqstory_struct.TagItem)paramTagFeed.tag_item.get());
+    this.ownerId = this.mOwner.getUnionId();
   }
   
   public byte[] covertToByte()
@@ -140,7 +138,7 @@ public class TagFeedItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.TagFeedItem
  * JD-Core Version:    0.7.0.1
  */

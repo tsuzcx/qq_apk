@@ -100,7 +100,6 @@ import com.tencent.qqmini.sdk.request.ReportShareRequest;
 import com.tencent.qqmini.sdk.request.SetAuthsRequest;
 import com.tencent.qqmini.sdk.request.SetAvatarRequest;
 import com.tencent.qqmini.sdk.request.SetCloudStorageRequest;
-import com.tencent.qqmini.sdk.request.SetUserAppLikeRequest;
 import com.tencent.qqmini.sdk.request.UseUserAppRequest;
 import com.tencent.qqmini.sdk.utils.QUAUtil;
 import cooperation.vip.pb.TianShuAccess.AdItem;
@@ -121,124 +120,129 @@ public class ChannelProxyDefault
   
   public ChannelProxyDefault()
   {
-    if ((QUAUtil.isAlienApp()) || (QUAUtil.isDemoApp())) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.useHttpDirectly = bool;
-      return;
+    boolean bool;
+    if ((!QUAUtil.isAlienApp()) && (!QUAUtil.isDemoApp())) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    this.useHttpDirectly = bool;
   }
   
   private int getGTK(String paramString)
   {
-    int i = 5381;
-    if (!TextUtils.isEmpty(paramString))
+    boolean bool = TextUtils.isEmpty(paramString);
+    int j = 5381;
+    if (!bool)
     {
+      int i = 0;
       int k = paramString.length();
-      int j = 5381;
-      i = 0;
       while (i < k)
       {
         j += (j << 5) + paramString.charAt(i);
         i += 1;
       }
-      i = 0x7FFFFFFF & j;
+      return 0x7FFFFFFF & j;
     }
-    return i;
+    return 5381;
   }
   
   private Map<String, String> getHeaderMap(JSONObject paramJSONObject)
   {
-    HashMap localHashMap = null;
     if (paramJSONObject.has("header"))
     {
-      paramJSONObject = paramJSONObject.optJSONObject("header");
-      Iterator localIterator = paramJSONObject.keys();
-      localHashMap = new HashMap();
-      while (localIterator.hasNext())
+      JSONObject localJSONObject = paramJSONObject.optJSONObject("header");
+      Iterator localIterator = localJSONObject.keys();
+      HashMap localHashMap = new HashMap();
+      for (;;)
       {
-        String str = (String)localIterator.next();
-        localHashMap.put(str, paramJSONObject.optString(str));
+        paramJSONObject = localHashMap;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        paramJSONObject = (String)localIterator.next();
+        localHashMap.put(paramJSONObject, localJSONObject.optString(paramJSONObject));
       }
     }
-    return localHashMap;
+    paramJSONObject = null;
+    return paramJSONObject;
   }
   
   private void handleRequest(ProtoBufRequest paramProtoBufRequest, AsyncResult paramAsyncResult)
   {
     MiniAppProxy localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-    byte[] arrayOfByte;
     try
     {
-      arrayOfByte = paramProtoBufRequest.encode();
-      QMLog.w("ChannelProxyDefault", "sendData " + paramProtoBufRequest);
+      byte[] arrayOfByte = paramProtoBufRequest.encode();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sendData ");
+      localStringBuilder.append(paramProtoBufRequest);
+      QMLog.w("ChannelProxyDefault", localStringBuilder.toString());
       if (this.useHttpDirectly)
       {
         sendDataByHttpServer(paramProtoBufRequest, paramAsyncResult, arrayOfByte);
         return;
       }
+      sendDataByProxy(paramProtoBufRequest, paramAsyncResult, localMiniAppProxy, arrayOfByte);
+      return;
     }
     catch (Exception paramProtoBufRequest)
     {
-      do
-      {
-        QMLog.e("ChannelProxyDefault", "handleRequest Exception", paramProtoBufRequest);
-      } while (paramAsyncResult == null);
-      paramProtoBufRequest = new JSONObject();
+      QMLog.e("ChannelProxyDefault", "handleRequest Exception", paramProtoBufRequest);
+      if (paramAsyncResult == null) {
+        break label121;
+      }
     }
+    paramProtoBufRequest = new JSONObject();
     try
     {
       paramProtoBufRequest.put("retCode", -1);
       paramProtoBufRequest.put("errMsg", "数据编码错误");
-      label93:
+      label113:
       paramAsyncResult.onReceiveResult(false, paramProtoBufRequest);
-      return;
-      sendDataByProxy(paramProtoBufRequest, paramAsyncResult, localMiniAppProxy, arrayOfByte);
+      label121:
       return;
     }
     catch (Throwable localThrowable)
     {
-      break label93;
+      break label113;
     }
   }
   
   private void handleWnsCgiRequestSucceed(int paramInt, byte[] paramArrayOfByte, Map<String, List<String>> paramMap, boolean paramBoolean1, boolean paramBoolean2, AsyncResult paramAsyncResult)
   {
-    for (;;)
+    try
     {
-      JSONObject localJSONObject;
-      try
+      JSONObject localJSONObject = new JSONObject();
+      if (paramArrayOfByte != null)
       {
-        localJSONObject = new JSONObject();
-        if (paramArrayOfByte == null) {
-          break label136;
-        }
         if (paramBoolean1)
         {
           localJSONObject.put("data", new JSONObject(new String(paramArrayOfByte)));
-          localJSONObject.put("statusCode", paramInt);
-          localJSONObject.put("wnsCode", 0);
-          localJSONObject.put("header", JSONUtil.headerToJson(paramMap));
-          paramAsyncResult.onReceiveResult(true, localJSONObject);
-          return;
         }
-        if (paramBoolean2)
+        else
         {
-          paramArrayOfByte = Base64.encodeToString(paramArrayOfByte, 0);
+          if (paramBoolean2) {
+            paramArrayOfByte = Base64.encodeToString(paramArrayOfByte, 0);
+          } else {
+            paramArrayOfByte = new String(paramArrayOfByte);
+          }
           localJSONObject.put("data", paramArrayOfByte);
-          continue;
         }
-        paramArrayOfByte = new String(paramArrayOfByte);
       }
-      catch (Throwable paramArrayOfByte)
-      {
-        QMLog.e("ChannelProxyDefault", "handleMessage wnsCgiRequest exception ", paramArrayOfByte);
-        paramAsyncResult.onReceiveResult(false, null);
-        return;
+      else {
+        localJSONObject.put("data", "");
       }
-      continue;
-      label136:
-      localJSONObject.put("data", "");
+      localJSONObject.put("statusCode", paramInt);
+      localJSONObject.put("wnsCode", 0);
+      localJSONObject.put("header", JSONUtil.headerToJson(paramMap));
+      paramAsyncResult.onReceiveResult(true, localJSONObject);
+      return;
+    }
+    catch (Throwable paramArrayOfByte)
+    {
+      QMLog.e("ChannelProxyDefault", "handleMessage wnsCgiRequest exception ", paramArrayOfByte);
+      paramAsyncResult.onReceiveResult(false, null);
     }
   }
   
@@ -537,18 +541,22 @@ public class ChannelProxyDefault
       return;
     }
     String str = paramBundle.getString("log_key");
-    paramBundle = paramBundle.getStringArray("data");
-    StringBuilder localStringBuilder = new StringBuilder();
+    Object localObject = paramBundle.getStringArray("data");
+    paramBundle = new StringBuilder();
     int i = 0;
-    while (i < paramBundle.length)
+    while (i < localObject.length)
     {
-      localStringBuilder.append(paramBundle[i]);
-      if (i < paramBundle.length - 1) {
-        localStringBuilder.append('|');
+      paramBundle.append(localObject[i]);
+      if (i < localObject.length - 1) {
+        paramBundle.append('|');
       }
       i += 1;
     }
-    ((RequestProxy)ProxyManager.get(RequestProxy.class)).request("https://q.qq.com/report/dc/" + str, localStringBuilder.toString().getBytes(), null, "POST", 60, new ChannelProxyDefault.3(this));
+    localObject = (RequestProxy)ProxyManager.get(RequestProxy.class);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("https://q.qq.com/report/dc/");
+    localStringBuilder.append(str);
+    ((RequestProxy)localObject).request(localStringBuilder.toString(), paramBundle.toString().getBytes(), null, "POST", 60, new ChannelProxyDefault.3(this));
   }
   
   public void insertBookShelf(String paramString1, String paramString2, ArrayList<String> paramArrayList, AsyncResult paramAsyncResult)
@@ -648,7 +656,15 @@ public class ChannelProxyDefault
   
   public void reportBeacon(@NonNull ChannelProxy.BeaconReportCategory paramBeaconReportCategory, @NonNull String paramString, @Nullable Map<String, String> paramMap)
   {
-    QMLog.d("ChannelProxyDefault", "reportBeacon() called with: category = [" + paramBeaconReportCategory + "], eventName = [" + paramString + "], param = [" + paramMap + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("reportBeacon() called with: category = [");
+    localStringBuilder.append(paramBeaconReportCategory);
+    localStringBuilder.append("], eventName = [");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("], param = [");
+    localStringBuilder.append(paramMap);
+    localStringBuilder.append("]");
+    QMLog.d("ChannelProxyDefault", localStringBuilder.toString());
   }
   
   public void reportShare(COMM.StCommonExt paramStCommonExt, long paramLong, String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2, AsyncResult paramAsyncResult)
@@ -678,12 +694,7 @@ public class ChannelProxyDefault
   
   public void setUserAppLike(boolean paramBoolean, COMM.StCommonExt paramStCommonExt, String paramString, AsyncResult paramAsyncResult)
   {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      handleRequest(new SetUserAppLikeRequest(paramStCommonExt, paramString, i), paramAsyncResult);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void setUserAppTop(MiniAppInfo paramMiniAppInfo, AsyncResult paramAsyncResult) {}
@@ -757,7 +768,12 @@ public class ChannelProxyDefault
   
   public boolean updateBaseLib(String paramString, boolean paramBoolean1, boolean paramBoolean2, AsyncResult paramAsyncResult)
   {
-    QMLog.i("ChannelProxyDefault", "[MiniEng] doUpdateBaseLib nocheck=" + paramBoolean1 + ", force=" + paramBoolean2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[MiniEng] doUpdateBaseLib nocheck=");
+    localStringBuilder.append(paramBoolean1);
+    localStringBuilder.append(", force=");
+    localStringBuilder.append(paramBoolean2);
+    QMLog.i("ChannelProxyDefault", localStringBuilder.toString());
     if ((!paramBoolean1) && (!paramBoolean2))
     {
       long l = StorageUtil.getPreference().getLong("baselib_min_update_time", 0L);
@@ -827,16 +843,13 @@ public class ChannelProxyDefault
             return false;
           }
           RequestProxy localRequestProxy = (RequestProxy)ProxyManager.get(RequestProxy.class);
-          if (str1 != null)
-          {
-            paramJSONObject = str1.getBytes();
-            localRequestProxy.request(str2, paramJSONObject, localMap, str3, 60000, new ChannelProxyDefault.4(this, paramAsyncResult, bool1, bool2));
-            return true;
+          if (str1 == null) {
+            break label220;
           }
-          paramJSONObject = null;
-          continue;
+          paramJSONObject = str1.getBytes();
+          localRequestProxy.request(str2, paramJSONObject, localMap, str3, 60000, new ChannelProxyDefault.4(this, paramAsyncResult, bool1, bool2));
+          return true;
         }
-        String str1 = null;
       }
       catch (Throwable paramJSONObject)
       {
@@ -844,12 +857,16 @@ public class ChannelProxyDefault
         paramAsyncResult.onReceiveResult(false, null);
         return false;
       }
+      String str1 = null;
+      continue;
+      label220:
+      paramJSONObject = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.ChannelProxyDefault
  * JD-Core Version:    0.7.0.1
  */

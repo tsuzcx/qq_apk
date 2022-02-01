@@ -40,51 +40,58 @@ public class StrokeFilter
   
   public void updateParams(StrokeModel paramStrokeModel, Frame paramFrame, Rect paramRect, int paramInt1, int paramInt2)
   {
-    if ((paramInt1 == 0) || (paramInt2 == 0)) {
-      return;
-    }
-    float f = Math.max(paramFrame.width / paramInt1, paramFrame.height / paramInt2);
-    int i = (int)(paramInt1 * f);
-    int j = (int)(f * paramInt2);
-    Rect localRect = new Rect();
-    localRect.left = ((i - paramFrame.width) / 2 + paramRect.left);
-    localRect.right = ((i - paramFrame.width) / 2 + paramRect.right);
-    localRect.top = ((j - paramFrame.height) / 2 + paramRect.top);
-    localRect.bottom = ((j - paramFrame.height) / 2 + paramRect.bottom);
-    paramRect = new Rect();
-    paramRect.left = ((i - paramFrame.width) / 2);
-    paramRect.right = ((i - paramFrame.width) / 2 + paramFrame.width);
-    paramRect.top = ((j - paramFrame.height) / 2);
-    paramRect.bottom = ((j - paramFrame.height) / 2 + paramFrame.height);
-    setTexCords(AlgoUtils.calTexCoordsFill(localRect, i, j));
-    addAttribParam("textureCoordinate3", AlgoUtils.calTexCoordsFill(paramRect, i, j));
-    addParam(new UniformParam.TextureParam("inputImageTexture3", paramFrame.getTextureId(), 33986));
-    paramFrame = new PointF();
-    paramFrame.x = paramStrokeModel.getStrokeGap();
-    paramFrame.y = (paramStrokeModel.getStrokeGap() * paramInt1 / paramInt2);
-    paramRect = new PointF();
-    if (paramInt2 > paramInt1)
+    if (paramInt1 != 0)
     {
-      paramRect.y = paramStrokeModel.getStrokeWidth();
-      paramRect.x = (paramStrokeModel.getStrokeWidth() * paramInt2 / paramInt1);
-    }
-    for (;;)
-    {
+      if (paramInt2 == 0) {
+        return;
+      }
+      float f2 = paramFrame.width;
+      float f1 = paramInt1;
+      float f3 = f2 / f1;
+      float f4 = paramFrame.height;
+      f2 = paramInt2;
+      f3 = Math.max(f3, f4 / f2);
+      int i = (int)(f1 * f3);
+      int j = (int)(f3 * f2);
+      Rect localRect = new Rect();
+      localRect.left = ((i - paramFrame.width) / 2 + paramRect.left);
+      localRect.right = ((i - paramFrame.width) / 2 + paramRect.right);
+      localRect.top = ((j - paramFrame.height) / 2 + paramRect.top);
+      localRect.bottom = ((j - paramFrame.height) / 2 + paramRect.bottom);
+      paramRect = new Rect();
+      paramRect.left = ((i - paramFrame.width) / 2);
+      paramRect.right = ((i - paramFrame.width) / 2 + paramFrame.width);
+      paramRect.top = ((j - paramFrame.height) / 2);
+      paramRect.bottom = ((j - paramFrame.height) / 2 + paramFrame.height);
+      setTexCords(AlgoUtils.calTexCoordsFill(localRect, i, j));
+      addAttribParam("textureCoordinate3", AlgoUtils.calTexCoordsFill(paramRect, i, j));
+      addParam(new UniformParam.TextureParam("inputImageTexture3", paramFrame.getTextureId(), 33986));
+      paramFrame = new PointF();
+      paramFrame.x = paramStrokeModel.getStrokeGap();
+      paramFrame.y = (paramStrokeModel.getStrokeGap() * f1 / f2);
+      paramRect = new PointF();
+      if (paramInt2 > paramInt1)
+      {
+        paramRect.y = paramStrokeModel.getStrokeWidth();
+        paramRect.x = (paramStrokeModel.getStrokeWidth() * f2 / f1);
+      }
+      else
+      {
+        paramRect.x = paramStrokeModel.getStrokeWidth();
+        paramRect.y = (paramStrokeModel.getStrokeWidth() * f1 / f2);
+      }
       addParam(new UniformParam.Float2fParam("strokeGapInPixel", paramFrame.x, paramFrame.y));
       addParam(new UniformParam.Float2fParam("strokeWidthInPixel", paramRect.x, paramRect.y));
       if (paramStrokeModel.getStrokeColor().length >= 4) {
         addParam(new UniformParam.Float4fParam("strokeColor", paramStrokeModel.getStrokeColor()[0], paramStrokeModel.getStrokeColor()[1], paramStrokeModel.getStrokeColor()[2], paramStrokeModel.getStrokeColor()[3]));
       }
       addParam(new UniformParam.IntParam("strokeType", paramStrokeModel.getStrokeType()));
-      return;
-      paramRect.x = paramStrokeModel.getStrokeWidth();
-      paramRect.y = (paramStrokeModel.getStrokeWidth() * paramInt1 / paramInt2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.StrokeFilter
  * JD-Core Version:    0.7.0.1
  */

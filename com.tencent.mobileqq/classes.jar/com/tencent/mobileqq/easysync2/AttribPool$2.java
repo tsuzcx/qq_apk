@@ -22,7 +22,10 @@ final class AttribPool$2
     int i = 0;
     while (i < paramJsonElement.jdField_a_of_type_Int)
     {
-      Object localObject = paramType.get(i + "").getAsJsonArray();
+      paramJsonDeserializationContext = new StringBuilder();
+      paramJsonDeserializationContext.append(i);
+      paramJsonDeserializationContext.append("");
+      Object localObject = paramType.get(paramJsonDeserializationContext.toString()).getAsJsonArray();
       paramJsonDeserializationContext = ((JsonArray)localObject).get(0).getAsString();
       localObject = ((JsonArray)localObject).get(1).getAsString();
       paramJsonElement.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.put(i, new Pair(paramJsonDeserializationContext, localObject));
@@ -34,7 +37,7 @@ final class AttribPool$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.AttribPool.2
  * JD-Core Version:    0.7.0.1
  */

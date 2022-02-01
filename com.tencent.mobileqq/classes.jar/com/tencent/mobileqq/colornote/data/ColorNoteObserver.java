@@ -1,58 +1,59 @@
 package com.tencent.mobileqq.colornote.data;
 
-import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.colornote.ColorNoteController;
+import com.tencent.mobileqq.colornote.api.IColorNoteController;
+import com.tencent.mobileqq.colornote.api.IColorNoteUtil;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class ColorNoteObserver
   implements BusinessObserver
 {
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    paramBoolean = true;
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 1: 
+      if (paramInt != 2) {
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorNoteObserver", 2, "onUpdate: TYPE_REQ_SET_COLOR_NOTE_RECENT_SWITCH");
+      }
+    }
+    else
+    {
       paramObject = (Object[])paramObject;
       if ((paramObject != null) && (paramObject.length == 1))
       {
-        ColorNoteRecentConfBean localColorNoteRecentConfBean = ColorNoteRecentConfigProcessor.a();
-        if ((localColorNoteRecentConfBean == null) || (!localColorNoteRecentConfBean.a())) {
-          break label135;
+        Object localObject = ((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).loadConfig();
+        if ((localObject != null) && (((ColorNoteRecentConfBean)localObject).a())) {
+          paramInt = 1;
+        } else {
+          paramInt = 0;
+        }
+        localObject = (IColorNoteController)QRoute.api(IColorNoteController.class);
+        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+        if ((paramInt == 0) || (((Boolean)paramObject[0]).booleanValue())) {
+          paramBoolean = false;
+        }
+        ((IColorNoteController)localObject).setRecentlyViewedSwitch(localAppRuntime, paramBoolean);
+        if (QLog.isColorLevel()) {
+          QLog.d("ColorNoteObserver", 2, "onUpdate: TYPE_REQ_GET_COLOR_NOTE_RECENT_SWITCH");
         }
       }
-      break;
-    }
-    label135:
-    for (paramInt = 1;; paramInt = 0)
-    {
-      if ((paramInt != 0) && (!((Boolean)paramObject[0]).booleanValue())) {}
-      for (paramBoolean = true;; paramBoolean = false)
+      else if (QLog.isColorLevel())
       {
-        ColorNoteController.c(paramBoolean);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("ColorNoteObserver", 0, "onUpdate: TYPE_REQ_GET_COLOR_NOTE_RECENT_SWITCH");
-        return;
+        QLog.d("ColorNoteObserver", 2, "onUpdate: params == null || params.length != 1");
       }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("ColorNoteObserver", 0, "onUpdate: params == null || params.length != 1");
-      return;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("ColorNoteObserver", 0, "onUpdate: TYPE_REQ_SET_COLOR_NOTE_RECENT_SWITCH");
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.data.ColorNoteObserver
  * JD-Core Version:    0.7.0.1
  */

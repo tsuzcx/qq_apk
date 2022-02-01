@@ -37,17 +37,18 @@ public final class EnginePackage$Companion$create$1
   public File getEngineNativeLibrary(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "name");
-    if (this.$soDir != null)
+    File localFile = this.$soDir;
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (localFile != null)
     {
-      paramString = new File(this.$soDir, System.mapLibraryName(paramString));
-      if (paramString.exists()) {}
-      for (;;)
-      {
-        return paramString;
-        paramString = null;
+      paramString = new File(localFile, System.mapLibraryName(paramString));
+      localObject1 = localObject2;
+      if (paramString.exists()) {
+        localObject1 = paramString;
       }
     }
-    return null;
+    return localObject1;
   }
   
   @Nullable
@@ -60,7 +61,12 @@ public final class EnginePackage$Companion$create$1
   public ScriptFile getScript(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "name");
-    return (ScriptFile)new ScriptFile.Path(paramString, new File(this.$baseLibDir, paramString), new File(this.$baseLibDir, paramString + ".cc"));
+    File localFile1 = new File(this.$baseLibDir, paramString);
+    File localFile2 = this.$baseLibDir;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".cc");
+    return (ScriptFile)new ScriptFile.Path(paramString, localFile1, new File(localFile2, localStringBuilder.toString()));
   }
   
   @NotNull
@@ -71,7 +77,7 @@ public final class EnginePackage$Companion$create$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.filesystem.EnginePackage.Companion.create.1
  * JD-Core Version:    0.7.0.1
  */

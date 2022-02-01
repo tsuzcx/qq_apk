@@ -15,7 +15,13 @@ final class LiveSDK$2
   
   public void onFail(int paramInt, String paramString)
   {
-    ((LogInterface)LiveSDK.liveEngine.getService(LogInterface.class)).e("livesdk", "livesdk login fail :( , code " + paramInt + ", msg " + paramString, new Object[0]);
+    LogInterface localLogInterface = (LogInterface)LiveSDK.liveEngine.getService(LogInterface.class);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("livesdk login fail :( , code ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", msg ");
+    localStringBuilder.append(paramString);
+    localLogInterface.e("livesdk", localStringBuilder.toString(), new Object[0]);
     this.val$sdkLoginCallback.onFail(paramInt, paramString);
   }
   
@@ -30,7 +36,7 @@ final class LiveSDK$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.LiveSDK.2
  * JD-Core Version:    0.7.0.1
  */

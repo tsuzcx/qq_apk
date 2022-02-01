@@ -1,6 +1,8 @@
 package com.tencent.av.utils;
 
 import android.os.AsyncTask;
+import com.tencent.qphone.base.util.QLog;
+import org.apache.http.client.ClientProtocolException;
 
 public class HttpUtil$SimpleHttpPostTask
   extends AsyncTask<Void, Void, String>
@@ -16,70 +18,50 @@ public class HttpUtil$SimpleHttpPostTask
     this.c = paramString3;
   }
   
-  /* Error */
   protected String a(Void... paramVarArgs)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 16	com/tencent/av/utils/HttpUtil$SimpleHttpPostTask:a	Ljava/lang/String;
-    //   4: aload_0
-    //   5: getfield 18	com/tencent/av/utils/HttpUtil$SimpleHttpPostTask:b	Ljava/lang/String;
-    //   8: aload_0
-    //   9: getfield 20	com/tencent/av/utils/HttpUtil$SimpleHttpPostTask:c	Ljava/lang/String;
-    //   12: invokestatic 31	com/tencent/av/utils/HttpUtil:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   15: astore_1
-    //   16: invokestatic 37	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   19: ifeq +28 -> 47
-    //   22: ldc 39
-    //   24: iconst_2
-    //   25: new 41	java/lang/StringBuilder
-    //   28: dup
-    //   29: invokespecial 42	java/lang/StringBuilder:<init>	()V
-    //   32: ldc 44
-    //   34: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: aload_1
-    //   38: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   41: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   44: invokestatic 56	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   47: aload_1
-    //   48: areturn
-    //   49: astore_2
-    //   50: aconst_null
-    //   51: astore_1
-    //   52: aload_2
-    //   53: invokevirtual 59	org/apache/http/client/ClientProtocolException:printStackTrace	()V
-    //   56: aload_1
-    //   57: areturn
-    //   58: astore_2
-    //   59: aconst_null
-    //   60: astore_1
-    //   61: aload_2
-    //   62: invokevirtual 60	java/lang/Exception:printStackTrace	()V
-    //   65: aload_1
-    //   66: areturn
-    //   67: astore_2
-    //   68: goto -7 -> 61
-    //   71: astore_2
-    //   72: goto -20 -> 52
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	75	0	this	SimpleHttpPostTask
-    //   0	75	1	paramVarArgs	Void[]
-    //   49	4	2	localClientProtocolException1	org.apache.http.client.ClientProtocolException
-    //   58	4	2	localException1	java.lang.Exception
-    //   67	1	2	localException2	java.lang.Exception
-    //   71	1	2	localClientProtocolException2	org.apache.http.client.ClientProtocolException
-    // Exception table:
-    //   from	to	target	type
-    //   0	16	49	org/apache/http/client/ClientProtocolException
-    //   0	16	58	java/lang/Exception
-    //   16	47	67	java/lang/Exception
-    //   16	47	71	org/apache/http/client/ClientProtocolException
+    paramVarArgs = null;
+    Object localObject1 = null;
+    Object localObject2;
+    try
+    {
+      String str = HttpUtil.a(this.a, this.b, this.c);
+      localObject1 = str;
+      paramVarArgs = str;
+      localObject2 = str;
+      if (QLog.isColorLevel())
+      {
+        localObject1 = str;
+        paramVarArgs = str;
+        localObject2 = new StringBuilder();
+        localObject1 = str;
+        paramVarArgs = str;
+        ((StringBuilder)localObject2).append("SimpleHttpPostTask rsp = ");
+        localObject1 = str;
+        paramVarArgs = str;
+        ((StringBuilder)localObject2).append(str);
+        localObject1 = str;
+        paramVarArgs = str;
+        QLog.i("SimpleHttpPostTask", 2, ((StringBuilder)localObject2).toString());
+        return str;
+      }
+    }
+    catch (Exception paramVarArgs)
+    {
+      paramVarArgs.printStackTrace();
+      return localObject1;
+    }
+    catch (ClientProtocolException localClientProtocolException)
+    {
+      localClientProtocolException.printStackTrace();
+      localObject2 = paramVarArgs;
+    }
+    return localObject2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.HttpUtil.SimpleHttpPostTask
  * JD-Core Version:    0.7.0.1
  */

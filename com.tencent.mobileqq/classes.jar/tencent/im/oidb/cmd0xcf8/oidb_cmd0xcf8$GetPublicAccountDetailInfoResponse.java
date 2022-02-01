@@ -12,7 +12,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class oidb_cmd0xcf8$GetPublicAccountDetailInfoResponse
   extends MessageMicro<GetPublicAccountDetailInfoResponse>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 34, 42, 50, 56, 64, 72, 82, 88, 96, 104, 112, 120, 128, 136, 144, 154, 162, 170, 178, 186, 192 }, new String[] { "ret_info", "seqno", "name", "display_number", "summary", "is_recv_msg", "is_recv_push", "certified_grade", "config_group_info", "is_show_share_button", "is_show_follow_button", "follow_type", "is_sync_lbs", "group_id", "show_flag", "account_flag", "luin", "config_background_color", "config_background_img", "config_group_info_new", "certified_description", "unified_account_descrpition", "account_flag2" }, new Object[] { null, Integer.valueOf(0), "", "", "", Boolean.valueOf(false), Boolean.valueOf(false), Integer.valueOf(0), null, Boolean.valueOf(false), Boolean.valueOf(false), Integer.valueOf(0), Boolean.valueOf(false), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), "", "", null, "", "", Long.valueOf(0L) }, GetPublicAccountDetailInfoResponse.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field account_flag = PBField.initUInt32(0);
   public final PBUInt64Field account_flag2 = PBField.initUInt64(0L);
   public final PBStringField certified_description = PBField.initString("");
@@ -36,10 +36,17 @@ public final class oidb_cmd0xcf8$GetPublicAccountDetailInfoResponse
   public final PBUInt32Field show_flag = PBField.initUInt32(0);
   public final PBStringField summary = PBField.initString("");
   public final PBStringField unified_account_descrpition = PBField.initString("");
+  
+  static
+  {
+    Boolean localBoolean = Boolean.valueOf(false);
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 34, 42, 50, 56, 64, 72, 82, 88, 96, 104, 112, 120, 128, 136, 144, 154, 162, 170, 178, 186, 192 }, new String[] { "ret_info", "seqno", "name", "display_number", "summary", "is_recv_msg", "is_recv_push", "certified_grade", "config_group_info", "is_show_share_button", "is_show_follow_button", "follow_type", "is_sync_lbs", "group_id", "show_flag", "account_flag", "luin", "config_background_color", "config_background_img", "config_group_info_new", "certified_description", "unified_account_descrpition", "account_flag2" }, new Object[] { null, localInteger, "", "", "", localBoolean, localBoolean, localInteger, null, localBoolean, localBoolean, localInteger, localBoolean, localInteger, localInteger, localInteger, Long.valueOf(0L), "", "", null, "", "", Long.valueOf(0L) }, GetPublicAccountDetailInfoResponse.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse
  * JD-Core Version:    0.7.0.1
  */

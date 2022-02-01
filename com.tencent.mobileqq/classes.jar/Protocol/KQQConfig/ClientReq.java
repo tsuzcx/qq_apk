@@ -66,29 +66,35 @@ public final class ClientReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iCmdType, 1);
-    if (this.stSDKUpgradeReq != null) {
-      paramJceOutputStream.write(this.stSDKUpgradeReq, 2);
+    Object localObject = this.stSDKUpgradeReq;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.stSdkConfReq != null) {
-      paramJceOutputStream.write(this.stSdkConfReq, 3);
+    localObject = this.stSdkConfReq;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.stGetServerListReq != null) {
-      paramJceOutputStream.write(this.stGetServerListReq, 4);
+    localObject = this.stGetServerListReq;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
-    if (this.stUserInfo != null) {
-      paramJceOutputStream.write(this.stUserInfo, 5);
+    localObject = this.stUserInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
-    if (this.stResourceReqV2 != null) {
-      paramJceOutputStream.write(this.stResourceReqV2, 6);
+    localObject = this.stResourceReqV2;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
-    if (this.stClientUinConfReq != null) {
-      paramJceOutputStream.write(this.stClientUinConfReq, 7);
+    localObject = this.stClientUinConfReq;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     protocol.KQQConfig.ClientReq
  * JD-Core Version:    0.7.0.1
  */

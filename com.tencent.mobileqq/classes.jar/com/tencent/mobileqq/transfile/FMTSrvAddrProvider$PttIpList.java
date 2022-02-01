@@ -38,71 +38,76 @@ public class FMTSrvAddrProvider$PttIpList
   
   public void initError()
   {
-    if ((this.groupPttDownloadWifiIPLIst != null) && (this.groupPttDownloadWifiIPLIst.size() > 0)) {
+    ArrayList localArrayList = this.groupPttDownloadWifiIPLIst;
+    if ((localArrayList != null) && (localArrayList.size() > 0)) {
       this.wifiError = new int[this.groupPttDownloadWifiIPLIst.size()];
     }
-    if ((this.groupPttDownloadXGIPLIst != null) && (this.groupPttDownloadXGIPLIst.size() > 0)) {
+    localArrayList = this.groupPttDownloadXGIPLIst;
+    if ((localArrayList != null) && (localArrayList.size() > 0)) {
       this.xGError = new int[this.groupPttDownloadXGIPLIst.size()];
     }
   }
   
   public void onFailed(String paramString1, String paramString2)
   {
+    Object localObject = null;
     if (paramString1 != null) {}
     for (;;)
     {
       try
       {
-        int i;
         if (paramString1.equals(this.wifiIdentifier))
         {
-          localArrayList = this.groupPttDownloadWifiIPLIst;
-          paramString1 = this.wifiError;
-          if ((localArrayList == null) || (localArrayList.size() <= 0) || (paramString1 == null) || (paramString1.length <= 0)) {
-            break;
-          }
-          paramString2 = new URL(paramString2).getHost();
-          if ((paramString2 == null) || (paramString2.length() <= 0)) {
-            break;
-          }
-          i = 0;
-          if (i >= localArrayList.size()) {
-            break;
-          }
-          String str = ((FileStorageServerListInfo)localArrayList.get(i)).sIP;
-          if ((str != null) && (str.equalsIgnoreCase(paramString2)))
-          {
-            if (paramString1.length <= i) {
-              break;
-            }
-            paramString1[i] += 1;
-          }
+          paramString1 = this.groupPttDownloadWifiIPLIst;
+          localObject = this.wifiError;
         }
         else
         {
           if ((paramString1 == null) || (!paramString1.equals(this.xGIdentifier))) {
-            break label163;
+            break label171;
           }
-          localArrayList = this.groupPttDownloadXGIPLIst;
-          paramString1 = this.xGError;
-          continue;
+          paramString1 = this.groupPttDownloadXGIPLIst;
+          localObject = this.xGError;
         }
-        i += 1;
-        continue;
-        paramString1 = null;
+        if ((paramString1 != null) && (paramString1.size() > 0) && (localObject != null) && (localObject.length > 0))
+        {
+          paramString2 = new URL(paramString2).getHost();
+          if ((paramString2 != null) && (paramString2.length() > 0))
+          {
+            int i = 0;
+            if (i < paramString1.size())
+            {
+              str = ((FileStorageServerListInfo)paramString1.get(i)).sIP;
+              if ((str != null) && (str.equalsIgnoreCase(paramString2)))
+              {
+                if (localObject.length > i) {
+                  localObject[i] += 1;
+                }
+              }
+              else
+              {
+                i += 1;
+                continue;
+              }
+            }
+          }
+        }
+        return;
       }
       catch (MalformedURLException paramString1)
       {
         return;
       }
-      label163:
-      ArrayList localArrayList = null;
+      label171:
+      String str = null;
+      paramString1 = (String)localObject;
+      localObject = str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.FMTSrvAddrProvider.PttIpList
  * JD-Core Version:    0.7.0.1
  */

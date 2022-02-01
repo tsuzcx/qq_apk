@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.avgame.app.AVGameAppInterface;
 import com.tencent.avgame.gamelogic.GameEngine;
 import com.tencent.avgame.gamelogic.data.EngineData;
 import com.tencent.avgame.gamelogic.data.RoomInfo;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.business.BaseAVGameAppInterface;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
 import com.tencent.mobileqq.app.avgameshare.AVGameShareUtil;
 
@@ -37,12 +37,12 @@ class GameActivityCenterCtrl$ShowAwardResult
   
   private void a(Context paramContext)
   {
-    AVGameAppInterface localAVGameAppInterface = GameEngine.a().a();
-    String str1 = localAVGameAppInterface.getCurrentAccountUin();
+    BaseAVGameAppInterface localBaseAVGameAppInterface = GameEngine.a().a();
+    String str1 = localBaseAVGameAppInterface.getCurrentAccountUin();
     EngineData localEngineData = GameEngine.a().a();
     long l = localEngineData.a();
     String str2 = localEngineData.a().getNick(str1);
-    AVGameShareUtil.a().a(localAVGameAppInterface, l, Long.valueOf(str1).longValue(), str2, 3, "", localEngineData.d(), new GameActivityCenterCtrl.ShowAwardResult.1(this, paramContext, str2));
+    AVGameShareUtil.a().a(localBaseAVGameAppInterface, l, Long.valueOf(str1).longValue(), str2, 3, "", localEngineData.d(), new GameActivityCenterCtrl.ShowAwardResult.1(this, paramContext, str2));
   }
   
   public void run()
@@ -59,7 +59,7 @@ class GameActivityCenterCtrl$ShowAwardResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.controller.GameActivityCenterCtrl.ShowAwardResult
  * JD-Core Version:    0.7.0.1
  */

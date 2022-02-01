@@ -28,15 +28,31 @@ public abstract class Patch
     ArrayList localArrayList = new ArrayList();
     if (paramString2.equals("Native"))
     {
-      localArrayList.add(paramString1 + ".cfg");
-      localArrayList.add("lib" + paramString1 + ".so");
-      localArrayList.add(paramString1 + ".subpatch");
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString1);
+      paramString2.append(".cfg");
+      localArrayList.add(paramString2.toString());
+      paramString2 = new StringBuilder();
+      paramString2.append("lib");
+      paramString2.append(paramString1);
+      paramString2.append(".so");
+      localArrayList.add(paramString2.toString());
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString1);
+      paramString2.append(".subpatch");
+      localArrayList.add(paramString2.toString());
       return localArrayList;
     }
     if (paramString2.equals("DVM"))
     {
-      localArrayList.add(paramString1 + ".cfg");
-      localArrayList.add(paramString1 + ".jar");
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString1);
+      paramString2.append(".cfg");
+      localArrayList.add(paramString2.toString());
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString1);
+      paramString2.append(".jar");
+      localArrayList.add(paramString2.toString());
       return localArrayList;
     }
     return null;
@@ -51,19 +67,26 @@ public abstract class Patch
       if (paramString == null) {
         return null;
       }
-    }
-    else
-    {
-      Common.Log.a("KingKongPatchInfo", "Unsupported patch type : " + str);
+      if ((paramString.c.equals(paramPatchInfo.jdField_a_of_type_JavaLangString)) && (paramString.d.equals(paramPatchInfo.b)) && (paramString.e.equals(paramPatchInfo.f)) && (paramString.e.equals("Native")))
+      {
+        paramString.jdField_a_of_type_ComTencentKingkongPatchInfo = paramPatchInfo;
+        return paramString;
+      }
+      paramPatchInfo = new StringBuilder();
+      paramPatchInfo.append("Patch name, version or type mismatch : ");
+      paramPatchInfo.append(paramString.c);
+      paramPatchInfo.append(", ");
+      paramPatchInfo.append(paramString.d);
+      paramPatchInfo.append(", ");
+      paramPatchInfo.append(paramString.e);
+      Common.Log.a("KingKongPatchInfo", paramPatchInfo.toString());
       return null;
     }
-    if ((!paramString.c.equals(paramPatchInfo.jdField_a_of_type_JavaLangString)) || (!paramString.d.equals(paramPatchInfo.b)) || (!paramString.e.equals(paramPatchInfo.f)) || (!paramString.e.equals("Native")))
-    {
-      Common.Log.a("KingKongPatchInfo", "Patch name, version or type mismatch : " + paramString.c + ", " + paramString.d + ", " + paramString.e);
-      return null;
-    }
-    paramString.jdField_a_of_type_ComTencentKingkongPatchInfo = paramPatchInfo;
-    return paramString;
+    paramString = new StringBuilder();
+    paramString.append("Unsupported patch type : ");
+    paramString.append(str);
+    Common.Log.a("KingKongPatchInfo", paramString.toString());
+    return null;
   }
   
   public static ArrayList<String> b(String paramString1, String paramString2)
@@ -71,16 +94,36 @@ public abstract class Patch
     ArrayList localArrayList = new ArrayList();
     if (paramString2.equals("Native"))
     {
-      localArrayList.add(paramString1 + ".cfg");
-      localArrayList.add("lib" + paramString1 + ".so");
-      localArrayList.add(paramString1 + ".subpatch");
-    }
-    while (!paramString2.equals("DVM")) {
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString1);
+      paramString2.append(".cfg");
+      localArrayList.add(paramString2.toString());
+      paramString2 = new StringBuilder();
+      paramString2.append("lib");
+      paramString2.append(paramString1);
+      paramString2.append(".so");
+      localArrayList.add(paramString2.toString());
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString1);
+      paramString2.append(".subpatch");
+      localArrayList.add(paramString2.toString());
       return localArrayList;
     }
-    localArrayList.add(paramString1 + ".cfg");
-    localArrayList.add(paramString1 + ".jar");
-    localArrayList.add(paramString1 + ".dex");
+    if (paramString2.equals("DVM"))
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString1);
+      paramString2.append(".cfg");
+      localArrayList.add(paramString2.toString());
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString1);
+      paramString2.append(".jar");
+      localArrayList.add(paramString2.toString());
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString1);
+      paramString2.append(".dex");
+      localArrayList.add(paramString2.toString());
+    }
     return localArrayList;
   }
   
@@ -88,14 +131,19 @@ public abstract class Patch
   
   public String a()
   {
-    return this.b + jdField_a_of_type_JavaLangString + this.c + ".cfg";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(".cfg");
+    return localStringBuilder.toString();
   }
   
   public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.kingkong.Patch
  * JD-Core Version:    0.7.0.1
  */

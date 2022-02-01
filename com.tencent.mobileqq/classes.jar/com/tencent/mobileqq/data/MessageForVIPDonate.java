@@ -15,10 +15,14 @@ public class MessageForVIPDonate
     try
     {
       this.donateMsg = ((VIPDonateMsg)MessagePkgUtils.a(this.msgData));
-      if (QLog.isColorLevel()) {
-        QLog.d("MessageForVIPDonate", 2, "doParse :VIPDonateMsg = " + this.donateMsg);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("doParse :VIPDonateMsg = ");
+        localStringBuilder.append(this.donateMsg);
+        QLog.d("MessageForVIPDonate", 2, localStringBuilder.toString());
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -28,7 +32,8 @@ public class MessageForVIPDonate
   
   public String getSummaryMsg()
   {
-    if ((this.donateMsg != null) && (!TextUtils.isEmpty(this.donateMsg.brief))) {
+    VIPDonateMsg localVIPDonateMsg = this.donateMsg;
+    if ((localVIPDonateMsg != null) && (!TextUtils.isEmpty(localVIPDonateMsg.brief))) {
       return this.donateMsg.brief;
     }
     return "[QQ会员赠送]";
@@ -39,19 +44,22 @@ public class MessageForVIPDonate
     return true;
   }
   
-  public void postRead()
+  protected void postRead()
   {
     parse();
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
-    if (this.donateMsg != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("MessageForVIPDonate", 2, "prewrite :VIPDonateMsg = " + this.donateMsg);
+    if (this.donateMsg != null)
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("prewrite :VIPDonateMsg = ");
+        localStringBuilder.append(this.donateMsg);
+        QLog.d("MessageForVIPDonate", 2, localStringBuilder.toString());
       }
-    }
-    while (!QLog.isColorLevel()) {
       try
       {
         this.msgData = MessagePkgUtils.a(this.donateMsg);
@@ -63,12 +71,14 @@ public class MessageForVIPDonate
         return;
       }
     }
-    QLog.d("MessageForVIPDonate", 2, "prewrite :VIPDonateMsg = null");
+    if (QLog.isColorLevel()) {
+      QLog.d("MessageForVIPDonate", 2, "prewrite :VIPDonateMsg = null");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForVIPDonate
  * JD-Core Version:    0.7.0.1
  */

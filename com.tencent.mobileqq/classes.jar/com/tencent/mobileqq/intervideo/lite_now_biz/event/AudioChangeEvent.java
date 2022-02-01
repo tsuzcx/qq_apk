@@ -37,22 +37,25 @@ public class AudioChangeEvent
   {
     JSONObject localJSONObject1 = new JSONObject();
     JSONObject localJSONObject2 = new JSONObject();
-    JSONArray localJSONArray = new JSONArray();
+    Object localObject = new JSONArray();
     try
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        localJSONArray.put((String)localIterator.next());
+        ((JSONArray)localObject).put((String)localIterator.next());
       }
-      localJSONException.put("identifiers", localJSONArray);
+      localJSONObject2.put("identifiers", localObject);
+      localJSONObject1.put("type", this.jdField_a_of_type_Int);
+      localJSONObject1.put("data", localJSONObject2);
+      return localJSONObject1;
     }
     catch (JSONException localJSONException)
     {
-      QLog.e("AudioChangeEvent", 1, "buildJSONData error: " + localJSONException);
-      return localJSONObject1;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("buildJSONData error: ");
+      ((StringBuilder)localObject).append(localJSONException);
+      QLog.e("AudioChangeEvent", 1, ((StringBuilder)localObject).toString());
     }
-    localJSONObject1.put("type", this.jdField_a_of_type_Int);
-    localJSONObject1.put("data", localJSONException);
     return localJSONObject1;
   }
   
@@ -69,7 +72,7 @@ public class AudioChangeEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.event.AudioChangeEvent
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
 import android.os.SystemClock;
+import com.tencent.aelight.camera.qqstory.api.IPeakIpcController;
 import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.transfile.report.ProcessorReport;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.editipc.PeakIpcController;
 import java.util.HashMap;
 
 class GroupPicUploadProcessor$2
@@ -18,11 +20,17 @@ class GroupPicUploadProcessor$2
     Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
     Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
     Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupPicUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l - GroupPicUploadProcessor.access$200(this.this$0)) + "ms");
+    if (QLog.isColorLevel())
+    {
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("<BDH_LOG> Transaction End : Failed. New : SendTotalCost:");
+      paramArrayOfByte.append(l - GroupPicUploadProcessor.access$200(this.this$0));
+      paramArrayOfByte.append("ms");
+      QLog.d("GroupPicUploadProcessor", 2, paramArrayOfByte.toString());
     }
     this.this$0.addBDHReportInfo(paramHashMap);
-    this.this$0.setError(paramInt, "OnFailed.", "", this.this$0.mStepTrans);
+    paramArrayOfByte = this.this$0;
+    paramArrayOfByte.setError(paramInt, "OnFailed.", "", paramArrayOfByte.mProcessorReport.mStepTrans);
     this.this$0.onError();
   }
   
@@ -33,15 +41,25 @@ class GroupPicUploadProcessor$2
     Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
     Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
     Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupPicUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (l - GroupPicUploadProcessor.access$200(this.this$0)) + "ms ,fileSize:" + this.this$0.file.fileSize + " transInfo:" + (String)paramHashMap.get("rep_bdhTrans"));
+    if (QLog.isColorLevel())
+    {
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("<BDH_LOG> Transaction End : Success. New : SendTotalCost:");
+      paramArrayOfByte.append(l - GroupPicUploadProcessor.access$200(this.this$0));
+      paramArrayOfByte.append("ms ,fileSize:");
+      paramArrayOfByte.append(this.this$0.file.fileSize);
+      paramArrayOfByte.append(" transInfo:");
+      paramArrayOfByte.append((String)paramHashMap.get("rep_bdhTrans"));
+      QLog.d("GroupPicUploadProcessor", 2, paramArrayOfByte.toString());
     }
     this.this$0.addBDHReportInfo(paramHashMap);
-    this.this$0.mStepTrans.logFinishTime();
-    this.this$0.mStepTrans.result = 1;
-    this.this$0.mTransferedSize = this.this$0.mFileSize;
-    this.this$0.uploadSuccess = true;
-    this.this$0.sendMsg();
+    this.this$0.mProcessorReport.mStepTrans.logFinishTime();
+    this.this$0.mProcessorReport.mStepTrans.result = 1;
+    paramArrayOfByte = this.this$0;
+    paramArrayOfByte.mTransferedSize = paramArrayOfByte.mFileSize;
+    paramArrayOfByte = this.this$0;
+    paramArrayOfByte.uploadSuccess = true;
+    paramArrayOfByte.sendMsg();
     this.this$0.file.closeInputStream();
     paramArrayOfByte = (String)paramHashMap.get("ip");
     paramHashMap = (String)paramHashMap.get("port");
@@ -52,33 +70,33 @@ class GroupPicUploadProcessor$2
   {
     long l = SystemClock.uptimeMillis();
     this.this$0.log("<BDH_LOG> onSwitch2BackupChannel() switch to HTTP channel");
-    this.this$0.mReportInfo.put("param_switchChannel", String.valueOf(l - GroupPicUploadProcessor.access$200(this.this$0)));
+    this.this$0.mProcessorReport.mReportInfo.put("param_switchChannel", String.valueOf(l - GroupPicUploadProcessor.access$200(this.this$0)));
   }
   
   public void onTransStart()
   {
-    this.this$0.mStepTrans.logStartTime();
+    this.this$0.mProcessorReport.mStepTrans.logStartTime();
   }
   
   public void onUpdateProgress(int paramInt)
   {
     GroupPicUploadProcessor localGroupPicUploadProcessor = this.this$0;
-    FileMsg localFileMsg = this.this$0.file;
+    FileMsg localFileMsg = localGroupPicUploadProcessor.file;
     long l = paramInt;
     localFileMsg.transferedSize = l;
     localGroupPicUploadProcessor.mTransferedSize = l;
-    if ((paramInt < this.this$0.mFileSize) && (!this.this$0.mIsCancel) && (!this.this$0.mIsPause))
+    if ((l < this.this$0.mFileSize) && (!this.this$0.mIsCancel) && (!this.this$0.mIsPause))
     {
       this.this$0.sendProgressMessage();
       if (GroupPicUploadProcessor.access$000(this.this$0)) {
-        PeakIpcController.a(GroupPicUploadProcessor.access$100(this.this$0), 1002, this.this$0.getProgress());
+        ((IPeakIpcController)QRoute.api(IPeakIpcController.class)).updatePeakVideoAndPicStatus(GroupPicUploadProcessor.access$100(this.this$0), 1002, this.this$0.getProgress());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.GroupPicUploadProcessor.2
  * JD-Core Version:    0.7.0.1
  */

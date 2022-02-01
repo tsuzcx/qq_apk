@@ -99,13 +99,18 @@ public class VideoImage
   {
     synchronized (sPoolLock)
     {
-      if (sPool != null)
+      while (sPool != null)
       {
         VideoImage localVideoImage = sPool;
         sPool = localVideoImage.next;
         localVideoImage.next = null;
         sPoolSize -= 1;
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
@@ -140,7 +145,7 @@ public class VideoImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.playview.data.VideoImage
  * JD-Core Version:    0.7.0.1
  */

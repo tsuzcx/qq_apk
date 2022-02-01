@@ -22,27 +22,29 @@ public class PTSNativeModuleRegistry
   {
     if (!TextUtils.isEmpty(paramString1))
     {
-      if ("EVENT".equalsIgnoreCase(paramString1)) {
-        PTSLog.e("PTSNativeModuleRegistry", paramString2);
-      }
-      do
+      if ("EVENT".equalsIgnoreCase(paramString1))
       {
+        PTSLog.e("PTSNativeModuleRegistry", paramString2);
         return;
-        if ("DEBUG".equalsIgnoreCase(paramString1))
-        {
-          PTSLog.d("PTSNativeModuleRegistry", paramString2);
-          return;
-        }
-        if ("INFO".equalsIgnoreCase(paramString1))
-        {
-          PTSLog.i("PTSNativeModuleRegistry", paramString2);
-          return;
-        }
-      } while (!"WARN".equalsIgnoreCase(paramString1));
-      PTSLog.w("PTSNativeModuleRegistry", paramString2);
-      return;
+      }
+      if ("DEBUG".equalsIgnoreCase(paramString1))
+      {
+        PTSLog.d("PTSNativeModuleRegistry", paramString2);
+        return;
+      }
+      if ("INFO".equalsIgnoreCase(paramString1))
+      {
+        PTSLog.i("PTSNativeModuleRegistry", paramString2);
+        return;
+      }
+      if ("WARN".equalsIgnoreCase(paramString1)) {
+        PTSLog.w("PTSNativeModuleRegistry", paramString2);
+      }
     }
-    PTSLog.i("PTSNativeModuleRegistry", paramString2);
+    else
+    {
+      PTSLog.i("PTSNativeModuleRegistry", paramString2);
+    }
   }
   
   public static void allInOneJump(String paramString)
@@ -120,9 +122,10 @@ public class PTSNativeModuleRegistry
       if (PTSLog.isColorLevel()) {
         PTSLog.i("PTSNativeModuleRegistry", paramString);
       }
-      return;
     }
-    PTSLog.i("PTSNativeModuleRegistry", paramString);
+    else {
+      PTSLog.i("PTSNativeModuleRegistry", paramString);
+    }
   }
   
   public static void registerNativeModule(String paramString, PTSNativeModuleRegistry.PTSNativeModule paramPTSNativeModule)
@@ -150,7 +153,7 @@ public class PTSNativeModuleRegistry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.nativemodule.PTSNativeModuleRegistry
  * JD-Core Version:    0.7.0.1
  */

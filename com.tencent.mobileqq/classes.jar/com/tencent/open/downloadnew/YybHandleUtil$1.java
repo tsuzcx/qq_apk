@@ -11,25 +11,30 @@ final class YybHandleUtil$1
   public void run()
   {
     Object localObject = DownloadDBHelper.a().a("com.tencent.android.qqdownloader");
-    String str = "";
     if (localObject != null) {
-      str = ((DownloadInfo)localObject).l;
+      localObject = ((DownloadInfo)localObject).l;
+    } else {
+      localObject = "";
     }
-    if (!TextUtils.isEmpty(str))
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      localObject = new File(str);
-      LogUtility.c(YybHandleUtil.a, "---localFilePath = " + str);
-      if ((localObject != null) && (((File)localObject).exists()))
+      File localFile = new File((String)localObject);
+      String str = YybHandleUtil.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("---localFilePath = ");
+      localStringBuilder.append((String)localObject);
+      LogUtility.c(str, localStringBuilder.toString());
+      if (localFile.exists())
       {
         LogUtility.c(YybHandleUtil.a, "---delete apk ");
-        ((File)localObject).delete();
+        localFile.delete();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.YybHandleUtil.1
  * JD-Core Version:    0.7.0.1
  */

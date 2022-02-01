@@ -2,13 +2,13 @@ package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
 import com.tencent.beacon.event.UserAction;
 import com.tencent.beacon.upload.TunnelInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.emoticonview.EmoticonUtils;
+import com.tencent.mobileqq.core.util.EmoticonPanelUtils;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class StickerRecReport
 {
@@ -19,7 +19,7 @@ public class StickerRecReport
   
   public static void a(HashMap<String, String> paramHashMap)
   {
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("00000BXKOY3QZQ1E", BaseApplicationImpl.getApplication().getRuntime().getAccount(), "expo", true, 0L, 0L, paramHashMap, null);
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("00000BXKOY3QZQ1E", MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount(), "expo", true, 0L, 0L, paramHashMap, null);
   }
   
   public static void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2, IStickerRecEmoticon paramIStickerRecEmoticon)
@@ -28,14 +28,15 @@ public class StickerRecReport
     localHashMap.put("keyword", paramString1);
     localHashMap.put("pic_md5", paramIStickerRecEmoticon.c());
     localHashMap.put("pic_url", paramIStickerRecEmoticon.a());
-    localHashMap.put("aio_type", EmoticonUtils.getStickerRecAioType(paramInt));
+    localHashMap.put("aio_type", EmoticonPanelUtils.a(paramInt));
     if ((paramIStickerRecEmoticon instanceof StickerRecData))
     {
-      paramString1 = ((StickerRecData)paramIStickerRecEmoticon).n();
-      if (paramString1 != null) {
-        localHashMap.put("algo_info", paramString1);
+      paramString1 = (StickerRecData)paramIStickerRecEmoticon;
+      String str = paramString1.n();
+      if (str != null) {
+        localHashMap.put("algo_info", str);
       }
-      paramString1 = ((StickerRecData)paramIStickerRecEmoticon).o();
+      paramString1 = paramString1.o();
       if (paramString1 != null) {
         localHashMap.put("recom_transfer", paramString1);
       }
@@ -47,8 +48,11 @@ public class StickerRecReport
     if (paramString2 != null) {
       localHashMap.put("target_qq", paramString2);
     }
-    localHashMap.put("duration_ms", paramIStickerRecEmoticon.a() + "");
-    paramString2 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    paramString1 = new StringBuilder();
+    paramString1.append(paramIStickerRecEmoticon.a());
+    paramString1.append("");
+    localHashMap.put("duration_ms", paramString1.toString());
+    paramString2 = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
     paramString1 = paramString2;
     if (!StringUtil.c(paramString2)) {
       paramString1 = "10000";
@@ -64,12 +68,12 @@ public class StickerRecReport
   
   public static void b(HashMap<String, String> paramHashMap)
   {
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("00000BXKOY3QZQ1E", BaseApplicationImpl.getApplication().getRuntime().getAccount(), "click", true, 0L, 0L, paramHashMap, null);
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("00000BXKOY3QZQ1E", MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount(), "click", true, 0L, 0L, paramHashMap, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecReport
  * JD-Core Version:    0.7.0.1
  */

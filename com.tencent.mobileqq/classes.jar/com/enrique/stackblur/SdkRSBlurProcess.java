@@ -25,11 +25,12 @@ class SdkRSBlurProcess
   {
     paramBitmap = paramBitmap.copy(Bitmap.Config.ARGB_8888, true);
     Allocation localAllocation = Allocation.createFromBitmap(this._rs, paramBitmap, Allocation.MipmapControl.MIPMAP_NONE, 1);
-    ScriptIntrinsicBlur localScriptIntrinsicBlur = ScriptIntrinsicBlur.create(this._rs, Element.U8_4(this._rs));
-    localScriptIntrinsicBlur.setInput(localAllocation);
-    localScriptIntrinsicBlur.setRadius(paramFloat);
+    Object localObject = this._rs;
+    localObject = ScriptIntrinsicBlur.create((RenderScript)localObject, Element.U8_4((RenderScript)localObject));
+    ((ScriptIntrinsicBlur)localObject).setInput(localAllocation);
+    ((ScriptIntrinsicBlur)localObject).setRadius(paramFloat);
     localAllocation = Allocation.createTyped(this._rs, localAllocation.getType());
-    localScriptIntrinsicBlur.forEach(localAllocation);
+    ((ScriptIntrinsicBlur)localObject).forEach(localAllocation);
     localAllocation.copyTo(paramBitmap);
     return paramBitmap;
   }
@@ -41,7 +42,7 @@ class SdkRSBlurProcess
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.enrique.stackblur.SdkRSBlurProcess
  * JD-Core Version:    0.7.0.1
  */

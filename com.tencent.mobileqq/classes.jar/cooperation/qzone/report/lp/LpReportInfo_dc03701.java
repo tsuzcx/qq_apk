@@ -45,30 +45,40 @@ public class LpReportInfo_dc03701
   
   public String getSimpleInfo()
   {
-    return "dc03701:" + this.actiontype + "," + this.subactiontype + "," + this.reserves;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("dc03701:");
+    localStringBuilder.append(this.actiontype);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.subactiontype);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.reserves);
+    return localStringBuilder.toString();
   }
   
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
     LpReportUtils.safePut(localHashMap, "qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
-    if (this.uin == 0L) {}
-    for (String str = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount();; str = String.valueOf(this.uin))
-    {
-      LpReportUtils.safePut(localHashMap, "uin", str);
-      LpReportUtils.safePut(localHashMap, "actiontype", this.actiontype);
-      LpReportUtils.safePut(localHashMap, "subactiontype", this.subactiontype);
-      LpReportUtils.safePut(localHashMap, "reserves", this.reserves);
-      if ((this.extraInfoMap != null) && (this.extraInfoMap.size() > 0)) {
-        localHashMap.putAll(this.extraInfoMap);
-      }
-      return localHashMap;
+    long l = this.uin;
+    if (l == 0L) {
+      localObject = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount();
+    } else {
+      localObject = String.valueOf(l);
     }
+    LpReportUtils.safePut(localHashMap, "uin", (String)localObject);
+    LpReportUtils.safePut(localHashMap, "actiontype", this.actiontype);
+    LpReportUtils.safePut(localHashMap, "subactiontype", this.subactiontype);
+    LpReportUtils.safePut(localHashMap, "reserves", this.reserves);
+    Object localObject = this.extraInfoMap;
+    if ((localObject != null) && (((HashMap)localObject).size() > 0)) {
+      localHashMap.putAll(this.extraInfoMap);
+    }
+    return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc03701
  * JD-Core Version:    0.7.0.1
  */

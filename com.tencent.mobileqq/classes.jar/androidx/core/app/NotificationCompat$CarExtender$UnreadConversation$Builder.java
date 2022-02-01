@@ -26,13 +26,14 @@ public class NotificationCompat$CarExtender$UnreadConversation$Builder
   
   public NotificationCompat.CarExtender.UnreadConversation build()
   {
-    String[] arrayOfString = (String[])this.mMessages.toArray(new String[this.mMessages.size()]);
+    Object localObject = this.mMessages;
+    localObject = (String[])((List)localObject).toArray(new String[((List)localObject).size()]);
     String str = this.mParticipant;
     RemoteInput localRemoteInput = this.mRemoteInput;
     PendingIntent localPendingIntent1 = this.mReplyPendingIntent;
     PendingIntent localPendingIntent2 = this.mReadPendingIntent;
     long l = this.mLatestTimestamp;
-    return new NotificationCompat.CarExtender.UnreadConversation(arrayOfString, localRemoteInput, localPendingIntent1, localPendingIntent2, new String[] { str }, l);
+    return new NotificationCompat.CarExtender.UnreadConversation((String[])localObject, localRemoteInput, localPendingIntent1, localPendingIntent2, new String[] { str }, l);
   }
   
   public Builder setLatestTimestamp(long paramLong)
@@ -56,7 +57,7 @@ public class NotificationCompat$CarExtender$UnreadConversation$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.NotificationCompat.CarExtender.UnreadConversation.Builder
  * JD-Core Version:    0.7.0.1
  */

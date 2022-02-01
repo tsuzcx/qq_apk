@@ -15,28 +15,24 @@ final class StoryPlayerLauncher$3
   
   public void a(int paramInt)
   {
-    int i = 1;
     OpenPlayerBuilder.Data localData = new OpenPlayerBuilder(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo, this.jdField_a_of_type_Int).a();
-    OpenPlayerBuilder.UIStyle localUIStyle;
     if (paramInt != -1)
     {
-      localUIStyle = localData.mUIStyle;
-      if (paramInt != 1) {
-        break label58;
+      OpenPlayerBuilder.UIStyle localUIStyle = localData.mUIStyle;
+      int i = 1;
+      if (paramInt == 1) {
+        paramInt = i;
+      } else {
+        paramInt = 2;
       }
-    }
-    label58:
-    for (paramInt = i;; paramInt = 2)
-    {
       localUIStyle.bottomWidgetShowFlag = paramInt;
-      StoryPlayerLauncher.a(this.jdField_a_of_type_AndroidAppActivity, localData, this.jdField_a_of_type_AndroidViewView);
-      return;
     }
+    StoryPlayerLauncher.a(this.jdField_a_of_type_AndroidAppActivity, localData, this.jdField_a_of_type_AndroidViewView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.StoryPlayerLauncher.3
  * JD-Core Version:    0.7.0.1
  */

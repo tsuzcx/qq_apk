@@ -18,7 +18,14 @@ class ConfessPlugin$2
   {
     if (QLog.isColorLevel())
     {
-      QLog.i("ConfessPlugin", 4, "preLoadQQSelfHeaderBitmap onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("preLoadQQSelfHeaderBitmap onFaceUpdate uin: ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" -- ");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(" head:");
+      localStringBuilder.append(paramBitmap);
+      QLog.i("ConfessPlugin", 4, localStringBuilder.toString());
       if ((this.a.a != null) && (this.a.mRuntime != null) && (this.a.mRuntime.a() != null) && (TextUtils.equals(paramString1, this.a.mRuntime.a().getCurrentAccountUin())))
       {
         ThreadManager.getUIHandler().removeCallbacks(ConfessPlugin.a(this.a));
@@ -29,7 +36,7 @@ class ConfessPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessPlugin.2
  * JD-Core Version:    0.7.0.1
  */

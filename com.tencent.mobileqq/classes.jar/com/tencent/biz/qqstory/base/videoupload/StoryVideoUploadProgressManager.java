@@ -28,23 +28,21 @@ public class StoryVideoUploadProgressManager
   
   private void a(String paramString, int paramInt)
   {
-    if (Looper.myLooper() != Looper.getMainLooper()) {
-      ThreadManager.getUIHandler().post(new StoryVideoUploadProgressManager.1(this, paramString, paramInt));
-    }
-    for (;;)
+    if (Looper.myLooper() != Looper.getMainLooper())
     {
+      ThreadManager.getUIHandler().post(new StoryVideoUploadProgressManager.1(this, paramString, paramInt));
       return;
-      SLog.a("StoryVideoUploadProgressManager", "notifyListeners, id:%s, progress:%s", paramString, Integer.valueOf(paramInt));
-      Object localObject = (List)this.b.get(paramString);
-      if (localObject != null)
+    }
+    SLog.a("StoryVideoUploadProgressManager", "notifyListeners, id:%s, progress:%s", paramString, Integer.valueOf(paramInt));
+    Object localObject = (List)this.b.get(paramString);
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          StoryVideoUploadProgressManager.UpdateProgressListener localUpdateProgressListener = ((StoryVideoUploadProgressManager.UpdateProgressListenerWrapper)((Iterator)localObject).next()).a();
-          if (localUpdateProgressListener != null) {
-            localUpdateProgressListener.a(paramString, paramInt);
-          }
+        StoryVideoUploadProgressManager.UpdateProgressListener localUpdateProgressListener = ((StoryVideoUploadProgressManager.UpdateProgressListenerWrapper)((Iterator)localObject).next()).a();
+        if (localUpdateProgressListener != null) {
+          localUpdateProgressListener.a(paramString, paramInt);
         }
       }
     }
@@ -55,32 +53,19 @@ public class StoryVideoUploadProgressManager
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
     int j = 0;
     int i = 0;
-    int k;
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       StoryVideoUploadProgressManager.ProgressStatus localProgressStatus = (StoryVideoUploadProgressManager.ProgressStatus)localIterator.next();
-      if (!localProgressStatus.jdField_a_of_type_Boolean) {
-        break label83;
+      if (localProgressStatus.jdField_a_of_type_Boolean)
+      {
+        j += 1;
+        i += localProgressStatus.jdField_b_of_type_Int;
       }
-      k = localProgressStatus.jdField_b_of_type_Int + j;
-      j = i + 1;
-      i = k;
     }
-    for (;;)
-    {
-      k = j;
-      j = i;
-      i = k;
-      break;
-      if (i > 0) {
-        return j / i;
-      }
-      return -1;
-      label83:
-      k = i;
-      i = j;
-      j = k;
+    if (j > 0) {
+      return i / j;
     }
+    return -1;
   }
   
   public int a(String paramString)
@@ -115,9 +100,14 @@ public class StoryVideoUploadProgressManager
         ((StoryVideoUploadProgressManager.ProgressStatus)((Map.Entry)localIterator.next()).getValue()).b();
       }
       this.jdField_a_of_type_JavaUtilMap.clear();
+      this.b.clear();
+      return;
     }
     finally {}
-    this.b.clear();
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public void a(StoryVideoUploadProgressManager.UpdateProgressListener paramUpdateProgressListener)
@@ -161,43 +151,39 @@ public class StoryVideoUploadProgressManager
   public void a(String paramString, StoryVideoUploadProgressManager.UpdateProgressListener paramUpdateProgressListener)
   {
     SLog.a("StoryVideoUploadProgressManager", "registerListener, id:%s, listener:%s", paramString, paramUpdateProgressListener.getClass().getSimpleName());
-    Object localObject1 = null;
     Object localObject3 = this.b.entrySet().iterator();
-    Object localObject2;
+    Object localObject1 = null;
     if (((Iterator)localObject3).hasNext())
     {
       localObject2 = (Map.Entry)((Iterator)localObject3).next();
       Object localObject4 = (String)((Map.Entry)localObject2).getKey();
       localObject4 = ((List)((Map.Entry)localObject2).getValue()).iterator();
-      label84:
-      if (((Iterator)localObject4).hasNext())
+      localObject2 = localObject1;
+      for (;;)
       {
-        localObject2 = (StoryVideoUploadProgressManager.UpdateProgressListenerWrapper)((Iterator)localObject4).next();
-        if (((StoryVideoUploadProgressManager.UpdateProgressListenerWrapper)localObject2).a() != paramUpdateProgressListener) {
-          break label205;
-        }
-        ((Iterator)localObject4).remove();
         localObject1 = localObject2;
+        if (!((Iterator)localObject4).hasNext()) {
+          break;
+        }
+        localObject1 = (StoryVideoUploadProgressManager.UpdateProgressListenerWrapper)((Iterator)localObject4).next();
+        if (((StoryVideoUploadProgressManager.UpdateProgressListenerWrapper)localObject1).a() == paramUpdateProgressListener)
+        {
+          ((Iterator)localObject4).remove();
+          localObject2 = localObject1;
+        }
       }
     }
-    label205:
-    for (;;)
-    {
-      break label84;
-      break;
-      localObject3 = (List)this.b.get(paramString);
-      localObject2 = localObject3;
-      if (localObject3 == null) {
-        localObject2 = new ArrayList();
-      }
-      localObject3 = localObject1;
-      if (localObject1 == null) {
-        localObject3 = new StoryVideoUploadProgressManager.UpdateProgressListenerWrapper(paramUpdateProgressListener);
-      }
-      ((List)localObject2).add(localObject3);
-      this.b.put(paramString, localObject2);
-      return;
+    localObject3 = (List)this.b.get(paramString);
+    Object localObject2 = localObject3;
+    if (localObject3 == null) {
+      localObject2 = new ArrayList();
     }
+    localObject3 = localObject1;
+    if (localObject1 == null) {
+      localObject3 = new StoryVideoUploadProgressManager.UpdateProgressListenerWrapper(paramUpdateProgressListener);
+    }
+    ((List)localObject2).add(localObject3);
+    this.b.put(paramString, localObject2);
   }
   
   public void a(String paramString1, String paramString2)
@@ -223,76 +209,27 @@ public class StoryVideoUploadProgressManager
     }
   }
   
-  /* Error */
   public void a(String paramString, boolean paramBoolean)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc 67
-    //   4: ldc 213
-    //   6: aload_1
-    //   7: invokestatic 179	com/tencent/biz/qqstory/support/logging/SLog:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V
-    //   10: aload_0
-    //   11: getfield 25	com/tencent/biz/qqstory/base/videoupload/StoryVideoUploadProgressManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   14: aload_1
-    //   15: invokeinterface 191 2 0
-    //   20: ifeq +62 -> 82
-    //   23: aload_0
-    //   24: getfield 25	com/tencent/biz/qqstory/base/videoupload/StoryVideoUploadProgressManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   27: aload_1
-    //   28: invokeinterface 86 2 0
-    //   33: checkcast 120	com/tencent/biz/qqstory/base/videoupload/StoryVideoUploadProgressManager$ProgressStatus
-    //   36: astore_3
-    //   37: aload_3
-    //   38: aload_1
-    //   39: putfield 139	com/tencent/biz/qqstory/base/videoupload/StoryVideoUploadProgressManager$ProgressStatus:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   42: aload_3
-    //   43: ldc 141
-    //   45: putfield 131	com/tencent/biz/qqstory/base/videoupload/StoryVideoUploadProgressManager$ProgressStatus:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   48: aload_3
-    //   49: iload_2
-    //   50: putfield 123	com/tencent/biz/qqstory/base/videoupload/StoryVideoUploadProgressManager$ProgressStatus:jdField_a_of_type_Boolean	Z
-    //   53: aload_3
-    //   54: iconst_0
-    //   55: putfield 193	com/tencent/biz/qqstory/base/videoupload/StoryVideoUploadProgressManager$ProgressStatus:jdField_a_of_type_Int	I
-    //   58: aload_3
-    //   59: iconst_0
-    //   60: putfield 126	com/tencent/biz/qqstory/base/videoupload/StoryVideoUploadProgressManager$ProgressStatus:jdField_b_of_type_Int	I
-    //   63: aload_3
-    //   64: invokevirtual 215	com/tencent/biz/qqstory/base/videoupload/StoryVideoUploadProgressManager$ProgressStatus:a	()V
-    //   67: aload_0
-    //   68: getfield 25	com/tencent/biz/qqstory/base/videoupload/StoryVideoUploadProgressManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   71: aload_1
-    //   72: aload_3
-    //   73: invokeinterface 208 3 0
-    //   78: pop
-    //   79: aload_0
-    //   80: monitorexit
-    //   81: return
-    //   82: new 120	com/tencent/biz/qqstory/base/videoupload/StoryVideoUploadProgressManager$ProgressStatus
-    //   85: dup
-    //   86: aload_0
-    //   87: aconst_null
-    //   88: invokespecial 218	com/tencent/biz/qqstory/base/videoupload/StoryVideoUploadProgressManager$ProgressStatus:<init>	(Lcom/tencent/biz/qqstory/base/videoupload/StoryVideoUploadProgressManager;Lcom/tencent/biz/qqstory/base/videoupload/StoryVideoUploadProgressManager$1;)V
-    //   91: astore_3
-    //   92: goto -55 -> 37
-    //   95: astore_1
-    //   96: aload_0
-    //   97: monitorexit
-    //   98: aload_1
-    //   99: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	100	0	this	StoryVideoUploadProgressManager
-    //   0	100	1	paramString	String
-    //   0	100	2	paramBoolean	boolean
-    //   36	56	3	localProgressStatus	StoryVideoUploadProgressManager.ProgressStatus
-    // Exception table:
-    //   from	to	target	type
-    //   2	37	95	finally
-    //   37	79	95	finally
-    //   82	92	95	finally
+    try
+    {
+      SLog.a("StoryVideoUploadProgressManager", "addUploadTask:%s", paramString);
+      StoryVideoUploadProgressManager.ProgressStatus localProgressStatus;
+      if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
+        localProgressStatus = (StoryVideoUploadProgressManager.ProgressStatus)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      } else {
+        localProgressStatus = new StoryVideoUploadProgressManager.ProgressStatus(this, null);
+      }
+      localProgressStatus.jdField_a_of_type_JavaLangString = paramString;
+      localProgressStatus.jdField_b_of_type_JavaLangString = "";
+      localProgressStatus.jdField_a_of_type_Boolean = paramBoolean;
+      localProgressStatus.jdField_a_of_type_Int = 0;
+      localProgressStatus.jdField_b_of_type_Int = 0;
+      localProgressStatus.a();
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, localProgressStatus);
+      return;
+    }
+    finally {}
   }
   
   public void b(String paramString)
@@ -360,7 +297,7 @@ public class StoryVideoUploadProgressManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadProgressManager
  * JD-Core Version:    0.7.0.1
  */

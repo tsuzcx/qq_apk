@@ -12,14 +12,19 @@ class LiteLuxuryGiftModule$4$1
   
   public void onCompleted(GiftEffectResourceInfo paramGiftEffectResourceInfo)
   {
-    if ((this.val$giftEffectResInfoList != null) && (paramGiftEffectResourceInfo != null)) {
-      LiteLuxuryGiftModule.access$900(this.this$1.this$0).d("LiteLuxuryGiftModule", "preloadLuxuryGift download complete = \n" + paramGiftEffectResourceInfo.mGiftEffectId, new Object[0]);
+    if ((this.val$giftEffectResInfoList != null) && (paramGiftEffectResourceInfo != null))
+    {
+      LogInterface localLogInterface = LiteLuxuryGiftModule.access$800(this.this$1.this$0);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("preloadLuxuryGift download complete = \n");
+      localStringBuilder.append(paramGiftEffectResourceInfo.mGiftEffectId);
+      localLogInterface.d("LiteLuxuryGiftModule", localStringBuilder.toString(), new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.litepages.room.bizmodule.LiteLuxuryGiftModule.4.1
  * JD-Core Version:    0.7.0.1
  */

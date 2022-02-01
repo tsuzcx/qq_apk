@@ -36,10 +36,17 @@ class FlacReader$FlacOggSeeker
     int i = Util.binarySearchFloor(this.seekPointGranules, l, true, true);
     l = this.this$0.convertGranuleToTime(this.seekPointGranules[i]);
     SeekPoint localSeekPoint = new SeekPoint(l, this.firstFrameOffset + this.seekPointOffsets[i]);
-    if ((l >= paramLong) || (i == this.seekPointGranules.length - 1)) {
-      return new SeekMap.SeekPoints(localSeekPoint);
+    if (l < paramLong)
+    {
+      long[] arrayOfLong = this.seekPointGranules;
+      if (i != arrayOfLong.length - 1)
+      {
+        FlacReader localFlacReader = this.this$0;
+        i += 1;
+        return new SeekMap.SeekPoints(localSeekPoint, new SeekPoint(localFlacReader.convertGranuleToTime(arrayOfLong[i]), this.firstFrameOffset + this.seekPointOffsets[i]));
+      }
     }
-    return new SeekMap.SeekPoints(localSeekPoint, new SeekPoint(this.this$0.convertGranuleToTime(this.seekPointGranules[(i + 1)]), this.firstFrameOffset + this.seekPointOffsets[(i + 1)]));
+    return new SeekMap.SeekPoints(localSeekPoint);
   }
   
   public boolean isSeekable()
@@ -65,9 +72,10 @@ class FlacReader$FlacOggSeeker
   
   public long read(ExtractorInput paramExtractorInput)
   {
-    if (this.pendingSeekGranule >= 0L)
+    long l = this.pendingSeekGranule;
+    if (l >= 0L)
     {
-      long l = -(this.pendingSeekGranule + 2L);
+      l = -(l + 2L);
       this.pendingSeekGranule = -1L;
       return l;
     }
@@ -89,7 +97,7 @@ class FlacReader$FlacOggSeeker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ogg.FlacReader.FlacOggSeeker
  * JD-Core Version:    0.7.0.1
  */

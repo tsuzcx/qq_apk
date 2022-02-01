@@ -28,12 +28,26 @@ public class EnhanceItemAnimator$ChangeInfo
   
   public String toString()
   {
-    return "ChangeInfo{oldHolder=" + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder + ", newHolder=" + this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder + ", fromX=" + this.jdField_a_of_type_Int + ", fromY=" + this.jdField_b_of_type_Int + ", toX=" + this.c + ", toY=" + this.d + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ChangeInfo{oldHolder=");
+    localStringBuilder.append(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+    localStringBuilder.append(", newHolder=");
+    localStringBuilder.append(this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+    localStringBuilder.append(", fromX=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", fromY=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", toX=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", toY=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.richframework.animation.recyclerview.EnhanceItemAnimator.ChangeInfo
  * JD-Core Version:    0.7.0.1
  */

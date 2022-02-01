@@ -11,18 +11,19 @@ class QQUiModule$4$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 0) {
+    if (paramInt == 0)
+    {
       this.this$1.val$promise.resolve("{\"button\":1}");
-    }
-    while (paramInt != 1) {
       return;
     }
-    this.this$1.val$promise.resolve("{\"button\":0}");
+    if (paramInt == 1) {
+      this.this$1.val$promise.resolve("{\"button\":0}");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQUiModule.4.1
  * JD-Core Version:    0.7.0.1
  */

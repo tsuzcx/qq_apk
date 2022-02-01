@@ -18,26 +18,20 @@ public final class FreeReflection$Companion
     if (FreeReflection.access$getVmRuntime$cp() == null) {
       return false;
     }
-    for (;;)
+    try
     {
-      try
+      Method localMethod = FreeReflection.access$getSetHiddenApiExemptions$cp();
+      if (localMethod != null)
       {
-        Method localMethod = FreeReflection.access$getSetHiddenApiExemptions$cp();
-        if (localMethod == null) {
-          continue;
-        }
         localMethod.invoke(FreeReflection.access$getVmRuntime$cp(), new Object[] { (String[])Arrays.copyOf(paramVarArgs, paramVarArgs.length) });
-        bool = true;
+        return true;
       }
-      catch (Throwable paramVarArgs)
-      {
-        Logger.INSTANCE.w(new String[] { "QAPM_common_FreeReflection", paramVarArgs.toString() });
-        boolean bool = false;
-        continue;
-      }
-      return bool;
-      bool = false;
     }
+    catch (Throwable paramVarArgs)
+    {
+      Logger.INSTANCE.w(new String[] { "QAPM_common_FreeReflection", paramVarArgs.toString() });
+    }
+    return false;
   }
   
   private final boolean exemptAll()
@@ -66,7 +60,7 @@ public final class FreeReflection$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.common.freereflection.FreeReflection.Companion
  * JD-Core Version:    0.7.0.1
  */

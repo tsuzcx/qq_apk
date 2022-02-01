@@ -10,20 +10,21 @@ class SubAccountBindActivity$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1981)
     {
-    default: 
-      return;
-    case 1981: 
-      this.a.finish();
+      if (i != 1990) {
+        return;
+      }
+      this.a.dimissDialog();
       return;
     }
-    this.a.f();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubAccountBindActivity.1
  * JD-Core Version:    0.7.0.1
  */

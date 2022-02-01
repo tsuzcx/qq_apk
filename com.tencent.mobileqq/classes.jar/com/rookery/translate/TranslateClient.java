@@ -4,7 +4,7 @@ import com.rookery.asyncHttpClient.AsyncHttpClient;
 
 public abstract class TranslateClient
 {
-  private static AsyncHttpClient a = null;
+  private static AsyncHttpClient a;
   
   public static AsyncHttpClient a()
   {

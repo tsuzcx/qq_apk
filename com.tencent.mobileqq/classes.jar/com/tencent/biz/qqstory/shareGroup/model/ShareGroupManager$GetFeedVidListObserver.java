@@ -25,71 +25,43 @@ public class ShareGroupManager$GetFeedVidListObserver
 {
   public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    bool = true;
-    int i = 0;
+    Object localObject4;
     Object localObject1;
+    Object localObject3;
     Object localObject2;
-    if ((paramInt != 0) || (paramArrayOfByte == null))
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      paramBundle = new qqstory_struct.ErrorInfo();
-      paramBundle.error_code.set(paramInt);
-      localObject1 = paramBundle.error_desc;
-      localObject2 = new StringBuilder().append(paramInt);
-      if (paramArrayOfByte == null)
-      {
-        paramArrayOfByte = ",data is null";
-        ((PBBytesField)localObject1).set(ByteStringMicro.copyFromUtf8(paramArrayOfByte));
-        paramArrayOfByte = paramBundle;
-      }
+      localObject4 = new qqstory_service.RspLoadMoreVideoList();
+      localObject1 = (StoryManager)SuperManager.a(5);
+      localObject3 = paramBundle.getString("extra_feedid");
+      localObject2 = (MemoryManager)SuperManager.a(19);
     }
-    do
+    for (;;)
     {
-      for (;;)
+      try
       {
-        return paramArrayOfByte;
-        paramArrayOfByte = ", data is valid";
-        break;
-        Object localObject4 = new qqstory_service.RspLoadMoreVideoList();
-        localObject1 = (StoryManager)SuperManager.a(5);
-        Object localObject3 = paramBundle.getString("extra_feedid");
-        localObject2 = (MemoryManager)SuperManager.a(19);
-        for (;;)
+        ((qqstory_service.RspLoadMoreVideoList)localObject4).mergeFrom(paramArrayOfByte);
+        paramBundle = (qqstory_struct.ErrorInfo)((qqstory_service.RspLoadMoreVideoList)localObject4).result.get();
+        try
         {
-          try
+          localObject3 = ((MemoryManager)localObject2).a((String)localObject3);
+          if (localObject3 != null)
           {
-            ((qqstory_service.RspLoadMoreVideoList)localObject4).mergeFrom(paramArrayOfByte);
-            paramBundle = (qqstory_struct.ErrorInfo)((qqstory_service.RspLoadMoreVideoList)localObject4).result.get();
-          }
-          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
-          {
-            paramBundle = null;
-            continue;
-            paramArrayOfByte = "";
-            continue;
-            bool = false;
-            continue;
-          }
-          try
-          {
-            localObject3 = ((MemoryManager)localObject2).a((String)localObject3);
-            paramArrayOfByte = paramBundle;
-            if (localObject3 == null) {
-              break;
-            }
-            paramArrayOfByte = paramBundle;
             if (paramBundle.error_code.get() != 0) {
-              break;
+              return paramBundle;
             }
             if (!((qqstory_service.RspLoadMoreVideoList)localObject4).next_cookie.has()) {
-              continue;
+              break label399;
             }
             paramArrayOfByte = ((qqstory_service.RspLoadMoreVideoList)localObject4).next_cookie.get().toStringUtf8();
-            if (((qqstory_service.RspLoadMoreVideoList)localObject4).is_end.get() != 1) {
-              continue;
+            int i = ((qqstory_service.RspLoadMoreVideoList)localObject4).is_end.get();
+            paramInt = 0;
+            bool = true;
+            if (i != 1) {
+              break label405;
             }
             localObject4 = ((qqstory_service.RspLoadMoreVideoList)localObject4).video_list.get();
             ((VideoCollectionItem)localObject3).nextCookie = paramArrayOfByte;
-            paramInt = i;
             if (paramInt < ((List)localObject4).size())
             {
               paramArrayOfByte = (qqstory_struct.GroupStoryInfo)((List)localObject4).get(paramInt);
@@ -100,30 +72,55 @@ public class ShareGroupManager$GetFeedVidListObserver
               paramArrayOfByte = new VideoCollectionItem.FakeVideoUIItem(paramArrayOfByte.mVid, paramArrayOfByte);
               ((VideoCollectionItem)localObject3).collectionVideoUIItemList.add(paramArrayOfByte);
               paramInt += 1;
+              continue;
             }
-            else
-            {
-              ((MemoryManager)localObject2).a((VideoCollectionItem)localObject3);
-              a((VideoCollectionItem)localObject3, bool);
-              return paramBundle;
-            }
+            ((MemoryManager)localObject2).a((VideoCollectionItem)localObject3);
+            a((VideoCollectionItem)localObject3, bool);
+            return paramBundle;
           }
-          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
-          {
-            paramArrayOfByte = paramBundle;
-          }
+          return paramBundle;
+        }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
+        if (!QLog.isColorLevel()) {
+          break label324;
         }
       }
-    } while (!QLog.isColorLevel());
-    QLog.w("Q.qqstory.discover.ShareGroupManager", 2, "doGetMoreVideoByVideoCollectionItem exception:" + localInvalidProtocolBufferMicroException1);
-    return paramBundle;
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        paramBundle = null;
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("doGetMoreVideoByVideoCollectionItem exception:");
+      ((StringBuilder)localObject1).append(paramArrayOfByte);
+      QLog.w("Q.qqstory.discover.ShareGroupManager", 2, ((StringBuilder)localObject1).toString());
+      label324:
+      return paramBundle;
+      paramBundle = new qqstory_struct.ErrorInfo();
+      paramBundle.error_code.set(paramInt);
+      localObject1 = paramBundle.error_desc;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramInt);
+      if (paramArrayOfByte == null) {
+        paramArrayOfByte = ",data is null";
+      } else {
+        paramArrayOfByte = ", data is valid";
+      }
+      ((StringBuilder)localObject2).append(paramArrayOfByte);
+      ((PBBytesField)localObject1).set(ByteStringMicro.copyFromUtf8(((StringBuilder)localObject2).toString()));
+      return paramBundle;
+      label399:
+      paramArrayOfByte = "";
+      continue;
+      label405:
+      boolean bool = false;
+    }
   }
   
   public void a(VideoCollectionItem paramVideoCollectionItem, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.model.ShareGroupManager.GetFeedVidListObserver
  * JD-Core Version:    0.7.0.1
  */

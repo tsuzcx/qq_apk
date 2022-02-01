@@ -17,8 +17,8 @@ class ForwardPreviewTroopMemberController$TroopMemberViewHolder
   {
     super(paramView);
     this.jdField_a_of_type_Int = ForwardPreviewTroopMemberController.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368996));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380813));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368718));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380076));
     paramView.setTag(this);
   }
   
@@ -33,7 +33,7 @@ class ForwardPreviewTroopMemberController$TroopMemberViewHolder
     paramString2 = (String)localObject;
     if (localObject == null)
     {
-      localObject = ImageUtil.c();
+      localObject = ImageUtil.f();
       paramString2 = (String)localObject;
       if (!paramIFaceDecoder.isPausing())
       {
@@ -46,7 +46,7 @@ class ForwardPreviewTroopMemberController$TroopMemberViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPreviewTroopMemberController.TroopMemberViewHolder
  * JD-Core Version:    0.7.0.1
  */

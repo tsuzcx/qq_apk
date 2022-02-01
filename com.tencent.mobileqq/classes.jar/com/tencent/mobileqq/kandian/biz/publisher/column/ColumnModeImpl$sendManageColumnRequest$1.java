@@ -19,7 +19,7 @@ public final class ColumnModeImpl$sendManageColumnRequest$1
 {
   ColumnModeImpl$sendManageColumnRequest$1(IColumnModel.IColumnCallback paramIColumnCallback, int paramInt) {}
   
-  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @NotNull Bundle paramBundle)
+  public void onResult(int paramInt, @Nullable byte[] paramArrayOfByte, @NotNull Bundle paramBundle)
   {
     Intrinsics.checkParameterIsNotNull(paramBundle, "bundle");
     if (paramArrayOfByte != null) {
@@ -44,31 +44,33 @@ public final class ColumnModeImpl$sendManageColumnRequest$1
       {
         if (QLog.isColorLevel())
         {
-          if (this.jdField_a_of_type_Int != 1) {
-            break label150;
+          int i = this.jdField_a_of_type_Int;
+          if (i == 1)
+          {
+            paramBundle = new StringBuilder();
+            paramBundle.append("ManageColumnModel createColumn failed.");
+            paramBundle.append(paramArrayOfByte);
+            QLog.d("ColumnModuleImpl", 1, paramBundle.toString());
           }
-          QLog.d("ColumnModuleImpl", 1, "ManageColumnModel createColumn failed." + paramArrayOfByte);
+          else if (i == 2)
+          {
+            paramBundle = new StringBuilder();
+            paramBundle.append("ManageColumnModel editColumn failed.");
+            paramBundle.append(paramArrayOfByte);
+            QLog.d("ColumnModuleImpl", 1, paramBundle.toString());
+          }
         }
       }
     }
-    for (;;)
-    {
-      paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqKandianBizPublisherColumnIColumnModel$IColumnCallback;
-      if (paramArrayOfByte == null) {
-        break;
-      }
+    paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqKandianBizPublisherColumnIColumnModel$IColumnCallback;
+    if (paramArrayOfByte != null) {
       paramArrayOfByte.a(paramInt, "", -1, 0L);
-      return;
-      label150:
-      if (this.jdField_a_of_type_Int == 2) {
-        QLog.d("ColumnModuleImpl", 1, "ManageColumnModel editColumn failed." + paramArrayOfByte);
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.column.ColumnModeImpl.sendManageColumnRequest.1
  * JD-Core Version:    0.7.0.1
  */

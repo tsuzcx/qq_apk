@@ -36,14 +36,15 @@ public final class GetCategoryDetailRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.host, 0);
-    if (this.rsp_item_map != null) {
-      paramJceOutputStream.write(this.rsp_item_map, 1);
+    Map localMap = this.rsp_item_map;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.GetCategoryDetailRsp
  * JD-Core Version:    0.7.0.1
  */

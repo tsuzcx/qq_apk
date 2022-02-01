@@ -8,7 +8,7 @@ import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import com.tencent.mobileqq.activity.photo.DragGallery;
-import dov.com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 
 public class EmotionGallery
   extends DragGallery
@@ -22,59 +22,62 @@ public class EmotionGallery
   
   public float a()
   {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      return super.a(this.jdField_a_of_type_AndroidViewView);
+    if (this.mSelectedChild != null) {
+      return super.getChildScale(this.mSelectedChild);
     }
     return 1.0F;
   }
   
-  public float a(View paramView, float paramFloat, int paramInt)
+  protected float customScale(View paramView, float paramFloat, int paramInt)
   {
     paramFloat = getResources().getDisplayMetrics().density * 135.0F * 1.5F;
-    if (paramInt > paramFloat) {}
-    for (paramFloat /= paramInt;; paramFloat = Math.min(1.5F, paramFloat / paramInt))
-    {
-      setMaxScale((float)ScreenUtil.a / paramInt);
-      return paramFloat;
+    float f = paramInt;
+    if (f > paramFloat) {
+      paramFloat /= f;
+    } else {
+      paramFloat = Math.min(1.5F, paramFloat / f);
     }
+    setMaxScale((float)ScreenUtil.SCREEN_WIDTH / f);
+    return paramFloat;
   }
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery$OnScaleChangeListener != null)
+    if (this.a != null)
     {
       float f = a();
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery$OnScaleChangeListener.b(f);
+      this.a.b(f);
     }
     return super.onDoubleTap(paramMotionEvent);
   }
   
   public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery$OnScaleChangeListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery$OnScaleChangeListener.b();
+    EmotionGallery.OnScaleChangeListener localOnScaleChangeListener = this.a;
+    if (localOnScaleChangeListener != null) {
+      localOnScaleChangeListener.b();
     }
     return super.onScaleBegin(paramScaleGestureDetector);
   }
   
   public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery$OnScaleChangeListener != null)
+    if (this.a != null)
     {
       float f = a();
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery$OnScaleChangeListener.a(f);
+      this.a.a(f);
     }
     super.onScaleEnd(paramScaleGestureDetector);
   }
   
   public void setOnScaleChangeListener(EmotionGallery.OnScaleChangeListener paramOnScaleChangeListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery$OnScaleChangeListener = paramOnScaleChangeListener;
+    this.a = paramOnScaleChangeListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.EmotionGallery
  * JD-Core Version:    0.7.0.1
  */

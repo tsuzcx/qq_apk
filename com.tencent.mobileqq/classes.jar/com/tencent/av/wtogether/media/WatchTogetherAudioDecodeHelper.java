@@ -4,6 +4,7 @@ import android.media.AudioManager;
 import android.os.Build.VERSION;
 import com.tencent.av.VideoController;
 import com.tencent.av.audioprocess.AudioProcess;
+import com.tencent.av.audioprocess.api.IAudioProcessApi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qav.log.AVLog;
 import com.tencent.superplayer.api.ISuperPlayer.OnAudioFrameOutputListener;
@@ -20,7 +21,7 @@ public class WatchTogetherAudioDecodeHelper
   public void a()
   {
     if ((Build.VERSION.SDK_INT >= 16) && (this.jdField_a_of_type_Boolean)) {
-      AudioProcess.a().a(3);
+      AudioProcess.a().startPlay(3);
     }
   }
   
@@ -31,7 +32,8 @@ public class WatchTogetherAudioDecodeHelper
   
   public void a(boolean paramBoolean)
   {
-    if (paramBoolean) {
+    if (paramBoolean)
+    {
       if (Build.VERSION.SDK_INT >= 16)
       {
         if (!this.jdField_a_of_type_Boolean)
@@ -42,11 +44,11 @@ public class WatchTogetherAudioDecodeHelper
         a();
       }
     }
-    while ((Build.VERSION.SDK_INT < 16) || (!this.jdField_a_of_type_Boolean)) {
-      return;
+    else if ((Build.VERSION.SDK_INT >= 16) && (this.jdField_a_of_type_Boolean))
+    {
+      AudioProcess.a();
+      this.jdField_a_of_type_Boolean = false;
     }
-    AudioProcess.a();
-    this.jdField_a_of_type_Boolean = false;
   }
   
   public void b()
@@ -54,11 +56,14 @@ public class WatchTogetherAudioDecodeHelper
     if (this.jdField_a_of_type_JavaLangFloat != null) {
       return;
     }
-    AudioManager localAudioManager = (AudioManager)BaseApplicationImpl.getApplication().getSystemService("audio");
-    int i = localAudioManager.getStreamVolume(0);
-    int j = localAudioManager.getStreamMaxVolume(0);
+    Object localObject = (AudioManager)BaseApplicationImpl.getApplication().getSystemService("audio");
+    int i = ((AudioManager)localObject).getStreamVolume(0);
+    int j = ((AudioManager)localObject).getStreamMaxVolume(0);
     this.jdField_a_of_type_JavaLangFloat = Float.valueOf(i * 1.0F / j);
-    AVLog.d("WatchTogetherAudioDecodeHelper", "init scaleFacors:=" + this.jdField_a_of_type_JavaLangFloat);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("init scaleFacors:=");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangFloat);
+    AVLog.d("WatchTogetherAudioDecodeHelper", ((StringBuilder)localObject).toString());
   }
   
   public void onAudioFrameOutput(TPAudioFrameBuffer paramTPAudioFrameBuffer)
@@ -66,85 +71,63 @@ public class WatchTogetherAudioDecodeHelper
     b();
     if ((Build.VERSION.SDK_INT >= 16) && (this.jdField_a_of_type_Boolean))
     {
-      if (paramTPAudioFrameBuffer.getChannelLayout() != 3L) {
-        break label282;
-      }
-      m = paramTPAudioFrameBuffer.getSize()[0] / 2;
-      arrayOfByte = new byte[m];
-      j = 0;
-      k = 0;
-      if (j < m)
+      if (paramTPAudioFrameBuffer.getChannelLayout() == 3L)
       {
-        i2 = (short)paramTPAudioFrameBuffer.data[0][(j * 2)];
-        n = (short)paramTPAudioFrameBuffer.data[0][(j * 2 + 1)];
-        i3 = (short)paramTPAudioFrameBuffer.data[0][(j * 2 + 2)];
-        i1 = (short)paramTPAudioFrameBuffer.data[0][(j * 2 + 3)];
-        i2 = (i2 + i3) / 2;
-        n = (n + i1) / 2;
-        i1 = k + 1;
-        if (i2 > 127)
+        int n = paramTPAudioFrameBuffer.getSize()[0] / 2;
+        byte[] arrayOfByte1 = new byte[n];
+        int k = 0;
+        int m = 0;
+        while (k < n)
         {
-          i = 127;
-          label149:
-          arrayOfByte[k] = i;
-          k = i1 + 1;
-          if (n <= 127) {
-            break label204;
-          }
-          i = 127;
-        }
-        for (;;)
-        {
-          arrayOfByte[i1] = i;
-          j += 2;
-          break;
-          if (i2 < -128)
-          {
-            i = -128;
-            break label149;
-          }
-          i = (byte)i2;
-          break label149;
-          label204:
-          if (n < -128) {
+          byte[] arrayOfByte2 = paramTPAudioFrameBuffer.data[0];
+          int i4 = k * 2;
+          int i2 = (short)arrayOfByte2[i4];
+          int i1 = (short)paramTPAudioFrameBuffer.data[0][(i4 + 1)];
+          int i3 = (short)paramTPAudioFrameBuffer.data[0][(i4 + 2)];
+          i4 = (short)paramTPAudioFrameBuffer.data[0][(i4 + 3)];
+          i2 = (i2 + i3) / 2;
+          i1 = (i1 + i4) / 2;
+          i3 = m + 1;
+          int j = -128;
+          int i;
+          if (i2 > 127) {
+            i = 127;
+          } else if (i2 < -128) {
             i = -128;
           } else {
-            i = (byte)n;
+            i = (byte)i2;
           }
+          arrayOfByte1[m] = i;
+          m = i3 + 1;
+          if (i1 > 127) {
+            i = 127;
+          } else if (i1 < -128) {
+            i = j;
+          } else {
+            i = (byte)i1;
+          }
+          arrayOfByte1[i3] = i;
+          k += 2;
         }
+        if ((this.jdField_a_of_type_JavaLangFloat.floatValue() < this.b) || (this.jdField_a_of_type_JavaLangFloat.floatValue() > this.jdField_a_of_type_Float)) {
+          AudioProcess.a().scaleVolumeValue(arrayOfByte1, this.jdField_a_of_type_JavaLangFloat.floatValue());
+        }
+        AudioProcess.a().addPCMData(arrayOfByte1, arrayOfByte1.length);
+        return;
       }
-      if ((this.jdField_a_of_type_JavaLangFloat.floatValue() < this.b) || (this.jdField_a_of_type_JavaLangFloat.floatValue() > this.jdField_a_of_type_Float))
+      if (paramTPAudioFrameBuffer.getChannelLayout() == 4L)
       {
-        AudioProcess.a();
-        AudioProcess.a(arrayOfByte, this.jdField_a_of_type_JavaLangFloat.floatValue());
+        if ((this.jdField_a_of_type_JavaLangFloat.floatValue() < this.b) || (this.jdField_a_of_type_JavaLangFloat.floatValue() > this.jdField_a_of_type_Float)) {
+          AudioProcess.a().scaleVolumeValue(paramTPAudioFrameBuffer.data[0], this.jdField_a_of_type_JavaLangFloat.floatValue());
+        }
+        AudioProcess.a().addPCMData(paramTPAudioFrameBuffer.data[0], paramTPAudioFrameBuffer.data[0].length);
       }
-      AudioProcess.a().a(arrayOfByte, arrayOfByte.length);
     }
-    label282:
-    while (paramTPAudioFrameBuffer.getChannelLayout() != 4L)
-    {
-      int m;
-      byte[] arrayOfByte;
-      int j;
-      int k;
-      int i2;
-      int n;
-      int i3;
-      int i1;
-      int i;
-      return;
-    }
-    if ((this.jdField_a_of_type_JavaLangFloat.floatValue() < this.b) || (this.jdField_a_of_type_JavaLangFloat.floatValue() > this.jdField_a_of_type_Float))
-    {
-      AudioProcess.a();
-      AudioProcess.a(paramTPAudioFrameBuffer.data[0], this.jdField_a_of_type_JavaLangFloat.floatValue());
-    }
-    AudioProcess.a().a(paramTPAudioFrameBuffer.data[0], paramTPAudioFrameBuffer.data[0].length);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.media.WatchTogetherAudioDecodeHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:background="#ff262626" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView android:id="@id/dum" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="30.5dip" android:layout_marginRight="12.0dip" android:src="@drawable/fcs" android:layout_alignParentRight="true" />
+    <com.tencent.aelight.camera.aioeditor.doodle.ui.widget.ElasticImageView android:id="@id/dum" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="30.5dip" android:layout_marginRight="12.0dip" android:src="@drawable/fcs" android:layout_alignParentRight="true" />
     <TextView android:textSize="16.0dip" android:textColor="#ff777777" android:gravity="center" android:id="@id/jmp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fxw" android:drawableTop="@drawable/fac" android:drawablePadding="15.0dip" android:layout_centerInParent="true" />
 </RelativeLayout>

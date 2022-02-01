@@ -9,15 +9,21 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class BusinessInfoCheckUpdate$LbsLocationInfo
   extends MessageMicro<LbsLocationInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "coordinate", "latitude", "longitude", "additional" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "" }, LbsLocationInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField additional = PBField.initString("");
   public final PBInt32Field coordinate = PBField.initInt32(0);
   public final PBInt32Field latitude = PBField.initInt32(0);
   public final PBInt32Field longitude = PBField.initInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "coordinate", "latitude", "longitude", "additional" }, new Object[] { localInteger, localInteger, localInteger, "" }, LbsLocationInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.LbsLocationInfo
  * JD-Core Version:    0.7.0.1
  */

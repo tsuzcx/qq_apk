@@ -67,23 +67,24 @@ public class JceOutputStream
   
   public void reserve(int paramInt)
   {
-    int i;
-    if (this.bs.remaining() < paramInt) {
-      i = (this.bs.capacity() + paramInt) * 2;
-    }
-    try
+    if (this.bs.remaining() < paramInt)
     {
-      ByteBuffer localByteBuffer = ByteBuffer.allocate(i);
-      localByteBuffer.put(this.bs.array(), 0, this.bs.position());
-      this.bs = localByteBuffer;
-      return;
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      if (this.exceptionHandler != null) {
-        this.exceptionHandler.onException(localIllegalArgumentException, this.bs, paramInt, i);
+      int i = (this.bs.capacity() + paramInt) * 2;
+      try
+      {
+        ByteBuffer localByteBuffer = ByteBuffer.allocate(i);
+        localByteBuffer.put(this.bs.array(), 0, this.bs.position());
+        this.bs = localByteBuffer;
+        return;
       }
-      throw localIllegalArgumentException;
+      catch (IllegalArgumentException localIllegalArgumentException)
+      {
+        OnIllegalArgumentException localOnIllegalArgumentException = this.exceptionHandler;
+        if (localOnIllegalArgumentException != null) {
+          localOnIllegalArgumentException.onException(localIllegalArgumentException, this.bs, paramInt, i);
+        }
+        throw localIllegalArgumentException;
+      }
     }
   }
   
@@ -296,7 +297,10 @@ public class JceOutputStream
       write((Collection)paramObject, paramInt);
       return;
     }
-    throw new JceEncodeException("write object error: unsupport type. " + paramObject.getClass());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("write object error: unsupport type. ");
+    localStringBuilder.append(paramObject.getClass());
+    throw new JceEncodeException(localStringBuilder.toString());
   }
   
   public void write(Short paramShort, int paramInt)
@@ -313,14 +317,10 @@ public class JceOutputStream
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      for (;;)
-      {
-        paramString = paramString.getBytes();
-      }
-      writeHead((byte)6, paramInt);
-      this.bs.put((byte)paramString.length);
-      this.bs.put(paramString);
+      label14:
+      break label14;
     }
+    paramString = paramString.getBytes();
     reserve(paramString.length + 10);
     if (paramString.length > 255)
     {
@@ -329,19 +329,23 @@ public class JceOutputStream
       this.bs.put(paramString);
       return;
     }
+    writeHead((byte)6, paramInt);
+    this.bs.put((byte)paramString.length);
+    this.bs.put(paramString);
   }
   
   public <T> void write(Collection<T> paramCollection, int paramInt)
   {
     reserve(8);
     writeHead((byte)9, paramInt);
-    if (paramCollection == null) {}
-    for (paramInt = 0;; paramInt = paramCollection.size())
+    if (paramCollection == null) {
+      paramInt = 0;
+    } else {
+      paramInt = paramCollection.size();
+    }
+    write(paramInt, 0);
+    if (paramCollection != null)
     {
-      write(paramInt, 0);
-      if (paramCollection == null) {
-        break;
-      }
       paramCollection = paramCollection.iterator();
       while (paramCollection.hasNext()) {
         write(paramCollection.next(), 0);
@@ -353,13 +357,14 @@ public class JceOutputStream
   {
     reserve(8);
     writeHead((byte)8, paramInt);
-    if (paramMap == null) {}
-    for (paramInt = 0;; paramInt = paramMap.size())
+    if (paramMap == null) {
+      paramInt = 0;
+    } else {
+      paramInt = paramMap.size();
+    }
+    write(paramInt, 0);
+    if (paramMap != null)
     {
-      write(paramInt, 0);
-      if (paramMap == null) {
-        break;
-      }
       paramMap = paramMap.entrySet().iterator();
       while (paramMap.hasNext())
       {
@@ -384,12 +389,7 @@ public class JceOutputStream
   
   public void write(boolean paramBoolean, int paramInt)
   {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      write((byte)i, paramInt);
-      return;
-    }
+    write((byte)paramBoolean, paramInt);
   }
   
   public void write(byte[] paramArrayOfByte, int paramInt)
@@ -511,7 +511,7 @@ public class JceOutputStream
     byte b;
     if (paramInt < 15)
     {
-      b = (byte)(paramInt << 4 | paramByte);
+      b = (byte)(paramByte | paramInt << 4);
       this.bs.put(b);
       return;
     }
@@ -522,7 +522,10 @@ public class JceOutputStream
       this.bs.put((byte)paramInt);
       return;
     }
-    throw new JceEncodeException("tag is too large: " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("tag is too large: ");
+    localStringBuilder.append(paramInt);
+    throw new JceEncodeException(localStringBuilder.toString());
   }
   
   public void writeStringByte(String paramString, int paramInt)
@@ -543,7 +546,7 @@ public class JceOutputStream
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.taf.jce.JceOutputStream
  * JD-Core Version:    0.7.0.1
  */

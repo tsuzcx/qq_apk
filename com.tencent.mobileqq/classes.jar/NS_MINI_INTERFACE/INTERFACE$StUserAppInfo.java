@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class INTERFACE$StUserAppInfo
   extends MessageMicro<StUserAppInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 48, 58, 64, 74, 82, 90, 96, 104, 114 }, new String[] { "appInfo", "useTime", "putTop", "doLike", "likeNum", "enablePush", "openid", "tinyid", "bgPic", "motionPics", "apngUrl", "userNum", "friendNum", "users" }, new Object[] { null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Long.valueOf(0L), "", null, "", Integer.valueOf(0), Integer.valueOf(0), null }, StUserAppInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField apngUrl = PBField.initString("");
   public INTERFACE.StApiAppInfo appInfo = new INTERFACE.StApiAppInfo();
   public final PBStringField bgPic = PBField.initString("");
@@ -26,10 +26,16 @@ public final class INTERFACE$StUserAppInfo
   public final PBUInt32Field useTime = PBField.initUInt32(0);
   public final PBUInt32Field userNum = PBField.initUInt32(0);
   public final PBRepeatMessageField<INTERFACE.UseUserInfo> users = PBField.initRepeatMessage(INTERFACE.UseUserInfo.class);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 48, 58, 64, 74, 82, 90, 96, 104, 114 }, new String[] { "appInfo", "useTime", "putTop", "doLike", "likeNum", "enablePush", "openid", "tinyid", "bgPic", "motionPics", "apngUrl", "userNum", "friendNum", "users" }, new Object[] { null, localInteger, localInteger, localInteger, localInteger, localInteger, "", Long.valueOf(0L), "", null, "", localInteger, localInteger, null }, StUserAppInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MINI_INTERFACE.INTERFACE.StUserAppInfo
  * JD-Core Version:    0.7.0.1
  */

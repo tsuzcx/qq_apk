@@ -25,13 +25,19 @@ public class ViolaRenderManager
   @Nullable
   public VComponent getComponent(String paramString1, String paramString2)
   {
-    if ((paramString1 == null) || (TextUtils.isEmpty(paramString2))) {}
-    do
+    VComponent localVComponent = null;
+    if (paramString1 != null)
     {
-      return null;
+      if (TextUtils.isEmpty(paramString2)) {
+        return null;
+      }
       paramString1 = getRenderContext(paramString1);
-    } while (paramString1 == null);
-    return paramString1.getComponent(paramString2);
+      if (paramString1 == null) {
+        return null;
+      }
+      localVComponent = paramString1.getComponent(paramString2);
+    }
+    return localVComponent;
   }
   
   public ViolaInstance getInstance(String paramString)
@@ -68,10 +74,13 @@ public class ViolaRenderManager
   
   public void registerInstance(ViolaInstance paramViolaInstance)
   {
-    if ((paramViolaInstance == null) || (this.mRenderActionImplMap.containsKey(paramViolaInstance.getInstanceId()))) {
-      return;
+    if (paramViolaInstance != null)
+    {
+      if (this.mRenderActionImplMap.containsKey(paramViolaInstance.getInstanceId())) {
+        return;
+      }
+      this.mRenderActionImplMap.put(paramViolaInstance.getInstanceId(), new RenderActionContextImpl(paramViolaInstance));
     }
-    this.mRenderActionImplMap.put(paramViolaInstance.getInstanceId(), new RenderActionContextImpl(paramViolaInstance));
   }
   
   public void runOnThread(String paramString, IRenderTask paramIRenderTask)
@@ -86,10 +95,13 @@ public class ViolaRenderManager
   
   public void runOnUIThreadBatch(String paramString, List<IRenderTask> paramList)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramList == null) || (paramList.isEmpty())) {
-      return;
+    if ((!TextUtils.isEmpty(paramString)) && (paramList != null))
+    {
+      if (paramList.isEmpty()) {
+        return;
+      }
+      this.mRenderHandler.post(ViolaThread.secure(new ViolaRenderManager.3(this, paramString, paramList)));
     }
-    this.mRenderHandler.post(ViolaThread.secure(new ViolaRenderManager.3(this, paramString, paramList)));
   }
   
   public void setExtra(String paramString1, String paramString2, Object paramObject)
@@ -121,7 +133,7 @@ public class ViolaRenderManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.core.ViolaRenderManager
  * JD-Core Version:    0.7.0.1
  */

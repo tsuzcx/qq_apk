@@ -7,6 +7,7 @@ import android.os.Parcelable.Creator;
 import com.sina.weibo.sdk.c.c;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.OutputStream;
 
 public class ImageObject
   extends MediaObject
@@ -32,30 +33,38 @@ public class ImageObject
     if ((paramString != null) && (paramString.length() != 0))
     {
       paramString = new File(paramString);
-      if (paramString.exists()) {}
+      if (!paramString.exists()) {
+        return 0;
+      }
+      return (int)paramString.length();
     }
-    else
-    {
-      return 0;
-    }
-    return (int)paramString.length();
+    return 0;
   }
   
   public boolean checkArgs()
   {
-    if (((this.imageData != null) && (this.imageData.length != 0)) || ((this.imagePath != null) && (this.imagePath.length() != 0)))
+    Object localObject = this.imageData;
+    if ((localObject == null) || (localObject.length == 0))
     {
-      if ((this.imageData != null) && (this.imageData.length > 1048576))
+      localObject = this.imagePath;
+      if ((localObject == null) || (((String)localObject).length() == 0)) {}
+    }
+    else
+    {
+      localObject = this.imageData;
+      if ((localObject != null) && (localObject.length > 1048576))
       {
         c.b("ImageObject", "checkArgs fail, content is too large");
         return false;
       }
-      if ((this.imagePath != null) && (this.imagePath.length() > 512))
+      localObject = this.imagePath;
+      if ((localObject != null) && (((String)localObject).length() > 512))
       {
         c.b("ImageObject", "checkArgs fail, path is invalid");
         return false;
       }
-      if ((this.imagePath != null) && (getFileSize(this.imagePath) > 1048576))
+      localObject = this.imagePath;
+      if ((localObject != null) && (getFileSize((String)localObject) > 1048576))
       {
         c.b("ImageObject", "checkArgs fail, image content is too large");
         return false;
@@ -75,15 +84,17 @@ public class ImageObject
   {
     try
     {
-      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-      paramBitmap.compress(Bitmap.CompressFormat.JPEG, 85, localByteArrayOutputStream);
-      this.imageData = localByteArrayOutputStream.toByteArray();
-      localByteArrayOutputStream.close();
+      localObject = new ByteArrayOutputStream();
+      paramBitmap.compress(Bitmap.CompressFormat.JPEG, 85, (OutputStream)localObject);
+      this.imageData = ((ByteArrayOutputStream)localObject).toByteArray();
+      ((ByteArrayOutputStream)localObject).close();
       return;
     }
     catch (Exception paramBitmap)
     {
-      c.b("ImageObject", "ImageObject :" + paramBitmap.getMessage());
+      Object localObject = new StringBuilder("ImageObject :");
+      ((StringBuilder)localObject).append(paramBitmap.getMessage());
+      c.b("ImageObject", ((StringBuilder)localObject).toString());
     }
   }
   

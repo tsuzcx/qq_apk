@@ -22,7 +22,6 @@ class GestureMgrAppDownload$DownloadContrl$1
     if (QLog.isColorLevel()) {
       QLog.i("QavGesture", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localHttpNetReq.mReqUrl, Integer.valueOf(paramNetResp.mResult), Integer.valueOf(paramNetResp.mHttpCode), this.jdField_a_of_type_JavaLangString }));
     }
-    int i;
     if (paramNetResp.mResult == 0)
     {
       paramNetResp = new File(localHttpNetReq.mOutPath);
@@ -31,37 +30,34 @@ class GestureMgrAppDownload$DownloadContrl$1
         try
         {
           String str = paramNetResp.getParent();
-          FileUtils.a(localHttpNetReq.mOutPath, str, false);
+          FileUtils.uncompressZip(localHttpNetReq.mOutPath, str, false);
           GestureMgrAppDownload.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo, this.jdField_a_of_type_Int);
           i = 1;
         }
         catch (Exception localException)
         {
-          for (;;)
-          {
-            localException.printStackTrace();
-            i = 0;
-          }
-          GestureMgrAppDownload.a(-1);
-          this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrAppDownload$DownloadContrl.jdField_a_of_type_Boolean = false;
-          return;
+          localException.printStackTrace();
+          i = 0;
         }
         paramNetResp.delete();
+        break label157;
       }
     }
-    for (;;)
+    int i = 0;
+    label157:
+    if (i != 0)
     {
-      if (i != 0)
-      {
-        GestureMgrAppDownload.a(100 / this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrAppDownload$DownloadContrl.jdField_a_of_type_Int + this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrAppDownload$DownloadContrl.b);
-        paramNetResp = this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrAppDownload$DownloadContrl;
-        paramNetResp.b += 100 / this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrAppDownload$DownloadContrl.jdField_a_of_type_Int;
-        if (!this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrAppDownload$DownloadContrl.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo, this.b - 1)) {
-          this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrAppDownload$DownloadContrl.jdField_a_of_type_Boolean = false;
-        }
-        return;
+      GestureMgrAppDownload.a(100 / this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrAppDownload$DownloadContrl.jdField_a_of_type_Int + this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrAppDownload$DownloadContrl.b);
+      paramNetResp = this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrAppDownload$DownloadContrl;
+      paramNetResp.b += 100 / this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrAppDownload$DownloadContrl.jdField_a_of_type_Int;
+      if (!this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrAppDownload$DownloadContrl.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo, this.b - 1)) {
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrAppDownload$DownloadContrl.jdField_a_of_type_Boolean = false;
       }
-      i = 0;
+    }
+    else
+    {
+      GestureMgrAppDownload.a(-1);
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrAppDownload$DownloadContrl.jdField_a_of_type_Boolean = false;
     }
   }
   
@@ -70,22 +66,17 @@ class GestureMgrAppDownload$DownloadContrl$1
     int i;
     if (paramLong2 == 0L) {
       i = 0;
+    } else if (paramLong1 >= paramLong2) {
+      i = 99;
+    } else {
+      i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
     }
-    for (;;)
-    {
-      GestureMgrAppDownload.a(i / this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrAppDownload$DownloadContrl.jdField_a_of_type_Int + this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrAppDownload$DownloadContrl.b);
-      return;
-      if (paramLong1 >= paramLong2) {
-        i = 99;
-      } else {
-        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-      }
-    }
+    GestureMgrAppDownload.a(i / this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrAppDownload$DownloadContrl.jdField_a_of_type_Int + this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrAppDownload$DownloadContrl.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.gesture.GestureMgrAppDownload.DownloadContrl.1
  * JD-Core Version:    0.7.0.1
  */

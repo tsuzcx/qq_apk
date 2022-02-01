@@ -31,59 +31,55 @@ public class FlashChatHanlder
     if (QLog.isColorLevel()) {
       QLog.d("FlashChat", 2, "handleReqSetSwitch ");
     }
-    boolean bool1;
     if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
     {
       paramObject = new oidb_sso.OIDBSSOPkg();
       try
       {
         paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)paramObject.mergeFrom(paramFromServiceMsg.getWupBuffer());
-        if ((paramFromServiceMsg != null) && (paramFromServiceMsg.uint32_result.has()))
-        {
-          int i = paramFromServiceMsg.uint32_result.get();
-          if (QLog.isColorLevel()) {
-            QLog.i("FlashChat", 2, "handleReqSetSwitch ret=" + i);
-          }
-          if ((i == 0) && (paramFromServiceMsg.bytes_bodybuffer.has()) && (paramFromServiceMsg.bytes_bodybuffer.get() != null))
-          {
-            paramFromServiceMsg = paramFromServiceMsg.bytes_bodybuffer.get().toByteArray();
-            i = paramFromServiceMsg.length;
-            boolean bool2 = true;
-            bool1 = bool2;
-            if (4 > i) {
-              break label215;
-            }
-            paramFromServiceMsg = String.valueOf(PkgTools.getLongData(paramFromServiceMsg, 0));
-            if (paramFromServiceMsg != null)
-            {
-              bool1 = bool2;
-              if (paramFromServiceMsg.equals(this.appRuntime.getAccount())) {
-                break label215;
-              }
-            }
-            if (QLog.isColorLevel()) {
-              QLog.w("FlashChat", 2, "handleReqSetSwitch uin error");
-            }
-            return;
-          }
-        }
       }
       catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
       {
-        for (;;)
+        paramFromServiceMsg.printStackTrace();
+        paramFromServiceMsg = paramObject;
+      }
+      if ((paramFromServiceMsg != null) && (paramFromServiceMsg.uint32_result.has()))
+      {
+        int i = paramFromServiceMsg.uint32_result.get();
+        if (QLog.isColorLevel())
         {
-          paramFromServiceMsg.printStackTrace();
-          paramFromServiceMsg = paramObject;
+          paramObject = new StringBuilder();
+          paramObject.append("handleReqSetSwitch ret=");
+          paramObject.append(i);
+          QLog.i("FlashChat", 2, paramObject.toString());
+        }
+        if ((i == 0) && (paramFromServiceMsg.bytes_bodybuffer.has()) && (paramFromServiceMsg.bytes_bodybuffer.get() != null))
+        {
+          paramFromServiceMsg = paramFromServiceMsg.bytes_bodybuffer.get().toByteArray();
+          i = paramFromServiceMsg.length;
+          boolean bool2 = true;
+          bool1 = bool2;
+          if (4 > i) {
+            break label221;
+          }
+          paramFromServiceMsg = String.valueOf(PkgTools.getLongData(paramFromServiceMsg, 0));
+          if (paramFromServiceMsg != null)
+          {
+            bool1 = bool2;
+            if (paramFromServiceMsg.equals(this.appRuntime.getAccount())) {
+              break label221;
+            }
+          }
+          if (QLog.isColorLevel()) {
+            QLog.w("FlashChat", 2, "handleReqSetSwitch uin error");
+          }
+          return;
         }
       }
     }
-    else
-    {
-      bool1 = false;
-    }
-    label215:
+    boolean bool1 = false;
+    label221:
     paramToServiceMsg.extraData.getByte("lightalk_switch", (byte)0).byteValue();
-    if (bool1) {}
     notifyUI(2, bool1, null);
   }
   
@@ -96,10 +92,10 @@ public class FlashChatHanlder
     {
       long l = Long.parseLong(this.appRuntime.getAccount());
       Object localObject = new byte[9];
-      PkgTools.DWord2Byte((byte[])localObject, 0, l);
+      PkgTools.dWord2Byte((byte[])localObject, 0, l);
       localObject[4] = 0;
-      PkgTools.Word2Byte((byte[])localObject, 5, (short)1);
-      PkgTools.DWordTo2Bytes((byte[])localObject, 7, 40352);
+      PkgTools.word2Byte((byte[])localObject, 5, (short)1);
+      PkgTools.dWordTo2Bytes((byte[])localObject, 7, 40352);
       localObject = makeOIDBPkg("OidbSvc.0x480_9", 1152, 9, (byte[])localObject);
       ((ToServiceMsg)localObject).extraData.putBoolean("FlashChatHanlder", true);
       sendPbReq((ToServiceMsg)localObject);
@@ -107,8 +103,9 @@ public class FlashChatHanlder
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.w("FlashChat", 2, "send_oidb_0x480_9 error", localException);
+      if (QLog.isColorLevel()) {
+        QLog.w("FlashChat", 2, "send_oidb_0x480_9 error", localException);
+      }
     }
   }
   
@@ -116,68 +113,90 @@ public class FlashChatHanlder
   {
     for (;;)
     {
-      int i;
       try
       {
-        paramToServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])paramObject);
-        paramFromServiceMsg = ByteBuffer.wrap(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
-        if (paramToServiceMsg.uint32_result.has())
+        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])paramObject);
+        paramToServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
+        i = -1;
+        if (paramFromServiceMsg.uint32_result.has()) {
+          i = paramFromServiceMsg.uint32_result.get();
+        }
+        if (i == 0)
         {
-          i = paramToServiceMsg.uint32_result.get();
-          if (i == 0)
+          long l = paramToServiceMsg.getInt();
+          paramToServiceMsg.get();
+          int j = paramToServiceMsg.getShort();
+          if (!QLog.isColorLevel()) {
+            break label391;
+          }
+          paramFromServiceMsg = new StringBuilder();
+          paramFromServiceMsg.append("handleReqGetSwitch, request success, tlvCount = ");
+          paramFromServiceMsg.append(j);
+          paramFromServiceMsg.append(" uin:");
+          paramFromServiceMsg.append(Long.valueOf(l));
+          QLog.d("FlashChat", 2, paramFromServiceMsg.toString());
+          break label391;
+          if ((paramToServiceMsg.hasRemaining()) && (i < j))
           {
-            long l = paramFromServiceMsg.getInt();
-            paramFromServiceMsg.get();
-            int j = paramFromServiceMsg.getShort();
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("FlashChat", 2, "handleReqGetSwitch, request success, tlvCount = " + j + " uin:" + Long.valueOf(l));
-            continue;
-            if ((!paramFromServiceMsg.hasRemaining()) || (i >= j)) {
-              break label356;
-            }
-            int k = paramFromServiceMsg.getShort();
-            int m = paramFromServiceMsg.getShort();
-            if (QLog.isColorLevel()) {
-              QLog.d("FlashChat", 2, "handleReqGetSwitch, TLV type: " + k + ",legnth: " + m);
+            int k = paramToServiceMsg.getShort();
+            int m = paramToServiceMsg.getShort();
+            if (QLog.isColorLevel())
+            {
+              paramFromServiceMsg = new StringBuilder();
+              paramFromServiceMsg.append("handleReqGetSwitch, TLV type: ");
+              paramFromServiceMsg.append(k);
+              paramFromServiceMsg.append(",legnth: ");
+              paramFromServiceMsg.append(m);
+              QLog.d("FlashChat", 2, paramFromServiceMsg.toString());
             }
             if (k == -25184)
             {
-              i = paramFromServiceMsg.getShort();
-              if (!QLog.isColorLevel()) {
-                break label356;
+              i = paramToServiceMsg.getShort();
+              if (QLog.isColorLevel())
+              {
+                paramToServiceMsg = new StringBuilder();
+                paramToServiceMsg.append("handleReqGetSwitch switchValue");
+                paramToServiceMsg.append(i);
+                QLog.i("FlashChat", 2, paramToServiceMsg.toString());
               }
-              QLog.i("FlashChat", 2, "handleReqGetSwitch switchValue" + i);
-              return;
             }
-            if (!QLog.isColorLevel()) {
-              break label357;
+            else
+            {
+              if (!QLog.isColorLevel()) {
+                break label397;
+              }
+              paramFromServiceMsg = new StringBuilder();
+              paramFromServiceMsg.append("handleReqGetSwitch");
+              paramFromServiceMsg.append(k);
+              QLog.i("FlashChat", 2, paramFromServiceMsg.toString());
+              break label397;
             }
-            QLog.i("FlashChat", 2, "handleReqGetSwitch" + k);
-            break label357;
           }
-          if (!QLog.isColorLevel()) {
-            break label356;
-          }
-          QLog.d("FlashChat", 2, "handleReqGetSwitch" + i);
+        }
+        else if (QLog.isColorLevel())
+        {
+          paramToServiceMsg = new StringBuilder();
+          paramToServiceMsg.append("handleReqGetSwitch");
+          paramToServiceMsg.append(i);
+          QLog.d("FlashChat", 2, paramToServiceMsg.toString());
+          return;
         }
       }
       catch (Exception paramToServiceMsg)
       {
         if (QLog.isColorLevel())
         {
-          QLog.d("FlashChat", 2, "handleReqGetSwitch exception: " + paramToServiceMsg.getMessage());
-          return;
-          i = -1;
-          continue;
-          i = 0;
-          continue;
+          paramFromServiceMsg = new StringBuilder();
+          paramFromServiceMsg.append("handleReqGetSwitch exception: ");
+          paramFromServiceMsg.append(paramToServiceMsg.getMessage());
+          QLog.d("FlashChat", 2, paramFromServiceMsg.toString());
         }
       }
-      label356:
       return;
-      label357:
+      label391:
+      int i = 0;
+      continue;
+      label397:
       i += 1;
     }
   }
@@ -193,34 +212,34 @@ public class FlashChatHanlder
     return this.allowCmdSet;
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return FlashChatHandlerObserver.class;
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {}
-    String str;
-    do
+    if (paramToServiceMsg != null)
     {
-      do
-      {
+      if (paramFromServiceMsg == null) {
         return;
-        str = paramFromServiceMsg.getServiceCmd();
-        if (!"OidbSvc.0x4ff_9".equals(str)) {
-          break;
+      }
+      String str = paramFromServiceMsg.getServiceCmd();
+      if ("OidbSvc.0x4ff_9".equals(str))
+      {
+        if (paramToServiceMsg.extraData.getBoolean("FlashChatHanlder", false)) {
+          b(paramToServiceMsg, paramFromServiceMsg, paramObject);
         }
-      } while (!paramToServiceMsg.extraData.getBoolean("FlashChatHanlder", false));
-      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
-      return;
-    } while ((!"OidbSvc.0x480_9".equals(str)) || (!paramToServiceMsg.extraData.getBoolean("FlashChatHanlder", false)));
-    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      }
+      else if (("OidbSvc.0x480_9".equals(str)) && (paramToServiceMsg.extraData.getBoolean("FlashChatHanlder", false))) {
+        a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flashchat.FlashChatHanlder
  * JD-Core Version:    0.7.0.1
  */

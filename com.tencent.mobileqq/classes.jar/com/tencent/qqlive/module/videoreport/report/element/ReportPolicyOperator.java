@@ -13,19 +13,26 @@ public class ReportPolicyOperator
     if (VideoReportInner.getInstance().isDebugMode()) {
       Log.d("ReportPolicyOperator", "getElementExposePolicy: ");
     }
-    if (!VideoReportInner.getInstance().checkElementObjectArgument(paramObject)) {}
-    do
-    {
+    if (!VideoReportInner.getInstance().checkElementObjectArgument(paramObject)) {
       return null;
-      paramObject = DataRWProxy.getInnerParam(paramObject, paramString);
-    } while (!paramClass.isInstance(paramObject));
-    return paramClass.cast(paramObject);
+    }
+    paramObject = DataRWProxy.getInnerParam(paramObject, paramString);
+    if (paramClass.isInstance(paramObject)) {
+      return paramClass.cast(paramObject);
+    }
+    return null;
   }
   
   public static void setReportPolicy(Object paramObject1, Object paramObject2, String paramString)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("ReportPolicyOperator", "setElementClickPolicy: object=" + paramObject1 + ", policy=" + paramObject2);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setElementClickPolicy: object=");
+      localStringBuilder.append(paramObject1);
+      localStringBuilder.append(", policy=");
+      localStringBuilder.append(paramObject2);
+      Log.i("ReportPolicyOperator", localStringBuilder.toString());
     }
     if (VideoReportInner.getInstance().checkElementObjectArgument(paramObject1)) {
       DataRWProxy.setInnerParam(paramObject1, paramString, paramObject2);
@@ -34,7 +41,7 @@ public class ReportPolicyOperator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.report.element.ReportPolicyOperator
  * JD-Core Version:    0.7.0.1
  */

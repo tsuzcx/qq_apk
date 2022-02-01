@@ -37,57 +37,65 @@ public class RegLiangHaoJsPlugin
     QPublicFragmentActivity.Launcher.a(paramActivity, localIntent, QPublicTransFragmentActivity.class, localILoginRegisterApi.getLHBuyFragment(), 2);
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    boolean bool2 = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("RegLiangHaoJsPlugin", 2, "handleJsRequest, url=" + paramString1);
-    }
-    boolean bool1;
-    if ((!"haomaReg".equals(paramString2)) || (paramString1 == null) || (paramString3 == null)) {
-      bool1 = false;
-    }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      return bool1;
+      paramJsBridgeListener = new StringBuilder();
+      paramJsBridgeListener.append("handleJsRequest, url=");
+      paramJsBridgeListener.append(paramString1);
+      QLog.d("RegLiangHaoJsPlugin", 2, paramJsBridgeListener.toString());
+    }
+    if (("haomaReg".equals(paramString2)) && (paramString1 != null) && (paramString3 != null))
+    {
       try
       {
         paramJsBridgeListener = WebViewPlugin.getJsonFromJSBridge(paramString1);
-        bool1 = bool2;
-        if (paramJsBridgeListener != null)
+        if (paramJsBridgeListener == null) {
+          return true;
+        }
+        if (QLog.isColorLevel())
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("RegLiangHaoJsPlugin", 2, "handleJsRequest JSON = " + paramJsBridgeListener.toString());
-          }
-          bool1 = bool2;
-          if ("submitBuy".equals(paramString3))
+          paramString1 = new StringBuilder();
+          paramString1.append("handleJsRequest JSON = ");
+          paramString1.append(paramJsBridgeListener.toString());
+          QLog.d("RegLiangHaoJsPlugin", 2, paramString1.toString());
+        }
+        if ("submitBuy".equals(paramString3))
+        {
+          int i = this.mActivity.getIntent().getIntExtra("lh_reg_from", -1);
+          if (i != 1)
           {
-            int i = this.mActivity.getIntent().getIntExtra("lh_reg_from", -1);
-            if (i != 1)
-            {
-              bool1 = bool2;
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.i("RegLiangHaoJsPlugin", 2, "illegal from " + i);
-              return true;
+            if (!QLog.isColorLevel()) {
+              break label232;
             }
+            paramJsBridgeListener = new StringBuilder();
+            paramJsBridgeListener.append("illegal from ");
+            paramJsBridgeListener.append(i);
+            QLog.i("RegLiangHaoJsPlugin", 2, paramJsBridgeListener.toString());
+            return true;
           }
+          paramString1 = paramJsBridgeListener.optString("uin", "");
+          paramJsBridgeListener = paramJsBridgeListener.optString("highlight", "");
+          webViewPageStartBuyForResult(this.mActivity, this.mActivity.getIntent(), new LiangHaoUinData(paramString1, paramJsBridgeListener));
+          return true;
         }
       }
       catch (Exception paramJsBridgeListener)
       {
         paramJsBridgeListener.printStackTrace();
-        return true;
       }
+      return true;
     }
-    paramString1 = paramJsBridgeListener.optString("uin", "");
-    paramJsBridgeListener = paramJsBridgeListener.optString("highlight", "");
-    webViewPageStartBuyForResult(this.mActivity, this.mActivity.getIntent(), new LiangHaoUinData(paramString1, paramJsBridgeListener));
+    else
+    {
+      return false;
+    }
+    label232:
     return true;
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
     this.mActivity = this.mRuntime.a();
@@ -95,7 +103,7 @@ public class RegLiangHaoJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.RegLiangHaoJsPlugin
  * JD-Core Version:    0.7.0.1
  */

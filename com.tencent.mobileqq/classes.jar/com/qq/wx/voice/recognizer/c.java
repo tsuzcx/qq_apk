@@ -20,9 +20,10 @@ final class c
   protected final int a(InnerAudioList paramInnerAudioList)
   {
     this.g = paramInnerAudioList;
-    if (this.c != null)
+    paramInnerAudioList = this.c;
+    if (paramInnerAudioList != null)
     {
-      this.c.release();
+      paramInnerAudioList.release();
       this.c = null;
     }
     try
@@ -34,16 +35,16 @@ final class c
         InfoRecognizer.b.b(-301);
         return -1;
       }
+      this.a = true;
+      this.b = true;
+      return 0;
     }
     catch (Exception paramInnerAudioList)
     {
       InfoRecognizer.b.b(-301);
       paramInnerAudioList.printStackTrace();
-      return -1;
     }
-    this.a = true;
-    this.b = true;
-    return 0;
+    return -1;
   }
   
   protected final void a()
@@ -58,9 +59,10 @@ final class c
   
   protected final void c()
   {
-    if (this.c != null)
+    AudioRecord localAudioRecord = this.c;
+    if (localAudioRecord != null)
     {
-      this.c.release();
+      localAudioRecord.release();
       this.c = null;
     }
   }
@@ -81,210 +83,219 @@ final class c
   
   public final void run()
   {
-    VoiceRecordState localVoiceRecordState = VoiceRecordState.Start;
-    InfoRecognizer.b.a(localVoiceRecordState);
-    if (this.c == null)
+    Object localObject1 = VoiceRecordState.Start;
+    InfoRecognizer.b.a((VoiceRecordState)localObject1);
+    localObject1 = this.c;
+    if (localObject1 == null)
     {
       InfoRecognizer.b.b(-302);
       return;
     }
-    try
-    {
-      this.c.startRecording();
-      localVoiceRecordState = VoiceRecordState.Recording;
-      InfoRecognizer.b.a(localVoiceRecordState);
-      if (this.f.Init(InfoRecorder.a, InfoRecorder.c, InfoRecorder.e, InfoRecorder.f, InfoRecorder.g) != 0)
-      {
-        InfoRecognizer.b.b(-304);
-        return;
-      }
-    }
-    catch (IllegalStateException localIllegalStateException1)
-    {
-      InfoRecognizer.b.b(-302);
-      return;
-    }
-    LinkedList localLinkedList = new LinkedList();
-    int i3 = InfoRecorder.h / InfoRecorder.b;
-    int k = 0;
-    LogTool.d("preAudioMax = " + i3);
-    int j = 0;
-    int n = 3;
-    int i = 1;
     for (;;)
     {
-      if (!this.a) {}
-      byte[] arrayOfByte;
-      int i1;
-      a locala;
-      int i2;
-      for (;;)
+      try
       {
-        this.f.Release();
-        try
+        ((AudioRecord)localObject1).startRecording();
+        localObject1 = VoiceRecordState.Recording;
+        InfoRecognizer.b.a((VoiceRecordState)localObject1);
+        if (this.f.Init(InfoRecorder.a, InfoRecorder.c, InfoRecorder.e, InfoRecorder.f, InfoRecorder.g) != 0)
         {
-          this.c.stop();
-          this.c.release();
-          this.c = null;
+          InfoRecognizer.b.b(-304);
           return;
         }
-        catch (IllegalStateException localIllegalStateException2)
+        localObject1 = new LinkedList();
+        i3 = InfoRecorder.h / InfoRecorder.b;
+        localObject2 = new StringBuilder("preAudioMax = ");
+        ((StringBuilder)localObject2).append(i3);
+        LogTool.d(((StringBuilder)localObject2).toString());
+        k = 0;
+        int j = 1;
+        i = 0;
+        m = 3;
+        if (this.a)
         {
-          InfoRecognizer.b.b(-306);
-          return;
-        }
-        arrayOfByte = new byte[InfoRecorder.b];
-        int m = this.c.read(arrayOfByte, 0, InfoRecorder.b);
-        if (m == -3)
-        {
-          InfoRecognizer.b.b(10131);
-        }
-        else if (m == -2)
-        {
-          InfoRecognizer.b.b(10132);
-        }
-        else if (m != InfoRecorder.b)
-        {
-          InfoRecognizer.b.b(-303);
-        }
-        else
-        {
-          i1 = k + m;
-          if (InfoRecorder.d > 0)
+          localObject2 = new byte[InfoRecorder.b];
+          i2 = this.c.read((byte[])localObject2, 0, InfoRecorder.b);
+          if (i2 == -3)
           {
-            LogTool.d("timeOffset = " + i1 + " timeOut = " + (InfoRecorder.a << 1) * InfoRecorder.d / 1000);
-            if ((i != 0) && (i1 > (InfoRecorder.a << 1) * InfoRecorder.d / 1000L))
-            {
-              InfoRecognizer.b.b(-307);
-              continue;
-            }
+            InfoRecognizer.b.b(10131);
           }
-          k = Common.calculateVolumn(arrayOfByte, m);
-          InfoRecognizer.b.a(k);
-          if (!this.b)
+          else if (i2 == -2)
           {
-            localObject = VoiceRecordState.Complete;
-            InfoRecognizer.b.a((VoiceRecordState)localObject);
-            if (j == 0)
+            InfoRecognizer.b.b(10132);
+          }
+          else if (i2 != InfoRecorder.b)
+          {
+            InfoRecognizer.b.b(-303);
+          }
+          else
+          {
+            i1 = k + i2;
+            Object localObject3;
+            if (InfoRecorder.d > 0)
             {
-              locala = new a(null, InnerAudioState.cancel);
-              locala.c = i1;
-              if (this.g.a(locala)) {
+              localObject3 = new StringBuilder("timeOffset = ");
+              ((StringBuilder)localObject3).append(i1);
+              ((StringBuilder)localObject3).append(" timeOut = ");
+              ((StringBuilder)localObject3).append((InfoRecorder.a << 1) * InfoRecorder.d / 1000);
+              LogTool.d(((StringBuilder)localObject3).toString());
+              if ((j != 0) && (i1 > (InfoRecorder.a << 1) * InfoRecorder.d / 1000L))
+              {
+                InfoRecognizer.b.b(-307);
                 continue;
               }
-              InfoRecognizer.b.b(-305);
-              continue;
             }
-            if (j != 0)
+            int n = j;
+            j = Common.calculateVolumn((byte[])localObject2, i2);
+            InfoRecognizer.b.a(j);
+            if (!this.b)
             {
-              LogTool.d("speaking stop");
-              locala = new a(arrayOfByte, InnerAudioState.stop);
-              locala.c = i1;
-              if (this.g.a(locala)) {
+              localObject3 = VoiceRecordState.Complete;
+              InfoRecognizer.b.a((VoiceRecordState)localObject3);
+              if (i == 0)
+              {
+                localObject1 = new a(null, InnerAudioState.cancel);
+                ((a)localObject1).c = i1;
+                if (this.g.a((a)localObject1)) {
+                  continue;
+                }
+                InfoRecognizer.b.b(-305);
                 continue;
               }
-              InfoRecognizer.b.b(-305);
-              continue;
+              if (i != 0)
+              {
+                LogTool.d("speaking stop");
+                localObject1 = new a((byte[])localObject2, InnerAudioState.stop);
+                ((a)localObject1).c = i1;
+                if (this.g.a((a)localObject1)) {
+                  continue;
+                }
+                InfoRecognizer.b.b(-305);
+                continue;
+              }
             }
-          }
-          i2 = this.f.AddData(arrayOfByte, m);
-          k = i;
-          m = j;
-          if (j == 0)
-          {
+            i2 = this.f.AddData((byte[])localObject2, i2);
             k = i;
-            m = j;
-            if (i2 == 2)
+            j = n;
+            if (i == 0)
             {
               k = i;
-              m = j;
-              if (n == 3)
+              j = n;
+              if (i2 == 2)
               {
-                m = 1;
-                k = 0;
-                i = 0;
-                LogTool.d("speaking start: preAudio size = " + locala.size());
-                if (!locala.isEmpty())
+                k = i;
+                j = n;
+                if (m == 3)
                 {
-                  localObject = new a((byte[])locala.removeFirst(), InnerAudioState.begin);
-                  ((a)localObject).c = i1;
-                  if (!this.g.a((a)localObject))
+                  localObject3 = new StringBuilder("speaking start: preAudio size = ");
+                  ((StringBuilder)localObject3).append(((LinkedList)localObject1).size());
+                  LogTool.d(((StringBuilder)localObject3).toString());
+                  if (!((LinkedList)localObject1).isEmpty())
                   {
-                    InfoRecognizer.b.b(-305);
-                    continue;
-                    label632:
-                    localObject = new a((byte[])locala.removeFirst(), InnerAudioState.middle);
-                    ((a)localObject).c = i1;
-                    if (!this.g.a((a)localObject))
+                    localObject3 = new a((byte[])((LinkedList)localObject1).removeFirst(), InnerAudioState.begin);
+                    ((a)localObject3).c = i1;
+                    if (!this.g.a((a)localObject3))
                     {
                       InfoRecognizer.b.b(-305);
-                      j = 1;
+                      continue;
                     }
                   }
+                  if (!((LinkedList)localObject1).isEmpty())
+                  {
+                    localObject3 = new a((byte[])((LinkedList)localObject1).removeFirst(), InnerAudioState.middle);
+                    ((a)localObject3).c = i1;
+                    if (this.g.a((a)localObject3)) {
+                      continue;
+                    }
+                    InfoRecognizer.b.b(-305);
+                  }
+                  k = 1;
+                  j = 0;
                 }
               }
             }
-          }
-          for (;;)
-          {
-            k = j;
-            if (j == 0) {
-              break label890;
+            if (k == 0) {
+              continue;
             }
-            if ((i2 != 3) || (n != 2)) {
-              break label843;
-            }
-            if (!InfoRecognizer.f)
+            if ((i2 == 3) && (m == 2))
             {
-              localObject = VoiceRecordState.Complete;
-              InfoRecognizer.b.a((VoiceRecordState)localObject);
+              if (!InfoRecognizer.f)
+              {
+                localObject3 = VoiceRecordState.Complete;
+                InfoRecognizer.b.a((VoiceRecordState)localObject3);
+              }
+              LogTool.d("speaking stop");
+              ((LinkedList)localObject1).clear();
+              if (!InfoRecognizer.f)
+              {
+                localObject1 = new a((byte[])localObject2, InnerAudioState.stop);
+                ((a)localObject1).c = i1;
+                if (!this.g.a((a)localObject1)) {
+                  InfoRecognizer.b.b(-305);
+                }
+              }
+              else
+              {
+                localObject3 = new a((byte[])localObject2, InnerAudioState.end);
+                ((a)localObject3).c = i1;
+                if (!this.g.a((a)localObject3))
+                {
+                  InfoRecognizer.b.b(-305);
+                }
+                else
+                {
+                  i = 0;
+                  continue;
+                }
+              }
             }
-            k = 0;
-            LogTool.d("speaking stop");
-            locala.clear();
-            if (InfoRecognizer.f) {
-              break label798;
+            else
+            {
+              localObject3 = new a((byte[])localObject2, InnerAudioState.middle);
+              ((a)localObject3).c = i1;
+              i = k;
+              if (this.g.a((a)localObject3)) {
+                continue;
+              }
+              InfoRecognizer.b.b(-305);
             }
-            locala = new a(arrayOfByte, InnerAudioState.stop);
-            locala.c = i1;
-            if (this.g.a(locala)) {
-              break;
-            }
-            InfoRecognizer.b.b(-305);
-            break;
-            if (!locala.isEmpty()) {
-              break label632;
-            }
-            j = m;
-            i = k;
           }
-          label798:
-          Object localObject = new a(arrayOfByte, InnerAudioState.end);
-          ((a)localObject).c = i1;
-          if (this.g.a((a)localObject)) {
-            break;
-          }
-          InfoRecognizer.b.b(-305);
-          continue;
-          label843:
-          localObject = new a(arrayOfByte, InnerAudioState.middle);
-          ((a)localObject).c = i1;
-          k = j;
-          if (this.g.a((a)localObject)) {
-            break;
-          }
-          InfoRecognizer.b.b(-305);
         }
+        this.f.Release();
       }
-      label890:
-      locala.add(arrayOfByte);
-      if (locala.size() > i3) {
-        locala.removeFirst();
+      catch (IllegalStateException localIllegalStateException1)
+      {
+        int i3;
+        Object localObject2;
+        int k;
+        int i;
+        int m;
+        int i2;
+        int i1;
+        continue;
       }
-      n = i2;
-      j = k;
+      try
+      {
+        this.c.stop();
+        this.c.release();
+        this.c = null;
+        return;
+      }
+      catch (IllegalStateException localIllegalStateException2)
+      {
+        continue;
+      }
+      InfoRecognizer.b.b(-306);
+      return;
+      i = k;
+      ((LinkedList)localObject1).add(localObject2);
+      if (((LinkedList)localObject1).size() > i3) {
+        ((LinkedList)localObject1).removeFirst();
+      }
+      m = i2;
       k = i1;
     }
+    InfoRecognizer.b.b(-302);
   }
 }
 

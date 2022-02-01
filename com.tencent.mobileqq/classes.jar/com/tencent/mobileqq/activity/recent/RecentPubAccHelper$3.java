@@ -32,7 +32,7 @@ class RecentPubAccHelper$3
   
   public void b(Object paramObject)
   {
-    RecentPubAccHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccHelper, 2131695222);
+    RecentPubAccHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccHelper, 2131695217);
   }
   
   public void b(boolean paramBoolean, Object paramObject)
@@ -42,7 +42,7 @@ class RecentPubAccHelper$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentPubAccHelper.3
  * JD-Core Version:    0.7.0.1
  */

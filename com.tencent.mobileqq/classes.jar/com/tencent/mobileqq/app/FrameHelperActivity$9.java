@@ -4,10 +4,10 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.onlinestatus.OnLineStatusPresenter.StatusInfoCallback;
+import com.tencent.mobileqq.onlinestatus.StatusInfoCallback;
 
 class FrameHelperActivity$9
-  implements OnLineStatusPresenter.StatusInfoCallback
+  implements StatusInfoCallback
 {
   FrameHelperActivity$9(FrameHelperActivity paramFrameHelperActivity) {}
   
@@ -33,7 +33,7 @@ class FrameHelperActivity$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.FrameHelperActivity.9
  * JD-Core Version:    0.7.0.1
  */

@@ -25,17 +25,19 @@ public class MenuUtil
       j = i;
       if ('\024' == paramString.charAt(i))
       {
+        int m = i + 1;
         j = i;
-        if (i + 1 < k)
+        if (m < k)
         {
           j = i;
-          if ('ÿ' == paramString.charAt(i + 1))
+          if ('ÿ' == paramString.charAt(m))
           {
+            m = i + 2;
             j = i;
-            if (i + 2 < k)
+            if (m < k)
             {
-              if (paramString.charAt(i + 2) == '\024') {
-                paramString.setCharAt(i + 2, 'ý');
+              if (paramString.charAt(m) == '\024') {
+                paramString.setCharAt(m, 'ý');
               }
               j = i + 4;
             }
@@ -65,7 +67,7 @@ public class MenuUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.textpreview.MenuUtil
  * JD-Core Version:    0.7.0.1
  */

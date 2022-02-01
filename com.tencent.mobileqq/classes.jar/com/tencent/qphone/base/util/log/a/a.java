@@ -36,22 +36,30 @@ public class a
   
   public static String a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 10)
     {
-    default: 
-      return "";
-    case 10: 
-      return "客户端收到Push请求";
-    case 11: 
+      if (paramInt != 11)
+      {
+        if (paramInt != 20)
+        {
+          if (paramInt != 30)
+          {
+            if (paramInt != 40)
+            {
+              if (paramInt != 41) {
+                return "";
+              }
+              return "日志文件过大";
+            }
+            return "日志上传完成";
+          }
+          return "日志压缩完成";
+        }
+        return "日志Check完成";
+      }
       return "重复请求";
-    case 20: 
-      return "日志Check完成";
-    case 30: 
-      return "日志压缩完成";
-    case 40: 
-      return "日志上传完成";
     }
-    return "日志文件过大";
+    return "客户端收到Push请求";
   }
   
   public static void a(String paramString)
@@ -90,37 +98,40 @@ public class a
     if (localObject == null)
     {
       QLog.d(a, 1, new Object[] { "changeEventStat find eventStr null, stat: ", Integer.valueOf(paramInt), ", reportId: ", paramString2 });
-      if ((paramInt == 40) || (paramInt == 41)) {
-        m = 50;
-      }
-    }
-    else
-    {
-      try
-      {
-        localObject = new JSONObject((String)localObject);
-        ((JSONObject)localObject).put("stat", m);
-        if ((m == 40) || (m == 41)) {
-          ((JSONObject)localObject).put("fileSize", parama.d);
-        }
-        if (parama.f)
-        {
-          ((JSONObject)localObject).put("endNet", NetConnInfoCenter.getSystemNetState());
-          a(paramString1, (JSONObject)localObject);
-          localSharedPreferences.edit().remove(paramString2).commit();
-        }
-        for (;;)
-        {
-          QLog.d(a, 1, "changeEventStat " + m + " " + paramString2);
-          return;
-          localSharedPreferences.edit().putString(paramString2, ((JSONObject)localObject).toString()).commit();
-        }
+      if ((paramInt != 40) && (paramInt != 41)) {
         return;
       }
-      catch (JSONException paramString1)
-      {
-        QLog.e(a, 1, "", paramString1);
+      m = 50;
+    }
+    try
+    {
+      localObject = new JSONObject((String)localObject);
+      ((JSONObject)localObject).put("stat", m);
+      if ((m == 40) || (m == 41)) {
+        ((JSONObject)localObject).put("fileSize", parama.d);
       }
+      if (parama.f)
+      {
+        ((JSONObject)localObject).put("endNet", NetConnInfoCenter.getSystemNetState());
+        a(paramString1, (JSONObject)localObject);
+        localSharedPreferences.edit().remove(paramString2).commit();
+      }
+      else
+      {
+        localSharedPreferences.edit().putString(paramString2, ((JSONObject)localObject).toString()).commit();
+      }
+      paramString1 = a;
+      parama = new StringBuilder();
+      parama.append("changeEventStat ");
+      parama.append(m);
+      parama.append(" ");
+      parama.append(paramString2);
+      QLog.d(paramString1, 1, parama.toString());
+      return;
+    }
+    catch (JSONException paramString1)
+    {
+      QLog.e(a, 1, "", paramString1);
     }
   }
   
@@ -140,7 +151,11 @@ public class a
       String str = MsfService.core.sender.b.m().toString();
       parama.put("isSSOConfIP", l.equals(str));
       paramString1.edit().putString(paramString2, parama.toString()).commit();
-      QLog.d(a, 1, "new LogEvent " + paramString2);
+      paramString1 = a;
+      parama = new StringBuilder();
+      parama.append("new LogEvent ");
+      parama.append(paramString2);
+      QLog.d(paramString1, 1, parama.toString());
       return;
     }
     catch (Exception paramString1)
@@ -151,54 +166,65 @@ public class a
   
   public static void a(String paramString, JSONObject paramJSONObject)
   {
-    int m = 0;
-    try
+    for (;;)
     {
-      if (paramJSONObject.has("stat")) {
+      try
+      {
+        if (!paramJSONObject.has("stat")) {
+          break label318;
+        }
         m = paramJSONObject.getInt("stat");
+        Object localObject = a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("reportLogEvent, ");
+        localStringBuilder.append(m);
+        QLog.d((String)localObject, 1, localStringBuilder.toString());
+        localObject = new HashMap();
+        if (paramString.equals(j))
+        {
+          ((HashMap)localObject).put("pmStat", String.valueOf(m));
+          if (paramJSONObject.has("uin")) {
+            ((HashMap)localObject).put("pmUin", String.valueOf(paramJSONObject.getString("uin")));
+          }
+          if (paramJSONObject.has("time")) {
+            ((HashMap)localObject).put("pmTime", String.valueOf(paramJSONObject.getLong("time")));
+          }
+          if (paramJSONObject.has("startNet")) {
+            ((HashMap)localObject).put("pmStartNet", String.valueOf(paramJSONObject.getInt("startNet")));
+          }
+          if (paramJSONObject.has("endNet")) {
+            ((HashMap)localObject).put("pmEndNet", String.valueOf(paramJSONObject.getInt("endNet")));
+          }
+          if (paramJSONObject.has("fileSize")) {
+            ((HashMap)localObject).put("pmFileSize", String.valueOf(paramJSONObject.getLong("fileSize")));
+          }
+          if (paramJSONObject.has("isSSOConfIP")) {
+            ((HashMap)localObject).put("pmSSOConfIP", String.valueOf(paramJSONObject.getBoolean("isSSOConfIP")));
+          }
+        }
+        if (MsfService.getCore().getStatReporter() != null)
+        {
+          MsfService.getCore().getStatReporter().a(paramString, true, 0L, 0L, (Map)localObject, false, false);
+          if ((QLog.isDebugVersion()) && (j.equals(paramString)))
+          {
+            MsfService.getCore().getStatReporter().a(k, true, 0L, 0L, (Map)localObject, false, false);
+            return;
+          }
+        }
       }
-      QLog.d(a, 1, "reportLogEvent, " + m);
-      HashMap localHashMap = new HashMap();
-      if (paramString.equals(j))
+      catch (JSONException paramString)
       {
-        localHashMap.put("pmStat", String.valueOf(m));
-        if (paramJSONObject.has("uin")) {
-          localHashMap.put("pmUin", String.valueOf(paramJSONObject.getString("uin")));
-        }
-        if (paramJSONObject.has("time")) {
-          localHashMap.put("pmTime", String.valueOf(paramJSONObject.getLong("time")));
-        }
-        if (paramJSONObject.has("startNet")) {
-          localHashMap.put("pmStartNet", String.valueOf(paramJSONObject.getInt("startNet")));
-        }
-        if (paramJSONObject.has("endNet")) {
-          localHashMap.put("pmEndNet", String.valueOf(paramJSONObject.getInt("endNet")));
-        }
-        if (paramJSONObject.has("fileSize")) {
-          localHashMap.put("pmFileSize", String.valueOf(paramJSONObject.getLong("fileSize")));
-        }
-        if (paramJSONObject.has("isSSOConfIP")) {
-          localHashMap.put("pmSSOConfIP", String.valueOf(paramJSONObject.getBoolean("isSSOConfIP")));
-        }
-      }
-      if (MsfService.getCore().getStatReporter() != null)
-      {
-        MsfService.getCore().getStatReporter().a(paramString, true, 0L, 0L, localHashMap, false, false);
-        if ((QLog.isDebugVersion()) && (j.equals(paramString))) {
-          MsfService.getCore().getStatReporter().a(k, true, 0L, 0L, localHashMap, false, false);
-        }
+        QLog.e(a, 1, "", paramString);
       }
       return;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e(a, 1, "", paramString);
+      label318:
+      int m = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qphone.base.util.log.a.a
  * JD-Core Version:    0.7.0.1
  */

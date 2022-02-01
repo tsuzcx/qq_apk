@@ -8,10 +8,10 @@ public class QQFilterLogManager
 {
   public static String TAG = "QQFilterLog";
   public static boolean isEnable = false;
-  public static long mFilterStartTime;
-  public static long mOnDrawFrameStartTime;
-  public static long mOnOldDrawFrameStartTime;
-  public static long mPTVStartTime;
+  public static long mFilterStartTime = 0L;
+  public static long mOnDrawFrameStartTime = 0L;
+  public static long mOnOldDrawFrameStartTime = 0L;
+  public static long mPTVStartTime = 0L;
   public static long mPrintLogOverTime = 80L;
   public static long mPrintLogSpcingTime = 2000L;
   public static long mSpcingTime;
@@ -32,24 +32,50 @@ public class QQFilterLogManager
   public static void setLogEnd(String paramString)
   {
     long l = SystemClock.currentThreadTimeMillis() - mStartTime;
-    if ((SLog.isEnable()) && (isEnable)) {
-      SLog.d(TAG, "QQFilterRenderManager 生命周期结束耗时 [" + paramString + " 毫秒=" + l + "ms 微秒=" + l * 1000L + "us]");
+    if ((SLog.isEnable()) && (isEnable))
+    {
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("QQFilterRenderManager 生命周期结束耗时 [");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" 毫秒=");
+      localStringBuilder.append(l);
+      localStringBuilder.append("ms 微秒=");
+      localStringBuilder.append(l * 1000L);
+      localStringBuilder.append("us]");
+      SLog.d(str, localStringBuilder.toString());
     }
   }
   
   public static void setLogStart(String paramString)
   {
     mStartTime = SystemClock.currentThreadTimeMillis();
-    if ((SLog.isEnable()) && (isEnable)) {
-      SLog.d(TAG, "QQFilterRenderManager 生命周期开始 [" + paramString + "]");
+    if ((SLog.isEnable()) && (isEnable))
+    {
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("QQFilterRenderManager 生命周期开始 [");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("]");
+      SLog.d(str, localStringBuilder.toString());
     }
   }
   
   public static void setOnDrawFilterEnd(String paramString)
   {
     long l = SystemClock.currentThreadTimeMillis() - mFilterStartTime;
-    if (((SLog.isEnable()) && (isEnable)) || ((SLog.isEnable()) && (isRenderOverTime(l)))) {
-      SLog.d(TAG, "QQFilterRenderManager_渲染item耗时:[" + paramString + " 毫秒=" + l + "ms 微秒=" + l * 1000L + "us]");
+    if (((SLog.isEnable()) && (isEnable)) || ((SLog.isEnable()) && (isRenderOverTime(l))))
+    {
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("QQFilterRenderManager_渲染item耗时:[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" 毫秒=");
+      localStringBuilder.append(l);
+      localStringBuilder.append("ms 微秒=");
+      localStringBuilder.append(l * 1000L);
+      localStringBuilder.append("us]");
+      SLog.d(str, localStringBuilder.toString());
     }
   }
   
@@ -61,8 +87,16 @@ public class QQFilterLogManager
   public static void setOnDrawFrameEnd()
   {
     long l = SystemClock.currentThreadTimeMillis() - mOnDrawFrameStartTime;
-    if ((SLog.isEnable()) && (isEnable)) {
-      SLog.w(TAG, "QQFilterRenderManager_一帧结束 总耗时[ 毫秒=" + l + "ms 微秒=" + 1000L * l + "us]");
+    if ((SLog.isEnable()) && (isEnable))
+    {
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("QQFilterRenderManager_一帧结束 总耗时[ 毫秒=");
+      localStringBuilder.append(l);
+      localStringBuilder.append("ms 微秒=");
+      localStringBuilder.append(1000L * l);
+      localStringBuilder.append("us]");
+      SLog.w(str, localStringBuilder.toString());
     }
     if (QmcfManager.getInstance().isQmcfWork()) {
       QmcfManager.getInstance().updateQmcfFrameConsume(l);
@@ -77,21 +111,30 @@ public class QQFilterLogManager
       isEnable = true;
       mSpcingTime = mOnDrawFrameStartTime;
     }
-    for (;;)
+    else
     {
-      if ((SLog.isEnable()) && (isEnable)) {
-        SLog.w(TAG, "QQFilterRenderManager 一帧开始");
-      }
-      return;
       isEnable = false;
+    }
+    if ((SLog.isEnable()) && (isEnable)) {
+      SLog.w(TAG, "QQFilterRenderManager 一帧开始");
     }
   }
   
   public static void setPTVEnd(String paramString)
   {
     long l = SystemClock.currentThreadTimeMillis() - mPTVStartTime;
-    if ((SLog.isEnable()) && (isEnable)) {
-      SLog.d(TAG, "QQFilterRenderManager 挂件：  [" + paramString + " 毫秒=" + l + "ms 微秒=" + l * 1000L + "us]");
+    if ((SLog.isEnable()) && (isEnable))
+    {
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("QQFilterRenderManager 挂件：  [");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" 毫秒=");
+      localStringBuilder.append(l);
+      localStringBuilder.append("ms 微秒=");
+      localStringBuilder.append(l * 1000L);
+      localStringBuilder.append("us]");
+      SLog.d(str, localStringBuilder.toString());
     }
   }
   
@@ -102,7 +145,7 @@ public class QQFilterLogManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQFilterLogManager
  * JD-Core Version:    0.7.0.1
  */

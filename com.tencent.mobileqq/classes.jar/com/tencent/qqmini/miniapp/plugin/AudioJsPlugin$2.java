@@ -23,21 +23,17 @@ class AudioJsPlugin$2
       localJSONObject.put("currentTime", d);
       localJSONObject.put("paused", bool);
       localJSONObject.put("buffered", i);
-      this.val$req.ok(localJSONObject);
-      return;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    this.val$req.ok(localJSONObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.AudioJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

@@ -12,9 +12,7 @@ class QZoneShareActivity$17
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 0) {
       return;
     }
     QZoneShareActivity.access$800(this.this$0, this.val$activity, this.val$shareData, false);
@@ -24,7 +22,7 @@ class QZoneShareActivity$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.share.QZoneShareActivity.17
  * JD-Core Version:    0.7.0.1
  */

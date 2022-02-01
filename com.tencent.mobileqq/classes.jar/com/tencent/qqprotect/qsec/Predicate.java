@@ -13,18 +13,19 @@ public class Predicate
   
   public Predicate(JSONObject paramJSONObject)
   {
-    if (paramJSONObject != null) {}
-    try
-    {
-      this.a = paramJSONObject.getString("name");
-      this.b = paramJSONObject.getString("op");
-      this.c = paramJSONObject.getString("val");
-      this.d = paramJSONObject.getString("act");
-      return;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
+    if (paramJSONObject != null) {
+      try
+      {
+        this.a = paramJSONObject.getString("name");
+        this.b = paramJSONObject.getString("op");
+        this.c = paramJSONObject.getString("val");
+        this.d = paramJSONObject.getString("act");
+        return;
+      }
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+      }
     }
   }
   
@@ -35,210 +36,164 @@ public class Predicate
   
   public boolean a(Object paramObject)
   {
-    boolean bool2 = true;
+    boolean bool3 = false;
     for (;;)
     {
       try
       {
         paramObject = FieldHelper.b(paramObject, this.a);
-        if (paramObject == null) {
-          break label668;
-        }
-        if ((paramObject.getClass() == Integer.TYPE) || (paramObject.getClass() == Integer.class) || (paramObject.getClass() == Long.TYPE) || (paramObject.getClass() == Long.class))
+        boolean bool2 = bool3;
+        if (paramObject != null)
         {
-          paramObject = (Integer)paramObject;
-          if (this.b.equalsIgnoreCase("less"))
+          Class localClass1 = paramObject.getClass();
+          Class localClass2 = Integer.TYPE;
+          if ((localClass1 != localClass2) && (paramObject.getClass() != Integer.class) && (paramObject.getClass() != Long.TYPE) && (paramObject.getClass() != Long.class))
           {
-            if (paramObject.intValue() >= Integer.parseInt(this.c)) {
-              break label672;
-            }
-            bool1 = true;
-            if (!this.d.equalsIgnoreCase("exc")) {
+            if ((paramObject.getClass() != String.class) && (paramObject.getClass() != CharSequence.class)) {
               break label660;
             }
-            if (!bool1)
+            paramObject = (String)paramObject;
+            if (this.b.equalsIgnoreCase("less"))
             {
-              bool1 = bool2;
-              break label670;
+              if (paramObject.compareToIgnoreCase(this.c) >= 0) {
+                break label660;
+              }
+              break label655;
+            }
+            if (this.b.equalsIgnoreCase("more"))
+            {
+              if (paramObject.compareToIgnoreCase(this.c) <= 0) {
+                break label660;
+              }
+              break label655;
+            }
+            if (this.b.equalsIgnoreCase("is"))
+            {
+              bool1 = paramObject.equalsIgnoreCase(this.c);
+            }
+            else if (this.b.equalsIgnoreCase("not"))
+            {
+              bool1 = paramObject.equalsIgnoreCase(this.c) ^ true;
+            }
+            else if (this.b.equalsIgnoreCase("has"))
+            {
+              bool1 = paramObject.contains(this.c);
+            }
+            else if (this.b.equalsIgnoreCase("begins"))
+            {
+              bool1 = paramObject.startsWith(this.c);
+            }
+            else if (this.b.equalsIgnoreCase("ends"))
+            {
+              bool1 = paramObject.endsWith(this.c);
+            }
+            else
+            {
+              if (!this.b.equalsIgnoreCase("rem")) {
+                break label660;
+              }
+              bool1 = Pattern.matches(this.c, paramObject);
             }
           }
           else
           {
+            paramObject = (Integer)paramObject;
+            if (this.b.equalsIgnoreCase("less"))
+            {
+              if (paramObject.intValue() >= Integer.parseInt(this.c)) {
+                break label660;
+              }
+              break label655;
+            }
             if (this.b.equalsIgnoreCase("more"))
             {
               if (paramObject.intValue() <= Integer.parseInt(this.c)) {
-                break label677;
+                break label660;
               }
-              bool1 = true;
-              continue;
+              break label655;
             }
             if (this.b.equalsIgnoreCase("is"))
             {
               if (paramObject.intValue() != Integer.parseInt(this.c)) {
-                break label682;
+                break label660;
               }
-              bool1 = true;
-              continue;
+              break label655;
             }
             if (this.b.equalsIgnoreCase("not"))
             {
               if (paramObject.intValue() == Integer.parseInt(this.c)) {
-                break label687;
+                break label660;
               }
-              bool1 = true;
-              continue;
+              break label655;
             }
             if (this.b.equalsIgnoreCase("and"))
             {
               if ((paramObject.intValue() & Integer.parseInt(this.c)) == 0) {
-                break label692;
+                break label660;
               }
-              bool1 = true;
-              continue;
+              break label655;
             }
             if (this.b.equalsIgnoreCase("or"))
             {
               if ((paramObject.intValue() | Integer.parseInt(this.c)) == 0) {
-                break label697;
+                break label660;
               }
-              bool1 = true;
-              continue;
+              break label655;
             }
             if (this.b.equalsIgnoreCase("xor"))
             {
               if ((paramObject.intValue() ^ Integer.parseInt(this.c)) == 0) {
-                break label702;
+                break label660;
               }
-              bool1 = true;
-              continue;
+              break label655;
             }
-            if (this.b.equalsIgnoreCase("begins"))
+            bool1 = this.b.equalsIgnoreCase("begins");
+            if (bool1)
             {
               bool1 = String.format("%d", new Object[] { Integer.valueOf(paramObject.intValue()) }).startsWith(this.c);
-              continue;
             }
-            if (this.b.equalsIgnoreCase("ends"))
+            else if (this.b.equalsIgnoreCase("ends"))
             {
               bool1 = String.format("%d", new Object[] { Integer.valueOf(paramObject.intValue()) }).endsWith(this.c);
-              continue;
             }
-            if (!this.b.equalsIgnoreCase("rem")) {
-              break label663;
+            else
+            {
+              if (!this.b.equalsIgnoreCase("rem")) {
+                break label660;
+              }
+              bool1 = Pattern.matches(this.c, String.format("%d", new Object[] { Integer.valueOf(paramObject.intValue()) }));
             }
-            bool1 = Pattern.matches(this.c, String.format("%d", new Object[] { Integer.valueOf(paramObject.intValue()) }));
-            continue;
+          }
+          bool2 = this.d.equalsIgnoreCase("exc");
+          if (bool2)
+          {
+            bool2 = bool3;
+            if (!bool1) {
+              return true;
+            }
+          }
+          else
+          {
+            bool2 = bool1;
           }
         }
-        else
-        {
-          if ((paramObject.getClass() != String.class) && (paramObject.getClass() != CharSequence.class)) {
-            break label663;
-          }
-          paramObject = (String)paramObject;
-          if (this.b.equalsIgnoreCase("less"))
-          {
-            if (paramObject.compareToIgnoreCase(this.c) >= 0) {
-              break label707;
-            }
-            bool1 = true;
-            continue;
-          }
-          if (this.b.equalsIgnoreCase("more"))
-          {
-            if (paramObject.compareToIgnoreCase(this.c) <= 0) {
-              break label712;
-            }
-            bool1 = true;
-            continue;
-          }
-          if (this.b.equalsIgnoreCase("is"))
-          {
-            bool1 = paramObject.equalsIgnoreCase(this.c);
-            continue;
-          }
-          if (this.b.equalsIgnoreCase("not"))
-          {
-            if (paramObject.equalsIgnoreCase(this.c)) {
-              break label717;
-            }
-            bool1 = true;
-            continue;
-          }
-          if (this.b.equalsIgnoreCase("has"))
-          {
-            bool1 = paramObject.contains(this.c);
-            continue;
-          }
-          if (this.b.equalsIgnoreCase("begins"))
-          {
-            bool1 = paramObject.startsWith(this.c);
-            continue;
-          }
-          if (this.b.equalsIgnoreCase("ends"))
-          {
-            bool1 = paramObject.endsWith(this.c);
-            continue;
-          }
-          if (!this.b.equalsIgnoreCase("rem")) {
-            break label663;
-          }
-          bool1 = Pattern.matches(this.c, paramObject);
-          continue;
-        }
-        bool1 = false;
+        return bool2;
       }
-      catch (Exception paramObject)
+      catch (IllegalArgumentException|Exception paramObject)
       {
         return false;
       }
-      catch (IllegalArgumentException paramObject)
-      {
-        return false;
-      }
+      label655:
+      boolean bool1 = true;
+      continue;
       label660:
-      break label670;
-      label663:
-      boolean bool1 = false;
-      continue;
-      label668:
-      bool1 = false;
-      label670:
-      return bool1;
-      label672:
-      bool1 = false;
-      continue;
-      label677:
-      bool1 = false;
-      continue;
-      label682:
-      bool1 = false;
-      continue;
-      label687:
-      bool1 = false;
-      continue;
-      label692:
-      bool1 = false;
-      continue;
-      label697:
-      bool1 = false;
-      continue;
-      label702:
-      bool1 = false;
-      continue;
-      label707:
-      bool1 = false;
-      continue;
-      label712:
-      bool1 = false;
-      continue;
-      label717:
       bool1 = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.Predicate
  * JD-Core Version:    0.7.0.1
  */

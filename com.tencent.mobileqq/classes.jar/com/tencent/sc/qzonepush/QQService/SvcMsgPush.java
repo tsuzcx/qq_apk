@@ -15,16 +15,6 @@ public final class SvcMsgPush
   public int iUnread = 0;
   public ArrayList<SvcMsgInfo> vecMsgInfos = null;
   
-  static
-  {
-    if (!SvcMsgPush.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public SvcMsgPush() {}
   
   public SvcMsgPush(byte paramByte, int paramInt, ArrayList<SvcMsgInfo> paramArrayList)
@@ -41,18 +31,17 @@ public final class SvcMsgPush
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -91,7 +80,7 @@ public final class SvcMsgPush
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.sc.qzonepush.QQService.SvcMsgPush
  * JD-Core Version:    0.7.0.1
  */

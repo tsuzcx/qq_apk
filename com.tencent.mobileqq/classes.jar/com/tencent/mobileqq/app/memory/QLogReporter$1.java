@@ -24,147 +24,158 @@ class QLogReporter$1
   
   public void run()
   {
-    String str1;
-    Object localObject4;
-    long l;
-    Object localObject5;
-    int i;
-    Object localObject3;
-    Object localObject6;
-    Object localObject7;
     for (;;)
     {
+      int i;
+      int j;
       try
       {
-        str1 = Environment.getExternalStorageDirectory().getPath() + "/tencent/msflogs/" + "com.tencent.mobileqq".replace(".", "/") + "/";
-        Object localObject1 = new File(str1);
-        if (!((File)localObject1).exists()) {
-          break label718;
-        }
-        if (!((File)localObject1).isDirectory()) {
-          return;
-        }
-        localObject4 = ((File)localObject1).list();
-        if ((localObject4 == null) || (localObject4.length == 0)) {
-          break label718;
-        }
-        l = System.currentTimeMillis() - 86400000L;
-        localObject1 = Calendar.getInstance();
-        ((Calendar)localObject1).setTimeInMillis(l);
-        localObject5 = QLogReporter.a.format(((Calendar)localObject1).getTime());
-        ((Calendar)localObject1).setTimeInMillis(l - 86400000L);
-        localObject1 = QLogReporter.a.format(((Calendar)localObject1).getTime());
-        i = 0;
-        if (i < localObject4.length)
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(Environment.getExternalStorageDirectory().getPath());
+        ((StringBuilder)localObject1).append("/tencent/msflogs/");
+        ((StringBuilder)localObject1).append("com.tencent.mobileqq".replace(".", "/"));
+        ((StringBuilder)localObject1).append("/");
+        String str1 = ((StringBuilder)localObject1).toString();
+        localObject1 = new File(str1);
+        if (((File)localObject1).exists())
         {
-          localObject3 = localObject4[i];
-          if (i != localObject4.length - 1) {
-            if (!((String)localObject3).contains((CharSequence)localObject1)) {
-              break label356;
-            }
+          if (!((File)localObject1).isDirectory()) {
+            return;
           }
-        }
-        else
-        {
-          localObject6 = new HashMap();
-          int k = localObject4.length;
-          i = 0;
-          if (i >= k) {
-            break label480;
-          }
-          localObject7 = localObject4[i];
-          if ((!localObject7.contains((CharSequence)localObject5)) || (!localObject7.contains("com.tencent.mobileqq"))) {
-            break label719;
-          }
-          if (localObject7.endsWith(".log")) {
-            break label718;
-          }
-          if (localObject7.contains("_")) {
-            break;
-          }
-          localObject3 = (List)((Map)localObject6).get("com.tencent.mobileqq");
-          localObject1 = localObject3;
-          if (localObject3 == null)
+          Object localObject3 = ((File)localObject1).list();
+          if (localObject3 != null)
           {
-            localObject1 = new LinkedList();
-            ((Map)localObject6).put("com.tencent.mobileqq", localObject1);
+            if (localObject3.length == 0) {
+              return;
+            }
+            long l = System.currentTimeMillis() - 86400000L;
+            localObject1 = Calendar.getInstance();
+            ((Calendar)localObject1).setTimeInMillis(l);
+            Object localObject4 = QLogReporter.a.format(((Calendar)localObject1).getTime());
+            ((Calendar)localObject1).setTimeInMillis(l - 86400000L);
+            localObject1 = QLogReporter.a.format(((Calendar)localObject1).getTime());
+            i = 0;
+            j = localObject3.length;
+            if (i < j)
+            {
+              localObject2 = localObject3[i];
+              if (i != localObject3.length - 1)
+              {
+                if (!((String)localObject2).contains((CharSequence)localObject1)) {
+                  break label759;
+                }
+              }
+              else
+              {
+                if (((String)localObject2).contains((CharSequence)localObject1)) {
+                  break label759;
+                }
+                localObject1 = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+                ((SharedPreferences.Editor)localObject1).putLong("LastLogSizeReportTime", this.jdField_a_of_type_Long);
+                ((SharedPreferences.Editor)localObject1).commit();
+                return;
+              }
+            }
+            Object localObject5 = new HashMap();
+            int k = localObject3.length;
+            i = 0;
+            if (i < k)
+            {
+              Object localObject6 = localObject3[i];
+              if ((!localObject6.contains((CharSequence)localObject4)) || (!localObject6.contains("com.tencent.mobileqq"))) {
+                break label773;
+              }
+              if (localObject6.endsWith(".log")) {
+                return;
+              }
+              if (!localObject6.contains("_"))
+              {
+                localObject2 = (List)((Map)localObject5).get("com.tencent.mobileqq");
+                localObject1 = localObject2;
+                if (localObject2 == null)
+                {
+                  localObject1 = new LinkedList();
+                  ((Map)localObject5).put("com.tencent.mobileqq", localObject1);
+                }
+                ((List)localObject1).add(localObject6);
+                break label773;
+              }
+              localObject2 = localObject6.split("\\.");
+              int m = localObject2.length;
+              j = 0;
+              if (j >= m) {
+                break label773;
+              }
+              localObject1 = localObject2[j];
+              if (!((String)localObject1).contains("_")) {
+                break label766;
+              }
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("com.tencent.");
+              ((StringBuilder)localObject2).append((String)localObject1);
+              String str2 = ((StringBuilder)localObject2).toString();
+              localObject2 = (List)((Map)localObject5).get(str2);
+              localObject1 = localObject2;
+              if (localObject2 == null)
+              {
+                localObject1 = new LinkedList();
+                ((Map)localObject5).put(str2, localObject1);
+              }
+              ((List)localObject1).add(localObject6);
+              break label773;
+            }
+            localObject1 = new HashMap();
+            Object localObject2 = ((Map)localObject5).entrySet().iterator();
+            if (((Iterator)localObject2).hasNext())
+            {
+              localObject3 = (Map.Entry)((Iterator)localObject2).next();
+              l = 0L;
+              localObject4 = ((List)((Map.Entry)localObject3).getValue()).iterator();
+              if (((Iterator)localObject4).hasNext())
+              {
+                localObject5 = new File(str1, (String)((Iterator)localObject4).next());
+                if ((!((File)localObject5).exists()) || (((File)localObject5).isDirectory())) {
+                  continue;
+                }
+                l += ((File)localObject5).length();
+                continue;
+              }
+              ((HashMap)localObject1).put(((Map.Entry)localObject3).getKey(), String.valueOf(l));
+              localObject4 = new StringBuilder();
+              ((StringBuilder)localObject4).append((String)((Map.Entry)localObject3).getKey());
+              ((StringBuilder)localObject4).append(" Yesterday log size is ");
+              ((StringBuilder)localObject4).append(l);
+              QLog.i("QLogReporter", 1, ((StringBuilder)localObject4).toString());
+              continue;
+            }
+            StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "YesterdayLogSizeCollection", true, 0L, 0L, (HashMap)localObject1, "");
+            localObject1 = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+            ((SharedPreferences.Editor)localObject1).putLong("LastLogSizeReportTime", this.jdField_a_of_type_Long);
+            ((SharedPreferences.Editor)localObject1).commit();
+            return;
           }
-          ((List)localObject1).add(localObject7);
-          break label719;
         }
-        if (!((String)localObject3).contains((CharSequence)localObject1))
-        {
-          localObject1 = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-          ((SharedPreferences.Editor)localObject1).putLong("LastLogSizeReportTime", this.jdField_a_of_type_Long);
-          ((SharedPreferences.Editor)localObject1).commit();
-          return;
-        }
+        return;
       }
       catch (Exception localException)
       {
         localException.printStackTrace();
         return;
       }
-      label356:
+      label759:
       i += 1;
-    }
-    Object localObject2 = localObject7.split("\\.");
-    int m = localObject2.length;
-    int j = 0;
-    for (;;)
-    {
-      if (j < m)
-      {
-        localObject3 = localObject2[j];
-        if (!((String)localObject3).contains("_")) {
-          break label726;
-        }
-        String str2 = "com.tencent." + (String)localObject3;
-        localObject3 = (List)((Map)localObject6).get(str2);
-        localObject2 = localObject3;
-        if (localObject3 == null)
-        {
-          localObject2 = new LinkedList();
-          ((Map)localObject6).put(str2, localObject2);
-        }
-        ((List)localObject2).add(localObject7);
-        break label719;
-        label480:
-        localObject2 = new HashMap();
-        localObject3 = ((Map)localObject6).entrySet().iterator();
-        while (((Iterator)localObject3).hasNext())
-        {
-          localObject4 = (Map.Entry)((Iterator)localObject3).next();
-          localObject5 = ((List)((Map.Entry)localObject4).getValue()).iterator();
-          for (l = 0L; ((Iterator)localObject5).hasNext(); l += ((File)localObject6).length())
-          {
-            label545:
-            localObject6 = new File(str1, (String)((Iterator)localObject5).next());
-            if ((!((File)localObject6).exists()) || (((File)localObject6).isDirectory())) {
-              break label545;
-            }
-          }
-          ((HashMap)localObject2).put(((Map.Entry)localObject4).getKey(), String.valueOf(l));
-          QLog.i("QLogReporter", 1, (String)((Map.Entry)localObject4).getKey() + " Yesterday log size is " + l);
-        }
-        StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "YesterdayLogSizeCollection", true, 0L, 0L, (HashMap)localObject2, "");
-        localObject2 = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-        ((SharedPreferences.Editor)localObject2).putLong("LastLogSizeReportTime", this.jdField_a_of_type_Long);
-        ((SharedPreferences.Editor)localObject2).commit();
-        label718:
-        return;
-      }
-      label719:
-      i += 1;
-      break;
-      label726:
+      continue;
+      label766:
       j += 1;
+      continue;
+      label773:
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.memory.QLogReporter.1
  * JD-Core Version:    0.7.0.1
  */

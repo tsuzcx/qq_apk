@@ -12,32 +12,37 @@ public final class NativeInvokeHelper
   {
     Object[] arrayOfObject = new Object[paramArrayOfType.length];
     int i = 0;
-    if (i < paramArrayOfType.length)
+    while (i < paramArrayOfType.length)
     {
       Type localType = paramArrayOfType[i];
-      if (i >= paramJSONArray.length()) {
+      if (i >= paramJSONArray.length())
+      {
         if (!localType.getClass().isPrimitive()) {
           arrayOfObject[i] = null;
+        } else {
+          throw new Exception("[prepareArguments] method argument list not match.");
         }
       }
-      for (;;)
+      else
       {
-        i += 1;
-        break;
-        throw new Exception("[prepareArguments] method argument list not match.");
         Object localObject = paramJSONArray.get(i);
         if (localType == JSONObject.class)
         {
-          if (((localObject instanceof JSONObject)) || (localObject == null)) {
+          if ((!(localObject instanceof JSONObject)) && (localObject != null))
+          {
+            if ((localObject instanceof String)) {
+              arrayOfObject[i] = new JSONObject(localObject.toString());
+            }
+          }
+          else {
             arrayOfObject[i] = localObject;
-          } else if ((localObject instanceof String)) {
-            arrayOfObject[i] = new JSONObject(localObject.toString());
           }
         }
         else {
           arrayOfObject[i] = VReflectionUtils.parseArgument(localType, localObject);
         }
       }
+      i += 1;
     }
     return arrayOfObject;
   }
@@ -55,7 +60,7 @@ public final class NativeInvokeHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.bridge.NativeInvokeHelper
  * JD-Core Version:    0.7.0.1
  */

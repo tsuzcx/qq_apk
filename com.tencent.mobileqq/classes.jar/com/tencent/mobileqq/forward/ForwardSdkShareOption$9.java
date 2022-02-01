@@ -19,26 +19,27 @@ class ForwardSdkShareOption$9
     {
       if (ForwardSdkShareOption.a(this.a))
       {
-        this.a.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
+        this.a.jdField_a_of_type_AndroidOsBundle.putString("uin", "-1010");
         this.a.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
         this.a.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", ForwardAbility.ForwardAbilityType.e.intValue());
-        this.a.m();
+        this.a.n();
       }
       StatisticCollector.getInstance(BaseApplication.getContext()).reportActionCountCliOper(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", "multi_account", "click_next", 0, 1, 0);
-    }
-    while (paramInt != 0) {
       return;
     }
-    paramDialogInterface = this.a.jdField_a_of_type_AndroidAppActivity;
-    Activity localActivity = this.a.jdField_a_of_type_AndroidAppActivity;
-    paramDialogInterface.setResult(0);
-    StatisticCollector.getInstance(BaseApplication.getContext()).reportActionCountCliOper(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", "multi_account", "click_cancel", 0, 1, 0);
-    this.a.jdField_a_of_type_AndroidAppActivity.finish();
+    if (paramInt == 0)
+    {
+      paramDialogInterface = this.a.jdField_a_of_type_AndroidAppActivity;
+      Activity localActivity = this.a.jdField_a_of_type_AndroidAppActivity;
+      paramDialogInterface.setResult(0);
+      StatisticCollector.getInstance(BaseApplication.getContext()).reportActionCountCliOper(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", "multi_account", "click_cancel", 0, 1, 0);
+      this.a.jdField_a_of_type_AndroidAppActivity.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSdkShareOption.9
  * JD-Core Version:    0.7.0.1
  */

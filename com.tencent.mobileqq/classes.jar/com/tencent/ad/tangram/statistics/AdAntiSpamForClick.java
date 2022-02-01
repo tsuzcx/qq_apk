@@ -54,16 +54,19 @@ public final class AdAntiSpamForClick
         if (this.videoPlayedDuration != -2147483648L) {
           localJSONObject.put("p", String.valueOf(this.videoPlayedDuration));
         }
-        if (!this.hasBeenPaused) {
-          continue;
+        boolean bool = this.hasBeenPaused;
+        String str2 = "1";
+        if (bool) {
+          str1 = "1";
+        } else {
+          str1 = "0";
         }
-        str = "1";
-        localJSONObject.put("f", str);
+        localJSONObject.put("f", str1);
         if (!this.hasShowCloseButton) {
-          continue;
+          break label440;
         }
-        str = "1";
-        localJSONObject.put("x", str);
+        str1 = str2;
+        localJSONObject.put("x", str1);
         i = AdUIUtils.px2dp(paramView.getContext(), paramView.getWidth());
         if (i != -2147483648) {
           localJSONObject.put("da", String.valueOf(i));
@@ -86,26 +89,24 @@ public final class AdAntiSpamForClick
       }
       catch (JSONException paramView)
       {
-        String str;
         paramView.printStackTrace();
-        continue;
       }
       if (localJSONObject.length() == 0) {
-        break;
+        return null;
       }
       return localJSONObject.toString();
-      str = "0";
-      continue;
-      str = "0";
+      label440:
+      String str1 = "0";
     }
   }
   
   public void onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramView == null) || (paramMotionEvent == null)) {}
-    do
+    if (paramView != null)
     {
-      return;
+      if (paramMotionEvent == null) {
+        return;
+      }
       if (paramMotionEvent.getAction() == 0)
       {
         this.actionDownTime = System.currentTimeMillis();
@@ -113,10 +114,13 @@ public final class AdAntiSpamForClick
         this.downTouchY = ((int)paramMotionEvent.getY());
         return;
       }
-    } while (paramMotionEvent.getAction() != 1);
-    this.actionUpTime = System.currentTimeMillis();
-    this.upTouchX = ((int)paramMotionEvent.getX());
-    this.upTouchY = ((int)paramMotionEvent.getY());
+      if (paramMotionEvent.getAction() == 1)
+      {
+        this.actionUpTime = System.currentTimeMillis();
+        this.upTouchX = ((int)paramMotionEvent.getX());
+        this.upTouchY = ((int)paramMotionEvent.getY());
+      }
+    }
   }
   
   public void setHasBeenPaused()

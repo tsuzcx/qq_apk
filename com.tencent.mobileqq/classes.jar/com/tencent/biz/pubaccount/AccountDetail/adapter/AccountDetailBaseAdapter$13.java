@@ -1,4 +1,4 @@
-package com.tencent.biz.pubaccount.AccountDetail.adapter;
+package com.tencent.biz.pubaccount.accountdetail.adapter;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -26,8 +26,12 @@ class AccountDetailBaseAdapter$13
     if (!this.a.f) {
       this.a.l();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailBaseAdapter", 2, "onLoadFailed ,cause = " + paramThrowable);
+    if (QLog.isColorLevel())
+    {
+      paramView = new StringBuilder();
+      paramView.append("onLoadFailed ,cause = ");
+      paramView.append(paramThrowable);
+      QLog.d("AccountDetailBaseAdapter", 2, paramView.toString());
     }
   }
   
@@ -41,23 +45,23 @@ class AccountDetailBaseAdapter$13
   
   public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    if (paramView == null) {}
-    do
-    {
+    if (paramView == null) {
       return;
-      this.a.k();
-      if ((paramView instanceof ImageView))
-      {
-        ((URLImageView)paramView).setImageDrawable(paramURLDrawable);
-        paramView.requestLayout();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("AccountDetailBaseAdapter", 2, "onLoadSuccessed");
+    }
+    this.a.k();
+    if ((paramView instanceof ImageView))
+    {
+      ((URLImageView)paramView).setImageDrawable(paramURLDrawable);
+      paramView.requestLayout();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailBaseAdapter", 2, "onLoadSuccessed");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter.13
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.adapter.AccountDetailBaseAdapter.13
  * JD-Core Version:    0.7.0.1
  */

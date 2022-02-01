@@ -28,7 +28,12 @@ public abstract class ResultCallbacks<R extends Result>
     }
     catch (Exception localException)
     {
-      HMSLog.w("ResultCallbacks", "Failed to release " + paramR + ", reason: " + localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Failed to release ");
+      localStringBuilder.append(paramR);
+      localStringBuilder.append(", reason: ");
+      localStringBuilder.append(localException);
+      HMSLog.w("ResultCallbacks", localStringBuilder.toString());
     }
   }
   
@@ -36,7 +41,7 @@ public abstract class ResultCallbacks<R extends Result>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.support.api.client.ResultCallbacks
  * JD-Core Version:    0.7.0.1
  */

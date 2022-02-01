@@ -23,74 +23,78 @@ class FileProvideHelper$SimplePathStrategy
   
   public Uri a(File paramFile)
   {
-    for (;;)
+    try
     {
-      String str1;
-      try
+      Object localObject2 = paramFile.getCanonicalPath();
+      paramFile = null;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+      while (localIterator.hasNext())
       {
-        str1 = paramFile.getCanonicalPath();
-        paramFile = null;
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-        if (localIterator.hasNext())
-        {
-          Map.Entry localEntry2 = (Map.Entry)localIterator.next();
-          String str2 = ((File)localEntry2.getValue()).getPath();
-          if (!str1.startsWith(str2)) {
-            break label277;
-          }
-          Map.Entry localEntry1 = localEntry2;
-          if (paramFile != null)
-          {
-            if (str2.length() <= ((File)paramFile.getValue()).getPath().length()) {
-              break label277;
-            }
-            localEntry1 = localEntry2;
-          }
-          paramFile = localEntry1;
-          continue;
-        }
-        if (paramFile != null) {
-          break label163;
+        localObject1 = (Map.Entry)localIterator.next();
+        String str = ((File)((Map.Entry)localObject1).getValue()).getPath();
+        if ((((String)localObject2).startsWith(str)) && ((paramFile == null) || (str.length() > ((File)paramFile.getValue()).getPath().length()))) {
+          paramFile = (File)localObject1;
         }
       }
-      catch (IOException localIOException)
+      if (paramFile != null)
       {
-        throw new IllegalArgumentException("Failed to resolve canonical path for " + paramFile);
-      }
-      throw new IllegalArgumentException("Failed to find configured root that contains " + str1);
-      label163:
-      Object localObject = ((File)paramFile.getValue()).getPath();
-      if (((String)localObject).endsWith("/")) {}
-      for (localObject = str1.substring(((String)localObject).length());; localObject = str1.substring(((String)localObject).length() + 1))
-      {
-        paramFile = Uri.encode((String)paramFile.getKey()) + '/' + Uri.encode((String)localObject, "/");
+        localObject1 = ((File)paramFile.getValue()).getPath();
+        if (((String)localObject1).endsWith("/")) {
+          localObject1 = ((String)localObject2).substring(((String)localObject1).length());
+        } else {
+          localObject1 = ((String)localObject2).substring(((String)localObject1).length() + 1);
+        }
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(Uri.encode((String)paramFile.getKey()));
+        ((StringBuilder)localObject2).append('/');
+        ((StringBuilder)localObject2).append(Uri.encode((String)localObject1, "/"));
+        paramFile = ((StringBuilder)localObject2).toString();
         return new Uri.Builder().scheme("content").authority(this.jdField_a_of_type_JavaLangString).encodedPath(paramFile).build();
       }
-      label277:
-      localObject = paramFile;
+      paramFile = new StringBuilder();
+      paramFile.append("Failed to find configured root that contains ");
+      paramFile.append((String)localObject2);
+      throw new IllegalArgumentException(paramFile.toString());
+    }
+    catch (IOException localIOException)
+    {
+      Object localObject1;
+      label254:
+      break label254;
+    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("Failed to resolve canonical path for ");
+    ((StringBuilder)localObject1).append(paramFile);
+    paramFile = new IllegalArgumentException(((StringBuilder)localObject1).toString());
+    for (;;)
+    {
+      throw paramFile;
     }
   }
   
   void a(String paramString, File paramFile)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      throw new IllegalArgumentException("Name must not be empty");
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        localObject = paramFile.getCanonicalFile();
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localObject);
+        return;
+      }
+      catch (IOException paramString)
+      {
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Failed to resolve canonical path for ");
+        ((StringBuilder)localObject).append(paramFile);
+        throw new IllegalArgumentException(((StringBuilder)localObject).toString(), paramString);
+      }
     }
-    try
-    {
-      File localFile = paramFile.getCanonicalFile();
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localFile);
-      return;
-    }
-    catch (IOException paramString)
-    {
-      throw new IllegalArgumentException("Failed to resolve canonical path for " + paramFile, paramString);
-    }
+    throw new IllegalArgumentException("Name must not be empty");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.common.FileProvideHelper.SimplePathStrategy
  * JD-Core Version:    0.7.0.1
  */

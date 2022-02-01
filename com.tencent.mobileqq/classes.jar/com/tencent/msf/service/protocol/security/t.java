@@ -6,25 +6,12 @@ public final class t
   implements Serializable
 {
   public static final int a = 0;
-  public static final t b;
+  public static final t b = new t(0, 0, "VPIC_TYPE_URL");
   public static final int c = 1;
-  public static final t d;
-  private static t[] f;
+  public static final t d = new t(1, 1, "VPIC_TYPE_BIN");
+  private static t[] f = new t[2];
   private int g;
   private String h = new String();
-  
-  static
-  {
-    if (!t.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      e = bool;
-      f = new t[2];
-      b = new t(0, 0, "VPIC_TYPE_URL");
-      d = new t(1, 1, "VPIC_TYPE_BIN");
-      return;
-    }
-  }
   
   private t(int paramInt1, int paramInt2, String paramString)
   {
@@ -36,33 +23,49 @@ public final class t
   public static t a(int paramInt)
   {
     int i = 0;
-    while (i < f.length)
+    for (;;)
     {
-      if (f[i].a() == paramInt) {
+      localObject = f;
+      if (i >= localObject.length) {
+        break;
+      }
+      if (localObject[i].a() == paramInt) {
         return f[i];
       }
       i += 1;
     }
-    if (!e) {
-      throw new AssertionError();
+    if (e) {
+      return null;
     }
-    return null;
+    Object localObject = new AssertionError();
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
   }
   
   public static t a(String paramString)
   {
     int i = 0;
-    while (i < f.length)
+    for (;;)
     {
-      if (f[i].toString().equals(paramString)) {
+      t[] arrayOft = f;
+      if (i >= arrayOft.length) {
+        break;
+      }
+      if (arrayOft[i].toString().equals(paramString)) {
         return f[i];
       }
       i += 1;
     }
-    if (!e) {
-      throw new AssertionError();
+    if (e) {
+      return null;
     }
-    return null;
+    paramString = new AssertionError();
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   public int a()
@@ -77,7 +80,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.msf.service.protocol.security.t
  * JD-Core Version:    0.7.0.1
  */

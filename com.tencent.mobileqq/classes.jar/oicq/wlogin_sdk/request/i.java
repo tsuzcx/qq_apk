@@ -25,7 +25,11 @@ public class i
       boolean bool = paramHttpURLConnection.a();
       return bool;
     }
-    catch (Throwable paramHttpURLConnection) {}
+    catch (Throwable paramHttpURLConnection)
+    {
+      label37:
+      break label37;
+    }
     return false;
   }
   
@@ -50,7 +54,7 @@ public class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.request.i
  * JD-Core Version:    0.7.0.1
  */

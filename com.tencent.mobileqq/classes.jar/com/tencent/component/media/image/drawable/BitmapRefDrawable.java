@@ -12,7 +12,11 @@ public class BitmapRefDrawable
   
   public BitmapRefDrawable() {}
   
-  public BitmapRefDrawable(BitmapReference paramBitmapReference) {}
+  public BitmapRefDrawable(BitmapReference paramBitmapReference)
+  {
+    super(localBitmap);
+    this.mBitmapRef = paramBitmapReference;
+  }
   
   public BitmapReference getBitmapRef()
   {
@@ -21,8 +25,9 @@ public class BitmapRefDrawable
   
   public boolean isMulible()
   {
-    if (this.mBitmapRef != null) {
-      return this.mBitmapRef.isMutable();
+    BitmapReference localBitmapReference = this.mBitmapRef;
+    if (localBitmapReference != null) {
+      return localBitmapReference.isMutable();
     }
     return false;
   }
@@ -34,7 +39,7 @@ public class BitmapRefDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.image.drawable.BitmapRefDrawable
  * JD-Core Version:    0.7.0.1
  */

@@ -16,22 +16,19 @@ class QSecFramework$4
         QLog.d("QSecFramework", 2, String.format("Native msg, cookie: %08X, delay: %d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
       }
       paramObject1 = String.valueOf(paramLong1);
-      if (paramLong2 == 0L) {
-        break label84;
+      if (paramLong2 != 0L)
+      {
+        QSecFramework.a(this.a).sendMessageDelayed(QSecFramework.a(this.a).obtainMessage(1, paramObject1), paramLong2 * 1000L);
+        return 0;
       }
-      QSecFramework.a(this.a).sendMessageDelayed(QSecFramework.a(this.a).obtainMessage(1, paramObject1), 1000L * paramLong2);
-    }
-    for (;;)
-    {
-      return 0;
-      label84:
       QSecFramework.a(this.a).sendMessage(QSecFramework.a(this.a).obtainMessage(1, paramObject1));
     }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.QSecFramework.4
  * JD-Core Version:    0.7.0.1
  */

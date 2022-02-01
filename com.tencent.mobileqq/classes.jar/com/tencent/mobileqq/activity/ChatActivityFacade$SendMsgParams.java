@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity;
 
 import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
+import com.tencent.mobileqq.emoticon.StickerInfo;
 
 public class ChatActivityFacade$SendMsgParams
 {
   public int a;
   public long a;
   public MessageForReplyText.SourceMsgInfo a;
-  public EmojiStickerManager.StickerInfo a;
+  public StickerInfo a;
   public String a;
   public boolean a;
   public int b;
@@ -47,7 +47,7 @@ public class ChatActivityFacade$SendMsgParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.SendMsgParams
  * JD-Core Version:    0.7.0.1
  */

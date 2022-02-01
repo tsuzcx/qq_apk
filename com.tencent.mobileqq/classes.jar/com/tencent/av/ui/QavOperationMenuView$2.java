@@ -9,7 +9,7 @@ class QavOperationMenuView$2
   
   public void run()
   {
-    if ((!QavOperationMenuView.a(this.this$0)) && (QavOperationMenuView.a(this.this$0, 2131695335)))
+    if ((!QavOperationMenuView.a(this.this$0)) && (QavOperationMenuView.a(this.this$0, 2131695345)))
     {
       AVUtil.a("0X800AF84", AVUtil.a(), 0, "", "", "", "");
       QavOperationMenuView.a(this.this$0, true);
@@ -18,7 +18,7 @@ class QavOperationMenuView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.QavOperationMenuView.2
  * JD-Core Version:    0.7.0.1
  */

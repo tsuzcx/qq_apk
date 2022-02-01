@@ -10,10 +10,15 @@ public class LocalManagerApiImpl
   {
     return LocaleManager.a();
   }
+  
+  public boolean isLocaleUpdatedByUser()
+  {
+    return LocaleManager.c();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qqcommon.api.impl.LocalManagerApiImpl
  * JD-Core Version:    0.7.0.1
  */

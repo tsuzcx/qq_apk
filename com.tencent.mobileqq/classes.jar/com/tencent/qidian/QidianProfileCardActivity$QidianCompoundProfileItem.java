@@ -30,34 +30,19 @@ public class QidianProfileCardActivity$QidianCompoundProfileItem
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int i = 1;
     paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
     paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
     paramParcel.writeString(this.c);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      paramInt = 1;
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeInt(this.jdField_a_of_type_Int);
-      if (!this.jdField_b_of_type_Boolean) {
-        break label86;
-      }
-    }
-    label86:
-    for (paramInt = i;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeString(this.d);
-      paramParcel.writeString(this.e);
-      return;
-      paramInt = 0;
-      break;
-    }
+    paramParcel.writeByte((byte)this.jdField_a_of_type_Boolean);
+    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeByte((byte)this.jdField_b_of_type_Boolean);
+    paramParcel.writeString(this.d);
+    paramParcel.writeString(this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.QidianCompoundProfileItem
  * JD-Core Version:    0.7.0.1
  */

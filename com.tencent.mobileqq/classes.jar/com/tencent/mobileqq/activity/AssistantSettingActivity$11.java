@@ -13,14 +13,15 @@ class AssistantSettingActivity$11
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    AssistantSettingActivity.a(this.a, this.a.g.a(), paramBoolean);
+    AssistantSettingActivity localAssistantSettingActivity = this.a;
+    AssistantSettingActivity.a(localAssistantSettingActivity, localAssistantSettingActivity.g.a(), paramBoolean);
     AssistantSettingActivity.a(this.a).a(paramBoolean, true);
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssistantSettingActivity.11
  * JD-Core Version:    0.7.0.1
  */

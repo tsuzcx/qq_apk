@@ -19,6 +19,7 @@ import com.tencent.biz.pubaccount.weishi_new.config.WSGlobalConfig;
 import com.tencent.biz.pubaccount.weishi_new.data.WSUserBusiness;
 import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
 import com.tencent.biz.pubaccount.weishi_new.download.WeishiDownloadUtil;
+import com.tencent.biz.pubaccount.weishi_new.image.WSPicLoader;
 import com.tencent.biz.pubaccount.weishi_new.miniapp.WSMiniAppHelper;
 import com.tencent.biz.pubaccount.weishi_new.report.UserActionReportPresenter;
 import com.tencent.biz.pubaccount.weishi_new.util.WSFeedUtils;
@@ -26,6 +27,7 @@ import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiScehmeUtil;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiUIUtil;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageContract.Presenter;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalItemData;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.report.WSVerticalBeaconReport;
@@ -33,7 +35,6 @@ import com.tencent.biz.pubaccount.weishi_new.verticalvideo.utils.WSVerticalUtils
 import com.tencent.biz.pubaccount.weishi_new.view.WSRoundedImageView;
 import com.tencent.biz.qqstory.utils.WeishiGuideUtils;
 import com.tencent.open.base.ToastUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class WSVerticalItemTopController
   extends AbsWsUIGroup<WSVerticalItemData>
@@ -65,7 +66,12 @@ public class WSVerticalItemTopController
       return;
     }
     int i = paramstSimpleMetaPerson.followStatus;
-    WSLog.d("WSVerticalItemTopController", "followStatus:" + i + ",personInfo hashCode:" + paramstSimpleMetaPerson.hashCode());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("followStatus:");
+    localStringBuilder.append(i);
+    localStringBuilder.append(",personInfo hashCode:");
+    localStringBuilder.append(paramstSimpleMetaPerson.hashCode());
+    WSLog.d("WSVerticalItemTopController", localStringBuilder.toString());
     if (WSFeedUtils.a(paramstSimpleMetaPerson.followStatus))
     {
       this.b.setVisibility(8);
@@ -80,128 +86,159 @@ public class WSVerticalItemTopController
     if (paramstSimpleMetaPerson != null)
     {
       paramstSimpleMetaPerson = paramstSimpleMetaPerson.avatarSchema;
-      if (paramstSimpleMetaPerson != null) {
-        switch (paramstSimpleMetaPerson.type)
+      if (paramstSimpleMetaPerson != null)
+      {
+        int i = paramstSimpleMetaPerson.type;
+        Object localObject1;
+        Object localObject2;
+        if (i != 1)
         {
+          if (i != 2)
+          {
+            if (i == 3)
+            {
+              paramstSimpleMetaPerson = paramstSimpleMetaPerson.H5Url;
+              WeishiActivityHelper.a(this.jdField_a_of_type_AndroidContentContext, paramstSimpleMetaPerson);
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("h5Url is :");
+              ((StringBuilder)localObject1).append(paramstSimpleMetaPerson);
+              WSLog.d("weishi", ((StringBuilder)localObject1).toString());
+              c(1000004);
+            }
+          }
+          else
+          {
+            paramstSimpleMetaPerson = paramstSimpleMetaPerson.schema;
+            i = WSGlobalConfig.a().a();
+            if (WeishiGuideUtils.a(this.jdField_a_of_type_AndroidContentContext))
+            {
+              WeishiScehmeUtil.a(this.jdField_a_of_type_AndroidContentContext, "biz_src_jc_gzh_weishi", paramstSimpleMetaPerson, 1, i, 1);
+              c(1000003);
+            }
+            else
+            {
+              localObject1 = new WSDownloadParams();
+              ((WSDownloadParams)localObject1).mScene = WSVerticalUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a());
+              ((WSDownloadParams)localObject1).mLinkStrategyType = i;
+              ((WSDownloadParams)localObject1).mEventId = 1;
+              ((WSDownloadParams)localObject1).mTestId = WeishiUtils.a(2);
+              localObject2 = UserActionReportPresenter.a();
+              ((stReportItem)localObject2).pagetype = 2;
+              ((stReportItem)localObject2).optype = 115;
+              ((WSDownloadParams)localObject1).mStReportItem = ((stReportItem)localObject2);
+              ((WSDownloadParams)localObject1).mScheme = paramstSimpleMetaPerson;
+              WeishiDownloadUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.getBaseActivity(), (WSDownloadParams)localObject1, false);
+              c(1000002);
+            }
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("schema is :");
+            ((StringBuilder)localObject1).append(paramstSimpleMetaPerson);
+            WSLog.d("weishi", ((StringBuilder)localObject1).toString());
+          }
+        }
+        else
+        {
+          localObject1 = paramstSimpleMetaPerson.miniAppSchema;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("miniShema is :");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          WSLog.d("weishi", ((StringBuilder)localObject2).toString());
+          WSMiniAppHelper.a().a(this.jdField_a_of_type_AndroidContentContext, paramstSimpleMetaPerson.miniAppSchema);
+          c(1000001);
         }
       }
     }
-    for (;;)
-    {
-      WSLog.b("WSVerticalItemTopController", "Jump to personal page.");
-      return;
-      Object localObject = paramstSimpleMetaPerson.miniAppSchema;
-      WSLog.d("weishi", "miniShema is :" + (String)localObject);
-      WSMiniAppHelper.a().a(this.jdField_a_of_type_AndroidContentContext, paramstSimpleMetaPerson.miniAppSchema);
-      c(1000001);
-      continue;
-      paramstSimpleMetaPerson = paramstSimpleMetaPerson.schema;
-      int i = WSGlobalConfig.a().a();
-      if (WeishiGuideUtils.a(this.jdField_a_of_type_AndroidContentContext))
-      {
-        WeishiScehmeUtil.a(this.jdField_a_of_type_AndroidContentContext, "biz_src_jc_gzh_weishi", paramstSimpleMetaPerson, 1, i, 1);
-        c(1000003);
-      }
-      for (;;)
-      {
-        WSLog.d("weishi", "schema is :" + paramstSimpleMetaPerson);
-        break;
-        localObject = new WSDownloadParams();
-        ((WSDownloadParams)localObject).mScene = WSVerticalUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a());
-        ((WSDownloadParams)localObject).mLinkStrategyType = i;
-        ((WSDownloadParams)localObject).mEventId = 1;
-        ((WSDownloadParams)localObject).mTestId = WeishiUtils.a(2);
-        stReportItem localstReportItem = UserActionReportPresenter.a();
-        localstReportItem.pagetype = 2;
-        localstReportItem.optype = 115;
-        ((WSDownloadParams)localObject).mStReportItem = localstReportItem;
-        ((WSDownloadParams)localObject).mScheme = paramstSimpleMetaPerson;
-        WeishiDownloadUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.getActivity(), (WSDownloadParams)localObject, false);
-        c(1000002);
-      }
-      paramstSimpleMetaPerson = paramstSimpleMetaPerson.H5Url;
-      WeishiActivityHelper.a(this.jdField_a_of_type_AndroidContentContext, paramstSimpleMetaPerson);
-      WSLog.d("weishi", "h5Url is :" + paramstSimpleMetaPerson);
-      c(1000004);
-    }
+    WSLog.b("WSVerticalItemTopController", "Jump to personal page.");
   }
   
   private void c(int paramInt)
   {
-    WSVerticalBeaconReport.c(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(), paramInt, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+    WSVerticalBeaconReport.c(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(), paramInt, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, ((WSVerticalPageContract.Presenter)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b()).b());
   }
   
   private void f()
   {
-    if (!NetworkUtil.a(a())) {
-      ToastUtil.a().a(2131720723);
-    }
-    Object localObject;
-    do
+    if (!NetworkUtil.a(a()))
     {
-      do
-      {
-        do
-        {
-          return;
-          if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataWSUserBusiness == null) {
-            this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataWSUserBusiness = WSUserBusiness.a();
-          }
-          localObject = (WSVerticalItemData)a();
-        } while (localObject == null);
-        WSLog.b("WSVerticalItemTopController", "Follow user.");
-      } while (!(((WSVerticalItemData)localObject).a() instanceof stSimpleMetaFeed));
-      localObject = ((WSVerticalItemData)localObject).a().poster;
-    } while (localObject == null);
-    if (WSFeedUtils.a(((stSimpleMetaPerson)localObject).followStatus))
-    {
-      WSFeedUtils.a(a(), new WSVerticalItemTopController.1(this, (stSimpleMetaPerson)localObject), null);
+      ToastUtil.a().a(2131720447);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataWSUserBusiness.a(((stSimpleMetaPerson)localObject).id, 1);
-    ((stSimpleMetaPerson)localObject).followStatus = 1;
-    this.b.setText("已关注");
-    WSLog.a("WSVerticalItemTopController", "---> followStatus:" + ((stSimpleMetaPerson)localObject).followStatus + ",personInfo hashCode:" + localObject.hashCode());
-    this.b.setVisibility(8);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataWSUserBusiness == null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataWSUserBusiness = WSUserBusiness.a();
+    }
+    Object localObject = (WSVerticalItemData)a();
+    if (localObject == null) {
+      return;
+    }
+    WSLog.b("WSVerticalItemTopController", "Follow user.");
+    if ((((WSVerticalItemData)localObject).a() instanceof stSimpleMetaFeed))
+    {
+      localObject = ((WSVerticalItemData)localObject).a().poster;
+      if (localObject != null)
+      {
+        if (WSFeedUtils.a(((stSimpleMetaPerson)localObject).followStatus))
+        {
+          WSFeedUtils.a(a(), new WSVerticalItemTopController.1(this, (stSimpleMetaPerson)localObject), null);
+          return;
+        }
+        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataWSUserBusiness.a(((stSimpleMetaPerson)localObject).id, 1);
+        ((stSimpleMetaPerson)localObject).followStatus = 1;
+        this.b.setText("已关注");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("---> followStatus:");
+        localStringBuilder.append(((stSimpleMetaPerson)localObject).followStatus);
+        localStringBuilder.append(",personInfo hashCode:");
+        localStringBuilder.append(localObject.hashCode());
+        WSLog.a("WSVerticalItemTopController", localStringBuilder.toString());
+        this.b.setVisibility(8);
+      }
+    }
   }
   
-  public void a()
+  protected void a()
   {
     WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)a();
-    if (localWSVerticalItemData == null) {}
-    while (!(localWSVerticalItemData.a() instanceof stSimpleMetaFeed)) {
+    if (localWSVerticalItemData == null) {
       return;
     }
-    this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = localWSVerticalItemData.a();
+    if ((localWSVerticalItemData.a() instanceof stSimpleMetaFeed)) {
+      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = localWSVerticalItemData.a();
+    }
   }
   
-  public int b()
+  protected int b()
   {
-    return 2131560161;
+    return 2131560046;
   }
   
   @UiThread
-  public void b()
+  protected void b()
   {
-    WSLog.a("WSVerticalItemTopController", "onUpdateUI hashcode******************************" + hashCode() + ",position:" + a());
-    Object localObject = (WSVerticalItemData)a();
-    if (localObject == null) {}
-    do
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onUpdateUI hashcode******************************");
+    ((StringBuilder)localObject).append(hashCode());
+    ((StringBuilder)localObject).append(",position:");
+    ((StringBuilder)localObject).append(a());
+    WSLog.a("WSVerticalItemTopController", ((StringBuilder)localObject).toString());
+    localObject = (WSVerticalItemData)a();
+    if (localObject == null) {
+      return;
+    }
+    if ((((WSVerticalItemData)localObject).a() instanceof stSimpleMetaFeed))
     {
-      do
-      {
-        return;
-      } while (!(((WSVerticalItemData)localObject).a() instanceof stSimpleMetaFeed));
       localObject = ((WSVerticalItemData)localObject).a().poster;
-    } while (localObject == null);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(((stSimpleMetaPerson)localObject).nick);
-    WeishiUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView, ((stSimpleMetaPerson)localObject).avatar);
-    a((stSimpleMetaPerson)localObject);
+      if (localObject != null)
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(((stSimpleMetaPerson)localObject).nick);
+        WSPicLoader.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView, ((stSimpleMetaPerson)localObject).avatar);
+        a((stSimpleMetaPerson)localObject);
+      }
+    }
   }
   
-  public void c() {}
+  protected void c() {}
   
-  public void e()
+  protected void e()
   {
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
     localLayoutParams.height = WeishiUIUtil.b();
@@ -209,11 +246,11 @@ public class WSVerticalItemTopController
     localLayoutParams.topMargin = WeishiUIUtil.b((Activity)this.jdField_a_of_type_AndroidContentContext);
     localLayoutParams.leftMargin = WeishiUIUtil.a();
     this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView = ((WSRoundedImageView)a(2131381192));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView = ((WSRoundedImageView)a(2131380445));
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131381197));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380451));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.b = ((TextView)a(2131381196));
+    this.b = ((TextView)a(2131380450));
     this.b.setOnClickListener(this);
   }
   
@@ -222,21 +259,19 @@ public class WSVerticalItemTopController
     stSimpleMetaPerson localstSimpleMetaPerson = ((WSVerticalItemData)a()).a().poster;
     switch (paramView.getId())
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+    default: 
       return;
-      b(localstSimpleMetaPerson);
-      continue;
+    case 2131380450: 
       f();
-      WSVerticalBeaconReport.e(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(), this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+      WSVerticalBeaconReport.c(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(), this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, ((WSVerticalPageContract.Presenter)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b()).b());
+      return;
     }
+    b(localstSimpleMetaPerson);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemTopController
  * JD-Core Version:    0.7.0.1
  */

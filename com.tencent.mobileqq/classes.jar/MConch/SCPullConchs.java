@@ -31,17 +31,19 @@ public final class SCPullConchs
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.result != 0) {
-      paramJceOutputStream.write(this.result, 0);
+    int i = this.result;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 0);
     }
-    if (this.conchTaskList != null) {
-      paramJceOutputStream.write(this.conchTaskList, 1);
+    ArrayList localArrayList = this.conchTaskList;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MConch.SCPullConchs
  * JD-Core Version:    0.7.0.1
  */

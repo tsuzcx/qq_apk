@@ -10,10 +10,14 @@ class LocationSelectActivity$6
 {
   LocationSelectActivity$6(LocationSelectActivity paramLocationSelectActivity) {}
   
-  public void a(boolean paramBoolean, LBSInfo paramLBSInfo)
+  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
   {
-    if (paramLBSInfo != null) {}
-    for (paramLBSInfo = paramLBSInfo.a(); Math.abs(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) > 1200L; paramLBSInfo = null)
+    if (paramLBSInfo != null) {
+      paramLBSInfo = paramLBSInfo.a();
+    } else {
+      paramLBSInfo = null;
+    }
+    if (Math.abs(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) > 1200L)
     {
       this.a.a(paramBoolean, paramLBSInfo);
       return;
@@ -25,7 +29,7 @@ class LocationSelectActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.LocationSelectActivity.6
  * JD-Core Version:    0.7.0.1
  */

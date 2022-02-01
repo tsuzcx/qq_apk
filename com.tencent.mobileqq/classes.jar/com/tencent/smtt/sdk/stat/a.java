@@ -20,34 +20,34 @@ public class a
   
   static
   {
-    Object localObject1 = { 0, 15, 7, 4, 14, 2, 13, 1, 10, 6, 12, 11, 9, 5, 3, 8 };
-    localObject1 = new int[][] { { 14, 4, 13, 1, 2, 15, 11, 8, 3, 10, 6, 12, 5, 9, 0, 7 }, localObject1, { 4, 1, 14, 8, 13, 6, 2, 11, 15, 12, 9, 7, 3, 10, 5, 0 }, { 15, 12, 8, 2, 4, 9, 1, 7, 5, 11, 3, 14, 10, 0, 6, 13 } };
-    Object localObject2 = { 15, 1, 8, 14, 6, 11, 3, 4, 9, 7, 2, 13, 12, 0, 5, 10 };
-    Object localObject3 = { 3, 13, 4, 7, 15, 2, 8, 14, 12, 0, 1, 10, 6, 9, 11, 5 };
-    Object localObject4 = { 13, 8, 10, 1, 3, 15, 4, 2, 11, 6, 7, 12, 0, 5, 14, 9 };
-    localObject2 = new int[][] { localObject2, localObject3, { 0, 14, 7, 11, 10, 4, 13, 1, 5, 8, 12, 6, 9, 3, 2, 15 }, localObject4 };
-    localObject3 = new int[] { 13, 7, 0, 9, 3, 4, 6, 10, 2, 8, 5, 14, 12, 11, 15, 1 };
-    localObject3 = new int[][] { { 10, 0, 9, 14, 6, 3, 15, 5, 1, 13, 12, 7, 11, 4, 2, 8 }, localObject3, { 13, 6, 4, 9, 8, 15, 3, 0, 11, 1, 2, 12, 5, 10, 14, 7 }, { 1, 10, 13, 0, 6, 9, 8, 7, 4, 15, 14, 3, 11, 5, 2, 12 } };
-    localObject4 = new int[] { 10, 6, 9, 0, 12, 11, 7, 13, 15, 1, 3, 14, 5, 2, 8, 4 };
-    localObject4 = new int[][] { { 7, 13, 14, 3, 0, 6, 9, 10, 1, 2, 8, 5, 11, 12, 4, 15 }, { 13, 8, 11, 5, 6, 15, 0, 3, 4, 7, 2, 12, 1, 10, 14, 9 }, localObject4, { 3, 15, 0, 6, 10, 1, 13, 8, 9, 4, 5, 11, 12, 7, 2, 14 } };
-    int[][] arrayOfInt1 = { { 2, 12, 4, 1, 7, 10, 11, 6, 8, 5, 3, 15, 13, 0, 14, 9 }, { 14, 11, 2, 12, 4, 7, 13, 1, 5, 0, 15, 10, 3, 9, 8, 6 }, { 4, 2, 1, 11, 10, 13, 7, 8, 15, 9, 12, 5, 6, 3, 0, 14 }, { 11, 8, 12, 7, 1, 14, 2, 13, 6, 15, 0, 9, 10, 4, 5, 3 } };
-    int[] arrayOfInt2 = { 9, 14, 15, 5, 2, 8, 12, 3, 7, 0, 4, 10, 1, 13, 11, 6 };
-    int[][] arrayOfInt5 = { { 12, 1, 10, 15, 9, 2, 6, 8, 0, 13, 3, 4, 14, 7, 5, 11 }, { 10, 15, 4, 2, 7, 12, 9, 5, 6, 1, 13, 14, 0, 11, 3, 8 }, arrayOfInt2, { 4, 3, 2, 12, 9, 5, 15, 10, 11, 14, 1, 7, 6, 0, 8, 13 } };
-    int[][] arrayOfInt6 = { { 4, 11, 2, 14, 15, 0, 8, 13, 3, 12, 9, 7, 5, 10, 6, 1 }, { 13, 0, 11, 7, 4, 9, 1, 10, 14, 3, 5, 12, 2, 15, 8, 6 }, { 1, 4, 11, 13, 12, 3, 7, 14, 10, 15, 6, 8, 0, 5, 9, 2 }, { 6, 11, 13, 8, 1, 4, 10, 7, 9, 5, 0, 15, 14, 2, 3, 12 } };
-    arrayOfInt2 = new int[] { 1, 15, 13, 8, 10, 3, 7, 4, 12, 5, 6, 11, 0, 14, 9, 2 };
-    int[] arrayOfInt3 = { 7, 11, 4, 1, 9, 12, 14, 2, 0, 6, 10, 13, 15, 3, 5, 8 };
-    int[] arrayOfInt4 = { 2, 1, 14, 7, 4, 10, 8, 13, 15, 12, 9, 0, 3, 5, 6, 11 };
-    l = new int[][][] { localObject1, localObject2, localObject3, localObject4, arrayOfInt1, arrayOfInt5, arrayOfInt6, { { 13, 2, 8, 4, 6, 15, 11, 1, 10, 9, 3, 14, 5, 0, 12, 7 }, arrayOfInt2, arrayOfInt3, arrayOfInt4 } };
+    int[][] arrayOfInt1 = { { 14, 4, 13, 1, 2, 15, 11, 8, 3, 10, 6, 12, 5, 9, 0, 7 }, { 0, 15, 7, 4, 14, 2, 13, 1, 10, 6, 12, 11, 9, 5, 3, 8 }, { 4, 1, 14, 8, 13, 6, 2, 11, 15, 12, 9, 7, 3, 10, 5, 0 }, { 15, 12, 8, 2, 4, 9, 1, 7, 5, 11, 3, 14, 10, 0, 6, 13 } };
+    int[] arrayOfInt11 = { 15, 1, 8, 14, 6, 11, 3, 4, 9, 7, 2, 13, 12, 0, 5, 10 };
+    int[] arrayOfInt12 = { 3, 13, 4, 7, 15, 2, 8, 14, 12, 0, 1, 10, 6, 9, 11, 5 };
+    int[] arrayOfInt13 = { 0, 14, 7, 11, 10, 4, 13, 1, 5, 8, 12, 6, 9, 3, 2, 15 };
+    int[] arrayOfInt14 = { 13, 8, 10, 1, 3, 15, 4, 2, 11, 6, 7, 12, 0, 5, 14, 9 };
+    int[] arrayOfInt5 = { 13, 7, 0, 9, 3, 4, 6, 10, 2, 8, 5, 14, 12, 11, 15, 1 };
+    int[] arrayOfInt6 = { 13, 6, 4, 9, 8, 15, 3, 0, 11, 1, 2, 12, 5, 10, 14, 7 };
+    int[] arrayOfInt7 = { 1, 10, 13, 0, 6, 9, 8, 7, 4, 15, 14, 3, 11, 5, 2, 12 };
+    int[][] arrayOfInt2 = { { 7, 13, 14, 3, 0, 6, 9, 10, 1, 2, 8, 5, 11, 12, 4, 15 }, { 13, 8, 11, 5, 6, 15, 0, 3, 4, 7, 2, 12, 1, 10, 14, 9 }, { 10, 6, 9, 0, 12, 11, 7, 13, 15, 1, 3, 14, 5, 2, 8, 4 }, { 3, 15, 0, 6, 10, 1, 13, 8, 9, 4, 5, 11, 12, 7, 2, 14 } };
+    int[] arrayOfInt15 = { 2, 12, 4, 1, 7, 10, 11, 6, 8, 5, 3, 15, 13, 0, 14, 9 };
+    int[] arrayOfInt16 = { 14, 11, 2, 12, 4, 7, 13, 1, 5, 0, 15, 10, 3, 9, 8, 6 };
+    int[] arrayOfInt17 = { 11, 8, 12, 7, 1, 14, 2, 13, 6, 15, 0, 9, 10, 4, 5, 3 };
+    int[] arrayOfInt8 = { 12, 1, 10, 15, 9, 2, 6, 8, 0, 13, 3, 4, 14, 7, 5, 11 };
+    int[] arrayOfInt9 = { 9, 14, 15, 5, 2, 8, 12, 3, 7, 0, 4, 10, 1, 13, 11, 6 };
+    int[] arrayOfInt10 = { 4, 3, 2, 12, 9, 5, 15, 10, 11, 14, 1, 7, 6, 0, 8, 13 };
+    int[][] arrayOfInt3 = { { 4, 11, 2, 14, 15, 0, 8, 13, 3, 12, 9, 7, 5, 10, 6, 1 }, { 13, 0, 11, 7, 4, 9, 1, 10, 14, 3, 5, 12, 2, 15, 8, 6 }, { 1, 4, 11, 13, 12, 3, 7, 14, 10, 15, 6, 8, 0, 5, 9, 2 }, { 6, 11, 13, 8, 1, 4, 10, 7, 9, 5, 0, 15, 14, 2, 3, 12 } };
+    int[][] arrayOfInt4 = { { 13, 2, 8, 4, 6, 15, 11, 1, 10, 9, 3, 14, 5, 0, 12, 7 }, { 1, 15, 13, 8, 10, 3, 7, 4, 12, 5, 6, 11, 0, 14, 9, 2 }, { 7, 11, 4, 1, 9, 12, 14, 2, 0, 6, 10, 13, 15, 3, 5, 8 }, { 2, 1, 14, 7, 4, 10, 8, 13, 15, 12, 9, 0, 3, 5, 6, 11 } };
+    l = new int[][][] { arrayOfInt1, { arrayOfInt11, arrayOfInt12, arrayOfInt13, arrayOfInt14 }, { { 10, 0, 9, 14, 6, 3, 15, 5, 1, 13, 12, 7, 11, 4, 2, 8 }, arrayOfInt5, arrayOfInt6, arrayOfInt7 }, arrayOfInt2, { arrayOfInt15, arrayOfInt16, { 4, 2, 1, 11, 10, 13, 7, 8, 15, 9, 12, 5, 6, 3, 0, 14 }, arrayOfInt17 }, { arrayOfInt8, { 10, 15, 4, 2, 7, 12, 9, 5, 6, 1, 13, 14, 0, 11, 3, 8 }, arrayOfInt9, arrayOfInt10 }, arrayOfInt3, arrayOfInt4 };
     m = new int[] { 1, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1 };
   }
   
   private static void a(int[] paramArrayOfInt, int paramInt)
   {
-    int i1 = 0;
     int[] arrayOfInt1 = new int[28];
     int[] arrayOfInt2 = new int[28];
     int[] arrayOfInt3 = new int[28];
     int[] arrayOfInt4 = new int[28];
+    int i1 = 0;
     int n = 0;
     while (n < 28)
     {
@@ -57,31 +57,27 @@ public class a
     }
     if (paramInt == 1)
     {
-      paramInt = 0;
-      while (paramInt < 27)
+      for (paramInt = 0; paramInt < 27; paramInt = n)
       {
-        arrayOfInt3[paramInt] = arrayOfInt1[(paramInt + 1)];
-        arrayOfInt4[paramInt] = arrayOfInt2[(paramInt + 1)];
-        paramInt += 1;
+        n = paramInt + 1;
+        arrayOfInt3[paramInt] = arrayOfInt1[n];
+        arrayOfInt4[paramInt] = arrayOfInt2[n];
       }
       arrayOfInt3[27] = arrayOfInt1[0];
       arrayOfInt4[27] = arrayOfInt2[0];
       n = i1;
     }
-    while (n < 28)
+    else
     {
-      paramArrayOfInt[n] = arrayOfInt3[n];
-      paramArrayOfInt[(n + 28)] = arrayOfInt4[n];
-      n += 1;
-      continue;
       n = i1;
       if (paramInt == 2)
       {
         paramInt = 0;
         while (paramInt < 26)
         {
-          arrayOfInt3[paramInt] = arrayOfInt1[(paramInt + 2)];
-          arrayOfInt4[paramInt] = arrayOfInt2[(paramInt + 2)];
+          n = paramInt + 2;
+          arrayOfInt3[paramInt] = arrayOfInt1[n];
+          arrayOfInt4[paramInt] = arrayOfInt2[n];
           paramInt += 1;
         }
         arrayOfInt3[26] = arrayOfInt1[0];
@@ -90,6 +86,12 @@ public class a
         arrayOfInt4[27] = arrayOfInt2[1];
         n = i1;
       }
+    }
+    while (n < 28)
+    {
+      paramArrayOfInt[n] = arrayOfInt3[n];
+      paramArrayOfInt[(n + 28)] = arrayOfInt4[n];
+      n += 1;
     }
   }
   
@@ -141,7 +143,7 @@ public class a
       n += 1;
     }
     n = 0;
-    if (n < 32)
+    while (n < 32)
     {
       arrayOfInt8[n] = arrayOfInt7[(k[n] - 1)];
       arrayOfInt3[n] = arrayOfInt2[n];
@@ -154,13 +156,12 @@ public class a
         paramArrayOfInt[n] = arrayOfInt4[n];
         paramArrayOfInt[(n + 32)] = arrayOfInt3[n];
       }
-      for (;;)
+      else
       {
-        n += 1;
-        break;
         paramArrayOfInt[n] = arrayOfInt3[n];
         paramArrayOfInt[(n + 32)] = arrayOfInt4[n];
       }
+      n += 1;
     }
   }
   
@@ -204,11 +205,11 @@ public class a
   
   public static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt)
   {
-    int i1 = 0;
-    if ((paramArrayOfByte2 == null) || (paramArrayOfByte1 == null)) {
-      return paramArrayOfByte2;
+    if (paramArrayOfByte2 != null) {
+      if (paramArrayOfByte1 == null) {
+        return paramArrayOfByte2;
+      }
     }
-    label221:
     for (;;)
     {
       try
@@ -216,68 +217,71 @@ public class a
         paramArrayOfByte1 = c(paramArrayOfByte1);
         byte[] arrayOfByte2 = b(paramArrayOfByte2);
         int n = arrayOfByte2.length;
-        int i2 = n / 8;
+        int i1 = n / 8;
         byte[] arrayOfByte1 = new byte[n];
         n = 0;
-        if (n < i2)
+        int i2;
+        if (n < i1)
         {
           byte[] arrayOfByte3 = new byte[8];
           byte[] arrayOfByte4 = new byte[8];
           System.arraycopy(paramArrayOfByte1, 0, arrayOfByte3, 0, 8);
-          System.arraycopy(arrayOfByte2, n * 8, arrayOfByte4, 0, 8);
-          System.arraycopy(b(arrayOfByte3, arrayOfByte4, paramInt), 0, arrayOfByte1, n * 8, 8);
+          i2 = n * 8;
+          System.arraycopy(arrayOfByte2, i2, arrayOfByte4, 0, 8);
+          System.arraycopy(b(arrayOfByte3, arrayOfByte4, paramInt), 0, arrayOfByte1, i2, 8);
           n += 1;
+          continue;
         }
-        else
+        paramArrayOfByte1 = arrayOfByte1;
+        if (paramInt == 0)
         {
+          arrayOfByte2 = new byte[paramArrayOfByte2.length];
+          System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, arrayOfByte2.length);
+          paramInt = arrayOfByte2.length;
+          i1 = 1;
+          i2 = arrayOfByte2[(paramInt - 1)];
           paramArrayOfByte1 = arrayOfByte1;
-          if (paramInt == 0)
+          if (i2 > 0)
           {
-            arrayOfByte2 = new byte[paramArrayOfByte2.length];
-            System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, arrayOfByte2.length);
-            n = arrayOfByte2[(arrayOfByte2.length - 1)];
             paramArrayOfByte1 = arrayOfByte1;
-            if (n > 0)
+            if (i2 <= 8)
             {
-              paramArrayOfByte1 = arrayOfByte1;
-              if (n <= 8)
+              paramInt = 0;
+              n = i1;
+              if (paramInt < i2)
               {
-                paramInt = 0;
-                if (paramInt >= n) {
-                  break label221;
+                if (i2 == arrayOfByte2[(arrayOfByte2.length - 1 - paramInt)]) {
+                  break label231;
                 }
-                if (n == arrayOfByte2[(arrayOfByte2.length - 1 - paramInt)]) {
-                  continue;
-                }
-                paramInt = i1;
-                paramArrayOfByte1 = arrayOfByte1;
-                if (paramInt != 0)
-                {
-                  paramArrayOfByte1 = new byte[arrayOfByte2.length - n];
-                  System.arraycopy(arrayOfByte2, 0, paramArrayOfByte1, 0, paramArrayOfByte1.length);
-                }
+                n = 0;
+              }
+              paramArrayOfByte1 = arrayOfByte1;
+              if (n != 0)
+              {
+                paramArrayOfByte1 = new byte[arrayOfByte2.length - i2];
+                System.arraycopy(arrayOfByte2, 0, paramArrayOfByte1, 0, paramArrayOfByte1.length);
               }
             }
           }
-          return paramArrayOfByte1;
-          paramInt += 1;
-          continue;
-          paramInt = 1;
         }
+        return paramArrayOfByte1;
       }
       catch (Exception paramArrayOfByte1)
       {
         return paramArrayOfByte2;
       }
+      return paramArrayOfByte2;
+      label231:
+      paramInt += 1;
     }
   }
   
   private static byte[] a(int[] paramArrayOfInt, int paramInt, int[][] paramArrayOfInt1)
   {
-    int i2 = 0;
     byte[] arrayOfByte = new byte[8];
     int[] arrayOfInt1 = new int[64];
     int[] arrayOfInt2 = new int[64];
+    int i2 = 0;
     int n = 0;
     while (n < 64)
     {
@@ -368,17 +372,18 @@ public class a
   
   private static byte[] b(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt)
   {
-    if ((paramArrayOfByte1.length != 8) || (paramArrayOfByte2.length != 8) || ((paramInt != 1) && (paramInt != 0))) {
-      throw new RuntimeException("Data Format Error !");
+    if ((paramArrayOfByte1.length == 8) && (paramArrayOfByte2.length == 8) && ((paramInt == 1) || (paramInt == 0)))
+    {
+      Object localObject = new int[64];
+      localObject = new int[64];
+      localObject = new byte[8];
+      localObject = (int[][])Array.newInstance(Integer.TYPE, new int[] { 16, 48 });
+      paramArrayOfByte1 = a(paramArrayOfByte1);
+      paramArrayOfByte2 = a(paramArrayOfByte2);
+      a(paramArrayOfByte1, (int[][])localObject);
+      return a(paramArrayOfByte2, paramInt, (int[][])localObject);
     }
-    Object localObject = new int[64];
-    localObject = new int[64];
-    localObject = new byte[8];
-    localObject = (int[][])Array.newInstance(Integer.TYPE, new int[] { 16, 48 });
-    paramArrayOfByte1 = a(paramArrayOfByte1);
-    paramArrayOfByte2 = a(paramArrayOfByte2);
-    a(paramArrayOfByte1, (int[][])localObject);
-    return a(paramArrayOfByte2, paramInt, (int[][])localObject);
+    throw new RuntimeException("Data Format Error !");
   }
   
   private static byte[] c(byte[] paramArrayOfByte)
@@ -390,18 +395,18 @@ public class a
       arrayOfByte[n] = 0;
       n += 1;
     }
-    if (paramArrayOfByte.length > 8)
-    {
-      System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, arrayOfByte.length);
-      return arrayOfByte;
+    if (paramArrayOfByte.length > 8) {
+      n = arrayOfByte.length;
+    } else {
+      n = paramArrayOfByte.length;
     }
-    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, paramArrayOfByte.length);
+    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, n);
     return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.stat.a
  * JD-Core Version:    0.7.0.1
  */

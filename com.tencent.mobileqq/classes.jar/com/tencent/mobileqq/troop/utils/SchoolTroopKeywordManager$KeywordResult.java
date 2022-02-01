@@ -19,16 +19,17 @@ public class SchoolTroopKeywordManager$KeywordResult
   
   public String a()
   {
-    if ((this.jdField_a_of_type_Int & 0x4) == 4) {
+    int i = this.jdField_a_of_type_Int;
+    if ((i & 0x4) == 4) {
       return "classteacher";
     }
-    if ((this.jdField_a_of_type_Int & 0x8) == 8) {
+    if ((i & 0x8) == 8) {
       return "teacher";
     }
-    if ((this.jdField_a_of_type_Int & 0x1) == 1) {
+    if ((i & 0x1) == 1) {
       return "owner";
     }
-    if ((this.jdField_a_of_type_Int & 0x2) == 2) {
+    if ((i & 0x2) == 2) {
       return "admin";
     }
     return "other";
@@ -46,12 +47,32 @@ public class SchoolTroopKeywordManager$KeywordResult
   
   public String toString()
   {
-    return "KeywordResult{msgId=" + this.jdField_a_of_type_Long + ", troopUin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", userRole=" + this.jdField_a_of_type_Int + ", action=" + this.jdField_b_of_type_Int + ", keyword='" + this.jdField_b_of_type_JavaLangString + '\'' + ", startPos=" + this.jdField_c_of_type_Int + ", endPos=" + this.d + ", content=" + this.jdField_c_of_type_JavaLangString + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("KeywordResult{msgId=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", troopUin='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", userRole=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", action=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", keyword='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", startPos=");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(", endPos=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", content=");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.SchoolTroopKeywordManager.KeywordResult
  * JD-Core Version:    0.7.0.1
  */

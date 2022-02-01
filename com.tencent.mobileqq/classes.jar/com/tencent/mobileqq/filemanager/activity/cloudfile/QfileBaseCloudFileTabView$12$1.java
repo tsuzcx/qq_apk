@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.activity.cloudfile;
 
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.mobileqq.filemanager.api.IQQFileEngine;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
@@ -12,14 +12,14 @@ class QfileBaseCloudFileTabView$12$1
   
   public void a()
   {
-    QfileBaseCloudFileTabView.f(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileBaseCloudFileTabView$12.a).getFileManagerEngine().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    ((IQQFileEngine)QfileBaseCloudFileTabView.f(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileBaseCloudFileTabView$12.a).getRuntimeService(IQQFileEngine.class, "")).resume(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
   
   public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView.12.1
  * JD-Core Version:    0.7.0.1
  */

@@ -27,15 +27,18 @@ class StoryMessageListActivity$3
   
   public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgList", 2, "fetch message list result, code=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("fetch message list result, code=");
+      paramBundle.append(paramInt);
+      QLog.d("Q.qqstory.msgList", 2, paramBundle.toString());
     }
     paramBundle = new qqstory_struct.ErrorInfo();
-    qqstory_710_message.RspStoryMessageList localRspStoryMessageList;
     if ((paramInt == 0) && (paramArrayOfByte != null)) {
       try
       {
-        localRspStoryMessageList = new qqstory_710_message.RspStoryMessageList();
+        qqstory_710_message.RspStoryMessageList localRspStoryMessageList = new qqstory_710_message.RspStoryMessageList();
         localRspStoryMessageList.mergeFrom(paramArrayOfByte);
         paramArrayOfByte = (qqstory_710_message.ErrorInfo)localRspStoryMessageList.errinfo.get();
         paramBundle.error_code.set(paramArrayOfByte.error_code.get());
@@ -51,8 +54,9 @@ class StoryMessageListActivity$3
               paramArrayOfByte.add(localMessageData);
             }
           }
+          ThreadManager.getUIHandler().post(new StoryMessageListActivity.3.1(this, paramArrayOfByte, localRspStoryMessageList));
+          return paramBundle;
         }
-        ThreadManager.getUIHandler().post(new StoryMessageListActivity.3.2(this));
       }
       catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
@@ -60,16 +64,14 @@ class StoryMessageListActivity$3
           QLog.d("Q.qqstory.msgList", 2, "parse RspStoryMessageList error", paramArrayOfByte);
         }
       }
-    } else {
-      return paramBundle;
     }
-    ThreadManager.getUIHandler().post(new StoryMessageListActivity.3.1(this, paramArrayOfByte, localRspStoryMessageList));
+    ThreadManager.getUIHandler().post(new StoryMessageListActivity.3.2(this));
     return paramBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity.3
  * JD-Core Version:    0.7.0.1
  */

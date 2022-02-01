@@ -9,22 +9,28 @@ import java.util.Map;
 public class DownloadRequest
 {
   private long fileSizeForRangeMode;
-  private boolean mCacheEntry = false;
-  private boolean mIsCanceled = false;
+  private boolean mCacheEntry;
+  private boolean mIsCanceled;
   private Downloader.DownloadListener mListener;
   private Map<String, String> mParams;
   private final String[] mPaths;
   private final String mUrl;
-  public Downloader.DownloadMode mode = Downloader.DownloadMode.FastMode;
-  public boolean needMd5 = false;
+  public Downloader.DownloadMode mode;
+  public boolean needMd5;
   public DownloadRequest.OnResponseDataListener onResponseDataListener;
   public OutputStream outputStream;
-  public float progressCallbackStep = 0.0F;
+  public float progressCallbackStep;
   public long range;
   public int rangeNumber;
   
   public DownloadRequest(String paramString, String[] paramArrayOfString, boolean paramBoolean, Downloader.DownloadListener paramDownloadListener)
   {
+    boolean bool2 = false;
+    this.mIsCanceled = false;
+    this.mCacheEntry = false;
+    this.mode = Downloader.DownloadMode.FastMode;
+    this.progressCallbackStep = 0.0F;
+    this.needMd5 = false;
     boolean bool1 = bool2;
     if (Utils.checkUrl(paramString))
     {
@@ -58,13 +64,16 @@ public class DownloadRequest
   
   public void addParam(String paramString1, String paramString2)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return;
+    if (paramString1 != null)
+    {
+      if (paramString2 == null) {
+        return;
+      }
+      if (this.mParams == null) {
+        this.mParams = new HashMap();
+      }
+      this.mParams.put(paramString1, paramString2);
     }
-    if (this.mParams == null) {
-      this.mParams = new HashMap();
-    }
-    this.mParams.put(paramString1, paramString2);
   }
   
   public void cancel()
@@ -74,15 +83,17 @@ public class DownloadRequest
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (!(paramObject instanceof DownloadRequest))) {
+    }
+    if (paramObject != null)
+    {
+      if (!(paramObject instanceof DownloadRequest)) {
         return false;
       }
       paramObject = (DownloadRequest)paramObject;
-    } while ((this.mUrl.equalsIgnoreCase(paramObject.mUrl)) && (equalsObject(this.mListener, paramObject.mListener)));
+      return (this.mUrl.equalsIgnoreCase(paramObject.mUrl)) && (equalsObject(this.mListener, paramObject.mListener));
+    }
     return false;
   }
   
@@ -103,8 +114,9 @@ public class DownloadRequest
   
   public String getPath()
   {
-    if ((this.mPaths != null) && (this.mPaths.length > 0)) {
-      return this.mPaths[0];
+    String[] arrayOfString = this.mPaths;
+    if ((arrayOfString != null) && (arrayOfString.length > 0)) {
+      return arrayOfString[0];
     }
     return null;
   }
@@ -121,7 +133,7 @@ public class DownloadRequest
   
   public int hashCode()
   {
-    return (this.mUrl.hashCode() + 527) * 31 + hashCodeObject(this.mListener);
+    return (527 + this.mUrl.hashCode()) * 31 + hashCodeObject(this.mListener);
   }
   
   public boolean isCanceled()
@@ -146,7 +158,7 @@ public class DownloadRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.downloader.DownloadRequest
  * JD-Core Version:    0.7.0.1
  */

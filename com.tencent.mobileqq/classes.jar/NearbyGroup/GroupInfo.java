@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class GroupInfo
   extends JceStruct
@@ -110,20 +111,23 @@ public final class GroupInfo
     paramJceOutputStream.write(this.bIsNew, 15);
     paramJceOutputStream.write(this.lCreator, 16);
     paramJceOutputStream.write(this.dwExtFlag, 17);
-    if (this.labels != null) {
-      paramJceOutputStream.write(this.labels, 18);
+    Object localObject = this.labels;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 18);
     }
-    if (this.strJoinAuth != null) {
-      paramJceOutputStream.write(this.strJoinAuth, 19);
+    localObject = this.strJoinAuth;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 19);
     }
-    if (this.strJoinSig != null) {
-      paramJceOutputStream.write(this.strJoinSig, 20);
+    localObject = this.strJoinSig;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 20);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NearbyGroup.GroupInfo
  * JD-Core Version:    0.7.0.1
  */

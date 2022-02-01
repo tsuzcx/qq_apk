@@ -12,54 +12,74 @@ class ShortVideoPlayActivity$21
   
   public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onProgressChanged: progress = " + paramInt + ",fromUser=" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      paramSeekBar = new StringBuilder();
+      paramSeekBar.append("onProgressChanged: progress = ");
+      paramSeekBar.append(paramInt);
+      paramSeekBar.append(",fromUser=");
+      paramSeekBar.append(paramBoolean);
+      QLog.d("ShortVideoPlayActivity", 2, paramSeekBar.toString());
     }
-    this.a.m = true;
+    paramSeekBar = this.a;
+    paramSeekBar.hasSeeked = true;
     if (paramBoolean)
     {
-      paramSeekBar = this.a;
-      paramSeekBar.h += 1;
-      ShortVideoPlayActivity.b(this.a, true);
-      ShortVideoPlayActivity.c(this.a, true);
+      paramSeekBar.mSeekTimes += 1;
+      ShortVideoPlayActivity.access$602(this.a, true);
+      ShortVideoPlayActivity.access$402(this.a, true);
     }
-    this.a.b(paramInt * this.a.d / 10000L);
+    paramSeekBar = this.a;
+    paramSeekBar.setProgressTime(paramInt * paramSeekBar.mDuration / 10000L);
   }
   
   public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    ShortVideoPlayActivity.b(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onStartTrackingTouch: progress = " + i);
+    int i = this.a.mSeekBar.getProgress();
+    ShortVideoPlayActivity.access$602(this.a, true);
+    if (QLog.isColorLevel())
+    {
+      paramSeekBar = new StringBuilder();
+      paramSeekBar.append("onStartTrackingTouch: progress = ");
+      paramSeekBar.append(i);
+      QLog.d("ShortVideoPlayActivity", 2, paramSeekBar.toString());
     }
   }
   
   public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    this.a.l();
-    ShortVideoPlayActivity localShortVideoPlayActivity = this.a;
-    localShortVideoPlayActivity.i += 1;
-    this.a.g = true;
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    int j = (int)(i * this.a.d / 10000L);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onStopTrackingTouch: seekProgress = " + i + ", mCacheProgress= " + ShortVideoPlayActivity.b(this.a) + ", timestamp = " + j);
-    }
-    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
+    this.a.showAnimation();
+    Object localObject = this.a;
+    ((ShortVideoPlayActivity)localObject).mNewSeekTimes += 1;
+    localObject = this.a;
+    ((ShortVideoPlayActivity)localObject).seekFlagForCacheProgress = true;
+    int i = ((ShortVideoPlayActivity)localObject).mSeekBar.getProgress();
+    int j = (int)(i * this.a.mDuration / 10000L);
+    if (QLog.isColorLevel())
     {
-      if (this.a.jdField_a_of_type_Int == 2) {
-        this.a.a();
-      }
-      this.a.a(j);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onStopTrackingTouch: seekProgress = ");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(", mCacheProgress= ");
+      ((StringBuilder)localObject).append(ShortVideoPlayActivity.access$800(this.a));
+      ((StringBuilder)localObject).append(", timestamp = ");
+      ((StringBuilder)localObject).append(j);
+      QLog.d("ShortVideoPlayActivity", 2, ((StringBuilder)localObject).toString());
     }
-    ShortVideoPlayActivity.b(this.a, false);
+    if (this.a.mMediaPlayer != null)
+    {
+      if (this.a.mPlayState == 2) {
+        this.a.resume();
+      }
+      this.a.play(j);
+    }
+    ShortVideoPlayActivity.access$602(this.a, false);
     EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.21
  * JD-Core Version:    0.7.0.1
  */

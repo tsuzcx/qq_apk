@@ -16,11 +16,17 @@ class FeedsManager$4
       if (FeedsManager.access$000(this.this$0) != null)
       {
         boolean bool = FeedsManager.access$000(this.this$0).update(this.jdField_a_of_type_ComTencentMobileqqDataQzoneFeedInfo);
-        if (QLog.isColorLevel()) {
-          QLog.e("FeedsManager", 2, "setFeedInfoRead  :" + this.jdField_a_of_type_JavaLangString + " ,success:" + bool);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("setFeedInfoRead  :");
+          localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(" ,success:");
+          localStringBuilder.append(bool);
+          QLog.e("FeedsManager", 2, localStringBuilder.toString());
+          return;
         }
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -30,7 +36,7 @@ class FeedsManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.FeedsManager.4
  * JD-Core Version:    0.7.0.1
  */

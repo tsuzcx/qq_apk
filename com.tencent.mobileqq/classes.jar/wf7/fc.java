@@ -7,21 +7,22 @@ import java.util.List;
 public class fc
   extends dt
 {
-  private static fc pK = null;
+  private static fc pK;
   private fb pJ = null;
   private boolean pc = true;
   
   public static fc dC()
   {
-    if (pK == null) {}
-    try
-    {
-      if (pK == null) {
-        pK = new fc();
+    if (pK == null) {
+      try
+      {
+        if (pK == null) {
+          pK = new fc();
+        }
       }
-      return pK;
+      finally {}
     }
-    finally {}
+    return pK;
   }
   
   public void a(String paramString, long paramLong, List<String> paramList)
@@ -106,7 +107,7 @@ public class fc
   {
     Context localContext = fd.dE();
     String[] arrayOfString = gj.s(localContext);
-    int m = fd.dF().dq();
+    int n = fd.dF().dq();
     long l1 = gr.fh();
     Object localObject = new gr.a();
     gr.b((gr.a)localObject);
@@ -117,87 +118,89 @@ public class fc
     localObject = gr.B(localContext);
     String str1 = fd.dF().ds();
     String str2 = fd.dF().dt();
-    int i = gr.D(localContext);
-    int j = gr.E(localContext);
-    int k;
-    if (i < j)
+    int k = gr.D(localContext);
+    int i = gr.E(localContext);
+    int m = k;
+    int j = i;
+    if (k < i)
     {
-      k = j;
-      j = i;
+      j = k;
+      m = i;
     }
-    for (;;)
+    dl localdl = new dl();
+    localdl.d = gr.A(localContext);
+    localdl.df = str1;
+    localdl.kL = str2;
+    if (localObject == null) {
+      localObject = "";
+    }
+    localdl.kl = ((String)localObject);
+    localdl.cY = "0";
+    localdl.cZ = "0";
+    localdl.cA = fd.dF().getProductId();
+    localdl.db = gz.V(fd.dF().dn());
+    localdl.ba = fd.dF().dp();
+    localdl.h = gz.V(fd.dF().dm());
+    localdl.km = 2;
+    localdl.cH = 201;
+    localdl.kn = gj.t(localContext);
+    try
     {
-      dl localdl = new dl();
-      localdl.d = gr.A(localContext);
-      localdl.df = str1;
-      localdl.kL = str2;
-      if (localObject != null) {}
-      for (;;)
-      {
-        localdl.kl = ((String)localObject);
-        localdl.cY = "0";
-        localdl.cZ = "0";
-        localdl.cA = fd.dF().getProductId();
-        localdl.db = gz.V(fd.dF().dn());
-        localdl.ba = fd.dF().dp();
-        localdl.h = gz.V(fd.dF().dm());
-        localdl.km = 2;
-        localdl.cH = 201;
-        localdl.kn = gj.t(localContext);
-        try
-        {
-          localdl.ko = ("wfsdk" + localContext.getPackageName());
-          label286:
-          localdl.dc = gz.V(gr.eZ());
-          localdl.kp = dk.bJ();
-          localdl.kq = gz.V(gr.C(localContext));
-          localdl.dj = 2052;
-          localdl.kr = m;
-          localdl.ks = arrayOfString[2];
-          localdl.kU = gr.U("ro.product.cpu.abi2");
-          localdl.kt = gj.eS();
-          localdl.ku = gj.eT();
-          localdl.kv = (k + "*" + j);
-          localdl.kw = l1;
-          localdl.kx = gj.eU();
-          localdl.ky = l2;
-          localdl.kZ = l3;
-          localdl.kz = gz.V(gr.fc());
-          localdl.kA = gz.V(gr.fa());
-          localdl.kB = gz.V(gr.fb());
-          localdl.kP = 1;
-          localdl.version = gz.V(fd.dF().jdMethod_do());
-          localdl.kQ = gz.V(fd.dE().getPackageName());
-          localdl.kE = gr.ff();
-          localdl.kH = 0;
-          localdl.kI = 0;
-          localdl.kR = gr.fd();
-          localdl.kS = gr.fe();
-          localdl.kT = gr.U("ro.build.product");
-          localdl.kV = gr.U("ro.build.fingerprint");
-          localdl.kW = gr.U("ro.product.locale.language");
-          localdl.kX = gr.U("ro.product.locale.region");
-          localdl.kY = gr.getRadioVersion();
-          localdl.kF = gr.U("ro.board.platform");
-          localdl.la = gr.U("ro.mediatek.platform");
-          localdl.kG = gr.U("ro.sf.lcd_density");
-          localdl.kC = gr.U("ro.product.name");
-          localdl.kD = gr.U("ro.build.version.release");
-          localdl.lb = gr.K(false);
-          localdl.kJ = fd.dF().dr();
-          localdl.lc = 2;
-          localdl.ld = gr.fg();
-          localdl.le = gr.L(true);
-          localdl.lf = gr.L(false);
-          return localdl;
-          localObject = "";
-        }
-        catch (Throwable localThrowable)
-        {
-          break label286;
-        }
-      }
-      k = i;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("wfsdk");
+      ((StringBuilder)localObject).append(localContext.getPackageName());
+      localdl.ko = ((StringBuilder)localObject).toString();
+      label309:
+      localdl.dc = gz.V(gr.eZ());
+      localdl.kp = dk.bJ();
+      localdl.kq = gz.V(gr.C(localContext));
+      localdl.dj = 2052;
+      localdl.kr = n;
+      localdl.ks = arrayOfString[2];
+      localdl.kU = gr.U("ro.product.cpu.abi2");
+      localdl.kt = gj.eS();
+      localdl.ku = gj.eT();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(m);
+      ((StringBuilder)localObject).append("*");
+      ((StringBuilder)localObject).append(j);
+      localdl.kv = ((StringBuilder)localObject).toString();
+      localdl.kw = l1;
+      localdl.kx = gj.eU();
+      localdl.ky = l2;
+      localdl.kZ = l3;
+      localdl.kz = gz.V(gr.fc());
+      localdl.kA = gz.V(gr.fa());
+      localdl.kB = gz.V(gr.fb());
+      localdl.kP = 1;
+      localdl.version = gz.V(fd.dF().jdMethod_do());
+      localdl.kQ = gz.V(fd.dE().getPackageName());
+      localdl.kE = gr.ff();
+      localdl.kH = 0;
+      localdl.kI = 0;
+      localdl.kR = gr.fd();
+      localdl.kS = gr.fe();
+      localdl.kT = gr.U("ro.build.product");
+      localdl.kV = gr.U("ro.build.fingerprint");
+      localdl.kW = gr.U("ro.product.locale.language");
+      localdl.kX = gr.U("ro.product.locale.region");
+      localdl.kY = gr.getRadioVersion();
+      localdl.kF = gr.U("ro.board.platform");
+      localdl.la = gr.U("ro.mediatek.platform");
+      localdl.kG = gr.U("ro.sf.lcd_density");
+      localdl.kC = gr.U("ro.product.name");
+      localdl.kD = gr.U("ro.build.version.release");
+      localdl.lb = gr.K(false);
+      localdl.kJ = fd.dF().dr();
+      localdl.lc = 2;
+      localdl.ld = gr.fg();
+      localdl.le = gr.L(true);
+      localdl.lf = gr.L(false);
+      return localdl;
+    }
+    catch (Throwable localThrowable)
+    {
+      break label309;
     }
   }
   
@@ -247,7 +250,7 @@ public class fc
   public void t(int paramInt1, int paramInt2)
   {
     paramInt1 = dm.ac(paramInt2);
-    if ((paramInt1 != -220000) || ((paramInt1 != -160000) || (((paramInt1 == -450000) || (paramInt1 != -540000)) || (((paramInt1 == -70000) || (paramInt1 == -370000) || (paramInt1 != -380000)) || ((paramInt1 != -350000) && (paramInt1 != -360000) && (paramInt1 == -430000)))))) {}
+    if ((paramInt1 == -450000) || (((paramInt1 == -70000) || (paramInt1 == -370000)) || ((paramInt1 != -350000) && (paramInt1 != -360000)))) {}
   }
   
   public void u(int paramInt1, int paramInt2) {}
@@ -277,7 +280,7 @@ public class fc
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.fc
  * JD-Core Version:    0.7.0.1
  */

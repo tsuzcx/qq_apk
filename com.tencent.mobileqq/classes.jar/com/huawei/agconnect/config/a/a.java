@@ -1,112 +1,105 @@
 package com.huawei.agconnect.config.a;
 
 import android.content.Context;
+import android.text.TextUtils;
+import com.huawei.agconnect.AGConnectApp;
+import com.huawei.agconnect.AGConnectInstance;
+import com.huawei.agconnect.CustomAuthProvider;
+import com.huawei.agconnect.CustomCredentialsProvider;
 import com.huawei.agconnect.config.AGConnectServicesConfig;
-import com.huawei.agconnect.config.LazyInputStream;
-import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 public class a
-  extends AGConnectServicesConfig
+  extends AGConnectApp
 {
-  private final Context a;
-  private final String b;
-  private LazyInputStream c;
-  private volatile b d;
-  private final Object e = new Object();
+  private static final Map<String, AGConnectApp> a = new HashMap();
+  private static final Object b = new Object();
+  private static String c;
+  private AGConnectServicesConfig d;
   
-  public a(Context paramContext, String paramString)
+  private a(Context paramContext, String paramString)
   {
-    this.a = paramContext;
-    this.b = paramString;
+    this.d = AGConnectServicesConfig.fromContext(paramContext, paramString);
   }
   
-  private static LazyInputStream a(Context paramContext, InputStream paramInputStream)
+  public static AGConnectApp getInstance()
   {
-    return new a.1(paramContext, paramInputStream);
+    return getInstance(c);
   }
   
-  private static String a(String paramString)
+  public static AGConnectApp getInstance(String paramString)
   {
-    int j = 0;
-    int i = 0;
-    if (paramString.length() > 0) {
-      for (;;)
-      {
-        j = i;
-        if (paramString.charAt(i) != '/') {
-          break;
-        }
-        i += 1;
+    synchronized (b)
+    {
+      paramString = (AGConnectApp)a.get(paramString);
+      if (paramString != null) {
+        return paramString;
       }
+      throw new IllegalStateException("you should call AGConnectApp.initialize first");
     }
-    return '/' + paramString.substring(j);
   }
   
-  public boolean getBoolean(String paramString)
+  public static AGConnectApp initialize(Context paramContext)
   {
-    return getBoolean(paramString, false);
-  }
-  
-  public boolean getBoolean(String paramString, boolean paramBoolean)
-  {
-    return Boolean.parseBoolean(getString(paramString, String.valueOf(paramBoolean)));
-  }
-  
-  public int getInt(String paramString)
-  {
-    return getInt(paramString, 0);
-  }
-  
-  public int getInt(String paramString, int paramInt)
-  {
-    try
-    {
-      int i = Integer.parseInt(getString(paramString, String.valueOf(paramInt)));
-      return i;
+    Context localContext = paramContext.getApplicationContext();
+    if (localContext != null) {
+      paramContext = localContext;
     }
-    catch (NumberFormatException paramString) {}
-    return paramInt;
+    c = paramContext.getPackageName();
+    return initialize(paramContext, c);
   }
   
-  public String getString(String paramString)
+  public static AGConnectApp initialize(Context paramContext, String paramString)
   {
-    return getString(paramString, null);
-  }
-  
-  public String getString(String paramString1, String paramString2)
-  {
-    if (paramString1 == null) {
-      throw new NullPointerException("path must not be null.");
-    }
-    if (this.d == null) {}
-    synchronized (this.e)
-    {
-      if (this.d == null)
+    if (!TextUtils.isEmpty(paramString)) {
+      synchronized (b)
       {
-        if (this.c != null)
+        AGConnectApp localAGConnectApp = (AGConnectApp)a.get(paramString);
+        if (localAGConnectApp == null)
         {
-          this.d = new d(this.c.loadInputStream());
-          this.c.close();
-          this.c = null;
+          paramContext = new a(paramContext, paramString);
+          a.put(paramString, paramContext);
         }
+        return localAGConnectApp;
       }
-      else
-      {
-        paramString1 = a(paramString1);
-        return this.d.a(paramString1, paramString2);
-      }
-      this.d = new g(this.a, this.b);
     }
+    throw new IllegalArgumentException("packageName can not be empty");
   }
   
-  public void overlayWith(LazyInputStream paramLazyInputStream)
+  public void setApiKey(String paramString)
   {
-    this.c = paramLazyInputStream;
+    this.d.setParam("/client/api_key", paramString);
   }
   
-  public void overlayWith(InputStream paramInputStream)
+  public void setClientId(String paramString)
   {
-    overlayWith(a(this.a, paramInputStream));
+    this.d.setParam("/client/client_id", paramString);
+  }
+  
+  public void setClientSecret(String paramString)
+  {
+    this.d.setParam("/client/client_secret", paramString);
+  }
+  
+  public void setCustomAuthProvider(CustomAuthProvider paramCustomAuthProvider)
+  {
+    ((com.huawei.agconnect.core.a.a)AGConnectInstance.getInstance()).a(paramCustomAuthProvider);
+  }
+  
+  public void setCustomCredentialsProvider(CustomCredentialsProvider paramCustomCredentialsProvider)
+  {
+    ((com.huawei.agconnect.core.a.a)AGConnectInstance.getInstance()).a(paramCustomCredentialsProvider);
+  }
+  
+  public void setParam(String paramString1, String paramString2)
+  {
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      this.d.setParam(paramString1, paramString2);
+      return;
+    }
+    throw new IllegalArgumentException("path can not be empty");
   }
 }
 

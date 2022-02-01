@@ -1,81 +1,30 @@
 package com.tencent.mobileqq.startup.step;
 
-import android.app.Activity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.qbosssplash.common.QbossSplashUtil;
-import com.tencent.mobileqq.qbosssplash.model.SplashItem;
-import com.tencent.mobileqq.qbosssplash.model.SplashUIdata;
-import com.tencent.mobileqq.splashad.SplashADView;
 import com.tencent.mobileqq.startup.director.StartupDirector;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.vip.ad.TianshuSplashUtils;
-import cooperation.vip.common.VipHandler;
-import cooperation.vip.tianshu.TianShuManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
 final class SetSplash$6
-  implements View.OnClickListener
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  SetSplash$6(SplashUIdata paramSplashUIdata, SplashItem paramSplashItem, String paramString, StartupDirector paramStartupDirector, SplashADView paramSplashADView, Activity paramActivity) {}
+  SetSplash$6(StartupDirector paramStartupDirector) {}
   
-  public void onClick(View paramView)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    int j = 0;
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((this.jdField_a_of_type_ComTencentMobileqqQbosssplashModelSplashUIdata != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqQbosssplashModelSplashUIdata.b))) {
-        QbossSplashUtil.a(this.jdField_a_of_type_ComTencentMobileqqQbosssplashModelSplashUIdata.b, null, 3);
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqQbosssplashModelSplashItem != null) && (TianshuSplashUtils.a(this.jdField_a_of_type_ComTencentMobileqqQbosssplashModelSplashItem.l))) {
-        TianshuSplashUtils.a(this.jdField_a_of_type_JavaLangString + "", 162, this.jdField_a_of_type_ComTencentMobileqqQbosssplashModelSplashItem.b, this.jdField_a_of_type_ComTencentMobileqqQbosssplashModelSplashItem.j);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqStartupDirectorStartupDirector.a(15, 1, 0L);
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.setOnClickListener(null);
-      QbossSplashUtil.a = true;
-      int i = j;
-      if (this.jdField_a_of_type_ComTencentMobileqqQbosssplashModelSplashUIdata != null) {
-        if (this.jdField_a_of_type_ComTencentMobileqqQbosssplashModelSplashUIdata.jdField_d_of_type_Int != 2)
-        {
-          i = j;
-          if (this.jdField_a_of_type_ComTencentMobileqqQbosssplashModelSplashUIdata.jdField_d_of_type_Int != 3) {}
-        }
-        else
-        {
-          QbossSplashUtil.a = false;
-          i = 2000;
-          if ((this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.a) && (this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.b) && (this.jdField_a_of_type_ComTencentMobileqqQbosssplashModelSplashUIdata.a == 2)) {
-            this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.d();
-          }
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqQbosssplashModelSplashUIdata.b))
-          {
-            TianShuManager.setLastClickAdTraceInfo(this.jdField_a_of_type_ComTencentMobileqqQbosssplashModelSplashItem.b, this.jdField_a_of_type_ComTencentMobileqqQbosssplashModelSplashItem.j);
-            QbossSplashUtil.a(this.jdField_a_of_type_ComTencentMobileqqQbosssplashModelSplashUIdata.b, null, 2);
-          }
-          if ((this.jdField_a_of_type_ComTencentMobileqqQbosssplashModelSplashItem != null) && (TianshuSplashUtils.a(this.jdField_a_of_type_ComTencentMobileqqQbosssplashModelSplashItem.l))) {
-            TianshuSplashUtils.a(this.jdField_a_of_type_JavaLangString + "", 102, this.jdField_a_of_type_ComTencentMobileqqQbosssplashModelSplashItem.b, this.jdField_a_of_type_ComTencentMobileqqQbosssplashModelSplashItem.j);
-          }
-          VipHandler.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqQbosssplashModelSplashUIdata.jdField_d_of_type_JavaLangString);
-        }
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqQbosssplashModelSplashItem != null) && (TianshuSplashUtils.a(this.jdField_a_of_type_ComTencentMobileqqQbosssplashModelSplashItem.l))) {
-        TianshuSplashUtils.a(this.jdField_a_of_type_JavaLangString + "");
-      }
-      QLog.i("QSplash@QbossSplashUtil", 1, "cover_layer =" + i);
-      this.jdField_a_of_type_ComTencentMobileqqStartupDirectorStartupDirector.a(15, 1, i);
-    }
+    paramTVK_IMediaPlayer = new StringBuilder();
+    paramTVK_IMediaPlayer.append("splash_logoerro+ errotype");
+    paramTVK_IMediaPlayer.append(paramInt1);
+    paramTVK_IMediaPlayer.append("errcode =");
+    paramTVK_IMediaPlayer.append(paramInt2);
+    QLog.i("QSplash@VasSplashUtil", 1, paramTVK_IMediaPlayer.toString());
+    this.a.a(15, 1, 0L);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.SetSplash.6
  * JD-Core Version:    0.7.0.1
  */

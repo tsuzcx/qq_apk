@@ -14,23 +14,23 @@ class VideoJsPlugin$1
   public void run()
   {
     Activity localActivity = VideoJsPlugin.access$000(this.this$0).getAttachedActivity();
-    if ((localActivity == null) || (localActivity.isFinishing()))
+    if ((localActivity != null) && (!localActivity.isFinishing()))
     {
-      QMLog.w("VideoJsPlugin", "showLoading(). Do nothing, activity is null or finishing");
+      if (VideoJsPlugin.access$100(this.this$0) == null)
+      {
+        VideoJsPlugin.access$102(this.this$0, new ToastView(localActivity, (ViewGroup)localActivity.findViewById(16908290)));
+        VideoJsPlugin.access$100(this.this$0).show(1, "loading", null, this.val$title, -1, false);
+        return;
+      }
+      VideoJsPlugin.access$100(this.this$0).updateMsg(this.val$title);
       return;
     }
-    if (VideoJsPlugin.access$100(this.this$0) == null)
-    {
-      VideoJsPlugin.access$102(this.this$0, new ToastView(localActivity, (ViewGroup)localActivity.findViewById(16908290)));
-      VideoJsPlugin.access$100(this.this$0).show(1, "loading", null, this.val$title, -1, false);
-      return;
-    }
-    VideoJsPlugin.access$100(this.this$0).updateMsg(this.val$title);
+    QMLog.w("VideoJsPlugin", "showLoading(). Do nothing, activity is null or finishing");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.VideoJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

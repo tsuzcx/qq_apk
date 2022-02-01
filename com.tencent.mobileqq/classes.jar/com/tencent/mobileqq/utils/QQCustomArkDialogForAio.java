@@ -12,6 +12,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
@@ -62,21 +63,34 @@ public class QQCustomArkDialogForAio
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer = new ArkAioContainerWrapper();
     int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getWidth();
     int j = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getHeight();
-    if (QLog.isDebugVersion()) {
-      QLog.d("QQCustomArkDialog", 4, "w=" + i + ",h=" + j + ", appName:" + paramAppInfo.jdField_a_of_type_JavaLangString);
+    if (QLog.isDebugVersion())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("w=");
+      localStringBuilder.append(i);
+      localStringBuilder.append(",h=");
+      localStringBuilder.append(j);
+      localStringBuilder.append(", appName:");
+      localStringBuilder.append(paramAppInfo.jdField_a_of_type_JavaLangString);
+      QLog.d("QQCustomArkDialog", 4, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.a(paramAppInfo.jdField_a_of_type_JavaLangString, paramAppInfo.b, paramAppInfo.c, paramAppInfo.d, paramAppInfo.jdField_a_of_type_Float, paramAppInfo.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    if ((this.e != 0) && (this.f != 0)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.setFixSize(this.e, this.f);
-    }
-    for (;;)
+    i = this.e;
+    if (i != 0)
     {
-      com.tencent.mobileqq.ark.API.ArkAppModuleBase.a = false;
-      return this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.setFixSize(this.d, this.g);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.setMaxSize(this.d, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.setMinSize(this.b, this.c);
+      j = this.f;
+      if (j != 0)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.setFixSize(i, j);
+        break label208;
+      }
     }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.setFixSize(this.d, this.g);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.setMaxSize(this.d, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.setMinSize(this.b, this.c);
+    label208:
+    com.tencent.mobileqq.ark.api.module.ArkAppQQModuleBase.a = false;
+    return this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer;
   }
   
   private void a(int paramInt)
@@ -85,8 +99,9 @@ public class QQCustomArkDialogForAio
     {
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout.getLayoutParams();
       localLayoutParams.addRule(14);
-      localLayoutParams.width = this.d;
-      localLayoutParams.height = this.d;
+      paramInt = this.d;
+      localLayoutParams.width = paramInt;
+      localLayoutParams.height = paramInt;
       localLayoutParams.setMargins(0, 0, 0, 0);
       this.rBtn.setEnabled(false);
       this.rBtn.setTextColor(Color.parseColor("#656565"));
@@ -110,150 +125,166 @@ public class QQCustomArkDialogForAio
     try
     {
       getWindow().setFlags(16777216, 16777216);
-      if (QLog.isColorLevel()) {
-        QLog.i("QQCustomArkDialog", 2, "initArkView:" + paramBundle);
-      }
-      setContentView(2131559084);
-      View localView = LayoutInflater.from(paramContext).inflate(2131558899, null);
-      localView.setPadding(0, 0, 0, 0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)localView.findViewById(2131362998));
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout = ((ArkAppLoadLayout)localView.findViewById(2131370713));
-      localView.findViewById(2131363025).setPadding(0, 0, 0, 0);
-      ((LinearLayout)localView.findViewById(2131363007)).setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setBorderType(0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setLoadCallback(this.jdField_a_of_type_ComTencentArkArkViewImplement$LoadCallback);
-      boolean bool1 = paramBundle.getBoolean("is_ark_display_share", false);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQCustomArkDialog", 2, "from Forward:" + bool1);
-      }
-      Object localObject1 = new ArkAppMessage.Config();
-      Object localObject2 = paramBundle.getString("forward_ark_app_config");
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        ((ArkAppMessage.Config)localObject1).fromString((String)localObject2);
-      }
-      if ("card".equals(((ArkAppMessage.Config)localObject1).type)) {
-        this.g = BaseChatItemLayout.e;
-      }
-      boolean bool2 = MessageForArkApp.isSetSizeByConfig((ArkAppMessage.Config)localObject1);
-      if (bool2)
-      {
-        localObject2 = MessageForArkApp.limitToSizeRange(ArkAppCenterUtil.a(), ((ArkAppMessage.Config)localObject1).width.intValue(), ((ArkAppMessage.Config)localObject1).height.intValue());
-        if (localObject2 != null)
-        {
-          this.e = ((MessageForArkApp.Size)localObject2).width;
-          if ((((ArkAppMessage.Config)localObject1).autoSize != null) && (((ArkAppMessage.Config)localObject1).autoSize.intValue() == 1)) {
-            this.e = BaseChatItemLayout.e;
-          }
-          this.f = ((MessageForArkApp.Size)localObject2).height;
-          if (QLog.isColorLevel())
-          {
-            float f1 = ArkAppCenterUtil.a();
-            i = (int)(((MessageForArkApp.Size)localObject2).width / f1);
-            j = (int)(((MessageForArkApp.Size)localObject2).height / f1);
-            QLog.d("QQCustomArkDialog", 2, "width_from_sdk:" + ((ArkAppMessage.Config)localObject1).width + ", height_from_sdk:" + ((ArkAppMessage.Config)localObject1).height + ", scale:" + f1 + ", realwidth:" + i + ", realheight:" + j);
-          }
-        }
-      }
-      localObject1 = null;
-      if (this.bodyLayout != null) {
-        localObject1 = (RelativeLayout.LayoutParams)this.bodyLayout.getLayoutParams();
-      }
-      this.rootView.setPadding(0, 0, 0, 0);
-      if (!bool1)
-      {
-        localObject2 = findViewById(2131363904);
-        if (localObject2 != null) {
-          ((View)localObject2).setVisibility(8);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setOnTouchListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView);
-        localObject2 = findViewById(2131365767);
-        if (localObject2 != null) {
-          ((View)localObject2).setVisibility(8);
-        }
-        localObject2 = findViewById(2131365787);
-        if (localObject2 != null) {
-          ((View)localObject2).setVisibility(8);
-        }
-        if (localObject1 != null)
-        {
-          ((RelativeLayout.LayoutParams)localObject1).setMargins(0, 0, 0, 0);
-          this.bodyLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        }
-        i = 0;
-        localObject1 = new LinearLayout.LayoutParams(-1, -2);
-        j = MessageForArkApp.dp2px(1.0F);
-        ((LinearLayout.LayoutParams)localObject1).setMargins(j, j, j, j);
-        localObject2 = new GradientDrawable();
-        ((GradientDrawable)localObject2).setStroke(j, 436207616);
-        if (this.bodyLayout != null)
-        {
-          if (!bool2) {
-            this.bodyLayout.setBackgroundDrawable((Drawable)localObject2);
-          }
-          addCenterView(localView, (LinearLayout.LayoutParams)localObject1);
-        }
-        this.jdField_a_of_type_Int = MessageForArkApp.dp2px(390.0F);
-        this.b = MessageForArkApp.dp2px(30.0F);
-        this.c = MessageForArkApp.dp2px(30.0F);
-        this.d = (MessageForArkApp.dp2px(296.0F) - i - j * 2);
-        localObject1 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout.getLayoutParams();
-        ((RelativeLayout.LayoutParams)localObject1).addRule(14);
-        ((RelativeLayout.LayoutParams)localObject1).width = this.d;
-        ((RelativeLayout.LayoutParams)localObject1).height = this.d;
-        ((RelativeLayout.LayoutParams)localObject1).setMargins(0, 0, 0, 0);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.post(new QQCustomArkDialogForAio.3(this, paramBundle));
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setInputHolderAnchor((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getRootView());
-        if (!(paramContext instanceof Activity)) {
-          break label897;
-        }
-        paramContext = (Activity)paramContext;
-        if (paramContext != null) {
-          ArkViewAdjustFromKeyboard.a(paramContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView);
-        }
-      }
     }
     catch (Exception localException)
     {
-      for (;;)
+      if (QLog.isColorLevel()) {
+        QLog.w("QQCustomArkDialog", 2, localException.getMessage());
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("initArkView:");
+      ((StringBuilder)localObject1).append(paramBundle);
+      QLog.i("QQCustomArkDialog", 2, ((StringBuilder)localObject1).toString());
+    }
+    setContentView(2131558978);
+    View localView = LayoutInflater.from(paramContext).inflate(2131558797, null);
+    localView.setPadding(0, 0, 0, 0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)localView.findViewById(2131362947));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout = ((ArkAppLoadLayout)localView.findViewById(2131370350));
+    localView.findViewById(2131362973).setPadding(0, 0, 0, 0);
+    ((LinearLayout)localView.findViewById(2131362956)).setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setBorderType(0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setLoadCallback(this.jdField_a_of_type_ComTencentArkArkViewImplement$LoadCallback);
+    boolean bool1 = paramBundle.getBoolean("is_ark_display_share", false);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("from Forward:");
+      ((StringBuilder)localObject1).append(bool1);
+      QLog.d("QQCustomArkDialog", 2, ((StringBuilder)localObject1).toString());
+    }
+    Object localObject1 = new ArkAppMessage.Config();
+    Object localObject2 = paramBundle.getString("forward_ark_app_config");
+    if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+      ((ArkAppMessage.Config)localObject1).fromString((String)localObject2);
+    }
+    if ("card".equals(((ArkAppMessage.Config)localObject1).type)) {
+      this.g = BaseChatItemLayout.e;
+    }
+    boolean bool2 = MessageForArkApp.isSetSizeByConfig((ArkAppMessage.Config)localObject1);
+    if (bool2)
+    {
+      localObject2 = MessageForArkApp.limitToSizeRange(ArkAppCenterUtil.a(), ((ArkAppMessage.Config)localObject1).width.intValue(), ((ArkAppMessage.Config)localObject1).height.intValue());
+      if (localObject2 != null)
       {
-        int i;
-        int j;
+        this.e = ((MessageForArkApp.Size)localObject2).width;
+        if ((((ArkAppMessage.Config)localObject1).autoSize != null) && (((ArkAppMessage.Config)localObject1).autoSize.intValue() == 1)) {
+          this.e = BaseChatItemLayout.e;
+        }
+        this.f = ((MessageForArkApp.Size)localObject2).height;
         if (QLog.isColorLevel())
         {
-          QLog.w("QQCustomArkDialog", 2, localException.getMessage());
-          continue;
-          if (localException != null)
-          {
-            i = localException.leftMargin;
-            j = localException.rightMargin + i;
-            i = j;
-            if (QLog.isColorLevel())
-            {
-              QLog.d("QQCustomArkDialog", 2, "margin=" + j);
-              i = j;
-              continue;
-              label897:
-              paramContext = null;
-            }
-          }
-          else
-          {
-            i = 0;
-          }
+          float f1 = ArkAppCenterUtil.a();
+          i = (int)(((MessageForArkApp.Size)localObject2).width / f1);
+          j = (int)(((MessageForArkApp.Size)localObject2).height / f1);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("width_from_sdk:");
+          ((StringBuilder)localObject2).append(((ArkAppMessage.Config)localObject1).width);
+          ((StringBuilder)localObject2).append(", height_from_sdk:");
+          ((StringBuilder)localObject2).append(((ArkAppMessage.Config)localObject1).height);
+          ((StringBuilder)localObject2).append(", scale:");
+          ((StringBuilder)localObject2).append(f1);
+          ((StringBuilder)localObject2).append(", realwidth:");
+          ((StringBuilder)localObject2).append(i);
+          ((StringBuilder)localObject2).append(", realheight:");
+          ((StringBuilder)localObject2).append(j);
+          QLog.d("QQCustomArkDialog", 2, ((StringBuilder)localObject2).toString());
         }
       }
+    }
+    if (this.bodyLayout != null) {
+      localObject1 = (RelativeLayout.LayoutParams)this.bodyLayout.getLayoutParams();
+    } else {
+      localObject1 = null;
+    }
+    this.rootView.setPadding(0, 0, 0, 0);
+    if (!bool1)
+    {
+      localObject2 = findViewById(2131363832);
+      if (localObject2 != null) {
+        ((View)localObject2).setVisibility(8);
+      }
+      localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
+      ((ArkAppView)localObject2).setOnTouchListener((View.OnTouchListener)localObject2);
+      localObject2 = findViewById(2131365604);
+      if (localObject2 != null) {
+        ((View)localObject2).setVisibility(8);
+      }
+      localObject2 = findViewById(2131365624);
+      if (localObject2 != null) {
+        ((View)localObject2).setVisibility(8);
+      }
+      if (localObject1 != null)
+      {
+        ((RelativeLayout.LayoutParams)localObject1).setMargins(0, 0, 0, 0);
+        this.bodyLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      }
+    }
+    else if (localObject1 != null)
+    {
+      i = ((RelativeLayout.LayoutParams)localObject1).leftMargin;
+      j = ((RelativeLayout.LayoutParams)localObject1).rightMargin + i;
+      i = j;
+      if (!QLog.isColorLevel()) {
+        break label738;
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("margin=");
+      ((StringBuilder)localObject1).append(j);
+      QLog.d("QQCustomArkDialog", 2, ((StringBuilder)localObject1).toString());
+      i = j;
+      break label738;
+    }
+    int i = 0;
+    label738:
+    localObject1 = new LinearLayout.LayoutParams(-1, -2);
+    int j = MessageForArkApp.dp2px(1.0F);
+    ((LinearLayout.LayoutParams)localObject1).setMargins(j, j, j, j);
+    localObject2 = new GradientDrawable();
+    ((GradientDrawable)localObject2).setStroke(j, 436207616);
+    if (this.bodyLayout != null)
+    {
+      if (!bool2) {
+        this.bodyLayout.setBackgroundDrawable((Drawable)localObject2);
+      }
+      addCenterView(localView, (LinearLayout.LayoutParams)localObject1);
+    }
+    this.jdField_a_of_type_Int = MessageForArkApp.dp2px(390.0F);
+    this.b = MessageForArkApp.dp2px(30.0F);
+    this.c = MessageForArkApp.dp2px(30.0F);
+    this.d = (MessageForArkApp.dp2px(296.0F) - i - j * 2);
+    localObject1 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout.getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject1).addRule(14);
+    i = this.d;
+    ((RelativeLayout.LayoutParams)localObject1).width = i;
+    ((RelativeLayout.LayoutParams)localObject1).height = i;
+    ((RelativeLayout.LayoutParams)localObject1).setMargins(0, 0, 0, 0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.post(new QQCustomArkDialogForAio.3(this, paramBundle));
+    paramBundle = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
+    paramBundle.setInputHolderAnchor((ViewGroup)paramBundle.getRootView());
+    if ((paramContext instanceof Activity)) {
+      paramContext = (Activity)paramContext;
+    } else {
+      paramContext = null;
+    }
+    if (paramContext != null) {
+      ArkViewAdjustFromKeyboard.a(paramContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView);
     }
   }
   
   public void dismiss()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.doOnEvent(2);
+    ArkAppContainer localArkAppContainer = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer;
+    if (localArkAppContainer != null) {
+      localArkAppContainer.doOnEvent(2);
     }
     if (QLog.isColorLevel()) {
       QLog.d("QQCustomArkDialog", 2, "dismiss");
     }
-    com.tencent.mobileqq.ark.API.ArkAppModuleBase.a = true;
+    com.tencent.mobileqq.ark.api.module.ArkAppQQModuleBase.a = true;
     super.dismiss();
   }
   
@@ -277,7 +308,7 @@ public class QQCustomArkDialogForAio
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomArkDialogForAio
  * JD-Core Version:    0.7.0.1
  */

@@ -20,27 +20,48 @@ public class Operation
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    boolean bool = true;
+    if (this == paramObject) {
       return true;
-      if (!(paramObject instanceof Operation)) {
-        return false;
+    }
+    if (!(paramObject instanceof Operation)) {
+      return false;
+    }
+    Object localObject = (Operation)paramObject;
+    if ((this.jdField_a_of_type_Char == ((Operation)localObject).jdField_a_of_type_Char) && (this.jdField_a_of_type_Int == ((Operation)localObject).jdField_a_of_type_Int) && (this.b == ((Operation)localObject).b))
+    {
+      paramObject = this.jdField_a_of_type_JavaLangString;
+      localObject = ((Operation)localObject).jdField_a_of_type_JavaLangString;
+      if (paramObject == localObject) {
+        return bool;
       }
-      paramObject = (Operation)paramObject;
-    } while ((this.jdField_a_of_type_Char == paramObject.jdField_a_of_type_Char) && (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.b == paramObject.b) && ((this.jdField_a_of_type_JavaLangString == paramObject.jdField_a_of_type_JavaLangString) || ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)))));
-    return false;
+      if ((paramObject != null) && (paramObject.equals(localObject))) {
+        return true;
+      }
+    }
+    bool = false;
+    return bool;
   }
   
   @NonNull
   public String toString()
   {
-    return "[opcode=" + this.jdField_a_of_type_Char + ", chars=" + this.jdField_a_of_type_Int + ",lines=" + this.b + ", attribs=" + this.jdField_a_of_type_JavaLangString + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[opcode=");
+    localStringBuilder.append(this.jdField_a_of_type_Char);
+    localStringBuilder.append(", chars=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",lines=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", attribs=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.Operation
  * JD-Core Version:    0.7.0.1
  */

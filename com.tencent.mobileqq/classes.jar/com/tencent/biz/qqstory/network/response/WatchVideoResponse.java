@@ -17,12 +17,16 @@ public class WatchVideoResponse
   
   public String toString()
   {
-    return "WatchVideoResponse{unReadCount=" + this.b + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WatchVideoResponse{unReadCount=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.WatchVideoResponse
  * JD-Core Version:    0.7.0.1
  */

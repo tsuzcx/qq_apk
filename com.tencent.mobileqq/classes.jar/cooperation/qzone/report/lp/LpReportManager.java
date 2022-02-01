@@ -36,39 +36,38 @@ public class LpReportManager
   
   public static boolean fileExists(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
-      paramString = new File(paramString);
-    } while ((paramString == null) || (!paramString.exists()));
-    return true;
+    }
+    return new File(paramString).exists();
   }
   
   public static LpReportManager getInstance()
   {
-    if (lpReportManager == null) {}
-    try
-    {
-      if (lpReportManager == null) {
-        lpReportManager = new LpReportManager();
+    if (lpReportManager == null) {
+      try
+      {
+        if (lpReportManager == null) {
+          lpReportManager = new LpReportManager();
+        }
       }
-      return lpReportManager;
+      finally {}
     }
-    finally {}
+    return lpReportManager;
   }
   
   private void report(int paramInt)
   {
-    if ((paramInt == 1) && (QzoneConfig.getInstance().getConfig("ClientReport", "LpReportImediagely", 0) == 1)) {}
-    synchronized (this.storedClicks)
-    {
-      if (!LpReportUtils.meetCondition(this.storedClicks, startTime)) {
-        return;
+    if ((paramInt == 1) && (QzoneConfig.getInstance().getConfig("ClientReport", "LpReportImediagely", 0) == 1)) {
+      synchronized (this.storedClicks)
+      {
+        if (!LpReportUtils.meetCondition(this.storedClicks, startTime)) {
+          return;
+        }
       }
-      if (this.storedClicks.isEmpty()) {
-        return;
-      }
+    }
+    if (this.storedClicks.isEmpty()) {
+      return;
     }
     synchronized (this.storedClicks)
     {
@@ -82,41 +81,51 @@ public class LpReportManager
       ((LpReportNewIntent)???).multi_info = localArrayList;
       ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).startServlet((LpReportNewIntent)???);
       return;
-      localObject2 = finally;
-      throw localObject2;
     }
   }
   
   private void report(int paramInt, LpReportInfo paramLpReportInfo, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramLpReportInfo == null) {
-      QLog.e("LpReport.LpReportManager", 1, "info=null");
-    }
-    for (;;)
+    if (paramLpReportInfo == null)
     {
+      QLog.e("LpReport.LpReportManager", 1, "info=null");
       return;
-      if ((paramBoolean1) && (!LpReportUtils.isNeedReport()))
+    }
+    if ((paramBoolean1) && (!LpReportUtils.isNeedReport()))
+    {
+      LpReportUtils.showToast(paramLpReportInfo, false);
+      if (QLog.isColorLevel())
       {
-        LpReportUtils.showToast(paramLpReportInfo, false);
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("LpReport.LpReportManager", 4, "未被抽中：subtype:" + paramInt + " info:" + LpReportUtils.transMapToString(paramLpReportInfo.toMap()));
-        return;
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("未被抽中：subtype:");
+        ((StringBuilder)???).append(paramInt);
+        ((StringBuilder)???).append(" info:");
+        ((StringBuilder)???).append(LpReportUtils.transMapToString(paramLpReportInfo.toMap()));
+        QLog.i("LpReport.LpReportManager", 4, ((StringBuilder)???).toString());
       }
-      LpReportUtils.showToast(paramLpReportInfo, true);
-      if (QLog.isColorLevel()) {
-        QLog.i("LpReport.LpReportManager", 4, "isReportNow:" + paramBoolean2 + " subtype:" + paramInt + " isReportNow:" + paramBoolean2 + " info:" + LpReportUtils.transMapToString(paramLpReportInfo.toMap()));
-      }
-      synchronized (this.storedClicks)
-      {
-        this.storedClicks.addInfo(paramInt, paramLpReportInfo);
-        if (!LpReportUtils.meetCondition(this.storedClicks, startTime)) {
-          continue;
-        }
+      return;
+    }
+    LpReportUtils.showToast(paramLpReportInfo, true);
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("isReportNow:");
+      ((StringBuilder)???).append(paramBoolean2);
+      ((StringBuilder)???).append(" subtype:");
+      ((StringBuilder)???).append(paramInt);
+      ((StringBuilder)???).append(" isReportNow:");
+      ((StringBuilder)???).append(paramBoolean2);
+      ((StringBuilder)???).append(" info:");
+      ((StringBuilder)???).append(LpReportUtils.transMapToString(paramLpReportInfo.toMap()));
+      QLog.i("LpReport.LpReportManager", 4, ((StringBuilder)???).toString());
+    }
+    synchronized (this.storedClicks)
+    {
+      this.storedClicks.addInfo(paramInt, paramLpReportInfo);
+      if (LpReportUtils.meetCondition(this.storedClicks, startTime)) {
         startReportImediately(3);
-        return;
       }
+      return;
     }
   }
   
@@ -299,24 +308,23 @@ public class LpReportManager
   
   public void startReportImediately(int paramInt)
   {
-    if ((Looper.myLooper() != null) && (Looper.myLooper() == Looper.getMainLooper())) {
+    if ((Looper.myLooper() != null) && (Looper.myLooper() == Looper.getMainLooper()))
+    {
       if (MobileQQ.sProcessId == 1) {
         ThreadManager.excute(new LpReportManager.2(this, paramInt), 64, null, true);
+      } else {
+        QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new LpReportManager.3(this, paramInt));
       }
     }
-    for (;;)
-    {
-      ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).reportImdeWMDReport();
-      return;
-      QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new LpReportManager.3(this, paramInt));
-      continue;
+    else {
       report(paramInt);
     }
+    ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).reportImdeWMDReport();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportManager
  * JD-Core Version:    0.7.0.1
  */

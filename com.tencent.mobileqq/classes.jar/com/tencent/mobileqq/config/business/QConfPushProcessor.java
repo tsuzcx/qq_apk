@@ -25,8 +25,12 @@ public class QConfPushProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
       QConfPushBean localQConfPushBean = QConfPushBean.a(paramArrayOfQConfItem[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("QConfPushProcessor", 0, "onParsed " + paramArrayOfQConfItem[0].a);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed ");
+        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        QLog.d("QConfPushProcessor", 0, localStringBuilder.toString());
       }
       return localQConfPushBean;
     }
@@ -36,8 +40,12 @@ public class QConfPushProcessor
   public void a(QConfPushBean paramQConfPushBean)
   {
     ((PushNotificationManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.PUSH_NOTIFICATION_MANAGER)).a(paramQConfPushBean);
-    if (QLog.isColorLevel()) {
-      QLog.d("QConfPushProcessor", 0, "onUpdate " + paramQConfPushBean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      localStringBuilder.append(paramQConfPushBean);
+      QLog.d("QConfPushProcessor", 0, localStringBuilder.toString());
     }
   }
   
@@ -75,7 +83,7 @@ public class QConfPushProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.QConfPushProcessor
  * JD-Core Version:    0.7.0.1
  */

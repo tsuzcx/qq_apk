@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class oidb_0xec4$Quest
   extends MessageMicro<Quest>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 48, 58, 66, 72, 82, 88, 96, 104, 112, 120, 128, 136 }, new String[] { "str_id", "str_quest", "uint64_quest_uin", "uint64_time", "str_ans", "uint64_ans_time", "rpt_comment", "rpt_praise", "uint64_praise_num", "str_like_key", "uint64_system_id", "uint64_comment_num", "uint64_show_type", "uint64_show_times", "uint64_been_praised", "bool_quest_read", "uint64_ans_show_type" }, new Object[] { "", "", Long.valueOf(0L), Long.valueOf(0L), "", Long.valueOf(0L), null, null, Long.valueOf(0L), "", Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Boolean.valueOf(false), Long.valueOf(0L) }, Quest.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBBoolField bool_quest_read = PBField.initBool(false);
   public final PBRepeatMessageField<oidb_0xec4.Comment> rpt_comment = PBField.initRepeatMessage(oidb_0xec4.Comment.class);
   public final PBRepeatMessageField<oidb_0xec4.Praise> rpt_praise = PBField.initRepeatMessage(oidb_0xec4.Praise.class);
@@ -29,10 +29,16 @@ public final class oidb_0xec4$Quest
   public final PBUInt64Field uint64_show_type = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_system_id = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_time = PBField.initUInt64(0L);
+  
+  static
+  {
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 48, 58, 66, 72, 82, 88, 96, 104, 112, 120, 128, 136 }, new String[] { "str_id", "str_quest", "uint64_quest_uin", "uint64_time", "str_ans", "uint64_ans_time", "rpt_comment", "rpt_praise", "uint64_praise_num", "str_like_key", "uint64_system_id", "uint64_comment_num", "uint64_show_type", "uint64_show_times", "uint64_been_praised", "bool_quest_read", "uint64_ans_show_type" }, new Object[] { "", "", localLong, localLong, "", localLong, null, null, localLong, "", localLong, localLong, localLong, localLong, localLong, Boolean.valueOf(false), localLong }, Quest.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xec4.oidb_0xec4.Quest
  * JD-Core Version:    0.7.0.1
  */

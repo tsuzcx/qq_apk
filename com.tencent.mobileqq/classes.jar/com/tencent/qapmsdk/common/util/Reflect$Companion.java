@@ -17,15 +17,19 @@ public final class Reflect$Companion
     Intrinsics.checkParameterIsNotNull(paramString, "filedName");
     try
     {
-      Field localField = paramObject.getClass().getDeclaredField(paramString);
-      Intrinsics.checkExpressionValueIsNotNull(localField, "field");
-      localField.setAccessible(true);
-      paramObject = localField.get(paramObject);
+      localObject = paramObject.getClass().getDeclaredField(paramString);
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "field");
+      ((Field)localObject).setAccessible(true);
+      paramObject = ((Field)localObject).get(paramObject);
       return paramObject;
     }
     catch (Throwable paramObject)
     {
-      Logger.INSTANCE.d(new String[] { "QAPM_common_Reflect", "getInstancePrivateField " + paramString, paramObject.toString() });
+      Object localObject = Logger.INSTANCE;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getInstancePrivateField ");
+      localStringBuilder.append(paramString);
+      ((Logger)localObject).d(new String[] { "QAPM_common_Reflect", localStringBuilder.toString(), paramObject.toString() });
     }
     return null;
   }
@@ -37,22 +41,26 @@ public final class Reflect$Companion
     Intrinsics.checkParameterIsNotNull(paramString, "filedName");
     try
     {
-      Field localField = Thread.class.getDeclaredField(paramString);
-      Intrinsics.checkExpressionValueIsNotNull(localField, "field");
-      localField.setAccessible(true);
-      paramObject = localField.get(paramObject);
+      localObject = Thread.class.getDeclaredField(paramString);
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "field");
+      ((Field)localObject).setAccessible(true);
+      paramObject = ((Field)localObject).get(paramObject);
       return paramObject;
     }
     catch (Throwable paramObject)
     {
-      Logger.INSTANCE.d(new String[] { "QAPM_common_Reflect", "getThreadPrivateField " + paramString, paramObject.toString() });
+      Object localObject = Logger.INSTANCE;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getThreadPrivateField ");
+      localStringBuilder.append(paramString);
+      ((Logger)localObject).d(new String[] { "QAPM_common_Reflect", localStringBuilder.toString(), paramObject.toString() });
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.common.util.Reflect.Companion
  * JD-Core Version:    0.7.0.1
  */

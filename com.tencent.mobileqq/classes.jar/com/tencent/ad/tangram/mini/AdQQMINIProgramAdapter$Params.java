@@ -14,7 +14,15 @@ public final class AdQQMINIProgramAdapter$Params
   
   public boolean isValid()
   {
-    return (this.context != null) && (this.context.get() != null) && (this.ad != null) && (this.ad.isValid()) && (!TextUtils.isEmpty(this.ad.getUrlForLandingPage()));
+    Object localObject = this.context;
+    if ((localObject != null) && (((WeakReference)localObject).get() != null))
+    {
+      localObject = this.ad;
+      if ((localObject != null) && (((Ad)localObject).isValid()) && (!TextUtils.isEmpty(this.ad.getUrlForLandingPage()))) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 

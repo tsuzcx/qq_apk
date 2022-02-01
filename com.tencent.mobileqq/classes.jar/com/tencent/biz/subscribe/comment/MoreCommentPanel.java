@@ -35,19 +35,19 @@ public class MoreCommentPanel
   {
     try
     {
-      LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562826, this);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371863));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371861));
+      LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562642, this);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371485));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371483));
       if (this.jdField_a_of_type_Boolean)
       {
-        setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166884));
-        setBackgroundResource(2130849596);
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165361));
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849594);
+        setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166900));
+        setBackgroundResource(2130849494);
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165329));
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849492);
         return;
       }
-      setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165875));
-      setBackgroundResource(2130849595);
+      setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165878));
+      setBackgroundResource(2130849493);
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -59,14 +59,15 @@ public class MoreCommentPanel
   
   public void setHintText(CharSequence paramCharSequence)
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localTextView != null) {
+      localTextView.setText(paramCharSequence);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.MoreCommentPanel
  * JD-Core Version:    0.7.0.1
  */

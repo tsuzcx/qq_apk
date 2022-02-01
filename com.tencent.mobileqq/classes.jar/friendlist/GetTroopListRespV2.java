@@ -4,11 +4,12 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class GetTroopListRespV2
   extends JceStruct
 {
-  static int cache_result = 0;
+  static int cache_result;
   static byte[] cache_vecCookies = (byte[])new byte[1];
   static ArrayList<stFavoriteGroup> cache_vecFavGroup;
   static ArrayList<Long> cache_vecGroupInfoExt;
@@ -88,32 +89,39 @@ public final class GetTroopListRespV2
     paramJceOutputStream.write(this.troopcount, 1);
     paramJceOutputStream.write(this.result, 2);
     paramJceOutputStream.write(this.errorCode, 3);
-    if (this.vecCookies != null) {
-      paramJceOutputStream.write(this.vecCookies, 4);
+    Object localObject = this.vecCookies;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 4);
     }
-    if (this.vecTroopList != null) {
-      paramJceOutputStream.write(this.vecTroopList, 5);
+    localObject = this.vecTroopList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 5);
     }
-    if (this.vecTroopListDel != null) {
-      paramJceOutputStream.write(this.vecTroopListDel, 6);
+    localObject = this.vecTroopListDel;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 6);
     }
-    if (this.vecTroopRank != null) {
-      paramJceOutputStream.write(this.vecTroopRank, 7);
+    localObject = this.vecTroopRank;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 7);
     }
-    if (this.vecFavGroup != null) {
-      paramJceOutputStream.write(this.vecFavGroup, 8);
+    localObject = this.vecFavGroup;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 8);
     }
-    if (this.vecTroopListExt != null) {
-      paramJceOutputStream.write(this.vecTroopListExt, 9);
+    localObject = this.vecTroopListExt;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 9);
     }
-    if (this.vecGroupInfoExt != null) {
-      paramJceOutputStream.write(this.vecGroupInfoExt, 10);
+    localObject = this.vecGroupInfoExt;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 10);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     friendlist.GetTroopListRespV2
  * JD-Core Version:    0.7.0.1
  */

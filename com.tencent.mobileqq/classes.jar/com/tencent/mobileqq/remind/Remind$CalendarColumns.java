@@ -3,7 +3,7 @@ package com.tencent.mobileqq.remind;
 public abstract interface Remind$CalendarColumns {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.remind.Remind.CalendarColumns
  * JD-Core Version:    0.7.0.1
  */

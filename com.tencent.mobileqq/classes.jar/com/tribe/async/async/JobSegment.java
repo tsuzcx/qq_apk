@@ -12,7 +12,7 @@ public abstract class JobSegment<IN, OUT>
     this.mJobContext = paramJobContext;
   }
   
-  public void call(IN paramIN)
+  protected void call(IN paramIN)
   {
     if (this.mJobContext == null) {
       this.mJobContext = new StubJobContext();
@@ -20,10 +20,11 @@ public abstract class JobSegment<IN, OUT>
     runSegment(this.mJobContext, paramIN);
   }
   
-  public void onCancel()
+  protected void onCancel()
   {
-    if ((this.mJobContext != null) && ((this.mJobContext instanceof StubJobContext))) {
-      ((StubJobContext)this.mJobContext).setCanceled(true);
+    JobContext localJobContext = this.mJobContext;
+    if ((localJobContext != null) && ((localJobContext instanceof StubJobContext))) {
+      ((StubJobContext)localJobContext).setCanceled(true);
     }
   }
   
@@ -31,7 +32,7 @@ public abstract class JobSegment<IN, OUT>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tribe.async.async.JobSegment
  * JD-Core Version:    0.7.0.1
  */

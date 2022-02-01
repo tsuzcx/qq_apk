@@ -23,7 +23,6 @@ import com.tencent.theme.SkinEngine;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -85,19 +84,18 @@ class ResourceGrabViewModel
     if ((paramDrawable != null) && (paramDrawable.getConstantState() != null) && (paramList != null))
     {
       paramDrawable = paramDrawable.getConstantState();
-      if (!(paramDrawable instanceof BaseConstantState)) {
-        break label81;
+      if ((paramDrawable instanceof BaseConstantState))
+      {
+        paramList.add(new ResourceGrabSkinData(paramInt, ((BaseConstantState)paramDrawable).skinData));
+        if (QLog.isColorLevel())
+        {
+          paramDrawable = new StringBuilder();
+          paramDrawable.append("getFileNameByConstantState BaseConstantState resourceNames -> ");
+          paramDrawable.append(paramList);
+          QLog.d("ResourceGrabViewModel", 2, paramDrawable.toString());
+        }
       }
-      paramList.add(new ResourceGrabSkinData(paramInt, ((BaseConstantState)paramDrawable).skinData));
-      if (QLog.isColorLevel()) {
-        QLog.d("ResourceGrabViewModel", 2, "getFileNameByConstantState BaseConstantState resourceNames -> " + paramList);
-      }
-    }
-    for (;;)
-    {
-      return;
-      label81:
-      if ((paramDrawable instanceof DrawableContainer.DrawableContainerState))
+      else if ((paramDrawable instanceof DrawableContainer.DrawableContainerState))
       {
         if (QLog.isColorLevel()) {
           QLog.d("ResourceGrabViewModel", 2, "getFileNameByConstantState DrawableContainerState");
@@ -132,18 +130,19 @@ class ResourceGrabViewModel
   
   private void a(View paramView, List<ResourceGrabSkinData> paramList)
   {
+    Object localObject = paramView.getBackground();
     int i = 0;
-    a(paramView.getBackground(), paramList, 0);
-    ResourceNameGrabStrategy[] arrayOfResourceNameGrabStrategy = this.jdField_a_of_type_ArrayOfComTencentMobileqqResourcesgrabStrategyResourceNameGrabStrategy;
-    int j = arrayOfResourceNameGrabStrategy.length;
+    a((Drawable)localObject, paramList, 0);
+    localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqResourcesgrabStrategyResourceNameGrabStrategy;
+    int j = localObject.length;
     while (i < j)
     {
-      Object localObject = arrayOfResourceNameGrabStrategy[i];
-      if (localObject != null)
+      List localList = localObject[i];
+      if (localList != null)
       {
-        localObject = ((ResourceNameGrabStrategy)localObject).a(paramView);
-        if ((localObject != null) && (((List)localObject).size() > 0)) {
-          paramList.addAll((Collection)localObject);
+        localList = localList.a(paramView);
+        if ((localList != null) && (localList.size() > 0)) {
+          paramList.addAll(localList);
         }
       }
       i += 1;
@@ -172,11 +171,11 @@ class ResourceGrabViewModel
         localArrayList.add(new FileInfo((String)paramHashSet.next()));
       }
       ((DataLineHandler)BaseActivity.sTopActivity.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(localArrayList);
+      return;
     }
     catch (Exception paramHashSet)
     {
       QLog.d("ResourceGrabViewModel", 2, paramHashSet, new Object[0]);
-      return;
     }
   }
   
@@ -184,7 +183,9 @@ class ResourceGrabViewModel
   {
     paramList = a(paramList);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("rootPath: ").append(SkinEngine.getInstances().getSkinRootPath()).append("\n");
+    localStringBuilder.append("rootPath: ");
+    localStringBuilder.append(SkinEngine.getInstances().getSkinRootPath());
+    localStringBuilder.append("\n");
     int j = paramList.size();
     int i = 0;
     while (i < j)
@@ -192,7 +193,9 @@ class ResourceGrabViewModel
       ResourceGrabSkinData localResourceGrabSkinData = (ResourceGrabSkinData)paramList.get(i);
       if (localResourceGrabSkinData != null)
       {
-        localStringBuilder.append(((ResourceGrabRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a(localResourceGrabSkinData.jdField_a_of_type_Int)).append(":").append(localResourceGrabSkinData.jdField_a_of_type_ComTencentThemeSkinData.mFileName);
+        localStringBuilder.append(((ResourceGrabRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a(localResourceGrabSkinData.jdField_a_of_type_Int));
+        localStringBuilder.append(":");
+        localStringBuilder.append(localResourceGrabSkinData.jdField_a_of_type_ComTencentThemeSkinData.mFileName);
         if (i != j - 1) {
           localStringBuilder.append("\n");
         }
@@ -207,42 +210,47 @@ class ResourceGrabViewModel
   
   void a(View paramView, boolean paramBoolean)
   {
-    Object localObject;
+    Object localObject1;
     if ((paramView instanceof ViewGroup))
     {
-      localObject = (ViewGroup)paramView;
-      int j = ((ViewGroup)localObject).getChildCount();
+      localObject1 = (ViewGroup)paramView;
+      int j = ((ViewGroup)localObject1).getChildCount();
       int i = 0;
       while (i < j)
       {
-        a(((ViewGroup)localObject).getChildAt(i), paramBoolean);
+        a(((ViewGroup)localObject1).getChildAt(i), paramBoolean);
         i += 1;
       }
     }
-    View.OnClickListener localOnClickListener;
     try
     {
-      localObject = new ArrayList();
-      a(paramView, (List)localObject);
-      if (((List)localObject).isEmpty()) {
+      localObject1 = new ArrayList();
+      a(paramView, (List)localObject1);
+      if (((List)localObject1).isEmpty()) {
         return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("ResourceGrabViewModel", 2, "doReplaceOnclickListener success fileName: " + localObject + ", view: " + paramView);
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("doReplaceOnclickListener success fileName: ");
+        ((StringBuilder)localObject2).append(localObject1);
+        ((StringBuilder)localObject2).append(", view: ");
+        ((StringBuilder)localObject2).append(paramView);
+        QLog.d("ResourceGrabViewModel", 2, ((StringBuilder)localObject2).toString());
       }
-      localOnClickListener = a(paramView);
+      Object localObject2 = a(paramView);
       if (!paramBoolean)
       {
-        a(paramView, localOnClickListener);
+        a(paramView, (View.OnClickListener)localObject2);
         return;
       }
+      a(paramView, (List)localObject1, (View.OnClickListener)localObject2);
+      return;
     }
     catch (Throwable paramView)
     {
       QLog.d("ResourceGrabViewModel", 1, paramView, new Object[0]);
-      return;
     }
-    a(paramView, (List)localObject, localOnClickListener);
   }
   
   void a(List<ResourceGrabSkinData> paramList)
@@ -252,7 +260,7 @@ class ResourceGrabViewModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.resourcesgrab.ResourceGrabViewModel
  * JD-Core Version:    0.7.0.1
  */

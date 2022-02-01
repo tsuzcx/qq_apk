@@ -21,22 +21,23 @@ import com.Vas.ColorFont.FounderHiBoomLayout;
 import com.etrump.mixlayout.EMCollection;
 import com.etrump.mixlayout.EMEmoticon;
 import com.etrump.mixlayout.ETFont;
-import com.etrump.mixlayout.ETTextView;
-import com.etrump.mixlayout.FontManager;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.etrump.mixlayout.api.ETFontUtil;
+import com.etrump.mixlayout.api.IETFont;
 import com.tencent.commonsdk.cache.QQLruCache;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForHiBoom;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import com.tencent.mobileqq.vas.api.IVasCommonAdapter;
+import com.tencent.mobileqq.vas.font.api.IFontManagerService;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import javax.annotation.Nonnull;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class HiBoomTextView
   extends ImageView
@@ -53,8 +54,8 @@ public class HiBoomTextView
   private FounderHiBoomLayout jdField_a_of_type_ComVasColorFontFounderHiBoomLayout;
   private EMEmoticon jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon = null;
   private ETFont jdField_a_of_type_ComEtrumpMixlayoutETFont;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private MessageForHiBoom jdField_a_of_type_ComTencentMobileqqDataMessageForHiBoom;
+  private BaseSessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo;
+  private ChatMessage jdField_a_of_type_ComTencentMobileqqDataChatMessage;
   public HiBoomFont.HiBoomFontDownloader a;
   private HiBoomFontDrawer jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer = null;
   public final HiBoomTextView.BitmapLocker a;
@@ -113,12 +114,18 @@ public class HiBoomTextView
     if (paramString == null) {
       str = "";
     }
-    return (paramInt1 + "_" + str + "_" + paramInt2).hashCode();
+    paramString = new StringBuilder();
+    paramString.append(paramInt1);
+    paramString.append("_");
+    paramString.append(str);
+    paramString.append("_");
+    paramString.append(paramInt2);
+    return paramString.toString().hashCode();
   }
   
   public static boolean c()
   {
-    return ETTextView.enableAnimation;
+    return ETFontUtil.enableAnimation;
   }
   
   public static void d()
@@ -126,11 +133,12 @@ public class HiBoomTextView
     if (jdField_a_of_type_AndroidOsHandler == null)
     {
       jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView$EmoticonUIHandler = new HiBoomTextView.EmoticonUIHandler(null);
-      if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
+      Object localObject = MobileQQ.sMobileQQ.peekAppRuntime();
+      if (localObject != null)
       {
-        FontManager localFontManager = (FontManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.CHAT_FONT_MANAGER);
-        if ((localFontManager != null) && (localFontManager.a != null)) {
-          jdField_a_of_type_AndroidOsHandler = new HiBoomTextView.4(localFontManager.a.getLooper());
+        localObject = (IFontManagerService)((AppRuntime)localObject).getRuntimeService(IFontManagerService.class, "");
+        if ((localObject != null) && (((IFontManagerService)localObject).getHandlerThread() != null)) {
+          jdField_a_of_type_AndroidOsHandler = new HiBoomTextView.4(((IFontManagerService)localObject).getHandlerThread().getLooper());
         }
       }
     }
@@ -138,13 +146,15 @@ public class HiBoomTextView
   
   public static void e()
   {
-    if (jdField_a_of_type_AndroidOsHandler != null)
+    Object localObject = jdField_a_of_type_AndroidOsHandler;
+    if (localObject != null)
     {
-      jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      ((Handler)localObject).removeCallbacksAndMessages(null);
       jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(260);
     }
-    if (jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView$EmoticonUIHandler != null) {
-      jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView$EmoticonUIHandler.removeCallbacksAndMessages(null);
+    localObject = jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView$EmoticonUIHandler;
+    if (localObject != null) {
+      ((HiBoomTextView.EmoticonUIHandler)localObject).removeCallbacksAndMessages(null);
     }
     jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.evictAll();
   }
@@ -155,9 +165,14 @@ public class HiBoomTextView
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
-    setImageResource(2130847529);
+    setImageResource(2130847397);
     setScaleType(ImageView.ScaleType.CENTER);
     d();
+  }
+  
+  private void g()
+  {
+    ((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).updateMsgFieldByUniseq(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq, "extStr", this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.extStr);
   }
   
   public String a()
@@ -167,127 +182,133 @@ public class HiBoomTextView
   
   public void a()
   {
-    HiBoomFontDrawer localHiBoomFontDrawer;
-    Object localObject;
     if (a())
     {
-      localHiBoomFontDrawer = HiBoomFont.a().a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader);
-      if ((localHiBoomFontDrawer == null) || ((localHiBoomFontDrawer.jdField_a_of_type_Int != 3) && (localHiBoomFontDrawer.jdField_a_of_type_Int != 1))) {
-        break label266;
-      }
-      if ((this.jdField_a_of_type_ComEtrumpMixlayoutETFont == null) || (this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId != this.jdField_a_of_type_Int))
+      Object localObject1 = HiBoomFont.a().a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader);
+      if ((localObject1 != null) && ((((HiBoomFontDrawer)localObject1).jdField_a_of_type_Int == 3) || (((HiBoomFontDrawer)localObject1).jdField_a_of_type_Int == 1)))
       {
-        localObject = ".hy3";
-        if (localHiBoomFontDrawer.jdField_a_of_type_Int == 1) {
-          localObject = ".hy";
+        Object localObject2 = this.jdField_a_of_type_ComEtrumpMixlayoutETFont;
+        if ((localObject2 == null) || (((ETFont)localObject2).mFontId != this.jdField_a_of_type_Int))
+        {
+          if (((HiBoomFontDrawer)localObject1).jdField_a_of_type_Int == 1) {
+            localObject1 = ".hy";
+          } else {
+            localObject1 = ".hy3";
+          }
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a());
+          ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+          ((StringBuilder)localObject2).append(File.separator);
+          ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+          ((StringBuilder)localObject2).append((String)localObject1);
+          localObject1 = ((StringBuilder)localObject2).toString();
+          this.jdField_a_of_type_ComEtrumpMixlayoutETFont = new ETFont(this.jdField_a_of_type_Int, (String)localObject1, this.jdField_d_of_type_Int);
         }
-        localObject = this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a() + this.jdField_a_of_type_Int + File.separator + this.jdField_a_of_type_Int + (String)localObject;
-        this.jdField_a_of_type_ComEtrumpMixlayoutETFont = new ETFont(this.jdField_a_of_type_Int, (String)localObject, this.jdField_d_of_type_Int);
-      }
-      localObject = new EMCollection(HiBoomFont.a().a);
-      if ((localObject == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_ComEtrumpMixlayoutETFont == null)) {
-        break label258;
-      }
-      bool = ((EMCollection)localObject).retrieve(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
-      j = ((EMCollection)localObject).getEmoticonCount();
-      if ((!bool) || (j <= 0)) {
-        break label250;
-      }
-      j = ((EMCollection)localObject).getEmoticonIndex(0);
-      if (this.g != j)
-      {
-        this.g = j;
-        this.jdField_a_of_type_Boolean = true;
-      }
-    }
-    label250:
-    while ((localHiBoomFontDrawer == null) || (localHiBoomFontDrawer.jdField_a_of_type_Int != 4)) {
-      for (;;)
-      {
-        boolean bool;
-        int j;
-        requestLayout();
-        invalidate();
-        return;
-        this.g = 0;
-        continue;
+        localObject1 = new EMCollection(HiBoomFont.a().a);
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+        {
+          localObject2 = this.jdField_a_of_type_ComEtrumpMixlayoutETFont;
+          if (localObject2 != null)
+          {
+            boolean bool = ((EMCollection)localObject1).retrieve(this.jdField_a_of_type_JavaLangString, (IETFont)localObject2);
+            int j = ((EMCollection)localObject1).getEmoticonCount();
+            if ((bool) && (j > 0))
+            {
+              j = ((EMCollection)localObject1).getEmoticonIndex(0);
+              if (this.g == j) {
+                break label465;
+              }
+              this.g = j;
+              this.jdField_a_of_type_Boolean = true;
+              break label465;
+            }
+            this.g = 0;
+            break label465;
+          }
+        }
         this.g = 0;
       }
-    }
-    label258:
-    label266:
-    if ((this.jdField_a_of_type_ComEtrumpMixlayoutETFont == null) || (this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId != this.jdField_a_of_type_Int))
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a() + this.jdField_a_of_type_Int + File.separator + this.jdField_a_of_type_Int + ".fz4";
-      this.jdField_a_of_type_ComEtrumpMixlayoutETFont = new ETFont(this.jdField_a_of_type_Int, (String)localObject, this.jdField_d_of_type_Int);
-    }
-    this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mText = a();
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForHiBoom == null) {}
-    for (this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mAnimationId = this.jdField_c_of_type_Int;; this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mAnimationId = this.jdField_b_of_type_Long)
-    {
-      if (this.jdField_a_of_type_ComVasColorFontFounderHiBoomLayout == null) {
-        this.jdField_a_of_type_ComVasColorFontFounderHiBoomLayout = new FounderHiBoomLayout(this);
+      else if ((localObject1 != null) && (((HiBoomFontDrawer)localObject1).jdField_a_of_type_Int == 4))
+      {
+        localObject1 = this.jdField_a_of_type_ComEtrumpMixlayoutETFont;
+        if ((localObject1 == null) || (((ETFont)localObject1).mFontId != this.jdField_a_of_type_Int))
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a());
+          ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+          ((StringBuilder)localObject1).append(File.separator);
+          ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+          ((StringBuilder)localObject1).append(".fz4");
+          localObject1 = ((StringBuilder)localObject1).toString();
+          this.jdField_a_of_type_ComEtrumpMixlayoutETFont = new ETFont(this.jdField_a_of_type_Int, (String)localObject1, this.jdField_d_of_type_Int);
+        }
+        this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mText = a();
+        if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage == null) {
+          this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mAnimationId = this.jdField_c_of_type_Int;
+        } else {
+          this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mAnimationId = this.jdField_b_of_type_Long;
+        }
+        if (this.jdField_a_of_type_ComVasColorFontFounderHiBoomLayout == null) {
+          this.jdField_a_of_type_ComVasColorFontFounderHiBoomLayout = new FounderHiBoomLayout(this);
+        }
+        this.jdField_a_of_type_ComVasColorFontFounderHiBoomLayout.a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
       }
-      this.jdField_a_of_type_ComVasColorFontFounderHiBoomLayout.a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
-      break;
     }
+    label465:
+    requestLayout();
+    invalidate();
   }
   
   public void a(boolean paramBoolean)
   {
-    if (!paramBoolean) {}
-    for (boolean bool = true;; bool = false)
+    this.jdField_c_of_type_Boolean = (paramBoolean ^ true);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon != null)
     {
-      this.jdField_c_of_type_Boolean = bool;
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      if (this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon != null)
-      {
-        jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView$EmoticonUIHandler.obtainMessage(257, HiBoomTextView.EmoticonHolder.a(this)).sendToTarget();
-        if ((paramBoolean) && (!this.jdField_c_of_type_Boolean) && (!this.jdField_b_of_type_Boolean) && (c())) {
-          this.jdField_b_of_type_Boolean = true;
-        }
+      jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView$EmoticonUIHandler.obtainMessage(257, HiBoomTextView.EmoticonHolder.a(this)).sendToTarget();
+      if ((paramBoolean) && (!this.jdField_c_of_type_Boolean) && (!this.jdField_b_of_type_Boolean) && (c())) {
+        this.jdField_b_of_type_Boolean = true;
       }
-      return;
     }
   }
   
   public boolean a()
   {
-    if ((this.jdField_a_of_type_Int == 0) || (this.jdField_b_of_type_Int < 0) || (this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader == null)) {
-      return false;
+    if ((this.jdField_a_of_type_Int != 0) && (this.jdField_b_of_type_Int >= 0) && (this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader != null)) {
+      return HiBoomFont.a().a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader).jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
     }
-    return HiBoomFont.a().a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader).jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    return false;
   }
   
   public void b()
   {
+    ChatMessage localChatMessage = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
     boolean bool2 = true;
     boolean bool1 = bool2;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForHiBoom != null)
-    {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForHiBoom.getExtInfoFromExtStr("font_animation_played"))) {
-        break label76;
+    if (localChatMessage != null) {
+      if (TextUtils.isEmpty(localChatMessage.getExtInfoFromExtStr("font_animation_played")))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.saveExtInfoToExtStr("font_animation_played", "1");
+        ThreadManager.excute(new HiBoomTextView.2(this), 128, null, true);
+        bool1 = bool2;
       }
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForHiBoom.saveExtInfoToExtStr("font_animation_played", "1");
-      ThreadManager.excute(new HiBoomTextView.2(this), 128, null, true);
+      else
+      {
+        bool1 = false;
+      }
     }
-    label76:
-    for (bool1 = bool2;; bool1 = false)
-    {
-      this.jdField_a_of_type_Boolean = bool1;
-      if (this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon != null) {
-        a(bool1);
-      }
-      return;
+    this.jdField_a_of_type_Boolean = bool1;
+    if (this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon != null) {
+      a(bool1);
     }
   }
   
   public boolean b()
   {
-    if ((this.jdField_a_of_type_Int == 0) || (this.jdField_b_of_type_Int < 0) || (this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader == null)) {
-      return false;
+    if ((this.jdField_a_of_type_Int != 0) && (this.jdField_b_of_type_Int >= 0) && (this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader != null)) {
+      return HiBoomFont.a().a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader).c.get();
     }
-    return HiBoomFont.a().a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader).c.get();
+    return false;
   }
   
   public void c()
@@ -299,28 +320,29 @@ public class HiBoomTextView
         this.jdField_b_of_type_Boolean = true;
       }
     }
-    if (this.jdField_a_of_type_ComVasColorFontFounderHiBoomLayout != null) {
-      this.jdField_a_of_type_ComVasColorFontFounderHiBoomLayout.g();
+    FounderHiBoomLayout localFounderHiBoomLayout = this.jdField_a_of_type_ComVasColorFontFounderHiBoomLayout;
+    if (localFounderHiBoomLayout != null) {
+      localFounderHiBoomLayout.g();
     }
   }
   
   public boolean d()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForHiBoom == null;
+    return this.jdField_a_of_type_ComTencentMobileqqDataChatMessage == null;
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     this.jdField_d_of_type_Boolean = false;
     if (!a())
     {
       if (b()) {
-        setImageResource(2130847528);
+        setImageResource(2130847396);
       }
       setScaleX(this.jdField_a_of_type_Float);
       setScaleY(this.jdField_a_of_type_Float);
@@ -342,64 +364,37 @@ public class HiBoomTextView
       this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
       paramCanvas.drawRoundRect(new RectF(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight()), ScreenUtil.dip2px(4.0F), ScreenUtil.dip2px(4.0F), this.jdField_a_of_type_AndroidGraphicsPaint);
     }
-    HiBoomFontDrawer localHiBoomFontDrawer = HiBoomFont.a().a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader);
+    ??? = HiBoomFont.a().a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader);
     int j = (getMeasuredWidth() - this.e) / 2;
     int k = (getMeasuredHeight() - this.f) / 2;
     if ((j > 0) || (k > 0)) {
       paramCanvas.translate(j, k);
     }
-    if (localHiBoomFontDrawer.jdField_a_of_type_Int == 2) {}
-    for (;;)
+    if (((HiBoomFontDrawer)???).jdField_a_of_type_Int == 2) {}
+    try
     {
-      try
-      {
-        if (localHiBoomFontDrawer.a(this.jdField_a_of_type_JavaLangString.length()))
-        {
-          j = Math.max(getMeasuredHeight(), getMeasuredWidth());
-          localHiBoomFontDrawer.a(this.jdField_a_of_type_JavaLangString, j, paramCanvas);
-        }
-        if (!this.jdField_d_of_type_Boolean) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("HiBoomFont.TextView", 2, "hiboom draw failed, fontId = " + this.jdField_a_of_type_Int);
-        }
-        setImageResource(2130847528);
-        setScaleX(this.jdField_a_of_type_Float);
-        setScaleY(this.jdField_a_of_type_Float);
-        super.onDraw(paramCanvas);
-        return;
+      if (!((HiBoomFontDrawer)???).a(this.jdField_a_of_type_JavaLangString.length())) {
+        break label561;
       }
-      catch (Exception localException)
+      j = Math.max(getMeasuredHeight(), getMeasuredWidth());
+      ((HiBoomFontDrawer)???).a(this.jdField_a_of_type_JavaLangString, j, paramCanvas);
+    }
+    catch (Exception localException)
+    {
+      label380:
+      Bitmap localBitmap;
+      break label380;
+    }
+    this.jdField_d_of_type_Boolean = true;
+    break label561;
+    if ((((HiBoomFontDrawer)???).jdField_a_of_type_Int != 1) && (((HiBoomFontDrawer)???).jdField_a_of_type_Int != 3))
+    {
+      if (((HiBoomFontDrawer)???).jdField_a_of_type_Int == 4)
       {
-        this.jdField_d_of_type_Boolean = true;
-        continue;
-      }
-      if ((localException.jdField_a_of_type_Int == 1) || (localException.jdField_a_of_type_Int == 3))
-      {
-        if (this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon != null)
+        ??? = this.jdField_a_of_type_ComVasColorFontFounderHiBoomLayout;
+        if (??? != null)
         {
-          Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView$BitmapLocker.a();
-          if ((localBitmap != null) && (!localBitmap.isRecycled())) {
-            synchronized (this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView$BitmapLocker)
-            {
-              paramCanvas.drawBitmap(localBitmap, 0.0F, 0.0F, null);
-            }
-          }
-          setImageResource(2130847529);
-          setScaleX(this.jdField_a_of_type_Float);
-          setScaleY(this.jdField_a_of_type_Float);
-          super.onDraw(paramCanvas);
-        }
-        else
-        {
-          this.jdField_d_of_type_Boolean = true;
-        }
-      }
-      else if (???.jdField_a_of_type_Int == 4) {
-        if (this.jdField_a_of_type_ComVasColorFontFounderHiBoomLayout != null)
-        {
-          if (!this.jdField_a_of_type_ComVasColorFontFounderHiBoomLayout.a(paramCanvas)) {
+          if (!((FounderHiBoomLayout)???).a(paramCanvas)) {
             this.jdField_d_of_type_Boolean = true;
           }
           if (!c()) {
@@ -412,242 +407,290 @@ public class HiBoomTextView
         }
       }
     }
+    else if (this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon != null)
+    {
+      localBitmap = this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView$BitmapLocker.a();
+      if ((localBitmap != null) && (!localBitmap.isRecycled())) {
+        synchronized (this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView$BitmapLocker)
+        {
+          paramCanvas.drawBitmap(localBitmap, 0.0F, 0.0F, null);
+        }
+      }
+      setImageResource(2130847397);
+      setScaleX(this.jdField_a_of_type_Float);
+      setScaleY(this.jdField_a_of_type_Float);
+      super.onDraw(paramCanvas);
+    }
+    else
+    {
+      this.jdField_d_of_type_Boolean = true;
+    }
+    label561:
+    if (this.jdField_d_of_type_Boolean)
+    {
+      if (QLog.isColorLevel())
+      {
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("hiboom draw failed, fontId = ");
+        ((StringBuilder)???).append(this.jdField_a_of_type_Int);
+        QLog.e("HiBoomFont.TextView", 2, ((StringBuilder)???).toString());
+      }
+      setImageResource(2130847396);
+      setScaleX(this.jdField_a_of_type_Float);
+      setScaleY(this.jdField_a_of_type_Float);
+      super.onDraw(paramCanvas);
+    }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
-    int i1 = View.MeasureSpec.getMode(paramInt1);
-    int k = View.MeasureSpec.getSize(paramInt1);
-    int n = View.MeasureSpec.getMode(paramInt2);
+    int i2 = View.MeasureSpec.getMode(paramInt1);
+    int j = View.MeasureSpec.getSize(paramInt1);
+    int i1 = View.MeasureSpec.getMode(paramInt2);
     int m = View.MeasureSpec.getSize(paramInt2);
-    if ((this.jdField_d_of_type_Int > 0) && (i1 == 1073741824) && (k > this.jdField_d_of_type_Int)) {
-      k = this.jdField_d_of_type_Int;
-    }
-    for (;;)
+    int n = this.jdField_d_of_type_Int;
+    int k = j;
+    if (n > 0)
     {
-      int j = m;
-      if (this.jdField_d_of_type_Int > 0)
+      k = j;
+      if (i2 == 1073741824)
+      {
+        k = j;
+        if (j > n) {
+          k = n;
+        }
+      }
+    }
+    n = this.jdField_d_of_type_Int;
+    j = m;
+    if (n > 0)
+    {
+      j = m;
+      if (i1 == 1073741824)
       {
         j = m;
-        if (n == 1073741824)
-        {
-          j = m;
-          if (m > this.jdField_d_of_type_Int) {
-            j = this.jdField_d_of_type_Int;
-          }
+        if (m > n) {
+          j = n;
         }
       }
-      if (!a()) {
-        if (this.jdField_d_of_type_Int > 0)
-        {
-          paramInt1 = this.jdField_d_of_type_Int;
-          if (i1 != 1073741824) {
-            break label191;
-          }
-          paramInt2 = k;
-          label126:
-          this.e = paramInt2;
-          if (n == 1073741824) {
-            paramInt1 = j;
-          }
-          this.f = paramInt1;
-          label146:
-          break label251;
-        }
+    }
+    if (!a())
+    {
+      paramInt1 = this.jdField_d_of_type_Int;
+      if (paramInt1 <= 0) {
+        paramInt1 = HiBoomConstants.jdField_a_of_type_Int;
       }
-      for (;;)
-      {
-        if (i1 != 1073741824) {
-          k = this.e;
-        }
-        if (n != 1073741824) {
-          j = this.f;
-        }
-        setMeasuredDimension(k, j);
-        return;
-        paramInt1 = HiBoomManager.jdField_a_of_type_Int;
-        break;
-        label191:
+      if (i2 == 1073741824) {
+        paramInt2 = k;
+      } else {
         paramInt2 = paramInt1;
-        break label126;
-        Object localObject = HiBoomFont.a().a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader);
-        if (((HiBoomFontDrawer)localObject).jdField_a_of_type_Int == 2)
+      }
+      this.e = paramInt2;
+      if (i1 == 1073741824) {
+        paramInt1 = j;
+      }
+      this.f = paramInt1;
+    }
+    else
+    {
+      Object localObject = HiBoomFont.a().a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader);
+      if (((HiBoomFontDrawer)localObject).jdField_a_of_type_Int == 2)
+      {
+        if (((HiBoomFontDrawer)localObject).jdField_a_of_type_ComTencentMobileqqHiboomHiBoomInfo.a != null)
         {
-          if (((HiBoomFontDrawer)localObject).jdField_a_of_type_ComTencentMobileqqHiboomHiBoomInfo.a == null) {
-            continue;
-          }
           localObject = ((HiBoomFontDrawer)localObject).jdField_a_of_type_ComTencentMobileqqHiboomHiBoomInfo.a.iterator();
-          label251:
-          if (!((Iterator)localObject).hasNext()) {
-            continue;
-          }
-          HiBoomInfo.HiBoomInfoStyle localHiBoomInfoStyle = (HiBoomInfo.HiBoomInfoStyle)((Iterator)localObject).next();
-          if (this.jdField_a_of_type_JavaLangString.length() != localHiBoomInfoStyle.jdField_a_of_type_Int) {
-            break label146;
-          }
+          HiBoomInfo.HiBoomInfoStyle localHiBoomInfoStyle;
+          do
+          {
+            if (!((Iterator)localObject).hasNext()) {
+              break;
+            }
+            localHiBoomInfoStyle = (HiBoomInfo.HiBoomInfoStyle)((Iterator)localObject).next();
+          } while (this.jdField_a_of_type_JavaLangString.length() != localHiBoomInfoStyle.jdField_a_of_type_Int);
           paramInt1 = localHiBoomInfoStyle.jdField_a_of_type_ArrayOfInt[0];
           paramInt2 = localHiBoomInfoStyle.jdField_a_of_type_ArrayOfInt[1];
-          double d1 = paramInt1 / paramInt2;
-          if ((i1 == 1073741824) && (n == 1073741824)) {
-            if (k / j > d1)
-            {
-              this.e = ((int)(d1 * j));
-              this.f = j;
-            }
-          }
-          for (;;)
+          double d1 = paramInt1;
+          double d2 = paramInt2;
+          Double.isNaN(d1);
+          Double.isNaN(d2);
+          d1 /= d2;
+          if ((i2 == 1073741824) && (i1 == 1073741824))
           {
-            if (this.jdField_d_of_type_Int <= 0) {
-              break label473;
-            }
-            if (paramInt1 <= paramInt2) {
-              break label475;
-            }
-            this.f = (paramInt2 * this.jdField_d_of_type_Int / paramInt1);
-            this.e = this.jdField_d_of_type_Int;
-            break;
-            this.f = ((int)(k / d1));
-            this.e = k;
-            continue;
-            if (i1 == 1073741824)
+            d2 = k;
+            double d3 = j;
+            Double.isNaN(d2);
+            Double.isNaN(d3);
+            if (d2 / d3 > d1)
             {
-              this.e = k;
-              this.f = ((int)(k / d1));
-            }
-            else if (n == 1073741824)
-            {
+              Double.isNaN(d3);
+              this.e = ((int)(d1 * d3));
               this.f = j;
-              this.e = ((int)(d1 * j));
             }
             else
             {
-              this.e = paramInt1;
-              this.f = paramInt2;
+              Double.isNaN(d2);
+              this.f = ((int)(d2 / d1));
+              this.e = k;
             }
           }
-          label473:
-          continue;
-          label475:
-          this.e = (paramInt1 * this.jdField_d_of_type_Int / paramInt2);
-          this.f = this.jdField_d_of_type_Int;
-          continue;
-        }
-        if ((((HiBoomFontDrawer)localObject).jdField_a_of_type_Int == 1) || (((HiBoomFontDrawer)localObject).jdField_a_of_type_Int == 3))
-        {
-          paramInt1 = HiBoomManager.jdField_a_of_type_Int;
-          if (this.jdField_d_of_type_Int > 0)
+          else if (i2 == 1073741824)
           {
-            paramInt1 = this.jdField_d_of_type_Int;
-            if (this.jdField_a_of_type_ComEtrumpMixlayoutETFont == null)
-            {
-              this.f = paramInt1;
-              this.e = paramInt1;
-              if (i1 != 1073741824) {
-                k = this.e;
-              }
-              if (n != 1073741824) {
-                j = this.f;
-              }
-              setMeasuredDimension(k, j);
-            }
+            this.e = k;
+            d2 = k;
+            Double.isNaN(d2);
+            this.f = ((int)(d2 / d1));
+          }
+          else if (i1 == 1073741824)
+          {
+            this.f = j;
+            d2 = j;
+            Double.isNaN(d2);
+            this.e = ((int)(d2 * d1));
           }
           else
           {
-            if ((i1 == 1073741824) && (n == 1073741824)) {
-              paramInt1 = Math.min(k, j);
-            }
-            for (;;)
+            this.e = paramInt1;
+            this.f = paramInt2;
+          }
+          m = this.jdField_d_of_type_Int;
+          if (m > 0) {
+            if (paramInt1 > paramInt2)
             {
-              paramInt1 = Math.min(paramInt1, HiBoomManager.jdField_a_of_type_Int);
-              break;
-              if (i1 == 1073741824) {
-                paramInt1 = k;
-              } else if (n == 1073741824) {
-                paramInt1 = j;
-              }
+              this.f = (paramInt2 * m / paramInt1);
+              this.e = m;
+            }
+            else
+            {
+              this.e = (paramInt1 * m / paramInt2);
+              this.f = m;
             }
           }
-          this.jdField_a_of_type_ComEtrumpMixlayoutETFont.setSize(paramInt1);
-          if ((this.jdField_a_of_type_Long != this.jdField_b_of_type_Long) || (!this.jdField_a_of_type_ComEtrumpMixlayoutETFont.equals(this.jdField_b_of_type_ComEtrumpMixlayoutETFont)))
+        }
+      }
+      else if ((((HiBoomFontDrawer)localObject).jdField_a_of_type_Int != 1) && (((HiBoomFontDrawer)localObject).jdField_a_of_type_Int != 3))
+      {
+        if (((HiBoomFontDrawer)localObject).jdField_a_of_type_Int == 4)
+        {
+          localObject = this.jdField_a_of_type_ComVasColorFontFounderHiBoomLayout;
+          if (localObject == null)
           {
-            this.jdField_b_of_type_Boolean = false;
+            paramInt1 = this.jdField_d_of_type_Int;
+            if (paramInt1 <= 0) {
+              paramInt1 = HiBoomConstants.jdField_a_of_type_Int;
+            }
+            if (i2 == 1073741824) {
+              paramInt2 = k;
+            } else {
+              paramInt2 = paramInt1;
+            }
+            this.e = paramInt2;
+            if (i1 == 1073741824) {
+              paramInt1 = j;
+            }
+            this.f = paramInt1;
+          }
+          else
+          {
+            localObject = ((FounderHiBoomLayout)localObject).a(paramInt1, paramInt2, this.jdField_d_of_type_Int);
+            this.e = localObject[0];
+            this.f = localObject[1];
             if (this.jdField_b_of_type_ComEtrumpMixlayoutETFont == null) {
               this.jdField_b_of_type_ComEtrumpMixlayoutETFont = new ETFont(0, null, 0.0F);
             }
-            this.jdField_b_of_type_ComEtrumpMixlayoutETFont.copy(this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
-            this.jdField_a_of_type_Long = this.jdField_b_of_type_Long;
-            this.h = 0;
-            this.i = 0;
-            if (this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon != null)
+            if ((this.jdField_a_of_type_Long != this.jdField_b_of_type_Long) || (!this.jdField_a_of_type_ComEtrumpMixlayoutETFont.equals(this.jdField_b_of_type_ComEtrumpMixlayoutETFont)))
+            {
+              this.jdField_b_of_type_ComEtrumpMixlayoutETFont.copy(this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
+              this.jdField_a_of_type_Long = this.jdField_b_of_type_Long;
+              b();
+            }
+          }
+        }
+      }
+      else
+      {
+        paramInt1 = HiBoomConstants.jdField_a_of_type_Int;
+        paramInt2 = this.jdField_d_of_type_Int;
+        if (paramInt2 > 0)
+        {
+          paramInt1 = paramInt2;
+        }
+        else
+        {
+          if ((i2 == 1073741824) && (i1 == 1073741824)) {
+            paramInt1 = Math.min(k, j);
+          } else if (i2 == 1073741824) {
+            paramInt1 = k;
+          } else if (i1 == 1073741824) {
+            paramInt1 = j;
+          }
+          paramInt1 = Math.min(paramInt1, HiBoomConstants.jdField_a_of_type_Int);
+        }
+        localObject = this.jdField_a_of_type_ComEtrumpMixlayoutETFont;
+        if (localObject == null)
+        {
+          this.f = paramInt1;
+          this.e = paramInt1;
+          if (i2 != 1073741824) {
+            k = this.e;
+          }
+          if (i1 != 1073741824) {
+            j = this.f;
+          }
+          setMeasuredDimension(k, j);
+          return;
+        }
+        ((ETFont)localObject).setSize(paramInt1);
+        if ((this.jdField_a_of_type_Long != this.jdField_b_of_type_Long) || (!this.jdField_a_of_type_ComEtrumpMixlayoutETFont.equals(this.jdField_b_of_type_ComEtrumpMixlayoutETFont)))
+        {
+          this.jdField_b_of_type_Boolean = false;
+          if (this.jdField_b_of_type_ComEtrumpMixlayoutETFont == null) {
+            this.jdField_b_of_type_ComEtrumpMixlayoutETFont = new ETFont(0, null, 0.0F);
+          }
+          this.jdField_b_of_type_ComEtrumpMixlayoutETFont.copy(this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
+          this.jdField_a_of_type_Long = this.jdField_b_of_type_Long;
+          this.h = 0;
+          this.i = 0;
+          localObject = this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon;
+          if (localObject != null)
+          {
+            ((EMEmoticon)localObject).deleteDescriptor();
+            this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon = null;
+          }
+          this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon = EMEmoticon.createEmoticon(HiBoomFont.a().a, this.jdField_a_of_type_JavaLangString, this.g, this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
+          localObject = this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon;
+          if (localObject != null)
+          {
+            this.h = ((EMEmoticon)localObject).getWidth();
+            this.i = this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon.getHeight();
+            if ((this.h < 1) || (this.i < 1))
             {
               this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon.deleteDescriptor();
               this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon = null;
             }
-            this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon = EMEmoticon.createEmoticon(HiBoomFont.a().a, this.jdField_a_of_type_JavaLangString, this.g, this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
-            if (this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon != null)
-            {
-              this.h = this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon.getWidth();
-              this.i = this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon.getHeight();
-              if ((this.h < 1) || (this.i < 1))
-              {
-                this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon.deleteDescriptor();
-                this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon = null;
-              }
-            }
-            HiBoomTextView.BitmapLocker.a(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView$BitmapLocker, this.h, this.i);
-            b();
           }
-          if (this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon != null)
-          {
-            this.e = this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon.getWidth();
-            this.f = this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon.getHeight();
-          }
-          else
-          {
-            this.f = paramInt1;
-            this.e = paramInt1;
-          }
+          HiBoomTextView.BitmapLocker.a(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView$BitmapLocker, this.h, this.i);
+          b();
         }
-        else if (((HiBoomFontDrawer)localObject).jdField_a_of_type_Int == 4)
+        localObject = this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon;
+        if (localObject != null)
         {
-          if (this.jdField_a_of_type_ComVasColorFontFounderHiBoomLayout == null)
-          {
-            if (this.jdField_d_of_type_Int > 0)
-            {
-              paramInt1 = this.jdField_d_of_type_Int;
-              label932:
-              if (i1 != 1073741824) {
-                break label974;
-              }
-            }
-            label974:
-            for (paramInt2 = k;; paramInt2 = paramInt1)
-            {
-              this.e = paramInt2;
-              if (n == 1073741824) {
-                paramInt1 = j;
-              }
-              this.f = paramInt1;
-              break;
-              paramInt1 = HiBoomManager.jdField_a_of_type_Int;
-              break label932;
-            }
-          }
-          localObject = this.jdField_a_of_type_ComVasColorFontFounderHiBoomLayout.a(paramInt1, paramInt2, this.jdField_d_of_type_Int);
-          this.e = localObject[0];
-          this.f = localObject[1];
-          if (this.jdField_b_of_type_ComEtrumpMixlayoutETFont == null) {
-            this.jdField_b_of_type_ComEtrumpMixlayoutETFont = new ETFont(0, null, 0.0F);
-          }
-          if ((this.jdField_a_of_type_Long != this.jdField_b_of_type_Long) || (!this.jdField_a_of_type_ComEtrumpMixlayoutETFont.equals(this.jdField_b_of_type_ComEtrumpMixlayoutETFont)))
-          {
-            this.jdField_b_of_type_ComEtrumpMixlayoutETFont.copy(this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
-            this.jdField_a_of_type_Long = this.jdField_b_of_type_Long;
-            b();
-          }
+          this.e = ((EMEmoticon)localObject).getWidth();
+          this.f = this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon.getHeight();
+        }
+        else
+        {
+          this.f = paramInt1;
+          this.e = paramInt1;
         }
       }
     }
+    if (i2 != 1073741824) {
+      k = this.e;
+    }
+    if (i1 != 1073741824) {
+      j = this.f;
+    }
+    setMeasuredDimension(k, j);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -666,19 +709,19 @@ public class HiBoomTextView
     this.jdField_b_of_type_JavaLangString = paramString;
   }
   
-  public void setHiBoom(int paramInt1, int paramInt2, MessageForHiBoom paramMessageForHiBoom, SessionInfo paramSessionInfo, @Nonnull HiBoomFont.HiBoomFontDownloader paramHiBoomFontDownloader)
+  public void setHiBoom(int paramInt1, int paramInt2, ChatMessage paramChatMessage, BaseSessionInfo paramBaseSessionInfo, HiBoomFont.HiBoomFontDownloader paramHiBoomFontDownloader)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForHiBoom = paramMessageForHiBoom;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    if (this.jdField_b_of_type_Long != paramMessageForHiBoom.uniseq)
+    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo = paramBaseSessionInfo;
+    if (this.jdField_b_of_type_Long != paramChatMessage.uniseq)
     {
-      this.jdField_b_of_type_Long = paramMessageForHiBoom.uniseq;
+      this.jdField_b_of_type_Long = paramChatMessage.uniseq;
       this.jdField_a_of_type_Boolean = true;
     }
     setHiBoom(paramInt1, paramInt2, paramHiBoomFontDownloader);
   }
   
-  public void setHiBoom(int paramInt1, int paramInt2, @Nonnull HiBoomFont.HiBoomFontDownloader paramHiBoomFontDownloader)
+  public void setHiBoom(int paramInt1, int paramInt2, HiBoomFont.HiBoomFontDownloader paramHiBoomFontDownloader)
   {
     this.jdField_b_of_type_Int = paramInt2;
     this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader = paramHiBoomFontDownloader;
@@ -692,10 +735,15 @@ public class HiBoomTextView
         a();
       }
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForHiBoom == null) && (this.jdField_b_of_type_Long != this.jdField_c_of_type_Int))
+    if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage == null)
     {
-      this.jdField_b_of_type_Long = this.jdField_c_of_type_Int;
-      this.jdField_a_of_type_Boolean = true;
+      long l = this.jdField_b_of_type_Long;
+      paramInt1 = this.jdField_c_of_type_Int;
+      if (l != paramInt1)
+      {
+        this.jdField_b_of_type_Long = paramInt1;
+        this.jdField_a_of_type_Boolean = true;
+      }
     }
   }
   
@@ -713,28 +761,30 @@ public class HiBoomTextView
   
   public void setText(CharSequence paramCharSequence)
   {
-    if (TextUtils.isEmpty(paramCharSequence)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramCharSequence)) {
       return;
-      CharSequence localCharSequence = paramCharSequence;
-      if (paramCharSequence.length() > 20) {
-        localCharSequence = paramCharSequence.subSequence(0, 20);
-      }
-      this.jdField_a_of_type_JavaLangString = localCharSequence.toString();
-      this.jdField_c_of_type_Int = a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 0);
-      if ((this.jdField_b_of_type_Long != this.jdField_c_of_type_Int) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForHiBoom == null))
-      {
-        this.jdField_b_of_type_Long = this.jdField_c_of_type_Int;
-        this.jdField_a_of_type_Boolean = true;
-      }
-    } while (!a());
-    a();
+    }
+    CharSequence localCharSequence = paramCharSequence;
+    if (paramCharSequence.length() > 20) {
+      localCharSequence = paramCharSequence.subSequence(0, 20);
+    }
+    this.jdField_a_of_type_JavaLangString = localCharSequence.toString();
+    this.jdField_c_of_type_Int = a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 0);
+    long l = this.jdField_b_of_type_Long;
+    int j = this.jdField_c_of_type_Int;
+    if ((l != j) && (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage == null))
+    {
+      this.jdField_b_of_type_Long = j;
+      this.jdField_a_of_type_Boolean = true;
+    }
+    if (a()) {
+      a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.HiBoomTextView
  * JD-Core Version:    0.7.0.1
  */

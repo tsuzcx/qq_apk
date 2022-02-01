@@ -1,41 +1,45 @@
 package com.tencent.avgame.app;
 
 import com.tencent.avgame.protocol.AVGameProtocolCoder;
+import com.tencent.avgame.util.AVGameCmdUtil;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.Cmd2HandlerMap;
+import com.tencent.common.app.business.BaseAVGameAppInterface;
 import com.tencent.mobileqq.service.MobileQQServiceBase;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.MSFServlet;
 
 public class AVGameService
   extends MobileQQServiceBase
 {
-  private AVGameAppInterface jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface;
   private AVGameProtocolCoder jdField_a_of_type_ComTencentAvgameProtocolAVGameProtocolCoder;
+  private BaseAVGameAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface;
   
-  AVGameService(AVGameAppInterface paramAVGameAppInterface)
+  AVGameService(BaseAVGameAppInterface paramBaseAVGameAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface = paramAVGameAppInterface;
+    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface = paramBaseAVGameAppInterface;
     seq = Math.abs(new Random().nextInt());
   }
   
   public AppInterface getAppInterface()
   {
-    return this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface;
+    return this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface;
   }
   
-  public Map<String, String[]> getCompatibleCmd2HandlerMap()
+  protected Map<String, String[]> getCompatibleCmd2HandlerMap()
   {
-    return Cmd2HandlerMap.a();
+    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
+    AVGameCmdUtil.a(localConcurrentHashMap);
+    return localConcurrentHashMap;
   }
   
-  public Class<? extends MSFServlet> getServlet()
+  protected Class<? extends MSFServlet> getServlet()
   {
     return AVGameServlet.class;
   }
   
-  public void initCoders()
+  protected void initCoders()
   {
     try
     {
@@ -53,7 +57,7 @@ public class AVGameService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.app.AVGameService
  * JD-Core Version:    0.7.0.1
  */

@@ -12,10 +12,13 @@ public final class Headers$Builder
   public Builder add(String paramString)
   {
     int i = paramString.indexOf(":");
-    if (i == -1) {
-      throw new IllegalArgumentException("Unexpected header: " + paramString);
+    if (i != -1) {
+      return add(paramString.substring(0, i).trim(), paramString.substring(i + 1));
     }
-    return add(paramString.substring(0, i).trim(), paramString.substring(i + 1));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Unexpected header: ");
+    localStringBuilder.append(paramString);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public Builder add(String paramString1, String paramString2)
@@ -27,11 +30,16 @@ public final class Headers$Builder
   
   public Builder add(String paramString, Date paramDate)
   {
-    if (paramDate == null) {
-      throw new NullPointerException("value for name " + paramString + " == null");
+    if (paramDate != null)
+    {
+      add(paramString, HttpDate.format(paramDate));
+      return this;
     }
-    add(paramString, HttpDate.format(paramDate));
-    return this;
+    paramDate = new StringBuilder();
+    paramDate.append("value for name ");
+    paramDate.append(paramString);
+    paramDate.append(" == null");
+    throw new NullPointerException(paramDate.toString());
   }
   
   public Builder addAll(Headers paramHeaders)
@@ -116,16 +124,21 @@ public final class Headers$Builder
   
   public Builder set(String paramString, Date paramDate)
   {
-    if (paramDate == null) {
-      throw new NullPointerException("value for name " + paramString + " == null");
+    if (paramDate != null)
+    {
+      set(paramString, HttpDate.format(paramDate));
+      return this;
     }
-    set(paramString, HttpDate.format(paramDate));
-    return this;
+    paramDate = new StringBuilder();
+    paramDate.append("value for name ");
+    paramDate.append(paramString);
+    paramDate.append(" == null");
+    throw new NullPointerException(paramDate.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.Headers.Builder
  * JD-Core Version:    0.7.0.1
  */

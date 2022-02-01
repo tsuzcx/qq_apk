@@ -27,8 +27,8 @@ public class DanmakuDrawer
       return false;
     }
     int i = paramCanvas.save();
-    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, (int)paramBaseDanmaku.f(), (int)paramBaseDanmaku.g());
-    this.b.set((int)paramBaseDanmaku.b(), (int)paramBaseDanmaku.c(), (int)paramBaseDanmaku.d(), (int)paramBaseDanmaku.e());
+    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, (int)paramBaseDanmaku.h(), (int)paramBaseDanmaku.i());
+    this.b.set((int)paramBaseDanmaku.d(), (int)paramBaseDanmaku.e(), (int)paramBaseDanmaku.f(), (int)paramBaseDanmaku.g());
     paramCanvas.drawBitmap(paramDanmakuContext, this.jdField_a_of_type_AndroidGraphicsRect, this.b, this.jdField_a_of_type_AndroidGraphicsPaint);
     paramCanvas.restoreToCount(i);
     return true;
@@ -37,27 +37,28 @@ public class DanmakuDrawer
   private void b(Canvas paramCanvas, BaseDanmaku paramBaseDanmaku, DanmakuContext paramDanmakuContext, BaseDanmakuRender paramBaseDanmakuRender)
   {
     int i = paramCanvas.save();
-    paramBaseDanmakuRender.a(paramCanvas, paramBaseDanmaku, paramDanmakuContext, paramBaseDanmaku.h(), paramBaseDanmaku.i());
+    paramBaseDanmakuRender.a(paramCanvas, paramBaseDanmaku, paramDanmakuContext, paramBaseDanmaku.j(), paramBaseDanmaku.k());
     paramCanvas.restoreToCount(i);
   }
   
   public void a(Canvas paramCanvas, BaseDanmaku paramBaseDanmaku, DanmakuContext paramDanmakuContext, BaseDanmakuRender paramBaseDanmakuRender)
   {
-    if (paramCanvas == null) {}
-    do
-    {
+    if (paramCanvas == null) {
       return;
-      if (!paramBaseDanmaku.e()) {
-        break;
+    }
+    if (paramBaseDanmaku.e())
+    {
+      if (a(paramCanvas, paramBaseDanmaku, paramDanmakuContext, paramBaseDanmakuRender)) {
+        return;
       }
-    } while (a(paramCanvas, paramBaseDanmaku, paramDanmakuContext, paramBaseDanmakuRender));
-    WindowConfig.a(false);
+      WindowConfig.a(false);
+    }
     b(paramCanvas, paramBaseDanmaku, paramDanmakuContext, paramBaseDanmakuRender);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.render.DanmakuDrawer
  * JD-Core Version:    0.7.0.1
  */

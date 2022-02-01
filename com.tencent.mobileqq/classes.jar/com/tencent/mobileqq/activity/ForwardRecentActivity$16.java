@@ -11,26 +11,30 @@ class ForwardRecentActivity$16
   
   public void a(View paramView)
   {
-    boolean bool = ForwardRecentActivity.a(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardEntranceActivity", 2, "onItemViewClicked" + bool);
+    boolean bool = ForwardRecentActivity.access$400(this.a);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onItemViewClicked");
+      localStringBuilder.append(bool);
+      QLog.d("ForwardOption.ForwardEntranceActivity", 2, localStringBuilder.toString());
     }
     if (bool)
     {
-      ForwardRecentActivity.a(this.a, paramView);
+      ForwardRecentActivity.access$2300(this.a, paramView);
       return;
     }
-    this.a.a(paramView);
+    this.a.onListViewItemClickedInDefaultStatus(paramView);
   }
   
   public boolean a(String paramString, int paramInt)
   {
-    return ForwardRecentActivity.a(this.a, paramString, paramInt);
+    return ForwardRecentActivity.access$500(this.a, paramString, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardRecentActivity.16
  * JD-Core Version:    0.7.0.1
  */

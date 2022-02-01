@@ -57,23 +57,56 @@ public final class CardSettingHandler
     {
     default: 
       return;
-    case 41611: 
-      paramReqBody.uint32_profile_sex_visible.set(paramInt2);
+    case 42505: 
+      paramReqBody.uint32_profile_wz_game_card_switch.set(paramInt2);
       return;
-    case 41610: 
-      paramReqBody.uint32_profile_age_visible.set(paramInt2);
+    case 42488: 
+      paramReqBody.uint32_profile_show_idol_switch.set(paramInt2);
       return;
-    case 41607: 
-      paramReqBody.uint32_profile_birthday_visible.set(paramInt2);
+    case 42425: 
+      paramReqBody.uint32_profile_anonymous_answer_switch.set(paramInt2);
       return;
-    case 41609: 
-      paramReqBody.uint32_profile_constellation_visible.set(paramInt2);
+    case 42377: 
+      paramReqBody.uint32_flag_profile_weishi_switch.set(paramInt2);
       return;
-    case 41618: 
-      paramReqBody.uint32_profile_profession_visible.set(paramInt2);
+    case 42367: 
+      paramReqBody.uint32_flag_profile_life_achievement_switch.set(paramInt2);
+      return;
+    case 42361: 
+      paramReqBody.uint32_profile_qqcircle_switch.set(paramInt2);
+      return;
+    case 42356: 
+      paramReqBody.uint32_profile_sticky_note_switch.set(paramInt2);
+      return;
+    case 42340: 
+      paramReqBody.uint32_profile_musicbox_switch.set(paramInt2);
+      return;
+    case 42323: 
+      paramReqBody.uint32_profile_miniapp_switch.set(paramInt2);
+      return;
+    case 42289: 
+      paramReqBody.uint32_profile_present_switch.set(paramInt2);
+      return;
+    case 42172: 
+      paramReqBody.uint32_extend_friend_card_shown.set(paramInt2);
+      return;
+    case 42128: 
+      paramReqBody.uint32_profile_personality_label_switch.set(paramInt2);
+      return;
+    case 42075: 
+      paramReqBody.uint32_req_medalwall_flag.set(paramInt2);
+      return;
+    case 41623: 
+      paramReqBody.uint32_profile_personal_note_visible.set(paramInt2);
+      return;
+    case 41622: 
+      paramReqBody.uint32_profile_email_visible.set(paramInt2);
       return;
     case 41619: 
       paramReqBody.uint32_profile_college_visible.set(paramInt2);
+      return;
+    case 41618: 
+      paramReqBody.uint32_profile_profession_visible.set(paramInt2);
       return;
     case 41614: 
       paramReqBody.uint32_profile_location_visible.set(paramInt2);
@@ -81,59 +114,26 @@ public final class CardSettingHandler
     case 41613: 
       paramReqBody.uint32_profile_hometown_visible.set(paramInt2);
       return;
-    case 41622: 
-      paramReqBody.uint32_profile_email_visible.set(paramInt2);
+    case 41611: 
+      paramReqBody.uint32_profile_sex_visible.set(paramInt2);
       return;
-    case 41623: 
-      paramReqBody.uint32_profile_personal_note_visible.set(paramInt2);
+    case 41610: 
+      paramReqBody.uint32_profile_age_visible.set(paramInt2);
       return;
-    case 40272: 
-      paramReqBody.uint32_profile_company_visible.set(paramInt2);
+    case 41609: 
+      paramReqBody.uint32_profile_constellation_visible.set(paramInt2);
       return;
-    case 42075: 
-      paramReqBody.uint32_req_medalwall_flag.set(paramInt2);
-      return;
-    case 42128: 
-      paramReqBody.uint32_profile_personality_label_switch.set(paramInt2);
-      return;
-    case 42367: 
-      paramReqBody.uint32_flag_profile_life_achievement_switch.set(paramInt2);
-      return;
-    case 40313: 
-      paramReqBody.uint32_profile_interest_switch.set(paramInt2);
+    case 41607: 
+      paramReqBody.uint32_profile_birthday_visible.set(paramInt2);
       return;
     case 40314: 
       paramReqBody.uint32_profile_music_switch.set(paramInt2);
       return;
-    case 42289: 
-      paramReqBody.uint32_profile_present_switch.set(paramInt2);
-      return;
-    case 42323: 
-      paramReqBody.uint32_profile_miniapp_switch.set(paramInt2);
-      return;
-    case 42340: 
-      paramReqBody.uint32_profile_musicbox_switch.set(paramInt2);
-      return;
-    case 42356: 
-      paramReqBody.uint32_profile_sticky_note_switch.set(paramInt2);
-      return;
-    case 42361: 
-      paramReqBody.uint32_profile_qqcircle_switch.set(paramInt2);
-      return;
-    case 42377: 
-      paramReqBody.uint32_flag_profile_weishi_switch.set(paramInt2);
-      return;
-    case 42172: 
-      paramReqBody.uint32_extend_friend_card_shown.set(paramInt2);
-      return;
-    case 42425: 
-      paramReqBody.uint32_profile_anonymous_answer_switch.set(paramInt2);
-      return;
-    case 42505: 
-      paramReqBody.uint32_profile_wz_game_card_switch.set(paramInt2);
+    case 40313: 
+      paramReqBody.uint32_profile_interest_switch.set(paramInt2);
       return;
     }
-    paramReqBody.uint32_profile_show_idol_switch.set(paramInt2);
+    paramReqBody.uint32_profile_company_visible.set(paramInt2);
   }
   
   private final void a(int paramInt, oidb_0x5eb.ReqBody paramReqBody)
@@ -142,23 +142,56 @@ public final class CardSettingHandler
     {
     default: 
       return;
-    case 41611: 
-      paramReqBody.uint32_profile_sex_visible.set(1);
+    case 42505: 
+      paramReqBody.uint32_profile_wz_game_card_switch.set(1);
       return;
-    case 41610: 
-      paramReqBody.uint32_profile_age_visible.set(1);
+    case 42488: 
+      paramReqBody.uint32_profile_show_idol_switch.set(1);
       return;
-    case 41607: 
-      paramReqBody.uint32_profile_birthday_visible.set(1);
+    case 42425: 
+      paramReqBody.uint32_profile_anonymous_answer_switch.set(1);
       return;
-    case 41609: 
-      paramReqBody.uint32_profile_constellation_visible.set(1);
+    case 42377: 
+      paramReqBody.uint32_flag_profile_weishi_switch.set(1);
       return;
-    case 41618: 
-      paramReqBody.uint32_profile_profession_visible.set(1);
+    case 42367: 
+      paramReqBody.uint32_flag_profile_life_achievement_switch.set(1);
+      return;
+    case 42361: 
+      paramReqBody.uint32_profile_qqcircle_switch.set(1);
+      return;
+    case 42356: 
+      paramReqBody.uint32_profile_sticky_note_switch.set(1);
+      return;
+    case 42340: 
+      paramReqBody.uint32_profile_musicbox_switch.set(1);
+      return;
+    case 42323: 
+      paramReqBody.uint32_profile_miniapp_switch.set(1);
+      return;
+    case 42289: 
+      paramReqBody.uint32_profile_present_switch.set(1);
+      return;
+    case 42172: 
+      paramReqBody.uint32_extend_friend_card_shown.set(1);
+      return;
+    case 42128: 
+      paramReqBody.uint32_profile_personality_label_switch.set(1);
+      return;
+    case 42075: 
+      paramReqBody.uint32_req_medalwall_flag.set(1);
+      return;
+    case 41623: 
+      paramReqBody.uint32_profile_personal_note_visible.set(1);
+      return;
+    case 41622: 
+      paramReqBody.uint32_profile_email_visible.set(1);
       return;
     case 41619: 
       paramReqBody.uint32_profile_college_visible.set(1);
+      return;
+    case 41618: 
+      paramReqBody.uint32_profile_profession_visible.set(1);
       return;
     case 41614: 
       paramReqBody.uint32_profile_location_visible.set(1);
@@ -166,59 +199,26 @@ public final class CardSettingHandler
     case 41613: 
       paramReqBody.uint32_profile_hometown_visible.set(1);
       return;
-    case 41622: 
-      paramReqBody.uint32_profile_email_visible.set(1);
+    case 41611: 
+      paramReqBody.uint32_profile_sex_visible.set(1);
       return;
-    case 41623: 
-      paramReqBody.uint32_profile_personal_note_visible.set(1);
+    case 41610: 
+      paramReqBody.uint32_profile_age_visible.set(1);
       return;
-    case 40272: 
-      paramReqBody.uint32_profile_company_visible.set(1);
+    case 41609: 
+      paramReqBody.uint32_profile_constellation_visible.set(1);
       return;
-    case 42075: 
-      paramReqBody.uint32_req_medalwall_flag.set(1);
-      return;
-    case 42128: 
-      paramReqBody.uint32_profile_personality_label_switch.set(1);
-      return;
-    case 42367: 
-      paramReqBody.uint32_flag_profile_life_achievement_switch.set(1);
-      return;
-    case 40313: 
-      paramReqBody.uint32_profile_interest_switch.set(1);
+    case 41607: 
+      paramReqBody.uint32_profile_birthday_visible.set(1);
       return;
     case 40314: 
       paramReqBody.uint32_profile_music_switch.set(1);
       return;
-    case 42289: 
-      paramReqBody.uint32_profile_present_switch.set(1);
-      return;
-    case 42323: 
-      paramReqBody.uint32_profile_miniapp_switch.set(1);
-      return;
-    case 42340: 
-      paramReqBody.uint32_profile_musicbox_switch.set(1);
-      return;
-    case 42356: 
-      paramReqBody.uint32_profile_sticky_note_switch.set(1);
-      return;
-    case 42361: 
-      paramReqBody.uint32_profile_qqcircle_switch.set(1);
-      return;
-    case 42377: 
-      paramReqBody.uint32_flag_profile_weishi_switch.set(1);
-      return;
-    case 42172: 
-      paramReqBody.uint32_extend_friend_card_shown.set(1);
-      return;
-    case 42425: 
-      paramReqBody.uint32_profile_anonymous_answer_switch.set(1);
-      return;
-    case 42505: 
-      paramReqBody.uint32_profile_wz_game_card_switch.set(1);
+    case 40313: 
+      paramReqBody.uint32_profile_interest_switch.set(1);
       return;
     }
-    paramReqBody.uint32_profile_show_idol_switch.set(1);
+    paramReqBody.uint32_profile_company_visible.set(1);
   }
   
   private final void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -226,45 +226,161 @@ public final class CardSettingHandler
     if (paramToServiceMsg == null) {
       Intrinsics.throwNpe();
     }
-    if ((Intrinsics.areEqual(paramToServiceMsg.getAttribute("req_get_card_display_setting_tag"), Boolean.valueOf(true)) ^ true)) {}
-    boolean bool1;
-    do
-    {
+    if ((Intrinsics.areEqual(paramToServiceMsg.getAttribute("req_get_card_display_setting_tag"), Boolean.valueOf(true)) ^ true)) {
       return;
-      if (paramFromServiceMsg == null) {
-        Intrinsics.throwNpe();
-      }
-      if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {}
-      for (bool1 = true;; bool1 = false)
-      {
-        paramToServiceMsg = paramToServiceMsg.getAttribute("uin");
-        if (paramToServiceMsg != null) {
-          break;
-        }
-        throw new TypeCastException("null cannot be cast to non-null type kotlin.String");
-      }
-      paramToServiceMsg = (String)paramToServiceMsg;
-    } while ((TextUtils.isEmpty((CharSequence)paramToServiceMsg)) || (!TextUtils.equals((CharSequence)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (CharSequence)paramToServiceMsg)));
-    int k = paramFromServiceMsg.getResultCode();
-    paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    if (paramFromServiceMsg == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.FriendsManager");
     }
-    FriendsManager localFriendsManager = (FriendsManager)paramFromServiceMsg;
-    paramFromServiceMsg = localFriendsManager.b(paramToServiceMsg);
-    boolean bool3 = bool1;
-    int j = k;
+    if (paramFromServiceMsg == null) {
+      Intrinsics.throwNpe();
+    }
+    boolean bool1;
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    paramToServiceMsg = paramToServiceMsg.getAttribute("uin");
+    Object localObject1;
+    int k;
+    boolean bool3;
+    int j;
     boolean bool2;
     int i;
-    Object localObject;
-    if (bool1)
+    if (paramToServiceMsg != null)
     {
-      bool2 = bool1;
-      i = k;
+      paramToServiceMsg = (String)paramToServiceMsg;
+      localObject1 = (CharSequence)paramToServiceMsg;
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        if (!TextUtils.equals((CharSequence)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (CharSequence)localObject1)) {
+          return;
+        }
+        k = paramFromServiceMsg.getResultCode();
+        paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+        if (paramFromServiceMsg != null)
+        {
+          localObject1 = (FriendsManager)paramFromServiceMsg;
+          paramFromServiceMsg = ((FriendsManager)localObject1).b(paramToServiceMsg);
+          bool3 = bool1;
+          j = k;
+          if (bool1)
+          {
+            bool2 = bool1;
+            i = k;
+          }
+        }
+      }
+    }
+    for (;;)
+    {
       try
       {
-        localObject = new oidb_sso.OIDBSSOPkg();
-        if (paramObject == null)
+        Object localObject2 = new oidb_sso.OIDBSSOPkg();
+        if (paramObject != null)
+        {
+          bool2 = bool1;
+          i = k;
+          paramObject = ((oidb_sso.OIDBSSOPkg)localObject2).mergeFrom((byte[])paramObject);
+          bool2 = bool1;
+          i = k;
+          Intrinsics.checkExpressionValueIsNotNull(paramObject, "pkg.mergeFrom(data as ByteArray)");
+          bool2 = bool1;
+          i = k;
+          paramObject = (oidb_sso.OIDBSSOPkg)paramObject;
+          bool2 = bool1;
+          i = k;
+          k = paramObject.uint32_result.get();
+          bool2 = bool1;
+          i = k;
+          if (paramObject.uint32_result.get() != 0) {
+            break label812;
+          }
+          bool1 = true;
+          bool3 = bool1;
+          j = k;
+          if (bool1)
+          {
+            bool2 = bool1;
+            i = k;
+            bool3 = bool1;
+            j = k;
+            if (paramObject.bytes_bodybuffer.has())
+            {
+              bool2 = bool1;
+              i = k;
+              bool3 = bool1;
+              j = k;
+              if (paramObject.bytes_bodybuffer.get() != null)
+              {
+                bool2 = bool1;
+                i = k;
+                localObject2 = new oidb_0x5eb.RspBody();
+                bool2 = bool1;
+                i = k;
+                ((oidb_0x5eb.RspBody)localObject2).mergeFrom(paramObject.bytes_bodybuffer.get().toByteArray());
+                bool2 = bool1;
+                i = k;
+                bool3 = bool1;
+                j = k;
+                if (((oidb_0x5eb.RspBody)localObject2).rpt_msg_uin_data.has())
+                {
+                  bool2 = bool1;
+                  i = k;
+                  bool3 = bool1;
+                  j = k;
+                  if (((oidb_0x5eb.RspBody)localObject2).rpt_msg_uin_data.get().size() > 0)
+                  {
+                    bool2 = bool1;
+                    i = k;
+                    paramObject = (oidb_0x5eb.UdcUinData)((oidb_0x5eb.RspBody)localObject2).rpt_msg_uin_data.get().get(0);
+                    bool2 = bool1;
+                    i = k;
+                    Intrinsics.checkExpressionValueIsNotNull(paramObject, "udcData");
+                    bool2 = bool1;
+                    i = k;
+                    Intrinsics.checkExpressionValueIsNotNull(paramFromServiceMsg, "card");
+                    bool2 = bool1;
+                    i = k;
+                    a(paramObject, paramFromServiceMsg);
+                    bool2 = bool1;
+                    i = k;
+                    b(paramObject, paramFromServiceMsg);
+                    bool2 = bool1;
+                    i = k;
+                    ((FriendsManager)localObject1).a(paramFromServiceMsg);
+                    bool2 = bool1;
+                    i = k;
+                    bool3 = bool1;
+                    j = k;
+                    if (QLog.isColorLevel())
+                    {
+                      bool2 = bool1;
+                      i = k;
+                      paramObject = new StringBuilder();
+                      bool2 = bool1;
+                      i = k;
+                      paramObject.append("handleGetCardDisplaySetting size=");
+                      bool2 = bool1;
+                      i = k;
+                      paramObject.append(paramFromServiceMsg.profileDisplaySettingStates.size());
+                      bool2 = bool1;
+                      i = k;
+                      paramObject.append(" settingStates=");
+                      bool2 = bool1;
+                      i = k;
+                      paramObject.append(paramFromServiceMsg.profileDisplaySettingStates);
+                      bool2 = bool1;
+                      i = k;
+                      QLog.d("CardSettingHandler", 2, paramObject.toString());
+                      bool3 = bool1;
+                      j = k;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        else
         {
           bool2 = bool1;
           i = k;
@@ -274,106 +390,27 @@ public final class CardSettingHandler
       catch (Exception paramObject)
       {
         QLog.d("CardSettingHandler", 1, "handleGetCardDisplaySetting ex", (Throwable)paramObject);
-        bool1 = bool2;
+        j = i;
+        bool3 = bool2;
       }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CardSettingHandler", 2, "handleGetCardDisplaySetting success=" + bool1 + ", uin=" + paramToServiceMsg + ", resultCode=" + i);
-      }
-      notifyUI(1, bool1, new Object[] { paramToServiceMsg, paramFromServiceMsg });
-      return;
-      bool2 = bool1;
-      i = k;
-      paramObject = ((oidb_sso.OIDBSSOPkg)localObject).mergeFrom((byte[])paramObject);
-      bool2 = bool1;
-      i = k;
-      Intrinsics.checkExpressionValueIsNotNull(paramObject, "pkg.mergeFrom(data as ByteArray)");
-      bool2 = bool1;
-      i = k;
-      paramObject = (oidb_sso.OIDBSSOPkg)paramObject;
-      bool2 = bool1;
-      i = k;
-      k = paramObject.uint32_result.get();
-      bool2 = bool1;
-      i = k;
-      if (paramObject.uint32_result.get() == 0) {}
-      for (bool1 = true;; bool1 = false)
+      if (QLog.isColorLevel())
       {
-        bool3 = bool1;
-        j = k;
-        if (!bool1) {
-          break label738;
-        }
-        bool2 = bool1;
-        i = k;
-        bool3 = bool1;
-        j = k;
-        if (!paramObject.bytes_bodybuffer.has()) {
-          break label738;
-        }
-        bool2 = bool1;
-        i = k;
-        bool3 = bool1;
-        j = k;
-        if (paramObject.bytes_bodybuffer.get() == null) {
-          break label738;
-        }
-        bool2 = bool1;
-        i = k;
-        localObject = new oidb_0x5eb.RspBody();
-        bool2 = bool1;
-        i = k;
-        ((oidb_0x5eb.RspBody)localObject).mergeFrom(paramObject.bytes_bodybuffer.get().toByteArray());
-        bool2 = bool1;
-        i = k;
-        bool3 = bool1;
-        j = k;
-        if (!((oidb_0x5eb.RspBody)localObject).rpt_msg_uin_data.has()) {
-          break label738;
-        }
-        bool2 = bool1;
-        i = k;
-        bool3 = bool1;
-        j = k;
-        if (((oidb_0x5eb.RspBody)localObject).rpt_msg_uin_data.get().size() <= 0) {
-          break label738;
-        }
-        bool2 = bool1;
-        i = k;
-        paramObject = (oidb_0x5eb.UdcUinData)((oidb_0x5eb.RspBody)localObject).rpt_msg_uin_data.get().get(0);
-        bool2 = bool1;
-        i = k;
-        Intrinsics.checkExpressionValueIsNotNull(paramObject, "udcData");
-        bool2 = bool1;
-        i = k;
-        Intrinsics.checkExpressionValueIsNotNull(paramFromServiceMsg, "card");
-        bool2 = bool1;
-        i = k;
-        a(paramObject, paramFromServiceMsg);
-        bool2 = bool1;
-        i = k;
-        b(paramObject, paramFromServiceMsg);
-        bool2 = bool1;
-        i = k;
-        localFriendsManager.a(paramFromServiceMsg);
-        bool2 = bool1;
-        i = k;
-        bool3 = bool1;
-        j = k;
-        if (!QLog.isColorLevel()) {
-          break label738;
-        }
-        bool2 = bool1;
-        i = k;
-        QLog.d("CardSettingHandler", 2, "handleGetCardDisplaySetting size=" + paramFromServiceMsg.profileDisplaySettingStates.size() + " settingStates=" + paramFromServiceMsg.profileDisplaySettingStates);
-        i = k;
-        break;
+        paramObject = new StringBuilder();
+        paramObject.append("handleGetCardDisplaySetting success=");
+        paramObject.append(bool3);
+        paramObject.append(", uin=");
+        paramObject.append(paramToServiceMsg);
+        paramObject.append(", resultCode=");
+        paramObject.append(j);
+        QLog.d("CardSettingHandler", 2, paramObject.toString());
       }
-      label738:
-      i = j;
-      bool1 = bool3;
+      notifyUI(1, bool3, new Object[] { paramToServiceMsg, paramFromServiceMsg });
+      return;
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.FriendsManager");
+      return;
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.String");
+      label812:
+      bool1 = false;
     }
   }
   
@@ -419,127 +456,154 @@ public final class CardSettingHandler
     if (paramToServiceMsg == null) {
       Intrinsics.throwNpe();
     }
-    if ((Intrinsics.areEqual(paramToServiceMsg.getAttribute("req_set_card_display_setting_tag"), Boolean.valueOf(true)) ^ true)) {}
-    Object localObject1;
-    do
-    {
+    if ((Intrinsics.areEqual(paramToServiceMsg.getAttribute("req_set_card_display_setting_tag"), Boolean.valueOf(true)) ^ true)) {
       return;
-      if (paramFromServiceMsg == null) {
-        Intrinsics.throwNpe();
-      }
-      if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {}
-      for (bool1 = true;; bool1 = false)
-      {
-        localObject1 = paramToServiceMsg.getAttribute("uin");
-        if (localObject1 != null) {
-          break;
-        }
-        throw new TypeCastException("null cannot be cast to non-null type kotlin.String");
-      }
-      localObject1 = (String)localObject1;
-    } while ((TextUtils.isEmpty((CharSequence)localObject1)) || (!TextUtils.equals((CharSequence)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (CharSequence)localObject1)));
-    int j = paramFromServiceMsg.getResultCode();
-    paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    }
     if (paramFromServiceMsg == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.FriendsManager");
+      Intrinsics.throwNpe();
     }
-    FriendsManager localFriendsManager = (FriendsManager)paramFromServiceMsg;
-    paramFromServiceMsg = localFriendsManager.b((String)localObject1);
-    paramToServiceMsg = paramToServiceMsg.getAttribute("req_items");
-    if (paramToServiceMsg == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.collections.ArrayList<com.tencent.mobileqq.profilesetting.ReqSetSettingItem> /* = java.util.ArrayList<com.tencent.mobileqq.profilesetting.ReqSetSettingItem> */");
+    boolean bool1;
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {
+      bool1 = true;
+    } else {
+      bool1 = false;
     }
-    paramToServiceMsg = (ArrayList)paramToServiceMsg;
-    boolean bool2 = bool1;
-    int i = j;
+    Object localObject1 = paramToServiceMsg.getAttribute("uin");
     Object localObject2;
-    if (bool1)
+    int j;
+    boolean bool2;
+    int i;
+    if (localObject1 != null)
     {
-      bool2 = bool1;
-      i = j;
+      localObject1 = (String)localObject1;
+      localObject2 = (CharSequence)localObject1;
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        if (!TextUtils.equals((CharSequence)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (CharSequence)localObject2)) {
+          return;
+        }
+        j = paramFromServiceMsg.getResultCode();
+        paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+        if (paramFromServiceMsg != null)
+        {
+          localObject2 = (FriendsManager)paramFromServiceMsg;
+          paramFromServiceMsg = ((FriendsManager)localObject2).b((String)localObject1);
+          paramToServiceMsg = paramToServiceMsg.getAttribute("req_items");
+          if (paramToServiceMsg != null)
+          {
+            paramToServiceMsg = (ArrayList)paramToServiceMsg;
+            bool2 = bool1;
+            i = j;
+            if (bool1)
+            {
+              bool2 = bool1;
+              i = j;
+            }
+          }
+        }
+      }
+    }
+    for (;;)
+    {
       try
       {
-        localObject2 = new oidb_sso.OIDBSSOPkg();
-        if (paramObject != null) {
-          break label366;
+        Object localObject3 = new oidb_sso.OIDBSSOPkg();
+        if (paramObject != null)
+        {
+          bool2 = bool1;
+          i = j;
+          paramObject = ((oidb_sso.OIDBSSOPkg)localObject3).mergeFrom((byte[])paramObject);
+          bool2 = bool1;
+          i = j;
+          Intrinsics.checkExpressionValueIsNotNull(paramObject, "pkg.mergeFrom(data as ByteArray)");
+          bool2 = bool1;
+          i = j;
+          paramObject = (oidb_sso.OIDBSSOPkg)paramObject;
+          bool2 = bool1;
+          i = j;
+          j = paramObject.uint32_result.get();
+          bool2 = bool1;
+          i = j;
+          if (paramObject.uint32_result.get() != 0) {
+            break label654;
+          }
+          bool1 = true;
+          bool2 = bool1;
+          i = j;
+          if (bool1)
+          {
+            bool2 = bool1;
+            i = j;
+            paramObject = paramToServiceMsg.iterator();
+            bool2 = bool1;
+            i = j;
+            if (paramObject.hasNext())
+            {
+              bool2 = bool1;
+              i = j;
+              localObject3 = (ReqSetSettingItem)paramObject.next();
+              bool2 = bool1;
+              i = j;
+              ProfileSettingUtils.Companion localCompanion = ProfileSettingUtils.a;
+              bool2 = bool1;
+              i = j;
+              int k = ((ReqSetSettingItem)localObject3).a();
+              bool2 = bool1;
+              i = j;
+              int m = ((ReqSetSettingItem)localObject3).c();
+              bool2 = bool1;
+              i = j;
+              Intrinsics.checkExpressionValueIsNotNull(paramFromServiceMsg, "card");
+              bool2 = bool1;
+              i = j;
+              localCompanion.a(k, m, paramFromServiceMsg, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+              continue;
+            }
+            bool2 = bool1;
+            i = j;
+            ((FriendsManager)localObject2).a(paramFromServiceMsg);
+            bool2 = bool1;
+            i = j;
+          }
         }
-        bool2 = bool1;
-        i = j;
-        throw new TypeCastException("null cannot be cast to non-null type kotlin.ByteArray");
+        else
+        {
+          bool2 = bool1;
+          i = j;
+          throw new TypeCastException("null cannot be cast to non-null type kotlin.ByteArray");
+        }
       }
       catch (Exception paramObject)
       {
         QLog.d("CardSettingHandler", 1, "handleSetCardDisplaySetting ex", (Throwable)paramObject);
-        bool1 = bool2;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("CardSettingHandler", 2, "handleSetCardDisplaySetting success=" + bool1 + ", uin=" + (String)localObject1 + ", resultCode=" + i + " reqItems=" + paramToServiceMsg + " settingStates=" + paramFromServiceMsg.profileDisplaySettingStates);
-      }
-      notifyUI(2, bool1, new Object[] { localObject1, paramFromServiceMsg, paramToServiceMsg });
-      return;
-      label366:
-      bool2 = bool1;
-      i = j;
-      paramObject = ((oidb_sso.OIDBSSOPkg)localObject2).mergeFrom((byte[])paramObject);
-      bool2 = bool1;
-      i = j;
-      Intrinsics.checkExpressionValueIsNotNull(paramObject, "pkg.mergeFrom(data as ByteArray)");
-      bool2 = bool1;
-      i = j;
-      paramObject = (oidb_sso.OIDBSSOPkg)paramObject;
-      bool2 = bool1;
-      i = j;
-      j = paramObject.uint32_result.get();
-      bool2 = bool1;
-      i = j;
-      if (paramObject.uint32_result.get() != 0) {
-        break label624;
-      }
-    }
-    label624:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      bool2 = bool1;
-      i = j;
-      if (bool1)
+      if (QLog.isColorLevel())
       {
-        bool2 = bool1;
-        i = j;
-        paramObject = paramToServiceMsg.iterator();
-        for (;;)
-        {
-          bool2 = bool1;
-          i = j;
-          if (!paramObject.hasNext()) {
-            break;
-          }
-          bool2 = bool1;
-          i = j;
-          localObject2 = (ReqSetSettingItem)paramObject.next();
-          bool2 = bool1;
-          i = j;
-          ProfileSettingUtils.Companion localCompanion = ProfileSettingUtils.a;
-          bool2 = bool1;
-          i = j;
-          int k = ((ReqSetSettingItem)localObject2).a();
-          bool2 = bool1;
-          i = j;
-          int m = ((ReqSetSettingItem)localObject2).c();
-          bool2 = bool1;
-          i = j;
-          Intrinsics.checkExpressionValueIsNotNull(paramFromServiceMsg, "card");
-          bool2 = bool1;
-          i = j;
-          localCompanion.a(k, m, paramFromServiceMsg, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        }
-        bool2 = bool1;
-        i = j;
-        localFriendsManager.a(paramFromServiceMsg);
-        i = j;
-        break;
+        paramObject = new StringBuilder();
+        paramObject.append("handleSetCardDisplaySetting success=");
+        paramObject.append(bool2);
+        paramObject.append(", uin=");
+        paramObject.append((String)localObject1);
+        paramObject.append(", resultCode=");
+        paramObject.append(i);
+        paramObject.append(" reqItems=");
+        paramObject.append(paramToServiceMsg);
+        paramObject.append(" settingStates=");
+        paramObject.append(paramFromServiceMsg.profileDisplaySettingStates);
+        QLog.d("CardSettingHandler", 2, paramObject.toString());
       }
-      bool1 = bool2;
-      break;
+      notifyUI(2, bool2, new Object[] { localObject1, paramFromServiceMsg, paramToServiceMsg });
+      return;
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.collections.ArrayList<com.tencent.mobileqq.profilesetting.ReqSetSettingItem> /* = java.util.ArrayList<com.tencent.mobileqq.profilesetting.ReqSetSettingItem> */");
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.FriendsManager");
+      return;
+      paramToServiceMsg = new TypeCastException("null cannot be cast to non-null type kotlin.String");
+      for (;;)
+      {
+        throw paramToServiceMsg;
+      }
+      label654:
+      bool1 = false;
     }
   }
   
@@ -596,39 +660,55 @@ public final class CardSettingHandler
   {
     Intrinsics.checkParameterIsNotNull(paramArrayList, "fieldIds");
     String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    if (QLog.isColorLevel()) {
-      QLog.i("CardSettingHandler", 2, "reqGetCardDisplaySetting uin=" + str + ", size=" + paramArrayList.size() + ", fieldIds=" + paramArrayList);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reqGetCardDisplaySetting uin=");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(", size=");
+      ((StringBuilder)localObject).append(paramArrayList.size());
+      ((StringBuilder)localObject).append(", fieldIds=");
+      ((StringBuilder)localObject).append(paramArrayList);
+      QLog.i("CardSettingHandler", 2, ((StringBuilder)localObject).toString());
     }
-    oidb_0x5eb.ReqBody localReqBody = new oidb_0x5eb.ReqBody();
+    Object localObject = new oidb_0x5eb.ReqBody();
     try
     {
       long l = Long.parseLong(str);
-      localReqBody.rpt_uint64_uins.add(Long.valueOf(l));
+      ((oidb_0x5eb.ReqBody)localObject).rpt_uint64_uins.add(Long.valueOf(l));
       paramArrayList = paramArrayList.iterator();
       while (paramArrayList.hasNext())
       {
         Integer localInteger = (Integer)paramArrayList.next();
         Intrinsics.checkExpressionValueIsNotNull(localInteger, "fieldId");
-        a(localInteger.intValue(), localReqBody);
+        a(localInteger.intValue(), (oidb_0x5eb.ReqBody)localObject);
       }
-      paramArrayList = makeOIDBPkg("OidbSvc.0x5eb_22", 1515, 22, localReqBody.toByteArray());
+      paramArrayList = makeOIDBPkg("OidbSvc.0x5eb_22", 1515, 22, ((oidb_0x5eb.ReqBody)localObject).toByteArray());
+      paramArrayList.addAttribute("uin", str);
+      paramArrayList.addAttribute("req_get_card_display_setting_tag", Boolean.valueOf(true));
+      sendPbReq(paramArrayList);
+      return;
     }
     catch (Exception paramArrayList)
     {
       QLog.e("CardSettingHandler", 1, "reqGetCardDisplaySetting error:", (Throwable)paramArrayList);
-      return;
     }
-    paramArrayList.addAttribute("uin", str);
-    paramArrayList.addAttribute("req_get_card_display_setting_tag", Boolean.valueOf(true));
-    sendPbReq(paramArrayList);
   }
   
   public final void b(@NotNull ArrayList<ReqSetSettingItem> paramArrayList)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayList, "items");
     String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    if (QLog.isColorLevel()) {
-      QLog.i("CardSettingHandler", 2, "reqSetCardDisplaySetting uin=" + str + ", size=" + paramArrayList.size() + ", fieldIds=" + paramArrayList);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reqSetCardDisplaySetting uin=");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(", size=");
+      ((StringBuilder)localObject).append(paramArrayList.size());
+      ((StringBuilder)localObject).append(", fieldIds=");
+      ((StringBuilder)localObject).append(paramArrayList);
+      QLog.i("CardSettingHandler", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = new oidb_0x587.ReqBody();
     try
@@ -642,16 +722,16 @@ public final class CardSettingHandler
         a(localReqSetSettingItem.a(), localReqSetSettingItem.c(), (oidb_0x587.ReqBody)localObject);
       }
       localObject = makeOIDBPkg("OidbSvc.0x587_74", 1415, 74, ((oidb_0x587.ReqBody)localObject).toByteArray());
+      ((ToServiceMsg)localObject).addAttribute("uin", str);
+      ((ToServiceMsg)localObject).addAttribute("req_set_card_display_setting_tag", Boolean.valueOf(true));
+      ((ToServiceMsg)localObject).addAttribute("req_items", paramArrayList);
+      sendPbReq((ToServiceMsg)localObject);
+      return;
     }
     catch (Exception paramArrayList)
     {
       QLog.e("CardSettingHandler", 1, "reqSetCardDisplaySetting error:", (Throwable)paramArrayList);
-      return;
     }
-    ((ToServiceMsg)localObject).addAttribute("uin", str);
-    ((ToServiceMsg)localObject).addAttribute("req_set_card_display_setting_tag", Boolean.valueOf(true));
-    ((ToServiceMsg)localObject).addAttribute("req_items", paramArrayList);
-    sendPbReq((ToServiceMsg)localObject);
   }
   
   @NotNull
@@ -669,7 +749,7 @@ public final class CardSettingHandler
   }
   
   @NotNull
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return CardSettingObserver.class;
   }
@@ -677,39 +757,36 @@ public final class CardSettingHandler
   public void onReceive(@Nullable ToServiceMsg paramToServiceMsg, @Nullable FromServiceMsg paramFromServiceMsg, @Nullable Object paramObject)
   {
     String str;
-    if (paramFromServiceMsg != null)
-    {
+    if (paramFromServiceMsg != null) {
       str = paramFromServiceMsg.getServiceCmd();
-      if (!msgCmdFilter(str)) {
-        break label26;
+    } else {
+      str = null;
+    }
+    if (msgCmdFilter(str)) {
+      return;
+    }
+    if (str == null) {
+      return;
+    }
+    int i = str.hashCode();
+    if (i != -532178634)
+    {
+      if (i != -489339333) {
+        return;
+      }
+      if (str.equals("OidbSvc.0x5eb_22")) {
+        a(paramToServiceMsg, paramFromServiceMsg, paramObject);
       }
     }
-    label26:
-    do
+    else if (str.equals("OidbSvc.0x587_74"))
     {
-      do
-      {
-        do
-        {
-          return;
-          str = null;
-          break;
-        } while (str == null);
-        switch (str.hashCode())
-        {
-        default: 
-          return;
-        }
-      } while (!str.equals("OidbSvc.0x587_74"));
       b(paramToServiceMsg, paramFromServiceMsg, paramObject);
-      return;
-    } while (!str.equals("OidbSvc.0x5eb_22"));
-    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilesetting.CardSettingHandler
  * JD-Core Version:    0.7.0.1
  */

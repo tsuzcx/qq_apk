@@ -87,36 +87,43 @@ public final class ReqHead
     paramJceOutputStream.write(this.phoneGuid, 2);
     paramJceOutputStream.write(this.qua, 3);
     paramJceOutputStream.write(this.encryptWithPack, 4);
-    if (this.terminal != null) {
-      paramJceOutputStream.write(this.terminal, 5);
+    Object localObject = this.terminal;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
     paramJceOutputStream.write(this.assistantAPILevel, 6);
     paramJceOutputStream.write(this.assistantVersionCode, 7);
-    if (this.net != null) {
-      paramJceOutputStream.write(this.net, 8);
+    localObject = this.net;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 8);
     }
-    if (this.hostPackageName != null) {
-      paramJceOutputStream.write(this.hostPackageName, 9);
+    localObject = this.hostPackageName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
     paramJceOutputStream.write(this.hostVersionCode, 10);
-    if (this.sdkInfo != null) {
-      paramJceOutputStream.write(this.sdkInfo, 11);
+    localObject = this.sdkInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 11);
     }
-    if (this.romInfo != null) {
-      paramJceOutputStream.write(this.romInfo, 12);
+    localObject = this.romInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 12);
     }
-    if (this.ticket != null) {
-      paramJceOutputStream.write(this.ticket, 13);
+    localObject = this.ticket;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 13);
     }
-    if (this.terminalExtra != null) {
-      paramJceOutputStream.write(this.terminalExtra, 14);
+    localObject = this.terminalExtra;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 14);
     }
     paramJceOutputStream.write(this.yybVersion, 15);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistant.common.jce.ReqHead
  * JD-Core Version:    0.7.0.1
  */

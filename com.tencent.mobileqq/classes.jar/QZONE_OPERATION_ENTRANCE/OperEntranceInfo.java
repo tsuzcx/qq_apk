@@ -33,14 +33,15 @@ public final class OperEntranceInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.resTable != null) {
-      paramJceOutputStream.write(this.resTable, 0);
+    Map localMap = this.resTable;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QZONE_OPERATION_ENTRANCE.OperEntranceInfo
  * JD-Core Version:    0.7.0.1
  */

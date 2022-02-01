@@ -21,8 +21,7 @@ class URLImageLoader$2
       paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
       if (paramDrawable != null)
       {
-        int i = paramDrawable.getRowBytes();
-        i = paramDrawable.getHeight() * i;
+        int i = paramDrawable.getRowBytes() * paramDrawable.getHeight();
         InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "URLImageLoader cache put:", paramConfig, " size=", Integer.valueOf(i) });
         return i;
       }
@@ -32,7 +31,7 @@ class URLImageLoader$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.AsyncImage.URLImageLoader.2
  * JD-Core Version:    0.7.0.1
  */

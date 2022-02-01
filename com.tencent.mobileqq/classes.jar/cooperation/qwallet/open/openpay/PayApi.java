@@ -63,18 +63,19 @@ public class PayApi
             this.f = localJSONObject.optString("urlScheme");
           }
           paramString = paramString.optJSONObject("params");
-          if (paramString != null)
-          {
-            this.i = paramString.optString("tokenId");
-            this.jdField_a_of_type_Long = paramString.optLong("timeStamp");
-            this.j = paramString.optString("nonce");
-            this.k = paramString.optString("bargainorId");
-            this.l = "HMAC-SHA1";
-            this.m = paramString.optString("sig");
+          if (paramString == null) {
             return;
           }
+          this.i = paramString.optString("tokenId");
+          this.jdField_a_of_type_Long = paramString.optLong("timeStamp");
+          this.j = paramString.optString("nonce");
+          this.k = paramString.optString("bargainorId");
+          this.l = "HMAC-SHA1";
+          this.m = paramString.optString("sig");
+          return;
         }
       }
+      return;
     }
     catch (JSONException paramString)
     {
@@ -84,34 +85,96 @@ public class PayApi
   
   public boolean a()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    while ((TextUtils.isEmpty(this.c)) || ((!this.c.equals("native")) && (!this.c.equals("browser"))) || (TextUtils.isEmpty(this.n)) || ((!this.c.equals("browser")) && (TextUtils.isEmpty(this.f))) || (TextUtils.isEmpty(this.i)) || (TextUtils.isEmpty(this.k)) || (TextUtils.isEmpty(this.j)) || (TextUtils.isEmpty(this.m)) || (TextUtils.isEmpty(this.l)) || (this.jdField_a_of_type_Long <= 0L) || (TextUtils.isEmpty(this.e))) {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       return false;
     }
-    return true;
+    if (TextUtils.isEmpty(this.c)) {
+      return false;
+    }
+    if ((!this.c.equals("native")) && (!this.c.equals("browser"))) {
+      return false;
+    }
+    if (TextUtils.isEmpty(this.n)) {
+      return false;
+    }
+    if ((!this.c.equals("browser")) && (TextUtils.isEmpty(this.f))) {
+      return false;
+    }
+    if (TextUtils.isEmpty(this.i)) {
+      return false;
+    }
+    if (TextUtils.isEmpty(this.k)) {
+      return false;
+    }
+    if (TextUtils.isEmpty(this.j)) {
+      return false;
+    }
+    if (TextUtils.isEmpty(this.m)) {
+      return false;
+    }
+    if (TextUtils.isEmpty(this.l)) {
+      return false;
+    }
+    if (this.jdField_a_of_type_Long <= 0L) {
+      return false;
+    }
+    return !TextUtils.isEmpty(this.e);
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder(128);
-    localStringBuilder.append(super.toString());
-    localStringBuilder.append("&sn=" + this.e);
-    localStringBuilder.append("&cs=" + this.f);
-    localStringBuilder.append("&pa=" + this.g);
-    localStringBuilder.append("&pah=" + this.h);
-    localStringBuilder.append("&ti=" + this.i);
-    localStringBuilder.append("&ne=" + this.j);
-    localStringBuilder.append("&ts=" + this.jdField_a_of_type_Long);
-    localStringBuilder.append("&bi=" + this.k);
-    localStringBuilder.append("&st=" + this.l);
-    localStringBuilder.append("&sg=" + this.m);
-    localStringBuilder.append("&pn=" + this.n);
-    return localStringBuilder.toString();
+    StringBuilder localStringBuilder1 = new StringBuilder(128);
+    localStringBuilder1.append(super.toString());
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("&sn=");
+    localStringBuilder2.append(this.e);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("&cs=");
+    localStringBuilder2.append(this.f);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("&pa=");
+    localStringBuilder2.append(this.g);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("&pah=");
+    localStringBuilder2.append(this.h);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("&ti=");
+    localStringBuilder2.append(this.i);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("&ne=");
+    localStringBuilder2.append(this.j);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("&ts=");
+    localStringBuilder2.append(this.jdField_a_of_type_Long);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("&bi=");
+    localStringBuilder2.append(this.k);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("&st=");
+    localStringBuilder2.append(this.l);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("&sg=");
+    localStringBuilder2.append(this.m);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("&pn=");
+    localStringBuilder2.append(this.n);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    return localStringBuilder1.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     cooperation.qwallet.open.openpay.PayApi
  * JD-Core Version:    0.7.0.1
  */

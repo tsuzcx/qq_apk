@@ -17,8 +17,10 @@ public abstract class QQUIEventReceiver<T extends IEventReceiver, EVENT extends 
   protected final void onDispatch2(@NonNull EVENT paramEVENT)
   {
     IEventReceiver localIEventReceiver = (IEventReceiver)this.mRef.get();
-    if (localIEventReceiver == null) {}
-    while (!localIEventReceiver.isValidate()) {
+    if (localIEventReceiver == null) {
+      return;
+    }
+    if (!localIEventReceiver.isValidate()) {
       return;
     }
     onEvent(localIEventReceiver, paramEVENT);
@@ -28,7 +30,7 @@ public abstract class QQUIEventReceiver<T extends IEventReceiver, EVENT extends 
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tribe.async.dispatch.QQUIEventReceiver
  * JD-Core Version:    0.7.0.1
  */

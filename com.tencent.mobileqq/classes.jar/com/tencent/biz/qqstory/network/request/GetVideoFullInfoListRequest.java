@@ -55,22 +55,18 @@ public class GetVideoFullInfoListRequest
     return jdField_a_of_type_JavaLangString;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqBatchGetVideoFullInfoList localReqBatchGetVideoFullInfoList = new qqstory_service.ReqBatchGetVideoFullInfoList();
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if (localObject != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      if (localIterator.hasNext())
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        String str = (String)localIterator.next();
-        if (!str.startsWith("Loading")) {}
-        for (boolean bool = true;; bool = false)
-        {
-          AssertUtils.a(bool);
-          localReqBatchGetVideoFullInfoList.vid_list.add(ByteStringMicro.copyFromUtf8(str));
-          break;
-        }
+        String str = (String)((Iterator)localObject).next();
+        AssertUtils.assertTrue(str.startsWith("Loading") ^ true);
+        localReqBatchGetVideoFullInfoList.vid_list.add(ByteStringMicro.copyFromUtf8(str));
       }
     }
     localReqBatchGetVideoFullInfoList.source.set(this.c);
@@ -79,12 +75,17 @@ public class GetVideoFullInfoListRequest
   
   public String toString()
   {
-    return "GetVideoFullInfoListRequest{vidList='" + this.jdField_a_of_type_JavaUtilList + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetVideoFullInfoListRequest{vidList='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetVideoFullInfoListRequest
  * JD-Core Version:    0.7.0.1
  */

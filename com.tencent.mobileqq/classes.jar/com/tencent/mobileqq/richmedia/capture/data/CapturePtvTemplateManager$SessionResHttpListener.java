@@ -17,91 +17,82 @@ class CapturePtvTemplateManager$SessionResHttpListener
   CapturePtvTemplateManager.DLItem jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem;
   CapturePtvTemplateManager.DLSession jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLSession;
   
-  CapturePtvTemplateManager$SessionResHttpListener(CapturePtvTemplateManager paramCapturePtvTemplateManager, CapturePtvTemplateManager.DLSession paramDLSession, CapturePtvTemplateManager.DLItem paramDLItem)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLSession = paramDLSession;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem = paramDLItem;
-  }
-  
   public void onResp(NetResp paramNetResp)
   {
     if (QLog.isColorLevel()) {
       QLog.i("CapturePtvTemplateManager", 2, String.format("SessionResHttpListener respCode[%s], resName[%s], resUrl[%s]", new Object[] { Integer.valueOf(paramNetResp.mHttpCode), this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem.c }));
     }
     paramNetResp = (CapturePtvTemplateManager.DLItem)paramNetResp.mReq.getUserData();
-    if (paramNetResp == null) {}
-    label269:
-    label286:
-    do
+    if (paramNetResp == null) {
+      return;
+    }
+    Object localObject;
+    if (paramNetResp.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem.jdField_a_of_type_JavaLangString))
     {
-      do
-      {
-        for (;;)
+      if (CapturePtvTemplateManager.b(paramNetResp.jdField_a_of_type_JavaLangString, paramNetResp.jdField_b_of_type_JavaLangString, false)) {
+        try
         {
-          return;
-          if (!paramNetResp.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem.jdField_a_of_type_JavaLangString)) {
-            break label286;
-          }
-          if (CapturePtvTemplateManager.b(paramNetResp.jdField_a_of_type_JavaLangString, paramNetResp.jdField_b_of_type_JavaLangString, false)) {}
-          try
+          ZipUtils.unZipFile(new File(CapturePtvTemplateManager.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem.jdField_a_of_type_JavaLangString), CapturePtvTemplateManager.jdField_a_of_type_JavaLangString);
+        }
+        catch (IOException localIOException)
+        {
+          localIOException.printStackTrace();
+        }
+      }
+      if (!paramNetResp.jdField_b_of_type_Boolean)
+      {
+        paramNetResp = (CapturePtvTemplateManager.BusinessParam)this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLSession.a));
+        if (paramNetResp != null)
+        {
+          paramNetResp = paramNetResp.b.iterator();
+          while (paramNetResp.hasNext())
           {
-            ZipUtils.unZipFile(new File(CapturePtvTemplateManager.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem.jdField_a_of_type_JavaLangString), CapturePtvTemplateManager.jdField_a_of_type_JavaLangString);
-            if (paramNetResp.jdField_b_of_type_Boolean) {
-              break label269;
-            }
-            paramNetResp = (CapturePtvTemplateManager.BusinessParam)this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLSession.a));
-            if (paramNetResp != null)
-            {
-              paramNetResp = paramNetResp.b.iterator();
-              while (paramNetResp.hasNext())
-              {
-                CapturePtvTemplateManager.DLSession localDLSession = (CapturePtvTemplateManager.DLSession)paramNetResp.next();
-                if (CapturePtvTemplateManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager, localDLSession, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem)) {
-                  paramNetResp.remove();
-                }
-              }
-            }
-          }
-          catch (IOException localIOException)
-          {
-            for (;;)
-            {
-              localIOException.printStackTrace();
+            localObject = (CapturePtvTemplateManager.DLSession)paramNetResp.next();
+            if (CapturePtvTemplateManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager, (CapturePtvTemplateManager.DLSession)localObject, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem)) {
+              paramNetResp.remove();
             }
           }
         }
-      } while (!QLog.isColorLevel());
-      QLog.e("CapturePtvTemplateManager", 2, "SessionResHttpListener[onResp]: BusinessParam=null  kind=" + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLSession.a + " mItem.mName=" + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem.jdField_a_of_type_JavaLangString);
-      return;
-      CapturePtvTemplateManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLSession, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem);
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.e("CapturePtvTemplateManager", 2, "SessionResHttpListener[onResp]: download information no match current=" + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem.jdField_a_of_type_JavaLangString + " callback=" + paramNetResp.jdField_a_of_type_JavaLangString);
+        if (QLog.isColorLevel())
+        {
+          paramNetResp = new StringBuilder();
+          paramNetResp.append("SessionResHttpListener[onResp]: BusinessParam=null  kind=");
+          paramNetResp.append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLSession.a);
+          paramNetResp.append(" mItem.mName=");
+          paramNetResp.append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem.jdField_a_of_type_JavaLangString);
+          QLog.e("CapturePtvTemplateManager", 2, paramNetResp.toString());
+        }
+      }
+      else
+      {
+        CapturePtvTemplateManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLSession, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem);
+      }
+    }
+    else if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("SessionResHttpListener[onResp]: download information no match current=");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(" callback=");
+      ((StringBuilder)localObject).append(paramNetResp.jdField_a_of_type_JavaLangString);
+      QLog.e("CapturePtvTemplateManager", 2, ((StringBuilder)localObject).toString());
+    }
   }
   
   public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
   {
     paramNetReq = (CapturePtvTemplateManager.DLItem)paramNetReq.getUserData();
-    if (paramNetReq == null) {}
-    label134:
-    label187:
-    do
+    if (paramNetReq == null) {
+      return;
+    }
+    Object localObject;
+    if (paramNetReq.jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem.jdField_a_of_type_JavaLangString))
     {
-      do
+      localObject = (CapturePtvTemplateManager.BusinessParam)this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLSession.a));
+      if (localObject != null)
       {
-        for (;;)
+        if (!paramNetReq.jdField_b_of_type_Boolean)
         {
-          return;
-          if (!paramNetReq.jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem.jdField_a_of_type_JavaLangString)) {
-            break label187;
-          }
-          Object localObject = (CapturePtvTemplateManager.BusinessParam)this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLSession.a));
-          if (localObject == null) {
-            break label134;
-          }
-          if (paramNetReq.jdField_b_of_type_Boolean) {
-            break;
-          }
           paramNetReq = ((CapturePtvTemplateManager.BusinessParam)localObject).b.iterator();
           while (paramNetReq.hasNext())
           {
@@ -111,16 +102,31 @@ class CapturePtvTemplateManager$SessionResHttpListener
         }
         CapturePtvTemplateManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLSession, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem, paramLong1, paramLong2);
         return;
-      } while (!QLog.isColorLevel());
-      QLog.e("CapturePtvTemplateManager", 2, "SessionResHttpListener[Progress]: BusinessParam=null  kind=" + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLSession.a + " mItem.mName=" + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem.jdField_a_of_type_JavaLangString);
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.e("CapturePtvTemplateManager", 2, "SessionResHttpListener[Progress]: download information no match current=" + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem.jdField_a_of_type_JavaLangString + " callback=" + paramNetReq.jdField_a_of_type_JavaLangString);
+      }
+      if (QLog.isColorLevel())
+      {
+        paramNetReq = new StringBuilder();
+        paramNetReq.append("SessionResHttpListener[Progress]: BusinessParam=null  kind=");
+        paramNetReq.append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLSession.a);
+        paramNetReq.append(" mItem.mName=");
+        paramNetReq.append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem.jdField_a_of_type_JavaLangString);
+        QLog.e("CapturePtvTemplateManager", 2, paramNetReq.toString());
+      }
+    }
+    else if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("SessionResHttpListener[Progress]: download information no match current=");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(" callback=");
+      ((StringBuilder)localObject).append(paramNetReq.jdField_a_of_type_JavaLangString);
+      QLog.e("CapturePtvTemplateManager", 2, ((StringBuilder)localObject).toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager.SessionResHttpListener
  * JD-Core Version:    0.7.0.1
  */

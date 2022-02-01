@@ -31,73 +31,96 @@ public class UKYOScorePositions
   
   public void updateAnchor(StickerItem paramStickerItem, boolean paramBoolean1, boolean paramBoolean2)
   {
-    int i = 0;
+    int i;
     if (paramBoolean2)
     {
       if (paramBoolean1) {
         i = 1;
-      }
-      switch (i)
-      {
+      } else {
+        i = 0;
       }
     }
-    do
+    else if (paramBoolean1) {
+      i = 3;
+    } else {
+      i = 2;
+    }
+    if (i != 0)
     {
-      do
+      int[] arrayOfInt;
+      if (i != 1)
       {
-        return;
-        if (paramBoolean1)
+        if (i != 2)
         {
-          i = 3;
-          break;
-        }
-        i = 2;
-        break;
-        paramStickerItem.anchorPoint = this.anchorPoint;
-        paramStickerItem.width = this.itemWidth;
-        paramStickerItem.height = this.itemHeight;
-        return;
-        if (this.anchorSinglePoint != null)
-        {
-          paramStickerItem.anchorPoint = this.anchorSinglePoint;
-          return;
-        }
-        paramStickerItem.anchorPoint = this.anchorPoint;
-        return;
-        if (this.anchorUKYOPoint != null) {
-          paramStickerItem.anchorPoint = this.anchorUKYOPoint;
-        }
-        for (;;)
-        {
-          if (this.itemUKYOWidth > 0) {
-            paramStickerItem.width = this.itemUKYOWidth;
+          if (i != 3) {
+            return;
           }
-          if (this.itemUKYOHeight <= 0) {
-            break;
+          arrayOfInt = this.anchorSingleOverPoint;
+          if (arrayOfInt != null)
+          {
+            paramStickerItem.anchorPoint = arrayOfInt;
+            return;
           }
-          paramStickerItem.height = this.itemUKYOHeight;
-          return;
-          if (this.anchorPoint != null) {
-            paramStickerItem.anchorPoint = this.anchorPoint;
+          arrayOfInt = this.anchorUKYOPoint;
+          if (arrayOfInt != null)
+          {
+            paramStickerItem.anchorPoint = arrayOfInt;
+            i = this.itemUKYOWidth;
+            if (i > 0) {
+              paramStickerItem.width = i;
+            }
+            i = this.itemUKYOHeight;
+            if (i > 0) {
+              paramStickerItem.height = i;
+            }
           }
         }
-        if (this.anchorSingleOverPoint != null)
+        else
         {
-          paramStickerItem.anchorPoint = this.anchorSingleOverPoint;
-          return;
+          arrayOfInt = this.anchorUKYOPoint;
+          if (arrayOfInt != null)
+          {
+            paramStickerItem.anchorPoint = arrayOfInt;
+          }
+          else
+          {
+            arrayOfInt = this.anchorPoint;
+            if (arrayOfInt != null) {
+              paramStickerItem.anchorPoint = arrayOfInt;
+            }
+          }
+          i = this.itemUKYOWidth;
+          if (i > 0) {
+            paramStickerItem.width = i;
+          }
+          i = this.itemUKYOHeight;
+          if (i > 0) {
+            paramStickerItem.height = i;
+          }
         }
-      } while (this.anchorUKYOPoint == null);
-      paramStickerItem.anchorPoint = this.anchorUKYOPoint;
-      if (this.itemUKYOWidth > 0) {
-        paramStickerItem.width = this.itemUKYOWidth;
       }
-    } while (this.itemUKYOHeight <= 0);
-    paramStickerItem.height = this.itemUKYOHeight;
+      else
+      {
+        arrayOfInt = this.anchorSinglePoint;
+        if (arrayOfInt != null)
+        {
+          paramStickerItem.anchorPoint = arrayOfInt;
+          return;
+        }
+        paramStickerItem.anchorPoint = this.anchorPoint;
+      }
+    }
+    else
+    {
+      paramStickerItem.anchorPoint = this.anchorPoint;
+      paramStickerItem.width = this.itemWidth;
+      paramStickerItem.height = this.itemHeight;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.juyoujinggame.UKYOScorePositions
  * JD-Core Version:    0.7.0.1
  */

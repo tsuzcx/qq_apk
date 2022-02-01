@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.transfile.ptt;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ptt.PttOptimizeParams;
+import com.tencent.mobileqq.ptt.api.IPttOptimizeParams;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoReq;
 import com.tencent.mobileqq.transfile.proto.IProtoReqStrategy;
 import com.tencent.qphone.base.util.QLog;
@@ -26,7 +27,7 @@ public class PttProtoReqStrategy
   public void updateIntent(NewIntent paramNewIntent)
   {
     QQAppInterface localQQAppInterface = getQQAppinterface();
-    if ((localQQAppInterface != null) && (PttOptimizeParams.d(localQQAppInterface)))
+    if ((localQQAppInterface != null) && (((IPttOptimizeParams)QRoute.api(IPttOptimizeParams.class)).doesSupportHttpSideWay(localQQAppInterface)))
     {
       paramNewIntent.putExtra("quickSendEnable", true);
       paramNewIntent.putExtra("quickSendStrategy", 1);
@@ -40,14 +41,20 @@ public class PttProtoReqStrategy
   {
     if ((paramProtoReq.ssoCmd.equals("PttStore.GroupPttUp")) || (paramProtoReq.ssoCmd.equals("PttCenterSvr.pb_pttCenter_CMD_REQ_APPLY_UPLOAD-500")))
     {
-      QQAppInterface localQQAppInterface = getQQAppinterface();
+      Object localObject = getQQAppinterface();
       if (getQQAppinterface() != null)
       {
-        paramProtoReq.tryTime = PttOptimizeParams.a(localQQAppInterface);
-        paramProtoReq.tryCount = PttOptimizeParams.b(localQQAppInterface);
-        paramProtoReq.fixScheduleCount = PttOptimizeParams.c(localQQAppInterface);
-        if (QLog.isColorLevel()) {
-          QLog.d("PttProtoReqStrategy", 2, "ptt config from dpc:" + paramProtoReq.tryTime + paramProtoReq.tryCount + paramProtoReq.fixScheduleCount);
+        paramProtoReq.tryTime = ((IPttOptimizeParams)QRoute.api(IPttOptimizeParams.class)).getTryTime_dpc((AppRuntime)localObject);
+        paramProtoReq.tryCount = ((IPttOptimizeParams)QRoute.api(IPttOptimizeParams.class)).getTryCount_dpc((AppRuntime)localObject);
+        paramProtoReq.fixScheduleCount = ((IPttOptimizeParams)QRoute.api(IPttOptimizeParams.class)).getFixScheduleTryCount_dpc((AppRuntime)localObject);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("ptt config from dpc:");
+          ((StringBuilder)localObject).append(paramProtoReq.tryTime);
+          ((StringBuilder)localObject).append(paramProtoReq.tryCount);
+          ((StringBuilder)localObject).append(paramProtoReq.fixScheduleCount);
+          QLog.d("PttProtoReqStrategy", 2, ((StringBuilder)localObject).toString());
         }
       }
     }
@@ -55,7 +62,7 @@ public class PttProtoReqStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ptt.PttProtoReqStrategy
  * JD-Core Version:    0.7.0.1
  */

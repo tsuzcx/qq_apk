@@ -11,15 +11,22 @@ class BindGroupActivity$2
 {
   BindGroupActivity$2(BindGroupActivity paramBindGroupActivity) {}
   
-  public void a(boolean paramBoolean, OpenID paramOpenID)
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BindGroupActivity", 2, "-->onGetOpenId, isSuccess: " + paramBoolean + " data: " + paramOpenID.toString());
-    }
-    if ((this.a.isFinishing()) || (this.a.jdField_c_of_type_Boolean)) {}
-    do
+    if (QLog.isColorLevel())
     {
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("-->onGetOpenId, isSuccess: ");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(" data: ");
+      localStringBuilder.append(paramOpenID.toString());
+      QLog.d("BindGroupActivity", 2, localStringBuilder.toString());
+    }
+    if (!this.a.isFinishing())
+    {
+      if (this.a.jdField_c_of_type_Boolean) {
+        return;
+      }
       this.a.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.hide();
       if (this.a.a != null) {
         this.a.a.removeCallbacksAndMessages(null);
@@ -38,13 +45,15 @@ class BindGroupActivity$2
         this.a.a();
         return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("BindGroupActivity", 2, "openIdObserver fail");
+      if (QLog.isColorLevel()) {
+        QLog.d("BindGroupActivity", 2, "openIdObserver fail");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.BindGroupActivity.2
  * JD-Core Version:    0.7.0.1
  */

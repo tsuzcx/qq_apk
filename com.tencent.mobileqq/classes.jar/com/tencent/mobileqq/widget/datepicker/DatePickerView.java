@@ -43,21 +43,35 @@ public class DatePickerView
   
   public void a(int paramInt1, int paramInt2, ArrayList<MessageRecord> paramArrayList)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerSimpleMonthAdapter != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerSimpleMonthAdapter;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerSimpleMonthAdapter.a(paramInt1, paramInt2, paramArrayList);
+      ((SimpleMonthAdapter)localObject).a(paramInt1, paramInt2, paramArrayList);
       this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerSimpleMonthAdapter.notifyDataSetChanged();
     }
     if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder();
+      localObject = new StringBuilder();
       paramArrayList = paramArrayList.iterator();
       while (paramArrayList.hasNext())
       {
         MessageRecord localMessageRecord = (MessageRecord)paramArrayList.next();
-        localStringBuilder.append("[shmsgseq:").append(localMessageRecord.shmsgseq).append(", time:").append(localMessageRecord.time).append(", senderUin").append(localMessageRecord.senderuin).append("], ");
+        ((StringBuilder)localObject).append("[shmsgseq:");
+        ((StringBuilder)localObject).append(localMessageRecord.shmsgseq);
+        ((StringBuilder)localObject).append(", time:");
+        ((StringBuilder)localObject).append(localMessageRecord.time);
+        ((StringBuilder)localObject).append(", senderUin");
+        ((StringBuilder)localObject).append(localMessageRecord.senderuin);
+        ((StringBuilder)localObject).append("], ");
       }
-      QLog.d("DatePickerView", 2, "addOrUpdateMsgData:" + paramInt1 + "-" + (paramInt2 + 1) + " | MessageRecordList: " + localStringBuilder.toString());
+      paramArrayList = new StringBuilder();
+      paramArrayList.append("addOrUpdateMsgData:");
+      paramArrayList.append(paramInt1);
+      paramArrayList.append("-");
+      paramArrayList.append(paramInt2 + 1);
+      paramArrayList.append(" | MessageRecordList: ");
+      paramArrayList.append(((StringBuilder)localObject).toString());
+      QLog.d("DatePickerView", 2, paramArrayList.toString());
     }
   }
   
@@ -82,7 +96,7 @@ public class DatePickerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.datepicker.DatePickerView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.avgame.gamelogic.controller;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.avgame.gamelogic.data.GameActivityCenterEntry;
@@ -19,32 +18,44 @@ class GameActivityCenterCtrl$1
   
   public void a(boolean paramBoolean, String paramString)
   {
-    if (GameActivityCenterCtrl.a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl) == null) {}
-    for (Object localObject1 = null;; localObject1 = (Activity)GameActivityCenterCtrl.a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl).get())
+    Object localObject1;
+    if (GameActivityCenterCtrl.a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl) == null) {
+      localObject1 = null;
+    } else {
+      localObject1 = (Context)GameActivityCenterCtrl.a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl).get();
+    }
+    Object localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = BaseApplicationImpl.getContext();
+    }
+    if ((localObject2 != null) && (GameActivityCenterCtrl.a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl) != null) && (GameActivityCenterCtrl.a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl).a()))
     {
-      Object localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = BaseApplicationImpl.getContext();
-      }
-      if ((localObject2 != null) && (GameActivityCenterCtrl.a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl) != null) && (GameActivityCenterCtrl.a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl).a()))
-      {
-        GameActivityCenterCtrl.a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl, true);
-        localObject1 = new Intent((Context)localObject2, QQBrowserActivity.class);
-        ((Intent)localObject1).putExtra("url", GameActivityCenterCtrl.a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl).b);
-        ((Intent)localObject1).putExtra("avgame_share_link", paramString);
-        ((Intent)localObject1).putExtra("avgame_share_name", this.jdField_a_of_type_JavaLangString);
-        ((Context)localObject2).startActivity((Intent)localObject1);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("GameACCtrl", 2, "getShareLinkCallback, ctx[" + localObject2 + "], entry[" + GameActivityCenterCtrl.a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl) + "], shareName[" + this.jdField_a_of_type_JavaLangString + "], shareUrl[" + paramString + "]");
-      }
-      return;
+      GameActivityCenterCtrl.a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl, true);
+      localObject1 = new Intent((Context)localObject2, QQBrowserActivity.class);
+      ((Intent)localObject1).putExtra("url", GameActivityCenterCtrl.a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl).b);
+      ((Intent)localObject1).putExtra("avgame_share_link", paramString);
+      ((Intent)localObject1).putExtra("avgame_share_name", this.jdField_a_of_type_JavaLangString);
+      ((Context)localObject2).startActivity((Intent)localObject1);
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getShareLinkCallback, ctx[");
+      ((StringBuilder)localObject1).append(localObject2);
+      ((StringBuilder)localObject1).append("], entry[");
+      ((StringBuilder)localObject1).append(GameActivityCenterCtrl.a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl));
+      ((StringBuilder)localObject1).append("], shareName[");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append("], shareUrl[");
+      ((StringBuilder)localObject1).append(paramString);
+      ((StringBuilder)localObject1).append("]");
+      QLog.i("GameACCtrl", 2, ((StringBuilder)localObject1).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.controller.GameActivityCenterCtrl.1
  * JD-Core Version:    0.7.0.1
  */

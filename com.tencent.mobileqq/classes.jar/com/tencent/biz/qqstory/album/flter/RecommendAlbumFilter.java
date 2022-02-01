@@ -5,11 +5,11 @@ import android.text.TextUtils;
 import com.tencent.biz.qqstory.album.StoryScanManager;
 import com.tencent.biz.qqstory.album.model.StoryAlbum;
 import com.tencent.biz.qqstory.album.model.StoryAlbum.PicInfo;
+import com.tencent.biz.qqstory.album.model.strategy.BaseSplitConfig;
 import com.tencent.biz.qqstory.album.segment.ScanInfo;
 import com.tencent.biz.qqstory.album.strategy.AbstractSplitStrategy;
 import com.tencent.biz.qqstory.album.strategy.GroupTreeSplitStrategy;
 import com.tencent.biz.qqstory.album.strategy.KMeansSplitStrategy;
-import com.tencent.biz.qqstory.album.strategy.SplitConfig.BaseSplitConfig;
 import com.tencent.biz.qqstory.album.strategy.SplitConfig.TreeGatherConfig;
 import com.tencent.biz.qqstory.model.SuperManager;
 import com.tencent.biz.qqstory.model.item.AddressItem;
@@ -31,69 +31,78 @@ public class RecommendAlbumFilter
     ((KMeansSplitStrategy)localObject).a(paramScanInfo);
     a((AbstractSplitStrategy)localObject);
     paramScanInfo = new GroupTreeSplitStrategy();
-    localObject = ((StoryScanManager)SuperManager.a(30)).c();
+    localObject = ((StoryScanManager)SuperManager.a(30)).b();
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
         SplitConfig.TreeGatherConfig localTreeGatherConfig = (SplitConfig.TreeGatherConfig)((Iterator)localObject).next();
-        switch (localTreeGatherConfig.a)
+        paramInt = localTreeGatherConfig.a;
+        if (paramInt != 2)
         {
-        default: 
-          break;
-        case 2: 
+          if (paramInt != 3)
+          {
+            if (paramInt == 4) {
+              paramScanInfo.b(localTreeGatherConfig);
+            }
+          }
+          else {
+            paramScanInfo.c(localTreeGatherConfig);
+          }
+        }
+        else {
           paramScanInfo.a(localTreeGatherConfig);
-          break;
-        case 4: 
-          paramScanInfo.b(localTreeGatherConfig);
-          break;
-        case 3: 
-          paramScanInfo.c(localTreeGatherConfig);
         }
       }
     }
-    paramScanInfo.a(new SplitConfig.BaseSplitConfig());
+    paramScanInfo.a(new BaseSplitConfig());
     a(paramScanInfo);
   }
   
   public static boolean a(@NonNull StoryAlbum paramStoryAlbum, int paramInt)
   {
-    Object localObject = paramStoryAlbum.a();
-    if ((localObject != null) && (((List)localObject).size() > 0))
+    Object localObject2 = paramStoryAlbum.a();
+    if ((localObject2 != null) && (((List)localObject2).size() > 0))
     {
-      AddressItem localAddressItem = ((StoryAlbum.PicInfo)((List)localObject).get(0)).a;
-      localObject = ((StoryAlbum.PicInfo)((List)localObject).get(((List)localObject).size() - 1)).a;
-      if ((localAddressItem == null) || (localObject == null))
+      Object localObject1 = ((StoryAlbum.PicInfo)((List)localObject2).get(0)).a;
+      localObject2 = ((StoryAlbum.PicInfo)((List)localObject2).get(((List)localObject2).size() - 1)).a;
+      if ((localObject1 != null) && (localObject2 != null))
       {
-        SLog.e("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", "initAlbumNameByPOI find no poi item :" + paramStoryAlbum);
+        if ((paramInt <= 5) && (a(((AddressItem)localObject1).building, ((AddressItem)localObject2).building)))
+        {
+          paramStoryAlbum.b = ((AddressItem)localObject1).building;
+          return true;
+        }
+        if ((paramInt <= 4) && (a(((AddressItem)localObject1).district, ((AddressItem)localObject2).district)))
+        {
+          paramStoryAlbum.b = ((AddressItem)localObject1).district;
+          return true;
+        }
+        if ((paramInt <= 3) && (a(((AddressItem)localObject1).city, ((AddressItem)localObject2).city)))
+        {
+          paramStoryAlbum.b = ((AddressItem)localObject1).city;
+          return true;
+        }
+        if ((paramInt <= 2) && (a(((AddressItem)localObject1).province, ((AddressItem)localObject2).province)))
+        {
+          paramStoryAlbum.b = ((AddressItem)localObject1).province;
+          return true;
+        }
+        if ((paramInt <= 1) && (a(((AddressItem)localObject1).country, ((AddressItem)localObject2).country)))
+        {
+          paramStoryAlbum.b = ((AddressItem)localObject1).country;
+          return true;
+        }
+      }
+      else
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("initAlbumNameByPOI find no poi item :");
+        ((StringBuilder)localObject1).append(paramStoryAlbum);
+        SLog.e("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", ((StringBuilder)localObject1).toString());
         paramStoryAlbum.b = "";
         return false;
-      }
-      if ((paramInt <= 5) && (a(localAddressItem.building, ((AddressItem)localObject).building)))
-      {
-        paramStoryAlbum.b = localAddressItem.building;
-        return true;
-      }
-      if ((paramInt <= 4) && (a(localAddressItem.district, ((AddressItem)localObject).district)))
-      {
-        paramStoryAlbum.b = localAddressItem.district;
-        return true;
-      }
-      if ((paramInt <= 3) && (a(localAddressItem.city, ((AddressItem)localObject).city)))
-      {
-        paramStoryAlbum.b = localAddressItem.city;
-        return true;
-      }
-      if ((paramInt <= 2) && (a(localAddressItem.province, ((AddressItem)localObject).province)))
-      {
-        paramStoryAlbum.b = localAddressItem.province;
-        return true;
-      }
-      if ((paramInt <= 1) && (a(localAddressItem.country, ((AddressItem)localObject).country)))
-      {
-        paramStoryAlbum.b = localAddressItem.country;
-        return true;
       }
     }
     paramStoryAlbum.b = "";
@@ -107,25 +116,31 @@ public class RecommendAlbumFilter
   
   protected List<StoryAlbum.PicInfo> a()
   {
-    SLog.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", "get start Pic list=" + super.a().size());
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = super.a().iterator();
-    while (localIterator.hasNext())
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("get start Pic list=");
+    ((StringBuilder)localObject1).append(super.a().size());
+    SLog.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", ((StringBuilder)localObject1).toString());
+    localObject1 = new ArrayList();
+    Object localObject2 = super.a().iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      StoryAlbum.PicInfo localPicInfo = (StoryAlbum.PicInfo)localIterator.next();
+      StoryAlbum.PicInfo localPicInfo = (StoryAlbum.PicInfo)((Iterator)localObject2).next();
       if (localPicInfo.a != null) {
-        localArrayList.add(localPicInfo);
+        ((List)localObject1).add(localPicInfo);
       }
     }
-    SLog.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", "get end Pic list=" + localArrayList.size());
-    return localArrayList;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("get end Pic list=");
+    ((StringBuilder)localObject2).append(((List)localObject1).size());
+    SLog.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", ((StringBuilder)localObject2).toString());
+    return localObject1;
   }
   
   protected void c(List<StoryAlbum> paramList) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.flter.RecommendAlbumFilter
  * JD-Core Version:    0.7.0.1
  */

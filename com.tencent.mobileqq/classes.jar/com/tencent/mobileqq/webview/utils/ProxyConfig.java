@@ -11,12 +11,7 @@ import mqq.app.MobileQQ;
 public class ProxyConfig
 {
   public static String a;
-  private static boolean a;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = false;
-  }
+  private static boolean a = false;
   
   public static void a()
   {
@@ -42,7 +37,7 @@ public class ProxyConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.utils.ProxyConfig
  * JD-Core Version:    0.7.0.1
  */

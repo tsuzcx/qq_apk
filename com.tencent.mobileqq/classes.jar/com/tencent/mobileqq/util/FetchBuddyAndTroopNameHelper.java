@@ -17,17 +17,22 @@ public class FetchBuddyAndTroopNameHelper
   private FetchInfoListManager a()
   {
     FetchInfoListManager localFetchInfoListManager = new FetchInfoListManager(new FetchBuddyAndTroopNameHelper.1(this));
-    if (QLog.isColorLevel()) {
-      QLog.i("FetchInfoListManager", 2, "createFetchInfoListManager fm: " + localFetchInfoListManager);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("createFetchInfoListManager fm: ");
+      localStringBuilder.append(localFetchInfoListManager);
+      QLog.i("FetchInfoListManager", 2, localStringBuilder.toString());
     }
     return localFetchInfoListManager;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilFetchInfoListManager != null)
+    FetchInfoListManager localFetchInfoListManager = this.jdField_a_of_type_ComTencentMobileqqUtilFetchInfoListManager;
+    if (localFetchInfoListManager != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilFetchInfoListManager.a();
+      localFetchInfoListManager.a();
       this.jdField_a_of_type_ComTencentMobileqqUtilFetchInfoListManager = null;
     }
   }
@@ -66,7 +71,7 @@ public class FetchBuddyAndTroopNameHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.FetchBuddyAndTroopNameHelper
  * JD-Core Version:    0.7.0.1
  */

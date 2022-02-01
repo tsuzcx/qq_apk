@@ -11,16 +11,16 @@ class HuayangPluginLauncher$3
   
   public void run()
   {
-    HuayangPluginLauncher.a(this.this$0, this.a);
+    HuayangPluginLauncher.access$1300(this.this$0, this.a);
     this.a += 20;
     if (this.a < 80) {
-      HuayangPluginLauncher.a(this.this$0).postDelayed(this, 300L);
+      HuayangPluginLauncher.access$900(this.this$0).postDelayed(this, 300L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.huayang.HuayangPluginLauncher.3
  * JD-Core Version:    0.7.0.1
  */

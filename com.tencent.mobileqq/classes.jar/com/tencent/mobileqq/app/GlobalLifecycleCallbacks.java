@@ -12,13 +12,17 @@ public class GlobalLifecycleCallbacks
   
   private Object[] a()
   {
-    Object[] arrayOfObject = null;
-    synchronized (this.a)
+    for (;;)
     {
-      if (this.a.size() > 0) {
-        arrayOfObject = this.a.toArray();
+      synchronized (this.a)
+      {
+        if (this.a.size() > 0)
+        {
+          Object[] arrayOfObject = this.a.toArray();
+          return arrayOfObject;
+        }
       }
-      return arrayOfObject;
+      Object localObject2 = null;
     }
   }
   
@@ -288,7 +292,7 @@ public class GlobalLifecycleCallbacks
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.GlobalLifecycleCallbacks
  * JD-Core Version:    0.7.0.1
  */

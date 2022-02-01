@@ -5,11 +5,11 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.decoupling.accesslayer.util.RIJQQAppInterfaceUtil;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.kandian.base.utils.api.IRIJRuntimeUtils;
+import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -18,7 +18,7 @@ import kotlin.jvm.internal.Intrinsics;
 import mqq.app.AppRuntime;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/mgr/SuperMaskConfigMgr;", "", "()V", "CONFIG_KEY_KANDIAN_SUPER_MASK_AD_REQ_SWITCH", "", "CONFIG_KEY_KANDIAN_SUPER_MASK_AD_SWITCH", "RIJSUPER_MASK_LAST_SHOW_MASK_TIME_KEY", "SuperMaskTag", "adReqNumDaily", "Ljava/util/concurrent/atomic/AtomicInteger;", "getAdReqNumDaily", "()Ljava/util/concurrent/atomic/AtomicInteger;", "setAdReqNumDaily", "(Ljava/util/concurrent/atomic/AtomicInteger;)V", "adReqNumMainFeeds", "getAdReqNumMainFeeds", "setAdReqNumMainFeeds", "value", "", "aladdinSwitch", "getAladdinSwitch", "()Z", "setAladdinSwitch", "(Z)V", "preloadInterval", "", "getPreloadInterval", "()J", "setPreloadInterval", "(J)V", "preloadTag", "preloadTime", "getPreloadTime", "setPreloadTime", "", "previewMode", "getPreviewMode", "()I", "setPreviewMode", "(I)V", "refreshNumDaily", "getRefreshNumDaily", "setRefreshNumDaily", "refreshNumMainFeeds", "getRefreshNumMainFeeds", "setRefreshNumMainFeeds", "requestTag", "showTag", "getLastShowTime", "channelID", "getReqConfigFromAladding", "getShowConfigFromAladdin", "getSpKey", "currentUin", "refreshDailyReqAndRefreshNum", "", "refreshMainFeedsReqAndRefreshNum", "updateLastShowTime", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/mgr/SuperMaskConfigMgr;", "", "()V", "CONFIG_KEY_KANDIAN_SUPER_MASK_AD_REQ_SWITCH", "", "adReqNumDaily", "Ljava/util/concurrent/atomic/AtomicInteger;", "getAdReqNumDaily", "()Ljava/util/concurrent/atomic/AtomicInteger;", "setAdReqNumDaily", "(Ljava/util/concurrent/atomic/AtomicInteger;)V", "adReqNumMainFeeds", "getAdReqNumMainFeeds", "setAdReqNumMainFeeds", "value", "", "aladdinSwitch", "getAladdinSwitch", "()Z", "setAladdinSwitch", "(Z)V", "preloadInterval", "", "getPreloadInterval", "()J", "setPreloadInterval", "(J)V", "preloadTime", "getPreloadTime", "setPreloadTime", "", "previewMode", "getPreviewMode", "()I", "setPreviewMode", "(I)V", "refreshNumDaily", "getRefreshNumDaily", "setRefreshNumDaily", "refreshNumMainFeeds", "getRefreshNumMainFeeds", "setRefreshNumMainFeeds", "getLastShowTime", "channelID", "getReqConfigFromAladding", "getShowConfigFromAladdin", "getSpKey", "currentUin", "refreshDailyReqAndRefreshNum", "", "refreshMainFeedsReqAndRefreshNum", "updateLastShowTime", "kandian_ad_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class SuperMaskConfigMgr
 {
   private static long jdField_a_of_type_Long;
@@ -42,23 +42,39 @@ public final class SuperMaskConfigMgr
   
   private final String a(String paramString, int paramInt)
   {
-    return paramString + "_" + paramInt + "_" + "RIJSuperMaskLastShowMaskTimeKey";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("_");
+    localStringBuilder.append("RIJSuperMaskLastShowMaskTimeKey");
+    return localStringBuilder.toString();
   }
   
   private final boolean c()
   {
     AladdinConfig localAladdinConfig = Aladdin.getConfig(206);
-    if (localAladdinConfig != null) {
-      return localAladdinConfig.getIntegerFromString("ad_mengceng", 0) == 1;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localAladdinConfig != null)
+    {
+      bool1 = bool2;
+      if (localAladdinConfig.getIntegerFromString("ad_mengceng", 0) == 1) {
+        bool1 = true;
+      }
     }
-    return false;
+    return bool1;
   }
   
   public final int a()
   {
-    QQAppInterface localQQAppInterface = RIJQQAppInterfaceUtil.a();
-    Intrinsics.checkExpressionValueIsNotNull(localQQAppInterface, "RIJQQAppInterfaceUtil.getQQApp()");
-    return SharedPreUtils.aB((Context)localQQAppInterface.getApp(), ReadInJoyUtils.a());
+    Object localObject = ((IRIJRuntimeUtils)QRoute.api(IRIJRuntimeUtils.class)).getAppRuntime();
+    if (localObject != null) {
+      localObject = ((AppRuntime)localObject).getApp();
+    } else {
+      localObject = null;
+    }
+    return SharedPreUtils.au((Context)localObject, ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAccount());
   }
   
   public final long a()
@@ -69,9 +85,9 @@ public final class SuperMaskConfigMgr
   public final long a(int paramInt)
   {
     Object localObject = BaseApplicationImpl.getApplication();
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getApplication()");
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "com.tencent.common.app.B…tionImpl.getApplication()");
     localObject = ((BaseApplicationImpl)localObject).getRuntime();
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getApplication().runtime");
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "com.tencent.common.app.B….getApplication().runtime");
     localObject = ((AppRuntime)localObject).getAccount();
     NetConnInfoCenter.getServerTimeMillis();
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSystemSharedPreferences("ReadInJoySuperMaskAd", 0);
@@ -94,9 +110,13 @@ public final class SuperMaskConfigMgr
   
   public final void a(int paramInt)
   {
-    QQAppInterface localQQAppInterface = RIJQQAppInterfaceUtil.a();
-    Intrinsics.checkExpressionValueIsNotNull(localQQAppInterface, "RIJQQAppInterfaceUtil.getQQApp()");
-    SharedPreUtils.V((Context)localQQAppInterface.getApp(), ReadInJoyUtils.a(), paramInt);
+    Object localObject = ((IRIJRuntimeUtils)QRoute.api(IRIJRuntimeUtils.class)).getAppRuntime();
+    if (localObject != null) {
+      localObject = ((AppRuntime)localObject).getApp();
+    } else {
+      localObject = null;
+    }
+    SharedPreUtils.M((Context)localObject, ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAccount(), paramInt);
   }
   
   public final void a(long paramLong)
@@ -129,18 +149,21 @@ public final class SuperMaskConfigMgr
   
   public final void b(int paramInt)
   {
-    Object localObject = BaseApplicationImpl.getApplication();
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getApplication()");
-    localObject = ((BaseApplicationImpl)localObject).getRuntime();
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getApplication().runtime");
-    localObject = ((AppRuntime)localObject).getAccount();
+    Object localObject1 = BaseApplicationImpl.getApplication();
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "com.tencent.common.app.B…tionImpl.getApplication()");
+    localObject1 = ((BaseApplicationImpl)localObject1).getRuntime();
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "com.tencent.common.app.B….getApplication().runtime");
+    localObject1 = ((AppRuntime)localObject1).getAccount();
     long l = NetConnInfoCenter.getServerTimeMillis();
-    QLog.d("ReadInJoySuperMaskAd", 1, "updateLastShowTime = " + l);
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSystemSharedPreferences("ReadInJoySuperMaskAd", 0).edit();
-    Intrinsics.checkExpressionValueIsNotNull(localEditor, "sharedPreferences.edit()");
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "currentUin");
-    localEditor.putLong(a((String)localObject, paramInt), l);
-    localEditor.apply();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("updateLastShowTime = ");
+    ((StringBuilder)localObject2).append(l);
+    QLog.d("ReadInJoySuperMaskAd", 1, ((StringBuilder)localObject2).toString());
+    localObject2 = BaseApplicationImpl.getApplication().getSystemSharedPreferences("ReadInJoySuperMaskAd", 0).edit();
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "sharedPreferences.edit()");
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "currentUin");
+    ((SharedPreferences.Editor)localObject2).putLong(a((String)localObject1, paramInt), l);
+    ((SharedPreferences.Editor)localObject2).apply();
   }
   
   public final void b(long paramLong)
@@ -151,10 +174,16 @@ public final class SuperMaskConfigMgr
   public final boolean b()
   {
     AladdinConfig localAladdinConfig = Aladdin.getConfig(206);
-    if (localAladdinConfig != null) {
-      return localAladdinConfig.getIntegerFromString("ad_req_switch", 0) == 1;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localAladdinConfig != null)
+    {
+      bool1 = bool2;
+      if (localAladdinConfig.getIntegerFromString("ad_req_switch", 0) == 1) {
+        bool1 = true;
+      }
     }
-    return false;
+    return bool1;
   }
   
   @NotNull
@@ -171,7 +200,7 @@ public final class SuperMaskConfigMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.mgr.SuperMaskConfigMgr
  * JD-Core Version:    0.7.0.1
  */

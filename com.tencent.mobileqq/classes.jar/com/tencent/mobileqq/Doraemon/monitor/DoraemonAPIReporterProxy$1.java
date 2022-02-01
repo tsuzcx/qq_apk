@@ -16,47 +16,65 @@ class DoraemonAPIReporterProxy$1
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = this.a.a;
-    if (paramContext == null) {}
-    do
-    {
+    if (paramContext == null) {
       return;
-      str1 = paramIntent.getAction();
-      if ("com.tencent.mobileqq.Doraemon.monitor.update".equals(str1))
+    }
+    String str1 = paramIntent.getAction();
+    Object localObject;
+    if ("com.tencent.mobileqq.Doraemon.monitor.update".equals(str1))
+    {
+      str1 = paramIntent.getStringExtra("key");
+      int i = paramIntent.getIntExtra("type", 0);
+      localObject = paramIntent.getStringExtra("appid");
+      String str2 = paramIntent.getStringExtra("api");
+      long l1 = paramIntent.getLongExtra("remain", 0L);
+      long l2 = paramIntent.getLongExtra("time", 0L);
+      if (QLog.isColorLevel())
       {
-        str1 = paramIntent.getStringExtra("key");
-        int i = paramIntent.getIntExtra("type", 0);
-        String str2 = paramIntent.getStringExtra("appid");
-        String str3 = paramIntent.getStringExtra("api");
-        long l1 = paramIntent.getLongExtra("remain", 0L);
-        long l2 = paramIntent.getLongExtra("time", 0L);
-        if (QLog.isColorLevel()) {
-          QLog.d("DoraemonOpenAPI.report", 2, "receive update key=" + str1 + ", api=" + str3 + ", remain=" + l1 + ", exp=" + l2);
-        }
-        ThreadManager.getUIHandler().post(new DoraemonAPIReporterProxy.1.1(this, paramContext, str1, i, str2, str3, l1, l2));
-        return;
+        paramIntent = new StringBuilder();
+        paramIntent.append("receive update key=");
+        paramIntent.append(str1);
+        paramIntent.append(", api=");
+        paramIntent.append(str2);
+        paramIntent.append(", remain=");
+        paramIntent.append(l1);
+        paramIntent.append(", exp=");
+        paramIntent.append(l2);
+        QLog.d("DoraemonOpenAPI.report", 2, paramIntent.toString());
       }
-    } while (!"com.tencent.mobileqq.Doraemon.monitor.update_batch".equals(str1));
-    String str1 = paramIntent.getStringExtra("key");
-    paramIntent.getIntExtra("type", 0);
-    paramIntent.getStringExtra("appid");
+      ThreadManager.getUIHandler().post(new DoraemonAPIReporterProxy.1.1(this, paramContext, str1, i, (String)localObject, str2, l1, l2));
+      return;
+    }
+    if ("com.tencent.mobileqq.Doraemon.monitor.update_batch".equals(str1))
+    {
+      str1 = paramIntent.getStringExtra("key");
+      paramIntent.getIntExtra("type", 0);
+      paramIntent.getStringExtra("appid");
+    }
     try
     {
       paramIntent = (HashMap)paramIntent.getSerializableExtra("map");
-      if (QLog.isColorLevel()) {
-        QLog.d("DoraemonOpenAPI.report", 2, "receive update all key=" + str1);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("receive update all key=");
+        ((StringBuilder)localObject).append(str1);
+        QLog.d("DoraemonOpenAPI.report", 2, ((StringBuilder)localObject).toString());
       }
       ThreadManager.getUIHandler().post(new DoraemonAPIReporterProxy.1.2(this, paramContext, str1, paramIntent));
       return;
     }
     catch (ClassCastException paramContext)
     {
-      QLog.e("DoraemonOpenAPI.report", 1, "illegal data");
+      label292:
+      break label292;
     }
+    QLog.e("DoraemonOpenAPI.report", 1, "illegal data");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.monitor.DoraemonAPIReporterProxy.1
  * JD-Core Version:    0.7.0.1
  */

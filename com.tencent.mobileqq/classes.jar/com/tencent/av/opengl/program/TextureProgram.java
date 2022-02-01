@@ -29,12 +29,15 @@ public class TextureProgram
   
   public static int a(int paramInt1, int paramInt2, ShaderParameter[] paramArrayOfShaderParameter)
   {
-    int i = 0;
     int j = GLES20.glCreateProgram();
     Utils.a();
+    int i = 0;
     if (j == 0)
     {
-      QLog.e("TextureProgram", 2, "Cannot create GL program: = " + GLES20.glGetError());
+      paramArrayOfShaderParameter = new StringBuilder();
+      paramArrayOfShaderParameter.append("Cannot create GL program: = ");
+      paramArrayOfShaderParameter.append(GLES20.glGetError());
+      QLog.e("TextureProgram", 2, paramArrayOfShaderParameter.toString());
       return 0;
     }
     GLES20.glAttachShader(j, paramInt1);
@@ -81,7 +84,7 @@ public class TextureProgram
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.program.TextureProgram
  * JD-Core Version:    0.7.0.1
  */

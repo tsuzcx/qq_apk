@@ -38,8 +38,9 @@ public class DetailFeedAllInfoPuller
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTribeAsyncReactiveStream != null) {
-      this.jdField_a_of_type_ComTribeAsyncReactiveStream.cancel();
+    Stream localStream = this.jdField_a_of_type_ComTribeAsyncReactiveStream;
+    if (localStream != null) {
+      localStream.cancel();
     }
     this.jdField_a_of_type_ComTribeAsyncReactiveStream = Stream.of(this.jdField_a_of_type_JavaLangString).map(new ThreadOffFunction("Q.qqstory.detail.DetailFeedAllInfoPuller", 2)).map(new DetailFeedAllInfoPuller.FeedItemPullSegment(this, this.jdField_a_of_type_JavaLangString));
     if (this.jdField_a_of_type_Boolean) {
@@ -50,14 +51,15 @@ public class DetailFeedAllInfoPuller
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTribeAsyncReactiveStream != null) {
-      this.jdField_a_of_type_ComTribeAsyncReactiveStream.cancel();
+    Stream localStream = this.jdField_a_of_type_ComTribeAsyncReactiveStream;
+    if (localStream != null) {
+      localStream.cancel();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPuller
  * JD-Core Version:    0.7.0.1
  */

@@ -37,37 +37,45 @@ class WatchFloatingWindowController$2
     if (QLog.isColorLevel()) {
       QLog.d("WatchFloatingWindowController", 2, new Object[] { "onEnterClick: invoked. ", " centerX: ", Integer.valueOf(paramInt1), " centerY: ", Integer.valueOf(paramInt2) });
     }
-    if ((WatchFloatingWindowController.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController) == null) || (WatchFloatingWindowController.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController) == null)) {
-      return false;
-    }
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1000L)
+    if (WatchFloatingWindowController.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController) != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("WatchFloatingWindowController", 2, "click button too frequently pastTime=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+      if (WatchFloatingWindowController.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController) == null) {
+        return false;
       }
-      return true;
-    }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    paramInt1 = WatchFloatingWindowController.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController).a();
-    if (paramInt1 == 1)
-    {
-      TogetherUtils.a(this.jdField_a_of_type_AndroidContentContext, 1, WatchFloatingWindowController.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController).getBigUrl(), null, new Bundle(), WatchFloatingWindowController.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController).getCurType());
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController.a(WatchFloatingWindowController.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController).getCurUin(), WatchFloatingWindowController.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController).getCurType(), false);
-    }
-    for (;;)
-    {
-      return true;
+      Object localObject;
+      if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1000L)
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("click button too frequently pastTime=");
+          ((StringBuilder)localObject).append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+          QLog.d("WatchFloatingWindowController", 2, ((StringBuilder)localObject).toString());
+        }
+        return true;
+      }
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      paramInt1 = WatchFloatingWindowController.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController).a();
+      if (paramInt1 == 1)
+      {
+        TogetherUtils.a(this.jdField_a_of_type_AndroidContentContext, 1, WatchFloatingWindowController.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController).getBigUrl(), null, new Bundle(), WatchFloatingWindowController.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController).getCurType());
+        localObject = this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController;
+        ((WatchFloatingWindowController)localObject).a(WatchFloatingWindowController.a((WatchFloatingWindowController)localObject).getCurUin(), WatchFloatingWindowController.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController).getCurType(), false);
+        return true;
+      }
       if (paramInt1 == 2)
       {
         WatchFloatingWindowController.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController).a(WatchFloatingWindowController.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController).getSmallUrl());
         ReportController.b(null, "dc00899", "Grp_AIO", "", "video_tab", "clk_refresh", 0, 0, WatchFloatingWindowController.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController).getCurUin(), "", "", "");
       }
+      return true;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.WatchFloatingWindowController.2
  * JD-Core Version:    0.7.0.1
  */

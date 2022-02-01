@@ -11,13 +11,18 @@ class VideoEmbeddedWidgetClient$3
   
   public boolean onError(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {
-    QMLog.i("miniapp-embedded", "onError : what - " + paramInt1 + "; extra - " + paramInt2);
+    paramIMediaPlayer = new StringBuilder();
+    paramIMediaPlayer.append("onError : what - ");
+    paramIMediaPlayer.append(paramInt1);
+    paramIMediaPlayer.append("; extra - ");
+    paramIMediaPlayer.append(paramInt2);
+    QMLog.i("miniapp-embedded", paramIMediaPlayer.toString());
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.VideoEmbeddedWidgetClient.3
  * JD-Core Version:    0.7.0.1
  */

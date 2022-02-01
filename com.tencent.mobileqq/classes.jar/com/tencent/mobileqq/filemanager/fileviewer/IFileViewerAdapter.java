@@ -31,6 +31,8 @@ public abstract interface IFileViewerAdapter
   
   public abstract void b(boolean paramBoolean);
   
+  public abstract boolean b();
+  
   public abstract int c();
   
   public abstract long c();
@@ -55,7 +57,7 @@ public abstract interface IFileViewerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -18,38 +18,35 @@ final class ImageLoaderImpl$loadImageFromFile$runnable$1
   public final void run()
   {
     int i;
-    if (this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIImageLoader$ImageLoaderOption.a > 0)
-    {
+    if (this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIImageLoader$ImageLoaderOption.a > 0) {
       i = this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIImageLoader$ImageLoaderOption.a;
-      if (this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIImageLoader$ImageLoaderOption.a <= 0) {
-        break label141;
-      }
+    } else {
+      i = this.jdField_a_of_type_AndroidWidgetImageView.getWidth();
     }
-    label141:
-    for (int j = this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIImageLoader$ImageLoaderOption.b;; j = this.jdField_a_of_type_AndroidWidgetImageView.getHeight())
+    int j;
+    if (this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIImageLoader$ImageLoaderOption.a > 0) {
+      j = this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIImageLoader$ImageLoaderOption.b;
+    } else {
+      j = this.jdField_a_of_type_AndroidWidgetImageView.getHeight();
+    }
+    Ref.ObjectRef localObjectRef = new Ref.ObjectRef();
+    localObjectRef.element = ImageLoaderImpl.a(this.this$0, this.jdField_a_of_type_JavaLangString);
+    if ((Bitmap)localObjectRef.element == null) {
+      localObjectRef.element = ImageLoaderImpl.a(this.this$0, this.b, i, j);
+    }
+    if ((Bitmap)localObjectRef.element != null)
     {
-      Ref.ObjectRef localObjectRef = new Ref.ObjectRef();
-      localObjectRef.element = ImageLoaderImpl.a(this.this$0, this.jdField_a_of_type_JavaLangString);
-      if ((Bitmap)localObjectRef.element == null) {
-        localObjectRef.element = ImageLoaderImpl.a(this.this$0, this.b, i, j);
-      }
-      if ((Bitmap)localObjectRef.element == null) {
-        break label152;
-      }
       ImageLoaderImpl.a(this.this$0, this.jdField_a_of_type_JavaLangString, (Bitmap)localObjectRef.element);
       ThreadManagerKt.a((Function0)new ImageLoaderImpl.loadImageFromFile.runnable.1.1(this, localObjectRef));
       return;
-      i = this.jdField_a_of_type_AndroidWidgetImageView.getWidth();
-      break;
     }
-    label152:
     QLog.e("ImageLoaderImpl", 1, "loadImageFromFile error. bitmap is null.");
     ThreadManagerKt.a((Function0)new ImageLoaderImpl.loadImageFromFile.runnable.1.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.ImageLoaderImpl.loadImageFromFile.runnable.1
  * JD-Core Version:    0.7.0.1
  */

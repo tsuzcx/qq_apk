@@ -9,8 +9,11 @@ public class OpAssembler
   public void a(Operation paramOperation)
   {
     this.a.append(paramOperation.jdField_a_of_type_JavaLangString);
-    if (paramOperation.b > 0) {
-      this.a.append('|').append(Changeset.a(paramOperation.b));
+    if (paramOperation.b > 0)
+    {
+      StringBuilder localStringBuilder = this.a;
+      localStringBuilder.append('|');
+      localStringBuilder.append(Changeset.a(paramOperation.b));
     }
     this.a.append(paramOperation.jdField_a_of_type_Char);
     this.a.append(Changeset.a(paramOperation.jdField_a_of_type_Int));
@@ -18,7 +21,8 @@ public class OpAssembler
   
   public void c()
   {
-    this.a.delete(0, this.a.length());
+    StringBuilder localStringBuilder = this.a;
+    localStringBuilder.delete(0, localStringBuilder.length());
   }
   
   @NonNull
@@ -29,7 +33,7 @@ public class OpAssembler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.OpAssembler
  * JD-Core Version:    0.7.0.1
  */

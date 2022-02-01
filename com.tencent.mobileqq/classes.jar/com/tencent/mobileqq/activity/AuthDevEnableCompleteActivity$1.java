@@ -12,7 +12,7 @@ class AuthDevEnableCompleteActivity$1
   
   public void onClick(View paramView)
   {
-    ImageView localImageView = (ImageView)paramView.findViewById(2131368754);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131368486);
     if (localImageView != null)
     {
       int i = 0;
@@ -26,7 +26,7 @@ class AuthDevEnableCompleteActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AuthDevEnableCompleteActivity.1
  * JD-Core Version:    0.7.0.1
  */

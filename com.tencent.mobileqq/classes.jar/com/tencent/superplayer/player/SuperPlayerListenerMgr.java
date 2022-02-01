@@ -41,7 +41,11 @@ class SuperPlayerListenerMgr
   
   SuperPlayerListenerMgr(String paramString)
   {
-    this.mTag = (paramString + "-" + "SuperPlayerListenerMgr.java");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("-");
+    localStringBuilder.append("SuperPlayerListenerMgr.java");
+    this.mTag = localStringBuilder.toString();
   }
   
   public void onAudioFrameOutput(TPAudioFrameBuffer paramTPAudioFrameBuffer)
@@ -83,7 +87,13 @@ class SuperPlayerListenerMgr
     ISuperPlayer.OnDefinitionInfoListener localOnDefinitionInfoListener = this.mOnDefinitionInfoListener;
     if (localOnDefinitionInfoListener != null)
     {
-      LogUtil.i(this.mTag, "notify : onDefinitionInfoUpdate currentDefinition:" + paramString + ", definitionList.size():" + paramArrayList.size());
+      String str = this.mTag;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("notify : onDefinitionInfoUpdate currentDefinition:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", definitionList.size():");
+      localStringBuilder.append(paramArrayList.size());
+      LogUtil.i(str, localStringBuilder.toString());
       localOnDefinitionInfoListener.onDefinitionInfoUpdate(paramISuperPlayer, paramString, paramArrayList);
     }
   }
@@ -93,7 +103,17 @@ class SuperPlayerListenerMgr
     ISuperPlayer.OnErrorListener localOnErrorListener = this.mOnErrorListener;
     if (localOnErrorListener != null)
     {
-      LogUtil.e(this.mTag, "notify : on error, module:" + paramInt1 + ", errorType:" + paramInt2 + ", errorCode:" + paramInt3 + ", extraInfo:" + paramString);
+      String str = this.mTag;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("notify : on error, module:");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(", errorType:");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(", errorCode:");
+      localStringBuilder.append(paramInt3);
+      localStringBuilder.append(", extraInfo:");
+      localStringBuilder.append(paramString);
+      LogUtil.e(str, localStringBuilder.toString());
       return localOnErrorListener.onError(paramISuperPlayer, paramInt1, paramInt2, paramInt3, paramString);
     }
     return false;
@@ -104,7 +124,11 @@ class SuperPlayerListenerMgr
     ISuperPlayer.OnInfoListener localOnInfoListener = this.mOnInfoListener;
     if (localOnInfoListener != null)
     {
-      LogUtil.i(this.mTag, "notify : on info  , cmd : " + paramInt);
+      String str = this.mTag;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("notify : on info  , cmd : ");
+      localStringBuilder.append(paramInt);
+      LogUtil.i(str, localStringBuilder.toString());
       return localOnInfoListener.onInfo(paramISuperPlayer, paramInt, paramLong1, paramLong2, paramObject);
     }
     return false;
@@ -161,7 +185,13 @@ class SuperPlayerListenerMgr
     ISuperPlayer.OnVideoSizeChangedListener localOnVideoSizeChangedListener = this.mOnVideoSizeChangedListener;
     if (localOnVideoSizeChangedListener != null)
     {
-      LogUtil.i(this.mTag, "onVideoSizeChanged : width：" + paramInt1 + ", height:" + paramInt2);
+      String str = this.mTag;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onVideoSizeChanged : width：");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(", height:");
+      localStringBuilder.append(paramInt2);
+      LogUtil.i(str, localStringBuilder.toString());
       localOnVideoSizeChangedListener.onVideoSizeChanged(paramISuperPlayer, paramInt1, paramInt2);
     }
   }
@@ -244,12 +274,16 @@ class SuperPlayerListenerMgr
   
   public void updatePlayerTag(String paramString)
   {
-    this.mTag = (paramString + "-" + "SuperPlayerListenerMgr.java");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("-");
+    localStringBuilder.append("SuperPlayerListenerMgr.java");
+    this.mTag = localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.player.SuperPlayerListenerMgr
  * JD-Core Version:    0.7.0.1
  */

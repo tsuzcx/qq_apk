@@ -17,7 +17,7 @@ import com.tencent.biz.qqstory.support.logging.SLog;
 public class SuperManager
   implements IManager
 {
-  public final IManager[] a = new IManager[40];
+  public final IManager[] a = new IManager[32];
   
   public static IManager a(int paramInt)
   {
@@ -38,95 +38,124 @@ public class SuperManager
   
   public IManager b(int paramInt)
   {
-    IManager localIManager1 = this.a[paramInt];
-    if (localIManager1 == null) {}
+    IManager[] arrayOfIManager = this.a;
+    Object localObject = arrayOfIManager[paramInt];
+    if (localObject == null)
+    {
+      try
+      {
+        localObject = this.a[paramInt];
+        if (localObject == null) {
+          break label373;
+        }
+        return localObject;
+      }
+      finally {}
+      localObject = new StoryScanManager();
+      break label338;
+      localObject = new StoryPromoteTaskManager();
+      break label338;
+      localObject = new DownloadUrlManager();
+      break label338;
+      localObject = new TagManager();
+      break label338;
+      localObject = new TrimmableManager();
+      break label338;
+      localObject = new HotSortVideoManager();
+      break label338;
+      localObject = new ShareGroupIconManager();
+      break label338;
+      localObject = new TroopNickNameManager();
+      break label338;
+      localObject = new DiscoverManager();
+      break label338;
+      localObject = new TroopStoryDBManager();
+      break label338;
+      localObject = new DataProviderManager();
+      break label338;
+      localObject = new MemoryManager();
+      break label338;
+      localObject = new QQStoryActivityManager();
+      break label338;
+      localObject = new CommentManager();
+      break label338;
+      localObject = new VideoFilterManager();
+      break label338;
+      localObject = new LikeManager();
+      break label338;
+      localObject = new VideoCompositeManager();
+      break label338;
+      localObject = new ReportWatchVideoManager();
+      break label338;
+      localObject = new FeedVideoManager();
+      break label338;
+      localObject = new FeedManager();
+      break label338;
+      localObject = new StoryConfigManager();
+      break label338;
+      localObject = new LbsManager();
+      break label338;
+      localObject = new ShareGroupManager();
+      break label338;
+      localObject = new PreloadDownloaderManager();
+      break label338;
+      localObject = new StoryManager();
+      break label338;
+      localObject = new VideoServerInfoManager();
+      break label338;
+      localObject = new StoryVideoUploadManager();
+      break label338;
+      localObject = new UserManager();
+    }
     for (;;)
     {
-      IManager localIManager2;
-      synchronized (this.a)
+      label338:
+      if (localObject != null)
       {
-        localIManager2 = this.a[paramInt];
-        if (localIManager2 == null) {
-          break label408;
-        }
-        return localIManager2;
-        if (localIManager1 != null)
-        {
-          localIManager1.a();
-          SLog.b("Q.qqstory.SuperManager", "onInit manager : %s", localIManager1);
-        }
-        a(paramInt, localIManager1);
-        return localIManager1;
+        ((IManager)localObject).a();
+        SLog.b("Q.qqstory.SuperManager", "onInit manager : %s", localObject);
       }
-      Object localObject2 = this;
-      continue;
-      localObject2 = new TrimmableManager();
-      continue;
-      localObject2 = new ShareGroupIconManager();
-      continue;
-      localObject2 = new VideoFilterManager();
-      continue;
-      localObject2 = new StoryConfigManager();
-      continue;
-      localObject2 = new LbsManager();
-      continue;
-      localObject2 = new com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager();
-      continue;
-      localObject2 = new dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager();
-      continue;
-      localObject2 = new UserManager();
-      continue;
-      localObject2 = new PreloadDownloaderManager();
-      continue;
-      localObject2 = new VideoServerInfoManager();
-      continue;
-      localObject2 = new StoryVideoUploadManager();
-      continue;
-      localObject2 = new StoryManager();
-      continue;
-      localObject2 = new ReportWatchVideoManager();
-      continue;
-      localObject2 = new VideoCompositeManager();
-      continue;
-      localObject2 = new LikeManager();
-      continue;
-      localObject2 = new QQStoryActivityManager();
-      continue;
-      localObject2 = new CommentManager();
-      continue;
-      localObject2 = new MemoryManager();
-      continue;
-      localObject2 = new DataProviderManager();
-      continue;
-      localObject2 = new TroopStoryDBManager();
-      continue;
-      localObject2 = new DiscoverManager();
-      continue;
-      localObject2 = new FeedManager();
-      continue;
-      localObject2 = new FeedVideoManager();
-      continue;
-      localObject2 = new TroopNickNameManager();
-      continue;
-      localObject2 = new ShareGroupManager();
-      continue;
-      localObject2 = new HotSortVideoManager();
-      continue;
-      localObject2 = new TagManager();
-      continue;
-      localObject2 = new DownloadUrlManager();
-      continue;
-      localObject2 = new StoryPromoteTaskManager();
-      continue;
-      localObject2 = new StoryScanManager();
-      continue;
-      return localObject2;
-      label408:
-      localObject2 = localIManager2;
+      a(paramInt, (IManager)localObject);
+      return localObject;
+      return localIManager;
       switch (paramInt)
       {
+      case 30: 
+      case 29: 
+      case 28: 
+      case 27: 
+      case 26: 
+      case 25: 
+      case 24: 
+      case 23: 
+      case 22: 
+      case 21: 
+      case 20: 
+      case 19: 
+      case 18: 
+      case 17: 
+      case 16: 
+      case 15: 
+      case 14: 
+      case 13: 
+      case 12: 
+      case 11: 
+      case 10: 
+      case 9: 
+      case 7: 
+      case 6: 
+      case 5: 
+      case 4: 
+      case 3: 
+      case 2: 
+      case 1: 
+      case 8: 
+      default: 
+        break;
+      case 0: 
+        label373:
+        SuperManager localSuperManager = this;
       }
-      localObject2 = localIManager2;
     }
   }
   
@@ -151,11 +180,15 @@ public class SuperManager
       return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.SuperManager
  * JD-Core Version:    0.7.0.1
  */

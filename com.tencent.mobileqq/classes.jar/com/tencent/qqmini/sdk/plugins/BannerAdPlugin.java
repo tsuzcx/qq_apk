@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -63,19 +64,86 @@ public class BannerAdPlugin
   private FrameLayout mBannerAdContainer;
   private BannerAdPosInfo mBannerAdPosInfo;
   private AdProxy.AbsBannerAdView mBannerAdView;
+  private Bundle mCreateViewExt;
+  private RequestEvent mCreateViewReq;
   private float mGameDensity = -1.0F;
   private int mGameHeight = 0;
   private int mGameWidth = 0;
   private boolean mHasNewAd = false;
+  private long mRecordShowedTime;
+  private long mShowBannerAdStartTime;
+  private Runnable refreshAdRunnable = new BannerAdPlugin.5(this);
   
   private void bannerErrorStateCallbackDelay(RequestEvent paramRequestEvent, int paramInt1, String paramString, int paramInt2)
   {
-    AppBrandTask.runTaskOnUiThreadDelay(new BannerAdPlugin.7(this, paramString, paramInt1, paramRequestEvent), paramInt2);
+    AppBrandTask.runTaskOnUiThreadDelay(new BannerAdPlugin.10(this, paramString, paramInt1, paramRequestEvent), paramInt2);
+  }
+  
+  private boolean checkShowValid()
+  {
+    Object localObject = this.mBannerAdView;
+    if ((localObject != null) && (((AdProxy.AbsBannerAdView)localObject).getView() != null))
+    {
+      localObject = this.mBannerAdPosInfo;
+      if (localObject != null)
+      {
+        if (!((BannerAdPosInfo)localObject).isValid())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("showBannerAd error, adPosInfo is invalid.");
+          ((StringBuilder)localObject).append(this.mBannerAdPosInfo);
+          QMLog.e("BannerAdPlugin", ((StringBuilder)localObject).toString());
+          return false;
+        }
+        if ((this.mMiniAppContext != null) && (this.mMiniAppContext.getAttachedActivity() != null)) {
+          return true;
+        }
+        QMLog.e("BannerAdPlugin", "showBannerAd error, mGdtBannerView == null");
+        return false;
+      }
+    }
+    QMLog.e("BannerAdPlugin", "showBannerAd error, data is null");
+    return false;
   }
   
   private void createBannerAdView(RequestEvent paramRequestEvent, String paramString, BannerAdPosInfo paramBannerAdPosInfo, Bundle paramBundle)
   {
     AppBrandTask.runTaskOnUiThread(new BannerAdPlugin.1(this, paramRequestEvent, paramString, paramBannerAdPosInfo, paramBundle));
+  }
+  
+  private void createRefreshAdView(RequestEvent paramRequestEvent, String paramString, BannerAdPosInfo paramBannerAdPosInfo, Bundle paramBundle)
+  {
+    try
+    {
+      QMLog.i("BannerAdPlugin", "refresh : start create bannerAd view.");
+      AdProxy localAdProxy = (AdProxy)ProxyManager.get(AdProxy.class);
+      if ((localAdProxy != null) && (this.mBannerAdPosInfo != null))
+      {
+        Activity localActivity = this.mMiniAppContext.getAttachedActivity();
+        if (localActivity == null)
+        {
+          QMLog.i("BannerAdPlugin", "start create, activity null");
+          bannerErrorStateCallbackDelay(paramRequestEvent, 1003, (String)AD_ERROR_MSG.get(Integer.valueOf(1003)), 300);
+          return;
+        }
+        this.mBannerAdView = localAdProxy.createBannerAdView(localActivity, paramString, paramBannerAdPosInfo.mAdUnitId, Math.round(this.mBannerAdPosInfo.mAdRealWidth * this.mGameDensity), Math.round(this.mBannerAdPosInfo.mAdRealHeight * this.mGameDensity), new BannerAdPlugin.7(this, paramRequestEvent, paramBannerAdPosInfo), paramBundle, this.mMiniAppContext, this);
+        paramRequestEvent = this.mBannerAdView;
+        if (paramRequestEvent != null) {
+          try
+          {
+            this.mBannerAdView.loadAD();
+          }
+          catch (Throwable paramRequestEvent)
+          {
+            QMLog.i("BannerAdPlugin", "loadAd error", paramRequestEvent);
+          }
+        }
+        return;
+      }
+      QMLog.i("BannerAdPlugin", "start create, null");
+      return;
+    }
+    finally {}
   }
   
   private void destroyBannerAd()
@@ -92,20 +160,90 @@ public class BannerAdPlugin
       }
       this.mBannerAdContainer = null;
       this.mBannerAdPosInfo = null;
+      this.mRecordShowedTime = 0L;
+      ThreadManager.getUIHandler().removeCallbacks(this.refreshAdRunnable);
       return;
     }
     finally {}
   }
   
+  private void doRefresh()
+  {
+    try
+    {
+      AppBrandTask.runTaskOnUiThread(new BannerAdPlugin.6(this));
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  private boolean doRefreshBannerView()
+  {
+    this.mBannerAdContainer.removeAllViews();
+    Object localObject = this.mBannerAdView;
+    if ((localObject != null) && (((AdProxy.AbsBannerAdView)localObject).getView() != null))
+    {
+      localObject = new FrameLayout.LayoutParams(gameDpTopx(this.mBannerAdPosInfo.mAdRealWidth), gameDpTopx(this.mBannerAdPosInfo.mAdRealHeight));
+      ((FrameLayout.LayoutParams)localObject).leftMargin = gameDpTopx(this.mBannerAdPosInfo.mAdLeft);
+      ((FrameLayout.LayoutParams)localObject).topMargin = gameDpTopx(this.mBannerAdPosInfo.mAdTop);
+      this.mBannerAdContainer.addView(this.mBannerAdView.getView(), (ViewGroup.LayoutParams)localObject);
+      try
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("state", "refresh");
+        informJs(this.mCreateViewReq, (JSONObject)localObject, "onBannerAdStateChange");
+      }
+      catch (JSONException localJSONException)
+      {
+        QMLog.e("BannerAdPlugin", "informJs refresh success", localJSONException);
+      }
+      String str = this.mBannerAdView.getReportUrl();
+      if ((this.mHasNewAd) && (this.mBannerAdPosInfo != null) && (!TextUtils.isEmpty(str))) {
+        this.mBannerAdView.onExposure();
+      }
+      this.mHasNewAd = false;
+      return true;
+    }
+    QMLog.e("BannerAdPlugin", "showBannerAd error, mGdtBannerView is null");
+    return false;
+  }
+  
+  private boolean doUpdateBannerView()
+  {
+    this.mBannerAdContainer.removeAllViews();
+    Object localObject = this.mBannerAdView;
+    if ((localObject != null) && (((AdProxy.AbsBannerAdView)localObject).getView() != null))
+    {
+      localObject = new FrameLayout.LayoutParams(gameDpTopx(this.mBannerAdPosInfo.mAdRealWidth), gameDpTopx(this.mBannerAdPosInfo.mAdRealHeight));
+      ((FrameLayout.LayoutParams)localObject).leftMargin = gameDpTopx(this.mBannerAdPosInfo.mAdLeft);
+      ((FrameLayout.LayoutParams)localObject).topMargin = gameDpTopx(this.mBannerAdPosInfo.mAdTop);
+      this.mBannerAdContainer.addView(this.mBannerAdView.getView(), (ViewGroup.LayoutParams)localObject);
+      this.mBannerAdContainer.setVisibility(0);
+      localObject = this.mBannerAdView.getReportUrl();
+      if ((this.mHasNewAd) && (this.mBannerAdPosInfo != null) && (!TextUtils.isEmpty((CharSequence)localObject))) {
+        this.mBannerAdView.onExposure();
+      }
+      this.mHasNewAd = false;
+      return true;
+    }
+    QMLog.e("BannerAdPlugin", "showBannerAd error, mGdtBannerView is null");
+    return false;
+  }
+  
   private int gameDpTopx(float paramFloat)
   {
-    return Math.round(this.mGameDensity * paramFloat);
+    return Math.round(paramFloat * this.mGameDensity);
   }
   
   private float getDensity(float paramFloat)
   {
-    if (this.mGameDensity > 0.0F) {
-      paramFloat = this.mGameDensity;
+    float f = this.mGameDensity;
+    if (f > 0.0F) {
+      paramFloat = f;
     }
     return paramFloat;
   }
@@ -121,16 +259,18 @@ public class BannerAdPlugin
   
   private int getScreenHeight(int paramInt)
   {
-    if (this.mGameHeight > 0) {
-      paramInt = this.mGameHeight;
+    int i = this.mGameHeight;
+    if (i > 0) {
+      paramInt = i;
     }
     return paramInt;
   }
   
   private int getScreenWidth(int paramInt)
   {
-    if (this.mGameWidth > 0) {
-      paramInt = this.mGameWidth;
+    int i = this.mGameWidth;
+    if (i > 0) {
+      paramInt = i;
     }
     return paramInt;
   }
@@ -156,11 +296,12 @@ public class BannerAdPlugin
   
   private boolean makeSureContainerAdded()
   {
-    if ((this.mBannerAdContainer != null) && (this.mBannerAdContainer.getParent() != null)) {
+    Object localObject = this.mBannerAdContainer;
+    if ((localObject != null) && (((FrameLayout)localObject).getParent() != null)) {
       return true;
     }
-    ViewGroup localViewGroup = (ViewGroup)this.mMiniAppContext.getAttachedActivity().getWindow().getDecorView();
-    if (localViewGroup == null)
+    localObject = (ViewGroup)this.mMiniAppContext.getAttachedActivity().getWindow().getDecorView();
+    if (localObject == null)
     {
       QMLog.e("BannerAdPlugin", "makeSureContainerAdded, root view is null");
       return false;
@@ -168,197 +309,200 @@ public class BannerAdPlugin
     if (this.mBannerAdContainer == null) {
       this.mBannerAdContainer = new FrameLayout(this.mMiniAppContext.getAttachedActivity());
     }
-    if ((localViewGroup instanceof FrameLayout)) {
-      localViewGroup.addView(this.mBannerAdContainer, new FrameLayout.LayoutParams(-1, -1));
-    }
-    for (;;)
+    if ((localObject instanceof FrameLayout))
     {
+      ((ViewGroup)localObject).addView(this.mBannerAdContainer, new FrameLayout.LayoutParams(-1, -1));
       return true;
-      if ((localViewGroup instanceof RelativeLayout)) {
-        localViewGroup.addView(this.mBannerAdContainer, new RelativeLayout.LayoutParams(-1, -1));
-      }
     }
+    if ((localObject instanceof RelativeLayout)) {
+      ((ViewGroup)localObject).addView(this.mBannerAdContainer, new RelativeLayout.LayoutParams(-1, -1));
+    }
+    return true;
+  }
+  
+  private boolean refreshBannerAdView()
+  {
+    if (!checkShowValid()) {
+      return false;
+    }
+    return doRefreshBannerView();
+  }
+  
+  private void refreshViewCountTimeDown()
+  {
+    try
+    {
+      if (this.mBannerAdContainer.getVisibility() == 0)
+      {
+        this.mShowBannerAdStartTime = System.currentTimeMillis();
+        long l = this.mBannerAdPosInfo.mAdIntervals * 1000L - this.mRecordShowedTime;
+        this.mRecordShowedTime = 0L;
+        if (l > 0L)
+        {
+          ThreadManager.getUIHandler().removeCallbacks(this.refreshAdRunnable);
+          ThreadManager.getUIHandler().postDelayed(this.refreshAdRunnable, l);
+        }
+        else
+        {
+          doRefresh();
+        }
+      }
+      return;
+    }
+    finally {}
   }
   
   private void reportBannerAd(String paramString)
   {
-    QMLog.i("BannerAdPlugin", "reportBannerAd reportUrl = " + paramString);
-    if ((TextUtils.isEmpty(paramString)) || (!URLUtil.isNetworkUrl(paramString))) {
-      return;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("reportBannerAd reportUrl = ");
+    localStringBuilder.append(paramString);
+    QMLog.i("BannerAdPlugin", localStringBuilder.toString());
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (!URLUtil.isNetworkUrl(paramString)) {
+        return;
+      }
+      ThreadManager.executeOnNetworkIOThreadPool(new BannerAdPlugin.8(this, paramString));
     }
-    ThreadManager.executeOnNetworkIOThreadPool(new BannerAdPlugin.5(this, paramString));
   }
   
   private boolean showBannerAd()
   {
-    boolean bool = false;
-    for (;;)
+    try
     {
-      try
-      {
-        if ((this.mBannerAdView == null) || (this.mBannerAdView.getView() == null) || (this.mBannerAdPosInfo == null))
-        {
-          QMLog.e("BannerAdPlugin", "showBannerAd error, data is null");
-          return bool;
-        }
-        if (!this.mBannerAdPosInfo.isValid())
-        {
-          QMLog.e("BannerAdPlugin", "showBannerAd error, adPosInfo is invalid." + this.mBannerAdPosInfo);
-          continue;
-        }
-        if (this.mMiniAppContext == null) {
-          break label105;
-        }
+      boolean bool = checkShowValid();
+      if (!bool) {
+        return false;
       }
-      finally {}
-      if (this.mMiniAppContext.getAttachedActivity() == null)
+      makeSureContainerAdded();
+      if ((!this.mHasNewAd) && (this.mBannerAdContainer.getChildCount() > 0))
       {
-        label105:
-        QMLog.e("BannerAdPlugin", "showBannerAd error, mGdtBannerView == null");
+        this.mBannerAdContainer.setVisibility(0);
+        return true;
       }
-      else
-      {
-        makeSureContainerAdded();
-        if ((!this.mHasNewAd) && (this.mBannerAdContainer.getChildCount() > 0))
-        {
-          this.mBannerAdContainer.setVisibility(0);
-          bool = true;
-        }
-        else
-        {
-          this.mBannerAdContainer.removeAllViews();
-          if ((this.mBannerAdView != null) && (this.mBannerAdView.getView() != null))
-          {
-            Object localObject2 = new FrameLayout.LayoutParams(gameDpTopx(this.mBannerAdPosInfo.mAdRealWidth), gameDpTopx(this.mBannerAdPosInfo.mAdRealHeight));
-            ((FrameLayout.LayoutParams)localObject2).leftMargin = gameDpTopx(this.mBannerAdPosInfo.mAdLeft);
-            ((FrameLayout.LayoutParams)localObject2).topMargin = gameDpTopx(this.mBannerAdPosInfo.mAdTop);
-            this.mBannerAdContainer.addView(this.mBannerAdView.getView(), (ViewGroup.LayoutParams)localObject2);
-            this.mBannerAdContainer.setVisibility(0);
-            localObject2 = this.mBannerAdView.getReportUrl();
-            if ((this.mHasNewAd) && (this.mBannerAdPosInfo != null) && (!TextUtils.isEmpty((CharSequence)localObject2))) {
-              this.mBannerAdView.onExposure();
-            }
-            this.mHasNewAd = false;
-            bool = true;
-          }
-          else
-          {
-            QMLog.e("BannerAdPlugin", "showBannerAd error, mGdtBannerView is null");
-          }
-        }
-      }
+      this.mRecordShowedTime = 0L;
+      bool = doUpdateBannerView();
+      return bool;
     }
+    finally {}
   }
   
   private void updateBannerAdPosition(RequestEvent paramRequestEvent, int paramInt1, int paramInt2)
   {
-    int i = 1;
-    BannerAdPosInfo localBannerAdPosInfo;
     if ((paramInt1 != -1) && (this.mIsMiniGame))
     {
-      localBannerAdPosInfo = this.mBannerAdPosInfo;
-      if (localBannerAdPosInfo == null) {
-        break label117;
-      }
-      switch (paramInt1)
+      BannerAdPosInfo localBannerAdPosInfo = this.mBannerAdPosInfo;
+      if (localBannerAdPosInfo != null)
       {
-      }
-    }
-    while (i == 0)
-    {
-      if (QMLog.isColorLevel()) {
-        QMLog.i("BannerAdPlugin", "updateBannerAd no need to resize");
-      }
-      return;
-      if (localBannerAdPosInfo.mAdLeft == paramInt2)
-      {
-        i = 0;
-        continue;
-        if (localBannerAdPosInfo.mAdTop == paramInt2)
-        {
-          i = 0;
-          continue;
-          if (localBannerAdPosInfo.mAdRealWidth == paramInt2) {
-            i = 0;
+        int i = 1;
+        if (paramInt1 != 1) {
+          if (paramInt1 != 2) {
+            if ((paramInt1 != 3) || (localBannerAdPosInfo.mAdRealWidth != paramInt2)) {
+              break label83;
+            }
           }
         }
+        while (localBannerAdPosInfo.mAdLeft == paramInt2)
+        {
+          do
+          {
+            i = 0;
+            break;
+          } while (localBannerAdPosInfo.mAdTop == paramInt2);
+          break;
+        }
+        label83:
+        if (i == 0)
+        {
+          if (QMLog.isColorLevel()) {
+            QMLog.i("BannerAdPlugin", "updateBannerAd no need to resize");
+          }
+          return;
+        }
       }
+      AppBrandTask.runTaskOnUiThread(new BannerAdPlugin.9(this, paramInt1, paramInt2, paramRequestEvent));
     }
-    label117:
-    AppBrandTask.runTaskOnUiThread(new BannerAdPlugin.6(this, paramInt1, paramInt2, paramRequestEvent));
   }
   
   private void updateBannerSize(RequestEvent paramRequestEvent)
   {
-    int j = 1;
-    int i;
-    int k;
-    try
+    int j;
+    label359:
+    do
     {
-      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
-      if (localJSONObject.has("left"))
+      try
       {
-        i = localJSONObject.getInt("left");
-      }
-      else if (localJSONObject.has("top"))
-      {
-        j = 2;
-        i = localJSONObject.getInt("top");
-      }
-      else if (localJSONObject.has("width"))
-      {
-        float f = ViewUtils.getDensity();
-        j = ViewUtils.getScreenWidth();
-        i = ViewUtils.getScreenHeight();
+        JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
+        boolean bool = localJSONObject.has("left");
+        j = 1;
+        int k = 1;
+        if (bool)
+        {
+          i = localJSONObject.getInt("left");
+          continue;
+        }
+        if (localJSONObject.has("top"))
+        {
+          j = 2;
+          i = localJSONObject.getInt("top");
+          continue;
+        }
+        if (!localJSONObject.has("width")) {
+          break label359;
+        }
+        float f2 = ViewUtils.getDensity();
+        int n = ViewUtils.getScreenWidth();
+        int m = ViewUtils.getScreenHeight();
         BannerAdPosInfo localBannerAdPosInfo = this.mBannerAdPosInfo;
         Activity localActivity = this.mMiniAppContext.getAttachedActivity();
+        float f1 = f2;
+        j = n;
+        i = m;
         if (localActivity != null)
         {
           k = MiniAppEnv.g().getContext().getResources().getConfiguration().orientation;
           initActivitySize(localActivity);
-          f = getDensity(f);
-          j = getScreenWidth(j);
-          i = getScreenHeight(i);
-          int m = localJSONObject.getInt("width");
-          i = BannerAdPosInfo.calculateLegalWidth(m, k, f, j, i);
-          if ((localBannerAdPosInfo != null) && (m != localBannerAdPosInfo.mAdWidth) && (i == localBannerAdPosInfo.mAdRealWidth))
+          f1 = getDensity(f2);
+          j = getScreenWidth(n);
+          i = getScreenHeight(m);
+        }
+        m = localJSONObject.getInt("width");
+        i = BannerAdPosInfo.calculateLegalWidth(m, k, f1, j, i);
+        if ((localBannerAdPosInfo != null) && (m != localBannerAdPosInfo.mAdWidth) && (i == localBannerAdPosInfo.mAdRealWidth))
+        {
+          localBannerAdPosInfo.mAdWidth = m;
+          try
           {
-            localBannerAdPosInfo.mAdWidth = m;
-            try
-            {
-              localJSONObject = new JSONObject();
-              localJSONObject.put("state", "resize");
-              localJSONObject.put("width", localBannerAdPosInfo.mAdRealWidth);
-              localJSONObject.put("height", localBannerAdPosInfo.mAdRealHeight);
-              informJs(paramRequestEvent, localJSONObject, "onBannerAdStateChange");
-              return;
-            }
-            catch (JSONException paramRequestEvent)
-            {
-              QMLog.e("BannerAdPlugin", "updateBannerAd informJs error", paramRequestEvent);
-              return;
-            }
-            if (i >= 0) {}
+            localJSONObject = new JSONObject();
+            localJSONObject.put("state", "resize");
+            localJSONObject.put("width", localBannerAdPosInfo.mAdRealWidth);
+            localJSONObject.put("height", localBannerAdPosInfo.mAdRealHeight);
+            informJs(paramRequestEvent, localJSONObject, "onBannerAdStateChange");
+            return;
           }
+          catch (JSONException paramRequestEvent)
+          {
+            QMLog.e("BannerAdPlugin", "updateBannerAd informJs error", paramRequestEvent);
+            return;
+          }
+          if (i < 0)
+          {
+            bannerErrorStateCallbackDelay(paramRequestEvent, 1003, (String)AD_ERROR_MSG.get(Integer.valueOf(1003)), 0);
+            return;
+          }
+          updateBannerAdPosition(paramRequestEvent, j, i);
+          return;
         }
       }
-    }
-    catch (JSONException paramRequestEvent)
-    {
-      QMLog.e("BannerAdPlugin", "handle updateBannerAdSize parse json error", paramRequestEvent);
-      return;
-    }
-    do
-    {
-      bannerErrorStateCallbackDelay(paramRequestEvent, 1003, (String)AD_ERROR_MSG.get(Integer.valueOf(1003)), 0);
-      return;
-      updateBannerAdPosition(paramRequestEvent, j, i);
-      return;
+      catch (JSONException paramRequestEvent)
+      {
+        QMLog.e("BannerAdPlugin", "handle updateBannerAdSize parse json error", paramRequestEvent);
+        return;
+      }
       j = 3;
       continue;
-      k = 1;
-      break;
-      i = -1;
+      int i = -1;
       j = -1;
     } while (j != -1);
   }
@@ -366,7 +510,6 @@ public class BannerAdPlugin
   @JsEvent({"createBannerAd"})
   public String createBannerAd(RequestEvent paramRequestEvent)
   {
-    int m = 0;
     for (;;)
     {
       try
@@ -375,185 +518,147 @@ public class BannerAdPlugin
         try
         {
           localObject1 = BannerAdPosInfo.parseBannerAdPosInfoFromJson(paramRequestEvent.jsonParams);
-          if (localObject1 != null) {
+          if (localObject1 == null)
+          {
+            bannerErrorStateCallbackDelay(paramRequestEvent, 1001, (String)AD_ERROR_MSG.get(Integer.valueOf(1001)), 300);
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("handle createBannerAd error params, ");
+            ((StringBuilder)localObject1).append(paramRequestEvent.jsonParams);
+            QMLog.i("BannerAdPlugin", ((StringBuilder)localObject1).toString());
+            return "";
+          }
+          String str2 = LoginManager.getInstance().getAccount();
+          int k = 1;
+          float f2 = ViewUtils.getDensity();
+          int n = ViewUtils.getScreenWidth();
+          int m = ViewUtils.getScreenHeight();
+          String str1 = this.mApkgInfo.appId;
+          Object localObject2 = this.mMiniAppContext.getAttachedActivity();
+          float f1 = f2;
+          int j = n;
+          i = m;
+          if (localObject2 != null)
+          {
+            k = MiniAppEnv.g().getContext().getResources().getConfiguration().orientation;
+            initActivitySize((Activity)localObject2);
+            f1 = getDensity(f2);
+            j = getScreenWidth(n);
+            i = getScreenHeight(m);
+          }
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("handle createBannerAd appId = ");
+          ((StringBuilder)localObject2).append(str1);
+          ((StringBuilder)localObject2).append(", posid = ");
+          ((StringBuilder)localObject2).append(((BannerAdPosInfo)localObject1).mAdUnitId);
+          QMLog.i("BannerAdPlugin", ((StringBuilder)localObject2).toString());
+          if (isAdParamValid((BannerAdPosInfo)localObject1, str1))
+          {
+            bannerErrorStateCallbackDelay(paramRequestEvent, 1001, (String)AD_ERROR_MSG.get(Integer.valueOf(1001)), 300);
+            return "";
+          }
+          BannerAdPosInfo localBannerAdPosInfo = BannerAdPosInfo.buildFormatInfo((BannerAdPosInfo)localObject1, k, f1, j, i);
+          if ((localBannerAdPosInfo != null) && (localBannerAdPosInfo.isValid()))
+          {
+            this.mBannerAdPosInfo = localBannerAdPosInfo;
+            String str3 = AdUtil.getSpAdGdtCookie(0);
+            Object localObject4 = this.mMiniAppInfo;
+            localObject1 = "";
+            localObject2 = "";
+            localObject3 = "";
+            if (localObject4 != null)
+            {
+              localObject1 = getEntryPathFromAppConfig((MiniAppInfo)localObject4);
+              localObject2 = ((MiniAppInfo)localObject4).launchParam.reportData;
+              localObject3 = String.valueOf(((MiniAppInfo)localObject4).launchParam.scene);
+            }
+            localObject4 = getViaFromAppConfig((MiniAppInfo)localObject4);
+            Bundle localBundle = new Bundle();
+            localBundle.putString(AdProxy.KEY_ACCOUNT, str2);
+            localBundle.putInt(AdProxy.KEY_AD_TYPE, 0);
+            str2 = AdProxy.KEY_ORIENTATION;
+            if (k != 2) {
+              break label715;
+            }
+            i = 90;
+            localBundle.putInt(str2, i);
+            localBundle.putString(AdProxy.KEY_GDT_COOKIE, str3);
+            localBundle.putString(AdProxy.KEY_ENTRY_PATH, (String)localObject1);
+            localBundle.putString(AdProxy.KEY_REPORT_DATA, (String)localObject2);
+            localBundle.putString(AdProxy.KEY_REFER, (String)localObject3);
+            localBundle.putString(AdProxy.KEY_VIA, (String)localObject4);
+            this.mCreateViewReq = paramRequestEvent;
+            this.mCreateViewExt = localBundle;
+            createBannerAdView(paramRequestEvent, str1, localBannerAdPosInfo, localBundle);
             continue;
           }
           bannerErrorStateCallbackDelay(paramRequestEvent, 1001, (String)AD_ERROR_MSG.get(Integer.valueOf(1001)), 300);
-          QMLog.i("BannerAdPlugin", "handle createBannerAd error params, " + paramRequestEvent.jsonParams);
-          paramRequestEvent = "";
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("handle createBannerAd invalid adInfo = ");
+          ((StringBuilder)localObject1).append(localBannerAdPosInfo);
+          QMLog.i("BannerAdPlugin", ((StringBuilder)localObject1).toString());
+          return "";
         }
         catch (Exception localException)
         {
-          String str3;
-          int i;
-          float f2;
-          int i1;
-          int n;
-          String str2;
-          Object localObject2;
-          int k;
-          int j;
-          float f1;
-          BannerAdPosInfo localBannerAdPosInfo;
-          String str4;
-          Object localObject3;
-          String str1;
-          Bundle localBundle;
-          Object localObject1 = ApiUtil.wrapCallbackFail(paramRequestEvent.event, null);
+          localObject1 = ApiUtil.wrapCallbackFail(paramRequestEvent.event, null);
           if (localObject1 == null) {
-            continue;
+            break label721;
           }
-          localObject1 = ((JSONObject)localObject1).toString();
-          bannerErrorStateCallbackDelay(paramRequestEvent, 1003, (String)AD_ERROR_MSG.get(Integer.valueOf(1003)), 0);
-          QMLog.i("BannerAdPlugin", "handle createBannerAd parse json error" + paramRequestEvent.jsonParams, localException);
-          if (localObject1 == null) {
-            continue;
-          }
-          paramRequestEvent = (RequestEvent)localObject1;
-          continue;
-          localObject1 = "";
-          continue;
         }
-        return paramRequestEvent;
+        localObject1 = ((JSONObject)localObject1).toString();
+        bannerErrorStateCallbackDelay(paramRequestEvent, 1003, (String)AD_ERROR_MSG.get(Integer.valueOf(1003)), 0);
+        Object localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("handle createBannerAd parse json error");
+        ((StringBuilder)localObject3).append(paramRequestEvent.jsonParams);
+        QMLog.i("BannerAdPlugin", ((StringBuilder)localObject3).toString(), localException);
+        if (localObject1 != null) {
+          return localObject1;
+        }
+        return "";
       }
       finally {}
-      str3 = LoginManager.getInstance().getAccount();
-      i = 1;
-      f2 = ViewUtils.getDensity();
-      i1 = ViewUtils.getScreenWidth();
-      n = ViewUtils.getScreenHeight();
-      str2 = this.mApkgInfo.appId;
-      localObject2 = this.mMiniAppContext.getAttachedActivity();
-      k = n;
-      j = i1;
-      f1 = f2;
-      if (localObject2 != null)
-      {
-        i = MiniAppEnv.g().getContext().getResources().getConfiguration().orientation;
-        initActivitySize((Activity)localObject2);
-        f1 = getDensity(f2);
-        j = getScreenWidth(i1);
-        k = getScreenHeight(n);
-      }
-      QMLog.i("BannerAdPlugin", "handle createBannerAd appId = " + str2 + ", posid = " + ((BannerAdPosInfo)localObject1).mAdUnitId);
-      if (isAdParamValid((BannerAdPosInfo)localObject1, str2))
-      {
-        bannerErrorStateCallbackDelay(paramRequestEvent, 1001, (String)AD_ERROR_MSG.get(Integer.valueOf(1001)), 300);
-        paramRequestEvent = "";
-      }
-      else
-      {
-        localBannerAdPosInfo = BannerAdPosInfo.buildFormatInfo((BannerAdPosInfo)localObject1, i, f1, j, k);
-        if ((localBannerAdPosInfo == null) || (!localBannerAdPosInfo.isValid()))
-        {
-          bannerErrorStateCallbackDelay(paramRequestEvent, 1001, (String)AD_ERROR_MSG.get(Integer.valueOf(1001)), 300);
-          QMLog.i("BannerAdPlugin", "handle createBannerAd invalid adInfo = " + localBannerAdPosInfo);
-          paramRequestEvent = "";
-        }
-        else
-        {
-          this.mBannerAdPosInfo = localBannerAdPosInfo;
-          str4 = AdUtil.getSpAdGdtCookie(0);
-          localObject3 = this.mMiniAppInfo;
-          str1 = "";
-          localObject2 = "";
-          localObject1 = "";
-          if (localObject3 != null)
-          {
-            str1 = getEntryPathFromAppConfig((MiniAppInfo)localObject3);
-            localObject2 = ((MiniAppInfo)localObject3).launchParam.reportData;
-            localObject1 = String.valueOf(((MiniAppInfo)localObject3).launchParam.scene);
-          }
-          localObject3 = getViaFromAppConfig((MiniAppInfo)localObject3);
-          localBundle = new Bundle();
-          localBundle.putString(AdProxy.KEY_ACCOUNT, str3);
-          localBundle.putInt(AdProxy.KEY_AD_TYPE, 0);
-          str3 = AdProxy.KEY_ORIENTATION;
-          j = m;
-          if (i == 2) {
-            j = 90;
-          }
-          localBundle.putInt(str3, j);
-          localBundle.putString(AdProxy.KEY_GDT_COOKIE, str4);
-          localBundle.putString(AdProxy.KEY_ENTRY_PATH, str1);
-          localBundle.putString(AdProxy.KEY_REPORT_DATA, (String)localObject2);
-          localBundle.putString(AdProxy.KEY_REFER, (String)localObject1);
-          localBundle.putString(AdProxy.KEY_VIA, (String)localObject3);
-          createBannerAdView(paramRequestEvent, str2, localBannerAdPosInfo, localBundle);
-          paramRequestEvent = "";
-        }
-      }
+      label715:
+      int i = 0;
+      continue;
+      label721:
+      Object localObject1 = "";
     }
   }
   
   public MiniAdPosInfo getPosInfo()
   {
-    if (this.mBannerAdPosInfo == null) {
+    BannerAdPosInfo localBannerAdPosInfo = this.mBannerAdPosInfo;
+    if (localBannerAdPosInfo == null) {
       return null;
     }
-    return new MiniAdPosInfo(this.mBannerAdPosInfo.mAdLeft, this.mBannerAdPosInfo.mAdTop, this.mBannerAdPosInfo.mAdRealWidth, this.mBannerAdPosInfo.mAdRealHeight);
+    return new MiniAdPosInfo(localBannerAdPosInfo.mAdLeft, this.mBannerAdPosInfo.mAdTop, this.mBannerAdPosInfo.mAdRealWidth, this.mBannerAdPosInfo.mAdRealHeight);
   }
   
-  /* Error */
   public boolean hideBannerAd()
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_2
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: aload_0
-    //   5: getfield 91	com/tencent/qqmini/sdk/plugins/BannerAdPlugin:mBannerAdView	Lcom/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$AbsBannerAdView;
-    //   8: ifnonnull +17 -> 25
-    //   11: ldc 29
-    //   13: ldc_w 597
-    //   16: invokestatic 242	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   19: iload_2
-    //   20: istore_1
-    //   21: aload_0
-    //   22: monitorexit
-    //   23: iload_1
-    //   24: ireturn
-    //   25: iload_2
-    //   26: istore_1
-    //   27: aload_0
-    //   28: getfield 134	com/tencent/qqmini/sdk/plugins/BannerAdPlugin:mBannerAdContainer	Landroid/widget/FrameLayout;
-    //   31: ifnull -10 -> 21
-    //   34: iload_2
-    //   35: istore_1
-    //   36: aload_0
-    //   37: getfield 134	com/tencent/qqmini/sdk/plugins/BannerAdPlugin:mBannerAdContainer	Landroid/widget/FrameLayout;
-    //   40: ifnull -19 -> 21
-    //   43: iload_2
-    //   44: istore_1
-    //   45: aload_0
-    //   46: getfield 134	com/tencent/qqmini/sdk/plugins/BannerAdPlugin:mBannerAdContainer	Landroid/widget/FrameLayout;
-    //   49: invokevirtual 600	android/widget/FrameLayout:getVisibility	()I
-    //   52: ifne -31 -> 21
-    //   55: aload_0
-    //   56: getfield 134	com/tencent/qqmini/sdk/plugins/BannerAdPlugin:mBannerAdContainer	Landroid/widget/FrameLayout;
-    //   59: bipush 8
-    //   61: invokevirtual 314	android/widget/FrameLayout:setVisibility	(I)V
-    //   64: iconst_1
-    //   65: istore_1
-    //   66: goto -45 -> 21
-    //   69: astore_3
-    //   70: aload_0
-    //   71: monitorexit
-    //   72: aload_3
-    //   73: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	74	0	this	BannerAdPlugin
-    //   20	46	1	bool1	boolean
-    //   1	43	2	bool2	boolean
-    //   69	4	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   4	19	69	finally
-    //   27	34	69	finally
-    //   36	43	69	finally
-    //   45	64	69	finally
+    try
+    {
+      if (this.mBannerAdView == null)
+      {
+        QMLog.e("BannerAdPlugin", "hideBannerAd error, no data");
+        return false;
+      }
+      FrameLayout localFrameLayout = this.mBannerAdContainer;
+      if (localFrameLayout == null) {
+        return false;
+      }
+      if ((this.mBannerAdContainer != null) && (this.mBannerAdContainer.getVisibility() == 0))
+      {
+        this.mBannerAdContainer.setVisibility(8);
+        ThreadManager.getUIHandler().removeCallbacks(this.refreshAdRunnable);
+        if (this.mBannerAdPosInfo.mAdIntervals != 0) {
+          this.mRecordShowedTime += System.currentTimeMillis() - this.mShowBannerAdStartTime;
+        }
+        return true;
+      }
+      return false;
+    }
+    finally {}
   }
   
   public void initActivitySize(Activity paramActivity)
@@ -570,7 +675,16 @@ public class BannerAdPlugin
     this.mGameDensity = localDisplayMetrics.density;
     this.mGameWidth = localDisplayMetrics.widthPixels;
     this.mGameHeight = localDisplayMetrics.heightPixels;
-    QMLog.i("BannerAdPlugin", "density = " + localDisplayMetrics.density + ", ViewUtils.density = " + ViewUtils.getDensity() + ", screenW = " + localDisplayMetrics.widthPixels + ", screenH = " + localDisplayMetrics.heightPixels);
+    paramActivity = new StringBuilder();
+    paramActivity.append("density = ");
+    paramActivity.append(localDisplayMetrics.density);
+    paramActivity.append(", ViewUtils.density = ");
+    paramActivity.append(ViewUtils.getDensity());
+    paramActivity.append(", screenW = ");
+    paramActivity.append(localDisplayMetrics.widthPixels);
+    paramActivity.append(", screenH = ");
+    paramActivity.append(localDisplayMetrics.heightPixels);
+    QMLog.i("BannerAdPlugin", paramActivity.toString());
   }
   
   public void onDestroy()
@@ -605,88 +719,96 @@ public class BannerAdPlugin
     QMLog.i("BannerAdPlugin", "receive operateBannerAd event");
     try
     {
-      str = new JSONObject(paramRequestEvent.jsonParams).getString("type");
-      QMLog.i("BannerAdPlugin", "handle operateBannerAd type = " + str);
-      if ("show".equals(str)) {
+      String str = new JSONObject(paramRequestEvent.jsonParams).getString("type");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handle operateBannerAd type = ");
+      localStringBuilder.append(str);
+      QMLog.i("BannerAdPlugin", localStringBuilder.toString());
+      if ("show".equals(str))
+      {
         AppBrandTask.runTaskOnUiThreadDelay(new BannerAdPlugin.2(this, paramRequestEvent), 300L);
       }
-      for (;;)
+      else if ("hide".equals(str))
       {
-        return "";
-        if (!"hide".equals(str)) {
-          break;
-        }
         AppBrandTask.runTaskOnUiThread(new BannerAdPlugin.3(this));
+      }
+      else if ("destroy".equals(str))
+      {
+        AppBrandTask.runTaskOnUiThread(new BannerAdPlugin.4(this));
+      }
+      else
+      {
+        paramRequestEvent = new StringBuilder();
+        paramRequestEvent.append("handle operateBannerAd not define type = ");
+        paramRequestEvent.append(str);
+        QMLog.i("BannerAdPlugin", paramRequestEvent.toString());
       }
     }
     catch (JSONException paramRequestEvent)
     {
-      for (;;)
-      {
-        String str;
-        QMLog.i("BannerAdPlugin", "handle operateBannerAd parse json error", paramRequestEvent);
-        continue;
-        if ("destroy".equals(str)) {
-          AppBrandTask.runTaskOnUiThread(new BannerAdPlugin.4(this));
-        } else {
-          QMLog.i("BannerAdPlugin", "handle operateBannerAd not define type = " + str);
-        }
-      }
+      QMLog.i("BannerAdPlugin", "handle operateBannerAd parse json error", paramRequestEvent);
     }
+    return "";
   }
   
   public boolean updateBannerAdPosition(int paramInt1, int paramInt2)
   {
-    boolean bool = false;
     for (;;)
     {
       try
       {
         QMLog.i("BannerAdPlugin", "updateBannerAdPosition");
-        if ((this.mBannerAdView == null) || (this.mBannerAdPosInfo == null))
+        if (this.mBannerAdView != null)
         {
-          QMLog.e("BannerAdPlugin", "updateBannerAdPosition error, no data");
-          return bool;
-        }
-        switch (paramInt1)
-        {
-        default: 
-          if ((this.mBannerAdContainer == null) || (this.mBannerAdContainer.getChildCount() <= 0)) {
-            break label261;
+          if (this.mBannerAdPosInfo != null) {
+            break label229;
           }
-          View localView = this.mBannerAdContainer.getChildAt(0);
-          FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)localView.getLayoutParams();
-          localLayoutParams.leftMargin = gameDpTopx(this.mBannerAdPosInfo.mAdLeft);
-          localLayoutParams.topMargin = gameDpTopx(this.mBannerAdPosInfo.mAdTop);
-          localLayoutParams.width = gameDpTopx(this.mBannerAdPosInfo.mAdRealWidth);
-          localLayoutParams.height = gameDpTopx(this.mBannerAdPosInfo.mAdRealHeight);
-          this.mBannerAdView.setSize(gameDpTopx(this.mBannerAdPosInfo.mAdRealWidth), gameDpTopx(this.mBannerAdPosInfo.mAdRealHeight));
-          localView.setLayoutParams(localLayoutParams);
+          continue;
+          this.mBannerAdPosInfo.mAdRealWidth = paramInt2;
+          this.mBannerAdPosInfo.mAdRealHeight = BannerAdPosInfo.getHeight(paramInt2);
+          continue;
+          this.mBannerAdPosInfo.mAdTop = paramInt2;
+          continue;
+          this.mBannerAdPosInfo.mAdLeft = paramInt2;
+          if ((this.mBannerAdContainer != null) && (this.mBannerAdContainer.getChildCount() > 0))
+          {
+            View localView = this.mBannerAdContainer.getChildAt(0);
+            FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)localView.getLayoutParams();
+            localLayoutParams.leftMargin = gameDpTopx(this.mBannerAdPosInfo.mAdLeft);
+            localLayoutParams.topMargin = gameDpTopx(this.mBannerAdPosInfo.mAdTop);
+            localLayoutParams.width = gameDpTopx(this.mBannerAdPosInfo.mAdRealWidth);
+            localLayoutParams.height = gameDpTopx(this.mBannerAdPosInfo.mAdRealHeight);
+            this.mBannerAdView.setSize(gameDpTopx(this.mBannerAdPosInfo.mAdRealWidth), gameDpTopx(this.mBannerAdPosInfo.mAdRealHeight));
+            localView.setLayoutParams(localLayoutParams);
+          }
+          return true;
         }
+        QMLog.e("BannerAdPlugin", "updateBannerAdPosition error, no data");
+        return false;
       }
       finally {}
-      this.mBannerAdPosInfo.mAdLeft = paramInt2;
-      continue;
-      this.mBannerAdPosInfo.mAdTop = paramInt2;
-      continue;
-      this.mBannerAdPosInfo.mAdRealWidth = paramInt2;
-      this.mBannerAdPosInfo.mAdRealHeight = BannerAdPosInfo.getHeight(paramInt2);
-      continue;
-      label261:
-      bool = true;
+      label229:
+      if (paramInt1 != 1) {
+        if (paramInt1 != 2) {
+          if (paramInt1 == 3) {}
+        }
+      }
     }
   }
   
   @JsEvent({"updateBannerAdSize"})
   public void updateBannerAdSize(RequestEvent paramRequestEvent)
   {
-    QMLog.i("BannerAdPlugin", "updateBannerAdSize " + paramRequestEvent.jsonParams);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateBannerAdSize ");
+    localStringBuilder.append(paramRequestEvent.jsonParams);
+    QMLog.i("BannerAdPlugin", localStringBuilder.toString());
     updateBannerSize(paramRequestEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.BannerAdPlugin
  * JD-Core Version:    0.7.0.1
  */

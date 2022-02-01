@@ -34,7 +34,7 @@ public class MessageCacheCallback
   
   public List<MessageRecord> a(String paramString, int paramInt, MessageCache paramMessageCache)
   {
-    return ((QQAppInterface)paramMessageCache.a()).getMessageFacade().b(paramString, paramInt);
+    return ((QQAppInterface)paramMessageCache.a()).getMessageFacade().a(paramString, paramInt);
   }
   
   public byte[] a(String paramString)
@@ -54,7 +54,7 @@ public class MessageCacheCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.MessageCacheCallback
  * JD-Core Version:    0.7.0.1
  */

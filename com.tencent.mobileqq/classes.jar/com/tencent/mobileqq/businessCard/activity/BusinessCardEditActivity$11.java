@@ -10,18 +10,23 @@ class BusinessCardEditActivity$11
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard != null) {
-      BusinessCardEditActivity.a(this.this$0, this.this$0.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardName, this.this$0.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.company, this.this$0.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.mobilesNum);
-    }
-    while (this.this$0.jdField_a_of_type_ComTencentMobileqqBusinessCardDataCardOCRInfo == null) {
+    BusinessCardEditActivity localBusinessCardEditActivity;
+    if (this.this$0.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard != null)
+    {
+      localBusinessCardEditActivity = this.this$0;
+      BusinessCardEditActivity.a(localBusinessCardEditActivity, localBusinessCardEditActivity.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardName, this.this$0.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.company, this.this$0.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.mobilesNum);
       return;
     }
-    BusinessCardEditActivity.a(this.this$0, this.this$0.jdField_a_of_type_ComTencentMobileqqBusinessCardDataCardOCRInfo.a, null, this.this$0.jdField_a_of_type_ComTencentMobileqqBusinessCardDataCardOCRInfo.b);
+    if (this.this$0.jdField_a_of_type_ComTencentMobileqqBusinessCardDataCardOCRInfo != null)
+    {
+      localBusinessCardEditActivity = this.this$0;
+      BusinessCardEditActivity.a(localBusinessCardEditActivity, localBusinessCardEditActivity.jdField_a_of_type_ComTencentMobileqqBusinessCardDataCardOCRInfo.a, null, this.this$0.jdField_a_of_type_ComTencentMobileqqBusinessCardDataCardOCRInfo.b);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity.11
  * JD-Core Version:    0.7.0.1
  */

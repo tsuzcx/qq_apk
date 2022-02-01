@@ -4,7 +4,7 @@ import android.os.HandlerThread;
 
 public abstract interface ArkEnvironmentManager$ThreadCreater
 {
-  public abstract HandlerThread createHanderThread(String paramString);
+  public abstract HandlerThread createHandlerThread(String paramString);
 }
 
 

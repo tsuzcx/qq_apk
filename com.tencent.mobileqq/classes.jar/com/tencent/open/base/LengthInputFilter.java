@@ -28,24 +28,26 @@ public class LengthInputFilter
       return null;
     }
     paramInt3 = paramInt1;
-    if (paramInt3 < paramInt2)
+    while (paramInt3 < paramInt2)
     {
       int j;
-      if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3))) {
-        j = StringAddition.a(paramCharSequence.subSequence(paramInt3, paramInt3 + 2).toString());
-      }
-      for (int i = 2;; i = 1)
+      int i;
+      if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3)))
       {
-        paramInt4 -= j;
-        if (paramInt4 < 0) {
-          break label161;
-        }
-        paramInt3 = i + paramInt3;
-        break;
-        j = StringAddition.a(String.valueOf(paramCharSequence.charAt(paramInt3)));
+        j = StringAddition.a(paramCharSequence.subSequence(paramInt3, paramInt3 + 2).toString());
+        i = 2;
       }
+      else
+      {
+        j = StringAddition.a(String.valueOf(paramCharSequence.charAt(paramInt3)));
+        i = 1;
+      }
+      paramInt4 -= j;
+      if (paramInt4 < 0) {
+        break;
+      }
+      paramInt3 += i;
     }
-    label161:
     if (paramInt3 == paramInt1) {
       return "";
     }
@@ -54,7 +56,7 @@ public class LengthInputFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.base.LengthInputFilter
  * JD-Core Version:    0.7.0.1
  */

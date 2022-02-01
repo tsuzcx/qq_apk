@@ -20,14 +20,15 @@ public final class IcebreakHotPic$RspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 56 }, new String[] { "int32_result", "bytes_fail_msg", "rpt_msg_img_info", "bytes_rsp_other", "int32_img_num" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, null, localByteStringMicro2, Integer.valueOf(0) }, RspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 56 }, new String[] { "int32_result", "bytes_fail_msg", "rpt_msg_img_info", "bytes_rsp_other", "int32_img_num" }, new Object[] { localInteger, localByteStringMicro1, null, localByteStringMicro2, localInteger }, RspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.icebreakhotpic.IcebreakHotPic.RspBody
  * JD-Core Version:    0.7.0.1
  */

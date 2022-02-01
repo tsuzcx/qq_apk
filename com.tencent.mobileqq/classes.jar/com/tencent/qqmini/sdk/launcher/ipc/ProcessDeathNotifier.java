@@ -28,15 +28,16 @@ public class ProcessDeathNotifier
   
   public static ProcessDeathNotifier getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new ProcessDeathNotifier();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new ProcessDeathNotifier();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public int describeContents()
@@ -53,10 +54,12 @@ public class ProcessDeathNotifier
     }
     catch (DeadObjectException localDeadObjectException)
     {
-      paramRunnable.run();
-      return;
+      label20:
+      break label20;
     }
     catch (RemoteException paramRunnable) {}
+    paramRunnable.run();
+    return;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -66,7 +69,7 @@ public class ProcessDeathNotifier
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.ipc.ProcessDeathNotifier
  * JD-Core Version:    0.7.0.1
  */

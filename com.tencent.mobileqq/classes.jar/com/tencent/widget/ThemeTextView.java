@@ -5,19 +5,14 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 
 public class ThemeTextView
   extends TextView
 {
-  public static String a;
+  public static String a = "1000";
   Paint jdField_a_of_type_AndroidGraphicsPaint;
   boolean jdField_a_of_type_Boolean = true;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "1000";
-  }
   
   public ThemeTextView(Context paramContext)
   {
@@ -49,7 +44,7 @@ public class ThemeTextView
     jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     if ((this.jdField_a_of_type_Boolean) && (ThemeUtil.isNowThemeIsNight(null, false, ThemeUtil.curThemeId)))
     {
@@ -68,7 +63,7 @@ public class ThemeTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.ThemeTextView
  * JD-Core Version:    0.7.0.1
  */
